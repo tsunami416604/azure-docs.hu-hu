@@ -4,7 +4,7 @@ description: "Az Azure AD tartományi szolgáltatásokra vonatkozó hibaelhárí
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory-ds
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 34335db77a5e414af4cfa77d6223ab5290bae614
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 3acecdf753162ad703ff51acf40c34335bf6cdcb
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD tartományi szolgáltatások - hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippek biztosít a problémák jelentkezhetnek, ha beállítása és felügyelete az Azure Active Directory (AD) tartományi szolgáltatásokban.
 
 ## <a name="you-cannot-enable-azure-ad-domain-services-for-your-azure-ad-directory"></a>Nem lehet engedélyezni az Azure AD-címtár az Azure AD tartományi szolgáltatások
-Ez a szakasz segítséget nyújt a hibák elhárítása, amikor megpróbálja engedélyezni a címtár Azure AD tartományi szolgáltatásokat, és nem sikerül, vagy vissza a "Letiltva" váltható lekérdezi.
+Ez a szakasz segítséget nyújt a hibák elhárítása engedélyezése az Azure AD tartományi szolgáltatásokat a címtáron megkísérlésekor.
 
 Válassza ki a hibaelhárítási lépéseket, amelyek megfelelnek a hibaüzenet a következő megjelenne.
 
@@ -81,7 +81,7 @@ A következő PowerShell-parancsfájl segítségével keresse meg az alkalmazás
 >
 >
 
-```
+```powershell
 $InformationPreference = "Continue"
 $WarningPreference = "Continue"
 
@@ -151,7 +151,7 @@ Ha az Azure AD-bérlőről egy vagy több felhasználók nem jelentkezhetnek be 
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Eltávolítja az Azure AD-bérlő felhasználók a felügyelt tartományok nem törlődnek
 Az Azure AD megvédi Önt a felhasználói objektumok véletlen törlésétől. Amikor töröl egy felhasználói fiókot az Azure AD-bérlőből, a megfelelő felhasználói objektum átkerül a Lomtárba. Amikor a törlési művelet szinkronizálja a felügyelt tartományra, a megfelelő felhasználói fiókkal kell megjelölni, letiltott okoz. Ez a szolgáltatás segítségével helyre, vagy később törlésének visszavonása a felhasználói fiók.
 
-A felhasználói fiók a felügyelt tartományok letiltott állapotban marad, akkor is, ha az Azure AD-címtárát hozza létre a azonos egyszerű Felhasználónévvel rendelkező felhasználói fiókkal. Távolítsa el a felhasználói fiók a felügyelt tartományok, kényszeríteni kell törölni az Azure AD-bérlőn.
+A felhasználói fiók a felügyelt tartományok letiltott állapotban marad, akkor is, ha az Azure AD-címtárát hozza létre a azonos egyszerű Felhasználónévvel rendelkező felhasználói fiókkal. Távolítsa el a felhasználói fiók a felügyelt tartományok, meg kell kényszerített törléséhez az Azure AD-bérlő.
 
 A teljes mértékben eltávolítja a felügyelt tartományok a felhasználói fiók, a felhasználó véglegesen törli az Azure AD-bérlőn. Használja a Remove-MsolUser PowerShell-parancsmagot a „-RemoveFromRecycleBin” paraméterrel, ahogyan az az alábbi [MSDN-cikkben](https://msdn.microsoft.com/library/azure/dn194132.aspx) is olvasható.
 

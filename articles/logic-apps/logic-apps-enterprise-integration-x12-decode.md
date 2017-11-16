@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 18719a8f49c74973947517161f7306c233a9323f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9605fc3a1096d053bfeffb2544499935601b2c0f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódolás X12 üzenetek az Azure Logic Apps a vállalati integrációs csomaggal
 
@@ -65,6 +65,16 @@ A szükséges elemeket itt található:
     Példa:
 
     ![Jelölje be X12 lapos fájl üzenet dekódolását](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
+
+   > [!NOTE]
+   > A tényleges üzenet tartalma vagy az üzenet tömb, jó vagy rossz, hasznos base64-kódolású. Igen meg kell adnia egy kifejezés, amely feldolgozza a tartalmat.
+   > Íme egy példa, amely feldolgozza a tartalom XML-kód nézetben vagy Kifejezésszerkesztő-tervezővel használatával adhatók meg.
+   > ``` json
+   > "content": "@xml(base64ToBinary(item()?['Payload']))"
+   > ```
+   > ![Tartalom – példa](media/logic-apps-enterprise-integration-x12-decode/content-example.png)
+   >
+
 
 ## <a name="x12-decode-details"></a>X12 dekódolása részletei
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: cde5983710185d1e46a5601b16bbfb1c0fcae382
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 17ff07648b210fe207b514381e98dd372375e092
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory-integráció SAML-alapú egyszeri a Jira felbontása GmbH
 
@@ -159,27 +159,53 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon11.png)
 
-14. A **SAML SingleSignOn beépülő modul konfigurációs** kattintson **adja hozzá a további identitásszolgáltató** gombra kattintva adja meg a beállításokat az identitásszolgáltató.
+14. A **SAML SingleSignOn beépülő modul konfigurációs** kattintson **adja hozzá az új IdP** gombra identitásszolgáltató beállításainak konfigurálásához.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon4.png)
 
-15. Hajtsa végre az ezen a lapon a következő lépéseket:
+15. A **válassza a SAML-Identitásszolgáltatóként** lapon, a következő lépésekkel:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon5.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon5a.png)
  
-    a. Adja hozzá **neve** az Identity Provider (például az Azure AD).
+    a. Állítsa be **az Azure AD** IdP típusként.
     
-    b. Adja hozzá **leírás** az Identity Provider (például az Azure AD).
+    b. Adja hozzá **neve** az Identity Provider (például az Azure AD).
+    
+    c. Adja hozzá **leírás** az Identity Provider (például az Azure AD).
+    
+    d. Kattintson a **Tovább** gombra.
+    
+16. A **identitás szolgáltató konfigurálása** kattintson **következő** gombra.
 
-    c. Kattintson a **XML** válassza ki a **metaadatok** fájlt, amely az Azure-portálról letöltött.
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon5b.png)
 
-    d. Kattintson a **terhelés** gombra.
+17. A **SAML IdP metaadatok importálása** lapon, a következő lépésekkel:
 
-    e. Beolvassa a kiállító terjesztési hely metaadatok, és feltölti a mezőt is ezen a képernyőfelvételen kiemelt. 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon5c.png)
 
-16. Kattintson a **beállítások mentése** gombra a beállítások mentéséhez.
+    a. Kattintson a **fájl betöltése** gombra, majd válassza ki az 5. lépésben letöltött metaadatok XML-fájl.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon6.png)
+    b. Kattintson a **importálási** gombra.
+    
+    c. Várja meg a rövid időre, amíg importálása sikeres.
+    
+    d. Kattintson a **következő** gombra.
+    
+18. A **felhasználói azonosító attribútum és átalakítás** kattintson **következő** gombra.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon5d.png)
+    
+19. A **felhasználó létrehozása és a frissítés** kattintson **Mentés & következő** beállításainak mentése.   
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon6a.png)
+    
+20. A **tesztelje a beállításokat** kattintson **teszt kihagyása & kézzel konfigurálásához** a felhasználó vizsgálat most kihagyja. Ez a következő szakaszban történik, és egyes beállítások, az Azure portálon igényel. 
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon6b.png)
+    
+21. Apprearing párbeszédpanel olvasási **kihagyása a vizsgálati eszköz...** , kattintson a **OK**.
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-samlssojira-tutorial/addon6c.png)
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)

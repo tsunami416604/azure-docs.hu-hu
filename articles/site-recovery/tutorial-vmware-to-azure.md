@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1c9bfe567b1e0872abc7aba054127735d5f61754
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 461feb952f7e2eddba9c7218b3463868e8cb7965
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Helyszíni VMware virtuális gépek Azure-bA vész-helyreállítási beállítása
 
@@ -85,20 +85,14 @@ A konfigurációs kiszolgáló virtuális gép legyen magas rendelkezésre áll�
 A konfigurációs kiszolgáló virtuális gép győződjön meg arról, hogy a rendszer órája szinkronizálva van-e a kiszolgálót.
 Idő 15 percen belül kell szinkronizálni. Ha a időeltérése nagyobb, mint 15 perc, a telepítés meghiúsul.
 
-Győződjön meg arról, hogy a konfigurációs kiszolgáló VM férhetnek hozzá az URL-címek:
+Győződjön meg arról, hogy a konfigurációs kiszolgáló hozzáférhet az URL-címek:
 
-- *. accesscontrol.windows.net. Hozzáférés-vezérléshez és identitáskezeléshez.
-- *. backup.windowsazure.com. Replikációs adatátvitelhez és összehangoláshoz.
-- *. blob.core.windows.net. A replikált adatokat tároló tárfiókhoz való hozzáféréshez.
-- *. hypervrecoverymanager.windowsazure.com. Replikációkezelési műveletekhez és összehangoláshoz.
-- time.nist.gov és time.windows.com. A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
+   [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
+    
+    - Bármely IP-címeken alapuló tűzfalszabályok szabályokat engedélyezni kell az Azure-kommunikációt.
 
-Az Azure Government Cloud URL-címei:
-
-- *.ugv.hypervrecoverymanager.windowsazure.us
-- *.ugv.backup.windowsazure.us
-- *.ugi.hypervrecoverymanager.windowsazure.us
-- *.ugi.backup.windowsazure.us
+- Engedélyezze az [Azure-adatközpont IP-tartományait](https://www.microsoft.com/download/confirmation.aspx?id=41653) és a HTTPS-portot (443).
+    - Az IP-címtartományok az előfizetés az Azure-régió, valamint a (hozzáférés-vezérlés és identitás kezelésre szolgáló) USA nyugati régiója engedélyezése.
 
 Bármely IP-címeken alapuló tűzfalszabályok szabályok lehetővé kell tennie a kommunikációs [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653), és a 443-as (HTTPS) és 9443 (adatreplikáció). Győződjön meg arról, hogy az IP-címtartományok az előfizetés az Azure-régió, valamint a (hozzáférés-vezérlés és az Identitáskezeléshez használt) USA nyugati régiója.
 

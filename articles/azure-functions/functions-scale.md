@@ -17,17 +17,18 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 423eee65040a11695d9f6c18d64948e4c3d3aafe
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 09bb662e30a97e2741303e2e4630582625954909
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-functions-hosting-plans-comparison"></a>Az Azure Functions üzemeltetési tervek összehasonlítása
 
-## <a name="introduction"></a>Bevezetés
-
 Az Azure Functions két különböző módban is futtathatja: fogyasztás terv és az Azure App Service-csomag. A felhasználási terv automatikusan osztja ki a számítási teljesítményt, a kódja fut, kimenő terhelés kezelésére, szükség szerint arányosan, és majd arányosan csökken, amikor a kód nem fut. Igen nem kell a tétlen virtuális gépek után kell fizetnie, és nem kell előzetesen tartalékkapacitás. Ez a cikk foglalkozik a fogyasztás terv egy [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) az app model. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service-csomagok részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+
+>[!NOTE]  
+> Linux futtató jelenleg csak az App Service-csomag érhető el.
 
 Ha nem ismeri az Azure Functions, tekintse meg a [Azure Functions áttekintése](functions-overview.md).
 
@@ -55,7 +56,7 @@ A felhasználási tervben az üzemeltetési terv alapértelmezett, és a követk
 
 ## <a name="app-service-plan"></a>App Service-csomag
 
-Az App Service-csomag a függvény alkalmazások futtassa a Basic, Standard, Premium és elkülönített SKU, hasonlók a Web Apps, az API-alkalmazások és a Mobile Apps dedikált virtuális gépeken. Dedikált virtuális gépek számára kiosztott az App Service-alkalmazásokhoz, ami azt jelenti, hogy a funkciók állomás mindig működik.
+Az App Service-csomag a függvény alkalmazások futtassa a Basic, Standard, Premium és elkülönített SKU, hasonlók a Web Apps, az API-alkalmazások és a Mobile Apps dedikált virtuális gépeken. Dedikált virtuális gépek számára kiosztott az App Service-alkalmazásokhoz, ami azt jelenti, hogy a funkciók állomás mindig működik. App Service-csomagokról Linux támogatja.
 
 Fontolja meg az App Service-csomag a következő esetekben:
 - Rendelkezik már meglévő, a túl többi App Service-példány már fut a virtuális gépek.
@@ -63,6 +64,7 @@ Fontolja meg az App Service-csomag a következő esetekben:
 - További CPU és memória beállítások, mint mi biztosítja a fogyasztás terven van szüksége.
 - Hosszabb, mint a maximális végrehajtási idő (10 perc) a fogyasztás tervét engedélyezett futtatásához szükséges.
 - Csak az App Service-csomagot, például támogatja az App Service Environment-környezet, a virtuális hálózat és a VPN-kapcsolat és a nagyobb Virtuálisgép-méretek elérhető funkciókat követel meg. 
+- A függvény app Linux rendszeren futtatja, vagy lehetővé szeretné tenni a funkciók futtatására egyéni lemezkép.
 
 A virtuális gépek leválasztja a végrehajtások, a végrehajtási idő és a felhasznált memória több költség. Emiatt nem kell fizetnie több, mint a Virtuálisgép-példány lefoglalandó költségét. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service-csomagok részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 

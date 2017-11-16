@@ -14,20 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: d58a245923242b3963b188ca869e8290d999c0a2
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 87d65479960cd6b5977fd7ac31cbb71afc0959e2
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Azure tartalom Delivery Network webes tartalom lejáratának kezelése
- az Azure CDN
 > [!div class="op_single_selector"]
-> * [Az Azure Web Apps/Felhőszolgáltatások, ASP.NET, vagy az IIS](cdn-manage-expiration-of-cloud-service-content.md)
+> * [Az Azure webes tartalom](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
 > 
 
-Fájlok forráskiszolgálóról bármely nyilvánosan elérhető webkiszolgáló gyorsítótárazhatók az Azure Content Delivery Network (CDN) csak az idő-live (TTL) eltelt. Az élettartam határozza meg a [ `Cache-Control` fejléc](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) az a HTTP-válasz a forráskiszolgálóról. Ez a cikk ismerteti, hogyan telepíthet `Cache-Control` a Web Apps szolgáltatása a Microsoft Azure App Service, Azure Cloud Services, az ASP.NET-alkalmazások és az Internet Information Services helyeket, amelyek hasonló módon konfigurált fejlécek.
+A fájlok forráskiszolgálóról bármely nyilvánosan elérhető webkiszolgáló gyorsítótárazhatók az Azure Content Delivery Network (CDN) csak az idő-live (TTL) lejárta. Az élettartam határozza meg a `Cache-Control` fejléc a következő a HTTP-válasz a forráskiszolgálóról. Ez a cikk ismerteti, hogyan telepíthet `Cache-Control` a Web Apps szolgáltatása a Microsoft Azure App Service, Azure Cloud Services, az ASP.NET-alkalmazások és az Internet Information Services (IIS) helyeket, amelyek hasonló módon konfigurált fejlécek. Beállíthatja a `Cache-Control` fejléc vagy a konfigurációs fájlok vagy programon keresztül.
 
 > [!TIP]
 > Ha szeretné, nincs TTL be egy fájl. Ebben az esetben Azure CDN automatikusan érvényes alapértelmezett élettartam 7 nap.
@@ -35,10 +34,16 @@ Fájlok forráskiszolgálóról bármely nyilvánosan elérhető webkiszolgáló
 > Fájlok és egyéb erőforrásokhoz való hozzáférés felgyorsítása érdekében Azure CDN szolgáltatás működésével kapcsolatos további információkért lásd: [az Azure Content Delivery Network áttekintése](cdn-overview.md).
 > 
 
-## <a name="setting-cache-control-headers-in-configuration-files"></a>A konfigurációs fájlok Cache-Control fejlécek beállítása
-Statikus tartalom, lemezképek és a stíluslapok, például szabályozhatja a frissítés gyakoriságának módosítása a **applicationHost.config** vagy **web.config** a webes alkalmazás forrásfájljairól. A **system.webServer\staticContent\clientCache** a konfigurációs fájl készlet eleme a `Cache-Control` fejlécet a tartalomhoz. A **web.config** fájlok, a konfigurációs beállítások hatással mindent a mappában és annak almappáiban, kivéve, ha azok felülbírálják a almappa szinten. Például alapértelmezett TTL-t beállítás megadása a gyökérmappában három teljes napig az összes statikus tartalom gyorsítótárazása, és csak hat órán át gyorsítótárazza a benne lévő tartalom több változó tartalmú almappa beállítása. Bár a **applicationHost.config** beállításai befolyásolják a hely összes alkalmazás, azok minden meglévő beállításai felülbírálják **web.config** fájlok az alkalmazásokban.
+## <a name="setting-cache-control-headers-by-using-configuration-files"></a>A konfigurációs fájlok Cache-Control fejlécek beállítása
+Statikus tartalom, lemezképek és a stíluslapok, például szabályozhatja a frissítés gyakoriságának módosítása a **applicationHost.config** vagy **Web.config** a webalkalmazás konfigurációs fájlok. A `<system.webServer>/<staticContent>/<clientCache>` vagy fájlkészleteket eleme a `Cache-Control` fejlécet a tartalomhoz.
 
-A következő XML-példa bemutatja, hogyan telepíthet **clientCache** három nap maximális életkora adhatja meg:  
+### <a name="using-applicationhostconfig-files"></a>ApplicationHost.config fájlok használata
+A **ApplicationHost.config** a legfelső szintű fájl az IIS-konfigurációs rendszer. A konfigurációs beállításai a egy **ApplicationHost.config** fájl hatással a hely összes alkalmazást, de bármely beállítások felülbírálják **Web.config** webalkalmazás található fájlokat.
+
+### <a name="using-webconfig-files"></a>A Web.config fájlok segítségével
+Az egy **Web.config** fájl, testreszabhatja a módját a teljes webalkalmazás vagy egy adott könyvtár a webes alkalmazás viselkedik. Általában kell legalább egy **Web.config** fájl a webalkalmazás gyökérmappájában. Az egyes **Web.config** fájl egy adott mappában található a konfigurációs beállítások hatással mindent mappában és annak almappáiban, kivéve, ha azok felülbírálják a almappa szinten egy másik **Web.config**fájlt. Beállíthatja például egy `<clientCache>` eleme egy **Web.config** fájl a gyökérmappában található azon a webes alkalmazás a webes alkalmazás három teljes napig az összes statikus tartalom gyorsítótárazása. Azt is megteheti egy **Web.config** fájlt egy almappában több változó tartalmú (például `\frequent`), és a `<clientCache>` elemben, amely a almappa tartalom gyorsítótárazása hat órán keresztül. A nettó eredménye, hogy a teljes tartalom webhely három nap, kivéve a tartalom gyorsítótárba fognak kerülni a `\frequent` könyvtár, amely csak hat órán át a rendszer gyorsítótárba fognak kerülni.  
+
+A következő XML-példa bemutatja, hogyan telepíthet a `<clientCache>` elem három nap maximális életkora adhatja meg a konfigurációs fájlban:  
 
 ```xml
 <configuration>
@@ -50,17 +55,17 @@ A következő XML-példa bemutatja, hogyan telepíthet **clientCache** három na
 </configuration>
 ```
 
-Adja meg **UseMaxAge** hatására a `Cache-Control: max-age=<nnn>` fel kell venni a válasz fejléce alapján meghatározott érték a **CacheControlMaxAge** attribútum. A timespan formátumát a **cacheControlMaxAge** attribútum `<days>.<hours>:<min>:<sec>`. További információ a **clientCache** csomópont, lásd: [Ügyfélgyorsítótár <clientCache> ](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
+Használatához a **cacheControlMaxAge** attribútum, meg kell adni az értékét a **cacheControlMode** attribútumot `UseMaxAge`. Ezt a beállítást, hogy a HTTP-fejléc és a direktíva, `Cache-Control: max-age=<nnn>`, fel kell venni a választ. A timespan érték, a formátuma a **cacheControlMaxAge** attribútum `<days>.<hours>:<min>:<sec>`. Az értékre alakítja át másodperc pedig a rendszer értékének a `Cache-Control` `max-age` direktívát. További információ a `<clientCache>` elem, lásd: [Ügyfélgyorsítótár <clientCache> ](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
-## <a name="setting-cache-control-headers-in-code"></a>A beállítás a Cache-Control fejlécek kódban
-Az ASP.NET-alkalmazások, a CDN-t úgy, hogy programozott módon gyorsítótárazásának szabályozhatja a **HttpResponse.Cache** tulajdonság. További információ a **HttpResponse.Cache** tulajdonság, lásd: [HttpResponse.Cache tulajdonság](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) és [HttpCachePolicy osztály](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
+## <a name="setting-cache-control-headers-programmatically"></a>A Cache-Control fejlécek programozott módon beállítása
+Az ASP.NET-alkalmazások, a CDN programozott módon gyorsítótárazásának úgy, hogy szabályozza a **HttpResponse.Cache** tulajdonság a .NET API. További információ a **HttpResponse.Cache** tulajdonság, lásd: [HttpResponse.Cache tulajdonság](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) és [HttpCachePolicy osztály](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
 
 Programozott módon tartalmak gyorsítótárazására való alkalmazása az ASP.NET kövesse az alábbi lépéseket:
-   1. Győződjön meg arról, hogy a tartalmat úgy, hogy a gyorsítótárazható megjelölve `HttpCacheability` való *nyilvános*. 
-   2. A gyorsítótár érvényesítő állította hívja a következő módszerek egyikét:
-      - Hívás `SetLastModified` LastModified időbélyeg beállításához.
-      - Hívás `SetETag` beállítani egy `ETag` érték.
-   3. Szükség esetén adja meg a gyorsítótár lejárati ideje meghívásával `SetExpires`. Ellenkező esetben a korábban a jelen dokumentumban ismertetett alapértelmezett gyorsítótár heurisztikus alkalmazni.
+   1. Győződjön meg arról, hogy a tartalmat úgy, hogy a gyorsítótárazható megjelölve `HttpCacheability` való `Public`. 
+   2. A gyorsítótár érvényesítő beállítása a következő függvény meghívásával `HttpCachePolicy` módszerek:
+      - Hívás `SetLastModified` egy timestamp értéket, az a `Last-Modified` fejléc.
+      - Hívás `SetETag` adhat meg az értéket a `ETag` fejléc.
+   3. Szükség esetén adja meg a gyorsítótár lejárati ideje meghívásával `SetExpires` adhat meg az értéket a `Expires` fejléc. Ellenkező esetben a korábban a jelen dokumentumban ismertetett alapértelmezett gyorsítótár heurisztikus alkalmazni.
 
 A gyorsítótár egy órára tartalom, például vegye fel a következő C#-kódban:  
 
@@ -70,6 +75,9 @@ Response.Cache.SetExpires(DateTime.Now.AddHours(1));
 Response.Cache.SetCacheability(HttpCacheability.Public);
 Response.Cache.SetLastModified(DateTime.Now);
 ```
+
+## <a name="testing-the-cache-control-header"></a>A Cache-Control fejléc tesztelése
+A TTL-beállítások a webes tartalom könnyen ellenőrizheti. A böngésző [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), tesztelje, hogy a webes tartalom magában foglalja a `Cache-Control` válaszfejlécet. Például egy eszköz is használható **wget**, [Postman](https://www.getpostman.com/), vagy [Fiddler](http://www.telerik.com/fiddler) megvizsgálhatja a response fejlécekkel együtt.
 
 ## <a name="next-steps"></a>Következő lépések
 * [Részletekért olvassa el a **clientCache** elem](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)

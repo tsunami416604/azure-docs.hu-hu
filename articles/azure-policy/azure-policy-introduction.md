@@ -10,11 +10,11 @@ ms.topic: overview
 ms.service: azure-policy
 manager: jochan
 ms.custom: mvc
-ms.openlocfilehash: b784c79166eb614988d84b4553bb95e4d1e457af
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: ef1114f6b1259e4f0d60260febb39bc70b181fbc
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure-házirendet?
 
@@ -51,7 +51,7 @@ Azure-szabályzatok fel néhány beépített házirendek, amelyek alapértelmez�
 
 Ezek a házirendek az Azure portálon, a PowerShell vagy az Azure parancssori felület használatával tud rendelni.
 
-További információt a házirend-definíciók struktúrák, tekintse meg a cikk - [házirend-definíció szerkezetet](../azure-resource-manager/resource-manager-policy.md#policy-definition-structure).
+További információt a házirend-definíciók struktúrák, tekintse meg a cikk - [házirend-definíció szerkezetet](policy-definition.md).
 
 ## <a name="policy-assignment"></a>Házirend-hozzárendelés
 
@@ -68,7 +68,7 @@ Paraméterek vannak definiálva vagy hozható létre a házirend-definíció lé
 <!--
 Next link should point to new Concept page for Parameters
 -->
-Házirend-paraméterekkel kapcsolatos további információkért lásd: [erőforrás-házirendek – áttekintés - paraméterek](../azure-resource-manager/resource-manager-policy.md#parameters).
+Házirend-paraméterekkel kapcsolatos további információkért lásd: [erőforrás-házirendek – áttekintés - paraméterek](policy-definition.md#parameters).
 
 ## <a name="initiative-definition"></a>Kezdeményezésére meghatározása
 Egy kezdeményezésére definíciója, amely egy szinguláris általános cél elérésére is lefednek házirend-definíciók gyűjteménye. Kezdeményezésére definíciók leegyszerűsíti a kezelése, és rendelje hozzá a házirend-definíciók. A házirendek beállítása egy egyelemű csoportosításával egyszerűsítése érdekében. Például létrehozhat egy című kezdeményezés **figyelés engedélyezése az Azure Security Centerben**, az a célja, hogy az Azure Security Centerben a biztonsági javaslatok figyelése.

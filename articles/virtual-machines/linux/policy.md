@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: singhkay
-ms.openlocfilehash: 58eaab4fa03afc1e6a5e38bef691cce62a921ea9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72abb01a3ce7f4dea2ee97219e9a406c69cda7c5
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Linux virtuális gépek az Azure Resource Manager-szabályzatok alkalmazása
 Házirendek segítségével a szervezetek kényszerítheti a különböző egyezmények és szabályok a vállalaton belül. A kívánt viselkedés végrehajtását segítségével mérsékelhetik a kockázatokat hozzájárul a szervezet sikeres. Ez a cikk azt ismerteti használatát Azure Resource Manager-házirendek megadhatók a kívánt viselkedés a szervezet virtuális gépekhez.
 
-Házirendek bemutatása, lásd: [kezelheti az erőforrásokat, és hozzáférés szabályozása házirendekkel](../../azure-resource-manager/resource-manager-policy.md).
+Házirendek bemutatása, lásd: [Mi az Azure házirend?](../../azure-policy/azure-policy-introduction.md).
 
 ## <a name="permitted-virtual-machines"></a>Engedélyezett virtuális gépek
 Győződjön meg arról, hogy a szervezet virtuális gépek kompatibilisek egy alkalmazás, korlátozhatja az engedélyezett operációs rendszerek. A következő házirend-példa engedélyezése csak Ubuntu 14.04.2-LTS virtuális gépeket létrehozni.
@@ -88,7 +88,7 @@ Egy helyettesítő karakter használatával módosíthatja az előző házirendb
 }
 ```
 
-Házirend mezőkkel kapcsolatos információkért lásd: [házirend aliasok](../../azure-resource-manager/resource-manager-policy.md#aliases).
+Házirend mezőkkel kapcsolatos információkért lásd: [házirend aliasok](../../azure-policy/policy-definition.md#aliases).
 
 ## <a name="managed-disks"></a>Felügyelt lemezek
 
@@ -209,6 +209,6 @@ A következő példa meghatározza, hogy a jóváhagyott lemezkép-azonosítók:
 
 
 ## <a name="next-steps"></a>Következő lépések
-* (A fenti példákban szerint) házirend szabály megadása után kell a házirend-definíció létrehozása, és rendelje hozzá hatókör. A hatókör lehet egy előfizetés, az erőforráscsoportot, vagy az erőforrás. A portálon keresztül házirendek rendeléséhez lásd: [hozzárendelésére és kezelésére erőforrás-házirendek használata Azure-portálon](../../azure-resource-manager/resource-manager-policy-portal.md). REST API-t, a PowerShell vagy az Azure CLI-házirendeket rendeléséhez lásd: [meg és kezelheti a parancsfájl-házirendeket](../../azure-resource-manager/resource-manager-policy-create-assign.md).
-* Megismerkedhet az erőforrás-házirendek, lásd: [erőforrás házirendek – áttekintés](../../azure-resource-manager/resource-manager-policy.md).
+* (A fenti példákban szerint) házirend szabály megadása után kell a házirend-definíció létrehozása, és rendelje hozzá hatókör. A hatókör lehet egy előfizetés, az erőforráscsoportot, vagy az erőforrás. Házirendek rendeléséhez lásd: [hozzárendelésére és kezelésére erőforrás-házirendek használata Azure-portálon](../../azure-policy/assign-policy-definition.md), [házirendek rendelhetők a PowerShell](../../azure-policy/assign-policy-definition-ps.md), vagy [használja az Azure parancssori felület házirendek rendelhetők](../../azure-policy/assign-policy-definition-cli.md).
+* Megismerkedhet az erőforrás-házirendek, lásd: [Mi az Azure házirend?](../../azure-policy/azure-policy-introduction.md).
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](../../azure-resource-manager/resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

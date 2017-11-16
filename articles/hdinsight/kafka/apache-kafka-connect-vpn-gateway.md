@@ -13,15 +13,15 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 1721f985214b9a9fbefed628308b1a72f5cc186a
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 2b55de4de6bb94be78649112161211346090b23a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="connect-to-kafka-on-hdinsight-preview-through-an-azure-virtual-network"></a>A HDInsight (előzetes verzió) egy Azure virtuális hálózaton keresztül Kafka kapcsolódni
+# <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>A HDInsight az Azure virtuális hálózaton keresztül Kafka kapcsolódni
 
 Útmutató a HDInsight az Azure virtuális hálózaton keresztül Kafka közvetlenül kapcsolódni. Ez a dokumentum információkat biztosít Kafka csatlakozni a következő konfigurációk használatával:
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/06/2017
 
 A HDInsight nem engedélyezi a Kafka közvetlen kapcsolatra a nyilvános interneten keresztül. Ehelyett azt Kafka ügyfelek (létrehozói és felhasználói) kell használnia, a következő kapcsolat módszerek egyikét:
 
-* Futtassa az ügyfelet a HDInsight a Kafka azonos virtuális hálózaton. Ez a konfiguráció szerepel a [Apache Kafka (előzetes verzió) a HDInsight kezdődnie](apache-kafka-get-started.md) dokumentum. Az ügyfél futtatja a közvetlenül a HDInsight-fürtcsomóponton, vagy egy másik virtuális gép ugyanazon a hálózaton.
+* Futtassa az ügyfelet a HDInsight a Kafka azonos virtuális hálózaton. Ez a konfiguráció szerepel a [indítsa el a HDInsight Apache Kafka](apache-kafka-get-started.md) dokumentum. Az ügyfél futtatja a közvetlenül a HDInsight-fürtcsomóponton, vagy egy másik virtuális gép ugyanazon a hálózaton.
 
 * A magánhálózaton, például a helyszíni hálózathoz csatlakozni a virtuális hálózat. Ez a konfiguráció lehetővé teszi az ügyfelek a helyszíni hálózat Kafka közvetlenül együttműködni. Ahhoz, hogy ez a konfiguráció, a következő feladatokat:
 
@@ -74,7 +74,7 @@ Ezeket a lépéseket hozza létre az alábbi konfigurációt:
 * Azure Virtual Network
 * Webhelyek közötti VPN átjáró
 * Az Azure Storage-fiók (a HDInsight által használt)
-* A HDInsight Kafka
+* Kafka on HDInsight
 
 Győződjön meg arról, hogy egy Kafka kapcsolódni tud a fürt a helyszíni, kövesse a lépéseket a a [példa: ügyfél Python](#python-client) szakasz.
 
@@ -85,7 +85,7 @@ Ebben a szakaszban a lépések segítségével hozza létre a következő konfig
 * Azure Virtual Network
 * Pont-pont VPN-átjáró
 * Az Azure Storage-fiók (a HDInsight által használt)
-* A HDInsight Kafka
+* Kafka on HDInsight
 
 1. Kövesse a [pont – hely kapcsolatok önaláírt tanúsítványok használata](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md) dokumentum. Ez a dokumentum az átjáró szükséges tanúsítványokat hoz létre.
 

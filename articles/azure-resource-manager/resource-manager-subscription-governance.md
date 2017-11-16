@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 3a19f2cf7566f38f80639d7c966638a3ec900cf4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5950bad397e4b0f08f998ea6756e3c258e84b63e
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Az Azure enterprise scaffold - részletes utasításokkal megadott előfizetés-irányítás
 A vállalatok egyre vannak bevezetése a nyilvános felhőben az agilitást és a rugalmasságot. A felhő szintjeiről bevételt, vagy a vállalati erőforrások optimalizálására azok vannak használatával. A Microsoft Azure kínál számos, hogy a vállalatok például építőelemeket munkaterheléseket és alkalmazásokat az széles köréről megoldására összeállíthat. 
@@ -89,7 +89,7 @@ Az első oszlop, a scaffold van elnevezési szabványoknak. Tetszetős elnevezé
 > Az előző tippek segítségével megvalósíthatja az egységes elnevezési szabályokat alkalmaz.
 
 ## <a name="policies-and-auditing"></a>Házirendek és a naplózás
-A scaffold a második pillar magában foglalja [Azure Resource Manager házirendek](resource-manager-policy.md) és [a műveletnapló naplózás](resource-group-audit.md). Erőforrás-kezelő házirendek biztosítják azokat az Azure-ban kockázat kezelése. Megadhatja, amelyek biztosítják az adatok közös joghatóság alá korlátozása, kényszerítése, vagy bizonyos műveletek naplózási házirendeket. 
+A scaffold a második pillar magában foglalja [Azure házirendek](../azure-policy/azure-policy-introduction.md) és [a műveletnapló naplózás](resource-group-audit.md). Erőforrás-kezelő házirendek biztosítják azokat az Azure-ban kockázat kezelése. Megadhatja, amelyek biztosítják az adatok közös joghatóság alá korlátozása, kényszerítése, vagy bizonyos műveletek naplózási házirendeket. 
 
 * A házirend az alapértelmezett **engedélyezése** rendszer. Műveletek és szabályzatok hozzárendelését meg vagy az erőforrás műveletek naplózhatók erőforrásokhoz szabályozhatja.
 * Egy házirend adatdefiníciós nyelv (if-majd feltételek) a házirend-definíciók alapján házirendek ismerteti.

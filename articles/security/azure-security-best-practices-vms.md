@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: yurid
-ms.openlocfilehash: c8a920a0523cb4737e6bbca7e49d0b9e2c942565
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7122e2f5f7ebc8ef0c6b2083257f26d8d2e5e345
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Ajánlott eljárások az Azure virtuális gép biztonsági
 
@@ -47,7 +47,7 @@ A cikk a következő virtuális gép ajánlott biztonsági eljárások megvizsg�
 
 ## <a name="vm-authentication-and-access-control"></a>Virtuális gép hitelesítési és hozzáférés-vezérlés
 
-A virtuális gép védelmének első lépése annak érdekében, hogy csak a hitelesített felhasználóknak beállíthatja az új virtuális gépek. Használhat [Azure Resource Manager házirendek](../azure-resource-manager/resource-manager-policy.md) egyezmények erőforrások létrehozására a szervezetben, létrehozzon testreszabott házirendeket, és ezek a házirendek alkalmazása erőforrások, például a [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md).
+A virtuális gép védelmének első lépése annak érdekében, hogy csak a hitelesített felhasználóknak beállíthatja az új virtuális gépek. Használhat [Azure házirendek](../azure-policy/azure-policy-introduction.md) egyezmények erőforrások létrehozására a szervezetben, létrehozzon testreszabott házirendeket, és ezek a házirendek alkalmazása erőforrások, például a [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md).
 
 Természetesen az erőforráscsoporthoz tartozó virtuális gépek a házirendek jelentik. Bár javasolt ezt a módszert használja a virtuális gépek kezelése, is is elérését Ön szabályozza az egyes Virtuálisgép-házirendek használatával [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-configure.md).
 

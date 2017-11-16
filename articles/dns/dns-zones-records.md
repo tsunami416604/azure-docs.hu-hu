@@ -15,11 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
-ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 00f6309114039db23a1d22f1eb70076b842dadca
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-dns-zones-and-records"></a>A DNS-zónák és áttekintése
 
@@ -54,6 +54,16 @@ Az Azure DNS szolgáltatásban a TTL van megadva a rekordhalmaz, nem az egyes re
 Az Azure DNS [helyettesítő rekordok](https://en.wikipedia.org/wiki/Wildcard_DNS_record) használatát is támogatja. Helyettesítő karakteres rekordot ad vissza semmilyen egyező nevű lekérdezésre válaszul (kivéve, ha egy nem helyettesítő rekordhalmaz származó közelebbi találat). Az Azure DNS támogatja a helyettesítő rekordhalmazok minden rekordtípus, kivéve az NS és SOA.
 
 Helyettesítő rekordhalmaz létrehozásához használja a következő rekordhalmaznevet "\*". Másik megoldásként használhatja nevet "\*", a bal szélső címkéjével, például"\*.foo".
+
+### <a name="caa-records"></a>CAA rekordok
+
+CAA rekordok lehetővé teszi a adhatja meg, melyik tanúsítványszolgáltatók (CA) jogosultak a tanúsítványokat a tartományhoz tartozó tartományi tulajdonosai. Ez lehetővé teszi a hitelesítésszolgáltatók nem tud kiállítani tanúsítványokat bizonyos körülmények között elkerülése érdekében. CAA rekordok három jellemzőkkel rendelkezik:
+* **Jelzők**: Ez az 0 és 255, a kritikus jelzőt, amely a kulcsszó különleges jelentéssel bír száma ábrázolásához közötti egész számot a [RFC](https://tools.ietf.org/html/rfc6844#section-3)
+* **Címke**: egy ASCII karakterlánc, amely a következők egyike lehet:
+    * **a probléma**: akkor használja, ha meg szeretné határozni a (minden esetében) tanúsítványainak kiállításához engedélyezett hitelesítésszolgáltatók
+    * **issuewild**: akkor használja, ha meg szeretné határozni (csak helyettesítő tanúsítványok) tanúsítványainak kiállításához engedélyezett hitelesítésszolgáltatók
+    * **iodef**: Adjon meg egy e-mail címet vagy állomásnevet, amelyre a hitelesítésszolgáltatók értesítheti jogosulatlan cert probléma kérelmek
+* **Érték**: a kiválasztott adott címke értéke
 
 ### <a name="cname-records"></a>A CNAME-rekordok
 

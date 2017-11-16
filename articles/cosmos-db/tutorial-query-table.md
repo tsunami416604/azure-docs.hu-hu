@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: e59cfa85c6bf584e44bdc6e88cc19d67df390041
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbb752692fbd618d9e7e14c8a80b582aad657b38
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api-preview"></a>Azure Cosmos DB: Hogyan tábla adatait kéri tábla API-jával (előzetes verzió)?
+# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api"></a>Azure Cosmos DB: Hogyan tábla adatait kéri a tábla API használatával
 
-Az Azure Cosmos DB [tábla API](table-introduction.md) (előzetes verzió) támogatja az OData és [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) Lekérdezések kulcs/érték (tábla) adatok alapján.  
+Az Azure Cosmos DB [tábla API](table-introduction.md) támogatja az OData és [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) Lekérdezések kulcs/érték (tábla) adatok alapján.  
 
 Ez a cikk ismerteti a következő feladatokat: 
 
@@ -38,13 +38,13 @@ Ebben a cikkben a lekérdezések használja az alábbi minta `People` tábla:
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 | 
 
-Mivel az Azure Table storage API-kkal kompatibilis Azure Cosmos DB, lásd: [lekérdezése táblákat és entitásokat] (https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) lekérdezés a tábla API használatával kapcsolatos részletekért. 
+Lásd: [lekérdezése táblákat és entitásokat] (https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) lekérdezés a tábla API használatával kapcsolatos részletekért. 
 
-Prémium szintű képességeit, amely Azure Cosmos DB nyújt további információkért lásd: [Azure Cosmos DB: tábla API](table-introduction.md) és [Develop a tábla API-t a .NET](tutorial-develop-table-dotnet.md). 
+Prémium szintű képességeit, amely Azure Cosmos DB nyújt további információkért lásd: [Azure Cosmos DB tábla API](table-introduction.md) és [Develop a tábla API-t a .NET](tutorial-develop-table-dotnet.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A lekérdezések működjön rendelkezik Azure Cosmos DB fiókkal és a tárolóban lévő adatok entitás rendelkezik. Nem rendelkezik egyetlen, az? Fejezze be a [ötperces gyors üzembe helyezés](https://aka.ms/acdbtnetqs) vagy a [fejlesztői útmutató](https://aka.ms/acdbtabletut) hozzon létre egy fiókot, és töltse fel az adatbázist.
+A lekérdezések működjön rendelkezik Azure Cosmos DB fiókkal és a tárolóban lévő adatok entitás rendelkezik. Nem rendelkezik egyetlen, az? Fejezze be a [ötperces gyors üzembe helyezés](create-table-dotnet.md) vagy a [fejlesztői útmutató](tutorial-develop-table-dotnet.md) hozzon létre egy fiókot, és töltse fel az adatbázist.
 
 ## <a name="query-on-partitionkey-and-rowkey"></a>Lekérdezés PartitionKey és RowKey
 A PartitionKey és RowKey tulajdonság egy entitás elsődleges kulcsának alkotnak, mert a következő szintaxist segítségével azonosítja az entitást: 
@@ -109,9 +109,9 @@ await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
 Ebben az oktatóanyagban ezt a következők:
 
 > [!div class="checklist"]
-> * Megtudta, hogyan lekérdezése tábla API-jával (előzetes verzió) 
+> * Megtudta, a tábla API-jával lekérdezése
 
 Most már folytathatja a következő oktatóanyag megtudhatja, miként ossza el az adatokat globális.
 
 > [!div class="nextstepaction"]
-> [Az adatok globálisan terjesztése](tutorial-global-distribution-documentdb.md)
+> [Az adatok globálisan terjesztése](tutorial-global-distribution-table.md)

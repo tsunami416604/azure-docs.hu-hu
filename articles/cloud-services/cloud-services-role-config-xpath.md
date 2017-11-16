@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: fd6efac829d3fd9e2840362b8d2ff423add566d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71adbca34390bda3a7d4067742ffb3a28201449
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>XPath környezeti változó, teszi közzé a szerepkör konfigurációs beállításai
 A felhőalapú szolgáltatás munkavégző vagy a webes szerepkör szolgáltatásdefiníciós fájl teszi környezeti változóként futásidejű konfigurációs értékeket. A következő XPath értékek (amely API értékek) használata támogatott.
@@ -166,5 +166,5 @@ További információ a [ServiceConfiguration.cscfg](cloud-services-model-and-pa
 
 Hozzon létre egy [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) csomag.
 
-Engedélyezése [távoli asztal](cloud-services-role-enable-remote-desktop.md) szerepkör.
+Engedélyezése [távoli asztal](cloud-services-role-enable-remote-desktop-new-portal.md) szerepkör.
 

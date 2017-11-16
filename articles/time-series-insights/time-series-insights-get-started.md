@@ -1,56 +1,67 @@
 ---
 title: "Azure Time Series Insights-környezet létrehozása | Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan hozhat létre Time Series-környezetet, hogyan csatlakoztathatja egy eseményforráshoz és kezdheti elemezni az eseményadatokat percek alatt."
-keywords: 
+description: "A cikkből megtudhatja, hogyan használható az Azure-portálon hozzon létre egy új idő adatsorozat Insights környezetet."
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: op-ravi
-manager: santoshb
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 10/18/2017
 ms.author: omravi
-ms.openlocfilehash: d8a3f79630868c83cd9fde6ea0c414e334a58e22
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
-ms.translationtype: HT
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 6dba703851161a1eebce0101be8076682f09c76f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Új Time Series Insights-környezet létrehozása az Azure Portalon
+A cikkből megtudhatja, hogyan hozzon létre egy új idő adatsorozat Insights környezetet az Azure portál használatával.
 
-A Time Series Insights-környezet egy Azure-erőforrás bejövő adatforgalmi és tárolási kapacitással. Az ügyfelek az Azure Portalon hozhatnak létre környezeteket a szükséges kapacitással.
+Idő adatsorozat Insights lehetővé teszi a kezdéshez megjelenítése, és lekérdezi-e (percben), Azure IoT hub és az Event Hubs áramló adatok lehetővé teszik lekérdezés nagy adatkötetek idő adatsorozat másodpercben.  Az internetes hálózatával (IoT) bővített úgy lett kialakítva, és kezelni tud a terabájtos adatkészleteket.
 
 ## <a name="steps-to-create-the-environment"></a>A környezet létrehozásának lépései
+Kövesse az alábbi lépéseket olyan környezetet hozhat létre:
 
-A környezet létrehozásához kövesse az alábbi lépéseket:
+1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1.  Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2.  Kattintson a plusz jelre („+”) a bal felső sarokban.
-3.  A keresőmezőben keressen a „Time Series Insights” kifejezésre.
+2.  Válassza ki a **+ új** gombra.
 
-  ![A Time Series Insights-környezet létrehozása](media/get-started/getstarted-create-environment1.png)
+3.  Válassza ki a **az eszközök internetes hálózatát** kategóriát, és válassza ki **idő adatsorozat Insights**.
 
-4.  Válassza a „Time Series Insights” elemet, és kattintson a „Létrehozás” lehetőségre.
+   ![A Time Series Insights-környezet létrehozása](media/time-series-insights-get-started/1-new-tsi.png)
 
-  ![A Time Series Insights-erőforráscsoport létrehozása](media/get-started/getstarted-create-environment2.png)
+4.  Az a **idő adatsorozat Insights** lapon jelölje be **létrehozása**.
 
-5.  Adja meg a környezet nevét. Ez a név jelöli majd a környezetet a [Time Series Explorerben](https://insights.timeseries.azure.com).
-6.  Válasszon egy előfizetést. Azt az előfizetést válassza, amely tartalmazza az eseményforrást. A Time Series Insights képes automatikusan észlelni az azonos előfizetésben lévő Azure IoT Hub- és Event Hub-erőforrásokat.
-7.  Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoport olyan Azure-erőforrások gyűjteménye, amelyeket együtt használnak.
-8.  Válasszon egy üzemeltetési helyet. Annak érdekében, hogy az adatokat ne kelljen egyik adatközpontból a másikba mozgatni, olyan helyet válasszon, amely tartalmazza az eseményforrást.
-9.  Válasszon tarifacsomagot.
-10. Válassza ki a kapacitást. A környezet kapacitása a létrehozást követően módosítható.
-11. Hozza létre a környezetet. A környezetet rögzítheti az irányítópulton, így a bejelentkezés után könnyen elérheti.
+5. Töltse ki a szükséges paramétereket. Az alábbi táblázat ismerteti az egyes paramétereket:
+   
+   ![A Time Series Insights-erőforráscsoport létrehozása](media/time-series-insights-get-started/2-create-tsi.png)
+   
+   Beállítás|Ajánlott érték|Leírás
+   ---|---|---
+   A környezeti neve | Egy egyedi nevet | Ez a név azt a környezet [idő adatsorozat explorer](https://insights.timeseries.azure.com)
+   Előfizetés | Az Ön előfizetése | Ha több előfizetéssel rendelkezik, válassza ki az előfizetést, az eseményforrás lehetőleg tartalmazza. A Time Series Insights képes automatikusan észlelni az azonos előfizetésben lévő Azure IoT Hub- és Event Hub-erőforrásokat.
+   Erőforráscsoport | Hozzon létre egy új vagy meglévő | Az erőforráscsoport olyan Azure-erőforrások gyűjteménye, amelyeket együtt használnak. Választhat egy létező erőforráscsoportot, például azt, amelyik az IoT-központ vagy az Event Hubs tartalmazza. Vagy egy új teheti meg, ha az egyéb erőforrások nem kapcsolódik ehhez az erőforráshoz.
+   Hely | A forrás legközelebbi | Lehetőleg válassza a data center ugyanott elkerülése érdekében a esemény forrásadatok tartalmazó hozzáadja a kereszt-régió, és a kereszt-zóna sávszélességgel kapcsolatos költségek, és késés hozzá, amikor a régió kívül megköveteli az adatok.
+   Tarifacsomag | S1 | Válassza ki a szükséges teljesítményt. S1 válassza legalacsonyabb költségek és a starter kapacitás.
+   Kapacitás | 1 | A többszöröző alkalmaz a érkező sebességét, a tárolási kapacitás és a társítva a kiválasztott Termékváltozat kapacitása.  A környezet kapacitása a létrehozást követően módosítható. A legalacsonyabb költségek válassza a 1 kapacitása. 
+  
+6. Ellenőrizze **rögzítés az irányítópulton** legjobb egyszerűen elérhetők az adatsorozat környezet a jövőben.
 
-  ![A Time Series Insights rögzítése az irányítópulton](media/get-started/getstarted-create-environment3.png)
+   ![A Time Series Insights rögzítése az irányítópulton](media/time-series-insights-get-started/3-pin-create.png)
+
+7. Válassza ki **létrehozása** a kiépítési folyamat megkezdéséhez. Néhány percig is eltarthat.
+
+8. A telepítési folyamat figyeléséhez, válassza ki a **értesítések** szimbólum (harang ikonra).
+
+   ![Tekintse meg az értesítések](media/time-series-insights-get-started/4-notifications.png)
+
+Amikor a telepítés sikeres, választhat **forrást** tulajdonságainak beállítása, állítsa be a biztonsági adatok hozzáférési házirendekkel, adja hozzá a eseményforrások és egyéb műveleteket.
 
 ## <a name="next-steps"></a>Következő lépések
-
-* [Adathozzáférési házirendek meghatározása](time-series-insights-data-access.md) a környezet eléréséhez a [Time Series Insights portálon](https://insights.timeseries.azure.com)
-* [Eseményforrás létrehozása](time-series-insights-add-event-source.md)
-* [Események küldése](time-series-insights-send-events.md) az eseményforrásnak
+* [Adja meg az adat-hozzáférési házirendjeit](time-series-insights-data-access.md) biztonságossá tételéhez a környezetben.
+* [Adja hozzá az Eseményközpont eseményforrást](time-series-insights-how-to-add-an-event-source-eventhub.md) az Azure idő adatsorozat Insights környezethez. 
+* [Események küldése](time-series-insights-send-events.md) esemény forrását.
+* A környezet megtekintése [idő adatsorozat Insights explorer](https://insights.timeseries.azure.com).

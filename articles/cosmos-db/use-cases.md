@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 68800ab14cbca367fd97827a923a2edc377e9aee
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: cd10147047a7d5d8b0a15be08fbba24a07adffad
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB gyakori alkalmazási esetei
 Ez a cikk számos gyakori alkalmazási esetei áttekintést nyújt az Azure Cosmos DB rendszerhez.  Az ebben a cikkben szereplő ajánlásokhoz szolgál, kiindulási pontként a Cosmos DB alkalmazást fejleszt.   
@@ -39,7 +39,7 @@ Azure Cosmos-adatbázis egy olyan globális elosztott, több modellre adatbázis
 
 Az alábbiakban néhány attribútumok, amelyek nagy teljesítményű alkalmazások, a globális léptéke jól alkalmazható Azure Cosmos-adatbázis.
 
-* Azure Cosmos-adatbázis natív módon felosztja a magas rendelkezésre állás és méretezhetőség adatait. Azure Cosmos DB 99,99 % garanciák rendelkezésre állási, átviteli sebességet, alacsony késéssel és konzisztencia nyújtja.
+* Azure Cosmos-adatbázis natív módon felosztja a magas rendelkezésre állás és méretezhetőség adatait. Azure Cosmos DB nyújt a rendelkezésre állási, átviteli sebességet, alacsony késéssel és laza konzisztencia fiókokhoz egyetlen területi és fiókokhoz több területi konzisztencia 99,99 % garanciák, és 99.999 %, olvassa el az összes fiókot a több területi adatbázis rendelkezésre állásának.
 * Azure Cosmos-adatbázis biztonsági SSD-tároló, a kis késleltetésű sorrendben az ezredmásodperces válaszidők rendelkezik.
 * Például végleges, egységes előtag, munkamenet és kötött elavulás konzisztenciaszintek Azure Cosmos DB tartozó támogatása lehetővé teszi, hogy teljesen rugalmasan és alacsony költség-teljesítmény aránya. Nincs adatbázis-szolgáltatás, Azure Cosmos DB mértékű rugalmasságot nyújt, szintek egységességét. 
 * Azure Cosmos DB rugalmas adatok mobilbarát árképzési modellt, amely mérőszámok tárolási és átviteli egymástól függetlenül rendelkezik.

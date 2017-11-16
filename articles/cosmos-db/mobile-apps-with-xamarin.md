@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: 4dfe9c755f3e7d5414ae04dd4027defd6cef2e4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5ab36a16ca87ae7a3e7b26571fc6aadd108841c9
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Mobil a Xamarinnal és Azure Cosmos DB használó alkalmazások
 Szükség van a felhőben tárolt adatok a legtöbb mobileszköz-alkalmazások, és Azure Cosmos DB mobilalkalmazások felhő adatbázisába. Minden mobileszköz fejlesztőnek rendelkezik. Az igény szerinti méretezi szolgáltatásként is teljes körűen felügyelt adatbázis. Azt is kerüljön adatait az alkalmazás átlátható módon, a felhasználók a világ minden táján helyétől. Használatával a [Azure Cosmos DB .NET Core SDK](documentdb-sdk-dotnet-core.md), engedélyezheti a Xamarin mobilalkalmazások együttműködhet közvetlenül az Azure Cosmos DB, a középső réteg nélkül.
@@ -31,7 +31,7 @@ Azure Cosmos-adatbázis az alábbi főbb képességeket biztosít a mobilalkalma
 ![Az Azure Cosmos DB képességet biztosít a mobile apps szolgáltatásban](media/mobile-apps-with-xamarin/documentdb-for-mobile.png)
 
 * A lekérdezések gazdag séma nélküli adatokat. Azure Cosmos-adatbázis a JSON-dokumentumokként séma nélküli heterogén gyűjteményekben tárolja az adatokat. Kínál [gazdag és gyors lekérdezéseket](documentdb-sql-query.md) nem kell aggódnia sémák vagy az indexek.
-* Gyors teljesítmény. Írási és olvasási Azure Cosmos DB-dokumentumok csak néhány ezredmásodperc vesz igénybe. A fejlesztők megadhatja a szükséges átviteli és Azure Cosmos DB eleget tegyen, akkor a 99,99 százalékos SLA-k.
+* Gyors teljesítmény. Írási és olvasási Azure Cosmos DB-dokumentumok csak néhány ezredmásodperc vesz igénybe. A fejlesztők megadhatja az átviteli sebesség van szükségük, és Azure Cosmos DB eleget tegyen azt az összes egyetlen régión és az összes több területi fiókok rendelkezésre állás 99,99 % SLA laza konzisztencia és 99.999 %, olvassa el az összes fiókot a több területi adatbázis rendelkezésre állásának .
 * Korlátlan skála. Az Azure Cosmos DB gyűjtemények [nő, ahogy az alkalmazás forgalmához igazítható](partition-data.md). Kisebb adatméret és átviteli kérések száma másodpercenként több száz indítható. A gyűjtemények a petabájtokig tetszőlegesen nagy átviteli sebesség és a kérések száma másodpercenként több millió száz növelhető.
 * Globálisan elosztott. Mobilalkalmazás felhasználók vannak útközben, gyakran keresztül történik. Az Azure Cosmos DB van egy [globálisan elosztott adatbázis](distribute-data-globally.md). Kattintson a térkép, hogy a felhasználók számára az adatok.
 * Beépített gazdag engedélyezési. Az Azure Cosmos DB, könnyen Megvalósíthat például népszerű minták [felhasználói adatok](https://aka.ms/documentdb-xamarin-todouser) vagy többfelhasználós megosztott adatok összetett egyéni engedélyezési kód nélkül.

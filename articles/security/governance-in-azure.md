@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: c63eb15e8d575da91fd8198ca9d486f7fdb2b38d
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 10a92f301584d4e676da9a1eb229667925a6c72c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="governance-in-azure"></a>Az Azure-irányítás
 
@@ -225,14 +225,14 @@ Az erőforrásoknak nem kell megegyező erőforráscsoportban lenniük, hogy azo
 Erőforrás-házirendek lehetővé teszik a szervezet általános szabályok létrehozásához. Létrehozhat házirendeket, amelyek biztosítják az erőforrások vannak látva a megfelelő értékeket.
 
 > [!Note]
-> További információkért lásd: [címkék erőforrás házirendek alkalmazását](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags).
+> További információkért lásd: [számlázási címkéket házirend kezdeményezésére](../azure-policy/scripts/billing-tags-policy-init.md).
 
 A címkézett erőforrásokat az Azure Portalon is megtekintheti.
 
 Az előfizetéshez tartozó [használati jelentés](https://docs.microsoft.com/azure/billing/billing-understand-your-bill) tartalmazza a címkék nevét és értékeit, így a címkék alapján részletezheti a költségeket.
 
 > [!Note]
-> A címkékkel kapcsolatos további információért tekintse meg [Az Azure-erőforrások rendszerezése címkék használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) című cikket.
+> Címkékkel kapcsolatos további információkért lásd: [számlázási címkéket házirend kezdeményezésére](../azure-policy/scripts/billing-tags-policy-init.md).
 
 Az alábbi korlátozások érvényesek a címkékre:
 

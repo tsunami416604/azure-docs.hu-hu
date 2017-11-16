@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: robb
-ms.openlocfilehash: 60048ab8e0118bc67850aa6ad91c82dcf8122b1d
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 21123299fbab59b388aacc4a802f3a9ec1d80632
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>A figyelő PowerShell Azure gyors üzembe helyezési-minták
 Ez a cikk jeleníti meg, akkor minták segítséget nyújtanak a figyelő az Azure-szolgáltatások elérésének PowerShell-parancsokat. Azure figyelő lehetővé teszi az automatikus skálázás Felhőszolgáltatásokat, a virtuális gépek és a Web Apps. Lehetővé teszi a riasztási értesítéseket küldeni, vagy hívja a webes URL-címek, a konfigurált telemetriai adatok értékek alapján.
@@ -155,7 +155,7 @@ A következő táblázat ismerteti a használt paraméterek és értékek haszn�
 | Operátor |GreaterThan |
 | A küszöbérték (száma másodpercenként a Ez a mérőszám a) |1 |
 | Ablakméret (ÓÓ: pp: formátum) |00:05:00 |
-| a gyűjtő (statisztikai mérőszám, amely ebben az esetben használja az átlagos száma) |Átlagos |
+| a gyűjtő (statisztikai mérőszám, amely ebben az esetben használja az átlagos száma) |Átlag |
 | egyéni e-mailek (karakterlánc-tömbben) |'foo@example.com','bar@example.com' |
 | e-mail küldése a tulajdonosok, közreműködő szerepkörrel rendelkező személyek és olvasók |-SendToServiceOwners |
 
@@ -202,7 +202,7 @@ Az elérhető lehetőségek teljes listáját `Get-AzureRmMetricDefinition` érh
 
 ## <a name="create-and-manage-autoscale-settings"></a>Automatikus skálázási beállítások létrehozása és kezelése
 (A webes alkalmazás, virtuális gép, a felhőalapú szolgáltatás vagy virtuálisgép-méretezési csoport) erőforrás rendelkezhet beállított csak egy automatikus skálázási beállítás.
-Van azonban, az minden automatikus skálázási beállítás profiljainak. Például egy méretezési teljesítmény-alapú profil és egy másikat a ütemezésalapú profilra. Az egyes profilok rendelkezhet több szabály konfigurálva. Automatikus méretezéssel kapcsolatos további információkért lásd: [automatikus skálázás alkalmazás hogyan](../cloud-services/cloud-services-how-to-scale.md).
+Van azonban, az minden automatikus skálázási beállítás profiljainak. Például egy méretezési teljesítmény-alapú profil és egy másikat a ütemezésalapú profilra. Az egyes profilok rendelkezhet több szabály konfigurálva. Automatikus méretezéssel kapcsolatos további információkért lásd: [automatikus skálázás alkalmazás hogyan](../cloud-services/cloud-services-how-to-scale-portal.md).
 
 Az alábbiakban a szükséges lépéseket:
 

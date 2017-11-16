@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 4650cebe18153e3b10bbec685a66a590348c99e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9af1fdeb5cfe69631cabe13bd341b43319175aae
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>Cloud Services kezelése
-> [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-how-to-manage-portal.md)
-> * [klasszikus Azure portál](cloud-services-how-to-manage.md)
->
->
-
 Az a **Felhőszolgáltatások (klasszikus)** területén az Azure portál, a szerepkör-szolgáltatás vagy a központi telepítés frissítése, üzemi szakaszos telepítés előléptetéséhez is erőforrások csatolása a felhőalapú szolgáltatás, hogy tekintse meg az erőforrás-függőségek és az erőforrások együtt méretezhető, és egy felhőalapú szolgáltatás, vagy a központi telepítés törlése.
 
 További információk a felhőalapú szolgáltatás méretezése [Itt](cloud-services-how-to-scale-portal.md).

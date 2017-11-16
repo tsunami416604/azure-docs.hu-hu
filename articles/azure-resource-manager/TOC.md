@@ -9,14 +9,6 @@
 ## [VS Code-bővítmény sablonokhoz](resource-manager-vscode-extension.md)
 ## [A Visual Studio és a Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
-# Példák
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
-## Azure PowerShell
-### [Sablon üzembe helyezése](resource-manager-samples-powershell-deploy.md)
-
-## Azure CLI
-### [Sablon üzembe helyezése](resource-manager-samples-cli-deploy.md)
-
 # Útmutató
 ## Sablonok létrehozása
 ### [Sablon szakaszai](resource-group-authoring-templates.md)
@@ -68,10 +60,6 @@
 #### [Azure Portal](resource-group-create-service-principal-portal.md)
 ### [Hitelesítési API az előfizetések hozzáféréséhez](resource-manager-api-authentication.md)
 ### [Erőforrások zárolása](resource-group-lock-resources.md)
-
-## Erőforrás-házirendek beállítása
-### [Mik azok az erőforrás-házirendek?](resource-manager-policy.md)
-### [Elnevezési konvenciók](resource-manager-policy-naming-convention.md)
 
 ## Naplózás
 ### [Tevékenységnaplók megtekintése](resource-group-audit.md)

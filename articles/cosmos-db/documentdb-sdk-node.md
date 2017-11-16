@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4376a5c07b5f00311ce0fe3c0056efdf79c273f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a13a5777161ab18840501d7d7e1d52192c22315
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK: A kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -60,6 +60,14 @@ ms.lasthandoff: 10/11/2017
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="1.14.0"/>1.14.0</a>
+* Támogatást nyújt a munkamenet-konzisztencia.
+* Az SDK-verzió telepítéséhez a legújabb Azure Cosmos DB emulátorának elérhetősége a https://aka.ms/cosmosdb-emulator letölthető.
+
+### <a name="1.13.0"/>1.13.0</a>
+* Splitproofed kereszt-partíció lekérdezések.
+* Támogatja a kezdő és záró perjelet (és a megfelelő tesztek) erőforrás-hivatkozás hozzáadása.
 
 ### <a name="1.12.2"/>1.12.2</a>
 *   rögzített npm dokumentációját.
@@ -177,6 +185,8 @@ A Cosmos DB használatával kivont SDK kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.14.0](#1.14.0) |2017. november 9. |--- |
+| [1.13.0](#1.13.0) |2017. október 11. |--- |
 | [1.12.2](#1.12.2) |2017. augusztus 10. |--- |
 | [1.12.1](#1.12.1) |2017. augusztus 10. |--- |
 | [1.12.0](#1.12.0) |2017. május 10. |--- |

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: 50f9073d3c35bd9dcfd826ff44e767fb69558757
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d80fdd5a2e4339823c05368d76de333f3314d4ec
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identitáskezelés és hozzáférés szabályozása ajánlott biztonsági eljárások
 Számos fontolja meg az identitást kell lennie az új határ réteg a biztonság érdekében, hogy a hagyományos hálózati-központú szempontjából szerepkör tovább tart. Ez az elsődleges pivot fejlődéséhez vonatkozó biztonsági figyelmet és beruházások származik, hogy a hálózati kialakítását egyre elválasztó vált, és a külső védelem nem lehet hatásos azok egyszer volt felbontására előtt [BYOD ](http://aka.ms/byodcg) eszközök és a felhőalapú alkalmazásokhoz.
@@ -115,7 +115,7 @@ Használja ki az [Azure Resource Manager](../azure-resource-manager/resource-gro
 
 A szervezeteknek, amelyek nem elsődlegesek erőforrások létrehozását olyan jobban ki vannak téve a felhasználók számára, előfordulhat, hogy a szolgáltatás való visszaélés van szükségük további erőforrásokat létrehozásával. Az erőforrás létrehozásának folyamatát korlátozására egy több-bérlős forgatókönyv biztonságos fontos eleme.
 
-A cikk elolvasása által az Azure Resource Manager házirendek létrehozásával kapcsolatos részletesebb [kezelheti az erőforrásokat, és hozzáférés szabályozása házirendekkel](../azure-resource-manager/resource-manager-policy.md).
+A cikk elolvasása által az Azure Resource Manager házirendek létrehozásával kapcsolatos részletesebb [Mi az Azure házirend?](../azure-policy/azure-policy-introduction.md).
 
 ## <a name="guide-developers-to-leverage-identity-capabilities-for-saas-apps"></a>Útmutató a fejlesztők kihasználhatják identitási képességeibe SaaS-alkalmazásokhoz
 Javítható felhasználói identitás számos forgatókönyv felhasználók általi elérésekor [SaaS-alkalmazások](https://azure.microsoft.com/marketplace/active-directory/all/) , amely integrálható a helyszíni vagy felhőalapú könyvtár. Mindenekelőtt azt javasoljuk, hogy a fejlesztők egy biztonságos módszert használja ezeket az alkalmazásokat, például a fejlesztéséhez [Microsoft biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/default.aspx). Az Azure AD hitelesítési egyszerűbbé teszi a fejlesztők azáltal identitás szolgáltatásként, például támogatja az ipari szabványnak számító protokollokat [OAuth 2.0](http://oauth.net/2/) és [OpenID Connect](http://openid.net/connect/), valamint nyílt forráskódú a szalagtárak különböző platformokon.

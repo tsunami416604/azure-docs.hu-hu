@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: adegeo
-ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 409b3bb26648ef1b811dfaaf37690c8220046729
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-configure-cloud-services"></a>Felhőszolgáltatás konfigurálása
-> [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-how-to-configure-portal.md)
-> * [klasszikus Azure portál](cloud-services-how-to-configure.md)
->
->
-
 Az Azure portálon konfigurálhatja a leggyakrabban használt beállításait egy felhőalapú szolgáltatás. Azok az ügyfeleink, akik közvetlenül szeretnék frissíteni a konfigurációs fájlokat, letölthetik a frissítendő szolgáltatáskonfigurációs fájlt, amelyet módosítás után feltölthetnek, így frissül a felhőszolgáltatás konfigurációja. A rendszer mindkét esetben az összes szerepkörpéldányon elvégzi a konfiguráció módosítását.
 
 Emellett kezelheti a példányait a felhőszolgáltatás szerepköreit, vagy a távoli asztal be őket.
@@ -77,9 +71,9 @@ Helyett **beállítások** > **riasztási szabályok**, a metrika csempék egyik
 Innen testre a diagram a csempe használt, vagy vegye fel a riasztási szabályt.
 
 ## <a name="reboot-reimage-or-remote-desktop"></a>Rendszer újraindítása, a lemezkép-visszaállítási vagy a távoli asztal
-Jelenleg nem lehet konfigurálni a távoli asztal használatával a **Azure-portálon**. Azonban beállíthatja azt keresztül a [a klasszikus Azure portálon](cloud-services-role-enable-remote-desktop.md), [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md), illetve [Visual Studio](../vs-azure-tools-remote-desktop-roles.md).
+A távoli asztal használatával állíthat be a [Azure portal (távoli asztal beállítása)](cloud-services-role-enable-remote-desktop-new-portal.md), [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md), vagy [Visual Studio](../vs-azure-tools-remote-desktop-roles.md).
 
-Első lépésként kattintson az a cloud service-példány.
+Az újraindításhoz lemezkép-visszaállítási vagy egy felhőalapú szolgáltatás, a távoli kattintson a cloud service-példány.
 
 ![Cloud Service-példány](./media/cloud-services-how-to-configure-portal/cs-instance.png)
 

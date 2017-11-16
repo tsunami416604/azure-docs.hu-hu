@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 28965ec8290c8ab22255f9001cc6c3905dda4b8b
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 59e6db7caf4988623e6d2f93e986b423db7d7248
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Azure által felügyelt Szolgáltatásidentitás (nyilvános előzetes verzió) App Service és az Azure Functions használatával
 
@@ -103,7 +103,7 @@ Nincs az App Service és az Azure Functions jogkivonat beszerzése az egyszerű 
 
 ### <a name="asal"></a>A Microsoft.Azure.Services.AppAuthentication könyvtár használata a .NET-hez
 
-A .NET-alkalmazások és a funkciók felügyelt szolgáltatásidentitás együttműködve legegyszerűbb módja a Microsoft.Azure.Services.AppAuthentication csomag keresztül van. Ebben a könyvtárban is lehetővé teszi a tesztelheti a kódját helyileg a fejlesztői gépen, a felhasználói fiókot a használatával a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) vagy az Active Directory integrált hitelesítést. Ez a szakasz bemutatja, hogyan lásson a könyvtárban.
+A .NET-alkalmazások és a funkciók felügyelt szolgáltatásidentitás együttműködve legegyszerűbb módja a Microsoft.Azure.Services.AppAuthentication csomag keresztül van. Ebben a könyvtárban is lehetővé teszi a tesztelheti a kódját helyileg a fejlesztői gépen, a felhasználói fiókkal a Visual Studio eszközből a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest), vagy az Active Directory integrált hitelesítést. Ezt a szalagtárat a helyi fejlesztési lehetőségek bővebben lásd: a [Microsoft.Azure.Services.AppAuthentication hivatkozás]. Ez a szakasz bemutatja, hogyan lásson a könyvtárban, a kódban.
 
 1. Hivatkozásokat adni a [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-csomagok, hogy az alkalmazást.
 
@@ -119,7 +119,7 @@ string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https:
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
 ```
 
-Microsoft.Azure.Services.AppAuthentication és érheti el a műveletek kapcsolatos további tudnivalókért tekintse meg a [App Service és a KeyVault MSI .NET példával](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Microsoft.Azure.Services.AppAuthentication és érheti el a műveletek kapcsolatos további tudnivalókért tekintse meg a [Microsoft.Azure.Services.AppAuthentication hivatkozás] és a [App Service és a MSI .NET KeyVault a minta](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ### <a name="using-the-rest-protocol"></a>A REST-protokollal
 
@@ -132,7 +132,7 @@ A **MSI_ENDPOINT** , amelyből az alkalmazás jogkivonatokat kérhetnek helyi UR
 > [!div class="mx-tdBreakAll"]
 > |Paraméter neve|A|Leírás|
 > |-----|-----|-----|
-> |Erőforrás|Lekérdezés|Az aad-ben erőforrás az erőforrás URI azonosítója a jogkivonat meg kell kapott.|
+> |erőforrás|Lekérdezés|Az aad-ben erőforrás az erőforrás URI azonosítója a jogkivonat meg kell kapott.|
 > |API-verzió|Lekérdezés|A token API használt verziója. "2017-09-01" jelenleg az egyetlen támogatott verzió.|
 > |titkos kulcs|Fejléc|A MSI_SECRET környezeti változó értékét.|
 
@@ -144,7 +144,7 @@ A sikeres 200 OK válasz tartalmazza a következő tulajdonságokkal egy JSON-t�
 > |-------------|----------|
 > |access_token|A kért hozzáférési jogkivonat. A hívó webszolgáltatás a jogkivonat segítségével hitelesíti a fogadó webszolgáltatás.|
 > |expires_on|A hozzáférési jogkivonat lejárati idejének. A dátum jelzi másodpercben a 1970-01-01T0:0:0Z UTC, amíg az elévülési időt. Ezt az értéket a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál.|
-> |Erőforrás|A fogadó webszolgáltatás App ID URI.|
+> |erőforrás|A fogadó webszolgáltatás App ID URI.|
 > |token_type|A jogkivonat típusa értékét jelöli. A csak az Azure AD támogató típus tulajdonosi. Tulajdonosi jogkivonatok kapcsolatos további információkért lásd: [az OAuth 2.0 hitelesítési keretrendszer: tulajdonosi jogkivonat használati (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 
@@ -208,3 +208,6 @@ $tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVers
 $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
+
+
+[Microsoft.Azure.Services.AppAuthentication hivatkozás]: https://go.microsoft.com/fwlink/p/?linkid=862452

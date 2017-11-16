@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: e4848eb366faea134a484c8a494fed6a83203116
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 329003c7c4abe89f4af04473ee3664605b2ea81f
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="design-your-first-azure-sql-database"></a>Az első Azure SQL-adatbázis megtervezése
 
-Az Azure SQL-adatbázis egy relációs adatbázis-mint – a szolgáltatás, a Microsoft Cloud ("Azure") a rendszer. Ebben az oktatóanyagban elsajátíthatja, hogyan használhatja az Azure portált és [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) számára: 
+Az Azure SQL-adatbázis egy relációs adatbázis-mint – a szolgáltatás, a Microsoft Cloud (Azure) a rendszer. Ebben az oktatóanyagban elsajátíthatja, hogyan használhatja az Azure portált és [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) számára: 
 
 > [!div class="checklist"]
 > * Adatbázis létrehozása az Azure-portálon
@@ -177,8 +177,8 @@ Használjon [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/s
 Hozzon létre egy adatbázis-séma négy-táblázatot, amely a modell használatával felsőoktatási student felügyeleti rendszer [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference):
 
 - Személy
-- Működés során
-- Student
+- Tanfolyam
+- Tanuló
 - A modell felsőoktatási student felügyeleti rendszer jóváírása
 
 Az alábbi ábrán látható, hogyan ezek a táblázatok kapcsolódnak egymáshoz. Ezek a táblázatok némelyike hivatkozhat, más táblák oszlopaira. Például a Student tábla hivatkozik a **PersonId** oszlopa a **személy** tábla. A diagram megértése, hogyan az ebben az oktatóanyagban kapcsolódó egy másik elemzésére. Egy hatékony adatbázistáblák létrehozásáról részletes pillantást, lásd: [hatékony adatbázistáblák létrehozása](https://msdn.microsoft.com/library/cc505842.aspx). Adattípusok kiválasztására vonatkozó további információkért lásd: [adattípusok](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql).

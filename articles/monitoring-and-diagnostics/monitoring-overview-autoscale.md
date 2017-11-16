@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2016
 ms.author: robb
-ms.openlocfilehash: 413828d79d79c181c662bc7cfb4114345de57f90
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a30f0c3b799f76858424d97218c5a6e4386e78e
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>A Microsoft Azure virtuális gépek, a Cloud Services és a Web Apps automatikus skálázás áttekintése
 Ez a cikk ismerteti, milyen Microsoft Azure automatikus skálázás, előnye, valamint Ismerkedés használja azt.  
@@ -110,7 +110,7 @@ Automatikus skálázás keresztül állíthat be
 | Szolgáltatás | Séma & Docs |
 | --- | --- |
 | Web Apps |[Webalkalmazások skálázás](insights-how-to-scale.md) |
-| Cloud Services |[Automatikus skálázás egy felhőalapú szolgáltatás](../cloud-services/cloud-services-how-to-scale.md) |
+| Cloud Services |[Automatikus skálázás egy felhőalapú szolgáltatás](../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtuális gépek: klasszikus |[Méretezési klasszikus virtuális gép rendelkezésre állási csoportok](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Virtuális gépek: Windows méretezési csoportok |[A Windows virtuálisgép-méretezési skálázás beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
 | Virtuális gépek: Linux-skálázási készletekben |[A Linux virtuálisgép-méretezési skálázás beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |

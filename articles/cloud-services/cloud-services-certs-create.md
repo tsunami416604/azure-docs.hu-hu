@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: 689977491e6df37e48536f59234bf4ddba6a1575
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 37a3a990b5f0164b1b6f53727e92e09fece7f6fb
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services tanúsítványok áttekintése
 Rendszer tanúsítványokat használ az Azure felhőszolgáltatások ([tanúsítványok szolgáltatás](#what-are-service-certificates)) és a felügyeleti API hitelesítéséhez ([felügyeleti tanúsítványok](#what-are-management-certificates) a klasszikus Azure portál használata esetén, és nem a nem klasszikus Azure portálon). Ez a témakör hogyan mindkét tanúsítványtípusok általános áttekintést nyújt a [létrehozása](#create) és [telepítése](#deploy) őket az Azure-bA.
 
 Az Azure-ban használt tanúsítványok x.509 v3 alapján létrehozott tanúsítványok, és egy másik megbízható tanúsítvány aláírását, vagy önaláírt el. Önaláírt tanúsítvány aláírásával rendelkezik saját létrehozó, ezért az nem megbízható alapértelmezés szerint. A legtöbb böngésző figyelmen kívül hagyhatja ezt a problémát. Csak akkor ajánlott önaláírt tanúsítványokat, amikor a fejlesztés és tesztelés felhőszolgáltatásban. 
 
-Azure által használt tanúsítványok is tartalmazhat, egy saját vagy nyilvános kulcsot. Tanúsítványának rendelkeznie kell egy ujjlenyomat, amely lehetővé teszi egy egyértelmű módon azonosításához. Ezzel az ujjlenyomattal használatban van az Azure [konfigurációs fájl](cloud-services-configure-ssl-certificate.md) azonosításához amely tanúsítvány egy felhőalapú szolgáltatás kell használni. 
+Azure által használt tanúsítványok is tartalmazhat, egy saját vagy nyilvános kulcsot. Tanúsítványának rendelkeznie kell egy ujjlenyomat, amely lehetővé teszi egy egyértelmű módon azonosításához. Ezzel az ujjlenyomattal használatban van az Azure [konfigurációs fájl](cloud-services-configure-ssl-certificate-portal.md) azonosításához amely tanúsítvány egy felhőalapú szolgáltatás kell használni. 
 
 ## <a name="what-are-service-certificates"></a>Mik azok a szolgáltatási tanúsítványok?
 Szolgáltatási tanúsítványok a felhőalapú szolgáltatások és és a szolgáltatás közötti biztonságos kommunikáció engedélyezése vannak csatolva. Például ha a webes szerepkör, akkor kíván megadni olyan tanúsítvány, amely képes hitelesíteni az elérhetőségi HTTPS-végpontnak. Szolgáltatási tanúsítványok, a szolgáltatás definíciós meghatározott a rendszer automatikusan telepíti a virtuális gépet, hogy fut a szerepkör példánya. 
@@ -41,7 +41,7 @@ Szolgáltatási tanúsítványok kezelheti külön-külön a szolgáltatások, �
 Felügyeleti tanúsítványok lehetővé teszik a klasszikus üzembe helyezési modellben a hitelesítést. Számos programok telepítése és eszközök (például a Visual Studio vagy az Azure SDK-val) és a különböző Azure-szolgáltatások telepítési automatizálására használható ezeket a tanúsítványokat. Ezek nem valóban kapcsolódnak a felhőalapú szolgáltatások. 
 
 > [!WARNING]
-> légy óvatos! Ezek a típusok, a tanúsítványok bárki hitelesíti magát azokat kezelheti az előfizetést, amelyekhez tartoznak. 
+> Legyen óvatos! Ezek a típusok, a tanúsítványok bárki hitelesíti magát azokat kezelheti az előfizetést, amelyekhez tartoznak. 
 > 
 > 
 
@@ -93,7 +93,7 @@ Nincsenek számos lapot az interneten tér ki az ehhez az IIS-kiszolgálón. [It
 [Ez](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) cikk ismerteti az SSH olyan tanúsítványokat hoznak létre.
 
 ## <a name="next-steps"></a>Következő lépések
-[A szolgáltatás-tanúsítvány feltöltése a klasszikus Azure portálra](cloud-services-configure-ssl-certificate.md) (vagy a [Azure-portálon](cloud-services-configure-ssl-certificate-portal.md)).
+[A szolgáltatás-tanúsítvány feltöltése az Azure-portálon](cloud-services-configure-ssl-certificate-portal.md).
 
 Töltse fel a [felügyeleti API tanúsítvány](../azure-api-management-certs.md) a klasszikus Azure portálra. Az Azure-portál nem felügyeleti tanúsítványokat használnak a hitelesítéshez.
 

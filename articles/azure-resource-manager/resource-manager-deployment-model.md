@@ -6,29 +6,28 @@ documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 7ae0ffa3-c8da-4151-bdcc-8f4f69290fb4
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/09/2017
+ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 060680fd4a7ce6e0cde406cc4a8f6f3a21d3c588
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2144e3527b44e3cf508d23fedf7abb4cda595bbf
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager és klasszikus üzembe helyezési: üzembe helyezési modellek és az erőforrások állapota
-Ebben a témakörben megismerkedhet a Azure Resource Manager és klasszikus üzembe helyezési modellel, az erőforrások állapotát, és ezért az erőforrások közül egy vagy egyéb üzembe helyezése. A Resource Manager és klasszikus üzembe helyezési modellek határoz meg két különböző módokat telepítése és kezelése az Azure megoldások. Különböző API kétféle módon működik velük, és a telepített erőforrások tartalmazhat fontos különbség. A két modell nem teljesen kompatibilis egymással. Ez a témakör ismerteti azokat a különbségeket.
+Ebből a cikkből megismerheti, Azure Resource Manager és klasszikus üzembe helyezési modellek. A Resource Manager és klasszikus üzembe helyezési modellek határoz meg két különböző módokat telepítése és kezelése az Azure megoldások. Különböző API kétféle módon működik velük, és a telepített erőforrások tartalmazhat fontos különbség. A két modell nem kompatibilisek egymással. Ez a cikk ismerteti azokat a különbségeket.
 
 Egyszerűbbé teheti a telepítése és az erőforrások kezelése, a Microsoft javasolja, hogy Resource Manager az összes új erőforrás. Ha lehetséges a Microsoft azt javasolja, hogy a meglévő erőforrásokat Resource Manageren keresztül telepíteni.
 
 Ha most ismerkedik az erőforrás-kezelő, érdemes lehet olvassa el a meghatározott terminológia a [Azure Resource Manager áttekintése](resource-group-overview.md).
 
 ## <a name="history-of-the-deployment-models"></a>Az üzembe helyezési modellekről előzményei
-Azure eredetileg csak a klasszikus üzembe helyezési modell tartalmaz. Ebben a modellben minden erőforrás már létezett a egymástól függetlenül; nem lehetett kapcsolódó erőforrások csoportosítása. Ehelyett kellett manuálisan nyomon követése a megoldás vagy az alkalmazáshoz készült erőforrásokat, és ne felejtse el összehangolt kezelheti őket. A megoldás telepítéséhez kellett létrehozni az egyes erőforrások egyenként a klasszikus portálon keresztül, vagy hozzon létre olyan parancsfájlt, amely a megfelelő sorrendben az erőforrások telepítése. Megoldás törlése, az egyes erőforrások törlése külön-külön kellett. Akkor lehetett könnyen nem vonatkoznak, és kapcsolódó erőforrások hozzáférés-vezérlési házirendek frissítése. Végül, akkor nem alkalmazható a következő címkék a erőforrásokhoz, hogy lássa el a feltételeket, amelyek segítenek az erőforrások figyelése és kezelése.
+Azure eredetileg csak a klasszikus üzembe helyezési modell tartalmaz. Ebben a modellben minden erőforrás már létezett a egymástól függetlenül; nem lehetett kapcsolódó erőforrások csoportosítása. Ehelyett kellett manuálisan nyomon követése a megoldás vagy az alkalmazáshoz készült erőforrásokat, és ne felejtse el összehangolt kezelheti őket. A megoldás telepítéséhez kellett létrehozni az egyes erőforrások egyenként a portálon keresztül, vagy hozzon létre olyan parancsfájlt, amely a megfelelő sorrendben az erőforrások telepítése. Megoldás törlése, az egyes erőforrások törlése külön-külön kellett. Akkor lehetett könnyen nem vonatkoznak, és kapcsolódó erőforrások hozzáférés-vezérlési házirendek frissítése. Végül, akkor nem alkalmazható a következő címkék a erőforrásokhoz, hogy lássa el a feltételeket, amelyek segítenek az erőforrások figyelése és kezelése.
 
 A 2014-re az Azure erőforrás-kezelő, amely hozzá, az erőforráscsoport fogalmát vezette be. Erőforráscsoport egy olyan tároló, amelyek egy közös életciklussal erőforrások. A Resource Manager üzembe helyezési modellel számos előnyt kínál:
 
@@ -39,20 +38,14 @@ A 2014-re az Azure erőforrás-kezelő, amely hozzá, az erőforráscsoport foga
 * JavaScript Object Notation (JSON) segítségével határozza meg az infrastruktúra megoldást. A JSON-fájlt egy Resource Manager-sablon néven ismert.
 * Meghatározhatja az erőforrások közti függőségeket, hogy azok a megfelelő sorrendben legyenek telepítve.
 
-Erőforrás-kezelő hozzáadásakor, alapértelmezett erőforráscsoportok visszamenőleges hozzáadott összes erőforrást. Most a klasszikus üzembe helyezési keresztül erőforrás hoz létre, ha az erőforrás automatikusan létrejön, hogy a szolgáltatás alapértelmezett erőforráscsoporton belül, annak ellenére, hogy nem adta meg a központi telepítés erőforráscsoporthoz. Azonban csak meglévő erőforráscsoporton belül nem jelenti azt, hogy az erőforrás a Resource Manager modellt lett konvertálva. Megnézzük, hogyan minden egyes szolgáltatás kezeli a két üzembe helyezési modellel, a következő szakaszban. 
+Erőforrás-kezelő hozzáadásakor, alapértelmezett erőforráscsoportok visszamenőleges hozzáadott összes erőforrást. Most a klasszikus üzembe helyezési keresztül erőforrás hoz létre, ha az erőforrás automatikusan létrejön, hogy a szolgáltatás alapértelmezett erőforráscsoporton belül, annak ellenére, hogy nem adta meg a központi telepítés erőforráscsoporthoz. Azonban csak meglévő erőforráscsoporton belül nem jelenti azt, hogy az erőforrás a Resource Manager modellt lett konvertálva.
 
 ## <a name="understand-support-for-the-models"></a>A modellek támogatása ismertetése
-Amikor arról dönt, hogy mely erőforrások használandó telepítési modell, nincsenek tisztában lenni a három forgatókönyv:
+Nincsenek tisztában lenni a három forgatókönyv:
 
-1. A szolgáltatás támogatja az erőforrás-kezelő, és csak egyetlen típusra biztosítja.
-2. A szolgáltatás támogatja az erőforrás-kezelő, de két típus - biztosít egy Resource Manager és klasszikus. Ez a forgatókönyv csak a virtuális hálózatok, virtuális gépek és tárfiókok vonatkozik.
-3. A szolgáltatás nem támogatja az erőforrás-kezelő.
-
-Annak megállapításához, hogy a szolgáltatás támogatja-e az erőforrás-kezelő, lásd: [erőforrás-szolgáltatók és típusok](resource-manager-supported-services.md).
-
-Ha szeretné használni a szolgáltatás nem támogatja az erőforrás-kezelő, a klasszikus üzembe helyezési használatával kell folytatja.
-
-Ha a szolgáltatás támogatja az erőforrás-kezelő és **nem** egy virtuális gépet, a tárfiókhoz vagy a virtuális hálózati erőforrás-kezelő bármely komplikációk nélkül is használható.
+1. Cloud Services nem támogatja a Resource Manager üzembe helyezési modellben.
+2. Virtuális hálózatok, virtuális gépek és tárfiókok támogatja a Resource Manager és a klasszikus üzembe helyezési modellek.
+3. Minden más Azure-szolgáltatások támogatják az erőforrás-kezelő.
 
 A virtuális gépek, a storage-fiókok és a virtuális hálózatok Ha az erőforrás hozták létre, klasszikus telepítési kell továbbra is működik rajta, klasszikus műveletek révén. Ha a virtuális gép, a tárfiók, vagy a virtuális hálózati erőforrás-kezelő központi jött létre, továbbra is kell erőforrás-kezelő műveletekkel. Ezt a különbséget zavaró kaphat, ha az előfizetése tartalmazza majd a Resource Manager és klasszikus üzembe helyezési létrejött erőforrásokat kombinációját. Ez a kombináció erőforrások váratlan eredményeket hozhat létre, mert a források nem támogatják a ugyanazokat a műveleteket.
 
@@ -81,66 +74,6 @@ Get-AzureRmVM -ResourceGroupName ExampleGroup
 ```
 
 Csak erőforrások erőforrás-kezelő támogatási címkék segítségével létrehozott. Hagyományos erőforrások nem címkékkel.
-
-## <a name="resource-manager-characteristics"></a>Erőforrás-kezelő jellemzői
-Megismerheti a két modell, tekintsük át, az erőforrás-kezelő típusok jellemzői:
-
-* Létre a [Azure-portálon](https://portal.azure.com/).
-  
-     ![Azure Portal](./media/resource-manager-deployment-model/portal.png)
-  
-     A számítási, tárolási és hálózati erőforrások lehetősége van az erőforrás-kezelő vagy a klasszikus telepítési használatával. Válassza ki **erőforrás-kezelő**.
-  
-     ![Erőforrás-kezelő telepítése](./media/resource-manager-deployment-model/select-resource-manager.png)
-* Az Azure PowerShell-parancsmagok a Resource Manager verziójával létrehozott. Ezek a parancsok a formátumuk *ige-AzureRmNoun*.
-
-  ```powershell
-  New-AzureRmResourceGroupDeployment
-  ```
-
-* Létre a [Azure Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) REST-műveletek.
-* Futtassa Azure parancssori felület parancsait létre a **arm** mód.
-  
-  ```azurecli
-  azure config mode arm
-  azure group deployment create
-  ```
-
-* Az erőforrástípus nem tartalmaz **(klasszikus)** nevében. A következő kép bemutatja a típus **tárfiók**.
-  
-    ![webalkalmazásra](./media/resource-manager-deployment-model/resource-manager-type.png)
-
-## <a name="classic-deployment-characteristics"></a>Klasszikus üzembe helyezési jellemzői
-A klasszikus üzembe helyezési modellel is előfordulhat, hogy tudja, a szolgáltatás felügyeleti modell.
-
-A klasszikus üzembe helyezési modellel létrehozott erőforrások rendelkezik a következő jellemzőkkel:
-
-* Létre a [klasszikus portál](https://manage.windowsazure.com)
-  
-     ![klasszikus portál](./media/resource-manager-deployment-model/classic-portal.png)
-  
-     Az Azure-portálon, és megadhat **klasszikus** központi telepítését (számítási, tárolási és hálózati).
-  
-     ![Klasszikus üzembe helyezési](./media/resource-manager-deployment-model/select-classic.png)
-* A Service Management verzióját az Azure PowerShell-parancsmagok használatával létre. A parancs nevek formátumuk *ige-AzureNoun*.
-
-  ```powershell
-  New-AzureVM
-  ```
-
-* Létre a [szolgáltatásfelügyelet REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) REST-műveletek.
-* Futtassa Azure parancssori felület parancsait létre **asm** mód.
-
-  ```azurecli
-  azure config mode asm
-  azure vm create
-  ```
-   
-* Az erőforrástípus tartalmaz **(klasszikus)** nevében. A következő kép bemutatja a típus **(klasszikus) tárfiókot**.
-  
-    ![klasszikus típusa](./media/resource-manager-deployment-model/classic-type.png)
-
-Az Azure portál segítségével kezelheti az erőforrásokat, amelyek klasszikus üzembe helyezési keresztül lettek létrehozva.
 
 ## <a name="changes-for-compute-network-and-storage"></a>A számítási, hálózati és tárolási változások
 A következő diagram megjeleníti a számítási, hálózati és adattárolási erőforrásokat a Resource Manager használatával telepített.
@@ -176,9 +109,9 @@ A következő táblázat ismerteti, hogyan működnek együtt a számítási, h�
 | Rendelkezésre állási csoportok |A platform felé való rendelkezésre állást azonos „AvailabilitySetName” konfigurálásával lehetett jelezni a virtuális gépeken. A tartalék tartományok maximális száma 2 volt. |A Rendelkezésre állási csoport egy Microsoft.Compute szolgáltató által közzétett erőforrás. A nagy rendelkezésre állást igénylő virtuális gépeket szerepeltetni kell a Rendelkezésre állási csoportban. A tartalék tartományok maximális száma mostantól 3. |
 | Affinitáscsoportok |Virtuális hálózatok létrehozásához szükség volt Affinitáscsoportokra. A regionális virtuális hálózatok bevezetésével erre már nem volt szükség. |Egyszerűbben fogalmazva az Azure Resource Manageren keresztül közzétett API-kban nem létezik az Affinitáscsoportok koncepciója. |
 | Terheléselosztás |Egy felhőszolgáltatás létrehozása egy implicit terheléselosztót biztosít a telepített virtuális gépekhez. |A Load Balancer egy Microsoft.Network szolgáltató által közzétett erőforrás. A terheléselosztást igénylő virtuális gépek elsődleges hálózati adapterének hivatkoznia kell a terheléselosztóra. Egy terheléselosztó lehet külső vagy belső. A betöltési terheléselosztó példánya hivatkozik a háttérbeli IP-címkészletet, amely tartalmazza a hálózati Adaptert egy virtuális gép (nem kötelező), és hivatkozik arra a terhelés terheléselosztó nyilvános vagy privát IP-cím (nem kötelező). [További információk.](../virtual-network/resource-groups-networking.md) |
-| Virtuális IP-cím |Cloud Services egy alapértelmezett VIP-t (virtuális IP-cím) jelenik meg, ha egy virtuális Gépet hozzáadnak egy felhőalapú szolgáltatás. A Virtuális IP-cím az implicit terheléselosztóhoz társított cím. |A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Egy nyilvános IP-cím lehet Statikus (Fenntartott) vagy Dinamikus. A dinamikus nyilvános IP-címek hozzárendelhetők egy terheléselosztóhoz. A nyilvános IP-címek védelme biztonsági csoportok segítségével biztosítható. |
-| Fenntartott IP-címek |Az Azure-ban fenntarthat egy IP-címet, és társíthatja egy felhőszolgáltatáshoz, hogy biztosítsa az IP-cím állandóságát. |A nyilvános IP-címek létrehozhatók „Statikus” módban, amely ugyanazokat a képességeket biztosítja, mint a „Fenntartott IP-cím”. A statikus nyilvános IP-címek jelenleg csak terheléselosztóhoz rendelhetők hozzá. |
-| Virtuális gépenként megadott nyilvános IP-cím (PIP) |Nyilvános IP-címeket is hozzárendelhet egy virtuális géphez közvetlenül. |A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Egy nyilvános IP-cím lehet Statikus (Fenntartott) vagy Dinamikus. Jelenleg azonban csak dinamikus nyilvános IP-címek rendelhetők hozzá hálózati adapterekhez, hogy virtuális gépenként legyen meghatározva egy nyilvános IP-cím. |
+| Virtuális IP-cím |Cloud Services csomag lekérdezi egy alapértelmezett VIP-t (virtuális IP-cím), ha egy virtuális Gépet hozzáadnak egy felhőalapú szolgáltatás. A Virtuális IP-cím az implicit terheléselosztóhoz társított cím. |A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Nyilvános IP-cím lehet statikus (fenntartott) vagy dinamikus. Dinamikus nyilvános IP-címek is hozzárendelhető a terheléselosztóhoz. A nyilvános IP-címek védelme biztonsági csoportok segítségével biztosítható. |
+| Fenntartott IP-címek |Az Azure-ban fenntarthat egy IP-címet, és társíthatja egy felhőszolgáltatáshoz, hogy biztosítsa az IP-cím állandóságát. |Nyilvános IP-cím statikus módban is létrehozható, és ez lehetőséget nyújt a azonos egy fenntartott IP-címként. |
+| Virtuális gépenként megadott nyilvános IP-cím (PIP) |Nyilvános IP-címeket is hozzárendelhet egy virtuális géphez közvetlenül. |A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Nyilvános IP-cím lehet statikus (fenntartott) vagy dinamikus. |
 | Végpontok |A virtuális gépen konfigurálni kell a bemeneti végpontokat, hogy bizonyos portok csatlakoztathatóvá váljanak. A virtuális gépekhez való csatlakozás egyik legelterjedtebb módja a bemeneti végpontok beállítása. |A bejövő NAT-szabályok konfigurálhatók a terheléselosztókon, így azonos képességek érhetők el a végpontok engedélyezésére adott portokon a virtuális gépekhez való csatlakozás céljából. |
 | DNS-név |Egy felhőszolgáltatás egy implicit globálisan egyedi DNS-nevet kap. Például: `mycoffeeshop.cloudapp.net`. |A DNS-nevek opcionális paraméterek, amelyek egy nyilvános IP-cím erőforráson adhatók meg. Az FQDN-je a következő formátumban - `<domainlabel>.<region>.cloudapp.azure.com`. |
 | Hálózati illesztők |Az elsődleges és másodlagos hálózati adapter és tulajdonságai egy virtuális gép hálózati konfigurációjaként voltak megadva. |A hálózati adapter egy Microsoft.Network szolgáltató által közzétett erőforrás. A hálózati adapter életciklusa nincs a virtuális géphez kötve. A virtuális gép hozzárendelt IP-cím (kötelező), az alhálózat a virtuális hálózat a virtuális gép (kötelező), és a hálózati biztonsági csoport (nem kötelező) hivatkozik. |
@@ -194,13 +127,13 @@ Ha készen áll az erőforrások erőforrás-kezelő telepítési klasszikus üz
 4. [Telepítse át IaaS-erőforrásokra a klasszikus Azure Resource Manager Azure parancssori felület használatával](../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-**Létrehozhat egy virtuális gép Azure Resource Manager használatával történő telepítéséhez a klasszikus üzembe helyezési használatával létrehozott virtuális hálózatban?**
+**Létrehozhat egy virtuális gép erőforrás-kezelő használatával történő telepítéséhez a klasszikus üzembe helyezési használatával létrehozott virtuális hálózatban?**
 
-Ez nem támogatott. Azure Resource Manager használatával nem virtuális gép telepítése a klasszikus üzembe helyezési használatával létrehozott virtuális hálózatba.
+Ez a konfiguráció nem támogatott. Erőforrás-kezelő nem használható virtuális gép telepítése a klasszikus üzembe helyezési használatával létrehozott virtuális hálózatba.
 
-**Létrehozhat egy virtuális gép az Azure Resource Manager az Azure szolgáltatásfelügyeleti API használatával létrehozott felhasználói rendszerképből?**
+**Hozhat létre a virtuális gépek erőforrás-kezelő egy klasszikus telepítési modellel létrehozott felhasználói rendszerképből?**
 
-Ez nem támogatott. Azonban a VHD-fájlok másolása a szolgáltatásfelügyeleti API használatával létrehozott tárfiók, és adja hozzá egy új fiókot, Azure Resource Manageren keresztül.
+Ez a konfiguráció nem támogatott. Azonban a VHD-fájlok másolása egy tárfiókot a klasszikus üzembe helyezési modellel létrehozott, és adja hozzá egy új fiók létrehozása a Resource Manageren keresztül.
 
 **Mi az az előfizetéshez tartozó kvóta gyakorolt hatás?**
 

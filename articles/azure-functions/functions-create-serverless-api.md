@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 630d9022da0d51e533534ea43f50f27e8eb09a78
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7c3933210c01c81077b594abb8c3183d6e3c58a0
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Az Azure Functions használatával egy kiszolgáló nélküli API létrehozása
 
@@ -67,7 +67,7 @@ Ezt követően tesztelje meg szeretné tekinteni, az új API felület használat
 
 ## <a name="proxies-overview"></a>Proxyk áttekintése
 
-A következő szakaszban az API-proxyn keresztül fog surface. Az Azure Functions proxyk, amely lehetővé teszi a kérelmek továbbítása más erőforrások előzetes verziójú funkciók. Ugyanúgy, mint a HTTP-eseményindítóval, de kódot mikor hajthat végre ahelyett, hogy a végpont neve HTTP végpont meghatározása, megadja a távoli megvalósításának URL-CÍMÉT. Ez lehetővé teszi, hogy több API-forrás írja be az ügyfelek használhatnak könnyen egyetlen API felülete. Ez különösen fontos, ha az API-t, mikroszolgáltatások létrehozására.
+A következő szakaszban az API-proxyn keresztül fog surface. Az Azure Functions proxyk lehetővé teszi további erőforrások kérelmeket továbbítja. Ugyanúgy, mint a HTTP-eseményindítóval, de kódot mikor hajthat végre ahelyett, hogy a végpont neve HTTP végpont meghatározása, megadja a távoli megvalósításának URL-CÍMÉT. Ez lehetővé teszi, hogy több API-forrás írja be az ügyfelek használhatnak könnyen egyetlen API felülete. Ez különösen fontos, ha az API-t, mikroszolgáltatások létrehozására.
 
 A proxy, mint a HTTP-erőforrás mutathat:
 - Azure Functions 
@@ -75,7 +75,7 @@ A proxy, mint a HTTP-erőforrás mutathat:
 - A docker-tároló [Linux App Service](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
 - Más üzemeltetett API-k
 
-Proxyk kapcsolatos további információkért lásd: [használata az Azure Functions proxyk (előzetes verzió)].
+Proxyk kapcsolatos további információkért lásd: [használata az Azure Functions proxyk].
 
 ## <a name="create-your-first-proxy"></a>Az első proxy létrehozása
 
@@ -97,7 +97,7 @@ Ismételje meg a [függvény-alkalmazás létrehozása](https://docs.microsoft.c
 ### <a name="creating-a-proxy-on-the-frontend"></a>Az előtér egy proxy létrehozása
 
 1. Lépjen vissza az előtér-függvény alkalmazás a portálon.
-1. A bal oldali navigációs, kattintson a plusz jelre "+" "Proxyk (előzetes verzió)" mellett.
+1. A bal oldali navigációs, kattintson a plusz jelre "+" "Proxyk" mellett.
     ![A proxy létrehozása](./media/functions-create-serverless-api/creating-proxy.png)
 1. A táblázatban megadott proxybeállításainak használata. 
 
@@ -187,9 +187,9 @@ Ebben az oktatóanyagban megtanulta, hogyan állíthatja össze és testreszabá
 Az API-további fejleszt, hasznos lehet a következő hivatkozásokat:
 
 - [Az Azure Functions HTTP és a webhook kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
-- [használata az Azure Functions proxyk (előzetes verzió)]
+- [használata az Azure Functions proxyk]
 - [Az Azure Functions API-k (előzetes verzió) dokumentálása](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
 
 
 [Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
-[használata az Azure Functions proxyk (előzetes verzió)]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+[használata az Azure Functions proxyk]: https://docs.microsoft.com/azure/azure-functions/functions-proxies

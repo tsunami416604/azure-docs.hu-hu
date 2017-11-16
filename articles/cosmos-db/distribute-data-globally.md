@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2017
+ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: a293ab42591fad2b913971465bc85743bcf05dad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f09c96aabe637582ef43b863f8381a6ecfbebbf5
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Globális adatok Azure Cosmos DB terjesztése
 Azure a széles körű – folyamatosan bővülő, és egy globális erőforrásigényét tért 30 + földrajzi régiók között. A globális jelenlét, az Azure felajánlja, hogy a fejlesztők differenciált képességeit egyik létre, telepíthetnek és könnyen globálisan elosztott alkalmazások kezelésére képes. 
@@ -40,10 +40,6 @@ Azure Cosmos-adatbázis egyszerű megírásához bolygónk méretű alkalmazáso
 
 ### <a id="RegionalPresence"></a>A széles körű regionális jelenléte 
 Azure folyamatosan nő a földrajzi jelenléte hozásával [új régiók](https://azure.microsoft.com/regions/) online. Alapértelmezés szerint minden új Azure régiók Cosmos. Azure-adatbázis nem áll rendelkezésre. Ez lehetővé teszi, hogy rendelje hozzá az Azure Cosmos DB adatbázisfiók egy földrajzi régiót, amint Azure megnyílik az új üzleti régióját.
-
-**Alapértelmezés szerint az összes Azure-régiók Azure Cosmos DB áll rendelkezésre**
-
-![Az Azure Cosmos DB érhető el az összes Azure-régiók](./media/distribute-data-globally/azure-regions.png)
 
 ### <a id="UnlimitedRegionsPerAccount"></a>Az Azure Cosmos DB adatbázisfiók régiók korlátlan számú társítása
 Azure Cosmos DB lehetővé teszi tetszőleges számú Azure-régiók társítása Azure Cosmos DB adatbázis fiókját. Geokerítések korlátozások (például a kínai, a németországi) kívül vannak, amely Azure Cosmos DB adatbázis fiókhoz tartozó régiók száma nincs korlátozva. Az alábbi ábrán egy eloszthatja 25 Azure-régiók konfigurált adatbázis-fiók.  
@@ -104,7 +100,7 @@ Globálisan elosztott adatbázis szolgáltatásként Azure Cosmos DB kínál jó
 Egy globálisan elosztott adatbázis-szolgáltatás, például Azure Cosmos DB fő előnye, hogy az adatokhoz bárhol a világon kis késésű hozzáférést. Azure Cosmos-adatbázis biztosít garantált kis késleltetésű P99, különböző adatbázis-műveleteknél. A replikációs protokoll Azure Cosmos DB által biztosítja, hogy a Helyadatbázis-műveletek (ideális esetben olvas és ír) mindig megtörténik-e az ügyfél helyi régióban. A várakozási SLA-t az Azure Cosmos DB P99 egyaránt tartalmazza olvasások, (szinkron) indexelt írási műveletek és a kérelem-válasz különböző méretű lekérdezések. A késés garantálja az írási műveletek közé tartozik a tartós többsége kvórum véglegesíti a helyi adatközpontban.
 
 ### <a id="LatencyAndConsistency"></a>Késleltetés a kapcsolat konzisztencia 
-Szinkron módon replikálja az írási műveletek kell biztosítani az erős konzisztencia globálisan elosztott beállítása globálisan elosztott szolgáltatás, vagy a szinkron hajtsa végre a kereszt-régió olvasások – világos sebessége és a nagy kiterjedésű hálózat megbízhatóságát előírják az, hogy az erős konzisztencia késések magas és alacsony rendelkezésre állási adatbázis-művelet eredményez. Ezért annak érdekében, hogy garantált alacsony késleltetésű P99 és 99.99 rendelkezésre állása, a szolgáltatás foglalkoztat aszinkron replikációját. Ez szolgálna megköveteli, hogy a szolgáltatás is kell-e kínál [jól meghatározott, laza konzisztencia choice(s)](consistency-levels.md) – gyengébb (az alacsony késleltetés és a rendelkezésre állási garanciát nyújtanak) erős és ideális erősebb, mint a "végleges" konzisztencia (a felajánlott egy egyszerűen elsajátítható programozási modell).
+Szinkron módon replikálja az írási műveletek kell biztosítani az erős konzisztencia globálisan elosztott beállítása globálisan elosztott szolgáltatás, vagy a szinkron világos sebessége és a nagy kiterjedésű hálózat megbízhatóságát, amely erős előírják kereszt-régió olvasások – hajtsa végre konzisztencia nagyobb késéseket és adatbázis-művelet romlik a rendelkezésre állás eredményez. Ezért annak érdekében, hogy garantált P99, kis késleltetést és rendelkezésre állás 99,99 % fiókokhoz egyetlen régión és fiókokhoz több területi laza konzisztencia és 99.999 %, olvassa el az összes fiókot a több területi adatbázis rendelkezésre állása, a szolgáltatás kell alkalmazni aszinkron replikációját. Ez szolgálna megköveteli, hogy a szolgáltatás is kell-e kínál [jól meghatározott, laza konzisztencia choice(s)](consistency-levels.md) – gyengébb (az alacsony késleltetés és a rendelkezésre állási garanciát nyújtanak) erős és ideális erősebb, mint a "végleges" konzisztencia (a felajánlott egy egyszerűen elsajátítható programozási modell).
 
 Azure Cosmos DB biztosítja, hogy egy olvasási művelet nem igényel képes biztosítani az adott konzisztencia szintű garancia különféle régiókban replikák kapcsolódni. Hasonlóképpen biztosítja, hogy egy írási művelet nem get tiltsa le közben (azaz írási műveleteket aszinkron módon replikálódnak régiók) régiókra replikálódnak, a az adatokat. Több területi adatbázis fiókok több laza konzisztenciaszintek érhetők el. 
 
@@ -117,7 +113,7 @@ Megkülönböztetni a nagy késleltetésű elérhetetlensége, Azure Cosmos DB b
 Azure Cosmos-adatbázis nem tesz, válassza ki a késés és átviteli között. Hogy eleget tegyen az SLA mindkét P99 és kézbesítése, hogy létrehozta az átviteli várakozási. 
 
 ## <a id="ConsistencyGuarantees"></a>Konzisztencia biztosítja
-Amíg a [az erős konzisztencia modell](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) az arany szabvány programozhatóság, a származik (stabil állapotban) nagy késleltetésű elsajátíthatják a használatát ára és elérhetőségének (állásuk hibák). 
+Amíg a [az erős konzisztencia modell](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) az arany szabvány programozhatóság, a nagyobb késleltetéssel járhat (stabil állapotban) elsajátíthatják a használatát áron származik, és csökkenteni a rendelkezésre állási (állásuk hibák). 
 
 Azure Cosmos DB jól meghatározott programozási modellt biztosít Önnek a replikált adatok konzisztencia kapcsolatos OK. Ahhoz, hogy lehetővé teszik a többhelyű alkalmazásait, a konzisztencia-modellek Azure Cosmos Database által elérhetővé tett úgy tervezték, hogy a terület-független, és nem függ a régió, ahol az olvasási és írási is lehetséges a kiszolgálása. 
 
@@ -170,13 +166,13 @@ Azure Cosmos-adatbázis konzisztencia SLA garantálja, hogy az olvasási kérés
 </table>
 
 ### <a id="ConsistencyAndAvailability"></a>Rendelkezésre állási konzisztencia a kapcsolattal
-A [lehetséges eredmény](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf) , a [CAP tétel](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf) bizonyul, a rendszer elérhetők maradnak, és a hibák állásuk linearizable konzisztencia nyújtsanak valóban nem lehetséges. Az adatbázis-szolgáltatás kell választania a CP vagy AP - CP-rendszerek linearizable konzisztencia helyett rendelkezésre állási leírtnál kisebb, míg a hozzáférési pont rendszerek leírtnál kisebb [linearizable konzisztencia](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) rendelkezésre állási helyett. Azure Cosmos DB soha nem sérti a kért konzisztenciaszint, így a hivatalos CP rendszer. Azonban a gyakorlatban konzisztencia nincs egy mindent vagy semmit felkínált – több jól meghatározott konzisztencia modellek mentén a konzisztencia pontszámot linearizable és a végleges konzisztencia között van. Az Azure Cosmos Adatbázisba azt próbált használatával azonosíthatók a laza konzisztencia modellek számos valós alkalmazhatósági és egy egyszerűen elsajátítható programozási modellt. Azure Cosmos-adatbázis a konzisztencia-rendelkezésre állási mellékhatásokkal navigál 99.99 rendelkezésre állási szolgáltatási szintek, valamint felajánlásával [több enyhíteni még jól meghatározott konzisztenciaszintek](consistency-levels.md). 
+A [lehetséges eredmény](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf) , a [CAP tétel](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf) bizonyul, a rendszer elérhetők maradnak, és a hibák állásuk linearizable konzisztencia nyújtsanak valóban nem lehetséges. Az adatbázis-szolgáltatás kell választania a CP vagy AP - CP-rendszerek linearizable konzisztencia helyett rendelkezésre állási leírtnál kisebb, míg a hozzáférési pont rendszerek leírtnál kisebb [linearizable konzisztencia](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) rendelkezésre állási helyett. Azure Cosmos DB soha nem sérti a kért konzisztenciaszint, így a hivatalos CP rendszer. Azonban a gyakorlatban konzisztencia nincs egy mindent vagy semmit felkínált – több jól meghatározott konzisztencia modellek mentén a konzisztencia pontszámot linearizable és a végleges konzisztencia között van. Az Azure Cosmos Adatbázisba azt próbált használatával azonosíthatók a laza konzisztencia modellek számos valós alkalmazhatósági és egy egyszerűen elsajátítható programozási modellt. Azure Cosmos-adatbázis a konzisztencia-rendelkezésre állási mellékhatásokkal navigál felajánlásával egy [több enyhíteni még jól meghatározott konzisztenciaszintek](consistency-levels.md) és a rendelkezésre állás 99,99 % az összes egyetlen régión és az összes több területi fiókok konzisztencia enyhíteni, és 99.999 %, olvassa el az összes fiókot a több területi adatbázis rendelkezésre állását. 
 
 ### <a id="ConsistencyAndAvailability"></a>Késés konzisztencia a kapcsolattal
 Prof. Daniel Abadi által javasolt egy átfogóbb változata kap, és azt nevezzük [PACELC](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf), amely is késleltetés és a konzisztencia mellékhatásokkal stabil állapotban fiókjainak. Azt jelzi, hogy a stabil állapotot, az adatbázis-rendszer ki kell választania konzisztencia és a késleltetés között. Több laza konzisztencia modellek (biztonsági aszinkron replikációját, valamint a helyi olvasási, írási határozatképességére) Azure Cosmos DB biztosítja, hogy minden olvasási és írási helyi, az Olvasás, és régiók rendre írása.  Ez lehetővé teszi az Azure Cosmos DB tesz a kis késleltetésű biztosítja, hogy a konzisztenciaszintek a régión belül.  
 
 ### <a id="ConsistencyAndThroughput"></a>Átviteli sebesség konzisztencia a kapcsolattal
-Mivel egy adott konzisztencia modell végrehajtásának függ a választott egy [kvórum típus](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf), az átviteli sebesség is függ a választott konzisztencia. Például az Azure Cosmos Adatbázisba, az erős következetes olvasás átviteli nagyjából fele az, hogy idővel konzisztenssé olvasások. 
+Mivel egy adott konzisztencia modell végrehajtásának függ a választott egy [kvórum típus](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf), az átviteli sebesség is függ a választott konzisztencia. Például az Azure Cosmos Adatbázisba, erősen következetes olvasás RU díját nagyjából, hogy idővel konzisztenssé a olvassa be. Ebben az esetben szüksége lesz kiépítése kettős a RUs a gyűjteményen ugyanazon eléréséhez.
  
 **Olvasási kapacitást biztosít az Azure Cosmos Adatbázisba meghatározott konzisztenciaszint kapcsolat**
 
@@ -207,7 +203,7 @@ Ugyanaz, mint a [konzisztencia tartozó kapcsolat átviteli](#ConsistencyAndThro
 Azure Cosmos-adatbázis továbbra is fennáll, ha meg szeretné őrizni az elérhetőségét a módosításai az átviteli sebesség. Azure Cosmos DB transzparens módon kezeli a partíciók (például megosztott, egyesítési, klónozási műveletek), és biztosítja, hogy a műveletek nem csökkentheti a teljesítményt és rendelkezésre állás, amíg az alkalmazás rugalmasan növeli vagy csökkenti a teljesítményt. 
 
 ## <a id="AvailabilityGuarantees"></a>Rendelkezésre állási garanciák
-Azure Cosmos-adatbázis egy 99,99 % hasznos üzemidő SLA-elérhetőséget az egyes az adat- és a vezérlősík műveletek kínál. A korábban ismertetett Azure Cosmos DB rendelkezésre állását garantálja tartalmaznia kell egy abszolút felső határa késés minden adat- és a vezérlősík műveletekhez. A rendelkezésre állási garanciák steadfast és régiók vagy a földrajzi régiók közötti távolság szerint száma nem változik. Rendelkezésre állási garanciák egyaránt manuális, valamint automatikus feladatátvételi alkalmazni. Azure Cosmos DB átlátszó többhelyű API-k, győződjön meg arról, hogy az alkalmazás logikai végpontok is működik, és transzparens módon irányítani tudja a kérelmek feladatátvétel esetén az új régióban kínál. A PUT eltérően, az alkalmazás nem kell regionális feladatátvétel után újra kell telepíteni, és a rendelkezésre állási SLA megmaradjanak.
+Azure Cosmos-adatbázis egy 99,99 % SLA-elérhetőséget fiókokhoz egyetlen régión és fiókokhoz több területi nyújt laza konzisztencia, és 99.999 %, olvassa el az összes fiókot a több területi adatbázis rendelkezésre állását. A korábban ismertetett Azure Cosmos DB rendelkezésre állását garantálja tartalmaznia kell egy abszolút felső határa késés minden adat- és a vezérlősík műveletekhez. A rendelkezésre állási garanciák steadfast és régiók vagy a földrajzi régiók közötti távolság szerint száma nem változik. Rendelkezésre állási garanciák egyaránt manuális, valamint automatikus feladatátvételi alkalmazni. Azure Cosmos DB átlátszó többhelyű API-k, győződjön meg arról, hogy az alkalmazás logikai végpontok is működik, és transzparens módon irányítani tudja a kérelmek feladatátvétel esetén az új régióban kínál. A PUT eltérően, az alkalmazás nem kell regionális feladatátvétel után újra kell telepíteni, és a rendelkezésre állási SLA megmaradjanak.
 
 ### <a id="AvailabilityAndConsistency"></a>Rendelkezésre állási tartozó kapcsolat konzisztencia, a késés és a teljesítmény
 Rendelkezésre állási tartozó kapcsolat konzisztencia, a késés és a teljesítmény ismertetett [konzisztencia tartozó kapcsolatban van-e rendelkezésre állási](#ConsistencyAndAvailability), [várakozási ideje a kapcsolatot a rendelkezésre állást](#LatencyAndAvailability) és [átviteli sebesség a kapcsolatot a rendelkezésre állást](#ThroughputAndAvailability). 

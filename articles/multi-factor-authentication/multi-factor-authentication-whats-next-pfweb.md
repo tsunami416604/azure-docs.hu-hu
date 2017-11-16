@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
-ms.reviewer: alexwe
+ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: f71c569d31494c0f4035d8bec7e327bd1c2677d1
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: c6c5d5718a7e7e56ad73900f20c27f3637772872
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure multi-factor Authentication beállításainak konfigurálása
 Ez a cikk segítséget Azure multi-factor Authentication most, hogy működik és elérhető.  Bemutatja, különböző témakörök, amelyek segítenek az Azure multi-factor Authentication minél hatékonyabb működtetését.  Nem minden ezeket a szolgáltatásokat az Azure multi-factor Authentication minden verziójában érhetők el.
@@ -55,7 +55,7 @@ Ha a többtényezős hitelesítésszolgáltató vagy egy Azure MFA, Azure AD Pre
 Az MFA-felügyeleti portálon keresztül a multi-factor Authentication szolgáltatás beállításainak lap eléréséhez jelentkezzen be a klasszikus Azure portálon rendszergazdaként, és válassza ki az Active Directory lehetőséget. Kattintson a saját címtárára, majd a **Konfigurálás** fülre. A többtényezős hitelesítés szakaszban jelölje ki a **Szolgáltatásbeállítások kezelése** elemet. Az MFA szolgáltatásbeállítások oldal alján kattintson az **Ugrás a portálra** hivatkozásra.
 
 
-## <a name="fraud-alert"></a>Csalási riasztás
+## <a name="fraud-alert"></a>Visszaélési riasztás
 Csalási riasztás konfigurálhatók, és állítsa be, hogy a felhasználók jelenthetik-e rosszindulatú megpróbál hozzáférni az erőforrásokhoz.  Csalás mobilalkalmazással vagy telefont keresztül a felhasználók jelenthetik.
 
 ### <a name="set-up-fraud-alert"></a>Csalási riasztás beállítása
@@ -207,7 +207,7 @@ Megbízható IP-címek engedélyezve van-e, hogy böngésző adatfolyamok szüks
 
 ![Megbízható IP-címek](./media/multi-factor-authentication-whats-next/trustedips3.png)
 
-## <a name="app-passwords"></a>Alkalmazásjelszók
+## <a name="app-passwords"></a>Alkalmazásjelszavak
 Apple Mail és alkalmazások, például az Office 2010 vagy korábbi nem támogatják a kétlépéses ellenőrzést. Azok a második ellenőrzési fogadásához nem konfigurálva. Ezen alkalmazások használatához szüksége "alkalmazásjelszót" helyett a hagyományos jelszavát. Az alkalmazásjelszó lehetővé teszi, hogy az alkalmazás figyelmen kívül hagyása a kétlépéses ellenőrzést, és folytathatja a munkát.
 
 > [!NOTE]
@@ -309,7 +309,7 @@ Amikor a felhasználók beléptetik a fiókjukat a multi-factor Authentication, 
 |:--- |:--- |
 | Megadott telefonszám hívása |Egy automatizált hang hívás helyezi. A felhasználó fogadja a hívást, és a telefon billentyűzetén hitelesíteni kell nyomnia a #. Ez a telefonszám nem szinkronizálja a helyszíni Active Directory. |
 | SMS küldése megadott telefonszámra |Egy megerősítési kódot tartalmazó szöveges üzenetet küld. A felhasználónak vagy válaszolnia kell az üzenetre a megerősítési kódot, vagy adja meg a bejelentkezési felületen kéri. |
-| Mobilalkalmazás használatával értesítést |Elküld egy leküldéses értesítést küld telefonjára vagy regisztrált eszközhöz. A felhasználó az értesítési megtekintése és kijelöli **ellenőrizze** igazolásához. <br>A Microsoft Authenticator alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| Értesítés mobilalkalmazáson keresztül |Elküld egy leküldéses értesítést küld telefonjára vagy regisztrált eszközhöz. A felhasználó az értesítési megtekintése és kijelöli **ellenőrizze** igazolásához. <br>A Microsoft Authenticator alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
 | Mobilalkalmazás ellenőrzőkódja |A Microsoft Authenticator alkalmazást hoz létre egy új OATH-ellenőrző kódot 30 másodpercenként. A bejelentkezési felületén, a felhasználó beírja ezt a megerősítési kódot.<br>A Microsoft Authenticator alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
 
 ### <a name="how-to-enabledisable-authentication-methods"></a>Engedélyezi/letiltja a hitelesítési módszerek hogyan

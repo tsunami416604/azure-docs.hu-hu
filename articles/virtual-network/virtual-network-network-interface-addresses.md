@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 254d5d43f0f665f64ddfe276fe31702f66f16758
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c309c7c25a3ed75e96dec8046934530e24890f38
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Módosítsa, vagy távolítsa el az Azure hálózati illesztő IP-címek
 
@@ -52,7 +52,7 @@ Annyi adhat hozzá [titkos](#private) és [nyilvános](#public) [IPv4](#ipv4) sz
     |---|---|---|
     |Név|Igen|A hálózati illesztő egyedinek kell lennie|
     |Típus|Igen|Mivel a meglévő hálózati illesztő IP-konfigurációt adunk, és mindegyik hálózati interfész rendelkeznie kell egy [elsődleges](#primary) IP-konfiguráció egyetlen választása marad: **másodlagos**.|
-    |Privát IP-cím hozzárendelési módszert|Igen|[**Dinamikus** ](#dynamic) címet használva módosítható, ha a virtuális gép leállított (felszabadított) állapotában elvégzése után újraindul. Azure egy címet a hálózati illesztő csatlakozik-e az alhálózat címtér rendeli hozzá. [**Statikus** ](#static) címek nem kiadott, amíg nem törli a hálózati illesztőt. Adja meg a címtartományából alhálózati területet, amely jelenleg nem használja egy másik IP-konfigurációja IP-címet.|
+    |Privát IP-cím hozzárendelési módszert|Igen|[**Dinamikus**](#dynamic): Azure rendeli hozzá a következő elérhető címek a alhálózati címtartomány a hálózati adapter van telepítve. [**Statikus**](#static): az alhálózati címtartományt, a hálózati adapter van telepítve a nem használt címet hozzárendelni.|
     |Nyilvános IP-cím|Nem|**Letiltva:** nincs nyilvános IP-cím erőforrás IP-konfigurációja jelenleg társítva. **Engedélyezve:** válasszon ki egy meglévő IPv4 nyilvános IP-címet, vagy hozzon létre egy újat. A nyilvános IP-cím létrehozása, olvassa el a [nyilvános IP-címek](virtual-network-public-ip-address.md#create-a-public-ip-address) cikk.|
 7. Manuálisan adja hozzá másodlagos magánhálózati IP-címek a virtuális gép operációs rendszerének; Ehhez hajtsa végre a utasításait a [több IP-címek hozzárendelése a virtuális gép operációs rendszerek](virtual-network-multiple-ip-addresses-portal.md#os-config) cikk. Lásd: [titkos](#private) IP-címek előtt manuálisan IP-címek hozzáadása a virtuális gép operációs rendszerének különleges szempontjait. Ne vegyen fel nyilvános IP-címek a virtuális gép operációs rendszerének.
 
@@ -133,7 +133,7 @@ A következő típusú IP-címek rendelhet egy [IP-konfiguráció](#ip-configura
 
 Személyes [IPv4](#ipv4) címek engedélyezése egy virtuális gép virtuális hálózat vagy más hálózatokhoz csatlakozó egyéb erőforrások folytatott kommunikációhoz. Egy virtuális gépet nem lehetett továbbítani a bejövő, sem a virtuális gép kommunikálhatnak egy olyan magánhálózat a kimenő [IPv6](#ipv6) cím, egy kivétellel. Egy virtuális gépet az Azure load balancer egy IPv6-cím használatával kommunikálhatnak. További információkért lásd: [részleteit és az IPv6 korlátozások](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations). 
 
-Alapértelmezés szerint az Azure DHCP-kiszolgálók a privát IPv4-cím hozzárendelése a [elsődleges IP-konfiguráció](#primary) a hálózati illesztő a virtuális gép operációs rendszerben a hálózati illesztőhöz. Ha szükséges, akkor kell soha nem manuális módon állítsa be a virtuális gép operációs rendszerében a hálózati illesztő IP-címét. 
+Alapértelmezés szerint az Azure DHCP-kiszolgálók a privát IPv4-cím hozzárendelése a [elsődleges IP-konfiguráció](#primary) Azure hálózati illesztő a virtuális gép operációs rendszerben a hálózati illesztőhöz. Ha szükséges, akkor kell soha nem manuális módon állítsa be a virtuális gép operációs rendszerében a hálózati illesztő IP-címét. 
 
 > [!WARNING]
 > Ha az elsődleges IP-címét a hálózati adaptert egy virtuális gép operációs rendszerből állítja be az IPv4-cím legalább egyszer eltér a privát IPv4-cím, az elsődleges IP-konfigurációja az elsődleges hálózati adapter rendelt csatolva van egy virtuális gépet az Azure akkor megszakad a kapcsolat a virtuális géphez.
@@ -143,33 +143,39 @@ Nincsenek forgatókönyvekben, ahol beállítani a virtuális gép operációs r
 1. Győződjön meg arról, a virtuális gépet az Azure DHCP-kiszolgálók egy címet fogad, állítsa vissza az IP-cím hozzárendelése DHCP operációs rendszerből, és indítsa újra a virtuális gépet.
 2. Állítsa le (felszabadítása) a virtuális gép.
 3. Az IP-konfiguráció Azure-ban az IP-címének módosítása.
-4. Virtuális gép elindítása.
+4. A virtuális gép elindításához.
 5. [Manuálisan konfigurálnia a](virtual-network-multiple-ip-addresses-portal.md#os-config) az operációs rendszer (és belül is a Windows az elsődleges IP-cím) megfelelően beállítani az Azure másodlagos IP-címét.
  
 Az előző lépések, a magánhálózati IP-címet hozzárendelni az Azure-ban, és a virtuális gép operációs rendszerben, a hálózati adapter által változatlanok maradnak. Nyomon követéséhez belül az előfizetés, amely a manuálisan beállított IP-címek az operációs rendszerben a virtuális gépek, fontolja meg az Azure [címke](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) virtuális gépekhez. Használhatja a "IP-cím hozzárendelése: statikus", például. Ezzel a módszerrel könnyedén megtalálhatja a virtuális gépek, amelyek manuálisan beállította az operációs rendszerben az IP-cím az előfizetésen belül.
 
-Egy virtuális gép más erőforrások, az azonos, vagy csatlakoztatott virtuális hálózatokon belül kommunikálni engedélyezniük, egy magánhálózati IP-cím is lehetővé teszi, hogy való kommunikációhoz az internethez kimenő virtuális gép. Kifelé irányuló kapcsolatok olyan forrás hálózati címe lefordítani az Azure előre nem látható nyilvános IP-címet. Az Azure kimenő internetkapcsolattal kapcsolatos további tudnivalókért olvassa el a [Azure kimenő internetkapcsolat](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) cikk. Nem lehet kommunikálni a bejövő egy virtuális gép privát IP-címre az interneten.
+Egy virtuális gép más erőforrások, az azonos, vagy csatlakoztatott virtuális hálózatokon belül kommunikálni engedélyezniük, egy magánhálózati IP-cím is lehetővé teszi, hogy való kommunikációhoz az internethez kimenő virtuális gép. Kifelé irányuló kapcsolatok olyan forrás hálózati címe lefordítani az Azure előre nem látható nyilvános IP-címet. Az Azure kimenő internetkapcsolattal kapcsolatos további tudnivalókért olvassa el a [Azure kimenő internetkapcsolat](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) cikk. Nem lehet kommunikálni a bejövő egy virtuális gép privát IP-címre az interneten. Ha a kimenő kapcsolatok egy előre jelezhető nyilvános IP-címet igényel, társítson egy nyilvános IP-cím erőforrás hálózati illesztőhöz.
 
 ### <a name="public"></a>Nyilvános
 
-Nyilvános IP-címek az internetről bejövő kapcsolat engedélyezése egy virtuális géphez. Kimenő kapcsolatok az interneten egy előre jelezhető IP-címet használja. Lásd: [ismertetése az Azure-ban kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) részleteiről. Előfordulhat, hogy a nyilvános IP-címet rendel egy IP-konfiguráció, de nem szükséges. Ha egy virtuális géphez nem rendel hozzá egy nyilvános IP-címet, képes továbbra is kommunikálni a kimenő az internetre privát IP-címére. Nyilvános IP-címek kapcsolatos további tudnivalókért olvassa el a [nyilvános IP-cím](virtual-network-public-ip-address.md) cikk.
+Nyilvános IP-címtartományból keresztül egy nyilvános IP-cím erőforrás az internetről bejövő kapcsolat engedélyezése egy virtuális géphez. Kimenő kapcsolatok az interneten egy előre jelezhető IP-címet használja. Lásd: [ismertetése az Azure-ban kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) részleteiről. Előfordulhat, hogy a nyilvános IP-címet rendel egy IP-konfiguráció, de nem szükséges. Ha egy nyilvános IP-cím erőforrás társításával egy nyilvános IP-cím ne rendelje hozzá egy virtuális gépet, a virtuális gép továbbra is kommunikálhatnak kimenő internetkapcsolat. Ebben az esetben a magánhálózati IP-címet az forrás hálózati cím lefordítani az Azure előre nem látható nyilvános IP-címet. Nyilvános IP-cím erőforrásokkal kapcsolatos további információkért lásd: [nyilvános IP-cím erőforrás](virtual-network-public-ip-address.md).
 
 Nincsenek korlátozások rendelhet egy adott hálózati csatoló privát és nyilvános IP-címek számát. További információkért olvassa el a [Azure korlátozza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) cikk.
 
 > [!NOTE]
-> Azure fordítja le a virtuális gépek magánhálózati IP-cím egy nyilvános IP-cím. Ennek eredményeképpen a operációs rendszer nem észleli a nyilvános IP-címek hozzárendelve, így nincs szükség minden eddiginél rendelheti hozzá kézzel a nyilvános IP-cím, az operációs rendszerben.
+> Azure fordítja le a virtuális gépek magánhálózati IP-cím egy nyilvános IP-cím. Ennek eredményeképpen a virtuális gép operációs rendszer nem észleli a bármely nyilvános IP-cím hozzárendelve, így nincs szükség minden eddiginél rendelheti hozzá kézzel az operációs rendszer egy nyilvános IP-címnek.
 
 ## <a name="assignment-methods"></a>Hozzárendelési módszert
 
-Nyilvános és magánhálózati IP-címek hozzá a következő hozzárendelési módszert használja:
+Nyilvános és magánhálózati IP-címek hozzá a következő hozzárendelési módszerek egyikének használatával:
 
 ### <a name="dynamic"></a>Dinamikus
 
-Dinamikus privát IPv4 és IPv6-alapú (opcionális) címek alapértelmezés szerint vannak hozzárendelve. Dinamikus címet használva módosítható, ha a virtuális gép leállított (felszabadított) állapotba helyezni, majd elindítani. Ha nem szeretné módosítani a virtuális gép élettartama IPv4-címeket, rendelje hozzá a statikus metódussal címek. Csak egy titkos IPv6-címet, dinamikus hozzárendelése módszerrel rendelhet hozzá. Nem rendelhet egy nyilvános IPv6-címet vagy metódussal IP-konfigurációt.
+Dinamikus privát IPv4 és IPv6-alapú (opcionális) címek alapértelmezés szerint vannak hozzárendelve. 
+
+- **Csak nyilvános**: Azure tartomány rendeli hozzá a cím egyedi az egyes Azure-régiót. Mely tartományok rendelt minden egyes régió, lásd: [Microsoft Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). A cím módosíthatja, ha egy virtuális gép leállított (felszabadított), majd újra el. Nem rendelhet egy nyilvános IPv6-cím hozzárendelés módszerek használatával IP-konfigurációt.
+- **Csak a saját**: Azure fenntartja az egyes alhálózati címtartományt első négy címeit, és nem a címeket rendelni. Azure rendeli hozzá a következő elérhető címek erőforráshoz a alhálózati címtartományt. Például, ha az alhálózat címtartománya 10.0.0.0/16, és a címek 10.0.0.0.4-10.0.0.14 már hozzá vannak rendelve (.0-.3 fenntartott), Azure 10.0.0.15 rendel az erőforráshoz. Dinamikus: az alapértelmezett elosztási módszert. Miután hozzárendelt, dinamikus IP-címek csak kiadott Ha a hálózati adaptert törölték, az azonos virtuális hálózaton belül egy másik alhálózat rendelt vagy a kiosztási módszer statikus értékre módosul, és egy másik IP-cím van megadva. Alapértelmezés szerint Azure rendeli hozzá az előző dinamikusan kiosztott címet a statikus cím amikor vált a kiosztási módszer dinamikus statikus. Csak egy titkos IPv6-címet, dinamikus hozzárendelése módszerrel rendelhet hozzá.
 
 ### <a name="static"></a>Statikus
 
-A statikus metódussal címtartományból nem megváltoztatni, amíg meg nem törölték a virtuális gépet. Manuális módszerrel rendel egy statikus privát IPv4 cím az IP-konfigurációt az alhálózatot a hálózati illesztő a címtartomány a van. IP-konfigurációt rendelhet a saját vagy nyilvános statikus IPv4-cím (nem kötelező). Nem rendelhető hozzá egy statikus nyilvános vagy privát IPv6-címet az IP-konfigurációt. Hogyan Azure rendel statikus nyilvános IPv4-címek kapcsolatos további tudnivalókért tekintse meg a [nyilvános IP-cím](virtual-network-public-ip-address.md) cikk.
+IP-konfigurációt rendelhet a saját vagy nyilvános statikus IPv4-cím (nem kötelező). Nem rendelhető hozzá egy statikus nyilvános vagy privát IPv6-címet az IP-konfigurációt. Hogyan Azure rendel statikus nyilvános IPv4-címek kapcsolatos további tudnivalókért tekintse meg a [nyilvános IP-cím](virtual-network-public-ip-address.md) cikk.
+
+- **Csak nyilvános**: Azure tartomány rendeli hozzá a cím egyedi az egyes Azure-régiót. Mely tartományok rendelt minden egyes régió, lásd: [Microsoft Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). A cím nem változik, amíg a rendszer törli a nyilvános IP-cím erőforrás hozzá van rendelve, vagy dinamikus megváltozott a hozzárendelési módszert. Ha a nyilvános IP-cím erőforrás tartozik, az IP-konfigurációt, az IP-konfigurációja a hozzárendelési módszert módosítása előtt kell leválasztása.
+- **Csak a saját**: válassza ki, és az alhálózati címtartományt a címet hozzárendelni. A címet rendel az alhálózati címtartományt, amely nem található az alhálózat címtartománya első négy címek egyikét, és jelenleg nincs hozzárendelve az alhálózaton lévő más erőforrásokhoz tartozó minden cím lehet. Statikus címek csak egy adott hálózati csatoló törlésekor kiadásakor. Ha módosítja a kiosztási módszer statikus, Azure dinamikusan rendeli hozzá a korábban hozzárendelt statikus IP-cím dinamikus címként, még akkor is, ha a cím nem a következő elérhető cím az alhálózat címtartománya. A cím is megváltozik, ha a hálózati adapter van rendelve egy másik alhálózatot az azonos virtuális hálózaton belül, de a hálózati illesztő rendel egy másik alhálózat, először módosítania kell a kiosztási módszer a statikus dinamikus. Ha egy másik alhálózatot a hálózati illesztő hozzárendelt, vissza a statikus foglalási módjának módosítása, és IP-címet hozzárendelni az új alhálózati címtartományt.
 
 ## <a name="ip-address-versions"></a>IP-cím verziók
 

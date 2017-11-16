@@ -53,7 +53,7 @@
 ### [Felügyeltszolgáltatás-identitás használata](api-management-howto-use-managed-service-identity.md)
 ### Integrálás a Service Fabric platformmal
 #### [Áttekintés](../service-fabric/service-fabric-api-management-overview.md)
-#### [Első lépések](../service-fabric/service-fabric-api-management-quick-start.md)
+#### [Oktatóanyag](../service-fabric/service-fabric-tutorial-deploy-api-management.md)
 
 # Referencia
 ## [Azure PowerShell](/powershell/azure/overview)

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2017
-ms.author: sethm;hillaryc
-ms.openlocfilehash: 5a4e69ea7e13cb017f8fb432c524c6a8ce9228a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/14/2017
+ms.author: sethm
+ms.openlocfilehash: beebfb496604b422e091cd3b4425933f3cea1283
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 Az Azure Service Bus védelmi funkciókat alkalmaz, több üzenetet brókerek üzenetek feldolgozásához, és több üzenetküldési tároló üzenetek tárolásához. Hagyományos üzenetsor vagy témakör egyetlen üzenet ügynök által kezelt és egy üzenetküldési tárolóban tárolja. A Service Bus *partíciók* üzenetsorok és témakörök, engedélyezéséhez vagy *üzenetküldési entitások*, több üzenetet brókerek és üzenetküldési tárolók particionálandó. Ez azt jelenti, hogy a teljes átviteli sebesség egy particionált entitás már nem korlátozzák a egyetlen üzenet broker vagy az üzenetküldési tárolóban teljesítményét. Ezenkívül átmenetileg nem működik az üzenetküldési tárolóban nem képezhető le egy particionált üzenetsor vagy témakör nem érhető el. A particionált üzenetsorok és témakörök tartalmazhat összes speciális Service Bus-funkciók, például a tranzakciók és a munkamenetek támogatása.
@@ -39,7 +39,7 @@ Nincs üzenet küldésekor, vagy egy üzenet fogadását a particionált üzenet
 
 ## <a name="enable-partitioning"></a>Particionálás engedélyezése
 
-Particionált üzenetsorok és témakörök az Azure Service Bus használatához az Azure SDK-val 2.2 vagy újabb verzióját, vagy adjon meg `api-version=2013-10` a HTTP-kérelmek.
+Particionált üzenetsorok és témakörök az Azure Service Bus használatához az Azure SDK-val 2.2 vagy újabb verzióját, vagy adjon meg `api-version=2013-10` vagy későbbi részében a HTTP-kérelmekre.
 
 ### <a name="standard"></a>Standard
 
@@ -63,7 +63,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-Másik lehetőségként létrehozhat particionált üzenetsor vagy témakör, a [Azure-portálon] [ Azure portal] vagy a Visual Studióban. A portálon, üzenetsor vagy témakör létrehozásakor a **particionálás engedélyezése** beállítást az üzenetsor vagy témakör **létrehozása** panel alapértelmezés szerint be van jelölve. Csak letilthatja ezt a beállítást, a Standard csomag entitásban; a prémium szinten lévő particionálás mindig engedélyezve van. A Visual Studióban, kattintson a **particionálás engedélyezése** jelölőnégyzet a **új várólista** vagy **új témakör** párbeszédpanel megnyitásához.
+Másik lehetőségként létrehozhat particionált üzenetsor vagy témakör, a [Azure-portálon] [ Azure portal] vagy a Visual Studióban. A portálon, üzenetsor vagy témakör létrehozásakor a **particionálás engedélyezése** beállítást az üzenetsor vagy témakör **létrehozása** párbeszédpanelen alapértelmezés szerint be van jelölve. Csak letilthatja ezt a beállítást, a Standard csomag entitásban; a prémium szinten lévő particionálás mindig engedélyezve van. A Visual Studióban, kattintson a **particionálás engedélyezése** jelölőnégyzet a **új várólista** vagy **új témakör** párbeszédpanel megnyitásához.
 
 ## <a name="use-of-partition-keys"></a>Partíciós kulcsok használata
 Ha üzenetet a várólistában levő particionált üzenetsor vagy témakör azokat, a Service Bus ellenőrzi, hogy a partíciós kulcs. Ha megtalálja, a részlet kulcs alapján választja ki. Ha itt nem talál egy partíciókulcsot, a részlet egy belső algoritmus alapján választja ki.
@@ -82,7 +82,7 @@ A forgatókönyvtől függően különböző üzenettulajdonságok egy partíci�
 ### <a name="not-using-a-partition-key"></a>Nem a partíciókulcsok használatával
 A partíciós kulcs hiányában Service Bus osztja el a ciklikus multiplexeléssel a particionált várólista vagy a témakör a szilánkok üzenetek. A kiválasztott töredéke nem érhető el, ha a Service Bus rendel az üzenet különböző töredéket. Ezzel a módszerrel a küldési művelet sikeres, annak ellenére, hogy a elérhetetlenség egy üzenetküldési tárolóban. Azonban Ön nem érhető el a garantált rendezés, amely a partíciós kulcs biztosít.
 
-A rendelkezésre állási (nincs partíciós kulcs) és a konzisztencia (a partíciókulcsok használatával) közötti kompromisszumot részletesebb tárgyalását lásd: [Ez a cikk](../event-hubs/event-hubs-availability-and-consistency.md). Ezeket az információkat egyaránt particionált Service Bus-entitások és az Event Hubs partíciók vonatkozik.
+A rendelkezésre állási (nincs partíciós kulcs) és a konzisztencia (a partíciókulcsok használatával) közötti kompromisszumot részletesebb tárgyalását lásd: [Ez a cikk](../event-hubs/event-hubs-availability-and-consistency.md). Ezt az információt a Service Bus particionált entitások egyaránt vonatkozik.
 
 Ahhoz, hogy megkapja a Service Bus elegendő időt várakozási sorba állítani az üzenet be egy másik kódrészletet a [MessagingFactorySettings.OperationTimeout] [ MessagingFactorySettings.OperationTimeout] érték van megadva, az ügyfél által küldött, az üzenet nagyobbnak kell lennie. mint 15 másodperc. Javasoljuk, hogy állítsa a [OperationTimeout] [ OperationTimeout] tulajdonság alapértelmezett értéke 60 másodperc.
 
@@ -127,14 +127,14 @@ A Service Bus továbbítási az, hogy vagy particionált entitások közötti au
 
 ## <a name="considerations-and-guidelines"></a>Szempontok és irányelveket
 * **Magas konzisztencia szolgáltatások**: Ha entitás például munkamenetek, kettős észlelés vagy partíciós kulcs explicit irányítását funkciókat használ, akkor az üzenetkezelési műveletek mindig adott töredék legyenek átirányítva. A szilánkok bármelyikét észlel, nagy forgalmat, vagy a mögöttes tároló állapota nem kifogástalan, ha ezek a műveletek sikertelenek, és a rendelkezésre állási csökken. A teljes a konzisztencia, továbbra is sokkal nagyobb mint nem particionált entitások; a forgalom csak egy részhalmazát, szemben az összes forgalom hibákat észlelt. További információkért tekintse meg a [rendelkezésre állási és konzisztencia](../event-hubs/event-hubs-availability-and-consistency.md).
-* **Felügyeleti**: műveletek, például a létrehozási, frissítési és törlési az entitás összes részlete kell végrehajtani. Ha bármely töredék állapota nem megfelelő az ezekhez a műveletekhez hibákat okozhat. A Get művelethez adatokat például üzenetben számlálás kell összesíteni az összes részlete. Ha bármely töredék állapota nem megfelelő, entitás rendelkezésre állását korlátozott akkor számít.
+* **Felügyeleti**: műveletek, például a létrehozási, frissítési és törlési az entitás összes részlete kell végrehajtani. Bármely töredék állapota nem kifogástalan, ha az ezekhez a műveletekhez hibákat okozhat. A Get művelethez adatokat például üzenetben számlálás kell összesíteni az összes részlete. Ha bármely töredék állapota nem megfelelő, entitás rendelkezésre állását korlátozott akkor számít.
 * **Üzenet forgatókönyvek kevés**: ilyen helyzetekben, különösen akkor, ha a HTTP protokollt használ, előfordulhat, hogy több végrehajtásához műveletek annak érdekében, hogy az üzenetek fogadására. A fogadási kéréseket az előtér receive végez a töredék, és gyorsítótárba helyezi azt a kapott válaszokat. Az azonos kapcsolaton keresztül egy későbbi fogadási kérést ehhez kihasználhassa a gyorsítótárazást és fogadására késések alacsonyabb lesz. Azonban ha több kapcsolatot vagy a HTTP Protokollt használja, amely kapcsolatot hoz létre új egyes kérésekre vonatkozóan. Nincs ilyen nem biztos, hogy az ugyanazon a csomóponton volna megnyílik. Ha az összes meglévő üzenetek zárolva van, és tárolja a rendszer egy másik előtér, a fogadási művelet visszaadja **null**. Üzenetek végül hagyja elévülni, majd újra fogadhatja. HTTP életben tartási ajánlott.
-* **A tallózási/betekintés üzenetek**: [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) nem mindig ad vissza a megadott üzenetek száma a [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MessageCount) tulajdonság. Nincsenek két gyakori okai az. Egyik ok: az, hogy a gyűjtemény az üzenetek összesített mérete meghaladja a maximális 256 KB-os. A másik OK, hogy ha az üzenetsor vagy témakör a [EnablePartitioning tulajdonság](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning) beállítása **igaz**, a partíció nem lehet végrehajtani a kért számú üzenetek elég üzenetek. Általában egy bizonyos számú üzeneteket az alkalmazás kéri, ha azt meg kell hívnia az [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) ismételten, amíg azt lekérdezi, hogy az üzenetek száma, vagy nincsenek való további üzenetek. További információ mintakódjainak megtekintése, beleértve: [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) vagy [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_PeekBatch_System_Int32_).
+* **A tallózási/betekintés üzenetek**: [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) nem mindig ad vissza a megadott üzenetek száma a [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) tulajdonság. Nincsenek két gyakori okai az. Egyik ok: az, hogy a gyűjtemény az üzenetek összesített mérete meghaladja a maximális 256 KB-os. A másik OK, hogy ha az üzenetsor vagy témakör a [EnablePartitioning tulajdonság](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) beállítása **igaz**, a partíció nem lehet végrehajtani a kért számú üzenetek elég üzenetek. Általában egy bizonyos számú üzeneteket az alkalmazás kéri, ha azt meg kell hívnia az [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) ismételten, amíg azt lekérdezi, hogy az üzenetek száma, vagy nincsenek való további üzenetek. További információt, Kódminták, beleértve a [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) vagy [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) API dokumentációját.
 
 ## <a name="latest-added-features"></a>Legújabb szolgáltatással
 * Hozzáadni vagy eltávolítani a szabály mostantól támogatják a particionált entitások. Nem particionált entitások eltérő, ezek a műveletek nem támogatottak a tranzakciók. 
 * AMQP támogatása az üzenetek küldése és fogadása a és a particionált entitás.
-* AMQP mostantól támogatott a következő műveletek: [kötegelt küldése](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_BrokeredMessage__), [kötegelt kap](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_ReceiveBatch_System_Int32_), [fogadási sorszáma szerint](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_Receive_System_Int64_), [Belepillantás](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_Peek), [ Újítsa meg a zárolást](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_RenewMessageLock_System_Guid_), [üzenet ütemezése](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_ScheduleMessageAsync_Microsoft_ServiceBus_Messaging_BrokeredMessage_System_DateTimeOffset_), [ütemezett üzenet törlése](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_CancelScheduledMessageAsync_System_Int64_), [szabály hozzáadása](/dotnet/api/microsoft.servicebus.messaging.ruledescription), [szabály eltávolítása](/dotnet/api/microsoft.servicebus.messaging.ruledescription), [Munkamenet Renew zárolási](/dotnet/api/microsoft.servicebus.messaging.messagesession#Microsoft_ServiceBus_Messaging_MessageSession_RenewLock), [munkamenet-állapot beállítása](/dotnet/api/microsoft.servicebus.messaging.messagesession#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_), [Get munkamenet-állapot](/dotnet/api/microsoft.servicebus.messaging.messagesession#Microsoft_ServiceBus_Messaging_MessageSession_GetState), és [munkamenetek enumerálása](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessionsAsync).
+* AMQP mostantól támogatott a következő műveletek: [kötegelt küldése](/dotnet/api/microsoft.servicebus.messaging.queueclient.sendbatch), [kötegelt kap](/dotnet/api/microsoft.servicebus.messaging.queueclient.receivebatch), [fogadási sorszáma szerint](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive), [Belepillantás](/dotnet/api/microsoft.servicebus.messaging.queueclient.peek), [ Újítsa meg a zárolást](/dotnet/api/microsoft.servicebus.messaging.queueclient.renewmessagelock), [üzenet ütemezése](/dotnet/api/microsoft.servicebus.messaging.queueclient.schedulemessageasync), [ütemezett üzenet törlése](/dotnet/api/microsoft.servicebus.messaging.queueclient.cancelscheduledmessageasync), [szabály hozzáadása](/dotnet/api/microsoft.servicebus.messaging.ruledescription), [szabály eltávolítása](/dotnet/api/microsoft.servicebus.messaging.ruledescription), [Munkamenet Renew zárolási](/dotnet/api/microsoft.servicebus.messaging.messagesession.renewlock), [munkamenet-állapot beállítása](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate), [Get munkamenet-állapot](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate), és [munkamenetek enumerálása](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions).
 
 ## <a name="partitioned-entities-limitations"></a>Particionált entitások korlátozásai
 Jelenleg a Service Bus ró a particionált üzenetsorok és témakörök a következő korlátozások vonatkoznak:
@@ -143,20 +143,20 @@ Jelenleg a Service Bus ró a particionált üzenetsorok és témakörök a köve
 * A Service Bus jelenleg lehetővé teszi, hogy legfeljebb 100 particionált várólisták vagy olyan témakörök / névtér. Minden egyes particionált üzenetsor vagy témakör megjeleníti a beállított kvótát (érvényes prémium csomagban) névtér száma 10 000 entitások felé.
 
 ## <a name="next-steps"></a>Következő lépések
-Tanulmányozza a [AMQP 1.0 támogatása a Service Bus üzenetsorok és témakörök particionálva] [ AMQP 1.0 support for Service Bus partitioned queues and topics] tudhat meg többet az üzenetküldési entitások particionálást. 
+Olvassa el az AMQP 1.0 üzenetküldési meghatározása az alapfogalmakat a [AMQP 1.0 protokoll az útmutató](service-bus-amqp-protocol-guide.md).
 
 [Service Bus architecture]: service-bus-architecture.md
 [Azure portal]: https://portal.azure.com
-[QueueDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning
-[TopicDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.topicdescription#Microsoft_ServiceBus_Messaging_TopicDescription_EnablePartitioning
-[BrokeredMessage.SessionId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId
-[BrokeredMessage.PartitionKey]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_PartitionKey
-[SessionId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId
-[PartitionKey]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_PartitionKey
-[QueueDescription.RequiresDuplicateDetection]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection
-[BrokeredMessage.MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId
-[MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId
-[MessagingFactorySettings.OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
-[OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
-[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
+[QueueDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
+[TopicDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablepartitioning
+[BrokeredMessage.SessionId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid
+[BrokeredMessage.PartitionKey]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey
+[SessionId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid
+[PartitionKey]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey
+[QueueDescription.RequiresDuplicateDetection]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection
+[BrokeredMessage.MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid
+[MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid
+[MessagingFactorySettings.OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout
+[OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout
+[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto
 [AMQP 1.0 support for Service Bus partitioned queues and topics]: service-bus-partitioned-queues-and-topics-amqp-overview.md

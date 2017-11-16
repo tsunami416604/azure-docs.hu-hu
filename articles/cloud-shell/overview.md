@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud rendszerhéj (előzetes verzió) – áttekintés |} Microsoft Docs"
+title: "Azure Cloud rendszerhéj áttekintése |} Microsoft Docs"
 description: "Az Azure-felhőbe rendszerhéj áttekintése."
 services: 
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 11/13/2017
 ms.author: juluk
-ms.openlocfilehash: 3acea56ea414f0c43333a02274e91226db29d454
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: ebf6f1256a280fdff18c0c9060614acf0d4a642b
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="overview-of-azure-cloud-shell-preview"></a>Azure-felhőbe rendszerhéj (előzetes verzió) áttekintése
+# <a name="overview-of-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj áttekintése
 Azure Cloud rendszerhéjjal egy interaktív, a böngésző által elérhető rendszerhéj Azure-erőforrások kezeléséhez.
 Azt a rugalmasságot biztosít a rendszerhéj élmény igényei leginkább megfelelő kiválasztása.
 A Linuxot használók választhatják a Basht, a Windows-használók pedig a PowerShellt.
@@ -33,7 +33,7 @@ Kihasználhatja a Bash vagy a PowerShell a rendszerhéj választó legördülő 
 
 ![A felhő rendszerhéj bash](media/overview/overview-bash-pic.png)
 
-![A felhő rendszerhéj PowerShell](media/overview/overview-ps-pic.png)
+![PowerShell felhő rendszerhéj (előzetes verzió)](media/overview/overview-ps-pic.png)
 
 ## <a name="features"></a>Szolgáltatások
 ### <a name="browser-based-shell-experience"></a>Böngészőalapú felület élmény
@@ -42,19 +42,22 @@ Használja ki az felhő rendszerhéj módon csak a felhőben a helyi gépről un
 
 ### <a name="choice-of-preferred-shell-experience"></a>Előnyben részesített rendszerhéj élmény kiválasztása
 Az Azure Cloud Shell lehetővé teszi, hogy a munkamódszerének leginkább megfelelő rendszerhéj-felületet válassza.
-A Linuxot használók választhatják a Basht, a Windows-használók pedig a PowerShellt.
+Linux-felhasználók kérheti Bash felhő rendszerhéj, amíg a Windows-felhasználók kérheti PowerShell felhő rendszerhéj (előzetes verzió).
 
-### <a name="pre-configured-azure-workstation"></a>Előre konfigurált Azure munkaállomás
-Felhő rendszerhéj előre előre telepített népszerű parancssori eszközökkel, és a nyelv támogatja, így gyorsabban működnek.
+### <a name="authenticated-and-configured-azure-workstation"></a>Hitelesített és konfigurált Azure munkaállomás
+Felhő rendszerhéj származik a Microsoft által felügyelt, így előre telepítve van a népszerű parancssori eszközökkel, és a nyelv támogatja, így gyorsabban működnek. Emellett felhő rendszerhéj biztonságosan hitelesíti automatikusan azonnali erőforrások elérése érdekében az Azure CLI 2.0 vagy az Azure PowerShell parancsmagokon keresztül.
 
-A teljes tooling listájának megtekintése [élmény Bash](features.md#tools) és [PowerShell élmény.](features-powershell.md#tools)
+A teljes tooling listájának megtekintése a [élmény Bash](features.md#tools) és [PowerShell (előzetes verzió) élmény.](features-powershell.md#tools)
 
-### <a name="automatic-authentication"></a>Automatikus hitelesítéshez
-Felhő rendszerhéj biztonságosan hitelesíti automatikusan minden munkamenet azonnali erőforrások elérése érdekében az Azure CLI 2.0 vagy az Azure PowerShell parancsmagokon keresztül.
+### <a name="multiple-access-points"></a>Több kapcsolódási pont
+Felhő rendszerhéj rendelkezésre állása Azure-portálról, mellett azt is elérhetők:
+* [Az Azure CLI 2.0 "Try It" dokumentációja](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)
+* [Azure mobile Apps](https://azure.microsoft.com/features/azure-portal/mobile-app/)
+* [A Visual Studio Code-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
-### <a name="connect-your-azure-file-storage"></a>Csatlakozás az Azure File storage
+### <a name="connect-your-azure-files-storage"></a>Csatlakozás az Azure Files storage
 Felhő rendszerhéj gépek ideiglenes, és emiatt igényel az egy Azure fájlok megosztás csatlakoztatható `clouddrive` megőrizni a $Home címtárban.
-Felhő rendszerhéj kérni fogja az erőforrás létrehozása első indítsa el a csoport, a tárfiók, és fájlmegosztás, az Ön nevében. Ez egy egyszeri lépés, és lesz automatikusan hozzárendelve minden munkamenetben. Egyetlen fájlmegosztást képezhetők és Bash és a felhő rendszerhéj PowerShell is használható.
+Felhő rendszerhéj kérni fogja az erőforrás létrehozása első indítsa el a csoport, a tárfiók, és fájlmegosztás, az Ön nevében. Ez egy egyszeri lépés, és lesz automatikusan hozzárendelve minden munkamenetben. Egyetlen fájlmegosztást képezhetők és Bash és a felhő rendszerhéj (előzetes verzió) PowerShell is használható.
 
 #### <a name="create-new-storage"></a>Új tároló létrehozása
 ![](media/overview/basic-storage.png)
@@ -86,18 +89,18 @@ A hozzárendelt felhő rendszerhéj pedig a helyi/globálisan-redundancia tárfi
 * Felhő rendszerhéj hozzá van rendelve egy gép felhasználónként
 * Engedélyek beállítása Linux felhasználói (Bash)
 
-További információk a szolgáltatások [felhő rendszerhéj Bash](features.md) és [felhő rendszerhéj PowerShell](features-powershell.md).
+További információk a szolgáltatások [felhő rendszerhéj Bash](features.md) és [PowerShell felhő rendszerhéj (előzetes verzió)](features-powershell.md).
 
 ## <a name="examples"></a>Példák
 * Az Azure felügyeleti feladatok automatizálására parancsfájlok használata
 * Egyidejűleg kezelése az Azure-erőforrások Azure-portál és az Azure parancssori eszközök segítségével
 * Azure CLI 2.0 vagy az Azure PowerShell-parancsmagok test-Drive
 
-Próbálja ki ezeket a quickstarts szereplő példák [felhő rendszerhéj Bash](quickstart.md) és [felhő rendszerhéj PowerShell](quickstart-powershell.md).
+Próbálja ki ezeket a quickstarts szereplő példák [felhő rendszerhéj Bash](quickstart.md) és [PowerShell felhő rendszerhéj (előzetes verzió)](quickstart-powershell.md).
 
 ## <a name="pricing"></a>Díjszabás
 A felhő rendszerhéj futtató gépen szabad, az Azure Fileshoz csatlakoztatott megosztás előfeltételeként. Rendszeres tárolási költségek vonatkoznak.
 
-## <a name="supported-browsers"></a>Támogatott böngészők
-Felhő rendszerhéj Chrome, biztonsági és Safari ajánlott.
-Felhő rendszerhéj Chrome, Firefox, Safari, Internet Explorer vagy Edge esetén támogatott, amíg felhő rendszerhéj az adott böngésző beállításait.
+## <a name="next-steps"></a>Következő lépések
+[A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md)
+[PowerShell használatával a felhő rendszerhéj (előzetes verzió) gyors üzembe helyezés](quickstart-powershell.md)

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
-ms.openlocfilehash: 3eb604321c244c6ceeb76d08ae39b21d1e777ece
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 373abb8f40a8acf557b7cd4a0d0b3fb55f4a545c
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="model-management-command-line-interface-reference"></a>Modell felügyeleti parancssori felület referenciája
 
@@ -69,6 +69,8 @@ Helyi argumentumai:
                      the active MLC env.
 
 **A telepítési környezet beállítása**
+
+A setup parancs szükséges hozzá közreműködői hozzáférése az előfizetéshez. Ha nem rendelkezik, amely, az erőforráscsoport, a központilag telepíteni közreműködői hozzáférés legalább szükséges. Ehhez az utóbbi, meg kell adni az erőforráscsoport neve, a telepítő parancs használatával részeként `-g` a jelzőt. 
 
 Központi telepítés esetén két lehetőség áll rendelkezésre: *helyi* és *fürt*. Beállítás a `--cluster` (vagy `-c`) jelző lehetővé teszi, hogy a fürtöt tartalmazó környezetben, amely látja el az ACS-fürthöz. A telepítő alapvető szintaxisa a következő:
 

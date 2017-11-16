@@ -14,20 +14,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: alkarche
-ms.openlocfilehash: d201c8395adf47fa3d9f790b77b1d29dda5a0aeb
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 24bc439b6167d335a0862aa93debb9efe5aeae48
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="work-with-azure-functions-proxies-preview"></a>Együttműködik az Azure Functions proxyk (előzetes verzió)
-
-> [!NOTE] 
-> Az Azure Functions proxyk jelenleg előzetes verzió. Szabad, amíg a kép, de a szabványos függvényekben számlázási proxy végrehajtások vonatkozik. További információkért lásd: [Azure Functions díjszabási](https://azure.microsoft.com/pricing/details/functions/).
+# <a name="work-with-azure-functions-proxies"></a>Az Azure Functions proxyk használata
 
 Ez a cikk azt ismerteti, hogyan konfigurálását és az Azure Functions proxyk használatát. Ez a szolgáltatás végpontok is megadhat, a függvény alkalmazások, amelyeket a rendszer egy másik erőforrás. Ezek proxyk segítségével nagy API felosztása több függvény alkalmazásokat (akár egy mikroszolgáltatási architektúra), miközben továbbra is egyetlen API felülete ügyfelek számára.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+> [!NOTE] 
+> Szabványos függvényekben számlázási proxy végrehajtások vonatkozik. További információkért lásd: [Azure Functions díjszabási](https://azure.microsoft.com/pricing/details/functions/).
 
 ## <a name="create"></a>A proxy létrehozása
 

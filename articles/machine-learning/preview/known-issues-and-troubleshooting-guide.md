@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 28d97d65d2671f7af2cd3b29ea65ae053d5e8122
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 050758240c9670a6f120f069d736cf6d6475b534
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -85,7 +85,11 @@ Azure ML munkaterület dolgozik, amikor is küldhet nekünk a rosszallás (vagy 
 - RevoScalePy könyvtár csak Windows és Linux (a Docker-tároló) támogatott. MacOS a nem támogatott.
 
 ## <a name="cant-update-workbench"></a>Nem lehet frissíteni a munkaterület
-Egy új frissítés érhető el, ha a munkaterületet üzemeltető alkalmazás kezdőlap egy üzenetet fog látni az új frissítésről jeleníti meg. Meg kell jelennie egy frissítés jelvény jelenik meg a bal alsó sarkába a alkalmazást a harang ikonra. Kattintson a jelvény, és kövesse a telepítővarázsló a frissítés telepítéséhez. Ha nem látja az értesítési, indítsa újra az alkalmazást. Ha még nem látja a frissítési értesítés újraindítás után, előfordulhat, hogy néhány okainak lehet.
+Egy új frissítés érhető el, ha a munkaterületet üzemeltető alkalmazás kezdőlap egy üzenetet fog látni az új frissítésről jeleníti meg. Meg kell jelennie egy frissítés jelvény jelenik meg a bal alsó sarkába a alkalmazást a harang ikonra. Kattintson a jelvény, és kövesse a telepítővarázsló a frissítés telepítéséhez. 
+
+![frissítésének képe](./media/known-issues-and-troubleshooting-guide/update.png)
+
+Ha nem látja az értesítési, indítsa újra az alkalmazást. Ha még nem látja a frissítési értesítés újraindítás után, előfordulhat, hogy néhány okainak lehet.
 
 ### <a name="you-are-launching-workbench-from-a-pinned-shortcut-on-the-task-bar"></a>A tálcán rögzített parancsikon vannak fókusza munkaterület
 Előfordulhat, hogy már telepítette a frissítést. De a rögzített helyi továbbra is a régi bits lemezen mutat. Ez megkeresésével ellenőrizheti a `%localappdata%/AmlWorkbench` mappa, és ellenőrizze, hogy ha legújabb verziója van telepítve, és vizsgálja meg azon tulajdonságát, tekintse meg, ahol mutató rögzített hivatkozás. Ha ellenőrizte, egyszerűen távolítsa el a régi helyi Start menüből indítsa el a munkaterületet üzemeltető és opcionálisan hozzon létre egy új rögzített parancsikont a tálcán.

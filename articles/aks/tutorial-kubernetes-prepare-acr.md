@@ -1,5 +1,5 @@
 ---
-title: "Az Azure útmutató – előkészítése ACR Kubernertes |} Microsoft Docs"
+title: "Az Azure útmutató – előkészítése ACR Kubernetes |} Microsoft Docs"
 description: "AKS oktatóanyag – ACR előkészítése"
 services: container-service
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: fabfbe51f9486c69d795b04bd668b50971157820
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 15b54f6131c847551295061df6c6ad6a476a7da6
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Üzembe helyezés és használat Azure tároló beállításjegyzék
 
@@ -32,13 +32,13 @@ Az Azure tároló beállításjegyzék (ACR) egy Azure-alapú, személyes beáll
 > * A tároló lemezkép ACR a címkézés
 > * ACR a Rendszerkép feltöltése
 
-A következő útmutatókból adott ACR példány AKS Kubernetes fürttagként van integrálva. 
+A következő útmutatókból adott ACR példány AKS Kubernetes fürttagként van integrálva.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Az a [az oktatóanyag előző](./tutorial-kubernetes-prepare-app.md), a tároló-lemezkép létrejött egy egyszerű Azure szavazás alkalmazáshoz. Ha nem hozott létre az Azure szavazás alkalmazás lemezképét, térjen vissza [oktatóanyag 1 – létrehozás tároló képek](./tutorial-kubernetes-prepare-app.md).
 
-Ez az oktatóanyag megköveteli, hogy futnak-e az Azure parancssori felület 2.0.20 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Ez az oktatóanyag megköveteli, hogy futnak-e az Azure parancssori felület 2.0.21 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="deploy-azure-container-registry"></a>Telepítse az Azure tároló beállításjegyzék
 
@@ -117,7 +117,7 @@ tiangolo/uwsgi-nginx-flask                           flask               788ca94
 
 ## <a name="push-images-to-registry"></a>Leküldéses képek beállításjegyzék
 
-Leküldéses a `azure-vote-front` kép a beállításjegyzékhez. 
+Leküldéses a `azure-vote-front` kép a beállításjegyzékhez.
 
 Az alábbi példa használatával, cserélje le a környezetből loginServer loginServer ACR neve.
 

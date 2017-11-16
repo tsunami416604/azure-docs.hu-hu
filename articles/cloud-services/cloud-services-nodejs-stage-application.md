@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: e35bbd31f39722c2e95ce58772dc6bd5eaf839a0
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 307741d0792b34332d98bfa4f2d62c9fd1cf07a1
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="staging-an-application-in-azure"></a>Átmeneti egy alkalmazás az Azure-ban
 A burkolt alkalmazás tesztelése előtt helyezze át az éles környezetben, amelyben az alkalmazás elérhető az interneten Azure-ban az átmeneti környezet is telepíthető. Az átmeneti hasonlít pontosan az éles környezetben, azzal a különbséggel, hogy csak alkalmazást érheti el az előkészített az Azure által létrehozott rejtjelezett URL. Miután ellenőrizte, hogy az alkalmazás megfelelően működik-e, azt is telepíthető az éles környezetbe egy virtuális IP-cím (VIP) felcserélés elvégzésével.
@@ -72,4 +72,4 @@ Sikeresen előkészítette a központi telepítés, és éles környezet frissí
 [cloud-service-dashboard]: ./media/cloud-services-nodejs-stage-application/cloud-service-dashboard-staging.png
 [cloud-service-staging-url]: ./media/cloud-services-nodejs-stage-application/cloud-service-staging-url.png
 [vip-swap-dialog]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
-[A szolgáltatás frissítése telepítéséről üzemi csere virtuális IP-címek az Azure-ban]: cloud-services-how-to-manage.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
+[A szolgáltatás frissítése telepítéséről üzemi csere virtuális IP-címek az Azure-ban]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production

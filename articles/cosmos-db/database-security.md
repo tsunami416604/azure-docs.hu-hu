@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
+ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 73d5c33cec1ebec76ea738e03cd29e88d482b905
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f0f6578b14b2fdd3807303eb94df077df92ba77
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB adatbázis biztonsági
 
@@ -71,7 +71,7 @@ Most dig részletesen mindegyiknél be.
 |Active directory-integráció (RBAC)| A hozzáférés-vezérlés (IAM) használatával az Azure portálon, adatbázis-fiók eléréséhez is megadhatja a táblázatot követő képernyőfelvételen látható módon. IAM szerepköralapú hozzáférés-vezérlés és jól integrálható az Active Directory. Használhatja a beépített szerepkörök vagy egyéni szerepkörök az egyes személyek és csoportok az alábbi ábrán látható módon.|
 |Globális replikáció|Azure Cosmos DB kulcsrakész globális terjesztési, amely lehetővé teszi az adatok replikálása közül legalább egy Azure világszerte adatközpontok az egy kattintással kínál. Globális replikáció lehetővé teszi a globálisan méretezhető legyen, és az adatok a világ különböző alacsony késésű hozzáférést biztosítanak.<br><br>A biztonsági környezetében globális replikációs regionális meghibásodásokkal szemben az adatvédelem biztosítja.<br><br>További információ: [adatok globálisan terjesztése](distribute-data-globally.md).|
 |Regionális feladatátvétel|Ha az adatok több adatközpont replikálása, Azure Cosmos DB automatikusan áthalad az operatív kell egy regionális adatközpont kapcsolat nélküli módba. A prioritási sorrend listájáról a régióban, amelyben a rendszer replikálja az adatokat használó feladatátvevő régiók hozhat létre. <br><br>További információ: [regionális feladatátvétel az Azure Cosmos Adatbázisba](regional-failover.md).|
-|A helyi replikációt|Még belül egyetlen adatközpontba, Azure Cosmos DB automatikusan replikálja az adatokat a magas rendelkezésre állású, felkínálva a választott [konzisztenciaszintek](consistency-levels.md). Ez biztosítja, hogy egy [hasznos üzemidő rendelkezésre állás 99,99 % SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) és pénzügyi garanciális - valami más adatbázis-szolgáltatás által biztosított származnak.|
+|A helyi replikációt|Még belül egyetlen adatközpontba, Azure Cosmos DB automatikusan replikálja az adatokat a magas rendelkezésre állású, felkínálva a választott [konzisztenciaszintek](consistency-levels.md). Ez biztosítja, hogy egy 99,99 % [SLA-elérhetőséget](https://azure.microsoft.com/support/legal/sla/cosmos-db) összes egyetlen régión és az összes több területi fiókok enyhíteni konzisztencia, és 99.999 %, olvassa el az összes fiókot a több területi adatbázis rendelkezésre állását.|
 |Online biztonsági mentések automatikus|Az Azure Cosmos DB adatbázisok rendszeresen végeznek biztonsági mentést és egy georedundant tárolja. <br><br>További információ: [automatikus online biztonsági mentés és helyreállítás Azure Cosmos DB](online-backup-and-restore.md).|
 |Törölt adatok helyreállításához|Az automatikus online biztonsági mentések helyreállítani az adatokat, lehetséges, hogy véletlenül törölt az esemény után legfeljebb kb. 30 napig használható. <br><br>További információ: [automatikus online biztonsági mentés és helyreállítás Azure Cosmos DB](online-backup-and-restore.md)|
 |Védeni, és a bizalmas adatok elkülönítése|A felsorolt régiókban lévő összes adatot [Újdonságok?](#whats-new) most titkosítása.<br><br>PII-k és más bizalmas adatokat el lehet különíteni az adott gyűjteményekre és írható-olvasható, vagy csak olvasási hozzáféréssel az egyes felhasználók korlátozható.|

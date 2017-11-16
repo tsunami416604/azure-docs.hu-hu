@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: pratshar
-ms.openlocfilehash: 9d6a806ec533259797080fbfee2c38f918ebd8a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1df7e04fc9cec5722747bafce7e2e5519b76315d
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="network-mapping-between-two-azure-regions"></a>Két Azure-régiók közötti hálózatleképezés
 
@@ -48,7 +48,7 @@ Hajtsa végre ugyanezt a hálózatra való leképezés létrehozása Délkelet-�
 
 ## <a name="mapping-network-when-enabling-replication"></a>Ha engedélyezve van a replikáció hálózati
 
-Ha hálózatra való leképezés nem történik meg, amikor első alkalommal űrlap egy Azure-régiót virtuális gép replikál egy másikra, akkor választhatja célhálózat ugyanazt az folyamat részeként. A Site Recovery forrás régió cél régióhoz és a cél régió forrás régiónak a kijelölés alapján hoz létre a hálózatok leképezését.   
+Ha hálózatra való leképezés nem történik meg, amikor replikál egy virtuális gép először az Azure-régió, egy másik, akkor választhatja célhálózat ugyanazt az folyamat részeként. A Site Recovery forrás régió cél régióhoz és a cél régió forrás régiónak a kijelölés alapján hoz létre a hálózatok leképezését.   
 
 ![Hálózatleképezés](./media/site-recovery-network-mapping-azure-to-azure/network-mapping4.png)
 
@@ -80,18 +80,18 @@ A cél virtuális gép alhálózata a forrás virtuális gép az alhálózat nev
 Az egyes a cél virtuális gép hálózati illesztő IP-cím van kiválasztva az alábbiak szerint:
 
 ### <a name="dhcp"></a>DHCP
-Ha a forrás virtuális gép hálózati illesztő nem használja a DHCP, majd a cél virtuális gép hálózati adapter is értéke DHCP.
+Ha a forrás virtuális gép hálózati illesztő nem használja a DHCP, majd a cél virtuális gép hálózati kapcsolat is értéke DHCP.
 
 ### <a name="static-ip"></a>Statikus IP-cím
-Ha a forrás virtuális gép hálózati illesztő statikus IP-címet használ, akkor a cél virtuális gép hálózati adapter is értéke statikus IP-címet használ. Statikus IP-cím van kiválasztva az alábbiak szerint:
+Ha a forrás virtuális gép hálózati illesztő statikus IP-címet használ, akkor a cél virtuális gép hálózati kapcsolat is értéke statikus IP-címet használ. Statikus IP-cím van kiválasztva az alábbiak szerint:
 
 #### <a name="same-address-space"></a>Ugyanazt a címtartományt
 
-Ha a forrás alhálózat és a cél alhálózathoz ugyanazt a címtartományt, akkor cél IP-címet értéke ugyanaz, mint az IP-címe a forrás virtuális gép hálózati illesztőt. Ha ugyanazon IP-cím nem érhető el, majd néhány más elérhető IP értéke a cél IP-címet.
+Ha a forrás alhálózat és a cél alhálózathoz ugyanazt a címtartományt, akkor a cél IP-címet értéke ugyanaz, mint az IP-címe a forrás virtuális gép hálózati illesztőt. Ha ugyanazon IP-cím nem érhető el, majd néhány más elérhető IP értéke a cél IP-címet.
 
 #### <a name="different-address-space"></a>Különböző címterület
 
-Ha a forrás alhálózat és a cél alhálózathoz eltérő, cél IP-címet állítja van bármilyen elérhető IP-cél alhálózaton.
+Ha a forrás alhálózat és a cél alhálózathoz eltérő, majd a figyelt IP cím értéke bármilyen elérhető IP-cél alhálózaton.
 
 A virtuális gép számítási és hálózati beállításainak megnyitásával módosíthatja a mindegyik hálózati interfész cél IP-címet.
 

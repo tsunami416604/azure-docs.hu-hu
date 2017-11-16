@@ -90,6 +90,7 @@
 ## Referencia
 ### [Kibocsátási megjegyzések](active-directory-b2c-developer-notes-custom.md)
 ### [Egyszeri bejelentkezés munkamenet-szolgáltatói](active-directory-b2c-reference-sso-custom.md)
+### [Nyelvi testreszabás](active-directory-b2c-language-customization-custom.md)
 ### [A bizalmi keretrendszer meghatározása](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 
 # Referencia

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 10/15/2017
 ms.author: maroche
-ms.openlocfilehash: 1f637acffdbf31f6c69124282f50dc5830ad9f5b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 6589edd535b513f8d1eb47e69f4fbcdd96a2f10d
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog támogatott adatforrások
 
@@ -42,32 +42,32 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure Data Lake Store-fájl</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure Blob Storage</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>A Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure Storage-címtár</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>A Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure Storage-tábla</td>
@@ -75,10 +75,10 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>
-        <font size="2"></font>
+        <font size="2">
       </td>
       <td>
-        <font size="2"></font>
+        <font size="2">
       </td>
     </tr>
     <tr>
@@ -86,364 +86,364 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>HDFS-fájl</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Hive tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel</td>
+      <td></td>
     </tr>
     <tr>
       <td>Hive nézete</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel</td>
+      <td></td>
     </tr>
     <tr>
       <td>MySQL-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power bi-ban</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>MySQL-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power bi-ban</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>Oracle Database tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power bi-ban</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>Oracle Database megtekintése</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power bi-ban</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>Más (általános eszköz)</td>
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure SQL Data Warehouse-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power BI-ban az SQL Server data Tools összetevővel</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop, SQL Server data Tools összetevővel</td>
+      <td></td>
     </tr>
     <tr>
       <td>Az SQL Data Warehouse megtekintése</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power BI-ban az SQL Server data Tools összetevővel</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop, SQL Server data Tools összetevővel</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services dimenzió</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power bi-ban</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>Az SQL Server Analysis Services KPI</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power bi-ban</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services mérték</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power bi-ban</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power bi-ban</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services jelentés</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Böngésző</font></td>
-      <td><font size=2>Csak natív üzemmódú kiszolgálók esetén. SharePoint-módban nem támogatott.</font></td>
+      <td>Böngésző</td>
+      <td>Csak natív üzemmódú kiszolgálók esetén. SharePoint-módban nem támogatott.</td>
     </tr>
     <tr>
       <td>SQL Server tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power BI-ban az SQL Server data Tools összetevővel</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop, SQL Server data Tools összetevővel</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server megtekintése</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Az Excel, a Power BI-ban az SQL Server data Tools összetevővel</font></td>
-      <td><font size=2></font></td>
+      <td>Az Excel, a Power BI Desktop, SQL Server data Tools összetevővel</td>
+      <td></td>
     </tr>
     <tr>
       <td>Teradata tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel</td>
+      <td></td>
     </tr>
     <tr>
       <td>Teradata megtekintése</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel</td>
+      <td></td>
     </tr>
     <tr>
       <td>SAP HANA-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>A Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>DB2 tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>DB2 megtekintése</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Rendszer-fájl</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>FTP-könyvtár</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>FTP-fájl</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>HTTP-jelentés</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>HTTP-végpont</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>HTTP-fájl</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>OData entitáskészlet</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Az OData-funkció</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>PostgreSQL tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>PostgreSQL megtekintése</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>SAP HANA-nézet</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td> Salesforce-objektum</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>SharePoint-lista </td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Az Azure Cosmos DB gyűjtemény</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Általános ODBC tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Általános ODBC megtekintése</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Cassandra tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2>Általános eszközként ODBC közzététele</font></td>
+      <td></td>
+      <td>Általános eszközként ODBC közzététele</td>
     </tr>
     <tr>
       <td>Cassandra megtekintése</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2>Általános eszközként ODBC közzététele</font></td>
+      <td></td>
+      <td>Általános eszközként ODBC közzététele</td>
     </tr>
     <tr>
       <td>Sybase tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Sybase megtekintése</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>MongoDB tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2>Általános eszközként ODBC közzététele</font></td>
+      <td></td>
+      <td>Általános eszközként ODBC közzététele</td>
     </tr>
     <tr>
       <td>MongoDB megtekintése</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2>Általános eszközként ODBC közzététele</font></td>
+      <td></td>
+      <td>Általános eszközként ODBC közzététele</td>
     </tr>
 </table>
 
-Ha további segítségre, küldje el a szolgáltatás kérelmet a [Azure Data Catalog fórum](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
+Ha azt szeretné, tekintse meg a támogatott adott adatforrásra, azt javasoljuk (vagy hangos támogatásához, ha már javasolt) nyissa meg a [visszajelzés fórumbejegyzést Azure Data Catalog](https://feedback.azure.com/forums/906052-data-catalog).
 
 
 ## <a name="data-source-reference-specification"></a>Adatforrás hivatkozás megadása
@@ -462,519 +462,948 @@ Ha további segítségre, küldje el a szolgáltatás kérelmet a [Azure Data Ca
       <td>Tároló</td>
       <td>Data Lake</td>
       <td>
-        <font size=2>Protokoll: webhdfs <br>Hitelesítési: {alapvető, oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: webhdfs
+            <br>Authentication: {basic, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Azure Data Lake Store</td>
-      <td>Tábla</td>
-      <td>Könyvtár, fájl</td>
+      <td>Table</td>
+      <td>Directory, file</td>
       <td>
-        <font size=2>Protokoll: webhdfs <br>Hitelesítési: {alapvető, oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: webhdfs
+            <br>Authentication: {basic, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Azure Storage</td>
-      <td>Tároló</td>
-      <td>Tároló</td>
+      <td>Container</td>
+      <td>Container</td>
       <td>
-        <font size=2>Protokoll: azure-blobot <br>Hitelesítési: {azure-access-kulcs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tartomány <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fiók <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tároló</font>
+        
+            Protocol: azure-blobs
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; container
+        
       </td>
     </tr>
     <tr>
       <td>Azure Storage</td>
-      <td>Tábla</td>
-      <td>A BLOB-, könyvtár</td>
+      <td>Table</td>
+      <td>Blob, directory</td>
       <td>
-        <font size=2>Protokoll: azure-blobot <br>Hitelesítési: {azure-access-kulcs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tartomány <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fiók <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tároló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;név</font>
+        
+            Protocol: azure-blobs
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; container
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name
+        
       </td>
     </tr>
     <tr>
       <td>Azure Storage</td>
-      <td>Tároló</td>
-      <td>Tároló</td>
+      <td>Container</td>
+      <td>Container</td>
       <td>
-        <font size=2>Protokoll: azure-táblák <br>Hitelesítési: {azure-access-kulcs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tartomány <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fiók</font>
+        
+            Protocol: azure-tables
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
+        
       </td>
     </tr>
     <tr>
       <td>Azure Storage</td>
-      <td>Tábla</td>
-      <td>Tábla</td>
+      <td>Table</td>
+      <td>Table</td>
       <td>
-        <font size=2>Protokoll: azure-táblák <br>Hitelesítési: {azure-access-kulcs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tartomány <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fiók <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;név</font>
+        
+            Protocol: azure-tables
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name
+        
       </td>
     </tr>
     <tr>
       <td>Cosmos</td>
-      <td>Tároló</td>
-      <td>Virtuális fürt</td>
+      <td>Container</td>
+      <td>Virtual cluster</td>
       <td>
-        <font size=2>Protokoll: cosmos <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: cosmos
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Cosmos</td>
-      <td>Tábla</td>
-      <td>Az adatfolyam, az adatfolyam be van állítva, nézet</td>
+      <td>Table</td>
+      <td>Stream, stream set, view</td>
       <td>
-        <font size=2>Protokoll: cosmos <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: cosmos
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Datazen</td>
-      <td>Tároló</td>
-      <td>Helykiszolgáló</td>
+      <td>Container</td>
+      <td>Site</td>
       <td>
-        <font size=2>Protokoll: http <br>Hitelesítési: {none, basic, a windows, a oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Datazen</td>
-      <td>Jelentés</td>
-      <td>A jelentés, az irányítópult</td>
+      <td>Report</td>
+      <td>Report, dashboard</td>
       <td>
-        <font size=2>Protokoll: http <br>Hitelesítési: {none, basic, a windows, a oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>DB2</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>Protokoll: db2 <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis</font>
+        
+            Protocol: db2
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>DB2</td>
-      <td>Tábla</td>
-      <td>A tábla, nézet</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2>Protokoll: db2 <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma</font>
+        
+            Protocol: db2
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+        
       </td>
     </tr>
     <tr>
-      <td>Fájlrendszer</td>
-      <td>Tábla</td>
-      <td>Fájl</td>
+      <td>File system</td>
+      <td>Table</td>
+      <td>File</td>
       <td>
-        <font size=2>Protokoll: fájl <br>Hitelesítési: {none, basic, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elérési út</font>
+        
+            Protocol: file
+            <br>Authentication: {none, basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; path
+        
       </td>
     </tr>
     <tr>
       <td>FTP</td>
-      <td>Tábla</td>
-      <td>Könyvtár, fájl</td>
+      <td>Table</td>
+      <td>Directory, file</td>
       <td>
-        <font size=2>Protokoll: ftp <br>Hitelesítési: {none, basic, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: ftp
+            <br>Authentication: {none, basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
-      <td>Hadoop elosztott fájlrendszerhez</td>
-      <td>Tároló</td>
-      <td>Fürt</td>
+      <td>Hadoop Distributed File System</td>
+      <td>Container</td>
+      <td>Cluster</td>
       <td>
-        <font size=2>Protokoll: webhdfs <br>Hitelesítési: {alapvető, oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: webhdfs
+            <br>Authentication: {basic, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
-      <td>Hadoop elosztott fájlrendszerhez</td>
-      <td>Tábla</td>
-      <td>Könyvtár, fájl</td>
+      <td>Hadoop Distributed File System</td>
+      <td>Table</td>
+      <td>Directory, file</td>
       <td>
-        <font size=2>Protokoll: webhdfs <br>Hitelesítési: {alapvető, oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: webhdfs
+            <br>Authentication: {basic, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Hive</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>Protokoll: struktúra <br>Hitelesítési: {HDInsight, basic, a felhasználónevet, nincs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>connectionProperties: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;serverProtocol: {hive2}</font>
+        
+            Protocol: hive
+            <br>Authentication: {HDInsight, basic, username, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>connectionProperties:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serverProtocol: {hive2}
+        
       </td>
     </tr>
     <tr>
       <td>Hive</td>
-      <td>Tábla</td>
-      <td>A tábla, nézet</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2>Protokoll: struktúra <br>Hitelesítési: {HDInsight, basic, a felhasználónevet, nincs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum <br>connectionProperties: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;serverProtocol: {hive2}</font>
+        
+            Protocol: hive
+            <br>Authentication: {HDInsight, basic, username, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>connectionProperties:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serverProtocol: {hive2}
+        
       </td>
     </tr>
     <tr>
       <td>HTTP</td>
-      <td>Tároló</td>
-      <td>Helykiszolgáló</td>
+      <td>Container</td>
+      <td>Site</td>
       <td>
-        <font size=2>Protokoll: http <br>Hitelesítési: {none, basic, a windows, a oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>HTTP</td>
-      <td>Jelentés</td>
-      <td>A jelentés, az irányítópult</td>
+      <td>Report</td>
+      <td>Report, dashboard</td>
       <td>
-        <font size=2>Protokoll: http <br>Hitelesítési: {none, basic, a windows, a oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>HTTP</td>
-      <td>Tábla</td>
-      <td>Végpont, fájl</td>
+      <td>Table</td>
+      <td>Endpoint, file</td>
       <td>
-        <font size=2>Protokoll: http <br>Hitelesítési: {none, basic, a windows, a oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>MySQL</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>Protokoll: mysql <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis</font>
+        
+            Protocol: mysql
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>MySQL</td>
-      <td>Tábla</td>
-      <td>A tábla, nézet</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2>Protokoll: mysql <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: mysql
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>OData</td>
-      <td>Tároló</td>
-      <td>Entitás tároló</td>
+      <td>Container</td>
+      <td>Entity container</td>
       <td>
-        <font size=2>Protokoll: odata <br>Hitelesítési: {none, basic, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: odata
+            <br>Authentication: {none, basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>OData</td>
-      <td>Tábla</td>
-      <td>Entitáskészlet, a függvény</td>
+      <td>Table</td>
+      <td>Entity set, function</td>
       <td>
-        <font size=2>Protokoll: odata <br>Hitelesítési: {none, basic, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;erőforrás</font>
+        
+            Protocol: odata
+            <br>Authentication: {none, basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; resource
+        
       </td>
     </tr>
     <tr>
       <td>Oracle Database</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>Protokoll: oracle <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis</font>
+        
+            Protocol: oracle
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>Oracle Database</td>
-      <td>Tábla</td>
-      <td>A tábla, nézet</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2>Protokoll: oracle <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: oracle
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>PostgreSQL</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>Protokoll: postgresql <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis</font>
+        
+            Protocol: postgresql
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>PostgreSQL</td>
-      <td>Tábla</td>
-      <td>A tábla, nézet</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2>Protokoll: postgresql <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: postgresql
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
-      <td>Power BI</td>
-      <td>Tároló</td>
-      <td>Helykiszolgáló</td>
+      <td>Power BI Desktop</td>
+      <td>Container</td>
+      <td>Site</td>
       <td>
-        <font size=2>Protokoll: http <br>Hitelesítési: {none, basic, a windows, a oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
-      <td>Power BI</td>
-      <td>Jelentés</td>
-      <td>A jelentés, az irányítópult</td>
+      <td>Power BI Desktop</td>
+      <td>Report</td>
+      <td>Report, dashboard</td>
       <td>
-        <font size=2>Protokoll: http <br>Hitelesítési: {none, basic, a windows, a oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
-      <td>A Power Query</td>
-      <td>Tábla</td>
-      <td>Adatok adategyesítési</td>
+      <td>Power Query</td>
+      <td>Table</td>
+      <td>Data mashup</td>
       <td>
-        <font size=2>Protokoll: power-lekérdezés <br>Hitelesítési: {oauth} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: power-query
+            <br>Authentication: {oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Salesforce</td>
-      <td>Tábla</td>
-      <td>Objektum</td>
+      <td>Table</td>
+      <td>Object</td>
       <td>
-        <font size=2>Protokoll: salesforce-com <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loginServer <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;osztály <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;itemName</font>
+        
+            Protocol: salesforce-com
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loginServer
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itemName
+        
       </td>
     </tr>
     <tr>
       <td>SAP HANA</td>
-      <td>Tároló</td>
-      <td>Kiszolgáló</td>
+      <td>Container</td>
+      <td>Server</td>
       <td>
-        <font size=2>Protokoll: sap hana-sql <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló</font>
+        
+            Protocol: sap-hana-sql
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+        
       </td>
     </tr>
     <tr>
       <td>SAP HANA</td>
-      <td>Tábla</td>
-      <td>Nézet</td>
+      <td>Table</td>
+      <td>View</td>
       <td>
-        <font size=2>Protokoll: sap hana-sql <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: sap-hana-sql
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SharePoint</td>
-      <td>Tábla</td>
-      <td>Lista</td>
+      <td>Table</td>
+      <td>List</td>
       <td>
-        <font size=2>Protokoll: sharepoint-lista <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe</font>
+        
+            Protocol: sharepoint-list
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>SQL Data Warehouse</td>
-      <td>Parancs</td>
-      <td>Tárolt eljárás</td>
+      <td>Command</td>
+      <td>Stored procedure</td>
       <td>
-        <font size=2>Protokoll: TDS-adatfolyam <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SQL Data Warehouse</td>
       <td>TableValuedFunction</td>
-      <td>Táblázat értékű függvényben</td>
+      <td>Table-valued function</td>
       <td>
-        <font size=2>Protokoll: TDS-adatfolyam <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SQL Data Warehouse</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>Protokoll: TDS-adatfolyam <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis</font>
+        
+            Protocol: tds
+          <br>Authentication: {protocol, windows}
+          <br>Address:
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>SQL Data Warehouse</td>
-      <td>Tábla</td>
-      <td>A tábla, nézet</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2>Protokoll: TDS-adatfolyam <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server</td>
-      <td>Parancs</td>
-      <td>Tárolt eljárás</td>
+      <td>Command</td>
+      <td>Stored procedure</td>
       <td>
-        <font size=2>Protokoll: TDS-adatfolyam <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server</td>
       <td>TableValuedFunction</td>
-      <td>Táblázat értékű függvényben</td>
+      <td>Table-valued function</td>
       <td>
-        <font size=2>Protokoll: TDS-adatfolyam <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>Protokoll: TDS-adatfolyam <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis</font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server</td>
-      <td>Tábla</td>
-      <td>A tábla, nézet</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2>Protokoll: TDS-adatfolyam <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services többdimenziós</td>
-      <td>Tároló</td>
-      <td>Modell</td>
+      <td>SQL Server Analysis Services multidimensional</td>
+      <td>Container</td>
+      <td>Model</td>
       <td>
-        <font size=2>Protokoll: analysis-szolgáltatások <br>Hitelesítési: {windows, a basic, a névtelen, nincs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modell</font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services többdimenziós</td>
-      <td>KPI-T</td>
-      <td>KPI-T</td>
+      <td>SQL Server Analysis Services multidimensional</td>
+      <td>KPI</td>
+      <td>KPI</td>
       <td>
-        <font size=2>Protokoll: analysis-szolgáltatások <br>Hitelesítési: {windows, a basic, a névtelen, nincs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modell <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Objektumtípus: {KPI}</font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {KPI}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services többdimenziós</td>
-      <td>mértékcsoport</td>
-      <td>mértékcsoport</td>
+      <td>SQL Server Analysis Services multidimensional</td>
+      <td>Measure</td>
+      <td>Measure</td>
       <td>
-        <font size=2>Protokoll: analysis-szolgáltatások <br>Hitelesítési: {windows, a basic, a névtelen, nincs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modell <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Objektumtípus: {Measure}</font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Measure}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services többdimenziós</td>
-      <td>Tábla</td>
-      <td>Dimenzió</td>
+      <td>SQL Server Analysis Services multidimensional</td>
+      <td>Table</td>
+      <td>Dimension</td>
       <td>
-        <font size=2>Protokoll: analysis-szolgáltatások <br>Hitelesítési: {windows, a basic, a névtelen, nincs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modell <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Objektumtípus: {dimenzió}</font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Dimension}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services táblázatos</td>
-      <td>Tároló</td>
-      <td>Modell</td>
+      <td>SQL Server Analysis Services tabular</td>
+      <td>Container</td>
+      <td>Model</td>
       <td>
-        <font size=2>Protokoll: analysis-szolgáltatások <br>Hitelesítési: {windows, a basic, a névtelen, nincs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modell</font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services táblázatos</td>
-      <td>KPI-T</td>
-      <td>KPI-T</td>
+      <td>SQL Server Analysis Services tabular</td>
+      <td>KPI</td>
+      <td>KPI</td>
       <td>
-        <font size=2>Protokoll: analysis-szolgáltatások <br>Hitelesítési: {windows, a basic, a névtelen, nincs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modell <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Objektumtípus: {KPI}</font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {KPI}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services táblázatos</td>
-      <td>mértékcsoport</td>
-      <td>mértékcsoport</td>
+      <td>SQL Server Analysis Services tabular</td>
+      <td>Measure</td>
+      <td>Measure</td>
       <td>
-        <font size=2>Protokoll: analysis-szolgáltatások <br>Hitelesítési: {windows, a basic, a névtelen, nincs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modell <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Objektumtípus: {Measure}</font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Measure}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services táblázatos</td>
-      <td>Tábla</td>
-      <td>Tábla</td>
+      <td>SQL Server Analysis Services tabular</td>
+      <td>Table</td>
+      <td>Table</td>
       <td>
-        <font size=2>Protokoll: analysis-szolgáltatások <br>Hitelesítési: {windows, a basic, a névtelen, nincs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modell <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Objektumtípus: {TABLE táblázat}</font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Table}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Reporting Services szoftverben</td>
-      <td>Tároló</td>
-      <td>Kiszolgáló</td>
+      <td>SQL Server Reporting Services</td>
+      <td>Container</td>
+      <td>Server</td>
       <td>
-        <font size=2>Protokoll: jelentési szolgáltatások <br>Hitelesítési: {windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verzió: {ReportingService2010}</font>
+        
+            Protocol: reporting-services
+            <br>Authentication: {windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version: {ReportingService2010}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Reporting Services szoftverben</td>
-      <td>Jelentés</td>
-      <td>Jelentés</td>
+      <td>SQL Server Reporting Services</td>
+      <td>Report</td>
+      <td>Report</td>
       <td>
-        <font size=2>Protokoll: jelentési szolgáltatások <br>Hitelesítési: {windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elérési út <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verzió: {ReportingService2010}</font>
+        
+            Protocol: reporting-services
+            <br>Authentication: {windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; path
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version: {ReportingService2010}
+        
       </td>
     </tr>
     <tr>
       <td>Teradata</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>Protokoll: teradata rendszerhez <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis</font>
+        
+            Protocol: teradata
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>Teradata</td>
-      <td>Tábla</td>
-      <td>A tábla, nézet</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2>Protokoll: teradata rendszerhez <br>Hitelesítési: {protokollt, a windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            Protocol: teradata
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server Master Data Services</td>
-      <td>Tároló</td>
-      <td>Modell</td>
+      <td>Container</td>
+      <td>Model</td>
       <td>
-        <font size="2">Protokoll: mssql-mds <br>Hitelesítési: {windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modell <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verzió</font>
+        <font size="2">
+          Protocol: mssql-mds
+          <br>Authentication: {windows}
+          <br>Address:
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server Master Data Services</td>
-      <td>Tábla</td>
-      <td>Entitás</td>
+      <td>Table</td>
+      <td>Entity</td>
       <td>
-        <font size="2">Protokoll: mssql-mds <br>Hitelesítési: {windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modell <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verzió <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entitás</font>
+        <font size="2">
+          Protocol: mssql-mds
+          <br>Authentication: {windows}
+          <br>Address:
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entity
+        
       </td>
     </tr>
     <tr>
       <td>Azure Cosmos DB</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>Protokoll: dokumentum-adatbázis <br>Hitelesítési: {azure-access-kulcs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis</font>
+        
+            Protocol: document-db
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>Azure Cosmos DB</td>
-      <td>Gyűjtemény</td>
-      <td>Gyűjtemény</td>
+      <td>Collection</td>
+      <td>Collection</td>
       <td>
-        <font size=2>Protokoll: dokumentum-adatbázis <br>Hitelesítési: {azure-access-kulcs} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL-címe <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gyűjtemény</font>
+        
+            Protocol: document-db
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; collection
+        
       </td>
     </tr>
     <tr>
-      <td>Általános ODBC</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Generic ODBC</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>Protokoll: odbc <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beállítások <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis</font>
+        
+            Protocol: odbc
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; options
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
-      <td>Általános ODBC</td>
-      <td>Tábla</td>
-      <td>A tábla, nézet</td>
+      <td>Generic ODBC</td>
+      <td>Table</td>
+      <td>Table, View</td>
       <td>
-        <font size=2>Protokoll: odbc <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beállítások <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma</font>
+        
+            Protocol: odbc
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; options
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+        
       </td>
     </tr>
     <tr>
       <td>Sybase</td>
-      <td>Tároló</td>
-      <td>Adatbázis</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2>protokoll: sybase <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis</font>
+        
+            protocol: sybase
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>Sybase</td>
-      <td>Tábla</td>
-      <td>A tábla, nézet</td>
+      <td>Table</td>
+      <td>Table, View</td>
       <td>
-        <font size=2>protokoll: sybase <br>Hitelesítési: {alapvető, windows} <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kiszolgáló <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adatbázis <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;séma <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objektum</font>
+        
+            protocol: sybase
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
-      <td>Más (egyik sem)</td>
+      <td>Other (none of the above)</td>
       <td>\*</td>
       <td>\*</td>
       <td>
-        <font size=2>Protokoll: általános-eszköz <br>Cím: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assetId</font>
+        
+            Protocol: generic-asset
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assetId
+        
       </td>
     </tr>
 </table>

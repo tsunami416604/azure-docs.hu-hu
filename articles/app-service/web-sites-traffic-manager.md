@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: 93645aa5765d533b45fe2266f061ad61c0bf45d7
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 5bf687afa8f42292a3b21b19a572c76926fef1cd
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="controlling-azure-web-app-traffic-with-azure-traffic-manager"></a>Azure-webalkalmazás-forgalom vezérlése az Azure Traffic Managerrel
 > [!NOTE]
@@ -49,7 +49,7 @@ Az Azure-ral Azure Traffic Manager használatakor vegye figyelembe a következő
 * Ugyanabban a régióban használó telepítések Web Apps egy másik Azure-felhőszolgáltatásban együtt kombinálhatja a mindkét típusú végpontok engedélyezése hibrid környezetekben.
 * Egy webes alkalmazás végpontjának régiónként csak egy profilt adhat meg. A webes alkalmazás kiválasztható végpont egy régió tartozik, a fennmaradó webalkalmazások az adott régióban nem lehet kiválasztani, hogy válnak.
 * A webes alkalmazás végpontok, melyet az Azure Traffic Manager-profil megjelenik a **tartománynevek** a konfigurálás oldalon szakaszban a webalkalmazást a profil, de nem konfigurálható a.
-* Miután hozzáadta a webes alkalmazás-profilhoz, a **webhely URL-címe** az irányítópulton a Web portal alkalmazás lapját jeleníti meg az egyéni tartomány a webalkalmazás URL-címe Ha beállítása egy. Ellenkező esetben megjeleníti a Traffic Manager-profil URL-CÍMÉT (például `contoso.trafficmgr.com`). Mindkét közvetlen tartomány nevét a web app és a Traffic Manager URL-cím jelennek meg a webalkalmazás konfigurációs lapján alatt a **tartománynevek** szakasz.
+* Miután hozzáadta a webes alkalmazás-profilhoz, a **webhely URL-címe** az irányítópulton a Web portal alkalmazás lapját jeleníti meg az egyéni tartomány a webalkalmazás URL-címe Ha beállítása egy. Ellenkező esetben megjeleníti a Traffic Manager-profil URL-CÍMÉT (például `contoso.trafficmanager.net`). Mindkét közvetlen tartomány nevét a web app és a Traffic Manager URL-cím jelennek meg a webalkalmazás konfigurációs lapján alatt a **tartománynevek** szakasz.
 * Az egyéni tartománynevek működnek megfelelően, de a webes alkalmazásokhoz való hozzáadásán, úgy kell konfigurálnia a DNS-leképezés a Traffic Manager URL-címre mutasson. Egy Azure webalkalmazás számára az egyéni tartománynév beállítása a további információkért lásd: [egy egyéni tartománynevet egy Azure-webhely konfigurálása](app-service-web-tutorial-custom-domain.md).
 * Csak a standard vagy prémium szintű Azure Traffic Manager-profil üzemmódban működő webalkalmazások adhat hozzá.
 

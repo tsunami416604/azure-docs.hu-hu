@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: denlee
 ms.custom: mvc
-ms.openlocfilehash: b1419e5aad9446b9d96450cfad79b200cda9a518
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 613956416d35687c5f2fe0123a9a59182390b440
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Az Azure Cosmos DB: A Graph API a .NET fejlesztés
 Azure Cosmos-adatbázis egy Microsoft globálisan elosztott több modellre adatbázis szolgáltatás. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
@@ -53,7 +53,6 @@ Először hozzon létre egy Azure Cosmos DB fiókot az Azure portálon.
 
 > [!TIP]
 > * Már van Azure Cosmos DB fiókja? Ha igen, ugorjon előre [a Visual Studio megoldás beállítása](#SetupVS)
-> * Kellett az Azure DocumentDB-fiókot? Ha igen, a fiókját most már Azure Cosmos DB fiókkal, és ugorjon előre a [a Visual Studio megoldás beállítása](#SetupVS).  
 > * Ha az Azure Cosmos DB Emulator használ, adja kövesse a [Azure Cosmos DB emulátor](local-emulator.md) kell beállítania az emulátor, és ugorjon előre [a Visual Studio megoldás beállítása](#SetupVS). 
 >
 > 
@@ -86,7 +85,7 @@ Az Azure portálon lépjen az Azure Cosmos DB fiókjába, kattintson **kulcsok**
 
 Az URI a portálról másolása és beillesztése azt `Endpoint` a fenti az endpoint tulajdonság. Ezután másolja az elsődleges kulcsot a portálról, és illessze be azt a `AuthKey` fenti tulajdonság. 
 
-! [Képernyőfelvétel a C#-alkalmazás létrehozása az oktatóanyagban használt Azure-portálon. Egy Azure Cosmos DB fiók az Azure Cosmos DB navigációs KEYS gomb, és a kulcsok panelen lévő URI és PRIMARY KEY értékek megjelenítése] [kulcsok] 
+![Képernyőfelvétel a C#-alkalmazás létrehozása az oktatóanyagban használt Azure-portálon. Azt mutatja be egy Azure Cosmos DB fiók az Azure Cosmos DB navigációs KEYS gomb, és a kulcsok panelen lévő URI és PRIMARY KEY értékek](./media/tutorial-develop-graph-dotnet/keys.png) 
  
 ## <a id="instantiate"></a>A documentclient ügyfél segítségével hozható létre 
 Ezután hozzon létre egy új példányt a **DocumentClient**.  

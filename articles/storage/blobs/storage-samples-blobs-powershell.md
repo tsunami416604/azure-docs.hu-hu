@@ -13,13 +13,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: sample
-ms.date: 06/13/2017
+ms.date: 11/07/2017
 ms.author: robinsh
-ms.openlocfilehash: 74f6e8eb6dd29633fbf518831b446a149fbbddc5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bbf818a023219e1673a8864e8bf9a8ecd6110b85
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>Azure Blob Storage tárolóban az Azure PowerShell-példák
 
@@ -28,7 +28,8 @@ A következő táblázat, amely létrehozása és kezelése az Azure Storage Pow
 | | |
 |---|---|
 |**Storage-fiókok**||
-| [Hozzon létre egy tárfiókot, és a tárelérési kulcsok beolvasása/elforgatása](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Storage-fiókot, és kéri le, és forog a tárelérési kulcsok egyikét. |
+| [Hozzon létre egy tárfiókot, és a tárelérési kulcsok beolvasása/elforgatása](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Storage-fiókot, és kéri le, és forog a tárelérési kulcsok egyikét. |
 |**Blob Storage**||
-| [Kiszámítja egy Blob storage tárolót teljes mérete](../scripts/storage-blobs-container-calculate-size-powershell.md?toc=%2fcli%2fazure%2ftoc.json) | Kiszámítja egy tároló összes blobjának teljes mérete. |
-| [Egy megadott előtagot tárolók törlése](../scripts/storage-blobs-container-delete-by-prefix-powershell.md?toc=%2fcli%2fazure%2ftoc.json) | A megadott karakterlánc kezdve tárolók törli. |
+| [Kiszámítja egy Blob storage tárolót teljes mérete](../scripts/storage-blobs-container-calculate-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Kiszámítja egy tároló összes blobjának teljes mérete. |
+| [A Blob storage tárolót méretének kiszámításához számlázási okokból](../scripts/storage-blobs-container-calculate-billing-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Kiszámítja a számlázási költségek becslése céljából Blob Storage-tároló mérete. |
+| [Egy megadott előtagot tárolók törlése](../scripts/storage-blobs-container-delete-by-prefix-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A megadott karakterlánc kezdve tárolók törli. |

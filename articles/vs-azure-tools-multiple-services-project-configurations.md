@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.openlocfilehash: deb69101e855bcad56b9212736c52ace72631f0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59492ccc64a70680d71ad1de0700ed30f9e45306
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>A több szolgáltatáskonfiguráció használata Azure-projekt konfigurálása
 Egy Azure-felhőszolgáltatás-projekt tartalmazza a két konfigurációs fájlok: ServiceDefinition.csdef és ServiceConfiguration.cscfg. Ezeket a fájlokat az Azure cloud service alkalmazással csomagolva, és az Azure-bA telepítve.
@@ -30,7 +30,7 @@ A Microsoft Visual Studio Azure eszközei tulajdonságlapjain, melyekkel a fájl
 
 ![VS_Solution_Explorer_Roles_Properties](./media/vs-azure-tools-multiple-services-project-configurations/IC784076.png)
 
-A szolgáltatásdefiníció és a szolgáltatás konfigurációs fájljait az alapul szolgáló sémák kapcsolatos információkért tekintse meg a [Sémareferenciája](https://msdn.microsoft.com/library/azure/dd179398.aspx). Szolgáltatás konfigurációjával kapcsolatos további információkért lásd: [felhőalapú szolgáltatások konfigurálása](cloud-services/cloud-services-how-to-configure.md).
+A szolgáltatásdefiníció és a szolgáltatás konfigurációs fájljait az alapul szolgáló sémák kapcsolatos információkért tekintse meg a [.csdef XML-séma](cloud-services/schema-csdef-file.md) és [.cscfg XML-séma](cloud-services/schema-cscfg-file.md) cikkeket. Szolgáltatás konfigurációjával kapcsolatos további információkért lásd: [felhőalapú szolgáltatások konfigurálása](cloud-services/cloud-services-how-to-configure-portal.md).
 
 ## <a name="configuring-role-properties"></a>Szerepkör tulajdonságainak konfigurálása
 A webes és feldolgozói szerepkörök tulajdonságlapokat hasonlítanak, habár van néhány különbség, jelölt az alábbi szakaszokban található.
@@ -88,7 +88,7 @@ Használhatja a **helyi tároló** tulajdonságlapján egy vagy több szerepkör
 ## <a name="certificates-page"></a>Tanúsítványok lap
 Az a **tanúsítványok** lapon tanúsítványok a szerepkörhöz is hozzárendelhető. A hozzáadott tanúsítványok segítségével konfigurálja a HTTPS-végpontnak a **végpontok** tulajdonságlapján.
 
-A **tanúsítványok** tulajdonságlapján hozzáadja a tanúsítványokkal kapcsolatos adatokat a szolgáltatás konfigurációját. Vegye figyelembe, hogy a tanúsítványok nem vannak csomagolva az szolgáltatással; fel kell tölteni a tanúsítványok külön Azure keresztül a [a klasszikus Azure portálon](http://go.microsoft.com/fwlink/?LinkID=213885).
+A **tanúsítványok** tulajdonságlapján hozzáadja a tanúsítványokkal kapcsolatos adatokat a szolgáltatás konfigurációját. Vegye figyelembe, hogy a tanúsítványok nem vannak csomagolva az szolgáltatással; fel kell tölteni a tanúsítványok külön Azure keresztül a [Azure-portálon](http://portal.azure.com).
 
 Egy tanúsítványt a szerepkörrel társítani, adja meg a tanúsítvány nevét. Ez a név segítségével tekintse meg a tanúsítványt a HTTPS-végpontnak konfigurálásakor a **végpontok** tulajdonságlapján. Ezt követően adja meg, hogy a tanúsítványtároló **helyi számítógép** vagy **aktuális felhasználó** és a tároló neve. Végül adja meg a tanúsítvány ujjlenyomatát. Ha a tanúsítvány a jelenlegi User\Personal (a) tároló, a a tanúsítvány ujjlenyomata a tanúsítvány kijelölésével adatokat tartalmazó listát is megadhatja. Bármely más helyen található, adja meg kézzel az ujjlenyomat értékét.
 

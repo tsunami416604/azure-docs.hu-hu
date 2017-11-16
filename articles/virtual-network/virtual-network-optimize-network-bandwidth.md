@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2017
+ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 914747983d4d974810836be66d6c6af343f58b60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f7a65d32f662d7e265e58c5fe7d9dea81a4e63c
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Az Azure virtuális gépek hálózati teljesítmény optimalizálása
 
-Azure virtuális gépek (VM) rendelkezik, amely további optimalizálhatók a hálózat átviteli sebességét az alapértelmezett hálózati beállításokat. A cikkből megtudhatja, hogyan optimalizálható a hálózat átviteli sebességét a Microsoft Azure Windows és Linux virtuális gépeken, beleértve például Ubuntu, a CentOS és a Red Hat fő terjesztéseket.
+Azure virtuális gépek (VM) rendelkezik, amely további optimalizálhatók a hálózat átviteli sebességét az alapértelmezett hálózati beállításokat. A cikkből megtudhatja, hogyan optimalizálható a hálózat átviteli sebességét a Microsoft Azure Windows és Linux virtuális gépeken, beleértve például Ubuntu, a CentOS, és a Red Hat fő terjesztéseket.
 
 ## <a name="windows-vm"></a>Windowsos VM
 
@@ -33,7 +33,7 @@ Ha a Windows virtuális gép használata támogatott [az elérését gyorsítja 
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
-    Enabled              : False
+    Enabled                 : False
     ```
 2. Adja meg a következő parancs futtatásával engedélyezze az RSS:
 
@@ -44,66 +44,79 @@ Ha a Windows virtuális gép használata támogatott [az elérését gyorsítja 
 3. Győződjön meg arról, hogy engedélyezve van az RSS a virtuális gép írja be a `Get-NetAdapterRss` újra a parancsot. Ha sikeres, a következő egy példa a kimenetre adja vissza:
 
     ```powershell
-    Name                    :Ethernet
+    Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled              : True
     ```
 
 ## <a name="linux-vm"></a>Linux virtuális gép
 
-Az RSS az Azure Linux virtuális gép alapértelmezés szerint mindig engedélyezve van. Linux kernelek január, 2017 óta megjelent új hálózati optimalizálási beállításokat, amelyek lehetővé teszik a Linux virtuális gépek nagyobb hálózati átviteli sebesség eléréséhez tartalmazhat.
+Az RSS az Azure Linux virtuális gép alapértelmezés szerint mindig engedélyezve van. Linux kernelek október 2017 óta megjelent új hálózati optimalizálás beállításokat, amelyek lehetővé teszik a Linux virtuális gépek nagyobb hálózati átviteli sebesség eléréséhez tartalmazhat.
 
-### <a name="ubuntu"></a>Ubuntu
+### <a name="ubuntu-for-new-deployments"></a>Ubuntu az új központi telepítéseknél
 
-Az optimalizálás eléréséhez először frissítse frissítésétől. június 2017, amely a legfrissebb támogatott verziót:
+Az Ubuntu Azure kernel biztosítja a legjobb hálózati teljesítmény az Azure-on, és az alapértelmezett kernel mióta 2017. szeptember 21. A kernel eléréséhez először telepítse legújabb támogatott verzióját 16.04-es lts verzió, az alább ismertetett:
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
 "Sku": "16.04-LTS",
 "Version": "latest"
 ```
-A frissítés befejeződése után adja meg a legújabb kernel eléréséhez a következő parancsokat:
+A létrehozásának befejezése után adja meg a következő parancsok futtatásával beszerezni a legújabb frissítéseket. Ezek a lépések az Ubuntu Azure kernel jelenleg futó virtuális gépek is működnek.
 
 ```bash
+#run as root or preface with sudo
+apt-get -y update
+apt-get -y upgrade
+apt-get -y dist-upgrade
+```
+
+A következő opcionális parancskészlethez meglévő Ubuntu telepítésekhez, amely már rendelkezik az Azure kernel, de hibákkal további frissítések sikertelenül hasznos lehet.
+
+```bash
+#optional steps may be helpful in existing deployments with the Azure kernel
+#run as root or preface with sudo
 apt-get -f install
 apt-get --fix-missing install
 apt-get clean
 apt-get -y update
 apt-get -y upgrade
+apt-get -y dist-upgrade
 ```
 
-Nem kötelező parancs:
+#### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Ubuntu Azure kernel frissítés meglévő virtuális gépek
 
-`apt-get -y dist-upgrade`
-#### <a name="ubuntu-azure-preview-kernel"></a>Ubuntu Azure betekintő kernel
-> [!WARNING]
-> Az Azure Linux Preview kernel nem rendelkezhet azonos szintű rendelkezésre állást és megbízhatóságot, mint a piactéren elérhető rendszerkép és kernelek, amelyek általában a rendelkezésre állási kiadással. A funkció nem támogatott, van, korlátozott képességeit, és nem lehet a megbízható, mint az alapértelmezett kernel. A kernel ne használja termelési számítási feladatokhoz.
-
-A javasolt Azure Linux kernel telepítésével jelentős átviteli teljesítményt érheti el. Próbálja meg a kernel, vegye fel ezt a sort /etc/apt/sources.list
+Frissítse az Azure Linux kernel jelentős átviteli teljesítményt érheti el. Ellenőrizze, hogy rendelkezik-e a kernel, ellenőrizze a kernel verzióját.
 
 ```bash
-#add this to the end of /etc/apt/sources.list (requires elevation)
-deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe
+#Azure kernel name ends with "-azure"
+uname -r
+
+#sample output on Azure kernel:
+#4.11.0-1014-azure
 ```
 
-Ezután futtassa az alábbi parancsokat rendszergazdaként.
+Ha a virtuális gép nem rendelkezik az Azure kernel, akkor a verziószám általában "4.4" kezdődik. Ezekben az esetekben futtassa az alábbi parancsokat rendszergazdaként.
 ```bash
+#run as root or preface with sudo
 apt-get update
+apt-get upgrade -y
+apt-get dist-upgrade -y
 apt-get install "linux-azure"
 reboot
 ```
 
 ### <a name="centos"></a>CentOS
 
-Az optimalizálás eléréséhez először frissítse frissítésétől július 2017, amely a legfrissebb támogatott verziót:
+A legújabb optimalizálásokat eléréséhez a legcélszerűbb hozzon létre egy virtuális Gépet a legújabb támogatott verzióját a következő paraméterek megadásával:
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
-"Sku": "7.3",
+"Sku": "7.4",
 "Version": "latest"
 ```
-A frissítés befejezése után telepítse a legújabb Linux integrációs szolgáltatások (LIS).
-A teljesítmény optimalizálása LIS 4.2.2-2-től kezdődő van. Adja meg a következő parancsok futtatásával telepíteni azokat:
+Új és meglévő virtuális gépek kihasználhassa a legújabb Linux integrációs szolgáltatások (LIS) telepítését.
+A teljesítmény optimalizálása LIS kiindulva 4.2.2-2, de további fejlesztéseket tartalmaz újabb verzió van. Adja meg a következő parancsok futtatásával telepítse a legújabb LIS:
 
 ```bash
 sudo yum update
@@ -113,21 +126,21 @@ sudo yum install microsoft-hyper-v
 
 ### <a name="red-hat"></a>Red Hat
 
-Az optimalizálás eléréséhez először frissítse frissítésétől július 2017, amely a legfrissebb támogatott verziót:
+Az optimalizálás eléréséhez a legcélszerűbb hozzon létre egy virtuális Gépet a legújabb támogatott verzióját a következő paraméterek megadásával:
 ```json
 "Publisher": "RedHat"
 "Offer": "RHEL"
-"Sku": "7.3"
-"Version": "7.3.2017071923"
+"Sku": "7-RAW"
+"Version": "latest"
 ```
-A frissítés befejezése után telepítse a legújabb Linux integrációs szolgáltatások (LIS).
+Új és meglévő virtuális gépek kihasználhassa a legújabb Linux integrációs szolgáltatások (LIS) telepítését.
 A teljesítmény optimalizálása LIS 4.2-től kezdődő van. Adja meg a letölteni és telepíteni azokat a következő parancsokat:
 
 ```bash
-mkdir lis4.2.2-2
-cd lis4.2.2-2
-wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.2-2.tar.gz
-tar xvzf lis-rpms-4.2.2-2.tar.gz
+mkdir lis4.2.3-1
+cd lis4.2.3-1
+wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-1.tar.gz
+tar xvzf lis-rpms-4.2.3-1.tar.gz
 cd LISISO
 install.sh #or upgrade.sh if prior LIS was previously installed
 ```

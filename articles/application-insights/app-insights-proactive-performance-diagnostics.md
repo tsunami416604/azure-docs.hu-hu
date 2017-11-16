@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 57f17c201cd50933517ee02b2bbbe7d6aceff9b2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 6886d1239fa074a6316b243e574833f5554ac298
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelési - Teljesítményanomáliákat
 
@@ -67,7 +67,7 @@ E-mailek kapcsolatos intelligens észlelések teljesítményanomáliákat / nap 
 
 ## <a name="faq"></a>GYIK
 
-* *Igen guys megnézzük adataimat?*
+* *Igen a Microsoft személyzete nézze meg az adatok?*
   * Nem. A szolgáltatás nem teljesen automatikus. Csak az értesítéseket kap. Az adatok [titkos](app-insights-data-retention-privacy.md).
 * *Az Application Insights által gyűjtött összes adat elemzése?*
   * Jelenleg nem. Jelenleg a Microsoft elemzése kérelmek válaszideje, a függőségi válaszidő és a lap betöltési ideje. További metrikák elemzését a várakozó fájlok – Reméljük be van kapcsolva.
@@ -103,7 +103,7 @@ A hatás utasítás (érintett felhasználók vagy forgalom %) használható ál
 Fontolja meg a hiba paramétereit. Ha a földrajzi-függő, állítsa be [rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md) többek között az adott régióban: egyszerűen hálózati problémák adódhatnak az adott területre.
 
 ### <a name="diagnose-slow-page-loads"></a>Lassúlap terhelések diagnosztizálása
-Hol jelentkezett a probléma? Lassan válaszol-e a kiszolgáló, a lap nagyon hosszú, vagy nem a böngészőt kell elvégezni megjelenítéséhez munka nagy?
+Hol található a problémát? Lassan válaszol-e a kiszolgáló, a lap nagyon hosszú, vagy nem a böngészőt kell elvégezni megjelenítéséhez munka nagy?
 
 A böngészők metrika panel megnyitásához. A böngésző lap betöltési ideje mutat be ahol állapotra vált, az idő szegmentált megjelenítését. 
 
