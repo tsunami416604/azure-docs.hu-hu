@@ -21,10 +21,10 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# Ügyfél-hitelesítő (közös titkos kulcs vagy tanúsítvány) hívásokról szolgáltatás
+# <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Ügyfél-hitelesítő (közös titkos kulcs vagy tanúsítvány) hívásokról szolgáltatás
 Az OAuth 2.0 ügyfél hitelesítő adatok Grant Flow lehetővé teszi egy webszolgáltatás-bővítmény (*bizalmas ügyfél*) a saját hitelesítő adatok használata helyett a felhasználó megszemélyesítésekor, hitelesítésére, miközben egy másik webes szolgáltatás hívása. Ebben a forgatókönyvben az ügyfél nem általában egy középső rétegbeli webes szolgáltatás, a démon szolgáltatás vagy a webhely. A magasabb szintű megbízhatóság az Azure AD is lehetővé teszi a hívó szolgáltatás (és nem a közös titkos kulcs) tanúsítványt használják a hitelesítő adatokat.
 
-## Ügyfél hitelesítő adatai megadják folyamatábrája
+## <a name="client-credentials-grant-flow-diagram"></a>Ügyfél hitelesítő adatai megadják folyamatábrája
 A következő ábra bemutatja, hogyan az ügyfél hitelesítő adatait adja meg Azure Active Directory (Azure AD) működik folyamata.
 
 ![OAuth2.0 ügyfél hitelesítő adatok megadása folyamata](media/active-directory-protocols-oauth-service-to-service/active-directory-protocols-oauth-client-credentials-grant-flow.jpg)
@@ -34,20 +34,20 @@ A következő ábra bemutatja, hogyan az ügyfél hitelesítő adatait adja meg 
 3. A hozzáférési jogkivonat a védett erőforrások felé történő hitelesítésre szolgál.
 4. A védett erőforrás adatait a webes alkalmazás küld vissza.
 
-## A szolgáltatások regisztrálása az Azure ad-ben
+## <a name="register-the-services-in-azure-ad"></a>A szolgáltatások regisztrálása az Azure ad-ben
 A hívó szolgáltatás és a fogadó szolgáltatás regisztrálása az Azure Active Directory (Azure AD). Részletes útmutatásért lásd: [alkalmazások integrálása az Azure Active Directory](active-directory-integrating-applications.md).
 
-## A kérelem egy hozzáférési jogkivonatot:
+## <a name="request-an-access-token"></a>A kérelem egy hozzáférési jogkivonatot:
 Olyan hozzáférési jogkivonatot kérni, használja a bérlői adott HTTP POST az Azure AD-végpont.
 
 ```
 https://login.microsoftonline.com/<tenant id>/oauth2/token
 ```
 
-## Szolgáltatás hozzáférési jogkivonat kérelem
+## <a name="service-to-service-access-token-request"></a>Szolgáltatás hozzáférési jogkivonat kérelem
 Attól függően, hogy az ügyfélalkalmazás úgy dönt, hogy egy közös titkot, vagy a tanúsítvány védi két esetben van.
 
-### Először. eset: egy közös titkot a hozzáférési token kérelem
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Először. eset: egy közös titkot a hozzáférési token kérelem
 Egy közös titkos kulcs használata esetén a szolgáltatás hozzáférési kérelmek tartalmazza a következő paraméterekkel:
 
 | Paraméter |  | Leírás |
@@ -57,7 +57,7 @@ Egy közös titkos kulcs használata esetén a szolgáltatás hozzáférési ké
 | client_secret |Szükséges |Adjon meg egy kulcsot, a hívó szolgáltatás vagy démon webalkalmazás az Azure ad-ben regisztrált. Az Azure-portálon a kulcs létrehozásához kattintson a **Active Directory**directory váltani, kattintson az alkalmazás, kattintson **beállítások**, kattintson a **kulcsok**, és a kulcs hozzáadása.|
 | Erőforrás |Szükséges |Adja meg az App ID URI az fogadó webszolgáltatás. Az Azure portálon található App ID URI, kattintson a **Active Directory**, directory váltani, kattintson a szolgáltatásalkalmazás, majd **beállítások** és **tulajdonságai** |
 
-#### Példa
+#### <a name="example"></a>Példa
 A következő HTTP POST kérelmek egy jogkivonatot a https://service.contoso.com/ webszolgáltatáshoz. A `client_id` azonosítja a webszolgáltatás, amelyet a hozzáférési jogkivonat igényel.
 
 ```
@@ -68,7 +68,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### A második esetben: hozzáférési jogkivonat kérelem tanúsítvánnyal
+### <a name="second-case-access-token-request-with-a-certificate"></a>A második esetben: hozzáférési jogkivonat kérelem tanúsítvánnyal
 Szolgáltatás hozzáférési kérelmek tanúsítvánnyal tartalmazza a következő paraméterekkel:
 
 | Paraméter |  | Leírás |
@@ -81,7 +81,7 @@ Szolgáltatás hozzáférési kérelmek tanúsítvánnyal tartalmazza a követke
 
 Figyelje meg, hogy a paraméterek megegyeznek-szinte közös titkos kulcs kérése gazdabuszadaptereken azzal a különbséggel, hogy a client_secret paraméter helyébe két paramétert: egy client_assertion_type és client_assertion.
 
-#### Példa
+#### <a name="example"></a>Példa
 A következő HTTP POST kérelmek egy jogkivonatot a https://service.contoso.com/ webszolgáltatás tanúsítvánnyal. A `client_id` azonosítja a webszolgáltatás, amelyet a hozzáférési jogkivonat igényel.
 
 ```
@@ -92,7 +92,7 @@ Content-Type: application/x-www-form-urlencoded
 resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b3bf&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg&grant_type=client_credentials
 ```
 
-### Szolgáltatás hozzáférési jogkivonat válasz
+### <a name="service-to-service-access-token-response"></a>Szolgáltatás hozzáférési jogkivonat válasz
 
 A sikeres válasz tartalmazza JSON OAuth 2.0 választ a következő paraméterekkel:
 
@@ -105,7 +105,7 @@ A sikeres válasz tartalmazza JSON OAuth 2.0 választ a következő paraméterek
 | not_before |Az időt, amelyből a hozzáférési jogkivonat lesz használható. A dátum jelzi másodpercben a 1970-01-01T0:0:0Z UTC, amíg a token érvényességi ideje.|
 | Erőforrás |A fogadó webszolgáltatás App ID URI. |
 
-#### Válasz – példa
+#### <a name="example-of-response"></a>Válasz – példa
 A következő példa bemutatja egy olyan hozzáférési jogkivonatot webszolgáltatásnak kérelemre sikerességi válasz.
 
 ```
@@ -118,6 +118,6 @@ A következő példa bemutatja egy olyan hozzáférési jogkivonatot webszolgál
 }
 ```
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 * [OAuth 2.0 Azure AD-ben](active-directory-protocols-oauth-code.md)
 * [A szolgáltatások közötti hívás egy közös titkot a C# minta](https://github.com/Azure-Samples/active-directory-dotnet-daemon) és [C# nyelven íródtak a szolgáltatások közötti hívás tanúsítvánnyal minta](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)

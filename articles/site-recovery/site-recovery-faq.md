@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/19/2017
 ms.author: raynew
-ms.openlocfilehash: 0b2a36c293e899ebed9d1220dff043a85321cacf
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: ad6f70cf9c2f420e887031c8b240d2f831e6c359
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: gyakori kérdések (GYIK)
 A cikk az Azure Site Recovery kapcsolatos gyakran ismételt kérdések tartalmaz. Ha kérdése van a cikk elolvasása után, az fel őket a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -75,22 +75,7 @@ VMware virtuális gépek védelméhez vSphere hipervizorra van szükség, a virt
 Igen. A Site Recovery használatával replikációs és feladatátvételi levezényelni a fiókirodában használt, egy központi helyen egy egységes vezénylési és a nézet az összes a fiókiroda számítási feladatait fog kapni. A központi telephelyről könnyen intézheti a feladatátvételt és a vészhelyreállítást az összes fiókiroda tekintetében anélkül, hogy el kellene látogatnia a fiókirodák telephelyeire.
 
 ## <a name="pricing"></a>Díjszabás
-
-### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>Milyen költségekkel tegye járnak Azure Site Recovery használata során?
-A Site Recovery használata esetén függő díj terheli a Site Recovery licenc, az Azure storage, storage-tranzakció és kimenő adatforgalom. [További információk](https://azure.microsoft.com/pricing/details/site-recovery).
-
-A Site Recovery-licencre van egy védett példány, ha egy példány a virtuális gép vagy fizikai kiszolgálók.
-
-- Ha egy virtuális lemezt egy standard szintű tárfiókot replikálja, a tárhelyhasználatot van az Azure storage kell fizetni. Például ha a forrás lemez mérete 1 TB-os és 400 GB használja, a Site Recovery egy 1 TB méretű virtuális merevlemez létrehozása az Azure-ban, de a felszámított tároló nem a 400 GB (és a replikálási naplókhoz felhasznált tárterület mennyiségét).
-- Ha egy virtuális gép lemez replikálja a prémium szintű storage-fiók, az Azure storage kell fizetni a kiépített méretét, a prémium szintű storage legközelebbi lemez lehetőséget kerekíti van. Például ha a forrás lemez mérete 50 GB, a Site Recovery létrehoz egy 50 GB lemezterület az Azure-ban, és Azure lemezre van leképezve a a legközelebbi prémium szintű storage (P10).  Költségszámítás P10, nem pedig a 50 GB-os lemez méretét.  [További információk](https://aka.ms/premium-storage-pricing).  Prémium szintű storage használata, a standard szintű tárfiók replikációs naplózási is szükség, és ezek a naplók használt szabványos tárhely mennyiségét is lesz számlázva.
-- Lemez vége: feladatátvételi teszt vagy egy feladatátvételi jönnek létre. A replikációs állapot a tárolási költségek "oldalakra vonatkozó blob és lemez" kategóriához tartozó megfelelően a [tárolási árképzési Számológép](https://azure.microsoft.com/en-in/pricing/calculator/) merülnek fel. Ezeket a díjakat alapulnak, a tároló típusa premium/standard és a adatredundanciát írja be a - LRS, GRS RA-GRS stb.
-- A feladatátvétel felügyelt lemezeket használni a beállítást, ha [felügyelt lemezek díjak](https://azure.microsoft.com/en-in/pricing/details/managed-disks/) feladatátvételi és tesztelési célú feladatátvétel után alkalmazza. A felügyelt lemezek díjak nem vonatkoznak a replikáció során.
-- A felügyelt lemezeket használni a feladatátvétel nem beállítást, ha tárolási megfelelően ki díja "oldalakra vonatkozó blob és lemez" kategóriához tartozó a [tárolási árképzési Számológép](https://azure.microsoft.com/en-in/pricing/calculator/) merülnek fel a feladatátvételt követően. Ezeket a díjakat alapulnak, a tároló típusa premium/standard és a adatredundanciát írja be a - LRS, GRS RA-GRS stb.
-- Storage-tranzakció stabil állapot replikáció során, és a virtuális gép rendszeres műveletek van szó, a feladatátvétel után, vagy a feladatátvételi teszt. De ezek költségek elhanyagolhatóak.
-
-Feladatátvételi teszt, ahol a virtuális gép, a tárolás, a kimenő forgalom és a tárolási tranzakciók költségek alkalmazandó során költségek is merülnek fel.
-
-
+Az árazással kapcsolatos kérdésekre, tekintse meg a következő gyakori kérdések [Azure Site Recovery díjszabásáról](https://azure.microsoft.com/en-in/pricing/details/site-recovery/).
 
 ## <a name="security"></a>Biztonság
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>A replikációs adatok el lesznek küldve a Site Recovery szolgáltatáshoz?

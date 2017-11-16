@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 0cab39bb3ce5c42fac543171baea498eb894c502
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9ff22c7b4793112da5211162ed9cd58ac86d238
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelése és testreszabása az Active Directory összevonási szolgáltatások az Azure AD Connect használatával
 Ez a cikk ismerteti a kezelése és testreszabása az Active Directory összevonási szolgáltatások (AD FS) Azure Active Directory (Azure AD) Connect használatával. Egyéb gyakori AD FS feladatok, amelyek hasznosak lehetnek az AD FS-farm teljes konfigurációját is tartalmaz.
@@ -52,7 +52,7 @@ Az Azure AD Connect használatával ellenőrizze az AD FS és az Azure AD megbí
 
 3. Az a **távelérési hitelesítő adatainak** lapon, a tartományi rendszergazda adja meg a hitelesítő adatait.
 
-   ![Távoli hozzáférési hitelesítő adatok](media/active-directory-aadconnect-federation-management/RepairADTrust3.PNG)
+   ![Távelérési hitelesítő adatok](media/active-directory-aadconnect-federation-management/RepairADTrust3.PNG)
 
     Miután rákattintott **következő**, az Azure AD Connect tanúsítványállapot keres, és az esetleges problémákat jeleníti meg.
 
@@ -102,9 +102,9 @@ Másodlagos bejelentkezési azonosító konfigurálása az AD FS két fő lépé
 
 4. Az Azure AD Connect kéri a jelszót az új AD FS-farm konfigurálása az Azure AD Connect közben megadott PFX-fájl. Kattintson a **jelszó megadása** kell adnia a jelszót a PFX-fájlból.
 
-   ![Tanúsítvány jelszava](media/active-directory-aadconnect-federation-management/AddNewADFSServer4.PNG)
+   ![Tanúsítványjelszó](media/active-directory-aadconnect-federation-management/AddNewADFSServer4.PNG)
 
-    ![Adja meg az SSL-tanúsítvány](media/active-directory-aadconnect-federation-management/AddNewADFSServer5.PNG)
+    ![SSL-tanúsítvány megadása](media/active-directory-aadconnect-federation-management/AddNewADFSServer5.PNG)
 
 5. Az a **AD FS-kiszolgálók** lapján adja meg a kiszolgáló neve vagy IP-cím, fel kell venni az AD FS-farm.
 
@@ -132,7 +132,7 @@ Másodlagos bejelentkezési azonosító konfigurálása az AD FS két fő lépé
 3. Az a **adja meg az SSL-tanúsítvány** lapján adja meg a jelszót az AD FS-farm konfigurálása az Azure AD Connect során megadott PFX-fájl.
    ![Tanúsítvány jelszava](media/active-directory-aadconnect-federation-management/WapServer3.PNG)
 
-    ![Adja meg az SSL-tanúsítvány](media/active-directory-aadconnect-federation-management/WapServer4.PNG)
+    ![SSL-tanúsítvány megadása](media/active-directory-aadconnect-federation-management/WapServer4.PNG)
 
 4. Adja hozzá a kiszolgálót, lehet hozzáadni a WAP-kiszolgálóként. A WAP-kiszolgáló nem lehet, hogy a tartományhoz csatlakoztatni, mert a varázsló megkérdezi, a hozzáadni kívánt kiszolgáló rendszergazdai hitelesítő adatokat.
 
@@ -164,13 +164,13 @@ Nem lehet összevont Azure AD-val az Azure AD Connect használatával tartomány
 
 3. Az a **távelérési hitelesítő adatainak** lapján adja meg a tartományi rendszergazda hitelesítő adatait.
 
-   ![Távoli hozzáférési hitelesítő adatok](media/active-directory-aadconnect-federation-management/additionaldomain3.PNG)
+   ![Távelérési hitelesítő adatok](media/active-directory-aadconnect-federation-management/additionaldomain3.PNG)
 
 4. A következő oldalon a varázsló a lehet összevonást végezni a helyszíni címtár az Azure AD-tartományok listáját tartalmazza. Válassza ki a tartományt a listából.
 
    ![Az Azure AD-tartomány](media/active-directory-aadconnect-federation-management/AdditionalDomain4.PNG)
 
-    Után úgy dönt, hogy a tartomány, a varázsló nyújt további a varázsló által elvégzendő műveleteket és a hatása a konfiguráció megfelelő információt. Bizonyos esetekben egy tartományhoz, amely még nincs ellenőrizve az Azure ad-ben, ha a varázsló nyújt segítséget, ellenőrizze a tartományt. Lásd: [az egyéni tartománynév hozzáadása az Azure Active Directory](../active-directory-add-domain.md) további részleteket.
+    Után úgy dönt, hogy a tartomány, a varázsló nyújt további a varázsló által elvégzendő műveleteket és a hatása a konfiguráció megfelelő információt. Bizonyos esetekben egy tartományhoz, amely még nincs ellenőrizve az Azure ad-ben, ha a varázsló nyújt segítséget, ellenőrizze a tartományt. Lásd: [az egyéni tartománynév hozzáadása az Azure Active Directory](../active-directory-domains-add-azure-portal.md) további részleteket.
 
 5. Kattintson a **Tovább** gombra. A **beállíthatja az** lap, amely az Azure AD Connect hajtja végre műveletek listáját jeleníti meg. Kattintson a **telepítése** a konfiguráció befejezéséhez.
 

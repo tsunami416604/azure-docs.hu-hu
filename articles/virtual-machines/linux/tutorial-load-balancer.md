@@ -13,14 +13,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2017
+ms.date: 11/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 25e2538e220327a078a6527e667dfcd6cb838b1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc25d6106ad67710660b1a5c48270a7082688d51
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Betöltése kiegyenlítheti a Linux virtuális gépek magas rendelkezésre állású alkalmazás létrehozása az Azure-ban
 Terheléselosztás biztosít a rendelkezésre állási magasabb szintű bejövő kérelmek elosztásával el több virtuális gépre. Ebben az oktatóanyagban elsajátíthatja az Azure load balancer különböző összetevőit, ossza el a forgalmat, és magas rendelkezésre állás biztosításához. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -162,10 +162,13 @@ for i in `seq 1 3`; do
 done
 ```
 
+Három virtuális hálózati adapterek összes létrehozásakor, folytassa a következő lépéssel
+
+
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
 ### <a name="create-cloud-init-config"></a>Felhő inicializálás konfiguráció létrehozása
-Az oktatóanyag előző [első indításakor Linux virtuális gépek testreszabása](tutorial-automate-vm-deployment.md), megtudta, hogyan automatizálható a felhő inicializálás a virtuális gép testreszabása. Az azonos felhő inicializálás konfigurációs fájl segítségével NGINX telepítheti és futtathatja egy egyszerű "Hello, World" Node.js alkalmazást.
+Az oktatóanyag előző [első indításakor Linux virtuális gépek testreszabása](tutorial-automate-vm-deployment.md), megtudta, hogyan automatizálható a felhő inicializálás a virtuális gép testreszabása. Az azonos felhő inicializálás konfigurációs fájl segítségével NGINX telepítése és egy egyszerű "Hello World" Node.js-alkalmazás futtatása a következő lépésben. A művelet az oktatóanyag végén a terheléselosztó megjelenítéséhez érhető el az egyszerű alkalmazást egy webböngészőben.
 
 Hozzon létre egy fájlt az aktuális rendszerhéjban *felhő-init.txt* , majd illessze be a következő konfigurációt. A felhő rendszerhéj nem a helyi számítógépen hozzon létre például a fájlt. Adja meg `sensible-editor cloud-init.txt` hozza létre a fájlt, és elérhető szerkesztők listájának megtekintéséhez. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor:
 
@@ -253,7 +256,7 @@ az network public-ip show \
     --output tsv
 ```
 
-Beírhatja a nyilvános IP-címet a webböngésző. Ne feledje - néhány percet vesz igénybe a készen álljon a terheléselosztó terjesztéséhez azokat felé irányuló forgalom megkezdése előtt a virtuális gépeket. Az alkalmazás megjelenik, beleértve az állomásnevet, a virtuális gép, amelyek a terheléselosztó felé irányuló forgalom az alábbi példában látható módon:
+Beírhatja a nyilvános IP-címet a webböngésző. Ne feledje, mert a virtuális gép készen áll, a terheléselosztó terjesztéséhez azokat felé irányuló forgalom megkezdése előtt néhány percet vesz igénybe. Az alkalmazás megjelenik, beleértve az állomásnevet, a virtuális gép, amelyek a terheléselosztó felé irányuló forgalom az alábbi példában látható módon:
 
 ![Futó Node.js-alkalmazás](./media/tutorial-load-balancer/running-nodejs-app.png)
 
@@ -277,6 +280,24 @@ az network nic ip-config address-pool remove \
 
 Tekintse meg a terheléselosztó elosztják a forgalom a fennmaradó két futó virtuális gépeket az alkalmazás akkor is kényszerített frissítési a webböngésző. Karbantartási is képes lemezvizsgálatok elvégzésére, hogy a virtuális Gépen, például az operációs rendszer frissítéseinek telepítése vagy a virtuális gép újraindítása végrehajtása.
 
+A terheléselosztóhoz csatlakozó virtuális hálózati adaptert virtuális gépek listájának megtekintéséhez használja [az hálózati lb címkészlet megjelenítése](/cli/azure/network/lb/address-pool#show). Lekérdezési és szűrést végezni a virtuális hálózati adapter azonosítója az alábbiak szerint:
+
+```azurecli-interactive
+az network lb address-pool show \
+    --resource-group myResourceGroupLoadBalancer \
+    --lb-name myLoadBalancer \
+    --name myBackEndPool \
+    --query backendIpConfigurations \
+    --output tsv | cut -f4
+```
+
+A kimenet a következő példának, amely azt mutatja, hogy a virtuális hálózati Adaptert a virtuális gép 2 már nem része a háttér címkészletet hasonlít:
+
+```bash
+/subscriptions/<guid>/resourceGroups/myResourceGroupLoadBalancer/providers/Microsoft.Network/networkInterfaces/myNic1/ipConfigurations/ipconfig1
+/subscriptions/<guid>/resourceGroups/myResourceGroupLoadBalancer/providers/Microsoft.Network/networkInterfaces/myNic3/ipConfigurations/ipconfig1
+```
+
 ### <a name="add-a-vm-to-the-load-balancer"></a>A virtuális gépek hozzáadása a terheléselosztó
 Virtuális gép karbantartásának végrehajtása után, vagy ha szüksége kapacitás bővítése céljából, adhat hozzá egy virtuális Gépet a háttér-címkészlet, amely [az hálózati hálózati adapter ip-config-címkészlet hozzáadása](/cli/azure/network/nic/ip-config/address-pool#add). A következő példakóddal felveheti a virtuális hálózati Adapternek **myVM2** való *myLoadBalancer*:
 
@@ -288,6 +309,8 @@ az network nic ip-config address-pool add \
     --lb-name myLoadBalancer \
     --address-pool myBackEndPool
 ```
+
+Győződjön meg arról, hogy a virtuális hálózati adapter csatlakoztatva van a háttér címkészletet, használja a [az hálózati lb címkészlet megjelenítése](/cli/azure/network/lb/address-pool#show) újra az előző lépésben kinyert.
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -13,14 +13,14 @@ ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: d0b3f3b188bc5da91414efb763b5165377009191
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: b356bc9db9e883c2514953b516d6dd51c1807610
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="set-up-sql-data-sync-preview"></a>SQL adatszinkronizálás (előzetes verzió) beállítása
 Ebben az oktatóanyagban elsajátíthatja, hogyan Azure SQL Data szinkronizálás beállítása az Azure SQL Database és az SQL Server-példányokat tartalmazó hibrid szinkronizálási csoportok létrehozásával. Az új szinkronizálási csoport teljes van konfigurálva, és a beállított ütemezés szerint szinkronizálja.
@@ -192,6 +192,83 @@ Miután az új szinkronizálási csoporttagok létrehozott és telepített, 3. l
     ![Jelöljön ki mezőket szinkronizálása](media/sql-database-get-started-sql-data-sync/datasync-preview-tables2.png)
 
 4.  Végül válassza ki **mentése**.
+
+## <a name="faq-about-setup-and-configuration"></a>Telepítésével és konfigurálásával kapcsolatos gyakori kérdések
+
+### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>Milyen gyakran adatszinkronizálás adatok bármikor szinkronizálhatók a? 
+A minimális gyakoriság 5 perc nem.
+
+### <a name="does-sql-data-sync-fully-create-and-provision-tables"></a>Nem SQL adatszinkronizálás teljes létrehozásának és kiosztásának táblák?
+
+Ha a szinkronizálási séma táblák már nem létrejönnek a céladatbázisban, SQL adatszinkronizálás (előzetes verzió) hoz létre a őket a kijelölt oszlopokban. Azonban ez a viselkedés nem okoz a teljes visszaadása séma a következő okok miatt:
+
+-   Csak a kiválasztott oszlop a céltáblában jönnek létre. Ha a forrástáblákból egyes oszlopai nem a szinkronizálási csoport része, ezek az oszlopok nem törlődnek a céltábla.
+
+-   Indexek csak a kijelölt oszlopok jön létre. Ha a forrás tábla indexe az oszlopokat, amelyek nem a sync-csoport része, ezek az indexek nem törlődnek a céltábla.
+
+-   XML típusú oszlopok indexei nem törlődnek.
+
+-   ELLENŐRZÉSI korlátozásokban nem törlődnek.
+
+-   A forrás táblák meglévő eseményindítók nem törlődnek.
+
+-   Nézetek és tárolt eljárások nem jönnek létre az adatbázist.
+
+Ezek a korlátozások miatt a következőket javasoljuk:
+-   Éles környezetben használhatók a a teljes minőségű séma magát.
+-   A próbálhatja ki a szolgáltatást, az Automatikus kiépítés szolgáltatása SQL adatszinkronizálás (előzetes verzió) is működik.
+
+### <a name="why-do-i-see-tables-that-i-did-not-create"></a>Miért látom azt táblázatot, amely nem hozta létre?  
+Adatszinkronizálás ügyféloldali táblák az adatbázisban változáskövetési hoz létre. Ne törölje őket, vagy adatszinkronizálás nem működik.
+
+### <a name="is-my-data-convergent-after-a-sync"></a>Az adatok egy irányba a szinkronizálás után?
+
+Nem feltétlenül. A szinkronizálási csoport hubbal és három küllők (A, B és C) a szinkronizálás a következők hubot A Hub b és c Hub Ha egy módosításakor A adatbázis *után* a hubot A szinkronizálás, írt módosítása nem adatbázis B vagy C adatbázis a következő szinkronizálási feladat.
+
+### <a name="how-do-i-get-schema-changes-into-a-sync-group"></a>Hogyan szerezhetek sémamódosítások egy szinkronizálási csoporthoz?
+
+Akkor hajtsa végre kézzel sémaváltozások.
+
+### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Hogyan exportálása és importálása az adatszinkronizálás adatbázis?
+Adatbázis exportálása után egy `.bacpac` fájlt, és importálja a fájlt egy új adatbázis létrehozásához, meg kell nyitnia a következő két dolog adatszinkronizálás használni az új adatbázis:
+1.  Az adatszinkronizálás objektumok és kiszolgálóoldali táblák tisztítása a **új adatbázis** használatával [ezt a parancsfájlt](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql). Ez a parancsfájl az összes szükséges adatszinkronizálás objektum törli az adatbázisból.
+2.  Hozza létre újra az új adatbázis szinkronizálási csoportban. Ha már nincs szüksége a régi szinkronizálású csoport, törölje azt.
+
+## <a name="faq-about-the-client-agent"></a>Az ügyfélügynök gyakori kérdések
+
+### <a name="why-do-i-need-a-client-agent"></a>Miért kell egy ügyfélügynök?
+
+Az SQL adatszinkronizálás (előzetes verzió) szolgáltatás SQL Server-adatbázisok az ügyfélügynök keresztül kommunikál. Ez a biztonsági szolgáltatás megakadályozza, hogy a tűzfal mögött lévő adatbázisok közvetlen kommunikációt. Ha az SQL adatszinkronizálás (előzetes verzió) szolgáltatás kommunikál az ügynök használatával végez el titkosított, kapcsolatok, valamint a egyedi jogkivonatot vagy *ügynök kulcs*. Az SQL Server-adatbázisok hitelesíteni az ügynök a kapcsolati karakterlánc és az ügynök kulcs használatával. Ez a kialakítás biztosítja az adatok biztonsági magas szintű.
+
+### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>A helyi ügynök hány példányban felhasználói felület futtatható?
+
+A felhasználói felület csak egy példány futtatható.
+
+### <a name="how-can-i-change-my-service-account"></a>Hogyan lehet módosítani a szolgáltatásfiók?
+
+Ügyféloldali ügynök telepítése után a csak a szolgáltatásfiók módosítása, távolítsa el azt, és egy új ügyfél-ügynök telepítése az új szolgáltatásfiókkal.
+
+### <a name="how-do-i-change-my-agent-key"></a>Hogyan változtathatom meg a ügynök kulcsot?
+
+Egy ügynök kulcs csak egyszer használható egy ügynök. Nem lehet használni, amikor távolítsa el, majd telepítse újra egy új ügynököt, és nem használható több ügynök lehet. Ha egy új kulcsot létrehozni egy meglévő ügynöknek szüksége, arról, hogy ugyanazzal a kulccsal rögzített, és az SQL adatszinkronizálás (előzetes verzió) szolgáltatással rendelkező kell lennie.
+
+### <a name="how-do-i-retire-a-client-agent"></a>Hogyan kivonása a ügyféloldali ügynök?
+
+Azonnal érvényteleníti kivonása vagy a az ügynök, újragenerálja a kulcsot a portálon, de nem küldje el az ügynököt felhasználói felületén. A kulcs újragenerálása érvényteleníti a korábbi kulcs függetlenül, ha a megfelelő ügynök online vagy offline állapotú.
+
+### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>Hogyan egy ügyfélügynök áthelyezése másik számítógépre?
+
+Ha azt szeretné, a helyi ügynök jelenleg meg egy másik számítógépen futnak, tegye a következőket:
+
+1. Telepítse az ügynököt a kívánt számítógépre.
+
+2. Jelentkezzen be az SQL adatszinkronizálás (előzetes verzió) portálra, és az új ügynök egy ügynök kulcs újragenerálása.
+
+3. Az új ügynök kulcs küldhetnek az új ügynök felhasználói felület használatával.
+
+4. Várjon, amíg az ügyfélügynök letölti a helyi adatbázis, amely korábban regisztrálva volt listáját.
+
+5. Adja meg az adatbázis hitelesítő adatai az összes olyan adatbázis, amely megjeleníti az nem érhető el. Ezeket az adatbázisokat az új számítógépre, amelyen az ügynök telepítve van a elérhetőnek kell lennie.
 
 ## <a name="next-steps"></a>Következő lépések
 Gratulálunk! Létrehozott egy szinkronizálású csoport, amely tartalmazza az SQL Database-példányt, és egy SQL Server-adatbázis.

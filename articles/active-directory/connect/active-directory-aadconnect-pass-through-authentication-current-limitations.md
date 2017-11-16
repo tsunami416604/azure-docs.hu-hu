@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 42a6d7156a28aaeadea96f9134b0becc004816ba
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 4a33df43ca218545d6c684103a64f2cd1460913b
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Az Azure Active Directory átmenő hitelesítést: Aktuális korlátozások
 
@@ -38,7 +38,7 @@ A következő forgatókönyvek teljes mértékben támogatottak:
 
 A következő forgatókönyvek _nem_ támogatja:
 
-- Felhasználói bejelentkezések alkalmazásokba örökölt Office ügyfél - Office 2010 és Office 2013 _nélkül_ modern hitelesítést). A szervezetek javasolt, hogy váltani a modern hitelesítést, ha lehetséges. A modern hitelesítés lehetővé teszi az áteresztő hitelesítés támogatásához azonban is segítséget nyújt a felhasználó mindig lássa fiókok [feltételes hozzáférés](../active-directory-conditional-access.md) funkciók, például a többtényezős hitelesítés (MFA).
+- Felhasználói bejelentkezések alkalmazásokba örökölt Office ügyfél - Office 2010 és Office 2013 _nélkül_ modern hitelesítést). A szervezetek javasolt, hogy váltani a modern hitelesítést, ha lehetséges. A modern hitelesítés lehetővé teszi az áteresztő hitelesítés támogatásához azonban is segítséget nyújt a felhasználó mindig lássa fiókok [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) funkciók, például a többtényezős hitelesítés (MFA).
 - Felhasználói bejelentkezések Skype az üzleti ügyfélalkalmazások, beleértve a Skype vállalati 2016 esetében.
 - Felhasználói bejelentkezések a PowerShell 1.0-s verziója. Javasoljuk, hogy inkább PowerShell 2.0-s verzió.
 - Azure AD tartományi szolgáltatások.

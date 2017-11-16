@@ -434,7 +434,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
     ![Villanykörte a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
 
-8. Kattintson a villanykörtére, majd a **Import Hero from "client/app/hero"** (Fő kép importálása a „client/app/hero” fájlból** vagy a **Fő kép importálása a „./hero” fájlból** lehetőségre. (Az üzenet a konfigurációtól függően változik.)
+8. Kattintson a villanykörtére, majd a **Import Hero from "client/app/hero"** (Fő kép importálása a „client/app/hero” fájlból vagy a **Fő kép importálása a „./hero” fájlból** lehetőségre. (Az üzenet a konfigurációtól függően változik.)
 
     Egy új kódsor jelenik meg a 2. sorban. Ha a 2. sor egy ügyfélre/alkalmazásra/fő képre hivatkozik, módosítsa, hogy a helyi mappában lévő főképfájlra hivatkozzon (./hero). A 2. sornak így kell kinéznie:
 

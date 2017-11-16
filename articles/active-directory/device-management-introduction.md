@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fdc597c9e88e932eace5962c79af4dc3805685a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1288fe2eeb9b31b912cd918be624e7a4703f0709
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Kezelés az Azure Active Directoryban bemutatása
 
@@ -135,12 +135,31 @@ Az eszköz kezelése az Azure ad-ben a következőket teheti:
 
 A görgetőgomb szabályként kell használnia:
 
-- Az Azure AD regisztrált eszközök személyes eszközök
+- Az Azure AD regisztrált eszközökön:
 
-- Az Azure AD csatlakoztatott eszközök olyan eszközök esetében, amelyek nincsenek csatlakoztatva egy helyszíni AD 
+    - Személyes eszközök 
+
+    - A manuális regisztrálják az eszközeiket az Azure ad szolgáltatással
+
+- Az Azure AD csatlakoztatott eszközök: 
+
+    - A szervezete tulajdonában lévő eszközök
+
+    - Az eszközök, amelyek **nem** csatlakozik egy helyszíni AD
+
+    - A manuális regisztrálják az eszközeiket az Azure ad szolgáltatással
+
+    - Az eszköz a helyi állapotának módosítása
 
 - Az Azure AD hibrid csatlakoztatott eszközökhöz, egy helyszíni tartományhoz csatlakoztatott eszközök AD     
 
+    - A szervezete tulajdonában lévő eszközök
+
+    - Egy helyszíni tartományhoz csatlakoztatott eszközök AD
+
+    - Az automatikusan regisztrálják az eszközeiket az Azure ad szolgáltatással
+
+    - Az eszköz a helyi állapotának módosítása
 
 
 

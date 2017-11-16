@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: bdbdebe069b3150bed4aa26f1f6e677a66f75f32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e4af248a1aafbd34a62c75e792746514456577b
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory alkalmazástervezési a koncepció igazolása: építőelemek
 
@@ -99,10 +99,10 @@ Hozzávetőleges időt Complete: 15 perc
 | Lépés | Erőforrások |
 | --- | --- |
 | Ugrás az Azure AD felügyeleti portál | [Azure AD felügyeleti portál - vállalati arculat megjelenítése](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| Töltse fel az eszközök a bejelentkezési oldal (kiemelt embléma kis embléma, címkék, stb.). Nem kötelező, ha az AD FS igazítása az AD FS bejelentkezési oldalak ugyanazokat az eszközöket | [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési Panel oldalon: testreszabható elemek](active-directory-add-company-branding.md) |
+| Töltse fel az eszközök a bejelentkezési oldal (kiemelt embléma kis embléma, címkék, stb.). Nem kötelező, ha az AD FS igazítása az AD FS bejelentkezési oldalak ugyanazokat az eszközöket | [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési Panel oldalon: testreszabható elemek](customize-branding.md) |
 | Várjon néhány percig, amíg a módosítás teljesen érvénybe |  |
 | Jelentkezzen be a https://myapps.microsoft.com Koncepció felhasználói hitelesítő adatok |  |
-| Erősítse meg a böngészőben megjelenését és működését | [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési Panel oldalon](active-directory-add-company-branding.md) |
+| Erősítse meg a böngészőben megjelenését és működését | [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési Panel oldalon](customize-branding.md) |
 | Szükség esetén ellenőrizze az egyéb eszközök megjelenését és működését |  |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
@@ -379,7 +379,7 @@ Hozzávetőleges időt Complete: 15 perc
 
 | Előfeltétel | Erőforrások |
 | --- | --- |
-| A bérlői önkiszolgáló jelszó-kezelésen. | [Az Azure Active Directory-jelszó alaphelyzetbe állítása a informatikai rendszergazdák](active-directory-passwords.md) |
+| A bérlői önkiszolgáló jelszó-kezelésen. | [Az Azure Active Directory-jelszó alaphelyzetbe állítása a informatikai rendszergazdák](active-directory-passwords-update-your-own-password.md) |
 | Engedélyezze a jelszóvisszaírást a helyszíni jelszavak kezeléséhez. Megjegyzés: ehhez az adott Azure AD Connect verziók | [Jelszóvisszaírás előfeltételei](active-directory-passwords-writeback.md) |
 | Ez a funkció, és győződjön meg arról, hogy egy biztonsági csoport tagjai koncepció felhasználók azonosítására. A felhasználók nem rendszergazdák számára, hogy a funkció teljes mértékben kihasználhatják kell lennie. | [Testreszabása: Az Azure AD a jelszókezelés: hozzáférés korlátozása a jelszó alaphelyzetbe állítása](active-directory-passwords-writeback.md) |
 

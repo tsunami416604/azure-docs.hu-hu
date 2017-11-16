@@ -20,14 +20,14 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# Az Azure AD B2C: Hitelesítési protokollok
+# <a name="azure-ad-b2c-authentication-protocols"></a>Az Azure AD B2C: Hitelesítési protokollok
 Az Azure Active Directory B2C két iparági szabványos protokollok támogatása (az Azure AD B2C) biztosít az az alkalmazások szolgáltatásként identitás: OpenID Connectet és az OAuth 2.0-s. A szolgáltatás szabványoknak megfelelő, de ezeket a protokollokat bármely két implementációja rendelkezhet finom eltérések vannak. 
 
 Ez az útmutató az információk akkor hasznos, ha közvetlenül küldésével és HTTP-kérelmek kezelése, nem pedig egy nyílt forráskódú könyvtár használatával írhatja a kódot. Azt javasoljuk, hogy olvassa el ezen a lapon az ahhoz, hogy mélyedjen el az adott protokollokat részleteit. De ha már ismeri az Azure AD B2C, nyissa meg rögtön [a protokoll hivatkozási útmutatók](#protocols).
 
 <!-- TODO: Need link to libraries above -->
 
-## Az alapok
+## <a name="the-basics"></a>Az alapok
 Minden Azure AD B2C alkalmazó alkalmazásban regisztrálva kell lennie a B2C-címtárban lévő a [Azure-portálon](https://portal.azure.com). Az alkalmazásregisztrációs művelet során a rendszer összegyűjt bizonyos adatokat, majd értékeket rendel az alkalmazáshoz:
 
 * **Application ID** (Alkalmazásazonosító), amely egyedileg azonosítja az alkalmazást.
@@ -53,14 +53,14 @@ Szinte minden OAuth és az OpenID Connect adatfolyamok, a négy felek használna
 
 * A **erőforrás-kiszolgáló** van, amelyben az erőforrás vagy adatok található. A hitelesítési kiszolgáló biztonságosan helyszerepkörre, és az OAuth-ügyfél megbízhatónak fogja tekinteni. Annak érdekében, hogy az erőforráshoz való hozzáférés is adható tulajdonosi jogkivonatot is használ.
 
-## Házirendek
+## <a name="policies"></a>Házirendek
 Az Azure AD B2C-házirendek késései, a legfontosabb funkciókról a szolgáltatás olyan. Az Azure AD B2C a szabványos OAuth 2.0 és az OpenID Connect protokollok házirendek bevezetésével kiterjeszti. Ezek teszik lehetővé az Azure AD B2C sokkal több, mint az egyszerű hitelesítés és engedélyezés végrehajtásához. 
 
 Házirendek teljes leírása fogyasztói identitással kapcsolatos műveletet, beleértve a regisztráció, bejelentkezés, profil és szerkesztését. Házirendek meghatározása egy rendszergazda felhasználói felületén. A HTTP-hitelesítési kérelmek egy speciális lekérdezési paraméter segítségével végrehajthatók. 
 
 Házirendek olyan nem szabványos OAuth 2.0 és az OpenID Connect, szolgáltatásait, ezek megértéséhez időt kell végrehajtani. További információkért lásd: a [házirend referencia-útmutató az Azure AD B2C](active-directory-b2c-reference-policies.md).
 
-## Tokenek
+## <a name="tokens"></a>Tokenek
 OAuth 2.0 és az OpenID Connect Azure AD B2C végrehajtását teszi tulajdonosi jogkivonatok, beleértve a tulajdonosi jogkivonatok JSON webes jogkivonatok (JWTs) helyettesítik használatának lehetőségét. Egy tulajdonosi jogkivonatot egy egyszerűsített biztonsági jogkivonatot, amely védett erőforrásokhoz való hozzáférést a "tulajdonos".
 
 A tulajdonosi, amely a token is jelenthet félre. Az Azure AD először hitelesíteniük kell egy entitás előtt megkaphatja a tulajdonosi jogkivonattal. De ha a szükséges lépéseket a rendszer nem hajtja végre a lexikális elem szerepel az átvitel, illetve tárolás biztosításához, azt is hozzá és egy nem kívánt fél által használt.
@@ -73,7 +73,7 @@ További tulajdonosi jogkivonat biztonsági szempontjait, lásd: [RFC 6750 szaka
 
 További információ a különböző típusú jogkivonatokat, amelyek az Azure AD B2C találhatók [az Azure AD-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md).
 
-## Protokollok
+## <a name="protocols"></a>Protokollok
 Amikor készen áll a tekintse át az egyes példa kérések, megkezdheti az alábbi oktatóanyagok egyike. Mindegyike megfelel egy adott hitelesítési forgatókönyv. Ha annak meghatározásakor, amelyben az Ön számára legmegfelelőbb segítségre van szüksége, tekintse meg [milyen típusú alkalmazásokat hozhat létre az Azure AD B2C segítségével](active-directory-b2c-apps.md).
 
 * [Mobil- és natív alkalmazások létrehozását OAuth 2.0 használatával](active-directory-b2c-reference-oauth-code.md)

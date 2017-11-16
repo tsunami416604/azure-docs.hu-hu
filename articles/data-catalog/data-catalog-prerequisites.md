@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 10/01/2017
 ms.author: maroche
-ms.openlocfilehash: cf32ef4c80fa0ee68ce3dc1289467a419aab39c9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7d4ed0cc06e8b218b2b63c1d899701ba2eafd648
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Az Azure Data Catalog előfeltételei
 
@@ -28,7 +28,7 @@ Néhány dolgot gondoskodunk Azure Data Catalog beállítása előtt kell. Ne ag
 ## <a name="azure-subscription"></a>Azure-előfizetés
 A Data Catalog beállítása, a tulajdonos vagy a társtulajdonos az Azure-előfizetéssel kell lennie.
 
-Azure-előfizetések megkönnyítik felhőszolgáltatás erőforrások, például a Data Catalog elérésére. Előfizetések is segíthetnek, erőforrás-használat jelentett, számlázva és kifizette vezérlésére. Minden előfizetés van külön számlázási és a fizetési telepítő, így előfizetések és a csomagok, amelyek módosítják a részleg, a projekt, a regionális office és az stb. Egy előfizetés tartozik minden felhőalapú szolgáltatás, és kell rendelkeznie egy előfizetéshez, mielőtt a Data Catalog beállítása. További információkat a [fiókok, előfizetések és rendszergazdai szerepkörök kezeléséről](../active-directory/active-directory-assign-admin-roles.md) szóló cikkben talál.
+Azure-előfizetések megkönnyítik felhőszolgáltatás erőforrások, például a Data Catalog elérésére. Előfizetések is segíthetnek, erőforrás-használat jelentett, számlázva és kifizette vezérlésére. Minden előfizetés van külön számlázási és a fizetési telepítő, így előfizetések és a csomagok, amelyek módosítják a részleg, a projekt, a regionális office és az stb. Egy előfizetés tartozik minden felhőalapú szolgáltatás, és kell rendelkeznie egy előfizetéshez, mielőtt a Data Catalog beállítása. További információkat a [fiókok, előfizetések és rendszergazdai szerepkörök kezeléséről](../active-directory/active-directory-assign-admin-roles-azure-portal.md) szóló cikkben talál.
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 A Data Catalog beállításához be kell jelentkeznie be egy Azure Active Directory (Azure AD) felhasználói fiókkal.

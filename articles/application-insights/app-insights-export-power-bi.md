@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: fe708b14fac971d18d95fd1619907023ec35af89
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ae204b79be228d55b30bb543dd25efdd9c3f0436
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights hírcsatorna a Power bi-ban
 [A Power BI](http://www.powerbi.com/) üzleti analytics eszközöket tartalmazza, amelyek segítséget nyújtanak a csomagok elemzéséhez és insights megosztani. Gazdag az irányítópultok olyan rendelkezésre álljanak minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések adatok kombinálhatja [Azure Application Insights](app-insights-overview.md).
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/01/2017
 Az Application Insights adatainak exportálása a Power bi-ban három javasolt módszer áll rendelkezésre. Használhatja őket külön-külön vagy együtt.
 
 * [**A Power BI adapter** ](#power-pi-adapter) -állítson be egy teljes irányítópult telemetriai adatot az alkalmazásból. Előre definiált diagramok készletét, de más forrásból is hozzáadhat a saját lekérdezések.
-* [**Elemzési lekérdezések exportálásáról** ](#export-analytics-queries) -ír lekérdezés Analytics segítségével, és exportálja a Power bi-bA. Ez a lekérdezés elhelyezheti az egyéb adatokat irányítópulton.
+* [**Elemzési lekérdezések exportálásáról** ](#export-analytics-queries) -ír Analytics segítségével lekérdezés vagy a használati tölcsérek és exportálni onnan a Power bi-bA. Ez a lekérdezés elhelyezheti az egyéb adatokat irányítópulton.
 * [**A folyamatos exportálás és a Stream Analytics** ](app-insights-export-stream-analytics.md) -ebbe beletartozik a további munkahelyi beállítása. Ez akkor hasznos, ha az adatokat hosszú ideig megtartja. Ellenkező esetben a többi módszer használata ajánlott.
 
 ## <a name="power-bi-adapter"></a>A Power BI-adapter
@@ -48,7 +48,7 @@ Az irányítópult az Application Insights diagramok kombinálásának más forr
 A kezdeti importálás után az irányítópulton és a jelentések is naponta. Szabályozhatja, hogy a frissítési ütemezés az adatkészlettel.
 
 ## <a name="export-analytics-queries"></a>Elemzési lekérdezések exportálása
-Ez az útvonal írás Analytics lekérdezés tetszés, és teszi majd exportálja, amelyek a Power BI-irányítópultot. (Adhat hozzá a csatoló által létrehozott irányítópult.)
+Ez az útvonal teszi lehetővé, például vagy használati tölcsérek exportálása Analytics lekérdezés írása, majd exportálja, amelyek a Power BI-irányítópultot. (Adhat hozzá a csatoló által létrehozott irányítópult.)
 
 ### <a name="one-time-install-power-bi-desktop"></a>Egy alkalommal: telepítse a Power BI Desktop
 Az Application Insights lekérdezés importálásához a Power BI asztali verzióját használja. De majd közzéteheti azt az interneten vagy a Power BI felhő munkaterületet. 
@@ -82,10 +82,32 @@ Telepítés [a Power BI Desktopban](https://powerbi.microsoft.com/en-us/desktop/
     ![Válassza ki a képi megjelenítés](./media/app-insights-export-power-bi/publish-power-bi.png)
 4. Manuálisan frissítse a jelentést, időközönként, vagy állítson be egy ütemezett frissítés a beállítások lapon.
 
+### <a name="export-a-funnel"></a>A tölcsér exportálása
+1. [Ellenőrizze a tölcsér](usage-funnels.md)
+2. Kattintson a Power BI gomb 
+
+   ![Power bi gomb](./media/app-insights-export-power-bi/button.png)
+   
+3. A Power BI Desktop select **adatok beolvasása, üres lekérdezés** , majd a lekérdezés-szerkesztő, alatt **nézet** kiválasztása **speciális lekérdezés-szerkesztő**.
+
+   ![Üres lekérdezés](./media/app-insights-export-power-bi/blankquery.png)
+
+   Illessze be az exportált M nyelvi parancsfájl azokat a speciális lekérdezés-szerkesztő. 
+
+   ![Speciális lekérdezés-szerkesztő](./media/app-insights-export-power-bi/advancedquery.png)
+
+4. Válassza ki az elemeket a lekérdezésből, és válassza ki a tölcsér képi megjelenítés
+
+   ![Válasszon feladatütemezési és tölcsér](./media/app-insights-export-power-bi/selectsequence.png)
+
+5. Módosítsa a címet könnyebben értelmezhető, és a jelentés közzététele a Power BI felhő munkaterületen. 
+
+   ![Cím módosítása](./media/app-insights-export-power-bi/changetitle.png)
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="401-or-403-unauthorized"></a>401-es vagy 403-as nem engedélyezett 
-Ez akkor fordulhat elő, ha a refesh token nem lett frissítve. Próbálja meg ezeket a lépéseket, hogy továbbra is hozzáfér. Ha rendelkezik hozzáféréssel és refershing a hitelesítő adatok nem működik, nyisson egy támogatási jegy.
+Ez akkor fordulhat elő, ha a frissítési jogkivonat nem lett frissítve. Próbálja meg ezeket a lépéseket, hogy továbbra is hozzáfér. Ha Ön rendelkezik hozzáféréssel, és a hitelesítő adatok frissítése nem működik, nyisson egy támogatási jegy.
 
 1. Jelentkezzen be az Azure portálra, és győződjön meg arról, hogy van-e hozzáférési az erőforrás
 2. Próbálja meg frissíteni a hitelesítő adatokat az irányítópult

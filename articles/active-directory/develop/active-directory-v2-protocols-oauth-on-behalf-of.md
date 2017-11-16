@@ -21,7 +21,7 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# Az Azure Active Directory v2.0 és OAuth 2.0 On-Behalf-Of folyamata
+# <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Az Azure Active Directory v2.0 és OAuth 2.0 On-Behalf-Of folyamata
 Az OAuth 2.0 On-Behalf-Of folyamat szolgál a használati eset, ahol egy alkalmazás elindítja egy szolgáltatás vagy webes API, amely pedig meg kell hívni egy másik szolgáltatás vagy webes API-t. A lényege való terjesztése, a felhasználó delegált identitása és az engedélyek a kérelem lánc keresztül. A középső rétegbeli szolgáltatás hitelesített kéréseket küld az alárendelt szolgáltatás kell biztonságos hozzáférési tokent az Azure Active Directory (Azure AD), a felhasználó nevében.
 
 > [!NOTE]
@@ -29,7 +29,7 @@ Az OAuth 2.0 On-Behalf-Of folyamat szolgál a használati eset, ahol egy alkalma
 >
 >
 
-## Protokoll diagramja
+## <a name="protocol-diagram"></a>Protokoll diagramja
 Tegyük fel, hogy a felhasználó hitelesítése egy alkalmazást, amely a a [OAuth 2.0 hitelesítési kódot adjon folyamat](active-directory-v2-protocols-oauth-code.md). Ezen a ponton az alkalmazás rendelkezik olyan hozzáférési jogkivonatot (lexikális elem A) a felhasználói jogcímek és beleegyezése a középső rétegbeli webes API-k (API-A) eléréséhez. Most API A kell hitelesített kéréseknél az alsóbb rétegbeli webes API (API-B).
 
 A következő lépések az On-meghatalmazásos folyamat jelent, és segítségével. a következő ábra ismerteti.
@@ -47,7 +47,7 @@ A következő lépések az On-meghatalmazásos folyamat jelent, és segítségé
 > Ebben az esetben a középső rétegbeli szolgáltatás tartozik az beszerzése a felhasználói hozzájárulás az alsóbb rétegbeli API eléréséhez felhasználói beavatkozásra. Ezért a hozzáférési jogot az alsóbb rétegbeli API-t beállítás áll rendelkezésre előzetes megfizetése esetén, a hozzájárulási része. lépés: a hitelesítés során.
 >
 
-## Szolgáltatáskérés hozzáférési jogkivonat szolgáltatás
+## <a name="service-to-service-access-token-request"></a>Szolgáltatáskérés hozzáférési jogkivonat szolgáltatás
 Olyan hozzáférési jogkivonatot kérni, a bérlő-specifikus HTTP POST ellenőrizze az Azure AD v2.0-végpontra a következő paraméterekkel.
 
 ```
@@ -56,7 +56,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 Attól függően, hogy az ügyfélalkalmazás úgy dönt, hogy egy közös titkot, vagy a tanúsítvány védi két esetben van.
 
-### Először. eset: egy közös titkot a hozzáférési token kérelem
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Először. eset: egy közös titkot a hozzáférési token kérelem
 Egy közös titkos kulcs használata esetén a szolgáltatás hozzáférési kérelmek tartalmazza a következő paraméterekkel:
 
 | Paraméter |  | Leírás |
@@ -68,7 +68,7 @@ Egy közös titkos kulcs használata esetén a szolgáltatás hozzáférési ké
 | Hatókör |Szükséges | Egy szóközzel elválasztott a jogkivonatkérelem hatókört. További információkért lásd: [hatókörök](active-directory-v2-scopes.md).|
 | requested_token_use |Szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. Az On-meghatalmazásos folyamat, az érték lehet **on_behalf_of**. |
 
-#### Példa
+#### <a name="example"></a>Példa
 A következő HTTP POST kérelmek egy hozzáférési jogkivonat `user.read` https://graph.microsoft.com webes API hatókör.
 
 ```
@@ -86,7 +86,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 &requested_token_use=on_behalf_of
 ```
 
-### A második esetben: hozzáférési jogkivonat kérelem tanúsítvánnyal
+### <a name="second-case-access-token-request-with-a-certificate"></a>A második esetben: hozzáférési jogkivonat kérelem tanúsítvánnyal
 Szolgáltatás hozzáférési kérelmek tanúsítvánnyal tartalmazza a következő paraméterekkel:
 
 | Paraméter |  | Leírás |
@@ -101,7 +101,7 @@ Szolgáltatás hozzáférési kérelmek tanúsítvánnyal tartalmazza a követke
 
 Figyelje meg, hogy a paraméterek megegyeznek-szinte közös titkos kulcs kérése gazdabuszadaptereken azzal a különbséggel, hogy a client_secret paraméter helyébe két paramétert: egy client_assertion_type és client_assertion.
 
-#### Példa
+#### <a name="example"></a>Példa
 A következő HTTP POST kérelmek egy hozzáférési jogkivonat `user.read` hatókör https://graph.microsoft.com webes API tanúsítvánnyal.
 
 ```
@@ -120,7 +120,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read
 ```
 
-## Szolgáltatás-hozzáférési jogkivonat válasz szolgáltatás
+## <a name="service-to-service-access-token-response"></a>Szolgáltatás-hozzáférési jogkivonat válasz szolgáltatás
 Sikerességi válasz egy JSON OAuth 2.0 válasz a következő paraméterekkel.
 
 | Paraméter | Leírás |
@@ -131,7 +131,7 @@ Sikerességi válasz egy JSON OAuth 2.0 válasz a következő paraméterekkel.
 | access_token |A kért hozzáférési jogkivonat. A hívó szolgáltatás a fogadó szolgáltatással való hitelesítésre szolgáló használhatja a token. |
 | refresh_token |A kért hozzáférési jogkivonat frissítési jogkivonat. A hívó szolgáltatás egy új hozzáférési jogkivonat lekérni az aktuális jogkivonat lejárata után is használhatja a token. |
 
-### Sikerességi válasz – példa
+### <a name="success-response-example"></a>Sikerességi válasz – példa
 A következő példa bemutatja egy olyan hozzáférési jogkivonatot https://graph.microsoft.com webes API kérelemre sikerességi válasz.
 
 ```
@@ -145,7 +145,7 @@ A következő példa bemutatja egy olyan hozzáférési jogkivonatot https://gra
 }
 ```
 
-### Hiba válasz – példa
+### <a name="error-response-example"></a>Hiba válasz – példa
 Egy hiba történt egy válasz próbál szerezni hozzáférési tokent az alsóbb rétegbeli API-hoz, például a többtényezős hitelesítés beállítása a feltételes hozzáférési szabályzatot az alsóbb rétegbeli API-e az Azure AD-token végpontja érték érkezett vissza. A középső rétegbeli szolgáltatás kell surface Ez a hiba az ügyfélalkalmazás, így az ügyfélalkalmazás biztosítani tudja teljesíteni a feltételes hozzáférési házirend a felhasználói beavatkozást.
 
 ```
@@ -160,17 +160,17 @@ Egy hiba történt egy válasz próbál szerezni hozzáférési tokent az alsób
 }
 ```
 
-## A védett erőforrások eléréséhez használja a hozzáférési jogkivonat
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>A védett erőforrások eléréséhez használja a hozzáférési jogkivonat
 Most a középső rétegbeli szolgáltatás használhatja a hitelesített kérelmek legyen az alsóbb rétegbeli webes API-t úgy, hogy a jogkivonat fenti szerzett jogkivonat a `Authorization` fejléc.
 
-### Példa
+### <a name="example"></a>Példa
 ```
 GET /v1.0/me HTTP/1.1
 Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
 ```
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 További információk az OAuth 2.0 protokollt, és úgy is hajtsa végre a szolgáltatások közötti hitelesítési ügyfél hitelesítő adataival.
 * [OAuth 2.0 ügyfél hitelesítő adatai megadják az Azure AD v2.0](active-directory-v2-protocols-oauth-client-creds.md)
 * [OAuth 2.0, az Azure AD v2.0](active-directory-v2-protocols-oauth-code.md)

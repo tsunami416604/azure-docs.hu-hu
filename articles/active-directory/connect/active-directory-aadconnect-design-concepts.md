@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 4041cacd72b1db74012497287030faf5d05ee6bf
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 53a0f766de9db7e6ee48b6659aad378620c0d727
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Az Azure AD Connect: Tervezési alapelvek
 Ez a témakör célja, hogy az Azure AD Connect megvalósítási tervezése során kell re területek leírásához. Ez a témakör egy részletes bemutatója a bizonyos területeken, és ezekről a fogalmakról rövid leírását, valamint további témakörökre mutatnak.
@@ -172,7 +172,7 @@ Tegyük fel, hogy telepítette az Azure AD Connect a ConsistencyGuid szolgáltat
 
 ![Új könyvtárak hozzáadása a meglévő telepítés](./media/active-directory-aadconnect-design-concepts/consistencyGuid-04.png)
 
-## <a name="azure-ad-sign-in"></a>Az Azure AD-bejelentkezés
+## <a name="azure-ad-sign-in"></a>Bejelentkezés az Azure AD-ba
 A helyszíni címtár az Azure ad-vel integrálni fontos tudni, hogyan a szinkronizálási beállítások hatással lehet a módon felhasználó hitelesíti magát. Az Azure AD userPrincipalName (UPN) használ a felhasználó hitelesítéséhez. A felhasználók szinkronizálása során használt érték a userPrincipalName gondosan attribútumot kell választania.
 
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>A userPrincipalName attribútum kiválasztása
@@ -191,7 +191,7 @@ John az a felhasználó a contoso.com webhelyen. John a helyszíni egyszerű Fel
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Nem átirányítható helyszíni tartományok és az Azure AD egyszerű felhasználónév
 Egyes szervezeteknél nem átirányítható tartományok, mint a contoso.local vagy egyszerű egycímkés tartományok, mint például a contoso. Nem tudunk nem átirányítható tartomány hitelesítése az Azure ad-ben. Az Azure AD Connect Azure AD-ben csak egy ellenőrzött tartomány szinkronizálhatók. Az Azure AD-címtár létrehozásakor az Azure AD például contoso.onmicrosoft.com az alapértelmezett tartomány váló irányítható tartomány hoz létre. Ezért el kell más irányítható tartomány ilyen esetben győződjön meg arról, ha nem kívánja szinkronizálni kívánt alapértelmezett onmicrosoft.com tartomány.
 
-Olvasási [az egyéni tartománynév hozzáadása az Azure Active Directory](../active-directory-add-domain.md) további információt a hozzáadása és tartományok ellenőrzése.
+Olvasási [az egyéni tartománynév hozzáadása az Azure Active Directory](../active-directory-domains-add-azure-portal.md) további információt a hozzáadása és tartományok ellenőrzése.
 
 Az Azure AD Connect azt észleli, ha nem átirányítható tartományi környezetben futtatja, és akkor megfelelően figyelmezteti a folytassa a gyorsbeállítások. Ha nem átirányítható tartományban, akkor valószínű, hogy a felhasználók egyszerű túl van-e nem átirányítható utótagok. Például contoso.local le, ha az Azure AD Connect azt javasolja, hogy használja a gyorsbeállítások használata helyett egyéni beállításokat. Egyéni beállítások használatával is, amely kell használható egyszerű felhasználónév jelentkezzen be Azure után a felhasználók attribútumok szinkronizálva lesznek az Azure AD meg.
 

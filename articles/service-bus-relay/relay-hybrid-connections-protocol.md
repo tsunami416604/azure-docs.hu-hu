@@ -20,12 +20,12 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# Az Azure hibrid kapcsolatok protokoll
+# <a name="azure-relay-hybrid-connections-protocol"></a>Az Azure hibrid kapcsolatok protokoll
 Az Azure továbbítási az Azure Service Bus platform a fő funkció oszlopok egyike. Az új *hibrid kapcsolatok* továbbító egy biztonságos, nyílt-protokoll alakulása a HTTP és a websocket elemek alapján. Azt írja felül a volt, ugyanilyen nevű *BizTalk szolgáltatások* funkciója, amely a saját fejlesztésű protokollja alaprendszert lett létrehozva. Hibrid kapcsolatok integrálása Azure App Service szolgáltatások továbbra is működjön-van.
 
 Hibrid kapcsolatok lehetővé teszi, hogy kétirányú, bináris adatfolyam közötti kommunikáció során, ami esetleg mindkét félnek elhelyezkedhetnek NAT vagy tűzfal mögé két hálózati alkalmazások. Ez a cikk ismerteti a hibrid kapcsolatok relay csatlakozó ügyfeleken figyelő küldő szerepkörök és hogyan figyelői új kapcsolatok fogadásához ügyféloldali interakció.
 
-## Interakció modell
+## <a name="interaction-model"></a>Interakció modell
 A hibrid kapcsolatok továbbítási azáltal, hogy az Azure felhőben, amelyek mind a felek felderíteni, és a saját hálózati szempontból csatlakozni a szinkronizálási pont csatlakozik a két fél. A szinkronizálási pont "Hibrid kapcsolat" Ebben és egyéb dokumentációt neve API-kban és az Azure portálon. A hibrid kapcsolatok szolgáltatási végpont a "szolgáltatás" Ez a cikk a többi nevezzük. A kommunikáció modell leans a sok más hálózati API-k által létrehozott.
 
 Egy figyelő, amely először azt jelzi, hogy készültségi bejövő kapcsolat kezelésére, és ezt követően fogadja el őket, akkor van. A másik oldalon a figyelő vár, hogy kapcsolatot létrehozó kétirányú kommunikáció elérési elfogadja felé kapcsolódó ügyfél van.
@@ -35,46 +35,46 @@ A továbbítón keresztüli kommunikáció modellnek vagy fél kimenő kapcsolat
 
 A kapcsolat mindkét oldalán programok "ügyfelek," nevezzük, mivel azok az ügyfelek számára a szolgáltatás. Megvárja, és a kapcsolatokat fogad ügyfél a "figyelő", vagy a "figyelő szerepkörben.", különállónak Az ügyfélnek, amelyik a szolgáltatáson keresztül figyelő felé új kapcsolatot kezdeményez a "feladó" nevezik, vagy a "feladó szerepkör."
 
-### Figyelő interakciók
+### <a name="listener-interactions"></a>Figyelő interakciók
 A figyelő rendelkezik a szolgáltatás; négy interakciók összes átviteli részletes ismertetett referencia című cikkben.
 
-#### Figyelés
+#### <a name="listen"></a>Figyelés
 Jelzi a szolgáltatás, amely egy figyelő készen állnak készen áll kapcsolatok fogadására létrehoz egy kimenő WebSocket-kapcsolat. A kapcsolati kézfogás hordoz magában, ha a továbbítási névteret, és egy biztonsági jogkivonatot, amely a "figyelés" jogot a ruház neve konfigurálva hibrid kapcsolat neve.
 A WebSocket a szolgáltatás által elfogadható, ha a regisztrálása sikeresen befejeződött, és a meglévő webes WebSocket megőrzi életben csatornaként"vezérlő" minden későbbi kapcsolatok engedélyezéséhez. A szolgáltatás lehetővé teszi, hogy legfeljebb 25 párhuzamos figyelők a hibrid kapcsolat. Ha két vagy több aktív figyelők, a bejövő kapcsolatok elosztását mindegyik véletlenszerű sorrendben; igazságos elosztási nem garantált.
 
-#### Fogadja el
+#### <a name="accept"></a>Fogadja el
 A küldő a szolgáltatás az új kapcsolat megnyitása után a szolgáltatás úgy dönt, és értesíti a hibrid kapcsolat aktív figyelőinek egyikét. A rendszer értesítést küld a figyelő keresztül nyissa meg a vezérlőcsatorna, amelyek a figyelő csatlakoztatni kell a kapcsolat elfogadása a WebSocket-végpont URL-CÍMÉT tartalmazó JSON üzenetben.
 
 Az URL-címet is, és közvetlenül a figyelő extra munka nélkül kell használniuk.
 A kódolt információt csak érvénytelen, a rövid idő alatt, lényegében, az addig, amíg a küldője hajlandó várnia kell lennie a meghatározott-végpontok közötti kapcsolat, de legfeljebb 30 másodperc. Az URL-cím csak egy sikeres kapcsolódási kísérlet portbesorolása. Amint a szinkronizálási URL-címet a WebSocket-kapcsolat létrejött, a WebSocket minden további tevékenység a kezdő és a feladó, a szolgáltatás értelmezése vagy beavatkozás nélkül a továbbítón keresztüli.
 
-#### Frissítés
+#### <a name="renew"></a>Frissítés
 A biztonsági jogkivonatot kell használni a figyelő regisztrálása és karbantartása a vezérlőcsatorna előfordulhat, hogy lejár, amíg a figyelő aktív. A jogkivonat lejáratának nem befolyásolja a folyamatban lévő kapcsolatok, de ennek következtében a vezérlőcsatorna, illetve hamarosan lejáró időpontjában után a szolgáltatás megszakad. A "megújítása" művelet egy JSON-üzenetet, amely a figyelő küldhet, hogy a vezérlőcsatorna hosszabb ideig is megőrizhető, cserélje le a jogkivonatot a vezérlőcsatorna társított.
 
-#### Ping
+#### <a name="ping"></a>Ping
 Ha hosszú ideje, a a módszerrel a közvetítők tétlen marad a vezérlőcsatorna terhelés például terheléselosztó vagy NAT dobhatja TCP-kapcsolatot. A "ping" művelet elkerülhető, hogy úgy, hogy a csatornán, is emlékezteti, hogy a kapcsolat az célja, hogy kell életben, és azt is szolgál egy "élő" tesztet a figyelő a hálózati útvonalhoz mindenki kisebb mennyiségű adatot küld. Ha a pingelés nem sikerül, a vezérlőcsatorna érdemes figyelembe venni használható, és a figyelő elméletileg újracsatlakozik.
 
-### Küldő interakció
+### <a name="sender-interaction"></a>Küldő interakció
 A küldő csak rendelkezik a szolgáltatás egyetlen interakcióba: csatlakozik.
 
-#### Kapcsolódás
+#### <a name="connect"></a>Kapcsolódás
 A "Csatlakozás" művelet megnyitja a WebSocket szolgáltatás, a nevét, a hibrid kapcsolat és (ha szükséges, de alapértelmezés szerint) a biztonsági token eredményező "Send" engedéllyel a lekérdezési karakterláncban. A szolgáltatás majd kommunikál a figyelő a korábban ismertetett módon, és a figyelő létrehoz egy szinkronizálási kapcsolat, amely a WebSocket kapcsolódik. A WebSocket elfogadását követően az adott WebSocket minden további interakciók vannak egy csatlakoztatott figyelő.
 
-### Interakció összefoglaló
+### <a name="interaction-summary"></a>Interakció összefoglaló
 Ez a kommunikáció modell eredménye, hogy a küldő ügyfél származik-e a "tiszta" WebSocket, amelyek csatlakoztatva van egy figyelő, és további preambulumok vagy előkészítési nem igénylő kézfogást kívül. Ez a modell lehetővé teszi gyakorlatilag bármely létező WebSocket ügyfél megvalósítását, hogy könnyen előnyeit a hibrid kapcsolatok szolgáltatás úgy, hogy megadja a megfelelően összeállított URL-címet a WebSocket ügyfél rétegbe.
 
 A szinkronizálási kapcsolat, amely a figyelő olvassa be a elfogadás interakció keresztül WebSocket is tiszta, és minden meglévő WebSocket server végrehajtása néhány minimális extra absztrakciós, amelyik megkülönbözteti az "elfogadás" műveleteket végez a keretrendszer helyi hálózati figyelők és a hibrid kapcsolatok távoli "elfogadás" műveletek között is kell adni.
 
-## Protokoll referenciája
+## <a name="protocol-reference"></a>Protokoll referenciája
 
 Ez a szakasz ismerteti a fentiekben ismertetett protokoll kapcsolati adatait.
 
 Az összes WebSocket-kapcsolat készült a 443-as porton frissítéseként HTTPS 1.1, amelyeket gyakran néhány WebSocket keretrendszer vagy API-val. A leírását tartják megvalósítási semleges, anélkül, hogy egy adott keretrendszert javasolhat.
 
-### Figyelő protokoll
+### <a name="listener-protocol"></a>Figyelő protokoll
 A figyelő protokoll két kapcsolat kézmozdulatok és három üzenetművelet áll.
 
-#### Figyelő vezérlő adatcsatorna-kapcsolatot
+#### <a name="listener-control-channel-connection"></a>Figyelő vezérlő adatcsatorna-kapcsolatot
 A vezérlőcsatorna, ahol a WebSocket-kapcsolat létrehozása:
 
 ```
@@ -109,7 +109,7 @@ Ha a WebSocket-kapcsolat szándékosan állítja le a szolgáltatás után kezde
 | 1008 |A biztonsági jogkivonat érvényessége lejárt, ezért az engedélyezési házirendben sérül. |
 | 1011 |Valami hiba történt a szolgáltatásban. |
 
-### Fogadja el a kézfogás
+### <a name="accept-handshake"></a>Fogadja el a kézfogás
 A "elfogadása" rendszer értesítést küld a szolgáltatás által a figyelő a korábban létrehozott vezérlő csatornán WebSocket szöveg keretben JSON üzenetben. Nincs válasz ezzel az üzenettel.
 
 Az üzenet JSON objektumot tartalmaz "elfogadás" nevű meghatározó jelenleg a következő tulajdonságokkal:
@@ -118,7 +118,7 @@ Az üzenet JSON objektumot tartalmaz "elfogadás" nevű meghatározó jelenleg a
 * **azonosító** – az ehhez a kapcsolathoz tartozó egyedi azonosító. Az azonosító a küldő ügyfél által biztosított, ha a feladó megadott érték, különben a rendszer által létrehozott értéket.
 * **connectHeaders** – meg van adva a továbbítási végpontra a feladó, amely magában foglalja az mp-WebSocket-protokoll és az mp-WebSocket-bővítmények fejlécek HTTP-fejlécek.
 
-#### Üzenet elfogadása
+#### <a name="accept-message"></a>Üzenet elfogadása
 
 ```json
 {                                                           
@@ -136,7 +136,7 @@ Az üzenet JSON objektumot tartalmaz "elfogadás" nevű meghatározó jelenleg a
 
 Cím URL-cím a JSON-üzenetben a figyelő létrehozására szolgál a elfogadása vagy elutasítása a küldő szoftvercsatorna WebSocket.
 
-#### A szoftvercsatorna elfogadásakor
+#### <a name="accepting-the-socket"></a>A szoftvercsatorna elfogadásakor
 Fogadja el, hogy a figyelő a megadott cím WebSocket kapcsolat jön létre.
 
 Ha a "elfogadása" üzenetének egy `Sec-WebSocket-Protocol` fejléc, várható, hogy a figyelő csak elfogadja a WebSocket, ha az támogatja-e a protokoll. Emellett a fejléc állítja a, a WebSocket jön létre.
@@ -173,7 +173,7 @@ A kapcsolat létrejötte után a kiszolgáló leáll a WebSocket, amikor a küld
 | 1008 |A biztonsági jogkivonat érvényessége lejárt, ezért az engedélyezési házirendben sérül. |
 | 1011 |Valami hiba történt a szolgáltatásban. |
 
-#### A szoftvercsatorna elutasítása
+#### <a name="rejecting-the-socket"></a>A szoftvercsatorna elutasítása
 Egy hasonló kézfogás az "elfogadás" üzenet ellenőrzése után a szoftvercsatorna elutasítása igényel, így az állapotkódot és a kommunikáció során az elutasítás oka állapot leírása áramolhasson a feladónak.
 
 A protokoll tervezési szempontokat itt, hogy a WebSocket-kézfogás (, amely egy meghatározott hibaállapot végződésű) használja, hogy a figyelő ügyfélmegvalósítások továbbra is a WebSocket ügyfél alapulnak, és nem kell egy plusz alkalmaz, a HTTP-alapú operációs rendszer.
@@ -194,12 +194,12 @@ Megfelelően befejezése a kézfogás szándékosan sikertelen lesz, hibakódú 
 | 403 |Tiltott |Az URL-cím érvénytelen. |
 | 500 |Belső hiba |Valami hiba történt a szolgáltatásban. |
 
-### Figyelő jogkivonat megújítási
+### <a name="listener-token-renewal"></a>Figyelő jogkivonat megújítási
 Ha a figyelő-token érvényessége lejár, akkor lecserélheti keret szöveges üzenetet küld a szolgáltatás a kijelölt ellenőrzési csatornán keresztül. Az üzenet tartalmaz egy JSON-objektum neve `renewToken`, amely megadja, hogy a következő tulajdonság ekkor:
 
 * **token** – egy érvényes, az URL-kódolású Service Bus megosztott hozzáférési jogkivonat a névtér vagy a hibrid kapcsolat, amely ruház a **figyelésére** jobb.
 
-#### renewToken üzenet
+#### <a name="renewtoken-message"></a>renewToken üzenet
 
 ```json
 {                                                                                                                                                                        
@@ -215,7 +215,7 @@ Ha a jogkivonatok érvényesség-ellenőrzése sikertelen, nincs hozzáférése,
 | --- | --- |
 | 1008 |A biztonsági jogkivonat érvényessége lejárt, ezért az engedélyezési házirendben sérül. |
 
-## Küldő protokoll
+## <a name="sender-protocol"></a>Küldő protokoll
 A küldő protokoll hatékonyan megegyezik a módot, létrejön egy figyelő.
 A végpont WebSocket maximális átlátszóságának célja. Való csatlakozás címét ugyanúgy történik, mint a figyelő, de az "action" eltér, és a tokent egy másik engedélyre van szüksége:
 
@@ -262,7 +262,7 @@ Ha a WebSocket-kapcsolat szándékosan állítja le a szolgáltatás után azt k
 | 1008 |A biztonsági jogkivonat érvényessége lejárt, ezért az engedélyezési házirendben sérül. |
 | 1011 |Valami hiba történt a szolgáltatásban. |
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Relay – gyakori kérdések](relay-faq.md)
 * [Névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)

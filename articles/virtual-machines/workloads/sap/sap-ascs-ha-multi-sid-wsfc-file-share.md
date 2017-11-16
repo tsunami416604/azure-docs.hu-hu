@@ -1,6 +1,6 @@
 ---
-title: "SAP (A) SCS példány Multi-SID magas rendelkezésre a Windows Server Feladatátvételi fürtszolgáltatással és Azure fájlmegosztás |} Microsoft Docs"
-description: "Multi-SID magas rendelkezésre állás, a Windows Server feladatátvételi fürtszolgáltatás (A) SCS-példány SAP, és Azure fájlmegosztás"
+title: "SAP ASC/SCS példány multi-SID a magas rendelkezésre állás, az Azure-on Windows Server feladatátvételi fürtszolgáltatási és -fájlmegosztást |} Microsoft Docs"
+description: "Azure multi-SID a magas rendelkezésre állás, Windows Server feladatátvételi fürtszolgáltatás és a fájl SAP ASC/SCS-példányok megosztás"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f0beae1c92c40bb89decc6ca567aed98c5e29b4
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 3522e7ef0e3d49ce1bd8bed750b239fa384af8b8
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/14/2017
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -193,127 +193,127 @@ ms.lasthandoff: 10/16/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-# <a name="sap-ascs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>(A) SCS példány Multi-SID magas rendelkezésre állását a Windows Server feladatátvételi fürtszolgáltatás SAP, és az Azure fájlmegosztás
+# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASC/SCS példány multi-SID magas rendelkezésre állás, Windows Server feladatátvételi fürtszolgáltatás és a fájl megosztása az Azure-on
 
 > ![Windows][Logo_Windows] Windows
 >
 
 2016 szeptemberétől a Microsoft, amely egy szolgáltatás, ahol kezelheti több virtuális IP-cím használatával egy [Azure belső terheléselosztó][load-balancer-multivip-overview]. Ez a funkció már létezik az Azure külső terheléselosztó.
 
-Ha egy SAP üzemelő példányt, a belső terheléselosztók segítségével hozzon létre egy Windows-fürt konfigurálása az SAP ASC/SCS.
+Ha egy SAP üzemelő példányt, a belső terheléselosztók segítségével központi SAP-szolgáltatások (ASC vagy SCS)-példányok Windows fürtkonfiguráció létrehozása.
 
 Ez a cikk foglalkozik az egyetlen ASC/SCS telepítései áthelyezése egy SAP multi-SID-konfiguráció további SAP ASC/SCS fürtözött példányok be egy meglévő Windows Server feladatátvételi fürtszolgáltatási (WSFC) fürt telepítésével **fájlmegosztás** . Ez a folyamat befejezése után konfigurált egy SAP multi-SID-fürtöt.
 
 > [!NOTE]
 >
-> Ez a funkció csak a érhető el a **Azure Resource Manager** üzembe helyezési modellben.
+> Ez a funkció csak az Azure Resource Manager telepítési modell érhető el.
 >
->Személyes előtér-IP-címek minden Azure belső terheléselosztóhoz száma korlátozva van.
+>A titkos előtér-IP-címek minden Azure belső terheléselosztóhoz száma korlátozva van.
 >
 >Egy WSFC-fürtön SAP ASC/SCS példányok maximális száma megegyezik a titkos előtér-IP-címek minden Azure belső terheléselosztóhoz maximális számát.
 >
 
-Terheléselosztó korlátok kapcsolatos további információkért lásd: "Magánhálózati front-end IP-cím terheléselosztó" a [hálózatkezelés korlátok: Azure Resource Manager][networking-limits-azure-resource-manager].
+A "Magánhálózati front-end IP-cím terheléselosztó" szakaszában talál további információt a terheléselosztó korlátok [hálózatkezelés korlátok: Azure Resource Manager][networking-limits-azure-resource-manager].
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Már konfigurált egy WSFC-fürt használt **egy** SAP ASC/SCS példány használt **fájlmegosztás**ezen a diagramon látható módon.
+Már konfigurált egy WSFC-fürt használatára egy SAP ASC/SCS-példány használatával **fájlmegosztás**ezen a diagramon látható módon.
 
-![1. ábra: SAP (A) SCS-példány és a kibővíthető Fájlkiszolgáló fürtök telepítése][sap-ha-guide-figure-8007]
+![1. ábra: Az SAP ASC/SCS-példány és a kibővíthető Fájlkiszolgáló fürtök telepítése][sap-ha-guide-figure-8007]
 
-_**1. ábra:** SAP (A) SCS-példány és a kibővíthető Fájlkiszolgáló fürtök telepítése_
+_**1. ábra:** egy SAP ASC/SCS-példány és a kibővíthető Fájlkiszolgáló fürtök telepítése_
 
 > [!IMPORTANT]
 > A telepítő a következő feltételeknek kell megfelelniük:
 > * A SAP ASC/SCS-példány kell osztozik ugyanazon a WSFC-fürtre.
-> * Minden adatbázis-kezelő SID rendelkeznie kell a saját dedikált WSFC-fürtre.
+> * Minden adatbázis-kezelő rendszer (DBMS) SID rendelkeznie kell a saját dedikált WSFC-fürtre.
 > * Egy SAP rendszer SID tartozó SAP alkalmazáskiszolgálók rendelkeznie kell a saját dedikált virtuális gépek.
 
-## <a name="sap-ascs-multi-sid-architecture-with-file-share"></a>(A) SCS Multi-SID architektúra fájlmegosztáshoz való SAP
+## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>A fájlmegosztás SAP ASC/SCS multi-SID-architektúra
 
-A cél az, hogy több SAP ABAP ASC telepítéséhez, vagy SAP Java SCS fürtözött példánya a azonos WSFC-fürtre, ábrákkal szemléltetett itt:
+A cél az, hogy az azonos WSFC-fürtön több SAP speciális üzleti alkalmazás programozási (ASC) vagy SAP Java (SCS) fürtözött példányok telepítése az alábbiak szerint: 
 
-![2. ábra: SAP Multi-SID konfigurációját a két fürtök][sap-ha-guide-figure-8008]
+![2. ábra: Két fürt SAP multi-SID-konfiguráció][sap-ha-guide-figure-8008]
 
-_**2. ábra:** SAP Multi-SID konfigurációját a két fürtök_
+_**2. ábra:** SAP multi-SID konfigurációját a két fürtök_
 
-A telepítés, egy további  **&lt;SID2&gt;**  SAP rendszer megegyezik egy telepítési <SID> rendszer. Nincsenek két további előkészítést lépéseket kell (A) SCS fürtön, valamint a fájl megosztási kibővíthető Fájlkiszolgáló fürt.
+A telepítés, egy további **SAP \<SID2 >** rendszer megegyezik a telepítés egy <SID> rendszer. Két további előkészítő lépések végrehajtására szükség a ASC/SCS fürtön, valamint a fájlkiszolgáló megosztást kibővíthető Fájlkiszolgáló fürtön.
 
-## <a name="infrastructure-preparation-for-sap-multi-sid-scenario"></a>SAP Multi-SID forgatókönyvhöz infrastruktúra előkészítése
+## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Az infrastruktúra előkészítése egy SAP multi-SID forgatókönyv
 
-### <a name="infrastructure-preparation-on-domain-controller"></a>A tartományvezérlőn infrastruktúra előkészítése
+### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>A tartományvezérlőn infrastruktúra előkészítése
 
-A tartományi csoport létrehozásához  **&lt;tartomány&gt;\SAP_&lt;SID2&gt;_GlobalAdmin**, például a &lt;SID2&gt; = PR2. A tartománynév csoport <Domain>\SAP_PR2_GlobalAdmin
+A tartományi csoport létrehozásához  **\<tartományi > \SAP_\<SID2 > _GlobalAdmin**, például a \<SID2 > = PR2. A tartománynév csoport \<tartományi > \SAP_PR2_GlobalAdmin.
 
-### <a name="infrastructure-preparation-on-ascs-cluster"></a>(A) SCS fürtön infrastruktúra előkészítése
+### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>Készítse elő az infrastruktúrát a ASC/SCS fürtön
 
-Elő kell készíteni a meglévő (A) SCS fürt egy második SAP-infrastruktúra &lt;SID&gt;:
+Elő kell készítenie a meglévő ASC/SCS lévő infrastruktúra egy második SAP \<SID >:
 
-* Hozzon létre egy virtuális nevet az SAP ASC/SCS fürtözött példány a DNS-kiszolgálón
-* IP-cím hozzáadása egy meglévő Azure belső terheléselosztót a PowerShell használatával
+* Hozzon létre egy virtuális nevet az SAP ASC/SCS fürtözött példány a DNS-kiszolgálón.
+* IP-cím hozzáadása egy meglévő Azure belső terheléselosztót PowerShell segítségével.
 
-Ezeket a lépéseket ismerteti [infrastruktúra előkészítése SAP Multi-SID forgatókönyvhöz][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare].
+Ezeket a lépéseket ismerteti [infrastruktúra előkészítése egy SAP multi-SID forgatókönyvhöz][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare].
 
 
-### <a name="infrastructure-preparation-on-sofs-cluster-using-existing-sap-global-host"></a>Kibővíthető Fájlkiszolgáló fürtjéhez meglévő globális SAP-állomás az infrastruktúra előkészítése
+### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>A meglévő globális SAP-állomás használatával egy kibővíthető Fájlkiszolgáló fürt infrastruktúra előkészítése
 
-Lehetősége van a meglévő újból  **&lt;SAPGLOBALHost&gt;**  és **kötet1** , az első SAP <SID1> rendszer.
+Újrahasználhatja a meglévő \<SAPGlobalHost > és az első SAP kötet1 <SID1> rendszer.
 
-![3. ábra: Több-a SID SOFS ugyanazt az állomásnevet SAP globális][sap-ha-guide-figure-8014]
+![3. ábra: Multi-SID SOFS megegyezik az SAP globális állomásnév][sap-ha-guide-figure-8014]
 
-_**3. ábra:** Multi-SID SOFS ugyanazt az állomásnevet SAP globális_
+_**3. ábra:** Multi-SID SOFS megegyezik az SAP globális állomásnév_
 
 > [!IMPORTANT]
->A második **SAP &lt;SID2&gt;**  rendszer, az azonos kötet1 és azonos  **&lt;SAPGlobalHost&gt;**  hálózati név használatban van.
->Ha azt szeretné, hogy újból azonos  **&lt;SAPGlobalHost&gt;**  hálózat nevét, és már **SAPMNT** megosztásnevet különböző SAP-rendszerek esetén azt kényszerítve vannak-e az azonos használandó**Kötet1**.
+>A második **SAP \<SID2 >** rendszer, az azonos kötet1 és azonos  **\<SAPGlobalHost >** hálózatnév szolgálnak.
+>Mert be **SAPMNT** különböző SAP-rendszerek esetén újból a megosztás neve, a  **\<SAPGlobalHost >** hálózati név kell használnia az azonos **kötet1**.
 >
->A fájl elérési útját <SID2> globális állomás: C:\ClusterStorage\\**kötet1**\usr\sap\<SID2 > \SYS\
+>A fájl elérési útját a <SID2> globális állomás C:\ClusterStorage\\**kötet1**\usr\sap\<SID2 > \SYS\.
 >
 
-Elő kell készítenie az SAP globális állomás **... \SYS\..** a kibővíthető Fájlkiszolgáló fürt mappájába &lt;SID2&gt; rendszer.
+Az a \<SID2 > rendszert, előbb elő kell készítenie az SAP globális állomás... \SYS\.. a kibővíthető Fájlkiszolgáló fürt mappájába.
 
-A következő PowerShell parancsfájlt készíti elő az SAP globális GAZDAGÉP &lt;SID2&gt; példány:
+Az SAP globális gazdagép előkészítése a \<SID2 > példány, a következő PowerShell-parancsfájlt:
 
 
 ```PowerShell
 ##################
-# SAP Multi-SID
+# SAP multi-SID
 ##################
 
 $SAPSID2 = "PR2"
 $DomainName2 = "SAPCLUSTER"
 $SAPSIDGlobalAdminGroupName2 = "$DomainName2\SAP_" + $SAPSID2 + "_GlobalAdmin"
 
-# SAP (A)SCS cluster nodes
+# SAP ASCS/SCS cluster nodes
 $ASCSCluster2Node1 = "ja1-ascs-0"
 $ASCSCluster2Node2 = "ja1-ascs-1"
 
-# Define SAP (A)SCS cluster node computer objects
+# Define the SAP ASCS/SCS cluster node computer objects
 $ASCSCluster2ObjectNode1 = "$DomainName2\$ASCSCluster2Node1$"
 $ASCSCluster2ObjectNode2 = "$DomainName2\$ASCSCluster2Node2$"
 
 # Create usr\sap\.. folders on CSV
 $SAPGlobalFolder2 = "C:\ClusterStorage\Volume1\usr\sap\$SAPSID2\SYS"
-New-Item -Path $SAPGlobalFOlder2 -ItemType Directory
+New-Item -Path $SAPGlobalFolder2 -ItemType Directory
 
-# Add permissions for SAP SID2 system
+# Add permissions for the SAP SID2 system
 Grant-SmbShareAccess -Name sapmnt -AccountName $SAPSIDGlobalAdminGroupName2, $ASCSCluster2ObjectNode1, $ASCSCluster2ObjectNode2 -AccessRight Full -Force
 
 
 $UsrSAPFolder = "C:\ClusterStorage\Volume1\usr\sap\"
 
-# Set files & folder security
+# Set file and folder security
 $Acl = Get-Acl $UsrSAPFolder
 
-# Add security object of SAP_<sid>_GlobalAdmin group
+# Add the security object of the SAP_<sid>_GlobalAdmin group
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($SAPSIDGlobalAdminGroupName2,"FullControl", 'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode1$ computer object
+# Add the security object of the clusternode1$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSCluster2ObjectNode1,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode2$ computer object
+# Add the security object of the clusternode2$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSCluster2ObjectNode2,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
@@ -321,15 +321,15 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-### <a name="infrastructure-preparation-on-sofs-cluster-using-different-sap-global-host"></a>A kibővíthető Fájlkiszolgáló fürtjéhez különböző SAP globális állomás infrastruktúra előkészítése
+### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>Készítse elő az infrastruktúrát a kibővíthető Fájlkiszolgáló fürt egy másik globális SAP-állomás segítségével
 
-A második SOFS is beállíthat, például a második kibővíthető Fájlkiszolgáló fürt szerepkör-  **&lt;SAPGlobalHost2&gt;**  és különböző **Voulme2** a második  **&lt;SID2&gt;**.
+Beállíthatja, hogy a második SOFS (például a második kibővíthető Fájlkiszolgáló fürt szerepkör-  **\<SAPGlobalHost2 >** és egy másik **kötet2** a második  **\< SID2 >**).
 
-![4. ábra: Több-a SID SOFS SAP globális állomásnévvel 2][sap-ha-guide-figure-8015]
+![4. ábra: Multi-SID SOFS megegyezik az SAP globális állomásnév 2][sap-ha-guide-figure-8015]
 
-_**4. ábra:** Multi-SID SOFS SAP globális állomásnévvel 2_
+_**4. ábra:** Multi-SID SOFS megegyezik a SAP globális állomásnév 2_
 
-A második kibővíthető Fájlkiszolgáló szerepkör létrehozása a PowerShell-parancsfájl végrehajtása &lt;SAPGlobalHost2&gt;:
+A második kibővíthető Fájlkiszolgáló szerepkör létrehozásához \<SAPGlobalHost2 >, a PowerShell-parancsfájlt:
 
 ```PowerShell
 # Create SOFS with SAP Global Host Name 2
@@ -343,25 +343,25 @@ Hozzon létre a második **kötet2**. A PowerShell-parancsfájl végrehajtása:
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![5. ábra: Több-a SID SOFS SAP globális állomásnévvel 2][sap-ha-guide-figure-8016]
+![5. ábra: Multi-SID SOFS megegyezik az SAP globális állomásnév 2][sap-ha-guide-figure-8016]
 
-_**5. ábra:** második **kötet2** a Feladatátvevőfürt-kezelőben_
+_**5. ábra:** második kötet2 a Feladatátvevőfürt-kezelőben_
 
-SAP globális modulok mappájának létrehozásakor a második  **&lt;SID2&gt;**  és a fájlszintű biztonság állítható be.
+SAP globális modulok mappájának létrehozásakor a második \<SID2 >, és állítsa be a fájl biztonsági.
 
 A PowerShell-parancsfájl végrehajtása:
 
 ```PowerShell
-# Create folder for <SID2> on second Volume2 and set file security
+# Create a folder for <SID2> on a second Volume2 and set file security
 $SAPSID = "PR2"
 $DomainName = "SAPCLUSTER"
 $SAPSIDGlobalAdminGroupName = "$DomainName\SAP_" + $SAPSID + "_GlobalAdmin"
 
-# SAP (A)SCS cluster nodes
+# SAP ASCS/SCS cluster nodes
 $ASCSClusterNode1 = "ascs-1"
 $ASCSClusterNode2 = "ascs-2"
 
-# Define SAP (A)SCS cluster node computer objects
+# Define SAP ASCS/SCS cluster node computer objects
 $ASCSClusterObjectNode1 = "$DomainName\$ASCSClusterNode1$"
 $ASCSClusterObjectNode2 = "$DomainName\$ASCSClusterNode2$"
 
@@ -371,18 +371,18 @@ New-Item -Path $SAPGlobalFOlder -ItemType Directory
 
 $UsrSAPFolder = "C:\ClusterStorage\Volume2\usr\sap\"
 
-# Set files & folder security
+# Set file and folder security
 $Acl = Get-Acl $UsrSAPFolder
 
-# Add file security object of SAP_<sid>_GlobalAdmin group
+# Add the file security object of the SAP_<sid>_GlobalAdmin group
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($SAPSIDGlobalAdminGroupName,"FullControl", 'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode1$ computer object
+# Add the security object of the clusternode1$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSClusterObjectNode1,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode2$ computer object
+# Add the security object of the clusternode2$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSClusterObjectNode2,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
@@ -390,63 +390,68 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-SAPMNT fájlmegosztás létrehozása a **kötet2** rendelkező  **&lt;SAPGlobalHost2&gt;**  host name, második SAP  **&lt;SID2&gt;** , indítsa el a következő varázslót a Feladatátvevőfürt-kezelőben.
+A kötet2 SAPMNT fájlmegosztás létrehozásához a  *\<SAPGlobalHost2 >* a második SAP host name \<SID2 >, indítsa el a **fájlmegosztás hozzáadása** varázslót a feladatátvevő fürt A Manager objektum.
 
-A saoglobal2 kibővíthető Fájlkiszolgáló fürt csoportban kattintson a jobb gombbal, és válassza a "Hozzáadás fájlmegosztás."
+Kattintson a jobb gombbal a **saoglobal2** SOFS fürtcsoportot, és válassza **fájlmegosztás hozzáadása**.
 
-![6. ábra: Start "A fájlmegosztás hozzáadása" varázsló][sap-ha-guide-figure-8017]
+![6. ábra: A "Fájlmegosztás hozzáadása" varázsló elindításához.][sap-ha-guide-figure-8017]
 
 _**6. ábra:** Start "A fájlmegosztás hozzáadása" varázsló_
 
-![7. ábra: "SMB-megosztás – gyors kiválasztása][sap-ha-guide-figure-8018]
+<br>
+![7. ábra: "Select SMB-megosztás – gyors"][sap-ha-guide-figure-8018]
 
-_**7. ábra:** "SMB-megosztás – gyors kiválasztása_
+_**7. ábra:** "SMB megosztás – gyors" kiválasztása_
 
-![8. ábra: Sapglobalhost2 válassza ki, és adja meg elérési utat kötet2][sap-ha-guide-figure-8019]
+<br>
+![8. ábra: "Sapglobalhost2" Válassza ki, és adja meg elérési utat kötet2][sap-ha-guide-figure-8019]
 
-_**8. ábra:** válasszon **sapglobalhost2** , és adja meg elérési utat kötet2_
+_**8. ábra:** "sapglobalhost2" Válassza ki, és adja meg elérési utat kötet2_
 
+<br>
+![9. ábra: Fájlmegosztás neve "sapmnt" való beállítása][sap-ha-guide-figure-8020]
 
-![9. ábra: Fájlmegosztás neve sapmnt beállítása][sap-ha-guide-figure-8020]
+_**9. ábra:** Set fájlmegosztás neve a "sapmnt"_
 
-_**9. ábra:** Set fájlmegosztás neve a **sapmnt**_
-
+<br>
 ![10. ábra: Összes beállítás letiltása][sap-ha-guide-figure-8021]
 
 _**10. ábra:** összes beállítás letiltása_
 
-Ügyeljen arra, hogy a "Teljes hozzáférés" értékre a fájlok és sapmnt megosztást:
-* **SAP_&lt;SID&gt;_GlobalAdmin** tartományi felhasználói csoport
-* (A) SCS fürtcsomópontok számítógép-objektuma **ASC-1$** és **ASC-2$**
+<br>
+Rendelje hozzá *teljes hozzáférés* fájlok és sapmnt osszák meg:
+* A **SAP_\<SID > _GlobalAdmin** tartományi felhasználói csoport
+* Számítógép-objektum ASC/SCS fürtcsomópontok **ASC-1$** és **ASC-2$**
 
-![11. ábra: Ügyeljen arra, hogy a felhasználói csoport és számítógépfiókok teljes körű hozzáférés beállítása][sap-ha-guide-figure-8022]
+![11. ábra: Teljes hozzáférési engedélyek hozzárendelése a felhasználói csoport és számítógépfiókok][sap-ha-guide-figure-8022]
 
-_**11. ábra:** állítson be a teljes körű hozzáférési felhasználói csoport és fiókok_
+_**11. ábra:** rendelni a "Teljes hozzáférés" felhasználói csoport és fiókok_
 
-![12. ábra: Kattintson a létrehozás][sap-ha-guide-figure-8023]
+<br>
+![12. ábra: Válassza a "Create"][sap-ha-guide-figure-8023]
 
-_**12. ábra:** kattintson a létrehozás_
+_**12. ábra:** válassza a "Create"_
 
+<br>
 ![13. ábra: A második sapmnt kötve sapglobal2 gazdagéphez, és kötet2 jön létre][sap-ha-guide-figure-8024]
 
-_**13. ábra:** a **második sapmnt** kötött **sapglobal2** állomás és **kötet2** létrehozása_
+_**13. ábra:** a második sapmnt sapglobal2 állomás kötve, és kötet2 jön létre_
 
-## <a name="sap-netweaver-multi-sid-installation"></a>SAP NetWeaver Multi-SID-telepítés
+<br>
+## <a name="install-sap-netweaver-multi-sid"></a>SAP NetWeaver multi-SID telepítése
 
-### <a name="sap-ltsid2gt-ascs-and-ers-instances-installation"></a>SAP &lt;SID2&gt; A SCS és SSZON példányok telepítése
+### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>Telepítse az SAP \<SID2 > ASC/SCS és SSZON példányok
 
-Kövesse a telepítési és konfigurációs lépéseket egy SAP leírtak &lt;SID&gt;.
+Kövesse a telepítési és konfigurációs lépéseket egy SAP ismertetett módon \<SID >.
 
 ### <a name="install-dbms-and-sap-application-servers"></a>Telepítse az adatbázis-kezelő és az SAP alkalmazáskiszolgálók
 Telepítse az adatbázis-kezelő és a SAP alkalmazáskiszolgálók ismertetett módon.
 
-
-
 ## <a name="next-steps"></a>Következő lépések
 
-* [Egy nem feladatátvevő fürtöt (A) SCS példányának telepítését a megosztott lemezeket - hivatalos SAP irányelvek magas rendelkezésre ÁLLÁSÚ fájlmegosztás][sap-official-ha-file-share-document]:
+* [Egy ASC/SCS példányát telepítenie, egy olyan feladatátvevő fürthöz megosztott lemez nélküli][sap-official-ha-file-share-document]: egy magas rendelkezésre ÁLLÁSÚ fájlmegosztás hivatalos SAP irányelvek
 
-* [Tárolóhelyek – közvetlen a Windows Server 2016][s2d-in-win-2016]
+* [A Windows Server 2016 közvetlen tárolóhelyek][s2d-in-win-2016]
 
 * [Kibővített fájlkiszolgáló alkalmazásadatokhoz – áttekintés][sofs-overview]
 

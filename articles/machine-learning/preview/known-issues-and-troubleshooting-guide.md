@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: e1ce5d337e8dea6e1dc48f04238ecb31c31909b1
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 28d97d65d2671f7af2cd3b29ea65ae053d5e8122
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -84,8 +84,21 @@ Azure ML munkaterület dolgozik, amikor is küldhet nekünk a rosszallás (vagy 
 
 - RevoScalePy könyvtár csak Windows és Linux (a Docker-tároló) támogatott. MacOS a nem támogatott.
 
-## <a name="delete-experimentation-account"></a>Kísérletezhet fiók törlése
-Parancssori felület használatával kísérletezhet-fiók törlése, de törölnie kell az alárendelt munkaterületekkel és a gyermek projektek belül e gyermek munkaterületek először.
+## <a name="cant-update-workbench"></a>Nem lehet frissíteni a munkaterület
+Egy új frissítés érhető el, ha a munkaterületet üzemeltető alkalmazás kezdőlap egy üzenetet fog látni az új frissítésről jeleníti meg. Meg kell jelennie egy frissítés jelvény jelenik meg a bal alsó sarkába a alkalmazást a harang ikonra. Kattintson a jelvény, és kövesse a telepítővarázsló a frissítés telepítéséhez. Ha nem látja az értesítési, indítsa újra az alkalmazást. Ha még nem látja a frissítési értesítés újraindítás után, előfordulhat, hogy néhány okainak lehet.
+
+### <a name="you-are-launching-workbench-from-a-pinned-shortcut-on-the-task-bar"></a>A tálcán rögzített parancsikon vannak fókusza munkaterület
+Előfordulhat, hogy már telepítette a frissítést. De a rögzített helyi továbbra is a régi bits lemezen mutat. Ez megkeresésével ellenőrizheti a `%localappdata%/AmlWorkbench` mappa, és ellenőrizze, hogy ha legújabb verziója van telepítve, és vizsgálja meg azon tulajdonságát, tekintse meg, ahol mutató rögzített hivatkozás. Ha ellenőrizte, egyszerűen távolítsa el a régi helyi Start menüből indítsa el a munkaterületet üzemeltető és opcionálisan hozzon létre egy új rögzített parancsikont a tálcán.
+
+### <a name="you-installed-workbench-using-the-install-azure-ml-workbench-link-on-a-windows-dsvm"></a>"Az Azure ML munkaterület telepítés" hivatkozás segítségével a Windows-DSVM munkaterület telepítése
+Sajnos van nem egyszerű ezen a projekten. Akkor kell távolítania a telepített bits, és töltse le a legfrissebb telepítő friss-telepítésre a munkaterület a következő lépésekkel: 
+   - a következő mappa eltávolítása`C:\Users\<Username>\AppData\Local\amlworkbench`
+   - Távolítsa el a parancsfájl`C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
+   - a fenti szkript indító parancsikon eltávolítása
+   - a telepítő https://aka.ms/azureml-wb-msi töltse le és telepítse újra.
+
+## <a name="cant-delete-experimentation-account"></a>Kísérletezhet fiók nem törölhető.
+Parancssori felület használatával kísérletezhet-fiók törlése, de törölnie kell az alárendelt munkaterületekkel és a gyermek projektek belül e gyermek munkaterületek először. Ellenkező esetben hibaüzenet jelenik meg.
 
 ```azure-cli
 # delete a project
@@ -100,9 +113,11 @@ $ az ml account experimentation delete -g <resource group name> -n <experimentat
 
 A projektek és a munkaterületet üzemeltető alkalmazásból származó munkaterületek is törli.
 
+## <a name="cant-open-file-if-project-is-in-onedrive"></a>Fájl nem nyitható meg, ha a projekt a onedrive-on
+Ha Windows 10 alá esik Creators frissítést, és a projekt egy, a onedrive vállalati verzió leképezett helyi mappában jön létre, előfordulhat, hogy nem nyitható meg minden olyan fájlt a munkaterületre. Node.js kód sikertelen lesz, a onedrive vállalati verzió mappában a alá esik Creators frissítés által bevezetett programhiba okozza. A hiba lesz kijavítva, amint a Windows Update, de addig, nem hozzon létre projekteket a onedrive vállalati verzió mappában.
 
 ## <a name="file-name-too-long-on-windows"></a>A fájlnév túl hosszú a Windows rendszeren
-Ha a munkaterületet használja a Windows, mutatjuk be a alapértelmezett legfeljebb 260 karakteres fájl neve maximális hossz, amely sikerült surface, némileg félrevezető "a rendszer nem találja a megadott elérési út" hiba. Egy beállításkulcs-érték engedélyezi sokkal hosszabb fájl elérési útja módosítható. Felülvizsgálati [Ez a cikk](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) beállításával kapcsolatos további részletekért a _MAX_PATH_ beállításkulcsot.
+Ha Windows munkaterületet használja, mutatjuk be a alapértelmezett maximális 260 karakteres fájl neve maximális hossz, amely "a rendszer nem találja a megadott elérési út" hibaként surface sikerült. Egy beállításkulcs-érték engedélyezi sokkal hosszabb fájl elérési útja módosítható. Felülvizsgálati [Ez a cikk](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) beállításával kapcsolatos további részletekért a _MAX_PATH_ beállításkulcsot.
 
 ## <a name="docker-error-read-connection-refused"></a>Docker hiba "olvasható: Kapcsolat elutasítva"
 Végrehajtása egy helyi Docker-tároló, időnként megjelenhet a következő hibával: 

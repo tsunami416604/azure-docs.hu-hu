@@ -14,16 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 480f574640d4a9ccd4da97a98adc8b284d373855
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d737e354f5e7ee57c2e2c3d9b5599d4ba2b09af
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Központi telepítése és eltávolítása a FabricClient használó alkalmazások
 > [!div class="op_single_selector"]
+> * [Resource Manager](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
-> * [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+> * [Service Fabric parancssori felület](service-fabric-application-lifecycle-sfctl.md)
 > * [FabricClient API-k](service-fabric-deploy-remove-applications-fabricclient.md)
 > 
 > 
@@ -42,7 +43,7 @@ Miután egy alkalmazás lett telepítve, és egy példányát a fürtben fut, t�
 1. Távolítsa el (vagy törlése) futó alkalmazáspéldány
 2. Az alkalmazástípus regisztrációjának törlése, ha már nincs szüksége
 
-Ha [központi telepítéséhez és alkalmazások hibakeresése a Visual Studio](service-fabric-publish-app-remote-cluster.md) meg a helyi fejlesztési fürtöt, az előző lépések kezeli automatikusan egy PowerShell-parancsfájl segítségével.  Ez a parancsfájl megtalálható a *parancsfájlok* mappában található a projektet. Ez a cikk nyújt háttér milyen, hogy a parancsfájl módon, hogy a Visual Studio kívül ugyanazokat a műveleteket végezheti el. 
+Telepítésével és a helyi fejlesztési fürtön lévő alkalmazások hibakeresése a Visual Studio használja, ha az előző lépések kezeli automatikusan egy PowerShell-parancsfájl segítségével.  Ez a parancsfájl megtalálható a *parancsfájlok* mappában található a projektet. Ez a cikk nyújt háttér milyen, hogy a parancsfájl módon, hogy a Visual Studio kívül ugyanazokat a műveleteket végezheti el. 
  
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 Csatlakozzon a fürthöz, hozzon létre egy [FabricClient](/dotnet/api/system.fabric.fabricclient) példány, mielőtt futtatja példák ebben a cikkben. Példák a helyi fejlesztési fürtök vagy egy távoli fürtöt vagy az Azure Active Directoryval, X509 védett fürt csatlakozik a tanúsítványokat, vagy a Windows Active Directory [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). Szeretne csatlakozni a helyi fejlesztési fürtöt, futtassa az alábbi parancsot:

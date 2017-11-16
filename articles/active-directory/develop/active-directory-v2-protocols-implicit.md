@@ -21,7 +21,7 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# v2.0 protokoll - gyógyfürdők a implicit engedélyezési folyamat használata
+# <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 protokoll - gyógyfürdők a implicit engedélyezési folyamat használata
 A v2.0-végponttal is jelentkezzen be arra a egylapos alkalmazások a Microsoft a személyes és munkahelyi vagy iskolai fiókkal rendelkező felhasználók.  Egyetlen lap, és más JavaScript alkalmazásokkal szerepkört futtató elsősorban egy böngésző arc érdekes néhány felkéri, amikor a hitelesítés:
 
 * Ezeknek az alkalmazásoknak a biztonsági jellemzőkkel jelentősen különböznek a hagyományos server-alapú webes alkalmazásokhoz.
@@ -39,12 +39,12 @@ Azonban ha inkább nem egy könyvtárban, az alkalmazás egylapos, és küldhet 
 > 
 > 
 
-## Protokoll diagramja
+## <a name="protocol-diagram"></a>Protokoll diagramja
 A teljes implicit bejelentkezési folyamata az alábbihoz hasonló - lépéseit az alábbiakban ismertetjük.
 
 ![OpenId Connect sávok](../../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
-## A bejelentkezési kérelem elküldése
+## <a name="send-the-sign-in-request"></a>A bejelentkezési kérelem elküldése
 Kezdetben beléptetni a felhasználót az alkalmazásba, küldjön egy [OpenID Connect](active-directory-v2-protocols-oidc.md) engedélyezési kérelem és a get egy `id_token` a v2.0-végponttal való:
 
 ```
@@ -84,7 +84,7 @@ Ezen a ponton a kérni fogja a felhasználótól kell adnia a hitelesítő adata
 
 Miután a felhasználó hitelesíti és engedélyezi a hozzájárulási, a v2.0-végpontra ad vissza az alkalmazást a jelzett választ `redirect_uri`, az ismertetett módon a `response_mode` paraméter.
 
-#### A sikeres válasz
+#### <a name="successful-response"></a>A sikeres válasz
 A sikeres válasz használatával `response_mode=fragment` és `response_type=id_token+token` sortöréssel olvashatóságát, a következőképpen néz:
 
 ```
@@ -106,7 +106,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | id_token |A id_token, amely az alkalmazás kéri. A id_token segítségével ellenőrzi a felhasználó identitását, és a felhasználói munkamenet elindításához.  További részleteket a id_tokens és azok tartalmát a [v2.0 jogkivonat végponthivatkozás](active-directory-v2-tokens.md). |
 | state |Ha a kérelem egy állapot paramétert tartalmaz, ugyanazt az értéket meg kell jelennie a válasz. Az alkalmazás győződjön meg arról, hogy a kérés- és állapot értékei megegyeznek. |
 
-#### Hibaválaszba
+#### <a name="error-response"></a>Hibaválaszba
 Hibaválaszok is elküldheti a `redirect_uri` , az alkalmazás megfelelően tudja ezeket kezelni:
 
 ```
@@ -120,7 +120,7 @@ error=access_denied
 | error |Egy hiba kód karakterlánc, amely segítségével besorolni a felmerülő hibákat, és reagálni hibákat is használható. |
 | error_description |Egy adott hibaüzenet, amelyek segítségével a fejlesztők hitelesítési hiba okának azonosításához. |
 
-## A id_token ellenőrzése
+## <a name="validate-the-idtoken"></a>A id_token ellenőrzése
 Csak fogadó egy id_token túl kicsi a felhasználó; a id_token aláírás érvényesítése kell, és ellenőrizze a jogcímek, az alkalmazás követelményeinek / jogkivonat.  Használja a v2.0-végpontra [JSON Web Tokens (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és a jogkivonatok aláírásához, és ellenőrizze, hogy azok érvényes nyilvános kulccsal történő titkosítás.
 
 Ha szeretné ellenőrizni a `id_token` ügyfél kódot, de általános gyakorlat, hogy küldjön a `id_token` háttérkiszolgálóhoz, és végezze el az érvényesítési hiba.  Miután aláírását, valamint a id_token ellenőrizte, van néhány jogcímek ellenőrzéséhez szükséges.  Lásd: a [v2.0 jogkivonat referenciái](active-directory-v2-tokens.md) további információt, többek között [jogkivonatok ellenőrzése](active-directory-v2-tokens.md#validating-tokens) és [fontos információk kapcsolatos aláírási kulcs átfordulási](active-directory-v2-tokens.md#validating-tokens).  Azt javasoljuk, elemzés és ellenőrzése a szalagtár alkalmazó jogkivonatok - van legalább egy legtöbb nyelvekhez és platformokhoz érhető el.
@@ -136,7 +136,7 @@ A jogcím szerepel egy id_token további információkért tekintse meg a [v2.0 
 
 Teljesen ellenőrzése a id_token, után a felhasználói munkamenet elindításához, és a jogcímek használata a id_token az beszerzése az alkalmazásban a felhasználó adatai.  Ez az információ alkalmas megjelenített, rekordok, engedélyek, stb.
 
-## A hozzáférési jogkivonatok lekérésére
+## <a name="get-access-tokens"></a>A hozzáférési jogkivonatok lekérésére
 Most, hogy a felhasználó már regisztrált az egylapos alkalmazásba, kaphat jogkivonatot hívó webes API-k, az Azure AD által védett, mint a [Microsoft Graph](https://graph.microsoft.io).  Akkor is, ha már kapott egy token használatával a `token` response_type, ez a módszer segítségével szerezzen be további forrásanyagokra mutató jogkivonatok anélkül, hogy átirányítja a felhasználót, hogy jelentkezzen be újra.
 
 A normál OpenID Connect/OAuth folyamatában, akkor ezt úgy teheti meg egy kérést a v2.0 `/token` végpont.  A v2.0-végpontra azonban nem támogatja a CORS-kérelmeket, a kérdés kívül esik, és frissítési jogkivonatok AJAX-hívások.  Ehelyett használhatja a implicit engedélyezési folyamat a rejtett iframe új jogkivonatok lekérésére más webes API: 
@@ -180,7 +180,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de7
 
 Köszönet a következőknek a `prompt=none` paraméter, a kérelem vagy sikeres vagy meghiúsul azonnal, és térjen vissza az alkalmazást.  A sikeres válasz kapnak az alkalmazást a jelzett `redirect_uri`, az ismertetett módon a `response_mode` paraméter.
 
-#### A sikeres válasz
+#### <a name="successful-response"></a>A sikeres válasz
 A sikeres válasz használatával `response_mode=fragment` láthatóhoz hasonló:
 
 ```
@@ -200,7 +200,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | Hatókör |A hatókörök, amely a hozzáférési token érvényes. |
 
-#### Hibaválaszba
+#### <a name="error-response"></a>Hibaválaszba
 Hibaválaszok is elküldheti a `redirect_uri` , az alkalmazás megfelelően tudja ezeket kezelni.  A következőket `prompt=none`, várt hiba történt a következő lesz:
 
 ```
@@ -216,10 +216,10 @@ error=user_authentication_required
 
 Ez a hiba a iframe kérelmet kap, ha a felhasználó kell interaktív jelentkezzen be újra egy új jogkivonatot lekérdezni.  Ha szeretné, ebben az esetben a kiválasztott módon szabálykészletében az alkalmazás kezelni.
 
-## Jogkivonatok frissítése
+## <a name="refreshing-tokens"></a>Jogkivonatok frissítése
 Mindkét `id_token`s és `access_token`s rövid idő alatt, így ezek frissítése elő kell készíteni az alkalmazás rendszeres időközönként jogkivonatok után lejár.  Mindkét típusú jogkivonat frissítéséhez a rejtett iframe kérésben promptjai használatával végezheti el a `prompt=none` paraméter segítségével szabályozhatja az Azure AD működését.  Ha szeretne kapni egy új `id_token`, használjon `response_type=id_token` és `scope=openid`, valamint egy `nonce` paraméter.
 
-## A Kijelentkezés kérelem küldése
+## <a name="send-a-sign-out-request"></a>A Kijelentkezés kérelem küldése
 A OpenIdConnect `end_session_endpoint` lehetővé teszi az alkalmazás kérelmet küld a v2.0-végpontra a felhasználói munkamenet befejezését, majd törölje a cookie-kat a v2.0-végpontra állítja be.  Webalkalmazás kívül egy felhasználó teljesen bejelentkezni az alkalmazás kell a saját munkamenet befejezése a felhasználó (általában egy token gyorsítótár kiürítése vagy elvetése cookie-k) által, és majd irányítsa át a böngésző számára:
 
 ```

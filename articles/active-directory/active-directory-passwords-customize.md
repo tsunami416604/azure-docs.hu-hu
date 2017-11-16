@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 030fb1d87547a4fc78d54a855bca961202f28837
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: f2b172208185e343c9c10d55036c20d60346778c
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="customize-azure-ad-functionality-for-self-service-password-reset"></a>Az Azure AD-funkciók testreszabása az önkiszolgáló jelszó-változtatási
 
@@ -40,7 +40,7 @@ Az e-mailt küld a következő címzettek, az alábbi sorrendben:
 
 Minden esetben értesítést kap egy legfeljebb 100 címzetteknek.
 
-További információk a másik, rendszergazdai szerepkörök és való hozzárendelésének módját lásd: a dokumentum [rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](active-directory-assign-admin-roles.md)
+További információk a másik, rendszergazdai szerepkörök és való hozzárendelésének módját lásd: a dokumentum [rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](active-directory-assign-admin-roles-azure-portal.md)
 
 ### <a name="disable-contact-your-administrator-emails"></a>Tiltsa le kérje a rendszergazda e-mailek
 
@@ -85,7 +85,7 @@ A következő beállítások lehetővé teszik a szöveges szeretne hozzáadni a
 * **Felhasználói név mutató** , például szöveg someone@example.com valami jobban megfelelő, a felhasználók számára, az ajánlott alapértelmezett maradhat, ha a belső és külső felhasználók
 * **Bejelentkezési oldal szövege** legfeljebb 256 karakter hosszúságú. Ez a szöveg jelenik meg tetszőleges helyre a felhasználók bejelentkezési online, és az Azure AD Join élményt nyújt a Windows 10. Használja ezt a szöveget használati feltételeinek, utasításokat, és tippek a felhasználók számára. **Bárki, aki a bejelentkezési oldal, nem adja meg a bizalmas információk itt tekintheti meg.**
 
-### <a name="keep-me-signed-in-disabled"></a>A Bejelentkezve szeretnék maradni beállítás le van tiltva
+### <a name="keep-me-signed-in-disabled"></a>Bejelentkezve szeretnék maradni le van tiltva
 
 A "Me bejelentkezés le van tiltva megőrzése" beállítással felhasználók továbbra is, ha azok zárja be és nyissa meg a böngészőablakban bejelentkezett. Ez a beállítás nem befolyásolja a munkamenet élettartama. Ez a beállítás alatt található **Azure Active Directory > Vállalati arculat > Szerkesztés Védjegyadatok**.
 
@@ -100,17 +100,17 @@ Módosíthatja a name attribútum alapján **Azure Active Directory > Tulajdons�
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Hogyan végezze el a sikeres bevezetéshez az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-best-practices.md)
-* [A jelszó megváltoztatására](active-directory-passwords-update-your-own-password.md).
-* [Az önkiszolgáló jelszó-változtatási regisztrációs](active-directory-passwords-reset-register.md).
-* [Licencelés kérdése van?](active-directory-passwords-licensing.md)
-* [Milyen adatok SSPR használja, és milyen adatokat kell tölteni a felhasználók számára?](active-directory-passwords-data.md)
-* [Hitelesítési módszerek állnak rendelkezésre a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Mik a házirend-beállításokban az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-policy.md)
-* [A jelszóvisszaírás és miért fontos információk?](active-directory-passwords-writeback.md)
-* [Hogyan jelentést az önkiszolgáló jelszó-Változtatási tevékenység?](active-directory-passwords-reporting.md)
-* [Mik az önkiszolgáló jelszó-Változtatási közül az összes, és mit azokat a következőket:?](active-directory-passwords-how-it-works.md)
-* [Szerintem valami nem működik. Hogyan hibáinak elhárítása az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-troubleshoot.md)
-* [A rendszer nem jelzett valahol máshol kérdést kell](active-directory-passwords-faq.md)
+* [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
+* [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md).
+* [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md).
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
+* [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
+* [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](active-directory-passwords-writeback.md)
+* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](active-directory-passwords-reporting.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](active-directory-passwords-how-it-works.md)
+* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
 [Contact]: ./media/active-directory-passwords-customize/sspr-contact-admin.png "A rendszergazda kérjen segítséget a jelszó e-mail példa alaphelyzetbe állítása"

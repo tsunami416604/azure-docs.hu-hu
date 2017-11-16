@@ -13,14 +13,14 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: fe11926cb7f6b2a80913895b685acfcc433e9805
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 8bcecdff2bb9ac037e2cd71a431619883dfb5084
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisok az SQL adatszinkronizálás (előzetes verzió)
 
@@ -78,38 +78,11 @@ Adatszinkronizálás nincs megfelelő, az alábbi helyzetekben:
     -   Ha *Hub wins*, a módosítások a központban mindig felülírja a tag változásai.
     -   Ha *tag wins*, a felülírási módosításához központban változásait. Ha egynél több tag, végső értéke függ, mely tag szinkronizálásának először.
 
-## <a name="common-questions"></a>Gyakori kérdések
-
-### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>Milyen gyakran adatszinkronizálás adatok bármikor szinkronizálhatók a? 
-A minimális gyakoriság 5 perc nem.
-
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Adatszinkronizálás segítségével csak SQL Server helyszíni adatbázisok közötti szinkronizálás? 
-Közvetlenül nem. Szinkronizálhatja a helyszíni SQL Server-adatbázisok közötti közvetve, azonban Hub-adatbázis létrehozása az Azure-ban, és majd a szinkronizálási csoportba való felvételekor a helyszíni adatbázisokat.
-   
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>Is szeretnék adatait egy üres adatbázist a termelési adatbázisból származó adatszinkronizálás segítségével, és majd őrizzük szinkronizálva? 
-Igen. A séma manuális létrehozása az új adatbázis alkalmazott parancsprogrammal azt az eredeti. Miután létrehozta a séma, vegye fel a táblák egy szinkronizálási csoportba másolja az adatokat, és legyen szinkronizálva.
-
-### <a name="why-do-i-see-tables-that-i-did-not-create"></a>Miért látom azt táblázatot, amely nem hozta létre?  
-Adatszinkronizálás ügyféloldali táblák az adatbázisban változáskövetési hoz létre. Ne törölje őket, vagy adatszinkronizálás nem működik.
-   
-### <a name="i-got-an-error-message-that-said-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-the-error"></a>Figyelmeztető hibaüzenet jelenik meg, az említett "NULL érték nem lehet beszúrni az oszlop \<oszlop\>. Oszlop nem szerepelhet nulls érték." Ez mit jelent, és hogyan lehet javítsa a hibát? 
-Ez a hibaüzenet azt jelzi, a két alábbi problémák egyike:
-1.  Előfordulhat, hogy a tábla elsődleges kulcs nélkül. A probléma megoldásához, még a szinkronizálás minden tábla elsődleges kulcs hozzáadása.
-2.  A CREATE INDEX utasítás WHERE záradék lehet. Szinkronizálási nem kezeli ezt az állapotot. A probléma megoldásához távolítsa el a WHERE záradékot, vagy manuálisan végezze el a módosításokat az összes adatbázisra. 
- 
-### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>Hogyan adatszinkronizálás körkörös hivatkozásokat kezelni? Ez azt jelenti, ha ugyanazokat az adatokat több szinkronizálási csoportban van-e szinkronizálva, és emiatt tartja módosítása?
-Adatszinkronizálás. a körkörös hivatkozások nem tud kezelni. Feltétlenül elkerüljék azokat. 
-
-### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Hogyan exportálása és importálása az adatszinkronizálás adatbázis?
-Adatbázis exportálása után egy `.bacpac` fájlt, és importálja a fájlt egy új adatbázis létrehozásához, meg kell nyitnia a következő két dolog adatszinkronizálás használni az új adatbázis:
-1.  Az adatszinkronizálás objektumok és kiszolgálóoldali táblák tisztítása a **új adatbázis** használatával [ezt a parancsfájlt](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql). Ez a parancsfájl az összes szükséges adatszinkronizálás objektum törli az adatbázisból.
-2.  Hozza létre újra az új adatbázis szinkronizálási csoportban. Ha már nincs szüksége a régi szinkronizálású csoport, törölje azt.
-
 ## <a name="sync-req-lim"></a>Követelmények és korlátozások
 
 ### <a name="general-requirements"></a>Általános követelmények
 
--   Minden tábla elsődleges kulccsal kell rendelkeznie. Ne módosítsa az összes sort az elsődleges kulcs értékét. Ha ehhez, törölni a sort, és hozza létre újra az új elsődleges kulcs értéke. 
+-   Minden tábla elsődleges kulccsal kell rendelkeznie. Ne módosítsa az összes sort az elsődleges kulcs értékét. Ha módosítania kell egy elsődleges kulcs értéke, a sor törlése, és hozza létre újra az új elsődleges kulcs értéke. 
 
 -   Egy táblázat azonosító oszlopot, amely nem az elsődleges kulcs nem lehet.
 
@@ -150,6 +123,44 @@ Adatok szinkronizálása által beszúrási, frissítési és törlési esemény
 | Adatok sorméret táblán                                        | 24 mb                  |                             |
 | Minimális szinkronizálási időköz                                           | 5 perc              |                             |
 |||
+
+## <a name="faq-about-sql-data-sync"></a>SQL adatszinkronizálás gyakori kérdések
+
+### <a name="how-much-does-the-sql-data-sync-preview-service-cost"></a>Milyen mértékű nem költségeket, az SQL adatszinkronizálás (előzetes verzió) szolgáltatás?
+
+Az előzetes használata az SQL adatszinkronizálás (előzetes verzió) szolgáltatás díjmentes.  Azonban Ön továbbra is keletkeznek adatok adatátviteli díjakkal az adatmozgás mindkét az SQL Database-példányt. További információk: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
+
+### <a name="what-regions-support-data-sync"></a>Mely régiókat támogatják az adatszinkronizálás?
+
+Nyilvános felhő minden egyes SQL adatszinkronizálás (előzetes verzió) érhető el.
+
+### <a name="is-a-sql-database-account-required"></a>Az egy SQL-adatbázis-fiókra van szükség? 
+
+Igen. A központ adatbázis SQL-adatbázis fiókkal kell rendelkeznie.
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Adatszinkronizálás segítségével csak SQL Server helyszíni adatbázisok közötti szinkronizálás? 
+Közvetlenül nem. Szinkronizálhatja a helyszíni SQL Server-adatbázisok közötti közvetve, azonban Hub-adatbázis létrehozása az Azure-ban, és majd a szinkronizálási csoportba való felvételekor a helyszíni adatbázisokat.
+   
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>Is szeretnék adatait egy üres adatbázist a termelési adatbázisból származó adatszinkronizálás segítségével, és majd őrizzük szinkronizálva? 
+Igen. A séma manuális létrehozása az új adatbázis alkalmazott parancsprogrammal azt az eredeti. Miután létrehozta a séma, vegye fel a táblák egy szinkronizálási csoportba másolja az adatokat, és legyen szinkronizálva.
+
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Használjak SQL adatszinkronizálás biztonsági mentése és visszaállítása a adatbázisok?
+
+Nem ajánlott SQL adatszinkronizálás (előzetes verzió) segítségével készítsen biztonsági másolatot az adatokat. Nem biztonsági mentése és visszaállítása egy adott időben mivel SQL adatszinkronizálás (előzetes verzió) szinkronizálások nincsenek verzióval ellátva. SQL adatszinkronizálás (előzetes verzió) nem készít biztonsági másolatot más SQL-objektumok, például a tárolt eljárások, továbbá nem végez el gyorsan az egyenértékű a visszaállítási művelet.
+
+Biztonsági mentési módszer javasolt egy, a következő témakörben: [Azure SQL-adatbázis másolása](sql-database-copy.md).
+
+### <a name="is-collation-supported-in-sql-data-sync"></a>Támogatott rendezés SQL adatszinkronizálás?
+
+Igen. SQL adatszinkronizálás támogatja a rendezést a következő esetekben:
+
+-   Ha a kijelölt szinkronizálási séma táblák még nem a központi vagy a tag adatbázisokban, majd a szinkronizálási csoport központi telepítése során, a szolgáltatás automatikusan hoz létre a megfelelő táblákat és oszlopokat a kiválasztott üres cél adatbázisok rendezési beállításai.
+
+-   Ha már szinkronizálva táblákat a hub és a tag létezik, SQL adatszinkronizálás megköveteli, hogy az elsődleges kulcs oszlopok ugyanazt a rendezést hub és tag adatbázis sikeres telepítéséhez a szinkronizálási csoport között. Nincsenek oszlopok kivételével az elsődleges kulcs oszlopok rendezése korlátozások.
+
+### <a name="is-federation-supported-in-sql-data-sync"></a>Összevonási SQL adatszinkronizálás támogatott?
+
+Összevonási gyökér adatbázis az SQL adatszinkronizálás (előzetes verzió) szolgáltatásban bármilyen korlátozás nélkül használható. Az összevont adatbázisban végpont nem tudja felvenni SQL adatszinkronizálás (előzetes verzió) aktuális verzióját.
 
 ## <a name="next-steps"></a>Következő lépések
 

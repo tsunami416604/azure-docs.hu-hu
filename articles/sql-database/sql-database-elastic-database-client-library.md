@@ -13,18 +13,18 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 11/12/2017
 ms.author: ddove
-ms.openlocfilehash: a8bfbf2e30f8568212ab49ba1772588cc9e45b38
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 6a73f8d0b85198f0d4e10fbc31cbd21f93bdb8a8
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="building-scalable-cloud-databases"></a>Skálázható felhőalapú adatbázisok készítése
 Adatbázisok kiterjesztése könnyen elvégezhető méretezhető eszköz és funkció használata az Azure SQL Database. Különösen, használhatja a **Elastic Database ügyféloldali kódtárának** létrehozásához és kezeléséhez kiterjesztett adatbázisok. Ez a funkció lehetővé teszi, hogy könnyen fejleszthet a több száz használó szilánkos alkalmazások – vagy akár több ezer – az Azure SQL-adatbázisok. [Rugalmas feladat](sql-database-elastic-jobs-powershell.md) ezután felhasználhatók ezeknek az adatbázisoknak könnyű kezelés érdekében.
 
-Lépjen a szalagtár telepítéséhez [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). 
+A könyvtár telepítéséhez nyissa meg a következő NuGet [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). 
 
 ## <a name="documentation"></a>Dokumentáció
 1. [Ismerkedés az Elastic Database-eszközökkel](sql-database-elastic-scale-get-started.md)
@@ -54,22 +54,32 @@ Használó alkalmazások kiterjesztése *horizontális* mind a fejlesztői, vala
 
 Általában rugalmas adatbázis-eszközt használó ügyfelek is alkalmasak funkcióját T-SQL helyi shard műveletek szemben, amelyek a saját szemantikája kereszt-shard műveletek elküldésekor.
 
+
+
 ## <a name="next-steps"></a>Következő lépések
-Próbálja meg a [mintaalkalmazás](sql-database-elastic-scale-get-started.md) amely bemutatja, hogy az ügyfél-funkcióihoz. 
 
-Lépjen a szalagtár telepítéséhez [Elastic Database ügyféloldali kódtár](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
+- [A rugalmas adatbázis ügyféloldali kódtár](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) – hogy **telepítése** a könyvtár NuGet segítségével.
 
-A felosztott egyesítéses eszközzel, lásd: a [vegyes egyesítéses eszköz áttekintése](sql-database-elastic-scale-overview-split-and-merge.md).
+- [Ismerkedés a rugalmas adatbáziseszközöket](sql-database-elastic-scale-get-started.md) – próbálja meg a **mintaalkalmazás** ügyfél funkciók azt mutatja be.
 
-[A rugalmas adatbázis ügyféloldali kódtár most termékekre van megnyitva!](https://azure.microsoft.com/blog/elastic-database-client-library-is-now-open-sourced/)
+- [Github-, Azure/rugalmas-db-eszközök](https://github.com/Azure/elastic-db-tools) – a könyvtár egy nyílt forráskódú szoftver.
+    - A rugalmas adatbázis eszközök ügyféloldali kódtár lehetővé teszi, hogy a ADO.NET fejlesztők alkalmazásokat, amelyek valósítja meg, és az Azure SQL Database adatbázis horizontális ismert mintát használja.
 
-Használjon [rugalmas lekérdezések](sql-database-elastic-query-overview.md).
+- [A rugalmas adatbázis ügyféloldali kódtár most termékekre van megnyitva!](https://azure.microsoft.com/blog/elastic-database-client-library-is-now-open-sourced/) -a **blogbejegyzés** kapcsolatos Elastic Database ügyféloldali kódtár dátummal 2015/09/09.
 
-A könyvtár áll rendelkezésre, mert nyílt forráskódú szoftver [GitHub](https://github.com/Azure/elastic-db-tools). 
+- [Az Azure SQL Database rugalmas lekérdezési áttekintése](sql-database-elastic-query-overview.md) - rugalmas lekérdezések használata.
+
+- [Adatok áthelyezése másik kiterjesztett felhő adatbázisok](sql-database-elastic-scale-overview-split-and-merge.md) - használatával a **vegyes egyesítéses eszköz**.
+
+
+
+<!-- Additional resources H2 -->
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
+
 <!--Anchors-->
 <!--Image references-->
-[1]:./media/sql-database-elastic-database-client-library/glossary.png
+
+[1]: ./media/sql-database-elastic-database-client-library/glossary.png
 

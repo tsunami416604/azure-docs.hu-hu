@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: e72dd7e84ce3961274cf312649cc679abc576aae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b71c7e7f1ea58a273beb58717102522ad0f8c4a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="security-in-azure-data-lake-store"></a>Az Azure Data Lake Store biztonsági
 Sok vállalat vannak kihasználja a big data elemzésre szolgáló üzleti elemzéseket felhasználóinál intelligens döntéseket. Egy szervezet előfordulhat, hogy rendelkezik egy összetett és szabályozott környezetben, a különböző felhasználók növekvő számú. Győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja a rendszer biztonsága érdekében együtt a megfelelő szintű hozzáférést biztosít az egyéni felhasználók számára a vállalati létfontosságú. Azure Data Lake Store célja e biztonsági követelményeknek. Ebből a cikkből megtudhatja, Data Lake Store biztonsági képességeivel kapcsolatos többek között:
@@ -35,7 +35,7 @@ Hitelesítés az a folyamat, amellyel a felhasználó identitásának ellenőrz�
 Lehet, hogy minden Azure-előfizetéssel társítva van egy példányát az Azure Active Directory. Csak a felhasználók és a szolgáltatás-identitások az Azure Active Directory szolgáltatásban meghatározott érhető el a Data Lake Store-fiók, az Azure portálon, a parancssori eszközök, vagy ügyfélalkalmazások keresztül a szervezet az Azure Data Lake használatával hoz létre Store SDK. Az Azure Active Directoryt használja a központi hozzáférés-vezérlési mechanizmus főbb előnyei a következők:
 
 * Egyszerűsített identitás életciklusának kezelésére. A felhasználó vagy egy szolgáltatást (egyszerű szolgáltatásidentitás) hozható létre gyorsan és egyszerűen törlése vagy a könyvtárban a fiók letiltása gyorsan visszavonva.
-* Többtényezős hitelesítés. [A multi-factor authentication](../multi-factor-authentication/multi-factor-authentication.md) egy további biztonsági réteget biztosít a felhasználói bejelentkezéseket és tranzakciókat.
+* Többtényezős hitelesítés [A multi-factor authentication](../multi-factor-authentication/multi-factor-authentication.md) egy további biztonsági réteget biztosít a felhasználói bejelentkezéseket és tranzakciókat.
 * Bármely ügyfél szabványos protokollhoz, például az OAuth vagy OpenID keresztül hitelesítést.
 * Összevonási vállalati címtárszolgáltatások és a felhőalapú identitás-szolgáltatóktól.
 
@@ -56,7 +56,7 @@ Vegye figyelembe, hogy bár szerepkörök fiókkezelés vannak hozzárendelve, a
 | --- | --- | --- | --- |
 | Nem hozzárendelt szerepkör |None |Hozzáférés-vezérlési lista által szabályozott |A felhasználó nem használható az Azure portálon vagy az Azure PowerShell-parancsmagok keresse meg a Data Lake Store. A felhasználó csak a parancssori eszközöket használhatja. |
 | Tulajdonos |Összes |Összes |A tulajdonosi szerepkört felügyelőt. Ez a szerepkör mindent felügyelhetnek, és az adatok teljes hozzáféréssel rendelkezik. |
-| Olvasó |csak olvasható |Hozzáférés-vezérlési lista által szabályozott |Az olvasó szerepkört mindent megtekinthetnek vonatkozó felhasználóifiók-kezelés, például, hogy melyik felhasználó mely szerepkör van rendelve. Az olvasó szerepkört nem módosíthatja. |
+| Olvasó |Csak olvasható |Hozzáférés-vezérlési lista által szabályozott |Az olvasó szerepkört mindent megtekinthetnek vonatkozó felhasználóifiók-kezelés, például, hogy melyik felhasználó mely szerepkör van rendelve. Az olvasó szerepkört nem módosíthatja. |
 | Közreműködő |Hozzáadás és eltávolítás szerepkört kivéve |Hozzáférés-vezérlési lista által szabályozott |A közreműködői szerepkör kezelheti adatait, például a központi telepítések és létrehozása és a riasztások kezelése az egyes funkcióit. A közreműködői szerepkör nem hozzáadása vagy eltávolítása a szerepkörök. |
 | Felhasználói hozzáférés rendszergazdája |Hozzáadása és eltávolítása a szerepkörök |Hozzáférés-vezérlési lista által szabályozott |A felhasználói hozzáférés adminisztrátora szerepkör kezelheti a felhasználói fiókok elérését. |
 
@@ -65,7 +65,7 @@ Vegye figyelembe, hogy bár szerepkörök fiókkezelés vannak hozzárendelve, a
 ### <a name="using-acls-for-operations-on-file-systems"></a>Hozzáférés-vezérlési listák segítségével a fájlrendszerek műveleteihez
 Data Lake Store hierarchikus fájlrendszer például a Hadoop elosztott fájlrendszerrel (HDFS), és támogatja [POSIX hozzáférés-vezérlési listák](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Azt szabályozza, hogy olvasási (r), (w) írási és végrehajtási (x) erőforrásokra a tulajdonosi szerepkört, a tulajdonosok csoport és más felhasználók és csoportok engedélyeit. A Data Lake Store nyilvános előzetes verziójában (a jelenlegi kiadásban) a hozzáférés-vezérlési listákat a legfelső szintű mappához, az almappákhoz vagy egyes fájlokhoz lehet engedélyezni. További információkat a hozzáférés-vezérlési listák Data Lake Store-környezetben való működéséről a következő témakörben talál: [Hozzáférés-vezérlés a Data Lake Store-ban](data-lake-store-access-control.md).
 
-Azt javasoljuk, hogy Ön hozzáférés-vezérlési listák többfelhasználós segítségével meghatározhatók [biztonsági csoportok](../active-directory/active-directory-accessmanagement-manage-groups.md). Felhasználók hozzáadása az egy biztonsági csoportot, és hozzárendelheti a hozzáférés-vezérlési listákat, a fájl vagy mappa biztonsági csoportba. Ez akkor hasznos, ha lehetővé szeretné tenni egyéni hozzáférési, mert egy legfeljebb kilenc egyéni hozzáférés hozzáadása. Azure Active Directory biztonsági csoportok használatával a Data Lake Store-ban tárolt adatok védelmét kapcsolatos további információkért lásd: [felhasználók vagy biztonsági csoport hozzárendelése az Azure Data Lake Store-fájlrendszer hozzáférés-vezérlési listákat,](data-lake-store-secure-data.md#filepermissions).
+Azt javasoljuk, hogy Ön hozzáférés-vezérlési listák többfelhasználós segítségével meghatározhatók [biztonsági csoportok](../active-directory/active-directory-groups-create-azure-portal.md). Felhasználók hozzáadása az egy biztonsági csoportot, és hozzárendelheti a hozzáférés-vezérlési listákat, a fájl vagy mappa biztonsági csoportba. Ez akkor hasznos, ha lehetővé szeretné tenni egyéni hozzáférési, mert egy legfeljebb kilenc egyéni hozzáférés hozzáadása. Azure Active Directory biztonsági csoportok használatával a Data Lake Store-ban tárolt adatok védelmét kapcsolatos további információkért lásd: [felhasználók vagy biztonsági csoport hozzárendelése az Azure Data Lake Store-fájlrendszer hozzáférés-vezérlési listákat,](data-lake-store-secure-data.md#filepermissions).
 
 ![Normál és egyéni hozzáférési listában](./media/data-lake-store-security-overview/adl.acl.2.png "normál és egyéni hozzáférési listában")
 

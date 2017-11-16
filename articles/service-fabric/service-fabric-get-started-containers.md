@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 3d58ba0985d7a5bb302028254be0951859b79dbb
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 1b2daf04e060615569e8416d3ded344483518400
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 > [!div class="op_single_selector"]
@@ -325,7 +325,7 @@ Az alkalmazás akkor kész, amikor ```Ready``` állapotba kerül: ![Kész][2]
 Nyisson meg egy böngészőt, majd navigáljon a http://containercluster.westus2.cloudapp.azure.com:8081 helyre. A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](service-fabric-get-started-azure-cluster.md#remove-the-cluster).  A [nyilvános fürtök](http://tryazureservicefabric.westus.cloudapp.azure.com/) néhány óra múlva automatikusan törlődnek.
+A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](service-fabric-get-started-azure-cluster.md#remove-the-cluster).  A [nyilvános fürtök](https://try.servicefabric.azure.com/) néhány óra múlva automatikusan törlődnek.
 
 Miután leküldte a rendszerképet a tároló-beállításjegyzékbe, törölheti a helyi rendszerképet a fejlesztői számítógépről:
 

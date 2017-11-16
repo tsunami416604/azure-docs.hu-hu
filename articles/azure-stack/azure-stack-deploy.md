@@ -3,8 +3,8 @@ title: "Az Azure verem szoftverfejlesztői készlet telepítésének előfeltét
 description: "A környezetére és hardverére követelményei Azure verem szoftverfejlesztői készlet (felhő üzemeltetője) megtekintéséhez."
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: jeffgilb
+manager: femila
 editor: 
 ms.assetid: 32a21d9b-ee42-417d-8e54-98a7f90f7311
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/11/2017
-ms.author: erikje
-ms.openlocfilehash: 73e7efb7d789fe12846d68066c0927bb123831a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/14/2017
+ms.author: jeffgilb
+ms.openlocfilehash: 8a0d23e14ef50034d5f9595cf154c3513a09c464
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack üzembehelyezési előfeltételek
 
@@ -40,7 +40,7 @@ Központi telepítése előtt [Azure verem szoftverfejlesztői készlet](azure-s
 
 \*Kell több, mint a kapacitás ez ajánlott, ha azt tervezi, számos hozzáadásával a [Piactéri elemek](azure-stack-download-azure-marketplace-item.md) az Azure-ból.
 
-**Adatlemez-meghajtó konfigurációja:** Minden adatmeghajtónak ugyanolyan típusúnak (csak SAS vagy csak SATA) és méretűnek kell lennie. Ha SAS-lemezmeghajtókat használ, egyetlen elérési úttal kell őket összekapcsolnia (az MPIO nem engedélyezett, a többutas működés támogatása biztosított).
+**Adatok lemezmeghajtó konfigurációs:** meghajtók azonos típusú (összes SAS, minden SATA vagy összes NVMe) és kapacitást kell lennie. Ha SAS-lemezmeghajtókat használ, egyetlen elérési úttal kell őket összekapcsolnia (az MPIO nem engedélyezett, a többutas működés támogatása biztosított).
 
 **HBA-konfigurációs beállítások**
 
@@ -56,6 +56,7 @@ Központi telepítése előtt [Azure verem szoftverfejlesztői készlet](azure-s
 * RAID SSD (ha az adathordozó típusa nem meghatározott/ismeretlen\*)
 * SATA SSD + SATA HDD
 * SAS SSD + SAS HDD
+* NVMe
 
 \*Csatlakoztatott lehetőséggel nem RAID-vezérlők nem ismeri fel az adathordozó típusát. Az ilyen vezérlők a HDD és SSD meghajtókat „nem meghatározottként” jelölik meg. Ebben az esetben az SSD állandó tárolóként lesz használva gyorsítótáreszköz helyett. Ezért a szoftverfejlesztői készlet e SSD meghajtókon is telepíthet.
 

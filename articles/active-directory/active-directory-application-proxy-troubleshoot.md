@@ -15,11 +15,11 @@ ms.date: 07/21/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 3ef74c8d5d5b75eb2bca4e6c994f4718b5226db8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6534320d36653d296f254dfff129d4c5031f8ce8
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxy problémák és hibaüzenetek hibaelhárítása
 Ha hiba történik, a közzétett alkalmazás eléréséhez, vagy az alkalmazás-közzététel, ellenőrizze a megjelenítéséhez, ha a Microsoft Azure AD-alkalmazásproxy megfelelően működik-e a következő beállításokat:
@@ -51,7 +51,7 @@ Miután megtalálta az összekötő hibát az eseménynaplóban, használja a t�
 | Hiba | Javasolt lépések |
 | ----- | ----------------- |
 | Összekötő regisztrálása nem sikerült: Ellenőrizze, hogy engedélyezte az Azure felügyeleti portálon Proxy és a megadott megfelelően az Active Directory-felhasználónevet és jelszót. Hiba: "egy vagy több hiba történt." | Ha korábban bezárta a regisztrációs ablakban az Azure AD bejelentkezés nélkül, futtassa újra az összekötő varázslót, és regisztrálja az összekötőt. <br><br> A regisztrációs ablak nyílik meg, és azonnal bezárása után, de nem engedélyezi, hogy jelentkezzen be, ha a hiba valószínűleg jelenik meg. Ez a hiba akkor fordul elő, amikor egy hálózati hiba van a rendszeren. Győződjön meg arról, hogy lehet csatlakozni a böngészőből nyilvános webhelyeken és, hogy a portok: Nyissa meg a [proxyval Előfeltételek](active-directory-application-proxy-enable.md). |
-| Törölje a jelet hiba az ablakban jelenik meg. Nem lehet folytatni | Ha ezt a hibaüzenetet látja, és majd a időszak véget ér, a megadott a rossz felhasználónévvel vagy jelszóval. próbáld újra. |
+| Törölje a jelet hiba az ablakban jelenik meg. Nem lehet folytatni | Ha ezt a hibaüzenetet látja, és majd a időszak véget ér, a megadott a rossz felhasználónévvel vagy jelszóval. Próbálja meg újra. |
 | Összekötő regisztrálása nem sikerült: Ellenőrizze, hogy engedélyezte az Azure felügyeleti portálon Proxy és a megadott megfelelően az Active Directory-felhasználónevet és jelszót. Hiba: "AADSTS50059: bérlői azonosító adatokat található vagy a kérelem, vagy bármely hallgatólagos megadott hitelesítő adatok és a keresési szolgáltatás által egyszerű URI sikertelen volt. | Jelentkezzen be Microsoft-Account és a nem tartományhoz, amely része annak a könyvtárnak próbál hozzáférni a szervezet azonosítója kívánt. Győződjön meg arról, hogy a rendszergazda a tartomány neve megegyezik a bérlői tartomány része, például, ha az Azure AD-tartomány pedig contoso.com, a rendszergazdának kell lennie admin@contoso.com. |
 | Nem sikerült beolvasni a jelenlegi, PowerShell-parancsfájlok futtatására vonatkozó végrehajtási házirend. | Ha az összekötő telepítése nem sikerül, ellenőrizze, hogy győződjön meg arról, hogy a PowerShell végrehajtási házirend nincs letiltva. <br><br>1. Nyissa meg a Helyicsoportházirend-szerkesztő.<br>2. Ugrás a **számítógép konfigurációja** > **felügyeleti sablonok** > **Windows-összetevők**  >   **A Windows PowerShell** duplán **kapcsolja be a parancsfájl végrehajtása**.<br>3. A végrehajtási házirendet is megadni **nincs konfigurálva** vagy **engedélyezve**. Ha beállítása **engedélyezve**, győződjön meg arról, hogy a beállítások, a végrehajtási házirend beállítása értékre **engedélyezése a helyi és távoli aláírt parancsfájlok** vagy **összes parancsfájlok**. |
 | Összekötő nem tudta letölteni a konfigurációt. | Az összekötő ügyféltanúsítványt, a hitelesítéshez használt, lejárt. Ez akkor is előfordulhat, ha az összekötő telepítve, a rendszer proxy mögött. Ebben az esetben az összekötő nem tud hozzáférni az internethez, és nem lesz képes biztosítani a távoli felhasználók számára az alkalmazásoknak. Manuálisan megújítani a `Register-AppProxyConnector` a Windows PowerShell parancsmag. Az összekötő a rendszer proxy mögött van, esetén meg kell adni az Internet-hozzáférést a Connector fiókokat "hálózati szolgáltatás" és "helyi rendszer". Ehhez által biztosított hozzáférés a proxyt vagy úgy, hogy megkerülje a proxyt. |
@@ -90,7 +90,7 @@ Ha egy hiba vagy probléma az Azure AD-alkalmazásproxy, amely nem szerepel az h
 * [Az Azure Active Directory alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
 * [Alkalmazások közzététele az alkalmazásproxy](active-directory-application-proxy-publish.md)
 * [Egyszeri bejelentkezés engedélyezése](active-directory-application-proxy-sso-using-kcd.md)
-* [Feltételes hozzáférés engedélyezése](active-directory-application-proxy-conditional-access.md)
+* [Feltételes hozzáférés engedélyezése](application-proxy-enable-remote-access-sharepoint.md)
 
 
 <!--Image references-->

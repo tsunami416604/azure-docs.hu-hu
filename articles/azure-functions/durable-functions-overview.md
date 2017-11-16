@@ -1,5 +1,5 @@
 ---
-title: "Tartós funkciók áttekintés – Azure"
+title: "Tartós funkciók áttekintés – Azure (előzetes verzió)"
 description: "Bevezetés az Azure Functions a tartós funkciók bővítmény."
 services: functions
 author: cgillum
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 04d660d5fdd878788c09e46b078b2e2b043b7dbb
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: fa0d5cf7469a1a36fe0ab9a712cd4f8c963ceb48
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="durable-functions-overview-azure-functions"></a>Tartós funkciók overview (az Azure Functions)
+# <a name="durable-functions-overview-preview"></a>Tartós Functions áttekintése (előzetes verzió)
 
 *Tartós funkciók* kiterjesztése [Azure Functions](functions-overview.md) és [Azure webjobs-feladatok](../app-service/web-sites-create-web-jobs.md) , amely lehetővé teszi az állapotalapú írást egy kiszolgáló nélküli környezetben. A bővítmény állapotát, az ellenőrzőpontok és újraindul kezeli az Ön.
 
@@ -31,7 +31,7 @@ A bővítmény lehetővé teszi az állapotalapú munkafolyamatok definiálhatja
 * Ezek automatikusan ellenőrzőpontot a folyamatban, amikor a függvény várja. Helyi állapot soha nem elvész, ha a folyamat újrahasznosítása vagy a virtuális gép újraindul.
 
 > [!NOTE]
-> Tartós funkciók Azure Functions speciális bővítménye, és nem megfelelő összes alkalmazáshoz. Ez a cikk többi feltételezi, hogy rendelkezik-e egy erős ismeretét [Azure Functions](functions-overview.md) fogalmakat és kihívásai kiszolgáló nélküli alkalmazásfejlesztés részt.
+> Tartós függvények jelenleg előzetes verzióban érhető, és az Azure Functions, amely nem megfelelő összes alkalmazás speciális bővítménye. Ez a cikk többi feltételezi, hogy rendelkezik-e egy erős ismeretét [Azure Functions](functions-overview.md) fogalmakat és kihívásai kiszolgáló nélküli alkalmazásfejlesztés részt.
 
 Az elsődleges használati eset tartós függvények van egyszerűsítése összetett, állapot-nyilvántartó koordinációs felmerülő problémák kiszolgáló nélküli. A következő szakaszok ismertetik az egyes alkalmazások mintázatok tartós funkciók előnyeit is.
 
@@ -261,7 +261,7 @@ A csomagolt hasznos a strukturált adatok sok a `customDimensions` minden napló
 
 A visszajátszás jelenséget az a tartós feladat keretrendszer kézbesítő várhatóan redundáns naplóbejegyzése mértékéig megismételt műveletek megjelenítéséhez. Ez lehet a visszajátszás viselkedését az alapvető vezérlőprogramjával működésének megértése. A [diagnosztika](durable-functions-diagnostics.md) a cikk bemutatja, hogy kiszűrhetők a visszajátszás naplók hívjuk fel a "valós idejű" naplók mintalekérdezések.
 
-## <a name="storage-and-scalability"></a>Tárolás és a méretezhetőség
+## <a name="storage-and-scalability"></a>Tárolás és méretezhetőség
 
 A tartós funkciók bővítmény megőrizni a végrehajtási előzményei állapotát és eseményindító függvény végrehajtása Azure tárolási sorok, a táblák és a blobokat használ. Az alapértelmezett tárfiókot, a függvény alkalmazáshoz használható, vagy beállíthatja, hogy egy külön tárfiókot. Érdemes lehet egy külön fiókot tárolási átviteli sebességének korlátai miatt. Az orchestrator írt kódot nem kell (és nem kell) működnie ezekre a tárfiókokra entitást. Az entitások kezeli közvetlenül tartós feladat keretében, egy megvalósítási részletei.
 

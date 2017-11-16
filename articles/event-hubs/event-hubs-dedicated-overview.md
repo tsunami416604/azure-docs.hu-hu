@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: sethm;babanisa
-ms.openlocfilehash: db8b119178de0e565b2064e9a52d5e9989d60d38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 613ea691e38b6f0bcd8873fc2ec6bcafb3cc6c78
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Dedikált Event Hubs áttekintése
 
@@ -34,7 +34,7 @@ Az alábbi táblázat összehasonlítja a rendelkezésre álló szolgáltatássz
 | Kiadói irányelvek | Igen | Igen |   
 | Felhasználói csoportok | 20 | 20 |
 | Üzenetek visszajátszása | Igen | Igen |
-| Kapacitásegységek maximális száma | 20 (rugalmas 100)   | 1 CU≈200 |
+| Kapacitásegységek maximális száma | 20 (rugalmas 100)   | 1 CU≈50 |
 | Felügyelt kapcsolatok | 1000 tartalmazza | 100 K tartalmazza |
 | További felügyelt kapcsolatok | Igen | Igen |
 | Üzenetmegőrzés | 1 ingyenes nap | Legfeljebb 7 napot tartalmaz |
@@ -48,18 +48,25 @@ A következő előnyöket Event Hubs dedikált használatakor érhetők el:
 * Üzenet mérete 256 KB, a standard képest 1 MB-ra növeli.
 * Minden alkalommal ismételhető teljesítménye.
 * Garantált kapacitásnövelés igényeinek kielégítése érdekében.
-* Méretezhető 1 és 8 kapacitásegység (CU) – közötti másodpercenként legfeljebb 2 millió érkező események biztosítása.
-  * Logikai csoport Egyé az Event Hubs dedikált, ahol minden CU körülbelül 200 átviteli egységek (SO) egyenértékű biztosít a kezelésére.
+* Magában foglalja a [rögzítése](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) szolgáltatás Azure Event hubs arra, hogy micro-kötegelt és a hosszú távú adatmegőrzési integrációja
 * Karbantartási nulla: azt a terheléselosztás, az operációs rendszer frissítések, biztonsági javítások és particionálás kezelése.
-* Rögzített, havonta árak.
+* Rögzített, óránként árak.
+* Megőrzési üzenetküldés fel a felesleges díjmentes 7 nap
 
 Event Hubs dedikált is eltávolítja a szabványos ajánlat átviteli vonatkozó korlátozások némelyike. A normál rétegben, az átviteli egységek jogosíthatók 1000 események második vagy 1 MB / s érkező / SO és a dupla adott kimenő forgalom mennyisége. A dedikált méretezési ajánlat korlátozások nélkül legyen érkező és a kimenő forgalom esemény száma. Ezek a korlátozások csak a feldolgozási kapacitás a megvásárolt event hubs vonatkozik.
+
+Ez a fenntartott, dedikált környezet más ebben a rétegben egyedi lehetőségeket, mint biztosítja:
+
+* Szabályozzák, hogy a fürt névterek
+* Adja meg az átviteli sebesség limitson minden a névterek
+* Adja meg, az Event hubs egyes névterek alatt
+* A partíciók számára vonatkozó korlátozást meghatározása
 
 Ez a szolgáltatás a legnagyobb telemetriai felhasználói megcélzó és nagyvállalati szerződéssel rendelkező ügyfelek számára elérhető.
 
 ## <a name="how-to-onboard"></a>Hogyan bevezetni
 
-Az Event Hubs dedikált platform és egy nagyvállalati szerződés a különböző méretű logikai csoport Egyé kínálják. Minden egyes CU körülbelül 200 átviteli egységek egyenértékű biztosít. Felfelé vagy lefelé társították az igényeknek megfelelő hozzáadásával vagy eltávolításával a logikai csoport Egyé is méretezheti a kapacitást. A dedikált terv egyedi abban, hogy egy több gyakorlati Bevezetés az Event Hubs termékért felelős csoport a rugalmas telepítési, amely az Ön számára legmegfelelőbb lekérni a fog tapasztalni. 
+Felfelé vagy lefelé társították az igényeknek megfelelő hozzáadásával vagy eltávolításával a logikai csoport Egyé is méretezheti a kapacitást. A dedikált terv egyedi abban, hogy egy több gyakorlati Bevezetés az Event Hubs termékért felelős csoport a rugalmas telepítési, amely az Ön számára legmegfelelőbb lekérni a fog tapasztalni. A másikra, (a számlázási támogatás segítségét). forduljon a bevezetni [https://ms.portal.azure.com/#create/Microsoft.Support] vagy a Microsoft-képviselőjére.
 
 ## <a name="next-steps"></a>Következő lépések
 Forduljon a Microsoft értékesítési képviselőink vagy a Microsoft Support Event Hubs dedikált kapacitásával kapcsolatos további részletek. Is további információ az Event Hubs érhetők el a következőket:

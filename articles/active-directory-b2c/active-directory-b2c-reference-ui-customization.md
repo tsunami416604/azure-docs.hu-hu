@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: 37e9f06555063ceea00b9162c79344130414b82e
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 23a2996a5eaa41af5dc66558d2a70dd3e4a4fe3f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Az Azure Active Directory B2C: Testreszabása az Azure AD B2C felhasználói felület (UI)
 
 Felhasználói élmény az alkalmazás elérhető az ügyfél kiemelkedő.  Az ügyfél alap nő a márka megjelenésének és arculatának felhasználói élmény létrehozásával. Az Azure Active Directory B2C (az Azure AD B2C) lehetővé teszi, hogy testre szabhatja a regisztráció, bejelentkezés, profil szerkesztése, és a jelszó-átállítási tartalmazó képpontos tökéletes vezérlő.
 
 > [!NOTE]
-> A jelen cikkben ismertetett lap felhasználói felületi testreszabási szolgáltatás nem vonatkozik a bejelentkezési egyetlen házirend, a hozzá tartozó jelszó alaphelyzetbe állítása lap és ellenőrzési e-maileket.  Ezek a funkciók használata a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/active-directory-add-company-branding.md) helyette.
+> A jelen cikkben ismertetett lap felhasználói felületi testreszabási szolgáltatás nem vonatkozik a bejelentkezési egyetlen házirend, a hozzá tartozó jelszó alaphelyzetbe állítása lap és ellenőrzési e-maileket.  Ezek a funkciók használata a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/customize-branding.md) helyette.
 >
-> Hasonlóképpen ha egy felhasználó intiates egy profil házirend módosítása *előtt* jelentkezik be, a felhasználó irányítja át egy oldal, amely segítségével testre szabható a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/active-directory-add-company-branding.md).
+> Hasonlóképpen ha egy felhasználó intiates egy profil házirend módosítása *előtt* jelentkezik be, a felhasználó irányítja át egy oldal, amely segítségével testre szabható a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/customize-branding.md).
 
 Ez a cikk ismerteti a következő témaköröket:
 

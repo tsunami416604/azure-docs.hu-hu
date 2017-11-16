@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: alexwun
-ms.openlocfilehash: 49003c16c262180afcdba22c5557c91297cb2840
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 723cf7d98022e8bbb4f1e3c8c0836a4c53c6a078
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>A előtaggal beállítás ismertetése
 
@@ -44,7 +44,7 @@ Az Image Store rendszerszolgáltatás egyrészt a fürt belül az üzemeltetési
 
 A fájlrendszer szolgáltató szolgál a lemezképet tároló szolgáltatás helyett egy beépített helyi fürtök a fejlesztés során bootstrap némileg gyorsabb a fürt. A különbség az általában kicsi, de a legtöbb segítsen a fejlesztés során hasznos optimalizálás. Egy helyi egy beépített fürt más tárolási szolgáltató típusai is telepíthető, de általában nincs szükség erre, mivel a fejlesztése és tesztelési célú munkafolyamat szolgáltató függetlenül ugyanaz marad. Eltérő használata a fájlrendszer és az Azure Storage-szolgáltatók csak léteznek örökölt támogatása.
 
-Ezért konfigurálható a előtaggal pedig általában csak az alapértelmezett beállítást használja. Azure keresztül történő közzététel [Visual Studio][12], a paraméter értéke automatikusan, ennek megfelelően. Az Azure-ban üzemeltetett fürtökhöz a programozott telepítés, a kapcsolati karakterlánc: mindig "fabric: Lemezképtárolóba". Ha kétségei vannak, az értéke mindig ellenőrizhetők a fürtjegyzékben által lekérésével [PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx), vagy [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). Mind a helyszíni tesztelése, és mindig éles fürtök úgy konfigurálni, hogy a lemezkép tárolási szolgáltató használata is.
+Ezért konfigurálható a előtaggal pedig általában csak az alapértelmezett beállítást használja. Visual Studio használatával Azure közzétételekor a paraméter értéke automatikusan meg ennek megfelelően. Az Azure-ban üzemeltetett fürtökhöz a programozott telepítés, a kapcsolati karakterlánc: mindig "fabric: Lemezképtárolóba". Ha kétségei vannak, az értéke mindig ellenőrizhetők a fürtjegyzékben által lekérésével [PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx), vagy [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). Mind a helyszíni tesztelése, és mindig éles fürtök úgy konfigurálni, hogy a lemezkép tárolási szolgáltató használata is.
 
 ### <a name="next-steps"></a>Következő lépések
 [Központi telepítése, és távolítsa el az alkalmazásokat a PowerShell használatával][10]
@@ -55,4 +55,4 @@ Ezért konfigurálható a előtaggal pedig általában csak az alapértelmezett 
 
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-cluster-creation-via-portal.md
-[12]: service-fabric-publish-app-remote-cluster.md
+

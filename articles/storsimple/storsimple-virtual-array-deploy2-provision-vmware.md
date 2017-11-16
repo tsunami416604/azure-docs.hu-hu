@@ -4,7 +4,7 @@ description: "A StorSimple virtuális tömb telepítési sorozat második oktat�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
@@ -12,25 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 495ef6a93ee06423495269306ad06e76dda13e10
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>A StorSimple virtuális tömb - Provision VMware-ben telepítése
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag ismerteti, hogyan szeretnék telepíteni, és csatlakozzon a StorSimple virtuális tömb a gazdagéphez, VMware ESXi 5.5 rendszerű vagy újabb rendszeren. Ez a cikk a központi telepítést a StorSimple virtuális tömbök, Azure-portál és a Microsoft Azure Government felhő vonatkozik.
+Ez az oktatóanyag ismerteti, hogyan szeretnék telepíteni, és a StorSimple virtuális tömbhöz a gazdagép operációs rendszert futtató VMware ESXi 5.0, 5.5 vagy 6.0 csatlakozni. Ez a cikk a központi telepítést a StorSimple virtuális tömbök, Azure-portál és a Microsoft Azure Government felhő vonatkozik.
 
 Kiépítés rendszergazdai jogosultságokat igényel, és csatlakozzon a virtuális eszközhöz. Az üzembe helyezési és a kezdeti telepítés befejezéséhez körülbelül 10 percig is eltarthat.
 
 ## <a name="provisioning-prerequisites"></a>Telepítési előfeltételek
-VMware ESXi 5.5 rendszerű gazdagép rendszeren és újabb verzióiban a virtuális eszköz kiépítése Előfeltételek a következők:
+A gazdagép operációs rendszert futtató VMware ESXi 5.0, 5.5 vagy 6.0, a virtuális eszköz kiépítése Előfeltételek a következők:
 
 ### <a name="for-the-storsimple-device-manager-service"></a>A StorSimple-eszközkezelő szolgáltatás esetén
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
@@ -64,7 +64,7 @@ Ellátásához, majd csatlakozzon a virtuális eszközhöz, hajtsa végre a köv
 ## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>1. lépés: Győződjön meg arról, gazdagép rendszere megfelel a virtuális eszköz minimális követelményei
 A virtuális eszköz létrehozásához szüksége lesz:
 
-* Hozzáférés a gazdagéphez, VMware ESXi Server 5.5 rendszerű vagy újabb.
+* VMware ESXi Server 5.0, 5.5 vagy 6.0 futó gazdarendszer való hozzáférést.
 * VMware vSphere ügyfél, a rendszer kezeléséhez az ESXi-állomáson.
 
   * Legalább 4 mag.
@@ -183,6 +183,9 @@ A következő lépésekkel a hipervizor a virtuális eszköz létrehozásához.
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
 A virtuális gép ezzel ki van építve. A következő lépésre az IP-címet, és kapcsolja be ezt a gépet.
+
+> [!NOTE]
+> Azt javasoljuk, hogy nem telepíti a VMware-eszközök a virtuális tömb (ahogy fent kiépítése). A VMware-eszközök telepítése egy nem támogatott konfiguráció eredményez.
 
 ## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>3. lépés: Indítsa el a virtuális eszköz és az IP-cím beszerzése
 A következő lépésekkel indítsa el a virtuális eszköz és kapcsolódni hozzá.

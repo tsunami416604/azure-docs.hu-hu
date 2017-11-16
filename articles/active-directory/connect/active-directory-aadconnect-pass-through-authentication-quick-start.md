@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: cbedb87722d1c230f3b8003cadd069947881f25d
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: e0b58142a2ed17d2cd4749b33e9e80ff1a01662a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Az Azure Active Directory átmenő hitelesítést: Gyors üzembe helyezési
 
@@ -38,7 +38,7 @@ Győződjön meg arról, hogy a következő előfeltételeket:
 ### <a name="on-the-azure-active-directory-admin-center"></a>Az az Azure Active Directory felügyeleti központban
 
 1. Hozzon létre egy kizárólag felhőalapú globális rendszergazdai fiókot az Azure AD-bérlő. Ezzel a módszerrel kezelheti a bérlője konfigurációját kell a helyszíni szolgáltatások sikertelen, vagy már nem érhető el. További tudnivalók [csak felhőalapú globális rendszergazdai fiókot hozzá](../active-directory-users-create-azure-portal.md). Ez a lépés elvégzése fontos annak érdekében, hogy Ön nem ártatlan tévedéssel a bérlő.
-2. Vegyen fel egy vagy több [egyéni tartomány neve](../active-directory-add-domain.md) az Azure AD-bérlő. A felhasználók jelentkezzen be a tartomány neveinek egyike.
+2. Vegyen fel egy vagy több [egyéni tartomány neve](../active-directory-domains-add-azure-portal.md) az Azure AD-bérlő. A felhasználók jelentkezzen be a tartomány neveinek egyike.
 
 ### <a name="in-your-on-premises-environment"></a>A helyszíni környezetben
 

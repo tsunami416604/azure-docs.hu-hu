@@ -21,10 +21,10 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# Szolgáltatás hívásokon szolgáltatás meghatalmazott az On-meghatalmazásos folyamat-beli felhasználói identitás
+# <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatás hívásokon szolgáltatás meghatalmazott az On-meghatalmazásos folyamat-beli felhasználói identitás
 Az OAuth 2.0 On-Behalf-Of folyamat szolgál a használati eset, ahol egy alkalmazás elindítja egy szolgáltatás vagy webes API, amely pedig meg kell hívni egy másik szolgáltatás vagy webes API-t. A lényege való terjesztése, a felhasználó delegált identitása és az engedélyek a kérelem lánc keresztül. A középső rétegbeli szolgáltatás hitelesített kéréseket küld az alárendelt szolgáltatás kell biztonságos hozzáférési tokent az Azure Active Directory (Azure AD), a felhasználó nevében.
 
-## A-nevében-: folyamatábrája
+## <a name="on-behalf-of-flow-diagram"></a>A-nevében-: folyamatábrája
 Tegyük fel, hogy a felhasználó hitelesítése egy alkalmazást, amely a a [OAuth 2.0 hitelesítési kódot adjon folyamat](active-directory-protocols-oauth-code.md). Ezen a ponton az alkalmazás rendelkezik olyan hozzáférési jogkivonatot (lexikális elem A) a felhasználói jogcímek és beleegyezése a középső rétegbeli webes API-k (API-A) eléréséhez. Most API A kell hitelesített kéréseknél az alsóbb rétegbeli webes API (API-B).
 
 A következő lépések az On-meghatalmazásos folyamat jelent, és segítségével. a következő ábra ismerteti.
@@ -38,9 +38,9 @@ A következő lépések az On-meghatalmazásos folyamat jelent, és segítségé
 4. A token B API a b kiszolgálóra a kérés hitelesítési fejlécéhez van megadva
 5. API B. által visszaadott adatok a védett erőforrás
 
-## Az alkalmazás és szolgáltatás regisztrálása az Azure ad-ben
+## <a name="register-the-application-and-service-in-azure-ad"></a>Az alkalmazás és szolgáltatás regisztrálása az Azure ad-ben
 Az ügyfélalkalmazás mind a középső rétegbeli szolgáltatás regisztrálása az Azure ad-ben.
-### A középső rétegbeli szolgáltatás regisztrálása
+### <a name="register-the-middle-tier-service"></a>A középső rétegbeli szolgáltatás regisztrálása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső eszköztáron kattintson a fiókhoz, majd a a **Directory** menüben válassza ki az Active Directory-bérlőt, ahová be szeretné-e az alkalmazás regisztrálásához.
 3. Kattintson a **több szolgáltatások** a bal oldali navigációs válassza **Azure Active Directory**.
@@ -48,7 +48,7 @@ Az ügyfélalkalmazás mind a középső rétegbeli szolgáltatás regisztrálá
 5. Adjon egy rövid nevet az alkalmazáshoz, és jelölje ki az alkalmazás. A alapján alkalmazás típusa a bejelentkezési URL-cím vagy átirányítási URL-CÍMÉT az alap URL-címet. Kattintson a **létrehozása** az alkalmazás létrehozására.
 6. Miközben továbbra is az Azure portálon, válassza ki az alkalmazást, majd kattintson a **beállítások**. A beállítások menüből **kulcsok** és kulcs hozzáadása – 1 év vagy a 2 év kulcs időtartam kiválasztása. Ha mentése ezen a lapon, a kulcs értéke jelenik meg, másolja ki és mentse a érték biztonságos helyen – ezt a kulcsot az alkalmazás beállításainak megadtak a megvalósítás - olyan később szüksége lesz a kulcs értéke nem lesz újra megjelenített, sem lekérhető bármilyen más módon , ezért kérjük, jegyezze fel, amint az Azure portálról látható.
 
-### Az ügyfélalkalmazás regisztrálása
+### <a name="register-the-client-application"></a>Az ügyfélalkalmazás regisztrálása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső eszköztáron kattintson a fiókhoz, majd a a **Directory** menüben válassza ki az Active Directory-bérlőt, ahová be szeretné-e az alkalmazás regisztrálásához.
 3. Kattintson a **több szolgáltatások** a bal oldali navigációs válassza **Azure Active Directory**.
@@ -56,14 +56,14 @@ Az ügyfélalkalmazás mind a középső rétegbeli szolgáltatás regisztrálá
 5. Adjon egy rövid nevet az alkalmazáshoz, és jelölje ki az alkalmazás. A alapján alkalmazás típusa a bejelentkezési URL-cím vagy átirányítási URL-CÍMÉT az alap URL-címet. Kattintson a **létrehozása** az alkalmazás létrehozására.
 6. Engedélyek konfigurálása az alkalmazás - a beállítási menüben, válassza ki a **szükséges engedélyek** területen kattintson a **hozzáadása**, majd **API kiválasztása**, és írja be nevét a középső rétegbeli szolgáltatás a szövegmezőben. Kattintson a **Select engedélyeket** válassza ki "hozzáférési *szolgáltatásnév*".
 
-### Ismert ügyfélalkalmazások konfigurálása
+### <a name="configure-known-client-applications"></a>Ismert ügyfélalkalmazások konfigurálása
 Ebben az esetben a középső rétegbeli szolgáltatás tartozik az beszerzése a felhasználói hozzájárulás az alsóbb rétegbeli API eléréséhez felhasználói beavatkozásra. Ezért is hozzáférést biztosítson az alsóbb rétegbeli API-t kell bemutatni előzetes megfizetése esetén, egy részét a hozzájárulásukat adják. lépés: a hitelesítés során.
 Ennek érdekében az alábbi lépésekkel explicit módon kötni az ügyfélalkalmazás regisztrációs regisztrációját a középső rétegbeli szolgáltatást, amely egyesíti a hozzájárulási szükséges az ügyfél és a középső rétegbeli egyetlen párbeszédpanel az Azure AD-ben.
 1. Keresse meg a középső rétegű regisztrációját, és kattintson a **Manifest** a jegyzékfájl-szerkesztő megnyitásához.
 2. A jegyzékben, keresse meg a `knownClientApplications` tömb tulajdonság, majd adja meg az ügyfél-Azonosítót, az ügyfélalkalmazás elemeként.
 3. A jegyzékfájl mentése a Mentés gombra kattintva gombra.
 
-## Szolgáltatáskérés hozzáférési jogkivonat szolgáltatás
+## <a name="service-to-service-access-token-request"></a>Szolgáltatáskérés hozzáférési jogkivonat szolgáltatás
 Olyan hozzáférési jogkivonatot kérni, a bérlő-specifikus HTTP POST ellenőrizze az Azure AD-végpont a következő paraméterekkel.
 
 ```
@@ -71,7 +71,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 ```
 Attól függően, hogy az ügyfélalkalmazás úgy dönt, hogy egy közös titkot, vagy a tanúsítvány védi két esetben van.
 
-### Először. eset: egy közös titkot a hozzáférési token kérelem
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Először. eset: egy közös titkot a hozzáférési token kérelem
 Egy közös titkos kulcs használata esetén a szolgáltatás hozzáférési kérelmek tartalmazza a következő paraméterekkel:
 
 | Paraméter |  | Leírás |
@@ -84,7 +84,7 @@ Egy közös titkos kulcs használata esetén a szolgáltatás hozzáférési ké
 | requested_token_use |Szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. Az On-meghatalmazásos folyamat, az érték lehet **on_behalf_of**. |
 | Hatókör |Szükséges | Egy szóközzel elválasztott a jogkivonatkérelem hatókört. Az OpenID Connect, a hatókör **openid** meg kell adni.|
 
-#### Példa
+#### <a name="example"></a>Példa
 A következő HTTP POST kérelmek https://graph.windows.net webes API olyan hozzáférési jogkivonatot. A `client_id` azonosítja a szolgáltatást, amelyet a hozzáférési jogkivonat igényel.
 
 ```
@@ -103,7 +103,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-### A második esetben: hozzáférési jogkivonat kérelem tanúsítvánnyal
+### <a name="second-case-access-token-request-with-a-certificate"></a>A második esetben: hozzáférési jogkivonat kérelem tanúsítvánnyal
 Szolgáltatás hozzáférési kérelmek tanúsítvánnyal tartalmazza a következő paraméterekkel:
 
 | Paraméter |  | Leírás |
@@ -119,7 +119,7 @@ Szolgáltatás hozzáférési kérelmek tanúsítvánnyal tartalmazza a követke
 
 Figyelje meg, hogy a paraméterek megegyeznek-szinte közös titkos kulcs kérése gazdabuszadaptereken azzal a különbséggel, hogy a client_secret paraméter helyébe két paramétert: egy client_assertion_type és client_assertion.
 
-#### Példa
+#### <a name="example"></a>Példa
 A következő HTTP POST kérelmek https://graph.windows.net webes API a tanúsítványhoz olyan hozzáférési jogkivonatot. A `client_id` azonosítja a szolgáltatást, amelyet a hozzáférési jogkivonat igényel.
 
 ```
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-## Szolgáltatás-hozzáférési jogkivonat válasz szolgáltatás
+## <a name="service-to-service-access-token-response"></a>Szolgáltatás-hozzáférési jogkivonat válasz szolgáltatás
 Sikerességi válasz egy JSON OAuth 2.0 válasz a következő paraméterekkel.
 
 | Paraméter | Leírás |
@@ -153,7 +153,7 @@ Sikerességi válasz egy JSON OAuth 2.0 válasz a következő paraméterekkel.
 | id_token |A megadott azonosítóhoz jogkivonat. A hívó szolgáltatás ezzel a felhasználó személyazonosságát, és a felhasználói munkamenet elindításához. |
 | refresh_token |A kért hozzáférési jogkivonat frissítési jogkivonat. A hívó szolgáltatás egy új hozzáférési jogkivonat lekérni az aktuális jogkivonat lejárata után is használhatja a token. |
 
-### Sikerességi válasz – példa
+### <a name="success-response-example"></a>Sikerességi válasz – példa
 A következő példa bemutatja egy olyan hozzáférési jogkivonatot https://graph.windows.net webes API kérelemre sikerességi válasz.
 
 ```
@@ -171,7 +171,7 @@ A következő példa bemutatja egy olyan hozzáférési jogkivonatot https://gra
 }
 ```
 
-### Hiba válasz – példa
+### <a name="error-response-example"></a>Hiba válasz – példa
 Egy hiba történt egy válasz próbál szerezni hozzáférési tokent az alsóbb rétegbeli API-hoz, például a többtényezős hitelesítés beállítása a feltételes hozzáférési szabályzatot az alsóbb rétegbeli API-e az Azure AD-token végpontja érték érkezett vissza. A középső rétegbeli szolgáltatás kell surface Ez a hiba az ügyfélalkalmazás, így az ügyfélalkalmazás biztosítani tudja teljesíteni a feltételes hozzáférési házirend a felhasználói beavatkozást.
 
 ```
@@ -186,17 +186,17 @@ Egy hiba történt egy válasz próbál szerezni hozzáférési tokent az alsób
 }
 ```
 
-## A védett erőforrások eléréséhez használja a hozzáférési jogkivonat
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>A védett erőforrások eléréséhez használja a hozzáférési jogkivonat
 Most a középső rétegbeli szolgáltatás használhatja a hitelesített kérelmek legyen az alsóbb rétegbeli webes API-t úgy, hogy a jogkivonat fenti szerzett jogkivonat a `Authorization` fejléc.
 
-### Példa
+### <a name="example"></a>Példa
 ```
 GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.windows.net
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
 ```
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 További információk az OAuth 2.0 protokollt, és úgy is hajtsa végre a szolgáltatások közötti hitelesítési ügyfél hitelesítő adataival.
 * [OAuth 2.0 ügyfél hitelesítő adatok megadása az Azure AD használatával szolgáltatás hitelesítési szolgáltatás](active-directory-protocols-oauth-service-to-service.md)
 * [OAuth 2.0 Azure AD-ben](active-directory-protocols-oauth-code.md)
