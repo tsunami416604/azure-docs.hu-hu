@@ -250,8 +250,6 @@
 ### [Java szolgáltatás hibakeresése az Eclipse-ben](service-fabric-debugging-your-application-java.md)
 ### [Helyi monitorozás és diagnosztika](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-## [Az API Management és a Service Fabric üzembe helyezése az Azure-ban](service-fabric-api-management-quick-start.md)
-
 ## Áttelepítés a Cloud Servicesből
 ### [A Cloud Services és a Service Fabric összehasonlítása](service-fabric-cloud-services-migration-differences.md)
 ### [Migráció a Service Fabricre](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -265,7 +263,6 @@
 #### [Azure Resource Manager](service-fabric-application-arm-resource.md)
 #### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric parancssori felület](service-fabric-application-lifecycle-sfctl.md)
-#### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API-k](service-fabric-deploy-remove-applications-fabricclient.md)
 
 ### Alkalmazások frissítése
@@ -281,11 +278,8 @@
 ##### [Számítási feladatok során](service-fabric-testability-workload-tests.md)
 ##### [Tesztelési forgatókönyvek használata](service-fabric-testability-scenarios.md)
 ##### [A csomópontváltó API-k használata](service-fabric-node-transition-apis.md)
-#### [Az alkalmazás terheléses tesztelése](service-fabric-vso-load-test.md)
 
-### A folyamatos integráció beállítása
-#### [A folyamatos integráció beállítása a VSTS-sel](service-fabric-set-up-continuous-integration.md)
-#### [Linuxos Java-alkalmazás üzembe helyezése a Jenkins használatával](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+### [Linuxos Java-alkalmazás üzembe helyezése a Jenkins használatával](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 
 ## Fürtök létrehozása és felügyelete
 ### Fürtök az Azure-on
@@ -319,21 +313,6 @@
 ### [Fürt ábrázolása](service-fabric-visualizing-your-cluster.md)
 ### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
 ### [Fürtcsomópontok javítása](service-fabric-patch-orchestration-application.md)
-
-### Fürterőforrások kezelése és összehangolása
-#### [A fürterőforrás-kezelő áttekintése](service-fabric-cluster-resource-manager-introduction.md)
-#### [A fürterőforrás-kezelő architektúrája](service-fabric-cluster-resource-manager-architecture.md)
-#### [Fürt leírása](service-fabric-cluster-resource-manager-cluster-description.md)
-#### [Az alkalmazáscsoportok áttekintése](service-fabric-cluster-resource-manager-application-groups.md)
-#### [A fürterőforrás-kezelő beállításainak konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
-#### [Erőforrás-felhasználási mérőszámok](service-fabric-cluster-resource-manager-metrics.md)
-#### [A szolgáltatási affinitás használata](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-#### [Szolgáltatás-elhelyezési házirendek](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-#### [Fürt kezelése](service-fabric-cluster-resource-manager-management-integration.md)
-#### [Fürt töredezettségmentesítése](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-#### [Fürt terhelésének elosztása](service-fabric-cluster-resource-manager-balancing.md)
-#### [Szabályozás](service-fabric-cluster-resource-manager-advanced-throttling.md)
-#### [Szolgáltatás áthelyezése](service-fabric-cluster-resource-manager-movement-cost.md)
 
 ## Megfigyelés és diagnosztika
 ### OMS

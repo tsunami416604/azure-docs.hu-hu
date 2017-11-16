@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
-ms.openlocfilehash: e584a9adb75510c92fc2a25b657f55df88372e6b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9a941ce5c6f0989749c5a6db4348757f898a46f1
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>R Server a HDInsightban – első lépések
 
@@ -784,6 +784,5 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 Mostanra biztosan megértette, hogyan kell R Servert tartalmazó HDInsight-fürtöt létrehozni, és tisztában van az R-konzol SSH-munkamenetből történő használatának alapjaival. A következő témakörök az R Server HDInsighton történő kezelésének és az azzal történő munkavégzésnek egyéb módjait ismertetik:
 
-* [RStudio Server hozzáadása a HDInsight szolgáltatáshoz (ha a fürt létrehozása közben nem telepítette)](r-server-install-r-studio.md)
 * [Számítási környezeti beállítások a HDInsighton belüli R Server esetében](r-server-compute-contexts.md)
 * [Azure Storage lehetőségek a HDInsighton belüli R Server esetében](r-server-storage.md)

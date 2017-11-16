@@ -197,9 +197,6 @@
         - name: Az Ambari Views használatának engedélyezése felhasználók számára
           href: ../hdinsight-authorize-users-to-ambari.md
           maintainContext: true
-        - name: Felhasználói engedélyek kezelése a fájlok és mappák szintjén
-          href: ../hdinsight-add-acls-at-file-folder-levels.md
-          maintainContext: true
     - name: Kezelés
       items:
         - name: A fürtök kapacitástervezése

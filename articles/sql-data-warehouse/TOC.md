@@ -16,6 +16,7 @@
 ### [MPP-architektúra](massively-parallel-processing-mpp-architecture.md)
 ### [Teljesítményszintek](performance-tiers.md)
 ### [Adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [Kapacitási korlátok](sql-data-warehouse-service-capacity-limits.md)
 ### [Gyakori kérdések](sql-data-warehouse-overview-faq.md)
 
 ## Biztonsági mentés és visszaállítás
@@ -147,7 +148,7 @@
 
 # Referencia
 
-## [Kapacitási korlátok](sql-data-warehouse-service-capacity-limits.md)
+
 ## T-SQL
 ### [Teljes referencia](https://docs.microsoft.com/sql/t-sql/language-reference/)
 ### [Az SQL DW nyelvi elemei](sql-data-warehouse-reference-tsql-language-elements.md)

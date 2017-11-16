@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 2d6a09e234ee8ec63454d42a91613ed8da9d1c4b
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 5c5fa4927073ff52418a940fce59ca1f6b57daa6
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-azure-iot-suite"></a>Mi az Azure IoT Suite?
 
@@ -90,7 +90,7 @@ Egy előre konfigurált megoldás üzembe helyezésekor a kiépítési folyamat 
 
 * [Azure IoT Hub](../iot-hub/index.md). Ez a szolgáltatás az eszközökről a felhőbe irányuló és a felhőből az eszközre irányuló üzenetküldési képességeket nyújt, és a felhő és a többi fontos IoT-szolgáltatás átjárójaként működik. A szolgáltatás lehetővé teszi, hogy nagy mennyiségű üzenetet fogadjon az eszközökről, és parancsokat küldjön az eszközökre. A szolgáltatással [felügyelheti is az eszközöket](../iot-hub/iot-hub-device-management-overview.md). Konfigurálhat vagy újraindíthat például az IoT Hubhoz csatlakozó egy vagy több eszközt, illetve visszaállíthatja rajtuk a gyári beállításokat.
 * [Azure Event Hubs](../event-hubs/index.md). Ez a szolgáltatás nagy mennyiségű eseményfeldolgozást biztosít a felhőben. Lásd [az Azure IoT Hub és az Azure Event Hubs összehasonlítását](../iot-hub/iot-hub-compare-event-hubs.md).
-* [Azure Time Series Insights](../time-series-insights/index.md). Az előre konfigurált megoldások ezt a szolgáltatást használják az eszközökről származó telemetriaadatok elemzésére és megjelenítésére.
+* [Azure Time Series Insights](../time-series-insights/index.yml). Az előre konfigurált megoldások ezt a szolgáltatást használják az eszközökről származó telemetriaadatok elemzésére és megjelenítésére.
 * [Azure Container Service](../container-service/index.yml). Ez a szolgáltatás az előre konfigurált megoldásokban üzemelteti és felügyeli a mikroszolgáltatásokat.
 * [Azure Cosmos DB](../cosmos-db/index.yml) és [Azure Storage](../storage/index.yml) adattároláshoz.
 * [Azure Stream Analytics](../stream-analytics/index.md). A prediktív karbantartás előre konfigurált megoldás ezzel a szolgáltatással dolgozza fel a bejövő telemetriát, végez összesítést és észleli az eseményeket. Ez az előre konfigurált megoldás is a Stream Analyticsszel dolgozza fel azokat a tájékoztató üzeneteket, amelyek például metaadatokat vagy eszközök parancsválaszait tartalmazzák.

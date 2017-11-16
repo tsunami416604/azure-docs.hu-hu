@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: e29c381643b233d38b10f89aed5469043c699f45
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 977f7c075005efb826e862ee582864b0f6efab38
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>A Security Center biztonsági szabályzatainak integrálása az Azure Policyvel
 Ez a cikk segítséget nyújt az Azure Security Center biztonsági szabályzatainak konfigurálásában, amelyek az Azure Policyre épülnek. 
@@ -60,7 +60,7 @@ Az egyes Azure-előfizetések alapértelmezett biztonsági szabályzatait a Secu
     ![Elérhető szabályzatdefiníciók](./media/security-center-policies/security-center-policies-fig11.png)
 
     * A szabályzatok részletes leírásáért válassza ki a kívánt szabályzatot.  
-    Megnyílik egy **Előnézet** ablak a definícióhoz. Ez megjeleníti a definíció leírását és egy, a [szabályzatdefiníció](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy/#policy-definition-structure) struktúráját megadó JSON-kódra mutató hivatkozást.
+    Megnyílik egy **Előnézet** ablak a definícióhoz. Ez megjeleníti a definíció leírását és egy, a [szabályzatdefiníció](../azure-policy/policy-definition.md) struktúráját megadó JSON-kódra mutató hivatkozást.
 
     ![Előnézet ablak a definícióhoz](./media/security-center-policies/security-center-policies-fig14.png)
 
