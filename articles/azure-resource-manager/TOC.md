@@ -9,14 +9,6 @@
 ## [VS Code-bővítmény sablonokhoz](resource-manager-vscode-extension.md)
 ## [A Visual Studio és a Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
-# Példák
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
-## Azure PowerShell
-### [Sablon üzembe helyezése](resource-manager-samples-powershell-deploy.md)
-
-## Azure CLI
-### [Sablon üzembe helyezése](resource-manager-samples-cli-deploy.md)
-
 # Útmutató
 ## Sablonok létrehozása
 ### [Sablon szakaszai](resource-group-authoring-templates.md)

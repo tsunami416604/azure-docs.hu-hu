@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: d44e43dd8ae01c93050de199f7d72c8ac92bcad9
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 7a05836be4a0879fa7103d070c683f45c06cd741
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI Azure használni, annak érdekében, a fejlesztési ciklus, valamint az ügyfélszolgálat és a teljesítmény javítása érdekében
 ![Daxko/CSI embléma](./media/sql-database-implementation-daxko/csidaxkologo25.png)
@@ -93,5 +93,5 @@ Azure SQL-adatbázis nem csupán az SpectrumNG ügyfél számára, akiknek a a g
 * Aktív georeplikáció kapcsolatos további információkért lásd: [aktív georeplikáció](sql-database-geo-replication-overview.md).
 * Webes és feldolgozói szerepkörök kapcsolatos további információkért lásd: [feldolgozói szerepkörök](../fundamentals-introduction-to-azure.md#compute).    
 * Azure Service Bus kapcsolatos további információkért lásd: [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
-* Automatikus méretezése kapcsolatos további információkért lásd: [felhőszolgáltatások skálázás](../cloud-services/cloud-services-how-to-scale.md).
+* Automatikus méretezése kapcsolatos további információkért lásd: [felhőszolgáltatások skálázás](../cloud-services/cloud-services-how-to-scale-portal.md).
 

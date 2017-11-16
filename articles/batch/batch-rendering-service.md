@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 09/14/2017
 ms.author: danlep
-ms.openlocfilehash: 08658bbebfc9f457a3f057178f6b002a88338f1e
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: aab68b4275edc48e1726b26a7400bbfdd8d40d6f
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Ismerkedés a Batch Rendering szolgáltatással
 
@@ -91,7 +91,7 @@ Az egyes rendelkezésre álló licencverziók a következők:
 
 ### <a name="custom-images"></a>Egyéni rendszerképek
 
-Az Azure Batch egyéni rendszerképek megadását is lehetővé teszi, így pontosan azokkal az alkalmazásokkal és verziókkal konfigurálhatja a virtuális gépet, amelyekre szüksége van. További információkért lásd a [virtuálisgép-készletek egyéni rendszerkép használatával történő létrehozásával](https://docs.microsoft.com/en-us/azure/batch/batch-custom-images) foglalkozó témakört. Vegye figyelembe, hogy az Autodesk és a Chaos Group módosították az Arnold és a V-Ray szoftvert, így azok a mi licencszolgáltatásunkkal érvényesíthetők. Emiatt ezeknek az alkalmazásoknak mindenképp olyan verzióját kell használnia, amely rendelkezik ilyen támogatással, máskülönben a használatalapú licencelés nem fog működni. A Maya és a 3ds Max esetében nincs szükség ilyen licencérvényesítésre, mivel ezeknek az aktuális közzétett verziói nem igényelnek licenckiszolgálót, ha távfelügyeleti módban (kötegelt/parancssori módban) futnak. Amennyiben nem tudja, hogyan használhatja ezt a lehetőséget, forduljon az Azure ügyfélszolgálatához.
+Az Azure Batch egyéni rendszerképek megadását is lehetővé teszi, így pontosan azokkal az alkalmazásokkal és verziókkal konfigurálhatja a virtuális gépet, amelyekre szüksége van. További információkért lásd a [virtuálisgép-készletek egyéni rendszerkép használatával történő létrehozásával](https://docs.microsoft.com/azure/batch/batch-custom-images) foglalkozó témakört. Vegye figyelembe, hogy az Autodesk és a Chaos Group módosították az Arnold és a V-Ray szoftvert, így azok a mi licencszolgáltatásunkkal érvényesíthetők. Emiatt ezeknek az alkalmazásoknak mindenképp olyan verzióját kell használnia, amely rendelkezik ilyen támogatással, máskülönben a használatalapú licencelés nem fog működni. A Maya és a 3ds Max esetében nincs szükség ilyen licencérvényesítésre, mivel ezeknek az aktuális közzétett verziói nem igényelnek licenckiszolgálót, ha távfelügyeleti módban (kötegelt/parancssori módban) futnak. Amennyiben nem tudja, hogyan használhatja ezt a lehetőséget, forduljon az Azure ügyfélszolgálatához.
 
 ## <a name="options-for-submitting-a-render-job"></a>Renderelési feladatok elküldésének különböző lehetőségei
 
@@ -101,7 +101,7 @@ A használt 3D-alkalmazástól függően különféle lehetőségek állnak rend
 
 A Mayával a következőket használhatja:
 
-- [A Maya alkalmazáshoz készült Batch beépülő modult](https://docs.microsoft.com/en-us/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
+- [A Maya alkalmazáshoz készült Batch beépülő modult](https://docs.microsoft.com/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
 - A [BatchLabs](https://azure.github.io/BatchLabs) asztali alkalmazást
 - A [Batch-sablonok parancssori felületét](batch-cli-templates.md)
 
@@ -114,7 +114,7 @@ A 3ds Maxszel a következőket használhatja:
 
 A 3ds Max Batch Labs-sablonok segítségével VRay- és Arnold-jeleneteket renderelhet az Azure Batch renderelési szolgáltatásával. A VRay- és Arnold-sablonnak két változata létezik, az egyik a standard jelenetekhez, a másik pedig az olyan összetett jelenetekhez, amelyekhez egy 3ds Max-útvonalfájl szükséges az objektumokhoz és a textúrákhoz (.mxp fájl). A 3ds Max Batch Labs-sablonokkal kapcsolatos további információkért lásd a [BatchLabs-adatok](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) adattárat a GitHubon.
 
-Emellett használhatja a [Batch Python SDK-t](https://docs.microsoft.com/en-us/azure/batch/batch-python-tutorial) is, hogy a renderelési szolgáltatást integrálni tudja a meglévő folyamattal.
+Emellett használhatja a [Batch Python SDK-t](https://docs.microsoft.com/azure/batch/batch-python-tutorial) is, hogy a renderelési szolgáltatást integrálni tudja a meglévő folyamattal.
 
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>Renderelési feladat elküldése a Maya alkalmazáshoz készült Batch beépülő modul használatával

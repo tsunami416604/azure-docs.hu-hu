@@ -15,11 +15,11 @@ ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.openlocfilehash: 96490c0d060fe5486a7235a5aa76380c8d9b5d4f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 19f52181a2847ab52029adac4d58e402a76d5f30
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Alkalmazások közzététele az Azure AD-alkalmazásproxyval
 
@@ -97,7 +97,7 @@ Egy alkalmazás törléséhez jelölje ki azt a listában, majd kattintson a **T
 ## <a name="next-steps"></a>Következő lépések
 * [Alkalmazások közzététele saját tartománynév használatával](active-directory-application-proxy-custom-domains.md)
 * [Egyszeri bejelentkezés engedélyezése](active-directory-application-proxy-sso-using-kcd.md)
-* [Feltételes hozzáférés engedélyezése](active-directory-application-proxy-conditional-access.md)
+* [Feltételes hozzáférés engedélyezése](application-proxy-enable-remote-access-sharepoint.md)
 * [Munkavégzés jogcímeket figyelembe vevő alkalmazásokkal](active-directory-application-proxy-claims-aware-apps.md)
 
 A legújabb híreket és frissítéseket itt találja: [Alkalmazásproxy blog](http://blogs.technet.com/b/applicationproxyblog/).

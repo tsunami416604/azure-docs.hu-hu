@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 10/27/2017
-ms.openlocfilehash: cfffe5145f8762558e6ee573f6f2bb69d32424ad
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 07e74c64e587cce99612cd5047516bf131943f2e
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="aerial-image-classification"></a>Légifelvételes kép besorolás
 
@@ -133,6 +133,11 @@ Azt hozni a tárfiókot, hogy állomások projektfájlok, amelyet a HDInsight Sp
     Jegyezze fel az értéket a `key1` kulcsként storage a következő parancsot, majd futtassa a parancsot a érték tárolására.
     ```
     set STORAGE_ACCOUNT_KEY=[storage account key]
+    ```
+1. Nevű fájlmegosztás létrehozása `baitshare` tárfiókba, a következő paranccsal:
+
+    ```
+    az storage share create --account-name %STORAGE_ACCOUNT_NAME% --account-key %STORAGE_ACCOUNT_KEY% --name baitshare
     ```
 1. A kedvenc szövegszerkesztőjével, betöltése a `settings.cfg` az Azure Machine Learning-munkaterület projekt "Code" alkönyvtár fájlt, és helyezze be a tárfiók nevét és a kulcs jelöli. Mentse és zárja be a `settings.cfg` fájlt.
 1. Ha még nem tette, töltse le és telepítse a [AzCopy](http://aka.ms/downloadazcopy) segédprogramot. Győződjön meg arról, hogy az AzCopy végrehajtható fájl elérési úton van a rendszer írja be a "AzCopy", majd lenyomja az Enter billentyűt a hozzá tartozó dokumentáció megjelenítése.

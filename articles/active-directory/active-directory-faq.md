@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: 4c8a3885f34942bbd85d34f26e26ff5d7a432189
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 241ad78abfa964c9f64e97cc8201933913f88e1e
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -56,7 +56,7 @@ A fizetős Azure AD szolgáltatások, például az Enterprise Mobility + Securit
 Ha másoknak is ugyanezzel az előfizetéssel kell bejelentkezniük és elérniük a szolgáltatásokat, társadminisztrátorként felveheti őket. Ez a szerepkör ugyanazokkal a hozzáférési jogosultságokkal rendelkezik, mint a szolgáltatás-rendszergazda, de nem módosíthatja az előfizetések és az Azure-címtárak közötti társítást.  Az előfizetés-rendszergazdákról további információért lásd: [Azure-rendszergazdai szerepkörök felvétele vagy módosítása](../billing-add-change-azure-subscription-administrator.md) és[Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directory-hoz?](active-directory-how-subscriptions-associated-directory.md).
 
 
-Az Azure AD különböző rendszergazdai szerepkörökkel rendelkezik a címtárral és az identitással kapcsolatos funkciók kezeléséhez.  Ezek a rendszergazdák hozzáférnek az Azure Portal vagy a klasszikus Azure portál különböző szolgáltatásaihoz. A rendszergazda szerepköre határozza meg, hogy mit tehet, például létrehozhatja vagy szerkeszthet-e felhasználókat, hozzárendelhet-e másokhoz rendszergazdai szerepköröket, visszaállíthatja-e a felhasználói jelszavakat, kezelheti-e a felhasználói licenceket, vagy kezelheti-e a tartományokat.  Az Azure AD címtárrendszergazdáival és azok szerepköreivel kapcsolatos tovább információkért lásd: [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](active-directory-assign-admin-roles.md).
+Az Azure AD különböző rendszergazdai szerepkörökkel rendelkezik a címtárral és az identitással kapcsolatos funkciók kezeléséhez.  Ezek a rendszergazdák hozzáférnek az Azure Portal vagy a klasszikus Azure portál különböző szolgáltatásaihoz. A rendszergazda szerepköre határozza meg, hogy mit tehet, például létrehozhatja vagy szerkeszthet-e felhasználókat, hozzárendelhet-e másokhoz rendszergazdai szerepköröket, visszaállíthatja-e a felhasználói jelszavakat, kezelheti-e a felhasználói licenceket, vagy kezelheti-e a tartományokat.  Az Azure AD címtárrendszergazdáival és azok szerepköreivel kapcsolatos tovább információkért lásd: [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](active-directory-assign-admin-roles-azure-portal.md).
 
 Ezenkívül a fizetős Azure AD szolgáltatások, például az Enterprise Mobility + Security, átfogó vállalati méretű felügyeleti és biztonsági megoldásokkal egészítenek ki más webes szolgáltatásokat, például az Office 365-öt és a Microsoft Azure-t.
 
@@ -132,8 +132,7 @@ Office 365-felhasználók esetében a rendszergazda alaphelyzetbe állíthatja a
 Azure AD-felhasználók esetében a rendszergazdák a következő módszerek valamelyikével állíthatják alaphelyzetbe a jelszót:
 
 - [Fiókok alaphelyzetbe állítása az Azure Portalon](active-directory-users-reset-password-azure-portal.md)
-- [Fiókok alaphelyzetbe állítása a klasszikus Azure portálon](active-directory-create-users-reset-password.md)
-- [A PowerShell használata](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
+- [A PowerShell-lel](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
 
 
 - - -
@@ -199,7 +198,7 @@ További információért lásd: [Helyszíni alkalmazások biztonságos távoli 
 
 **V:** Az Azure AD feltételes hozzáférésével minden alkalmazáshoz egyedi hozzáférési házirendet rendelhet. A házirendjében mindig megkövetelheti a többtényezős hitelesítést, vagy csak akkor, amikor a felhasználók nem csatlakoznak a helyi hálózathoz.  
 
-További információkért lásd: [Az Office 365 és az Azure Active Directoryhoz csatlakoztatott egyéb alkalmazások hozzáférésének biztonságossá tétele](active-directory-conditional-access.md).
+További információkért lásd: [Az Office 365 és az Azure Active Directoryhoz csatlakoztatott egyéb alkalmazások hozzáférésének biztonságossá tétele](active-directory-conditional-access-azure-portal.md).
 
 - - -
 **K: Mi a SaaS-alkalmazások automatizált felhasználókiépítése?**
