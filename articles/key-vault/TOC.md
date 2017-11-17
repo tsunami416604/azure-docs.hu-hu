@@ -14,6 +14,9 @@
 ### [Szolgáltatási korlátozások](key-vault-service-limits.md)
 ### [HSM által védett kulcsok](key-vault-hsm-protected-keys.md)
 ### [Áttelepítés az .NET 2.0-ba](key-vault-dotnet2api-release-notes.md)
+### [Webalkalmazás titkos kulcsának mentése](vs-secure-secret-appsettings.md)
+### [Szolgáltatáshitelesítés a .NET-keretrendszerrel](service-to-service-authentication.md)
+
 ### Áttekintések
 #### [Biztonsági világok](key-vault-ovw-security-worlds.md)
 #### [Helyreállítható törlés](key-vault-ovw-soft-delete.md)

@@ -17,6 +17,8 @@
       href: functions-create-your-first-function-visual-studio.md
     - name: Függvény létrehozása – Java/Maven
       href: functions-create-first-java-maven.md
+    - name: Függvény létrehozása – Linux
+      href: functions-create-first-azure-function-azure-cli-linux.md
     - name: Eseményindítók
       items:
         - name: Blob Storage
@@ -37,7 +39,7 @@
           href: functions-integrate-storage-queue-output-binding.md
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1. – A Functions és a Logic Apps
       href: functions-twitter-email.md
@@ -47,6 +49,8 @@
       href: functions-openapi-definition.md
     - name: 4 – Rendszerképek átméretezése az Event Grid használatával
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: 5 – A Functions egyéni rendszerképen
+      href: functions-create-function-linux-custom-image.md
 - name: Példák
   items:
     - name: Kódminták

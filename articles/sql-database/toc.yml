@@ -200,9 +200,9 @@
     - name: Több-bérlős SaaS
       items:
         - name: SaaS-kialakítási minták
-          href: sql-database-design-patterns-multi-tenancy-saas-applications.md
+          href: saas-tenancy-app-design-patterns.md
         - name: SaaS-alkalmazásbiztonság
-          href: sql-database-elastic-tools-multi-tenant-row-level-security.md
+          href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
     - name: Adatbázisok fejlesztése
       items:
         - name: JSON-adatok
@@ -337,24 +337,45 @@
           href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
     - name: Több-bérlős SaaS
       items:
-        - name: Bevezetés az oktatóanyagba
-          href: sql-database-wtp-overview.md
-        - name: Mintaalkalmazás üzembe helyezése
-          href: sql-database-saas-tutorial.md
-        - name: Bérlők kiosztása
-          href: sql-database-saas-tutorial-provision-and-catalog.md
-        - name: Adatbázis teljesítményének monitorozása
-          href: sql-database-saas-tutorial-performance-monitoring.md
-        - name: Monitorozás a Log Analytics használatával
-          href: sql-database-saas-tutorial-log-analytics.md
-        - name: Egyetlen bérlő visszaállítása
-          href: sql-database-saas-tutorial-restore-single-tenant.md
-        - name: Bérlői séma kezelése
-          href: sql-database-saas-tutorial-schema-management.md
-        - name: Alkalmi lekérdezések futtatása
-          href: sql-database-saas-tutorial-adhoc-analytics.md
-        - name: ETL elemzéshez
-          href: sql-database-saas-tutorial-tenant-analytics.md
+        - name: Üdvözli a Wingtips!
+          href: saas-tenancy-welcome-wingtip-tickets-app.md
+        - name: Önálló alkalmazás
+          items:
+            - name: Mintaalkalmazás üzembe helyezése
+              href: saas-standaloneapp-get-started-deploy.md
+        - name: Bérlőnkénti adatbázis
+          href: saas-dbpertenant-wingtip-app-overview.md
+          items:
+            - name: Bevezetés az oktatóanyagba
+              href: saas-dbpertenant-wingtip-app-overview.md
+            - name: Útmutatás az alkalmazáshoz
+              href: saas-dbpertenant-wingtip-app-guidance-tips.md
+            - name: Mintaalkalmazás üzembe helyezése
+              href: saas-dbpertenant-get-started-deploy.md
+            - name: Bérlők kiosztása
+              href: saas-dbpertenant-provision-and-catalog.md
+            - name: Adatbázis teljesítményének monitorozása
+              href: saas-dbpertenant-performance-monitoring.md
+            - name: Monitorozás a Log Analytics használatával
+              href: saas-dbpertenant-log-analytics.md
+            - name: Egyetlen bérlő visszaállítása
+              href: saas-dbpertenant-restore-single-tenant.md
+            - name: Bérlői séma kezelése
+              href: saas-tenancy-schema-management.md
+            - name: Alkalmi lekérdezések futtatása
+              href: saas-tenancy-adhoc-analytics.md
+            - name: ETL elemzéshez
+              href: saas-tenancy-tenant-analytics.md
+        - name: Több-bérlős adatbázis
+          items:
+            - name: Mintaalkalmazás üzembe helyezése
+              href: saas-multitenantdb-get-started-deploy.md
+            - name: Adatbázis teljesítményének monitorozása
+              href: saas-multitenantdb-performance-monitoring.md
+            - name: Alkalmi lekérdezések futtatása
+              href: saas-multitenantdb-adhoc-reporting.md
+            - name: Bérlői séma kezelése
+              href: saas-multitenantdb-schema-management.md
     - name: Alkalmazásfejlesztés
       items:
         - name: C és C ++

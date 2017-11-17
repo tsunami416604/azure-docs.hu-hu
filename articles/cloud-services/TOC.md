@@ -34,32 +34,21 @@
 #### [A .NET telepítése egy Cloud Service szerepkörre feladat használatával](cloud-services-dotnet-install-dotnet.md)
 
 ### A Távoli asztal konfigurálása
-#### [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
-#### [Klasszikus portál](cloud-services-role-enable-remote-desktop.md)
-#### [Azure PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [Portál](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## Üzembe helyezés
-### Felhőszolgáltatás létrehozása és üzembe helyezése a portálon
-#### [Azure Portal](cloud-services-how-to-create-deploy-portal.md)
-#### [Klasszikus portál](cloud-services-how-to-create-deploy.md)
+### [Felhőszolgáltatás létrehozása és üzembe helyezése a portálon](cloud-services-how-to-create-deploy-portal.md)
 ### [Üres felhőszolgáltatás-tároló létrehozása PowerShellben](cloud-services-powershell-create-cloud-container.md)
-### Egyéni tartománynév konfigurálása
-#### [Portál](cloud-services-custom-domain-name-portal.md)
-#### [Klasszikus portál](cloud-services-custom-domain-name.md)
+### [Egyéni tartománynév konfigurálása](cloud-services-custom-domain-name-portal.md)
 ### [Felhőszolgáltatás üzembe helyezésének ütemezése (Node.js)](cloud-services-nodejs-stage-application.md)
 ### [Csatlakoztatás egyéni tartományvezérlőhöz](cloud-services-connect-to-custom-domain.md)
 
 ## Szolgáltatás kezelése
-### Általános kezelési feladatok
-#### [Azure Portal](cloud-services-how-to-manage-portal.md)
-#### [Klasszikus portál](cloud-services-how-to-manage.md)
-### Felhőszolgáltatás konfigurálása
-#### [Azure Portal](cloud-services-how-to-configure-portal.md)
-#### [Klasszikus portál](cloud-services-how-to-configure.md)
+### [Gyakori felügyeleti feladatok](cloud-services-how-to-manage-portal.md)
+### [Felhőszolgáltatás konfigurálása](cloud-services-how-to-configure-portal.md)
 ### [Egy Cloud Service felügyelete az Azure Automationnel](automation-manage-cloud-services.md)
-### Az automatikus méretezés konfigurálása
-#### [Azure Portal](cloud-services-how-to-scale-portal.md)
-#### [Klasszikus portál](cloud-services-how-to-scale.md)
+### [Az automatikus skálázás konfigurálása](cloud-services-how-to-scale-portal.md)
 ### [Azure-erőforrások felügyelete a Pythonnal](cloud-services-python-how-to-use-service-management.md)
 
 ### [Vendég operációs rendszer javításai](cloud-services-guestos-msrc-releases.md)
@@ -71,9 +60,7 @@
 
 ## Tanúsítványok kezelése
 ### [Cloud Services és felügyeleti tanúsítványok](cloud-services-certs-create.md)
-### Az SSL konfigurálása 
-#### [Portál](cloud-services-configure-ssl-certificate-portal.md)
-#### [Klasszikus portál](cloud-services-configure-ssl-certificate.md)
+### [Az SSL konfigurálása](cloud-services-configure-ssl-certificate-portal.md)
 
 ## Figyelés
 ### [Felhőszolgáltatás monitorozása](cloud-services-how-to-monitor.md)

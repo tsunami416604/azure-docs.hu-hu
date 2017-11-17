@@ -125,7 +125,7 @@
           href: ps-template.md
         - name: Kapcsolódás virtuális géphez
           href: connect-logon.md
-        - name: AHUB típusú licenckezelés használata
+        - name: Azure Hybrid Benefit-licenc használata
           href: hybrid-use-benefit-licensing.md
         - name: "Többvállalatos üzemeltetési jogosultságok használata Windows\_10-hez"
           href: windows-desktop-multitenant-hosting-deployment.md
@@ -141,6 +141,17 @@
           href: policy.md
         - name: Kulcstartó létrehozása
           href: key-vault-setup.md
+    - name: A virtuális gépek védelme
+      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      items:
+        - name: Biztonsági másolat készítése egyetlen virtuális gépről
+          items:
+            - name: Azure Portal
+              href: ../../backup/quick-backup-vm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: Azure PowerShell
+              href: ../../backup/quick-backup-vm-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Biztonsági másolat készítése több virtuális gépről
+          href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Virtuális gépek kezelése
       items:
         - name: Általános PowerShell-feladatok
@@ -167,6 +178,8 @@
           href: scheduled-events.md
         - name: Metaadatok monitorozása
           href: instance-metadata-service.md
+        - name: Beágyazott virtualizálás engedélyezése
+          href: nested-virtualization.md
     - name: Rendszerképek használata
       items:
         - name: Rendszerképek keresése és használata

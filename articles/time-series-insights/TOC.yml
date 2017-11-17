@@ -1,0 +1,76 @@
+- name: Azure Time Series Insights
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Tudnivalók a Time Series Insightsról
+      href: time-series-insights-overview.md
+- name: Gyors útmutatók
+  items:
+    - name: Ismerkedés a Time Series Insightsszal
+      href: time-series-quickstart.md
+- name: Alapelvek
+  items:
+    - name: A környezet megtervezése
+      href: time-series-insights-environment-planning.md
+    - name: Adatok vizualizációja az Explorerben
+      href: time-series-insights-explorer.md
+    - name: A szabályozás csökkentése
+      href: time-series-insights-environment-mitigate-latency.md
+    - name: Diagnosztika és hibaelhárítás
+      href: time-series-insights-diagnose-and-solve-problems.md
+    - name: Fejlesztés
+      items:
+        - name: Hitelesítés és engedélyezés
+          href: time-series-insights-authentication-and-authorization.md
+        - name: 'Adatok lekérdezése a C# használatával'
+          href: time-series-insights-query-data-csharp.md
+        - name: 'Referenciaadatok kezelése a C#-ban'
+          href: time-series-insights-manage-reference-data-csharp.md
+        - name: Egyéni nézet megosztása
+          href: time-series-insights-parameterized-urls.md
+- name: Útmutatók
+  items:
+    - name: Környezet létrehozása
+      href: time-series-insights-get-started.md
+    - name: Adathozzáférés biztosítása
+      href: time-series-insights-data-access.md
+    - name: Csatlakozás az eseményközponthoz
+      href: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - name: Csatlakozás az IoT Hubhoz
+      href: time-series-insights-how-to-add-an-event-source-iothub.md
+    - name: Referencia-adatkészlet létrehozása
+      href: time-series-insights-add-reference-data-set.md
+    - name: Események küldése
+      href: time-series-insights-send-events.md
+    - name: A környezet skálázása
+      href: time-series-insights-how-to-scale-your-environment.md
+- name: Referencia
+  items:
+    - name: Lekérdezési API
+      href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
+    - name: Lekérdezési szintaxis
+      href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
+- name: Erőforrások
+  items:
+    - name: Kapcsolódó szolgáltatások
+      items:
+        - name: Azure IoT Suite
+          href: /azure/iot-suite/
+        - name: Azure Event Hubs
+          href: /azure/event-hubs/
+        - name: Azure Stream Analytics
+          href: /azure/stream-analytics/
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
+    - name: Támogatási lehetőségek
+      href: 'https://azure.microsoft.com/support/options/'

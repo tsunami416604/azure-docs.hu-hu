@@ -11,7 +11,7 @@
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [Eltérő eredetű erőforrások megosztása](cdn-cors.md)
 ### [Egyéni tartomány hozzáadása a CDN-végponthoz](cdn-map-content-to-custom-domain.md)
-### [HTTPS engedélyezése egyéni tartományon](cdn-custom-ssl.md)
+### [HTTPS konfigurálása egyéni tartományon](cdn-custom-ssl.md)
 ## Tartalom optimalizálása
 ### [Optimalizálás áttekintése](cdn-optimization-overview.md)
 ####[Nagyméretű fájlok optimalizálása](cdn-large-file-optimization.md)

@@ -73,7 +73,6 @@
 ## [Csoportok és tagok kezelése](active-directory-manage-groups.md)
 ### Csoportok kezelése
 #### [Azure Portal](active-directory-groups-create-azure-portal.md)
-#### [Klasszikus portál](active-directory-accessmanagement-manage-groups.md)
 #### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 ### [Csoporttagok kezelése](active-directory-groups-members-azure-portal.md)
 ### [Csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md)
@@ -94,7 +93,6 @@
 #### [Parancsmagok](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### Speciális szabályok létrehozása
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
-#### [Klasszikus portál](active-directory-accessmanagement-groups-with-advanced-rules.md)
 ### [Önkiszolgáló csoportok beállítása](active-directory-accessmanagement-self-service-group-management.md)
 ### [Hibaelhárítás](active-directory-accessmanagement-troubleshooting.md)
 
@@ -135,6 +133,7 @@
 #### [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
 ### [Az SSPR működése](active-directory-passwords-how-it-works.md)
 ### [SSPR üzembehelyezési útmutató](active-directory-passwords-best-practices.md)
+### [SSPR és Windows 10](active-directory-passwords-login.md)
 ### [SSPR-házirendek ](active-directory-passwords-policy.md)
 ### [SSPR-testreszabás](active-directory-passwords-customize.md)
 ### [SSPR-adatkövetelmények](active-directory-passwords-data.md)
@@ -209,8 +208,8 @@
 #### A klasszikus portál használata
 ##### [Letöltési összekötők](application-proxy-enable-classic-portal.md)
 ##### [Alkalmazások közzététele](active-directory-application-proxy-publish.md)
-##### [Összekötők használata](active-directory-application-proxy-connectors.md)
-##### [Feltételes hozzáférés](active-directory-application-proxy-conditional-access.md)
+##### [Összekötők használata](active-directory-application-proxy-connectors-azure-portal.md)
+##### [Feltételes hozzáférés](application-proxy-enable-remote-access-sharepoint.md)
 
 ### Vállalati alkalmazások kezelése
 #### [Felhasználók hozzárendelése](active-directory-coreapps-assign-user-azure-portal.md)
@@ -222,6 +221,7 @@
 #### [Egyszeri bejelentkezés kezelése nagyvállalati alkalmazások esetében](active-directory-enterprise-apps-manage-sso.md)
 #### [Speciális tanúsítvány-aláírás a SAML-alkalmazások számára](active-directory-enterprise-apps-advance-certificate-options.md)
 #### [Külső gyártótól származó alkalmazás elrejtése a felhasználói felületen](active-directory-coreapps-hide-third-party-app.md)
+### [Bejelentkezés automatikus gyorsításának konfigurálása HRD-szabályzattal](active-directory-auto-acceleration-using-hrd.md)
 
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
 #### [Önkiszolgáló hozzáférés](active-directory-self-service-application-access.md)
@@ -248,9 +248,8 @@
 ## Címtár kezelése
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Egyéni tartománynevek
-#### [Áttekintés](active-directory-add-domain-concepts.md)
+#### [Áttekintés](active-directory-domains-manage-azure-portal.md)
 #### [Tartománynevek kezelése](active-directory-domains-manage-azure-portal.md)
-##### [Klasszikus portál](active-directory-add-manage-domain-names.md)
 ### [A címtár felügyelete](active-directory-administer.md)
 ### [Több címtár](active-directory-licensing-directory-independence.md)
 ### [Önkiszolgáló regisztráció](active-directory-self-service-signup.md)

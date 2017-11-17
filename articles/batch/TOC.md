@@ -17,6 +17,7 @@
 #### [Azure AD a Batch szolgáltatással](batch-aad-auth.md)
 #### [Azure AD a Batch Managementtel](batch-aad-auth-management.md)
 ### [Nagy számítási igényű virtuális gépek](batch-pool-compute-intensive-sizes.md)
+### [Tárolókhoz kapcsolódó számítási feladatok](batch-docker-container-workloads.md)
 ### [Párhuzamosan futó csomóponti feladatok](batch-parallel-node-tasks.md)
 ### [Feladatok számlálása állapot szerint](batch-get-task-counts.md)
 ### [Készlet létrehozása egyéni rendszerképpel](batch-custom-images.md)

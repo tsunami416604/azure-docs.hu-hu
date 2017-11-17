@@ -67,6 +67,18 @@
       href: site-recovery-faq.md
 - name: Útmutatók
   items:
+    - name: Hálózat
+      items:
+        - name: Hálózat beállítása az Azure-beli virtuális gépek vészhelyreállításához (előzetes verzió)
+          href: site-recovery-azure-to-azure-networking-guidance.md
+        - name: Hálózatleképezés beállítása az Azure-beli virtuális gépek vészhelyreállításához (előzetes verzió)
+          href: site-recovery-network-mapping-azure-to-azure.md
+        - name: Hálózatleképezés előkészítése Hyper-V rendszerű virtuális gépek Azure-ba történő replikálásához
+          href: site-recovery-network-mapping.md
+        - name: IP-címzés beállítása az Azure-hoz való feladatátvétel utáni hozzáféréshez
+          href: concepts-on-premises-to-azure-networking.md
+        - name: IP-címzés beállítása másodlagos helyhez való feladatátvétel utáni hozzáféréshez
+          href: concepts-on-premises-to-on-premises-networking.md
     - name: Vészhelyreállítás
       items:
         - name: Hyper-V virtuális gépek az Azure-ba
@@ -81,14 +93,43 @@
           href: tutorial-dr-drill-azure.md
         - name: Vészhelyreállítási próba végrehajtása másodlagos helyre
           href: tutorial-dr-drill-secondary.md
+        - name: Több bérlős támogatással rendelkező VMware virtuális gépek az Azure-ba
+          href: site-recovery-multi-tenant-support-vmware-using-csp.md
+    - name: Feladatátvétel és feladat-visszavétel
+      items:
+        - name: Helyreállítási tervek beállítása
+          href: site-recovery-create-recovery-plans.md
+          items:
+            - name: Azure runbookok hozzáadása helyreállítási tervekhez
+              href: site-recovery-runbook-automation.md
+        - name: Feladatátvételi teszt futtatása
+          items:
+            - name: Azure-ba irányuló feladatátvételi teszt futtatása
+              href: site-recovery-test-failover-to-azure.md
+            - name: VMM-felhők közötti feladatátvételi teszt futtatása
+              href: site-recovery-test-failover-vmm-to-vmm.md
+        - name: Védett gépek feladatátvétele
+          href: site-recovery-failover.md
         - name: Feladatátvétel és feladat-visszavétel futtatása fizikai kiszolgálókhoz
           href: tutorial-vmware-to-azure-failover-failback.md
         - name: Feladatátvétel és feladat-visszavétel futtatása Hyper-V rendszerű virtuális gépekhez
           href: tutorial-hyper-v-to-azure-failover-failback.md
         - name: Feladatátvétel és feladat-visszavétel futtatása helyszíni helyek között
           href: tutorial-vmm-to-vmm-failover-failback.md
-        - name: Több bérlős támogatással rendelkező VMware virtuális gépek az Azure-ba
-          href: site-recovery-multi-tenant-support-vmware-using-csp.md
+        - name: Gépek ismételt védelme feladatátvétel után
+          items:
+            - name: Ismételt védelem – Egy másodlagos Azure-régióról egy elsődlegesre
+              href: site-recovery-how-to-reprotect-azure-to-azure.md
+            - name: Ismételt védelem – Azure-ból helyszíni rendszerbe
+              href: site-recovery-how-to-reprotect.md
+        - name: Feladat-visszavétel az Azure-ból
+          items:
+            - name: Feladat-visszavétel az Azure-ból a VMware-be
+              href: site-recovery-how-to-failback-azure-to-vmware.md
+            - name: Feladat-visszavétel az Azure-ból a Hyper-V-be
+              href: site-recovery-failback-from-azure-to-hyper-v.md
+        - name: Linux rendszerű fő célkiszolgáló beállítása feladat-visszavételhez
+          href: site-recovery-how-to-install-linux-master-target.md
     - name: Kapacitás és méretezés
       items:
         - name: Kapacitás megtervezése a VMware Azure-ba történő replikálásához
@@ -105,16 +146,6 @@
           href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md
     - name: Konfigurálás
       items:
-        - name: Hálózat beállítása az Azure-beli virtuális gépek vészhelyreállításához (előzetes verzió)
-          href: site-recovery-azure-to-azure-networking-guidance.md
-        - name: IP-címzés beállítása a feladatátvétel utáni hozzáféréshez az Azure-hoz
-          href: concepts-on-premises-to-azure-networking.md
-        - name: IP-címzés beállítása a feladatátvétel utáni hozzáféréshez egy másodlagos helyhez
-          href: concepts-on-premises-to-on-premises-networking.md
-        - name: Hálózatleképezés beállítása az Azure-beli virtuális gépek vészhelyreállításához (előzetes verzió)
-          href: site-recovery-network-mapping-azure-to-azure.md
-        - name: Hálózatleképezés előkészítése Hyper-V rendszerű virtuális gépek Azure-ba történő replikálásához
-          href: site-recovery-network-mapping.md
         - name: A forráskörnyezet beállítása
           items:
             - name: 'Forráskörnyezet: VMware-ről Azure-ba'
@@ -127,7 +158,7 @@
               href: site-recovery-prepare-target-vmware-to-azure.md
             - name: 'Célkörnyezet: fizikairól az Azure-ba'
               href: site-recovery-prepare-target-physical-to-azure.md
-        - name: Replikációs beállítások konfigurálása
+        - name: A VMware–Azure replikálás beállításainak konfigurálása
           href: site-recovery-setup-replication-settings-vmware.md
         - name: Lemezek kizárása a replikációból
           href: site-recovery-exclude-disk.md
@@ -144,35 +175,6 @@
               href: site-recovery-replicate-azure-to-azure.md
             - name: VMware-ről Azure-ba történő replikálás engedélyezése
               href: site-recovery-replicate-vmware-to-azure.md
-    - name: Feladatátadás és feladatátvétel
-      items:
-        - name: Helyreállítási tervek beállítása
-          href: site-recovery-create-recovery-plans.md
-          items:
-            - name: Azure runbookok hozzáadása helyreállítási tervekhez
-              href: site-recovery-runbook-automation.md
-        - name: Feladatátvételi teszt futtatása
-          items:
-            - name: Azure-ba irányuló feladatátvételi teszt futtatása
-              href: site-recovery-test-failover-to-azure.md
-            - name: VMM-felhők közötti feladatátvételi teszt futtatása
-              href: site-recovery-test-failover-vmm-to-vmm.md
-        - name: Védett gépek feladatátvétele
-          href: site-recovery-failover.md
-        - name: Gépek ismételt védelme feladatátvétel után
-          items:
-            - name: Ismételt védelem – Egy másodlagos Azure-régióról egy elsődlegesre
-              href: site-recovery-how-to-reprotect-azure-to-azure.md
-            - name: Ismételt védelem – Azure-ból helyszíni rendszerbe
-              href: site-recovery-how-to-reprotect.md
-        - name: Feladat-visszavétel az Azure-ból
-          items:
-            - name: Feladat-visszavétel az Azure-ból a VMware-be
-              href: site-recovery-how-to-failback-azure-to-vmware.md
-            - name: Feladat-visszavétel az Azure-ból a Hyper-V-be
-              href: site-recovery-failback-from-azure-to-hyper-v.md
-        - name: Linux rendszerű fő célkiszolgáló beállítása feladat-visszavételhez
-          href: site-recovery-how-to-install-linux-master-target.md
     - name: Automatizálás
       items:
         - name: Hyper-V-replikálás beállítása az Azure-ba (VMM nélkül) a PowerShell-lel
@@ -213,7 +215,7 @@
           href: 'site-recovery-workload.md#workload-summary'
     - name: Kezelés
       items:
-        - name: Site Recovery-tárolók frissítése Recovery Services-tárolókra
+        - name: Frissítés Recovery Services-tárolóra
           href: upgrade-site-recovery-vaults.md
         - name: Folyamatkiszolgálók kezelése az Azure-ban
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
@@ -223,7 +225,7 @@
           href: site-recovery-vmware-to-azure-manage-vCenter.md
         - name: Kiszolgálók eltávolítása és a védelem letiltása
           href: site-recovery-manage-registration-and-protection.md
-        - name: A Recovery Services-tároló törlése
+        - name: Tároló törlése
           href: delete-vault.md
     - name: Hibaelhárítás
       items:
@@ -231,7 +233,7 @@
           href: site-recovery-azure-to-azure-troubleshoot-errors.md
         - name: A helyszínről az Azure-ba történő replikálás problémái
           href: site-recovery-vmware-to-azure-protection-troubleshoot.md
-        - name: A mobilitási szolgáltatás telepítésének problémái
+        - name: Mobilitási szolgáltatással kapcsolatos problémák
           href: site-recovery-vmware-to-azure-push-install-error-codes.md
         - name: Az Azure-ba történő feladatátadás problémái
           href: site-recovery-failover-to-azure-troubleshoot.md

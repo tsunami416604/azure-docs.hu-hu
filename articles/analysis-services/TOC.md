@@ -20,7 +20,7 @@
 ## [Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)
 ## [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
 ## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
-## [Kibővített lekérdezésreplika konfigurálása](analysis-services-scale-out.md)
+## [Horizontális felskálázás konfigurálása](analysis-services-scale-out.md)
 ## [Kapcsolódás Excellel](analysis-services-connect-excel.md)
 ## [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
 ## [.odc fájl létrehozása](analysis-services-odc.md)
