@@ -1,61 +1,61 @@
-- name: Az Azure IoT Hub eszközkiépítési szolgáltatás dokumentációja
+- name: Az Azure IoT Edge dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Információk az IoT eszközkiépítésről
-      href: about-iot-dps.md
+    - name: Tudnivalók az Azure IoT Edge-ről
+      href: how-iot-edge-works.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: Automatikus kiépítés beállítása
-      href: quick-setup-auto-provision.md
-    - name: Szimulált eszköz létrehozása
-      items:
-        - name: TPM
-          href: quick-create-simulated-device.md
-        - name: X.509
-          href: quick-create-simulated-device-x509.md
+    - name: Üzembe helyezés az Edge-ben – Windows
+      href: quickstart.md
+    - name: Üzembe helyezés az Edge-ben – Linux
+      href: quickstart-linux.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Felhőerőforrások beállítása
-      href: tutorial-set-up-cloud.md
-    - name: 2 – Eszköz beállítása
-      href: tutorial-set-up-device.md
-    - name: 3 – Eszköz kiépítése egy IoT hubon
-      href: tutorial-provision-device-to-hub.md
-    - name: 4 – Eszközök kiépítése több hubon
-      href: tutorial-provision-multiple-hubs.md
-- name: Alapelvek
-  items:
-    - name: Eszközzel kapcsolatos alapelvek
-      href: concepts-device.md
-    - name: Szolgáltatással kapcsolatos alapelvek
-      href: concepts-service.md
-    - name: Biztonsági alapelvek
-      href: concepts-security.md
+    - name: Edge-eszköz szimulálása – Windows
+      href: tutorial-simulate-device-windows.md
+    - name: Edge-eszköz szimulálása – Linux
+      href: tutorial-simulate-device-linux.md
+    - name: 'C# modul fejlesztése'
+      href: tutorial-csharp-module.md
+    - name: Az Azure Stream Analytics üzembe helyezése
+      href: tutorial-deploy-stream-analytics.md
+    - name: Az Azure Machine Learning üzembe helyezése
+      href: tutorial-deploy-machine-learning.md
+    - name: Az Azure Functions üzembe helyezése
+      href: tutorial-deploy-function.md
 - name: Útmutatók
   items:
-    - name: Eszközök beléptetésének kezelése
-      href: how-to-manage-enrollments.md
-    - name: A HSM használata az SDK-val
-      href: use-hsm-with-sdk.md
-    - name: Eszközkiépítési szolgáltatás hozzáférés-vezérlése
-      href: how-to-control-access.md
-- name: Referencia
+    - name: Átjáróeszköz létrehozása
+      href: how-to-create-gateway-device.md
+    - name: Nagy léptékű üzembe helyezés és monitorozás
+      href: how-to-deploy-monitor.md
+    - name: IoT Core-eszköz kiépítése
+      href: how-to-install-iot-core.md
+- name: Alapelvek
   items:
-    - name: REST
-      href: /rest/api/iot-dps
+    - name: IoT Edge-modulok
+      href: iot-edge-modules.md
+      items:
+        - name: Fejlesztés
+          href: module-development.md
+        - name: Összeállítás
+          href: module-composition.md
+    - name: IoT Edge-futtatókörnyezet
+      href: iot-edge-runtime.md
+    - name: Központi telepítés
+      href: module-deployment-monitoring.md
+    - name: Biztonság
+      href: security.md
 - name: Erőforrások
   items:
-    - name: Azure IoT Hub
-      href: 'https://azure.microsoft.com/services/iot-hub/'
     - name: Azure Certified for IoT eszközkatalógus
       href: 'https://catalog.azureiotsuite.com/'
     - name: Azure IoT fejlesztői központ
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
-    - name: Device Explorer eszköz
+    - name: DeviceExplorer eszköz
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
     - name: iothub-diagnostics eszköz
       href: 'https://github.com/Azure/iothub-diagnostics'

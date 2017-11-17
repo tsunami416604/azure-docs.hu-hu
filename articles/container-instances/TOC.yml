@@ -37,6 +37,8 @@
       href: container-instances-mounting-azure-files-volume.md
     - name: Üzembe helyezés az Azure Container Registryből
       href: container-instances-using-azure-container-registry.md
+    - name: Tárolóalapú feladatok futtatása
+      href: container-instances-restart-policy.md
     - name: Üzemelő példányok hibaelhárítása
       href: container-instances-troubleshooting.md
 - name: Referencia

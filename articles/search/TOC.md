@@ -3,7 +3,6 @@
 
 # Első lépések
 
-## [SKU kiválasztása](search-sku-tier.md)
 ## [Szolgáltatás létrehozása](search-create-service-portal.md)
 ## [Index létrehozása](search-what-is-an-index.md)
 ### [Azure Portal](search-create-index-portal.md)
@@ -18,23 +17,26 @@
 ### [.NET](search-query-dotnet.md)
 ### [REST](search-query-rest-api.md)
 
-# oktatóanyagokat
+# Oktatóanyagok
 
-## [.NET](search-howto-dotnet-sdk.md)
-## [.NET-szinonimák előzetes verzió](search-synonyms-tutorial-sdk.md)
-## [Portál](search-get-started-portal.md)
+## [Fejlesztés .NET-ben](search-howto-dotnet-sdk.md)
+## [Szinonimák előzetes verziója .NET-ben](search-synonyms-tutorial-sdk.md)
+## [SQL-adatindexelő .NET-ben](search-indexer-tutorial.md)
+## [Útmutató a portál használatához](search-get-started-portal.md)
 ## [Részben strukturált adatok keresése](search-semi-structured-data.md)
-## [Node.js](search-get-started-nodejs.md)
-## [Java](search-get-started-java.md)
+## [Ismerkedés a REST API-val](search-fiddler.md)
 
 # Útmutató
 
 ## Tervezés és kialakítás
+### [SKU kiválasztása](search-sku-tier.md)
 ### [Szolgáltatási korlátozások](search-limits-quotas-capacity.md)
 ### [A szolgáltatás méretezhetősége](search-capacity-planning.md)
 ### [Kialakítási minták a több-bérlős módhoz](search-modeling-multitenant-saas-applications.md)
 ## Fejlesztés
 ### [API-verziók](search-api-versions.md)
+### [Fejlesztés Node.js-ben](search-get-started-nodejs.md)
+### [Fejlesztés Javában](search-get-started-java.md)
 ### [Az SDK frissítése](search-dotnet-sdk-migration.md)
 ### [A REST API frissítése](search-api-migration.md)
 ### [Összetett adattípusok modellezése](search-howto-complex-data-types.md)

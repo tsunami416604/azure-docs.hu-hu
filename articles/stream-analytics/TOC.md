@@ -2,6 +2,7 @@
 ## [Mi a Stream Analytics?](stream-analytics-introduction.md)
 ## [A Storm és a Stream Analytics összehasonlítása](stream-analytics-comparison-storm.md)
 
+
 # Bevezetés
 ## [IoT streamingelt adatok feldolgozása](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
 ## [Az adathamisítások azonnali felismerése](stream-analytics-real-time-fraud-detection.md)
@@ -13,7 +14,9 @@
 ### [Közösségi média](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [Valós idejű kiértékelés a Machine Learninggel](stream-analytics-machine-learning-integration-tutorial.md)
 ### [Valós idejű eseményfeldolgozás](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [Stream Analytics az IoT Edge-en (előzetes verzió)](stream-analytics-edge.md)
 ### [Anomáliadetektálás az Azure-ban – használati útmutató (előzetes verzió)](stream-analytics-machine-learning-anomaly-detection.md)
+### [Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel](stream-analytics-high-frequency-trading.md)
 
 ## Feladatok létrehozása
 ### [Bemenetek létrehozása](stream-analytics-define-inputs.md)

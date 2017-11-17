@@ -1,0 +1,37 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Time Series Insights dokumentációja
+metadata:
+  title: Az Azure Time Series Insights dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  description: 'Ismerje meg, hogyan futtathat IoT-elemzést a felhőben teljes körűen felügyelt eseményfeldolgozással. Valós időben elemezhet például alkalmazásokból, érzékelőkből, eszközökből származó adatokat.'
+  services: time-series-insights
+  author: kfile
+  manager: jhubbard
+  ms.service: time-series-insights
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/13/2017
+  ms.author: kfile
+abstract:
+  description: 'Ismerje meg, hogyan állíthatja be a Time Series Insights-környezetet, és hogyan elemezheti IoT-megoldásai és összekapcsolt eszközei idősoradatait. A dokumentációban megtalálja az előfeltételeket, az útmutatókat, az API-referenciákat és más cikkeket, amelyek segítségével néhány perc alatt megkezdheti a termék használatát.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: 'Ismerje meg, hogyan helyezheti üzembe a Log Analytics programot, és hogyan konfigurálhat adatkészleteket az Azure-ból, egyéb felhőszolgáltatóktól és helyszíni erőforrásokból.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/time-series-insights/media/index/time-series-insights.svg'
+            text: Ismerkedés az Azure Time Series Insightsszal
+            href: /azure/time-series-insights/time-series-quickstart
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API-k
+            html: <p><a href="/rest/api/time-series-insights/time-series-insights-reference-queryapi">Lekérdezés API</a></p><p><a href="/rest/api/time-series-insights/time-series-insights-reference-query-syntax">Lekérdezési szintaxis</a></p>

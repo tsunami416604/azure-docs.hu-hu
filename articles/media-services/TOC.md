@@ -105,8 +105,9 @@
 #### [Statikus csomagolás és titkosítás](media-services-static-packaging.md)
 
 ## [Élő stream](media-services-manage-channels-overview.md)
-### [helyszíni kódolók](media-services-live-streaming-with-onprem-encoders.md)
-#### [Portal](media-services-portal-live-passthrough-get-started.md)
+### [Helyszíni kódolók](media-services-live-streaming-with-onprem-encoders.md)
+#### [Ajánlott helyszíni kódolók](media-services-recommended-encoders.md)
+#### [Azure Portal](media-services-portal-live-passthrough-get-started.md)
 #### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 ### [Élő stream a felhőalapú kódolóval](media-services-manage-live-encoder-enabled-channels.md)
 #### [Azure Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -118,6 +119,13 @@
 #### [Wirecast kódoló](media-services-configure-wirecast-live-encoder.md)
 ### [A hosszú ideig futó műveletek kezelése](media-services-dotnet-long-operations.md)
 ### [Specifikáció: darabolt MP4 élő feldolgozása](media-services-fmp4-live-ingest-overview.md)
+
+## [Klipekkel kapcsolatos tartalmak](media-services-azure-media-clipper-overview.md)
+### [Ismerkedés az Azure Media Clipperrel](media-services-azure-media-clipper-getting-started.md)
+### [Objektumok betöltése az Azure Media Clipperbe](media-services-azure-media-clipper-load-assets.md)
+### [Egyéni billentyűparancsok konfigurálása](media-services-azure-media-clipper-keyboard-shortcuts.md)
+### [Klipekkel kapcsolatos feladatok elküldése](media-services-azure-media-clipper-submit-job.md)
+### [Azure Portal](media-services-azure-media-clipper-portal.md)
 
 ## [Védelem](media-services-content-protection-overview.md)
 ### [A tartalomvédelem konfigurálása az Azure Portalon](media-services-portal-protect-content.md)

@@ -19,7 +19,7 @@
       href: app-insights-java-quick-start.md
     - name: Mobiltelefon
       href: app-insights-mobile-center-quickstart.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Futásidejű kivételek keresése
       href: app-insights-tutorial-runtime-exceptions.md
@@ -91,6 +91,8 @@
       items:
         - name: Azure
           items:
+            - name: Folyamatos megfigyelés hozzáadása
+              href: app-insights-vsts-continuous-monitoring.md
             - name: Profilkészítő
               href: app-insights-profiler.md
             - name: Profilkészítő engedélyezése

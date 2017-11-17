@@ -1,0 +1,27 @@
+- name: Az Azure Databricks dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure Databricks?
+      href: what-is-azure-databricks.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Databricks-munkaterület létrehozása
+      href: quickstart-create-databricks-workspace-portal.md
+- name: Erőforrások
+  items:
+    - name: Gyakori kérdések
+      href: frequently-asked-questions-databricks.md
+    - name: A Databricks dokumentációja
+      href: 'https://docs.azuredatabricks.net/user-guide/index.html'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=analytics'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Támogatási lehetőségek
+      href: 'https://azure.microsoft.com/support/options/'

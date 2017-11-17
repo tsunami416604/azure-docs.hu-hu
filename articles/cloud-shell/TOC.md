@@ -14,6 +14,9 @@
 ## [Tároló megőrzése PowerShellben](persisting-shell-storage-powershell.md)
 ## [Az ablak használata](using-the-shell-window.md)
 
+# Példák
+## [Azure-erőforrások üzembe helyezése a Terraform segítségével Bashben](example-terraform-bash.md)
+
 # [Díjszabás](pricing.md)
 
 # [hibaelhárítással](troubleshooting.md)

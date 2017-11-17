@@ -63,6 +63,7 @@
 #### [PowerShell](create-public-ip-availability-zone-powershell.md)
 
 ### Virtual machines (Virtuális gépek)
+#### [Virtuális gépek hálózati átviteli sebessége](virtual-machine-network-throughput.md)
 #### Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása
 ##### [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [Azure PowerShell](virtual-network-deploy-static-pip-arm-ps.md)

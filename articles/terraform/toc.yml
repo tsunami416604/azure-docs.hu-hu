@@ -15,7 +15,7 @@
   items:
     - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal
       href: terraform-create-vm-cluster-module.md
-    - name: Virtuálisgép-fürt létrehozása a Cloud Shell használatával
+    - name: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
       href: terraform-create-vm-cluster-with-infrastructure.md
     - name: VM-méretezési készlet kiépítése infrastruktúrával
       href: terraform-create-vm-scaleset-network-disks-hcl.md

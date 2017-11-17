@@ -16,6 +16,7 @@
 ## [5. feladat: jelszavak szinkronizálásának engedélyezése](active-directory-ds-getting-started-password-sync.md)
 
 # Útmutató
+## [Az Azure AD Domain Services engedélyezése a PowerShell-lel](active-directory-ds-enable-using-powershell.md)
 ## Csatlakozás egy felügyelt tartományhoz
 ### [Windows Server rendszerű virtuális gép](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [Windows Server rendszerű virtuális gép sablonból](active-directory-ds-join-windows-vm-template.md)
