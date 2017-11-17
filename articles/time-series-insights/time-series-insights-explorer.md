@@ -3,7 +3,7 @@ title: "Az Azure idő adatsorozat Insights Explorerrel adatokba |} Microsoft Doc
 description: "Ez a cikk ismerteti a böngészőben a Azure idő adatsorozat Insights Intéző segítségével gyorsan megtekintheti a big Data típusú adatok globális nézetét, és ellenőrizze az IoT-környezetben."
 services: time-series-insights
 ms.service: time-series-insights
-author: kfile
+author: MarkMcGeeAtAquent
 ms.author: kfile
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 112c1a86e302c2549018fc3a8c6dbc22a689c8a6
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 35f7bf0504075e8bb0b99f8492b850df2b7ceae1
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-time-series-insights-explorer"></a>Az Azure idő adatsorozat Insights explorer
 Ez a cikk ismerteti a különböző szolgáltatások és az idő adatsorozat Insights explorer web App lehetőségeket. Képi megjelenítéseket készíthet az adatok idő adatsorozat Insights explorer használja a böngészőben.
@@ -50,10 +50,10 @@ Az az idő adatsorozat Insights-környezethez való csatlakozását az eseményf
       - **Vegyes által**: A legördülő lista kategorikus oszlopokat (karakterlánc) jelenít meg.
       - Engedélyezze a lépés köztes, minimális és maximális megjelenítése, és állítsa be a következő rendszerrel méri a Vezérlőpult y tengely.  Emellett beállíthatja, hogy megjelenített adatok a száma, átlagos vagy összesített.
       - Ugyanazt az x tengelyen megtekintéséhez legfeljebb öt feltételeket adhat hozzá.  Használja a **másolási-le nyilas** gombra kattintva adja hozzá a további elemet, vagy kattintson a **Hozzáadás** gombra kattintva adja hozzá egy friss kifejezés.
+     
+        ![Feltételek szerkesztő panel](media/time-series-insights-explorer/explorer2.png)
 
-      ![Feltételek szerkesztő panel](media/time-series-insights-explorer/explorer2.png)
-
-      - **Predikátum**: A predikátum lehetővé teszi, hogy az alább felsorolt operandusok használatával az események szűrését. Ha keresés végrehajtása kiválasztásával/gombra kattintva, a predikátum fog automatikusan frissítés alapján, hogy a keresés.  Az operandus támogatott típusok a következők:
+      - **Predikátum**: A predikátum lehetővé teszi, hogy az alább felsorolt operandusok használatával az események szűrését. Ha keresés végrehajtása kiválasztásával/gombra kattintva, a predikátum fog automatikusan frissítés alapján, hogy a keresés.      Az operandus támogatott típusok a következők:
 
          |Művelet  |Támogatott típusok  |Megjegyzések  |
          |---------|---------|---------|
@@ -107,4 +107,5 @@ Az az idő adatsorozat Insights-környezethez való csatlakozását az eseményf
 Most láthatta a különböző szolgáltatások és az idő adatsorozat Insights explorer web App lehetőségeket. 
 
 ## <a name="next-steps"></a>Következő lépések
-[Hibáinak diagnosztizálásához és elhárításához idő adatsorozat Insights környezetében](time-series-insights-diagnose-and-solve-problems.md)
+> [!div class="nextstepaction"]
+>[Hibáinak diagnosztizálásához és elhárításához idő adatsorozat Insights környezetében](time-series-insights-diagnose-and-solve-problems.md)

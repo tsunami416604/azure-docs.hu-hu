@@ -1,6 +1,6 @@
 ---
-title: "Magas rendelkezésre állás portok – áttekintés az Azure-ban |} Microsoft Docs"
-description: "További tudnivalók magas rendelkezésre állású portok terheléselosztási egy belső terheléselosztón"
+title: "Magas rendelkezésre állású portok – áttekintés az Azure-ban |} Microsoft Docs"
+description: "További információk a magas rendelkezésre állású portok terheléselosztási egy belső terheléselosztón."
 services: load-balancer
 documentationcenter: na
 author: rdhillon
@@ -15,76 +15,75 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: e72fc0d4323f7a2d203fee66311c3fea10ad7a09
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 7a77e6ecbf59944c62aa4ae014bf5b8a5a7f7f1f
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="high-availability-ports-overview-preview"></a>Magas rendelkezésre állás portok áttekintése (előzetes verzió)
+# <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok áttekintése
 
-Azure betöltése terheléselosztó szabványos betöltésére egyenleg TCP és UDP-forgalom összes porton egyszerre egy belső terheléselosztó használata esetén egy új lehetőséget vezet be. 
+Azure betöltése terheléselosztó szabványos segít egyenleg TCP és UDP-forgalom összes porton egyidejűleg, betölteni, egy belső terheléselosztó használata esetén. 
 
 >[!NOTE]
-> A Load Balancer Standard és jelenleg előzetes verzióban érhetők portokat a magas rendelkezésre állási funkció érhető el. Az előzetes kiadás során a szolgáltatás rendelkezésre állása és megbízhatósága eltérő lehet az általánosan elérhető kiadásétól. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Fontos regisztrálhat a terhelés terheléselosztó szabványos előzetes verziójára Load Balancer szabványos erőforrásokkal magas rendelkezésre ÁLLÁSÚ portok használatára. Kövesse az utasításokat az előfizetési mellett terheléselosztó [szabványos előzetes](https://aka.ms/lbpreview#preview-sign-up) is.
+> A magas rendelkezésre ÁLLÁS portok szolgáltatás érhető el a Load Balancer Standard, és jelenleg előzetes verzióban érhetők. Előzetes a szolgáltatás esetleg nincs rendelkezésre állásának és megbízhatóságának szolgáltatások általánosan rendelkezésre álló verziója is, azonos szintű. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Iratkozzon fel a Load Balancer szabványos preview Load Balancer szabványos erőforrásokkal magas rendelkezésre ÁLLÁSÚ portok használatára. Kövesse az utasításokat az előfizetési terheléselosztóhoz [szabványos preview](https://aka.ms/lbpreview#preview-sign-up) is.
 
-Egy magas rendelkezésre ÁLLÁSÚ portok szabály variant egy terheléselosztási szabályt egy belső betöltése terheléselosztó Standard konfigurálva.  Forgatókönyvek egyszerűsítettek, adja meg a Terheléselosztó egyetlen szabály egy belső terheléselosztó szabványos betöltése időtúllépést az összes porton érkező összes TCP és UDP-forgalom terheléselosztásához. A betöltési terheléselosztási döntés ne 5 rekordos forrás IP-cím, a forrásport, a cél IP-cím, a célport és a protokoll alapján.
+Egy magas rendelkezésre ÁLLÁSÚ portok szabály egy terheléselosztási szabályt egy belső betöltése terheléselosztó Standard konfigurált változata. A terheléselosztó használatát egyszerűbbé teheti az összes porton egy belső betöltése terheléselosztó standard érkező összes TCP és UDP-forgalom terheléselosztásához egyetlen szabály megadásával. A terheléselosztási döntési ne legyen. A következő 5 rekordos kapcsolat alapul: forrás IP-cím, a forrásport, a cél IP-cím, a célport és a protokoll.
 
-Magas rendelkezésre ÁLLÁSÚ portok kritikus olyan forgatókönyveket tesz lehetővé, mint például terhelésű magas rendelkezésre állás és a virtuális hálózatokon belül a hálózati virtuális készülékek (NVA) skálázási, valamint egyéb forgatókönyvek, ahol nagyszámú portokat kell lennie. 
+A magas rendelkezésre ÁLLÁSÚ portok funkció segítségével kritikus forgatókönyvek, például a magas rendelkezésre állás és a hálózati virtuális készülékek (NVA) belső virtuális hálózatok számára is méretezhető. Ha nagy számú portok kell lennie az elosztott terhelésű is segíthet. 
 
-Magas rendelkezésre ÁLLÁSÚ portok van konfigurálva az előtér- és háttérszolgáltatások portok értékre állításával **0** és protokoll használatával **összes**.  A belső terheléselosztó erőforrás most kiegyensúlyozza a portszám függetlenül minden TCP és UDP-forgalom.
+A magas rendelkezésre ÁLLÁSÚ portok szolgáltatás van konfigurálva, amikor az előtér- és portok **0**, és a protokollt, hogy **összes**. A belső terheléselosztó erőforrás majd összes TCP és UDP-adatfolyamok, függetlenül attól, portszám egyensúlyba kerüljön.
 
-## <a name="why-use-ha-ports"></a>Miért érdemes használni a magas rendelkezésre ÁLLÁSÚ portok
+## <a name="why-use-ha-ports"></a>Magas rendelkezésre ÁLLÁSÚ portok miért érdemes használni?
 
 ### <a name="nva"></a>Virtuális hálózati készülékek
 
-Az Azure számítási a több biztonsági fenyegetések elleni védelmét biztosító hálózati virtuális készülékek (NVA) is használhatja. NVA forgatókönyvekben használják, ha azok megbízható, magas rendelkezésre állású és igény szerint a kibővített kell lennie.
+Az Azure számítási a több biztonsági fenyegetések elleni védelmét biztosító NVAs is használhatja. NVAs használata a következő használati helyzetekben, megbízható és magas rendelkezésre állású kell lenniük, és azok kell horizontális felskálázás az igény szerinti.
 
-A forgatókönyvben ezen célok érhet el, egyszerűen NVA példányok felvétele az Azure belső terheléselosztó háttérkészletének és egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztó szabály konfigurálása.
+Ezen célok egyszerűen által NVA példányok felvétele az Azure belső terheléselosztó a háttér-készlet, és egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztó szabály konfigurálása érhet el.
 
 Magas rendelkezésre ÁLLÁSÚ portok számos előnyt kínálnak NVA magas rendelkezésre ÁLLÁSÚ forgatókönyvek esetén:
-- gyors feladatok átadása a példány állapotának mintavételt a kifogástalan példánya
-- az n-aktív példányok kibővített magasabb teljesítmény
-- n aktív és aktív-passzív forgatókönyvek
-- így a nem kell összetett megoldások, például figyelés készülékek Zookeeper csomópontok
+- Kifogástalan példányok, példányonkénti állapotának gyors feladatátvétel mintavétel
+- A kibővített magasabb teljesítmény  *n* -aktív példányok
+- *N*-aktív és aktív-passzív forgatókönyvek
+- Így a nem kell összetett megoldások, például figyelés készülékek Apache ZooKeeper csomópontok
 
-Az alábbi példában egy virtuális hálózati hub és küllős telepítése esetén a küllők kényszerített forgalmukat a központ virtuális hálózatra és az NVA keresztül mielőtt elhagynák a megbízható terület a mutatja be. A NVAs egy belső terheléselosztási terheléselosztó Standard magas rendelkezésre ÁLLÁSÚ portok konfiguráció mögött találhatók.  Az összes forgalom dolgozhatók fel, és ennek megfelelően továbbítani. 
+Az alábbi ábra mutatja be a virtuális hálózati hub és küllős központi telepítés. A küllők kényszerített bújtatás az adatforgalmat, a központ virtuális hálózat és az NVA, mielőtt elhagynák a megbízható terület keresztül. A NVAs egy belső terheléselosztási terheléselosztó Standard portok magas rendelkezésre ÁLLÁSÚ konfigurációval mögött találhatók. Az összes forgalom feldolgozni, és ennek megfelelően továbbítani.
 
-![magas rendelkezésre állású portok – Példa](./media/load-balancer-ha-ports-overview/nvaha.png)
+![Hub és küllős rendelkező virtuális hálózatban, a magas rendelkezésre ÁLLÁSÚ módban rendszerbe NVAs ábrája](./media/load-balancer-ha-ports-overview/nvaha.png)
 
-1. ábra – Hub és küllős virtuális hálózat magas rendelkezésre ÁLLÁSÚ módban üzembe helyezett NVAs
-
-Ha a virtuális hálózati berendezések használ, ellenőrizze, hogy a megfelelő szolgáltató legjobban a magas rendelkezésre ÁLLÁSÚ portok használata, és melyik forgatókönyvek is támogatottak.
+>[!NOTE]
+> Ha NVAs használ, győződjön meg arról a megfelelő szolgáltató legjobban a magas rendelkezésre ÁLLÁSÚ portok használata, és melyik forgatókönyvek is támogatottak.
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>Terheléselosztás nagy számú portok
 
-Magas rendelkezésre ÁLLÁSÚ portok is használható a nagy számú portok terhelés balanicng igénylő alkalmazás-forgatókönyveket. Ezek a forgatókönyvek belső használatával egyszerűsíthető [terheléselosztó szabványos betöltése](https://aka.ms/lbpreview) magas rendelkezésre ÁLLÁSÚ porttal ahol egyetlen terheléselosztási szabály lecseréli több egyedi terheléselosztási szabályok, egy a minden port.
+Magas rendelkezésre ÁLLÁSÚ portok is használ, a nagy számú portok terheléselosztást igénylő alkalmazásokat. Egy belső használatával leegyszerűsítheti a forgatókönyvekben [Load Balancer szabványos](https://aka.ms/lbpreview) magas rendelkezésre ÁLLÁSÚ porttal. Egyetlen terheléselosztási szabály több egyedi terheléselosztási szabályok, egy minden port a felváltja.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Magas rendelkezésre ÁLLÁSÚ portok érhető el a [Load Balancer szabványos azonos régiók](https://aka.ms/lbpreview#region-availability).  
+A magas rendelkezésre ÁLLÁSÚ portok funkció érhető el a [Load Balancer szabványos azonos régiók](https://aka.ms/lbpreview#region-availability).  
 
 ## <a name="preview-sign-up"></a>Előnézet-előfizetés
 
-Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLLÁSÚ portok szolgáltatásának részt, regisztrálja az előfizetés hozzáférést Azure CLI 2.0 vagy a PowerShell használatával.  Kövesse az alábbi három lépéseket:
+Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLLÁSÚ portok szolgáltatásának részt, regisztrálja az előfizetés hozzáférést. Használhatja az Azure CLI 2.0 vagy a PowerShell.
 
 >[!NOTE]
->Ez a funkció használatához le kell is előfizetési terheléselosztóhoz [szabványos Preview](https://aka.ms/lbpreview#preview-sign-up) magas rendelkezésre ÁLLÁSÚ portok mellett. A magas rendelkezésre ÁLLÁSÚ portok vagy a Load Balancer szabványos előzetes regisztrációja egy óráig is tarthat.
+>Ez a funkció használatához is regisztrálnia kell a terheléselosztóhoz [szabványos preview](https://aka.ms/lbpreview#preview-sign-up), a magas rendelkezésre ÁLLÁSÚ portok szolgáltatás mellett. Regisztráció egy óráig is eltarthat.
 
-### <a name="sign-up-using-azure-cli-20"></a>Regisztráljon az Azure CLI 2.0 verziót használja
+### <a name="sign-up-by-using-azure-cli-20"></a>Jelentkezzen Azure CLI 2.0 használatával
 
-1. A szolgáltatás regisztrálása a szolgáltató
+1. A szolgáltatás regisztrálja a szolgáltatót:
     ```cli
     az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network
     ```
     
-2. Az előző művelet elvégzéséhez akár 10 percet is igénybe vehet.  A állapotának a művelet a következő paranccsal:
+2. Az előző művelet elvégzéséhez akár 10 percet is igénybe vehet. A állapotának a művelet a következő paranccsal:
 
     ```cli
     az feature show --name AllowILBAllPortsRule --namespace Microsoft.Network
     ```
     
-    Csak a 3. lépés során a szolgáltatás regisztrációs állapota "Regisztrált" alább látható módon adja vissza:
+    A művelet akkor sikeres, ha a szolgáltatás regisztrációs állapotát adja vissza **regisztrált**, ahogy az itt látható:
    
     ```json
     {
@@ -97,25 +96,25 @@ Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLL
     }
     ```
     
-3. Az előfizetési előzetes befejezéseként újra az erőforrás-szolgáltató előfizetésének regisztrálása:
+3. Fejezze be az előfizetési előzetes újra az erőforrás-szolgáltató előfizetésének regisztrálása:
 
     ```cli
     az provider register --namespace Microsoft.Network
     ```
     
-### <a name="sign-up-using-powershell"></a>Regisztráció PowerShell használatával
+### <a name="sign-up-by-using-powershell"></a>Iratkozzon fel a PowerShell használatával
 
-1. A szolgáltatás regisztrálása a szolgáltató
+1. A szolgáltatás regisztrálja a szolgáltatót:
     ```powershell
     Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
     ```
     
-2. Az előző művelet elvégzéséhez akár 10 percet is igénybe vehet.  A állapotának a művelet a következő paranccsal:
+2. Az előző művelet elvégzéséhez akár 10 percet is igénybe vehet. A állapotának a művelet a következő paranccsal:
 
     ```powershell
     Get-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
     ```
-    Csak a 3. lépés során a szolgáltatás regisztrációs állapota "Regisztrált" alább látható módon adja vissza:
+    A művelet akkor sikeres, ha a szolgáltatás regisztrációs állapotát adja vissza **regisztrált**, ahogy az itt látható:
    
     ```
     FeatureName          ProviderName      RegistrationState
@@ -123,7 +122,7 @@ Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLL
     AllowILBAllPortsRule Microsoft.Network Registered
     ```
     
-3. Az előfizetési előzetes befejezéseként újra az erőforrás-szolgáltató előfizetésének regisztrálása:
+3. Fejezze be az előfizetési előzetes újra az erőforrás-szolgáltató előfizetésének regisztrálása:
 
     ```powershell
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
@@ -132,14 +131,14 @@ Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLL
 
 ## <a name="limitations"></a>Korlátozások
 
-Az alábbiakban a támogatott konfigurációk vagy a kivételeket a magas rendelkezésre ÁLLÁSÚ portokhoz:
+A támogatott konfigurációk vagy a magas rendelkezésre ÁLLÁSÚ portok szolgáltatáshoz tartozó kivételek a következők:
 
-- Egy egyetlen előtérbeli IP-konfigurációja lehet magas rendelkezésre ÁLLÁSÚ porttal egy DSR terheléselosztó szabályhoz, vagy azt, hogy egy egyetlen nem DSR terheléselosztási szabály magas rendelkezésre ÁLLÁSÚ porttal. Mindkettő nem lehet.
-- Egy egyetlen hálózati illesztő IP-konfiguráció csak van egy nem-DSR terheléselosztói szabálynak, a magas rendelkezésre ÁLLÁSÚ portokkal. Az ipconfig nincs más szabályok konfigurálhatók.
-- Egyetlen hálózati illesztő IP-konfigurációja egy vagy több DSR terheléselosztási szabály a magas rendelkezésre ÁLLÁSÚ portokkal, feltéve, hogy az a megfelelő előtérbeli IP-konfigurációjának egyediek.
-- Ha az összes a terheléselosztási szabályok, magas rendelkezésre ÁLLÁSÚ-portok (csak DSR) vannak, vagy, a szabályok mindegyike nem - magas rendelkezésre ÁLLÁSÚ (DSR és port nem DSR), két (vagy több) terheléselosztó-szabály a azonos háttér címkészletet is üzemel. Két ilyen terheléselosztási szabályok nem lehetnek jelen, ha a magas rendelkezésre ÁLLÁSÚ és a nem - magas rendelkezésre ÁLLÁSÚ portokkal szabályok kombinációját.
-- Magas rendelkezésre ÁLLÁSÚ portok nincs elérhető IPv6.
-- Csak egyetlen hálózati adapter folyamata szimmetria NVA forgatókönyvek esetén támogatott. Lásd a leírást, és az ábra [hálózati virtuális készülékek](#nva). 
+- Egyetlen előtér-IP-konfigurációja lehet olyan egyetlen DSR terheléselosztó szabályhoz magas rendelkezésre ÁLLÁSÚ porttal, vagy azt, hogy egy egyetlen nem DSR terheléselosztási szabály magas rendelkezésre ÁLLÁSÚ porttal. Mindkettő nem lehet.
+- Egy egyetlen hálózati illesztő IP-konfiguráció csak van egy nem-DSR terheléselosztói szabálynak, a magas rendelkezésre ÁLLÁSÚ portokkal. Az ipconfig más szabályok nem konfigurálható.
+- Egy egyetlen hálózati illesztő IP-konfigurációja is megadták az egy vagy több DSR terheléselosztói szabály a magas rendelkezésre ÁLLÁSÚ portokkal, a megfelelő előtér-IP-konfigurációk mindegyike egyedi.
+- A terheléselosztási szabályok összes magas rendelkezésre ÁLLÁSÚ portok (csak DSR), ha két (vagy több) terheléselosztó-szabály a háttér-készlethez is létezhetnek. Is igaz, ha a szabályok összes nem-magas rendelkezésre ÁLLÁSÚ portok (DSR és nem DSR). Ha magas rendelkezésre ÁLLÁSÚ portok és a nem magas rendelkezésre ÁLLÁSÚ portokra vonatkozó szabályokat, azonban két ilyen terheléselosztási szabályok nem létezhet.
+- A magas rendelkezésre ÁLLÁSÚ portok funkció nem érhető el az IPv6.
+- Csak egyetlen hálózati adapter folyamata szimmetria NVA forgatókönyvek esetén támogatott. Tekintse meg a leírás és diagram a [virtuális készülékekre](#nva). 
 
 
 

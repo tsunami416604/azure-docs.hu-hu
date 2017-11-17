@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 51c06d838c5ed6286dfb99ea25faaaf33bad5f3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebf07218a6b356d71af51383ac85933ec63b543b
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Oktatóanyag: Azure Active Directoryval integrált Zendesk
 
@@ -116,7 +116,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket a következő minta használatával:`https://<subdomain>.zendesk.com`
 
-    b. Az a **azonosító** szövegmező, írja be az értéket a következő minta használatával:`https://<subdomain>.zendesk.com`
+    b. Az a **azonosító** szövegmező, írja be az értéket a következő minta használatával:`<subdomain>.zendesk.com`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosító URL-t. Ügyfél [Zendesk támogatási csoport](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) beolvasni ezeket az értékeket. 

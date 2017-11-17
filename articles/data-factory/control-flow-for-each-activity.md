@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: shlo
-ms.openlocfilehash: 10c0dd2156e850b421d80901b6f0b40c7d384cef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 183880d2225c1dcc628349733c4fcaa8ddefe6eb
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Az Azure Data Factory ForEach tevékenység
 A ForEach tevékenység ismétlődő folyamatábrán az adatcsatorna határozza meg. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
@@ -34,7 +34,10 @@ A tulajdonságok a cikk ismerteti. A cikkek tulajdonság a gyűjtemény és a gy
    "type":"ForEach",
    "typeProperties":{  
       "isSequential":"true",
-      "items":"@pipeline().parameters.mySinkDatasetFolderPathCollection",
+        "items": {
+            "value": "@pipeline().parameters.mySinkDatasetFolderPathCollection",
+            "type": "Expression"
+        },
       "activities":[  
          {  
             "name":"MyCopyActivity",
@@ -73,7 +76,7 @@ Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 név | A minden tevékenység nevét. | Karakterlánc | Igen
 type | Meg kell **ForEach** | Karakterlánc | Igen
-isSequential | Meghatározza, hogy a hurok egymás után, vagy párhuzamosan kell végrehajtani.  Legfeljebb 20 hurok ismétlési hajtható végre egyszerre párhuzamosan). Például, ha egy ForEach tevékenység léptetés keresztül a másolási tevékenység adatkészletekkel 10 eltérő forrás- és fogadó rendelkező **isSequential** False értékű, minden másolatot végrehajtásának egyszerre. Alapértelmezett értéke False. <br/><br/> "IsSequential" értéke HAMIS, ha győződjön meg arról, hogy nincs-e a megfelelő konfigurációs több végrehajtható fájlok futtatásához. Ellenkező esetben ez a tulajdonság használandó körültekintően írási ütközések megcélzásával elkerülheti. További információkért lásd: [párhuzamos végrehajtása](#parallel-execution) szakasz. | Logikai érték | Nem. Alapértelmezett értéke False.
+isSequential | Meghatározza, hogy a hurok egymás után, vagy párhuzamosan kell végrehajtani.  Legfeljebb 20 hurok ismétlési hajtható végre egyszerre párhuzamosan). Például, ha egy ForEach tevékenység léptetés keresztül a másolási tevékenység adatkészletekkel 10 eltérő forrás- és fogadó rendelkező **isSequential** False értékű, minden másolatot végrehajtásának egyszerre. Alapértelmezett értéke False. <br/><br/> "IsSequential" értéke HAMIS, ha győződjön meg arról, hogy nincs-e a megfelelő konfigurációs több végrehajtható fájlok futtatásához. Ellenkező esetben ez a tulajdonság használandó körültekintően írási ütközések megcélzásával elkerülheti. További információkért lásd: [párhuzamos végrehajtása](#parallel-execution) szakasz. | Logikai | Nem. Alapértelmezett értéke False.
 Elemek | A JSON-tömb lehet többször is keresztül visszaadó kifejezés. | Kifejezés (egy JSON-tömböt ad vissza) | Igen
 Tevékenységek | A tevékenységek hajtható végre. | Tevékenységek listája | Igen
 
@@ -98,7 +101,10 @@ A ForEach tevékenység adja meg egy tömb keresztül kell többször is tulajdo
                 "type": "ForEach",
                 "typeProperties": {
                     "isSequential": "true",
-                    "items": "@pipeline().parameters.mySinkDatasetFolderPath",
+                    "items": {
+                        "value": "@pipeline().parameters.mySinkDatasetFolderPath",
+                        "type": "Expression"
+                    },
                     "activities": [
                         {
                             "name": "MyCopyActivity",

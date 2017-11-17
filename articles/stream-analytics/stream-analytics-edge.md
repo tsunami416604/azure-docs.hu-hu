@@ -12,26 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.author: jeanb
-ms.openlocfilehash: 6e94758581bd510e58a709a53e30c11a5c1f1b62
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f1df2f52d00444ba0a27644a6e65cee789788f58
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Az Azure Stream Analytics IoT oldal (előzetes verzió)
 
 > [!IMPORTANT]
 > Ez a funkció előzetes verzió van. Ne használja éles környezetben.
  
-Az Azure Stream Analytics (ASA) IoT oldal lehetővé teszi a fejlesztők számára, hogy azok oldhatja fel a teljes mértékben kihasználhatja a eszköz által létrehozott adatok közel valós idejű elemzési eszközintelligencia közelebb telepíteni az IoT-eszközök. Úgy tervezték, kis késés, rugalmasság, sávszélesség és a megfelelőség hatékony használatát igénylő ügyfelek számára, vállalatok most már telepítheti ellenőrzési logika megközelíti a ipari műveletek és kiegészíti a Big Data-elemzések a felhőben történik.  
-Az Azure Stream Analytics IoT oldal belül fut a [Azure IoT peremhálózati](https://azure.microsoft.com/campaigns/iot-edge/) keretrendszer, és a központi telepítési és a felügyeleti feladatok ASA teheti az IoT-központ használatával, a feladat ASA a létrehozása után.
+Az Azure Stream Analytics (ASA) IoT oldal lehetővé teszi a fejlesztők számára, hogy azok oldhatja fel a teljes mértékben kihasználhatja a eszköz által létrehozott adatok közel valós idejű elemzési eszközintelligencia közelebb telepíteni az IoT-eszközök. Kis késleltetésű, a rugalmasság, a sávszélesség és a megfelelőség hatékony felhasználása készült, vállalatok most már telepítheti ellenőrzési logika megközelíti a ipari műveletek, és végezheti el a felhőalapú Big Data-elemzések kiegészíteni.  
+Az Azure Stream Analytics IoT oldal belül fut a [Azure IoT peremhálózati](https://azure.microsoft.com/campaigns/iot-edge/) keretrendszer. Ha a feladat az ASA, deploym jön létre, és az IoT-központ használatával ASA feladatok kezelése.
 Ez a funkció jelenleg előzetes verzióban érhető, ha bármilyen kérdése vagy visszajelzést szeretne küldeni használja [felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) a termékért felelős csoport kapcsolódni. 
 
 ## <a name="scenarios"></a>Forgatókönyvek
-![Magas szintű diagramját](media/stream-analytics-edge/ASAedge_highlevel.png) Íme, néhány jellemző forgatókönyvek, amelyek a helyen futó ASA esetében különösen fontos:
-* **Kis késleltetésű parancs és a vezérlő**: például gyártási rendszerek szükség, és egészen kis késéssel válaszolni a működési adatok biztonságát. Az IoT-oldal ASA elemezheti leállítani egy számítógép vagy az eseményindító riasztások rendellenességek észlelését, ha érzékelőadatok közel valós idejű és parancsokat.
+![Magas szintű diagramját](media/stream-analytics-edge/ASAedge_highlevel.png)
+
+* **Kis késleltetésű parancs és a vezérlő**: például biztonsági rendszerek gyártási kell válaszolnia a működési adatok egészen kis késleltetésű. Az IoT-oldal ASA elemezheti érzékelő adatokat majdnem valós időben, és parancsok kibocsátani, ha Ön a gépek leállítása vagy aktiváltak riasztásokat rendellenességek észlelését.
 *   **A felhő kapcsolat korlátozott**: küldetési kritikus rendszerek esetében, például a távoli adatbányászati berendezések, csatlakoztatott hajók vagy part állapotkategóriák vizsgálatát, elemzése, és reagálni azokra adatokat, akkor is, ha a felhő egy időszakos kell. Az ASA a folyamatos átviteli logika függetlenül a hálózati kapcsolat fut, és választhat, hogy mi küld a felhő további feldolgozás és a tárolási.
 * **Korlátozott sávszélesség**: jet motorok által létrehozott adatok mennyiségét, vagy csatlakoztatott autók annyira nagy, hogy kell-e előre feldolgozott mielőtt elküldené a felhő vagy szűrt adatokat. ASA használva kiszűrhetik vagy összesíti az adatokat, amelyeket a felhő küldendő.
 * **Megfelelőségi**: előírásoknak való megfelelés szükség lehet néhány adat helyileg anonimizált adatokon alapul, vagy előtt küldi el a felhő összesíteni. Az ASA akkor 

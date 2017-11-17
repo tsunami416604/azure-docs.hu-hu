@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9a9baa457729bdc4d70a8f9f45701dbdb875d3ce
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 94771578d94b5b9bc23451049a78506e80c87d26
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Válassza az Azure-szolgáltatásokat, hogy a üzenetek
 
@@ -32,20 +32,16 @@ Fontos megjegyezni, hogy a esemény szolgáltatások és üzenetet szolgáltatá
 
 Az esemény az egy művelet vagy állapotváltozás egyszerűsített értesítést. Az eseményadatok Mi történt információkat tartalmaz, de nem rendelkezik az adatok az eseményt kiváltó. Például egy esemény értesíti előfizetők, hogy a fájl létrejött-e. A fájl általános információt tartalmazhat, de nem tartalmaz magát a fájlt. Események általában eseménykezelők segítségével valós idejű indítható el.
 
-Esemény rács egy szolgáltatás.
-
 ### <a name="message"></a>Üzenet
 
-Egy üzenet által felhasznált vagy máshol tárolt szolgáltatás nyers adatok. Az üzenet az üzenet folyamat elindul adatokat tartalmazza. Ez az üzenet elektronikus kereskedelmi megrendelés felhasználói telemetriai bármi lehet. Egy eseményértesítés eltérően a közzétevő üzenet ettől a választ. Egy üzenet például a nyers adatokat tartalmaz, de vár a következő fájl létrehozása az adatokat a rendszer része. 
-
-Az Event Hubs és a Service Bus üzenetküldési szolgáltatások.
+Egy üzenet által felhasznált vagy máshol tárolt szolgáltatás nyers adatok. Az üzenet az üzenet folyamat elindul adatokat tartalmazza. Ez az üzenet elektronikus kereskedelmi megrendelés felhasználói telemetriai bármi lehet. Egy eseményértesítés eltérően a közzétevő üzenet ettől a választ. Egy üzenet például a nyers adatokat tartalmaz, de vár a következő fájl létrehozása az adatokat a rendszer része.
 
 ## <a name="comparison-of-services"></a>Szolgáltatások összehasonlítása
 
 | Szolgáltatás | Cél | Típus | A következő esetekben használja |
 | ------- | ------- | ---- | ----------- |
-| Event Grid | Reaktív programozás | Esemény | Állapotmódosítások reagálnak |
-| Event Hubs | Big Data típusú adatok feldolgozási folyamat | Üzenet | Telemetriai adatok és az elosztott adatokon adatfolyam |
+| Event Grid | Reaktív programozás | Események terjesztését | Állapotmódosítások reagálnak |
+| Event Hubs | Big Data típusú adatok feldolgozási folyamat | Adatfolyam-esemény | Telemetriai adatok és az elosztott adatokon adatfolyam |
 | Service Bus | A jó minőségű vállalati üzenetkezeléstől | Üzenet | Rendelés feldolgozása és a pénzügyi tranzakciók |
 
 ### <a name="event-grid"></a>Event Grid
@@ -62,7 +58,7 @@ A következő jellemzőkkel rendelkezik:
 
 ### <a name="event-hubs"></a>Event Hubs
 
-Az Azure Event Hubs egy big Data típusú adatok folyamat. Megkönnyíti a rögzítést, az adatmegőrzés és az ismétlés telemetriai adatok és az esemény adatfolyam adatok. Az adatok sok egyidejű forrásokból származhatnak. Az Event Hubs lehetővé teszi, hogy a telemetriai adatok és az esemény adatainak adatfolyam-feldolgozási infrastruktúra és az elemzések szolgáltatások számos különböző elérhetőek legyenek. Érhető el az adatfolyamok vagy csomagolt esemény kötegek. Ez a szolgáltatás, amely lehetővé teszi a valós idejű feldolgozással, valamint a tárolt nyers adatok ismételt ismétlés gyors adatok beolvasása egyetlen megoldást kínál.
+Az Azure Event Hubs egy big Data típusú adatok folyamat. Megkönnyíti a rögzítést, az adatmegőrzés és az ismétlés telemetriai adatok és az esemény adatfolyam adatok. Az adatok sok egyidejű forrásokból származhatnak. Az Event Hubs lehetővé teszi, hogy a telemetriai adatok és az esemény adatainak adatfolyam-feldolgozási infrastruktúra és az elemzések szolgáltatások számos különböző elérhetőek legyenek. Érhető el az adatfolyamok vagy csomagolt esemény kötegek. Ez a szolgáltatás, amely lehetővé teszi a valós idejű feldolgozással, valamint a tárolt nyers adatok ismételt ismétlés gyors adatok beolvasása egyetlen megoldást kínál. A streamelési adatok feldolgozására és elemzési egy fájlba rögzítheti azt.
 
 A következő jellemzőkkel rendelkezik:
 
@@ -72,6 +68,8 @@ A következő jellemzőkkel rendelkezik:
 ### <a name="service-bus"></a>Service Bus
 
 A Service Bus hagyományos vállalati alkalmazások számára készült. A vállalati alkalmazásoknak tranzakciók, rendezés, kettős észlelés és azonnali konzisztencia. A Service Bus lehetővé teszi, hogy a felhő natív alkalmazások megbízható átmenet állapotkezelés az üzleti folyamatok biztosításához. Elvész, vagy nem lettek duplikálva nagy értékű üzenetek kezelésekor Azure Service Bus használatára. A Service Bus is elősegíti a rendkívül biztonságos kommunikációt hibrid felhőalapú megoldásokkal, és a meglévő helyszíni rendszerek csatlakozhat megoldások.
+
+A Service Bus egy olyan közvetítőalapú üzenettovábbítás rendszer. Az "ügynök" üzenetek tárol (például egy üzenetsort) addig, amíg a fogyasztó fél készen áll az üzenetek fogadásához nem.
 
 A következő jellemzőkkel rendelkezik:
 

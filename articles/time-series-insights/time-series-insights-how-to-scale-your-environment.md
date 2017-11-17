@@ -12,17 +12,17 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: d3c8b2b1ba220bf07a2bcdbd7fb26b94f897981f
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: edcd9561778998c4df09cc5014f8b8ba81c0e369
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>A idő adatsorozat Insights környezet méretezése
 
-Ez a cikk ismerteti a kapacitás, a környezet módosításáról a idő adatsorozat Insights környezet az Azure portál használatával. A többszöröző alkalmazza a érkező sebessége, tárolási kapacitás és a kiválasztott termékváltozat költsége. 
+Ez a cikk ismerteti a kapacitás, a környezet módosításáról a idő adatsorozat Insights környezet az Azure portál használatával. A többszöröző alkalmazza a érkező sebessége, tárolási kapacitás és a kiválasztott Termékváltozat költsége. 
 
-Az Azure portál segítségével növelheti vagy csökkentheti a belül egy adott árképzési termékváltozat. 
+Az Azure portál segítségével növelheti vagy csökkentheti a belül egy adott árképzési Termékváltozat. 
 
 Azonban ez a tarifacsomag Termékváltozat nem módosítható. Például a Termékváltozat árképzési egy S1 tartalmazó környezet nem konvertálható egy S2 vagy fordítva. 
 
@@ -46,7 +46,7 @@ Kapacitások lineárisan lehessen méretezni, így egy S1 SKU 2 kapacitással re
 ## <a name="change-the-capacity-of-your-environment"></a>A kapacitás, a környezet módosítása
 1. Az Azure-portálon keresse meg és válassza ki azt az időt adatsorozat Insights környezetet. 
 
-2. Az a **beállítások** elemcsoportban válasszon **konfigurálása**.
+2. Az idő adatsorozat Insighs környezet menüben válasszon ki **konfigurálása**.
 
    ![Configure.png](media/scale-your-environment/configure.png)
 

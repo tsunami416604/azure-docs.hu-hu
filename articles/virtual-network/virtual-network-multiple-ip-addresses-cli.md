@@ -1,10 +1,10 @@
 ---
-title: "Virtuális gép több IP-címek az Azure CLI 2.0 használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan több IP-címek hozzárendelése a virtuális gépek az Azure CLI 2.0 |} Erőforrás-kezelő."
+title: "Virtuális gép több IP-címek az Azure parancssori felülettel |} Microsoft Docs"
+description: "Útmutató több IP-címek hozzárendelése egy virtuális gép az Azure parancssori felület (CLI) használatával."
 services: virtual-network
 documentationcenter: na
-author: anavinahar
-manager: narayan
+author: jimdial
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -14,24 +14,24 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
-ms.author: annahar
-ms.openlocfilehash: 0e9b2ef89ca39a7988a7b2573496a605dfc604b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jimdial
+ms.openlocfilehash: aa0f84299dcb4800cd332d8276785f6b08152060
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli-20"></a>Több IP-címek hozzárendelése a virtuális gépek az Azure CLI 2.0 használatával
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Több IP-címek hozzárendelése a virtuális gépek az Azure parancssori felület használatával
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-Ez a cikk ismerteti (VM) virtuális gép létrehozása az Azure Resource Manager deployment használatával az Azure CLI 2.0 használatával. Több IP-cím nem lehet hozzárendelni a klasszikus üzembe helyezési modell használatával létrejött erőforrásokat. Az Azure üzembe helyezési modellel kapcsolatos további tudnivalókért olvassa el a [üzembe helyezési modellel megértéséhez](../resource-manager-deployment-model.md) cikk.
+Ez a cikk ismerteti (VM) virtuális gép létrehozása az Azure Resource Manager deployment használatával az Azure parancssori felület használatával. Több IP-cím nem lehet hozzárendelni a klasszikus üzembe helyezési modell használatával létrejött erőforrásokat. Az Azure üzembe helyezési modellel kapcsolatos további tudnivalókért olvassa el a [üzembe helyezési modellel megértéséhez](../resource-manager-deployment-model.md) cikk.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Több IP-címekkel rendelkező virtuális gép létrehozása
 
-Hajthatja végre ezt a feladatot az Azure CLI 2.0 (Ez a cikk) vagy a [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md). Módosítsa az értékeket, a környezetének megfelelő. A következő lépések bemutatják, hogyan több IP-címmel, például virtuális gép létrehozásához a forgatókönyvben leírtak szerint. A változók értékeinek módosítása "" és az IP-cím típusok pedig ez szükséges lenne a megvalósítás. 
+A következő lépések bemutatják egy példa virtuális gép létrehozása több IP-címmel, a forgatókönyvben leírtak szerint. A változók értékeinek módosítása "" és az IP-cím típusok a végrehajtásához szükség szerint. 
 
 1. Telepítse a [Azure CLI 2.0](/cli/azure/install-az-cli2) Ha még nincs telepítve.
 2. Az SSH nyilvános és titkos kulcsból álló kulcspárt létrehozása Linux virtuális gépek; Ehhez hajtsa végre a lépéseket a [az SSH nyilvános és titkos kulcsból álló kulcspárt létrehozása Linux virtuális gépek](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

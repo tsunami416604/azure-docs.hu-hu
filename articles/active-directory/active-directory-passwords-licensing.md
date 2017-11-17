@@ -16,56 +16,57 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: db849cd1e9da634064f79fbc041098542580ad02
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: b65a4e49097828e7cd54a29e814befd2d2ac5d88
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licencelési követelmények az Azure AD az önkiszolgáló jelszó alaphelyzetbe állítása
 
-Ahhoz, hogy Azure AD-Jelszóvisszaállítási függvény akkor **rendelkeznie kell legalább egy licenc nélküli a szervezet**. Nem határoztunk felhasználónkénti a jelszó alaphelyzetbe állítása során szerzett licencelési. A Microsoft licencszerződésben a megfelelőség biztosítása érdekében, licenceket rendelhet azokat a felhasználókat, a prémium szolgáltatások használatáért kell.
+Ahhoz, hogy az Azure Active Directory (Azure AD) jelszó-változtatási függvény akkor *rendelkeznie kell legalább egy licenc nélküli a szervezet*. Jelenleg nem kényszerítenek felhasználónkénti a jelszó alaphelyzetbe állítása során szerzett licencelési. A Microsoft licencszerződésben a megfelelőség biztosítása érdekében, licenceket rendelhet azokat a felhasználókat, a prémium szolgáltatások használatáért kell.
 
-* **Csak felhőalapú felhasználók** -Office 365 (Office 365) bármely fizetett SKU vagy Azure AD alapvető
-* **Felhő** és/vagy **helyszíni felhasználók** -Azure AD Premium P1 vagy P2, Enterprise Mobility + Security (EMS) vagy biztonságos hatékony vállalati (Másodper)
+* **Csak felhőalapú felhasználók**: Office 365 bármely fizetett SKU vagy Azure AD alapvető
+* **Felhő** vagy **helyszíni felhasználók**: Azure AD Premium P1 vagy P2, Enterprise Mobility + Security (EMS) vagy biztonságos hatékony vállalati (Másodper)
 
 ## <a name="licenses-required-for-password-writeback"></a>A jelszóvisszaírás szükséges engedélyek
 
-A jelszóvisszaírás használatához rendelkeznie kell egyet a következő licenccel az Ön bérelt szolgáltatásának.
+Jelszóvisszaírás használatához rendelkeznie kell a következő licenccel a tenant egyikét:
 
 * Prémium szintű Azure AD P1
 * Prémium szintű Azure AD P2
 * Enterprise Mobility + Security E3
 * Enterprise Mobility + Security E5
-* Microsoft 365 E3 csomag
-* Microsoft 365 E5
+* Microsoft 365 (terv E3)
+* Microsoft 365 (terv E5)
 
 > [!WARNING]
-> Önálló Office 365 tervek licencelési **nem támogatják a jelszóvisszaírás** és jelszó használata kötelezővé tehető az előző csomagok esetében ez a funkció működéséhez.
+> Önálló Office 365 tervek licencelési *nem támogatják a jelszóvisszaírás* , és van szüksége, hogy ez a funkció működéséhez az előző csomagok valamelyikének.
 
-A következő oldalakon található további licencelési adatait, beleértve a költségek
+További licencelési információt, beleértve a költségek, a következő oldalakon található:
 
-* [Az Azure Active Directory árképzési hely](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Az Azure Active Directory-hely díjszabása](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Az Azure Active Directory-funkciók és képességek](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
-* [Microsoft 365](https://www.microsoft.com/microsoft-365/enterprise)
+* [A Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Csoport vagy felhasználó alapú licencelés engedélyezése
 
-Mostantól az Azure AD támogatja a biztonságicsoport-alapú licencelés engedélyezése rendszergazdák számára, hogy egyszerre több licenceket rendelhet egy felhasználói csoporton, mint az őket egyenként. [Rendelje hozzá, győződjön meg arról, és a licencek kapcsolatos problémák megoldásához](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses)
+Mostantól az Azure AD licencelésre biztonságicsoport-alapú. A rendszergazdák is hozzárendelhet licenceket tömeges, felhasználók, mint az őket egyenként csoportja számára. További információkért lásd: [rendelhet, győződjön meg arról, és a licencek kapcsolatos problémák megoldásához](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses).
 
-Egyes Microsoft-szolgáltatások nem érhetők el az összes helyen. Licenc rendelhet egy felhasználót, mielőtt a rendszergazda a felhasználó a "Használati hely" tulajdonság adjon meg. Licenc hozzárendelése felhasználói végezhető > Profil > Beállítások szakaszban az Azure portálon. **Licenc-hozzárendelést használ, anélkül, hogy a megadott felhasználási hely összes felhasználója örökli a könyvtár helye.**
+Egyes Microsoft-szolgáltatások nem érhetők el az összes helyen. Mielőtt licenc rendelhet egy felhasználói, a rendszergazdának meg kell adnia a **felhasználási hely** tulajdonságát a felhasználó. A licencek hozzárendelése végezhető a **felhasználói** > **profil** > **beállítások** szakaszban az Azure portálon. *Licenc-hozzárendelést használ, anélkül, hogy a megadott felhasználási hely összes felhasználója örökli a könyvtár helye.*
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Hogyan végezze el a sikeres bevezetéshez az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-best-practices.md)
-* [A jelszó megváltoztatására](active-directory-passwords-update-your-own-password.md).
-* [Az önkiszolgáló jelszó-változtatási regisztrációs](active-directory-passwords-reset-register.md).
-* [Milyen adatok SSPR használja, és milyen adatokat kell tölteni a felhasználók számára?](active-directory-passwords-data.md)
-* [Hitelesítési módszerek állnak rendelkezésre a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Mik a házirend-beállításokban az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-policy.md)
-* [A jelszóvisszaírás és miért fontos információk?](active-directory-passwords-writeback.md)
-* [Hogyan jelentést az önkiszolgáló jelszó-Változtatási tevékenység?](active-directory-passwords-reporting.md)
-* [Mik az önkiszolgáló jelszó-Változtatási közül az összes, és mit azokat a következőket:?](active-directory-passwords-how-it-works.md)
-* [Szerintem valami nem működik. Hogyan hibáinak elhárítása az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-troubleshoot.md)
-* [A rendszer nem jelzett valahol máshol kérdést kell](active-directory-passwords-faq.md)
+* [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
+* [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
+* [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
+* [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
+* [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](active-directory-passwords-writeback.md)
+* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](active-directory-passwords-reporting.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](active-directory-passwords-how-it-works.md)
+* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
+

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: kakhan
-ms.openlocfilehash: b35595d3dd91932888a26edc92dae81dd71682d8
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 15ed35ab3a082db3376890992be3a29b6e042a2f
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption
 A Microsoft Azure elkötelezett a kifejezetten a adatvédelem, az adatok közös joghatóság alá és a lehetővé teszi, hogy az Azure tárolt adatok végig a vezérlő speciális technológiák titkosításához, szabályozása és titkosítási kulcsok kezeléséhez az adatok vezérlő & naplózási hozzáférést. Ez rugalmasságot biztosít, Azure-ügyfél és válassza ki a saját üzleti igényeinek leginkább megfelelő megoldást. A dokumentum azt kódelemeit egy új technológia megoldás "Azure Disk Encryption for Windows és Linux infrastruktúra-szolgáltatási virtuális gép által" és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni segítségével. A dokumentum biztosít részletes útmutatás a lemezt Azure titkosítási szolgáltatásai, beleértve a támogatott forgatókönyveket, és a felhasználói élmény.
@@ -149,6 +149,7 @@ Mielőtt engedélyezte a támogatott forgatókönyveket, a "Overview" szakaszban
 | Ubuntu | 14.04.5-DAILY-LTS | Operációs rendszer és az adatok lemezre |
 | Ubuntu | 12.10 | Adatlemez |
 | Ubuntu | 12.04 | Adatlemez |
+| RHEL | 7.4 | Operációs rendszer és az adatok lemezre |
 | RHEL | 7.3 | Operációs rendszer és az adatok lemezre |
 | RHEL | 7.3 LVM | Operációs rendszer és az adatok lemezre |
 | RHEL | 7.2 | Operációs rendszer és az adatok lemezre |

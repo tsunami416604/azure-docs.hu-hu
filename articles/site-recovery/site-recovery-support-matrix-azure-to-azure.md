@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
-ms.openlocfilehash: b157e2f90fa2daf00cf71472eb799ee98797b4dc
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 2b5431cefd26d27f6c72dbe72c4b90554b2511b6
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Az Azure Site Recovery mátrix a replikálása Azure-bA az Azure-ból
 
@@ -166,7 +166,7 @@ ZRS | Nem támogatott |
 Ritkán használt adatok és a gyakran használt adatok tárolási | Nem támogatott | Virtuálisgép-lemezek használata nem támogatott a ritkán használt adatok és a gyakran használt adatok tárolási
 
 >[!IMPORTANT]
-> Győződjön meg arról, hogy kövesse a [tárolási útmutatásokkal](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) a forrás Azure virtuális gépek a teljesítménnyel kapcsolatos problémák elkerülése érdekében. Ha követi az alapértelmezett beállításokat, a Site Recovery hoz létre a forrás-konfigurációtól függően szükséges tárfiókok. Ha testre szabhatja, és válassza ki a saját beállításait, győződjön meg arról, akkor kövesse a (../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks), a forrás virtuális gépeknek.
+> Győződjön meg arról, hogy a virtuális gép lemez méretezhetőségi és Teljesítménycélok az erőforrásigények [Linux](../virtual-machines/linux/disk-scalability-targets.md) vagy [Windows](../virtual-machines/windows/disk-scalability-targets.md) virtuális gépek a teljesítménnyel kapcsolatos problémák elkerülése érdekében. Ha követi az alapértelmezett beállításokat, a Site Recovery hoz létre a szükséges lemezek és a storage-fiókok a forrás-konfigurációtól függően. Ha testre szabhatja, és válassza ki a saját beállításait, győződjön meg arról, hogy kövesse a lemez méretezhetőségi és Teljesítménycélok a forrás virtuális gépeknek.
 
 ## <a name="support-for-network-configuration"></a>Hálózati konfiguráció támogatása
 **Konfigurálás** | **Támogatott/nem támogatott** | **Megjegyzések**

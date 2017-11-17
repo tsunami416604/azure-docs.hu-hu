@@ -1,10 +1,10 @@
 ---
-title: "Hálózati biztonsági csoport – Azure CLI 2.0 kezelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan kezelheti a hálózati biztonsági csoportok használata az Azure parancssori felület (CLI) 2.0-s."
+title: "Hálózati biztonsági csoport – az Azure parancssori felület kezelése |} Microsoft Docs"
+description: "Útmutató az Azure parancssori felület használatával a hálózati biztonsági csoportok kezelése."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: ed17d314-07e6-4c7f-bcf1-a8a2535d7c14
@@ -16,23 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11ec0d3d9e33c06d4c0a164f7fba5dd5cca73872
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c8d9f932746811a5b21dbd667d7c7bdc8f721fb
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="manage-network-security-groups-using-the-azure-cli-20"></a>Az Azure CLI 2.0 használatával hálózati biztonsági csoportok kezelése
+# <a name="manage-network-security-groups-using-the-azure-cli"></a>Az Azure parancssori felület használatával a hálózati biztonsági csoportok kezelése
 
 [!INCLUDE [virtual-network-manage-arm-selectors-include.md](../../includes/virtual-network-manage-nsg-arm-selectors-include.md)]
-
-## <a name="cli-versions-to-complete-the-task"></a>A feladat befejezéséhez használható CLI-verziók 
-
-A következő CLI-verziók egyikével elvégezheti a feladatot: 
-
-- [Azure CLI 1.0](virtual-network-manage-nsg-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez 
-- [Az Azure CLI 2.0](#View-existing-NSGs) -erőforrás felügyeleti telepítési modell (Ez a cikk) a következő generációs parancssori felület
-
 
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
@@ -44,7 +36,6 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
 
 ## <a name="prerequisite"></a>Előfeltétel
 Ha még nem még konfigurál, a legutóbbi [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#login). 
-
 
 ## <a name="view-existing-nsgs"></a>Meglévő NSG-k megtekintése
 Egy adott erőforráscsoportban NSG-k listájának megtekintéséhez futtassa a [az nsg lista](/cli/azure/network/nsg#list) parancsot egy `-o table` kimeneti formátum:
@@ -89,13 +80,13 @@ Várt kimenet:
 
 ## <a name="view-nsg-associations"></a>NSG-társítások megtekintése
 
-Milyen erőforrások megtekintése a **NSG-előtérbeli** NSG, futtassa az associate a `az network nsg show` parancsot a lent látható módon. 
+Milyen erőforrások megtekintése a **NSG-előtérbeli** NSG, futtassa az associate a `az network nsg show` parancs: 
 
 ```azurecli
 az network nsg show -g RG-NSG -n nsg-frontend --query '[subnets,networkInterfaces]'
 ```
 
-Keresse meg a **hálózati illesztők** és **alhálózatok** tulajdonságok alább látható módon:
+Keresse meg a **hálózati illesztők** és **alhálózatok** tulajdonságok, ahogy az a következő egy példa a kimenetre:
 
 ```json
 [
@@ -117,7 +108,7 @@ Keresse meg a **hálózati illesztők** és **alhálózatok** tulajdonságok al�
 ]
 ```
 
-A fenti példában az NSG nincs társítva a hálózati adapterek (NIC), és hozzá rendelve egy nevű alhálózat **előtér**.
+Az előző példában a NSG nincs társítva a hálózati adapterek (NIC), és hozzá rendelve egy nevű alhálózat **előtér**.
 
 ## <a name="add-a-rule"></a>Szabály hozzáadása
 Hozzáadása egy szabály, amely lehetővé teszi **bejövő** forgalmának portra **443-as** bármely számítógépről történő a **NSG-előtérbeli** NSG-t, írja be a következő parancsot:
@@ -160,7 +151,7 @@ Várt kimenet:
 ```
 
 ## <a name="change-a-rule"></a>Szabály módosítása
-A szabály a bejövő adatforgalom engedélyezésére a fenti létrehozott módosítása a **Internet** csak, futtassa a [az hálózati nsg-szabály frissítése](/cli/azure/network/nsg/rule#update) parancs:
+A korábban létrehozott szabály módosítása, hogy a bejövő forgalom engedélyezése a **Internet** csak, futtassa a [az hálózati nsg-szabály frissítése](/cli/azure/network/nsg/rule#update) parancs:
 
 ```azurecli
 az network nsg rule update \
@@ -339,7 +330,7 @@ A kimenetben a `networkSecurityGroup` kulcs van más hasonló érték:
   ```
 
 ## <a name="delete-an-nsg"></a>Az NSG törlése
-Az NSG csak törölheti, ha nem kapcsolódik semmilyen erőforráshoz. Ha törölni szeretne egy NSG-t, kövesse az alábbi lépéseket.
+Az NSG csak törölheti, ha nem kapcsolódik semmilyen erőforráshoz. Ha törölni szeretne egy NSG-t, kövesse az alábbi lépéseket:
 
 1. Az erőforrások egy NSG társított ellenőrzéséhez futtassa a `azure network nsg show` látható módon [nézet NSG-ket társítások](#View-NSGs-associations).
 2. Ha az NSG egyetlen hálózati adapterrel van társítva, futtassa a `azure network nic set` látható módon [leválasztani a hálózati Adapterhez egy NSG](#Dissociate-an-NSG-from-a-NIC) az egyes hálózati adapterhez. 

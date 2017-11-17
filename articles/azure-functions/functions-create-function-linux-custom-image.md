@@ -5,17 +5,17 @@ services: functions
 keywords: 
 author: ggailey777
 ms.author: glenga
-ms.date: 11/08/2017
+ms.date: 11/15/2017
 ms.topic: article
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 40fbbd0ec020320b26ed343aec8ac31d60b646dc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 67ee02df2c42ba39c2f186cc95fa886a3d735ed2
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Függvény létrehozása Linux (előzetes verzió) egyéni lemezkép használatával
 
@@ -145,7 +145,7 @@ Most használhatja a lemezképet a központi telepítési forrásként egy új f
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ez a témakör az Azure parancssori felület 2.0-s vagy újabb verziója szükséges. Futtatás `az --version` található verzió található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez a témakör igényel-e az Azure parancssori felület 2.0.21 verzió vagy újabb. Futtatás `az --version` található verzió található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 

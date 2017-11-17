@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Log Analytics-kapcsolatok informatikai szolgáltatás Management-összekötő támogatott |} Microsoft Docs"
-description: "Csatlakozás a ITSM termékek vagy szolgáltatások IT Service Management-összekötő az Azure Naplóelemzés központilag figyelheti és a ITSM munkaelemek kezelésére."
+description: "Ez a cikk tájékoztatást ad azokról a ITSM termékek vagy szolgáltatások összekapcsolása a a informatikai szolgáltatás Management Connector (ITSMC) az OMS szolgáltatáshoz központilag figyelheti és a ITSM munkaelemek kezelésére."
 documentationcenter: 
 author: JYOTHIRMAISURI
 manager: riyazp
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.openlocfilehash: e801d484ffb40a0d4aed517a741c45dc76b62b37
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d1f6d3af5fc414d06f4a6d3aeda660b759a88353
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>Csatlakozás ITSM termékek vagy szolgáltatások IT Service Management Connector (előzetes verzió)
-Ez a cikk tájékoztatást ad azokról a ITSM termékszolgáltatásból az informatikai szolgáltatás Management Connector (ITSMC) az OMS csatlakoztatása, és a munkaelemek központi kezelését. ITSMC kapcsolatos további információkért lásd: [ITSMC áttekintése](log-analytics-itsmc-overview.md).
+Ez a cikk tájékoztatást ad azokról a ITSM termékszolgáltatásból az informatikai szolgáltatás Management Connector (ITSMC) az OMS csatlakoztatása, és a munkaelemek központi kezelését. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
 
-A következő termékek vagy szolgáltatások támogatottak:
+A következő ITSM termékek vagy szolgáltatások támogatottak. Válassza ki azt a terméket a termék csatlakoztatása ITSMC részletes adatainak megtekintéséhez.
 
 - [A System Center Service Manager](#connect-system-center-service-manager-to-it-service-management-connector-in-oms)
 - [A ServiceNow](#connect-servicenow-to-it-service-management-connector-in-oms)
@@ -162,7 +162,7 @@ A hibrid kapcsolat sikeresen csatlakoztatva van.
 
 > A hibrid után létrejön a kapcsolat, ellenőrizze, és tesztelje a kapcsolatot érhetők el a telepített Service Manager webes alkalmazást. A kapcsolat sikeres előtt ellenőriznie ITSMC az OMS Szolgáltatáshoz kapcsolódni próbál.
 
-A következő kép bemutatja a sikeres kapcsolat részleteit:
+Az alábbi minta kép a sikeres kapcsolat részleteit jeleníti meg:
 
 ![A hibrid kapcsolat ellenőrzése](./media/log-analytics-itsmc/itsmc-hybrid-connection-test.png)
 

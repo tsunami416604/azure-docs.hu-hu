@@ -9,11 +9,11 @@ ms.author: v-masebo
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ebda79442b8feb9f052c3ae455fa43aafb7b5a6a
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 88dc0860b4455d19b05b4f4f1766210e3f3c704e
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Azure Stream Analytics egy IoT peremhálózati modulként telepítése – előzetes
 
@@ -62,13 +62,16 @@ Ebben a szakaszban hozzon létre egy Azure Stream Analytics-feladat az IoT hub a
     ![új tárfiók][1]
 
 3. Az Azure-portálon lépjen az újonnan létrehozott tárfiók. Kattintson a **keresse meg a blobok** alatt **Blob szolgáltatás**. 
-1. Hozzon létre egy új tároló ASA modul adatok tárolására. Állítsa a hozzáférési szintet _tároló_. Kattintson az **OK** gombra.
+4. Hozzon létre egy új tároló ASA modul adatok tárolására. Állítsa a hozzáférési szintet _tároló_. Kattintson az **OK** gombra.
 
     ![tárolási beállítások][10]
 
-1. Az Azure-portálon lépjen a **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** válassza **Stream Analytics-feladat**.
+5. Az Azure-portálon lépjen a **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** válassza **Stream Analytics-feladat**.
 
-1. Adjon meg egy nevet, **válassza a "Biztonsági" üzemeltetési környezet** és a többi alapértelmezett értéket használja.  Kattintson a **Create** (Létrehozás) gombra.
+6. Adjon meg egy nevet, kattintson a **peremhálózati** üzemeltetési környezetben, és a többi alapértelmezett értéket használja.  Kattintson a **Create** (Létrehozás) gombra.
+
+    >[!NOTE]
+    >Jelenleg nincsenek IoT oldal ASA feladatok támogató régiók száma korlátozott. Jelölje ki a következők egyikét az helyeként: USA középső RÉGIÓJA, Nyugat középső Régiójában, északi középső Régiójában, USA keleti régiója, Kanada keleti, kelet-Japánban, Kelet-Ázsiában, Észak-Európa, Egyesült Királyság déli, Kelet-Ausztrália, Dél-Brazília. 
 
     ![ASA létrehozása][5]
 

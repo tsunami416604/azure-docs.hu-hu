@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: fe0446b986ff73cce66a961c1c8aa1b01ef493a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1d6f2d8319dde63434041885dcf5ff1a1cde3bcc
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Telepítse át IaaS-erőforrásokra a klasszikus Azure Resource Manager Azure parancssori felület használatával
 Ezeket a lépéseket mutatja be az Azure parancssori felület (CLI) parancsok használatával telepítse át az infrastruktúra erőforrásként egy szolgáltatási (IaaS) a klasszikus telepítési modellből az Azure Resource Manager telepítési modellhez. A cikk igényel a [Azure CLI 1.0](../../cli-install-nodejs.md). Mivel Azure CLI 2.0 csak az Azure Resource Manager erőforrások alkalmazható, akkor az áttelepítés nem használható.
@@ -77,14 +77,14 @@ Most a parancssori felület a kapcsoló a `asm` mód.
 
     azure config mode asm
 
-## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>3. lépés: Ellenőrizze, hogy elegendő Azure Resource Manager virtuális gép magok Azure-régióban a jelenlegi üzemelő példány vagy virtuális hálózaton
+## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>3. lépés: Ellenőrizze, hogy elegendő Azure Resource Manager virtuális gép Vcpu Azure-régióban a jelenlegi üzemelő példány vagy virtuális hálózaton
 Ebben a lépésben kell váltani `arm` mód. Ehhez a következő paranccsal.
 
 ```
 azure config mode arm
 ```
 
-A következő parancssori parancsot segítségével mag, hogy az Azure Resource Manager aktuális mennyiségének ellenőrzése. Core kvóták kapcsolatos további információkért lásd: [korlátozásai és az Azure erőforrás-kezelő](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)
+A következő parancssori parancsot segítségével ellenőrizze, rendelkezik az Azure Resource Manager Vcpu aktuális száma. VCPU kvóták kapcsolatos további információkért lásd: [korlátozásai és az Azure erőforrás-kezelő](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)
 
 ```
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"

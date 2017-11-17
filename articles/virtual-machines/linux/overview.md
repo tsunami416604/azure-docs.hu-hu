@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: ae4b8f423489bf417f1086368db9b1043cd7f396
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: cef9abddf980c695040e99995eb325eeb182fad4
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-and-linux"></a>Azure és Linux
 Microsoft Azure integrált nyilvános egyre bővülő gyűjteménye a webes és a felhőalapú szolgáltatások elemzés, virtuális gépek, adatbázisok, mobil-, hálózati, tárolási, beleértve&mdash;épp ezért tökéletes választás a megoldások üzemeltetéséhez.  A Microsoft Azure egy skálázható számítási platformot kínál, amely lehetővé teszi, hogy csak a valóban használt funkciókért fizessen, és csak akkor, amikor használja azokat, mindezt helyszíni hardverberuházások nélkül.  Az Azure készen áll a megoldások vertikális és horizontális skálázásakor, bármilyen méretre is lenne szüksége az ügyfelek igényeinek kiszolgálásához.
@@ -53,7 +53,7 @@ Amikor telepít egy Azure-ban, válassza ki a Virtuálisgép-méretet méretek a
 Az alábbiakban néhány alapvető útmutatók kijelölése az adatsorozat (A, D, DS, G és GS) egyik Virtuálisgép-méretet.
 * A-sorozatú virtuális gépek a könnyű munkaterhelések és szolgáltatásának fejlesztési/tesztelési kezdő virtuális gépek áron érték. Hogy széles körben elérhető, amelyek minden régióban, és csatlakozzon, és virtuális gépek számára elérhető összes szabványos erőforrások.
 * (A8 - A11) A-sorozatú értékek különleges számítási intenzív konfigurációk nagy teljesítményű számítástechnikai fürt alkalmazásoknál.
-* A D-sorozat virtuális gépei nagyobb számítási teljesítményt és ideiglenes lemezteljesítményt igénylő alkalmazások futtatására lettek kialakítva. A D-sorozat virtuális gépei gyorsabb processzorokat, nagyobb magonkénti memóriaarányt, valamint az ideiglenes lemezteljesítményhez SSD meghajtókat kínálnak.
+* A D-sorozat virtuális gépei nagyobb számítási teljesítményt és ideiglenes lemezteljesítményt igénylő alkalmazások futtatására lettek kialakítva. A D-sorozat virtuális gépei gyorsabb processzorokat, nagyobb vCPU-nkénti memóriaarányt, valamint az ideiglenes lemezteljesítményhez SSD meghajtókat kínálnak.
 * Dv2-sorozat, a D sorozat legújabb verziója, nagyobb teljesítményű CPU szolgáltatásokat. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A legújabb generációját alapul 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haskell) processzor, és az Intel Turbo program technológia 2.0 folytathatja legfeljebb 3,2 GHz-es. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 * A G-sorozat virtuális gépei kínálják a legtöbb memóriát, és az Intel Xeon E5 V3 család processzorait tartalmazó gazdagépeken futnak.
 

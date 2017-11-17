@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.openlocfilehash: 525d706bd709ae72f2dca1c21e06db533ccf32b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebb963236a069f272499fce59945d0cf0d3d647f
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux diagnosztikai kiterjesztésének használatával figyelheti a metrikák és a naplókat
 
@@ -319,7 +319,7 @@ displayName | A címke (a kapcsolódó területi beállításban megadott nyelve
 
 A counterSpecifier tetszőleges azonosító, amely. Metrikák fogyasztóinak, például az Azure portál diagramkészítési, és counterSpecifier riasztási szolgáltatás, használja a "key" azonosító a metrika példányának vagy egy mértéket. A `builtin` metrika, ajánlott counterSpecifier értékek kezdődő `/builtin/`. Gyűjti a metrika egy adott példányához, azt javasoljuk a példány azonosítója csatolása counterSpecifier értékét. Néhány példa:
 
-* `/builtin/Processor/PercentIdleTime`-Az összes mag között átlagosan üresjárati idő
+* `/builtin/Processor/PercentIdleTime`-Minden Vcpu között átlagosan üresjárati idő
 * `/builtin/Disk/FreeSpace(/mnt)`– Szabad terület a /mnt fájlrendszer
 * `/builtin/Disk/FreeSpace`– Az összes csatlakoztatott fájlrendszerek között átlagosan szabad terület
 
@@ -424,7 +424,7 @@ A beépített metrika szolgáltató a forrása a metrikák a legérdekesebb a fe
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>a processzor osztály beépített metrikák
 
-A processzor osztály a mérőszámok tájékoztatást ad azokról a virtuális gép processzor kihasználtsága. Százalékos összesítésekor eredménye átlagos összes processzorok között. A virtuális gép két, alapszintű egy alapvető 100 %-os elfoglalt volt, és a másik 100 %-os üresjárati, ha a jelentésben szereplő PercentIdleTime pedig 50. Ha minden core 50 % azonos időszakára vonatkozó elfoglalt volt, a jelentésben szereplő eredmény is pedig 50. A jelentett PercentIdleTime négy alapvető virtuális gép, egy alapvető 100 % foglalt, és a többi üresjárati, 75 lenne.
+A processzor osztály a mérőszámok tájékoztatást ad azokról a virtuális gép processzor kihasználtsága. Százalékos összesítésekor eredménye átlagos összes processzorok között. A két-vCPU virtuális gépen Ha egy vCPU 100 %-os elfoglalt volt, és a másik 100 %-os üresjárati, a jelentésben szereplő PercentIdleTime pedig 50. Ha minden vCPU 50 % azonos időszakára vonatkozó elfoglalt volt, a jelentésben szereplő eredmény is pedig 50. Négy-vCPU virtuális gép, egy vCPU 100 %-os foglalt, és a többi üresjárati, és a jelentett PercentIdleTime 75 lenne.
 
 A számláló | Jelentése
 ------- | -------
@@ -438,7 +438,7 @@ PercentPrivilegedTime | Nem üresjárati időt százalékos töltött védett (k
 
 Az első négy számlálók kell összeg 100 %. Az utolsó három is számlálók összege 100 %; a PercentProcessorTime, PercentIOWaitTime és PercentInterruptTime azok tovább.
 
-Az összes processzor gyűjtődnek egyetlen mérőszám beszerzéséhez beállítása `"condition": "IsAggregate=TRUE"`. Megadott processzorsebességgel rendelkező metrika beszerzése, például egy négy, a második logikai processzor virtuális gép központi, állítsa be `"condition": "Name=\\"1\\""`. A tartományban vannak logikai processzor számok `[0..n-1]`.
+Az összes processzor gyűjtődnek egyetlen mérőszám beszerzéséhez beállítása `"condition": "IsAggregate=TRUE"`. Megadott processzorsebességgel rendelkező, például a négy-vCPU virtuális gépek, a második logikai processzor metrika beszerzése beállítása `"condition": "Name=\\"1\\""`. A tartományban vannak logikai processzor számok `[0..n-1]`.
 
 ### <a name="builtin-metrics-for-the-memory-class"></a>a beépített metrikákat a memória-osztály
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84cefcdb85f1a3c753027e827abde010b461cda7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee66bf554e8e623ebfaa82bc888fc541da322d2f
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Windows virtuális gépek Azure-infrastruktúra bemutató példa
 
@@ -55,7 +55,7 @@ Az eredményül kapott terv tartalmaznia kell:
 Minden a fenti kövesse az alábbi elnevezési konvenciókat:
 
 * Adventure Works Cycles használ **[informatikai munkaterhelés]-[hely]-[Azure-erőforrás]** előtagjaként
-  * Ebben a példában a "**azos**" (Azure online áruház) a az IT-munkaterhelést neve és a "**használja**" (USA keleti régiója 2) az a hely
+  * Ebben a példában a "**azos**" (Azure Online áruház) a az IT-munkaterhelést neve és a "**használja**" (USA keleti régiója 2) az a hely
 * Virtuális hálózatok használata AZOS-használat-VN**[szám]**
 * Rendelkezésre állási készletek használata azos-használata-,-**[szerepkör]**
 * Virtuális gép nevét használja azos-használata-vm -**[vmname]**
@@ -85,7 +85,7 @@ Hozza létre őket egy kizárólag felhőalapú virtuális hálózatot az Azure 
   * Címtér: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-A magas rendelkezésre állású, hogy az online áruház összes négy rétegek fenntartása Adventure Works Cycles úgy döntött, a négy rendelkezésre állási csoportok:
+Az online áruházból összes négy meghatározási magas rendelkezésre állás fenntartása érdekében Adventure Works Cycles úgy döntött, a négy rendelkezésre állási csoportok:
 
 * **azos-használja-– weblapként** a webkiszolgálókhoz
 * **azos-használat-,-alkalmazás** az alkalmazáskiszolgálók

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2d4d009dfc4d43ccc3c69bb3da15ca2c478b9efe
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0323b0f7ee03dce209d5a71c6711988a34ba7633
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-and-register-soap-connectors-in-azure-logic-apps"></a>Létrehozni és regisztrálni az Azure Logic Apps a SOAP-összekötők
 
@@ -82,7 +82,7 @@ Most adja meg a WSDL-fájl vagy URL-címe az összekötő, a hitelesítés, amel
 
       ![Adja meg a WSDL-fájl az API-hoz](./media/logic-apps-soap-connector-create-register/provide-wsdl-file.png)
 
-      | Beállítás | Formátumban |Leírás | 
+      | Beállítás | Formátum |Leírás | 
       | ------ | ------ | ----------- | 
       | **Töltse fel a WSDL-fájlból** | *WSDL-fájl* | Keresse meg a helyet, a WSDL-fájl, és válassza ki a fájlt. | 
       | **Töltse fel az URL-címről WSDL** | http://*útvonal-wsdl-fájl –* | Adja meg az URL-címet a szolgáltatás WSDL-fájl. | 
@@ -95,7 +95,7 @@ Most adja meg a WSDL-fájl vagy URL-címe az összekötő, a hitelesítés, amel
 
       ![Connector részletei](./media/logic-apps-soap-connector-create-register/add-general-details.png)
 
-      | A beállítás vagy beállítás | Formátumban | Leírás | 
+      | A beállítás vagy beállítás | Formátum | Leírás | 
       | ----------------- | ------ | ----------- | 
       | **Töltse fel az ikon** | *PNG-or-jpg-File-under-1-MB* | Az összekötő jelölő ikon <p>Szín: Lehetőleg fehér szín háttér emblémát. <p>Dimenziók: ~ 160 képpontos embléma 230 képpontos négyzet belül | 
       | **Ikon háttérszíne** | *ikon-márka-szín-hexadecimális-kód* | <p>Az ikon, amely megfelel az ikonfájl háttérszíne hátterének színét. <p>Formátum: hexadecimális. #007ee5 például a kék szín jelöli. | 
@@ -149,6 +149,12 @@ Regisztrált, de a nem hitelesített egyéni összekötők úgy működik, mint 
 Az összekötő kívül a határok, például külső felhasználókkal való megosztása senki Logic Apps [küldje el a Microsoft-tanúsítvány-összekötő](../logic-apps/custom-connector-submit-certification.md).
 
 ## <a name="faq"></a>GYIK
+
+**K:** a SOAP összekötő általánosan elérhető (GA)? </br>
+**V:** a SOAP-összekötő **előzetes**, és még nincs GA szolgáltatás.
+
+**K:** bármely korlátozások és a SOAP-összekötővel kapcsolatos ismert problémák vannak-e? </br>
+**V:** Igen, tekintse meg a [SOAP összekötő korlátozások és ismert problémákat](../api-management/api-management-api-import-restrictions.md#wsdl).
 
 **K:** vannak-e bármilyen egyéni összekötők korlátai? </br>
 **V:** Igen, tekintse meg a [egyéni összekötő korlátozza Itt](../logic-apps/logic-apps-limits-and-config.md#custom-connector-limits).

@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 47b3f3b0a0faab6daa4ff64230128fc0ad3510e9
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 34da73e5feca1782f3e107fd30d268df4f9883d8
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>Hozzon létre egy PHP webalkalmazást az App Service Linux rendszeren
 
@@ -71,14 +71,14 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app-with-built-in-image"></a>Beépített lemezképpel webalkalmazás létrehozása
+## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
-Keresse meg azt a helyet, az újonnan létrehozott webes alkalmazás a beépített kép megjelenítéséhez. Cserélje le  _&lt;alkalmazás neve >_ egy egyedi alkalmazásnévvel rendelkező.
+Keresse meg azt a helyet, az újonnan létrehozott webes alkalmazás a beépített kép megjelenítéséhez. Cserélje le  _&lt;alkalmazás neve >_ és a webes alkalmazás neve.
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app_name>.azurewebsites.net
 ```
 
 ![Üres webalkalmazás oldal](media/quickstart-php/app-service-web-service-created.png)
@@ -126,7 +126,7 @@ A PHP mintakód fut a webes alkalmazás beépített lemezképpel.
 
 ## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
-Egy helyi szövegszerkesztő használatával nyissa meg a `index.php` fájlt a PHP-alkalmazáson belül, majd módosítsa kissé annak szövegét a `echo` melletti karakterláncon belül:
+A helyi címtárban, nyissa meg a `index.php` fájlt a PHP-alkalmazásban, és olyan módosítást kicsi a karakterláncon belüli szöveg melletti `echo`:
 
 ```php
 echo "Hello Azure!";

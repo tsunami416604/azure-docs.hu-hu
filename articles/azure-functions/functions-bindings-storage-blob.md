@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: glenga
-ms.openlocfilehash: e0c608fe3a80c9d704774e592a1eba383bbdffe8
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 31a2fa3d3c87c16109514b130c95e731f401f8bd
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Az Azure Functions Blob tároló kötések
 
@@ -309,7 +309,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 ### <a name="input--output---c-example"></a>Bemeneti és kimeneti - C# – példa
 
-A következő példa egy [előre le fordítva C#](functions-dotnet-class-library.md) függvény, amely egy bemeneti és kimeneti blob két kötés használja. A függvény egy kép blob létrehozását váltja ki a *minta-lemezképek* tároló. Szülőlemezkép kis és közepes méretű másolatot hoz létre. 
+A következő példa egy [előre le fordítva C#](functions-dotnet-class-library.md) függvény, amely egy blob eseményindító és a kimeneti blob két kötés használja. A függvény egy kép blob létrehozását váltja ki a *minta-lemezképek* tároló. Szülőlemezkép kis és közepes méretű másolatot hoz létre. 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -342,7 +342,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 
 ### <a name="input--output---c-script-example"></a>Bemeneti és kimeneti - C# mintaparancsfájl
 
-A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájl és [C# parancsfájl](functions-reference-csharp.md) kódot, amely a kötés használja. A funkció lehetővé teszi a blob egy példányát. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
+A következő példa bemutatja a blob bemeneti és kimeneti kötések egy *function.json* fájl és [C# parancsfájl](functions-reference-csharp.md) kódokat, amelyek a kötéseket. A függvény a szöveges blob másolatot készít. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
 
 Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nevének megadására szolgál a `path` tulajdonságok:
 
@@ -380,7 +380,7 @@ A [konfigurációs](#input--output---configuration) a szakasz ismerteti ezeket a
 A C# parancsfájl kód itt látható:
 
 ```cs
-public static void Run(string myQueueItem, Stream myInputBlob, out string myOutputBlob, TraceWriter log)
+public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
     myOutputBlob = myInputBlob;
@@ -389,7 +389,7 @@ public static void Run(string myQueueItem, Stream myInputBlob, out string myOutp
 
 ### <a name="input--output---javascript-example"></a>Bemeneti és kimeneti - JavaScript – példa
 
-A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájl- és [JavaScript-kód] (funkciók-referencia-node.md), amely a kötés használja. A funkció lehetővé teszi a blob egy példányát. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
+A következő példa bemutatja a blob bemeneti és kimeneti kötések egy *function.json* fájl- és [JavaScript-kód] (funkciók-referencia-node.md), amely használja a kötéseket. A funkció lehetővé teszi a blob egy példányát. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
 
 Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nevének megadására szolgál a `path` tulajdonságok:
 

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 41f26a4b03a6431aaad21bda6336b8840d2d923f
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: d60c898225b944801504f38d536262134a31e021
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="an-introduction-to-azure-functions"></a>Az Azure Functions bemutatása  
 Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. Funkciók is legyen még hatékonyabbá, és a fejlesztési nyelvi szerkesztőprogramban, például a C#, F #, Node.js, Java, vagy a PHP is használhatja. Csak annyi időért kell fizetnie, amennyit a kódja fut, a szükség szerinti méretezést pedig rábízhatja az Azure szolgáltatásra. Az Azure Functions lehetővé teszi, hogy fejlesztése [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) alkalmazások a Microsoft Azure-on.
@@ -31,7 +31,7 @@ A témakor általános áttekintést nyújt az Azure Functions szolgáltatásró
 ## <a name="features"></a>Szolgáltatások
 Az alábbiakban néhány kulcsszolgáltatása funkciók:
 
-* **Nyelvválasztás** – C#, F #, Node.js, Java, PHP, batch, bash, vagy végrehajtható fájlok használatával írhat függvényeket.
+* **Nyelvválasztás** – a választott C#, F # vagy Javascript használatával írhat függvényeket. Lásd: [támogatott nyelv](supported-languages.md) lehetőségek.
 * **Használatalapú fizetési modell** – Csak annyi időért kell fizetnie, amennyit a kódja fut. Tekintse meg a Használatalapú futtatási csomag lehetőséget a [díjszabás szakaszban](#pricing).  
 * **Saját függőségek használata** – A Functions a NuGetet és az NPM-et is támogatja, így Ön a kedvenc könyvtárait használhatja.  
 * **Beépített biztonság** – a HTTP-eseményindítókkal aktivált függvényeket olyan OAuth-szolgáltatókkal védheti, mint az Azure Active Directory, a Facebook, a Google, a Twitter és a Microsoft-fiókok.  

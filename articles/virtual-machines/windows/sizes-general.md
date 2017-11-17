@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Windows Virtuálisgép-méretek – általános célú |} Microsoft Docs"
-description: "Felsorolja a különböző általános célú Windows virtuális gépek Azure-ban elérhető méretek."
+description: "Felsorolja a különböző általános célú Windows virtuális gépek Azure-ban elérhető méretek. Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség az a sorozat-méretek számát tartalmazza."
 services: virtual-machines-windows
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: 86ac43fb4d1591448c84125fdf479e0ac9909b32
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 08fcbae1be5ff865a39bb3f213f1c6af7c430ee9
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Általános célú virtuális gépek méretét
 

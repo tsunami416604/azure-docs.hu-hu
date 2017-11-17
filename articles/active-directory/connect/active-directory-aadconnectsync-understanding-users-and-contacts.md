@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi;andkjell
-ms.openlocfilehash: c298a2f99750ead099b8761699c914a3a6e41ce1
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7bb7bdba21d83817cf5579e779a6a4d509753c01
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect szinkronizálása: felhasználók, csoportok és névjegyek
 Miért több Active Directory-erdő kellene lennie, és nincsenek számos különböző központi telepítési topológiák számos különféle oka van. Közös modellek például egy egyesülés & az beszerzése után egy fiók-erőforrások telepítése és a globális Címlista sync'ed erdők. De akkor is, ha nincsenek tiszta modellek, a hibrid modellek is. Az alapértelmezett konfiguráció a Azure AD Connect szinkronizálási szolgáltatás nem feltételezi azt egy meghatározott modellre, de attól függően, hogy hogyan felhasználók egyeztetéséről volt jelölve a telepítési útmutatóban, különböző viselkedés tapasztalható.
@@ -42,15 +42,15 @@ Fontos tisztában lennie az Active Directoryból az Azure AD-csoportok szinkroni
 
 * Az Azure AD egy levelezési csoport, egy Active Directory csoport szinkronizálásához:
 
-    * Ha a csoport *proxyAddress* attribútum értéke üres, a *mail* attribútum rendelkeznie kell értékkel, vagy 
+    * Ha a csoport *proxyAddress* attribútum értéke üres, a *mail* attribútum értékűnek kell lennie.
 
-    * Ha a csoport *proxyAddress* attribútum nem lehet üres, továbbá tartalmaznia kell egy elsődleges SMTP-proxy cím értéket (módon megjelölt nagybetűből **SMTP** előtag). Néhány példa:
+    * Ha a csoport *proxyAddress* attribútum értéke nem lehet üres, legalább egy SMTP proxy címe értéket kell tartalmaznia. Néhány példa:
     
-      * Az Active Directory-csoportot, amelynek proxyAddress attribútum értéke *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* levelezési Azure AD-ben nem lesz. Nincs elsődleges SMTP-cím.
-      
-      * Az Active Directory-csoportot, amelynek proxyAddress attribútum értéke van *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe@contoso.com"}* levelezési Azure AD-ben nem lesz. SMTP-címet tartalmaz, de nem elsődleges.
+      * Az Active Directory-csoportot, amelynek proxyAddress attribútum értéke *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* levelezési Azure AD-ben nem lesz. Nem rendelkezik egy SMTP-cím.
       
       * Az Active Directory-csoportot, amelynek proxyAddress attribútum értéke van *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe@contoso.com"}* lesz levelezési Azure AD-ben.
+      
+      * Az Active Directory-csoportot, amelynek proxyAddress attribútum értéke van *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe@contoso.com"}* lesz levelezési Azure AD-ben.
 
 ## <a name="contacts"></a>Kapcsolatok
 Egy felhasználó egy másik erdőben képviselő névjegyek, akkor az általános egy egyesülés & az beszerzése után hol a GALSync megoldás az adatközponthíd-képzés két vagy több Exchange-erdők. A partner objektuma mindig a metaverzumba, a levél attribútum használatával történő csatlakoztatását a kapcsolódási térbe a. Ha már van egy ügyfél vagy felhasználói objektum ezzel az e-mail címmel, az objektumok kapcsolódnak egymáshoz. Ez a szabály úgy van konfigurálva **a az AD-csatlakozás forduljon**. Szerepel továbbá egy nevű szabályt **a az AD-ügyfél közös** egy Attribútumfolyam, hogy a metaverzum-attribútum a **sourceObjectType** , az állandó **forduljon**. Ez a szabály nagyon alacsony elsőbbséget, ha bármely felhasználói objektum a azonos metaverzum-objektum, majd a szabály **a az AD-felhasználó közös** is hozzájárul a felhasználó érték ennél az attribútumnál. Ez a szabály ezt az attribútumot kell az ügyfél, ha a felhasználó nem lett csatlakoztatva van és érték a felhasználó Ha talált legalább egy felhasználót.

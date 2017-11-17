@@ -9,11 +9,11 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/15/2017
-ms.openlocfilehash: 4216b245fd480003cfa4a34452f87efade964f8d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 47fb6f01eff8827179fbfa9e67ad3b901c8cdf94
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Hibáinak diagnosztizálásához és elhárításához idő adatsorozat Insights környezetében
 
@@ -37,7 +37,7 @@ Az Azure idő adatsorozat Insights támogatja a csak a JSON-adatokat. JSON-mint�
    A házirendek egyikét az előző ábrának megfelelően **olvassa el** és **kezelése** csatlakoztatás működik, mert mindkét **figyelésére** engedéllyel.
 
 ### <a name="possible-cause-c-the-consumer-group-provided-is-not-exclusive-to-time-series-insights"></a>Lehetséges ok, a felhasználói csoportban megadott esetében kizárólag az idő adatsorozat Insights C:
-Során am IoT hub-regisztráció vagy egy eseményközpontot adja meg a fogyasztói csoportot, amely használja a rendszer az adatok olvasása. A fogyasztói csoportot kell **nem** osztható meg. A fogyasztói csoportot meg van osztva, ha az alapul szolgáló eseményközpont automatikusan bontja a kapcsolatot az olvasók egy véletlenszerűen. Adjon meg egy egyedi felhasználói csoport, az idő adatsorozat elemzések olvasni.
+Során am IoT Hub-regisztráció vagy egy eseményközpontot adja meg a fogyasztói csoportot, amely használja a rendszer az adatok olvasása. A fogyasztói csoportot kell **nem** osztható meg. A fogyasztói csoportot meg van osztva, ha az alapul szolgáló eseményközpont automatikusan bontja a kapcsolatot az olvasók egy véletlenszerűen. Adjon meg egy egyedi felhasználói csoport, az idő adatsorozat elemzések olvasni.
 
 ## <a name="problem-2-some-data-is-shown-but-some-is-missing"></a>2. hiba: Bizonyos adatok jelenik meg, de néhány hiányzik
 Adatok részben látható, de az adatok elmaradt van, több oka lehet figyelembe venni:
@@ -61,7 +61,7 @@ Magas szintű megértéséhez logikai egybesimítását működését, tekintse 
 A lag kijavításához növelheti a Termékváltozat környezet. További információkért lásd: [idő adatsorozat Insights környezetét méretezése](time-series-insights-how-to-scale-your-environment.md).
 
 ### <a name="possible-cause-b-initial-ingestion-of-historical-data-is-causing-slow-ingress"></a>Lehetséges ok b kezdeti adatfeldolgozást előzményadatoknak lassú érkező okozza.
-Ha egy meglévő eseményforrás kapcsolódik, valószínű, hogy az IoT-központ vagy az eseményközpont már tartalmaznak adatokat azt. A környezet elindul, húzza az eseményforrás üzenet megőrzési időszak kezdete adatait.
+Ha egy meglévő eseményforrás kapcsolódik, valószínű, hogy az IoT-központ vagy az event hub már rendelkezik a adatok azt. A környezet elindul, húzza az eseményforrás üzenet megőrzési időszak kezdete adatait.
 
 Ez a viselkedés az alapértelmezett beállítás, és nem bírálható felül. Is végezhetnek a sávszélesség-szabályozás és eltarthat egy darabig a korábbi adatok bevitele szinkronizálásához.
 

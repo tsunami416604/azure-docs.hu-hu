@@ -1,6 +1,6 @@
 ---
 title: "Azure Linux virtuális gép méretének - általános célú |} Microsoft Docs"
-description: "A Linux virtuális gépek Azure-ban elérhető különböző általános célú méretek sorolja fel."
+description: "A Linux virtuális gépek Azure-ban elérhető különböző általános célú méretek sorolja fel. Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség az a sorozat-méretek számát tartalmazza."
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: 6a79e7e091151bbd3b0a92381edd0d3bda603732
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: a426efebb3b68f419498839d0cfb1ce796abc9e0
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Általános célú virtuális gépek méretét
 

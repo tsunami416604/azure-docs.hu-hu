@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e10b5dba6f91c97a5c6b71aee76eef062a8be82c
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: e232b4cdb62b7bf212808bd380119482ee88b077
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Gyors üzembe helyezés: Az első IoT peremhálózati modul az Azure-portálon a Windows rendszerű eszközre központi telepítése – előzetes
 
@@ -94,6 +94,8 @@ Ellenőrizze, hogy az IoT-Edge-ügynök fut-e modulként Docker.
 docker ps
 ```
 
+![A Docker edgeAgent lásd:](./media/tutorial-simulate-device-windows/docker-ps.png)
+
 ## <a name="deploy-a-module"></a>A modulok telepítése
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
@@ -102,11 +104,21 @@ docker ps
 
 A gyors üzembe helyezés létrehozott egy új IoT peremhálózati eszköz, és telepítve van-e az IoT-Edge futásidejű. Az Azure-portálon, majd leküldéses egy IoT peremhálózati modul futtatható az eszközön anélkül, hogy a módosításokat az magához az eszközhöz használt. A modult, amely akkor leküldött ebben az esetben is használhatja az oktatóanyagok a környezeti adatokat hoz létre. 
 
-A tempSensor modulból küldött üzenetek megjelenítése:
+Nyissa meg a parancssort a szimulált eszköz újra futtatni a számítógépen. Győződjön meg arról, hogy fut-e a modul telepítve a felhőben az IoT-peremhálózati eszközön. 
 
-```cmd/sh
+```cmd
+docker ps
+```
+
+![Három modulok megtekintése az eszközön](./media/tutorial-simulate-device-windows/docker-ps2.png)
+
+A tempSensor modulból a felhőbe küldött üzenetek megjelenítése. 
+
+```cmd
 docker logs -f tempSensor
 ```
+
+![A modul az adatok megtekintése](./media/tutorial-simulate-device-windows/docker-logs.png)
 
 A telemetriai adatokat küld az eszköz segítségével is megtekintheti a [IoT-központ explorer eszköz][lnk-iothub-explorer]. 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

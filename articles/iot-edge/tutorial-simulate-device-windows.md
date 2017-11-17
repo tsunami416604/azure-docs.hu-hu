@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 08c501b9132bb21f47f099725d1fad5556befb4c
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: da0446a62c5d254aa92e6673de034852044bc052
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>A szimulált eszköz a Windows Azure IoT peremhálózati telepített – előzetes
 
@@ -38,18 +38,18 @@ Ez az oktatóanyag feltételezi, hogy használ egy számítógépet vagy a Windo
 3. Telepítés [Python 2.7-es Windows] [ lnk-python] , és győződjön meg arról, hogy a pip paranccsal.
 4. A következő parancsot a IoT peremhálózati vezérlő parancsprogram letöltése.
 
-   ```
+   ```cmd
    pip install -U azure-iot-edge-runtime-ctl
    ```
 
 > [!NOTE]
-> Azure IoT peremhálózati futtathat Windows tárolók vagy a Linux-tárolók. Windows-tárolók használatára, akkor kell futtatnia:
->    * Windows 10 alá esik Creators frissítéséhez vagy
->    * Windows Server 1709 (Build 16299), vagy
+> Azure IoT peremhálózati futtathat Windows tárolók vagy a Linux-tárolók. Ha a következő Windows verziók egyikét futtatja, használhatja a Windows tárolók:
+>    * Windows 10 alá esik Creators frissítése
+>    * Windows Server 1709 (16299 összeállítása)
 >    * Windows IoT mag (Build 16299) x64-alapú eszköz
 >
-> A Windows az IoT-Core, kövesse az utasításokat a [az IoT-Edge futásidejű telepíthető Windows IoT Core][lnk-install-iotcore]. Ellenkező esetben egyszerűen [konfigurálása a Windows-tárolók használatára Docker][lnk-docker-containers], és opcionálisan ellenőrzi az előfeltételeket a következő powershell-paranccsal:
->    ```
+> A Windows az IoT-Core, kövesse az utasításokat a [az IoT-Edge futásidejű telepíthető Windows IoT Core][lnk-install-iotcore]. Ellenkező esetben egyszerűen [konfigurálása a Windows-tárolók használatára Docker][lnk-docker-containers]. Az alábbi parancs segítségével az Előfeltételek ellenőrzése:
+>    ```powershell
 >    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
 >    ```
 
@@ -73,28 +73,28 @@ Az IoT-peremhálózati eszköz regisztrálása az újonnan létrehozott IoT Hub.
 Telepítse, és indítsa el az Azure IoT peremhálózati futásidejű az eszközön. 
 ![Eszköz regisztrálása][5]
 
-Az IoT-Edge futásidejű minden IoT peremhálózati eszközön van telepítve. Ez magában foglalja a két modulok. Először az IoT-Edge ügynök elősegíti a központi telepítési és figyelési modulokat az IoT-peremhálózati eszközön. Második a peremhálózati IoT hub kezeli a kommunikációt az IoT-peremhálózati eszközön modulokat, valamint az eszköz és az IoT-központ között. 
+Az IoT-Edge futásidejű minden IoT peremhálózati eszközön van telepítve. Ez magában foglalja a két modulok. A **IoT peremhálózati ügynök** elősegíti a központi telepítési és figyelési modulokat az IoT-peremhálózati eszközön. A **peremhálózati IoT hub** kezeli a kommunikációt az IoT-peremhálózati eszközön modulokat, valamint az eszköz és az IoT-központ között. A futtatókörnyezet új eszközén konfigurálásakor csak a IoT peremhálózati ügynök első időpontban fog elindulni. A peremhálózati IoT hub később származik, a modul telepítésekor. 
 
 
-Az alábbi lépések segítségével telepítheti, és indítsa el az IoT-Edge futásidejű:
+A futtatókörnyezet konfigurálása az IoT-peremhálózati eszköz kapcsolati karakterlánccal előző szakaszából.
 
-1. A futtatókörnyezet konfigurálása az IoT-peremhálózati eszköz kapcsolati karakterlánccal előző szakaszából.
+```cmd
+iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+```
 
-   ```
-   iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
-   ```
+Indítsa el a futtatókörnyezetben.
 
-1. Indítsa el a futtatókörnyezetben.
+```cmd
+iotedgectl start
+```
 
-   ```
-   iotedgectl start
-   ```
+Ellenőrizze, hogy az IoT-Edge-ügynök fut-e modulként Docker.
 
-1. Ellenőrizze, hogy az IoT-Edge-ügynök fut-e modulként Docker.
+```cmd
+docker ps
+```
 
-   ```
-   docker ps
-   ```
+![A Docker edgeAgent lásd:](./media/tutorial-simulate-device-windows/docker-ps.png)
 
 ## <a name="deploy-a-module"></a>A modulok telepítése
 
@@ -108,11 +108,21 @@ Az Azure IoT peremhálózati eszköz felügyelete a felhőből, egy modult, amel
 
 A gyors üzembe helyezés létrehozott egy új IoT peremhálózati eszköz, és telepítve van-e az IoT-Edge futásidejű. Az Azure-portálon, majd leküldéses egy IoT peremhálózati modul futtatható az eszközön anélkül, hogy a módosításokat az magához az eszközhöz használt. A modult, amely akkor leküldött ebben az esetben is használhatja az oktatóanyagok a környezeti adatokat hoz létre. 
 
-A tempSensor modulból küldött üzenetek megjelenítése:
+Nyissa meg a parancssort a szimulált eszköz újra futtatni a számítógépen. Győződjön meg arról, hogy fut-e a modul telepítve a felhőben az IoT-peremhálózati eszközön. 
 
-```cmd/sh
-sudo docker logs -f tempSensor
+```cmd
+docker ps
 ```
+
+![Három modulok megtekintése az eszközön](./media/tutorial-simulate-device-windows/docker-ps2.png)
+
+A tempSensor modulból a felhőbe küldött üzenetek megjelenítése. 
+
+```cmd
+docker logs -f tempSensor
+```
+
+![A modul az adatok megtekintése](./media/tutorial-simulate-device-windows/docker-logs.png)
 
 A telemetriai adatokat küld az eszköz segítségével is megtekintheti a [IoT-központ explorer eszköz][lnk-iothub-explorer]. 
 

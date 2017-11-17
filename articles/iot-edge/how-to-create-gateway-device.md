@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e1337ddf5ed84a06a62e2faa198f3e8fb49bc3bd
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: c9f71a7e95ea8c1b2cbd9b74ef20f9b0342d00f8
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-an-iot-edge-gateway-device-to-process-data-from-other-iot-devices---preview"></a>Hozzon létre egy IoT peremhálózati átjáró eszköz adatfeldolgozásra történő más IoT-eszközökről származó – előzetes
 
@@ -68,7 +68,9 @@ Ennek eredményeképpen az olyan megoldás, amely lehetővé teszi, hogy minden 
 
 Használhatja a Powershell sample és Bash parancsfájlok ismertetett [Hitelesítésszolgáltatói tanúsítvány minta kezelése] [ lnk-ca-scripts] létrehozni egy önaláírt **IoT hub tulajdonos hitelesítésszolgáltató** és eszköztanúsítványok az aláírt vele.
 
-1. Hajtsa végre az 1. lépésében [Hitelesítésszolgáltatói tanúsítvány minta kezelése] [ lnk-ca-scripts] a parancsfájlok telepítéséhez.
+1. Hajtsa végre az 1. lépésében [Hitelesítésszolgáltatói tanúsítvány minta kezelése] [ lnk-ca-scripts] a parancsfájlok telepítéséhez. Győződjön meg arról, hogy a Klónozás a `modules-preview` fiókirodai:
+                
+                git clone -b modules-preview https://github.com/Azure/azure-iot-sdk-c.git 
 2. A 2 létrehozásához a **IoT hub tulajdonos hitelesítésszolgáltató**, ezt a fájlt az alárendelt eszközök által használandó kapcsolat.
 
 Az átjáró eszköz tanúsítvány létrehozásához kövesse az alábbi utasításokat.
@@ -77,7 +79,7 @@ Az átjáró eszköz tanúsítvány létrehozásához kövesse az alábbi utasí
 
 * Futtatás `./certGen.sh create_edge_device_certificate myGateway` az új eszköz tanúsítvány létrehozásához.  
   Ez a nyilvános kulcs és PFX és.\private\new-edge-device.key.pem, amely tartalmazza az eszköz titkos kulcsot tartalmazó fájlokat.\certs\new-edge-device.* hoz létre.  
-* `cat new-edge-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-edge-device-full-chain.cert.pem`a nyilvános kulcs beszerzése.
+* Az a `certs` futtatása directory `cat ./new-edge-device.cert.pem ./azure-iot-test-only.intermediate.cert.pem ./azure-iot-test-only.root.ca.cert.pem > ./new-edge-device-full-chain.cert.pem` lekérni a teljes lánc eszköz nyilvános kulcsának.
 * `./private/new-edge-device.cert.pem`az eszköz titkos kulcsot tartalmaz.
 
 #### <a name="powershell"></a>PowerShell
@@ -135,7 +137,7 @@ Alsóbb rétegbeli lehet bármely alkalmazás használata a [Azure IoT-eszközö
 
 Először egy alsóbb rétegbeli alkalmazást rendelkezik megbízzanak a **IoT hub tulajdonos hitelesítésszolgáltató** ellenőrizni fogja az átjáró eszközökre a TLS-kapcsolatokhoz tanúsítvány. Ezt a lépést általában két módon hajtható végre: az operációs rendszer szintjén, vagy (az egyes nyelvek) az alkalmazás szintjén.
 
-Például a .NET-alkalmazásokban, adhat hozzá a következő kódrészletet a hitelesítés a PEM-formátumba elérési útját `certPath`.
+Például a .NET-alkalmazásokban, adhat hozzá a következő kódrészletet a hitelesítés a PEM-formátumba elérési útját `certPath`. A fenti szkript használata esetén az elérési út hivatkoznak `certs/azure-iot-test-only.root.ca.cert.pem` (Bash), vagy `RootCA.pem` (Powershell).
 
         using System.Security.Cryptography.X509Certificates;
         
@@ -145,8 +147,6 @@ Például a .NET-alkalmazásokban, adhat hozzá a következő kódrészletet a h
         store.Open(OpenFlags.ReadWrite);
         store.Add(new X509Certificate2(X509Certificate2.CreateFromCertFile(certPath)));
         store.Close();
-
-Vegye figyelembe, hogy a fentiekben említett mintaparancsfájlok hoz létre a nyilvános kulcsot a fájl `certs/azure-iot-test-only.root.ca.cert.pem` (Bash), vagy `RootCA.pem` (Powershell).
 
 Ehhez a lépéshez az operációs rendszer szintjén nem egyezik, Linux terjesztésekről és a Windows között.
 
@@ -176,6 +176,8 @@ Egy nem átlátszó átjáró végrehajtásakor a protokoll fordítási modul ha
 
 Transzparens átjáró végrehajtásakor a modul az IoT Hub eszköz ügyfelet, a kapcsolati karakterláncok az alsóbb rétegbeli eszközök több példányt hoz létre.
 
+A [Azure IoT peremhálózati Modbus modul] [ lnk-modbus-module] nyissa meg a protokoll-adapter modulok nem átlátszó átjáró megvalósítása.
+
 ## <a name="next-steps"></a>Következő lépések
 
 - [Követelmények és eszközök IoT peremhálózati modulok adattárházzal][lnk-module-dev].
@@ -191,4 +193,5 @@ Transzparens átjáró végrehajtásakor a modul az IoT Hub eszköz ügyfelet, a
 [lnk-iothub-throttles-quotas]: ../iot-hub/iot-hub-devguide-quotas-throttling.md
 [lnk-iothub-devicetwins]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-iothub-c2d]: ../iot-hub/iot-hub-devguide-messages-c2d.md
-[lnk-ca-scripts]: https://github.com/Azure/azure-iot-sdk-c/blob/CACertToolEdge/tools/CACertificates/CACertificateOverview.md
+[lnk-ca-scripts]: https://github.com/Azure/azure-iot-sdk-c/blob/modules-preview/tools/CACertificates/CACertificateOverview.md
+[lnk-modbus-module]: https://github.com/Azure/iot-edge-modbus

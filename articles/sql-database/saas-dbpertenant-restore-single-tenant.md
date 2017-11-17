@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.openlocfilehash: 60788b8a1b417e9bdfbe5ea8424dff9a39f36f2d
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 866b5eec6e9c7e8bf98547143c0393bfb6f97b14
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>A több-bérlős SaaS-alkalmazás az egyetlen bérlők Azure SQL adatbázis visszaállítása
 
@@ -55,7 +55,7 @@ A második mintát, amely azt feltételezi, hogy a bérlő szenvedett elvesztés
 
 ## <a name="get-the-wingtip-application-scripts"></a>A Wingtip alkalmazásszkriptek beolvasása
 
-A Wingtip Szolgáltatottszoftver-parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github-tárház. [Töltse le a Wingtip Szolgáltatottszoftver-parancsfájlok lépéseket](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-saas-scripts).
+A Wingtip Szolgáltatottszoftver-parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github-tárház. [Töltse le a Wingtip Szolgáltatottszoftver-parancsfájlok lépéseket](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts).
 
 ## <a name="simulate-a-tenant-accidentally-deleting-data"></a>A bérlő véletlenül törli az adatok szimulálása
 

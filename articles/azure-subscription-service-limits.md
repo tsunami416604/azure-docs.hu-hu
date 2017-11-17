@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: byvinyal
-ms.openlocfilehash: ff5da6a07512c323cd281832d1ca8a4c0ec5a816
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 823ae2dbb2f0cbff9d9b6db21fadbbbc1d2afe36
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem fedi le az összes Azure-szolgáltatásokhoz. Adott idő alatt a lista lesz kibontható vagy frissíteni, amelyek több, a platform.
@@ -126,6 +126,20 @@ Az alábbi táblázat részletezi a szolgáltatások és a Basic, Standard és P
 
 [!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
 
+<!-- conceptual info about disk limits -- applies to unmanaged and managed -->
+### <a name="virtual-machine-disk-limits"></a>Virtuális gépek lemez korlátai 
+[!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
+
+#### <a name="managed-virtual-machine-disks"></a>Felügyelt virtuális gépek lemezei
+
+[!INCLUDE [azure-storage-limits-vm-disks-managed](../includes/azure-storage-limits-vm-disks-managed.md)]
+
+#### <a name="unmanaged-virtual-machine-disks"></a>Nem felügyelt virtuális gépek lemezei
+
+[!INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
+
+[!INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
+
 ### <a name="networking-limits"></a>Hálózatkezelési korlátok
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
 
@@ -168,22 +182,6 @@ Azure-fájlok korlátozások további részletekért lásd: [Azure fájlok mére
 
 #### <a name="azure-table-storage-limits"></a>Az Azure Table storage korlátok
 [!INCLUDE [storage-tables-scale-targets](../includes/storage-tables-scale-targets.md)]
-
-<!-- conceptual info about disk limits -- applies to unmanaged and managed -->
-#### <a name="virtual-machine-disk-limits"></a>Virtuális gépek lemez korlátai
-[!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
-
-Lásd: [virtuálisgép-méretek](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további részleteket.
-
-#### <a name="managed-virtual-machine-disks"></a>Felügyelt virtuális gépek lemezei
-
-[!INCLUDE [azure-storage-limits-vm-disks-managed](../includes/azure-storage-limits-vm-disks-managed.md)]
-
-#### <a name="unmanaged-virtual-machine-disks"></a>Nem felügyelt virtuális gépek lemezei
-
-[!INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
-
-[!INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
 
 ### <a name="cloud-services-limits"></a>Cloud Services korlátok
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]

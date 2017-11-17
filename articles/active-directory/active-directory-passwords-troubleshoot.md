@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/21/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 24b8a9852395c26a40adb406bd706283e1a96d5d
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
-ms.translationtype: HT
+ms.openlocfilehash: 5c4942dbeccbd97c6bfc0f2c086e8d6091f6ed64
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="how-to-troubleshoot-self-service-password-reset"></a>Önkiszolgáló jelszóváltoztatás hibaelhárítása
 
@@ -59,7 +59,7 @@ Ha az önkiszolgáló jelszóváltoztatás kezelése problémát tapasztal, az a
 
 | **Hiba történt** | Megoldás |
 | --- | --- |
-| Directory nincs engedélyezve a jelszó alaphelyzetbe állítása **a rendszergazda nem engedélyezte, hogy a szolgáltatás használatához** | Kapcsoló a **önkiszolgáló jelszóváltoztatás szolgáltatás engedélyezve** jelzőt **csoport** vagy **mindenki** kattintson **mentése** |
+| Directory nincs engedélyezve a jelszó alaphelyzetbe állítása **a rendszergazda nem engedélyezte, hogy a szolgáltatás használatához** | Kapcsoló a **önkiszolgáló jelszóváltoztatás szolgáltatás engedélyezve** jelzőt **kijelölt** vagy **összes** kattintson **mentése** |
 | Felhasználó nem rendelkezik egy Azure AD prémium vagy alapszintű licenccel **a rendszergazda nem engedélyezte, hogy a szolgáltatás használatához** | Ez akkor fordulhat elő, ha nem rendelkezik egy Azure AD prémium vagy alapszintű licenccel a rendszergazda a művelet végrehajtása. <br> Ez a licenc hozzárendelése a rendszergazdai fiókot az adott cikk segítségével megoldhatók [rendelhet, győződjön meg arról, és a licencek kapcsolatos problémák megoldásához](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses) |
 | Hiba a kérelem feldolgozása | Ez sok problémákat okozhatja, de általában ez a hiba vagy egy szolgáltatás kimaradás vagy konfigurációs probléma okozza. Ha ezt a hibaüzenetet látja, és azt az üzleti van hatással, további segítségért forduljon a Microsoft támogatási szolgálatához. |
 
@@ -67,7 +67,7 @@ Ha az önkiszolgáló jelszóváltoztatás kezelése problémát tapasztal, az a
 
 | **Hiba történt** | Megoldás |
 | --- | --- |
-| Címtárban nincs engedélyezve a jelszó alaphelyzetbe állítása. | Kapcsoló a **önkiszolgáló jelszóváltoztatás szolgáltatás engedélyezve** jelzőt **csoport** vagy **mindenki** kattintson **mentése** |
+| Címtárban nincs engedélyezve a jelszó alaphelyzetbe állítása. | Kapcsoló a **önkiszolgáló jelszóváltoztatás szolgáltatás engedélyezve** jelzőt **kijelölt** vagy **összes** kattintson **mentése** |
 | Felhasználó nem rendelkezik egy Azure AD prémium vagy alapszintű licenccel | Ez akkor fordulhat elő, ha nem rendelkezik egy Azure AD prémium vagy alapszintű licenccel a rendszergazda a művelet végrehajtása. <br> Ez a licenc hozzárendelése a rendszergazdai fiókot az adott cikk segítségével megoldhatók [rendelhet, győződjön meg arról, és a licencek kapcsolatos problémák megoldásához](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses) |
 | Directory engedélyezve van a jelszó alaphelyzetbe állítása, de a felhasználó rendelkezik-e hiányzó vagy helytelen formátumú hitelesítési adatokat | Győződjön meg arról, hogy a felhasználó rendelkezik megfelelően formázott kapcsolattartási adatokat a fájl a könyvtárban, a folytatás előtt. A témakörrel kapcsolatos további információkért lásd: a cikk [az Azure AD önkiszolgáló jelszó-változtatási által használt adatok](active-directory-passwords-data.md). |
 | Directory engedélyezve van a jelszó alaphelyzetbe állítása, de a felhasználó csak rendelkezzen kapcsolattartási adatok egy részét fájl, ha a házirend van beállítva, hogy megkövetelje a két ellenőrzési lépések | Győződjön meg arról, hogy a felhasználó rendelkezik legalább két, megfelelően konfigurált kapcsolattartási módszerek (Példa: mobiltelefon **és** irodai telefon) a folytatás előtt. |
@@ -102,6 +102,7 @@ Az ajánlott eljárás a Jelszóvisszaírás kapcsolatos hibák elhárításána
 | Kód | Név vagy üzenet | Leírás |
 | --- | --- | --- |
 | 6329 | FEDEZETE: MMS(4924) 0x80230619 – "korlátozás megakadályozza, hogy a jelszó a következőre lesz módosítva a megadott jelenlegivel." | Ezt az eseményt akkor fordul elő, amikor a Jelszóvisszaírás szolgáltatás kísérel meg kell adnia egy jelszót a helyi könyvtárban, amely nem felel meg a jelszó élettartama, előzmények, összetettségi vagy a tartomány szűrési követelményeinek. <br> <br> Ha a jelszó minimális korú, és a jelszó az adott eltelt időszakot nemrég módosította, tudunk nem azt betölti a megadott abban a tartományban, amíg újra módosítani a jelszót. Tesztelési célokra minimális korú 0-ra kell állítani. <br> <br> Ha jelszó előzményekre vonatkozó követelményeknek engedélyezve van, akkor ki kell választania egy jelszót, amely nem használták az utolsó N idő, ahol N az előzmények jelszóbeállítást. Ha egy jelszót, amely az utolsó N többször is szerepel, majd megjelenik egy hiba ebben az esetben. Tesztelési célokra előzmények 0-ra kell állítani. <br> <br> Ha összetettségi követelményeknek, az összes rendszer lépnek érvénybe, ha a felhasználó megpróbálja módosítani vagy a jelszó alaphelyzetbe állítása. <br> <br> Ha jelszó szűrőket, és a felhasználó kiválaszt egy jelszót, amely nem felel meg a szűrési feltételeket, majd az alaphelyzetbe állítás, illetve nem módosította a művelet sikertelen lesz. |
+| 6329 | MMS(3040): admaexport.cpp(2837): A kiszolgáló nem tartalmaz az LDAP-jelszó házirend vezérlő. | Ez a probléma akkor fordul elő, ha LDAP_SERVER_POLICY_HINTS_OID vezérlő (1.2.840.113556.1.4.2066) nincs engedélyezve a tartományvezérlőkön. A jelszó visszaírási szolgáltatás használatához engedélyeznie kell a vezérlő. Ehhez a tartományvezérlők a Windows Server 2008 (legújabb szervizcsomaggal) vagy újabb kell lennie. Ha a tartományvezérlők 2008 (R2 előtti), akkor is gyorsjavítást kell alkalmaznia [KB2386717](http://support.microsoft.com/kb/2386717). |
 | HR 8023042 | Szinkronizálási motor adott vissza egy hibakód: hr = 80230402, message = lekérése sikertelen volt, mert ne legyenek ismétlődő bejegyzések horgonyhoz az objektum | Ez az esemény akkor fordul elő, ha ugyanazt a felhasználói azonosítót engedélyezve van több tartományban. Például ha a fiók és az erőforrások erdők szinkronizálását végzi, és ugyanazt a felhasználói azonosítót jelenlévő és az egyes engedélyezve van, ez a hiba fordulhat elő. <br> <br> Ez a hiba akkor is előfordulhat, ha egy nem egyedi horgonyattribútum (például az alias vagy a UPN) használ, és két felhasználó osztozik egy adott azonos horgonyattribútum. <br> <br> A probléma elhárításához győződjön meg arról, hogy nincs duplikált felhasználókat a tartományban, hogy minden felhasználóhoz egyedi horgonyattribútum használ. |
 
 ### <a name="source-of-event-is-passwordresetservice"></a>Esemény forrása PasswordResetService
@@ -269,14 +270,14 @@ Megfelelő támogatása, kérjük, hogy megadja mértékű részletes lehető es
 
 Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
 
-* [Hogyan végezze el a sikeres bevezetéshez az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-best-practices.md)
-* [A jelszó megváltoztatására](active-directory-passwords-update-your-own-password.md).
-* [Az önkiszolgáló jelszó-változtatási regisztrációs](active-directory-passwords-reset-register.md).
-* [Licencelés kérdése van?](active-directory-passwords-licensing.md)
-* [Milyen adatok SSPR használja, és milyen adatokat kell tölteni a felhasználók számára?](active-directory-passwords-data.md)
-* [Hitelesítési módszerek állnak rendelkezésre a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Mik a házirend-beállításokban az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-policy.md)
-* [A jelszóvisszaírás és miért fontos információk?](active-directory-passwords-writeback.md)
-* [Hogyan jelentést az önkiszolgáló jelszó-Változtatási tevékenység?](active-directory-passwords-reporting.md)
-* [Mik az önkiszolgáló jelszó-Változtatási közül az összes, és mit azokat a következőket:?](active-directory-passwords-how-it-works.md)
-* [A rendszer nem jelzett valahol máshol kérdést kell](active-directory-passwords-faq.md)
+* [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
+* [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md).
+* [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md).
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
+* [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
+* [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](active-directory-passwords-writeback.md)
+* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](active-directory-passwords-reporting.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](active-directory-passwords-how-it-works.md)
+* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)

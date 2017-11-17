@@ -12,29 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 07/12/2017
+ms.date: 10/24/2017
 ms.author: tamram
-ms.openlocfilehash: 805b0eee46846345ee1f33faf0c28393c3e8ebb1
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: f62f2020d40e473886cb679cdfe1c164b95f7114
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Az Azure Storage méretezhetőségi és teljesítménycéljai
 ## <a name="overview"></a>Áttekintés
-Ez a témakör ismerteti a méretezhetőség és teljesítmény témakörök a Microsoft Azure Storage. Egyéb Azure korlátozását összefoglalását lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../../azure-subscription-service-limits.md).
+Ez a cikk ismerteti a méretezhetőség és teljesítmény témakörök az Azure Storage. Egyéb Azure korlátozását összefoglalását lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../../azure-subscription-service-limits.md).
 
 > [!NOTE]
-> Az összes tárfiók futtassa az új egyszerű hálózati topológia és a méretezhetőségi és Teljesítménycélok, függetlenül attól, létrehozásuk időpontja, az alábbiakban leírt támogatja. További információ az Azure Storage egyszerű hálózati architektúra és a méretezhetőség: [Microsoft Azure Storage: A magas rendelkezésre álló felhőalapú tárolási szolgáltatásba az erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
+> Az összes tárfiók az új egyszerű hálózati topológia futtatnak, és támogatja a méretezhetőségi és Teljesítménycélok, a cikkben ismertetett, függetlenül attól, amikor a létrehozás. További információ az Azure Storage egyszerű hálózati architektúra és a méretezhetőség: [Microsoft Azure Storage: A magas rendelkezésre álló felhőalapú tárolási szolgáltatásba az erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
 > 
+
 > [!IMPORTANT]
 > Az itt felsorolt méretezhetőségi és Teljesítménycélok csúcskategóriás célozza, de elérhető. Minden olyan esetben, a lekérdezési gyakorisága és a sávszélesség érhető el a tárolási fiók attól függ, hogy az objektumok tárolja, a hozzáférési minták funkcióját, mérete, és milyen típusú az alkalmazás hajt végre. Mindenképpen ellenőrizze a szolgáltatást annak meghatározásához, hogy a teljesítményét, megfelel-e a követelményeknek. Ha lehetséges elkerülése érdekében a forgalom arányát hirtelen teljesítményt, és győződjön meg arról, hogy forgalom jól elosztott partíciók között.
 > 
-> Ha az alkalmazás eléri a korlátot, mi partíció kezelni tud a munkaterhelés számára, Azure Storage megkezdik 503-as (kiszolgáló elfoglalt) vagy a hiba 500 (a művelet időkorlátja lejár) válaszok adja vissza. Ha ez történik, az alkalmazás újrapróbálkozások egy exponenciális leállítási házirendet kell használni. Az exponenciális leállítási lehetővé teszi a terhelés a partíción, és kimenő forgalmának kiszolgálására adott partíció igényeiben jelentkező megkönnyítése érdekében.
+> Amikor az alkalmazás eléri a korlátot, mi partíció kezelni tud a munkaterhelés számára, Azure Storage elkezdi 503-as (kiszolgáló elfoglalt) vagy a hiba 500 (a művelet időkorlátja lejár) válaszok adja vissza. Ezek hiba fordul elő, ha majd az alkalmazás a használata ajánlott az exponenciális leállítási házirend újrapróbálkozások. Az exponenciális leállítási lehetővé teszi a terhelés a partíción, és kimenő forgalmának kiszolgálására adott partíció igényeiben jelentkező megkönnyítése érdekében.
 > 
 > 
 
-Ha az alkalmazás igényeinek túllépi a méretezhetőségi célok egyetlen tárfiók, építenie az alkalmazást több tárfiókot használni, és az adatok objektumok partícióazonosító adott tárfiókok között. Lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/) a mennyiségi díjszabásról.
+Ha az alkalmazás igényeinek túllépi a méretezhetőségi célok egyetlen tárfiók, több tárfiókot használja az alkalmazást hozhat létre. Az adatok objektumok is majd particionálása, ezek tárfiókok között. Lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/) a mennyiségi díjszabásról.
 
 ## <a name="scalability-targets-for-a-storage-account"></a>A tárfiók vonatkozó méretezhetőségi célok
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
@@ -45,7 +46,7 @@ Ha az alkalmazás igényeinek túllépi a méretezhetőségi célok egyetlen tá
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
 
 ## <a name="azure-files-scale-targets"></a>Az Azure fájlok méretezési célok
-A méretezési és teljesítménycéljaival kapcsolatos információkért Azure fájlok és az Azure fájlszinkronizálás, talál [Azure fájlok méretezhetőségi és Teljesítménycélok](../files/storage-files-scale-targets.md).
+A méretezési és teljesítménycéljaival kapcsolatos információkért Azure fájlok és az Azure fájlszinkronizálás, lásd: [Azure fájlok méretezhetőségi és Teljesítménycélok](../files/storage-files-scale-targets.md).
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -58,25 +59,9 @@ A méretezési és teljesítménycéljaival kapcsolatos információkért Azure 
 ## <a name="azure-table-storage-scale-targets"></a>Az Azure tábla tárolási méretezési célok
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-<!-- conceptual info about disk limits -- applies to unmanaged and managed -->
-## <a name="scalability-targets-for-virtual-machine-disks"></a>A virtuális gép lemezeinek vonatkozó méretezhetőségi célok
-[!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
-
-Lásd: [Windows Virtuálisgép-méretek](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [Linux Virtuálisgép-méretek](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további részleteket.
-
-## <a name="managed-virtual-machine-disks"></a>Felügyelt virtuális gépek lemezei
-
-[!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
-
-## <a name="unmanaged-virtual-machine-disks"></a>Nem felügyelt virtuális gépek lemezei
-[!INCLUDE [azure-storage-limits-vm-disks-standard](../../../includes/azure-storage-limits-vm-disks-standard.md)]
-
-[!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
-
 ## <a name="see-also"></a>Lásd még:
 * [Tárolás díjszabása](https://azure.microsoft.com/pricing/details/storage/)
 * [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../../azure-subscription-service-limits.md)
-* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md)
 * [Az Azure Storage replikáció](../storage-redundancy.md)
 * [A Microsoft Azure tárolási teljesítmény és méretezhetőség ellenőrzőlista](../storage-performance-checklist.md)
 * [A Microsoft Azure Storage: Egy magas rendelkezésre állású felhőalapú tárolási szolgáltatásba erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
