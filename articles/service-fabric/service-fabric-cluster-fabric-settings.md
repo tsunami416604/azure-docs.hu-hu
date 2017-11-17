@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: c6289df50d17de1ef542abbf617eb1cdb2f32311
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 19caa05f0de7b4ff4ed7f4eafe50839d04f4ab50
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>A Service Fabric-fürt beállításait és a háló házirend testreszabása
 Ez a dokumentum azt ismerteti, hogyan szabhatja testre a különböző hálóbeállításokat, és a háló frissítéséhez a Service Fabric-fürt házirendet. Testre szabhatja azokat keresztül a [Azure-portálon](https://portal.azure.com) vagy Azure Resource Manager-sablonnal.
@@ -340,8 +340,8 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 ### <a name="section-name-faultanalysisservice"></a>Szakasz Name: FaultAnalysisService
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend** | **Útmutatás vagy rövid leírása** |
 | --- | --- | --- | --- |
-| TargetReplicaSetSize |Int, alapértelmezett érték a 0 |Nem engedélyezett|NOT_PLATFORM_UNIX_START FaultAnalysisService a TargetReplicaSetSize. |
-| MinReplicaSetSize |Int, alapértelmezett érték a 0 |Nem engedélyezett|A MinReplicaSetSize FaultAnalysisService számára. |
+| TargetReplicaSetSize |Int, alapértelmezett érték a 0 |Statikus|NOT_PLATFORM_UNIX_START FaultAnalysisService a TargetReplicaSetSize. |
+| MinReplicaSetSize |Int, alapértelmezett érték a 0 |Statikus|A MinReplicaSetSize FaultAnalysisService számára. |
 | ReplicaRestartWaitDuration |Idő (másodpercben), az alapértelmezett érték 60 perc|Statikus|Adja meg az időtartam másodpercben. A FaultAnalysisService ReplicaRestartWaitDuration. |
 | QuorumLossWaitDuration | Idő (másodpercben), alapértelmezett érték a MaxValue |Statikus|Adja meg az időtartam másodpercben. A FaultAnalysisService QuorumLossWaitDuration. |
 | StandByReplicaKeepDuration| Idő (másodpercben), az alapértelmezett érték (60*24*7) perc |Statikus|Adja meg az időtartam másodpercben. A FaultAnalysisService StandByReplicaKeepDuration. |
@@ -390,8 +390,8 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend** | **Útmutatás vagy rövid leírása** |
 | --- | --- | --- | --- |
 | Engedélyezve |Logikai érték, alapértelmezett értéke "false" |Statikus|A ImageStoreService Enabled jelzőt. Alapértelmezett: hamis |
-| TargetReplicaSetSize | Int, alapértelmezett érték 7 |Nem engedélyezett|A ImageStoreService TargetReplicaSetSize. |
-| MinReplicaSetSize | Int, alapértelmezett érték 3 |Nem engedélyezett|A MinReplicaSetSize ImageStoreService számára. |
+| TargetReplicaSetSize | Int, alapértelmezett érték 7 |Statikus|A ImageStoreService TargetReplicaSetSize. |
+| MinReplicaSetSize | Int, alapértelmezett érték 3 |Statikus|A MinReplicaSetSize ImageStoreService számára. |
 | ReplicaRestartWaitDuration | Idő (másodpercben), az alapértelmezett érték 60.0 * 30 |Statikus|Adja meg az időtartam másodpercben. A ImageStoreService ReplicaRestartWaitDuration. |
 | QuorumLossWaitDuration | Idő (másodpercben), alapértelmezett érték a MaxValue |Statikus| Adja meg az időtartam másodpercben. A ImageStoreService QuorumLossWaitDuration. |
 | StandByReplicaKeepDuration | Idő (másodpercben), az alapértelmezett érték 3600.0 * 2 |Statikus| Adja meg az időtartam másodpercben. A ImageStoreService StandByReplicaKeepDuration. |
@@ -414,8 +414,8 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 ### <a name="section-name-upgradeorchestrationservice"></a>Szakasz Name: UpgradeOrchestrationService
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend** | **Útmutatás vagy rövid leírása** |
 | --- | --- | --- | --- |
-| TargetReplicaSetSize |Int, alapértelmezett érték a 0 |Nem engedélyezett|A UpgradeOrchestrationService TargetReplicaSetSize. |
-| MinReplicaSetSize |Int, alapértelmezett érték a 0 |Nem engedélyezett|A MinReplicaSetSize UpgradeOrchestrationService számára.
+| TargetReplicaSetSize |Int, alapértelmezett érték a 0 |Statikus |A UpgradeOrchestrationService TargetReplicaSetSize. |
+| MinReplicaSetSize |Int, alapértelmezett érték a 0 |Statikus |A MinReplicaSetSize UpgradeOrchestrationService számára.
 | ReplicaRestartWaitDuration | Idő (másodpercben), az alapértelmezett érték 60 perc|Statikus| Adja meg az időtartam másodpercben. A UpgradeOrchestrationService ReplicaRestartWaitDuration. |
 | QuorumLossWaitDuration | Idő (másodpercben), alapértelmezett érték a MaxValue |Statikus| Adja meg az időtartam másodpercben. A UpgradeOrchestrationService QuorumLossWaitDuration. |
 | StandByReplicaKeepDuration | Idő (másodpercben), az alapértelmezett érték 60*24*7 perc |Statikus| Adja meg az időtartam másodpercben. A UpgradeOrchestrationService StandByReplicaKeepDuration. |

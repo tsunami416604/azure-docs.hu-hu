@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jingwang
-ms.openlocfilehash: daba616debcf445e092697575465311f39e9466f
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 3b2fbab10836b138792efad7ea30f4f0d15905c3
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure Data Lake Store az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,10 +55,10 @@ A következő tulajdonságok esetén a társított szolgáltatásnak Azure Data 
 | erőforráscsoport-név | Azure erőforráscsoport-név, amely a Data Lake Store-fiók tartozik. | A fogadó szükséges |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
-Illetve tekintse meg az alábbi szakaszok további tulajdonságokat és más hitelesítési típusok JSON-példák:
+Tekintse meg a következő szakaszok további tulajdonságokat és más hitelesítési típusok JSON-példák osztályban:
 
 - [Szolgáltatás egyszerű hitelesítést használó](#using-service-principal-authentication)
-- [Felügyelt identitiy hitelesítéssel](#using-managed-service-identitiy-authentication)
+- [Felügyelt identitás-hitelesítéssel](#using-managed-service-identitiy-authentication)
 
 ### <a name="using-service-principal-authentication"></a>Szolgáltatás egyszerű hitelesítést használó
 
@@ -71,7 +71,7 @@ Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regis
 >[!TIP]
 > Győződjön meg arról, hogy biztosítsa a szolgáltatás egyszerű megfelelő engedélyeket az Azure Data Lake Store:
 >- Forrásaként, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés (IAM).
->- Mint fogadó, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Azure IR használatakor építve a másolás és (a forrás- és fogadó vannak felhő), lehetővé teszik a Data Factory Data Lake Store régió észleli, hogy adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha szeretné-e a IAM szerepkör elkerüléséhez explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a helyét, valamint a Data Lake Store, a Data Lake Store-ban társítása a társított szolgáltatás a következő példa.
+>- Mint fogadó, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Ha Azure IR segítségével másolja át és (a forrás- és fogadó vannak felhő), ahhoz, hogy lehetővé teszik a Data Factory észleli a Data Lake Store-régió, adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha szeretné-e a IAM szerepkör elkerüléséhez explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a helyét, valamint a Data Lake Store, a Data Lake Store-ban társítása a társított szolgáltatás a következő példa:
 
 A következő tulajdonságok támogatottak:
 
@@ -106,19 +106,19 @@ A következő tulajdonságok támogatottak:
 }
 ```
 
-### <a name="using-managed-service-identitiy-authentication"></a>Felügyelt identitiy hitelesítéssel
+### <a name="using-managed-service-identity-authentication"></a>Felügyelt identitás-hitelesítéssel
 
-Egy adat-előállító társítható egy [identitás](data-factory-service-identity.md), amely jelenti, hogy az adott adat-előállítóban. A szolgáltatásidentitás hasonló saját princial szolgáltatás a Data Lake Store-hitelesítési közvetlenül használható. A Data Lake Store a/való lehetővé teszi az adatokhoz hozzáférést, és másolja a kijelölt gyári.
+Egy adat-előállító társítható egy [identitás](data-factory-service-identity.md), amely jelenti, hogy az adott adat-előállítóban. A szolgáltatásidentitás közvetlenül hasonló saját egyszerű szolgáltatásnév a Data Lake Store-hitelesítés használható. A Data Lake Store a/való lehetővé teszi az adatokhoz hozzáférést, és másolja a kijelölt gyári.
 
-Felügyelt identitiy (MSI) hitelesítés használatára:
+Felügyelt szolgáltatás identitásának (MSI) hitelesítés használatára:
 
 1. [Beolvasása a data factory szolgáltatásidentitás](data-factory-service-identity.md#retrieve-service-identity) a "SERVICE IDENTITÁS alkalmazás Azonosítójának értéke" jön létre, valamint a gyári másolásával.
 2. A szolgáltatás identitásának hozzáférési jogot a Data Lake Store az egyszerű szolgáltatásnév ugyanúgy. Részletes útmutató: [szolgáltatások közötti hitelesítés - hozzárendelése az Azure AD alkalmazás az Azure Data Lake Store-fiók fájl vagy mappa](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder).
 
 >[!TIP]
-> Győződjön meg arról, hogy az engedélyeket a data factory szolgáltatás identitiy megfelelő Azure Data Lake Store-ban:
+> Győződjön meg arról, hogy az engedélyeket a data factory szolgáltatás identitás megfelelő az Azure Data Lake Store:
 >- Forrásaként, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés (IAM).
->- Mint fogadó, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Azure IR használatakor építve a másolás és (a forrás- és fogadó vannak felhő), lehetővé teszik a Data Factory Data Lake Store régió észleli, hogy adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha szeretné-e a IAM szerepkör elkerüléséhez explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a helyét, valamint a Data Lake Store, a Data Lake Store-ban társítása a társított szolgáltatás a következő példa.
+>- Mint fogadó, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Ha Azure IR segítségével másolja át és (a forrás- és fogadó vannak felhő), ahhoz, hogy lehetővé teszik a Data Factory észleli a Data Lake Store-régió, adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha szeretné-e a IAM szerepkör elkerüléséhez explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a helyét, valamint a Data Lake Store, a Data Lake Store-ban társítása a társított szolgáltatás a következő példa:
 
 Az Azure Data Factoryben nem kell határozhat meg semmilyen mellett az általános Data Lake Store-információkat a szolgáltatásnak.
 
@@ -277,9 +277,9 @@ Ez a szakasz ismerteti az eredményül kapott viselkedéstől rekurzív és copy
 
 | Rekurzív | copyBehavior | Forrás mappaszerkezet | Eredményül kapott cél |
 |:--- |:--- |:--- |:--- |
-| Igaz |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 forrásaként azonos struktúrájú jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| Igaz |flattenHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a cél az alábbi szerkezettel mappa1 jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File5 |
-| Igaz |mergefiles típusú | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a cél az alábbi szerkezettel mappa1 jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + fájl3 + File4 + 5 fájl tartalmát egy fájl automatikusan létrehozott fájlnévvel egyesülnek |
+| igaz |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 forrásaként azonos struktúrájú jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| igaz |flattenHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a cél az alábbi szerkezettel mappa1 jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File5 |
+| igaz |mergefiles típusú | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a cél az alábbi szerkezettel mappa1 jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + fájl3 + File4 + 5 fájl tartalmát egy fájl automatikusan létrehozott fájlnévvel egyesülnek |
 | hamis |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 jön létre a következő struktúra<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem átveszik. |
 | hamis |flattenHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 jön létre a következő struktúra<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem átveszik. |
 | hamis |mergefiles típusú | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 jön létre a következő struktúra<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Egy fájl automatikusan létrehozott fájlnévvel egyesített file1 + File2 tartalma. automatikusan létrehozott nevet a file1 kiszolgálón<br/><br/>Fájl3, File4 és File5 Subfolder1 nem átveszik. |

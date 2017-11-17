@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Active
 ms.date: 10/13/2017
 ms.author: carlrab
-ms.openlocfilehash: bdef3c155317f32ce03aef920108922c40efc102
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cb9b1296ced73c123faa0c682e9ef55d4b46ac11
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus adatbázis biztonsági mentését használó Azure SQL-adatbázis helyreállítása
 SQL-adatbázis biztosítja ezeket a beállításokat, az adatbázis helyreállítási használatával [adatbázis biztonsági másolatait automatikus](sql-database-automated-backups.md) és [hosszú távú megőrzési a biztonsági másolatok](sql-database-long-term-retention.md). Egy adatbázis biztonsági másolatát arra állíthatja vissza:
@@ -54,7 +54,14 @@ A felesleges költségek az az oka a visszaállított adatbázis maximális mér
 * A cél régióban feldolgozás alatt álló egyidejű visszaállítás kérelmek száma. 
   
   Nagyon nagy és/vagy aktív-adatbázis a visszaállítás több óráig is eltarthat. Nincs leállás hosszabb régióban, akkor lehetséges, hogy vannak-e más régiókban által feldolgozott georedundáns helyreállítás kérelmek nagy mennyiségű. Ha sok kérelmet, a helyreállítás ideje megnőhet az adatbázisok az adott régióban. A legtöbb adatbázis visszaállítása befejeződött 12 órában.
-  
+
+Egyetlen előfizetéssel, van még néhány korlátozást számú párhuzamos visszaállítási kérések (beleértve a visszaállítás egy korábbi időpontra, a georedundáns helyreállítás és a hosszú távú megőrzési biztonsági másolatból való visszaállítása) alatt Beküldve, és el:
+|  | **Párhuzamos feldolgozás alatt álló kérelmek maximális száma** | **Nem továbbíthatók egyidejű kérelmek maximális száma** |
+| :--- | --: | --: |
+|Önálló adatbázis (előfizetésenként)|10|60|
+|A rugalmas készlet (készletenként)|4|200|
+||||
+
 Nincs tömeges visszaállítási beépített funkció sem. A [Azure SQL Database: a teljes kiszolgáló helyreállítási](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) parancsfájl Ez a feladat parancsokról egyik módja egy példát.
 
 > [!IMPORTANT]

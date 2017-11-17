@@ -7,6 +7,9 @@ Egy Azure IoT peremhálózati főbb képességei van tudnak modulok az eszközö
 1. Az a **neve** mezőbe írja be `tempSensor`. 
 1. Az a **lemezkép URI** mezőbe írja be `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`. 
 1. Hagyja változatlanul az egyéb beállításokat, és válassza ki **mentése**.
+
+   ![Mentse a IoT peremhálózati modul nevét és a lemezkép URI megadása után](./media/iot-edge-deploy-module/name-image.png)
+
 1. Vissza a **modulok hozzáadása** jelölje be a lépésben **következő**.
 1. Az a **adja meg az útvonalakat** jelölje be a lépésben **tovább**.
 1. Az a **felülvizsgálati sablonja** lépésben jelölje be **Submit**.

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 56ddd5742b63851b9477bae0705ebd24e30ff185
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 19518ad8dc2d697f1716750adc3f0ad7d7f8a875
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Az önkiszolgáló jelszó-változtatási az Azure AD részletes bemutatója
 
@@ -183,7 +183,7 @@ Ahhoz, hogy ezt a beállítást, a felhasználó, aki engedélyezve van a jelsz�
 Ha regisztrációs igénylő le van tiltva, a felhasználók továbbra is futtathatja manuálisan regisztrálhatják az elérhetőségét. Vagy keresse fel a következőkre [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) vagy válassza ki a **regisztrálása jelszóváltoztatásra** hivatkozásra a **profil** a hozzáférési Panel lapján.
 
 > [!NOTE]
-> Felhasználók kiválasztásával esetben elvetheti a jelszó-visszaállítási portál **Mégse** vagy zárja be az ablakot. Azonban minden egyes bejelentkezéskor mindaddig, amíg a regisztrálást regisztrálni kéri.
+> Felhasználók kiválasztásával esetben elvetheti a jelszó-visszaállítási portál **Mégse** vagy zárja be az ablakot. Azonban meg kell regisztrálni a minden egyes bejelentkezéskor mindaddig, amíg a regisztrálást.
 >
 > Ez nem a felhasználó kapcsolat megszüntetése, ha már bejelentkezett a.
 
@@ -209,6 +209,17 @@ Példa: Nincsenek négy rendszergazdák környezetben. A rendszergazda SSPR seg�
 
 Ha telepítését, konfigurálását és az Azure AD Connect engedélyezése, lehetősége van a következő további helyszíni Integrációk. Ha ezek a beállítások szürkén jelennek meg, majd visszaírási nem megfelelően van konfigurálva. További információkért lásd: [jelszóvisszaírás konfigurálása](active-directory-passwords-writeback.md#configuring-password-writeback).
 
+![Visszaírásához.][Writeback]
+
+Ezen a lapon a helyszíni visszaírási ügyfél az alábbi üzenetek egyike jelenik meg a jelenlegi konfiguráció alapján gyors állapotának tartalmazza:
+
+* A helyszíni visszaírási ügyfél megfelelően működik, és.
+* Az Azure AD online állapotban, és a helyszíni visszaírási ügyfél csatlakozik. Azonban úgy tűnik, az Azure AD Connect telepített verziója elavult. Érdemes lehet [frissítés Azure AD Connect](./connect/active-directory-aadconnect-upgrade-previous-version.md) annak érdekében, hogy rendelkezik a legújabb kapcsolati funkciók és a fontos hibajavításokat tartalmaz.
+* A helyszíni visszaírási ügyfélállapot sajnos jelenleg nem lehet ellenőrizni, mert az Azure AD Connect telepített verziója elavult. [Az Azure AD Connect frissítése](./connect/active-directory-aadconnect-upgrade-previous-version.md) tudjanak a kapcsolat állapotának ellenőrzése.
+* Sajnos úgy tűnik, nem lehet kapcsolódni a helyszíni visszaírási ügyfél most. [Hibaelhárítás az Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolat helyreállítására.
+* Sajnos nem lehet kapcsolódni a helyszíni visszaírási ügyfél mert jelszóvisszaírás nem megfelelően van konfigurálva. [Konfigurálja a jelszóvisszaírás](active-directory-passwords-writeback.md#configuring-password-writeback) a kapcsolat helyreállítására.
+* Sajnos úgy tűnik, nem lehet kapcsolódni a helyszíni visszaírási ügyfél most. Ezt az End ideiglenes problémák okozhatják. Ha a probléma továbbra is fennáll, [hibaelhárítása az Azure AD Connectet](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolat helyreállítására.
+
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Jelszavakat írhasson a helyszíni címtár
 
 A vezérlő határozza meg, hogy engedélyezve van-e a jelszóvisszaírás ennél a címtárnál. Ha visszaírási, azt jelzi a helyszíni visszaírási szolgáltatás állapotát. Ez akkor hasznos, ha szeretné ideiglenesen letilthatja a jelszóvisszaírást anélkül, hogy az Azure AD Connect újrakonfigurálása.
@@ -233,7 +244,7 @@ Jelszó alaphelyzetbe állítása és módosítása teljes mértékben támogato
 Ez a forgatókönyv teszteléséhez Ugrás http://passwordreset.microsoftonline.com ezen partner felhasználók egyike. Ha egy másodlagos e-mail vagy a megadott hitelesítési e-mail, jelszó-változtatási működik megfelelően.
 
 > [!NOTE]
-> Hozzáférést kapott Vendég az Azure AD-bérlő, például Hotmail.com, Outlook.com-os vagy más személyes e-mail-címeket, amelyek Microsoft-fiókok nem képesek használni az Azure AD SSPR. Jelszó visszaállítása található információk segítségével kell rendelkezniük a [mikor nem tud bejelentkezni Microsoft-fiókja](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.
+> Hozzáférést kapott Vendég az Azure AD-bérlő, például Hotmail.com, Outlook.com-os vagy más személyes e-mail-címeket, amelyek Microsoft-fiókok nem képesek használni az Azure AD SSPR. Jelszó visszaállítása található információk segítségével van szükségük a [mikor nem tud bejelentkezni Microsoft-fiókja](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -253,3 +264,4 @@ A következő cikkek nyújtanak a jelszó alaphelyzetbe állítása, az Azure AD
 * [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/active-directory-passwords-how-it-works/sspr-authentication-methods.png "Az elérhető Azure AD-hitelesítési módszerek és a szükséges mennyiség"
+[Writeback]: ./media/active-directory-passwords-how-it-works/troubleshoot-writeback-running.png "Helyszíni integráció jelszó visszaírási konfigurálása és a hibaelhárítási információkat"

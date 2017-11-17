@@ -1,5 +1,5 @@
 
-GPU optimalizált VM értékek nagy mennyiségű grafikus megjelenítési és videó szerkesztése szánt speciális virtuális gépekhez. Egy vagy több Feldolgozóegységekkel érhető el. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek, és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati teljesítményt minden méretéhez ennél a csoportosításnál száma. 
+GPU optimalizált VM értékek nagy mennyiségű grafikus megjelenítési és videó szerkesztése szánt speciális virtuális gépekhez. Egy vagy több Feldolgozóegységekkel érhető el. Ez a cikk ismerteti a Vcpu, adatlemezek, és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma. 
 
 
 Az NC- és NV-méretek más néven GPU-kompatibilis példányokként is ismertek. A különböző alkalmazási helyzetek és a használati esetek optimalizált NVIDIA GPU-kártyákkal tartalmazó speciális virtuálisgép-méretek. Az NV-méretek OpenGL, DirectX és hasonló keretrendszereket használó távoli megjelenítési, streamelési, játék-, kódolási és VDI-forgatókönyvekhez lettek kialakítva és optimalizálva. Az NC-méretek inkább nagy számítási és hálózatigényű alkalmazásokra és algoritmusokra vannak optimalizálva, beleértve a CUDA- és OpenCL-alapú alkalmazásokat és szimulációkat. 

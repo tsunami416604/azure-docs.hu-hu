@@ -15,11 +15,11 @@ ms.date: 08/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 5903c8ac7a16a87b93ea6e105d82bbfdfa26bf8c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 5dae5ef260d975e00d3bdaa9aff73fd5807bb839
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -81,7 +81,7 @@ A hálózati házirend-kiszolgáló-bővítményének telepítése előtt érdem
 
 ### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>Az NPS szerepkör a tartományhoz csatlakozó kiszolgálón engedélyezése
 
-A hálózati házirend-kiszolgáló csatlakozik az Azure Active Directory, és ezzel hitelesíti a többtényezős hitelesítési kérelmeket. Válasszon egy kiszolgálót ehhez a szerepkörhöz. Azt javasoljuk, hogy kiválasztása egy kiszolgálót, amely nem kezeli az egyéb szolgáltatások érkező kéréseket, mert a hálózati házirend-kiszolgáló bővítmény kérelmeket, amelyek nem RADIUS hibákat jelez.
+A hálózati házirend-kiszolgáló csatlakozik az Azure Active Directory, és ezzel hitelesíti a többtényezős hitelesítési kérelmeket. Válasszon egy kiszolgálót ehhez a szerepkörhöz. Azt javasoljuk, hogy kiválasztása egy kiszolgálót, amely nem kezeli az egyéb szolgáltatások érkező kéréseket, mert a hálózati házirend-kiszolgáló bővítmény kérelmeket, amelyek nem RADIUS hibákat jelez. A hálózati házirend-kiszolgáló a környezetben; elsődleges és másodlagos hitelesítés-kiszolgálóként kell beállítása proxy RADIUS-kérelmeket egy másik kiszolgáló nem képes.
 
 1. A kiszolgálón nyissa meg a **hozzáadása szerepkörök és szolgáltatások varázsló** a Kiszolgálókezelő gyors üzembe helyezés menüből.
 2. Válasszon **szerepköralapú vagy szolgáltatásalapú telepítés** a telepítés típusát.
@@ -193,7 +193,7 @@ Ha a multi-factor Authentication nem regisztrált felhasználók, azt is meghat�
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | IGAZ/HAMIS | Nincs beállítva (egyenértékű TRUE) |
 
-Ez a beállítás célja határozza meg, mi a teendő, ha a felhasználó nincs regisztrálva az MFA szolgáltatásra. Ha a kulcs nem létezik, nincs beállítva vagy az értéke igaz, és a felhasználó nincs regisztrálva, majd a bővítmény nem sikerül az MFA-kérdést. Ha a kulcs hamis értékre van állítva, és a felhasználó nincs regisztrálva, a hitelesítés folytatódik MFA végrehajtása nélkül.
+Ez a beállítás célja határozza meg, mi a teendő, ha a felhasználó nincs regisztrálva az MFA szolgáltatásra. Ha a kulcs nem létezik, nincs beállítva vagy az értéke igaz, és a felhasználó nincs regisztrálva, majd a bővítmény nem sikerül az MFA-kérdést. Ha a kulcs hamis értékre van állítva, és a felhasználó nincs regisztrálva, a hitelesítés folytatódik MFA végrehajtása nélkül. Ha a felhasználó regisztrálta az MFA, hitelesítenie kell a multi-factor Authentication szolgáltatás akkor is, ha REQUIRE_USER_MATCH hamis értékre van állítva.
 
 Ha szeretné létrehozni ezt a kulcsot, és állítsa FALSE, amíg a felhasználó bevezetése, és nem lehet regisztrálni az Azure MFA még. Azonban mivel a kulcs beállítása lehetővé teszi a felhasználók, amelyek nincsenek regisztrálva az MFA szolgáltatásra való bejelentkezéshez, el kell távolítania ezt a kulcsot éles előtt.
 

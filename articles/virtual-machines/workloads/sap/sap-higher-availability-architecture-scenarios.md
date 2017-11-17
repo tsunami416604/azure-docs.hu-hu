@@ -1,5 +1,5 @@
 ---
-title: "Azure-infrastruktúra virtuális gép újraindítása \"magasabb rendelkezésre állás biztosítása érdekében\" SAP rendszer használatával |} Microsoft Docs"
+title: "Azure-infrastruktúra virtuális gép újraindítása \"magasabb rendelkezésre állás biztosítása érdekében\" SAP rendszer használata |} Microsoft Docs"
 description: "Azure-infrastruktúra virtuális gép újraindítása \"magasabb rendelkezésre állás biztosítása érdekében\" SAP-alkalmazások használata"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -17,14 +17,15 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ebdc79d240a1250150d8ec2ef1d41b9a65ea0ee
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: be0792affba1eba32c2643344b7e284858adb9d6
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-system"></a>Azure-infrastruktúra virtuális gép újraindítása "magasabb rendelkezésre állás biztosítása érdekében" SAP rendszer használata
+# <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Azure-infrastruktúra virtuális gép újraindítása "magasabb rendelkezésre állás biztosítása érdekében" SAP rendszer használata
 
+[1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -207,70 +208,79 @@ ms.lasthandoff: 10/16/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-> Ez a fejezet esetén is alkalmazható:
+> Ez a szakasz a következőkre vonatkozik:
 >
 > ![Windows][Logo_Windows] A Windows és ![Linux][Logo_Linux] Linux
 >
 
-Ha úgy dönt, hogy nem használja a Funkciók, például a Windows Server feladatátvételi fürtszolgáltatási (WSFC) vagy támasztja Linux (jelenleg csak a SLES 12 rendszert és az annál magasabb támogatott), az SAP rendszer az Azure-beli tervezett és nem tervezett leállások elleni védelméhez első Azure virtuális gép újraindítása fizikai kiszolgálói infrastruktúra és a teljes alapul szolgáló Azure platformon.
+Ha úgy dönt, hogy nem használja a Funkciók, például a Windows Server feladatátvételi fürtszolgáltatási (WSFC) vagy támasztja Linux (jelenleg támogatott csak SUSE Linux Enterprise Server [SLES] 12 és újabb), Azure virtuális gép újraindítása van szükség. Általa védett SAP rendszerek elleni tervezett és nem tervezett leállások a fizikai kiszolgálók Azure-infrastruktúra és a teljes alapul szolgáló Azure platformon.
 
 > [!NOTE]
-> Fontos említse meg, hogy Azure virtuális gép újraindítása elsősorban védi a virtuális gépek és alkalmazásokat nem. Indítsa újra a virtuális gép nem biztosít magas rendelkezésre állás a SAP-alkalmazásokból, de az infrastruktúra rendelkezésre állási bizonyos szintű kínálnak, ezért közvetve "magas rendelkezésre állás érdekében" SAP rendszerek. A ideig tart egy gazdagép tervezett vagy nem tervezett leállás után indítsa újra a virtuális gép is van nem az SLA-t. Ez a metódus "a magas rendelkezésre állás" ezért nem alkalmas A SCS vagy az adatbázis-kezelő például SAP a rendszer kritikus összetevői.
+> Az Azure virtuális gép újraindítása elsősorban védelmet nyújt a virtuális gépek és *nem* alkalmazások. Bár a virtuális gép újraindítása nem kínál a magas rendelkezésre állás a SAP-alkalmazásokból, az infrastruktúra rendelkezésre állási bizonyos szintű kínálnak. "Újabb" rendszerek elérhetőségének megszűnését SAP közvetetten is kínál. Nincs is nem az SLA-t a virtuális gép újraindítása után egy gazdagép tervezett vagy nem tervezett leállás, így nem alkalmas kritikus fontosságú összetevők SAP a rendszer ezt a módszert a magas rendelkezésre állás szükséges időt. Kritikus fontosságú összetevők ASC/SCS példánya vagy egy adatbázis-kezelő rendszer (DBMS) lehet.
 >
 >
 
-A magas rendelkezésre állás fontos infrastruktúra elem az tároló. Például az Azure Storage szolgáltatásiszint-szerződés 99,9 % rendelkezésre állási. Ha egy telepíti a lemezzel rendelkező összes virtuális gép egy egyetlen Azure Storage-fiók esetén lehetséges Azure Storage elérhetetlensége, akkor kerülnek, Azure Storage-fiókhoz tartozó összes virtuális gépet, is minden SAP összetevőiről és virtuális gépek belül futtatott elérhetetlensége be.  
+A magas rendelkezésre állás fontos infrastruktúra elem az tároló. Például az Azure Storage garantált szolgáltatási szintje 99,9 %-os rendelkezésre állását. Minden virtuális gép és a lemezek egyetlen az Azure storage-fiók telepíti, ha lehetséges Azure Storage elérhetetlensége miatt nem érhető el őket, hogy a tárfiókban lévő összes virtuális gép és a virtuális gépeken belül futó minden SAP-összetevők.  
 
-Ahelyett, hogy minden virtuális gép üzembe egy egyetlen Azure Storage-fiókot, használhatja a kijelölt tárhelycsomópont fiókokat az egyes virtuális gépek, és így általános virtuális gép és az SAP rendelkezésre állásának növeléséhez több független Azure Storage-fiókok használatával.
+Minden virtuális gép üzembe egy egyetlen Azure storage-fiók, helyett az egyes virtuális gépek használja a dedikált storage-fiókok. Több független Azure storage-fiókok használatával teljes virtuális Gépet és az SAP rendelkezésre állásának növelése.
 
-Azure-lemezeket felügyelt automatikusan kerülnek a tartalék tartomány a virtuális gép vannak csatolva. Ha két virtuális gép rendelkezésre állási és felügyelt lemezt használ, a platform kezeli a különböző tartalék tartományok, valamint a kezelt lemezek terjesztése. Ha azt tervezi, a prémium szintű Storage, erősen ajánlott lemezek kezelése, valamint használatával.
+Felügyelt Azure-lemezeket automatikusan kerülnek a tartalék tartomány a virtuális gép vannak csatolva. Ha két virtuális gépeket helyez egy rendelkezésre állási csoportot, és felügyelt lemezeket használó, a platform gondoskodik a felügyelt lemezek terjesztése, valamint a különböző tartalék tartományok be. Ha azt tervezi, a prémium szintű storage-fiók használatára, erősen ajánlott felügyelt lemezekkel.
 
-Az SAP NetWeaver rendszer által használt Azure-infrastruktúra magas rendelkezésre ÁLLÁSÚ és a storage-fiókok egy mintaarchitektúrája nézhet ki:
+Az SAP NetWeaver rendszer által használt Azure-infrastruktúra magas rendelkezésre állás és a storage-fiókok egy mintaarchitektúrája nézhet ki:
 
-![Magas rendelkezésre ÁLLÁSÚ SAP "felső" rendelkezésre állásának eléréséhez Azure-infrastruktúra használatával][planning-guide-figure-2900]
+![Azure-infrastruktúra magas rendelkezésre állású SAP alkalmazás "magasabb rendelkezésre állás biztosítása érdekében" használata][planning-guide-figure-2900]
 
-Egy Azure-infrastruktúra magas rendelkezésre ÁLLÁSÚ és felügyelt lemezeket használó SAP NetWeaver a rendszer mintaarchitektúrája nézhet ki:
+Egy Azure-infrastruktúra magas rendelkezésre állás és a felügyelt lemezeket használó SAP NetWeaver rendszer mintaarchitektúrája nézhet ki:
 
-![Magas rendelkezésre ÁLLÁSÚ SAP "felső" rendelkezésre állásának eléréséhez Azure-infrastruktúra használatával][planning-guide-figure-2901]
+![Azure-infrastruktúra magas rendelkezésre állású SAP alkalmazás "magasabb rendelkezésre állás biztosítása érdekében" használata][planning-guide-figure-2901]
 
-SAP-összetevők kritikus azt érhető el a következő eddig:
+A SAP-összetevők kritikus elérte a következő eddig:
 
-* Magas rendelkezésre állású SAP Alkalmazáskiszolgáló (AS)
+* Magas rendelkezésre állású SAP-alkalmazáskiszolgáló
 
-  SAP alkalmazáskiszolgáló-példányok a redundáns összetevők. Minden egyes SAP, példány telepítve van a saját virtuális Gépet, amely futtatja a egy másik Azure hiba és a tartomány frissítése (lásd: fejezetek [tartalék tartományok] [ planning-guide-3.2.1] és [frissítési tartományok] [ planning-guide-3.2.2]). Ez biztosítja Azure rendelkezésre állási csoportokkal (című [Azure rendelkezésre állási készletek][planning-guide-3.2.3]). Egy Azure hiba vagy frissítéséhez tartományi lehetséges tervezett vagy nem tervezett elérhetetlensége fog okozhat a virtuális gépek a korlátozott számú hiányában az SAP-AS példányt.
+    SAP alkalmazáskiszolgáló-példányok a redundáns összetevők. Minden egyes SAP server-példány telepítve van a saját virtuális gépen, amelyen egy különböző Azure tartalék és a frissítési tartomány. További információkért lásd: a [tartományok Fault] [ planning-guide-3.2.1] és [frissítési tartományt] [ planning-guide-3.2.2] szakaszok. 
 
-  Minden példány kerül a saját Azure Storage-fiók – lehetséges hiányában egy Azure Storage-fiók hiányában csak egy virtuális gép, akkor az SAP-AS az SAP példány. Azonban vegye figyelembe, hogy nincs maximális száma Azure Storage-fiókok egy Azure-előfizetéssel belül. (A) SCS-példány automatikus indítás biztosításához a virtuális gép újraindítása után, az automatikus indítási paraméter (A) SCS-példányban állítsa be start fejezetben ismertetett profil [használatával Autostart SAP-példányok][planning-guide-11.5].
-  Olvassa el is fejezet [magas rendelkezésre állású SAP alkalmazáskiszolgálók] [ planning-guide-11.4.1] további részleteket.
+    Ez a konfiguráció Azure rendelkezésre állási csoportok segítségével biztosítható. További információkért lásd: a [Azure rendelkezésre állási készletek] [ planning-guide-3.2.3] szakasz. 
 
-  Akkor is, ha a lemez felügyelt használata esetén a lemezek tárolódnak az Azure-Tárfiók, és egy tárolási leállás az esemény nem érhető el.
+    Egy Azure hiba vagy a frissítési tartomány lehetséges tervezett vagy nem tervezett hiányában az SAP alkalmazáskiszolgáló-példányok a virtuális gépek a korlátozott számú elérhetetlensége miatt.
 
-* *Magasabb* SAP rendelkezésre állását (A) SCS példány
+    A saját Azure storage-fiók összes SAP server-példány kerül. Egy Azure storage-fiók lehetséges elérhetetlensége csak egy virtuális gép elérhetetlensége miatt a SAP application server-példányhoz. Azonban vegye figyelembe, hogy van-e egy Azure storage-fiókokról belül egy Azure-előfizetéssel a számára vonatkozó korlátozást. Asc/SCS példány automatikus indítás biztosításához a virtuális gép újraindítása után, állítsa be az automatikus indítási paraméter ASC/SCS példány start profil leírtak a [használatával Autostart SAP-példányok] [ planning-guide-11.5] a szakasz.
+  
+    További információkért lásd: [magas rendelkezésre állású SAP alkalmazáskiszolgálók][planning-guide-11.4.1].
 
-  Itt azt hasznosítani Azure VM indítsa újra a virtuális gép védelmét, SAP (A) SCS telepített példánya. Az Azure tervezett vagy nem tervezett leállás esetén kiszolgálója, virtuális gépek újraindul egy másik elérhető kiszolgálón. Amint azt korábban említettük, Azure virtuális gép újraindítása elsősorban védi a virtuális gépek és alkalmazásokat nem, ez esetben a (A) SCS-példányban. A virtuális gép újraindítása keresztül jelenleg lesz érhető el közvetve "magas rendelkezésre állás érdekében" SAP (A) SCS-példány. (A) SCS-példány automatikus indítás biztosításához a virtuális gép újraindítása után, feltétlenül állítson be automatikus indítását paraméter (A) SCS példány start profilban fejezetben ismertetett [használatával Autostart SAP-példányok][planning-guide-11.5]. Ez azt jelenti, hogy a (A) SCS hibaként egyetlen pont, (SPOF) egy virtuális gépen futó példány lesz a meghatározó tényező az egész SAP fekvő rendelkezésre állását.
+    Akkor is, ha felügyelt lemezt használ, a lemezek Azure-tárfiók tárolja, és lehet, hogy egy tárolási leállás esetén nem érhető el.
 
-* *Magasabb* rendelkezésre állási adatbázis-kezelő kiszolgáló
+* *Magas rendelkezésre állás érdekében* SAP ASC/SCS-példányok
 
-  Itt a SAP (A) SCS példány használati eset hasonló, azt használata Azure VM indítsa újra a virtuális Géphez a telepített adatbázis-kezelő szoftver védelmére, és azt "magasabb rendelkezésre állásának eléréséhez" adatbázis-kezelő szoftver használatával indítsa újra a virtuális gép.
-  Egyetlen virtuális gépen futó DBMS egyben a SPOF, és a meghatározó tényező az egész SAP fekvő rendelkezésre állását.
+    Ebben a forgatókönyvben hasznosítani az Azure virtuális gép újraindítása, ha a telepített SAP ASC/SCS példánya a virtuális gép védelmét. Virtuális gépek Azure-kiszolgálók tervezett vagy nem tervezett leállás esetén érhető el egy másik kiszolgálón újraindul. Amint azt korábban említettük, a Azure virtuális gép újraindítása elsősorban védi-e a virtuális gépek és *nem* alkalmazások, ez az eset a ASC/SCS-példány. A virtuális gép újraindítása keresztül "magas rendelkezésre állás érdekében" az SAP ASC/SCS példány közvetve eléri. 
+
+    Az automatikus indítást ASC/SCS példány biztosításához a virtuális gép újraindítása után, állítsa a Autostart paramétert ASC/SCS példány start profilban leírtak szerint a [használatával Autostart SAP-példányok] [ planning-guide-11.5] szakasz . Ez a beállítás azt jelenti, hogy a ASC/SCS példányához, a hibaérzékeny pontok kialakulását (SPOF) egy virtuális gépen fut, határozza meg az egész SAP fekvő rendelkezésre állását.
+
+* *Magas rendelkezésre állás érdekében* az adatbázis-kezelő kiszolgáló
+
+    Ahogy az előző SAP ASC/SCS példány-és nagybetűhasználattal, használhatja az Azure virtuális gép újraindítása telepített adatbázis-kezelő szoftver a virtuális gép védelmét, és "magas rendelkezésre állás érdekében" adatbázis-kezelő szoftver virtuális gép újraindítása keresztül érhetők el.
+  
+    Egy SPOF is egy adatbázis-kezelő, hogy egyetlen virtuális gépen fut, és a az egész SAP fekvő rendelkezésre állásának meghatározó tényező.
 
 ## <a name="using-autostart-for-sap-instances"></a>Automatikus indítás SAP-példányok használata
-  SAP SAP példányok elindítani a virtuális Gépen belül az operációs rendszer elindítása után azonnal funkciót kínál. A pontos lépések az SAP Tudásbázis [1909114] volt megtalálható. Azonban SAP nem javasolja a beállítás használata többé nincs vezérlő sorrendjében példány újraindul, mert egynél több virtuális gép feltételezve van hatással, vagy több példány futtatott virtuális gépenként. Feltéve, hogy egy SAP application server-példány a virtuális gépek és a kis-és egy virtuális végül első újraindítása a jellemző Azure forgatókönyv, az automatikus indítási nincs igazán fontos, és ez a paraméter hozzáadásával engedélyezhető:
+SAP kínál a beállítást, amely lehetővé teszi, hogy közvetlenül az operációs rendszer belül a virtuális gép elindítása után indítsa el a SAP-példányokat. Az utasítások szerepelnek a Tudásbázis következő cikke SAP [1909114]. Azonban SAP már nem ajánlja, a beállítás, mert nem teszi lehetővé a vezérlő példány újraindul, ha egynél több virtuális gép van hatással, vagy ha több példánya fut. virtuális gépenként. 
+
+Ha egy SAP application server-példány a virtuális gép és egy virtuális végül első újraindítása a jellemző Azure forgatókönyv, Autostart nincs nagy jelentősége. De engedélyezheti azt a következő paraméter hozzáadásával a start profilba, az SAP speciális üzleti alkalmazás programozási (ABAP) vagy Java-példány:
 
       Autostart = 1
 
-  A start profilba SAP ABAP és/vagy a Java-példány.
 
   > [!NOTE]
-  > Az automatikus indítási paraméter néhány downfalls is rendelkezhet. Részletesen, a paraméter egy SAP ABAP vagy Java példány elindítása a példány kapcsolódó Windows/Linux-szolgáltatás elindítása váltja. Hogy biztosan van így, amikor az operációs rendszer elindul. Azonban az SAP-szolgáltatások újraindítása is egy közös lépésként SAP szoftver életciklus-kezelési funkciók, például a SUM vagy más frissítéseket, vagy frissíti. Ezek a funkciók nem vár egy példányát az összes automatikusan újraindul. Ezért a Autostart paraméter le kell tiltani az ilyen feladatok futtatása előtt. Az automatikus indítási paraméternek is nem használandó vannak foglalva, ASC/SCS/CI például SAP-példányok.
+  > Az automatikus indítási paraméternek, valamint bizonyos hiányosságok. Pontosabban, a paraméter egy SAP ABAP vagy Java példány elindítása a kapcsolódó Windows vagy Linux-szolgáltatás a példány elindítása váltja. A folyamat zajlik le, amikor elindul az operációs rendszer. Azonban az SAP-szolgáltatások újraindítása is SAP szoftver életciklus-felügyeletének funkció például Software Update Manager (SUM) gyakran előfordul vagy más frissítéseket, vagy frissíti. Ezek a funkciók nem vár egy példányát automatikusan újra kell indítani. Ezért a Autostart paraméter le kell tiltani ahhoz, hogy olyan feladatokat futtatni. Az automatikus indítási paraméternek is nem használandó vannak foglalva, ASC/SCS/CI például SAP-példányok.
   >
   >
 
-  Tekintse meg a további információhoz autostart az SAP-példányok itt:
+  SAP-példányok automatikus indítását kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-  * [SAP, valamint a Unix kiszolgáló indítása/leállítása indítása/leállítása](http://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
-  * [Indítása és leállítása SAP NetWeaver felügyeleti ügynökök](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-  * [Indítsa el a HANA-adatbázisból automatikus engedélyezése](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
+  * [Indítsa el, vagy állítsa le a SAP, valamint a Unix kiszolgáló indítása/leállítása](http://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
+  * [Indítása és leállítása SAP NetWeaver kezelőügynökök](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
+  * [Automatikus indítását a HANA-adatbázis engedélyezése](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
 
 ## <a name="next-steps"></a>Következő lépések
 
-A teljes SAP NetWeaver alkalmazás kompatibilis magas rendelkezésre állású, lásd: [SAP alkalmazás magas rendelkezésre állásra Azure IaaS][sap-high-availability-architecture-scenarios-sap-app-ha].
+Teljes SAP NetWeaver alkalmazásfigyelő magas rendelkezésre állású kapcsolatos információkért lásd: [SAP alkalmazás magas rendelkezésre állásra Azure IaaS][sap-high-availability-architecture-scenarios-sap-app-ha].

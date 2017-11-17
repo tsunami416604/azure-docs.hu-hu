@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 4788fa14a6c49d39b5a3096a69b6738f4a5d8cca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 342bd20466cdeb0b9df1cdacd4664fa4e3e0c604
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>SAP S/4HANA vagy BW/4HANA Azure telepítéséhez
 Ez a cikk ismerteti a felhő készülék teszteléshez (SAP CAL) 3.0 telepítését az S/4HANA az Azure-on. Más SAP HANA-alapú megoldások, például a BW/4HANA, központi telepítéséhez hajtsa végre a lépéseket.
@@ -95,7 +95,7 @@ Sikeresen létrehozott egy SAP naptár fiókja, amely képes:
 Most már megkezdheti, az S/4HANA üzembe helyezés felhasználói előfizetését az Azure-ban.
 
 > [!NOTE]
-A folytatás előtt megállapításához, hogy rendelkezik-e az Azure core kvóták Azure H sorozatú virtuális gépekhez. Az SAP-CAL időpontjában, Azure virtuális gépek H-sorozat használja a központi telepítésére az SAP HANA-alapú megoldások némelyike. Az Azure-előfizetéshez esetleg nincs bármely H-sorozat core kvóták a H-adatsorozathoz. Ha igen, szükség lehet egy legalább 16 H-sorozat magszámra vonatkozó kvóta eléréséhez Azure ügyfélszolgálatához.
+A folytatás előtt megállapításához, hogy rendelkezik-e az Azure vCPU kvóták Azure H sorozatú virtuális gépekhez. Az SAP-CAL időpontjában, Azure virtuális gépek H-sorozat használja a központi telepítésére az SAP HANA-alapú megoldások némelyike. Az Azure-előfizetéshez esetleg nincs bármely H-sorozat vCPU kvóták a H-adatsorozathoz. Ha igen, szükség lehet megszerezni a H-sorozat legalább 16 Vcpu tartozó kvóta Azure ügyfélszolgálatához.
 
 > [!NOTE]
 Amikor telepít egy megoldást az SAP-CAL az Azure-on, előfordulhat, hogy csak egy Azure-régió, választhat. Üzembe helyezés az SAP-CAL által javasolt más Azure-régiók, a naptár-előfizetés vásárlása SAP kell. Is szükség lehet a naptár fiók engedélyezve van az Azure-régiók eredetileg javasolt eltérő továbbítására SAP rendelkező.

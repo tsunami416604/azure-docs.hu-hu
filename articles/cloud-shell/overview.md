@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 11/16/2017
 ms.author: juluk
-ms.openlocfilehash: ebf6f1256a280fdff18c0c9060614acf0d4a642b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 08ab3b38e4c1fbeb1fac67c5d1b6f6749f7a0a3e
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj áttekintése
 Azure Cloud rendszerhéjjal egy interaktív, a böngésző által elérhető rendszerhéj Azure-erőforrások kezeléséhez.
@@ -82,12 +82,12 @@ A hozzárendelt felhő rendszerhéj pedig a helyi/globálisan-redundancia tárfi
 [További információk a felhő rendszerhéj tároló fájlmegosztások frissítése, és a feltöltése/letöltése fájlok.](persisting-shell-storage.md)
 
 ## <a name="concepts"></a>Alapelvek
-* Felhő rendszerhéj egy munkamenetenként, egyes felhasználók számára a megadott ideiglenes gépen fut
+* Felhő rendszerhéj futtat egy ideiglenes egy munkamenetenként, felhasználónkénti alapon megadott gazdagépen
 * Interaktív tevékenység nélkül 20 perc elteltével időtúllépést felhő rendszerhéj
-* Felhő rendszerhéj csak és csatolt fájlmegosztás érhető el
-* Rendszerhéj használja a felhő egy ugyanazt a fájlmegosztást a Bash és a PowerShell
+* Felhő rendszerhéj szükséges csatlakoztatni kell egy fájlmegosztás
+* Felhő használja ugyanazt a fájlmegosztást a Bash és a PowerShell
 * Felhő rendszerhéj hozzá van rendelve egy gép felhasználónként
-* Engedélyek beállítása Linux felhasználói (Bash)
+* A Bash Linux felhasználói engedélyek beállítása
 
 További információk a szolgáltatások [felhő rendszerhéj Bash](features.md) és [PowerShell felhő rendszerhéj (előzetes verzió)](features-powershell.md).
 
@@ -102,5 +102,5 @@ Próbálja ki ezeket a quickstarts szereplő példák [felhő rendszerhéj Bash]
 A felhő rendszerhéj futtató gépen szabad, az Azure Fileshoz csatlakoztatott megosztás előfeltételeként. Rendszeres tárolási költségek vonatkoznak.
 
 ## <a name="next-steps"></a>Következő lépések
-[A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md)
+[A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md) <br>
 [PowerShell használatával a felhő rendszerhéj (előzetes verzió) gyors üzembe helyezés](quickstart-powershell.md)

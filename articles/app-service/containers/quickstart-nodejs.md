@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a40dc540884454fed9c374ba1365fdf7b85e4531
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: d797b83e2ab7f1b567588ca8e884aed97b49cf45
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Node.js-webalkalmazás létrehozása az Azure App Service Linux rendszeren
 
@@ -78,11 +78,11 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app-with-built-in-image"></a>Beépített lemezképpel webalkalmazás létrehozása
+## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)]
 
-Keresse meg az újonnan létrehozott webalkalmazáshoz. Cserélje le  _&lt;alkalmazás neve >_ egy egyedi alkalmazásnévvel rendelkező.
+Keresse meg az újonnan létrehozott webalkalmazáshoz. Cserélje le  _&lt;alkalmazás neve >_ és a webes alkalmazás neve.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -142,7 +142,7 @@ A Node.js mintakód fut a webes alkalmazás beépített lemezképpel.
 
 ## <a name="update-and-redeploy-the-code"></a>A kód frissítése és ismételt üzembe helyezése
 
-Egy szövegszerkesztő használatával nyissa meg a Node.js-alkalmazáson belüli `index.js` fájlt, majd módosítsa annak szövegét a `response.end` hívásán belül:
+A helyi címtárban, nyissa meg a `index.js` a Node.js-alkalmazás fájlt, és a szöveg hívásában kis módosítja `response.end`:
 
 ```nodejs
 response.end("Hello Azure!");

@@ -5,17 +5,17 @@ services: functions
 keywords: 
 author: ggailey777
 ms.author: glenga
-ms.date: 11/07/2017
+ms.date: 11/15/2017
 ms.topic: quickstart
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 4adc25dbca06271382dc76690c75d3198d59d4be
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d04e2000f2043e8bb11e15f6b9d7fd06ef5b9da3
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Az első függvényét az Azure parancssori felülettel (előzetes verzió) Linux rendszeren futó létrehozása
 
@@ -29,14 +29,13 @@ Az alábbi lépéseket a Mac, a Windows vagy Linux számítógép támogatottak.
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
-+ Aktív [GitHub](https://github.com)-fiók. 
 + Aktív Azure-előfizetés.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ez a témakör az Azure parancssori felület 2.0-s vagy újabb verziója szükséges. Futtatás `az --version` található verzió található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez a témakör igényel-e az Azure parancssori felület 2.0.21 verzió vagy újabb. Futtatás `az --version` található verzió található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 

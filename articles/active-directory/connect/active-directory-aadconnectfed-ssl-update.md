@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 11/15/2017
 ms.author: anandy
-ms.openlocfilehash: 87807a203d71b3abfe3e93132eb7d0b82b14b4ee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eca5a61369c1653d8d3e04d191adfe4b54a11248
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Az SSL-tanúsítványt az Active Directory összevonási szolgáltatások (AD FS) farm frissítése
 
@@ -36,7 +36,7 @@ A teljes műveletet SSL-tanúsítványt az AD FS-farm összes összevonási és 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **AD FS-Farm**: Győződjön meg arról, hogy az AD FS farm Windows Server 2012 R2-alapú vagy újabb.
-* **Az Azure AD Connect**: Győződjön meg arról, hogy az Azure AD Connect verziószáma 1.1.443.0 vagy újabb. A feladat fogjuk **frissítés az AD FS SSL-tanúsítvány**.
+* **Az Azure AD Connect**: Győződjön meg arról, hogy az Azure AD Connect verziószáma 1.1.553.0 vagy újabb verzióját. A feladat fogjuk **frissítés az AD FS SSL-tanúsítvány**.
 
 ![SSL-tevékenység frissítése](./media/active-directory-aadconnectfed-ssl-update/updatessltask.png)
 
@@ -78,7 +78,7 @@ A következő lépésben válassza ki a kiszolgálókat, amelyeket frissíteni a
 
 A konfiguráció befejezése után az Azure AD Connect megjeleníti az üzenetet, amely azt jelzi, a frissítés állapotának és az AD FS-bejelentkezés ellenőrzése lehetőséget biztosít.
 
-![Konfigurálás befejezése](./media/active-directory-aadconnectfed-ssl-update/configurecomplete.png)   
+![A konfigurálás befejeződött](./media/active-directory-aadconnectfed-ssl-update/configurecomplete.png)   
 
 ## <a name="faqs"></a>Gyakori kérdések
 

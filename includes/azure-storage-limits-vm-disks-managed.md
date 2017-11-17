@@ -18,7 +18,5 @@
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Virtuális gépenkénti maximális IOPS |80 000 IOPS GS5 virtuális géppel<sup>1</sup> |
-| Virtuális gépenkénti maximális átviteli sebesség |2000 MB/s GS5 virtuális géppel<sup>1</sup> |
-
-<sup>1</sup>A többi VM-méretet lásd: [Virtuális gépek mérete](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+| Virtuális gépenkénti maximális IOPS |80000 IOPS a GS5 virtuális Géphez |
+| Virtuális gépenkénti maximális átviteli sebesség |A GS5 virtuális Géphez 2000 MB/s |

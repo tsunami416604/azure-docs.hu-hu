@@ -1,6 +1,6 @@
 ---
 title: "Informatikai Management-összekötő az Azure Naplóelemzés szolgáltatás |} Microsoft Docs"
-description: "Az informatikai szolgáltatás Management-összekötő használatával központilag figyelheti és az Azure Naplóelemzés ITSM munkaelemek kezeléséhez, és gyorsan hárítson el minden problémát."
+description: "Ez a cikk áttekintést IT Service Management Connector (ITSMC), és ez a megoldás segítségével központilag figyelheti és kezelheti a ITSM információ munkaelemek az OMS szolgáltatáshoz, és gyorsan hárítson el minden problémát."
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: ba8542640fcec6e4bc63d8f0a41bf85b221d4c5e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bd384255b3c46b3ae88b1269ab26e0ddaa6f6e77
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>Központi kezelését az informatikai szolgáltatás Management Connector (előzetes verzió) segítségével ITSM munkaelemek
 
 ![Informatikai Management-összekötő szimbólum](./media/log-analytics-itsmc/itsmc-symbol.png)
 
-Az informatikai szolgáltatás Management Connector (ITSMC) egy támogatott IT Service Management (ITSM) termék vagy szolgáltatás és a Naplóelemzési kétirányú integrációt biztosít.  Ezen a kapcsolaton keresztül is létrehozhat incidensek, a riasztások és a események Log Analyticshez riasztások vagy naplórekordokat alapján ITSM termékben. Az összekötő is különféle adatok, például incidensek és változáskérések ITSM termékből az OMS szolgáltatáshoz.
+Az informatikai szolgáltatás Management Connector (ITSMC) egy támogatott IT Service Management (ITSM) termék vagy szolgáltatás és a Naplóelemzési kétirányú integrációt biztosít.  Ezen a kapcsolaton keresztül is létrehozhat az incidensek, a riasztásokat vagy a események ITSM termékben a riasztások, a naplórekordokat vagy a riasztások az Azure Log Analytics alapján. Az összekötő is különféle adatok, például incidensek és változáskérések ITSM termékből az OMS szolgáltatáshoz.
 
 A ITSMC a következőket teheti:
 
@@ -56,11 +56,11 @@ Sikeres hozzáadása után az IT Service Management-összekötő alatt megjeleni
  ![ITSMC frissítése](./media/log-analytics-itsmc/itsmc-connection-refresh.png)
 
 
-## <a name="configuring-the-connection-with-your-itsm-software"></a>A kapcsolat konfigurálása a ITSM szoftverrel
+## <a name="configuring-the-itsmc-connection-with-your-itsm-productsservices"></a>A ITSMC kapcsolat konfigurálása a ITSM termékek vagy szolgáltatások
 
 ITSMC példányokhoz **System Center Service Manager**, **ServiceNow**, **Provance**, és **Cherwell**.
 
-Az alábbi eljárásokkal, szükség szerint:
+Az alábbi eljárásokkal megfelelő meg:
 
 - [A System Center Service Manager (SCSM)](log-analytics-itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-oms)
 
@@ -258,6 +258,7 @@ A csatlakoztatott ITSM forrásokban közvetlenül egy naplóbejegyzést képvise
 4. Adja meg a megfelelő értékeket a **ügyfél típusú**, **hatás**, **sürgősség**, **kategória**, és **alkategória** szövegmezőbe, és kattintson **létrehozása**.
 
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Az Azure riasztásokból ITSM munkaelemek létrehozása
+
 ITSMC integrálva van a művelet csoportok.
 
 [A művelet csoportok](../monitoring-and-diagnostics/monitoring-action-groups.md) lehetőséget nyújtanak olyan moduláris és újrafelhasználható, az Azure-riasztások műveleteket váltanak ki. A ITSM művelet művelet csoportok használatával hozhat létre az ITSM termék, amely rendelkezik egy létező kapcsolatot ITSM összekötő megoldáshoz munkaelemek.
@@ -286,7 +287,7 @@ Azure riasztási szabály létrehozása/szerkesztése, során művelet csoportot
 
 >[!NOTE]
 
-> Jelenleg csak a tevékenység napló riasztások támogatják az ITSM műveletet. Az egyéb Azure értesítések ITSM a művelet nem támogatott.
+> Jelenleg csak a napló Tevékenységriasztásokat támogatják az ITSM műveletet, más Azure-riasztások nem támogatja ezt.
 
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>Az OMS ITSM kapcsolatok hibáinak elhárítása

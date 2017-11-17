@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: sstein
-ms.openlocfilehash: a74a439eab3698e14e5b8e2db0d45a86e9f55f0e
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 450a5fc578948db044d9e0bb9db09508b2512aca
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Megfigyelés és kezelés Azure SQL-adatbázisok és tárolókészletekben: a több-bérlős SaaS-alkalmazás teljesítménye
 
@@ -64,7 +64,7 @@ Nagy mennyiségű forgatókönyvek, ahol sok erőforrással rendelkező dolgozun
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-source-code-and-scripts"></a>Az alkalmazás forráskódjához Wingtip jegyek SaaS adatbázis / bérlői és parancsfájlok
 
-A Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) github-tárház. [Töltse le a Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok lépéseket](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-saas-scripts).
+A Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) github-tárház. [Töltse le a Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok lépéseket](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts).
 
 ## <a name="provision-additional-tenants"></a>További bérlők kiépítése
 

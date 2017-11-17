@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Functions az Event Hubs kötések |} Microsoft Docs"
+title: "Az Azure Functions az Event Hubs kötések"
 description: "Azure Event Hubs kötések az Azure Functions használatának megismerése."
 services: functions
 documentationcenter: na
@@ -14,57 +14,74 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/20/2017
+ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 85eb6985ef3579b1b2313db3ce5f91c3471da72f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c2660a3ca8ee7569d49a6998d0dfd5a98a97d294
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-functions-event-hubs-bindings"></a>Az Azure Functions az Event Hubs kötések
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Ez a cikk azt ismerteti, hogyan konfigurálhatja és használhatja [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) Azure Functions kötéseit.
-Az Azure Functions támogatja indítható el, és az Event Hubs kötései kimeneti.
+Ez a cikk azt ismerteti, hogyan használható [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) Azure Functions kötéseit. Az Azure Functions támogatja indítható el, és az Event Hubs kötései kimeneti.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Ha most ismerkedik az Azure Event Hubs, tekintse meg a [Event Hubs – áttekintés](../event-hubs/event-hubs-what-is-event-hubs.md).
+## <a name="event-hubs-trigger"></a>Az Event Hubs indítás
 
-<a name="trigger"></a>
-
-## <a name="event-hub-trigger"></a>Hub eseményindító
 Az Event Hubs eseményindító segítségével egy event hub eseményfelhasználó küldött esemény válaszolni. Az event hubs az eseményindító beállítása olvasási hozzáféréssel kell rendelkeznie.
 
-Az Event Hubs függvény eseményindító használja a következő JSON-objektum a `bindings` function.json tömbje:
+Az Event Hubs funkció aktiválása esetén az üzenet, amely elindítja az átad a függvény egy karakterlánc.
 
-```json
+## <a name="trigger---example"></a>Eseményindító – példa
+
+Tekintse meg a nyelvspecifikus példát:
+
+* [Lefordított C#](#trigger---c-example)
+* [C# parancsfájl](#trigger---c-script-example)
+* [F#](#trigger---f-example)
+* [JavaScript](#trigger---javascript-example)
+
+### <a name="trigger---c-example"></a>Eseményindító - C# – példa
+
+Az alábbi példában látható [előre le fordítva C#](functions-dotnet-class-library.md) kódot, amely az üzenettörzs az event hub eseményindító naplózza.
+
+```csharp
+[FunctionName("EventHubTriggerCSharp")]
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnection")] string myEventHubMessage, TraceWriter log)
 {
-    "type": "eventHubTrigger",
-    "name": "<Name of trigger parameter in function signature>",
-    "direction": "in",
-    "path": "<Name of the event hub>",
-    "consumerGroup": "Consumer group to use - see below",
-    "connection": "<Name of app setting with connection string - see below>"
+    log.Info($"C# Event Hub trigger function processed a message: {myEventHubMessage}");
 }
 ```
 
-`consumerGroup`egy nem kötelező tulajdonság beállításához használja a [fogyasztói csoportot](../event-hubs/event-hubs-features.md#event-consumers) használt események központban előfizetni. Ha nincs megadva, a `$Default` fogyasztói csoportot használja.  
-`connection`egy Alkalmazásbeállítás, amely tartalmazza a kapcsolati karakterláncot az event hubs névtér nevének kell lennie.
-Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc kell rendelkeznie legalább olvasási engedéllyel az eseményindítót.
+Férhetnek hozzá az esemény metaadatok, kötést létrehozni egy [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektum (igényel a `using` nyilatkozata `Microsoft.ServiceBus.Messaging`).
 
-[További beállítások](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) egy host.json fájlban, és további Event Hubs eseményindítók megadható.  
+```csharp
+[FunctionName("EventHubTriggerCSharp")]
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnection")] EventData myEventHubMessage, TraceWriter log)
+{
+    log.Info($"{Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+}
+```
+Események fogadásához egy kötegben, hogy `string` vagy `EventData` tömb:
 
-<a name="triggerusage"></a>
+```cs
+[FunctionName("EventHubTriggerCSharp")]
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnection")] string[] eventHubMessages, TraceWriter log)
+{
+    foreach (var message in eventHubMessages)
+    {
+        log.Info($"C# Event Hub trigger function processed a message: {message}");
+    }
+}
+```
 
-## <a name="trigger-usage"></a>Eseményindító kihasználtsága
-Az Event Hubs funkció aktiválása esetén az üzenet, amely elindítja az átad a függvény egy karakterlánc.
+### <a name="trigger---c-script-example"></a>Eseményindító - C# parancsfájl – példa
 
-<a name="triggersample"></a>
+A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja. A függvény az üzenettörzs az event hub eseményindító naplózza.
 
-## <a name="trigger-sample"></a>Eseményindító minta
-Tegyük fel, hogy a következő Event Hubs trigger a `bindings` function.json tömbje:
+Itt az kötés adatai a *function.json* fájlt:
 
 ```json
 {
@@ -75,16 +92,7 @@ Tegyük fel, hogy a következő Event Hubs trigger a `bindings` function.json t�
   "connection": "myEventHubReadConnectionString"
 }
 ```
-
-Tekintse meg a nyelvspecifikus mintát, amelyre bejelentkezik az eseményindító hub üzenet törzsét.
-
-* [C#](#triggercsharp)
-* [F#](#triggerfsharp)
-* [Node.js](#triggernodejs)
-
-<a name="triggercsharp"></a>
-
-### <a name="trigger-sample-in-c"></a>A C# eseményindító minta #
+A C# parancsfájl kód itt látható:
 
 ```cs
 using System;
@@ -95,7 +103,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Az esemény akkor is jelentkezhet egy [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektum, amely hozzáférést biztosít az esemény-metaadatok.
+Az esemény-metaadatok eléréséhez kötést létrehozni egy [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektum (kell egy használni utasítást `Microsoft.ServiceBus.Messaging`).
 
 ```cs
 #r "Microsoft.ServiceBus"
@@ -108,7 +116,7 @@ public static void Run(EventData myEventHubMessage, TraceWriter log)
 }
 ```
 
-Események fogadásához egy kötegben, módosítsa a metódus-aláírás `string[]` vagy `EventData[]`.
+Események fogadásához egy kötegben, hogy `string` vagy `EventData` tömb:
 
 ```cs
 public static void Run(string[] eventHubMessages, TraceWriter log)
@@ -120,18 +128,46 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-<a name="triggerfsharp"></a>
+### <a name="trigger---f-example"></a>Eseményindító - F # – példa
 
-### <a name="trigger-sample-in-f"></a>Az F # eseményindító minta #
+A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [F # függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény az üzenettörzs az event hub eseményindító naplózza.
+
+Itt az kötés adatai a *function.json* fájlt:
+
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "path": "MyEventHub",
+  "connection": "myEventHubReadConnectionString"
+}
+```
+
+A F # kód itt látható:
 
 ```fsharp
 let Run(myEventHubMessage: string, log: TraceWriter) =
     log.Info(sprintf "F# eventhub trigger function processed work item: %s" myEventHubMessage)
 ```
 
-<a name="triggernodejs"></a>
+### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript – példa
 
-### <a name="trigger-sample-in-nodejs"></a>A node.js eseményindító minta
+A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény az üzenettörzs az event hub eseményindító naplózza.
+
+Itt az kötés adatai a *function.json* fájlt:
+
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "path": "MyEventHub",
+  "connection": "myEventHubReadConnectionString"
+}
+```
+
+A JavaScript-kód itt látható:
 
 ```javascript
 module.exports = function (context, myEventHubMessage) {
@@ -140,39 +176,68 @@ module.exports = function (context, myEventHubMessage) {
 };
 ```
 
-<a name="output"></a>
+## <a name="trigger---attributes-for-precompiled-c"></a>Eseményindító - attribútumok az előfordított C#
+
+A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus).
+
+Az attribútum konstruktora időt vesz igénybe, az eseményközpont nevét, a felhasználói csoport nevét és a kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. A beállításokkal kapcsolatban további információkért lásd: a [indul el, a konfigurációs szakasz](#trigger---configuration). Íme egy `EventHubTriggerAttribute` attribútum példa:
+
+```csharp
+[FunctionName("EventHubTriggerCSharp")]
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnection")] string myEventHubMessage, TraceWriter log)
+```
+
+## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
+
+Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `EventHubTrigger` attribútum.
+
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|---------|---------|----------------------|
+|**típusa** | n/a | meg kell `eventHubTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**iránya** | n/a | meg kell `in`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
+|**név** | n/a | Esemény-elem funkciókódot jelölő neve. | 
+|**elérési út** |**EventHubName** | Az event hubs neve. | 
+|**consumerGroup** |**ConsumerGroup** | Egy nem kötelező tulajdonság, amely beállítja a [fogyasztói csoportot](../event-hubs/event-hubs-features.md#event-consumers) használt események központban előfizetni. Ha nincs megadva, a `$Default` fogyasztói csoportot használja. | 
+|**kapcsolat** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc kell rendelkeznie legalább olvasási engedéllyel az eseményindítót.<br/>Helyileg kidolgozása, Alkalmazásbeállítások kísérhet értékeit a [local.settings.json fájl](functions-run-local.md#local-settings-file).|
+
+## <a name="trigger---hostjson-properties"></a>Eseményindító - host.json tulajdonságai
+
+A [host.json](functions-host-json.md#eventhub) fájl az Event Hubs eseményindító viselkedését vezérlő beállításokat tartalmaz.
+
+[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
 ## <a name="event-hubs-output-binding"></a>Az Event Hubs kimeneti kötése
-Az Event Hubs kimeneti kötése beírni az eseményeket az event hub eseményfelhasználó használja. Események írhat az eseményközpontba a küldési engedéllyel kell rendelkeznie.
 
-A kimeneti kötés használja a következő JSON-objektum a `bindings` function.json tömbje:
+Az Event Hubs kimeneti kötése beírni az eseményeket az eseménystream használja. Események írhat az eseményközpontba a küldési engedéllyel kell rendelkeznie.
 
-```json
+## <a name="output---example"></a>Kimeneti – példa
+
+Tekintse meg a nyelvspecifikus példát:
+
+* [Lefordított C#](#output---c-example)
+* [C# parancsfájl](#output---c-script-example)
+* [F#](#output---f-example)
+* [JavaScript](#output---javascript-example)
+
+### <a name="output---c-example"></a>Kimeneti - C# – példa
+
+Az alábbi példa mutatja egy [előre le a C# függvény fordítva](functions-dotnet-class-library.md) , amely egy üzenetet ír egy eseményközpontot, a metódus visszatérési értéket használja, mint a kimeneti:
+
+```csharp
+[FunctionName("EventHubOutput")]
+[return: EventHub("outputEventHubMessage", Connection = "EventHubConnection")]
+public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, TraceWriter log)
 {
-    "type": "eventHub",
-    "name": "<Name of output parameter in function signature>",
-    "path": "<Name of event hub>",
-    "connection": "<Name of app setting with connection string - see below>"
-    "direction": "out"
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+    return $"{DateTime.Now}";
 }
 ```
 
-`connection`egy Alkalmazásbeállítás, amely tartalmazza a kapcsolati karakterláncot az event hubs névtér nevének kell lennie.
-Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc az üzenetet küldeni az eseménystream küldési engedéllyel kell rendelkeznie.
+### <a name="output---c-script-example"></a>Kimeneti - C# parancsfájl – példa
 
-## <a name="output-usage"></a>Kimeneti használata
-Ez a szakasz bemutatja, hogyan használható az Event Hubs kimeneti a funkciókódot kötelező.
+A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja. A függvény üzenetet ír egy eseményközpontba.
 
-A következő paraméter típusú kimenetre küldheti a konfigurált eseményközpontba üzenetek:
-
-* `out string`
-* `ICollector<string>`(a kimeneti több üzenetek)
-* `IAsyncCollector<string>`(aszinkron verzióját `ICollector<T>`)
-
-<a name="outputsample"></a>
-
-## <a name="output-sample"></a>Minta kimenet
-Tegyük fel, hogy a következő Event Hubs kimeneti kötések a `bindings` function.json tömbje:
+Itt az kötés adatai a *function.json* fájlt:
 
 ```json
 {
@@ -184,15 +249,7 @@ Tegyük fel, hogy a következő Event Hubs kimeneti kötések a `bindings` funct
 }
 ```
 
-Tekintse meg a nyelvspecifikus mintát, amely egy eseményt ír a még akkor is, az adatfolyam.
-
-* [C#](#outcsharp)
-* [F#](#outfsharp)
-* [Node.js](#outnodejs)
-
-<a name="outcsharp"></a>
-
-### <a name="output-sample-in-c"></a>A C# kimeneti minta #
+C# parancsfájlkód, amely létrehoz egy üzenetet a következő:
 
 ```cs
 using System;
@@ -205,7 +262,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, Trac
 }
 ```
 
-Vagy, hozzon létre több üzenetet:
+Az alábbiakban C# parancsfájl létrehozó kód mellől több üzenetet:
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, TraceWriter log)
@@ -217,9 +274,23 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 }
 ```
 
-<a name="outfsharp"></a>
+### <a name="output---f-example"></a>Kimeneti - F # – példa
 
-### <a name="output-sample-in-f"></a>Az F # kimeneti minta #
+A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [F # függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény üzenetet ír egy eseményközpontba.
+
+Itt az kötés adatai a *function.json* fájlt:
+
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "path": "myeventhub",
+    "connection": "MyEventHubSend",
+    "direction": "out"
+}
+```
+
+A F # kód itt látható:
 
 ```fsharp
 let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWriter) =
@@ -228,9 +299,23 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
     outputEventHubMessage <- msg;
 ```
 
-<a name="outnodejs"></a>
+### <a name="output---javascript-example"></a>Kimeneti - JavaScript – példa
 
-### <a name="output-sample-for-nodejs"></a>A Node.js kimeneti minta
+A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény üzenetet ír egy eseményközpontba.
+
+Itt az kötés adatai a *function.json* fájlt:
+
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "path": "myeventhub",
+    "connection": "MyEventHubSend",
+    "direction": "out"
+}
+```
+
+Az alábbiakban JavaScript-kódot, amely egy üzenetet küld:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -241,7 +326,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Vagy több üzenetet küldeni.
+Az alábbiakban JavaScript-kódot, amelyet több üzenetet küld:
 
 ```javascript
 module.exports = function(context) {
@@ -256,5 +341,37 @@ module.exports = function(context) {
 };
 ```
 
+## <a name="output---attributes-for-precompiled-c"></a>Kimeneti - attribútumok az előfordított C#
+
+A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus).
+
+Az attribútum konstruktora időt vesz igénybe, az eseményközpont nevét és a kapcsolati karakterláncot tartalmazó Alkalmazásbeállítás nevét. A beállításokkal kapcsolatban további információkért lásd: [kimeneti - konfigurációs](#output---configuration). Íme egy `EventHub` attribútum példa:
+
+```csharp
+[FunctionName("EventHubOutput")]
+[return: EventHub("outputEventHubMessage", Connection = "EventHubConnection")]
+public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, TraceWriter log)
+```
+
+## <a name="output---configuration"></a>Kimeneti - konfiguráció
+
+Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `EventHub` attribútum.
+
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|---------|---------|----------------------|
+|**típusa** | n/a | "Az eventHub" értékre kell állítani. |
+|**iránya** | n/a | "Ki" értékre kell állítani. Ez a paraméter értéke automatikusan kötésének létrehozásakor az Azure portálon. |
+|**név** | n/a | A változó nevét, amely jelöli az esemény függvény kódban használt. | 
+|**elérési út** |**EventHubName** | Az event hubs neve. | 
+|**kapcsolat** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc az üzenetet küldeni az eseménystream küldési engedéllyel kell rendelkeznie.<br/>Helyileg kidolgozása, Alkalmazásbeállítások kísérhet értékeit a [local.settings.json fájl](functions-run-local.md#local-settings-file).|
+
+## <a name="output---usage"></a>Kimeneti - használat
+
+A C# és C# a parancsfájlt, használatával üzeneteket metódusparaméter például `out string paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. Több üzenetet írni használható `ICollector<string>` vagy `IAsyncCollector<string>` helyett `out string`.
+
+A JavaScript, hozzáférhet a kimeneti esemény a `context.bindings.<name>`. `<name>`az érték szerepel a `name` tulajdonsága *function.json*.
+
 ## <a name="next-steps"></a>Következő lépések
-[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
+
+> [!div class="nextstepaction"]
+> [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

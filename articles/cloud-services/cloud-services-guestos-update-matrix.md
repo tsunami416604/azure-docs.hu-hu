@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/8/2017
+ms.date: 11/16/2017
 ms.author: raiye
-ms.openlocfilehash: 90ce26733c7018e2cf9464470a65bd0539772c3b
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: ad23a38800a282b81d95eb5b15b218d86d3c0bc9
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrix
 Itt való naprakész információkat a legújabb Azure vendég operációs rendszer feloldja a Felhőszolgáltatásai számára. Ez az információ segít a frissítési lépések megtervezéséről, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissíti a [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], nem elengedhetetlen, hogy olvassa el ezen a lapon.
@@ -111,7 +111,7 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.47_201710-01 |2017. november 8. |POST 4.49 |TBD |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.47_201710-02 |2017. november 8. |POST 4.49 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.46_201709-01 |2017. október 6. |POST 4.48 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.45_201708-01 |2017. augusztus 24. |POST 4.47 |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.44_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cynthn
-ms.openlocfilehash: dc715a9bf4e5366e1719de7c649feb06b0c4bee7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 37eaafdbcee87e6f6a6164dffcabaa7e9efa65ca
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Teljesítményteszt pontszámok Windows virtuális gépek számítási
 A következő SPECInt teljesítményteszt eredmények megjelenítése Azure nagy teljesítményű virtuális gép következőhöz Windows Server rendszert futtató számítási teljesítményt. Számítási teljesítményteszt pontszámok is elérhető [Linux virtuális gépek](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -65,7 +65,7 @@ A következő SPECInt teljesítményteszt eredmények megjelenítése Azure nagy
 | Standard h16mr méretű |16 |2 |Intel Xeon E5-2667 v3 3,2 GHz-es @ |7 |569.6 |2.8 |
 
 ## <a name="about-specint"></a>SPECint kapcsolatos
-Windows számok futtatásával volt számított [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) Windows Server rendszeren. SPECint volt futtatva az Alap (SPECint_rate2006) beállítás használata core egy példányt. SPECint áll 12 külön teszteket, minden egyes háromszor fut le, minden tesztből középértékét véve és súlyozási őket egy összetett pontszám kialakításához. Ezek a tesztek között az átlagos pontszámok jelenik meg több virtuális gép is futtatja.
+Windows számok futtatásával volt számított [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) Windows Server rendszeren. SPECint volt futtatva az Alap (SPECint_rate2006) beállítás használata vCPU egy példányt. SPECint áll 12 külön teszteket, minden egyes háromszor fut le, minden tesztből középértékét véve és súlyozási őket egy összetett pontszám kialakításához. Ezek a tesztek között az átlagos pontszámok jelenik meg több virtuális gép is futtatja.
 
 ## <a name="next-steps"></a>Következő lépések
 * Tárolási kapacitás, a lemez adatai és Virtuálisgép-méretek között további szempontokról, lásd: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

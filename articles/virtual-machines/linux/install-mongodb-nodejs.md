@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: c97ade0a3d95824f723aad55776de861fe49441f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ff9e23de41245ea21ba6e9c3efe13ca13b0b0ae1
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-10"></a>Hogyan kell telepíteni, és konfigurálja a MongoDB a Linux virtuális gépet az Azure CLI 1.0
 [MongoDB](http://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk bemutatja, hogyan telepítse és konfigurálja a MongoDB a Linux virtuális gép az Azure erőforrás-kezelő telepítési modellel. Példák, amelyek részletesen hogyan számára:
@@ -163,7 +163,7 @@ Egy összetett MongoDB szilánkos fürtöt a következő Azure gyors üzembe hel
 * [MongoDB horizontális fürt a CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) -https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 
 > [!WARNING]
-> Az összetett szilánkos MongoDB-fürt telepítése szükséges több mint 20 mag, vagyis általában az alapértelmezett magok száma az előfizetéshez régiónként. Nyissa meg a alapszámának növeléséhez az Azure támogatási kérelmet.
+> Az összetett szilánkos MongoDB-fürt telepítése szükséges több mint 20 Vcpu, vagyis általában az alapértelmezett vCPU számának régiónként az előfizetéshez. Nyissa meg az Azure támogatási kérelmet a vCPU számának növeléséhez.
 
 Az alábbi példa létrehoz egy erőforráscsoport nevű *myResourceGroup* a a *eastus* régióban. Adja meg a saját értékek a következők szerint:
 

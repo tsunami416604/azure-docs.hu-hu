@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: c1b832895476e2f64bbae638db76f89890e5c804
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 5369946b1e8a4851ee940cf6fe91a1bdb94db5f3
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Az Azure App Service-csomagot kezelése
 
@@ -58,7 +58,7 @@ Válassza ki **módosítás App Service-csomag** a folyamat elindításához.
 
 **App Service-csomag módosítása** megnyitja a **App Service-csomag** választó. Válasszon egy meglévő terv ebbe az alkalmazásba történő áthelyezése. 
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > A **kiválasztása az alkalmazásszolgáltatási csomag** lap szűrve van a következő szempontok szerint: 
 > - Ugyanabban az erőforráscsoportban található 
 > - Ugyanabban a földrajzi régióban található 
@@ -82,7 +82,7 @@ Található **Klónozott alkalmazás** a a **Fejlesztőeszközök** a menü rés
 
 ## <a name="scale-an-app-service-plan"></a>Az App Service-csomag vertikális
 
-Méretezést kívánó ah App Service-csomag csomagazonosítóját IP-címek című [vertikális felskálázás az Azure alkalmazásban](web-sites-scale.md).
+Méretezést kívánó egy App Service előfizetési csomag csomagazonosítóját tarifacsomag című [vertikális felskálázás az Azure alkalmazásban](web-sites-scale.md).
 
 Terjessze ki egy alkalmazást a példányok száma, lásd: [méretezése példányszám manuális vagy automatikus](../monitoring-and-diagnostics/insights-how-to-scale.md).
 

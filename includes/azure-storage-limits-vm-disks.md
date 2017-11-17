@@ -1,11 +1,15 @@
-Az Azure virtuális gépek több adatlemez csatolását támogatták. Az optimális teljesítmény érdekében érdemes korlátozni a virtuális géphez csatlakoztatott nagy kihasználtságú lemezek számát a lehetséges szabályozás elkerülése érdekében. Ha nincs az összes nagy kihasználtságú lemez egyszerre használatban, a tárfiók több lemezt tud támogatni.
+Az Azure virtuális gépek több adatlemez csatolását támogatták. Ez a cikk ismerteti a virtuális gép adatlemezek méretezhetőségi és Teljesítménycélok. Ezeken a célokon a segítségével meghatározhatja a számát és típusát, amelyekre szüksége van a teljesítmény és kapacitás követelményeinek megfelelően lemez. 
 
-* **Az Azure Managed lemezek:** felügyelt lemezek maximális száma regionális, és a tárolási típust is függ. Az alapértelmezett is maximális száma pedig 10 000 előfizetésenként, régiónként és egy tárolási típust. Például létrehozhat legfeljebb 10 000 szabványos felügyelt lemezek és 10 000 prémium is által kezelt lemezeken egy előfizetésben és régióban. 
+> [!IMPORTANT]
+> Az optimális teljesítmény érdekében korlátozza a erősen túlterhelt lehetséges szabályozás elkerülése érdekében a virtuális géphez csatolt lemezek számát. A csatlakoztatott lemezek magas nem használhatók egyszerre, ha a virtuális gép lemezek nagyobb számú is támogatja.
 
-    A felügyelt pillanatképeket és rendszerképeket a felügyelt lemezek korlátjához képest számítja a rendszer.
+* **Az Azure Managed lemezek:** a lemez felügyelt lemezek határa régiónként, valamint minden lemez típusa. A maximális száma, valamint az alapértelmezett határérték 10 000 felügyelt lemezek régiónként és lemez típusonkénti az előfizetéshez. Például létrehozhat legfeljebb 10 000 standard szintű felügyelt lemez és a is 10 000 prémium által kezelt lemezeken régióban, előfizetésenként.
+
+    Felügyelt pillanatfelvételek és lemezképeket, csökkenti a felügyelt lemezek korlátot.
 
 * **Standard szintű tárfiókok esetén:** A Standard szintű tárfiókok összesen legfeljebb 20 000 IOPS kérelemaránnyal rendelkeznek. A Standard szintű tárfiókokon az összes virtuálisgép-lemezen lévő teljes IOPS nem léphet túl ezen a korláton.
   
-    Nagyjából kiszámíthatja az egyetlen Standard szintű tárfiók által támogatott nagy kihasználtságú lemezek számát a kérelemarány korlátja alapján. Az alapszintű csomagba tartozó virtuális gépek esetén például a nagy kihasználtságú lemezek maximális száma körülbelül 66 (20 000/300 IOPS lemezenként), a standard csomagba tartozó virtuális gépek esetén pedig körülbelül 40 (20 000/500 IOPS lemezenként) az alábbi táblázatban láthatók szerint. 
+    Nagyjából kiszámíthatja az egyetlen Standard szintű tárfiók által támogatott nagy kihasználtságú lemezek számát a kérelemarány korlátja alapján. Például egy alapszintű rétegben VM, erősen túlterhelt lemezek maximális száma érték a 66 (20 000/300 iops-érték lemezenként), és a Standard szint virtuális gépek, akkor hamarosan 40 (20 000 500 iops-érték lemezenként). 
+
 * **Prémium szintű tárfiókok esetén:** A prémium szintű tárfiókok összesen legfeljebb 50 Gbps átviteli sebességgel rendelkeznek. Az összes virtuálisgép-lemezen lévő teljes átvitel nem lépheti túl ezt a korlátot.
 

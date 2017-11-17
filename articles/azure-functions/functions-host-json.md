@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 11/09/2017
 ms.author: tdykstra
-ms.openlocfilehash: b3e5976a84e0ec91a41d683a426b58635fd5abd6
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 63e63f69cb6463adcca480eccf1cc485574d9eff
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>az Azure Functions Host.JSON referenciája
 
@@ -137,23 +137,9 @@ Szabályozza a [Application Insights szolgáltatással mintavételi](functions-m
 
 ## <a name="eventhub"></a>Az EventHub
 
-Konfigurációs beállítást [Eseményközpont eseményindítók és kötések](functions-bindings-event-hubs.md).
+Konfigurációs beállításainak [Eseményközpont eseményindítók és kötések](functions-bindings-event-hubs.md).
 
-```json
-{
-    "eventHub": {
-      "maxBatchSize": 64,
-      "prefetchCount": 256,
-      "batchCheckpointFrequency": 1
-    }
-}
-```
-
-|Tulajdonság  |Alapértelmezett | Leírás |
-|---------|---------|---------| 
-|maxBatchSize|64|A receive hurok érkezett események maximális száma.|
-|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amelyet az alapul szolgáló EventProcessorHost fog használni.| 
-|batchCheckpointFrequency|1|Az EventHub kurzor ellenőrzőpont létrehozása előtt feldolgozható kötegek esemény száma.| 
+[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
 ## <a name="functions"></a>Funkciók
 
@@ -184,7 +170,7 @@ Konfigurációs beállításainak [http eseményindítók és kötések](functio
     "http": {
         "routePrefix": "api",
         "maxOutstandingRequests": 20,
-        "maxConcurrentRequests": 10,
+        "maxConcurrentRequests": 
         "dynamicThrottlesEnabled": false
     }
 }
@@ -260,21 +246,7 @@ Konfigurációs beállításainak [tárolási eseményindítók és kötések](f
 
 Konfigurációs beállítást [Service Bus-eseményindítók és kötések](functions-bindings-service-bus.md).
 
-```json
-{
-    "serviceBus": {
-      "maxConcurrentCalls": 16,
-      "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
-    }
-}
-```
-
-|Tulajdonság  |Alapértelmezett | Leírás |
-|---------|---------|---------| 
-|maxConcurrentCalls|16|A visszahívás, amely az üzenet szivattyú kell kezdeményezni az egyidejű hívások maximális száma. | 
-|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amelyet az alapul szolgáló MessageReceiver fog használni.| 
-|autoRenewTimeout|00:05:00|A maximális időtartamot, amelyen belül az üzenet zár megújításra kerül automatikusan.| 
+[!INCLUDE [functions-host-json-service-bus](../../includes/functions-host-json-service-bus.md)]
 
 ## <a name="singleton"></a>Egypéldányos
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: c158c67a82e12501386179e19bc75fd852d7e308
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 157a10277f89643245746223f2cd1d73680ac700
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Központi telepítése az Azure AD-alkalmazásproxyval oldható meg az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Támogatja a távoli dolgozók által az interneten keresztül érhető el a helyszíni alkalmazások közzététele az Azure Active Directory (AD) alkalmazásproxy segítségével. Az Azure AD tartományi szolgáltatásokat helyszíni Azure infrastruktúra-szolgáltatásokat futtató örökölt alkalmazások most növekedési-és-shift lehetővé teszi. Majd közzéteheti ezeket az alkalmazásokat az Azure AD alkalmazásproxy segítségével biztonságos távoli hozzáférés biztosítása a szervezetében lévő felhasználók számára.
@@ -56,7 +56,7 @@ Hajtsa végre az alábbi lépéseket az Azure AD-címtár Azure AD alkalmazáspr
 
 
 ## <a name="task-2---provision-domain-joined-windows-servers-to-deploy-the-azure-ad-application-proxy-connector"></a>2. feladat – kiépíteni a tartományhoz csatlakoztatott Windows Server rendszerű kiszolgálók az Azure AD alkalmazásproxy-összekötő üzembe helyezése
-A tartományhoz csatlakoztatott Windows Server virtuális gépek is telepíthető, amely az Azure AD alkalmazásproxy-összekötő van szüksége. A közzétett alkalmazások, attól függően választhatja, hogy több kiszolgáló, amelyen telepítve van az összekötő telepítéséhez. Központi telepítési lehetőséget ad nagyobb rendelkezésre állása, és segít nehezebb hitelesítési terhelés kezelésére.
+A tartományhoz csatlakoztatott Windows Server virtuális gépek is telepíthető, amely az Azure AD alkalmazásproxy-összekötő van szüksége. Egyes alkalmazások választhatja, hogy több kiszolgáló, amelyen telepítve van az összekötő telepítéséhez. Központi telepítési lehetőséget ad nagyobb rendelkezésre állása, és segít nehezebb hitelesítési terhelés kezelésére.
 
 Az összekötő-kiszolgálókon ugyanazt a virtuális hálózatot (vagy a csatlakoztatott/társviszonyban virtuális hálózaton), amelyben engedélyezte az Azure AD tartományi szolgáltatások által kezelt tartomány kiépítéséhez. Ehhez hasonlóan az alkalmazások közzététele az alkalmazásproxy keresztül üzemeltető kiszolgálók telepítve kell lennie az Azure virtuális hálózaton.
 
@@ -64,7 +64,7 @@ Az összekötő-kiszolgálókon ugyanazt a virtuális hálózatot (vagy a csatla
 
 
 ## <a name="task-3---install-and-register-the-azure-ad-application-proxy-connector"></a>3. feladat – az Azure AD alkalmazásproxy-összekötő regisztrálása és telepítése
-Korábban a Windows Server virtuális gép kiépítése, és felügyelt tartományhoz csatlakozik. Ebben a feladatban telepíti az Azure AD alkalmazásproxy-összekötő a virtuális gépen.
+Korábban a Windows Server virtuális gép kiépítése, és felügyelt tartományhoz csatlakozik. Ebben a feladatban telepíti ezt a virtuális gépet az Azure AD alkalmazásproxy-összekötő.
 
 1. Az összekötő-telepítési csomag másolása a virtuális gép, amelyre telepíti az Azure AD-webalkalmazás-Proxy connector.
 
@@ -102,8 +102,8 @@ Korábban a Windows Server virtuális gép kiépítése, és felügyelt tartomá
 Egyszeri bejelentkezés az alkalmazások által Application Proxy összekötők engedély integrált Windows-hitelesítéssel (IWA) segítségével megszemélyesíthet felhasználókat, küldésére és fogadására a nevében tokenek engedélyezése. Kerberos által korlátozott delegálás (KCD) konfigurálása az összekötő és a felügyelt tartományra lévő erőforrások eléréséhez szükséges engedélyeket. Az erőforrás-alapú Kerberos által korlátozott Delegálás mechanizmust használni a felügyelt tartományok a biztonság fokozása érdekében.
 
 
-### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>Erőforrás-alapú kerberos által korlátozott delegálás az Azure AD alkalmazásproxy-összekötő engedélyezése
-Az Azure Application Proxy connector konfigurálnia kell a kerberos által korlátozott delegálás (KCD), ezért esetében megszemélyesíthet felhasználókat a felügyelt tartományra. Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz, a nem tartományi rendszergazdai jogosultságokkal rendelkezik. Ezért **hagyományos fiók szintű Kerberos által korlátozott Delegálás nem konfigurálható egy felügyelt tartomány**.
+### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>Erőforrás-alapú Kerberos által korlátozott delegálás az Azure AD alkalmazásproxy-összekötő engedélyezése
+Az Azure Application Proxy connector konfigurálnia kell a Kerberos által korlátozott delegálás (KCD), ezért esetében megszemélyesíthet felhasználókat a felügyelt tartományra. Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz, a nem tartományi rendszergazdai jogosultságokkal rendelkezik. Ezért **hagyományos fiók szintű Kerberos által korlátozott Delegálás nem konfigurálható egy felügyelt tartomány**.
 
 Erőforrás-alapú Kerberos által korlátozott Delegálás használata, ez a [cikk](active-directory-ds-enable-kcd.md).
 
@@ -113,12 +113,12 @@ Erőforrás-alapú Kerberos által korlátozott Delegálás használata, ez a [c
 >
 
 A Get-ADComputer PowerShell-parancsmag használatával a számítógép, amelyen telepítve van az Azure AD alkalmazásproxy-összekötő beállításainak beolvasása.
-```
+```powershell
 $ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
 ```
 
 Ezt követően a Set-ADComputer parancsmag segítségével erőforrás-alapú az erőforrás-kiszolgáló Kerberos által korlátozott Delegálás beállítása.
-```
+```powershell
 Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 

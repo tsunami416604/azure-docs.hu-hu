@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: mazha
-ms.openlocfilehash: ba9c28f0e6df25b101b45edf836d0b95056cbc6f
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 2021b5b7602605a7c264e9cd575399077691da34
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="control-azure-content-delivery-network-caching-behavior-with-query-strings---premium"></a>Vezérlő Azure Content Delivery Network gyorsítótárazásának a lekérdezési karakterláncok - támogatás
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/11/2017
 > 
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Content Delivery Network (CDN), megadhatja a hogyan kerül a gyorsítótárba egy lekérdezési karakterláncot tartalmazó webes kérelem számára. A webes kérelem lekérdezési karakterláncot, a lekérdezési karakterlánc része a kérelmet, amely után a `?` karakter. A lekérdezési karakterlánc tartalmazhat egy vagy több paramétert, az elemek elválasztására pedig a `&` karakter. Például: `http://www.domain.com/content.mov?data1=true&data2=false`. Ha a kérelem több lekérdezési karakterláncot, a paraméterek sorrendje nem számít. 
+Az Azure Content Delivery Network (CDN), megadhatja a hogyan kerül a gyorsítótárba egy lekérdezési karakterláncot tartalmazó webes kérelem számára. A webes kérelem lekérdezési karakterláncot a lekérdezési karakterlánc része a kérelmet, amely után a kérdőjel (?). A lekérdezési karakterlánc tartalmazhat egy vagy több kulcs-érték párok, amely a mező nevét és az értéke egyenlőségjelnek (=) elválasztva. Minden kulcs-érték párt elválasztott ampersand (&). Például `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Ha a kérelem lekérdezési karakterláncként egynél több kulcs-érték pár, a sorrendjük nincs jelentősége. 
 
 > [!IMPORTANT]
 > A standard és prémium szintű CDN-termékek, adja meg ugyanazt a lekérdezési karakterláncot gyorsítótárazási funkció, de a felhasználói felület különböző.  Ez a cikk ismerteti a felület **verizon Azure CDN Premium**. A lekérdezési karakterláncok gyorsítótárazása a **Azure CDN Standard Akamai** és **Azure CDN Standard verizon**, lásd: [lekérdezési karakterláncokat tartalmazó kérelmek gyorsítótárazási CDN viselkedésének vezérlése](cdn-query-string.md).

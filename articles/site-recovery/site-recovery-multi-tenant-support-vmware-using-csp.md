@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/23/2017
+ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: 97edbe67c25036dc1156f0f0ca5431a617d7a004
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9db7e276fbbc064abe16cab2d2df668d2b1c8f7d
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="multi-tenant-support-in-azure-site-recovery-for-replicating-vmware-virtual-machines-to-azure-through-csp"></a>Több-bérlős támogatás az Azure Site Recovery VMware virtuális gépek replikálása Azure-bA CSP keresztül
 
@@ -50,7 +50,7 @@ A fenti ábrán látható, minden egyes ügyfélnek van, külön felügyeleti ki
 Az adatforgalom-elkülönítés követelmény, hogy az összes bizalmas infrastrukturális információk (például a hozzáférési hitelesítő adatok) nyilvánosságra a bérlők számára teszi szükségessé. Ezért azt javasoljuk, hogy a felügyeleti kiszolgáló összetevők a partner kizárólagos ellenőrzése alatt maradnak. A felügyeleti kiszolgáló-összetevők a következők:
 * Konfigurációs kiszolgáló (CS)
 * Folyamatkiszolgáló (PS)
-* Fő célkiszolgáló (MT) 
+* Fő célkiszolgáló (MT)
 
 A kibővített PS is a partner ellenőrzés alatt áll.
 
@@ -82,7 +82,7 @@ A vCenter-fiókelérést eljárás a következőképpen történik:
 
     * **Feladatok**: a feladat, a frissítési feladat létrehozása
 
-    * **Virtuális gép**: 
+    * **Virtuális gép**:
         * Konfigurációs > minden
         * Interakció > válaszoljon a kérdést, eszköz kapcsolat, CD konfigurálása media, konfigurálás hajlékonylemez media, kapcsolja ki a bekapcsolás, VMware-eszközök telepítése
         * Készlet > létrehozása meglévő, létrehozhat új, regisztrálása, Unregister
@@ -138,8 +138,8 @@ A virtuális gép is leírtak szerint a [Azure Site Recovery dokumentáció](sit
 
 ### <a name="step-1-create-a-tenant-account"></a>1. lépés: Bérlői fiók létrehozása
 
-1. Keresztül [Microsoft Partner Center](https://partnercenter.microsoft.com/), jelentkezzen be a CSP-fiókjába. 
- 
+1. Keresztül [Microsoft Partner Center](https://partnercenter.microsoft.com/), jelentkezzen be a CSP-fiókjába.
+
 2. Az a **irányítópult** menü **ügyfelek**.
 
     ![A Microsoft Partner Center felhasználóinak hivatkozás](./media/site-recovery-multi-tenant-support-vmware-using-csp/csp-dashboard-display.png)
@@ -160,22 +160,22 @@ A virtuális gép is leírtak szerint a [Azure Site Recovery dokumentáció](sit
 
     ![A nyomtatási kép](./media/site-recovery-multi-tenant-support-vmware-using-csp/customer-summary-page.png)  
 
-    Miután létrehozta a bérlői fiókot, a jóváhagyó lapon jelenik meg, az alapértelmezett fiókot és egy jelszót, hogy az előfizetés részleteinek megjelenítése. 
+    Miután létrehozta a bérlői fiókot, a jóváhagyó lapon jelenik meg, az alapértelmezett fiókot és egy jelszót, hogy az előfizetés részleteinek megjelenítése.
 
 7. Mentse az adatokat, és módosítsa a jelszót később keresztül az Azure portál bejelentkezési lapon szükség szerint.  
- 
+
     Ezek az információk megosztása a bérlő, mert a, vagy hozzon létre, és egy külön fiókot megosztani, ha szükséges.
 
 ### <a name="step-2-access-the-tenant-account"></a>2. lépés: A bérlői fiók eléréséhez.
 
-Érheti el a bérlő előfizetés a Microsoft Partner Center irányítópultján, lásd: "1. lépés: bérlői fiók létrehozása." 
+Érheti el a bérlő előfizetés a Microsoft Partner Center irányítópultján, lásd: "1. lépés: bérlői fiók létrehozása."
 
 1. Lépjen a **ügyfelek** lapon, majd a bérlői fiók nevét.
 
 2. Az a **előfizetések** lap a bérlői fiók figyelheti a meglévő fiók-előfizetések, és adja hozzá legalább egy előfizetésre, szükség szerint. Válassza ki a bérlő vész-helyreállítási műveleteinek a felügyeletét, **összes erőforrást (Azure-portál)**.
 
     ![Az összes erőforrás-hivatkozás](./media/site-recovery-multi-tenant-support-vmware-using-csp/all-resources-select.png)  
-    
+
     Kattintson a **összes erőforrás** hozzáférést biztosít a bérlő Azure-előfizetések. Hozzáférés az Azure Active Directory tetején kattintva ellenőrizheti az Azure-portálon sarkában.
 
     ![Az Azure Active Directory-hivatkozás](./media/site-recovery-multi-tenant-support-vmware-using-csp/aad-admin-display.png)
@@ -183,8 +183,8 @@ A virtuális gép is leírtak szerint a [Azure Site Recovery dokumentáció](sit
 Ezután hajtsa végre az összes webhely-helyreállítási művelet az Azure portálon keresztül a bérlői és vész-helyreállítási műveleteinek a felügyeletét. A bérlői előfizetéshez eléréséhez CSP keresztül felügyelt vész-helyreállítási kövesse a korábban ismertetett folyamatot.
 
 ### <a name="step-3-deploy-resources-to-the-tenant-subscription"></a>3. lépés: Telepítse a bérlői előfizetéshez erőforrásokat
-1. Az Azure portálon hozzon létre egy erőforráscsoportot, és a Recovery Services-tárolónak a szokásos folyamatonként telepíteni. 
- 
+1. Az Azure portálon hozzon létre egy erőforráscsoportot, és a Recovery Services-tárolónak a szokásos folyamatonként telepíteni.
+
 2. Töltse le a tárolóregisztrációs kulcsot.
 
 3. A Tanúsítványszolgáltatások regisztrálja a bérlő a tárolóbeli regisztrációs kulcs használatával.

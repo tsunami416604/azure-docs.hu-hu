@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: 8930595821cc7662c4ff792b73eb357f1ba29307
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: f136faf3df761b048c88e72f564f81fd32e630ab
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>A memórián belüli technológiái az SQL-adatbázis teljesítményének optimalizálása
 
@@ -118,8 +118,6 @@ De alacsonyabb verziójúra változtatása az árképzési szint negatív hatás
 
 *A Basic vagy Standard alacsonyabb verziójúra változtatása*: memórián belüli online Tranzakciófeldolgozási a Standard vagy alapszintű rétegben adatbázisokban nem támogatott. Emellett nem lehet áthelyezni egy adatbázist, amelynek a Standard vagy Basic réteghez memórián belüli online Tranzakciófeldolgozási objektumokat.
 
-Előtt visszaminősítését az adatbázis Standard/egyszerű, távolítsa el az összes memóriaoptimalizált táblák és táblatípusokban, valamint a T-SQL minden natív módon lefordított modulok.
-
 Nincs olyan tudni, hogy egy adott adatbázisnak támogatja-e a memórián belüli online Tranzakciófeldolgozási programozott módon. A következő Transact-SQL-lekérdezés hajthat végre:
 
 ```
@@ -128,6 +126,13 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 Ha a lekérdezés visszaadja az **1**, a memórián belüli online Tranzakciófeldolgozási támogatott ebben az adatbázisban.
 
+Előtt visszaminősítését az adatbázis Standard/egyszerű, távolítsa el az összes memóriaoptimalizált táblák és táblatípusokban, valamint a T-SQL minden natív módon lefordított modulok. Az alábbi lekérdezéseket azonosítsa az összes objektum, amely egy adatbázis is csökkenthető a Standard/egyszerű előtt el kell távolítani:
+
+```
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
 
 *Egy alacsonyabb prémium csomagra alacsonyabb verziójúra változtatása*: memóriaoptimalizált táblázatok adatait hozzá kell férnie a memórián belüli online Tranzakciófeldolgozási tárolóban, amely az adatbázis árképzési szintjének társított vagy érhető el a rugalmas készletben. Ha kísérli meg az árképzési szint csökkentése, vagy az adatbázist áthelyezi az a készletbe, amely nem rendelkezik elegendő memórián belüli online Tranzakciófeldolgozási tárolóhellyel, a művelet sikertelen lesz.
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 655bc3dd3735a35fbe7437e8dda92b2adf15f7bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 438eeee7353cbd1d534f27471c9c9054aecc12e8
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>A távelérés szolgáltatás megbízható szolgáltatásokkal
 Azon szolgáltatások vannak társítva, egy adott kommunikációs protokollt vagy a veremben, mint például a WebAPI, a Windows Communication Foundation (WCF) vagy más, nem a Reliable Services keretrendszer lehetővé teszi a távoli eljáráshívás szolgáltatásokhoz a távoli eljáráshívás beállítása gyorsan és egyszerűen.
@@ -82,12 +82,12 @@ string message = await helloWorldClient.HelloWorldAsync();
 A távoli eljáráshívás keretrendszer kivételek, a szolgáltatás, az ügyfél propagálása zajlik. Ezért kivételkezelést logika használatával az ügyfél `ServiceProxy` közvetlenül kezelheti a kivételeket, amelyek a szolgáltatás jelez.
 
 ## <a name="service-proxy-lifetime"></a>Szolgáltatási Proxy élettartamát
-Egy egyszerűsített művelet ServiceProxy létrehozása, a felhasználók tetszőleges számú, szükség szerint hozhat létre. Szolgáltatási Proxy újrafelhasználható, amíg a felhasználók szükség lenne rá. Távoli Api kivételt okoz, ha felhasználók továbbra is felhasználhatja ugyanazon proxy. Minden egyes ServiceProxy a hálózaton keresztül üzenetek küldéséhez használt kommunikációs ügyfél tartalmazza. API meghívása, során tudunk belső ellenőrizze, hogy ha a használt kommunikációs ügyfél esetében érvényes. Az adott eredménye alapján, most újra létrehozzuk a kommunikációs ügyfél. Ezért ha kivétel történik, felhasználóknak nem kell serviceproxy újbóli létrehozásához.
+ServiceProxy létrehozása egy egyszerűsített művelet, így a felhasználók hozhatnak létre tetszőleges számú van szükségük. Szolgáltatási Proxy példányok újrafelhasználható, amíg a felhasználók szükség lenne rá. A távoli eljáráshívás kivételt jelez, ha felhasználók továbbra is felhasználhatja a proxy-példányt. Minden egyes ServiceProxy a hálózaton keresztül üzenetek küldéséhez használt kommunikációs ügyfél tartalmazza. Közben, hogy a távoli hívásokat, azt belső ellenőrizze, hogy ha a kommunikációs ügyfél esetében érvényes. Az adott eredménye alapján, most újra létrehozzuk a kommunikációs ügyfél szükség esetén. Ezért ha kivétel történik, a felhasználók nem kell újból serviceproxy tartalmaz, de transzparens módon történik.
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory élettartama
-[ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) van olyan adat-előállítóval, amely különböző távelérési kapcsolatok proxy hoz. Ha proxy létrehozása API ServiceProxy.Create használja, keretrendszer ServiceProxyFactory egypéldányos hoz létre.
+[ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) van olyan adat-előállítóval, amely különböző távoli eljáráshívási felületek proxy létrehozza. Ha az API-t használja `ServiceProxy.Create` proxy létrehozására, majd a keretrendszer ServiceProxy egypéldányos létrehozza.
 Akkor célszerű manuálisan létrehozhat egyet az felül kell bírálni [IServiceRemotingClientFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory) tulajdonságait.
-Gyári során drága. ServiceProxyFactory kommunikációs ügyfél gyorsítótárában megtalálhatók.
+Létrehozása során drága. ServiceProxyFactory kommunikációs ügyfél belső gyorsítótárában megtalálhatók.
 Ajánlott eljárás ServiceProxyFactory gyorsítótárazásához, amíg.
 
 ## <a name="remoting-exception-handling"></a>Távoli eljáráshívás kivételkezelést

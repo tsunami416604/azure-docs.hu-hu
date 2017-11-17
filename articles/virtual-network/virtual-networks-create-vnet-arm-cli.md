@@ -1,10 +1,10 @@
 ---
-title: "Hozzon létre virtuális hálózatot - Azure CLI 2.0 |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy virtuális hálózatot az Azure CLI 2.0 használatával."
+title: "Hozzon létre egy virtuális hálózat – az Azure parancssori felület |} Microsoft Docs"
+description: "Megtudhatja, hogyan hozhat létre virtuális hálózatot az Azure parancssori felület használatával."
 services: virtual-network
 documentationcenter: 
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 75966bcc-0056-4667-8482-6f08ca38e77a
@@ -16,25 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c7d7b3543f488aedff1ea2c68a2b497e0ca744af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 659a791124eab002290ac0b7f0898cf1c06c2951
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="create-a-virtual-network-using-the-azure-cli-20"></a>Hozzon létre egy virtuális hálózatot az Azure CLI 2.0 használatával
+# <a name="create-a-virtual-network-using-the-azure-cli"></a>Hozzon létre egy virtuális hálózatot az Azure parancssori felület használatával
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
 Az Azure két üzemi modellel rendelkezik, az Azure Resource Managerrel és a klasszikussal. A Microsoft azt javasolja, hogy az erőforrások létrehozásához használja a Resource Manager-alapú üzemi modellt. A két modell közti különbségekkel kapcsolatos további információkért olvassa el [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md) című cikket.
 
-## <a name="cli-versions-to-complete-the-task"></a>A feladat befejezéséhez használható CLI-verziók
-A következő CLI-verziók egyikével elvégezheti a feladatot:
-
-- [Azure CLI 1.0](virtual-networks-create-vnet-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez
-- [Az Azure CLI 2.0](#create-a-virtual-network) -erőforrás felügyeleti telepítési modell (Ez a cikk) a következő generációs CLI "
- 
-    Resource Manager-alapú VNetet létrehozhat egyéb eszközökkel is, illetve létrehozhat VNetet a klasszikus üzemi modellben is, ha az alábbi listából egy másik lehetőséget választ:
+Hozzon létre egy virtuális hálózatot Resource Manageren keresztül más eszközök használatával, vagy hozzon létre egy virtuális hálózatot a klasszikus üzembe helyezési modellel, egy másik lehetőség kiválasztásával az alábbi listából is:
 
 > [!div class="op_single_selector"]
 > * [Portál](virtual-networks-create-vnet-arm-pportal.md)
@@ -47,10 +41,9 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
-
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Az Azure CLI 2.0 virtuális hálózat létrehozásához kövesse az alábbi lépéseket:
+Az Azure parancssori felület használatával virtuális hálózat létrehozásához kövesse az alábbi lépéseket:
 
 1. Telepítse és konfigurálja a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#login).
 

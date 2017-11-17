@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
+ms.date: 11/16/2017
 ms.author: tomfitz
-ms.openlocfilehash: 85fff4c8c5a68a4ebaa63b263e90d0220c273e23
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: b8d1988a8705e0708e412c24fb5b49f5ece31429
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>A struktúra és az Azure Resource Manager-sablonok szintaxisát ismertetése
-Ez a témakör ismerteti az Azure Resource Manager sablon szerkezete. Azt mutatja be a különböző szakaszokat, egy sablon és az elérhető tulajdonságok köre szakaszt. A sablon JSON és összeállítani az üzemelő példány értékeit használó kifejezéseket tartalmaz. A sablonok létrehozásának részletes oktatóanyaga, lásd: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
+Ez a cikk ismerteti az Azure Resource Manager sablon szerkezete. Azt mutatja be a különböző szakaszokat, egy sablon és az elérhető tulajdonságok köre szakaszt. A sablon JSON és összeállítani az üzemelő példány értékeit használó kifejezéseket tartalmaz. A sablonok létrehozásának részletes oktatóanyaga, lásd: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
 
 ## <a name="template-format"></a>Sablon formátumban
 A legegyszerűbb struktúra, a sablon a következő elemeket tartalmazza:
@@ -43,7 +43,7 @@ A legegyszerűbb struktúra, a sablon a következő elemeket tartalmazza:
 | contentVersion |Igen |A sablon (például 1.0.0.0) verzióját. Bármely érték biztosíthat ehhez az elemhez. A sablon eszközzel való telepítésekor ez az érték segítségével győződjön meg arról, hogy a megfelelő sablon használatban van-e. |
 | paraméterek |Nem |Amikor központi telepítés végrehajtása testre szabhatja az erőforrások telepítése által biztosított értéket. |
 | változók |Nem |A sablon JSON-töredék, egyszerűbbé teheti a sablonnyelvi kifejezéseket használt értékek. |
-| Erőforrások |Igen |Telepített vagy frissített erőforráscsoportban erőforrástípusok esetében. |
+| erőforrások |Igen |Telepített vagy frissített erőforráscsoportban erőforrástípusok esetében. |
 | kimenetek |Nem |A telepítés utáni visszaadott értékek. |
 
 Minden elem beállítható tulajdonságokat tartalmaz. A következő példa a teljes szintaxissal sablon tartalmazza:
@@ -66,11 +66,31 @@ Minden elem beállítható tulajdonságokat tartalmaz. A következő példa a te
             }
         }
     },
-    "variables": {  
+    "variables": {
         "<variable-name>": "<variable-value>",
-        "<variable-name>": { 
-            <variable-complex-type-value> 
-        }
+        "<variable-object-name>": {
+            <variable-complex-type-value>
+        },
+        "<variable-object-name>": {
+            "copy": [
+                {
+                    "name": "<name-of-array-property>",
+                    "count": <number-of-iterations>,
+                    "input": {
+                        <properties-to-repeat>
+                    }
+                }
+            ]
+        },
+        "copy": [
+            {
+                "name": "<variable-array-name>",
+                "count": <number-of-iterations>,
+                "input": {
+                    <properties-to-repeat>
+                }
+            }
+        ]
     },
     "resources": [
       {
@@ -117,7 +137,7 @@ Minden elem beállítható tulajdonságokat tartalmaz. A következő példa a te
 }
 ```
 
-Azt vizsgálja meg a sablon a témakör későbbi részében részletesebben részeit.
+Ez a cikk ismerteti a szakaszok részletesebben sablon.
 
 ## <a name="expressions-and-functions"></a>Kifejezések és funkciók
 A sablon alapvető szintaxisa a JSON-NÁ. Azonban kifejezések és a funkciók bővíthetik a JSON a sablonon belül elérhető értékek.  Kifejezések íródtak belül JSON szövegkonstansok amelynek első és utolsó karaktere a szögletes: `[` és `]`, illetve. A kifejezés értéke legyen kiértékelve a sablon telepítésekor. Megírva egy szöveges karakterlánc, amíg értékeli a kifejezés eredménye lehet eltérő típusú JSON, például a tömb vagy egész, attól függően, hogy a tényleges kifejezést.  Indítsa el a zárójel szövegkonstansnak rendelkeznie `[`, de nem rendelkezik azt kifejezésként értelmezi, adja hozzá a karakterlánc elindítani egy extra zárójel `[[`.
@@ -334,6 +354,33 @@ Használhatja a **másolási** szintaxisát, és hozzon létre egy változót t�
 }
 ```
 
+Több objektum történő másolás használatával történő létrehozásához változók is megadhat. A következő példában két tömb változók határozza meg. Egy nevű **lemezek legfelső-szintű-tömb** és öt elemmel rendelkezik. A másik nevű **egy másik-tömb** és három elemmel rendelkezik.
+
+```json
+"variables": {
+    "copy": [
+        {
+            "name": "disks-top-level-array",
+            "count": 5,
+            "input": {
+                "name": "[concat('oneDataDisk', copyIndex('disks-top-level-array', 1))]",
+                "diskSizeGB": "1",
+                "diskIndex": "[copyIndex('disks-top-level-array')]"
+            }
+        },
+        {
+            "name": "a-different-array",
+            "count": 3,
+            "input": {
+                "name": "[concat('twoDataDisk', copyIndex('a-different-array', 1))]",
+                "diskSizeGB": "1",
+                "diskIndex": "[copyIndex('a-different-array')]"
+            }
+        }
+    ]
+},
+```
+
 ## <a name="resources"></a>Erőforrások
 Erőforrások területen adja meg az erőforrások telepítése vagy frissítése. Ez a szakasz kérheti le bonyolult, mert ismernie kell a típusok esetében helyez üzembe adja meg a megfelelő értékeket. Az erőforrás-specifikus értékeket (apiVersion, típusa és tulajdonságait) meg kell adnia, lásd: [meghatározhatja az erőforrásokat az Azure Resource Manager sablonokban](/azure/templates/). 
 
@@ -390,7 +437,7 @@ Meghatározhatja az erőforrások az alábbi szerkezettel:
 | Másolás |Nem |Ha egynél több példány van szükség, az olyan erőforrások száma létrehozásához. Az alapértelmezett mód párhuzamos. Adja meg a soros módban, ha nem szeretné, hogy az összes vagy egy időben üzembe helyezendő erőforrásokat. További információkért lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Nem |Ehhez az erőforráshoz központi telepítése előtt telepíteni kell erőforrások. Erőforrás-kezelő kiértékeli az erőforrások közti függőségeket, és telepíti azokat a megfelelő sorrendben. Ha nincsenek függő erőforrások, párhuzamos központi telepítés. Az érték lehet egy vesszővel elválasztott lista erőforrás nevét vagy egyedi erőforrás-azonosítók. Ez a sablon üzembe helyezett erőforrások csak felsorolása Erőforrások, amelyek nincsenek meghatározva a sablonban már léteznie kell. Kerülje a szükségtelen függőségek hozzáadásával még a központi telepítés lassú, és hozzon létre körkörös függőségi viszony. A beállítás függőségek útmutatást lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](resource-group-define-dependencies.md). |
 | properties |Nem |Erőforrás-specifikus konfigurációs beállításokat. A tulajdonságok értékeit ugyanazok, mint a REST API művelet (PUT metódust) létrehozni az erőforrást a kérés törzsében meg az értékeket. Egy tulajdonság több példányát létrehozni egy másolatot tömb is megadható. További információkért lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md). |
-| Erőforrások |Nem |A múltbeli erőforrástól függő gyermekszintű erőforrása. Csak olyan típusú erőforrások a szülő erőforrás sémája által számukra engedélyezett. A gyermek-erőforrás teljesen minősített típusú tartalmaz szülő erőforrástípusra, például **Microsoft.Web/sites/extensions**. A szülő erőforrás függőség nem utal. Függőséget explicit módon meg kell adni. |
+| erőforrások |Nem |A múltbeli erőforrástól függő gyermekszintű erőforrása. Csak olyan típusú erőforrások a szülő erőforrás sémája által számukra engedélyezett. A gyermek-erőforrás teljesen minősített típusú tartalmaz szülő erőforrástípusra, például **Microsoft.Web/sites/extensions**. A szülő erőforrás függőség nem utal. Függőséget explicit módon meg kell adni. |
 
 A források szakaszában üzembe helyezendő erőforrásokat tömbjét tartalmazza. Az egyes erőforrások belül is meghatározhat gyermekerőforrásait tömbjét. Ezért a források szakaszában eredményezhet. a struktúra, például:
 
@@ -482,7 +529,7 @@ Adja meg, hogy egy virtuális gép telepítve van-e a jelszó vagy SSH-kulcsot, 
 
 Például egy jelszó vagy SSH-kulcs használatával a virtuális gép telepítése, lásd: [felhasználónév és SSH feltétel sablon](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
 
-## <a name="outputs"></a>kimenetek
+## <a name="outputs"></a>Kimenetek
 A kimenetek szakaszban adja meg központi telepítéséből a visszaadott érték. Visszaadhatja például az URI telepített erőforrások eléréséhez.
 
 A következő példa egy kimeneti definíciója szerkezetét mutatja:

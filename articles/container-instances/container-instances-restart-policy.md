@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2017
+ms.date: 11/16/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 06368cb5084dd49e24c1c25aa8100a7680aacefb
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ae2466bdd3b21984b141c9178ea46bd25bb6357b
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="run-a-containerized-task-in-azure-container-instances"></a>Azure-tároló példányok indexelése feladat futtatása
 
@@ -147,7 +147,7 @@ Adjon meg egy parancssort, amikor a parancssorból, a tároló lemezképpel bőv
 
 Például rendelkezhet az a szöveg eltérő elemezheti például tároló *apró település* különböző parancssori megadásával. A Python-parancsfájl végrehajtása a tároló *wordcount.py*, fogad el argumentumként egy URL-címet, és feldolgozza a lap tartalma helyett az alapértelmezett.
 
-Ahhoz például, hogy a három legfontosabb öt levelek szavakat meghatározásához *Romeo és Juliet*:
+Ahhoz például, hogy határozza meg az első 3 öt levelek szavak *Romeo és Juliet*:
 
 ```azurecli-interactive
 az container create \
@@ -172,6 +172,8 @@ Kimenet:
 ```
 
 ## <a name="next-steps"></a>Következő lépések
+
+### <a name="persist-task-output"></a>A feladat kimenetének megőrzése
 
 Megtudhatja, hogyan megőrizni a kimenetét a tárolókban, hogy lefusson, lásd: [csatlakoztatása az Azure fájlmegosztások Azure tároló osztályt](container-instances-mounting-azure-files-volume.md).
 

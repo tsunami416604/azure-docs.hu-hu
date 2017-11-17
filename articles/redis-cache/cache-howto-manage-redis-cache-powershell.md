@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: sdanie
-ms.openlocfilehash: 0a5c95eab3fd01f611fc049e80c5c506857e0b81
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b65d513d6418f13a6f3e10644c1892eecbcba1d
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Azure Redis gyorsítótár Azure PowerShell kezelése
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ Ez a témakör bemutatja, hogyan végrehajtásához gyakori feladatokat, mint l�
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-A klasszikus üzembe helyezési modellel kapcsolatos további információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési: üzembe helyezési modellek és az erőforrások állapotát](../azure-resource-manager/resource-manager-deployment-model.md#classic-deployment-characteristics).
+A klasszikus üzembe helyezési modellel kapcsolatos további információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési: üzembe helyezési modellek és az erőforrások állapotát](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha már telepítette az Azure PowerShell, rendelkeznie kell Azure PowerShell 1.0.0 verzió vagy újabb. Ellenőrizheti az Azure PowerShell ezzel a paranccsal, az Azure PowerShell-parancssorba telepített verzióját.

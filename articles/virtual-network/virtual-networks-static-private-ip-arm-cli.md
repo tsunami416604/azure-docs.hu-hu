@@ -1,11 +1,11 @@
 ---
-title: "Magánhálózati IP-címek konfigurálása virtuális gépek - Azure CLI 2.0 |} Microsoft Docs"
-description: "Útmutató az Azure parancssori felület (CLI) 2.0-s használó virtuális gépek magánhálózati IP-címek konfigurálásához."
+title: "Magánhálózati IP-címek konfigurálása virtuális gépek - Azure parancssori Felülettel |} Microsoft Docs"
+description: "Útmutató az Azure parancssori felület (CLI) használó virtuális gépek magánhálózati IP-címek konfigurálásához."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: tysonn
+manager: jeconnoc
+editor: 
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
@@ -16,23 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 071156367c1f819a00d31f1d0335e301391fda81
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9925b29a60fc46e9ecc775ca132bd2365f64b15
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli-20"></a>Az Azure CLI 2.0 használatával virtuális gépek magánhálózati IP-címek konfigurálása
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Az Azure parancssori felület használatával virtuális gépek magánhálózati IP-címek konfigurálása
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
-
-
-## <a name="cli-versions-to-complete-the-task"></a>A feladat befejezéséhez használható CLI-verziók 
-
-A következő CLI-verziók egyikével elvégezheti a feladatot: 
-
-- [Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez 
-- [Az Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) -erőforrás felügyeleti telepítési modell (Ez a cikk) a következő generációs parancssori felület
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
@@ -43,11 +35,11 @@ Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [statikus
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> Az Azure CLI 2.0 Példaparancsok az alábbi már létrehozott egy egyszerű környezetben várható. Ha szeretné a parancsokat a jelen dokumentum megjelenített, először leírt tesztkörnyezet felépítéséhez [hozhat létre egy vnetet](virtual-networks-create-vnet-arm-cli.md).
+> Az alábbi Példaparancsok Azure CLI-t egy meglévő egyszerű környezetben várható. Ha szeretné a parancsokat a jelen dokumentum megjelenített, először leírt tesztkörnyezet felépítéséhez [hozhat létre egy vnetet](virtual-networks-create-vnet-arm-cli.md).
 
 ## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Adjon meg egy statikus magánhálózati IP-cím, amikor a virtuális gép létrehozása
 
-Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhálózat *TestVNet* statikus magánhálózati IP-címe a *192.168.1.101*, kövesse az alábbi lépéseket:
+Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhálózat *TestVNet* statikus magánhálózati IP-címe a *192.168.1.101*, teljes az alábbi lépéseket:
 
 1. Ha még nem még konfigurál, a legutóbbi [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#login). 
 
@@ -134,7 +126,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhál
     * `--vnet-name`: A VNet neve, amelyen létrehozásához a hálózati adaptert.
     * `--subnet`: Az alhálózat, amihez létre kívánja hozni a hálózati adaptert. a név
 
-4. Futtassa a [azure virtuális gép létrehozása](/cli/azure/vm/nic#create) parancsot a nyilvános IP- és a hálózati adapter a fenti létrehozott virtuális gép létrehozásához. A kimenet után látható lista ismerteti a használt paramétereket.
+4. Futtassa a [azure virtuális gép létrehozása](/cli/azure/vm/nic#create) parancsot a nyilvános IP- és a hálózati adapter által korábban létrehozott virtuális gép létrehozásához. A kimenet után látható lista ismerteti a használt paramétereket.
    
     ```azurecli
     az vm create \
@@ -169,7 +161,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhál
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Statikus magánhálózati IP-címadatok a virtuális gép beolvasása
 
-A statikus magánhálózati IP-cím, amelyet létrehozott megtekintéséhez futtassa a következő Azure CLI parancsot, és tekintse meg az értékeit *privát IP-foglalási-metódus* és *magánhálózati IP-cím*:
+A következő parancsot az Azure parancssori felület értékeit megfigyelni *privát IP-foglalási-metódus* és *magánhálózati IP-cím*:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -204,13 +196,13 @@ A kimenet a következőképpen fog kinézni:
 
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>A statikus magánhálózati IP-cím eltávolítása a virtuális gépek
 
-A resource manager üzembe helyezések hozzá statikus magánhálózati IP-cím nem távolítható el az Azure parancssori felület a hálózati Adapterhez. A következők szükségesek:
+Az Azure Resource Manager üzembe helyezések hozzá statikus magánhálózati IP-cím nem távolítható el az Azure parancssori felület a hálózati Adapterhez. A következők szükségesek:
 - Hozzon létre egy új hálózati Adaptert, amely egy dinamikus IP-cím használja
 - Állítsa be a hálózati Adaptert a virtuális gép ne az újonnan létrehozott hálózati adaptert. 
 
-A hálózati Adaptert a virtuális gép használt a fenti parancsokban módosításához kövesse az alábbi lépéseket.
+A hálózati Adaptert a virtuális gép az előző parancsban használt módosításához kövesse az alábbi lépéseket:
 
-1. Futtassa a **azure-hálózat hálózati adapter létrehozása** parancs futtatásával hozzon létre egy új hálózati Adaptert dinamikus IP-lefoglalást használatával új IP-címmel. Vegye figyelembe, hogy a megadott IP-cím, mert a kiosztási módszer **dinamikus**.
+1. Futtassa a **azure-hálózat hálózati adapter létrehozása** parancs futtatásával hozzon létre egy új hálózati Adaptert dinamikus IP-lefoglalást használatával új IP-címmel. A megadott IP-cím, mert a kiosztási módszer van **dinamikus**.
 
     ```azurecli
     az network nic create     \

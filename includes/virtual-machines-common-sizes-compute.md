@@ -1,5 +1,7 @@
 <!-- F-series, Fs-series* -->
 
+Számítási optimalizált Virtuálisgép-méretek a nagy CPU-memória arányt és közepes méretű forgalom webkiszolgálók, hálózati berendezésekbe, kötegelt folyamatok és alkalmazáskiszolgálók. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma.
+
 Fsv2-sorozat alapján Intel® Xeon® Platinum 8168 processzor kiemeli a 2.7 GHz-es alapszintű core gyakoriságát és 3.7 GHz-es maximális egymagos turbo gyakorisága. Intel® AVX-512 utasításokat, amelyek új Intel méretezhető processzoron, akár egy 2 X a vektoros feldolgozási terheléshez egyetlen és a dupla pontosságú lebegőpontos művelet a Teljesítmény program ad meg. Ez azt jelenti azok valóban gyors a számítási munkaterhelés számára. 
 
 Alacsonyabb áron óránként listát a Fsv2-sorozat a értéke ajánlott ár-teljesítmény az Azure összetevőiben, az az Azure számítási egység (ACU) vCPU száma alapján. 
@@ -14,7 +16,7 @@ Az Fs-sorozat az F-sorozat összes előnyét biztosítja a prémium szintű tár
 
 ACU: 195-210
 
-| Méret             | vCPU meg | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret             | vCPU meg | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|------------------------------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 (32)                                                             | Mérsékelt                                       |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 (64)                                                             | Mérsékelt                                       |
@@ -29,7 +31,7 @@ ACU: 195-210
 
 ACU: 210–250
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |4 |4,000 / 32 (12) |3,200 / 48 |2 / 750 |
 | Standard_F2s |2 |4 |8 |8 |8,000 / 64 (24) |6,400 / 96 |2 / 1500 |
@@ -48,7 +50,7 @@ MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
 ACU: 210–250
 
-| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4x500                         | 2 / 750                 |
 | Standard_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1500                     |

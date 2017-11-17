@@ -1,10 +1,10 @@
 ---
-title: "Virtuális gép létrehozása egy statikus nyilvános IP-cím - Azure CLI 2.0 |} Microsoft Docs"
-description: "Útmutató: virtuális gép létrehozása az Azure parancssori felület (CLI) 2.0 használatával statikus nyilvános IP-cím."
+title: "Hozzon létre egy virtuális Gépet egy statikus nyilvános IP-cím - Azure CLI |} Microsoft Docs"
+description: "Útmutató: virtuális gép létrehozása az Azure parancssori felület (CLI) használatával statikus nyilvános IP-cím."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 55bc21b0-2a45-4943-a5e7-8d785d0d015c
@@ -16,19 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4c32694949880037f01bb2b6b9779d2cbb9809c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c50f685745a645b5fbe383a5fe4726faa0e36345
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli-20"></a>Virtuális gép létrehozása az Azure CLI 2.0 használatával statikus nyilvános IP-cím
+# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli"></a>Hozzon létre egy virtuális Gépet egy statikus nyilvános IP-cím az Azure parancssori felület használatával
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 > * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-> * [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md)
-> * [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md)
+> * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
 > * [Sablon](virtual-network-deploy-static-pip-arm-template.md)
 > * [PowerShell (klasszikus)](virtual-networks-reserved-public-ip.md)
 
@@ -40,7 +39,7 @@ Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforr�
 
 ## <a name = "create"></a>A virtuális gép létrehozása
 
-Hajthatja végre ezt a feladatot az Azure CLI 2.0 (Ez a cikk) vagy a [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md). Az értékeket a "" a következő lépések a változók létre erőforrásokat tudja kihozni a forgatókönyvből beállításokkal. Módosítsa az értékeket, a környezetének megfelelő.
+Az értékeket a "" a következő lépések a változók létre erőforrásokat tudja kihozni a forgatókönyvből beállításokkal. Módosítsa az értékeket, a környezetének megfelelő.
 
 1. Telepítse a [Azure CLI 2.0](/cli/azure/install-az-cli2) Ha még nincs telepítve.
 2. Az SSH nyilvános és titkos kulcsból álló kulcspárt létrehozása Linux virtuális gépek; Ehhez hajtsa végre a lépéseket a [az SSH nyilvános és titkos kulcsból álló kulcspárt létrehozása Linux virtuális gépek](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

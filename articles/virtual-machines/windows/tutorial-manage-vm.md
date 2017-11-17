@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2237f2e5cb67df019d0975e764602babe7f4c8f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c612a251105197ab2b46bf448ae39253e5a65f36
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-and-manage-windows-vms-with-the-azure-powershell-module"></a>Hozzon létre és a Windows virtuális gépek kezelése az Azure PowerShell modul
 
@@ -293,7 +293,7 @@ A következő táblázat azokat a használati esetek méretek kategorizálja.
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | Általános célú         |DSv2, Dv2, DS, D, Av2, A0-7| Elosztott terhelésű CPU-memória. Épp ezért tökéletes választás a fejlesztői / tesztelői és kis, közepes méretű alkalmazásokhoz és adatokhoz megoldásokhoz.  |
 | Számításra optimalizált      | FS, F             | Magas CPU-memória. Jó közepes forgalom alkalmazásokat, hálózati berendezéseket és kötegelt folyamatok.        |
-| Memóriaoptimalizált       | GS, G, DSv2, DS, Dv2, D   | Magas memória-core. A relációs adatbázisok, közepes vagy nagyméretű gyorsítótárak és memórián belüli analytics nagy.                 |
+| Memóriaoptimalizált       | GS, G, DSv2, DS, Dv2, D   | Nagy memória-CPU. A relációs adatbázisok, közepes vagy nagyméretű gyorsítótárak és memórián belüli analytics nagy.                 |
 | Tárolásra optimalizált       | Ls                | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
 | GPU           | PORTOK HV, NC            | Nagy mennyiségű grafikus megjelenítési és videó szerkesztése szánt speciális virtuális gépeket.       |
 | Kiemelkedő teljesítmény | H, A8-11          | A leghatékonyabb CPU rendelkező virtuális gépek nagy átviteli további hálózati adapterek (RDMA). 
@@ -347,8 +347,8 @@ Egy Azure virtuális gép sok energiaállapotát egyike lehet. Ebben az állapot
 | Fut | Azt jelzi, hogy fut-e a virtuális gép. |
 | Leállítás | Azt jelzi, hogy a virtuális gép leáll. | 
 | Leállítva | Azt jelzi, hogy a virtuális gép leáll. Vegye figyelembe, hogy a virtuális gép leállított állapotban továbbra is fel Önnek költségeket.  |
-| Felszabadítása | Azt jelzi, hogy a virtuális gép felszabadítása alatt. |
-| Felszabadítása | Jelzi, hogy a virtuális gép teljesen eltávolították a hipervizor, de a vezérlő vezérlősík továbbra is elérhető. Virtuális gépek Deallocated állapotban nem számítunk költségeket. |
+| Felszabadítás | Azt jelzi, hogy a virtuális gép felszabadítása alatt. |
+| Felszabadítva | Jelzi, hogy a virtuális gép teljesen eltávolították a hipervizor, de a vezérlő vezérlősík továbbra is elérhető. Virtuális gépek Deallocated állapotban nem számítunk költségeket. |
 | - | Azt jelzi, hogy a teljesítmény a virtuális gép állapota ismeretlen. |
 
 ### <a name="find-power-state"></a>Energiaállapot keresése

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 7068d6e83d196d95b4625d1b1a496be5a22c88a0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d0b4ff1959465ade5f57c045d2a005e828638eb2
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Csatlakozás és a Service Fabric szolgáltatásokkal kommunikálni
 A Service Fabric szolgáltatás fut. valahol a Service Fabric-fürt, általában pontjain több virtuális géphez Akkor helyezheti át egyetlen helyről a másikra, a szolgáltatás tulajdonosa, vagy automatikusan a Service Fabric. Szolgáltatások statikusan nem kötődnek, egy adott számítógép vagy a címet.
@@ -63,7 +63,7 @@ Ahogy a következő ábrán is látható, a DNS-szolgáltatás, a Service Fabric
 A DNS használatáról további részletekért lásd: Service [DNS-szolgáltatás az Azure Service Fabric](service-fabric-dnsservice.md) cikk.
 
 ### <a name="reverse-proxy-service"></a>Fordított proxy szolgáltatás
-A fordított proxy a fürt, amely elérhetővé teszi a HTTP-végpontokról, beleértve a HTTPS szolgáltatások megoldást. A fordított proxy jelentősen leegyszerűsíti az egyéb szolgáltatások és a metódusok meghívása azzal, hogy egy adott URI-formátum, és kezeli a feloldás, csatlakozás, próbálkozzon újra egy másik elnevezési állapotát használatával kommunikálni egy szolgáltatás számára szükséges lépéseket. Más szóval elrejti a szolgáltatás az Ön azáltal, hogy a lehető legegyszerűbb hívja az egy URL-címet egyéb szolgáltatások hívásakor.
+A fordított proxy a fürt, amely elérhetővé teszi a HTTP-végpontokról, beleértve a HTTPS szolgáltatások megoldást. A fordított proxy jelentősen leegyszerűsíti az egyéb szolgáltatások és a metódusok meghívása azzal, hogy egy adott URI-formátum, és kezeli a feloldás, csatlakozás, próbálkozzon újra egy szolgáltatás egy másik a szolgáltatás használatakor kommunikációs szükséges lépéseket. Más szóval elrejti a szolgáltatás az Ön azáltal, hogy a lehető legegyszerűbb hívja az egy URL-címet egyéb szolgáltatások hívásakor.
 
 ![Szolgáltatás-végpontok][10]
 

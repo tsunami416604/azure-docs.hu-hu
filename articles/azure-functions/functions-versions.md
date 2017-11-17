@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Functions futásidejű verziók bemutatásához |} Microsoft Docs"
-description: "Funkciók a futtatókörnyezet több verzióit támogatja. Útmutató: Adja meg az Azure szolgáltatásban futtatott futásidejű verzióját függvény alkalmazást."
+title: "Az Azure Functions futásidejű verziók bemutatásához"
+description: "Az Azure Functions a futtatókörnyezet több verzióit támogatja. Útmutató: Adja meg az Azure szolgáltatásban futtatott futásidejű verzióját függvény alkalmazást."
 services: functions
 documentationcenter: 
 author: ggailey777
@@ -10,67 +10,98 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 11/07/2017
 ms.author: glenga
-ms.openlocfilehash: 26d4276a0a550d78a9c7657c464bd3320c956fb0
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 063232e40b30d03b0ee8b087a602fed0fee3be0a
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Az Azure Functions futásidejű verziók bemutatásához
 
-Az Azure Functions futtatókörnyezettel a kiszolgáló nélküli egy kód végrehajtásának megvalósítja az Azure-ban. A futásidejű található, mint más Azure-ban üzemeltetett különböző környezetekben. A [Azure Functions Core eszközök](functions-run-local.md) valósítja meg a futtatókörnyezet a fejlesztési számítógépen. [Az Azure Functions Futtatókörnyezettel](functions-runtime-overview.md) lehetővé teszi a funkciók használata a helyszíni környezetben. 
+Egy függvény alkalmazást az Azure Functions futtatókörnyezettel egy adott verzión fut. Két fő verziója: 1.x és a 2.x. Ez a cikk azt ismerteti, hogyan kiválaszthatja, mely főverzió használatára és a függvény alkalmazások konfigurálása az Azure-verzió futtathatnak válassza. Egy helyi fejlesztési környezet egy adott verziójához konfigurálásával kapcsolatos további információkért lásd: [kódot és az Azure Functions tesztelése helyileg](functions-run-local.md).
 
-Funkciók a futtatókörnyezet több fő verzióit támogatja. Jelentős változásokat főverzió-frissítés vethet fel. Ez a témakör ismerteti, hogyan egy adott futásidejű verzióját az Azure-ban, ha a függvény alkalmazások célba. 
+## <a name="differences-between-runtime-1x-and-2x"></a>Futásidejű közötti különbségek 1.x és a 2.x
 
-Funkciók lehetővé teszi, hogy egy adott főverzió futásidejű cél használatával a `FUNCTIONS_EXTENSION_VERSION` az függvény alkalmazás alkalmazás-beállítás. Ez vonatkozik mindkét nyilvános előzetes verziók és. Amíg a felhasználó explicit módon új verziójára történő áthelyezése a függvény app másolatok a megadott fő futásidejű verzióját. Ön függvény app a futtatókörnyezet új alverziót frissülni fog, amikor azok elérhetővé válnak. Alverzió frissítések nem, akkor jelentős változásokat.  
+> [!IMPORTANT] 
+> Futásidejű 1.x az üzemi használatra jóváhagyott csak verziója.
 
-Nyilvánosan elérhető új főverzió esetén lehetősége van arra, hogy feljebb, az adott verzióra, a függvény alkalmazást a portál megtekintésekor. Helyezze át egy új verzióra, mindig használhatja a `FUNCTIONS_EXTENSION_VERSION` Alkalmazásbeállítás helyezhetők vissza egy korábbi futásidejű verzióját.
+| Futásidejű | status |
+|---------|---------|
+|1.x|Általában elérhető (GA)|
+|2.x|Előzetes verzió|
 
-A futásidejű verzióját minden módosítás hatására a függvény alkalmazásnak, hogy indítsa újra. A közzétett összes futásidejű kiadásokban (a fő és) kibocsátási megjegyzések a [GitHub-tárházban](https://github.com/Azure/azure-webjobs-sdk-script/releases).   
+Az alábbi szakaszok ismertetik a nyelveket, kötéseit és platformfüggetlen fejlesztésekhez támogatás különbségeit.
+
+### <a name="languages"></a>Nyelvek
+
+A következő táblázat minden egyes futásidejű verziójában támogatott programozási nyelveket.
+
+[!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
+
+További információkért lásd: [támogatott nyelv](supported-languages.md).
+
+### <a name="bindings"></a>Kötések 
+
+A futásidejű 1.x támogatja már nem érhetők el 2.x kísérleti kötéseket. Kötések támogatási és egyéb működési hiányosságait 2.x kapcsolatos információkért lásd: [ismert problémák futtatókörnyezet 2.0](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues).
+
+Futásidejű 2.x készíthet egyéni [bővítmények kötés](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview). A bővítési modellt használó beépített kötések csak találhatók 2.x; az első között van a [Microsoft Graph kötések](functions-bindings-microsoft-graph.md).
+
+### <a name="cross-platform-development"></a>Platformfüggetlen fejlesztésekhez
+
+Csak a portál vagy a Windows; futásidejű 1.x támogatja függvény fejlesztési a 2.x is létrehozhat és az Azure Functions Linux vagy macOS futtatni.
+
+## <a name="automatic-and-manual-version-updates"></a>Frissítések automatikus és manuális verziója
+
+Funkciók lehetővé teszi, hogy a futtatókörnyezet egy adott verziójához a cél a `FUNCTIONS_EXTENSION_VERSION` Alkalmazásbeállítás függvény alkalmazásban. A függvény app másolatok megadott főverziója amíg explicit módon áthelyezése új verziója.
+
+Ha csak a főverziót ("~ 1" 1.x) vagy a "béta" 2.x, adja meg, a függvény alkalmazás automatikusan a futtatókörnyezet új alverziót amikor azok elérhetővé válnak. Új alverziót vezet be jelentős változásokat. Ha megad egy Alverzió (például "1.0.11360"), a függvény app másolatok verzió addig explicit módon. 
+
+Ha új verzió nyilvánosan elérhető, a portálon megjelenő lehetővé teszi az azonnali mozgatása felfelé a verzió. Helyezze át egy új verzióra, mindig használhatja a `FUNCTIONS_EXTENSION_VERSION` Alkalmazásbeállítás helyezhetők vissza egy korábbi verzióját.
+
+Módosítva lett a futásidejű verzióját egy függvény alkalmazás újraindítását eredményezi.
+
+Az értékeket állíthatja be a `FUNCTIONS_EXTENSION_VERSION` alkalmazás lehetővé teszi az automatikus frissítések beállítása jelenleg "~ 1" 1.x futásidejű és 2.x "béta".
+
 ## <a name="view-the-current-runtime-version"></a>Az aktuális futásidejű verzió megtekintése
 
-A következő eljárás segítségével megtekintheti az adott futásidejű verzióját, a függvény alkalmazás által jelenleg használt. 
+A következő eljárással megtekintheti egy függvény alkalmazás által jelenleg használt futásidejű verzió. 
 
 1. Az a [Azure-portálon](https://portal.azure.com), keresse meg a függvény alkalmazásba, majd a **konfigurált szolgáltatások**, válassza a **Alkalmazásbeállítások működéséhez**. 
 
     ![Válassza ki a függvény Alkalmazásbeállítások](./media/functions-versions/add-update-app-setting.png)
 
-2. Az a **Alkalmazásbeállítások működéséhez** lapján keresse meg a **futásidejű verzióját**. Megjegyzés: a megadott futásidejű verzióját és a kért főverzió. Az alábbi példában a főverzió értéke `~1.0`.
+2. Az a **Alkalmazásbeállítások működéséhez** lapján keresse meg a **futásidejű verzióját**. Megjegyzés: a megadott futásidejű verzióját és a kért főverzió. Az alábbi példában a funkciók\_BŐVÍTMÉNY\_verzió Alkalmazásbeállítás értéke `~1`.
  
    ![Válassza ki a függvény Alkalmazásbeállítások](./media/functions-versions/function-app-view-version.png)
 
-## <a name="target-the-functions-version-20-runtime"></a>A funkciók 2.0-s verziójának futásidejű cél
+## <a name="target-the-version-20-runtime"></a>A 2.0-s verziójának futásidejű cél
 
 >[!IMPORTANT]   
-> Az Azure Functions futtatókörnyezettel 2.0 előzetes, és jelenleg nem minden Azure Functions támogatja. További információkért lásd: [Azure Functions futtatókörnyezet 2.0 ismert problémák](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues)  
+> Az Azure Functions futtatókörnyezettel 2.0 előzetes, és jelenleg nem minden Azure Functions támogatja. További információkért lásd: [futásidejű közötti különbségek 1.x és a 2.x](#differences-between-runtime-1x-and-2x) korábbi ebben a cikkben.
 
-<!-- Add a table comparing the 1.x and 2.x runtime features-->
+Egy függvény app áthelyezheti a futtatókörnyezet 2.0-s verziójának előzetes az Azure portálon. Az a **Alkalmazásbeállítások működéséhez** lapra, majd **beta** alatt **futásidejű verzióját**.  
 
-[!INCLUDE [functions-set-runtime-version](../../includes/functions-set-runtime-version.md)]
-
-A függvény app áthelyezheti a futtatókörnyezet 2.0-s verziójának előzetes az Azure portálon. Az a **Alkalmazásbeállítások működéséhez** lapra, majd **beta** alatt **futásidejű verzióját**.  
-
-   ![Válassza ki a függvény Alkalmazásbeállítások](./media/functions-versions/function-app-view-version.png)
+![Válassza ki a függvény Alkalmazásbeállítások](./media/functions-versions/function-app-view-version.png)
 
 Ez a beállítás megegyezik a beállítás a `FUNCTIONS_EXTENSION_VERSION` az Alkalmazásbeállítás `beta`. Válassza ki a **~ 1** gombra kattintva helyezze vissza a jelenlegi nyilvánosan főverzió támogatott. Az Azure parancssori felület használatával frissítse az alkalmazás-beállítás. 
 
-## <a name="target-a-specific-runtime-version-from-the-portal"></a>A cél egy adott futásidejű verzió a portálról
+## <a name="target-a-version-using-the-portal"></a>Célként egy olyan verzióra, a portál használatával
 
-Ha célként egy főverzió eltérő az aktuális jelentős kell vagy 2.0-s verzióját, meg kell adni a `FUNCTIONS_EXTENSION_VERSION` Alkalmazásbeállítás.
+Ha egy eltérő az aktuális főverzió verzió vagy 2.0-s verziója van szüksége, meg kell adni a `FUNCTIONS_EXTENSION_VERSION` Alkalmazásbeállítás.
 
 1. Az a [Azure-portálon](https://portal.azure.com), keresse meg a függvény alkalmazásba, majd a **konfigurált szolgáltatások**, válassza a **Alkalmazásbeállítások**.
 
     ![Válassza ki a függvény Alkalmazásbeállítások](./media/functions-versions/add-update-app-setting1a.png)
 
-2. Az a **Alkalmazásbeállítások** lap, keresse meg a `FUNCTIONS_EXTENSION_VERSION` beállítást és módosítsa az értéket egy érvényes főverzió 1.x futásidejű vagy `beta` 2.0-s verzió. 
+2. Az a **Alkalmazásbeállítások** lap, keresse meg a `FUNCTIONS_EXTENSION_VERSION` beállítást és módosítsa az értéket egy érvényes 1.x futtatókörnyezet-verzió vagy `beta` 2.0-s verzió. 
 
     ![A függvény alkalmazás beállítása](./media/functions-versions/add-update-app-setting2.png)
 
 3. Kattintson a **mentése** menteni az alkalmazás frissítését. 
 
-## <a name="target-a-specific-version-using-azure-cli"></a>Egy adott verziójához Azure parancssori felület használatával
+## <a name="target-a-version-using-azure-cli"></a>Célként egy olyan verzióra, Azure parancssori felület használatával
 
  Azt is beállíthatja a `FUNCTIONS_EXTENSION_VERSION` az Azure parancssori felületen. Az Azure parancssori felület használatával frissítse az alkalmazás-beállítás, a függvény alkalmazás a [az functionapp appsettings konfiguráció](/cli/azure/functionapp/config/appsettings#set) parancsot.
 
@@ -79,6 +110,14 @@ az functionapp config appsettings set --name <function_app> \
 --resource-group <my_resource_group> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
-Cserélje le ezt a kódot `<function_app>` nevű, a függvény alkalmazást. Cserélni `<my_resource_group>` függvény alkalmazás az erőforráscsoport nevét. Cserélje le `<version>` 1.x futásidejű érvényes fő verziójával vagy `beta` 2.0-s verzió. 
+Cserélje le ezt a kódot `<function_app>` nevű, a függvény alkalmazást. Cserélni `<my_resource_group>` függvény alkalmazás az erőforráscsoport nevét. Cserélje le `<version>` 1.x futásidejű érvényes verziójával vagy `beta` 2.0-s verzió. 
 
 Ez a parancs futtatása a [Azure Cloud rendszerhéj](../cloud-shell/overview.md) kiválasztásával **kipróbálás** az előző példakódban. Használhatja a [helyileg Azure CLI](/cli/azure/install-azure-cli) végrehajtása után ez a parancs végrehajtásához [az bejelentkezési](/cli/azure#az_login) való bejelentkezéshez.
+
+## <a name="next-steps"></a>Következő lépések
+
+> [!div class="nextstepaction"]
+> [A helyi fejlesztési környezetben 2.0 futásidejű cél](functions-run-local.md)
+
+> [!div class="nextstepaction"]
+> [Tekintse meg a kibocsátási megjegyzések a futtatókörnyezet-verzió](https://github.com/Azure/azure-webjobs-sdk-script/releases)

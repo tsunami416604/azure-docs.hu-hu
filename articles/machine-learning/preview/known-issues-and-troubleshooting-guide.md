@@ -10,19 +10,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 050758240c9670a6f120f069d736cf6d6475b534
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: a03fb4f202bddb6454f703c998e95abf13d14fff
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
 
-> [!IMPORTANT]
-> Ha a támogatási csoport kommunikál, fontos a buildszám rendelkezik. Az alkalmazás a buildszám kattintva talál a **súgó** menü. Kattintson a buildszáma a másolja a vágólapra. Illessze be az e-mailek, vagy a jelentés hibákat fórumok támogatja.
-
-![verziószám ellenőrzéséhez](media/known-issues-and-troubleshooting-guide/buildno.png)
+## <a name="find-the-workbench-build-number"></a>A munkaterület buildszáma keresése
+Ha a támogatási csoport kommunikál, fontos közé tartozik a munkaterületet üzemeltető app build száma. A Windows rendszeren talál a buildszám kattintva a **súgó** menü válassza **kapcsolatos Azure ML munkaterület**. A macOS, kattintson a **Azure ML munkaterület** menü válassza **kapcsolatos Azure ML munkaterület**.
 
 ## <a name="machine-learning-msdn-forum"></a>Machine Learning MSDN fórum
 Az MSDN fórumon, hogy kérdéseit felteheti is van. A termékért felelős csoport a Fórum aktívan figyeli. Az URL-cím fórumra [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum). 
@@ -75,10 +73,13 @@ Azure ML munkaterület dolgozik, amikor is küldhet nekünk a rosszallás (vagy 
     >Ez a korlátozás nem vonatkozik `.git`, `docs` és `outputs` mappák. Ezek a mappanevek-és nagybetűk. Ha nagy fájlok dolgozik, tekintse meg a [megőrzése módosításokat, és nagy fájlok üzlet](how-to-read-write-files.md).
 
 - Maximálisan megengedett kísérlet végrehajtási ideje: hét napja
+
 - A nyomon követett fájl maximális méretét `outputs` mappa Futtatás után: 512 MB
   - Ez azt jelenti, hogy a parancsfájlt a kimeneti mappában 512 MB-nál nagyobb fájlt hoz létre, ha azt nem gyűjtenek van. Ha nagy fájlok dolgozik, tekintse meg a [megőrzése módosításokat, és nagy fájlok üzlet](how-to-read-write-files.md).
 
 - SSH-kulcsok használata nem támogatott, amikor SSH-n keresztül csatlakozik egy távoli gép vagy a Spark-fürt. Csak a felhasználónév/jelszó mód jelenleg támogatott.
+
+- A cél számítási HDInsight-fürt használata esetén azt kell használni az Azure blob elsődleges tárolóként. Azure Data Lake Storage használata nem támogatott.
 
 - Szöveg fürtözési átalakítások nem támogatottak a Mac.
 

@@ -1,5 +1,5 @@
 ---
-title: "Gyors üzembe helyezés: Egy első Spark feladat futtatása az Azure Databricks Azure-portál használatával |} Microsoft Docs"
+title: "Gyors üzembe helyezés: A Spark feladat futtatása az Azure Databricks Azure-portál használatával |} Microsoft Docs"
 description: "A gyors üzembe helyezés bemutatja, hogyan használható az Azure-portálon hozzon létre egy Azure Databricks munkaterületet, Apache Spark-fürt, és egy Spark-feladat futtatása."
 services: azure-databricks
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: nitinme
-ms.openlocfilehash: d384a1aef89941c2c9b547e5e0d05bb562578393
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: b5f80427234549b13a1aca94cd04e4f7e6f94ccf
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Gyors üzembe helyezés: A Spark feladat futtatása az Azure Databricks az Azure portál használatával
 

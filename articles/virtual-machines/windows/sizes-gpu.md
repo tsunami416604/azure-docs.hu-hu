@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Windows Virtuálisgép-méretek – GPU |} Microsoft Docs"
-description: "A különböző GPU listák Windows virtuális gépek Azure-ban elérhető méretek optimalizált."
+description: "A különböző GPU listák Windows virtuális gépek Azure-ban elérhető méretek optimalizált. Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség az a sorozat-méretek számát tartalmazza."
 services: virtual-machines-windows
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: e0d9e8a1cbe2c2ba0965abe130cb575434077dad
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 02cfa81cfcb9d58e2bd34af0fe0499b5872991f9
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU optimalizált virtuálisgép-méretek
 
