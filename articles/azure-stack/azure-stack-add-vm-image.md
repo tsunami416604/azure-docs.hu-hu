@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.openlocfilehash: 520e4dfaadf1d476447a600ef2b3d092b6955a89
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 54b6a6984e66f32642336f4ea5e1e9f4ec9d03f3
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Azure-készletben elérhetővé egy egyéni virtuálisgép-lemezkép
 
@@ -100,7 +100,7 @@ A kép verem Azure piactérről való hozzáadásához kövesse az alábbi lép�
           -EnableAdfsAuthentication:$true
 
         $TenantID = Get-AzsDirectoryTenantId `
-          -ADFS 
+          -ADFS `
           -EnvironmentName AzureStackAdmin 
 
         Login-AzureRmAccount `
@@ -150,7 +150,7 @@ Remove-AzsVMImage `
 | **közzétevő** |A közzétevő neve szegmensében a Virtuálisgép-lemezkép felhasználók használni, amikor a lemezképet. Példa: **Microsoft**. Nem tartalmaz szóközt vagy speciális karaktereket ebben a mezőben. |
 | **az ajánlat** |A felhasználók használni, amikor azok a Virtuálisgép-lemezkép központi telepítése Virtuálisgép-lemezkép ajánlat neve szegmense. Példa: **WindowsServer**. Nem tartalmaz szóközt vagy speciális karaktereket ebben a mezőben. |
 | **Termékváltozat** |A felhasználók használni, amikor azok a Virtuálisgép-lemezkép központi telepítése Virtuálisgép-lemezkép SKU neve szegmense. Példa: **Datacenter2016**. Nem tartalmaz szóközt vagy speciális karaktereket ebben a mezőben. |
-| **verzió** |A felhasználók használni, amikor azok a Virtuálisgép-lemezkép központi telepítése Virtuálisgép-lemezkép verziója. Ebben a formátumban van *\#.\#.\#*. Példa: **1.0.0**. Nem tartalmaz szóközt vagy speciális karaktereket ebben a mezőben. |
+| **verzió** |A felhasználók használni, amikor azok a Virtuálisgép-lemezkép központi telepítése Virtuálisgép-lemezkép verziója. Ebben a formátumban van  *\#.\#. \#*. Példa: **1.0.0**. Nem tartalmaz szóközt vagy speciális karaktereket ebben a mezőben. |
 | **osType** |A kép osType kell lennie, vagy **Windows** vagy **Linux**. |
 | **osDiskLocalPath** |Az operációs rendszer lemezének Azure verem VM lemezképként feltölteni kívánt virtuális merevlemez helyi elérési útja. |
 | **dataDiskLocalPaths** |A helyi elérési útja, amely a Virtuálisgép-lemezkép részeként is feltölthetők adatlemezek választható tömbjét. |
