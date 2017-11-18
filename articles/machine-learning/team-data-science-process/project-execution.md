@@ -11,29 +11,31 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 11/16/2017
 ms.author: bradsev;
-ms.openlocfilehash: 8c318f87243d0c98b6a42bebcdffb433f9cc456e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1015a9f24ca2c175ff367b1748f05bb3e464457f
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="execution-of-data-science-projects"></a>A végrehajtási adatok tudományos projektek
 
-Ez a dokumentum ismerteti, hogyan egy adatok tudósok végrehajthat egy tudományos adatprojekthez egy rendszeres, a szabályozott verzióját és az együttműködési módot a projektcsapattal használatával a [Team adatok tudományos folyamat](overview.md) (TDSP). A TDSP egy felhőalapú, a prediktív elemzési megoldások hatékonyan végrehajtandó tevékenységek strukturált sorrendje biztosító Microsoft által kifejlesztett keretrendszert. A személyzet szerepkörök és a kapcsolódó feladatok szabványosításával egy adatok tudományos csapat a folyamatban végrehajtott áttekintését lásd: [Team adatok tudományos folyamat szerepköröket és feladatokat](roles-tasks.md). 
+Ez a dokumentum ismerteti, hogyan fejlesztők végrehajthat egy tudományos adatprojekthez egy rendszeres, a szabályozott verzióját és az együttműködési módot a projektcsapattal használatával a [Team adatok tudományos folyamat](overview.md) (TDSP). A TDSP egy felhőalapú, a prediktív elemzési megoldások hatékonyan végrehajtandó tevékenységek strukturált sorrendje biztosító Microsoft által kifejlesztett keretrendszert. A személyzet szerepkörök és a kapcsolódó feladatok szabványosításával egy adatok tudományos csapat a folyamatban végrehajtott áttekintését lásd: [Team adatok tudományos folyamat szerepköröket és feladatokat](roles-tasks.md). 
 
-Ez a témakör útmutatást tartalmaz: 
+Ez a cikk útmutatást tartalmazza: 
 
-1. Tegye **sprint tervezési** munkaelemekre részt a projektben.<br> Ha nem ismeri a sprint tervezést, az alábbi adatokat és általános információk található [Itt](https://en.wikipedia.org/wiki/Sprint_(software_development) "Itt"). 
+1. Tegye **sprint tervezési** munkaelemekre részt a projektben.<br> Ha nem ismeri a sprint tervezést, adatokat és általános információk található [Itt](https://en.wikipedia.org/wiki/Sprint_(software_development) "Itt"). 
 2. **Adja hozzá a munkaelemek** sprints számára.
 3. **a tevékenységek kódolási munkaelemekben** git követi.
 4. Tegye **felülvizsgálati code**. 
 
+> [!NOTE]
+> Visual Studio Team Services (VSTS) használatával TDSP csoportos környezetben beállításához szükséges lépéseket az utasítások a következő készletben eljárásokat. Akkor adja meg, hogyan hajthat végre ezeket a feladatokat a VSTS, mivel az a Microsoft TDSP megvalósításához.  Ha VSTS, (3) elemet, és (4) használt a fenti listán szereplő vannak a következő előnyöket természetes. Egy másik kódot platform üzemeltető csoport használata esetén a feladatokat, amelyeket teljesíteni a csapat az érdeklődési általában ne módosítsa. De ezek a feladatok úgy a különböző lesz. Például szakaszban hat, az elem **hivatkozásra a git ág munkaelem**, nem feltétlenül egyszerű, mint az VSTS.
+>
+>
 
->[AZURE.NOTE] A Microsoft helyzeteit vázolják fel, a Visual Studio Team Services (VSTS) használatát a következő set utasítás TDSP csoportos környezetben beállításához szükséges lépéseket. Azt adja meg, hogyan hajthat végre ezeket a feladatokat a VSTS, mivel az a Microsoft TDSP megvalósítása módját. Elemek (3) és (4) a fenti listán szereplő vannak a következő előnyöket természetesen Ha VSTS használata mellett dönt. Egy másik kódot platform üzemeltető csoport használata esetén a feladatokat, amelyeket teljesíteni a csapat az érdeklődési általában ne módosítsa. De ezek a feladatok úgy a különböző lesz. Például szakaszban hat, az elem **hivatkozásra a git ág munkaelem**, nem feltétlenül egyszerű, mint az VSTS.
-
-Verziókövetési munkafolyamat szükséges végrehajtási adatok tudományos projekt és az alábbi ábra egy tipikus sprint tervezési, kódolási:
+Verziókövetési munkafolyamat végrehajtási adatok tudományos projekt szükséges, és a következő ábra azt mutatja be egy tipikus sprint tervezési, kódolási:
 
 ![1](./media/project-execution/project-execution-1-project-execute.png)
 
@@ -53,9 +55,15 @@ Az a TDSP súlyadatainak nyomtatása tervezési keretrendszer, négy gyakran has
 - **A feladat**: feladatokat is hozzárendelhető kód vagy a dokumentum munkaelemek vagy egyéb tevékenységeket, amelyek egy adott szövegegység befejezéséhez kell elvégezni. Például a szövegegység feladatok *első adatok* lehet:
     -  Az SQL Server hitelesítő adatok beolvasása 
     -  Az SQL Data Warehouse-adatok feltöltését. 
-- **Hiba**: hibák általában javítások, a szükséges egy meglévő kód vagy a dokumentum történik, amikor a tevékenység hivatkozik. Azt is eszkalálása a alatt álló szövegegység vagy a feladatot, ha a hiba okozta szakaszában vagy feladatok rendre hiányzik. 
+- **Hiba**: hibák általában javítások, a szükséges egy meglévő kód vagy a dokumentum történik, amikor a tevékenység hivatkozik. Ha a hiba okozta szakaszában vagy feladatok rendre hiányzik, akkor eszkaláció szövegegység vagy egy feladatot. 
 
->[AZURE.NOTE] Azt is hitelnyújtási funkciók, szövegek, feladatok és hibák a kód szoftverkezelés (SCM) adattudomány használt fogalmak. Ezek némileg eltér a hagyományos SCM definíciójukat.
+> [!NOTE]
+> Fogalmak vannak tárolt, közös funkciók, szövegek, feladatok és hibák a kód szoftverkezelés (SCM) adattudomány használhatók. Ezek némileg eltér a hagyományos SCM definíciójukat.
+>
+>
+
+Adatszakértőkön úgy érezhetik kényelmesebb gyors sablonnal, amely kifejezetten a TDSP életciklusának szakaszait igazodik. Vele szem előtt tervezősablon Agile származtatott sprint létrejött, ahol Epics, szöveg stb helyébe TDSP életciklusának szakaszait vagy substages. Ilyen egy gyors sablon létrehozásával dokumentáció itt található [Itt](https://msdata.visualstudio.com/AlgorithmsAndDataScience/TDSP/_git/TDSP?path=%2FDocs%2Fteam-data-science-process-agile-template.md&version=GBxibingao&_a=preview).
+
 
 ##  2. <a name='SprintPlanning-2'></a>Súlyadatainak nyomtatása tervezése 
 
@@ -74,7 +82,7 @@ A várakozó fájlok számát a szolgáltatásnak a szolgáltatással, kattintso
 
 ![3](./media/project-execution/project-execution-3-sprint-team-add-work.png)
 
-Kattintson duplán az imént létrehozott funkció. Töltse ki a leírásokat, rendelje hozzá a szolgáltatáshoz tartozó csoport tagjai és tervezési a szolgáltatáshoz tartozó paraméterek beállítása. 
+Kattintson duplán a létrehozott szolgáltatást. Töltse ki a leírásokat, rendelje hozzá a szolgáltatáshoz tartozó csoport tagjai és tervezési a szolgáltatáshoz tartozó paraméterek beállítása. 
 
 Ez a funkció a projekt tárház is társíthatja. Kattintson a **hivatkozás hozzáadása** alatt a **fejlesztési** szakasz. Miután végzett a szolgáltatás szerkesztésével, kattintson **mentés és Bezárás** való kilépéshez.
 
@@ -196,7 +204,7 @@ A következő Git-parancsok segítségével a munkaágat az alap elágazási egy
 
 ##  10. <a name='DataQualityReportUtility-10'></a>Adatok interaktív áttekintését, elemzési és jelentéskészítési (IDEAR) segédprogram
 
-Az R markdown-alapú segédprogram értékelje ki és felfedezés adatkészletek rugalmas és interaktív eszközt biztosít. Felhasználók gyorsan előállíthat olyan jelentéseket a minimális kódolási adatkészletből. Felhasználók rákattinthatnak a gombok segítségével exportálhatja az feltárása eredményeket látja, a végső jelentési ügyfelek felé vagy használ a döntést arról, mely tartalmazza az ezt követő modellezési lépésben változókat az interaktív eszközben.
+Az R markdown-alapú segédprogram értékelje ki és felfedezés adatkészletek rugalmas és interaktív eszközt biztosít. Felhasználók gyorsan előállíthat olyan jelentéseket a minimális kódolási adatkészletből. Felhasználók rákattinthatnak gombok eszköz interaktív adatkutatási eredményez exportálhat egy végső jelentést, amely ügyfelek felé vagy használ a döntést arról, mely tartalmazza az ezt követő modellezési lépésben változókat.
 
 Ilyenkor az eszközt csak akkor működik a memóriában adatkeretek. Az adatkészlet vizsgálják paramétereket egy .yaml fájl szükséges. További információkért lásd: [TDSP adatok tudományos segédprogramok IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
 
@@ -229,7 +237,7 @@ Adatok tudományos csoport kezelők, a csapat érdeklődők és a projekt érdek
 
 Power BI-irányítópult és jelentések megtekintésére az Git-tárház tevékenységeket és a munkaelemek követéséhez VSTS adatait a Power bi-bA csatlakoztatása után, lásd: [hozzon létre Power BI-irányítópult és jelentések](https://www.visualstudio.com/en-us/docs/report/powerbi/report-on-vso-with-power-bi-vs). 
 
-Az alábbiakban a két egyszerű példát irányítópultokat, amelyek azt Git tevékenységek nyomon követése és-munkaelemek létrehozása. Az első példában irányítópult a git kötelezettségvállalás tevékenységek különböző felhasználók alapján vannak listázva különböző időpontokban, és a különböző tárházak találhatók. Akkor is könnyen részletekbe menően vizsgálhatja a gazdarendszerhez érdekli szűréséhez.
+Az alábbiakban a két egyszerű példát irányítópultok nyomon követhető a Git-tevékenységek és a munkaelemek készült. Az első példában irányítópult a git kötelezettségvállalás tevékenységek különböző felhasználók alapján vannak listázva különböző időpontokban, és a különböző tárházak találhatók. Akkor is könnyen részletekbe menően vizsgálhatja a gazdarendszerhez érdekli szűréséhez.
 
 ![23](./media/project-execution/project-execution-23-powerbi-git.png)
 
@@ -240,6 +248,6 @@ A második példában irányítópulton a munkaelemek (szövegek és feladatok) 
  
 ## <a name="next-steps"></a>Következő lépések
 
-Végpont forgatókönyvek, amelyek azt mutatják, a folyamat lépései teljes **meghatározott forgatókönyvek** is rendelkezésre állnak. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) témakör. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
+Végpont forgatókönyvek, amelyek azt mutatják, a folyamat lépései teljes **meghatározott forgatókönyvek** is rendelkezésre állnak. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
 
 Az adatok tudományos folyamatban lépések végrehajtása, amelyek használják az Azure Machine Learning Studióban, tekintse meg a [Azure ML](http://aka.ms/datascienceprocess) képzési.

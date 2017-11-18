@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: a573a7ef79e28c50ae0923849a88f88af40f21be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ba33399c9ea0f093de6c85328d6ec2b280da4a0
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="tutorial-configuring-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: Salesforce konfigurálása az automatikus felhasználó létesítése
 
@@ -35,9 +35,7 @@ Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkez
 
 Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" használ annak meghatározásához, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus fiók felhasználókiépítése keretében csak a felhasználók és csoportok "hozzárendelt" az Azure AD-alkalmazáshoz való szinkronizálása.
 
-A létesítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége döntse el, hogy mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználók, akik a Salesforce alkalmazásához való hozzáférést. Ha úgy döntött, itt utasításokat követve hozzárendelheti ezek a felhasználók a Salesforce alkalmazást:
-
-[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+A létesítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége döntse el, hogy mely felhasználók vagy csoportok az Azure ad-ben a Salesforce alkalmazáshoz hozzáférésre van szükségük. Ez a döntés elkészítése után rendelhet ezeket a felhasználókat a Salesforce alkalmazáshoz utasításait követve [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-salesforce"></a>Felhasználók hozzárendelése Salesforce fontos tippek
 
@@ -55,7 +53,7 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódás Salesforce a felhasználói 
 >[!Tip]
 >Dönthet úgy is, SAML-alapú egyszeri bejelentkezés Salesforce engedélyezni, utasítások megadott [Azure-portálon](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, bár ez a két funkció egészítse ki egymást.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Konfigurálása automatikus felhasználói fiók kiépítése:
+### <a name="configure-automatic-user-account-provisioning"></a>Konfigurálja az automatikus felhasználói fiók kiépítése
 
 Ez a szakasz célja felvázoló engedélyezése a felhasználók átadása Salesforce Active Directory felhasználói fiókokat.
 
@@ -65,8 +63,9 @@ Ez a szakasz célja felvázoló engedélyezése a felhasználók átadása Sales
 
 3. Jelölje ki a Salesforce példányát, majd válassza ki a **kiépítési** fülre.
 
-4. Állítsa be a **kiépítési üzemmódját** való **automatikus**. 
-![kiépítés](./media/active-directory-saas-salesforce-provisioning-tutorial/provisioning.png)
+4. Állítsa be a **kiépítési üzemmódját** való **automatikus**.
+
+    ![kiépítés folyamatban](./media/active-directory-saas-salesforce-provisioning-tutorial/provisioning.png)
 
 5. Az a **rendszergazdai hitelesítő adataival** területen adja meg a következő konfigurációs beállításokat:
    
@@ -74,17 +73,21 @@ Ez a szakasz célja felvázoló engedélyezése a felhasználók átadása Sales
    
     b. Az a **rendszergazdai jelszó** szövegmező, írja be a fiókhoz tartozó jelszót.
 
-6. A Salesforce biztonsági jogkivonatának beszerzéséhez, nyisson meg egy új lapon és a bejelentkezés Salesforce egy rendszergazdai fiókhoz. Az oldal jobb felső sarkában kattintson a nevére, és kattintson a **saját beállítások**.
+6. A Salesforce biztonsági jogkivonatának beszerzéséhez, nyisson meg egy új lapon és a bejelentkezés Salesforce egy rendszergazdai fiókhoz. Az oldal jobb felső sarkában kattintson a nevére, és kattintson a **beállítások**.
 
      ![Az automatikus felhasználó-kiépítés engedélyezése](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-my-settings.png "automatikus felhasználó-kiépítés engedélyezése")
-7. A bal oldali navigációs ablaktábláján kattintson **személyes** bontsa ki a kapcsolódó csomópontot, majd **alaphelyzetbe állítani a biztonsági jogkivonat**.
+
+7. A bal oldali navigációs ablaktábláján kattintson **saját személyes adatok** bontsa ki a kapcsolódó csomópontot, majd **alaphelyzetbe állítani a biztonsági jogkivonat**.
   
     ![Az automatikus felhasználó-kiépítés engedélyezése](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-personal-reset.png "automatikus felhasználó-kiépítés engedélyezése")
+
 8. A a **alaphelyzetbe állítani a biztonsági jogkivonat** kattintson **alaphelyzetbe állítani a biztonsági jogkivonat** gombra.
 
     ![Az automatikus felhasználó-kiépítés engedélyezése](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-reset-token.png "automatikus felhasználó-kiépítés engedélyezése")
+
 9. Ellenőrizze a rendszergazdai fiókhoz tartozó e-mailben kapják. Keresse meg a Salesforce.com az új biztonsági jogkivonatot tartalmazó e-mailt.
-10. Másolja a token nyissa meg az Azure AD ablakba, és illessze be azt a **szoftvercsatorna Token** mező.
+
+10. Másolja a token nyissa meg az Azure AD ablakba, és illessze be azt a **titkos Token** mező.
 
 11. Az Azure portálon kattintson **kapcsolat tesztelése** biztosításához az Azure AD csatlakozhat a Salesforce alkalmazást.
 
@@ -108,4 +111,4 @@ Mostantól létrehozhat egy olyan fiókot. Akár 20 percig várjon győződjön 
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
-* [Egyszeri bejelentkezés konfigurálása](active-directory-saas-salesforce-tutorial.md)
+* [Egyszeri bejelentkezés konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2017
+ms.date: 11/16/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3b9c49d4c7d49cc6795fb093f9abc748d55b5b6f
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: fc5bfebbcbac7096dea874684bdefe099b572adc
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Hozzon létre egy Azure Active Directory-alkalmazást és egy egyszerű szolgáltatást, amely erőforrások eléréséhez a portál használatával
 
@@ -27,11 +27,11 @@ Ha egy alkalmazás eléréséhez, vagy módosítsa az erőforrások igénylő, �
 * Nem kell módosítani az alkalmazás hitelesítő adatokat, ha az Ön feladatkörei módosítása. 
 * Tanúsítvány segítségével automatizálhatja a hitelesítést egy felügyelet nélküli parancsfájl végrehajtása közben.
 
-Ez a témakör bemutatja, hogyan hajtsa végre ezeket a lépéseket a portálon keresztül. A single-bérlői alkalmazások, ahol az alkalmazás futtatásához csak egy szervezeten belül olyan összpontosít. Általában egy bérlői alkalmazásokat használ futó üzleti alkalmazásokhoz a szervezeten belül.
+Ez a cikk bemutatja, hogyan hajtsa végre ezeket a lépéseket a portálon keresztül. A single-bérlői alkalmazások, ahol az alkalmazás futtatásához csak egy szervezeten belül olyan összpontosít. Általában egy bérlői alkalmazásokat használ futó üzleti alkalmazásokhoz a szervezeten belül.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-Ez a témakör befejezéséhez megfelelő engedélyekkel rendelkezik alkalmazás regisztrálása az Azure AD-bérlőn, és az alkalmazást egy szerepkörhöz rendelhető az Azure-előfizetésben. Ellenőrizze, hogy a fenti lépések végrehajtásához a megfelelő engedélyekkel.
+Ez a cikk befejezéséhez megfelelő engedélyekkel rendelkezik alkalmazás regisztrálása az Azure AD-bérlőn, és az alkalmazást egy szerepkörhöz rendelhető az Azure-előfizetésben. Ellenőrizze, hogy a fenti lépések végrehajtásához a megfelelő engedélyekkel.
 
 ### <a name="check-azure-active-directory-permissions"></a>Azure Active Directory-engedélyek ellenőrzése
 
@@ -104,7 +104,7 @@ Ellenőrizze előfizetése engedélyei között:
 
    ![alkalmazás hozzáadása](./media/resource-group-create-service-principal-portal/select-add-app.png)
 
-1. Adjon meg egy nevet és egy URL-címet az alkalmazáshoz. Válassza ki vagy **Web app / API** vagy **natív** a létrehozandó alkalmazás típusától. Miután beállította az értékeket, válassza ki a **létrehozása**.
+1. Adjon meg egy nevet és egy URL-címet az alkalmazáshoz. Válassza ki **Web app / API** a létrehozandó alkalmazás típusától. Nem hozható létre a hitelesítő adatokat egy **natív** alkalmazás; ezért adott típus esetében nem működik egy automatikus alkalmazásnak. Miután beállította az értékeket, válassza ki a **létrehozása**.
 
    ![alkalmazás neve](./media/resource-group-create-service-principal-portal/create-app.png)
 

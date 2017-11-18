@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fb93efcf00cb7b165c497d7ef38685f80bce84c0
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: bfa6652eac34f88baf09f55353cf58227a20e4cf
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-linux-device---preview"></a>Gyors üzembe helyezés: Az első IoT peremhálózati modul az Azure-portálon Linux eszközre központi telepítése – előzetes
 
@@ -66,24 +66,26 @@ Hozzon létre egy eszközidentitás a szimulált eszköz, így képes kommuniká
 Az IoT-Edge futásidejű minden IoT peremhálózati eszközön van telepítve. Ez magában foglalja a két modulok. Először az IoT-Edge ügynök elősegíti a központi telepítési és figyelési modulokat az IoT-peremhálózati eszközön. Második a peremhálózati IoT hub kezeli a kommunikációt az IoT-peremhálózati eszközön modulokat, valamint az eszköz és az IoT-központ között. 
 
 A számítógépen, ahol az IoT-peremhálózati eszköz fogja futtatni töltse le az IoT-Edge vezérlő parancsfájl:
-```python
+```cmd
 sudo pip install -U azure-iot-edge-runtime-ctl
 ```
 
 A futtatókörnyezet származó az előző szakaszban az IoT peremhálózati eszköz kapcsolati karakterlánc konfigurálása:
-```python
+```cmd
 sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 Indítsa el a futtatókörnyezet:
-```python
+```cmd
 sudo iotedgectl start
 ```
 
 Ellenőrizze, hogy az IoT-Edge-ügynök fut-e modulként Docker:
-```python
+```cmd
 sudo docker ps
 ```
+
+![A Docker edgeAgent lásd:](./media/tutorial-simulate-device-linux/docker-ps.png)
 
 ## <a name="deploy-a-module"></a>A modulok telepítése
 
@@ -93,11 +95,21 @@ sudo docker ps
 
 A gyors üzembe helyezés létrehozott egy új IoT peremhálózati eszköz, és telepítve van-e az IoT-Edge futásidejű. Az Azure-portálon, majd leküldéses egy IoT peremhálózati modul futtatható az eszközön anélkül, hogy a módosításokat az magához az eszközhöz használt. A modult, amely akkor leküldött ebben az esetben is használhatja az oktatóanyagok a környezeti adatokat hoz létre. 
 
-A tempSensor modulból küldött üzenetek megjelenítése:
+Nyissa meg a parancssort a szimulált eszköz újra futtatni a számítógépen. Győződjön meg arról, hogy fut-e a modul telepítve a felhőben az IoT-peremhálózati eszközön:
 
-```cmd/sh
+```cmd
+sudo docker ps
+```
+
+![Három modulok megtekintése az eszközön](./media/tutorial-simulate-device-linux/docker-ps2.png)
+
+A tempSensor modulból a felhőbe küldött üzenetek megjelenítése:
+
+```cmd
 sudo docker logs -f tempSensor
 ```
+
+![A modul az adatok megtekintése](./media/tutorial-simulate-device-linux/docker-logs.png)
 
 A telemetriai adatokat küld az eszköz segítségével is megtekintheti a [IoT-központ explorer eszköz][lnk-iothub-explorer]. 
 
@@ -115,7 +127,7 @@ Megtudta, hogyan IoT peremhálózati eszköz egy IoT-Edge-modul telepítéséhez
 
 * [Telepítse a saját kódját modulként](tutorial-csharp-module.md)
 * [Azure-függvény modul telepítése](tutorial-deploy-function.md)
-* [Azure Stream Analytics egy modul telepítése](tutorial-deploy-stream-analytics.md)
+* [Az Azure Stream Analytics üzembe helyezése modulként](tutorial-deploy-stream-analytics.md)
 
 
 <!-- Images -->

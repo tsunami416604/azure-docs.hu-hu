@@ -4,7 +4,7 @@ description: "Egy alapszintű Java-alkalmazás üzembe helyezésével megtudhatj
 services: app-service\web
 documentationcenter: 
 author: rmcmurray
-manager: erikre
+manager: routlaw
 editor: 
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -12,18 +12,20 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 6/7/2017
+ms.date: 11/08/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ac8ef479be5a93b2c4baa76279c8d3e53389409a
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 3d9a4d72d348b4fe631f075debb6198462f24c56
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Az első Java-webalkalmazás létrehozása az Azure-ban
 
 Azure [webalkalmazások](app-service-web-overview.md) jól skálázható, önálló javítási a webhelyszolgáltató biztosít. Ez a gyorsútmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazásokat az App Service-ben a [Java EE-fejlesztőknek készült Eclipse IDE](http://www.eclipse.org/) használatával.
+
+A gyors üzembe helyezés befejezése után, az alkalmazás majd meg az alábbi ábrához hasonlóan egy webböngészőben megtekintheti:
 
 ![„Hello Azure!” példa webalkalmazás](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
@@ -32,7 +34,7 @@ Azure [webalkalmazások](app-service-web-overview.md) jól skálázható, önál
 A gyorsútmutató elvégzéséhez a következők telepítése szükséges:
 
 * Az ingyenes, [Java EE-fejlesztőknek készült Eclipse IDE](http://www.eclipse.org/downloads/). Ez a gyorsútmutató az Eclipse Neont használj.
-* Az [Eclipse-hez készült Azure-eszközkészlet](/azure/azure-toolkit-for-eclipse-installation).
+* Az [Eclipse-hez készült Azure-eszközkészlet](/java/azure/eclipse/azure-toolkit-for-eclipse-installation).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -167,9 +169,9 @@ A Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a pr
 
 Megjelenik a **Deploy Web App** (Webalkalmazás üzembe helyezése) párbeszédpanel, és megjeleníti a korábban létrehozott App Service-t. 
 
-> [!NOTE]
-> Minden egyes közzétételkor válassza a **Deploy to root** (Üzembe helyezés a gyökérnél) beállítást.
->
+> [!NOTE] 
+> Minden egyes közzétételkor válassza a **Deploy to root** (Üzembe helyezés a gyökérnél) beállítást. 
+> 
 
 Válassza ki a webalkalmazást, majd a **Deploy** (Üzembe helyezés) lehetőséget, ami közzéteszi a módosításokat.
 

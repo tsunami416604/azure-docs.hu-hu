@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/13/2017
+ms.date: 11/17/2017
 ms.author: markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: db04f8c6ab61d33df80cd442abc5636867e5809a
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: d6682bf5e4b0b64d5309f939379906efff6e017d
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Készítsen biztonsági másolatot a virtuális gépek AzureRM.RecoveryServices.Backup-parancsmagok használatával
 > [!div class="op_single_selector"]
@@ -266,7 +266,7 @@ PS C:\> Wait-AzureRmRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
 ```
 
 ## <a name="restore-an-azure-vm"></a>Állítsa vissza az Azure virtuális gép
-A visszaállítását egy virtuális Gépet az Azure portál használatával és visszaállítása a PowerShell virtuális gépek közötti fő különbség van. A PowerShell használatával a visszaállítás befejeződött a lemezek és a konfigurációs adatokat a helyreállítási pont létrehozása után.
+A visszaállítását egy virtuális Gépet az Azure portál használatával és visszaállítása a PowerShell virtuális gépek közötti fő különbség van. A PowerShell használatával a visszaállítás befejeződött a lemezek és a konfigurációs adatokat a helyreállítási pont létrehozása után. Ha azt szeretné, állítsa vissza vagy Azure virtuális gép biztonsági másolaton visszaállítani néhány fájlt, tekintse meg a [helyreállítási tartalmazó fájl](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup)
 
 > [!NOTE]
 > A visszaállítási művelet nem hoz létre egy virtuális gépet.
@@ -507,6 +507,76 @@ Miután visszaállította a lemezeket, ezek lépések segítségével hozza lét
     ```    
     PS C:\> New-AzureRmVM -ResourceGroupName "test" -Location "WestUS" -VM $vm
     ```
+
+## <a name="restore-files-from-an-azure-vm-backup"></a>Fájlok visszaállítása egy Azure virtuális gép biztonsági mentése
+
+Lemezek visszaállítása, mellett is állíthatja a fájlokat egy Azure virtuális gép biztonsági másolatból. A visszaállítási fájlok funkció hozzáférést biztosít a helyreállítási pont található összes fájl, és kezelheti azokat a Fájlkezelőben keresztül, mint a normál fájlok.
+
+A fájl biztonsági másolatból történő visszaállítását Azure virtuális gép alapvető lépéseit a következők:
+
+* Válassza ki a virtuális gép
+* A helyreállítási pont kiválasztása
+* Csatlakoztassa a lemezeket a helyreállítási pont
+* Másolja a szükséges fájlokat
+* A lemez leválasztása
+
+
+### <a name="select-the-vm"></a>Válassza ki a virtuális gép
+Ahhoz, hogy a PowerShell-objektum, amely a helyes biztonságimásolat-elem azonosítja, indítsa el a tárolóban lévő-tárolójából, és az objektum egy hierarchiában lejjebb lévő módon működnek. Válassza ki a tárolóhoz, amelybe a virtuális Gépet jelöl, használja a  **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)**  parancsmag és a csövön keresztüli, hogy a  **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)**  parancsmag.
+
+```
+PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" –Status "Registered" -FriendlyName "V2VM"
+PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem –Container $namedContainer  –WorkloadType "AzureVM"
+```
+
+### <a name="choose-a-recovery-point"></a>A helyreállítási pont kiválasztása
+Használja a  **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)**  parancsmagot, hogy az összes helyreállítási pontról biztonsági mentési elem listán. Válassza ki a visszaállítani kívánt helyreállítási pontot. Ha biztos abban, hogy melyik helyreállítási pontot szeretné használni, ajánlott válassza ki a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
+
+A következő parancsfájlt, a változó a **$rp**, helyreállítási pontot készíteni a kijelölt biztonsági mentési elemet, az elmúlt hét napban tömbje. A tömb fordított sorrendben rendezve idő 0 indexnél a legújabb helyreállítási pontot. Standard PowerShell tömb indexelő segítségével válassza ki a helyreállítási pont. A példában $rp [0] választja ki a legutóbbi helyreállítási pontot.
+
+```
+PS C:\> $startDate = (Get-Date).AddDays(-7)
+PS C:\> $endDate = Get-Date
+PS C:\> $rp = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
+PS C:\> $rp[0]
+RecoveryPointAdditionalInfo :
+SourceVMStorageType         : NormalStorage
+Name                        : 15260861925810
+ItemName                    : VM;iaasvmcontainer;RGName1;V2VM
+RecoveryPointId             : /subscriptions/XX/resourceGroups/ RGName1/providers/Microsoft.RecoveryServices/vaults/testvault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainer;RGName1;V2VM/protectedItems/VM;iaasvmcontainer; RGName1;V2VM/recoveryPoints/15260861925810
+RecoveryPointType           : AppConsistent
+RecoveryPointTime           : 4/23/2016 5:02:04 PM
+WorkloadType                : AzureVM
+ContainerName               : IaasVMContainer;iaasvmcontainer; RGName1;V2VM
+ContainerType               : AzureVM
+BackupManagementType        : AzureVM
+```
+
+### <a name="mount-the-disks-of-recovery-point"></a>Csatlakoztassa a lemezeket a helyreállítási pont
+
+Használja a  **[Get-AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprpmountscript)**  parancsmagot, hogy megkapja a parancsfájl a helyreállítási pont az összes lemez csatlakoztatásához.
+
+> [!NOTE]
+> A lemezek csatlakoztatva vannak a számítógépre, amelyen fut a parancsfájl iSCSI csatolt lemeznek. Ezért szinte azonnali van, és nem jár bármilyen díj
+>
+>
+
+```
+PS C:\> Get-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
+
+OsType  Password        Filename
+------  --------        --------
+Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe
+```
+Futtassa a parancsfájlt a számítógépen, ahol szeretné helyreállítani a fájlt. Meg kell adnia a jelszót, a parancsfájl végrehajtása a fent látható. Miután a lemezek vannak csatolva hozzá, a Windows Fájlkezelőben segítségével tallózzon az új kötetekre és a fájlok. További információ a [helyreállítási dokumentumok fájl](backup-azure-restore-files-from-vm.md)
+
+### <a name="unmount-the-disks"></a>A lemez leválasztása
+Miután a szükséges fájlok másolása, válassza le a lemezek használatával a  **[Disable-AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/disable-azurermrecoveryservicesbackuprpmountscript?view=azurermps-5.0.0)**  parancsmag. Az erősen ajánlott, azt gondoskodik arról, hogy hozzáférést a fájlokat a helyreállítási pont eltávolítása
+
+```
+PS C:\> Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
+```
+
 
 ## <a name="next-steps"></a>Következő lépések
 Ha jobban szeret PowerShell használata az Azure-erőforrások bevonásához, olvassa el a PowerShell, [telepítés és a Windows Server biztonsági másolat kezelése](backup-client-automation.md). DPM biztonsági mentések kezelése, tekintse meg a cikket, [telepítés és a DPM a biztonsági mentés kezelése](backup-dpm-automation.md). Ezek a cikkek mindegyikét verziónál Resource Manager üzembe helyezések vagy a klasszikus telepítések esetén.  

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: 44dc7b18d46d1e75e8b55b6e32a346272a06bda9
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: b515e05d16dda83c7d865113d5d3578c44be084f
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="comparison-of-azure-iot-hub-and-azure-event-hubs"></a>Az Azure IoT-központ és az Azure Event Hubs összehasonlítása
 Az IoT-központ fő alkalmazási helyzetei egyik telemetria összeállítani eszközökről. Emiatt az IoT-központ gyakran képest [Azure Event Hubs][Azure Event Hubs]. Az IoT-központ, mint az Event Hubs egy Eseményfeldolgozási szolgáltatás, amely lehetővé teszi a felhőbe, nagy léptékű esemény- és telemetriabevitelt érkező, alacsony késéssel és nagy megbízhatósággal.
@@ -47,7 +47,7 @@ Az IoT-központ telepítésének tervezése kapcsolatos további információké
 Az IoT-központ képességeit további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Egy eszköz szimulálva IoT oldala][lnk-iotedge]
+* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
 
 [lnk-twins]: iot-hub-devguide-device-twins.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
@@ -63,5 +63,5 @@ Az IoT-központ képességeit további megismeréséhez lásd:
 
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
+[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md

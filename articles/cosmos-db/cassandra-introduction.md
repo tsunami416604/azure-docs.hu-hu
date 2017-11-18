@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 23909c65499697be66fc2d2f43c6d0bd8a02b614
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 5ca9b8ed40a1e58a0aea4de87995caf5f9a9212b
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Az Azure Cosmos DB Apache Cassandra API bemutatása
 
@@ -36,7 +36,10 @@ Azure Cosmos-adatbázis is használható adattárként írt [Apache Cassandra](h
 
 ![Azure Cosmos DB Cassandra API](./media/cassandra-introduction/cosmosdb-cassandra.png)
 
-A Cassandra API lehetővé teszi a Azure Cosmos DB Cassandra Query Language-alapú eszközök (például CQLSH) segítségével tárolt adatok kezeléséhez, és Cassandra ügyfél illesztőprogramok ismeri már.
+A Cassandra API lehetővé teszi a Azure Cosmos DB Cassandra Query Language-alapú eszközök (például CQLSH) segítségével tárolt adatok kezeléséhez, és Cassandra ügyfél illesztőprogramok ismeri már. További információ a Microsoft Mechanics videó az egyszerű mérnöki Manager Kirill Gavrylyuk.
+
+> [!VIDEO https://www.youtube.com/embed/1Sf4McGN1AQ]
+>
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Mi az az előnye, hogy az Azure Cosmos DB Apache Cassandra API használatával?
 
@@ -56,17 +59,34 @@ A Cassandra API lehetővé teszi a Azure Cosmos DB Cassandra Query Language-alap
 
 **Enterprise osztályú**: biztonságosságának és alapértelmezetten – DB biztosít az Azure cosmos [megfelelőségi minősítései közül](https://www.microsoft.com/trustcenter) annak érdekében, hogy a felhasználók használhatják a platform anélkül, hogy megfelelőségi problémákat. Azure Cosmos-adatbázis is biztosít a titkosítás aktívan és a mozgási, IP-tűzfal és tartozó vezérlőelem vezérlősík tevékenységeit naplókat.  
 
+<a id="sign-up-now"></a>
+## <a name="sign-up-now"></a>Regisztráljon most 
+
+Ha már rendelkezik Azure-előfizetéssel, regisztrálhat a Cassandra API (előzetes verzió) program csatlakozni a [Azure-portálon](https://aka.ms/cosmosdb-cassandra-signup).  Ha most ismerkedik az Azure-ba, regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/free) hol szerezheti Azure Cosmos DB szabad hozzáférési 12 hónapig. Kövesse az alábbi lépéseket, hogy hozzáférést igényelhessen a Cassandra API (előzetes verzió) program.
+
+1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **új** > **adatbázisok** > **Azure Cosmos DB**. 
+
+2. Válassza ki az új fiók lap **Cassandra** a API mezőbe. 
+
+3. Az a **előfizetés** jelölje ki az ehhez a fiókhoz használni kívánt Azure-előfizetéshez.
+
+4. Kattintson a **regisztráljon az előzetes verzióra még ma**.
+
+    ![Azure Cosmos DB Cassandra API](./media/cassandra-introduction/cassandra-sign-up.png)
+
+3. A regisztrációs a kattintva megtekintheti a ma ablaktábla **OK**. 
+
+    Miután a kérelmet, az állapota **jóváhagyásra váró** az új fiók panelen. 
+
+A kérelem elküldése után várja meg, hogy a kérelem jóváhagyását e-mailben értesítést. Nem kell a kérés teljesítéséhez el egy támogatási jegy létrehozását. Kérelem érkezett volt sorrendben felül kell vizsgálni. 
+
 ## <a name="how-to-get-started"></a>Első lépések
-Hajtsa végre a Cassandra API quickstarts Azure Cosmos DB Cassandra API-fiók létrehozása, és hozzon létre egy Cassandra alkalmazást:
+Egyszer csatlakozott a programot, hajtsa végre a Cassandra API quickstarts hozhat létre egy alkalmazást a Cassandra API használatával:
 
 * [Gyors üzembe helyezés: Build a Cassandra a Node.js és Azure Cosmos DB webalkalmazás](create-cassandra-nodejs.md)
 * [Gyors üzembe helyezés: Build a Cassandra Java és Azure Cosmos DB webalkalmazás](create-cassandra-java.md)
 * [Gyors üzembe helyezés: Build a Cassandra .NET és Azure Cosmos DB webalkalmazás](create-cassandra-dotnet.md)
 * [Gyors üzembe helyezés: Build a Cassandra Azure Cosmos DB és Python webalkalmazás](create-cassandra-python.md)
-
-## <a name="sign-up-now"></a>Regisztráljon most 
-
-Ha már rendelkezik Azure-előfizetéssel, regisztrálhat az Cassandra API (előzetes verzió) a [Azure-portálon](https://aka.ms/cosmosdb-cassandra-signup). Ha most ismerkedik az Azure-ba, regisztrálni szeretne a [ingyenes próbaverzió](https://azure.microsoft.com/free) hol szerezheti Azure Cosmos DB szabad hozzáférési 12 hónapig.
 
 ## <a name="next-steps"></a>Következő lépések
 

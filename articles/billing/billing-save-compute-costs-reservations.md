@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: vikdesai
-ms.openlocfilehash: ab97feac7dd92cdc64343e215f6c623a6de9ef60
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 96e9cf2fed0b22fd7aa7b9ffeab0e94738ce510d
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>Kevesebbet költeni a virtuális gépek a fenntartott virtuálisgép-példányok 
 Fenntartott virtuálisgép-példányok engedélyezi, hogy egy- vagy kedvezményes hozzáférhet a virtuális gépek számítási kapacitás három évnyi előre fizet. Ez jelentősen csökkenti a virtuális gép költségek – 72 %-át használatalapú árak – az egy- vagy három év társaságuk előre. Fenntartott virtuálisgép-példányok számlázási kedvezménnyel érhető el, és nem befolyásolja a virtuális gépek futásidejű állapotát.
@@ -46,7 +46,7 @@ A hatókör módosítható, miután a vásárol egy fenntartott Virtuálisgép-p
 
 A foglalási kedvezményeket csak a virtuális gépek enterprise vagy a használatalapú ajánlatok típusú előfizetésekhez vonatkozik. Más típusú rendelkező előfizetés működő virtuális gépek nem jelenik meg a Foglalás kedvezményeket. A vállalati regisztráció vállalati fejlesztési és tesztelési célú előfizetések nem abban az esetben jogosult a fenntartott példány előnyeit.
 
-Hogyan foglalás a virtuális gép nemcsak a számlázást érinti az ismertetése [ismertetése az alkalmazás-lefoglalás juttatás számlázási](https://go.microsoft.com/fwlink/?linkid=861721).
+Hogyan foglalás a virtuális gép nemcsak a számlázást érinti az ismertetése [ismertetése az alkalmazás-lefoglalás juttatás számlázási](https://go.microsoft.com/fwlink/?linkid=863405).
 
 ## <a name="what-happens-when-the-reservation-term-expires"></a>Mi történik, ha a lejár a Foglalás kifejezés?
 A foglalási kifejezés végén a számlázási kedvezményeket lejár, és a virtuális gép infrastruktúra lesz számlázva áron a fizetési-,-akkor nyissa meg. Foglalások nem automatikus megújítás. A számlázási kedvezményeket első a folytatáshoz meg kell vásárolnia egy új fenntartott virtuálisgép-példányt. 

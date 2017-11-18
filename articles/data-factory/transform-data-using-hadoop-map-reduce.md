@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: shengc
-ms.openlocfilehash: b473ba03b8b700b3123f82343e59a1ed897c4189
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c022d1c091fdd1b1e4d16270467c7191fc24ae3
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Hadoop-MapReduce művelethez használata az Azure Data Factory adatok átalakítása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,7 +53,6 @@ Lásd: [Pig](transform-data-using-hadoop-pig.md) és [Hive](transform-data-using
             "type": "LinkedServiceReference"
         },
         "jarFilePath": "MyAzureStorage/jars/sample.jar",
-        "jarlibs": "MyAzureStorage/jars/jar1",
         "getDebugInfo": "Failure",
         "arguments": [
           "-SampleHadoopJobArgument1"
@@ -76,7 +75,7 @@ Lásd: [Pig](transform-data-using-hadoop-pig.md) és [Hive](transform-data-using
 | Osztálynév         | Végrehajtandó osztály neve         | Igen      |
 | jarLinkedService  | Az Azure tárolás társított szolgáltatásának a Jar-fájlok tárolására használt hivatkozás. A társított szolgáltatás nem adja meg, ha az Azure Storage társított szolgáltatás a HDInsight társított szolgáltatásban meghatározott szolgál. | Nem       |
 | jarfilepath tulajdonságot       | Adja meg a jarLinkedService által hivatkozott Azure Storage-ban tárolt a Jar-fájlok elérési útját. A fájlnév pedig kis-és nagybetűket. | Igen      |
-| jarlibs           | Adja meg a fájlok elérési útját a Jar könyvtár a feladat a jarLinkedService által hivatkozott Azure Storage-ban tárolt hivatkozik. A fájlnév pedig kis-és nagybetűket. | Nem       |
+| jarlibs           | A fájlok elérési útját a Jar könyvtár a jarLinkedService meghatározott Azure Storage szolgáltatásban tárolja a feladat által hivatkozott tömbje karakterlánc. A fájlnév pedig kis-és nagybetűket. | Nem       |
 | getDebugInfo      | Itt adhatja meg, ha a naplófájlok kerülnek az Azure Storage HDInsight-fürt által használt (vagy) leírt módon jarLinkedService. Megengedett értékek: None, mindig, vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
 | Argumentumok         | Hadoop-feladat argumentumok tömbjét adja meg. Az argumentumok parancssori argumentumként átadott minden egyes tevékenységhez. | Nem       |
 | határozza meg           | Adja meg a paraméterek kulcs/érték párok való hivatkozás a Hive-parancsfájl belül. | Nem       |

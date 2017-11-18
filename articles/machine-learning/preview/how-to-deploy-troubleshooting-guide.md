@@ -10,21 +10,19 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2017
-ms.openlocfilehash: b43ed29bda4412fb57bcb772da00f6405c3f1c26
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 11/16/2017
+ms.openlocfilehash: 8eafb16abeb939a16b1ddb024853300c453bcd9a
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>Hibaelhárítás a szolgáltatás telepítése és a környezet beállítása
 A következő információ segíthet a hiba okának megállapításához a modell felügyeleti környezet beállításakor.
 
 ## <a name="model-management-environment"></a>Modell felügyeleti környezet
-### <a name="owner-permission-required"></a>Tulajdonos engedély szükséges
-Az Azure-előfizetés regisztrálása a Machine Learning számítási tulajdonosi jogosultsággal kell rendelkeznie.
-
-A webes szolgáltatások telepítését a fürt beállítása tulajdonos engedéllyel is kell.
+### <a name="contributor-permission-required"></a>A közreműködői engedély szükséges
+Az előfizetés vagy az erőforráscsoportot a webes szolgáltatások telepítését a fürt beállítása közreműködői hozzáférés szükséges.
 
 ### <a name="resource-availability"></a>Erőforrás-elérhetőséget
 Az előfizetésben elérhető erőforrásokkal rendelkezik, ezért a környezet erőforrásokat oszthat kell.
@@ -89,6 +87,7 @@ Python példa:
 ```
 
 ## <a name="other-common-problems"></a>Egyéb gyakori problémák
+- Ha az azure cli-ml pip telepítési hibával meghiúsul `cannot find the path specified` Windows-gépen, hosszú elérési engedélyezni kell. Tekintse meg a https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/. 
 - Ha a `env setup` parancs `LocationNotAvailableForResourceType`, valószínűleg használja a megfelelő helyre (régió) gépi tanulási erőforrásokat. Győződjön meg arról, hogy a meghatározott helyre a `-l` paraméter `eastus2`, `westcentralus`, vagy `australiaeast`.
 - Ha a `env setup` parancs `Resource quota limit exceeded`, győződjön meg arról, hogy van elég az előfizetésben elérhető magok és, hogy az erőforrások nem használják fel egyéb folyamatok.
 - Ha a `env setup` parancs `Invalid environment name. Name must only contain lowercase alphanumeric characters`, győződjön meg arról, hogy a szolgáltatás neve nem tartalmaz-nagybetűk, szimbólumok vagy az aláhúzás (_) (mint a *my_environment*).

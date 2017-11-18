@@ -15,11 +15,11 @@ ms.date: 11/14/2017
 ms.author: daveba
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 64db88f9168efd4ee636e27ebf05da497c42d466
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 55da67499cfbe30f182f55895a1f164c602391a9
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS alkalmazások integrálása az Azure Active Directoryval
 
@@ -234,12 +234,14 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_MaxxPoint.png)| [MaxxPoint](active-directory-saas-maxxpoint-tutorial.md)
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mcm-tutorial.png)| [MCM](active-directory-saas-mcm-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/saasapp_menlosecurity.png)| [Menlo biztonsági](active-directory-saas-menlosecurity-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mercerhrs-tutorial.png)| [Mercer BenefitsCentral](active-directory-saas-mercerhrs-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-merchlogix-tutorial.png)| [MerchLogix](active-directory-saas-merchlogix-tutorial.md)||
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-m-files-tutorial.png)| [M-fájlok](active-directory-saas-m-files-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_Mimecast.png)| [Mimecast felügyeleti konzol](active-directory-saas-mimecast-admin-console-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mimecast-personal-portal-tutorial.png)| [Mimecast személyes portál](active-directory-saas-mimecast-personal-portal-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mindflash-tutorial.png)| [Mindflash](active-directory-saas-mindflash-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mixpanel-tutorial.png)| [Mixpanel](active-directory-saas-mixpanel-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mobileiron-tutorial.png)| [MobileIron](active-directory-saas-mobileiron-tutorial.md)
 | ![embléma](./media/active-directory-saas-tutorial-list/saasapp_mobilexpense.png)| [MobileXpense](active-directory-saas-mobilexpense-tutorial.md)
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-moveittransfer-tutorial.png)| [MOVEit átvitel](active-directory-saas-moveittransfer-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/saasapp_moxiengage.png)| [Vállalhat Moxi](active-directory-saas-moxiengage-tutorial.md)|
@@ -338,6 +340,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-skydeskemail-tutorial.png)| [SkyDesk E-mail](active-directory-saas-skydeskemail-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](active-directory-saas-slack-tutorial.md)| [Slackhez – a felhasználók átadása](active-directory-saas-slack-provisioning-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-smallimprovements-tutorial.png)| [Kis fejlesztései](active-directory-saas-smallimprovements-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-smartrecruiters-tutorial.png)| [SmartRecruiters](active-directory-saas-smartrecruiters-tutorial.md)
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_SmarterU.png)| [SmarterU](active-directory-saas-smarteru-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-softeon-tutorial.png)| [Softeon WMS](active-directory-saas-softeon-tutorial.md)
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-soonr-tutorial.png)| [Soonr munkahelyi](active-directory-saas-soonr-tutorial.md)|

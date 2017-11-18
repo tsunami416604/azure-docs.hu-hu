@@ -12,27 +12,27 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 7772f6be0c60c1c2e59499d46e3c56975053e551
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: a1d364b0dcb70998b390d0d96bcd1e439617e493
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítési és engedélyezési Azure idő adatsorozat Insights API-hoz.
 
 Ez a cikk ismerteti, hogyan konfigurálhatja a hitelesítési és engedélyezési szerepel, amely a Azure idő adatsorozat Insights API-egyéni alkalmazás.
 
-## <a name="service-principal"></a>Egyszerű szolgáltatásnév
+## <a name="service-principal"></a>Szolgáltatásnév
 
-Ez a szakasz ismerteti a idő adatsorozat Hirdetéselemző API-t nevében az alkalmazás eléréséhez alkalmazások konfigurálása. Az alkalmazás ezután kérdezhet le adatokat, vagy hivatkozási adatok közzététele a idő adatsorozat Insights környezetben alkalmazás hitelesítő adatait, és nem a felhasználó hitelesítő adatait.
+Ez a szakasz ismerteti a idő adatsorozat Hirdetéselemző API-t nevében az alkalmazás eléréséhez alkalmazások konfigurálása. Az alkalmazás ezután kérdezhet le adatokat, vagy hivatkozási adatok közzététele a idő adatsorozat Insights környezetben, a felhasználói hitelesítő adatok helyett az alkalmazás hitelesítő adatait.
 
-Ha egy alkalmazást, amelyet a hozzáférés idejének adatsorozat Insights, állítson be egy Azure Active Directory-alkalmazás, és rendelje hozzá az adat-hozzáférési házirendjeit a idő adatsorozat Insights környezetben. Ez a megközelítés célszerű a saját credentials az alkalmazást futtató, mert:
+Ha egy alkalmazás, amely az adatsorozat Insights időt kell, állítson be egy Azure Active Directory-alkalmazást, és rendelje hozzá az adat-hozzáférési házirendjeit a idő adatsorozat Insights környezetben. Ez a megközelítés célszerű a saját credentials az alkalmazást futtató, mert:
 
-* Engedélyeket rendelhet a app identitása eltér a saját engedélyeit. Ezek az engedélyek általában korlátozódik, hogy mit az alkalmazás kell tennie. Például engedélyezheti az alkalmazásnak, hogy csak olvasható adatokat egy adott idő adatsorozat Insights környezetben.
+* Engedélyeket rendelhet a app identitása eltér a saját engedélyeit. Ezek az engedélyek általában csak meg az alkalmazás által igényelt korlátozni. Például engedélyezheti az alkalmazásnak, hogy csak olvasható adatokat egy adott idő adatsorozat Insights környezetben.
 * Nem kell módosítani az alkalmazás hitelesítő adatokat, ha az Ön feladatkörei módosítása.
 * Egy tanúsítvány vagy egy alkalmazás kulcs segítségével automatizálhatja a hitelesítés, amikor egy felügyelet nélküli parancsfájllal futtatja.
 
-Ez a cikk bemutatja, hogyan hajtsa végre ezeket a lépéseket az Azure portálon keresztül. A single-bérlői alkalmazások, ahol az alkalmazás futtatásához csak egy szervezet célja összpontosít. Single-bérlő alkalmazásokat a szervezet futó üzleti alkalmazásokhoz általában használ.
+Ez a témakör azt ismerteti, hogyan hajtsa végre ezeket a lépéseket az Azure portálon keresztül. A single-bérlői alkalmazások, ahol az alkalmazás futtatásához csak egy szervezet célja összpontosít. Single-bérlő alkalmazásokat a szervezet futó üzleti alkalmazásokhoz általában használ.
 
 A telepítő folyamat három magas szintű lépésekből áll:
 
@@ -103,5 +103,7 @@ Használja az Azure idő adatsorozat Insight való hitelesítéshez szükséges 
 
 ## <a name="next-steps"></a>Következő lépések
 - Az idő adatsorozat Hirdetéselemző API-t behívó kód a minta, lásd: [adatait használó C#](time-series-insights-query-data-csharp.md).
-- API-referencia információkért lásd: [lekérdezés API-referencia](/rest/api/time-series-insights/time-series-insights-reference-queryapi)
-- [Egy egyszerű szolgáltatás létrehozása az Azure-portálon](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+- API-referencia információkért lásd: [lekérdezés API-referencia](/rest/api/time-series-insights/time-series-insights-reference-queryapi).
+
+> [!div class="nextstepaction"]
+> [Szolgáltatásnév létrehozása](../azure-resource-manager/resource-group-create-service-principal-portal.md)

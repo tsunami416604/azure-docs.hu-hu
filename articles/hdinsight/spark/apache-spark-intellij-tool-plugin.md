@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2017
-ms.author: nitinme
-ms.openlocfilehash: 82683349f3e562be5ac89ade4143588283abd71c
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.date: 11/25/2017
+ms.author: maxluk,jejiang
+ms.openlocfilehash: 4eecaf76773927f96f0e4d79d795f0ffe8033a66
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Az IntelliJ Azure eszköztára használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -168,8 +168,8 @@ A telepítési utasításokért lásd: [Azure eszközkészlet telepítése az In
       
       A feladat kimenetére elérésére, lásd: a "hozzáférés és a HDInsight Spark-fürtök kezelése az intellij-t Azure eszközkészlet használatával" című szakaszban ebben a cikkben található.
 
-## <a name="run-or-debug-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Futtassa, vagy egy HDInsight Spark-fürt Spark Scala alkalmazások hibakeresése
-Javasoljuk továbbá egy másik módszer a Spark alkalmazás fürtre elküldése. Ehhez állítsa be a paraméterek a **Futtatás/Debug konfigurációk** IDE. További információkért lásd: [távolról az IntelliJ SSH-n keresztül a Azure eszközkészlet a HDInsight-fürtök a Spark-alkalmazások hibakeresését](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
+## <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>A Spark-alkalmazások hibakeresését helyileg vagy távolról a HDInsight-fürtök 
+Javasoljuk továbbá egy másik módszer a Spark alkalmazás fürtre elküldése. A paraméterek beállításával is teheti a **Futtatás/Debug konfigurációk** IDE. További információkért lásd: [Spark-alkalmazások hibakeresését helyileg vagy távolról az Azure-eszközkészlet a HDInsight-fürtök az SSH-n keresztül IntelliJ](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>Férhessen hozzá és felügyelhesse a HDInsight Spark-fürtjei IntelliJ Azure eszközkészlet használatával
 Az intellij-t Azure eszközkészlet használatával különféle műveleteket hajthat végre.
@@ -211,50 +211,6 @@ Alapértelmezés szerint az intellij-t Azure eszköztára a Spark-fürtök az ö
 1. Az Azure-kezelővel, kattintson a jobb gombbal a **Azure** gyökércsomópont, és válassza ki **előfizetések kezelése oldalt**. 
 
 2. A párbeszédpanelen törölje az előfizetéseket, amelyet szeretne elérni, és jelölje be a jelölőnégyzeteket **Bezárás**. Igény szerint kiválaszthatja **Kijelentkezés** Ha azt szeretné, hogy kijelentkezik, az Azure-előfizetéshez.
-
-## <a name="run-a-spark-scala-application-locally"></a>A Spark Scala alkalmazás helyileg történő futtatása
-Az intellij-t Azure eszközkészlet segítségével Spark Scala-alkalmazások helyi futtatása a munkaállomáson. Az alkalmazások általában nem szükséges hozzáférési jogot a fürterőforrások, például a tárolókban, és futtatja, és helyben tesztelheti őket.
-
-### <a name="prerequisite"></a>Előfeltétel
-A helyi Spark Scala-alkalmazások Windows rendszerű számítógépeken futtatása, közben kivételt, kaphat, ahogy [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356). A kivétel történt, mert WinUtils.exe hiányzik a Windows. 
-
-Ez a hiba megoldásához [töltse le a végrehajtható fájl](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, például **C:\WinUtils\bin**. Adja hozzá a következő környezeti változó **HADOOP_HOME**, és állítsa be a változó értékének **C\WinUtils**.
-
-### <a name="run-a-local-spark-scala-application"></a>A helyi Spark Scala-alkalmazások futtatása
-1. Indítsa el az IntelliJ IDEA, és hozzon létre egy projektet. 
-
-2. Az a **új projekt** párbeszédpanelen tegye a következőket:
-   
-    a. Válassza ki **HDInsight** > **a Spark on HDInsight helyi futtatási minta (Scala)**.
-
-    b. Az a **Build eszköz** listára, válassza ki, az igényeknek megfelelően az alábbiak valamelyikét:
-
-      * **Maven**, Scala-projekt létrehozása varázsló támogatásához
-      * **SBT**, a függőségek kezelésére, és a Scala-projekt létrehozása
-
-    ![Az új projekt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-local-run.png)
-
-3. Válassza ki **következő**.
- 
-4. A következő ablakban tegye a következőket:
-   
-    a. Adja meg a projekt nevét és helyét.
-
-    b. Az a **projekt SDK** legördülő listára, válassza ki a 1.7 verziónál újabb Java-verziót.
-
-    c. Az a **Spark verzió** legördülő listára, válassza ki a használni kívánt Scala verziója: Scala Spark 2.0-s vagy Scala 2.11.x 2.10.x a Spark 1.6-os.
-
-    ![Az új projekt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/Create-local-project.PNG)
-
-5. Válassza a **Finish** (Befejezés) elemet.
-
-6. A sablon hozzáadása egy mintakód (**LogQuery**) alatt a **src** mappát, amelyet a számítógépen helyileg futtathat.
-   
-    ![LogQuery helye](./media/apache-spark-intellij-tool-plugin/local-app.png)
-
-7. Kattintson a jobb gombbal a **LogQuery** alkalmazás, és adja **Futtatás "LogQuery"**. A a **futtatása** lap alján, a következő kimenetnek lásd:
-   
-   ![Spark alkalmazás helyi futtatás eredménye](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-local-run-result.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Alakítsa át a meglévő IntelliJ IDEA alkalmazások az Azure-eszközkészlet az intellij-t
 A meglévő Spark Scala használatával bármikor átalakítható létrehozott IntelliJ IDEA való kompatibilitás érdekében az IntelliJ Azure eszköztára alkalmazások. Ezután használhatja a beépülő modul elküldeni az alkalmazásokat a HDInsight Spark-fürt.

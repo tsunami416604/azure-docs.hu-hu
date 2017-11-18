@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Automation-fiókban megfigyelő feladat Creat |} Microsoft Docs"
+title: "Megfigyelő feladat létrehozása az Azure Automation-fiókban |} Microsoft Docs"
 description: "Megtudhatja, hogyan hozzon létre egy megfigyelő feladatot az Azure Automation-fiók egy mappában létrehozott új fájlokat beállításjegyzékek."
 services: automation
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/15/2017
 ms.author: eamono
-ms.openlocfilehash: 55971908caca4526f7a3b102e90c554a533a7fee
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 7cd6bebcaa1ed263b9854f7307cf22fba006748e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-automation-watcher-tasks-enable-you-to-respond-to-events-happening-in-your-local-datacenter"></a>Azure Automation megfigyelő feladatok lehetővé teszik, hogy a helyi adatközpontban történik események válaszolni
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: d936bc50a66ac2a3c17038ff08351edf9902c99f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 944149746b05108040cd0cc340e882b39713f06e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Oktatóanyag: Azure Active Directoryval integrált első
 
@@ -104,66 +104,60 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
  
     ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-front-tutorial/tutorial_front_samlbase.png)
 
-3. Az a **első tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **első tartomány és az URL-címek** területen tegye a következőket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_front_url1.png)
 
     a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.frontapp.com`
 
     b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.frontapp.com/sso/saml/callback`
-
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak**, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_front_url2.png)
-
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.frontapp.com`
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a a tényleges azonosítója, válasz URL-CÍMEN, és a bejelentkezési URL-cím szakaszban találhatók később oktatóanyag, vagy forduljon a [első ügyfél-támogatási csoport](mailto:support@frontapp.com) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a a tényleges azonosítója és a válasz URL-CÍMEN később oktatóanyag, vagy forduljon a magyarázata [első ügyfél-támogatási csoport](mailto:support@frontapp.com) beolvasni ezeket az értékeket. 
 
-5. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_front_certificate.png) 
 
-6. Kattintson a **mentése** gombra.
+5. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_general_400.png)
     
-7. A a **első konfigurációs** kattintson **első konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. A a **első konfigurációs** kattintson **első konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_front_configure.png) 
 
-8. Bejelentkezés az első bérlő rendszergazdaként.
+7. Bejelentkezés az első bérlő rendszergazdaként.
 
-9. Ugrás a **beállítások (fogaskerék ikonjára ikonra a bal oldali oldalsávon alján) > Beállítások**.
+8. Ugrás a **beállítások (fogaskerék ikonjára ikonra a bal oldali oldalsávon alján) > Beállítások**.
    
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_front_000.png)
 
-10. Kattintson a **egyszeri bejelentkezés** hivatkozásra.
+9. Kattintson a **egyszeri bejelentkezés** hivatkozásra.
    
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_front_001.png)
 
-11. Válassza ki **SAML** legördülő listájában **egyszeri bejelentkezés**.
+10. Válassza ki **SAML** legördülő listájában **egyszeri bejelentkezés**.
    
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_front_002.png)
 
-12. Az a **belépési pont** szövegmezőbe írja be az értéket a **egyszeri bejelentkezési URL-címe** az Azure AD alkalmazás-konfigurációs varázsló.
+11. Az a **belépési pont** szövegmezőbe írja be az értéket a **egyszeri bejelentkezési URL-címe** az Azure AD alkalmazás-konfigurációs varázsló.
     
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_front_003.png)
 
-13. Nyissa meg a letöltött **Certificate(Base64)** fájlt a Jegyzettömbben, annak tartalmának másolása a vágólapra és illessze be azt a **tanúsítvány aláírása** szövegmező.
+12. Nyissa meg a letöltött **Certificate(Base64)** fájlt a Jegyzettömbben, annak tartalmának másolása a vágólapra és illessze be azt a **tanúsítvány aláírása** szövegmező.
     
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_front_004.png)
 
-14. Az a **szolgáltató Szolgáltatásbeállítások** területen tegye a következőket:
+13. Az a **szolgáltató Szolgáltatásbeállítások** területen tegye a következőket:
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-front-tutorial/tutorial_front_005.png)
 
     a. Értékének másolása **Entitásazonosító** és illessze be azt a **azonosító** textbox **első tartomány és az URL-címek** szakaszban az Azure portálon.
 
-    b. Értékének másolása **ACS URL-cím** és illessze be azt a **bejelentkezési URL-cím** textbox **első tartomány és az URL-címek** szakaszban az Azure portálon.
+    b. Másolja értékének **ACS URL-cím** és illessze be azt a **válasz URL-CÍMEN** textbox **első tartomány és az URL-címek** szakaszban az Azure portálon.
     
-15. Kattintson a **mentése** gombra.
+14. Kattintson a **mentése** gombra.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)

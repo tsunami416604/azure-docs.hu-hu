@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e232b4cdb62b7bf212808bd380119482ee88b077
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 17675f870a015e86f98bf286a9b1c2bbc05c16cd
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Gyors üzembe helyezés: Az első IoT peremhálózati modul az Azure-portálon a Windows rendszerű eszközre központi telepítése – előzetes
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag feltételezi, hogy használ egy számítógépet vagy a Windo
 >    * Windows Server 1709 (Build 16299), vagy
 >    * Windows IoT mag (Build 16299) x64-alapú eszköz
 >
-> A Windows az IoT-Core, kövesse az utasításokat a [telepítés a Windows IoT Core IoT peremhálózati runtime] [lnk-install-iotcore]. Ellenkező esetben egyszerűen [konfigurálása a Windows-tárolók használatára Docker][lnk-docker-containers], és opcionálisan ellenőrzi az előfeltételeket a következő powershell-paranccsal:
+> A Windows az IoT-Core, kövesse az utasításokat a [az IoT-Edge futásidejű telepíthető Windows IoT Core][lnk-install-iotcore]. Ellenkező esetben egyszerűen [konfigurálása a Windows-tárolók használatára Docker][lnk-docker-containers], és opcionálisan ellenőrzi az előfeltételeket a következő powershell-paranccsal:
 >    ```
 >    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
 >    ```
@@ -134,7 +134,7 @@ az iot hub delete --name {your iot hub name} --resource-group {your resource gro
 Megtudta, hogyan IoT peremhálózati eszköz egy IoT-Edge-modul telepítéséhez. Próbálja meg különböző modulok, az Azure szolgáltatások üzembe helyezése, hogy elemezheti az adatokat a peremhálózaton. 
 
 * [Azure-függvény modul telepítése](tutorial-deploy-function.md)
-* [Azure Stream Analytics egy modul telepítése](tutorial-deploy-stream-analytics.md)
+* [Az Azure Stream Analytics üzembe helyezése modulként](tutorial-deploy-stream-analytics.md)
 * [Telepítse a saját kódját modulként](tutorial-csharp-module.md)
 
 
@@ -150,6 +150,7 @@ Megtudta, hogyan IoT peremhálózati eszköz egy IoT-Edge-modul telepítéséhez
 [lnk-portal]: https://portal.azure.com
 [lnk-nested]: https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization
 [lnk-delete]: https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az_iot_hub_delete
+[lnk-install-iotcore]: how-to-install-iot-core.md
 
 <!-- Anchor links -->
 [anchor-register]: #register-an-iot-edge-device

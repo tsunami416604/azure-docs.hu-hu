@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 1d79b775e97765a48be48a96cf10bc9435b4539b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eaee4e1ed213d0834d959d862feffd4bca57cd9f
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Kezelése és hálózati biztonsági csoport folyamata naplók az Azure-ban a hálózati figyelőt és Graylog elemzése
 
@@ -148,9 +148,9 @@ A JSON formátumú folyamata naplók folyamata rekordot szintjét egybesimítás
     ```
 A megadott Logstash konfigurációs fájl három részből áll: a bemeneti, a szűrő és a kimeneti. A bemeneti szakasz meg, míg a bemeneti forrás, amely Logstash feldolgozza a naplók – ebben az esetben fogjuk használni egy Azure blog bemeneti beépülő modul (a következő lépésekben telepítve), amely lehetővé teszi a hálózati biztonsági csoport folyamata eléréséhez a blob storage-ban tárolt JSON naplófájlok.
 
-    The filter section then flattens each flow log file so that each individual flow tuple and its associated properties becomes a separate Logstash event.
+A szűrő szakasz majd simítja minden folyamat naplófájl, ekkor minden egyes folyamata rekord és a hozzájuk tartozó tulajdonságok külön Logstash esemény lesz.
 
-    Finally, the output section forwards each Logstash event to the Graylog server. To suit your specific needs, modify the Logstash config file, as required.
+Végezetül az output szakasz továbbítja a Graylog kiszolgálóra Logstash eseményekhez. A konkrét igényeinek megfelelően van szüksége, módosítsa szükség szerint a Logstash konfigurációs fájlt.
 
     > [!NOTE]
     > The previous config file assumes that the Graylog server has been configured on the local host loopback IP address 127.0.0.1. If not, be sure to change the host parameter in the output section to the correct IP address.

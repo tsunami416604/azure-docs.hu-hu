@@ -7,11 +7,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: bed026e8f75618403efa3eed475371d1d2746bc5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a0b014fe57f3e9d2ceeac94f3570353a9a07b27
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="data-source-wizard"></a>Adatforrás varázsló #
 
@@ -29,7 +29,7 @@ Először adja meg, hogyan az adatokat jelenleg. Egybesimított fájl vagy köny
 ![1. lépés](media/data-source-wizard/step1.png)
 
 ## <a name="step-3-select-data-file"></a>3. lépés: Válassza ki az adatfájlt ##
-Fájl vagy könyvtár adja meg a fájl elérési útját. A legördülő listából válassza ki az adatok helye – lehet egy helyi fájl elérési útját, az Azure Blob Storage vagy az Azure Data Lake. 
+Fájl vagy könyvtár adja meg a fájl elérési útját. A legördülő listából válassza ki az adatok helye – lehet egy helyi fájl elérési útja vagy az Azure Blob Storage tárolóban. 
 
 Adjon meg az elérési utat beírja azt, vagy kattintson a a **Tallózás...** gombra kattintva tallózással keresse meg azt. Egy könyvtár, vagy egy vagy több fájlt tallózhatja.
 

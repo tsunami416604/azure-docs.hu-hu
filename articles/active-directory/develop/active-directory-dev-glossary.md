@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/07/2017
+ms.date: 11/16/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 1002ce29ff0d9ee2a6eac44c6e4402fc7e9ade31
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 6a657177087ca01f4507b12048a88850aea1a03f
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Az Azure Active Directory fejlesztői szószedet
 Ez a cikk az Azure Active Directory (AD) fejlesztői alapfogalmakat, amelyek hasznosak, ha az Azure AD alkalmazásfejlesztés megtanulni részénél definíciókat tartalmazza.
@@ -33,6 +33,9 @@ Hozzáférési jogkivonatok vannak más néven "Felhasználó + alkalmazás" vag
 * ["Ügyfél-hitelesítő adatok" hitelesítésengedélyezési](#authorization-grant), az ügyfél az egyetlen hitelesítést biztosít, működik-e nélkül az erőforrás-tulajdonos hitelesítési/engedélyezési, így a token néha lehet hivatkozni "Csak alkalmazás" tokenként.
 
 Lásd: [Azure AD jogkivonat-hivatkozást] [ AAD-Tokens-Claims] további részleteket.
+
+## <a name="application-id-client-id"></a>alkalmazásazonosító (ügyfél-azonosító)
+Egy alkalmazás regisztrációban, amely azonosítja az adott alkalmazást, és a kapcsolódó konfigurációk egyedi azonosítója az Azure AD problémákat.  Az alkalmazásazonosító ([ügyfél-azonosító](https://tools.ietf.org/html/rfc6749#page-15)) használatos, ha hajt végre a hitelesítési kérelmeket, és szerepel a hitelesítési könyvtárak fejlesztési idő. Az alkalmazásazonosító (ügyfél-azonosító) nincs titkos kulcs. 
 
 ## <a name="application-manifest"></a>Az alkalmazásjegyzék
 A szolgáltatás által biztosított a [Azure-portálon][AZURE-portal], az identitás alkalmazást, a frissítés hozzá van rendelve egy mechanizmusként JSON-ábrázolását állít elő [ Alkalmazás] [ AAD-Graph-App-Entity] és [szolgáltatásnév] [ AAD-Graph-Sp-Entity] entitásokat. Lásd: [az Azure Active Directory alkalmazásjegyzékének megismerése] [ AAD-App-Manifest] további részleteket.
@@ -174,7 +177,7 @@ Hasonló ahhoz, ahogy a szolgáltatás egyszerű objektum egy alkalmazáspéldá
 Olyan típusú [ügyfélalkalmazás](#client-application) , amely végrehajtja az összes kód egy webkiszolgálón, és képes biztonságosan tárolja a hitelesítő adatok a kiszolgálón egy "bizalmas" ügyfél működhet. Lásd: [OAuth2-ügyfél meg kell adnia, és profilok] [ OAuth2-Client-Types] további részleteket.
 
 ## <a name="next-steps"></a>Következő lépések
-A [Azure AD fejlesztői útmutató] [ AAD-Dev-Guide] minden Azure AD-fejlesztési célra a portál kapcsolódó témakörök, valamint áttekintést [alkalmazásintegráció] [ AAD-How-To-Integrate] és alapjait [az Azure AD-alapú hitelesítés és a támogatott hitelesítési forgatókönyvek][AAD-Auth-Scenarios].
+A [Azure AD fejlesztői útmutató] [ AAD-Dev-Guide] van minden Azure AD-fejlesztési célra kezdőlapja kapcsolódó témakörök, valamint áttekintést [alkalmazásintegráció] [ AAD-How-To-Integrate] és alapjait [az Azure AD-alapú hitelesítés és a támogatott hitelesítési forgatókönyvek][AAD-Auth-Scenarios].  Is található mintakódok és oktatóprogramok, akinek gyorsan üzembe az beszerzése [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom, például a kérelmekről új definíciók vagy meglévőket frissítése!
 

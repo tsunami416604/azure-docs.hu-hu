@@ -12,20 +12,22 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 77bdeda57a23d77e7f00cfea1f9b8d362cfa4979
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 140789122dcc66e01b05ad81791bc3ca54e4f42c
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# használatával referenciaadatok Azure idő adatsorozat Insights környezet kezelése
 
-Ez a cikk ismerteti a C# mintakód referenciaadatok Azure idő adatsorozat Insights környezet kezeléséhez állíthat össze.
+Ez a témakör ismerteti a C# mintakód referenciaadatok Azure idő adatsorozat Insights környezet kezeléséhez állíthat össze.
 
-Győződjön meg arról, fordítása és futtatása a mintakódot előtt a következő lépéseket:
-1. A referencia-adatkészlet használatával lett létrehozva [Ez a cikk](time-series-insights-add-reference-data-set.md).
+Fordítsa le és futtassa a mintakódot előtt, kövesse az alábbi lépéseket:
+1. [Hozzon létre egy referencia-adatkészlet](time-series-insights-add-reference-data-set.md).
 
-2. Konfigurálja a hozzáférési jogkivonat ahhoz, hogy az alkalmazás által használandó. Győződjön meg arról, hogy a jogkivonat keletkezik, az Azure Active Directory API-n keresztül. Ez a token kell átadni a `Authorization` minden lekérdezés API-kérelem fejlécében. Nem interaktív alkalmazások beállításának, tekintse meg a [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md) cikk.
+2. Állítsa be az alkalmazás számára az engedélyezési jogkivonatot. Győződjön meg arról, hogy a jogkivonat keletkezik, az Azure Active Directory API-n keresztül. Akkor adja át ennek a jogkivonat a `Authorization` minden lekérdezés API-kérelem fejlécében. 
+ 
+   Nem interaktív alkalmazások beállításával kapcsolatos információkért lásd: [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md).
 
 3. Cserélje le a példában állandók, a kijelölt mintakódot szerkesztése **#DUMMY #**, a kód elejére közelében. 
 
@@ -232,5 +234,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-> [!div class="nextstepaction"]
-> Tekintse meg a teljes REST API-referenciában [referencia az API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api).
+[Referenciaadatok API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)

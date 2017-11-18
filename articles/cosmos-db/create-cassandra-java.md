@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 0aafdade2cbf293cf70f09721102ae8ceaef6303
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2097aa1c158f88a06ab93123f4e374b4245430d6
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>Gyors üzembe helyezés: Hozza létre a Cassandra alkalmazását, Java és Azure Cosmos DB
 
@@ -28,9 +28,9 @@ Azure Cosmos-adatbázis egy Microsoft globálisan elosztott több modellre adatb
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Cosmos DB Cassandra API programot: a hozzáférést. Ha még nem telepítette a hozzáférés még, [feliratkozás most](https://aka.ms/cosmosdb-cassandra-signup).
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]Alternatív megoldásként, [Azure Cosmos DB szabad próbálja](https://azure.microsoft.com/try/cosmosdb/) díjmentesen és kötelezettségvállalás ingyenes Azure-előfizetéssel, nélkül.
+
+Az Azure Cosmos DB Cassandra API programot: a hozzáférést. Ha még nem telepítette a hozzáférés még, [feliratkozás most](cassandra-introduction.md#sign-up-now).
 
 Továbbá: 
 
@@ -41,6 +41,8 @@ Továbbá:
     * Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.
 * [Git](https://www.git-scm.com/)
     * Ubuntu rendszeren futtathatja a `sudo apt-get install git` parancsot a Git telepítéséhez.
+
+
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -148,7 +150,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
     ![Megtekintheti, és egy felhasználónév másolása az Azure portál, csatlakozási karakterlánc oldal](./media/create-cassandra-java/keys.png)
 
-2. Használja a ![Másolás gombra](./media/create-cassandra-java/copy.png) az ügyfél pont értéket másol a képernyő jobb szélén gombjára.
+2. Használja a ![Másolás gomb](./media/create-cassandra-java/copy.png) az ügyfél pont értéket másol a képernyő jobb szélén gombjára.
 
 3. Nyissa meg a `config.properties` fájl C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources mappából. 
 

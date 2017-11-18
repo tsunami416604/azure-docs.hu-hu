@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: 3eafa32907c8f68cfc44cb2771d625349ff42003
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db03cfdd486a3172b258379928fac12cc0af730a
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="iot-hub-operations-monitoring"></a>Az IoT-központ műveletek figyelése
 
@@ -34,7 +34,7 @@ Az IoT-központ figyeli az események hat kategóriák:
 * Felhő-eszközre küldött üzenetek
 * Kapcsolatok
 * Fájlfeltöltések
-* Üzenet-útválasztás
+* Üzenetirányítás
 
 > [!IMPORTANT]
 > Az IoT-központ műveletek figyelése nem garantálja megbízható és rendezett események. Attól függően, hogy az IoT-központ alapul szolgáló infrastruktúra egyes események előfordulhat, hogy elvész, vagy nem megfelelő sorrendben kézbesíteni. Például sikertelen kapcsolódási kísérletek vagy nagyon gyakori kapcsolat megszakadása egyes eszközökre hiba jelek alapján riasztásokat figyelési műveletek használata. Az eszköz állapotát a konzisztens tároló létrehozásához események figyelése műveletek alapján nem igazolható, pl. követési áruházbeli csatlakoztatva, vagy egy eszköz kapcsolata megszakadt. 
@@ -172,7 +172,7 @@ Ez a kategória nem dolgozza fel a jelentkező hibák közvetlenül az eszközre
 }
 ```
 
-### <a name="message-routing"></a>Üzenet-útválasztás
+### <a name="message-routing"></a>Üzenetirányítás
 
 Az üzenet útválasztási kategória nyomon követi az üzenet útvonal értékelési és végpont-állapotot az IoT-központ által érzékelt során előforduló hibákat. Ebbe a kategóriába olyan események, például amikor egy szabály akkor ad vissza "nem definiált", ha IoT-központ állapotúként jelöli meg a végpont kézbesítetlen, és bármely más hibák végpont. Ebbe a kategóriába nem tartalmazza az üzenetek maguk (például a szabályozás hibák eszköz), a "telemetriát" kategóriához tartozó jelentett bizonyos hibákat.
 
@@ -291,7 +291,7 @@ class Program
 Az IoT-központ képességeit további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Egy eszköz szimulálva Azure IoT oldala][lnk-iotedge]
+* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
 
 <!-- Links and images -->
 [1]: media/iot-hub-operations-monitoring/enable-OM-1.png
@@ -307,6 +307,6 @@ Az IoT-központ képességeit további megismeréséhez lásd:
 [lnk-dr]: iot-hub-ha-dr.md
 
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
+[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 02227adeb8a9a7463506efa44ddc2977f8aae65a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1d22e1a20d18e06686f893b1f4ae22e6373633b3
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>A New-AzureRmIotHub parancsmaggal IoT hub létrehozása
 
@@ -124,7 +124,7 @@ Az IoT-központ fejlesztésével kapcsolatos további tudnivalókért tekintse m
 
 Az IoT-központ képességeit további megismeréséhez lásd:
 
-* [Egy eszköz szimulálva IoT oldala][lnk-iotedge]
+* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -135,4 +135,4 @@ Az IoT-központ képességeit további megismeréséhez lásd:
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
+[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 11/17/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: dc8a94e998b36331a6a42253a68b43d76be6657c
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: a6d5690edd9020e777f3d71c41a53856d0a400db
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Az első tároló létrehozása az Azure Container Instances szolgáltatásban
 Az Azure tároló példányok megkönnyíti a létrehozása és kezelése a Docker-tároló az Azure virtuális gépeket, vagy egy magasabb szintű szolgáltatást elfogadása nélkül. A gyors üzembe helyezés a tároló létrehozása az Azure-ban, és tegye elérhetővé azt az interneten, egy nyilvános IP-címmel. Ez a művelet egyetlen paranccsal hajtható végre. Néhány másodpercen belül megjelenik ez a böngészőben:
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 Létrehozhat egy tárolót, adja meg a nevét, egy Docker-lemezképet, és egy Azure erőforráscsoport a [az tároló létrehozása] [ az-container-create] parancsot. Ha szeretné, közzéteheti a tárolót az interneten egy nyilvános IP-cím használatával. A gyors üzembe helyezés, telepít egy tároló, amelyen egy kis webalkalmazás írt [Node.js](http://nodejs.org).
 
 ```azurecli-interactive
-az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public
+az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public --ports 80
 ```
 
 Néhány másodperc elteltével válasz érkezik a kérésre. Kezdetben a tárolóban van a **létrehozása** állapotát, de néhány másodpercen belül kell kezdődnie. Az állapotkezelő segítségével ellenőrizheti a [az tároló megjelenítése] [ az-container-show] parancs:

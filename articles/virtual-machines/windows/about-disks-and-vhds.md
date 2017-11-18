@@ -1,6 +1,6 @@
 ---
-title: "Lemezek és a Microsoft Azure Windows virtuális gépek virtuális merevlemezek |} Microsoft Docs"
-description: "A lemezek és a virtuális gépek virtuális merevlemezeket a Windows Azure alapjainak megismerése."
+title: "A Microsoft Azure Windows virtuális gépek lemezegységet kapcsolatos |} Microsoft Docs"
+description: "A lemezek és a virtuális merevlemezek Windows virtuális gépek tárolása az Azure-ban alapjainak megismerése."
 services: storage
 documentationcenter: 
 author: robinsh
@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: b1beecf2e4268e358285c1101edcb13f6d592948
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 588f18da6056641f3c9e42286b70d1f18b424d76
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="about-disks-and-vhds-for-azure-windows-vms"></a>Lemezek és a VHD-k Azure Windows virtuális gépek
+# <a name="about-disk-storage-for-azure-windows-vms"></a>Lemezes tárolás Azure Windows virtuális gépek kapcsolatos
 Csakúgy, mint bármely más számítógépre az Azure virtuális gépek lemezek használatával egy olyan hely az operációs rendszerek, alkalmazások és adatok tárolására. Minden Azure virtuális gépek legalább két lemezt – a Windows operációs rendszer és egy ideiglenes lemezzel rendelkezik. Az operációs rendszer lemez létrehozása lemezkép, és mind az operációsrendszer-lemez, és a lemezkép virtuális merevlemezeket (VHD) Azure-tárfiók tárolja. Virtuális gépek is rendelkeznek legalább egy adatlemezt, virtuális merevlemezekként is tárolt. 
 
 Ebben a cikkben rendszer szolgáltatással kapcsolatban a lemezek különböző használ, és a különböző típusú lemezek létrehozhat és használhat majd ismertetik. Ez a cikk érhető el is [Linux virtuális gépek](../linux/about-disks-and-vhds.md).
@@ -79,6 +79,8 @@ fsutil behavior set DisableDeleteNotify 0
 
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>Következő lépések
-* [A lemez csatolása](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) további tárhely hozzáadása a virtuális gép számára.
-* [A meghajtóbetűjel, a Windows ideiglenes lemez](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) , az alkalmazás az adatok használhassa a d meghajtóra.
+* [A lemez csatolása](attach-disk-portal.md) további tárhely hozzáadása a virtuális gép számára.
+* [Pillanatkép létrehozása](snapshot-copy-managed-disk.md).
+* [Alakítsa át a felügyelt](convert-unmanaged-to-managed-disks.md).
+
 

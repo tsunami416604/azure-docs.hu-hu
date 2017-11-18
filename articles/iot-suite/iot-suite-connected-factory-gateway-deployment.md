@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: f6a69ecbeb09dc042eff7c1f95ee518e701b0507
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 32a62be9578ac802ee8fff1b0aa48e2d39362e63
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>Az előre konfigurált csatlakoztatott gyári megoldás a Windows vagy Linux-egy átjáró üzembe helyezéséhez
 
@@ -65,9 +65,9 @@ Ezt a lépést hajtsa végre a docker telepítése után a **beállítások** me
 
 1. Az átjáró konfigurálása az IoT hub a két átjáró modulok futtatásával **után** a parancssorból:
 
-    `docker run -it --rm -h <ApplicationName> -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName> "<IoTHubOwnerConnectionString>"`
+    `docker run -it --rm -h <ApplicationName> -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName> "<IoTHubOwnerConnectionString>"`
 
-    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
+    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
     * **&lt;ApplicationName&gt;**  biztosítanak a OPC EE Publisher formátumú neve **publisher.&lt; a teljesen minősített tartománynevét&gt;**. Például, ha a gyári hálózati nevezik **myfactorynetwork.com**, a **ApplicationName** értéke **publisher.myfactorynetwork.com**.
     * **&lt;IoTHubOwnerConnectionString&gt;**  van a **iothubowner** az előző lépésben kimásolt kapcsolati karakterláncot. Ez a kapcsolati karakterlánc csak ebben a lépésben követően nem kell az alábbi lépéseket:
@@ -78,9 +78,9 @@ Ezt a lépést hajtsa végre a docker telepítése után a **beállítások** me
 
 1. Indítsa újra az átjárót, az alábbi parancsok használatával:
 
-    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
+    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName>`
 
-    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
+    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -D /mapped/cs.db`
 
 1. Biztonsági okokból két X.509-tanúsítványokat őrzi meg a D:\\docker mappa tartalmazza a titkos kulcsot. Ez a mappa a hitelesítő adatokhoz való hozzáférés korlátozása (általában **rendszergazdák**) használja a Docker-tároló futtatásához. Kattintson a jobb gombbal a D:\\docker mappát, válassza a **tulajdonságok**, majd **biztonsági**, majd **szerkesztése**. Adjon **rendszergazdák** teljes hozzáférés, és távolítsa el a többi felhasználó:
 
@@ -117,9 +117,9 @@ Ezt a lépést hajtsa végre a docker telepítése után a **beállítások** me
 
 1. Az átjáró konfigurálása az IoT hub a két átjáró modulok futtatásával **után** egy rendszerhéjból rendelkező:
 
-    `sudo docker run -it --rm -h <ApplicationName> -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/ -v /shared:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName> "<IoTHubOwnerConnectionString>"`
+    `sudo docker run -it --rm -h <ApplicationName> -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/ -v /shared:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName> "<IoTHubOwnerConnectionString>"`
 
-    `sudo docker run --rm -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
+    `sudo docker run --rm -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
     * **&lt;ApplicationName&gt;**  formátumú létrehozza az átjáró OPC EE-alkalmazás neve **publisher.&lt; a teljesen minősített tartománynevét&gt;**. Például **publisher.microsoft.com**.
     * **&lt;IoTHubOwnerConnectionString&gt;**  van a **iothubowner** az előző lépésben kimásolt kapcsolati karakterláncot. Ez a kapcsolati karakterlánc csak ebben a lépésben követően nem kell az alábbi lépéseket:
@@ -130,9 +130,9 @@ Ezt a lépést hajtsa végre a docker telepítése után a **beállítások** me
 
 1. Indítsa újra az átjárót, az alábbi parancsok használatával:
 
-    `sudo docker run -it -h <ApplicationName> --expose 62222 -p 62222:62222 --rm -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v /shared:/shared -v /shared:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
+    `sudo docker run -it -h <ApplicationName> --expose 62222 -p 62222:62222 --rm -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v /shared:/shared -v /shared:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName>`
 
-    `sudo docker run -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
+    `sudo docker run -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -D /mapped/cs.db`
 
 1. Biztonsági okokból két X.509-tanúsítványokat őrzi meg a **/ megosztott** mappa tartalmazza a titkos kulcsot. Ez a mappa a Docker-tároló futtatásához használt hitelesítő adatokhoz való hozzáférés korlátozásához. Az engedélyek beállítása **legfelső szintű** csak, használja a `chmod` rendszerhéj-parancs a mappához.
 

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: tarcher
-ms.openlocfilehash: ed35d081b191ec41ed9e5970515057a4715c0d59
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e87a37b7aafd774fb0176b74968ad0bba0f5cf3b
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban a labor alapvető házirendjeinek kezelése
 
-Azure DevTest Labs segítségével a labs a pazarlás minimalizálásához által az egyes labor (beállítások) házirendek kezelése és költségek szabályozásához. Ebben a cikkben megkezdése házirendek beállítása két legfontosabb házirendek hogyan - virtuális gépek (VM) létrehozott vagy egy felhasználó által igényelt számának korlátozása, és az automatikus rendszerleállítást konfigurálásával. Minden tesztkörnyezeti házirend tájékoztatásért tekintse meg a cikk megtekintéséhez [labor házirendeket definiálhat az Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
+Azure DevTest Labs segítségével a labs a pazarlás minimalizálásához által az egyes labor (beállítások) házirendek kezelése és költségek szabályozásához. Ebben a cikkben megkezdése házirendek beállítása két legfontosabb házirendek hogyan - virtuális gépek (VM) létrehozott vagy egy felhasználó által igényelt számának korlátozása, és az automatikus rendszerleállítást konfigurálásával. Minden tesztkörnyezeti házirend beállításával megtekintése: [labor házirendeket definiálhat az Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
 
 ## <a name="accessing-a-labs-policies-in-azure-devtest-labs"></a>Egy tesztlabor házirendek az Azure DevTest Labs elérése
 A következő lépések végigvezetik a Azure DevTest Labs szolgáltatásban labor házirendek beállítása:
@@ -37,9 +37,9 @@ Megtekintése (és módosítása) a házirendek egy tesztkörnyezetet, kövesse 
 
 1. Válassza ki **konfigurációs és házirendek**.
 
-    ![Szabályzat-beállítások panelen](./media/devtest-lab-set-lab-policy/policies-menu.png)
+    ![Házirend-beállítások panelen](./media/devtest-lab-set-lab-policy/policies-menu.png)
 
-1. A **konfigurációs és házirendek** panel megadható beállítások menüt tartalmaz. Ez a cikk foglalkozik beállításait csak **virtuális gépek száma felhasználónként** és **automatikus leállítási**. A fennmaradó beállításaival kapcsolatos további tudnivalókért lásd: [egy Azure DevTest Labs szolgáltatásban található, amikor az összes házirend kezeléséhez](./devtest-lab-set-lab-policy.md). 
+1. A **konfigurációs és házirendek** ablaktáblán, megadható beállítások menüt tartalmaz. Ez a cikk foglalkozik beállításait csak **virtuális gépek száma felhasználónként**, **automatikus leállítási**, és **automatikusan elinduló**. A fennmaradó beállításaival kapcsolatos további tudnivalókért lásd: [egy Azure DevTest Labs szolgáltatásban található, amikor az összes házirend kezeléséhez](./devtest-lab-set-lab-policy.md). 
    
 ## <a name="set-virtual-machines-per-user"></a>Beállítása virtuális gépek száma felhasználónként
 A házirend **virtuális gépek száma felhasználónként** megadhatja az egyes felhasználók által létrehozott virtuális gépek maximális számát. Ha egy felhasználó megpróbál létrehozásához vagy a virtuális gépek jogcímek a megadott felhasználói korlátot teljesülésekor, egy hibaüzenet arra utalnak, hogy a virtuális gép nem létrehozott/igényt. 
@@ -57,7 +57,7 @@ A házirend **virtuális gépek száma felhasználónként** megadhatja az egyes
 ## <a name="set-auto-shutdown"></a>Készlet automatikus rendszerleállítást
 Az automatikus rendszerleállítást a szabályzattal meggyőződhetnek labor pazarlás minimalizálásához azáltal, hogy adja meg a labor virtuális gépek leállítása idejét.
 
-1. A tesztlabor a **konfigurációs és házirendek** panelen válassza **automatikus leállítási**.
+1. A tesztlabor a **konfigurációs és házirendek** ablaktáblán válassza előbb **automatikus leállítási**.
    
     ![Automatikus leállítási](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
@@ -65,16 +65,18 @@ Az automatikus rendszerleállítást a szabályzattal meggyőződhetnek labor pa
 
 1. Ha engedélyezi ezt a házirendet, adja meg az időt (és időzóna) leállítása az összes virtuális gép az aktuális tesztkörnyezetben.
 
-1. Adja meg **Igen** vagy **nem** beállítás értesítés küldése előtt a megadott automatikus rendszerleállítást idő 15 perc. Ha megad **Igen**, írja be a webhook URL-végpontjának az értesítések fogadásához. További információ a webhookok: [webhook vagy API Azure-függvény létrehozása](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+1. Adja meg **Igen** vagy **nem** beállítás értesítés küldése előtt a megadott automatikus rendszerleállítást idő 15 perc. Ha úgy dönt, **Igen**, írja be a webhook URL-végpontjának vagy e-mail cím megadása, ahol azt szeretné, hogy a közzétett vagy küldött értesítést. A felhasználó értesítést kap, és a késleltetés a leállítási lehetőséget kap.
+
+   További információ a webhookok: [webhook vagy API Azure-függvény létrehozása](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
 1. Kattintson a **Mentés** gombra.
 
-    Alapértelmezés szerint engedélyezve van, ez a házirend vonatkozik az összes virtuális gépen az aktuális tesztkörnyezetben. Távolítsa el ezt a beállítást egy adott virtuális géptől, nyissa meg a virtuális gép panelt, és módosítsa a **automatikus leállítási** beállítás 
+Alapértelmezés szerint engedélyezve van, ez a házirend vonatkozik az összes virtuális gépen az aktuális tesztkörnyezetben. Távolítsa el ezt a beállítást egy adott virtuális géptől, nyissa meg a virtuális gép felügyeleti ablaktáblán, és módosítsa a **automatikus leállítási** beállítást.
 
 ## <a name="set-auto-start"></a>Készlet automatikus indítás
 Az automatikus indítási házirend lehetővé teszi, hogy adja meg, amikor el kell indítani a virtuális gépeket az aktuális tesztkörnyezetben.  
 
-1. A tesztlabor a **konfigurációs és házirendek** panelen válassza **automatikusan elinduló**.
+1. A tesztlabor a **konfigurációs és házirendek** ablaktáblán válassza előbb **automatikusan elinduló**.
    
     ![Automatikus indítás](./media/devtest-lab-set-lab-policy/auto-start.png)
 
@@ -84,8 +86,8 @@ Az automatikus indítási házirend lehetővé teszi, hogy adja meg, amikor el k
 
 4. Kattintson a **Mentés** gombra.
 
-    Az engedélyezést követően a házirend nem automatikusan érvényben van a virtuális gépek az aktuális tesztkörnyezetben. Alkalmazza ezt a beállítást egy adott virtuális géphez, nyissa meg a virtuális gép panelt, és módosítsa a **automatikusan elinduló** beállítás 
+Az engedélyezést követően a házirend nem automatikusan érvényben van a virtuális gépek az aktuális tesztkörnyezetben. Egy meglévő virtuális gépre alkalmazza ezt a beállítást, a virtuális gép felügyeleti ablaktábla megnyitása, és módosítsa a **automatikusan elinduló** beállítást.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Labor házirendeket definiálhat az Azure DevTest Labs](devtest-lab-set-lab-policy.md) -megtudhatja, hogyan egyéb tesztkörnyezeti házirendek módosítása 
+- [Labor házirendeket definiálhat az Azure DevTest Labs](devtest-lab-set-lab-policy.md) -megtudhatja, hogyan módosíthat más lab-házirendeket.

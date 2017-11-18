@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 95d58c600bc43059025e739a8cdb062287f4ffb5
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4a2347fe9578b35c95d240c5c4dd2bf062077ece
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>Gyors üzembe helyezés: A Python és az Azure Cosmos DB Cassandra-alkalmazás létrehozása
 
@@ -29,13 +29,14 @@ Azure Cosmos-adatbázis egy Microsoft globálisan elosztott több modellre adatb
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltételekkel:
-    * [Python](https://www.python.org/downloads/) verzió v2.7.14
-    * [Git](http://git-scm.com/)
-    * [Az Apache Cassandra Python-illesztőprogram](https://github.com/datastax/python-driver)
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]Alternatív megoldásként, [Azure Cosmos DB szabad próbálja](https://azure.microsoft.com/try/cosmosdb/) díjmentesen és kötelezettségvállalás ingyenes Azure-előfizetéssel, nélkül.
 
+Az Azure Cosmos DB Cassandra API programot: a hozzáférést. Ha még nem telepítette a hozzáférés még, [feliratkozás most](cassandra-introduction.md#sign-up-now).
+
+Továbbá:
+* [Python](https://www.python.org/downloads/) verzió v2.7.14
+* [Git](http://git-scm.com/)
+* [Az Apache Cassandra Python-illesztőprogram](https://github.com/datastax/python-driver)
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -132,7 +133,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 1. Az a [Azure-portálon](http://portal.azure.com/), kattintson a **kapcsolati karakterlánc**. 
 
-    Használja a ![Másolás gombra](./media/create-cassandra-python/copy.png) a felső értéket, az ügyfél pontra másol a képernyő jobb szélén gombjára.
+    Használja a ![Másolás gomb](./media/create-cassandra-python/copy.png) a felső értéket, az ügyfél pontra másol a képernyő jobb szélén gombjára.
 
     ![Megtekintése és másolása az Azure portál, kapcsolat-karakterlánc panel hozzáférés felhasználói neve, a jelszó és a kapcsolattartási ponton](./media/create-cassandra-python/keys.png)
 

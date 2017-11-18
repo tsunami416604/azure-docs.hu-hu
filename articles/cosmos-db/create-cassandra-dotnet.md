@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 2503e7e6025e6f064574f14855468ae9b1b97fa0
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: ebfe845fa4f695064773a03f6d765da37ab44189
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Gyors üzembe helyezés: A .NET- és az Azure Cosmos DB Cassandra alkalmazás létrehozása
 
@@ -28,13 +28,13 @@ Azure Cosmos-adatbázis egy Microsoft globálisan elosztott több modellre adatb
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Cosmos DB Cassandra API programot: a hozzáférést. Ha még nem telepítette a hozzáférés még, [feliratkozás most](https://aka.ms/cosmosdb-cassandra-signup).
-
-Ha még nincs telepítve a Visual Studio 2017, töltse le és használja a **szabad** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]Alternatív megoldásként, [Azure Cosmos DB szabad próbálja](https://azure.microsoft.com/try/cosmosdb/) díjmentesen és kötelezettségvállalás ingyenes Azure-előfizetéssel, nélkül.
 
-Telepítés [Git](https://www.git-scm.com/) a példa klónozását.
+Az Azure Cosmos DB Cassandra API programot: a hozzáférést. Ha még nem telepítette a hozzáférés még, [feliratkozás most](cassandra-introduction.md#sign-up-now).
+
+Továbbá: 
+* Ha még nincs telepítve a Visual Studio 2017, töltse le és használja a **szabad** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+* Telepítés [Git](https://www.git-scm.com/) a példa klónozását.
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
@@ -112,7 +112,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 1. Az a [Azure-portálon](http://portal.azure.com/), kattintson a **kapcsolati karakterlánc**. 
 
-    Használja a ![Másolás gombra](./media/create-cassandra-dotnet/copy.png) a felhasználónév értéket másol a képernyő jobb szélén gombjára.
+    Használja a ![Másolás gomb](./media/create-cassandra-dotnet/copy.png) a felhasználónév értéket másol a képernyő jobb szélén gombjára.
 
     ![Megtekintése és másolása az Azure portál, csatlakozási karakterlánc oldal hívóbetű](./media/create-cassandra-dotnet/keys.png)
 

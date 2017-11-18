@@ -1,6 +1,6 @@
 ---
-title: "Lemezek és a Microsoft Azure Linux virtuális gépek virtuális merevlemezek |} Microsoft Docs"
-description: "A Linux virtuális gépek Azure-ban lemezek és a VHD-k alapjainak megismerése."
+title: "A Microsoft Azure Linux virtuális gépek lemezegységet kapcsolatos |} Microsoft Docs"
+description: "További tudnivalók a lemezek és a VHD-k a Linux virtuális gépek az Azure storage alapjait."
 services: storage
 documentationcenter: 
 author: robinsh
@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: be5f09af275142590ec6ade02562e914d5726e08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad55898806024a9f0562b32e7bdd990fd7dfd8d2
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="about-disks-and-vhds-for-azure-linux-vms"></a>Lemezek és a VHD-k Azure Linux virtuális gépekhez
+# <a name="about-disk-storage-for-azure-linux-vms"></a>Lemezes tárolás Azure Linux virtuális gépek kapcsolatos
 Csakúgy, mint bármely más számítógépre az Azure virtuális gépek lemezek használatával egy olyan hely az operációs rendszerek, alkalmazások és adatok tárolására. Minden Azure virtuális gépek legalább két lemezt – a Linux operációs rendszer és egy ideiglenes lemezzel rendelkezik. Az operációs rendszer lemez létrehozása lemezkép, és mind az operációsrendszer-lemez, és a lemezkép ténylegesen tárolt virtuális merevlemezek (VHD) az Azure storage-fiók. Virtuális gépek is rendelkeznek legalább egy adatlemezt, virtuális merevlemezekként is tárolt. 
 
 Ebben a cikkben rendszer szolgáltatással kapcsolatban a lemezek különböző használ, és a különböző típusú lemezek létrehozhat és használhat majd ismertetik. Ez a cikk érhető el is [Windows virtuális gépek](../windows/about-disks-and-vhds.md).
@@ -59,6 +59,6 @@ Adhat hozzá adatlemezt egy virtuális gép bármikor, az **csatolása** a lemez
 
 ## <a name="next-steps"></a>Következő lépések
 * [A lemez csatolása](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további tárhely hozzáadása a virtuális gép számára.
-* [Konfigurálja a szoftveres RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a redundancia érdekében.
-* [Linux virtuális gép rögzítése](./classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) , gyorsan telepíthet további virtuális gépeket.
+* [Pillanatkép létrehozása](snapshot-copy-managed-disk.md).
+* [Alakítsa át a felügyelt](convert-unmanaged-to-managed-disks.md).
 

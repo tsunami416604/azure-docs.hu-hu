@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/06/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 766ab10c853eb56a1203686d21d0e131c44a41b5
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: a44faec6c21c338dfc6b1507af6f716e089c7038
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -49,7 +49,7 @@ Azure Active Directory javítása azt vannak a folyamatos. Ahhoz, hogy naprakés
 
 <a name="acs-retirement"></a>
 
-A Microsoft Azure Active Directory hozzáférés-vezérlés (más néven a hozzáférés-vezérlési szolgáltatásban vagy az ACS) késői 2018 a használatból van.  További információkat, például egy részletes ütemezés és a magas szintű áttelepítési útmutató a következő néhány hét lesz megadva. Időközben hagyja megjegyzések ezen az oldalon az ACS kapcsolatos kérdéseivel, és a csapat tagjai lesznek elérhetők a megválaszolására.
+A Microsoft Azure Active Directory hozzáférés-vezérlés (más néven a hozzáférés-vezérlési szolgáltatásban vagy az ACS) November 2018 a használatból van.  További információk, például egy részletes ütemezés és a magas szintű áttelepítési útmutató található [ezen az oldalon](./develop/active-directory-acs-migration.md).
 
 ---
 

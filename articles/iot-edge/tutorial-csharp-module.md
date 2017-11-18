@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fb7674d8c292e7d571a94ac4625b0858a90704b3
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: c778c412bf6d65c5b6ee92d603aac7acfa6139eb
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Fejlesztés és a szimulált eszköz egy C# IoT peremhálózati modul telepítése – előzetes
 
@@ -35,7 +35,6 @@ Az IoT-Edge modul, amely ebben az oktatóanyagban létrehozhat szűrők az eszk�
 * [A Visual Studio Code](https://code.visualstudio.com/). 
 * [Azure IoT Edge-bővítményt a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). (Telepítheti a bővítményt a Visual Studio Code bővítmények panelén.)
 * [C# (OmniSharp technológiával) Visual Studio Code-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). (Telepítheti a bővítményt a Visual Studio Code bővítmények panelén.)
-* A Visual Studio Code Azure IoT Edge-bővítményt
 * [Docker](https://docs.docker.com/engine/installation/). A közösségi Edition (CE) a platformhoz is elegendő ehhez az oktatóanyaghoz. Ellenőrizze, hogy a számítógépen futó, Visual STUDIO Code telepítése.
 * [.NET 2.0 SDK alapvető](https://www.microsoft.com/net/core#windowscmd). 
 

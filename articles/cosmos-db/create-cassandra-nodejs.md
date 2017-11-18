@@ -15,11 +15,11 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 76850d6403fc4e87e95f5842b87b258d652c2c35
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: abf88cf96b32bc4168cb8c09a6e70ad0e395e88c
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Gyors üzembe helyezés: A Node.js és az Azure Cosmos DB Cassandra-alkalmazás létrehozása
 
@@ -29,12 +29,13 @@ Azure Cosmos-adatbázis egy Microsoft globálisan elosztott több modellre adatb
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Cosmos DB Cassandra API programot: a hozzáférést. Ha még nem telepítette a hozzáférés még, [feliratkozás most](https://aka.ms/cosmosdb-cassandra-signup).
-* [Node.js](https://nodejs.org/en/)-verzió: 0.10.29-es vagy újabb
-* [Git](http://git-scm.com/)
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]Alternatív megoldásként, [Azure Cosmos DB szabad próbálja](https://azure.microsoft.com/try/cosmosdb/) díjmentesen és kötelezettségvállalás ingyenes Azure-előfizetéssel, nélkül.
 
+Az Azure Cosmos DB Cassandra API programot: a hozzáférést. Ha még nem telepítette a hozzáférés még, [feliratkozás most](cassandra-introduction.md#sign-up-now).
+
+Továbbá:
+* [Node.js](https://nodejs.org/en/)-verzió: 0.10.29-es vagy újabb
+* [Git](http://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -152,7 +153,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 1. Az a [Azure-portálon](http://portal.azure.com/), kattintson a **kapcsolati karakterlánc**. 
 
-    Használja a ![Másolás gombra](./media/create-cassandra-nodejs/copy.png) a felső értéket, az ügyfél pontra másol a képernyő jobb szélén gombjára.
+    Használja a ![Másolás gomb](./media/create-cassandra-nodejs/copy.png) a felső értéket, az ügyfél pontra másol a képernyő jobb szélén gombjára.
 
     ![Megtekintheti, és az ügyfél pont, a felhasználónév és a jelszó másolása az Azure portál, csatlakozási karakterlánc oldal](./media/create-cassandra-nodejs/keys.png)
 
