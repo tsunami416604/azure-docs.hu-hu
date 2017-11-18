@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 8bcecdff2bb9ac037e2cd71a431619883dfb5084
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 5cf74140969fb354e426c41552d4d73a06c76890
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisok az SQL adatszinkronizálás (előzetes verzió)
 
@@ -80,16 +80,6 @@ Adatszinkronizálás nincs megfelelő, az alábbi helyzetekben:
 
 ## <a name="sync-req-lim"></a>Követelmények és korlátozások
 
-### <a name="general-requirements"></a>Általános követelmények
-
--   Minden tábla elsődleges kulccsal kell rendelkeznie. Ne módosítsa az összes sort az elsődleges kulcs értékét. Ha módosítania kell egy elsődleges kulcs értéke, a sor törlése, és hozza létre újra az új elsődleges kulcs értéke. 
-
--   Egy táblázat azonosító oszlopot, amely nem az elsődleges kulcs nem lehet.
-
--   Objektumok (adatbázisok, táblákat és oszlopokat) nevét nem tartalmazza a nyomtatható karakterek pont (.), bal oldali szögletes zárójel ([), és jobb szögletes zárójel (]).
-
--   Pillanatkép-elkülönítés engedélyezve kell lennie. További információk: [pillanatkép-elkülönítést az SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
-
 ### <a name="general-considerations"></a>Általános megfontolások
 
 #### <a name="eventual-consistency"></a>Végleges konzisztencia
@@ -98,7 +88,19 @@ Mivel adatszinkronizálás eseményindító-alapú, a tranzakciós konzisztencia
 #### <a name="performance-impact"></a>Teljesítményre gyakorolt hatás
 Adatok szinkronizálása által beszúrási, frissítési és törlési eseményindítók követni a változásokat. Ügyféloldali táblák létrehozza a változáskövetési felhasználói adatbázisban. E módosítás követési tevékenységek hatással vannak az adatbázisban munkaterhelés. A szolgáltatási rétegben felmérése, és ha szükséges.
 
+### <a name="general-requirements"></a>Általános követelmények
+
+-   Minden tábla elsődleges kulccsal kell rendelkeznie. Ne módosítsa az összes sort az elsődleges kulcs értékét. Ha módosítania kell egy elsődleges kulcs értéke, a sor törlése, és hozza létre újra az új elsődleges kulcs értéke. 
+
+-   Pillanatkép-elkülönítés engedélyezve kell lennie. További információk: [pillanatkép-elkülönítést az SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+
 ### <a name="general-limitations"></a>Általános korlátozások
+
+-   Egy táblázat azonosító oszlopot, amely nem az elsődleges kulcs nem lehet.
+
+-   Objektumok (adatbázisok, táblákat és oszlopokat) nevét nem tartalmazza a nyomtatható karakterek pont (.), bal oldali szögletes zárójel ([), és jobb szögletes zárójel (]).
+
+-   Az Azure Active Directory-hitelesítés nem támogatott.
 
 #### <a name="unsupported-data-types"></a>Nem támogatott adattípusok
 

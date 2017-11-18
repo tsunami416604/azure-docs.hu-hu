@@ -2,19 +2,19 @@
 title: "Központi és az Azure-ban együttműködés gép munkaterület tanulási |} Microsoft Docs"
 description: "Ismert problémák listája és a hibaelhárítás elősegítése érdekében az útmutató"
 services: machine-learning
-author: svankam
-ms.author: svankam
+author: hning86
+ms.author: haining
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/05/2017
-ms.openlocfilehash: 156dd1b7f928df22b3feb9e7a13396d3b53a91d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/16/2017
+ms.openlocfilehash: 856348c07a198a8c53c6661441d5c49196ef3af5
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Központi és az Azure Machine Learning munkaterület együttműködés
 A dokumentumból megtudhatja, hogyan segítik a Azure Machine Learning-munkaterület gépek, valamint a teammates együttműködve lehetővé teszik a projektek válasszanak. 
@@ -90,23 +90,16 @@ Alice a hivatkozásra kattint a **fájl** menüt, és választják ki a **paranc
 # Find ARM ID of the experimnetation account
 az ml account experimentation show --query "id"
 
-# Add Bob to the Experimentation Account as a Reader.
-# Bob now has read access to all workspaces and projects under the Account by inheritance.
-az role assignment create --assignee bob@contoso.com --role Reader --scope <experimentation account ARM ID>
+# Add Bob to the Experimentation Account as a Contributor.
+# Bob now has read/write access to all workspaces and projects under the Account by inheritance.
+az role assignment create --assignee bob@contoso.com --role Contributor --scope <experimentation account ARM ID>
 
 # Find ARM ID of the workspace
 az ml workspace show --query "id"
 
-# Add Bob to the workspace as a Contributor.
-# Bob now has read/write access to all projects under the Workspace by inheritance.
-az role assignment create --assignee bob@contoso.com --role Contributor --scope <workspace ARM ID>
-
-# find ARM ID of the project 
-az ml project show --query "id"
-
-# Add Bob to the Project as an Owner.
-# Bob now has read/write access to the Project, and can add others too.
-az role assignment create --assignee bob@contoso.com --role Owner --scope <project ARM ID>
+# Add Bob to the workspace as an Owner.
+# Bob now has read/write access to all projects under the Workspace by inheritance. And he can invite or remove others.
+az role assignment create --assignee bob@contoso.com --role Owner --scope <workspace ARM ID>
 ```
 
 A szerepkör-hozzárendelés után közvetlenül vagy öröklés, Bob tekintheti meg a projektet a munkaterületet üzemeltető projekt listában. Az alkalmazás újraindítás módosítania kell a projekt láthatók. Bob ezután letöltheti a projekt leírtak szerint a [szakasz központi](#roaming) és Alice együttműködni. 
@@ -124,3 +117,81 @@ Adja hozzá a felhasználók számára az összes erőforrásból szeretne erőf
 
 <img src="./media/roaming-and-collaboration/iam.png" width="320px">
 
+## <a name="sample-collaboration-workflow"></a>A minta együttműködés munkafolyamat
+Az együttműködés folyamatot mutatja be, bemutatjuk, egy példán keresztül. Contoso alkalmazottak Alice, Bob és szeretné, hogy Azure ML munkaterület használatával adatok tudományos ülve dolgozhatnak. Az identitásukat a ugyanazt a Contoso Azure AD-bérlő tartozik.
+
+1. Alice először létrehoz egy üres Git-tárház VSTS projektben. Ez a VSTS-projekt alatt a Contoso AAD-bérlőt hozott létre Azure-előfizetéssel kell létezniük. 
+
+2. Alice ezután hoz létre egy Azure ML kísérletezhet fiókot, egy munkaterület és az Azure ML munkaterület projektek számítógépén. A projekt létrehozása ő megadja a Git-tárház URL-cím.
+
+3. Alice megkezdi a munkát a projekthez. Ezzel létrehoz néhány parancsprogramot, és néhány futtatása végrehajtja. Minden egyes futtatásához a teljes projektmappa pillanatképe automatikusan leküldött azokat a VSTS Git-tárház hozta létre, egy véglegesítési munkaterület futtatási előzményei ág.
+
+4. Alice már elégedett a befejezetlen. És szeretné véglegesíteni a helyi rendszerre változtatást _fő_ fiókirodai és leküldéses értesítések az azokat a VSTS Git-tárház _fő_ ág. Ehhez nyissa meg a projekt ő a parancssori ablakot, az Azure ML munkaterület elindul, és ki a következő parancsokat:
+    
+    ```sh
+    # verify the Git remote is pointing to the VSTS Git repo
+    $ git remote -v
+
+    # verify that the current branch is master
+    $ git branch
+
+    # stage all changes
+    $ git add -A
+
+    # commit changes with a comment
+    $ git commit -m "this is a good milestone"
+
+    # push the commit to the master branch of the remote Git repo in VSTS
+    $ git push
+    ```
+
+5. Alice hozzáadja Bob a munkaterületre közreműködőként. Ő ehhez az Azure portálon, vagy használja a `az role assignment` parancs fent mutatja be. Azt is nyújt, Bob olvasási/írási hozzáférést a VSTS Git-tárház számára.
+
+6. Bob most jelentkezik be az Azure ML-munkaterület a számítógépen. Azt látja, a vele megosztott munkaterület Alice, és a munkaterülethez tartozó projekt. 
+
+7. Bob a projekt nevére kattint, és a számítógép letölti a projektet.
+    
+    a. A letöltött projektből fájlok klónok a pillanatkép, a legutóbbi futtatás futtatási előzményeit rögzíti. Nincsenek meg a főágba utolsó véglegesítése.
+    
+    b. A projekt helyi mappa van megadva a _fő_ fiókirodai unstaged módosításokkal.
+
+8. Bob tallózhatnak végrehajtja az Alice, és bármely korábbi futtatása visszaállítási pillanatképe futtatása.
+
+9. Bob szeretne leküldött Alice által a legutóbbi változtatásokat, és indítsa el a másik fiókiroda működéséhez. Így ezután parancssori ablak megnyitása az Azure ML munkaterület, és végrehajtja a következő parancsokat:
+
+    ```sh
+    # verify the Git remote is pointing to the VSTS Git repo
+    $ git remote -v
+
+    # verify that the current branch is master
+    $ git branch
+
+    # get the latest commit in VSTS Git master branch and overwrite current files
+    $ git pull --force
+
+    # create a new local branch named "bob" so Bob's work is done on the "bob" branch
+    $ git checkout -b bob
+    ```
+
+10. Bob most módosítja a projekt, és küldje el az új futtatása. A módosításokat végzett a a _bob_ ág. És Bob futtatása megjelenítése Ágnes is.
+
+11. Bob készen áll a küldje le a módosításokat a távoli Git-tárház be. Való ütközés elkerülése érdekében _fő_ fiókirodákban, ahol Alice működik-e, eldönti, hogy egy új távoli helyen, más néven a saját munkáját leküldéses _bob_.
+
+    ```sh
+    # verify that the current branch is "bob" and it has unstaged changes
+    $ git status
+    
+    # stage all changes
+    $ git add -A
+
+    # commit them with a comment
+    $ git commit -m "I found a cool new trick."
+
+    # create a new branch on the remote VSTS Git repo, and push changes
+    $ git push origin bob
+    ```
+
+12. Bob majd írhatja Alice az új ritkán használt adatok körben kapcsolatos a kódban, és a távoli Git-tárház hoz létre egy lekérési kérelmet a _bob_ a fiókirodai a _fő_ ág. Alice majd egyesítheti a lekérési kérelem be és _fő_ ág.
+
+## <a name="next-steps"></a>Következő lépések
+További információ a Git használatával az Azure ML munkaterület: [Azure Machine Learning-munkaterület projekttel használatával Git-tárház](using-git-ml-project.md)

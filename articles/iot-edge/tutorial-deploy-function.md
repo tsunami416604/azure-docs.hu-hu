@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 34ed5083b952c42d4ed119b6986db965eb9eb67a
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 82019392edc99f0adccb26b483e77b7c576822fb
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Azure-függvény, egy IoT-Edge-modul telepítése – előzetes
 Az Azure Functions, amely megvalósítja az üzleti logikát, közvetlenül az IoT peremhálózati eszköz a kód telepítésére használhatja. Ez az oktatóanyag végigvezeti létrehozása és telepítése az Azure-függvény érzékelőadatait a szimulált IoT peremhálózati eszközön létrehozott tartozó telepítése Azure IoT Edge a szimulált eszköz a szűrő [Windows] [ lnk-tutorial1-win]vagy [Linux] [ lnk-tutorial1-lin] oktatóanyagok. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:     
@@ -141,7 +141,7 @@ A következő lépések bemutatják egy Visual Studio Code és az Azure IoT pere
 1. Összeállíthatja a Docker-lemezképét.
     1. A Visual STUDIO Code Explorerben (megoldáskezelőben) kattintson a **Docker** mappára a megnyitásához. Válassza ki a mappát, a tároló platform vagy **linux-x64** vagy **windows-nano**. 
     2. Kattintson a jobb gombbal a **Dockerfile** fájlt, és kattintson a **Build IoT peremhálózati modul Docker kép**. 
-    3. Az a **Mappaválasztás** navigáljon a **Docker/linux-x64** mappára, majd kattintson **EXE_DIR mappában válassza ki**. 
+    3. Az a **Mappaválasztás** navigáljon a projektmappa **FilterFunction**, és kattintson a **EXE_DIR mappában válassza ki**. 
     4. Az előugró szövegmezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Például `<docker registry address>/filterfunction:latest`; ahol *docker beállításjegyzék cím* Docker Hub használata a rendszer a Docker-Azonosítóját, vagy hasonló `<your registry name>.azurecr.io`, Azure tároló beállításjegyzék használata.
  
 4. Jelentkezzen be a Docker. Integrált terminált adja meg a következő parancsot: 

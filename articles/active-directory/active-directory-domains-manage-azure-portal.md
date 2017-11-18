@@ -4,7 +4,7 @@ description: "Felügyeleti fogalmakat és a tartomány nevét az Azure Active Di
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: michael.tillman
 editor: 
 ms.assetid: 5063cd0a-dba2-4ba9-aa65-b8117490d73a
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: 1e58af1f8d26b03c07b27d69f13868bccaaa33aa
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: e77ea5c3b04a6717e6434f03ca61084af883c31c
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Az Azure Active Directoryban egyéni tartománynevek kezelése
 A tartománynév sok címtárerőforrásokkal azonosítója fontos része: felhasználói név vagy e-mail cím egy felhasználó, a cím egy csoport része, és hozzájárulhat az alkalmazás az alkalmazás URI azonosítója. Az Azure Active Directory (Azure AD) erőforrás lehetnek egy tartomány nevét, amely már ellenőrizve, a könyvtárban, amely tartalmazza az erőforrás tulajdonosa. Csak egy globális rendszergazda Azure AD-ben végrehajthat tartomány feladatokat.
@@ -29,18 +29,18 @@ A könyvtár jön létre, a kezdeti tartománynevet, például "contoso.onmicros
 
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
 2. Válassza ki **az Azure Active Directory**.
-   
-   ![Nyitó felhasználók kezelése](./media/active-directory-domains-add-azure-portal/user-management.png)
-3. Válassza ki **tartománynevek**.
-4. Válassza ki, amelyhez az elsődleges tartomány annak a tartománynak a nevét.
+3. Válassza ki **egyéni tartománynevek**.
+     
+   ![Nyitó felhasználók kezelése](./media/active-directory-domains-manage-azure-portal/add-custom-domain.png)
+4. Válassza ki a tartományban, amelyhez az elsődleges tartomány tenni kívánt nevét.
 5. Válassza ki a **ellenőrizze elsődleges** parancsot. Erősítse meg választását, amikor a rendszer kéri.
    
-   ![Ellenőrizze a tartománynév elsődleges](./media/active-directory-domains-manage-azure-portal/make-primary.png)
+   ![Ellenőrizze a tartománynév elsődleges](./media/active-directory-domains-manage-azure-portal/make-primary-domain.png)
 
 Módosíthatja a címtáron bármely, a ellenőrzött egyéni tartományt is, hogy az nem összevont elsődleges tartományneve. Az elsődleges tartomány a címtáron módosítása nem módosítja a felhasználónevek, a meglévő felhasználókat.
 
-## <a name="add-custom-domain-names-to-your-azure-ad"></a>Egyéni tartománynevek hozzáadása az Azure AD
-> 900 felügyelt tartománynév legfeljebb is egyezzen. Ha az összevonási a tartományok konfigurálása a helyszíni Active Directoryval, adhat hozzá minden könyvtárban 450 tartománynevek legfeljebb. További információkért lásd: [külső és a felügyelt tartománynév](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names).
+## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Egyéni tartománynevek hozzáadása az Azure AD-bérlő
+900 felügyelt tartománynév legfeljebb is egyezzen. Az összevonáshoz a tartományok konfigurálása a helyszíni Active Directoryval, adhat hozzá minden könyvtárban 450 tartománynevek legfeljebb. További információkért lásd: [külső és a felügyelt tartománynév](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names).
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Altartományok az egyéni tartomány hozzáadása
 Ha szeretne egy harmadik szintű tartomány neve, pl. "europe.contoso.com" adni a könyvtárhoz, először adja hozzá, és ellenőrizze a második szintű tartomány, például contoso.com. Az altartomány Azure AD által automatikusan fog ellenőrizhető. Jelenik meg, hogy a most felvett altartomány ellenőrzése megtörtént, frissítse a lapot a böngészőben, amely felsorolja azokat a tartományokat.

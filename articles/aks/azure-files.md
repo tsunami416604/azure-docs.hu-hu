@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2017
+ms.date: 11/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 11457e6556e6400d8f58f71c71ab1e790bcef8f1
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: bae60e7f78934deacac173767ca3013ce93cf9ad
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="using-azure-files-with-kubernetes"></a>Az Azure Files használata Kubernetes
 
@@ -28,52 +28,49 @@ Tároló-alapú alkalmazások gyakran kell elérni, és egy külső adatmennyis�
 
 Kubernetes köteteken további információkért lásd: [Kubernetes kötetek][kubernetes-volumes].
 
-## <a name="creating-a-file-share"></a>Fájlmegosztás létrehozása
+## <a name="create-an-azure-file-share"></a>Az Azure-fájlmegosztás létrehozása
 
-Azure Tárolószolgáltatás egy meglévő Azure fájlmegosztás használható. Ha szeretne létrehozni egyet, válasszon a következő parancsokat.
-
-Hozzon létre egy erőforráscsoportot az Azure File megosztás használatára vonatkozó a [az csoport létrehozása] [ az-group-create] parancsot. Az erőforráscsoport a tárfiók és a Kubernetes fürt ugyanabban a régióban kell lennie.
+Használata előtt egy Azure fájlmegosztás Kubernetes kötetként, létre kell hoznia egy Azure Storage-fiók és a fájlmegosztást. A következő parancsfájl segítségével ezeket a feladatokat. Jegyezze fel, vagy frissítse a paraméterek értékeit, néhány esetben van szükség, amikor a Kubernetes kötet létrehozásához.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
+# Change these four parameters
+AKS_PERS_STORAGE_ACCOUNT_NAME=mystorageaccount$RANDOM
+AKS_PERS_RESOURCE_GROUP=myAKSShare
+AKS_PERS_LOCATION=eastus
+AKS_PERS_SHARE_NAME=aksshare
 
-Használja a [az storage-fiók létrehozása] [ az-storage-create] parancsot egy Azure Storage-fiók létrehozásához. A tárfiók nevének egyedinek kell lennie. Frissítse az értéket a `--name` argumentum egy egyedi érték.
+# Create the Resource Group
+az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 
-```azurecli-interactive
-az storage account create --name mystorageaccount --resource-group myResourceGroup --sku Standard_LRS
-```
+# Create the storage account
+az storage account create -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -l $AKS_PERS_LOCATION --sku Standard_LRS
 
-Használja a [az tárolási fióklista kulcsok ] [ az-storage-key-list] parancs sikeresen lefut a kulcsot. Frissítse az értéket a `--account-name` argumentum egyedi fiók nevével.
+# Export the connection string as an environment variable, this is used when creating the Azure file share
+export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv`
 
-Jegyezze fel az értékek egyik használatos a későbbi lépésekben.
+# Create the file share
+az storage share create -n $AKS_PERS_SHARE_NAME
 
-```azurecli-interactive
-az storage account keys list --account-name mystorageaccount --resource-group myResourceGroup --output table
-```
-
-Használja a [az storage-megosztás létrehozása] [ az-storage-share-create] parancs az Azure fájlmegosztás létrehozásához. Frissítés a `--account-key` a értékkel rendelkező gyűjti az utolsó lépésben.
-
-```azurecli-interactive
-az storage share create --name myfileshare --account-name mystorageaccount --account-key <key>
+# Get storage account key
+STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_GROUP --account-name $AKS_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" -o tsv)
 ```
 
 ## <a name="create-kubernetes-secret"></a>Kubernetes titkos kulcs létrehozása
 
-Kubernetes kell a fájlmegosztás eléréséhez szükséges hitelesítő adatokat. Ahelyett, hogy az Azure Storage-fiók nevét és minden pod kulcs tárolása, egyszer a tárolja egy [Kubernetes titkos] [ kubernetes-secret] és minden Azure fájlok kötet által hivatkozott. 
+Kubernetes kell a fájlmegosztás eléréséhez szükséges hitelesítő adatokat. Ezek a hitelesítő adatok vannak tárolva egy [Kubernetes titkos][kubernetes-secret], amely hivatkozik a Kubernetes pod létrehozásakor.
 
-Egy Kubernetes titkos jegyzékben szereplő értékek base64 kódolásúnak kell lennie. Az alábbi parancsokkal kódolt értéket ad vissza.
+Egy Kubernetes titkos létrehozása esetén a titkos értékek base64 kódolásúnak kell lennie.
 
-Első lépésként kódolja a tárfiók nevét. Cserélje le `storage-account` az Azure storage-fiók nevével.
+Első lépésként kódolja a tárfiók nevét. Szükség esetén cserélje le a `$AKS_PERS_STORAGE_ACCOUNT_NAME` az Azure storage-fiók nevével.
 
 ```azurecli-interactive
-echo -n <storage-account> | base64
+echo -n $AKS_PERS_STORAGE_ACCOUNT_NAME | base64
 ```
 
-Ezt követően a fiók tárelérési kulcs szükséges. A következő parancsot a kódolt kulcs adja vissza. Cserélje le `storage-key` a korábbi lépésben gyűjtött kulccsal
+A következő kódolja a tárfiók kulcsára. Szükség esetén cserélje le a `$STORAGE_KEY` az Azure storage-fiók kulcs neve.
 
 ```azurecli-interactive
-echo -n <storage-key> | base64
+echo -n $STORAGE_KEY | base64
 ```
 
 Hozzon létre egy fájlt `azure-secret.yml` és a következő YAM másolja. Frissítés a `azurestorageaccountname` és `azurestorageaccountkey` értékeket a base64 kódolású értékeket az előző lépésben beolvasott.
@@ -89,15 +86,15 @@ data:
   azurestorageaccountkey: <base64_encoded_storage_account_key>
 ```
 
-Használja a [kubectl alkalmazása] [ kubectl-apply] parancsot a titkos kulcs létrehozásához.
+Használja a [kubectl létrehozása] [ kubectl-create] parancsot a titkos kulcs létrehozásához.
 
 ```azurecli-interactive
-kubectl apply -f azure-secret.yml
+kubectl create -f azure-secret.yml
 ```
 
 ## <a name="mount-file-share-as-volume"></a>Fájlmegosztás csatlakoztatása kötetként
 
-A pod be az Azure-fájlok megosztás a kötetet a spec konfigurálásával lehet csatlakoztatni. Hozzon létre egy új fájlt `azure-files-pod.yml` a következő tartalommal. Frissítés `share-name` az Azure-fájlok neve azonos.
+A pod be az Azure-fájlok megosztás a kötetet a spec konfigurálásával lehet csatlakoztatni. Hozzon létre egy új fájlt `azure-files-pod.yml` a következő tartalommal. Frissítés `aksshare` az Azure-fájlok neve azonos.
 
 ```yaml
 apiVersion: v1
@@ -115,7 +112,7 @@ spec:
   - name: azure
     azureFile:
       secretName: azure-secret
-      shareName: <share-name>
+      shareName: aksshare
       readOnly: false
 ```
 
@@ -139,6 +136,6 @@ További tudnivalók Kubernetes kötetek Azure fájlokat használja.
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list
 [az-storage-share-create]: /cli/azure/storage/share#az_storage_share_create
-[kubectl-apply]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#apply
+[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create
 [kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/
 [az-group-create]: /cli/azure/group#az_group_create

@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/17/2017
 ms.author: nitinme
-ms.openlocfilehash: 73c472140861a0d0d270021ab268e8c1113c23b5
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6677b0b3ed047ce011bfbb72c25e45195859830a
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>A HDInsight-fürtök figyelése Azure Log Analytics segítségével
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/15/2017
 
 * **Azure-előfizetés**. Az oktatóanyag elindításához Azure-előfizetéssel kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása még ma](https://azure.microsoft.com/free).
 
-* **Egy Azure HDInsight fürt**. Jelenleg a következő HDInsight-fürt típusú Azure OMS is használhatja:
+* **Egy Azure HDInsight fürt**. Jelenleg a következő HDInsight-fürt típusú Azure Operations Management Suite is használhatja:
 
     * Hadoop
     * HBase
@@ -56,7 +56,7 @@ Ebben a szakaszban konfigurál egy meglévő HDInsight Hadoop-fürthöz az Azure
 
     A beállítás mentése, néhány percet vesz igénybe.  Ha ezzel végzett, megjelenik egy **nyitott OMS irányítópult** felső gombjára. 
 
-    ![Nyissa meg OMS irányítópult](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-open-workspace.png "nyitott OMS irányítópult")
+    ![Nyissa meg az Operations Management Suite irányítópult](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-open-workspace.png "nyitott OMS irányítópult")
 
 5. Kattintson a **nyitott OMS irányítópult**.
 6. Ha a rendszer kéri, adja meg Azure hitelesítő adatait.

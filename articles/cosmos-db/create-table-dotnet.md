@@ -3,7 +3,7 @@ title: "Gyors üzembe helyezés: Tábla API a .NET - Azure Cosmos DB |} Microsof
 description: "A gyors üzembe helyezés bemutatja, hogyan hozzon létre egy alkalmazást az Azure portál és a .NET az Azure Cosmos DB tábla API használatával"
 services: cosmos-db
 documentationcenter: 
-author: arramac
+author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 66327041-4d5e-4ce6-a394-fee107c18e59
@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/15/2017
-ms.author: arramac
-ms.openlocfilehash: 5d22b23d687dba2382e009e73f20014a5d528d78
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.date: 11/16/2017
+ms.author: mimig
+ms.openlocfilehash: 4e59c333e14e5e21a02c3160cf6311d1182e5a5e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>Gyors üzembe helyezés: Egy tábla .NET és Azure Cosmos DB API-alkalmazás létrehozása 
 
@@ -84,15 +84,16 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 2. A Visual Studióban nyissa meg az App.config fájlt. 
 
-3. Állítsa vissza a StorageConnectionString sor 8 és a StorageConnectionString sor 7 megjegyzésbe, mivel ez az oktatóanyag nem használ a Storage Emulator. 
-
-3. Az elsődleges kapcsolódási karakterlánc illessze be a 8 a StorageConnectionString értékét. 
+3. Állítsa vissza a StorageConnectionString sor 8 és a StorageConnectionString sor 7 megjegyzésbe, mivel ez az oktatóanyag nem használ a Storage Emulator. 7. és 8 sor most példához hasonló:
 
     ```
-    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />`
+    <!--key="StorageConnectionString" value="UseDevelopmentStorage=true;" />-->
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
     ```
 
-    Sor 8 most hasonlóan kell kinéznie
+4. Az elsődleges KAPCSOLATI KARAKTERLÁNCOT a portálról illessze be a StorageConnectionString érték a 8. Illessze be a karakterláncot, az idézőjelek közé foglalt belül. Ha a végponthoz documents.azure.com használ, módosítsa a része, table.cosmosdb.azure.com. 
+
+    Sor 8 most hasonlóan kell kinéznie:
 
     ```
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
@@ -110,11 +111,25 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
 3. Az eredmények közül telepítse a **Microsoft.Azure.CosmosDB.Table** könyvtárban. Ez telepíti az Azure Cosmos DB tábla API-csomagot, valamint az összes függősége.
 
-4. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
+4. Nyissa meg a BasicSamples.cs, majd adja hozzá a töréspont 30 és a sor 52.
 
-    A konzolablakban a felvenni kívánt Azure Cosmos DB-ben az új táblázat adatbázis adatait jeleníti meg.
+5. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
 
-    Lépjen vissza az Adatkezelőbe, ahol lekérdezheti és módosíthatja az új adatokat, valamint dolgozhat azokkal.
+    A konzolablakban a felvenni kívánt Azure Cosmos DB-ben az új táblázat adatbázis adatait jeleníti meg. 
+    
+    Ha függőségek kapcsolatos hibaüzenetet kap, tekintse meg [hibaelhárítás](table-sdk-dotnet.md#troubleshooting).
+
+    Az első töréspont, lépjen vissza adatkezelő az Azure portálon, és bontsa ki a bemutató * tábla, és kattintson a **entitások**. A **entitások** a jobb oldali lapon láthatók a hozzáadott új entitás, Megjegyzés: Ez a telefonszám, a felhasználó 425-555-0101 érték.
+    
+6. Zárja be a adatkezelő entitások lapján.
+    
+7. Továbbra is futtassa az alkalmazást a következő töréspont.
+
+    Elérte a töréspont, amikor visszavált a portálon, kattintson ismét a nyissa meg az entitások lapját, és vegye figyelembe, hogy megújult a telefonszám 425-555-0105 entitások.
+
+8. Vissza a konzolablakban nyomja le a CTRL + C billentyűkombinációt az alkalmazás végrehajtásának befejezése. 
+
+    Akkor is most lépjen vissza adatkezelő hozzáadása vagy módosításához az entitást, és a lekérdezést.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

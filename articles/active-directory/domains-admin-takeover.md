@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2017
+ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 457857f44ad3081087b5843f156860c901562468
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ee100fa86d78840a3b6a6bbf9453954c054931c2
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Egy nem felügyelt directory átveszi az Azure Active Directoryban rendszergazdaként
 Ez a cikk ismerteti a két módon vegye át egy DNS-tartománynév, az Azure Active Directory (Azure AD) egy nem felügyelt könyvtárban. Egy önkiszolgáló felhasználó előfizet egy felhőalapú szolgáltatás által használt Azure AD, ha hozzáadja őket egy nem felügyelt Azure AD-címtár az e-mail tartománya alapján. Önkiszolgáló, vagy a szolgáltatás "ugrásszerű" létrehozni kapcsolatban bővebben lásd: [Mi az az Azure Active Directory önkiszolgáló regisztráció?]()
@@ -67,7 +67,7 @@ Amikor befejezte az előző lépéseket, áll az Office 365-ben a negyedik káv�
   
 6. Jelentkezzen be a [az Azure AD felügyeleti központban](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely az az Azure AD-bérlő globális rendszergazdája.
   
-7. Válassza ki **tartománynevek**, majd adja hozzá a tartomány nevét. Írja be a tulajdonjogát, a tartománynév ellenőrzése DNS TXT-rekordot kell. 
+7. Válassza ki **egyéni tartománynevek**, majd adja hozzá a tartomány nevét. Írja be a tulajdonjogát, a tartománynév ellenőrzése DNS TXT-rekordot kell. 
   
   ![az Azure AD hozzá tartomány](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   

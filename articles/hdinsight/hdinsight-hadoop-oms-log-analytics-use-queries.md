@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/17/2017
 ms.author: nitinme
-ms.openlocfilehash: e4ee80826a710bde9483d130a4d1c986a72645ca
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: da7b83846418bfe5f95b126d4f5f7b34d3a7b35d
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>A HDInsight-fürtök figyelése az Azure Naplóelemzés lekérdezése
 
@@ -33,7 +33,7 @@ Megtudhatja, hogyan Azure Naplóelemzés a figyelheti az Azure HDInsight-fürtö
 
 * Konfigurálnia kell egy HDInsight-fürt használata az Azure Naplóelemzés. Útmutatásért lásd: [használata Azure Naplóelemzés HDInsight-fürtökkel](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
-* Hozzá kellett adnia a HDInsight-fürtre kezelési megoldásai az OMS-munkaterület leírtak szerint [adja hozzá a HDInsight fürt felügyeleti megoldásokat Naplóelemzési](hdinsight-hadoop-oms-log-analytics-management-solutions.md).
+* Hozzá kellett adnia a HDInsight fürt-specifikus felügyeleti megoldásokat a [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) a munkaterület [adja hozzá a HDInsight fürt megoldásokszolgáltatáshoz](hdinsight-hadoop-oms-log-analytics-management-solutions.md).
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>A HDInsight fürt metrikáinak elemzése
 
@@ -152,5 +152,5 @@ Riasztás létrehozása kívánt lekérdezés is használhatja.
 
 ## <a name="see-also"></a>Lásd még:
 
-* [OMS Naplóelemzési használata](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [Az Operations Management Suite Naplóelemzési használata](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [A Naplóelemzési riasztási szabályok létrehozása](../log-analytics/log-analytics-alerts-creating.md)

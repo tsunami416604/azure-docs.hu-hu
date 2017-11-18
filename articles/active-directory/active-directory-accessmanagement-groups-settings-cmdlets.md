@@ -4,7 +4,7 @@ description: "Hogyan az Azure Active Directory-parancsmagok használatával csop
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: michael.tillman
 editor: 
 ms.assetid: 9f2090e6-3af4-4f07-bbb2-1d18dae89b73
 ms.service: active-directory
@@ -12,20 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 11/16/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;
-ms.openlocfilehash: 06384d1a1fb7fcc36e9ab97e38c6524a7e260140
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec22a9898350b07662266707b2fd086a7a5daa93
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
+Ez a cikk az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatával történő létrehozásához és frissítési csoportokká utasításokat tartalmaz. Ez a tartalom csak az Office 365-csoportok vonatkozik. 
 
 > [!IMPORTANT]
-> Ez a tartalom csak az Office 365-csoportok vonatkozik. További információ a biztonsági csoportok létrehozása a felhasználók hogyan állítsa be `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True` leírtak [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0). 
+> Egyes beállítások egy Azure Active Directory Premium P1 licenc szükséges. További információkért lásd: a [sablonbeállítások](#template-settings) tábla.
+
+További információ a biztonsági csoportok létrehozása a felhasználók hogyan állítsa be `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True` leírtak [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0). 
 
 Az Office 365 csoportok beállításai a beállítási objektumot és egy SettingsTemplate objektum használatával. Kezdetben nem lát minden objektumokat a könyvtárban, a könyvtár van beállítva, az alapértelmezett beállításokkal. Ha módosítani szeretné az alapértelmezett beállításokat, a beállítások sablon használatával új beállítási objektumot kell létrehoznia. Beállítások sablonok Microsoft határozzák meg. Nincsenek számos különböző beállításokat sablont. Hogy a címtárban a Office 365-beállításainak konfigurálásához, a "Group.Unified" nevű sablont használ. Egy különálló csoportot az Office 365 csoport beállításainak konfigurálásához használja a "Group.Unified.Guest" nevű sablont. Ez a sablon Vendég hozzáférést az Office 365-csoportok kezelésére szolgál. 
 
@@ -85,11 +88,12 @@ Sikeres létrehozása után a parancsmag az új beállítások objektum Azonosí
   --                                   ----------- ----------                           ------
   c391b57d-5783-4c53-9236-cefb5c6ef323             62375ab9-6b52-47ed-826b-58e47e0e304b {class SettingValue {...
   ```
-Az alábbiakban a Group.Unified SettingsTemplate megadott beállításoknak.
+## <a name="template-settings"></a>Sablon beállításait
+Az alábbiakban a Group.Unified SettingsTemplate megadott beállításoknak. Eltérő rendelkezés hiányában, ezen funkciók szükségesek egy Azure Active Directory Premium P1 licencet. 
 
 | **Beállítás** | **Leírás** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>Típus: logikai<li>Alapértelmezett: igaz |A jelzőt, amely azt jelzi, hogy egyesített csoport létrehozása a könyvtárban által engedélyezett nem rendszergazda felhasználóknak. |
+|  <ul><li>EnableGroupCreation<li>Típus: logikai<li>Alapértelmezett: igaz |A jelzőt, amely azt jelzi, hogy egyesített csoport létrehozása a könyvtárban által engedélyezett nem rendszergazda felhasználóknak. Ez a beállítás nem szükséges egy Azure Active Directory Premium P1 licencet.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |A biztonsági csoport, amelynek a tagjai hozhatnak létre egységes csoportok GUID akkor is, ha EnableGroupCreation == false. |
 |  <ul><li>UsageGuidelinesUrl<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |A csoport használatára vonatkozó irányelvek mutató hivatkozást. |
 |  <ul><li>ClassificationDescriptions<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Besorolási leírások vesszővel tagolt listája. |
@@ -98,7 +102,7 @@ Az alábbiakban a Group.Unified SettingsTemplate megadott beállításoknak.
 | <ul><li>CustomBlockedWordsList<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Ne használjon. Nincs megvalósítva. |
 | <ul><li>EnableMSStandardBlockedWords<li>Típus: logikai<li>Alapértelmezett érték: "False" | Ne használja
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Típus: logikai<li>Alapértelmezett: hamis | Logikai érték-e a Vendég felhasználói csoportok tulajdonosa lehet jelző. |
-|  <ul><li>AllowGuestsToAccessGroups<li>Típus: logikai<li>Alapértelmezett: igaz | Jelző logikai érték beolvasása-e a Vendég felhasználó rendelkezhet egyesített csoportok tartalomhoz való hozzáférést. |
+|  <ul><li>AllowGuestsToAccessGroups<li>Típus: logikai<li>Alapértelmezett: igaz | Jelző logikai érték beolvasása-e a Vendég felhasználó rendelkezhet egyesített csoportok tartalomhoz való hozzáférést.  Ez a beállítás nem szükséges egy Azure Active Directory Premium P1 licencet.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | A Vendég használatára vonatkozó irányelvek mutató hivatkozás URL-címét. |
 |  <ul><li>AllowToAddGuests<li>Típus: logikai<li>Alapértelmezett: igaz | Egy logikai jelző Vendégek hozzáadása a következő könyvtár számára engedélyezett-e.|
 |  <ul><li>ClassificationList<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |Egyesített csoportok alkalmazható érvényes osztályozási értékeket vesszővel tagolt listája. |

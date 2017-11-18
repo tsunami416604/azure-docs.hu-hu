@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: ryanwi
-ms.openlocfilehash: b06d0196f1f911f2f6cf87242d70455ba22b1f88
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: fb32ef2881bdc1e88bb3f54446163c0feac5da9b
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Service Fabric Windows Azure virtuális hálózat a fürt központi telepítése
-Ez az oktatóanyag egy sorozat része. Megtudhatja, hogyan telepítheti a Windows Service Fabric-fürt be egy meglévő Azure virtuális hálózatot (VNET), és részterv net a PowerShell használatával. Amikor végzett, hogy a fürt fut a felhőben, amely központilag telepíthető alkalmazások.  Azure parancssori felület használatával Linux-fürt létrehozásához lásd: [biztonságos Linux-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Ez az oktatóanyag egy sorozat része. Megtudhatja, hogyan központi telepítése a Service Fabric-fürt egy meglévő Azure virtuális hálózatot (VNET) Windows rendszerű és részterv net a PowerShell használatával. Amikor végzett, hogy a fürt fut a felhőben, amely központilag telepíthető alkalmazások.  Azure parancssori felület használatával Linux-fürt létrehozásához lásd: [biztonságos Linux-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -47,6 +47,22 @@ Ez az oktatóanyag elkezdéséhez:
 
 Az alábbi eljárások öt csomópontból Service Fabric-fürtök létrehozása. Használja az Azure Service Fabric-fürt futtatásával felmerülő költség kiszámításához a [Azure Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/).
 
+## <a name="introduction"></a>Bevezetés
+Ez az oktatóanyag az Azure-ban virtuális hálózatba egycsomópontos típusú öt csomópontból álló fürtben telepíti.
+
+A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) virtuális és fizikai gépek hálózaton keresztül csatlakozó készlete, amelyen mikroszolgáltatásokat helyezhet üzembe és felügyelhet. Fürtök méretezhető, több ezer gép. Egy számítógép vagy virtuális Gépet, amely egy fürt része egy csomópont neve. Minden csomópont hozzá van rendelve egy csomópont neve (karakterlánc). Csomópontok például elhelyezési tulajdonságok jellemzőkkel bírnak.
+
+Csomóponttípus a fürt méretét, számot, és azon virtuális gépek tulajdonságait határozza meg. Minden definiált csomóponttípus lett beállítva a [virtuálisgép-méretezési csoport](/azure/virtual-machine-scale-sets/), az Azure számítási erőforrás telepíthetnek és kezelhetnek olyan virtuális gépek gyűjteményét használja. Az egyes csomóponttípusok akár majd is méretezhető vagy rendelkezik egymástól függetlenül, a portok megnyitása más-más részhalmazához le, és különböző teljesítmény-mérőszámait lehet. Csomóponttípusok állítja be a fürtcsomópontokon, például az "előtér" vagy "Háttér" szerepkörök meghatározásához használják.  A fürt több csomóponttípus is rendelkezik, de az elsődleges csomóponttípusok kell rendelkeznie legalább öt virtuális gépek éles fürtök (vagy a tesztfürtökön legalább három virtuális géppel).  [A Service Fabric rendszerszolgáltatások](service-fabric-technical-overview.md#system-services) kerülnek, az elsődleges csomópont típusú csomópontok.
+
+## <a name="cluster-capacity-planning"></a>A fürtök kapacitástervezése
+Ez az oktatóanyag egy egycsomópontos típus öt csomópontból álló fürtben telepíti.  Minden éles fürt telepítésében kapacitásának megtervezése fontos lépés. Az alábbiakban szempontokat kell figyelembe venni, hogy a folyamat részeként.
+
+- A csomópont száma meg kell adnia a fürt igények 
+- Az egyes (például méret, elsődleges, az internetre és virtuális gépek száma) típusú csomópont tulajdonságait
+- A fürt megbízhatóság és a tartós jellemzői
+
+További információkért lásd: [fürt kapacitástervezésének szempontjai](service-fabric-cluster-capacity.md).
+
 ## <a name="sign-in-to-azure-and-select-your-subscription"></a>Bejelentkezés az Azure-ba, és jelölje ki az előfizetését
 Ez az útmutató az Azure PowerShell használja. Amikor egy új PowerShell-munkamenetet indít el, jelentkezzen be az Azure-fiókjával, és jelölje ki az előfizetését, Azure parancsok végrehajtása előtt.
  
@@ -68,7 +84,7 @@ New-AzureRmResourceGroup -Name $groupname -Location $clusterloc
 ```
 
 ## <a name="deploy-the-network-topology"></a>A hálózati topológia központi telepítéséhez
-Következő lépésként állítsa be a hálózati topológia, amely az API Management és a Service Fabric-fürt telepítése. A [network.json] [ network-arm] Resource Manager-sablon létrehozására van beállítva a virtuális hálózathoz (VNET), és egy alhálózat és a hálózati biztonsági csoport (NSG) a Service Fabric és alhálózati és NSG-t az API Management . Ismerje meg a Vneteket, alhálózatok, és tájékozódhat az NSG-k [Itt](../virtual-network/virtual-networks-overview.md).
+Következő lépésként állítsa be a hálózati topológia, amely az API Management és a Service Fabric-fürt telepítése. A [network.json] [ network-arm] Resource Manager-sablon létrehozására van beállítva a virtuális hálózathoz (VNET), és egy alhálózat és a hálózati biztonsági csoport (NSG) a Service Fabric és alhálózati és NSG-t az API Management . Az API Management az oktatóanyag későbbi részében történik. Ismerje meg a Vneteket, alhálózatok, és tájékozódhat az NSG-k [Itt](../virtual-network/virtual-networks-overview.md).
 
 A [network.parameters.json] [ network-parameters-arm] paraméterfájl NSG-ket, hogy a Service Fabric és az API Management és az alhálózatok nevét tartalmazza.  Az API Management telepítve van a [oktatóanyag következő](service-fabric-tutorial-deploy-api-management.md). Ez az útmutató a paraméterértékek nem kell módosítani. A Service Fabric Resource Manager-sablonok használja ezeket az értékeket.  Ha itt módosítja az az értékeket, módosítania kell azokat a jelen oktatóanyagban használt többi Resource Manager sablon és a [központi telepítése az API Management oktatóanyag](service-fabric-tutorial-deploy-api-management.md). 
 

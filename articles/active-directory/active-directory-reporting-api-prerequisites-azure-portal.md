@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/18/2017
+ms.date: 11/14/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 58ebf74e166cdcae2c54b134cb99552333fafa24
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 9fbcac4bd6240aed607c3da6c6535d207a782448
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Az Azure AD reporting API eléréséhez Előfeltételek
 
@@ -37,7 +37,7 @@ A jelentési adatokat juthatnak az API-n keresztül, egy a következő szerepkö
 Készítse elő a reporting API a hozzáférést, a következőket kell tennie:
 
 1. Egy alkalmazás regisztrálása 
-2. Engedélyek 
+2. Engedélyek megadása 
 3. Konfigurációs beállítások összegyűjtése 
 
 Kérdéseit, vagy visszajelzést, kérjük, [fájlt egy támogatási jegy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-troubleshooting-support-howto).
@@ -55,7 +55,7 @@ A címtár az Azure AD reporting API eléréséhez konfigurálásához be kell j
 
 **Egy Azure Active Directory-alkalmazás regisztrálása:**
 
-1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali navigációs ablaktábláján kattintson **Active Directory**.
+1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory**.
    
     ![Alkalmazás regisztrálása](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
@@ -80,7 +80,7 @@ A címtár az Azure AD reporting API eléréséhez konfigurálásához be kell j
     d. Kattintson a **Create** (Létrehozás) gombra. 
 
 
-## <a name="grant-permissions"></a>Engedélyek 
+## <a name="grant-permissions"></a>Engedélyek megadása 
 
 E lépés célja, hogy adja meg az alkalmazás **címtáradatok olvasása** engedélyeket a **Windows Azure Active Directory** API.
 
@@ -129,11 +129,11 @@ A jelentéskészítési API hívásainak konfigurálásakor kell ezeket az ért�
 
 **A tartománynév beolvasása:**
 
-1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali navigációs ablaktábláján kattintson **Active Directory**.
+1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory**.
    
     ![Alkalmazás regisztrálása](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. Az a **Azure Active Directory** panelen kattintson a **tartománynevek**.
+2. Az a **Azure Active Directory** panelen kattintson a **egyéni tartománynevek**.
 
     ![Alkalmazás regisztrálása](./media/active-directory-reporting-api-prerequisites-azure-portal/09.png) 
 
@@ -144,7 +144,7 @@ A jelentéskészítési API hívásainak konfigurálásakor kell ezeket az ért�
 
 **Az alkalmazás ügyfél-azonosító eléréséhez:**
 
-1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali navigációs ablaktábláján kattintson **Active Directory**.
+1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory**.
    
     ![Alkalmazás regisztrálása](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
@@ -161,7 +161,7 @@ Ahhoz, hogy az alkalmazás ügyfélkulcs, meg kell hozzon létre egy új kulcsot
 
 **Az alkalmazás ügyfélkulcs beolvasása:**
 
-1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali navigációs ablaktábláján kattintson **Active Directory**.
+1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory**.
    
     ![Alkalmazás regisztrálása](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 

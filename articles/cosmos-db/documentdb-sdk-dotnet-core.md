@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 11/17/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56a2aff21a728d5ac0355516fc6988512c062b4c
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 835956f185b4ecdcbfa0b486223dd9bc2d0377cb
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK: A kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -56,6 +56,11 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójával szolgáltatásparitást
 
 > [!NOTE] 
 > Az Azure Cosmos DB .NET Core SDK még nem kompatibilis az univerzális Windows Platform (UWP-) alkalmazásokat. Ha érdekli a .NET Core-SDK-t támogató UWP-alkalmazások, e-mailek küldése [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
+
+### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
+ 
+ * Hozzáadja a meghatározhatja, hogy a dokumentumok egyedi indexet a DocumentCollection UniqueKeyPolicy tulajdonság használatával.
+ * Rögzített, amelyben az egyéni JsonSerializer beállítások volt nem alatt figyelembe véve az egyes lekérdezések és a tárolt eljárás végrehajtása hiba.
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
  
@@ -150,6 +155,7 @@ Ha az SDK-val kapcsolatos kérdése van, továbbá hogy [StackOverflow](http://s
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.7.1](#1.7.1) |2017. november 16. |--- |
 | [1.7.0](#1.7.0) |2017. november 10. |--- |
 | [1.6.0](#1.6.0) |2017. október 17. |--- |
 | [1.5.1](#1.5.1) |2017. október 02. |--- |

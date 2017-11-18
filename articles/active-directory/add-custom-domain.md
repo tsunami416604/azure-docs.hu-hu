@@ -3,26 +3,26 @@ title: "Az Azure AD hozzá egyéni tartományt |} Microsoft Docs"
 description: "Ismerteti, hogyan adhatnak hozzá egyéni tartományt az Azure Active Directoryban."
 services: active-directory
 author: curtand
-manager: femila
+manager: michael.tillman
 ms.assetid: 0a90c3c5-4e0e-43bd-a606-6ee00f163038
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/14/2017
 ms.author: curtand
-ms.reviewer: jsnow
+ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: d2f0287202e1b39f395354b1124078b7b0dc95a7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 27e7449f039da8f7661d113999e1c4e5d76c3cf6
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>Gyors üzembe helyezés: Egyéni tartománynév hozzáadása az Azure Active Directoryhoz
 
-Minden Azure AD-címtárral rendelkezik egy kezdeti tartománynevet formájában *tartománynév*. onmicrosoft.com. A kezdeti tartománynév nem módosítható vagy törölhető, de az Azure AD is adhat hozzá a vállalata tartománynevét. A szervezet például valószínűleg más üzleti és a felhasználók, akik jelentkezzen be vállalati tartománynév használt tartománynevek rendelkezik. Egyéni tartománynevek hozzáadása az Azure AD lehetővé teszi a felhasználóneveket rendeljen a könyvtárat, amelyek a felhasználók számára, mint "alice@contoso.com." Ahelyett, hogy "alice @*<domain name>*. onmicrosoft.com". A folyamat egyszerűen végrehajtható:
+Minden Azure AD-címtárral rendelkezik egy kezdeti tartománynevet formájában *tartománynév*. onmicrosoft.com. A kezdeti tartománynév nem módosítható vagy törölhető, de az Azure AD is adhat hozzá a vállalata tartománynevét. A szervezet például valószínűleg más üzleti és a felhasználók, akik jelentkezzen be vállalati tartománynév használt tartománynevek rendelkezik. Egyéni tartománynevek hozzáadása az Azure AD lehetővé teszi a felhasználóneveket rendeljen a könyvtárat, amelyek a felhasználók számára, mint "alice@contoso.com." Ahelyett, hogy "alice @*tartománynév*. onmicrosoft.com". A folyamat egyszerűen végrehajtható:
 
 1. Az egyéni tartománynév hozzáadása a címtárhoz
 2. Vegye fel a DNS-bejegyzést a tartománynévhez a tartománynév-regisztrálónál
@@ -30,11 +30,11 @@ Minden Azure AD-címtárral rendelkezik egy kezdeti tartománynevet formájában
 
 ## <a name="add-the-custom-domain-name-to-your-directory"></a>Az egyéni tartománynév hozzáadása a címtárhoz
 1. Jelentkezzen be a [Azure-portálon](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza ki a bal oldali **tartománynevek**.
-3. A  ***könyvtárnév* -tartománynevek**, jelölje be **Hozzáadás**.
+2. Válassza ki a bal oldali **egyéni tartománynevek**.
+3. Válassza ki **egyéni tartomány hozzáadása**.
    
-   ![Válassza ki a hozzáadása parancs](./media/active-directory-domains-add-azure-portal/add-command.png)
-5. A **tartománynév**, írja be a mezőbe, például "contoso.com", az egyéni tartomány nevét, és válassza ki **tartomány hozzáadása**. A névben mindenképpen szerepeljen a .com, a .net vagy egyéb legfelső szintű kiterjesztés.
+   ![Válassza ki a hozzáadása parancs](./media/add-custom-domain/add-custom-domain.png)
+5. A **egyéni tartománynevek**, írja be a mezőbe, például "contoso.com", az egyéni tartomány nevét, és válassza ki **tartomány hozzáadása**. A névben mindenképpen szerepeljen a .com, a .net vagy egyéb legfelső szintű kiterjesztés.
 6. A ***tartománynév*** (Ez azt jelenti, az új tartománynév a cím), a DNS-bejegyzés adatait az Azure ad-ben az egyéni tartománynév ellenőrzésére használt később összegyűjtése.
    
    ![DNS-bejegyzés adatainak lekérése](./media/active-directory-domains-add-azure-portal/get-dns-info.png)
@@ -51,17 +51,15 @@ A következő lépés az egyéni tartománynév Azure AD-vel történő használ
 ## <a name="verify-the-custom-domain-name-in-azure-ad"></a>Az egyéni tartománynév ellenőrzése az Azure AD-ben
 A DNS-bejegyzés hozzáadását követően készen áll a tartománynév Azure AD-vel történő ellenőrzésére. A tartománynév csak azt követően a DNS-rekordok propagálása ellenőrizhetők. Ez a propagálás általában csak másodperceket vesz igénybe, de néha egy vagy több óráig is eltarthat. Ha az ellenőrzés nem sikerül első alkalommal, próbálkozzon újra később.
 
-1. Jelentkezzen be [az Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza ki a bal oldali **tartománynevek**.
-3. A  ***könyvtárnév* -tartománynevek**, jelölje be a **Hozzáadás tartománynév** parancsot. 
-  ![Válassza ki a hozzáadása parancs](./media/active-directory-domains-add-azure-portal/add-command.png)
-3. A  ***könyvtárnév* -tartománynevek**, válassza ki az ellenőrizni kívánt nem ellenőrzött tartomány nevét.
-4. A ***tartománynév*** (Ez azt jelenti, a kijelölt tartománynévvel a cím), válasszon **ellenőrizze** az ellenőrzés végrehajtásához.
+1. Jelentkezzen be [az Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely a bérlő globális rendszergazdája.
+2. Válassza ki **egyéni tartománynevek**.
+3. Válassza ki az ellenőrizni kívánt nem ellenőrzött tartomány nevét.
+4. Ellenőrizze a bejegyzéseket, és válassza ki **ellenőrizze** az ellenőrzés végrehajtásához.
 
 Mostantól [hozzá tud rendelni egyéni tartománynevet tartalmazó felhasználóneveket](active-directory-users-create-azure-portal.md). Felhő alapú felhasználói fiókokat hozhat létre, vagy a frissítés korábban szinkronizált a helyi felhasználói fiók adatait, az egyéni tartománynév használatával. Módosíthatja is szinkronizált felhasználói fióknak tartományi utótag adatokat a [Microsoft PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains) vagy a [Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations).
 
 > [!TIP]
-> 900 felügyelt tartománynév legfeljebb is egyezzen. Ha azt tervezi, és az Active Directory konfigurálása a helyszíni összevonási minden tartományban, adhat hozzá minden könyvtárban 450 tartománynevek legfeljebb. További információkért lásd: [külső és a felügyelt tartománynév](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names).
+> 900 felügyelt tartománynév legfeljebb is egyezzen. Beállításakor minden helyszíni összevonási esetén a tartománynak az Active Directoryban, adhat hozzá minden könyvtárban 450 tartománynevek legfeljebb. További információkért lásd: [külső és a felügyelt tartománynév](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha egy egyéni tartománynevet nem tudja ellenőrizni, próbálja meg a következő hibaelhárítási lépéseket:
@@ -74,10 +72,9 @@ Ha egy egyéni tartománynevet nem tudja ellenőrizni, próbálja meg a követke
   Ha nincs hozzáférése a tartomány DNS-rekordjainak frissítéséhez a tartománynév-regisztrálónál, ossza meg a DNS-bejegyzést egy ilyen engedélyekkel rendelkező személlyel vagy csapattal, majd kérje a DNS-bejegyzés hozzáadását.
 3. **Tartománynév törlése egy Azure AD-ben található másik címtárból**. A tartománynév csak egyetlen címtárban ellenőrizhető. Ha egy tartomány nevét jelenleg egy másik könyvtár ellenőrzése után azt nem lehet ellenőrizni az új könyvtárban amíg nem törli a az egyik. Információ a tartománynevek törléséről: [Egyéni tartománynevek kezelése](active-directory-domains-manage-azure-portal.md).    
 
-## <a name="add-more-custom-domain-names"></a>További egyéni tartománynevek hozzáadása
-Ha a szervezet használja több egyéni tartománynevek, például "contoso.com" és "contosobank.com", vegye fel őket, legfeljebb 900 tartománynév. A cikkben ismertetett segítségével adja hozzá mindegyik tartományneve.
+Ismételje meg a cikk adja hozzá mindegyik tartományneve.
 
-### <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Részletek
 [Az Azure ad-ben egyéni tartománynevek elméleti áttekintése](active-directory-domains-manage-azure-portal.md)
 
 [Egyéni tartománynevek kezelése](active-directory-domains-manage-azure-portal.md)

@@ -12,35 +12,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5d55207784390a68a3b4d87f7a3d4773491d08b8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 0396c59d9d95ab71f0af04029d87afbb6e47dc35
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="discover-how-customers-are-using-your-application-with-the-application-insights-funnels"></a>Hogyan használják az ügyfelek a az alkalmazás és az Application Insights tölcsérek felderítése
 
 Ismertetése felhasználói élményének paraméter az üzleti kiemelt fontossággal bír. Ha az alkalmazás több szakaszt tartalmaz, akkor tudja, hogy a legtöbb ügyfél a teljes folyamatot végrehajtásába, vagy ha azok egy bizonyos ponton a folyamat befejezése esetén. A webalkalmazás lépések egy sorozatát keresztül előmenetel "tölcsér" néven ismert. Az Application Insights tölcsérek segítségével betekintést nyerhet a felhasználók és a figyelő részletes átváltása. 
 
-## <a name="get-started-with-the-funnels-blade"></a>Ismerkedjen meg a tölcsérek panel
-A legegyszerűbben úgy tölcsérek megismerése lépésről-lépésre, ha például. Az alábbi ábrák bemutatják, egy e-kereskedelemhez kapcsolódó üzleti lépéseket tulajdonosai megtudhatja, hogy az ügyfelek hogyan működjön együtt a webes alkalmazás időt vesz igénybe.  
-
-### <a name="create-your-funnel"></a>A tölcsér létrehozása
-A tölcsér létrehozása előtt kell adja meg a felvenni kívánt kérdést. Például érdemes tudni, hogy hány ügyfél megtekintése a kezdőlapján kattintson a hirdetmény. Ebben a példában a Fabrikam Fiber vállalati tulajdonosai szeretnék tudni, hogy az ügyfelek, akik az elmúlt hónapban a kosár elemek hozzáadása után a vásárlás hány százalékát.
+## <a name="create-your-funnel"></a>A tölcsér létrehozása
+A tölcsér létrehozása előtt kell adja meg a felvenni kívánt kérdést. Például előfordulhat, hogy szeretné tudni, hogy hány felhasználó tekinti meg a kezdőlapján a felhasználói profil megtekintéséhez, és a jegy létrehozásának. Ebben a példában a Fabrikam Fiber vállalati tulajdonosai tudni szeretné, az ügyfelek, akik sikeresen felhasználói jegy létrehozása hány százalékát.
 
 Az alábbiakban azokat a lépéseket a tölcsér létrehozása.
 
-1. Az új gombra a tölcsérek panelen.
-1. Válassza ki az időtartományt, az "Előző hónap" a **időtartomány** legördülő listán. 
-1. Válassza ki a **termékoldalára** eseményt a **1. lépés** legördülő listából. 
-1. Válassza ki a **kosár hozzáadása** eseményt a **2. lépés** legördülő listából.
-1. Válassza ki a **kattintson a vételi** eseményt a **3. lépés** legördülő listából.
+1. Kattintson a tölcsérek eszközt az új gombra.
+1. "Az elmúlt 90 napban" időtartománya válassza ki a **időtartomány** legördülő listán. Válassza "A tölcsérek" vagy "Megosztás tölcsérek"
+1. Válassza ki a **Index** eseményt a **1. lépés** legördülő listából. 
+1. Válassza ki a **ügyfél** eseményt a **2. lépés** legördülő listából.
+1. Válassza ki a **létrehozása** eseményt a **3. lépés** legördülő listából.
 1. A tölcsér név hozzáadása, és kattintson a **mentése**.
 
-Az alábbi ábra azt mutatja be, az adatokat a tölcsérek panel állít elő. A Fabrikam innen tulajdonosok tekintheti meg, hogy az elmúlt hét során az ügyfelek, akik egy elemet fel a kosár 22.7 %-át a beszerzési befejeződött. Is láthatják, hogy 1 %-át az ügyfeleket hirdetmény kattintott, miután befejezte a vásárlást kijelentkezteti a termék oldalát, valamint a 20 %-át az ügyfelek előtt.
+A következő ábra azt mutatja be, az adatokat a tölcsérek eszköz hoz létre. A Fabrikam innen tulajdonosok tekintheti meg, hogy az utolsó 90 napban 54.3 % az a kezdőlap látogató ügyfeleknek hozza létre a felhasználói jegy. Láthatják, hogy az ügyfelek 2.7-k az index származik a kezdőlap, ennek oka lehet egy frissítési probléma is.
 
 
-![Adatok tölcsérek panelről](./media/app-insights-understand-usage-patterns/funnel1.png)
+![Az adatok tölcsérek eszköz](./media/app-insights-understand-usage-patterns/funnel1.png)
+
+### <a name="funnel-features"></a>A tölcsér szolgáltatások
+1. Ha az alkalmazás van mintát, látni fogja a mintavételi fejléc. Kattintson a szalagcím mintavételi kikapcsolása utasítja környezetben ablaktábla nyílik meg. 
+2. Exportálhatja a tölcsér való [Power BI](app-insights-export-power-bi.md).
+3. Kattintson egy lépésben, hogy részletesebb elemzéseket nyerhessen a jobb oldalon. 
+4. Múltbeli csomagkonverzió jeleníti meg az elmúlt 90 napban az átalakításhoz. 
+5. A felhasználók jobban megérteni a tölcsérek nyissa meg a felhasználó-eszköz. Az egyes lépések, válogatott felhasználók szűrők rendszerében. 
 
 ## <a name="next-steps"></a>Következő lépések
   * [Használat – áttekintés](app-insights-usage-overview.md)

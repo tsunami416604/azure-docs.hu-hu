@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 1d2a5e5d639e2aa0023e99b73f87a68e19afc239
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 2f46fc37b9050b19b83685c97198c29a5ce46289
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -431,7 +431,7 @@ Azure Cosmos-adatbázis alapértelmezett átviteli beállítja a tároló alapj�
 Az átviteli sebesség koncepció az ismertetése a [Azure Cosmos DB egység kérelem](request-units.md) cikk. Egy tábla átviteli egyenlően a mögöttes fizikai partíciók között.  
 
 ### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>Mi az az alapértelmezett RU/mp tábla létrehozásakor CQL keresztül? Mi történik, ha kell megváltoztatnia?
-Azure Cosmos-adatbázis a pénznem biztosítani azt az átviteli kérelem egység / másodperc (RU/mp) használja. Létrehozott CQL keresztül kell 400 RU. Módosíthatja a portálról a RU 10000 RU. Ha több mint 10 000 kell magán előnézetben - RU létrehozhatja első portálról. Vagy ha azt szeretné ezt a képességet CQL - először csatlakozzon kapcsolatba velünk a [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com). 
+Azure Cosmos-adatbázis a pénznem biztosítani azt az átviteli kérelem egység / másodperc (RU/mp) használja. Létrehozott CQL keresztül kell 400 RU. Módosíthatja a RU a portálról. 
 
 CQL
 ```

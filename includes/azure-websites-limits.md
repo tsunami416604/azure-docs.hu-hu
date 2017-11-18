@@ -18,7 +18,7 @@
 | Az egyéni tartomány [SSL-támogatás](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |Korlátlan SNI SSL-kapcsolatok |Korlátlan SNI SSL és 1 IP SSL-kapcsolatok tartalmazza |Korlátlan SNI SSL és 1 IP SSL-kapcsolatok tartalmazza |
 | Integrált Load Balancer | |X |X |X |X |
 | [Always On](../articles/app-service/web-sites-configure.md) | | |X |X |X |
-| [Ütemezett biztonsági mentések](../articles/app-service/web-sites-backup.md) | | | |Naponta egyszer |5 percenként egyszer<sup>8</sup> |
+| [Ütemezett biztonsági mentések](../articles/app-service/web-sites-backup.md) | | | |12 naponta |5 percenként egyszer<sup>8</sup> |
 | [Automatikus méretezése](../articles/app-service/web-sites-scale.md) | | | |X |X |
 | [Webjobs-feladatok](../articles/app-service/web-sites-create-web-jobs.md)<sup>9</sup> |X |X |X |X |X |
 | [Azure Schedulerrel](https://azure.microsoft.com/services/scheduler/) támogatja | |X |X |X |X |

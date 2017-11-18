@@ -3,8 +3,6 @@
 > * [Szimulált eszköz .NET-tel](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
 > * [Szimulált eszköz Javával](../articles/iot-hub/iot-hub-java-java-getstarted.md)
 > * [Szimulált eszköz Node.js-sel](../articles/iot-hub/iot-hub-node-node-getstarted.md)
-> * [Szimulált IoT Edge-átjáró Linuxon](../articles/iot-hub/iot-hub-linux-iot-edge-get-started.md)
-> * [Szimulált IoT Edge-átjáró Windowson](../articles/iot-hub/iot-hub-windows-iot-edge-get-started.md)
 > * [IoT DevKit AZ3166 VS Code-dal](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)
 > * [Raspberry Pi és Node.js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [Raspberry Pi és Python](../articles/iot-hub/iot-hub-raspberry-pi-kit-python-get-started.md)
@@ -14,4 +12,3 @@
 > * [Adafruit Feather HUZZAH ESP8266 és Arduino IDE](../articles/iot-hub/iot-hub-arduino-huzzah-esp8266-get-started.md)
 > * [Sparkfun ESP8266 Thing Dev és Arduino IDE](../articles/iot-hub/iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 > * [Adafruit Feather M0 és Arduino IDE](../articles/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
-> * [Az Intel NUC beállítása IoT Edge-átjáróként](../articles/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)

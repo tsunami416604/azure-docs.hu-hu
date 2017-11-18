@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/16/2017
 ms.author: raiye
-ms.openlocfilehash: ad23a38800a282b81d95eb5b15b218d86d3c0bc9
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: e19bb15be29fefbfbc94f7396bb2b68f8236f66a
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2017
@@ -88,7 +88,7 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.12_201710-01 |2017. november 8. |POST 5.14 |TBD |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.12_201710-02 |2017. november 8. |POST 5.14 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.11_201709-01 |2017. október 6. |POST 5.13. |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.10_201708-01 |2017. augusztus 24. |POST 5.12 |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.9_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
@@ -134,7 +134,7 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.54_201710-01 |2017. november 8. |POST 3.56 |TBD |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.54_201710-02 |2017. november 8. |POST 3.56 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-3.53_201709-01 |2017. október 6. |POST 3.55 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-3.52_201708-01 |2017. augusztus 24. |POST 3.54 |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.51_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
@@ -157,7 +157,7 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.67_201710-01 |2017. november 8. |POST 2.69 |TBD |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.67_201710-02 |2017. november 8. |POST 2.69 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-2.66_201709-01 |2017. október 6. |POST 2.68 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-2.65_201708-01 |2017. augusztus 24. |POST 2.67 |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.64_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |

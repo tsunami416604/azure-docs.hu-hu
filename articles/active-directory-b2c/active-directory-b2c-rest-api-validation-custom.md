@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
-ms.openlocfilehash: eb44a0d2234c9ee3801d8b3a1655d877aa2f4fef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2572c618f6ad27f57603d8e8a2ff04de6846c6ca
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Forgatókönyv: Integrálása az Azure AD B2C felhasználói út a REST API jogcímek cseréjét, a felhasználói bevitel ellenőrzése
 
@@ -119,7 +119,7 @@ A jogcímek exchange hozzáadása a saját szükséges műszaki profil:
 
 1. Nyissa meg a TrustFrameworkBase.xml fájlt, és keresse meg `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
 2. Ellenőrizze a műszaki profil konfigurációját. Figyelje meg, hogy az exchange-ben a felhasználó nevezünk kérni fogja annak a felhasználónak (a bemeneti jogcímek), de az önálló szükséges szolgáltatót (kimeneti jogcímek) ból várhatóan jogcímeket.
-3. Keresse meg `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`, és figyelje meg, hogy ez a profil hívja meg, az orchestration 6. lépésében `<UserJourney Id="ProfileEdit">`.
+3. Keresse meg `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`, és figyelje meg, hogy ez a profil hívja meg, 4. az orchestration lépés `<UserJourney Id="ProfileEdit">`.
 
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>4. lépés: Töltse fel, és a profil szerkesztése RP házirend fájl tesztelése
 

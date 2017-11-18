@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 280001f9057825b9dcd98c5180340a54e2e239cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ef85c098058c97e5ec6d758fcf1dab5b1a87786
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Hogyan kell telepíteni, és az SAP HANA (nagy példányok) konfigurálása az Azure-on
 
@@ -172,7 +172,7 @@ SAP támogatási megjegyzések az SAP HANA végrehajtási SLES 12:
 - [SAP támogatási Megjegyzés #171356 – SAP szoftverek Linux: általános információk](https://launchpad.support.sap.com/#/notes/1984787).
 - [SAP támogatási Megjegyzés #1391070 – Linux UUID megoldások](https://launchpad.support.sap.com/#/notes/1391070).
 
-[Red Hat Enterprise Linux SAP Hana](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) egy másik ajánlat SAP HANA futtatási nagy HANA-példányokon. RHEL 6.7 és 7.2 kiadásaiban érhetők el. 
+[Red Hat Enterprise Linux SAP Hana](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) egy másik ajánlat SAP HANA futtatási nagy HANA-példányokon. RHEL 6.7 és 7.2 kiadásaiban érhetők el. Adjon Megjegyzés: a natív Azure virtuális gépek ahol csak RHEL 7.2 és újabb verziókban támogatott, HANA nagy példányok leváló támogatja RHEL 6.7 is. Azonban az RHEL 7.x kiadási használatát javasoljuk.
 
 Red Hat kapcsolódó hivatkozások további és hasznos SAP:
 - [SAP HANA a Red Hat Linux hely](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).

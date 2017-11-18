@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: c2c95373912131445b584fa8518785b26caa9c02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a780461bb934b4766f8050fba825e1d7503f4fd
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT-központ szószedet
 Ez a cikk az általános kifejezés, amely az IoT-központ cikkeket mutatja be.
@@ -37,7 +37,7 @@ A [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) platform
 Nincsenek _eszköz SDK-k_ érhető el, amelyek lehetővé teszik, hogy hozzon létre több nyelven [eszköz alkalmazások](#device-app) , amely kommunikálni az IoT-központ. Az IoT-központ oktatóanyagok bemutatják a ezek eszközoldali SDK-k használata. A Forráskód és SDK-k eszközzel kapcsolatos további információk találhatók a Githubon [tárház](https://github.com/Azure/azure-iot-sdks).
 
 ## <a name="azure-iot-edge"></a>Azure IoT Edge
-Az IoT-Edge lehetővé teszi alkalmazások, amelyek lehetővé teszik az átjáró-hez csatlakoztatott eszközöket kommunikálni írását [IoT-központ](#iot-hub). Az IoT-Edge oktatóanyagok bemutatják a szolgáltatás használatához. A Forráskód és Azure IoT peremhálózati kapcsolatos további információkat talál a Githubon [tárház](https://github.com/Azure/iot-edge).
+Azure IoT peremhálózati áthelyezése felhő elemzés és üzleti logika eszközöket, hogy a szervezet üzleti elemzéseket adatok kezelése helyett összpontosíthat. A megoldás konfigurálása az IoT-szoftverekkel, telepítené őket az eszközök keresztüli szokásos tárolók és a felhő minden a felügyelet valóban bővítse engedélyezése. Ismerkedés a bemutató oktatóanyag bemutatja, hogyan telepítheti és használhatja az Azure IoT peremhálózati egy [Linux](../iot-edge/tutorial-simulate-device-linux.md) vagy [Windows](../iot-edge/tutorial-simulate-device-windows.md) eszköz.
 
 ## <a name="azure-iot-service-sdks"></a>Az Azure IoT szolgáltatás SDK-k
 Nincsenek _SDK szolgáltatás_ érhető el, amelyek lehetővé teszik, hogy hozzon létre több nyelven [háttér-alkalmazások](#back-end-app) , amely kommunikálni az IoT-központ. Az IoT-központ oktatóanyagok bemutatják a használja a szolgáltatás SDK-IT. A Forráskód és a szolgáltatás SDK-kkal kapcsolatos további információkat talál a Githubon [tárház](https://github.com/Azure/azure-iot-sdks).
@@ -189,7 +189,7 @@ A megoldás háttérrendszeréhez használható [feladatok](iot-hub-devguide-job
 A [feladatok REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) kezelését teszi [feladatok](#job) az IoT hub futtatja.
 
 ## <a name="module"></a>Modul
-A [Azure IoT peremhálózati](iot-hub-linux-iot-edge-get-started.md), egy [modul](iot-hub-linux-iot-edge-get-started.md) , amely egy adott feladatot végrehajtó összetevője. Feladatok közé tartozik a választásával dolgozhat fel egy eszközről egy üzenetet, egy üzenet átalakítása vagy üzenetet küld az IoT-központ. Ügynök felelős továbbításhoz modulok között. Az Azure IoT peremhálózati mintavételi modulok készletét tartalmazza. A saját egyéni modulokat is létrehozhat.
+A [Azure IoT peremhálózati](../iot-edge/tutorial-simulate-device-linux.md), egy [modul](../iot-edge/iot-edge-modules.md) , amely egy adott feladatot végrehajtó összetevője. Feladatok közé tartozik a választásával dolgozhat fel egy eszközről egy üzenetet, egy üzenet átalakítása vagy üzenetet küld az IoT-központ. Ügynök felelős továbbításhoz modulok között. Az Azure IoT peremhálózati mintavételi modulok készletét tartalmazza. A saját egyéni modulokat is létrehozhat.
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) az egyik az üzenetkezelési protokollok, amelyek [IoT-központ](#iot-hub) eszközökkel való kommunikáció támogatja. Amely támogatja az IoT-központ az üzenetküldési protokollokkal kapcsolatos további információkért lásd: [üzeneteket küldjön és fogadjon IoT hubbal](iot-hub-devguide-messaging.md).

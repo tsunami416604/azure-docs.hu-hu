@@ -9,11 +9,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 75dff9bc10294621218a89b809552c8abcd57017
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 33583fb3d9bca94592c05c4c39c802e673a2ea8a
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Gyakori kérdések az Azure Machine Learning
 
@@ -165,8 +165,7 @@ Az adatok előkészítése eszközök munkaterület jelenleg a következő form�
 A nyilvános előzetes verziójához a munkaterület az adatfeldolgozást támogatja: 
 - Helyi merevlemez-meghajtóról vagy a csatlakoztatott hálózati tárolási helye
 - Az Azure BLOB vagy Azure Storage (az Azure-előfizetés szükséges)
-- Azure Data Lake vagy az Azure Data Lake Storage (az Azure-előfizetés szükséges)
-- Az Azure SQL-kiszolgáló
+- Azure SQL Server-kiszolgáló
 - Microsoft SQL Server
 
 

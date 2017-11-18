@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.author: arramac
-ms.openlocfilehash: 5eade2b85737f9c381f6292a78fc5407398e2b9c
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: ce5c1c25a73bdc02d7e66768752c6942144de517
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Gyors üzembe helyezés: Egy tábla a Java és Azure Cosmos DB API-alkalmazás létrehozása
 
@@ -87,9 +87,20 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
    ![Megtekintése és másolása a szükséges kapcsolati karakterlánc adatait a a kapcsolati karakterlánc panelen](./media/create-table-java/connection-string.png)
 
-2. Nyissa meg a config.properties fájlt, és másolja a szükséges kapcsolatikarakterlánc-tulajdonságokat a konfigurációs fájlba.
+2. Másolja az elsődleges KAPCSOLATI KARAKTERLÁNCOT a Másolás gombra a jobb oldalon.
 
-3. Mentse a config.properties fájlt.
+3. Nyissa meg a config.properties a C:\git-samples\storage-table-java-getting-started\src\main\resources mappából. 
+
+5. Egy sor megjegyzéssé, és állítsa vissza a két sort. Az első két sort kell most kinéznie.
+
+    ```
+    #StorageConnectionString = UseDevelopmentStorage=true
+    StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=[ACCOUNTNAME];AccountKey=[ACCOUNTKEY]
+    ```
+
+6. Az elsődleges KAPCSOLATI KARAKTERLÁNCOT a portálról illessze be a StorageConnectionString érték a 2. sor. Ha a kapcsolati karakterláncot, a végpont része documents.azure.com használ, javítsa ki a table.cosmosdb.azure.com használja helyette a része.
+
+7. Mentse a config.properties fájlt.
 
 Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 

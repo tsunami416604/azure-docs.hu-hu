@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 3bf9e4673ffb756a8d159ed5733d3ddca70010c7
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: e5fc1933efcaa9c6eaa7ab0021c3362e0714a3d5
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálása és kezelése – gyakori kérdések az Azure Web Apps
 
@@ -319,4 +319,4 @@ A megadott dinamikus és statikus MIME-típusok tömörítendő is megadhatja. T
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Hogyan tudom át egy a helyszíni környezetből az App Service?
 
-A Windows és Linux webkiszolgálók az App Service helyek áttelepítéséhez Azure App Service áttelepítési Segéd használhatja. Az áttelepítési eszköz hoz létre webes alkalmazásokat és adatbázisokat Azure igény szerint, és majd közzéteszi a tartalmat. További információkért lásd: [Azure App Service áttelepítési Segéd](https://www.movemetothecloud.net/).
+A Windows és Linux webkiszolgálók az App Service helyek áttelepítéséhez Azure App Service áttelepítési Segéd használhatja. Az áttelepítési eszköz hoz létre webes alkalmazásokat és adatbázisokat Azure igény szerint, és majd közzéteszi a tartalmat. További információkért lásd: [Azure App Service áttelepítési Segéd](https://www.migratetoazure.net/).

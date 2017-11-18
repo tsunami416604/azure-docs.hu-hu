@@ -2,19 +2,19 @@
 title: "Az Azure Machine Learning a munkaterületet üzemeltető projekt Git-tárház használata |} Microsoft Docs"
 description: "Ez a cikk ismerteti az Azure Machine Learning munkaterület projektek Git-tárház együtt használni."
 services: machine-learning
-author: ahgyger
-ms.author: ahgyger
-manager: hning86
+author: hning86
+ms.author: haining
+manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: 59b07c9834904e01256b75344ba2e6892e56438c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/16/2017
+ms.openlocfilehash: c91eadd69eaf16b2496f4d7247e5b0121904e172
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="using-git-repository-with-an-azure-machine-learning-workbench-project"></a>Az Azure Machine Learning-munkaterület projektek Git-tárház használata
 Ez a dokumentum bemutatja, hogyan Azure Machine Learning-munkaterület használja az adatok tudományos kísérletben reprodukálhatóság biztosítására Git. Rendelje hozzá a projekt Git-tárház felhő útmutatást is biztosítja.
@@ -66,27 +66,29 @@ A közvetlenül az imént létrehozott Csapatprojekt lépjen, az URL-cím: `http
 > Azure Machine Learning jelenleg csak üres Git repók rendelkező nincs főághoz támogatja. A parancssori felületről, használhatja a – force argumentum először törli a főágba. 
 
 ## <a name="step-3-create-a-new-azure-ml-project-with-a-remote-git-repo"></a>3. lépés Egy távoli Git-tárház egy új Azure ML-projekt létrehozása
-Indítsa el az Azure ML munkaterületet, és hozzon létre egy új projektet. A Git-tárház mezőbe beírja a 2. lépésben kapott VSTS Git-tárház URL. Általában néz ki: http://<vsts_account_name>.visualstudio.com/_git/<project_name>
+Indítsa el az Azure ML munkaterületet, és hozzon létre egy új projektet. A Git-tárház mezőbe beírja a 2. lépésben kapott VSTS Git-tárház URL. Általában néz ki:`http://<vsts_account_name>.visualstudio.com/_git/<project_name>`
 
 ![Azure ML-projekt Git-tárház létrehozása](media/using-git-ml-project/create_project_with_git_rep.png)
 
 Most egy új Azure ML-projekt létrehozása távoli Git-tárház integrációs engedélyezett és készen áll. A projektmappa Git-inicializálása egy helyi Git-tárház mindig. És a Git _távoli_ véglegesítések továbbíthatja azokat a távoli Git-tárház, a távoli VSTS Git-tárház beállítása.
 
-## <a name="step-3a-associate-an-existing-azure-ml-project-with-a-vsts-git-repo"></a>3.a társítható egy VSTS Git-tárház egy meglévő Azure ML projekt lépés
+## <a name="step-3a-associate-an-existing-azure-ml-project-with-a-vsts-git-repo"></a>3/a. lépés. Rendelje hozzá egy meglévő Azure ML-projektet egy VSTS Git-tárház
 Szükség esetén is az Azure ML projekt nélkül a VSTS Git-tárház létrehozása, és csak a helyi Git-tárház futtatási előzményei a pillanatképek támaszkodnak. És társíthatja egy VSTS Git-tárház később a meglévő Azure ML-projekt, a következő parancsot:
 
 ```azurecli
 # make sure you are in the project path so CLI has context of your current project
-az ml project update --repo http://<vsts_account_name>.visualstudio.com/_git/<project_name
+$ az ml project update --repo http://<vsts_account_name>.visualstudio.com/_git/<project_name>
 ```
 
 ## <a name="step-4-capture-project-snapshot-in-git-repo"></a>4. lépés A Git-tárház projekt pillanatkép rögzítése
-Most a projekt végre lehet hajtani néhány fut, ellenőrizze-e egyes módosítások között a futtatják. Ehhez az asztali alkalmazást, vagy a parancssori felület használatával `az ml experiment submit` parancsot. További információkért kövesse a [zárolásának Iris oktatóanyag](tutorial-classifying-iris-part-1.md). Minden egyes futtatásához Ha bármi is módosul a projekt mappában található fájlokat végzett teljes projektmappában pillanatképe véglegesített és azokat a távoli Git-tárház leküldött. Megtekintheti a ágak és véglegesíti a VSTS Git-tárház URL-cím tallózással.
+Most a projekt végre lehet hajtani néhány fut, ellenőrizze-e egyes módosítások között a futtatják. Ehhez az asztali alkalmazást, vagy a parancssori felület használatával `az ml experiment submit` parancsot. További információkért kövesse a [zárolásának Iris oktatóanyag](tutorial-classifying-iris-part-1.md). Minden egyes futtatásához, ha bármi is módosul a projekt mappában található fájlokat a végrehajtott teljes projektmappában pillanatképet véglegesítve lett, és azokat a távoli Git-tárház nevű ág a leküldött `AzureMLHistory/<Project_GUID>`. A elágazásokat, és véglegesíti a VSTS Git-tárház URL-cím tallózással tekintheti meg és a fiókirodákban található. 
 
 ![futtatási előzményei ág](media/using-git-ml-project/run_history_branch.png)
 
+Vegye figyelembe, hogy jobb működés nem lehetséges az előzmények ág magát. Ennek során lehet, hogy mess a futtatási előzményei. Főághoz használja, vagy a saját Git műveletek inkább hozzon létre a többi fiók közben.
+
 ## <a name="step-5-restore-a-previous-project-snapshot"></a>5. lépés Visszaállítás egy korábbi pillanatképből projekt 
-A visszaállítandó teljes projektmappában egy előző futtatási előzményei projekt pillanatképének állapotát, állapotának AML munkaterület.
+Állapotba való visszaállításához a teljes projekt mappát az előző futtatási előzményei projekt állapot pillanatkép, az Azure ML munkaterület:
 1. Kattintson a **futtatása** sáv (üveghatású órás ikon) tevékenységet.
 2. Az a **futtatása listában** megtekintéséhez kattintson a visszaállítani kívánt futtatáskor.
 3. Az a **futtatása részletes** megtekintéséhez kattintson a **visszaállítása**.
@@ -97,29 +99,29 @@ Másik lehetőségként használhatja a következő parancsot az Azure ML munkat
 
 ```azurecli
 # discover the run I want to restore snapshot from:
-az ml history list -o table
+$ az ml history list -o table
 
 # restore the snapshot from a particular run
-az ml project restore --run-id <run_id>
+$ az ml project restore --run-id <run_id>
 ```
 
-Ez a parancs végrehajtásával teljes projektmappában felülírja azt a pillanatkép készítésekor rendszert adott futtató lett kezdődött el. Ez azt jelenti, hogy a rendszer **összes módosítás elvész.** a jelenlegi projekt mappában. Úgy adja legyen nagyon óvatos Ez a parancs futtatásakor.
+Ez a parancs végrehajtásával teljes projektmappában felülírja azt a pillanatkép készítésekor rendszert adott futtató lett kezdődött el. De az aktuális ág a projekt megvalósításában. Ez azt jelenti, hogy a rendszer **összes módosítás elvész.** a jelenlegi projekt mappában. Úgy adja legyen nagyon óvatos Ez a parancs futtatásakor.
 
 ## <a name="step-6-use-the-master-branch"></a>6. lépés A főágba használata
-Egy véletlenül a a jelenlegi projekt állapota elvesztésének elkerülése érdekében módja a projekt véglegesítenie kell a Git-tárház főágába. Git közvetlenül használható, ha a parancssor (vagy a más kedvenc Git ügyfél tetszőleges eszköz általi) az a főágba való működésre. Példa:
+Egy véletlenül elkerülése érdekében a jelenlegi projekt állapot elvesztése módja a projekt véglegesítenie kell a főágba (vagy bármely készítésű ág) a Git-tárház. Git közvetlenül használható, ha a parancssor (vagy a más kedvenc Git ügyfél tetszőleges eszköz általi) az a főágba való működésre. Példa:
 
 ```
-# make sure you are on the master branch
-git checkout master
+# make sure you are on the master branch (or branch of your choice)
+$ git checkout master
 
 # stage all changes
-git add -A
+$ git add -A
 
 # commit all changes locally on the master branch
-git commit -m 'this is my updates so far'
+$ git commit -m 'this is my updates so far'
 
 # push changes into the remote VSTS Git repo master branch.
-git push origin master
+$ git push origin master
 ```
 
 Most már biztonságosan projekt visszaállíthatja egy korábbi pillanatkép alábbi 5. lépés, hogy tudnák, hogy Ön is bármikor visszatérhet a véglegesítés, csak végrehajtott fő ág.

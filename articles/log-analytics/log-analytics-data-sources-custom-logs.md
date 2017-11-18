@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2017
+ms.date: 11/17/2017
 ms.author: bwren
-ms.openlocfilehash: e3a4c631cd69921fec60b3ae33a23c4c7c369194
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: addb1c8f4c71bb1979229c597665fd301dfb9fdf
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Naplóelemzési egyéni naplókat
 Az egyéni naplókat adatforrásra Naplóelemzési eseményeinek gyűjtése a Windows és Linux számítógépeken egyaránt szövegfájlból teszi lehetővé. Számos alkalmazás adatainak naplózása szöveges fájlok, például a Windows Eseménynapló vagy a Syslog szabványos naplózási szolgáltatások helyett.  Összegyűjtését követően elemezni a minden egyes mezők használatával való bejelentkezéshez a rekord a [egyéni mezők](log-analytics-custom-fields.md) Naplóelemzési szolgáltatása.
@@ -56,10 +56,6 @@ Indítsa el az egyéni napló minta feltöltésével.  A varázsló elemzése é
 
 Időbélyeg elválasztó használata, majd az OMS tárolt rekordokban TimeGenerated tulajdonsága tölti fel, hogy a naplófájl bejegyzésében megadott dátum/idő.  Ha egy új sor elválasztó használja, majd TimeGenerated a telepítéskor dátum és idő, hogy a Naplóelemzési gyűjtött a bejegyzés.
 
-> [!NOTE]
-> A Naplóelemzési jelenleg a dátum/idő, a napló egy Timestamp típusú elválasztó használatával időobjektumot UTC időzóna szerint gyűjtött kezeli.  Ez sokkal változnak az időzóna használata az ügynökön.
->
->
 
 1. Kattintson a **Tallózás** és egy minta-fájl megkereséséhez.  Vegye figyelembe, hogy ez lehetséges, hogy gomb neve lehet **Choose File** egyes böngészőkben.
 2. Kattintson a **Tovább** gombra.

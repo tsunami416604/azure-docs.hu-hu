@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2017
 ms.author: ryanwi
-ms.openlocfilehash: 84b219d31635af6fbdb6bd618e3a9bb4e4848809
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 47e023e7240cfae3553b220ebc44c95ec96d62a7
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Az Azure virtuális hálózat Service Fabric Linux fürt központi telepítése
 Ez az oktatóanyag egy sorozat része. Megtudhatja, hogyan telepítheti Linux Service Fabric-fürt be egy meglévő Azure virtuális hálózatot (VNET), és részterv net az Azure parancssori felület használatával. Amikor végzett, hogy a fürt fut a felhőben, amely központilag telepíthető alkalmazások. A Windows PowerShell fürt létrehozásához lásd: [biztonságos Windows-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
@@ -45,6 +45,22 @@ Ez az oktatóanyag elkezdéséhez:
 - Telepítse a [Azure CLI 2.0](/cli/azure/install-azure-cli)
 
 Az alábbi eljárások öt csomópontból Service Fabric-fürtök létrehozása. Használja az Azure Service Fabric-fürt futtatásával felmerülő költség kiszámításához a [Azure Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/).
+
+## <a name="introduction"></a>Bevezetés
+Ez az oktatóanyag az Azure-ban virtuális hálózatba egycsomópontos típusú öt csomópontból álló fürtben telepíti.
+
+A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) virtuális és fizikai gépek hálózaton keresztül csatlakozó készlete, amelyen mikroszolgáltatásokat helyezhet üzembe és felügyelhet. Fürtök méretezhető, több ezer gép. Egy számítógép vagy virtuális Gépet, amely egy fürt része egy csomópont neve. Minden csomópont hozzá van rendelve egy csomópont neve (karakterlánc). Csomópontok például elhelyezési tulajdonságok jellemzőkkel bírnak.
+
+Csomóponttípus a fürt méretét, számot, és azon virtuális gépek tulajdonságait határozza meg. Minden definiált csomóponttípus lett beállítva a [virtuálisgép-méretezési csoport](/azure/virtual-machine-scale-sets/), az Azure számítási erőforrás telepíthetnek és kezelhetnek olyan virtuális gépek gyűjteményét használja. Az egyes csomóponttípusok akár majd is méretezhető vagy rendelkezik egymástól függetlenül, a portok megnyitása más-más részhalmazához le, és különböző teljesítmény-mérőszámait lehet. Csomóponttípusok állítja be a fürtcsomópontokon, például az "előtér" vagy "Háttér" szerepkörök meghatározásához használják.  A fürt több csomóponttípus is rendelkezik, de az elsődleges csomóponttípusok kell rendelkeznie legalább öt virtuális gépek éles fürtök (vagy a tesztfürtökön legalább három virtuális géppel).  [A Service Fabric rendszerszolgáltatások](service-fabric-technical-overview.md#system-services) kerülnek, az elsődleges csomópont típusú csomópontok.
+
+## <a name="cluster-capacity-planning"></a>A fürtök kapacitástervezése
+Ez az oktatóanyag egy egycsomópontos típus öt csomópontból álló fürtben telepíti.  Minden éles fürt telepítésében kapacitásának megtervezése fontos lépés. Az alábbiakban szempontokat kell figyelembe venni, hogy a folyamat részeként.
+
+- A csomópont száma meg kell adnia a fürt igények 
+- Az egyes (például méret, elsődleges, az internetre és virtuális gépek száma) típusú csomópont tulajdonságait
+- A fürt megbízhatóság és a tartós jellemzői
+
+További információkért lásd: [fürt kapacitástervezésének szempontjai](service-fabric-cluster-capacity.md).
 
 ## <a name="sign-in-to-azure-and-select-your-subscription"></a>Bejelentkezés az Azure-ba, és jelölje ki az előfizetését
 Ez az útmutató az Azure parancssori felület használja. Amikor egy új munkamenetet indít el, jelentkezzen be az Azure-fiókjával, és jelölje ki az előfizetését, Azure parancsok végrehajtása előtt.

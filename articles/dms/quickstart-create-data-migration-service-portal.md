@@ -10,20 +10,31 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/08/2017
-ms.openlocfilehash: 4213a0ae73c38dcad403140e3d45e28f2d338020
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/17/2017
+ms.openlocfilehash: 9faac0716334d627cdde4c0ef16262670333b5d4
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="create-a-database-migration-service-instance-using-the-azure-portal"></a>Hozzon létre egy adatbázis áttelepítési szolgáltatáspéldány az Azure portál használatával
+# <a name="create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Az Azure-adatbázis áttelepítési szolgáltatás példányának létrehozása az Azure-portál használatával
 A a gyors üzembe helyezési segítségével az Azure-portálon az Azure-adatbázis áttelepítési szolgáltatás egy példányának létrehozásakor.  A szolgáltatás létrehozása után lesz áttelepíti az adatokat a helyszíni SQL Server Azure SQL-adatbázis használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 Nyissa meg a webböngészőjét, és keresse fel a [Microsoft Azure Portalt](https://portal.azure.com/). Adja meg a hitelesítő adatait a Portalra való bejelentkezéshez. Az alapértelmezett nézet a szolgáltatási irányítópult.
+
+## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
+A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása, az első adatbázis áttelepítési szolgáltatás létrehozása előtt kell.
+
+1. Válassza ki az Azure-portálon **minden szolgáltatás**, majd válassza ki **előfizetések**.
+
+1. Válassza ki az előfizetést, amelyben az Azure-adatbázis áttelepítési szolgáltatás példányának létrehozása, majd válassza ki a kívánt **erőforrás-szolgáltató**.
+
+1. Keresse meg az áttelepítést, és jobb oldalán Microsoft.DataMigration, válassza **regisztrálása**.
+
+![Erőforrás-szolgáltató regisztrálása](media/quickstart-create-data-migration-service-portal/dms-register-provider.png)
 
 ## <a name="create-azure-database-migration-service"></a>Azure-adatbázis áttelepítése szolgáltatás létrehozása
 1. Kattintson a  **+**  új szolgáltatás létrehozása.  Adatbázis-áttelepítés szolgáltatás még előzetes verzió van.  

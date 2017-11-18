@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.author: arramac
-ms.openlocfilehash: 99f3ddb165fa548ca1d65676bb1f945632c72dd3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1dcc2178b3c7017338e0097773fbf0d04c8b6a20
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Gyors üzembe helyezés: A tábla a Node.js és az Azure Cosmos DB API-alkalmazás létrehozása
 
@@ -74,8 +74,6 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
     git clone https://github.com/Azure-Samples/storage-table-node-getting-started.git
     ```
 
-3. Ezután nyissa meg a megoldásfájlt a Visual Studióban. 
-
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
 
 Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás a szolgáltatott adatbázissal való kommunikációhoz. 
@@ -84,7 +82,9 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
     ![Megtekintése és másolása a szükséges kapcsolati karakterlánc adatait a a kapcsolati karakterlánc panelen](./media/create-table-nodejs/connection-string.png)
 
-2. Nyissa meg az app.config fájlt, és másolja a szükséges kapcsolatikarakterlánc-tulajdonságokat a konfigurációs fájlba.
+2. Másolja az elsődleges KAPCSOLATI KARAKTERLÁNCOT, használja a Másolás gombra a jobb oldalon.
+
+3. Nyissa meg az app.config fájlt, és illessze be az érték a három sor a ConnectionString kapcsolódási karakterláncban. Ha a kapcsolati karakterláncot, a végpont része documents.azure.com használ, javítsa ki a table.cosmosdb.azure.com használja helyette a része.
 
 3. Mentse az app.config fájlt.
 
@@ -94,14 +94,19 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
 1. A git terminálablakot `cd` a storage-tábla-java--bevezető mappába.
 
-    ```git
-    cd "C:\git-samples\
-storage-table-node-getting-started"
+    ```
+    cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. A git terminálablakot, futtassa a következő parancsok futtatásával kiindulási pont a Java-alkalmazást.
+2. A következő paranccsal telepítse az [azure], [csomópont-uuid], [nconf] és [aszinkron] modulok helyileg is, számukra egy bejegyzést a package.json fájl mentése
 
-    ```git
+   ```
+   npm install azure-storage node-uuid async nconf --save
+   ```
+
+2. A git terminálablakot, futtassa a következő parancsok futtatásával kiindulási pont a node.js-alkalmazásokban.
+
+    ```
     node ./tableSample.js 
     ```
 

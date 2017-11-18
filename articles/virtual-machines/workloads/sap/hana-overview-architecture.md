@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ef5ec3d8f4b96d4a318e01b449d3baad8a6324a
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 2461e5fbf620fa2651792b47d41e9835d4d6ef8c
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA (nagy példányok) – áttekintés és az Azure-architektúra
 
@@ -291,7 +291,10 @@ Ez a lista állítja össze a SAP HANA futtatásához Azure (nagyobb példány).
 - Red Hat előfizetés kezelő üzembe helyezett Azure egy Azure virtuális gépen. A Red Hat előfizetés-kezelő lehetővé teszi a SAP Hana Azure (nagy példányok) regisztrálni és rendre Red Hat frissítette (mivel nincs közvetlen internet-hozzáférést a belül a bérlő az Azure nagy példány stamp telepítve van).
 - SAP szükséges hozzá egy támogatási szerződés, valamint a Linux-szolgáltatónál. Ez a követelmény nem törlődnek a megoldás HANA nagy példányok vagy azt a tényt, amely a futtatási Linux az Azure-ban. Eltérően az egyes Linux Azure gyűjtemény képek, a szolgáltatás díj nem szerepel a megoldás ajánlat HANA nagy példányok. Van, a követelményeit az SAP támogatási szerződések a Linux terjesztő teljesítéséhez ügyfélként.   
    - SUSE Linux, keresse meg a támogatási szerződése követelményeinek [SAP Megjegyzés #1984787 - SUSE LINUX Enterprise Server 12: telepítési jegyzetek](https://launchpad.support.sap.com/#/notes/1984787) és [SAP Megjegyzés #1056161 - SUSE prioritás támogatása SAP-alkalmazásokból](https://launchpad.support.sap.com/#/notes/1056161).
-   - Red Hat Linux szüksége van a megfelelő előfizetés támogatja, és a szolgáltatási (az operációs rendszerek HANA nagy példányok frissítése. Red Hat azt javasolja, hogy egy "RHEL az SAP üzleti alkalmazások" előfizetés beolvasásakor. Támogatási és a szolgáltatások, ellenőrizze [SAP Megjegyzés #2002167 - Red Hat Enterprise Linux 7.x: telepítés és frissítés](https://launchpad.support.sap.com/#/notes/2002167) és [SAP Megjegyzés #1496410 - Red Hat Enterprise Linux 6.x: telepítés és frissítés](https://launchpad.support.sap.com/#/notes/1496410) a részletes adatokat.
+   - Red Hat Linux szüksége van a megfelelő előfizetés támogatja, és a szolgáltatási (az operációs rendszerek HANA nagy példányok frissítése. Red Hat azt javasolja, hogy első egy "az RHEL [SAP megoldások](https://access.redhat.com/solutions/3082481)" előfizetést. 
+
+Ellenőrizze a különböző SAP HANA-verzió-a különböző Linux-verziók támogatási mátrix, [SAP Megjegyzés #2235581](https://launchpad.support.sap.com/#/notes/2235581).
+
 
 **Adatbázis:**
 

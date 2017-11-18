@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 11/17/2017
 ms.author: jomolesk
-ms.openlocfilehash: bbf58215a4d236c70bf988cbfa1c8491055b5183
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 0be18e2c2354ea8f766eb48db793c906e565a201
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="national-cyber-security-centre-cloud-security-principles-overview"></a>Nemzeti számítógépes biztonsági központ biztonsági alapelvei áttekintése
 
 
 > [!NOTE]
-> Biztonsági alapelvek által a nemzeti számítógépes biztonsági központ (NCSC) vannak meghatározva. Tekintse meg a tesztelési eljárások NCSC dokumentációjában és útmutatást biztosít minden rendszerbiztonsági tagot.
+> Biztonsági alapelvek által a UK nemzeti számítógépes biztonsági központ (NCSC) vannak meghatározva. Tekintse meg [NCSC dokumentáció](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) információk tesztelési eljárások és útmutatást biztosít minden rendszerbiztonsági tagot.
 
 
 
@@ -435,3 +435,12 @@ Az IaaS és PaaS ajánlatokat Ön felelősséggel tartozik az adatok és a munka
 |---|---|
 | **Ügyfél** | Az Azure Resource Manager-sablonok és a kapcsolódó erőforrások az Azure tervezetének alkotó egy jellegű védelmi módszert követve biztonsági. Meg kell felelnie a elve az, hogy további konfigurációs termelés (például adatbázis-felügyeleti szoftver, a webes alkalmazás telepítése) az ügyfél használata szükséges. |
 | **Szolgáltató&nbsp;(Microsoft&nbsp;Azure)** | Nem alkalmazható |
+
+## <a name="disclaimer"></a>Jogi nyilatkozat
+
+ - Ez a dokumentum csak tájékoztatási célokat szolgál. A MICROSOFT NEM VÁLLAL SEMMILYEN KIFEJEZETT, KIFEJEZETT, VÉLELMEZETT VAGY TÖRVÉNYES, HOGY A JELEN DOKUMENTUMBAN SZEREPLŐ INFORMÁCIÓK. Ez a dokumentum biztosított ",-van." Információk és nézetek ebben a dokumentumban, beleértve az URL-CÍMEK és más internetes webhelyet, értesítés nélkül változhatnak. Ez a dokumentum olvasásakor az ügyfelek az alkalmazást saját felelősségére használja.
+ - Ez a dokumentum nem biztosít semmilyen jogot semmilyen Microsoft-termék vagy a megoldások található szellemi tulajdonhoz rendelkező ügyfelek.
+ - Az ügyfelek azonban másolható és ez a dokumentum belső hivatkozási célokra használja.
+ - Bizonyos ajánlások a dokumentum azt eredményezheti, megnövekedett adat-, hálózati vagy számítási erőforrás-használat az Azure-ban, és megnövelheti az ügyfél Azure licencek vagy előfizetések költségeit.
+ - Ebbe az architektúrába célja, hogy az ügyfelek úgy, hogy az egyedi követelményeket alapjaként szolgálnak, és nem használható mint – egy termelési környezetben.
+ - Ez a dokumentum hivatkozásként fejlesztése, és nem használható minden olyan eszközt, amely szerint az ügyfél megfelel adott megfelelőségi követelmények és szabályok meghatározásához. Az ügyfelek jóváhagyott ügyfél-hitelesítés megvalósításához a szervezetek jogi támogatnia kell kérnie.

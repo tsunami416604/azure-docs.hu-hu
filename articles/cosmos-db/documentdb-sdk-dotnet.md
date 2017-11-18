@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 11/17/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25fd7ca3a7a6f2bd9b361bd459a707bad49449e4
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: ee6d649ac1ab0813098b13750ccc1f6ebf82f684
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Az Azure DB .NET SDK Cosmos: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -51,6 +51,11 @@ ms.lasthandoff: 11/13/2017
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name11911191"></a><a name="1.19.1"/>1.19.1
+
+* Hozzáadja a meghatározhatja, hogy a dokumentumok egyedi indexet a DocumentCollection UniqueKeyPolicy tulajdonság használatával.
+* Rögzített, amelyben az egyéni JsonSerializer beállítások volt nem alatt figyelembe véve az egyes lekérdezések és a tárolt eljárás végrehajtása hiba.
+
 ### <a name="a-name11901190"></a><a name="1.19.0"/>1.19.0
 
 * Márkajelzési Azure Cosmos Adatbázist az API-referencia az Azure DocumentDB változásait, dokumentáció, szerelvényekben metaadat-információkat és a NuGet-csomagot. 
@@ -195,28 +200,28 @@ ms.lasthandoff: 11/13/2017
 * Megvalósított [particionált gyűjtemények](partition-data.md) és [felhasználói teljesítményszintet](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Rögzített]**  Lekérdezése Azure Cosmos DB végpont jelez: "System.Net.Http.HttpRequestException: Hiba történt egy adatfolyamba történő tartalommásoláskor".
+* **[Rögzített] ** Lekérdezése Azure Cosmos DB végpont jelez: "System.Net.Http.HttpRequestException: Hiba történt egy adatfolyamba történő tartalommásoláskor".
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * Bővített LINQ támogatja, beleértve az új operátorok lapozási, a feltételes kifejezések és összehasonlító között.
   * Engedélyezni a felső válassza ki a "LINQ" operátor igénybe
   * CompareTo operátor karakterlánc tartomány összehasonlítása
   * Feltételes (?) és a coalesce operátorok (?)
-* **[Rögzített]**  ArgumentOutOfRangeException modell leképezése egyesítésekor Where-a LINQ lekérdezés. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
+* **[Rögzített] ** ArgumentOutOfRangeException modell leképezése egyesítésekor Where-a LINQ lekérdezés. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
-* **[Rögzített]**  Ha válassza nincs utolsó kifejezés a LINQ szolgáltatónál feltételezve, hogy nincs leképezés, és válasszon előállított * nem megfelelő.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
+* **[Rögzített] ** Ha válassza nincs utolsó kifejezés a LINQ szolgáltatónál feltételezve, hogy nincs leképezés, és válasszon előállított * nem megfelelő.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
 * Megvalósított Upsert, UpsertXXXAsync hozzáadott metódusok
 * Minden olyan kérelem esetében a teljesítménnyel kapcsolatos fejlesztések
 * LINQ szolgáltatónál támogatása feltételes, coalesce, és karakterláncokat CompareTo módszerei
-* **[Rögzített]**  LINQ-szolgáltató--> metódus megvalósítása tartalmaz listán az azonos SQL létrehozásához az IEnumerable és tömb
-* **[Rögzített]**  BackoffRetryUtility használja az ugyanazon HttpRequestMessage újra egy új újrapróbálkozáskor létrehozása helyett
-* **[Elavult]**  UriFactory.CreateCollection--> UriFactory.CreateDocumentCollection használja
+* **[Rögzített] ** LINQ-szolgáltató--> metódus megvalósítása tartalmaz listán az azonos SQL létrehozásához az IEnumerable és tömb
+* **[Rögzített] ** BackoffRetryUtility használja az ugyanazon HttpRequestMessage újra egy új újrapróbálkozáskor létrehozása helyett
+* **[Elavult] ** UriFactory.CreateCollection--> UriFactory.CreateDocumentCollection használja
 
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
-* **[Rögzített]**  Honosítási ad ki, ha nem en kulturális környezet adatokkal például nl-NL stb. 
+* **[Rögzített] ** Honosítási ad ki, ha nem en kulturális környezet adatokkal például nl-NL stb. 
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
 * Azonosító-alapú útválasztási hozzáadva
@@ -237,7 +242,7 @@ ms.lasthandoff: 11/13/2017
 * Támogatja a térbeli indexelő és lekérdezés.
   * A térbeli típusok szerializálása/deszerializálása névterét új Microsoft.Azure.Documents.Spatial, például pont és a sokszög
   * A Cosmos DB GeoJSON adataihoz az indexelés új SpatialIndex osztály
-* **[Rögzített]**  Helytelen SQL-lekérdezést jön létre egy LINQ kifejezésből [#38](https://github.com/Azure/azure-documentdb-net/issues/38).
+* **[Rögzített] ** Helytelen SQL-lekérdezést jön létre egy LINQ kifejezésből [#38](https://github.com/Azure/azure-documentdb-net/issues/38).
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Függőség hozzáadta a Newtonsoft.Json v5.0.7.
@@ -270,6 +275,7 @@ A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.19.1](#1.19.1) |2017. november 16. |--- |
 | [1.19.0](#1.19.0) |2017. november 10. |--- |
 | [1.18.1](#1.18.1) |2017. november 07. |--- |
 | [1.18.0](#1.18.0) |2017. október 17. |--- |

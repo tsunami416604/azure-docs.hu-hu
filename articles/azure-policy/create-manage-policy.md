@@ -3,17 +3,17 @@ title: "Azure-házirend segítségével kényszeríteni a szervezeti megfelelős
 description: "Azure házirend segítségével szabványok kényszerítése, szabályozási megfelelőségi és naplózási követelményeknek, kapcsolatos költségek szabályozását, biztosítja az egységességet biztonsági és teljesítménynövelő és vállalati széles tervezési alapelvek ugyanazok."
 services: azure-policy
 keywords: 
-author: Jim-Parker
-ms.author: jimpark
-ms.date: 11/01/2017
+author: bandersmsft
+ms.author: banders
+ms.date: 11/17/2017
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 63e8e4d3dbbc2e50b55f7e293d324ceed0484bb7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 517f85307e97c1e98a84da95cb51660d6d4fe679
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Kényszeríteni a megfelelőségi szabályzatok létrehozása és kezelése
 
@@ -386,7 +386,7 @@ Kezdeményezésére definition egy átfogó cél eléréséhez több házirend-d
 
 ## <a name="resolve-a-non-compliant-or-denied-resource"></a>Nem megfelelő, vagy az elutasított resource megoldásához
 
-Követően a fenti példában a házirend-definíció szükséges az SQL server verziója 12.0 hozzárendelése után egy SQL server különböző verziójával szeretné beolvasni megtagadva. Ebben a részben azt még útmutató alapján létrehozott egy másik verziót az SQL server visszautasított kísérlete feloldása.
+Követően a fenti példában a házirend-definíció szükséges az SQL server verziója 12.0 hozzárendelése után egy SQL server különböző verziójával szeretné beolvasni megtagadva. Ez a szakasz azt még útmutató alapján hozzon létre egy másik verziót az SQL server kivételként kérésével visszautasított kísérlete feloldása.
 
 1. Válassza ki **hozzárendelések** a bal oldali ablaktáblán.
 2. Tallózzon az összes házirend-hozzárendelést, és indítsa el a *szükséges SQL Server verziója 12.0* hozzárendelés.

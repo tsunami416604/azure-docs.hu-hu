@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: edd5099d2804fdb5867b4be5b11a361004db1665
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: bac9169bc41927ef8cf88aee256b2e057ccad4e9
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Az Azure App Service, a virtuális gépek, a Service Fabric és a Cloud Services összehasonlítása
 ## <a name="overview"></a>Áttekintés
@@ -48,7 +48,7 @@ Az alábbi táblázat összehasonlítja az App Service, a Cloud Services, a virt
 | Például a Service Bus, a tárolás, az SQL-adatbázis-szolgáltatásokhoz való hozzáférés |X |X |X |X | |
 | Állomás web vagy webes szolgáltatások réteg többrétegű-architektúra |X |X |X |X | |
 | Állomás középső réteg többrétegű-architektúra |X |X |X |X |App Service web apps könnyen tárolhatja, a REST API középső réteggel, és a [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) szolgáltatás tárolhatja, háttérben történő feldolgozási feladatot. Webjobs-feladatok egy külön webhelyen elérhető független méretezhetősége a réteghez való futtatása. |
-| Integrált MySQL,--szolgáltatás támogatása |X |X |X | |Felhőszolgáltatások integrálhatja MySQL,--szolgáltatás ClearDB tartozó ajánlatok keresztül, de nem az Azure portál munkafolyamat részeként. |
+| Integrált MySQL,--szolgáltatás támogatása |X |X | | | |
 | Támogatja az ASP.NET, a klasszikus ASP, Node.js, PHP, Python |X |X |X |X |A Service Fabric támogatja a létrehozását a webes előtér-használatával [ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md) vagy bármilyen (Node.js, Java, stb.) telepítheti egy [Vendég végrehajtható](../service-fabric/service-fabric-deploy-existing-app.md). |
 | Helyezze üzembe újra nélkül több példány horizontálisan |X |X |X |X |Virtuális gépek több példányt lehet horizontálisan, de a rajtuk futó szolgáltatások kell írni a kibővített kezelni. Be kell állítania egy terheléselosztót történő átirányításához kérelmek gépein, és a karbantartás vagy hardveres hibák miatt összes példány egyidejű újraindítást megelőzése érdekében Affinitáscsoport létrehozásához. |
 | SSL támogatása |X |X |X |X |App Service web Apps az egyéni tartománynevek SSL csak Basic és Standard módban támogatott. A webalkalmazásokkal SSL használatával kapcsolatos információkért lásd: [konfigurálása az Azure-webhely SSL-tanúsítvány](app-service-web-tutorial-custom-ssl.md). |
@@ -97,7 +97,7 @@ Az Azure App Service kiválóan alkalmas a vállalati webhely üzemeltetéséhez
 * Integráció az Active Directoryval
 
 ### <a id="iis6"></a>Windows Server 2003 rendszeren futó IIS 6 alkalmazás van.
-Az Azure App Service segítségével egyszerűen áttelepítése régebbi IIS6 alkalmazások társított infrastrukturális költségek elkerülése érdekében. A Microsoft létrehozott [részletes áttelepítési útmutató és könnyen használható áttelepítési eszközök](https://www.movemetowebsites.net/) , amelyek lehetővé teszik a kompatibilitás-ellenőrzés, és azonosítja a módosításokat kell végezni. Integráció a Visual Studio, a TFS és a közös CMS eszközök egyszerűen IIS6 alkalmazások közvetlenül a felhőben való központi telepítése. Amennyiben telepített, az Azure portálban talál hatékony eszközök, amelyek lehetővé teszik a költségek kezelésére, és legfeljebb megfelel igény szerint szükséges csökkentheti. Az áttelepítési eszköz segítségével:
+Az Azure App Service segítségével egyszerűen áttelepítése régebbi IIS6 alkalmazások társított infrastrukturális költségek elkerülése érdekében. A Microsoft létrehozott [részletes áttelepítési útmutató és könnyen használható áttelepítési eszközök](https://www.migratetoazure.net/) , amelyek lehetővé teszik a kompatibilitás-ellenőrzés, és azonosítja a módosításokat kell végezni. Integráció a Visual Studio, a TFS és a közös CMS eszközök egyszerűen IIS6 alkalmazások közvetlenül a felhőben való központi telepítése. Amennyiben telepített, az Azure portálban talál hatékony eszközök, amelyek lehetővé teszik a költségek kezelésére, és legfeljebb megfelel igény szerint szükséges csökkentheti. Az áttelepítési eszköz segítségével:
 
 * Gyorsan és egyszerűen telepítse át a korábbi Windows Server 2003 webes alkalmazás a felhőbe.
 * Választhat, hogy a csatolt SQL adatbázis helyszíni egy hibrid alkalmazás létrehozásához.
@@ -174,7 +174,6 @@ Első lépésként az alkalmazás a választott beállításokkal, lásd a köve
 [Cloud Services]: /azure/cloud-services/
 [Virtual Machines]: /azure/virtual-machines/
 [Service Fabric]: /azure/service-fabric/
-[ClearDB]: http://www.cleardb.com/
 [WebJobs]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
 [Configuring an SSL certificate for an Azure Website]: app-service-web-tutorial-custom-ssl.md
 [azurestore]: https://azuremarketplace.microsoft.com/en-us/marketplace/apps

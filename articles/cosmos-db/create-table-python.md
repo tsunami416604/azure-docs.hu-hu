@@ -12,13 +12,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.author: mimig
-ms.openlocfilehash: 0900ec1931cc622339133393b72b558076a42710
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 5bf995cba884ff9910ce000195c8fa0e3da2d332
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Gyors üzembe helyezés: A tábla a Python és az Azure Cosmos DB API-alkalmazás létrehozása
 
@@ -84,7 +84,13 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
     ![Megtekintheti, és másolja a KAPCSOLATI KARAKTERLÁNCOT a kapcsolati karakterlánc panelen](./media/create-table-python/connection-string.png)
 
-2. Nyissa meg a config.py fájlt, és másolja a szükséges kapcsolatikarakterlánc-tulajdonságokat a konfigurációs fájlba.
+2. Másolja a fiók neve, a jobb oldalon a gombra kattintva.
+
+3. Nyissa meg a config.py fájlt, és illessze be a fiók nevét a portálról sor 19 STORAGE_ACCOUNT_NAME értékét.
+
+4. Lépjen vissza a portálra, és másolja az elsődleges kulcsot.
+
+5. Az elsődleges kulcsot a portálról illessze be a sor 20 STORAGE_ACCOUNT_KEY értékét.
 
 3. Mentse a config.py fájlt.
 
