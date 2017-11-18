@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: yurid
-ms.openlocfilehash: 925bada91216b98175fb725e7aba6a31f305839d
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 2482dade7d17d05b2fc90fbf22b0466227a5983b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="internet-of-things-security-architecture"></a>Az eszközök internetes hálózatát biztonsági architektúrája
 A rendszer tervezésekor fontos megérteni, hogy a rendszer potenciális fenyegetések, majd a megfelelő védelmekkel ennek megfelelően adja meg, a rendszer tervezett és tervezett. Különösen fontos tervezési kezdetétől a termék a biztonságot szem előtt tartva, mert ismertetése, hogy egy támadó lehet a rendszerbe segítségével győződjön meg arról, hogy megfelelő megoldást legyenek érvényben az elejétől. 
@@ -88,7 +88,7 @@ Ahhoz, hogy az ajánlott biztonsági eljárások optimalizálása érdekében ja
 * A felhő átjárók, és
 * Szolgáltatások.
 
-Zónák széleskörű módon a szegmenseket, a megoldás; az egyes zónák gyakran van a saját adatok és a hitelesítési és engedélyezési követelményeinek. Zónák károk elkülönítésére, és kis megbízhatósági zónák magasabb megbízhatósági zónák hatásának korlátozása is használható.
+Zónák széleskörű módon a szegmenseket, a megoldás; az egyes zónák gyakran van a saját adatok és a hitelesítési és engedélyezési követelményeinek. Zónák is használható elkülönítési kárt és alacsony megbízhatósági zónák magasabb megbízhatósági zónák hatásának korlátozása.
 
 Minden egyes zónában van eltérő megbízhatósági tartományba, az alábbi ábrán a pontozott piros sorban észlelt. Ezt az adatok/információk átmenet egy forrás egy másikra. Ez a változás során az/adatait lehet Spoofing, Tampering, Letagadhatóság, Információfelfedés, szolgáltatásmegtagadásos és jogosultság jogosultságszint-emelés (STRIDE).
 
