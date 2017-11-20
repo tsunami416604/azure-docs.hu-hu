@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Az első saját Azure Search-index létrehozása a portálon | Microsoft Docs"
+title: "Indexelés, lekérdezés és szűrés az Azure Search portál lapjain | Microsoft Docs"
 description: "Az Azure Portalon előre meghatározott mintaadatok használatával indexet hozhat létre. Használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést, a geosearch funkciót és sok mást."
 services: search
 documentationcenter: 
@@ -15,13 +15,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 06/26/2017
 ms.author: heidist
-ms.openlocfilehash: c49989058fdd98d623c5517060f725e5f7e436d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a67de3d385ccb1f65d026acfa0d4413df889bafe
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="tutorial-create-your-first-azure-search-index-in-the-portal"></a>Oktatóanyag: Az első saját Azure Search-index létrehozása a portálon
+# <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>Azure Search-index létrehozása, lekérdezése és szűrése a portálon
 
 Egy előre meghatározott minta adatkészlettel, valamint az **Adatok importálása** varázslóval gyorsan létrehozhat egy indexet az Azure Portalon. A **keresési ablakban** használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést és a geosearch funkciót.  
 
@@ -128,7 +128,7 @@ Most már rendelkezik egy keresési indexszel, amely készen áll a lekérdezés
 
 **`search=seattle`**
 
-+ A `search` paraméter kulcsszavas keresés bevitelére használható teljes szöveges kereséshez. Jelen esetben olyan hirdetéseket kapunk vissza a Washington állambeli King megyéből, amelyek tartalmazzák a *Seattle* kifejezést a dokumentum bármely kereshető mezőjében. 
++ A **search** paraméter kulcsszavas keresés bevitelére használható teljes szöveges kereséshez. Jelen esetben olyan hirdetéseket kapunk vissza a Washington állambeli King megyéből, amelyek tartalmazzák a *Seattle* kifejezést a dokumentum bármely kereshető mezőjében. 
 
 + A **Keresési ablak** JSON-formátumban adja vissza az eredményeket, amely részletes és nehezen olvasható lehet, ha a dokumentumok sűrű szerkezettel rendelkeznek. A dokumentumoktól függően előfordulhat, hogy a fontos elemek kinyeréséhez olyan kódot kell írnia, amely képes kezelni a keresési eredményeket. 
 
@@ -136,35 +136,48 @@ Most már rendelkezik egy keresési indexszel, amely készen áll a lekérdezés
 
 **`search=seattle&$count=true&$top=100`**
 
-+ Az `&` szimbólum a keresési paraméterek összefűzésére használható, amelyek bármilyen sorrendben megadhatók. 
++ Az **&** szimbólum a keresési paraméterek összefűzésére használható, amelyek bármilyen sorrendben megadhatók. 
 
-+  A `$count=true` paraméter visszaadja az összes visszaadott dokumentum összegét. A szűrőlekérdezések ellenőrzéséhez megfigyelheti a `$count=true` által jelentett módosításokat. 
++  A **$count=true** paraméter visszaadja az összes visszaadott dokumentum összegét. A szűrőlekérdezések ellenőrzéséhez megfigyelheti a **$count=true** paraméter által jelentett módosításokat. 
 
-+ A `$top=100` az összes közül az első 100 dokumentumot adja vissza. Alapértelmezés szerint az Azure Search az első 50 egyezést adja vissza. A `$top` használatával növelheti vagy csökkentheti a mennyiséget.
++ A **$top=100** paraméter az összes közül az első 100 dokumentumot adja vissza. Alapértelmezés szerint az Azure Search az első 50 egyezést adja vissza. A **$top** paraméter használatával növelheti vagy csökkentheti a mennyiséget.
 
-**`search=*&facet=city&$top=2`**
 
-+ A `search=*` egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például akkor, ha azt szeretné, hogy egy értékkorlátozó navigációs szerkezet az index összes városából álljon.
+## <a name="filter-query"></a> A lekérdezés szűrése
 
-+  A `facet` olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Jelen esetben a kategóriák alapját a városok száma jelenti. Az Azure Searchben nincs összesítés, de megbecsülheti az összesítést a `facet` használatával, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
-
-+ A `$top=2` két dokumentumot ad vissza, így bemutatja, hogy a `top` használatával csökkentheti és növelheti is az eredményeket.
-
-**`search=seattle&facet=beds`**
-
-+ Ez a lekérdezés az ágyak értékkorlátozását jelenti a *Seattle* szöveges kereséséhez. A `"beds"` megadható értékkorlátozásként, mert a mező lekérdezhetőként, szűrhetőként és kategorizálhatóként van megjelölve az indexben, és a tartalmazott értékei (numerikus, 1–5) alkalmasak a hirdetések csoportokba való rendezésére (3 hálószobás, 4 hálószobás ingatlanok hirdetései). 
-
-+ Csak a szűrhető mezők értéke korlátozható. Csak a lekérdezhető mezők adhatók vissza az eredményekben.
+A **$filter** paraméter hozzáfűzésekor a szűrők megjelennek a keresési kérésekben. 
 
 **`search=seattle&$filter=beds gt 3`**
 
-+ A `filter` paraméter olyan eredményeket ad vissza, amelyek megfelelnek a megadott feltételeknek. Ebben az esetben: 3-nál több hálószoba. 
++ A **$filter** paraméter olyan eredményeket ad vissza, amelyek megfelelnek a megadott feltételeknek. Ebben az esetben: 3-nál több hálószoba. 
 
 + A szűrőszintaxis egy OData-konstrukció. További információk: [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
+## <a name="facet-query"></a> A lekérdezés értékkorlátozása
+
+Az értékkorlátozó szűrők megjelennek a keresési kérésekben. A facet paraméter adja vissza azon dokumentumok összegzett darabszámát, amelyek megfelelnek a megadott értékkorlátozási értéknek. 
+
+**`search=*&facet=city&$top=2`**
+
++ A **search=*** egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például akkor, ha azt szeretné, hogy egy értékkorlátozó navigációs szerkezet az index összes városából álljon.
+
++  A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Jelen esetben a kategóriák alapját a városok száma jelenti. Az Azure Searchben nincs összesítés, de megbecsülheti az összesítést a `facet` használatával, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
+
++ A **$top=2** paraméter két dokumentumot ad vissza, így bemutatja, hogy a `top` használatával csökkentheti és növelheti is az eredményeket.
+
+**`search=seattle&facet=beds`**
+
++ Ez a lekérdezés az ágyak értékkorlátozását jelenti a *Seattle* szöveges kereséséhez. A *ágyak* kifejezés megadható értékkorlátozásként, mert a mező lekérdezhetőként, szűrhetőként és kategorizálhatóként van megjelölve az indexben, és a tartalmazott értékei (numerikus, 1–5) alkalmasak a hirdetések csoportokba való rendezésére (3 hálószobás, 4 hálószobás ingatlanok hirdetései). 
+
++ Csak a szűrhető mezők értéke korlátozható. Csak a lekérdezhető mezők adhatók vissza az eredményekben.
+
+## <a name="highlight-query"></a> Kiemelés hozzáadása
+
+A találatok kiemelése a kulcsszóval megegyező szöveg formázását jelenti, feltéve, hogy vannak egyezések a megadott mezőben. Ha a keresett kifejezés egy leírás mélyén rejlik, a találatok kiemelése funkcióval könnyebben észrevehetővé teheti. 
+
 **`search=granite countertops&highlight=description`**
 
-+ A találatok kiemelése a kulcsszóval megegyező szöveg formázását jelenti, feltéve, hogy vannak egyezések a megadott mezőben. Ha a keresett kifejezés egy leírás mélyén rejlik, a találatok kiemelése funkcióval könnyebben észrevehetővé teheti. Ebben az esetben a `"granite countertops"` formázott kifejezés könnyebben észrevehető a leírás mezőben.
++ Ebben a példában a *gránit munkalapok* formázott kifejezés könnyebben észrevehető a leírás mezőben.
 
 **`search=mice&highlight=description`**
 
@@ -172,23 +185,29 @@ Most már rendelkezik egy keresési indexszel, amely készen áll a lekérdezés
 
 + Az Azure Search szolgáltatás összesen 56, a Lucene-től és Microsoft-tól származó elemzőt támogat. A szolgáltatás alapértelmezés szerint a standard Lucene-elemzőt használja. 
 
+## <a name="fuzzy-search"></a> Intelligens keresés használata
+
+A helytelenül leírt szavak (például a Seattle környékén található Sammamish-fennsíkra utaló *samamish* kifejezés) nem adnak vissza találatokat az átlagos keresések során. A helytelenül leírt szavak kezelésére használhat intelligens keresést. Ennek leírását a következő példában olvashatja.
+
 **`search=samamish`**
 
-+ A helytelenül leírt szavak (például a Seattle környékén található Sammamish-fennsíkra utaló „samamish” kifejezés) nem adnak vissza találatokat az átlagos keresések során. A helytelenül leírt szavak kezelésére használhat intelligens keresést. Ennek leírását a következő példában olvashatja.
++ Ebben a példában egy Seattle környékén lévő hely neve lett hibásan leírva.
 
 **`search=samamish~&queryType=full`**
 
-+ Az intelligens keresés a `~` szimbólum megadásával, valamint a teljes lekérdezéselemző használatával engedélyezhető, amely értelmezi és megfelelően elemzi a `~` szintaxist. 
++ Az intelligens keresés a **~** szimbólum megadásával, valamint a teljes lekérdezéselemző használatával engedélyezhető, amely értelmezi és megfelelően elemzi a **~** szintaxist. 
 
-+ Az intelligens keresés akkor érhető el, amikor a teljes lekérdezéselemzőt választja, ami a `queryType=full` beállításakor történik. A teljes lekérdezéselemző által lehetővé tett lekérdezési forgatókönyvekkel kapcsolatos további információk: [Lucene lekérdezési szintaxis az Azure Search szolgáltatásban](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
++ Az intelligens keresés akkor érhető el, amikor a teljes lekérdezéselemzőt választja, ami a **queryType=full** beállításakor történik. A teljes lekérdezéselemző által lehetővé tett lekérdezési forgatókönyvekkel kapcsolatos további információk: [Lucene lekérdezési szintaxis az Azure Search szolgáltatásban](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
-+ Amikor a `queryType` nincs meghatározva, a rendszer az alapértelmezett egyszerű lekérdezéselemzőt használja. Ez az egyszerű lekérdezéselemző gyorsabb, de ha intelligens keresésre, reguláris kifejezésekre, közelségi keresésre vagy egyéb speciális lekérdezéstípusokra van szüksége, a teljes szintaxisra szüksége lesz. 
++ Amikor a **queryType** paraméter nincs meghatározva, a rendszer az alapértelmezett egyszerű lekérdezéselemzőt használja. Ez az egyszerű lekérdezéselemző gyorsabb, de ha intelligens keresésre, reguláris kifejezésekre, közelségi keresésre vagy egyéb speciális lekérdezéstípusokra van szüksége, a teljes szintaxisra szüksége lesz. 
+
+## <a name="geo-search"></a> A térinformatikai keresés kipróbálása
+
+A térinformatikai keresés az [edm.GeographyPoint adattípuson](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) keresztül támogatott a koordinátákat tartalmazó mezők esetében. A geosearch egy szűrőtípus, amelynek meghatározása a [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) című témakörben olvasható. 
 
 **`search=*&$count=true&$filter=geo.distance(location,geography'POINT(-122.121513 47.673988)') le 5`**
 
-+ A térinformatikai keresés az [edm.GeographyPoint adattípuson](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) keresztül támogatott a koordinátákat tartalmazó mezők esetében. A geosearch egy szűrőtípus, amelynek meghatározása a [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) című témakörben olvasható. 
-
-+ A példa lekérdezés minden eredményt szűr a helyzeti adatok alapján, és olyan eredményeket a vissza, amelyek kevesebb, mint 5 kilométerre találhatók a (szélességi és hosszúsági koordinátákként) megadott ponttól. A `$count` hozzáadásával láthatja, hány eredményt ad vissza a rendszer, amikor módosítja a távolságot vagy a koordinátákat. 
++ A példa lekérdezés minden eredményt szűr a helyzeti adatok alapján, és olyan eredményeket a vissza, amelyek kevesebb, mint 5 kilométerre találhatók a (szélességi és hosszúsági koordinátákként) megadott ponttól. A **$count** paraméter hozzáadásával láthatja, hány eredményt ad vissza a rendszer, amikor módosítja a távolságot vagy a koordinátákat. 
 
 + A térinformatikai keresés hasznos lehet, ha a keresőalkalmazás rendelkezik „keresés a közelben” funkcióval vagy térképes navigációt használ. Ez azonban nem teljes szöveges keresés. Ha a városok vagy országok nevére való keresés felhasználói követelmény, akkor a koordináták mellett adjon meg városok vagy országok nevét tartalmazó mezőket.
 

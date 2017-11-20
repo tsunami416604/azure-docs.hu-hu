@@ -1,6 +1,6 @@
 ---
 title: "A Microsoft Azure IoT lehetőségei | Microsoft Docs"
-description: "Kiválaszthatja, hogyan valósítja meg Azure IoT-megoldását az IoT Suite, az IoT-központ vagy az IoT Hub segítségével."
+description: "Kiválaszthatja, hogyan valósítja meg IoT-megoldását az Azure IoT Suite, a Microsoft IoT-központ vagy az Azure IoT Hub segítségével."
 services: 
 suite: iot-suite
 author: dominicbetts
@@ -8,14 +8,14 @@ manager: timlt
 ms.assetid: 2d38d08a-4133-4e5c-8b28-f93cadb5df05
 ms.service: iot-suite
 ms.topic: get-started-article
-ms.date: 09/21/2017
+ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd98d42ab391d471d2302066dc2baf2c64f56f55
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: e00dd828ef24b9bc97665f0f5fe8d7e14f4e4630
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="compare-azure-iot-options"></a>Az Azure IoT lehetőségeinek összehasonlítása
 
@@ -33,18 +33,18 @@ Ennek az architektúrának a megvalósítására az Azure IoT számos lehetősé
 
 ## <a name="azure-iot-hub"></a>Azure IoT Hub
 
-Az Azure IoT Hub annak az Azure szolgáltatásként nyújtott platformnak a magja, amelyet az IoT-központ és az IoT Suite is használ. Az Azure IoT Hub megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz és egy felhőalapú megoldás között. Az IoT Hub segít a következő IoT implementációs kihívások leküzdésében:
+Az Azure IoT Hub az alapvető Azure-szolgáltatásként nyújtott platform, amelyet a Microsoft IoT-központ és az Azure IoT Suite is használ. Az Azure IoT Hub megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz és egy felhőalapú megoldás között. Az IoT Hub segít a következő IoT implementációs kihívások leküzdésében:
 
 * Nagy mennyiségű eszköz csatlakoztatása és felügyelete.
 * Nagy mennyiségű telemetriaadat feldolgozása.
 * Eszközök irányítása és vezérlése.
 * Eszközbiztonság kikényszerítése.
 
-## <a name="compare-iot-suite-and-iot-central"></a>Az IoT Suite és az IoT-központ összehasonlítása
+## <a name="compare-azure-iot-suite-and-microsoft-iot-central"></a>Az Azure IoT Suite és a Microsoft IoT-központ összehasonlítása
 
-Az Azure IoT-termék kiválasztása kritikus része az IoT-megoldás megtervezésének. Az IoT Hub egy önálló Azure-szolgáltatás, amely önmagában nem biztosít teljes körű IoT-megoldást. Az IoT Hub bármely IoT-megoldás kiindulási pontjaként használható, és a használatához nincs szükség az Azure IoT Suite vagy a Microsoft IoT-központ használatára. Az IoT Suite és az IoT-központ is használja az IoT Hubot más Azure-szolgáltatások mellett. Az alábbi táblázat összegzi az IoT Suite és az IoT-központ közötti lényeges különbségeket, hogy könnyebben kiválaszthassa a követelményeinek megfelelő rendszert:
+Az Azure IoT-termék kiválasztása kritikus része az IoT-megoldás megtervezésének. Az IoT Hub egy önálló Azure-szolgáltatás, amely önmagában nem biztosít teljes körű IoT-megoldást. Az IoT Hub bármely IoT-megoldás kiindulási pontjaként használható, és a használatához nincs szükség az Azure IoT Suite vagy a Microsoft IoT-központ használatára. Az Azure IoT Suite és a Microsoft IoT-központ is használja az IoT Hubot más Azure-szolgáltatások mellett. Az alábbi táblázat összegzi az Azure IoT Suite és a Microsoft IoT-központ közötti lényeges különbségeket, hogy könnyebben kiválaszthassa a követelményeinek megfelelő rendszert:
 
-|                        | IoT Suite | IoT-központ |
+|                        | Azure IoT Suite | Microsoft IoT-központ |
 | ---------------------- | --------- | ----------- |
 | Elsődleges használat | A lehető legnagyobb rugalmasságot igénylő, egyéni IoT-megoldás fejlesztésének felgyorsításához. | Részletes szolgáltatás-testreszabást nem igénylő, egyszerű IoT-megoldások piaci bevezetési idejének lerövidítéséhez. |
 | Hozzáférés az alapul szolgáló PaaS szolgáltatásokhoz          | Hozzáféréssel rendelkezik az alapul szolgáló Azure-szolgáltatásokhoz, felügyelheti, vagy igény szerint lecserélheti őket. | SaaS. Teljes körűen felügyelt megoldás, az alapul szolgáló szolgáltatások nem érhetőek el. |
@@ -63,6 +63,6 @@ A döntést, hogy végül melyik terméket használja az IoT-megoldás létrehoz
 
 A kiválasztott termék és megközelítés alapján a javasolt következő lépések:
 
-* **IoT Suite**: [Mik az Azure IoT előre konfigurált megoldásai?](iot-suite-what-are-preconfigured-solutions.md)
-* **IoT-központ**: [Microsoft IoT-központ](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions).
+* **Azure IoT Suite**: [Mik az Azure IoT előre konfigurált megoldásai?](iot-suite-what-are-preconfigured-solutions.md)
+* **Microsoft IoT-központ**: [Microsoft IoT-központ](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions).
 * **IoT Hub**: [Az Azure IoT Hub szolgáltatás áttekintése](../iot-hub/iot-hub-what-is-iot-hub.md).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b211c2076840b6eff7c21cb481da569ca6bc49a4
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 80e8e85f058a5cec2e3ae6a6cff5cb8a363370e1
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="getting-started-with-azure-cdn"></a>Az Azure CDN használatának első lépései
 Ez a cikk egy új CDN-profil és -végpont létrehozásán keresztül ismerteti az Azure CDN aktiválását.
@@ -82,7 +82,7 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
    > A CDN-tartalom HTTPS-kapcsolaton keresztüli elérésére a következő korlátozások vonatkoznak:
    > 
    > * A CDN által biztosított SSL-tanúsítványt kell használni. A rendszer nem támogatja a harmadik féltől származó tanúsítványokat.
-   > * Az Azure CDN egyéni tartományok HTTPS-támogatása csak a **Verizon Azure CDN** termékekkel érhető el (Standard és Prémium). Nem támogatott az **Akamai Azure CDN** termékeken. További információkért lásd: [HTTPS engedélyezése vagy letiltása Azure CDN egyéni tartományon](cdn-custom-ssl.md).
+   > * Az Azure CDN egyéni tartományok HTTPS-támogatása csak a **Verizon Azure CDN** termékekkel érhető el (Standard és Prémium). Nem támogatott az **Akamai Azure CDN** termékeken. További információkért lásd: [HTTPS konfigurálása az Azure CDN egyéni tartományon](cdn-custom-ssl.md).
   
 9. Az új végpont létrehozásához kattintson a **Hozzáadás** gombra.
    

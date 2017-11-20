@@ -4,28 +4,216 @@
   items:
     - name: Áttekintés
       href: apache-hbase-overview.md
-    - name: Összetevő verziókezelése
+    - name: Hadoop-összetevők a HDInsighton
       href: ../hdinsight-component-versioning.md
       maintainContext: true
 - name: Bevezetés
   items:
     - name: Első lépések a HBase-ben és a NoSQL-ben
       href: apache-hbase-tutorial-get-started-linux.md
-    - name: Kapacitástervezés
+    - name: A fürtök kapacitástervezése
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
 - name: Útmutató
   items:
-    - name: Fürt létrehozása virtuális hálózatban
-      href: apache-hbase-provision-vnet.md
-    - name: HBase-replikáció konfigurálása
-      href: apache-hbase-replication.md
-    - name: A Phoenix és az SQLLine használata
-      href: apache-hbase-phoenix-squirrel-linux.md
-    - name: Java-alkalmazások fejlesztése
-      href: apache-hbase-build-java-maven-linux.md
-    - name: A HBase hibaelhárítása
-      href: apache-troubleshoot-hbase.md
+    - name: Fürttároló használata
+      items:
+        - name: Az Azure Storage használata
+          href: ../hdinsight-hadoop-use-blob-storage.md
+          maintainContext: true
+        - name: Az Azure Data Lake Store használata
+          href: ../hdinsight-hadoop-use-data-lake-store.md
+          maintainContext: true
+    - name: Fejlesztés
+      items:
+        - name: Java-alkalmazások fejlesztése
+          href: apache-hbase-build-java-maven-linux.md
+        - name: Üres élcsomópontok használata
+          href: ../hdinsight-apps-use-edge-node.md
+          maintainContext: true
+        - name: Nem interaktív hitelesítéssel ellátott .Net HDInsight-alkalmazások létrehozása
+          href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
+          maintainContext: true
+        - name: A Phoenix és az SQLLine használata
+          href: apache-hbase-phoenix-squirrel-linux.md
+    - name: Fürtök kiterjesztése
+      items:
+        - name: 'Biztonságos, engedélyezett tárfiók használata'
+          href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+          maintainContext: true
+        - name: Fürtök testreszabása a Bootstrap használatával
+          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
+          maintainContext: true
+        - name: Fürtök testreszabása szkriptműveletek használatával
+          href: ../hdinsight-hadoop-customize-cluster-linux.md
+          maintainContext: true
+        - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
+          href: ../connect-on-premises-network.md
+          maintainContext: true
+        - name: Szkriptműveletek fejlesztése
+          href: ../hdinsight-hadoop-script-actions-linux.md
+          maintainContext: true
+        - name: A Virtual Network használata
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+          maintainContext: true
+        - name: HDInsight-alkalmazások fejlesztése
+          items:
+            - name: HDInsight-alkalmazások telepítése
+              href: ../hdinsight-apps-install-applications.md
+              maintainContext: true
+            - name: Egyedi alkalmazások telepítése
+              href: ../hdinsight-apps-install-custom-applications.md
+              maintainContext: true
+            - name: A REST használata alkalmazások telepítéséhez
+              href: 'https://msdn.microsoft.com/library/mt706515.aspx'
+            - name: HDInsight-alkalmazások közzététele az Azure Marketplace-en
+              href: ../hdinsight-apps-publish-applications.md
+              maintainContext: true
+    - name: Biztonságos
+      items:
+        - name: SSH használata a HDInsighttal
+          href: ../hdinsight-hadoop-linux-use-ssh-unix.md
+          maintainContext: true
+        - name: SSH-alagútkezelés használata
+          href: ../hdinsight-linux-ambari-ssh-tunnel.md
+          maintainContext: true
+    - name: Kezelés
+      items:
+        - name: Linux-fürtök létrehozása
+          href: ../hdinsight-hadoop-provision-linux-clusters.md
+          maintainContext: true
+          items:
+            - name: Azure PowerShell használatával
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+              maintainContext: true
+            - name: A cURL és az Azure REST API használata
+              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+              maintainContext: true
+            - name: A .NET SDK használata
+              href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
+              maintainContext: true
+            - name: Az Azure parancssori felületének használata
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+              maintainContext: true
+            - name: Az Azure Portal használata
+              href: ../hdinsight-hadoop-create-linux-clusters-portal.md
+              maintainContext: true
+            - name: Használjon Azure Resource Manager-sablonokat
+              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+              maintainContext: true
+        - name: Fürt létrehozása virtuális hálózatban
+          href: apache-hbase-provision-vnet.md
+        - name: HBase-replikáció konfigurálása
+          href: apache-hbase-replication.md
+        - name: Igény szerinti fürtök létrehozása
+          href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+          maintainContext: true
+        - name: Hadoop-fürtök kezelése
+          href: ../hdinsight-administer-use-portal-linux.md
+          maintainContext: true
+          items:
+            - name: A .NET SDK használata
+              href: ../hdinsight-administer-use-dotnet-sdk.md
+              maintainContext: true
+            - name: Azure PowerShell használatával
+              href: ../hdinsight-administer-use-powershell.md
+              maintainContext: true
+            - name: Az Azure parancssori felületének használata
+              href: ../hdinsight-administer-use-command-line.md
+              maintainContext: true
+        - name: Fürtök kezelése az Ambari webes felülettel
+          href: ../hdinsight-hadoop-manage-ambari.md
+          maintainContext: true
+          items:
+            - name: Az Ambari REST API használata
+              href: ../hdinsight-hadoop-manage-ambari-rest-api.md
+              maintainContext: true
+        - name: Tárfiókok hozzáadása
+          href: ../hdinsight-hadoop-add-storage.md
+          maintainContext: true
+        - name: Adatok feltöltése Hadoop-feladatokhoz
+          href: ../hdinsight-upload-data.md
+          maintainContext: true
+        - name: Több HDInsight-fürt a Data Lake Store-ral
+          href: ../hdinsight-multiple-clusters-data-lake-store.md
+          maintainContext: true
+        - name: Adatok importálása és exportálása a Sqoop használatával
+          href: ../hdinsight-use-sqoop.md
+          maintainContext: true
+          items:
+            - name: Kapcsolódás az SSH-val
+              href: ../hadoop/apache-hadoop-use-sqoop-mac-linux.md
+            - name: Futtatás a cURL használatával
+              href: ../hadoop/apache-hadoop-use-sqoop-curl.md
+            - name: Futtatás a .NET SDK használatával
+              href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
+            - name: Futtatás az Azure PowerShell használatával
+              href: ../hadoop/apache-hadoop-use-sqoop-powershell.md
+        - name: 'Fürt- és szolgáltatásportok, valamint URI-k'
+          href: ../hdinsight-hadoop-port-settings-for-services.md
+          maintainContext: true
+        - name: Rendelkezésre állás és megbízhatóság
+          href: ../hdinsight-high-availability-linux.md
+          maintainContext: true
+        - name: A HDInsight-fürt frissítése újabb verzióra
+          href: ../hdinsight-upgrade-cluster.md
+          maintainContext: true
+        - name: Az operációs rendszer javításai a HDInsight-fürthöz
+          href: ../hdinsight-os-patching.md
+          maintainContext: true
+    - name: Figyelés
+      items:
+        - name: Az Azure Log Analytics használata
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+          maintainContext: true
+        - name: Fürtre jellemző irányítópultok
+          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
+          maintainContext: true
+        - name: Lekérdezések használata a Log Analytics szolgáltatással
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+          maintainContext: true
+        - name: Fürtteljesítmény monitorozása
+          href: ../hdinsight-key-scenarios-to-monitor.md
+          maintainContext: true
+    - name: Hibaelhárítás
+      href: ../hdinsight-troubleshoot-guide.md
+      maintainContext: true
+      items:
+        - name: HDFS-hibaelhárítás
+          href: ../hdinsight-troubleshoot-hdfs.md
+          maintainContext: true
+        - name: A HBase hibaelhárítása
+          href: apache-troubleshoot-hbase.md
+          maintainContext: true
+        - name: YARN-hibaelhárítás
+          href: ../hdinsight-troubleshoot-yarn.md
+          maintainContext: true
+        - name: Erőforrások
+          items:
+            - name: Információk a HDInsight Linuxon való használatáról
+              href: ../hdinsight-hadoop-linux-information.md
+              maintainContext: true
+            - name: Hadoop – memória és teljesítmény
+              href: ../hdinsight-hadoop-stack-trace-error-messages.md
+              maintainContext: true
+            - name: Hadoop YARN-alkalmazásnaplók elérése Linuxon
+              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
+              maintainContext: true
+            - name: Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz
+              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
+              maintainContext: true
+            - name: WebHCat-hibák megértése és megoldása
+              href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
+              maintainContext: true
+            - name: Hive-beállítások a Nincs elég memória hiba javításához
+              href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
+              maintainContext: true
+            - name: Ambari-nézetek használata a Tez-feladatok hibakereséséhez
+              href: ../hdinsight-debug-ambari-tez-view.md
+              maintainContext: true
+            - name: Hive-lekérdezések optimalizálása
+              href: ../hdinsight-hadoop-optimize-hive-query.md
+              maintainContext: true
 - name: Referencia
   items:
     - name: Kódminták

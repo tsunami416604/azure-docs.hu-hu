@@ -11,87 +11,164 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: powershell
 ms.topic: hero-article
-ms.date: 09/26/2017
+ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 04b8e0b30bf85c8bafd193c942a6a86f2166c1e7
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 63e4c654409651f6655da1bed6ab2f544cf024dd
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="create-a-data-factory-and-pipeline-using-powershell"></a>Adat-előállító és folyamat létrehozása a PowerShell használatával
+# <a name="create-an-azure-data-factory-and-pipeline-using-powershell"></a>Azure-beli adat-előállító és folyamat létrehozása a PowerShell használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1. verzió – Általánosan elérhető](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [2. verzió – Előzetes verzió](quickstart-create-data-factory-powershell.md)
 
-Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehetővé teszi olyan, a felhőben futó, adatvezérelt munkafolyamatok létrehozását, amelyek alkalmasak az adatok átvitelének és átalakításának irányítására és automatizálására. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, feldolgozhatók és átalakíthatók az adatok különböző számítási szolgáltatások használatával (pl. Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning), és a kimeneti adatok közzétehetők olyan adattárakban, mint például az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket. 
+Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat másol az Azure Blob Storage egyik helyéről egy másik helyére. Az adatok Azure Data Factoryval történő átalakításának útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](transform-data-using-spark.md). 
 
-Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-beli adat-előállító létrehozásához. Az adat-előállító folyamata adatokat másol az Azure Blob Storage egyik helyéről egy másik helyére.
+Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd a [Data Factory 1. verzió használatának első lépéseit](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure Storage-fiók** A blobtároló **forrás-** és **fogadó**adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozását](../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket. 
-* Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. Az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) és hozzá hasonló eszközökkel csatlakozhat az Azure Blob Storage-hoz, blobtárolókat hozhat létre, bemeneti fájlokat tölthet fel, és ellenőrizheti a kimeneti fájlokat.
-* **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat.
+### <a name="azure-subscription"></a>Azure-előfizetés
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+### <a name="azure-storage-account"></a>Azure Storage-tárfiók neve
+Ebben a rövid útmutatóban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk **forrás-** és **cél-/fogadóadattárként**. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, tekintse meg a [Tárfiók létrehozását](../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket. 
 
-1. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
+#### <a name="get-storage-account-name-and-account-key"></a>Tárfióknév és fiókkulcs beszerzése
+Ebben a rövid útmutatóban az Azure Storage-fiók nevét és kulcsát használjuk. Az alábbi eljárás bemutatja a tárfióknév és -kulcs beszerzéséhez szükséges lépéseket. 
 
-    Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
-        
+1. Nyisson meg egy webböngészőt, és keresse fel az [Azure Portalt](https://portal.azure.com). Jelentkezzen be az Azure-beli felhasználónevével és jelszavával. 
+2. Kattintson a **További szolgáltatások >** elemre a bal oldali menüben, állítson be egy szűrőt a **Tárfiók** kulcsszóval, majd válassza a **Tárfiókok** lehetőséget.
+
+    ![Tárfiók keresése](media/quickstart-create-data-factory-powershell/search-storage-account.png)
+3. A tárfiókok listájában állítson be szűrőt a tárfiók nevéhez (ha szükséges), majd válassza ki a **tárfiókját**. 
+4. A **Tárfiók** oldalon a menüben válassza a **Hozzáférési kulcsok** elemet.
+
+    ![Tárfióknév és -kulcs beszerzése](media/quickstart-create-data-factory-powershell/storage-account-name-key.png)
+5. Másolja a **Tárfiók neve** és az **1. kulcs** mezők értékét a vágólapra. Illessze be őket a Jegyzettömbbe, vagy bármely más szerkesztőbe, majd mentse a fájlt.  
+
+#### <a name="create-input-folder-and-files"></a>Bemeneti mappa és fájlok létrehozása
+Ebben a szakaszban egy adftutorial nemű blobtárolót hoz létre az Azure Blob Storage-ban. Ezután létrehoz egy input nevű mappát a tárolóban, majd feltölt egy mintafájlt az input mappába. 
+
+1. Ha még nincs a gépén, telepítse az [Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/). 
+2. Indítsa el a gépén a **Microsoft Azure Storage Explorert**.   
+3. A **Csatlakozás az Azure Storage-hoz** ablakban válassza a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** gombra. Ha nem látja a **Csatlakozás az Azure Storage-hoz** ablakot, a fanézetben kattintson a jobb gombbal a **Tárfiókok** elemre, majd kattintson a **Csatlakozás az Azure Storage-hoz** elemre. 
+
+    ![Csatlakozás az Azure Storage-hoz](media/quickstart-create-data-factory-powershell/storage-explorer-connect-azure-storage.png)
+4. A **Csatolás a név és a kulcs használatával** ablakban illessze be az előző lépésben mentett **Fióknév** és **Fiókkulcs** értékeket. Ezután kattintson a **Tovább** gombra. 
+5. A **Kapcsolatok összegzése** ablakban kattintson a **Csatlakozás** elemre.
+6. Győződjön meg arról, hogy a tárfiók megjelenik a **(Helyi és csatolt)** -> **Tárfiókok** faszerkezetes nézetében. 
+7. Bontsa ki a **Blobtárolók** elemet, és győződjön meg arról, hogy az **adftutorial** nevű blobtároló nem létezik. Ha már létezik, hagyja ki a következő, a tároló létrehozására vonatkozó lépéseket. 
+8. Kattintson a jobb gombbal a **Blobtárolók** elemre, majd válassza a **Blobtároló létrehozása** lehetőséget.
+
+    ![Blobtároló létrehozása](media/quickstart-create-data-factory-powershell/stroage-explorer-create-blob-container-menu.png)
+9. Adja a tárolónak az **adftutorial** nevet, és nyomja le az **ENTER** billentyűt. 
+10. Győződjön meg arról, hogy az **adftutorial** tároló van kijelölve a fanézetben. 
+11. Kattintson az eszköztár **Új mappa** elemére. 
+
+    ![Mappa létrehozása gomb](media/quickstart-create-data-factory-powershell/stroage-explorer-new-folder-button.png)
+12. Az **Új virtuális könyvtár létrehozása** ablakban írja be az **input** értéket a **Név** mezőbe, majd kattintson az **OK** gombra. 
+
+    ![Könyvtár létrehozása párbeszédpanel](media/quickstart-create-data-factory-powershell/storage-explorer-create-new-directory-dialog.png)
+13. Indítsa el a **Jegyzettömböt**, és hozzon létre egy **emp.txt** nevű fájlt az alábbi tartalommal: 
+    
+    ```
+    John, Doe
+    Jane, Doe
+    ```    
+    Mentse a fájlt a **c:\ADFv2QuickStartPSH** mappába: Ha még nem létezik, hozza létre az **ADFv2QuickStartPSH** mappát. 
+14. Kattintson az eszköztár **Feltöltés** gombjára, majd válassza a **Fájlok feltöltése** elemet. 
+
+    ![Feltöltés gomb](media/quickstart-create-data-factory-powershell/storage-explorer-upload-button.png)
+15. A **Fájlok feltöltése** ablakban a **Fájlok** elemnél válassza a `...` lehetőséget. 
+16. A **Feltölteni kívánt mappa kiválasztása** ablakban lépjen az **emp.txt** fájlt tartalmazó mappába, majd válassza ki a fájlt. 
+
+    ![Fájlok feltöltése párbeszédpanel](media/quickstart-create-data-factory-powershell/storage-explorer-upload-files-dialog.png)
+17. A **Fájlok feltöltése** ablakban kattintson a **Feltöltés** elemre. 
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+#### <a name="install-azure-powershell"></a>Az Azure PowerShell telepítése
+Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. 
+
+1. A webböngészőben lépjen az [Azure SDK letöltések és SDK-k](https://azure.microsoft.com/downloads/) lapra. 
+2. A **Parancssori eszközök** -> **PowerShell** szakaszban kattintson a **Windows-telepítés** elemre. 
+3. Futtassa az **MSI**-fájlt az Azure PowerShell telepítéséhez. 
+
+Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps). 
+
+#### <a name="log-in-to-azure-powershell"></a>Bejelentkezés az Azure PowerShellbe
+Indítsa el a gépén a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell ezeket a parancsokat.
+
+1. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt Azure-beli felhasználói nevét és jelszavát:
+       
     ```powershell
     Login-AzureRmAccount
     ```        
-    Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
+2. Ha több Azure-előfizetéssel is rendelkezik, futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez:
 
     ```powershell
     Get-AzureRmSubscription
     ```
-    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
+3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
 
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
     ```
-2. Futtassa a **Set-AzureRmDataFactoryV2** parancsmagot egy adat-előállító létrehozásához. A parancs végrehajtása előtt cserélje le a helyőrzőket a saját értékeire. A saját értékeire lecserélt **helyőrzők**. 
 
-    Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként használhat. 
-    ```powershell
-    $resourceGroupName = "<your resource group to create the factory>";
+## <a name="create-a-data-factory"></a>Data factory létrehozása
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét idézőjelek között, majd futtassa a parancsot. 
+   
+     ```powershell
+    $resourceGroupName = "<Specify a name for the Azure resource group>";
     ```
-
-    Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az adat-előállító neveként használhat. 
+2. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az adat-előállító neveként használhat. 
 
     ```powershell
-    $dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>";
+    $dataFactoryName = "<Specify a name for the data factory. It must be globally unique.>";
     ```
+1. Adjon meg egy változót az adat-előállító helyéhez: 
 
-    Futtassa a következő parancsot egy adat-előállító létrehozásához. 
+    ```powershell
+    $location = "East US"
+    ```
+4. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához: 
+
+    ```powershell
+    New-AzureRmResourceGroup $resourceGroupName $location
+    ``` 
+    Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd próbálkozzon újra. Ha meg szeretné osztani az erőforráscsoportot másokkal, folytassa a következő lépéssel. 
+5. Az adat-előállító létrehozásához futtassa az alábbi **Set-AzureRmDataFactoryV2** parancsmagot: 
+    
     ```powershell       
     Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
     ```
 
-    Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő szempontokat:
 
-    * Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra.
+* Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra.
 
-        ```
-        The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
-        ```
+    ```
+    The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
+    ```
 
-    * Data Factory-példányok létrehozásához az Azure-előfizetés közreműködőjének vagy rendszergazdájának kell lennie.
-    * A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+* Data Factory-példányok létrehozásához az Azure-előfizetés **közreműködőjének** vagy **rendszergazdájának** kell lennie.
+* A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
 ## <a name="create-a-linked-service"></a>Társított szolgáltatás létrehozása
 
 Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóhoz történő társításához. Ebben a rövid útmutatóban csak egy Azure Storage-beli társított szolgáltatást kell létrehoznia, amelyet forrás- és fogadóadattárként is használhat. Ebben a példában ennek a neve: AzureStorageLinkedService.
 
-1. Hozzon létre egy **AzureStorageLinkedService.json** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában az alábbi tartalommal (ha még nem létezne, hozza létre az ADFv2QuickStartPSH nevű mappát). A fájl mentése előtt az &lt;accountName&gt; és az &lt;accountKey&gt; kifejezést cserélje le az Azure Storage-fiók nevére és kulcsára.
+1. Hozzon létre egy **AzureStorageLinkedService.json** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában az alábbi tartalommal (ha még nem létezne, hozza létre az ADFv2QuickStartPSH nevű mappát). 
+
+    > [!IMPORTANT]
+    > A fájl mentése előtt az &lt;accountName&gt; és az &lt;accountKey&gt; kifejezést cserélje le az Azure Storage-fiók nevére és kulcsára.
 
     ```json
     {
@@ -127,7 +204,7 @@ Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adatt�
 
 ## <a name="create-a-dataset"></a>Adatkészlet létrehozása
 
-Megadhat egy adatkészletet, amely a forrásból a fogadóba másolt adatokat jelöli. Ebben a példában a blob-adatkészlet az előző lépésben létrehozott Azure Storage-beli társított szolgáltatásra vonatkozik. Az adatkészlethez egy olyan paraméter szükséges, amelynek az értéke az adatkészletet feldolgozó tevékenységben van beállítva. A paraméter az adatok tárolására szolgáló helyre mutató „folderPath” létrehozására használható.
+Megadhat egy adatkészletet, amely a forrásból a fogadóba másolt adatokat jelöli. Ebben a példában a blob-adatkészlet az előző lépésben létrehozott Azure Storage-beli társított szolgáltatásra vonatkozik. Az adatkészlethez egy olyan paraméter szükséges, amelynek az értéke az adatkészletet feldolgozó tevékenységben van beállítva. A paraméter az adatok tárolására szolgáló helyre mutató **folderPath** létrehozására használható.
 
 1. Hozzon létre egy **BlobDataset.json** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában az alábbi tartalommal.
 
@@ -173,7 +250,7 @@ Megadhat egy adatkészletet, amely a forrásból a fogadóba másolt adatokat je
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
   
-Ebben a példában a folyamat egy tevékenységet tartalmaz, és két paraméter szükséges hozzá: a bemeneti blob elérési útja és a kimeneti blob elérési útja. A paraméterek értékei a folyamat indításakor/futtatásakor lesznek beállítva. A másolási tevékenység az előző lépésben kimenetként és bemenetként létrehozott blob-adatkészletre hivatkozik. Ha az adatkészlet bemeneti adatkészletként van használatban, a bemeneti elérési út van megadva. Ha az adatkészlet kimeneti adatkészletként van használatban, a kimeneti elérési út van megadva. 
+Ebben a példában a folyamat egy tevékenységet tartalmaz, és két paraméter szükséges hozzá: a bemeneti blob elérési útja és a kimeneti blob elérési útja. A paraméterek értékei a folyamat indításakor/futtatásakor lesznek beállítva. A másolási tevékenység az előző lépésben kimenetként és bemenetként létrehozott blob-adatkészletet használja. Ha az adatkészlet bemeneti adatkészletként van használatban, a bemeneti elérési út van megadva. Ha az adatkészlet kimeneti adatkészletként van használatban, a kimeneti elérési út van megadva. 
 
 1. Hozzon létre egy **Adfv2QuickStartPipeline.json** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában az alábbi tartalommal.
 
@@ -247,12 +324,12 @@ Ebben a lépésben beállítja a folyamatparaméterek értékeit: az **inputPath
 
 1. Hozzon létre egy **PipelineParameters.json** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában az alábbi tartalommal.
 
-    A fájl mentése előtt cserélje le az inputPath és outputPath paraméter értékét a forrás- és fogadó-blob elérési útjára az adatok másolásához.
+    Ha más tárolókat és mappákat használ, cserélje le az **inputPath** és **outputPath** paraméter értékét a forrás- és fogadóblob elérési útjára.
 
     ```json
     {
-        "inputPath": "<the path to existing blob(s) to copy data from, e.g. containername/foldername>",
-        "outputPath": "<the blob path to copy data to, e.g. containername/foldername>"
+        "inputPath": "adftutorial/input",
+        "outputPath": "adftutorial/output"
     }
     ```
 
@@ -344,7 +421,7 @@ Ebben a lépésben beállítja a folyamatparaméterek értékeit: az **inputPath
     ```
 
 ## <a name="verify-the-output"></a>Kimenet ellenőrzése
-Például az [Azure Storage Explorerhez](https://azure.microsoft.com/features/storage-explorer/) hasonló eszközök használatával ellenőrizheti, hogy az inputBlobPath alatt található blobok át lettek-e másolva az outputBlobPath helyre.
+A folyamat automatikusan létrehozza a kimeneti mappát az adftutorial blobtárolóban. Ezután átmásolja az emp.txt fájlt a bemeneti mappából a kimeneti mappába. Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával ellenőrizze, hogy az inputBlobPath alatt található blobok át lettek-e másolva az outputBlobPath helyre. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti az [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md), amely tartalmazza az erőforráscsoportban lévő összes erőforrást. Ha a többi erőforrást érintetlenül szeretné hagyni, csak az ebben az oktatóanyagban létrehozott adat-előállítót törölje.
@@ -357,7 +434,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 Az alábbi parancsot futtassa, ha csak az adat-előállítót szeretné törölni: 
 
 ```powershell
-Remove-AzureRmDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<NameOfResourceGroup>"
+Remove-AzureRmDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
 ```
 
 ## <a name="next-steps"></a>Következő lépések

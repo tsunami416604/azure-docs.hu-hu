@@ -65,6 +65,8 @@
       href: functions-triggers-bindings.md
     - name: Nyelvek
       items:
+        - name: Támogatott nyelvek
+          href: supported-languages.md
         - name: 'C#-szkript'
           href: functions-reference-csharp.md
         - name: .NET-osztálytár

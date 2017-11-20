@@ -3,7 +3,7 @@
 ## [Az Azure IoT lehetőségeinek összehasonlítása](iot-suite-options.md)
 ## [Előre konfigurált megoldások áttekintése](iot-suite-what-are-preconfigured-solutions.md)
 
-# Első lépések
+# Bevezetés
 ## Távoli figyelés
 ### [Az előre konfigurált megoldás üzembe helyezése](iot-suite-remote-monitoring-deploy.md)
 ### [Az előre konfigurált megoldás üzemeltetése](iot-suite-remote-monitoring-explore.md)
@@ -25,11 +25,8 @@
 ###### [Szimulált adatok](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
 ###### [Valódi érzékelők használata](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
 ###### [Vezérlőprogram-frissítés megvalósítása](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
-#### Az Intel NUC-átjáró csatlakoztatása
-##### [Szimulált adatok](iot-suite-v1-gateway-kit-get-started-simulator.md)
-##### [Valódi érzékelő használata](iot-suite-v1-gateway-kit-get-started-sensortag.md)
 
-### Útmutató
+### Útmutatók
 #### Szimulált eszköz csatlakoztatása
 ##### [C Windowson](iot-suite-v1-connecting-devices.md)
 ##### [C Linuxon](iot-suite-v1-connecting-devices-linux.md)
@@ -51,7 +48,7 @@
 ### [Csatlakoztatott factory-megoldás áttekintése](iot-suite-connected-factory-overview.md)
 ### [Csatlakoztatott gyáron alapuló megoldás bemutatója](iot-suite-connected-factory-sample-walkthrough.md)
 
-# Útmutató
+# Útmutatók
 ## Távoli figyelés
 ### [Speciális monitorozás végrehajtása](iot-suite-remote-monitoring-monitor.md)
 ### [Hibák észlelése szabályokkal](iot-suite-remote-monitoring-automate.md)

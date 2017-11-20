@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/06/2017
+ms.date: 11/10/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8961576d1a7de268bab2f4adf01d89dde1fc8776
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 23621c418663ee5b4ed83ab989663a882e7000bd
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Csatlakozás a HDInsighthoz (Hadoop) SSH-val
 
@@ -48,26 +48,24 @@ A HDInsight használhatja a Linux (Ubuntu) rendszert a Hadoop-fürt csomópontja
 > [!TIP]
 > Amikor első alkalommal csatlakozik a HDInsighthoz, az SSH-ügyfél olyan figyelmeztetést jeleníthet meg, amely szerint a gazdaszámítógép nem hitelesíthető. Amikor a rendszer erre felkéri, válassza a „yes” (igen) lehetőséget ahhoz, hogy a gazdaszámítógép felvegye az SSH-ügyfél megbízható kiszolgálókat tartalmazó listába.
 >
-> Ha korábban már csatlakozott egy ilyen nevű kiszolgálóhoz, előfordulhat, hogy a rendszer figyelmezteti rá, hogy a tárolt gazdaszámítógép-kulcs nem egyezik meg a kiszolgáló gazdaszámítógép-kulcsával. Ha ez megtörténik, lehetséges, hogy az SSH-ügyfél nem hajlandó csatlakozni a fürthöz. A kiszolgálónévhez tartozó, meglévő bejegyzés eltávolításához tekintse meg az SSH-ügyfél dokumentációját.
+> Ha korábban már csatlakozott egy ilyen nevű kiszolgálóhoz, előfordulhat, hogy a rendszer figyelmezteti rá, hogy a tárolt gazdaszámítógép-kulcs nem egyezik meg a kiszolgáló gazdaszámítógép-kulcsával. A kiszolgálónévhez tartozó, meglévő bejegyzés eltávolításához tekintse meg az SSH-ügyfél dokumentációját.
 
 ## <a name="ssh-clients"></a>SSH-ügyfelek
 
 Az `ssh` és `scp` parancs elérhető a Linux, Unix és macOS rendszerekben. Az `ssh`-ügyfelet általában arra használják, hogy távoli parancssori munkamenetet hozzon létre Linux vagy Unix rendszerben. Az `scp`-ügyfél segítségével biztonságosan másolhat fájlokat a saját ügyfél és a távoli rendszer között.
 
-A Microsoft Windows alapértelmezés szerint nem biztosít SSH-ügyfelet. Az `ssh`- és az `scp`-ügyfél az alábbi csomagokban érhető el a Windows rendszerhez:
+A Microsoft Windows alapértelmezés szerint nem telepít SSH-ügyfelet. Az `ssh`- és az `scp`-ügyfél az alábbi csomagokban érhető el a Windows rendszerhez:
 
-* [Azure Cloud Shell](../cloud-shell/quickstart.md): A Cloud Shell Bash-környezetet biztosít a böngészőben, továbbá lehetővé teszi az `ssh`, az `scp`, és egyéb gyakori Linux-parancsok használatát.
+* OpenSSH-ügyfél (béta): A Fall Creators Update-ben lépjen a __Beállítások__ > __Alkalmazások és szolgáltatások__ > __Választható funkciók kezelése__ > __Funkció hozzáadása__ menüponthoz, és válassza az __OpenSSH-ügyfél__ lehetőséget. 
+
+    > [!NOTE]
+    > Ha az `ssh` és az `scp` parancsok a funkció engedélyezése után sem érhetők el a PowerShellben, jelentkezzen ki, majd jelentkezzen be újra.
 
 * [Windows 10-en futó Ubuntu Bash-környezet](https://msdn.microsoft.com/commandline/wsl/about): Az `ssh` és az `scp` parancs a Windows rendszeren futó Bash parancssorából érhető el.
 
+* [Azure Cloud Shell](../cloud-shell/quickstart.md): A Cloud Shell Bash-környezetet biztosít a böngészőben, továbbá lehetővé teszi az `ssh`, az `scp`, és egyéb gyakori Linux-parancsok használatát.
+
 * [Git (https://git-scm.com/)](https://git-scm.com/): Az `ssh` és az `scp` parancs a GitBash parancssorából érhető el.
-
-* [GitHub Desktop (https://desktop.github.com/)](https://desktop.github.com/) Az `ssh` és az `scp` parancs a GitHub Shell parancssorából érhető el. A GitHub Desktop konfigurálható a Bash, a Windows-parancssor vagy a PowerShell használatára a Git Shell parancssoraként.
-
-* [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH): A PowerShell csapata portolja az OpenSSH-t Windows rendszerre, és tesztkiadásokat biztosít.
-
-    > [!WARNING]
-    > Az OpenSSH csomag tartalmazza az `sshd` SSH-kiszolgálóösszetevőt. Ez az összetevő elindít egy SSH-kiszolgálót a rendszerén, így mások csatlakozhatnak ahhoz. Ne konfigurálja ezt az összetevőt, és ne nyissa meg a 22-es portot, ha nem szeretne SSH-kiszolgálót futtatni a rendszerén. Ez nem szükséges a HDInsighttal való kommunikációhoz.
 
 Több grafikus SSH-ügyfél is elérhető, például a [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) és a [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Bár ezek az ügyfelek használhatók a HDInsighthoz történő kapcsolódáshoz, a kapcsolódás folyamata más, mint az `ssh` segédprogram használatakor. További információt az Ön által használt grafikus ügyfél dokumentációjában talál.
 
@@ -116,7 +114,7 @@ A kulcs létrehozása során a rendszer információk megadását kéri. Példá
 Az SSH-fiókok jelszóval védhetők. Amikor SSH-fiókkal csatlakozik a HDInsighthoz, a rendszer jelszót kér.
 
 > [!WARNING]
-> Nem ajánlott jelszavas hitelesítést használni az SSH-hoz. A jelszavakat ki lehet találni, és védtelenek a találgatásos támadásokkal szemben. Ehelyett azt javasoljuk, hogy használjon [SSH-kulcsokat a hitelesítéshez](#sshkey).
+> A Microsoft nem javasolja jelszavas hitelesítés használatát az SSH-hoz. A jelszavakat ki lehet találni, és védtelenek a találgatásos támadásokkal szemben. Ehelyett azt javasoljuk, hogy használjon [SSH-kulcsokat a hitelesítéshez](#sshkey).
 
 ### <a name="create-hdinsight-using-a-password"></a>HDInsight létrehozása jelszóval
 
@@ -176,7 +174,7 @@ A feldolgozó és Zookeeper-csomópontok nem közvetlenül az internetről, hane
 
         ssh sshuser@wn0-myhdi
 
-    A fürtben található csomópontok tartománynévlistájának lekéréséhez lásd: [A HDInsight kezelése az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
+    A csomópontok névlistájának lekéréséhez lásd: [A HDInsight kezelése az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
 
 Ha az SSH-fiókot __jelszó__ védi, a kapcsolódáshoz adja meg a jelszót.
 

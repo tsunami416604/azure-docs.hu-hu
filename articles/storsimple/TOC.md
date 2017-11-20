@@ -2,6 +2,7 @@
 
 ## Áttekintés
 ### [Mi a megoldás?](storsimple-ova-overview.md)
+### [Régiónkénti elérhetőség](storsimple-regions.md)
 
 ## Bevezetés
 ### Felkészülés
@@ -59,6 +60,7 @@
 ### [Mi a megoldás?](storsimple-overview.md)
 ### [StorSimple – tanulási térkép](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [Biztonsági szempontok](storsimple-8000-security.md)
+### [Régiónkénti elérhetőség](storsimple-regions.md)
 ### [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md)
 
 ## Bevezetés
