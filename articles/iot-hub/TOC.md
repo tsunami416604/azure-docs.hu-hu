@@ -28,12 +28,6 @@
 #### [Sparkfun ESP8266 Thing Dev és Arduino IDE](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [Adafruit Feather M0 és Arduino IDE](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
-#### Az IoT Gateway Starter Kit használata
-##### [Az Intel NUC beállítása átjáróként](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-##### [Az IoT Hub és az átjáró összekapcsolása](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-##### [Az átjáró használata adatátalakításra](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
-##### [hibaelhárítással](iot-hub-gateway-kit-c-troubleshooting.md)
-
 ## Bővített IoT-forgatókönyvek
 ### [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
 ### [IoT Hub-üzenetek mentése Azure-adattárba](iot-hub-store-data-in-azure-table-storage.md)
@@ -43,7 +37,7 @@
 ### [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
 ### [Távoli figyelés és értesítések a Logic Apps használatával](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
-# Útmutató
+# Útmutatók
 ## Felkészülés
 ### [Az IoT Hub és az Event Hubs összehasonlítása](iot-hub-compare-event-hubs.md)
 ### [A megoldás skálázása](iot-hub-scaling.md)
@@ -147,30 +141,6 @@
 ##### [X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági alapfogalmai](iot-hub-x509ca-concept.md)
 #### [Bevezetés az X.509-es hitelesítésszolgáltatói tanúsítványok használatába](iot-hub-security-x509-get-started.md)
 ##### [Tanúsítványok létrehozása – PowerShell](iot-hub-security-x509-create-certificates.md)
-
-## Azure IoT Edge
-### [Áttekintés](iot-hub-iot-edge-overview.md)
-### Bevezetés
-#### [Linux](iot-hub-linux-iot-edge-get-started.md)
-#### [Windows](iot-hub-windows-iot-edge-get-started.md)
-### Eszköz szimulálása
-#### [Linux](iot-hub-linux-iot-edge-simulated-device.md)
-#### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
-### [Valós eszköz használata](iot-hub-iot-edge-physical-device.md)
-### Modul létrehozása
-#### [Java](iot-hub-iot-edge-create-module-java.md)
-#### [.NET-keretrendszer](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-the-net-module-sample-windows-10)
-#### [.NET Standard](iot-hub-iot-edge-create-module-dotnet-core.md)
-#### [Node.js](iot-hub-iot-edge-create-module-js.md)
-### Felépítés
-#### [.NET-keretrendszer](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample)
-#### [.NET Core-modul](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_core_module_sample)
-#### [.NET Core felügyelt átjáró](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_core_managed_gateway)
-#### [Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample)
-#### [Node.js](https://github.com/Azure/iot-edge/tree/master/samples/nodejs_simple_sample)
-#### [Modul dinamikus hozzáadása](https://github.com/Azure/iot-edge/tree/master/samples/dynamically_add_module_sample)
-#### [Folyamaton kívüli proxymodul](https://github.com/Azure/iot-edge/tree/master/samples/proxy_sample)
-#### [Natív modulszolgáltató](https://github.com/Azure/iot-edge/tree/master/samples/native_module_host_sample)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)

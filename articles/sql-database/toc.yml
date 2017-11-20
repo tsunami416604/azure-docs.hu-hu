@@ -370,6 +370,8 @@
           items:
             - name: Mintaalkalmazás üzembe helyezése
               href: saas-multitenantdb-get-started-deploy.md
+            - name: Bérlők kiosztása
+              href: saas-multitenantdb-provision-and-catalog.md
             - name: Adatbázis teljesítményének monitorozása
               href: saas-multitenantdb-performance-monitoring.md
             - name: Alkalmi lekérdezések futtatása

@@ -3,7 +3,7 @@ documentType: LandingData
 title: Az Azure Databricks előzetes verziójának dokumentációja
 metadata:
   title: Az Azure Databricks dokumentációja – oktatóanyagok | Microsoft Docs
-  description: Ismerje meg a Databricks használatát a Microsoft Azure-ban.
+  description: Az itt elérhető rövid útmutatók és egyéb hivatkozások segítségével megismerheti az Azure Databricks használatát. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform.
   services: azure-databricks
   author: nitinme
   manager: cgronlun
@@ -14,7 +14,7 @@ metadata:
   ms.date: 11/15/2017
   ms.author: nitinme
 abstract:
-  description: 'Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform. Az Apache Spark alapítóival közösen tervezett Databricks integrálva van az Azure-ral, így egyetlen kattintással beállítható, zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, az adatmérnökök és az üzleti elemzők közötti együttműködés. Az itt elérhető rövid útmutatók és egyéb hivatkozások segítségével megismerheti az Azure Databricks használatát.'
+  description: 'Az itt elérhető rövid útmutatók és egyéb hivatkozások segítségével megismerheti az Azure Databricks használatát. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform. Az Apache Spark alapítóival közösen tervezett Databricks integrálva van az Azure-ral, így egyetlen kattintással beállítható, zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, az adatmérnökök és az üzleti elemzők közötti együttműködés.'
 sections:
   - title: 5 perces gyors útmutatók
     items:
