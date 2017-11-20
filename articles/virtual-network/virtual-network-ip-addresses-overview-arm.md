@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: jdial
-ms.openlocfilehash: d243455be9439a686ecdf6dfa3aadf2802a0714d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 95f2b57b2012df816c76a1b6ec55ca9f92e134a3
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
@@ -145,29 +145,22 @@ A magánhálózati IP-címek IPv4- vagy IPv6-címekkel jönnek létre. A magánh
 
 ### <a name="allocation-method"></a>Lefoglalási módszer
 
-A magánhálózati IP-cím annak az alhálózatnak a címtartományából van lefoglalva, amelyhez az erőforrás csatlakozik. Az alhálózat címtartománya a virtuális hálózat címtartományának része.
+A magánhálózati IP-cím a virtuális hálózat azon alhálózatának a címtartományából van lefoglalva, amelyben az erőforrás üzembe van helyezve. Két módszer van, amellyel a magánhálózati IP-címek lefoglalhatók:
 
-Két módszer van, amellyel a magánhálózati IP-címek lefoglalhatók: *dinamikus* vagy *statikus*. Az alapértelmezett lefoglalási módszer a *dinamikus*, amelyben az IP-cím lefoglalása automatikusan történik az erőforrás alhálózatából (a DHCP használatával). Az IP-cím változhat, ha leállítja, majd újraindítja az erőforrást.
+- **Dinamikus**: Az Azure lefoglalja minden egyes alhálózat címtartományának első négy címét, és ezeket nem osztja ki. Az Azure az alhálózat címtartományának egyik erőforrásához rendeli hozzá a következő elérhető címet. Például, ha az alhálózat címtartománya 10.0.0.0/16, és a 10.0.0.0.4-10.0.0.14 közötti címek már hozzá lettek rendelve (a .0–.3 címek fenn vannak tartva), az Azure az erőforráshoz rendeli a 10.0.0.15 címet. Az alapértelmezett lefoglalási módszer a dinamikus. Kiosztás után a dinamikus IP-címek csak a hálózati adapter törlésekor, a virtuális hálózaton belüli másik alhálózatra történő kiosztáskor vagy a kiosztási módszer statikusra váltása és másik IP-cím megadása esetén szabadulnak fel. Alapértelmezés szerint, amikor a lefoglalási módszert dinamikusról statikusra váltja, az Azure statikus címként osztja ki az előzőleg dinamikusan kiosztott címet.
+- **Statikus**: Ön választja ki és rendeli hozzá a címet az alhálózat címtartományából. A hozzárendelt cím az alhálózat címtartományán belül bármilyen cím lehet, amely nem tartozik az alhálózat címtartományának első négy címébe, és nincs hozzárendelve más erőforráshoz az alhálózatban. A statikus címek csak egy hálózati adapter törlése esetén szabadulnak fel. Amennyiben a kiosztási módszert statikusra váltja, az Azure az előzőleg hozzárendelt statikus IP-címeket dinamikus IP-címként osztja ki akkor is, ha a cím nem az alhálózat címtartományának következő elérhető címe. A cím akkor is megváltozik, ha a hálózati adapter ugyanazon a virtuális hálózaton belül egy másik alhálózathoz lesz kiosztva, de ahhoz, hogy a hálózati adaptert egy másik alhálózathoz ossza ki, a kiosztási módszert először statikusról dinamikusra kell váltani. Miután hozzárendelte a hálózati adaptert egy másik alhálózathoz, a kiosztási módszer visszaváltható statikusra, és hozzárendelhet egy IP-címet az új alhálózat címtartományából.
 
-A lefoglalási módszert állíthatja *statikusra* is, hogy az IP-címek változatlanok maradjanak. Ha a *statikus* lehetőséget választja, meg kell adnia egy érvényes IP-címet, amely az erőforrás alhálózatának részét képezi.
+### <a name="virtual-machines"></a>Virtuális gépek
 
-Statikus magánhálózati IP-címeket általában a következő esetekben szoktak használni:
-
-* Tartományvezérlőként vagy DNS-kiszolgálóként működő virtuális gépek esetén.
-* IP-címeket használó tűzfalszabályokat igénylő erőforrások esetén.
-* Más alkalmazások/erőforrások által IP-címen keresztül elért erőforrások esetén.
-
-### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
-
-A magánhálózati IP-cím egy [Windows-](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Linux-](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)virtuális gép **hálózati adapteréhez** van rendelve. Ha a virtuális gép több hálózati adapterrel rendelkezik, egy-egy magánhálózati IP-cím lesz mindegyik hálózati adapterhez rendelve. A lefoglalási módszert hálózati adapter esetében meghatározhatja dinamikusként vagy statikusként is.
+Egy vagy több magánhálózati IP-cím egy vagy több [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rendszerű virtuális gép **hálózati adapteréhez** van rendelve. A lefoglalási módszert minden magánhálózati IP-cím esetében meghatározhatja dinamikusként vagy statikusként is.
 
 #### <a name="internal-dns-hostname-resolution-for-virtual-machines"></a>Belső DNS-állomásnév feloldás (virtuális gépek esetén)
 
 Minden Azure virtuális gép alapértelmezés szerint az [Azure által felügyelt DNS-kiszolgálókkal](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) van konfigurálva, ha nem konfigurál kifejezetten egyéni DNS-kiszolgálókat. Ezek a DNS-kiszolgálók belső névfeloldást biztosítanak az egyazon virtuális hálózaton található virtuális gépek számára.
 
-Amikor létrehoz egy virtuális gépet, az állomásnév a magánhálózati IP-címére való leképezése hozzá lesz adva az Azure által felügyelt DNS-kiszolgálóhoz. Ha egy virtuális gép több hálózati adapterrel rendelkezik, az állomásnév az elsődleges hálózati adapter magánhálózati IP-címére lesz leképezve.
+Amikor létrehoz egy virtuális gépet, az állomásnév a magánhálózati IP-címére való leképezése hozzá lesz adva az Azure által felügyelt DNS-kiszolgálóhoz. Ha egy virtuális gép több hálózati adapterrel vagy a hálózati adapter több IP konfigurációval rendelkezik, az eszköznév az elsődleges hálózati adapter elsődleges IP konfigurációjának magánhálózati IP-címére lesz leképezve.
 
-Az Azure által felügyelt DNS-kiszolgálókkal konfigurált virtuális gépek képesek az egyazon virtuális hálózatban lévő összes virtuális gép állomásnevét feloldani azok magánhálózati IP-címeire.
+Az Azure által felügyelt DNS-kiszolgálókkal konfigurált virtuális gépek képesek az egyazon virtuális hálózatban lévő összes virtuális gép állomásnevét feloldani azok magánhálózati IP-címeire. A csatlakoztatott virtuális hálózatokban található virtuális gépek eszközneveinek feloldásához egyéni DNS-kiszolgálóra lesz szüksége.
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>Belső terheléselosztók (ILB) és alkalmazásátjárók
 

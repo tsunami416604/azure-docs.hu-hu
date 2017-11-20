@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 10/13/2017
-ms.openlocfilehash: 07d06e4de95fcc562bcc76ac5cc4f5cd3483ba6d
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 7c74a9ebaae0b027277fe282b958a653ab498fc5
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Fiókok létrehozása az Azure Machine Learning előzetes verziójához és az Azure Machine Learning Workbench telepítése
 Az Azure Machine Learning egy integrált, átfogó és fejlett adatelemzési megoldás. A hivatásos adatszakértők számára nyújt segítséget az adatok előkészítésében, a kísérletek kidolgozásában és a modellek felhőszinten való üzembe helyezésében.
@@ -93,33 +93,20 @@ Az Azure Machine Learning Workbench telepítése Windows 10, Windows Server 2016
    `C:\Users\<user>\AppData\Local\AmlWorkbench`
 
 ## <a name="install-azure-machine-learning-workbench-on-macos"></a>Azure Machine Learning Workbench telepítése macOS rendszeren
-Az Azure Machine Learning Workbench telepítése macOS Sierra operációs rendszert futtató számítógépre.
+Az Azure Machine Learning Workbench telepítése macOS Sierra vagy újabb operációs rendszert futtató számítógépre.
 
-1. Az openssl kódtár telepítése [Homebrew](http://brew.sh) használatával. További információkért lásd [a .NET Core előfeltételeit Mac gépeken](https://docs.microsoft.com/dotnet/core/macos-prerequisites).
-   ```
-   # install Homebrew first if you don't have it already
-   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-   # install latest openssl needed for .NET Core 1.x
-   brew update
-   brew install openssl
-   mkdir -p /usr/local/lib
-   ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
-   ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
-   ```
-
-2. Töltse le az Azure Machine Learning Workbench [AmlWorkbench.dmg](https://aka.ms/azureml-wb-dmg) elnevezésű telepítőjének legújabb verzióját.
+1. Töltse le az Azure Machine Learning Workbench [AmlWorkbench.dmg](https://aka.ms/azureml-wb-dmg) elnevezésű telepítőjének legújabb verzióját.
 
    >[!IMPORTANT]
    >Töltse le a telepítőt a meghajtóra, majd futtassa onnan. Ne közvetlenül a böngésző letöltésvezérlőjéből futtassa.
 
-3. Kattintson duplán a letöltött **AmlWorkbench.dmg** telepítőre a Finderben.
+2. Kattintson duplán a letöltött **AmlWorkbench.dmg** telepítőre a Finderben.
 
-4. A telepítés befejezéséhez kövesse a képernyőn megjelenő utasításokat.
+3. A telepítés befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
    A telepítő letölti az összes szükséges összetevőt, köztük a Python-, a Miniconda- és az egyéb kapcsolódó kódtárakat. A telepítőnek hozzávetőleg fél óra szükséges az összes összetevő előkészítéséhez. 
 
-5. Az Azure Machine Learning Workbench most a következő mappába van telepítve: 
+4. Az Azure Machine Learning Workbench most a következő mappába van telepítve: 
 
    `/Applications/AmlWorkbench.app`
 

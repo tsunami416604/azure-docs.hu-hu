@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/15/2017
 ms.author: shlo
-ms.openlocfilehash: 7851a24e7053e03cc28927ffae3a2b69a3291635
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: c3cf9bfeabb65fa15941e3085d9f9146c3feef80
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
@@ -85,7 +85,7 @@ Ha biztonságosan szeretne adatintegrációt végezni egy nyilvános felhőkörn
 ### <a name="compute-resource-and-scaling"></a>Számítási erőforrások és méretezés
 A saját üzemeltetésű integrációs modult helyszíni gépre vagy magánhálózaton belüli virtuális gépre kell telepíteni. Jelenleg csak Windows operációs rendszeren támogatjuk a saját üzemeltetésű integrációs modulok futtatását.  
 
-A magas rendelkezésre állás és a méretezhetőség érdekében horizontálisan felskálázhatja saját üzemeltetésű integrációs modulját, ha több helyszíni géppel aktív-aktív módban társít hozzá egy logikai példányt.  További információkért tekintse meg az útmutatók között a saját üzemeltetésű integrációs modul létrehozását és konfigurálását ismertető témakört.
+A magas rendelkezésre állás és a méretezhetőség érdekében horizontálisan felskálázhatja saját üzemeltetésű integrációs modulját, ha több helyszíni géppel aktív-aktív módban társít hozzá egy logikai példányt.  További információkért tekintse meg az útmutatók között a saját üzemeltetésű integrációs modul létrehozását és konfigurálását ismertető cikket.
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS integrációs modul
 A meglévő SSIS számítási feladat átemeléséhez létrehozhat egy Azure-SSIS integrációs modult az SSIS-csomagok natív létrehozásához.
@@ -96,7 +96,7 @@ Az Azure-SSIS integrációs modul kiépíthető nyilvános hálózaton vagy mag�
 ### <a name="compute-resource-and-scaling"></a>Számítási erőforrások és méretezés
 Az Azure-SSIS integrációs modul egy, az SSIS-csomagok futtatására dedikált Azure-beli virtuális gépekből álló teljesen felügyelt fürt. Használhatja a saját Azure SQL Database- vagy Managed Instance-kiszolgálóját (privát előzetes verzió) az SSIS-projektek/csomagok (SSISDB) csatolandó katalógusának üzemeltetésére. A számítási teljesítmény vertikális felskálázásához adjon meg egy csomópontméretet, és skálázza fel horizontálisan a fürt csomópontszámának megadásával. Az Azure-SSIS integrációs modul futtatási költségének kezeléséhez igény szerint leállíthatja és elindíthatja azt.
 
-További információkért tekintse meg az útmutatók között az Azure-SSIS integrációs modul létrehozása és konfigurálása témakört.  Létrehozásukat követően kevés vagy szinte semmilyen módosítással, a helyszíni SSIS-csomagokkal megegyező módon üzembe helyezheti és kezelheti meglévő SSIS-csomagjait az olyan jól ismert eszközök használatával, mint az SQL Server Data Tools (SSDT) és az SQL Server Management Studio (SSMS).
+További információkért tekintse meg az útmutatók között az Azure-SSIS integrációs modul létrehozását és konfigurálását ismertető cikket.  Létrehozásukat követően kevés vagy szinte semmilyen módosítással, a helyszíni SSIS-csomagokkal megegyező módon üzembe helyezheti és kezelheti meglévő SSIS-csomagjait az olyan jól ismert eszközök használatával, mint az SQL Server Data Tools (SSDT) és az SQL Server Management Studio (SSMS).
 
 Az Azure-SSIS integrációs modullal kapcsolatos további információkért tekintse át a következő cikkeket: 
 
@@ -123,7 +123,7 @@ Az alábbi ábrán két példa látható másolási tevékenységre:
 ![A használandó integrációs modul](media/concepts-integration-runtime/which-integration-runtime-to-use.png)
 
 ## <a name="integration-runtime-location"></a>Az integrációs modul helye
-A Data Factory ott található, ahol az adat-előállító metaadatait tárolja a rendszer, és ahonnan a folyamat aktiválása indul. A jelenleg támogatott Data Factory helyek: USA keleti régiója, USA 2. keleti régiója. A data factory azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében. Ez a viselkedés az adatmegfelelőség, a hatékonyság és a csökkentett hálózati adatkimeneti költségek biztosítása érdekében a globálisan több régióban rendelkezésre álló integrációs modulon keresztül valósul meg.
+A Data Factory ott található, ahol az adat-előállító metaadatait tárolja a rendszer, és ahonnan a folyamat aktiválása indul. A jelenleg támogatott Data Factory helyek: USA keleti régiója, USA 2. keleti régiója és a nyugat-európai régió. A data factory azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében. Ez a viselkedés az adatmegfelelőség, a hatékonyság és a csökkentett hálózati adatkimeneti költségek biztosítása érdekében a globálisan több régióban rendelkezésre álló integrációs modulon keresztül valósul meg.
 
 Az integrációs modul helye meghatározza a háttérszámítások helyét, és lényegében a helyet, ahol az adatmozgás, a tevékenységküldés és az SSIS-csomag végrehajtása történik. Az integrációs modul helye eltérhet annak az adat-előállítónak a helyétől, amelyhez tartozik. Az alábbi ábrán a Data Factory és a hozzá tartozó integrációs modul beállításai találhatók:
 

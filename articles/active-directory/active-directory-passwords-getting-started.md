@@ -16,88 +16,87 @@ ms.topic: get-started-article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 7d97fad04a0aa549d0e3a182282f898302e8e41a
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c5ba922175a25776c6e27ee03fae9b2941235881
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Az Azure AD új jelszó önkiszolgáló kérési funkciójának gyors üzembe helyezése
 
 > [!IMPORTANT]
-> **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md).
+> **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, tekintse meg a következő cikket: [Segítség, elfelejtettem Azure AD-jelszavamat](active-directory-passwords-update-your-own-password.md).
 
-Az önkiszolgáló jelszó-visszaállítás (SSPR) egyszerű módot kínál a rendszergazdáknak arra, hogy felhatalmazzák a felhasználókat jelszavuk és fiókjuk visszaállítására vagy zárolásának feloldására. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhasználatáról, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
+Az önkiszolgáló jelszó-visszaállítás (SSPR) egyszerű módot kínál a rendszergazdáknak arra, hogy felhatalmazzák a felhasználókat jelszavuk és fiókjuk visszaállítására vagy zárolásának feloldására. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhozzáféréséről, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
 
-Ez a tájékoztató feltételezi, hogy már rendelkezik egy Azure AD-bérlő érvényes próbaverziójával vagy licencével. Ha segítségre van szüksége az Azure AD beállításához, tekintse meg [az Azure AD rövid bemutató cikkét](https://azure.microsoft.com/trial/get-started-active-directory/).
+Ez az útmutató feltételezi, hogy már rendelkezik egy Azure Active Directory-bérlő (Azure AD-bérlő) érvényes próbaverziójával vagy licencével. Ha segítségre van szüksége az Azure AD beállításához, tekintse meg az [Ismerkedés az Azure AD szolgáltatással](https://azure.microsoft.com/trial/get-started-active-directory/) című részt.
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Az SSPR engedélyezése az Azure AD-bérlő számára
 
-1. A meglévő Azure AD-bérlőjében válassza ki a **„Jelszó átállítása”** lehetőséget.
+1. A meglévő Azure AD-bérlőjében válassza ki a **Jelszó átállítása** lehetőséget.
 
-2. A **„Tulajdonságok”** képernyő „Új jelszó önkiszolgáló kérése engedélyezve” területén válassza valamelyiket a következők közül:
-    * Nincs – Senki nem használhatja az SSPR funkciót.
-    * Kiválasztva – Csak az Ön által kiválasztott Azure AD-csoport tagjai használhatják az SSPR funkciót. Amikor megvalósíthatósági próbát végez, ezt a beállítást javasoljuk egy meghatározott felhasználói csoporttal.
-    * Összes – Minden felhasználó használhatja az SSPR funkciót, aki rendelkezik fiókkal az Azure AD-bérlőjében. Ezt akkor ajánlott beállítani, amikor készen áll a funkció üzembe helyezésére a teljes bérlőn, a megvalósíthatósági próba elvégzése után.
+2. A **Tulajdonságok** képernyő **Önkiszolgáló jelszóátállítás engedélyezve** lehetőségnél válassza a következők egyikét:
+    * **Senki**: Senki nem használhatja az SSPR funkciót.
+    * **Kiválasztva**: Csak az Ön által kiválasztott Azure AD-csoport tagjai használhatják az SSPR funkciót. Amikor megvalósíthatósági próbát végez a funkcióval, ezt a beállítást javasoljuk egy meghatározott felhasználói csoporttal.
+    * **Összes**: Minden felhasználó használhatja az SSPR funkciót, aki rendelkezik fiókkal az Azure AD-bérlőjében. Ezt akkor ajánlott beállítani, amikor készen áll a funkció üzembe helyezésére a teljes bérlőn, a megvalósíthatósági próba elvégzése után.
 
-3. Válasszon a **„Hitelesítési módszerek”** képernyőről
-    * Az új jelszó kéréséhez szükséges módszerek száma – Minimum egyet, maximum kettőt támogatunk
-    * Felhasználók által választható módszerek – Legalább egyre van szükségünk, de egy plusz lehetőség sosem árt
-        * Az **E-mail** beállítás egy kódot tartalmazó e-mailt küld a felhasználó konfigurált hitelesítési e-mail-címére.
-        * A **Mobiltelefon** beállítás lehetővé teszi a felhasználó számára, hogy egy kódot tartalmazó hívást vagy SMS-t fogadhasson konfigurált mobiltelefon-számán.
-        * Az **Irodai telefon** beállítás felhívja a felhasználót a konfigurált irodai telefonszámán, és egy kódot olvas be.
-        * A **Biztonsági kérdések** területen a következőket kell kiválasztani:
-            * A biztonsági kérdésekre való regisztráláshoz szükséges kérdések száma – A sikeres regisztrációhoz szükséges minimális kérdések számát jelenti. Tehát egy felhasználó dönthet úgy, több választ ad meg egy olyan kérdéskészlet létrehozásához, amiből előhívhatóak a kérdések. Ezt a beállítást 3 és 5 közötti értékre lehet beállítani, és nagyobbnak vagy egyenlőnek kell lennie, mint a visszaállítást igénylő kérdések száma.
-                * Egyéni kérdéseket az „Egyéni” gombra kattintva lehet hozzáadni a biztonsági kérdések kiválasztásakor
-            * Az új jelszó kéréséhez szükséges kérdések száma lehetőséget 3 és 5 közötti értékre lehet beállítani. Az új jelszó kéréséhez vagy a zárolás feloldásához ennyi helyesen megválaszolandó kérdés szükséges.
+3. A **Hitelesítési módszerek** lapon válasszon az alábbiak közül:
+    * **Az új jelszó kéréséhez szükséges módszerek száma**: Minimum egyet, maximum kettőt támogatunk.
+    * **Felhasználók által választható módszerek**: Legalább egyre van szükségünk, de egy plusz lehetőség sosem árt.
+        * **E-mail**: Egy kódot tartalmazó e-mailt küld a felhasználó konfigurált hitelesítési e-mail-címére.
+        * **Mobiltelefon**: Lehetővé teszi a felhasználó számára, hogy egy kódot tartalmazó hívást vagy SMS-t fogadhasson konfigurált mobiltelefonszámán.
+        * **Irodai telefon**: Felhívja a felhasználót a konfigurált irodai telefonszámán, és egy kódot olvas be.
+        * **Biztonsági kérdések**: Itt a következőket kell kiválasztani:
+            * **A biztonsági kérdésekre való regisztráláshoz szükséges kérdések száma**: A sikeres regisztrációhoz szükséges minimális kérdések számát jelenti. A felhasználó dönthet úgy, hogy több választ ad meg egy olyan kérdéskészlet létrehozásához, amiből előhívhatók a kérdések. Ezt a beállítást három és öt kérdés közötti értékre lehet beállítani, és nagyobbnak vagy egyenlőnek kell lennie, mint a visszaállításhoz szükséges kérdések száma. A felhasználó egyéni kérdéseket is hozzáadhat, ha a biztonsági kérdések kiválasztásakor az **Egyéni** gombra kattint.
+            * **A biztonsági kérdésekre való regisztráláshoz szükséges kérdések száma**: Három és öt kérdés közötti értékre lehet beállítani. Az új jelszó kéréséhez vagy a zárolás feloldásához ennyi helyesen megválaszolandó kérdés szükséges.
             
     ![Hitelesítés][Authentication]
 
-4. AJÁNLOTT: A **„Testreszabás”** lehetővé teszi, hogy megváltoztathassa a „Forduljon a rendszergazdához” hivatkozást a kívánt oldalra vagy e-mail-címre. Ajánlott ezt a hivatkozást például olyan e-mail-címre vagy webhelyre beállítani, amelyet a felhasználók támogatásként használnak.
+4. Ajánlott: A **Testreszabás** lehetővé teszi, hogy megváltoztassa a **Forduljon a rendszergazdához** hivatkozást a kívánt oldalra vagy e-mail-címre. Ajánlott ezt a hivatkozást például olyan e-mail-címre vagy webhelyre beállítani, amelyet a felhasználók támogatásként használnak.
 
-5. VÁLASZTHATÓ: A **„Regisztráció”** képernyő rendszergazdák részére az alábbi lehetőségeket kínálja:
-    * Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor?
-    * A napok száma, amely előtt a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését
+5. Választható: A **Regisztráció** terület a rendszergazdák részére az alábbi lehetőségeket kínálja:
+    * Felhasználói regisztráció megkövetelése bejelentkezéskor.
+    * A napok számának megadása, amely előtt a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését.
 
-6. VÁLASZTHATÓ: Az **„Értesítés”** terület a rendszergazdák részére az alábbi lehetőségeket kínálja:
-    * Értesítse a felhasználókat új jelszó kérésekor?
-    * Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek?
+6. Választható: Az **Értesítések** terület a rendszergazdák részére az alábbi lehetőségeket kínálja:
+    * Felhasználók értesítése új jelszó kérésekor.
+    * Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek.
 
-**Most már konfigurálta az SSPR funkciót Azure AD-bérlője számára**. A felhasználók most a [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md) és az [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md) cikkekben található utasítások szerint frissíthetik a jelszavukat a rendszergazda beavatkozása nélkül. Megállhat itt, ha csak felhőt használ, vagy folytathatja a jelszavak helyszíni AD-tartományra szinkronizálásának konfigurálásával.
+Most már konfigurálta az SSPR funkciót Azure AD-bérlője számára. A felhasználók most a [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md) és az [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md) cikkekben található utasítások szerint frissíthetik a jelszavukat a rendszergazda beavatkozása nélkül. Ha csak felhőalapú szolgáltatást használ, megállhat itt. Vagy továbbléphet a következő szakaszhoz, ahol konfigurálhatja a jelszavak helyi Active Directory-tartományra való szinkronizálását.
 
 > [!IMPORTANT]
-> Az SSPR-t egy felhasználóval tesztelje, ne egy rendszergazdával, mert a Microsoft szigorú hitelesítési előírásokat tartat be az Azure rendszergazdai típusú fiókjaihoz. A rendszergazdai jelszavakra vonatkozó szabályzatról a [jelszóházirendről szóló cikkünkben](active-directory-passwords-policy.md#administrator-password-policy-differences) talál további információt.
+> Az SSPR-t egy felhasználóval tesztelje, ne egy rendszergazdával, mert a Microsoft szigorú hitelesítési előírásokat tartat be az Azure rendszergazdai fiókjaihoz. A rendszergazdai jelszavakra vonatkozó szabályzatról a [jelszóházirendről szóló cikkünkben](active-directory-passwords-policy.md#administrator-password-policy-differences) talál további információt.
 
-## <a name="configure-synchronization-to-existing-identity-source"></a>Szinkronizálás konfigurálása létező identitásforráshoz
+## <a name="configure-synchronization-to-an-existing-identity-source"></a>Szinkronizálás konfigurálása létező identitásforráshoz
 
-Annak engedélyezéséhez, hogy a helyszíni identitás szinkronizálhasson az Azure AD-val, telepítenie és konfigurálnia kell az [Azure AD Connect](./connect/active-directory-aadconnect.md) programot szervezete egyik kiszolgálójára. Ez az alkalmazás kezeli a felhasználók és csoportok szinkronizálását a létező identitásforrásról az Azure AD-bérlővel.
+Annak engedélyezéséhez, hogy a helyszíni identitás szinkronizálhasson az Azure AD-val, telepítenie és konfigurálnia kell az [Azure AD Connect](./connect/active-directory-aadconnect.md) programot szervezete egyik kiszolgálójára. Ez az alkalmazás kezeli a felhasználók és csoportok szinkronizálását a létező identitásforrásról az Azure AD-bérlővel. További információkért lásd:
 
 * [Frissítés DirSyncről vagy Azure AD Syncről Azure AD Connectre](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 * [Első lépések az Azure AD Connecttel a gyorsbeállítások használatával](./connect/active-directory-aadconnect-get-started-express.md)
-* [Jelszóvisszaíró konfigurálása](active-directory-passwords-writeback.md#configuring-password-writeback) jelszavak az Azure AD-ből a helyszíni könyvtárba történő visszaírásához.
+* [Jelszóvisszaíró konfigurálása](active-directory-passwords-writeback.md#configuring-password-writeback) jelszavak az Azure AD-ből a helyszíni könyvtárba történő visszaírásához
 
 ### <a name="on-premises-policy-change"></a>Helyszíni szabályzat módosítása
 
 Ha helyszíni Active Directory-tartományról szinkronizál felhasználókat, és lehetővé szeretné tenni, hogy a felhasználók azonnal új jelszót kérjenek, módosítsa a helyszíni jelszóházirendet a következőképpen:
 
-**Számítógép konfigurációja** > **Szabályzatok** > **Windows-beállítások** > **Biztonsági beállítások** > **Fiókházirend** > **Jelszóházirend**
+1. Keresse meg a következő helyet: **Számítógép konfigurációja** > **Szabályzatok** > **Windows-beállítások** > **Biztonsági beállítások** > **Fiókházirend** > **Jelszóházirend**.
 
-**Jelszó minimális kora** – 0 nap
+2. A **Jelszó minimális kora** értéket állítsa **0 napra**.
 
-Ez a biztonsági beállítás határozza meg azt az időszakot (napokban), ameddig a jelszót használni kell, mielőtt a felhasználó módosíthatná. Ha **0 napra** állítja, a felhasználók használhatják az SSPR-t, ha a támogatási csapatuk módosította a jelszavukat.
+Ez a biztonsági beállítás határozza meg azt az időszakot napokban, ameddig a jelszót használni kell, mielőtt a felhasználó módosíthatná. Ha a minimális használat beállítást **0 napra** állítja, a felhasználók használhatják az SSPR-t, ha a támogatási csapatuk módosította a jelszavukat.
 
 ![Szabályzat][Policy]
 
-## <a name="disabling-self-service-password-reset"></a>Önkiszolgáló jelszóátállítás letiltása
+## <a name="disable-self-service-password-reset"></a>Önkiszolgáló jelszóátállítás letiltása
 
-Az önkiszolgáló jelszókérés letiltása egyszerű: nyissa meg Azure AD-bérlőjét, keresse meg a **Jelszó visszaállítása, majd a Tulajdonságok** elemet, és válassza a **Senki** lehetőséget az **Önkiszolgáló jelszóátállítás engedélyezve** alatt.
+Az önkiszolgáló jelszóátállítás letiltása egyszerű feladat. Nyissa meg Azure AD-bérlőjét, keresse meg a **Jelszó visszaállítása** > **Tulajdonságok** elemet, majd válassza a **Senki** elemet az **Önkiszolgáló jelszóátállítás engedélyezve** rész alatt.
 
 ### <a name="learn-more"></a>Részletek
-Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
+Az alábbi cikkekben az Azure AD jelszóátállításáról olvashat további információkat:
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
-* [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md).
-* [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md).
+* [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
+* [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
 * [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
@@ -110,10 +109,11 @@ Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvas
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a gyors útmutatóban megismerhette, hogyan konfigurálhat önkiszolgáló jelszókérést felhasználói számára. Az alábbi hivatkozással az Azure Portalra léphet, ahol elvégezheti a szükséges lépeseket.
+Ebben a gyors útmutatóban megismerhette, hogyan konfigurálhat önkiszolgáló jelszókérést felhasználói számára. A szükséges lépések elvégzéséhez lépjen az Azure Portalra:
 
 > [!div class="nextstepaction"]
 > [Önkiszolgáló jelszóátállítás engedélyezése](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
 
 [Authentication]: ./media/active-directory-passwords-getting-started/sspr-authentication-methods.png "Az elérhető Azure AD-hitelesítési módszerek és a szükséges mennyiség"
 [Policy]: ./media/active-directory-passwords-getting-started/password-policy.png "0 napra állított helyszínijelszó-csoportszabályzat"
+
