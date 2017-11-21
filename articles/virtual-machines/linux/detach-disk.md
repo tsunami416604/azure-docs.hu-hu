@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: de0222d897ed2cf94be98501c39385ac88f866fc
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: c589dd8c9d597145fd87a00d9a2ba040988cd8ec
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Hogyan egy Linux virtuális gép adatlemez leválasztása
 
@@ -35,28 +35,25 @@ Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ug
 ## <a name="detach-a-data-disk-using-cli-20"></a>Parancssori felület 2.0 használatával adatlemez leválasztása
 
 ```azurecli
-az vm disk detach -g myResourceGroup --vm-name myVm -n myDataDisk
+az vm disk detach \
+    -g myResourceGroup \
+    --vm-name myVm \
+    -n myDataDisk
 ```
 
 A lemez a tárolóban marad, de már nincs virtuális géphez csatlakoztatva.
 
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Adatlemez leválasztása a portállal
-1. Válassza ki a portál hub **virtuális gépek**.
+1. A bal oldali menüben válassza ki a **virtuális gépek**.
 2. Válassza ki a virtuális gépet, amely rendelkezik a adatlemez leválasztása, és kattintson a kívánt **leállítása** felszabadítani a virtuális Gépet.
-3. Válassza ki a virtuális gépek paneljét **lemezek**.
-4. Felső részén a **lemezek** panelen válassza **szerkesztése**.
-5. Az a **lemezek** panelen a adatlemez, amelyeket szeretne leválasztani, kattintson a jobb a ![leválasztási gomb képe](./media/detach-disk/detach.png) leválasztani gombra.
-5. A lemez eltávolítása után a panel tetején kattintson a Mentés gombra.
-6. A virtuális gép paneljén kattintson **áttekintése** , majd a **Start** gombra a virtuális gép újraindítására a panel tetején.
+3. Jelölje ki a virtuális gép ablaktáblán **lemezek**.
+4. Felső részén a **lemezek** ablaktáblán válassza előbb **szerkesztése**.
+5. Az a **lemezek** ablaktáblán, a adatlemez, amelyeket szeretne leválasztani, kattintson a jobb a ![leválasztási gomb képe](./media/detach-disk/detach.png) leválasztani gombra.
+5. A lemez eltávolítása után kattintson a Mentés az ablaktábla tetején.
+6. A virtuális gép ablaktáblán kattintson **áttekintése** , majd a **Start** gombra, ha a virtuális gép újraindítására a panel tetején.
 
 A lemez a tárolóban marad, de már nincs virtuális géphez csatlakoztatva.
-
-
-
-
-
-
 
 
 ## <a name="next-steps"></a>Következő lépések

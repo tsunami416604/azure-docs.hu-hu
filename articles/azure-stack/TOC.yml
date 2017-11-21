@@ -63,6 +63,8 @@
           href: azure-stack-integrate-identity.md
         - name: Végpontok közzététele
           href: azure-stack-integrate-endpoints.md
+        - name: Külső figyelése
+          href: azure-stack-integrate-monitor.md
         - name: Biztonság
           href: azure-stack-integrate-security.md
     - name: Kezelés

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/11/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1a3ce746601dc42f04f021f3ba142688abdb7e7
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 22379dd7cb0118983505237fa16f01a865a53306
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hub a MQTT protokoll segítségével kommunikálnak.
 
@@ -60,7 +60,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-k, hogy továbbra is kapcsol�
 * Az a **ClientId** mezőben használja a **deviceId**.
 * Az a **felhasználónév** mezőben `{iothubhostname}/{device_id}/api-version=2016-11-14`, ahol a {iothubhostname} az IoT hub teljes CNAME-adatait.
 
-    Például, ha az IoT hub neve **contoso.azure-devices.net** , és ha az eszköz nevére **MyDevice01**, a teljes **felhasználónév** mező kelltartalmaznia `contoso.azure-devices.net/MyDevice01/api-version=2016-11-14`.
+    Például, ha az IoT hub neve **contoso.azure-devices.net** , és ha az eszköz nevére **MyDevice01**, a teljes **felhasználónév** mező kelltartalmaznia`contoso.azure-devices.net/MyDevice01/api-version=2016-11-14`.
 * Az a **jelszó** mezőben egy SAS-jogkivonatot használja. A SAS-jogkivonat formátuma ugyanaz, mint a HTTPS és az AMQP protokoll:<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`.
 
     SAS-tokenje kapcsolatos további információkért tekintse meg az eszköz részében [IoT-központ használatával biztonsági jogkivonatokat][lnk-sas-tokens].
@@ -250,7 +250,7 @@ Az IoT-központ telepítésének tervezése kapcsolatos további információké
 Az IoT-központ képességeit további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Egy eszköz szimulálva Azure IoT oldala][lnk-iotedge]
+* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
 
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-mqtt-org]: http://mqtt.org/
@@ -269,7 +269,7 @@ Az IoT-központ képességeit további megismeréséhez lásd:
 [lnk-compare]: iot-hub-compare-event-hubs.md
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
+[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
 
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-messaging]: iot-hub-devguide-messaging.md
