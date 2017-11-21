@@ -1,6 +1,6 @@
 ---
-title: "A Microsoft Azure Windows virtuális gépek lemezegységet kapcsolatos |} Microsoft Docs"
-description: "A lemezek és a virtuális merevlemezek Windows virtuális gépek tárolása az Azure-ban alapjainak megismerése."
+title: "Hamarosan nem felügyelt (lapblobokat) és a lemezek tárolási felügyelt Microsoft Azure Windows virtuális gépek |} Microsoft Docs"
+description: "További tudnivalók a alapjait nem felügyelt (lapblobokat) és a felügyelt Windows virtuális gépek Azure-lemezeket tároló."
 services: storage
 documentationcenter: 
 author: robinsh
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: 588f18da6056641f3c9e42286b70d1f18b424d76
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 1a8dc028e2e872820a209bcdde5cca57853dd419
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/20/2017
 ---
-# <a name="about-disk-storage-for-azure-windows-vms"></a>Lemezes tárolás Azure Windows virtuális gépek kapcsolatos
+# <a name="about-disks-storage-for-azure-windows-vms"></a>Lemezek tárolás Azure Windows virtuális gépek
 Csakúgy, mint bármely más számítógépre az Azure virtuális gépek lemezek használatával egy olyan hely az operációs rendszerek, alkalmazások és adatok tárolására. Minden Azure virtuális gépek legalább két lemezt – a Windows operációs rendszer és egy ideiglenes lemezzel rendelkezik. Az operációs rendszer lemez létrehozása lemezkép, és mind az operációsrendszer-lemez, és a lemezkép virtuális merevlemezeket (VHD) Azure-tárfiók tárolja. Virtuális gépek is rendelkeznek legalább egy adatlemezt, virtuális merevlemezekként is tárolt. 
 
 Ebben a cikkben rendszer szolgáltatással kapcsolatban a lemezek különböző használ, és a különböző típusú lemezek létrehozhat és használhat majd ismertetik. Ez a cikk érhető el is [Linux virtuális gépek](../linux/about-disks-and-vhds.md).

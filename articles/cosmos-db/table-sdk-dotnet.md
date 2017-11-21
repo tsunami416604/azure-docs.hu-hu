@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 11/20/2017
 ms.author: mimig
-ms.openlocfilehash: 943e0849b03debaa47022b5cb6d0df43d82ac230
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 9dc0f5140a538c3a359dd90b74de822dc163fd70
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB táblában .NET API: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -34,6 +34,10 @@ ms.lasthandoff: 11/18/2017
 |**Gyors útmutató**|[Az Azure Cosmos DB: Egy alkalmazást a .NET- és a tábla API létrehozása](create-table-dotnet.md)|
 |**Oktatóanyag**|[Azure Cosmos DB: A tábla API a .NET fejlesztést](tutorial-develop-table-dotnet.md)|
 |**Aktuális támogatott keretrendszer**|[Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
+
+> [!IMPORTANT]
+> Ha egy tábla API-fiókot az előzetes hozott létre, hozzon létre egy [új tábla API-fiók](create-table-dotnet.md#create-a-database-account) az általánosan elérhető tábla API SDK-k együttműködni.
+>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -64,6 +68,7 @@ Ha a hibaüzenet jelenik meg
 Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: 'nuget.org', 
 'CliFallbackFolder', 'Microsoft Visual Studio Offline Packages', 'Microsoft Azure Service Fabric SDK'`
 ```
+
 megkísérlésekor. a Microsoft.Azure.CosmosDB.Table NuGet-csomagot használja, a probléma megoldására két lehetőség közül választhat:
 
 * Csomag kezelése konzol segítségével telepíthet a Microsoft.Azure.CosmosDB.Table csomagot és annak függőségeit. Ehhez írja be a következőt a Csomagkezelő konzol megoldást. 
@@ -74,6 +79,7 @@ megkísérlésekor. a Microsoft.Azure.CosmosDB.Table NuGet-csomagot használja, 
 * A Nuget csomag előnyben részesített felügyeleti eszköz használatával telepítse a Microsoft.Azure.Storage.Common Nuget-csomagot a Microsoft.Azure.CosmosDB.Table telepítése előtt.
 
 ## <a name="faq"></a>GYIK
+
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még:

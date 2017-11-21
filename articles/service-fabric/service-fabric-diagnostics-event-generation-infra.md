@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/24/2017
+ms.date: 11/20/2017
 ms.author: dekapur
-ms.openlocfilehash: c5857515ae8357b003f0999c4b11bd666c32bbf9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1277969d820c6348392d07e2dc5f35b52377fd7e
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="platform-level-event-and-log-generation"></a>Platform szintű esemény és a napló létrehozása
 
@@ -26,12 +26,13 @@ ms.lasthandoff: 10/11/2017
 
 Fontos annak meghatározásához, függetlenül attól, a hardver és a fürt mutatnak elvárt platform szintjén figyelésére. Bár a Service Fabric hálózati adaptere esetében megtarthatja hardverhiba alatt futó alkalmazások azonban továbbra is szeretné diagnosztizálni, hogy hiba jelentkezik egy alkalmazás vagy a az alkalmazás mögötti infrastruktúra. Is figyelje a fürtök kapacitását, és jobban tervezése segíti a hozzáadásával vagy eltávolításával hardver döntéseket.
 
-A Service Fabric öt különböző naplófájl csatornák, a-kész, amelyek létrehozzák a következő eseményeket tartalmazza:
-
-* Működési csatorna: magas szintű műveleteket végzi el a Service Fabric és a fürt, beleértve az események várható, egy új alkalmazást telepített, a csomópont vagy egy ú frissítés visszaállítása stb.
+A Service Fabric az alábbi naplózási csatornák az a-kész biztosítja:
+* Működési csatorna: magas szintű műveleteket végzi el a Service Fabric és a fürt, beleértve az események várható csomópont, telepített új alkalmazást vagy egy frissítési visszaállítási stb.
 * Működési csatorna - részletes: rendszerállapot-jelentések és a terheléselosztási döntések
-* Adatok & Messaging csatorna: kritikus naplókat és az esemény jön létre az üzenetkezelési (jelenleg csak a ReverseProxy) és a (megbízható szolgáltatások modellek) elérési útja
+* Adatok & Messaging csatorna: kritikus naplókat és az esemény jön létre a messaging (jelenleg csak a ReverseProxy) és a (megbízható szolgáltatások modellek) elérési útja
 * Adatok & Messaging csatorna - részletes: részletes csatorna, amely tartalmazza a nem kritikus naplók adatokból és üzenetküldés a fürtben (Ez a csatorna rendelkezik nagyon nagy mennyiségű esemény)   
+
+Ezeken kívül két megadott strukturált EventSource csatornák, valamint a támogatáshoz gyűjtött naplók.
 * [Megbízható szolgáltatások események](service-fabric-reliable-services-diagnostics.md): programozási modell adott események
 * [Megbízható szereplője események](service-fabric-reliable-actors-diagnostics.md): programozási modell adott események és teljesítményszámlálók
 * Támogatja a naplók: generálja a Service Fabric csak által használandó, ha támogatást nyújtó rendszer naplóit

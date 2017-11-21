@@ -10,11 +10,11 @@ ms.reviewer: veyalla
 ms.date: 11/17/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a78efef6bc82a837782c462bc3558a9582a8da7c
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: b6c8e77b16d784373e392d0ac97094050677cb84
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>Az IoT-Edge futásidejű telepíteni a Windows IoT alapvető – előzetes
 
@@ -38,7 +38,7 @@ Az Azure IoT peremhálózati futásidejű még apró egyetlen tábla számítóg
    ```
 
    >[!NOTE]
-   >A PowerShell-parancsfájl a Moby project build kiszolgálóról, és csak tesztelési célokra. Nem tesztelt, által támogatott, vagy Docker által támogatott.
+   >A tároló futásidejű Moby project build kiszolgálóról, és csak tesztelési célokra. Nem tesztelt, által támogatott, vagy Docker által támogatott.
 
 1. Az IoT-Edge futásidejű telepítése, és a konfiguráció ellenőrzése:
 

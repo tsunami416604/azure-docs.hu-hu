@@ -1,6 +1,6 @@
 ---
-title: "Azure-beli adat-előállító létrehozása a PowerShell használatával | Microsoft Docs"
-description: "Létrehozhat egy Azure-beli adat-előállítót az adatok egy Azure Blob Storage egyik helyéről egy másik helyére történő másolásához."
+title: "Adatok másolása a Blob Storage-ban az Azure Data Factory használatával | Microsoft Docs"
+description: "Létrehozhat egy Azure-beli adat-előállítót, ha adatokat szeretne másolni az Azure Blob Storage-ban egy mappából egy olyan mappába, amely ugyanabban a blobtárolóban található."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,18 +13,18 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 63e4c654409651f6655da1bed6ab2f544cf024dd
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 8ee2f48db009da4660a03f91194c4e99f6ecac4a
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="create-an-azure-data-factory-and-pipeline-using-powershell"></a>Azure-beli adat-előállító és folyamat létrehozása a PowerShell használatával
+# <a name="create-an-azure-data-factory-using-powershell"></a>Azure-beli adat-előállító létrehozása a PowerShell használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1. verzió – Általánosan elérhető](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [2. verzió – Előzetes verzió](quickstart-create-data-factory-powershell.md)
 
-Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat másol az Azure Blob Storage egyik helyéről egy másik helyére. Az adatok Azure Data Factoryval történő átalakításának útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](transform-data-using-spark.md). 
+Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat másol egy Azure-blobtároló egyik mappájából egy másikba. Az adatok Azure Data Factoryval történő átalakításának útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](transform-data-using-spark.md). 
 
 Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
 

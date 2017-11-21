@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/16/2017
+ms.date: 11/20/2017
 ms.author: arramac
-ms.openlocfilehash: ce5c1c25a73bdc02d7e66768752c6942144de517
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 90ba10990049cd1fb788d63a143eb1169191cf24
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Gyors üzembe helyezés: Egy tábla a Java és Azure Cosmos DB API-alkalmazás létrehozása
 
@@ -43,6 +43,10 @@ Továbbá:
     * Ubuntu rendszeren futtathatja a `sudo apt-get install git` parancsot a Git telepítéséhez.
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
+
+> [!IMPORTANT] 
+> Szeretne együttműködni a általánosan elérhető tábla API SDK-k új tábla API-fiók létrehozása. Tábla API fiókjainak előzetes nem támogatottak az általánosan elérhető az SDK-k.
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -98,7 +102,11 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
     StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=[ACCOUNTNAME];AccountKey=[ACCOUNTKEY]
     ```
 
-6. Az elsődleges KAPCSOLATI KARAKTERLÁNCOT a portálról illessze be a StorageConnectionString érték a 2. sor. Ha a kapcsolati karakterláncot, a végpont része documents.azure.com használ, javítsa ki a table.cosmosdb.azure.com használja helyette a része.
+6. Az elsődleges KAPCSOLATI KARAKTERLÁNCOT a portálról illessze be a StorageConnectionString érték a 2. sor. 
+
+    > [!IMPORTANT]
+    > Ha a végpont által használt documents.azure.com, amely azt jelenti, hogy előzetes fiókkal rendelkezik, és kell létrehoznia egy [új tábla API-fiók](#create-a-database-account) működéséhez az általánosan elérhető tábla API SDK-val.
+    >
 
 7. Mentse a config.properties fájlt.
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: cd13ecf50cf03c362f8da2da83ab698c4e8ba0cc
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 83a1ba0b97c0617884b1645ad54e259f04052f49
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Az Azure portál használatával eszközök kezelése
 
@@ -32,7 +32,30 @@ Ez a témakör:
 
 - Az Azure portál használata az eszközök felügyeletével kapcsolatos információt
 
+## <a name="manage-devices"></a>Eszközök kezelése 
 
+Az Azure-portálon az eszközök kezeléséhez központi helyet biztosít. Ennek a helynek a vagy használatával beszerezheti a [közvetlen hivatkozást](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) vagy a következő manuális lépéseket:
+
+1. Rang be a [Azure-portálon](https://portal.azure.com) rendszergazdaként.
+
+2. Kattintson a bal oldali navigációs sávja **Active Directory**.
+
+    ![Eszközök beállításainak konfigurálása](./media/device-management-azure-portal/01.png)
+
+3. Az a **kezelése** kattintson **eszközök**.
+
+    ![Eszközök beállításainak konfigurálása](./media/device-management-azure-portal/11.png)
+ 
+A **eszközök** oldalon:
+
+- Az eszköz kezelési beállításainak konfigurálása
+
+- Keresse meg az eszközök
+
+- Eszköz felügyeleti feladatok végrehajtása
+
+- Tekintse át az eszköz-kezeléssel kapcsolatos naplók  
+  
 
 ## <a name="configure-device-settings"></a>Eszközök beállításainak konfigurálása
 
@@ -207,7 +230,7 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 - Tevékenység
 - Dátumtartomány
 - cél
-- (Aktor) által kezdeményezett
+- Kezdeményező (Szereplő)
 
 A szűrők mellett kereshet adott bejegyzéseket.
 

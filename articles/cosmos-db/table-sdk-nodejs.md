@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: 
-ms.openlocfilehash: 9781fc75b3820a9248e495ccd63870c06472fa20
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1097b853ca0f461300f294e9f5baabf2ae4e15a1
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Az Azure Cosmos DB tábla API for Node.js: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -34,6 +34,10 @@ ms.lasthandoff: 11/15/2017
 |**SDK letöltése**|[NPM](https://www.npmjs.com/package/azure-storage)|
 |**API-JÁNAK dokumentációja**|[NODE.js API referenciadokumentációt](http://azure.github.io/azure-storage-node/)|
 |**Hozzájárul az SDK**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
+
+> [!IMPORTANT]
+> Ha egy tábla API-fiókot az előzetes hozott létre, hozzon létre egy [új tábla API-fiók](create-table-dotnet.md#create-a-database-account) az általánosan elérhető tábla API SDK-k együttműködni.
+>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 

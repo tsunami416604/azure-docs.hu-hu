@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/09/2017
-ms.openlocfilehash: 80cdd07bff865776a68897a7b8c1b3fe66b76b18
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 9d8a9f1c32578abff1d98e093469e1a780f6cd80
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>Jupyter notebook használata az Azure Machine Learning-munkaterület
 
 Az Azure Machine Learning-munkaterület adatok interaktív tudományos kísérletezhet a Jupyter notebook integrációs keresztül támogatja. A cikkből megtudhatja, hogyan teheti növeléséhez sebessége és az adatok interaktív tudományos kísérletezhet minőségének hatékony használatára.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- [Telepítse, és hozzon létre az Azure Machine Learning](/machine-learning/preview/quickstart-installation.md).
+- [Telepítse, és hozzon létre az Azure Machine Learning](quickstart-installation.md).
 - Ismernie kell a [Jupyter notebook](http://jupyter.org/), mivel ez a cikk nem oktatási Jupyter használatával kapcsolatban.
 
 ## <a name="jupyter-notebook-architecture"></a>Jupyter notebook architektúrája

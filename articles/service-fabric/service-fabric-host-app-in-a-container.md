@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: mikhegn
-ms.openlocfilehash: 021c695a91ff46274b2a5174918711d04bcff239
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31c1cee5ddc4c8893da729af884ae7b7b8a58093
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Azure Service Fabric Windows tároló .NET-alkalmazás telepítése
 
@@ -39,11 +39,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 4. Telepítés [Azure PowerShell][link-azure-powershell-install]
 5. Telepítse a [Visual Studio 2017 folyamatos kézbesítési eszközök kiterjesztése][link-visualstudio-cd-extension]
 6. Hozzon létre egy [Azure-előfizetés] [ link-azure-subscription] és egy [Visual Studio Team Services-fiók][link-vsts-account]. 
-7. [Fürt létrehozása az Azure-on](service-fabric-tutorial-create-cluster-azure-ps.md)
+7. [Fürt létrehozása az Azure-on](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+
+## <a name="create-a-cluster-on-azure"></a>Fürt létrehozása az Azure-ban
+Service Fabric-alkalmazások futtatása egy fürtön, virtuális vagy fizikai gépek hálózathoz csatlakozó halmaza. [A telepítő egy Azure-ban futó Service Fabric-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása és az alkalmazás központi telepítése előtt. A fürt létrehozásakor válassza ki a Termékváltozat, amely támogatja a futó tárolók (például Windows Server 2016 adatközpont tárolók).
 
 ## <a name="containerize-the-application"></a>Az alkalmazás containerize
 
-Most, hogy egy [Azure Service Fabric-fürt fut](service-fabric-tutorial-create-cluster-azure-ps.md) készen áll a tárolóalapú alkalmazás létrehozását és telepítését. Indítsa el az alkalmazást futtató tároló, hozzá kell **Docker támogatási** a projektre a Visual Studióban. Amikor felvesz **Docker támogatási** az alkalmazás két dolog történik. Először egy _Dockerfile_ hozzáadódik a projektet. Ez az új fájl leírja, hogy a tároló kép kialakítani. Majd a második, egy új _docker compose_ Projekt hozzáadódik a megoldás. Az új projekt tartalmaz néhány docker compose fájlokat. Docker-compose fájlok segítségével a tároló futtatásának módját ismerteti.
+Most, hogy egy Azure-ban futó Service Fabric-fürt készen áll a tárolóalapú alkalmazás létrehozását és telepítését. Indítsa el az alkalmazást futtató tároló, hozzá kell **Docker támogatási** a projektre a Visual Studióban. Amikor felvesz **Docker támogatási** az alkalmazás két dolog történik. Először egy _Dockerfile_ hozzáadódik a projektet. Ez az új fájl leírja, hogy a tároló kép kialakítani. Majd a második, egy új _docker compose_ Projekt hozzáadódik a megoldás. Az új projekt tartalmaz néhány docker compose fájlokat. Docker-compose fájlok segítségével a tároló futtatásának módját ismerteti.
 
 További információ a használata [Visual Studio tároló eszközök][link-visualstudio-container-tools].
 

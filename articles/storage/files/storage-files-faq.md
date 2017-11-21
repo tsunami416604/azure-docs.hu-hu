@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 10/13/2017
 ms.author: renash
-ms.openlocfilehash: 871fc85d0b406d2de35a79eb2906ff2d6ada9570
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: da8ccf35dcc873a5c31842c6eb7bdf72879854c2
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven Common Internet File System vagy CIFS). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/07/2017
 Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat, beleértve az Azure fájlszinkronizálás Azure fájlokkal kapcsolatos gyakori kérdésekre. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a növekvő sorrendben) a következő csatornákon keresztül:
 
 1. Ez a cikk megjegyzéseket tartalmazó részét.
-2. [Az Azure Storage fórum](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredata).
+2. [Az Azure Storage fórum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuredata).
 3. [Azure-fájlokat UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
 4. Microsoft támogatási szolgálatához. Az Azure portálon, egy új támogatási kérelem létrehozásához a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza **új támogatja a kérelem**.
 
@@ -112,7 +112,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
         | A | Archívum | Azt jelzi, hogy a fájl készüljön biztonsági másolat biztonsági mentési szoftverrel. Ez az attribútum értéke mindig, függetlenül attól, hogy a fájl rétegzett vagy teljesen tárolása a lemezen. |
         | P | Ritka fájl | Azt jelzi, hogy a fájl ritka fájlok. Ritka fájl egy speciális típusa a hatékony NTFS kínál a fájl esetén a lemez-adatfolyamban lévő fájl többnyire üres. Azure fájlszinkronizálás használja a ritka fájlokat, mivel a fájl rétegzett teljesen vagy részben előtt tartani. Egy teljesen rétegzett fájlban a fájlfolyam tárolja a felhőben. A részlegesen visszaírt fájl a fájl már a lemezen. Ha egy fájl teljesen előtt tartani, lemezre, Azure fájlszinkronizálás átalakítja a ritka fájlok rendszeres fájlba. |
         | L | Újraelemzési pont | Azt jelzi, hogy a fájl rendelkezik-e az újraelemzési pont. Újraelemzési pont egy fájlrendszerszűrő általi használatra különleges mutató. Az Azure fájlszinkronizálás újraelemzési pontokat használ, a Azure fájlszinkronizálás fájlrendszerszűrő (StorageSync.sys) a felhő a fájl tárolási helyének meghatározásához. Ez a funkció támogatja zökkenőmentes hozzáférést. Felhasználóknak nem kell tudnia, hogy Azure fájlszinkronizálás használatban van-e, illetve a fájl az Azure fájlmegosztás eléréséhez. Ha egy fájl teljesen visszaírása, Azure fájlszinkronizálás az újraelemzési pont eltávolítása a fájlból. |
-        | O | Kapcsolat nélküli módban | Azt jelzi, hogy vagy azok egy részét a fájl tartalma nem tárolása a lemezen. Ha egy fájl teljesen visszaírása, Azure fájlszinkronizálás eltávolítja ezt az attribútumot. |
+        | O | Offline | Azt jelzi, hogy vagy azok egy részét a fájl tartalma nem tárolása a lemezen. Ha egy fájl teljesen visszaírása, Azure fájlszinkronizálás eltávolítja ezt az attribútumot. |
 
         ![A fájl esetén a kiválasztott Részletek lap tulajdonságai párbeszédpanel](media/storage-files-faq/azure-file-sync-file-attributes.png)
         

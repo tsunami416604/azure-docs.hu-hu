@@ -1,5 +1,5 @@
 ---
-title: "Adatok másolása a helyszíni rendszerekből a felhőbe az Azure Data Factory használatával | Microsoft Docs"
+title: "Adatok másolása az SQL Serverről a Blob Storage-ba az Azure Data Factory használatával | Microsoft Docs"
 description: "Megismerheti az adatok a helyszíni adattárolókból az Azure-beli felhőbe, az Azure Data Factory saját üzemeltetésű integrációs moduljával történő másolásának folyamatát."
 services: data-factory
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 24a4255a23f0b9b9da5d8c3cefeefb8fe250f2f1
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: afd7735712d03110a67509a7e94d336219a65b34
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="tutorial-copy-data-between-on-premises-and-cloud"></a>Oktatóanyag: Adatok másolása a helyszíni rendszer és a felhő között
+# <a name="tutorial-copy-data-from-on-premises-sql-server-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Serverről az Azure Blob Storage-ba
 Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozzuk és alkalmazzuk az Azure Data Factory egy saját üzemeltetésű integrációs modulját (IR)/ Ez lehetővé teszi a helyszíni és a felhőalapú adattárolók integrálását.  Az adat-előállítók egyéb eszközökkel/SDK-kkal való létrehozásával kapcsolatban lásd [rövid útmutatóinkat](quickstart-create-data-factory-dot-net.md).
 
 Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md). 

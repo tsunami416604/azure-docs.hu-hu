@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 667e68ad444386a5fe29f9909042fdfa7ca66581
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 79a165e3c4c8c2c2e212c6b95da3aed2d47cf6eb
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Engedélyezze az Azure Active Directory tartományi szolgáltatások PowerShell használatával
 Ez a cikk bemutatja, hogyan engedélyezze az Azure Active Directory (AD) tartományi szolgáltatásokban a PowerShell használatával.
@@ -76,11 +76,12 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AAD
 Írja be a következő PowerShell-parancs futtatásával hozzon létre egy erőforráscsoportot:
 ```powershell
 $ResourceGroupName = "ContosoAaddsRg"
+$AzureLocation = "westus"
 
 # Create the resource group.
 New-AzureRmResourceGroup `
   -Name $ResourceGroupName `
-  -Location westus
+  -Location $AzureLocation
 ```
 
 A virtuális hálózat és az Azure AD tartományi szolgáltatások által kezelt tartomány hozhat létre az erőforráscsoportban.
@@ -118,9 +119,15 @@ $Vnet=New-AzureRmVirtualNetwork `
 Írja be az Azure AD tartományi szolgáltatásokat a címtáron engedélyezéséhez a következő PowerShell-parancsot:
 
 ```powershell
+$AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
+$ManagedDomainName = "contoso100.com"
+$ResourceGroupName = "ContosoAaddsRg"
+$VnetName = "DomainServicesVNet_WUS"
+$AzureLocation = "westus"
+
 # Enable Azure AD Domain Services for the directory.
 New-AzureRmResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-  -Location "westus" `
+  -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
   -ApiVersion 2017-06-01 -Force -Verbose

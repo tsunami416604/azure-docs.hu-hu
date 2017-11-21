@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: 52645f7d7934c9b9cf628fec1c0edc763ce98796
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: ba965b9bc23b96adb2b1b7c9306cb7f508f820bf
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="customize-a-preconfigured-solution"></a>Előre konfigurált megoldás testreszabása
 
@@ -228,55 +228,6 @@ Az alapértelmezett érték 200. Módosíthatja ezt a számot [TelemetryApiContr
 
 Az alapértelmezett érték 10 perc. Ez az érték módosítható [TelmetryApiController.cs][lnk-telemetry-api-controller-02].
 
-## <a name="manually-set-up-application-roles"></a>Alkalmazási szerepköröknek manuális beállítása
-
-Az alábbi eljárás ismerteti, hogyan adhat **Admin** és **ReadOnly** alkalmazási szerepköröknek előre konfigurált megoldásokhoz. Fontos megjegyezni, hogy a azureiotsuite.com helyről már kiépített előkonfigurált megoldásokat tartalmazza a **Admin** és **ReadOnly** szerepkörök.
-
-A tagjai a **ReadOnly** szerepkör az irányítópult és az eszközök listája látható, de nem jogosultak eszközök hozzáadása, módosítása eszközattribútumokon vagy parancsokat küldhet.  A tagjai a **Admin** szerepkör minden funkció teljes hozzáféréssel rendelkeznek a megoldásban.
-
-1. Lépjen a [a klasszikus Azure portálon][lnk-classic-portal].
-2. Válassza ki **Active Directory**.
-3. Kattintson az AAD-bérlőt, a megoldás létesített használt nevére.
-4. Kattintson a **alkalmazások**.
-5. Kattintson a nevére, az alkalmazás, amely megfelel az előkonfigurált megoldás neve. Ha nem lát a listában az alkalmazást, válassza ki a **a vállalat tulajdonában lévő alkalmazások** a a **megjelenítése** legördülő menüből, majd kattintson a pipa.
-6. Kattintson a lap alján **kezelése Manifest** , majd **jegyzékfájl letöltése**.
-7. Ez az eljárás egy .JSON kiterjesztésű fájlt a helyi számítógépre tölti le. Nyissa meg ezt a fájlt egy szövegszerkesztőben, az Ön által választott szerkesztésre.
-8. A harmadik sorban a .JSON kiterjesztésű fájl láthatja:
-
-   ```json
-   "appRoles" : [],
-   ```
-   Cserélje le ezt a sort a következő kódot:
-
-   ```json
-   "appRoles": [
-   {
-   "allowedMemberTypes": [
-   "User"
-   ],
-   "description": "Administrator access to the application",
-   "displayName": "Admin",
-   "id": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
-   "isEnabled": true,
-   "value": "Admin"
-   },
-   {
-   "allowedMemberTypes": [
-   "User"
-   ],
-   "description": "Read only access to device information",
-   "displayName": "Read Only",
-   "id": "e5bbd0f5-128e-4362-9dd1-8f253c6082d7",
-   "isEnabled": true,
-   "value": "ReadOnly"
-   } ],
-   ```
-
-9. Mentse a frissített .JSON kiterjesztésű fájlt (felülírhatja a meglévő fájlt).
-10. A klasszikus Azure portálon, a lap alján válassza **kezelése Manifest** majd **feltöltése Manifest** feltölteni a az előző lépésben mentett .JSON kiterjesztésű fájlt.
-11. Ezzel hozzáadta a **Admin** és **ReadOnly** szerepkörök, amelyekkel az alkalmazás.
-12. Hozzárendelése ezek szerepkörök valamelyikét egy felhasználónak számít a címtárában, lásd: [a azureiotsuite.com Web][lnk-permissions].
-
 ## <a name="feedback"></a>Visszajelzés
 
 Rendelkezik a testreszabást szeretné lásd a jelen dokumentum az érintett? Adja hozzá a szolgáltatási javaslataikat [User Voice](https://feedback.azure.com/forums/321918-azure-iot), vagy ez a cikk megjegyzés. 
@@ -300,6 +251,5 @@ Az előkonfigurált megoldásokat testreszabására vonatkozó beállításokkal
 [lnk-telemetry-api-controller-01]: https://github.com/Azure/azure-iot-remote-monitoring/blob/3fd43b8a9f7e0f2774d73f3569439063705cebe4/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L27
 [lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25 
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
-[lnk-classic-portal]: https://manage.windowsazure.com
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-cf-customize]: iot-suite-connected-factory-customize.md

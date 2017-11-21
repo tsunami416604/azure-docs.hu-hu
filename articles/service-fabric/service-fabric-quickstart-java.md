@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c8e598159d2139397952a5c11eac54dc38939f47
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: b58d6be3d6412b5357aa405269aac4563a7a33a9
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
 Azure Service Fabric egy elosztottrendszer platform központi telepítéséhez és mikroszolgáltatások létrehozására és tárolók kezelése. 
@@ -83,7 +83,7 @@ Az alkalmazást az Azure-ban fürtre telepíti, a saját fürt létrehozása, va
 
 A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök. A Service Fabric csapat, ahol bárki alkalmazások központi telepítését, és további tudnivalók a platform végzi. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric). 
 
-További információk saját fürtök létrehozásáról: [Az első saját Service Fabric-fürt létrehozása az Azure-on](service-fabric-get-started-azure-cluster.md).
+A saját fürt létrehozásával kapcsolatos további információkért lásd: [a Service Fabric-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 > [!Note]
 > A webes előtér-szolgáltatás a 8080-as portot a bejövő forgalmat figyelő van konfigurálva. Győződjön meg róla, hogy a port nyitva van a fürtön. Az entitás-fürtöt használ, ha a port meg nyitva.
