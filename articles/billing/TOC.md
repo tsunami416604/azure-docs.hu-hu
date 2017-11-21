@@ -6,6 +6,7 @@
 ## [Regisztrálás Office 365-fiókkal](billing-use-existing-office-365-account-azure-subscription.md)
 ## [Regisztrálás az Office 365-be Azure-fiókkal](billing-use-existing-azure-account-for-office-365-subscription.md)
 ## [Erőforrások rendszerezése felügyeleti csoportokkal](billing-enterprise-mgmt-group-overview.md)
+## [Költségmegtakarítás fenntartott VM-példányokkal](billing-save-compute-costs-reservations.md)
 ## [Korlátozások és kvóták](../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json)
 
 # Útmutató
@@ -17,9 +18,13 @@
 ### [A használat feltételeinek értelmezése](billing-understand-your-usage.md)
 ### [Külső szolgáltatási díjakkal kapcsolatos tudnivalók](billing-understand-your-azure-marketplace-charges.md)
 ### [Az ingyenes szolgáltatásmérő-társítások ismertetése](billing-understand-free-service-meter-mapping.md)
+### [Fenntartott VM-példányok Windows-költségei](billing-reserved-instance-windows-software-costs.md)
+### [Fenntartott VM-példányokra vonatkozó kedvezmény alkalmazása](billing-understand-vm-reservation-charges.md)
 ### [A költségkeret ismertetése](billing-spending-limit.md)
 ### [Elszámolási értesítések beállítása](billing-set-up-alerts.md)
 ### [Lejárt esedékességű tartozás kezelése](billing-azure-subscription-past-due-balance.md)
+### [Használatalapú fizetés fenntartott példányok esetén](billing-understand-reserved-instance-usage.md)
+### [Fenntartott példányok vállalati használata](billing-understand-reserved-instance-usage-ea.md)
 
 ## Előfizetések kezelése
 ### [Rendszergazdai szerepkörök kezelése](billing-add-change-azure-subscription-administrator.md)
@@ -34,6 +39,7 @@
 ### [Fizetési információk frissítése](billing-how-to-change-credit-card.md)
 ### [Office 365-bérlő csatolása](billing-add-office-365-tenant-to-azure-subscription.md)
 ### [Előfizetések fizetése számla alapján](billing-how-to-pay-by-invoice.md)
+## [Fenntartott VM-példányok felügyelete](billing-manage-reserved-vm-instance.md)
 ## Hibaelhárítás
 ### [Regisztrálással kapcsolatos problémák](https://support.microsoft.com/en-us/help/4042959)
 ### [Elutasított bankkártya](https://support.microsoft.com/en-us/help/4042960)

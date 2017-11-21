@@ -32,6 +32,7 @@
 ### [Runbook bemeneti paramétereinek konfigurálása](automation-runbook-input-parameters.md)
 ### [Hibakezelés grafikus runbookokban](automation-runbook-graphical-error-handling.md)
 ### [Runbook-feladat nyomon követése](automation-runbook-execution.md)
+### [Figyelőfeladat létrehozása](automation-watchers-tutorial.md)
 ### [Runbook beállításainak módosítása](automation-runbook-settings.md)
 ### [Azure Automation-adatok kezelése](automation-managing-data.md)
 ### [Azure Automation-runbook hívása Log Analytics-riasztásból](automation-invoke-runbook-from-omsla-alert.md)

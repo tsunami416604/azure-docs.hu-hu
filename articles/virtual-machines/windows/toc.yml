@@ -80,15 +80,21 @@
           href: sizes-general.md
     - name: Karbantartás és frissítések
       href: maintenance-and-updates.md
-    - name: Storage
+    - name: Lemezes tárolás
       href: about-disks-and-vhds.md
       items:
+        - name: Felügyelt lemezek
+          href: managed-disks-overview.md
         - name: Prémium szintű Storage
           href: premium-storage.md
         - name: Prémium szintű tárolási teljesítmény
           href: premium-storage-performance.md
         - name: Standard szintű Storage
           href: standard-storage.md
+        - name: Lemezek skálázási célértékei
+          href: disk-scalability-targets.md
+        - name: Lemezek biztonsági mentése és vészhelyreállítása
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
     - name: Hálózat
       href: network-overview.md
     - name: Automatikus méretezési alkalmazások
@@ -113,6 +119,8 @@
       items:
         - name: 'A C# használata'
           href: csharp.md
+        - name: Speciális lemez használata
+          href: create-vm-specialized.md
         - name: 'Sablon használata a C#-vel'
           href: csharp-template.md
         - name: Virtuális gép létrehozása Chef használatával
@@ -154,6 +162,8 @@
           href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Virtuális gépek kezelése
       items:
+        - name: Előre fizetés virtuális gépekre – Lefoglalt példányok
+          href: prepay-reserved-vm-instances.md
         - name: Általános PowerShell-feladatok
           href: ps-common-ref.md
         - name: Virtuális gép áthelyezése
@@ -186,12 +196,10 @@
           href: cli-ps-findimage.md
         - name: Virtuális gép előkészítése feltöltéshez
           href: prepare-for-upload-vhd-image.md
-        - name: Általános rendszerkép használata
-          href: create-vm-generalized-managed.md
-        - name: Speciális lemez használata
-          href: create-vm-specialized.md
         - name: Virtuális gép rögzítése rendszerképben
           href: capture-image-resource.md
+        - name: Általános rendszerkép használata
+          href: create-vm-generalized-managed.md
         - name: Rendszerkép összeállítása a Packerrel
           href: build-image-with-packer.md
         - name: Windows-ügyfélrendszerképek használata
@@ -241,8 +249,6 @@
               href: excel-cluster-hpcpack.md
     - name: Tárhely kezelése
       items:
-        - name: Információk a felügyelt lemezekről
-          href: managed-disks-overview.md
         - name: Lemezek – Gyakori kérdések
           href: faq-for-disks.md
         - name: Lemez hozzáadása
@@ -255,8 +261,6 @@
           href: detach-disk.md
         - name: Lemez átméretezése
           href: expand-os-disk.md
-        - name: Lemezek biztonsági mentése és vészhelyreállítása
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Lemez pillanatképének elkészítése
           href: snapshot-copy-managed-disk.md
         - name: Nem felügyelt lemezek biztonsági mentése

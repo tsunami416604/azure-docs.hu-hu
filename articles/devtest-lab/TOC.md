@@ -55,6 +55,9 @@
 ### [Virtuális hálózatok konfigurálása](devtest-lab-configure-vnet.md)
 ### [IP-konfigurációs beállítás kiválasztása](devtest-lab-shared-ip.md)
 
+## Adatlemezek felügyelete
+### [Adatlemezek csatolása és leválasztása](devtest-lab-attach-detach-data-disk.md)
+
 ## [A labor skálázása](devtest-lab-scale-lab.md)
 
 # Referencia

@@ -29,8 +29,14 @@
       href: project-ic-tasks.md
 - name: Projektstruktúra
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
-- name: Projekt végrehajtása
-  href: project-execution.md
+- name: Projekttervezés és -végrehajtás
+  items:
+    - name: Projekttervezés
+      href: team-data-science-process-project-templates.md
+    - name: Projekt végrehajtása
+      items:
+        - name: Adatelemzési projektek
+          href: project-execution.md
 - name: Példák
   href: walkthroughs.md
   items:
