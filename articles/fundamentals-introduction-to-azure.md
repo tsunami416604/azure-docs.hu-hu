@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
-ms.openlocfilehash: 2d2cc04887d90b9f005bfe5310a9ce2fb2f7e217
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69b8ec86f764077a0e6d029f7c540fa25d022a31
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="introducing-microsoft-azure"></a>Introducing Microsoft Azure
 A Microsoft Azure a Microsoft alkalmazás platformja a nyilvános felhő.  Ez a cikk célja, hogy biztosítson alaprendszert az Azure-ban – alapok megértéséhez még akkor is, ha a felhő semmit nem tudja a számítástechnikai.
@@ -77,7 +77,7 @@ A leggyakoribb dolog, amelyek személyek a felhőben fut webhelyekhez és webes 
 
 Ez az pontosan, Web Apps biztosít. A számítási modellt kínál a felügyelt webes környezet az Azure felügyeleti portálra, valamint a API-k használatával. Egy meglévő webhely alkalmazást áthelyezi változatlan Web Apps, vagy létrehozhat egy új közvetlenül a felhőben. Után egy webhelye fut-e, adja hozzá, vagy példányt eltávolítja, dinamikusan, Azure Web Apps kérések történő terheléselosztásához mindegyik hagyatkoznia. Az Azure Apps kínál egy megosztott lehetőséget, ha a webhely más helyekre rendelkező virtuális gép fut, és a egy normál beállítás, amely lehetővé teszi, hogy a hely a saját virtuális gép futtatásához. A normál beállítás lehetővé teszi a példányok (számítástechnikai power) méretének növelése, szükség esetén.
 
-Fejlesztési Web Apps relációs tároló .NET, PHP, Node.js, Java és Python, valamint az SQL-adatbázis és MySQL (a ClearDB, egy Microsoft partnert) támogatja. Azt is beépített támogatást nyújt több népszerű alkalmazások, beleértve a WordPress, a Joomla vagy a Drupal. A cél, hogy egy alacsony költségű, méretezhető és körben használható platformot biztosít webhelyek és webalkalmazások létrehozása a nyilvános felhőben.
+Fejlesztési Web Apps támogatja a .NET, PHP, Node.js, Java és Python, valamint az SQL-adatbázis és az Azure-adatbázis a MySQL relációs tárolására. Azt is beépített támogatást nyújt több népszerű alkalmazások, beleértve a WordPress, a Joomla vagy a Drupal. A cél, hogy egy alacsony költségű, méretezhető és körben használható platformot biztosít webhelyek és webalkalmazások létrehozása a nyilvános felhőben.
 
 **Web Apps forgatókönyvek**
 
