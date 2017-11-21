@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 11/16/2017
 ms.author: glenga
-ms.openlocfilehash: 81331142aa6110d4e29e6fb30a90ce6e3a853439
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d38482ebca736e4d7d0fe0b1b4b5dd0220de5b4
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="add-authentication-to-your-android-app"></a>Hitelesítés hozzáadása az Android-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -33,7 +33,7 @@ Ebben az oktatóanyagban hozzáadhat hitelesítési a todolist gyorsútmutató-p
 
 Biztonságos hitelesítéshez az szükséges, hogy az alkalmazás adja meg egy új URL-sémát. Ez lehetővé teszi a hitelesítési rendszer visszairányítja az alkalmazás a hitelesítési folyamat befejezése után. Ebben az oktatóanyagban az URL-séma használjuk _appname_ egész. Bármely választja URL-sémát is használhatja. A mobilalkalmazás egyedinek kell lennie. A kiszolgáló oldalán engedélyezése:
 
-1. Válassza ki az App Service az [Azure-portálon].
+1. Az a [Azure-portálon], válassza ki az App Service.
 
 2. Kattintson a **hitelesítési / engedélyezési** menüjét.
 
@@ -50,7 +50,7 @@ Biztonságos hitelesítéshez az szükséges, hogy az alkalmazás adja meg egy �
 
      Ezt a kivételt az oka, hogy az alkalmazás megpróbál hozzáférni a háttérben, nem hitelesített felhasználóként, de a *TodoItem* tábla most hitelesítést igényel.
 
-Ezt követően a felhasználók hitelesítésére, mielőtt kérelmezi erőforrások a Mobile Apps háttérből alkalmazást frissíti. 
+Ezt követően a felhasználók hitelesítésére, mielőtt kérelmezi erőforrások a Mobile Apps háttérből alkalmazást frissíti.
 
 ## <a name="add-authentication-to-the-app"></a>Hitelesítés hozzáadása az alkalmazáshoz
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
@@ -79,3 +79,4 @@ Most, hogy elvégezte az oktatóanyag az egyszerű hitelesítés, fontolja meg v
 
 <!-- URLs. -->
 [Ismerkedés a Mobile Apps]: app-service-mobile-android-get-started.md
+[Azure-portálon]: https://portal.azure.com/

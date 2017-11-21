@@ -16,22 +16,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: ankshah
-ms.openlocfilehash: 9e4419b57edf86e03044ad1047b18397ff4d8d19
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 1ceaa834ff68d5dca4abce561f9185e89af582af
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Az Azure Cosmos DB-tűzfaltámogatás
-Egy Azure Cosmos-adatbázis adatbázis-fiókban tárolt adatok védelme érdekében Azure Cosmos DB nyújtott támogatás a titkos kulcs alapú [engedélyezési modellt](https://msdn.microsoft.com/library/azure/dn783368.aspx) , amely erős kivonat-alapú üzenethitelesítő kódot (HMAC) használja. Most a titkos alapú engedélyezési modell mellett Azure Cosmos DB bejövő tűzfaltámogatás IP-alapú hozzáférés-vezérléssel vezérelt házirend támogatja. Ez a modell nagyon hasonlít a tűzfalszabályokat az adatbázisok hagyományos rendszert, és egy további Azure Cosmos DB adatbázis fiókhoz biztonsági szintet. Ez a modell segítségével mostantól beállíthatja egy Azure Cosmos DB adatbázisfiók csak egy jóváhagyott gépek halmazát jelenti érhetők el, illetve a felhőalapú szolgáltatások. A jóváhagyott halmazok gépek és szolgáltatások Azure Cosmos DB erőforrásokhoz való hozzáférés továbbra is szükség van egy érvényes hitelesítési jogkivonatot a hívó.
+Egy Azure Cosmos-adatbázis adatbázis-fiókban tárolt adatok védelme érdekében Azure Cosmos DB nyújtott támogatás a titkos kulcs alapú [engedélyezési modellt](https://msdn.microsoft.com/library/azure/dn783368.aspx) , amely erős kivonat-alapú üzenethitelesítő kódot (HMAC) használja. Most a titkos alapú engedélyezési modell mellett Azure Cosmos DB bejövő tűzfaltámogatás IP-alapú hozzáférés-vezérléssel vezérelt házirend támogatja. Ebben a modellben a hagyományos adatbázis rendszer tűzfalszabályok hasonló, és egy további Azure Cosmos DB adatbázis fiókhoz biztonsági szintet. Ez a modell segítségével mostantól beállíthatja egy Azure Cosmos DB adatbázisfiók csak egy jóváhagyott gépek halmazát jelenti érhetők el, illetve a felhőalapú szolgáltatások. A jóváhagyott halmazok gépek és szolgáltatások Azure Cosmos DB erőforrásokhoz való hozzáférés továbbra is szükség van egy érvényes hitelesítési jogkivonatot a hívó.
 
 ## <a name="ip-access-control-overview"></a>IP hozzáférés-vezérlés áttekintése
-Alapértelmezés szerint egy Azure Cosmos DB adatbázisfiók érhető el nyilvános internetről mindaddig, amíg a kérelem egy érvényes engedélyezési jogkivonat együtt. IP-csoportházirend-alapú hozzáférés-vezérlés konfigurálása, a felhasználónak meg kell adnia az IP-címek vagy IP-címtartományt a CIDR formátumban része, mint az engedélyezett bővítmények listájához ügyfél IP-címek egy adott adatbázis fiókjához tartozó készletét. Ha ez a konfiguráció van érvényben, kívül az engedélyezett bővítmények listájához készülékekről származó összes kérelem le lesz tiltva a kiszolgáló.  A kapcsolat feldolgozása a IP-alapú hozzáférés-vezérlés folyamata a következő ábra ismerteti.
+Alapértelmezés szerint egy Azure Cosmos DB adatbázisfiók érhető el nyilvános internetről mindaddig, amíg a kérelem egy érvényes engedélyezési jogkivonat együtt. IP-csoportházirend-alapú hozzáférés-vezérlés konfigurálása, a felhasználónak meg kell adnia az IP-címek vagy IP-címtartományt a CIDR formátumban része, mint az engedélyezett bővítmények listájához ügyfél IP-címek egy adott adatbázis fiókjához tartozó készletét. Ha ez a konfiguráció van érvényben, kívül az engedélyezett bővítmények listájához készülékekről származó összes kérelem le lesz tiltva a kiszolgáló.  A kapcsolat feldolgozása a IP-alapú hozzáférés-vezérlés folyamata a következő ábra szemlélteti:
 
 ![IP-alapú hozzáférés-vezérlés folyamata bemutató ábra](./media/firewall-support/firewall-support-flow.png)
 
 ## <a name="connections-from-cloud-services"></a>Felhőszolgáltatások közötti kapcsolatok
-Az Azure felhőszolgáltatások, amelyek egy nagyon gyakori középső réteg szolgáltatás logika Azure Cosmos DB használatával üzemeltetéséhez. Hozzáférés engedélyezése egy Azure Cosmos-adatbázis adatbázis-fiókhoz az egy felhőszolgáltatás, a felhőalapú szolgáltatás nyilvános IP-címe hozzá kell adni az engedélyezettek listájához, az IP-címek az Azure Cosmos DB adatbázisfiók által társított [az IP-hozzáférés konfigurálása Szabályozza a házirend](#configure-ip-policy).  Ez biztosítja, hogy a felhőalapú szolgáltatások minden szerepkör példányát az Azure Cosmos DB adatbázisfiók hozzáféréssel rendelkeznek. IP-címek kérheti le az Azure-portálon a felhőszolgáltatások, az alábbi képernyőfelvételen látható módon.
+Az Azure felhőszolgáltatások, amelyek egy közös középső réteg szolgáltatás logika Azure Cosmos DB használatával üzemeltetéséhez. Hozzáférés engedélyezése egy Azure Cosmos-adatbázis adatbázis-fiókhoz az egy felhőszolgáltatás, a felhőalapú szolgáltatás nyilvános IP-címe hozzá kell adni az engedélyezettek listájához, az IP-címek az Azure Cosmos DB adatbázisfiók által társított [az IP-hozzáférés konfigurálása Szabályozza a házirend](#configure-ip-policy).  Ez biztosítja, hogy a felhőalapú szolgáltatások minden szerepkör példányát az Azure Cosmos DB adatbázisfiók hozzáféréssel rendelkeznek. IP-címek kérheti le az Azure-portálon a felhőszolgáltatások, az alábbi képernyőfelvételen látható módon:
 
 ![Képernyőfelvétel: a nyilvános IP-cím egy felhőalapú szolgáltatás, az Azure-portálon jelenik meg](./media/firewall-support/public-ip-addresses.png)
 
@@ -47,13 +47,16 @@ Ha további virtuálisgép-példányok felvétele a csoportba, azok automatikusa
 ## <a name="connections-from-the-internet"></a>Az internetről érkező kapcsolatokat
 Amikor egy Azure Cosmos DB adatbázisfiók fér hozzá egy számítógépről az interneten, az ügyfél IP-cím vagy IP-címtartomány a gép hozzá kell adni az Azure Cosmos DB adatbázis fiókjához tartozó IP-cím az engedélyezett bővítmények listájához. 
 
-## <a id="configure-ip-policy"></a>Az IP-hozzáférés-vezérlési házirend beállítása
+## <a name="connections-from-azure-paas-service"></a>Azure PaaS szolgáltatás közötti kapcsolatok 
+Az Azure Functions Azure, a PaaS-szolgáltatásokat, mint az Azure Stream analytics használ Azure Cosmos DB együtt. Hozzáférés engedélyezése az Azure Cosmos DB adatbázisfiók az ilyen jellegű, amelynek IP-cím nincs könnyen elérhető szolgáltatások, az IP-címe 0.0.0.0 hozzá kell adni az engedélyezettek listájához, az IP-címek az Azure Cosmos DB adatbázis fiókjához társított [IP hozzáférés-vezérlési házirend beállítása](#configure-ip-policy).  Ez biztosítja, hogy Azure PaaS szolgáltatásokhoz való hozzáférést egy Azure Cosmos DB fiókokat, amelyeknek ez a szabály. 
+
+ ## <a id="configure-ip-policy"></a>Az IP-hozzáférés-vezérlési házirend beállítása
 Az IP-hozzáférés-vezérlési szabályzat állítható be az Azure portálon vagy programozottan a [Azure CLI](cli-samples.md), [Azure Powershell](powershell-samples.md), vagy a [REST API](/rest/api/documentdb/) a frissítésével`ipRangeFilter`tulajdonság. IP-címeken/tartományokon vesszővel elválasztott, és nem tartalmazhat szóközt kell lennie. Példa: "13.91.6.132,13.91.6.1/24". Amikor ezek a módszerek használatával az adatbázisfiók frissítése, ügyeljen arra, hogy a tulajdonságokat, hogy megakadályozza a rendszer visszaállítja az alapértelmezett beállításokat az feltöltéséhez.
 
 > [!NOTE]
 > Azáltal, hogy IP hozzáférés-vezérlési szabályzatok Azure Cosmos DB adatbázis fiókjához, minden Azure Cosmos DB adatbázis fiókja gépekről kívül a beállított elérését az IP-címtartományok listájának le vannak tiltva. Ez a modell alapján keresse meg az vezérlősík művelet a portálról is blokkolja a hozzáférés-vezérlés sértetlenségének biztosítása érdekében.
 
-Egyszerűbbé teheti a fejlesztési, az Azure-portálon segítségével azonosítsa és adja meg az IP-címe az ügyfélszámítógép az engedélyezettek listájához, hogy a gépen futó alkalmazások hozzáférhessenek az Azure Cosmos DB fiók. Ügyeljen arra, hogy az ügyfél IP-cím szerinti a portál észleli-e. Elképzelhető, hogy az ügyfél IP-cím a gép, de az is lehet a hálózati átjáró IP-címét. Ne feledje éles előtt távolítsa el.
+Egyszerűbbé teheti a fejlesztési, az Azure-portálon segítségével azonosítsa és adja meg az IP-címe az ügyfélszámítógép az engedélyezettek listájához, hogy a gépen futó alkalmazások hozzáférhessenek az Azure Cosmos DB fiók. Az ügyfél IP-cím szerinti a portál észlel. Elképzelhető, hogy az ügyfél IP-cím a gép, de az is lehet a hálózati átjáró IP-címét. Ne feledje éles előtt távolítsa el.
 
 Az IP-hozzáférés-vezérlési házirend beállítása az Azure portálon, keresse meg a Azure Cosmos DB-fiók panelen, kattintson a **tűzfal** a navigációs menü, majd kattintson a **ON** 
 
@@ -80,7 +83,7 @@ Azáltal, hogy IP hozzáférés-vezérlési szabályzatok Azure Cosmos DB adatb�
 ![A bemutató Képernyőkép az Azure-portálon való hozzáférés engedélyezése](./media/firewall-support/azure-portal-access-firewall.png)
 
 ### <a name="sdk--rest-api"></a>SDK & Rest API
-A biztonsági okokból nem található az engedélyezési listához gépek SDK vagy a REST API-n keresztül hozzáférést egy általános 404-es nem található response további részletek nem ad vissza. Ellenőrizze, hogy a megfelelő házirend-konfiguráció alkalmazásának Azure Cosmos DB adatbázis fiókjába engedélyezettek listájához, a Azure Cosmos DB adatbázis fiókjához beállított IP.
+A biztonsági okokból nem található az engedélyezési listához gépek SDK vagy a REST API-n keresztül hozzáférést egy általános 404-es nem található response további részletek nem ad vissza. Ellenőrizze a megfelelő házirend-konfiguráció alkalmazásának Azure Cosmos DB adatbázis fiókjába engedélyezettek listájához, a Azure Cosmos DB adatbázis fiókjához beállított IP.
 
 ## <a name="next-steps"></a>Következő lépések
 További információ a hálózati kapcsolatos teljesítményadatokat tippek: [teljesítmény tippek](performance-tips.md).

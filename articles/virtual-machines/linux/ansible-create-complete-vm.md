@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/25/2017
 ms.author: iainfou
-ms.openlocfilehash: f5dfecd1f5aafc1b7117433ef1bdb1805be2c57b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f0e2fff8ea32874729cf9c4645d547df2449089
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Hozzon létre egy teljes Linux virtuális gép környezetet az Azure-ban Ansible
 Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfigurációs az erőforrásoknak a környezetben. Ansible segítségével kezelheti a virtuális gépek (VM), ugyanaz, mint bármely egyéb erőforrásokat az Azure-ban. Ez a cikk bemutatja, hogyan hozzon létre egy teljes körű Linux környezetet és az azt támogató Ansible erőforrásokhoz. Azt is megtudhatja hogyan [hozzon létre egy egyszerű virtuális gép Ansible](ansible-create-vm.md).
@@ -29,7 +29,7 @@ Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfi
 Ansible az Azure-erőforrások kezeléséhez, a következőkre lesz szüksége:
 
 - Ansible és a gazdagép a rendszerre telepített Azure Python SDK-moduljai.
-    - Ansible telepíthető [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73), és [SLES 12.2 SP2](ansible-install-configure.md#sles-122-sp2)
+    - Ansible telepíthető [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73), és [SLES 12 SP2](ansible-install-configure.md#sles-12-sp2)
 - Az Azure hitelesítő adatait, és Ansible konfigurált is használhatja őket.
     - [Az Azure hitelesítő adatok létrehozása és Ansible konfigurálása](ansible-install-configure.md#create-azure-credentials)
 - Az Azure CLI 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. 

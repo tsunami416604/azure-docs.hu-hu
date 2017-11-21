@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: b55eed31ddb5be23dc28a23b2f0588b8c8ff8833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbc4b8cdb0ff9255d0be02b998e67686921921ea
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>A Microsoft Azure szószedet: az Azure platformon felhő terminológia dictionary
 
@@ -87,13 +87,13 @@ A díjszabás kreditek és az Azure-előfizetésre vonatkozó kapcsolódó fogal
 Tekintse meg a [Azure-ajánlat a Részletek lap](https://azure.microsoft.com/support/legal/offer-details/)
 
 ## <a name="portal"></a>portal
-A biztonságos webes portál telepítése és kezelése az Azure-szolgáltatásokhoz használt.  Nincsenek a két portál: A [Azure-portálon](http://portal.azure.com/) és a [klasszikus portál](http://manage.windowsazure.com/). Egyes szolgáltatások érhetők el mindkét portálok, míg mások csak az egyiket érhető el. A [az Azure portál elérhetőségi diagram](https://azure.microsoft.com/features/azure-portal/availability/) által mely portálon elérhető szolgáltatások listája.
+A biztonságos webes portál telepítése és kezelése az Azure-szolgáltatásokhoz használt.
 
-## <a name="region"></a>Régió
+## <a name="region"></a>régió
 Olyan, amely közötti nemzeti szegélyek, és egy vagy több adatközpontok tartalmaz egy földrajzi területen. Árképzési regionális szolgáltatások és típusú ki vannak téve a régió szinten. A régió általában párosítani egy másik régióban, amely lehet akár több száz miles számítógépnél. Regionális párok alkalmas mechanizmusaként vész-helyreállítási és magas rendelkezésre állás elérésére. Más néven *hely*.  
 Lásd: [Azure-régiók](best-practices-availability-paired-regions.md)
 
-## <a name="resource"></a>Erőforrás
+## <a name="resource"></a>erőforrás
 Az Azure-megoldás részét képező cikk. Minden Azure szolgáltatás lehetővé teszi különböző típusú erőforrások, például az adatbázisok és virtuális gépek telepítését.   
 Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md)
 

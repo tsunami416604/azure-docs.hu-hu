@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c778c412bf6d65c5b6ee92d603aac7acfa6139eb
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: f93cfcdffd79b4cccdbd5f7c67ec42499bf7628c
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Fejlesztés és a szimulált eszköz egy C# IoT peremhálózati modul telepítése – előzetes
 
@@ -123,7 +123,7 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
             Console.WriteLine("Desired property change:");
             Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
 
-            if (desiredProperties["TemperatureThreshold"].exists())
+            if (desiredProperties["TemperatureThreshold"]!=null)
                 temperatureThreshold = desiredProperties["TemperatureThreshold"];
 
         }
@@ -226,7 +226,7 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
         
         A felhasználónév, jelszó és a bejelentkezési kiszolgáló, a parancs használatával megkereséséhez nyissa meg az [Azure portálra] (https://portal.azure.com). A **összes erőforrás**, kattintson az Azure-tárolót beállításjegyzék nyissa meg a tulajdonságait, majd kattintson a csempére **hívóbetűk**. Az értékek másolása a **felhasználónév**, **jelszó**, és **bejelentkezési kiszolgáló** mezőket. A bejelentkezési kiszolgáló sould a kötelező forma: `<your registry name>.azurecr.io`.
 
-3. A Docker-tárház küldje le a lemezképet. Használja a **nézet |} Paletta... parancs |} Peremhálózati: Leküldéses IoT peremhálózati modul Docker kép** menü parancsot, és az előugró mezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Használja a kép néven lépésben használt 1.c.
+3. A Docker-tárház küldje le a lemezképet. Használja a **nézet |} Paletta... parancs |} Peremhálózati: Leküldéses IoT peremhálózati modul Docker kép** menü parancsot, és az előugró mezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Használja a kép néven lépésben használt 1.d.
 
 ## <a name="add-registry-credentials-to-edge-runtime-on-your-edge-device"></a>Adja hozzá a peremhálózati eszköz peremhálózati runtime beállításjegyzék hitelesítő adatokat
 A peremhálózati futásidejű a peremhálózati eszköz futtató számítógépen adja hozzá a rendszerleíró adatbázis hitelesítő adatait. Ezáltal a tároló lekéréses futásidejű elérésére. 

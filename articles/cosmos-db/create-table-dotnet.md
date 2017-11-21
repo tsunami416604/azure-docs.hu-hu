@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/16/2017
+ms.date: 11/20/2017
 ms.author: mimig
-ms.openlocfilehash: 4e59c333e14e5e21a02c3160cf6311d1182e5a5e
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: e0f0a95ea086e83ef0c46145b33b348071407aa5
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>Gyors üzembe helyezés: Egy tábla .NET és Azure Cosmos DB API-alkalmazás létrehozása 
 
@@ -34,6 +34,10 @@ Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ing
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
+
+> [!IMPORTANT] 
+> Szeretne együttműködni a általánosan elérhető tábla API SDK-k új tábla API-fiók létrehozása. Tábla API fiókjainak előzetes nem támogatottak az általánosan elérhető az SDK-k.
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -91,7 +95,11 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
     ```
 
-4. Az elsődleges KAPCSOLATI KARAKTERLÁNCOT a portálról illessze be a StorageConnectionString érték a 8. Illessze be a karakterláncot, az idézőjelek közé foglalt belül. Ha a végponthoz documents.azure.com használ, módosítsa a része, table.cosmosdb.azure.com. 
+4. Az elsődleges KAPCSOLATI KARAKTERLÁNCOT a portálról illessze be a StorageConnectionString érték a 8. Illessze be a karakterláncot, az idézőjelek közé foglalt belül. 
+
+    > [!IMPORTANT]
+    > Ha a végpont által használt documents.azure.com, amely azt jelenti, hogy előzetes fiókkal rendelkezik, és kell létrehoznia egy [új tábla API-fiók](#create-a-database-account) működéséhez az általánosan elérhető tábla API SDK-val. 
+    > 
 
     Sor 8 most hasonlóan kell kinéznie:
 
@@ -99,7 +107,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
     ```
 
-4. Mentse az App.config fájlt.
+5. Mentse az App.config fájlt.
 
 Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 5ca9b8ed40a1e58a0aea4de87995caf5f9a9212b
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: fe911b69278021262f1d90f2157bb78ca48db0db
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Az Azure Cosmos DB Apache Cassandra API bemutatása
 
@@ -78,7 +78,7 @@ Ha már rendelkezik Azure-előfizetéssel, regisztrálhat a Cassandra API (előz
 
     Miután a kérelmet, az állapota **jóváhagyásra váró** az új fiók panelen. 
 
-A kérelem elküldése után várja meg, hogy a kérelem jóváhagyását e-mailben értesítést. Nem kell a kérés teljesítéséhez el egy támogatási jegy létrehozását. Kérelem érkezett volt sorrendben felül kell vizsgálni. 
+A kérelem elküldése után várja meg, hogy a kérelem jóváhagyását e-mailben értesítést. A nagy mennyiségű kérést, mert egy héten belül értesítést kell kapnia. Nem kell a kérés teljesítéséhez el egy támogatási jegy létrehozását. Kérelem érkezett volt sorrendben felül kell vizsgálni. 
 
 ## <a name="how-to-get-started"></a>Első lépések
 Egyszer csatlakozott a programot, hajtsa végre a Cassandra API quickstarts hozhat létre egy alkalmazást a Cassandra API használatával:

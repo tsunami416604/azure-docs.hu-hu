@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: f4457b44c97fadc58406430fc0f31b3e0bac6682
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 4a1db86f4b715533dfea545365eaf66de0574c5e
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Oktatóanyag: Logikai alkalmazás csatlakoztatása az Azure IoT Suite távoli megfigyelési előre konfigurált megoldás
 A [Microsoft Azure IoT Suite] [ lnk-internetofthings] távoli felügyeleti előkonfigurált megoldás használatának gyors megkezdése egy végpont készlet, amely egy IoT-megoldás exemplifies remek módja van. Ez az oktatóanyag bemutatja, hogyan logikai alkalmazás felvétele a Microsoft Azure IoT Suite távoli felügyeleti előkonfigurált megoldás. A lépések bemutatják, hogyan készíthet az IoT-megoldásból még tovább csatlakozva üzleti folyamatokat.
@@ -33,7 +33,7 @@ Ez az oktatóanyag megkezdése előtt a következőket:
 
 Az oktatóanyag teljesítéséhez szüksége van a Visual Studio 2015-öt vagy a Visual Studio 2017 az előkonfigurált megoldás háttérbeli műveletek módosítását.
 
-Feltéve, hogy már megtörtént a távoli figyelésének előre konfigurált megoldást, keresse meg az adott megoldáshoz tartozó erőforráscsoport a [Azure-portálon][lnk-azureportal]. Az erőforráscsoport neve megegyezik a megoldás neve rendelkezik úgy döntött, hogy amikor a távoli felügyeleti megoldás létesített. Az erőforráscsoportot látja a megoldás, kivéve az Azure Active Directory-alkalmazás, amely a klasszikus Azure portálon található összes kiépített Azure-erőforrásokat. Az alábbi képernyőfelvételen szereplő példán látható **erőforráscsoport** egy távoli figyelés panel előre konfigurált megoldást:
+Feltéve, hogy már megtörtént a távoli figyelésének előre konfigurált megoldást, keresse meg az adott megoldáshoz tartozó erőforráscsoport a [Azure-portálon][lnk-azureportal]. Az erőforráscsoport neve megegyezik a megoldás neve rendelkezik úgy döntött, hogy amikor a távoli felügyeleti megoldás létesített. Az erőforráscsoportot megjelenik a megoldás összes kiépített Azure-erőforrásokat. Az alábbi képernyőfelvételen szereplő példán látható **erőforráscsoport** egy távoli figyelés panel előre konfigurált megoldást:
 
 ![](media/iot-suite-v1-logic-apps-tutorial/resourcegroup.png)
 

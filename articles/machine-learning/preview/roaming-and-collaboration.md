@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 856348c07a198a8c53c6661441d5c49196ef3af5
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 50f48fb096cb907e050769a8a4159689eb25418c
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Központi és az Azure Machine Learning munkaterület együttműködés
 A dokumentumból megtudhatja, hogyan segítik a Azure Machine Learning-munkaterület gépek, valamint a teammates együttműködve lehetővé teszik a projektek válasszanak. 
@@ -28,10 +28,14 @@ Második, hozzáférési [Visual Studio Team System](https://www.visualstudio.co
 
 ## <a name="create-a-new-azure-machine-learning-project"></a>Új Azure Machine Learning-projekt létrehozása
 Indítsa el az Azure Machine Learning-munkaterület, és hozzon létre egy új projektet (például _iris_). Töltse ki a **visualstudio.com webhelyre GIT-tárház URL-cím** egy érvényes VSTS Git-tárház URL-szövegmező. 
->[!IMPORTANT]
->Projekt létrehozása sikertelen lesz, ha nem rendelkezik olvasási/írási hozzáférést a Git-tárház, és a Git-tárház nem üres, azaz már tartalmazza a főágba.
+
+> [!IMPORTANT]
+> Ha úgy dönt, hogy az üres projektsablon, a rendszer OK a Git-tárház már választja-e egy _fő_ ág. Az Azure ML egyszerűen klónokat a _fő_ fiókirodai helyileg, és adja hozzá a `aml_config` mappa és más projektfájlok metaadatok a helyi projekt mappába. De ha úgy dönt, hogy a többi projekt sablont, a Git-tárház kell már rendelkezik egy _fő_ fiókirodákban, vagy ha hibaüzenetet kap. Ez esetben használjon `az ml project create` a projekt létrehozásához, és adja meg a parancssori eszköz egy `--force` váltani. Ez törli a fájlokat az eredeti főágába, és cserélje le őket a sablon az új fájlokat.
 
 A projekt létrehozása után küldje el a projekt parancsfájlokat néhány felhőkörnyezetben. Ez a művelet be a távoli Git-tárház futtatási előzményei fiókirodai projekt állapot érvényesítése. 
+
+> [!NOTE] 
+> Csak a parancsfájl futtatásával eseményindító véglegesíti futtatási előzményei ágat. Adatok előkészítése végrehajtása vagy a Notebook futtatása nem indítható el, a futtatási előzményei fiókirodai projekt pillanatfelvételeket.
 
 Ha telepítő Git hitelesítési, kíván közvetlenül is működik, a főágba, vagy létrehozni egy új fiókirodai. 
 
@@ -71,7 +75,8 @@ A macOS akkor a következő helyen:`/home/<username>/Documents/AzureML`
 
 Egy későbbi kiadásban tervezzük kibővítik a funkciókat, hogy jelöljön ki egy célmappát meg. 
 
->Vegye figyelembe, hogy megtörténjen-e egy mappa a pontos neve megegyezik a projektet, a letöltés sikertelen Azure ML könyvtárban található. Jelenleg nevezze át a meglévő mappát ahhoz, hogy a probléma megoldásához szükséges.
+> [!NOTE]
+> Egy mappa a pontos neve megegyezik a projekt Azure ML könyvtárban található fordulhat elő, ha a letöltés sikertelen lesz. Jelenleg nevezze át a meglévő mappát ahhoz, hogy a probléma megoldásához szükséges.
 
 
 ### <a name="work-on-the-downloaded-project"></a>A letöltött projektből működik 

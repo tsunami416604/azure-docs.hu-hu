@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: mimig1
 ms.custom: 
-ms.openlocfilehash: a68b24fe91d3acb0f18d3d06d6252317bd671be4
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 70315d93b7211351c19a17553db88962f25d8acb
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Az Azure Cosmos DB tábla API SDK for Python: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -37,6 +37,9 @@ ms.lasthandoff: 11/15/2017
 |**Hozzájárul az SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Aktuális támogatott platform**|[Python 2.7](https://www.python.org/downloads/) vagy [Python 3.3-as, 3.4, 3.5-ös vagy 3.6] (https://www.python.org/downloads/)|
 
+> [!IMPORTANT]
+> Ha egy tábla API-fiókot az előzetes hozott létre, hozzon létre egy [új tábla API-fiók](create-table-dotnet.md#create-a-database-account) az általánosan elérhető tábla API SDK-k együttműködni.
+>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 57af000e47188786a77cdb84ebb6ffb5c50eafaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 528b569ff9ffb3659e9210ea70e3aa06921cfe0d
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>A környezetben, a változáskövetési megoldás a szoftver változásainak követése
 
@@ -44,7 +44,7 @@ A következő lépésekkel konfigurálhatja a fájlok nyomon követéséhez a Li
 4. Kattintson a **Save** (Mentés) gombra.  
 
 > [!NOTE]
-> Linux fájl nyomkövetési könyvtár nyomon követése, könyvtárak, és nyomon követése helyettesítő recrusion beleértve további képességekkel rendelkezik.
+> Linux fájl nyomkövetési könyvtár nyomon követése, könyvtárak, és nyomon követése helyettesítő rekurzió beleértve további képességekkel rendelkezik.
 
 ### <a name="configure-windows-files-to-track"></a>Windows-fájlok nyomon követéséhez beállítása
 A következő lépésekkel konfigurálhatja a fájlok nyomon követéséhez a Windows rendszerű számítógépeken.
@@ -69,7 +69,7 @@ A következő lépésekkel konfigurálhatja a beállításkulcsokat, nyomon köv
    * **Fájl** (jelentést fájl metaadat - mérete, a módosítás dátuma, a kivonatoló, stb.)
    * **Directory** (jelentés directory metaadat - mérete, a módosítás dátuma, stb.)
 2. **Hivatkozások** (symlink hivatkozások kezelése Linux egyéb fájlok és könyvtárak)
-   * **Figyelmen kívül hagyása** (figyelmen kívül hagyása symlinks során nem tartalmazza a fájlok vagy könyvtárak hivatkozott recurions)
+   * **Figyelmen kívül hagyása** (figyelmen kívül hagyása symlinks során nem tartalmazza a fájlok vagy könyvtárak hivatkozott rekurzió)
    * **Hajtsa végre a** (hajtsa végre a symlinks során rekurzió, így magába foglalja a hivatkozott fájlok vagy könyvtárak)
    * **Kezelése** (kövesse a symlinks, és módosítsa a visszaadott tartalom kezelése)
 
@@ -87,7 +87,7 @@ A változáskövetési megoldás jelenleg nem támogatja a következő elemek:
 * Helyettesítő karakterek Windows fájl nyomon követése
 * Elérésiút-változók
 * Hálózati fájlrendszer
-* A fájl
+* Fájl tartalma
 
 Egyéb korlátozások is érvényesek:
 
@@ -96,14 +96,18 @@ Egyéb korlátozások is érvényesek:
 * Ha nagy hálózati forgalmat módosítás rekordok is tarthat legfeljebb hat órán keresztül megjelenítéséhez.
 * A konfigurációs akkor módosítható, amíg a számítógép leállítása, ha a számítógép, amely a korábbi konfigurációt tartoztak fájlváltozások előfordulhat, hogy küldje.
 
+### <a name="known-issues"></a>Ismert problémák
+A változáskövetési megoldás jelenleg a következő hibákat észlelt:
+* A gyorsjavítás-frissítések a Windows 10 Creators Update és Windows Server 2016 Core RS3 gépek nem történik gyűjtés.
+
 ## <a name="change-tracking-data-collection-details"></a>Nyomkövetési adatok gyűjtése adatainak módosítása
 Változáskövetés gyűjti a szoftverleltár és az ügynököket, amelyeket engedélyezte a Windows-szolgáltatás metaadatok.
 
 A következő táblázatban adatgyűjtési módszerek és egyéb hogyan adatok gyűjtése változáskövetési adatait.
 
-| Platform | Közvetlen ügynök | Operations Manager-ügynök | Linux-ügynök | Azure Storage | Az Operations Manager szükséges? | Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött | Gyűjtemény gyakorisága |
+| Platform | Közvetlen ügynök | Operations Manager-ügynök | Linux-ügynök | Azure Storage | Az Operations Manager szükséges? | Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött | A gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| A Windows és Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 5 perc – 50 perc, a módosítás típusától függően. További információért tekintse meg a következő táblázatot. |
+| A Windows és Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 5 perc – 50 perc, a módosítás típusától függően. További információkért tekintse meg az alábbi táblázatban. |
 
 
 Az alábbi táblázat azon adatok gyűjtési gyakoriságát.

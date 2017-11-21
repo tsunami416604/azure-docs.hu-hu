@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 9b1498d76680185b45edf9ac7e1747bfa6794eec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0631b621c01eb880393d07323cdeb815e564a2e3
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Csomag és a Service Fabric-alkalmazásként tároló üzembe helyezése
 
@@ -218,7 +218,7 @@ Az alkalmazás Azure-fürtön történő üzembe helyezéséhez használhat egy 
 
 A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök. A Service Fabric csapat, ahol a további tudnivalók a platform bárki és alkalmazások telepítése üzemeltet. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric). 
 
-További információk saját fürtök létrehozásáról: [Az első saját Service Fabric-fürt létrehozása az Azure-on](service-fabric-get-started-azure-cluster.md).
+A saját fürt létrehozásával kapcsolatos további információkért lásd: [a Service Fabric-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>Hozza létre és telepítse központilag az alkalmazást a fürthöz
 Az Azure-fürttel a Service Fabric parancssori felület használatával telepítheti az alkalmazást. Ha a Service Fabric parancssori felület nem települ a számítógépre, kövesse az utasításokat [Itt](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli) a telepítéshez. 

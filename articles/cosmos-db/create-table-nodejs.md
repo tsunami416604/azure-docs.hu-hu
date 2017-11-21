@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: quickstart
-ms.date: 11/16/2017
+ms.date: 11/20/2017
 ms.author: arramac
-ms.openlocfilehash: 1dcc2178b3c7017338e0097773fbf0d04c8b6a20
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 8cf8820ceea19fe8c4926c65d107d4f770f40926
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Gyors üzembe helyezés: A tábla a Node.js és az Azure Cosmos DB API-alkalmazás létrehozása
 
@@ -38,6 +38,10 @@ Továbbá:
 * [Git](http://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
+
+> [!IMPORTANT] 
+> Szeretne együttműködni a általánosan elérhető tábla API SDK-k új tábla API-fiók létrehozása. Tábla API fiókjainak előzetes nem támogatottak az általánosan elérhető az SDK-k.
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -84,7 +88,11 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 2. Másolja az elsődleges KAPCSOLATI KARAKTERLÁNCOT, használja a Másolás gombra a jobb oldalon.
 
-3. Nyissa meg az app.config fájlt, és illessze be az érték a három sor a ConnectionString kapcsolódási karakterláncban. Ha a kapcsolati karakterláncot, a végpont része documents.azure.com használ, javítsa ki a table.cosmosdb.azure.com használja helyette a része.
+3. Nyissa meg az app.config fájlt, és illessze be az érték a három sor a ConnectionString kapcsolódási karakterláncban. 
+
+    > [!IMPORTANT]
+    > Ha a végpont által használt documents.azure.com, amely azt jelenti, hogy előzetes fiókkal rendelkezik, és kell létrehoznia egy [új tábla API-fiók](#create-a-database-account) működéséhez az általánosan elérhető tábla API SDK-val.
+    >
 
 3. Mentse az app.config fájlt.
 

@@ -12,14 +12,14 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 0e77ecc591173ae29311c2a1508e5a8a907816ac
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 08e59fda2ea439b2272121cf8bfee76fe4f96fc3
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: A tábla API a .NET fejlesztést
 
@@ -88,7 +88,7 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
 2. Futtassa a következő parancsot a minta tárház klónozásához. Ezzel a paranccsal létrejön egy mintaalkalmazás példányát a számítógépen. 
 
     ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-table-dotnet-getting-started.git
+    git clone https://github.com/Azure-Samples/storage-table-dotnet-getting-started.git
     ```
 
 3. Ezután nyissa meg a megoldásfájlt a Visual Studióban. 
@@ -99,24 +99,32 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 1. Az a [Azure-portálon](http://portal.azure.com/), kattintson a **kapcsolati karakterlánc**. 
 
-    A képernyő jobb oldalán lévő másolás gombok segítségével másolja a KAPCSOLATI KARAKTERLÁNCOT.
+    A képernyő jobb oldalán lévő másolás gombok segítségével másolja az elsődleges KAPCSOLATI KARAKTERLÁNCOT.
 
     ![Megtekintheti, és másolja a KAPCSOLATI KARAKTERLÁNCOT a kapcsolati karakterlánc panelen](./media/create-table-dotnet/connection-string.png)
 
 2. Nyissa meg az app.config fájlt a Visual Studióban. 
 
-3. Illessze be a KAPCSOLATI karakterlánc az app.config fájlba kerülnek a CosmosDBStorageConnectionString értékeként. 
+3. Állítsa vissza a StorageConnectionString sor 8 és a StorageConnectionString sor 7 megjegyzésbe, mivel ez az oktatóanyag nem használ a Storage Emulator. 7. és 8 sor most példához hasonló:
 
-    `<add key="CosmosDBStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.net" />`    
+    ```
+    <!--key="StorageConnectionString" value="UseDevelopmentStorage=true;" />-->
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
+    ```
 
-    > [!NOTE]
-    > Az alkalmazás használatához az Azure Table storage, a kapcsolati karakterlánc módosítani szeretné `app.config file`. Azure Storage elsődleges kulcsként használja tábla fióknevet és kulcsot a fiók nevét. <br>
-    >`<add key="StandardStorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.windows.net" />`
-    > 
+4. Az elsődleges KAPCSOLATI KARAKTERLÁNCOT a portálról illessze be a StorageConnectionString érték a 8. Illessze be a karakterláncot, az idézőjelek közé foglalt belül.
+   
+    > [!IMPORTANT]
+    > Ha a végpont által használt documents.azure.com, amely azt jelenti, hogy előzetes fiókkal rendelkezik, és kell létrehoznia egy [új tábla API-fiók](#create-a-database-account) működéséhez az általánosan elérhető tábla API SDK-val. 
     >
 
-4. Mentse az app.config fájlt.
+    Sor 8 most hasonlóan kell kinéznie:
+
+    ```
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
+    ```
+
+5. Mentse az app.config fájlt.
 
 Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
@@ -128,7 +136,7 @@ Bizonyos funkciókat, amelyek lehetővé teszik egy szükséges kapcsolat házir
 | Tábla kapcsolatbeállításai | Leírás |
 | --- | --- |
 | Csatlakozási mód  | Azure Cosmos-adatbázis két csatlakozási módot támogat. A `Gateway` mód, mindig kérések az Azure Cosmos DB átjárón, amely továbbítja a megfelelő adatok partíciókat. A `Direct` csatlakozási mód, az ügyfél lekéri a táblák leképezése partíciókra, és a kérések közvetlenül az adatok partíciók szemben. Ajánlott `Direct`, az alapértelmezett.  |
-| Csatlakozási protokoll | Az Azure Cosmos DB támogatja két kapcsolat protokoll - `Https` és `Tcp`. `Tcp`az alapértelmezett és ajánlott, mivel az több egyszerűsített. |
+| Kapcsolat protokollja | Az Azure Cosmos DB támogatja két kapcsolat protokoll - `Https` és `Tcp`. `Tcp`az alapértelmezett és ajánlott, mivel az több egyszerűsített. |
 | Elsődleges helyek | Előnyben részesített (többhelyű) helyek az olvasási műveletek vesszővel elválasztott listája. Minden Azure Cosmos DB fiókhoz társítható 1-30 + régiók. Minden ügyfél példány e régiók részhalmazát megadhat kis késleltetésű olvasása csatlakozási kísérleteinek kívánt sorrendjét. A régiók névvel kell ellátni használatával a [megjelenített neveket](https://msdn.microsoft.com/library/azure/gg441293.aspx), például `West US`. Lásd még: [több homing API-k](tutorial-global-distribution-table.md). |
 | Konzisztenciaszint | Akkor is kompromisszumot közötti késleltetés, konzisztencia- és rendelkezésre állás öt jól meghatározott konzisztenciaszintek közötti választással: `Strong`, `Session`, `Bounded-Staleness`, `ConsistentPrefix`, és `Eventual`. Alapértelmezett érték a `Session`. A választott konzisztenciaszint lehetővé teszi több területi beállítások jelentős teljesítménybeli különbség. Lásd: [konzisztenciaszintek](consistency-levels.md) részleteiről. |
 
@@ -316,12 +324,9 @@ CloudTable table = tableClient.GetTableReference("people");
 table.DeleteIfExists();
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha az alkalmazást már nem használja, a következő lépések használatával törölje az oktatóanyag során létrehozott összes erőforrást az Azure Portalon.   
-
-1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.  
-2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra. 
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

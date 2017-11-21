@@ -1,23 +1,23 @@
 ---
 title: "Az Azure Active Directoryval HPC Pack fürt |} Microsoft Docs"
-description: "Ismerje meg, hogyan integrálható az Azure HPC Pack 2016 fürtöt az Azure Active Directoryval"
+description: "Megtudhatja, hogyan integrálhatja a Microsoft HPC Pack 2016 fürt az Azure-ban az Azure Active Directoryval"
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.assetid: 9edf9559-db02-438b-8268-a6cba7b5c8b7
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
-ms.date: 11/14/2016
+ms.date: 11/16/2017
 ms.author: danlep
-ms.openlocfilehash: c5a06a9c810349b1bcce01c7f73563941a5af0ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb0e878c4e987d111a535603cede25c639087ca7
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="manage-an-hpc-pack-cluster-in-azure-using-azure-active-directory"></a>Az Azure-ban az Azure Active Directory egy HPC Pack fürt kezelése
 [A Microsoft HPC Pack 2016](https://technet.microsoft.com/library/cc514029) való integráció támogatja [Azure Active Directory](../../active-directory/index.md) (az Azure AD) a rendszergazdák, akik HPC Pack-fürt üzembe helyezése az Azure-ban.
@@ -59,69 +59,66 @@ Integráció az Azure ad-val HPC Pack fürt segítségére lehetnek a következ�
 
 
 ## <a name="step-1-register-the-hpc-cluster-server-with-your-azure-ad-tenant"></a>1. lépés: Az Azure AD-bérlő regisztrálni a HPC cluster server
-1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com).
-2. Kattintson a **Active Directory** a bal oldali menüben, majd kattintson a kívánt könyvtár az előfizetésben. A címtárban található erőforrások hozzáféréssel kell rendelkeznie.
-3. Kattintson a **felhasználók**, és győződjön meg arról, hogy a felhasználói fiókok már létrehozott vagy konfigurálva van.
-4. Kattintson a **alkalmazások** > **Hozzáadás**, és kattintson a **a szerveztem által fejlesztett alkalmazás hozzáadása**. A varázslóban adja meg a következő információkat:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Ha a fiók hozzáférést biztosít több Azure AD-bérlő, kattintson a jobb felső sarokban a fiókba. A kívánt bérlői portál munkamenete akkor értéke. A címtárban található erőforrások hozzáféréssel kell rendelkeznie. 
+3. Kattintson a **Azure Active Directory** a szolgáltatások bal oldali navigációs ablaktábláján kattintson **felhasználók és csoportok**, és győződjön meg arról, hogy a felhasználói fiókok már létrehozott vagy konfigurálva van.
+4. A **Azure Active Directory**, kattintson a **App regisztrációk** > **új alkalmazás regisztrációja**. Adja meg a következő információkat:
     * **Név** -HPCPackClusterServer
-    * **Típus** – Itt adhatja meg **webes alkalmazáshoz és/vagy webes API-t**
+    * **Az alkalmazástípus** – Itt adhatja meg **Web app / API**
     * **Bejelentkezés URL-cím**-a mintát, amely alapértelmezés szerint az alap URL-cím`https://hpcserver`
-    * **App ID URI** - `https://<Directory_name>/<application_name>`. Cserélje le `<Directory_name`> az Azure AD-bérlőn, például teljes nevét `hpclocal.onmicrosoft.com`, és cserélje le `<application_name>` a korábban kiválasztott névvel.
+    * Kattintson a **Create** (Létrehozás) gombra.
+5. Az alkalmazás hozzáadása után válassza ki azt a a **App regisztrációk** listája. Kattintson a **beállítások** > **tulajdonságok**. Adja meg a következő információkat:
+    * Válassza ki **Igen** a **Multi-központjaként**.
+    * Változás **App ID URI** való `https://<Directory_name>/<application_name>`. Cserélje le `<Directory_name`> az Azure AD-bérlőn, például teljes nevét `hpclocal.onmicrosoft.com`, és cserélje le `<application_name>` a korábban kiválasztott névvel.
+6. Kattintson a **Save** (Mentés) gombra. Az alkalmazás oldalon, a mentés befejeztével kattintson **Manifest**. A jegyzékfájl szerkesztésével keresése a `appRoles` beállításával és a következő alkalmazás-szerepkör hozzáadása, és kattintson a **mentése**:
 
-5. Az alkalmazás hozzáadása után kattintson **konfigurálása**. Konfigurálja a következő tulajdonságokat:
-    * Válassza ki **Igen** a **alkalmazás több-bérlős**
-    * Válassza ki **Igen** a **alkalmazás eléréséhez szükséges felhasználói kiosztása**.
-
-6. Kattintson a **Save** (Mentés) gombra. Mentés befejeztével kattintson **kezelése Manifest**. Ez a művelet az alkalmazás JavaScript object notation (JSON) jegyzékfájl tölti le. A letöltött jegyzékfájl szerkesztésével keresése a `appRoles` beállítása, a következő alkalmazás-szerepkör hozzáadása:
-    ```json
-    "appRoles": [
-        {
-        "allowedMemberTypes": [
-            "User",
-            "Application"
-        ],
-        "displayName": "HpcAdminMirror",
-        "id": "61e10148-16a8-432a-b86d-ef620c3e48ef",
-        "isEnabled": true,
-        "description": "HpcAdminMirror",
-        "value": "HpcAdminMirror"
-        },
-        {
-        "allowedMemberTypes": [
-            "User",
-            "Application"
-        ],
-        "description": "HpcUsers",
-        "displayName": "HpcUsers",
-        "id": "91e10148-16a8-432a-b86d-ef620c3e48ef",
-        "isEnabled": true,
-        "value": "HpcUsers"
-        }
-    ],
-    ```
-7. Mentse a fájlt. A portálon, kattintson a **kezelése Manifest** > **feltöltése Manifest**. A szerkesztett jegyzékfájl majd feltöltheti.
-8. Kattintson a **felhasználók**, válasszon ki egy felhasználót, és kattintson a **hozzárendelése**. Az elérhető szerepkörök (HpcUsers vagy HpcAdminMirror) egyik hozzárendeléséhez a felhasználóhoz. Ismételje meg ezt a címtárban további felhasználókkal. Háttér-információkat fürt felhasználók, lásd: [fürt felhasználók kezelése](https://technet.microsoft.com/library/ff919335(v=ws.11).aspx).
-
-   > [!NOTE] 
-   > Felhasználók kezelése, azt javasoljuk, az Azure Active Directory preview paneljén a [Azure-portálon](https://portal.azure.com).
-   >
+  ```json
+  "appRoles": [
+     {
+     "allowedMemberTypes": [
+         "User",
+         "Application"
+     ],
+     "displayName": "HpcAdminMirror",
+     "id": "61e10148-16a8-432a-b86d-ef620c3e48ef",
+     "isEnabled": true,
+     "description": "HpcAdminMirror",
+     "value": "HpcAdminMirror"
+     },
+     {
+     "allowedMemberTypes": [
+         "User",
+         "Application"
+     ],
+     "description": "HpcUsers",
+     "displayName": "HpcUsers",
+     "id": "91e10148-16a8-432a-b86d-ef620c3e48ef",
+     "isEnabled": true,
+     "value": "HpcUsers"
+     }
+  ],
+  ```
+7. A **Azure Active Directory**, kattintson a **vállalati alkalmazások** > **összes alkalmazás**. Válassza ki **HPCPackClusterServer** a listából.
+8. Kattintson a **tulajdonságok**, és módosítsa **szükséges felhasználói kiosztása** való **Igen**. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **felhasználók és csoportok** > **felhasználó hozzáadása**. Válasszon ki egy felhasználót, és válassza ki a szerepkört, és kattintson **hozzárendelése**. Az elérhető szerepkörök (HpcUsers vagy HpcAdminMirror) egyik hozzárendeléséhez a felhasználóhoz. Ismételje meg ezt a címtárban további felhasználókkal. Háttér-információkat fürt felhasználók, lásd: [fürt felhasználók kezelése](https://technet.microsoft.com/library/ff919335(v=ws.11).aspx).
 
 
 ## <a name="step-2-register-the-hpc-cluster-client-with-your-azure-ad-tenant"></a>2. lépés: A HPC-fürt ügyfél regisztrálása az Azure AD-bérlő
 
-1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com).
-2. Kattintson a **Active Directory** a bal oldali menüben, majd kattintson a kívánt könyvtár az előfizetésben. A címtárban található erőforrások hozzáféréssel kell rendelkeznie.
-3. Kattintson a **alkalmazások** > **Hozzáadás**, és kattintson a **a szerveztem által fejlesztett alkalmazás hozzáadása**. A varázslóban adja meg a következő információkat:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Ha a fiók hozzáférést biztosít több Azure AD-bérlő, kattintson a jobb felső sarokban a fiókba. A kívánt bérlői portál munkamenete akkor értéke. A címtárban található erőforrások hozzáféréssel kell rendelkeznie. 
+3. A **Azure Active Directory**, kattintson a **App regisztrációk** > **új alkalmazás regisztrációja**. Adja meg a következő információkat:
 
-    * **Név** -HPCPackClusterClient
-    * **Típus** – Itt adhatja meg **natív ügyfélalkalmazás**
+    * **Név** -HPCPackClusterClient    
+    * **Az alkalmazástípus** – Itt adhatja meg **natív**
     * **Átirányítási URI** - `http://hpcclient`
+    * Kattintson a **Create** (Létrehozás) gombra
 
-4. Az alkalmazás hozzáadása után kattintson **konfigurálása**. Másolás a **ügyfél-azonosító** értékét, és mentse azt. Később szüksége az alkalmazás konfigurálásakor.
+4. Az alkalmazás hozzáadása után válassza ki azt a a **App regisztrációk** listája. Másolás a **Alkalmazásazonosító** értékét, és mentse azt. Később szüksége az alkalmazás konfigurálásakor.
 
-5. A **egyéb alkalmazások engedélyei**, kattintson a **alkalmazás hozzáadása**. Keresse meg és vegye fel az HpcPackClusterServer alkalmazást (1. lépésben létrehozott).
+5. Kattintson a **beállítások** > **szükséges engedélyek** > **Hozzáadás** > **API kiválasztása**. Keresse meg és válassza ki azt a HpcPackClusterServer (1. lépésben létrehozott).
 
-6. Az a **delegált engedélyek** legördülő menüből válassza **hozzáférés HpcClusterServer**. Ezután kattintson a **Save** (Mentés) gombra.
+6. Az a **hozzáférés engedélyezése** lapon jelölje be **hozzáférés HpcClusterServer**. Ezután kattintson a **Done** (Kész) gombra.
 
 
 ## <a name="step-3-configure-the-hpc-cluster"></a>3. lépés: A HPC-fürt konfigurálása
@@ -134,21 +131,23 @@ Integráció az Azure ad-val HPC Pack fürt segítségére lehetnek a következ�
 
     ```powershell
 
-    Set-HpcClusterRegistry -SupportAAD true -AADInstance https://login.microsoftonline.com/ -AADAppName HpcClusterServer -AADTenant <your AAD tenant name> -AADClientAppId <client ID> -AADClientAppRedirectUri http://hpcclient
+    Set-HpcClusterRegistry -SupportAAD true -AADInstance https://login.microsoftonline.com/ -AADAppName HpcPackClusterServer -AADTenant <your AAD tenant name> -AADClientAppId <client ID> -AADClientAppRedirectUri http://hpcclient
     ```
     Ha
 
     * `AADTenant`Adja meg például az Azure AD-bérlő neve`hpclocal.onmicrosoft.com`
-    * `AADClientAppId`Adja meg a 2. lépésben létrehozott alkalmazás ügyfél-azonosító.
+    * `AADClientAppId`Adja meg a 2. lépésben létrehozott alkalmazás azonosítója.
 
-4. Indítsa újra a HpcSchedulerStateful szolgáltatást.
+4. Tegye a következők egyikére, attól függően, hogy a központi csomópont-konfiguráció:
 
-    Több átjárócsomópontokkal a fürtben az átjárócsomópont Váltás az elsődleges másodpéldány a HpcSchedulerStateful szolgáltatás a következő PowerShell-parancsok futtathatja:
+    * Egy átjárócsomóponttal HPC Pack fürtben indítsa újra a HpcScheduler szolgáltatást.
+
+    * Egy több átjárócsomópontokkal HPC Pack fürtben futtassa a következő PowerShell-parancsokat az átjárócsomópont a HpcSchedulerStateful szolgáltatás újraindításához:
 
     ```powershell
     Connect-ServiceFabricCluster
 
-    Move-ServiceFabricPrimaryReplica –ServiceName “fabric:/HpcApplication/SchedulerStatefulService”
+    Move-ServiceFabricPrimaryReplica –ServiceName "fabric:/HpcApplication/SchedulerStatefulService"
 
     ```
 
@@ -161,7 +160,7 @@ Az ügyfélszámítógép előkészítése során használt tanúsítványt tele
 Most futtassa a HPC Pack parancsokat, vagy a HPC Pack Feladatkezelő grafikus felhasználói felület segítségével küldje el, majd a fürt feladatok kezelése az Azure AD-fiók használatával. További feladatok küldésének beállításai: [egy HPC Pack feladatok HPC küldje el a fürt az Azure-ban](hpcpack-cluster-submit-jobs.md#step-3-run-test-jobs-on-the-cluster).
 
 > [!NOTE]
-> Először az Azure-ban a HPC Pack fürt csatlakozni próbál, megjelenik egy felugró ablakokat. Adja meg az Azure AD hitelesítő adatait a bejelentkezéshez. A token gyorsítótárába. A fürthöz az Azure-ban a későbbi kapcsolatok a gyorsítótárazott token használja, ha a hitelesítés módosításai, vagy a gyorsítótárazott nincs bejelölve.
+> Először az Azure-ban a HPC Pack fürt csatlakozni próbál, megjelenik egy felugró ablakokat. Adja meg az Azure AD hitelesítő adatait a bejelentkezéshez. A token gyorsítótárába. A fürthöz az Azure-ban a későbbi kapcsolatok a gyorsítótárazott token használja, ha a hitelesítés módosításai, vagy a gyorsítótár nincs bejelölve.
 >
   
 Például az előző lépések végrehajtását követően alapján is kereshet feladatokat a helyi ügyfélről az alábbiak szerint:
@@ -174,7 +173,7 @@ Get-HpcJob –State All –Scheduler https://<Azure load balancer DNS name> -Own
 
 ### <a name="manage-the-local-token-cache"></a>A helyi jogkivonat gyorsítótára kezelése
 
-HPC Pack 2016 két új HPC PowerShell-parancsmagokat kínál a helyi jogkivonat gyorsítótár kezelésére. Ezek a parancsmagok hasznosak feladatok nem interaktív elküldése. Tekintse meg a következő példát:
+HPC Pack 2016 biztosít a következő HPC PowerShell-parancsmagok a helyi jogkivonat gyorsítótár kezelésére. Ezek a parancsmagok hasznosak feladatok nem interaktív elküldése. Tekintse meg a következő példát:
 
 ```powershell
 Remove-HpcTokenCache
@@ -191,9 +190,9 @@ Egyes esetekben érdemes lehet futtatni a feladatot a HPC-fürt felhasználói (
 1. Állítsa be a hitelesítő adatokat használja a következő parancsokat:
 
     ```powershell
-    $localUser = “<username>”
+    $localUser = "<username>"
 
-    $localUserPassword=”<password>”
+    $localUserPassword="<password>"
 
     $secpasswd = ConvertTo-SecureString $localUserPassword -AsPlainText -Force
 

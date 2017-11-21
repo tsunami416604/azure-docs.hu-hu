@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 11/03/2017
+ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 29da65c5629c08635b4df1aa78386675152bb0cb
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: a73df89d5f97d2d6aa295d7efdd46abc15f81de7
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>Tokent használó hitelesítés az Azure Content Delivery Network eszközök védelme
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/18/2017
 
 ## <a name="overview"></a>Áttekintés
 
-Jogkivonat hitelesítési egy olyan mechanizmus, amely lehetővé teszi, hogy az Azure Content Delivery Network (CDN) megakadályozza a jogosulatlan ügyfelek szolgáló eszközök. Jogkivonat hitelesítési általában történik, amelyben egy másik webhelyre, gyakran egy üzenet üzenőfalon, az eszközök engedélye nélkül használ a tartalom "hotlinking" megelőzése érdekében. Hotlinking hatással lehetnek a továbbítási költségeit. A CDN tokent használó hitelesítés engedélyezése esetén kérések hitelesítése CDN peremhálózati POP előtt a CDN továbbítja a tartalmat. 
+Jogkivonat hitelesítési egy olyan mechanizmus, amely lehetővé teszi, hogy az Azure Content Delivery Network (CDN) megakadályozza a jogosulatlan ügyfelek szolgáló eszközök. Jogkivonat hitelesítési általában történik, amelyben egy másik webhelyre, egy üzenet üzenőfalon, például az eszközök engedélye nélkül használ a tartalom "hotlinking" megelőzése érdekében. Hotlinking hatással lehetnek a továbbítási költségeit. A CDN tokent használó hitelesítés engedélyezése esetén kérések hitelesítése CDN biztonsági kiszolgáló előtt a CDN továbbítja a tartalmat. 
 
 ## <a name="how-it-works"></a>Működés
 
@@ -50,7 +50,7 @@ A következő munkafolyamat-ábra ismerteti, hogyan a CDN jogkivonat-hitelesít�
 
 ## <a name="token-validation-logic-on-cdn-endpoint"></a>CDN-végpont logika jogkivonatok érvényesség-ellenőrzése
     
-Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az ügyfél kérésében Ha tokent használó hitelesítés konfigurálva van a CDN-végponthoz.
+Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az egyik ügyfélkérelemben Ha tokent használó hitelesítés konfigurálva van a CDN-végponthoz.
 
 ![CDN-token ellenőrzési logika](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
 
@@ -60,7 +60,7 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az ügyfél ké
 
     ![CDN-profil Manage gomb](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. Vigye **HTTP nagy**, és kattintson a **jogkivonat hitelesítési** az a menü. Majd állíthatja be a titkosítási kulcsot és a titkosítási paraméterek az alábbiak szerint:
+2. Vigye **HTTP nagy**, majd kattintson a **jogkivonat hitelesítési** az a menü. Majd állíthatja be a titkosítási kulcsot és a titkosítási paraméterek az alábbiak szerint:
 
     1. Hozzon létre egy vagy több titkosítási kulcsokat. A titkosítási kulcsot a kis-és nagybetűket, és az alfanumerikus karakterek tetszőleges kombinációját tartalmazhatja. Más típusú karaktereket, szóközöket is beleértve. nem engedélyezettek. A hossza legfeljebb 250 karakterből áll. Annak érdekében, hogy a titkosítási kulcsok véletlenszerű, ajánlott használatával létrehozni a [OpenSSL eszköz](https://www.openssl.org/). 
 
@@ -115,26 +115,28 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az ügyfél ké
        >    </ul>
        > </tr>
        > <tr>
+       >    <td><b>ec_country_allow</b></td> 
+       >    <td>Csak lehetővé teszi, hogy egy vagy több megadott országokból kérelmekkel. Más országokból kérelmekkel a rendszer megtagadja. Használjon [országhívószámok](https://msdn.microsoft.com/library/mt761717.aspx) , és mindegyiket egy-egy vesszőt. Ha szeretné engedélyezni a hozzáférést a csak az Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
+       > </tr>
+       > <tr>
        >    <td><b>ec_country_deny</b></td> 
-       >    <td>Egy vagy több megadott országokból kérelmekkel megtagadja. Más országokból kérelmekkel engedélyezettek. Országhívó számokat használja, és mindegyiket egy-egy vesszővel külön. Ha azt szeretné, hogy megtagadja a hozzáférést az Amerikai Egyesült Államokban és Franciaország, írja be például `US, FR`.</td>
+       >    <td>Egy vagy több megadott országokból kérelmekkel megtagadja. Más országokból kérelmekkel engedélyezettek. Országhívó számokat használja, és mindegyiket egy-egy vesszővel külön. Ha azt szeretné, hogy megtagadja a hozzáférést az Amerikai Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
        > </tr>
        > <tr>
        >    <td><b>ec_ref_allow</b></td>
-       >    <td>A megadott hivatkozó kérések csak engedélyezi. A hivatkozó azonosítja a weblap, amely csatolva van a kért erőforrás URL-CÍMÉT. Tartalmazza a protokollt a hivatkozó paraméter értéke.>    
-       >    A paraméter értéke a következő típusú bemeneti engedélyezettek:
+       >    <td>A megadott hivatkozó kérések csak engedélyezi. A hivatkozó azonosítja a weblap, amely csatolva van a kért erőforrás URL-CÍMÉT. A paraméter értéke tartalmazza a protokollt.>    
+       >    A bemenet a következő típusok használhatók:
        >    <ul>
        >       <li>Egy állomásnevet vagy egy állomásnevet és egy elérési utat.</li>
        >       <li>Több hivatkozó kérelmei. Több hivatkozó kérelmei hozzáadásához külön minden hivatkozó vesszővel válassza el. Ha hivatkozó értéket adjon meg, de a hivatkozó adatokat, az nem küldi el a kérést, mert a böngésző konfigurációs, a rendszer megtagadja a kérelmet, alapértelmezés szerint.</li> 
        >       <li>Kérések hivatkozó adatok hiányoznak. Az ilyen típusú kérések engedélyezéséhez adja meg a szöveg "Hiányzó", vagy adjon meg egy üres értéket.</li> 
-       >       <li>Altartományok. Altartományok engedélyezéséhez adja meg a csillag (\*). Ahhoz például, hogy engedélyezi az összes altartomány `consoto.com`, adja meg `*.consoto.com`.</li>
+       >       <li>Altartományok. Altartományok engedélyezéséhez adja meg a csillag (\*). Ahhoz például, hogy engedélyezi az összes altartomány `contoso.com`, adja meg `*.contoso.com`.</li>
        >    </ul> 
-       >    A következő példa bemutatja, engedélyezze a hozzáférést a kérelmeinek bemeneti `www.consoto.com`, az összes altartomány `consoto2.com`, és üres vagy hiányzó hivatkozó kérelmei rendelkező kérelmek esetében: 
-       > 
-       >    ![CDN ec_ref_allow – példa](./media/cdn-token-auth/cdn-token-auth-referrer-allow2.png)</td>
+       >    Ahhoz például, hogy engedélyezze a hozzáférést a kérelmeinek `www.contoso.com`, az összes altartomány `contoso2.com`, üres vagy hiányzó hivatkozó kérelmei rendelkező kérelmek esetében adja meg, és `www.contoso.com,*.contoso.com,missing`.</td>
        > </tr>
        > <tr> 
        >    <td><b>ec_ref_deny</b></td>
-       >    <td>A megadott hivatkozó megtagadja. A megvalósítás megegyezik a ec_ref_allow paraméter.</td>
+       >    <td>A megadott hivatkozó megtagadja. A megvalósítás megegyezik a <b>ec_ref_allow</b> paraméter.</td>
        > </tr>
        > <tr> 
        >    <td><b>ec_proto_allow</b></td> 
@@ -146,21 +148,23 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az ügyfél ké
        > </tr>
        > <tr>
        >    <td><b>ec_clientip</b></td>
-       >    <td>Korlátozza a hozzáférést a megadott kérelmező IP-címet. IPV4 és IPV6 használata támogatott. A kérelem egyetlen IP-cím vagy IP-alhálózatot adhat meg. Például: `11.22.33.0/22`</td>
+       >    <td>Korlátozza a hozzáférést a megadott kérelmező IP-címet. IPV4 és IPV6 használata támogatott. A kérelem egyetlen IP-cím vagy IP-alhálózatot adhat meg. Például: `11.22.33.0/22`.</td>
        > </tr>
        > </table>
 
     5. Miután befejezte a titkosítási paramétert értékek megadása, válasszon egy kulcs titkosításához (ha az elsődleges és a kulcsot egy biztonsági másolatból hozott létre) a **kulcs titkosításához** listája.
     
-    6. Válassza ki a titkosítási verziójú a **titkosítási verziója** lista: **V2** 2-es verzió vagy **V3** verziójához 3 (ajánlott). Kattintson a **titkosítása** a jogkivonat létrehozásához.
+    6. Válassza ki a titkosítási verziójú a **titkosítási verziója** lista: **V2** 2-es verzió vagy **V3** verziójához 3 (ajánlott). 
+
+    7. Kattintson a **titkosítása** a jogkivonat létrehozásához.
 
     A jogkivonat előállítása, után megjelenik a **generált jogkivonat** mezőbe. A token használatához hozzáfűzése lekérdezési karakterláncként az URL-címe a fájl végére. Például: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-    7. Lehetősége van ellenőrizni a jogkivonatot a visszafejtés eszközzel. Illessze be a token értékét a **visszafejtése tokenjét** mezőbe. Válassza ki a titkosítási kulcsot használni a **kulcs visszafejtése** listában, majd kattintson az **visszafejtéséhez**.
+    8. Lehetősége van ellenőrizni a jogkivonatot a visszafejtés eszközzel. Illessze be a token értékét a **visszafejtése tokenjét** mezőbe. Válassza ki a titkosítási kulcsot használni a **kulcs visszafejtése** listában, majd kattintson az **visszafejtéséhez**.
 
     A token visszafejtése, miután a paraméterei megjelennek a **eredeti paraméterek** mezőbe.
 
-    8. Másik lehetőségként testreszabása eredményül, ha a rendszer megtagadja a kérelmet válaszkód típusú. Válassza ki **engedélyezve**, válassza ki a válaszkódot a **válaszkód** listában, és kattintson a **mentése**. Az egyes válaszkódot, meg kell adnia a a hibalap URL-CÍMÉT a **Fejlécérték** mezőbe. A **403** válaszának kódja (tiltott) alapértelmezettként van beállítva. 
+    9. Másik lehetőségként testreszabása eredményül, ha a rendszer megtagadja a kérelmet válaszkód típusú. Válassza ki **engedélyezve**, és válassza ki a válaszkódot a **válaszkód** listája. Kattintson a **mentése**. Az egyes válaszkódot, meg kell adnia a a hibalap URL-CÍMÉT a **Fejlécérték** mezőbe. A **403** válaszának kódja (tiltott) alapértelmezettként van beállítva. 
 
 3. A **HTTP nagy**, kattintson a **szabálymotor**. A szabályok motor használatával alkalmazza a szolgáltatás, a jogkivonat hitelesítési szolgáltatás engedélyezése és hitelesítésre vonatkozó további token képességek engedélyezése elérési utak megadása. További információkért lásd: [szabályok motor hivatkozás](cdn-rules-engine-reference.md).
 
