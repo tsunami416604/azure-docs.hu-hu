@@ -157,10 +157,10 @@
               href: azure-stack-mysql-resource-provider-deploy.md
             - name: SQL típusú erőforrás-szolgáltató üzembe helyezése
               href: azure-stack-sql-resource-provider-deploy.md
-            - name: SQL-adatbázis létrehozása
-              href: azure-stack-sql-resource-provider-databases.md
             - name: Üzemeltetési kiszolgáló hozzáadása
               href: azure-stack-sql-resource-provider-hosting-servers.md
+            - name: SQL-adatbázis létrehozása
+              href: azure-stack-sql-resource-provider-databases.md
         - name: App Service ajánlása PaaS-ként
           items:
             - name: Az Azure Stack App Service szolgáltatásának áttekintése
@@ -183,11 +183,11 @@
               href: azure-stack-marketplace.md
             - name: Marketplace-elemek letöltése
               href: azure-stack-download-azure-marketplace-item.md
-            - name: Azure Marketplace-elemek az Azure Stackhez
+            - name: Az Azure piactéren elemek Azure verem
               href: azure-stack-marketplace-azure-items.md
             - name: Marketplace-elem létrehozása és közzététele
               href: azure-stack-create-and-publish-marketplace-item.md
-            - name: A Marketplace közzétételi eszközének használata
+            - name: A piactér közzétételi eszközzel
               href: azure-stack-marketplace-publisher.md
             - name: Egyéni virtuálisgép-rendszerkép hozzáadása
               href: azure-stack-add-vm-image.md
