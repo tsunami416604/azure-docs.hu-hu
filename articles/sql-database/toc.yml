@@ -378,6 +378,8 @@
               href: saas-multitenantdb-adhoc-reporting.md
             - name: Bérlői séma kezelése
               href: saas-multitenantdb-schema-management.md
+            - name: ETL elemzéshez
+              href: saas-multitenantdb-tenant-analytics.md
     - name: Alkalmazásfejlesztés
       items:
         - name: C és C ++
