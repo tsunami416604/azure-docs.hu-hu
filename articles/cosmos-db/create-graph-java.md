@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/20/2017
+ms.date: 11/20/2017
 ms.author: denlee
-ms.openlocfilehash: 4470b5adb52debce1492b084ce71100da77da046
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 84a9ae4a48e7e71d70214550dd203a0468a31de6
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a Java és az Azure Portal használatával
 
@@ -72,13 +72,19 @@ Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozás
 
 Most pedig váltsunk át kódok használatára. Most klónozni egy grafikonon API-alkalmazást a Githubból, állítsa be a kapcsolati karakterláncot, és futtassa. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni.  
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és használja a `cd` parancs futtatásával módosíthatja a mintaalkalmazás telepítése mappába.  
+1. Nyisson meg egy parancssort, hozzon létre egy új git-minták nevű mappát, majd zárja be a parancssort.
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Nyisson meg egy git terminálablakot, például a git bash eszközt, és használja a `cd` parancs futtatásával módosíthatja a mintaalkalmazás telepítése mappába.  
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. Futtassa a következő parancsot a minta tárház klónozásához. Ezzel a paranccsal létrejön egy mintaalkalmazás példányát a számítógépen. 
+3. Futtassa a következő parancsot a minta tárház klónozásához. Ezzel a paranccsal létrejön egy mintaalkalmazás példányát a számítógépen. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-java-getting-started.git
@@ -86,7 +92,7 @@ Most pedig váltsunk át kódok használatára. Most klónozni egy grafikonon AP
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létrehozását az adatbázis-erőforrások, az alábbi kódtöredékek tekintheti meg. Kódtöredékek a rendszer az összes átveszi a `Program.java` a C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted mappában. Egyéb esetben ugorjon előre [frissítse a kapcsolati karakterlánc](#update-your-connection-string). 
+Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létrehozását az adatbázis-erőforrások, az alábbi kódtöredékek tekintheti meg. Kódtöredékek a rendszer az összes átveszi a `Program.java` a C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted mappában. Egyéb esetben ugorjon előre [frissítse a kapcsolati karakterlánc](#update-your-connection-information). 
 
 * A rendszer a Gremlin `Client` alkalmazást az `src/remote.yaml` fájlban megadott konfiguráció szerint inicializálja.
 
@@ -148,11 +154,23 @@ Most lépjen vissza a kapcsolat adatait, és másolja az alkalmazásba az Azure 
     cd "C:\git-samples\azure-cosmos-db-graph-java-getting-started"
     ```
 
-2. A git terminálablakába írja be az `mvn package` parancsot a szükséges Java-csomagok telepítéséhez.
+2. A git terminálablakot az alábbi parancs segítségével a szükséges Java-csomagok.
 
-3. A git-terminál ablakban futtassa `mvn exec:java -D exec.mainClass=GetStarted.Program` a Java-alkalmazás indításához.
+   ```
+   mvn package
+   ```
 
-    A terminálablakban megjelennek a gráfhoz hozzáadandó csúcspontok. Ha a program leáll, lépjen vissza az Azure-portálon az internetböngészőben. 
+3. A git terminálablakot a következő parancs segítségével a Java-alkalmazás indításához.
+    
+    ```
+    mvn exec:java -D exec.mainClass=GetStarted.Program
+    ```
+
+    A terminálablakban megjelennek a gráfhoz hozzáadandó csúcspontok. 
+    
+    Ha időtúllépést, ellenőrizze, hogy a kapcsolat adatai megfelelően a frissített [a kapcsolati adatok frissítése](#update-your-connection-information), és is futtassa újra a szükséges utolsó parancs. 
+    
+    Ha a program leáll, nyomja le az ENTER billentyűt, majd állítsa vissza az Azure-portálon az internetböngészőben. 
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Áttekintés és mintaadatok hozzáadása
@@ -200,11 +218,11 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 10. Kattintson az **OK** gombra. 
 
-11. Kattintson a **szűrés** az alapértelmezett `g.V()` összes érték a diagramon megjelenítendő szűrő. Most már az összes felhasználó megjelenik a **Találatok** listában. 
+11. Kattintson a **szűrés** az alapértelmezett gomb `g.V()` összes érték a diagramon megjelenítendő szűrő. Most már az összes felhasználó megjelenik a **Találatok** listában. 
 
     Ha további adatokat ad meg, szűrőkkel csökkentheti a találatok számát. Alapértelmezés szerint adatkezelő használja `g.V()` egy grafikonon összes csúcsban beolvasása. Módosíthatja egy másik [graph lekérdezés](tutorial-query-graph.md), például a `g.V().count()`, hogy a csúcsban számát adja vissza a grafikonon JSON formátumban. Ha módosította a szűrőt, módosítsa a szűrőt biztonsági `g.V()` kattintson **szűrés** újra az összes eredmény megjelenítéséhez.
 
-12. Most már összekapcsolhatjuk a rakesh és az ashley elemet. Győződjön meg arról, hogy az **ashley** elem van kijelölve a **Találatok** listában, majd kattintson a jobb alsó sarokban, a **Célok** elem mellett lévő Szerkesztés gombra. Előfordulhat, hogy szélesebbre kell állítania az ablakot a **Tulajdonságok** terület megjelenítéséhez.
+12. Most már összekapcsolhatjuk a rakesh és az ashley elemet. Győződjön meg arról **Pálfi** kiválasztásakor a **eredmények** listában, majd kattintson a Szerkesztés gombra a **célok** a jobb alsó. Előfordulhat, hogy szélesebbre kell állítania az ablakot a **Tulajdonságok** terület megjelenítéséhez.
 
    ![Gráfcsúcspont céljának módosítása](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 

@@ -10,15 +10,22 @@ ms.reviewer: elioda
 ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9c9bf2df078bfebb23ad549c7053f12b62fab59b
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 0207418cf71902ce9bc9d2911124d1d46889d893
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>A szimulált eszköz a Windows Azure IoT peremhálózati telepített – előzetes
 
-Azure IoT peremhálózati felhő power áthelyezi az eszközök internetes hálózatát (IoT) eszközét. Ez az oktatóanyag bemutatja, hogyan létrehozása a szimulált IoT peremhálózati eszköz, amely az érzékelő adatokat állít elő. Az alábbiak végrehajtásának módját ismerheti meg:
+Az Azure IoT peremhálózati lehetővé teszi a elemzés és az adatok feldolgozása az eszközök, nem muszáj küldje le az adatok a felhőben. Az IoT-Edge oktatóanyagok bemutatják, hogyan lehet különböző típusú modulokkal, az Azure-szolgáltatások vagy egyéni kód beépített központi telepítéséhez, de először meg kell tesztelni az eszköz. 
+
+Ezen oktatóanyag segítségével megtanulhatja a következőket:
+
+1. IoT Hub létrehozása
+2. Az IoT-peremhálózati eszköz regisztrálása
+3. Az IoT-Edge futásidejű indítása
+4. A modulok telepítése
 
 ![Útmutató architektúrája][2]
 

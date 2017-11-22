@@ -50,22 +50,6 @@ Az IoT hubbal biztonságos TLS kapcsolódás közben, az IoT-eszközök hiteles�
 ## <a name="securing-the-connection"></a>A kapcsolat biztonságossá tétele
 Az IoT-eszközök és az IoT-központ között internetkapcsolat használatával lett biztonságossá téve a Transport Layer Security (TLS) szabvány. Az Azure IoT támogatja [TLS 1.2][lnk-tls12], TLS 1.1 és TLS 1.0, az itt megadott sorrendben. A TLS 1.0 támogatását a csak a visszamenőleges kompatibilitás érdekében. Javasoljuk, hogy a TLS 1.2 használni, mivel a lehető legnagyobb biztonságot nyújt.
 
-Az Azure IoT Suite támogatja a következő titkosító csomag használatát, az itt megadott sorrendben.
-
-| Titkosítási csomagok | Hossza |
-| --- | --- |
-| A TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384 (0xc028) ECDH secp384r1 (eq. FS 7680 bits RSA) |256 |
-| A TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA-256 (0xc027) ECDH secp256r1 (eq. FS 3072 bits RSA) |128 |
-| A TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA (0xc014) ECDH secp384r1 (eq. FS 7680 bits RSA) |256 |
-| A TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA (0xc013) ECDH secp256r1 (eq. FS 3072 bits RSA) |128 |
-| A TLS\_RSA\_WITH\_AES\_256\_GCM\_SHA384 (0x9d) |256 |
-| A TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA-256 (0x9c) |128 |
-| A TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA-256 (0x3d) |256 |
-| A TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA-256 (0x3c) |128 |
-| A TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA (0x35 hiba) |256 |
-| A TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA (0x2f) |128 |
-| A TLS\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA (0xa) |112 |
-
 ## <a name="securing-the-cloud"></a>A felhő biztonságossá tétele
 Az Azure IoT-központ lehetővé teszi, hogy a definíciója [hozzáférés-vezérlési házirendeket] [ lnk-protocols] minden egyes biztonsági kulcshoz. Hozzáférést biztosít egyes IoT-központok végpontjai használja a következő engedélyekkel vannak beállítva. Az engedélyek korlátozhatják az IoT-központ funkciókon alapulnak.
 

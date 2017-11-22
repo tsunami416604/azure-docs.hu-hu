@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/30/2017
+ms.date: 11/20/2017
 ms.author: mimig
-ms.openlocfilehash: 5a793abdc24387ae2b758d29b9dfb25f134097d3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: b36de6bce597569b4e1eaa615860acdf28dfa798
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Dokumentum-adatbázis létrehozása a Java és az Azure Portal használatával
 
@@ -97,13 +97,19 @@ Ezzel befejezte a munkahelyi adatok Explorer. Ahhoz, hogy helyezze át kód hasz
 
 Most pedig váltsunk át kódok használatára. Klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, és futtatjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és használja a `cd` parancs futtatásával módosíthatja a mintaalkalmazás telepítése mappába. 
+1. Nyisson meg egy parancssort, hozzon létre egy új git-minták nevű mappát, majd zárja be a parancssort.
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Nyisson meg egy git terminálablakot, például a git bash eszközt, és használja a `cd` parancs futtatásával módosíthatja a mintaalkalmazás telepítése az új mappába. 
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. Futtassa a következő parancsot a minta tárház klónozásához. Ezzel a paranccsal létrejön egy mintaalkalmazás példányát a számítógépen.
+3. Futtassa a következő parancsot a minta tárház klónozásához. Ezzel a paranccsal létrejön egy mintaalkalmazás példányát a számítógépen.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -209,13 +215,25 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
     cd "C:\git-samples\azure-cosmos-db-documentdb-java-getting-started"
     ```
 
-2. A git terminálablakába írja be az `mvn package` parancsot a szükséges Java-csomagok telepítéséhez.
+2. A git terminálablakot az alábbi parancs segítségével a szükséges Java-csomagok.
 
-3. A git-terminál ablakban futtassa `mvn exec:java -D exec.mainClass=GetStarted.Program` a Java-alkalmazás indításához.
+    ```
+    mvn package
+    ```
 
-    A terminálablakot, hogy létrejött-e a FamilyDB adatbázis értesítést jelenít meg. A gyűjtemény létrehozása billentyű lenyomásával, majd átváltása az adatkezelő, és látni fogja, hogy most már tartalmaz egy FamilyDB adatbázis.
+3. A git terminálablakot a következő parancs segítségével a Java-alkalmazás indításához.
+
+    ```
+    mvn exec:java -D exec.mainClass=GetStarted.Program
+    ```
+
+    A terminálablakot, hogy létrejött-e a FamilyDB adatbázis értesítést jelenít meg. 
     
-    Továbbra is a dokumentumok létrehozásához, és végezze el a lekérdezés.
+4. A gyűjtemény létrehozása billentyű lenyomásával. 
+
+5. Váltás az adatkezelő és látni fogja, hogy most már tartalmaz egy FamilyDB adatbázis.
+    
+6. Továbbra is szeretné, hogy a kód dokumentumok létrehozása és a lekérdezés végrehajtása a konzolablakban billentyűk.
     
     A program végén az alkalmazásból az erőforrások a fiókhoz tartozó, a rendszer törli nem számítunk fel díjakat. 
 

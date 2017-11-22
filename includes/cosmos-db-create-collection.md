@@ -13,8 +13,8 @@ Az Azure Portal Adatkezelő eszközét mostantól adatbázis és gyűjtemény l�
     Adatbázis azonosítója|Feladatok|Adja meg *feladatok* , az új adatbázis nevét. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat /, \\, #, ? karaktereket vagy záró szóközt.
     Gyűjtemény azonosítója|Elemek|Adja meg *elemek* az új gyűjtemény néven. Gyűjteményazonosítók kell adatbázisnevek megegyező karakter követelmények vonatkoznak.
     Tárkapacitás| Rögzített méretű (10 GB)|Módosítsa a beállítást **rögzített (10 GB-os)**. Ez az érték az adatbázis tárkapacitása.
-    Teljesítmény|400 kérelemegység|Módosítsa az átviteli sebesség 400 kérelemegység (RU/mp) másodpercenként. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
-    Partíciókulcs|/kategória|Az egyes partíciók között az adatokat egyenletesen elosztó partíciókulcs. A megfelelő partíciókulcs kiválasztása fontos a nagy teljesítményű gyűjtemények létrehozásához. Erről bővebben a [Particionálásra tervezés](../articles/cosmos-db/partition-data.md#designing-for-partitioning) részben olvashat.
+    Teljesítmény|400 kérelemegység|Módosítsa az átviteli sebesség 400 kérelemegység (RU/mp) másodpercenként. Meg kell tárolási kapacitás **rögzített (10 GB-os)** ahhoz, hogy az átviteli sebesség 400 RU/mp beállítása. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében. 
+    Partíciókulcs|/kategória|Adja meg */category* partíciókulcsnak. A partíciós kulcs osztja el egyenletesen adatokat az adatbázisban mindegyik partíció. Particionálás kapcsolatos további információkért lásd: [a particionálás tervezése](../articles/cosmos-db/partition-data.md#designing-for-partitioning).
 
     Kattintson az **OK** gombra.
 
