@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 28/9/2017
 ms.author: seguler
-ms.openlocfilehash: d77ac39b7fcf6a23ebc58a2bbf9dc7de664edbb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e73a2424d3eb633f6bec63189786a67161750d4f
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Adatátvitel az AzCopy Linux rendszeren
 AzCopy Linux egy parancssori segédprogram, az adatok másolása, és a Microsoft Azure-Blob és a fájl tárolási egyszerű parancsokkal optimális teljesítménnyel. Másolhatja adatok egy objektum a másikra a tárfiókon belül vagy tárfiókok között.
@@ -559,7 +559,7 @@ azcopy \
     --recursive
 ```
 
-Vegye figyelembe, hogy az AzCopy jelenleg csak az támogatja a [fiók SAS](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1).
+Vegye figyelembe, hogy az AzCopy jelenleg csak az támogatja a [fiók SAS](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1).
 
 ### <a name="journal-file-folder"></a>Napló fájlmappa
 Minden alkalommal, amikor egy parancs kiadni az AzCopy, ellenőrzi, hogy a napló fájl megtalálható-e az alapértelmezett mappába, vagy hogy keresztül ez a beállítás a megadott mappa létezik. A napló fájl nem létezik egyik helyen sem, ha az AzCopy kezeli a művelet új, és létrehoz egy új naplófájl.
@@ -673,7 +673,7 @@ Azure Storage és AzCopy kapcsolatos további információkért lásd a követke
 ### <a name="azure-storage-documentation"></a>Az Azure Storage-dokumentáció:
 * [Az Azure Storage bemutatása](../storage-introduction.md)
 * [Tárfiók létrehozása](../storage-create-storage-account.md)
-* [A Tártallózó alkalmazással blobok kezelése](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs)
+* [A Tártallózó alkalmazással blobok kezelése](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
 * [Az Azure parancssori felület 2.0 használatával az Azure Storage](../storage-azure-cli.md)
 * [Blob storage-ának C++ használata](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [How to use Blob storage from Java (A Blob Storage használata Javával)](../blobs/storage-java-how-to-use-blob-storage.md)

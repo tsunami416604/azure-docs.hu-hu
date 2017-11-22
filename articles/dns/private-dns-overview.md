@@ -3,8 +3,8 @@ title: "A privát tartományok Azure DNS-sel |} Microsoft Docs"
 description: "A Microsoft Azure szolgáltatást tartalmazó titkos DNS áttekintése."
 services: dns
 documentationcenter: na
-author: garbrad
-manager: 
+author: KumudD
+manager: jennoc
 editor: 
 ms.assetid: 
 ms.service: dns
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/04/2017
-ms.author: garbrad
-ms.openlocfilehash: ed47a9d850995aaf9e78bfde8b6a5fd80dc36918
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/20/2017
+ms.author: kumud
+ms.openlocfilehash: 95cf8ab2bd34e698e12452e062687219bad49eb6
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="using-azure-dns-for-private-domains"></a>A privát tartományok Azure DNS-sel
 A tartománynévrendszer, vagy a DNS-, felelős fordítása (vagy feloldása) a szolgáltatás nevét az IP-címét. Az Azure DNS egy olyan üzemeltetési szolgáltatás DNS-tartományok, biztosítani a névfeloldást a Microsoft Azure-infrastruktúra használatával.  Mellett az internetre irányuló DNS-tartományok Azure DNS-ben mostantól is támogatja a saját DNS-tartományok, előzetes verziójú funkciók.  
@@ -35,18 +35,18 @@ Az Azure DNS biztosít egy megbízható, biztonságos DNS-szolgáltatás kezelé
 
 * **Használni közös DNS rekord típusát.**  Az Azure DNS támogatja A, AAAA, CNAME, MX, NS, PTR, SOA, SRV és TXT rekord.
 
-* **Automatikus állomásnév rekord kezelése.** Az egyéni DNS-rekordokat tartalmazó, valamint Azure automatikusan megőrzi a állomásnév rögzíti a megadott virtuális hálózatokon lévő virtuális géphez.  Ez lehetővé teszi, hogy optimalizálja a tartománynevek használatával anélkül egyéni DNS-megoldások létrehozásához, vagy módosítsa az alkalmazás.
+* **Automatikus állomásnév rekord kezelése.** Az egyéni DNS-rekordokat tartalmazó, valamint Azure automatikusan is kezeli állomásnév rögzíti a megadott virtuális hálózatokon lévő virtuális géphez.  Ez lehetővé teszi, hogy optimalizálja a tartománynevek használatával anélkül egyéni DNS-megoldások létrehozásához, vagy módosítsa az alkalmazás.
 
-* **Állomásnév-feloldási virtuális hálózatok között.** Azure által biztosított állomásnevek eltérően saját DNS-zónák virtuális hálózatok között megosztható legyen.  Ez a funkció egyszerűbbé teszi a kereszt-hálózat és a szolgáltatás felderítése forgatókönyvek például a virtuális hálózati társviszony-létesítés.
+* **Állomásnév-feloldási virtuális hálózatok között.** Azure által biztosított állomásnevek, eltérően saját DNS-zónák virtuális hálózatok között megosztható legyen.  Ez a funkció egyszerűbbé teszi a kereszt-hálózat és a szolgáltatás felderítése forgatókönyvek például a virtuális hálózati társviszony-létesítés.
 
-* **Jól ismert eszközökkel és a felhasználói élményre.** A tanulási görbére csökkentése érdekében az új ajánlat által használt a már neves Azure DNS-eszközök (PowerShell Resource Manager-sablonok, a REST API-t), és támogatja a parancssori felület és a portál minél hamarabb hozzáadni.
+* **Jól ismert eszközökkel és a felhasználói élményre.** A tanulási görbére csökkentése érdekében az új ajánlat által használt a már neves Azure DNS-eszközök (PowerShell Resource Manager-sablonok, a REST API-t).
 
 * **Vegyes-horizon DNS-támogatás.** Az Azure DNS zónák létrehozása ezzel a névvel, a különböző választ a virtuális hálózaton belül, és a nyilvános internetről feloldható teszi lehetővé.  A felosztott-horizon DNS jellemző forgatókönyv, hogy adja meg a virtuális hálózaton belüli használatra szolgáltatás dedikált verzióját.
 
 
 ## <a name="pricing"></a>Díjszabás
 
-Saját DNS-zónák a felügyelt előzetes ingyenesen elérhető lesz. Az általános rendelkezésre állási közlemény Ez a funkció a használat alapú árképzési modellt a meglévő Azure DNS-kínál hasonló fogja használni. 
+A felügyelt előzetes saját DNS-zónák az ingyenesen elérhető. Általános rendelkezésre állás érdekében során ez a szolgáltatás a használat alapú árképzési modellt a meglévő Azure DNS-kínál hasonló fogja használni. 
 
 
 ## <a name="next-steps"></a>Következő lépések

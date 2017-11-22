@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3b51276fe074282339d30d075547160277bee53f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: cd321531c99f14e93d8cab2acb7844ae79be2158
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="understanding-outbound-connections-in-azure"></a>Kimenő kapcsolatok áttekintése az Azure-ban
 
@@ -72,18 +72,21 @@ Győződjön meg arról, hogy a virtuális gép állapotának mintavételi kér�
 
 ## <a name="snatexhaust"></a>Elfogyott a SNAT kezelése
 
-Rövid élettartamú SNAT használt portjait egy kimeríthető erőforrás leírtak [önálló virtuális gép nem példány szint nyilvános IP-címmel](#standalone-vm-with-no-instance-level-public-ip-address) és [virtuális gép elosztott terhelésű és példány szint nyilvános IP-cím](#standalone-vm-with-no-instance-level-public-ip-address).  
+Rövid élettartamú SNAT használt portjait egy kimeríthető erőforrás leírtak [önálló virtuális gép nem példány szint nyilvános IP-címmel](#standalone-vm-with-no-instance-level-public-ip-address) és [virtuális gép elosztott terhelésű és példány szint nyilvános IP-cím](#standalone-vm-with-no-instance-level-public-ip-address).
 
-Ha ismeri az lesz ugyanarra a célgépre sok kimenő kapcsolatokat kezdeményezzen, figyelje a kimenő kapcsolatok sikertelen, vagy végigvitelével támogatási skálázását SNAT portok, több lehetőség közül választhat általános megoldás.  Tekintse át ezeket a beállításokat, és döntse el, a forgatókönyvéhez leginkább.  Lehetséges egy vagy több segítséget nyújtanak ebben a forgatókönyvben.
+Ha tudja, hogy a rendszer sok azonos a cél IP-cím és port kimenő kapcsolatokat kezdeményezzen, figyelje a kimenő kapcsolatok sikertelen, vagy végigvitelével támogatási skálázását SNAT portok, több lehetőség közül választhat általános megoldás.  Tekintse át ezeket a beállításokat, és döntse el, a forgatókönyvéhez leginkább.  Lehetséges egy vagy több segítséget nyújtanak ebben a forgatókönyvben.
 
-### <a name="assign-an-instance-level-public-ip-to-each-vm"></a>Egy példányszintű nyilvános IP-cím hozzárendelése az egyes virtuális gépek
-A forgatókönyvhöz a értékre változik [példányszintű nyilvános IP-cím egy virtuális géphez](#vm-with-an-instance-level-public-ip-address-with-or-without-load-balancer).  A nyilvános IP-címet használja az egyes virtuális gépek összes porttartomány érhetők el a virtuális gép (nem forgatókönyvek, ahol a nyilvános IP-elmúló port megosztott módon működik a VM megfelelő háttérkészlet társítva).
+### <a name="modify-application-to-reuse-connections"></a>Alkalmazás kapcsolatok újból módosítása 
+Igény szerinti SNAT újból felhasználja a kapcsolatot az alkalmazás által használt rövid élettartamú port csökkentése érdekében.  Ez különösen igaz, például a HTTP 1.1 protokoll ahol ez kifejezetten támogatott.  És egyéb protokollok HTTP-t (azaz REST) használó pedig előnyei.  Újbóli mindig jobb, mint az egyes, atomi TCP-kapcsolatok az egyes kérelmek.
 
 ### <a name="modify-application-to-use-connection-pooling"></a>Használja a kapcsolatkészletezést módosítása
-Igény szerinti használt SNAT kapcsolatkészletezést az alkalmazás rövid élettartamú port csökkentése érdekében.  További adatfolyamok azonos célhoz fogyaszt további portokat.  Ha az adott adatfolyam a többszörös kéréseket szeretné újrafelhasználni, a több kérelmek fogyaszt egyetlen port.
+A rendszer az alkalmazásban, ahol kérelmek belső elosztott kapcsolatokat (egyes újból felhasználja a ahol csak lehetséges) készletét kapcsolatkészlet is alkalmazhat.  Felhasználhatja az adott adatfolyam a többszörös kéréseket, ha a több kérelmek fogyaszt fel további portokat és feltételek lefoglalhat vezető azonos célhoz további adatfolyamok helyett egy portot.
 
 ### <a name="modify-application-to-use-less-aggressive-retry-logic"></a>Módosítsa az alkalmazást, hogy az kisebb agresszív újrapróbálkozási logika
 Igény szerinti rövid élettartamú port egy kisebb agresszív újrapróbálkozási logika használatával csökkentése érdekében.  SNAT használt elmúló port elfogytak, amikor agresszív vagy találgatásos kényszerítése nélkül decay nevű és leállítási logika OK Erőforrásfogyás megőrizni újrapróbálkozik.  Elmúló port (nem állítható) 4 perces üresjárati időtúllépés rendelkezik, és ha az újrapróbálkozások túl agresszív, az Erőforrásfogyás rendelkezik-e nincs lehetőség arra, hogy a saját törlődnek.
+
+### <a name="assign-an-instance-level-public-ip-to-each-vm"></a>Egy példányszintű nyilvános IP-cím hozzárendelése az egyes virtuális gépek
+A forgatókönyvhöz a értékre változik [példányszintű nyilvános IP-cím egy virtuális géphez](#vm-with-an-instance-level-public-ip-address-with-or-without-load-balancer).  A nyilvános IP-címet használja az egyes virtuális gépek összes porttartomány érhetők el a virtuális gép (nem forgatókönyvek, ahol a nyilvános IP-elmúló port megosztott módon működik a VM megfelelő háttérkészlet társítva).  Nincsenek kell figyelembe venni, például az IP-címek további költség- és nagyszámú egyedi IP-címek engedélyezése gyakorolt lehetséges hatásának kompromisszumot.
 
 ## <a name="limitations"></a>Korlátozások
 

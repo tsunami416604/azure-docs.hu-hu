@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 6e65af68dcd2306aabda65efdf8fe056c0d9b4a4
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 31ffd31b5d540617c4a7a1224e6cf0ee656c9678
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
 
@@ -30,7 +30,7 @@ Az SQL Server erőforrás-szolgáltató adapter segítségével teszi közzé az
 
 Az erőforrás-szolgáltató nem támogatja az összes adatbázis felügyeleti funkcióit biztosítja [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Például a rugalmas adatbáziskészletek, és képes automatikusan tárcsázza a fel-le adatbázis teljesítménye nem érhetők el. Azonban az erőforrás biztosítja által támogatott szolgáltatók hasonló létrehozása, olvasása, frissítése és Törlés (CRUD) típusú műveletek. Az API nem található kompatibilis SQL-adatbázis.
 
-## <a name="sql-server-resource-provider-adapter-architecture"></a>SQL Server erőforrás-szolgáltató Adapter architektúrája
+## <a name="sql-resource-provider-adapter-architecture"></a>Erőforrás-szolgáltató Adapter SQL-architektúra
 Az erőforrás-szolgáltató három összetevőből épül fel:
 
 - **Az SQL erőforrás szolgáltató adapter VM**, mely a szolgáltató services szolgáltatást futtató Windows virtuális gép.
@@ -50,6 +50,9 @@ Meg kell egy (vagy több) SQL-kiszolgálókat hoz létre és/vagy a külső SQL 
     b. Több csomópontos rendszerek esetében a gazdagép egy rendszer, amely hozzáférhet a kiemelt végpont kell lennie.
 
 3. [Töltse le az SQL-szolgáltató bináris fájlt](https://aka.ms/azurestacksqlrp) és egy ideiglenes könyvtárhoz tartalmának önkibontó végrehajtható.
+
+    > [!NOTE]
+    > Ha egy Azure verem futó 20170928.3 vagy korábbi, [töltse le a](https://aka.ms/azurestacksqlrp1709).
 
 4. Az Azure-verem legfelső szintű tanúsítvány veszi át a kiemelt végpont. A ASDK önaláírt tanúsítvány jön létre a folyamat során. Több csomópontos meg kell adnia egy megfelelő tanúsítványt.
 
@@ -85,8 +88,12 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
 $domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
 # Point to the directory where the RP installation files were extracted
 $tempDir = 'C:\TEMP\SQLRP'
 
@@ -108,7 +115,12 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 # Change directory to the folder where you extracted the installation files
 # and adjust the endpoints
-.$tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds -VMLocalCredential $vmLocalAdminCreds -CloudAdminCredential $cloudAdminCreds -PrivilegedEndpoint '10.10.10.10' -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert
+. $tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds `
+  -VMLocalCredential $vmLocalAdminCreds `
+  -CloudAdminCredential $cloudAdminCreds `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert
  ```
 
 ### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 paraméterek
@@ -141,27 +153,25 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
       ![Az SQL RP a telepítés ellenőrzése](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
 
 
-
-
-
-## <a name="removing-the-sql-adapter-resource-provider"></a>Az SQL Adapter erőforrás-szolgáltató eltávolítása
+## <a name="remove-the-sql-resource-provider-adapter"></a>Az SQL erőforrás-szolgáltató Adapter eltávolítása
 
 Ahhoz, hogy távolítsa el az erőforrás-szolgáltató, létfontosságú, először távolítsa el a függőségeket.
 
-1. Ellenőrizze, hogy az eredeti központi telepítési csomag ezen verzióját az erőforrás-szolgáltató letöltött.
+1. Ellenőrizze, hogy az eredeti központi telepítési csomag ezen verzióját az SQL erőforrás-szolgáltató Adapter letöltött.
 
 2. Összes felhasználói adatbázis törölni kell az erőforrás-szolgáltató (Ez az adatok nem törli). Ez a felhasználók maguk kell elvégezni.
 
-3. Rendszergazda törölni kell az üzemeltetési kiszolgáló az SQL-Adapter
+3. Rendszergazda törölnie kell az SQL erőforrás-szolgáltató adapterről az üzemeltetési kiszolgáló
 
-4. Rendszergazda törölnie kell az SQL-Adapter hivatkozó bármely tervek.
+4. Rendszergazda törölnie kell az SQL erőforrás-szolgáltató Adapter hivatkozó bármely tervek.
 
-5. Rendszergazda törölnie kell minden olyan termékváltozatok és az SQL-adapterhez kapcsolódó kvóták.
+5. Rendszergazda bármely termékváltozatok és az SQL erőforrás-szolgáltató adapterhez kapcsolódó kvóták kell törölnie.
 
 6. A telepítési parancsfájlt, és futtassa újra a - távolítsa el a paramétert, Azure Resource Manager végpontok, DirectoryTenantID és a szolgáltatás-rendszergazdai fiók hitelesítő adatait.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
+[Adjon hozzá kiszolgálókat üzemeltető](azure-stack-sql-resource-provider-hosting-servers.md) és [adatbázisok létrehozására](azure-stack-sql-resource-provider-databases.md).
 
 Próbálja más [PaaS szolgáltatások](azure-stack-tools-paas-services.md) hasonlóan a [MySQL Server erőforrás-szolgáltató](azure-stack-mysql-resource-provider-deploy.md) és a [alkalmazásszolgáltatások erőforrás-szolgáltató](azure-stack-app-service-overview.md).

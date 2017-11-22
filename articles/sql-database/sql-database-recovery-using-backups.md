@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: Active
-ms.date: 10/13/2017
+ms.date: 11/20/2017
 ms.author: carlrab
-ms.openlocfilehash: cb9b1296ced73c123faa0c682e9ef55d4b46ac11
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: ea762816cf0aa4c5fcafd2010bfc06eb580219fa
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus adatbázis biztonsági mentését használó Azure SQL-adatbázis helyreállítása
 SQL-adatbázis biztosítja ezeket a beállításokat, az adatbázis helyreállítási használatával [adatbázis biztonsági másolatait automatikus](sql-database-automated-backups.md) és [hosszú távú megőrzési a biztonsági másolatok](sql-database-long-term-retention.md). Egy adatbázis biztonsági másolatát arra állíthatja vissza:
@@ -80,7 +80,7 @@ Az adatbázis visszaállítása végezhető el a szolgáltatási szint vagy a te
 
 Általában egy korábbi időpontbeli helyreállítási célokra adatbázis visszaállítása. Annak során, akkor kezelje a visszaállított adatbázis helyettesíti az eredeti adatbázist a, vagy adatok beolvasásához, és módosítsa az eredeti adatbázist. 
 
-* ***Adatbázis-csere:*** célja, hogy a visszaállított adatbázis az eredeti adatbázis helyett, ha, ellenőrizni kell a teljesítményszintet és/vagy a szolgáltatási rétegben megfelelőek, és szükség esetén az adatbázis méretezése. Nevezze át az eredeti adatbázist, és ezután nevét meg kell adni a visszaállított adatbázis eredeti az ALTER DATABASE parancs használatával a T-SQL-ben. 
+* ***Adatbázis-csere:*** célja, hogy a visszaállított adatbázis az eredeti adatbázis helyett, ha, ellenőrizni kell a teljesítményszintet és/vagy a szolgáltatási rétegben megfelelőek, és szükség esetén az adatbázis méretezése. Nevezze át az eredeti adatbázist, és adja meg a visszaállított adatbázis eredeti nevét használja a [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) T-SQL-parancsot. 
 * ***Adat-helyreállítás:*** szeretne adatainak lekérése a visszaállított adatbázis helyreállítása egy felhasználó vagy alkalmazás hiba, ha szeretné-e írási és végrehajtási a szükséges adatok helyreállítási parancsfájlokat, ha adatokat szeretne kinyerni a visszaállított adatbázis az eredeti adatbázist. Bár a visszaállítási művelet elvégzéséhez hosszú ideig is eltarthat, a visszaállítási adatbázis a visszaállítási folyamat során az adatbázisok listája látható. Ha törli az adatbázist a visszaállítás során, a visszaállítási művelet megszakadt, és nem kell fizetnie az adatbázis, amely nem tudta végrehajtani a visszaállítást. 
 
 ### <a name="azure-portal"></a>Azure Portal

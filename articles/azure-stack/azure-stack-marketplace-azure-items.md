@@ -1,6 +1,6 @@
 ---
-title: "Az Azure piactéren elemek Azure verem használható |} Microsoft Docs"
-description: "Ezek az Azure marektplace elemek Azure verem használható."
+title: "Az Azure piactéren elemek Azure verem |} Microsoft Docs"
+description: "Ezek az Azure piactéren elemek Azure verem használható."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: erikje
-ms.openlocfilehash: 09177c3d036c38c366253f9291d0096994cc123b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: d04a96e061c4f25e10b1582736012a3ada6f6a6b
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -29,15 +29,17 @@ A Microsoft Azure verem támogatja a következő Azure piactéren elemek:
 |  | Elem neve | Leírás | Közzétevő |
 | --- | --- | --- | --- |
 | ![](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.docker-arm?tab=Overview) | A Linux virtuális gépek docker-kiterjesztés. | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [R Server csak SQL Server 2016 Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.RServerOnlySQLServer2016Enterprise?tab=Overview) | R Server csak SQL Server 2016 Enterprise. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a Windows Server 2016 9.2.1 kiszolgáló](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016?tab=Overview) | Microsoft gépi tanulási 9.2.1 kiszolgáló a Windows Server 2016. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a 9.2.1 Ubuntu 16.04 Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604?tab=Overview) | Microsoft gépi tanulási Ubuntu 16.04 9.2.1 kiszolgálón. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a CentOS Linux 7.2 9.2.1 kiszolgáló](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72?tab=Overview) | Microsoft gépi tanulási Server 9.2.1 CentOS Linux 7.2. | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/remotedesktopservicesdeployment.png) | [Távoli asztali szolgáltatások (RDS) központi telepítés](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/rds.remote-desktop-services-basic-deployment?tab=Overview) | Egy alapszintű távoli asztali szolgáltatások (RDS) központi telepítés létrehozásához. | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [A SharePoint Server 2013 próbaverzió](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SharePointServer2013Trial?tab=Overview) | A Microsoft SharePoint Server 2013 próbaverzió Windows Server 2012 Datacenter és a Visual Studio 2017 közösségi kiadásán. | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [A SharePoint Server 2016 próbaverzióját](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SharePointServer2016Trial?tab=Overview) | A Microsoft SharePoint Server 2016 próbaverzióját Windows Server 2016 adatközpontjában. | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Az SQL Server 2014 SP2, Windows Server 2012 R2 rendszeren](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2014SP2-WS2012R2?tab=Overview) | SQL Server 2014 SP2. | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 a Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | Adatbázis platform intelligens, létfontosságú alkalmazások számára. | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 fejlesztői a Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1DeveloperWindowsServer2016?tab=Overview) | Fejlesztői verziója SQL Server 2016 SP1 tranzakciós, adatok warehousing, business intelligence és elemzés munkaterhelések. | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 Express a Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1ExpressWindowsServer2016?tab=Overview) | Az SQL Server 2016 SP1 Express verzió | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 Enterprise, Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | Adatbázis platform intelligens, létfontosságú alkalmazások számára. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Az SQL Server 2014 SP2, Windows Server 2012 R2 rendszeren](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2014SP2-WS2012R2?tab=Overview) | SQL Server 2014 SP2.  **Szükséges letöltési:** SQL IaaS-bővítményt. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 a Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | Adatbázis platform intelligens, létfontosságú alkalmazások számára. **Szükséges letöltési:** SQL IaaS-bővítményt. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 fejlesztői a Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1DeveloperWindowsServer2016?tab=Overview) | Fejlesztői verziója SQL Server 2016 SP1 tranzakciós, adatok warehousing, business intelligence és elemzés munkaterhelések.  **Szükséges letöltési:** SQL IaaS-bővítményt. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 Express a Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1ExpressWindowsServer2016?tab=Overview) | Express SQL Server 2016 SP1 verzióját. **Szükséges letöltési:** SQL IaaS-bővítményt. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 Enterprise, Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | Adatbázis platform intelligens, létfontosságú alkalmazások számára.  **Szükséges letöltési:** SQL IaaS-bővítményt. | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview) | Vállalati szintű megoldások, amelyek egyszerű, központi telepítéséhez, költséghatékony, alkalmazás-arra irányul, és felhasználó-központú. | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/abantecart.png) | [AbanteCart](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.abantecart?tab=Overview) | Nyissa meg a bevásárlókocsiból vásárlás forrás kereskedelmi. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/activemq.png) | [ActiveMQ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.activemq?tab=Overview) | Nyissa meg a forrás üzenet broker Java. | Bitnami |
@@ -154,18 +156,22 @@ A Microsoft Azure verem támogatja a következő Azure piactéren elemek:
 | ![](media/azure-stack-marketplace-azure-items/x2enginesalescrm.png) | [X2Engine értékesítési CRM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.x2enginesalescrm?tab=Overview) | Kompakt marketing, az értékesítések és a felhasználói alkalmazás. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/xoops.png) | [Xoops](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.xoops?tab=Overview) | A CMS és webes portál Program által létrehozott dinamikus webhelyeket.
 | ![](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.zurmo?tab=Overview) | Nyissa meg a forrás CRM-rendszerbe: Mobile, társadalombiztosítási és Gamified. | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point vSEC biztonsági kezelése](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec?tab=Overview) | Check Point vSEC nyújt az Azure-ban a felhasználói eszközök megvédeni a kártevőktől és kifinomult fenyegetésektől speciális, többrétegű fenyegetés megelőzése. | Ellenőrzőpont |
 | ![](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef automatizálása](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview) | Létre, telepíthetnek és kezelése a Chef automatizálhatja, a folyamatos automatizálási Platform. | Chef szoftver, Inc |
-| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie" rendelkező backports kernel](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian8backports?tab=Overview) | Debian GNU/Linux egyike a legnépszerűbb Linux terjesztéseket. | credativ |
+| ![](media/azure-stack-marketplace-azure-items/coreos.png) | [Tároló Linux által CoreOS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CoreOS.CoreOS?tab=Overview) | Tároló Linux a modern és minimális Linux terjesztési tárolók futtatásához, a fürtök kezeléséhez és a zökkenőmentesen frissítése a kiszolgálók egyszerű módot biztosít - összetevők, amelyek lehetővé teszik az adatraktár-skálázási számítási. | CoreOS |
+| ![](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Canonical.UbuntuServer?tab=Overview) | Ubuntu Server a globális legnépszerűbb Linux felhőalapú környezetek. | Canonical |
+| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian?tab=Overview) | Debian GNU/Linux egyike a legnépszerűbb Linux terjesztéseket. | credativ |
+| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 9 "Stretch"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian9?tab=Overview) | Debian GNU/Linux egyike a legnépszerűbb Linux terjesztéseket. | credativ |
 | ![](media/azure-stack-marketplace-azure-items/kemp.png) | [LoadMaster terhelés terheléselosztó LÉPETT tartalom kapcsoló](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kemptech.vlm-azure?tab=Overview) | 4 – 7. rétegbeli alkalmazás kézbesítési vezérlő (LÉPETT) terheléselosztó tartalom kapcsoló és a Traffic Manager. | KEMP technológiák Inc. |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-alapú 6.9.](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased69?tab=Overview) | Ehhez a terjesztéshez, a Linux CentOS alapul, és a rosszindulatú Wave szoftver biztosítja. | Az engedélyezetlen Wave szoftver (korábbi nevén OpenLogic)  |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.3 centOS-alapú](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased73?tab=Overview) | Ehhez a terjesztéshez, a Linux CentOS alapul, és a rosszindulatú Wave szoftver biztosítja. | Az engedélyezetlen Wave szoftver (korábbi nevén OpenLogic) |
+| ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.4 centOS-alapú](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased74?tab=Overview) | Ehhez a terjesztéshez, a Linux CentOS alapul, és a rosszindulatú Wave szoftver biztosítja. | Az engedélyezetlen Wave szoftver (korábbi nevén OpenLogic) |
 | ![](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (SAJÁT)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SUSELinuxEnterpriseServer12SP3BringYourOwnSubscription?tab=Overview) | SUSE Linux Enterprise Server 12 SP3. | SUSE |
 | ![](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (saját)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription?tab=Overview) | Legjobb minőségű nyissa meg a forrás infrastruktúra kezelése. | SUSE |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [A részletes biztonsági Linux-ügynök](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/TrendMicroDeepSecurity.dsa-linux?tab=Overview) | Linux Trend Micro mély biztonsági kiterjesztése. | Trend Micro |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [A részletes biztonsági ügynök a Windows](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/TrendMicroDeepSecurity.dsa-windows-arm?tab=Overview) | Windows Trend Micro mély biztonsági kiterjesztése. | Trend Micro |
-| ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown szoftvereket eszköz](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zerodown_software.zerodown-software-tool-7_1?tab=Overview) | ZeroDown szoftver eszköz v7.1 - áttelepítése + magas rendelkezésre ÁLLÁSÚ. | SUSE |
+| ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown szoftvereket eszköz](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zerodown_software.zerodown-software-tool-7_1?tab=Overview) | ZeroDown szoftver eszköz v7.1 - áttelepítése + magas rendelkezésre ÁLLÁSÚ. | ZeroDown szoftver |
 
 
 ### <a name="next-steps"></a>Következő lépések
 [Töltse le a Piactéri elemet](azure-stack-download-azure-marketplace-item.md)
-

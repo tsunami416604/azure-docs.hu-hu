@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: a73df89d5f97d2d6aa295d7efdd46abc15f81de7
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: f6d008a92677d28d0184e64637dcb2e093299519
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>Tokent használó hitelesítés az Azure Content Delivery Network eszközök védelme
 
@@ -96,12 +96,12 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az egyik ügyf�
        > </tr>
        > <tr>
        >    <td><b>ec_expire</b></td>
-       >    <td>Lejárati idő rendeli jogkivonatot, amely után a jogkivonat lejár. A rendszer megtagadja a lejárati idő után küldött kérelmeket. Ezt a paramétert használ egy Unix Timestamp értéket, a standard epoch óta eltelt percek száma alapján `1/1/1970 00:00:00 GMT`. (Segítségével online eszközök téli idő és a Unix idő közötti átváltásra.)> 
+       >    <td>Lejárati idő rendeli jogkivonatot, amely után a jogkivonat lejár. A rendszer megtagadja a lejárati idő után küldött kérelmeket. Ezt a paramétert használ egy Unix Timestamp értéket, a szabványos Unix epoch a másodpercek száma alapján `1/1/1970 00:00:00 GMT`. (Segítségével online eszközök téli idő és a Unix idő közötti átváltásra.)> 
        >    Például, ha azt szeretné, hogy az elévülés token `12/31/2016 12:00:00 GMT`, adja meg a Unix timestamp értéket `1483185600`. 
        > </tr>
        > <tr>
        >    <td><b>ec_url_allow</b></td> 
-       >    <td>Lehetővé teszi testre szabni a tokenek egy adott eszköz vagy az elérési út. Hogy korlátozza a hozzáférést a kérések megadott relatív elérési úttal rendelkező start URL-cím. URL-címei kis-és nagybetűket. Több elérési utat adjon meg mindegyik elérési út vesszővel elválasztva. A követelményeitől függően állíthat be eltérő értékeket eltérő szintű hozzáférés biztosításához.> 
+       >    <td>Lehetővé teszi testre szabni a tokenek egy adott eszköz vagy az elérési út. Hogy korlátozza a hozzáférést a kérések megadott relatív elérési úttal rendelkező start URL-cím. URL-címei kis-és nagybetűket. Több elérési utat adjon meg mindegyik elérési út; vesszővel elválasztva Ne adjon hozzá szóközöket. A követelményeitől függően állíthat be eltérő értékeket eltérő szintű hozzáférés biztosításához.> 
        >    Például, ha az URL-cím `http://www.mydomain.com/pictures/city/strasbourg.png`, ezek a kérelmek engedélyezettek a következő bemeneti értékeket: 
        >    <ul>
        >       <li>Adjon meg értéket `/`: minden kérelmek engedélyezettek.</li>
@@ -116,11 +116,11 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az egyik ügyf�
        > </tr>
        > <tr>
        >    <td><b>ec_country_allow</b></td> 
-       >    <td>Csak lehetővé teszi, hogy egy vagy több megadott országokból kérelmekkel. Más országokból kérelmekkel a rendszer megtagadja. Használjon [országhívószámok](https://msdn.microsoft.com/library/mt761717.aspx) , és mindegyiket egy-egy vesszőt. Ha szeretné engedélyezni a hozzáférést a csak az Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
+       >    <td>Csak lehetővé teszi, hogy egy vagy több megadott országokból kérelmekkel. Más országokból kérelmekkel a rendszer megtagadja. Használja a kétbetűs [ISO 3166 országhívószám](https://msdn.microsoft.com/library/mt761717.aspx) az egyes országok és mindegyiket egy-egy vesszővel külön; ne vegyen fel egy helyet. Ha szeretné engedélyezni a hozzáférést a csak az Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
        > </tr>
        > <tr>
        >    <td><b>ec_country_deny</b></td> 
-       >    <td>Egy vagy több megadott országokból kérelmekkel megtagadja. Más országokból kérelmekkel engedélyezettek. Országhívó számokat használja, és mindegyiket egy-egy vesszővel külön. Ha azt szeretné, hogy megtagadja a hozzáférést az Amerikai Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
+       >    <td>Egy vagy több megadott országokból kérelmekkel megtagadja. Más országokból kérelmekkel engedélyezettek. A megvalósítás megegyezik a <b>ec_country_allow</b> paraméter. Ha az országkódot egyaránt megtalálható a <b>ec_country_allow</b> és <b>ec_country_deny</b> paraméterek, a <b>ec_country_allow</b> paraméter lép érvénybe.</td>
        > </tr>
        > <tr>
        >    <td><b>ec_ref_allow</b></td>
@@ -128,27 +128,27 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az egyik ügyf�
        >    A bemenet a következő típusok használhatók:
        >    <ul>
        >       <li>Egy állomásnevet vagy egy állomásnevet és egy elérési utat.</li>
-       >       <li>Több hivatkozó kérelmei. Több hivatkozó kérelmei hozzáadásához külön minden hivatkozó vesszővel válassza el. Ha hivatkozó értéket adjon meg, de a hivatkozó adatokat, az nem küldi el a kérést, mert a böngésző konfigurációs, a rendszer megtagadja a kérelmet, alapértelmezés szerint.</li> 
-       >       <li>Kérések hivatkozó adatok hiányoznak. Az ilyen típusú kérések engedélyezéséhez adja meg a szöveg "Hiányzó", vagy adjon meg egy üres értéket.</li> 
+       >       <li>Több hivatkozó kérelmei. Több hivatkozó kérelmei hozzáadásához külön minden hivatkozó vesszővel; Ne adjon hozzá egy szóközzel. Ha hivatkozó értéket adjon meg, de a hivatkozó adatokat, az nem küldi el a kérést, mert a böngésző konfigurációs, a rendszer megtagadja a kérelmet, alapértelmezés szerint.</li> 
+       >       <li>Kérelmek hiányzik vagy üres hivatkozó adatokkal. Alapértelmezés szerint a <b>ec_ref_allow</b> paraméter blokkolja az ilyen típusú kérelmeket. Ahhoz, hogy ezeket a kérelmeket, vagy a szöveget, "Hiányzó", vagy adjon meg egy üres értéket (záró vesszővel válassza el).</li> 
        >       <li>Altartományok. Altartományok engedélyezéséhez adja meg a csillag (\*). Ahhoz például, hogy engedélyezi az összes altartomány `contoso.com`, adja meg `*.contoso.com`.</li>
-       >    </ul> 
+       >    </ul>     
        >    Ahhoz például, hogy engedélyezze a hozzáférést a kérelmeinek `www.contoso.com`, az összes altartomány `contoso2.com`, üres vagy hiányzó hivatkozó kérelmei rendelkező kérelmek esetében adja meg, és `www.contoso.com,*.contoso.com,missing`.</td>
        > </tr>
        > <tr> 
        >    <td><b>ec_ref_deny</b></td>
-       >    <td>A megadott hivatkozó megtagadja. A megvalósítás megegyezik a <b>ec_ref_allow</b> paraméter.</td>
+       >    <td>A megadott hivatkozó megtagadja. A megvalósítás megegyezik a <b>ec_ref_allow</b> paraméter. Ha egy hivatkozó egyaránt megtalálható a <b>ec_ref_allow</b> és <b>ec_ref_deny</b> paraméterek, a <b>ec_ref_allow</b> paraméter lép érvénybe.</td>
        > </tr>
        > <tr> 
        >    <td><b>ec_proto_allow</b></td> 
-       >    <td>Csak lehetővé teszi, hogy a megadott protokoll érkező kérelmeket. Például a HTTP vagy HTTPS.</td>
+       >    <td>Csak lehetővé teszi, hogy a megadott protokoll érkező kérelmeket. Érvényes értékek a következők `http`, `https`, vagy `http,https`.</td>
        > </tr>
        > <tr>
        >    <td><b>ec_proto_deny</b></td>
-       >    <td>A megadott protokoll megtagadja. Például a HTTP vagy HTTPS.</td>
+       >    <td>A megadott protokoll megtagadja. A megvalósítás megegyezik a <b>ec_proto_allow</b> paraméter. Ha egy protokoll egyaránt megtalálható a <b>ec_proto_allow</b> és <b>ec_proto_deny</b> paraméterek, a <b>ec_proto_allow</b> paraméter lép érvénybe.</td>
        > </tr>
        > <tr>
        >    <td><b>ec_clientip</b></td>
-       >    <td>Korlátozza a hozzáférést a megadott kérelmező IP-címet. IPV4 és IPV6 használata támogatott. A kérelem egyetlen IP-cím vagy IP-alhálózatot adhat meg. Például: `11.22.33.0/22`.</td>
+       >    <td>Korlátozza a hozzáférést a megadott kérelmező IP-címet. IPV4 és IPV6 használata támogatott. Egy kérelem egyetlen IP-címet vagy egy bizonyos alhálózat társított IP-címeket adhat meg. Például `11.22.33.0/22` lehetővé teszi a kérelmek 11.22.32.1 való 11.22.35.254 IP-címről.</td>
        > </tr>
        > </table>
 
@@ -160,11 +160,11 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az egyik ügyf�
 
     A jogkivonat előállítása, után megjelenik a **generált jogkivonat** mezőbe. A token használatához hozzáfűzése lekérdezési karakterláncként az URL-címe a fájl végére. Például: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-    8. Lehetősége van ellenőrizni a jogkivonatot a visszafejtés eszközzel. Illessze be a token értékét a **visszafejtése tokenjét** mezőbe. Válassza ki a titkosítási kulcsot használni a **kulcs visszafejtése** listában, majd kattintson az **visszafejtéséhez**.
+    8. Lehetősége van ellenőrizni a jogkivonatot a visszafejtés eszközzel, így megtekintheti a token paraméterek. Illessze be a token értékét a **visszafejtése tokenjét** mezőbe. Válassza ki a titkosítási kulcsot használni a **kulcs visszafejtése** listában, majd kattintson az **visszafejtéséhez**.
 
     A token visszafejtése, miután a paraméterei megjelennek a **eredeti paraméterek** mezőbe.
 
-    9. Másik lehetőségként testreszabása eredményül, ha a rendszer megtagadja a kérelmet válaszkód típusú. Válassza ki **engedélyezve**, és válassza ki a válaszkódot a **válaszkód** listája. Kattintson a **mentése**. Az egyes válaszkódot, meg kell adnia a a hibalap URL-CÍMÉT a **Fejlécérték** mezőbe. A **403** válaszának kódja (tiltott) alapértelmezettként van beállítva. 
+    9. Másik lehetőségként testreszabása eredményül, ha a rendszer megtagadja a kérelmet válaszkód típusú. Válassza ki **engedélyezve**, majd válassza ki a válaszkódot a **válaszkód** listája. **Fejlécnév** automatikusan **hely**. Kattintson a **mentése** az új válaszkód végrehajtásához. Az egyes válaszkódot, meg kell adnia a a hibalap URL-CÍMÉT a **Fejlécérték** mezőbe. A **403** válaszának kódja (tiltott) alapértelmezettként van beállítva. 
 
 3. A **HTTP nagy**, kattintson a **szabálymotor**. A szabályok motor használatával alkalmazza a szolgáltatás, a jogkivonat hitelesítési szolgáltatás engedélyezése és hitelesítésre vonatkozó további token képességek engedélyezése elérési utak megadása. További információkért lásd: [szabályok motor hivatkozás](cdn-rules-engine-reference.md).
 

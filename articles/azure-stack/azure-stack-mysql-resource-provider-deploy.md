@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 28ceb7345c0d74e2a7d7911d5b4bf24a0ceb214a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: fdb4180ce11b29577299e329869144e99ead0f05
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -40,13 +40,14 @@ Ebben a kiadásban már nem készít egy MySQL-példányt. Meg kell hozza létre
 - hozza létre a MySQL-kiszolgáló
 - Töltse le és telepít egy MySQL-kiszolgálót a piactéren.
 
-! [MEGJEGYZÉS] Egy több csomópontos Azure verem telepített kiszolgálók üzemeltető bérlői előfizetéssel kell létrehozni. Az alapértelmezett szolgáltató előfizetésből nem hozhatók létre. Ez azt jelenti akkor létre kell hozni a bérlői portál vagy egy megfelelő bejelentkezési azonosító egy PowerShell-munkamenetet. Minden üzemeltetési kiszolgáló terhelhető virtuális gép, és megfelelő licenccel kell rendelkeznie. A szolgáltatás-rendszergazdát, hogy az előfizetés tulajdonosa lehet.
+> [!NOTE]
+> Egy több csomópontos Azure verem telepített kiszolgálók üzemeltető bérlői előfizetéssel kell létrehozni. Az alapértelmezett szolgáltató előfizetésből nem hozhatók létre. Ez azt jelenti akkor létre kell hozni a bérlői portál vagy egy megfelelő bejelentkezési azonosító egy PowerShell-munkamenetet. Minden üzemeltetési kiszolgáló terhelhető virtuális gép, és megfelelő licenccel kell rendelkeznie. A szolgáltatás-rendszergazdát, hogy az előfizetés tulajdonosa lehet.
 
 ### <a name="required-privileges"></a>Szükséges jogosultságok
 A system fiók következő jogosultságokkal kell rendelkeznie:
 
 1.  Adatbázis: Létrehozás, dobja el
-2.  Bejelentkezési identitás: Hozzon létre, állítsa be, dobja el, adja meg, a visszavonási
+2.  Bejelentkezési identitás: Hozzon létre, beállítása, dobja el, adja meg, visszavonása
 
 ## <a name="deploy-the-resource-provider"></a>Az erőforrás-szolgáltató telepítése
 
@@ -60,6 +61,9 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
     b. Több csomópontos rendszerek esetében a gazdagép egy rendszer, amely hozzáférhet a kiemelt végpont kell lennie.
 
 3. [Töltse le a MySQL erőforrás-szolgáltató bináris fájl](https://aka.ms/azurestackmysqlrp) és egy ideiglenes könyvtárhoz tartalmának önkibontó végrehajtható.
+
+    > [!NOTE]
+    > Ha egy Azure verem futó 20170928.3 vagy korábbi, [töltse le a](https://aka.ms/azurestackmysqlrp1709).
 
 4.  Az Azure-verem legfelső szintű tanúsítvány veszi át a kiemelt végpont. A ASDK önaláírt tanúsítvány jön létre a folyamat során. Több csomópontos meg kell adnia egy megfelelő tanúsítványt.
 
@@ -98,8 +102,12 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack
-$domain = 'AzureStack'
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
+$domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
 # Point to the directory where the RP installation files were extracted
 $tempDir = 'C:\TEMP\MYSQLRP'
 
@@ -122,17 +130,18 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 # Run the installation script from the folder where you extracted the installation files
 # Find the ERCS01 IP address first and make sure the certificate
 # file is in the specified directory
-.$tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds `
+. $tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds `
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
-  -PrivilegedEndpoint '10.10.10.10' `
-  -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert `
   -AcceptLicense
 
  ```
 
-### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 paraméterek
 
+### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 paraméterek
 Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely paraméter-ellenőrzés sikertelen, a rendszer kéri a adja meg a szükséges néhányat a meglévők közül.
 
 | Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
@@ -153,7 +162,7 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 Attól függően, hogy a rendszer teljesítményét és a letöltési sebessége, telepítési akár 20 percig vagy hosszú szerint több óráig is eltarthat. Ha nem érhető el a MySQLAdapter panelt, frissítse a felügyeleti portálon.
 
 > [!NOTE]
-> Ha a telepítés több mint 90 percig tart, előfordulhat, hogy, és a hibaüzenet akkor jelenik meg, a képernyőn, majd a naplófájlban. A rendszer a központi telepítés a hibás lépés ismét megkísérli. Rendszerek, amelyek nem felelnek meg az ajánlott memória és vCPU paramétereknek nem lehet a MySQL RP telepíthet.
+> Ha a telepítés több mint 90 percig tart, előfordulhat, hogy, és a hibaüzenet akkor jelenik meg, a képernyőn, majd a naplófájlban. A rendszer a központi telepítés a hibás lépés ismét megkísérli. Rendszerek, amelyek nem felelnek meg a memória és az alapvető ajánlott paramétereknek nem lehet a MySQL RP telepíthet.
 
 
 
@@ -187,16 +196,17 @@ Attól függően, hogy a rendszer teljesítményét és a letöltési sebessége
 4. Kiszolgálók hozzáadása során, akkor hozzá kell rendelnie azokat egy új vagy meglévő SKU szolgáltatásajánlatok megkülönböztetési engedélyezéséhez.
   Például lehet egy vállalati példány megadása:
     - adatbázis-kapacitás
-    - az automatikus biztonsági mentés
+    - Automatikus biztonsági mentés
     - az egyes részlegek nagy teljesítményű kiszolgálók
-    - és így tovább.
-    A termékváltozat tükröznie kell tulajdonságait, hogy a bérlők megfelelően elhelyezheti az adatbázisokat. A termékváltozatban minden üzemeltetési kiszolgáló ugyanazokat a képességeket kell rendelkeznie.
+ 
 
-    ![Hozzon létre egy MySQL Termékváltozat](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
+A termékváltozat tükröznie kell tulajdonságait, hogy a bérlők megfelelően elhelyezheti az adatbázisokat. A termékváltozatban minden üzemeltetési kiszolgáló ugyanazokat a képességeket kell rendelkeznie.
+
+![Hozzon létre egy MySQL Termékváltozat](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
 
 >[!NOTE]
-SKU órát is igénybe vehet egy megjeleníteni a portálon. Egy adatbázis nem hozható létre, amíg létrejön a Termékváltozat.
+> SKU órát is igénybe vehet egy megjeleníteni a portálon. Egy adatbázis nem hozható létre, amíg létrejön a Termékváltozat.
 
 
 ## <a name="to-test-your-deployment-create-your-first-mysql-database"></a>A telepítés tesztelésére, az első MySQL-adatbázis létrehozása
@@ -231,17 +241,17 @@ SKU órát is igénybe vehet egy megjeleníteni a portálon. Egy adatbázis nem 
 Adja hozzá a kapacitása további MySQL-kiszolgálók hozzáadásával a verem Azure-portálon. További kiszolgálókra lehet hozzáadni egy új vagy meglévő Termékváltozat. Ellenőrizze, hogy a kiszolgáló, azonosítandó paraméterek azonosak.
 
 
-## <a name="making-mysql-databases-available-to-tenants"></a>MySQL-adatbázisok elérhetővé tétele a bérlők számára
+## <a name="make-mysql-databases-available-to-tenants"></a>MySQL-adatbázisok elérhetővé tétele a bérlők
 Csomagok és a MySQL-adatbázisok a bérlők számára elérhetővé ajánlatok létrehozása. Vegye fel a Microsoft.MySqlAdapter szolgáltatást, vegye fel a kvótát, stb.
 
 ![Tervek és adatbázisokat tartalmazza ajánlatok létrehozása](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
 
-## <a name="updating-the-administrative-password"></a>A rendszergazdai jelszó frissítése
+## <a name="update-the-administrative-password"></a>Frissítés a rendszergazdai jelszó
 A jelszó módosításához első módosítás MySQL server-példányon. Keresse meg a **felügyeleti erőforrások** &gt; **MySQL üzemeltető kiszolgálók** &gt; , majd kattintson a az üzemeltető kiszolgálót. A beállítások panelen kattintson a jelszót.
 
 ![Frissítés a rendszergazdai jelszó](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 
-## <a name="removing-the-mysql-adapter-resource-provider"></a>A MySQL Adapter erőforrás-szolgáltató eltávolítása
+## <a name="remove-the-mysql-resource-provider-adapter"></a>A MySQL-erőforrás-szolgáltató Adapter eltávolítása
 
 Távolítsa el az erőforrás-szolgáltató, fontos először távolítsa el a függőségeket.
 
@@ -263,6 +273,5 @@ Távolítsa el az erőforrás-szolgáltató, fontos először távolítsa el a f
 
 
 ## <a name="next-steps"></a>Következő lépések
-
 
 Próbálja más [PaaS szolgáltatások](azure-stack-tools-paas-services.md) hasonlóan a [erőforrás-szolgáltató SQL Server](azure-stack-sql-resource-provider-deploy.md) és a [alkalmazásszolgáltatások erőforrás-szolgáltató](azure-stack-app-service-overview.md).

@@ -10,17 +10,22 @@ ms.reviewer: elioda
 ms.date: 10/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 11353ef93455a47f9f1c252fc5e192c111d87dd7
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 327a959ad97897fd19f45a0599f37492938df104
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux---preview"></a>Azure IoT peremhálózati telepítése Linux a szimulált eszköz – előzetes
 
 Az Azure IoT peremhálózati lehetővé teszi a elemzés és az adatok feldolgozása az eszközök, nem muszáj küldje le az adatok a felhőben. Az IoT-Edge oktatóanyagok bemutatják, hogyan lehet különböző típusú modulokkal, az Azure-szolgáltatások vagy egyéni kód beépített központi telepítéséhez, de először meg kell tesztelni az eszköz. 
 
-Ez az oktatóanyag bemutatja, hogyan szimulált IoT peremhálózati eszköz, majd telepítse a modul, amely az érzékelő adatokat állít elő létrehozásakor. Az alábbiak végrehajtásának módját ismerheti meg:
+Ezen oktatóanyag segítségével megtanulhatja a következőket:
+
+1. IoT Hub létrehozása
+2. Az IoT-peremhálózati eszköz regisztrálása
+3. Az IoT-Edge futásidejű indítása
+4. A modulok telepítése
 
 ![Útmutató architektúrája][2]
 
