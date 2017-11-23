@@ -5,7 +5,7 @@
 
 # Első lépések
 
-## [Kezdő szintű oktatóanyag](sql-data-warehouse-get-started-tutorial.md)
+## [Adatok betöltése útmutató](load-data-from-azure-blob-storage-using-polybase.md)
 ## [Rugalmas lekérdezés – Oktatóanyag](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ## [Ajánlott eljárások](sql-data-warehouse-best-practices.md)
 ## [Kezelés](sql-data-warehouse-overview-manage.md)

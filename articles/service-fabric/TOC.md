@@ -16,9 +16,8 @@
 ### [4. Monitorozás és diagnosztika](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## Meglévő .NET-alkalmazás tárolóba helyezése
-### [1. Biztonságos fürt létrehozása az Azure-ban](service-fabric-tutorial-create-cluster-azure-ps.md)
-### [2. .NET-alkalmazás üzembe helyezése a Docker Compose használatával](service-fabric-host-app-in-a-container.md)
-### [3 – A tároló figyelése](service-fabric-tutorial-monitoring-wincontainers.md)
+### [1 – .NET-alkalmazás üzembe helyezése a Docker Compose használatával](service-fabric-host-app-in-a-container.md)
+### [2 – A tároló figyelése](service-fabric-tutorial-monitoring-wincontainers.md)
 
 ## Linux rendszerű tárolóalkalmazás létrehozása
 ### [1 – Tárolórendszerképek létrehozása](service-fabric-tutorial-create-container-images.md)
@@ -284,7 +283,6 @@
 ## Fürtök létrehozása és felügyelete
 ### Fürtök az Azure-on
 #### Létrehozás
-##### [Az első saját fürt létrehozása az Azure-on](service-fabric-get-started-azure-cluster.md)
 ##### [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 #### Méretezés
