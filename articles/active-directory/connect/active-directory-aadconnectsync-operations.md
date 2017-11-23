@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: af32c3f2d96ca51f59e29f8d9635caa290d580aa
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 89bfedd282d04569bcf873fd7a9082791a94376b
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect szinkronizálása: működtetési feladatok és szempont
 Ez a témakör célja az Azure AD Connect szinkronizálási szolgáltatás működési feladatokat írják le.
@@ -33,6 +33,11 @@ Az átmeneti környezetű üzemmód használható több forgatókönyvek, közt�
 Átmeneti módban a kiszolgálóval a konfigurációs módosításokat, és tekintse meg a módosítások elvégzése előtt a kiszolgáló aktív. Lehetővé teszi teljes importálást és teljes szinkronizálás győződjön meg arról, hogy minden módosítás előtt ezeket a módosításokat az éles környezetében várható futtatásához.
 
 A telepítés során válassza ki a kiszolgálót a **átmeneti módban**. Ez a művelet lehetővé teszi a kiszolgáló importálása és szinkronizálás aktív, de nem futtatható bármely exportálja. Átmeneti módban nem fut a jelszó-szinkronizálás és jelszóvisszaíró, még akkor is, ha ezek a szolgáltatások telepítésekor kiválasztott. Az átmeneti környezetű üzemmód letiltása esetén a kiszolgáló kezdődik, exportálása, lehetővé teszi, hogy a jelszó-szinkronizálást, és lehetővé teszi, hogy a jelszóvisszaíró.
+
+> [!NOTE]
+> Tegyük fel, az Azure AD Connect a Jelszókivonat-szinkronizálást szolgáltatás engedélyezve van. Ha az átmeneti környezetű üzemmód, a szinkronizálási jelszó is módosul a fájlkiszolgáló nem engedélyezi a helyszíni AD. Az átmeneti környezetű üzemmód letiltása esetén a kiszolgáló folytatja a jelszó-módosítások, ahol utolsó abbahagyta szinkronizálása. Ha a kiszolgáló egy hosszú időn átmeneti módban, szinkronizálása a összes, amely során az adott időszakban történt volna a kiszolgáló egy ideig is igénybe vehet.
+>
+>
 
 Az export továbbra is kényszerítheti a synchronization service manager használatával.
 

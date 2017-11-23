@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 3ab8029d035c3ba88ddb8a112e27f9054f7c203c
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 9e459a42a9fd7caedfa255a7baf51273eef2265a
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurálja a hálózati Teljesítményfigyelő az ExpressRoute (előzetes verzió)
 
@@ -96,7 +96,7 @@ Használata hálózati Teljesítményfigyelő más objektumok, vagy a szolgálta
 1. Az a **hálózati teljesítmény figyelési konfiguráció - TCP-telepítőből** az erőforrás a a **OMS-ügynökök telepítése** területen kattintson az ügynök, amely megfelel a kiszolgáló processzor- és letöltése a a telepítő fájl.
 
   >[!NOTE]
-  >A Linux-ügynök jelenleg nem támogatott az ExpressRoute figyelését.
+  >Az ügynököt telepíteni kell a Windows Server (2008 SP1 vagy újabb). Windows asztali operációs rendszer és a Linux operációs rendszert futtató ExpressRoute-Kapcsolatcsoportok megfigyelése nincs támogatva. 
   >
   >
 2. Ezután másolja a **munkaterület azonosítója** és **elsődleges kulcs** a Jegyzettömbbe.
@@ -105,6 +105,8 @@ Használata hálózati Teljesítményfigyelő más objektumok, vagy a szolgálta
   ![PowerShell-szkript](.\media\how-to-npm\7.png)
 
 ### <a name="installagent"></a>2.2: a figyelési ügynök telepítése minden felügyeleti kiszolgálón
+
+Azt javasoljuk, hogy telepítse a redundancia érdekében legalább két ügynököket (vagyis a helyszíni Azure Vnetekhez) ExpressRoute-kapcsolat mindkét oldalán. Az ügynökök telepítéséhez tegye a következőket:
 
 1. Futtatás **telepítő** ExpressRoute figyelemmel kísérésére használni kívánt összes kiszolgálón az ügynök telepítéséhez. A figyeléshez használt kiszolgáló lehet egy virtuális Gépet, vagy a helyszíni és internetkapcsolattal kell rendelkeznie. Azure a figyelni kívánt hálózati szegmenshez legalább egy ügynök-hez, és egy ügynököt telepíteni szeretné.
 2. Az a **üdvözlő** kattintson **következő**.

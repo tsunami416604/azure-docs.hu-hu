@@ -8,11 +8,11 @@ ms.author: cbrooks
 ms.date: 08/18/2017
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: f364d7b25a75012f33a282111c9624d51b65b42f
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 67f262913333fb69f5b862fa3d862c0d773e4172
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-preview"></a>Azure Blob Storage-események átirányítása egyéni webes végpontra (előzetes verzió)
 
@@ -32,6 +32,8 @@ A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadato
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI legújabb verzióját (2.0.14 vagy újabb) kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
+
+Ha nem a Cloud Shellt használja, először be kell jelentkeznie a(z) `az login` használatával.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -86,7 +88,7 @@ az eventgrid resource event-subscription create \
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Esemény kiváltása a Blob Storage-ból
 
-Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először konfiguráljuk a tárfiók nevét és kulcsát, majd hozzunk létre egy tárolót, végül hozzunk létre és töltsünk fel egy fájlt. Ismét a korábban létrehozott `<storage_account_name>` és `<resource_group_name>` értéket használja.
+Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először hozzuk nevének konfigurálása és a storage-fiók kulcsát, majd azt létrehozni egy tárolót, majd hozhat létre, és -fájl feltöltése. Ismét a korábban létrehozott `<storage_account_name>` és `<resource_group_name>` értéket használja.
 
 ```azurecli-interactive
 export AZURE_STORAGE_ACCOUNT=<storage_account_name>

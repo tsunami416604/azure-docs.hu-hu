@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/15/2017
 ms.author: eamono
-ms.openlocfilehash: 7cd6bebcaa1ed263b9854f7307cf22fba006748e
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 0ddd31f7ce2217c1136eccd391bb30bd4461c3e5
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-automation-watcher-tasks-enable-you-to-respond-to-events-happening-in-your-local-datacenter"></a>Azure Automation megfigyelő feladatok lehetővé teszik, hogy a helyi adatközpontban történik események válaszolni
 
@@ -64,7 +64,7 @@ Az oktatóanyag teljesítéséhez a következőkre szükség.
 ## <a name="create-a-watcher-task-that-selects-the-watcher-runbook-and-action-runbook"></a>Kiválasztja a megfigyelő runbook és a művelet a runbook egy megfigyelő-feladat létrehozása
 1.  Nyissa meg a figyelő feladatok lapját, és kattintson a "Megfigyelő feladat hozzáadása" gombra.
 ![A felhasználói Felületről megfigyelő listája](media/automation-watchers-tutorial/WatchersList.png)
-2.  Adja meg az "Új fájlokat beállításjegyzékek" néven.
+2.  Adja meg a "WatchMyFolder" néven.
 3.  Válassza ki a "Figyelő beállítása", és válassza ki a "Figyelés-NewFile" runbookot.
 ![A felhasználói Felületről megfigyelő konfigurálása](media/automation-watchers-tutorial/ConfigureWatcher.png)
 4.  Adja meg a következő értékeket paraméterek:
@@ -86,7 +86,7 @@ Az oktatóanyag teljesítéséhez a következőkre szükség.
 2.  A megfigyelő tevékenység által figyelt mappához történő hozzáadása egy új szövegfájlt.
 
 ## <a name="inspect-the-output-from-the-action-runbook-that-shows-information-on-the-new-file"></a>Tekintse meg a kimenetet információkat jeleníti meg az új fájl művelet runbookból
-1.  Kattintson a "Figyelés új fájlok" a figyelő feladat
+1.  Kattintson a megfigyelő tevékenységen az "WatchMyFolder"
 2.  Kattintson a "nézet megfigyelő adatfolyamok" az, hogy a figyelő az új fájl található, és a művelet a runbook indítása.
 3.  Kattintson a "megfigyelő művelet feladatok megtekintése" a művelet a runbook-feladat megtekintéséhez.
 ![Megfigyelő műveleti feladatok a felhasználói Felületről](media/automation-watchers-tutorial/WatcherActionJobs.png)

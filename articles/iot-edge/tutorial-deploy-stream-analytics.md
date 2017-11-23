@@ -9,11 +9,11 @@ ms.author: v-masebo
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 88dc0860b4455d19b05b4f4f1766210e3f3c704e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 0d19d1142cf15221f84692f7e613edd6b46b4083
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Azure Stream Analytics egy IoT peremhálózati modulként telepítése – előzetes
 
@@ -68,10 +68,10 @@ Ebben a szakaszban hozzon létre egy Azure Stream Analytics-feladat az IoT hub a
 
 5. Az Azure-portálon lépjen a **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** válassza **Stream Analytics-feladat**.
 
-6. Adjon meg egy nevet, kattintson a **peremhálózati** üzemeltetési környezetben, és a többi alapértelmezett értéket használja.  Kattintson a **Create** (Létrehozás) gombra.
+2. Adjon meg egy nevet, kattintson a **peremhálózati** üzemeltetési környezetben, és a többi alapértelmezett értéket használja.  Kattintson a **Create** (Létrehozás) gombra.
 
     >[!NOTE]
-    >Jelenleg nincsenek IoT oldal ASA feladatok támogató régiók száma korlátozott. Jelölje ki a következők egyikét az helyeként: USA középső RÉGIÓJA, Nyugat középső Régiójában, északi középső Régiójában, USA keleti régiója, Kanada keleti, kelet-Japánban, Kelet-Ázsiában, Észak-Európa, Egyesült Királyság déli, Kelet-Ausztrália, Dél-Brazília. 
+    >Jelenleg ASA feladatok IoT oldal Velünk nyugati 2 régióban nem támogatottak. Válasszon ki egy másik helyre.
 
     ![ASA létrehozása][5]
 

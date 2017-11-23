@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/17/2017
 ms.author: bryanla
-ms.openlocfilehash: 905e7b0d8a0c45c98a86882a8c8f387be0950f9f
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 168b2ab3676d3f3e2830966f850e14adbe579f85
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in-and-token-acquisition"></a>Egy Azure virtuális gép felügyelt szolgáltatás Identity (MSI) használata a bejelentkezési és a token beszerzése 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]Egy Azure virtuális gépen az MSI engedélyezését, használhatja az MSI-fájl, a bejelentkezéshez, és egy hozzáférési jogkivonatot. Ez a cikk bemutatja egy olyan MSI Csomaghoz használatának különböző módjai [egyszerű](develop/active-directory-dev-glossary.md#service-principal-object) a bejelentkezéshez, és szerezzen be egy [csak alkalmazás-hozzáférési jogkivonat](develop/active-directory-dev-glossary.md#access-token) egyéb erőforrások eléréséhez, beleértve:
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/17/2017
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [msi-qs-configure-prereqs](../../includes/msi-qs-configure-prereqs.md)]
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 Ha azt tervezi, a PowerShell-példák használata ebben a cikkben, ügyeljen arra, hogy telepítse [Azure PowerShell verziója 4.3.1](https://www.powershellgallery.com/packages/AzureRM) vagy nagyobb. Ha tervezi az Azure CLI példák ebben a cikkben, három lehetőség közül választhat:
 - Használjon [Azure Cloud rendszerhéj](../cloud-shell/overview.md) Azure-portálról.

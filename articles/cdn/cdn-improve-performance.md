@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 86f1f8f0aaa9a699d2f816781cef65cda868ee55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4e27ec57543daed35811fff347f457b0dd2cd5c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>A jobb teljesítmény érdekében az Azure CDN fájlok tömörítése
 Tömörítés a fájl átviteli sebesség növelése és a lap betöltése teljesítmény növeléséhez a fájlméret, mielőtt a kiszolgáló egyszerű és hatékony módszer. Csökkenti a sávszélességgel kapcsolatos költségek, és gyorsabban élményt nyújt a felhasználók számára.
@@ -100,7 +100,7 @@ Ezek a táblázatok ismertetik Azure CDN tömörítési viselkedés minden forga
 > * Lehet nagyobb, mint 128 bájt.
 > * Lehet kisebb, mint 1 MB.
 > 
-> Ezeket a profilokat támogatja **gzip** (GNU zip), **deflate**, **bzip2**, vagy **br** (Brotli) kódolást. A kódolási Brotli, a tömörítés csak peremére végezhető el. Az ügyfélböngészőnek Brotli kódolási kérelmet kell küldenie, és a tömörített eszköz kell tömörített a forrás oldalon először. 
+> Ezeket a profilokat támogatja **gzip** (GNU zip), **deflate**, **bzip2**, vagy **br** (Brotli) kódolást. A kódolási Brotli, a tömörítés azért van szükség, forráson. Az ügyfélböngészőnek Brotli kódolási kérelmet kell küldenie, és a tömörített eszköz kell tömörített a forrás oldalon először. 
 
 > [!IMPORTANT]
 > A **Akamai Azure CDN** profilok, fájlok kerülnek a tömörítést. Azonban a fájl a MIME-típust, amelyet kell [tömörítési konfigurált](#enabling-compression).

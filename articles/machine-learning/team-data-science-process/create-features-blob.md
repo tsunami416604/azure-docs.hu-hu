@@ -4,7 +4,7 @@ description: "Tudnivalók a Panda Python-csomag az Azure blob-tárolóban tárol
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 676b5fb0-4c89-4516-b3a8-e78ae3ca078d
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/21/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: ea6712fcedcc61c9f88e9daa8d576ac3d202da51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a2e64927f4afca87642fb4829166c5ec60dbc09
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Funkciók létrehozása az Azure Blob Storage-adatokból a Pandas használatával
 Ez a dokumentum bemutatja hogyan hozhat létre az Azure blob-tároló segítségével tárolt adatok funkciói a [Pandas](http://pandas.pydata.org/) Python-csomag. Az adatok betöltése Panda adatok keretbe tagolás után azt illusztrálja, hogyan kategorikus szolgáltatás Python-parancsfájl használata a kijelző értékekkel, és a szolgáltatások dobozolás létrehozásához.
@@ -31,9 +31,9 @@ Ez **menü** szolgáltatások adatok létrehozása a különböző környezetek 
 Ez a cikk feltételezi, hogy az Azure blob storage-fiók létrehozása, és az adatok ott tárolt. Ha a fiókot utasításokat van szüksége, tekintse meg [egy Azure Storage-fiók létrehozása](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Az adatok betöltése az adatok Pandas keret
-Ahhoz, hogy vizsgálatát, és kezelheti a DataSet adatkészlet, azt kell letölteni a blob-forrás egy helyi fájlba, amely majd tölthetők be adatok Pandas keret. Az eljárás végrehajtásához kövesse a lépések a következők:
+Fedezze fel és kezelheti a DataSet adatkészlet le azt a blob-forrás egy helyi fájlba. Töltse be a Pandas adatok keret majd. Az eljárás végrehajtásához kövesse a lépések a következők:
 
-1. Az adatokat az Azure blob-kódot a következő minta Python blob szolgáltatással letöltése. Cserélje le az alábbi kódot a változót az adott értékek:
+1. Az adatokat az Azure blob-kódot a következő minta Python blob szolgáltatással letöltése. Cserélje le a változó a következő kódot a saját értékekkel:
    
         from azure.storage.blob import BlobService
         import tables
@@ -60,7 +60,7 @@ Most már készen áll az adatokba, és ez az adatkészlet funkcióinak generál
 ## <a name="blob-featuregen"></a>Szolgáltatás létrehozása
 A következő két szakaszok bemutatják, hogyan kategorikus mutató értékekkel dobozolás szolgáltatásokkal és Python-parancsfájl használata létrehozásához.
 
-### <a name="blob-countfeature"></a>Kijelző értékének alapú szolgáltatás létrehozása
+### <a name="blob-countfeature"></a>Kijelző érték-alapú szolgáltatás létrehozása
 A kockák szolgáltatásai az alábbiak szerint hozhatók létre:
 
 1. Vizsgálja meg az a kategorikus oszlop terjesztését:
@@ -80,7 +80,7 @@ A kockák szolgáltatásai az alábbiak szerint hozhatók létre:
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
 ### <a name="blob-binningfeature"></a>A dobozolás szolgáltatás létrehozása
-Binned szolgáltatások létrehozásának, a Folytatás az alábbiak szerint:
+Binned szolgáltatások generálásához, folytassa a következőképpen:
 
 1. Az oszlopok egy numerikus oszlopot bin egy sorozat hozzáadása
    
@@ -93,8 +93,8 @@ Binned szolgáltatások létrehozásának, a Folytatás az alábbiak szerint:
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)
 
-## <a name="sql-featuregen"></a>Írás a vissza az Azure blob, és az Azure Machine Learning felhasználása
-Miután rendelkezik megismerte az adatokat, és létrehozni a szükséges szolgáltatások, az adatait feltöltheti (mintát vagy featurized) az Azure blob-, és az Azure Machine Learning az alábbi lépéseket követve szokásokra is: az Azure Machine Learning Studio, valamint további szolgáltatásokat lehet létrehozni.
+## <a name="sql-featuregen"></a>Az adatok felhasználását, az Azure Machine Learning Azure blob vissza való írásakor
+Az Azure Machine Learning, hogy megismerte rendelkezik, az adatok felhasználásához mintavételezett vagy featurized, az adatok feltöltése egy Azure-blobba. További funkciók is létrehozható az Azure Machine Learning Studio is. A következő lépések bemutatják, hogyan feltölteni az adatokat:
 
 1. Az adatok keret helyi fájl írása
    
@@ -120,7 +120,7 @@ Miután rendelkezik megismerte az adatokat, és létrehozni a szükséges szolg�
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Most az adatokat a blobból az Azure Machine Learning segítségével elolvashatja [és adatokat importálhat](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modul alábbi képernyőn látható módon:
+3. Most az adatokat a blobból az Azure Machine Learning segítségével elolvashatja [és adatokat importálhat](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modul az alábbi képernyőfelvételen látható módon:
 
 ![olvasó blob](./media/data-blob/reader_blob.png)
 

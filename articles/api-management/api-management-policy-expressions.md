@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 33bcc51466fa0918bf4484c58fac813d07ae14da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96455dcdcf2eb90c836675c73c83c0320524fdac
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="api-management-policy-expressions"></a>API-felügyeleti házirend-kifejezések
 Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a implicit módon megadott [környezetben](api-management-policy-expressions.md#ContextVariables) változó és egy engedélyezett [részhalmaza](api-management-policy-expressions.md#CLRTypes) .NET-keretrendszer típusú.  
@@ -174,7 +174,7 @@ Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a
 |----------------------|-------------------------------------------------------|  
 |A környezetben|API: IApi<br /><br /> Környezet<br /><br /> Hiba<br /><br /> Művelet<br /><br /> Product<br /><br /> Kérés<br /><br /> Kérelemazonosító: Guid<br /><br /> Válasz<br /><br /> Előfizetés<br /><br /> Nyomkövetés: logikai<br /><br /> Felhasználó<br /><br /> Változók: IReadOnlyDictionary < karakterlánc, objektum ><br /><br /> "void" Trace(message: string)|  
 |a környezetben. API|Azonosító: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> ServiceUrl: IUrl|  
-|a környezetben. Központi telepítés|A régióban: karakterlánc<br /><br /> Szolgáltatásnév: karakterlánc|  
+|a környezetben. Központi telepítés|A régióban: karakterlánc<br /><br /> Szolgáltatásnév: karakterlánc<br /><br /> Tanúsítványok: IReadOnlyDictionary < karakterlánc, X509Certificate2 >|  
 |a környezetben. Hiba|Forrás: karakterlánc<br /><br /> OK: karakterlánc<br /><br /> Üzenet: karakterlánc<br /><br /> Hatókör: karakterlánc<br /><br /> A szakasz: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> PolicyId: karakterlánc<br /><br /> További információ a környezetben. Hiba, lásd: [hibakezelés](api-management-error-handling-policies.md).|  
 |a környezetben. Művelet|Azonosító: karakterlánc<br /><br /> Módszer: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> UrlTemplate: karakterlánc|  
 |a környezetben. A termék|API-k: IEnumerable < IApi\><br /><br /> ApprovalRequired: logikai<br /><br /> Csoportok: IEnumerable < IGroup\><br /><br /> Azonosító: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Állapot: enum ProductState {NotPublished, közzétett}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: logikai|  
@@ -199,6 +199,12 @@ Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a
 |logikai TryParseJwt (bemenet: a karakterlánc, az eredmény: Jwt kimenő)|bemeneti: karakterlánc<br /><br /> eredmény: Jwt-kimenő<br /><br /> Ha a bemeneti paraméter értéke érvénytelen JWT jogkivonat, a metódus visszaadja `true` és az eredmény paraméter típusú értéket tartalmaz `Jwt`; ellenkező esetben a metódus visszaadja `false`.|  
 |Jwt-t|Algoritmus: karakterlánc<br /><br /> A célközönség: IEnumerable < karakterlánc\><br /><br /> Jogcímek: IReadOnlyDictionary < string, string [] ><br /><br /> ExpirationTime: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kibocsátó: karakterlánc<br /><br /> NotBefore: DateTime?<br /><br /> Tulajdonos: karakterlánc<br /><br /> Típus: karakterlánc|  
 |karakterlánc-Jwt.Claims.GetValueOrDefault (claimName: karakterlánc, alapértelmezett érték: karakterlánc)|claimName: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Vesszővel elválasztott jogcímértékek adja vissza vagy `defaultValue` Ha a fejléc nem található.|
+|byte [] titkosítása (bemeneti: a byte [], alg: karakterlánc, a kulcs: byte [], a iv:byte[])|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - szimmetrikus titkosítási algoritmus neve<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Vissza titkosított egyszerű szöveg.|
+|byte [] titkosítása (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - titkosítási algoritmus<br /><br />Vissza titkosított egyszerű szöveg.|
+|byte [] titkosítása (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm, kulcs: byte [], iv:byte[])|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Vissza titkosított egyszerű szöveg.|
+|byte [] visszafejtése (bemeneti: a byte [], alg: karakterlánc, a kulcs: byte [], a iv:byte[])|bemenet – cyphertext vissza kell fejteni<br /><br />ALG - szimmetrikus titkosítási algoritmus neve<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
+|byte [] visszafejtése (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet – cyphertext vissza kell fejteni<br /><br />ALG - titkosítási algoritmus<br /><br />Egyszerű szövegként adja vissza.|
+|byte [] visszafejtése (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm, kulcs: byte [], iv:byte[])|bemeneti - bemeneti - cyphertext vissza kell fejteni<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
 
 ## <a name="next-steps"></a>Következő lépések
 Házirendek használata további információkért lásd: [házirendek az API Management](api-management-howto-policies.md).  

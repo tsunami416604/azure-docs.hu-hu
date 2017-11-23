@@ -14,18 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: jomolesk
-ms.openlocfilehash: 914b27adf660dcb158748e8090c4dcfe92461734
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: a0546f6e10b04bbfdb5b02e5c0bbe6d907c76e72
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
+# <a name="maintenance-ma"></a>Karbantartási (MA)
+
 > [!NOTE]
 > Ezek az intézkedések határozzák meg NIST és az Egyesült Államok Kereskedelmi Minisztériuma a NIST különleges közlemény 800-53-as verziójának 4 részeként. Tekintse meg a NIST 800-53 fordított 4 tesztelési útmutató a vezérlők és eljárásokat olvashat.
-    
-    
-
-# <a name="maintenance-ma"></a>Karbantartási (MA)
 
 ## <a name="nist-800-53-control-ma-1"></a>A NIST 800-53 vezérlő MA-1
 

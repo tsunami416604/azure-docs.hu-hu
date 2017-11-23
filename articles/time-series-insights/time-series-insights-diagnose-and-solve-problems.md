@@ -1,6 +1,8 @@
 ---
 title: "Hibáinak diagnosztizálásához és elhárításához Azure idő adatsorozat insightsban |} Microsoft Docs"
 description: "Ez a cikk ismerteti, hogyan diagnosztizálhatja, hibaelhárításához és Azure idő adatsorozat Insights környezetében előforduló gyakori problémák megoldásában."
+services: time-series-insights
+ms.service: time-series-insights
 author: venkatgct
 ms.author: venkatja
 manager: jhubbard
@@ -9,11 +11,11 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/15/2017
-ms.openlocfilehash: 47fb6f01eff8827179fbfa9e67ad3b901c8cdf94
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 757d37183ad334aca462af59bad261cfa686299e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Hibáinak diagnosztizálásához és elhárításához idő adatsorozat Insights környezetében
 

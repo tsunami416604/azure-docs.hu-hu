@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: c0872619a4897b0ac40629df00053f3e49768f64
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4fb443691e216169dd1322b96d77139ffde752d4
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Gyakori kérdések az Azure Web Apps nyílt forráskódú technológiák
 
@@ -32,14 +32,6 @@ Ez a cikk gyakran ismételt kérdések (GYIK) választ rendelkezik tudnivalók a
 Adatbázissal kapcsolatos problémák esetén kérje [ClearDB támogatási](https://www.cleardb.com/developers/help/support). 
 
 A ClearDB kapcsolatos gyakori kérdésekre adott válaszok, lásd: [ClearDB – gyakori kérdések](https://docs.microsoft.com/azure/store-cleardb-faq/).
-
-## <a name="why-isnt-my-cleardb-database-listed-in-the-portal"></a>A ClearDB adatbázist miért nem szerepel a portálon?
-
-Ha a ClearDB-adatbázis létrehozása a [Azure-portálon](http://portal.azure.com/), az adatbázis nem jelenik meg a [a klasszikus Azure portálon](http://manage.windowsazure.com/). Ez elkerülhető, hogy manuálisan társíthatja az adatbázis a webalkalmazást.
-
-Hasonló módon ha a ClearDB-adatbázis létrehozása a [a klasszikus Azure portálon](http://manage.windowsazure.com/), nem jelenik meg az adatbázis a [Azure-portálon](http://portal.azure.com/). Ebben az esetben nincs megkerülő megoldás érhető el. 
-
-További információkért lásd: [ClearDB MySQL-adatbázisok – gyakori kérdések az Azure App Service](https://docs.microsoft.com/azure/store-cleardb-faq/).
 
 ## <a name="why-wasnt-my-cleardb-database-migrated-during-my-subscription-migration"></a>A ClearDB adatbázist miért nem volt át az előfizetést az áttelepítés során?
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: baa3ac6473f180e220ec4973ced51369467bf158
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1adf5935e7fc01a24db6ada3c4cfe4ac0a4d55
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 Szűrés segítségével szabályozhatja mely objektumok jelennek meg az Azure Active Directory (Azure AD) a helyi címtárban lévő. Az alapértelmezett konfiguráció összes objektumok minden tartományban a konfigurált erdők vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók Office 365-munkaterhelések, például az Exchange Online és Skype vállalati verzióra, a kihasználhassa a teljes globális címlista, hogy e-mailek küldése és mindenki hívja. Az alapértelmezett konfigurációnál akkor ugyanazt a felhasználói élményt, hogy azok az Exchange vagy a Lync egy helyszíni példánnyal.
@@ -296,7 +296,14 @@ Most azt az idő az ütemező ismét engedélyeznie.
 ## <a name="group-based-filtering"></a>Csoport-alapú szűrés
 Beállíthatja, hogy az Azure AD Connect használatával telepítse először csoport alapú szűrés [egyéni telepítési](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups). Kísérleti központi telepítés célja, ha azt szeretné, hogy a szinkronizálandó objektumok csak egy kis készletét. Csoport-alapú szűrés letiltása esetén nem engedélyezhető újra. Rendelkezik *nem támogatott* biztonságicsoport-alapú szűrés egyéni konfiguráció használatához. Ez a szolgáltatás konfigurálása a telepítési varázsló használatával csak támogatott. A próbaüzem végrehajtását, majd a más szűrési lehetőségek valamelyikével ebben a témakörben. A csoport-alapú szűrés együtt OU-alapú szűrés használatakor a kapcsolnia, amelyben a csoportot és annak tagjait is szerepelnie kell.
 
-Több AD-erdővel szinkronizálásakor beállíthatja egy másik csoportot minden egyes címtárösszekötőben megadásával csoport alapú szűrés. Ha kívánja szinkronizálni a felhasználó egy Active Directory erdőben, és ugyanahhoz a felhasználóhoz van egy vagy több megfelelő FSP (idegen rendszerbiztonsági tag) objektumokat más AD-erdőkkel, meg kell győződnie arról, hogy a user objektum és a megfelelő FSP objektumok jelenleg belül Csoportalapú korlátozza hatókör. Ha egy vagy több FSP objektum szűréssel Csoportalapú kizárva, a user objektum nem fognak szinkronizálódni az Azure ad Szolgáltatásba.
+Több AD-erdővel szinkronizálásakor beállíthatja egy másik csoportot minden egyes címtárösszekötőben megadásával csoport alapú szűrés. Ha kívánja szinkronizálni a felhasználó egy Active Directory erdőben, és ugyanahhoz a felhasználóhoz van egy vagy több megfelelő objektumokat más AD-erdőkkel, meg kell győződnie arról, hogy a user objektum és a megfelelő objektumok jelenleg belül Csoportalapú korlátozza hatókör. Példák:
+
+* A felhasználó egy olyan erdőben, amely rendelkezik a megfelelő FSP (idegen rendszerbiztonsági tag) objektumot egy másik erdőben vannak. Mindkét objektum kell lennie belül biztonságicsoport-alapú szűrés hatókör. Ellenkező esetben a felhasználó nem fognak szinkronizálódni az Azure ad Szolgáltatásba.
+
+* A felhasználó egy olyan erdőben, amely rendelkezik a megfelelő erőforrás fiókkal (például hivatkozott postafiókkal) egy másik erdőben vannak. Továbbá az erőforrás-fiókkal rendelkező felhasználó csatolni az Azure AD Connect konfigurálta. Mindkét objektum kell lennie belül biztonságicsoport-alapú szűrés hatókör. Ellenkező esetben a felhasználó nem fognak szinkronizálódni az Azure ad Szolgáltatásba.
+
+* A felhasználó rendelkezik egy olyan erdőben, amely rendelkezik a megfelelő e-mail kapcsolattartási egy másik erdőben. További konfigurálta az Azure AD Connect hivatkozásra a felhasználó e-mail az ügyfél számára. Mindkét objektum kell lennie belül biztonságicsoport-alapú szűrés hatókör. Ellenkező esetben a felhasználó nem fognak szinkronizálódni az Azure ad Szolgáltatásba.
+
 
 ## <a name="next-steps"></a>Következő lépések
 - További információ [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.

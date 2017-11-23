@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dee3411dadbca5e88951dec2ed1836d440423c4
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-network-security-best-practices"></a>Azure-hálózat ajánlott biztonsági eljárások
-A Microsoft Azure lehetővé teszi, hogy csatlakozhat a virtuális gépek és készülékek más hálózati eszközök párt Azure virtuális hálózatot. Egy Azure virtuális hálózatra egy virtuális hálózati szerkezet, amely lehetővé teszi a virtuális hálózati kártyák engedélyezett hálózati eszközök közötti TCP/IP-alapú kommunikáció engedélyezése a virtuális hálózathoz csatlakozni. Egy Azure virtuális hálózatra csatlakozik az Azure virtuális gépek csatlakozni tudjanak a azonos Azure virtuális hálózaton, különböző Azure virtuális hálózatok, az interneten, vagy még akkor is, a saját helyszíni hálózatokon.
+A Microsoft Azure lehetővé teszi, hogy csatlakozhat a virtuális gépek és készülékek más hálózati eszközök párt Azure virtuális hálózatot. Egy Azure virtuális hálózatra olyan konstrukció, amely lehetővé teszi a virtuális hálózati kártyák engedélyezett hálózati eszközök közötti TCP/IP-alapú kommunikáció engedélyezése a virtuális hálózathoz csatlakozni. Egy Azure virtuális hálózatra csatlakozik az Azure virtuális gépek csatlakozni tudjanak a azonos Azure virtuális hálózaton, különböző Azure virtuális hálózatok, az interneten, vagy még akkor is, a saját helyszíni hálózatokon.
 
 Ez a cikk ismertetik Azure-hálózat ajánlott biztonsági eljárások gyűjteménye. Az alábbi gyakorlati tanácsok az Azure hálózati tapasztalatunk származik, és az ügyfelek feladatokat, például saját maga.
 
@@ -50,9 +50,9 @@ Az Azure hálózati ajánlott biztonsági eljárások cikkben említett a követ
 * Az Azure az Adatközpont kiterjesztése
 
 ## <a name="logically-segment-subnets"></a>Logikailag szegmens alhálózatok
-[Egy Azure virtuális hálózatot](https://azure.microsoft.com/documentation/services/virtual-network/) hasonlóak a helyi hálózaton egy LAN-on. A mögött egy Azure virtuális hálózatra lényege, hogy hozzon létre egy egyetlen magán IP-cím terület-alapú hálózati amelyen minden elhelyezheti a [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/). Az osztály A (10.0.0.0/8), a B osztály (172.16.0.0/12) és a C osztályú (192.168.0.0/16) tartományok a magánhálózati IP-címterek érhető el.
+[Egy Azure virtuális hálózatot](https://azure.microsoft.com/documentation/services/virtual-network/) hasonlóak a helyi hálózaton egy LAN-on. A mögött egy Azure virtuális hálózatra lényege, hogy hozzon létre egy egyetlen magán IP-cím terület-alapú hálózati amelyen minden elhelyezheti a [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/). A privát IP-címterek érhető el az osztály A (10.0.0.0/8), a B osztály (172.16.0.0/12), és C osztályú (192.168.0.0/16) címtartományok.
 
-Hasonló ahhoz, ami így tesz, a helyszíni, érdemes nagyobb címtartomány szegmentálja alhálózatokra. Használhat [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) alapú alhálózatok alapelvek alhálózatát létrehozásához.
+Hasonló ahhoz, ami így tesz, a helyszíni, meg kell szegmenseket, nagyobb címtartomány alhálózatokra. Használhat [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) alapú alhálózatok alapelvek alhálózatát létrehozásához.
 
 Útválasztás alhálózatok között művelet automatikusan megtörténik, és nem kell manuálisan konfigurálnia az útválasztási táblázatokat. Az alapértelmezett beállítás azonban, hogy vannak-e nincs hálózati hozzáférés-vezérlést az Azure virtuális hálózat létrehozása az alhálózatok között. Hálózati hozzáférés-vezérlést alhálózatok között létrehozásához meg kell importálnia valamit a alhálózatok között.
 
@@ -74,7 +74,7 @@ Az alapértelmezett rendszerútvonalak számos telepítési forgatókönyv haszn
 Azt javasoljuk, hogy felhasználó által megadott útvonalak konfigurálásához, amikor telepít egy biztonsági lesz döntésről bővebben újabb ajánlott eljárás a virtuális hálózati berendezések.
 
 > [!NOTE]
-> felhasználó által megadott útvonal nem szükségesek, és a legtöbb esetben az alapértelmezett rendszerútvonalak működik.
+> felhasználó által megadott útvonal nem szükségesek, és az alapértelmezett rendszerútvonalak működik a legtöbb esetben.
 >
 >
 
@@ -82,7 +82,7 @@ További információ a felhasználó által megadott útvonalak és hogyan lehe
 
 ## <a name="enable-forced-tunneling"></a>A kényszerített bújtatás engedélyezése
 Jobb megértése érdekében a kényszerített bújtatás, akkor hasznos, ha szeretné megtudni, milyen "felosztása tunneling"-e.
-A leggyakoribb példa vegyes alagútkezelést a VPN-kapcsolatok látható. Tegyük fel, hogy Ön a VPN-kapcsolatot a a szállodák hely a vállalati hálózathoz. Ez a kapcsolat lehetővé teszi, a vállalati hálózaton lévő erőforrások eléréséhez, és a vállalati hálózaton lévő erőforrások felé minden kommunikáció nyissa meg a VPN-alagúton keresztül.
+A leggyakoribb példa vegyes alagútkezelést a VPN-kapcsolatok látható. Tegyük fel, hogy Ön a VPN-kapcsolatot a a szállodák hely a vállalati hálózathoz. Ez a kapcsolat lehetővé teszi, hogy a vállalati erőforrások eléréséhez és a hálózati kommunikáció minden esetben nyissa meg a VPN-alagúton keresztül.
 
 Mi történik, ha azt szeretné, az interneten lévő erőforrások eléréséhez? Vegyes Alagútkezelés engedélyezése esetén ezeket a kapcsolatokat lépjen közvetlenül az internethez, és nem a VPN-alagúton keresztül. Néhány biztonsági szakértők vegye figyelembe, hogy ez kockázatot, és ezért javasoljuk, hogy Alagútkezelés le kell tiltani és az összes kapcsolat, az internetre irányuló valamint azok szánt a vállalati erőforrásokhoz, nyissa meg a VPN-alagúton keresztül. Ennek előnye, hogy csatlakozik az internethez kényszerítve vannak-e majd a biztonsági nem tudnák akkor fordulhat elő, ha a VPN-ügyfél csatlakozik az internethez, a VPN-alagút kívül vállalati hálózati eszközön.
 
@@ -144,10 +144,9 @@ Titkosítás, integritás és rendelkezésre állás (CIA) tartalmazza az aktuá
 Rendelkezésre állási elképzelhető, hogy hasznos üzemidő és teljesítményére. Ha a szolgáltatás nem működik, információ nem érhető el. Ha a teljesítmény, gyenge, hogy emiatt használhatatlanná válik az adatokat, akkor azt is fontolóra veheti az adatok nem érhetők el. Ezért biztonsági szempontból, igazolnia kell tennie függetlenül azt is győződjön meg róla szolgáltatások optimális hasznos üzemidő és teljesítmény.
 Egy népszerű és hatékony módszer használt rendelkezésre állásának és teljesítményének javítása érdekében, hogy használja a terheléselosztás. Terheléselosztás a szolgáltatás részét képező kiszolgálók közötti hálózati forgalom elosztása módszer. Például ha a szolgáltatás részeként előtér-webkiszolgálók, segítségével terheléselosztás a forgalom terjesztheti a több előtér-webkiszolgáló között.
 
-A forgalom eloszlása növeli a rendelkezésre állási, mivel a webkiszolgálók egyik nem érhető el, ha a terheléselosztó leállítja a forgalom küldése a kiszolgálóhoz és forgalom átirányítása a kiszolgálók, amelyek továbbra is működik. Terheléselosztás lehetővé teszi a teljesítményt, mert a processzor, a hálózati és a memória terhelést jelenthet küldött kérelmek is terjeszthető a terhelés eloszlik a kiszolgálók.
+A forgalom eloszlása növeli a rendelkezésre állási, mivel a webkiszolgálók egyik elérhetetlenné válik, a terheléselosztó leállítja a forgalmat küld erre a kiszolgálóra, majd irányítja át a kiszolgálók, amelyek továbbra is működik. Terheléselosztás lehetővé teszi a teljesítményt, mert a processzor, a hálózati és a memória terhelést jelenthet küldött kérelmek is terjeszthető a terhelés eloszlik a kiszolgálók.
 
-Azt javasoljuk, hogy alkalmaz terheléselosztás együtt, és a szolgáltatások megfelelő. A következő szakaszokban indították lesz oldjuk.
-Az Azure Virtual Network szinten az Azure biztosít a három elsődleges betölti terheléselosztási beállításokat:
+Azt javasoljuk, hogy alkalmaz terheléselosztás együtt, és a szolgáltatások megfelelő. Oldjuk lesz a következő szakaszokban indították: az Azure-beli virtuális hálózat szinten Azure biztosít a három elsődleges betölti terheléselosztási beállításokat:
 
 * HTTP-alapú terheléselosztás
 * Külső terheléselosztási
@@ -176,7 +175,7 @@ További információt hogyan az Azure külső terheléselosztó működik, és 
 ## <a name="internal-load-balancing"></a>Belső terheléselosztás
 Belső terheléselosztás külső terheléselosztás hasonló, és ugyanazt a mechanizmust használ mögött azokat a kiszolgálókat egyenleg kapcsolatok betöltéséhez. Az egyetlen különbség, hogy a terheléselosztó ebben az esetben fogadja a kapcsolatokat a virtuális gépekről, amelyek nem kapcsolódnak az internethez. A legtöbb esetben az elfogadás terheléselosztás kapcsolatokat egy Azure virtuális hálózatán lévő eszközök által kezdeményezett.
 
-Azt javasoljuk, hogy a forgatókönyvek, amelyek előnyösek, ezt a képességet, például amikor be kell tölteni az egyenleg kapcsolatok SQL webkiszolgálókon vagy belső belső terheléselosztási használja.
+Azt javasoljuk, hogy használja-e ezt a képességet, például amikor be kell tölteni az egyenleg kapcsolatok SQL webkiszolgálókon vagy belső előnyeit kihasználó forgatókönyvek belső terheléselosztást.
 
 Azure belső terheléselosztás működése, és hogyan telepítheti azt kapcsolatos további tudnivalókért olvassa el a cikk [létrehozásához egy PowerShell-lel belső terheléselosztót](../load-balancer/load-balancer-get-started-internet-arm-ps.md#update-an-existing-load-balancer).
 

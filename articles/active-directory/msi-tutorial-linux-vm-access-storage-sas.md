@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/30/2017
+ms.date: 11/20/2017
 ms.author: bryanla
-ms.openlocfilehash: 6e52896f0d03661eab033c5b58b86360ce346b55
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 4621ca88c0d1443cd8bdeea2d34e8f333727acc0
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Linux virtuális gép felügyelt Szolgáltatásidentitás segítségével Azure Storage érhetnek el egy SAS-hitelesítő adat
 
@@ -33,8 +33,11 @@ A szolgáltatás SAS lehetővé teszi a hozzáférést korlátozott a tárfiókb
 > * A virtuális gép hozzáférést biztosíthat a tárfiók SAS az erőforrás-kezelőben 
 > * Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és a SAS lekérni az erőforrás-kezelő használatával 
 
+## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
+
+[!INCLUDE [msi-tut-prereqs](../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com).

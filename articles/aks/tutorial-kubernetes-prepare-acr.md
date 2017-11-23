@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 15b54f6131c847551295061df6c6ad6a476a7da6
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 1848e15a2be8d89315657a6eabdb94617bd1b5bf
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Üzembe helyezés és használat Azure tároló beállításjegyzék
 
@@ -56,7 +56,7 @@ Hozzon létre egy Azure-tárolóba beállításjegyzéket a [az acr létrehozás
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
-Ez az oktatóanyag a többi, egész használjuk `<acrname>` számára a tároló neve.
+Ez az oktatóanyag a többi, egész használjuk `<acrName>` számára a tároló neve.
 
 ## <a name="container-registry-login"></a>Tároló beállításjegyzék bejelentkezés
 

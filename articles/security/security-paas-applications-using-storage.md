@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 11/21/2017
 ms.author: TomShinder
-ms.openlocfilehash: 62c7b6706268e3c6e329f90651125fe299f61d67
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 16ee6d9d2f02c758d7682626a8b71a3ff17f841c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>PaaS webes és mobilalkalmazások Azure Storage használatával biztonságossá tétele
 Ez a cikk arról lesz szó Azure Storage ajánlott biztonsági eljárások az PaaS webes és mobilalkalmazások védelme gyűjteménye. Az alábbi gyakorlati tanácsok az Azure-ral tapasztalatunk és az ügyfelek, például a saját kezűleg feladatait származik.
@@ -87,7 +87,7 @@ További információt az RBAC lásd:
 - [Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md)
 - [Az Azure Storage biztonsági útmutató](../storage/common/storage-security-guide.md) biztonságossá tétele az RBAC a tárfiók a részletek
 
-## <a name="storage-encryption"></a>Tárolás titkosítása
+## <a name="storage-encryption"></a>Storage-titkosítás
 ### <a name="use-client-side-encryption-for-high-value-data"></a>Ügyféloldali titkosítás használata értékes adatok
 
 Ügyféloldali titkosítás segítségével szoftveresen fejteni az adatokat, amikor fogadása a tárolási és programozott módon titkosítja az adatokat átvitel közben Azure Storage feltöltés előtt.  Ez az átvitel során adatok titkosítását biztosítja, de emellett biztosítja az inaktív adatok titkosítását.  Ügyféloldali titkosítás a legbiztonságosabb módszer titkosítja az adatokat, de azt kell programozott módosítja az alkalmazás és kulcskezelés folyamatok vezetnek be.

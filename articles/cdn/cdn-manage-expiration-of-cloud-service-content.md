@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: 87d65479960cd6b5977fd7ac31cbb71afc0959e2
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: fe519c3ad5f99899277bf005929142c52a4c4724
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Azure tartalom Delivery Network webes tartalom lejáratának kezelése
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/16/2017
 A fájlok forráskiszolgálóról bármely nyilvánosan elérhető webkiszolgáló gyorsítótárazhatók az Azure Content Delivery Network (CDN) csak az idő-live (TTL) lejárta. Az élettartam határozza meg a `Cache-Control` fejléc a következő a HTTP-válasz a forráskiszolgálóról. Ez a cikk ismerteti, hogyan telepíthet `Cache-Control` a Web Apps szolgáltatása a Microsoft Azure App Service, Azure Cloud Services, az ASP.NET-alkalmazások és az Internet Information Services (IIS) helyeket, amelyek hasonló módon konfigurált fejlécek. Beállíthatja a `Cache-Control` fejléc vagy a konfigurációs fájlok vagy programon keresztül.
 
 > [!TIP]
-> Ha szeretné, nincs TTL be egy fájl. Ebben az esetben Azure CDN automatikusan érvényes alapértelmezett élettartam 7 nap.
+> Ha szeretné, nincs TTL be egy fájl. Ebben az esetben Azure CDN automatikusan érvényes alapértelmezett élettartam 7 nap. Ez az alapértelmezett élettartam csak azokra az általános webes kézbesítési optimalizálás. A nagy méretű fájlok optimalizálást az alapértelmezett élettartam egy nap, az pedig médiaadatfolyam-továbbítást optimalizálást, az alapértelmezett élettartam egy év.
 > 
 > Fájlok és egyéb erőforrásokhoz való hozzáférés felgyorsítása érdekében Azure CDN szolgáltatás működésével kapcsolatos további információkért lásd: [az Azure Content Delivery Network áttekintése](cdn-overview.md).
 > 

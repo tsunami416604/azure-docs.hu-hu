@@ -14,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: joflore
-ms.openlocfilehash: 653166235a2fec79945a8e54aafdb8e697e8b634
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c9be948a7328b0f535d8683e6cdc695a01654a94
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Building a multi-factor Authentication egyéni alkalmazásokba (SDK)
+
+> [!IMPORTANT]
+> A, az Azure multi-factor Authentication Software Development Kit (SDK) rendelkezik lett bejelentéséig. Ez a funkció már nem lesz támogatott új ügyfelek esetén. Az ügyfelek aktuális továbbra is 2018. November 14. amíg a SDK használatával. Az SDK hívások időnek az elteltével sikertelen lesz. 
 
 Az Azure multi-factor Authentication Software Development Kit (SDK) lehetővé teszi a kétlépéses ellenőrzést közvetlenül folyamatokba a bejelentkezés vagy a tranzakció alkalmazásai az Azure AD-bérlő létrehozása.
 
@@ -35,30 +38,7 @@ Mivel az API-k nincs hozzáférése a felhasználók számára az Azure Active D
 
 
 ## <a name="download-the-sdk"></a>Az SDK letöltése
-Az Azure multi-factor Authentication SDK letöltése szükséges egy [Azure többtényezős hitelesítésszolgáltató](multi-factor-authentication-get-started-auth-provider.md).  Ehhez a teljes Azure-előfizetéssel, akkor is, ha az Azure MFA, az Azure AD Premium vagy a nagyvállalati mobilitási csomag licencek a tulajdonosa.  Az SDK letöltéséhez keresse meg a multi-factor Authentication kezelési portál. Közvetlenül a többtényezős hitelesítésszolgáltató kezelése, vagy kattintson a portál képes elérni a **"Nyissa meg a portál"** hivatkozás a multi-factor Authentication szolgáltatás beállítások lapon.
-
-### <a name="download-from-the-azure-classic-portal"></a>Töltse le a klasszikus Azure portálon
-1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) rendszergazdaként.
-2. A bal oldalon válassza az **Active Directory** elemet.
-3. Az Active Directory oldalon, a felső válassza **többtényezős hitelesítésszolgáltatók**
-4. A lap alján válassza **kezelése**. Megnyílik egy új lap.
-5. Kattintson a bal alsó, **SDK**.
-   <center>![Letöltése](./media/multi-factor-authentication-sdk/download.png)</center>
-6. Válassza ki a nyelvet, majd kattintson az egyik a letöltési hivatkozás.
-7. Mentse a letöltött fájlt.
-
-### <a name="download-from-the-service-settings"></a>Töltse le a szolgáltatás beállításai
-1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) rendszergazdaként.
-2. A bal oldalon válassza az **Active Directory** elemet.
-3. Kattintson duplán az Azure AD-példányra.
-4. A lap tetején kattintson a **Konfigurálás** elemre.
-5. Válassza ki a multi-factor Authentication hitelesítés **szolgáltatás beállításainak kezelése**
-   ![letöltése](./media/multi-factor-authentication-sdk/download2.png)
-6. A Szolgáltatásbeállítások lapon, a képernyő alsó részén kattintson az **Ugrás a portálra** elemre. Megnyílik egy új lap.
-   ![Letöltés](./media/multi-factor-authentication-sdk/download3a.png)
-7. Kattintson a bal alsó, **SDK**.
-8. Válassza ki a nyelvet, majd kattintson az egyik a letöltési hivatkozás.
-9. Mentse a letöltött fájlt.
+Az Azure multi-factor Authentication SDK letöltése szükséges egy [Azure többtényezős hitelesítésszolgáltató](multi-factor-authentication-get-started-auth-provider.md).  Ehhez a teljes Azure-előfizetéssel, akkor is, ha az Azure MFA, az Azure AD Premium vagy a nagyvállalati mobilitási csomag licencek a tulajdonosa. Az SDK letöltése nyilvános módszerek decomissioned törölték, mivel az SDK elavult. Ha le kell töltenie az SDK nyisson meg egy támogatási esetet a Microsofttal.
 
 ## <a name="whats-in-the-sdk"></a>Mi az az SDK-ban
 Az SDK-t a következőket tartalmazza:

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 9af2f71b3d288cc6f4e271d0915545d43a1249bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4eb6f743479886374692eadcf218b77b4bfcc933
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibákat és kivételeket az Azure Logic Apps alkalmazásokat kezeléséhez
 
@@ -26,38 +26,74 @@ Az Azure Logic Apps hatékony eszközöket biztosít, és minták segítségéve
 
 ## <a name="retry-policies"></a>Ismételje meg a házirendek
 
-Újrapróbálkozási házirendje a legalapvetőbb típusú kivétel és hibakezelés. Ha az eredeti kérelem túllépte az időkorlátot, vagy sikertelen volt (a kérelmet, amely egy 429 eredményez vagy 5XX típusú válasz érkezett), ez a házirend határozza meg, hogy újra kell-e a művelet. Alapértelmezés szerint minden további 4 alkalommal keresztül 20 másodperces időközönként próbálkozzon újra. Igen, ha az első kérelem érkezik egy `500 Internal Server Error` választ, a munkafolyamat-motor 20 másodpercre megszakítja, és próbálja újra a kérelmet. Ha minden próbálkozások után sem a választ még mindig egy kivétel vagy sikertelen volt, a munkafolyamat továbbra is fennáll, és jelöli meg a művelet állapotának `Failed`.
+Újrapróbálkozási házirendje a legalapvetőbb típusú kivétel és hibakezelés. Ha az eredeti kérelem túllépte az időkorlátot, vagy sikertelen volt (a kérelmet, amely egy 429 eredményez vagy 5XX típusú válasz érkezett), ez a házirend határozza meg, ha, és hogyan érdemes újra megpróbálnia a művelet. Újrapróbálkozási házirend három típusú `exponential`, `fixed`, és `none`. Ha újrapróbálkozási házirendje nem áll rendelkezésre a munkafolyamat-definíciót, majd az alapértelmezett házirend szolgál. Az újrapróbálkozási házirendeket konfigurálhat a **bemenetek** egy adott művelet vagy eseményindító Újrapróbálkozást lehetővé tevő esetén. Hasonlóképpen, a Logic App Designer újrapróbálkozási a házirendek konfigurálhatók (ha van ilyen) alatt a **beállításait** az egyes blokkok.
 
-Az újrapróbálkozási házirendeket konfigurálhat a **bemenetek** művelet esetén. Konfigurálhatja például, akár 4 alkalommal próbálkozhat keresztül 1 órás időközönként újrapróbálkozási házirendje. Teljes bemeneti tulajdonságai, lásd: [munkafolyamat-műveleteket és eseményindítók][retryPolicyMSDN].
+Újrapróbálkozási házirendek korlátai információkért lásd: [Logic Apps korlátozásai és konfigurációja](../logic-apps/logic-apps-limits-and-config.md) és a támogatott szintaxis további információkért lásd: a [újrapróbálkozási-házirend a szakasz a munkafolyamat-műveleteket és eseményindítók][retryPolicyMSDN].
+
+### <a name="exponential-interval"></a>Az exponenciális időköz
+A `exponential` házirendtípus megpróbálja a sikertelen kérelmek exponenciálisan növekvő tartományból véletlenszerű időtartam után. Egyes újrapróbálkozások garantáltan nagyobb véletlenszerű időközzel küldendő **minimumInterval** és kisebb, mint **maximumInterval**. Az egységes véletlen változó az alábbi tartomány jön létre minden egyes újrapróbálkozási bezárólag **száma**:
+<table>
+<tr><th> Véletlenszerű változó tartomány </th></tr>
+<tr><td>
+
+| Ismételje meg a számot | Minimális időköz | Maximális időköz |
+| ------------ |  ------------ |  ------------ |
+| 1 | Maximális (0, **minimumInterval**) | Minimális (időköz, **maximumInterval**) |
+| 2 | Max (időköz, **minimumInterval**) | Minimális (2 * időköz, **maximumInterval**) |
+| 3 | Max (2 * időköz, **minimumInterval**) | Minimális (4 * időköz, **maximumInterval**) |
+| 4 | Max (4 * időköz, **minimumInterval**) | Minimális (8 * időköz, **maximumInterval**) |
+| ... |
+
+</td></tr></table>
+
+A `exponential` írja be a házirendeket, **száma** és **időköz** során szükséges **minimumInterval** és **maximumInterval** lehet nem kötelezően megadott PT5S és PT1D alapértelmezett értékének felülbírálása kulcsattribútumokkal.
+
+| Elem neve | Szükséges | Típus | Leírás |
+| ------------ | -------- | ---- | ----------- |
+| type | Igen | Karakterlánc | `exponential` |
+| darab | Igen | Egész szám | Az újrapróbálkozások száma, 1 és 90 között kell lennie  |
+| interval | Igen | Karakterlánc | újrapróbálkozás a [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), PT5S és PT1D között kell lennie |
+| minimumInterval | Nem| Karakterlánc | a minimális újrapróbálkozás [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), PT5S között kell lennie, és **időköz** |
+| maximumInterval | Nem| Karakterlánc | a minimális újrapróbálkozás [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), közé kell esnie **időköz** és PT1D |
+
+### <a name="fixed-interval"></a>Rögzített távolság
+
+A `fixed` házirendtípus megpróbálja a sikertelen kérelmek által megadott időtartam, a következő kérelem elküldése előtt vár.
+
+| Elem neve | Szükséges | Típus | Leírás |
+| ------------ | -------- | ---- | ----------- |
+| type | Igen | Karakterlánc | `fixed`|
+| darab | Igen | Egész szám | Az újrapróbálkozások száma, 1 és 90 között kell lennie |
+| interval | Igen | Karakterlánc | újrapróbálkozás a [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), PT5S és PT1D között kell lennie |
+
+### <a name="none"></a>None
+A `none` házirend típusa nem próbálkozik meg a sikertelen kérelmek.
+
+| Elem neve | Szükséges | Típus | Leírás |
+| ------------ | -------- | ---- | ----------- |
+| type | Igen | Karakterlánc | `none`|
+
+### <a name="default"></a>Alapértelmezett
+Ha nem az újrapróbálkozási házirendje meg van adva, az alapértelmezett házirend szolgál. Az alapértelmezett házirend egy exponenciális időköz házirendet, amely legfeljebb 4 újrapróbálkozások exponenciálisan gyarapítása 7.5 másodperccel méretezhető és 5 és 45 másodperc között tárfiókonként időközönként küldi. Ez az alapértelmezett házirend (Ha **retryPolicy** nincs definiálva) felel meg a házirend ebben a példában HTTP munkafolyamat-definíciót:
 
 ```json
-"retryPolicy" : {
-      "type": "<type-of-retry-policy>",
-      "interval": <retry-interval>,
-      "count": <number-of-retry-attempts>
-    }
-```
-
-Ha a HTTP-művelet 4 alkalommal újra, és várjon 10 percet egyes kísérletek közötti, használja a következő definícióját:
-
-```json
-"HTTP": 
+"HTTP":
 {
     "inputs": {
         "method": "GET",
         "uri": "http://myAPIendpoint/api/action",
         "retryPolicy" : {
-            "type": "fixed",
-            "interval": "PT10M",
-            "count": 4
+            "type": "exponential",
+            "count": 4,
+            "interval": "PT7.5S",
+            "minimumInterval": "PT5S",
+            "maximumInterval": "PT45S"
         }
     },
     "runAfter": {},
     "type": "Http"
 }
 ```
-
-A támogatott szintaxis további információkért lásd: a [újrapróbálkozási-házirend a szakasz a munkafolyamat-műveleteket és eseményindítók][retryPolicyMSDN].
 
 ## <a name="catch-failures-with-the-runafter-property"></a>A tényleges RunAfter tulajdonság hibák
 
