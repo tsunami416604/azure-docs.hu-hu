@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
+ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 28b3ec7640e1f126d2ef310130e94c84b68ffa75
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: e637870ec830895a2baa545c46e39fb3494b956b
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Azure Data Lake Store eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
 
@@ -30,7 +30,11 @@ Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (
 > * A virtuális gép hozzáférési jogot az Azure Data Lake Store
 > * Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és az Azure Data Lake Store hozzáférhetne
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
+
+[!INCLUDE [msi-tut-prereqs](../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

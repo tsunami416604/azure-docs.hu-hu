@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: sstein
-ms.openlocfilehash: bc96221abf62677b53df43daa44a925ac5792043
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: cb55bf1f1c7eeb0fc7608aca8d70818b5e3e06c0
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Központi telepítése, és vizsgálja meg a szilánkos több-bérlős alkalmazás által használt Azure SQL adatbázis
 
@@ -120,7 +120,7 @@ Az alkalmazás különböző helyszíneket mutat be, például koncerttermeket, 
 Egy központi **események Hub** mutató hivatkozásokat biztosít a bérlők a megadott központi telepítés.
 
 1. Nyissa meg a *események Hub* a böngészőben:
-    - http://events.Wingtip. &lt;Felhasználói&gt;. trafficmanager.net &nbsp; *(a központi telepítés felhasználói érték lecserélése.)*
+    - http://events.Wingtip-MT.&lt;felhasználói&gt;. trafficmanager.net &nbsp; *(a központi telepítés felhasználói érték lecserélése.)*
 
     ![eseményközpont](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -130,7 +130,7 @@ Egy központi **események Hub** mutató hivatkozásokat biztosít a bérlők a 
 
 A bejövő kérelem, az alkalmazás által használt eloszlás [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Az események lapok, amelyek bérlői-specifikus, az URL-címben a bérlő nevét tartalmazza. Az URL-címeket is tartalmazzák az adott felhasználó érték, és ezt a formátumot követi:
 
-- http://events.Wingtip. &lt;Felhasználói&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.Wingtip-MT.&lt;felhasználói&gt;.trafficmanager.net/*fabrikamjazzclub*
  
 Az események alkalmazás elemzi a bérlő nevét az URL-címről, és kivonatolják azt egy katalógus használata eléréséhez kulcs létrehozásához [shard térkép felügyeleti](sql-database-elastic-scale-shard-map-management.md). A katalógus van leképezve a kulcsot a bérlő adatbázis helye. A **események Hub** a bérlők a katalógusban regisztrált sorolja fel. A **események Hub** kiterjesztett metaadatokat használ a katalógus összeállítani az URL-címeket és minden kapcsolódó a bérlő nevének beolvasására.
 
@@ -156,7 +156,7 @@ Indítsa újra a terhelés generátor munkamenet eltérő értékeket szeretné 
 
 A kezdeti telepítés három minta bérlők magában foglalja a *Tenants1* adatbázis. Hozzon létre egy másik bérlői megtekintéséhez, hogy ez hatással van a telepített alkalmazás. Ebben a lépésben gyorsan létrehozhat egy új bérlőt.
 
-1. Nyissa meg... \\Modules\Provision és a katalógus\\*bemutató-ProvisionTenants.ps1* a a *PowerShell ISE*.
+1. Nyissa meg... \\Modules\ProvisionTenants tanulási\\*bemutató-ProvisionTenants.ps1* a a *PowerShell ISE*.
 2. Nyomja le az **F5** a parancsfájl futtatásához (hagyja meg az alapértelmezett értékeket most).
 
    > [!NOTE]
@@ -174,7 +174,7 @@ A szilánkos több-bérlős modell lehetővé teszi, hogy válassza ki, hogy egy
 
 Most azt kiépítése más bérlőket, ezúttal a saját adatbázisában.
 
-1. A... \\Tanulási modulok\\biztosítása és a katalógus\*bemutató-ProvisionTenants.ps1*, módosítsa *$TenantName* való **fűzfa milyen**, *$VenueType*  való **dance** és *$Scenario* való **2**.
+1. A... \\Tanulási modulok\\ProvisionTenants\\*bemutató-ProvisionTenants.ps1*, módosítsa *$TenantName* való **fűzfa milyen**,  *$VenueType* való **dance** és *$Scenario* való **2**.
 
 2. Nyomja le az **F5** újra futtatni a parancsfájlt.
     - Az F5 billentyűt nyomja meg az új tenanthoz külön adatbázisban látja el. Az adatbázis és a bérlő regisztrált a katalógusban. Majd a böngésző megnyitja a bérlő az események lapról.
@@ -239,7 +239,7 @@ Ez az oktatóanyag bemutatta az alábbiakat:
 > - A bérlők tevékenységének megfigyelése a készlet kihasználtságának nyomon követésével
 > - Mintaerőforrások törlése a kapcsolódó számlázások leállításához
 
-Most a [biztosítása és a katalógus oktatóanyag](sql-database-saas-tutorial-provision-and-catalog.md).
+Most a [rendelkezés bérlők oktatóanyag](sql-database-saas-tutorial-provision-and-catalog.md).
 
 
 

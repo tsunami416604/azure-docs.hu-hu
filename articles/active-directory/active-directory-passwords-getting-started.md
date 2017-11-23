@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2017
+ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: c5ba922175a25776c6e27ee03fae9b2941235881
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0320cb33dcab63ea394cf8e13e9aef5cc75951fa
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Az Azure AD új jelszó önkiszolgáló kérési funkciójának gyors üzembe helyezése
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/15/2017
 
 Az önkiszolgáló jelszó-visszaállítás (SSPR) egyszerű módot kínál a rendszergazdáknak arra, hogy felhatalmazzák a felhasználókat jelszavuk és fiókjuk visszaállítására vagy zárolásának feloldására. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhozzáféréséről, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
 
-Ez az útmutató feltételezi, hogy már rendelkezik egy Azure Active Directory-bérlő (Azure AD-bérlő) érvényes próbaverziójával vagy licencével. Ha segítségre van szüksége az Azure AD beállításához, tekintse meg az [Ismerkedés az Azure AD szolgáltatással](https://azure.microsoft.com/trial/get-started-active-directory/) című részt.
+Ez az útmutató feltételezi, hogy már rendelkezik egy Azure Active Directory-bérlő (Azure AD-bérlő) érvényes próbaverziójával vagy licencével. Ha segítségre van szüksége az Azure AD beállításához, tekintse meg az [Ismerkedés az Azure AD szolgáltatással](get-started-azure-ad.md) című részt.
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Az SSPR engedélyezése az Azure AD-bérlő számára
 
@@ -73,7 +73,7 @@ Annak engedélyezéséhez, hogy a helyszíni identitás szinkronizálhasson az A
 
 * [Frissítés DirSyncről vagy Azure AD Syncről Azure AD Connectre](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 * [Első lépések az Azure AD Connecttel a gyorsbeállítások használatával](./connect/active-directory-aadconnect-get-started-express.md)
-* [Jelszóvisszaíró konfigurálása](active-directory-passwords-writeback.md#configuring-password-writeback) jelszavak az Azure AD-ből a helyszíni könyvtárba történő visszaírásához
+* [Jelszóvisszaíró konfigurálása](active-directory-passwords-writeback.md#configure-password-writeback) jelszavak az Azure AD-ből a helyszíni könyvtárba történő visszaírásához
 
 ### <a name="on-premises-policy-change"></a>Helyszíni szabályzat módosítása
 

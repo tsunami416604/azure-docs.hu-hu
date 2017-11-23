@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 10a92f301584d4e676da9a1eb229667925a6c72c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 03e86448a1b0a13addab789bf2aea62e5d84149b
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="governance-in-azure"></a>Az Azure-irányítás
 
 Tudjuk, hogy biztonsági-e a feladat a felhőben, és hogy mennyire fontos, hogy található-e az Azure biztonsági pontos és időben információt. A legjobb okai az alkalmazások és szolgáltatások Azure használandó, a széles köréről a biztonsági eszközök és képességek előnyeit. Ezekkel az eszközökkel és képességek segítségével történő biztonságos megoldásokat keres a biztonságos Azure platformon.
 
-Segítséget jobb megértése érdekében a tömb, az irányítás nézőpontból az ügyfél és a Microsoft operations, ez a cikk "Irányítás az Azure" Microsoft Azure-ban végrehajtott vezérlők írása, amely biztosít egy átfogó irányítás funkciók érhetők el a Microsoft Azure-ban.
+Jobb megértése érdekében a tömb, az irányítás segítséget az ügyfél és a Microsoft operations perspektívából, ez a cikk "Irányítás az Azure" Microsoft Azure-ban végrehajtott vezérlők adjon meg egy átfogó nézze meg a Cégirányítási írni a Microsoft Azure használatával elérhető szolgáltatások.
 
 ## <a name="azure-platform"></a>Azure-platform
 

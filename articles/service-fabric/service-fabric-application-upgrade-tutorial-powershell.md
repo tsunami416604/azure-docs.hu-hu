@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 845e459a0c829ed8e737d687108e3bda48dab9ad
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 54ca664a29ed8c6337bb27fe1fa17276e480c911
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Az alkalmazásfrissítés Service Fabric PowerShell-lel
 > [!div class="op_single_selector"]
@@ -98,8 +98,7 @@ Az alkalmazás csomag megtalálható a következő relatív elérési úton, aho
 Most tegyük másolja a frissített alkalmazáscsomag a Service Fabric lemezképtárolóba (az alkalmazáscsomagok tárolására Service Fabric által). A paraméter *ApplicationPackagePathInImageStore* arról tájékoztatja a Service Fabric hol találnak a alkalmazáscsomagot. Azt a frissített alkalmazás rendelkezik be "VisualObjects\_V2" (esetleg újra annak megfelelően módosítsa a elérési utak) a következő paranccsal.
 
 ```powershell
-Copy-ServiceFabricApplicationPackage  -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package
--ImageStoreConnectionString fabric:ImageStore   -ApplicationPackagePathInImageStore "VisualObjects\_V2"
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
 ```
 
 A következő lépés az, hogy az alkalmazás regisztrálása a Service Fabric, amelyek használatával végezheti el a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) parancs:

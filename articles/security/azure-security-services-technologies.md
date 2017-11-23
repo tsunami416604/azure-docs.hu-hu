@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2016
+ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 0bea62a43cf6cac9132fe64f2d6c54e52def4c55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ea707d3d149734dad2d5c76d853ddd667cbf73b
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-security-services-and-technologies"></a>Az Azure biztonsági szolgáltatásokat és technológiákat
 A jelenlegi és jövőbeli Azure-ügyfél folytatott beszélgetéseket, a rendszer gyakran megkéri "rendelkezik listáját a biztonsági szolgáltatásokat és technológiákat, amelyre az Azure ajánlat kapcsolódó?"
 
-Tudjuk, hogy amikor a felhő Szolgáltatásbeállítások műszaki szolgáltató, érdemes ilyen használható elmerülne a rendszer rendelkezésre álló lista mélyebb when le az Ön számára legmegfelelőbb kell az időt.
+Cloud service provider lehetőségek értékelésekor érdemes ezeket az adatokat.
 
 Kezdeti annak érdekében, hogy a lista a következő: Az idő múlásával a lista módosítja, és nő, ahogy Azure teszi. A lista kategorizálta, és a kategóriák listáját is tájékoztatás idővel bővülni fog. Ellenőrizze, hogy ezen a lapon, rendszeresen figyelje meg a biztonsági szolgáltatásokat és technológiákat.
 

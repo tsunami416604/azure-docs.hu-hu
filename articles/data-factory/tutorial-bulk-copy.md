@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: jingwang
-ms.openlocfilehash: f7683bc203c93993c0eb5aaed6ca788458546019
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: be23cd6b500fd186fdcbe6f5c2371f84e075e3e8
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 
@@ -68,7 +68,7 @@ Hozzon létre egy Azure SQL Database-adatbázist az Adventure Works LT mintaadat
 
 **A fogadó Azure SQL Data Warehouse előkészítése**:
 
-1. Ha még nem rendelkezik Azure SQL Data Warehouse-zal, a létrehozás folyamatáért lásd az [SQL Data Warehouse létrehozásával](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md#create-a-sql-data-warehouse) kapcsolatos cikket.
+1. Ha még nem rendelkezik Azure SQL Data Warehouse-zal, a létrehozás folyamatáért lásd az [SQL Data Warehouse létrehozásával](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) kapcsolatos cikket.
 
 2. Hozzon létre megfelelő táblasémákat az SQL Data Warehouse-ban. Az [áttelepítési segédprogrammal](https://www.microsoft.com/download/details.aspx?id=49100) **áttelepítheti a sémákat** az Azure SQL Database-ből az Azure SQL Data Warehouse-ba. A későbbiekben az Azure Data Factory segítségével fogja áttelepíteni/másolni az adatokat.
 

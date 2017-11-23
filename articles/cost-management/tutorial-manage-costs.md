@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/06/2017
+ms.date: 11/21/2017
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 83ddc0cb4227235069b0027a24a52f4d8e818126
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: bfbcded98814500a03b2b79b0248c84f8f043dc0
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="manage-costs-by-using-azure-cost-management"></a>Azure költség kezelése beépülő modullal költségeinek kezelése
 
@@ -80,6 +80,23 @@ Az alábbi ábrán egy példa egy új kategóriát a létrehozott szabályok **m
 
 ![Kategória – példa](./media/tutorial-manage-costs/category01.png)
 
+### <a name="tag-sources-and-reports"></a>Címke források és jelentések
+
+Címke adatait Cloudyn jelentések látható három helyen származik:
+
+- Felhő szolgáltató erőforrásai API-k
+- API-k számlázási felhőszolgáltatóként
+- Manuálisan létrehozott címkék a következő forrásból:
+    - Cloudyn entitáscímkék - Cloudyn entitások alkalmazott felhasználói metaadatai
+    - Kategória-kezelő – a adatok tisztítására eszköz, amely meglévő címkék alkalmazott szabályok alapján új címkék létrehozása
+
+Felhő szolgáltató címkék Cloudyn költség jelentésekben megjelenített egyéni költség foglalási-modellben költség foglalási 360 kell létrehoznia. Ehhez nyissa meg a **költség** > **költség felügyeleti** > **költség foglalási 360**, válassza ki a kívánt címkét, és adja a szabályok kezelésének címkézetlen költségek. Ezután hozzon létre egy új költség modell. Ezután jelentések megtekintéséhez költség foglalási elemzés nézet, szűrési és rendezési az Azure erőforrás-címkéket.
+
+Az Azure erőforrás-címkék csak akkor jelennek meg **költség foglalási elemzés** jelentéseket.
+
+Felhő szolgáltató számlázási címkék összes költség jelentések jelennek meg.
+
+Cloudyn entitáscímkék és címkék manuálisan létrehozott összes költség jelentések jelennek meg.
 
 
 ## <a name="create-showback-and-chargeback-reports"></a>Visszajelzés és a jóváírási jelentések létrehozása

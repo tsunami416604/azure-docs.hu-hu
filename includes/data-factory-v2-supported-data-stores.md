@@ -35,4 +35,5 @@
 | &nbsp; |[Általános OData](../articles/data-factory/connector-odata.md) |✓ | |✓ |✓  |
 | &nbsp; |[Általános ODBC](../articles/data-factory/connector-odbc.md) |✓ |✓ | |✓  |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Salesforce szolgáltatás felhő](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Webtábla (HTML-tábla)](../articles/data-factory/connector-web-table.md) |✓ | |✓ |✓  |

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: a9c5743c92ac48202c19c2f6f024238c147d8444
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 1d8d0caa1aa9e21bf724d60127dc6f2ac9a49ecf
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps diagnosztikai naplózás engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -34,9 +34,9 @@ App Service web apps naplózási információkat a webkiszolgáló és a webes a
 ### <a name="web-server-diagnostics"></a>Web server diagnosztika
 Engedélyezheti vagy letilthatja a naplók a következő típusú:
 
-* **Részletes naplózás hiba** -részletes (állapotkód: 400 vagy nagyobb) hibát jelző HTTP-állapotkódok hiba adatait. Ez tartalmazhat, amelyek segíthetnek meghatározni, miért a kiszolgáló a hibakódot adott vissza adatokat.
-* **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek nyomkövetési segítségével dolgozza fel a kérelmet, és minden egyes összetevő szükséges idő az IIS-összetevők többek között. Ez akkor lehet hasznos, ha a hely teljesítményének javítása vagy különítse el, mi okozza-e egy adott HTTP hiba vissza kell adni kívánt.
-* **Webalkalmazás-kiszolgáló naplózza a** -HTTP-tranzakciók használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Ez akkor hasznos, például a kezelt kéréseket, és hogy hány kérésnek egy adott IP-címről van a teljes webhelymetrikák meghatározásakor.
+* **Részletes naplózás hiba** -részletes (állapotkód: 400 vagy nagyobb) hibát jelző HTTP-állapotkódok hiba adatait. Tartalmazhat, amelyek segíthetnek meghatározni, miért a kiszolgáló a hibakódot adott vissza adatokat.
+* **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek nyomkövetési segítségével dolgozza fel a kérelmet, és minden egyes összetevő szükséges idő az IIS-összetevők többek között. Ez akkor hasznos, ha próbál hely teljesítményének javítása vagy különítse el, mi okozza vissza kell adni egy adott HTTP hiba.
+* **Webalkalmazás-kiszolgáló naplózza a** -HTTP-tranzakciók használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Akkor hasznos, például a kezelt kéréseket, és hogy hány kérésnek egy adott IP-címről van a teljes webhelymetrikák meghatározásakor.
 
 ### <a name="application-diagnostics"></a>Application diagnostics
 Application diagnostics lehetővé teszi egy webes alkalmazás által létrehozott adatok rögzítését. ASP.NET alkalmazások használhatják a [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) osztály az alkalmazásnaplóba diagnosztikai adatok naplózására. Példa:
@@ -45,7 +45,7 @@ Application diagnostics lehetővé teszi egy webes alkalmazás által létrehozo
 
 Futásidőben a naplók segíthetnek a hibaelhárításban kérheti le. További információkért lásd: [hibaelhárítási Azure web Apps alkalmazások, a Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
-App Service web apps is naplózza az információkat, amikor a tartalom közzétételére a webes alkalmazás. Ez automatikusan megtörténik, és nincsenek telepítési naplózás konfigurációs beállítások. Központi telepítés naplózás lehetővé teszi a segítségével meghatározhatja, miért nem sikerült a telepítés. Egy egyéni telepítési parancsfájl használ, előfordulhat, hogy meghatározni, miért nem sikerült a parancsfájl például használhat telepítési naplózást.
+App Service web apps is naplózza az információkat, amikor a tartalom közzétételére a webes alkalmazás. Automatikusan történik, és nincsenek telepítési naplózás konfigurációs beállítások. Központi telepítés naplózás lehetővé teszi a segítségével meghatározhatja, miért nem sikerült a telepítés. Egy egyéni telepítési parancsfájl használ, előfordulhat, hogy meghatározni, miért nem sikerült a parancsfájl például használhat telepítési naplózást.
 
 ## <a name="enablediag"></a>Diagnosztika engedélyezése
 A diagnosztika engedélyezéséhez a [Azure-portálon](https://portal.azure.com), nyissa meg a webes alkalmazás lapját, és kattintson **beállítások > diagnosztikai naplók**.
@@ -53,21 +53,20 @@ A diagnosztika engedélyezéséhez a [Azure-portálon](https://portal.azure.com)
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![Naplók része](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Amikor engedélyezi a **alkalmazásdiagnosztika**, úgy is dönt a **szint**. Ez a beállítás lehetővé teszi annak elkészült a megjelenített információkat szűrheti **tájékoztató**, **figyelmeztetés**, vagy **hiba** információkat. Ezt a beállítást **részletes** naplózza az alkalmazás által létrehozott összes információt.
+Amikor engedélyezi a **alkalmazásdiagnosztika**, úgy is dönt a **szint**. Ez a beállítás lehetővé teszi annak elkészült a megjelenített információkat szűrheti **tájékoztató**, **figyelmeztetés**, vagy **hiba** információkat. Értékre állítaná **részletes** naplózza az alkalmazás által létrehozott összes információt.
 
 > [!NOTE]
 > Ellentétben a web.config fájl módosítása, alkalmazásdiagnosztika engedélyezése vagy diagnosztikai naplózási szintek módosítása nem indul a az alkalmazás belül futó alkalmazástartományban.
 >
 >
 
-Az a [klasszikus portál](https://manage.windowsazure.com) webalkalmazás **konfigurálása** lapon választhat **tárolási** vagy **fájlrendszer** a **webkiszolgáló naplózásának**. Kiválasztása **tárolási** választhatja ki a tárfiók, és egy blob tároló, amely a naplókat a rendszer ír. A többi naplófájlt **diagnosztika hely** a fájlrendszer csak kerülnek.
+A **alkalmazásnaplózás**, ha bekapcsolja a rendszer beállítást ideiglenesen a hibakereséshez. Automatikusan az 12 órában kikapcsolja ezt a beállítást. A blob storage lehetőséggel jelölheti ki a naplókat írni egy blog tároló is bekapcsolása.
 
-A [klasszikus portál](https://manage.windowsazure.com) webalkalmazás **konfigurálása** lap is tartalmaz további beállításokat az application diagnostics:
+A **webkiszolgáló naplózásának**, kiválaszthatja **tárolási** vagy **fájlrendszer**. Kiválasztása **tárolási** választhatja ki a tárfiók, és egy blob tároló, amely a naplókat a rendszer ír. 
 
-* **Fájlrendszer** -tárolja az application diagnostics a webes alkalmazás fájlrendszerhez. Ezek a fájlok FTP érhető el, vagy letöltött Zip-archívum létrehozása, az Azure PowerShell vagy Azure parancssori felület (CLI) használatával.
-* **TABLE storage** -alkalmazás diagnosztikai adatokat tárol a megadott Azure Storage-fiókot és a tábla nevét.
-* **BLOB-tároló** -alkalmazás diagnosztikai adatokat tárol a megadott Azure-Tárfiókot és blob-tároló.
-* **Megőrzési időtartam** -alapértelmezés szerint naplók nem automatikusan törlődjenek **blob-tároló**. Válassza ki **beállítani a megőrzési** , és adja meg a naplók tárolására, ha automatikusan törli a naplókat.
+Ha a naplók tárolása a fájlrendszer, a fájlok kell FTP érhetők el, vagy letöltött Zip-archívum létrehozása, az Azure PowerShell vagy Azure parancssori felület (CLI) használatával.
+
+Alapértelmezés szerint naplók nem törlődnek automatikusan (kivéve a **Alkalmazásnaplózást (fájlrendszer)**). Naplók automatikus törléséhez állítsa be a **megőrzési időtartam (nap)** mező.
 
 > [!NOTE]
 > Ha Ön [a tárfiók tárelérési kulcsok újragenerálása](../storage/common/storage-create-storage-account.md), a frissített kulcsokat kíván használni a megfelelő naplózási konfiguráció kell visszaállítani. Ehhez tegye a következőket:
@@ -101,12 +100,10 @@ A könyvtárstruktúra, a naplók vannak tárolva a következőképpen történi
 * **Telepítési naplói** -/ naplófájlok/Git. Ez a mappa tartalmazza az Azure web Apps alkalmazások által használt belső telepítési folyamatok által létrehozott naplók, valamint a Git-telepítésekhez naplózza.
 
 ### <a name="ftp"></a>FTP
-Diagnosztikai adatok FTP használatával szeretne használni, keresse fel a **irányítópult** a webalkalmazás a [klasszikus portál](https://manage.windowsazure.com). Az a **gyors áttekintő** szakaszban a **FTP diagnosztikai naplók** hivatkozás a naplófájlok, FTP használatával eléréséhez. A **telepítési/FTP-felhasználó** bejegyzés az FTP-hely eléréséhez használandó felhasználói nevét jeleníti meg.
 
-> [!NOTE]
-> Ha a **telepítési/FTP-felhasználó** bejegyzés nincs megadva, vagy elfelejtette a jelszót a felhasználónak, használatával létrehozhat egy új felhasználó és egy jelszót a **üzembe helyezési hitelesítő adatok alaphelyzetbe** hivatkozásra a  **gyors áttekintő** szakasza a **irányítópult**.
->
->
+Nyissa meg az alkalmazás FTP-kiszolgáló FTP-kapcsolatot, lásd: [telepítse az alkalmazást az Azure App Service segítségével FTP/S](app-service-deploy-ftp.md).
+
+Miután csatlakozott a webalkalmazás FTP/S-kiszolgáló, nyissa meg a **naplófájlok** a naplófájlokat tároló mappa.
 
 ### <a name="download-with-azure-powershell"></a>Töltse le az Azure PowerShell használatával
 Töltse le a naplófájlok, indítsa el az Azure PowerShell egy új példányát, és használja a következő parancsot:
@@ -145,7 +142,7 @@ A Visual Studio Application Insights szűrési és keresési naplókat, valamint
 [További információ a teljesítmény nyomon követése az Application insights szolgáltatással](../application-insights/app-insights-azure-web-apps.md)
 
 ## <a name="streamlogs"></a>Hogyan: adatfolyam-naplók
-Az alkalmazások fejlesztése során gyakran célszerű közel valós idejű naplóinformációk megjelenítéséhez. A naplózási információkat a fejlesztési környezetet az Azure PowerShell vagy az Azure parancssori felület használatával történő folyamatos lehet elvégezni.
+Az alkalmazások fejlesztése során gyakran célszerű közel valós idejű naplóinformációk megjelenítéséhez. A fejlesztési környezetet az Azure PowerShell vagy az Azure parancssori felület használatával történő naplózási információkat is adatfolyam.
 
 > [!NOTE]
 > Naplózási puffer bizonyos típusú ír a naplófájlba, ennek eredményeként az adatfolyamban üzemen kívüli események. Például egy alkalmazás naplóbejegyzés, amely akkor fordul elő, amikor a felhasználó meglátogat egy lap esetleg jelennek meg az adatfolyam a megfelelő HTTP naplóbejegyzés a lap lekérése előtt.
@@ -207,7 +204,7 @@ Minden egyes sorban, a rendszer naplózza a fájlrendszer vagy használja a stre
 
     {Date}  PID[{process ID}] {event type/level} {message}
 
-Például egy hibaesemény jelent a következőhöz hasonló:
+Például egy hibaesemény jelent a következő mintához hasonló:
 
     2014-01-30T16:36:59  PID[3096] Error       Fatal error on the page!
 
@@ -221,13 +218,13 @@ A table storage bejelentkezéskor további tulajdonságok használatával segít
 | --- | --- |
 | PartitionKey |Dátum és idő formátumban yyyyMMddHH esemény |
 | RowKey |A GUID-érték, amely egyedileg azonosítja az ehhez az entitáshoz |
-| időbélyeg |A dátum és időpont, amikor az esemény történt |
+| Időbélyeg |A dátum és időpont, amikor az esemény történt |
 | EventTickCount |A dátum és időpont, amikor az esemény történt osztásjelek formátumban (nagyobb pontosságú) |
 | ApplicationName |A webes alkalmazás neve |
-| Szint |Eseményszint (pl. hiba, figyelmeztetés, információ) |
+| Szint |Eseményszint (például hiba, figyelmeztetés, információ) |
 | Eseményazonosító |Ez az esemény esemény azonosítója<p><p>Az alapértelmezett érték 0, ha nincs megadva |
-| instanceId |A webes alkalmazás, amely a még akkor is történt példányainak |
-| Azonosítója (PID) |Folyamatazonosító |
+| Példány azonosítója |A webes alkalmazás, amely a még akkor is történt példányainak |
+| Azonosítója (PID) |Folyamat azonosítója |
 | TID |A szál az esemény előállított a Szálazonosító |
 | Üzenet |Üzenet esemény részletei |
 
@@ -238,16 +235,16 @@ A blob-tároló bejelentkezéskor adatok vesszővel tagolt (CSV) formátum táro
 | Tulajdonság neve | / Formátumban |
 | --- | --- |
 | Dátum |A dátum és időpont, amikor az esemény történt |
-| Szint |Eseményszint (pl. hiba, figyelmeztetés, információ) |
+| Szint |Eseményszint (például hiba, figyelmeztetés, információ) |
 | ApplicationName |A webes alkalmazás neve |
-| instanceId |A webes alkalmazás, amely az esemény példányainak |
+| Példány azonosítója |A webes alkalmazás, amely az esemény példányainak |
 | EventTickCount |A dátum és időpont, amikor az esemény történt osztásjelek formátumban (nagyobb pontosságú) |
 | Eseményazonosító |Ez az esemény esemény azonosítója<p><p>Az alapértelmezett érték 0, ha nincs megadva |
-| Azonosítója (PID) |Folyamatazonosító |
+| Azonosítója (PID) |Folyamat azonosítója |
 | TID |A szál az esemény előállított a Szálazonosító |
 | Üzenet |Üzenet esemény részletei |
 
-A blob tárolt adatok a következőhöz hasonló lenne:
+A blob tárolt adatokat az alábbi példához hasonló lenne:
 
     date,level,applicationName,instanceId,eventTickCount,eventId,pid,tid,message
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
@@ -258,7 +255,7 @@ A blob tárolt adatok a következőhöz hasonló lenne:
 >
 
 ### <a name="failed-request-traces"></a>Sikertelen kérelmek nyomkövetési
-Sikertelen kérelmek nyomkövetési nevű XML-fájlok tárolják **fr ### .xml**. A naplózott információk megkönnyítése XSL-stíluslap nevű **freb.xsl** található az XML-fájlok könyvtárába. Ha megnyit egy XML-fájlt az Internet Explorer, az Internet Explorer formázott megjeleníti a nyomkövetési adatok a biztosításához használt XSL-stíluslap. Ez jelenik meg a következőhöz hasonló:
+Sikertelen kérelmek nyomkövetési nevű XML-fájlok tárolják **fr ### .xml**. A naplózott információk megkönnyítése XSL-stíluslap nevű **freb.xsl** található az XML-fájlok könyvtárába. Ha megnyit egy XML-fájlt az Internet Explorer, az Internet Explorer formázott megjeleníti a nyomkövetési adatok, az alábbi példához hasonló a biztosításához használt XSL-stíluslap:
 
 ![a böngészőben sikertelen kérelem](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 

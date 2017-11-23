@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: e5a658e0d20d42911870f2522f6c1bab7529ea11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08834531b78a857b54f0e9e792290774f9e477de
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="api-management-advanced-policies"></a>Házirendek speciális API Management
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -268,26 +268,26 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 -   **Házirend hatókörök:** minden hatókör  
   
 ##  <a name="LimitConcurrency"></a>A feldolgozási korlátot  
- A `limit-concurrency` házirend megakadályozza, hogy a zárt házirendek egy adott időpontban legfeljebb a megadott számú kérelem végrehajtása. Új kérelmek alapján meghaladó, kerülnek be várólista, amíg a várólista maximális hossza érhető el. Várólista Erőforrásfogyás esetén új kérelmek sikertelenek lesznek azonnal.
+ A `limit-concurrency` házirend megakadályozza, hogy a zárt házirendek egy adott időpontban legfeljebb a megadott számú kérelem végrehajtása. Alapján meghaladó ezt a számot, új kérelem sikertelen lesz azonnal 429-es jelű túl sok kérelem állapotkóddal.
   
 ###  <a name="LimitConcurrencyStatement"></a>Házirendutasítás  
   
 ```xml  
-<limit-concurrency key="expression" max-count="number" timeout="in seconds" max-queue-length="number">
+<limit-concurrency key="expression" max-count="number">
         <!— nested policy statements -->  
 </limit-concurrency>
 ``` 
 
 ### <a name="examples"></a>Példák  
   
-####  <a name="ChooseExample"></a>Példa  
+#### <a name="example"></a>Példa  
  A következő példa bemutatja, hogyan legyen korlátozva egy környezeti változó értéke alapján háttérkiszolgálón továbbított kérelmek számát jelenti.
  
 ```xml  
 <policies>
   <inbound>…</inbound>
   <backend>
-    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3" timeout="60">
+    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3">
       <forward-request timeout="120"/>
     <limit-concurrency/>
   </backend>
@@ -307,10 +307,8 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |---------------|-----------------|--------------|--------------|  
 |kulcs|Egy karakterláncot. A kifejezés engedélyezett. Meghatározza azt a feldolgozási hatókört. Megoszthatók több házirendet.|Igen|N/A|  
 |maximális száma|Egy egész számot. Megadja, hogy mely adja meg a házirend kérelmek maximális számát.|Igen|N/A|  
-|timeout|Egy egész számot. A kifejezés engedélyezett. Adja meg másodpercben, egy kérelem várnia kell, mielőtt hibát jelentene, a hatókör megadását "429-es jelű túl sok kérelem"|Nem|Infinity|  
-|maximális hosszúságú várólista|Egy egész számot. A kifejezés engedélyezett. A várólista maximális hosszát határozza meg. A bejövő kérelem próbál meg adja meg a házirend befejeződik a "429-es jelű túl sok kérelem" azonnal amikor a várólista kimerült.|Nem|Infinity|  
   
-###  <a name="ChooseUsage"></a>Használat  
+### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Házirend szakaszok:** bejövő, kimenő háttér,-hiba  
@@ -457,7 +455,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
 |Az állapot|Logikai szövegkonstans vagy [kifejezés](api-management-policy-expressions.md) adja meg, ha az újrapróbálkozások le kell állítani (`false`) vagy továbbra is (`true`).|Igen|N/A|  
-|Száma|Egy pozitív szám, amely megadja az újrapróbálkozások maximális számát kísérlet.|Igen|N/A|  
+|darab|Egy pozitív szám, amely megadja az újrapróbálkozások maximális számát kísérlet.|Igen|N/A|  
 |interval|Próbálja meg egy pozitív szám, a között az újrapróbálkozási időköz megadása másodpercben.|Igen|N/A|  
 |maximális-időköz|Egy pozitív szám, a maximális megadása másodpercben Várjon, amíg az újrapróbálkozási kísérletek közötti időközt. Az exponenciális újrapróbálkozási algoritmust végrehajtásához szolgál.|Nem|N/A|  
 |különbözeti|Egy pozitív szám, a várakozási időközt növekmény megadása másodpercben. A lineáris és exponenciális újrapróbálkozási algoritmust végrehajtására szolgál.|Nem|N/A|  
@@ -575,13 +573,13 @@ status code and media type. If no example or schema found, the content is empty.
 |URL-címe|A kérelem URL-CÍMÉT.|Nincs if mód = másolási; Ellenkező esetben igen.|  
 |Módszer|A kérelem HTTP-metódust.|Nincs if mód = másolási; Ellenkező esetben igen.|  
 |header|Kérelem fejléce. Használjon több több kérelem fejlécek.|Nem|  
-|Törzs|A kérés törzsében.|Nem|  
+|törzs|A kérés törzsében.|Nem|  
   
 ### <a name="attributes"></a>Attribútumok  
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|mód = "karakterlánc"|Meghatározza, hogy ez egy új kérelmet vagy a jelenlegi kérelem egy példányát. Kimenő módban mód = másolása nem sikerült a kérés törzsében.|Nem|új|  
+|mód = "karakterlánc"|Meghatározza, hogy ez egy új kérelmet vagy a jelenlegi kérelem egy példányát. Kimenő módban mód = másolása nem sikerült a kérés törzsében.|Nem|Új|  
 |név|A neve a fejléc kell beállítani.|Igen|N/A|  
 |létezik-e művelet|Megadja, milyen műveletet hajtson végre a fejléc már meg van adva. Ez az attribútum a következő értékek egyikének kell lennie.<br /><br /> -felülbírálás - lecseréli a meglévő fejléc értékének.<br />-skip – nem helyettesíti a meglévő-fejléc értékét.<br />-hozzáfűzése - az érték hozzáfűzi a meglévő állomásfejléc-érték.<br />-törlés - eltávolítja a fejlécet a kérelemből.<br /><br /> Ha beállítása `override` történő besorolásakor ugyanazzal a névvel több bejegyzést eredményez az összes bejegyzés (amely jelennek meg több alkalommal) megfelelően történő beállítása fejléc; csak a listában szereplő értékek be lesznek állítva az eredményt.|Nem|felülbírálás|  
   
@@ -654,13 +652,13 @@ status code and media type. If no example or schema found, the content is empty.
 |URL-címe|A kérelem URL-CÍMÉT.|Nincs if mód = másolási; Ellenkező esetben igen.|  
 |Módszer|A kérelem HTTP-metódust.|Nincs if mód = másolási; Ellenkező esetben igen.|  
 |header|Kérelem fejléce. Használjon több több kérelem fejlécek.|Nem|  
-|Törzs|A kérés törzsében.|Nem|  
+|törzs|A kérés törzsében.|Nem|  
   
 ### <a name="attributes"></a>Attribútumok  
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|mód = "karakterlánc"|Meghatározza, hogy ez egy új kérelmet vagy a jelenlegi kérelem egy példányát. Kimenő módban mód = másolása nem sikerült a kérés törzsében.|Nem|új|  
+|mód = "karakterlánc"|Meghatározza, hogy ez egy új kérelmet vagy a jelenlegi kérelem egy példányát. Kimenő módban mód = másolása nem sikerült a kérés törzsében.|Nem|Új|  
 |válasz-változó-name = "karakterlánc"|Ha nincs jelen, `context.Response` szolgál.|Nem|N/A|  
 |Időtúllépés = "integer"|Nem sikerül a időkorlátja, másodpercben. az URL-cím hívása előtt.|Nem|60|  
 |Hiba mellőzése|Ha igaz, és hiba történt a kérelem eredményezi:<br /><br /> -Ha a válasz-változó-név lett megadva, null értéket tartalmaz.<br />-Ha a válasz-változó-neve nincs megadva, a környezetben. Kérés nem fog frissülni.|Nem|hamis|  
@@ -936,7 +934,7 @@ Vegye figyelembe a használatát [tulajdonságok](api-management-howto-propertie
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|Forrás|A literál karakterlánc kifejező a trace viewer, és adja meg az üzenet forrása.|Igen|N/A|  
+|forrás|A literál karakterlánc kifejező a trace viewer, és adja meg az üzenet forrása.|Igen|N/A|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
@@ -1003,7 +1001,7 @@ Vegye figyelembe a használatát [tulajdonságok](api-management-howto-propertie
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|A|Meghatározza, hogy a `wait` házirend megvárja-e a minden közvetlenül alárendelt házirendek befejezett vagy egyszerűen lesz. Engedélyezett értékek a következők:<br /><br /> -   `all`-Várjon, amíg befejeződik az összes közvetlenül alárendelt házirendek<br />-a - Várjon, amíg egy-egy közvetlen alárendelt házirend befejezéséhez. Az első közvetlenül alárendelt házirend befejezése után a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt.|Nem|Minden|  
+|ehhez:|Meghatározza, hogy a `wait` házirend megvárja-e a minden közvetlenül alárendelt házirendek befejezett vagy egyszerűen lesz. Engedélyezett értékek a következők:<br /><br /> -   `all`-Várjon, amíg befejeződik az összes közvetlenül alárendelt házirendek<br />-a - Várjon, amíg egy-egy közvetlen alárendelt házirend befejezéséhez. Az első közvetlenül alárendelt házirend befejezése után a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt.|Nem|Minden|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  

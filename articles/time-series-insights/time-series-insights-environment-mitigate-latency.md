@@ -1,5 +1,5 @@
 ---
-title: "Teljesítmény figyeléséhez, csökkenti a sávszélesség-szabályozás és Azure idő adatsorozat insightsban késleltetés megakadályozza |} Microsoft Docs"
+title: "Figyelése, és csökkenti a sávszélesség-szabályozás Azure idő adatsorozat insightsban késés érdekében |} Microsoft Docs"
 description: "A cikkből megtudhatja, hogyan figyelése, diagnosztizálása és csökkenthető a késleltetés és a sávszélesség-szabályozás Azure idő adatsorozat Insights okozó teljesítményproblémákat."
 services: time-series-insights
 ms.service: time-series-insights
@@ -12,13 +12,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/15/2017
-ms.openlocfilehash: 5af5589922ded802703b9ba8f3b0aa8c5524bbad
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9d53cd0ee8e15d47ac1daa122331b3145f936adb
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
-# <a name="improve-performance-reduce-latency-and-mitigate-throttling-in-azure-time-series-insights"></a>A teljesítmény javítása, késés csökkentésére, és csökkenthető a sávszélesség-szabályozás Azure idő adatsorozat insightsban
+# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Figyelheti és csökkenthető a sávszélesség-szabályozás Azure idő adatsorozat elemzések a késés csökkentése érdekében
 Ha a bejövő adatok mennyisége meghaladja a környezet konfigurációjának, tapasztalhatja várakozási ideje vagy Azure idő adatsorozat Insights szabályozását.
 
 Elkerülheti a késleltetés és a sávszélesség-szabályozás a környezetében az elemezni kívánt adatok megfelelő beállításával.

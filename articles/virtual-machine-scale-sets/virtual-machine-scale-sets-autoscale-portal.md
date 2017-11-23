@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 266e9674a422dffb7f78a4aa3dd0adfa3c8bab3b
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 3714a4feb14bc47132e501629fc339bc7d0e40a1
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatikus méretezése a virtuálisgép-méretezési beállítása az Azure-portálon
 A méretezési csoport létrehozásakor megadhatja a futtatni kívánt Virtuálisgép-példányok száma. Az alkalmazás igény szerinti változásával automatikusan növeli vagy csökkenti a Virtuálisgép-példányok számát. Automatikus skálázás teszi lehetővé teszi keresletének tartani, vagy az alkalmazás életciklusa során alkalmazás teljesítmény változásait.
@@ -34,7 +34,7 @@ Automatikus skálázási szabályok létrehozásához szükséges egy meglévő 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>Hozzon létre egy szabályt, amely automatikusan horizontális felskálázása
 Az alkalmazás igény szerinti egyenes arányban növekszik, ha a Virtuálisgép-példány a skála terhelését növeli állítsa be. Ha ez a megnövekedett terhelés egységes, ahelyett, hogy csak egy rövid igény szerinti, konfigurálhatja az automatikus skálázási szabályok a méretezési csoportban lévő Virtuálisgép-példányok számának növeléséhez. Ezek a Virtuálisgép-példányok jönnek létre, és az alkalmazások vannak telepítve, a méretezési hozzákezd terjesztése azokra a terheléselosztó forgalmát. Milyen metrikák figyeléséhez, mint a CPU vagy lemez, mennyi ideig alkalmazásterhelés meg kell felelnie a megadott küszöbértéket, és hány Virtuálisgép-példányok a skála hozzáadása set szabályozhatja.
 
-1. Nyissa meg az Azure portál és select **erőforráscsoportok** az irányítópult bal mérete a menüből.
+1. Nyissa meg az Azure portál és select **erőforráscsoportok** a bal oldalon az irányítópult-menüjéből.
 2. Válassza ki az erőforráscsoportot, amely tartalmazza a méretezési csoportban, majd kattintson a méretezési készletben erőforrások közül.
 3. Válasszon **méretezés** a bal oldalon a skála menüjéből beállítása ablakban. Kattintson a gombra, majd **engedélyezze az automatikus skálázás**:
 
@@ -48,13 +48,13 @@ Az alkalmazás igény szerinti egyenes arányban növekszik, ha a Virtuálisgép
     
     | Paraméter              | Magyarázat                                                                                                         | Érték          |
     |------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Idő összesítése*     | Határozza meg, hogy az összegyűjtött metrikák elemzések céljából összesíti kell-e.                                                | Átlagos        |
-    | *Metrika neve*          | A teljesítmény metrika figyelésére és a skála alkalmazni az alábbi műveletek beállítani.                                                   | Processzor-százalékos aránya |
-    | *Idő felbontása statisztika* | Határozza meg, hogy minden időfelbontási a gyűjtött metrikák elemzések céljából összesíti kell-e.                             | Átlagos        |
+    | *Idő összesítése*     | Határozza meg, hogy az összegyűjtött metrikák elemzések céljából összesíti kell-e.                                                | Átlag        |
+    | *Metrika neve*          | A teljesítmény metrika figyelésére és a skála alkalmazni az alábbi műveletek beállítani.                                                   | Százalékos processzorhasználat |
+    | *Idő felbontása statisztika* | Határozza meg, hogy minden időfelbontási a gyűjtött metrikák elemzések céljából összesíti kell-e.                             | Átlag        |
     | *Operátor*             | Hasonlítsa össze a metrikaadatokat szemben a küszöbérték operátor.                                                     | Nagyobb mint   |
     | *Küszöbérték*            | Az automatikus skálázási szabály elindítani egy műveletet kiváltó százalékos.                                                 | 70             |
     | *Időtartam*             | Az időtartam a metrika és a küszöbértéket az összehasonlítás előtt figyeli.                                   | 10 perc     |
-    | *Művelet*            | Meghatározza, hogy a méretezési fel vagy le, ha a szabály vonatkozik, és milyen növekményű kell méretezni.                        | Növekmény százaléka alapján |
+    | *Művelet*            | Meghatározza, hogy a méretezési fel vagy le, ha a szabály vonatkozik, és milyen növekményű kell méretezni.                        | Százalék növelése a következővel: |
     | *A példányok száma*       | Virtuálisgép-példányok hány százalékát módosítani kell, amikor a szabály gondoskodik.                                            | 20             |
     | *Cool le (perc)*  | Mennyi ideig várjon a szabály alkalmazza újra, így az automatikus skálázási műveletek érvénybe lépéséhez idő kell. | 5 perc      |
 
@@ -77,7 +77,7 @@ Egy este vagy hétvégi az alkalmazás igény szerinti csökkenhet. Ha egy megha
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
     | *Operátor*             | Hasonlítsa össze a metrikaadatokat szemben a küszöbérték operátor.                                                      | Kisebb mint   |
     | *Küszöbérték*            | Az automatikus skálázási szabály elindítani egy műveletet kiváltó százalékos.                                                 | 30             |
-    | *Művelet*            | Meghatározza, hogy a méretezési fel vagy le, ha a szabály vonatkozik, és milyen növekményű kell méretezni.                         | Százalék által csökkentése |
+    | *Művelet*            | Meghatározza, hogy a méretezési fel vagy le, ha a szabály vonatkozik, és milyen növekményű kell méretezni.                         | Százalék csökkentése a következővel: |
     | *A példányok száma*       | Virtuálisgép-példányok hány százalékát módosítani kell, amikor a szabály gondoskodik.                                             | 20             |
 
 3. A szabály létrehozásához válassza **hozzáadása**
@@ -88,7 +88,7 @@ Az automatikus skálázási profil definiálnia kell egy minimum, maximum és Vi
 
 1. A következő példány vonatkozó korlátok beállítása:
 
-    | Minimális | Maximális | Alapértelmezett|
+    | Minimális | Maximum | Alapértelmezett|
     |---------|---------|--------|
     | 2       | 10      | 2      |
 

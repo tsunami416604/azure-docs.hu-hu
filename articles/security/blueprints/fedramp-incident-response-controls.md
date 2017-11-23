@@ -14,18 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: jomolesk
-ms.openlocfilehash: 1a8b5d7d4237d3b6a516becf5e3af2fdac84efa9
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: b4db5e02bfe925c402ca19e6145c4f4c825bef54
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
+# <a name="incident-response-ir"></a>Incidensválaszra (IR)
+
 > [!NOTE]
 > Ezek az intézkedések határozzák meg NIST és az Egyesült Államok Kereskedelmi Minisztériuma a NIST különleges közlemény 800-53-as verziójának 4 részeként. Tekintse meg a NIST 800-53 fordított 4 tesztelési útmutató a vezérlők és eljárásokat olvashat.
-    
-    
-
-# <a name="incident-response-ir"></a>Incidensválaszra (IR)
 
 ## <a name="nist-800-53-control-ir-1"></a>A NIST 800-53 vezérlő IR-1
 

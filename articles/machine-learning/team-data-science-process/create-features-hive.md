@@ -4,7 +4,7 @@ description: "Példák a szolgáltatások készítése az Azure HDInsight Hadoop
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: e8a94c71-979b-4707-b8fd-85b47d309a30
 ms.service: machine-learning
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/21/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: a967a8fccfe0dc051a7cf3a4a2fcefad2a2f187f
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 91ea23b732f520b02af7e9a9dd77ee62190a520c
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/23/2017
 ---
-# <a name="create-features-for-data-in-an-hadoop-cluster-using-hive-queries"></a>Funkciók létrehozása az adatokhoz egy Hadoop-fürtben Hive-lekérdezések segítségével
-Ez a dokumentum bemutatja, hogyan hozzon létre egy Azure HDInsight Hadoop-fürt Hive-lekérdezésekkel tárolt adatok funkciói. A Hive-lekérdezéseket beágyazott Hive felhasználó által megadott funkciókat (UDF), amelynek parancsfájlokat használja.
+# <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>A Hive-lekérdezéseket a Hadoop fürtök adatok funkciók létrehozása
+Ez a dokumentum bemutatja, hogyan hozzon létre egy Azure HDInsight Hadoop-fürt Hive-lekérdezésekkel tárolt adatok funkciói. A Hive-lekérdezéseket beágyazott Hive User-Defined funkciókat (UDF), amelynek a parancsfájlokat használja.
 
 A szolgáltatások létrehozásához szükséges műveleteket memóriaigényes lehet. A Hive-lekérdezések teljesítményét kritikus fontosságú ebben az esetben lesz, és bizonyos paraméterek hangolása javítja. Ezek a paraméterek beállítása az utolsó szakaszban tárgyalt.
 
@@ -36,7 +36,7 @@ Ez a cikk feltételezi, hogy rendelkezik:
 
 * Egy Azure storage-fiók létrehozása. Ha módosítania kell az utasításokat, lásd: [egy Azure Storage-fiók létrehozása](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
 * A HDInsight szolgáltatásban egy testreszabott Hadoop-fürt üzembe helyezve.  Ha módosítania kell az utasításokat, lásd: [testreszabása Azure HDInsight Hadoop-fürtök az Advanced Analytics](customize-hadoop-cluster.md).
-* Az adatok az Azure HDInsight Hadoop-fürtök Hive táblák fel lett töltve. Ha még nem, kövesse [létrehozása és az adatok betöltése a Hive táblák](move-hive-tables.md) feltölteni az adatokat a Hive táblák először.
+* Az adatok az Azure HDInsight Hadoop-fürtök Hive táblák fel lett töltve. Ha még nem, kövesse az [létrehozása és az adatok betöltése a Hive táblák](move-hive-tables.md) feltölteni az adatokat a Hive táblák először.
 * Engedélyezve van a fürt távoli eléréséhez. Ha módosítania kell az utasításokat, lásd: [a Head csomópont a Hadoop-fürt eléréséhez](customize-hadoop-cluster.md).
 
 ## <a name="hive-featureengineering"></a>Szolgáltatás létrehozása
@@ -62,8 +62,8 @@ Ez a szakasz néhány példa a módszereket, amelyben funkciókat is kell gener�
         order by frequency desc;
 
 
-### <a name="hive-riskfeature"></a>A bináris osztályozási Kategorikus változók kockázata
-A bináris osztályozási igazolnia kell a nem numerikus kategorikus változók átalakítása numerikus szolgáltatások, a modellek használt csak numerikus szolgáltatások kerül. Ez történik, azáltal, hogy minden nem numerikus szinthez a numerikus kockázata. Ez a szakasz bemutatja néhány általános kockázati értékek (napló valószínűleg) kategorikus változó kiszámításához Hive-lekérdezéseket.
+### <a name="hive-riskfeature"></a>A bináris osztályozási kategorikus változók kockázata
+A bináris osztályozási nem numerikus kategorikus változók konvertálni kell numerikus funkciók a modellek használt csak numerikus szolgáltatások kerül. Ez a konverzió nem numerikus szintenként lecserélését egy numerikus kockázat végezhető el. Ez a szakasz bemutatja néhány általános kockázati értékek (napló valószínűleg) kategorikus változó kiszámításához Hive-lekérdezéseket.
 
         set smooth_param1=1;
         set smooth_param2=20;
@@ -87,7 +87,7 @@ Ebben a példában, változók `smooth_param1` és `smooth_param2` a kockázati 
 
 A kockázat után tábla kiszámítása, felhasználókat rendelhet kockázati értékek tábla csatlakoztatná a kockázat táblával. Az előző szakaszban megadott csatlakozó Hive-lekérdezést.
 
-### <a name="hive-datefeatures"></a>Bontsa ki a szolgáltatásokat a Datetime mezők
+### <a name="hive-datefeatures"></a>Bontsa ki a szolgáltatásokat a datetime mezők
 Hive tartalmaz egy felhasználó által megadott függvények a datetime mezők feldolgozásához. A Hive, az alapértelmezett dátum és idő formátuma: "éééé-hh-nn 00:00:00" ("1970-01-01 12:21:32" például). Ez a szakasz bemutatja, bontsa ki a hónap, a DateTime típusú mező a hónap napját példákat és egyéb példák, amelyek a dátum/idő karakterlánc formátuma nem az alapértelmezett formátum dátum/idő karakterláncot az alapértelmezett formázása.
 
         select day(<datetime field>), month(<datetime field>)
@@ -140,28 +140,38 @@ A két GPS-koordináták közötti távolság számító Matematikai egyenleteke
 
 A beágyazott felhasználó által megadott függvények található Hive teljes listáját a **beépített funkciók** a szakasz a <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>).  
 
-## <a name="tuning"></a>Speciális témakörök: hangolási Hive paraméterek lekérdezési teljesítmény javítása
-Előfordulhat, hogy az alapértelmezett paraméterbeállítások Hive fürt nem alkalmas a Hive-lekérdezéseket és az adatokat, amelyek a lekérdezések feldolgozás alatt. Ebben a szakaszban arról lesz szó néhány paraméter, amely észlelheti a felhasználók, amelyek javítják a Hive-lekérdezések teljesítményét. Felhasználók kell hozzáadnia a lekérdezések a lekérdezéseket az adatok feldolgozása előtt hangolása paraméter.
+## <a name="tuning"></a>Speciális témakörök: hangolási Hive paraméterek lekérdezés sebességének javítása érdekében
+Előfordulhat, hogy az alapértelmezett paraméterbeállítások Hive fürt nem alkalmas a Hive-lekérdezéseket és az adatokat, amelyek a lekérdezések feldolgozás alatt. Ez a szakasz ismerteti, hogy a felhasználók észlelheti a Hive-lekérdezések teljesítményének javítása érdekében néhány paraméter. Felhasználók kell hozzáadnia a lekérdezések a lekérdezéseket az adatok feldolgozása előtt hangolása paraméter.
 
-1. **Java halommemória terület**: lekérdezések nagy adatkészletek csatlakozni, vagy hosszú rekordjának feldolgozásáért **elegendő szabad terület halommemória** egyik előforduló hibákat. Ez a paraméter beállításával szabályozható *mapreduce.map.java.opts* és *mapreduce.task.io.sort.mb* kívánt értékekre. Például:
+1. **Java halommemória terület**: lekérdezések nagy adatkészletek csatlakozni, vagy hosszú rekordjának feldolgozásáért **elegendő szabad terület halommemória** egyik előforduló hibákat. Ez a hiba elkerülhető a paraméterek beállítása *mapreduce.map.java.opts* és *mapreduce.task.io.sort.mb* kívánt értékekre. Például:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
     Ez a paraméter Java halommemória területre 4GB memóriát foglal le, majd is teszi rendezés hatékonyabb több memóriát oszt ki azt. Célszerű lejátszás a megoldást, ha bármely halommemória terület kapcsolatos hiba hibák állnak fenn.
 
-1. **Az elosztott Fájlrendszerbeli blokkméret**: Ez a paraméter állandóként állítja be, a fájlrendszer által tárolt adatokat a legkisebb egysége. Például ha az elosztott Fájlrendszerbeli blokkméret 128MB, majd mérete adatot legalább és legfeljebb 128MB tárolódik egyetlen blokkot tartalmaz, amely nagyobb, mint 128MB számára engedélyezett a felesleges blokkok adatainak közben. Egy nagyon kis blokkméretet kiválasztása hatására nagy terhek Hadoop, mert a név csomópont található a megfelelő blokkot, a fájl vonatkozó számos további kérelmeket. A javasolt beállítás foglalkozó gigabájt (vagy nagyobb) adat:
-   
+1. **Az elosztott Fájlrendszerbeli blokkméret**: Ez a paraméter állandóként állítja be, a fájlrendszer által tárolt adatokat a legkisebb egysége. Tegyük fel ha az elosztott Fájlrendszerbeli blokkméret 128 MB, majd mérete adatot legalább és legfeljebb 128 MB tárolódik egyetlen blokkot. 128 MB-nál nagyobb méretű adatok extra blokkok számára engedélyezett. 
+2. Kis blokkméret kiválasztása hatására a Hadoop nagy általános költségeket, mert a név csomópont található a megfelelő blokkot, a fájl vonatkozó számos további kérelmeket. A javasolt beállítás foglalkozó gigabájt (vagy nagyobb) adat:
+
         set dfs.block.size=128m;
+
 2. **Hive join művelet optimalizálása**: közben összekapcsolási műveletek térkép/csökkentse keretében általában kerül sor a csökkentse fázisban, egyes esetekben hatalmas növekedését elérhető illesztések ütemezésével a térkép fázisban (más néven "mapjoins"). Közvetlen Hive ehhez, amikor csak lehetséges, állítsa be:
    
-        set hive.auto.convert.join=true;
+       set hive.auto.convert.join=true;
+
 3. **A Hive mappers számát**: közben Hadoop lehetővé teszi a felhasználónak szűkítő adjon meg, a száma mappers általában a felhasználó nem állítható be. Amely lehetővé teszi, hogy ez a szám a vezérlő bizonyos fokú körben, hogy válassza körültekintően a Hadoop változók *mapred.min.split.size* és *mapred.max.split.size* minden leképezés méretének feladat határozza meg:
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    
-    Általában az alapértelmezett érték *mapred.min.split.size* 0, az *mapred.max.split.size* van **Long.MAX** és az *dfs.block.size* 64 MB. Ahogyan azt láthatja, megadott adatok mérete hangolása ezeket a paramétereket "beállítása" őket lehetővé teszi hangolására használható mappers száma.
-4. Még más néhány **speciális beállítások** Hive optimalizálási teljesítmény alatt szerepelnek. Ezek lehetővé teszik rendelve, és csökkentheti a feladatok számára fenntartott memória mérete, és elősegíti a teljesítmény tökéletesítse. Ellenőrizze a következőket kell figyelembe venni, hogy a *mapreduce.reduce.memory.mb* nem lehet nagyobb, mint a Hadoop-fürt egyes feldolgozó csomópontok fizikai memória méretét.
+    Általában az alapértelmezett érték:
+    
+    - *mapred.min.split.size* 0, az
+    - *mapred.max.split.size* van **Long.MAX** és az 
+    - *DFS.Block.size* 64 MB.
+
+    Ahogyan azt láthatja, megadott adatok mérete hangolása ezeket a paramétereket "beállítása" őket lehetővé teszi hangolására használható mappers száma.
+
+4. Az alábbiakban néhány más több **speciális beállítások** megfelelően Hive teljesítményének optimalizálásához. Ezek lehetővé teszik rendelve, és csökkentheti a feladatok számára fenntartott memória mérete, és elősegíti a teljesítmény tökéletesítse. A következőket kell figyelembe venni, hogy a *mapreduce.reduce.memory.mb* nem lehet nagyobb, mint a Hadoop-fürt egyes feldolgozó csomópontok fizikai memória méretét.
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

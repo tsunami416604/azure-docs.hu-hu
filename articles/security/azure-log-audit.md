@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9e5c929251259a86944121e504dc033bc99e3bc4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 035f51d9f12e887d2017b058f0b0471870f411f7
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-logging-and-auditing"></a>Az Azure naplózása és naplózás
 ## <a name="introduction"></a>Bevezetés
@@ -355,14 +355,14 @@ A négy különböző módon [naplókat és az Azure-szolgáltatások metrikáj�
 | Szolgáltatás | Erőforrás típusa | Logs | Mérőszámok | Megoldás |
 | :------ | :------------ | :--- | :------ | :------- |
 |Alkalmazásátjárók|  Microsoft.Network/<br>applicationGateways|  Diagnosztika|Diagnosztika|    [Az Azure alkalmazás](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [átjáró elemzés](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
-|Az Application insights||     összekötő|  összekötő|  [Az Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Connector (előzetes verzió)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
+|Az Application insights||     Összekötő|  Összekötő|  [Az Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Connector (előzetes verzió)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
 |Automation-fiókok|   Microsoft.Automation/<br>AutomationAccounts|    Diagnosztika||       [További információ](https://docs.microsoft.com/en-us/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Batch-fiókok|    Microsoft.Batch/<br>batchAccounts|  Diagnosztika|    Diagnosztika||
 |Klasszikus cloud services csomag||       Storage||       [További információ](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-storage-iis-table)|
 |Cognitive Services|    Microsoft.CognitiveServices/<br>fiókok|       Diagnosztika|||
 |A Data Lake analytics|   Microsoft.DataLakeAnalytics/<br>fiókok|   Diagnosztika|||
 |A Data Lake store|   Microsoft.DataLakeStore/<br>fiókok|   Diagnosztika|||
-|Event Hub névtér|   Microsoft.EventHub/<br>Névterek|  Diagnosztika|    Diagnosztika||
+|Eseményközpont-névtér|   Microsoft.EventHub/<br>Névterek|  Diagnosztika|    Diagnosztika||
 |IoT-központok|  Microsoft.Devices/<br>IotHubs||     Diagnosztika||
 |Key Vault| Microsoft.KeyVault/<br>Tárolók|  Diagnosztika  || [KeyVault elemzés](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-key-vault)|
 |Terheléselosztók|    Microsoft.Network/<br>loadBalancers|    Diagnosztika|||

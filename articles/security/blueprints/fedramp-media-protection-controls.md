@@ -14,18 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: jomolesk
-ms.openlocfilehash: aea5ea2d7e365dfe4d03ca27a1150e963761140c
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9cb33abc7ab88aaa54a77308c7863f8128f2e6c7
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
+# <a name="media-protection-mp"></a>Média védelme (MP)
+
 > [!NOTE]
 > Ezek az intézkedések határozzák meg NIST és az Egyesült Államok Kereskedelmi Minisztériuma a NIST különleges közlemény 800-53-as verziójának 4 részeként. Tekintse meg a NIST 800-53 fordított 4 tesztelési útmutató a vezérlők és eljárásokat olvashat.
-    
-    
-
-# <a name="media-protection-mp"></a>Média védelme (MP)
 
 ## <a name="nist-800-53-control-mp-1"></a>A NIST 800-53 vezérlő MP-1
 

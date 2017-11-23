@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2017
 ms.author: billmath
-ms.openlocfilehash: f1314b05d7471b6251de2173dc590bdebdafb476
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d11795aa8b768a8574c3f8bc375b74402825ba3
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Gyakori kérdések az Azure Active Directory Connect
 
@@ -43,10 +43,16 @@ Minden hálózati szoftver, a fizikai eszközök vagy bármi más, amely korlát
 **K: vannak (egy címke tartományok) által támogatott?**  
 Nem, az Azure AD Connect nem támogatja a helyi erdők/tartományok által használatával.
 
+**K: támogatott különálló AD-tartományok erdők vannak?**  
+Nem, az Azure AD Connect nem támogatja a helyszíni erdők tartalmazó különálló névtereket.
+
 **K: vannak "pontozott" nevű NetBios támogatott?**  
 Nem, az Azure AD Connect nem támogatja a helyi erdők/tartományok ahol a NetBIOS-név pontot tartalmaz "." a neve.
 
-## <a name="federation"></a>Összevonási
+**K: támogatott tiszta IPv6-környezetben van?**  
+Nem, az Azure AD Connect nem támogatja a csak IPv6-környezetben.
+
+## <a name="federation"></a>Összevonás
 **K: Mit tehetek, ha jelenik meg egy e-mailt, amely az Office 365 tanúsítvány megújítása kérése**  
 Útmutatás a a [megújítani a tanúsítványokat](active-directory-aadconnect-o365-certs.md) témakör: a tanúsítvány megújításához.
 
