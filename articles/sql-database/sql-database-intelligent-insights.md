@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 86011610885ff913bfd70aa46389e4e39989d0a3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 823855d88396a14ff7e5428a12d71384cdfe95a1
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="intelligent-insights"></a>Intelligent Insights
 
@@ -49,8 +49,6 @@ Miután a teljesítmény romlását probléma mesterséges eszközintelligencia 
 
 A metrikák és adatbázis-teljesítménnyel kapcsolatos problémák észlelése használt lekérdezés időtartama, időtúllépés kérelmeket, túlzott várakozási idő és hiba miatt megszakadt kérelmek alapulnak. A metrikák további információkért lásd: a [észlelési metrikák](sql-database-intelligent-insights.md#detection-metrics) szakasz ebben a dokumentumban.
 
-## <a name="degradations-detected"></a>Észlelt degradations
-
 Meghatározott SQL-adatbázis teljesítményének degradations tárolja, amely a diagnosztika naplóra intelligens megadásával, amely a következő tulajdonságok áll:
 
 | Tulajdonság             | Részletek              |
@@ -64,36 +62,49 @@ Meghatározott SQL-adatbázis teljesítményének degradations tárolja, amely a
 | Kiváltó okának elemzése | Alapvető oka elemzése az emberek számára olvasható formátumban felismert probléma. Néhány insights tartalmazhat a teljesítmény fokozása javaslat, ahol csak lehetséges. |
 |||
 
-## <a name="issues-state-lifecycle-active-verifying-and-complete"></a>Problémák életciklus állapottal: "Active", "Ellenőrzése", és a "Teljes"
-
 A diagnosztika naplóban rögzített teljesítményproblémák vannak megjelölve, egy probléma életciklus Háromállapotú egyike: "Active", "Ellenőrzése", és a "Teljes". A teljesítmény után problémát észlelt, és ítélt hosszú azt rendelkezik annyi téglára SQL Database beépített funkciói által, a probléma megjelölt "Aktív". Ha a probléma akkor tekinthető problémák elhárításáról, igazolható, és a probléma állapota "Ellenőrzése". SQL Database beépített funkciói úgy véli, hogy a probléma elhárítva, miután a probléma állapota "Complete" van megjelölt.
 
 ## <a name="use-intelligent-insights"></a>Intelligens Insights használata
 
-Az intelligens Insights diagnosztikai naplófájl Azure Naplóelemzés, az Azure Event Hubs és az Azure Storage küldhet. További információkért lásd: [Azure SQL Database metrikák és diagnosztikai naplózás](sql-database-metrics-diag-logging.md). Miután a napló egyik ezeken a célokon, a napló használható egyéni riasztás és fejlesztési figyelése a Microsoft vagy harmadik fél eszközeit használatával. 
+Intelligens Insights egy intelligens diagnosztika Teljesítménynapló. Integrálható a felhasználás más termékekkel és az egyes alkalmazások ilyen Azure Naplóelemzés, az Azure Event Hubs és az Azure storage, vagy harmadik féltől származó termékek. 
 
-SQL-adatbázis teljesítményének hibaelhárítása intelligens Insights használatával kapcsolatban lásd: [teljesítményproblémák elhárítása az Azure SQL Database intelligens, amelyen](sql-database-intelligent-insights-troubleshoot-performance.md).
+Intelligens Insights együtt az Azure Naplóelemzés általában egy olyan webböngésző, és lehet, hogy az egyik ki az alapoktól használhatná a terméket az beszerzése a legegyszerűbben keresztül insights megtekintésére használt. Intelligens Insights együtt az Azure Event Hubs általában használt egyéni figyelés és riasztás forgatókönyvek beállítása. Intelligens insights együtt az Azure storage általában azoknak a egyéni alkalmazások fejlesztését, ilyen például egyéni jelentések, vagy esetleg archiválási és lekérése.
 
-## <a name="built-in-intelligent-insights-analytics-with-log-analytics"></a>A Naplóelemzési beépített intelligens Insights elemzés 
+Integráció más termékekkel Azure Naplóelemzés intelligens Insights, Azure Event hubs Eseményközpontot, az Azure storage vagy külső gyártótól származó termékek felhasználásra első engedélyezése intelligens Insights naplózása (SQLInsights napló), és majd konfigurálásával keresztül történik Intelligens Insights oszthatók ezeket a termékeket közzétett adatok naplózása. Intelligens Insights naplózás engedélyezése és konfigurálása egy fogyasztó termékre közzétett naplóadatokat kapcsolatos további információkért lásd: [Azure SQL Database metrikák és diagnosztikai naplózás](sql-database-metrics-diag-logging.md). 
 
-Jelentéseket készít a napló elemzési megoldások, és a riasztási képességeket az intelligens Insights diagnosztikai adatok naplózása. A következő példa egy intelligens Insights az Azure SQL elemzés mutatja be:
+Az Azure Naplóelemzés intelligens Insights segítségével a rendszer gyakorlati áttekintése és a jellemző használati forgatókönyvei tekintse meg a beágyazott videót:
+
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
+>
+
+Intelligens Insights található felderítésének, illetve az SQL Database teljesítménnyel kapcsolatos problémák elhárításakor helyezi. SQL Database teljesítményproblémáinak elhárítása intelligens Insights használatához tekintse meg a [teljesítményproblémák elhárítása az Azure SQL Database intelligens, amelyen](sql-database-intelligent-insights-troubleshoot-performance.md).
+
+## <a name="set-up-intelligent-insights-with-log-analytics"></a>A Naplóelemzési intelligens Insights beállítása 
+
+Jelentkezzen Analytics megoldás jelentéseket készít, és az intelligens Insights képességeket riasztási diagnosztikai adatok naplózása.
+
+A Naplóelemzési intelligens Insights használatához konfigurálnia a naplóadatok intelligens Insights szolgáltatáshoz adatfolyamként továbbítását, lásd: [Azure SQL Database metrikák és diagnosztikai naplózás](sql-database-metrics-diag-logging.md). 
+
+A következő példa egy intelligens Insights az Azure SQL elemzés mutatja be:
 
 ![Intelligens Insights jelentés](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
 
 Miután az intelligens Insights diagnosztikai naplófájl SQL elemzés adatfolyam adatok van konfigurálva, [figyelje az SQL-adatbázis az SQL elemzés](../log-analytics/log-analytics-azure-sql.md).
 
-## <a name="custom-integrations-of-intelligent-insights-log"></a>Egyéni integrációkat intelligens Insights napló
-
-Egyéni riasztási és fejlesztési figyelése a Microsoft vagy harmadik fél eszközeit használatával további információkért lásd: [használja az intelligens Insights adatbázis teljesítményének diagnosztikai naplófájlok](sql-database-intelligent-insights-use-diagnostics-log.md).
-
 ## <a name="set-up-intelligent-insights-with-event-hubs"></a>Az Event Hubs intelligens Insights beállítása
 
-- Intelligens Insights az Event Hubs eseményeit adatfolyamként történő konfigurálásához lásd: [adatfolyam Azure diagnosztikai naplók Event hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md).
-- Az Event Hubs egyéni figyelés és riasztás használni, lásd: [mit kell tenni a metrikák és diagnosztika bejelentkezik az Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs). 
+Az Event Hubs intelligens Insights használatához konfigurálnia intelligens Insights naplóadatokat Event hubs adatfolyamként továbbítását, lásd: [adatfolyam Azure diagnosztikai naplók Event hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md).
+
+Használja az Event Hubs a egyéni figyelés és riasztás, lásd: [mit kell tenni a metrikák és diagnosztika bejelentkezik az Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs). 
 
 ## <a name="set-up-intelligent-insights-with-storage"></a>Tároló intelligens Insights beállítása
 
-- Intelligens Insights tárolóval tárolását, lásd: [az Azure Storage adatfolyam](sql-database-metrics-diag-logging.md#stream-into-storage).
+Tároló intelligens Insights használatához konfigurálnia intelligens Insights naplóadatokat Storage adatfolyamként továbbítását, lásd: [az Azure Storage adatfolyam](sql-database-metrics-diag-logging.md#stream-into-storage).
+
+## <a name="custom-integrations-of-intelligent-insights-log"></a>Egyéni integrációkat intelligens Insights napló
+
+A harmadik féltől származó eszközökkel, és az egyéni riasztási és a figyelés fejlesztési intelligens Insights használatához tekintse meg a [használja az intelligens Insights adatbázis teljesítményének diagnosztikai naplófájlok](sql-database-intelligent-insights-use-diagnostics-log.md).
 
 ## <a name="detection-metrics"></a>Észlelési metrikák
 

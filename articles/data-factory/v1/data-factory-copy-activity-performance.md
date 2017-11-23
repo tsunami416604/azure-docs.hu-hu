@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 11/14/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2aeb3820667f264e4a26860913e3f7b0e22e4c4a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1f774bb881c66ceeb9f3223b735b3f34462b6a8d
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolja a tevékenység teljesítmény- és hangolási útmutató
 > [!NOTE]
@@ -49,6 +49,8 @@ Referenciaként táblázat alatti másolási átviteli számát mutatja MB/s mé
 
 ![Teljesítmény mátrix](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
+>[!IMPORTANT]
+>Az Azure Data Factoryben az 1-es a felhő-felhőbe történő másolás minimális felhő adatok mozgása mértékegységét két. Ha nincs megadva, tekintse meg az alapértelmezett adatátviteli adategységek használatban lévő [adatátviteli adategységek felhőalapú](#cloud-data-movement-units).
 
 **Vegye figyelembe a következő szempontok:**
 * Átviteli sebesség számítja ki a következő képlet: [forrás olvasható adatok mérete] / [a másolási tevékenység időtartama futtatása].
@@ -90,9 +92,16 @@ Egy mintaforgatókönyv vizsgáljuk meg. A következő példában a múltban a t
 Ebben a példában amikor a **egyidejűségi** értéke 2, **tevékenység fut 1** és **tevékenység fut 2** adatokat másolni két tevékenység windows **egyidejűleg** adatok mozgása teljesítmény javítása érdekében. Azonban ha több fájl Tevékenységfuttatási 1 társul, az adatátviteli szolgáltatás fájlokat másolja a forrás egy fájlhoz egyszerre.
 
 ### <a name="cloud-data-movement-units"></a>A mozgás adategységek felhő
-A **felhő adatok adatátviteli egység (DMU)** egy mérték, amely jelöli az (a Processzor, memória és a hálózatierőforrás-lefoglalás kombinációja) adat-előállítóban egyetlen egységben. Egy DMU egy felhő-felhőbe történő másolás művelet, de nem egy hibrid másolás használhatók.
+A **felhő adatok adatátviteli egység (DMU)** egy mérték, amely jelöli az (a Processzor, memória és a hálózatierőforrás-lefoglalás kombinációja) adat-előállítóban egyetlen egységben. DMU akkor alkalmazható, a felhő-felhőbe történő másolás műveletekhez, de nem egy hibrid másolás.
 
-Alapértelmezés szerint a Data Factory DMU egyetlen felhő használja a Futtatás egyetlen másolási tevékenység végrehajtásához. Ez az alapértelmezett felülbírálásához adjon meg értéket a **cloudDataMovementUnits** tulajdonság az alábbiak szerint. Egy adott másolási forrását, és a fogadó további egységek konfigurálásakor kaphat jobb teljesítménye szintjét kapcsolatos információk: a [teljesítményfigyelési](#performance-reference).
+**A minimális felhő adatátviteli adategységek építve a másolási tevékenység során futtassa két.** Ha nincs megadva, az alábbi táblázat a különböző másolással használt alapértelmezett DMUs:
+
+| Másolja át a forgatókönyvben | Szolgáltatás által meghatározott alapértelmezett DMUs |
+|:--- |:--- |
+| Adatok másolása a fájlalapú tárolók között | 2 és 16 számát és a fájlok méretétől függően. |
+| Minden egyéb másolatot forgatókönyvek | 2 |
+
+Ez az alapértelmezett felülbírálásához adjon meg értéket a **cloudDataMovementUnits** tulajdonság az alábbiak szerint. A **engedélyezett értékek** a a **cloudDataMovementUnits** tulajdonság, 2, 4, 8, 16 és 32. A **felhő DMUs tényleges száma** egyenlő vagy kisebb, mint a konfigurált érték, attól függően, hogy a adatmintát, hogy használja-e a másolási művelet futásidőben. Egy adott másolási forrását, és a fogadó további egységek konfigurálásakor kaphat jobb teljesítménye szintjét kapcsolatos információk: a [teljesítményfigyelési](#performance-reference).
 
 ```json
 "activities":[  
@@ -114,7 +123,6 @@ Alapértelmezés szerint a Data Factory DMU egyetlen felhő használja a Futtat�
     }
 ]
 ```
-A **engedélyezett értékek** a a **cloudDataMovementUnits** tulajdonság (alapértelmezett) 1, 2, 4, 8, 16, 32. A **felhő DMUs tényleges száma** egyenlő vagy kisebb, mint a konfigurált érték, attól függően, hogy a adatmintát, hogy használja-e a másolási művelet futásidőben.
 
 > [!NOTE]
 > Ha további felhőalapú DMUs magasabb átviteli van szüksége, forduljon a [az Azure támogatási](https://azure.microsoft.com/support/). 8 beállítása, a fenti jelenleg működik csak akkor, ha Ön **több fájl másolása Blob storage vagy Data Lake Store vagy az Azure Blob storage/Data Lake Store/Amazon S3/felhő FTP/felhő SFTP SQL-adatbázis**.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: fb58a01828e13f9605e4788ee7e064162a7a31d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af1f683f08ff6b70b23ff265f39b9a76f92f4be2
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Szolgáltatástérkép integráció a System Center Operations Manager
   > [!NOTE]
@@ -30,7 +30,7 @@ Operations Management Suite Szolgáltatástérkép automatikusan észleli a Wind
 Ez az integráció Szolgáltatástérkép és a System Center Operations Manager között automatikusan az Operations Manager programban, a dinamikus függőségi maps a Szolgáltatástérkép alapuló hozhat létre elosztott alkalmazás diagramokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Az Operations Manager felügyeleti csoport, amely a kiszolgálók egy csoportja kezel.
+* Az Operations Manager felügyeleti csoport (2012 R2 vagy újabb), amely kezeli a kiszolgálók egy csoportja.
 * Egy engedélyezve van a Service Map-megoldás Operations Management Suite-munkaterülettel.
 * Kiszolgálók egy csoportja (legalább egyet), amely az Operations Manager és a Service Map adatokat küldő felügyeli. A Windows és Linux-kiszolgálókon támogatott.
 * A szolgáltatás egyszerű hozzáférést az Azure-előfizetéshez társított az Operations Management Suite-munkaterülettel. További információkért látogasson el [szolgáltatásnevet létrehozni](#creating-a-service-principal).

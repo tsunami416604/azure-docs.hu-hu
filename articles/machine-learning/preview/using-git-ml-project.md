@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/18/2017
-ms.openlocfilehash: fe2a302a32f1b9ec474416704c6cb613cd384a0e
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 0cd447a52964578dd2348a786dd57a45ea87516e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="using-git-repository-with-an-azure-machine-learning-workbench-project"></a>Az Azure Machine Learning-munkaterület projektek Git-tárház használata
 Ez a dokumentum bemutatja, hogyan Azure Machine Learning-munkaterület segítségével Git verziókezelést, és a tudományos adatok kísérletbe reprodukálhatósági biztosítja. Rendelje hozzá a projekt Git-tárház felhő útmutatást is biztosítja.
@@ -121,7 +121,7 @@ Ez a parancs végrehajtásával teljes projektmappában felülírja azt a pillan
 ## <a name="step-6-use-the-master-branch"></a>6. lépés A főágba használata
 Egy véletlenül elkerülése érdekében a jelenlegi projekt állapot elvesztése módja a projekt véglegesítenie kell a főágba (vagy bármely készítésű ág) a Git-tárház. Git közvetlenül használható, ha a parancssor (vagy a más kedvenc Git ügyfél tetszőleges eszköz általi) az a főágba való működésre. Példa:
 
-```
+```sh
 # check status to make sure you are on the master branch (or branch of your choice)
 $ git status
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.openlocfilehash: fa7c1e4435106d0fc25cb7f77f195eb48705772d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 155debf5fea4439c8273d2518856952fbf0f871a
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>A konkrét labor házirendek felhasználói engedélyek
 ## <a name="overview"></a>Áttekintés
@@ -87,9 +87,9 @@ Az előző példában a **AllowedVmSizesInLab** házirendet használja. Használ
 ## <a name="next-steps"></a>Következő lépések
 Egyszer már engedélyeket felhasználó adott labor házirendek, az alábbiakban néhány lépéseket érdemes figyelembe venni:
 
-* [Biztonságos hozzáférés a laborokhoz](devtest-lab-add-devtest-user.md).
-* [Laborházirendek megadása](devtest-lab-set-lab-policy.md).
-* [Laborsablon létrehozása](devtest-lab-create-template.md).
-* [Egyéni összetevők létrehozása a virtuális géphez](devtest-lab-artifact-author.md).
-* [Összetevőkkel rendelkező virtuális gép hozzáadása egy laborhoz](devtest-lab-add-vm-with-artifacts.md).
+* [Biztonságos hozzáférés a laborokhoz](devtest-lab-add-devtest-user.md)
+* [Labor házirendek beállítása](devtest-lab-set-lab-policy.md)
+* [Laborsablon létrehozása](devtest-lab-create-template.md)
+* [Egyéni összetevők létrehozása a virtuális gépek](devtest-lab-artifact-author.md)
+* [Virtuális gép hozzáadása egy laborhoz](devtest-lab-add-vm.md)
 

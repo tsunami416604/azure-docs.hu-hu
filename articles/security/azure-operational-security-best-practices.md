@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/04/2017
+ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: ed3c4bf2dcdda3e04a18682da568ae73f41bb37d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ced8ecde1f36c49b479c7b253a90614567783663
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure Operational biztonsági gyakorlati tanácsok
 Az Azure Operational biztonsági hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelmére az adatok, alkalmazások és egyéb eszközök a Microsoft Azure-ban. Az Azure Operational biztonsági egy keretrendszer, amely magában foglalja a különböző képességeket, amelyek a Microsoftnak, beleértve a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center program egyedi keresztül tapasztalatok épül és részletes tájékoztatást nyújthatnak a a számítógépes fenyegetésekről alkotott képet.

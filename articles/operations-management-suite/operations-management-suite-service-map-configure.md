@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: c56a59a648b90c59e6e1a5e0fb6a26cd1dba4dfc
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 0823cc54731ac1cd7f39de256a899696683375a8
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép konfigurálása
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, módon úgy gondolja, hogy azok--összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép kiszolgálók, folyamatok és portok közötti kapcsolatok között nincs konfigurációjával kapcsolatban egy ügynök telepítése nem szükséges bármely TCP-csatlakoztatott architektúra jeleníti meg.
@@ -228,14 +228,14 @@ A rendszergazda eltávolíthatja a függőségi ügynök a Windows Vezérlőpult
 A rendszergazda %Programfiles%\Microsoft függőségi Agent\Uninstall.exe távolítsa el a függőségi ügynököt is futtathatja.
 
 ### <a name="uninstall-the-dependency-agent-on-linux"></a>Távolítsa el a függőségi ügynököt Linux rendszeren
-A függőségi ügynök teljesen eltávolítása Linux, el kell távolítani az ügynök önmagát és az összekötő telepítésekor automatikusan települ az ügynök. Használatával a következő parancsot is eltávolítható.
+A függőség ügynököt eltávolíthatja a Linux az alábbi paranccsal.
 <br>RHEL, CentOs vagy Oracle:
 ```
-sudo rpm -e dependency-agent dependency-agent-connector
+sudo rpm -e dependency-agent
 ```
 Ubuntu:
 ```
-sudo dpkg --purge dependency-agent dependency-agent-connector
+sudo dpkg --purge dependency-agent
 ```
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha bármely telepítését és futtatását a Service Map, akkor ez a szakasz segítséget. Ha még mindig nem tudja megoldani a problémát, forduljon a Microsoft Support.

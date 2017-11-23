@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 10/26/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e5193460bf46c2b826cad371e4549a9690180f17
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 3639bd568fbad69f65fe933aa871f4effdab9a17
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -36,8 +36,8 @@ Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató gépen is köv
 
 A gyorsútmutató elvégzéséhez:
 
-* [A Git telepítése](https://git-scm.com/)
-* [Telepítse a Node.js-t és az NPM-et](https://nodejs.org/)
+* <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
+* <a href="https://nodejs.org/" target="_blank">Telepítse a Node.js-t és az NPM-et</a>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

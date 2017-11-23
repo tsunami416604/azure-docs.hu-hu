@@ -1,5 +1,5 @@
 ---
-title: "Az Event Hubs eseményforrást felvétele az Azure idő adatsorozat Insights környezet |} Microsoft Docs"
+title: "Az Event Hubs eseményforrást hozzáadása Azure idő adatsorozat Insights |} Microsoft Docs"
 description: "A cikkből megtudhatja, hogyan adhat egy eseményforrás, amely egy Eseményközpontot, az idő adatsorozat Insights-környezethez csatlakozik."
 services: time-series-insights
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: f3a9a1c7e57383925877f674a2e02f931e5c1e3c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: c07c847784eb13c62e350e9c655e027e7df696a3
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Az Event Hubs eseményforrást felvétele idő adatsorozat Insights környezet
 

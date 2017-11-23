@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
-ms.openlocfilehash: 121dd1a90e9bde66f1c3b752412a657a67295084
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ac630982b47f7105feb034982eae070faa72d9e
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service-környezet hálózati szempontjai #
 
@@ -47,7 +47,7 @@ Ha egy ILB ASE, a ILB IP-címe a HTTP/S, az FTP/S, a webes telepítési és a t�
 
 A normál alkalmazás-hozzáférési portok a következők:
 
-| Használat | A | Művelet |
+| Használat | Ettől | Művelet |
 |----------|---------|-------------|
 |  A HTTP/HTTPS  | Felhasználó által konfigurálható |  80, 443 |
 |  FTP/FTPS    | Felhasználó által konfigurálható |  21, 990, 10001-10020 |
@@ -59,7 +59,7 @@ Ez érvényét veszti, ha egy külső ASE vagy egy ILB ASE. Ha a számítógép 
 
 Egy ASE befelé függőség:
 
-| Használat | A | Művelet |
+| Használat | Ettől | Művelet |
 |-----|------|----|
 | Kezelés | App Service management címek | ASE alhálózati: 454, 455 |
 |  Belső kommunikációs ASE | ASE alhálózati: minden port | ASE alhálózati: minden port
@@ -76,7 +76,7 @@ Alkalmazás-kezelési forgalom engedélyezése a az alkalmazások ASE az alhál�
 
 A kimenő hozzáférés érdekében egy ASE több külső rendszer függ. E rendszer függőségek rendelkező DNS-nevek, és nem feleltethetők meg az IP-címek készletét. Ebből kifolyólag a ASE portok számos minden külső IP-címek a ASE alhálózatból kimenő hozzáférésre van szüksége. Egy ASE a következő kimenő függőségekkel rendelkezik:
 
-| Használat | A | Művelet |
+| Használat | Ettől | Művelet |
 |-----|------|----|
 | Azure Storage | ASE alhálózati | TABLE.Core.Windows.NET, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80-as, a 443-as, a 445-ös (445-ös csak szükséges ASEv1.) |
 | Azure SQL Database | ASE alhálózati | Database.Windows.NET: 1433-as számú 11000-11999, 14000-14999 (további információkért lásd: [SQL Database 12-es port használati](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).)|
@@ -103,7 +103,7 @@ A ASE működési függőségek kívül a portál élmény kapcsolatos néhány 
 
 -   Webes feladatok
 -   Functions
--   Adatfolyam-napló
+-   Naplózási streaming
 -   Kudu
 -   Bővítmények
 -   Process Explorer
@@ -164,7 +164,7 @@ A következő kimenő szabályok látható elemeinek van szükség, az utolsó e
 
 ![Kimenő biztonsági szabályok][5]
 
-Az NSG-k meghatározása után rendelje hozzá őket az alhálózatot, amely a ASE a. Ha nem emlékszik a ASE virtuális hálózat vagy az alhálózat, megtekintheti a ASE felügyeleti portálról. Az NSG-t rendel az alhálózat, nyissa meg a felhasználói felület alhálózathoz, és válassza ki az NSG-t.
+Az NSG-k meghatározása után rendelje hozzá őket az alhálózatot, amely a ASE a. Ha nem emlékszik a ASE virtuális hálózat vagy az alhálózat, megtekintheti az ASE portál oldalról. Az NSG-t rendel az alhálózat, nyissa meg a felhasználói felület alhálózathoz, és válassza ki az NSG-t.
 
 ## <a name="routes"></a>Útvonalak ##
 

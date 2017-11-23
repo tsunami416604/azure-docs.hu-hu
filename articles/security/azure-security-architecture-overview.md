@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: efb0cfa4b7950a2d9418282965a23498a67cbffc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e7a46f73cc076ff9efb91da8041c4a785b1d1975
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="security-architecture-overview"></a>Biztonsági architektúrájának áttekintése
 Egy erős architekturális foundation rendelkezik az egyik a kulcsok sikeres védelméhez az Azure-ban a megoldás központi telepítések ismét. Ennek az információnak a elvégezheti a követelmények jobb megértése érdekében és ismerje meg, kérje meg a megfelelő kérdéseket tehesse fel, és több található jobb kérdésekre adott válaszok ellátva. Optimalizálja a biztonsági tárhelyigényét felé hosszú úgy jobb a kérdésekre adott válaszok a megfelelő első kerül.

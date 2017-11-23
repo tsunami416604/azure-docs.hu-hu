@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: c38a69176f5f9e6a8f8dbcc411b85bef47362880
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 0302b4f8f4171d288a7e7c62de036c6f1cec8212
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Az Azure Site Recovery mátrix a helyszíni replikálása Azure-bA
 
@@ -119,7 +119,7 @@ A következő táblázat összefoglalja a hálózati konfiguráció támogatása
 --- | --- | ---
 A hálózati adapterek összevonása | Igen<br/><br/>Nem támogatott, ha a fizikai gépeket replikálja a rendszer| Igen
 VLAN | Igen | Igen
-IPv4-alapú | Igen | Igen
+IPv4 | Igen | Igen
 IPv6 | Nem | Nem
 
 ### <a name="guest-vm-network-configuration"></a>Vendég virtuális gép hálózati konfigurációja
@@ -127,7 +127,7 @@ IPv6 | Nem | Nem
 **Konfigurálás** | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a/nélkül a Virtual Machine Manager)**
 --- | --- | ---
 A hálózati adapterek összevonása | Nem | Nem
-IPv4-alapú | Igen | Igen
+IPv4 | Igen | Igen
 IPv6 | Nem | Nem
 Statikus IP-címet (Windows) | Igen | Igen
 Statikus IP-címet (Linux) | Igen <br/><br/>Virtuális gépek feladat-visszavétel DHCP használatára van konfigurálva.  | Nem
@@ -143,8 +143,9 @@ ILB | Igen | Igen
 Traffic Manager | Igen | Igen
 Több hálózati Adapterrel | Igen | Igen
 Fenntartott IP | Igen | Igen
-IPv4-alapú | Igen | Igen
+IPv4 | Igen | Igen
 Tartsa meg a forrás IP-címe | Igen | Igen
+Virtuális hálózati Szolgáltatásvégpontok (Azure Storage tűzfalak és virtuális hálózatok) | Nem | Nem
 
 
 ## <a name="support-for-storage"></a>Tároló támogatása
@@ -188,9 +189,11 @@ GRS | Igen | Igen
 RA-GRS | Igen | Igen
 Ritkán használt adatok | Nem | Nem
 Gyakran használt adatok| Nem | Nem
+Blokkblobok | Nem | Nem
 Rest(SSE) titkosítását| Igen | Igen
 Prémium szintű Storage | Igen | Igen
 Import/export szolgáltatás | Nem | Nem
+Virtuális hálózati szolgáltatás végpontok (Azure Storage tűzfalak és virtuális hálózatok) célként megadott konfigurált fiók vagy gyorsítótárazza a replikációs adatok tárolására használt tárfiók | Nem | Nem
 
 
 ## <a name="support-for-azure-compute-configuration"></a>Az Azure számítási konfigurációhoz támogatása

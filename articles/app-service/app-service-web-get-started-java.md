@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 11/08/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3d9a4d72d348b4fe631f075debb6198462f24c56
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: d44fff1e59198d662356c4d7739c05e538ba57b9
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Az első Java-webalkalmazás létrehozása az Azure-ban
 
@@ -33,8 +33,8 @@ A gyors üzembe helyezés befejezése után, az alkalmazás majd meg az alábbi 
 
 A gyorsútmutató elvégzéséhez a következők telepítése szükséges:
 
-* Az ingyenes, [Java EE-fejlesztőknek készült Eclipse IDE](http://www.eclipse.org/downloads/). Ez a gyorsútmutató az Eclipse Neont használj.
-* Az [Eclipse-hez készült Azure-eszközkészlet](/java/azure/eclipse/azure-toolkit-for-eclipse-installation).
+* Az ingyenes, <a href="http://www.eclipse.org/downloads/" target="_blank">Java EE-fejlesztőknek készült Eclipse IDE</a>. Ez a gyorsútmutató az Eclipse Neont használj.
+* Az <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Eclipse-hez készült Azure-eszközkészlet</a>.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

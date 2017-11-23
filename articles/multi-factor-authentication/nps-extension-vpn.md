@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: bf83952b29759ff601685513ace31828404c7b1a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c058f1e747849cde0f15a039779665c8718da947
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA bővítményével a hálózati házirend-kiszolgáló az Azure-bA
 
@@ -108,7 +108,7 @@ A hálózati házirend- és elérési szolgáltatások szerepkör telepítésév
 
 ### <a name="azure-mfa-license"></a>Az Azure MFA-licenc
 
-Egy licencre szükség az Azure multi-factor Authentication, és az Azure AD Premium, nagyvállalati mobilitási + biztonsági vagy a multi-factor Authentication előfizetés keresztül érhető el. Fogyasztás alapján licenceinek többek között az Azure MFA felhasználónként vagy a hitelesítési licencek nem kompatibilisek-e a hálózati házirend-kiszolgáló bővítményt. További információkért lásd: [beolvasásával Azure multi-factor Authentication](multi-factor-authentication-versions-plans.md). Tesztelési célokra használható a próba-előfizetést.
+Egy licencre szükség az Azure multi-factor Authentication, és az Azure AD Premium, nagyvállalati mobilitási + biztonsági vagy a multi-factor Authentication különálló licenc keresztül érhető el. Fogyasztás alapján licenceinek többek között az Azure MFA felhasználónként vagy a hitelesítési licencek nem kompatibilisek-e a hálózati házirend-kiszolgáló bővítményt. További információkért lásd: [beolvasásával Azure multi-factor Authentication](multi-factor-authentication-versions-plans.md). Tesztelési célokra használható a próba-előfizetést.
 
 ### <a name="windows-server-software"></a>Windows Server szoftver
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b58d6be3d6412b5357aa405269aac4563a7a33a9
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: c4966f3ddc95a7e7c97d09cd45abdb8443601b74
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
 Azure Service Fabric egy elosztottrendszer platform központi telepítéséhez és mikroszolgáltatások létrehozására és tárolók kezelése. 
@@ -147,5 +147,5 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 > * Kibővített az alkalmazás több csomópont között
 
 * További információ [hibakereső szolgáltatásának a Java használatával az eclipse-ben](service-fabric-debugging-your-application-java.md)
-* További tudnivalók [a folyamatos integreation & állításra Jenkins beállítása](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+* További tudnivalók [a folyamatos integreation & állításra Jenkins beállítása](service-fabric-cicd-your-linux-applications-with-jenkins.md)
 * Más kivételt [Java-minták](https://github.com/Azure-Samples/service-fabric-java-getting-started)

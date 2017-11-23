@@ -4,7 +4,7 @@ description: "A cikk bemutatja számítógépes és a szolgáltatásokkal kapcso
 services: security
 documentationcenter: na
 author: TomShinder
-manager: StevenPo
+manager: MBaldwin
 editor: TomSh
 ms.assetid: 925ba3c6-fe35-413a-98ea-e1a1461f3022
 ms.service: security
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1560ea8b224be0f6bc723f64d8f154805b2771e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 058cda5dd2e7e8026410a14d08d5714ce92822cd
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>A számítógépes Microsoft-szolgáltatások
-Microsoft Services biztonsági, identitás- és számítógépes átfogó megközelítését ismerteti. Microsoft Services biztonsági tömbje biztosít, és identitás-szolgáltatásainak stratégia tervezéséről, megvalósítás, és folyamatban lévő támogatási, amelyek segíthetnek a vállalati ügyfelek megfelel-e a stratégiai célok körű biztonsági megoldások megvalósítását.
+Microsoft Services biztonsági, identitás- és számítógépes átfogó megközelítését ismerteti. Microsoft Services biztonság és identitás szolgáltatások tömbjét stratégia tervezéséről, megvalósítás, és folyamatban lévő támogatási lehetővé teszi. Ezek a szolgáltatások segítségével a vállalati ügyfelek megfelel-e a stratégiai célok körű biztonsági megoldások megvalósítását.
 
 A termék a fejlesztési csapat közvetlen hozzáférést azt hozhat létre termékekről, amelyekbe beépül, és javítják a legújabb biztonsági és identitási képességeibe termékeink illetően vásárlói üzleti és meghajtó innováció védelme érdekében.
 

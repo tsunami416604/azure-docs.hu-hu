@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: glenga
-ms.openlocfilehash: e55af617236f3c36da161158a10b26f2f8f30224
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
-ms.translationtype: HT
+ms.openlocfilehash: a856c3b04dc458c0f1e0017066c35edd743565fd
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>Alkalmazás az Azure Functions használatával
 
@@ -37,7 +37,7 @@ Ez a cikk előfeltételei a következők:
 
 A Visual Studio eszközből az Azure Functions új projekt létrehozása. Az új projekt sablont hoz létre a fájlok *host.json* és *local.settings.json*. Is [host.json az Azure Functions futásidejű beállításokat](functions-host-json.md). 
 
-A fájl *local.settings.json* tárolja Alkalmazásbeállítások, a kapcsolati karakterláncok és az Azure Functions Core eszközök beállításait. A struktúra kapcsolatos további információkért lásd: [kódot és az Azure functions helyi tesztelése](functions-run-local.md#local-settings).
+A fájl *local.settings.json* tárolja Alkalmazásbeállítások, a kapcsolati karakterláncok és az Azure Functions Core eszközök beállításait. A struktúra kapcsolatos további információkért lásd: [kódot és az Azure functions helyi tesztelése](functions-run-local.md#local-settings-file).
 
 ### <a name="functionname-attribute"></a>Függvénynév attribútum
 
@@ -144,7 +144,7 @@ Kötési Cosmos DB dokumentumhoz, használja a attribútum `[DocumentDB]` a NuGe
 [FunctionName("QueueToDocDB")]        
 public static void Run(
     [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem, 
-    [DocumentDB("ToDoList", "Items", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
+    [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
 {
     document = new { Text = myQueueItem, id = Guid.NewGuid() };
 }

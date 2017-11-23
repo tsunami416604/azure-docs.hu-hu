@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f1fb7f876c7dc010c03f01a4f6698ddc18da1100
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d10b9fde99867a218c4368f0be6bee00bc44dc1
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure virtuális gépek biztonsági áttekintése
 Az Azure Virtual Machines rugalmas környezetet biztosít a legkülönbözőbb számítástechnikai megoldások üzembe helyezéséhez. Számítási feladatait a Windows-, Linux-, SQL Server-, Oracle-, IBM-, SAP- és Azure BizTalk Services-támogatás révén mérettől és programnyelvtől függetlenül, szinte bármely operációs rendszerben üzembe helyezheti.
