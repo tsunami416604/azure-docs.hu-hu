@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: joflore
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 042035c89d466083659176ac49fc1b470244ef61
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d43274875ca7ed3b2fe8a7d71481db27451a6080
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure multi-factor Authentication kapcsolatos gyakori kérdések
 Ez a GYIK Azure multi-factor Authentication és a multi-factor Authentication szolgáltatással kapcsolatos gyakori kérdésekre ad választ. Azt bontani a szolgáltatással kapcsolatos kérdésekre általában modellek, felhasználói élményt, számlázási és hibaelhárítást.
@@ -95,7 +95,7 @@ Ha a címtár egy *hitelesítési* Azure multi-factor Authentication szolgáltat
 
 **K: a szervezet rendelkezik használja, és szinkronizálja az Azure többtényezős hitelesítés használata az identitások?**
 
-Ha a szervezet fogyasztás alapján számlázási modellt használ, Azure Active Directory, nem kötelező, de nem szükséges. Ha a többtényezős hitelesítési szolgáltató nem kapcsolódik az Azure AD-bérlő, Azure multi-factor Authentication kiszolgáló vagy az Azure multi-factor Authentication SDK-t a helyszíni csak telepítheti.
+Ha a szervezet fogyasztás alapján számlázási modellt használ, Azure Active Directory, nem kötelező, de nem szükséges. Ha a többtényezős hitelesítési szolgáltató nem kapcsolódik az Azure AD-bérlő, csak telepítése helyszíni Azure multi-factor Authentication kiszolgáló.
 
 Az Azure Active Directory kell adni a licenc-modell, mert a licencek kerülnek az Azure AD-bérlő beszerzési, és rendeljen hozzájuk a felhasználók számára a címtárban.
 

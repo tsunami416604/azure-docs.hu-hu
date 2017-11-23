@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 10/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 503657d6e6e22560b94d4a1cbbc2a74651d1ee7a
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 2345b434a51b768793c2dea4587dc0a49ab35b70
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="how-to-use-availability-sets"></a>Rendelkezésre állási készletek használata
 
-Ebben az oktatóanyagban elsajátíthatja a rendelkezésre állása és megbízhatósága szempontjából a virtuális gép megoldások Azure-ban egy rendelkezésre állási készletek nevű képesség növelésére. Rendelkezésre állási készletek győződjön meg arról, hogy a telepített Azure virtuális gépek több elkülönített hardver fürt különböző pontjain. Ez biztosítja, hogy az Azure hardveres vagy szoftveres hiba akkor fordul elő, ha csak a virtuális gépek alárendelt meghatározott érintett ezzel és, hogy a teljes megoldás továbbra is elérhető, és működik. 
+Ebben az oktatóanyagban elsajátíthatja a rendelkezésre állása és megbízhatósága szempontjából a virtuális gép megoldások Azure-ban egy rendelkezésre állási készletek nevű képesség növelésére. Rendelkezésre állási készletek győződjön meg arról, hogy a virtuális gépek Azure-on telepít egy fürt csomópontja több elkülönített hardver különböző pontjain. Ez biztosítja, hogy az Azure hardveres vagy szoftveres hiba akkor fordul elő, ha csak a virtuális gépek alárendelt meghatározott érintett ezzel és, hogy a teljes megoldás továbbra is elérhető, és működik. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

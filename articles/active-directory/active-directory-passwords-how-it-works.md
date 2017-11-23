@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 19518ad8dc2d697f1716750adc3f0ad7d7f8a875
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: bb2e1aebc60eee5f94ed486e0efb43265728df6f
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Az önkiszolgáló jelszó-változtatási az Azure AD részletes bemutatója
 
@@ -207,7 +207,7 @@ Példa: Nincsenek négy rendszergazdák környezetben. A rendszergazda SSPR seg�
 
 ## <a name="on-premises-integration"></a>Helyszíni integráció
 
-Ha telepítését, konfigurálását és az Azure AD Connect engedélyezése, lehetősége van a következő további helyszíni Integrációk. Ha ezek a beállítások szürkén jelennek meg, majd visszaírási nem megfelelően van konfigurálva. További információkért lásd: [jelszóvisszaírás konfigurálása](active-directory-passwords-writeback.md#configuring-password-writeback).
+Ha telepítését, konfigurálását és az Azure AD Connect engedélyezése, lehetősége van a következő további helyszíni Integrációk. Ha ezek a beállítások szürkén jelennek meg, majd visszaírási nem megfelelően van konfigurálva. További információkért lásd: [jelszóvisszaírás konfigurálása](active-directory-passwords-writeback.md#configure-password-writeback).
 
 ![Visszaírásához.][Writeback]
 
@@ -217,7 +217,7 @@ Ezen a lapon a helyszíni visszaírási ügyfél az alábbi üzenetek egyike jel
 * Az Azure AD online állapotban, és a helyszíni visszaírási ügyfél csatlakozik. Azonban úgy tűnik, az Azure AD Connect telepített verziója elavult. Érdemes lehet [frissítés Azure AD Connect](./connect/active-directory-aadconnect-upgrade-previous-version.md) annak érdekében, hogy rendelkezik a legújabb kapcsolati funkciók és a fontos hibajavításokat tartalmaz.
 * A helyszíni visszaírási ügyfélállapot sajnos jelenleg nem lehet ellenőrizni, mert az Azure AD Connect telepített verziója elavult. [Az Azure AD Connect frissítése](./connect/active-directory-aadconnect-upgrade-previous-version.md) tudjanak a kapcsolat állapotának ellenőrzése.
 * Sajnos úgy tűnik, nem lehet kapcsolódni a helyszíni visszaírási ügyfél most. [Hibaelhárítás az Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolat helyreállítására.
-* Sajnos nem lehet kapcsolódni a helyszíni visszaírási ügyfél mert jelszóvisszaírás nem megfelelően van konfigurálva. [Konfigurálja a jelszóvisszaírás](active-directory-passwords-writeback.md#configuring-password-writeback) a kapcsolat helyreállítására.
+* Sajnos nem lehet kapcsolódni a helyszíni visszaírási ügyfél mert jelszóvisszaírás nem megfelelően van konfigurálva. [Konfigurálja a jelszóvisszaírás](active-directory-passwords-writeback.md#configure-password-writeback) a kapcsolat helyreállítására.
 * Sajnos úgy tűnik, nem lehet kapcsolódni a helyszíni visszaírási ügyfél most. Ezt az End ideiglenes problémák okozhatják. Ha a probléma továbbra is fennáll, [hibaelhárítása az Azure AD Connectet](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolat helyreállítására.
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Jelszavakat írhasson a helyszíni címtár
@@ -248,12 +248,12 @@ Ez a forgatókönyv teszteléséhez Ugrás http://passwordreset.microsoftonline.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A következő cikkek nyújtanak a jelszó alaphelyzetbe állítása, az Azure AD használatával kapcsolatos további információk:
+Az alábbi cikkekben az Azure AD jelszóátállításáról olvashat további információkat:
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
 * [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
 * [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
-* [Licencelési kérdése van?](active-directory-passwords-licensing.md)
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
 * [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)

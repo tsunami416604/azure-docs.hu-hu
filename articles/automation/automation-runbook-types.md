@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/01/2017
 ms.author: bwren
-ms.openlocfilehash: 2acf45187894aa3bfcaa4df639becf18605d50a5
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 508f4bb0fc8a443dd7b95cbf19861ab1a1abeb6e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-runbook típusok
 Azure Automation szolgáltatásbeli számos különböző típusú, amely röviden ismerteti a runbookok támogatja a következő táblázatban.  Az alábbi szakaszokban minden típusát, melynek során vegye figyelembe az egyes esetekben a további információt.
@@ -30,7 +30,6 @@ Azure Automation szolgáltatásbeli számos különböző típusú, amely rövid
 | [PowerShell](#powershell-runbooks) |A Windows PowerShell-parancsfájl alapján szöveg runbook. |
 | [PowerShell-munkafolyamat](#powershell-workflow-runbooks) |A Windows PowerShell munkafolyamat alapú szöveg runbook. |
 | [Python](#python-runbooks) |Szöveg runbook Python alapján. |
-| [Bash](#bash-runbooks) |Szöveg runbook Bash alapján. |
 
 ## <a name="graphical-runbooks"></a>Grafikus forgatókönyvek
 [Grafikus](automation-runbook-types.md#graphical-runbooks) és grafikus PowerShell-munkafolyamati forgatókönyvek létrehozott és szerkesztett a grafikus szerkesztővel az Azure portálon.  Egy fájlba exportálhatja, és majd importálja azokat egy másik automation-fiók, de nem készít vagy szerkeszt őket egy másik eszközzel.  Grafikus forgatókönyvek létrehozása a PowerShell-kódot, de közvetlenül nem tekinthetők meg és módosíthatja a kódot. Grafikus forgatókönyvek nem alakítható át egyik a [szöveges formátumokból](automation-runbook-types.md), sem szöveg runbook konvertálható grafikus formátumban. Grafikus forgatókönyvek konvertálható grafikus PowerShell-munkafolyamati forgatókönyvek során importálása és fordítva.
@@ -64,7 +63,7 @@ A PowerShell-forgatókönyvek a Windows PowerShell alapulnak.  Közvetlenül sze
 ### <a name="known-issues"></a>Ismert problémák
 Az alábbiakban a PowerShell-forgatókönyvek jelenlegi ismert problémái.
 
-* A PowerShell-forgatókönyvek nem nem olvasható be egy titkosítatlan [változóeszköz](automation-variables.md) null értékű.
+* A PowerShell-forgatókönyvek nem tud beolvasni egy titkosítatlan [változóeszköz](automation-variables.md) null értékű.
 * A PowerShell-forgatókönyvek nem tud beolvasni egy [változóeszköz](automation-variables.md) a  *~*  a neve.
 * Get-Process egy PowerShell ismétlődő runbook körülbelül 80 közelítő összeomolhat. 
 * A PowerShell-forgatókönyv sikertelen lehet, ha nagyon nagy mennyiségű adatot írni a kimeneti adatfolyamba egyszerre megkísérli.   Általában oldható meg a probléma által szerint kiírta volna csak a nagyméretű objektumok az használatakor szükséges információkat.  Például helyett szerint kiírta volna hasonlót *Get-Process*, csak a kötelező mezőket a kimenetre küldheti *Get-Process |} Válassza ki a Folyamatnév, CPU*.
@@ -97,7 +96,7 @@ Python runbookok összeállításához Python 2.  Közvetlenül szerkesztheti a 
 ### <a name="known-issues"></a>Ismert problémák
 Az alábbiakban Python runbookok jelenlegi ismert problémái.
 
-* Ahhoz, hogy külső gyártótól származó könyvtárak használatára, a runbookot futtatni kell egy [Windows hibrid forgatókönyv-feldolgozó](https://docs.microsoft.com/en-us/azure/automation/automation-windows-hrw-install) vagy [Linux hibrid forgatókönyv-feldolgozó](https://docs.microsoft.com/en-us/azure/automation/automation-linux-hrw-install) előtt a számítógépen már telepítve könyvtárakkal a runbook indítását.
+* Ahhoz, hogy a külső könyvtárak használatára, a runbookot futtatni kell egy [Windows hibrid forgatókönyv-feldolgozó](https://docs.microsoft.com/en-us/azure/automation/automation-windows-hrw-install) vagy [Linux hibrid forgatókönyv-feldolgozó](https://docs.microsoft.com/en-us/azure/automation/automation-linux-hrw-install) előtt a számítógépen már telepítve könyvtárakkal a runbook indítását.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 Akkor figyelembe kell vennie a következő további szempontok számának meghatározásakor az egyes runbookok használandó típust.

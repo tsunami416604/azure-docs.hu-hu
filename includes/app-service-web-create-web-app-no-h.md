@@ -1,8 +1,6 @@
 A Cloud Shellben az [az webapp create](/cli/azure/webapp#create) paranccsal hozzon létre egy [webalkalmazást](../articles/app-service/app-service-web-overview.md) a `myAppServicePlan` App Service-csomagban. 
 
-A webalkalmazás üzemeltetési tárterületet biztosít a kódhoz, valamint megadja az üzembe helyezett alkalmazás megtekintéséhez szükséges URL-címet.
-
-Az alábbi parancsban cserélje ki az *\<app_name>* nevet egy egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). Ha az `<app_name>` nem egyedi, a következő hibaüzenet jelenik meg: „A megadott <alkalmazás_neve> névvel már létezik webhely.” A webalkalmazás alapértelmezett URL-címe `https://<app_name>.azurewebsites.net`. 
+Az alábbi példában cserélje le  *\<alkalmazás_neve >* egy globálisan egyedi alkalmazásnévvel rendelkező (érvényes karakterek: `a-z`, `0-9`, és `-`). 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --deployment-local-git
@@ -32,7 +30,7 @@ Egy üres web app alkalmazásban létrehozott git telepítés engedélyezve van.
 > A Git távoli URL-CÍMÉT is megjelennek a `deploymentLocalGitUrl` tulajdonság formátumban `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Az URL-cím akkor menteni, mert később szüksége.
 >
 
-Az újonnan létrehozott webapp megtekintéséhez tallózással keresse meg a helyet.
+Tallózással keresse meg az újonnan létrehozott webalkalmazáshoz.
 
 ```bash
 http://<app_name>.azurewebsites.net

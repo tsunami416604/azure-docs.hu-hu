@@ -14,18 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: jomolesk
-ms.openlocfilehash: 9d377f7cd66a29233f36640e5ee3be5f33cc87da
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 83ef9cbb7652bf128d7758237a8e6fbeed6c6565
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
+# <a name="audit-and-accountability-au"></a>Naplózási és elszámolási kötelezettségéről szóló (AU)
+
 > [!NOTE]
 > Ezek az intézkedések határozzák meg NIST és az Egyesült Államok Kereskedelmi Minisztériuma a NIST különleges közlemény 800-53-as verziójának 4 részeként. Tekintse meg a NIST 800-53 fordított 4 tesztelési útmutató a vezérlők és eljárásokat olvashat.
-    
-    
-
-# <a name="audit-and-accountability-au"></a>Naplózási és elszámolási kötelezettségéről szóló (AU)
 
 ## <a name="nist-800-53-control-au-1"></a>A NIST 800-53 vezérlő AU-1
 

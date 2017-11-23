@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: f9631e8a383b88421c55d9c42c8059df9e732800
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa98672551a2089f1a306c838295dd1980da0bca
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect csatlakozási problémák
 Ez a cikk ismerteti az Azure AD Connect és az Azure AD közötti kapcsolat megfelelő működésének és a problémák elhárításáról. A problémát valószínűleg a proxykiszolgálóval környezetben kell vizsgálni.
@@ -40,7 +40,7 @@ A proxykiszolgáló is rendelkeznie kell a szükséges URL-címek megnyitása. A
 
 URL-címek a következő táblázat a abszolút operációs rendszer minimálisan csatlakozni az Azure AD minden. Ez a lista nem tartalmaz semmilyen választható funkciók, például a jelszóvisszaírás, vagy az Azure AD Connect Health. Azt az itt dokumentált lehetőségektől a kezdeti konfiguráció elhárításához.
 
-| URL-CÍME | Port | Leírás |
+| URL-cím | Port | Leírás |
 | --- | --- | --- |
 | mscrl.microsoft.com |A HTTP/80 |Töltse le a Visszavonási listák segítségével. |
 | \*. verisign.com |A HTTP/80 |Töltse le a Visszavonási listák segítségével. |
@@ -95,6 +95,9 @@ Ha a proxy nem megfelelően van beállítva, hibaüzenetet kap: ![proxy200](./me
 | 403 |Tiltott |A proxy nem lett megnyitva a kért URL-címhez. A proxykonfiguráció le újra, és győződjön meg arról, hogy a [URL-címek](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) lett megnyitva. |
 | 407 |Proxyhitelesítés szükséges |A proxykiszolgáló szükséges, a bejelentkezés, és nincs megadva. Ha a proxykiszolgálóhoz hitelesítés szükséges, biztosítsa, hogy ez a beállítás a Machine.config fájlban konfigurálva legyen-e. Győződjön meg arról is tartományi fiókokat használ a felhasználó, a varázsló futtatása és a szolgáltatási fiókhoz. |
 
+### <a name="proxy-idle-timeout-setting"></a>Üresjárati időtúllépés proxybeállítása
+Az Azure AD Connect exportálási kérelmet küld az Azure AD, ha az Azure AD választ létrehozása előtt a kérelem feldolgozása akár 5 percet is igénybe vehet. Ez akkor fordulhat elő, különösen akkor, ha az Exportálás kérésben szereplő nagy csoporttagsággal rendelkező objektumok több. Ügyeljen arra a Proxy időtúllépést 5 perccel későbbinek kell lennie. Ellenkező esetben átmeneti hálózati probléma az Azure AD meg az Azure AD Connect-kiszolgáló lehet figyelni.
+
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Az Azure AD Connect és az Azure AD közötti kommunikáció minta
 Ha követte a fenti lépéseket, és továbbra sem sikerül kapcsolódni, akkor előfordulhat, hogy ezen a ponton start hálózati naplók megnézi. Ez a szakasz a normál és a sikeres kapcsolat minta van dokumentálása. Azt a közös piros hering figyelmen kívül hagyható a hálózati naplók olvasásakor listázása is van.
 
@@ -107,7 +110,7 @@ Ez egy biztonsági másolat egy tényleges proxy naplóból és a telepítési v
 
 **Az Azure AD Connect**
 
-| Time | URL-CÍME |
+| Time | URL-cím |
 | --- | --- |
 | 1/11/2016 8:31 |Connect://Login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |Connect://adminwebservice.microsoftonline.com:443 |
@@ -118,7 +121,7 @@ Ez egy biztonsági másolat egy tényleges proxy naplóból és a telepítési v
 
 **Konfigurálás**
 
-| Time | URL-CÍME |
+| Time | URL-cím |
 | --- | --- |
 | 1/11/2016 8:43 |Connect://Login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
@@ -134,7 +137,7 @@ Ez egy biztonsági másolat egy tényleges proxy naplóból és a telepítési v
 
 **Kezdeti szinkronizálás**
 
-| Time | URL-CÍME |
+| Time | URL-cím |
 | --- | --- |
 | 1/11/2016 8:48 |Connect://Login.Windows.NET:443 |
 | 1/11/2016 8:49 |Connect://adminwebservice.microsoftonline.com:443 |

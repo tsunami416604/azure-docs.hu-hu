@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a7a1179f815395028c4d0324e2bfb6fbed77229c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2fab26d8ff9f006cfed82685a738b791d0b0624
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-advanced-threat-detection"></a>Az Azure fejlett fenyegetések észlelése
 ## <a name="introduction"></a>Bevezetés
@@ -88,7 +88,7 @@ Példák néhány módot, amelyek segítségével Azure Identity Protection a fi
 
 A [az Azure Active Directory (AD) Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure),
 
-![Azure AD Privileged Identity Management](./media/azure-threat-detection/azure-threat-detection-fig2.png)
+![Az Azure AD Privileged Identity Management](./media/azure-threat-detection/azure-threat-detection-fig2.png)
 
 kezelése, szabályozása, és figyelje a hozzáférést a szervezeten belül. Ebbe beletartozik az Azure AD és más online Microsoft-szolgáltatások, például az Office 365 vagy a Microsoft Intune erőforrásaihoz való hozzáférés.
 
@@ -351,7 +351,7 @@ Az anomáliadetektálás API egy eredményesebbé és hatékonyabbá teszi megol
 
 -   Üzleti elemzés csoportok üzleti KPI-k (például az értékesítési kötet ügyfél hangulati elemek díjszabás) figyelni kívánja a rendellenes adatátviteli valós időben.
 
-### <a name="cloud-app-security"></a>A cloud App Security
+### <a name="cloud-app-security"></a>Cloud App Security
 
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) a Microsoft Cloud biztonsági verem kritikus összetevője. A szervezet segítségére lehetnek a felhőalapú alkalmazások ígéret teljes körű kihasználása, de a vezérlő keresztül történő tevékenység jobb átláthatóságával nyomon mozgatásakor átfogó megoldás is. Emellett segít felhőalkalmazások kritikus adatok védelmének növelése.
 
@@ -368,7 +368,7 @@ Eszközöket, amelyek segítenek az árnyékinformatika informatikai kockázatfe
 
  </tr>
  <tr>
-   <td>vezérlő</td>
+   <td>Vezérlő</td>
    <td>A kockázatnak a mérséklése úgy, hogy házirendek és riasztások segítségével teljes mértékben hálózati felhőforgalom felett. Biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit a Cloud App Security.</td>
 
  </tr>
@@ -378,14 +378,14 @@ Eszközöket, amelyek segítenek az árnyékinformatika informatikai kockázatfe
 
  </tr>
  <tr>
-   <td>vezérlő</td>
+   <td>Vezérlő</td>
    <td>A kockázatnak a mérséklése úgy, hogy házirendek és riasztások segítségével teljes mértékben hálózati felhőforgalom felett. Biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit a Cloud App Security.</td>
 
  </tr>
 </table>
 
 
-![A cloud App Security](./media/azure-threat-detection/azure-threat-detection-fig14.png)
+![Cloud App Security](./media/azure-threat-detection/azure-threat-detection-fig14.png)
 
 A cloud App Security integrálható a felhő által látható
 

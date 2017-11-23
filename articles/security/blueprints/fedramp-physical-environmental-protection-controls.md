@@ -14,18 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: jomolesk
-ms.openlocfilehash: 845e2b165fe01a0a3a2193165eb7ab73a06b9ff5
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9e9e473285f4e82e1da40b8c3d496d65733fbd45
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
+# <a name="physical-and-environmental-protection-pe"></a>Fizikai és környezeti védelmi (PE)
+
 > [!NOTE]
 > Ezek az intézkedések határozzák meg NIST és az Egyesült Államok Kereskedelmi Minisztériuma a NIST különleges közlemény 800-53-as verziójának 4 részeként. Tekintse meg a NIST 800-53 fordított 4 tesztelési útmutató a vezérlők és eljárásokat olvashat.
-    
-    
-
-# <a name="physical-and-environmental-protection-pe"></a>Fizikai és környezeti védelmi (PE)
 
 ## <a name="nist-800-53-control-pe-1"></a>A NIST 800-53 vezérlő PE-1
 

@@ -5,19 +5,18 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/23/2017
+ms.date: 11/21/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: a01d8d1ed0f5234f4950d448b54087767353c8ef
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 043aea81258d96fc6598903f9b523f29a5bf2c15
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Gyakori kérdések az Azure költség Management
-
 
 Ez a cikk foglalkozik Azure költség Management (más néven Cloudyn) kapcsolatos gyakori kérdésekre. Ha költség-kezeléssel kapcsolatos kérdése van, kérje meg őket, [gyakori kérdések az Azure költség Management Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn).
 
@@ -125,3 +124,15 @@ Ha az Azure-ból történő adatküldés Cloudyn késleltetés, adatok Azure tov
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Hogyan lehet egy közvetlen CSP Cloudyn hozzáférésének beállítása közvetett CSP-ügyfelekre és partnerekre?
 
 Útmutatásért lásd: [közvetett CSP hozzáférés konfigurálása Cloudyn](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn).
+
+## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>Mi okozza a optimalizáló menüpont jelenik meg?
+
+Miután hozzáadta az Azure Resource Manager hozzáférési és adatokat kell felvenni, kell megjelennie a **optimalizáló** lehetőséget. Aktiválja az Azure Resource Manager hozzáférés, lásd: [hogyan aktiválása aktivált fiókok Azure hitelesítő adataival?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
+
+## <a name="is-cost-managementcloudyn-agent-based"></a>Költség felügyeleti/Cloudyn ügynök alapja
+
+Nem. Ügynökök nem használhatók. Azure virtuális gép metrikus adatokat virtuális gépek gyűjtött a Microsoft Hirdetéselemző API-t. Ha azt szeretné, az Azure virtuális gépek metrika adatok gyűjtését, szükségük van engedélyezve diagnosztikai beállítások.
+
+## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Tegye Cloudyn szóló jelentésekben megtekintheti a jelentés egynél több AD-bérlő?
+
+Igen. Is [hozzon létre egy megfelelő cloud Partner entitás](tutorial-user-access.md#create-entities) az egyes AD bérlők, hogy rendelkezik. Majd megtekintheti az összes Azure AD-bérlő adatait és más felhőalapú platform szolgáltatók, beleértve az Amazon Web Services és a Google Cloud Platform.

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/27/2017
+ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 1b13255c2bbb0d97c33851b89d071036c47e9cfa
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: c6347e332f73f6b6dfb5cf9fe4aa7030db331988
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) Azure SQL eléréséhez használja
 
@@ -30,8 +30,11 @@ Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (
 > * A virtuális gép hozzáférést biztosíthat az Azure SQL-kiszolgáló
 > * Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és használja az Azure SQL server lekérdezésére
 
+## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
+
+[!INCLUDE [msi-tut-prereqs](../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/10/2017
 ms.author: tamram
-ms.openlocfilehash: 1eac4165c35cb116a359c074bd629c918b58097c
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: ca4cb2dea9cdd2e46c3aef042e525acdfc09de8e
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>Átviteli objektumok az Azure Blob storage .NET használatával
 
@@ -26,8 +26,8 @@ A gyors üzembe helyezés megismerheti, hogyan használható az Azure Storage a 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A gyors üzembe helyezés befejeződik, telepítse a [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) következő munkaterheléssel:
-    
-    - **Azure-fejlesztés**
+
+- **Azure-fejlesztés**
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

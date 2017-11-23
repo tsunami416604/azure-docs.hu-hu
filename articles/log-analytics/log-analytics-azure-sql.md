@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: a1214d8327075ee081124d42aeb78846e09ff588
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 957b8b9aca0ae27362923c87c7a0161cf2c052b7
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Azure SQL adatbázis Azure SQL elemzés (előzetes verzió) Naplóelemzési figyelése
 
@@ -29,6 +29,11 @@ Az Azure SQL elemzési megoldás az Azure Naplóelemzés gyűjt, és fontos SQL 
 Jelenleg ez preview megoldás legfeljebb 150 000 Azure SQL-adatbázisok és 5000 SQL rugalmas készletek / munkaterület támogatja.
 
 Az Azure SQL elemzési megoldás, mások számára elérhető Naplóelemzési, például segítségével megfigyelheti és az Azure-erőforrások értesítéseket állapotával kapcsolatos – ebben az esetben az Azure SQL Database. A Microsoft Azure SQL Database egy méretezhető relációs adatbázis-szolgáltatás, amely az Azure felhőben futó alkalmazások ismerős SQL-kiszolgáló-szerű képességeket biztosít. A Naplóelemzési segítségével gyűjtése, összefüggéseket és strukturált és strukturálatlan adatok megjelenítése.
+
+Az Azure SQL elemzési megoldás használatával gyakorlati áttekintés és a jellemző használati forgatókönyvei tekintse meg a beágyazott videó:
+          
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
+>
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
@@ -115,7 +120,7 @@ Minden szempontból ezekkel az előfizetés, a kiszolgáló, a rugalmas készlet
 
 ### <a name="intelligent-insights-report"></a>Intelligens Insights jelentés
 
-Gyűjti az összes intelligens Insights ábrázolt, és az elemzések szempontjából keresztül érhetők el. 
+Az Azure SQL Database [intelligens Insights](../sql-database/sql-database-intelligent-insights.md) jelzi, mi történik az adatbázis-teljesítménnyel. Gyűjti az összes intelligens Insights ábrázolt, és az elemzések szempontjából keresztül érhetők el.
 
 ![Az Azure SQL elemzés Insights](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 

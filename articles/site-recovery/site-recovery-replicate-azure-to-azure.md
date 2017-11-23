@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 5/22/2017
+ms.date: 11/21/2017
 ms.author: asgang
-ms.openlocfilehash: f9f97cf840b722c8cfee169dd1640e0682f287ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc7dff33aa2c3e844c6a91024fcfc98148416f7e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Az Azure virtuális gépek replikálása Azure-régió, egy másik
 
@@ -32,7 +32,7 @@ A cikkből megtudhatja, hogyan állíthat be egy másik Azure-régió, egy Azure
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A cikk feltételezi, hogy már ismeri a Site Recovery és a Recovery Services-tároló. "Recovery services-tároló" előre létrehozott rendelkeznie kell.
+* A cikk feltételezi, hogy már ismeri a Site Recovery és a Recovery Services-tároló. Egy "Recovery services-tároló" előre létrehozott, rendelkeznie kell.
 
     >[!NOTE]
     >
@@ -51,9 +51,9 @@ Az ezen az ábrán Kelet-Ázsiában futó virtuális gépeket replikálja a Micr
 
  Kattintson a **+ replikálás** engedélyezni szeretné a virtuális gépek replikálását a tárolóban lévő állapottal.
 
-1. **Forrás:** hivatkozik a gépek eredetű, amely ebben az esetben a pont **Azure**.
+1. **Forrás:** származási gépek, amelyek ebben az esetben a pont hivatkozik **Azure**.
 
-2. **A forrás helye:** az Azure-régió, ahol el szeretné-e a virtuális gépek védelmére. Az ezen az ábrán a forráshely "Kelet-Ázsia" lesz
+2. **A forrás helye:** az Azure-régió, ahol el szeretné-e a virtuális gépek védelmére. Az ezen az ábrán a hely a "Kelet-Ázsia"
 
 3. **Telepítési modell:** forrásgépek Azure-telepítés modelljét hivatkozik. Kiválaszthatja, hogy vagy a klasszikus vagy erőforrás-kezelő és a modell tartozó gépek listája a következő lépésben védelemre.
 
@@ -69,34 +69,34 @@ A **virtuális gépek > Válassza ki a virtuális gépek**kattintson, és válas
     ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 
-A beállítások című szakaszban konfigurálhatja a cél hely tulajdonságai
+Beállítások szakaszban konfigurálhatja a cél hely tulajdonságai
 
 1. **Cél helye:** Ez az a hely, ahol a forrás virtuális gép adatait a rendszer replikálja. Attól függően, a kijelölt gépekhez helyét, a Site Recovery biztosítja azokat a megfelelő cél régiók listáját.
 
     > [!TIP]
     > Javasoljuk, hogy tartsa célhelye megegyezik a helyreállítási frissítésétől services-tároló.
 
-2. **Cél-erőforráscsoport:** az erőforráscsoport, ahol az összes a replikált virtuális gépek tartozni fog. Alapértelmezés szerint az ASR létrehoz egy új erőforráscsoportot a cél régióban "automatikus" utótaggal rendelkező nevű. Abban az esetben, ha erőforráscsoport hozta létre az ASR már létezik, a fogja használni. Választhatja azt is, ahogy az alábbi szakasz testre szabhatja.    
-3. **Cél virtuális hálózat:** alapértelmezés szerint az ASR létrehoz egy új virtuális hálózat a cél régióban "automatikus" utótaggal rendelkező nevű. Ez a forrás hálózati kell hozzárendelni, és minden jövőbeli védelmi használandó.
+2. **Cél-erőforráscsoport:** az erőforráscsoport, ahol az összes a replikált virtuális gépek tartozni fog. Alapértelmezés szerint Azure Site Recovery létrehoz egy új erőforráscsoportot a cél régióban "automatikus" utótaggal rendelkező névvel. Erőforráscsoport létrehozásánál Azure Site Recovery által már létezik, a fogja használni. Választhatja azt is, ahogy az alábbi szakasz testre szabhatja.    
+3. **Cél virtuális hálózat:** alapértelmezés szerint Azure Site Recovery létrehoz egy új virtuális hálózat a cél régióban "automatikus" utótaggal rendelkező nevű. Ez a forrás hálózati kell hozzárendelni, és minden jövőbeli védelmi használandó.
 
     > [!NOTE]
     > [Ellenőrizze a hálózati részleteket](site-recovery-network-mapping-azure-to-azure.md) további információkat a hálózat leképezését.
 
-4. **Cél Storage-fiókok:** alapértelmezés szerint az ASR hoz létre az új cél tárfiók mimicking a forrás virtuális gép tárolási konfigurációt. Abban az esetben, ha már az ASR által létrehozott tárfiók létezik, a fogja használni.
+4. **Cél Storage-fiókok:** alapértelmezés szerint az Azure Site Recovery az új cél tárfiók a forrás virtuális gép tárolókonfiguráció mimicking hoz létre. Abban az esetben, ha már Azure Site Recovery által létrehozott tárfiók létezik, a fogja használni.
 
-5. **Storage-fiókok gyorsítótárazása:** ASR gyorsítótárazása nevű adatforrás régióban extra storage-fiók szükséges. Történik a forrás virtuális gépeken végrehajtott módosításokat a nyomon követheti és a gyorsítótár tárfiók előtt replikálni azokat a célhelyre küldött.
+5. **Storage-fiókok gyorsítótárazása:** Azure Site Recovery gyorsítótárazása nevű adatforrás régióban extra storage-fiók szükséges. Történik a forrás virtuális gépeken végrehajtott módosításokat a nyomon követheti és a gyorsítótár tárfiók előtt replikálni azokat a célhelyre küldött.
 
-6. **A rendelkezésre állási csoporthoz:** alapértelmezés szerint az ASR létrehoz egy új rendelkezésre állási cél régióban "automatikus" utótaggal rendelkező név megadva. Abban az esetben, ha az ASR már létrehozta a rendelkezésre állási csoport létezik, a fogja használni.
+6. **A rendelkezésre állási csoporthoz:** alapértelmezés szerint a Azure Site Recovery létrehoz egy új rendelkezésre állási cél régióban "automatikus" utótaggal rendelkező név megadva. Azure Site Recovery már létrehozta a rendelkezésre állási csoport létezik, a fogja használni.
 
-7.  **Replikációs házirend:** azt határozza meg a helyreállítási pont megőrzési előzményeit és az alkalmazás alkalmazáskonzisztens pillanatkép gyakorisága beállításait. Alapértelmezés szerint az ASR beállításokkal hozza létre egy új replikációs házirendet alapértelmezett 24 órányi a helyreállítási pontok megőrzésének ideje és a "60 percig app alkalmazáskonzisztens pillanatkép gyakorisága.
+7.  **Replikációs házirend:** azt határozza meg a helyreállítási pont megőrzési előzményeit és az alkalmazás alkalmazáskonzisztens pillanatkép gyakorisága beállításait. Alapértelmezés szerint Azure Site Recovery létrehoz egy új replikációs házirendet a ' 24 órányi a helyreállítási pontok megőrzésének ideje és a "60 percig app alkalmazáskonzisztens pillanatkép gyakorisága alapértelmezett beállításokkal.
 
     ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 
 ## <a name="customize-target-resources"></a>Tároló erőforrásait testreszabása
 
-Abban az esetben, ha az automatikus rendszer-Helyreállítás által használt alapértelmezett módosítani szeretné, hogy megváltoztathatják a beállításokat, a igények alapján.
+Abban az esetben, ha az Azure Site Recovery által használt alapértelmezett módosítani szeretné, hogy megváltoztathatják a beállításokat, a igények alapján.
 
-1. **Testreszabása:** a gombra kattintva módosíthatja az alapértelmezett értékeket használják az automatikus rendszer-Helyreállítás.
+1. **Testreszabása:** kattintson rá az Azure Site Recovery által használt alapértelmezett módosítása.
 
 2. **Cél-erőforráscsoport:** az erőforráscsoportot kiválaszthatja a meglévő a célhelyen az előfizetésen belüli összes erőforráscsoport listájáról.
 
@@ -112,7 +112,7 @@ Abban az esetben, ha az automatikus rendszer-Helyreállítás által használt a
 Amennyiben a védett virtuális gépek a virtuális gépek állapotát állapotának ellenőrizheti **replikált elemek**
 
 >[!NOTE]
->Az időre, amíg a kezdeti replikáció nem sikerült annak a lehetősége, hogy az állapot frissítése időt vesz igénybe, és nem jelenik meg a folyamatban van egy kis ideig. A legfrissebb állapotának beolvasása a panel felső részén található frissítés gombra kattinthat.
+>Az időre, amíg a kezdeti replikáció lehetnek egy előfordulhat, hogy az állapot frissítése időt vesz igénybe, és nem jelenik meg a folyamatban van egy kis ideig. A legfrissebb állapotának beolvasása a panel felső részén található frissítés gombra kattinthat.
 >
 
 ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/replicateditems.PNG)
