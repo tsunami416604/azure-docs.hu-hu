@@ -9,15 +9,15 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f93cfcdffd79b4cccdbd5f7c67ec42499bf7628c
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 0f0591a9f2b8c932cb9a03e7186dbf6877b96197
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Fejlesztés és a szimulált eszköz egy C# IoT peremhálózati modul telepítése – előzetes
 
-Az IoT-Edge modulok, amely megvalósítja az üzleti logikát, közvetlenül az IoT peremhálózati eszköz a kód telepítésére használhatja. Ez az oktatóanyag végigvezeti létrehozása és telepítése az IoT peremhálózati modul érzékelőadatait a szimulált IoT peremhálózati eszközön létrehozott tartozó telepítése Azure IoT Edge a szimulált eszköz a szűrő [Windows] [ lnk-tutorial1-win]vagy [Linux] [ lnk-tutorial1-lin] oktatóanyagok. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
+Az IoT-Edge modulok, amely megvalósítja az üzleti logikát, közvetlenül az IoT peremhálózati eszköz a kód telepítésére használhatja. Ez az oktatóanyag végigvezeti létrehozása és telepítése az IoT peremhálózati modul érzékelőadatait szűrő. A szimulált IoT peremhálózati eszköz, a központi telepítése Azure IoT peremhálózati a szimulált eszköz létrehozott fogjuk [Windows] [ lnk-tutorial1-win] vagy [Linux] [ lnk-tutorial1-lin]oktatóanyagok. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
 > [!div class="checklist"]
 > * Visual Studio Code segítségével hozzon létre egy IoT Edge-modul a .NET core 2.0 alapján
@@ -26,60 +26,58 @@ Az IoT-Edge modulok, amely megvalósítja az üzleti logikát, közvetlenül az 
 > * Adatok generált megtekintése
 
 
-Az IoT-Edge modul, amely ebben az oktatóanyagban létrehozhat szűrők az eszköz által létrehozott hőmérséklet adatokat, és csak küld üzeneteket előtt hőmérséklete meghaladja a küszöbértéket. 
+Az IoT-Edge modul, amely ebben az oktatóanyagban létrehozhat szűrők az eszköz által létrehozott hőmérséklet adatokat. Ez csak akkor küldi el üzenetek előtt Ha hőmérséklete meghaladja a küszöbértéket. Ilyen típusú elemzés peremére akkor hasznos, ha továbbítani, és a felhőben tárolt adatok mennyisége csökkenteni. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure IoT peremhálózati eszköz, amelyet a gyors üzembe helyezés vagy az oktatóanyag előző hozott létre.
-* Az IoT hub, amely az IoT-peremhálózati eszköz csatlakozik az IoT-központ kapcsolati karakterláncát.  
+* Az Azure IoT peremhálózati eszköz, a gyors üzembe helyezés vagy első oktatóanyaga, amely létrehozta.
+* Az IoT-peremhálózati eszköz elsődleges kulcs kapcsolati karakterláncát.  
 * [A Visual Studio Code](https://code.visualstudio.com/). 
-* [Azure IoT Edge-bővítményt a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). (Telepítheti a bővítményt a Visual Studio Code bővítmények panelén.)
-* [C# (OmniSharp technológiával) Visual Studio Code-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). (Telepítheti a bővítményt a Visual Studio Code bővítmények panelén.)
-* [Docker](https://docs.docker.com/engine/installation/). A közösségi Edition (CE) a platformhoz is elegendő ehhez az oktatóanyaghoz. Ellenőrizze, hogy a számítógépen futó, Visual STUDIO Code telepítése.
+* [Azure IoT Edge-bővítményt a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
+* [C# (OmniSharp technológiával) Visual Studio Code-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
+* [Docker](https://docs.docker.com/engine/installation/) ugyanazon a számítógépen, amelyen a Visual Studio Code. A közösségi Edition (CE) is használhatók ehhez az oktatóanyaghoz. 
 * [.NET 2.0 SDK alapvető](https://www.microsoft.com/net/core#windowscmd). 
 
-## <a name="choose-or-sign-up-for-a-docker-registry"></a>Válasszon vagy regisztráljon egy Docker-beállításjegyzék
-Ebben az oktatóanyagban használhatja a Visual STUDIO Code Azure IoT peremhálózati kiterjesztését olyan modul létrehozása, és hozzon létre egy [Docker kép](https://docs.docker.com/glossary/?term=image). Ezután Docker rendszerkép leküldéses egy [Docker-tárház](https://docs.docker.com/glossary/?term=repository) üzemeltet egy [Docker beállításjegyzék](https://docs.docker.com/glossary/?term=registry). Végezetül a csomagolt Docker-lemezkép központi telepítése egy [Docker-tároló](https://docs.docker.com/glossary/?term=container) az IoT-peremhálózati eszközön a beállításjegyzékből.  
+## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
+Ebben az oktatóanyagban használhatja a Visual STUDIO Code Azure IoT peremhálózati kiterjesztését olyan modul létrehozása, és hozzon létre egy **tároló kép** a fájlokból. Ezzel a lemezképpel leküldéses, majd egy **beállításjegyzék** , amely tárolja, és a képek kezeli. Végezetül telepít a lemezképet a beállításjegyzékből, futtassa az IoT-peremhálózati eszközön.  
 
-Ebben az oktatóanyagban a Docker-kompatibilis beállításjegyzék is használhatja. Két népszerű Docker beállításjegyzék szolgáltatások érhető el a felhőben vannak **Azure tároló beállításjegyzék** és **Docker Hub**:
+Ebben az oktatóanyagban a Docker-kompatibilis beállításjegyzék is használhatja. Két népszerű Docker beállításjegyzék szolgáltatások érhető el a felhőben vannak [Azure tároló beállításjegyzék](https://docs.microsoft.com/azure/container-registry/) és [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure-tároló beállításjegyzék használja. 
 
-- [Az Azure tároló beállításjegyzék](https://docs.microsoft.com/en-us/azure/container-registry/) érhető el egy [előfizetéssel](https://azure.microsoft.com/en-us/pricing/details/container-registry/). Ebben az oktatóanyagban a **alapvető** előfizetés is elegendő. 
-
-- [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) egy szabad titkos tárházat biztosít, ha létrehoz egy (ingyenes) Docker-azonosító. 
-    1. Létrehoz egy Docker-Azonosítót, kövesse az utasításokat a [egy Docker-Azonosítót regisztrálni](https://docs.docker.com/docker-id/#register-for-a-docker-id) a Docker helyen. 
-
-    2. Hozzon létre egy saját Docker-tárházat, kövesse a [Docker hub új-tárház létrehozása](https://docs.docker.com/docker-hub/repos/#creating-a-new-repository-on-docker-hub) a Docker helyen.
-
-Ez az oktatóanyag teljes adott esetben parancsok nyújtanak Azure tároló beállításjegyzék és a Docker központ.
+1. Az a [Azure-portálon](https://portal.azure.com), jelölje be **hozzon létre egy erőforrást** > **tárolók** > **Azure tároló beállításjegyzék** .
+2. Nevezze el a beállításjegyzékben, válasszon egy előfizetést, válasszon egy erőforráscsoportot és beállítása a Termékváltozat **alapvető**. 
+3. Kattintson a **Létrehozás** gombra.
+4. A tároló beállításkulcs létrehozása után keresse meg a fájlt, és válassza ki **hívóbetűk**. 
+5. Váltás **rendszergazdai jogú felhasználó** való **engedélyezése**.
+6. Másolja a **bejelentkezési kiszolgáló**, **felhasználónév**, és **jelszó**. Ezeket az értékeket az oktatóanyag későbbi részében fogja használni. 
 
 ## <a name="create-an-iot-edge-module-project"></a>Az IoT-Edge modul projekt létrehozása
 A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhálózati modult .NET alapján alapvető Visual Studio Code és az Azure IoT peremhálózati bővítmény 2.0 használatával.
-1. Megnyitás Visual STUDIO Code.
-2. Használja a **nézet |} Terminálszolgáltatások integrált** nyissa meg a Visual STUDIO Code integrált terminál parancsra.
+1. A Visual Studio Code, válassza ki **nézet** > **integrált terminál** a Visual STUDIO Code integrált terminál megnyitásához.
 3. Az integrált terminált, adja meg a következő parancs futtatásával telepítse (vagy frissítse) a **AzureIoTEdgeModule** dotnet-sablon:
 
     ```cmd/sh
     dotnet new -i Microsoft.Azure.IoT.Edge.Module
     ```
 
-2. Az integrált terminált adja meg az új modul projekt létrehozása a következő parancsot:
+2. Új modul projekt létrehozása. A következő parancs létrehozza a projektmappa **FilterModule**, az aktuális munkakönyvtárban:
 
     ```cmd/sh
     dotnet new aziotedgemodule -n FilterModule
     ```
-
-    >[!NOTE]
-    > Ezzel a paranccsal létrejön a projektmappa **FilterModule**, az aktuális munkakönyvtárban. Ha azt szeretné, egy másik helyen létrehozásához, módosítsa a könyvtárat a parancs futtatása előtt.
  
-3. Használja a **fájl |} Nyissa meg a mappa** parancs, keresse meg a **FilterModule** mappára, majd kattintson **Mappaválasztás** megnyitni a projektet a Visual STUDIO Code.
-4. A Visual STUDIO Code Explorerben (megoldáskezelőben) kattintson **Program.cs** való megnyitásához.
-5. A következő mezőt a **Program** osztály.
+3. Válassza ki **fájl** > **nyissa meg a mappa**.
+4. Keresse meg a **FilterModule** mappa, és kattintson **Mappaválasztás** megnyitni a projektet a Visual STUDIO Code.
+5. A Visual STUDIO Code Explorerben (megoldáskezelőben) kattintson **Program.cs** való megnyitásához.
+
+   ![Nyissa meg a Program.cs][1]
+
+6. Adja hozzá a `temperatureThreshold` változót a **Program** osztály. Ez a változó ahhoz, hogy az adatokat az IoT-központ küldendő beállítja az haladhatja meg a mért hőmérséklet értéket. 
 
     ```csharp
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-1. A következő osztályokat lehet felvenni a **Program** osztály. Ezeket az osztályokat határozza meg a várt séma a bejövő üzenet törzsét.
+7. Adja hozzá a `MessageBody`, `Machine`, és `Ambient` az osztályokat a **Program** osztály. Ezeket az osztályokat határozza meg a várt séma a bejövő üzenet törzsét.
 
     ```csharp
     class MessageBody
@@ -100,7 +98,7 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
     }
     ```
 
-1. Az a **Init** metódus, a kód létrehozza és konfigurálja a **DeviceClient** objektum. Ez az objektum lehetővé teszi, hogy a modul csatlakozni a helyi Azure IoT peremhálózati futtatási üzeneteket küldjön és fogadjon. A kapcsolati karakterlánc-paraméter szerepel a **Init** metódus IoT peremhálózati futtatókörnyezet a környezeti változóban megadott modulhoz **EdgeHubConnectionString**. Létrehozása után a **DeviceClient**, a kód egy visszahívás üzenetek fogadása a peremhálózati IoT hub keresztül regisztrálja a **input1** végpont. Cserélje le a visszahívás egy új üzenetek kezelésére használt módszer, és csatolja a modul iker kívánt tulajdonságokkal a frissítések a visszahívását. Ennek a módosításnak cserélje le az utolsó sora a **Init** metódus a következő kóddal:
+8. Az a **Init** metódus, a kód létrehozza és konfigurálja a **DeviceClient** objektum. Ez az objektum lehetővé teszi, hogy a modul csatlakozni a helyi Azure IoT peremhálózati futtatási üzeneteket küldjön és fogadjon. A kapcsolati karakterlánc szerepel a **Init** metódus IoT peremhálózati futtatókörnyezet által biztosított modulhoz. Létrehozása után a **DeviceClient**, a kód egy visszahívás üzenetek fogadása a peremhálózati IoT hub keresztül regisztrálja a **input1** végpont. Cserélje le a `SetInputMessageHandlerAsync` metódust használ egy új, és adja hozzá a `SetDesiredPropertyUpdateCallbackAsync` kívánt tulajdonságokkal frissítések metódus. Ennek a módosításnak cserélje le az utolsó sora a **Init** metódus a következő kóddal:
 
     ```csharp
     // Register callback to be called when a message is received by the module
@@ -113,7 +111,7 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
     await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
     ```
 
-1. Adja hozzá a következő metódust a **Program** osztály frissíteni a **temperatureThreshold** mező a modul iker keresztül a háttér-szolgáltatás által küldött kívánt tulajdonságok alapján. Minden modul rendelkezik a saját modul iker. Egy modul iker lehetővé teszi, hogy a háttér-szolgáltatás beállítása a modul belül futó kódot.
+9. Adja hozzá a `onDesiredPropertiesUpdate` metódust a **Program** osztály. Ez a módszer a kívánt tulajdonságokkal frissítések kap a modul iker, és frissíti a **temperatureThreshold** felel meg a változót. Az összes modulnál megjelenik a saját modul iker, ahol konfigurálhatja a kódot közvetlenül a felhőből modul keretrendszeren belül fut.
 
     ```csharp
     static Task onDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
@@ -144,7 +142,7 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
     }
     ```
 
-1. Cserélje le a **PipeMessage** metódus a következő módszerrel. Ezt a módszert nevezik, ha a modul a peremhálózati központi küld egy üzenet. Üzenetek az üzenet törzsében hőmérséklet érték alapján, és a hőmérséklet küszöbérték beállítása a modul iker keresztül szűri.
+10. Cserélje le a `PipeMessage` metódust a `FilterMessages` metódust. Ezt a módszert nevezik, ha a modul üzenetet kap, a peremhálózati IoT hubról. Állítsa be a modul iker keresztül hőmérséklet küszöbérték alatt hőmérsékletek hoznak üzenetek kiszűri. Bővíti ezenkívül a **MessageType** tulajdonság értéke az üzenetben **riasztási**. 
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
@@ -200,47 +198,42 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
     }
     ```
 
-11. A projekt felépítése. Használja a **nézet |} Explorer** menüparancs a Visual STUDIO Code explorer megnyitásához. A explorer kattintson a jobb gombbal a **FilterModule.csproj** fájlt, és kattintson a **Build IoT peremhálózati modul** fordításához a modult, és exportálja a bináris és annak függőségeit, hogy a Docker-lemezkép létrejött egy mappába a következő lépésben.
+11. A projekt létrehozásához kattintson a jobb gombbal a **FilterModule.csproj** a Explorer, majd kattintson a fájl **Build IoT peremhálózati modul**. Ez a folyamat lefordítja a modult, és exportálja a bináris és annak függőségeit a Docker-lemezkép létrehozásához használt mappába.
+
+   ![Az IoT-Edge modul létrehozása][2]
 
 ## <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Hozzon létre egy Docker-lemezképet, és tegye közzé a beállításjegyzék
 
-1. Összeállíthatja a Docker-lemezképét.
-    1. A Visual STUDIO Code Explorerben (megoldáskezelőben) kattintson a **Docker** mappára a megnyitásához. Válassza ki a mappát, a tároló platform vagy **linux-x64** vagy **windows-nano**. 
-    2. Kattintson a jobb gombbal a **Dockerfile** fájlt, és kattintson a **Build IoT peremhálózati modul Docker kép**. 
-    3. Az a **Mappaválasztás** mezőbe, vagy a Tallózás gombra, vagy adjon meg `./bin/Debug/netcoreapp2.0/publish`. Kattintson a **mappát adja meg a EXE_DIR**.
-    4. Az előugró szövegmezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Például:`<docker registry address>/filtermodule:latest`; ahol *docker beállításjegyzék cím* Docker Hub használata a rendszer a Docker-Azonosítóját vagy hasonló `<your registry name>.azurecr.io`, Azure tároló beállításjegyzék használata.
- 
-4. Jelentkezzen be a Docker. Integrált terminált adja meg a következő parancsot: 
+1. A Visual STUDIO Code Explorerben bontsa ki a **Docker** mappa. Majd bontsa ki a mappát, a tároló platform vagy **linux-x64** vagy **windows-nano**.
 
-    - Docker Hub (adja meg a hitelesítő adatokat):
+   ![Válassza ki a Docker-tároló platform][3]
+
+2. Kattintson a jobb gombbal a **Dockerfile** fájlt, és kattintson a **Build IoT peremhálózati modul Docker kép**. 
+3. Az a **Mappaválasztás** ablak, írja be vagy keresse meg a `./bin/Debug/netcoreapp2.0/publish`. Kattintson a **mappát adja meg a EXE_DIR**.
+4. Az előugró szövegmezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Például: `<your container registry address>/filtermodule:latest`. A tároló beállításjegyzék cím megegyezik a bejelentkezési kiszolgáló másolt a beállításjegyzékből. Meg kell formájában `<your container registry name>.azurecr.io`.
+5. Jelentkezzen be a Docker a Visual STUDIO Code integrált terminálban a következő parancs beírásával: 
+     
+   ```csh/sh
+   docker login -u <username> -p <password> <Login server>
+   ```
         
-        ```csh/sh
-        docker login
-        ```
+   Használja a felhasználónév, jelszó és bejelentkezési kiszolgáló másolt az Azure-tárolót beállításkulcs létrehozása után.
 
-    - Az Azure-tárolót beállításjegyzék:
-        
-        ```csh/sh
-        docker login -u <username> -p <password> <Login server>
-        ```
-        
-        A felhasználónév, jelszó és a bejelentkezési kiszolgáló, a parancs használatával megkereséséhez nyissa meg az [Azure portálra] (https://portal.azure.com). A **összes erőforrás**, kattintson az Azure-tárolót beállításjegyzék nyissa meg a tulajdonságait, majd kattintson a csempére **hívóbetűk**. Az értékek másolása a **felhasználónév**, **jelszó**, és **bejelentkezési kiszolgáló** mezőket. A bejelentkezési kiszolgáló sould a kötelező forma: `<your registry name>.azurecr.io`.
+3. A Docker-tárház küldje le a lemezképet. Válassza ki **nézet** > **parancs paletta** , és keresse meg a **peremhálózati: leküldéses IoT peremhálózati modul Docker kép** parancs. A Visual STUDIO Code ablak tetején az előugró mezőben adja meg a lemezkép nevét. Használja a kép néven lépésben használt 1.d.
 
-3. A Docker-tárház küldje le a lemezképet. Használja a **nézet |} Paletta... parancs |} Peremhálózati: Leküldéses IoT peremhálózati modul Docker kép** menü parancsot, és az előugró mezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Használja a kép néven lépésben használt 1.d.
-
-## <a name="add-registry-credentials-to-edge-runtime-on-your-edge-device"></a>Adja hozzá a peremhálózati eszköz peremhálózati runtime beállításjegyzék hitelesítő adatokat
-A peremhálózati futásidejű a peremhálózati eszköz futtató számítógépen adja hozzá a rendszerleíró adatbázis hitelesítő adatait. Ezáltal a tároló lekéréses futásidejű elérésére. 
+## <a name="add-registry-credentials-to-edge-runtime"></a>Peremhálózati futásidejű beállításjegyzék hitelesítő adatok hozzáadása
+A peremhálózati futásidejű a peremhálózati eszköz futtató számítógépen adja hozzá a rendszerleíró adatbázis hitelesítő adatait. Ezek a hitelesítő adatok hozzáférést a futásidejű való lekérésére a tárolót. 
 
 - A Windows a következő parancsot:
     
     ```cmd/sh
-    iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password> 
+    iotedgectl login --address <your container registry address> --username <username> --password <password> 
     ```
 
 - A Linux a következő parancsot:
     
     ```cmd/sh
-    sudo iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password> 
+    sudo iotedgectl login --address <your container registry address> --username <username> --password <password> 
     ```
 
 ## <a name="run-the-solution"></a>Futtassa a megoldás
@@ -248,16 +241,16 @@ A peremhálózati futásidejű a peremhálózati eszköz futtató számítógép
 1. Az a [Azure-portálon](https://portal.azure.com), keresse meg az IoT hub.
 2. Ugrás a **IoT peremhálózati (előzetes verzió)** és az IoT-peremhálózati eszköz kiválasztásához.
 3. Válassza ki **modulok beállítása**. 
-2. Adja hozzá a **tempSensor** modul. Ez a lépés csak akkor szükséges, ha korábban még nem telepítette a **tempSensor** modul az IoT-peremhálózati eszközön.
+2. Ellenőrizze, hogy a **tempSensor** modul automatikusan feltöltődik értékkel. Ha nem, tegye a következőket veheti fel:
     1. Válassza ki **IoT peremhálózati modul hozzá lesz adva**.
     2. Az a **neve** mezőbe írja be `tempSensor`.
     3. Az a **lemezkép URI** mezőbe írja be `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`.
     4. Hagyja változatlanul az egyéb beállításokat, és kattintson **mentése**.
-9. Adja hozzá a **filtermodule**
-    1. Válassza ki **IoT peremhálózati modul hozzáadása** újra.
-    2. Az a **neve** mezőbe írja be `filtermodule`.
-    3. Az a **kép** mezőbe írja be a kép címét, például `<docker registry address>/filtermodule:latest`.
-    4. Ellenőrizze a **szerkesztés modul iker** mezőbe.
+9. Adja hozzá a **filterModule** modul, amely a korábbi szakaszokban létrehozott. 
+    1. Válassza ki **IoT peremhálózati modul hozzá lesz adva**.
+    2. Az a **neve** mezőbe írja be `filterModule`.
+    3. Az a **lemezkép URI** mezőbe írja be a kép címét, például `<your container registry address>/filtermodule:latest`.
+    4. Ellenőrizze a **engedélyezése** jelölőnégyzetet, hogy a modul iker szerkesztheti. 
     5. Cserélje le a JSON-t a szövegmező számára a modul iker a következő JSON: 
 
         ```json
@@ -289,13 +282,13 @@ A peremhálózati futásidejű a peremhálózati eszköz futtató számítógép
 
 A felhőbe küldött üzeneteket küld az IoT hub az IoT-peremhálózati eszköz eszköz figyelésére:
 1. Az Azure IoT eszközkészlet mező konfigurálására a kapcsolati karakterlánc az IoT hub: 
-    1. Használja a **nézet |} Explorer** menüparancs a Visual STUDIO Code explorer megnyitásához. 
+    1. Nyissa meg a Visual STUDIO Code explorer kiválasztásával **nézet** > **Explorer**. 
     3. Kattintson a explorer **IOT HUB-ESZKÖZÖKNEK** majd **...** . Kattintson a **IoT Hub kapcsolati karakterlánc beállítása** és az IoT hub, amely az IoT-peremhálózati eszköz csatlakozik az előugró ablakban adja meg a kapcsolati karakterláncot. 
 
         Keresse meg a kapcsolati karakterláncot, kattintson a csempére az IoT hub, az Azure portálon, és kattintson a **megosztott elérési házirendek**. A **megosztott elérési házirendek**, kattintson a **iothubowner** házirend, és másolja az IoT-központ kapcsolati karakterlánc a **iothubowner** ablak.   
 
-1. Az IoT hub érkező adatok figyeléséről az **nézet |} Paletta... parancs |} IoT: Figyelni D2C üzenet** menüparancshoz. 
-2. Az adatok figyelésének leállításához, használja a **nézet |} Paletta... parancs |} IoT: Állítsa le a figyelő D2C üzenete** menüparancshoz. 
+1. Az IoT hub érkező adatok figyelésére, válassza ki a **nézet** > **parancs paletta** , és keresse meg a **IoT: D2C üzenet figyelni** parancs. 
+2. Az adatok figyelésének leállításához, használja a **IoT: D2C üzenet figyelés leállításának** menüparancshoz. 
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -309,3 +302,8 @@ Ebben az oktatóanyagban létre egy IoT biztonsági szűréséhez a nyers adatok
 <!-- Links -->
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md
 [lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
+
+<!-- Images -->
+[1]: ./media/tutorial-csharp-module/programcs.png
+[2]: ./media/tutorial-csharp-module/build-module.png
+[3]: ./media/tutorial-csharp-module/docker-os.png
