@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: sngun;AlfredoPizzirani
-ms.openlocfilehash: 5abc325a6e7c019dc3cb84f7f6ff63c3eb2ff76c
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: a4ca742e232a19cd890552bec08f4d11cca52020
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Jelentés Azure verem használati adatait az Azure-bA 
 
@@ -53,7 +53,7 @@ Használati adatok jelentése beállításához kell [Azure verem példány regi
 
 ## <a name="view-usage---csp-subscriptions"></a>Használati adatok megtekintése – CSP előfizetések
 
-Ha regisztrált az Azure-verem egy CSP-előfizetését használja, a használat és díjak megtekintheti a ugyanúgy, ahol megtekintheti az Azure-használatát. Az Azure verem használati szerepelni fog a számla és a fájlban egyeztetés keresztül elérhető [Partnerközpontjában](https://partnercenter.microsoft.com/en-us/partner/home). Az egyeztetés fájl havi frissült. Legutóbbi Azure verem használati adatok eléréséhez szükséges, ha a Partner Center API-kat is használhatja.
+Ha regisztrált az Azure-verem egy CSP-előfizetését használja, a használat és díjak megtekintheti a ugyanúgy, ahol megtekintheti az Azure-használatát. Az Azure verem használati szerepelni fog a számla és a fájlban egyeztetés keresztül elérhető [Partnerközpontjában](https://partnercenter.microsoft.com/partner/home). Az egyeztetés fájl havi frissült. Legutóbbi Azure verem használati adatok eléréséhez szükséges, ha a Partner Center API-kat is használhatja.
 
    ![partnerközpontjában](media/azure-stack-usage-reporting/partner-center.png)
 
@@ -82,7 +82,7 @@ Felhasználók csak a bérlői előfizetések alatt futó virtuális gépek van 
 
 ## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>Azure-veremben használni kívánt Windows Server licenccel kell, hogyan ehhez tennem?
 
-A meglévő-licencet használ elkerüli a használati mérőszámok létrehozásakor. Meglévő Windows Server-licenceket használható Azure-készletben, a "Meglévő szoftver használata Azure verem" szakaszában leírt [az Azure verem licencelési útmutató](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409). Az ügyfelek kell telepítenie a Windows Server virtuális gépei, lásd: a [hibrid juttatása Windows Server-licenc](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/hybrid-use-benefit-licensing) ahhoz, hogy a meglévő licenceiket témakör.
+A meglévő-licencet használ elkerüli a használati mérőszámok létrehozásakor. Meglévő Windows Server-licenceket használható Azure-készletben, a "Meglévő szoftver használata Azure verem" szakaszában leírt [az Azure verem licencelési útmutató](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409). Az ügyfelek kell telepítenie a Windows Server virtuális gépei, lásd: a [hibrid juttatása Windows Server-licenc](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) ahhoz, hogy a meglévő licenceiket témakör.
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>Mely előfizetés fel van töltve, a felhasznált erőforrásokért?
 Az előfizetés, mikor biztosított [Azure verem regisztrálása az Azure-ral](azure-stack-register.md) fel van töltve.
@@ -97,7 +97,7 @@ A csomagban Azure verem használati adatok jelentése a globális Azure rendszer
 
 ## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>Hogyan azonosíthatja a felhasználók az Azure verem használati adatokat a számlázási Azure-portálon?
 
-Felhasználók a használat részleteiről fájlban Azure verem használati adatok megtekintéséhez. Hogyan kérhet a használat részleteiről fájl tudnia, tekintse meg a [használati fájl letöltését az Azure Account Center cikk](https://docs.microsoft.com/en-us/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). A használat részleteiről fájl tartalmazza az Azure-verem mérőszámok, amelyek azonosítják a verem Azure storage és a virtuális gépek. Azure-készletben használt erőforrások jelenti az "Azure verem." nevű régió alatt
+Felhasználók a használat részleteiről fájlban Azure verem használati adatok megtekintéséhez. Hogyan kérhet a használat részleteiről fájl tudnia, tekintse meg a [használati fájl letöltését az Azure Account Center cikk](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). A használat részleteiről fájl tartalmazza az Azure-verem mérőszámok, amelyek azonosítják a verem Azure storage és a virtuális gépek. Azure-készletben használt erőforrások jelenti az "Azure verem." nevű régió alatt
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Miért nem egyezik meg az Azure-készletben jelentett használati Azure Account Center által létrehozott jelentést?
 

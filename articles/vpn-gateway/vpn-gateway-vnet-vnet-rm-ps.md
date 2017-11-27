@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 11/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 46037efe0e2c30337d76790c46c16e300bfffd5f
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9bcad8ed57980b08e0290e0272a5ff9de46f11a0
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -59,13 +59,17 @@ A virtuális hálózatok közötti kapcsolatokról további információt a cikk
 
 ## <a name="which-set-of-steps-should-i-use"></a>Melyik eljárást használjam?
 
-Ebben a cikkben kétféle lépéssorozatot láthat. Az egyik lépéssorozat az [azonos előfizetésben található virtuális hálózatokra](#samesub), a másik az [eltérő előfizetésekben található virtuális hálózatokra](#difsub) vonatkozik. A két sorozat közötti fő különbség az, hogy lehetséges-e egyetlen PowerShell-munkameneten belül konfigurálni az összes virtuális hálózati és átjáró-erőforrást.
-
-A cikkben szereplő lépések az egyes szakaszok elején deklarált változókat használják. Ha már meglévő virtuális hálózatokat használ, módosítsa úgy a változókat, hogy azok a saját környezetének beállításait tükrözzék. Ha névfeloldással szeretné ellátni a virtuális hálózatokat, tekintse meg a [Névfeloldás](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) című cikket.
-
-## <a name="samesub"></a>Azonos előfizetésben található virtuális hálózatok összekapcsolása
+Ebben a cikkben kétféle lépéssorozatot láthat. Egy lépéssorozat az [azonos előfizetésben található virtuális hálózatokhoz](#samesub). A konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
 
 ![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+
+Az [eltérő előfizetésben található virtuális hálózatokkal](#difsub) külön cikk foglalkozik. Annak a konfigurációnak a lépései a TestVNet1 és TestVNet5 hálózatot használják.
+
+![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
+
+A két sorozat közötti fő különbség az, hogy lehetséges-e egyetlen PowerShell-munkameneten belül konfigurálni az összes virtuális hálózati és átjáró-erőforrást. Az eltérő előfizetésekben található virtuális hálózatok kapcsolatainak konfigurálásához külön PowerShell-munkameneteket kell használnia. Ha szeretné, a konfigurációkat kombinálhatja, vagy egyszerűen kiválaszthatja a használni kívántat.
+
+## <a name="samesub"></a>Azonos előfizetésben található virtuális hálózatok összekapcsolása
 
 ### <a name="before-you-begin"></a>Előkészületek
 
@@ -90,7 +94,7 @@ A példákban a következő értékeket használjuk:
 * Nyilvános IP-cím: VNet1GWIP
 * VPN típusa: RouteBased
 * Kapcsolat (1–4): VNet1toVNet4
-* Kapcsolat (1–5): VNet1toVNet5
+* Kapcsolat (1–5): VNet1toVNet5 (virtuális hálózatokhoz eltérő előfizetésekben)
 * Kapcsolat típusa: VNet2VNet
 
 **Értékek a TestVNet4-hez:**
@@ -279,8 +283,6 @@ A TestVNet1 konfigurálása után a hozza létre a TestVNet4 virtuális hálóza
 4. Ellenőrizze a kapcsolatot. Tekintse meg [A kapcsolat ellenőrzése](#verify) című szakaszt.
 
 ## <a name="difsub"></a>Különböző előfizetésben található virtuális hálózatok összekapcsolása
-
-![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 Ebben a forgatókönyvben csatlakoztatjuk a TestVNet1 és a TestVNet5 virtuális hálózatot. A TestVNet1 és a TestVNet5 eltérő előfizetésekben található. Az előfizetéseket nem kell társítani ugyanazzal az Active Directory bérlővel. A jelen és korábbi lépések közötti különbség abban áll, hogy a konfigurációs lépések egy részét külön PowerShell-munkamenetben kell elvégezni a második előfizetés környezetében. Ez különösen akkor van így, ha a két előfizetés különböző szervezetekhez tartozik.
 

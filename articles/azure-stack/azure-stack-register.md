@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/21/2017
 ms.author: erikje
-ms.openlocfilehash: 977630741b8424c4c6bd5f5d492e33b9981b9cb5
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 6ce8f86592ece59e338578be86c2cb673c35dbc1
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Az Azure verem regisztrálása az Azure-előfizetéshez
 
@@ -42,22 +42,6 @@ Mielőtt regisztrálná az Azure-vermet az Azure-ral, rendelkeznie kell:
 Ha nem rendelkezik Azure-előfizetéssel, amely megfelel ezeknek a követelményeknek, akkor [ingyenes Azure-fiók létrehozása itt](https://azure.microsoft.com/en-us/free/?b=17.06). Azure verem regisztrálása költséget nem áll, az Azure-előfizetése.
 
 
-
-## <a name="register-azure-stack-resource-provider-in-azure"></a>Azure verem erőforrás-szolgáltató regisztrálása az Azure-ban
-> [!NOTE] 
-> Ez a lépés csak egyszer Azure verem környezetben kell elvégezni.
->
-
-1. Indítsa el egy Powershell-munkamenetet rendszergazdaként.
-2. Jelentkezzen be az Azure-fiók, amely az Azure-előfizetés (segítségével a Login-AzureRmAccount parancsmag jelentkezzen be, és amikor bejelentkezik, ügyeljen arra, hogy a "AzureCloud" - EnvironmentName paraméter beállítása) tulajdonosa.
-3. Regisztrálja az Azure erőforrás-szolgáltató "Microsoft.AzureStack."
-
-**Példa** 
-```Powershell
-Login-AzureRmAccount -EnvironmentName "AzureCloud"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
-```
-
 ## <a name="register-azure-stack-with-azure"></a>Azure verem regisztrálni Azure-ral
 
 > [!NOTE]
@@ -66,7 +50,11 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 
 1. Nyissa meg rendszergazdaként a PowerShell-konzolban és [verem Azure PowerShell telepítése](azure-stack-powershell-install.md).  
 
-2. Adja hozzá az Azure-fiók, amely a használni kívánt Azure verem regisztrálni. Ehhez futtassa a `Add-AzureRmAccount` parancsmag paraméter nélkül. Az Azure-fiók hitelesítő adatainak megadását kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2-factor authentication használatával.  
+2. Adja hozzá az Azure-fiók, amely a használni kívánt Azure verem regisztrálni. Ehhez futtassa a `Add-AzureRmAccount` parancsmag és a EnvironmentName paraméter "AzureCloud" értékre. Az Azure-fiók hitelesítő adatainak megadását kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2-factor authentication használatával. 
+
+   ```Powershell
+   Add-AzureRmAccount -EnvironmentName "AzureCloud"
+   ```
 
 3. Ha több előfizetéssel rendelkezik, futtassa a következő parancsot a használni kívánt válassza:  
 
@@ -74,22 +62,28 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
       Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
-4. A Powershell-modulok regisztrációs megfelelő meglévő verzióinak törlésére és [töltse le a legújabb verzióját a Githubról](azure-stack-powershell-download.md).  
+4. A AzureStack erőforrás-szolgáltató regisztrálása az Azure-előfizetése. Ehhez futtassa a következő parancsot:
 
-5. A könyvtárból "AzureStack-eszközök – master", amely az előző lépésben létrehozott keresse meg a "Nyilvántartási" mappát, és a ".\RegisterWithAzure.psm1" modul importálása:  
+   ```Powershell
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
+   ```
+
+5. A Powershell-modulok regisztrációs megfelelő meglévő verzióinak törlésére és [töltse le a legújabb verzióját a Githubról](azure-stack-powershell-download.md).  
+
+6. A könyvtárból "AzureStack-eszközök – master", amely az előző lépésben létrehozott keresse meg a "Nyilvántartási" mappát, és a ".\RegisterWithAzure.psm1" modul importálása:  
 
    ```powershell 
    Import-Module .\RegisterWithAzure.psm1 
    ```
 
-6. Az ugyanazon PowerShell-munkamenetben futtassa a következő parancsfájlt. Ha a hitelesítő adatok megadását kéri, adja meg a `azurestack\cloudadmin` a felhasználó és a jelszó megegyezik a használt a helyi rendszergazda a telepítés során.  
+7. Az ugyanazon PowerShell-munkamenetben futtassa a következő parancsfájlt. Ha a hitelesítő adatok megadását kéri, adja meg a `azurestack\cloudadmin` a felhasználó és a jelszó megegyezik a használt a helyi rendszergazda a telepítés során.  
 
    ```powershell
    $AzureContext = Get-AzureRmContext
    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the cloud domain credentials to access the privileged endpoint"
    Add-AzsRegistration `
        -CloudAdminCredential $CloudAdminCred `
-       -AzureSubscriptionId $AzureContext.Subscription.Id `
+       -AzureSubscriptionId $AzureContext.Subscription.SubscriptionId `
        -AzureDirectoryTenantName $AzureContext.Tenant.TenantId `
        -PrivilegedEndpoint AzS-ERCS01 `
        -BillingModel Development 
@@ -103,7 +97,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    | PrivilegedEndpoint | Egy előre konfigurált távoli PowerShell-konzolt, és szolgáltatásokat, például a naplógyűjtést és egyéb utáni feladatok végrehajtását. A szoftverfejlesztői készlet a kiemelt végpont a "AzS-ERCS01" virtuális gép üzemelteti. Integrált rendszer használata, lépjen kapcsolatba az Azure verem operátor ezt az értéket be kell olvasni. További tudnivalókért tekintse meg a [használatával a privilegizált végpont](azure-stack-privileged-endpoint.md) témakör.|
    | BillingModel | A számlázási modellt, amely az előfizetés használ. Engedélyezett értékek a paraméter biztosan-"Kapacitás", "PayAsYouUse" és "Fejlesztési". A szoftverfejlesztői készlet az alapérték "Fejlesztés". Integrált rendszer használata, lépjen kapcsolatba az Azure verem operátor ezt az értéket be kell olvasni. |
 
-7. Ha a parancsfájl lefutott, megjelenik egy üzenet "aktiválás Azure vermet (Ez a lépés akár 10 percet vehet)." 
+8. Ha a parancsfájl lefutott, megjelenik egy üzenet "aktiválás Azure vermet (Ez a lépés akár 10 percet vehet)." 
 
 ## <a name="verify-the-registration"></a>A regisztráció-ellenőrzés
 

@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2017
+ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: f55279436af39d9bc0d4b1d7ef2253e2fc3074c0
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 309fcb901a1a3878edbfbe06e12122615b74664e
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
@@ -28,127 +28,135 @@ ms.lasthandoff: 11/11/2017
 >
 >  
 
-Linux-fürtökön futó Service Fabric-alkalmazásokat hozhat létre a Mac OS X-en. Ez a cikk bemutatja, hogyan állíthatja be Mac gépét a fejlesztéshez.
+Linux-fürtökön futó Service Fabric-alkalmazásokat hozhat létre a Mac OS X-en. Ez a dokumentum bemutatja, hogyan állíthatja be Mac gépét a fejlesztéshez.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Service Fabric nem fut natív módon az OS X-en. A helyi Service Fabric-fürt futtatásához egy Vagrant és VirtualBox alkalmazásokat használó, előre konfigurált Ubuntu-virtuális gépet biztosítunk. A kezdés előtt a következőkre lesz szüksége:
+A Service Fabric nem fut natív módon az OS X-en. A helyi Service Fabric-fürt futtatásához egy előre konfigurált Docker-tároló lemezképet biztosítunk. A kezdés előtt a következőkre lesz szüksége:
 
-* [Vagrant (1.8.4-es vagy újabb verzió)](http://www.vagrantup.com/downloads.html)
-* [VirtualBox](http://www.virtualbox.org/wiki/Downloads)
+* Legalább 4 GB RAM
+* A [Docker](https://www.docker.com/) legújabb verziója
+* Hozzáférés a Service Fabric Docker-tároló beépített [rendszerképéhez](https://hub.docker.com/r/servicefabricoss/service-fabric-onebox/)
 
->[!NOTE]
-> A Vagrant és a VirtualBox kölcsönösen támogatott verzióját kell használnia. A Vagrant kiszámíthatatlan módon viselkedhet egy nem támogatott VirtualBox-verzión.
->
+>[!TIP]
+> * A Docker Mac gépen való telepítéséhez követheti a hivatalos Docker [dokumentációban](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install) említett lépéseket. 
+> * Ha kész a telepítéssel, az [itt](https://docs.docker.com/docker-for-mac/#check-versions-of-docker-engine-compose-and-machine) említett lépéseket követve ellenőrizheti, hogy sikeres volt-e a telepítés.
 
-## <a name="create-the-local-vm"></a>A helyi virtuális gép létrehozása
-Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehozásához hajtsa végre a következő lépéseket:
 
-1. A `Vagrantfile` adattár klónozása
+## <a name="create-a-local-container-and-setup-service-fabric"></a>Helyi tároló létrehozása és a Service Fabric beállítása
+Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta való futtatásához hajtsa végre a következő lépéseket:
 
-    ```bash
-    git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
-    ```
-    Ezzel a lépéssel lekéri a virtuálisgép-konfigurációt tartalmazó `Vagrantfile` fájlt valamint azt a helyet, ahonnan a virtuális gép le lett töltve.  A fájl egy tárolt Ubuntu-képre mutat.
-
-2. Navigáljon az adattár helyi klónjához
+1. A rendszerkép lekérése a Docker Hub adattárából:
 
     ```bash
-    cd service-fabric-linux-vagrant-onebox
+    docker pull servicefabricoss/service-fabric-onebox
     ```
-3. (Nem kötelező) Módosítsa a virtuális gép alapértelmezett beállításait
 
-    Alapértelmezés szerint a helyi virtuális gép konfigurációja a következő:
+2. Frissítse a Docker-démon konfigurációját a gazdagépen a következő értékekkel, és indítsa újra a Docker-démont: 
 
-   * 3 GB lefoglalt memória
-   * A 192.168.50.50 IP-címre konfigurált privát gazdagép-hálózat, amely átengedi a Mac-gazdagépről érkező forgalmat
+    ```json
+    {
+        "ipv6": true,
+        "fixed-cidr-v6": "fd00::/64"
+    }
+    ```
+    A frissítést közvetlenül a Docker telepítési útvonalán lévő daemon.json fájlban végezheti el (amelynek helye gépenként változhat, például: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json). A frissítést javasolt a Docker ikon > Beállítások > Démon > Speciális területen végrehajtani.
 
-     A `Vagrantfile`-lal bármelyik beállítást módosíthatja, és más konfigurációkat adhat a virtuális géphez. A konfigurációs beállítások teljes listájáért tekintse meg a [Vagrant dokumentációját](http://www.vagrantup.com/docs).
-4. Virtuális gép létrehozása
+3. Indítson el egy Service Fabric beépített tárolópéldányt a rendszerképpel:
 
     ```bash
-    vagrant up
+    docker run -itd -p 19080:19080 --name sfonebox servicefabricoss/service-fabric-onebox
     ```
-
-
-5. Jelentkezzen be a virtuális gépre, és telepítse a Service Fabric SDK-t.
-
-    ```bash
-    vagrant ssh
-    ```
-
-   Telepítse az SDK-t az [SDK telepítését](service-fabric-get-started-linux.md) ismertető részben foglaltaknak megfelelően.  Az egyszerű használat érdekében alább megadunk egy szkriptet a Service Fabric-futtatókörnyezet és a Service Fabric általános SDK az sfctl CLI felülettel együtt történő telepítéséhez. A szkript a futtatáskor azt feltételezi, hogy Ön átolvasta és elfogadja a telepített szoftverek licencfeltételeit.
-
-    ```bash
-    sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
-    ```
-
-5.  Indítsa el a Service Fabric-fürtöt
-
-    ```bash
-    sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
-    ```
-
     >[!TIP]
-    > Ha a virtuális gép letöltése hosszú ideig tart, letöltheti a wget vagy a curl használatával, vagy egy böngészőből a `Vagrantfile` fájlban található **config.vm.box_url** által megadott hivatkozásra lépve. Miután letöltötte helyileg, szerkessze a `Vagrantfile`-t, hogy arra a helyi elérési útra mutasson, ahová a rendszerképet letöltötte. Ha a rendszerképet például a /home/users/test/azureservicefabric.tp8.box helyre töltötte le, állítsa a **config.vm.box_url** címet erre az elérési útra.
-    >
+    > * Ha megad egy nevet a tárolópéldányhoz, átláthatóbb módon kezelheti. 
+    > * Ha az alkalmazás bizonyos portokon figyel, ezt további -p címkékkel kell meghatározni. Ha például az alkalmazás a 8080-as porton figyel, futtassa a következőt: docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox servicefabricoss/service-fabric-onebox
 
-5. Keresse fel a Service Fabric Explorert a http://192.168.50.50:19080/Explorer címen (feltéve, hogy megtartotta az alapértelmezett magánhálózati IP-címet) a fürt megfelelő beállításának teszteléséhez.
+4. Jelentkezzen be a Docker-tárolóba interaktív SSH-módban:
 
-    ![A Service Fabric Explorer a Mac gazdagépről megtekintve][sfx-mac]
+    ```bash
+    docker exec -it sfonebox bash
+    ```
 
-## <a name="install-the-necessary-java-artifacts-on-vagrant-optional-if-you-want-to-use-the-java-programming-models"></a>A szükséges Java-összetevők telepítése a Vagrantra (nem kötelező, csak ha használni kívánja a Java-alapú programozási modelleket)
+5. Futtassa a beállítási szkriptet, amely lehívja a szükséges függőségeket, és ezután elindítja a fürtöt a tárolón.
 
-A Service Fabric-szolgáltatások Java használatával történő létrehozásához telepítve kell lennie a JDK 1.8 készletnek és a Gradle-nek, amely az összeállítási feladatok futtatásához használható. Az Open JDK 1.8 és a Gradle az alábbi kódrészlettel telepíthető. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
+    ```bash
+    ./setup.sh     # Fetches and installs the dependencies required for Service Fabric to run
+    ./run.sh       # Starts the local cluster
+    ```
 
-  ```bash
-  vagrant ssh
-  sudo apt-get install openjdk-8-jdk-headless
-  sudo apt-get install gradle
-```
+6. Az 5. lépés sikeres befejezése után a ``http://localhost:19080`` helyre léphet a Mac gépéről, és elvileg látnia kell a Service Fabric Explorert.
 
-## <a name="set-up-the-service-fabric-cli"></a>A Service Fabric parancssori felület beállítása
+## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>A Service Fabric parancssori felület (sfctl) beállítása Mac gépen
 
-A [Service Fabric parancssori felület](service-fabric-cli.md) a Service Fabric-entitásokkal, többek között fürtökkel és alkalmazásokkal folytatott interakcióra szolgáló parancsokat is tartalmaz. A felület Python-alapú, ezért a következő parancs kiadása előtt ellenőrizze, hogy a Python és a pip telepítve vannak-e:
+A Service Fabric parancssori felület (`sfctl`) Mac gépre való telepítéséhez kövesse a [Service Fabric parancssori felület](service-fabric-cli.md#cli-mac) utasításait.
+A parancssori felület a Service Fabric-entitásokkal, többek között fürtökkel, alkalmazásokkal és szolgáltatásokkal folytatott interakciók elvégzésére szolgáló parancsokat is tartalmaz.
 
-```bash
-pip install sfctl
-```
+## <a name="create-application-on-your-mac-using-yeoman"></a>Alkalmazás létrehozása Mac gépen a Yeoman használatával
 
-## <a name="create-application-on-mac-using-yeoman"></a>Alkalmazás létrehozása Mac gépen a Yeoman használatával
-A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek segítségével Service Fabric-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával. Az alábbi lépések végrehajtásával ellenőrizze, hogy a Service Fabric Yeoman sablongenerátor működik-e a gépen.
+A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel Service Fabric-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával. Az alábbi lépések végrehajtásával ellenőrizze, hogy a Service Fabric Yeoman sablongenerátor működik-e a gépen.
 
-1. A Node.js-nek és az NPM-nek telepítve kell lennie Mac gépén. Ha a Node.js és az NPM nincs telepítve, a következők használatával telepítheti azokat a Homebrew-val. A Mac gépén telepített Node.js és NPM verzióinak ellenőrzéséhez használhatja a ``-v`` beállítást.
+1. A Node.js-nek és az NPM-nek telepítve kell lennie Mac gépén. Ha a Node.js és az NPM nincs telepítve, a következő lépésben leírt módon telepítheti őket a Homebrew-val:
 
-  ```bash
-  brew install node
-  node -v
-  npm -v
-  ```
+    ```bash
+    brew install node
+    node -v
+    npm -v
+    ```
 2. A [Yeoman](http://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből
 
-  ```bash
-  npm install -g yo
-  ```
-3. Telepítse a használni kívánt Yeoman generátort az első lépéseket ismertető [dokumentációban](service-fabric-get-started-linux.md) leírt lépések végrehajtásával. Service Fabric-alkalmazások a Yeoman használatával való létrehozásához kövesse az alábbi lépéseket –
+    ```bash
+    npm install -g yo
+    ```
+3. Telepítse a használni kívánt Yeoman generátort az első lépéseket ismertető [dokumentációban](service-fabric-get-started-linux.md) leírt lépések végrehajtásával. Service Fabric-alkalmazások Yeomannal való létrehozásához kövesse az alábbi lépéseket –
 
-  ```bash
-  npm install -g generator-azuresfjava       # for Service Fabric Java Applications
-  npm install -g generator-azuresfguest      # for Service Fabric Guest executables
-  npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
-  ```
-4. Service Fabric Java-alkalmazások Mac gépen való létrehozásához a JDK 1.8-nak és a Gradle-nek telepítve kell lennie a gépen.
+    ```bash
+    npm install -g generator-azuresfjava       # for Service Fabric Java Applications
+    npm install -g generator-azuresfguest      # for Service Fabric Guest executables
+    npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
+    ```
+4. Service Fabric Java-alkalmazások Mac gépen való létrehozásához a JDK 1.8-nak és a Gradle-nek telepítve kell lennie a gépen. Ha még nincs telepítve, a [Homebrew](https://brew.sh/)-val telepítheti. 
+
+    ```bash
+    brew update
+    brew cask install java
+    brew install gradle
+    ```
+
+## <a name="deploy-application-on-your-mac-from-terminal"></a>Alkalmazás telepítése Mac gépen terminálról
+
+Amint létrehozza és kiépíti a Service Fabric-alkalmazását, az alábbi lépéseket követve helyezheti üzembe a [Service Fabric parancssori felület](service-fabric-cli.md#cli-mac) segítségével:
+
+1. Csatlakozzon a Mac gépén lévő tárolópéldányon belül futó Service Fabric-fürthöz.
+
+    ```bash
+    sfctl cluster select --endpoint http://localhost:19080
+    ```
+
+2. Lépjen be a projektkönyvtárba, és futtassa a telepítési szkriptet.
+
+    ```bash
+    cd MyProject
+    bash install.sh
+    ```
 
 ## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 fejlesztői környezet beállítása
 
 Telepítse az [Mac rendszerre készült .NET Core 2.0 SDK-t](https://www.microsoft.com/net/core#macos) [a C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md) első lépéseként. A .NET Core 2.0 Service Fabric-alkalmazások csomagjai a NuGet.org webhelyen érhetők el, jelenleg előzetes verzióban.
 
+## <a name="install-the-service-fabric-plugin-for-eclipse-neon-on-your-mac"></a>Az Eclipse Neonhoz készült Service Fabric beépülő modul telepítése Mac gépen
 
-## <a name="install-the-service-fabric-plugin-for-eclipse-neon"></a>Az Eclipse Neonhoz készült Service Fabric beépülő modul telepítése
+A Service Fabric egy beépülő modult biztosít a **Java Eclipse Neon IDE-hez**, amely leegyszerűsítheti a Java-szolgáltatások összeállításának, létrehozásának és üzembe helyezésének folyamatát. A Service Fabric Eclipse beépülő modul telepítéséhez és legújabb verzióra frissítéséhez érdemes az ebben az általános [dokumentációban](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon) szereplő telepítési lépéseket követnie.
 
-A Service Fabric egy beépülő modult biztosít a **Java Eclipse Neon IDE-hez**, amely leegyszerűsítheti a Java-szolgáltatások összeállításának, létrehozásának és üzembe helyezésének folyamatát. A Service Fabric Eclipse beépülő modul telepítéséhez és frissítéséhez érdemes az ebben az általános [dokumentációban](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon) szereplő telepítési lépéseket követnie.
+Minden más, a [Service Fabric Eclipse dokumentációjában](service-fabric-get-started-eclipse.md) az alkalmazás készítésével, szolgáltatás alkalmazáshoz adásával, alkalmazás telepítésével/eltávolításával stb. kapcsolatban említett lépés itt is érvényes.
 
->[!TIP]
-> Alapértelmezés szerint támogatjuk az alapértelmezett IP-címet a létrehozott alkalmazás ``Local.json`` fájljában lévő ``Vagrantfile``-ban leírtak szerint. Amennyiben ezt módosítja, és a Vagrant telepítéséhez más IP-címet használ, frissítse a megfelelő IP-címet az alkalmazás ``Local.json`` fájljában is.
+A fenti lépéseken kívül ahhoz, hogy a Service Fabric Eclipse beépülő modul működjön a Macen lévő Docker-tárolóval, az alábbiak szerint példányosítania kell a tárolót egy, a gazdagépével megosztott útvonallal:
+```bash
+docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox servicefabricoss/service-fabric-onebox
+```
+ahol ``/Users/sayantan/work/workspaces/mySFWorkspace`` a Mac munkaterületének teljes elérési útja, ``/tmp/mySFWorkspace`` pedig az útvonal abban a tárolóban, ahová az le lesz képezve.
+
+> [!NOTE]
+>1. Ha munkaterülete neve/elérési útja eltérő, frissítse azokat megfelelően a fenti ``docker run`` parancsban.
+>2. Ha a tárolót más, az ``sfonebox`` névtől eltérő néven indítja, frissítse a nevet a Service Fabric-aktor Java alkalmazásában lévő ``testclient.sh`` fájlban.
 
 ## <a name="next-steps"></a>Következő lépések
 <!-- Links -->
@@ -158,6 +166,7 @@ A Service Fabric egy beépülő modult biztosít a **Java Eclipse Neon IDE-hez**
 * [Service Fabric-fürt létrehozása az Azure Resource Managerrel](service-fabric-cluster-creation-via-arm.md)
 * [A Service Fabric-alkalmazásmodell megismerése](service-fabric-application-model.md)
 * [A Service Fabric parancssori felület használata az alkalmazások kezeléséhez](service-fabric-application-lifecycle-sfctl.md)
+* [Linux fejlesztőkörnyezet előkészítése Windowson](service-fabric-local-linux-cluster-windows.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png

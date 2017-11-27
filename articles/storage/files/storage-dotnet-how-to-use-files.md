@@ -12,24 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 09/19/2017
+ms.date: 11/22/2017
 ms.author: renash
-ms.openlocfilehash: 51180530790fc0077cea4d8aea7088f1f871681b
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 66a68a1ca048b50b8e2ba4ac1bb86d367b8a5bb9
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/23/2017
 ---
-# <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel 
-> [!NOTE]
-> Ez a cikk bemutatja, hogyan kezelheti az Azure Files szolgáltatást .NET-kóddal. Az Azure Files szolgáltatással kapcsolatos további információkért lásd: [Bevezetés az Azure Files használatába](storage-files-introduction.md).
->
+# <a name="develop-for-azure-files-with-net-and-windowsazurestorage"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszer és a WindowsAzure.Storage segítségével
 
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
-
-Ez az oktatóanyag bemutatja annak alapjait, hogyan fejleszthet a .NET használatával az Azure Files szolgáltatást használó alkalmazásokat vagy szolgáltatásokat a fájladatok tárolásához. Ebben az oktatóanyagban egy egyszerű konzolalkalmazást hozunk létre, és bemutatjuk, hogyan hajthat végre alapszintű műveleteket a .NET-keretrendszer és az Azure Files használatával:
+Ez az oktatóanyag bemutatja annak alapjait, hogyan fejleszthet a .NET-keretrendszer és a `WindowsAzure.Storage` API használatával az [Azure Filest](storage-files-introduction.md) használó alkalmazásokat fájladatok tárolásához. Ez az oktatóanyag egy egyszerű konzolalkalmazást hoz létre, amely alapszintű műveleteket végez a .NET-keretrendszer és az Azure Files használatával:
 
 * Egy fájl tartalmának lekérése
 * Egy fájlmegosztás kvótájának (maximális méretének) beállítása.
@@ -38,9 +33,21 @@ Ez az oktatóanyag bemutatja annak alapjait, hogyan fejleszthet a .NET használa
 * Fájl másolása blobba egy tárfiókon belül.
 * Hibaelhárítás az Azure Storage Metrics segítségével
 
-> [!Note]  
-> Mivel az Azure Files SMB-n keresztül is elérhető, lehetőség van olyan egyszerű alkalmazások írására, amelyek a fájl I/O System.IO osztályait használják az Azure-fájlmegosztás eléréséhez. Ez a cikk azt ismerteti, hogyan írhat az Azure Files szolgáltatással a [Fájl REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) révén kommunikáló Azure Storage .NET SDK-t használó alkalmazásokat. 
+Az Azure Files szolgáltatással kapcsolatos további információkért lásd: [Bevezetés az Azure Files használatába](storage-files-introduction.md).
 
+[!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
+
+## <a name="understanding-the-net-apis"></a>A .NET API-k ismertetése
+
+Az Azure Files két széleskörű megközelítést nyújt az ügyfélalkalmazásokhoz: az SMB protokollt és a REST-et. A .NET-keretrendszeren ezeket a megközelítéseket a `System.IO` és a `WindowsAzure.Storage` API emeli ki.
+
+API | A következő esetekben használja | Megjegyzések
+----|-------------|------
+[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Az alkalmazás/alkalmazásnak: <ul><li>Az SMB-n keresztül kell olvasnia/írnia a fájlokat.</li><li>Olyan eszközön fut, amely a 445-ös porton keresztül éri el az Azure Files-fiókot.</li><li>Nem kell kezelnie a fájlmegosztás rendszergazdai beállításait.</li></ul> | A fájl I/O az Azure Files segítségével az SMB-n való kódolása megegyezik az I/O bármely hálózati fájlmegosztással vagy helyi tárolóeszközzel való kódolásával. [Ez az oktatóanyag](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) bemutatja a .NET-keretrendszer számos funkcióját, beleértve a fájl I/O-t.
+[WindowsAzure.Storage](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet#client-library) | Az alkalmazás/alkalmazásnak: <ul><li>Nem tudja elérni az Azure Filest SMB-n keresztül a 445-ös porton a tűzfal- vagy internetszolgáltatói korlátozások miatt</li><li>Rendszergazdai funkciókat igényel, például a fájlmegosztás kvótájának beállítását vagy közös hozzáférésű jogosultságkód létrehozásának lehetőségét.</li></ul> | Ez a cikk a `WindowsAzure.Storage` a fájl I/O-hoz a való használatát mutatja be a REST segítségével (az SMB helyett) és a fájlmegosztás kezelését.
+
+> [!TIP]
+> Az alkalmazás követelményeitől függően előfordulhat, hogy az Azure-blobok jobb tárolási megoldást jelentenek. Az Azure Files és az Azure-blobok közötti döntéshez további információért tekintse meg [az Azure Blobok, az Azure Files és az Azure-lemezek használatát bemutató](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks) cikket.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>A konzolalkalmazás létrehozása és az összeállítás elérése
 Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A következő lépések azt mutatják be, hogyan hozhat létre konzolalkalmazást a Visual Studio 2017-ben, de a lépések a Visual Studio más verziói esetén is hasonlók.

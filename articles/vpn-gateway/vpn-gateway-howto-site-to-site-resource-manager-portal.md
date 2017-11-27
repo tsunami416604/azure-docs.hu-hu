@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 11/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 41279502c16d0b23c91739dcb62e8f94f3b8bd67
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 4f5e249238020429b6c6e0d39c580c83bc43969e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Helyek közötti kapcsolat létrehozása az Azure Portalon
 
@@ -50,15 +50,13 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 A cikkben szereplő példák a következő értékeket használják. Ezekkel az értékekkel létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat. További információkat a VPN Gateway beállításairól általánosságban [a VPN Gateway beállításaival kapcsolatos](vpn-gateway-about-vpn-gateway-settings.md) cikkben találhat.
 
 * **Virtuális hálózat neve:** TestVNet1
-* **Címtér:** 
-  * 10.11.0.0/16
-  * 10.12.0.0/16 (nem kötelező ehhez a gyakorlathoz)
-* **Alhálózatok:**
-  * Előtér: 10.11.0.0/24
-  * Háttér: 10.12.0.0/24 (nem kötelező ehhez a gyakorlathoz)
-* **Átjáróalhálózat:** 10.11.255.0/27
+* **Címtér:** 10.11.0.0/16 és 10.12.0.0/16 (nem kötelező ehhez a gyakorlathoz)
+* **Előfizetés:** A használni kívánt előfizetés
 * **Erőforráscsoport:** TestRG1
 * **Hely:** az USA keleti régiója
+* **Alhálózat:** Előtér: 10.11.0.0/24, Háttér: 10.12.0.0/24 (nem kötelező ehhez a gyakorlathoz)
+* **Átjáróalhálózat neve:** GatewaySubnet (a portálon ez a rész automatikusan ki lesz töltve)
+* **Átjáróalhálózat címtartománya:** 10.11.255.0/27
 * **DNS-kiszolgáló:** Nem kötelező. A saját DNS-kiszolgálójának IP-címe.
 * **Virtuális hálózati átjáró neve:** VNet1GW
 * **Nyilvános IP-cím:** VNet1GWIP
@@ -67,6 +65,7 @@ A cikkben szereplő példák a következő értékeket használják. Ezekkel az 
 * **Átjáró típusa:** VPN
 * **Helyi hálózati átjáró neve:** Site2
 * **Kapcsolat neve:** VNet1toSite2
+* **Megosztott kulcs:** Ebben a példában az abc123 kulcsot használjuk. Használhat azonban bármi mást is, ami kompatibilis a VPN-hardverrel. A lényeg az, hogy az értékek azonosak legyenek a kapcsolat két oldalán.
 
 ## <a name="CreatVNet"></a>1. Virtuális hálózat létrehozása
 
@@ -125,10 +124,21 @@ Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több 
 
 Az átjárók termékváltozatainak módosításához szükséges lépéseket lásd: [Átjáró-termékváltozatok](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
+## <a name="addconnect"></a>További kapcsolat hozzáadása VPN-átjáróhoz
+
+Hozzáadhat további kapcsolatokat, feltéve, hogy a címterek nincsenek egymással átfedésben a kapcsolatok között.
+
+1. További kapcsolat hozzáadásához lépjen a VPN-átjáróra, majd a **Kapcsolatok** elemre kattintva nyissa meg a Kapcsolatok lapot.
+2. A kapcsolata hozzáadásához kattintson a **+Hozzáadás** elemre. Adja a kapcsolat típusát virtuális hálózatok közötti kapcsolatként (ha egy másik VNet-átjáróhoz kapcsolódik) vagy helyek közötti kapcsolatként.
+3. Ha a helyek közötti beállítással kapcsolódik, és még nem hozott létre helyi hálózati átjárót ahhoz a helyhez, amelyhez csatlakozni szeretne, létrehozhat egy újat.
+4. Adja meg a használni kívánt megosztott kulcsot, majd kattintson az **OK** gombra a kapcsolat létrehozásához.
+
 ## <a name="next-steps"></a>Következő lépések
 
 * Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).
 * Információk a kényszerített bújtatásról: [Információk a kényszerített bújtatásról](vpn-gateway-forced-tunneling-rm.md).
 * Információk a magas rendelkezésre állású aktív-aktív kapcsolatokról: [Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között](vpn-gateway-highlyavailable.md).
+* Információ egy virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalom korlátozásáról: [Hálózati biztonság](../virtual-network/security-overview.md).
+* Információ arról, hogyan irányítja az Azure az Azure, a helyszíni és az internetes erőforrások közötti forgalom útválasztását: [Virtuális hálózat forgalmának útválasztása](../virtual-network/virtual-networks-udr-overview.md).
 * A helyek közötti VPN-kapcsolatok Azure Resource Manager-sablonok használatával történő létrehozásáról további információt a [helyek közötti VPN-kapcsolat létrehozását](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/) ismertető cikkben talál.
 * A virtuális hálózatok közötti VPN-kapcsolatok Azure Resource Manager-sablonok használatával történő létrehozásáról további információt a [HBase-georeplikáció üzembe helyezését](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/) ismertető cikkben talál.

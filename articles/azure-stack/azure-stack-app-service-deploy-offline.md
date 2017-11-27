@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 11/23/2017
 ms.author: anwestg
-ms.openlocfilehash: cd727b2902dafdb8086ac4ce74db96ca8acf8fe8
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d2a9b9fbe2a057a6d36e80c89af83a543e90d3be
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató felvétele AD FS által védett leválasztott Azure verem környezet
 
@@ -75,7 +75,7 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
         - Ha Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például: cloudadmin@azurestack.local. Írja be a jelszót, és kattintson a **bejelentkezés**.
     2. Az a **Azure verem előfizetések** jelölje ki az előfizetését.
     3. Az a **Azure verem helyek** válassza ki a helyet, amely megfelel a régióban való telepítése esetén. Válassza például **helyi** Ha a központi telepítése az Azure verem szoftverfejlesztői készlet.
-    4. Adjon meg egy **erőforráscsoport-név** az App Service üzembe helyezéshez. Alapértelmezés szerint érték **APPSERVICE\<MOBILE\>**.
+    4. Adjon meg egy **erőforráscsoport-név** az App Service üzembe helyezéshez. Alapértelmezés szerint érték **App Service-helyi**.
     5. Adja meg a **Tárfióknév** , amelyet az App Service-nek a telepítés részeként hozza létre. Alapértelmezés szerint érték **appsvclocalstor**.
     6. Kattintson a **Tovább** gombra.
 
@@ -119,7 +119,7 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
     | Szerepkör | Minimális példányok | Minimális Termékváltozat | Megjegyzések |
     | --- | --- | --- | --- |
-    | Tartományvezérlő | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Kezeli, és az App Service-felhő állapotának fenn. |
+    | Vezérlő | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Kezeli, és az App Service-felhő állapotának fenn. |
     | Kezelés | 1 | Standard_A2 - (2 Vcpu, 3584 MB) | Az App Service Azure Resource Manager és az API-végpontok, portál extensions (admin, tenant, Functions portálon) és a szolgáltatás kezeli. A feladatátvétel támogatásához nőtt az ajánlott 2-példányokat. |
     | Közzétevő | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Közzéteszi az FTP és a web deployment a tartalomhoz. |
     | Előtér | 1 | Standard_A1 - (1 vCPU, 1792 MB) | App Service-alkalmazásokra irányuló kérelmek útvonalak. |

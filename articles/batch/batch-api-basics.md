@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 10/12/2017
+ms.date: 11/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e9f098bedf2c4dfb27a27d028b7bd87782516c7
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 3028e913937db304ac0a1df8e6a095072630505d
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -75,7 +75,7 @@ Azure Batch-fiókot az [Azure Portalon](batch-account-create-portal.md)hozhat l�
 Több Batch számítási feladatot is futtathat egyetlen Batch-fiókon, de el is oszthatja a számítási feladatokat ugyanazon előfizetéshez, de különböző Azure-régiókhoz tartozó Batch-fiókok között.
 
 > [!NOTE]
-> Egy Batch-fiók létrehozásakor általában érdemes az alapértelmezett **Batch szolgáltatás** módot választani, amelynek keretében a készleteket a rendszer a háttérben foglalja le az Azure által felügyelt előfizetésekben. A szintén választható **Felhasználói előfizetés** mód esetében, amelynek használata már nem javasolt, a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. Ha felhasználói előfizetési módban szeretne létrehozni Batch-fiókot, azt egy Azure Key Vaulttal is társítania kell.
+> Egy Batch-fiók létrehozásakor általában érdemes az alapértelmezett **Batch szolgáltatás** módot választani, amelynek keretében a készleteket a rendszer a háttérben foglalja le az Azure által felügyelt előfizetésekben. A szintén választható **felhasználói előfizetés** mód esetében, amelynek használata a legtöbb forgatókönyvben már nem javasolt, a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. Ha felhasználói előfizetési módban szeretne létrehozni Batch-fiókot, az előfizetését az Azure Batchben is regisztrálnia kell, és egy Azure Key Vaulttal is társítania kell.
 >
 
 
@@ -150,7 +150,9 @@ A részletes követelményekkel és lépésekkel kapcsolatban lásd a [virtuáli
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Tárolótámogatás a virtuálisgép-készletekben
 
-Amikor a Batch API-kkal hoz létre virtuálisgép-konfigurációs készletet, beállíthatja a készletet, hogy Docker-tárolókban futtasson feladatokat. Jelenleg a Windows Server 2016 Datacenterrel kell létrehoznia a készletet az Azure Marketplace-ről származó tárolói rendszerképpel, vagy olyan egyéni virtuálisgép-rendszerképet kell megadnia, amely tartalmazza a Docker Community Edition kiadását és az összes szükséges illesztőt. A készlet beállításainak tartalmazniuk kell egy [tárolókonfigurációt](/rest/api/batchservice/pool/add#definitions_containerconfiguration), amely tárolórendszerképeket másol a virtuális gépekre a készlet létrehozásakor. A készleten futó feladatok ezután hivatkozhatnak a tárolórendszerképre és a tároló által futtatott beállításokra.
+Amikor a Batch API-kkal hoz létre virtuálisgép-konfigurációs készletet, beállíthatja a készletet, hogy Docker-tárolókban futtasson feladatokat. Jelenleg a Docker-tárolókat támogató rendszerképpel kell létrehoznia a készletet. Használja a Windows Server 2016 Datacentert az Azure Marketplace-ről származó tárolói rendszerképpel, vagy adjon meg olyan egyéni virtuálisgép-rendszerképet, amely tartalmazza a Docker Community Edition vagy Enterprise kiadását és az összes szükséges illesztőt. A készlet beállításainak tartalmazniuk kell egy [tárolókonfigurációt](/rest/api/batchservice/pool/add#definitions_containerconfiguration), amely tárolórendszerképeket másol a virtuális gépekre a készlet létrehozásakor. A készleten futó feladatok ezután hivatkozhatnak a tárolórendszerképre és a tároló által futtatott beállításokra.
+
+További információt a [Docker-tárolóalkalmazásoknak az Azure Batch-ben történő futtatásával](batch-docker-container-workloads.md) foglalkozó cikkben tekinthet meg.
 
 ## <a name="compute-node-type-and-target-number-of-nodes"></a>A számítási csomópont típusa és a csomópontok kívánt száma
 

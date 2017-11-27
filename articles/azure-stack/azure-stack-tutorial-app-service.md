@@ -1,6 +1,6 @@
 ---
-title: "Webes, mobil és API-alkalmazások felhasználók számára elérhetővé az Azure-verem |} Microsoft Docs"
-description: "Az oktatóanyag segítséget nyújt az App Service erőforrás-szolgáltató telepítéséhez, és hozzon létre kínál, amelyek biztosíthat Azure verem felhasználóinak, a webes, mobil, létrehozására és API-alkalmazások."
+title: "Web- és API-alkalmazások felhasználók számára elérhetővé az Azure-verem |} Microsoft Docs"
+description: "Az oktatóanyag segítséget nyújt az App Service erőforrás-szolgáltató telepítéséhez, és hozzon létre kínál, amelyek biztosíthat Azure verem felhasználóinak való web- és API-alkalmazások létrehozásának képessége."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: 2d011e933cb063eef88a372fccc49d2b9de19717
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42d94eea8b9e4db611b821cd84e7d02f1d226293
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
-# <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Webes, mobil és API-alkalmazások felhasználók számára elérhetővé az Azure-verem
+# <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Web- és API-alkalmazások felhasználók számára elérhetővé az Azure-verem
 
-Rendszergazdaként Azure verem felhő ajánlatokat, amelyek segítségével a felhasználók hozhat létre (bérlőkkel) az Azure Functions és webes, mobil és API-alkalmazások létrehozása. Igény szerint a felhőalapú alkalmazások elérhetőségének biztosításával a felhasználók számára, mentheti azokat időt és erőforrásokat. Ennek beállításához a fogja végrehajtani:
+Rendszergazdaként Azure verem felhő ajánlatokat, amelyek segítségével a felhasználók hozhat létre (bérlőkkel) az Azure Functions és a webes és API-alkalmazások létrehozása. Igény szerint a felhőalapú alkalmazások elérhetőségének biztosításával a felhasználók számára, mentheti azokat időt és erőforrásokat. Ennek beállításához a fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Az App Service erőforrás-szolgáltató telepítése
@@ -43,7 +43,7 @@ Rendszergazdaként Azure verem felhő ajánlatokat, amelyek segítségével a fe
 Tegyük fel az ajánlat, amely lehetővé teszi, hogy a felhasználók létre DNN webes tartalom felügyeleti rendszerekkel is létrehozhat. Az SQL Server szolgáltatás, amely már engedélyezve van, az SQL Server erőforrás-szolgáltató telepítésével igényel.
 
 1.  [Állítsa be a kvóta](azure-stack-setting-quotas.md) és adjon neki nevet *AppServiceQuota*. Válassza ki **Microsoft.Web** a a **Namespace** mező.
-2.  [Hozzon létre egy csomagot](azure-stack-create-plan.md). Nevezze el *TestAppServicePlan*, jelölje be a a **Microsoft.SQL** szolgáltatás, és **AppService kvóta** kvótát.
+2.  [Hozzon létre egy csomagot](azure-stack-create-plan.md). Nevezze el *TestAppServicePlan*, jelölje be a **Microsoft.SQL** szolgáltatás, és **AppService kvóta** kvótát.
 
     > [!NOTE]
     > Ahhoz, hogy a felhasználók más-alkalmazásai létrehozására, a terv más szolgáltatások akkor lehet szükség. Például az Azure Functions az szükséges, hogy a tervben a **Microsoft.Storage** szolgáltatás, amíg a Wordpress igényel **Microsoft.MySQL**.

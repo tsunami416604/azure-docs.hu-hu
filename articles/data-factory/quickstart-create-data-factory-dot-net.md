@@ -13,33 +13,101 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/06/2017
 ms.author: jingwang
-ms.openlocfilehash: e27c1a8e130d20eb0ba0e5c001fc9a435e07c1cd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 5345c0fa6212127e9821adccc8cb4c339ce7ae28
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Adat-előállító és folyamat létrehozása a .NET SDK használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1. verzió – Általánosan elérhető](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [2. verzió – Előzetes verzió](quickstart-create-data-factory-dot-net.md)
 
-Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehetővé teszi olyan, a felhőben futó, adatvezérelt munkafolyamatok létrehozását, amelyek alkalmasak az adatok átvitelének és átalakításának irányítására és automatizálására. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, feldolgozhatók és átalakíthatók az adatok különböző számítási szolgáltatások használatával (pl. Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning), és a kimeneti adatok közzétehetők olyan adattárakban, mint például az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket. 
-
-Ez a rövid útmutató bemutatja, hogyan használható a .NET SDK egy Azure-beli adat-előállító létrehozásához. Az adat-előállító folyamata adatokat másol az Azure Blob Storage egyik mappájából egy másik mappába.
+Ez a rövid útmutató bemutatja, hogyan használható a .NET SDK egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatok Azure Data Factoryval történő **átalakításának** útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](transform-data-using-spark.md). 
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd a [Data Factory 1. verzió használatának első lépéseit](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+>
+> Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure Storage-fiók** A blobtároló **forrás-** és **fogadó**adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozását](../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket. 
-* Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. Az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) és hozzá hasonló eszközökkel csatlakozhat az Azure Blob Storage-hoz, blobtárolókat hozhat létre, bemeneti fájlokat tölthet fel, és ellenőrizheti a kimeneti fájlokat.
-* **Visual Studio** 2013, 2015 vagy 2017. A jelen cikkben található útmutató a Visual Studio 2017-et használja.
-* **Az [Azure .NET SDK](http://azure.microsoft.com/downloads/)** letöltése és telepítése.
-* **Egy alkalmazás létrehozása az Azure Active Directoryban** [ennek az útmutatónak](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a lépéseit követve. Jegyezze fel a következő értékeket, amelyeket a későbbi lépésekben fog használni: **alkalmazásazonosító**, **hitelesítési kulcs** és **bérlőazonosító**. Rendelje hozzá az alkalmazást a **Közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve. 
-*  
+
+### <a name="azure-subscription"></a>Azure-előfizetés
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+
+### <a name="azure-roles"></a>Azure-szerepkörök
+Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie. Az Azure Portalon kattintson a **felhasználónévre** a jobb felső sarokban, majd válassza az **Engedélyek** elemet az előfizetésben található engedélyek megtekintéséhez. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. Ha szeretne példautasításokat látni egy felhasználó szerepkörhöz adására, olvassa el a [Szerepkörök hozzáadása](../billing/billing-add-change-azure-subscription-administrator.md) című cikket.
+
+### <a name="azure-storage-account"></a>Azure Storage-tárfiók neve
+Ebben a rövid útmutatóban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk **forrás-** és **céladattárként**. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, tekintse meg a [Tárfiók létrehozását](../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket. 
+
+#### <a name="get-storage-account-name-and-account-key"></a>Tárfióknév és fiókkulcs beszerzése
+Ebben a rövid útmutatóban az Azure Storage-fiók nevét és kulcsát használjuk. Az alábbi eljárás bemutatja a tárfióknév és -kulcs beszerzéséhez szükséges lépéseket. 
+
+1. Nyisson meg egy webböngészőt, és keresse fel az [Azure Portalt](https://portal.azure.com). Jelentkezzen be az Azure-beli felhasználónevével és jelszavával. 
+2. Kattintson a **További szolgáltatások >** elemre a bal oldali menüben, állítson be egy szűrőt a **Tárfiók** kulcsszóval, majd válassza a **Tárfiókok** lehetőséget.
+
+    ![Tárfiók keresése](media/quickstart-create-data-factory-dot-net/search-storage-account.png)
+3. A tárfiókok listájában állítson be szűrőt a tárfiók nevéhez (ha szükséges), majd válassza ki a **tárfiókját**. 
+4. A **Tárfiók** oldalon a menüben válassza a **Hozzáférési kulcsok** elemet.
+
+    ![Tárfióknév és -kulcs beszerzése](media/quickstart-create-data-factory-dot-net/storage-account-name-key.png)
+5. Másolja a **Tárfiók neve** és az **1. kulcs** mezők értékét a vágólapra. Illessze be őket a Jegyzettömbbe, vagy bármely más szerkesztőbe, majd mentse a fájlt.  
+
+#### <a name="create-input-folder-and-files"></a>Bemeneti mappa és fájlok létrehozása
+Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure Blob Storage-ban. Ezután létrehoz egy **input** nevű mappát a tárolóban, majd feltölt egy mintafájlt az input mappába. 
+
+1. A **Storage-fiók** lapon váltson át az **Áttekintés** panelre, majd kattintson a **Blobok** elemre. 
+
+    ![A Blobok elem választása](media/quickstart-create-data-factory-dot-net/select-blobs.png)
+2. A **Blob service** lapon kattintson az eszköztár **+ Tároló** elemére. 
+
+    ![Tároló hozzáadása gomb](media/quickstart-create-data-factory-dot-net/add-container-button.png)    
+3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra. 
+
+    ![Tárolónév megadása](media/quickstart-create-data-factory-dot-net/new-container-dialog.png)
+4. A tárolók listájában kattintson az **adftutorial** elemre. 
+
+    ![A tároló kiválasztása](media/quickstart-create-data-factory-dot-net/select-adftutorial-container.png)
+1. A **Tároló** lapon kattintson az eszköztár **Feltöltés** elemére.  
+
+    ![Feltöltés gomb](media/quickstart-create-data-factory-dot-net/upload-toolbar-button.png)
+6. A **Blob feltöltése** lapon kattintson a **Speciális** elemre.
+
+    ![Kattintás a Speciális hivatkozásra](media/quickstart-create-data-factory-dot-net/upload-blob-advanced.png)
+7. Indítsa el a **Jegyzettömböt**, és hozzon létre egy **emp.txt** nevű fájlt a következő tartalommal. Mentse a fájlt a **c:\ADFv2QuickStartPSH** mappába. Ha még nem létezik, hozza létre az **ADFv2QuickStartPSH** mappát.
+    
+    ```
+    John, Doe
+    Jane, Doe
+    ```    
+8. Az Azure Portal **Blob feltöltése** lapjának **Fájlok** mezőben keresse meg, és válassza ki az **emp.txt** fájlt. 
+9. Adja meg az **input** értéket a **Feltöltés mappába** mezőben. 
+
+    ![Blobbeállítások feltöltése](media/quickstart-create-data-factory-dot-net/upload-blob-settings.png)    
+10. Ellenőrizze, hogy a mappa az **input** mappa-e, a fájl pedig az **emp.txt** fájl-e, majd kattintson a **Feltöltés** elemre.
+11. A listában meg kell jelennie az **emp.txt** fájlnak és a feltöltés állapotának. 
+12. A sarokban található **X** gombra kattintva zárja be a **Blob feltöltése** lapot. 
+
+    ![A Blob feltöltése lap bezárása](media/quickstart-create-data-factory-dot-net/close-upload-blob.png)
+1. Ne zárja be a **Tároló** lapot. A segítségével ellenőrizheti ennek a rövid útmutatónak az eredményét.
+
+### <a name="visual-studio"></a>Visual Studio
+A jelen cikkben található útmutató a Visual Studio 2017-et használja. A Visual Studio 2013-at vagy 2015-öt is használhatja.
+
+### <a name="azure-net-sdk"></a>Azure .NET SDK
+Töltse le és telepítse az [Azure .NET SDK](http://azure.microsoft.com/downloads/)-t a gépen.
+
+### <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
+[A cikkben](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) lévő utasításokkal a következő feladatokat végezheti el: 
+
+1. **Egy Azure Active Directory-alkalmazás létrehozása**. Olyan alkalmazást hozhat létre az Azure Active Directoryban, amely az oktatóanyagban létrehozott .NET-alkalmazást képviseli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).
+2. Szerezze be az **alkalmazásazonosítót** és a **hitelesítési kulcsot**** a cikk **Alkalmazásazonosító és hitelesítési kulcs beszerzése** szakaszának utasításai alapján. Jegyezze fel ezeket az értékeket, mert később használni fogja őket az oktatóanyagban. 
+3. Szerezze be a **bérlőazonosítót** a cikk **Bérlőazonosító beszerzése** szakaszának utasításait követve. Jegyezze fel az értékét. 
+4. Rendelje az alkalmazást a **Közreműködő** szerepkörhöz az előfizetés szintjén, hogy az alkalmazás adat-előállítókat hozhasson létre az előfizetésben. Ehhez kövesse a cikk **Alkalmazás hozzárendelése szerepkörhöz** szakaszát. 
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -253,7 +321,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="monitor-a-pipeline-run"></a>Folyamat futásának monitorozása
 
-1. Adja hozzá a következő kódot a **Main** metódushoz a folyamat futása állapotának folyamatos, az adatok másolásának befejezéséig tartó ellenőrzéséhez.
+1. Adja hozzá a következő kódot a **Main** metódushoz az állapot folyamatos, az adatok másolásának befejezéséig tartó ellenőrzéséhez.
 
     ```csharp
     // Monitor the pipeline run
@@ -397,8 +465,18 @@ Checking copy activity run details...
 }
 
 Press any key to exit...
-
 ```
+
+## <a name="verify-the-output"></a>Kimenet ellenőrzése
+A folyamat automatikusan létrehozza a kimeneti mappát az adftutorial blobtárolóban. Ezután átmásolja az emp.txt fájlt a bemeneti mappából a kimeneti mappába. 
+
+1. Az Azure Portal **adftutorial** tároló lapján kattintson a **Frissítés** elemre a kimeneti mappa megtekintéséhez. 
+    
+    ![Frissítés](media/quickstart-create-data-factory-dot-net/output-refresh.png)
+2. Kattintson a mappalista **kimenet** elemére. 
+2. Ellenőrizze, hogy az **emp.txt** fájl bekerült-e a kimeneti mappába. 
+
+    ![Frissítés](media/quickstart-create-data-factory-dot-net/output-file.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Az adat-előállító programkódból történő törléséhez adja hozzá az alábbi kódsorokat a programhoz: 

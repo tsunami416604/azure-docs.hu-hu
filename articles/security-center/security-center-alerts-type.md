@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/22/2017
 ms.author: yurid
-ms.openlocfilehash: 274c50dad9b8a1d79a71a29b04cb8e44ad91893c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 829657664cf1e37b22d57c62614300a205b5e91c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Az Azure Security Center biztonsági riasztásainak megismerése
 Ez a cikk segít megismerni az Azure Security Centerben elérhető biztonsági riasztások különböző típusait, valamint a kapcsolódó elemzéseket. A riasztások és incidensek kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket.
@@ -53,6 +53,45 @@ A következő mezők gyakoriak a cikkben később megjelenő összeomlási memó
 * DUMPFILE: az összeomlási memóriakép fájljának neve.
 * PROCESSNAME: az összeomlott folyamat neve.
 * PROCESSVERSION: az összeomlott folyamat verziója.
+
+### <a name="code-injection-discovered"></a>Kódinjektálás észlelhető
+A kódinjektálás olyan művelet, amely végrehajtható modulokat szúr be a futó folyamatokba vagy szálakba.  A kártevők ezt a módszert használják az adatok elérésére, elrejtésére vagy az eltávolítás megakadályozására (vagyis az adatok megőrzésére). Ez a riasztás jelzi, hogy injektált modul szerepel az összeomlási memóriaképben. A megbízható szoftverfejlesztők esetenként nem ártó szándékkal hajtanak végre kódinjektálást, hanem például egy meglévő alkalmazás vagy az operációs rendszer egyik összetevőjének módosítása vagy bővítése érdekében.  A kártékony és a nem kártékony injektált modulok megkülönböztetéséhez a Security Center ellenőrzi, hogy az injektált modulra illik-e a gyanús működés profilja. Az ellenőrzés eredménye a riasztás „SIGNATURE” mezőjében látható, és ettől függ a riasztás súlyossági szintje, a riasztás leírása és a hibaelhárítási művelet. 
+
+Ez a riasztás a következő mezőket is tartalmazza:
+
+- ADDRESS: az injektált modul helye a memóriában.
+- IMAGENAME: Az injektált modul neve. Vegye figyelembe, hogy ez a mező üres lehet, ha a rendszerkép neve nincs megadva a rendszerképben.
+- SIGNATURE: azt jelzi, hogy az injektált modulra illik-e a gyanús működés profilja. 
+
+Az alábbi táblázat az eredmények példáját és azok leírását tartalmazza:
+
+| Aláírás értéke                      | Leírás                                                                                                       |
+|--------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| Gyanús visszatükröző betöltő típusú biztonsági rés | Ez a gyanús működés gyakran az injektált kódnak az operációs rendszer betöltőjétől független betöltésére utal. |
+| Gyanús injektált kód típusú biztonsági rés          | Olyan kártékony műveletet jelez, amely gyakran a memóriába történő kódinjektálásra utal.                                       |
+| Gyanús injektálás típusú biztonsági rés         | Olyan kártékony műveletet jelez, amely gyakran a memóriába injektált kód használatára utal.                                   |
+| Gyanús injektált hibakereső típusú biztonsági rés | Olyan kártékony műveletet jelez, amely gyakran egy hibakereső észlelésére vagy megkerülésére utal.                         |
+| Gyanús injektált távoli parancs típusú biztonsági rés   | Olyan kártékony műveletet jelez, amely gyakran „parancs és vezérlés” (C2) forgatókönyvre utal.                                 |
+
+Példa az ilyen típusú riasztásra:
+
+![Kódinjektálási riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig21.png)
+
+### <a name="suspicious-code-segment"></a>Gyanús kódszegmens
+A gyanús kódszegmens azt jelzi, hogy egy kódszegmens nem szabványos módszerrel lett lefoglalva, például reflektív injektálással vagy a process hollowingnak (hamis folyamat) nevezett technikával.  Ezenkívül a riasztás a jelentett kódszegmens további jellemzőit is feldolgozza, hogy kontextusba helyezze a képességeit és viselkedési mintáit.
+
+Ez a riasztás a következő mezőket is tartalmazza:
+
+- ADDRESS: az injektált modul helye a memóriában.
+- SIZE: A gyanús kódszegmens mérete
+- STRINGSIGNATURES: Ez a mező olyan API-k képességeit sorolja fel, amelyeknek a függvénynevei a kódszegmensben szerepelnek. A képességek például a következők lehetnek:
+    - Képszakaszleírók, dinamikus kódfuttatás x64-es rendszerhez, memóriakiosztás és betöltő képesség, távoli kód injektálási képesség, eltérítésvezérlési képesség, környezeti változók olvasása, tetszőleges folyamatmemória olvasása, tokenjogosultságok lekérdezése vagy módosítása, HTTP/HTTPS hálózati kommunikáció és hálózati szoftvercsatorna-kommunikáció.
+- IMAGEDETECTED: Ez a mező jelzi, hogy lett-e PE-rendszerkép injektálva a folyamatba, ahol a gyanús kódszegmens észlelhető, és hogy melyik címen kezdődik az injektált modul.
+- SHELLCODE: Ez a mező jelzi, hogy a kártékony kódokra jellemző viselkedés tapasztalható, amellyel hozzáférést szereznek az operációs rendszer további, biztonsági szempontból érzékeny funkcióihoz. 
+
+Példa az ilyen típusú riasztásra:
+
+![Gyanús kódszegmens riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig22.png)
 
 ### <a name="shellcode-discovered"></a>Héjkód észlelhető
 A héjkód az a kártékony kód, amely azután fut le, hogy a kártevő a szoftver biztonsági rését kihasználva bejut a rendszerbe. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése olyan végrehajtható kódot talált, amely a kártékony kódokra jellemző működés jeleit mutatja. Bár előfordulhat, hogy nem rosszindulatú szoftverhez tartozik az adott működés, ez nem jellemző a szokásos szoftverfejlesztési gyakorlatban.

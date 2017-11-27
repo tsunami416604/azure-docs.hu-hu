@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2017
+ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 9f7fdb97fd121eecf9e7b2f4edc1b568c8114869
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0a3fca0c7d36122a09c825a3ed8edf11cc362b8b
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
 Már üzembe helyezte az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) szolgáltatását, de a felhasználók még mindig az ügyfélszolgálathoz fordulnak, ha elfelejtették a jelszavukat. Azért tesznek így, mert nem tudnak hozzáférni a böngészőhöz az SSPR eléréséhez.
 
-Az új Windows 10 Fall Creators Update-ben az Azure AD-hoz csatlakoztatott eszközökkel rendelkező felhasználók a bejelentkezési képernyőn egy „Jelszó visszaállítása” hivatkozást láthatnak. Erre rákattintva eljuthatnak a már ismert önkiszolgáló jelszó-visszaállítási (SSPR) felülethez. 
+Az új Windows 10 Fall Creators Update-ben az Azure AD-hoz csatlakoztatott eszközökkel rendelkező felhasználók a bejelentkezési képernyőn egy „Jelszó visszaállítása” hivatkozást láthatnak. Erre kattintva eljuthatnak a már ismert önkiszolgáló jelszó-visszaállítási (SSPR) felülethez.
 
 Ahhoz, hogy a felhasználók visszaállíthassák az Azure AD-jelszavukat a Windows 10 bejelentkezési képernyőjéről, a következő követelményeknek kell teljesülniük:
 
-* A Windows 10 1709 verziója vagy egy újabb ügyfél, amely csatlakozik az Azure AD-tartományhoz.
+* A Windows 10 1709-es verziója vagy egy újabb ügyfél, amely [csatlakozik az Azure AD-hez](device-management-azure-portal.md).
 * Engedélyezni kell az Azure AD önkiszolgáló jelszó-visszaállítását.
 * A Jelszó visszaállítása hivatkozás használatát engedélyező beállítást a következő módokon lehet konfigurálni és üzembe helyezni:
    * [Intune eszközkonfigurációs profil](active-directory-passwords-login.md#configure-reset-password-link-using-intune)
@@ -90,7 +90,7 @@ Ezzel az Intune használatával létrehozott és hozzárendelt egy eszközkonfig
 
 Javasoljuk, hogy ezt a módszert csak a beállítás módosításának teszteléséhez használja.
 
-1. Jelentkezzen be az Azure AD-tartományhoz csatlakoztatott eszközre rendszergazdai hitelesítő adatokkal
+1. Jelentkezzen be az Azure AD-hez csatlakoztatott eszközre rendszergazdai hitelesítő adatokkal
 2. Futtassa a **regedit** parancsot rendszergazdaként
 3. Állítsa be a következő beállításkulcsot
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -104,7 +104,7 @@ Milyen változást tapasztalnak a felhasználók a szabályzat konfigurálása �
 
 Amikor a felhasználók megpróbálnak bejelentkezni, a bejelentkezési képernyőn mostantól egy Jelszó visszaállítása hivatkozást láthatnak, amely megnyitja az önkiszolgáló jelszó-visszaállítási felületet. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
 
-A felhasználók a funkcióval kapcsolatban a [Munkahelyi vagy iskolai jelszó visszaállítása](active-directory-passwords-update-your-own-password.md#reset-password-at-login) témakörben találhatnak útmutatást.
+A felhasználók a funkcióval kapcsolatban a [Munkahelyi vagy iskolai jelszó visszaállítása](active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in) témakörben találhatnak útmutatást.
 
 ## <a name="common-issues"></a>Gyakori problémák
 

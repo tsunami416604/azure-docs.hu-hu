@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 10/13/2017
-ms.openlocfilehash: 7c74a9ebaae0b027277fe282b958a653ab498fc5
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: fd99fec7ead28c02ffe0d8b8165e8a0ab89d525e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Fiókok létrehozása az Azure Machine Learning előzetes verziójához és az Azure Machine Learning Workbench telepítése
-Az Azure Machine Learning egy integrált, átfogó és fejlett adatelemzési megoldás. A hivatásos adatszakértők számára nyújt segítséget az adatok előkészítésében, a kísérletek kidolgozásában és a modellek felhőszinten való üzembe helyezésében.
+Az Azure Machine Learning-szolgáltatások (előzetes verzió) egy átfogó, integrált és fejlett adatelemzési megoldás. A hivatásos adatszakértők számára nyújt segítséget az adatok előkészítésében, a kísérletek kidolgozásában és a modellek felhőszinten való üzembe helyezésében.
 
 Ez a rövid útmutató bemutatja a kísérleti és modellkezelési fiókok létrehozását az Azure Machine Learning előzetes verziójában. Emellett az Azure Machine Learning Workbench részét képező asztali alkalmazás és parancssori eszközök telepítését is bemutatja. Ezután az [Iris flower adatkészlet](https://en.wikipedia.org/wiki/iris_flower_data_set) segítségével végigvesszük az Azure Machine Learning előzetes verziójának funkcióit, és létrehozunk egy modellt az írisz típusának a fizikai tulajdonságok alapján történő előrejelzéséhez.  
 
@@ -108,7 +108,7 @@ Az Azure Machine Learning Workbench telepítése macOS Sierra vagy újabb operá
 
 4. Az Azure Machine Learning Workbench most a következő mappába van telepítve: 
 
-   `/Applications/AmlWorkbench.app`
+   `/Applications/Azure ML Workbench.app`
 
 ## <a name="run-azure-machine-learning-workbench-to-sign-in-for-the-first-time"></a>Az Azure Machine Learning Workbench futtatása az első bejelentkezéshez
 1. Amint a telepítés befejeződött, válassza a **Workbench indítása** lehetőséget a telepítő utolsó lapján. Ha bezárta a telepítőt, az alkalmazást az asztalon található Machine Learning Workbench parancsikonnal, vagy a **Start** menü **Azure Machine Learning Workbench** elemével indíthatja el.

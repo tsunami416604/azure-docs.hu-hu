@@ -46,7 +46,7 @@
         - name: Üzembe helyezés
           href: azure-stack-run-powershell-script.md
         - name: A PowerShell telepítése
-          href: azure-stack-powershell-configure-quickstart.md
+          href: azure-stack-powershell-install.md
         - name: Regisztráljon
           href: azure-stack-register.md
         - name: Csatlakozás az Azure Stackhez
