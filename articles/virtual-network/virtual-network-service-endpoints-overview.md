@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: be0c715e12f7df6208112eea40d6017d86f50cae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 767dc34471db7dc1d095929e67e85197711b52ce
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="virtual-network-service-endpoints-preview"></a>Virtuális hálózati szolgáltatásvégpontok (előzetes verzió)
 
@@ -28,7 +28,7 @@ A virtuális hálózatok (VNet) szolgáltatásvégpontjai egy közvetlen kapcsol
 Ez a szolgáltatás előzetes verzióban érhető el a következő Azure-szolgáltatásokhoz és -régiókhoz:
 
 - **Azure Storage**: Az Azure nyilvános felhő összes régiója.
-- **Azure SQL Database**: USA nyugati középső régiója, USA 2. nyugati régiója és USA keleti régiója.
+- **Azure SQL**: Az Azure nyilvános felhő összes régiója.
 
 Az előzetes verzióval kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 
@@ -39,21 +39,21 @@ Az előzetes verzióval kapcsolatos legfrissebb értesítésekért tekintse meg 
 
 A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
-- **Nagyobb biztonság az Azure-szolgáltatások erőforrásai számára**: A szolgáltatásvégpontokkal az Azure-szolgáltatások erőforrásai leköthetőek a virtuális hálózathoz. A szolgáltatás-erőforrások lekötése egy virtuális hálózathoz nagyobb biztonságot eredményez, mivel az erőforrások egyáltalán nem lesznek elérhetők a nyilvános internetről, és csak a virtuális hálózatból érkező forgalmat engedélyezi.
+- **Nagyobb biztonság az Azure-szolgáltatások erőforrásai számára**: A szolgáltatásvégpontokkal az Azure-szolgáltatások erőforrásai leköthetőek a virtuális hálózathoz. A szolgáltatás-erőforrások virtuális hálózathoz való lekötése nagyobb biztonságot eredményez, mivel így az erőforrások egyáltalán nem lesznek elérhetők a nyilvános internetről, és csak a virtuális hálózatból érkező forgalom lesz engedélyezett.
 - **Optimális útválasztás az Azure-szolgáltatás forgalma számára a virtuális hálózatból**: Jelenleg a virtuális hálózat minden olyan útvonala, amely az internetforgalmat a helyszínen és/vagy virtuális készülékeken keresztüli áthaladásra kényszeríti, azaz kényszerített bújtatást végez, az Azure szolgáltatás forgalmát is ugyanazon az útvonalon kényszeríti át, mint az internetforgalmat. A szolgáltatásvégpontok optimális útválasztást biztosítanak az Azure-forgalom számára. 
 
   A végpontok a szolgáltatás forgalmát a virtuális hálózatról közvetlenül az Azure-szolgáltatásra vezetik a Microsoft Azure gerinchálózatán át. Ha az Azure gerinchálózatán tartja az adatforgalmat, továbbra is naplózhatja és monitorozhatja a virtuális hálózatok kimenő internetforgalmát a kényszerített bújtatáson keresztül anélkül, hogy ez kihatna a szolgáltatás forgalmára. További információk [a felhasználók által meghatározott útvonalakkal és a kényszerített bújtatással](virtual-networks-udr-overview.md) kapcsolatban.
-- **Egyszerű beállítás kevesebb felügyeleti igénnyel**: Többé nincs szükség lefoglalt nyilvános IP-címekre a virtuális hálózatokban az Azure-erőforrások IP-tűzfalon keresztül végzett biztosításához. A szolgáltatásvégpontok beállításához nincs szükség NAT- és Gateway-eszközökre. A szolgáltatásvégpontok egy egyszerű kattintással konfigurálhatóak az alhálózatokon. A végpontok kezeléséhez nincs szükség további erőforrásokra.
+- **Egyszerű beállítás kevesebb felügyeleti igénnyel**: Többé nincs szükség lefoglalt nyilvános IP-címekre a virtuális hálózatokban az Azure-erőforrások IP-tűzfalon keresztül végzett biztosításához. A szolgáltatásvégpontok beállításához nincs szükség NAT- és útválasztó eszközökre. A szolgáltatásvégpontok egy egyszerű kattintással konfigurálhatóak az alhálózatokon. A végpontok kezeléséhez nincs szükség további erőforrásokra.
 
 ## <a name="limitations"></a>Korlátozások
 
 - A szolgáltatás csak az Azure Resource Manager-alapú üzemi modellel üzembe helyezett virtuális hálózatokon érhető el.
-- A végpontok engedélyezve vannak az Azure virtuális hálózatokon konfigurált alhálózatokon. A végpontok nem használhatók a helyszíni eredetű, az Azure-szolgáltatásokba irányuló forgalom továbbítására. További információt [az Azure-szolgáltatások helyszíni hozzáférésének biztosítását](#securing-azure-services-to-virtual-networks) ismertető szakaszban talál.
+- A végpontok az Azure-beli virtuális hálózatokon konfigurált alhálózatokon vannak engedélyezve. A végpontok nem használhatók a helyszíni eredetű, az Azure-szolgáltatásokba irányuló forgalom továbbítására. További információt [az Azure-szolgáltatások helyszíni hozzáférésének biztosítását](#securing-azure-services-to-virtual-networks) ismertető szakaszban talál.
 - A szolgáltatásvégpontok csak az adott virtuális hálózat régióján belül vannak hatással az Azure-szolgáltatások forgalmára. Az Azure Storage RA-GRS- és GRS-forgalmának támogatása érdekében a végpontok azokra a párosított régiókra is kiterjednek, amelyekben a virtuális hálózat üzembe van helyezve. További információk az [Azure párosított régióiról.](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Azure-szolgáltatások biztosítása virtuális hálózatokhoz
 
-- A virtuális hálózatok szolgáltatásvégpontjai adják meg a virtuális hálózatok identitását az Azure-szolgáltatásnak. Ha a szolgáltatásvégpontok engedélyezve vannak a virtuális hálózaton, akkor Azure-szolgáltatásbeli erőforrásokat biztosíthat a virtuális hálózatnak úgy, hogy az erőforrásokhoz megad egy virtuális hálózati szabályt.
+- A virtuális hálózatok szolgáltatásvégpontjai adják meg a virtuális hálózatok identitását az Azure-szolgáltatás felé. Ha a szolgáltatásvégpontok engedélyezve vannak a virtuális hálózaton, akkor Azure-szolgáltatásbeli erőforrásokat biztosíthat a virtuális hálózatnak úgy, hogy az erőforrásokhoz megad egy virtuális hálózati szabályt.
 - Manapság az Azure-szolgáltatások virtuális hálózatokról induló forgalma nyilvános IP-címeket használ forrás IP-ként. A szolgáltatásvégpontok használatakor a szolgáltatások forgalma átvált a virtuális hálózatok privát címeinek forrás IP-címekként való használatára a virtuális hálózatról az Azure-szolgáltatás felé irányuló forgalom esetén. Ez a váltás lehetővé teszi a szolgáltatások elérését anélkül, hogy szükség lenne az IP-tűzfalakban használt lefoglalt, nyilvános IP-címekre.
 - __Az Azure-szolgáltatások helyszíni hozzáférésének biztosítása:__
 
@@ -75,7 +75,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 - Egy szolgáltatásvégpont engedélyezése után az alhálózaton lévő virtuális gépek átváltanak a nyilvános IPv4-címek használatáról a magánhálózati IPv4-címeik forrásként való használatára, amikor az adott alhálózatról kommunikálnak a szolgáltatással. A váltás során bármilyen, a szolgáltatás felé nyitott fennálló TCP-kapcsolat bezárul. Győződjön meg arról, hogy semmilyen kritikus feladat nem fut, amikor egy alhálózaton engedélyez vagy letilt egy szolgáltatáshoz vezető szolgáltatásvégpontot. Továbbá győződjön meg arról is, hogy az alkalmazásai képesek automatikusan csatlakozni az Azure-szolgáltatásokhoz az IP-címváltást követően.
 
-  Az IP-címváltás csak a virtuális hálózatról kimenő szolgáltatásforgalomra van hatással. A virtuális gépekhez rendelt nyilvános IPv4-címekre bejövő, illetve azokról kimenő bármilyen egyéb forgalomra a váltás nincs hatással. Azure-szolgáltatások esetében, ha a meglévő tűzfalszabályok az Azure nyilvános IP-címeit használják, akkor a virtuális hálózat privát címeire történő váltást követően nem működnek tovább.
+  Az IP-címváltás csak a virtuális hálózatról kimenő szolgáltatásforgalomra van hatással. A virtuális gépekhez rendelt nyilvános IPv4-címekre bejövő, illetve azokról kimenő bármilyen egyéb forgalomra a váltás nincs hatással. Azure-szolgáltatások esetében, ha a meglévő tűzfalszabályok az Azure nyilvános IP-címeit használják, akkor a virtuális hálózat privát címeire történő váltást követően a szabályok nem működnek tovább.
 - A szolgáltatásvégpontok használatakor az Azure-szolgáltatások DNS-bejegyzései változatlanok maradnak, és továbbra is feloldják az Azure-szolgáltatáshoz rendelt nyilvános IP-címeket.
 - Hálózati biztonsági csoportok (NSG-k) szolgáltatásvégpontokkal:
   - Alapértelmezés szerint az NSG-k engedélyezik a kimenő internetforgalmat, így a virtuális hálózatról az Azure-szolgáltatások felé tartó forgalmat is. Ez a szolgáltatásvégpontok használatával is ugyanígy működik. 
@@ -84,7 +84,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 ### <a name="scenarios"></a>Forgatókönyvek
 
 - **Társviszonyban álló, csatlakoztatott vagy többszörös virtuális hálózatok**: Ha egy vagy több virtuális hálózaton belüli több alhálózaton is szeretné biztosítani az Azure-szolgáltatásokat, akkor engedélyezze a szolgáltatásvégpontokat külön-külön mindegyik alhálózaton, hogy mindegyik számára biztosíthassa az Azure-szolgáltatások erőforrásait.
-- **A virtuális hálózatról az Azure-szolgáltatások felé irányuló forgalom szűrése**: Ha vizsgálni vagy szűrni szeretné a virtuális hálózatról egy Azure-szolgáltatás felé menő forgalmat, ahhoz egy virtuális hálózaton belül üzembe helyezhet egy hálózati virtuális készüléket. Ezután szolgáltatásvégpontokat alkalmazhat azon az alhálózaton, ahol a hálózati virtuális készülék üzemel, hogy csak ennek az alhálózatnak biztosítsa az Azure-szolgáltatási erőforrásokat. Ez a forgatókönyv akkor lehet hasznos, ha a virtuális hálózatnak az Azure-szolgáltatásokhoz való hozzáférését bizonyos Azure-erőforrásokra szeretné korlátozni a hálózati virtuális készülékek szűrésének segítségével. További információkért lásd a [kimenő forgalommal és a hálózati virtuális készülékekkel](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json) foglalkozó témakört.
+- **A virtuális hálózatról az Azure-szolgáltatások felé irányuló forgalom szűrése**: Ha vizsgálni vagy szűrni szeretné a virtuális hálózatról egy Azure-szolgáltatás felé menő forgalmat, ahhoz egy virtuális hálózaton belül üzembe helyezhet egy hálózati virtuális készüléket. Ezután szolgáltatásvégpontokat alkalmazhat azon az alhálózaton, ahol a hálózati virtuális készülék üzemel, hogy csak ennek az alhálózatnak biztosítsa az Azure-szolgáltatási erőforrásokat. Ez a forgatókönyv akkor lehet hasznos, ha a virtuális hálózatnak az Azure-szolgáltatásokhoz való hozzáférését bizonyos Azure-erőforrásokra szeretné korlátozni a hálózati virtuális készülékek szűrésének segítségével. További információkért lásd a [kimenő forgalommal és a hálózati virtuális berendezésekkel](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json) foglalkozó témakört.
 - **Azure-erőforrások biztosítása közvetlenül virtuális hálózatokra telepített szolgáltatások számára**: Különböző Azure-szolgáltatások közvetlenül a virtuális hálózatok adott alhálózatain is üzembe helyezhetők. Az Azure-szolgáltatási erőforrások a [felügyelt szolgáltatási](virtual-network-for-azure-services.md) alhálózatokon egy szolgáltatásvégpont beállításával biztosíthatók.
 
 ### <a name="logging-and-troubleshooting"></a>Naplózás és hibaelhárítás
@@ -122,4 +122,5 @@ Az Azure-szolgáltatási erőforrások (például Azure-tárfiókok) esetében a
 - [Azure Storage-fiókok biztosítása virtuális hálózatokhoz](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json) – útmutató
 - [Azure SQL Database biztosítása virtuális hálózatokhoz](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) – útmutató
 - [Azure-szolgáltatások integrálása virtuális hálózatokon](virtual-network-for-azure-services.md) – útmutató
+-  Rövid útmutató: [Azure Resource Manager-sablon](https://azure.microsoft.com/en-us/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) szolgáltatásvégpont beállításához egy VNet alhálózatán, és egy Azure Storage-fiók létrehozása azon az alhálózaton.
 

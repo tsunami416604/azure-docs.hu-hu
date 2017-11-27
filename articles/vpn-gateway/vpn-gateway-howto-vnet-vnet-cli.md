@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 11/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: ff859bd9dbbf30c461cdba8409c77b04ff97b1f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c7653250f51429321b4da0384496aae37ad06da
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása az Azure CLI használatával
 
@@ -59,11 +59,17 @@ A virtuális hálózatok közötti kapcsolatokról további információt a cikk
 
 ### <a name="which-set-of-steps-should-i-use"></a>Melyik eljárást használjam?
 
-Ebben a cikkben kétféle lépéssorozatot láthat. Az egyik lépéssorozat az [azonos előfizetésben található virtuális hálózatokra](#samesub), a másik az [eltérő előfizetésekben található virtuális hálózatokra](#difsub) vonatkozik.
-
-## <a name="samesub"></a>Azonos előfizetésben található virtuális hálózatok összekapcsolása
+Ebben a cikkben kétféle lépéssorozatot láthat. Egy lépéssorozat az [azonos előfizetésben található virtuális hálózatokhoz](#samesub). A konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
 
 ![v2v ábra](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+
+Az [eltérő előfizetésben található virtuális hálózatokkal](#difsub) külön cikk foglalkozik. Annak a konfigurációnak a lépései a TestVNet1 és TestVNet5 hálózatot használják.
+
+![v2v ábra](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
+
+Ha szeretné, a konfigurációkat kombinálhatja, vagy egyszerűen kiválaszthatja a használni kívántat.
+
+## <a name="samesub"></a>Azonos előfizetésben található virtuális hálózatok összekapcsolása
 
 ### <a name="before-you-begin"></a>Előkészületek
 
@@ -88,7 +94,7 @@ A példákban a következő értékeket használjuk:
 * Nyilvános IP-cím: VNet1GWIP
 * VPN típusa: RouteBased
 * Kapcsolat (1–4): VNet1toVNet4
-* Kapcsolat (1–5): VNet1toVNet5
+* Kapcsolat (1–5): VNet1toVNet5 (virtuális hálózatokhoz eltérő előfizetésekben)
 * Kapcsolat típusa: VNet2VNet
 
 **Értékek a TestVNet4-hez:**
@@ -255,8 +261,6 @@ Most már két, VPN-átjáróval rendelkező virtuális hálózata van. A követ
 
 ## <a name="difsub"></a>Különböző előfizetésben található virtuális hálózatok összekapcsolása
 
-![v2v ábra](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
-
 Ebben a forgatókönyvben csatlakoztatjuk a TestVNet1 és a TestVNet5 virtuális hálózatot. A virtuális hálózatok eltérő előfizetésben találhatók. Az előfizetéseket nem kell társítani ugyanazzal az Active Directory bérlővel. A konfiguráláshoz használt lépések egy további, virtuális hálózatok közötti kapcsolatot hoznak létre a TestVNet1 és a TestVNet5 összekapcsolásához.
 
 ### <a name="TestVNet1diff"></a>5. lépés – A TestVNet1 létrehozása és konfigurálása
@@ -362,7 +366,7 @@ Ezt a lépést két CLI-munkamenetre osztottuk fel, amelyek jelölése **[1. el�
 ## <a name="verify"></a>A kapcsolatok ellenőrzése
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connections v2v cli](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
+[!INCLUDE [verify connections](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 ## <a name="faq"></a>Virtuális hálózatok közötti kapcsolat – gyakori kérdések
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
