@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 11/06/2017
-ms.openlocfilehash: 5bbfe63d159ba2d09a495908f69f707ed04a02f8
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b723cc23ccbda6c5d39627682116cc314dcf2c0e
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>Írisz osztályozása, 2. rész: Modell létrehozása
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldást kínálnak.
@@ -291,7 +291,7 @@ A Machine Learning segítségével könnyedén konfigurálhat további végrehaj
    Amikor a `run.py` futtatása befejeződik, a Workbench futtatási előzményeket tartalmazó listanézetében megjelenik egy diagram.
 
 ## <a name="execute-in-a-docker-container-on-a-remote-machine"></a>Végrehajtás Docker-tárolóban egy távoli gépen
-Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkriptet, SSH-hozzáférésre (felhasználónév és jelszó) lesz szüksége azon a távoli gépen. Az is szükséges továbbá, hogy a távoli gépen a Docker-motor telepítve legyen és fusson. Egy ilyen Linux-gép beszerzésének a legegyszerűbb módja, ha létrehoz egy [Ubuntu-alapú adatelemzési virtuális gépet (DSVM)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) az Azure-ban. 
+Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkriptet, SSH-hozzáférésre (felhasználónév és jelszó) lesz szüksége azon a távoli gépen. Az is szükséges továbbá, hogy a távoli gépen a Docker-motor telepítve legyen és fusson. Egy ilyen Linux-gép beszerzésének a legegyszerűbb módja, ha létrehoz egy Ubuntu-alapú adatelemzési virtuális gépet (DSVM) az Azure-ban. Ismerje meg, [hogyan hozhat létre Ubuntu-alapú DSVM-et az Azure ML Workbenchben való használathoz](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal).
 
 >[!NOTE] 
 >A CentOS-alapú DSVM használata *nem* támogatott.
@@ -343,7 +343,9 @@ Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkript
    ```
 
 ## <a name="execute-script-in-an-hdinsight-cluster"></a>Szkript végrehajtása HDInsight-fürtön
-Ezt a szkriptet futtathatja egy tényleges Spark-fürtön is. 
+Ezt a szkriptet futtathatja egy HDInsight Spark-fürtön is. Ismerje meg, [hogyan hozhat létre HDInsight Spark-fürtöt az Azure ML Workbenchben való használathoz](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal).
+
+>![MEGJEGYZÉS] A HDInsight-fürtnek az Azure-blobot kell elsődleges tárolóként használnia. Az Azure Data Lake-tároló használata jelenleg nem támogatott.
 
 1. Ha rendelkezik hozzáféréssel a Spark for Azure HDInsight-fürthöz, hozzon létre egy HDInsight-futtatási konfigurációs parancsot az itt látható módon. Paraméterként adja meg a HDInsight-fürt nevét, valamint a saját HDInsight-felhasználónevét és -jelszavát. Használja az alábbi parancsot:
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 11/15/2017
 ms.author: cherylmc
-ms.openlocfilehash: cbbae06d4e5774d5fdf7bcce65dc7efddaa5f280
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2da1c7148e27ca8dd8eb774d4201415a969fada
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Virtuális hálózatok közötti VPN-átjárókapcsolat konfigurálása az Azure Portalon
 
@@ -39,7 +39,9 @@ A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatk
 
 ![v2v ábra](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
 
-Egy virtuális hálózat egy másikkal való összekapcsolása (a virtuális hálózatok közötti kapcsolat) nagyon hasonlít egy virtuális hálózat egy helyszíni helyhez való csatlakoztatásához. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához. Ha a virtuális hálózatai azonos régióban találhatóak, fontolja meg az összekötésüket virtuális hálózatok közötti társviszony útján. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
+Egy virtuális hálózat egy másikkal való összekapcsolása (a virtuális hálózatok közötti kapcsolat) nagyon hasonlít egy virtuális hálózat egy helyszíni helyhez való csatlakoztatásához. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához. A virtuális hálózatok között helyek közötti (IPsec-) kapcsolat is létrehozható virtuális hálózatok közötti kapcsolat helyett. A két kapcsolattípus ugyanúgy működik a kommunikáció során. Amikor azonban virtuális hálózatok közötti kapcsolatot hoz létre, és frissíti az egyik virtuális hálózat címterét, a másik automatikusan tudni fogja a frissített címtér elérési útvonalát. Ha helyek közötti (IPsec-) kapcsolatokat hoz létre, manuálisan kell konfigurálnia a helyi hálózati átjáró címterét. Amikor összetett konfigurációkkal dolgozik, a virtuális hálózatok közötti kapcsolatok helyett érdemesebb lehet IPsec-kapcsolatokat létrehozni. Így manuálisan további címtereket határozhat meg a helyi hálózati átjáróhoz.
+
+Ha a virtuális hálózatai azonos régióban találhatóak, fontolja meg az összekötésüket virtuális hálózatok közötti társviszony útján. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
 A virtuális hálózatok közötti kommunikáció kombinálható többhelyes konfigurációkkal. Így létrehozhat olyan hálózati topológiákat, amelyek a létesítmények közötti kapcsolatokat a virtuális hálózatok közötti kapcsolatokkal egyesítik, ahogyan azt a következő diagram mutatja:
 
@@ -50,64 +52,56 @@ A virtuális hálózatok közötti kommunikáció kombinálható többhelyes kon
 A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
 
 * **Georedundancia és földrajzi jelenlét több régióban**
-  
+
   * Beállíthatja a saját georeplikációját vagy szinkronizálását biztonságos kapcsolaton át, internetes végpontok használata nélkül.
   * Az Azure Traffic Manager és a Load Balancer segítségével magas rendelkezésre állású munkaterhelést állíthat be georedundanciával több Azure-régióban. Például beállíthat folyamatosan működő SQL-t több Azure-régióban található rendelkezésre állási csoportokkal.
 * **Regionális többrétegű alkalmazások elkülönítéssel vagy felügyeleti határral**
-  
+
   * Egy régión belül beállíthat többrétegű alkalmazásokat több, elkülönítéssel vagy felügyeleti követelményekkel összekapcsolt virtuális hálózatokkal.
 
-A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, a [Virtuális hálózatok közötti kapcsolat – gyakori kérdések](#faq) című részben talál. Vegye figyelembe, hogy ha a virtuális hálózatok különböző előfizetésekben találhatóak, nem hozhatja létre a kapcsolatot a portálon. Ehelyett használhatja a [PowerShellt](vpn-gateway-vnet-vnet-rm-ps.md) vagy a [parancssori felületet](vpn-gateway-howto-vnet-vnet-cli.md).
+Ha gyakorlatként használja ezeket a lépéseket, használhatja a példa beállításértékeket. A példában a virtuális hálózatok ugyanabban az előfizetésben, de különböző erőforráscsoportokban vannak. Ha a virtuális hálózatok különböző előfizetésekben találhatóak, nem hozhatja létre a kapcsolatot a portálon. Ehelyett használhatja a [PowerShellt](vpn-gateway-vnet-vnet-rm-ps.md) vagy a [parancssori felületet](vpn-gateway-howto-vnet-vnet-cli.md). A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, a [Virtuális hálózatok közötti kapcsolat – gyakori kérdések](#faq) című részben talál.
 
 ### <a name="values"></a>Példabeállítások
-
-Ha gyakorlatként használja ezeket a lépéseket, használhatja a példa beállításértékeket. Csupán a példa kedvéért több címteret használunk az egyes virtuális hálózatokhoz. Azonban a virtuális hálózatok közötti kapcsolat konfigurálásához nincs szükség több címtérre.
 
 **Értékek a TestVNet1-hez:**
 
 * Virtuális hálózat neve: TestVNet1
 * Címtér: 10.11.0.0/16
-  * Alhálózat neve: FrontEnd
-  * Alhálózati címtartomány: 10.11.0.0/24
+* Előfizetés: Válassza ki a használni kívánt előfizetést
 * Erőforráscsoport: TestRG1
 * Hely: East US
-* Címtér: 10.12.0.0/16
-  * Alhálózat neve: BackEnd
-  * Alhálózati címtartomány: 10.12.0.0/24
+* Alhálózat neve: FrontEnd
+* Alhálózati címtartomány: 10.11.0.0/24
 * Átjáróalhálózat neve: GatewaySubnet (a portálon ez a rész automatikusan ki lesz töltve)
-  * Átjáróalhálózat címtartománya: 10.11.255.0/27
+* Átjáróalhálózat címtartománya: 10.11.255.0/27
 * DNS-kiszolgáló: Használja a saját DNS-kiszolgálója IP-címét.
 * Virtuális hálózati átjáró neve: TestVNet1GW
 * Átjáró típusa: VPN
 * VPN típusa: Útvonalalapú
 * Termékváltozat: Válassza ki az átjáró használni kívánt termékváltozatát.
 * Nyilvános IP-cím neve: TestVNet1GWIP
-* Csatlakozási értékek:
-  * Név: TestVNet1toTestVNet4
-  * Megosztott kulcs: Saját maga létrehozhatja a megosztott kulcsot. Ebben a példában az abc123-at használjuk. Fontos, hogy az érték egyezzen, amikor létrehozza a virtuális hálózatok közötti kapcsolatot.
+* Kapcsolat neve: TestVNet1toTestVNet4
+* Megosztott kulcs: Saját maga létrehozhatja a megosztott kulcsot. Ebben a példában az abc123-at használjuk. Fontos, hogy az érték egyezzen, amikor létrehozza a virtuális hálózatok közötti kapcsolatot.
 
 **Értékek a TestVNet4-hez:**
 
 * Virtuális hálózat neve: TestVNet4
 * Címtér: 10.41.0.0/16
-  * Alhálózat neve: FrontEnd
-  * Alhálózati címtartomány: 10.41.0.0/24
-* Erőforráscsoport: TestRG1
+* Előfizetés: Válassza ki a használni kívánt előfizetést
+* Erőforráscsoport: TestRG4
 * Hely: West US
-* Címtér: 10.42.0.0/16
-  * Alhálózat neve: BackEnd
-  * Alhálózati címtartomány: 10.42.0.0/24
+* Alhálózat neve: FrontEnd
+* Alhálózati címtartomány: 10.41.0.0/24
 * Átjáró-alhálózat neve: GatewaySubnet (a portálon ez a rész automatikusan ki lesz töltve)
-  * Átjáró-alhálózat címtartománya: 10.41.255.0/27
+* Átjáró-alhálózat címtartománya: 10.41.255.0/27
 * DNS-kiszolgáló: Használja a saját DNS-kiszolgálója IP-címét.
 * Virtuális hálózati átjáró neve: TestVNet4GW
 * Átjáró típusa: VPN
 * VPN típusa: Útvonalalapú
 * Termékváltozat: Válassza ki az átjáró használni kívánt termékváltozatát.
 * Nyilvános IP-cím neve: TestVNet4GWIP
-* Csatlakozási értékek:
-  * Név: TestVNet4toTestVNet1
-  * Megosztott kulcs: Saját maga létrehozhatja a megosztott kulcsot. Ebben a példában az abc123-at használjuk. Fontos, hogy az érték egyezzen, amikor létrehozza a virtuális hálózatok közötti kapcsolatot.
+* Kapcsolat neve: TestVNet4toTestVNet1
+* Megosztott kulcs: Saját maga létrehozhatja a megosztott kulcsot. Ebben a példában az abc123-at használjuk. Fontos, hogy az érték egyezzen, amikor létrehozza a virtuális hálózatok közötti kapcsolatot.
 
 ## <a name="CreatVNet"></a>1. A TestVNet1 létrehozása és konfigurálása
 Ha már rendelkezik egy virtuális hálózattal, győződjön meg arról, hogy a beállításai kompatibilisek a VPN-átjáró kialakításával. Különösen ügyeljen az esetleges olyan alhálózatokra, amelyek átfedésbe kerülhetnek más hálózatokkal. Egymást átfedő alhálózatok esetén a kapcsolat nem fog megfelelően működni. Ha a virtuális hálózat a megfelelő beállításokkal lett konfigurálva, folytassa a [DNS-kiszolgáló megadása](#dns) szakaszban leírt lépésekkel.
@@ -144,44 +138,40 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 ## <a name="CreateTestVNet4"></a>6. A TestVNet4 létrehozása és konfigurálása
 Miután konfigurálta a TestVNet1-et, hozza létre a TestVNet4-et az előző lépések megismétlésével és az értékek a TestVNet4 értékeire való kicserélésével. A TestVNet4 konfigurálásához nem kell megvárnia, hogy befejeződjön a TestVNet1 virtuális hálózati átjárójának létrehozása. Ha a saját értékeit használja, győződjön meg róla, hogy a címterek nincsenek átfedésben azokkal a virtuális hálózatokkal, amelyekhez csatlakozni kíván.
 
-## <a name="TestVNet1Connection"></a>7. A TestVNet1 kapcsolat konfigurálása
-Miután mind a TestVNet1, mind a TestVNet4 virtuális hálózati átjárójának létrehozása befejeződött, létrehozhatja a virtuális hálózati átjárókapcsolatokat. Ebben a szakaszban hozza létre a kapcsolatot a VNet1 felől a VNet4 felé. Ezek a lépések csak egyazon előfizetésben lévő virtuális hálózatokkal működnek. Ha a virtuális hálózatok különböző előfizetésekben találhatóak, a kapcsolatot a PowerShell használatával kell létrehozni. Lásd a [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)-re vonatkozó cikket.
+## <a name="TestVNet1Connection"></a>7. A TestVNet1 átjárókapcsolat konfigurálása
+Miután mind a TestVNet1, mind a TestVNet4 virtuális hálózati átjárójának létrehozása befejeződött, létrehozhatja a virtuális hálózati átjárókapcsolatokat. Ebben a szakaszban létrehozza a kapcsolatot a VNet1 felől a VNet4 felé. Ezek a lépések csak egyazon előfizetésben lévő virtuális hálózatokkal működnek. Ha a virtuális hálózatok különböző előfizetésekben találhatóak, a kapcsolatot a PowerShell használatával kell létrehozni. Lásd a [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)-re vonatkozó cikket. Ha a virtuális hálózatok ugyanazon előfizetés különböző erőforráscsoportjaiban találhatóak, a portállal csatlakoztathatja őket.
 
-1. A **Minden erőforrás** részben navigáljon a virtuális hálózata virtuális hálózati átjárójához. Például: **TestVNet1GW**. A virtuális hálózati átjáró paneljének megnyitásához kattintson a **TestVNet1GW** elemre.
-   
-    ![Kapcsolatpanel](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/settings_connection.png "Kapcsolatpanel")
-2. Kattintson a **+Hozzáadás** elemre a **Kapcsolat hozzáadása** panel megnyitásához.
-3. A **Kapcsolat hozzáadása** panelen, a név mezőben adja meg a kapcsolat nevét. Például: **TestVNet1toTestVNet4**.
-   
-    ![Kapcsolat neve](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v1tov4.png "Kapcsolat neve")
-4. A **Kapcsolat típusa** mezőben. válassza a **Virtuális hálózatok közötti** lehetőséget a legördülő listából.
+1. A **Minden erőforrás** részben navigáljon a virtuális hálózata virtuális hálózati átjárójához. Például: **TestVNet1GW**. A virtuális hálózati átjáró oldalának megnyitásához kattintson a **TestVNet1GW** elemre.
+
+  ![Kapcsolatok oldal](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "Kapcsolatok oldal")
+2. Kattintson a **+Hozzáadás** elemre a **Kapcsolat hozzáadása** oldal megnyitásához.
+
+  ![Kapcsolat hozzáadása](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "Kapcsolat hozzáadása")
+3. A **Kapcsolat hozzáadása** oldalon, a név mezőben adja meg a kapcsolat nevét. Például: **TestVNet1toTestVNet4**.
+4. A **Kapcsolat típusa** mezőben válassza a **Virtuális hálózatok közötti** lehetőséget a legördülő listából.
 5. Az **Első virtuális hálózati átjáró**mező értéke automatikusan ki lesz töltve, mert egy megadott virtuális hálózati átjáróból hozza létre a kapcsolatot.
-6. A **Második virtuális hálózati átjáró**mezőben annak a virtuális hálózatnak a virtuális hálózati átjáróját kell megadni, amelyikhez létre szeretné hozni a kapcsolatot. Kattintson a **Másik virtuális hálózati átjáró kiválasztása** elemre a **Virtuális hálózati átjáró kiválasztása** panel megnyitásához.
-   
-    ![Kapcsolat hozzáadása](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add_connection.png "Kapcsolat hozzáadása")
-7. Tekintse át a panelen felsorolt virtuális hálózati átjárók listáját. Csak azok a virtuális hálózati átjárók jelennek meg, amelyek az előfizetésében szerepelnek. Ha olyan virtuális hálózati átjáróhoz szeretne kapcsolódni, amely nem szerepel az előfizetésében, olvassa el a [PowerShell-lel kapcsolatos cikket](vpn-gateway-vnet-vnet-rm-ps.md). 
+6. A **Második virtuális hálózati átjáró**mezőben annak a virtuális hálózatnak a virtuális hálózati átjáróját kell megadni, amelyikhez létre szeretné hozni a kapcsolatot. Kattintson a **Másik virtuális hálózati átjáró kiválasztása** elemre a **Virtuális hálózati átjáró kiválasztása** oldal megnyitásához.
+7. Tekintse át az oldalon felsorolt virtuális hálózati átjárók listáját. Csak azok a virtuális hálózati átjárók jelennek meg, amelyek az előfizetésében szerepelnek. Ha olyan virtuális hálózati átjáróhoz szeretne kapcsolódni, amely nem szerepel az előfizetésében, olvassa el a [PowerShell-lel kapcsolatos cikket](vpn-gateway-vnet-vnet-rm-ps.md).
 8. Kattintson arra a virtuális hálózati átjáróra, amelyhez csatlakozni kíván.
 9. A **Megosztott kulcs** mezőben adja meg a kapcsolat megosztott kulcsát. A kulcsot generálhatja, vagy saját maga is létrehozhatja. Egy helyek közötti kapcsolat esetében a helyszíni eszközhöz és a virtuális hálózati átjáró kapcsolatához használt kulcs ugyanaz lenne. A fogalom itt is hasonló, azonban itt nem egy VPN-eszközhöz, hanem egy másik virtuális hálózati átjáróhoz való csatlakozásról van szó.
-   
-    ![Megosztott kulcs](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "Megosztott kulcs")
-10. A módosítások mentéséhez kattintson az **OK** gombra a panel alján.
+10. A módosítások mentéséhez kattintson az **OK** gombra a lap alján.
 
-## <a name="TestVNet4Connection"></a>8. A TestVNet4 kapcsolat konfigurálása
-Ezután hozzon létre kapcsolatot a TestVNet4 felől a TestVNet1 felé. Ugyanazt a módszert használja, mint a TestVNet1 felől a TestVNet4 felé irányuló kapcsolat létrehozásakor. Ügyeljen arra, hogy ugyanazt a megosztott kulcsot használja.
+## <a name="TestVNet4Connection"></a>8. A TestVNet4 átjárókapcsolat konfigurálása
+Ezután hozzon létre kapcsolatot a TestVNet4 felől a TestVNet1 felé. Keresse meg a TestVNet4 kapcsolattal társított virtuális hálózati átjárót a portálon. Kövesse az előző szakasz lépéseit, és cserélje le az értékeket a TestVNet4 felől a TestVNet1 felé mutató kapcsolat létrehozásához. Ügyeljen arra, hogy ugyanazt a megosztott kulcsot használja.
 
-## <a name="VerifyConnection"></a>9. A kapcsolat ellenőrzése
-Ellenőrizze a kapcsolatot. Minden egyes virtuális hálózati átjáró esetében tegye a következőket:
+## <a name="VerifyConnection"></a>9. Kapcsolatok ellenőrzése
 
-1. Keresse meg a virtuális hálózati átjáró paneljét. Például: **TestVNet4GW**. 
-2. A virtuális hálózati átjáró paneljén kattintson a **Kapcsolatok** elemre a virtuális hálózati átjáró kapcsolatpaneljének megtekintéséhez.
-
-Tekintse át a kapcsolatokat, és ellenőrizze az állapotot. Amikor a kapcsolat létrejött, állapotértékként a **Sikeres** és a **Csatlakoztatva** szerepel.
+Keresse meg a virtuális hálózati átjárót a portálon. A virtuális hálózati átjáró oldalán kattintson a **Kapcsolatok** elemre a virtuális hálózati átjáró kapcsolatoldalának megtekintéséhez. Amikor a kapcsolat létrejött, az állapotértékek a **Sikeres** és a **Csatlakoztatva** értékre váltanak. Egy kapcsolatra duplán kattintva megnyithatja az **Alapvető szolgáltatások** oldalt, ahol további információkhoz juthat.
 
 ![Sikeres](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connected.png "Sikeres")
 
-Kattintson duplán az egyes kapcsolatokra az adott kapcsolat információinak megtekintéséhez.
+Amikor elindul az adatok forgalma, láthatja a bejövő és a kimenő adatforgalom értékeit.
 
 ![Alapvető szolgáltatások](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Alapvető szolgáltatások")
+
+## <a name="to-add-additional-connections"></a>További kapcsolatok hozzáadása
+
+Ha további kapcsolatokat szeretne hozzáadni, keresse meg a virtuális hálózati átjárót, amelyből a kapcsolatot létre szeretné hozni, majd kattintson a **Kapcsolatok** elemre. Létrehozhat egy másik virtuális hálózatok közötti kapcsolatot, vagy létrehozhat IPsec helyek közötti kapcsolatot egy helyszíni helyhez. Módosítsa a **Kapcsolat típusát**, hogy az megfeleljen a létrehozni kívánt kapcsolattípusnak. További kapcsolatok létrehozása előtt ellenőrizze, hogy a virtuális hálózat címtere ne legyen átfedésben azokkal a címterekkel, amelyekhez csatlakozni szeretne. A helyek közötti kapcsolat létrehozásának lépéseiért lásd: [Helyek közötti kapcsolat létrehozása](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
 ## <a name="faq"></a>Virtuális hálózatok közötti kapcsolat – gyakori kérdések
 A virtuális hálózatok közötti kapcsolatokról további információt a gyakori kérdésekben talál.
@@ -189,4 +179,7 @@ A virtuális hálózatok közötti kapcsolatokról további információt a gyak
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért tekintse meg a [Virtual Machines-dokumentációt](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+
+A [Hálózati biztonság](../virtual-network/security-overview.md) című témakörben talál információt egy adott virtuális hálózatban található erőforrásokra irányuló hálózati forgalom korlátozásáról.
+
+A [Virtuális hálózat forgalmának útválasztása](../virtual-network/virtual-networks-udr-overview.md) című témakörben talál információt arról, hogyan irányítja az Azure az Azure, a helyszíni és az internetes erőforrások közötti forgalom útválasztását.

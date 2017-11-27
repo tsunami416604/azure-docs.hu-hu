@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 11/17/2017
 ms.author: billmath
-ms.openlocfilehash: b6318b419a0ea87fd1fb56656b1161909876f338
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf7b64bd956c236f5c70bb7dcd209ecdcd7176dd
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Azure Active Directory – Használati feltételek funkció (Előzetes verzió)
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal.  Így gondoskodni lehet róla, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat.
@@ -43,7 +43,8 @@ A következő lépéseket követve konfigurálja az Azure AD – Használati fel
 2. Győződjön meg arról, hogy a címtár prémium szintű Azure AD P1, P2, EMS E3 vagy EMS E5 előfizetéssel rendelkezik.  Ha nincs ilyen előfizetése, akkor [szerezze be a prémium szintű Azure AD-t](active-directory-get-started-premium.md) vagy [indítson egy próbaverziót](https://azure.microsoft.com/trial/get-started-active-directory/).
 3. Az Azure AD – Használati feltételek irányítópultját a következő címen tekintheti meg: [https://aka.ms/catou](https://aka.ms/catou)
 
-
+>[!IMPORTANT]
+>A feltételes hozzáférési szabályzat vezérlői (beleértve a használati feltételeket) nem támogatják a szolgáltatásfiókokra irányuló kényszerítést.  Javasoljuk, hogy zárjon ki minden szolgáltatásfiókot a feltételes hozzáférési szabályzatból.
 
 ## <a name="add-company-terms-of-use"></a>Vállalati használati feltételek hozzáadása
 A használati feltételek véglegesítése után a hozzáadáshoz kövesse a következő eljárást.
@@ -92,7 +93,6 @@ Az érintett felhasználók a használati feltételek létrehozása és kénysze
 
 ## <a name="additional-information"></a>További információ
 Az alábbi információkkal érdemes tisztában lenni, mivel segítenek a használati feltételek alkalmazásában.
-
 
 Az érintett felhasználóknak újra be kell jelentkezniük, hogy megfelelhessenek az új szabályzatnak, ha:
  - egy feltételes hozzáférési szabályzat van engedélyezve a használati feltételekhez
