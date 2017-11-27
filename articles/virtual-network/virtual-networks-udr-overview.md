@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 18169b86d10b589a5c8b707596d5f62813e9efe2
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 8a80220879db9f0030b9f1a8494b1cc24105ef17
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -118,7 +118,7 @@ A következő ugrás típusaihoz megjelenített és hivatkozott név eltér az A
 
 Egy helyszíni hálózati átjáró útvonalakat cserélhet egy Azure virtuális hálózati átjáróval a Border Gateway Protocol (BGP) használatával. A BGP Azure virtuális hálózati átjáróval történő használata függ az átjáró létrehozásakor kiválasztott típustól. Ha a következő típust választotta ki:
 
-- **ExpressRoute**: BGP-t kell használnia a Microsoft peremhálózati útválasztója felé haladó útvonalak meghirdetéséhez. Nem hozhat létre felhasználó által megadott útvonalakat, ha ExpressRoute típusú virtuális hálózati átjárót telepít.
+- **ExpressRoute**: BGP-t kell használnia a Microsoft peremhálózati útválasztója felé haladó helyszíni útvonalak meghirdetéséhez. Nem hozhat létre felhasználó által megadott útvonalakat az adatforgalom ExpressRoute virtuális hálózati átjáróhoz kényszerítésére, ha ExpressRoute típusú virtuális hálózati átjárót telepít. Az ExpressRoute forgalmának például egy hálózati virtuális berendezésre való kényszerítéséhez felhasználó által megadott útvonalakat használhat. 
 - **VPN**: Igény szerint használhatja a BGP-t. Részletes információért lásd a [BGP helyek közötti VPN-kapcsolatokkal](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) témakört.
 
 Amikor a BGP használatával útvonalakat cserél az Azure-ban, a rendszer minden meghirdetett előtag esetében külön útvonalat ad hozzá a virtuális hálózat összes alhálózatának útvonaltáblájához. Az útvonal forrásaként és következő ugrásának típusaként *Virtuális hálózati átjáró* van feltüntetve. 

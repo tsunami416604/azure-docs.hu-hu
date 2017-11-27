@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2017
+ms.date: 11/16/2017
 ms.author: jdial
-ms.openlocfilehash: 95f2b57b2012df816c76a1b6ec55ca9f92e134a3
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 3840ed000d5a9fe5d3c8fd01c061bf13674c0ce5
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/16/2017
@@ -36,7 +36,7 @@ Ha a klasszikus üzemi modellt ismeri, tekintse meg a következőt: [Az IP-címk
 
 ## <a name="public-ip-addresses"></a>Nyilvános IP-címek
 
-A nyilvános IP-címek lehetővé teszik az Azure-erőforrások számára, hogy kommunikáljanak az internettel és az Azure más nyilvános szolgáltatásaival, például az [Azure Redis Cache](https://azure.microsoft.com/services/cache) és az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs) szolgáltatásokkal, valamint az [SQL-adatbázisokkal](../sql-database/sql-database-technical-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és az [Azure-tárolóval](../storage/common/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A nyilvános IP-címek lehetővé teszik az internetes erőforrások bejövő kommunikációját az Azure-erőforrásokkal. A nyilvános IP-címek emellett lehetővé teszik az Azure-erőforrások kimenő kommunikációját az internettel és a nyilvános Azure-szolgáltatásokkal, az erőforráshoz rendelt IP-címet használva. A cím az erőforrás számára van kijelölve, ameddig vissza nem vonja a hozzárendelést. Ha az erőforráshoz nem lett nyilvános IP-cím hozzárendelve, az erőforrás továbbra is képes kimenő kommunikációra az internettel, az Azure azonban dinamikusan társít hozzá egy elérhető IP-címet, amely nincs az erőforrás számára kijelölve. További információt a [kimenő kapcsolatokat ismertető](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) cikkben talál az Azure kimenő kapcsolatairól.
 
 Az Azure Resource Manager szolgáltatásban a [nyilvános IP-cím](virtual-network-public-ip-address.md) olyan erőforrás, amely saját tulajdonságokkal rendelkezik. A nyilvános IP-cím-erőforrást például a következő erőforrásokhoz rendelheti hozzá:
 
@@ -98,7 +98,7 @@ Statikus nyilvános IP-címeket általában a következő esetekben szoktak hasz
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS-állomásnév feloldása
-Megadhat egy DNS-tartománynév címkét a nyilvános IP-cím erőforráshoz, amely hozzárendelést hoz létre a *domainnamelabel*.*location*.cloudapp.azure.com és a nyilvános IP-cím között az Azure által felügyelt DNS-kiszolgálókon. Ha például nyilvános IP-cím erőforrást hoz létre a **contoso** *domainnamelabel* értékkel a **West US** *Azure-helyen*, akkor a rendszer a **contoso.westus.cloudapp.azure.com** teljes tartománynevet (FQDN) az erőforrás nyilvános IP-címére oldja fel. A teljes tartománynevet az Azure-ban lévő nyilvános IP-címre mutató egyéni tartományi CNAME rekord létrehozásához használhatja.
+Megadhat egy DNS-tartománynév címkét a nyilvános IP-cím erőforráshoz, amely hozzárendelést hoz létre a *domainnamelabel*.*location*.cloudapp.azure.com és a nyilvános IP-cím között az Azure által felügyelt DNS-kiszolgálókon. Ha például nyilvános IP-cím erőforrást hoz létre a **contoso** *domainnamelabel* értékkel a **West US** *Azure-helyen*, akkor a rendszer a **contoso.westus.cloudapp.azure.com** teljes tartománynevet (FQDN) az erőforrás nyilvános IP-címére oldja fel. A teljes tartománynevet az Azure-ban lévő nyilvános IP-címre mutató egyéni tartományi CNAME rekord létrehozásához használhatja. Ahelyett vagy amellett, hogy az alapértelmezett utótaggal használná a DNS-név címkét, az Azure DNS szolgáltatással konfigurálhatja a DNS-nevet egy egyéni utótaggal, amelynek feloldása a nyilvános IP-címmé történik. További információt [az Azure DNS szolgáltatásnak nyilvános Azure IP-címmel történő használatával](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) foglalkozó témakörben tekinthet meg.
 
 > [!IMPORTANT]
 > Minden egyes létrehozott tartománynév-címkének egyedinek kell lennie az Azure-helyen.  
@@ -110,7 +110,7 @@ A nyilvános IP-címet társíthatja [Windows](../virtual-machines/windows/overv
 
 ### <a name="internet-facing-load-balancers"></a>Internetkapcsolattal rendelkező terheléselosztók
 
-Bármely [termékváltozattal](#SKU) létrehozott nyilvános IP-címet társíthatja az [Azure Load Balancerhöz](../load-balancer/load-balancer-overview.md), ha hozzárendeli a terheléselosztó **előtér**-konfigurációjához. A nyilvános IP-cím terheléselosztásos virtuális IP-címként (VIP) szolgál majd. Hozzárendelhet egy dinamikus vagy egy statikus nyilvános IP-címet egy terheléselosztó előtérrendszerhez. Több nyilvános IP-címet is hozzárendelhet egy terheléselosztó előtérrendszerhez, ami olyan [több virtuális IP-címből álló](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) forgatókönyveket tesz lehetővé, mint az SSL-alapú webhelyek több-bérlős környezetei. Az Azure Load Balancer termékváltozataival kapcsolatos további információkért tekintse meg [az Azure Load Balancer standard termékváltozatáról](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szóló cikket.
+Bármely [termékváltozattal](#SKU) létrehozott nyilvános IP-címet társíthatja az [Azure Load Balancerhöz](../load-balancer/load-balancer-overview.md), ha hozzárendeli a terheléselosztó **előtér**-konfigurációjához. A nyilvános IP-cím terheléselosztásos virtuális IP-címként (VIP) szolgál majd. Hozzárendelhet egy dinamikus vagy egy statikus nyilvános IP-címet a terheléselosztó előtérrendszerhez. Több nyilvános IP-címet is hozzárendelhet egy terheléselosztó előtérrendszerhez, ami olyan [több virtuális IP-címes](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) forgatókönyveket tesz lehetővé, mint az SSL-alapú webhelyek több-bérlős környezetei. Az Azure Load Balancer termékváltozataival kapcsolatos további információkért tekintse meg [az Azure Load Balancer standard termékváltozatáról](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szóló cikket.
 
 ### <a name="vpn-gateways"></a>VPN-átjárók
 
@@ -145,12 +145,14 @@ A magánhálózati IP-címek IPv4- vagy IPv6-címekkel jönnek létre. A magánh
 
 ### <a name="allocation-method"></a>Lefoglalási módszer
 
-A magánhálózati IP-cím a virtuális hálózat azon alhálózatának a címtartományából van lefoglalva, amelyben az erőforrás üzembe van helyezve. Két módszer van, amellyel a magánhálózati IP-címek lefoglalhatók:
+A magánhálózati IP-cím a virtuális hálózat azon alhálózatának a címtartományából van lefoglalva, amelyben az erőforrás üzembe van helyezve. Az Azure lefoglalja minden egyes alhálózat címtartományának első négy címét, ezért ezeket nem lehet erőforrásokhoz társítani. Ha például az alhálózat címtartománya 10.0.0.0/16, a 10.0.0.0–10.0.0.3 címek nem rendelhetők erőforrásokhoz. Az alhálózati címtartományon belüli IP-címeket egyszerre csak egy erőforráshoz lehet rendelni. 
 
-- **Dinamikus**: Az Azure lefoglalja minden egyes alhálózat címtartományának első négy címét, és ezeket nem osztja ki. Az Azure az alhálózat címtartományának egyik erőforrásához rendeli hozzá a következő elérhető címet. Például, ha az alhálózat címtartománya 10.0.0.0/16, és a 10.0.0.0.4-10.0.0.14 közötti címek már hozzá lettek rendelve (a .0–.3 címek fenn vannak tartva), az Azure az erőforráshoz rendeli a 10.0.0.15 címet. Az alapértelmezett lefoglalási módszer a dinamikus. Kiosztás után a dinamikus IP-címek csak a hálózati adapter törlésekor, a virtuális hálózaton belüli másik alhálózatra történő kiosztáskor vagy a kiosztási módszer statikusra váltása és másik IP-cím megadása esetén szabadulnak fel. Alapértelmezés szerint, amikor a lefoglalási módszert dinamikusról statikusra váltja, az Azure statikus címként osztja ki az előzőleg dinamikusan kiosztott címet.
-- **Statikus**: Ön választja ki és rendeli hozzá a címet az alhálózat címtartományából. A hozzárendelt cím az alhálózat címtartományán belül bármilyen cím lehet, amely nem tartozik az alhálózat címtartományának első négy címébe, és nincs hozzárendelve más erőforráshoz az alhálózatban. A statikus címek csak egy hálózati adapter törlése esetén szabadulnak fel. Amennyiben a kiosztási módszert statikusra váltja, az Azure az előzőleg hozzárendelt statikus IP-címeket dinamikus IP-címként osztja ki akkor is, ha a cím nem az alhálózat címtartományának következő elérhető címe. A cím akkor is megváltozik, ha a hálózati adapter ugyanazon a virtuális hálózaton belül egy másik alhálózathoz lesz kiosztva, de ahhoz, hogy a hálózati adaptert egy másik alhálózathoz ossza ki, a kiosztási módszert először statikusról dinamikusra kell váltani. Miután hozzárendelte a hálózati adaptert egy másik alhálózathoz, a kiosztási módszer visszaváltható statikusra, és hozzárendelhet egy IP-címet az új alhálózat címtartományából.
+Két módszer van, amellyel a magánhálózati IP-címek lefoglalhatók:
 
-### <a name="virtual-machines"></a>Virtuális gépek
+- **Dinamikus**: Az Azure az alhálózat címtartományának következő elérhető, nem hozzárendelt vagy nem lefoglalt IP-címét rendeli hozzá. Például az Azure a 10.0.0.10 címet rendeli hozzá egy új erőforráshoz, ha a 10.0.0.4–10.0.0.9 címek már más erőforrásokhoz lettek rendelve. Az alapértelmezett lefoglalási módszer a dinamikus. Kiosztás után a dinamikus IP-címek csak a hálózati adapter törlésekor, a virtuális hálózaton belüli másik alhálózatra történő kiosztáskor vagy a kiosztási módszer statikusra váltása és másik IP-cím megadása esetén szabadulnak fel. Alapértelmezés szerint, amikor a lefoglalási módszert dinamikusról statikusra váltja, az Azure statikus címként osztja ki az előzőleg dinamikusan kiosztott címet.
+- **Statikus**: Ön választhat ki és rendelhet hozzá az alhálózat címtartományából egy nem hozzárendelt vagy nem lefoglalt IP-címet. Ha például az alhálózat címtartománya 10.0.0.0/16, és a 10.0.0.4–10.0.0.9 címek már más erőforrásokhoz lettek rendelve, a 10.0.0.10–10.0.255.254 tartományból rendelhet hozzá tetszőleges címet. A statikus címek csak egy hálózati adapter törlése esetén szabadulnak fel. Amennyiben a kiosztási módszert statikusra váltja, az Azure az előzőleg hozzárendelt statikus IP-címeket dinamikus IP-címként osztja ki akkor is, ha a cím nem az alhálózat címtartományának következő elérhető címe. A cím akkor is megváltozik, ha a hálózati adapter ugyanazon a virtuális hálózaton belül egy másik alhálózathoz lesz kiosztva, de ahhoz, hogy a hálózati adaptert egy másik alhálózathoz ossza ki, a kiosztási módszert először statikusról dinamikusra kell váltani. Miután hozzárendelte a hálózati adaptert egy másik alhálózathoz, a kiosztási módszer visszaváltható statikusra, és hozzárendelhet egy IP-címet az új alhálózat címtartományából.
+
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
 Egy vagy több magánhálózati IP-cím egy vagy több [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rendszerű virtuális gép **hálózati adapteréhez** van rendelve. A lefoglalási módszert minden magánhálózati IP-cím esetében meghatározhatja dinamikusként vagy statikusként is.
 
