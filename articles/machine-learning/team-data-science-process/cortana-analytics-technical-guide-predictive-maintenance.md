@@ -14,74 +14,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 03ae6245e83c1f26546ec2a33c74dc9519847d7b
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>A Cortana Intelligence megoldás sablont űrtechnikai és más vállalatok számára a prediktív karbantartási műszaki útmutatója
 
-## <a name="important"></a>**Fontos**
-Ez a cikk elavult. Az ismertető a probléma megírja, ez azt jelenti, hogy prediktív karbantartás miatt űrtechnikai, továbbra is kapcsolódik, de tekintse meg [megoldási áttekintés üzleti célközönség](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace) aktuális információk.
+>[!Important]
+Ez a cikk elavult. Prediktív karbantartás miatt űrtechnikai kapcsolatos vitafórum továbbra is szükséges, de az aktuális információkat, tekintse meg [megoldási áttekintés üzleti célközönség](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace).
 
-## <a name="acknowledgements"></a>**A nyugtázás**
-Ez a cikk történt adatszakértőkön Pozsony Zhang Gauher Shaheen, Fidan Boylu Uz, által, ezért szoftver Dan Grecoe Microsoft tervezését.
 
-## <a name="overview"></a>**Áttekintés**
-Megoldás sablonok készültek, annak érdekében, a folyamatot nevezzük, egy E2E bemutató Cortana Intelligence Suite felett. A telepített sablon látja el az előfizetés szükséges a Cortana Intelligence összetevőkkel, és a köztük lévő viszonyt is létre. Azt is magok az adatok csővezeték adatok-készítő alkalmazás, amely letölti és telepíti a helyi számítógépen, a megoldás sablon telepítése után létrehozott mintaadatokkal. A készítő által létrehozott adatok hydrates az adatok feldolgozási sorban lévő és a gépi tanulás előrejelzéseket, amelyek megjeleníthetők a Power BI-irányítópult a létrehozásakor start. A telepítési folyamat végigvezeti a megoldás hitelesítő adatok beállításához számos lépést. Győződjön meg arról, például a megoldás neve, a felhasználónevet és jelszót a telepítés során megadott hitelesítő adatokat rögzíti.  
+Megoldás sablonok készültek, annak érdekében, a folyamatot nevezzük, egy E2E bemutató Cortana Intelligence Suite felett. A telepített sablon látja el az előfizetés szükséges a Cortana Intelligence összetevőkkel, és ezután a varázsló létrehozza a köztük lévő viszonyt is. Azt is magok az adatok csővezeték mintaadatokkal adatok-készítő alkalmazás, amely letölti és telepíti a helyi számítógépen, a megoldás sablon üzembe helyezése után. A kódgenerátor adatait az adatok feldolgozási sorban lévő és a gépi tanulás előrejelzéseket, amelyek megjeleníthetők a Power BI-irányítópult a létrehozásakor start hydrates.
 
-Ez a dokumentum célja bemutatja a referencia-architektúrában, és ez a megoldás sablon részeként az előfizetésében összetevők, a mintaadatok lecserélése a saját adatait, és a megoldás sablont módosításához jeleníti meg.  
+A telepítési folyamat végigvezeti a megoldás hitelesítő adatok beállításához számos lépést. Ellenőrizze, hogy a hitelesítő adatok, például a megoldás neve, a felhasználónevet és jelszót, amely a központi telepítés során megadott rögzítése. 
+
+
+Ez a cikk céljai, hogy:
+- A referencia-architektúrában és az előfizetésében összetevők ismertetik.
+- Bemutatják, hogyan lehet a mintaadatok lecserélése a saját adatait. 
+- A megoldás sablon módosításához szemléltetik.  
 
 > [!TIP]
-> Töltse le, és nyomtassa ki a [PDF-verziót a dokumentum](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf).
+> Töltse le, és nyomtassa ki a [PDF-verziót, ez a cikk](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf).
 > 
 > 
 
-## <a name="overview"></a>**Áttekintés**
+## <a name="overview"></a>Áttekintés
 ![A prediktív karbantartási architektúrája](./media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
 
-Telepítheti a megoldás aktiválja az Azure-szolgáltatások üzemeltetését a Cortana Analytics Suite (Eseményközpont, Stream Analytics, HDInsight, adat-előállítót, Machine Learning *stb*). Az architektúra látható a prediktív karbantartási megoldás repüléstechnikai sablon összeállított módját. A megoldás központi telepítés (kivéve a HDInsight, amely az igény szerinti lett kiépítve, ha a kapcsolódó folyamat tevékenységek futtatásához szükséges létre megoldás sablon diagram rájuk kattintva használatával megvizsgálhatja a ezeket a szolgáltatásokat az Azure-portálon és törölte ezt követően).
+A megoldás üzembe helyezéséhez, ha aktiválja az Azure-szolgáltatások üzemeltetését a Cortana Analytics Suite (beleértve a Eseményközpont, a Stream Analytics, a HDInsight, a Data Factory és a gépi tanulás). Az architektúra látható a prediktív karbantartási megoldás repüléstechnikai sablon összeállított módját. A megoldás sablon diagram a megoldás központi telepítés (kivéve a HDInsight, amelyek igény szerint ki van építve a kapcsolódó folyamat tevékenységek futtatásához szükséges és a létrehozott kattintva használatával megvizsgálhatja a ezeket a szolgáltatásokat az Azure-portálon törli ezt követően).
 Töltse le a [a diagram teljes méretű változatát](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
 
 A következő szakaszok ismertetik a megoldás részeit.
 
-## <a name="data-source-and-ingestion"></a>**Az adatforrás és feldolgozási**
+## <a name="data-source-and-ingestion"></a>Az adatforrás és feldolgozási
 ### <a name="synthetic-data-source"></a>Szintetikus adatforrás
-Ehhez a sablonhoz használt adatforrás egy asztali alkalmazás letöltése és futtatása helyileg, a sikeres telepítést jönnek létre. Útmutatást követve töltse le és telepítse az alkalmazás esetén a Tulajdonságok sávon választja, a prediktív karbantartási Adatgenerátor nevű megoldás sablon diagram első csomópontjára. Ez az alkalmazás-hírcsatornák a [Azure Event Hubs](#azure-event-hub) szolgáltatás mellett vagy ugyanazt a megoldás folyamatot a többi használt események. Ez az adatforrás eredete nyilvánosan elérhető adatait a [NASA adattárház](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/) használatával a [turbóventillátoros motor teljesítménycsökkenést szimuláció adatkészlet](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
+Ehhez a sablonhoz használt adatforrás egy asztali alkalmazás letöltése és futtatása helyben a sikeres telepítést jönnek létre.
+
+Található útmutatást követve töltse le és telepítse az alkalmazást, jelölje ki az első csomópontot, a prediktív karbantartási Adatgenerátor megoldás sablon diagram. A Tulajdonságok sávon található utasításokat. Ez az alkalmazás-hírcsatornák a [Azure Event Hubs](#azure-event-hub) szolgáltatás mellett vagy ugyanazt a megoldás folyamatot a többi használt események. Ez az adatforrás eredete nyilvánosan elérhető adatait a [NASA adattárház](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/) használatával a [turbóventillátoros motor teljesítménycsökkenést szimuláció adatkészlet](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
 
 Az esemény generációs alkalmazás tölti fel az Azure Event Hubs csak, amíg a számítógép végrehajtása történik.
 
-### <a name="azure-event-hub"></a>Az Azure event hubs
+### <a name="azure-event-hub"></a>Az Azure Event Hubs
 A [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatása címzettje a szintetikus adatforrás által megadott bemenetet.
 
-## <a name="data-preparation-and-analysis"></a>**Adatok előkészítése és elemzése**
+## <a name="data-preparation-and-analysis"></a>Adatok előkészítése és elemzése
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-Használjon [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) közel valós idejű elemzés a bemeneti adatfolyam a szolgáltatás a [Azure Event Hubs](#azure-event-hub) alakzatot eredmények közzététele és a szolgáltatás egy [Power BI](https://powerbi.microsoft.com) irányítópult, valamint az összes nyers bejövő események archiválása a [Azure Storage](https://azure.microsoft.com/services/storage/) szolgáltatás később feldolgozásra, amelyet a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) szolgáltatás.
+Használjon [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) közel valós idejű elemzés a bemeneti adatfolyam biztosításához a [Azure Event Hubs](#azure-event-hub) szolgáltatás. Tegye közzé eredményei közül a [Power BI](https://powerbi.microsoft.com) , valamint az összes nyers bejövő események archiválására irányítópult a [Azure Storage](https://azure.microsoft.com/services/storage/) szolgáltatás később feldolgozásra, amelyet a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)szolgáltatás.
 
 ### <a name="hdinsight-custom-aggregation"></a>Egyéni összesítési HDInsight
 Futtatás [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok (Azure Data Factory által összehangolva) összesítések ad a nyers eseményeket az Azure Stream Analytics szolgáltatással archivált HDInsight eszközzel.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-A hasznos élettartama (Szabályainak) előrejelzéseket készítsen a bemenetek érkezett a megadott adott repülőgép motor [Azure Machine Learning szolgáltatás](https://azure.microsoft.com/services/machine-learning/) (Azure Data Factory által összehangolva) számára 
+Előrejelzéseket készítsen a hasznos élettartama (Szabályainak) egy adott repülőgép motor használata a mellékelt bemenetek [Azure Machine Learning szolgáltatás](https://azure.microsoft.com/services/machine-learning/) (Azure Data Factory által összehangolva.). 
 
-## <a name="data-publishing"></a>**Adatok közzététele**
-### <a name="azure-sql-database-service"></a>Az Azure SQL adatbázis-szolgáltatás
-Használjon [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) tárolásához (által felügyelt Azure Data Factory) az Azure Machine Learning szolgáltatás az előrejelzés során a [Power BI](https://powerbi.microsoft.com) irányítópult.
+## <a name="data-publishing"></a>Adatok közzététele
+### <a name="azure-sql-database"></a>Azure SQL Database
+Használjon [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) tárolására az előrejelzés fogadja az Azure Machine Learning szolgáltatás, amely majd során a [Power BI](https://powerbi.microsoft.com) irányítópult.
 
-## <a name="data-consumption"></a>**Adatok felhasználásához**
+## <a name="data-consumption"></a>Adathasználat
 ### <a name="power-bi"></a>Power BI
-Használjon [Power BI](https://powerbi.microsoft.com) szolgáltatást, hogy egy irányítópultot, amely tartalmazza az összesítések és által biztosított értesítések megjelenítése a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) szolgáltatás, valamint tárolt Szabályainak előrejelzéseket [Azure SQL Database ](https://azure.microsoft.com/services/sql-database/) használatával keletkezett a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) szolgáltatás.
+Használjon [Power BI](https://powerbi.microsoft.com) egy irányítópultot, amely tartalmazza az összesítések és által biztosított értesítések megjelenítése [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/), valamint tárolt Szabályainak előrejelzéseket [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) használatával keletkezett [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/).
 
-## <a name="how-to-bring-in-your-own-data"></a>**Útmutató saját adatok**
+## <a name="how-to-bring-in-your-own-data"></a>Útmutató saját adatok
 Ez a szakasz ismerteti, hogyan kell a saját adatait az Azure-ba, és milyen területeken módosítások szükségesek az adatok akkor vonja ebbe az architektúrába.
 
 Nem valószínű, hogy az adatkészlet által használt adatkészlet megegyezik-e a [turbóventillátoros motor teljesítménycsökkenést szimuláció adatkészlet](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) megoldás sablon használatos. Az adatok és a követelmények megértése alapvető fontosságúak a saját adatok sablon módosítása. 
 
-Az alábbi szakaszok ismertetik a következő szakaszok a sablon szükséges módosítani, ha új adatkészlet megjelent.
+Az alábbi szakaszok ismertetik a szükséges módosítani, ha új adatkészlet megjelent a sablon részeit.
 
 ### <a name="azure-event-hub"></a>Az Azure Event Hubs
-Az Azure Event Hubs szolgáltatás nem általános; a központ JSON vagy CSV formátumú adatokat is közzé lehet tenni. Az Azure Event Hubs különleges feldolgozás nem történik, de fontos, hogy tudomásul veszi be táplált adatokat.
+Az Azure Event Hubs az általános; a központ JSON vagy CSV formátumú adatokat is közzé lehet tenni. Az Azure Event Hubs különleges feldolgozás nem történik, de fontos, hogy tudomásul veszi be táplált adatokat.
 
 Ez a dokumentum nem ismerteti az adatok, de használatával egyszerűen küldhet eseményeket vagy adatokat az Azure-Eseményközpontok felé az Event Hub API-k használatával.
 
@@ -142,7 +147,7 @@ A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning
 
 További információ az Azure Machine Learning kísérlet létrehozásának módja: [prediktív karbantartási: 1. lépés 3-as adatok előkészítése, a szolgáltatás fejlesztés](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
 
-## <a name="monitor-progress"></a>**A figyelő folyamatban**
+## <a name="monitor-progress"></a>A figyelő folyamatban
 A Adatgenerátor eszköztárat, a feldolgozási folyamat veszi át a dehidratált, és a megoldás a különböző összetevők start azokat a parancsokat az adat-előállítóban által kibocsátott következő kicking. A folyamat figyelése két módja van.
 
 1. A blob storage a nyers bejövő adatokat ír a Stream Analytics-feladatok egyikét. Ha rákattint az Blob Storage-összetevő a megoldás a képernyőről, sikeresen telepített a megoldás és a jobb oldali panelen kattintson a Megnyitás, amíg a [Azure-portálon](https://portal.azure.com/). Ezután kattintson a Blobok. A következő panelen tárolók listájának megtekintéséhez. Kattintson a **maintenancesadata**. A következő panel egy a **rawdata** mappa. Az rawdata mappában találhatók a mappákról, például órát nevű = 17 és óra = 18. Ezek a mappák jelenléte azt jelzi, hogy folyamatban van a nyers adatok jön létre a számítógépen, és a blob Storage tárolóban tárolja. Meg kell jelennie a csv-fájlok a véges mérete (MB) az érintett mappákat.
@@ -152,7 +157,7 @@ A Adatgenerátor eszköztárat, a feldolgozási folyamat veszi át a dehidratál
    
     Itt kattintson az új lekérdezés és a lekérdezés megadása a sorok (pl. Válassza count(*) a PMResult) száma. Az adatbázis növekedésének megfelelően, növelje a tábla sorainak száma.
 
-## <a name="power-bi-dashboard"></a>**A Power BI-irányítópulton**
+## <a name="power-bi-dashboard"></a>Power BI-irányítópult
 
 Állítsa be a Power BI-irányítópulton jelenítheti meg az Azure Stream Analytics adatok (gyakran használt adatok elérési útja) és a kötegelt előrejelzés eredményeinek képzési (cold) az Azure machine.
 
@@ -227,10 +232,10 @@ Az alábbi lépéseket ismerteti hogyan jelenítheti meg a Stream Analytics-fela
    * Kattintson a **PIN-kód Visual** ikonra a vonaldiagram jobb felső sarkában. "PIN-kód irányítópult" ablak lehet, hogy jelenik meg, hogy válasszon egy irányítópultot. "A prediktív karbantartási bemutató", majd kattintson a "PIN" szabályzatot.
    * Az egérrel a csempe az irányítópulton keresztül, kattintson a jobb felső sarokban található módosítása "érzékelő 11 vs flotta nézetét a cím az"edit"ikonra. Küszöbérték 48.26" és"Átlagával időbeli járműflotta között."alcíme
 
-## <a name="how-to-delete-your-solution"></a>**A megoldás törlése**
-Győződjön meg arról, hogy le a adatgenerátor használatakor nem aktív a megoldás, a adatgenerátor futtató tájékozódnia magasabb költségek. Ha nem használnak, törölje a megoldás. A megoldás törlése a megoldás üzembe helyezésekor az előfizetésben kiépített összetevőit. Törölje a megoldás kattintson a bal oldali panelen, a megoldás sablont, majd kattintson a Törlés a megoldás neve.
+## <a name="delete-your-solution"></a>A megoldás törlése
+Győződjön meg arról, hogy le a adatgenerátor használatakor nem aktív a megoldás, a adatgenerátor futtató tájékozódnia magasabb költségek. Törölje a megoldást, ha nem használja azt. A megoldás törlése a megoldás üzembe helyezésekor az előfizetésben kiépített összetevőit. Törli a megoldás, kattintson a megoldás neve a bal oldali panelen a megoldás sablon, majd **törlése**.
 
-## <a name="cost-estimation-tools"></a>**Költség becslése eszközök**
+## <a name="cost-estimation-tools"></a>Költség becslése eszközök
 A következő két eszközök segítségével jobb megértése érdekében a prediktív karbantartási futtató repüléstechnikai Megoldássablon az előfizetésében szereplő részt a teljes költségek érhetők el:
 
 * [A Microsoft Azure költség négyzetgyökének eszköz (online)](https://azure.microsoft.com/pricing/calculator/)

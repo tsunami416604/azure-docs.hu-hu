@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: sstein
-ms.openlocfilehash: 450a5fc578948db044d9e0bb9db09508b2512aca
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 289f1f99b1661e499fa7132887e2f65e086ad689
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Megfigyelés és kezelés Azure SQL-adatbázisok és tárolókészletekben: a több-bérlős SaaS-alkalmazás teljesítménye
 
@@ -62,9 +62,9 @@ Az [Azure Portal](https://portal.azure.com) a legtöbb erőforráshoz beépítet
 
 Nagy mennyiségű forgatókönyvek, ahol sok erőforrással rendelkező dolgozunk, [Naplóelemzés (OMS)](saas-dbpertenant-log-analytics.md) is használható. Ez a külön Azure szolgáltatás, amely analytics kibocsátott diagnosztikai naplók és a naplóelemzési munkaterület összegyűjtött telemetrikus keresztül. A Naplóelemzési sok szolgáltatásokból telemetriai adatokat gyűjthet, és lekérdezése, és állítson be riasztásokat használható.
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-source-code-and-scripts"></a>Az alkalmazás forráskódjához Wingtip jegyek SaaS adatbázis / bérlői és parancsfájlok
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás parancsfájlok beolvasása
 
-A Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) github-tárház. [Töltse le a Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok lépéseket](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts).
+A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
 
 ## <a name="provision-additional-tenants"></a>További bérlők kiépítése
 
@@ -220,7 +220,7 @@ Ez a gyakorlat a Contoso Concert Hall magas terhelésének a hatását szimulál
 
 Miután a nagy terhelés a contosoconcerthall adatbázis enyhül juttassa vissza a azt a költségek csökkentése a készlethez. Ha nem egyértelmű, hogy mikor, amely akkor van végrehajtva beállíthat egy riasztást az adatbázis, amely akkor indul el, amikor az adatbázis-alá csökken a DTU-használatát a készlet maximális. Egy adatbázis készletbe történő áthelyezésének menetét az 5. gyakorlat írja le.
 
-## <a name="other-performance-management-patterns"></a>Egyéb teljesítménykezelési minták
+## <a name="other-performance-management-patterns"></a>Más teljesítmény felügyeleti minták
 
 **Preemptív skálázás** a gyakorlatban a fenti ahol megismerte az elkülönített adatbázis méretezése tudtak melyik adatbázis, amelyet meg kíván keresni. Contoso energiaoptimalizálást egyszerre Hall kezelését a közelgő jegy értékesítési Wingtips közölte, ha az adatbázis sikerült kikerült a készlet pre-emptively. Máskülönben valószínűleg egy riasztást kellett volna beállítani a készleten vagy az adatbázison ahhoz, hogy észre lehessen venni, mi történik. Nem jó, ha az ilyen eseményekről úgy szerez tudomást, hogy a készletben található többi bérlő csökkenő teljesítményről panaszkodik. Ha a bérlő meg tudja jósolni, hogy milyen hosszan lesz szüksége további erőforrásokra, beállítható egy Azure Automation-runbook, amely pontosan ütemezi az adatbázis kivételét, majd visszahelyezését a készletbe.
 

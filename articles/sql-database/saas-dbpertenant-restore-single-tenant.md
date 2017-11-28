@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.openlocfilehash: 866b5eec6e9c7e8bf98547143c0393bfb6f97b14
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: ee2bc6d8b75b92243c0550db0044895e41c9474b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>A több-bérlős SaaS-alkalmazás az egyetlen bérlők Azure SQL adatbázis visszaállítása
+# <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>A több-bérlős SaaS-alkalmazás az Azure SQL-adatbázis egy egybérlős visszaállítása
 
-A Wingtip SaaS-alkalmazás épül, ahol az egyes bérlők rendelkezik saját adatbázis egy adatbázis-/-bérlős modell használatával. Ez a modell előnye, hogy a rendszer egyszerű önmagában egy egybérlős adatok helyreállítását a többi bérlő befolyásolása nélkül.
+A Wingtip jegyek SaaS-alkalmazás épül, ahol az egyes bérlők rendelkezik saját adatbázis egy adatbázis-/-bérlős modell használatával. Ez a modell előnye, hogy a rendszer egyszerű önmagában egy egybérlős adatok helyreállítását a többi bérlő befolyásolása nélkül.
 
 Ebben az oktatóanyagban elsajátíthatja, két adatok helyreállítási minták:
 
@@ -53,9 +53,9 @@ Az első mintában új adatbázisba visszaállítani adatait. A bérlő majd hoz
 
 A második mintát, amely azt feltételezi, hogy a bérlő szenvedett elvesztése vagy sérülése, adatok, az a bérlő éles adatbázis visszaállítása van egy korábbi pontra idő. A visszaállítási helyre mintában a bérlő offline állapotba egy rövid ideig, amíg az adatbázis visszaállítása, és újra online állapotba. Az eredeti adatbázist törölték, de továbbra is visszaállíthatók a ha kell térni a még régebbi pontként időben. Ez a minta egy változata névre történő átnevezése volt az adatbázis törlése helyett, bár az adatbázis átnevezése nem további adatbiztonsági előnyösebb kínál.
 
-## <a name="get-the-wingtip-application-scripts"></a>A Wingtip alkalmazásszkriptek beolvasása
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás parancsfájlok beolvasása
 
-A Wingtip Szolgáltatottszoftver-parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github-tárház. [Töltse le a Wingtip Szolgáltatottszoftver-parancsfájlok lépéseket](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts).
+A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
 
 ## <a name="simulate-a-tenant-accidentally-deleting-data"></a>A bérlő véletlenül törli az adatok szimulálása
 
@@ -146,6 +146,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 ## <a name="additional-resources"></a>További források
 
-* További [oktatóprogramot kínál, amelyek a Wingtip SaaS-alkalmazás épül](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [További oktatóprogramot kínál, amelyek a Wingtip SaaS-alkalmazás épül](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md)
 * [További tudnivalók az SQL-adatbázis biztonsági mentése](sql-database-automated-backups.md)

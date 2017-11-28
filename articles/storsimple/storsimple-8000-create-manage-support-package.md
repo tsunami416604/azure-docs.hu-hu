@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan létrehozása és szerkesztése a StorSimple 8
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2017
+ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 92abbb96b2117e10800de61b5c405a784453265b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 641109970865ea915f83d48488f1bdf5cb2d5242
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Hozzon létre és kezelheti a StorSimple 8000 Series támogatási csomag
 
@@ -58,14 +58,14 @@ A manuálisan létrehozott támogatási csomag Microsoft Support keresztül e-ma
    
    * Jelszóval védett hálózati megosztások adja meg:
      
-       `Export-HcsSupportPackage –PackageTag "MySupportPackage" –Credential "Username" -Force`
+       `Export-HcsSupportPackage -Path <\\IP address\location of the shared folder> -Include Default -Credential domainname\username`
      
-       Kéri a jelszót, a hálózati megosztott mappa, és a titkosítás jelszavát elérési útját (mert a támogatási csomag titkosított). Egy támogatási csomag a megadott mappában létrejön.
+       Kéri a jelszót és a titkosítás jelszavát (mert a támogatási csomag titkosított). Egy támogatási csomag létrejön az alapértelmezett mappába (eszköznév kiegészül az aktuális dátum és idő).
    * Az megosztások, amelyek nem jelszóval védett, nem kell a `-Credential` paraméter. Írja be a következőket:
      
-       `Export-HcsSupportPackage –PackageTag "MySupportPackage" -Force`
+       `Export-HcsSupportPackage`
      
-       A támogatási csomag mindkét vezérlők, a megadott hálózati megosztott mappában jön létre. Egy titkosított, tömörített fájlt, amely a Microsoft Support hibaelhárítási elküldhető. További információkért lásd: [forduljon a Microsoft ügyfélszolgálatához](storsimple-8000-contact-microsoft-support.md).
+       A támogatási csomag mindkét tartományvezérlők, az alapértelmezett mappában jön létre. A csomag egy titkosított, tömörített fájlt, amely a Microsoft Support hibaelhárítási elküldhető. További információkért lásd: [forduljon a Microsoft ügyfélszolgálatához](storsimple-8000-contact-microsoft-support.md).
 
 ### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>Az Export-HcsSupportPackage parancsmag-paraméterek
 

@@ -16,11 +16,11 @@ ms.date: 10/26/2017
 ms.author: curtand
 ms.reviewer: Vince.Smith
 ms.custom: it-pro;
-ms.openlocfilehash: 260462e57c53d2d41bb2bfd8381a1c184303eea1
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 7b768ee5dcb16859e88a0f8c0a0c1d5097498477
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -30,7 +30,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 
 * **Számlázási rendszergazda**: lebonyolítja a vásárlásokat, kezeli az előfizetéseket, támogatási jegyeket, és figyeli a szolgáltatás állapotát.
 
-* **Megfelelőségi rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók jogosult felügyeleti belül a Office 365 biztonsági és megfelelőségi központ és az Exchange felügyeleti központban. További információ a "[Office 365 rendszergazdai szerepkörök](https://support.office.com/en-us/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)."
+* **Megfelelőségi rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók jogosult felügyeleti belül a Office 365 biztonsági és megfelelőségi központ és az Exchange felügyeleti központban. További információ a "[Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)."
 
 * **Feltételes hozzáférés rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók képesek az Azure Active Directory feltételes hozzáférési beállításainak kezelése.
   > [!NOTE]
@@ -55,7 +55,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
   >
   >
 
-* **Vendég meghívó**: a szerepet betöltő felhasználók kezelhetik az Azure Active Directory B2B Vendég felhasználó meghívókat, amikor a felhasználó "Tagok kérhetnek" beállítás értéke nem. További információ a következő B2B együttműködés [kapcsolatban az Azure AD B2B együttműködés előzetes verziója](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Nem tartalmazza azokat az engedélyeket.
+* **Vendég meghívó**: a szerepet betöltő felhasználók kezelhetik az Azure Active Directory B2B Vendég felhasználó meghívókat, amikor a felhasználó "Tagok kérhetnek" beállítás értéke nem. További információ a következő B2B együttműködés [kapcsolatban az Azure AD B2B együttműködés előzetes verziója](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Nem tartalmazza azokat az engedélyeket.
 
 * **Intune szolgáltatás-rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók engedélye globális belül a Microsoft Intune Online, ha a szolgáltatás jelen. Ez a szerepkör emellett képes kezelni a felhasználók és eszközök számára ahhoz, hogy társítja a házirendet, valamint a csoportok létrehozásához és kezeléséhez tartalmazza.
 
@@ -72,13 +72,13 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
   >
   >
   
-* **A Power BI szolgáltatás-rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek-e a Microsoft Power bi-ban, ha a szolgáltatás jelenlegi globális engedéllyel, valamint a támogatási jegyek kezelése és figyelése a szolgáltatás állapotát. További információ: [Office 365 rendszergazdai szerepkörök](https://support.office.com/en-us/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-001&ad=US).
+* **A Power BI szolgáltatás-rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek-e a Microsoft Power bi-ban, ha a szolgáltatás jelenlegi globális engedéllyel, valamint a támogatási jegyek kezelése és figyelése a szolgáltatás állapotát. További információ: [Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-001&ad=US).
 
 * **Emelt szintű rendszergazdai szerepkör**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik a szerepkör-hozzárendelések az Azure Active Directoryban, valamint az Azure AD Privileged Identity Management belül. Emellett ez a szerepkör lehetővé teszi a Privileged Identity Management minden szempontját kezelését.
 
-* **Biztonsági rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek a csak olvasási engedéllyel a biztonsági olvasó szerepkört, és képes kezelni a biztonsággal kapcsolatos szolgáltatások konfigurációs: Azure Active Directory azonosító adatok védelmét, a kiemelt Az Identitáskezelés, és az Office 365 biztonsági és megfelelőségi központ. Office 365 engedélyekkel kapcsolatos további információt [engedélyek az Office 365 biztonsági és megfelelőségi központ](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+* **Biztonsági rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek a csak olvasási engedéllyel a biztonsági olvasó szerepkört, és képes kezelni a biztonsággal kapcsolatos szolgáltatások konfigurációs: Azure Active Directory azonosító adatok védelmét, a kiemelt Az Identitáskezelés, és az Office 365 biztonsági és megfelelőségi központ. Office 365 engedélyekkel kapcsolatos további információt [engedélyek az Office 365 biztonsági és megfelelőségi központ](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
-* **Biztonsági olvasó**: Ezzel a szerepkörrel rendelkező felhasználók globális csak olvasási hozzáféréssel rendelkezik, többek között az összes adatot az Azure Active Directory, a azonosító adatok védelmét, a Privileged Identity Management, valamint Azure Active Directory bejelentkezési jelentések Olvasás és a naplók. A szerepkör is biztosít az Office 365 biztonsági és megfelelőségi központ olvasási engedéllyel. Office 365 engedélyekkel kapcsolatos további információt [engedélyek az Office 365 biztonsági és megfelelőségi központ](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+* **Biztonsági olvasó**: Ezzel a szerepkörrel rendelkező felhasználók globális csak olvasási hozzáféréssel rendelkezik, többek között az összes adatot az Azure Active Directory, a azonosító adatok védelmét, a Privileged Identity Management, valamint Azure Active Directory bejelentkezési jelentések Olvasás és a naplók. A szerepkör is biztosít az Office 365 biztonsági és megfelelőségi központ olvasási engedéllyel. Office 365 engedélyekkel kapcsolatos további információt [engedélyek az Office 365 biztonsági és megfelelőségi központ](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
 * **Szolgáltatás-rendszergazda támogatja**: Ezzel a szerepkörrel rendelkező felhasználók megnyitható támogatási kérelmek Microsoft Azure és az Office 365-szolgáltatások és a szolgáltatás irányítópultját és a üzenet center az Azure portál és az Office 365 felügyeleti portálon található nézetek. További információ: [Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -130,14 +130,14 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 ### <a name="security-reader"></a>Biztonsági olvasó
 | A | Teheti meg |
 | --- | --- |
-| Identitás-kezelési központ |Olvassa el az összes biztonsági jelentések és beállítási információk biztonsági szolgáltatások<ul><li>Levélszemét<li>Titkosítás<li>Adatveszteség-megelőzési<li>Kártevőirtó<li>Az Advanced threat protection<li>Adathalászat elleni<li>Mailflow szabályok |
+| Identity Protection Center |Olvassa el az összes biztonsági jelentések és beállítási információk biztonsági szolgáltatások<ul><li>Levélszemét<li>Titkosítás<li>Adatveszteség-megelőzési<li>Kártevőirtó<li>Az Advanced threat protection<li>Adathalászat elleni<li>Mailflow szabályok |
 | Privileged Identity Management |<p>Csak olvasási hozzáféréssel el az összes információ illesztett rendelkezik Azure AD PIM: házirendeket és az Azure AD szerepkör-hozzárendelések jelentéseinek, biztonsági ellenőrzi, és a jövőben olvasási hozzáféréssel házirend adatokkal és jelentésekkel forgatókönyvek mellett az Azure AD szerepkör-hozzárendelés.<p>**Nem lehet** előfizetés az Azure AD PIM, vagy végezze el a módosításokat. PIM a portálon, vagy a PowerShell segítségével valaki a szerepkör további szerepkörök (például a globális rendszergazda vagy a kiemelt szerepkör rendszergazda), ha a felhasználó őket jelöltségét ellenőrző aktiválhatja. |
 | <p>A figyelő az Office 365 szolgáltatás állapota</p><p>Az Office 365 biztonsági és megfelelőségi központ</p> |<ul><li>Olvassa el és kezelheti a riasztásokat<li>Olvassa el a biztonsági házirendek<li>Olvassa el a fenyegetésfelderítési adataival, a Cloud App Discovery és a Keresés és a vizsgálat karantén<li>Olvassa el az összes jelentés |
 
 ### <a name="security-administrator"></a>Biztonsági rendszergazda
 | A | Teheti meg |
 | --- | --- |
-| Identitás-kezelési központ |<ul><li>Az olvasó biztonsági szerepkörhöz tartozó jogosultságok.<li>Emellett lehetővé teszi jelszó alaphelyzetbe állítása kivételével minden IPC műveletek végrehajtásához. |
+| Identity Protection Center |<ul><li>Az olvasó biztonsági szerepkörhöz tartozó jogosultságok.<li>Emellett lehetővé teszi jelszó alaphelyzetbe állítása kivételével minden IPC műveletek végrehajtásához. |
 | Privileged Identity Management |<ul><li>Az olvasó biztonsági szerepkörhöz tartozó jogosultságok.<li>**Nem lehet** kezelése az Azure AD szerepkörtagságok vagy beállítások. |
 | <p>A figyelő az Office 365 szolgáltatás állapota</p><p>Az Office 365 biztonsági és megfelelőségi központ |<ul><li>Az olvasó biztonsági szerepkörhöz tartozó jogosultságok.<li>Az Advanced Threat Protection szolgáltatás (kártevők & vírus védelmet, rosszindulatú URL-cím config, URL nyomkövetésének, stb.) az összes beállításait is konfigurálhatja. |
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: d6409ac490f530d49f82c93b07b0fd22adbec4de
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: a7e94fe2cd2db398ab2afa9a6492cea144071114
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Egy felügyelt képre egy általánosított virtuális gép létrehozása az Azure-ban
 
@@ -111,7 +111,7 @@ További információkért lásd: [Azure PowerShell Versioning](/powershell/azur
     ``` 
 ## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Lemezkép létrehozása a PowerShell használatával felügyelt lemezes
 
-Ha szeretné létrehozni az operációsrendszer-lemezképet képe, is is crate lemezkép az operációs rendszer lemezeként a felügyelt Lemezazonosítóban megadásával.
+Ha szeretné létrehozni az operációsrendszer-lemezképet képe, is létrehozhat lemezkép az operációs rendszer lemezeként a felügyelt Lemezazonosítóban megadásával.
 
     
 1. Bizonyos változókat létrehozni. 

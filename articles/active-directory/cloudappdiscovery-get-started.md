@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.openlocfilehash: c09410bc6ed8b4eac4316e206c75db84ef0b07fb
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 92cafe24fc3a038f2acd68ec21ec845316ef46de
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Az Azure AD Cloud App Discovery beállítása
 
@@ -37,7 +37,7 @@ Az Azure AD a cloud App Discovery-adatok a Microsoft Cloud App Security integrá
 
 2. [Állítsa be a folyamatos reporting](https://docs.microsoft.com/cloud-app-security/discovery-docker) használatával a Cloud App Security naplógyűjtő a hálózaton továbbított összes naplók elemzése. Új alkalmazások és a használati trendek azonosításához használhatja őket.
 
-3. A naplók jelenleg nem támogatottak, ha [állítson be egy egyéni napló elemző](https://docs.microsoft.com/en-us/cloud-app-security/custom-log-parser) , hogy a Cloud App Discovery is elemezheti őket.
+3. A naplók jelenleg nem támogatottak, ha [állítson be egy egyéni napló elemző](https://docs.microsoft.com/cloud-app-security/custom-log-parser) , hogy a Cloud App Discovery is elemezheti őket.
   
 ## <a name="log-processing-flow"></a>Napló-feldolgozási folyamat
 

@@ -16,11 +16,11 @@ ms.date: 10/04/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: d9816f53e1d0e09f938452a022c75a3d20a43da4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8a5eab88e10b330bf4da88c01d24a11e95277439
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Alkalmazások integrálása az Azure Active Directoryban
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -178,7 +178,7 @@ A következő szakasz bemutatja, hogyan teszi közzé a hozzáférési hatókör
   }
   ```
   > [!NOTE]
-  > Az "id" értéket kell létrejönnie, GUID generációs eszközhöz hasonló eszközökkel [guidgen]] (https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) vagy programon keresztül. A hatókör egyedi azonosítóját, a webes API-k által elérhetővé tett képviseli. Amennyiben az ügyfél konfigurálása megfelelő engedéllyel rendelkeznek a webes API-hoz, egy OAuth2.0 jogkivonatot az Azure AD által kiállított. Az ügyfél hívások a webes API-t, a hozzáférési jogkivonat, amelynek a hatóköre (scp) azt mutatja be az engedélyeket, az alkalmazás regisztrálása a kért állítja jogcímet.
+  > Az "id" érték, mint egy GUID generációs eszköz segítségével hozható létre [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) vagy programon keresztül. A hatókör egyedi azonosítóját, a webes API-k által elérhetővé tett képviseli. Amennyiben az ügyfél konfigurálása megfelelő engedéllyel rendelkeznek a webes API-t, OAuth2.0 hozzáférési tokent az Azure AD által kiállított. Az ügyfél hívások a webes API-t, a hozzáférési jogkivonat, amelynek a hatóköre (scp) azt mutatja be az engedélyeket, az alkalmazás regisztrálása a kért állítja jogcímet.
   >
   > További hatókörökkel később szükség szerint is elérhetővé teheti. Vegye figyelembe, hogy a webes API számos különböző funkcióihoz tartozó több hatókör esetleg felfedi. Az erőforrás is való hozzáférést a webes API-t, futásidőben hatókörének (`scp`) jogcím(ek) a fogadott OAuth 2.0 hozzáférési jogkivonat.
   > 

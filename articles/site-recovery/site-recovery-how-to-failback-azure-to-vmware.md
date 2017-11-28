@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 11/28/2017
 ms.author: ruturajd
-ms.openlocfilehash: 1ca34b262a51b694cb9541750588bbea139eeae1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad424818f41e6b48e754dd0d39771248a1cd04fb
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Az Azure-ból a helyszíni helyhez sikertelen
 
@@ -135,3 +135,17 @@ A védelem-újrabeállítási feladat befejezése után a virtuális gép replik
 
 ## <a name="common-issues"></a>Gyakori problémák
 Győződjön meg arról, hogy a vCenter csatlakoztatott állapotban van, a feladat-visszavétel előtt. Lemez leválasztása és csatolva a virtuális gépre ellenkező esetben sikertelen lesz.
+
+### <a name="common-error-codes"></a>Gyakori hibakódokat
+
+#### <a name="error-code-8038"></a>8038. Hibakód:
+
+*Nem sikerült elindítani a helyszíni virtuális gép a hiba miatt*
+
+Ez akkor fordul elő, amikor 
+1. Az a helyszíni virtuális gép egy gazdagépen, amelyen nincs elég memória a kiépítése nem válik.
+
+A probléma megoldásához
+1. Az ESXi-állomáson több memóriát oszthat meg.
+2. a virtuális Gépet egy másik ESXi-állomáson, amely elegendő memóriával a virtuális gép rendelkezik vMotion.
+

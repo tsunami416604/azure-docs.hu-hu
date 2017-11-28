@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: AyoOlubeko
-ms.openlocfilehash: c85dec1023e4d4f0a14dfbc249850b6dc6e78edf
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c0ed3eb344ea8ec7e2d3e86125d60c8cc28f723d
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Ad hoc elemzési lekérdezések futtatása több Azure SQL-adatbázis
 
@@ -52,12 +52,11 @@ Ezeknek az adatoknak egyetlen több bérlős adatbázisban történő elérése 
 
 A bérlői adatbázisok közötti lekérdezések elosztásával rugalmas lekérdezési élő termelési adatok azonnali betekintést biztosít. Azonban rugalmas lekérdezési potenciálisan sok adatbázisok adatait kéri le, mert lekérdezés-késleltetés néha nál is magasabb lehet egy több-bérlős adatbázisba küldött egyenértékű lekérdezések. Győződjön meg arról, a Tervező lekérdezésekre minimalizálása érdekében a visszaadott adatokat. Rugalmas lekérdezési gyakran leginkább megfelelő, a kis adatmennyiségek valós idejű, szemben a gyakran használt épület vagy összetett elemzési lekérdezések vagy jelentések lekérdezésre. Ha a lekérdezések nem is kell végrehajtani, tekintse meg a [végrehajtási terv](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) a lekérdezés részét a távoli adatbázis leküldött megjelenítéséhez. És felmérheti, mennyi adatot ad vissza. Előfordulhat, hogy bonyolult elemzésfeldolgozási jobb igénylő lekérdezések a kibontott bérlői adatok elemzési lekérdezések optimalizált adatbázisba történő mentése szolgálja ki. SQL-adatbázis és az SQL Data Warehouse a sikerült ilyen az analytics-adatbázist tárolni.
 
-<!-- ?? This pattern for analytics is explained in the [tenant analytics tutorial](saas-multitenantdb-tenant-analytics.md).
--->
+Ebben a mintában az elemzés az ismertetése a [bérlői analytics oktatóanyag](saas-multitenantdb-tenant-analytics.md).
 
-## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-scripts"></a>A Wingtip jegyek SaaS több-bérlős adatbázis alkalmazás parancsfájlok beolvasása
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Az alkalmazás forráskódjához Wingtip jegyek SaaS több-bérlős adatbázis és a parancsfájlok
 
-A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-MultitenantDB github-tárház](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB). Ügyeljen arra, hogy a Readme fájlt a blokkolás feloldásának lépéseit kövesse.
+A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
 
 ## <a name="create-ticket-sales-data"></a>A jegy értékesítési adatok létrehozása
 
@@ -96,7 +95,7 @@ Ebben a gyakorlatban hozzáadja az ad hoc jelentési adatbázis, amely lehetőv�
 
     ![hitelesítő adatok létrehozása](media/saas-multitenantdb-adhoc-reporting/create-credential.png)
 
-   A külső adatforráshoz, használja a bérlői shard leképezését a katalógus adatbázisban van definiálva. Segítségével a külső adatforrásaként, lekérdezések terjesztése a lekérdezés futásakor a katalógusban regisztrált összes adatbázisra. Kiszolgáló neve nem egyezik az egyes központi telepítések, mert az inicializálási parancsfájlja a katalógus-adatbázis helyét lekérdezi az aktuális kiszolgáló lekérésével (@@servername) Ha a parancsfájl végrehajtása.
+   A katalógus-adatbázis segítségével a külső adatforrásaként, lekérdezések a lekérdezés futásakor a katalógusban regisztrált összes adatbázis terjesztése. Kiszolgáló neve nem egyezik az egyes központi telepítések, mert az inicializálási parancsfájlja a katalógus-adatbázis helyét lekérdezi az aktuális kiszolgáló lekérésével (@@servername) Ha a parancsfájl végrehajtása.
 
     ![külső adatforrás létrehozása](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
@@ -120,7 +119,7 @@ Most, hogy a *adhocreporting* adatbázis állított be, lépjen tovább, és né
 
 További részletek a terv ikonok vizsgálatakor ellenőrizze a végrehajtási terv, mutasson. 
 
-1. Nyissa meg... \\Tanulási modulok\\működési Analytics\\ad hoc Reporting\\*bemutató-AdhocReportingQueries.sql* szolgáltatáshoz az ssms.
+1. A *SSMS*, nyissa meg... \\Tanulási modulok\\működési Analytics\\ad hoc Reporting\\*bemutató-AdhocReportingQueries.sql*.
 2. Biztosan csatlakozni tudjanak a **adhocreporting** adatbázis.
 3. Válassza ki a **lekérdezés** menüre, majd **tényleges végrehajtási terv tartalmazza**
 4. Jelölje ki a *mely helyszínek jelenleg regisztrált?* lekérdezést, és nyomja le az **F5**.
@@ -155,9 +154,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Elosztott lekérdezések futtatása az összes bérlői adatbázison
 > * Az ad hoc jelentési adatbázis központi telepítése, és adja hozzá a séma elosztott lekérdezések futtatásához.
 
-<!-- ??
-Now try the [Tenant Analytics tutorial](saas-multitenantdb-tenant-analytics.md) to explore extracting data to a separate analytics database for more complex analytics processing...
--->
+Most a [bérlői Analytics oktatóanyag](saas-multitenantdb-tenant-analytics.md) való kibontása adatokba összetettebb elemzés feldolgozásának külön analytics adatbázisába.
 
 ## <a name="additional-resources"></a>További források
 

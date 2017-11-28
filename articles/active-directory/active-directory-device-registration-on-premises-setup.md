@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 11/22/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6d53d08156d0e5d1d070361db5b74d201f18a224
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 2342690d983b6e27fa008b5c72a736a9ecda8f47
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>A helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációs használatával
 Ha munkahelyi-csatlakozás a felhasználók saját eszközét, az Azure Active Directory (Azure AD) eszközregisztrációs szolgáltatását, az eszközeik jelölhető, amelyről ismert, hogy a szervezet. Az alábbiakban részletesen ismerteti az Active Directory összevonási szolgáltatások (AD FS) a Windows Server 2012 R2 használatával a helyszíni alkalmazások feltételes hozzáférést tesz lehetővé.
@@ -166,9 +166,9 @@ Való kommunikációhoz az URL-cím, a felhasználók számos különböző mód
 4. Amikor a rendszer kéri, jelentkezzen be a fiókjával. Az eszköz már csatlakoztatva van.
 
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>Csatlakozás egy Windows 7 eszköz segítségével az Azure Active Directory eszközregisztrációs
-Windows 7-tartományhoz csatlakozó eszközök regisztrálásához is telepíteni kell az eszközregisztrációs szoftvercsomagot. A csomagot nevezik munkahelyi csatlakoztatás Windows 7 rendszerhez készült, és az elérhető letölthető a következő a [Microsoft Connect webhelyen](https://connect.microsoft.com/site1164). 
+Windows 7-tartományhoz csatlakozó eszközök regisztrálásához kell telepítenie a [eszközregisztrációs szoftvercsomagot](https://www.microsoft.com/download/details.aspx?id=53554).
 
-A csomag használatával kapcsolatos útmutatást [konfigurálása a Windows-tartományhoz csatlakoztatott eszközök automatikus regisztrálása az Azure Active Directoryval](active-directory-conditional-access-automatic-device-registration-setup.md).
+A csomag használatával kapcsolatos útmutatásért lásd: [Windows Installer-csomag nem - Windows 10-es számítógépeken](device-management-hybrid-azuread-joined-devices-setup.md#windows-installer-packages-for-non-windows-10-computers).
 
 ## <a name="verify-that-registered-devices-are-written-back-to-active-directory"></a>Győződjön meg arról, hogy a regisztrált eszközök vissza kerüljenek-e az Active Directory
 Megtekintheti, és győződjön meg arról, hogy az eszköz objektumok rendelkeznek írt vissza az Active Directory LDP.exe eszközzel vagy az ADSI-szerkesztő. Mindkettő az Active Directory rendszergazdai eszközök érhető el.

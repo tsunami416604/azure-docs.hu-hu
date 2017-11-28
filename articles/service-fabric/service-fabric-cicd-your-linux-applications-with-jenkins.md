@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2017
+ms.date: 11/27/2017
 ms.author: saysa
-ms.openlocfilehash: 4e1f2f7d63666315f363caa8fec272ec2b6f18fc
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 8fcce0e3fea8f0789e198d19754f93dcdf0c84f9
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins segítségével hozza létre, és a Linux-alkalmazások központi telepítése
 A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához és üzembe helyezéséhez. Ebből a témakörből megtudhatja, hogyan helyezheti üzembe Azure Service Fabric-alkalmazásait a Jenkins használatával.
@@ -42,24 +42,24 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A k�
    > [!NOTE]
    > Győződjön meg arról, hogy a 8081 port van megadva egy egyéni végpont a fürtön.
    >
-2. Az alkalmazás klónozása a következő lépések segítségével:
 
+2. Az alkalmazás klónozása a következő lépések segítségével:
   ```sh
-git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
-cd service-fabric-java-getting-started/Services/JenkinsDocker/
-```
+  git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
+  cd service-fabric-java-getting-started/Services/JenkinsDocker/
+  ```
 
 3. A fájlmegosztás-tároló Jenkins állapot megőrzése:
   * Az Azure storage-fiók létrehozása a **ugyanabban a régióban** egy névvel, mint a fürt ``sfjenkinsstorage1``.
   * Hozzon létre egy **fájlmegosztás** alatt a tárolási fiók nevére, mint ``sfjenkins``.
   * Kattintson a **Connect** fájlmegosztási és Megjegyzés: az értékek megjeleníti a **Linux csatlakozó**, az érték az alábbihoz hasonlóan kell kinéznie:
-```sh
-sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
-```
+  ```sh
+  sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
+  ```
 
-> [!NOTE]
-> Csatlakoztatási cifs megosztások meg kell rendelkeznie a cifs-utils csomag, a fürtcsomópontok telepítve.         
->
+  > [!NOTE]
+  > Csatlakoztatási cifs megosztások meg kell rendelkeznie a cifs-utils csomag, a fürtcsomópontok telepítve.       
+  >
 
 4. Frissítse az helyőrző értékeket a ```setupentrypoint.sh``` parancsfájl az azure-tároló adatokkal a 3. lépéssel.
 ```sh
@@ -68,16 +68,33 @@ vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
   * Cserélje le ``[REMOTE_FILE_SHARE_LOCATION]`` értékű ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins`` kimenetében a csatlakozás a fenti 3. lépés.
   * Cserélje le ``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` értékű ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`` a fenti 3. lépés.
 
-5. Csatlakozzon a fürthöz, és a tároló alkalmazás telepítéséhez.
-```sh
-sfctl cluster select --endpoint http://PublicIPorFQDN:19080   # cluster connect command
-bash Scripts/install.sh
-```
-Ezzel telepít a fürtön egy Jenkins-tárolót, amely a Service Fabric Explorerrel figyelhető meg.
+5. **Csak biztonságos fürt:** Jenkins biztonságos fürt konfigurálásához az alkalmazások telepítését, a tanúsítvány Jenkins tárolóban elérhetőnek kell lennie. Linux fürtökön a certificates(PEM) egyszerűen kerülnek át a tárolóból, a tároló X509StoreName által megadott. Az applicationmanifest jegyzékben ContainerHostPolicies alatt adja hozzá ezt a tanúsítványt hivatkozást, és frissítse az ujjlenyomat értéket. Az ujjlenyomat értékét kell lennie, hogy a csomóponton található, egy tanúsítvány.
+  ```xml
+  <CertificateRef Name="MyCert" X509FindValue="[Thumbprint]"/>
+  ```
+  > [!NOTE]
+  > Az ujjlenyomat értékét a biztonságos fürt való kapcsolódáshoz használt tanúsítványnak azonosnak kell lennie. 
+  >
 
-   > [!NOTE]
-   > Eltarthat néhány percig Jenkins kép le kell tölteni a fürtön.
-   >
+6. Csatlakozzon a fürthöz, és a tároló alkalmazás telepítéséhez.
+
+  **Biztonságos fürt**
+  ```sh
+  sfctl cluster select --endpoint https://PublicIPorFQDN:19080  --pem [Pem] --no-verify # cluster connect command
+  bash Scripts/install.sh
+  ```
+
+  **Nem biztonságos fürt**
+  ```sh
+  sfctl cluster select --endpoint http://PublicIPorFQDN:19080 # cluster connect command
+  bash Scripts/install.sh
+  ```
+
+  Ezzel telepít a fürtön egy Jenkins-tárolót, amely a Service Fabric Explorerrel figyelhető meg.
+
+    > [!NOTE]
+    > Eltarthat néhány percig Jenkins kép le kell tölteni a fürtön.
+    >
 
 ### <a name="steps"></a>Lépések
 1. Nyissa meg a ``http://PublicIPorFQDN:8081`` URL-címet a böngészőben. Így megkapja a bejelentkezéshez szükséges kezdeti rendszergazdai jelszó elérési útját. 
@@ -176,13 +193,19 @@ Itt feltöltheti a beépülő modult. Válassza ki **fájl kiválasztása**, maj
 
     ![Service Fabric, Jenkins felépítési művelet][build-step-dotnet]
   
-   h. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. Itt meg kell adnia annak a fürtnek az adatait, ahová a Jenkins által lefordított Service Fabric-alkalmazást üzembe kívánja helyezni. Az üzembe helyezéshez szükséges egyéb alkalmazásadatokat is megadhatja. Tekintse meg erre példaként az alábbi képernyőképet:
+   h. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. Itt meg kell adnia annak a fürtnek az adatait, ahová a Jenkins által lefordított Service Fabric-alkalmazást üzembe kívánja helyezni. A tanúsítvány elérési útja az echo Certificates_JenkinsOnSF_Code_MyCert_PEM környezeti változó a tárolóban értékének echo találhatók. Ennek az elérési útnak az ügyfél és az ügyfél Cert mezők használható.
+
+      ```sh
+      echo $Certificates_JenkinsOnSF_Code_MyCert_PEM
+      ```
+   
+    Az üzembe helyezéshez szükséges egyéb alkalmazásadatokat is megadhatja. Tekintse meg erre példaként az alábbi képernyőképet:
 
     ![Service Fabric, Jenkins felépítési művelet][post-build-step]
 
-    > [!NOTE]
-    > Ha a Service Fabricet használja a Jenkins-tároló rendszerképének üzembe helyezéséhez, a fürtnek meg kell egyeznie azzal, ahol a Jenkins-tárolóalkalmazás található.
-    >
+      > [!NOTE]
+      > Ha a Service Fabricet használja a Jenkins-tároló rendszerképének üzembe helyezéséhez, a fürtnek meg kell egyeznie azzal, ahol a Jenkins-tárolóalkalmazás található.
+      >
 
 ## <a name="next-steps"></a>Következő lépések
 A GitHub és a Jenkins beállítása kész. Érdemes lehet elvégezni néhány mintamódosítást a ``MyActor`` projekten az adattárban (https://github.com/sayantancs/SFJenkins). A módosításokat továbbíthatja egy távoli ``master`` ágra (vagy bármilyen egyéb olyan ágra, amelyet beállított). Ez aktiválja a konfigurált ``MyJob`` Jenkins-feladatot. A feladat lekéri a módosításokat a GitHubról, érvénybe lépteti őket, és üzembe helyezi az alkalmazást a fürt azon végpontján, amelyet a felépítés utáni műveletekben adott meg.  

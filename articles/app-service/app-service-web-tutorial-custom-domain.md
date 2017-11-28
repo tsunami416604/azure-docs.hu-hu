@@ -1,6 +1,7 @@
 ---
 title: "Egy meglévő egyéni DNS-névvel hozzárendelése az Azure Web Apps |} Microsoft Docs"
 description: "Útmutató egy webalkalmazást, mobil-háttéralkalmazás vagy az Azure App Service API-alkalmazás hozzáadása egy meglévő egyéni DNS-tartománynevet (személyes tartománnyal)."
+keywords: "az App service, azure app service, tartományi leképezés, tartománynév, meglévő tartományhoz, állomásnév"
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,11 +16,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6d7c99b1b02a0450cae406e2bc70a7e5563e2ac2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1a0b54e75bd6356ba7ba351d51d5f4a59bd64c75
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Egy meglévő egyéni DNS-névvel hozzárendelése az Azure Web Apps
 
@@ -269,6 +270,27 @@ Válassza ki a  **+**  ikonra újra egy másik állomásnév, amely megfelel a h
 Keresse meg a korábban konfigurált DNS-nevek (például `contoso.com`, `www.contoso.com`, `sub1.contoso.com`, és `sub2.contoso.com`).
 
 ![Az Azure alkalmazásba portálnavigációjával](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
+
+## <a name="resolve-404-error-web-site-not-found"></a>Hárítsa el a "Nem található Web Site" 404-es hiba
+
+Ha HTTP 404-es (nem található) hiba történt az egyéni tartomány URL-címét böngészésekor, ellenőrizze, hogy a tartomány oldja fel az alkalmazás IP-cím használatával <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a>. Ha nem, akkor elképzelhető, hogy a következő okok egyikéből adódóan:
+
+- A konfigurált egyéni tartomány hiányzik egy A rekordot és/vagy egy olyan CNAME rekordot.
+- A böngészőalapú ügyfél gyorsítótárazott a régi IP-cím a tartomány. Kapcsolja ki a gyorsítótárat, és a vizsgálati DNS-feloldás újra. Windows-gépen, törli a gyorsítótár `ipconfig /flushdns`.
+
+<a name="virtualdir"></a>
+
+## <a name="direct-default-url-to-a-custom-directory"></a>Közvetlen alapértelmezett URL-cím, egy egyéni könyvtárba
+
+Alapértelmezés szerint az App Service arra utasítja a webes kérelmek gyökérkönyvtárára mutatva, az alkalmazás kódját. Azonban bizonyos webes keretrendszerek ne indítsa a gyökérkönyvtárban. Például [Laravel](https://laravel.com/) indítja el a `public` alkönyvtár. A folytatáshoz a `contoso.com` DNS példa ilyen alkalmazás címen elérhető lenne `http://contoso.com/public`, de valójában történő közvetlen kívánt `http://contoso.com` való a `public` directory helyette. Ez a lépés nem tartalmaz, amely DNS-feloldás, de a virtuális könyvtár testreszabása.
+
+Ehhez az szükséges, válassza ki a **Alkalmazásbeállítások** a bal oldali navigációs sáv a weblap alkalmazás. 
+
+A lapon, a virtuális gyökérkönyvtár alján `/` mutat `site\wwwroot` alapértelmezés szerint ez az alkalmazás kódját gyökérkönyvtárában. Módosítsa úgy, hogy mutasson a `site\wwwroot\public` ehelyett a példában, és mentse a módosításokat. 
+
+![A virtuális könyvtár testreszabása](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
+
+A művelet után alkalmazást a jobb oldalon, a legfelső szintű (például http://contoso.com) elérési úton kell visszaadnia.
 
 ## <a name="automate-with-scripts"></a>Parancsfájlok automatizálásához
 

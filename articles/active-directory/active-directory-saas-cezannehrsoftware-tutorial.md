@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: cf44d749ecbfcffb3d5a6e5e12aa49e66f7cde2e
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 620b0f62bceeda6fac87c31b325a078260f7d3d0
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Oktatóanyag: Azure Active Directory-integráció Cezanne HR szoftverrel
 
@@ -108,11 +108,14 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Cezanne HR szoftver tartomány és az URL-címek](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:`https://w3.cezanneondemand.com/CezanneOnDemand/-/optyma`
+    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:`https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`
 
     b. Az a **azonosító** szövegmező, írja be az URL-cím:`https://w3.cezanneondemand.com/CezanneOnDemand/`
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-cím:`https://w3.cezanneondemand.com:443/cezanneondemand/-/optyma/Saml/samlp`
+    c. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-cím:`https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`
+    
+    > [!NOTE]
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és a válasz URL-CÍMEN. Ügyfél [Cezanne HR szoftver ügyfél-támogatási csoport](https://cezannehr.com/services/support/) beolvasni ezeket az értékeket.
 
 4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

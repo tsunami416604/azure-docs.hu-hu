@@ -12,71 +12,36 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 8/22/2017
+ms.date: 11/11/2017
 ms.author: kraigb
-ms.openlocfilehash: 953b1aa459ddf5b7be00b9d32432e6dda97143e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 12250adbfaf8621b80acd5de5de06b21e05ef07c
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="set-up-named-authentication-credentials"></a>Nevű hitelesítő adatok beállítása
-Az Azure-bA a Visual Studio alkalmazás közzététele, vagy egy meglévő felhőszolgáltatáshoz figyelése, a Visual Studio segítségével az Azure-kérelmek hitelesítéséhez szükséges hitelesítő adatokat kell megadnia. A Visual Studio, ahol bejelentkezhet a hitelesítő adatok több helyen van. Például a Server Explorer eszközből megnyithatja a helyi menüje a **Azure** csomópont, és válassza **kapcsolódás a Microsoft Azure-előfizetés**. Amikor bejelentkezik, a Visual Studio az előfizetési adatok az Azure-fiókjával társított érhető el. Nincs szükség további kell elvégezni.
 
-Azure-eszközökkel is támogatja a hitelesítő adatokat adjanak egy régebbi módja: az előfizetés fájllal (.publishsettings fájlt). Ez a cikk ismerteti a metódus, amely az Azure SDK 2.2 továbbra is támogatja.
+Közzétesz egy alkalmazást az Azure-ba, vagy egy meglévő felhőszolgáltatáshoz figyelése, a Visual Studio-kérelmek hitelesítéséhez szükséges az Azure-ba, nevezetesen az Azure-előfizetése Azonosítóját és egy érvényes X.509 v3 tanúsítvány legalább 2048 bites kulccsal rendelkező hitelesítő adatokra van szüksége. Megadja ezen hitelesítő adatok használatával a következő módszerek egyikét:
 
-A következőkre lesz szükség a hitelesítés az Azure-bA:
+- A Visual Studio select **Nézet > Server Explorer**, kattintson a jobb gombbal a **Azure** csomópontban jelölje ki **kapcsolódás a Microsoft Azure-előfizetés**, és jelentkezzen be.
+- Hozzon létre egy előfizetés fájlt (`.publishsettings`), amely tartalmazza a tanúsítványhoz tartozó nyilvános kulcs. Az előfizetés fájl tartalmazhat egynél több előfizetésnek hitelesítő adatait, ebben a cikkben leírtak szerint.
 
-* Az előfizetés-Azonosítóval
-* Egy érvényes X.509 v3 tanúsítvány
+Megjegyzés: ezek a hitelesítő adatok eltérnek az Azure storage szolgáltatások kérelmek hitelesítéséhez szükséges hitelesítő adatokat.
 
-> [!NOTE]
-> Az X.509 v3 tanúsítvány kulcs hossza legalább 2048 bit kell lennie. Azure elutasítja bármely olyan tanúsítvány, amely nem felel meg ennek a követelménynek, vagy, amely nem érvényes.
->
->
+## <a name="create-a-subscription-file"></a>Hozzon létre egy előfizetés fájlt
 
-A Visual Studio az előfizetés-Azonosítóval és a tanúsítvány adatainak hitelesítő adatokat használja. A megfelelő hitelesítő adatokat a előfizetési fájl (.publishsettings-fájlt), amely tartalmazza a tanúsítványhoz tartozó nyilvános kulcs hivatkozott. Az előfizetés-fájl több előfizetés hitelesítő adatait tartalmazza.
+A Server Explorer eszközben kattintson a jobb gombbal a **Azure** csomópont, és válassza **kezelése és a szűrő előfizetések**. Válassza ki a **tanúsítványok** lapot, és tegye a következők közül:
 
-Szerkesztheti az előfizetés adatait a **új előfizetés** vagy **előfizetés szerkesztése** párbeszédpanelen, a cikkben leírtak szerint.
+- Válassza ki **importálási** megnyitásához a **importálása a Microsoft Azure-előfizetések** párbeszédpanel megnyitásához. Válassza ki a **letöltési előfizetési fájl** hivatkozásra, és a böngészőben mentse a letöltött fájlt egy ideiglenes helyre. A párbeszédpanelen keresse meg a letöltési helyre, és importálja a hitelesítés használható.
+- Válassza az aktív előfizetéssel, majd **szerkesztése**, amely, megnyílik egy párbeszédpanel, amelyben szerkesztheti egy meglévő előfizetéshez hitelesítés használható.
+- Válassza ki **új** megnyitásához a **új előfizetés** párbeszédpanel mezőben, és adja meg a szükséges adatokat. A tanúsítvány feltöltése a felhőbe service párbeszédpanelen jeleztük jelentkezzen be az Azure-portálra, keresse meg a felhőalapú szolgáltatás, válassza **beállítások > felügyeleti tanúsítványok**, jelölje be **feltöltése**, majd Adja meg az elérési útját a `.cer` fájlt.
 
-Ha azt szeretné, létrehozhat egy tanúsítványt, hivatkozhat utasításait [létrehozása és feltöltése az Azure-tanúsítvány felügyeleti](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx) , majd töltse fel manuálisan a tanúsítványt a [a klasszikus Azure portálon](http://go.microsoft.com/fwlink/?LinkID=213885).
-
-> [!NOTE]
-> Ezeket a hitelesítő adatokat, amelyek a Visual Studio igényli a felhőszolgáltatások kezelése a kérelmet az Azure storage szolgáltatásainak hitelesítéséhez szükséges hitelesítő adatokat nem.
->
->
-
-## <a name="import-set-up-or-edit-authentication-credentials-in-visual-studio"></a>Importálja, állítsa be, vagy a Visual Studio hitelesítő adatok szerkesztése
-
-1. A Server Explorer eszközben a helyi menü megnyitása a **Azure** csomópont, és válassza **kezelése és a szűrő előfizetések**.
-2. Válassza ki a **tanúsítványok** lapot, és kövesse az alábbi módszerek bármelyikét:
-
-    * Válassza ki **importálási** megnyitásához a **importálása a Microsoft Azure-előfizetések** párbeszédpanel megnyitásához. Hiba, letöltheti az előfizetések fájlt az aktuálisan betöltött előfizetés, keresse meg a letöltési helyre, és importálja hitelesítés használható.
-    * Válassza ki **új** megnyitásához a **új előfizetés** párbeszédpanel megnyitásához. Van beállíthat egy új előfizetés hitelesítés használható.
-    * Válassza ki **szerkesztése** (után úgy dönt, hogy az aktív előfizetés) elemre a **előfizetés szerkesztése** párbeszédpanel. Szerkesztheti, egy meglévő előfizetéshez hitelesítés használható. 
-
-A következő eljárás feltételezi, hogy a **új előfizetés** párbeszédpanel nyitva.
-
-### <a name="to-set-up-authentication-credentials-in-visual-studio"></a>A Visual Studio hitelesítő adatok beállítása
-1. Az a **válasszon ki egy meglévő hitelesítéshez** menüben válassza ki a tanúsítványt.
-2. Válassza ki a **másolja a teljes elérési útja** hivatkozásra. A tanúsítvány (.cer-fájl) elérési útja a vágólapra másolódik.
-
-   > [!IMPORTANT]
-   > A Visual Studio az Azure alkalmazás közzétételére, fel kell töltenie a tanúsítvány a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-   >
-   >
-3. A tanúsítvány feltöltése az Azure portálon:
-
-   a. Nyissa meg az [Azure portált](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-   
-   b. Ha a számítógép, jelentkezzen be a portálra, és tallózással keressen meg **beállítások** > **felügyeleti tanúsítványok**.
-   
-   c. Az a **felügyeleti tanúsítványok** ablaktáblán válassza előbb **feltöltése**.
-   
-   d. Az Azure-előfizetéssel, illessze be a teljes elérési útját a .cer fájlt, létre válassza ki és **feltöltése**.
+Ha azt szeretné, létrehozhat egy tanúsítványt, hivatkozhat utasításait [létrehozása és feltöltése az Azure-tanúsítvány felügyeleti](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx) , majd töltse fel manuálisan a tanúsítványt a [Azure-portálon](https://portal.azure.com/).
 
 ## <a name="next-steps"></a>Következő lépések
-* [Webalkalmazások általános áttekintése](https://docs.microsoft.com/azure/app-service/)
-* [Az alkalmazás telepítése az Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) 
-* [WebJobs üzembe helyezése Visual Studióval](https://docs.microsoft.com/en-us/azure/app-service/websites-dotnet-deploy-webjobs)
-* [Létrehozhat és telepíthet egy felhőalapú szolgáltatás](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy-portal)
+
+- [Webalkalmazások általános áttekintése](https://docs.microsoft.com/azure/app-service/)
+- [Az alkalmazás telepítése az Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) 
+- [WebJobs üzembe helyezése Visual Studióval](https://docs.microsoft.com/en-us/azure/app-service/websites-dotnet-deploy-webjobs)
+- [Létrehozhat és telepíthet egy felhőalapú szolgáltatás](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy-portal)

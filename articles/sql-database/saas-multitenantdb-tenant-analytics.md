@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: ec93bbb477a047a028328964d3e152c1ab4bb58f
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 549b6abf5728e50ee365f40326263d391e4b26fd
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Több-bérlős analytics kibontott adatok használata
 
@@ -73,7 +73,7 @@ Mindegyik bérlő következetesen hogyan használja a szolgáltatás ismertetés
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
 - A Wingtip jegyek SaaS több-bérlős adatbázis alkalmazás központi telepítése. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás](saas-multitenantdb-get-started-deploy.md)
-- A Wingtip Szolgáltatottszoftver-parancsfájlok és az alkalmazás [forráskód](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) letöltődnek a Githubról. Ügyeljen arra, hogy *feloldása a zip-fájl* tartalmának kibontása előtt.
+- A Wingtip Szolgáltatottszoftver-parancsfájlok és az alkalmazás [forráskód](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) letöltődnek a Githubról. Ügyeljen arra, hogy *feloldása a zip-fájl* tartalmának kibontása előtt. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
 - A Power BI Desktop telepítve van. [A Power BI Desktop letöltése](https://powerbi.microsoft.com/downloads/)
 - A köteg további bérlő van kiépítve, tekintse meg a [ **rendelkezés bérlők oktatóanyag**](saas-multitenantdb-provision-and-catalog.md).
 - Egy feladat fiókot és a feladat fiók adatbázis létrejött. Tekintse meg a megfelelő lépéseket a [ **séma felügyeleti oktatóanyag**](saas-multitenantdb-schema-management.md#create-a-job-account-database-and-new-job-account).
@@ -212,7 +212,7 @@ A Contoso energiaoptimalizálást egyszerre Hall előző ábra mutatja, hogy a m
 
 Minták értékesítési jegy betekintést vezethet Wingtip jegyek üzleti modelljüknek optimalizálása érdekében. Helyett egyaránt díjszabási egyetlen bérlő számára, lehet, hogy a Wingtip kell vezetnie más-más teljesítménybeli szintű szolgáltatási szinteket. Nagyobb helyszínek, amely naponta több jegyek el kell egy magasabb szolgáltatásiszint-szerződéssel (SLA) és magasabb szintű használható sikerült választhatják. E helyszínek rendelkezhetnek a hozzájuk tartozó adatbázisok címkészlet, amely nagyobb adatbázis-erőforrás korlátok helyezve. Egyes szolgáltatásszinteken sikerült óránkénti értékesítési kiosztását, rendelkező haladja meg a lemezfoglalási kiszabott további díjakat. Nagyobb helyszínek, amelyek az értékesítési rendszeres felszakadásáig előnyös az magasabb szinteket, és Wingtip jegyek is hatékonyabbá pénzt a szolgáltatás.
 
-Egyes Wingtip jegyek ügyfelek panaszkodnak mert ugyanakkor, hogy kihívást jelent eladásra elég a jegyektől szolgáltatás költségeinek igazolására. Lehet, hogy az ezen insights van a helyszínek underperforming jegy értékesítés növelése lehetőséget. Magasabb értékesítési volna növelje észlelt a szolgáltatást. Fact_Tickets kattintson jobb gombbal, majd válassza ki **új mérték**. Adja meg az alábbi kifejezés a következő új néven mértékhez **AverageTicketsSold**:
+Egyes Wingtip jegyek ügyfelek panaszkodnak mert ugyanakkor, hogy kihívást jelent eladásra elég a jegyektől szolgáltatás költségeinek igazolására. Lehet, hogy ezek insightsban nincs lehetőség alatt helyszínek végrehajtása a jegy értékesítési növelése érdekében. Magasabb értékesítési volna növelje észlelt a szolgáltatást. Fact_Tickets kattintson jobb gombbal, majd válassza ki **új mérték**. Adja meg az alábbi kifejezés a következő új néven mértékhez **AverageTicketsSold**:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))

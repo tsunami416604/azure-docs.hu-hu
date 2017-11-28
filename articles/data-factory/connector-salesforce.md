@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 11/24/2017
 ms.author: jingwang
-ms.openlocfilehash: 017d03b76bd19a0b3a1e19c22233c61be9067d0d
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: d0db2bd3a7e4d93a8d0690fcb4535c4552cef7ab
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="copy-data-fromto-salesforce-using-azure-data-factory"></a>Másolja az adatokat, vagy a Salesforce Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -248,13 +248,13 @@ Adatok másolása Salesforce, állítsa be a fogadó típusa a másolási tevék
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Salesforce input dataset name>",
+                "referenceName": "<input dataset name>",
                 "type": "DatasetReference"
             }
         ],
         "outputs": [
             {
-                "referenceName": "<output dataset name>",
+                "referenceName": "<Salesforce output dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -301,7 +301,7 @@ Amikor adatokat másol Salesforce, a következő megfeleltetéseket szolgálnak 
 | Salesforce-adattípus | Data factory ideiglenes adattípus |
 |:--- |:--- |
 | Automatikus szám |Karakterlánc |
-| Jelölőnégyzet |Logikai érték |
+| Jelölőnégyzet |Logikai |
 | Currency (Pénznem) |Dupla |
 | Dátum |Dátum és idő |
 | Dátum és idő |Dátum és idő |
@@ -318,7 +318,7 @@ Amikor adatokat másol Salesforce, a következő megfeleltetéseket szolgálnak 
 | Szövegmező (nagy) |Karakterlánc |
 | Szövegmező (gazdag) |Karakterlánc |
 | Szöveg (titkosítva) |Karakterlánc |
-| URL-CÍME |Karakterlánc |
+| URL-cím |Karakterlánc |
 
 ## <a name="next-steps"></a>Következő lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

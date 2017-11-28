@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 50d185294131e42aaf8b541ab17495fcb40c89dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bd16dd889cbe0f05d7e60f444c6c5fa2e65f64a4
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="sfctl-replica"></a>sfctl replika
 A szolgáltatáspartíciók tartozó replikák kezelése.
@@ -29,8 +29,7 @@ A szolgáltatáspartíciók tartozó replikák kezelése.
 | --- | --- |
 |    Telepített  | Lekérdezi a Service Fabric-csomópont telepített replika részleteit.|
 |    telepített listája| Lekérdezi a Service Fabric-csomópont telepítve replikák listáját.|
-|    Rendszerállapot    | A Service Fabric állapotalapú szolgáltatási replikaként vagy állapotmentes szolgáltatások állapotának beolvasása
-                   a példány.|
+|    állapot    | A Service Fabric állapotalapú szolgáltatási replika- vagy állapotmentes szolgáltatások állapotának beolvasása.|
 |    információ      | A Service Fabric-partíción replika információ lekérése.|
 |    lista      | A Service Fabric szolgáltatás partíció replikák információ lekérése.|
 |    Távolítsa el    | Eltávolítja a csomóponton futó szolgáltatás replika.|

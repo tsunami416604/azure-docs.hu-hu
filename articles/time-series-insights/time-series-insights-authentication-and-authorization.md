@@ -1,5 +1,5 @@
 ---
-title: "Azure idő adatsorozat Insights hitelesítési és engedélyezési API-k konfigurálása"
+title: "API-ban Azure idő adatsorozat információkat helyszerepkörre, és hogyan"
 description: "Ez a cikk ismerteti a hitelesítési és engedélyezési egy egyéni a Azure idő adatsorozat Insights API-alkalmazások konfigurálása."
 services: time-series-insights
 ms.service: time-series-insights
@@ -11,18 +11,18 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/21/2017
-ms.openlocfilehash: cab37f65541ecf8bfa58edcd40df0aed39b37680
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 11/27/2017
+ms.openlocfilehash: dd78e1e726029aaceef5aff0e0eed84acac646cf
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítési és engedélyezési Azure idő adatsorozat Insights API-hoz.
 
 Ez a cikk ismerteti, hogyan konfigurálhatja a hitelesítési és engedélyezési szerepel, amely a Azure idő adatsorozat Insights API-egyéni alkalmazás.
 
-## <a name="service-principal"></a>Szolgáltatásnév
+## <a name="service-principal"></a>Egyszerű szolgáltatásnév
 
 Ez a szakasz ismerteti a idő adatsorozat Hirdetéselemző API-t nevében az alkalmazás eléréséhez alkalmazások konfigurálása. Az alkalmazás ezután kérdezhet le adatokat, vagy hivatkozási adatok közzététele a idő adatsorozat Insights környezetben, a felhasználói hitelesítő adatok helyett az alkalmazás hitelesítő adatait.
 
@@ -32,7 +32,7 @@ Ha egy alkalmazás, amely az adatsorozat Insights időt kell, állítson be egy 
 * Nem kell módosítani az alkalmazás hitelesítő adatokat, ha az Ön feladatkörei módosítása.
 * Egy tanúsítvány vagy egy alkalmazás kulcs segítségével automatizálhatja a hitelesítés, amikor egy felügyelet nélküli parancsfájllal futtatja.
 
-Ez a témakör azt ismerteti, hogyan hajtsa végre ezeket a lépéseket az Azure portálon keresztül. A single-bérlői alkalmazások, ahol az alkalmazás futtatásához csak egy szervezet célja összpontosít. Single-bérlő alkalmazásokat a szervezet futó üzleti alkalmazásokhoz általában használ.
+Ez a cikk bemutatja, hogyan hajtsa végre ezeket a lépéseket az Azure portálon keresztül. A single-bérlői alkalmazások, ahol az alkalmazás futtatásához csak egy szervezet célja összpontosít. Single-bérlő alkalmazásokat a szervezet futó üzleti alkalmazásokhoz általában használ.
 
 A telepítő folyamat három magas szintű lépésekből áll:
 

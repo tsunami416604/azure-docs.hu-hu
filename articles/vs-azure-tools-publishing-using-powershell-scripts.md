@@ -14,39 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.openlocfilehash: 92753860ec820172e46f483831eb0c1cf1acb038
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4e9409aac836a60e7ea01261840c084ff09e954e
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Windows PowerShell-parancsprogramok használata a fejlesztési és tesztelési környezetben való közzétételhez
+
 A Visual Studio egy webalkalmazás létrehozásakor egy Windows PowerShell-parancsfájl, amely később használhatja egy webalkalmazást az Azure App Service vagy egy virtuális gépet, a webhely, az Azure-bA a közzétételi automatizálásához hozhat létre. Szerkesztheti és kiterjesztése a Windows PowerShell-parancsfájlt a Visual Studio-szerkesztőben saját követelményeinek megfelelően, vagy a parancsfájl integrálható a meglévő build, a vizsgálati és a parancsfájlok közzététele.
 
-Az ezekhez a parancsfájlokhoz, megadhat testreszabott verziók (más néven a fejlesztési és tesztelési környezetben) a webhely ideiglenes használatra. Beállíthat például egy adott verzióját a webhely egy Azure virtuális géphez, vagy az átmeneti helyet egy tesztcsomag futtatása, programhiba Reprodukálja, teszteléséhez hibajavítás, próbaverzió változtatást, vagy egy bemutató vagy bemutató egyéni környezet beállítása egy webhelyen. Egy parancsfájl, amely közzéteszi a projekt létrehozása után hozza létre újra az azonos környezetben újra a parancsfájl futtatásával igény szerint, vagy futtassa a parancsfájlt a webes alkalmazás teszteléséhez egyéni környezet létrehozása a saját build a.
+Az ezekhez a parancsfájlokhoz, megadhat testreszabott verziók (más néven a fejlesztési és tesztelési környezetben) a webhely ideiglenes használatra. Beállíthat például egy adott verzióját a webhely egy Azure virtuális géphez, vagy az átmeneti helyet egy tesztcsomag futtatása, programhiba Reprodukálja, teszteléséhez hibajavítás, próbaverzió változtatást, vagy egy bemutató vagy bemutató egyéni környezet beállítása egy webhelyen. Egy parancsfájl, amely közzéteszi a projekt létrehozása után hozza létre újra az azonos környezetben igény szerint a parancsfájl futtatásával, vagy futtassa a parancsfájlt a webes alkalmazás teszteléséhez egyéni környezet létrehozása a saját build a.
 
-## <a name="what-you-need"></a>Mi szükséges
-* Az Azure SDK 2.3-as vagy újabb. Lásd: [Visual Studio letöltések](http://go.microsoft.com/fwlink/?LinkID=624384) további információt.
+## <a name="prerequisites"></a>Előfeltételek
 
-Nem kell az Azure SDK webes projektek parancsfájlok létrehozására. Ez a szolgáltatás webes projektek, a felhőalapú szolgáltatások nem webes szerepkörök szolgál.
-
-* Az Azure PowerShell 0.7.4 vagy újabb. Lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) további információt.
+* Az Azure SDK 2.3-as vagy újabb. Lásd: [Visual Studio letöltések](http://go.microsoft.com/fwlink/?LinkID=624384). (Az Azure SDK webes projektek parancsfájlok létrehozására nincs szükség. Ez a funkció a webes projektek, a felhőalapú szolgáltatások nem webes szerepkörök.)
+* Az Azure PowerShell 0.7.4 vagy újabb. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 * [A Windows PowerShell 3.0](http://go.microsoft.com/?linkid=9811175) vagy újabb.
 
 ## <a name="additional-tools"></a>További eszközök
+
 További eszközök és erőforrások használatához a PowerShell használatával a Visual Studio Azure fejlesztési érhetők el. Lásd: [PowerShell Tools for Visual Studio](http://go.microsoft.com/fwlink/?LinkId=404012).
 
 ## <a name="generating-the-publish-scripts"></a>A közzététel parancsfájlok létrehozása
+
 Létrehozhat egy virtuális gép, amelyen a webhely, amikor követve hozzon létre egy új projektet a közzététel parancsfájlok [ezeket az utasításokat](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Emellett [készítése az Azure App Service web Apps parancsfájlok közzététele](app-service/app-service-web-get-started-dotnet.md).
 
 ## <a name="scripts-that-visual-studio-generates"></a>Olyan parancsfájlok, amelyek a Visual Studio hoz létre
+
 A Visual Studio megoldás szintű mappa állít elő **PublishScripts** két Windows PowerShell-fájlok, a virtuális gép vagy a webhely és a modult tartalmaz a parancsfájlokban használható funkciók közzététel parancsfájlt tartalmazó. A Visual Studio is létrehoz egy fájlt, amely meghatározza a projektet telepít részletes adatait a JSON formátumban.
 
 ### <a name="windows-powershell-publish-script"></a>A Windows PowerShell parancsfájl közzététele
+
 A közzététel tartalmaz az adott közzététel webhelyére vagy a virtuális gép telepítésének lépései. A Visual Studio biztosít a Windows PowerShell fejlesztési színátmenetekhez szintaxist. Súgó a funkciók érhető el, és szabadon módosíthatja a funkciók a parancsfájl változó igényeinek.
 
 ### <a name="windows-powershell-module"></a>A Windows PowerShell-modul
-A Windows PowerShell-modult, amely a Visual Studio hoz létre olyan függvényeket tartalmaz, a közzététel parancsfájl használja. Ezek az Azure PowerShell-funkciók, és nem feltétlenül lehet módosítani. Lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) további információt.
+
+A Windows PowerShell-modult, amely a Visual Studio hoz létre olyan függvényeket tartalmaz, a közzététel parancsfájl használja. Ezek az Azure PowerShell-funkciók nem célja, hogy módosítható. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 
 ### <a name="json-configuration-file"></a>JSON-konfigurációs fájlt
 A JSON-fájl jön létre a **konfigurációk** mappa, és pontosan mely üzembe helyezendő erőforrásokat az Azure-bA megadó konfigurációs adatokat tartalmaz. A fájl, amely a Visual Studio létrehozza a neve nem projekt-neve-WAWS-dev.json Ha létrehozott egy webhely vagy a név-VM-dev.json projekt Ha létrehozott egy virtuális gépet. Íme egy példa egy JSON-konfigurációs fájlt, amely jön létre, amikor egy webhely létrehozása. Az értékek többsége magától értetődő. A webhely neve Azure, hozza létre, akkor előfordulhat, hogy a projekt neve nem egyezik.
@@ -72,7 +76,8 @@ A JSON-fájl jön létre a **konfigurációk** mappa, és pontosan mely üzembe 
     }
 }
 ```
-A virtuális gép létrehozásakor a JSON-konfigurációs fájl hasonlít-e a következő. Vegye figyelembe, hogy a virtuális gép elhelyezése egy felhőalapú szolgáltatás létrejött. A virtuális gép tartalmazza a HTTP és HTTPS webes eléréshez szokásos végpontok, valamint a végpontok a Web Deploy, amely lehetővé teszi, hogy a helyi számítógépen, a távoli asztal és a Windows PowerShell a webhelyen közzétenni.
+
+A virtuális gép létrehozásakor a JSON-konfigurációs fájl hasonlít-e a következő. Egy felhőszolgáltatás egy tárolót a virtuális gép jön létre. A virtuális gép tartalmazza a HTTP és HTTPS webes eléréshez szokásos végpontok, valamint a végpontok a Web Deploy, amely lehetővé teszi, hogy a helyi számítógépen, a távoli asztal és a Windows PowerShell a webhelyen közzétenni.
 
 ```json
 {
@@ -138,22 +143,24 @@ A virtuális gép létrehozásakor a JSON-konfigurációs fájl hasonlít-e a k�
 }
 ```
 
-Szerkesztheti a JSON-konfiguráció módosítása, mi történik a publish-parancsfájlok futtatásakor. A `cloudService` és `virtualMachine` szakasz használata kötelező, de törölheti a `databases` szakaszban, ha nincs szüksége. Az alapértelmezett konfigurációs fájl, amely a Visual Studio létrehozza az üres tulajdonságot is kötelező megadni. az alapértelmezett konfigurációs fájl értékek rendelkező szükség.
+Szerkesztheti a JSON-konfiguráció módosítása, mi történik a publish-parancsfájlok futtatásakor. A `cloudService` és `virtualMachine` szakasz használata kötelező, de törölheti a `databases` szakaszban, ha nincs szüksége. Az alapértelmezett konfigurációs fájl, amely a Visual Studio létrehozza az üres tulajdonságot is kötelező megadni. az alapértelmezett konfigurációs fájl értéket tartalmazó tulajdonságokat szükség.
 
-Ha olyan webhelyet, ahol több telepítési környezetekben (más néven üzembe helyezési ponti) helyett egy egyetlen munkakörnyezeti helyet az Azure-ban, a tárhely neve, a webhely nevében is felvehet a JSON-konfigurációs fájlt. Például, ha rendelkezik nevű webhellyel **saját webhely** és tárhely, nevű **tesztelése** , majd az URI saját webhely-test.cloudapp.net, de a megfelelő nevet a konfigurációs fájlban mysite(test). Csak ez, ha a webhely és műveletek üzembe helyezési ponti már szerepel az előfizetéshez. Ha azok még nem léteznek, a webhely létrehozása a parancsfájl futtatásával a tárolóhely megadása nélkül, majd hozza létre a tárolóhely a [a klasszikus Azure portálon](http://go.microsoft.com/fwlink/?LinkID=213885), és ezt követően futtassa a parancsfájlt a módosított webhely nevét. A web Apps üzembe helyezési kapcsolatos további információkért lásd: [átmeneti környezet az Azure App Service web Apps beállítása](app-service/web-sites-staged-publishing.md).
+Ha olyan webhelyet, ahol több telepítési környezetekben (más néven üzembe helyezési ponti) helyett egy egyetlen munkakörnyezeti helyet az Azure-ban, a tárhely neve, a webhely nevében is felvehet a JSON-konfigurációs fájlt. Például, ha rendelkezik nevű webhellyel **saját webhely** és tárhely, nevű **tesztelése** , majd az URI `mysite-test.cloudapp.net`, de a megfelelő nevet a konfigurációs fájlban mysite(test). Csak ez, ha a webhely és műveletek üzembe helyezési ponti már szerepel az előfizetéshez. Ha azok még nem léteznek, a webhely létrehozása a parancsfájl futtatásával a tárolóhely megadása nélkül, majd hozza létre a tárolóhely a [Azure-portálon](https://portal.azure.com/), és ezt követően futtassa a parancsfájlt a módosított webhely nevét. A web Apps üzembe helyezési kapcsolatos további információkért lásd: [átmeneti környezet az Azure App Service web Apps beállítása](app-service/web-sites-staged-publishing.md).
 
 ## <a name="how-to-run-the-publish-scripts"></a>A publish-parancsfájlok futtatása
-Soha ne futtatása előtt egy Windows PowerShell-parancsfájlt, ha a végrehajtási házirend a parancsfájlok futtatásának engedélyezéséhez először meg kell adnia. Ez az egy biztonsági funkció, megakadályozhatja, hogy a felhasználók a Windows PowerShell-parancsfájlok futtatásakor, ha ki van téve a kártevők és vírusok, például a parancsfájlok végrehajtása.
+
+Soha ne futtatása előtt egy Windows PowerShell-parancsfájlt, ha a végrehajtási házirend a parancsfájlok futtatásának engedélyezéséhez először meg kell adnia. A csoportházirend egy olyan biztonsági beállítás megakadályozhatja, hogy a felhasználók a Windows PowerShell-parancsfájlok futtatásakor, ha ki van téve a kártevők és vírusok, például a parancsfájlok végrehajtása.
 
 ### <a name="run-the-script"></a>A parancsfájl futtatása
+
 1. A projekt a Web Deploy csomagot hozhat létre. A Web Deploy csomag egy tömörített (.zip fájl), amely a webhely vagy a virtuális gép másolni kívánt fájlokat tartalmazó. A Visual Studio Web Deploy platformra alapuló csomagok bármely webalkalmazás hozhat létre.
 
 ![Webes hozható létre csomag telepítése](./media/vs-azure-tools-publishing-using-powershell-scripts/IC767885.png)
 
-További információkért lásd: [Útmutató: webes telepítési csomag létrehozása a Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx). Automatizálható a Web Deploy csomag létrehozása a szakaszban leírt módon **testreszabása és a közzététel parancsfájlok kiterjesztése** a témakör későbbi részében.
+További információkért lásd: [Útmutató: webes telepítési csomag létrehozása a Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx). Automatizálható a Web Deploy csomag létrehozása a [testreszabása és a közzététel scripts[(#customizing-and-extending-publish-scripts) kiterjesztése]
 
 1. A **Megoldáskezelőben**, nyissa meg a parancsfájl a helyi menüt, és válassza a **nyissa meg a PowerShell ISE**.
-2. Ha az első alkalommal ezen a számítógépen már futtatta a Windows PowerShell-parancsfájlok, nyisson meg egy parancssort rendszergazdai jogosultságokkal, és írja be a következő parancsot:
+2. Ha ezen a számítógépen a Windows PowerShell-parancsfájlok futtatásakor először, nyisson meg egy parancssort rendszergazdai jogosultságokkal, és írja be a következő parancsot:
 
     ```powershell
     Set-ExecutionPolicy RemoteSigned
@@ -167,7 +174,7 @@ További információkért lásd: [Útmutató: webes telepítési csomag létreh
 
     Amikor a rendszer kéri, adja meg a felhasználónevét és jelszavát.
 
-    Vegye figyelembe, hogy automatizálja a parancsfájlt, amikor ez a módszer az Azure hitelesítő adatokat adjanak nem fognak működni. Ehelyett a .publishsettings fájl segítségével kell megadni a hitelesítő adatokat. Egy alkalommal csak, a parancs segítségével **Get-AzurePublishSettingsFile** töltse le a fájlt az Azure-ból, és ezt követően használata **Import-AzurePublishSettingsFile** importálja a fájlt. Részletes útmutatásért lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
+    Vegye figyelembe, hogy automatizálja a parancsfájlt, amikor ez a módszer az Azure hitelesítő adatokat adjanak nem működik. Ehelyett használjon a `.publishsettings` fájlt adjon meg hitelesítő adatokat. Egy alkalommal csak, a parancs segítségével **Get-AzurePublishSettingsFile** töltse le a fájlt az Azure-ból, és ezt követően használata **Import-AzurePublishSettingsFile** importálja a fájlt. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
 
 4. (Választható) Az Azure erőforrások, például a virtuális gép létrehozásához, adatbázis, és a webalkalmazás közzétételét nélkül webhelyet használja a **Publish-WebApplication.ps1** parancsot a **-konfiguráció** argumentum kötelező értéke a JSON-konfigurációs fájlt. Ez a parancssor erőforrások létrehozásához a JSON-konfigurációs fájlt használja. Mivel a program az alapértelmezett beállításokat más parancssori argumentumokat, hoz létre az erőforrásokat, de nem tegye közzé a webalkalmazást. A-Verbose beállítás lehetővé teszi az eseményekről további információt.
 
@@ -236,7 +243,7 @@ Automatizálható a projekt, vegye fel az MSBuild behívó kód `New-WebDeployPa
     }
     ```
 
-3. Cserélje le `New-WebDeployPackage` az az alábbi kód, és cserélje le a helyőrzőket a sor kiszámításakor `$msbuildCmd`. Ez a kód a Visual Studio 2015 van. Ha a Visual Studio 2013 használ, módosítsa a **VisualStudioVersion** tulajdonság alatt `12.0`.
+3. Cserélje le `New-WebDeployPackage` az az alábbi kód, és cserélje le a helyőrzőket a sor kiszámításakor `$msbuildCmd`. Ez a kód van, a Visual Studio 2017. Ha a Visual Studio 2015-öt használ, módosítsa a **VisualStudioVersion** tulajdonságot `14.0` (`12.0` Visual Studio 2013).
 
     ```powershell
     function New-WebDeployPackage
@@ -249,7 +256,7 @@ Automatizálható a projekt, vegye fel az MSBuild behívó kód `New-WebDeployPa
     ```powershell
     Write-VerboseWithTime 'Build-WebDeployPackage: Start'
 
-    $msbuildCmd = '"{0}" "{1}" /T:Rebuild;Package /P:VisualStudioVersion=14.0 /p:OutputPath="{2}\MSBuildOutputPath" /flp:logfile=msbuild.log,v=d' -f (Get-MSBuildCmd), $ProjectFile, $scriptDirectory
+    $msbuildCmd = '"{0}" "{1}" /T:Rebuild;Package /P:VisualStudioVersion=15.0 /p:OutputPath="{2}\MSBuildOutputPath" /flp:logfile=msbuild.log,v=d' -f (Get-MSBuildCmd), $ProjectFile, $scriptDirectory
 
     Write-VerboseWithTime ('Build-WebDeployPackage: ' + $msbuildCmd)
     ```
@@ -287,7 +294,7 @@ return $WebDeployPackage
     }
     ```
 
-2. A egyéni parancsfájl használata a sikeres parancssorból meghívása a `$Project` argumentum, ahogy az alábbi példa parancsot.
+2. A egyéni parancsfájl használata a sikeres parancssorból meghívása a `$Project` argumentum, az alábbi példában látható módon:
 
     ```powershell
     .\Publish-WebApplicationVM.ps1 -Configuration .\Configurations\WebApplication5-VM-dev.json `
@@ -300,7 +307,7 @@ return $WebDeployPackage
     Automatizálható az alkalmazás tesztelése, adja hozzá a kódot a `Test-WebApplication`. Ügyeljen arra, hogy állítsa vissza a sorokat **Publish-WebApplication.ps1** ahol ezek a funkciók nevezzük. Ha nem ad meg megvalósítást, manuálisan a Visual Studio a projekt buildjének elkészítéséhez, és futtassa a a közzététel parancsfájl közzététele az Azure-bA.
 
 ## <a name="publishing-function-summary"></a>Közzétételi összesítő függvény
-Ha segítséget szeretne kérni a funkciók elvégzésére is használhatja a Windows PowerShell parancssorába, a parancs használata `Get-Help function-name`. A Súgó paraméter Súgó és példákat tartalmaz. Az azonos súgószöveg egyben a parancsfájl forrásfájlokat, **AzureWebAppPublishModule.psm1** és **Publish-WebApplication.ps1**. A parancsfájl és a Súgó a Visual Studio nyelven honosítva vannak.
+Ha segítséget szeretne kérni a funkciók elvégzésére is használhatja a Windows PowerShell parancssorába, a parancs használata `Get-Help function-name`. A Súgó paraméter Súgó és példákat tartalmaz. Az azonos súgószöveg egyben a parancsfájl forrásfájlok **AzureWebAppPublishModule.psm1** és **Publish-WebApplication.ps1**. A parancsfájl és a Súgó a Visual Studio nyelven honosítva vannak.
 
 **AzureWebAppPublishModule**
 
@@ -308,15 +315,15 @@ Ha segítséget szeretne kérni a funkciók elvégzésére is használhatja a Wi
 | --- | --- |
 | Adja hozzá AzureSQLDatabase |Létrehoz egy új Azure SQL-adatbázist. |
 | Adja hozzá AzureSQLDatabases |Az értékek a JSON-konfigurációs fájlt, amely a Visual Studio létrehozza az Azure SQL adatbázisokat hoz létre. |
-| Adja hozzá AzureVM |Létrehoz egy Azure virtuális gépet, és a telepített virtuális gép URL-CÍMÉT adja vissza. A függvény állít be az Előfeltételek, és ekkor meghívja a **New-AzureVM** (Azure modul) működnek, hozzon létre egy új virtuális gépet. |
+| Adja hozzá AzureVM |Egy Azure virtuális gépet hoz létre, és a központilag telepített virtuális gép URL-CÍMÉT adja vissza. A függvény állít be az Előfeltételek, és ekkor meghívja a **New-AzureVM** (Azure modul) működnek, hozzon létre egy új virtuális gépet. |
 | Adja hozzá AzureVMEndpoints |Új bemeneti végpont ad hozzá egy virtuális gépet, és visszahelyezi a virtuális gépet az új végponttal. |
-| Adja hozzá AzureVMStorage |A jelenlegi előfizetés hoz létre egy új Azure storage-fiók. A fiók neve kezdődik "devtest" egyedi alfanumerikus karakterlánc követ. A funkció az új tárfiók a nevét adja vissza. Adjon meg egy helyet vagy az új tárfiók affinitáscsoport. |
+| Adja hozzá AzureVMStorage |A jelenlegi előfizetés hoz létre egy új Azure storage-fiók. A fiók neve kezdődik "devtest" egyedi alfanumerikus karakterlánc követ. A funkció az új tárfiók a nevét adja vissza. Adja meg egy helyet vagy az új tárfiók affinitáscsoport. |
 | Adja hozzá AzureWebsite |A megadott név és hely egy webhelyet hoz létre. Ez a funkció meghívja a **New-AzureWebsite** függvény a Azure modulban. Ha az előfizetés már nem tartalmazza a megadott névvel rendelkező webhely, ez a funkció a webhelyet hoz létre, és egy webhely objektumot ad vissza. Ellenkező esetben az eredmény `$null`. |
 | Backup-előfizetés |A jelenlegi Azure-előfizetést a menti a `$Script:originalSubscription` változó parancsfájl hatókörében. Ez a funkció menti az aktuális Azure-előfizetés (módon nyert `Get-AzureSubscription -Current`) és a tárfiók, és az előfizetés módosítja ezt a parancsfájlt (a változó tárolja `$UserSpecifiedSubscription`) és a tárfiókot, a parancsfájl hatókörében. Úgy, hogy elmenti az értékeket, a függvény használható, például a `Restore-Subscription`, állítsa vissza az eredeti aktuális előfizetés és a storage-fiók aktuális állapotát, ha a jelenlegi állapota megváltozott. |
 | Keresés – AzureVM |Lekérdezi a megadott Azure virtuális géphez. |
 | Formátum-DevTestMessageWithTime |A dátum és idő üzenetre lefoglalja. Ez a funkció a hiba- és részletes adatfolyamok üzenetek tervezték. |
 | Get-AzureSQLDatabaseConnectionString |Állítja össze a kapcsolati karakterláncot egy Azure SQL adatbázishoz való kapcsolódáshoz. |
-| Get-AzureVMStorage |A minta első tárfiók a nevét adja vissza "devtest*" (kis-és nagybetűket) a megadott helyre vagy az affinitáscsoport. Ha a "devtest*" tárfiók helye vagy affinitáscsoportja nem egyezik a, a függvény figyelmen kívül hagyja azt. Meg kell adnia, vagy olyan helyre, vagy affinitáscsoport. |
+| Get-AzureVMStorage |A minta első tárfiók a nevét adja vissza "devtest*" (kis-és nagybetűket) a megadott helyre vagy az affinitáscsoport. Ha a "devtest*" tárfiók helye vagy affinitáscsoportja nem egyezik a, a függvény figyelmen kívül hagyja azt. Adja meg egy helyet vagy affinitáscsoport. |
 | Get-MSDeployCmd |A MsDeploy.exe eszköz futtatni kívánt parancs adja vissza. |
 | Új AzureVMEnvironment |Megállapítja, vagy létrehoz egy virtuális gépet, amely megfelel a JSON-konfigurációs fájlban lévő értékeket az előfizetést. |
 | Közzététel WebPackage |Felhasználási MsDeploy.exe és a webes közzétenni a csomagot. A zip-fájl erőforrások telepítése a webhelyen. Ez a függvény nem ad kimenetet. Ha MSDeploy.exe hívása sikertelen, a függvény kivételt vált. Részletesebb kimenet használatához a **-Verbose** lehetőséget. |

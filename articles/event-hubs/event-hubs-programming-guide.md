@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/16/2017
 ms.author: sethm
-ms.openlocfilehash: 69c07cb31b1dc3ec3685448d8187ef3a57bd3821
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: d6cc4d95adb52b5b0bfc4b674ade878af764a3e7
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="event-hubs-programming-guide"></a>Event Hubs programozási útmutató
 
@@ -117,10 +117,10 @@ Események küldése kötegekben segítségével növelheti a teljesítményt. A
 public void SendBatch(IEnumerable<EventData> eventDataList);
 ```
 
-Vegye figyelembe, hogy a kötegek nem haladhatja meg az esemény 256 KB-os korlátot. Továbbá a kötegben lévő egyes üzenetek ugyanazzal a közzétevői identitással rendelkezik majd. A küldő felelőssége annak biztosítása, hogy a köteg mérete nem haladja meg az események maximális méretét. Ha mégis meghaladja, az ügyfél **Küldési** hibát jelez.
+Vegye figyelembe, hogy a kötegek mérete egyenként nem haladhatja meg az események 256 KB-os korlátját. Továbbá a kötegben lévő egyes üzenetek ugyanazzal a közzétevői identitással rendelkezik majd. A küldő felelőssége annak biztosítása, hogy a köteg mérete nem haladja meg az események maximális méretét. Ha mégis meghaladja, az ügyfél **Küldési** hibát jelez. Használhatja a segítőosztály [EventHubClient.CreateBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.createbatch) annak érdekében, hogy a köteg nem lehet hosszabb 256 KB. Egy üres kap [EventDataBatch](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch) a a [CreateBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.createbatch) API, majd használja [TryAdd](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch.tryadd#Microsoft_ServiceBus_Messaging_EventDataBatch_TryAdd_Microsoft_ServiceBus_Messaging_EventData_) a kötegelt összeállításához események hozzáadásához. Végül [EventDataBatch.ToEnumerable](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch.toenumerable) az alapul szolgáló események átadása a [EventHubClient.Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.send) API.
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Aszinkron küldés és nagy léptékű küldés
-Is küldhet események eseményközpontokba való aszinkron módon történik. Az aszinkron küldés növelheti az ügyfelek üzenetküldési sebességét. A [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) és a [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) metódus egyaránt elérhetők aszinkron verzióban, amely egy [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) objektumot ad vissza. Jóllehet ezzel a technikával növelhető az átvitel, ugyanakkor azt is eredményezheti, hogy az ügyfél továbbra is küldi az eseményeket, miután az Event Hubs szolgáltatás leszabályozta, és így az ügyfél hibába ütközhet, vagy üzenetek veszhetnek el, ha a megvalósítás helytelenül ment végbe. Emellett használhatja a [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity#Microsoft_ServiceBus_Messaging_ClientEntity_RetryPolicy) tulajdonságot az ügyfélen az ügyfél újrapróbálkozási beállításainak vezérlésére.
+Is küldhet események eseményközpontokba való aszinkron módon történik. Az aszinkron küldés növelheti az ügyfelek üzenetküldési sebességét. A [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.send) és a [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendbatch) metódus egyaránt elérhetők aszinkron verzióban, amely egy [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) objektumot ad vissza. Jóllehet ezzel a technikával növelhető az átvitel, ugyanakkor azt is eredményezheti, hogy az ügyfél továbbra is küldi az eseményeket, miután az Event Hubs szolgáltatás leszabályozta, és így az ügyfél hibába ütközhet, vagy üzenetek veszhetnek el, ha a megvalósítás helytelenül ment végbe. Emellett használhatja a [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity.retrypolicy) tulajdonságot az ügyfélen az ügyfél újrapróbálkozási beállításainak vezérlésére.
 
 ## <a name="create-a-partition-sender"></a>Partícióküldő létrehozása
 Bár a leggyakrabban használt üzenetküldési nem tartozik partíciós kulcs az eseményközpontok felé, bizonyos esetekben előfordulhat, hogy kívánt események küldése közvetlenül egy adott partícióra. Példa:

@@ -13,24 +13,25 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: 39cb2464eb593a29c4436afb5c14419b704ebff4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 811769443e322af3a2981c58979040a1e33b06e9
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>Az Azure által támogatott disztribúciók Linux
 Partnerek adja meg az Azure piactéren Linux-lemezképeket. Már dolgozunk a különböző Linux Közösségek még több változatban is elkészíti a támogatott terjesztési listához adni. Időközben azokat a terjesztéseket, amelyek nem érhetők el a piactérről, az mindig helyezheti a saját Linux által útmutatása szerint [létrehozása és feltöltése, a Linux operációs rendszert tartalmazó virtuális merevlemez](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 ## <a name="supported-distributions-and-versions"></a>Támogatott disztribúcióiról, valamint a verziók
-A következő táblázat a Linux terjesztéseket, a támogatott Azure-on. Tekintse meg [Linux támogatása a Microsoft Azure-ban lemezképek](https://support.microsoft.com/en-us/kb/2941892) részletes információkat.
+A következő táblázat a Linux terjesztéseket, a támogatott Azure-on. Tekintse meg [támogatja a Microsoft Azure Linux képek](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) részletesebb információ a Linux és az Azure-ban nyílt forráskódú technológiája támogatása.
 
 A Hyper-V és Azure Linux integrációs szolgáltatások (LIS) illesztőprogramok legyenek, amely Microsoft közvetlenül hozzájárul a felsőbb rétegbeli Linux kernel kernel-modulok.  Alapértelmezés szerint a terjesztési kernel egyes LIS illesztőprogramok beépített. Régebbi azokat a terjesztéseket, amelyek Red Hat Enterprise (RHEL) – CentOS, külön letölthető / [Linux integrációs szolgáltatások verzió 4.1 a Hyper-V](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409). Lásd: [Linux kernel követelmények](create-upload-generic.md#linux-kernel-requirements) a LIS további tudnivalókat.
 
 Az Azure Linux ügynök előre telepítve van az Azure piactéren elérhető rendszerkép és általában a telepítési csomag tárházból. Forráskód található [GitHub](https://github.com/azure/walinuxagent).
 
+  
 | Disztribúció | Verzió | Illesztőprogramok | Ügynök |
 | --- | --- | --- | --- |
 | CentOS |A centOS 6.3 + 7.0 + |CentOS 6.3: [LIS letöltése](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 +: kernel a |Csomag: A [tárház](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
@@ -39,8 +40,11 @@ Az Azure Linux ügynök előre telepítve van az Azure piactéren elérhető ren
 | Oracle Linux |6.4+, 7.0+ |A kernel |Csomag: a "WALinuxAgent" adattárban lévő <br/>Forráskód: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6.7 + 7.1 + |A kernel |Csomag: a "WALinuxAgent" adattárban lévő <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise |SLES/SLES SAP esetén<br>11 SP4<br>12 SP1 +|A kernel |Csomag:<p> a 11 [felhő: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárház<br>a "python-azure-ügynök" a "Nyilvános felhő" modulban 12<br/>Forráskód: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE |Termékek 42.1 + openSUSE |A kernel |Csomag: A [felhő: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárház "python-azure-ügynök" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Ubuntu |Ubuntu 12.04, 14.04, 16.04, 16.10 |A kernel |Csomag: a "walinuxagent" adattárban lévő <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| openSUSE |Termékek 42.2 + openSUSE |A kernel |Csomag: A [felhő: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárház "python-azure-ügynök" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |A kernel |Csomag: a "walinuxagent" adattárban lévő <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+
+  - **<sup>1</sup>**  Ubuntu 12.04 támogatásához az Azure tekintse meg a [EOL értesítés](https://azure.microsoft.com/blog/ubuntu-12-04-precise-pangolin-nearing-end-of-life/).
+
 
 ## <a name="partners"></a>Partnerek
 
@@ -59,7 +63,7 @@ Credativ egy független tanácsadás és a szolgáltatások munkahelyi, amely a 
 ### <a name="oracle"></a>Oracle
 [http://www.Oracle.com/technetwork/topics/cloud/FAQ-1963009.HTML](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Oracle stratégia, hogy a nyilvános és magánfelhőkhöz megoldások átfogó portfóliót kínálnak. A stratégia biztosít az ügyfelek hogyan Oracle-felhőkben Oracle szoftvereket és a többi felhőből telepíthet-e azokat a rugalmasságának és. A Microsoft Oracle együttműködve lehetővé teszi az ügyfelek a abban, hogy a hitelesítésszolgáltató a nyilvános és privát felhők Microsoft Oracle szoftver telepítéséhez, és támogatja az Oracle.  Oracle kötelezettségvállalás és Oracle nyilvános és magánfelhő-megoldások használatára irányuló befektetéséből nem változott.
+Oracle stratégia, hogy a nyilvános és magánfelhőkhöz megoldások átfogó portfóliót kínálnak. A stratégia biztosít az ügyfelek hogyan Oracle-felhőkben Oracle szoftvereket és a többi felhőből telepíthet-e azokat a rugalmasságának és. Az Oracle és a Microsoft partneri kapcsolatának köszönhetően lehetőség van az Oracle-szoftverek üzembe helyezésére a Microsoft nyilvános és magánfelhőiben az Oracle támogatásával és minősítéseivel.  Oracle kötelezettségvállalás és Oracle nyilvános és magánfelhő-megoldások használatára irányuló befektetéséből nem változott.
 
 ### <a name="red-hat"></a>Red Hat
 [http://www.redhat.com/en/partners/strategic-Alliance/Microsoft](http://www.redhat.com/en/partners/strategic-alliance/microsoft)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 14f73322701dffea283432bf2a25b5e6cd3e9de4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1fb9ee3147f94b173b0fd324943b8801b984d2b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Ismerje meg, és módosítsa a folyamatos átviteli egységek
 
@@ -59,7 +59,6 @@ SUS-t a megfelelő számú kiválasztására vonatkozó további információké
 
 > [!Note]
 > Hány SUs kiválasztása kell megadni a bemeneti adatok partíció konfigurációját és a lekérdezés a feladathoz megadott egy adott feladat függ. Kiválaszthatja, akár egy feladat a SUS-t a kvótáját. Alapértelmezés szerint minden Azure-előfizetéssel rendelkezik a kvóta az analytics-feladatok 200 SUS egy adott régióban. Ez a kvóta túl az előfizetések SUs növeléséhez forduljon [Microsoft Support](http://support.microsoft.com). Érvényes SUs Feladatonkénti értékei 1, 3, 6, és a 6 lépésekben.
-> Vegye figyelembe, hogy 1 SU használata nem ajánlott a termelési feladatok. A Microsoft általában prototípusának és tesztelés az 1-SU-feladatok csak használandó tanácsot feladatokat.
 
 
 

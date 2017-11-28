@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Stream Analytics bemenetek mintavételi |} Microsoft Docs"
+title: "Tesztelés Azure Stream Analytics lekérdezési |} Microsoft Docs"
 description: "Meghatározhatja problémák elhárításakor Stream Analytics-feladatok."
 keywords: "bemeneti, bemeneti mintavételi hibaelhárítása"
 documentationcenter: 
 services: stream-analytics
-author: samacha
+author: jseb225
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: db9686fad7153d63fc659869b93821200e08397c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: e2636b8b89b86bbb2a2991972386462535d5a10f
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="azure-stream-analytics-input-stream-sampling"></a>Az Azure Stream Analytics bemenet-adatfolyam mintavétel
+# <a name="azure-stream-analytics-query-testing-and-input-stream-sampling"></a>Az Azure Stream Analytics lekérdezési tesztelése és az adatfolyam-bemenet mintavétel
 
 Azure Stream Analytics segítségével fájlból származnak, és tesztelje a lekérdezések a portálon anélkül, hogy indítása vagy leállítása feladat bemeneti események segítségével mintavételi.
 

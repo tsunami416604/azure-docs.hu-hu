@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: babanisa
-ms.openlocfilehash: 5b69478bf00284594b984fde452f6bed4e73859b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ccbd861c985e54a3808c0d4e8ea6169b6a61f134
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="concepts-in-azure-event-grid"></a>Az Azure Event rácsban fogalmak
 
@@ -20,7 +20,7 @@ A fő Azure esemény rácsban a következők:
 
 ## <a name="events"></a>Események
 
-Az esemény teljes leíró adatokat valami, és ismételje meg a rendszer a legkevesebb jelenti.  Minden eseményhez tartozik az általános információkat, például: az esemény forrását időt vett igénybe az esemény, érvényes és egyedi azonosítója.  Minden esemény is rendelkezik, amely csak az adott eseményt vonatkozó információkkal. Egy új fájl létrehozását az Azure Storage esemény például a fájl, például a lastTimeModified érték részleteit tartalmazza. Vagy eseménnyel kapcsolatos egy virtuális gép újraindul a virtuális gépet, és újraindítás okának nevét tartalmazza. Minden esemény 64 KB adatot korlátozódik.
+Az esemény teljes leíró adatokat valami, és ismételje meg a rendszer a legkevesebb jelenti.  Minden eseményhez tartozik az általános információkat, például: az esemény forrását időt vett igénybe az esemény, érvényes és egyedi azonosítója.  Minden esemény is rendelkezik, amely csak az adott típusú eseményre vonatkozó információkkal. Például egy esemény létrehozása az Azure Storage új fájlokról kapcsolatos részleteket tartalmaz a fájl, például a `lastTimeModified` érték. Vagy eseménnyel kapcsolatos egy virtuális gép újraindul a virtuális gépet, és újraindítás okának nevét tartalmazza. Minden esemény 64 KB adatot korlátozódik.
 
 ## <a name="event-sourcespublishers"></a>Esemény források-közzétevők
 
@@ -46,7 +46,7 @@ Amikor előfizet egy témakörbe, szűrheti a végpontnak küldött eseményeket
 
 ## <a name="security"></a>Biztonság
 
-Esemény témakörök előfizetés, és a témakörök közzététele biztonságot nyújt. Ha az előfizetés, az erőforrás vagy a megfelelő engedélyekkel kell rendelkeznie. Közzétételekor, rendelkeznie kell egy SAS-jogkivonat vagy a témakör kulcsos hitelesítéséhez. További információkért lásd: [esemény rács biztonsági és hitelesítési](security-authentication.md).
+Esemény rács témakörök előfizetés, és a témakörök közzététele biztonságot nyújt. Ha az előfizetés, az erőforrás vagy a megfelelő engedélyekkel kell rendelkeznie. Közzétételekor, rendelkeznie kell egy SAS-jogkivonat vagy a témakör kulcsos hitelesítéséhez. További információkért lásd: [esemény rács biztonsági és hitelesítési](security-authentication.md).
 
 ## <a name="failed-delivery"></a>Sikertelen kézbesítés
 

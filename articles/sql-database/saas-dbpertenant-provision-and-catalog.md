@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
-ms.openlocfilehash: 17eb9b3ff059912e4fe3fafda0b9c435e3983888
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: b82623f63681daff502f1e23d052da7480dda942
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Útmutató új bérlők ellátásához, majd regisztrálja őket a katalógusban
 
@@ -68,9 +68,9 @@ A létesítési módszer használata a teljes séma kezelési stratégiában, am
 A Wingtip jegyek SaaS adatbázis bérlői alkalmazásonkénti új bérlők látja el a sablon nevű adatbázis másolása _basetenantdb_, a kiszolgáló a telepített.  Kiépítés sikerült kell integrálni az alkalmazás-előfizetési élmény részeként, és/vagy támogatott offline állapotba a parancsfájlok segítségével. Ez az oktatóanyag azt ismerteti, kiépítése a PowerShell használatával. Az üzembe helyezési parancsfájlok a bérlő új adatbázis létrehozása a rugalmas készlethez, majd inicializálni a bérlő vonatkozó információval, és regisztrálja a katalógus shard térkép basetenantdb adatbázist másolni.  Alkalmazásban Wingtip jegyek SaaS adatbázis egy bérlő bérlői adatbázisok a bérlő neve alapján kap, de ez nem a minta a legkritikusabb feladata – a katalógus használata lehetővé teszi, hogy egyetlen nevét hozzá kell rendelni a bérlői adatbázisok. + 
 
 
-## <a name="get-the-wingtip-application-scripts"></a>A Wingtip alkalmazásszkriptek beolvasása
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás parancsfájlok beolvasása
 
-A Wingtip Szolgáltatottszoftver-parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-tárház. [Töltse le a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseket](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts).
+A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
 
 
 ## <a name="provision-and-catalog-detailed-walkthrough"></a>Részletes útmutató a kiépítéshez és katalógusba vételhez

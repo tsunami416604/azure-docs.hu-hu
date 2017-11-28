@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: b23e73c47b9a00893e036b67826e4b7ead819a1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52212c44c925598b2c19df1b20eb4e8123f974ba
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>Oktatóanyag: Azure Active Directoryval integrált Druva
 
@@ -104,23 +104,29 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
  
     ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-druva-tutorial/tutorial_druva_samlbase.png)
 
-3. Az a **Druva tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Druva tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-druva-tutorial/tutorial_druva_url.png)
 
+    Az a **azonosító** szövegmező, írja be a karakterlánc-érték:`druva-cloud`
+    
+4. Ellenőrizze **megjelenítése speciális URL-beállításainak**. Ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-druva-tutorial/tutorial_druva_url1.png)
+    
     Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:`https://cloud.druva.com/home`
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+5. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-druva-tutorial/tutorial_druva_certificate.png) 
 
-5. A Druva alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban, amelyhez egyéni attribútum leképezései hozzáadása a **SAML-jogkivonat attribútumok** konfigurációs. 
+6. A Druva alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban, amelyhez egyéni attribútum leképezései hozzáadása a **SAML-jogkivonat attribútumok** konfigurációs. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-druva-tutorial/tutorial_druva_attribute.png)
 
-6. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az előző ábrán látható módon, és hajtsa végre a következő lépéseket:
+7. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az előző ábrán látható módon, és hajtsa végre a következő lépéseket:
 
-    | Attribútum neve      | Attribútum-érték      |
+    | Attribútum neve      | Attribútum értéke      |
     | ------------------- | -------------------- |
     | insync\_auth\_token |Adja meg a token generált érték |
     
@@ -136,47 +142,47 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     d. Kattintson az **OK** gombra.    
 
-7. Kattintson a **mentése** gombra.
+8. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-druva-tutorial/tutorial_general_400.png)
 
-8. A a **Druva konfigurációs** kattintson **konfigurálása Druva** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out és SAML-alapú egyszeri bejelentkezés szolgáltatás URL-címe** a a **rövid összefoglaló szakasz.**
+9. A a **Druva konfigurációs** kattintson **konfigurálása Druva** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out és SAML-alapú egyszeri bejelentkezés szolgáltatás URL-címe** a a **rövid összefoglaló szakasz.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-druva-tutorial/tutorial_druva_configure.png) 
 
-9. Egy másik webes böngészőablakban jelentkezzen be a Druva vállalati webhely rendszergazdaként.
+10. Egy másik webes böngészőablakban jelentkezzen be a Druva vállalati webhely rendszergazdaként.
 
-10. Ugrás a **kezelése \> beállítások**.
+11. Ugrás a **kezelése \> beállítások**.
 
     ![Beállítások](./media/active-directory-saas-druva-tutorial/ic795091.png "beállítások")
 
-11. Az egyszeri bejelentkezés beállításai párbeszédpanel hajtsa végre a következő lépéseket:
+12. Az egyszeri bejelentkezés beállításai párbeszédpanel hajtsa végre a következő lépéseket:
 
     ![Az egyszeri bejelentkezés beállítások](./media/active-directory-saas-druva-tutorial/ic795092.png "az egyszeri bejelentkezés beállításai")
     
-    a. Beillesztés **SAML-alapú egyszeri bejelentkezési URL-címe** értéket, amely az Azure-portálról másolta a **azonosító szolgáltató bejelentkezési URL-cím** szövegmező.
-    
-    b. Beillesztés **Sign-Out URL-cím** értéket, amely az Azure-portálról másolta a **azonosító szolgáltató kijelentkezési URL-cím** szövegmező.
-    
-     c. Nyissa meg a base-64 kódolású tanúsítvány a Jegyzettömbben, a tartalmának másolása a vágólapra és illessze be azt a **azonosító szolgáltató tanúsítvány** szövegmező
+    a. A **azonosító szolgáltató bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **egyszeri bejelentkezési URL-címe**, amely az Azure-portálon másolta.
+        
+    b. A **azonosító szolgáltató kijelentkezési URL-cím** szövegmezőhöz illessze be az értékét **Sign-Out URL-cím**, amely az Azure-portálon másolta
+        
+    c. Nyissa meg a base-64 kódolású tanúsítvány a Jegyzettömbben, a tartalmának másolása a vágólapra és illessze be azt a **azonosító szolgáltató tanúsítvány** szövegmező
      
-     d. Lehetőségre a **beállítások** kattintson **mentése**.
+    d. Lehetőségre a **beállítások** kattintson **mentése**.
 
-12. Az a **beállítások** kattintson **SSO jogkivonat készítése**.
+13. Az a **beállítások** kattintson **SSO jogkivonat készítése**.
 
     ![Beállítások](./media/active-directory-saas-druva-tutorial/ic795093.png "beállítások")
 
-13. Az a **egyszeri bejelentkezés hitelesítési jogkivonat** párbeszédpanelen hajtsa végre a következő lépéseket:
+14. Az a **egyszeri bejelentkezés hitelesítési jogkivonat** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezési Token](./media/active-directory-saas-druva-tutorial/ic795094.png "SSO jogkivonat")
     
-    a. Kattintson a **másolási**, illessze be az értéket másolta a **érték** textbox a **attribútum hozzáadása** szakasz.
+    a. Kattintson a **másolási**, illessze be az értéket másolta a **érték** textbox a **attribútum hozzáadása** szakaszban az Azure portálon.
     
     b. Kattintson a **Bezárás** gombra.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+ 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -280,8 +286,6 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

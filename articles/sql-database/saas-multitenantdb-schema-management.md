@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: billgib
-ms.openlocfilehash: 346177be29ec196464f4f441858222ac5d5eb8c3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: e4b8e38d20ec408869f2228597afdf2f9620515b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="manage-schema-for-multiple-tenants-in-a-multi-tenant-application-that-uses-azure-sql-database"></a>Az Azure SQL Database egy több-bérlős alkalmazás több bérlő a séma kezelése
 
@@ -45,7 +45,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 * Telepítve van az SQL Server Management Studio (SSMS) legújabb verziója. [Az SSMS letöltése és telepítése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 > [!NOTE]
-> *Ez az oktatóanyag az SQL Database szolgáltatás egy korlátozott előzetes verziójának funkcióit használja (Elastic Database-feladatok). Ha szeretné elvégezni ezt az oktatóanyagot, küldje el az előfizetés-azonosítóját az SaaSFeedback@microsoft.com címre, tárgyként megadva a subject=Elastic Jobs Preview szöveget. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előnézet korlátozva, így forduljon SaaSFeedback@microsoft.com kapcsolatos kérdésekre, vagy a támogatási szolgálathoz.*
+> Ez az oktatóanyag az SQL Database szolgáltatás, amely egy korlátozott előzetes verziójú (a rugalmas adatbázis-feladatok) funkcióit használja. Ha szeretné elvégezni ezt az oktatóanyagot, küldje el az előfizetés-azonosítóját az SaaSFeedback@microsoft.com címre, tárgyként megadva a subject=Elastic Jobs Preview szöveget. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előnézet korlátozva, így forduljon SaaSFeedback@microsoft.com kapcsolatos kérdésekre, vagy a támogatási szolgálathoz.
 
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Az SaaS-sémakezelési minták bemutatása
@@ -58,9 +58,9 @@ Horizontálisan skálázott több-bérlős adatbázismodell a mintában használ
 
 Megjelent az Elastic Jobs új verziója, amely most az Azure SQL Database integrált funkciója (nincs szükség hozzá további szolgáltatásokra vagy összetevőkre). Ez Elastic Jobs-nak ez az új verziója jelenleg korlátozott előzetes verzió. Ez a korlátozott előzetes verzió jelenleg a PowerShellt támogatja feladatfiókok létrehozásához és a T-SQL-t a feladatok létrehozásához és kezeléséhez.
 
-## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-scripts"></a>A Wingtip jegyek SaaS több-bérlős adatbázis alkalmazás parancsfájlok beolvasása
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Az alkalmazás forráskódjához Wingtip jegyek SaaS több-bérlős adatbázis és a parancsfájlok
 
-A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-MultiTenantDB](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub-tárházban. <!-- [Steps to download the Wingtip Tickets SaaS Multi-tenant Database scripts](saas-multitenantdb-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-saas-scripts)-->
+A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit. 
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>Feladatfiók-adatbázis és új feladatfiók létrehozása
 
@@ -89,13 +89,14 @@ Most hozzon létre egy feladatot, amely frissíti a **VenueTypes** az bérlők a
 6. Az utasítás módosítása: beállítása @User = &lt;felhasználói&gt; és a Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás telepítésekor használt felhasználói helyettesítésére.
 7. A szkript futtatásához nyomja le az **F5** billentyűt.
 
-    * **SP\_hozzáadása\_cél\_csoport** hoz létre a célcsoport neve DemoServerGroup, most cél tagok hozzáadása a csoporthoz.
-    * **SP\_hozzáadása\_cél\_csoport\_tag** ad hozzá egy *kiszolgáló* céloz tag típusa, amely úgy ítéli meg, hogy a kiszolgálón belüli összes adatbázis (vegye figyelembe, ez a tenants1 - mt - &lt;felhasználói&gt; a bérlők adatbázist tartalmazó kiszolgáló) a feladat végrehajtása a feladat szereplő időpontjában egy *adatbázis* céloz tag típusa, az "arany" adatbázis (basetenantdb) lévő katalógus-mt -&lt;felhasználói&gt; kiszolgáló, és végül a *adatbázis* tag céltípust a adhocreporting adatbázis, amely használatban van egy újabb útmutató tartalmazza.
-    * **SP\_hozzáadása\_feladat** létrehoz egy feladatot "Hivatkozási adatokat telepítés" nevezik.
-    * **SP\_hozzáadása\_feladatlépés használja** hoz létre a T-SQL parancs szövege frissíteni a referenciatábla VenueTypes tartalmazó feladatlépéshez.
-    * A szkript fennmaradó nézetei megjelenítik, hogy léteznek-e az objektumok, és figyelik a feladat-végrehajtást. Tekintse át a értéket használja ezeket a lekérdezéseket a **életciklus** határozza meg, ha a feladat sikeresen befejeződött a bérlők adatbázis és a két további adatbázis, a referenciatábla tartalmazó oszlop.
+Vegye figyelembe a következőket az a *DeployReferenceData.sql* parancsfájlt:
+* **SP\_hozzáadása\_cél\_csoport** hoz létre a célcsoport neve DemoServerGroup, most cél tagok hozzáadása a csoporthoz.
+* **SP\_hozzáadása\_cél\_csoport\_tag** ad hozzá egy *kiszolgáló* céloz tag típusa, amely úgy ítéli meg, hogy a kiszolgálón belüli összes adatbázis (vegye figyelembe, ez a tenants1 - mt - &lt;felhasználói&gt; a bérlők adatbázist tartalmazó kiszolgáló) a feladat végrehajtása a feladat szereplő időpontjában egy *adatbázis* céloz tag típusa, az "arany" adatbázis (basetenantdb) lévő katalógus-mt -&lt;felhasználói&gt; kiszolgáló, és végül a *adatbázis* tag céltípust a adhocreporting adatbázis, amely használatban van egy újabb útmutató tartalmazza.
+* **SP\_hozzáadása\_feladat** létrehoz egy feladatot "Hivatkozási adatokat telepítés" nevezik.
+* **SP\_hozzáadása\_feladatlépés használja** hoz létre a T-SQL parancs szövege frissíteni a referenciatábla VenueTypes tartalmazó feladatlépéshez.
+* A szkript fennmaradó nézetei megjelenítik, hogy léteznek-e az objektumok, és figyelik a feladat-végrehajtást. Tekintse át a értéket használja ezeket a lekérdezéseket a **életciklus** határozza meg, ha a feladat sikeresen befejeződött a bérlők adatbázis és a két további adatbázis, a referenciatábla tartalmazó oszlop.
 
-1. A szolgáltatáshoz az SSMS, keresse meg azt a bérlő adatbázis a a *tenants1-mt -&lt;felhasználói&gt;*  kiszolgáló és a lekérdezés a *VenueTypes* annak ellenőrzésére, hogy a tábla *Motorkerékpárja Racing* és *úszó Club* most már **hozzáadott* táblához.
+A szolgáltatáshoz az SSMS, keresse meg azt a bérlő adatbázis a a *tenants1-mt -&lt;felhasználói&gt;*  kiszolgáló és a lekérdezés a *VenueTypes* annak ellenőrzésére, hogy a tábla *Motorkerékpárja Racing* és *úszó Club* most már **hozzáadott* táblához.
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Feladat létrehozása a referenciatábla indexének kezeléséhez
@@ -105,11 +106,12 @@ Az előző gyakorlathoz hasonlóan, ebben a gyakorlatban létrehoz egy feladatot
 
 1. A szolgáltatáshoz az SSMS, csatlakozzon a katalógusban jobaccount adatbázis-mt -&lt;felhasználói&gt;. database.windows.net kiszolgáló.
 2. Az SSMS nyissa meg a... \\Tanulási modulok\\séma felügyeleti\\OnlineReindex.sql.
-3. Nyomja le az **F5** a parancsfájl futtatása
+3. A szkript futtatásához nyomja le az **F5** billentyűt.
 
-    * **SP\_hozzáadása\_feladat** létrehoz egy új feladatot nevű "Online ismételt indexelése PK\_\_VenueTyp\_\_265E44FD7FD4C885".
-    * **SP\_hozzáadása\_feladatlépés használja** hoz létre az index frissítésének T-SQL-parancs szöveget tartalmazó feladatlépéshez.
-    * A parancsfájl-figyelő feladat végrehajtása a fennmaradó nézeteket. Tekintse át a értéket használja ezeket a lekérdezéseket a **életciklus** oszlop határozza meg, ha a feladat sikeresen befejeződött a cél-csoport minden tagjára.
+Vegye figyelembe a következőket az a *OnlineReindex.sql* parancsfájlt:
+* **SP\_hozzáadása\_feladat** létrehoz egy új feladatot nevű "Online ismételt indexelése PK\_\_VenueTyp\_\_265E44FD7FD4C885".
+* **SP\_hozzáadása\_feladatlépés használja** hoz létre az index frissítésének T-SQL-parancs szöveget tartalmazó feladatlépéshez.
+* A parancsfájl-figyelő feladat végrehajtása a fennmaradó nézeteket. Tekintse át a értéket használja ezeket a lekérdezéseket a **életciklus** oszlop határozza meg, ha a feladat sikeresen befejeződött a cél-csoport minden tagjára.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -121,7 +123,7 @@ Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 > * Az összes bérlői adatbázis adatainak frissítése
 > * Index létrehozása a táblához az összes bérlői adatbázisban
 
-[Oktatóanyag alkalmi elemzéshez](saas-multitenantdb-adhoc-reporting.md)
+Ezt követően próbálja meg a [alkalmi jelentéskészítési oktatóanyag](saas-multitenantdb-adhoc-reporting.md).
 
 
 ## <a name="additional-resources"></a>További források

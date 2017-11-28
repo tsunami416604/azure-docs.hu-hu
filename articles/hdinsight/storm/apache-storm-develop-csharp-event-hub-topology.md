@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/03/2017
+ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: 6b48b98e87d5317c7e673977b87417210a595d6b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9ad160377a8779ae917e6fd2d605ee01b12c3e2a
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Az Azure Event Hubs (C#) futó Storm eseményeinek
 
@@ -36,6 +36,9 @@ A jelen dokumentumban leírt lépések SCP.NET, a NuGet-csomagot, amely megkönn
 > A jelen dokumentumban leírt lépések a Visual Studio Windows fejlesztői környezetre támaszkodnak, amíg a lefordított projekt küldheti el Storm on HDInsight-fürt által használt Linux. Csak a Linux-alapú fürtök létrehozása után 28 2016 októberétől kezdve, SCP.NET topológiákat támogatja.
 
 HDInsight 3.4 és nagyobb használata monó C#-topológiák futtatásához. Ebben a dokumentumban bemutatott példában a HDInsight 3.6 működik. Ha a HDInsight a saját .NET megoldások létrehozását tervezi, akkor ellenőrizze a [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/) lehetséges incompatibilities dokumentumában.
+
+> [!WARNING]
+> Ha német nyelvű verziót SCP.NET projektek elkészítése során problémákat tapasztal 1.0.0.x, forduljon a Microsoft támogatási szolgálatához segítségért.
 
 ### <a name="cluster-versioning"></a>Fürt versioning
 

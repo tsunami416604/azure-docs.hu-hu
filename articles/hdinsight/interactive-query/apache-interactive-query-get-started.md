@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 11/27/2017
 ms.author: jgao
-ms.openlocfilehash: 6da89b7b63231fe5886c82e84e06abc2ee7b3e38
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f53234ddd8362e74c421c18c8d500308f5a232a7
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Interaktív lekérdezés használata a hdinsight eszközzel
 Interaktív lekérdezés (más néven a Hive LLAP vagy [hosszú Live és a folyamat](https://cwiki.apache.org/confluence/display/Hive/LLAP)) van egy Azure HDInsight [típusú fürt](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interaktív lekérdezés támogatja a memórián belüli gyorsítótárazáshoz, ami lehetővé teszi, hogy gyorsabb és sokkal több interaktív Hive-lekérdezéseket. 
@@ -49,7 +49,7 @@ Hive-lekérdezések végrehajtásához a következő lehetőségei vannak:
 
 * A Visual Studio használata
 
-    Lásd: [csatlakozás az Azure HDInsight és Hive-lekérdezések futtatása a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-a-hive-query).
+    Lásd: [csatlakozás az Azure HDInsight és Hive-lekérdezések futtatása a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
 
 * A Visual Studio Code használata
 
@@ -79,7 +79,7 @@ A Java adatbázis kapcsolat (JDBC) kapcsolati karakterlánc megkeresése:
 * Megtudhatja, hogyan [interaktív lekérdezés fürtök létrehozása a Hdinsightban](../hdinsight-hadoop-provision-linux-clusters.md).
 * Megtudhatja, hogyan [big-adatok ábrázolása a Power bi-ban az Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
 * Megtudhatja, hogyan [Zeppelin segítségével az Azure HDInsight Hive-lekérdezések futtatása ](../hdinsight-connect-hive-zeppelin.md).
-* Megtudhatja, hogyan [futtathat Hive-lekérdezéseket a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-a-hive-query).
+* Megtudhatja, hogyan [futtathat Hive-lekérdezéseket a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
 * Megtudhatja, hogyan [használhat HDInsight eszközöket a Visual Studio Code](../hdinsight-for-vscode.md).
 * Megtudhatja, hogyan [nézet Hive használata a hadooppal a Hdinsightban](../hadoop/apache-hadoop-use-hive-ambari-view.md)
 * Megtudhatja, hogyan [Beeline elküldeni a hdinsight Hive-lekérdezések használata](../hadoop/apache-hadoop-use-hive-beeline.md).
