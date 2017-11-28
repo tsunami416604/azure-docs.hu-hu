@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
-ms.openlocfilehash: 660fe4fb9f962c835de9a2f900ceaabb4371b0db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6eb37ef4e836bd33a77180ef5aa8589ca5139af
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Azure-fájlok kapcsolatos problémák elhárítása a Linux
 
@@ -154,6 +154,21 @@ A probléma gyakori okai a következők:
 ### <a name="solution"></a>Megoldás
 
 A probléma megoldásához használja a [hibaelhárító eszközt hibák csatlakoztatni a Linux Azure fájlok](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Ez az eszköz segítségével környezetben futó ügyfél, amely Azure fájlok hozzáférési hiba miatt nyújt segítséget felhőcímtárakkal önálló javítsa ki, és a diagnosztikai nyomkövetési adatokat gyűjt a nem kompatibilis ügyfél-konfiguráció észleléséhez.
+
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nem érhető el "&lt;elérési&gt;": bemeneti/kimeneti hiba
+
+Fájlok listázása a az Azure fájlmegosztások ls paranccsal megkísérlésekor a következő hibaüzenet jelenik meg:
+
+**ls: nem érhető el "&lt;elérési&gt;": bemeneti/kimeneti hiba**
+
+
+### <a name="solution"></a>Megoldás
+A Linux kernel frissítsen a következő verzióit, amelyeken ez a hiba javítása:
+
+- 4.4.87+
+- 4.9.48+
+- 4.12.11+
+- Összes verzió, amely nagyobb vagy egyenlő 4.13.
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 

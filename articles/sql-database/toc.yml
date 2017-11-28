@@ -337,8 +337,10 @@
           href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
     - name: Több-bérlős SaaS
       items:
-        - name: Üdvözli a Wingtips!
+        - name: Wingtip-jegyek mintája
           href: saas-tenancy-welcome-wingtip-tickets-app.md
+        - name: Általános útmutatás
+          href: saas-tenancy-wingtip-app-guidance-tips.md
         - name: Önálló alkalmazás
           items:
             - name: Mintaalkalmazás üzembe helyezése

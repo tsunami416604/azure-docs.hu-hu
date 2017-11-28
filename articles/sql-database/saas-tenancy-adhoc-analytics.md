@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: articles
 ms.date: 11/13/2017
 ms.author: billgib; sstein; AyoOlubeko
-ms.openlocfilehash: db8a079c76f38bbf7b90f8d914ce1bbf192343d7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: ddad47ccac57ddbb9387709ababbc5be6bad3462
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Ad hoc elemzési lekérdezések futtatása több Azure SQL-adatbázis
 
-Ebben az oktatóanyagban elosztott lekérdezéseket futtat a bérlő teljes szétosztva adatbázisok ad hoc interaktív jelentés engedélyezése. Ezeket a lekérdezéseket insights megbúvó a Wingtip jegyek SaaS-alkalmazás napi működési adatokat nyerhet ki. Ehhez a kiszolgáló telepítése egy további elemzés adatbázis és rugalmas lekérdezési használatával engedélyezhető az elosztott lekérdezések lesz.
+Ebben az oktatóanyagban elosztott lekérdezéseket futtat a bérlő teljes szétosztva adatbázisok ad hoc interaktív jelentés engedélyezése. Ezeket a lekérdezéseket insights megbúvó a Wingtip jegyek SaaS-alkalmazás napi működési adatokat nyerhet ki. Ehhez a kiszolgáló telepítése egy további elemzés adatbázist, és rugalmas lekérdezési használatával engedélyezhető az elosztott lekérdezések.
 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -57,7 +57,7 @@ A bérlői adatbázisok közötti lekérdezések elosztásával rugalmas lekérd
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás parancsfájlok beolvasása
 
-A Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant github-tárház](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/). Győződjön meg arról, hogy kövesse a fontos leírt lépéseket feloldásához.
+A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
 
 ## <a name="create-ticket-sales-data"></a>A jegy értékesítési adatok létrehozása
 
@@ -71,9 +71,9 @@ Ennél is érdekesebb megoldást adatkészlet lekérdezéseinek futtatásához, 
 
 A Wingtip jegyek SaaS adatbázis / bérlői alkalmazásban mindegyik bérlő kap egy adatbázis. A táblák szereplő adatokat, így egyetlen bérlői szempontjából hatókörét. Azonban minden az adatbázisok közötti lekérdezésekor fontos, hogy rugalmas lekérdezési az adatok is kezelheti, mintha a bérlő szilánkos egyetlen logikai adatbázis része. 
 
-Ebben a mintában szimulálása, "global" nézetet kínál hozzáadódnak a bérlő adatbázis erre a projektre a bérlő azonosítója azokat a táblákat, amelyek a rendszer megkérdezi a globálisan. Például a *VenueEvents* nézet hozzáadása egy számított *VenueId* a tervezett oszlopokra a *események* tábla. Hasonlóképpen a *VenueTicketPurchases* és *VenueTickets* nézetek hozzáadása egy számított *VenueId* oszlop tervezett a megfelelő táblát. Ezek a nézetek által használt rugalmas lekérdezés lekérdezések és leküldéses azokat le a megfelelő távoli bérlő adatbázis-mikor parallelize egy *VenueId* oszlop. Ez jelentősen csökkenti az adatmennyiséget ad vissza, és sok lekérdezések teljesítményének jelentős növekedését eredményezi. Ezek a globális nézetek már előre létrehozott összes bérlői adatbázisokban.
+Ebben a mintában szimulálása, "global" nézetet kínál hozzáadódnak a bérlő adatbázis azokat a táblákat, amelyek a rendszer megkérdezi a globálisan projekt egy bérlő azonosítója. Például a *VenueEvents* nézet hozzáadása egy számított *VenueId* a tervezett oszlopokra a *események* tábla. Hasonlóképpen a *VenueTicketPurchases* és *VenueTickets* nézetek hozzáadása egy számított *VenueId* oszlop tervezett a megfelelő táblát. Ezek a nézetek által használt rugalmas lekérdezés lekérdezések és leküldéses azokat le a megfelelő távoli bérlő adatbázis-mikor parallelize egy *VenueId* oszlop. Ez jelentősen csökkenti az adatmennyiséget ad vissza, és sok lekérdezések teljesítményének jelentős növekedését eredményezi. Ezek a globális nézetek már előre létrehozott összes bérlői adatbázisokban.
 
-1. Nyissa meg a szolgáltatáshoz az SSMS és [csatlakozni a tenants1 -&lt;felhasználói&gt; server](saas-dbpertenant-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
+1. Nyissa meg a szolgáltatáshoz az SSMS és [csatlakozni a tenants1 -&lt;felhasználói&gt; server](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
 2. Bontsa ki a **adatbázisok**, kattintson a jobb gombbal **contosoconcerthall**, és válassza ki **új lekérdezés**.
 3. Futtassa az alábbi lekérdezéseket felfedezése, mely a különbség a single-tenant táblákban és a globális nézetek:
 
@@ -95,7 +95,7 @@ Ezekben a nézetekben a *VenueId* mint helyszínére nevét, de bármely megköz
 
 Megvizsgálhatja a definícióját a *helyszínek* megtekintése:
 
-1. A **Object Explorer**, bontsa ki a **contosoconcethall** > **nézetek**:
+1. A **Object Explorer**, bontsa ki a **contosoconcerthall** > **nézetek**:
 
    ![nézetek](media/saas-tenancy-adhoc-analytics/views.png)
 
@@ -121,13 +121,13 @@ Ebben a gyakorlatban hozzáadja az ad hoc elemzési adatbázis, amely lehetővé
 
 1. Nyissa meg az SQL Server Management Studio eszközt, és az előző lépésben létrehozott ad hoc jelentési adatbázis kapcsolódjon. Az adatbázis neve nem *adhocreporting*.
 2. Nyissa meg a ...\Learning Modules\Operational Analytics\Adhoc Reporting\ *Initialize-AdhocReportingDB.sql* szolgáltatáshoz az ssms.
-3. Tekintse át az SQL-parancsfájlt, és vegye figyelembe a következőket:
+3. Nézze át az SQL-parancsfájlt és a Megjegyzés:
 
    Rugalmas lekérdezés eléréséhez a bérlő-adatbázisok mindegyike esetében egy adatbázishoz kötődő hitelesítő adatot használja. Ezeket a hitelesítő adatokat kell lennie az összes adatbázis elérhető, és kell általában rendelkeznek a minimális jogosultságok szükségesek ahhoz, e ad hoc lekérdezéseket.
 
     ![hitelesítő adatok létrehozása](media/saas-tenancy-adhoc-analytics/create-credential.png)
 
-   A külső adatforráshoz, használja a bérlői shard leképezését a katalógus adatbázisban van definiálva. Segítségével a külső adatforrásaként, lekérdezések terjesztése a lekérdezés futásakor a katalógusban regisztrált összes adatbázisra. Kiszolgáló neve nem egyezik az egyes központi telepítések, mert az inicializálási parancsfájlja a katalógus-adatbázis helyét lekérdezi az aktuális kiszolgáló lekérésével (@@servername) Ha a parancsfájl végrehajtása.
+   A katalógus-adatbázis segítségével a külső adatforrásaként, lekérdezések a lekérdezés futásakor a katalógusban regisztrált összes adatbázis terjesztése. Kiszolgáló neve nem egyezik az egyes központi telepítések, mert az inicializálási parancsfájlja a katalógus-adatbázis helyét lekérdezi az aktuális kiszolgáló lekérésével (@@servername) Ha a parancsfájl végrehajtása.
 
     ![külső adatforrás létrehozása](media/saas-tenancy-adhoc-analytics/create-external-data-source.png)
 
@@ -151,16 +151,16 @@ Most, hogy a *adhocreporting* adatbázis állított be, lépjen tovább, és né
 
 További részletek a terv ikonok vizsgálatakor ellenőrizze a végrehajtási terv, mutasson. 
 
-Fontos megjegyezni, hogy beállítás **TERJESZTÉSI = SHARDED(VenueId)** Ha meg van adva a külső adatforrás, hogy javítja a teljesítményt a sok forgatókönyvben. Mivel minden egyes *VenueId* képeződik le egy adatbázist, szűrés könnyen végezhető el távolról, csak a szükséges adatokat ad vissza.
+Fontos megjegyezni, hogy beállítás **TERJESZTÉSI = SHARDED(VenueId)** amikor definiálva van a külső adatforrás javítja a teljesítményt a sok forgatókönyvben. Mivel minden egyes *VenueId* képeződik le egy adatbázist, szűrés könnyen végezhető el távolról, csak a szükséges adatokat ad vissza.
 
 1. Nyissa meg... \\Tanulási modulok\\működési Analytics\\ad hoc Reporting\\*bemutató-AdhocReportingQueries.sql* szolgáltatáshoz az ssms.
 2. Biztosan csatlakozni tudjanak a **adhocreporting** adatbázis.
 3. Válassza ki a **lekérdezés** menüre, majd **tényleges végrehajtási terv tartalmazza**
 4. Jelölje ki a *mely helyszínek jelenleg regisztrált?* lekérdezést, és nyomja le az **F5**.
 
-   A lekérdezés visszaadja a teljes helyszínére lista, hogyan ábrázoló, és könnyen már egyetlen bérlő számára átfogó lekérdezése, és térjen vissza az adatokat az egyes bérlők.
+   A lekérdezés visszaadja a teljes helyszínére listájában ábrázoló milyen gyors és egyszerű lekérdezése összes bérlők között, és térjen vissza az adatokat az egyes bérlők.
 
-   Vizsgálja meg a terv és a teljes költség van-e a távoli lekérdezés, mert azt még egyszerűen az egyes bérlői adatbázis is, majd válassza a helyszínére információkat.
+   Vizsgálja meg a terv és, hogy a teljes költség van-e a távoli lekérdezés, mert minden egyes bérlői adatbázisához kezeli a saját lekérdezés és a helyszínére adatait adja vissza.
 
    ![Válassza ki * a dbo. Helyszínek](media/saas-tenancy-adhoc-analytics/query1-plan.png)
 
@@ -168,13 +168,13 @@ Fontos megjegyezni, hogy beállítás **TERJESZTÉSI = SHARDED(VenueId)** Ha meg
 
    Ez a lekérdezés csatlakozik a bérlő adatbázisokból és a helyi adatok *VenueTypes* tábla (helyi, mert van egy táblát a *adhocreporting* adatbázis).
 
-   Vizsgálja meg a terv és a legtöbb költsége van-e a távoli lekérdezés mivel azt a bérlő helyszínére info (dbo. Helyszínek), majd hajtsa végre a gyors helyi csatlakozzon a helyi *VenueTypes* tábla a következő felhasználóbarát név megjelenítéséhez.
+   Vizsgálja meg a terv és a legtöbb költsége van-e a távoli lekérdezés. Az egyes bérlői adatbázisok a helyszínére vonatkozó adatokkal tér vissza, és elvégzi a helyi csatlakozzon a helyi *VenueTypes* tábla a következő felhasználóbarát név megjelenítéséhez.
 
    ![Csatlakozás a helyi és távoli adatokkal](media/saas-tenancy-adhoc-analytics/query2-plan.png)
 
 6. Most válassza ki a *mely napján volt a legtöbb a jegyektől eladott?* lekérdezést, és nyomja le az **F5**.
 
-   Ez a lekérdezés egy kicsit bonyolultabb csatlakoztatása és összesítési beállítások végzi. Fontos megjegyezni, hogy távolról történik, az adatfeldolgozás nagy, de ebben az esetben azt érdekében ismét csak azokat a sorokat, igazolnia kell, az egyes helyszínekkel összesített jegy pénztári száma naponta csak egyetlen sort ad vissza.
+   Ez a lekérdezés egy kicsit bonyolultabb csatlakoztatása és összesítési beállítások végzi. Fontos megjegyezni, hogy távolról történik, az adatfeldolgozás nagy, de ebben az esetben csak a sorok beolvasása szükséges, az egyes helyszínekkel összesített jegy pénztári száma naponta egy sor.
 
    ![lekérdezés](media/saas-tenancy-adhoc-analytics/query3-plan.png)
 
@@ -189,7 +189,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Az ad hoc jelentési adatbázis központi telepítése, és adja hozzá a séma elosztott lekérdezések futtatásához.
 
 
-Most a [bérlői Analytics oktatóanyag](saas-tenancy-tenant-analytics.md) való kibontása adatokba összetettebb analytics feldolgozásra külön analytics adatbázishoz...
+Most a [bérlői Analytics oktatóanyag](saas-tenancy-tenant-analytics.md) való kibontása adatokba összetettebb elemzés feldolgozásának külön analytics adatbázisába.
 
 ## <a name="additional-resources"></a>További források
 
