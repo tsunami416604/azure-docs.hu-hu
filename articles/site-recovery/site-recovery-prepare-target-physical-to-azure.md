@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 5/31/2017
+ms.date: 11/23/2017
 ms.author: bsiva
-ms.openlocfilehash: aa7a32ace8354f615a8b8cc137f6bdf48fbadf48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2c5377f7193f8357a7e99ed1ef1a61b066b8ce5f
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Készítse elő a cél (az Azure-bA VMware)
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ A cikkből megtudhatja, hogyan készíti elő az elindítani a Windows vagy Linu
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk feltételezi, hogy a következő:
+A cikk feltételezi, hogy:
 - A Recovery Services-tároló a fizikai kiszolgálók védelméhez hozott létre. A Recovery Services-tároló a hozhat létre a [Azure-portálon](http://portal.azure.com "Azure-portálon").
 - Rendelkezik [a helyszíni környezet beállítása](./site-recovery-set-up-physical-to-azure.md) a fizikai kiszolgálók replikálása az Azure-bA.
 
@@ -46,7 +46,7 @@ A választott telepítési modell alapján, egy érvényesítési van futtatás�
 
 Miután az ellenőrzés sikeres, kattintson az OK gombra a következő lépéssel.
 
-Ha egy kompatibilis erőforrás-kezelő tárfiókhoz vagy a virtuális hálózat nem rendelkezik, vagy szeretne adni több, akkor ehhez kattintson a **+ Tárfiók** vagy **+ hálózat** gombok a panel tetején.
+Ha egy kompatibilis erőforrás-kezelő tárfiókhoz vagy a virtuális hálózat nem rendelkezik, létrehozhat egyet, kattintson a **+ Tárfiók** vagy **+ hálózat** gombok az oldal tetején.
 
 ## <a name="next-steps"></a>Következő lépések
 [Replikáció beállításainak konfigurálása](./site-recovery-setup-replication-settings-vmware.md).

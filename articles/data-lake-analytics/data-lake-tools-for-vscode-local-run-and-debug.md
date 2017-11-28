@@ -1,7 +1,7 @@
 ---
 title: "Az Azure Data Lake Tools: U-SQL helyi futtatásával és a Visual Studio Code helyi hibakeresési |} Microsoft Docs"
 description: "Útmutató: Azure Data Lake Tools használandó Visual Studio Code helyi Futtatás és helyi hibakeresési."
-Keywords: "VScode, az Azure Data Lake Tools, a helyi futtatáskor, helyi hibakeresése a helyi debug preview tárolófájl feltölteni. tárolási elérési útja"
+Keywords: VScode,Azure Data Lake Tools,Local run,Local debug,Local Debug,preview storage file,upload to storage path
 services: data-lake-analytics
 documentationcenter: 
 author: jejiang
@@ -16,11 +16,11 @@ ms.tgt_pltfrm:
 ms.workload: big-data
 ms.date: 07/14/2017
 ms.author: jejiang
-ms.openlocfilehash: 78a5efb19f73192dcc95103abc70c14a3ce2e29a
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: d109e4d57f4ad5ab2be73805ba41bf9ed362cccb
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="u-sql-local-run-and-local-debug-for-windows-with-visual-studio-code"></a>U-SQL helyi futtatásával és a Visual Studio Code Windows helyi hibakeresése
 Ebből a dokumentumból megismerheti, hogyan U-SQL feladatok futtatásához helyi fejlesztési gépen korai kódolási fázisok felgyorsítása érdekében, vagy helyileg a Visual Studio Code kód hibakereséséhez. Visual Studio Code Azure Data Lake eszköz vonatkozó utasításokért lásd: [használata Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md). 
@@ -33,9 +33,9 @@ Ebből a dokumentumból megismerheti, hogyan U-SQL feladatok futtatásához hely
    ![Töltse le az ADL LocalRun függőségi csomagok](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/DownloadLocalRun.png)
 
 2. Keresse meg a függőségi csomagok látható elérési útjáról a **kimeneti** ablaktáblán, majd telepítse BuildTools és Win10SDK 10240. Íme egy példa elérési útja:  
-`C:\Users\xxx\.vscode\extensions\usqlextpublisher.usql-vscode-ext-x.x.x\LocalRunDependency
-`  
-  ![Keresse meg a függőségi csomagok](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
+`C:\Users\xxx\AppData\Roaming\LocalRunDependency` 
+
+   ![Keresse meg a függőségi csomagok](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
 
    2.1 telepítendő **BuildTools**, kattintson a LocalRunDependency mappában visualcppbuildtools_full.exe, majd kövesse a varázsló utasításait.   
 
@@ -46,11 +46,8 @@ Ebből a dokumentumból megismerheti, hogyan U-SQL feladatok futtatásához hely
     ![Telepítse a Win10SDK 10240](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
 3. A környezeti változó beállítása. Állítsa be a **SCOPE_CPP_SDK** környezeti változót:  
-`C:\Users\xxx\.vscode\extensions\usqlextpublisher.usql-vscode-ext-x.x.x\LocalRunDependency\CppSDK_3rdparty
-`  
-4. Az operációs rendszer, győződjön meg arról, hogy a környezetiváltozó-beállításainak érvénybe léptetéséhez indítsa újra.  
+`C:\Users\XXX\AppData\Roaming\LocalRunDependency\CppSDK_3rdparty`  
 
-   ![Győződjön meg arról, a SCOPE_CPP_SDK környezeti változó telepítve van](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/ConfigScopeCppSDk.png)
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Indítsa el a helyi Futtatás szolgáltatást, és küldje el a U-SQL helyi fiók feladat 
 Az első felhasználó használja **ADL: helyi futtatása függőségi letöltése** letöltése a helyi futtatási csomagok, ha nem rendelkezik [U-SQL helyi futtatási környezet beállítása](#set-up-the-u-sql-local-run-environment).
@@ -92,7 +89,10 @@ Hajtsa végre a helyi hibakeresési hajtsa végre az alábbi lépéseket:
 
 
 ## <a name="next-steps"></a>Következő lépések
-- Azure Data Lake Tools használatával a Visual Studio Code, lásd: [használata Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
-- A Data Lake Analytics elindított adatainak lekérése, lásd: [oktatóanyag: Ismerkedés az Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md).
-- A Data Lake Tools for Visual Studio információ: [oktatóanyag: fejlesztése U-SQL-parancsfájlok Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md).
-- A szerelvények fejlesztésével információkért lásd: [fejlesztése U-SQL-szerelvények Azure Data Lake Analytics-feladatok](data-lake-analytics-u-sql-develop-assemblies.md).
+* [Az Azure Data Lake Tools for Visual Studio kód használata](data-lake-analytics-data-lake-tools-for-vscode.md)
+* [U-SQL Python, R és az Azure Data Lake Analytics a VSCode a CSharp fejlesztése](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+* [Azure Data Lake Analytics-feladatok U-SQL-szerelvények fejlesztése](data-lake-analytics-u-sql-develop-assemblies.md)
+* [A Data Lake Analytics PowerShell használatának első lépései](data-lake-analytics-get-started-powershell.md)
+* [Ismerkedés a Data Lake Analytics az Azure portál használatával](data-lake-analytics-get-started-portal.md)
+* [Használja a Data Lake Tools for Visual Studio a U-SQL-alkalmazások fejlesztésével](data-lake-analytics-data-lake-tools-get-started.md)
+* [Használja a Data Lake Analytics(U-SQL) katalógus](data-lake-analytics-use-u-sql-catalog.md)

@@ -16,11 +16,11 @@ ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: d3496a5b18d8fecfbd8dff95ef667d456bbb1d59
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: b8aa841cca63c0c4eb45105e3ccff91920ad35e3
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist.
@@ -163,6 +163,7 @@ Engedélyezett operátorok
 | Cégnév | A karakterlánc értéke vagy *null értékű* | (user.companyName - eq "érték") |
 | Szervezeti egység |A karakterlánc értéke vagy *null értékű* |(felhasználó.részleg - eq "érték") |
 | displayName |Bármilyen karakterlánc típusú értéket |(user.displayName - eq "érték") |
+| employeeId |Bármilyen karakterlánc típusú értéket |(user.employeeId - eq "érték")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |A karakterlánc értéke vagy *null értékű* |(user.facsimileTelephoneNumber - eq "érték") |
 | givenName |A karakterlánc értéke vagy *null értékű* |(user.givenName - eq "érték") |
 | Beosztás |A karakterlánc értéke vagy *null értékű* |(user.jobTitle - eq "érték") |

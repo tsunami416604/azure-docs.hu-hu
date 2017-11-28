@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 11/28/2017
 ms.author: ruturajd
-ms.openlocfilehash: 3644b41c3e3293a263bd9ff996d4e3d26417aeed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba68df3df33a357db4d97ff65c9cc5995cd51caa
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Lássa el újból védelemmel az Azure-ból a helyszíni helyhez
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 Ez a cikk ismerteti a lássa el újból védelemmel egy helyszíni hely Azure-ból az Azure virtuális gépeket. Kövesse az utasításokat ebben a cikkben, amikor készen áll a sikertelen biztonsági a VMware virtuális gépeket vagy windowsos/Linuxos fizikai kiszolgálók után azok feladatátvételt is a helyszíni hely Azure-ba (lásd: [replikálása VMware virtuális gépek és fizikai kiszolgálók Azure-bA az Azure Site Recovery](site-recovery-failover.md)).
 
 > [!WARNING]
-> Feladat-visszavétel nem, miután vagy [áttelepítésével kész](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), a virtuális gép áthelyezése a másik erőforráscsoportba vagy törölni az Azure virtuális géphez. Ha letiltja a virtuális gép védelme, feladat-visszavétel nem.
+> Feladat-visszavétel nem, miután vagy [áttelepítésével kész](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), a virtuális gép áthelyezése a másik erőforráscsoportba vagy törölni az Azure virtuális géphez. Ha letiltja a virtuális gép védelme, feladat-visszavétel nem. Ha a virtuális gép létrehozása az Azure (született a felhőben) majd meg nem szüntetnie vissza a helyszíni. A gép kell rendelkezik helyszíni eredetileg védett, és átadja a Azure védelem-újrabeállítási előtt.
 
 
 Miután ismételt védelem befejeződik, és a védett virtuális gépeket replikál, a feladat-visszavételt a virtuális gépeken, hogy azok a helyszíni hely is kezdeményezhető.
@@ -63,7 +63,10 @@ Gyors áttekintését tekintse meg a következő videó bemutatja, hogyan hogy �
     * [A Linux virtuális gép a beavatkozását Linux fő célkiszolgáló](site-recovery-how-to-install-linux-master-target.md).
     * Windows virtuális gépként kell egy Windows fő célkiszolgáló. Később újra felhasználhatja a helyszíni folyamat kiszolgáló és a fő célszámítógépekre.
 
-    A fő célkiszolgáló rendelkezik egyéb szereplő Előfeltételek [közös ellenőrizze az alábbiakat, mielőtt védelem-újrabeállítási a fő célkiszolgáló](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server).
+> [!NOTE]
+> Az összes virtuális gép egy replikálási csoport azonos típusú operációs rendszer (az összes Windows vagy az összes Linux) kell lennie. Vegyes operációs rendszerrel egy replikációs csoportot a védelem-újrabeállítási és a helyszíni feladat-visszavétel jelenleg nem támogatott. Ennek az oka, hogy a fő célkiszolgálón ugyanazt az operációs rendszert a virtuális gépként kell lennie, és a replikációs csoport összes virtuális gépet kell rendelkeznie a azonos fő célkiszolgálót. 
+
+    The master target has other prerequisites that are listed in [Common things to check on a master target before reprotect](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server).
 
 * A konfigurációs kiszolgáló szükségesek helyszíni esetén, a feladat-visszavételt. A feladat-visszavétel során a virtuális gép léteznie kell a konfigurációs kiszolgáló adatbázisában. Ellenkező esetben a feladat-visszavétel nem sikerül. 
 
@@ -170,6 +173,8 @@ Azure Site Recovery jelenleg csak egy virtuális gép fájlrendszer (virtuálisg
 * A fő célkiszolgáló nem lehet pillanatképeket a lemezeken. Ha pillanatképek vannak, ismételt védelem és a feladat-visszavétel nem.
 
 * A fő célkiszolgáló Paravirtual SCSI-vezérlőhöz nem tartozhat. A vezérlő csak egy LSI Logic vezérlő lehet. Egy LSI Logic vezérlőt ismételt védelem sikertelen lesz.
+
+* Adott esetben atmst 60 lemez nem csatlakoztatható a fő célkiszolgáló is biztosítani. Ha alatt látható el újra védelemmel történő a helyszíni fő célkiszolgáló virtuális gépek száma több, mint 60 lemezek sum teljes száma, majd a fő célkiszolgálóhoz reprotects indul sikertelenek lesznek. Győződjön meg arról, hogy rendelkezik-e elegendő fő cél a lemez üzembe helyezési ponti, vagy további fő célkiszolgálóra telepíteni.
 
 <!--
 ### Failback policy

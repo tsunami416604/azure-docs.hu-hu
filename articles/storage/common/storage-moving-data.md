@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: jarrettr
-ms.openlocfilehash: ba390a5973ad33405f1d4217d60d7989f04db3b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db0f09433750a3af2d70039d780a25ad64bb4df1
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan máshová
 Ha azt szeretné, hogy helyezze át a helyszíni adatok Azure Storage (vagy fordítva), nincsenek többféleképpen ehhez. A megközelítés, amely a legjobban a forgatókönyvtől függ. Ez a cikk különböző alkalmazási helyzetek és minden egyes megfelelő ajánlatok gyors áttekintést biztosít.
@@ -76,4 +76,4 @@ Ha a helyszíni munkaterhelések és alkalmazások, olyan megoldás, amely lehet
 Lásd: [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) további.
 ### <a name="moving-data-faq"></a>Gyakori kérdések az adatok mozgatása:
 ## <a name="can-i-migrate-vhds-from-one-region-to-another-without-copying"></a>Telepíthetek át virtuális merevlemezek egy régióban másik másolása nélkül?
-Csak másolja a VHD-k közötti terület, az adatok minden egyes régió a storage-fiókok közötti másolásához. Az AZCopy is használhatja. Tekintse meg az AzCopy parancssori segédprogram további átviteli adatok. Nagyon nagy mennyiségű adat is Azure Import/Export. Lásd: [Azure Import/Export](https://docs.microsoft.com/en-us/azure/storage/storage-import-export-service) további.
+Csak másolja a VHD-k közötti terület, az adatok minden egyes régió a storage-fiókok közötti másolásához. Az AZCopy is használhatja. Tekintse meg az AzCopy parancssori segédprogram további átviteli adatok. Nagyon nagy mennyiségű adat is Azure Import/Export. Lásd: [Azure Import/Export](https://docs.microsoft.com/azure/storage/storage-import-export-service) további.

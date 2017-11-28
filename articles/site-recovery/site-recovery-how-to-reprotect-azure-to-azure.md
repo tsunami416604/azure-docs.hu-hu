@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/11/2017
+ms.date: 11/28/2017
 ms.author: ruturajd
-ms.openlocfilehash: 32f5d2d142940bc515849dcd0edb1bb1f152aa6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5822ed90f3ab13bdaf1afef62cf32978101c6609
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="reprotect-from-failed-over-azure-region-back-to-primary-region"></a>A védelem-újrabeállítási átadja a feladatokat az Azure-régió vissza az elsődleges régió
 
@@ -31,10 +31,10 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="overview"></a>Áttekintés
 Ha Ön [feladatátvételi](site-recovery-failover.md) a virtuális gépek Azure-régió, egy másik, a virtuális gépek egy nem védett állapotban van. Ha azt szeretné, hogy azokat vissza az elsődleges régióban, meg kell először a virtuális gépeket, és a feladatátvételi be újra a védelmét. Hogyan között nincs különbség egy irányt vagy egyéb feladatátvételi. Ehhez hasonlóan az engedélyezése a virtuális gép védelmét, post, a védelem-újrabeállítási post feladatátvétel, vagy a feladás egy vagy több feladat-visszavétel között nincs különbség.
-Ismertetik a munkafolyamatok a védelem-újrabeállítási, és így nem keverhetők össze, használjuk az elsődleges hely a védett gépek Kelet-Ázsia régió, valamint a gépet a helyreállítási helyen, Délkelet-Ázsia régióban. A feladatátvétel során meg fog megfelelni a feladatátvétel a virtuális gépek a Délkelet-Ázsia régióban. Hogy a feladat-visszavétel előtt kell állítsa vissza a Kelet-Ázsia a virtuális gépek a Délkelet-Ázsia. Ez a cikk lássa el újból védelemmel történő lépéseit ismerteti.
+Ismertetik a munkafolyamatok a védelem-újrabeállítási, és így nem keverhetők össze, és hivatkozik, az elsődleges hely a védett gépek, Kelet-Ázsia régió, Délkelet-Ázsia régió gépet a helyreállítási helyen. A feladatátvétel során a virtuális gépek Délkelet-Ázsia régióban fog elindulni. Hogy a feladat-visszavétel előtt kell állítsa vissza a Kelet-Ázsia a virtuális gépek a Délkelet-Ázsia. Ez a cikk lássa el újból védelemmel történő lépéseit ismerteti.
 
 > [!WARNING]
-> Ha rendelkezik [áttelepítésével kész](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), a virtuális gép áthelyezése a másik erőforráscsoportba vagy törölni az Azure virtuális gép feladat-visszavétel ezt követően nem lehet.
+> Ha rendelkezik [áttelepítésével kész](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), a virtuális gép áthelyezése a másik erőforráscsoportba vagy törölni az Azure virtuális gép nem állítsa vagy a feladat-visszavételt a virtuális gép.
 
 Miután a védelem-újrabeállítási befejeződik, és a védett virtuális gépeket replikál, vetheti vissza a Kelet-Ázsia régió virtuális gépeken a feladatátvételi is kezdeményezhető.
 
@@ -56,7 +56,7 @@ Az alábbiakban lássa el újból védelemmel az alapértelmezett érték a virt
 
 ![Lássa el újból védelemmel panel](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotectblade.png)
 
-3. Tekintse át a **erőforrás csoport, hálózati, tárolási és a rendelkezésre állási készletek** információkat, és kattintson az OK gombra. Ha bármely (új) megjelölt erőforrások, akkor a védelem-újrabeállítási részeként létrejön.
+3. Tekintse át a **erőforráscsoport, hálózati, tárolási és rendelkezésre állási készletek** információkat, és kattintson az OK gombra. Ha bármely (új) megjelölt erőforrások, akkor a védelem-újrabeállítási részeként létrejön.
 
 Ez egy feladat eseményindító lássa el újból védelemmel feladatot, amely először rendezendő a célhelyre (ebben az esetben SZE) a legújabb adatokkal, és után, hogy befejeződött, a művelet replikálja az eltérések, feladatátvétel előtt biztonsági Délkelet-Ázsia.
 
@@ -72,7 +72,7 @@ Testre szabhatja, hogy a következő tulajdonságok he cél virtuális gép véd
 |Tulajdonság |Megjegyzések  |
 |---------|---------|
 |Cél-erőforráscsoport     | Ha szeretné, módosítsa a célként megadott erőforráscsoportja th virtuális géphez létre. Védelem-újrabeállítási részeként a cél virtuális gép törlődik, ezért választhat egy új erőforráscsoportot, amelyek alapján is létrehozhat a feladás egy vagy több virtuális gép feladatátvétele         |
-|Virtuális hálózati cél     | Hálózati nem módosítható a védelem-újrabeállítási során. Ha módosítani szeretné a hálózathoz, végezze el újra a hálózat leképezését.         |
+|Virtuális hálózati cél     | Hálózati nem módosítható a védelem-újrabeállítási során jb. Ha módosítani szeretné a hálózathoz, végezze el újra a hálózat leképezését.         |
 |Célként megadott     | A storage-fiók, amelyhez a virtuális gép létrejön post feladatátvételi módosíthatja.         |
 |Gyorsítótár-tároló     | A replikáció során használt gyorsítótár tárfiók is megadhat. Ha az alapértelmezett értékekkel, a gyorsítótár új tárfiók létrehozza, ha még nem létezik.         |
 |Rendelkezésre állási csoport     |Kelet-Ázsia a virtuális gép rendelkezésre állási csoport része, ha választhat a rendelkezésre állási készlet Délkelet-Ázsiában található a cél virtuális gépen. Alapértelmezett megtalálja a meglévő tenger rendelkezésre állási csoport, és próbálja meg használni. Testreszabás adjon meg egy teljesen új AV-készlet.         |
@@ -80,7 +80,7 @@ Testre szabhatja, hogy a következő tulajdonságok he cél virtuális gép véd
 
 ### <a name="what-happens-during-reprotect"></a>Mi történik a védelem-újrabeállítási során?
 
-Fentiekhez hasonló után az első engedélyezni a védelmet, az alábbiakban a vakpróbát, get hozott létre, ha az alapértelmezett beállításokat használja.
+Fentiekhez hasonló után az első engedélyezni a védelmet, az alábbiakban az összetevőket, get hozott létre, ha az alapértelmezett beállításokat használja.
 1. Kelet-Ázsia régióban a gyorsítótár storage-fiók jön létre.
 2. Ha nem létezik a céloldali tárfiók (az eredeti tárfiók a Délkelet-Ázsia virtuális gép), egy új jön létre. A név nem a "automatikus" utótaggal a Kelet-Ázsia virtuális gép tárfiók.
 3. Ha a cél AV-készlet nem létezik, és az alapértelmezett beállításokat észleli, hogy hozzon létre egy új AV-készlet, akkor a rendszer automatikusan létrehozza a védelem-újrabeállítási feladat részeként. Ha a védelem-újrabeállítási testreszabott, majd a kijelölt AV-készlet lesz.
@@ -88,7 +88,7 @@ Fentiekhez hasonló után az első engedélyezni a védelmet, az alábbiakban a 
 
 Az alábbiakban a lépéseket, amelyek fordulhat elő, amikor a védelem-újrabeállítási feladatot indít listáját. Ez az abban az esetben a cél ügyféloldali virtuális gép is létezik.
 
-1. A szükséges vakpróbát védelem-újrabeállítási részeként jönnek létre. Ha már léteznek, majd azokat újra felhasználja a rendszer.
+1. A szükséges összetevők védelem-újrabeállítási részeként jönnek létre. Ha már léteznek, majd azokat újra felhasználja a rendszer.
 2. A cél ügyféloldali (Délkelet-Ázsiában) virtuális gép először ki van kapcsolva, ha fut-e.
 3. A cél ügyféloldali virtuális gép lemezét másolja a program Azure Site Recovery által egy tárolóba kezdőérték blob.
 4. A cél ügyféloldali virtuális gép majd törlődik.
@@ -99,7 +99,7 @@ Az alábbiakban a lépéseket, amelyek fordulhat elő, amikor a védelem-újrabe
 > [!NOTE]
 > A helyreállítási terv szinten nem védhetők. Akkor is csak lássa el újból védelemmel a virtuális gép szintenként.
 
-Miután a védelem-újrabeállítási sikeres legyen, a virtuális gép módba lép, a védett állapotban.
+Miután a védelem-újrabeállítási feladat sikeres, a virtuális gép módba lép, a védett állapotban.
 
 ## <a name="next-steps"></a>Következő lépések
 

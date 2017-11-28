@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/29/2017
 ms.author: rickbyh
-ms.openlocfilehash: bd5a7a117ec6c4a4b75fcced3f2b5987004c83d0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cdf78a3c64933f5f01642d5ef8fe1fca64cb1fbb
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Univerzális hitelesítés használata az SQL-adatbázis és az SQL Data Warehouse (többtényezős hitelesítés támogatása SSMS)
 Az Azure SQL Database és az Azure SQL Data Warehouse támogatja az SQL Server Management Studio (SSMS) használatával kapcsolatok *Active Directory univerzális hitelesítési*. 
@@ -63,4 +63,4 @@ Az Azure Active Directory-felhasználók támogatott az Azure AD B2B forgatókö
 - [Új Azure SQL-adatbázis BACPAC fájl importálása](../sql-database/sql-database-import.md)  
 - [Azure SQL-adatbázis BACPAC fájlba exportálása](../sql-database/sql-database-export.md)  
 - C# felület [IUniversalAuthProvider felület](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx)  
-- Használata esetén **Active Directory - univerzális többtényezős hitelesítéssel** hitelesítés ADAL nyomkövetés elérhető kezdődő [SSMS 17.3](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms). Ki alapértelmezés szerint, ha bekapcsolja a ADAL nyomkövetési használatával a **eszközök**, **beállítások** menüben, a **Azure Services**, **Azure felhőbe**,  **ADAL kimeneti ablak nyomkövetési szint**, utána pedig engedélyezése **kimeneti** a a **nézet** menü. A nyomkövetési adatokat érhetők el a kimeneti ablakban lehetőséget választva **Azure Active Directory lehetőséget**.  
+- Használata esetén **Active Directory - univerzális többtényezős hitelesítéssel** hitelesítés ADAL nyomkövetés elérhető kezdődő [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ki alapértelmezés szerint, ha bekapcsolja a ADAL nyomkövetési használatával a **eszközök**, **beállítások** menüben, a **Azure Services**, **Azure felhőbe**,  **ADAL kimeneti ablak nyomkövetési szint**, utána pedig engedélyezése **kimeneti** a a **nézet** menü. A nyomkövetési adatokat érhetők el a kimeneti ablakban lehetőséget választva **Azure Active Directory lehetőséget**.  

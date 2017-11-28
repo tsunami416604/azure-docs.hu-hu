@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 2348db8f19391292f79608092a3c2482216493c6
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5686d8bd3f9817be2308583afe778e0615154580
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>A virtuálisgép-méretezési beállítása az Azure CLI 2.0 kezelése
 A virtuálisgép-méretezési csoport életciklusa során szükség lehet egy vagy több felügyeleti feladatok futtatásához. Emellett érdemes lehet különböző életciklus-feladatokat automatizáló parancsfájlokat hozhatnak létre. Ez a cikk részletezi az egyes közös Azure CLI 2.0 parancsok, amelyek lehetővé teszik, hogy ezeket a műveleteket.
@@ -36,7 +36,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>Nézet virtuális gépek méretezési csoportban lévő
-Méretezési csoportban lévő Virtuálisgép-példány listájának megtekintéséhez használja [az vmss-példányokat](/cli/azure/vmss#list-instances). Az alábbi példa listában az összes Virtuálisgép-példány a méretezési készletben elnevezett *myScaleSet* és a *myResourceGroup* erőforráscsoport. Adja meg ezeket a neveket a saját értékeit:
+Méretezési csoportban lévő Virtuálisgép-példány listájának megtekintéséhez használja [az vmss-példányokat](/cli/azure/vmss#list-instances). Az alábbi példa listában az összes Virtuálisgép-példány a méretezési készletben elnevezett *myScaleSet* a a *myResourceGroup* erőforráscsoportot. Adja meg ezeket a neveket a saját értékeit:
 
 ```azurecli
 az vmss list-instances \

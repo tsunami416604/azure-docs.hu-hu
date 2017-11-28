@@ -12,13 +12,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2017
+ms.date: 11/20/2017
 ms.author: xshi
-ms.openlocfilehash: 0b8ae318fab2eaa186dca050ce2710b1ff232783
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: deb362796966524ec2db5808623d2f92a1bf44e1
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 csatlakozni az Azure IoT Hub a felhőben
 
@@ -197,42 +197,45 @@ A zip-fájlt a következő eszközök és csomagokat tartalmazza. Ha már rendel
 
 A Keresőben keresse meg a .zip, és bontsa ki:
 
+![macOS kereső](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/mac-finder.png)
+
 Indítsa el a Terminálszolgáltatások alkalmazást, bontsa ki a .zip fájlt, és futtassa a mappa megkereséséhez:
 
 ```bash
 ./install.sh
 ```
 
+![macOS telepítése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/mac-install-sh.png)
+
 > [!NOTE] 
 > Ha megfelel a Homebrew engedély hiba, futtassa `brew doctor` Letöltés helye rögzített. Ellenőrizze [gyakran ismételt kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#homebrew-permission-error-on-macos) további részleteket.
 
 Most már rendelkezik a szükséges eszközök és a macOS telepített csomagok.
 
-## <a name="open-the-project-folder"></a>Nyissa meg a projekt mappát
 
-Azure IoT Hub létrehozása, DevKit kapcsolódni hozzá, és a hőmérséklet és a páratartalom adatokat gyűjteni az érzékelők és elküldheti az adatokat az IoT-központ indításakor.
+## <a name="open-the-project-folder"></a>Nyissa meg a projekt mappát
 
 ### <a name="start-vs-code"></a>Indítsa el a Visual STUDIO Code
 
 Győződjön meg arról, hogy a DevKit nincs csatlakoztatva. Indítsa el a Visual STUDIO Code először, és a DevKit kapcsolódni a számítógéphez. Visual STUDIO Code automatikusan megkeresi a DevKit és bemutatása lap megnyitása:
 
-![Bemutató lapja](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution-vscode.png)
+![Bemutató lapja](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/vscode_start.png)
 
 > [!NOTE] 
-> Alkalmanként Visual STUDIO Code elindításakor kéri hibával, ami Arduino IDE vagy a kapcsolódó tábla csomag nem található. Bezárás Visual STUDIO Code, újra Arduino IDE indítási és VS kódot kell megkeresheti Arduino IDE elérési utat helyesen.
+> Alkalmanként amikor elindítja a Visual STUDIO Code, megkéri hiba történt, hogy nem található a Arduino IDE vagy a kapcsolódó tábla csomag. Zárja be a Visual STUDIO Code, és indítsa újra az Arduino IDE. VS kódot kell majd keresse meg a Arduino IDE elérési megfelelően.
 
 
 ### <a name="open-the-arduino-examples-folder"></a>Nyissa meg a Arduino példák
 
-Bontsa ki a bal oldali **ARDUINO példák** szakaszban, keresse meg a **MXCHIP AZ3166 példák > AzureIoT**, és válassza ki **GetStarted**. Ekkor megnyílik egy új Visual STUDIO Code ablakban a projektmappa azt.
+Az a **Arduino példák** lapján keresse meg a **MXCHIP AZ3166 példák** > **AzureIoT**, és válassza ki **GetStarted**.
 
-![Arduino példák lap](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution-examples.png)
+![Arduino példák lap](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/vscode_start.png)
 
 Ha véletlenül bezárja a panelen, akkor nyissa meg újra. Használjon `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) nyissa meg a parancs palettát, írja be a következőt **Arduino**, keresése és válassza a **Arduino: Példák**.
 
 ## <a name="provision-azure-services"></a>Azure-szolgáltatások kiépítése
 
-A megoldás-ablakban futtassa a feladat `Ctrl+P` (macOS: `Cmd+P`) megadásával `task cloud-provision`:
+A megoldás-ablakban futtassa a feladat `Ctrl+P` (macOS: `Cmd+P`) megadásával `task cloud-provision`.
 
 A Visual STUDIO Code terminálban egy interaktív parancssori végigvezeti Önt a szükséges Azure-szolgáltatások kiépítése:
 
@@ -240,25 +243,23 @@ A Visual STUDIO Code terminálban egy interaktív parancssori végigvezeti Önt 
 
 ## <a name="build-and-upload-the-arduino-sketch"></a>Build és a Arduino vázlat feltöltése
 
-### <a name="install-the-required-library"></a>Telepítse a szükséges kódtári
+### <a name="windows"></a>Windows
 
-1. Nyomja le az `F1` vagy `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) nyissa meg a parancs palettát, írja be a következőt **Arduino**, keresése és válassza a **Arduino: könyvtárkezelő**.
-
-2. Keresse meg a **ArduinoJson** könyvtárban, és válassza **telepítése**: ![Arduino telepíteni szalagtár](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/arduino-json.png)
-
-### <a name="build-and-upload-the-device-code-windows"></a>Build, és töltse fel a kód (Windows)
 1. Használjon `Ctrl+P` futtatásához `task device-upload`.
 2. A Terminálszolgáltatások konfigurációs módja megadását kéri. Ehhez az szükséges, tartsa lenyomva a gombot A, majd leküldéses és kiadási a Visszaállítás gombra. A képernyőn megjelenik a DevKit azonosító és a "Konfiguráció".
 
 Ez is, hogy a kapcsolati karakterláncot, amely kikeresi `task cloud-provision` lépés.
 
-A Terminálszolgáltatások elindítja ellenőrzése, majd ismét feltölteni a Arduino ábrát:
+Ezután a Visual STUDIO Code elindítja ellenőrzése, majd ismét feltölteni a Arduino ábrát:
 
 ![Ellenőrzési és a Arduino rajz feltöltése](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/device-upload.png)
 
 A DevKit újraindul, és elindul a kódot.
 
-### <a name="build-and-upload-the-device-code-mac"></a>Build, és töltse fel az eszköz kódot (Mac)
+> [!NOTE] 
+> Alkalmanként, akkor a hibaüzenet "hiba: AZ3166: Ismeretlen csomag". Ennek az az oka a tábla csomagindexet nem frissül. Ellenőrizze a [gyakran ismételt kérdések lépéseket](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) megoldására azt.
+
+### <a name="macos"></a>macOS
 
 1. DevKit konfigurációs üzemmódba: tartsa lenyomva a gombot A, majd leküldéses és kiadás a Visszaállítás gombra. A képernyőn megjelenik a "Konfiguráció".
 2. Használjon `Cmd+P` futtatásához `task device-upload`.
@@ -271,13 +272,17 @@ Ezután a Visual STUDIO Code elindítja ellenőrzése, majd ismét feltölteni a
 
 A DevKit újraindul, és elindul a kódot.
 
+> [!NOTE] 
+> Alkalmanként, akkor a hibaüzenet "hiba: AZ3166: Ismeretlen csomag". Ennek az az oka a tábla csomagindexet nem frissül. Ellenőrizze a [gyakran ismételt kérdések lépéseket](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) megoldására azt.
+
+
 ## <a name="test-the-project"></a>A projekt tesztelése
 
 Visual STUDIO Code, következő megnyitásához, és állítsa be a soros figyelő lépéseket:
 
 1. Kattintson a `COM[X]` az állapotsoron a megfelelő COM-port az a word `STMicroelectronics`: ![com-port](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/com-port.png)
 
-2. Energiagazdálkodási plug ikonra az állapotsoron a soros figyelő megnyitásához: ![soros-figyelő](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/serial-monitor.png)
+2. Energiagazdálkodási plug ikonra az állapotsoron a soros figyelő megnyitásához: ![soros-figyelő](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution//connect-iothub/serial-monitor.png)
 
 3. Az állapotsorban, kattintson az átviteli sebesség a számát, és állítsa `115200`: ![átviteli sebesség](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/baud-rate.png)
 

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: 2a62d70b22081e45bc318dd9fb624b37cf7069e3
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: cc59d97fe4f3bb4e53432332556991d81b208167
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="azure-functions-timer-trigger"></a>Az Azure Functions időzítő indítófeltételt
 
@@ -118,7 +118,7 @@ Itt az kötés adatai a *function.json* fájlt:
 }
 ```
 
-A F # parancsfájl kód itt látható:
+A JavaScript parancsfájl kód itt látható:
 
 ```JavaScript
 module.exports = function (context, myTimer) {

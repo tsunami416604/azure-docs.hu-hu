@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: sstein
-ms.openlocfilehash: 9b1ae219eb1278b818e3e1d4237d04fe54c980ec
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f91ddff81e51e7cc3d1561dc799013764530924b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-and-explore-a-multi-tenant-saas-application-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Központi telepítése, és vizsgálja meg az adatbázis típusú bérlői mintában használja az Azure SQL Database több-bérlős SaaS-alkalmazás
 
@@ -173,11 +173,11 @@ Most, hogy egy futtatott bérlők gyűjteménye már elkezdte, vizsgáljuk meg a
 
 Ha a terhelésgenerátor már fut néhány perce, elegendő adat áll rendelkezésre, hogy elkezdhessük megvizsgálni a készletekbe és adatbázisokba épített figyelőfunkciókat.
 
-1. Keresse meg a kiszolgáló **tenants1-dpt -&lt;felhasználói&gt;**, és kattintson a **Pool1** a gyűjtő (a betöltési generátor lefutott egy óráig a következő diagramokban) erőforrás-használat megtekintéséhez:
+Keresse meg a kiszolgáló **tenants1-dpt -&lt;felhasználói&gt;**, és kattintson a **Pool1** a gyűjtő (a betöltési generátor lefutott egy óráig a következő diagramokban) erőforrás-használat megtekintéséhez:
 
    ![készlet figyelése](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
-A felső diagram ábrázolja a készlet edtu-k használatát, amíg alsó ábrázolja a felső 5 adatbázisok eDTU utiization a készletben.  A két diagram tökéletesen illusztrálja, milyen jól alkalmazkodnak a rugalmas készletek és az SQL Database az SaaS-alkalmazások munkaterheléseihez. Négy, egyenként akár 40 eDTU magas terheléstüskékkel rendelkező adatbázist együtt könnyedén kiszolgál egy 50 eDTU méretű készlet. Ha önálló adatbázisok, telepített, akkor minden kell lenniük egy S2 ugyanúgy (50 DTU) az felszakadásáig támogatásához. 4 önálló S2 adatbázisok költségeinek a készlet ár majdnem 3-szor, és a tárolókészlet még számos további adatbázisok belső magasságnak rengeteg. Valós helyzetekben SQL-adatbázis ügyfelek jelenleg futnak legfeljebb 500 adatbázisok 200 eDTU-készletek. További információkért lásd a [teljesítményfigyeléssel foglalkozó oktatóanyagot](saas-dbpertenant-performance-monitoring.md).
+A felső diagram ábrázolja a készlet edtu-k használatát, amíg alsó ábrázolja a felső 5 adatbázisok eDTU-felhasználását a készletben.  A két diagram tökéletesen illusztrálja, milyen jól alkalmazkodnak a rugalmas készletek és az SQL Database az SaaS-alkalmazások munkaterheléseihez. Négy, egyenként akár 40 eDTU magas terheléstüskékkel rendelkező adatbázist együtt könnyedén kiszolgál egy 50 eDTU méretű készlet. Ha önálló adatbázisok, telepített, akkor minden kell lenniük egy S2 ugyanúgy (50 DTU) az felszakadásáig támogatásához. 4 önálló S2 adatbázisok költségeinek a készlet ár majdnem 3-szor, és a tárolókészlet még számos további adatbázisok belső magasságnak rengeteg. Valós helyzetekben SQL-adatbázis ügyfelek jelenleg futnak legfeljebb 500 adatbázisok 200 eDTU-készletek. További információkért lásd a [teljesítményfigyeléssel foglalkozó oktatóanyagot](saas-dbpertenant-performance-monitoring.md).
 
 
 ## <a name="next-steps"></a>Következő lépések

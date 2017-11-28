@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 58ab8a9c5864ce0cb505b78fd087df2973a7e0d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b263c69554c22978c854d2678ad7eeca91bc71f7
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Ismerkedés a Tártallózó alkalmazással (előzetes verzió)
 ## <a name="overview"></a>Áttekintés
@@ -230,7 +230,7 @@ Emellett a Azure előfizetéssel Azure Cosmos DB fiókok kezelése, kapcsolódni
 
     ![Csatlakozás Azure Cosmos DB kapcsolati karakterlánc][33]
 
-2. Válassza ki az Azure Cosmos DB API, és beillesztheti a **kapcsolati karakterlánc**, és kattintson a **OK** Azure Cosmos DB fiók kapcsolódni. A kapcsolati karakterlánc beolvasása információkért lásd: [a kapcsolati karakterlánc beolvasása](https://docs.microsoft.com/en-us/azure/cosmos-db/manage-account#get-the--connection-string).
+2. Válassza ki az Azure Cosmos DB API, és beillesztheti a **kapcsolati karakterlánc**, és kattintson a **OK** Azure Cosmos DB fiók kapcsolódni. A kapcsolati karakterlánc beolvasása információkért lásd: [a kapcsolati karakterlánc beolvasása](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
 
     ![connection-string][32]
 

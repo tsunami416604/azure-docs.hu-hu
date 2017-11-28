@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: 54aa3d9982ff5cd99be2eb145e223397ca8d6a3f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: fb4311f28f55cfeb3f07a441adde18ae95f39e90
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Több-bérlős analytics kibontott adatok használata
 
@@ -73,7 +73,7 @@ Mindegyik bérlő következetesen hogyan használja a szolgáltatás ismertetés
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
 - A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás központi telepítése. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip SaaS-alkalmazáshoz](saas-dbpertenant-get-started-deploy.md)
-- A Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok és az alkalmazás [forráskód](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) letöltődnek a Githubról. Lásd: Töltse le az utasításokat. Ügyeljen arra, hogy *feloldása a zip-fájl* tartalmának kibontása előtt.
+- A Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok és az alkalmazás [forráskód](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) letöltődnek a Githubról. Lásd: Töltse le az utasításokat. Ügyeljen arra, hogy *feloldása a zip-fájl* tartalmának kibontása előtt. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
 - A Power BI Desktop telepítve van. [A Power BI Desktop letöltése](https://powerbi.microsoft.com/downloads/)
 - A köteg további bérlő van kiépítve, tekintse meg a [ **rendelkezés bérlők oktatóanyag**](saas-dbpertenant-provision-and-catalog.md).
 - Egy feladat fiókot és a feladat fiók adatbázis létrejött. Tekintse meg a megfelelő lépéseket a [ **séma felügyeleti oktatóanyag**](saas-tenancy-schema-management.md#create-a-job-account-database-and-new-job-account).

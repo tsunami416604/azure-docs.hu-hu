@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/25/2017
 ms.author: pratshar
-ms.openlocfilehash: 9c00cf88fa8b754c92cfd0f01be61a596d04d7c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 160457fdad57cd947077aeb3a4ed85fd2a2849d8
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="failover-in-site-recovery"></a>Feladatátvétel a Site Recoveryben
 Ez a cikk ismerteti, hogyan feladatátvételi virtuális gépek és fizikai kiszolgálók Site Recovery által védett.
@@ -70,7 +70,7 @@ Ez az eljárás ismerteti a feladatátvétel futtatása egy [helyreállítási t
 1. Ha elégedett a feladatokat átadó virtuális gép is **véglegesítése a határidő** a feladatátvételt. Véglegesítési törli az összes elérhető helyreállítási pontok megtekintéséhez a szolgáltatással és **helyreállítási pont módosítása** lehetőség már nem lesz elérhető.
 
 ## <a name="planned-failover"></a>Tervezett feladatátvétel
-Virtuális gépek/fizikai kiszolgálók is támogatja a Site Recovery használatával védett **tervezett feladatátvétel**. Tervezett feladatátvétel beállítás nulla adatok elvesztését feladatátvételi. Egy tervezett feladatátvételt akkor váltódik ki, amikor először állítsa le a forrás virtuális gépek, még szinkronizálandó adatok szinkronizálása, és a feladatátvétel aktiválódik, majd.
+Virtuális gépek/fizikai kiszolgálók is támogatja a Site Recovery használatával védett **tervezett feladatátvétel**. Tervezett feladatátvétel beállítás nulla adatok elvesztését feladatátvételi. Egy tervezett feladatátvételt akkor váltódik ki, amikor először állítsa le a forrás virtuális gépek, a legújabb adatok szinkronizálódnak, és a feladatátvétel aktiválódik, majd.
 
 > [!NOTE]
 > Ha Ön feladatátvételi Hyper-v virtuális gépek egy helyszíni hely és egy másik helyszíni hely, térjen vissza a helyszíni elsődleges hely be kell első **visszirányú replikálás** a virtuális gép elsődleges hely biztonsági indul el, majd a feladatátvételt. Ha az elsődleges virtuális gép nem áll rendelkezésre, majd elindítása előtt, hogy **visszirányú replikálás** vissza kell állítani a virtuális gép egy biztonsági másolatból.   

@@ -11,11 +11,11 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: a157e612ca4fca06a57df478eaa20793c8b35d60
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c2f511cd024accc099423f2ed5bbb15d2dd23414
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Egy Azure virtuális gép beágyazott virtualizálás engedélyezése
 
@@ -140,7 +140,7 @@ DHCP konfigurálása a dinamikus cím hozzárendelése a gazdagép virtuális g�
   
 2. A varázslóban kattintson a **következő** csak a kiszolgálói szerepkörök lapon.
   
-3. Kattintással jelölje ki a **DHCP-kiszolgáló** jelölőnégyzetet, kattintson a **szolgáltatások hozzáadása**, és kattintson a**következő** mindaddig, amíg a varázsló befejezéséhez.
+3. Kattintással jelölje ki a **DHCP-kiszolgáló** jelölőnégyzetet, kattintson a **szolgáltatások hozzáadása**, és kattintson a **következő** mindaddig, amíg a varázsló befejezéséhez.
   
 4. Kattintson az **Install** (Telepítés) gombra.
 
@@ -159,7 +159,7 @@ DHCP konfigurálása a dinamikus cím hozzárendelése a gazdagép virtuális g�
 6. Kattintson a **következő** mindaddig, amíg a varázsló befejeződött, hagyja az összes alapértelmezett értéket, majd kattintson az **Befejezés**.
     
 ### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>2. lehetőség: Manuális módon állítsa be a statikus IP-címet a Vendég virtuális gépen
-Ha a DHCP dinamikusan rendelhető hozzá egy IP-cím toe a Vendég virtuális gépen nincs konfigurálva, kövesse az alábbi lépéseket egy statikus IP-címének beállítása.
+Ha a DHCP dinamikusan IP-cím hozzárendelése a Vendég virtuális gépen nincs konfigurálva, kövesse az alábbi lépéseket egy statikus IP-címének beállítása.
 
 1. Az Azure virtuális gépen nyissa meg a Powershellt rendszergazdaként.
 

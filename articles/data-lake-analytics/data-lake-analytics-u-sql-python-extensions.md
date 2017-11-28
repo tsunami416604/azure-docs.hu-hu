@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
-ms.openlocfilehash: d18ef1f747aee2fa01cef9891432d0461031ee4c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 51c0bac3cd03965d002b3fe87804a0d7ea6cf63e
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="tutorial-get-started-with-extending-u-sql-with-python"></a>Oktatóanyag: Ismerkedés a U-SQL Python kiterjesztése
 
@@ -98,4 +98,4 @@ Minden csomópont csak korlátozott mennyiségű memória rendelve van. Ezt a ha
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
 * [U-SQL ablak függvények használata az Azure Data Lake Analytics-feladatok](data-lake-analytics-use-window-functions.md)
-
+* [Az Azure Data Lake Tools használja a Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: billgib
-ms.openlocfilehash: 094189e08002ce8d4a2f4f92a8c112eaf18ebe13
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 2a36df0e45af5bcce5338d04b7e1ba44221ae964
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>A Wingtip jegyek SaaS-alkalmazáshoz
 
@@ -27,7 +27,7 @@ Azonos *Wingtip jegyek* alkalmazás meg van valósítva egyes három minta. Az a
 
 ## <a name="three-saas-application-patterns"></a>Három SaaS-alkalmazás minták
 
-Az alkalmazás három verzió megjelölésével érhetők el; az Azure SQL Database minden egyes felderíti egy másik adatbázishoz bérleti mintát.  Az első egy bérlői egyetlen alkalmazás egy elkülönített bérlői egyetlen adatbázist használ. A második bérlőnként egy adatbázist egy több-bérlős alkalmazást használ. A harmadik minta szilánkos több-bérlős adatbázisok használja egy több-bérlős alkalmazást.
+Az alkalmazás három változatban érhetők el; az Azure SQL Database minden egyes felderíti egy másik adatbázishoz bérleti mintát.  Az első egy bérlői egyetlen alkalmazás egy elkülönített bérlői egyetlen adatbázist használ. A második bérlőnként egy adatbázist egy több-bérlős alkalmazást használ. A harmadik minta szilánkos több-bérlős adatbázisok használja egy több-bérlős alkalmazást.
 
 ![Három bérleti minták][image-three-tenancy-patterns]
 

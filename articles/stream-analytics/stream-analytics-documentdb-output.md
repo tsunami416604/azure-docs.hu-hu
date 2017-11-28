@@ -4,7 +4,7 @@ description: "Ismerje meg, hogyan Stream Analytics egy célcsoport kijelölésé
 keywords: JSON kimeneti
 documentationcenter: 
 services: stream-analytics,documentdb
-author: samacha
+author: jseb225
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5d2a61a6-0dbf-4f1b-80af-60a80eb25dd1
@@ -14,19 +14,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: cc80b0080c806541362a1ef2d71b95862bd51ca2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: ca7102f5fd4a5038cee983b5fdd588d41d1b2725
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>Cél Azure Cosmos DB JSON-kimenetét a Stream Analytics
 A Stream Analytics célba [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenetét, engedélyezi az archiválási és alacsony késésű kérelmek strukturálatlan JSON-adatokat. Ez a dokumentum ismertet néhány gyakorlati tanácsok a konfiguráció alkalmazásához.
 
 Azok számára, akiknek nem ismeri az Cosmos DB, vessen egy pillantást [Azure Cosmos DB képzési terv](https://azure.microsoft.com/documentation/learning-paths/documentdb/) a kezdéshez. 
 
-Megjegyzés: A Mongo DB API alapú Cosmos DB gyűjtemények jelenleg nem támogatott. 
+> [!Note]
+> Ilyenkor Azure Stream Analytics csak kapcsolatot támogat CosmosDB használatával **DocumentDB (SQL) API**.
+> Egyéb Azure Cosmos DB API-k még nem támogatott. Ha pont Azure Stream Analytics az Azure Cosmos DB fiókok létrehozása, más API-khoz, az adatok nem megfelelően tárolódhat. 
 
 ## <a name="basics-of-cosmos-db-as-an-output-target"></a>Egy kimeneti célként Cosmos DB alapjai
 Az Azure Cosmos DB kimeneti a Stream Analytics lehetővé teszi, hogy írása a streamfeldolgozási eredmények JSON kimenetként a Cosmos DB következő gyűjtemény(ek) készleteit szinkronizálja azokat. A Stream Analytics nem gyűjtemények létrehozása az adatbázis ehelyett nincs szükség kell létrehoznia őket előzetes megfizetése esetén. Ez az, hogy a számlázási költségek Cosmos DB gyűjtemények nem érzékelhető, és úgy, hogy a teljesítmény, a konzisztencia és a kapacitás közvetlenül a gyűjtemények észlelheti a [Cosmos DB API-k](https://msdn.microsoft.com/library/azure/dn781481.aspx). A folyamatos átviteli feladat gyűjtemények logikailag külön egy Cosmos adatfolyam-feladatot DB adatbázishoz használatát javasoljuk.
@@ -67,5 +69,5 @@ Particionált gyűjtemény | Több "Egypartíciós" gyűjtemény
 * **Gyűjteménynévmintája** – a gyűjtemény nevét vagy a használandó gyűjtemények gyűjteménynévmintája. A gyűjteménynév-formátum az opcionális {partition} token használatával, ahol a partíciók 0-tól kezdődnek lehet létrehozni. Minta érvényes bemenetei a következők:  
   1\) MyCollection – egy gyűjteményt a következő "MyCollection" néven már léteznie kell.  
   2\) MyCollection {partition} – ilyen gyűjteményeknek létezniük kell – "MyCollection0", "MyCollection1", "MyCollection2" és így tovább.  
-* **Kulcs partícióazonosító** – nem kötelező. Ez csak akkor van szükség, ha a gyűjteménynévmintája {particionáló} jogkivonatot használ. A kimeneti eseményekben a kimenet gyűjtemények közötti particionálására szolgáló kulcs megadásához használt mező neve. Egyetlen gyűjtemény kimeneti bármilyen tetszőleges kimeneti oszlop lehet például PartitionId használt.  
+* **Kulcs partícióazonosító** – nem kötelező. Ez csak akkor szükséges, ha a gyűjtemény mintát használ egy {partition} token. A kimeneti eseményekben a kimenet gyűjtemények közötti particionálására szolgáló kulcs megadásához használt mező neve. Egyetlen gyűjtemény kimeneti bármilyen tetszőleges kimeneti oszlop lehet például PartitionId használt.  
 * **Dokumentálja azonosító** – nem kötelező. A kimeneti eseményekben a mely Beszúrás vagy frissítés műveletek alapuló elsődleges kulcs megadásához használt mező neve.  

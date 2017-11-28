@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: denlee
-ms.openlocfilehash: ba824ed1bad49c71f8de9f2da8249945d9430222
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 1efdda867703613e4f85e6994004df32e70ccb3d
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>A Spark a valós idejű big data elemzések érdekében, és Azure Cosmos DB-összekötő
 
@@ -79,7 +79,7 @@ Spark és Azure Cosmos DB közötti kommunikáció a Spark főcsomópont és az 
 ### <a name="install-pydocumentdb"></a>Telepítse a pyDocumentDB
 Telepíthető pyDocumentDB az illesztőprogram-csomópont használatával **pip**, például:
 
-```
+```bash
 pip install pyDocumentDB
 ```
 
@@ -89,7 +89,7 @@ A kommunikáció átviteli egyszerűsége hajt végre a lekérdezés végrehajt�
 
 A következő kódrészletet a pyDocumentDB használata Spark környezetben jeleníti meg.
 
-```
+```python
 # Import Necessary Libraries
 import pydocumentdb
 from pydocumentdb import document_client
@@ -117,7 +117,7 @@ A kódrészletet leírtaknak megfelelően:
 ### <a name="execute-spark-queries-via-pydocumentdb"></a>A Spark-lekérdezéseket hajt végre a pyDocumentDB keresztül
 A következő példák az előző részlet megadott írásvédett kulcsok használatával létrehozott Azure Cosmos DB példányának használatára. A következő kódrészletet csatlakozik a **airports.codes** gyűjtemény a DoctorWho fiók, mint a korábban meghatározott, és a repülőtéri várost Washington államban kibontásához lekérdezés futtatása.
 
-```
+```python
 # Configure Database and Collections
 databaseId = 'airports'
 collectionId = 'codes'
@@ -141,7 +141,7 @@ elements = list(query)
 
 A lekérdezés végrehajtása keresztül után **lekérdezés**, az eredmény egy **query_iterable. QueryIterable** , Python listájára alakítja át. Python listáját könnyen átalakítható a Spark DataFrame az alábbi kód használatával:
 
-```
+```python
 # Create `df` Spark DataFrame from `elements` Python list
 df = spark.createDataFrame(elements)
 ```
@@ -183,7 +183,7 @@ spark-shell --master $master --jars /$location/azure-cosmosdb-spark-0.0.3-jar-wi
 
 A JAR függőségek nélkül végrehajtani, használja a következő kódot:
 
-```
+```bash
 spark-shell --master $master --jars /$location/azure-cosmosdb-spark-0.0.3.jar,/$location/azure-documentdb-1.10.0.jar
 ```
 

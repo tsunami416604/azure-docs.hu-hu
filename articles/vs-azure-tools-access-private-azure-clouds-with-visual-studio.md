@@ -12,28 +12,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 03/19/2017
+ms.date: 11/13/2017
 ms.author: kraigb
-ms.openlocfilehash: b2578c837732ab05d538e9b896ed3a3035075a70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54acfc7c686dc7025368c381d79cde93d7d48fc5
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="accessing-private-azure-clouds-with-visual-studio"></a>A Visual Studio Azure magánfelhőkben elérése
-Alapértelmezés szerint a Visual Studio támogatja a nyilvános Azure-felhőbe REST-végpontok. Ebben a témakörben elsajátíthatja, hogyan saját magánfelhő-alapú tanúsítvány használatára eléri - és a - használhatja a Visual Studio eszközből a magánfelhő.
 
-## <a name="to-access-a-private-azure-cloud-in-visual-studio"></a>A saját Azure eléréséhez a Visual Studio felhő
-1. Az a [a klasszikus Azure portálon](http://go.microsoft.com/fwlink/?LinkID=213885) megadása a magánfelhőhöz, töltse le a közzétételi-beállítások fájlt, vagy forduljon a rendszergazdához közzététele beállításfájl. A nyilvános Azure verzión a hivatkozásra kattintva töltse le a rendszer [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/). (A letöltött fájl kiterjesztése kell `.publishsettings`)
+Alapértelmezés szerint a Visual Studio támogatja a REST-végpontok Azure felhőben. Ebből a cikkből megtanulhatja a saját magánfelhő-alapú tanúsítvány használatára a Visual Studio eszközből a magánfelhő felhasználói számára.
 
-1. Nyissa meg a Visual Studio
+1. Az Azure portálon, a magánfelhő töltse le a közzétételi-beállítások fájlt, vagy forduljon a rendszergazdához közzététele beállításfájl. (A fájl kiterjesztése `.publishsettings`.)
 
-1. A **Server Explorer**, kattintson a jobb gombbal a **Azure** csomópont, és válassza a helyi menüből **kezelése és a szűrő előfizetések**.
-   
+1. A Visual Studio **Server Explorer**, kattintson a jobb gombbal a **Azure** csomópont, és válassza **kezelése és a szűrő előfizetések**.
+
     ![Előfizetések parancs kezelése](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790778.png)
 
 1. Az a **kezelése a Microsoft Azure-előfizetések** párbeszédpanelen válassza a **tanúsítványok** lapra, majd válassza ki **importálási**.
-   
+
     ![Az Azure tanúsítványok importálása](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790779.png)
 
 1. Az a **importálása a Microsoft Azure-előfizetések** párbeszédablakban válassza **Tallózás**.
@@ -49,7 +47,4 @@ Alapértelmezés szerint a Visual Studio támogatja a nyilvános Azure-felhőbe 
     ![Közzététele beállításfájl importálása](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790780.png)
 
     A tanúsítványok importálására a publish-fájl a Visual Studióhoz, és most kezelheti a magánfelhő-alapú erőforrásokhoz.
-   
-## <a name="next-steps"></a>Következő lépések
-- [A Visual Studio eszközből közzétételéhez Azure-Felhőszolgáltatás](https://msdn.microsoft.com/library/azure/ee460772.aspx)
-- [Hogyan: letöltése és importálása beállítások és az előfizetési adatok közzététele](https://msdn.microsoft.com/library/dn385850\(v=nav.70\).aspx)
+

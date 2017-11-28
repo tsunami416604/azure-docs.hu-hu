@@ -1,7 +1,7 @@
 ---
 title: "Az Azure Data Lake Tools: Használata Azure Data Lake Tools Visual Studio Code |} Microsoft Docs"
 description: "Ismerje meg, hogyan használható az Azure Data Lake Tools for Visual Studio Code létrehozása, tesztelése és U-SQL-parancsfájlok futtatása. "
-Keywords: "VScode, az Azure Data Lake Tools, a helyi futtatáskor, helyi hibakeresése a helyi debug preview tárolófájl feltölteni. tárolási elérési útja, letöltése, feltöltése"
+Keywords: VScode,Azure Data Lake Tools,Local run,Local debug,Local Debug,preview file,upload to storage path,download,upload
 services: data-lake-analytics
 documentationcenter: 
 author: jejiang
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/10/2017
+ms.date: 11/10/2017
 ms.author: jejiang
-ms.openlocfilehash: e724a8db4424a1e608ae7ee5625cd4cc16f6078f
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 60307b8b16718fdc947bde7616532fa6a0920cf0
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Az Azure Data Lake Tools használja a Visual Studio Code
 
 Tudhat meg az Azure Data Lake Tools for Visual Studio (kód VS) hozhat létre, tesztelheti, és a U-SQL-parancsfájlok futtatása. Az adatokat is tartalmazza, az a következő videót:
 
-<a href="https://www.youtube.com/watch?v=J_gWuyFnaGA&feature=youtu.be"><img src="./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png"></a>
+<a href="https://channel9.msdn.com/Series/AzureDataLake/Azure-Data-Lake-Tools-for-VSCode?term=ADL%20Tools%20for%20VSCode"><img src="./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png"></a>
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -86,33 +86,20 @@ A U-SQL fájl vagy mappa történő együttműködésre a U-SQL kell megnyitni.
 
     A parancsfájl létrehoz egy departments.csv fájlt a/output mappában szereplő adatokkal.
 
-5. Mentse a fájlt **myUSQL.usql** a megnyitott mappában. A projekt is kerül adltools_settings.json konfigurációs fájlt.
-4. Nyissa meg, és adltools_settings.json konfigurálása a következő tulajdonságokkal:
+5. Mentse a fájlt **myUSQL.usql** a megnyitott mappában. A mappa is kerül xxx_settings.json konfigurációs fájlt.
+6. Nyissa meg, és xxx_settings.json konfigurálása a következő tulajdonságokkal:
 
-    - Fiók: Egy Data Lake Analytics-fiók alatt az Azure-előfizetéshez.
+    - Fiók: Egy Data Lake Analytics-fiók alatt az Azure-előfizetéssel ahhoz szükséges, hogy lefordítani a U-SQL-feladatok és futtatása, úgy kell konfigurálnia a számítógépfiók fordítása, és a U-SQL-feladatok futtatása előtt.
     - Adatbázis: A fiók alatt adatbázis. Az alapértelmezett érték **fő**.
     - Séma: Az adatbázis a séma. Az alapértelmezett érték **dbo**.
     - Választható beállítások:
         - Prioritás: A prioritási tartománya: 1 – 1 és 1000 a legmagasabb prioritás. Az alapértelmezett érték **1000**.
         - Párhuzamossági: A párhuzamos végrehajtás tartomány: 1 – 150. Az alapértelmezett érték: az Azure Data Lake Analytics-fiók engedélyezett maximális párhuzamosságát. 
         
-        > [!NOTE] 
-        > Ha a beállítások érvénytelenek, a rendszer az alapértelmezett értékeket használ.
-
         ![A Data Lake Tools for Visual Studio Code konfigurációs fájl](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-configuration-file.png)
-
-        A Data Lake Analytics-fiók számítási fordításához és a U-SQL feladatok futtatása van szükség. A számítógépfiók kell konfigurálniuk, lefordítása és U-SQL feladatok futtatása előtt.
-    
-        A konfigurációs mentését követően a fiók, adatbázis és séma információ jelenik meg a megfelelő .usql fájlt bal alsó sarkában lévő állapotjelző sáv. 
- 
- 
-A fájl megnyitásakor, amikor megnyit egy mappát is képest:
-
-- A háttérkód fájl használható. Háttérkód egyfájlos módban nem támogatott.
-- A konfigurációs fájlt használja. Ha a mappa megnyitása a működő mappában található parancsfájlok osztják meg egyetlen konfigurációs fájlban.
-
-
-A U-SQL parancsfájl távolról lefordítja a Data Lake Analytics szolgáltatáson keresztül. Ha ki a **fordítási** parancsot a U-SQL parancsfájlt a rendszer elküldi a Data Lake Analytics-fiók. Később a Visual Studio Code megkapja a fordítási eredménye. A távoli fordítás miatt a Visual Studio Code van szükség, hogy a Data Lake Analytics-fiók a konfigurációs fájlban való kapcsolódáshoz információinak felsorolásához.
+      
+        > [!NOTE] 
+        > A konfiguráció mentése után a fiók, adatbázis és séma adatai jelennek meg a megfelelő .usql fájlt bal alsó sarkában lévő állapotjelző sáv.
 
 **A U-SQL parancsfájl összeállításához**
 
@@ -129,29 +116,8 @@ Miután elküldött egy U-SQL-feladatot, a küldésének naplók megjelennek a *
 
 Ahhoz, hogy a feladat részleteit a kimenetét, állítsa be **jobInformationOutputPath** a a **vs helykódja a u-sql_settings.json** fájlt.
  
-## <a name="use-a-code-behind-file"></a>A háttérkód fájl használata
-
-A háttérkód fájlt egy U-SQL parancsfájl társított C# fájlban. Meghatározhatja egy dedikált parancsfájl UDO, uda-Értékeket, UDT vagy a háttérkód fájlban UDF. A UDO, uda-Értékeket, UDT és UDF használható közvetlenül a parancsfájlban a szerelvény először regisztrálása nélkül. A háttérkód fájl kerül, a mappában, amelyben a társviszony-létesítési U-SQL-parancsfájlt. Ha a parancsfájl xxx.usql neve, a háttérkód xxx.usql.cs, neve. Törölje kézzel a háttérkód fájlt, ha a háttérkód funkció le van tiltva, a társított U-SQL parancsfájlt. További információ a felhasználói kódot a U-SQL parancsfájl: [írási és egyéni kód használata U-SQL: felhasználó által definiált függvényeket]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
-
-Támogatja a háttérkód, meg kell nyitnia egy munkamappa. 
-
-**A háttérkód fájlt létrehozni**
-
-1. A forrásfájl megnyitásakor. 
-2. Válassza ki a Ctrl + Shift + U nyissa meg a parancs palettát.
-3. Adja meg **ADL: mögött kód generálása**. Egy háttérkód fájl ugyanabban a mappában jön létre. 
-
-Jobb gombbal egy olyan parancsfájlt, és válassza **ADL: kód generálása mögött**. 
-
-Fordítási, és küldje el a U-SQL parancsfájl háttérkód fájlt tartalmazó nem azonos az önálló U-SQL parancsfájl fájllal.
-
-A következő két képernyőképeket megjelenítése a háttérkód fájl- és a kapcsolódó U-SQL-parancsfájlt:
- 
-![A Data Lake Tools for Visual Studio Code háttérkód](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-behind.png)
-
-![A Data Lake Tools for Visual Studio Code háttérkód parancsfájl](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-behind-call.png) 
-
-Helyi futtatáskor és helyi hibakeresési támogatott, az utasításokat lásd: [U-SQL helyi futtatásával, és a Visual Studio Code helyi hibakeresési](data-lake-tools-for-vscode-local-run-and-debug.md).
+## <a name="use-python-r-and-csharp-code-behind-file"></a>Python, R és CSharp háttérkód fájl használata
+Azure Data Lake eszköz támogatja több egyéni kódot, a útmutatásért lásd: [fejlesztése U-SQL Python, R és az Azure Data Lake Analytics VSCode a csharp nyelvű](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md).
 
 ## <a name="use-assemblies"></a>Szerelvények használata
 
@@ -277,14 +243,14 @@ Miután csatlakozott az Azure-ba, az alábbi lépések segítségével hozzáfé
 Az Azure Data Lake tárolással kapcsolatos parancsokat használhatja:
  - Tallózzon az Azure Data Lake tárolási erőforrások. [A tároló elérési útját listában](#list-the-storage-path). 
  - Tekintse meg az Azure Data Lake-tárolási fájl. [Tekintse meg a tárolófájl](#preview-the-storage-file). 
- - Feltölteni a fájlt közvetlenül az Azure Data Lake tárolási VS-kódban. [Fájl feltöltése](#upload-file).
+ - Feltölteni a fájlt közvetlenül az Azure Data Lake tárolási VS-kódban. [Töltse fel a fájl vagy mappa](#upload-file-or-folder).
  - Töltse le a fájlt közvetlenül az Azure Data Lake-tárolóból Visual STUDIO Code. [Fájl letöltése](#download-file).
 
 ## <a name="list-the-storage-path"></a>A tároló elérési útját listában 
 
 **A tárolási elérési útja a parancs paletta keresztül listájára**
 
-Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza ki **ADL: lista. tárolási elérési útja**.
+Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza ki **ADL: elérési útja**.
 
 A listában válassza ki a mappát, vagy kattintson a **elérési utat adjon meg** vagy **keresse meg a legfelső szintű** (használ adjon meg egy elérési utat példaként). -> Válassza ki a **ADLA fiók**. Navigálás ->, vagy adja meg a tároló mappa elérési útját (például: / kimeneti /). A parancs paletta listák -> az elérési úthoz adatok alapján.
 
@@ -294,55 +260,40 @@ Több kényelmesen a relatív elérési útját listában kattintson a jobb gomb
 
 **Kattintson a jobb gombbal a tároló elérési úttal listájára**
 
-Kattintson a jobb gombbal az elérési útvonal karakterláncának kiválasztásához **lista. tárolási elérési útja** folytatja.
+Kattintson a jobb gombbal az elérési útvonal karakterláncának kiválasztásához **elérési útja** folytatja.
 
 ![A Data Lake Tools for Visual Studio Code kattintson a jobb gombbal a helyi menü](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-right-click-path.png)
 
 
 ## <a name="preview-the-storage-file"></a>A tárolófájl megtekintése
 
-Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza ki **ADL: Preview tárolófájl**.
+Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza ki **ADL: Preview fájl**.
 
 Válassza ki a **ADLA fiók**. Adjon meg egy Azure storage fájl elérési útját (például /output/SearchLog.txt) ->. Result ->: VSCode fájl megnyitása.
 
    ![A Data Lake Tools for Visual Studio Code előzetes fájl eredménye](./media/data-lake-analytics-data-lake-tools-for-vscode/preview-storage-file.png)
 
-Egy másik preview tárolófájl módja a helyi menüben a fájl elérési útját vagy a fájl relatív elérési út a parancsfájl-szerkesztőben. 
+Egy másik preview fájl módja a helyi menüben a fájl elérési útját vagy a fájl relatív elérési út a parancsfájl-szerkesztőben. 
 
-## <a name="upload-file"></a>Fájl feltöltése 
+## <a name="upload-file-or-folder"></a>Töltse fel a fájl vagy mappa
 
-Fájlok feltöltheti a parancsok beírásával **ADL: a fájl feltöltése** vagy **ADL: a konfigurációs fájl feltöltése**.
+1. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza ki **fájl feltöltése** vagy **feltöltése mappa**.
 
-**A feltöltendő fájl, ha az ADL: konfigurációs paranccsal fájl feltöltése**
-1.  Kattintson a jobb gombbal a parancsprogram-szerkesztő, majd válassza ki **fájl feltöltése konfigurálással**.
-2.  Visual STUDIO Code jeleníti meg a JSON-fájl. Adja meg az elérési utat, és egyszerre több fájl feltöltése. Utasítások jelennek meg a **kimeneti** ablak. Folytatja a fájl feltöltéséhez, mentse a JSON-fájl (Ctrl + S).
+2. Válasszon egy fájl vagy több fájl, ha válassza ki a feltölteni a fájlt, vagy válassza a az egész mappa Ha válassza feltöltési mappa, majd kattintson a **feltöltése**. -> Válassza a tároló mappát a listában, vagy kattintson a **elérési utat adjon meg** vagy **keresse meg a legfelső szintű** (használ adjon meg egy elérési utat példaként). -> Válassza ki a **ADLA fiók**. Navigálás ->, vagy adja meg a tároló mappa elérési útját (például: / kimeneti /). Kattintson -> **aktuális mappa kiválasztása** elemre a feltöltési célhelyének megadásához.
 
-       ![A Data Lake Tools for Visual Studio Code-fájl elérési útja](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-upload-file.png)
+   ![A Data Lake Tools for Visual Studio Code feltöltési állapot](./media/data-lake-analytics-data-lake-tools-for-vscode/upload-file.png)    
 
-3.  Eredmények: A **kimeneti** ablak a fájl feltöltési állapotot jeleníti meg.
 
-       ![A Data Lake Tools for Visual Studio Code feltöltési állapot](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-upload-status.png)     
+   Egy másik feltöltése fájlok tárolási módja a helyi menüben a fájl elérési útját vagy a fájl relatív elérési út a parancsfájl-szerkesztőben.
 
 Egy időben, figyelheti a [Feltöltés állapota](#check-storage-tasks-status).
 
-**A feltöltendő fájl, ha az ADL: a fájl feltöltése parancs**
-
-Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza ki **fájl feltöltése**.
-
-Adjon meg a **helyi fájl elérési útját**. -> Válassza ki a listán található, vagy kattintson a **elérési utat adjon meg** vagy **keresse meg a legfelső szintű** (használ adjon meg egy elérési utat példaként). -> Válassza ki a **ADLA fiók**. Navigálás ->, vagy adja meg a tároló mappa elérési útját (például: / kimeneti /). Kattintson -> **aktuális mappa kiválasztása** elemre a feltöltési célhelyének megadásához.
-
-![A Data Lake Tools for Visual Studio Code feltöltési állapot](./media/data-lake-analytics-data-lake-tools-for-vscode/upload-file.png)    
-
-
-Egy másik feltöltése fájlok tárolási módja a helyi menüben a fájl elérési útját vagy a fájl relatív elérési út a parancsfájl-szerkesztőben.
-
-Egy időben, figyelheti a [Feltöltés állapota](#check-storage-tasks-status).
 
 ## <a name="download-file"></a>Fájl letöltése 
-Letöltheti a fájlokat a parancsok beírásával **ADL: tároló fájl letöltése** vagy **ADL: tároló fájl letöltése konfigurálással**.
+Letöltheti a fájlokat a parancsok beírásával **ADL: fájl letöltése** vagy **ADL: (speciális) fájl letöltése**.
 
-**Töltse le a fájlokat, ha az ADL: paranccsal konfigurációs fájl letöltése**
-1. Kattintson a jobb gombbal a parancsprogram-szerkesztő, majd válassza ki **tároló fájl letöltése konfigurálással**.
+**Töltse le a fájlokat, ha az ADL: fájl letöltése (speciális)**
+1. Kattintson a jobb gombbal a parancsprogram-szerkesztő, majd válassza ki **(speciális) fájl letöltése**.
 2. Visual STUDIO Code jeleníti meg a JSON-fájl. Adja meg az elérési utat, és egyszerre több fájl letöltéséhez. Utasítások jelennek meg a **kimeneti** ablak. Folytatja a fájl letöltéséhez, mentse a JSON-fájl (Ctrl + S).
 
     ![A Data Lake Tools for konfigurációs fájlokat Visual Studio Code letöltése](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-files.png)
@@ -353,17 +304,16 @@ Letöltheti a fájlokat a parancsok beírásával **ADL: tároló fájl letölt�
 
 Egy időben, figyelheti a [letöltés állapota](#check-storage-tasks-status).
 
-**Bár az ADL fájlok letöltéséhez: tároló fájl letöltése parancs**
+**Bár az ADL fájlok letöltéséhez: fájl letöltése**
 
-Kattintson a jobb gombbal a parancsprogram-szerkesztő, majd válassza ki **tároló fájl letöltése**.
+1. Kattintson a jobb gombbal a parancsprogram-szerkesztő, jelölje be **fájl letöltése**, majd válassza ki a célmappát, az a **Mappaválasztás** párbeszédpanel.
 
-A listában válassza ki a mappát, vagy kattintson a **elérési utat adjon meg** vagy **keresse meg a legfelső szintű** (használ adjon meg egy elérési utat példaként). -> Válassza ki a **ADLA fiók**. Navigálás ->, vagy adja meg a tároló mappa elérési útját (például: / kimeneti /) -> Válassza ki a fájl letöltéséhez.
+2. A listában válassza ki a mappát, vagy kattintson a **elérési utat adjon meg** vagy **keresse meg a legfelső szintű** (használ adjon meg egy elérési utat példaként). -> Válassza ki a **ADLA fiók**. Navigálás ->, vagy adja meg a tároló mappa elérési útját (például: / kimeneti /) -> Válassza ki a fájl letöltéséhez.
 
    ![A Data Lake Tools for Visual Studio Code letöltési állapot](./media/data-lake-analytics-data-lake-tools-for-vscode/download-file.png) 
 
-   Eredmény képen látható a fájl kerül, az ideiglenes mappa. Beállíthatja a letöltés elérési útját a paraméter alapértelmezett **usql.defaultLocalFolderForDownload** egyedül a VSCode menüből **fájl** -> **beállítások**  ->  **Beállítás**.
-
-Egy másik módszer a tárolási fájlok letöltése a helyi menüben a fájl elérési útját vagy a fájl relatív elérési út a parancsfájl-szerkesztőben van.
+   
+   Egy másik módszer a tárolási fájlok letöltése a helyi menüben a fájl elérési útját vagy a fájl relatív elérési út a parancsfájl-szerkesztőben van.
 
 Egy időben, figyelheti a [letöltés állapota](#check-storage-tasks-status).
 
@@ -373,12 +323,20 @@ Az állapotsor letöltését, majd ismét feltölteni a befejezésekor alján á
 
    ![A Data Lake Tools for Visual Studio Code ellenőrizze tároló állapota](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-status.png)
 
+## <a name="vscode-explorer-integration-with-azure-data-lake"></a>Azure Data Lake VSCode Explorer integrációja
+1. Bejelentkezés, akkor látni fogják a bal oldali paneljének láthatóságát szereplő összes Azure-fiókkal a **DataLake Explorer**. Bontsa ki egy adatbázist, akkor az a **sémák**, **táblák**, **szerelvények** és így tovább, a csomópont alatt.
 
-## <a name="open-azure-storage-explorer"></a>Nyissa meg az Azure storage explorer
-Megnyithatja **Azure Tártallózó** parancs beírásával **ADL: Nyissa meg a webalkalmazás Azure Tártallózó** , vagy kattintson a jobb gombbal a helyi menüből való kiválasztása.
+   ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
-**Azure Tártallózó megnyitása**
+2. A parancs végezheti el **szerelvény regisztrálása** kattintson a jobb gombbal a a **szerelvények** csomópont.
 
+    ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer-register-assembly.png)
+
+3. Navigáljon a **Tárfiók**, feltölteni, vagy kattintson a jobb gombbal a mappa vagy fájl töltse le a fájlt. És is **előzetes** egy fájl **letöltése**, **másolási relatív elérési út**, **másolási teljes elérési útja** által a helyi menü.
+
+   ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-download-preview-file.png)
+
+## <a name="open-adl-storage-explorer-in-portal"></a>Nyissa meg a portál ADL a Tártallózó
 1. Válassza ki a Ctrl + Shift + U nyissa meg a parancs palettát.
 2. Adja meg **megnyitása webes Azure Tártallózó** vagy relatív elérési út vagy a teljes elérési útja, a parancsfájl-szerkesztőben kattintson a jobb gombbal, majd válassza ki **megnyitása webes Azure Tártallózó**.
 3. Válassza ki a Data Lake Analytics-fiók.
@@ -420,11 +378,12 @@ A Data Lake Tools for Visual STUDIO Code támogatja a következő funkciókat:
     ![A Data Lake Tools for Visual Studio Code szintaxis kiemelések](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-syntax-highlights.png)
 
 ## <a name="next-steps"></a>Következő lépések
+- [U-SQL Python, R és az Azure Data Lake Analytics a VSCode a CSharp fejlesztése](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+- [U-SQL helyi futtatásával és a helyi hibakeresése a Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md)
+- [Oktatóanyag: Ismerkedés az Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)
+- [Oktatóanyag: U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
+- [Azure Data Lake Analytics-feladatok U-SQL-szerelvények fejlesztése](data-lake-analytics-u-sql-develop-assemblies.md)
 
-- U-SQL helyi futtatása és a Visual Studio Code helyi debug: [U-SQL helyi futtatásával és a helyi hibakeresése a Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md).
-- A Data Lake Analytics-bevezető információkat lásd: [oktatóanyag: Ismerkedés az Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md).
-- A Data Lake Tools for Visual Studio információ: [oktatóanyag: fejlesztése U-SQL-parancsfájlok Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md).
-- Szerelvények fejlesztéséről további információkért lásd: [fejlesztése U-SQL-szerelvények Azure Data Lake Analytics-feladatok](data-lake-analytics-u-sql-develop-assemblies.md).
 
 
 

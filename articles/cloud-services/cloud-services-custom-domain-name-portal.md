@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: afda0bc79a26c8cb9736c754a681ebb602e41af1
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Egy egyéni tartománynevet, az Azure-felhőszolgáltatás konfigurálása
 Amikor létrehoz egy felhőalapú szolgáltatás, Azure rendeli altartománya **cloudapp.net**. Például ha a Felhőszolgáltatás neve "contoso", a felhasználók tudnak az URL-cím http://contoso.cloudapp.net például az alkalmazás eléréséhez. Azure is hozzárendel egy virtuális IP-címet.
@@ -28,7 +28,7 @@ Azonban Ön is is elérhetővé teheti az alkalmazás a saját tartománynevét,
 Tegye meg már megismeréséhez CNAME és A rekordok? [Ugrás a magyarázat túli](#add-a-cname-record-for-your-custom-domain).
 
 > [!NOTE]
-> Ebben a feladatban eljárások Azure Felhőszolgáltatások vonatkozik. Alkalmazásszolgáltatások, lásd: [ez](../app-service/app-service-web-tutorial-custom-domain.md). Storage-fiókok, lásd: [ez](../storage/blobs/storage-custom-domain-name.md).
+> Ebben a feladatban eljárások Azure Felhőszolgáltatások vonatkozik. Alkalmazásszolgáltatások, lásd: [egy meglévő egyéni DNS-névvel hozzárendelése az Azure Web Apps](../app-service/app-service-web-tutorial-custom-domain.md). Storage-fiókok, lásd: [állítson be egy egyéni tartománynevet a Azure Blob storage-végponthoz](../storage/blobs/storage-custom-domain-name.md).
 > 
 > 
 

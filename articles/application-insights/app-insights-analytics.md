@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: 80a9e248ca50c11ef61a5c50c4986c4f8f4ead9d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: adda6335b702470cd491f07d750236c368325a9e
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="analytics-in-application-insights"></a>Az Application Insightsban elemzés
 Elemzés a hatékony keresési és lekérdezés eszköz [Application Insights](app-insights-overview.md). Analytics egy webes eszköz, így nem szükséges. Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatainak elemezheti a alkalmazás Analytics megnyitásával [áttekintése panel](app-insights-dashboards.md).
@@ -49,7 +49,7 @@ A nyelv számos vonzó lehetőséggel rendelkezik:
 
 * [Szűrő](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html) által a mezőket, beleértve az egyéni tulajdonságok és a metrikák a nyers app telemetriai adatokat.
 * [Csatlakozás](https://docs.loganalytics.io/queryLanguage/query_language_joinoperator.html) több táblázatot – korrelálja Lapmegtekintések, függőségi hívások esetében, kivételeket és naplókivonatokat kéri.
-* Hatékony statisztikai [összesítések](https://docs.loganalytics.io/learn/tutorials/aggregations.html).
+* Hatékony statisztikai [összesítések](https://docs.loganalytics.io/docs/Learn/Tutorials/Aggregation-functions).
 * Közvetlen és erőteljes képi megjelenítések.
 * [REST API](https://dev.applicationinsights.io/) használható lekérdezések futtatása programozott módon, például a Powershellből.
 

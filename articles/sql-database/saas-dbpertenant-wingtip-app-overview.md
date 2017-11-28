@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: sstein
-ms.openlocfilehash: ddd51c23c7e7d01e38b02c79c27d1951eea61e70
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: d17c361d2249cc95be78cde143925251ad65db44
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>Egy SQL-adatbázis több-bérlős SaaS app példa bemutatása
 
 A *Wingtip SaaS* alkalmazás egy több-bérlős mintaalkalmazást, azt mutatja be, az SQL-adatbázis egyedülálló előnyeit. Az alkalmazás bérlőnkénti adatbázis SaaS-alkalmazásmintát használ több bérlő kiszolgálásához. Célja, hogy az alkalmazást, az Azure SQL Database funkcióit, amelyek lehetővé teszik a Szolgáltatottszoftver-forgatókönyvek, köztük a több SaaS tervezési és felügyeleti minták megjelenítve. Gyorsan karban lehessen működik és elérhető, a Wingtip SaaS-alkalmazás telepíti, kevesebb mint öt perc alatt!
 
-Alkalmazás forrás kódot és kezelésre szolgáló parancsfájlok érhetők el a [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github-tárház. A parancsfájlok futtatásához [töltse le a tanulási modulok mappa](#download-and-unblock-the-wingtip-saas-scripts) a helyi számítógépen.
+Alkalmazás forrás kódot és kezelésre szolgáló parancsfájlok érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
 
 ## <a name="application-architecture"></a>Alkalmazásarchitektúra
 
@@ -42,7 +42,7 @@ Miután telepíti az alkalmazást, megismerkedhet a következő oktatóprogramot
 
 | Oktatóanyag | Leírás |
 |:--|:--|
-| [Útmutatás és tippek az Azure SQL Database több-bérlős SaaS alkalmazás – példa](saas-dbpertenant-wingtip-app-guidance-tips.md) | **KEZDJE ITT!** Töltse le, és futtassa a PowerShell-parancsfájlok készíti elő az alkalmazás részei. |
+| [Útmutatás és tippek az Azure SQL Database több-bérlős SaaS alkalmazás – példa](saas-tenancy-wingtip-app-guidance-tips.md) | **KEZDJE ITT!** Töltse le, és futtassa a PowerShell-parancsfájlok készíti elő az alkalmazás részei. |
 |[Központi telepítése, és vizsgálja meg a Wingtip SaaS-alkalmazáshoz](saas-dbpertenant-get-started-deploy.md)|  Központi telepítése, és vizsgálja meg a Wingtip SaaS-alkalmazás az Azure-előfizetéshez. |
 |[Kiépítés és a katalógus bérlők](saas-dbpertenant-provision-and-catalog.md)| Ismerje meg, hogyan az alkalmazás a bérlők katalógus adatbázis használatával csatlakozik, és hogy a katalógus hogyan leképezi a bérlők adataikat. |
 |[Megfigyelés és kezelés teljesítmény](saas-dbpertenant-performance-monitoring.md)| Útmutató: az SQL-adatbázis felügyeleti funkcióinak használatát, és riasztások beállítását, ha a teljesítmény-küszöbérték túllépése. |
@@ -55,6 +55,6 @@ Miután telepíti az alkalmazást, megismerkedhet a következő oktatóprogramot
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Útmutatás és tippek az Azure SQL Database több-bérlős SaaS alkalmazás – példa](saas-dbpertenant-wingtip-app-guidance-tips.md)
+- [Útmutatás és tippek az Azure SQL Database több-bérlős SaaS alkalmazás – példa](saas-tenancy-wingtip-app-guidance-tips.md)
 
 - [A Wingtip SaaS-alkalmazás központi telepítése](saas-dbpertenant-get-started-deploy.md)
