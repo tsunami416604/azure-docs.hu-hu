@@ -243,6 +243,7 @@
 ### [.NET-szolgáltatás hibakeresése a VS-ben](service-fabric-debugging-your-application.md)
 ### [Gyakori hibák és kivételek](service-fabric-errors-and-exceptions.md)
 ### [Helyi monitorozás és diagnosztika](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+### [Linux-fürt beállítás Windowson](service-fabric-local-linux-cluster-windows.md)
 
 ## Munka a Linux fejlesztői környezetében
 ### [Az Eclipse beépülő modul használatának első lépései Java-fejlesztésekhez](service-fabric-get-started-eclipse.md)
@@ -278,7 +279,9 @@
 ##### [Tesztelési forgatókönyvek használata](service-fabric-testability-scenarios.md)
 ##### [A csomópontváltó API-k használata](service-fabric-node-transition-apis.md)
 
-### [Linuxos Java-alkalmazás üzembe helyezése a Jenkins használatával](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+### A folyamatos integráció beállítása
+#### [A folyamatos integráció beállítása a VSTS-sel](service-fabric-set-up-continuous-integration.md)
+#### [Linuxos alkalmazások üzembe helyezése a Jenkins használatával](service-fabric-cicd-your-linux-applications-with-jenkins.md)
 
 ## Fürtök létrehozása és felügyelete
 ### Fürtök az Azure-on

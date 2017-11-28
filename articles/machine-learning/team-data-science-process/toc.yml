@@ -68,9 +68,9 @@
       href: walkthroughs-sql-data-warehouse.md
 - name: Képzés
   items:
-    - name: TDSP adatszakértők számára
+    - name: Adatszakértők számára
       href: team-data-science-process-for-data-scientists.md
-    - name: TDSP fejlesztők és üzemeltetők számára
+    - name: Fejlesztők és üzemeltetők számára
       href: team-data-science-process-for-devops.md
 - name: Útmutató
   items:
