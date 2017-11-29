@@ -29,6 +29,8 @@
           href: azure-stack-asdk-release-notes.md
         - name: Integrált rendszerek kibocsátási megjegyzései
           items:
+            - name: 1711 frissítés
+              href: azure-stack-update-1711.md
             - name: 1710 frissítés
               href: azure-stack-update-1710.md
     - name: A legfontosabb jellemzők és fogalmak
