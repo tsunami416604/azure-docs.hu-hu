@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 90e29a9ab522031db8feb934a218d4b671561417
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93de6a574b306e3fd8959454709e84a57ee4fc10
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Data Lake Store-ból adatokat regisztrálni kell az Azure Data Catalog
 Ebben a cikkben, megtudhatja, hogyan integrálható az Azure Data Lake Store az Azure Data Catalog, hogy az adatok felderíthető egy szervezeten belül a Data Catalog integrálásával. Az adatok katalogizálása további információkért lásd: [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Forgatókönyvek, amelyben használhatja a Data Catalog ismertetése: [Azure Data Catalog gyakori forgatókönyvei](../data-catalog/data-catalog-common-scenarios.md).

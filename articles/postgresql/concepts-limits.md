@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: af42d4b59b428e96bdd1280a5ee5073842ede4c2
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: dbb88e033d5be73b7b069d69c095d8df2c1faf1b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Az Azure-adatbázis PostgreSQL korlátozásai
 Az Azure-adatbázis PostgreSQL szolgáltatás nyilvános előzetes verzió van. A következő szakaszok ismertetik a kapacitás és az adatbázis szolgáltatásban működik korlátok.
@@ -24,7 +24,7 @@ Azure PostgreSQL-adatbázishoz a kiszolgáló létrehozása választhat több sz
 
 Nincs kapcsolatok, a számítási egység és a tárolás, az egyes szolgáltatásszintek tartalmának maximális száma a szolgáltatás előzetes az alábbiak szerint: 
 
-|                            |                   |
+| | |
 | :------------------------- | :---------------- |
 | **Kapcsolatok maximális száma**        |                   |
 | Alapszintű 50 számítási egység     | 50 kapcsolatok    |

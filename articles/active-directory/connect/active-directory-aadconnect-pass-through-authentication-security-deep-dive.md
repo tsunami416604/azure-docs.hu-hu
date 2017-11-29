@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: billmath
-ms.openlocfilehash: 5d2c581b25d34ea1b83f54292b5b65b2286e5a9d
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 4428f3da5dd9423aa60daa697e4ea15c99f92188
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítést biztonsági részletes bemutatója
 
@@ -39,7 +39,7 @@ Ez a funkció a kulcs biztonsági szempontjait a következők:
 - Csak szabványos portot (80-as és 443-as) az Azure AD a hitelesítési ügynököktől kimenő kommunikációra használt. Nem kell megnyitni a bejövő portra a tűzfalon. 
   - 443-as port az összes hitelesített kimenő kommunikáció szolgál.
   - 80-as portot a csak a visszavont tanúsítványok listájának (CRL) letöltése annak biztosítására szolgál, hogy ez a szolgáltatás által használt tanúsítványok vonták.
-  - A hálózati követelmények teljes listáját lásd: [Azure Active Directory áteresztő hitelesítés: gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-prerequisites).
+  - A hálózati követelmények teljes listáját lásd: [Azure Active Directory áteresztő hitelesítés: gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites).
 - Jelszavak, amelyeket a felhasználó bejelentkezési során a felhőben vannak titkosítva, előtt a helyszíni hitelesítési ügynökök fogadja el az Active Directory elvégzett sémaellenőrzésen.
 - A HTTPS-csatorna az Azure AD között, és a helyszíni hitelesítési ügynök a kölcsönös hitelesítés.
 - A funkció zökkenőmentesen integrálható az Azure AD-felhővédelem képességeit, például a feltételes hozzáférési szabályzatok (Azure többtényezős hitelesítést is beleértve), a azonosító adatok védelmét, és intelligens zárolás.

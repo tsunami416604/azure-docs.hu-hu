@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 0cfce63b1523f939dc2d706dba771e56ce9ccd6c
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 11/27/2017
+ms.openlocfilehash: 7027669597b8c1989f7baac5c5f9d997b218750a
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>Biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis PostgreSQL az Azure parancssori felület használatával
 
@@ -41,7 +41,7 @@ Az automatikus biztonsági mentési szolgáltatással a kiszolgáló és az adat
 ## <a name="restore-a-database-to-a-previous-point-in-time-by-using-the-azure-cli"></a>Adatbázis visszaállítása egy korábbi időpontra időben az Azure parancssori felület használatával
 A kiszolgáló visszaállítása egy korábbi időpontra időben PostgreSQL Azure adatbázis használata. A visszaállított adatok másolását egy új kiszolgálóra, és a meglévő kiszolgáló marad, mert a. Például egy táblázat véletlenül megszakadása ma órakor, visszaállíthatja az idő előtt déltől. Ezt követően beolvasható a hiányzó táblázat és az adatokat a kiszolgáló visszaállított példányát. 
 
-A kiszolgáló visszaállításához használja az Azure parancssori felület [az postgres kiszolgálójának visszaállítását](/cli/azure/postgres/server#restore) parancsot.
+A kiszolgáló visszaállításához használja az Azure parancssori felület [az postgres kiszolgálójának visszaállítását](/cli/azure/postgres/server#az_postgres_server_restore) parancsot.
 
 ### <a name="run-the-restore-command"></a>A restore parancs futtatása
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: debadde78d937bcd4ec1df665aacfd1887fbcd02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03326304e438f3b716c43d268f07d8e22cd15ea3
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Telepítse a tartós funkciók bővítményt, és minták (az Azure Functions)
 
@@ -33,7 +33,7 @@ A Visual Studio jelenleg a legjobb élményt nyújt a tartós funkciók használ
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a [Visual Studio legújabb verziójának](https://www.visualstudio.com/downloads/) (15.3 vagy újabb verziója). Vegye fel az Azure-eszközök a beállítási lehetőség.
+* Telepítse a [Visual Studio legújabb verziójának](https://www.visualstudio.com/downloads/) (15.3 vagy újabb verziója). Tartalmazza a **Azure fejlesztési** munkaterhelés a telepítési beállítások.
 
 ### <a name="start-with-sample-functions"></a>Indítsa el a minta-funkciók
 
@@ -61,7 +61,7 @@ Tetszés szerint használhatja az Azure-portálon a tartós funkciók fejleszté
 
 1. Hozzon létre egy új funkció alkalmazást [functions.azure.com](https://functions.azure.com/signin).
 2. A függvény alkalmazás konfigurálása [futtatókörnyezet 2.0-s verzióját használja a](functions-versions.md).
-3. Hozzon létre egy új függvényt, és válassza ki a **tartós funkciók Orchestrator - C#** sablont.
+3. Hozzon létre egy új függvényt, kiválasztásával "C#" nyelvhez és az "All" forgatókönyv esetében. Válassza ki a **tartós funkciók Orchestrator - C#** sablont.
 4. A **-bővítmény nem**, kattintson a **telepítése** NuGet.org töltheti le a bővítményt.
 
 ### <a name="copy-sample-code-to-the-function-app"></a>A függvény app mintakód másolása

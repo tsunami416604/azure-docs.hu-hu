@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: d93667f16f2d72995e4a42e79e9125b8e3f6b07c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 598387b6066612c6c4a4c92cba5ba03e03a55203
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Oktatóanyag: Azure Active Directoryval integrált Trello
 
@@ -96,6 +96,10 @@ Az Azure AD egyszeri bejelentkezést a Trello tesztelése és konfigurálása, h
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Trello alkalmazásban egyszeri bejelentkezés konfigurálása.
 
+>[!NOTE]
+    >Szerezheti be a  **\<vállalati\>**  a Trello slug. Ha még nem rendelkezik a slug érték, forduljon a [Trello támogatási csoport](mailto:support@trello.com) a slug lekérni a vállalat számára.
+    > 
+
 **Konfigurálása az Azure AD az egyszeri bejelentkezés Trello, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure portálon a a **Trello** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
@@ -112,17 +116,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://trello.com/auth/saml/consume/<enterprise>`
 
-4. Az a **Trello tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **Szolgáltató kezdeményezett mód**, hajtsa végre a következő lépéseket:
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_trello_url1.png)
+4. Ha szeretne beállítani az alkalmazás **Szolgáltató kezdeményezett mód**, hajtsa végre a következő lépéseket:
+
+  ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_trello_url1.png)
 
     a. Kattintson a **megjelenítése speciális URL-beállításainak**.
 
-    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe:`https://trello.com/auth/saml/consume/<enterprise>`
+    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe:`https://trello.com/auth/saml/login/<enterprise>`
 
-    >[!NOTE]
-    >Szerezheti be a  **\<vállalati\>**  a Trello slug. Ha még nem rendelkezik a slug érték, forduljon a [Trello támogatási csoport](mailto:support@trello.com) vállalati lekérni a slug meg.
-    > 
+  c. Az a **azonosító** szövegmező, írja be a következő URL-címe:`https://trello.com/auth/saml/metadata`
 
 5. Trello alkalmazás vár a SAML helyességi feltételek megadott attribútumokat tartalmaz. Konfigurálja a következő attribútumok ehhez az alkalmazáshoz. Ezek az attribútumok értékének kezelheti a **"Felhasználói attribútumok"** az alkalmazás. Az alábbi képernyőfelvételen látható egy példa a.
 
@@ -130,7 +132,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 6. Az a **SAML-jogkivonat attribútumok** párbeszédpanel, az alábbi táblázatban szereplő minden egyes sorára hajtsa végre a következő lépéseket:
  
-    | Attribútum neve | Attribútum-érték |
+    | Attribútum neve | Attribútum értéke |
     | --- | --- |
     | User.Email | User.mail |
     | User.FirstName | User.givenName |

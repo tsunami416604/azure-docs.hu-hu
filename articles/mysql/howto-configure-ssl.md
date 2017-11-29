@@ -8,27 +8,27 @@ editor: jasonwhowell
 manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/25/2017
-ms.openlocfilehash: 83830e4776eaa7c4f10bc14dcefd47c6eaf25997
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 11/27/2017
+ms.openlocfilehash: 289d1c4c0ffd2667c49c5625e72780d54a71ceb5
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Az alkalmazásokhoz való biztonságos kapcsolódás Azure-adatbázis a MySQL SSL-kapcsolat konfigurálása
 Azure MySQL-adatbázis támogatja az Azure-adatbázis MySQL-kiszolgáló csatlakozik a Secure Sockets Layer (SSL) használó ügyfélalkalmazások. Az adatbázis-kiszolgáló és az ügyfél alkalmazások közötti SSL-kapcsolatok kényszerítése segít lánctámadások elleni védelem érdekében "man a középső" az adatfolyamot a kiszolgáló és az alkalmazás közötti titkosításával.
 
 ## <a name="step-1-obtain-ssl-certificate"></a>1. lépés: SSL-tanúsítvány beszerzése
-Töltse le a tanúsítványt, az Azure-adatbázis a MySQL-kiszolgáló az SSL protokollt használó kommunikációra szükséges [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) és mentette a tanúsítványfájlt (a helyi meghajtójára Ebben az oktatóanyagban használtuk c:\ssl).
+Töltse le a tanúsítványt, az Azure-adatbázis a MySQL-kiszolgáló az SSL protokollt használó kommunikációra szükséges [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) , és mentse a fájlt a helyi meghajtóról (Ez az oktatóanyag használja c:\ssl például).
 **A Microsoft Internet Explorer és a Microsoft Edge:** a letöltés befejezése után nevezze át a tanúsítvány BaltimoreCyberTrustRoot.crt.pem.
 
 ## <a name="step-2-bind-ssl"></a>2. lépés: A kötés SSL
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Kapcsolódás a kiszolgálóhoz a MySQL munkaterület használata az SSL-en keresztül
 Konfigurálja a MySQL munkaterület biztonságos SSL Csatornán keresztül csatlakozni. Új kapcsolat beállítása párbeszéd navigáljon a **SSL** fülre. Az a **SSL-hitelesítésszolgáltató fájl:** mezőbe írja be a fájl helyét a **BaltimoreCyberTrustRoot.crt.pem**. 
-![Mentse testre szabott csempe](./media/howto-configure-ssl/mysql-workbench-ssl.png) meglévő kapcsolatok esetén SSL kötni a kapcsolat ikon a jobb gombbal kattintva és kattintson a Szerkesztés. Keresse meg a **SSL** lapra, majd kösse a tanúsítványfájl.
+![Mentse testre szabott csempe](./media/howto-configure-ssl/mysql-workbench-ssl.png) meglévő kapcsolatok esetén SSL kötési kattintson a jobb gombbal a kapcsolat ikonra és kattintson a Szerkesztés. Keresse meg a **SSL** lapra, majd kösse a tanúsítványfájl.
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Kapcsolódás a kiszolgálóhoz SSL-en keresztül a MySQL parancssori felület használatával
-Másik módja, hogy az SSL-tanúsítvány kötését használ a MySQL parancssori felület szerint hajtsa végre a következő parancsot:
+Egy másik az SSL-tanúsítvány kötését módja a MySQL parancssori felület használatával futtassa a következő parancsot:
 ```dos
 mysql.exe -h mysqlserver4demo.mysql.database.azure.com -u Username@mysqlserver4demo -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
@@ -52,9 +52,10 @@ mysql> status
 Ellenőrizze a kapcsolat a kimeneti, amelyhez meg kell jelennie megtekintésével titkosított: **SSL: titkosító használatban AES256-SHA** 
 
 ## <a name="sample-code"></a>Mintakód
-Biztonságos kapcsolatot létesíteni az Azure Database-MySQL az SSL-en keresztül az alkalmazásról, tekintse meg a következő példakódok.
+Biztonságos kapcsolatot létesíteni az Azure Database-MySQL az SSL-en keresztül az alkalmazásról, tekintse meg a következő kód minták:
+
 ### <a name="php"></a>PHP
-```
+```php
 $conn = mysqli_init();
 mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/BaltimoreCyberTrustRoot.crt.pem", NULL, NULL) ; 
 mysqli_real_connect($conn, 'myserver4demo.mysql.database.azure.com', 'myadmin@myserver4demo', 'yourpassword', 'quickstartdb', 3306, MYSQLI_CLIENT_SSL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
@@ -63,7 +64,7 @@ die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 ```
 ### <a name="python-mysqlconnector-python"></a>Python (MySQLConnector Python)
-```
+```python
 try:
     conn=mysql.connector.connect(user='myadmin@myserver4demo', 
         password='yourpassword', 
@@ -74,7 +75,7 @@ except mysql.connector.Error as err:
     print(err)
 ```
 ### <a name="python-pymysql"></a>Python (PyMySQL)
-```
+```python
 conn = pymysql.connect(user = 'myadmin@myserver4demo', 
         password = 'yourpassword', 
         database = 'quickstartdb', 
@@ -82,7 +83,7 @@ conn = pymysql.connect(user = 'myadmin@myserver4demo',
         ssl = {'ssl': {'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
 ```
 ### <a name="ruby"></a>Ruby
-```
+```ruby
 client = Mysql2::Client.new(
         :host     => 'myserver4demo.mysql.database.azure.com', 
         :username => 'myadmin@myserver4demo',      
@@ -92,7 +93,7 @@ client = Mysql2::Client.new(
     )
 ```
 ### <a name="golang"></a>Golang
-```
+```go
 rootCertPool := x509.NewCertPool()
 pem, _ := ioutil.ReadFile("/var/www/html/BaltimoreCyberTrustRoot.crt.pem")
 if ok := rootCertPool.AppendCertsFromPEM(pem); !ok {
@@ -104,7 +105,7 @@ connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&
 db, _ := sql.Open("mysql", connectionString)
 ```
 ### <a name="javajdbc"></a>JAVA(JDBC)
-```
+```java
 # generate truststore and keystore in code
 String importCert = " -import "+
     " -alias mysqlServerCACert "+
@@ -131,7 +132,7 @@ properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
 ### <a name="javamariadb"></a>Java(MariaDB)
-```
+```java
 # generate truststore and keystore in code
 String importCert = " -import "+
     " -alias mysqlServerCACert "+

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.openlocfilehash: d26a97ee0e5416fb1fe38ef0fb18fa4eb0e2963d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 249fb4903c7b2de3ce290850a7759a4793f10aa7
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>Bejövő vagy kimenő automatikus méretezése szabályok használatával a Service Fabric-fürt méretezése
 Virtuálisgép-méretezési csoportok olyan Azure számítási erőforrás, melyekkel telepíthetnek és kezelhetnek olyan virtuális gépek gyűjteménye. Minden csomópont-típus, a Service Fabric-fürt definiált egy külön virtuálisgép-méretezési csoport lett beállítva. Az egyes csomóponttípusok majd méretezhetők a kimenő portok nyitva különböző tulajdonságkészletekkel rendelkező egymástól függetlenül, illetve különböző teljesítmény-mérőszámait rendelkezhet. Azt a további információk a [Service Fabric NodeType tulajdonságok értéke](service-fabric-cluster-nodetypes.md) dokumentum. Mivel a Service Fabric csomóponttípusok a fürt virtuálisgép-méretezési csoportok: a háttér épülnek, kell minden egyes csomópont típus vagy virtuális gép méretezési automatikus méretezése szabályokat.
@@ -72,8 +72,8 @@ Minta/utasításait a [gyors üzembe helyezési sablon gyűjtemény](https://git
 
 Hajtsa végre a következő lépéseket egy Virtuálisgép-példány egyszerre kell. Ez lehetővé teszi a rendszerszolgáltatások (és az állapotalapú szolgáltatások) kell leállítása a Virtuálisgép-példány eltávolítása és a többi csomóponton létrehozott új replikákat.
 
-1. Futtatás [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) letiltása a csomópont "RemoveNode" biztonsági mentés fog eltávolítása (az adott típusú csomópont legmagasabb példány).
-2. Futtatás [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) győződjön meg arról, hogy a csomópont valóban átváltott le van tiltva. Ha nem, akkor várjon, amíg a csomópont le van tiltva. Ez a lépés nem hurry.
+1. Futtatás [Disable-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) letiltása a csomópont "RemoveNode" biztonsági mentés fog eltávolítása (az adott típusú csomópont legmagasabb példány).
+2. Futtatás [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) győződjön meg arról, hogy a csomópont valóban átváltott le van tiltva. Ha nem, akkor várjon, amíg a csomópont le van tiltva. Ez a lépés nem hurry.
 3. A minta/utasításait a [gyors üzembe helyezési sablon gyűjtemény](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) módosításához a virtuális gépek számát egy adott csomóponttípusban. Az eltávolított-példány a legmagasabb Virtuálisgép-példány. 
 4. Ismételje meg az 1 – 3 igény szerint, de soha nem csökkentheti az elsődleges csomóponttípusok kisebb, mint a megbízhatósági szint indokol található példányok száma. Tekintse meg [a részleteket itt megbízhatóság rétegek](service-fabric-cluster-capacity.md). 
 
@@ -85,8 +85,8 @@ Hajtsa végre a következő lépéseket egy Virtuálisgép-példány egyszerre k
 
 Hajtsa végre a következő lépéseket egy Virtuálisgép-példány egyszerre kell. Ez lehetővé teszi a rendszerszolgáltatások (és az állapotalapú szolgáltatások) kell leállítása a távolítja el a Virtuálisgép-példány, és új replikák létrehozott más helyét.
 
-1. Futtatás [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) letiltása a csomópont "RemoveNode" biztonsági mentés fog eltávolítása (az adott típusú csomópont legmagasabb példány).
-2. Futtatás [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) győződjön meg arról, hogy a csomópont valóban átváltott le van tiltva. Ha nem várja meg, amíg a csomópont le van tiltva. Ez a lépés nem hurry.
+1. Futtatás [Disable-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) letiltása a csomópont "RemoveNode" biztonsági mentés fog eltávolítása (az adott típusú csomópont legmagasabb példány).
+2. Futtatás [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) győződjön meg arról, hogy a csomópont valóban átváltott le van tiltva. Ha nem várja meg, amíg a csomópont le van tiltva. Ez a lépés nem hurry.
 3. A minta/utasításait a [gyors üzembe helyezési sablon gyűjtemény](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) módosításához a virtuális gépek számát egy adott csomóponttípusban. Ezzel eltávolítja a legmagasabb Virtuálisgép-példány. 
 4. Ismételje meg az 1 – 3 igény szerint, de soha nem csökkentheti az elsődleges csomóponttípusok kisebb, mint a megbízhatósági szint indokol található példányok száma. Tekintse meg [a részleteket itt megbízhatóság rétegek](service-fabric-cluster-capacity.md).
 

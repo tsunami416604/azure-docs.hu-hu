@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 913805901bf8131e4908be03e9213539a26205ed
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 0973f83ae839597f3b499814a4a04a8a640a1fb6
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>A tartós funkciók - Hello feladatütemezési minta láncolás működik
 
@@ -46,7 +46,7 @@ Fejlesztés az Azure-portálon használja, ha ez tartalmát a *function.json* az
 Fontos, a `orchestrationTrigger` kötéstípus. Minden orchestrator-funkciók az indítási típust kell használnia.
 
 > [!WARNING]
-> Elfogadják a "nincs i/o" szabály orchestrator funkciók, ne használja a bemeneti vagy kimeneti kötések használatakor a `orchestrationTrigger` indítás kötés.  Ha más bemeneti vagy kimeneti kötések van szükség, azok helyette használandó környezetében `activityTrigger` funkciók.
+> Elfogadják a "nincs i/o" szabály orchestrator funkciók, ne használja a bemeneti vagy kimeneti kötések használatakor a `orchestrationTrigger` indítás kötés.  Ha más bemeneti vagy kimeneti kötések van szükség, azok helyette használandó környezetében `activityTrigger` függvények, amelyek az orchestrator által meghívott.
 
 ## <a name="c-script"></a>C#-szkript
 
@@ -54,7 +54,7 @@ A forrás kód itt látható:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/run.csx)]
 
-Minden C# vezénylési funkciók rendelkeznie kell egy `DurableOrchestrationContext` paraméter, mely már szerepel a `Microsoft.Azure.WebJobs.Extensions.DurableTask` szerelvény. C#-parancsfájlok használata, ha a szerelvény is használatával lehet hivatkozni a `#r` jelöléssel. A környezeti objektumot lehetővé teszi, hogy másik hívás *tevékenység* funkciók és pass bemeneti paraméterek használata a [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) metódust.
+Minden C# vezénylési funkciók típusú paramétert kell `DurableOrchestrationContext`, amely megtalálható a `Microsoft.Azure.WebJobs.Extensions.DurableTask` szerelvény. C#-parancsfájlok használata, ha a szerelvény is használatával lehet hivatkozni a `#r` jelöléssel. A környezeti objektumot lehetővé teszi, hogy másik hívás *tevékenység* funkciók és pass bemeneti paraméterek használata a [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) metódust.
 
 A kód hívások `E1_SayHello` háromszor sorrendben különböző paraméterértékekkel. Minden hívás visszatérési értékének hozzáadódik a `outputs` lista, amelyet a függvény végén adja vissza.
 
@@ -69,7 +69,7 @@ Végrehajtásának `E1_SayHello` egy viszonylag trivial művelet formázási kar
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_SayHello/run.csx)]
 
-A függvény egy [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html)paramétert, amely az beszerzése az orchestrator függvény által átadott bemeneti segítségével [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_)>.
+Ez a függvény típusú paraméterrel rendelkezik [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html), az orchestrator függvény által átadott bemeneti eléréséhez használt [ `CallActivityAsync<T>` ](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_).
 
 ## <a name="run-the-sample"></a>A minta futtatásához
 

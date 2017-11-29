@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: df6cd9651d63ccea175fc8417d9f7dd2a9161f57
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a96e7f4979965300a513e4d598bbd8566337a21f
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="authorize-users-for-ambari-views"></a>A felhasználóknak engedélyezik, az Ambari nézetek
+# <a name="authorize-users-for-ambari-views"></a>Az Ambari Views használatának engedélyezése felhasználók számára
 
 [A HDInsight-fürtök tartományhoz](./domain-joined/apache-domain-joined-introduction.md) adja meg a vállalati szintű képességet, beleértve az Azure Active Directory-alapú hitelesítés. Szinkronizálhatja az új felhasználók
-<!-- [synchronize new users](hdinsight-sync-aad-users-to-cluster.md) --> added to Azure AD groups that have been provided access to the cluster, allowing those specific users to perform certain actions. Currently, working with users, groups, and permissions in Ambari is only supported when using a domain-joined HDInsight cluster.
+<!-- [synchronize new users](hdinsight-sync-aad-users-to-cluster.md) --> added to Azure AD groups that have been provided access to the cluster, allowing those specific users to perform certain actions. Working with users, groups, and permissions in Ambari is supported for both domain-joined HDInsight cluster and standard HDInsight cluster.
 
 Active Directory-felhasználók bejelentkezhetnek a fürtcsomópontokon, a tartományi hitelesítő adataik használatával. A tartományi hitelesítő adataik fürt interakciók más jóváhagyott végpontok, például a Hue, az Ambari nézetek, a ODBC, a JDBC, a PowerShell és a REST API-k hitelesítésére szolgáltatást is alkalmazhatja.
 

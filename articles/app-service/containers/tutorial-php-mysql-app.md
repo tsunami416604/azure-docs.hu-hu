@@ -5,8 +5,6 @@ services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
-ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -15,11 +13,11 @@ ms.topic: tutorial
 ms.date: 07/21/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 11e8708987f4e085fc8bf1db10144283a9a17d2e
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 86ee5b02fe2a9f34db651f6446398d366b24b5d2
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>Az Azure-ban a PHP és a MySQL webalkalmazás létrehozása
 
@@ -106,7 +104,7 @@ composer install
 
 Az adattár gyökérkönyvtárában, hozzon létre egy fájlt *.env*. Másolja be a következő változókat a *.env* fájlt. Cserélje le a  _&lt;root_password >_ helyőrzőt a MySQL gyökér szintű felhasználó jelszavát.
 
-```
+```txt
 APP_ENV=local
 APP_DEBUG=true
 APP_KEY=SomeRandomString
@@ -236,7 +234,7 @@ Ebben a lépésben csatlakoztatja a MySQL (előzetes verzió) Azure-adatbázisba
 
 Az adattár gyökérkönyvtárában, hozzon létre egy _. env.production_ fájlt, és másolja azt a következő változókat. Cserélje le a helyőrző  _&lt;mysql_server_name >_.
 
-```
+```txt
 APP_ENV=production
 APP_DEBUG=true
 APP_KEY=SomeRandomString

@@ -5,25 +5,22 @@ services: app-service\web
 documentationcenter: python
 author: berndverst
 manager: erikre
-editor: 
-ms.assetid: 2bada123-ef18-44e5-be71-e16323b20466
 ms.service: app-service-web
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: fa3aa3a73338970fde2d0b0230e7b2e6ca687dc9
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 55d6f1d10ff08fd8f0ea4aba775a96549192cef2
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Az Azure-ban Docker Python és PostgreSQL webalkalmazás létrehozása
 
-Webes alkalmazás a tárolók egy jól skálázható, önálló javítási webhelyszolgáltató biztosít. Ez az oktatóanyag bemutatja, hogyan alapvető Docker Python-webalkalmazás létrehozása az Azure-ban. Ez az alkalmazás PostgreSQL-adatbázishoz szeretne összekapcsolni. Amikor elkészült, konfigurálnia kell egy Python Flask-alkalmazás egy Docker-tároló belül futó [App Service Linux](app-service-linux-intro.md).
+Webes alkalmazás a tárolók egy jól skálázható, önálló javítási webhelyszolgáltató biztosít. Ez az oktatóanyag bemutatja, hogyan alapvető Docker Python-webalkalmazás létrehozása az Azure-ban. Ez az alkalmazás kapcsolódni egy PostgreSQL-adatbázisban. Amikor elkészült, a Python Flask-alkalmazás egy Docker-tároló belül futó van [App Service Linux](app-service-linux-intro.md).
 
 ![Docker Python Flask-alkalmazás az App Service Linux rendszeren](./media/tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
@@ -120,7 +117,7 @@ A Flask kiszolgáló bármikor leállításához írja be a Terminálszolgáltat
 
 ## <a name="create-a-production-postgresql-database"></a>Hozzon létre egy PostgreSQL-adatbázisban
 
-Ebben a lépésben létrehoz egy PostgreSQL-adatbázisban az Azure-ban. Az alkalmazás telepítésekor az Azure-ba, a felhő adatbázist fogja használni.
+Ebben a lépésben létrehoz egy PostgreSQL-adatbázisban az Azure-ban. Az alkalmazás telepítésekor az Azure-ba, használja a felhő adatbázis.
 
 ### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -146,7 +143,7 @@ Használja a [az App Service lista-helyek](/cli/azure/appservice#list-locations)
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 
-Hozzon létre egy PostgreSQL-kiszolgáló ezzel a [az postgres kiszolgáló létrehozni](/cli/azure/documentdb#create) parancsot.
+Hozzon létre egy PostgreSQL-kiszolgáló ezzel a [az postgres kiszolgáló létrehozni](/cli/azure/postgres/server#az_postgres_server_create) parancsot.
 
 Az alábbi parancs helyettesítse be egy egyedi kiszolgálónevet számára a  *\<postgresql_name >* helyőrző és egy felhasználói nevet a  *\<admin_username >* helyőrző. A kiszolgáló nevét használja a PostgreSQL-végpontot részeként (`https://<postgresql_name>.postgres.database.azure.com`), így a nevének egyedinek kell lennie az Azure-ban minden kiszolgálóra. A felhasználónév megadása a kezdeti adatbázis rendszergazdai felhasználói fiókhoz. Válassza ki a felhasználó jelszavát kéri.
 
@@ -207,7 +204,7 @@ Ebben a lépésben a Python Flask mintaalkalmazást PostgreSQL-kiszolgáló lét
 
 ### <a name="create-an-empty-database-and-set-up-a-new-database-application-user"></a>Hozzon létre egy üres adatbázist, és állítson be egy új adatbázis-alkalmazás felhasználói
 
-Hozzon létre egy adatbázis-felhasználó csak egy önálló adatbázis elérésére. Elkerülése érdekében adjon az alkalmazás teljes hozzáférést a kiszolgáló ezeket a hitelesítő adatokat fogja használni.
+Hozzon létre egy adatbázis-felhasználó csak egy önálló adatbázis elérésére. Ezek a hitelesítő adatok segítségével elkerülése érdekében adjon az alkalmazás teljes hozzáférést a kiszolgáló.
 
 Kapcsolódni az adatbázishoz (felszólítja a rendszergazdai jelszavát).
 
@@ -293,7 +290,7 @@ Az adatbázis már tartalmaz a korábban létrehozott regisztrációját.
 
 ## <a name="upload-the-docker-container-to-a-container-registry"></a>Töltse fel a Docker-tároló egy tároló beállításjegyzék
 
-Ebben a lépésben a Docker-tároló egy tároló beállításjegyzék feltöltése. Azure-tároló beállításjegyzék fogja használni, de más például Docker Hub népszerű ők is használhatja.
+Ebben a lépésben a Docker-tároló egy tároló beállításjegyzék feltöltése. Használata Azure tároló beállításjegyzék, de más például Docker Hub népszerű ők is használhatja.
 
 ### <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
 

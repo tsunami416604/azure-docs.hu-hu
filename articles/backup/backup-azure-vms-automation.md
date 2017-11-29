@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/17/2017
+ms.date: 11/28/2017
 ms.author: markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6682bf5e4b0b64d5309f939379906efff6e017d
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: ddd45dfb1f9e08add7a61a42e4f9b570dc25495d
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Készítsen biztonsági másolatot a virtuális gépek AzureRM.RecoveryServices.Backup-parancsmagok használatával
 > [!div class="op_single_selector"]
@@ -106,7 +106,7 @@ A következő lépések alapján a Recovery Services-tároló létrehozása. Rec
 2. A Recovery Services-tároló egy Resource Manager szerinti erőforrás,, ezért el kell helyezni az erőforráscsoporton belül. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot a a  **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)**  parancsmag. Erőforráscsoport létrehozásakor meg nevét és helyét, ahhoz az erőforráscsoporthoz.  
 
     ```
-    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
+    PS C:\> New-AzureRmResourceGroup -Name "test-rg" -Location "West US"
     ```
 3. Használja a  **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)**  parancsmaggal hozhat létre a Recovery Services-tároló. Ne felejtse el ugyanazon a helyen, a tároló adja meg, mint az erőforráscsoport használt.
 
@@ -116,7 +116,7 @@ A következő lépések alapján a Recovery Services-tároló létrehozása. Rec
 4. Megadhatja a használandó; adattároló redundanciája, amely használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) vagy [földrajzi redundáns tárolás (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). A következő példa bemutatja a - BackupStorageRedundancy beállítás a testvault GeoRedundant értékre van állítva.
 
     ```
-    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testvault"
+    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault -Name "testvault"
     PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
@@ -290,8 +290,8 @@ Biztonsági mentési adatok helyreállítását, a biztonsági másolat elem és
 Ahhoz, hogy a PowerShell-objektum, amely a helyes biztonságimásolat-elem azonosítja, indítsa el a tárolóban lévő-tárolójából, és az objektum egy hierarchiában lejjebb lévő módon működnek. Válassza ki a tárolóhoz, amelybe a virtuális Gépet jelöl, használja a  **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)**  parancsmag és a csövön keresztüli, hogy a  **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)**  parancsmag.
 
 ```
-PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" –Status "Registered" -FriendlyName "V2VM"
-PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem –Container $namedContainer  –WorkloadType "AzureVM"
+PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
+PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
 ### <a name="choose-a-recovery-point"></a>A helyreállítási pont kiválasztása
@@ -525,8 +525,8 @@ A fájl biztonsági másolatból történő visszaállítását Azure virtuális
 Ahhoz, hogy a PowerShell-objektum, amely a helyes biztonságimásolat-elem azonosítja, indítsa el a tárolóban lévő-tárolójából, és az objektum egy hierarchiában lejjebb lévő módon működnek. Válassza ki a tárolóhoz, amelybe a virtuális Gépet jelöl, használja a  **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)**  parancsmag és a csövön keresztüli, hogy a  **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)**  parancsmag.
 
 ```
-PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" –Status "Registered" -FriendlyName "V2VM"
-PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem –Container $namedContainer  –WorkloadType "AzureVM"
+PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
+PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
 ### <a name="choose-a-recovery-point"></a>A helyreállítási pont kiválasztása

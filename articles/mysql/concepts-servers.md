@@ -8,15 +8,15 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/03/2017
-ms.openlocfilehash: 17f045f516792e50f7349805ec9f7a01e3f9d5b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/27/2017
+ms.openlocfilehash: d3de3fdf28997b63321bf23443472db43ebb5c52
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Kiszolgáló kapcsolatos fogalmak, MySQL az Azure-adatbázis
-Ez a témakör szempontjait és irányelveket MySQL-kiszolgálók Azure-adatbázishoz való munkához.
+Ez a cikk szempontjait és útmutatást biztosít a MySQL-kiszolgálók Azure-adatbázis használata.
 
 ## <a name="what-is-an-azure-database-for-mysql-server"></a>Mi az az Azure-adatbázis MySQL-kiszolgáló?
 
@@ -38,15 +38,13 @@ A MySQL-kiszolgálóhoz létrehozott Azure-adatbázisban egy vagy több adatbáz
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Hogyan csatlakozzon és hitelesíti magát egy Azure-adatbázisban, MySQL-kiszolgáló?
 
 A következő elemek biztosíthatja, hogy az adatbázishoz való hozzáférést.
-
 |||
 | :-- | :-- |
 | **Hitelesítés és engedélyezés** | MySQL-kiszolgálóhoz tartozó Azure-adatbázis natív MySQL-hitelesítését támogatja. Csatlakozhat, és a kiszolgáló-rendszergazdai bejelentkezés a kiszolgáló hitelesítéséhez. |
 | **Protocol (Protokoll)** | A szolgáltatás támogatja a MySQL által használt üzenet-alapú protokoll. |
 | **TCP/IP** | A protokoll támogatott TCP/IP felett, és a Unix-tartomány szoftvercsatornákon keresztül. |
-| **Tűzfal** | Az adatok védelme érdekében egy tűzfalszabály megakadályozza, hogy minden hozzáférés az adatbázis-kiszolgáló, illetve az adatbázisain, amíg megadhatja, hogy mely számítógépek rendelkeznek engedéllyel. Lásd: [Azure-adatbázis a MySQL-kiszolgáló tűzfalszabályainak](./concepts-firewall-rules.md). |
+| **Tűzfal** | Az adatok védelme érdekében egy tűzfalszabály megakadályozza a összes az adatbázis-kiszolgáló csak akkor adja meg, mely számítógépek rendelkeznek engedéllyel. Lásd: [Azure-adatbázis a MySQL-kiszolgáló tűzfalszabályainak](./concepts-firewall-rules.md). |
 | **SSL** | A szolgáltatás támogatja végrehajtó SSL-kapcsolatok az alkalmazások és az adatbázis-kiszolgáló között.  Lásd [SSL-összekapcsolhatóság konfigurálása az alkalmazásban a MySQL Azure-adatbázisához való biztonságos kapcsolódás érdekében](./howto-configure-ssl.md). |
-|||
 
 ## <a name="how-do-i-manage-a-server"></a>Hogyan kezelheti a kiszolgáló?
 Kezelheti az Azure Database MySQL-kiszolgálók az Azure-portálon vagy az Azure parancssori felület használatával.

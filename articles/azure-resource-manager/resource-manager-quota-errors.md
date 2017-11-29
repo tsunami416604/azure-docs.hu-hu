@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 11/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6a8024a12c4a79e92e37df0a56b6e6bd0cb6a8d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ed3da2d9730d8c30d8170ddf40fe4895dfa5dec
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Javítsa a hibákat a erőforráskvótákkal
 
@@ -93,9 +93,29 @@ Virtual Machines                             0 10000 Count
 
 ### <a name="solution-3"></a>Megoldás 3
 
-A kvótakorlát növelnie kell, ha-portálon végezhető, és a problémának a megoldásához a régió, ahol számára telepíteni kívánja a kvóta emelése fájlt.
+Kérje meg a kvótájának növelését, nyissa meg a portál és a a problémának a megoldásához. A támogatási probléma kér a régió, ahol számára telepíteni kívánja a kvótájának növelését.
 
 > [!NOTE]
 > Ne feledje, hogy az erőforráscsoportok, a kvóta a minden egyes régió tartozik, nem az egész előfizetésre. Ha kell telepítenie az USA nyugati régiója 30 mag, hogy kérjen 30 erőforrás-kezelő magok az USA nyugati régiója. Ha sem a régiók, amelyhez hozzáfér 30 magok telepíteni kell, kérdezze meg a 30 erőforrás-kezelő magok minden régióban.
 >
 >
+
+1. Válassza ki **előfizetések**.
+
+   ![Előfizetések](./media/resource-manager-quota-errors/subscriptions.png)
+
+2. Válassza ki az előfizetést, amelyet egy nagyobb kvótát.
+
+   ![Előfizetés kiválasztása](./media/resource-manager-quota-errors/select-subscription.png)
+
+3. Válassza ki **használati + kvóták**
+
+   ![Válassza ki a használati és kvóták](./media/resource-manager-quota-errors/select-usage-quotas.png)
+
+4. A jobb felső sarokban válassza **megnövelésére**.
+
+   ![Megnövelésére](./media/resource-manager-quota-errors/request-increase.png)
+
+5. Töltse ki az űrlapok kvóta növelnie kell a típushoz.
+
+   ![Adja meg a képernyő](./media/resource-manager-quota-errors/forms.png)

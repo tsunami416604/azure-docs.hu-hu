@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/28/2017
 ms.author: mimig
-ms.openlocfilehash: fd0454252080679fa880eecb677d609ea0734f09
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 5163d20aece01addddeae93cb07355bde928a440
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Adatok importálása az Azure Cosmos DB tábla API való használatra
 
@@ -32,11 +32,11 @@ Ez az oktatóanyag ismerteti a következő feladatokat:
 
 ## <a name="data-migration-tool"></a>Az adatáttelepítési eszköz
 
-A parancssori Azure Cosmos DB adatáttelepítési eszközét (dt.exe) segítségével importálja a meglévő Azure Table storage adatok GA tábla API-fiókra, vagy adatokat telepítsen át egy tábla API (előzetes verzió) fiók egy tábla API GA figyelembe. Más forrásokból jelenleg nem támogatottak.
+A parancssori Azure Cosmos DB adatáttelepítési eszközét (dt.exe) segítségével importálja a meglévő Azure Table storage adatok GA tábla API-fiókra, vagy adatokat telepítsen át egy tábla API (előzetes verzió) fiók egy tábla API GA figyelembe. Más forrásokból jelenleg nem támogatottak. A felhasználói felületen alapuló adatáttelepítési eszköz (dtui.exe) jelenleg nem támogatott a tábla API fiókok. 
 
 A tábla adatai az áttelepítés a következő feladatokat kell végrehajtani:
 
-1. Az áttelepítési eszközt a [Microsoft Download Center](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) vagy [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool).
+1. Az áttelepítési eszközt [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool).
 2. Futtatás `dt.exe` a parancssori argumentumokat használni a forgatókönyv segítségével.
 
 DT.exe parancs hajtja végre a következő formátumban:

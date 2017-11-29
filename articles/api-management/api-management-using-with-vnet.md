@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 9970452b62b31f28f8277580dd1075c306767d8b
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 7fad1b662c587fed6cd7dd6a1792d8598f0e4f85
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatokról (Vnetekről) helyezze el az Azure-erőforrások bármelyike nem internetes routeable hálózati hozzáférést szabályozó teszik lehetővé. Ezek a hálózatok csatlakozhatnak különböző VPN technológiáin a helyszíni hálózatokhoz. További információk az Azure virtuális hálózatok indítsa el az adatok Itt további: [Azure virtuális hálózat áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -45,7 +45,7 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie kell:
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Engedélyezze a VNET-kapcsolatot az Azure portál használatával
 
 1. Keresse meg a APIM példányhoz, illetve a [Azure-portálon](https://portal.azure.com/).
-2. Válassza ki **egyéni tartományok és SSL**.
+2. Válassza ki **virtuális hálózati**.
 3. Konfigurálja az API Management telepíthető egy virtuális hálózaton belül.
 
     ![Virtuális hálózati menü API Management][api-management-using-vnet-menu]
@@ -116,6 +116,7 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
 | * / 14000 - 14999 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|**Hozzáférés az Azure SQL 12-es verzióra** |Külső és belső |
 | * / 5671 |Kimenő |AMQP |VIRTUAL_NETWORK / INTERNET|Az Event Hubs házirend- és figyelési ügynök napló függőség |Külső és belső |
 | * / 445 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Azure-fájlmegosztáshoz git függőség |Külső és belső |
+| * / 25028 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Csatlakozzon az SMTP-továbbító az e-mailek küldésekor |Külső és belső |
 | * / 6381 - 6383 |Bejövő és kimenő |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Hozzáférés a Redis gyorsítótár példányok RoleInstances között |Külső és belső |
 | * / * | Bejövő |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Az Azure infrastruktúra Terheléselosztóját |Külső és belső |
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: bbfcbadcb0010d50e572b335d4cac78b33e974c8
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 21168d0862cfdaaaced60fa80a2dc04859f49550
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-cosmos-db-import-cassandra-data"></a>Az Azure Cosmos DB: Import Cassandra adatok
 
@@ -49,7 +49,7 @@ Ez az oktatóanyag ismerteti a következő feladatokat:
 
 ## <a name="use-cqlsh-copy"></a>Másolás cqlsh használata
 
-Adatok importálása Cassandra adatok Azure Cosmos DB Cassandra API-val használható, használja a következő útmutatást:
+Cassandra adatokat importáljon Azure Cosmos DB Cassandra API-val használható, használja a következő útmutatást:
 
 1. Jelentkezzen be a portálról kapcsolati információk használatával cqhsh.
 2. Használja a [CQL Másolás parancs](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) helyi adatok másolása az Apache Cassandra API-végpontot. Biztosítsa, hogy a forrás és cél ugyanabban az adatközpontban a késési problémák minimalizálása érdekében.

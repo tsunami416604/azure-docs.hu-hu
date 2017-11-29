@@ -12,7 +12,7 @@ az group create --name myResourceGroup --location eastus
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. 
 
-Az alábbi példa egy *myVM* nevű virtuális gépet és SSH-kulcsokat hoz létre, ha azok még nem léteznek a kulcsok alapméretezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
+Az alábbi példa egy *myVM* nevű virtuális gépet és SSH-kulcsokat hoz létre, ha azok még nem léteznek a kulcsok alapméretezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A parancs is beállítja *azureuser* egy rendszergazda felhasználó névvel. Ez a név később való csatlakozásra használja a virtuális géphez. 
 
 ```azurecli-interactive 
 az vm create \
@@ -23,7 +23,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel a `publicIpAddress` értékét. Ez a cím használható a virtuális gép eléréséhez.
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel a `publicIpAddress` értékét. Ez a cím a virtuális Gépet, a későbbi lépésekben eléréséhez használt.
 
 ```azurecli-interactive 
 {
@@ -50,14 +50,14 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ## <a name="ssh-into-your-vm"></a>Bejelentkezés a virtuális gépre SSH-val
 
 
-Ha a nyilvános IP-címet a virtuális gép már nem tudja, futtassa a [az nyilvános ip-lista](/cli/azure/network/public-ip#list) parancs:
+Ha a nyilvános IP-címet a virtuális gép már nem tudja, futtassa a [az nyilvános ip-lista](/cli/azure/network/public-ip#list) parancsot. Az IP-cím több a későbbi lépésekben szükség van.
 
 
 ```azurecli-interactive
 az network public-ip list --resource-group myResourceGroup --query [].ipAddress
 ```
 
-Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Helyettesítse be a megfelelő nyilvános IP-címet a virtuális gép. Ebben a példában az IP-cím van *40.68.254.142*.
+Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Helyettesítse be a megfelelő nyilvános IP-címet a virtuális gép. Ebben a példában az IP-cím van *40.68.254.142*. *azureuser* a rendszergazdai felhasználónevet értéke a virtuális gép létrehozása után.
 
 ```bash
 ssh azureuser@40.68.254.142

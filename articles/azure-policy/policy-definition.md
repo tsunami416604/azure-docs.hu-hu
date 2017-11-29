@@ -9,19 +9,19 @@ ms.date: 10/31/2017
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: 8ff85f842356eff3f12ccd04e337d71c52d0efcd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1b8fd12e071bfbd01567803370e510e7e07ccb99
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="azure-policy-definition-structure"></a>Az Azure házirend szerkezete
+# <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
 Erőforrás házirend-definíció Azure házirend által használt lehetővé teszi a szervezet erőforrások egyezmények létrehozása: Ha a házirend érvényesítve van-e, és a végrehajtandó műveletet. Egyezmények meghatározásával szabályozhatja költségeit, és több könnyen kezelheti az erőforrásokat. Megadhatja például, hogy engedélyezve legyenek-e a virtuális gépek csak bizonyos típusú. Vagy megkövetelheti, hogy minden erőforrás egy bizonyos címkével rendelkezik. Összes gyermek-erőforrás által örökölt házirendek. Igen a házirend vonatkozik egy erőforráscsoport, esetén alkalmazandó az erőforráscsoport összes erőforrást.
 
 JSON házirend-definíció létrehozására használhatja. A házirend-definíció a elemeket tartalmazza:
 
-* Mód
+* mód
 * paraméterek
 * Megjelenített név
 * leírás
@@ -88,13 +88,21 @@ Például egy erőforrás-tulajdonságok korlátozza a hely, ahol erőforrásoka
     "type": "array",
     "metadata": {
       "description": "The list of allowed locations for resources.",
-      "displayName": "Allowed locations"
+      "displayName": "Allowed locations",
+      "strongType": "location"
     }
   }
 }
 ```
 
 A paraméter típusa karakterlánc vagy tömb lehet. A metaadat-tulajdonságnak szolgál például az Azure-portálon felhasználóbarát információk megjelenítéséhez.
+
+A metaadat-tulajdonságnak belül használható **strongType** arra, hogy az Azure-portálon belül beállítások többszörös kiválasztási listája.  Engedélyezett értékek a **strongType** jelenleg tartalmaz:
+
+* `"location"`
+* `"resourceTypes"`
+* `"storageSkus"`
+* `"vmSKUs"`
 
 A házirend szabályban hivatkozási paraméter a következő szintaxissal:
 
@@ -109,7 +117,7 @@ A házirend szabályban hivatkozási paraméter a következő szintaxissal:
 
 Használhat **displayName** és **leírás** azonosíthatja a házirend-definíció, és adja meg a környezetben használat esetén.
 
-## <a name="policy-rule"></a>Házirend szabályai
+## <a name="policy-rule"></a>Szabályzatbeli szabály
 
 A házirendszabály áll **Ha** és **majd** blokkolja. Az a **Ha** blokk, megadhatja, hogy egy vagy több feltételt, adja meg, ha a házirend érvényesítve van-e. Logikai operátorok ezek a feltételek pontosan meghatározni a forgatókönyvhöz, amelyben egy házirendet alkalmazhat.
 

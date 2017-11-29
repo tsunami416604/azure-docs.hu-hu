@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: ce6edbdffe9704383676e990865cd4e2958f30fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/27/2017
+ms.openlocfilehash: e962fd65244ceebfc7544dc5a1d1956dad811fea
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>A MySQL-adatbázis áttelepítése az Azure Database a MySQL használata a biztonsági másolat és helyreállítás
 Ez a cikk ismerteti a biztonsági mentése és adatbázisokat az Azure-adatbázis visszaállítása a MySQL két gyakori módjai
@@ -80,7 +80,7 @@ Adatbázis biztonsági mentése több egyszerre, használja a--adatbázis válts
 $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql 
 ```
 Minden az adatbázisok biztonsági mentése a kiszolgálón egy időben, ajánlott a--minden-adatbázisok lehetőséget.
-```
+```bash
 $ mysqldump -u root -p --all-databases > alldb_backup.sql 
 ```
 

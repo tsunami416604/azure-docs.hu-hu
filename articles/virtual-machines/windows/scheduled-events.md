@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 76179b6a8eb7066c90828d33729b557f5e37c17a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f872972135f43efd1fbfdedcf9697c3e8100ebde
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="azure-metadata-service-scheduled-events-preview-for-windows-vms"></a>Az Azure metaadat-szolgáltatás: Ütemezett események (előzetes verzió) Windows virtuális gépek
 
@@ -27,31 +27,38 @@ ms.lasthandoff: 11/03/2017
 > Az előzetes verziójú funkciók rendelkezésre álló, feltéve, hogy elfogadja a használati feltételeket. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-Ütemezett események egyike a subservices alatt az Azure metaadat-szolgáltatás. Felelős felszínre hozza a jövőbeni események kapcsolatos információk (például újraindítás), az alkalmazás előkészítése őket, és korlátozza megszakítása. Érhető el minden Azure virtuális gép esetében, beleértve a PaaS és IaaS. Ütemezett események időpontot a virtuális gép olyan esemény hatás minimalizálása érdekében megelőző feladatok elvégzéséhez. 
+Ütemezett események egy Azure metaadat-szolgáltatás, amely az alkalmazás időpontot készíti elő a virtuális gép karbantartása. Információt ad a közelgő karbantartásokról események (pl. újraindítás), az alkalmazás előkészítése őket, és korlátozza megszakítása. Akkor érhető el, beleértve a PaaS és a Windows és Linux IaaS minden Azure virtuális gép esetében. 
 
-A Linux és a Windows virtuális gépek ütemezett események érhető el. Linux ütemezett eseményekkel kapcsolatos információkért lásd: [ütemezett események Linux virtuális gépek](../linux/scheduled-events.md).
+Linux ütemezett eseményekkel kapcsolatos információkért lásd: [ütemezett események Linux virtuális gépek](../linux/scheduled-events.md).
 
 ## <a name="why-scheduled-events"></a>Miért ütemezett eseményeket?
 
-Ütemezett események korlátozhatják a platform-intiated karbantartás vagy felhasználó által kezdeményezett műveletek a szolgáltatás lépéseket is igénybe vehet. 
+Számos alkalmazás is kihasználhatja a le készíti elő a virtuális gép karbantartási idő. Az idő, amelyek javítják a rendelkezésre állás, a megbízhatóság és a szervizelhetőségét például alkalmazás-specifikus feladatok végrehajtására használható: 
 
-Többpéldányos munkaterhelések esetén, amelyek replikációs technikák-állapot karbantartásához, védtelen maradhat a kimaradások esetén több példánya között történik. Pl. kimaradás költséges feladatokat (például újjáépítése indexek) vagy replika adatvesztést is okozhat. 
+- Ellenőrzőpont- és visszaállítása
+- A kapcsolat kiürítését
+- Elsődleges replikák közötti feladatátvétel 
+- A load balancer készlet eltávolítása
+- Események naplózása
+- Biztonságos leállításának 
 
-Sok egyéb esetben a teljes szolgáltatás rendelkezésre állása növelhető a szabályos leállítást sorozat végrehajtásával épp (vagy megszakítás alatt álló) üzenetsoroktól tranzakciók, a többi virtuális gép a fürtben (kézi feladatátvételre) feladatok újbóli, vagy a virtuális gép eltávolítása egy hálózati terheléselosztó-készlet betölteni. 
+Ha karbantartási fog fordulhat elő, és korlátozza a hatását feladatot indít felderíthetők az ütemezett eseményeket az alkalmazás használ.  
 
-Előfordulhatnak olyan esetek, ahol egy jövőbeli eseményről rendszergazda értesítése vagy egy ilyen esemény naplózása érdekében a felhőalapú alkalmazások szervizelhetőségét javítása.
-
-Az Azure metaadat-szolgáltatás ütemezett események Felfed, a következő esetekben használja:
--   A platform által kezdeményezett karbantartási (például a gazda operációs Rendszerével Bevezetés)
--   A felhasználó által kezdeményezett hívások (például felhasználó újraindítja vagy redeploys a virtuális gépek)
-
+Ütemezett események biztosítja az események a következő esetekben használja:
+- A platform által kezdeményezett karbantartási (pl. a gazda operációs rendszer frissítési)
+- Felhasználó által kezdeményezett karbantartási (pl. felhasználó újraindítja vagy a virtuális gépek redeploys)
 
 ## <a name="the-basics"></a>Az alapok  
 
 Azure metaadat-szolgáltatás elérhetővé teszi a virtuális gépek használatával érhető el a virtuális Gépen belül, a REST-végpont futtatásával kapcsolatos információkat. A érhető el információ egy nem átirányítható IP-cím segítségével, hogy nincs felfedve, a virtuális gép kívül.
 
 ### <a name="scope"></a>Hatókör
-Ütemezett események illesztett összes virtuális gépet egy felhőalapú szolgáltatás, vagy egy rendelkezésre állási csoportban lévő összes virtuális gépet. Ennek eredményeképpen, jelölje be a `Resources` mező mellett az esemény azonosításához, amely a virtuális gépek is érinthet szeretné. 
+Ütemezett kézbesíti az eseményeket:
+- Egy felhőalapú szolgáltatás szereplő összes virtuális gép
+- Minden virtuális gépek rendelkezésre állási csoportba
+- A méretezési készlet elhelyezési csoport összes virtuális gépnek. 
+
+Ennek eredményeképpen, jelölje be a `Resources` mező mellett az esemény azonosításához, amely a virtuális gépek is érinthet szeretné. 
 
 ### <a name="discovering-the-endpoint"></a>A végpont felderítése
 Abban az esetben, ahol a rendszer létrehoz egy virtuális gép egy virtuális hálózatot (VNet), a metaadatok szolgáltatás nem érhető el egy statikus nem irányítható IP-cím, `169.254.169.254`.
@@ -73,9 +80,6 @@ Az első alkalommal ütemezett események kérelmet használhat Azure implicit m
 Felhasználó kezdeményezte a virtuális gép karbantartási Azure-portálon a, API-t CLI, vagy PowerShell ütemezett esemény eredményez. Ez lehetővé teszi, hogy a karbantartási előkészítése logika tesztelni az alkalmazás, és lehetővé teszi, hogy a felhasználó által kezdeményezett karbantartási előkészítése az alkalmazás.
 
 A virtuális gép újraindítása ütemezi típusú esemény `Reboot`. Újratelepíteni a virtuális gépet ütemezi a következő típusú eseményre `Redeploy`.
-
-> [!NOTE] 
-> Jelenleg legfeljebb 10 felhasználó által kezdeményezett karbantartási műveletek egyidejűleg ütemezhető. Ezt a határt fog enyhíteni ütemezett események általánosan rendelkezésre álló előtt.
 
 > [!NOTE] 
 > Felhasználó által kezdeményezett karbantartást ütemezett esemény jelenleg nem konfigurálható. Beállíthatóság tervezünk-e egy későbbi kiadásban.

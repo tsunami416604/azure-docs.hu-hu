@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/19/2017
+ms.date: 11/28/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: c9e44a696010541ab153597bb1ab5d556c2e7b65
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 243c42b8637b7887047c85a60e5dfedfd7f6904a
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Technikai útmutató az Azure Active Directory feltételes hozzáférés
 
@@ -147,25 +147,24 @@ Alkalmazás és az ügyfél-hozzáférési használatával szabályozhatja a **m
 A következő mobilalkalmazások és asztali ügyfelek támogatja a feltételes hozzáférés az Office 365 és más Azure AD-csatlakoztatott szolgáltatásalkalmazások:
 
 
-| Ügyfél-alkalmazások| Célként megadott szolgáltatás| Platform |
-| --- | --- | --- |
-| Azure távoli alkalmazás| Az Azure távoli App service| Windows 10, Windows 8.1, Windows 7, iOS, Android és Mac OS X|
-| Dynamics CRM-alkalmazás| Dynamics CRM| Windows 10, Windows 8.1, Windows 7, iOS és Android|
-| Mail/naptár/személyek app, Outlook 2016, az Outlook 2013 (modern hitelesítést)| Az Office 365 Exchange online-hoz| Windows 10|
-| Többtényezős hitelesítés és a hely házirend-alkalmazásokhoz. Eszköz alapú szabályzatok nem támogatottak.| Bármely saját alkalmazások app service| Android és iOS|
-| Microsoft csapatok szolgáltatások – ezen lehetőség összes szolgáltatás, amely támogatja a Microsoft Teams és minden az ügyfél alkalmazások – Windows asztali, iOS, Android, WP és webes ügyfél| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS, Android és macOS|
-| Office 2016, Office 2013 (a modern hitelesítést), a onedrive vállalati verzió alkalmazások szinkronizálása ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))| Az Office 365 SharePoint online szolgáltatáshoz| Windows 8.1, Windows 7|
-| Office 2016-alkalmazások, univerzális Office-alkalmazásokat, Office 2013 (modern hitelesítést), a onedrive vállalati verzió szinkronizálási ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), Office csoportok támogatási tervezünk-e a jövőben, SharePoint-alkalmazások támogatása tervezünk-e a jövőben| Az Office 365 SharePoint online szolgáltatáshoz| Windows 10|
-| Office 2016 macOS (Word, Excel, PowerPoint, csak a OneNote). A OneDrive vállalati verziójának ügyfélszolgálatával tervezett a jövőben| Az Office 365 SharePoint online szolgáltatáshoz| Mac OS X|
-| Office-mobilalkalmazások| Az Office 365 SharePoint online szolgáltatáshoz| iOS, Android|
-| Office Yammer-alkalmazás| Az Office 365 Yammer| Windows 10, iOS, Android|
-| Outlook 2016 (Office macOS)| Az Office 365 Exchange online-hoz| Mac OS X|
-| Outlook 2016, az Outlook 2013 (modern hitelesítést), a Skype vállalati verzió (a modern hitelesítést)| Az Office 365 Exchange online-hoz| Windows 8.1, Windows 7|
-| Outlook mobilalkalmazás| Az Office 365 Exchange online-hoz| iOS|
-| Power bi alkalmazásról. Az Androidhoz készült Power BI alkalmazás jelenleg nem támogatja a eszközalapú feltételes hozzáférés.| Power bi szolgáltatás| Windows 10, Windows 8.1, Windows 7 és iOS|
-| A Skype vállalati verzió| Az Office 365 Exchange online-hoz| Android, IOS|
-| A Visual Studio Team Services-alkalmazás| Visual Studio Team Services| Windows 10, Windows 8.1, Windows 7, iOS és Android|
-
+|Ügyfél-alkalmazások|Célként megadott szolgáltatás|Platform|
+|---|---|---|
+|Azure távoli alkalmazás|Az Azure távoli App service|Windows 10, Windows 8.1, Windows 7, iOS, Android és Mac OS X|
+|Dynamics CRM-alkalmazás|Dynamics CRM|Windows 10, Windows 8.1, Windows 7, iOS és Android|
+|Mail/naptár/személyek app, Outlook 2016, az Outlook 2013 (modern hitelesítést)|Az Office 365 Exchange online-hoz|Windows 10|
+|Többtényezős hitelesítés és a hely házirend-alkalmazásokhoz. Eszköz alapú szabályzatok nem támogatottak. |Bármely saját alkalmazások app service|Android és iOS|
+|Microsoft csapatok szolgáltatások – ezen lehetőség összes szolgáltatás, amely támogatja a Microsoft Teams és minden az ügyfél alkalmazások – Windows asztali, iOS, Android, WP és webes ügyfél|Microsoft Teams|Windows 10, Windows 8.1, Windows 7, iOS, Android és macOS |
+|Office 2016, Office 2013 (a modern hitelesítést), a onedrive vállalati verzió alkalmazások szinkronizálása ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Az Office 365 SharePoint online szolgáltatáshoz|Windows 8.1, Windows 7|
+|Office 2016-alkalmazások, univerzális Office-alkalmazásokat, Office 2013 (modern hitelesítést), a onedrive vállalati verzió szinkronizálási ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), Office csoportok támogatási tervezünk-e a jövőben, SharePoint-alkalmazások támogatása tervezünk-e a jövőben|Az Office 365 SharePoint online szolgáltatáshoz|Windows 10|
+|Office 2016 macOS (Word, Excel, PowerPoint, csak a OneNote). A OneDrive vállalati verziójának ügyfélszolgálatával tervezett a jövőben|Az Office 365 SharePoint online szolgáltatáshoz|Mac OS X|
+|Office-mobilalkalmazások|Az Office 365 SharePoint online szolgáltatáshoz|Android, iOS|
+|Office Yammer-alkalmazás|Az Office 365 Yammer|Windows 10, iOS, Android|
+|Outlook 2016 (Office macOS)|Az Office 365 Exchange online-hoz|Mac OS X|
+|Outlook 2016, az Outlook 2013 (modern hitelesítést), a Skype vállalati verzió (a modern hitelesítést)|Az Office 365 Exchange online-hoz|Windows 8.1, Windows 7|
+|Outlook mobilalkalmazás|Az Office 365 Exchange online-hoz|Android, iOS|
+|Power bi alkalmazásról. Az Androidhoz készült Power BI alkalmazás jelenleg nem támogatja a eszközalapú feltételes hozzáférés.|Power bi szolgáltatás|Windows 10, Windows 8.1, Windows 7 és iOS|
+|A Skype vállalati verzió|Az Office 365 Exchange online-hoz|Android, IOS |
+|A Visual Studio Team Services-alkalmazás|Visual Studio Team Services|Windows 10, Windows 8.1, Windows 7, iOS és Android|
 
 
 

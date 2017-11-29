@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: damaerte
-ms.openlocfilehash: 59aec1cb6433e90caf683b4bce98c92e9f79fd18
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 233569303ea3651192aafe9681f58a9582625d29
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="troubleshooting-azure-cloud-shell"></a>Hibaelhárítás az Azure-felhőbe rendszerhéj
 
@@ -64,8 +64,9 @@ Ismert problémák Azure Cloud rendszerhéj megoldások:
 
 ### <a name="gui-applications-are-not-supported"></a>Grafikus felhasználói Felülettel alkalmazások nem támogatottak.
 
-- **Részletek**: Ha egy felhasználó elindítja egy grafikus felhasználói Felülettel alkalmazást, a kérdés nem ad vissza. Például amikor egy felhasználó klónokat titkos GitHub-tárház kéttényezős hitelesítés engedélyezve van, egy párbeszédpanel a kéttényezős hitelesítéshez befejezésének.
-- **Megoldási**: `Ctrl+C` való kilépéshez a parancsot.
+- **Részletek**: Ha egy felhasználó elindítja egy grafikus felhasználói Felülettel alkalmazást, a kérdés nem ad vissza. Például amikor egy felhasználó klónokat titkos GitHub-tárház kéttényezős hitelesítés engedélyezve van, egy párbeszédpanel a kéttényezős hitelesítéshez befejezésének.  
+- **Megoldási**: zárja be és nyissa meg újra a rendszerhéj.
+
 
 ### <a name="get-help--online-does-not-open-the-help-page"></a>Get-Help - online nem nyitható meg a súgólap
 

@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/22/2017
 ms.author: raynew
-ms.openlocfilehash: fd9513cda899a7ac2a51c4e1ab03a80ce0adf2fd
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 1c21364c3ff5cfb61866c912a699b722f2668607
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/28/2017
@@ -76,12 +76,20 @@ Ellenőrizze, hogy a. PETESEJTEK fájl biztonságos, csak telepítheti azt.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Példa használati:```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. A generált kivonatoló meg kell felelnie, hogy ezeket a beállításokat.
-
+    
+    1.0.8.38 petesejtek verziójához
     **Algoritmus** | **Kivonat értéke**
     --- | ---
     MD5 | dd27dd6ace28f9195a2b5d52a4003067 
     SHA1 | d2349e06a5d4693fc2a1c0619591b9e45c36d695
     SHA256 | 1492a0c6d6ef76e79269d5cd6f6a22f336341e1accbc9e3dfa5dad3049be6798
+
+    1.0.8.40 petesejtek verziójához
+    **Algoritmus** | **Kivonat értéke**
+    --- | ---
+    MD5 | afbae5a2e7142829659c21fd8a9def3f
+    SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
+    SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
 
 ## <a name="create-the-collector-vm"></a>A gyűjtő virtuális gép létrehozása
 
@@ -98,7 +106,6 @@ A letöltött fájlt importálja a vCenter-kiszolgáló.
 8. A **lemezformátum**, adja meg a lemez típusát és méretét.
 9. A **Hálózatleképezés**, adja meg a hálózatot, amelyhez a gyűjtő Virtuálisgép kapcsolódik. A hálózati kell internetkapcsolattal, a metaadatok küldése az Azure-bA. 
 10. Tekintse át és hagyja jóvá a beállításokat, majd kattintson a **Befejezés**.
-
 
 ## <a name="run-the-collector-to-discover-vms"></a>Futtassa a gyűjtő virtuális gépek felderítése
 
@@ -118,6 +125,9 @@ A letöltött fájlt importálja a vCenter-kiszolgáló.
     - A **címke kategória csoportosításhoz**, jelölje be **nincs**.
 1. A **projekt kiválasztása**, adja meg az Azure áttelepítése projekt Azonosítót, és a portálról másolt kulcsot. Ha nem másolja át a fájlokat, az Azure-portál megnyitása a gyűjtő virtuális gép. A projekt **áttekintése** kattintson **gépek felderítése**, és másolja az értékeket.  
 2. A **teljes felderítési**felderítési figyelje, és győződjön meg arról, hogy a virtuális gépek gyűjtött metaadatai a hatókörben. A gyűjtő megadja egy hozzávetőleges felderítés időtartamát.
+
+> [!NOTE]
+> A gyűjtő csak az "Angol (Egyesült Államok)" az operációs rendszer nyelve és a gyűjtő felület nyelvének támogatja. További nyelvek támogatása hamarosan elérhető.
 
 
 ### <a name="verify-vms-in-the-portal"></a>Ellenőrizze a virtuális gépek a portálon

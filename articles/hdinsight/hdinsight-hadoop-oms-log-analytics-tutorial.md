@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 11/27/2017
 ms.author: nitinme
-ms.openlocfilehash: 6677b0b3ed047ce011bfbb72c25e45195859830a
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: ca2cf642cfff2961dcb0dd18f0e712f61d6915c2
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>A HDInsight-fürtök figyelése Azure Log Analytics segítségével
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/18/2017
 
 * **A Naplóelemzési munkaterület**. A munkaterület olyan egyedi Naplóelemzési dolgozik, amelyben a saját adattárház, az adatforrások és a megoldások, tulajdonképpen. Rendelkeznie kell egy ilyen munkaterületet hozott létre, amely az Azure HDInsight-fürtök társíthatja. Útmutatásért lásd: [Naplóelemzési munkaterület létrehozása](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace).
 
-## <a name="configure-hdinsight-cluster-to-use-log-analytics"></a>Log Analytics használata a HDInsight-fürt konfigurálása
+## <a name="enable-log-analytics-by-using-the-portal"></a>A Naplóelemzési engedélyezése a portál használatával
 
 Ebben a szakaszban konfigurál egy meglévő HDInsight Hadoop-fürthöz az Azure Log Analytics-munkaterülethez a figyelheti a feladat, a hibakeresési naplókat, stb.
 
@@ -62,6 +62,25 @@ Ebben a szakaszban konfigurál egy meglévő HDInsight Hadoop-fürthöz az Azure
 6. Ha a rendszer kéri, adja meg Azure hitelesítő adatait.
 
     ![Az Operations Management Suite portálját](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-oms-portal.png "Operations Management Suite portálját")
+
+## <a name="enable-log-analytics-by-using-azure-powershell"></a>A Naplóelemzési engedélyezése az Azure PowerShell használatával
+
+A Naplóelemzési Azure PowerShell használatával engedélyezheti. A parancsmag a következő:
+
+```powershell
+Enable-AzureRmHDInsightOperationsManagementSuite
+```
+
+Lásd: [Enable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/Enable-AzureRmHDInsightOperationsManagementSuite?view=azurermps-5.0.0).
+
+Le szeretné tiltani, a parancsmag van 
+
+```powershell
+Disable-AzureRmHDInsightOperationsManagementSuite
+```
+
+Lásd: [Disable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/disable-azurermhdinsightoperationsmanagementsuite?view=azurermps-5.0.0).
+
 
 ## <a name="next-steps"></a>Következő lépések
 * [HDInsight-fürt felügyeleti megoldások hozzáadni a Naplóelemzési](hdinsight-hadoop-oms-log-analytics-management-solutions.md)

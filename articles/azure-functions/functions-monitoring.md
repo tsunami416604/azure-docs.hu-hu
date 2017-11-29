@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 355cb2cef52b5dfecddae228d0cc24a069d3b695
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33d4a193cc3152bfab1f03dde32ad4f1bcb0afe1
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions figyelése
 
@@ -50,7 +50,7 @@ Az Application Insights az függvény alkalmazás engedélyezése **létrehozás
 
 ### <a name="existing-function-app"></a>Meglévő függvény alkalmazás
 
-Instrumentation kulcs beszerzése, és mentse azt egy függvény alkalmazásban:
+A rendszerállapot-kulcs beszerzése, és mentse azt egy függvény alkalmazásban:
 
 1. Az Application Insights-példány létrehozása. Alkalmazás típusa **általános**.
 
@@ -60,7 +60,7 @@ Instrumentation kulcs beszerzése, és mentse azt egy függvény alkalmazásban:
 
    ![Az Application Insights instrumentation kulcs másolása](media/functions-monitoring/copy-ai-key.png)
 
-1. A függvény alkalmazás **Alkalmazásbeállítások** lapon [egy Alkalmazásbeállítás hozzáadása](functions-how-to-use-azure-function-app-settings.md#settings) nevű APPINSIGHTS_INSTRUMENTATIONKEY, és illessze be a instrumentation kulcsot.
+1. A függvény alkalmazás **Alkalmazásbeállítások** lapon [egy Alkalmazásbeállítás hozzáadása](functions-how-to-use-azure-function-app-settings.md#settings) kattintva **új beállítás hozzáadása**. Az új beállítás APPINSIGHTS_INSTRUMENTATIONKEY nevet, és illessze be a másolt instrumentation kulcs.
 
    ![Alkalmazásbeállítások instrumentation kulcs hozzáadása](media/functions-monitoring/add-ai-key.png)
 
@@ -68,7 +68,7 @@ Instrumentation kulcs beszerzése, és mentse azt egy függvény alkalmazásban:
 
 ## <a name="view-telemetry-data"></a>Telemetriai adatok megtekintése
 
-Keresse meg az Application Insights egy függvény alkalmazásból a portálon, válassza ki a **Application Insights** a függvény app hivatkozásra kattintva **áttekintése** lap.
+Keresse meg a kapcsolódó Application Insights-példány egy függvény alkalmazásból a portálon, válassza ki a **Application Insights** a függvény app hivatkozásra kattintva **áttekintése** lap.
 
 Az Application Insights használatával kapcsolatos információkért lásd: a [Application Insights dokumentáció](https://docs.microsoft.com/azure/application-insights/). Ez a szakasz néhány olyan adatok megtekintése az Application Insightsban jeleníti meg. Ha már ismeri az Application insights szolgáltatással, lépjen közvetlenül [konfigurálásáról és testreszabásáról a telemetriai adatok szakaszok](#configure-categories-and-log-levels).
 
@@ -84,7 +84,7 @@ Az a [teljesítmény](../application-insights/app-insights-performance-counters.
 
 ![Teljesítmény](media/functions-monitoring/performance.png)
 
-A **kiszolgálók** lapon láthatók, erőforrás-kihasználást és átviteli kiszolgálónként. Ezek az adatok hol vannak bogging funkciók le az alapul szolgáló erőforrások forgatókönyvek hibakereséshez hasznos lehet. Kiszolgálók nevezzük *szerepkörpéldányokat felhőalapú*. 
+A **kiszolgálók** lapon láthatók, erőforrás-kihasználást és átviteli kiszolgálónként. Ezek az adatok hol vannak bogging funkciók le az alapul szolgáló erőforrások forgatókönyvek hibakereséshez hasznos lehet. Kiszolgálók nevezzük **szerepkörpéldányokat felhőalapú**.
 
 ![Kiszolgálók](media/functions-monitoring/servers.png)
 
@@ -94,7 +94,7 @@ A [metrikák adatfolyamot](../application-insights/app-insights-live-stream.md) 
 
 ## <a name="query-telemetry-data"></a>Telemetriai adatok lekérdezése
 
-[Application Insights Analytics](../application-insights/app-insights-analytics.md) biztosítja az összes olyan adatbázis tábláit formájában a telemetriai adatok elérését. Elemzés kinyeréséhez, valamint az adatok kezelésére szolgáló lekérdezésnyelvet biztosít.
+[Application Insights Analytics](../application-insights/app-insights-analytics.md) biztosítja az összes olyan adatbázis tábláit formájában a telemetriai adatok elérését. Elemzés lekérdezésnyelvet kibontása, ahol elvégezhető a módosításuk és megjeleníteni az adatokat biztosít.
 
 ![Válassza ki az Analytics](media/functions-monitoring/select-analytics.png)
 
@@ -131,7 +131,7 @@ A futtatókörnyezet biztosít `customDimensions.LogLevel` és `customDimensions
 
 ## <a name="configure-categories-and-log-levels"></a>Konfigurálja a kategóriák és szintek jelentkezzen
 
-Az Application Insights az egyéni konfiguráció nélkül is használhat, de az alapértelmezett konfigurációt eredményezhet nagy mennyiségű adatot. A Visual Studio Azure-előfizetés használata, az adatok maximális App Insights az lehet, hogy kattint. Ez a cikk fennmaradó bemutatja, hogyan konfigurálhatja és testre az adatokat, amelyek a funkciók az Application Insights küldenek.
+Az Application Insights az egyéni konfiguráció nélkül is használhat, de az alapértelmezett konfigurációt eredményezhet nagy mennyiségű adatot. A Visual Studio Azure-előfizetés használata, az Application Insights az adatok maximális előfordulhat, hogy kattint. Ez a cikk fennmaradó bemutatja, hogyan konfigurálhatja és testre az adatokat, amelyek a funkciók az Application Insights küldenek.
 
 ### <a name="categories"></a>Kategóriák
 
@@ -178,7 +178,7 @@ A *host.json* fájl konfigurálja az Application Insights küld egy függvény a
 
 Ez a példa állít be a következő szabályokat:
 
-1. A naplók és a kategória "Host.Results" vagy "Function", csak küldése `Error` szint vagy újabb verzió az Application Insights részére. A naplók `Information` szinten és az alábbiakban figyelmen kívül lesznek hagyva.
+1. A naplók és a kategória "Host.Results" vagy "Function", csak küldése `Error` szint vagy újabb verzió az Application Insights részére. A naplók `Warning` szinten és az alábbiakban figyelmen kívül lesznek hagyva.
 2. A naplók és a gazdagép kategóriát. Gyűjtő küldés csak `Information` szint és a fenti az Application Insights részére. A naplók `Debug` szinten és az alábbiakban figyelmen kívül lesznek hagyva.
 3. Minden más naplók küldése csak `Information` szint és a fenti az Application Insights részére.
 
@@ -217,7 +217,7 @@ Ezek a naplók íródtak `Information` szinten, ezért ha szűrheti a `Warning` 
 
 Ezek a naplók biztosít számát, valamint a függvény meghívásához átlagok képest egy [konfigurálható](#configure-the-aggregator) időszakának idő. Az alapértelmezett időtartam 30 másodperc vagy 1000 eredményeket, amelyik előbb következik be. 
 
-A naplók az Application Insights az "customMetrics" megjelenítése. Többek között az számú fut, sikerességi arányról és időtartama.
+A naplók érhetők el a **customMetrics** Application Insights táblájában. Többek között az számú fut, sikerességi arányról és időtartama.
 
 ![customMetrics lekérdezés](media/functions-monitoring/custom-metrics-query.png)
 
@@ -225,7 +225,7 @@ Ezek a naplók íródtak `Information` szinten, ezért ha szűrheti a `Warning` 
 
 ### <a name="other-categories"></a>Más kategóriák
 
-Eltérő kategóriákban összes napló már fel van sorolva megjelenítése "nyomkövetés" az Application insights szolgáltatással.
+Minden kategóriákban eltérő már szerepel a listában érhetők el naplók a a **nyomkövetések** Application Insights táblájában.
 
 ![nyomok lekérdezés](media/functions-monitoring/analytics-traces.png)
 
@@ -291,7 +291,7 @@ Ha a ugyanazon üzenet karakterlánc tároljuk, és a paraméterek az sorrendjé
 
 Helyőrzők ily módon kezeli, így mindent strukturált naplózás. Az Application Insights tárolja a paraméter név-érték párok mellett az üzenet-karakterlánc. Az eredménye, hogy az üzenet argumentumok válik lekérheti a mezőket.
 
-Például ha a tranzakciónaplókat tartalmazó metódus hívása az előző példához hasonlóan néz ki, akkor lekérdezhet mező `customDimensions.prop__rowKey`. Győződjön meg arról, hogy nincsenek-e a futtatókörnyezet hozzáadja és hozzáadja a funkciókódot mezőket között nincs ütközések előtag kerül.
+Például ha a tranzakciónaplókat tartalmazó metódus hívása az előző példához hasonlóan néz ki, akkor lekérdezhet mező `customDimensions.prop__rowKey`. A `prop__` előtag kerül, győződjön meg arról, hogy nincsenek-e mező a futtatókörnyezet ad hozzá, és a funkciókódot mezők között nincsenek ütközések ad hozzá.
 
 Is lekérheti az eredeti üzenet karakterlánc mező Vezérlőpultjának `customDimensions.prop__{OriginalFormat}`.  
 
@@ -454,7 +454,7 @@ A `tagOverrides` paraméterkészletei `operation_Id` a függvény meghívási az
 
 ### <a name="dependencies"></a>Függőségek
 
-Függőségek nem jelennek meg automatikusan, de egyéni kódja-függőségek írhat. A mintakódot a [C# egyéni telemetria szakasz](#custom-telemetry-in-c-functions) bemutatja, hogyan. A mintakód eredményezi egy *alkalmazás-hozzárendelés* az Application Insightsban láthatóhoz hasonló ezt:
+Függőségek, amelyre a függvény más szolgáltatások nem jelennek meg automatikusan, de a Függőségek megjelenítése egyéni kód írhat. A mintakódot a [C# egyéni telemetria szakasz](#custom-telemetry-in-c-functions) bemutatja, hogyan. A mintakód eredményezi egy *alkalmazás-hozzárendelés* az Application Insightsban láthatóhoz hasonló ezt:
 
 ![Alkalmazástérkép](media/functions-monitoring/app-map.png)
 
@@ -473,10 +473,10 @@ Válassza ki a **figyelő** függvény, és a lap függvény végrehajtások lis
 
 ### <a name="real-time-monitoring"></a>Valós idejű figyelése
 
-Valós idejű figyelés kattintva érhető **élő esemény adatfolyam** a függvény a **figyelő** fülre. Az élő esemény adatfolyam egy grafikonon egy új lap a böngészőben megjelenik
+Valós idejű figyelés kattintva érhető **élő esemény-adatfolyam** a függvény a **figyelő** fülre. Az élő esemény adatfolyam egy grafikonon be egy új böngészőlapon jelenik meg.
 
 > [!NOTE]
-> Nincs egy ismert probléma, amelyek az adatok nem tölthetők fel okozhatnak. Zárja be az élő esemény folyamot tartalmazó böngészőlapon, és kattintson a szeretne **élő esemény adatfolyam** újra, hogy engedélyezi az esemény-adatfolyam adatok megfelelően feltöltéséhez. 
+> Nincs egy ismert probléma, amelyek az adatok nem tölthetők fel okozhatnak. Zárja be az élő esemény folyamot tartalmazó böngészőlapon, és kattintson a szeretne **élő esemény-adatfolyam** újra, hogy engedélyezi az esemény-adatfolyam adatok megfelelően feltöltéséhez. 
 
 Ezeket a statisztikákat a valós idejű, de a tényleges megjelenítés a végrehajtási adatok esetleg késés körülbelül 10 másodperc.
 

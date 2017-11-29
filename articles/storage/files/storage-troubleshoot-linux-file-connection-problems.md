@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
-ms.openlocfilehash: b6eb37ef4e836bd33a77180ef5aa8589ca5139af
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 8fd09c748786f0bfe070c3f41201eddc3d272116
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Azure-fájlok kapcsolatos problémák elhárítása a Linux
 
@@ -157,7 +157,7 @@ A probléma megoldásához használja a [hibaelhárító eszközt hibák csatlak
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nem érhető el "&lt;elérési&gt;": bemeneti/kimeneti hiba
 
-Fájlok listázása a az Azure fájlmegosztások ls paranccsal megkísérlésekor a következő hibaüzenet jelenik meg:
+Egy Azure-fájl a fájlok megosztása ls parancs használatával lista megkísérlésekor ls parancs lefagy, ha listaelem fájlokat a következő hibaüzenetet kapja:
 
 **ls: nem érhető el "&lt;elérési&gt;": bemeneti/kimeneti hiba**
 

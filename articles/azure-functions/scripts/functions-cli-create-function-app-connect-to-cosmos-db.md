@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.custom: mvc
-ms.openlocfilehash: c2c3530df62a1f291be51739a7918f7b8ab08487
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce48f8dd71d5b9e48dcd506df976e07d385f34c5
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Hozzon létre egy Azure-függvény, amely egy Azure Cosmos DB csatlakozik
 
@@ -54,7 +54,7 @@ A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs
 | [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Hozzon létre egy erőforráscsoportot, amelynek a helye |
 | [az storage-fiók létrehozása](https://docs.microsoft.com/cli/azure/storage/account) | Create a storage account |
 | [az functionapp létrehozása](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | Hozzon létre egy új funkció alkalmazást |
-| [az documentdb létrehozása](https://docs.microsoft.com/cli/azure/documentdb#az_documentdb_create) | A documentdb-adatbázis létrehozása |
+| [az cosmosdb létrehozása](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_create) | Cosmosdb adatbázis létrehozása |
 | [az csoport törlése](https://docs.microsoft.com/cli/azure/group#az_group_delete) | A fölöslegessé vált elemek eltávolítása |
 
 ## <a name="next-steps"></a>Következő lépések

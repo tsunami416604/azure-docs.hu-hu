@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 08/03/2017
+ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: c00e6a190633348411f47490808739d570cafd69
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8fcf411db844e227e0c4db0e690a1832f98b42f1
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="install-a-lamp-web-server-on-an-azure-vm"></a>Egy Azure virtuális gépen LÁMPA webkiszolgáló telepítése
 Ez a cikk végigvezeti egy Apache webkiszolgálón, a MySQL és a PHP (a LÁMPA stack) az Azure-ban Ubuntu virtuális gép telepítése. Ha inkább a NGINX webkiszolgáló, tekintse meg a [LEMP verem](tutorial-lemp-stack.md) oktatóanyag. A művelet a LÁMPA kiszolgáló megtekintéséhez opcionálisan is telepítése és konfigurálása egy WordPress-webhely. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -32,7 +32,7 @@ Ez a cikk végigvezeti egy Apache webkiszolgálón, a MySQL és a PHP (a LÁMPA 
 > * WordPress telepítése a LÁMPA kiszolgálón
 
 
-A LÁMPA verem, beleértve az éles környezetbe, ajánlásokat bővebben lásd: a [Ubuntu dokumentáció](https://help.ubuntu.com/community/ApacheMySQLPHP).
+A telepítő a gyors vizsgálat vagy a koncepció igazolása szolgál. A LÁMPA verem, beleértve az éles környezetbe, ajánlásokat bővebben lásd: a [Ubuntu dokumentáció](https://help.ubuntu.com/community/ApacheMySQLPHP).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -42,13 +42,12 @@ Telepítése és a parancssori felület helyileg használata mellett dönt, ha e
 
 ## <a name="install-apache-mysql-and-php"></a>Apache, a MySQL és a PHP telepítése
 
-A következő parancsot Ubuntu csomag adatforrások frissítése, és Apache, a MySQL és a PHP telepítése. Megjegyzés: a parancs végén a beszúrási jel (^).
+A következő parancsot Ubuntu csomag adatforrások frissítése, és Apache, a MySQL és a PHP telepítése. Vegye figyelembe a beszúrási jel (^), a parancs része végén, a `lamp-server^` csomag neve. 
 
 
 ```bash
 sudo apt update && sudo apt install lamp-server^
 ```
-
 
 
 A csomagok és más függőségek telepítése kéri. Amikor a rendszer kéri, egy gyökérszintű jelszót beállítása MySQL, majd [Enter] folytatja. Kövesse a hátralévő utasításokat. Ez a folyamat telepíti a minimálisan szükséges PHP-bővítmények a MySQL PHP használatához szükséges. 
@@ -78,15 +77,15 @@ A következő paranccsal MySQL verziójának ellenőrzése (vegye figyelembe a b
 mysql -V
 ```
 
-Azt javasoljuk, hogy biztonságossá MySQL telepítése a következő parancsprogram futtatása:
+Számítógépek biztonságossá tétele a MySQL telepítését, futtassa a `mysql_secure_installation` parancsfájl. Ha csak hoz létre egy ideiglenes kiszolgálót, kihagyhatja ezt a lépést.
 
 ```bash
 mysql_secure_installation
 ```
 
-Adja meg a MySQL gyökér szintű jelszavát, majd adja meg a környezet biztonsági beállításait.
+Adja meg a gyökér szintű jelszó MySQL, és adja meg a környezet biztonsági beállításait.
 
-Ha azt szeretné, MySQL-adatbázis létrehozásához, adja hozzá a felhasználókat, vagy módosítsa a konfigurációs beállításokat, a MySQL-bejelentkezési:
+Ha ki szeretné próbálni a MySQL-szolgáltatások (MySQL-adatbázis létrehozása, vegye fel a felhasználók vagy konfigurációs beállításokat módosítaná,), MySQL bejelentkezni. Ez a lépés nem szükséges az oktatóanyag elvégzéséhez.
 
 ```bash
 mysql -u root -p

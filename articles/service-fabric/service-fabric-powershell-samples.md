@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
-ms.date: 11/15/2017
+ms.date: 11/28/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: e255382b1263c162bfc80cf41f9e8d362be55a8e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: ae132dbb650e08c3a25a9366563e70c6d56e089d
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-minták
 
@@ -32,8 +32,10 @@ A következő táblázat a PowerShell parancsfájlok mintának, hogy a Service F
 |-|-|
 | **Fürt létrehozása** ||
 | [Hozzon létre egy fürtöt (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Az Azure Service Fabric-fürtöt hoz létre. |
-| **Fürt kezelése** ||
+| **Kezelheti a fürt és a csomópontok** ||
 | [Egy alkalmazás-tanúsítvány hozzáadása](./scripts/service-fabric-powershell-add-application-certificate.md)| Egy alkalmazás X.509 tanúsítvány felvétele a fürt összes csomópontján. |
+|[Az RDP-porttartomány fürtcsomóponton virtuális gépek módosítása](./scripts/service-fabric-powershell-change-rdp-port-range.md)|Módosítja az RDP porttartomány fürtben telepített virtuális gépek fürtcsomóponton.|
+| [A rendszergazdai jogú felhasználó és a virtuális gépek fürt összes csomópontjára vonatkozóan jelszó frissítése](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) | A rendszergazda felhasználónevét és jelszavát fürtcsomópont virtuális gépek frissíti. |
 | **Alkalmazások kezelése** ||
 | [Alkalmazás üzembe helyezése](./scripts/service-fabric-powershell-deploy-application.md)| Alkalmazás üzembe helyezése a fürthöz.|
 | [Alkalmazás frissítése](./scripts/service-fabric-powershell-upgrade-application.md)| Alkalmazás frissítése |

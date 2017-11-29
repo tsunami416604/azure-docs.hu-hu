@@ -14,31 +14,31 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: anwestg
-ms.openlocfilehash: 1e4188313a87d07f396e5f8edc8969dd5da2c436
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6078ba7b553773294ebbf11949f7d3b53f46f0c
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="install-the-azure-functions-runtime-preview"></a>Telepítse az Azure Functions futásidejű előnézete
 
 Ha szeretné telepíteni az Azure Functions Futtatókörnyezettel előzetes, akkor kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, a gép megfelel a minimális követelményeknek
-1. Töltse le a [Azure Functions futásidejű Preview telepítő](https://aka.ms/azafr). 
-1. Telepítse az Azure Functions Futtatókörnyezettel előzetes
-1. Az Azure Functions Futtatókörnyezettel előzetes konfigurálása
+1. Győződjön meg arról, a gép megfelel a minimális követelményeknek.
+1. Töltse le a [Azure Functions futásidejű Preview telepítő](https://aka.ms/azafr).
+1. Telepítse az Azure Functions Futtatókörnyezettel előzetes.
+1. Az Azure Functions Futtatókörnyezettel előzetes konfigurációjának befejezéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure Functions Futtatókörnyezettel előzetes verzió telepítése előtt az alábbiakkal kell rendelkeznie:
 
 1. A Microsoft Windows Server 2016 vagy a Microsoft Windows 10 Creators frissítés (Professional és Enterprise Edition) rendszerű gépek.
-1. A hálózaton belül futó SQL Server-példányt.  Minimális edition követelmény az SQL Server Express.
+1. A hálózaton belül futó SQL Server-példányt.  A rendszer szükséges minimális edition SQL Server Express.
 
 ## <a name="install-the-azure-functions-runtime-preview"></a>Telepítse az Azure Functions futásidejű előnézete
 
-Az Azure Functions Futtatókörnyezettel preview telepítő végigvezeti Önt az Azure Functions Futtatókörnyezettel előzetes felügyeleti és feldolgozói szerepkörök telepítését.  Akkor lehet a felügyeleti és a feldolgozói szerepkör telepítése ugyanazon a számítógépen.  Azonban további funkciók hozzáadása, telepítenie kell a további gépek alakzatot több Worker a functions méretezése tennie további feldolgozói szerepkörök is.
+A Azure Functions futásidejű Preview telepítő végigvezeti Önt az Azure Functions Futtatókörnyezettel előzetes felügyeleti és feldolgozói szerepkörök telepítését.  Akkor lehet a felügyeleti és a feldolgozói szerepkör telepítése ugyanazon a számítógépen.  Azonban további funkciók hozzáadása, telepítenie kell a további gépek alakzatot több Worker a functions méretezése tennie további feldolgozói szerepkörök is.
 
 ## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>A felügyeleti és a feldolgozói szerepkör telepítése ugyanazon a számítógépen
 
@@ -46,52 +46,52 @@ Az Azure Functions Futtatókörnyezettel preview telepítő végigvezeti Önt az
 
     ![Az Azure Functions futásidejű Preview telepítő][1]
 
-1. **Kattintson a Tovább gombra** előzetes túli az első szakasza a telepítő
-1. Ha mindenképpen olvassa el a használati a **EULA**, **jelölje be a jelölőnégyzetet** a feltételek elfogadásának és **kattintson a Tovább gombra** ahhoz, hogy.
-1. Most válassza ki a szerepköröket, ezen a számítógépen telepítendő **funkciók szerepkör** és/vagy **funkciók feldolgozói szerepkör** és **kattintson a Tovább gombra**
+1. Kattintson a **Tovább** gombra.
+1. Ha mindenképpen olvassa el a használati a **EULA**, **jelölje be a jelölőnégyzetet** elfogadja a feltételeket, majd **következő** ahhoz, hogy.
+1. Most válassza ki a szerepköröket, ezen a számítógépen telepítendő **funkciók szerepkör** és/vagy **funkciók feldolgozói szerepkör** kattintson **következő**.
 
     ![Az Azure Functions futásidejű Preview Installer - szerepkör kiválasztása][3]
 
     > [!NOTE]
-    > Telepítheti a **funkciók feldolgozói szerepkör** sok más számítógépeken ehhez, kövesse ezeket az utasításokat, és csak akkor válassza **funkciók feldolgozói szerepkör** a telepítőben.
+    > Telepítheti a **funkciók feldolgozói szerepkör** sok más számítógépre. Ehhez kövesse ezeket az utasításokat, és csak **funkciók feldolgozói szerepkör** a telepítőben.
 
-1. **Kattintson a Tovább gombra** kell rendelkeznie a **Azure Functions futásidejű telepítő** telepítése a számítógépre.
-1. Miután befejeződött a telepítő elindítja a **Azure Functions futásidejű konfigurációs eszköz**.
+1. Kattintson a **következő** kell rendelkeznie a **Azure Functions futásidejű telepítővarázsló** a gépen a telepítés megkezdéséhez.
+1. A telepítő varázsló elindítja művelet befejeződése után a **Azure Functions Futtatókörnyezettel** konfigurációs eszközt.
 
     ![Az Azure Functions futásidejű Preview telepítő befejezése][5]
 
     > [!NOTE]
-    > Ha telepíti az **Windows 10** és a **tároló** funkció nem korábban engedélyezve van, a **Azure Functions Futtatókörnyezettel** előfordulhat, hogy indítsa újra a számítógépet a telepítés befejezéséhez.
+    > Ha telepíti az **Windows 10** és a **tároló** funkció nem korábban engedélyezve van, a **Azure Functions Runtime telepítését** kéri, hogy indítsa újra a számítógépet a telepítés befejezéséhez.
 
 ## <a name="configure-the-azure-functions-runtime"></a>Az Azure Functions Futtatókörnyezettel konfigurálása
 
 Az Azure Functions Futtatókörnyezettel telepítéséhez a konfigurációt kell végrehajtania.
 
-1. A **Azure Functions futásidejű konfigurációs eszköz** jeleníti meg, mely szerepkörök sincs telepítve a számítógépen.
+1. A **Azure Functions Futtatókörnyezettel** konfigurációs eszköz jeleníti meg, mely szerepkörök sincs telepítve a számítógépen.
 
     ![Az Azure Functions futásidejű Preview konfigurációs eszköz][6]
 
-1. Kattintson a **adatbázis** lapra, adja meg a **kapcsolódási adatait. az SQL Server-példány** és **kattintson az alkalmaz**.  Ez adatbázis létrehozására az Azure Functions Futtatókörnyezettel sorrendben támogatásához szükséges a futtatókörnyezetben.
+1. Kattintson a **adatbázis** lapon adja meg a kapcsolati adatokat az SQL Server-példányhoz, majd kattintson **alkalmaz**.  Ez szükséges ahhoz, hogy az Azure Functions Futtatókörnyezettel adatbázist hozhat létre a futtatókörnyezet támogatásához.
     
     ![Az Azure Functions futásidejű Preview adatbázis konfigurációja][7]
 
-1. Kattintson a **hitelesítő adatok** fülre.  Ezen a képernyőn létre kell hoznia két új hitelesítő adatokat a fájlmegosztás az Azure Functions üzemeltetéséhez.  **Adja meg a felhasználónevet és jelszót** kombinációk a **megosztás fájltulajdonos** és a **fájl megosztási felhasználói** kattintson **alkalmaz**.
+1. Kattintson a **hitelesítő adatok** fülre.  Ezen a képernyőn létre kell hoznia két új hitelesítő adatokat a fájlmegosztás az Azure Functions üzemeltetéséhez.  Adja meg **felhasználónév** és **jelszó** kombinációk a **megosztás fájltulajdonos** és a a **fájl megosztási felhasználói**, majd kattintson az **Alkalmazása**.
 
     ![Az Azure Functions futásidejű Preview hitelesítő adatok][8]
 
-1. Kattintson a **fájlmegosztás** fülre.  Ez a képernyő meg kell adnia a részleteit a **fájlmegosztás helye**.  Ez az Ön hozható létre, vagy egy meglévő fájlmegosztást, és kattintson a **alkalmaz**.  Ha új fájlmegosztás helyét, adjon meg egy könyvtárat az Azure Functions futtatókörnyezete használja.
+1. Kattintson a **fájlmegosztás** fülre.  Ez a képernyő meg kell adnia a részleteit a **fájlmegosztás** helyét.  Ez az Ön hozható létre, vagy egy meglévő fájlmegosztást, és kattintson a **alkalmaz**.  Ha új fájlmegosztás helyét, adjon meg egy könyvtárat az Azure Functions futtatókörnyezete használja.
     
     ![Az Azure Functions futásidejű Preview fájlmegosztás][9]
 
-1. Kattintson a **IIS** fülre.  Ezen a lapon, amely az Azure funkciók Runtime telepítésének hozza létre az IIS a webhelyek részleteit jeleníti meg.  **Kattintson az alkalmaz** befejezéséhez.
+1. Kattintson a **IIS** fülre.  Ezen a lapon az IIS-ben, amely az Azure Functions Futtatókörnyezettel konfigurálása eszköz létrehozza a webhelyek részleteit jeleníti meg.  Kattintson a **alkalmaz** befejezéséhez.
 
     ![Az Azure Functions futásidejű előzetes IIS][10]
 
-1. Kattintson a **szolgáltatások** fülre.  Ezen a lapon, a szolgáltatások állapotát jeleníti meg az Azure Functions Futtatókörnyezettel telepítésében.  Ha a kezdeti konfigurációt követően a **Azure Functions gazdaszolgáltatás aktiválási** nem fut kattintson **szolgáltatás indítása**
+1. Kattintson a **szolgáltatások** fülre.  Ezen a lapon, a szolgáltatások állapotát jeleníti meg az Azure Functions Futtatókörnyezettel konfigurációs eszközében.  Ha a kezdeti konfigurációt követően a **Azure Functions gazdaszolgáltatás aktiválási** nem fut kattintson **szolgáltatás indítása**.
 
     ![Az Azure Functions futásidejű Preview konfigurációs befejezése][11]
 
-1. Végül keresse meg a **Azure Functions futásidejű portálon** ,`https://<machinename>/`
+1. Végül keresse meg a **Azure Functions futásidejű portálon** , `https://<machinename>/`.
 
     ![Az Azure Functions futásidejű a betekintő portálon][12]
 

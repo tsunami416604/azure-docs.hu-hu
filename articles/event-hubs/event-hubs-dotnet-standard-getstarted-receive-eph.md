@@ -1,5 +1,5 @@
 ---
-title: "Események fogadása az Azure Event Hubs használatával a .NET-szabvány |} Microsoft Docs"
+title: "Események fogadása az Azure Event Hubs .NET szabványos függvénytár használatával |} Microsoft Docs"
 description: "Ismerkedés az EventProcessorHost üzenetek fogadása a .NET-szabvány"
 services: event-hubs
 documentationcenter: na
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: cc62792dad0284f9514664795fdfb32e94a85943
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a88b5da8fa504e0528caa7fa212d4cec26d1cf66
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Az Event Processor Host üzenetek fogadása a .NET-szabvány első lépései
 
 > [!NOTE]
 > Ez a minta érhető el a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver).
 
-Ez az oktatóanyag bemutatja, hogyan írhat egy .NET Core-konzolalkalmazást, amely üzeneteket fogad az eseményközpontban lévő használatával **EventProcessorHost**. Futtathatja a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) megoldás szerint-van, a karakterláncok cseréje a event hub és a tárolási fiók értékek. Vagy a lépésekkel ebben az oktatóanyagban saját.
+Ez az oktatóanyag bemutatja, hogyan írhat egy .NET Core-konzolalkalmazást, amely üzeneteket fogad az eseményközpontban lévő használatával a **Event Processor Host** könyvtár. Futtathatja a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) megoldás szerint-van, a karakterláncok cseréje a event hub és a tárolási fiók értékek. Vagy a lépésekkel ebben az oktatóanyagban saját.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,22 +33,22 @@ Ez az oktatóanyag bemutatja, hogyan írhat egy .NET Core-konzolalkalmazást, am
 * [A .NET core Visual Studio 2015-öt vagy 2017 eszközök](http://www.microsoft.com/net/core).
 * Azure-előfizetés.
 * Az Azure Event Hubs névtér.
-* Egy Azure-tárfiók.
+* Egy Azure Storage-fiókot.
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása  
 
-Az első lépés az, hogy használja a [Azure-portálon](https://portal.azure.com) az Event Hubs típus névtér létrehozása, és szerezze be a felügyeleti hitelesítő adatokat az alkalmazásban az event hubs folytatott kommunikációhoz szükséges. Egy névtér és az event hub létrehozásához kövesse a [Ez a cikk](event-hubs-create.md), majd folytassa a következő lépéseket.  
+Az első lépés az, hogy használja a [Azure-portálon](https://portal.azure.com) az Event Hubs típus névtér létrehozása, és szerezze be a felügyeleti hitelesítő adatokat az alkalmazásban az event hubs folytatott kommunikációhoz szükséges. Egy névtér és az event hub létrehozásához kövesse a [Ez a cikk](event-hubs-create.md), majd folytassa az oktatóanyag.  
 
-## <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása  
+## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása  
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
 2. A portál bal oldali navigációs ablaktábláján kattintson **új**, kattintson a **tárolási**, és kattintson a **Tárfiók**.  
-3. Töltse ki a mezőket a storage-fiók panelen, és kattintson a **létrehozása**.
+3. Töltse ki a mezőket a tárolási fiók ablakban, és kattintson a **létrehozása**.
 
-    ![Storage-fiók létrehozása][1]
+    ![Tárfiók létrehozása][1]
 
-4. Miután meggyőződött arról a **központi telepítések sikeres** üzenetet, kattintson az új tárfiók neve. Az a **Essentials** panelen kattintson a **Blobok**. Ha a **Blob szolgáltatás** panel nyílik meg, kattintson a **+ tároló** tetején. Nevezze el a tárolót, és zárja be a **Blob szolgáltatás** panelen.  
-5. Kattintson a **hívóbetűk** a bal oldali panelen és a példány nevét és a tároló, a tárfiók, értékének **key1**. Ezeket az értékeket a Jegyzettömb vagy más ideiglenes helyre mentse.  
+4. Miután meggyőződött arról a **központi telepítések sikeres** üzenetet, kattintson az új tárfiók neve. Az a **Essentials** ablak, kattintson a **Blobok**. Ha a **Blob szolgáltatás** párbeszédpanel, kattintson a **+ tároló** tetején. Nevezze el a tárolót, és zárja be a **Blob szolgáltatás**.  
+5. Kattintson a **hívóbetűk** a bal oldali ablak és a példány nevét és a tároló, a tárfiók, értékének **key1**. Ezeket az értékeket a Jegyzettömb vagy más ideiglenes helyre mentse.  
 
 ## <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
@@ -58,10 +58,10 @@ Indítsa el a Visual Studiót. Kattintson a **File** (Fájl) menüben a **New** 
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
 
-Adja hozzá a [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) és [ `Microsoft.Azure.EventHubs.Processor` ](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) .NET-szabvány library NuGet-csomagok a projekthez az alábbiak szerint: 
+Adja hozzá a [ **Microsoft.Azure.EventHubs** ](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) és [ **Microsoft.Azure.EventHubs.Processor** ](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) .NET-szabvány library NuGet-csomagok a projekt a következő lépések végrehajtásával: 
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
-2. Kattintson a **Tallózás** fülre, majd keresse meg a "Microsoft.Azure.EventHubs", és válassza ki a **Microsoft.Azure.EventHubs** csomag. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
+2. Kattintson a **Tallózás** lapra, keressen **Microsoft.Azure.EventHubs**, majd válassza ki a **Microsoft.Azure.EventHubs** csomag. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
 3. Ismételje meg az 1. és 2, és telepítse a **Microsoft.Azure.EventHubs.Processor** csomag.
 
 ## <a name="implement-the-ieventprocessor-interface"></a>A IEventProcessor illesztőfelület megvalósítása

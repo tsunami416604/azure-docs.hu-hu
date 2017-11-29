@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/08/2017
 ms.author: sethm
-ms.openlocfilehash: d566b74429bf158e0c9cc51419ba35c9e6c32f64
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: f13c7330c9e828abe6557149b9a31c7170e33dcd
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási sorok és a Service Bus-üzenetsorok - képest és ellentétben
 Ez a cikk elemzi a különbségek és a Microsoft Azure által kínált ma várólisták kétféle Hasonlóságok: tárolási sorok és a Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
@@ -30,12 +30,12 @@ Azure várólista mechanizmusok két típusokat támogatja: **tárüzenetsort** 
 
 **Service Bus-üzenetsorok** részei egy szélesebb körű [Azure messaging](https://azure.microsoft.com/services/service-bus/) infrastruktúra, amely támogatja továbbá az közzétételi/előfizetési queuing, és további speciális integrációs kombinációját. A Service Bus üzenetsorok/témakörök/előfizetések kapcsolatos további információkért tekintse meg a [Service Bus áttekintése](service-bus-messaging-overview.md).
 
-Léteznek két üzenetsor-kezelési technológia egyszerre, tárüzenetsort először egy dedikált várólista tárolási mechanizmus épülő Azure Storage szolgáltatás lett bevezetve. Service Bus-üzenetsorok úgy tervezték, hogy az alkalmazások vagy az alkalmazás-összetevők, amelyek több kommunikációs protokollokat, adategyezményeinek, megbízhatósági tartományok, illetve hálózati környezetben előfordulhat, hogy több integrálja a szélesebb körű "üzenetküldési" infrastruktúra épülnek.
+Léteznek két üzenetsor-kezelési technológia egyszerre, tárüzenetsort először egy dedikált várólista tárolási mechanizmus épülő Azure Storage szolgáltatás lett bevezetve. Service Bus-üzenetsorok úgy tervezték, hogy az alkalmazások vagy az alkalmazás-összetevők, amelyek több kommunikációs protokollokat, adategyezményeinek, megbízhatósági tartományok, illetve hálózati környezetben előfordulhat, hogy több integrálja a szélesebb körű üzenetkezelési infrastruktúra épülnek.
 
 ## <a name="technology-selection-considerations"></a>Technológia kiválasztása kapcsolatos szempontok
 Tárolási sorok és a Service Bus-üzenetsorok a message queuing szolgáltatás jelenleg a Microsoft Azure által kínált implementációja. Mindegyiknek némileg eltérő szolgáltatáskészlet, ami azt jelenti, válassza ki az egyiket, vagy egyaránt, az adott megoldás vagy üzleti vagy műszaki problémamegoldó igényeitől függően.
 
-Annak meghatározása, hogy mely üzenetsor-kezelési technológia célja egy adott megoldás megfelel, megoldás mérnökök és a fejlesztők vegye figyelembe az alábbi javaslatokat. További részletekért tekintse meg a következő szakaszban.
+Annak meghatározása, hogy mely üzenetsor-kezelési technológia célja egy adott megoldás megfelel, megoldás mérnökök és a fejlesztők figyelembe kell vennie ezek a javaslatok. További részletekért tekintse meg a következő szakaszban.
 
 Megoldás felelős mérnök vagy fejlesztők **érdemes használni a tárolási sorok** során:
 
@@ -75,8 +75,8 @@ Ez a szakasz néhány olyan tárolási sorok és a Service Bus-üzenetsorok ált
 | Leküldéses stílusú API |**Nem** |**Igen**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) és **OnMessage** munkamenetek .NET API-t. |
 | Fogadás módban |**Betekintés & bérleti** |**Betekintés & zárolása**<br/><br/>**Kap & törlése** |
 | Kizárólagos hozzáférési mód |**Címbérlet-alapú** |**Zárolási-alapú** |
-| Bérleti/zárolást időtartama |**30 másodperc (alapértelmezett)**<br/><br/>**7 nap (maximum)** (újítsa meg, vagy egy üzenet bérleti használatával kiadási a [UpdateMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage.aspx) API.) |**60 másodperc (alapértelmezett)**<br/><br/>Egy üzenet zárolási használatával megújíthatják a [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API. |
-| Bérleti/zárolást pontosság |**Üzenet szint**<br/><br/>(minden üzenetet is rendelkezik különböző időtúllépési érték, amely frissítheti szükség szerint használatával az üzenet feldolgozása közben a [UpdateMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage.aspx) API) |**Várólista szintjét**<br/><br/>(Minden várólistának vonatkozik. az üzenetek zárolási pontossága, de megújíthatják a zárolás használatával a [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API.) |
+| Bérleti/zárolást időtartama |**30 másodperc (alapértelmezett)**<br/><br/>**7 nap (maximum)** (újítsa meg, vagy egy üzenet bérleti használatával kiadási a [UpdateMessage](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage) API.) |**60 másodperc (alapértelmezett)**<br/><br/>Egy üzenet zárolási használatával megújíthatják a [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API. |
+| Bérleti/zárolást pontosság |**Üzenet szint**<br/><br/>(minden üzenetet is rendelkezik különböző időtúllépési érték, amely frissítheti szükség szerint használatával az üzenet feldolgozása közben a [UpdateMessage](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage) API) |**Várólista szintjét**<br/><br/>(Minden várólistának vonatkozik. az üzenetek zárolási pontossága, de megújíthatják a zárolás használatával a [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API.) |
 | Kötegelni fogadása |**Igen**<br/><br/>(explicit módon megadni üzenetek száma történő beolvasásra legfeljebb 32 üzenetek) |**Igen**<br/><br/>(implicit módon engedélyezése az előzetes betöltési tulajdonság vagy explicit módon tranzakciók) |
 | A kötegelt küldése |**Nem** |**Igen**<br/><br/>(révén tranzakciók vagy ügyféloldali kötegelés) |
 
@@ -89,7 +89,7 @@ Ez a szakasz néhány olyan tárolási sorok és a Service Bus-üzenetsorok ált
 * Service Bus-üzenetsorok támogatást nyújt a helyi tranzakciók az adott környezetben, egy adott sorba.
 * A **fogadásához és törléséhez** Service Bus által támogatott mód lehetővé teszi a csökkentse az üzenetkezelési műveletek száma (és a kapcsolódó költségeket) süllyesztett kézbesítési megbízhatósági cserébe.
 * Tárolási sorok címbérleteket biztosíthat a kiterjesztheti a bérletek üzenetek. Ez lehetővé teszi, hogy a dolgozók üzenetek rövid címbérlet karbantartása. Így ha egy munkavégző összeomlik, az üzenet gyorsan feldolgozható újra egy másik feldolgozónak. Emellett egy munkavégző kiterjesztheti a címbérlet megújuljon az üzenet, ha a feldolgozási hosszabb, mint az aktuális bérleti ideje.
-* Tárolás az üzenetsorok elsőnek a láthatósági időkorlátot is állítsa be úgy a sorra helyezése során, vagy üzenet üzenetmozgatót. Emellett egy üzenet frissítés futásidőben különböző bérleti értékekkel, és különböző értékeket frissítés ugyanazon a várólistán lévő üzenetek között. A Service Bus zárolási időtúllépések határozzák meg a várólista metaadatok; azonban megújíthatják a zárolás meghívásával a [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) metódust.
+* Tárolás az üzenetsorok elsőnek a láthatósági időkorlátot használható beállítása után a enqueuing vagy üzenet üzenetmozgatót. Emellett egy üzenet frissítés futásidőben különböző bérleti értékekkel, és különböző értékeket frissítés ugyanazon a várólistán lévő üzenetek között. A Service Bus zárolási időtúllépések határozzák meg a várólista metaadatok; azonban megújíthatják a zárolás meghívásával a [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) metódust.
 * A maximális időkorlátot egy blokkolja a fogadási művelethez a Service Bus-üzenetsorok nem 24 nap. REST-alapú időtúllépések van azonban, 55 másodpercben maximális értéket.
 * Ügyféloldali kötegelés Service Bus által biztosított lehetővé teszi a várólista ügyfél több üzenetet kötegelt be egy küldési művelet. Kötegelés érhető el csak aszinkron műveletek.
 * Szolgáltatások, mint a tároló (ha virtualizálhatja a fiókok további) és korlátlan várólisták a 200 TB-os felső határ teszik ideális platform a Szolgáltatottszoftver-szolgáltatók.
@@ -134,7 +134,7 @@ Ez a szakasz összehasonlítja tárolási sorok és a Service Bus-üzenetsorok s
 | A várólista maximális hossza |**500 TB**<br/><br/>(csak egy [tárfiókok kapacitásával egyetlen](../storage/common/storage-introduction.md#queue-storage)) |**1 GB-os 80 GB**<br/><br/>(a várólista létrehozása után definiált és [particionálás engedélyezése](service-bus-partitioning.md) – a "További információk" című rész) |
 | Maximális méret |**64 KB**<br/><br/>(48 KB használatakor **Base64** kódolás)<br/><br/>Azure nagy üzeneteket is támogatja üzenetsorokat és blobokat – ekkor is sorba helyezni a kombinálásával legfeljebb 200 GB-ot csak egy elemet. |**256 KB-os** vagy **1 MB**<br/><br/>(beleértve a fejléc és a szövegtörzset, maximális fejléc mérete: 64 KB).<br/><br/>Függ a [szolgáltatásréteg](service-bus-premium-messaging.md). |
 | Maximális üzenet TTL tulajdonsága |**7 nap** |**TimeSpan.Max** |
-| Sorok maximális száma |**Korlátlan** |**10,000**<br/><br/>(egyes szolgáltatásnévtér, növelhető) |
+| Sorok maximális száma |**Korlátlan** |**10,000**<br/><br/>(egyes szolgáltatásnévtér) |
 | Egyidejű ügyfelek maximális száma |**Korlátlan** |**Korlátlan**<br/><br/>(100 egyidejű kapcsolat korlátai csak vonatkozik a TCP protokoll-alapú kommunikációt) |
 
 ### <a name="additional-information"></a>További információ

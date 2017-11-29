@@ -15,11 +15,11 @@ ms.date: 06/26/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 6a0f8cb76684a6efcc5e2d4be05493f18d5d4c76
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b73b5e47e3e14742e5094b8b0e979de7835cb9c7
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Egy felhasználó vagy csoport kétlépéses ellenőrzés megkövetelése
 
@@ -40,11 +40,11 @@ Mindkét lehetőség jeleníti meg az Azure multi-factor Authentication regisztr
 
 Azure multi-factor Authentication felhasználói fiókokat az alábbi három jól elkülöníthető állapottal rendelkeznek:
 
-| status | Leírás | Érintett böngészőn kívüli alkalmazások |
-|:---:|:---:|:---:|
-| Letiltva |Új felhasználó alapértelmezett állapota nincs regisztrálva az Azure multi-factor Authentication (MFA). |Nem |
-| Engedélyezve |A felhasználó előfizetett a Azure MFA, de nincs regisztrálva. Regisztrálja a következő bejelentkezéskor kéri. |Nem.  Ezek továbbra is működnek a regisztrációs folyamat befejezéséig. |
-| Kényszerítve |A felhasználó előfizetett, és a regisztrációs folyamat során az Azure MFA számára befejeződött. |Igen.  Az alkalmazásokhoz alkalmazásjelszókat. |
+| status | Leírás | Érintett böngészőn kívüli alkalmazások | Böngészőben megjelenő alkalmazásokba és érintett modern hitelesítéssel |
+|:---:|:---:|:---:|:--:|
+| Letiltva |Új felhasználó alapértelmezett állapota nincs regisztrálva az Azure multi-factor Authentication (MFA). |Nem |Nem |
+| Engedélyezve |A felhasználó előfizetett a Azure MFA, de nincs regisztrálva. Regisztrálja a következő bejelentkezéskor kéri. |Nem.  Ezek továbbra is működnek a regisztrációs folyamat befejezéséig. | Igen. Ha a frissítési jogkivonat a munkamenet lejár, MFA regisztrációs lesz szükség.|
+| Kényszerítve |A felhasználó előfizetett, és a regisztrációs folyamat során az Azure MFA számára befejeződött. |Igen.  Az alkalmazásokhoz alkalmazásjelszókat. |Igen. Multi-factor Authentication a bejelentkezési azonosító szükséges. |
 
 A felhasználói állapot tükrözi, hogy egy rendszergazda regisztrálta őket az Azure MFA, és hogy a regisztrációs folyamat befejeződött-e azokat.
 

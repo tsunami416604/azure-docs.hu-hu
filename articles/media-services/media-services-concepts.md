@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: 5322b5f3231b067937b685c69b916ed74dfe9a6e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: da2dc87543fd8a0aa99e1de3018a310abe93fa3a
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-media-services-concepts"></a>Az Azure Media Services alapfogalmaiért
 Ez a témakör áttekintést nyújt a Media Services egyik legfontosabb fogalmak.
@@ -83,7 +83,7 @@ Media Services két lokátortípust támogat: OnDemandOrigin keresők media (pé
 Azure Storage minden hozzáférés a storage-fiók segítségével történik. Egy Media Services-fiókját tárfiókok egy vagy több társíthatja. Egy fiók tartalmazhat egy korlátlan számú tárolót, mindaddig, amíg a teljes mérete a tárfiók 500TB.  A Media Services SDK szintű tooling lehetővé teszi több storage-fiókok kezelése, és ezekhez a fiókokhoz való feltöltés során az eszközök eloszlását alapján metrikák vagy véletlenszerű terjesztési terheléselosztásához biztosít. További információ kapcsolatban a Working with [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx). 
 
 ## <a name="jobs-and-tasks"></a>Feladatok és feladatok
-A [feladat](https://https://docs.microsoft.com/rest/api/media/operations/job) főként a folyamat (például index vagy kódolni) egy hang-és videófolyamot bemutató. Több videók feldolgozása esetén, hozzon létre egy feladatot az egyes videó kódolni kell.
+A [feladat](https://docs.microsoft.com/en-us/rest/api/media/operations/job) főként a folyamat (például index vagy kódolni) egy hang-és videófolyamot bemutató. Több videók feldolgozása esetén, hozzon létre egy feladatot az egyes videó kódolni kell.
 
 A feladat végrehajtását feldolgozásával kapcsolatos metaadatokat tartalmaz. Minden feladat tartalmaz egy vagy több [feladat](https://docs.microsoft.com/rest/api/media/operations/task)s, amely egy atomi feldolgozási feladatot, a bemeneti eszközeinek, adja meg a kimeneti eszközök, media processzort és a kapcsolódó beállításokat. Egy feladat feladatok elérése együtt, ahol a kimeneti adategységen egy feladat a bemeneti eszköz a következő tevékenységhez megadott van. Így egy feladat minden szükséges media feldolgozása tartalmazhat.
 

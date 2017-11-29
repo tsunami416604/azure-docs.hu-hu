@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: nitinme
-ms.openlocfilehash: b5f80427234549b13a1aca94cd04e4f7e6f94ccf
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: cffc78c06de6be252704c2a116d7ded2c7e8567f
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Gyors üzembe helyezés: A Spark feladat futtatása az Azure Databricks az Azure portál használatával
 
@@ -97,7 +97,7 @@ A következő lépésekkel a notebook létrehozása Databricks, konfigurálja a 
     Hogyan lehet lekérni a tárfiók hívóbetűjét, lásd: [a tárelérési kulcsok kezelése](../storage/common/storage-create-storage-account.md#manage-your-storage-account)
 
     > [!NOTE]
-    > Azure Data Lake Store az Azure Databricks Spark-fürt is használható. Útmutatásért lásd: [használata Data Lake Store az Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-data-lake-store).
+    > Azure Data Lake Store az Azure Databricks Spark-fürt is használható. Útmutatásért lásd: [használata Data Lake Store az Azure Databricks](https://go.microsoft.com/fwlink/?linkid=864084).
 
 4. Hozzon létre egy ideiglenes tábla a JSON mintaadatfájlokat származó adatok használ egy SQL-utasítás futtatása **small_radio_json.json**. Cserélje le a helyőrző értékeket a következő kódrészletet a tároló nevének és a tárfiók nevét. Illessze be a kódrészletet a notebook celláiban kódot, és nyomja le a SHIFT + ENTER BILLENTYŰT. A kódrészletet a `path` az Azure Storage-fiók feltöltött minta JSON-fájl helyét jelöli.
 
@@ -159,4 +159,4 @@ Ha nem jelölte be a jelölőnégyzetet, a fürtöt kézzel kell véget. Ehhez a
 Ebben a cikkben egy Spark-fürt létrehozása az Azure Databricks, és egy adatok az Azure storage használata Spark feladat futott. Is megtalálhatja [adatforrások Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) adatokat importálhat más adatforrások Azure Databricks módjáról. A következő cikkben megtudhatja, hogyan használható az Azure Data Lake Store Azure Databricks továbblépés.
 
 > [!div class="nextstepaction"]
->[Használjon Data Lake Store az Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-data-lake-store)
+>[Használjon Data Lake Store az Azure Databricks](https://go.microsoft.com/fwlink/?linkid=864084)
