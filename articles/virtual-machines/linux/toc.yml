@@ -83,7 +83,7 @@
         - name: Nagy teljesítményű számítás
           href: sizes-hpc.md
         - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
-          href: sizes-general.md
+          href: acu.md
     - name: Támogatott disztribúciók
       href: endorsed-distros.md
     - name: Karbantartás és frissítések
