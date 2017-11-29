@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: bf5f12e4a20d9692e311550fc7a02f14f0b4aaad
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 3ae7df7939431e3bd13c070d65876145706e06b5
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -309,7 +309,9 @@ Telemetria bemutató vissza, ha az Application Insights szolgáltatás a metrik�
 
 A közelítés a pontosság nagymértékben függ a konfigurált mintavételi arány. A pontosság is, az alkalmazások, amelyek kezelik a felhasználók sok általában hasonló kérelmek nagy mennyiségű növeli. Másrészről olyan alkalmazások, amelyek nem működnek a jelentős terhelés esetén mintavételi nem szükséges, mivel ezek az alkalmazások általában küldhet a telemetriai adatok maradva a kvótán belül anélkül, hogy ez adatvesztést a sávszélesség-szabályozás. 
 
-Vegye figyelembe, hogy az Application Insights nem mintavételre metrikák és a munkamenetek telemetriai típusok óta ezek a típusok, a pontosság csökkenésével magas nemkívánatos lehet. 
+> [!WARNING]
+> Az Application Insights nem minta metrikák és a munkamenetek telemetriai adatok típusát. Lehet, hogy a pontosság csökkenésével magas nemkívánatos a telemetria-típusok.
+> 
 
 ### <a name="adaptive-sampling"></a>Adaptív mintavétel
 Adaptív mintavételi ad hozzá egy összetevő, amely figyeli a jelenlegi átviteli az SDK-ból, és beállítja a mintavételi arány ahhoz, hogy a cél maximális sebesség belül maradjanak kipróbálásához. A módosítás rendszeres időközönként újraszámítja, és a kimenő átviteli sebességet mozgóátlaga alapul.

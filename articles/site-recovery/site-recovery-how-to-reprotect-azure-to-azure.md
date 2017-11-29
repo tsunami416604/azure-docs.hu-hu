@@ -3,7 +3,7 @@ title: "Védelem-Újrabeállítási módjáról a átadja a feladatokat az Azure
 description: "Az Azure-régió, egy másik virtuális gépek feladatátvétel után a Azure Site Recovery segítségével visszafelé gépek védelmére. A lépéseket a védelem-újrabeállítási újra a feladatátvétel előtt módjáról további információt."
 services: site-recovery
 documentationcenter: 
-author: ruturaj
+author: rajani-janaki-ram
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -12,10 +12,10 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2017
-ms.author: ruturajd
-ms.openlocfilehash: 5822ed90f3ab13bdaf1afef62cf32978101c6609
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.date: 11/22/2017
+ms.author: rajanaki
+ms.openlocfilehash: 3e614b6c3c8358585f3b502f301cc659d2088e2f
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/28/2017
@@ -58,7 +58,7 @@ Az alábbiakban lássa el újból védelemmel az alapértelmezett érték a virt
 
 3. Tekintse át a **erőforráscsoport, hálózati, tárolási és rendelkezésre állási készletek** információkat, és kattintson az OK gombra. Ha bármely (új) megjelölt erőforrások, akkor a védelem-újrabeállítási részeként létrejön.
 
-Ez egy feladat eseményindító lássa el újból védelemmel feladatot, amely először rendezendő a célhelyre (ebben az esetben SZE) a legújabb adatokkal, és után, hogy befejeződött, a művelet replikálja az eltérések, feladatátvétel előtt biztonsági Délkelet-Ázsia.
+A védelem-újrabeállítási feladat első rendezendő a célhelyre (ebben az esetben SZE) a legújabb adatokkal, és miután ez befejeződött, replikálja az eltérések, feladatátvétel előtt vissza Délkelet-Ázsia.
 
 ### <a name="reprotect-customization"></a>Lássa el újból védelemmel testreszabása
 Ha meg kívánja a kivonatot tárfiók vagy a hálózati védelem-újrabeállítási során, a védelem-újrabeállítási panelen megadott testreszabás beállítás használatával végezhet.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ef6e649d2f5563ea066b70d5ef3f80c5af36ce23
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 85484b79012243afd374a97e7f518e9a8b1043ea
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-kimenő/fan-a forgatókönyv tartós funkciókkal – felhő biztonsági mentési – példa
 
@@ -67,13 +67,13 @@ Az orchestrator függvény alapvetően a következőket teszi:
 4. Minden feltöltések befejezéséhez vár.
 5. Az összeg összes bájt, amely az Azure Blob Storage töltődtek adja vissza.
 
-Figyelje meg a `await Task.WhenAll(tasks);` sor. Minden a hívások a `E2_CopyFileToBlob` függvény volt *nem* rá várakozni. Ez a szándékos és párhuzamosan futnak. Ha azt át a feladatok tömbje `Task.WhenAll`, azt vissza egy feladat, amelyik nem fejeződött be *mindaddig, amíg a másolási műveletek befejeződtek*. Ha ismeri az a feladat párhuzamos könyvtár (TPL) a .NET, akkor ez nem új Önnek. Az különbség, hogy ezeket a feladatokat egyszerre több virtuális gépeken volt futnia, és a bővítmény biztosítja, hogy a végpont végrehajtási rugalmasak folyamatok újrahasznosítása.
+Figyelje meg a `await Task.WhenAll(tasks);` sor. Minden a hívások a `E2_CopyFileToBlob` függvény volt *nem* rá várakozni. Ez a szándékos és párhuzamosan futnak. Ha azt át a feladatok tömbje `Task.WhenAll`, azt vissza egy feladat, amelyik nem fejeződött be *mindaddig, amíg a másolási műveletek befejeződtek*. Ha ismeri az a feladat párhuzamos könyvtár (TPL) a .NET, akkor ez nem új Önnek. Az különbség, hogy ezeket a feladatokat egyszerre több virtuális gépeken volt futnia, és a tartós funkciók bővítmény biztosítja, hogy a végpont végrehajtási rugalmasak folyamatok újrahasznosítása.
 
 A várakozás után `Task.WhenAll`, tudjuk, hogy minden függvényhívások befejeződött, és vissza kellett volna értékek biztonsági másolatot a számunkra. Minden egyes `E2_CopyFileToBlob` bájtok száma töltheti fel, így a teljes összeg bájtszáma kiszámítása kell mindazokat az értékeket együtt visszaadni hozzáadása értéket ad vissza.
 
 ## <a name="helper-activity-functions"></a>Tevékenység súgófunkciókat
 
-Tevékenység súgófunkciókat, ugyanúgy, mint a más minták olyan csak rendszeres funkció, amely használja a `activityTrigger` indítás kötés. Például *a function.json* fájlt `E2_GetFileList` tűnik a következőket:
+Tevékenység súgófunkciókat, csakúgy, mint a más minták olyan csak rendszeres funkció, amely használja a `activityTrigger` indítás kötés. Például a *function.json* fájlt `E2_GetFileList` tűnik a következőket:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
 
@@ -92,7 +92,7 @@ A megvalósítás egyben közérthető egyszerű. Történik, használhatja néh
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-A megvalósítás betölti a fájlt a lemezről, és aszinkron módon adatfolyamok tartalma azonos nevű blob be. A visszatérési érték a tárhelyet, majd az orchestrator függvény által a teljes összeg kiszámításához másolandó bájtok száma.
+A megvalósítás betölti a fájlt a lemezről, és aszinkron módon adatfolyamokat be a "biztonsági mentések" tárolóban azonos nevű blob tartalma. A visszatérési érték a tárhelyet, majd az orchestrator függvény által a teljes összeg kiszámításához másolandó bájtok száma.
 
 > [!NOTE]
 > Ez az i/o-műveletek történő áthelyezését tökéletes példája egy `activityTrigger` függvény. Nem csak a munkahelyi terjeszthető sok különböző virtuális gépek között, de is kap az ellenőrzőpontok előnyeit a folyamatban. Ha a gazdagép-folyamat bármely okból lekérdezi, tudja, melyik feltöltések már befejeződött.

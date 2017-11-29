@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: cfb6758703ebf3ce0458a4e1ad74324a4ccc2ece
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 822abf5cd09a0cd0d66441acfe4ae114c6ba73eb
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Emberi beavatkozást igényel a tartós funkciók - telefon ellenőrzési minta
 
@@ -33,7 +33,7 @@ Ez a minta egy SMS-alapú telefonos ellenőrzési rendszerétől valósítja meg
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
-Telefonszám ellenőrzése a szolgál egy győződjön meg arról, hogy a végfelhasználók az alkalmazás nem levélszemétküldők és, hogy azok mondja ki, hogy azok ki. Multi-factor authentication egy gyakori használati eset a felhasználói fiókok védelme érdekében a támadóktól. Az ügyfél a saját Telefonszám ellenőrzése a végrehajtási kérdésre szüksége van egy **állapot-nyilvántartó interakció** egy ember rendelkező. A felhasználó általában biztosított néhány kódot (pl. 4-jegyű szám), és kell válaszolnia **elfogadható időn belül**.
+Telefonszám ellenőrzése, hogy a végfelhasználók az alkalmazás nem levélszemétküldők és, hogy azok mondja ki, hogy azok ki ellenőrzésére szolgál. Multi-factor authentication egy gyakori használati eset a felhasználói fiókok védelme érdekében a támadóktól. Az ügyfél a saját Telefonszám ellenőrzése a végrehajtási kérdésre szüksége van egy **állapot-nyilvántartó interakció** egy ember rendelkező. A felhasználó általában biztosított néhány kódot (pl. 4-jegyű szám), és kell válaszolnia **elfogadható időn belül**.
 
 Szokásos Azure Functions állapot nélküli (a rendszer sok más felhőalapú végpont platformokon), így ezek a típusok kölcsönhatások tartalmazzon explicit módon kezelése külsőleg állapot egy adatbázisban vagy valamilyen más állandó tárolja. A kapcsolati emellett több funkció, amely koordinált együtt kell felosztva. Legalább egy függvény például eldönti, a kódot, megőrzése ki valahol és a felhasználó telefonjára küldéséhez kell. Emellett egyéb kapott választ a felhasználó és valamilyen módon leképez az eredeti függvény hívásához szükséges művelet a kód érvényességi végrehajtásához legalább egy függvény van szüksége. Időtúllépés az is fontos eleme biztonsága érdekében. Ez elég bonyolult közérthető gyorsan kaphatunk.
 
@@ -43,7 +43,7 @@ Ebben a forgatókönyvben összetettsége jelentős mértékben csökken, ha a t
 
 Ez a minta használata szükséges a [Twilio](https://www.twilio.com/) SMS küldése mobiltelefonra szolgáltatást. Az Azure Functions már Twilio keresztül támogatása a [Twilio-kötés](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio), és a mintát használja ezt a szolgáltatást.
 
-A thing először meg kell az, hogy a Twilio-fiók. Létrehozhat egy ingyenes, https://www.twilio.com/try-twilio. Miután egy fiókot, adja hozzá a következő három **Alkalmazásbeállítások** a projekthez.
+Kell elsőként az egy Twilio-fiók. Létrehozhat egy ingyenes, https://www.twilio.com/try-twilio. Miután egy fiókot, adja hozzá a következő három **Alkalmazásbeállítások** függvény alkalmazása.
 
 | Alkalmazás-beállítás neve | Érték Leírás |
 | - | - |

@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 08/03/2017
+ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: 87d60ae51aaa33b709d272605419fd85eeb5d93d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c77cd0148a7e3e7b99e90e29bc1499dae8f95028
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="install-a-lemp-web-server-on-an-azure-vm"></a>Egy Azure virtuális gépen LEMP webkiszolgáló telepítése
 Ez a cikk végigvezeti egy NGINX webkiszolgálón, a MySQL és a PHP (a LEMP stack) az Azure-ban Ubuntu virtuális gép telepítése. A LEMP verem ahelyett, hogy a népszerű [LÁMPA verem](tutorial-lamp-stack.md), amely az Azure-ban is telepíthet. A művelet a LEMP kiszolgáló megtekintéséhez opcionálisan is telepítése és konfigurálása egy WordPress-webhely. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -31,6 +31,8 @@ Ez a cikk végigvezeti egy NGINX webkiszolgálón, a MySQL és a PHP (a LEMP sta
 > * Ellenőrizze a telepítés és konfigurálás
 > * WordPress telepítése a LEMP kiszolgálón
 
+
+A telepítő a gyors vizsgálat vagy a koncepció igazolása szolgál.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -73,15 +75,16 @@ A következő paranccsal MySQL verziójának ellenőrzése (vegye figyelembe a b
 mysql -V
 ```
 
-Azt javasoljuk, hogy biztonságossá MySQL telepítése a következő parancsprogram futtatása:
+Számítógépek biztonságossá tétele a MySQL telepítését, futtassa a `mysql_secure_installation` parancsfájl. Ha csak hoz létre egy ideiglenes kiszolgálót, kihagyhatja ezt a lépést. 
 
 ```bash
 mysql_secure_installation
 ```
 
-Adja meg a MySQL gyökér szintű jelszavát, majd adja meg a környezet biztonsági beállításait.
+Adja meg a gyökér szintű jelszó MySQL, és adja meg a környezet biztonsági beállításait.
 
-Ha azt szeretné, MySQL-adatbázis létrehozásához, adja hozzá a felhasználókat, vagy módosítsa a konfigurációs beállításokat, a MySQL-bejelentkezési:
+Ha ki szeretné próbálni a MySQL-szolgáltatások (MySQL-adatbázis létrehozása, vegye fel a felhasználók vagy konfigurációs beállításokat módosítaná,), MySQL bejelentkezni. Ez a lépés nem szükséges az oktatóanyag elvégzéséhez. 
+
 
 ```bash
 mysql -u root -p

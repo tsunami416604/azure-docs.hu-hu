@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 2f46fc37b9050b19b83685c97198c29a5ce46289
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 0f45468616884a6866bd95ef53acab71b4fed06c
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -194,9 +194,11 @@ Bizonyos különbségek vannak a viselkedést, amely az Azure Table storage érk
 * Az Azure Cosmos DB tábla API garantált teljesítmény biztosítása érdekében lefoglalt kapacitás modellt használ, de ez azt jelenti, hogy egy fizet a kapacitás, amint az a táblázat jön létre, akkor is, ha a kapacitás nincs használatban. Az Azure Table storage egy csak fizet ténylegesen használt kapacitás. Ez segítséget nyújt annak magyarázata, hogy miért tábla API kínálhat 10 ms olvassa el és 15 ms írható SLA-t, a 99th PERCENTILIS, amíg a Azure Table storage egy 10 második SLA-t kínál. De következtében tábla API táblákkal, anélkül, hogy minden kérést, a költség pénz annak érdekében, a kapacitás érhető el a tanúsítványigénylések bármely számukra az SLA-t, még akkor is üres táblák által kínált Azure Cosmos DB.
 * A tábla API által visszaadott lekérdezés eredményei nem sorrendje partíció kulcs/sor fő szerint Azure Table storage-ban.
 * Sor kulcsok csak lehet legfeljebb 255 bájt
+* Kötegekben csak tartalmazhat legfeljebb 2 MB
 * A rögzített és a többi tábla művelettől RUs szereplő külön felügyeleti késleltetési által szabályozott CreateIfNotExists hívások. Ez azt jelenti, hogy azokat, így CreateIfNotExists nagy mennyiségű beolvasása szabályozva, és nem fogja tudni megtennie, semmit, mert a korlát nem származik a RUs.
 * A CORS jelenleg nem támogatott
 * A táblanevek, az Azure Table storage-és nagybetűk nem, de a Azure Cosmos DB tábla API
+* Alább Azure Cosmos DB belső formátumok kódolási információkat, például bináris mezők jelenleg nem annyira hatékony, például előfordulhat, hogy egy. Ezért ennek hatására váratlan korlátozások adatok mérete. Például jelenleg egyik nem használható a teljes 1 Meg egy tábla entitás bináris adatok tárolására, mert a kódolás növeli az adatok méretét.
 
 A REST API tekintetében számos végpontok/lekérdezési lehetőségek Azure Cosmos DB tábla API által nem támogatott:
 | REST-metódussal | REST-végpont/lekérdezési lehetőség | DOC URL-címek | Magyarázat |

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: joflore
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d43274875ca7ed3b2fe8a7d71481db27451a6080
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 8881fc9193aa905b5d7083644a3ce8ac4411d693
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure multi-factor Authentication kapcsolatos gyakori kérdések
 Ez a GYIK Azure multi-factor Authentication és a multi-factor Authentication szolgáltatással kapcsolatos gyakori kérdésekre ad választ. Azt bontani a szolgáltatással kapcsolatos kérdésekre általában modellek, felhasználói élményt, számlázási és hibaelhárítást.
@@ -45,6 +45,22 @@ Amikor hitelesítési kérelmek küldenek a felhőszolgáltatásba, hitelesíté
 A választható mezőket a multi-factor Authentication kiszolgáló beállítható.
 
 Az ellenőrzés eredménye (sikeres vagy megtagadását), és a ok miatt megtagadva, ha a hitelesítési adatokat tárolja. A hitelesítés és használati jelentések érhetők el az adatok.
+
+**K: milyen SMS rövid kódok használt SMS-üzenetek küldéséhez a felhasználók számára?**
+
+Az Amerikai Egyesült Államokban Microsoft használja a következő rövid SMS-kódok:
+
+   * 97671
+   * 69829
+   * 51789
+   * 99399
+
+Használja a következő rövid SMS-kódok Kanada Microsoft:
+
+   * 759731 
+   * 673801
+
+A Microsoft nem garantálja konzisztens SMS vagy a hang-alapú multi-factor Authentication Rákérdezés azonos száma alapján. Érdekében a felhasználók a Microsoft hozzáadása vagy rövid kódokat útvonal módosításának SMS deliverability javításához biztosítjuk bármikor eltávolíthatja. A Microsoft nem támogatja a rövid kódok országokban az Amerikai Egyesült Államokon és Kanadán kívül
 
 ## <a name="billing"></a>Számlázás
 A legtöbb számlázási kérdésekhez vagy hivatkozással is válaszolni a [multi-factor Authentication árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) vagy ismertető dokumentációban [beolvasásával Azure multi-factor Authentication](multi-factor-authentication-versions-plans.md).

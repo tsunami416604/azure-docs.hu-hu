@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: acd61e9980b143ebbb81d2d144bdac9134e20a11
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 9e20c606973447e0b01eaf9716fabf47eefd228b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>Annak-megosztás oktatóanyag: adatok előkészítése az Azure Machine Learning-munkaterület speciális
 Azure Machine Learning-szolgáltatások (előzetes verzió) egy integrált, végpontok közötti adattudomány, de a professional adatszakértőkön át a készítse elő az adatokat, kísérletek fejlesztése és központi telepítése a felhőbeli skálázással modellek speciális elemzési megoldás.
@@ -261,10 +261,7 @@ A két órás blokkok előrejelzéshez adatok használatához ki kell számítan
 
    > [!NOTE]
    > Az Azure ML munkaterület synthesizes egy programot az Ön által megadott példák alapján, és ugyanez a program fennmaradó sorok alkalmazza. Az összes többi sort automatikusan fel van töltve, a megadott példa alapján. Munkaterület is elemzi az adatokat, és megpróbál peremhálózati esetek azonosításához. 
-
-   > [!IMPORTANT]
-   > Biztonsági esetek azonosítása nem feltétlenül Mac a munkaterületet üzemeltető aktuális verziójában. Kihagyás a __3. lépés__ és __4. lépés__ alatt a Mac. Ehelyett nyomja le az __OK__ után az összes sort az beszerzése származtatott értékekkel feltöltve.
-   
+  
 3. A szöveg **adatok elemzése** fent a rács azt jelzi, hogy munkaterület próbál biztonsági esetek észlelése. Ha befejezte, az állapota **felülvizsgálati következő javasolt sor** vagy **nincs javaslat**. Ebben a példában **felülvizsgálati következő javasolt sor** adja vissza.
 
 4. A javasolt módosításokat, jelölje ki **felülvizsgálati következő javasolt sor**. A cella, át kell tekintenie, és javítsa ki a (ha szükséges) ki van jelölve, a képernyőjén.
@@ -294,11 +291,6 @@ A két órás blokkok előrejelzéshez adatok használatához ki kell számítan
 
    ![A példa képe "2015. január 01. de 12 - hajnali 2 óra](media/tutorial-bikeshare-dataprep/wetherdatehourrangeexample.png)
 
-   > [!IMPORTANT]
-   > A Mac, hajtsa végre a következő ahelyett, hogy __8. lépés__ alatt.
-   >
-   > * Ugrás az első cellát tartalmazó `Feb 01, 2015 12AM-2AM`. Meg kell a __15 sor__. Javítsa ki a értéket `Jan 02, 2015 12AM-2AM`, és nyomja le az ENTER __Enter__. 
-   
 
 8. Várjon, amíg az állapot nem **adatok elemzése** való **felülvizsgálati következő javasolt sor**. Ez eltarthat néhány másodpercig. Kattintson a lehetőségre, és navigáljon a javasolt sor állapota hivatkozásra. 
 
@@ -513,12 +505,7 @@ Minden egyes sorára út adatok kerékpárt felvételi esemény jelöli. Ebben a
     > Egy példa elleni bármely sor biztosíthat. Ehhez a példához értékének `Jan 01, 2017 12AM-2AM` adatok első sora érvényes.
 
     ![A példaadatokat képe](media/tutorial-bikeshare-dataprep/tripdataderivebyexamplefirstexample.png)
-
-   > [!IMPORTANT]
-   > A Mac, hajtsa végre a következő ahelyett, hogy __3. lépés__ alatt.
-   >
-   > * Ugrás az első cellát tartalmazó `Jan 01, 2017 1AM-2AM`. Meg kell a __14 sor__. Javítsa ki a értéket `Jan 01, 2017 12AM-2AM`, és nyomja le az __Enter__. 
-
+   
 3. Várjon, amíg az alkalmazás kiszámítja az értékeket, szemben az összes sor. Ez eltarthat néhány másodpercig. Miután elemzése befejeződött, a a __felülvizsgálati következő javasolt sor__ hivatkozás adatok áttekintéséhez.
 
    ![Tekintse át a hivatkozással Befejezett elemzési képe](media/tutorial-bikeshare-dataprep/tripdatabyexanalysiscomplete.png)

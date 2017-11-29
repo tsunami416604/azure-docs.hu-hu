@@ -16,8 +16,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: billgib
-ms.openlocfilehash: 93a2f8aa8890f40a8ef9b88fe172efa24aac7811
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e7de7bb545e0ce04dc1b3dd398cc920213d09bae
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/28/2017
@@ -86,10 +86,10 @@ A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazá
 
 Ha szeretné megtudni, hogyan a Wingtip jegyek alkalmazás valósít meg új bérlő kiépítésének megosztott adatbázisban, töréspont és a munkafolyamaton keresztül lépés hozzáadása:
 
-1. Az a _PowerShell ISE_, nyissa meg... \\Tanulási modulok\\ProvisionAndCatalog\\_bemutató-ProvisionAndCatalog.ps1_ és állítsa be a következő paraméterekkel:
-   * **$TenantName** = **Bushwillow kékek**, az új helyszínére nevét.
-   * **$VenueType** = **kékek**, az előre definiált helyszínére típusok egyikét: *kékek*, classicalmusic, tánc, jazz, judo, motorracing, többcélú, opera, rockmusic, foci () kisbetű, szóközök nélkül).
-   * **$Scenario** = **1**található *kiépíteni egy olyan megosztott adatbázist a többi bérlő tenant*.
+1. Az a _PowerShell ISE_, nyissa meg... \\Tanulási modulok\\ProvisionTenants\\_bemutató-ProvisionTenants.ps1_ és állítsa be a következő paraméterekkel:
+   * **$TenantName** = **Bushwillow kékek**, egy új helyszínére nevét.
+   * **$VenueType** = **kékek**, az előre definiált helyszínére típusok egyikét: kékek, classicalmusic, tánc, jazz, judo, motorracing, többcélú, opera, rockmusic, foci (kisbetű, szóközök nélkül).
+   * **$DemoScenario** = **1**található *kiépíteni egy olyan megosztott adatbázist a többi bérlő tenant*.
 
 1. Adja hozzá a töréspont tegyen a kurzort, bárhol, amely szerint a sor 38, sor: *New-bérlő "*, és nyomja le az ENTER **F9**.
 
@@ -120,10 +120,10 @@ Lépkedjen végig a kiépítési munkafolyamat fő elemei a következők:
 
 Most már a bemutató a folyamat, amikor a bérlő létrehozása a saját adatbázisában:
 
-1. Még mindig... \\Tanulási modulok\\ProvisionAndCatalog\\_bemutató-ProvisionAndCatalog.ps1_ állítsa be a következő paraméterekkel:
-   * **$TenantName** = **sequoia foci**, az új helyszínére nevét.
-   * **$VenueType** = **foci**, az előre definiált helyszínére típusok egyikét: kékek, classicalmusic, tánc, jazz, judo, motorracing, többcélú, opera, rockmusic, *foci* () kisbetű, szóközök nélkül).
-   * **$Scenario** = **2**található *kiépíteni egy olyan megosztott adatbázist a többi bérlő tenant*.
+1. Még mindig... \\Tanulási modulok\\ProvisionTenants\\_bemutató-ProvisionTenants.ps1_ állítsa be a következő paraméterekkel:
+   * **$TenantName** = **sequoia foci**, egy új helyszínére nevét.
+   * **$VenueType** = **foci**, az előre definiált helyszínére típusok egyikét: kékek, classicalmusic, tánc, jazz, judo, motorracing, többcélú, opera, rockmusic, foci (kisbetű, szóközök nélkül).
+   * **$DemoScenario** = **2**található *kiépíteni a bérlők a saját adatbázis*.
 
 1. Adja hozzá az új töréspont tegyen a kurzort, bárhol, amely szerint a sor 57, sor:  *& &nbsp;$PSScriptRoot\New-TenantAndDatabase "*, és nyomja le az ENTER **F9**.
 
@@ -151,30 +151,31 @@ Közben a parancsfájl-nyomkövetés végighaladhat munkafolyamat fő elemei a k
 
 Ebben a gyakorlatban egy kötegelt 17 bérlő látja el. A kötegelt bérlő kiépítése más Wingtip jegyek oktatóanyagok elindítása, így további adatbázisok történő együttműködésre előtt ajánlott.
 
-1. Az a *PowerShell ISE*, nyissa meg... \\Tanulási modulok\\ProvisionAndCatalog\\*bemutató-ProvisionAndCatalog.ps1* , és módosítsa a *$Scenario* 3 paramétert:
-   * **$Scenario** = **3**található *bérlő köteg kiépíteni olyan megosztott adatbázist*.
+
+1. Az a *PowerShell ISE*, nyissa meg... \\Tanulási modulok\\ProvisionTenants\\*bemutató-ProvisionTenants.ps1* , és módosítsa a *$DemoScenario* 4 paramétert:
+   * **$DemoScenario** = **4**található *bérlő köteg kiépíteni olyan megosztott adatbázist*.
 1. Nyomja le az **F5** billentyűt, és futtassa a szkriptet.
 
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>Ellenőrizze a bérlők telepített készlete 
-Ezen a ponton rendelkezik olyan megosztott adatbázist helyezett bérlők és a bérlők a saját adatbázisok helyezhető üzembe. Az Azure-portálon létrehozott adatbázisokat vizsgálata használhatók:  
-
-* Az a [Azure-portálon](https://portal.azure.com), nyissa meg a **tenants1-mt -\<felhasználói\>**  server keresse meg azt az SQL Server-kiszolgálók listájához.  A **SQL-adatbázisok** lista tartalmaznia kell a megosztott **tenants1** adatbázis és a bérlők számára saját adatbázisban lévő adatbázisok:
+Ezen a ponton rendelkezik olyan megosztott adatbázist helyezett bérlők és a bérlők a saját adatbázisok helyezhető üzembe. Az Azure portál segítségével vizsgálja meg a létrehozott adatbázisokat. Az a [Azure-portálon](https://portal.azure.com), nyissa meg a **tenants1-mt -\<felhasználói\>**  server keresse meg azt az SQL Server-kiszolgálók listájához.  A **SQL-adatbázisok** lista tartalmaznia kell a megosztott **tenants1** adatbázis és a bérlők számára saját adatbázisban lévő adatbázisok:
 
    ![adatbázislista](media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
 Az Azure-portálon a bérlő adatbázisokat jeleníti meg, amíg nem teszi lehetővé a bérlők tájékozódhat *belül* a megosztott adatbázis. A bérlők teljes listáját a Wingtip jegyek események központ lapján, és keresse meg azt a katalógusban látható:   
 
-1. A böngészőben nyissa meg az események központ lapján (http:events.wingtip-mt.\<felhasználói\>. trafficmanager.net)  
+**A Wingtip jegyek események hub oldal használatával** <br>
+A böngészőben nyissa meg az események központ lapján (http:events.wingtip-mt.\<felhasználói\>. trafficmanager.net)  
 
-   A bérlők és a megfelelő adatbázis teljes listáját a katalógus érhető el. Az SQL-nézet az tenantcatalog adatbázis, amelyhez csatlakozik, a bérlő nevét a bérlők táblában adatbázis neve a Shard felügyeleti táblákban tárolt valósul meg. Ez a nézet szépen mutatja be, amely a metaadatokat a katalógusban tárolt érték.
+**Katalógus-adatbázis használata** <br>
+A bérlők és a megfelelő adatbázis teljes listáját a katalógus érhető el. Az SQL-nézet az tenantcatalog adatbázis, amelyhez csatlakozik, a bérlő nevét a bérlők táblában adatbázis neve a Shard felügyeleti táblákban tárolt valósul meg. Ez a nézet szépen mutatja be, amely a metaadatokat a katalógusban tárolt érték.
 
-2. A *SQL Server Management Studio (SSMS)*, csatlakozzon a bérlők kiszolgálóra **tenants1-mt.\<felhasználói\>. database.windows.net**, a bejelentkezési: **fejlesztői** , Jelszó:**P@ssword1**
+1. A *SQL Server Management Studio (SSMS)* a bérlők kiszolgálóra csatlakozás **katalógus-mt.\<felhasználói\>. database.windows.net**, a bejelentkezési: **fejlesztői**, Jelszó:**P@ssword1**
 
     ![SSMS kapcsolódási párbeszédpanel](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
-2. Az a *Object Explorer*, keresse meg a nézeteket a *tenantcatalog* adatbázis.
-2. Kattintson jobb gombbal a nézet a *TenantsExtended* válassza **legfelső 1000 sor kiválasztása**. Vegye figyelembe a különböző bérlőkhöz tartozó bérlői nevét és az adatbázis közötti leképezést.
+1. Az a *Object Explorer*, keresse meg a nézeteket a *tenantcatalog* adatbázis.
+1. Kattintson jobb gombbal a nézet a *TenantsExtended* válassza **legfelső 1000 sor kiválasztása**. Vegye figyelembe a különböző bérlőkhöz tartozó bérlői nevét és az adatbázis közötti leképezést.
 
     ![Az SSMS ExtendedTenants megtekintése](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
       

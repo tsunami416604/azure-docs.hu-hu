@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
-ms.openlocfilehash: 995a5bf0b28f6bfa0e501f5930b9efcad9041b8c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 913bd917ae7c2b44df097ead9c3e35841338905c
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Gyors üzembe helyezés PowerShell Azure-felhőbe rendszerhéj (előzetes verzió)
 
@@ -135,7 +135,7 @@ MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountN
 
 ```
 
-A megadott kapcsolati karakterlánccal az alábbi parancs segítségével Azure fájlmegosztás csatlakoztatása.
+A megadott kapcsolati karakterlánccal a következő parancs segítségével a Azure fájlok megosztás csatlakoztatásához.
         
 ``` PowerShell
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
@@ -143,9 +143,9 @@ net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<My
 
 ```
 
-További információkért lásd: [egy Azure fájlmegosztás csatlakoztathatja és érheti el a Windows a megosztás][azmount].
+További információkért lásd: [egy Azure fájlok megosztás csatlakoztathatja és érheti el a Windows a megosztás][azmount].
 
-A könyvtárakat az Azure fájlmegosztás is léphet az alábbiak szerint:
+Az alábbiak szerint is megtalálhatja a könyvtárakat Azure fájlok:
 
             
 ``` PowerShell
@@ -288,7 +288,7 @@ Egy adott parancs továbbra is végezhet a Get-Help parancsmag követ.
 PS Azure:\> Get-Help Get-AzureRmVM
 ```
 
-## <a name="use-azure-file-storage-to-store-your-data"></a>Az adatok tárolásához Azure File Storage használata
+## <a name="use-azure-files-to-store-your-data"></a>Azure-fájlok használatával tárolja az adatait
 
 Létrehozhat egy parancsfájlt, mondja ki `helloworld.ps1`, és menti a `CloudDrive` rendszerhéj-munkamenetek között használandó.
 
@@ -300,7 +300,7 @@ PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
 Hello World!
 ```
 
-Használatakor PowerShell felhő rendszerhéj, amikor legközelebb a `helloworld.ps1` fájl alapján lesznek megtalálhatók, a `CloudDrive` mappát, amely csatlakoztatja a Azure fájlmegosztás.
+Használatakor PowerShell felhő rendszerhéj, amikor legközelebb a `helloworld.ps1` fájl alapján lesznek megtalálhatók, a `CloudDrive` mappát, amely csatlakoztatja a Azure fájlok megosztáshoz.
 
 ## <a name="use-custom-profile"></a>Egyéni profil használata
 

@@ -3,7 +3,7 @@ title: "A Linux-fő célkiszolgáló feladatátvevő telepítése az Azure-ból 
 description: "A Linux virtuális gép újbóli védelméhez, előtt kell egy Linux fő célkiszolgáló. Megtudhatja, hogyan telepítsen."
 services: site-recovery
 documentationcenter: 
-author: ruturaj
+author: rajani-janaki-ram
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -12,10 +12,10 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 11/28/2017
-ms.author: ruturajd
-ms.openlocfilehash: 029e1b51c52e440666238f6177d15aea0a5e07a7
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.date: 11/22/2017
+ms.author: rajanaki
+ms.openlocfilehash: 7b2416617696e1df30b08f039ab39bfe7b57e093
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/28/2017
@@ -206,7 +206,7 @@ Ahhoz, hogy ez a paraméter, a következő lépéseket:
 
 #### <a name="disable-kernel-upgrades"></a>Tiltsa le a kernel frissítések
 
-Az Azure Site Recovery fő célkiszolgáló az Ubuntu olyan speciális verziója szükséges, győződjön meg arról, hogy a rendszermag-frissítéseket a virtuális géphez van-e tiltva.
+Az Azure Site Recovery fő célkiszolgáló az Ubuntu adott verzióját igényli, győződjön meg arról, hogy a rendszermag-frissítéseket a virtuális géphez van-e tiltva.
 
 Kernel frissítések engedélyezve vannak, ha a rendszeres megjelenjenek a fő célkiszolgáló hibás működését okozhatja.
 
@@ -369,12 +369,12 @@ Miután a telepítés befejeződött, a konfigurációs kiszolgáló regisztrál
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-   Várjon, amíg a parancsfájl befejeződik. Ha a fő célkiszolgáló regisztrált sikeresen, a fő célkiszolgáló megtalálható a **Site Recovery-infrastruktúra** a portál lapján.
+   Várjon, amíg a parancsfájl befejeződik. Ha a fő célkiszolgáló sikeresen regisztrálva van, a fő célkiszolgáló megtalálható a **Site Recovery-infrastruktúra** a portál lapján.
 
 
 ### <a name="upgrade-the-master-target"></a>A fő célkiszolgáló frissítése
 
-Futtassa a telepítőt. Automatikusan észleli, hogy az ügynök telepítve van-e a fő célkiszolgáló. Frissítéséhez válassza **Y**.  A telepítés befejezése után, a fő célkiszolgálón a következő parancs használatával telepített verziójának ellenőrzése.
+Futtassa a telepítőt. Automatikusan észleli, hogy az ügynök telepítve van-e a fő célkiszolgáló. Frissítéséhez válassza **Y**.  A telepítés befejezése után, a fő célkiszolgálón a következő parancs használatával telepített verziójának ellenőrzése:
 
     ```
     cat /usr/local/.vx_version
@@ -387,7 +387,7 @@ Láthatja, hogy a **verzió** mező biztosít a fő célkiszolgáló verziószá
 Szeretne telepíteni a VMware-eszközök a fő célkiszolgáló, így képes felderíteni, akkor az adattároló. Ha az eszközök nincsenek telepítve, a védelem-újrabeállítási képernyőn nem szerepel az adattároló. A VMware-eszközök telepítése, után újra kell indítania.
 
 ## <a name="next-steps"></a>Következő lépések
-Miután a telepítés és a regisztráció a fő célkiszolgáló rendelkezik finsihed, megjelenik a fő célkiszolgáló jelennek meg a **fő célkiszolgáló** című **Site Recovery-infrastruktúra**, a konfigurációs kiszolgáló – áttekintés csoportban.
+Miután befejezte a telepítési és a fő célkiszolgáló regisztrálását, megjelenik a fő célkiszolgáló jelennek meg a **fő célkiszolgáló** szakasz **Site Recovery-infrastruktúra**, a konfigurációja Server áttekintése.
 
 Most már folytathatja az [ismételt védelem](site-recovery-how-to-reprotect.md), feladat-visszavétel követ.
 

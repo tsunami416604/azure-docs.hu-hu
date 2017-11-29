@@ -6,21 +6,21 @@ keywords: "Az Active directory-jelszókezelés, jelszókezelés, az Azure AD sel
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-ms.reviewer: gahug
+ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 11/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: ea2d910611f1935cadd8eaaf5760460f480f0c6c
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 8ca760c3f144cda15920dd401c6a8726d3d53da0
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="password-writeback-overview"></a>Jelszó visszaírási áttekintése
 
@@ -108,8 +108,8 @@ Ha nem tudja, melyik fiókra a ismertetett fiókot hivatkozik, nyissa meg az Azu
 
 Ha ezeket az engedélyeket, az egyes erdőkhöz MA-szolgáltatásfiókja kezelheti jelszavakat az erdőben lévő felhasználói fiókok nevében. 
 
->[!IMPORTANT]
->Ha nem rendeli hozzá ezeket az engedélyeket, majd, annak ellenére, hogy a visszaírás konfigurációja megfelelőnek, megjelenik a felhasználók hibákat tapasztalnak, amikor azok megkísérlik a helyszíni jelszavak kezeléséhez a felhőből.
+> [!IMPORTANT]
+> Ha nem rendeli hozzá ezeket az engedélyeket, majd, annak ellenére, hogy a visszaírás konfigurációja megfelelőnek, megjelenik a felhasználók hibákat tapasztalnak, amikor azok megkísérlik a helyszíni jelszavak kezeléséhez a felhőből.
 >
 
 > [!NOTE]
@@ -125,7 +125,6 @@ A jelszóvisszaírás megtörténik a megfelelő engedélyek beállítása, vég
 5. Válassza ki a fiókot, amely engedélyek alkalmazott (az Azure AD Connect telepítőt).
 6. Az a **vonatkozik** legördülő listában válassza **leszármazott felhasználó** objektumok.
 7. A **engedélyek**, válassza ki a mezőket a következő:
-    * **Unexpire jelszó**
     * **Új jelszó létrehozása**
     * **Jelszó módosítása**
     * **LockoutTime írása**

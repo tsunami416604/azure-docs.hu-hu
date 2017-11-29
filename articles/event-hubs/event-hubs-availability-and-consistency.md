@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: 681a9d1636d547492f6f827461c6b2494b918778
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be1398e9b0a10efcd694e46d6322d5d7b9e7a843
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és a konzisztencia az Event Hubs
 
@@ -36,7 +36,7 @@ Sörgyár tartozó tétel meghatározza, hogy konzisztencia és rendelkezésre �
 Az Event Hubs egy particionált adatmodell épül. Konfigurálhatja a partíciók száma az eseményközpont a telepítés során, de nem ez az érték később módosíthatja. Az Event Hubs partíciók kell használnia, mert akkor rendelkezésre állási és az alkalmazás konzisztenciájának kapcsolatos döntést.
 
 ## <a name="availability"></a>Rendelkezésre állás
-Az Event Hubs használatába legegyszerűbb módja, hogy az alapértelmezett viselkedés használja. Ha létrehoz egy új `EventHubClient` objektumra, és használja a `Send` metódust, az eseményeket a rendszer automatikusan terjeszt a partíciók az eseményközpont között. Ez a viselkedés lehetővé teszi, hogy a legnagyobb mennyisége idő.
+Az Event Hubs használatába legegyszerűbb módja, hogy az alapértelmezett viselkedés használja. Ha létrehoz egy új  **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)**  objektumra, és használja a  **[küldése](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)**  metódust, az eseményeket a rendszer automatikusan terjeszt között a partíciók az eseményközpont. Ez a viselkedés lehetővé teszi, hogy a legnagyobb mennyisége idő.
 
 A maximális idő igénylő használat esetén ez a modell használata ajánlott.
 

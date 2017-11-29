@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 5e10ddd8c850d457b4ad77cd5ea4d92edc07017e
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 11/27/2017
+ms.openlocfilehash: d18ec44ecede44829b488ac9864bbfae2c62883a
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configure-and-access-server-logs-using-azure-cli"></a>Konfigurálja, és hozzáférést kiszolgálónaplókban olvashatók Azure parancssori felület használatával
 Letöltheti a PostgreSQL hibanaplókat a parancssori felület (Azure CLI) használatával. Tranzakciós naplók elérése azonban nem támogatott. 
@@ -33,14 +33,14 @@ A lekérdezés naplókat, valamint a hibanaplókat eléréséhez kiszolgálót �
 További információkért lásd: [kiszolgáló konfigurációs paraméterek testreszabása](howto-configure-server-parameters-using-cli.md).
 
 ## <a name="list-logs-for-azure-database-for-postgresql-server"></a>Lista naplók az Azure Database PostgreSQL-kiszolgáló
-A kiszolgáló elérhető naplófájlokat sorolják fel, futtassa a [az postgres server-naplók lista](/cli/azure/postgres/server-logs#list) parancsot.
+A kiszolgáló elérhető naplófájlokat sorolják fel, futtassa a [az postgres server-naplók lista](/cli/azure/postgres/server-logs#az_postgres_server_logs_list) parancsot.
 
 A kiszolgáló a naplófájlokban listázhatja **mypgserver-20170401.postgres.database.azure.com** erőforráscsoportba tartozó **myresourcegroup**, és közvetlen a nevű szövegfájlba **napló\_fájlok\_lista.txt.**
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mypgserver-20170401 > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>Naplók helyi letöltése a kiszolgálóról
-A [az postgres server-naplók letöltése](/cli/azure/postgres/server-logs#download) parancs lehetővé teszi, hogy töltse le a kiszolgáló külön naplófájlba. 
+A [az postgres server-naplók letöltése](/cli/azure/postgres/server-logs#az_postgres_server_logs_download) parancs lehetővé teszi, hogy töltse le a kiszolgáló külön naplófájlba. 
 
 Ez a példa letölti az adott naplófájlban a kiszolgáló **mypgserver-20170401.postgres.database.azure.com** erőforráscsoportba tartozó **myresourcegroup** a helyi környezet.
 ```azurecli-interactive

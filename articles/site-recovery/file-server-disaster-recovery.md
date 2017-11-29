@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 10/23/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 78ce74450ce933e2aced4b6e62504373de7954f8
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 8c9d8dadcd6181d9894ab6ee7110841afdec5708
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="protect-a-file-server-using-azure-site-recovery"></a>Egy Azure Site Recovery segítségével fájlkiszolgáló védelme 
 
@@ -24,9 +24,8 @@ A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás által az üzl
 
 A cikkből megtudhatja, hogyan védi az Azure Site Recovery és egyéb javaslatok használatával különböző környezetekben megfelelően fájlkiszolgáló.     
 
-- [Azure IaaS fájl server gépek védelme](#disaster-recovery-recommendation-for-azure-iaas-virtual-machines)
-- [A helyszíni fájlkiszolgálók védelme](#replicate-an-onpremises-file-server-using-azure-site-recovery)
-
+- [Azure IaaS fájl server gépek replikálása](#disaster-recovery-recommendation-for-azure-iaas-virtual-machines)
+- [Azure Site Recovery segítségével a helyi fájlkiszolgáló replikálása](#replicate-an-onpremises-file-server-using-azure-site-recovery)
 
 ## <a name="file-server-architecture"></a>Fájl kiszolgáló architektúrája
 A rendszer megosztása nyitott elosztott fájlok célja, hogy adjon meg egy olyan környezetben, ahol a földrajzilag elosztott felhasználók egy csoportjánál együttműködhetnek hatékonyan fájlok, és biztosítani kell, hogy integritási igényeik lépnek érvénybe. Egy tipikus helyszíni fájlkiszolgáló ökoszisztéma nagyszámú egyidejű felhasználót és nagyszámú tartalomelem támogató replikációs ütemezési és sávszélesség-szabályozás Distributed File System replikációs (DFSR) használata. Elosztott fájlrendszer replikációs szolgáltatása, távoli különbözeti tömörítés (RDC), hatékony korlátozott sávszélességű hálózaton keresztül a fájlok frissítéséhez használható ismert tömörítési algoritmust alkalmazza. Észlel Beszúrások, eltávolítására és átrendezést egyaránt képes észlelni az adatok a, fájljaiban engedélyezése csak a módosított fájlblokkokat replikálja, ha a fájlok is frissülnek az elosztott fájlrendszer replikációs szolgáltatása. Fájlkiszolgáló környezetekben, ahol napi biztonsági mentés készül a nem csúcsidőre időzítést, amely automatikusan igazodnak a vész-igényekre és az elosztott fájlrendszer replikációs szolgáltatása nincs implementációja is vannak.
@@ -45,16 +44,16 @@ A fenti hivatkozás több fájlkiszolgáló említett tagként, aktívan részt 
 
     Miután telephelyek közötti VPN-kapcsolat és az Active directory függőségeit kezeli, és elosztott fájlrendszer replikációs szolgáltatása rendelkezésre áll, amikor egy vagy több fájl kiszolgálókat a helyi nem érhető el, akkor az ügyfelek továbbra is az Azure virtuális Gépen, amely teljesíti a kérelmeket a csatlakozhat.
 
-    Ez a megközelítés a javaslat esetében a virtuális gépek rendelkezik konfigurációk nem támogatottak az Azure Site Recovery, mint például: megosztott fürtlemez néha gyakori használati módszereinek fájlkiszolgáló környezetekben.  Elosztott fájlrendszer-replikációs közepes változási sebessége a kis sávszélességű környezetekben is működik. Rendelkezik egy Azure virtuális gép, és folyamatosan fut a további költségeket is elhelyezkedhetnek, ennek kell.  
+    Ez a megközelítés a javaslat esetében a virtuális gépek rendelkezik konfigurációk nem támogatottak az Azure Site Recovery, mint például: megosztott fürtlemezre mutat, egyes esetekben gyakori használati módszereinek fájlkiszolgáló környezetekben.  Elosztott fájlrendszer-replikációs közepes változási sebessége a kis sávszélességű környezetekben is működik. Rendelkezik egy Azure virtuális gép, és folyamatosan fut a további költségeket is elhelyezkedhetnek, ennek kell.  
 
 3.  Azure fájl Sync szolgáltatás segítségével replikálni a fájlokat: Ha elő a felhőbe a használatában, vagy egy Azure virtuális gép már használ, akkor javasoljuk, hogy a teljes körűen felügyelt fájlmegosztások a felhőben, amelyek elérhető v szinkronizálása kínál, amelyek az Azure File szinkronizálási szolgáltatás használata IA iparági szabvány [Server Message Block ](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)(SMB) protokollt. Megosztások egyidejűleg, majd lehet csatlakoztatni az Azure File felhőalapú vagy helyszíni a Windows, Linux és macOS központi telepítéséhez. 
 
-Alábbi ábra ad meg a döntést a fájl kiszolgálói környezet esetén használandó milyen stratégia enyhítése célzó a képi megjelenítése.
+Következő diagramon ad meg a döntést a fájl kiszolgálói környezet esetén használandó milyen stratégia enyhítése célzó a képi megjelenítése.
 
 ![decisiontree](media/site-recovery-file-server/decisiontree.png)
 
 
-### <a name="factors-to-consider-while-making-disaster-recovery-decision"></a>Vész-helyreállítási döntési tétele közben megfontolandó tényezőt
+### <a name="factors-to-consider-while-making-decision-of-disaster-recovery-to-azure"></a>A vész-helyreállítási Azure döntési tétele közben megfontolandó tényezőt
 
 |Környezet  |Ajánlás  |Megfontolandó szempontok |
 |---------|---------|---------|
@@ -76,7 +75,7 @@ A Site Recovery replikációs alkalmazás független, a ajánlás itt várhatóa
 > [!IMPORTANT]
 > Az összes, a folytatás előtt az alábbi három módszer, gondoskodjon arról, hogy a következő függőségek vannak végrehajtott megvagyunk:
 
-**Hely-hely kapcsolatot**: közvetlen kapcsolatot a helyszíni hely és az Azure-hálózatot kell létrehozni a kiszolgálók közötti kommunikáció lehetővé tételéhez.  Ez úgy biztosítható a Windows Azure virtuális hálózat a vész-Helyreállítási helyként használandó biztonságos webhelyek VPN-kapcsolat által.  
+**Hely-hely kapcsolatot**: közvetlen kapcsolatot a helyszíni hely és az Azure-hálózatot kell létrehozni a kiszolgálók közötti kommunikáció lehetővé tételéhez.  Ez úgy biztosítható egy biztonságos telephelyek közötti VPN-kapcsolat egy Microsoft Azure virtuális hálózatra a vész-Helyreállítási helyként használandó.  
 Lásd: [jöjjön létre pont-pont VPN-kapcsolat a helyszíni hely és az Azure-hálózat között](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
 
 **Az Active Directory**: elosztott fájlrendszer replikációs szolgáltatása az Active Directory függ.  Ez azt jelenti, hogy a helyi tartományvezérlővel rendelkező Active Directory-erdő az időtartam a vész-Helyreállítási hely, az Azure-ban. Akkor is, ha az elosztott fájlrendszer-replikációs nem használnak, ha a kívánt felhasználók számára nyújtott / meg például a legtöbb szervezet hozzáférés ellenőrzése kell, a lépések végrehajtása szükséges.
@@ -84,7 +83,7 @@ Lásd: [terjessze ki a helyi Active Directory Azure](https://docs.microsoft.com/
 
 ## <a name="disaster-recovery-recommendation-for-azure-iaas-virtual-machines"></a>Katasztrófa utáni helyreállítás javaslat Azure IaaS virtuális gépekhez
 
-Vész-helyreállítási Azure IaaS virtuális gépeken futtatott, két lehetőség közül választhat fájlkiszolgálók kezelése és konfigurálása alapján, hogy kívánja-e áthelyezése [Azure fájlok](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
+Konfigurál, és vészhelyreállítás Azure IaaS virtuális gépeket üzemeltet a fájlkiszolgálók kezelése, választhat két lehetőség közül választhat, ha alapján, hogy kívánja-e áthelyezése [Azure fájlok](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
 1. [Az Azure File Sync szolgáltatás használatával](#use-azure-file-sync-service-to-replicate-files-hosted-on-iaas-virtual-machine)
 2. [Az Azure Site Recovery használata](#replicate-an-iaas-file-server-virtual-machine-using-azure-site-recovery)
@@ -92,36 +91,34 @@ Vész-helyreállítási Azure IaaS virtuális gépeken futtatott, két lehetős�
 ## <a name="use-azure-file-sync-service-to-replicate-files-hosted-on-iaas-virtual-machine"></a>IaaS virtuális gépen tárolt fájlok replikálása Azure fájl Sync szolgáltatás segítségével
 
 **Az Azure Files** teljesen lecseréli vagy kiegészítik a hagyományos helyszíni fájlkiszolgálókon és NAS-eszközökön használható. Az Azure-fájlmegosztások az Azure File Sync használatával replikálhatóak helyszíni vagy felhőalapú Windows Serverekre, az adatok a használat helyéhez közeli nagy teljesítményű és elosztott gyorsítótárazása érdekében. Következő lépések a vész-Helyreállítási javaslat Azure virtuális gépek hagyományos fájlkiszolgálók azonos funkciókat ellátó részletesen:
-1.  Azure Site Recovery segítségével itt leírt lépéseket gépek védelme
+1.  Azure Site Recovery segítségével leírt lépéseket segítségével gépek védelmére [Itt](azure-to-azure-quickstart.md).
 2.  Azure fájlszinkronizálás segítségével replikálni a fájlokat a virtuális gép, amely úgy működik, mint a fájlkiszolgáló, a felhőhöz.
-3.  Azure Site Recovery helyreállítási terv funkció használatával adja hozzá azokat a parancsprogramokat [Azure fájlmegosztás csatlakoztatása](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) és elérni a megosztást a virtuális gépen.
+3.  Azure Site Recovery használata [helyreállítási terv](site-recovery-create-recovery-plans.md) parancsfájlok hozzáadása a szolgáltatás [Azure fájlmegosztás csatlakoztatása](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) és elérni a megosztást a virtuális gépen.
 
 A következő lépések röviden használatát ismertetik Azure fájl szinkronizálási szolgáltatás:
 
-1. [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Ha úgy dönt, írásvédett georedundáns tárolás (RA-GRS) a storage-fiókok, katasztrófa esetén egy másodlagos régióban olvasási hozzáférést kap az adatait. Tekintse meg a [Azure File megosztás vész-helyreállítási stratégiák](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) további információért.
-
-2. [Fájlmegosztás létrehozása](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
-
+1. [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Ha úgy dönt, írásvédett Georedundáns tárolás (RA-GRS) a storage-fiókok, kap olvasási hozzáféréssel az adatok egy katasztrófa esetén a másodlagos régióba. Tekintse meg a [Azure File megosztás vész-helyreállítási stratégiák](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) további információért.
+2. [Fájlmegosztás létrehozása](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. [Azure fájlszinkronizálás telepítése](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide) Azure fájlkiszolgáló.
-
 4. Hozzon létre egy szinkronizálási csoportot: a szinkronizálási csoporton belüli végpontok folyamatosan szinkronban vannak egymással. A szinkronizálás csoport tartalmaznia kell a felhő legalább egy végpontot, amely egy Azure fájlmegosztás jelöli, és egy kiszolgáló végpont, amely a Windows Server egy elérési utat képvisel.
 5.  A fájlok most folyamatosan szinkronban a Azure fájlmegosztás és a helyszíni kiszolgáló között.
-6.  Legyen katasztrófahelyzet esetén a helyszíni környezetben, használja a helyreállítási terv feladatátvételi végrehajtani, és adja hozzá a parancsfájlt, amellyel [Azure fájlmegosztás csatlakoztatása](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) és elérni a megosztást a virtuális gépen.
+6.  Legyen katasztrófahelyzet esetén a helyszíni környezetben, hajtsa végre, mint a feladatátvétel használatával egy [helyreállítási terv](site-recovery-create-recovery-plans.md) , és adja hozzá a parancsfájlt, amellyel [Azure fájlmegosztás csatlakoztatása](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) és elérni a megosztást a virtuális gépen.
 
 ### <a name="replicate-an-iaas-file-server-virtual-machine-using-azure-site-recovery"></a>Az infrastruktúra-szolgáltatási fájl kiszolgáló virtuális gép Azure Site Recovery segítségével replikálni.
 
-Ha fér hozzá az infrastruktúra-szolgáltatási fájl kiszolgáló virtuális gép hajtsa végre a helyszíni ügyfél először 2 lépéseit, valamint más folytassa a 3. lépés.
+Ha a helyszíni ügyfél fér hozzá az infrastruktúra-szolgáltatási fájl kiszolgáló virtuális gép hajtsa végre az első két lépés, valamint más folytassa a 3. lépés.
 
-1. Helyszíni hely és az Azure-hálózat között telephelyek közötti VPN-kapcsolat létrehozásához.  
-2. A helyszíni Active Directory kiterjeszteni.
-3. [Vész-helyreállítási](azure-to-azure-tutorial-enable-replication.md) az infrastruktúra-szolgáltatási fájl server gép másodlagos régióba.
+1. Helyszíni hely és az Azure-hálózat között telephelyek közötti VPN-kapcsolat létrehozásához.
+1. A helyszíni Active Directory kiterjeszteni.
+1. [Vész-helyreállítási](azure-to-azure-tutorial-enable-replication.md) az infrastruktúra-szolgáltatási fájl server gép másodlagos régióba.
 
 
 A vészhelyreállítás másodlagos régióba további információkért tekintse meg a [Itt](concepts-azure-to-azure-architecture.md).
 
 
 ## <a name="replicate-an-on-premises-file-server-using-azure-site-recovery"></a>Egy Azure Site Recovery segítségével a helyi fájlkiszolgáló replikálása
-Az alábbi lépések részletes replikációs a VMware virtuális gépek replikálásához a Hyper-V virtuális lépéseket lásd itt.
+
+Az alábbi lépések részletes replikációs a VMware virtuális gépek replikálásához a Hyper-V virtuális lépéseket lásd [Itt](tutorial-hyper-v-to-azure.md).
 
 1.  [Készítse elő az Azure-erőforrások](tutorial-prepare-azure.md) replikációja, a helyszíni gépeket.
 2.  Helyszíni hely és az Azure-hálózat között telephelyek közötti VPN-kapcsolat létrehozásához.  
@@ -134,33 +131,26 @@ Az alábbi lépések részletes replikációs a VMware virtuális gépek replik�
 1.  Helyszíni hely és az Azure-hálózat között telephelyek közötti VPN-kapcsolat létrehozásához. 
 2.  A helyszíni Active Directory kiterjeszteni.
 3.  [Hozzon létre, és helyezze üzembe a virtuális gép fájlkiszolgáló](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) a Windows Azure virtuális hálózaton.
-
-    Győződjön meg arról, hogy a virtuális gép legyen adva a ugyanazon Windows Azure virtuális hálózaton, ami az alhálózatok közötti csatlakozik a helyszíni környezetben. 
-
+Győződjön meg arról, hogy a virtuális gép legyen adva a ugyanazon Windows Azure virtuális hálózaton, ami az alhálózatok közötti csatlakozik a helyszíni környezetben. 
 4.  Telepítse és [konfigurálhatja az Elosztott fájlrendszer replikációs szolgáltatása](https://blogs.technet.microsoft.com/b/filecab/archive/2013/08/21/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of-the-clones.aspx) a Windows Server.
-
 5.  [Valósítja meg az elosztott fájlrendszer-Namespace](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces).
 6.  Az elosztott Fájlrendszerbeli Namespace megvalósítva, a vész-Helyreállítási helyeken nem éles környezetben megosztott mappák feladatainak átvétele végezhető el az elosztott Fájlrendszerbeli Namespace mappa célok frissítése.  Az elosztott Fájlrendszerbeli Namespace módosítások replikálja az Active Directory segítségével, ha felhasználók kapcsolódnak a megfelelő mappát célokat transzparens módon.
 
 ## <a name="use-azure-file-sync-service-to-replicate-your-on-premises-files"></a>Azure fájl Sync szolgáltatás segítségével replikálni a helyi fájlokat:
 Az Azure fájlszinkronizálás szolgáltatással replikálhatja a kívánt fájlokat a felhőbe, hogy egy katasztrófa, és a helyi fájlkiszolgáló elérhetetlensége esetén csatlakoztassa a kívánt fájlhelyek a felhőből történő be- és továbbra is a szolgáltatáskérések az ügyfél gépek.
 Az ajánlott módszer az Azure fájlszinkronizálás integrálása az Azure Site Recovery
-1.  A fájl server gépek említett lépéseket követve Azure Site Recovery segítségével védelmére [Itt](tutorial-vmware-to-azure.md)
+1.  A fájl server gépek említett lépéseket követve Azure Site Recovery segítségével védelmére [Itt](tutorial-vmware-to-azure.md).
 2.  Azure fájlszinkronizálás használja replikálja a fájlokat a számítógépről, amely a fájlkiszolgáló, a felhő funkcionál.
 3.  Azure Site Recovery helyreállítási terv funkció használatával adhatja hozzá a parancsfájlok Azure fájlmegosztás csatlakoztatása a feladatait a fájlkiszolgáló gép az Azure-ban.
 
 Az alábbi lépések részletes Azure fájl Sync szolgáltatás használatával:
 
-1. [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Ha úgy dönt, hogy írásvédett georedundáns tárolás (RA-GRS) a storage-fiókok (ajánlott), akkor olvasási hozzáférés az adatokhoz katasztrófa esetén egy másodlagos régióban. Tekintse meg a [Azure File megosztás vész-helyreállítási stratégiák](https://docs.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) további információért.
-
-2. [Fájlmegosztás létrehozása](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
-
+1. [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Ha úgy dönt, hogy írásvédett georedundáns tárolás (RA-GRS) (ajánlott) a storage-fiókok, rendelkezik olvasási jogosultsággal az adatok katasztrófa esetén egy másodlagos régióban. Tekintse meg a [Azure File megosztás vész-helyreállítási stratégiák](https://docs.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) további információért.
+2. [Fájlmegosztás létrehozása](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. [Azure fájlszinkronizálás telepítése](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide) a helyi fájlkiszolgálón.
-
 4. Hozzon létre egy szinkronizálási csoportot: a szinkronizálási csoporton belüli végpontok folyamatosan szinkronban vannak egymással. A szinkronizálás csoport tartalmaznia kell a felhő legalább egy végpontot, amely egy Azure fájlmegosztás jelöli, és egy kiszolgáló végpont, amely a helyszíni Windows Server egy elérési utat képvisel.
-
 1. A fájlok most folyamatosan szinkronban a Azure fájlmegosztás és a helyszíni kiszolgáló között.
-6.  Legyen katasztrófahelyzet esetén a helyszíni környezetben használja a helyreállítási terv feladatátvételi hajtsa végre, és adja hozzá a parancsfájlt, amellyel az Azure fájlmegosztást csatlakoztathatja és érheti el a megosztás a virtuális gépen.
+6.  Legyen katasztrófahelyzet esetén a helyszíni környezetben, hajtsa végre, mint a feladatátvétel használatával egy [helyreállítási terv](site-recovery-create-recovery-plans.md) , és adja hozzá a parancsfájlt, amellyel az Azure fájlmegosztást csatlakoztathatja és érheti el a megosztás a virtuális gépen.
 
 > [!NOTE]
 > Győződjön meg arról, 445-ös port meg nyitva: Azure fájlok SMB protokollt használja. Az SMB a 445-ös TCP-porton keresztül kommunikál – ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös TCP-portot az ügyfél gépéről.
@@ -186,4 +176,4 @@ A teszt feladatátvétel ad útmutatást, majd tekintse át a DNS, [feladatátv�
 3.  Kattintson a "Failover".
 4.  Válassza ki a helyreállítási pontot a feladatátvételi folyamat elindításához.
 
-További információ a feladatátvételi teszt végrehajtása, [Itt](site-recovery-failover.md).
+A feladatátvételt hajt végre további információkért tekintse meg a [Itt](site-recovery-failover.md).

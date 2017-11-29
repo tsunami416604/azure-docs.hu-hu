@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b994cfd09156ae8e1662f4947241aa1a4672df98
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 956f44068db8fe9c8c7a839a0ce80c19e2b2f11c
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="manage-azure-disks-with-powershell"></a>Azure-lemezeket a PowerShell-lel kezelése
 
@@ -28,7 +28,7 @@ Az Azure virtuális gépek lemez használata a virtuális gépek operációs ren
 
 > [!div class="checklist"]
 > * Az operációs rendszer és a ideiglenes lemezek
-> * Az adatlemezek
+> * Adatlemezek
 > * Standard és Premium lemezek
 > * Lemez teljesítménye
 > * Csatlakoztatása és adatlemezek előkészítése
@@ -41,13 +41,13 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 
 Egy Azure virtuális gép létrehozásakor a rendszer automatikusan csatolja két lemez a virtuális gép az. 
 
-**Operációsrendszer-lemez** -operációs rendszer lemezek is kell méretezni, legfeljebb 1 terabájtnál, és a virtuális gépek operációs rendszert futtatja.  Az operációs rendszer lemezének hozzá van rendelve egy meghajtóbetűjelét *c:* alapértelmezés szerint. A lemez az operációs rendszer lemezének konfigurációját gyorsítótárazása az operációs rendszer teljesítményének van optimalizálva. Az operációs rendszer lemezének **nem kell** alkalmazások vagy az adatok tárolására szolgál. Az alkalmazások és adatok használja az adatlemezt, amely a cikk későbbi részében részleteit.
+**Operációsrendszer-lemez** -operációs rendszer lemezek is kell méretezni, legfeljebb 4 terabájt, és a virtuális gépek operációs rendszert futtatja.  Az operációs rendszer lemezének hozzá van rendelve egy meghajtóbetűjelét *c:* alapértelmezés szerint. A lemez az operációs rendszer lemezének konfigurációját gyorsítótárazása az operációs rendszer teljesítményének van optimalizálva. Az operációs rendszer lemezének **nem kell** alkalmazások vagy az adatok tárolására szolgál. Az alkalmazások és adatok használja az adatlemezt, amely a cikk későbbi részében részleteit.
 
 **Ideiglenes lemez** -ideiglenes lemezek található SSD-meghajtó használatát a virtuális gépként Azure ugyanazon a gazdagépen. Ideiglenes lemezek magas performant és műveletek, például a ideiglenes adatfeldolgozási használható. Azonban a virtuális gép új gazdagépre helyezik át, ha eltávolítják egy ideiglenes lemezen tárolt adatokat. Az ideiglenes lemez mérete határozza meg a Virtuálisgép-méretet. Ideiglenes lemezek vannak hozzárendelve a meghajtóbetűjel *d:* alapértelmezés szerint.
 
 ### <a name="temporary-disk-sizes"></a>Ideiglenes mérete
 
-| Típus | Virtuálisgép-mérettel | Maximális ideiglenes lemez (GB) |
+| Típus | Virtuális gép mérete | Maximális ideiglenes lemez (GB) |
 |----|----|----|
 | [Általános célú](sizes-general.md) | A-D sorozat része | 800 |
 | [Számításra optimalizált](sizes-compute.md) | F sorozat | 800 |
@@ -62,7 +62,7 @@ További adatlemezt felvehető alkalmazások telepítése és adatok tárolásá
 
 ### <a name="max-data-disks-per-vm"></a>Maximális adatlemezek virtuális gépenként
 
-| Típus | Virtuálisgép-mérettel | Maximális adatlemezek virtuális gépenként |
+| Típus | Virtuális gép mérete | Maximális adatlemezek virtuális gépenként |
 |----|----|----|
 | [Általános célú](sizes-general.md) | A-D sorozat része | 32 |
 | [Számításra optimalizált](sizes-compute.md) | F sorozat | 32 |
@@ -81,7 +81,7 @@ A merevlemez-meghajtókra épülő Standard Storage költséghatékony tárolás
 
 ### <a name="premium-disk"></a>Prémium szintű lemez
 
-Premium lemezek SSD-alapú nagy teljesítményű, alacsony késésű lemez üzemelnek. Tökéletes éles munkaterhelést futtató virtuális gépekhez. Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS sorozatnak és FS sorozatú virtuális gépeket. Prémium szintű lemezekhez három típusa (P10, P20, P30) helyen, és a lemez mérete a lemez típusát határozza meg. Ha választja, a lemez méretét az érték felfelé kerekíti a következő típusra. Például ha a mérete 128 GB alá a lemez típusát lesz P10, 129 és 512 P20 és több mint 512 P30 között. 
+Premium lemezek SSD-alapú nagy teljesítményű, alacsony késésű lemez üzemelnek. Tökéletes éles munkaterhelést futtató virtuális gépekhez. Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS sorozatnak és FS sorozatú virtuális gépeket. Prémium szintű lemezekhez három típusa (P10, P20, P30, P40, P50) helyen, és a lemez mérete a lemez típusát határozza meg. Ha választja, a lemez méretét az érték felfelé kerekíti a következő típusra. Például, ha a mérete 128 GB alá a lemez típusát és fog esni P10, 129 512 P20, 512 P30, 2TB és P50 P40 4 TB-os. 
 
 ### <a name="premium-disk-performance"></a>Prémium szintű lemez teljesítménye
 
@@ -148,7 +148,7 @@ Ebben az oktatóprogramban megismerte méretű lemezek témakörök, mint:
 
 > [!div class="checklist"]
 > * Az operációs rendszer és a ideiglenes lemezek
-> * Az adatlemezek
+> * Adatlemezek
 > * Standard és Premium lemezek
 > * Lemez teljesítménye
 > * Csatlakoztatása és adatlemezek előkészítése

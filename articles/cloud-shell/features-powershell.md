@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: damaerte
-ms.openlocfilehash: e45d66eff4be4918ffd6e7940bbfb5adb4c88c00
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9c2eeef9c20f25d2af97e6c754f005b698222385
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Szolgáltatások és eszközök PowerShell Azure Cloud rendszerhéj (előzetes verzió)
 
@@ -37,7 +37,7 @@ A felhő rendszerhéj (előzetes verzió) PowerShell biztonságosan és automati
 
 ### <a name="files-persistence-across-sessions"></a>Adatmegőrzési fájlok munkamenetei között
 
-A munkamenetek között a fájlok továbbra is fennáll, felhőalapú rendszerhéj bemutatja, hogyan csatlakoztatása az Azure fájlmegosztások első indításkor.
+A munkamenetek között a fájlok továbbra is fennáll, felhőalapú rendszerhéj bemutatja, hogyan első indítsa el a Microsoft Azure fájlok megosztásra csatolni.
 Ezt követően felhő rendszerhéj automatikusan elvégzi a tároló (mint csatlakoztatott `$home\clouddrive`) minden későbbi.
 Mivel minden kérelmet a felhő rendszerhéj lefoglalni egy ideiglenes gép, fájlok kívül a `$home\clouddrive` és a gép állapota nem maradnak meg a munkamenetek között.
 

@@ -7,14 +7,14 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 11/28/2017
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 8afde912ca48297ae60eb7d05aa624a1d72c1637
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 16b56c71e2c81bead7c578a973840391996e845b
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Az Azure verem diagnosztikai eszközök
 
@@ -29,43 +29,11 @@ A diagnosztikai eszközök biztosíthatja a napló gyűjtemény módszer haszná
  
 ## <a name="trace-collector"></a>Nyomkövetési adatgyűjtő
  
-A nyomkövetési adatgyűjtő alapértelmezés szerint engedélyezve van. Ez folyamatosan a háttérben fut, és gyűjti össze az összes esemény Windows (nyomkövetés) napló Komponensszolgáltatások Azure veremben és egy közös helyi megosztáson tárolja azokat. 
+A nyomkövetési adatgyűjtő alapértelmezés szerint engedélyezve van, és minden esemény Windows (nyomkövetés) gyűjteni Komponensszolgáltatások Azure verem háttérben fut, folyamatosan. Egy közös helyi megosztás mással egy öt nap korhatár ETW naplók tárolja. Ha eléri ezt a korlátot, a legrégebbi fájlok törlődnek, amikor újakat hoz létre. Az alapértelmezett maximális engedélyezett az egyes fájlok mérete 200MB. A mérete ellenőrzés akkor fordul elő, rendszeres időközönként (2 percenként), és ha az aktuális fájl > = 200 MB, azok mentésekor, és egy új fájl jön létre. Az esemény-munkamenet létrehozott fájlok összesített mérete a is van egy 8 GB-os korlátot. 
 
-Fontos tudnivaló a nyomkövetési adatgyűjtő kapcsolatban a következők:
- 
-* A nyomkövetési adatgyűjtő folyamatosan fut, alapértelmezett mérete korlátokat. Alapértelmezés szerint minden fájl (200 MB) megengedett maximális méret **nem** maximális méretét. A mérete ellenőrzés akkor fordul elő, rendszeres időközönként (jelenleg 2 percenként), és ha az aktuális fájl > = 200 MB, azok mentésekor, és egy új fájl jön létre. Az esemény-munkamenet létrehozott fájlok összesített mérete a is van egy 8 GB (konfigurálható) korlátot. Ha eléri ezt a korlátot, a legrégebbi fájlok törlődnek, amikor újakat hoz létre.
-* A naplók egy 5 napos korhatár nincs. Ez a korlátozás akkor is konfigurálható. 
-* Minden egyes összetevő nyomkövetési konfiguráció tulajdonságainak meghatározása a JSON-fájl használatával. A JSON-fájlok találhatók **C:\TraceCollector\Configuration**. Ha szükséges, ezeket a fájlokat a gyűjtött naplók korával és mérete határain módosítása szerkeszthető. Ezek a fájlok módosításait kell indítani a *Microsoft Azure verem nyomkövetési adatgyűjtő* szolgáltatás, a módosítások életbe léptetéséhez.
-
-A következő példa egy nyomkövetési konfigurációs JSON-fájlt a XRP virtuális FabricRingServices műveletekhez: 
-
-```json
-{
-    "LogFile": 
-    {
-        "SessionName": "FabricRingServicesOperationsLogSession",
-        "FileName": "\\\\SU1FileServer\\SU1_ManagementLibrary_1\\Diagnostics\\FabricRingServices\\Operations\\AzureStack.Common.Infrastructure.Operations.etl",
-        "RollTimeStamp": "00:00:00",
-        "MaxDaysOfFiles": "5",
-        "MaxSizeInMB": "200",
-        "TotalSizeInMB": "5120"
-    },
-    "EventSources":
-    [
-        {"Name": "Microsoft-AzureStack-Common-Infrastructure-ResourceManager" },
-        {"Name": "Microsoft-OperationManager-EventSource" },
-        {"Name": "Microsoft-Operation-EventSource" }
-    ]
-}
-```
-
-* **MaxDaysOfFiles**. Ezzel a paraméterrel állítható fájlokat, és tarthatja korát. Törlődnek a régi naplófájlokat.
-* **Maxsizeinmb értéknél**. Ezzel a paraméterrel állítható a adatbázisméret küszöbértéke egy fájl. Ha a méretet, a rendszer egy új .etl fájl jön létre.
-* **TotalSizeInMB**. Ezzel a paraméterrel állítható egy esemény-munkamenet az .etl fájlok teljes mérete. Ha a fájlok összesített mérete nagyobb, mint a paraméter értéke, a rendszer törli régebbi fájlokat.
-  
 ## <a name="log-collection-tool"></a>Napló gyűjtemény eszköz
  
-A PowerShell-paranccsal **Get-AzureStackLog** gyűjteni a összetevőit Azure verem környezetben is használható. Azokat a zip-fájloknak a felhasználó által definiált helyre menti. Ha a technikai támogatási csapat a naplók megoldhatja a problémát, akkor megkérheti, hogy az eszköz futtatásához.
+A PowerShell-parancsmag **Get-AzureStackLog** gyűjteni a összetevőit Azure verem környezetben is használható. Azokat a zip-fájloknak a felhasználó által definiált helyre menti. Ha a technikai támogatási csapat a naplók megoldhatja a problémát, akkor megkérheti, hogy az eszköz futtatásához.
 
 > [!CAUTION]
 > Ezekben a naplófájlokban tartalmazhatnak személyes azonosításra alkalmas adatokat (PII). Ez figyelembe kell venni a könyvelés nyilvánosan minden naplófájl előtt.
@@ -78,38 +46,38 @@ Az alábbiakban néhány példa napló típust összegyűjtött:
 *   **Diagnosztikai naplók tárolási**
 *   **ETW-naplók**
 
-Ezeket a fájlokat a nyomkövetés-gyűjtő által gyűjtött, és honnan megosztáson található **Get-AzureStackLog** olvassa be ezeket.
+Ezeket a fájlokat vannak, és menti a megosztási nyomkövetési gyűjtő által. A **Get-AzureStackLog** PowerShell-parancsmag felhasználható gyűjtéséhez őket, amikor erre szükség van.
  
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Get-AzureStackLog futtathatnak egy Azure verem Development Kit (ASDK)
 1. Jelentkezzen be **AzureStack\CloudAdmin** a gazdagépen.
 2. Nyissa meg rendszergazdaként egy PowerShell-ablakot.
 3. Futtassa a **Get-AzureStackLog** PowerShell-parancsmagot.
 
-   **Példák**
+**Példák:**
 
-    Az összes szerepkör minden naplógyűjtéshez:
+  Az összes szerepkör minden naplógyűjtéshez:
 
-    ```powershell
-    Get-AzureStackLog -OutputPath C:\AzureStackLogs
-    ```
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs
+  ```
 
-    Gyűjteni a virtuális gép és BareMetal szerepkörök:
+  Gyűjteni a virtuális gép és BareMetal szerepkörök:
 
-    ```powershell
-    Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal
-    ```
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal
+  ```
 
-    Virtuális gép és BareMetal szerepkörök, az a dátum az előző 8 óra naplófájlok szűrést naplóinak gyűjtése:
+  Virtuális gép és BareMetal szerepkörök, az a dátum az előző 8 óra naplófájlok szűrést naplóinak gyűjtése:
     
-    ```powershell
-    Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
-    ```
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  ```
 
-    Virtuális gép és BareMetal szerepkörök, az a dátum szerinti 8 óra telt el és 2 óra telt el közötti időszakban naplófájlok szűrést naplóinak gyűjtése:
+  Virtuális gép és BareMetal szerepkörök, az a dátum szerinti 8 óra telt el és 2 óra telt el közötti időszakban naplófájlok szűrést naplóinak gyűjtése:
 
-    ```powershell
-    Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
-    ```
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  ```
 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-integrated-system"></a>Futtassa a Get-AzureStackLog egy Azure veremben integrált a rendszer
 
@@ -158,7 +126,7 @@ if($s)
    | Tartomány                  | DOKUMENTUMOKAT                    | ECESeedRing        | 
    | FabricRing              | FabricRingServices     | FRP                |
    | Átjáró                 | HealthMonitoring       | HRP                |   
-   | IBC                     | InfraServiceController |KeyVaultAdminResourceProvider|
+   | IBC                     | InfraServiceController | KeyVaultAdminResourceProvider|
    | KeyVaultControlPlane    | KeyVaultDataPlane      | HÁLÓZATI VEZÉRLŐ ÁLTAL                 |   
    | NonPrivilegedAppGateway | NRP-BEN                    | SeedRing           |
    | SeedRingServices        | SLB                    | SQL                |   
@@ -166,6 +134,13 @@ if($s)
    | URP                     | UsageBridge            | virtuális gép    |  
    | VOLT                     | WASPUBLIC              | A WDS                |
 
+
+### <a name="collect-logs-using-a-graphical-user-interface"></a>Naplógyűjtéshez egy grafikus felhasználói felület használatával
+Ahelyett, hogy a Get-AzureStackLog parancsmag Azure verem naplók beolvasni a szükséges paramétereket ad meg, a rendelkezésre álló nyílt forráskódú Azure verem eszközök található, a fő Azure verem eszközök GitHub-tárházban, http://aka.ms/AzureStackTools is használhatja.
+
+A **ERCS_AzureStackLogs.ps1** PowerShell-parancsfájl a GitHub-tárházban eszközök tárolja, és rendszeresen frissül. Indította el egy felügyeleti PowerShell-munkamenetet, a parancsfájl a rendszerjogosultságú végpont csatlakozik, és futtatja a Get-AzureStackLog megadott paraméterekkel. Ha paraméter nélkül van megadva, a parancsfájl alapértelmezett paraméterek grafikus felhasználói felületen keresztül kér.
+
+További információ a ERCS_AzureStackLogs.ps1 PowerShell parancsfájl, akkor további megtekinthetnek [egy rövid videót](https://www.youtube.com/watch?v=Utt7pLsXEBc) vagy a parancsfájl megtekintése [információs fájl](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) a Azure verem eszközök GitHub-tárházban található. 
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés
 

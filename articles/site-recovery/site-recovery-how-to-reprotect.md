@@ -3,7 +3,7 @@ title: "Lássa el újból védelemmel az Azure-ból a helyszíni helyhez |} Micr
 description: "Az Azure virtuális gépek feladatátvétel után a feladat-visszavételt a virtuális gépeket kapcsolja vissza a helyszíni is kezdeményezhető. Útmutató: a feladat-visszavétel előtt lássa el újból védelemmel."
 services: site-recovery
 documentationcenter: 
-author: ruturaj
+author: rajani-janaki-ram
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -12,10 +12,10 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2017
-ms.author: ruturajd
-ms.openlocfilehash: ba68df3df33a357db4d97ff65c9cc5995cd51caa
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.date: 06/05/2017
+ms.author: rajanaki
+ms.openlocfilehash: 17a43de3faaa3a146fa9d8f43d36545d6d82b274
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/28/2017
@@ -62,16 +62,20 @@ Gyors áttekintését tekintse meg a következő videó bemutatja, hogyan hogy �
   * **Fő célkiszolgáló**: A fő célkiszolgáló kap feladat-visszavétel adatokat. A helyi felügyeleti kiszolgáló, amelyet hozott létre a fő célkiszolgálón, alapértelmezés szerint telepítve van. Azonban nem sikerült visszaírt forgalom mennyiségét, attól függően szükség lehet egy külön fő célkiszolgáló feladat-visszavételi létrehozásához.
     * [A Linux virtuális gép a beavatkozását Linux fő célkiszolgáló](site-recovery-how-to-install-linux-master-target.md).
     * Windows virtuális gépként kell egy Windows fő célkiszolgáló. Később újra felhasználhatja a helyszíni folyamat kiszolgáló és a fő célszámítógépekre.
+    * A fő célkiszolgáló rendelkezik egyéb szereplő Előfeltételek [közös ellenőrizze az alábbiakat, mielőtt védelem-újrabeállítási a fő célkiszolgáló](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server).
 
 > [!NOTE]
 > Az összes virtuális gép egy replikálási csoport azonos típusú operációs rendszer (az összes Windows vagy az összes Linux) kell lennie. Vegyes operációs rendszerrel egy replikációs csoportot a védelem-újrabeállítási és a helyszíni feladat-visszavétel jelenleg nem támogatott. Ennek az oka, hogy a fő célkiszolgálón ugyanazt az operációs rendszert a virtuális gépként kell lennie, és a replikációs csoport összes virtuális gépet kell rendelkeznie a azonos fő célkiszolgálót. 
 
-    The master target has other prerequisites that are listed in [Common things to check on a master target before reprotect](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server).
+    
 
 * A konfigurációs kiszolgáló szükségesek helyszíni esetén, a feladat-visszavételt. A feladat-visszavétel során a virtuális gép léteznie kell a konfigurációs kiszolgáló adatbázisában. Ellenkező esetben a feladat-visszavétel nem sikerül. 
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy az egy rendszeresen ütemezett biztonsági mentések a konfigurációs kiszolgáló. Katasztrófa esetén állítsa vissza a kiszolgáló ugyanazon IP-címét, hogy a feladat-visszavétel működik.
+
+> [!WARNING]
+> Replikációs csoport csak kell Windows virtuális gépek vagy a Linux virtuális gépek és a nem vegyesen is, mert egy replictaion csoportban lévő összes virtuális gép által használt azonos fő célkiszolgáló, és a Linux virtuális gép van szükség a Linuxos fő célkiszolgáló és a Windows virtuális gép számára, például bölcs.
 
 * Állítsa be a `disk.EnableUUID=true` beállítása a konfigurációs paraméterek, a fő célkiszolgáló virtuális gép VMware-ben. Ha a sor nem létezik, adja hozzá. Ez a beállítás szükséges, hogy azt a megfelelő csatlakoztatja, adja meg a virtuális gép lemezét (VMDK) való egységes UUID.
 

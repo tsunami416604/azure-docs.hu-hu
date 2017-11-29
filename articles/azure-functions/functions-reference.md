@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: chrande
-ms.openlocfilehash: cf965170e0c645e77a9b8829a10a18b29889a061
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 76be085aa114b571f40603b4f182b13b9354b8b8
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-functions-developers-guide"></a>Az Azure Functions fejlesztői útmutatója
 Az Azure Functions adott funkciókhoz ossza meg néhány alapvető technikai kulcsfogalmak és összetevők, függetlenül a nyelvet, vagy a kötés használja. Ahhoz, hogy belevágjon tanulási egy adott nyelven vagy a kötési adatait, mindenképpen olvassa végig az áttekintés, amely az összes vonatkozik.
@@ -57,7 +57,7 @@ A `bindings` tulajdonság értéke, ahol konfigurálhatja az eseményindítók �
 | `direction` |"in" "out" |Azt jelzi, hogy a kötés adatfogadásra a függvénynek vagy adatokat küld a függvény. |
 | `name` |Karakterlánc |A függvény a kötött adatok használt név. C# ez pedig egy argumentum neve; a JavaScript esetén a kulcsot a kulcs/érték listáját. |
 
-## <a name="function-app"></a>Függvény alkalmazás
+## <a name="function-app"></a>Függvényalkalmazás
 Egy vagy több egyéni függvények felügyelete együtt, amelyet az Azure App Service egy függvény alkalmazást magában foglalja. Összes függvény alkalmazásban funkció ossza meg az árképzési csomagot, a folyamatos üzembe helyezés és a futásidejű verzióját. Több nyelven írt funkciók összes megoszthatja függvény ugyanahhoz az alkalmazáshoz. Egy függvény app gondol rendszerezését és a funkciók együttesen kezelését is. 
 
 ## <a name="runtime-script-host-and-web-host"></a>Futásidejű (script host és webkiszolgáló)
@@ -81,11 +81,8 @@ A függvény szerkesztő beépítve az Azure-portál lehetővé teszi, hogy fris
 Függvény alkalmazások beépített App Service, így minden a [szokásos webes alkalmazásokra mutató elérhető telepítési lehetőségeket](../app-service/app-service-deploy-local-git.md) függvény alkalmazások esetében is elérhetők. Az alábbiakban néhány módszer feltöltése vagy függvény alkalmazást frissítőfájlok használható. 
 
 #### <a name="to-use-app-service-editor"></a>App Service-szerkesztő segítségével
-1. Az Azure Functions portálon kattintson **Alkalmazásbeállítások működéséhez**.
-2. Az a **speciális beállítások** kattintson **az App Service-beállítások**.
-3. Kattintson a **App Service-szerkesztő** alkalmazás menü NAV alatt **FEJLESZTŐESZKÖZÖK**.
-4. Kattintson a **Ugrás**.
-   
+1. Az Azure Functions portálon kattintson **Platform funkciói**.
+2. Az a **FEJLESZTŐESZKÖZÖK** kattintson **App Service-szerkesztő**.   
    App Service-szerkesztő betöltése után megjelenik a *host.json* fájl- és függvény mappáit *wwwroot*. 
 5. Nyissa meg a fájlok szerkeszthetők, vagy húzza és eltávolítása a következő fájlok feltöltése a fejlesztési számítógépén.
 

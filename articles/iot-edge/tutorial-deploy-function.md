@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: bfb37ae51400210ef80a0f267b294d1e2e465b76
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: cba901e8929d3626dc06e4600437b6d364e9bc44
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Azure-függvény, egy IoT-Edge-modul telepítése – előzetes
 Az Azure Functions, amely megvalósítja az üzleti logikát, közvetlenül az IoT peremhálózati eszköz a kód telepítésére használhatja. Ez az oktatóanyag végigvezeti létrehozása és telepítése az Azure-függvény érzékelőadatait a szimulált IoT peremhálózati eszközön létrehozott tartozó telepítése Azure IoT Edge a szimulált eszköz a szűrő [Windows] [ lnk-tutorial1-win]vagy [Linux] [ lnk-tutorial1-lin] oktatóanyagok. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:     
@@ -225,7 +225,7 @@ A felhőbe küldött üzeneteket küld az IoT hub az IoT-peremhálózati eszköz
 Ebben az oktatóanyagban az Azure-függvény szűrése a nyers adatokat az IoT-peremhálózati eszköz által generált kódot tartalmazó létrehozott. Tartsa felfedezése Azure IoT él, ismerje meg az átjáróként IoT peremhálózati eszköz használatával. 
 
 > [!div class="nextstepaction"]
-> [Az IoT-peremhálózati átjáró eszköz létrehozása](how-to-create-gateway-device.md)
+> [Az IoT-peremhálózati átjáró eszköz létrehozása](how-to-create-transparent-gateway.md)
 
 <!--Links-->
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md
