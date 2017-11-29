@@ -185,19 +185,10 @@
 #### [Tárolóalapú hálózatkezelés módjai](service-fabric-networking-modes.md)
 
 ### Reliable Services-szolgáltatás összeállítása
-#### [Áttekintés](service-fabric-reliable-services-introduction.md)
-#### Alapelvek
-##### [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)
-##### [A Reliable Services életciklusa – Java](service-fabric-reliable-services-lifecycle-java.md)
-
 #### Reliable Collections
-##### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
-##### [Reliable Collections – irányelvek és javaslatok](service-fabric-reliable-services-reliable-collections-guidelines.md)
 ##### [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
-##### [Tranzakciók és zárolások](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 ##### [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md)
 ##### [Reliable Collections-szerializáció](service-fabric-reliable-services-reliable-collections-serialization.md)
-##### [A Reliable State Manager és a Reliable Collection belső elemei](service-fabric-reliable-services-reliable-collections-internals.md)
 
 #### Bevezetés
 ##### [C# Windowson](service-fabric-reliable-services-quick-start.md)
