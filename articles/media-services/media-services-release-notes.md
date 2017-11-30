@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 3000acf91a66af3ec512af52362f7f1e2ba0019b
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 310306e22a9f3c4c770e326d3284d02da7f06039
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 A kibocsátási megjegyzések összesítse a módosításokat a korábbi kiadásokban és ismert problémákat.
@@ -81,7 +81,7 @@ A Media Services REST API verziójának előzményei kapcsolatos információké
 Most már támogatja a Media Services [Azure Active Directory (Azure AD)-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md).
 
 > [!IMPORTANT]
-> A Media Services jelenleg az Azure hozzáférés-vezérlés szolgáltatásmodell-hitelesítés. Azonban a 2018. június 1 elavulttá válik hozzáférés-vezérlés engedélyt. Azt javasoljuk, hogy telepítse át az Azure AD hitelesítési modell lehető legrövidebb időn belül.
+> A Media Services jelenleg az Azure hozzáférés-vezérlés szolgáltatásmodell-hitelesítés. Azonban a 2018. június 1 elavulttá válik hozzáférés-vezérlés engedélyt. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre.
 
 ## <a name="march-2017-release"></a>2017. március kiadás
 
@@ -411,7 +411,7 @@ A következő változtatás történt 3.0.0.3:
 
 A Media Services SDK legújabb verziójára már 3.0.0.0. Töltse le a legfrissebb csomagot a Nugetből, vagy a bits az beszerzése [GitHub].
 
-A Media Services SDK verzió 3.0.0.0 verziótól kezdődően felhasználhatja a [Azure Active Directory Access Control Service (ACS)] jogkivonatokat. A "Újból felhasználja a Access Control szolgáltatás tokenek" szakaszában talál további információt a [.NET-keretrendszerhez készült Media Services a Media Services SDK-val való kapcsolódás] cikk.
+A Media Services SDK verzió 3.0.0.0 verziótól kezdődően az Azure Active Directory Access Control Service (ACS) tokenek is felhasználhatja. 
 
 ### <a name="dec_13_donnet_ext_changes"></a>Azure Media Services .NET SDK-bővítmények 2.0.0.0-s
 Az Azure Media Services .NET SDK-bővítmények olyan kiegészítő módszerek és segédfüggvények találhatók, amelyek egyszerűbbé teszik a kódolást és könnyebben fejlesztése az Azure Media Services lesz. A legújabb bits kaphat [Azure Media Services .NET SDK-bővítmények].
@@ -443,7 +443,7 @@ Ebben a szakaszban említett módosítások a 2013. június Media Services kiad�
 
 * Lehetővé teszi több storage-fiókok összekapcsolása egy Media Services-fiókját. 
   
-    StorageAccount
+    Tárfiók
   
     Asset.StorageAccountName és Asset.StorageAccount
 * Job.Priority frissítésének lehetőségét. 
@@ -581,7 +581,7 @@ Az alábbi funkciókat lett az SDK. novemberi kiadásában új.
 [varrással videó szegmensek]: http://msdn.microsoft.com/library/azure/dn640504.aspx
 [3.0.0.1 és 3.0.0.2 Azure Media Services .NET SDK kiadott]: http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/
 [Azure Active Directory Access Control Service (ACS)]: http://msdn.microsoft.com/library/hh147631.aspx
-[.NET-keretrendszerhez készült Media Services a Media Services SDK-val való kapcsolódás]: http://msdn.microsoft.com/library/azure/jj129571.aspx
+[Connecting to Media Services with the Media Services SDK for .NET]: http://msdn.microsoft.com/library/azure/jj129571.aspx
 [Azure Media Services .NET SDK-bővítmények]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [azure-sdk-eszközök]: https://github.com/Azure/azure-sdk-tools
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services

@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.openlocfilehash: d85281c02b792921f12cc62e6d60bef3e7c13b3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: efdd42d244710b27fc33154b708cfbe40312e3b0
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="service-health-notifications"></a>Szolgáltatás állapotával kapcsolatos értesítésekre
 ## <a name="overview"></a>Áttekintés
 
 Ez a cikk bemutatja, hogyan megtekintéséhez az Azure portál használatával a szolgáltatás állapotával kapcsolatos értesítésekre.
 
-Szolgáltatás állapotával kapcsolatos értesítésekre engedélyezi, hogy a szolgáltatás állapotának üzenet, ami hatással lehet az erőforrásokat az előfizetéshez tartozó Azure-csapat által közzétett megtekintése. Ezek az értesítések tevékenység alárendelt osztályát alkalmazásnapló-események, és a tevékenység napló panel is található. Szolgáltatás állapotával kapcsolatos értesítésekre tájékoztató vagy hajtható végre attól függően, hogy az osztály is lehet.
+Szolgáltatás állapotával kapcsolatos értesítésekre engedélyezi, hogy a szolgáltatás állapotának üzenet, ami hatással lehet az erőforrásokat az előfizetéshez tartozó Azure-csapat által közzétett megtekintése. Ezek az értesítések tevékenység alárendelt osztályát alkalmazásnapló-események, és a műveletnaplóban is található. Szolgáltatás állapotával kapcsolatos értesítésekre tájékoztató vagy hajtható végre attól függően, hogy az osztály is lehet.
 
 A szolgáltatás állapotával kapcsolatos értesítésekre öt osztályait van:  
 
-- **Beavatkozás szükséges:** időről időre azt tapasztalhatja, valami szokatlan fordulhat elő, a fiókban. Előfordulhat, hogy az Ön ennek orvoslása érdekében kell. Meg kell végrehajtani a műveleteket vagy részletező értesítést kapni, vagy kérje az Azure mérnöki vagy a támogatási tájékoztatást.  
-- **Támogatott helyreállítási:** olyan esemény történt, és a mérnökök megerősítette, hogy továbbra is problémát hatása. Mérnöki csapathoz kell Önnek közvetlenül a szolgáltatások kerüljön visszaállítása.  
+- **Beavatkozás szükséges:** az az időpont Azure tapasztalhatja valami szokatlan fordulhat elő, a fiókban. Azure is használnia kell, hogy ennek orvoslása érdekében. Azure fog értesítést küldjön a műveletek vagy részletező kell venni a vagy kérje az Azure mérnöki vagy a támogatási tájékoztatást.  
+- **Támogatott helyreállítási:** olyan esemény történt, és a mérnökök megerősítette, hogy továbbra is problémát hatása. Az Azure mérnöki kell dolgoznia közvetlenül visszaállítására a szolgáltatások teljes állapotába.  
 - **Incidens:** esemény érintő szolgáltatás egy vagy több erőforrást az előfizetésében jelenleg érinti.  
 - **Karbantartás:** ezt az egy értesítést a tájékoztat a tervezett karbantartások tevékenység, amely hatással lehet az előfizetéshez tartozó erőforrások közül legalább egyet.  
-- **Információ:** az idő időre is küldünk értesítéseket meg, amely növelheti az erőforrás-használat lehetséges optimalizálásokat kapcsolatos Önnek egy kommunikáljon.  
+- **Információ:** időről időre Azure előfordulhat, hogy értesítések, amelyek tájékoztatnak, lehetséges, hogy az erőforrás-használat növelése érdekében optimalizálás.  
 - **Biztonsági:** sürgős biztonsági az Azure-on futó solution(s) vonatkozó információkat.
 
-Minden szolgáltatás állapotának értesítés fogja hajtani a hatókör és az erőforrások hatással van. Részletek tartalmazza:
+Minden szolgáltatás állapotának értesítés tartalmazza a hatókör és az erőforrások hatással van. Részletek a következők:
 
 Tulajdonság neve | Leírás
 -------- | -----------
@@ -70,14 +70,12 @@ Properties.communicationId | A kommunikáció ezt az eseményt hozzá rendelve.
 1.  Az a [portal](https://portal.azure.com), keresse meg a **figyelő** szolgáltatás
 
     ![Figyelés](./media/monitoring-service-notifications/home-monitor.png)
-2.  Kattintson a **figyelő** elemmel nyithatja meg a a figyelő panelen. Ez a panel egyetlen, összevont nézetben jeleníti meg az összes figyelési beállítást és adatot. A panel az első alkalommal a **Tevékenységnapló** területet megjelenítve nyílik meg.
+2.  Kattintson a **figyelő** elemmel nyithatja meg a figyelő szerzett be. Az Azure figyelő összegyűjti az összes figyelési beállítások és adatok egyetlen összevont nézetben. A panel az első alkalommal a **Tevékenységnapló** területet megjelenítve nyílik meg.
 
-3.  Most kattintson a **szolgáltatáshoz értesítést** szakasz
+3.  Most kattintson a **riasztások** szakasz
 
     ![Figyelés](./media/monitoring-service-notifications/service-health-summary.png)
-4.  Az egyes megtekintheti annak további részleteit a sor elemek
-
-5. Kattintson a **+ Hozzáadás tevékenység napló riasztási** művelet értesítéseket annak érdekében, hogy az ilyen típusú jövőbeli szolgáltatási értesítésekhez értesítést kap. További riasztások konfigurálása a szolgáltatáshoz értesítést a [kattintson ide](monitoring-activity-log-alerts-on-service-notifications.md)
+4. Kattintson a a **+ Hozzáadás figyelmeztetés a napló** és konfigurálhat egy riasztást, annak érdekében, hogy a jövőbeni értesítések értesítést kap. További információt a riasztások konfigurálása a szolgáltatáshoz értesítést [látogasson el a tevékenység napló riasztások és értesítések szolgáltatás oldalra](monitoring-activity-log-alerts-on-service-notifications.md).
 
 ## <a name="next-steps"></a>További lépések:
 Fogadási [riasztási értesítések, amikor az állapotfigyelő szolgáltatáshoz értesítést](monitoring-activity-log-alerts-on-service-notifications.md) van közzétéve.  

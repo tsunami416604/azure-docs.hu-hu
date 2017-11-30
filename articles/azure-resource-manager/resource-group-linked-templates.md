@@ -12,117 +12,131 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 11/28/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8b58a83ffd473500dd3f76c09e251f9208527d4f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a86d4d8705c7093e3900a9738ddbd364db8bd3b8
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="using-linked-templates-when-deploying-azure-resources"></a>Azure-erőforrások telepítésekor kapcsolt sablonok használata
-A belül egy Azure Resource Manager sablon hozzákapcsolhatja egy másik sablont, amely lehetővé teszi, hogy a központi telepítés egy felbontani megcélzott, cél-specifikus sablonok. Csakúgy, mint egy alkalmazás több kód osztályokba decomposing, a felbontás ellen tesztelése, újbóli és olvashatóság előnyt kínál.  
 
-Átadhatók fő sablonból paraméterek csatolt sablont, és ezeket a paramétereket közvetlenül hozzárendelhető paraméterek és változók jelennek meg, ha a hívó sablont. A csatolt sablont is eltelhet egy kimeneti változó vissza a Forrássablon a sablonok között kétirányú adatcsere engedélyezése.
+A megoldás üzembe helyezéséhez, használhatja ugyanazt a sablont, vagy egy fő sablont több csatolt sablonokkal. A kis-és közepes méretű megoldások ugyanazt a sablont, ezért könnyebben ismertetése és karbantartása. Megtörténik az erőforrások és a értékek egyetlen fájlban. Speciális forgatókönyvek esetén a kapcsolt sablonok lehetővé teszik a célzott összetevők megoldás lebontva, és újra felhasználhatja a sablonokat.
 
-## <a name="linking-to-a-template"></a>A sablon csatolása
-Létrehozhat egy hivatkozást a fő sablont, amely a csatolt sablon mutat található központi telepítési erőforráshoz hozzáadásával két sablonok között. Beállíthatja a **templateLink** URI-azonosítója a csatolt sablon tulajdonságot. A csatolt sablon közvetlenül a sablonban vagy egy paraméterfájl biztosítható a paraméterértékek. Az alábbi példában a **paraméterek** tulajdonságot közvetlenül adja meg a paraméter értékét.
+Csatolt sablon használata esetén létrehozhat egy fő sablont, amely megkapja a paraméterértékek üzembe helyezése során. A fő sablon tartalmazza az összes csatolt sablonokat, és továbbadja értékek ezeket a sablonokat, igény szerint.
 
-```json
-"resources": [ 
-  { 
-      "apiVersion": "2017-05-10", 
-      "name": "linkedTemplate", 
-      "type": "Microsoft.Resources/deployments", 
-      "properties": { 
-        "mode": "incremental", 
-        "templateLink": {
-          "uri": "https://www.contoso.com/AzureTemplates/newStorageAccount.json",
-          "contentVersion": "1.0.0.0"
-        }, 
-        "parameters": { 
-          "StorageAccountName":{"value": "[parameters('StorageAccountName')]"} 
-        } 
-      } 
-  } 
-] 
-```
+![csatolt sablonok](./media/resource-group-linked-templates/nestedTemplateDesign.png)
 
-Más típusú erőforrások, például a csatolt sablont és egyéb erőforrások közti függőségeket is beállíthatja. Ezért ha más erőforrásokhoz szükséges egy kimeneti értéket, a csatolt sablonból, biztosíthatja, a csatolt sablon előtt történik. Vagy a csatolt sablon más erőforrások támaszkodik, ha biztos lehet benne, más erőforrások telepítése előtt a csatolt sablont. Egy érték beolvasható egy csatolt sablon a következő szintaxissal:
+## <a name="link-to-a-template"></a>A sablon csatolása
+
+Kapcsolódik egy másik sablont, vegye fel a **központi telepítések** erőforrás a fő sablont.
 
 ```json
-"[reference('linkedTemplate').outputs.exampleProperty.value]"
-```
-
-Az erőforrás-kezelő szolgáltatás eléréséhez a csatolt sablon képesnek kell lennie. Nem adhat meg egy helyi fájl vagy a fájl, amely csak akkor érhető el a csatolt sablon a helyi hálózaton. Csak adja meg, amely tartalmazza az vagy URI érték **http** vagy **https**. Egy elem helyezze el a csatolt sablon egy tárfiókot, és az URI használata, hogy az elem, például az alábbi példában látható módon:
-
-```json
-"templateLink": {
-    "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
-    "contentVersion": "1.0.0.0",
-}
-```
-
-Bár a csatolt sablon külsőleg elérhetőnek kell lennie, nem kell lennie a nyilvános általánosan elérhető. A sablon a személyes storage-fiók, amely csak a fiók tulajdonosa számára hozzáférhető is hozzáadhat. Ezután hozzon létre egy közös hozzáférésű jogosultságkód (SAS) token hozzáférés engedélyezése a telepítés során. A SAS-token hozzáadása az URI a csatolt sablon. A sablont a storage-fiók beállítása és SAS-token létrehozása lépéseiért lásd: [erőforrások a Resource Manager-sablonok és Azure PowerShell telepítése](resource-group-template-deploy.md) vagy [erőforrások a Resource Manager-sablonok és az Azure parancssori felület telepítése](resource-group-template-deploy-cli.md). 
-
-A következő példa bemutatja a szülő sablon egy másik sablon mutató. A csatolt sablon paraméterként átadott SAS-jogkivonat segítségével érhető el.
-
-```json
-"parameters": {
-    "sasToken": { "type": "securestring" }
-},
 "resources": [
-    {
-        "apiVersion": "2017-05-10",
-        "name": "linkedTemplate",
-        "type": "Microsoft.Resources/deployments",
-        "properties": {
-          "mode": "incremental",
-          "templateLink": {
-            "uri": "[concat('https://storagecontosotemplates.blob.core.windows.net/templates/helloworld.json', parameters('sasToken'))]",
-            "contentVersion": "1.0.0.0"
-          }
-        }
-    }
-],
+  {
+      "apiVersion": "2017-05-10",
+      "name": "linkedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+          "mode": "Incremental",
+          <inline-template-or-external-template>
+      }
+  }
+]
 ```
 
-Annak ellenére, hogy a jogkivonat érték az átadott egy biztonságos karakterláncot, URI-azonosítója a csatolt sablon, beleértve a SAS-jogkivonat a telepítési műveleteket rögzíti. Korlátozható a támadóknak, beállíthatja a egy lejárati idejét, a jogkivonat esetében.
+Megadja a központi telepítési erőforrás tulajdonságainak e vannak csatolása külső sablont, vagy egy beágyazott sablon beágyazása a fő sablon függően változhat.
 
-Erőforrás-kezelő ennek egy külön központi telepítés minden egyes csatolt sablon kezeli. A központi telepítési előzmények ahhoz az erőforráscsoporthoz tekintse meg a szülő és a beágyazott sablonok külön központi telepítése.
+### <a name="inline-template"></a>Beágyazott sablon
 
-![telepítési előzmények](./media/resource-group-linked-templates/linked-deployment-history.png)
-
-## <a name="linking-to-a-parameter-file"></a>A paraméterfájl csatolása
-A következő példában a **parametersLink** tulajdonság egy paraméter fájlra való hivatkozáshoz.
+A csatolt sablon beágyazásához használjon a **sablon** tulajdonság és a sablon tartalmazza.
 
 ```json
-"resources": [ 
-  { 
-     "apiVersion": "2017-05-10", 
-     "name": "linkedTemplate", 
-     "type": "Microsoft.Resources/deployments", 
-     "properties": { 
-       "mode": "incremental", 
-       "templateLink": {
-          "uri":"https://www.contoso.com/AzureTemplates/newStorageAccount.json",
-          "contentVersion":"1.0.0.0"
-       }, 
-       "parametersLink": { 
-          "uri":"https://www.contoso.com/AzureTemplates/parameters.json",
-          "contentVersion":"1.0.0.0"
-       } 
-     } 
-  } 
-] 
+"resources": [
+  {
+    "apiVersion": "2017-05-10",
+    "name": "nestedTemplate",
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {},
+        "resources": [
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageName')]",
+            "apiVersion": "2015-06-15",
+            "location": "West US",
+            "properties": {
+              "accountType": "Standard_LRS"
+            }
+          }
+        ]
+      },
+      "parameters": {}
+    }
+  }
+]
 ```
 
-A csatolt paraméterfájl URI értéke nem lehet egy helyi fájl, és tartalmaznia kell vagy **http** vagy **https**. A paraméterfájl is lehet korlátozni a SAS-jogkivonat-en keresztüli hozzáférés.
+### <a name="external-template-and-external-parameters"></a>Külső sablon és a külső paraméterek
+
+Egy külső sablont és paraméterfájlt csatolásához használható **templateLink** és **parametersLink**. A sablonok csatoláskor az erőforrás-kezelő szolgáltatás férhet hozzá kell lennie. Nem adhat meg egy helyi fájl vagy a fájl, amely csak akkor érhető el a helyi hálózaton. Csak adja meg, amely tartalmazza az vagy URI érték **http** vagy **https**. Egy lehetőség a csatolt sablon helyez egy tárfiókot, és használja az URI, hogy az elem egy.
+
+```json
+"resources": [
+  {
+     "apiVersion": "2017-05-10",
+     "name": "linkedTemplate",
+     "type": "Microsoft.Resources/deployments",
+     "properties": {
+       "mode": "incremental",
+       "templateLink": {
+          "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+          "contentVersion":"1.0.0.0"
+       },
+       "parametersLink": {
+          "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+          "contentVersion":"1.0.0.0"
+       }
+     }
+  }
+]
+```
+
+### <a name="external-template-and-inline-parameters"></a>Külső sablon és a beágyazott paraméterek
+
+Vagy megadhatja, hogy a paraméter beágyazott. Egy érték a fő sablonból átadása a csatolt sablon, használja a **paraméterek**.
+
+```json
+"resources": [
+  {
+     "apiVersion": "2017-05-10",
+     "name": "linkedTemplate",
+     "type": "Microsoft.Resources/deployments",
+     "properties": {
+       "mode": "incremental",
+       "templateLink": {
+          "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+          "contentVersion":"1.0.0.0"
+       },
+       "parameters": {
+          "StorageAccountName":{"value": "[parameters('StorageAccountName')]"}
+        }
+     }
+  }
+]
+```
 
 ## <a name="using-variables-to-link-templates"></a>Változók használata sablonok
+
 Az előző példák azt szemléltették, hogy a sablon hivatkozások kódolt URL-cím értékeket. Ez a módszer egy egyszerű sablon esetében is működik, de nem működik jól, ha nagy számú moduláris sablonok használata. Ehelyett hozzon létre egy statikus változó, amely tárolja a fő sablon alap URL-címet, és majd hozható létre dinamikusan URL-címeket az alap URL-címet a kapcsolt sablonok. Ez a megközelítés előnye, egyszerűen áthelyezheti vagy oszthatja ketté a sablont, mert csak módosítani szeretné a statikus változó a fő sablonban. A fő sablont a megfelelő URI-k teljes lebontott sablon továbbítja.
 
-A következő példa bemutatja, hogyan két URL-címéből kapcsolt sablonok létrehozásához használja az alap URL-cím (**sharedTemplateUrl** és **vmTemplate**). 
+A következő példa bemutatja, hogyan két URL-címéből kapcsolt sablonok létrehozásához használja az alap URL-cím (**sharedTemplateUrl** és **vmTemplate**).
 
 ```json
 "variables": {
@@ -132,7 +146,7 @@ A következő példa bemutatja, hogyan két URL-címéből kapcsolt sablonok lé
 }
 ```
 
-Is [deployment()](resource-group-template-functions-deployment.md#deployment) az alap URL-CÍMÉT az aktuális sablon, és azt használja az URL-cím lekérésére más sablonok ugyanazon a helyen. Ez a módszer akkor hasznos, ha a sablon helye megváltozik (lehet, hogy miatt versioning), vagy el szeretné kerülni a merevlemez kódolási URL-címek a sablon fájlban. 
+Is [deployment()](resource-group-template-functions-deployment.md#deployment) az alap URL-CÍMÉT az aktuális sablon, és azt használja az URL-cím lekérésére más sablonok ugyanazon a helyen. Ez a módszer akkor hasznos, ha a sablon helye megváltozik (lehet, hogy miatt versioning), vagy el szeretné kerülni a merevlemez kódolási URL-címek a sablon fájlban.
 
 ```json
 "variables": {
@@ -140,10 +154,269 @@ Is [deployment()](resource-group-template-functions-deployment.md#deployment) az
 }
 ```
 
-## <a name="complete-example"></a>Teljes példa
-Az alábbi példa sablonok kapcsolt sablonok egyszerűsített elrendezésének, több cikkben fogalmak szemléltetésére megjelenítése. Azt feltételezi, hogy a sablonok lettek hozzáadva a tárfiók ugyanabban a tárolóban, hozzáférésű ki van kapcsolva. A csatolt sablon értéket átadja vissza a fő-sablon a **kimenete** szakasz.
+## <a name="get-values-from-linked-template"></a>Csatolt sablonból értékek lekérése
 
-A **parent.json** fájl áll:
+Ahhoz, hogy egy kimeneti értéket egy csatolt sablonból, lekérdezni a tulajdonság szintaxissal: `"[reference('<name-of-deployment>').outputs.<property-name>.value]"`.
+
+Az alábbi példák bemutatják, hogyan lehet egy csatolt sablon hivatkoznak, és egy kimeneti értéket beolvasása. A csatolt sablon egyszerű üzenetet adja vissza.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "greetingMessage": {
+            "value": "Hello World",
+            "type" : "string"
+        }
+    }
+}
+```
+
+A szülő-sablon a csatolt sablon telepíti, és lekérdezi a visszaadott érték. Figyelje meg, hogy a név szerint a központi telepítés erőforrásra hivatkozik, és azt a tulajdonságot a csatolt sablon által visszaadott nevét használja.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "2017-05-10",
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[uri(deployment().properties.templateLink.uri, 'helloworld.json')]",
+                    "contentVersion": "1.0.0.0"
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "messageFromLinkedTemplate": {
+            "type": "string",
+            "value": "[reference('linkedTemplate').outputs.greetingMessage.value]"
+        }
+    }
+}
+```
+
+Más típusú erőforrások, például a csatolt sablont és egyéb erőforrások közti függőségeket is beállíthatja. Ezért ha más erőforrásokhoz szükséges egy kimeneti értéket, a csatolt sablonból, biztosíthatja, a csatolt sablon előtt történik. Vagy a csatolt sablon más erőforrások támaszkodik, ha biztos lehet benne, más erőforrások telepítése előtt a csatolt sablont.
+
+A következő példa bemutatja a sablont, amely telepít egy nyilvános IP-címet, és az erőforrás-Azonosítót adja vissza:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "publicIPAddresses_name": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "eastus",
+            "properties": {
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4
+            },
+            "dependsOn": []
+        }
+    ],
+    "outputs": {
+        "resourceID": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
+        }
+    }
+}
+```
+
+Terheléselosztó telepítésekor a fenti sablon a nyilvános IP-cím használatához a sablon csatolása és a függőség hozzáadása a központi telepítési erőforrás. A terheléselosztó a nyilvános IP-címnek a csatolt sablonból a kimeneti értékre van beállítva.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "loadBalancers_name": {
+            "defaultValue": "mylb",
+            "type": "string"
+        },
+        "publicIPAddresses_name": {
+            "defaultValue": "myip",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/loadBalancers",
+            "name": "[parameters('loadBalancers_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "eastus",
+            "properties": {
+                "frontendIPConfigurations": [
+                    {
+                        "name": "LoadBalancerFrontEnd",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[reference('linkedTemplate').outputs.resourceID.value]"
+                            }
+                        }
+                    }
+                ],
+                "backendAddressPools": [],
+                "loadBalancingRules": [],
+                "probes": [],
+                "inboundNatRules": [],
+                "outboundNatRules": [],
+                "inboundNatPools": []
+            },
+            "dependsOn": [
+                "linkedTemplate"
+            ]
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[uri(deployment().properties.templateLink.uri, 'publicip.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters":{
+                    "publicIPAddresses_name":{"value": "[parameters('publicIPAddresses_name')]"}
+                }
+            }
+        }
+    ]
+}
+```
+
+## <a name="linked-templates-in-deployment-history"></a>A központi telepítés előzményei kapcsolt sablonok
+
+Erőforrás-kezelő minden csatolt sablon ennek egy külön központi telepítés központi telepítés előzményei dolgozza fel. Ezért az üzembe helyezési előzményeket, mint a szülő sablon három csatolt sablonnal jelenik meg:
+
+![Üzembe helyezési előzmények](./media/resource-group-linked-templates/deployment-history.png)
+
+Az előzmények ezeket külön bejegyzések segítségével kimeneti értékek lekérését, a telepítés után. Az alábbi sablont hoz létre egy nyilvános IP-címet, és kiírja az IP-cím:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "publicIPAddresses_name": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "southcentralus",
+            "properties": {
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "[concat(parameters('publicIPAddresses_name'), uniqueString(resourceGroup().id))]"
+                }
+            },
+            "dependsOn": []
+        }
+    ],
+    "outputs": {
+        "returnedIPAddress": {
+            "type": "string",
+            "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]"
+        }
+    }
+}
+```
+
+A következő sablon mutató hivatkozásokat tartalmaz az előző sablont. Az alkalmazás létrehozza a három nyilvános IP-címeket.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    },
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "2017-05-10",
+            "name": "[concat('linkedTemplate', copyIndex())]",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+              "mode": "Incremental",
+              "templateLink": {
+                "uri": "[uri(deployment().properties.templateLink.uri, 'static-public-ip.json')]",
+                "contentVersion": "1.0.0.0"
+              },
+              "parameters":{
+                  "publicIPAddresses_name":{"value": "[concat('myip-', copyIndex())]"}
+              }
+            },
+            "copy": {
+                "count": 3,
+                "name": "ip-loop"
+            }
+        }
+    ]
+}
+```
+
+A telepítés után a kimeneti értékek a következő PowerShell-parancsfájllal kérheti le:
+
+```powershell
+$loopCount = 3
+for ($i = 0; $i -lt $loopCount; $i++)
+{
+    $name = 'linkedTemplate' + $i;
+    $deployment = Get-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -Name $name
+    Write-Output "deployment $($deployment.DeploymentName) returned $($deployment.Outputs.returnedIPAddress.value)"
+}
+```
+
+Vagy Azure CLI-parancsfájlt:
+
+```azurecli
+for i in 0 1 2;
+do
+    name="linkedTemplate$i";
+    deployment=$(az group deployment show -g examplegroup -n $name);
+    ip=$(echo $deployment | jq .properties.outputs.returnedIPAddress.value);
+    echo "deployment $name returned $ip";
+done
+```
+
+## <a name="securing-an-external-template"></a>Egy külső sablon biztonságossá tétele
+
+Bár a csatolt sablon külsőleg elérhetőnek kell lennie, nem kell lennie a nyilvános általánosan elérhető. A sablon a személyes storage-fiók, amely csak a fiók tulajdonosa számára hozzáférhető is hozzáadhat. Ezután hozzon létre egy közös hozzáférésű jogosultságkód (SAS) token hozzáférés engedélyezése a telepítés során. A SAS-token hozzáadása az URI a csatolt sablon. Annak ellenére, hogy a jogkivonat érték az átadott egy biztonságos karakterláncot, URI-azonosítója a csatolt sablon, beleértve a SAS-jogkivonat a telepítési műveleteket rögzíti. Korlátozható a támadóknak, beállíthatja a egy lejárati idejét, a jogkivonat esetében.
+
+A paraméterfájl is lehet korlátozni a SAS-jogkivonat-en keresztüli hozzáférés.
+
+A következő példa bemutatja, hogyan egy SAS-jogkivonat felelt meg a sablonok csatoláskor:
 
 ```json
 {
@@ -167,28 +440,6 @@ A **parent.json** fájl áll:
     }
   ],
   "outputs": {
-    "result": {
-      "type": "string",
-      "value": "[reference('linkedTemplate').outputs.result.value]"
-    }
-  }
-}
-```
-
-A **helloworld.json** fájl áll:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "result": {
-        "value": "Hello World",
-        "type" : "string"
-    }
   }
 }
 ```
@@ -202,7 +453,7 @@ $url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.
 New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-Az Azure CLI 2.0 szolgáltatáshitelesítést egy token ahhoz a tárolóhoz, és telepítse központilag a sablonok a következő kóddal:
+Azure parancssori felületen szolgáltatáshitelesítést egy token ahhoz a tárolóhoz, és léptethet érvénybe a sablonok a következő kóddal:
 
 ```azurecli
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -225,7 +476,64 @@ parameter='{"containerSasToken":{"value":"?'$token'"}}'
 az group deployment create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
 ```
 
-## <a name="next-steps"></a>Következő lépések
-* A telepítési sorrendet, az erőforrások meghatározása, lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](resource-group-define-dependencies.md)
-* Adja meg egy erőforrást, de több példányát létrehozni, lásd: [erőforrások több példányát az Azure Resource Manager létrehozása](resource-group-create-multiple.md)
+## <a name="example-templates"></a>Példa sablonok
 
+### <a name="hello-world-from-linked-template"></a>Hello World csatolt sablonból
+
+Központi telepítése a [szülő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) és [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json), PowerShell használata:
+
+```powershell
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName examplegroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/helloworldparent.json
+```
+
+Vagy az Azure parancssori felület:
+
+```azurecli-interactive
+az group deployment create \
+  -g examplegroup \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/helloworldparent.json
+```
+
+### <a name="load-balancer-with-public-ip-address-in-linked-template"></a>Terheléselosztó csatolt sablon a nyilvános IP-címmel
+
+Központi telepítése a [szülő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) és [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json), PowerShell használata:
+
+```powershell
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName examplegroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json
+```
+
+Vagy az Azure parancssori felület:
+
+```azurecli-interactive
+az group deployment create \
+  -g examplegroup \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json
+```
+
+### <a name="multiple-public-ip-addresses-in-linked-template"></a>A csatolt sablon több nyilvános IP-cím
+
+Központi telepítése a [szülő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) és [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json), PowerShell használata:
+
+```powershell
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName examplegroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json
+```
+
+Vagy az Azure parancssori felület:
+
+```azurecli-interactive
+az group deployment create \
+  -g examplegroup \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json
+```
+
+## <a name="next-steps"></a>Következő lépések
+
+* A telepítési sorrendet, az erőforrások meghatározása, lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](resource-group-define-dependencies.md).
+* Adja meg egy erőforrást, de több példányát létrehozni, lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
+* A sablont a storage-fiók beállítása és SAS-token létrehozása lépéseiért lásd: [erőforrások a Resource Manager-sablonok és Azure PowerShell telepítése](resource-group-template-deploy.md) vagy [erőforrások a Resource Manager-sablonok és az Azure parancssori felület telepítése](resource-group-template-deploy-cli.md).

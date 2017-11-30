@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: kumud
-ms.openlocfilehash: eac9c3c2b7fde4ac225e17cc3b98ca5ee926c3b3
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 5b0a7d423bc0d8d9f9f7cad56838bd006e944050
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager gyakori kérdések (GYIK)
 
@@ -277,7 +277,7 @@ Az Azure Resource Manager szükséges összes erőforrás-csoportot, és adjon m
 
 Minden egyes végpont, a teljes profil mellett az aktuális figyelési állapotát az Azure-portálon jelenik meg. Ez az információ is megtalálható a forgalmat figyelő [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx), [PowerShell-parancsmagok](https://msdn.microsoft.com/library/mt125941.aspx), és [platformfüggetlen Azure CLI](../cli-install-nodejs.md).
 
-Azure nem biztosít a múltbeli végpont állapota vonatkozó előzményadatok vagy a végpont állapota változásaira vonatkozó riasztást történő alkalmazásának képességét.
+Azure Monitor segítségével nyomon követheti a végpontok állapotát, és tekintse meg a vizuális ábrázolását. Azure-figyelővel kapcsolatban bővebben lásd: a [figyelése Azure dokumentációs](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
 ### <a name="can-i-monitor-https-endpoints"></a>Figyelheti a HTTPS-végpontnak?
 
@@ -288,6 +288,10 @@ A TRAFFIC manager nem tud biztosítani a leellenőrizni a tanúsítvány, beleé
 * Kiszolgálóoldali tanúsítványokat a rendszer nem érvényesíti
 * Az SNI kiszolgálóoldali tanúsítványok nem támogatottak.
 * Ügyfél-tanúsítványok használata nem támogatott
+
+### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Azure-felhőszolgáltatás leállítása I / webes alkalmazás végpontjának a Traffic Manager-profil, de nem érkezik a forgalom azt szeretnék újraindítása után is. Hogyan lehet elhárításához?
+
+Amikor az Azure felhőalapú szolgáltatás / webes alkalmazás végpontjának állapotának ellenőrzése leállított Traffic Manager leállítja és újraindítja az állapot-ellenőrzési eredményeire, csak azt észleli, hogy a végpont újraindítása után. Ez a késleltetés elkerülése érdekében tiltsa le, és majd újból engedélyezi, hogy a Traffic Manager-profil a végpont-végpont újraindítása után.   
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Használhatom a Traffic Manager, még akkor is, ha az alkalmazás nem rendelkezik támogatja a HTTP vagy HTTPS?
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: 7a77e6ecbf59944c62aa4ae014bf5b8a5a7f7f1f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: f72f4a3a81fc3a03c86805787caeeacbe6135c5e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok áttekintése
 
@@ -65,69 +65,10 @@ A magas rendelkezésre ÁLLÁSÚ portok funkció érhető el a [Load Balancer sz
 
 ## <a name="preview-sign-up"></a>Előnézet-előfizetés
 
-Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLLÁSÚ portok szolgáltatásának részt, regisztrálja az előfizetés hozzáférést. Használhatja az Azure CLI 2.0 vagy a PowerShell.
+Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLLÁSÚ portok szolgáltatásának részt, az előfizetés regisztrálása a Load Balancer [szabványos előzetes](https://aka.ms/lbpreview#preview-sign-up). Azure CLI 2.0 vagy a PowerShell használatával is regisztrálhat.
 
 >[!NOTE]
->Ez a funkció használatához is regisztrálnia kell a terheléselosztóhoz [szabványos preview](https://aka.ms/lbpreview#preview-sign-up), a magas rendelkezésre ÁLLÁSÚ portok szolgáltatás mellett. Regisztráció egy óráig is eltarthat.
-
-### <a name="sign-up-by-using-azure-cli-20"></a>Jelentkezzen Azure CLI 2.0 használatával
-
-1. A szolgáltatás regisztrálja a szolgáltatót:
-    ```cli
-    az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network
-    ```
-    
-2. Az előző művelet elvégzéséhez akár 10 percet is igénybe vehet. A állapotának a művelet a következő paranccsal:
-
-    ```cli
-    az feature show --name AllowILBAllPortsRule --namespace Microsoft.Network
-    ```
-    
-    A művelet akkor sikeres, ha a szolgáltatás regisztrációs állapotát adja vissza **regisztrált**, ahogy az itt látható:
-   
-    ```json
-    {
-       "id": "/subscriptions/foo/providers/Microsoft.Features/providers/Microsoft.Network/features/AllowLBPreview",
-       "name": "Microsoft.Network/AllowILBAllPortsRule",
-       "properties": {
-          "state": "Registered"
-       },
-       "type": "Microsoft.Features/providers/features"
-    }
-    ```
-    
-3. Fejezze be az előfizetési előzetes újra az erőforrás-szolgáltató előfizetésének regisztrálása:
-
-    ```cli
-    az provider register --namespace Microsoft.Network
-    ```
-    
-### <a name="sign-up-by-using-powershell"></a>Iratkozzon fel a PowerShell használatával
-
-1. A szolgáltatás regisztrálja a szolgáltatót:
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
-    ```
-    
-2. Az előző művelet elvégzéséhez akár 10 percet is igénybe vehet. A állapotának a művelet a következő paranccsal:
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
-    ```
-    A művelet akkor sikeres, ha a szolgáltatás regisztrációs állapotát adja vissza **regisztrált**, ahogy az itt látható:
-   
-    ```
-    FeatureName          ProviderName      RegistrationState
-    -----------          ------------      -----------------
-    AllowILBAllPortsRule Microsoft.Network Registered
-    ```
-    
-3. Fejezze be az előfizetési előzetes újra az erőforrás-szolgáltató előfizetésének regisztrálása:
-
-    ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-    ```
-
+>Regisztráció egy óráig is eltarthat.
 
 ## <a name="limitations"></a>Korlátozások
 

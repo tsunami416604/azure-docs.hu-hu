@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/12/2017
+ms.date: 11/22/2017
 ms.author: pkc
-ms.openlocfilehash: 7bc0f70e99be04cd646c0b7c610f7c6e4a74dfc2
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: a3ab41d1aa6051e5d4021443c3fe581cbf4c880f
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségek
 
@@ -68,15 +68,15 @@ Tekintse meg a következő dokumentumok részletes információt a Service Fabri
  
 Az alábbiakban a Service Fabric által támogatott verziók listáját és azok támogatás záró dátumát.
 
-| **Service Fabric-futtatókörnyezet fürt** | **Kompatibilis SDK / NuGet csomag verziója** | **Támogatási dátum vége** |
-| --- | --- | --- |
-| Fürt összes 5.3.121 korábbi verziók |Kisebb vagy egyenlő, mint 2.3 verziója |2017. január 20. |
-| 5.3.* |Kisebb vagy egyenlő, mint 2.3 verziója |2017. február 24. |
-| 5.4.* |Kisebb vagy egyenlő, mint 2.4 verziója |Előfordulhat, hogy 10,2017       |
-| 5.5.* |Kisebb vagy egyenlő, mint 2.5-ös verzió |Augusztus 10,2017    |
-| 5.6.* |Kisebb vagy egyenlő, mint 2.6-os verziója |Október 13,2017   |
-| 5.7.* |Kisebb vagy egyenlő, mint 2.7-es verzió |December 15,2017  |
-| 6.0.* |Kisebb vagy egyenlő, mint 2.8-as verziója |Aktuális verzióra, és ezért nincs befejezési dátum
+| **A fürt Service Fabric-futtatókörnyezet** | **Közvetlenül a fürt verzióra frissíthető** |**Kompatibilis SDK / NuGet csomag verziója** | **Támogatási dátum vége** |
+| --- | --- |--- | --- |
+| Fürt összes 5.3.121 korábbi verziók | 5.1.158* |Kisebb vagy egyenlő, mint 2.3 verziója |2017. január 20. |
+| 5.3.* | 5.1.158.* |Kisebb vagy egyenlő, mint 2.3 verziója |2017. február 24. |
+| 5.4.* | 5.1.158.* |Kisebb vagy egyenlő, mint 2.4 verziója |Előfordulhat, hogy 10,2017       |
+| 5.5.* | 5.4.164.* |Kisebb vagy egyenlő, mint 2.5-ös verzió |Augusztus 10,2017    |
+| 5.6.* | 5.4.164.* |Kisebb vagy egyenlő, mint 2.6-os verziója |Október 13,2017   |
+| 5.7.* | 5.4.164.* |Kisebb vagy egyenlő, mint 2.7-es verzió |December 15,2017  |
+| 6.0.* | 5.6.205.* |Kisebb vagy egyenlő, mint 2.8-as verziója |Aktuális verzióra, és ezért nincs befejezési dátum |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric előzetes verzió – üzemi használatra nem támogatott.
 Időről időre azt verzióira, amelyek azt szeretnénk, ha visszajelzést, amelyeket mintaként jelentős funkciót. Ezen előzetes verziói csak tesztelési célra használható. Az éles fürt mindig futnia kell egy támogatott, stabil, a Service Fabric-verzió. Előzetes verzióval mindig a fő- és alverzió verziószámát 255 kezdődik. Például a Service Fabric 255.255.5703.949 verzió jelenik meg, ha a verzió csak a tesztfürtökön lévő használni kívánt tartalmaz, és jelenleg előzetes verzióban érhető. Ezen előzetes kiadások is nem jelentik be a [Service Fabric csapat blogja](https://blogs.msdn.microsoft.com/azureservicefabric) és részletek rendelkezzen a szolgáltatásai.

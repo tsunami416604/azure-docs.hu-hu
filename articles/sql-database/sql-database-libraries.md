@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 11/29/2017
 ms.author: genemi
-ms.openlocfilehash: bdf83fac9bd0ac6790062f802748a18045c7a171
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 44c4491e7c198eec43a31480ef3df748626b7b75
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="connectivity-libraries-and-frameworks-for-microsoft-sql-server"></a>Kapcsolat kódtárai és keretrendszerei a Microsoft SQL Server
 
@@ -47,12 +47,25 @@ Az alábbi táblázatban néhány példa a objektum relációs leképezési (ORM
 | Node.js | Windows, Linux, macOS | [ORM sequelize](http://docs.sequelizejs.com) |
 | Python | Windows, Linux, macOS |[A Django](https://www.djangoproject.com/) |
 | Ruby | Windows, Linux, macOS | [Ruby sínen](http://rubyonrails.org/) |
+||||
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 - [SQL Server illesztőprogramok](http://msdn.microsoft.com/library/mt654049.aspx) ügyfélalkalmazások való csatlakozáshoz
-- [Csatlakozás az SQL Database-hez a .NET (C#) használatával](sql-database-connect-query-dotnet.md)
-- [Csatlakozás az SQL Database-hez a PHP használatával](sql-database-connect-query-php.md)
-- [Csatlakozás az SQL Database-hez a Node.js használatával](sql-database-connect-query-nodejs.md)
-- [Csatlakozás az SQL Database-hez a Java használatával](sql-database-connect-query-java.md)
-- [Csatlakozás az SQL Database-hez a Python használatával](sql-database-connect-query-python.md)
-- [Csatlakozás az SQL Database-hez a Ruby használatával](sql-database-connect-query-ruby.md)
+- Csatlakozás SQL Database adatbázishoz:
+    - [Csatlakozás az SQL Database-hez a .NET (C#) használatával](sql-database-connect-query-dotnet.md)
+    - [Csatlakozás az SQL Database-hez a PHP használatával](sql-database-connect-query-php.md)
+    - [Csatlakozás az SQL Database-hez a Node.js használatával](sql-database-connect-query-nodejs.md)
+    - [Csatlakozás az SQL Database-hez a Java használatával](sql-database-connect-query-java.md)
+    - [Csatlakozás az SQL Database-hez a Python használatával](sql-database-connect-query-python.md)
+    - [Csatlakozás az SQL Database-hez a Ruby használatával](sql-database-connect-query-ruby.md)
+- Újrapróbálkozási logika hitelesítésikód-példák:
+    - [Az ADO.NET SQL eltolódhasson kapcsolódni][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+    - [A PHP SQL eltolódhasson kapcsolódni][step-4-connect-resiliently-to-sql-with-php-p42h]
+
+
+<!-- Link references. -->
+
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+
+[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
+

@@ -3,7 +3,7 @@ title: "Az Azure Functions kidolgozásához |} Microsoft Docs"
 description: "További tudnivalók az Azure Functions fogalmakat és módszereket is, hogy funkciók Azure, az összes programozási nyelveket és kötések kifejlesztésére lesz szükség."
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: tdykstra
 manager: cfowler
 editor: 
 tags: 
@@ -15,9 +15,9 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
-ms.author: chrande
-ms.openlocfilehash: 76be085aa114b571f40603b4f182b13b9354b8b8
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.author: tdykstra
+ms.openlocfilehash: 80996c8bc6e40665201057ed185700ddaeea170a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/29/2017

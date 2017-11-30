@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: 265538a7e31d58a7d58c9e30870510eb66954f44
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: d262d9c2bd23a09c2efdb5fd6695bb2ed29cae54
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux – gyakori kérdések az Azure App Service
 
@@ -64,6 +64,20 @@ Igen.
 **Használhatok *a web deploy* szeretné telepíteni a webes alkalmazást?**
 
 Igen, be kell állítani az alkalmazások nevű beállítása `WEBSITE_WEBDEPLOY_USE_SCM` való *hamis*.
+
+**Saját-alkalmazás Git-telepítés sikertelen lesz, amikor Linux web app használatával. Milyen lehetőségeket megoldás a probléma?**
+
+A Linux-webalkalmazás Git-telepítés nem sikerül, ha az alkalmazás kódjában telepítéséhez a következő alternatív beállításokat lehet választani:
+
+- A folyamatos kézbesítési (előzetes verzió) szolgáltatással: az alkalmazás forráskódjának tárolása egy Team Services Git-tárház vagy a GitHub-tárház Azure folyamatos kézbesítési használatára. További részletekért lásd: [folyamatos kézbesítési konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+
+- Használja a [ZIP telepítése API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Ez az API használatához [SSH-ból a webalkalmazás](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) és nyissa meg azt a mappát, ahová a kód telepítésére. Futtassa a következőt:
+
+   ```
+   curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
+   ```
+
+   Ha hibaüzenetet kap, amely a `curl` parancs nem található, győződjön meg arról, hogy a curl használatával telepítse `apt-get install curl` az előző futtatása előtt `curl` parancsot.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 

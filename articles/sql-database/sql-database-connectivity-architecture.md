@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 06/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 469bd74c0f144ff641fafe8c8f830b1fdbfa7690
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: eda6e19d27afbf07df853dd4cef5ece1a745034d
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolat architektúrája 
 
-Ez a cikk ismerteti az Azure SQL Database kapcsolat architektúra, és elmagyarázza, hogyan a különböző összetevők működnek-e át tudja irányítani a forgalmat az Azure SQL Database-példány. Ezek az Azure SQL Database kapcsolat összetevői függvény át tudja irányítani a hálózati forgalmat és az Azure-adatbázis, a csatlakozás az Azure ügyfelekkel és az Azure-on kívüli csatlakozó ügyfelek. Ez a cikk a parancsfájl minták módosítani a kapcsolat módját, és a kapcsolat alapértelmezett beállításainak módosítása kapcsolódó szempontok is biztosít. Ha kérdése van a cikk elolvasása után, forduljon a következő Dhruv dmalik@microsoft.com. 
+Ez a cikk ismerteti az Azure SQL Database kapcsolat architektúra, és elmagyarázza, hogyan a különböző összetevők működnek-e át tudja irányítani a forgalmat az Azure SQL Database-példány. Ezek az Azure SQL Database kapcsolat összetevői függvény át tudja irányítani a hálózati forgalmat és az Azure-adatbázis, a csatlakozás az Azure ügyfelekkel és az Azure-on kívüli csatlakozó ügyfelek. Ez a cikk a parancsfájl minták módosítani a kapcsolat módját, és a kapcsolat alapértelmezett beállításainak módosítása kapcsolódó szempontok is biztosít. 
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 
-Az alábbi ábra magas szintű áttekintést nyújt az Azure SQL Database kapcsolat architektúrája. 
+Az alábbi ábra magas szintű áttekintést nyújt az Azure SQL Database kapcsolat architektúrája.
 
 ![architektúra áttekintése](./media/sql-database-connectivity-architecture/architecture-overview.png)
 
@@ -65,14 +65,14 @@ A következő táblázat az elsődleges és másodlagos IP-címek az Azure SQL D
 | --- | --- |--- |
 | Kelet-Ausztrália | 191.238.66.109 | 13.75.149.87 |
 | Délkelet-Ausztrália | 191.239.192.109 | 13.73.109.251 |
-| Dél-Brazília | 104.41.11.5 | |    
-| Közép-Kanada | 40.85.224.249 | |    
+| Dél-Brazília | 104.41.11.5 | |
+| Közép-Kanada | 40.85.224.249 | |
 | Kelet-Kanada | 40.86.226.166 | |
 | USA középső régiója | 23.99.160.139 | 13.67.215.62 |
 | Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
 | 1 USA keleti régiója | 191.238.6.43 | 40.121.158.30 |
 | USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 |
-| Közép-India | 104.211.96.159  | |   
+| Közép-India | 104.211.96.159  | |
 | Dél-India | 104.211.224.146  | |
 | Nyugat-India | 104.211.160.80 | |
 | Kelet-Japán | 191.237.240.43 | 13.78.61.196 |
@@ -84,7 +84,7 @@ A következő táblázat az elsődleges és másodlagos IP-címek az Azure SQL D
 | USA déli középső régiója | 23.98.162.75 | 13.66.62.124 |
 | Délkelet-Ázsia | 23.100.117.95 | 104.43.15.0 |
 | Egyesült Királyság északi régiója | 13.87.97.210 | |
-| Egyesült Királyság déli régiója 1 | 51.140.184.11 | |    
+| Egyesült Királyság déli régiója 1 | 51.140.184.11 | |
 | Egyesült Királyság 2. déli régiója | 13.87.34.7 | |
 | Az Egyesült Királyság nyugati régiója | 51.141.8.11  | |
 | USA nyugati középső régiója | 13.78.145.25 | |
@@ -95,12 +95,12 @@ A következő táblázat az elsődleges és másodlagos IP-címek az Azure SQL D
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Módosítsa a kapcsolatkezelési házirendet az Azure SQL Database
 
-Az Azure SQL Database kapcsolatkezelési házirendet az Azure SQL Database-kiszolgáló módosításához használja a [REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx). 
+Az Azure SQL Database kapcsolatkezelési házirendet az Azure SQL Database-kiszolgáló módosításához használja a [REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx).
 
-- Ha a kapcsolat-házirend **Proxy**, az összes hálózati csomagok folyamata az Azure SQL Database-átjárón keresztül. Ehhez a beállításhoz szeretné engedélyezni a kimenő csak az Azure SQL Database átjáró IP-címhez. Beállítás használatával **Proxy** rendelkezik további késést biztosít beállítását **átirányítási**. 
-- Ha a kapcsolat szabályzatot állítja **átirányítási**, az összes hálózati csomagok folyamat közvetlenül a köztes proxy felé. Ehhez a beállításhoz több IP-cím a kimenő forgalom engedélyezése kell. 
+- Ha a kapcsolat-házirend **Proxy**, az összes hálózati csomagok folyamata az Azure SQL Database-átjárón keresztül. Ehhez a beállításhoz szeretné engedélyezni a kimenő csak az Azure SQL Database átjáró IP-címhez. Beállítás használatával **Proxy** rendelkezik további késést biztosít beállítását **átirányítási**.
+- Ha a kapcsolat szabályzatot állítja **átirányítási**, az összes hálózati csomagok folyamat közvetlenül a köztes proxy felé. Ehhez a beállításhoz több IP-cím a kimenő forgalom engedélyezése kell.
 
-## <a name="script-to-change-connection-settings-via-powershell"></a>Parancsfájl PowerShell biztonságoskapcsolat-beállításainak módosítása 
+## <a name="script-to-change-connection-settings-via-powershell"></a>Parancsfájl PowerShell biztonságoskapcsolat-beállításainak módosítása
 
 > [!IMPORTANT]
 > Ez a parancsfájl igényel a [Azure PowerShell modul](/powershell/azure/install-azurerm-ps).
@@ -140,7 +140,7 @@ $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationCo
 $result = $AuthContext.AcquireToken(
 "https://management.core.windows.net/",
 $clientId,
-[Uri]$uri, 
+[Uri]$uri,
 [Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior]::Auto
 )
 
@@ -160,7 +160,7 @@ $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
 ```
 
-## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>Parancsfájl keresztül Azure CLI 2.0 biztonságoskapcsolat-beállításainak módosítása 
+## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>Parancsfájl keresztül Azure CLI 2.0 biztonságoskapcsolat-beállításainak módosítása
 
 > [!IMPORTANT]
 > Ez a parancsfájl igényel a [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -169,20 +169,17 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 A következő parancssori parancsfájl bemutatja, hogyan módosítsa a kapcsolatkezelési házirendet.
 
 <pre>
- # Get SQL Server ID
- sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
+# Get SQL Server ID
+sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
 
 # Set URI
-uri="https://management.azure.com/$sqlserverid/connectionPolicies/Default?api-version=2014-04-01-preview"
-
-# Get Access Token 
-accessToken=$(az account get-access-token --query 'accessToken' -o tsv)
+id="$sqlserverid/connectionPolicies/Default"
 
 # Get current connection policy 
-curl -H "authorization: Bearer $accessToken" -X GET $uri
+az resource show --ids $id
 
-#Update connection policy 
-curl -H "authorization: Bearer $accessToken" -H "Content-Type: application/json" -d '{"properties":{"connectionType":"Proxy"}}' -X PUT $uri
+# Update connection policy 
+az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
 

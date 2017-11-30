@@ -6,22 +6,24 @@ keywords:
 author: msebolt
 manager: timlt
 ms.author: v-masebo
-ms.date: 11/15/2017
+ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0d19d1142cf15221f84692f7e613edd6b46b4083
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 5a143bbf7abb5304ac51782d517c02ec184a05a2
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Azure Stream Analytics egy IoT peremhálózati modulként telepítése – előzetes
 
 Az IoT-eszközök nagy mennyiségű adat hozhat létre. Néha ezek az adatok elemzése vagy a felhőben a feltöltött adatok méretének csökkentésére vagy hajtható végre egyet az oda-vissza késését megszüntetéséhez elérése előtt feldolgozott rendelkezik.
 
-[Az Azure Stream Analytics] [ azure-stream] (ASA) társítását strukturált lekérdezési szintaxist tartalmaz a felhő- és IoT oldal adatelemzéshez eszközök. Az IoT-oldal ASA kapcsolatos további információkért lásd: [ASA dokumentáció](../stream-analytics/stream-analytics-edge.md).
+IoT peremhálózati kihasználja a gyors telepítéshez előre elkészített Azure szolgáltatás IoT peremhálózati modulok és [Azure Stream Analytics] [ azure-stream] (ASA) az egyik ilyen modul. ASA feladat létrehozása a portálon, majd az IoT-központ portálra, ahol üzembe egy IoT-Edge modul származnak.  
 
-Ez az oktatóanyag bemutatja, hogyan létrehozása az Azure Stream Analytics-feladat, és a központi telepítés egy IoT peremhálózati eszközön ahhoz, hogy közvetlenül az eszközön helyi telemetriai adatfolyam feldolgozásához, és hozhat létre a meghajtó azonnali művelet az eszközön.  Nincsenek ebben az oktatóanyagban érintett két modulok. Egy szimulált hőmérséklet-érzékelő modul (tempSensor), amely 20 hőmérséklet adatokat és 120 fok, 5 másodpercenként 1 eggyel állít elő, és egy nagyobb, mint 100 fok hőmérsékletek kiszűrő ASA modul. Az ASA modul is visszaállítja a tempSensor, 30 másodperces átlagos 100 elérésekor.
+Az Azure Stream Analytics metaadataik strukturált lekérdezési szintaxist tartalmaz a felhő- és IoT oldal adatelemzéshez eszközök. Az IoT-oldal ASA kapcsolatos további információkért lásd: [ASA dokumentáció](../stream-analytics/stream-analytics-edge.md).
+
+Ez az oktatóanyag bemutatja, hogyan létrehozása az Azure Stream Analytics-feladat, és a központi telepítés egy IoT peremhálózati eszközön ahhoz, hogy közvetlenül az eszközön helyi telemetriai adatfolyam feldolgozásához, és hozhat létre a meghajtó azonnali művelet az eszközön.  Nincsenek ebben az oktatóanyagban érintett két modulok. A szimulált hőmérséklet-érzékelő modulok (tempSensor) hoz létre, és 120 fok, 5 másodpercenként 1 eggyel hőmérséklet adatok 20. A Stream Analytics modul alaphelyzetbe állítása a tempSensor, 30 másodperces átlagos 70 elérésekor. Éles környezetben használja előfordulhat, hogy ezt a funkciót le egy gép vagy megelőző intézkedéseket a hőmérséklet veszélyes szintek elérésekor. 
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -33,64 +35,58 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az IoT-központ 
-* Az eszközt, hogy létrehozása és konfigurálása a gyors üzembe helyezés vagy telepítése Azure IoT peremhálózati om a szimulált eszköz [Windows] [ lnk-tutorial1-win] és [Linux] [ lnk-tutorial1-lin].
-* Az IoT-peremhálózati eszközön docker
-    * [Docker telepítése Windows] [ lnk-docker-windows] , és győződjön meg arról, hogy fut-e.
-    * [Telepítse a Docker Linux] [ lnk-docker-linux] , és győződjön meg arról, hogy fut-e.
+* Az eszközt, hogy létrehozása és konfigurálása a gyors üzembe helyezés vagy telepítése Azure IoT peremhálózati om a szimulált eszköz [Windows] [ lnk-tutorial1-win] és [Linux] [ lnk-tutorial1-lin]. Hasznos tudnivalók az eszköz kapcsolat kulcs és az eszközazonosító. 
+* Az IoT-peremhálózati eszközön futó docker
+    * [Docker telepítése Windows][lnk-docker-windows]
+    * [Docker telepítése Linux rendszerre][lnk-docker-linux]
 * Python 2.7.x az IoT-peremhálózati eszközön
     * [Python 2.7 telepítése Windows][lnk-python].
     * A legtöbb Linux terjesztésekről, beleértve az Ubuntu, már telepített Python 2.7.  Győződjön meg arról, hogy a pip telepítve van a következő paranccsal: `sudo apt-get install python-pip`.
 
-> [!NOTE]
-> Megjegyzés: az eszköz kapcsolati karakterlánc és az IoT peremhálózati eszköz azonosítója ehhez az oktatóanyaghoz szükség lesz.
-
-IoT peremhálózati kihasználja a gyors telepítéshez előre elkészített Azure szolgáltatás IoT peremhálózati modulok és Azure Stream Analytics (ASA) egy ilyen modul. ASA feladat létrehozása a portálon, majd az IoT-központ portálra, ahol üzembe egy IoT-Edge modul származnak.  
-
-Azure Stream Analytics további információkért tekintse meg a **áttekintése** szakasza a [Stream Analytics dokumentációja][azure-stream].
 
 ## <a name="create-an-asa-job"></a>ASA feladat létrehozása
 
 Ebben a szakaszban hozzon létre egy Azure Stream Analytics-feladat az IoT hub adatait, az elküldött telemetriai adatait kéri le az eszközt, és az eredmények továbbításához egy Azure Storage tárolója (BLOB). További információkért lásd: a **áttekintése** szakasza a [Stream Analytics dokumentációja][azure-stream]. 
 
-> [!NOTE]
-> Adja meg a ASA feladat kimenetként használható a végpont egy Azure Storage-fiók szükséges. Az alábbi példában a BLOB storage típust használ.  További információkért lásd: a **Blobok** szakasza a [Azure Storage-dokumentációt][azure-storage].
+### <a name="create-a-storage-account"></a>Create a storage account
 
-1. Az Azure-portálon lépjen a **hozzon létre egy erőforrás -> tárolási**, kattintson a **láthatja az összes**, és kattintson a **tárfiók - blob, a fájl, a tábla, a várólista**.
+Adja meg a ASA feladat kimenetként használható a végpont egy Azure Storage-fiók szükséges. Az alábbi példában a BLOB storage típust használ.  További információkért lásd: a **Blobok** szakasza a [Azure Storage-dokumentációt][azure-storage].
 
-2. Adja meg a tárfiók nevét, és válassza ki az IoT Hub tároló ugyanazon a helyen. Kattintson a **Create** (Létrehozás) gombra. Jegyezze fel a későbbi használatra.
+1. Az Azure-portálon lépjen a **hozzon létre egy erőforrást** , és írja be `Storage account` a keresési sávon. Válassza ki **tárfiók - blob, a fájl, a tábla, a várólista**.
+
+2. Adja meg a tárfiók nevét, és válassza ki az ugyanazon a helyen, ahol az IoT hub. Kattintson a **Create** (Létrehozás) gombra. Ne felejtse el a nevet a későbbi használatra.
 
     ![új tárfiók][1]
 
-3. Az Azure-portálon lépjen az újonnan létrehozott tárfiók. Kattintson a **keresse meg a blobok** alatt **Blob szolgáltatás**. 
-4. Hozzon létre egy új tároló ASA modul adatok tárolására. Állítsa a hozzáférési szintet _tároló_. Kattintson az **OK** gombra.
+3. Nyissa meg az újonnan létrehozott tárfiók. Kattintson a **keresse meg a blobok**. 
+4. Hozzon létre egy új tároló ASA modul adatok tárolására. Állítsa a hozzáférési szintet **tároló**. Kattintson az **OK** gombra.
 
     ![tárolási beállítások][10]
 
-5. Az Azure-portálon lépjen a **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** válassza **Stream Analytics-feladat**.
+### <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
+
+1. Az Azure-portálon lépjen a **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** válassza **Stream Analytics-feladat**.
 
 2. Adjon meg egy nevet, kattintson a **peremhálózati** üzemeltetési környezetben, és a többi alapértelmezett értéket használja.  Kattintson a **Create** (Létrehozás) gombra.
 
     >[!NOTE]
-    >Jelenleg ASA feladatok IoT oldal Velünk nyugati 2 régióban nem támogatottak. Válasszon ki egy másik helyre.
+    >Jelenleg IoT peremhálózati ASA egy feladat nem támogatottak 2 USA nyugati régiója régióban. 
 
-    ![ASA létrehozása][5]
+3. Használja fel a létrehozott feladat. Válassza ki **bemenetek** kattintson **Hozzáadás**.
 
-2. Használja fel a létrehozott feldolgozás alatt **feladat topológia**, jelölje be **bemenetek**, kattintson a **Hozzáadás**.
+4. Adja meg a bemeneti áljel `temperature`, a forrás típusa **adatfolyam**, és használja a többi paraméter alapértelmezett értéke. Kattintson a **Create** (Létrehozás) gombra.
 
-3. Adjon meg nevet `temperature`, válassza a **adatfolyam** a forrástípus és a többi paraméter az Alapértelmezések használata. Kattintson a **Create** (Létrehozás) gombra.
+   ![ASA bemeneti](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-    ![ASA bemeneti][2]
+5. Válassza ki **kimenetek** kattintson **Hozzáadás**.
 
-    > [!NOTE]
-    > További bemenetek IoT peremhálózati meghatározott végpontokhoz tartalmazhatnak.
+6. Adja meg a kimeneti alias `alert`, és használja a többi paraméter alapértelmezett értéke. Kattintson a **Create** (Létrehozás) gombra.
 
-4. A **feladat topológia**, jelölje be **kimenetek**, kattintson a **Hozzáadás**.
+   ![ASA kimeneti](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-5. Adjon meg nevet `alert` és használhatja az alapértelmezett értékeket. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![ASA kimeneti][3]
-
-6. A **feladat topológia**, jelölje be **lekérdezés**, és írja be a következő:
+7. Válassza ki **lekérdezés**.
+8. Az alapértelmezett szöveg cseréje a következő lekérdezést:
 
     ```sql
     SELECT  
@@ -100,28 +96,32 @@ Ebben a szakaszban hozzon létre egy Azure Stream Analytics-feladat az IoT hub a
     FROM 
        temperature TIMESTAMP BY timeCreated 
     GROUP BY TumblingWindow(second,30) 
-    HAVING Avg(machine.temperature) > 100
+    HAVING Avg(machine.temperature) > 70
     ```
+9. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="deploy-the-job"></a>A feladat telepítése
 
 Most már készen áll a ASA feladat az IoT-peremhálózati eszközön telepítéséhez.
 
-1. Az Azure portálon az IoT-központot, navigáljon a **IoT peremhálózati (előzetes verzió)** , és nyissa meg a *{deviceId}*a panelen.
-
-1. Válassza ki **modulok beállítása**, majd jelölje be **importálási Azure szolgáltatás IoT peremhálózati modul**.
-
-1. Válassza ki az előfizetés és a ASA peremhálózati feladatot, amely létrehozta. Ezután válassza ki a tárfiók. Kattintson a **Save** (Mentés) gombra.
+1. Az Azure portálon az IoT-központot, navigáljon a **IoT peremhálózati (előzetes verzió)** , és nyissa meg az IoT-peremhálózati eszköz részleteit megjelenítő oldalon.
+1. Válassza ki **modulok beállítása**.
+1. Ha korábban telepítette a tempSensor modul ezen az eszközön, akkor előfordulhat, hogy adatokkal való automatikus feltöltés. Ha nem, a modul hozzá lesz adva a következő lépésekkel:
+   1. Kattintson a **IoT peremhálózati modul hozzá lesz adva**
+   1. Adja meg `tempSensor` névként, és `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` a lemezkép URI-hoz. 
+   1. Hagyja változatlanul az egyéb beállításokat, és kattintson a **mentése**.
+1. Az ASA peremhálózati munkahelye hozzáadásához válassza **importálási Azure Stream Analytics IoT peremhálózati modul**.
+1. Válassza ki az előfizetés és a ASA peremhálózati feladatot, amely létrehozta. 
+1. Válassza ki az előfizetés és a létrehozott tárfiók. Kattintson a **Save** (Mentés) gombra.
 
     ![Állítsa a modul][6]
 
-1. Kattintson a **IoT peremhálózati modul hozzáadása** a hőmérséklet-érzékelő modul hozzá lesz. Adja meg _tempSensor_ olyan név esetén `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` a kép URL-címe. Hagyja változatlanul az egyéb beállításokat, és kattintson a **mentése**.
+1. Másolja a nevét, a ASA modul automatikusan lett létrehozva. 
 
     ![hőmérséklet-modul][11]
 
-1. Másolja a ASA modul nevét. Kattintson a **következő** útvonalak konfigurálása.
-
-1. Másolja az alábbi **útvonalak**.  Cserélje le _{moduleName}_ másolt modul nevű:
+1. Kattintson a **következő** útvonalak konfigurálása.
+1. Másolja az alábbi **útvonalak**.  Cserélje le _{moduleName}_ másolt nevű modul:
 
     ```json
     {
@@ -138,7 +138,7 @@ Most már készen áll a ASA feladat az IoT-peremhálózati eszközön telepít�
 
 1. Az a **felülvizsgálati sablonja** lépésre, a **Submit**.
 
-1. Térjen vissza az eszköz részleteit megjelenítő oldalra, és kattintson a **frissítése**.  Láthatja, hogy az új _{moduleName}_ modul fut, valamint a **IoT peremhálózati ügynök** modul és a **peremhálózati IoT hub**.
+1. Térjen vissza az eszköz részleteit megjelenítő oldalra, és kattintson a **frissítése**.  Az új Stream Analytics modul futtató mentén kell megjelennie a **IoT peremhálózati ügynök** modul és a **peremhálózati IoT hub**.
 
     ![a modul kimenete][7]
 
@@ -146,37 +146,24 @@ Most már készen áll a ASA feladat az IoT-peremhálózati eszközön telepít�
 
 Most lépjen a IoT peremhálózati eszközön tekintse meg a a ASA és a tempSensor modul közötti interakció.
 
-1. A parancssorba konfigurálása a futásidejű a IoT peremhálózati eszköz kapcsolati karakterlánc:
+Ellenőrizze, hogy a modulok Docker fut:
 
-    ```cmd/sh
-    iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords  
-    ```
+   ```cmd/sh
+   docker ps  
+   ```
 
-1. Futtassa a parancsot a futtatókörnyezet elindításához:
+   ![docker kimeneti][8]
 
-    ```cmd/sh
-    iotedgectl start  
-    ```
+Összes rendszer naplók és a metrikák adatok megtekintéséhez. Használja a Stream Analytics Modulnév:
 
-1. Futtassa a parancsot a futó modulok:
+   ```cmd/sh
+   docker logs -f {moduleName}  
+   ```
 
-    ```cmd/sh
-    docker ps  
-    ```
+A gép hőmérséklet fokozatosan növekedésnek 70 fok 30 másodpercig eléréséig nézheti kell lennie. Ezután a Stream Analytics modul elindítja a alaphelyzetbe állítását és a gép hőmérséklet vált vissza 21. 
 
-    ![docker kimeneti][8]
+   ![docker-napló][9]
 
-1. Futtassa a parancsot a rendszer naplóit, és a metrikai adatok megjelenítéséhez. A modul neve a fenti használja:
-
-    ```cmd/sh
-    docker logs -f {moduleName}  
-    ```
-
-    ![docker-napló][9]
-
-1. Az Azure portálon, a tárfiókban lévő alatt **Blob szolgáltatás**, kattintson a **keresse meg a blobok**, jelölje ki a tárolót, és válassza ki az újonnan létrehozott JSON-fájlt.
-
-1. Kattintson a **letöltése** és az eredmények megtekintéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -187,8 +174,6 @@ Ebben az oktatóanyagban konfigurálta az Azure Storage-tároló és a Streaming
 
 <!-- Images. -->
 [1]: ./media/tutorial-deploy-stream-analytics/storage.png
-[2]: ./media/tutorial-deploy-stream-analytics/asa_input.png
-[3]: ./media/tutorial-deploy-stream-analytics/asa_output.png
 [4]: ./media/tutorial-deploy-stream-analytics/add_device.png
 [5]: ./media/tutorial-deploy-stream-analytics/asa_job.png
 [6]: ./media/tutorial-deploy-stream-analytics/set_module.png

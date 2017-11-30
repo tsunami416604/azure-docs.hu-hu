@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/21/2017
 ms.author: raynew
-ms.openlocfilehash: 730111411a080a3134ad69fee8bfceead4d27fa4
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 083e614628645d2eb94b7d84f4127b690865d770
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="migrate-machines-after-assessment"></a>Telepítse át a gépek értékelése után
 
@@ -29,13 +29,13 @@ A cikkből megtudhatja, hogyan kérhet egy áttelepítési eszköz javaslatokat 
 
 ## <a name="migration-tool-suggestion"></a>Áttelepítési eszköz javaslat
 
-Áttelepítési eszközök vonatkozó javaslatokat kérhet, szüksége az ügynökök telepítéséhez a helyszíni gépeket.  
+Az áttelepítési eszközök vonatkozó javaslatokat kérhet, kell tennie a részletes felderítés a helyszíni környezet. A részletes felderítési ügynökök telepítése a helyszíni gépeken végezhető el.  
 
 1. Hozzon létre egy Azure áttelepítése projektet, a helyszíni gépeket felderítését és hozzon létre egy áttelepítési assessment. [További információk](tutorial-assessment-vmware.md).
 2. Töltse le és telepítse az Azure áttelepítése ügynökök minden a helyi számítógépen, amelynek meg szeretné tekinteni a javasolt áttelepítési módszer. [A következő eljárással](how-to-create-group-machine-dependencies.md#prepare-machines-for-dependency-mapping) az ügynökök telepítéséhez.
 2. Azonosítsa a növekedési és shift áttelepítési alkalmas a helyszíni gépeket. Ezek azok a rajtuk futó alkalmazások módosításait nem feltétlenül szükséges, amely áttelepíthető, mert a virtuális gépeket.
-3. A növekedési és shift áttelepítési javasoljuk, hogy Azure Site Recovery segítségével. [További információk](../site-recovery/tutorial-migrate-on-premises-to-azure.md). Alternatív megoldásként eszközeivel 3. fél, amely támogatja az áttelepítést, az Azure-bA.
-4. Ha a helyszíni gépeket, amelyek nem a növekedési és shift áttelepítésre alkalmas például ha az áttelepítést szeretné az egész virtuális gép helyett az adott alkalmazást, más áttelepítési eszközök is használhatja. Például, javasoljuk, hogy a [Azure adatbázis áttelepítési szolgáltatás](https://azure.microsoft.com/campaigns/database-migration/) Ha szeretne áttelepíteni a helyszíni adatbázisok ilyen egy SQL Server, MySQL vagy Oracle az Azure-bA.
+3. A növekedési és shift áttelepítési javasoljuk, hogy Azure Site Recovery segítségével. [További információk](../site-recovery/tutorial-migrate-on-premises-to-azure.md). Alternatív megoldásként eszközeivel külső, amely támogatja az áttelepítést, az Azure-bA.
+4. Ha a helyszíni gépeket, amelyek nem megfelelő a növekedési és shift áttelepítésre, ez azt jelenti, ha szeretne áttelepíteni az adott alkalmazást, hanem az egész virtuális gép használhatja más áttelepítési eszközök. Például, javasoljuk, hogy a [Azure adatbázis áttelepítési szolgáltatás](https://azure.microsoft.com/campaigns/database-migration/) Ha szeretne áttelepíteni a helyszíni adatbázisok ilyen egy SQL Server, MySQL vagy Oracle az Azure-bA.
 
 
 ## <a name="review-suggested-migration-methods"></a>Javasolt áttelepítési módszereinek áttekintése

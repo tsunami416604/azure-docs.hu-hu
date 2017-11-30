@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/28/2017
+ms.date: 11/29/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 243c42b8637b7887047c85a60e5dfedfd7f6904a
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: cfb3a309208c78dc7896d61891da9825cf36dbd9
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Technikai útmutató az Azure Active Directory feltételes hozzáférés
 
-Használhat [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) annak finomhangolásához, hogy hogyan engedéllyel rendelkező felhasználók férhetnek hozzá az erőforrásokat.  
+Használhat [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) annak finomhangolásához, hogy hogyan engedéllyel rendelkező felhasználók férhetnek hozzá az erőforrásokat.   
 
-Ez a témakör az alábbi konfigurációs elemek egy feltételes hozzáférési házirend támogatási információkat: 
+Ez a cikk azt ismerteti támogatás az alábbi konfigurációs elemek egy feltételes hozzáférési házirend: 
 
 - Felhőalapú alkalmazások hozzárendelések
 
@@ -38,7 +38,7 @@ Ez a témakör az alábbi konfigurációs elemek egy feltételes hozzáférési 
 
 ## <a name="cloud-apps-assignments"></a>Felhőalapú alkalmazások hozzárendelések
 
-A feltételes hozzáférési házirendjének konfigurálásakor kell [válassza ki a felhőalapú alkalmazásokat, amelyek a házirend-](active-directory-conditional-access-azure-portal.md#who). 
+Feltételes hozzáférési házirendekkel, szabályozhatja, hogy a felhasználók hogyan férhetnek hozzá a [felhőalapú alkalmazásokba](active-directory-conditional-access-azure-portal.md#who). A feltételes hozzáférési házirendjének konfigurálásakor kell legalább egy felhő-alkalmazás kiválasztása. 
 
 ![Válassza ki a felhőalapú alkalmazások, a házirend](./media/active-directory-conditional-access-technical-reference/09.png)
 
@@ -48,6 +48,7 @@ A feltételes hozzáférési házirendjének konfigurálásakor kell [válassza 
 A feltételes hozzáférési házirend a Microsoft hozzárendelheti a következő felhőalapú alkalmazásokat:
 
 - Az Azure Information Protection - [további](https://docs.microsoft.com/information-protection/get-started/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+
 - Azure RemoteApp
 
 - Microsoft Dynamics 365
@@ -103,7 +104,7 @@ Feltételes hozzáférési szabályzatot konfigurálhatja a házirendet, az oper
 
 ## <a name="client-apps-condition"></a>Ügyfél alkalmazások feltétel 
 
-A feltételes hozzáférési házirendjének konfigurálásakor is [ügyfél alkalmazások kiválasztása](active-directory-conditional-access-azure-portal.md#client-apps) ügyfél app feltételét. Állítsa be az ügyfél adja meg, vagy letiltja a hozzáférést, ha egy hozzáférési kísérlet a következő típusú ügyfél alkalmazásokat az alkalmazások feltétel:
+A feltételes hozzáférési szabályzatot konfigurálhat a [ügyfélalkalmazások](active-directory-conditional-access-azure-portal.md#client-apps) feltétel összekötését a házirendet, az ügyfél-alkalmazást, amelynek már kezdeményezte a hozzáférési kísérlet. Állítsa be az ügyfél adja meg, vagy letiltja a hozzáférést, ha egy hozzáférési kísérlet a következő típusú ügyfél alkalmazásokat az alkalmazások feltétel:
 
 - Böngésző
 - Hordozható és asztali alkalmazások
@@ -112,11 +113,11 @@ A feltételes hozzáférési házirendjének konfigurálásakor is [ügyfél alk
 
 ### <a name="supported-browsers"></a>Támogatott böngészők 
 
-Böngésző-hozzáférés kezelése a használatával a **böngésző** a feltételes hozzáférési szabályzat beállítása. Hozzáférés csak akkor, ha a hozzáférési kísérlet egy támogatott böngésző. Ha egy hozzáférési kísérlet nem támogatott böngészőt, a kísérlet le van tiltva.
+A feltételes hozzáférési házirend kiválaszthatja **böngészők** ügyfél alkalmazásként.
 
 ![Támogatott böngészők elérés](./media/active-directory-conditional-access-technical-reference/05.png)
 
-A feltételes hozzáférési házirend az alábbi böngészők támogatottak: 
+Ez a beállítás hatással van a következő böngészőkkel történő hozzáférés kísérletek: 
 
 
 | Operációs rendszer                     | Böngészők                            | Támogatás     |
@@ -140,14 +141,16 @@ A feltételes hozzáférési házirend az alábbi böngészők támogatottak:
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>Támogatott mobil alkalmazások és asztali ügyfelek
 
-Alkalmazás és az ügyfél-hozzáférési használatával szabályozhatja a **mobilalkalmazások és asztali ügyfelek** a feltételes hozzáférési házirend beállítása. Hozzáférés csak akkor, ha a hozzáférési kísérlet egy támogatott mobilalkalmazás vagy asztali ügyfél. Ha egy hozzáférési kísérlet egy nem támogatott alkalmazást vagy az ügyfél, a kísérlet le van tiltva.
+A feltételes hozzáférési házirend kiválaszthatja **mobilalkalmazások és asztali ügyfelek** ügyfél alkalmazásként.
+
 
 ![Elérés támogatott mobilalkalmazások vagy asztali ügyfelek](./media/active-directory-conditional-access-technical-reference/06.png)
 
-A következő mobilalkalmazások és asztali ügyfelek támogatja a feltételes hozzáférés az Office 365 és más Azure AD-csatlakoztatott szolgáltatásalkalmazások:
+
+Ez a beállítás hatással van a következő mobilalkalmazások és az asztali ügyfelek hozzáférések: 
 
 
-|Ügyfél-alkalmazások|Célként megadott szolgáltatás|Platform|
+|Ügyfélalkalmazások|Célként megadott szolgáltatás|Platform|
 |---|---|---|
 |Azure távoli alkalmazás|Az Azure távoli App service|Windows 10, Windows 8.1, Windows 7, iOS, Android és Mac OS X|
 |Dynamics CRM-alkalmazás|Dynamics CRM|Windows 10, Windows 8.1, Windows 7, iOS és Android|
@@ -170,11 +173,11 @@ A következő mobilalkalmazások és asztali ügyfelek támogatja a feltételes 
 
 ## <a name="approved-client-app-requirement"></a>Jóváhagyott app követelmény 
 
-Ügyfélkapcsolatok használatával szabályozhatja a **jóváhagyott ügyfélalkalmazás szükséges** a feltételes hozzáférési szabályzat beállítása. Hozzáférés csak akkor, ha a kapcsolat kísérlet által jóváhagyott alkalmazások.
+A feltételes hozzáférési házirendben megkövetelheti, hogy hozzáférjen megkísérli a kijelölt felhőalapú alkalmazásokat kell tenni az ügyfél jóváhagyott alkalmazásokból. 
 
 ![Jóváhagyott alkalmazások elérés](./media/active-directory-conditional-access-technical-reference/21.png)
 
-A következő ügyfél-alkalmazásokat is használható a jóváhagyott alkalmazás követelményeinek:
+Ez a beállítás a következő ügyfél alkalmazásokra vonatkoznak:
 
 
 - Microsoft Azure Information Protection

@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b509ffa934949200277ae431761d2accd4a02d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c6a618c9cb93fe5b82e97f84c346e3dc448737e4
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-configuring-docusign-for-user-provisioning"></a>Oktatóanyag: A felhasználók átadása DocuSign konfigurálása
 
@@ -41,9 +41,12 @@ A létesítési szolgáltatás engedélyezése és konfigurálása, mielőtt sz�
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>Felhasználók hozzárendelése DocuSign fontos tippek
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve DocuSign teszteli a telepítési konfigurációt. További felhasználók és/vagy csoportok később is rendelhető.
+*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve DocuSign teszteli a telepítési konfigurációt. További felhasználók rendelt később.
 
 *   Amikor egy felhasználó hozzárendelése DocuSign, ki kell választania egy érvényes felhasználói szerepkörnek. A "Default" szerepkör nem működik történő üzembe helyezéséhez.
+
+> [!NOTE]
+> Az Azure AD nem támogatja a Docusign alkalmazás csoport létrehozását, csak a felhasználók létesíthetők.
 
 ## <a name="enable-user-provisioning"></a>Felhasználó-kiépítés engedélyezése
 
@@ -86,7 +89,7 @@ Ez a szakasz célja engedélyezése a felhasználók átadása, az Active Direct
 
 12. Kattintson a **mentéséhez.**
 
-A kezdeti szinkronizálás bármely felhasználói és/vagy a felhasználók és csoportok szakaszban DocuSign rendelt csoportok kezdődik. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentéseit, amelyek a létesítési szolgáltatás az DocuSign alkalmazás által végzett összes műveletet írják le.
+A felhasználók és csoportok szakaszban DocuSign rendelt felhasználók kezdeti szinkronizálásának megkezdése. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentéseit, amelyek a létesítési szolgáltatás az DocuSign alkalmazás által végzett összes műveletet írják le.
 
 Mostantól létrehozhat egy olyan fiókot. Akár 20 percig várjon győződjön meg arról, hogy a fiók DocuSign lett-e szinkronizálva.
 

@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
-ms.openlocfilehash: ccd8bf902f707390f80e3c377e60dd35d535b4b5
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: cce30360145fe430141ceaf2efc91a6b87938601
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Az Azure AD B2C: Használja az Azure AD Graph API
 
 >[!NOTE]
->Jelenleg kell használnia a [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) felhasználóinak az Azure AD B2C-címtár kezeléséhez.
+> Kell használnia a [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) felhasználóinak az Azure AD B2C-címtár kezeléséhez. Ez eltér a Microsoft Graph API-val. További információkat [itt](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/) talál.
 
 Az Azure Active Directory (Azure AD) B2C-bérlők általában nagyon nagy. Ez azt jelenti, hogy több bérlő felügyeletének általános feladatai van szükség, programozott módon. Egy elsődleges példája felhasználók kezelése. Szükség lehet egy meglévő felhasználó tároló áttelepítése a B2C-bérlő. Érdemes lehet a saját oldalon felhasználói regisztráció és a háttérben Azure AD B2C-címtárban lévő felhasználói fiókokat hozhat létre. Ilyen típusú feladatok elvégzéséhez szükség van a szolgáltatásvezérlési létrehozása, olvasása, frissítése, és törölje a felhasználói fiókokat. Ezeket a feladatokat az Azure AD Graph API használatával teheti meg.
 

@@ -1,9 +1,9 @@
 ---
-title: "Az Azure függvények táblázatban tárolási kötések"
+title: "Azure Table storage kötései Azure Functions"
 description: "Az Azure Functions az Azure Table storage kötések használatának megismerése."
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: tdykstra
 manager: cfowler
 editor: 
 tags: 
@@ -14,20 +14,20 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
-ms.author: chrande
-ms.openlocfilehash: 2f54df931d03318a50e9397211e3c50d0898556d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: tdykstra
+ms.openlocfilehash: a1305432d98c2e9f9f8bc30cacc62d49b1a8ba36
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="azure-functions-table-storage-bindings"></a>Az Azure függvények táblázatban tárolási kötések
+# <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table storage kötései Azure Functions
 
 Ez a cikk ismerteti az Azure Functions kötések Azure Table storage használata. Az Azure Functions támogatja bemeneti és kimeneti Azure Table storage kötései.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="table-storage-input-binding"></a>TABLE storage bemeneti kötése
+## <a name="input"></a>Input (Bemenet)
 
 Az Azure Table storage bemeneti kötése segítségével olvasni egy táblát az Azure Storage-fiók.
 
@@ -284,7 +284,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="input---attributes-for-precompiled-c"></a>Bemenet - attribútumok az előfordított C#
+## <a name="input---attributes"></a>Bemenet – attribútumok
  
 A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók bemeneti táblakötéssel konfigurálása a következő attribútumokat használhatja:
 
@@ -298,6 +298,9 @@ A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók bemeneti
       [QueueTrigger("table-items")] string input, 
       [Table("MyTable", "Http", "{queueTrigger}")] MyPoco poco, 
       TraceWriter log)
+  {
+      ...
+  }
   ```
 
   Beállíthatja a `Connection` tulajdonság adja meg a tárfiókot, a következő példában látható módon:
@@ -308,7 +311,12 @@ A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók bemeneti
       [QueueTrigger("table-items")] string input, 
       [Table("MyTable", "Http", "{queueTrigger}", Connection = "StorageConnectionAppSetting")] MyPoco poco, 
       TraceWriter log)
+  {
+      ...
+  }
   ```
+
+  Tekintse meg a teljes például [bemenet – C# előfordított példa](#input---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)NuGet-csomagot a definiált [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs)
 
@@ -321,6 +329,9 @@ A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók bemeneti
       [FunctionName("TableInput")]
       [StorageAccount("FunctionLevelStorageAppSetting")]
       public static void Run( //...
+  {
+      ...
+  }
   ```
 
 A használt tárfiók határozza meg a következő sorrendben:
@@ -345,7 +356,9 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**rowKey** |**RowKey** | Választható. Olvassa el a tábla entitás sorkulcsa. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
 |**hajtsa végre a megfelelő** |**Hajtsa végre a megfelelő** | Választható. A JavaScript olvasni entitások maximális száma. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
 |**szűrő** |**Szűrő** | Választható. Egy OData szűrőkifejezés JavaScript a bemeneti tábla. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
-|**kapcsolat** |**Kapcsolat** | A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br/>Helyileg kidolgozása, Alkalmazásbeállítások kísérhet értékeit a [local.settings.json fájl](functions-run-local.md#local-settings-file).|
+|**kapcsolat** |**Kapcsolat** | A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="input---usage"></a>Bemenet - használat
 
@@ -368,7 +381,7 @@ A Table storage bemeneti kötése a következő szituációkat ismerteti:
 
   Állítsa be a `filter` és `take` tulajdonságok. Nincs beállítva `partitionKey` vagy `rowKey`. A bemeneti tábla entitás (vagy entitások) használatával `context.bindings.<name>`. A deszerializált objektum rendelkezik `RowKey` és `PartitionKey` tulajdonságok.
 
-## <a name="table-storage-output-binding"></a>A TABLE storage kimeneti kötése
+## <a name="output"></a>Kimenet
 
 Egy Azure Table storage kimeneti entitások írni egy Azure Storage-fiókban lévő táblázat kötés használja.
 
@@ -554,9 +567,9 @@ module.exports = function (context) {
 };
 ```
 
-## <a name="output---attributes-for-precompiled-c"></a>Kimeneti - attribútumok az előfordított C#
+## <a name="output---attributes"></a>Kimeneti - attribútumok
 
- A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
+A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
 
 Az attribútum konstruktora a táblanév vesz igénybe. A használat egy `out` paraméter vagy a visszatérési érték a, a következő példában látható módon:
 
@@ -566,6 +579,9 @@ Az attribútum konstruktora a táblanév vesz igénybe. A használat egy `out` p
 public static MyPoco TableOutput(
     [HttpTrigger] dynamic input, 
     TraceWriter log)
+{
+    ...
+}
 ```
 
 Beállíthatja a `Connection` tulajdonság adja meg a tárfiókot, a következő példában látható módon:
@@ -576,9 +592,14 @@ Beállíthatja a `Connection` tulajdonság adja meg a tárfiókot, a következő
 public static MyPoco TableOutput(
     [HttpTrigger] dynamic input, 
     TraceWriter log)
+{
+    ...
+}
 ```
 
-Használhatja a `StorageAccount` attribútum segítségével adhatja meg a tárfiók osztály, módszer vagy paraméter szinten. További információkért lásd: [bemeneti - attribútumainak előre le fordítva C#](#input---attributes-for-precompiled-c).
+Tekintse meg a teljes például [kimeneti - előfordított például C#](#output---c-example).
+
+Használhatja a `StorageAccount` attribútum segítségével adhatja meg a tárfiók osztály, módszer vagy paraméter szinten. További információkért lásd: [bemenet - attribútumok](#input---attributes-for-precompiled-c).
 
 ## <a name="output---configuration"></a>Kimeneti - konfiguráció
 
@@ -592,7 +613,9 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**Táblanév** |**Táblanév** | A tábla neve.| 
 |**partitionKey** |**PartitionKey** | A partíciókulcs a tábla entitás írni. Tekintse meg a [használati adatai](#output---usage) kapcsolatos útmutatás a tulajdonságot használni.| 
 |**rowKey** |**RowKey** | A tábla entitás írni a sorkulcs. Tekintse meg a [használati adatai](#output---usage) kapcsolatos útmutatás a tulajdonságot használni.| 
-|**kapcsolat** |**Kapcsolat** | A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br/>Helyileg kidolgozása, Alkalmazásbeállítások kísérhet értékeit a [local.settings.json fájl](functions-run-local.md#local-settings-file).|
+|**kapcsolat** |**Kapcsolat** | A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>Kimeneti - használat
 

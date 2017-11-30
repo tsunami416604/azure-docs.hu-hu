@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 2de8349c9e727dca48ab8ca3e04851a5ee57d30b
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 37942b7aa2fa675e316f368e8c74cb2081ba4648
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -299,7 +299,7 @@ Amikor engedélyezi a hozzáférést az Azure-erőforrások, nem mindig ajánlot
 
 -   **Szolgáltatás egyszerű objektumok**: hozzáférés biztosítása a felhasználó rendszerbiztonsági tagok és a csoportok, mellett biztosíthat ugyanolyan szintű hozzáférése egy egyszerű szolgáltatást.
 
-    > **Mikor érdemes használni**: amikor a rendszer programozott módon Azure-erőforrások kezelése vagy alkalmazásokhoz hozzáférést a. További információkért lásd: [létrehozása az Active Directory supplication és egy egyszerű szolgáltatást](../../resource-group-create-service-principal-portal.md).
+    > **Mikor érdemes használni**: amikor a rendszer programozott módon Azure-erőforrások kezelése vagy alkalmazásokhoz hozzáférést a. További információkért lásd: [létrehozása az Active Directory-alkalmazás és szolgáltatás egyszerű](../../resource-group-create-service-principal-portal.md).
 
 #### <a name="tags"></a>Címkék
 

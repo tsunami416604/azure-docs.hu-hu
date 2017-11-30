@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/28/2017
 ms.author: kirillg
-ms.openlocfilehash: 86b43b312bf7ce52ab75855424cc5db473245159
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 16cdd2780ae090a5388b3d2e6e4ab52a24f8116a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Egy Azure Cosmos DB fiók kezelése
 Ismerje meg, globális konzisztenciahiba, kulcsok dolgozni, és az Azure portálon Azure Cosmos DB-fiók törlése.
@@ -33,10 +33,10 @@ A jobb oldali konzisztenciaszint kiválasztása attól függ, hogy az alkalmazá
 3. Az a **alapértelmezett konzisztencia** lapon válassza ki az új konzisztencia szintet, majd kattintson **mentése**.
     ![Alapértelmezett konzisztencia munkamenet][5]
 
-## <a id="keys"></a>Megtekintése, másolása és tárelérési kulcsok újragenerálása
-Egy Azure Cosmos DB fiók létrehozásakor a szolgáltatás két fő kulcsot, amely az Azure Cosmos DB fiók elérésekor hitelesítéshez használt állít elő. Két tárelérési kulcsok megadásával Azure Cosmos DB teszi Azure Cosmos DB fiókjába megszakítás nélkül a kulcsok újragenerálását. 
+## <a id="keys"></a>Megtekintése, másolása és újragenerálása hívóbetűk és jelszavak
+Egy Azure Cosmos DB fiók létrehozásakor a szolgáltatás hoz létre két fő kulcsot (vagy két MongoDB API fiókok jelszavait), amely használható a hitelesítéshez az Azure Cosmos DB fiók elérésekor. Két tárelérési kulcsok megadásával Azure Cosmos DB teszi Azure Cosmos DB fiókjába megszakítás nélkül a kulcsok újragenerálását. 
 
-Az a [Azure-portálon](https://portal.azure.com/), hozzáférés a **kulcsok** lapot a erőforrás menüből a **Azure Cosmos DB fiók** megtekintése, másolása és újragenerálása a tárelérési kulcsok, amelyek használt lap a Azure Cosmos DB-fiók eléréséhez.
+Az a [Azure-portálon](https://portal.azure.com/), hozzáférés a **kulcsok** lapot a erőforrás menüből a **Azure Cosmos DB fiók** megtekintése, másolása és újragenerálása a tárelérési kulcsok, amelyek használt lap a Azure Cosmos DB-fiók eléréséhez. A MongoDB API fiókok hozzáférni a **kapcsolati karakterlánc** lap megtekintése, másolása és újragenerálása a jelszavakat, amely segítségével fér hozzá a fiókjához való erőforrás menüből.
 
 ![Az Azure portál képernyőképe, a kulcsok lap](./media/manage-account/keys.png)
 
@@ -47,25 +47,25 @@ Az a [Azure-portálon](https://portal.azure.com/), hozzáférés a **kulcsok** l
 
 Csak olvasható kulcsok ezen az oldalon is elérhetők. Olvasás és az olvasási műveletek kicsit hoz létre, törölhet, illetve cserél nem lekérdezések.
 
-### <a name="copy-an-access-key-in-the-azure-portal"></a>Az elérési kulcs másolása az Azure-portálon
-Az a **kulcsok** lapján kattintson a **másolási** kíván másolni a kulcs jobbra látható gombra.
+### <a name="copy-an-access-key-or-password-in-the-azure-portal"></a>Hozzáférési kulcs vagy jelszó másolása az Azure-portálon
+A a **kulcsok** lap (vagy **kapcsolati karakterlánc** lap MongoDB API-fiókok), kattintson a **másolási** kulcs vagy jelszó kíván másolni a jobbra látható gombra.
 
 ![Megtekintése és másolása az Azure portál, kulcsok lapján hívóbetű](./media/manage-account/copykeys.png)
 
-### <a name="regenerate-access-keys"></a>Tárelérési kulcsok újragenerálása
-Módosítsa a tárelérési kulcsok rendszeres időközönként a Azure Cosmos DB fiókját biztonságosabbá a kapcsolatokat. Engedélyezi, hogy az egyik kulcs, amíg a többi hozzáférési kulcs újragenerálása Azure Cosmos DB fiókhoz kapcsolatok karbantartása két tárelérési kulcsok vannak hozzárendelve.
+### <a name="regenerate-access-keys-and-passwords"></a>Tárelérési kulcsok és a jelszavak újbóli létrehozása
+Módosítania kell a tárelérési kulcsok (és MongoDB API fiókok jelszavait) Azure Cosmos DB fiókjába rendszeres időközönként a kapcsolatok nagyobb biztonsága érdekében. Engedélyezi, hogy az egyik kulcs, amíg a többi hozzáférési kulcs újragenerálása Azure Cosmos DB fiókhoz kapcsolatok karbantartása két hozzáférési kulcsok vagy jelszavak gyűjtésére van hozzárendelve.
 
 > [!WARNING]
 > A tárelérési kulcsok újragenerálása hatással van az aktuális kulcs függő alkalmazások. A Azure Cosmos DB-fiók eléréséhez a hozzáférési kulcsot használó összes ügyfelet frissíteni kell az új kulcs használatához.
 > 
 > 
 
-Ha alkalmazások vagy az Azure Cosmos DB fiókkal felhőszolgáltatások, elvesznek a kapcsolatok Ha újragenerálja a kulcsokat, kivéve, ha rotálja a kulcsokat. A működés közbeni a kulcsok részt vevő folyamat lépései.
+Ha alkalmazások vagy az Azure Cosmos DB fiókkal felhőszolgáltatások, elvesznek a kapcsolatok Ha újragenerálja a kulcsokat, kivéve, ha rotálja a kulcsokat. A működés közbeni a kulcsok vagy jelszavak gyűjtésére részt vevő folyamat lépései.
 
 1. Frissítse az alkalmazás kódjában hivatkozhasson rá az Azure Cosmos DB fiók másodlagos elérési kulcsát a hozzáférési kulcsot.
 2. Újragenerálja az elsődleges elérési kulcsot az Azure Cosmos DB fiók. Az a [Azure-portálon](https://portal.azure.com/), Azure Cosmos DB-fiókját.
-3. Az a **Azure Cosmos DB fiók** kattintson **kulcsok**.
-4. Az a **kulcsok** lapon, az újbóli létrehozás gombra, majd kattintson a **Ok** annak ellenőrzéséhez, hogy szeretné-e hozzon létre egy új kulcsot.
+3. Az a **Azure Cosmos DB fiók** kattintson **kulcsok** (vagy **kapcsolati karakterlánc** a MongoDB fiókok **).
+4. Az a **kulcsok**/**kapcsolati karakterlánc** lapon, az újbóli létrehozás gombra, majd kattintson a **Ok** annak ellenőrzéséhez, hogy szeretné-e hozzon létre egy új kulcsot.
     ![Tárelérési kulcsok újragenerálása](./media/manage-account/regenerate-keys.png)
 5. Miután ellenőrizte, hogy az új kulcs használható (körülbelül 5 percig újbóli létrehozását követően), frissítse az alkalmazás kódjában hivatkozhasson rá az új elsődleges elérési kulcsát a hozzáférési kulcsot.
 6. Generálja újra a másodlagos elérési kulcsot.
@@ -77,11 +77,11 @@ Ha alkalmazások vagy az Azure Cosmos DB fiókkal felhőszolgáltatások, elvesz
 > 
 > 
 
-## <a name="get-the--connection-string"></a>A kapcsolati karakterlánc beolvasása
+## <a name="get-the-connection-string"></a>A kapcsolati karakterlánc beolvasása
 A kapcsolati karakterlánc lekéréséhez, tegye a következőket: 
 
 1. Az a [Azure-portálon](https://portal.azure.com), Azure Cosmos DB-fiókját.
-2. Az erőforrás menüjében kattintson **kulcsok**.
+2. Az erőforrás menüjében kattintson **kulcsok** (vagy **kapcsolati karakterlánc** MongoDB API-fiókok).
 3. Kattintson a **másolási** megjelenítő gombra a **elsődleges kapcsolódási karakterlánc** vagy **másodlagos kapcsolati karakterlánc** mezőbe. 
 
 A kapcsolati karakterláncot a rendszer használata esetén a [Azure Cosmos DB adatbázis áttelepítési eszköz](import-data.md), az adatbázisnév hozzáfűzése a kapcsolati karakterlánc végén. `AccountEndpoint=< >;AccountKey=< >;Database=< >`.

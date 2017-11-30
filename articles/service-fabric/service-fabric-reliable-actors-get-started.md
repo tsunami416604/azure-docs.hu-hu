@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: vturecek
-ms.openlocfilehash: eb076c30eda63c37a8b555d40d5903cbbf0d426a
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: ea17cf744779f390fe4b3f4049deb0c1ad985024
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Bevezetés a Reliable Actors
 > [!div class="op_single_selector"]
@@ -101,7 +101,7 @@ Az aktor hívó egyszerű Konzolalkalmazás létrehozása.
     ![Adja hozzá az új projekt párbeszédpanelje][6]    
     
     > [!NOTE]
-    > A Konzolalkalmazás nincs app Service Fabric ügyfélként általában használhatja típusú, de egy kényelmes példa Hibakeresés és tesztelése a helyi Service Fabric emulator használatával teszi.
+    > A Konzolalkalmazás nincs az alkalmazás általában használja a Service Fabric ügyfélként típusa, de egy kényelmes példa Hibakeresés és tesztelése a helyi Service Fabric-fürt használatával teszi.
 
 3. A konzolalkalmazást kell lennie egy 64 bites alkalmazás, a felület projekt és más függőségek kompatibilitás megőrzése érdekében.  A Megoldáskezelőben kattintson a jobb gombbal a **ActorClient** projektre, és kattintson a **tulajdonságok**.  Az a **Build** lapon **Platform cél** való **x64**.
     

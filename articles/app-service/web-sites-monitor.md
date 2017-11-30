@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2016
+ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 283428c603cc73d23f0afa94670a23dbb45068d5
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 58ccdba6f01cfb7de72f28f185102bf7f618eab4
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Útmutató: az Azure App Service-alkalmazások figyelése
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) a beépített felügyeleti funkciókat biztosítja a [Azure-portálon](https://portal.azure.com).
-Ez lehetővé teszi a tekintse át **kvóták** és **metrikák** egy alkalmazást, valamint az App Service-csomag, beállítása **riasztások** és még **skálázás** alapján automatikusan metrikákat.
+Az Azure-portál lehetővé teszi a tekintse át **kvóták** és **metrikák** egy alkalmazást, valamint az App Service-csomag, beállítása **riasztások** és még **skálázás**  a metrikák alapján automatikusan.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -37,7 +37,7 @@ Ha az alkalmazás a egy **alapvető**, **szabványos** vagy **prémium** tervez,
 **Kvóták** a **szabad** vagy **megosztott** -alkalmazásokat:
 
 * **CPU(Short)**
-  * Az alkalmazás egy 5 perces időszakban engedélyezett CPU mennyisége. Ez a kvóta 5 percenként alaphelyzetbe állítása.
+  * Az alkalmazás egy 5 perces időszakban engedélyezett CPU mennyisége. Ez a kvóta alaphelyzetbe állítása, ötpercenként.
 * **CPU(Day)**
   * Ehhez az alkalmazáshoz egy napon belül engedélyezett Processzor teljes mennyisége. Ez a kvóta alaphelyzetbe állítja az UTC idő szerint éjfélkor 24 óránként.
 * **Memória**
@@ -48,12 +48,12 @@ Ha az alkalmazás a egy **alapvető**, **szabványos** vagy **prémium** tervez,
 * **Fájlrendszer**
   * Teljes méretű tárolóhely.
 
-A futó alkalmazások alkalmazandó csak kvóta **alapvető**, **szabványos** és **prémium** tervek van **fájlrendszer**.
+A futó alkalmazások alkalmazandó csak kvóta **alapvető**, **szabványos**, és **prémium** tervek van **fájlrendszer**.
 
 További információ a konkrét kvóták, korlátok és funkciók érhetők el a másik App Service termékváltozatok itt található: [Azure előfizetés szolgáltatásra vonatkozó korlátozások](../azure-subscription-service-limits.md#app-service-limits)
 
 #### <a name="quota-enforcement"></a>Kvóta kényszerítése
-Ha az alkalmazás a használatát meghaladja a **Processzor (rövid)**, **Processzor (nap)**, vagy **sávszélesség** kvóta majd az alkalmazás leáll, amíg a kvóta alaphelyzetbe állítja. Ebben az időszakban az összes bejövő kérelmek eredményezi egy **HTTP 403**.
+Ha egy alkalmazás meghaladja a **Processzor (rövid)**, **Processzor (nap)**, vagy **sávszélesség** kvóta majd az alkalmazás leáll, amíg a kvóta alaphelyzetbe állítja. Ebben az időszakban az összes bejövő kérelmek eredményezi egy **HTTP 403**.
 ![][http403]
 
 Ha az alkalmazás **memória** kvóta túllépése, majd az alkalmazás újraindítása.
@@ -125,14 +125,14 @@ Nincsenek két metrikákat, amelyek CPU-használat tükrözik. **CPU-idő** és 
 
 **CPU-idő** akkor hasznos, az üzemeltetett alkalmazások **szabad** vagy **megosztott** tervek, mert azok közül az alkalmazás által használt CPU percben értendő.
 
-**Processzor** akkor hasznos, az üzemeltetett alkalmazások **alapvető**, **szabványos** és **prémium** tervek, mert azok kiterjeszthető, és ez a metrika jól jelzi az általános használat minden példányára.
+**Processzor** akkor hasznos, az üzemeltetett alkalmazások **alapvető**, **szabványos**, és **prémium** tervek, mert azok kiterjeszthető. Processzor jól jelzi az általános használat csomagbeli összes példányra.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Metrikák Granularitási és az adatmegőrzési házirend
 Az alkalmazás és az app service-csomag metrikáinak naplózza, és a szolgáltatás a következő Granularitás van, és az adatmegőrzési összesítve:
 
-* **Perc** granularitási metrikák megmaradnak a **48 óra**
+* **Perc** granularitási metrikák megmaradnak a **30 üzemideje (óra)**
 * **Óra** granularitási metrikák megmaradnak a **30 napban**
-* **Nap** granularitási metrikák megmaradnak a **90 nap**
+* **Nap** granularitási metrikák megmaradnak a **30 napban**
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Ellenőrzése kvóták és metrikákat az Azure-portálon.
 Megtekintheti a különböző állapotának **kvóták** és **metrikák** érintő az alkalmazás a [Azure-portálon](https://portal.azure.com).
@@ -149,7 +149,7 @@ Itt módosíthatja a (3) **időtartománynak**, (4) **diagramtípus**, és (5) *
 ## <a name="alerts-and-autoscale"></a>Riasztások és automatikus skálázás
 Az alkalmazás vagy az App Service-csomag metrikáinak is csatlakoztatnia a riasztásokat. További információkért lásd: [riasztási értesítéseket](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-Alapszintű, standard vagy prémium szintű App Service-csomagok támogatása az üzemeltetett App Service-alkalmazásokhoz **automatikus skálázás**. Ez lehetővé teszi szabályokat, amelyek az App Service-csomag metrikái figyelése és növelheti vagy csökkentheti a példányok száma, így további erőforrások, igény szerint konfigurálhatja vagy mentése pénz, ha az alkalmazás túlzott kiépítéséhez. Automatikus méretezésének Itt többet is megtudhat: [méretezési hogyan](../monitoring-and-diagnostics/insights-how-to-scale.md) és itt [ajánlott eljárások az Azure a figyelő automatikus skálázás](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
+Alapszintű, standard vagy prémium szintű App Service-csomagok támogatása az üzemeltetett App Service-alkalmazásokhoz **automatikus skálázás**. Automatikus skálázás lehetővé teszi az App Service-csomag metrikái figyelő szabályok konfigurálását. Szabályok növelheti vagy csökkentheti a példányok száma, így további erőforrások, igény szerint. Szabályok segítségével költségtakarékosabb munkavégzésben, amikor az alkalmazás túlzott ki van építve. Automatikus méretezésének Itt többet is megtudhat: [méretezési hogyan](../monitoring-and-diagnostics/insights-how-to-scale.md) és itt [ajánlott eljárások az Azure a figyelő automatikus skálázás](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 
 > [!NOTE]
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.

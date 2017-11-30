@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: a03fb4f202bddb6454f703c998e95abf13d14fff
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 5c7c15eacdf43d3623000ed228adfaeb55803c8f
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -39,6 +39,17 @@ Ha problémát tapasztal telepítése során, a telepítő naplófájlok itt:
 /tmp/amlinstaller/logs/*
 ```
 A zip-be ezeket a könyvtárakat tartalmát, és elküldi a számunkra a diagnosztikai.
+
+### <a name="app-update"></a>Alkalmazás frissítése 
+#### <a name="no-update-notification-on-windows-desktop"></a>A Windows asztalon nincs frissítési értesítés 
+A probléma kiiktatása a későbbi frissítés. Kerülő megoldás időközben lehet elindítani az alkalmazást a a tálcán van rögzítve parancsikonnal elkerülése érdekében. Ehelyett az alkalmazás elindítása használatával a Start menüből vagy a Start-keresősávban, illetve a helyi az asztalon (ha van). 
+
+#### <a name="no-update-notification-on-an-ubuntu-data-sciece-virtual-machine-dsvm"></a>Nincs frissítés értesítési a egy Ubuntu adatok Sciece virtuális gép (DSVM)
+A következő lépésekkel töltse le a legfrissebb alkalmazás:   
+   - a mappa \Users\AppData\Local\amlworkbench eltávolítása
+   - Távolítsa el a parancsfájl`c:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
+   - a fenti szkript indító parancsikon eltávolítása
+   - telepítés szabályszerűen használatával [https://aka.ms/azureml-wb-msi](https://aka.ms/azureml-wb-msi)
 
 ### <a name="workbench-desktop-app"></a>Egy asztali alkalmazás munkaterület
 Ha problémája van bejelentkezve, vagy ha a munkaterületet üzemeltető asztali összeomlik, a naplófájlok itt található:

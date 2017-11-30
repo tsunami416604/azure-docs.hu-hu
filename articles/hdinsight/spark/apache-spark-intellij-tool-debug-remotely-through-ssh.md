@@ -17,11 +17,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: jejiang
-ms.openlocfilehash: 6f9259ae5e8f382c6714d468004624c2cbcbbc33
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 87cda776195dc93a35c6e978b18e823bf54c9ffb
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>A Spark-alkalmazások hibakeresését helyileg vagy távolról az Azure-eszközkészlet a HDInsight-fürtök az IntelliJ SSH-n keresztül
 
@@ -121,7 +121,7 @@ Ez a hiba megoldásához [töltse le a végrehajtható fájl](http://public-repo
    
    ![Távoli futási gomb](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run.png)
 
-7. Ha nem szeretné a futó naplójában, a jobb oldali panelen, kattintson a **Disconnect** gombra. Azonban továbbra is fut a háttérkiszolgálón, és az eredmény megjelenik a bal oldali panelen.
+7. Kattintson a **Disconnect** gomb, amellyel a küldésének naplók nem a bal oldali panelen jelennek meg. Azonban továbbra is fut. a háttérkiszolgálón.
 
    ![Távoli futási gomb](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
 

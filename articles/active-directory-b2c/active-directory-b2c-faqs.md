@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 45ae4ab4c832e7537e6ee78c32603734fa64ad86
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 397c0c610c05e65d06a6319672446a6e4c9c445a
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ezen a lapon az Azure Active Directory (Azure AD) B2C kapcsolatos gyakori kérdésekre ad választ. Tartsa biztonsági frissítések keresése.
@@ -75,13 +75,13 @@ Az e-mailek aláírás a B2C-bérlő nevét tartalmazza, amelyet a B2C-bérlő k
 Jelenleg nincs semmilyen módon nem lehet módosítani a "származó:" az e-mailben található. Szavazhatnak [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) érdekli testreszabása a megerősítési e-mailt törzsét.
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Hogyan tudom áttelepíthetők a meglévő felhasználóneveket, jelszavakat és profilokat az adatbázis Azure AD B2C?
-Az Azure AD Graph API-t használhatja az áttelepítési eszköz írni. Tekintse meg a [Graph API-mintában](active-directory-b2c-devquickstarts-graph-dotnet.md) részleteiről.
+Az Azure AD Graph API-t használhatja az áttelepítési eszköz írni. Tekintse meg a [áttelepítési útmutatója](active-directory-b2c-user-migration.md) részleteiről.
 
 ### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Milyen jelszóházirend az Azure AD B2C helyi fiókok esetében használatos?
 A helyi felhasználói fiókok Azure AD B2C jelszóházirend az Azure AD a házirend alapul. Az Azure AD B2C-előfizetés, a regisztráció vagy bejelentkezés és a jelszó alaphelyzetbe állítása házirendeket használ a "erős" jelszó erőssége, és nem jár le a jelszavakat. Olvassa el a [az Azure AD-jelszóházirendet](https://msdn.microsoft.com/library/azure/jj943764.aspx) további részleteket.
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Az Azure AD Connect használatával telepítse át a felhasználói identitásokat a helyszíni Active Directory Azure AD B2C tárolt?
-Nem, az Azure AD Connect nem célja, hogy az Azure AD B2C dolgozni. Érdemes lehet a [Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) felhasználói áttelepítés.
+Nem, az Azure AD Connect nem célja, hogy az Azure AD B2C dolgozni. Érdemes lehet a [Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) felhasználói áttelepítés.  Tekintse meg a [áttelepítési útmutatója](active-directory-b2c-user-migration.md) részleteiről.
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Saját alkalmazás megnyitása is az Azure AD B2C lapok iFrame belül?
 Nem, biztonsági okokból az Azure AD B2C-lap nem nyitható iFrame belül.  A szolgáltatás IFRAME letiltja a böngésző kommunikál.  A biztonsági Közösség általános és a OAUTH2 specifikációját, javasoljuk, szemben az identitással kapcsolatos műveletet, kattintson az-emelési kockázata miatt IFRAME használatával.

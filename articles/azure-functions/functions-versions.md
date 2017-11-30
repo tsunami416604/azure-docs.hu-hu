@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Functions futásidejű verziók bemutatásához"
-description: "Az Azure Functions a futtatókörnyezet több verzióit támogatja. Útmutató: Adja meg az Azure szolgáltatásban futtatott futásidejű verzióját függvény alkalmazást."
+description: "Az Azure Functions a futtatókörnyezet több verzióit támogatja. Megtudhatja, hogyan adja meg egy Azure-ban üzemeltetett függvény app futásidejű verzióját."
 services: functions
 documentationcenter: 
 author: ggailey777
@@ -10,13 +10,13 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 063232e40b30d03b0ee8b087a602fed0fee3be0a
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 588437af80ecf60b7c4b24dbf6bccc67fc33da7a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Az Azure Functions futásidejű verziók bemutatásához
 
@@ -44,9 +44,11 @@ További információkért lásd: [támogatott nyelv](supported-languages.md).
 
 ### <a name="bindings"></a>Kötések 
 
-A futásidejű 1.x támogatja már nem érhetők el 2.x kísérleti kötéseket. Kötések támogatási és egyéb működési hiányosságait 2.x kapcsolatos információkért lásd: [ismert problémák futtatókörnyezet 2.0](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues).
-
 Futásidejű 2.x készíthet egyéni [bővítmények kötés](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview). A bővítési modellt használó beépített kötések csak találhatók 2.x; az első között van a [Microsoft Graph kötések](functions-bindings-microsoft-graph.md).
+
+[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+Kötések támogatási és egyéb működési hiányosságait 2.x kapcsolatban további információkért lásd: [ismert problémák futtatókörnyezet 2.0](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues).
 
 ### <a name="cross-platform-development"></a>Platformfüggetlen fejlesztésekhez
 

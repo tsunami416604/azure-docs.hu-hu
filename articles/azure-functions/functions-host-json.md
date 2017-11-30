@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: tdykstra
-ms.openlocfilehash: 63e63f69cb6463adcca480eccf1cc485574d9eff
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 522d0590595b0fc0fef503599f1677658f223bd8
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>az Azure Functions Host.JSON referenciája
 
@@ -141,7 +141,7 @@ Konfigurációs beállításainak [Eseményközpont eseményindítók és köté
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>Funkciók
+## <a name="functions"></a>függvény
 
 A feladat gazdagépen futtatandó funkciók listáját.  Üres tömb azt jelenti, hogy minden függvények futtatása.  Készült, csak ha [helyileg futó](functions-run-local.md). Függvény alkalmazásokban, használja a *function.json* `disabled` helyett ezt a tulajdonságot a *host.json*.
 
@@ -165,23 +165,7 @@ Azt jelzi, hogy az időkorlát tartama az összes funkciót. A felhasználási c
 
 Konfigurációs beállításainak [http eseményindítók és kötések](functions-bindings-http-webhook.md).
 
-```json
-{
-    "http": {
-        "routePrefix": "api",
-        "maxOutstandingRequests": 20,
-        "maxConcurrentRequests": 
-        "dynamicThrottlesEnabled": false
-    }
-}
-```
-
-|Tulajdonság  |Alapértelmezett | Leírás |
-|---------|---------|---------| 
-|routePrefix|api-t|Az útvonal előtagja, amely az összes útvonal vonatkozik. Üres karakterlánc segítségével távolítsa el az alapértelmezett előtag. |
-|maxOutstandingRequests|-1|Egy adott időpontban (-1 érték azt jelenti, hogy unbounded) vissza lesz tartva függőben lévő kérelmek maximális száma. A korlát magában foglalja a kérelmek várólistára kerülnek, de nincs elindítva, valamint minden folyamatban lévő végrehajtások végrehajtása. Ezt a határt keresztül bejövő minden kérelmet elutasították 429-es jelű "Túl elfoglalt" választ. Hívóknak adott válasz segítségével időalapú újrapróbálkozási stratégiát alkalmaz. Ez a beállítás vezérli csak queuing, amely akkor fordul elő, a feladat állomás végrehajtási elérési útban. Más várólisták, például az ASP.NET-kérelmek várólistájának nem érinti ez a beállítás. |
-|maxConcurrentRequests|-1|A maximális száma párhuzamos (-1 érték azt jelenti, hogy unbounded) végrehajtott HTTP-funkciókat. Beállíthat például korlátozni, ha a HTTP-funkciók túl sok rendszererőforrásokat használhat, ha nagy a feldolgozási. Vagy ha a funkciók kimenő kéréseket a külső szolgáltatáshoz, e hívások kell sebessége korlátozott lehet.|
-|dynamicThrottlesEnabled|hamis|A kérelem feldolgozása folyamat rendszeres időnként ellenőrzik a rendszerteljesítmény-számlálók okoz. Kapcsolatok száma, a szálak, a folyamatok, a memória és a cpu tartalmazzák. Ha a számlálók bármelyike (80 %-át) beépített küszöböt, kérelmek azért lettek elutasítva 429-es jelű "Túl elfoglalt" választ mindaddig, amíg a counter(s) normál szintek való visszatéréshez.|
+[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
 ## <a name="id"></a>id
 

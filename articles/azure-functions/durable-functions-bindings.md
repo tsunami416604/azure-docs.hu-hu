@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 01016294c3ef6fd904a7582e4f9c16ef19330a20
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 02c3e0e919b556bc6d4bb41d9c66b4a6d29bdd68
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Kötések tartós függvények (az Azure Functions)
 
@@ -55,7 +55,7 @@ Belső eseményindító kötés kérdezze le az alapértelmezett tárfiókot, a 
 Íme néhány a vezénylési eseményindító kapcsolatos megjegyzések:
 
 * **Single-threading** -egy egyetlen dispatcher száltól használt összes orchestrator függvény végrehajtása egyetlen példányán. Ezért fontos győződjön meg arról, hogy az orchestrator funkciókódot hatékony, és nem hajtja végre az összes i/o. Fontos továbbá győződjön meg arról, hogy a szál nem kivéve, ha a tartós funkciók-specifikus feladat típusok várakozó aszinkron munka.
-* **Poising üzenetének** -nem az elhalt üzenet támogatja a vezénylési eseményindítók.
+* **Poison-üzenetek kezelésének** -nem az elhalt üzenet támogatja a vezénylési eseményindítók.
 * **Üzenet-láthatósági** -Vezénylési eseményindító üzenetek várólistából kivéve és konfigurálható idejére láthatatlan tartani. Látható-e az üzenetek automatikusan megújítják mindaddig, amíg a függvény alkalmazás fut, és megfelelő.
 * **Visszatérési értékek** -visszatérési értékek JSON formátumúvá szerializált és maradnak meg a vezénylési előzménytábla Azure Table storage-ban. A visszatérési érték lehet lekérdezni a vezénylési ügyfél kötést, a későbbiekben olvashat.
 

@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 10/04/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4e61c99028a2b67bd9188c239bc95dba0625b638
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 0fa8e3630610913d909a75bf76236d120c8f1a2b
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>A HDInsight Hadoop határozza meg a munkafolyamatok és feladatok időalapú Oozie-koordinátor használata
 Ebből a cikkből megtudhatja, hogyan adhat meg a munkafolyamatok és a koordinátor, és hogyan indítható el, a koordinátor feladatok, ideje alapján. Hasznos lehet, hogy a [és a HDInsight együttes használata Oozie] [ hdinsight-use-oozie] Ez a cikk olvasása előtt. Oozie, mellett is ütemezheti az Azure Data Factory használatával feladatok. Azure Data Factory kapcsolatban [használja a Pig és a Data Factory Hive](../data-factory/transform-data.md).
@@ -82,7 +82,8 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
     <tr><td>Az Azure storage-fiók neve</td><td>$storageAccountName</td><td></td><td>Egy Azure Storage-fiók érhető el a HDInsight-fürthöz. A jelen oktatóanyag esetében használja az alapértelmezett tárfiókot, amely a fürt létesítése során megadott.</td></tr>
     <tr><td>Az Azure Blob-tároló neve</td><td>$containerName</td><td></td><td>Ebben a példában az Azure Blob storage tárolót a HDInsight fürt alapértelmezett fájlrendszer használt használja. Alapértelmezés szerint rendelkezik a neve megegyezik a HDInsight-fürthöz.</td></tr>
     </table>
-* **Azure SQL-adatbázis**. Konfigurálnia kell egy tűzfalszabályt a SQL Database-kiszolgálóhoz való hozzáférést a munkaállomáson. Egy Azure SQL-adatbázis létrehozása, és a tűzfalon konfigurálásával kapcsolatos útmutatásért lásd: [használatának első Azure SQL adatbázis] [sqldatabase-get-started]. A cikkben egy Windows PowerShell-parancsfájlt, amelyekre szüksége van az oktatóanyag az Azure SQL-adatbázistáblában szereplő létrehozásához.
+
+* **Azure SQL-adatbázis**. Konfigurálnia kell egy tűzfalszabályt a SQL Database-kiszolgálóhoz való hozzáférést a munkaállomáson. Egy Azure SQL-adatbázis létrehozása, és a tűzfalon konfigurálásával kapcsolatos útmutatásért lásd: [Azure SQL-adatbázis használatának első][sqldatabase-get-started]. A cikkben egy Windows PowerShell-parancsfájlt, amelyekre szüksége van az oktatóanyag az Azure SQL-adatbázistáblában szereplő létrehozásához.
 
     <table border = "1">
     <tr><th>SQL-adatbázis tulajdonság</th><th>A Windows PowerShell-változó neve</th><th>Érték</th><th>Leírás</th></tr>

@@ -15,14 +15,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: ac0399867e0cdab1825022c4ed73ce003cc8c7e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d8261a22f5ea9ce61bcdc79d24a6c054597039b
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Használja az Azure Functions egy Azure SQL adatbázishoz való kapcsolódáshoz
-Ez a témakör bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely egy Azure SQL-adatbázis egy tábla sorainak a szükségtelenné vált az Azure Functions használatával. Az új C# függvény az Azure-portálon előre definiált időzítő eseményindító sablon alapján jön létre. Ez a forgatókönyv támogatása érdekében is meg kell adni egy adatbázis-kapcsolati karakterláncot a függvény alkalmazás-beállításként. Ez a forgatókönyv használ egy tömeges művelet az adatbázison. Ahhoz, hogy a Mobile Apps-tábla egyedi CRUD műveletek feldolgozásához funkció Ehelyett használjon [Mobile Apps kötések](functions-bindings-mobile-apps.md).
+Ez a témakör bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely egy Azure SQL-adatbázis egy tábla sorainak a szükségtelenné vált az Azure Functions használatával. Az új C# függvény az Azure-portálon előre definiált időzítő eseményindító sablon alapján jön létre. Ez a forgatókönyv támogatása érdekében is meg kell adni egy adatbázis-kapcsolati karakterláncot, a függvény alkalmazás Alkalmazásbeállítás. Ez a forgatókönyv használ egy tömeges művelet az adatbázison. 
+
+Szeretné, hogy a függvény folyamat egyéni létrehozás, Olvasás, frissítés és Törlés (CRUD) operations a Mobile Apps tábla, Ehelyett használjon [Mobile Apps kötések](functions-bindings-mobile-apps.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,7 +61,7 @@ A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban 
     | Beállítás       | Ajánlott érték | Leírás             | 
     | ------------ | ------------------ | --------------------- | 
     | **Name (Név)**  |  sqldb_connection  | A tárolt kapcsolati karakterlánc, a függvény kódban elérésére használhatók.    |
-    | **Érték** | Másolt karakterlánc  | A kapcsolati karakterlánc túli másolta az előző szakaszban. |
+    | **Érték** | Másolt karakterlánc  | Illessze be a az előző szakaszban kimásolt kapcsolati karakterláncot, és cserélje le `{your_username}` és `{your_password}` helyőrzőt valódi értékek. |
     | **Típus** | SQL Database | Az alapértelmezett SQL-adatbázis-kapcsolat használata. |   
 
 3. Kattintson a **Save** (Mentés) gombra.
@@ -84,7 +86,7 @@ Most a C# függvény kódot, amely összeköti az SQL-adatbázis is hozzáadhat.
     using System.Threading.Tasks;
     ```
 
-4. Cserélje le a meglévő **futtatása** függvény a következő kóddal:
+4. Cserélje le a meglévő `Run` függvény a következő kóddal:
     ```cs
     public static async Task Run(TimerInfo myTimer, TraceWriter log)
     {
@@ -105,7 +107,7 @@ Most a C# függvény kódot, amely összeköti az SQL-adatbázis is hozzáadhat.
     }
     ```
 
-    Ez a minta parancs frissíti a **állapot** oszlop a szállítási dátum alapján. Azt frissítenie kell a 32 sornyi adatot.
+    Ez a minta parancs frissíti a `Status` oszlop a szállítási dátum alapján. Azt frissítenie kell a 32 sornyi adatot.
 
 5. Kattintson a **mentése**, tekintse meg a **naplók** windows a következő függvény végrehajtása, majd jegyezze fel a frissített sorok száma a **SalesOrderHeader** tábla.
 
