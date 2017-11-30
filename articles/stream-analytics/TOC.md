@@ -20,7 +20,7 @@
 
 ## Feladatok létrehozása
 ### [Bemenetek létrehozása](stream-analytics-define-inputs.md)
-### [Minta beviteli adatok](stream-analytics-sample-data-input.md)
+### [Tesztlekérdezések és minta beviteli adatok](stream-analytics-sample-data-input.md)
 ### [Gyakori lekérdezési minták](stream-analytics-stream-analytics-query-patterns.md)
 ### [Ablakfüggvények](stream-analytics-window-functions.md)
 

@@ -39,10 +39,12 @@
           href: how-to-use-tdsp-in-azure-ml.md
         - name: Barangolás és együttműködés
           href: roaming-and-collaboration.md
-    - name: A Visual Studio Code Tools for AI használata
-      href: quickstart-visual-studio-tools.md
-    - name: Az Azure IoT Edge AI eszközkészlet használata
-      href: use-azure-iot-edge-ai-toolkit.md
+    - name: IDE-bővítmények
+      items:
+        - name: A Visual Studio Tools for AI használata
+          href: quickstart-visual-studio-tools.md
+        - name: A Visual Studio Code Tools for AI használata
+          href: quickstart-visual-studio-code-tools.md
     - name: A számítási környezet konfigurálása
       items:
         - name: Kísérletezés konfigurálása
@@ -90,8 +92,6 @@
           href: how-to-scale-clusters.md
         - name: Webszolgáltatás üzembe helyezése
           href: model-management-service-deploy.md
-        - name: Üzembe helyezés IoT Edge-eszközön
-          href: deploy-to-iot-edge-device.md
         - name: Webszolgáltatás felhasználása
           href: model-management-consumption.md
         - name: Modelladatok gyűjtése
@@ -156,6 +156,8 @@
           href: experimentation-service-configuration-reference.md
         - name: API naplózása
           href: reference-logging-api.md
+        - name: Kísérletezési szolgáltatás sablonja
+          href: experimentation-service-template.md
     - name: Modellkezelés
       items:
         - name: Modellkezelési API
