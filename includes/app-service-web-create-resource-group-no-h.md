@@ -1,4 +1,4 @@
-A Cloud Shellben hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal.
+A Cloud Shellben hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal.
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 

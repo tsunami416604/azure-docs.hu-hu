@@ -12,6 +12,6 @@ Ha még nem tette meg, vegyen fel függvényalkalmazásokat a kedvencek közé a
 
 3. Zárja be a menüt, majd a Függvények ikon megtekintéséhez görgessen le a képernyő aljára. Erre az ikonra kattintva megtekintheti a függvényalkalmazásainak listáját. Kattintson a függvényalkalmazásra az alkalmazásban található függvények használatához. 
  
-    ![](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
+    ![A Kedvencek függvény alkalmazások](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
  
      
