@@ -7,17 +7,16 @@ author: cephalin
 manager: erikre
 ms.service: app-service-web
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 07/21/2017
+ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 86ee5b02fe2a9f34db651f6446398d366b24b5d2
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 3496b00960ad1fe1213f2005d2173543988b4ff9
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>Az Azure-ban a PHP és a MySQL webalkalmazás létrehozása
 
@@ -156,7 +155,7 @@ Ebben a lépésben a MySQL-adatbázis létrehozása [MySQL (előzetes verzió) a
 
 ### <a name="create-a-mysql-server"></a>A MySQL-kiszolgáló létrehozása
 
-A kiszolgáló létrehozása az Azure-adatbázisban a MySQL (előzetes verzió) a [az mysql kiszolgáló létrehozni](/cli/azure/mysql/server#create) parancsot.
+A kiszolgáló létrehozása az Azure-adatbázisban a MySQL (előzetes verzió) a [az mysql kiszolgáló létrehozni](/cli/azure/mysql/server#az_mysql_server_create) parancsot.
 
 Az alábbi parancs helyettesítse a MySQL-kiszolgáló nevét, ahol megjelenik a  _&lt;mysql_server_name >_ helyőrző (érvényes karakterek: `a-z`, `0-9`, és `-`). Ez a név része a MySQL-kiszolgáló állomásneve (`<mysql_server_name>.database.windows.net`), kell lennie a globálisan egyedi.
 
@@ -181,7 +180,7 @@ A MySQL-kiszolgáló létrehozása esetén, az Azure parancssori felület kapcso
 
 ### <a name="configure-server-firewall"></a>Kiszolgáló tűzfal konfigurálása
 
-Hozzon létre egy tűzfalszabályt az MySQL-kiszolgálót, hogy lehetővé tegyék az ügyfélkapcsolatokat használatával a [az mysql-tűzfalszabály létrehozása](/cli/azure/mysql/server/firewall-rule#create) parancsot.
+Hozzon létre egy tűzfalszabályt az MySQL-kiszolgálót, hogy lehetővé tegyék az ügyfélkapcsolatokat használatával a [az mysql-tűzfalszabály létrehozása](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) parancsot.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -332,7 +331,7 @@ Ebben a lépésben az Azure App Service PHP MySQL-kompatibilis alkalmazást tele
 
 ### <a name="configure-database-settings"></a>Adatbázis-beállítások konfigurálása
 
-Az App Service-ben, a környezeti változók beállítása _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings#set) parancsot.
+Az App Service-ben, a környezeti változók beállítása _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancsot.
 
 A következő parancsot konfigurálása az alkalmazás beállításaiban `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, és `DB_PASSWORD`. Cserélje le a helyőrzőket  _&lt;alkalmazásnév >_ és  _&lt;mysql_server_name >_.
 
@@ -364,7 +363,7 @@ Használjon `php artisan` egy új alkalmazás-kulcs létrehozása úgy, hogy men
 php artisan key:generate --show
 ```
 
-Alkalmazás kulcsát állítani az App Service web app használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings#set) parancsot. Cserélje le a helyőrzőket  _&lt;alkalmazásnév >_ és  _&lt;outputofphpartisankey: készítése >_.
+Alkalmazás kulcsát állítani az App Service web app használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancsot. Cserélje le a helyőrzőket  _&lt;alkalmazásnév >_ és  _&lt;outputofphpartisankey: készítése >_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -376,7 +375,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 Állítsa be a virtuális alkalmazás elérési útja a webalkalmazás számára. Ez a lépés akkor szükséges, mert a [Laravel alkalmazás életciklusa](https://laravel.com/docs/5.4/lifecycle) kezdődik a _nyilvános_ könyvtárhoz, az alkalmazás gyökérkönyvtárában helyett. Egyéb PHP keretrendszerek, amelynek életciklus indítsa el a gyökérkönyvtár használható az alkalmazás virtuális elérési út kézi konfigurálása nélkül.
 
-A virtuális alkalmazás elérési útjának beállítása használatával a [az erőforrás frissítési](/cli/azure/resource#update) parancsot. Cserélje le a  _&lt;alkalmazásnév >_ helyőrző.
+A virtuális alkalmazás elérési útjának beállítása használatával a [az erőforrás frissítési](/cli/azure/resource#az_resource_update) parancsot. Cserélje le a  _&lt;alkalmazásnév >_ helyőrző.
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01

@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: c609f3af1b97b16fca3aabc5d7ce568ff8c660f2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: ede1a974b32227edf44464ed56ae85a1ea7ee97b
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure eszköztára Eclipse használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -86,10 +86,7 @@ Eclipse megnyitásakor a HDInsight eszközzel automatikusan észleli, hogy telep
    * A a **Spark könyvtár** területen kiválaszthatja **Spark SDK konfigurálására használható Maven** lehetőséget.  Az eszköz megfelelő verzióját a Spark SDK és a Scala SDK integrálható. Másik lehetőségként **Spark SDK manuális hozzáadása** lehetőséget, töltse le, és adja hozzá manuálisan a Spark SDK által.
 
    ![Új HDInsight Scala projekt párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
-5. Ismert probléma miatt kattintás után újra kell megerősíti a scala verzió **következő**. Ellenőrizze, hogy a scala verzió megközelíti a telepítendő a 4. lépés.
-
-   ![comfirm-scala-könyvtár](./media/apache-spark-eclipse-tool-plugin/comfirm-scala-library-container.png)
-6. Jelölje ki a következő párbeszédpanel **Befejezés**. 
+5. Jelölje ki a következő párbeszédpanel **Befejezés**. 
    
   
 ## <a name="create-a-scala-application-for-an-hdinsight-spark-cluster"></a>A HDInsight Spark-fürtök Scala-alkalmazás létrehozása
@@ -148,7 +145,7 @@ A feladat kimenetére történő hozzáféréshez, a HDInsight Tools használat�
 
 3. Nyissa meg a feladat nézetet a **feladatok** csomópont. A jobb oldali ablaktáblában a **Spark feladat megtekintése** lap megjeleníti a fürtön futó összes alkalmazást. Válassza ki, amelynek meg szeretné tekinteni a további részleteket az alkalmazás nevét.
 
-   ![Az alkalmazás részletei](./media/apache-spark-eclipse-tool-plugin/view-job-logs.png)
+   ![Alkalmazás adatai](./media/apache-spark-eclipse-tool-plugin/view-job-logs.png)
 
    Ezek a műveletek majd készíthet:
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2017
+ms.date: 11/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2100b2b8710207ddb5d1848f11f4d6133f1dfd91
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 8fd058d74d00ecc980d295ee6bd9680ff832f891
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok csatlakoztatása a különböző üzembe helyezési modellel, a portál használatával
 
@@ -49,7 +49,9 @@ Ezekkel az értékekkel létrehozhat egy tesztkörnyezetet, vagy a segítségük
 
 Virtuális hálózat neve = ClassicVNet <br>
 Címtér = 10.0.0.0/24 <br>
-Alhálózat-1 = 10.0.0.0/27 <br>
+Alhálózati név alhálózat-1 = <br>
+Alhálózati címtartományt = 10.0.0.0/27 <br>
+Előfizetés a használni kívánt előfizetést = <br>
 Erőforráscsoport = ClassicRG <br>
 Hely = USA nyugati régiója <br>
 A GatewaySubnet = 10.0.0.32/28 <br>
@@ -59,18 +61,20 @@ Helyi = RMVNetLocal <br>
 
 Virtuális hálózat neve = RMVNet <br>
 Címtér = 192.168.0.0/16 <br>
-Alhálózat-1 = 192.168.1.0/24 <br>
-A GatewaySubnet = 192.168.0.0/26 <br>
 Erőforráscsoport = RG1 <br>
 Hely = USA keleti régiója <br>
+Alhálózati név alhálózat-1 = <br>
+Címtartomány = 192.168.1.0/24 <br>
+A GatewaySubnet = 192.168.0.0/26 <br>
 Virtuális hálózati átjáró neve = RMGateway <br>
 Átjáró típusa = VPN <br>
 VPN-típus útválasztó-alapú = <br>
-Átjáró nyilvános IP-cím neve = rmgwpip <br>
-Helyi hálózati átjáró = ClassicVNetLocal <br>
+SKU = VpnGw1 <br>
+Hely = USA keleti régiója <br>
+Virtuális hálózati = RMVNet <br> (a VPN-átjáró a vneten társítása) Első IP-konfiguráció = rmgwpip <br> (átjáró nyilvános IP-címe) Helyi hálózati átjáró = ClassicVNetLocal <br>
 Kapcsolat neve = RMtoClassic
 
-### <a name="connection-overview"></a>Kapcsolat – áttekintés
+### <a name="connectoverview"></a>Kapcsolat – áttekintés
 
 Ebben a konfigurációban az a virtuális hálózatok közötti IPsec/IKE VPN-alagúton keresztül hoz létre VPN gateway-kapcsolattal. Győződjön meg arról, hogy a virtuális hálózat tartományok egyike átfedésben vannak egymással, vagy egy helyi hálózaton, amelyhez csatlakoznak.
 
@@ -83,82 +87,104 @@ A következő táblázat a példa Vnetek és helyi helyek definiálásának mód
 
 ## <a name="classicvnet"></a>1. szakasz – adja meg a klasszikus virtuális hálózat beállításokat
 
-Ebben a szakaszban hoz létre a helyi hálózati (helyi) és a klasszikus virtuális hálózat a virtuális hálózati átjáró. Ha a klasszikus virtuális hálózat nem rendelkezik, és ezeket a lépéseket egy gyakorlatot fussanak, is létrehozhat egy virtuális hálózat használatával [Ez a cikk](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) és a [példa](#values) beállítások értékeket felülről.
+Ebben a szakaszban hoz létre a klasszikus virtuális hálózaton, a helyi hálózati (hely), és a virtuális hálózati átjáró. A képernyőképek csak példaként szolgálnak. Ügyeljen arra, hogy cserélje le az értékeket a saját, vagy használja a [példa](#values) értékeket.
 
-Amikor a portál segítségével hozzon létre egy klasszikus virtuális hálózatot, akkor kell megkeresnie és kijelölnie a virtuális hálózat lap az alábbi lépéseket követve, ellenkező esetben a klasszikus virtuális hálózat létrehozása a beállítás nem jelenik meg:
+### 1. <a name="classicvnet"></a>A klasszikus virtuális hálózat létrehozása
 
-1. Kattintson a "+" a "New" lap megnyitásához.
-2. A "Keresése a piactéren" mezőben írja be a "Virtuális hálózat". Ha ehelyett hálózatkezelés virtuális hálózat ->, létrehozhat egy klasszikus virtuális hálózat nem fog.
-3. Keresse meg a "Virtuális hálózat" a visszaadott listából, és kattintson arra a virtuális hálózat lap megnyitásához. 
-4. A virtuális hálózati lapon válassza az "Klasszikus" klasszikus VNet létrehozása. 
+Ha a klasszikus virtuális hálózat nem rendelkezik, és ezeket a lépéseket egy gyakorlatot fussanak, is létrehozhat egy virtuális hálózat használatával [Ez a cikk](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) és a [példa](#values) beállítások értékeket felülről.
 
-Ha már van egy virtuális hálózat VPN-átjáróval, győződjön meg arról, hogy az átjáró dinamikus. Ha statikus, kell először törli a VPN-átjárót, majd a folytatáshoz.
+Ha már van egy virtuális hálózat VPN-átjáróval, győződjön meg arról, hogy az átjáró dinamikus. Ha statikus, először törölnie kell a VPN-átjáró a folytatás előtt [konfigurálja a hely](#local).
 
-A képernyőképek csak példaként szolgálnak. Ügyeljen arra, hogy cserélje le az értékeket a saját, vagy használja a [példa](#values) értékeket.
+1. Nyissa meg a [Azure-portálon](https://ms.portal.azure.com) és jelentkezzen be az Azure-fiókjával.
+2. Kattintson a **+ hozzon létre egy erőforrást** "New" lapjának megnyitásához.
+3. A "Keresése a piactéren" mezőben írja be a "Virtuális hálózat". Ha ehelyett hálózatkezelés virtuális hálózat ->, létrehozhat egy klasszikus virtuális hálózat nem fog.
+4. Keresse meg a "Virtuális hálózat" a visszaadott listából, és kattintson arra a virtuális hálózat lap megnyitásához. 
+5. A virtuális hálózati lapon válassza az "Klasszikus" klasszikus VNet létrehozása. Ha itt az alapértelmezett, akkor lesz megszünteti egy erőforrás-kezelő virtuális hálózaton helyette.
 
-### 1. <a name="local"></a>A hely konfigurálása
-
-Nyissa meg a [Azure-portálon](https://ms.portal.azure.com) és jelentkezzen be az Azure-fiókjával.
+### 2. <a name="local"></a>A hely konfigurálása
 
 1. Navigáljon a **összes erőforrás** , és keresse meg a **ClassicVNet** a listában.
-2. Az a **áttekintése** lap a **VPN-kapcsolatok** területen kattintson a **átjáró** kép átjáró létrehozásához.
-
-    ![Konfigurálja a VPN-átjáró](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN-átjáró konfigurálása")
+2. Az a **áttekintése** lap a **VPN-kapcsolatok** kattintson **átjáró** átjáró létrehozásához.
+  ![Konfigurálja a VPN-átjáró](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN-átjáró konfigurálása")
 3. Az a **új VPN-kapcsolat** lap, a **kapcsolattípus**, jelölje be **pont-pont**.
 4. A **helyi**, kattintson a **kötelező beállítások konfigurálása**. Ekkor megnyílik a **helyi** lap.
 5. Az a **helyi** hozza létre a nevét, hogy az erőforrás-kezelő VNet hivatkozik. Például "RMVNetLocal."
 6. Ha a VPN-átjáró a Resource Manager virtuális hálózat már van egy nyilvános IP-címet használja az értékét a **VPN-átjáró IP-címet** mező. Ha ezek a lépések végrehajtása egy gyakorlat szerint, vagy még nem rendelkezik a virtuális hálózati átjáró az erőforrás-kezelő vnet, hogy a helyőrző IP-címeit. Gondoskodjon arról, hogy, hogy a helyőrző IP-cím formátuma érvénytelen. Később a helyőrző IP-cím cserélje a Resource Manager virtuális hálózati átjáró nyilvános IP-címét.
-7. A **ügyfél Címterület**, a virtuális hálózati IP-címteret a Resource Manager vnet értékeit használja. Ezzel a beállítással adhatja meg a címterek, az erőforrás-kezelő virtuális hálózati útvonalat.
+7. A **ügyfél Címterület**, használja a [értékek](#connectoverview) a virtuális hálózati IP-címtereket az erőforrás-kezelő vnet. Ezzel a beállítással adhatja meg a címterek, az erőforrás-kezelő virtuális hálózati útvonalat. A példában használjuk 192.168.0.0/16, a RMVNet címtartománya.
 8. Kattintson a **OK** értékek mentéséhez, és térjen vissza a **új VPN-kapcsolat** lap.
 
-### <a name="classicgw"></a>2. Virtuális hálózati átjáró létrehozása
+### <a name="classicgw"></a>3. Virtuális hálózati átjáró létrehozása
 
-1. A a **új VPN-kapcsolat** lapon jelölje be a **átjáró létrehozása azonnal** jelölőnégyzetet és kattintson a **választható átjáró konfigurációs** megnyitásához a **átjáró konfigurációs** lap. 
+1. Az a **új VPN-kapcsolat** lapon jelölje be a **átjáró létrehozása azonnal** jelölőnégyzetet.
+2. Kattintson a **Választható átjárókonfiguráció** elemre a **Átjáró konfigurációja** lap megnyitásához.
 
-    ![Nyissa meg az átjáró konfigurációs lapján](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "nyitott átjáró konfigurációs lapján")
-2. Kattintson a **alhálózat - kötelező beállítások konfigurálása** megnyitásához a **alhálózat hozzáadása** lap. A **neve** már be van állítva a szükséges érték **GatewaySubnet**.
-3. A **-címtartományt** az átjáró alhálózat hivatkozik. Bár létrehozhat egy átjáró-alhálózatot a /29-címtartományt (3 címeket), javasoljuk, hogy további IP-címeket létrehozható egy átjáró-alhálózatot, amely tartalmaz. Ez be tudja fogadni a jövőbeli konfigurációk, előfordulhat, hogy több elérhető IP-címeket. Ha lehetséges használjon /27 vagy /28. Ha ezeket a lépéseket egy gyakorlatot használ, olvassa el a [példa](#values) értékeket. Kattintson a **OK** az átjáró alhálózatának létrehozásához.
-4. Az a **átjáró konfigurációs** lapon **mérete** az átjáró-Termékváltozat hivatkozik. Válassza ki a VPN-átjáró SKU átjáróján.
-5. Ellenőrizze a **útválasztási típus** van **dinamikus**, majd kattintson **OK** való visszatéréshez a **új VPN-kapcsolat** lap.
-6. Az a **új VPN-kapcsolat** kattintson **OK** VPN-átjárót létrehozásának megkezdéséhez. VPN-átjáró létrehozása akár 45 percet is igénybe vehet.
+  ![Nyissa meg az átjáró konfigurációs lapján](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "nyitott átjáró konfigurációs lapján")
+3. Kattintson a **alhálózat - kötelező beállítások konfigurálása** megnyitásához a **alhálózat hozzáadása** lap. A **neve** már be van állítva a szükséges érték: **GatewaySubnet**.
+4. A **-címtartományt** az átjáró alhálózat hivatkozik. Bár létrehozhat egy átjáró-alhálózatot a /29-címtartományt (3 címeket), javasoljuk, hogy további IP-címeket létrehozható egy átjáró-alhálózatot, amely tartalmaz. Ez be tudja fogadni a jövőbeli konfigurációk, előfordulhat, hogy több elérhető IP-címeket. Ha lehetséges használjon /27 vagy /28. Ha ezeket a lépéseket egy gyakorlatot használ, olvassa el a [példaértékeket](#values). Ebben a példában a "10.0.0.32/28" használjuk. Kattintson a **OK** az átjáró alhálózatának létrehozásához.
+5. Az a **átjáró konfigurációs** lapon **mérete** az átjáró-Termékváltozat hivatkozik. Válassza ki a VPN-átjáró SKU átjáróján.
+6. Ellenőrizze a **útválasztási típus** van **dinamikus**, majd kattintson **OK** való visszatéréshez a **új VPN-kapcsolat** lap.
+7. Az a **új VPN-kapcsolat** kattintson **OK** VPN-átjárót létrehozásának megkezdéséhez. VPN-átjáró létrehozása akár 45 percet is igénybe vehet.
 
-### <a name="ip"></a>3. Másolja a virtuális hálózati átjáró nyilvános IP-cím
+### <a name="ip"></a>4. Másolja a virtuális hálózati átjáró nyilvános IP-cím
 
 A virtuális hálózati átjáró létrehozása után megtekintheti az átjáró IP-cím. 
 
 1. Keresse meg a klasszikus virtuális hálózaton, és kattintson **áttekintése**.
-2. Kattintson a **VPN-kapcsolatok** a VPN-kapcsolatok lap megnyitásához. A VPN-kapcsolatok oldalon megtekintheti a nyilvános IP-cím. Ez az a virtuális hálózati átjáró nyilvános IP-cím. 
-3. Írja le, vagy másolja át az IP-címet. Használhatja a későbbi lépésekben a Resource Manager helyi hálózati átjáró konfigurációs beállítások használatakor. Az átjáró-kapcsolatok állapotát is megtekintheti. Figyelje meg a helyi hálózati telephely létrehozott "Csatlakozás" szerepel. Az állapot változik, a kapcsolatok létrehozása után.
-4. Az átjáró IP-cím másolása után zárja be a lapot.
+2. Kattintson a **VPN-kapcsolatok** a VPN-kapcsolatok lap megnyitásához. A VPN-kapcsolatok oldalon megtekintheti a nyilvános IP-cím. Ez az a virtuális hálózati átjáró nyilvános IP-cím. Jegyezze fel az IP-cím. Használhatja a későbbi lépésekben a Resource Manager helyi hálózati átjáró konfigurációs beállítások használatakor. 
+3. Az átjáró-kapcsolatok állapotát tekintheti meg. Figyelje meg a helyi hálózati telephely létrehozott "Csatlakozás" szerepel. Az állapot változik, a kapcsolatok létrehozása után. Ezen a lapon bezárhatja, amikor végzett a állapotának megtekintése.
 
 ## <a name="rmvnet"></a>2. szakasz – az erőforrás-kezelő hálózatok beállításainak konfigurálása
 
-Ebben a szakaszban hoz létre a virtuális hálózati átjáró és a helyi hálózati átjáró az erőforrás-kezelő virtuális hálózat számára. Ha egy erőforrás-kezelő virtuális hálózat nem rendelkezik, és ezeket a lépéseket egy gyakorlatot fussanak, is létrehozhat egy virtuális hálózat használatával [Ez a cikk](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) és a [példa](#values) beállítások értékeket felülről.
+Ebben a szakaszban hoz létre a virtuális hálózati átjáró és a helyi hálózati átjáró az erőforrás-kezelő virtuális hálózat számára. A képernyőképek csak példaként szolgálnak. Ügyeljen arra, hogy cserélje le az értékeket a saját, vagy használja a [példa](#values) értékeket.
 
-A képernyőképek csak példaként szolgálnak. Ügyeljen arra, hogy cserélje le az értékeket a saját, vagy használja a [példa](#values) értékeket.
+### <a name="1-create-a-virtual-network"></a>1. Virtuális hálózat létrehozása
 
-### <a name="1-create-a-gateway-subnet"></a>1. Átjáróalhálózat létrehozása
+**Példaértékek:**
 
-Virtuális hálózati átjáró létrehozása előtt először hozza létre az átjáró-alhálózatot. Hozzon létre egy átjáró-alhálózatot CIDR száma /28 vagy nagyobb. (/ 27- / 26, stb.)
+* Virtuális hálózat neve = RMVNet <br>
+* Címtér = 192.168.0.0/16 <br>
+* Erőforráscsoport = RG1 <br>
+* Hely = USA keleti régiója <br>
+* Alhálózati név alhálózat-1 = <br>
+* Címtartomány = 192.168.1.0/24 <br>
+
+
+Ha egy erőforrás-kezelő virtuális hálózat nem rendelkezik, és ezeket a lépéseket egy gyakorlatot fussanak, is létrehozhat egy virtuális hálózat használatával [Ez a cikk](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) és a példában szereplő értékeket.
+
+### <a name="2-create-a-gateway-subnet"></a>2. Átjáróalhálózat létrehozása
+
+**Példaérték:** GatewaySubnet = 192.168.0.0/26
+
+Virtuális hálózati átjáró létrehozása előtt először hozza létre az átjáró-alhálózatot. Hozzon létre egy átjáró-alhálózatot CIDR Count /28 vagy nagyobb (/ 27- / 26, stb.). Létrehozásakor ez egy gyakorlatot részeként, a példában szereplő értékeket is használhatja.
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
-### <a name="creategw"></a>2. Virtuális hálózati átjáró létrehozása
+### <a name="creategw"></a>3. Virtuális hálózati átjáró létrehozása
+
+**Példaértékek:**
+
+* Virtuális hálózati átjáró neve = RMGateway <br>
+* Átjáró típusa = VPN <br>
+* VPN-típus útválasztó-alapú = <br>
+* SKU = VpnGw1 <br>
+* Hely = USA keleti régiója <br>
+* Virtuális hálózati = RMVNet <br>
+* Első IP-konfiguráció = rmgwpip <br>
 
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-### <a name="createlng"></a>3. Helyi hálózati átjáró létrehozása
+### <a name="createlng"></a>4. Helyi hálózati átjáró létrehozása
 
-A helyi hálózati átjáró határozza meg a címtartományt és a társított a klasszikus virtuális hálózat és a virtuális hálózati átjáró nyilvános IP-cím.
-
-Ha ezeket a lépéseket tennie, mint egy gyakorlatot, olvassa el ezeket a beállításokat:
+**Példaértékek:** helyi hálózati átjáró = ClassicVNetLocal
 
 | Virtual Network | Címterület | Régió | Csatlakozik a helyi hálózati telephely |Átjáró nyilvános IP-címe|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA nyugati régiója | RMVNetLocal (192.168.0.0/16) |A nyilvános IP-cím, amely hozzá van rendelve a ClassicVNet átjáró|
 | RMVNet | (192.168.0.0/16) |USA keleti régiója |ClassicVNetLocal (10.0.0.0/24) |A nyilvános IP-cím, amely a RMVNet átjáró van hozzárendelve.|
+
+A helyi hálózati átjáró határozza meg a címtartományt és a társított a klasszikus virtuális hálózat és a virtuális hálózati átjáró nyilvános IP-cím. Ha ezeket a lépéseket tennie, mint egy gyakorlatot, tekintse meg a példában szereplő értékeket.
 
 [!INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
 

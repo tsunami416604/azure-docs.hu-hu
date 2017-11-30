@@ -11,14 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mahender
-ms.openlocfilehash: 8cf2e4e9e9007549dbdc931b4485c4230c536479
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd7bcd57260b9763eabb9b4c915d9ff46e79e931
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-functions-microsoft-graph-bindings"></a>Az Azure Functions Microsoft Graph-kötések
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 Ez a cikk azt ismerteti, hogyan konfigurálását és a Microsoft Graph-eseményindítók és kötések az Azure Functions használatát.
 Ezekkel, az Azure Functions segítségével adatokat, az elemzések és a származó események dolgozhat a [Microsoft Graph](https://graph.microsoft.io).
@@ -192,7 +191,7 @@ A kötés a onedrive-on tárolt Excel-táblázat tartalmának beolvasása.
 A kötés a következő AAD engedélyekkel kell rendelkeznie:
 |Erőforrás|Engedély|
 |--------|--------|
-|Microsoft Graph|Felhasználói fájlok olvasása|
+|Microsoft Graph|Felhasználók fájljainak olvasása|
 
 A kötés támogatja-e a következő tulajdonságokkal:
 
@@ -384,7 +383,7 @@ A kötés beolvassa a onedrive-on tárolt fájl tartalmát.
 A kötés a következő AAD engedélyekkel kell rendelkeznie:
 |Erőforrás|Engedély|
 |--------|--------|
-|Microsoft Graph|Felhasználói fájlok olvasása|
+|Microsoft Graph|Felhasználók fájljainak olvasása|
 
 A kötés támogatja-e a következő tulajdonságokkal:
 
@@ -403,7 +402,7 @@ A kötés támogatja-e a következő tulajdonságokkal:
 
 A kötés mutatja meg a következő típusú .NET funkciók:
 - Byte]
-- Az adatfolyam
+- Stream
 - Karakterlánc
 - Microsoft.Graph.DriveItem
 
@@ -489,7 +488,7 @@ A kötés támogatja-e a következő tulajdonságokkal:
 
 A kötés mutatja meg a következő típusú .NET funkciók:
 - Byte]
-- Az adatfolyam
+- Stream
 - Karakterlánc
 - Microsoft.Graph.DriveItem
 
@@ -1062,3 +1061,8 @@ public class UserSubscription {
 
 [HTTP-eseményindítóval]: functions-bindings-http-webhook.md
 [használata a Microsoft Graph webhookok]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks
+
+## <a name="next-steps"></a>Következő lépések
+
+> [!div class="nextstepaction"]
+> [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

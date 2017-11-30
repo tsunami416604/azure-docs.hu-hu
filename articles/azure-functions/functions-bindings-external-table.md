@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: e6aa6913bdb2cf8e581b76b7680d0a96c9858bd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b226aa4ec71535aa0222389aacd74764a80021a
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-functions-external-table-binding-preview"></a>Az Azure Functions külső táblakötéssel (előzetes verzió)
 Ez a cikk bemutatja, hogyan kezelheti a Szolgáltatottszoftver-szolgáltatók (például a Sharepoint, a Dynamics) táblázatos adatok a függvényen belül beépített definiált kötésekkel. Az Azure Functions bemeneti és kimeneti kötések támogatja a külső táblákhoz.
@@ -33,7 +33,7 @@ A kötés hozzárendelésekor új API-kapcsolatot létrehozni, vagy belül ugyan
 
 ### <a name="supported-api-connections-tables"></a>Támogatott API-kapcsolatok (tábla) s
 
-|összekötő|Eseményindító|Input (Bemenet)|Kimenet|
+|Összekötő|Eseményindító|Input (Bemenet)|Kimenet|
 |:-----|:---:|:---:|:---:|
 |[DB2](https://docs.microsoft.com/azure/connectors/connectors-create-api-db2)||x|x
 |[Dynamics 365 műveleteihez](https://ax.help.dynamics.com/wiki/install-and-configure-dynamics-365-for-operations-warehousing/)||x|x
@@ -99,12 +99,12 @@ Ebben a példában az azonosító, a Vezetéknév és a Vezetéknév oszlopokat 
 
 A táblázatos összekötő adatkészletek biztosít, és minden egyes táblát tartalmaz. Az alapértelmezett adatkészlet neve nem "alapértelmezett". A DataSet adatkészlet és a táblázat a különböző Szolgáltatottszoftver-szolgáltatók címeit az alábbiak:
 
-|összekötő|Adatkészlet|Tábla|
+|Összekötő|Adatkészlet|Tábla|
 |:-----|:---|:---| 
-|**SharePoint**|Helykiszolgáló|SharePoint-lista
+|**SharePoint**|Hely|SharePoint-lista
 |**SQL**|Adatbázis|Tábla 
-|**Google lap**|Táblázat|Munkalap 
-|**Excel**|Excel-fájl|Lap 
+|**Google lap**|Számolótábla|Munkalap 
+|**Excel**|Excel-fájl|Táblázat 
 
 <!--
 See the language-specific sample that copies the input file to the output file.
@@ -198,4 +198,6 @@ A Google Docs, hozzon létre egy táblázatot nevű `Contact`. Az összekötő s
 dataSetName az "alapértelmezett".
 
 ## <a name="next-steps"></a>Következő lépések
-[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
+
+> [!div class="nextstepaction"]
+> [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

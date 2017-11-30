@@ -3,7 +3,7 @@ title: "Az Azure Functions időzítő indítófeltételt"
 description: "Időzítő eseményindítók használata az Azure Functions ismertetése."
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: tdykstra
 manager: cfowler
 editor: 
 tags: 
@@ -15,15 +15,15 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
-ms.author: glenga
+ms.author: tdykstra
 ms.custom: 
-ms.openlocfilehash: cc59d97fe4f3bb4e53432332556991d81b208167
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: fd9c1d40ba1398c7ca3f48f0423457482da9a483
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="azure-functions-timer-trigger"></a>Az Azure Functions időzítő indítófeltételt
+# <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő indítófeltételt 
 
 Ez a cikk ismerteti, hogyan használható az Azure Functions időzítő eseményindítók. Egy időzítő indítófeltételt lehetővé teszi egy függvény fussanak ütemezés szerint. 
 
@@ -134,7 +134,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-## <a name="attributes-for-precompiled-c"></a>Az előfordított C# attribútumok
+## <a name="attributes"></a>Attribútumok
 
 A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)NuGet-csomagot a definiált [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions).
 
@@ -143,9 +143,14 @@ Az attribútumok konstruktorában CRON-kifejezés, hajtja végre a következő p
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+{
+   ...
+}
  ```
 
 Megadhat egy `TimeSpan` egy CRON-kifejezés, ha a függvény-alkalmazás az App Service-csomag (nem a fogyasztás terv) fut. helyett.
+
+Tekintse meg a teljes például [előre le fordítva C# példa](#c-example).
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -156,7 +161,9 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**típusa** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**iránya** | n/a | "A" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**név** | n/a | A függvény a kódban időzítő az objektumot határozza meg a változó neve. | 
-|**ütemezés**|**ScheduleExpression**|A felhasználási terv ütemezés a CRON-kifejezés lehet definiálni. Ha használ egy App Service-csomag, használhatja a `TimeSpan` karakterlánc. Az alábbi szakaszok ismertetik a CRON-kifejezést. Az ütemezés kifejezés be Alkalmazásbeállítás, és csomagolni értékre állítani ezt a tulajdonságot  **%**  jelentkezik, például: "% NameOfAppSettingWithCRONExpression %". Helyileg kidolgozása, Alkalmazásbeállítások kísérhet értékeit a [local.settings.json fájl](functions-run-local.md#local-settings-file).|
+|**ütemezés**|**ScheduleExpression**|A felhasználási terv ütemezés a CRON-kifejezés lehet definiálni. Ha használ egy App Service-csomag, használhatja a `TimeSpan` karakterlánc. Az alábbi szakaszok ismertetik a CRON-kifejezést. Az ütemezés kifejezés be Alkalmazásbeállítás, és csomagolni értékre állítani ezt a tulajdonságot  **%**  jelentkezik, például: "% NameOfAppSettingWithCRONExpression %". |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ### <a name="cron-format"></a>CRON formátumban 
 

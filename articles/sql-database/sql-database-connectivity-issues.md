@@ -14,13 +14,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 11/29/2017
 ms.author: daleche
-ms.openlocfilehash: dda284b45e2e8a35a7228d77afef0ad058c8ea42
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1db0dee597ffe60c587e7bacd00640a308d04e99
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL-csatlakozási hibák és átmeneti hibák elhárítása, diagnosztizálása és elkerülése az SQL Database szolgáltatásban
 A cikkből megtudhatja, hogyan megakadályozása, hibáinak elhárítása, diagnosztizálása és csatlakozási hibáinak és, hogy az ügyfélalkalmazás tapasztal, amikor hatással van az Azure SQL Database átmeneti hibák elhárítása érdekében. Megtudhatja, hogyan konfigurálhatja az újrapróbálkozási logika, kapcsolódási karakterláncának felépítésére és további kapcsolati beállításokat.
@@ -40,16 +40,17 @@ Próbálja meg újra az SQL-kapcsolatot fog, vagy létre újra, attól függően
 * **Egy átmeneti hiba akkor fordul elő, a kapcsolódási kísérlet során**: A kapcsolat meg kell ismételni után késleltetése néhány másodpercig.
 * **Egy átmeneti hiba jelentkezik egy SQL-lekérdezés parancs közben**: A parancs kell nem azonnal kísérli meg újra. Ehelyett késleltetés után a kell frissen létesíthető kapcsolat. Akkor is megpróbálja újból végrehajtani a parancsot.
 
+
 <a id="j-retry-logic-transient-faults" name="j-retry-logic-transient-faults"></a>
 
-### <a name="retry-logic-for-transient-errors"></a>Újrapróbálkozási logika átmeneti hibák esetén
+## <a name="retry-logic-for-transient-errors"></a>Újrapróbálkozási logika átmeneti hibák esetén
 Ügyfél programok, amelyek találkozik, egy átmeneti hiba is robusztusabb, ha újrapróbálkozási logika tartalmaznak.
 
 Amikor a program a 3. fél köztes keresztül kommunikál az Azure SQL Database, lekérdezése a gyártójával, hogy a köztes újrapróbálkozási logika átmeneti hibák tartalmaz-e.
 
 <a id="principles-for-retry" name="principles-for-retry"></a>
 
-#### <a name="principles-for-retry"></a>Az újrapróbálkozási alapelvei
+### <a name="principles-for-retry"></a>Az újrapróbálkozási alapelvei
 * A kapcsolat megnyitására tett kísérlet meg kell ismételni, ha a hiba átmeneti.
 * Olyan SQL SELECT utasításban, amely egy átmeneti hiba miatt sikertelen nem közvetlenül végrehajtásával lehet újrapróbálkozni.
   
@@ -58,30 +59,31 @@ Amikor a program a 3. fél köztes keresztül kommunikál az Azure SQL Database,
   
   * Az újrapróbálkozási logika győződjön meg arról, hogy a teljes adatbázis-tranzakció befejeződött vagy, hogy a teljes tranzakció vissza lesz állítva.
 
-#### <a name="other-considerations-for-retry"></a>Újrapróbálkozási egyéb szempontjai
+### <a name="other-considerations-for-retry"></a>Újrapróbálkozási egyéb szempontjai
 * A kötegfájl, amely automatikusan elindul a munkaidőn, és amely reggel, mielőtt befejezi az újrapróbálkozások között hosszú idő időközökkel nagyon türelmet is megadja.
 * A felhasználói felület program kell fiókot a túl hosszú várakozás után feladták emberi hajlamos.
   
   * Azonban a megoldás nem kell, majd ismételje meg minden néhány másodpercben, mert az adott házirendnek is kéréssekkel kérelmeket a rendszer.
 
-#### <a name="interval-increase-between-retries"></a>Az újrapróbálkozások közötti időköz növekedése
+### <a name="interval-increase-between-retries"></a>Az újrapróbálkozások közötti időköz növekedése
 Azt javasoljuk, hogy addig elhalasztani, az 5 másodperc az első újrapróbálkozás előtti. Újrapróbálkozás rövidebb, mint a felhőszolgáltatás overwhelming 5 másodperc kockázatok késleltetéssel. A késleltetés kell méretének növelése exponenciálisan növekszik, minden ezt követő újrapróbálkozásra legfeljebb 60 másodperc.
 
 Tárgyalja a *blokkolási időtartam* ADO.NET használó ügyfelek számára érhető el [SQL Server készletezését (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx).
 
 Érdemes előtt a program automatikusan leáll, állítsa be az újrapróbálkozások maximális számát is.
 
-#### <a name="code-samples-with-retry-logic"></a>Az újrapróbálkozási logika mintakódok
-Az újrapróbálkozási logika, a különböző programnyelveken, Kódminták webhelyen érhetők el:
+### <a name="code-samples-with-retry-logic"></a>Az újrapróbálkozási logika mintakódok
+Az újrapróbálkozási logika kódpéldák webhelyen érhetők el:
 
-* [Adatkapcsolattárak SQL Database és SQL Server](sql-database-libraries.md)
+- [Az ADO.NET SQL eltolódhasson kapcsolódni][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [A PHP SQL eltolódhasson kapcsolódni][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
-#### <a name="test-your-retry-logic"></a>Az újrapróbálkozási logika tesztelése
+### <a name="test-your-retry-logic"></a>Az újrapróbálkozási logika tesztelése
 Az újrapróbálkozási logika teszteléséhez szimulálása, vagy hibát okoz, mint javítható, a program futása közben.
 
-##### <a name="test-by-disconnecting-from-the-network"></a>Tesztelje a hálózati kapcsolat bontása
+#### <a name="test-by-disconnecting-from-the-network"></a>Tesztelje a hálózati kapcsolat bontása
 Tesztelheti az újrapróbálkozási logika egyik módja az ügyfélszámítógépen leválasztása a hálózatról, a program futása közben. A hiba a következő lesz:
 
 * **SqlException.Number** = 11001
@@ -98,7 +100,7 @@ Ahhoz, hogy ez gyakorlati, akkor eltávolíthatja a számítógép elérése a h
    * További végrehajtásának felfüggesztése használatával vagy a **Console.ReadLine** metódus vagy egy párbeszédpanelen az OK gombra. A felhasználó megnyomja az Enter billentyűt, miután a számítógép csatlakoztatva a hálózathoz.
 5. Próbálja meg újra csatlakozni, sikeres vár.
 
-##### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Tesztelje a adatbázis függvénynév a csatlakozáskor
+#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Tesztelje a adatbázis függvénynév a csatlakozáskor
 A program szándékosan is hibásan a felhasználó nevét, az első kapcsolódási kísérlet előtt. A hiba a következő lesz:
 
 * **SqlException.Number** = 18456
@@ -114,15 +116,15 @@ Ahhoz, hogy ez gyakorlati, a program sikerült ismeri fel a futási idő paramé
 4. Távolítsa el a felhasználónevet "WRONG_".
 5. Próbálja meg újra csatlakozni, sikeres vár.
 
+
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
-### <a name="net-sqlconnection-parameters-for-connection-retry"></a>Újrapróbálkozási .NET SqlConnection paramétereinek
+## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Újrapróbálkozási .NET SqlConnection paramétereinek
 Ha az ügyfélprogram az Azure SQL Database használatával kapcsolódik a .NET-keretrendszer osztály **System.Data.SqlClient.SqlConnection**, használjon .NET 4.6.1 vagy újabb (vagy a .NET Core), a kapcsolat újrapróbálkozási funkcióját. A szolgáltatás részletei [Itt](http://go.microsoft.com/fwlink/?linkid=393996).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
-
 
 Összeállításakor a [kapcsolati karakterlánc](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) a a **SqlConnection** objektumot, az értékek között az alábbi paramétereket kell koordinálni:
 
@@ -138,7 +140,7 @@ Például ha a szám = 3, és időköz = 10 másodperc, a időtúllépés csak 2
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
-### <a name="connection-versus-command"></a>Kapcsolat és a parancs
+## <a name="connection-versus-command"></a>Kapcsolat és a parancs
 A **ConnectRetryCount** és **ConnectRetryInterval** paraméterek lehetővé teszik a **SqlConnection** objektum szólítja fel vagy bothering nélkül próbálja megismételni a kapcsolódási művelet a program, például a program visszatér a vezérlő. A próbálkozások a következő esetekben fordulhat elő:
 
 * mySqlConnection.Open metódus hívása
@@ -146,8 +148,9 @@ A **ConnectRetryCount** és **ConnectRetryInterval** paraméterek lehetővé tes
 
 Nincs olyan subtlety. Egy átmeneti hiba akkor fordul elő, ha közben az *lekérdezés* végrehajtott, a **SqlConnection** objektum nem próbálja meg újra a kapcsolódási művelet, és hogy biztosan nem próbálja meg újra a lekérdezést. Azonban **SqlConnection** nagyon gyorsan ellenőrzi a kapcsolatot a végrehajtásra lekérdezés elküldése előtt. Ha a Gyorsellenőrzés észleli a kapcsolat hibája **SqlConnection** újrapróbálkozik a kapcsolódási művelet. Ha sikeres az újra gombra, hogy lekérdezést továbbítja a végrehajtási.
 
-#### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>Kombinálható ConnectRetryCount alkalmazás újrapróbálkozási logika?
+### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>Kombinálható ConnectRetryCount alkalmazás újrapróbálkozási logika?
 Tegyük fel, hogy az alkalmazás rendelkezik robusztus egyéni újrapróbálkozási logika. Az lehet, hogy ismételje meg a kapcsolódási művelet 4 alkalommal. Ha ad hozzá **ConnectRetryInterval** és **ConnectRetryCount** = 3 a kapcsolati karakterlánc módosításait növeli az újrapróbálkozások maximális számát, és 4 * 3 = 12 újrapróbálkozások. Előfordulhat, hogy nem kíván ilyen újrapróbálkozások magas száma.
+
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
@@ -373,9 +376,7 @@ További információ:: [5 –, egyszerűen mint alá tartozó ki a napló: az a
 ### <a name="entlib60-istransient-method-source-code"></a>EntLib60 IsTransient metódus forráskód
 A következő a **SqlDatabaseTransientErrorDetectionStrategy** osztály, a C# forráskódja a **IsTransient** metódust. A forráskód tisztázza, hogy mely hibák tekintették átmeneti és az Ismét gombra, 2013. április frissítésétől worthy.
 
-Számos **//comment** sorok el lettek távolítva ezt a példányt, hogy hangsúlyozzák az olvashatóság érdekében.
-
-```
+```csharp
 public bool IsTransient(Exception ex)
 {
   if (ex != null)
@@ -444,6 +445,14 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>Következő lépések
 * Más közös Azure SQL-adatbázis kapcsolati problémák elhárítása, látogasson el [kapcsolódási problémák az Azure SQL Database](sql-database-troubleshoot-common-connection-issues.md).
-* [SQL Server-kapcsolatkészlet (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
+* [Adatkapcsolattárak SQL Database és SQL Server](sql-database-libraries.md)
+* [SQL Server-kapcsolatkészlet (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 * [*Újrapróbálkozás* van egy Apache 2.0 licenccel rendelkező általános célú könyvtár írt újrapróbálkozás **Python**, újrapróbálkozásra ad hozzá elemek feladatának leegyszerűsítése érdekében.](https://pypi.python.org/pypi/retrying)
+
+
+<!-- Link references. -->
+
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+
+[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
 

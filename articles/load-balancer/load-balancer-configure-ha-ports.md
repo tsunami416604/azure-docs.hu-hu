@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/02/2017
 ms.author: kumud
-ms.openlocfilehash: 4cd65c01d75af8539f5fa13dbbd2aaec548aea0b
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 646ade828e96810bdc3b07d4dc5c0276a1621969
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>Belső terheléselosztó magas rendelkezésre állású portok konfigurálása
 
@@ -41,13 +41,10 @@ Ez a cikk magas rendelkezésre ÁLLÁS telepítését bemutató példát-portoka
 
 ## <a name="preview-sign-up"></a>Előnézet-előfizetés
 
-Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLLÁSÚ portok szolgáltatásának részt, regisztrálja az előfizetés hozzáférést Azure CLI 2.0 vagy a PowerShell használatával.  Regisztrálja az előfizetés
-
-1. [Terheléselosztó szabványos előzetes betöltési](https://aka.ms/lbpreview#preview-sign-up) és 
-2. [Magas rendelkezésre ÁLLÁSÚ portok előzetes](https://aka.ms/haports#preview-sign-up).
+Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLLÁSÚ portok szolgáltatásának részt, regisztrálja az előfizetés hozzáférést Azure CLI 2.0 vagy a PowerShell használatával. Az előfizetés regisztrálása a [Load Balancer szabványos előzetes](https://aka.ms/lbpreview#preview-sign-up).
 
 >[!NOTE]
->Ez a funkció használatához le kell is előfizetési terheléselosztóhoz [szabványos Preview](https://aka.ms/lbpreview#preview-sign-up) magas rendelkezésre ÁLLÁSÚ portok mellett. A magas rendelkezésre ÁLLÁSÚ portok vagy a Load Balancer szabványos előzetes regisztrációja egy óráig is tarthat.
+>A Load Balancer szabványos előzetes regisztrációja egy óráig is eltarthat.
 
 ## <a name="configuring-ha-ports"></a>Magas rendelkezésre ÁLLÁSÚ portok konfigurálása
 

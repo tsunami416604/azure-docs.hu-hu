@@ -6,19 +6,19 @@ documentationCenter: na
 author: jeevansd
 manager: femila
 ms.reviewer: joflore
-ms.assetid: f39f0ddd-b504-4562-971f-77b88d1e75fb
+ms.assetid: 2263e583-3eb2-4a06-982d-33f5f54858f4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 11/27/2017
 ms.author: jeedes
-ms.openlocfilehash: ad03516f684acc59912ffc57f6e0712828bd03f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f1f16865a3adb55fc63c09c1dbdc9720b02f9c33
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Oktatóanyag: Azure Active Directoryval integrált FileCloud
 
@@ -108,12 +108,12 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk FileCloud tartomány és az URL-címek](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.filecloudhosted.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.filecloudonline.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.filecloudhosted.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.filecloudonline.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [FileCloud ügyfél-támogatási csoport](mailto:support@codelathe.com) beolvasni ezeket az értékeket.
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [FileCloud ügyfél-támogatási csoport](mailto:support@codelathe.com) beolvasni ezeket az értékeket. 
 
 4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
@@ -131,23 +131,23 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 8. A bal oldali navigációs ablaktábláján kattintson **beállítások**. 
    
-    ![Beállítások szakaszban az alkalmazás ügyféloldali](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_000.png)
+    ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_000.png)
 
 9. Kattintson a **SSO** beállításait szakaszon fülre. 
    
-    ![Egyszeri bejelentkezés lapon az alkalmazás ügyféloldali](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_001.png)
+    ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_001.png)
 
 10. Válassza ki **SAML** , **alapértelmezett egyszeri bejelentkezés típusa** a **egyszeri bejelentkezés (SSO) beállítások** panel.
    
-    ![Egyszeri bejelentkezés beállítások Panel az alkalmazás ügyféloldali](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_002.png)
+    ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_002.png)
 
-11. Beillesztés **SAML Entitásazonosító**, amely az Azure portálról másolta a **IdP végpont URL-cím** szövegmező.
+11. Az a **IdP végpont URL-cím** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító** ami Azure-portálon másolta.
 
-    ![IDP End pont URL-cím beviteli mező](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_003.png)
+    ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_003.png)
 
 12. Nyissa meg a letöltött metaadat-fájlt a Jegyzettömbben, annak tartalmának másolása a vágólapra és illessze be azt a **IdP metaadatai** a szövegmező **SAML beállítások** panel.
 
-    ![Alkalmazás ügyféloldali IDP Meta adatszakasz](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_004.png)
+    ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_004.png)
 
 13. Kattintson a **mentése** gombra.
 
@@ -192,7 +192,7 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 Ez a szakasz célja FileCloud Britta Simon nevű felhasználót létrehozni. FileCloud támogatja just-in-time kiosztást, amely alapértelmezés szerint van engedélyezve. Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre az FileCloud elérésére, ha még nem létezik tett kísérlet során.
 
 >[!NOTE]
->Hozza létre a felhasználó manuálisan kell, ha szeretné-e lépjen kapcsolatba a [FileCloud ügyfél-támogatási csoport](mailto:support@codelathe.com). 
+>Hozza létre a felhasználó manuálisan kell, ha szeretné-e lépjen kapcsolatba a [FileCloud ügyfél-támogatási csoport](mailto:support@codelathe.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
@@ -226,9 +226,10 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
     
 ### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ez a szakasz célja a hozzáférési panelen az Azure AD SSO-konfigurációjának tesztelése.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
 Ha a hozzáférési panelen FileCloud csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az FileCloud alkalmazására.
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 11/27/2017
 ms.author: alkarche
-ms.openlocfilehash: 7e3b396d290212d3875385521bd7ae92da196b95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7a1ff4d4488b37b1969edfbb6f935eccd63413c
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-functions-external-file-bindings-preview"></a>Az Azure Functions külső fájl kötések (előzetes verzió)
 Ez a cikk bemutatja, hogyan különböző Szolgáltatottszoftver-szolgáltatók (például a onedrive vállalati verzió, a Dropbox) való konfigurál a beépített kötések okhoz függvényen belül. Az Azure functions támogatja indítás, bemeneti és kimeneti külső fájl kötései.
@@ -29,7 +29,7 @@ A kötés szolgáltatók SaaS API-kapcsolatot hoz létre, vagy használja a megl
 
 ## <a name="supported-file-connections"></a>Támogatott fájl kapcsolatok
 
-|összekötő|Eseményindító|Input (Bemenet)|Kimenet|
+|Összekötő|Eseményindító|Input (Bemenet)|Kimenet|
 |:-----|:---:|:---:|:---:|
 |[Mezőbe](https://www.box.com)|x|x|x
 |[Dropbox-bA](https://www.dropbox.com)|x|x|x
@@ -362,4 +362,6 @@ module.exports = function(context) {
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
+
+> [!div class="nextstepaction"]
+> [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

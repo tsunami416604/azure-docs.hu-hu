@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: a62a3954d10e718f5d180ddb725c6a9c7cda56c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7df154748a4ce8ac592a41f2a3d6b10ac359113
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Az Azure AD Connect: Ha rendelkezik egy létező bérlő
 Az Azure AD Connect használatával a témaköröket a legtöbb azt feltételezi, hogy a kiindulási pont egy új Azure AD-bérlő és, hogy nincsenek-e egy felhasználó sem, vagy nincs más objektumokat. Azonban ha az Azure AD-bérlő indította megadva, akkor a felhasználók és más objektumok, és most szeretné csatlakozás, akkor ebben a témakörben, hogy a felhasználó.
@@ -33,7 +33,7 @@ Ha kezeléséhez használatba felhasználók az Azure ad-ben, amelyek szerepelne
 ## <a name="sync-with-existing-users-in-azure-ad"></a>A meglévő felhasználók szinkronizálni az Azure ad-ben
 Az Azure AD Connectet telepíti, és szinkronizálásának elindítása, az Azure AD sync szolgáltatás (az Azure AD) egy ellenőrzés minden új objektumon, és próbálkozzon egyezik az objektum kereséséhez. Ez a folyamat használt három attribútum: **userPrincipalName**, **proxyAddresses**, és **sourceAnchor**/**immutableID**. Egyeztetés az **userPrincipalName** és **proxyAddresses** is ismert, egy **egyeznek helyreállítható**. Egyeztetés az **sourceAnchor** nevezik **rögzített egyezés**. Az a **proxyAddresses** attribútum csak az érték **SMTP:**, vagyis az elsődleges e-mail címét, a kiértékelés szolgál.
 
-Az egyeztetés csak értékeli ki a Connect érkező új objektumokat. Ha módosítja a meglévő objektum, akkor van megfelelő ezek az attribútumok, majd hibaüzenet jelenik meg helyette.
+Az egyeztetés csak értékeli ki a Connect érkező új objektumokat. Ha objektum módosítja, akkor van megfelelő ezek az attribútumok, majd hibaüzenet jelenik meg helyette.
 
 Ha az Azure AD talál, ahol attribútumértékek megegyeznek az adatforrásból származó kapcsolati objektum és, amely már létezik, az Azure AD-objektum, majd az Azure AD-objektum veszi át az irányítást Connect. A korábban a felhőben felügyelt objektum meg van jelölve, a helyszínen felügyelt. Összes attribútumot az Azure AD a érték szerepel a helyszíni AD a rendszer felülírja a helyi értékű. A kivétel akkor, ha az attribútumhoz egy **NULL** helyszíni érték. Ebben az esetben az Azure AD marad, de az érték csak továbbra is módosítható a helyszíni valami mással.
 

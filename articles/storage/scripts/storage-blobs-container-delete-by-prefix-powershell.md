@@ -3,7 +3,7 @@ title: "Az Azure PowerShell-parancsfájl minta - törlés tárolókban előtag a
 description: "Azure Storage-blob tárolók egy tárolója előtagján alapuló törlése."
 services: storage
 documentationcenter: na
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/13/2017
-ms.author: robinsh
-ms.openlocfilehash: 402958c4e2978630bc79557704a77e77a8b9a7e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: tamram
+ms.openlocfilehash: 629189b9dbe2327763d364abc95f49539a312c53
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Tárolója előtagján alapuló tárolók törlése
 

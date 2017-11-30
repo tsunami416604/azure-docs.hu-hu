@@ -1,5 +1,5 @@
 ---
-title: "Eseményindítók és kötések az Azure Functions együttműködve |} Microsoft Docs"
+title: "Eseményindítók és kötések az Azure Functions használata"
 description: "Megtudhatja, hogyan csatlakozhat eseményindítók és kötések az Azure Functions a kód végrehajtása online események és a felhő alapú szolgáltatások."
 services: functions
 documentationcenter: na
@@ -8,26 +8,25 @@ manager: cfowler
 editor: 
 tags: 
 keywords: "azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra"
-ms.assetid: cbc7460a-4d8a-423f-a63e-1cd33fef7252
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/30/2017
+ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 7d22a6749216486de6132a6d39e2dcf683d0e678
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e3413c9e1055ca9198dae4a467bcf47372ad4ecb
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 Az Azure Functions lehetővé teszi a kód válaszul Azure-ban és egyéb szolgáltatások események írása keresztül *eseményindítók* és *kötések*. Ez a cikk eseményindítók elméleti áttekintését és kötések az összes támogatott programozási nyelveket. Funkciókat, amelyek megegyeznek az összes kötését dokumentum ismerteti.
 
 ## <a name="overview"></a>Áttekintés
 
-Eseményindítók és kötések egy deklaratív lehetőséget adja meg, hogyan függvényt hívják, és milyen adatokat is működik. A *eseményindító* határozza meg, hogyan függvényt hívják. A függvénynek pontosan egy eseményindító kell rendelkeznie. Eseményindítók olyan adatok, amely általában a tartalom, a függvény kiváltó társítva. 
+Eseményindítók és kötések egy deklaratív lehetőséget adja meg, hogyan függvényt hívják, és milyen adatokat is működik. A *eseményindító* határozza meg, hogyan függvényt hívják. A függvénynek pontosan egy eseményindító kell rendelkeznie. Eseményindítók olyan adatok, amely általában a tartalom, a függvény kiváltó társítva.
 
 Bemeneti és kimeneti *kötések* a kód az adatokhoz történő kapcsolódáshoz deklaratív lehetőséget biztosít. Eseményindítók hasonló, megadhatja a kapcsolati karakterláncokat és egyéb tulajdonságok függvény konfigurációs. Kötések nem kötelező, és egy függvény több bemeneti és a kimeneti kötéseket. 
 
@@ -35,11 +34,13 @@ Az eseményindítók és kötések, írhat kódot a további általános és nem
 
 Eseményindítók és kötések is konfigurálhatja a **integráció** az Azure Functions portálon lapján. A színfalak a felhasználói felületen módosítja a customdataexample.xml fájlt *function.json* fájl a függvény. Ez a fájl szerkesztésével módosítása a **speciális szerkesztő**.
 
-A következő táblázat az eseményindítók és kötések az Azure Functions által támogatott. 
+## <a name="supported-bindings"></a>Támogatott kötések
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-### <a name="example-queue-trigger-and-table-output-binding"></a>Példa: a várólista eseményindító és tábla kimeneti kötése
+Információ arról, hogy mely kötések még csak előzetes verziójúak vagy üzemi használatra jóváhagyott: [támogatott nyelv](supported-languages.md).
+
+## <a name="example-queue-trigger-and-table-output-binding"></a>Példa: a várólista eseményindító és tábla kimeneti kötése
 
 Tegyük fel, hogy egy új sort írhat Azure Table Storage, amikor az Azure Queue Storage egy új üzenet jelenik meg. Ebben a forgatókönyvben az Azure Queue valósítható eseményindító és az Azure Table Storage kimeneti kötése. 
 
@@ -126,9 +127,9 @@ Megtekintheti és szerkesztheti a tartalmát *function.json* az Azure portálon 
 
 További példákat és részleteinek integrálása az Azure Storage: [Azure Functions eseményindítók és kötések az Azure Storage](functions-bindings-storage.md).
 
-### <a name="binding-direction"></a>Kötési iránya
+## <a name="binding-direction"></a>Kötési iránya
 
-Az összes eseményindítók és kötések vannak egy `direction` tulajdonság:
+Az összes eseményindítók és kötések vannak egy `direction` tulajdonságot a *function.json* fájlt:
 
 - Az eseményindítók az irány mindig van kapcsolva`in`
 - Bemeneti és kimeneti kötések használhatják `in` és`out`
@@ -243,7 +244,7 @@ Például egy Azure Storage Üzenetsorába eseményindító támogatja a követk
 
 A megfelelő referencia-témakör ismerteti a metaadat-tulajdonságainak minden eseményindító részleteit. Dokumentáció is rendelkezésre áll, az a **integráció** a portál lapján, a a **dokumentáció** című szakaszt a kötési konfigurációja területen.  
 
-Például blob eseményindítók rendelkezik néhány késések, mivel segítségével várólista eseményindító futtassa a funkciót (lásd: [Blob Storage eseményindító](functions-bindings-storage-blob.md#blob-storage-trigger)). Az üzenetsorban lévő üzenetet tartalmaz a blob fájlnevét elindítani a. Használja a `queueTrigger` metaadat-tulajdonságnak adhat meg ezt a viselkedést összes konfigurációjáról, nem pedig a kódot.
+Például blob eseményindítók rendelkezik néhány késések, mivel segítségével várólista eseményindító futtassa a funkciót (lásd: [Blob Storage eseményindító](functions-bindings-storage-blob.md#trigger)). Az üzenetsorban lévő üzenetet tartalmaz a blob fájlnevét elindítani a. Használja a `queueTrigger` metaadat-tulajdonságnak adhat meg ezt a viselkedést összes konfigurációjáról, nem pedig a kódot.
 
 ```json
   "bindings": [

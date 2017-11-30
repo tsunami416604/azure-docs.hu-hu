@@ -17,17 +17,17 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: 8d021538b34c96c1d486c9508df9d4ee91404337
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 524193835bd5d350d6ac312fcc997f6c135abea1
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>SQL-adatbázis és a helyszíni SQL Server-adatbázisok közötti szinkronizálása a PowerShell használatával
 
 A PowerShell-példa konfigurálja az adatszinkronizálás szinkronizálása az Azure SQL Database és a helyszíni SQL Server-adatbázis között. 
 
-Ez a minta az Azure PowerShell 4.2 vagy újabb verziója szükséges. Futtatás `Get-Module -ListAvailable AzureRM` telepített verziója található. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ez a minta az Azure PowerShell 4.2 vagy újabb verziója szükséges. Futtatás `Get-Module -ListAvailable AzureRM` telepített verziója található. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) ismertető cikket.
  
 Futtatás `Login-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
 

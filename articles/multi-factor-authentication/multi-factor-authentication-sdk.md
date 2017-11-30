@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 11/29/2017
 ms.author: joflore
-ms.openlocfilehash: c9be948a7328b0f535d8683e6cdc695a01654a94
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: dc12037928d5cc62c35535d45cf674865e3bfe25
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Building a multi-factor Authentication egyéni alkalmazásokba (SDK)
 
 > [!IMPORTANT]
-> A, az Azure multi-factor Authentication Software Development Kit (SDK) rendelkezik lett bejelentéséig. Ez a funkció már nem lesz támogatott új ügyfelek esetén. Az ügyfelek aktuális továbbra is 2018. November 14. amíg a SDK használatával. Az SDK hívások időnek az elteltével sikertelen lesz. 
+> Bejelentettük az Azure Multi-Factor Authentication szoftverfejlesztői készlet (SDK) elavulását. Ez a funkció már nem lesz támogatott új ügyfelek esetén. A jelenlegi ügyfelek 2018. november 14-ig használhatják az SDK-t. Ezután az SDK felé indított hívások meghiúsulnak. 
 
 Az Azure multi-factor Authentication Software Development Kit (SDK) lehetővé teszi a kétlépéses ellenőrzést közvetlenül folyamatokba a bejelentkezés vagy a tranzakció alkalmazásai az Azure AD-bérlő létrehozása.
 

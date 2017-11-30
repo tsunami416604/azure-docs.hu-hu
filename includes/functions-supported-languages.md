@@ -1,5 +1,5 @@
-|Nyelv                                 |1-es verzió          |v2|
-|-----------------------------------------|------------|--|
+|Nyelv                                 |1.x         |2.x|
+|-----------------------------------------|------------|---|
 |[C#](../articles/azure-functions/functions-reference-csharp.md)|FE|Előzetes verzió|
 |[JavaScript](../articles/azure-functions/functions-reference-node.md)|FE|Előzetes verzió|
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|FE||

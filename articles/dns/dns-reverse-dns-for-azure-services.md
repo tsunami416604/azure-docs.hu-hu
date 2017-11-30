@@ -3,7 +3,7 @@ title: "Névkeresési DNS az Azure-szolgáltatásokhoz |} Microsoft Docs"
 description: "Az Azure-ban tárolt szolgáltatások DNS-névlekérdezés konfigurálása"
 services: dns
 documentationcenter: na
-author: jtuliani
+author: KumudD
 manager: timlt
 ms.service: dns
 ms.devlang: na
@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: jonatul
-ms.openlocfilehash: 63701e1ce0c1c6dcf2ce02ebce272b8280395e7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: 0c5d12e9d6b5ddbee2a930e4e537b8180b7a9c7b
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Az Azure-ban tárolt szolgáltatások címfeloldási DNS konfigurálása
 
@@ -28,9 +28,8 @@ Ez a forgatókönyv nem keverendő teszi [üzemeltetni a hozzárendelt IP-címta
 
 A cikk elolvasása előtt meg kell ismernie a [címfeloldási DNS- és támogatás az Azure-ban – áttekintés](dns-reverse-dns-overview.md).
 
-Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).
-* A Resource Manager üzembe helyezési modellel számítási erőforrások (például virtuális gépek, a virtuálisgép-méretezési csoportok vagy a Service Fabric-fürtök) PublicIpAddress erőforrás keresztül érhetők el. DNS-névlekérdezés úgy vannak konfigurálva, a PublicIpAddress "ReverseFqdn" tulajdonsággal.
-* A klasszikus üzembe helyezési modellel a számítási erőforrások elérhetők felhőalapú szolgáltatások segítségével. DNS-névlekérdezés úgy vannak konfigurálva, a felhőalapú szolgáltatás "ReverseDnsFqdn" tulajdonság használatával.
+Az Azure DNS számítási erőforrások (például virtuális gépek, a virtuálisgép-méretezési csoportok vagy a Service Fabric-fürtök) PublicIpAddress erőforrás keresztül érhetők el. DNS-névlekérdezés úgy vannak konfigurálva, a PublicIpAddress "ReverseFqdn" tulajdonsággal.
+
 
 Névkeresési DNS jelenleg nem támogatott az Azure App Service.
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/21/2017
 ms.author: raynew
-ms.openlocfilehash: 6db4ff050dbf8d4e08415226931e71f964525068
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 20aeb2073ad307952f92c8377bc9d78169f1756c
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="customize-an-assessment"></a>Egy értékelési testreszabása
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/27/2017
 
     **Beállítás** | **Részletek** | **Alapértelmezett**
     --- | --- | ---
-    **Célhely** | Az Azure-beli hely, amelyre át szeretné. |  Csak USA keleti régiója jelenleg támogatott.
+    **Célhely** | Az Azure-beli hely, amelyre át szeretné. |  USA 2. nyugati alapértelmezett helye.
     **Adattároló redundanciája, amely** | Az Azure virtuális gépek által használt, az áttelepítés után tárolási típusát. | Csak [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) replikációs jelenleg támogatott.
     **Megerősítő tényező** | Megerősítő tényező értékelés során használt puffer. Ezzel a fiókot a műveleteket, mint az határozza használati, a rövid teljesítményelőzményei, a későbbi használat valószínűleg növelése. | Alapértelmezett érték 1.3 x.
     **Teljesítmény-előzmények** | Idő teljesítményelőzményei kiértékelésekor. | Alapértelmezés szerint egy hónap.

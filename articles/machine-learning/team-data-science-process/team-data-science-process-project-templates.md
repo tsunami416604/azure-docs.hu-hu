@@ -1,6 +1,6 @@
 ---
 title: "Team adatok tudományos folyamat projekttervezés - Azure |} Microsoft Docs"
-description: TBD
+description: "A Microsoft Project és Excel sablonok tervezze meg, és adatok tudományos projektek kezelése."
 documentationcenter: 
 author: bradsev
 manager: cgronlun
@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 11/27/2017
 ms.author: bradsev;
-ms.openlocfilehash: 554e653a1f1b060743a2f461327c58e9a60a56b1
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 7f99b0bc36a08f52148f032567771f21c56ce42e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-project-planning"></a>Vonja össze az adatokat tudományos folyamat projekt tervezése
 
-A csapat adatok tudományos folyamat (TDSP) biztosít egy életciklussal, az adatok tudományos projektek fejlesztésének szerkezetének. Az életciklus, projektek általában hajtható végre, gyakran ismételt fő szakaszait vázolja fel:
+A csapat adatok tudományos folyamat (TDSP) biztosít egy életciklussal, az adatok tudományos projektek fejlesztésének szerkezetének. Ez a cikk ismerteti, amelyek segítenek a Microsoft Project és Excel sablonok mutató hivatkozásokat tartalmaz tervezze meg és kezelheti a projekt szakaszok.
+
+Az életciklus, projektek általában hajtható végre, gyakran ismételt fő szakaszait vázolja fel:
 
 - Az üzleti igények felmérése
 - Adatok megszerzését és ismertetése
@@ -31,8 +33,7 @@ A csapat adatok tudományos folyamat (TDSP) biztosít egy életciklussal, az ada
 
 Tekintse meg a leírását, ezek a szakaszok [a csapat adatok tudományos folyamat életciklus](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle).
 
-Ez a cikk ismerteti, amelyek segítenek a Microsoft Project és Excel sablonok mutató hivatkozásokat tartalmaz tervezze meg és kezelheti a projekt szakaszok. 
-
+ 
 ## <a name="microsoft-project-template"></a>A Microsoft Project sablon
 
 A Microsoft Project sablon az adatok tudományos feldolgozáshoz érhető el itt: [a Microsoft Project sablon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
@@ -54,7 +55,7 @@ Ezeket a sablonokat a saját kockázatára használhatja. A [szokásos nyilatkoz
 
 ## <a name="next-steps"></a>Következő lépések
 
-[A végrehajtási adatok tudományos projektek](project-execution.md) Ez a dokumentum ismerteti az Team tudományos folyamat használatával egy tudományos adatprojekthez egy rendszeres, a szabályozott verzióját és az együttműködési módot a projektcsapattal végrehajtásához.
+[Az adatok tudományos projektek gyors fejlesztési](agile-development.md) Ez a dokumentum ismerteti az Team tudományos folyamat használatával egy tudományos adatprojekthez egy rendszeres, a szabályozott verzióját és az együttműködési módot a projektcsapattal végrehajtásához.
 
 Forgatókönyvek, amelyek azt mutatják, a folyamat lépései **meghatározott forgatókönyvek** is rendelkezésre állnak. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) témakör. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
 

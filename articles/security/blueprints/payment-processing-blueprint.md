@@ -12,22 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 11/29/2017
 ms.author: frasim
-ms.openlocfilehash: f6131d7f177c3ca02cf8dfe5d140df5e6d8a7ffa
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 7f85c8b0377e57f08044bac41dbddbbedb7a4f55
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/30/2017
 ---
-# <a name="payment-processing-blueprint-for-pci-dss-compliant-environments"></a>Fizetés feldolgozása szerkezeti terve PCI DSS-kompatibilis környezetben
+# <a name="azure-blueprint-automation-payment-processing-for-pci-dss-compliant-environments"></a>Az Azure tervezetének Automation: Fizetési PCI DSS-kompatibilis környezetek számára történő feldolgozásakor.
 
-A fizetés feldolgozása szerkezeti terve PCI DSS-kompatibilis környezetben nyújt útmutatást a központi telepítés bizalmas fizetőkártyák adatainak kezelésére alkalmas PCI DSS-kompatibilis Platform,--szolgáltatás (PaaS) környezetben. Bővíthető egy közös referencia-architektúrában, és arra tervezték, hogy egyszerűsítése érdekében a Microsoft Azure elfogadását. A legalapvetőbb architektúra mutatja be egy végpont megoldás a felhőalapú megközelítése az terheket és a központi telepítési költségek csökkentése keresést szervezetek igényeinek.
+## <a name="overview"></a>Áttekintés
 
-A legalapvetőbb architektúra megfelel az szigorú fizetési kártya Industry Data Security Standards szabvány (PCI DSS 3.2) a gyűjtemény, tárolására és fizetőkártyák adatainak lekérése. A megfelelő kezelését hitelkártya adatokkal (ideértve a számot, lejárati és egyéb ellenőrzési adatainak), egy-végpontok Azure-alapú megoldás központilag telepített biztonságos, megfelelő többrétegű környezetben mutatja be. További információ a PCI DSS 3.2 követelmények és a megoldás: [PCI DSS követelmények – magas szintű áttekintés](pci-dss-requirements-overview.md).
+A fizetés feldolgozása PCI DSS-kompatibilis környezetben nyújt útmutatást a központi telepítés bizalmas fizetőkártyák adatainak kezelésére alkalmas PCI DSS-kompatibilis Platform,--szolgáltatás (PaaS) környezetben. Bővíthető egy közös referencia-architektúrában, és arra tervezték, hogy egyszerűsítése érdekében a Microsoft Azure elfogadását. Ez tervezetének mutatja be egy végpont megoldás a felhőalapú megközelítése az terheket és a központi telepítési költségek csökkentése keresést szervezetek igényeinek.
 
-Ebbe az architektúrába célja, hogy az ügyfelek úgy, hogy az egyedi követelményeket alapjaként szolgálnak, és nem használható mint – egy termelési környezetben. Erre a környezetre módosítás nélkül az alkalmazások központi telepítése nincs teljesen teljesítik a PCI DSS-kompatibilis megoldás követelményeinek. Vegye figyelembe a következőket:
-- A legalapvetőbb architektúra PCI DSS megfelelő módon használja a Microsoft Azure ügyfelek alapterv.
+Ez tervezetének célja segíteni követelményeinek teljesítése érdekében szigorú fizetési kártya Industry Data Security Standards szabvány (PCI DSS 3.2) a gyűjtemény, tárolására és fizetőkártyák adatainak lekérése. A megfelelő kezelését hitelkártya adatokkal (ideértve a számot, lejárati és egyéb ellenőrzési adatainak), egy-végpontok PaaS Azure-alapú megoldás központilag telepített biztonságos, megfelelő többrétegű környezetben mutatja be. További információ a PCI DSS 3.2 követelmények és a megoldás: [PCI DSS követelmények – magas szintű áttekintés](pci-dss-requirements-overview.md).
+
+Ez tervezetének célja, hogy az ügyfelek számára meghatározott követelmények jobb megértése érdekében alapjaként szolgálnak, és nem használható mint-éles környezetben van. Erre a környezetre módosítás nélkül az alkalmazások központi telepítése nincs teljesen teljesítik a egyéni megoldások PCI DSS-kompatibilis megoldás követelményeinek. Vegye figyelembe a következőket:
+- Ez tervezetének biztosít PCI DSS megfelelő módon használja a Microsoft Azure ügyfelek alapterv.
 - PCI DSS-megfelelőség elérésében megköveteli, hogy egy akkreditált minősített biztonsági végző (QSA) tanúsítására üzemi ügyfél megoldást.
 - Az ügyfelek végző megfelelő biztonsági és megfelelőségi értékelést használatával készített e eligazodást architektúra követelmények változhatnak megoldások minden ügyfél megvalósítása vagy földrajzi hely alapján.  
 
@@ -41,7 +43,7 @@ A legalapvetőbb architektúra a következő összetevőkből áll:
 - **A központi telepítési sablonok**. Ebben a felállásban [Azure Resource Manager-sablonok](/azure/azure-resource-manager/resource-group-overview#template-deployment) automatikusan központi telepítésével a architektúra összetevői a Microsoft Azure konfigurációs paraméterek megadásával a telepítés során.
 - **Automatikus központi telepítési parancsfájlok**. Ezek a parancsfájlok segítségével a végpont megoldás üzembe helyezéséhez. A parancsfájlok foglalják magukban:
     - A házirendmodul-telepítésének és [globális rendszergazda](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) telepítési parancsfájl használatával telepítse, és győződjön meg arról, hogy a szükséges PowerShell-modulok és a globális rendszergazdai szerepkörök helyesen vannak konfigurálva.
-    - A végpont megoldás, egy .zip fájl és a .bacpac fájlba, amelyek tartalmaznak egy előre elkészített bemutató webalkalmazás SQL adatbázis tartalommal keresztül megadott PowerShell-parancsfájl telepítés szolgál. Ez a megoldás forráskódját készen áll a felülvizsgálatra [Itt](https://github.com/Microsoft/azure-sql-security-sample).
+    - Telepítés PowerShell-parancsfájl használata a végpont megoldás, .zip fájlt és egy előre elkészített bemutató webalkalmazás tartalmazó .bacpac fájlba keresztül megadott [SQL adatbázis minta](https://github.com/Microsoft/azure-sql-security-sample). a tartalom. Ez a megoldás forráskódját készen áll a felülvizsgálatra [fizetés feldolgozása tervezetének kód tárház][code-repo]. 
 
 ## <a name="architectural-diagram"></a>Architekturális diagramja
 
@@ -49,9 +51,9 @@ A legalapvetőbb architektúra a következő összetevőkből áll:
 
 ## <a name="user-scenario"></a>A felhasználói forgatókönyv
 
-A legalapvetőbb architektúra az alábbi használati eset megoldást.
+Szerkezeti terve az alábbi használati eset megoldást.
 
-> Ez a forgatókönyv bemutatja, hogyan egy fiktív webes tároló áthelyezése az Azure-alapú megoldáshoz feldolgozása fizetési kártya. A megoldás kezeli az alapvető felhasználói adatokat, beleértve a fizetési adatok gyűjteménye. A megoldás nem dolgozza fel a kártya tulajdonosát adatokkal; kifizetések Miután az adatgyűjtés a következők ügyfelei felelősek az kezdeményezése és processzorral fizetési tranzakciók végrehajtását. További információkért lásd: a "Tekintse át és útmutatást a megvalósítás" dokumentumot a [Microsoft megbízható portálon](http://aka.ms/stp).
+> Ez a forgatókönyv bemutatja, hogyan egy fiktív webes tároló áthelyezése az Azure-alapú PaaS megoldáshoz feldolgozása fizetési kártya. A megoldás kezeli az alapvető felhasználói adatokat, beleértve a fizetési adatok gyűjteménye. A megoldás nem dolgozza fel a kártya tulajdonosát adatokkal; kifizetések Miután az adatgyűjtés a következők ügyfelei felelősek az kezdeményezése és processzorral fizetési tranzakciók végrehajtását. További információkért lásd: a ["Tekintse át és útmutatást a megvalósítás"](https://aka.ms/pciblueprintprocessingoverview).
 
 ### <a name="use-case"></a>Használati eset
 Egy kis webes tároló nevű *Contoso webes tároló* helyezze át a felhőbe a fizetési rendszer készen áll. Azok a kijelölt Microsoft Azure megvásárlása folyamat futtatására és egy adminisztrátor hitelkártya fizetési gyűjteni az ügyfeleknek.
@@ -76,9 +78,9 @@ Felhasználói szerepkörök bemutatják a használati eset, és adja meg a felh
 | Név: |`Global Admin Azure PCI Samples`|
 |Felhasználó típusa:| `Subscription Administrator and Azure Active Directory Global Administrator`|
 
-* A rendszergazdai fiók nem tudja olvasni a hitelkártyaadatokat láthatóak. Minden műveletek bekerülnek a naplóba.
-* A rendszergazdai fiók nem kezelése, és jelentkezzen be az SQL-adatbázis.
-* A rendszergazdai fiókot az Active Directory és az előfizetés kezelheti.
+- A rendszergazdai fiók nem tudja olvasni a hitelkártyaadatokat láthatóak. Minden műveletek bekerülnek a naplóba.
+- A rendszergazdai fiók nem kezelése, és jelentkezzen be az SQL-adatbázis.
+- A rendszergazdai fiókot az Active Directory és az előfizetés kezelheti.
 
 #### <a name="role-sql-administrator"></a>Szerepkör: SQL-rendszergazdai
 
@@ -90,8 +92,8 @@ Felhasználói szerepkörök bemutatják a használati eset, és adja meg a felh
 |Vezetéknév: |`PCI Samples`|
 |Felhasználó típusa:| `Administrator`|
 
-* A sqladmin fiók nem megtekintése szűretlen hitelkártya adatait. Minden műveletek bekerülnek a naplóba.
-* A sqladmin fiók SQL-adatbázis segítségével kezelhető.
+- A sqladmin fiók nem megtekintése szűretlen hitelkártya adatait. Minden műveletek bekerülnek a naplóba.
+- A sqladmin fiók SQL-adatbázis segítségével kezelhető.
 
 #### <a name="role-clerk"></a>Szerepkör: adminisztrátor
 
@@ -113,13 +115,13 @@ Edna Benson a recepciós és üzleti kezelő. Győződjön meg arról, hogy ügy
 
 ### <a name="contoso-webstore---estimated-pricing"></a>Contoso webes tároló - becsült díjszabása
 
-A legalapvetőbb architektúra és példa-webalkalmazást egy havi díj struktúra és figyelembe kell venni a megoldás osztályozás óránként használati költségekkel rendelkeznek. Ezek a költségek használatával megbecsülhető a [Azure költségszámítás Számológép](https://azure.microsoft.com/pricing/calculator/). Től szeptember 2017, ez a megoldás becsült havi költsége van ~ $900. Ezek a költségek a használat mennyisége alapján változhatnak, és van változhatnak. Az ügyfél a becsült havi költségek kiszámításához időpontban a központi telepítés pontosabb becslést háruló. 
+A legalapvetőbb architektúra és példa-webalkalmazást egy havi díj struktúra és figyelembe kell venni a megoldás osztályozás óránként használati költségekkel rendelkeznek. Ezek a költségek használatával megbecsülhető a [Azure költségszámítás Számológép](https://azure.microsoft.com/pricing/calculator/). Től szeptember 2017, ez a megoldás becsült havi költsége van ~ $2500 Ez magában foglalja a $1000/mo használati költség ASE 2-es verzió. Ezek a költségek a használat mennyisége alapján változhatnak, és van változhatnak. Az ügyfél a becsült havi költségek kiszámításához időpontban a központi telepítés pontosabb becslést háruló. 
 
 Ebben a megoldásban használt Azure-szolgáltatásokat. Az üzembe helyezési architektúrája részleteit találhatók a [üzembe helyezési architektúrája](#deployment-architecture) szakasz.
 
 >- Application Gateway
 >- Azure Active Directory
->- App Service-környezet
+>- Az App Service-környezet v2
 >- OMS szolgáltatáshoz
 >- Azure Key Vault
 >- Network Security Groups (Hálózati biztonsági csoportok)
@@ -234,7 +236,7 @@ Az Azure SQL Database biztonsági szolgáltatásaival kapcsolatos további tudni
 
 [Az Azure App Service](/azure/app-service/) egy felügyelt szolgáltatás webes alkalmazások telepítéséhez. A Contoso webes tároló alkalmazás van telepítve egy [App Service Web App](/azure/app-service-web/app-service-web-overview).
 
-[Az Azure App Service környezetben (ASE)](/azure/app-service/app-service-environment/intro) egy App Service szolgáltatás egy teljesen elkülönített és dedikált környezetben történő biztonságos futtatására, nagy méretekben App Service-alkalmazásokhoz. egy prémium szintű PCI DSS-kompatibilitás engedélyezése a legalapvetőbb architektúra segítségével service-csomagot is.
+[Az Azure App Service Environment-környezet (ASE v2)](/azure/app-service/app-service-environment/intro) egy App Service szolgáltatás egy teljesen elkülönített és dedikált környezetben történő biztonságos futtatására, nagy méretekben App Service-alkalmazásokhoz. egy prémium szintű PCI DSS-kompatibilitás engedélyezése a legalapvetőbb architektúra segítségével service-csomagot is.
 
 ASEs csak az egyetlen ügyfél-alkalmazások futtatása érdekében elkülönített, és mindig telepített virtuális hálózatba. Ügyfelek mindkét bejövő és kimenő hálózati forgalom részletes szabályozhatják, és alkalmazások képes kapcsolatot létrehozni a nagy sebességű biztonságos helyszíni vállalati erőforrások virtuális hálózatokon keresztül.
 
@@ -270,7 +272,7 @@ A virtuális gép létrehozása egy jumpbox (megerősített állomás) a követk
 
 [A Microsoft Antimalware](/azure/security/azure-security-antimalware) Azure Cloud Services és a virtuális gépek esetén, amelyek segítségével azonosításához és eltávolításához a vírusok, kémprogramok és más, kártevő szoftverek, konfigurálható riasztást küld, ha ismert a valós idejű védelem funkció kártevő vagy nemkívánatos szoftverek próbálják telepíteni magukat az Azure rendszeren.
 
-### <a name="operations-management"></a>Műveletek kezelése
+### <a name="operations-management"></a>Operatív ügyek
 
 #### <a name="application-insights"></a>Application Insights
 
@@ -282,7 +284,7 @@ Használjon [Application Insights](https://azure.microsoft.com/services/applicat
 
 #### <a name="oms-solutions"></a>OMS-megoldások
 
-A következő OMS-megoldások előre telepítve van a legalapvetőbb architektúra részeként:
+A további OMS-megoldások legyen tekinthető és konfigurálva:
 - [Activity Log Analytics](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
 - [Azure hálózatelemzés](/azure/log-analytics/log-analytics-azure-networking-analytics?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 - [Azure SQL Analytics](/azure/log-analytics/log-analytics-azure-sql)
@@ -297,7 +299,7 @@ A következő OMS-megoldások előre telepítve van a legalapvetőbb architektú
 
 Alapértelmezett telepítési célja, hogy a security center javaslatait, egy megfelelő és biztonságos konfigurációs állapotát jelző alapértékek biztosítása. Adatok gyűjtése az Azure Security Center engedélyezheti. További információkért lásd: [az Azure Security Center – első lépések](/azure/security-center/security-center-get-started).
 
-## <a name="deploy-the-solution"></a>A megoldás üzembe helyezéséhez
+## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
 A megoldás telepítéséhez összetevők érhetők el a [PCI tervezetének kód tárház][code-repo]. A központi telepítés a legalapvetőbb architektúra keresztül Microsoft PowerShell v5 több lépésre van szükség. A webhelyhez való kapcsolódás, (például contoso.com) egy egyéni tartománynevet kell megadnia. Ez adott meg a `-customHostName` váltani a 2. További információkért lásd: [vásároljon egy egyéni tartománynevet, az Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Egy egyéni tartománynevet nem sikeres telepítéséhez és futtatásához szükséges, de nem lehet kapcsolódni a webhelyhez bemutatási célokra.
 
@@ -338,7 +340,7 @@ Erősen ajánlott, hogy egy tisztán PowerShell üzembe helyezéséhez használh
     
     Részletes használati útmutatásért lásd: [parancsfájl-utasításokat - telepítése és konfigurálása Azure-erőforrások](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
     
-3. Naplózás és figyelés OMS Szolgáltatáshoz. Miután a megoldást már telepítették, egy [a Microsoft Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) munkaterület megnyitása, és a megoldás tárházban sablonjainak minta segítségével bemutatják, hogyan lehet a figyelési irányítópult konfigurálva. A minta OMS sablonok tekintse meg a [omsDashboards mappa](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
+3. Naplózás és figyelés OMS Szolgáltatáshoz. Miután a megoldást már telepítették, egy [a Microsoft Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) munkaterület megnyitása, és a megoldás tárházban sablonjainak minta segítségével bemutatják, hogyan lehet a figyelési irányítópult konfigurálva. A minta OMS sablonok tekintse meg a [omsDashboards mappa](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Vegye figyelembe, hogy az adatokat az OMS-sablonok esetében megfelelően telepítendő kell gyűjteni. Ez akár is igénybe vehet egy óráig vagy tovább attól függően, hogy a hely tevékenység.
  
     Az OMS-naplózás beállításakor vegye figyelembe, beleértve az ezekhez az erőforrásokhoz:
  
@@ -355,11 +357,11 @@ Erősen ajánlott, hogy egy tisztán PowerShell üzembe helyezéséhez használh
     
 ## <a name="threat-model"></a>Fenyegetések modellezése
 
-Egy adatfolyam-diagram (DFD) és a Contoso webes tároló a minta fenyegetések modellezése érhetők el a dokumentumok szakaszában a [kód tárház][code-repo].
+Egy adatfolyam-diagram (DFD) és a Contoso webes tároló a minta fenyegetések modellezése [fizetés feldolgozása tervezetének fenyegetések modellezése](https://aka.ms/pciblueprintthreatmodel).
 
 ![](images/pci-threat-model.png)
 
-További információkért lásd: a [PCI tervezetének fenyegetések modellezése](https://aka.ms/pciblueprintthreatmodel).
+
 
 ## <a name="customer-responsibility-matrix"></a>Ügyfél felelősségi mátrix
 
@@ -376,7 +378,10 @@ A megoldás Coalfire Systems, Inc. (PCI DSS minősített biztonsági vizsgáztat
 - Ez a dokumentum csak tájékoztatási célokat szolgál. A MICROSOFT ÉS AVYAN ELLENŐRIZZE NINCS SEMMILYEN KIFEJEZETT KIFEJEZETT, VÉLELMEZETT VAGY FELELŐSSÉGET A JELEN DOKUMENTUMBAN SZEREPLŐ INFORMÁCIÓK. Ez a dokumentum biztosított ",-van." Információk és nézetek ebben a dokumentumban, beleértve az URL-CÍMEK és más internetes webhelyet, értesítés nélkül változhatnak. Ez a dokumentum olvasásakor az ügyfelek az alkalmazást saját felelősségére használja.  
 - Ez a dokumentum nem biztosít semmilyen jogot semmilyen Microsoft vagy Avyan termék vagy a megoldások található szellemi tulajdonhoz rendelkező ügyfelek.  
 - Az ügyfelek azonban másolható és ez a dokumentum belső hivatkozási célokra használja.  
-- Bizonyos e dokumentumban szereplő ajánlásokhoz eredményezhet megnövekedett adat-, hálózati vagy számítási erőforrás-használat az Azure-ban, és előfordulhat, hogy növelje az ügyfél Azure licencek vagy előfizetések költségeit.  
+
+  > [!NOTE]
+  > Bizonyos e dokumentumban szereplő ajánlásokhoz eredményezhet megnövekedett adat-, hálózati vagy számítási erőforrás-használat az Azure-ban, és előfordulhat, hogy növelje az ügyfél Azure licencek vagy előfizetések költségeit.  
+
 - Ebben a dokumentumban a megoldás szándék szerint egy eligazodást architektúra, és nem használható mint-éles célokat szolgál. PCI-megfelelőséget elérése érdekében, hogy az ügyfelek vegye fel a kapcsolatot a minősített biztonsági végző igényel.  
 - Összes felhasználói nevét, a tranzakció rekordok és a kapcsolódó adatokat ezen a lapon nem valóságosak, a legalapvetőbb architektúra hoztak létre, és csak illusztrációs célokat szolgálnak. Nincs valós association vagy a kapcsolat célja, és nincs műve.  
 - Ez a megoldás fejlesztette ki közösen Microsoft és a Avyan tanácsadás, és, akkor a [MIT licenccel](https://opensource.org/licenses/MIT).
@@ -384,8 +389,8 @@ A megoldás Coalfire Systems, Inc. (PCI DSS minősített biztonsági vizsgáztat
 
 ### <a name="document-authors"></a>A dokumentum szerzője
 
-* *Frank Simorjay (Microsoft)*  
-* *Gururaj Pandurangi (Avyan tanácsadás)*
+- *Frank Simorjay (Microsoft)*  
+- *Gururaj Pandurangi (Avyan tanácsadás)*
 
 
 [code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "Kód tárház"

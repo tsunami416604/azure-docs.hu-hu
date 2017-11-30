@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e3ad8a5c08b739d8b2c6e224db0c8f88c1893ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2d6a0b00704e1d97be9a4c5bd00ba37374419e5
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="secure-a-web-server-with-ssl-certificates-on-a-linux-virtual-machine-in-azure"></a>Biztonságos Linux virtuális gépre az Azure-ban SSL-tanúsítványokkal egy webkiszolgáló
 Biztonságos webkiszolgálók, a Secure Sockets később (SSL) tanúsítvány használható webes forgalom titkosításához. E SSL-tanúsítványokat tárolhatja az Azure Key Vault, és a Linux virtuális gépek (VM) tanúsítványok biztonságos telepítéshez engedélyezése az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -60,7 +60,7 @@ az keyvault create \
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Egy tanúsítvány jön létre, és tárolja a Key Vault
-Az éles környezetben való használathoz, importálnia kell a egy érvényes tanúsítvány megbízható-szolgáltató által aláírt [az keyvault tanúsítvány importálása](/cli/azure/certificate#import). Ebben az oktatóanyagban a következő példa bemutatja, hogyan hozhat létre egy önaláírt tanúsítványt [az keyvault tanúsítvány létrehozása](/cli/azure/certificate#create) , amely használja az alapértelmezett házirend:
+Az éles környezetben való használathoz, importálnia kell a egy érvényes tanúsítvány megbízható-szolgáltató által aláírt [az keyvault tanúsítvány importálása](/cli/azure/keyvault/certificate#az_keyvault_certificate_import). Ebben az oktatóanyagban a következő példa bemutatja, hogyan hozhat létre egy önaláírt tanúsítványt [az keyvault tanúsítvány létrehozása](/cli/azure/keyvault/certificate#az_keyvault_certificate_create) , amely használja az alapértelmezett házirend:
 
 ```azurecli-interactive 
 az keyvault certificate create \

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 305a0529b6f6ad8bd96ac10da5f7ebc48317df45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0aa16e9d7472d2d8c3c251e60a506a7f4223ac1d
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Application Gateway létrehozása az Azure Resource Manager-sablonokkal
 
@@ -30,9 +30,9 @@ ms.lasthandoff: 10/11/2017
 
 Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen találhatóak. Az Application Gateway számos alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosít, beleértve a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a Secure Sockets Layer- (SSL-) alapú kiszervezést, az egyéni állapotmintákat, a többhelyes támogatást és még sok mást. Támogatott funkció teljes listájának megkereséséhez látogasson el a [Alkalmazásátjáró áttekintése](application-gateway-introduction.md)
 
-Ez a cikk útmutatást nyújt a letöltés és módosítani egy meglévő Azure Resource Manager-sablont a Githubból, és a sablon a Githubon, PowerShell és az Azure parancssori felület telepítése.
+Ez a cikk útmutatást nyújt a letöltés, és módosítja a meglévő [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) a Githubról, majd a sablon a Githubon, PowerShell és az Azure parancssori felület telepítése.
 
-Ha közvetlenül a GitHubból helyezi üzembe az Azure Resource Manager-sablont változtatások nélkül, ugorjon a sablont a GitHubból telepítő lépésre.
+Egyszerűen telepít a sablon közvetlenül a Githubból módosítások nélkül, ha a sablont a Githubból telepítendő kihagyása.
 
 ## <a name="scenario"></a>Forgatókönyv
 
@@ -75,9 +75,6 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
    * **type**. A sablon által létrehozott erőforrástípus. Ebben az esetben a típus `Microsoft.Network/applicationGateways`, amely olyan átjárót jelöli.
    * **Név** Az erőforrás neve. Figyelje meg a `[parameters('applicationGatewayName')]`, ami azt jelenti, a név biztosított bemenetként, vagy egy paraméterfájl üzembe helyezése során.
    * **properties**. Az erőforrás tulajdonságainak listája. A sablon az Application Gateway létrehozása során a virtuális hálózatot és a nyilvános IP-címet használja.
-
-   > [!NOTE]
-   > További információt a sablonok: [Resource Manager-sablonok referenciája](/templates/)
 
 1. Lépjen vissza [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Kattintson a **azuredeploy-parameters.json**, és kattintson a **RAW**.

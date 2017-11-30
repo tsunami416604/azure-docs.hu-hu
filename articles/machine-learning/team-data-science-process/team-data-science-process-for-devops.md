@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 11/21/2017
 ms.author: bradsev;BuckWoody
-ms.openlocfilehash: e043de0aa4ed861139f50291a98c3300574e6078
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 2ab36da70e2c08b770973f4c4d33eddfdebed9e1
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Team adatok tudományos folyamat fejlesztői műveleteihez
 
-Ez a cikk ismerteti a fejlesztői műveletek (DevOps) funkciók jellemző Advanced Analytics és kognitív szolgáltatások megoldás megvalósítását. Szolgáltatáskatalógus ismertetése az tudományos folyamat és Platform, a DevOps folyamatok és a DevOps Toolchain Adattudomány és AI projektek és megoldások vonatkozó témakörök hivatkozik.
+Ez a cikk ismerteti a fejlesztői műveletek (DevOps) funkciók jellemző Advanced Analytics és kognitív szolgáltatások megoldás megvalósítását. Ezek oktatási anyagok a csapat adatok tudományos folyamat (TDSP) és a Microsoft és az nyílt forráskódú szoftvereket és az eszközök gazdag, amelyek hasznosak a képviseli, végrehajtása és a szállító tudományos megoldás kapcsolódó. Témakörök, amelyek fedik le a DevOps Toolchain jellemző adatok tudományos és AI projektek és megoldások hivatkozik.
 
 ## <a name="lesson-path"></a>Lecke elérési útja
 A következő táblázat nyújt útmutatást, megadott szinten segíti a DevOps céljait, amelyek szükségesek ahhoz, hogy az Azure technológiákkal adatok tudományos megoldások megvalósítását.
@@ -33,7 +33,7 @@ A következő táblázat nyújt útmutatást, megadott szinten segíti a DevOps 
 | A Microsoft Azure Platform speciális elemzésekre ismertetése | Adatkezelés                  
 | [Ezt a hivatkozást biztosít, és elemzési használt Azure Data Factory hozhat létre adatcsatornák összegyűjtésére és a szolgáltatások adatainak levezényelni áttekintése](../../data-factory/data-factory-introduction.md)                                 | A Microsoft Azure Data Factory                                                                                                                                                                                                                                                                          | Észlelt                                             | Általános technológia háttér, ismeretét data-megoldások ismeretét informatikai projektek és a megoldás megvalósítása                                                                                                  |
 |                                                                |                                         
-| [Ez az útmutató ismerteti az Azure Data Catalog, amelyek segítségével kezelheti az adatforrások metaadatait és dokumentálása áttekintése](../../data-catalog/data-catalog-what-is-data-catalog.md)                                        | A Microsoft Azure Data Catalog                                                                                                                                                                                                                                                                          | Haladó                                            | Általános technológia háttér data-megoldások ismeretét, relációs adatbázis Management Systems (RDBMS) és a nosql-alapú adatforrások ismerete                                                                    |
+| [Ez az útmutató ismerteti az Azure Data Catalog, amelyek segítségével kezelheti az adatforrások metaadatait és dokumentálása áttekintése](../../data-catalog/data-catalog-what-is-data-catalog.md)                                        | Microsoft Azure Data Catalog                                                                                                                                                                                                                                                                          | Haladó                                            | Általános technológia háttér data-megoldások ismeretét, relációs adatbázis Management Systems (RDBMS) és a nosql-alapú adatforrások ismerete                                                                    |
 |                                                                |                                         
 | [Ez az útmutató ismerteti az Azure Event Hubs rendszer áttekintését és hogyan, és az adatok betöltési megoldásba történő használatával](../../event-hubs/event-hubs-what-is-event-hubs.md)                                                       | Azure Event Hubs                                                                                                                                                                                                                                                                                      | Haladó                                            | Általános technológia háttér, a megoldás ismeretét, relációs adatbázis Management Systems (RDBMS) és a NoSQL-adatokat ismeretét adatforrásokat, az eszközök internetes hálózatát (IoT) terminológia és használja a tesztkörnyezet |
 |                                                                | Big Data-tárolók                         

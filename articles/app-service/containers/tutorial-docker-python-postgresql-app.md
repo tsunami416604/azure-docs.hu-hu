@@ -9,14 +9,14 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 05/03/2017
+ms.date: 11/28/2017
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: 55d6f1d10ff08fd8f0ea4aba775a96549192cef2
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 89e2192b3b5c978da4a41dea51d0ab70181b500d
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Az Azure-ban Docker Python és PostgreSQL webalkalmazás létrehozása
 
@@ -39,7 +39,7 @@ Az oktatóanyag elvégzéséhez:
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="test-local-postgresql-installation-and-create-a-database"></a>Adatbázis létrehozása és helyi PostgreSQL-telepítés sikerességének ellenőrzése
 
@@ -121,7 +121,7 @@ Ebben a lépésben létrehoz egy PostgreSQL-adatbázisban az Azure-ban. Az alkal
 
 ### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Most kívánja használni az Azure CLI 2.0 létrehozása a Python-alkalmazás a tárolók a webalkalmazás üzemeltetéséhez szükséges erőforrásokat.  Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/#login) paranccsal, és kövesse a képernyőn látható utasításokat.
+Most kívánja használni az Azure CLI 2.0 létrehozása a Python-alkalmazás a tárolók a webalkalmazás üzemeltetéséhez szükséges erőforrásokat.  Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/#az_login) paranccsal, és kövesse a képernyőn látható utasításokat.
 
 ```azurecli
 az login
@@ -129,7 +129,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md) az [az group create](/cli/azure/group#create) paranccsal.
+Hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md) az [az group create](/cli/azure/group#az_group_create) paranccsal.
 
 [!INCLUDE [Resource group intro](../../../includes/resource-group.md)]
 
@@ -139,7 +139,7 @@ A következő példa egy erőforráscsoportot az USA nyugati régiója régióba
 az group create --name myResourceGroup --location "West US"
 ```
 
-Használja a [az App Service lista-helyek](/cli/azure/appservice#list-locations) lista elérhető helyről az Azure parancssori felület parancsot.
+Használja a [az App Service lista-helyek](/cli/azure/appservice#az_appservice_list_locations) lista elérhető helyről az Azure parancssori felület parancsot.
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 
@@ -260,7 +260,7 @@ Docker visszaigazolja sikeresen létrejött a tároló.
 Successfully built 7548f983a36b
 ```
 
-Adatbázis környezeti változók hozzá egy környezeti változó fájl *db.env*. Az alkalmazás az Azure-ban PostgreSQL adatbázisba fog csatlakozni.
+Adatbázis környezeti változók hozzá egy környezeti változó fájl *db.env*. Az alkalmazás PostgreSQL éles adatbázis az Azure-adatbázishoz csatlakozik.
 
 ```text
 DBHOST="<postgresql_name>.postgres.database.azure.com"
@@ -364,7 +364,7 @@ Ebben a lépésben alkalmazást telepít központilag a Docker tároló-alapú P
 
 ### <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
-Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan#create) paranccsal.
+Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) paranccsal.
 
 [!INCLUDE [app-service-plan](../../../includes/app-service-plan-linux.md)]
 
@@ -414,7 +414,7 @@ Az App Service-csomag létrehozásakor az Azure parancssori felület kapcsolatos
 
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A webalkalmazás létrehozása a *myAppServicePlan* az App Service-csomag a [az webalkalmazás létrehozása](/cli/azure/webapp#create) parancsot.
+A webalkalmazás létrehozása a *myAppServicePlan* az App Service-csomag a [az webalkalmazás létrehozása](/cli/azure/webapp#az_webapp_create) parancsot.
 
 A webes alkalmazás lehetővé teszi az üzemeltető adható meg a kód telepítésére, és biztosítja, hogy a telepített alkalmazás megtekintése egy URL-CÍMÉT. A webalkalmazás létrehozásához használja.
 
@@ -445,7 +445,7 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 Az oktatóanyag korábbi részében definiált környezeti változók a PostgreSQL-adatbázishoz való kapcsolódáshoz.
 
-Az App Service-ben, a környezeti változók beállítása _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config#set) parancsot.
+Az App Service-ben, a környezeti változók beállítása _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config#az_webapp_config_appsettings_set) parancsot.
 
 A következő példa az adatbázis-kapcsolat adatai Alkalmazásbeállítások adja meg. Is használja a *PORT* PORT 5000-leképezés változót a Docker-tároló, a 80-as PORT HTTP-forgalom fogadására.
 

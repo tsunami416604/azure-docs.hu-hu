@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2017
+ms.date: 11/29/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 16ce69855aa7505f52cd9d01dcd0843784fcb706
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: f084ea3a9fb97a334f3dec90f2c9020a842bc27c
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="controls-in-azure-active-directory-conditional-access"></a>A vezérlők Azure Active Directory feltételes hozzáférés beállítása 
 
@@ -30,11 +30,11 @@ A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory
 
 - "**Majd ehhez**" nevezik **vezérlők**
 
-![vezérlő](./media/active-directory-conditional-access-controls/11.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/11.png)
 
 Egy feltétel utasítást a vezérlőkkel kombinációja a feltételes hozzáférési házirend jelöli.
 
-![vezérlő](./media/active-directory-conditional-access-controls/12.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/12.png)
 
 Minden vezérlő követelmény, hogy teljesülnek a személy által vagy rendszer jelentkezik be, vagy a bejelentkezés után a felhasználó a korlátozását teheti meg. 
 
@@ -53,7 +53,7 @@ Támogatás vezérlőkkel teljesen letiltja a hozzáférést, vagy a kívánt ve
 - Az összes kijelölt vezérlők teljesítendő (*és*) 
 - Egy kijelölt teljesítendő vezérlő (*vagy*)
 
-![vezérlő](./media/active-directory-conditional-access-controls/17.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/17.png)
 
 
 
@@ -111,7 +111,7 @@ Jelenleg a egy kompatibilis szolgáltatást nyújtó szolgáltatók a következ�
 
 - RSA
 
-- Trusona
+- [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
 Ezek a szolgáltatások további információkért lépjen kapcsolatba a szolgáltatók közvetlenül.
 
@@ -123,12 +123,12 @@ Másolja át a JSON-adatokat, és illessze be a kapcsolódó szövegmezőbe. Ne 
 
 Hozzon létre egy egyéni vezérlő nem található a **kezelése** szakasza a **feltételes hozzáférés** lap.
 
-![vezérlő](./media/active-directory-conditional-access-controls/82.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/82.png)
 
 Kattintson a **új egyéni vezérlő**, megnyílik egy panel a szövegmezőben a JSON-adatok a vezérlő.  
 
 
-![vezérlő](./media/active-directory-conditional-access-controls/81.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/81.png)
 
 
 ### <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
@@ -152,7 +152,7 @@ Egyéni vezérlő szerkesztése, törlése az aktuális vezérlő, és hozzon l�
 
 Munkamenet vezérlők a felhőalapú alkalmazások korlátozott tapasztalatok teszik lehetővé. A munkamenet vezérlők felhőalkalmazások érvényesíti, és további Azure AD-be a munkamenetre vonatkozó az alkalmazás által biztosított információk alapján.
 
-![vezérlő](./media/active-directory-conditional-access-controls/31.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Használja a kényszerített alkalmazásra vonatkozó korlátozások
 

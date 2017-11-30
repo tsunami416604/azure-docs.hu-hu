@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 11/21/2017
 ms.author: bradsev;BuckWoody
-ms.openlocfilehash: d572fe3ad01d75b76ac87b441a5397d1c1841547
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 52d6fe0757043a0a298c3fdee0478fb364074537
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-for-data-scientists"></a>Team adatok tudományos folyamat adatszakértőkön
 
@@ -30,6 +30,8 @@ Ez a cikk nyújt útmutatást, amelyeket többnyire átfogó adatok tudományos 
 - az adatok átvitelét és a tárolás alapjai
 - adatok forrás dokumentáció
 - elemzés feldolgozásra eszközökkel
+
+Ezek oktatási anyagok a csapat adatok tudományos folyamat (TDSP) és a Microsoft és az nyílt forráskódú szoftvereket és az eszközök gazdag, amelyek hasznosak a képviseli, végrehajtása és a szállító tudományos megoldás kapcsolódó.
 
 ## <a name="lesson-path"></a>Lecke elérési útja
 Az elemek a következő táblázat segítségével saját self-study útmutató. Olvassa el a *leírás* hajtsa végre az elérési út, kattintson az oszlop a *témakör* hivatkozások tanulmányozza a hivatkozásokat, és ismereteit használatával ellenőrizze a *Tudásbázis ellenőrizze* oszlop.
