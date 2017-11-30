@@ -6,16 +6,16 @@
       href: how-iot-edge-works.md
 - name: Gyors útmutatók
   items:
-    - name: Üzembe helyezés az Edge-ben – Windows
-      href: quickstart.md
     - name: Üzembe helyezés az Edge-ben – Linux
       href: quickstart-linux.md
+    - name: Üzembe helyezés az Edge-ben – Windows
+      href: quickstart.md
 - name: Oktatóanyagok
   items:
-    - name: Edge-eszköz szimulálása – Windows
-      href: tutorial-simulate-device-windows.md
     - name: Edge-eszköz szimulálása – Linux
       href: tutorial-simulate-device-linux.md
+    - name: Edge-eszköz szimulálása – Windows
+      href: tutorial-simulate-device-windows.md
     - name: 'C# modul fejlesztése'
       href: tutorial-csharp-module.md
     - name: Az Azure Stream Analytics üzembe helyezése
@@ -26,8 +26,8 @@
       href: tutorial-deploy-function.md
 - name: Útmutatók
   items:
-    - name: Átjáróeszköz létrehozása
-      href: how-to-create-gateway-device.md
+    - name: Transzparens átjáró létrehozása
+      href: how-to-create-transparent-gateway.md
     - name: Nagy léptékű üzembe helyezés és monitorozás
       href: how-to-deploy-monitor.md
     - name: IoT Core-eszköz kiépítése
@@ -45,6 +45,8 @@
       href: iot-edge-runtime.md
     - name: Központi telepítés
       href: module-deployment-monitoring.md
+    - name: IoT Edge-eszköz használata átjáróként
+      href: iot-edge-as-gateway.md
     - name: Biztonság
       href: security.md
 - name: Erőforrások

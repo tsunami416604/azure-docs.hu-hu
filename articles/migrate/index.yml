@@ -1,0 +1,26 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Migrate dokumentációja
+metadata:
+  title: Az Azure Migrate dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  description: 'Megtudhatja, hogyan értékelheti a helyszíni gépeket az Azure-ba történő migrálás szempontjából'
+  services: migration-planner
+  author: rayne-wiselman
+  manager: carmonm
+  ms.service: migration
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/22/2017
+  ms.author: raynew
+abstract:
+  description: 'Az Azure Migrate segít a helyszíni gépek Azure-migrálásra való alkalmasságának felderítésében és értékelésében, valamint méretezési és költségbecslést is biztosít a futó Azure-beli virtuális gépekhez.'
+sections:
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Megtudhatja, hogyan értékelheti a helyszíni VMware virtuális gépeket az Azure-ba való migrálás előtt'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-assessment-vmware">Helyszíni VMware virtuális gépek felderítése és kiértékelése</a>

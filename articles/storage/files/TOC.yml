@@ -64,6 +64,8 @@
               href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Csatlakozási karakterláncok konfigurálása
           href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Az Azure Storage REST API használata
+          href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Kezelés
       items:
         - name: PowerShell az Azure Files szolgáltatáshoz

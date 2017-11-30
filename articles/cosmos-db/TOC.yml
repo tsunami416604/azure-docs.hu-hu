@@ -133,6 +133,8 @@
       href: distribute-data-globally.md
     - name: Particionálás
       href: partition-data.md
+    - name: Egyedi kulcsok
+      href: unique-keys.md
     - name: Konzisztencia
       href: consistency-levels.md
     - name: Teljesítmény

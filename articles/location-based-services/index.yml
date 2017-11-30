@@ -1,0 +1,40 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Location Based Services (előzetes verzió) – Dokumentáció
+metadata:
+  document_id: null
+  title: Azure Location Based Services (előzetes verzió) – Dokumentáció | Microsoft Docs
+  meta.description: Use Azure Location Based Services (preview) to provide geospatial services to your web or mobile application.
+  services: location-based-services
+  author: philmea
+  manager: timlt
+  ms.service: location-based-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/22/2017
+  ms.author: philmea
+abstract:
+  description: 'Az Azure Location Based Services (előzetes verzió) a webes és mobilalkalmazások földrajzi kontextusának biztosításához szükséges friss térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Ez a szolgáltatás egy Azure One API-kompatibilis REST API-készlet, amely webalapú JavaScript-vezérlővel rendelkezik az egyszerű, rugalmas és különböző médiumokon elérhető fejlesztés érdekében.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: Térképes keresőalkalmazás készítése az Azure Location Based Services (előzetes verzió) segítségével.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/sql-database/media/index/portal.svg
+            text: Bemutató térképes alkalmazás indítása
+            href: /azure/location-based-services/quick-demo-map-app
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Készítsen egy térinformatikai webalkalmazást, amellyel hasznos helyeket kereshet meg és útvonalakat tervezhet a kívánt helyhez az Azure Location Based Services (előzetes verzió) használatával.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/location-based-services/tutorial-search-location">Hasznos helyek keresése</a>
+          - html: <a href="/azure/location-based-services/tutorial-route-location">Útvonal egy hasznos helyhez</a>
+          - html: <a href="/azure/location-based-services/tutorial-prioritized-routes">Útvonalak utazási mód alapján</a>
