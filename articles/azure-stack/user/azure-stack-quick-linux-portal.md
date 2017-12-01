@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5f815bafdcc7c05ec7f4149fb7c9df178f0f80e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f986c060b26489e412f6230665ec76a4730293f1
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>Linux virtuális gép létrehozása az Azure-verem portállal
 
@@ -26,7 +26,7 @@ A verem Azure portálon keresztül verem Azure virtuális gépek hozhatók létr
 
 * **A Linux-lemezkép a verem Azure piactéren**
 
-   A verem Azure piactér nem tartalmazza a Linux-lemezkép alapértelmezés szerint. Igen, Linux virtuális gépek létrehozása előtt győződjön meg arról, hogy az Azure-verem operátor letöltötte a **Ubuntu Server 16.04 LT** kép ismertetett lépések segítségével a [Azure Azure töltse le a Piactéri elemek Verem](../azure-stack-download-azure-marketplace-item.md) témakör.
+   A verem Azure piactér nem tartalmazza a Linux-lemezkép alapértelmezés szerint. Igen, Linux virtuális gépek létrehozása előtt győződjön meg arról, hogy az Azure-verem operátor letöltötte a **Ubuntu Server 16.04 LTS** kép ismertetett lépések segítségével a [Azure Azure töltse le a Piactéri elemek Verem](../azure-stack-download-azure-marketplace-item.md) témakör.
 
 * **Egy SSH-ügyfél a hozzáférést**
 
