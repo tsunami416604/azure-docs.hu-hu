@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: maheshu
-ms.openlocfilehash: 8946166c04ce778d751ad79f7a010c9a5e71a05c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b41cebcc8592468fcabb157b1aee830dfe954229
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Az Azure-ban egy Ubuntu virtuális gép csatlakoztatása felügyelt tartományhoz
 Ez a cikk bemutatja, hogyan egy Ubuntu Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz.
@@ -120,12 +120,12 @@ Most, hogy a szükséges csomagokat a Linux virtuális gépek vannak telepítve,
     sudo realm discover CONTOSO100.COM
     ```
 
-      > [!NOTE] 
-      > **Hibaelhárítás:** Ha *a kezdőtartomány felderítése* nem találja a felügyelt tartományok:
-        * Ensure that the domain is reachable from the virtual machine (try ping).
-        * Check that the virtual machine has indeed been deployed to the same virtual network in which the managed domain is available.
-        * Check to see if you have updated the DNS server settings for the virtual network to point to the domain controllers of the managed domain.
-      >
+   > [!NOTE] 
+   > **Hibaelhárítás:** Ha *a kezdőtartomány felderítése* nem találja a felügyelt tartományok:
+     * Győződjön meg arról, hogy a tartomány elérhető-e a virtuális gépről (próbálja ping).
+     * Ellenőrizze, hogy a virtuális gép valóban már alkalmazva van az azonos virtuális hálózatban, amelyben a felügyelt tartományra érhető el.
+     * Ellenőrizze, hogy ha a DNS-kiszolgáló beállításait, a virtuális hálózat úgy, hogy a tartományvezérlők, a felügyelt tartományra mutasson frissítése befejeződött.
+   >
 
 2. Kerberos inicializálni. Az SSH terminálban írja be a következő parancsot: 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 591fa6048553db4c347449a68ea4e39f3772d643
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 4ff0556ba79c7104fa0e1cd84ece7fe27521ebbb
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect szinkronizálása: funkciók referencia
 Az Azure AD Connectben funkciók segítségével kezelheti egy attribútum értékét a szinkronizálás során.  
@@ -828,7 +828,7 @@ Az Item függvény akkor hasznos, a Contains függvény együtt, mert az utóbbi
 Hibát jelez, ha az index az értéktartományon kívül esik.
 
 **Példa**  
-`Mid(Item([proxyAddress],Contains([proxyAddress], "SMTP:")),6)`  
+`Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Az elsődleges e-mail címét adja meg.
 
 - - -
@@ -879,7 +879,7 @@ A LCase függvény egy karakterlánc karaktereinek összes kisbetűsre konvertá
 "Test" adja vissza.
 
 - - -
-### <a name="left"></a>balra
+### <a name="left"></a>Balra
 **Leírás:**  
 A bal oldali függvény egy karakterlánc bal oldali egy megadott számú karaktert adja vissza.
 
@@ -1186,7 +1186,7 @@ A folyamat egy többértékű attribútum (vagy egy kifejezés eredményének) s
 Összes érték visszaadása a többértékű attribútum otherPhone után a kötőjeleket (-) el lett távolítva.
 
 - - -
-### <a name="split"></a>Vegyes
+### <a name="split"></a>Megosztott
 **Leírás:**  
 A felosztott függvény elválasztóval elválasztott karakterlánc vesz igénybe, és lehetővé teszi egy többértékű karakterlánc.
 
@@ -1248,7 +1248,7 @@ A hiba függvénynek, amely akkor adja vissza egyéni érték is lehet.
 Néhány főbb városában szóbeli nyelvét adja eredményül, ellenkező esetben a hibát ad vissza.
 
 - - -
-### <a name="trim"></a>Trim
+### <a name="trim"></a>Levágás
 **Leírás:**  
 A vágás függvény eltávolítja a kezdő és záró szóközök karakterláncból.
 
@@ -1293,7 +1293,7 @@ A megadott feltétel alapján többértékű attribútum (vagy egy kifejezés er
 A többértékű attribútum userCertificate, amely nem található a tanúsítvány értékek visszaadása.
 
 - - -
-### <a name="with"></a>a
+### <a name="with"></a>A következővel:
 **Leírás:**  
 A With függvény segítségével egyszerűbbé teheti a összetett kifejezést egy változó segítségével egy alkifejezés, egy megjelenő képviselő vagy többször az összetett kifejezésben.
 

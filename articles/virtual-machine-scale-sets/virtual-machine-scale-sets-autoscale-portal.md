@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 3714a4feb14bc47132e501629fc339bc7d0e40a1
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 141ae5f004ec1c85c506955873c69c03a89cd08c
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatikus méretezése a virtuálisgép-méretezési beállítása az Azure-portálon
 A méretezési csoport létrehozásakor megadhatja a futtatni kívánt Virtuálisgép-példányok száma. Az alkalmazás igény szerinti változásával automatikusan növeli vagy csökkenti a Virtuálisgép-példányok számát. Automatikus skálázás teszi lehetővé teszi keresletének tartani, vagy az alkalmazás életciklusa során alkalmazás teljesítmény változásait.
@@ -54,7 +54,7 @@ Az alkalmazás igény szerinti egyenes arányban növekszik, ha a Virtuálisgép
     | *Operátor*             | Hasonlítsa össze a metrikaadatokat szemben a küszöbérték operátor.                                                     | Nagyobb mint   |
     | *Küszöbérték*            | Az automatikus skálázási szabály elindítani egy műveletet kiváltó százalékos.                                                 | 70             |
     | *Időtartam*             | Az időtartam a metrika és a küszöbértéket az összehasonlítás előtt figyeli.                                   | 10 perc     |
-    | *Művelet*            | Meghatározza, hogy a méretezési fel vagy le, ha a szabály vonatkozik, és milyen növekményű kell méretezni.                        | Százalék növelése a következővel: |
+    | *Művelet*            | Meghatározza, hogy a méretezési fel vagy le, ha a szabály vonatkozik, és milyen növekményű kell méretezni.                        | Növekmény százaléka alapján |
     | *A példányok száma*       | Virtuálisgép-példányok hány százalékát módosítani kell, amikor a szabály gondoskodik.                                            | 20             |
     | *Cool le (perc)*  | Mennyi ideig várjon a szabály alkalmazza újra, így az automatikus skálázási műveletek érvénybe lépéséhez idő kell. | 5 perc      |
 
@@ -77,7 +77,7 @@ Egy este vagy hétvégi az alkalmazás igény szerinti csökkenhet. Ha egy megha
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
     | *Operátor*             | Hasonlítsa össze a metrikaadatokat szemben a küszöbérték operátor.                                                      | Kisebb mint   |
     | *Küszöbérték*            | Az automatikus skálázási szabály elindítani egy műveletet kiváltó százalékos.                                                 | 30             |
-    | *Művelet*            | Meghatározza, hogy a méretezési fel vagy le, ha a szabály vonatkozik, és milyen növekményű kell méretezni.                         | Százalék csökkentése a következővel: |
+    | *Művelet*            | Meghatározza, hogy a méretezési fel vagy le, ha a szabály vonatkozik, és milyen növekményű kell méretezni.                         | Százalék által csökkentése |
     | *A példányok száma*       | Virtuálisgép-példányok hány százalékát módosítani kell, amikor a szabály gondoskodik.                                             | 20             |
 
 3. A szabály létrehozásához válassza **hozzáadása**
@@ -122,7 +122,7 @@ Az előző példákban automatikusan átméretezi a bejövő vagy kimenő meg p�
 
     ![Ütemezés szerint méretezhető automatikus skálázási szabályok létrehozása](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)
 
-Az automatikus skálázási szabályok alkalmazása megtekintéséhez válasszon **futtatási előzményei** tetején a **méretezés** ablak. A grafikon és események listára mutat be, amikor az automatikus skálázási szabályok indíthat, és növeli vagy csökkenti a skálázási Virtuálisgép-példány száma.
+Az automatikus skálázási szabályok alkalmazása megtekintéséhez válasszon **futtatási előzményei** tetején a **méretezés** ablak. A grafikon és események beállításakor az automatikus skálázási szabályok eseményindító és a skála a Virtuálisgép-példányok száma növekvő vagy csökkenő listában jeleníti meg.
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: neerajkh
-ms.openlocfilehash: eea085308a5ca755cbf570465b97019de800768e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2b4fcef51b2704f07f5d1d08a4bd16970864b0fd
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Az Azure Machine Learning webszolgáltatás méretezhetővé további végpontok hozzáadása
 > [!NOTE]
@@ -27,11 +27,11 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-Alapértelmezés szerint minden egyes közzétett webszolgáltatás 20 egyidejű kérelmek támogatására van konfigurálva, és magas, mint 200 egyidejű kérelemre is lehet. A klasszikus Azure portálra a beállítás értéke lehetőséget biztosít, amíg Azure Machine Learning automatikusan optimalizálja a beállításokat, hogy a legjobb teljesítmény elérése érdekében a webszolgáltatás és a portál értéket a rendszer figyelmen kívül hagyja. 
+Alapértelmezés szerint minden egyes közzétett webszolgáltatás 20 egyidejű kérelmek támogatására van konfigurálva, és magas, mint 200 egyidejű kérelemre is lehet. Az Azure Machine Learning automatikusan optimalizálja a beállításokat, hogy a legjobb teljesítmény elérése érdekében a webszolgáltatás és a portál értéket a rendszer figyelmen kívül hagyja. 
 
 Ha tervezi az API 200 egyidejű hívások maximális értéknél nagyobb terhelésű támogatja, több végpontot a azonos webszolgáltatáson kell létrehoznia. Majd véletlenszerűen terjesztheti a terhelés összes őket.
 
-A gyakori feladatok egy webszolgáltatás-bővítmény skálázás. Néhány ok, amiért méretezési támogatja a több mint 200 egyidejű kérelemre, növelje a rendelkezésre állása, a több végpontot, vagy adjon meg külön végpontok a webszolgáltatás fel. A skála további végpontokat a azonos webszolgáltatás keresztül hozzáadásával növelhető [a klasszikus Azure portálon](https://manage.windowsazure.com/) vagy a [Azure Machine Learning webszolgáltatás](https://services.azureml.net/) portálon.
+A gyakori feladatok egy webszolgáltatás-bővítmény skálázás. Néhány ok, amiért méretezési támogatja a több mint 200 egyidejű kérelemre, növelje a rendelkezésre állása, a több végpontot, vagy adjon meg külön végpontok a webszolgáltatás fel. A skála további végpontokat a azonos webszolgáltatás keresztül hozzáadásával növelhető a [Azure Machine Learning webszolgáltatás](https://services.azureml.net/) portálon.
 
 Új végpontok hozzáadásával kapcsolatos további információkért lásd: [végpontok létrehozása](create-endpoint.md).
 

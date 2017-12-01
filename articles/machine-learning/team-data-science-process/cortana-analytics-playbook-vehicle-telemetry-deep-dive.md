@@ -4,7 +4,7 @@ description: "A Cortana Intelligence szolgáltatásai segítségével a vehicle 
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: d8866fa6-aba6-40e5-b3b3-33057393c1a8
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/24/2017
 ms.author: bradsev
-ms.openlocfilehash: cdde0c8dc2fd1189970c0782769a609ca8142372
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: a21316ef6ab05918f07a09243b5ce04950ecd9dc
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Vehicle Telemetriai elemzési megoldások forgatókönyv: mély alaposabban tanulmányozhatja a megoldás
 Ez a forgatókönyv szakaszait menü hivatkozásokat: 
@@ -302,7 +302,7 @@ Miután a folyamat sikeres végrehajtása során, lásd: a tárfiók a connected
 
 Az adatok mostantól optimalizálása, könnyebben kezelhető, és készen állnak a gazdag kötegelt dcu további feldolgozásra. 
 
-## <a name="data-analysis"></a>Adatok elemzése
+## <a name="data-analysis"></a>Adatelemzés
 Ebben a szakaszban látható egyesítése a Stream Analytics, az Azure Machine Learning, a Data Factory és a HDInsight a gazdag, sokoldalú analitikai vehicle egészségügyi, és ki irányítja a szokásokat.
 
 ### <a name="machine-learning"></a>Gépi tanulás

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: ec2555df27f4b709d06b660bf161f741e5b86ea6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 107601fcc53e5f5b6f809bb3c7fceaf5e5c03d36
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Az Azure CDN szabályok motor-funkciók
 Ez a témakör részletes leírását tartalmazza az elérhető szolgáltatások az Azure Content Delivery Network (CDN) [szabálymotor](cdn-rules-engine.md).
@@ -41,7 +41,7 @@ Jogkivonat hitelesítési paraméter | Meghatározza, hogy van-e a jogkivonat-al
 ### <a name="deny-access"></a>Hozzáférés megtagadása
 **Cél**: meghatározza, hogy minden kérésnél 403 Tiltott választ utasítja el.
 
-Érték | eredménye
+Érték | Eredmény
 ------|-------
 Engedélyezve| Hatására az összes kérelmet, amelyek teljesítik a megfelelő – 403 Tiltott választ ad vissza lesznek utasítva.
 Letiltva| Visszaállítja az alapértelmezett viselkedés. Az alapértelmezett viselkedés a forrás nyomtatókiszolgálón visszaadott válasz típusának meghatározása.
@@ -58,7 +58,7 @@ Ha a jogkivonat-alapú hitelesítés engedélyezve van, adjon meg egy titkosíto
 
 Token értékeinek titkosítására és visszafejtésére használt titkosítási kulcs az elsődleges kulcs és a biztonsági mentés kulcs jogkivonat hitelesítési lapján található beállítások határozzák meg. Ne feledje, hogy a titkosítási kulcsok platform-specifikus.
 
-Érték | eredménye
+Érték | Eredmény
 ------|---------
 Engedélyezve | A kért tartalom jogkivonat-alapú hitelesítéssel védi. Csak ad meg egy érvényes tokent, és megfeleljenek az ügyfelek kérelmeinek szembeni szerződéses kötelezettségeket. FTP-tranzakciók jogkivonat-alapú hitelesítés nem tartoznak.
 Letiltva| Visszaállítja az alapértelmezett viselkedés. Az alapértelmezés lesz annak meghatározásához, hogy egy kérelem védve legyenek a jogkivonat-alapú hitelesítés konfigurálásának engedélyezése.
@@ -73,11 +73,11 @@ A rendelkezésre álló válaszkódot alább láthatók.
 Válaszkód|Válasz neve|Leírás
 ----------------|-----------|--------
 301|Végleg áthelyezése|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át.
-302|Található|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át. Ezzel az állapotkóddal az iparági szabványos módjáról irányítja át a felhasználókat a rendszer.
+302|Sikeres keresés|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át. Ezzel az állapotkóddal az iparági szabványos módjáról irányítja át a felhasználókat a rendszer.
 307|Ideiglenes átirányítás|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át.
 401|Nem engedélyezett|Ez az állapot kód kombinálás a WWW-Authenticate válaszfejléc lehetővé teszi egy felhasználót a hitelesítéshez.
 403|Tiltott|Ez az a szabványos 403-as tiltott állapot üzenet egy jogosulatlan felhasználó által látható, amikor megpróbál hozzáférni a védett tartalmakat.
-404|A fájl nem található|Ez az állapot kód azt jelzi, hogy a HTTP-ügyfél képes kommunikálni a kiszolgálóval volt, de a kért tartalomhoz nem található.
+404|Nem található a fájl|Ez az állapot kód azt jelzi, hogy a HTTP-ügyfél képes kommunikálni a kiszolgálóval volt, de a kért tartalomhoz nem található.
 
 #### <a name="url-redirection"></a>Átirányítási URL-címe
 
@@ -116,7 +116,7 @@ Ez a szolgáltatás által érintett paraméterei a következők:
 
 Érvényes értékek a következők:
 
-Érték|eredménye
+Érték|Eredmény
 ---|----
 Engedélyezve|Hatására a peremhálózati kiszolgáló esetben figyelmen kívül hagyja a jogkivonat-alapú hitelesítési paraméterek URL-címek összehasonlításakor.
 Letiltva|Visszaállítja az alapértelmezett viselkedés. Az alapértelmezett viselkedés van URL-cím összehasonlításhoz Token hitelesítés érdekében kis-és nagybetűket.
@@ -132,7 +132,7 @@ Kapcsolatos információkat:
 - A beállítás értéke nem állítható be "ec_token."
 - Győződjön meg arról, hogy a meghatározott érték beállítás neve URL-cím csak érvényes karaktereket tartalmaz.
 
-Érték|eredménye
+Érték|Eredmény
 ----|----
 Engedélyezve|Az érték a beállítás határozza meg a lekérdezési karakterlánc paraméterének neve, amelyen keresztül a jogkivonatok definiálni kell.
 Letiltva|A jogkivonat a kérelem URL-címében nem definiált lekérdezési karakterlánc paraméterként adható meg.
@@ -175,7 +175,7 @@ Megjegyzés | A Megjegyzés szolgáltatás lehetővé teszi, hogy a Megjegyzés 
 
 Sávszélesség-szabályozási paraméter határozza meg, hogy az ügyfél által kért adatátviteli sebesség korlátozott a egyéni mértékben lesz-e.
 
-Érték|eredménye
+Érték|Eredmény
 --|--
 Engedélyezve|Lehetővé teszi a sávszélesség-szabályozási kérések tiszteletben peremhálózati kiszolgálókról.
 Letiltva|A peremhálózati kiszolgálóinak figyelmen kívül hagyja a sávszélesség-szabályozási paraméterek okoz. A kért tartalmat szolgáltató általában (Ez azt jelenti, hogy a sávszélesség szabályozása nélkül).
@@ -197,7 +197,7 @@ Prebuf másodpercben|Ez a beállítás értékre peremhálózati kiszolgálókr�
 ###<a name="bypass-cache"></a>Gyorsítótár megkerülése
 **Cél:** határozza meg, hogy a kérelem kihasználhatják a gyorsítótárazási technológiánk.
 
-Érték|eredménye
+Érték|Eredmény
 --|--
 Engedélyezve|Hatására az összes kérelmet, az eredeti kiszolgálóra elhagyása, még akkor is, ha a tartalom korábban a peremhálózati kiszolgálóinak kerül a gyorsítótárba.
 Letiltva|A gyorsítótár üzletszabályzata előírja a válaszfejlécek definiált gyorsítótár eszközök hatására a peremhálózati kiszolgálóinak.
@@ -215,10 +215,10 @@ Letiltva|A gyorsítótár üzletszabályzata előírja a válaszfejlécek defini
 
 Az ilyen típusú konfigurációs eléréséhez legkönnyebben helyezhető el a külső maximális életkora és a Cache-Control fejléc-kezelés szolgáltatások ugyanabban az utasításban.
 
-Érték|eredménye
+Érték|Eredmény
 --|--
-Felülírása|Biztosítja, hogy a következő műveletek akkor kerül sor:<br/> -Felülírja a Cache-Control-fejlécet az eredeti kiszolgálón állítja elő. <br/>-A Cache-Control-fejlécet, a külső maximális-életkora szolgáltatást, hogy a válasz által előállított ad.
-Továbbítása|Biztosítja, hogy a Cache-Control-fejlécet a külső maximális-életkora szolgáltatás által előállított soha nem adja hozzá a válaszhoz. <br/> Ha a forráskiszolgáló Cache-Control fejléc hoz létre, akkor továbbítja a végfelhasználói. <br/> Ha a forráskiszolgáló nem eredményez Cache-Control fejlécet, majd a beállítás hatására a válasz fejléce nem tartalmazza a Cache-Control-fejlécet.
+Felülírás|Biztosítja, hogy a következő műveletek akkor kerül sor:<br/> -Felülírja a Cache-Control-fejlécet az eredeti kiszolgálón állítja elő. <br/>-A Cache-Control-fejlécet, a külső maximális-életkora szolgáltatást, hogy a válasz által előállított ad.
+Átengedéses|Biztosítja, hogy a Cache-Control-fejlécet a külső maximális-életkora szolgáltatás által előállított soha nem adja hozzá a válaszhoz. <br/> Ha a forráskiszolgáló Cache-Control fejléc hoz létre, akkor továbbítja a végfelhasználói. <br/> Ha a forráskiszolgáló nem eredményez Cache-Control fejlécet, majd a beállítás hatására a válasz fejléce nem tartalmazza a Cache-Control-fejlécet.
 Ha hiányoznak hozzáadása|A Cache-Control fejléc nem érkezett meg a forráskiszolgálóról, ha ezt a beállítást a Cache-Control-fejlécet a külső maximális-életkora szolgáltatás által létrehozott ad hozzá. Ez a beállítás akkor hasznos, annak biztosítására, hogy az összes eszköz hozzá lesz rendelve a Cache-Control-fejlécet.
 Eltávolítás| Ez a beállítás biztosítja, hogy a Cache-Control fejléc nem tartalmazza a válasz fejrészét. Ha a Cache-Control fejléc már lett rendelve, akkor a válasz fejrészét a rendszer nélkül.
 
@@ -234,9 +234,9 @@ Kapcsolatos információkat:
 
 Típus|Leírás
 --|--
- Tartalmazza|  Azt jelzi, hogy minden egyes megadott paraméter szerepelnie kell a gyorsítótár-kulcsot. Egyedi gyorsítótár-kulcs jön létre minden olyan kérelmet, amely a lekérdezési karakterlánc paraméterként, ez a szolgáltatás definiált egyedi értéket tartalmaz. 
+ Belefoglalás|  Azt jelzi, hogy minden egyes megadott paraméter szerepelnie kell a gyorsítótár-kulcsot. Egyedi gyorsítótár-kulcs jön létre minden olyan kérelmet, amely a lekérdezési karakterlánc paraméterként, ez a szolgáltatás definiált egyedi értéket tartalmaz. 
  Az összes  |Azt jelzi, hogy egyedi gyorsítótár-kulcsot hoz létre minden egyes kérelem egy eszköz, amely egy egyedi lekérdezési karakterláncot tartalmaz. Az ilyen típusú konfigurációs általában nem javasolt, mert csekély találatot eredményező gyorsítótárbeli kereséseinek vezethet. Ez megnöveli a terhelést a forrás kiszolgálón, mivel azt kell további kérelmek kiszolgálását. Ez a konfiguráció másolatot készít a gyorsítótár-viselkedést "egyedi-gyorsítótár" a lekérdezési karakterlánc-gyorsítótár oldalon néven ismert. 
- Kizárása | Azt jelzi, hogy csak a megadott paraméterek nem kerülnek bele a gyorsítótár-kulcsot. Minden más lekérdezési karakterlánc paraméter szerepelni fog a gyorsítótár-kulcsot. 
+ Kizárás | Azt jelzi, hogy csak a megadott paraméterek nem kerülnek bele a gyorsítótár-kulcsot. Minden más lekérdezési karakterlánc paraméter szerepelni fog a gyorsítótár-kulcsot. 
  Az összes kihagyása  |Azt jelzi, hogy az összes lekérdezési karakterlánc paraméterei nem kerülnek bele a gyorsítótár-kulcsot. Ez a konfiguráció másolatot készít az alapértelmezett gyorsítótárazásának "standard-gyorsítótár" a lekérdezési karakterlánc-gyorsítótár oldalon néven ismert. 
 
 HTTP szabálymotor hatványa testreszabása, amelyben lekérdezési karakterláncok gyorsítótárazása megvalósítása módon teszi lehetővé. Megadhatja például, hogy az egyes helyek vagy fájltípusok lekérdezési karakterláncok gyorsítótárazása csak végezhető.
@@ -250,7 +250,7 @@ A következő példa a szolgáltatáshoz tartozó biztosít egy kérelemmintát 
 - **Mintakérelem:** http://wpc.0001.&lt; Tartomány&gt;/800001/Origin/folder/asset.htm?sessionid=1234 & nyelvi = EN & userid = 01
 - **Alapértelmezett gyorsítótár-kulcs:** /800001/Origin/folder/asset.htm
 
-##### <a name="include"></a>Tartalmazza
+##### <a name="include"></a>Belefoglalás
 
 Mintakonfiguráció:
 
@@ -271,7 +271,7 @@ Ez a fajta konfiguráció a következő lekérdezési karakterlánc paraméter g
 
     /800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
 
-##### <a name="exclude"></a>Kizárása
+##### <a name="exclude"></a>Kizárás
 
 Mintakonfiguráció:
 
@@ -318,7 +318,7 @@ Javasoljuk, hogy az alapértelmezett konfigurációt, a HTTP nagy platform, mive
 
 Mely gyorsítótárában beállítások követi módon, mert ez a funkció nem rendelhető hozzá a következő feltételek egyeznek: peremhálózati Cname, kérelem fejléc literális, kérelem fejléc helyettesítő, URL-cím lekérdezés literális és URL-cím lekérdezés helyettesítő.
 
-Érték|eredménye
+Érték|Eredmény
 --|--
 Engedélyezve|Visszaállítja az alapértelmezett viselkedés. Az alapértelmezett viselkedés kényszerítheti a peremhálózati kiszolgáló a forráskiszolgálóról az eszköz a háttérben történő elindítására. Mely után az eszköz a helyi gyorsítótárban a peremhálózati kiszolgáló lesz.
 Letiltva|Megakadályozza, hogy egy biztonsági kiszolgálót az az eszköz a háttérben történő végrehajtásához. Ez azt jelenti, hogy az adott régió eszköz a következő kérés hatására egy biztonsági kiszolgálót, hogy a kéréssel az ügyfél eredeti kiszolgálóra.
@@ -375,10 +375,10 @@ Kapcsolatos információkat:
 
 Az ilyen típusú konfigurációs eléréséhez legkönnyebben helyezhető el a külső maximális életkora és a lejárati fejléc-kezelés szolgáltatások ugyanabban az utasításban.
 
-Érték|eredménye
+Érték|Eredmény
 --|--
-Felülírása|Biztosítja, hogy a következő műveletek akkor kerül sor:<br/>-Felülírja az eredeti kiszolgálón állítja elő Expires fejléc.<br/>-A a külső maximális-életkora szolgáltatást, hogy a válasz által előállított Expires fejléc hozzáadása.
-Továbbítása|Biztosítja, hogy a a külső maximális-életkora szolgáltatás által előállított Expires fejléc soha nem adja hozzá a válaszhoz. <br/> Ha a forráskiszolgáló egy Expires fejléc hoz létre, akkor továbbítja a végfelhasználói. <br/>Ha a forráskiszolgáló nem hoz egy Expires fejléc, ez a beállítás egy Expires fejléc nem tartalmaz a válaszfejlécet okozhat.
+Felülírás|Biztosítja, hogy a következő műveletek akkor kerül sor:<br/>-Felülírja az eredeti kiszolgálón állítja elő Expires fejléc.<br/>-A a külső maximális-életkora szolgáltatást, hogy a válasz által előállított Expires fejléc hozzáadása.
+Átengedéses|Biztosítja, hogy a a külső maximális-életkora szolgáltatás által előállított Expires fejléc soha nem adja hozzá a válaszhoz. <br/> Ha a forráskiszolgáló egy Expires fejléc hoz létre, akkor továbbítja a végfelhasználói. <br/>Ha a forráskiszolgáló nem hoz egy Expires fejléc, ez a beállítás egy Expires fejléc nem tartalmaz a válaszfejlécet okozhat.
 Ha hiányoznak hozzáadása| Egy Expires fejléc nem érkezett meg a forráskiszolgálóról, ha ez a beállítás nagyobb a a külső maximális-életkora szolgáltatás által előállított Expires fejléc. Ez a beállítás akkor hasznos, annak biztosítására, hogy az összes eszköz kioszt egy Expires fejléc.
 Eltávolítás| Ellenőrzi, hogy egy Expires fejléc nem tartalmazza a válasz fejrészét. Ha már használja egy Expires fejléc, majd azt fogja lehet üres karaktert törölni a válasz fejrészét a.
 
@@ -437,7 +437,7 @@ Kapcsolatos információkat:
 
 A HTTP-ügyfél üzenetet küld egy gyorsítótárban történik a no-cache kérelem-vezérlés: nem-gyorsítótár és/vagy Pragma:no-gyorsítótár fejléc a következő a HTTP-kérelem.
 
-Érték|eredménye
+Érték|Eredmény
 --|--
 Engedélyezve|Lehetővé teszi, hogy egy HTTP-ügyfél no-cache kéri, hogy az eredeti kiszolgálóra továbbítja, és az eredeti kiszolgálóra visszatérhet a válaszfejlécek és a szervezet a peremhálózati kiszolgáló keresztül vissza a HTTP-ügyfél.
 Letiltva|Visszaállítja az alapértelmezett viselkedés. Az alapértelmezett viselkedés célja no-cache kérelmeket az eredeti kiszolgálóra történő továbbítását.
@@ -477,7 +477,7 @@ Kapcsolatos információkat:
 
 Alapértelmezés szerint ez az állapot kód érték érkezett vissza a megadott bájttartomány-kérelem nem tud teljesíteni egy biztonsági kiszolgálót, és egy If tartományon kívüli kérelmet fejlécmező nem volt megadva.
 
-Érték|eredménye
+Érték|Eredmény
 -|-
 Engedélyezve|Megakadályozza, hogy a peremhálózati kiszolgálókról egy 416 kért tartomány nem teljesíthető állapotkód: Érvénytelen bájttartomány-kérelem válaszol. Ehelyett a kiszolgálóink biztosítanak a kért eszköz, és egy 200 OK vissza az ügyfélnek.
 Letiltva|Visszaállítja az alapértelmezett viselkedés. Az alapértelmezett viselkedés a 416 kért tartomány nem teljesíthető állapotkód: tiszteletben.
@@ -518,7 +518,7 @@ Kapcsolatos információkat:
 
 A részleges gyorsítótári felhasználhatja az az adott tartalomhoz új kérelmeinek teljesítéséhez, amíg a kért tartalom gyorsítótárazva van, teljes mértékben.
 
-Érték|eredménye
+Érték|Eredmény
 -|-
 Engedélyezve|Kérelmek hozhat létre a részlegesen gyorsítótárazott tartalmat.
 Letiltva|Kérelmek csak hozhat létre a kért tartalom egy teljes mértékben gyorsítótárazott verziója.
@@ -541,7 +541,7 @@ Kapcsolatos információkat:
 
 Érvényes értékek a következők:
 
-Érték|eredménye
+Érték|Eredmény
 --|--
 Engedélyezve|Hatására a peremhálózati kiszolgáló refetch az eszköz a forráskiszolgálóról.
 Letiltva|Visszaállítja az alapértelmezett viselkedés. Az alapértelmezett viselkedés be érvényes gyorsítótár eszközöket kérelem kiszolgálásához.
@@ -570,7 +570,7 @@ Kapcsolatos információkat:
 
 Határozza meg hogy lejárt a gyorsítótárazott tartalmat kézbesíti a rendszer hiba esetén a gyorsítótár ismételt érvényesítése során vagy a felhasználói forráskiszolgálóról a kért tartalom lekérése közben.
 
-Érték|eredménye
+Érték|Eredmény
 -|-
 Engedélyezve|Hiba előfordulásakor egy egy eredeti kiszolgálóhoz való kapcsolódáskor elavult tartalom a kérelmező kiszolgálása között.
 Letiltva|A forráskiszolgáló hiba a kérelmező rendszer továbbítja.
@@ -614,7 +614,7 @@ Módosítsa az ügyfél válaszfejléc | Felülírja, hozzáfűzi vagy fejléc t
 
 ###<a name="age-response-header"></a>Kor válaszfejléc
 **Cél**: határozza meg, hogy egy kora válaszfejléc lesz a válaszként küldött a kérelmező.
-Érték|eredménye
+Érték|Eredmény
 --|--
 Engedélyezve | A Korszűrő válaszfejléc szerepelni fog a választ küldött a kérelmező.
 Letiltva | A Korszűrő válaszfejléc nem kerülnek be a választ küldött a kérelmező.
@@ -637,14 +637,14 @@ X-EK-Debug: _Directive1_,_Directive2_,_DirectiveN_
 
 X-EK-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
-Érték|eredménye
+Érték|Eredmény
 -|-
 Engedélyezve|Hibakeresési gyorsítótár válaszfejlécek kérelmek visszaadható egy választ, amely az X-EK-Debug fejlécet tartalmaz.
 Letiltva|Az X-EK-Debug válaszfejléc nem kerülnek be a válasz.
 
 **Alapértelmezés:** letiltva.
 
-###<a name="modify-client-response-header"></a>Módosítsa az ügyfél válaszfejléc
+###<a name="modify-client-request-header"></a>Ügyfél fejléc módosítása
 **Cél:** minden kérelmet tartalmaz [kérelem fejlécei]() , amely írják le. Ez a szolgáltatás következő lehetőségek közül választhat:
 
 - Hozzáfűzendő, vagy az fejléc rendelt érték. Ha a megadott kérelemfejlécet nem létezik, majd ezt a szolgáltatást fog vegye fel a kérelmet.
@@ -657,7 +657,7 @@ A következő műveletek valamelyikét hajthatja végre, a fejléc:
 Beállítás|Leírás|Példa
 -|-|-
 Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő kérelem fejléc értékének végéhez.|**A kérelem fejléc értéke (ügyfél):**érték1 <br/> **Kérelem fejléc értéke (HTTP szabálymotor):** érték2 <br/>**Új kérelem fejléc értéke:** Value1Value2
-Felülírása|A kérelem fejléc értéke lesz a megadott értékre.|**A kérelem fejléc értéke (ügyfél):**érték1 <br/>**Kérelem fejléc értéke (HTTP szabálymotor):** érték2 <br/>**Új kérelem fejléc értéke:** érték2 <br/>
+Felülírás|A kérelem fejléc értéke lesz a megadott értékre.|**A kérelem fejléc értéke (ügyfél):**érték1 <br/>**Kérelem fejléc értéke (HTTP szabálymotor):** érték2 <br/>**Új kérelem fejléc értéke:** érték2 <br/>
 Törlés|Törli a megadott kérelemfejlécet.|**A kérelem fejléc értéke (ügyfél):**érték1 <br/> **Ügyfél fejléc konfigurációjának módosítása:** törölje a szóban forgó kérelemfejlécet. <br/>**Eredmény:** a megadott kérelemfejlécet a rendszer nem továbbítja az eredeti kiszolgálóra.
 
 Kapcsolatos információkat:
@@ -671,7 +671,7 @@ Kapcsolatos információkat:
 - A fejléc törlése megakadályozza azt egy forrás-kiszolgáló peremhálózati kiszolgálókról történő továbbítását.
 - A következő fejlécek fenntartva, ezért ezt a funkciót nem lehet módosítani:
     - továbbított
-    - állomás
+    - gazdagép
     - keresztül
     - Figyelmeztetés
     - x-továbbított-számára
@@ -680,7 +680,7 @@ Kapcsolatos információkat:
 ###<a name="modify-client-response-header"></a>Módosítsa az ügyfél válaszfejléc
 Minden válasz tartalmaz [válaszfejlécek]() , amely írják le. Ez a szolgáltatás következő lehetőségek közül választhat:
 
-- Hozzáfűzendő, vagy az egy válaszfejléc rendelt érték. Ha a megadott kérelemfejlécet nem létezik, majd a szolgáltatás felveszi a válaszhoz.
+- Hozzáfűzendő, vagy az egy válaszfejléc rendelt érték. Ha a megadott válaszfejlécet nem létezik, majd a szolgáltatás felveszi a válaszhoz.
 - A válasz egy válaszfejléc törlése.
 
 Alapértelmezés szerint válasz fejléce értékek meg vannak határozva az eredeti kiszolgálóra és a peremhálózati kiszolgálókról.
@@ -689,9 +689,9 @@ A következő műveletek egyikét a válaszfejléc hajtható végre:
 
 Beállítás|Leírás|Példa
 -|-|-
-Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő kérelem fejléc értékének végéhez.|**Válasz állomásfejléc-érték (ügyfél):**érték1 <br/> **Válasz állomásfejléc-érték (HTTP szabálymotor):** érték2 <br/>**Új válasz állomásfejléc-érték:** Value1Value2
-Felülírása|A kérelem fejléc értéke lesz a megadott értékre.|**Válasz állomásfejléc-érték (ügyfél):**érték1 <br/>**Válasz állomásfejléc-érték (HTTP szabálymotor):** érték2 <br/>**Új válasz állomásfejléc-érték:** érték2 <br/>
-Törlés|Törli a megadott kérelemfejlécet.|**A kérelem fejléc értéke (ügyfél):** érték1 <br/> **Ügyfél kérelem fejléc konfigurációjának módosítása:** törölje a szóban forgó válaszfejlécet. <br/>**Eredmény:** a megadott válaszfejlécet a rendszer nem továbbítja a kérelmezőnek.
+Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő válasz fejléc értékének végéhez.|**Válasz állomásfejléc-érték (ügyfél):**érték1 <br/> **Válasz állomásfejléc-érték (HTTP szabálymotor):** érték2 <br/>**Új válasz állomásfejléc-érték:** Value1Value2
+Felülírás|A válasz fejléc értéke lesz a megadott értékre.|**Válasz állomásfejléc-érték (ügyfél):**érték1 <br/>**Válasz állomásfejléc-érték (HTTP szabálymotor):** érték2 <br/>**Új válasz állomásfejléc-érték:** érték2 <br/>
+Törlés|Törli a megadott válaszfejlécet.|**Válasz állomásfejléc-érték (ügyfél):** érték1 <br/> **Ügyfél válaszfejléc konfigurációjának módosítása:** törölje a szóban forgó válaszfejlécet. <br/>**Eredmény:** a megadott válaszfejlécet a rendszer nem továbbítja a kérelmezőnek.
 
 Kapcsolatos információkat:
 
@@ -708,7 +708,7 @@ Kapcsolatos információkat:
     - tartalom kódolása
     - tartalom hosszúságú
     - tartalom tartományon.
-    - Dátum
+    - dátum
     - kiszolgáló
     - pótkocsi
     - Transfer-encoding
@@ -730,7 +730,7 @@ Győződjön meg arról, hogy a megadott fejléc neve nem egyezik a következő 
 - Standard kérelem nevével. Szokásos fejlécben neveinek listáját található [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 - Fenntartott nevek:
     - továbbítja a
-    - állomás
+    - gazdagép
     - eltérő
     - keresztül
     - Figyelmeztetés
@@ -755,7 +755,7 @@ Alapértelmezés szerint az egyéni mező neve "x-ec_custom-1." Azonban ez a mez
 
 A formázás, hogy adja meg a kérés- és válaszfejlécekről használata javasolt van megadva.
 
-Fejléc típusa|Formátumban|Példák
+Fejléc típusa|Formátum|Példák
 -|-|-
 Fejléc|%{[RequestHeader]()}[i]() | A(z) % {elfogadja-kódolás} i <br/> {Hivatkozó} i <br/> A(z) % {engedélyezési} i
 Válaszfejléc|%{[ResponseHeader]()}[o]()| A(z) % {kora} o <br/> A(z) % {content-Type} o <br/> A(z) % {cookie-k} o
@@ -773,7 +773,7 @@ Kapcsolatos információkat:
 ###<a name="log-query-string"></a>Napló lekérdezési karakterlánc
 **Cél:** határozza meg, hogy egy lekérdezési karakterlánc belépési naplók URL-cím mellett kell tárolni.
 
-Érték|eredménye
+Érték|Eredmény
 -|-
 Engedélyezve|A hozzáférési napló URL-címek rögzítésekor lehetővé teszi, hogy a lekérdezési karakterláncok tárolására. Ha egy URL-címe nem tartalmazhat lekérdezési karakterláncot, majd ezt a beállítást nem lesz hatása.
 Letiltva|Visszaállítja az alapértelmezett viselkedés. Az alapértelmezett viselkedés URL-címek egy hozzáférési napló rögzítésekor a lekérdezési karakterláncok figyelmen kívül.
@@ -894,7 +894,7 @@ Kapcsolatos információkat:
 
 **Alapértelmezés:** 14 Kb
  
-## <a name="url"></a>URL-CÍME
+## <a name="url"></a>URL-cím
 
 Ezek a szolgáltatások lehetővé kérést átirányítja vagy egy másik URL-re írni.
 
@@ -911,7 +911,7 @@ Kapcsolatos információkat:
 
 - Kérelmek csak átirányíthatók szegélyhez ugyanahhoz a platformhoz megfelelő CNAME.
 
-Érték|eredménye
+Érték|Eredmény
 -|-
 Engedélyezve|Kérelmek átirányíthatók.
 Letiltva|Kérelmek nem irányítja át.

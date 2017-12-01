@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
+ms.date: 11/29/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2ebb469289afc36b08c90ae9839f5bdba41cd90b
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: db7561c31c0748ae5c1500ba8c39dfa79274901e
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Hibaelhárítás általános az Azure-telepítés az Azure Resource Manager eszközzel
 
@@ -27,13 +27,14 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 
 ## <a name="error-codes"></a>Hibakódok
 
-| Hibakód: | Kezelés | További információ |
+| Hibakód | Kezelés | További információ |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Kövesse a tárfiókok vonatkozó elnevezési korlátozás. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Ellenőrizze a rendelkezésre álló tár fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| AllocationFailed | A fürt vagy a régió nincs forrásanyag is elérhető, vagy nem támogatja a kért Virtuálisgép-méretet. Próbálja megismételni a kérést később, vagy kérje meg egy másik Virtuálisgép-méretet. | [Kiépítés és lefoglalás problémái Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md) és [Windows kiépítés és lefoglalás problémái](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) |
 | AnotherOperationInProgress | Várjon, amíg egyidejű művelet elvégzéséhez. | |
 | AuthorizationFailed | A fióknév vagy egyszerű szolgáltatásnév nincs engedélye a központi telepítés befejezéséhez. Ellenőrizze a szerepkör a fiókja tagja, és a hozzáférése a központi telepítés hatókör. | [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md) |
-| BadRequest | Központi telepítés értékek, amelyek nem egyeznek, mi várható erőforrás-kezelő által küldött. Ellenőrizze a belső hibaállapot-üzeneteket a hibaelhárítás támogatásához. | [Sablonra való hivatkozást](/azure/templates/) és [támogatott helyek](resource-manager-template-location.md) |
+| Hibás kérés | Központi telepítés értékek, amelyek nem egyeznek, mi várható erőforrás-kezelő által küldött. Ellenőrizze a belső hibaállapot-üzeneteket a hibaelhárítás támogatásához. | [Sablonra való hivatkozást](/azure/templates/) és [támogatott helyek](resource-manager-template-location.md) |
 | Ütközés | A kért műveletet az erőforrás a jelenlegi állapotban nem engedélyezett. Például a lemezek átméretezése engedélyezett csak akkor, ha a virtuális gép létrehozása, vagy ha a virtuális gép felszabadítása. | |
 | DeploymentActive | Várjon, amíg párhuzamos központi telepítést, hogy ez az erőforráscsoport befejezéséhez. | |
 | DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg egy másik nevet, vagy módosítsa a meglévő bejegyzést. | |

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: ancav
-ms.openlocfilehash: df5059b5509ca4989369cf3bcba8cb89f1c25db4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b0232db1cfe2d6a7cefd07a8194a88a84a4ffb4
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
 Ez a cikk útmutatást ad az ajánlott eljárások az Azure-ban automatikus skálázást. Az Azure a figyelő automatikus skálázás vonatkozik csak a [virtuálisgép-méretezési csoportok](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Felhőszolgáltatások](https://azure.microsoft.com/services/cloud-services/), és [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/). Más Azure-szolgáltatások különböző méretezési módszer használatára.
@@ -113,7 +113,7 @@ Tekintsük át, ennek egy példát:
 
 Az alábbi képen láthatók az automatikus skálázási beállítás minimális példányok alapértelmezett profillal = 2 és a maximális példányok = 10. Ebben a példában szabályok kibővített az a várólistán lévő üzenetek száma nagyobb, mint 10 esetén és a skála-a az üzenetek száma a várólistán kevesebb mint 3 esetén. Ezzel az erőforrás méretezhető 2 és 10 példányai között.
 
-Emellett nincs egy ismétlődő profil hétfő beállítása. A példányok minimális érték = 2 és a maximális példányok = 12. Ez azt jelenti, hétfőn, az első alkalommal automatikus skálázási ellenőrzi, hogy ez az állapot, ha a példányok száma 2, 3 új minimális méretezés. Mindaddig, amíg az automatikus skálázás továbbra is fennáll, ez a profil feltétel található egyező (hétfő), azt csak dolgozza fel a CPU-alapú scale-out/a szabályok konfigurálva ehhez a profilhoz. Most azt nem ellenőrzi a várólista hossza. Azonban ha azt szeretné ellenőrizni a várólista hossza feltétel is, bele kell foglalni ezeket a szabályokat, az alapértelmezett profil, valamint a hétfő profil.
+Emellett nincs egy ismétlődő profil hétfő beállítása. A példányok minimális érték 3 és legfeljebb példányok = = 10. Ez azt jelenti, hétfőn, az első alkalommal automatikus skálázási ellenőrzi, hogy ez az állapot, ha a példányok száma 2, 3 új minimális méretezés. Mindaddig, amíg az automatikus skálázás továbbra is fennáll, ez a profil feltétel található egyező (hétfő), azt csak dolgozza fel a CPU-alapú scale-out/a szabályok konfigurálva ehhez a profilhoz. Most azt nem ellenőrzi a várólista hossza. Azonban ha azt szeretné ellenőrizni a várólista hossza feltétel is, bele kell foglalni ezeket a szabályokat, az alapértelmezett profil, valamint a hétfő profil.
 
 Hasonlóképpen automatikus skálázás visszatér az alapértelmezett profil, amikor először ellenőrzi, ha a minimális és maximális feltételek teljesülnek-e. Ha a jelenleg a példányok száma 12, méretezés a 10-re, az alapértelmezett profil engedélyezett maximumot.
 

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 11/29/2017
 ms.author: JeffGo
-ms.openlocfilehash: fdb4180ce11b29577299e329869144e99ead0f05
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: e1752bfe40fb53568b79e2b7eec56ca9f3139d4c
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -60,10 +60,16 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
 
     b. Több csomópontos rendszerek esetében a gazdagép egy rendszer, amely hozzáférhet a kiemelt végpont kell lennie.
 
-3. [Töltse le a MySQL erőforrás-szolgáltató bináris fájl](https://aka.ms/azurestackmysqlrp) és egy ideiglenes könyvtárhoz tartalmának önkibontó végrehajtható.
+3. Töltse le a MySQL erőforrás-szolgáltató bináris, és egy ideiglenes könyvtárhoz tartalmának önkibontó hajtható végre.
 
-    > [!NOTE]
-    > Ha egy Azure verem futó 20170928.3 vagy korábbi, [töltse le a](https://aka.ms/azurestackmysqlrp1709).
+    >[!NOTE] 
+    > Az erőforrás-szolgáltató build Azure verem buildek felel meg. Le kell töltenie a megfelelő bináris futtató Azure verem verziójának.
+
+    | Az Azure verem Build | MySQL RP-telepítő |
+    | --- | --- |
+    | 1.0.171122.1 | [MySQL RP 1.1.10.0 verziója](https://aka.ms/azurestackmysqlrp) |
+    | 1.0.171028.1 | [MySQL RP 1.1.8.0 verziója](https://aka.ms/azurestackmysqlrp1710) |
+    | 1.0.170928.3 | [MySQL RP 1.1.3.0 verziója](https://aka.ms/azurestackmysqlrp1709) |
 
 4.  Az Azure-verem legfelső szintű tanúsítvány veszi át a kiemelt végpont. A ASDK önaláírt tanúsítvány jön létre a folyamat során. Több csomópontos meg kell adnia egy megfelelő tanúsítványt.
 
@@ -116,7 +122,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set the credentials for the Resource Provider VM
+# Set the credentials for the new Resource Provider VM
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysqlrpadmin", $vmLocalAdminPass)
 

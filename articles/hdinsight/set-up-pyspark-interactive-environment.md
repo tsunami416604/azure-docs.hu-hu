@@ -1,7 +1,7 @@
 ---
 title: "A Visual Studio Code PySpark interaktív környezet beállítása az Azure HDInsight eszközök - |} Microsoft Docs"
-description: "Megtudhatja, hogyan használhatja a Azure HDInsight Tools for Visual Studio Code létrehozásához, lekérdezések és parancsfájlok."
-Keywords: "VScode, az Azure HDInsight eszközök, struktúra, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, interaktív struktúra, interaktív lekérdezés"
+description: "Ismerje meg, hogyan használható az Azure HDInsight Tools for Visual Studio Code létrehozása és elküldése a lekérdezések és parancsfájlok."
+Keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
 services: HDInsight
 documentationcenter: 
 author: jejiang
@@ -16,59 +16,62 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 24839aadaee07b98ac5a6e6cfd14e44de54e7e7e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5a64023df813262c461b9d772b722ebd613369ed
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="set-up-pyspark-interactive-environment-for-visual-studio-code"></a>A Visual Studio Code PySpark interaktív környezet beállítása
+# <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A Visual Studio Code a PySpark interaktív környezet beállítása
 
-A következő lépések bemutatják, hogyan python-csomagok futtatásakor **HDInsight: PySpark interaktív**.
+A következő lépések bemutatják a Python-csomagokat a telepítést futtatja **HDInsight: PySpark interaktív**.
 
 
-## <a name="set-up-pyspark-interactive-environment-on-macos-and-linux"></a>MacOS és Linux a PySpark interaktív környezet beállítása
-Parancsot kell használnia **pip3** az alábbi lépéseket, ha a **python 3.x**.
-1. Győződjön meg arról, hogy a **Python** és **pip** telepítve.
+## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>MacOS és Linux a PySpark interaktív környezet beállítása
+Ha használ **python 3.x**, kell használnia a parancs **pip3** a következő lépéseket:
+
+1. Győződjön meg arról, hogy **Python** és **pip** vannak telepítve.
  
     ![Python pip verziója](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
-2.  Jupyter telepítése
+2.  Telepítse a Jupyter.
     ```
     sudo pip install jupyter
     ```
-    +  A következő hibaüzenet lehet, hogy érkeznek, a Linux és MacOS:
+   A Linux és macOS láthatja a következő hibaüzenet:
 
-        ![error1](./media/set-up-pyspark-interactive-environment/error1.png)
-        ```Resolve:
-        sudo pip uninstall asyncio
-        sudo pip install trollies
-        ```
+   ![Hiba: 1](./media/set-up-pyspark-interactive-environment/error1.png)
 
-    + Libkrb5-dev(For Linux only) telepítése, lehet, hogy a következő hibaüzenetet jeleníti meg:
+   ```Resolve:
+    sudo pip uninstall asyncio
+    sudo pip install trollies
+    ```
 
-        ![error2](./media/set-up-pyspark-interactive-environment/error2.png)
-        ```Resolve:
-        sudo apt-get install libkrb5-dev 
-        ```
+3. Telepítés **libkrb5-fejlesztői** (a Linux esetén). Előfordulhat, hogy a következő hibaüzenet jelenik meg:
 
-3. Sparkmagic telepítése
+   ![Hiba: 2](./media/set-up-pyspark-interactive-environment/error2.png)
+       
+   ```Resolve:
+   sudo apt-get install libkrb5-dev 
+   ```
+
+3. Telepítés **sparkmagic**.
    ```
    sudo pip install sparkmagic
    ```
 
-4. Győződjön meg arról, hogy ipywidgets megfelelően van telepítve a futtatásával:
+4. Győződjön meg arról, hogy **ipywidgets** megfelelően van-e telepítve a következő futtatásával:
    ```
    sudo jupyter nbextension enable --py --sys-prefix widgetsnbextension
    ```
    ![A burkoló kernelek telepítése](./media/set-up-pyspark-interactive-environment/ipywidget-enable.png)
  
 
-5. Telepítse a burkoló kernelek. Futtatás **pip megjelenítése sparkmagic** és az elérési utat mutatja, hogy sparkmagic telepítve van. 
+5. Telepítse a burkoló kernelek. Futtatás **pip megjelenítése sparkmagic**. A kimeneti elérési útját jeleníti meg a **sparkmagic** telepítését. 
 
     ![sparkmagic helye](./media/set-up-pyspark-interactive-environment/sparkmagic-location.png)
    
-6. Keresse meg a helyét, és futtassa:
+6. A helyen, és futtassa:
 
    ```Python2
    sudo jupyter-kernelspec install sparkmagic/kernels/pysparkkernel   
@@ -78,21 +81,23 @@ Parancsot kell használnia **pip3** az alábbi lépéseket, ha a **python 3.x**.
    ```
 
    ![jupyter kernelspec telepítése](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-install.png)
-7. A telepítési állapotát ellenőrizni: 
+7. A telepítési állapotát ellenőrizni.
 
     ```
     jupyter-kernelspec list
     ```
     ![jupyter kernelspec listája](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-list.png)
 
-    Az elérhető kernelek: **python2** és **pysparkkernel** megfelelnek **python 2.x**, **python3** és  **pyspark3kernel** megfelelnek **python 3.x**. 
+    Az elérhető kernelek: 
+    - **python2** és **pysparkkernel** megfelelnek **python 2.x**. 
+    - **python3** és **pyspark3kernel** megfelelnek **python 3.x**. 
 
-8. Indítsa újra a VScode, és vissza a parancsprogram-szerkesztő futtató **HDInsight: PySpark interaktív**.
+8. Indítsa újra a VS kódot, és ezután térjen vissza a parancsprogram-szerkesztő futtató **HDInsight: PySpark interaktív**.
 
 ## <a name="next-steps"></a>Következő lépések
 
 ### <a name="demo"></a>Bemutató
-* HDInsight VScode: [videó](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight Visual STUDIO Code: [videó](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [A HDInsight eszközzel Azure a Visual Studio Code](hdinsight-for-vscode.md)
@@ -105,5 +110,5 @@ Parancsot kell használnia **pip3** az alábbi lépéseket, ha a **python 3.x**.
 * [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [Hive-adatok ábrázolása a Microsoft Power bi-ban az Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md).
+* [A Microsoft Power BI Azure hdinsight Hive-adatok ábrázolása](hadoop/apache-hadoop-connect-hive-power-bi.md)
 * [Zeppelin használja az Azure HDInsight Hive-lekérdezések futtatásához](hdinsight-connect-hive-zeppelin.md)

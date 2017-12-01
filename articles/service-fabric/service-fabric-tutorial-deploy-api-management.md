@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/10/2017
 ms.author: ryanwi
-ms.openlocfilehash: b3bf91a7ae5ed70456352ecdba9c0324f20f3555
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: da1f2c3170aba9dc13d77a8729a98e7b655edea8
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>A Service Fabric az API Management központi telepítését
-Ez az oktatóanyag három egy sorozat része.  Azure API Management Service Fabric a telepítése a Speciális lehetőséget.  Az API Management akkor hasznos, ha a Service Fabric háttérszolgáltatások vonatkozó útválasztási szabályokat széles skáláját az API-k közzé kell tenni. A felhőalapú alkalmazásokhoz általában adjon meg egy olyan hibaérzékeny pontot érkező felhasználók, eszközök és más alkalmazások előtér-átjáró szükséges. A Service Fabric átjáró lehet bármely állapotmentes szolgáltatások, például egy APP.NET Core alkalmazás, az Event Hubs, IoT-központ vagy Azure API Management forgalom érkező készült. 
+Ez az oktatóanyag négy egy sorozat része.  Azure API Management Service Fabric a telepítése a Speciális lehetőséget.  Az API Management akkor hasznos, ha a Service Fabric háttérszolgáltatások vonatkozó útválasztási szabályokat széles skáláját az API-k közzé kell tenni. A felhőalapú alkalmazásokhoz általában adjon meg egy olyan hibaérzékeny pontot érkező felhasználók, eszközök és más alkalmazások előtér-átjáró szükséges. A Service Fabric átjáró lehet bármely állapotmentes szolgáltatások, például egy APP.NET Core alkalmazás, az Event Hubs, IoT-központ vagy Azure API Management forgalom érkező készült. 
 
 Az oktatóanyag bemutatja, hogyan állíthat be [Azure API Management](../api-management/api-management-key-concepts.md) a Service Fabric egy háttér-szolgáltatás a Service Fabric forgalom.  Amikor végzett, egy VNETET az API Management telepítve rendelkezik, konfigurált adatforgalom küldését az állapot nélküli háttérszolgáltatások egy API-művelet. A Service Fabric Azure API Management-forgatókönyvekkel kapcsolatos további tudnivalókért tekintse meg a [áttekintése](service-fabric-api-management-overview.md) cikk.
 
@@ -38,6 +38,7 @@ Az oktatóanyag adatsorozat elsajátíthatja, hogyan:
 > [!div class="checklist"]
 > * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) Azure-sablon használatával
 > * [Bejövő vagy kimenő fürt méretezése](/service-fabric-tutorial-scale-cluster.md)
+> * [A futtatókörnyezet egy fürt frissítése](service-fabric-tutorial-upgrade-cluster.md)
 > * A Service Fabric az API Management központi telepítését
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -335,10 +336,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Hozzon létre egy API-művelet
 > * Háttér-házirend konfigurálása
 > * Adja hozzá az API-t egy termékre
-
-A következő előzetes megtudhatja, hogyan lehet frissíteni a fürt futásidejű következő oktatóanyagot.
-> [!div class="nextstepaction"]
-> [Az Azure Service Fabric-fürt futtatókörnyezet frissítése](service-fabric-tutorial-upgrade-cluster.md)
 
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 

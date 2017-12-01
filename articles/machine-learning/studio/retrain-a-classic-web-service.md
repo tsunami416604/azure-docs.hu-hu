@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 04e019501be6880fcc7e92de690a9f31195282e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab3c0b5776f9a32ab2703f462d58071f7bfd52ff
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="retrain-a-classic-web-service"></a>Klasszikus webszolgáltatás újratanítása
 A prediktív telepített webes szolgáltatás az alapértelmezett érték scoring-végpontja. Alapértelmezett végpontok szinkronban vannak az eredeti képzési és kísérletek pontozási tárolják, és ezért a betanított modell alapértelmezett végpont nem cserélhető le. A webszolgáltatás működik, hozzá kell adnia egy új végpont a webszolgáltatással. 
@@ -43,11 +43,10 @@ Egy új pontozási végpont létrehozásához a betanított modell frissíthető
 > 
 > 
 
-Háromféleképpen, amelyben hozzáadhat egy új végpont egy webszolgáltatás-bővítmény:
+Kétféleképpen, amelyben hozzáadhat egy új végpont egy webszolgáltatás-bővítmény:
 
 1. Automatizáltan
 2. A Microsoft Azure Web Services portál
-3. Használja a klasszikus Azure portált
 
 ### <a name="programmatically-add-an-endpoint"></a>Programozott módon a végpont hozzáadása
 Pontozó végpontjaitól jelen mintakód is hozzáadhat [github-tárházban](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs).
@@ -58,18 +57,10 @@ Pontozó végpontjaitól jelen mintakód is hozzáadhat [github-tárházban](htt
 3. Kattintson az **Add** (Hozzáadás) parancsra.
 4. Írja be nevét és leírását, az új végpont. Válassza ki a naplózási szint, és hogy engedélyezve van-e mintaadatokat. További információt a naplózást, [naplózását a Machine Learning webszolgáltatások](web-services-logging.md).
 
-### <a name="use-the-azure-classic-portal-to-add-an-endpoint"></a>Végpont hozzáadása a klasszikus Azure portál használatával
-1. Jelentkezzen be a [klasszikus Azure portálon](https://manage.windowsazure.com).
-2. A bal oldali menüben kattintson **Machine Learning**.
-3. A név, kattintson a munkaterület majd **webszolgáltatások**.
-4. A név, kattintson a **nyilvántartásba modell [prediktív exp].** .
-5. Kattintson a lap alján **végpont hozzáadása**. Végpontok hozzáadásával kapcsolatos további információkért lásd: [végpontok létrehozása](create-endpoint.md). 
-
 ## <a name="update-the-added-endpoints-trained-model"></a>A hozzáadott végpont betanított modell frissítése
 A megőrzési befejezéséhez, frissítenie kell a hozzáadott új végpont a betanított modell.
 
-* Ha hozzáadta a klasszikus Azure portál használatával új végpont, kattintson az új végpont neve a portálon, majd a **UpdateResource** hivatkozásra az URL-címet a végpont modell frissíteni kell.
-* Ha hozzáadta a végpont a mintakódot, ez magában foglalja a súgó által azonosított URL-cím helye a *HelpLocationURL* a kimeneti értéket.
+Ha hozzáadta a végpont a mintakódot, ez magában foglalja a súgó által azonosított URL-cím helye a *HelpLocationURL* a kimeneti értéket.
 
 Az útvonal URL-cím beolvasása:
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 0f45468616884a6866bd95ef53acab71b4fed06c
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: f32d23caa0a89b7f9336628280d726a351fb0603
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -195,7 +195,6 @@ Bizonyos különbségek vannak a viselkedést, amely az Azure Table storage érk
 * A tábla API által visszaadott lekérdezés eredményei nem sorrendje partíció kulcs/sor fő szerint Azure Table storage-ban.
 * Sor kulcsok csak lehet legfeljebb 255 bájt
 * Kötegekben csak tartalmazhat legfeljebb 2 MB
-* A rögzített és a többi tábla művelettől RUs szereplő külön felügyeleti késleltetési által szabályozott CreateIfNotExists hívások. Ez azt jelenti, hogy azokat, így CreateIfNotExists nagy mennyiségű beolvasása szabályozva, és nem fogja tudni megtennie, semmit, mert a korlát nem származik a RUs.
 * A CORS jelenleg nem támogatott
 * A táblanevek, az Azure Table storage-és nagybetűk nem, de a Azure Cosmos DB tábla API
 * Alább Azure Cosmos DB belső formátumok kódolási információkat, például bináris mezők jelenleg nem annyira hatékony, például előfordulhat, hogy egy. Ezért ennek hatására váratlan korlátozások adatok mérete. Például jelenleg egyik nem használható a teljes 1 Meg egy tábla entitás bináris adatok tárolására, mert a kódolás növeli az adatok méretét.
@@ -504,7 +503,7 @@ Használjon [metrikák](use-metrics.md) használata [diagnosztikai naplók](logg
 ### <a name="which-client-sdks-can-work-with-apache-cassandra-api-of-azure-cosmos-db"></a>Melyik ügyfél SDK-k együttműködhet Apache Cassandra API az Azure Cosmos DB?
 A private Preview verziójára Apache Cassandra SDK-ügyfél illesztőprogramokat, amelyek alapján a CQLv3 ügyfélprogramok használták. Ha más illesztőprogramokat használja, vagy hogy használata során szembesülnek problémákat, ha üzenet küldése a [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com). 
 
-### <a name="is-composite-primary-key-supported"></a>Támogatja a rendszer összetett elsődleges kulcsot?
+### <a name="is-composite-partition-key-supported"></a>Összetett partíciókulcs támogatva van?
 Igen, rendszeres szintaxis segítségével összetett partíciós kulcs létrehozása. 
 
 ### <a name="can-i-use-sstable-loader-for-data-loading"></a>Használható az adatok betöltése sstable betöltő?

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
-ms.openlocfilehash: bdf0bd54130521a7178af3a28731f4c0e21e3e0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 75577ad318f2ff23a7b7d10cf551f3bced56fb62
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Azure Machine Learning webszolgáltatás üzembe helyezése
 Az Azure Machine Learning segítségével létrehozása, tesztelése és telepítése a prediktív elemzési megoldásokat.
@@ -108,7 +108,7 @@ Az a **konfigurációs** lapon módosíthatja a leírást, cím, a tárfiók kul
 A webszolgáltatás telepítése után, ha teheti:
 
 * **Hozzáférés** azt a webes szolgáltatás API-n keresztül.
-* **Kezelése** az Azure Machine Learning web services portál vagy a klasszikus Azure portálon keresztül.
+* **Kezelése** az Azure Machine Learning web services portálon keresztül.
 * **Frissítés** , ha a modell megváltozik.
 
 #### <a name="access-your-new-web-service"></a>Az új webes szolgáltatás
@@ -141,7 +141,7 @@ A kötegelt végrehajtási szolgáltatás teszteléséhez kattintson **tesztelé
 
 ![A webszolgáltatás tesztelése](./media/publish-a-machine-learning-web-service/figure-3.png)
 
-Az a **konfigurációs** lapon módosítsa a szolgáltatás megjelenített nevét, és adjon neki egy leírást. A név és leírás megjelenik-e a [a klasszikus Azure portálon](http://manage.windowsazure.com/) a webszolgáltatások kezelhetik.
+Az a **konfigurációs** lapon módosítsa a szolgáltatás megjelenített nevét, és adjon neki egy leírást. A név és leírás megjelenik-e a [Azure-portálon](https://portal.azure.com/) a webszolgáltatások kezelhetik.
 
 Megadhatja egy leírást a bemeneti adatok, a kimeneti adatok és a webes szolgáltatás paraméterei egy karakterláncot adjon meg minden oszlop alapján a **bemeneti SÉMÁT**, **kimeneti SÉMÁVAL**, és **WEBSZOLGÁLTATÁS A paraméter**. A leírások használt minta kód dokumentációjában a webszolgáltatáshoz.
 

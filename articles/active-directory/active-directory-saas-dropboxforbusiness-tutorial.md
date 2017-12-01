@@ -5,19 +5,20 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
+ms.reviewer: joflore
 ms.assetid: 63502412-758b-4b46-a580-0e8e130791a1
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 11/29/2017
 ms.author: jeedes
-ms.openlocfilehash: a56a5af171eaca259db29f25fee4331a77313420
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a71892296c82e3655a75ca3e863539cc19ea998
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>Oktatóanyag: Azure Active Directoryval integrált vállalati Dropbox
 
@@ -25,9 +26,9 @@ Ebben az oktatóanyagban elsajátíthatja a vállalati Dropbox integrálása az 
 
 A vállalati Dropbox integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
-- Megadhatja a Dropbox vállalati hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett a dropbox alkalmazásba vállalati (egyszeri bejelentkezés) a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Azt is szabályozhatja az Azure AD, aki hozzáférhet a vállalati a dropbox alkalmazásba.
+- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett a dropbox alkalmazásba vállalati (egyszeri bejelentkezés) a saját Azure AD-fiókok.
+- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
 
@@ -44,7 +45,7 @@ Az Azure AD-integráció konfigurálása a Dropbox vállalati, a következőkre 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
 - Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
@@ -59,40 +60,37 @@ A dropbox-bA az Azure AD-be a vállalati integráció konfigurálásához kell h
 
 1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb][1]
 
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
-    ![Alkalmazások][2]
+    ![A vállalati alkalmazások panel][2]
     
-3. Kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
 
-    ![Alkalmazások][3]
+    ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Dropbox vállalati**.
+4. Írja be a keresőmezőbe, **vállalati Dropbox**, jelölje be **vállalati Dropbox** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_search.png)
+    ![A vállalati az eredménylistában Dropbox](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_addfromgallery.png)
 
-5. Az eredmények panelen válassza ki a **vállalati Dropbox**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a Dropbox vállalati "Britta Simon." nevű tesztfelhasználó alapján
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a Dropbox vállalati "Britta Simon" nevű tesztfelhasználó alapján.
 
 Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a Dropbox vállalati megfelelőjére felhasználót a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a vállalati Dropbox közötti kapcsolat kapcsolatot kell létrehozni.
 
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a Dropbox vállalati.
+A Dropbox vállalati, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
 Az Azure AD egyszeri bejelentkezést a vállalati Dropbox tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[A Dropbox az üzleti tesztfelhasználó létrehozása](#creating-a-dropbox-for-business-test-user)**  - való Britta Simon egy megfelelője a Dropbox vállalati, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
+2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+3. **[Hozzon létre egy üzleti tesztfelhasználó a Dropbox](#create-a-dropbox-for-business-test-user)**  - való Britta Simon egy megfelelője a Dropbox vállalati, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a dropboxban üzleti alkalmazás egyszeri bejelentkezés konfigurálása.
 
@@ -100,13 +98,37 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 1. Az Azure portálon a a **vállalati Dropbox** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
  
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_samlbase.png)
+    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_samlbase.png)
 
 3. Az a **Dropbox üzleti tartomány és az URL-címek** területen tegye a következőket:
+
+    ![A Dropbox üzleti tartomány- és URL-címek egyetlen bejelentkezési adatok](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_url1.png)
+
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://www.dropbox.com/sso/<id>`
+
+    b. Az a **azonosító** szövegmezőhöz be egy értéket:`Dropbox`
+
+    > [!NOTE] 
+    > Az előző bejelentkezési URL-cím nincs valós értékének. Az érték a tényleges bejelentkezési URL-címet, az oktatóanyag későbbi részében ismertetett frissíti. Ügyfél [Dropbox üzleti ügyfél-támogatási csoport](https://www.dropbox.com/business/contact) az értéket be kell olvasni. 
+ 
+
+4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_certificate.png) 
+
+5. Kattintson a **mentése** gombra.
+
+    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_general_400.png)
+
+6. A a **üzleti konfiguráció Dropbox** kattintson **Dropbox konfigurálása a vállalati** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+
+    ![A Dropbox üzleti konfiguráció](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_configure.png) 
+
+7. Egyszeri bejelentkezés konfigurálása **Dropbox vállalati** oldalán, nyissa meg a Dropbox üzleti bérlő számára.
 
     a. Jelentkezzen be a Dropbox üzleti bérlő számára. 
    
@@ -124,38 +146,17 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
    
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769512.png "egyszeri bejelentkezés konfigurálása")
    
-    e. Az URL-Címének másolása mellett **is jelentkeznek be az e-mail cím beírásával vagy azok lépjen közvetlenül**. 
+    e. A másolja az URL-címet **is jelentkeznek be az e-mail cím beírásával vagy azok lépjen közvetlenül** és illessze be azt a **bejelentkezési URL-cím** a szövegmező **üzleti tartomány és az URL-címekDropbox** Azure-portál szakaszban. 
     
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769513.png)
     
-    f. Az Azure portálon a a **bejelentkezési URL-cím** szövegmezőhöz beilleszteni az URL-címet.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_url.png)
-
-     Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://www.dropbox.com/sso/<id>`
-
-    > [!NOTE] 
-    > Ez az érték nincs valós értékének. Frissítse az értéket a tényleges bejelentkezési URL-címet kap az egyszeri bejelentkezés szakasz. Ügyfél [Dropbox üzleti ügyfél-támogatási csoport](https://www.dropbox.com/business/contact) lekérni ezt az értéket. 
- 
-4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_certificate.png) 
-
-5. Kattintson a **mentése** gombra.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_general_400.png)
-
-6. A a **üzleti konfiguráció Dropbox** kattintson **Dropbox konfigurálása a vállalati** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_configure.png) 
-
-7. Egyszeri bejelentkezés konfigurálása **vállalati Dropbox** oldalán, nyissa meg a Dropbox üzleti bérlő, a a **egyszeri bejelentkezés** szakasza a **hitelesítési** lapon, hajtsa végre az alábbi lépéseket: 
+8. Az a **egyszeri bejelentkezés** szakasza a **hitelesítési** lapon, a következő lépésekkel: 
    
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769516.png "egyszeri bejelentkezés konfigurálása")
    
     a. Kattintson a **szükséges**.
    
-    b. Az Azure portálon a a **bejelentkezés konfigurálása** ablakban, a Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** értékét, és illessze be azt a **bejelentkezési URL** szövegmező.
+    b. Az a a **bejelentkezési URL** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe** , amely az Azure portálról másolta.
 
     c. Kattintson a **tanúsítvány kiválasztása**, majd keresse meg a **Base64 kódolású tanúsítvány fájl**.
 
@@ -163,39 +164,41 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
 
-![Az Azure AD-felhasználó létrehozása][100]
+   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_01.png) 
+    ![Az Azure Active Directory gomb](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_01.png)
 
-2.  Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_02.png) 
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
-3. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_03.png) 
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_02.png)
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_04.png) 
+3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    ![A Hozzáadás gombra.](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_03.png)
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    ![A felhasználó párbeszédpanel](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_04.png)
+
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+
+    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="creating-a-dropbox-for-business-test-user"></a>A Dropbox az üzleti tesztfelhasználó létrehozása
+### <a name="create-a-dropbox-for-business-test-user"></a>A Dropbox az üzleti tesztfelhasználó létrehozása
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó a vállalati Dropbox jön létre. Vállalati Dropbox támogatja közvetlenül az időponthoz kötött kiosztást, amely alapértelmezés szerint engedélyezve van.
 
@@ -204,11 +207,11 @@ Nincs ebben a szakaszban az Ön művelet elem. Ha a felhasználó nem létezik a
 >[!Note]
 >Ha a felhasználót manuálisan kell létrehozni, lépjen kapcsolatba kell [Dropbox üzleti ügyfél-támogatási csoport](https://www.dropbox.com/business/contact) 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés a vállalati Dropbox Azure egyszeri bejelentkezéshez használandó.
 
-![Felhasználó hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200] 
 
 **A dropbox alkalmazásba vállalati Britta Simon hozzárendeléséhez a következő lépésekkel:**
 
@@ -218,15 +221,15 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 2. Az alkalmazások listában válassza ki a **Dropbox vállalati**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_app.png) 
+    ![A dropbox-ba, az alkalmazások listáját üzleti hivatkozás](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_app.png)  
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![A "Felhasználók és csoportok" hivatkozásra][202]
 
 4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][203]
+    ![A hozzárendelés hozzáadása panelen][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
@@ -234,17 +237,19 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
 Amikor az üzleti csempe a hozzáférési panelen a Dropbox kattint, üzleti alkalmazás kapja meg a Dropbox bejelentkezési oldalán.
+ 
 
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
-* [A felhasználók átadása konfigurálása](active-directory-saas-dropboxforbusiness-provisioning-tutorial.md)
+
+
 
 <!--Image references-->
 

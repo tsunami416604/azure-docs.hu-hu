@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: 19caa05f0de7b4ff4ed7f4eafe50839d04f4ab50
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 076d4d95db21f0a1c1500ae7766392547a441d1b
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>A Service Fabric-fürt beállításait és a háló házirend testreszabása
 Ez a dokumentum azt ismerteti, hogyan szabhatja testre a különböző hálóbeállításokat, és a háló frissítéséhez a Service Fabric-fürt házirendet. Testre szabhatja azokat keresztül a [Azure-portálon](https://portal.azure.com) vagy Azure Resource Manager-sablonnal.
@@ -678,7 +678,7 @@ PropertyGroup|X509NameMap, alapértelmezés szerint nincs|Dinamikus| |
 |GetCodePackageActivationContextTimeout|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus|Adja meg az időtartam másodpercben. Az időtúllépési értékének CodePackageActivationContext hívást. Ez a tulajdonság nem vonatkozik az alkalmi szolgáltatásokban. |
 |IPProviderEnabled|logikai érték, alapértelmezett értéke hamis|Statikus|Lehetővé teszi az IP-címek kezelését. |
 |NTLMAuthenticationEnabled|logikai érték, alapértelmezett értéke hamis|Statikus| Lehetővé teszi az NTLM használatával kód csomagokat fut más felhasználókkal, hogy a folyamatok közötti gépek biztonságosan kommunikálhassanak. |
-|NTLMAuthenticationPasswordSecret|SecureString, alapértelmezett érték Common::SecureString(L"")|Statikus|Egy titkosított létrehozni az NTLM-felhasználó jelszót használt. Ha NTLMAuthenticationEnabled igaz beállítandó rendelkezik. A telepítő hitelesíteni. |
+|NTLMAuthenticationPasswordSecret|SecureString, alapértelmezett érték Common::SecureString(L"")|Statikus|Az NTLM-felhasználók számára jelszó létrehozásához használt titkosított kivonatának. Ha NTLMAuthenticationEnabled igaz beállítandó rendelkezik. A telepítő hitelesíteni. |
 |NTLMSecurityUsersByX509CommonNamesRefreshInterval|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromMinutes(3)|Dinamikus|Adja meg az időtartam másodpercben. FileStoreService NTLM-konfigurációhoz használandó új tanúsítványok keres a lépésközt, mely üzemeltetési környezet által megadott beállításokat. |
 |NTLMSecurityUsersByX509CommonNamesRefreshTimeout|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromMinutes(4)|Dinamikus| Adja meg az időtartam másodpercben. A tanúsítvány köznapi nevek használatával NTLM-felhasználók konfigurálásával időkorlátját. Az NTLM felhasználók FileStoreService megosztások van szükség. |
 |RegisterCodePackageHostTimeout|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus| Adja meg az időtartam másodpercben. Az időtúllépési értékének FabricRegisterCodePackageHost szinkronizálási hívása. Ez a tulajdonság csak multi kód csomag alkalmazásgazdája esetén például FWP vonatkozik |

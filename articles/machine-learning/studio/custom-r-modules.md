@@ -4,7 +4,7 @@ description: "Gyors üzembe helyezési egyéni R modul az Azure Machine Learning
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 03/24/2017
-ms.author: bradsev;ankarlof
-ms.openlocfilehash: cf3f0e79a9f873a57ef6b7f5233d324faee3e017
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/29/2017
+ms.author: bradsev;ankarlof;garye
+ms.openlocfilehash: 1cd2bbb6adecaba908252bd42fce292654a5cf5a
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Egyéni R-modul létrehozása az Azure Machine Learningben
 Ez a témakör ismerteti a létrehozásáról és központi telepítése az Azure Machine Learning egy egyéni R modult. Egyéni R modul és a megadásukhoz használt fájlokat ismerteti. Azt mutatja be, hogyan készítse a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés modul regisztrálása. Az elemek és attribútumok az egyéni modul definíciójában használja majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és a több kimenet használata is ismertet. 
@@ -286,7 +286,7 @@ A modul paraméter használatával van definiálva a **Arg** gyermekeleme a **ar
   * **allowedTypes** -szűrők, amelyen kiválaszthatja a típusokat a oszlop. Érvényes értékek a következők: 
     
     * Numerikus
-    * Logikai érték
+    * Logikai
     * Kategorikus
     * Karakterlánc
     * Címke

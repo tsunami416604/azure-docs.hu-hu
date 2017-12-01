@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 98941c49b057380b3ef9164515bcc2a63ccb56ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3544112b025f5df10e6f67c8e2e02f4bb587b4e0
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>A forgatókönyvnek Azure tartalomkézbesítési optimalizálása
 
@@ -37,13 +37,13 @@ Az Azure Content Delivery Network Akamai támogatja:
 
 * Általános webes kézbesítés 
 
-* Általános médiaadatfolyam-továbbítást
+* Általános médiastreaming
 
 * Videotartalom médiaadatfolyam-továbbítást
 
-* Nagy méretű fájl letöltése
+* Nagyméretű fájl letöltése
 
-* Dinamikus gyorsulás 
+* Dinamikuswebhely-gyorsítás 
 
 Az Azure Content Delivery Network verizon csak általános webes kézbesítési támogatja. Igény szerint és a nagy méretű fájlok letöltési videót használható. Nem rendelkezik egy optimalizálási típus kiválasztásához.
 
@@ -74,7 +74,7 @@ Egy tipikus webhely statikus és dinamikus tartalom tartalmazza. Statikus tartal
 > [!NOTE]
 > Ha az Azure Content Delivery Network Akamai használ, érdemes az optimalizálás használandó, ha a 10 MB-nál kisebb fájlok átlagos mérete. Ha a átlagos mérete nagyobb, mint 10 MB, jelölje be **nagy méretű fájlok letöltési** a a **optimalizálva** legördülő listából.
 
-### <a name="general-media-streaming"></a>Általános médiaadatfolyam-továbbítást
+### <a name="general-media-streaming"></a>Általános médiastreaming
 
 Ha használja a végpontot az élő adatfolyam- és videotartalom streaming van szüksége, általános médiaadatfolyam-továbbítást optimalizálási ajánlott.
 
@@ -97,17 +97,17 @@ Médiaadatfolyam-továbbítást optimalizálási kapcsolatos további informáci
 > [!NOTE]
 > Ha a végpont elsősorban videotartalom tartalmat szolgáltat, ez használható optimalizálás. Az optimalizálás és az általános médiaadatfolyam-továbbítást optimalizálása közötti fő különbség a kapcsolat újrapróbálkozási időkorlátja. Az időtúllépés értéke sokkal rövidebb élő adatfolyam-továbbítási forgatókönyv együttműködni.
 
-### <a name="large-file-download"></a>Nagy méretű fájl letöltése
+### <a name="large-file-download"></a>Nagyméretű fájl letöltése
 
 Az Azure Content Delivery Network Akamai használatakor a nagy méretű fájlok letöltési képes biztosítani a 1,8 GB-nál nagyobb fájlokat kell használnia. Az Azure Content Delivery Network verizon nem rendelkezik a fájl egy korlátozás, töltse le az általános webes kézbesítési optimalizálás mérete.
 
 Akamai Azure tartalom Delivery Network használatakor nagy fájlok letöltése tartalma 10 MB-nál nagyobb vannak optimalizálva. Ha a átlagos mérete 10 MB-nál kisebb, előfordulhat, hogy használni kívánt általános webes kézbesítését. Ha a fájlok átlagos következetesen 10 MB-nál nagyobb értékek, lehet, hatékonyabb, ha nagy fájlok esetében külön végpont létrehozásához. Például belső vezérlőprogram vagy szoftverfrissítések általában nagy méretű fájlt.
 
-Verizon Azure tartalom Delivery Network adatfolyam media tartalom az általános webes kézbesítési optimalizálási típust használ.
+Verizon Azure tartalom Delivery Network képes biztosítani a nagy méretű fájlok tartalom letöltése a általános webes kézbesítési optimalizálási típust használ.
 
 Nagy méretű fájlok optimalizálási kapcsolatos további információkért lásd: [nagy méretű fájlok optimalizálási](cdn-large-file-optimization.md).
 
-### <a name="dynamic-site-acceleration"></a>Dinamikus gyorsulás
+### <a name="dynamic-site-acceleration"></a>Dinamikuswebhely-gyorsítás
 
  Dinamikus gyorsítás Akamai és a Verizon Content Delivery Network érhető el. Az optimalizálás használatához további díjat magában foglalja. További információkért lásd: a tarifákat tartalmazó oldalt.
 

@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 11/29/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8bb5470918aa3ad15cb9081f5c02b40984d83f51
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 210ba4a90f24ce9b0b55c4565028232c2b7fd7cc
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -51,10 +51,11 @@ Ha egy korábbi verzióját a kötegelt API Batch-fiók létrehozása az alkalma
 | Alkalmazáscsomagok alkalmazásonként |40 |
 | Csomag mérete (minden) |KB. 195GB<sup>1</sup> |
 | Maximális kezdő tevékenység mérete | 32768 karakterek<sup>2</sup> |
+| Maximális feladatütemezés élettartama | 7 nap<sup>3</sup> |
 
 <sup>1</sup> blob maximális blokkméretének azure tárolási kapacitása<br />
-<sup>2</sup> erőforrás fájlok és a környezeti változók
-
+<sup>2</sup> erőforrás fájlok és a környezeti változók<br />
+<sup>3</sup> maximális élettartamát egy feladatot, amikor felveszik a feladat befejezését követően a rendszer 7 nap. Befejezett feladatok megőrzése határozatlan ideig; nem fejeződött be a maximális élettartama belüli tevékenységek nem érhető el.
 
 
 ## <a name="view-batch-quotas"></a>Kötegelt kvóták megtekintése
