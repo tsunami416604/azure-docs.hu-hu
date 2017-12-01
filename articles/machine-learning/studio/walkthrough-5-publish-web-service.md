@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: 1bbc8ce31fc8e5ffb048a1fb9553a82975680a3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba8f1678d87159088c58cf0e05e0fe5a6579b358
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>Az útmutató 5. lépése: Az Azure Machine Learning webszolgáltatás üzembe helyezése
 Ez a forgatókönyv ötödik lépését az [az Azure Machine Learning a prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
@@ -190,26 +190,6 @@ A vizsgálat eredményeinek jelenik meg a kimeneti oszlop a lap jobb oldalán.
 
 
 ## <a name="manage-the-web-service"></a>A webszolgáltatás kezelése
-
-### <a name="manage-a-classic-web-service-in-the-azure-classic-portal"></a>A klasszikus Azure portálon klasszikus webszolgáltatás kezelése
-
-Miután a klasszikus webszolgáltatás telepítése után, akkor kezelhető a [a klasszikus Azure portálon](https://manage.windowsazure.com).
-
-1. Jelentkezzen be a [a klasszikus Azure portálon](https://manage.windowsazure.com)
-2. A Microsoft Azure-szolgáltatások panelen kattintson a **gépi tanulás**
-3. Kattintson a munkaterület
-4. Kattintson a **webszolgáltatások** lap
-5. Kattintson a létrehozott webszolgáltatás
-6. Kattintson az "alapértelmezett" végpont
-
-Itt mint a figyelheti, hogyan működik a webszolgáltatás és műveletek kezelni tud a ellenőrizze teljesítmény beállításokból állnak módosításával, hogy hány egyidejű meghívja a szolgáltatást.
-
-További információ:
-
-* [Végpontok létrehozása](create-endpoint.md)
-* [Méretezési webszolgáltatás](scaling-webservice.md)
-
-### <a name="manage-a-classic-or-new-web-service-in-the-azure-machine-learning-web-services-portal"></a>A klasszikus vagy az Azure Machine Learning webszolgáltatások portálon új webszolgáltatás kezelése
 
 Ha a webszolgáltatás telepítése után, hogy klasszikus vagy új, kezelheti az a [Microsoft Azure Machine Learning webszolgáltatások](https://services.azureml.net/quickstart) portálon.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: juliako
-ms.openlocfilehash: 5b8f2d750c3330fb05f5529c3e3549d8e06e5e4e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: c584806105c2583daca944260b65da2f7637bb0c
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>A dinamikus titkosítás: Tartalomkulcs hitelesítési szabályzatának konfigurálása
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -30,7 +30,7 @@ Ha azt szeretné, a Media Services az objektum titkosítására, hozzá kell ren
 
 Adatfolyam egy player kér, amikor Media Services dinamikus titkosítást a PlayReady vagy a AES titkosítással tartalom használ a megadott kulcs. Az adatfolyam visszafejtése, a Windows Media player a kulcs kézbesítési szolgáltatás fog igényelni a kulcsot. Döntse el, hogy a felhasználó jogosult-e a kulcs eléréséhez, hogy a szolgáltatás értékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
 
-A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalomkulcs-hitelesítési házirend rendelkezhet egy vagy több engedélyezési korlátozás: **nyissa meg a** vagy **token** korlátozás. A tokennel korlátozott szabályzatokhoz a Secure Token Service (Biztonsági jegykiadó szolgáltatás, STS) által kiadott tokennek kell tartoznia. A Media Services tokeneket támogatja a **Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) formátumú és ** JSON Web Token **(JWT) formátumban.
+A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalomkulcs-hitelesítési házirend rendelkezhet egy vagy több engedélyezési korlátozás: **nyissa meg a** vagy **token** korlátozás. A tokennel korlátozott szabályzatokhoz a Secure Token Service (Biztonsági jegykiadó szolgáltatás, STS) által kiadott tokennek kell tartoznia. A Media Services tokeneket támogatja a **Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) formátumú és **JSON Web Token** (JWT) formátumú.
 
 A Media Services nem nyújt Secure Token szolgáltatásokat. Hozzon létre egy egyéni STS, vagy probléma jogkivonatokat a Microsoft Azure ACS kihasználja. Az STS be kell állítani a megadott kulcs és a probléma jogcímek a lexikális elem korlátozás konfigurációs (ebben a cikkben leírtak) megadott aláírt jogkivonat létrehozásához. A Media Services kulcs kézbesítési szolgáltatás a titkosítási kulcs visszatér az ügyfélhez, ha a jogkivonat érvényes, és a jogkivonatában lévő jogcímeket megegyezzenek a tartalomkulcsot.
 

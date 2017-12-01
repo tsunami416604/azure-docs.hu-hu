@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 08e682c51b12d4506019d2f6b68e1eae0798b990
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab2aed2b9e86dc9b3111dc1fdf9deea2e2930c7c
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Az Azure AD Connect: Hogyan tudja elhárítani az LocalDB 10 GB-os korlát
 Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Használhatja az Azure AD Connecttel együtt telepített alapértelmezett SQL Server 2012 Express LocalDB-t, vagy használhatja saját teljes SQL-kiszolgálóját. Az SQL Server Express 10 GB-os méretkorláttal rendelkezik. Ha a LocalDB-t használja és eléri a korlátot, az Azure AD Connect szinkronizálási szolgáltatása többé nem indul majd el, vagy nem végzi el megfelelően a szinkronizálást. Ez a cikk ismerteti a helyreállítási lépéseket.
@@ -63,11 +63,11 @@ Az Azure AD Connect létrehozott adatbázis neve nem **ADSync**. A zsugorítási
 * A szinkronizálási szolgáltatásfiók az Azure AD Connect szinkronizálási szolgáltatás üzemi környezetben használt.
 * A helyi csoport telepítése során létrehozott ADSyncAdmins.
 
-1. Készítsen biztonsági mentést az adatbázis másolása **ADSync.mdf** és **ADSync_log.ldf** alatt található fájlok `%ProgramFiles%\program files\Microsoft Azure AD Sync\Data` egy biztonságos helyre.
+1. Készítsen biztonsági mentést az adatbázis másolása **ADSync.mdf** és **ADSync_log.ldf** alatt található fájlok `%ProgramFiles%\Microsoft Azure AD Sync\Data` egy biztonságos helyre.
 
 2. Indítson el egy új PowerShell-munkamenetet.
 
-3. Navigáljon a mappa `%ProgramFiles%\Program Files\Microsoft SQL Server\110\Tools\Binn`.
+3. Navigáljon a mappa `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`.
 
 4. Start **sqlcmd** segédprogram a parancs futtatásával `./SQLCMD.EXE -S “(localdb)\.\ADSync” -U <Username> -P <Password>`, az adatbázis DBO vagy egy rendszergazdai hitelesítő adatokkal.
 

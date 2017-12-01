@@ -4,7 +4,7 @@ description: "A Cortana Intelligence szolgáltatásai segítségével a vehicle 
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: aaeb29a5-4a13-4eab-bbf1-885690d86c56
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 11/15/2017
 ms.author: bradsev
-ms.openlocfilehash: 4a28ef3765518fe2948853d1c6334cf034b40d34
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 626987ec0648f9e770499b4a48bc4ca2d175d2b4
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Vehicle Telemetriai Analytics megoldás sablon Power BI irányítópult telepítési utasításokat
 Ez a forgatókönyv a fejezetek menü hivatkozásokat: 
@@ -92,7 +92,7 @@ A valós idejű jelentéseket és az irányítópult körülbelül 30-45 percig 
 
 4. Adja meg a jelentés nevét **Vehicle Telemetriai elemzés valós idejű - jelentések**.
 
-    ![Jelentés neve.](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9-provide-report-name.png)
+    ![Jelentés neve](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9-provide-report-name.png)
 
 ## <a name="real-time-reports"></a>Valós idejű jelentéseket
 Ez a megoldás három valós idejű jelentéseket vannak:

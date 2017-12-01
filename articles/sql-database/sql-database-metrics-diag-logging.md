@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 6d5fc10b5186f2830f724325846a485e4064d12b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9f201454d58dbc646923d0155ff41761d593ab7e
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database metrikák és diagnosztikai naplózás 
 Az Azure SQL-adatbázis el tudná küldeni, metrikákat és diagnosztikai naplókat a könnyebb figyelése. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
@@ -48,7 +48,7 @@ Metrikák és diagnosztikai naplózás engedélyezése esetén meg kell adnia a 
 
 Új Azure-erőforrás kiépítése, vagy jelöljön ki egy meglévő erőforrást. Miután kiválasztotta a tárolási erőforrások, meg kell adnia az összegyűjtendő adatok. Elérhető lehetőségek a következők:
 
-- [1 perces metrikák](sql-database-metrics-diag-logging.md#1-minute-metrics): tartalmaz DTU százalékos, DTU korlátot, processzorszázaléka, napló írása fizikai adatot olvasott a következő százalékos aránya, százalékos, sikeres vagy sikertelen/letiltva tűzfalkapcsolatok, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolás és XTP tárolási %.
+- [Összes metrikát](sql-database-metrics-diag-logging.md#all-metrics): tartalmaz DTU százalékos, DTU korlátot, processzorszázaléka, napló írása fizikai adatot olvasott a következő százalékos aránya, százalékos, sikeres vagy sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolási százalékos aránya , és XTP tároló (%).
 - [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): a lekérdezés futásidejű statisztikája, például a CPU-használat és a lekérdezés időtartama kapcsolatos információt tartalmazza.
 - [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): megtudhatja, mi a lekérdezések várta, ha a következőkre például Processzor, a napló és a ZÁROLÁS lekérdezés várakozási statisztikai adatait tartalmazza.
 - [Hibák](sql-database-metrics-diag-logging.md#errors-dataset):, és ismételje meg ezt az adatbázist az SQL-hibákkal kapcsolatos információkat tartalmaz.
@@ -243,7 +243,7 @@ Vagy egyszerűen több:
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-A blob nevének 1 perces metrikáihoz lehet, például:
+Például minden metrikák blob nevét a következő lehet:
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
@@ -261,12 +261,12 @@ Megtudhatja, hogyan [metrikák és diagnosztikai naplókat letölteni az tárol�
 
 ## <a name="metrics-and-logs-available"></a>Metrikák és elérhető naplók
 
-### <a name="1-minute-metrics"></a>1 perces metrikák
+### <a name="all-metrics"></a>Minden metrikák
 
 |**Erőforrás**|**Metrikák**|
 |---|---|
 |Adatbázis|DTU százalékos DTU használt, DTU határt, a processzor, a fizikai adatáttelepítések olvasási százalékos, napló írása százaléka, a sikeres vagy sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolási százalékos, XTP tárolási százalékos, és Holtpont |
-|A rugalmas készlet|eDTU százalékos eDTU használt, eDTU határt, a processzor, a fizikai adatáttelepítések olvasási százalékos, napló írása százalékos, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolási százalékos, tárolási kapacitás, XTP tárolási százalékos aránya |
+|Rugalmas készlet|eDTU százalékos eDTU használt, eDTU határt, a processzor, a fizikai adatáttelepítések olvasási százalékos, napló írása százalékos, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolási százalékos, tárolási kapacitás, XTP tárolási százalékos aránya |
 |||
 
 ### <a name="query-store-runtime-statistics"></a>A Lekérdezéstár futásidejű statisztikája

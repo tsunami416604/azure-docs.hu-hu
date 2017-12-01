@@ -9,14 +9,14 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/28/2017
+ms.date: 11/29/2017
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: 89e2192b3b5c978da4a41dea51d0ab70181b500d
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 161d9fda75caa7836e012e6e1ff79df576281137
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Az Azure-ban Docker Python és PostgreSQL webalkalmazás létrehozása
 
@@ -445,7 +445,7 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 Az oktatóanyag korábbi részében definiált környezeti változók a PostgreSQL-adatbázishoz való kapcsolódáshoz.
 
-Az App Service-ben, a környezeti változók beállítása _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config#az_webapp_config_appsettings_set) parancsot.
+Az App Service-ben, a környezeti változók beállítása _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancsot.
 
 A következő példa az adatbázis-kapcsolat adatai Alkalmazásbeállítások adja meg. Is használja a *PORT* PORT 5000-leképezés változót a Docker-tároló, a 80-as PORT HTTP-forgalom fogadására.
 

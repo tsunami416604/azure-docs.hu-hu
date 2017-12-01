@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: saysa
-ms.openlocfilehash: e9422745de1f46098f1a1b0605c2560f44c02f3c
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 89b356c3959b7cb63a746805d60535e07f0d6898
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins segítségével hozza létre, és a Linux-alkalmazások központi telepítése
 A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához és üzembe helyezéséhez. Ebből a témakörből megtudhatja, hogyan helyezheti üzembe Azure Service Fabric-alkalmazásait a Jenkins használatával.
 
 ## <a name="general-prerequisites"></a>Általános előfeltételek
 - A Git legyen telepítve a helyi számítógépen. A Git megfelelő verzióját [a Git letöltési oldaláról](https://git-scm.com/downloads) telepítheti a különböző operációs rendszerekhez. Ha még nem járatos a Git használatában, további információkért tekintse meg a [Git dokumentációját](https://git-scm.com/docs).
-- Szüksége lesz a Jenkins Service Fabric beépülő moduljára is. Ezt a [Service Fabric letöltési](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi) oldaláról töltheti le.
+- Szüksége lesz a Jenkins Service Fabric beépülő moduljára is. Ezt a [Service Fabric letöltési](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi) oldaláról töltheti le. Edge böngésző nevezze át a bővítmény .hpi .zip a letöltött fájl használata.
 
 ## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>A Jenkins beállítása egy Service Fabric-fürtben
 
@@ -129,8 +129,8 @@ A Dockernek telepítve kell lennie. A következő parancsokkal telepítheti a Do
 Így amikor a ``docker info`` fut a terminálon, a kimenetből látszódik, hogy a Docker szolgáltatás fut.
 
 ### <a name="steps"></a>Lépések
-  1. Kérje le a Service Fabric Jenkins-tárolójának rendszerképét: ``docker pull sayantancs/jenkins:v9``
-  2. Futtassa a tároló rendszerképét: ``docker run -itd -p 8080:8080 sayantancs/jenkins:v9``
+  1. Kérje le a Service Fabric Jenkins-tárolójának rendszerképét: ``docker pull rapatchi/jenkins:v9``
+  2. Futtassa a tároló rendszerképét: ``docker run -itd -p 8080:8080 rapatchi/jenkins:v9``
   3. Kérje le a tárolórendszerkép-példány azonosítóját. A ``docker ps –a`` paranccsal az összes Docker-tárolót listázhatja
   4. Jelentkezzen be a Jenkins portálra a következő lépésekkel:
 

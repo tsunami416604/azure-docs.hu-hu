@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/28/2017
-ms.openlocfilehash: 6a0d218a9b9cb41a87264cfd5f653bb631b0bce9
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.date: 11/29/2017
+ms.openlocfilehash: 5983bbf6fac9c3cddda19f6a11d2fe2b18177160
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Kiszolgáló konfigurációs paraméterek testreszabása az Azure parancssori felület használatával
 Listáról, megjelenítése és konfigurációs paraméterek frissítéséhez egy Azure-adatbázis MySQL-kiszolgáló Azure CLI-vel, az Azure parancssori segédprogramot. Motor konfigurációk egy részét a kiszolgáló szintjén van közzétéve, és módosíthatja. 
@@ -34,7 +34,7 @@ az mysql server configuration list --resource-group myresourcegroup --server mys
 A definíciója a listában szereplő paraméterek, tekintse meg a MySQL útmutató szakaszban [Server rendszerváltozók](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html).
 
 ## <a name="show-server-configuration-parameter-details"></a>Kiszolgálókonfiguráció paraméter részletek megjelenítése
-Egy adott konfigurációs paraméter a kiszolgáló részletei láthatók, futtassa a [az mysql kiszolgáló konfigurációs megjelenítése](/cli/azure/mysql/server/configuration#show) parancsot.
+Egy adott konfigurációs paraméter a kiszolgáló részletei láthatók, futtassa a [az mysql kiszolgáló konfigurációs megjelenítése](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_show) parancsot.
 
 Ez a példa bemutatja részleteit a **lassú\_lekérdezés\_napló** kiszolgáló konfigurációs paraméter kiszolgáló **myserver4demo.mysql.database.azure.com** erőforráscsoportbatartozó**myresourcegroup.**
 ```azurecli-interactive

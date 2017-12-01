@@ -11,16 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/29/2017
 ms.author: bwren
-ms.openlocfilehash: 783223a37c2a13c9affbf382209ca2aa4f1ba4c7
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 017a1da233827f19489a99b234ee9009fd9f6fe3
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="whats-changed-in-azure-log-analytics"></a>Az Azure Naplóelemzés változások?
 A lekérdezési nyelv magát, kívül több fejlesztései és változtatásokat, hogy meg kell ügyelnie, ha van a Naplóelemzési munkaterület [frissítve az új lekérdezési nyelv](log-analytics-log-search-new.md).  Ez a cikk röviden között az egyes részletes tartalomra mutató hivatkozásokat tartalmazó örökölt és frissített munkaterület változásait ismerteti. 
+
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Whats-changed-in-Azure-Log-Analytics/player]
 
 Lásd: [új Naplóelemzési jelentkezzen keresési – gyakori kérdések és ismert problémákat](log-analytics-log-search-faq.md) a frissítés és a gyakori kérdésekre adott válaszok kapcsolatos ismert problémák leírását.  
 

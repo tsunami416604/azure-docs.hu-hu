@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: denlee
-ms.openlocfilehash: 1efdda867703613e4f85e6994004df32e70ccb3d
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 122a2f8e506b3f567e73a816cbbeac569339c924
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>A Spark a valós idejű big data elemzések érdekében, és Azure Cosmos DB-összekötő
 
@@ -172,7 +172,7 @@ Az összekötő projekt jelenleg maven használja. Az összekötő függőségek
 ```
 mvn clean package
 ```
-Emellett letöltheti a legújabb verzióját a JAR a *kiadott* mappát.
+Emellett letöltheti a legújabb verzióját a JAR a [ *kiadott* mappa](https://github.com/Azure/azure-cosmosdb-spark/releases).
 
 ### <a name="include-the-azure-cosmos-db-spark-jar"></a>Az Azure Cosmos DB külső JAR tartalmazza
 A kód végrehajtása előtt meg kell adnia az Azure Cosmos DB külső JAR.  Használatakor a **spark-rendszerhéj**, majd a használatával megadhatja a JAR a **--JAR-fájlok kivételével** lehetőséget.  

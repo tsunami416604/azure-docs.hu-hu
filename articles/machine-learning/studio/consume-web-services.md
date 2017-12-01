@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
 ms.author: garye
-ms.openlocfilehash: 13de6daabf2b6d83cc703ae6b3f0a30a1dfa34d6
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: ed41ec58dbdfd41931e8bab3a3cbe33caafe9a74
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Hogyan kell használni az Azure Machine Learning Web service
 
@@ -64,18 +64,11 @@ Az API-kulcs a klasszikus Machine Learning webszolgáltatás beolvasása:
 5. Másolja ki és mentse a **elsődleges kulcs**.
 
 ### <a name="classic-web-service"></a>Klasszikus webszolgáltatás
- A kulcs a klasszikus webszolgáltatáshoz beolvasható a Machine Learning Studio vagy a klasszikus Azure portálon.
+ A kulcs a klasszikus webszolgáltatáshoz is Machine Learning Studio kérhetnek le.
 
 #### <a name="machine-learning-studio"></a>Machine Learning Studio
 1. A Machine Learning Studióban, kattintson a **WEBSZOLGÁLTATÁSOK** a bal oldalon.
 2. Kattintson egy webszolgáltatás-bővítmény. A **API-kulcs** megtalálható a **IRÁNYÍTÓPULT** fülre.
-
-#### <a name="azure-classic-portal"></a>klasszikus Azure portál
-1. Kattintson a **MACHINE LEARNING** a bal oldalon.
-2. Kattintson a munkaterületen, ahol a webszolgáltatás.
-3. Kattintson a **WEBSZOLGÁLTATÁSOK**.
-4. Kattintson egy webszolgáltatás-bővítmény.
-5. Kattintson egy végpontot. A "API-kulcsot" nem működik az alsó sarokban.
 
 ## <a id="connect"></a>Csatlakozás egy Machine Learning webszolgáltatás-bővítmény
 A Machine Learning Web service bármely programozási nyelvet, amely támogatja a HTTP-kérelem-válasz kapcsolódhat. A Machine Learning webszolgáltatás súgólapja a példákban a C#, Python, és R tekintheti meg.

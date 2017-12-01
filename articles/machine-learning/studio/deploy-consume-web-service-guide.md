@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 9841b61c21586976ee06ffc1fe4d01e3fc3428b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc331e1557c3a35ea3faa8e021923764ec748a4f
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure Machine Learning webszolgáltatások: telepítés és használat
 Azure Machine Learning segítségével telepítheti a gépi tanulásra munkafolyamatok és -modellek webszolgáltatásként. Ezek a webszolgáltatások majd használható a gépi tanulási modelljeit felelnek meg, alkalmazásokat és a valós idejű vagy kötegelt módban előrejelzéseket ehhez az interneten keresztül. Mivel a webes szolgáltatások RESTful, hívása azokat a különböző programozási nyelveket és platformok, például a .NET és a Java, és az alkalmazások, például az Excel.
@@ -26,6 +26,7 @@ Azure Machine Learning segítségével telepítheti a gépi tanulásra munkafoly
 A következő szakaszokban mutató hivatkozásokat forgatókönyvek, a kódot, valamint a dokumentációt, amelyik az első lépések megtételéhez.
 
 ## <a name="deploy-a-web-service"></a>Webszolgáltatás üzembe helyezése
+
 ### <a name="with-azure-machine-learning-studio"></a>Az Azure Machine Learning Studio
 A Machine Learning Studio és a Microsoft Azure Machine Learning webszolgáltatások portál segítségével telepítheti és kezelheti egy webszolgáltatás-bővítmény kód írása nélkül.
 
@@ -58,7 +59,7 @@ Az alkalmazás futtatása hoz létre a JSON webes szolgáltatássablont. A sablo
 
 * A tárfiók neve vagy a kulcs
 
-    Letölthető a tárfiók nevét és a kulcs vagy a [Azure-portálon](https://portal.azure.com/) vagy a [a klasszikus Azure portálon](http://manage.windowsazure.com/).
+    A tárfiók nevének beolvasása és a kulcsot a [Azure-portálon](https://portal.azure.com/).
 * Előfizetési csomag azonosítója
 
     A terv azonosítója kaphat a [Azure Machine Learning webszolgáltatások](https://services.azureml.net) portál jelentkezik be, majd kattintson a csomag neve.

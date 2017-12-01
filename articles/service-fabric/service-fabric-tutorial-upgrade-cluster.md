@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
-ms.openlocfilehash: 15acfbce3bde585ed2b39762b08733901133a3dd
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5057a741a60bf9632f15dbc47236791e06f5bf6b
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="upgrade-the-runtime-of-a-service-fabric-cluster"></a>A Service Fabric-fürt futásidejű frissítése
 
-Ez az oktatóanyag négy azokat, és bemutatja, hogyan lehet frissíteni a Service Fabric-futtatókörnyezet egy Azure Service Fabric-fürt. Ez az oktatóanyag kijelző futó Azure Service Fabric-fürtök számára készült, és nem vonatkozik az önálló üzemeltetett Service Fabric-fürtök.
+Ez az oktatóanyag része egy sor és bemutatja, hogyan lehet frissíteni a Service Fabric-futtatókörnyezet egy Azure Service Fabric-fürt. Ez az oktatóanyag kijelző futó Azure Service Fabric-fürtök számára készült, és nem vonatkozik a különálló Service Fabric fürt.
 
 > [!WARNING]
 > Ez az oktatóanyag részét PowerShell szükséges. A fürt futásidejű frissítésére vonatkozó támogatási még nem támogatott az Azure CLI-eszközök által. Másik lehetőségként a fürt frissítése a portálon. További információkért lásd: [egy Azure Service Fabric-fürt frissítése](service-fabric-cluster-upgrade.md).
@@ -34,6 +34,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Olvassa el a fürt verziószáma
 > * A fürt verzió
+
+Az oktatóanyag adatsorozat elsajátíthatja, hogyan:
+> [!div class="checklist"]
+> * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) Azure-sablon használatával
+> * [Bejövő vagy kimenő fürt méretezése](service-fabric-tutorial-scale-cluster.md)
+> * A futtatókörnyezet egy fürt frissítése
+> * [A Service Fabric az API Management központi telepítését](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az oktatóanyag elkezdéséhez:
@@ -190,3 +197,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A fürt futásidejű verziójának
 > * A fürt futásidejű frissítése
 > * A frissítés figyelése
+
+A következő előzetes a következő oktatóanyag segítséget nyújt a Service Fabric-fürt API Management telepítése.
+> [!div class="nextstepaction"]
+> [A Service Fabric az API Management központi telepítését](service-fabric-tutorial-deploy-api-management.md)

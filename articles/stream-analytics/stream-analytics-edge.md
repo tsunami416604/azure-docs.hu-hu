@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/16/2017
 ms.author: jeanb
-ms.openlocfilehash: ad2a5891e207f6e8320c3e54ae7c817b49db4672
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 916aefb7916ab374c882efb95417babfc5b06a50
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Az Azure Stream Analytics IoT oldal (előzetes verzió)
 
@@ -35,7 +35,7 @@ Ez a funkció jelenleg előzetes verzióban érhető, ha bármilyen kérdése va
 * **Kis késleltetésű parancs és a vezérlő**: például biztonsági rendszerek gyártási kell válaszolnia a működési adatok egészen kis késleltetésű. Az IoT-oldal ASA elemezheti érzékelő adatokat majdnem valós időben, és parancsok kibocsátani, ha Ön a gépek leállítása vagy aktiváltak riasztásokat rendellenességek észlelését.
 *   **A felhő kapcsolat korlátozott**: küldetési kritikus rendszerek esetében, például a távoli adatbányászati berendezések, csatlakoztatott hajók vagy part állapotkategóriák vizsgálatát, elemzése, és reagálni azokra adatokat, akkor is, ha a felhő egy időszakos kell. Az ASA a folyamatos átviteli logika függetlenül a hálózati kapcsolat fut, és választhat, hogy mi küld a felhő további feldolgozás és a tárolási.
 * **Korlátozott sávszélesség**: jet motorok által létrehozott adatok mennyiségét, vagy csatlakoztatott autók annyira nagy, hogy kell-e előre feldolgozott mielőtt elküldené a felhő vagy szűrt adatokat. ASA használva kiszűrhetik vagy összesíti az adatokat, amelyeket a felhő küldendő.
-* **Megfelelőségi**: előírásoknak való megfelelés szükség lehet néhány adat helyileg anonimizált adatokon alapul, vagy előtt küldi el a felhő összesíteni. Az ASA akkor 
+* **Megfelelőségi**: előírásoknak való megfelelés szükség lehet néhány adat helyileg anonimizált adatokon alapul, vagy előtt küldi el a felhő összesíteni.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Peremhálózati Azure Stream Analytics-feladatok
 ### <a name="what-is-an-edge-job"></a>Mi az, hogy egy "peremhálózati" feladatot?

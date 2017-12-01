@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: v-donglo
-ms.openlocfilehash: 40079da0e04520477771a11a1e4111768cf18280
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 4f117e7099ffd0a8f85aa96f0fd075d4bcbeb6b4
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Meglévő prediktív webszolgáltatás újratanítása
 Ez a dokumentum ismerteti a megőrzési folyamata a következő forgatókönyvet:
@@ -86,20 +86,19 @@ Az a **alapvető fogyasztási adatai** szakasza a **felhasználás** lapon keres
 ### <a name="update-the-azure-storage-information"></a>Az Azure Storage-adatainak módosítása
 A BES mintakód feltölt egy fájlt egy helyi meghajtó (például "C:\temp\CensusIpnput.csv") az Azure Storage, folyamatokat engedélyez, és kiírja az eredményeket vissza az Azure Storage.  
 
-Az Azure tárolással kapcsolatos frissítéséhez a tárfiók neve, a kulcs és a tároló információt lekérni a tárfiók a klasszikus Azure portálon, és frissítse a megfelelő értékeket a kódban.
 Miután a kísérletet, az eredményül kapott munkafolyamat kell lennie a következőhöz hasonló:
 
 ![Eredményül kapott munkafolyamat futtatása után][4]
 
-1. Jelentkezzen be a klasszikus Azure portálra.
-2. A bal oldali oszlopban kattintson **tárolási**.
+1. Jelentkezzen be az Azure portálra.
+2. A bal oldali oszlopban kattintson **további szolgáltatások**, keressen **tárfiókok**, és válassza ki azt.
 3. Storage-fiókok a listában válassza ki a retrained modell tárolásához.
-4. Kattintson a lap alján **elérési kulcsok kezelése**.
-5. Másolja ki és mentse a **elsődleges elérési kulcsot** és a párbeszédpanel bezárásához.
-6. Kattintson a lap tetején **tárolók**.
+4. A bal oldali oszlopban kattintson **hívóbetűk**.
+5. Másolja ki és mentse a **elsődleges elérési kulcsot**.
+6. A bal oldali oszlopban kattintson **tárolók**.
 7. Egy meglévő tárolóhoz, válassza ki vagy hozzon létre egy újat, és mentse a nevét.
 
-Keresse meg a *StorageAccountName*, *StorageAccountKey*, és *StorageContainerName* nyilatkozatok, és frissítse az értékeket a klasszikus portálon mentett.
+Keresse meg a *StorageAccountName*, *StorageAccountKey*, és *StorageContainerName* nyilatkozatok, és frissítse az értékeket, amelyeket a portálról mentette.
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key

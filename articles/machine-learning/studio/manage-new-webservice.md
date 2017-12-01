@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 2fc71d3a03ff978485104bcd1cd9391c1d5ee392
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed9b4e2fc2dd7c795861dc8f1c0f2c6d61d26439
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Kezelheti egy webszolgáltatás-bővítmény, az Azure Machine Learning webszolgáltatások portál használatával
 A Machine Learning új és a Microsoft Azure Machine Learning webszolgáltatások portálon klasszikus webszolgáltatások segítségével kezelheti. Klasszikus webszolgáltatások és új webes szolgáltatások különböző alapul szolgáló technológiák alapján, mert némileg eltérő felügyeleti képességek állnak a rendelkezésére az egyes őket.
@@ -155,36 +155,4 @@ Frissítheti a következő tulajdonságokkal:
 * **Naplózás** lehetővé teszi a engedélyezheti vagy tilthatja le a hiba a végpont a bejelentkezés során. A naplózást további információkért lásd: Enable [Machine Learning webszolgáltatások naplózása](web-services-logging.md).
 * **Engedélyezze a mintaadatok** lehetővé teszi, hogy adja meg a mintaadatokat a kérés-válasz szolgáltatás teszteléséhez használható. Ha a webszolgáltatás a Machine Learning Studióban létrehozott, a mintaadatok forrása az adatokat a használt modellje betanításához. Ha a szolgáltatás programozott módon létrehozott, az adatok a példaadatokat a JSON-csomag részeként megadott származik.
 
-## <a name="grant-or-suspend-access-to-web-services-for-users-in-the-portal"></a>Adja meg vagy felfüggesztése hozzáférés webalapú alkalmazásokhoz a felhasználók számára a portálon
-A klasszikus Azure portál használatával, engedélyezi vagy megtagadja a hozzáférést az adott felhasználóknak.
-
-### <a name="access-for-users-of-new-web-services"></a>Hozzáférés a felhasználók új webes szolgáltatások
-Ahhoz, hogy más felhasználók számára a webszolgáltatások az Azure Machine Learning webszolgáltatások portálon dolgozni, hozzá kell őket, ko-rendszergazdák az Azure-előfizetése.
-
-Jelentkezzen be a [a klasszikus Azure portálon](https://manage.windowsazure.com/) használatával a Microsoft Azure fiók – az Azure-előfizetéssel társított fiókot használja.
-
-1. Kattintson a navigációs ablaktáblában **beállítások**, majd kattintson a **rendszergazdák**.
-2. Az ablak alján kattintson **Hozzáadás**. 
-3. A közös rendszergazda hozzáadása párbeszédpanelen írja be a hozzáadása közös rendszergazdaként, és válassza ki az előfizetést, amelyet a társadminisztrátoraként eléréséhez kívánt személy e-mail címét.
-4. Kattintson a **Save** (Mentés) gombra.
-
-### <a name="access-for-users-of-classic-web-services"></a>Klasszikus webszolgáltatások felhasználók hozzáférését
-A munkaterület kezelése:
-
-Jelentkezzen be a [a klasszikus Azure portálon](https://manage.windowsazure.com/) használatával a Microsoft Azure fiók – az Azure-előfizetéssel társított fiókot használja.
-
-1. A Microsoft Azure-szolgáltatások panelen kattintson a **MACHINE LEARNING**.
-2. Kattintson a kezelni kívánt munkaterületre.
-3. Kattintson a **KONFIGURÁLÁSA** fülre.
-
-Konfigurációs lapján kattintva is függesztheti a Machine Learning-munkaterület elérését **MEGTAGADÁS**. Felhasználók nem fognak tudni megnyitni a munkaterületen a Machine Learning Studióban. Állítsa vissza a hozzáférést, kattintson a **engedélyezése**.
-
-Az egyes felhasználók:
-
-A Machine Learning Studio munkaterületének hozzáférő további fiókok kezeléséhez kattintson **bejelentkezés az ML Studio** a a **IRÁNYÍTÓPULT** fülre. Ekkor megnyílik a munkaterületen a Machine Learning Studióban. Itt kattintson a **beállítások** fülre, majd **felhasználók**. Kattinthat **több felhasználók MEGHÍVÁSA** felhasználók hozzáférésének a munkaterületet, vagy válasszon ki egy felhasználót, és kattintson a **eltávolítása**.
-
-> [!NOTE]
-> A **bejelentkezés az ML Studio** a hivatkozás megnyitja a Machine Learning Studio a Microsoft-Account jelenleg bejelentkezett. Jelentkezzen be a klasszikus Azure portálon munkaterület létrehozásához használt Microsoft Account automatikusan nincs engedélye a munkaterületet. Nyissa meg a munkaterületet, hogy be kell jelentkeznie Microsoft Account a munkaterület tulajdonosa van definiálva, vagy meghívót kapott a tulajdonos a munkaterület csatlakozni szeretne.
-> 
-> 
 
