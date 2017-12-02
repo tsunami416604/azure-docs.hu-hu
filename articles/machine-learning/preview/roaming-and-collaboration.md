@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 50f48fb096cb907e050769a8a4159689eb25418c
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 81954835185ebaa86c11a9498a85879e6985897a
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Központi és az Azure Machine Learning munkaterület együttműködés
 A dokumentumból megtudhatja, hogyan segítik a Azure Machine Learning-munkaterület gépek, valamint a teammates együttműködve lehetővé teszik a projektek válasszanak. 
@@ -156,9 +156,9 @@ Az együttműködés folyamatot mutatja be, bemutatjuk, egy példán keresztül.
 
 7. Bob a projekt nevére kattint, és a számítógép letölti a projektet.
     
-    a. A letöltött projektből fájlok klónok a pillanatkép, a legutóbbi futtatás futtatási előzményeit rögzíti. Nincsenek meg a főágba utolsó véglegesítése.
+    a. A letöltött projektből fájlok futtatási előzményeit rögzíti a legutóbbi futtatás pillanatképe másolatát. Nincsenek meg a főágba utolsó véglegesítése.
     
-    b. A projekt helyi mappa van megadva a _fő_ fiókirodai unstaged módosításokkal.
+    b. A projekt helyi mappa van megadva a _fő_ fiókirodai a fenti unstaged változtatásokat.
 
 8. Bob tallózhatnak végrehajtja az Alice, és bármely korábbi futtatása visszaállítási pillanatképe futtatása.
 

@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/20/2017
+ms.date: 12/01/2017
 ms.author: larryfr
-ms.openlocfilehash: 7c582c81aac889b2b6f57777fab4531107e0fad3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 19c5f165b47f7de4a014226460f82f3ca12b3eec
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Használhatja a Beeline Apache Hive
 
@@ -202,7 +202,7 @@ Az alábbi lépések segítségével hozzon létre egy fájlt, majd Beeline hasz
     ```
 
     > [!NOTE]
-    > A `-i` paraméter Beeline elindul, a query.hql fájl található utasításokat futtat. A lekérdezés után megérkezik a a `jdbc:hive2://headnodehost:10001/>` kérdés. Egy fájl segítségével is futtathatja a `-f` paraméter, amely Beeline kilép a lekérdezés befejeződése után.
+    > A `-i` paraméter Beeline elindul, és található utasításokat futtat a `query.hql` fájlt. A lekérdezés után megérkezik a a `jdbc:hive2://headnodehost:10001/>` kérdés. Egy fájl segítségével is futtathatja a `-f` paraméter, amely Beeline kilép a lekérdezés befejeződése után.
 
 5. Annak ellenőrzésére, hogy a **errorLogs** táblázat létrejött, a következő utasítás használatával adja vissza az összes sorát **errorLogs**:
 
@@ -243,7 +243,7 @@ A teljesen minősített tartománynevét egy headnode megkereséséhez használj
 
 ## <a id="sparksql"></a>Beeline használata Spark
 
-Spark nyújt a saját végrehajtásának hiveserver2-n, amelyek a Spark Thrift-kiszolgáló gyakran nevezik. Ez a szolgáltatás Spark SQL használatával helyett Hive a lekérdezéseket, és attól függően, hogy a lekérdezés jobb teljesítményt biztosíthat.
+Spark hiveserver2-n, amelyek van más néven a Spark Thrift-kiszolgáló a saját végrehajtásának biztosít. Ez a szolgáltatás Spark SQL használatával helyett Hive a lekérdezéseket, és attól függően, hogy a lekérdezés jobb teljesítményt biztosíthat.
 
 Ha csatlakozni szeretne a Spark Thrift-kiszolgáló, a Spark on HDInsight-fürt, a port használatára `10002` helyett `10001`. Például: `beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'`.
 

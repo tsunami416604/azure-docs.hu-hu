@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 12/01/2017
 ms.author: larryfr
-ms.openlocfilehash: 3e52fc6ee18faa9b8a04ad19db52dd48505782ae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 700f73d86686761908d241f989aab25e0fb43c0e
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Futtassa a HDInsight szereplő MapReduce példák
 
@@ -67,10 +67,7 @@ ms.lasthandoff: 11/03/2017
 * `wordmedian`: Mapreduce program a közepes hossza a szövegrész szerepel a bemeneti fájlok száma.
 * `wordstandarddeviation`: A mapreduce program, amely a bemeneti fájlok szavakat hosszát szórását száma.
 
-**Forráskód**: ezeket a mintákat forráskódja szerepel-e a HDInsight-fürt `/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
-
-> [!NOTE]
-> A `2.2.4.9-1` az elérési út a Hortonworks Data Platform a HDInsight-fürthöz verziója van telepítve, és a fürt eltérő lehet.
+**Forráskód**: ezeket a mintákat forráskódja szerepel-e a HDInsight-fürt `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
 
 ## <a name="run-the-wordcount-example"></a>Futtassa a wordcount-példa
 

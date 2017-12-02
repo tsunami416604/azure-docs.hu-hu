@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 12/01/2017
 ms.author: jeedes
-ms.openlocfilehash: e8ca7fdacf8361570d88260b3c359ee6e2fd3e17
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 026eca7fc8f17602ba44ba38db138d645c9d7713
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>Oktatóanyag: A Google Apps konfigurálása automatikus a felhasználók átadása
 
@@ -90,6 +90,10 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódni a felhasználói fiók API Go
      ![Tartomány](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_4.png)
 
     e. Ismételje meg az előző lépéseket a könyvtárhoz hozzáadni kívánt összes tartományát.
+
+    > [!NOTE]
+    A felhasználók átadásához a Google Apps egyéni tartománynak meg kell egyeznie a forrás az Azure AD tartománynevét. Ha nem egyeznek, esetleg attribútum leképezési testreszabás megoldani a problémát.
+
 
 5. Most, hogy az Azure ad-vel a tartományok ellenőrzését, ellenőriznie kell őket újra a Google Apps. Minden tartományhoz, amely már nincs regisztrálva a Google Apps tegye a következőket:
    

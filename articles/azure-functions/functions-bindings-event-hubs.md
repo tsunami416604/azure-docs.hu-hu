@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 70219ada2f4886f40d088486063afda2bc489611
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5e0ff1b98be73eb5990601ae7c5528e4a7af670b
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Functions az Azure Event Hubs kötései
 
@@ -33,6 +33,27 @@ Ez a cikk azt ismerteti, hogyan használható [Azure Event Hubs](../event-hubs/e
 Az Event Hubs eseményindító segítségével egy event hub eseményfelhasználó küldött esemény válaszolni. Az event hubs az eseményindító beállítása olvasási hozzáféréssel kell rendelkeznie.
 
 Az Event Hubs funkció aktiválása esetén az üzenet, amely elindítja az átad a függvény egy karakterlánc.
+
+## <a name="trigger---scaling"></a>Indítás - skálázás
+
+Minden egyes példánya egy Event Hub-Triggered függvény csak 1 EventProcessorHost (EPH) példány alapját. Az Event Hubs biztosítja, hogy csak az 1 EPH beszerezheti a címbérlet egy adott partíción.
+
+Tegyük fel, hogy az első lépések a következő telepítésével és az Eseményközpontok az Előfeltételek:
+
+1. 10 partíciókat.
+1. egyenlően elosztott 1000 események összes partíciójára = > 100 üzenetek az egyes partíciók.
+
+Ha a függvény első engedélyezve van, nincs csak 1 példánya a funciton. Ez a függvény példány Function_0 most hívja. Function_0 fog rendelkezni, amely kezeli a címbérlet beolvasni minden 10 partíción 1 EPH. Események olvasása partíciók 0-9 fog elindulni. Ettől kezdve a következő történik:
+
+* **A függvény csak 1-példány szükséges** -Function_0 sikerült feldolgozni az összes 1000, mielőtt az Azure Functions méretezési logika lép működésbe,. Emiatt minden 1000 üzenetek Function_0 dolgoznak fel.
+
+* **Adja hozzá a 1 további függvény példány** -Azure Functions méretezési programot határozza meg, hogy Function_0 rendelkezik-e a további üzeneteket, mint amennyi feldolgozására, így létrejön egy új példányát, Function_1,. Az Event Hubs észleli, hogy új EPH példány üzenet olvasása közben. Az Event Hubs fogják terheléselosztásának a partíciókat a EPH példányok, például partíciók 0-4 Function_0 vannak rendelve, és partíciók 5 – 9 Function_1 vannak rendelve. 
+
+* **Adja hozzá N több működéséhez példányok** -Azure Functions méretezési logika határozza meg, hogy az Function_0, és Function_1 is rendelkezik, mint azok képes több üzenetet. Akkor lesz skálázva újra a Function_2... N, ahol N nagyobb, mint az Event Hubs paritions. Az Event Hubs betölti a partíciók egyensúlyba Function_0... 9 példányok.
+
+Az Azure Functions jelenleg egyedi méretezés logika arra, hogy N nagyobb, mint a partíciók száma. Erre azért van szükség, győződjön meg arról, hogy mindig példánya van EPH rendelkezésére gyorsan zárolni a partíciót tartalmaz, a többi példánytól elérhetővé válnak. Felhasználók csak van szó, az erőforrások használható, ha a függvény példány végrehajtása során, és nem a túlzott kiosztása felszámított.
+
+Minden függvény végrehajtások sikeres, nem jelenik meg hibaüzenet, ha a kapcsolódó tárfiók ellenőrzőpontokat kerülnek. Mutató ellenőrzése sikeres, ha minden 1000 üzenetek kell soha nem olvasható be újra.
 
 ## <a name="trigger---example"></a>Eseményindító – példa
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: f2e7b5b96b70333ae4ee92d24c354960008c7f00
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 17967131853d4334ae2c0ba3c0aa01089b7f3b61
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Az App Service Azure veremben megkezdése előtt
 
@@ -68,7 +68,7 @@ Ez a parancsfájl első négy App Service által használt tanúsítványok lét
 
 Futtassa a parancsfájlt a Azure verem szoftverfejlesztői készlet gazdagépen, és győződjön meg arról, hogy PowerShell mint azurestack\CloudAdmin futtat.
 
-1. Egy PowerShell-munkamenetben azurestack\CloudAdmin futtató hajtsa végre a Create-AppServiceCerts.ps1 parancsfájlt a mappában, amelyikbe kibontotta a segítő parancsfájlok. A parancsfájl ugyanabban a mappában, amelyet az App Service létrehozása tanúsítványok parancsfájlként négy tanúsítványokat hoz létre.
+1. Egy PowerShell-munkamenetben azurestack\AzureStackAdmin futtató hajtsa végre a Create-AppServiceCerts.ps1 parancsfájlt a mappában, amelyikbe kibontotta a segítő parancsfájlok. A parancsfájl ugyanabban a mappában, amelyet az App Service létrehozása tanúsítványok parancsfájlként négy tanúsítványokat hoz létre.
 2. Adjon meg egy jelszót a .pfx fájlt biztonságos, és jegyezze fel a azt. Meg kell adni azt az App Service a Azure verem installer.
 
 #### <a name="create-appservicecertsps1-parameters"></a>Hozzon létre AppServiceCerts.ps1 paraméterek
@@ -88,7 +88,7 @@ Az alapértelmezett tartományi tanúsítvány el van helyezve az előtér-szere
 
 A tanúsítvány .pfx formátumban kell lennie, és a két-tulajdonos helyettesítő tanúsítványt kell lennie. Ez lehetővé teszi, hogy az alapértelmezett tartomány és a forrás-ellenőrzési műveletek kell fedi le egy tanúsítvány az scm végpont.
 
-| Formátumban | Példa |
+| Formátum | Példa |
 | --- | --- |
 | \*.appservice. \<régió\>.\< Tartománynév\>.\< bővítmény\> | \*. appservice.redmond.azurestack.external |
 | \*. scm.appservice. <region>. <DomainName>.<extension> | \*. appservice.scm.redmond.azurestack.external |
@@ -97,7 +97,7 @@ A tanúsítvány .pfx formátumban kell lennie, és a két-tulajdonos helyettes�
 
 Az API-tanúsítvány helyezkedik el a felügyeleti szerepkör, és az erőforrás-szolgáltató api-hívások biztonságossá tételére szolgál. A tanúsítvány közzététele a tulajdonosa megegyezik a API DNS-bejegyzést kell tartalmaznia:
 
-| Formátumban | Példa |
+| Formátum | Példa |
 | --- | --- |
 | API.appservice. \<régió\>.\< Tartománynév\>.\< bővítmény\> | API.appservice.redmond.azurestack.external |
 
@@ -105,7 +105,7 @@ Az API-tanúsítvány helyezkedik el a felügyeleti szerepkör, és az erőforr�
 
 A tanúsítvány a közzétevő szerepkört a FTPS-forgalmat az alkalmazástulajdonosok biztonságossá tételére hogy tartalom feltöltése során.  A tanúsítvány közzététele a tulajdonosa megegyezik a FTPS DNS-bejegyzés tartalmaznia kell.
 
-| Formátumban | Példa |
+| Formátum | Példa |
 | --- | --- |
 | FTP.appservice. \<régió\>.\< Tartománynév\>.\< bővítmény\> | API.appservice.redmond.azurestack.external |
 
@@ -116,11 +116,11 @@ Lehetővé teszi a tanúsítványt az identitás-alkalmazáshoz:
 - Az egyszeri bejelentkezés a forgatókönyvek az Azure App Service Azure veremben belül speciális fejlesztői eszközök.
 Az identitás tanúsítványának tartalmaznia kell a tulajdonosa megegyezik a következő formátumban:
 
-| Formátumban | Példa |
+| Formátum | Példa |
 | --- | --- |
 | sso.appservice. \<régió\>.\< Tartománynév\>.\< bővítmény\> | sso.appservice.redmond.azurestack.external |
 
-#### <a name="extract-the-azure-stack-azure-resource-manager-root-certificate"></a>Bontsa ki az Azure verem Azure Resource Manager főtanúsítvány
+### <a name="extract-the-azure-stack-azure-resource-manager-root-certificate"></a>Bontsa ki az Azure verem Azure Resource Manager főtanúsítvány
 
 A PowerShell-munkamenetben azurestack\CloudAdmin fut hajtsa végre a Get-AzureStackRootCert.ps1 parancsfájlt a mappában, amelyikbe kibontotta a segítő parancsfájlok. A parancsfájl ugyanabban a mappában, amelyet az App Service létrehozása tanúsítványok parancsfájlként négy tanúsítványokat hoz létre.
 
@@ -134,12 +134,10 @@ A PowerShell-munkamenetben azurestack\CloudAdmin fut hajtsa végre a Get-AzureSt
 
 Az Azure App Service egy fájlkiszolgáló használatát igényli. Az üzemi környezetek a fájlkiszolgáló magas rendelkezésre állású legyen konfigurálva és hibák kezelésére képes kell lennie.
 
-Csak az Azure verem szoftverfejlesztői készlet telepítésekben való használatra, az ebben a példában Azure Resource Manager központi telepítési sablon segítségével egy konfigurált egycsomópontos fájlkiszolgáló telepítéséhez: https://aka.ms/appsvconmasdkfstemplate.
+Csak az Azure verem szoftverfejlesztői készlet telepítésekben való használatra, az ebben a példában Azure Resource Manager központi telepítési sablon segítségével egy konfigurált egycsomópontos fájlkiszolgáló telepítéséhez: https://aka.ms/appsvconmasdkfstemplate. Az egyetlen csomópont fájlkiszolgáló munkacsoport lesz.
 
 ### <a name="provision-groups-and-accounts-in-active-directory"></a>Kiépítés csoportokat és fiókokat az Active Directoryban
 
->[!NOTE]
-> Hajtsa végre a következő parancsokat minden, a fájlkiszolgáló egy rendszergazdai jogú parancssort munkamenetben konfigurálásakor.  **Ne használjon PowerShell.**
 
 1. Hozza létre a következő Active Directory globális biztonsági csoportokat:
     - FileShareOwners
@@ -159,7 +157,10 @@ Csak az Azure verem szoftverfejlesztői készlet telepítésekben való használ
 
 ### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Csoportok és fiókok munkacsoportban kiépítése
 
-A munkacsoporthoz tartozik, net és a csoportok és fiókok kiépítéséhez WMIC-parancsok futtatásához.
+>[!NOTE]
+> Hajtsa végre a következő parancsokat minden, a fájlkiszolgáló egy rendszergazdai jogú parancssort munkamenetben konfigurálásakor.  **Ne használjon PowerShell.**
+
+A fenti Azure Resource Manager-sablon használatakor a felhasználóknak már létre vannak hozva.
 
 1. A következő parancsokat a FileShareOwner és FileShareUser fiókokat létrehozni. Cserélje le <password> saját értékekkel.
 ``` DOS
@@ -185,11 +186,11 @@ A tartalommegosztás bérlői webhely tartalmát tartalmazza. A tartalom könyvt
 
 #### <a name="provision-the-content-share-on-a-single-file-server-ad-or-workgroup"></a>A fájlkiszolgáló a tartalommegosztás kiépítése (AD vagy munkacsoporthoz)
 
-Az önálló fájlkiszolgálóról futtassa a következő parancsokat egy rendszergazda jogú parancssorba. Cserélje le az értéket a < C:\WebSites > megfelelő útvonalaira a környezetben.
+Az önálló fájlkiszolgálóról futtassa a következő parancsokat egy rendszergazda jogú parancssorba. Cserélje le az érték a "C:\WebSites" megfelelő útvonalaira a környezetben.
 
 ```DOS
 set WEBSITES_SHARE=WebSites
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 md %WEBSITES_FOLDER%
 net share %WEBSITES_SHARE% /delete
 net share %WEBSITES_SHARE%=%WEBSITES_FOLDER% /grant:Everyone,full
@@ -223,7 +224,7 @@ A következő parancsokat egy rendszergazda jogú parancssorba a fájlkiszolgál
 #### <a name="active-directory"></a>Active Directory
 ```DOS
 set DOMAIN=<DOMAIN>
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 icacls %WEBSITES_FOLDER% /reset
 icacls %WEBSITES_FOLDER% /grant Administrators:(OI)(CI)(F)
 icacls %WEBSITES_FOLDER% /grant %DOMAIN%\FileShareOwners:(OI)(CI)(M)
@@ -234,7 +235,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 #### <a name="workgroup"></a>Munkacsoport
 ```DOS
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 icacls %WEBSITES_FOLDER% /reset
 icacls %WEBSITES_FOLDER% /grant Administrators:(OI)(CI)(F)
 icacls %WEBSITES_FOLDER% /grant FileShareOwners:(OI)(CI)(M)
@@ -251,7 +252,7 @@ Az Azure verem szoftverfejlesztői készlet való használatra, használhatja az
 
 Éles és magas rendelkezésre állás érdekében, kell teljes verziót az SQL 2014 SP2 vagy újabb, kevert módú hitelesítés engedélyezése, és telepítenie a egy [magas rendelkezésre állású konfigurációban](https://docs.microsoft.com/en-us/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
 
-Az Azure App Service Azure verem SQL-kiszolgálón az összes App Service-szerepkörből elérhetőnek kell lennie. SQL Server az alapértelmezett szolgáltató előfizetésben Azure verem is telepíthető. Lehetőség a szervezeten belül a meglévő infrastruktúra használata (feltéve, nincs kapcsolat az Azure-verem).
+Az Azure App Service Azure verem SQL-kiszolgálón az összes App Service-szerepkörből elérhetőnek kell lennie. SQL Server az alapértelmezett szolgáltató előfizetésben Azure verem is telepíthető. Lehetőség a szervezeten belül a meglévő infrastruktúra használata (feltéve, nincs kapcsolat az Azure-verem). Ha Azure piactér lemezkép használ, ne felejtse el ennek megfelelően konfigurálja a tűzfalat. 
 
 Az SQL Server szerepkörök bármelyikéhez egy alapértelmezett vagy megnevezett példányt is használhatja. Ha egy megnevezett példányt használ, ne feledje, hogy manuális módszerrel indítsa el az SQL Browser szolgáltatás, és nyissa meg a portot 1434.
 
@@ -269,12 +270,12 @@ A rendszergazdák az SSO kell konfigurálni:
 
 Kövesse az alábbi lépéseket:
 
-1. Nyisson meg egy PowerShell-példány azurestack\cloudadmin.
+1. Nyisson meg egy PowerShell-példány azurestack\AzureStackAdmin.
 2. Nyissa meg a letöltött és kibontott a parancsfájlok a helyét a [előfeltétel-ellenőrzési lépés](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
 3. [A verem az Azure PowerShell telepítése](azure-stack-powershell-install.md).
 4. Futtassa a **létrehozás-AADIdentityApp.ps1** parancsfájl. Amikor az Azure AD-bérlőazonosító beszerzése kéri, adja meg a sablonverziót Azure verem, például myazurestack.onmicrosoft.com használata az Azure AD bérlői azonosító.
 5. Az a **Credential** ablak, írja be a Azure AD szolgáltatás-rendszergazdai fiókot és jelszót. Kattintson az **OK** gombra.
-6. Adja meg a tanúsítvány elérési útja és a tanúsítvány jelszavát az [korábban létrehozott tanúsítvány](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Alapértelmezés szerint ebben a lépésben létrehozott tanúsítvány sso.appservice.local.azurestack.external.pfx.
+6. Adja meg a tanúsítvány elérési útja és a tanúsítvány jelszavát az [korábban létrehozott tanúsítvány](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). A tanúsítványt, az alapértelmezés szerint ez a lépés létrehozott **sso.appservice.local.azurestack.external.pfx**.
 7. A parancsfájl létrehoz egy új alkalmazást az Azure AD-bérlőben. Jegyezze fel az alkalmazás Azonosítóját, amelynek PowerShell kimenet ad vissza. A telepítés során tájékoztatásra van szüksége.
 8. Nyisson meg egy új böngészőablakot, és jelentkezzen be az Azure portálon (portal.azure.com) felhasználóként a **Azure Active Directory szolgáltatás-rendszergazda**.
 9. Nyissa meg az Azure AD erőforrás-szolgáltató.

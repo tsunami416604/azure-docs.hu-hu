@@ -14,10 +14,10 @@ ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 11/30/2017
 ms.author: genemi
-ms.openlocfilehash: 164d98220f69a8c25d853baf1e07f9a11c200f16
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: d38cd108821bce05824732bbdbdd322ae8563bde
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/01/2017
@@ -110,6 +110,17 @@ Vizsgáljuk meg a telepített erőforrások:
 
 Minden egyes bérlő adatbázisa 50 DTU *önálló* adatbázis.
 
+## <a name="additional-resources"></a>További források
+
+<!--
+* Additional [tutorials that build on the Wingtip SaaS application](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* To learn about elastic pools, see [*What is an Azure SQL elastic pool*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview)
+-->
+
+- Több-bérlős SaaS-alkalmazásokhoz, lásd: [kialakítási minták a több-bérlős SaaS-alkalmazásokhoz](saas-tenancy-app-design-patterns.md).
+
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta az alábbiakat:
@@ -119,12 +130,3 @@ Ez az oktatóanyag bemutatta az alábbiakat:
 > * A kiszolgálók és adatbázisok, amelyek az alkalmazás alkotják.
 > * Hogyan mintaerőforrásokat leállításához kapcsolódó számlázási törlése.
 
-
-## <a name="additional-resources"></a>További források
-
-<!--* Additional [tutorials that build on the Wingtip SaaS application](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
-* To learn about elastic pools, see [*What is an Azure SQL elastic pool*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview)
--->
-
-- Több-bérlős SaaS-alkalmazásokhoz, lásd: [kialakítási minták a több-bérlős SaaS-alkalmazásokhoz](saas-tenancy-app-design-patterns.md).

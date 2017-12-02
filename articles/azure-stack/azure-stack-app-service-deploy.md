@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: dba3da6f1aaf47c1b518fe0dba7ea22ae555c8c0
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 522e5a334b5165344b66524d03f0d85468b81332
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása Azure verem
 
@@ -73,7 +73,7 @@ App Service erőforrás-szolgáltató telepítéséhez kövesse az alábbi lép�
     ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image04.png)
 
 8. A következő lapon:
-    1. Az a **identitás Alkalmazásazonosító** mezőbe írja be a GUID-identitás az alkalmazástól.
+    1. Az a **identitás Alkalmazásazonosító** adja meg a globálisan egyedi Azonosítót (az Azure AD) identitás használata az alkalmazás.
     2. Az a **identitás alkalmazás tanúsítványfájl** mezőben adja meg (vagy keresse meg a) a tanúsítvány-fájl helyét.
     3. Az a **identitás alkalmazás tanúsítványjelszavas** mezőbe írja be a jelszót a tanúsítványhoz. Ez a jelszó nem azt, amelyik végrehajtott jegyezze fel, ha a parancsfájl a tanúsítványok létrehozásához használt.
     4. Az a **Azure Resource Manager főtanúsítványfájlt** mezőben adja meg (vagy keresse meg a) a tanúsítvány-fájl helyét.
@@ -106,7 +106,7 @@ App Service erőforrás-szolgáltató telepítéséhez kövesse az alábbi lép�
 
     | Szerepkör | Minimális példányok | Minimális Termékváltozat | Megjegyzések |
     | --- | --- | --- | --- |
-    | Tartományvezérlő | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Kezeli, és az App Service-felhő állapotának fenn. |
+    | Vezérlő | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Kezeli, és az App Service-felhő állapotának fenn. |
     | Kezelés | 1 | Standard_A2 - (2 Vcpu, 3584 MB) | Az App Service Azure Resource Manager és az API-végpontok, portál extensions (admin, tenant, Functions portálon) és a szolgáltatás kezeli. A feladatátvétel támogatásához nőtt az ajánlott 2-példányokat. |
     | Közzétevő | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Közzéteszi az FTP és a web deployment a tartalomhoz. |
     | Előtér | 1 | Standard_A1 - (1 vCPU, 1792 MB) | App Service-alkalmazásokra irányuló kérelmek útvonalak. |
@@ -157,7 +157,7 @@ Miután központilag telepíti, és az App Service erőforrás-szolgáltató reg
 >
 Ön *kell* alkalmazásokat, amelyek az App Service használata Azure veremben-bérlői előfizetéssel rendelkezik. Egyetlen funkciója, amelyek a szolgáltatás-rendszergazdák fejezheti be a felügyeleti portálon belül az App Service erőforrás-szolgáltató felügyelethez kapcsolódó. Ezek a képességek közé tartoznak a kapacitást, konfigurálja a telepítési források és munkavégző szinteket, és termékváltozatok hozzáadása.
 >
-A harmadik technical preview frissítésétől webes API és Azure létrehozásához funkciók alkalmazások, kell a bérlői portál és a bérlői előfizetéssel rendelkezik.
+Webes API és Azure létrehozásához funkciókkal, alkalmazások, kell a bérlői portál és a bérlői előfizetéssel rendelkezik.
 
 1. Az Azure-verem bérlői portálon kattintson **új** > **Web + mobil** > **webalkalmazás**.
 

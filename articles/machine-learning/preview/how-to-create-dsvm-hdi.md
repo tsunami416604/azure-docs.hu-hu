@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 9ce1d32a2785bec1164d2a89dea9946fe113cb33
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: c28d92ad23e42401d42d9510fd7d07429929ade7
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>A számítási célok DSVM és HDI Spark fürt létrehozása
 
@@ -63,18 +63,22 @@ Másolja és illessze be a következő JSON részlet azokat a `mydsvm.json` fáj
 
 Az a _vmSize_ mező, használhatja a felsorolt suppported Virtuálisgép-méretet a [Ubuntu DSVM Azure resource felügyeleti sablon](https://github.com/Azure/DataScienceVM/blob/master/Scripts/CreateDSVM/Ubuntu/multiazuredeploywithext.json). Javasoljuk, hogy valamelyikét használja az alábbi méretek a cél az Azure ML számítási. 
 
-- Standard_DS2_v2 
-- Standard_DS3_v2 
-- Standard_DS4_v2 
-- Standard_DS12_v2 
-- Standard_DS13_v2 
-- Standard_DS14_v2 
-- Standard_NC6 
-- Standard_NC12 
-- Standard_NC24 
- 
+
 >[!TIP]
-> A Virtuálisgép-méretek "NC" használatába GPU felszerelt lépnek.
+> A [mély munkaterhelések tanulási](how-to-use-gpu.md) központilag telepíthető a GPU kapcsolt virtuális gépek.
+
+- [Általános célú virtuális gépek](/virtual-machines/linux/sizes-general.md)
+  - Standard_DS2_v2 
+  - Standard_DS3_v2 
+  - Standard_DS4_v2 
+  - Standard_DS12_v2 
+  - Standard_DS13_v2 
+  - Standard_DS14_v2 
+- [Az alkalmazás bekapcsolja GPU virtuális gépek](/virtual-machines/linux/sizes-gpu.md)
+  - Standard_NC6 
+  - Standard_NC12 
+  - Standard_NC24 
+ 
 
 További információk a [Azure Linux virtuális gépek méretei](../../virtual-machines/linux/sizes.md) és azok [árakról](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
