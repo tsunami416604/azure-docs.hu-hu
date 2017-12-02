@@ -213,6 +213,10 @@
           items:
             - name: Csatlakozás VPN használatával
               href: azure-stack-connect-vpn.md
+            - name: VPN-átjáróval kapcsolatban
+              href: azure-stack-vpn-gateway-about-vpn-gateways.md
+            - name: VPN-átjáró beállítások
+              href: azure-stack-vpn-gateway-settings.md
             - name: Csatlakozás ExpressRoute használatával
               href: azure-stack-connect-expressroute.md
     - name: Hibaelhárítás
