@@ -4,7 +4,7 @@ description: "Azure Active Directory tartományi szolgáltatások hálózati sze
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: 5f9236c5cf660be00db6e09d61df617b64d978e9
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 537643f582f6cc3328bd1c098de03c4f6e07c113
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD tartományi szolgáltatások hálózati szempontjai
 ## <a name="how-to-select-an-azure-virtual-network"></a>Egy Azure virtuális hálózat kiválasztása
@@ -28,10 +28,6 @@ A következő irányelvek segítségével válassza ki a virtuális hálózatot 
 * **Erőforrás-kezelő virtuális hálózatok**: Azure AD tartományi szolgáltatásokat Azure Resource Manager használatával létrehozott virtuális hálózatok engedélyezhető.
 * A klasszikus Azure virtuális hálózatot az Azure AD tartományi szolgáltatások nem engedélyezhető.
 * Más virtuális hálózatokhoz csatlakozhat a virtuális hálózat, amelyen engedélyezve van az Azure AD tartományi szolgáltatások. További információkért lásd: a [hálózati kapcsolatra](active-directory-ds-networking.md#network-connectivity) szakasz.
-* **Regionális virtuális hálózatokba**: Ha tervezi egy meglévő virtuális hálózathoz, győződjön meg arról, hogy az regionális virtuális hálózatot.
-
-  * Azok a virtuális hálózatok, amelyek az örökölt affinitáscsoport-mechanizmust alkalmazzák, nem használhatók az Azure AD tartományi szolgáltatásokkal.
-  * Azure AD tartományi szolgáltatások, [örökölt virtuális hálózatokat regionális virtuális hálózatokba kell áttelepíteni](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
 
 ### <a name="azure-region-for-the-virtual-network"></a>A virtuális hálózat az Azure-régió
 * A felügyelt tartományra telepítve van a azonos Azure-régió, ahol a virtuális hálózatot az Azure AD tartományi szolgáltatások úgy dönt, hogy engedélyezze a szolgáltatást.
@@ -39,7 +35,7 @@ A következő irányelvek segítségével válassza ki a virtuális hálózatot 
 * [Az Azure régiói](https://azure.microsoft.com/regions/#services/) lapon találja azoknak az Azure-régióknak a felsorolását, amelyekben elérhetők az Azure AD tartományi szolgáltatások.
 
 ### <a name="requirements-for-the-virtual-network"></a>A virtuális hálózati követelményei
-* **Az Azure munkaterhelések közelében**: válassza ki a virtuális hálózatot, amely jelenleg futtatja/fogja tárolni az Azure AD tartományi szolgáltatások elérését igénylő virtuális gépektől. Dönthet úgy is, ha a munkaterhelések vannak telepítve, mint a felügyelt tartományra egy másik virtuális hálózatot a virtuális hálózatok csatlakozhatnak.
+* **Az Azure munkaterhelések közelében**: válassza ki a virtuális hálózatot, amely jelenleg futtatja/fogja tárolni az Azure AD tartományi szolgáltatások elérését igénylő virtuális gépektől. Ha egy másik virtuális hálózatot, mint a felügyelt tartományra a munkaterhelések vannak telepítve, előfordulhat, hogy meg csatlakozni a virtuális hálózatok.
 * **Egyéni/bring-a-saját DNS-kiszolgálók**: Győződjön meg arról, hogy nincsenek-e nincsenek egyéni DNS-kiszolgálók konfigurálva a virtuális hálózat. Egy egyéni DNS-kiszolgáló például egy Windows Server virtuális gépen központilag telepített virtuális hálózaton futó Windows Server DNS példánya. Azure AD tartományi szolgáltatások nem integrálható a virtuális hálózaton belül telepített egyéni DNS-kiszolgálók.
 * **Az azonos nevű tartomány meglévő tartományok**: Győződjön meg arról, hogy nem rendelkezik egy meglévő tartományhoz, a tartomány néven érhető el a virtuális hálózat. Tegyük fel például, hogy a kiválasztott virtuális hálózatban már van egy contoso.com nevű tartomány. Később akkor próbálja meg engedélyezni a ugyanazon tartomány nevét (az "contoso.com") a virtuális hálózat az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz. Azure AD tartományi szolgáltatások engedélyezése közben hibát tapasztal. Ez a hiba a tartománynév, a virtuális hálózatban tapasztalható névütközés okozza. Ebben az esetben az Azure AD tartományi szolgáltatások által kezelt tartomány beállításához másik nevet kell használnia. A másik lehetséges megoldás az, hogy leépíti a meglévő tartományt, majd ezután folytatja a Azure AD tartományi szolgáltatások engedélyezését.
 
@@ -48,12 +44,11 @@ A következő irányelvek segítségével válassza ki a virtuális hálózatot 
 >
 >
 
-## <a name="network-security-groups-and-subnet-design"></a>Hálózati biztonsági csoportok és alhálózat kialakítása
-A [hálózati biztonsági csoport (NSG)](../virtual-network/virtual-networks-nsg.md) hozzáférés-vezérlési lista (ACL) szabályokat, amelyek engedélyezik vagy megtagadják a Virtuálisgép-példány egy virtuális hálózat hálózati forgalmának listáját tartalmazza. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett az egyes virtuális gép is lehet korlátozni további korlátozásokat NGS társítása közvetlenül a virtuális gép.
+
+## <a name="guidelines-for-choosing-a-subnet"></a>Egy alhálózat kiválasztására vonatkozó irányelvek
 
 ![Ajánlott alhálózat kialakítása](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
-### <a name="guidelines-for-choosing-a-subnet"></a>Egy alhálózat kiválasztására vonatkozó irányelvek
 * Az Azure AD tartományi szolgáltatások telepítése a **dedikált alhálózati külön** Azure virtuális hálózaton belül.
 * Az NSG-k nem vonatkoznak a dedikált IP-alhálózatot a felügyelt tartományok. Ha a dedikált alhálózati NSG-ket kell alkalmaznia, győződjön meg arról, **nem blokkolja a szolgáltatás szükséges portokat, és a tartomány kezelése**.
 * Nem túlságosan korlátozhatja a felügyelt tartományok dedikált alhálózaton belül elérhető IP-címek számát. Ez a korlátozás miatt a szolgáltatás elérhetővé teszi két tartományvezérlő a felügyelt tartományok.
@@ -64,20 +59,40 @@ A [hálózati biztonsági csoport (NSG)](../virtual-network/virtual-networks-nsg
 >
 >
 
-### <a name="ports-required-for-azure-ad-domain-services"></a>Az Azure AD tartományi szolgáltatásokhoz szükséges portok
+## <a name="ports-required-for-azure-ad-domain-services"></a>Az Azure AD tartományi szolgáltatásokhoz szükséges portok
 A következő portokat Azure AD tartományi szolgáltatások szolgáltatáshoz szükséges, és a felügyelt tartományok karbantartása. Győződjön meg arról, hogy ezek a portok nincsenek letiltva az alhálózat, ahol a felügyelt tartományok engedélyezett.
 
-| Portszám | Cél |
-| --- | --- |
-| 443 |Az Azure AD-bérlő-szinkronizálás |
-| 3389 |A tartomány kezelése |
-| 5986 |A tartomány kezelése |
-| 636 |Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
+| Portszám | Kötelező? | Cél |
+| --- | --- | --- |
+| 443 | Kötelező |Az Azure AD-bérlő-szinkronizálás |
+| 5986 | Kötelező | A tartomány kezelése |
+| 3389 | Optional | A tartomány kezelése |
+| 636 | Optional | Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
 
-Port 5986-os PowerShell távoli eljáráshívás segítségével a felügyelt tartományok felügyeleti feladatok elvégzésére szolgál. A tartományvezérlők, a felügyelt tartományok általában figyelni a porton. A szolgáltatás megnyitja ezt a portot, a felügyelt tartományvezérlőkön, csak akkor, ha egy felügyeleti vagy karbantartási művelet kell végezhető el a felügyelt tartományra. Amint a művelet befejeződik, a szolgáltatás leáll ezt a portot, a felügyelt tartományvezérlőkön.
+**Port 443-as (szinkronizálási Azure AD-val)**
+* Az Azure AD-címtár szinkronizálja a felügyelt tartományok szolgál.
+* Akkor kötelező, hogy férjen hozzá az NSG-t a porton. Ehhez a porthoz való hozzáférés, nélkül a felügyelt tartomány nincs szinkronban vannak az Azure AD-címtár. Lehet, hogy felhasználók nem jelentkezhetnek be, mivel a jelszavuk módosításai nincsenek szinkronizálva. a felügyelt tartományra.
+* Ezt a portot a Azure IP-címtartományba tartozó IP-címek befelé korlátozhatja.
 
-Távoli asztali kapcsolatokat a felügyelt tartományok 3389-es port használatos. Ez a port is nagy mértékben ki van kapcsolva a felügyelt tartomány marad. A szolgáltatás lehetővé teszi ezt a portot, csak akkor, ha igazolnia kell a felügyelt tartományok hibaelhárítási célból indítja el, egy szolgáltatás irányuló kérelemre adott válasz kezdeményezett való kapcsolódáshoz. A módszer nem használata folyamatos, mivel a kezelési és figyelési feladatok végrehajtása használatával történik PowerShell távoli eljáráshívás. Ezt a portot használja csak a szükséges távolról csatlakozni a speciális hibaelhárítás a felügyelt tartományok esemény ritkán fordul elő. A port zárva van, amint a hibaelhárítási művelet be nem fejeződött.
+**Port 5986-os (PowerShell-távelérés)** 
+* PowerShell távoli eljáráshívás segítségével a felügyelt tartományok felügyeleti feladatok elvégzésére szolgál.
+* Kötelező a az NSG-t a porton keresztüli hozzáférést is. Ehhez a porthoz való hozzáférés, nélkül a felügyelt tartományok frissített, konfigurált, a biztonsági mentésben vagy figyelt nem lehet.
+* Ezt a portot, a következő forrás IP-címek befelé korlátozhatja: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209, 52.180.179.108, 52.175.18.134, 52.138.68.41, 104.41.159.212, 52.169.218.0, 52.187.120.237, 52.161.110.169, 52.174.189.149, 13.64.151.161 
+* A tartományvezérlők, a felügyelt tartományok általában figyelni a porton. A szolgáltatás megnyitja ezt a portot, a felügyelt tartományvezérlőkön, csak akkor, ha egy felügyeleti vagy karbantartási művelet kell végezhető el a felügyelt tartományra. Amint a művelet befejeződik, a szolgáltatás leáll ezt a portot, a felügyelt tartományvezérlőkön.
 
+**3389-es (távoli asztali verziók)** 
+* A távoli asztali kapcsolatokat a felügyelt tartományok tartományvezérlők szolgál. 
+* Ezen keresztül a NSG port megnyitása nem kötelező megadni. 
+* Ez a port is nagy mértékben ki van kapcsolva a felügyelt tartomány marad. A módszer nem használata folyamatos, mivel a kezelési és figyelési feladatok végrehajtása használatával történik PowerShell távoli eljáráshívás. Csak az esemény ritkán fordul elő, amelyet a Microsoft számára a felügyelt tartományok speciális hibaelhárítás távolról történő csatlakozást ezt a portot használja. A port zárva van, amint a hibaelhárítási művelet be nem fejeződött.
+
+**Port a 636 (biztonságos LDAP)**
+* Biztonságos LDAP hozzáférés engedélyezése a felügyelt tartományra az interneten keresztül szolgál.
+* Ezen keresztül a NSG port megnyitása nem kötelező megadni. Nyissa meg a portot, csak ha hozzáfér biztonságos LDAP engedélyezve az interneten keresztül.
+* Ezt a portot a forrás IP-címek biztonságos LDAP keresztül csatlakozó várhatóan befelé korlátozhatja.
+
+
+## <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok)
+A [hálózati biztonsági csoport (NSG)](../virtual-network/virtual-networks-nsg.md) hozzáférés-vezérlési lista (ACL) szabályokat, amelyek engedélyezik vagy megtagadják a Virtuálisgép-példány egy virtuális hálózat hálózati forgalmának listáját tartalmazza. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett az egyes virtuális gép is lehet korlátozni további korlátozásokat NGS társítása közvetlenül a virtuális gép.
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>NSG a minta virtuális hálózatok az Azure AD tartományi szolgáltatások
 Az alábbi táblázat mutatja be egy minta NSG-t is konfigurálhatja a virtuális hálózat az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz. Ez a szabály lehetővé teszi a bejövő forgalom a felügyelt tartományra marad biztosításához szükséges portokon keresztül lett, frissítése és a Microsoft által is figyelhetők. Minden bejövő forgalom az internetről az alapértelmezett "DenyAll" szabály vonatkozik.

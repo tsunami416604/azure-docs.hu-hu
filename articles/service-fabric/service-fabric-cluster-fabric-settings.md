@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: 076d4d95db21f0a1c1500ae7766392547a441d1b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 986aa2a3254374f77c5e21b7d7b7562ced660744
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/01/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>A Service Fabric-fürt beállításait és a háló házirend testreszabása
-Ez a dokumentum azt ismerteti, hogyan szabhatja testre a különböző hálóbeállításokat, és a háló frissítéséhez a Service Fabric-fürt házirendet. Testre szabhatja azokat keresztül a [Azure-portálon](https://portal.azure.com) vagy Azure Resource Manager-sablonnal.
+Ez a dokumentum ismerteti a különböző háló beállítások testre szabhatók, és a Service Fabric-fürt-házirend frissítése. Testre szabhatja azokat keresztül a [Azure-portálon](https://portal.azure.com) vagy Azure Resource Manager-sablonnal.
 
 > [!NOTE]
 > Nem minden beállítások állnak rendelkezésre a portálon. Amennyiben a lenti beállítás nem érhető el a portálon testreszabása az Azure Resource Manager-sablonnal.
@@ -772,8 +772,8 @@ PropertyGroup|X509NameMap, alapértelmezés szerint nincs|Dinamikus| |
 |MaxPrimaryReplicationQueueMemorySize|Uint, alapértelmezett érték a 0|Statikus|Ez az a maximális érték az elsődleges replikációs sor bájtokban.|
 |MaxSecondaryReplicationQueueSize|uint, alapértelmezett értéke 2048|Statikus|Ez az volt a másodlagos replikációs várólistában lévő létező műveletek maximális száma. Vegye figyelembe, hogy 2 szintűnek kell lennie.|
 |MaxSecondaryReplicationQueueMemorySize|Uint, alapértelmezett érték a 0|Statikus|Ez az a maximális érték a másodlagos replikációs sor bájtokban.|
-|QueueHealthMonitoringInterval|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(30)|Statikus|Adja meg az időtartam másodpercben. Ez az érték határozza meg az adott időszakban a replikátor által a replikációs művelet várólistára figyelmeztetés/hiba állapotfigyelő eseményeket figyelésére használható. "0" érték letiltja az állapotfigyelés |
-|QueueHealthWarningAtUsagePercent|uint, alapértelmezett értéke 80|Statikus|Ez az érték határozza meg a replikációs várólista használata (százalék) elteltével azt jelentést készít a figyelmeztetés magas várólista-használat. A Microsoft ehhez a QueueHealthMonitoringInterval türelmi időszak után. Ha a várólista használata a türelmi időszak ezen százalékos arány alá esik.|
+|QueueHealthMonitoringInterval|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(30)|Statikus|Adja meg az időtartam másodpercben. Ez az érték határozza meg az adott időszakban a replikátor által a replikációs művelet várólistára figyelmeztetés/hiba állapotfigyelő eseményeket figyelésére használható. "0" érték letiltja az állapotfigyelés. |
+|QueueHealthWarningAtUsagePercent|uint, alapértelmezett értéke 80|Statikus|Ez az érték határozza meg a replikációs várólista használata (százalék) elteltével azt jelentést készít a figyelmeztetés magas várólista-használat. A Microsoft ehhez a QueueHealthMonitoringInterval türelmi időszak után. Ha a várólista használati alá esik ezen százalékos arány, a türelmi időszak a figyelmeztetés jelentése nem.|
 |RetryInterval|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(5)|Statikus|Adja meg az időtartam másodpercben. Ha egy művelet elvész, vagy nem utasítható el ez az időzítő határozza meg, milyen gyakran próbálkozik újra a replikátor küldése a műveletet.|
 
 ### <a name="section-name-transport"></a>Szakasz Name: átviteli

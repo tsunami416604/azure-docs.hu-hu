@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2017
+ms.date: 12/01/2017
 ms.author: szark
-ms.openlocfilehash: b753c76b8c3d789c681d7fbff6aa07590b860be5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18b7a5ec2a04962523a70886e1aa2344eb818458
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
 Ebből a cikkből megtudhatja hogyan készülhet fel a Red Hat Enterprise Linux (RHEL) virtuális gépek használata az Azure-ban. Ebben a cikkben ismertetett RHEL-verziók a következők: 6.7 + és 7.1 +. A hipervizorok előkészítése az ebben a cikkben ismertetett a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware. Red Hat Felhőelérést programban való részvételre vonatkozó jogosultság követelményeivel kapcsolatos további információkért lásd: [Red Hat Felhőelérést webhely](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) és [az Azure-on futó RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
@@ -343,24 +343,33 @@ Jelen szakaszban feltételezzük, hogy már egy ISO-fájlt kapott a Red Hat webh
 
 19. Alakítsa át a qcow2 képet a VHD formátummal.
 
-    Nyers formátumba konvertálja a képet:
+> [!NOTE]
+> Egy ismert hiba van qemu-img verzió > = 2.2.1-en, amely egy nem megfelelően formázott virtuális merevlemez eredményez. A hiba kijavítása QEMU 2.6. Javasoljuk, hogy használja a qemu-img 2.2.0 vagy alsó, vagy frissítse a 2.6 vagy újabb rendszerre. Hivatkozás: https://bugs.launchpad.net/qemu/+bug/1490611.
+>
 
-        # qemu-img convert -f qcow2 -O raw rhel-6.8.qcow2 rhel-6.8.raw
 
-    Győződjön meg arról, hogy a nyers lemezkép mérete 1 MB igazodik. Ellenkező esetben való megfelelés érdekében 1 MB méretű felfelé kerekítés:
+    First convert the image to raw format:
+
+        # qemu-img convert -f qcow2 -O raw rhel-6.9.qcow2 rhel-6.9.raw
+
+    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
 
         # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
+        # size=$(qemu-img info -f raw --output json "rhel-6.9.raw" | \
           gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
         # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-6.8.raw $rounded_size
+        # qemu-img resize rhel-6.9.raw $rounded_size
 
-    A nyers lemez konvertálása rögzített méretű virtuális merevlemez:
+    Convert the raw disk to a fixed-sized VHD:
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.8.raw rhel-6.8.vhd
+        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
 
+    Or, with qemu version **2.6+** include the `force_size` option:
 
+        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
+
+        
 ### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a>A KVM RHEL 7 virtuális gép előkészítése
 
 1. Töltse le az RHEL 7 KVM képe a Red Hat webhelyről. Ez az eljárás RHEL 7 használja a példaként.
@@ -483,22 +492,32 @@ Jelen szakaszban feltételezzük, hogy már egy ISO-fájlt kapott a Red Hat webh
 
 19. Alakítsa át a qcow2 képet a VHD formátummal.
 
-    Nyers formátumba konvertálja a képet:
+> [!NOTE]
+> Egy ismert hiba van qemu-img verzió > = 2.2.1-en, amely egy nem megfelelően formázott virtuális merevlemez eredményez. A hiba kijavítása QEMU 2.6. Javasoljuk, hogy használja a qemu-img 2.2.0 vagy alsó, vagy frissítse a 2.6 vagy újabb rendszerre. Hivatkozás: https://bugs.launchpad.net/qemu/+bug/1490611.
+>
 
-        # qemu-img convert -f qcow2 -O raw rhel-7.3.qcow2 rhel-7.3.raw
 
-    Győződjön meg arról, hogy a nyers lemezkép mérete 1 MB igazodik. Ellenkező esetben való megfelelés érdekében 1 MB méretű felfelé kerekítés:
+    First convert the image to raw format:
+
+        # qemu-img convert -f qcow2 -O raw rhel-7.4.qcow2 rhel-7.4.raw
+
+    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
 
         # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
+        # size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
           gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
         # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-6.8.raw $rounded_size
+        # qemu-img resize rhel-7.4.raw $rounded_size
 
-    A nyers lemez konvertálása rögzített méretű virtuális merevlemez:
+    Convert the raw disk to a fixed-sized VHD:
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.3.raw rhel-7.3.vhd
+        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
+
+    Or, with qemu version **2.6+** include the `force_size` option:
+
+        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
+
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>A VMware Red Hat-alapú virtuális gép előkészítése
 ### <a name="prerequisites"></a>Előfeltételek
@@ -600,22 +619,32 @@ Ez a szakasz azt feltételezi, hogy még telepítette RHEL virtuális gép VMwar
 
 15. Állítsa le a virtuális gépet, és a VMDK-fájl átalakítása .vhd-fájllá.
 
-    Nyers formátumba konvertálja a képet:
+> [!NOTE]
+> Egy ismert hiba van qemu-img verzió > = 2.2.1-en, amely egy nem megfelelően formázott virtuális merevlemez eredményez. A hiba kijavítása QEMU 2.6. Javasoljuk, hogy használja a qemu-img 2.2.0 vagy alsó, vagy frissítse a 2.6 vagy újabb rendszerre. Hivatkozás: https://bugs.launchpad.net/qemu/+bug/1490611.
+>
 
-        # qemu-img convert -f vmdk -O raw rhel-6.8.vmdk rhel-6.8.raw
 
-    Győződjön meg arról, hogy a nyers lemezkép mérete 1 MB igazodik. Ellenkező esetben való megfelelés érdekében 1 MB méretű felfelé kerekítés:
+    First convert the image to raw format:
+
+        # qemu-img convert -f vmdk -O raw rhel-6.9.vmdk rhel-6.9.raw
+
+    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
 
         # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
+        # size=$(qemu-img info -f raw --output json "rhel-6.9.raw" | \
           gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
         # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-6.8.raw $rounded_size
+        # qemu-img resize rhel-6.9.raw $rounded_size
 
-    A nyers lemez konvertálása rögzített méretű virtuális merevlemez:
+    Convert the raw disk to a fixed-sized VHD:
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.8.raw rhel-6.8.vhd
+        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
+
+    Or, with qemu version **2.6+** include the `force_size` option:
+
+        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
+
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>A VMware RHEL 7 virtuális gép előkészítése
 1. Hozzon létre vagy szerkessze a `/etc/sysconfig/network` fájlt, és adja hozzá a következő szöveget:
@@ -704,22 +733,32 @@ Ez a szakasz azt feltételezi, hogy még telepítette RHEL virtuális gép VMwar
 
 14. Állítsa le a virtuális gépet, és a VMDK-fájl átalakítása a VHD formátummal.
 
-    Nyers formátumba konvertálja a képet:
+> [!NOTE]
+> Egy ismert hiba van qemu-img verzió > = 2.2.1-en, amely egy nem megfelelően formázott virtuális merevlemez eredményez. A hiba kijavítása QEMU 2.6. Javasoljuk, hogy használja a qemu-img 2.2.0 vagy alsó, vagy frissítse a 2.6 vagy újabb rendszerre. Hivatkozás: https://bugs.launchpad.net/qemu/+bug/1490611.
+>
 
-        # qemu-img convert -f vmdk -O raw rhel-7.3.vmdk rhel-7.3.raw
 
-    Győződjön meg arról, hogy a nyers lemezkép mérete 1 MB igazodik. Ellenkező esetben való megfelelés érdekében 1 MB méretű felfelé kerekítés:
+    First convert the image to raw format:
+
+        # qemu-img convert -f vmdk -O raw rhel-7.4.vmdk rhel-7.4.raw
+
+    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
 
         # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
+        # size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
           gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
         # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-6.8.raw $rounded_size
+        # qemu-img resize rhel-7.4.raw $rounded_size
 
-    A nyers lemez konvertálása rögzített méretű virtuális merevlemez:
+    Convert the raw disk to a fixed-sized VHD:
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.3.raw rhel-7.3.vhd
+        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
+
+    Or, with qemu version **2.6+** include the `force_size` option:
+
+        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
+
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>Készítse elő a Red Hat-alapú virtuális gép ISO-Lemezképet a automatikusan kickstart fájl használatával
 ### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>Kickstart fájlból RHEL 7 virtuális gép előkészítése

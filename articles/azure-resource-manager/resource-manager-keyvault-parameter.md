@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/09/2017
+ms.date: 11/30/2017
 ms.author: tomfitz
-ms.openlocfilehash: e789a234979be877d990665902fd6219ae7ec40b
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 7e02bd9c6130ef8b120282fafa9f0ee517890d0d
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Az Azure Key Vault használatával továbbítsa biztonságos paraméter értékét a telepítés során
 
@@ -66,7 +66,11 @@ Függetlenül attól, hogy egy új kulcstartó vagy egy meglévő, győződjön 
 
 ## <a name="reference-a-secret-with-static-id"></a>Hivatkozás statikus azonosítójú titkos kulcs
 
-A sablont, amely megkapja a kulcstartót titkos kulcs olyan, mint a többi sablont. Mivel ez **a paraméter fájlban, nem a sablon a key vault hivatkozik.** Például a következő sablon telepít egy SQL-adatbázis, amely egy rendszergazdai jelszót tartalmaz. A password paraméter értéke egy biztonságos karakterláncot kell megadnia. De a sablon nem adja meg, ha ezt az értéket származik.
+A sablont, amely megkapja a kulcstartót titkos kulcs olyan, mint a többi sablont. Mivel ez **a paraméter fájlban, nem a sablon a key vault hivatkozik.** A következő kép bemutatja, hogyan a paraméterfájl hivatkozik, a titkos kulcsot, és ezt az értéket átadja a sablonhoz.
+
+![Statikus azonosítója](./media/resource-manager-keyvault-parameter/statickeyvault.png)
+
+Például a [sablon következő](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/keyvaultparameter/sqlserver.json) telepíti az SQL-adatbázis, amely egy rendszergazdai jelszót tartalmaz. A password paraméter értéke egy biztonságos karakterláncot kell megadnia. De a sablon nem adja meg, ha ezt az értéket származik.
 
 ```json
 {
@@ -102,7 +106,7 @@ A sablont, amely megkapja a kulcstartót titkos kulcs olyan, mint a többi sablo
 }
 ```
 
-Most a fenti sablon paraméter fájl létrehozása. A paraméterfájl adja meg a sablon a paraméter neve megegyezik-e paraméter. A paraméterérték használatával hivatkozik a key vault a titkos kulcsot. A titkos kulcsot úgy, hogy a key vault erőforrás-azonosítója és a titkos kulcs neve hivatkozik. A következő példában a kulcstartót titkos kulcs már léteznie kell, és adjon meg statikus értéket az erőforrás-azonosítóhoz.
+Most a fenti sablon paraméter fájl létrehozása. A paraméterfájl adja meg a sablon a paraméter neve megegyezik-e paraméter. A paraméterérték használatával hivatkozik a key vault a titkos kulcsot. A titkos kulcsot úgy, hogy a key vault erőforrás-azonosítója és a titkos kulcs neve hivatkozik. Az a [a következő paraméterfájl](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/keyvaultparameter/sqlserver.parameters.json), léteznie kell a kulcstároló titkos kulcsot, és egy állandó érték megadása az erőforrás-azonosító. Másolja át helyileg a fájlt, és állítsa be az előfizetés-azonosító, a tároló neve és az SQL-kiszolgáló neve.
 
 ```json
 {
@@ -127,25 +131,27 @@ Most a fenti sablon paraméter fájl létrehozása. A paraméterfájl adja meg a
 }
 ```
 
-Most a sablon telepítéséhez, és adja át a paraméter fájlban. Azure CLI esetén használja az alábbi parancsot:
+Most a sablon telepítéséhez, és adja át a paraméter fájlban. A példa-sablont a Githubból is használhat, de egy helyi paraméter fájlt kell használnia, állítsa be a környezetbe értékekkel.
+
+Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
-az group create --name datagroup --location "Central US"
+az group create --name datagroup --location "South Central US"
 az group deployment create \
     --name exampledeployment \
     --resource-group datagroup \
-    --template-file sqlserver.json \
+    --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver.json \
     --parameters @sqlserver.parameters.json
 ```
 
 PowerShell esetén használja az alábbi parancsot:
 
 ```powershell
-New-AzureRmResourceGroup -Name datagroup -Location "Central US"
+New-AzureRmResourceGroup -Name datagroup -Location "South Central US"
 New-AzureRmResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName datagroup `
-  -TemplateFile sqlserver.json `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver.json `
   -TemplateParameterFile sqlserver.parameters.json
 ```
 
@@ -153,7 +159,13 @@ New-AzureRmResourceGroupDeployment `
 
 Az előző szakaszban bemutatta, hogyan felelt meg a kulcstartót titkos kulcsot egy statikus erőforrás azonosítója. Azonban bizonyos esetekben kell kulcstároló titkos kulcs eltérő az aktuális telepítés alapján hivatkozik. Ebben az esetben nem lehet szigorú kódot az erőforrás-azonosítója a paraméterfájlban. Sajnos nem lehet dinamikusan létrehozhat az erőforrás-azonosítója a paraméterfájlban mert sablon kifejezések nem megengedettek a paraméterfájlban.
 
-Lehet dinamikusan létrehozni a kulcstartó titkos kulcs az erőforrás-azonosító, át kell helyezni az erőforrás, amelyet a titkos kulcsot egy beágyazott sablonba. A fő sablonban a beágyazott sablon hozzáadása, és adjon át egy paraméter, amely tartalmazza a dinamikusan generált erőforrás-azonosító. A beágyazott sablon keresztül egy külső URI elérhetőnek kell lennie. Ez a cikk többi azt feltételezi, hogy a fenti sablon hozzá egy tárfiókot, és az URI - keresztül érhető el `https://<storage-name>.blob.core.windows.net/templatecontainer/sqlserver.json`.
+Lehet dinamikusan létrehozni a kulcstartó titkos kulcs az erőforrás-azonosító, át kell helyezni az erőforrás, amelyet a titkos kulcsot a csatolt sablonba. A szülő sablonban vegyen fel a csatolt sablont, majd adjon át egy paraméter, amely tartalmazza a dinamikusan generált erőforrás-azonosító. A következő kép bemutatja, hogyan a csatolt sablon egyik paraméterének hivatkozik a titkos kulcsot.
+
+![Dinamikus azonosítója](./media/resource-manager-keyvault-parameter/dynamickeyvault.png)
+
+A csatolt sablon keresztül egy külső URI elérhetőnek kell lennie. Általában a sablon hozzáadása egy tárfiókot, például az URI keresztül érhető el `https://<storage-name>.blob.core.windows.net/templatecontainer/sqlserver.json`.
+
+A [sablon következő](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/keyvaultparameter/sqlserver-dynamic-id.json) dinamikusan a kulcstartót Azonosítót hoz létre, és átadja paraméterként. Hivatkozik egy [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/keyvaultparameter/sqlserver.json) a Githubon.
 
 ```json
 {
@@ -184,7 +196,7 @@ Lehet dinamikusan létrehozni a kulcstartó titkos kulcs az erőforrás-azonosí
       "properties": {
         "mode": "incremental",
         "templateLink": {
-          "uri": "https://<storage-name>.blob.core.windows.net/templatecontainer/sqlserver.json",
+          "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver.json",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -205,7 +217,29 @@ Lehet dinamikusan létrehozni a kulcstartó titkos kulcs az erőforrás-azonosí
 }
 ```
 
-A fenti sablon üzembe helyezése, és adjon meg értékeket a paraméterek.
+A fenti sablon üzembe helyezése, és adjon meg értékeket a paraméterek. A példa-sablont a Githubból is használhat, de a környezetnek meg kell adnia a paraméterértékek.
+
+Azure CLI esetén használja az alábbi parancsot:
+
+```azurecli-interactive
+az group create --name datagroup --location "South Central US"
+az group deployment create \
+    --name exampledeployment \
+    --resource-group datagroup \
+    --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver-dynamic-id.json \
+    --parameters vaultName=<your-vault> vaultResourceGroup=examplegroup secretName=examplesecret adminLogin=exampleadmin sqlServerName=<server-name>
+```
+
+PowerShell esetén használja az alábbi parancsot:
+
+```powershell
+New-AzureRmResourceGroup -Name datagroup -Location "South Central US"
+New-AzureRmResourceGroupDeployment `
+  -Name exampledeployment `
+  -ResourceGroupName datagroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver-dynamic-id.json `
+  -vaultName <your-vault> -vaultResourceGroup examplegroup -secretName examplesecret -adminLogin exampleadmin -sqlServerName <server-name>
+```
 
 ## <a name="next-steps"></a>Következő lépések
 * Kulcstároló kapcsolatos általános információkért lásd: [Ismerkedés az Azure Key Vault](../key-vault/key-vault-get-started.md).

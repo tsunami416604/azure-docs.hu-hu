@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/20/2017
+ms.date: 12/01/2017
 ms.author: larryfr
-ms.openlocfilehash: b267f5ce5ec76a89327ac58ca76895f8bcc4696b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: ad12dee2eb01f839db07985fcb0805bf961354cc
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>A HDInsight Hadoop MapReduce használata
 
@@ -57,7 +57,7 @@ MapReduce különböző nyelveken valósítható meg. Java leggyakoribb megvaló
 
 ## <a name="development-languages"></a>Fejlesztési nyelveket
 
-Nyelvet vagy keretrendszert, Java és a Java virtuális gépen alapuló közvetlenül, a MapReduce feladatot is futott. Ebben a dokumentumban bemutatott példában egy Java-MapReduce-alkalmazás. Nem-Java nyelven, például a C#, Python vagy önálló végrehajtható fájlok, a Hadoop streamelési kell használnia.
+Nyelvet vagy keretrendszert, Java és a Java virtuális gépen alapuló közvetlenül, a MapReduce feladatot is futott. Ebben a dokumentumban bemutatott példában egy Java-MapReduce-alkalmazás. Nem-Java nyelven, a C#, Python vagy önálló végrehajtható fájlok, például kell használnia **Hadoop streamelési**.
 
 Hadoop streamelési keresztül kommunikál a hozzárendelést és nyomáscsökkentő STDIN és a STDOUT. A leképező nyomáscsökkentő STDIN egyszerre egy sor adatokat olvasni és írni a kimeneti STDOUT. Minden sor olvasása vagy a hozzárendelést és nyomáscsökkentő által kibocsátott tabulátor határolt egy kulcs/érték pár formátumban kell lennie:
 

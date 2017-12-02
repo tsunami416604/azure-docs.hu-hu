@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: jingwang
-ms.openlocfilehash: ca5f8e43b6667aa1c2e3ac38e7ea00b5bd86b72f
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: a80a947f5dc6176aaa6334a10eabf1a2b4be5847
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure táblából
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -173,17 +173,19 @@ Adatok másolása az Azure Table, állítsa be a forrás típusa a másolási te
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery példák
 
-Ha Azure táblaoszlop karakterlánc típusú:
-
-```json
-"azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00_9999}\\'', <datetime parameter>)"
-```
-
 Ha Azure táblaoszlop dátum/idő típusú:
 
 ```json
-"azureTableSourceQuery": "$$Text.Format('DeploymentEndTime gt datetime\\'{0:yyyy-MM-ddTHH:mm:ssZ}\\' and DeploymentEndTime le datetime\\'{1:yyyy-MM-ddTHH:mm:ssZ}\\'', <datetime parameter>, <datetime parameter>)"
+"azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
 ```
+
+Ha Azure táblaoszlop karakterlánc típusú:
+
+```json
+"azureTableSourceQuery": "LastModifiedTime ge '201710010000_0000' and LastModifiedTime le '201710010000_9999'"
+```
+
+Feldolgozási sor paraméter használatakor konvertálni a DateTime típusú érték a következők szerint fent minták megfelelő formátumba.
 
 ### <a name="azure-table-as-sink"></a>A fogadó Azure táblázatban
 
@@ -264,8 +266,8 @@ Ha megköveteli az adatok & Azure táblából, a következő [Azure Table szolg�
 |:--- |:--- |:--- |
 | Edm.Binary |Byte] |Bájttömb legfeljebb 64 KB. |
 | Edm.Boolean |logikai érték |Logikai érték. |
-| Edm.DateTime |Dátum és idő |Egy 64 bites érték kifejezett, egyezményes világidő (UTC). A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (SZ) (UTC). A tartomány vége December 31 9999. |
-| Edm.Double |Dupla |Egy 64 bites lebegőpontos értéket. |
+| Edm.DateTime |DateTime |Egy 64 bites érték kifejezett, egyezményes világidő (UTC). A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (SZ) (UTC). A tartomány vége December 31 9999. |
+| Edm.Double |duplaszó |Egy 64 bites lebegőpontos értéket. |
 | Edm.Guid |GUID |A 128 bites globálisan egyedi azonosítóját. |
 | Edm.Int32 |Int32 |Egy 32 bites egész számot. |
 | Edm.Int64 |Int64 |Egy 64 bites egész számot. |

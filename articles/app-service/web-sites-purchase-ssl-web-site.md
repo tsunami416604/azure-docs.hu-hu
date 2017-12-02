@@ -1,11 +1,10 @@
 ---
-title: "Az SSL-tanúsítvány hozzáadása az Azure App Service alkalmazáshoz |} Microsoft Docs"
-description: "Tudnivalók az SSL-tanúsítvány hozzáadása az App Service alkalmazáshoz."
+title: "Vásároljon és SSL-tanúsítvány konfigurálása az Azure App Service |} Microsoft Docs"
+description: "Megtudhatja, hogyan vásárolhat egy tanúsítványt az alkalmazás szolgáltatáshoz, majd kösse App Service-alkalmazás"
 services: app-service
 documentationcenter: .net
-author: ahmedelnably
-manager: stefsch
-editor: cephalin
+author: cephalin
+manager: cfowler
 tags: buy-ssl-certificates
 ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
@@ -13,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
-ms.author: apurvajo
-ms.openlocfilehash: 214f05f45f59b0403e6902988f9184d6b62618bd
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 12/01/2017
+ms.author: apurvajo;cephalin
+ms.openlocfilehash: 256cb9a33d49bc3c24b2d94c417632edb0c8df31
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
@@ -74,12 +73,16 @@ Miután kiválasztotta a kulcsot tároló tárház tárolja ezt a tanúsítvány
 
 ## <a name="step-4---verify-the-domain-ownership"></a>4. lépés - ellenőrizze a tartomány tulajdonosa
 
-> [!NOTE]
-> App service-tanúsítványokkal által támogatott tartományok ellenőrzésének három típusa van: tartomány, E-mail, manuális ellenőrzése. További részletek a következő ellenőrzési típusok magyarázata a [szakasz speciális](#advanced).
-
 Az azonos **Tanúsítványkonfiguráció** oldalra, hogy a 3. lépésben, kattintson a **2. lépés: Ellenőrizze**.
 
-**Tartományok ellenőrzésének** legkényelmesebben folyamat **csak ha** rendelkezik  **[az Azure App Service szolgáltatásban az egyéni tartomány vásárolt.](custom-dns-web-site-buydomains-web-app.md)**
+Adja meg az elsődleges tartomány ellenőrzés módját. 
+
+App Service-tanúsítványokkal által támogatott tartományok ellenőrzésének négy típusa van: az App Service, a tartományt, a levelek és a manuális ellenőrzése. További részletek a következő ellenőrzési típusok magyarázata a [szakasz speciális](#advanced).
+
+> [!NOTE]
+> **App Service-ellenőrzési** van a legmegfelelőbb beállítást, ha ellenőrizni szeretné a tartomány már le van képezve egy App Service-alkalmazást ugyanahhoz az előfizetéshez. Kihasználja a tényt, hogy az App Service alkalmazás már ellenőrizte a tartomány tulajdonosa.
+>
+
 Kattintson a **ellenőrizze** gombra kattintva fejezze be ezt a lépést.
 
 ![Helyezze be a tartomány ellenőrzése képe](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
@@ -133,7 +136,7 @@ Ezen a ponton kell tudni látogasson el az alkalmazás használatával `HTTPS://
 
 App service-tanúsítványokkal által támogatott tartományok ellenőrzésének további két típusa van: Mail és a kézi ellenőrzése.
 
-#### <a name="mail-verification"></a>Mail ellenőrzése
+#### <a name="mail-verification"></a>E-mailes ellenőrzés
 
 Megerősítési e-mailt már az E-mail címeket, az egyéni tartomány társított el lett küldve.
 Végezze el az e-mailek ellenőrzési lépés, nyissa meg az e-mailt, és kattintson a megerősítési hivatkozást.
@@ -142,7 +145,11 @@ Végezze el az e-mailek ellenőrzési lépés, nyissa meg az e-mailt, és kattin
 
 Ha újra kell küldenie a megerősítési e-mailt, kattintson a **E-mail újraküldése** gombra.
 
-#### <a name="manual-verification"></a>Kézi ellenőrzése
+#### <a name="domain-verification"></a>Tartomány ellenőrzése
+
+Válassza ezt a beállítást csak a [egy App Service-tartomány, az Azure-ból vásárolta.](custom-dns-web-site-buydomains-web-app.md). Azure automatikusan hozzáadja az ellenőrzés TXT-rekord, és befejezi a folyamatot.
+
+#### <a name="manual-verification"></a>Manuális ellenőrzés
 
 > [!IMPORTANT]
 > HTML-weblap ellenőrzése (csak a Standard tanúsítvány Termékváltozat működik)
@@ -197,6 +204,7 @@ Ha az SSL-tanúsítvány automatikus megújítási van konfigurálva, de nem aut
 - GoDaddy, az App Service-tanúsítványokat hoz létre, amely a tartományok ellenőrzésének három évente egyszer igényel. A tartományi rendszergazda három évente egyszer kap egy e-mailt a tartomány ellenőrzése. Nem sikerült ellenőrizni az e-mailben, vagy ellenőrizze a tartományt a megakadályozza, hogy az App Service-tanúsítvány megújítása automatikusan folyamatban. 
 - Március 31 2017 előtt kiadott összes App Service-tanúsítványt igényel reverification tartomány a következő megújítási időpontjában, (még akkor is, ha az automatikus tartománymegújítási engedélyezve van a tanúsítvány). Ez a GoDaddy házirend változás eredménye. Nézze meg leveleit, és a tartomány egyszeri igazolásához automatikus az App Service-tanúsítvány megújítási a folytatáshoz. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="more-resources"></a>További erőforrások
 
-* [Egy Tartalomkézbesítési hálózat hozzáadása](app-service-web-tutorial-content-delivery-network.md)
+* [Egy SSL-tanúsítvány használható az alkalmazás kódjában, az Azure App Service-ben](app-service-web-ssl-cert-load.md)
+* [– Gyakori kérdések: App Service-tanúsítványok](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: sngun
-ms.openlocfilehash: 3014b8a424e554f3c46f1c7e76eab586d089e059
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: abbc1eac3ff1e8de90bd420dc1fcce7dbeda234c
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="install-powershell-for-azure-stack"></a>A verem az Azure PowerShell telepítése  
 
@@ -53,7 +53,7 @@ A szükséges verzió telepítése előtt győződjön meg arról, hogy távolí
 
 A következő szakaszok ismertetik a verem Azure PowerShell telepítéséhez szükséges lépéseket. PowerShell működtetett csatlakoztatva, részben kapcsolódó Azure-veremben, vagy egy leválasztott forgatókönyvben telepíthető. 
 
-## <a name="install-powershell-in-a-connected-scenario"></a>Telepítse a PowerShell a kapcsolódó forgatókönyvek 
+## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>Telepítse a PowerShell csatlakoztatott forgatókönyv esetében (internetes kapcsolattal rendelkező)
 
 Azure verem kompatibilis AzureRM-modulok API-verzió profilok keresztül telepített. Azure verem igényel a **2017-03-09-profil** API-verzió profilt, amely érhető el a AzureRM.Bootstrapper modul telepítésével. API-verzió profilok és az általuk megadott parancsmagok kapcsolatos információkért tekintse meg a [API-verzió profilok kezeléséhez](azure-stack-version-profiles.md). AzureRM modulokat is telepíteni kell a verem vonatkozó Azure PowerShell-modulok. Ezek a modulok telepítése a fejlesztő munkaállomás a következő PowerShell-parancsfájl futtatása:
 
@@ -82,7 +82,7 @@ A telepítés jóváhagyásához, futtassa a következő parancsot:
   ```
   Ha a telepítés sikeres, a kimenet a AzureRM és AzureStack modulok jelennek meg.
 
-## <a name="install-powershell-in-a-disconnected-or-in-a-partially-connected-scenario"></a>A leválasztott vagy részben csatlakoztatott forgatókönyvben PowerShell telepítése
+## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Telepítse a PowerShell egy leválasztott vagy egy részben csatlakoztatott forgatókönyv (az korlátozott internetkapcsolat)
 
 Kapcsolat nélküli forgatókönyv esetében először töltse le a PowerShell-modul egy internetkapcsolattal rendelkező gép, és majd átviszi a Azure verem csomag telepítéséhez.
 

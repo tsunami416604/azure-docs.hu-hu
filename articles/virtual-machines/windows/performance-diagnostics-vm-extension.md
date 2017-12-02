@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 85d4764534c77ea0e4d999e249abe456d0234d75
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: d9384af2cf1d8b3f55f9ec2316046536634c124e
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows Azure teljesítmény Diagnostics Virtuálisgép-bővítménnyel
 
@@ -46,7 +46,6 @@ A következő JSON a séma az Azure-teljesítmény diagnosztika bővítmény jel
         "settings": {
             "performanceScenario": "[parameters('performanceScenario')]",
                   "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "diagnosticsTrace": "[parameters('diagnosticsTrace')]",
                   "perfCounterTrace": "[parameters('perfCounterTrace')]",
                   "networkTrace": "[parameters('networkTrace')]",
                   "xperfTrace": "[parameters('xperfTrace')]",
@@ -70,15 +69,13 @@ A következő JSON a séma az Azure-teljesítmény diagnosztika bővítmény jel
 |Közzétevő|Microsoft.Azure.Performance.Diagnostics|A bővítmény Publisher névtér
 |type|AzurePerformanceDiagnostics|A Virtuálisgép-bővítmény típusú
 |typeHandlerVersion|1.0|A bővítmény kezelő verziója
-|performanceScenario|Alapszintű|Teljesítmény a forgatókönyvben az adatok rögzítéséhez. Érvényes értékek a következők: **alapvető**, **vmslow**, **azurefiles**, és **egyéni**.
+|performanceScenario|alapszintű|Teljesítmény a forgatókönyvben az adatok rögzítéséhez. Érvényes értékek a következők: **alapvető**, **vmslow**, **azurefiles**, és **egyéni**.
 |traceDurationInSeconds|300|A nyomkövetési adatokat, ha a nyomkövetési beállítások vannak kiválasztva időtartama.
-|DiagnosticsTrace|D|A diagnosztikai nyomkövetés engedélyezése lehetőséget. Érvényes értékek a következők **d** vagy üres értékkel. Ha nem szeretné rögzíteni a, ne változtassa meg az érték üres.
 |perfCounterTrace|P|Teljesítmény-számláló nyomkövetési lehetővé teszi. Érvényes értékek a következők **p** vagy üres értékkel. Ha nem szeretné rögzíteni a, ne változtassa meg az érték üres.
 |networkTrace|n|A Hálózatfigyelő nyomkövetési lehetővé teszi. Érvényes értékek a következők  **n**  vagy üres értékkel. Ha nem szeretné rögzíteni a, ne változtassa meg az érték üres.
 |xperfTrace|x|Engedélyezze a következő helyen nyomkövetési beállítás. Érvényes értékek a következők **x** vagy üres értékkel. Ha nem szeretné rögzíteni a, ne változtassa meg az érték üres.
 |storPortTrace|s|StorPort-nyomkövetés engedélyezése beállítás. Érvényes értékek: s vagy üres érték. Ha nem szeretné rögzíteni a, ne változtassa meg az érték üres.
 |srNumber|123452016365929|Támogatja a jegy számát, ha elérhető. Hagyja meg az üres, ha még nem rendelkezik.
-|requestTimeUtc|9/2/2017 23:06:00 ÓRA|Aktuális ideje UTC formátumban. Nem kell megadnia ezt az értéket, ha a portált használja a bővítmény telepítéséhez.
 |storageAccountName|mystorageaccount|A diagnosztikai naplók és az eredmények tárolásához a tárfiók nevére.
 |storageAccountKey|lDuVvxuZB28NNP... hAiRF3voADxLBTcc ==|A tárfiók kulcsa.
 
@@ -99,12 +96,12 @@ Kövesse az alábbi lépéseket a Virtuálisgép-bővítmény telepítése a Win
 5. Adja meg a telepítést, majd kattintson a paraméterértékek **OK** a bővítmény telepítéséhez. További információ a támogatott hibaelhárítási forgatókönyveket található [Itt](how-to-use-perfInsights.md#supported-troubleshooting-scenarios). 
 
     ![A bővítmény telepítése](media/performance-diagnostics-vm-extension/install-the-extension.png)
-6. Miután a telepítés befejeződött, megjelenik egy üzenetet, a kiépítés sikeres volt.
+6. Ha a telepítés sikeres, megjelenik egy hibaüzenet, amely a kiépítés sikeres volt.
 
     ![Üzenet kiépítés sikeres volt.](media/performance-diagnostics-vm-extension/provisioning-succeeded-message.png)
 
     > [!NOTE]
-    > A bővítmény végrehajtása után a kiépítés sikeres van, és eltarthat néhány percig vagy kevesebb, a végrehajtás alapvető forgatókönyv befejezéséhez indul el. Az egyéb forgatókönyvek akkor fog futni az időtartam a telepítés során megadott keresztül.
+    > A bővítmény végrehajtását követően a kiépítés sikeres van, és néhány perc alatt vagy kevesebb, a végrehajtás alapvető forgatókönyv végrehajtásához szükséges indul. Az egyéb forgatókönyvek futtatja a telepítés során megadott időtartam keresztül.
 
 ## <a name="remove-the-extension"></a>Távolítsa el a kiterjesztés
 A bővítmény virtuális gépről eltávolításához kövesse az alábbi lépéseket:
@@ -153,10 +150,6 @@ Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is tel
       "type": "int",
     "defaultValue": 300
     },
-    "diagnosticsTrace": {
-      "type": "string",
-      "defaultValue": "d"
-    },
     "perfCounterTrace": {
       "type": "string",
       "defaultValue": "p"
@@ -192,7 +185,6 @@ Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is tel
         "settings": {
             "performanceScenario": "[parameters('performanceScenario')]",
                   "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "diagnosticsTrace": "[parameters('diagnosticsTrace')]",
                   "perfCounterTrace": "[parameters('perfCounterTrace')]",
                   "networkTrace": "[parameters('networkTrace')]",
                   "xperfTrace": "[parameters('xperfTrace')]",
@@ -216,8 +208,8 @@ A `Set-AzureRmVMExtension` parancs segítségével Azure teljesítmény Diagnost
 PowerShell
 
 ````
-$PublicSettings = @{ "performanceScenario" = "basic"; "traceDurationInSeconds" = 300; "diagnosticsTrace" = "d"; "perfCounterTrace" = "p"; "networkTrace" = ""; "xperfTrace" = ""; "storPortTrace" = ""; "srNumber" = ""; "requestTimeUtc" = "2017-09-28T22:08:53.736Z" }
-$ProtectedSettings = @{"storageAccountName" = "mystorageaccount" ; "storageAccountKey" = "mystoragekey"}
+$PublicSettings = @{ "performanceScenario":"basic","traceDurationInSeconds":300,"perfCounterTrace":"p","networkTrace":"","xperfTrace":"","storPortTrace":"","srNumber":"","requestTimeUtc":"2017-09-28T22:08:53.736Z" }
+$ProtectedSettings = @{"storageAccountName":"mystorageaccount","storageAccountKey":"mystoragekey"}
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
@@ -231,13 +223,13 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ````
 
 ## <a name="information-on-the-data-captured"></a>A rögzített adatok információk
-PerfInsights eszköz különböző naplókat, konfigurálásához, attól függően, hogy a választott forgatókönyv stb. diagnosztikai adatokat gyűjt. További információk az adatok gyűjtése számítógépenként forgatókönyv adjon látogasson el a [PerfInsights dokumentáció](http://aka.ms/perfinsights).
+PerfInsights eszköz különböző naplókat, konfigurálásához, attól függően, hogy a választott forgatókönyv stb. diagnosztikai adatokat gyűjt. A forgatókönyv / gyűjtött adatokról további tájékoztatásért keresse fel [PerfInsights dokumentáció](http://aka.ms/perfinsights).
 
 ## <a name="view-and-share-the-results"></a>Megjelenítheti és megoszthatja az eredmények
 
 A bővítmény kimeneti tárolja egy alapértelmezés szerint a Temp lemezmeghajtó (általában D:\log_collection) log_collection nevű mappába. Ebben a mappában tekintheti meg a diagnosztikai naplók és egy jelentést az eredményekről és javaslatokat tartalmazó zip-fájl.
 
-A zip-fájl létrehozása a telepítés során megadott tárfiók is fel van töltve, valamint használatával 30 napig megosztott [megosztott hozzáférési aláírásokkal (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Nevű *zipfilename*_saslink.txt is a log_collection mappában jön létre. Ez a fájl a zip-fájl letöltésére létrehozott SAS-hivatkozást tartalmaz. Bárki, aki ezt a hivatkozást fog tudni letölteni a zip-fájl.
+A zip-fájl létrehozása a telepítés során megadott tárfiók is fel van töltve, valamint használatával 30 napig megosztott [megosztott hozzáférési aláírásokkal (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Nevű *zipfilename*_saslink.txt is a log_collection mappában jön létre. Ez a fájl a zip-fájl letöltésére létrehozott SAS-hivatkozást tartalmaz. Bárki, aki ezt a hivatkozást tartalmaz, akkor képes a zip-fájl letöltésére.
 
 Microsoft a SAS-hivatkozás segítségével töltse le a diagnosztikai adatainak további vizsgálatok által a támogatja a visszafejtés, a támogatási jegy dolgozik.
 

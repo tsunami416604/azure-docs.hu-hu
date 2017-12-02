@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2017
 ms.author: xshi
-ms.openlocfilehash: deb362796966524ec2db5808623d2f92a1bf44e1
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 6a9d5e029e48c1bb62ad4731c7413f023b97c8c9
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 csatlakozni az Azure IoT Hub a felhőben
 
@@ -29,7 +29,7 @@ Használhatja a [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-develo
 ## <a name="what-you-do"></a>Mit
 Csatlakozás a [DevKit](https://microsoft.github.io/azure-iot-developer-kit/) az Azure IoT-központ az Ön által létrehozott, az adatgyűjtés a hőmérséklet és a páratartalom a érzékelők, és elküldheti az adatokat az IoT-központ.
 
-Még nem rendelkezik egy DevKit? [Egy GET](https://aka.ms/iot-devkit-purchase).
+Még nem rendelkezik egy DevKit? Próbálja [DevKit szimulátor](https://azure-samples.github.io/iot-devkit-web-simulator/) vagy [lekérni egy](https://aka.ms/iot-devkit-purchase).
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 

@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 5c7c15eacdf43d3623000ed228adfaeb55803c8f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 54038785f513e56b07f5f3fafa3dbd6d4b6e7400
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -112,6 +112,19 @@ Sajnos van nem egyszerű ezen a projekten. Akkor kell távolítania a telepítet
    - Távolítsa el a parancsfájl`C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
    - a fenti szkript indító parancsikon eltávolítása
    - a telepítő https://aka.ms/azureml-wb-msi töltse le és telepítse újra.
+
+## <a name="get-stuck-at-checking-experimentation-account-screen-after-logging-in"></a>A bejelentkezés után elakadnak "Kísérletezhet fiók ellenőrzése" képernyő
+A bejelentkezés után a munkaterületet üzemeltető alkalmazás előfordulhat, hogy elakadnak a üres képernyőt ábrázoló "Ellenőrzése kísérletezhet fiók" egy forgó rájuk üzenetet. A probléma megoldásához tegye a következőket:
+1. Az alkalmazás leállítása
+2. Törölje a következő fájlt:
+  ```
+  # on Windows
+  %appdata%\AmlWorkbench\AmlWb.settings
+
+  # on macOS
+  ~/Library/Application Support/AmlWorkbench/AmlWb.settings
+  ```
+3. Indítsa újra az alkalmazást.
 
 ## <a name="cant-delete-experimentation-account"></a>Kísérletezhet fiók nem törölhető.
 Parancssori felület használatával kísérletezhet-fiók törlése, de törölnie kell az alárendelt munkaterületekkel és a gyermek projektek belül e gyermek munkaterületek először. Ellenkező esetben hibaüzenet jelenik meg.

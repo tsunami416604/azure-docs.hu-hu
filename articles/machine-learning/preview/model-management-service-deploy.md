@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 0ebf8964bc565e5d4f95fb1ad3edbc16f841851c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d59dccec4532ff0903972f2b15ed9dd8429a2ed
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>A gépi tanulási modellek webszolgáltatásként telepítése
 
@@ -25,7 +25,7 @@ Ez a dokumentum a modellek webszolgáltatásként, az Azure Machine Learning mod
 ## <a name="deploying-web-services"></a>Webszolgáltatások üzembe helyezése
 A CLIs használja, telepítheti a webszolgáltatások futtatásához a helyi számítógépen vagy egy fürtön.
 
-Azt javasoljuk, hogy a helyi telepítés kezdve. Először ellenőrizze, hogy a modell és kód működik, majd a webszolgáltatás telepítése egy fürt méretű üzemi használatra. A fürtöt tartalmazó környezetben környezet beállításával kapcsolatos további információk: [modell felügyeletkonfigurálási](model-management-configuration.md). 
+Azt javasoljuk, hogy a helyi telepítés kezdve. Először ellenőrizze, hogy a modell és kód működik, majd a webszolgáltatás telepítése egy fürt méretű üzemi használatra. A fürtöt tartalmazó környezetben környezet beállításával kapcsolatos további információk: [modell felügyeletkonfigurálási](deployment-setup-configuration.md). 
 
 Az üzembe helyezés lépései a következők:
 1. A mentett, betanított, gépi tanulási modell
@@ -186,4 +186,4 @@ az ml service run realtime -i <service id> -d "{\"input_df\": [{\"sepal length\"
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy a webszolgáltatás helyi futtatásához tesztelése, ezután telepítheti azt egy fürthöz, a nagyméretű használatra. Webes szolgáltatás központi telepítése egy fürt beállításával kapcsolatos részletekért lásd: [modell Felügyeletkonfigurálási](model-management-configuration.md). 
+Most, hogy a webszolgáltatás helyi futtatásához tesztelése, ezután telepítheti azt egy fürthöz, a nagyméretű használatra. Webes szolgáltatás központi telepítése egy fürt beállításával kapcsolatos részletekért lásd: [modell Felügyeletkonfigurálási](deployment-setup-configuration.md). 

@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Functions üzemeltetési tervek összehasonlítása |} Microsoft Docs"
+title: "Az Azure Functions méretezése és üzemeltetéséhez |} Microsoft Docs"
 description: "Útmutató az Azure Functions használat terv és az App Service-csomag választhat."
 services: functions
 documentationcenter: na
@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09bb662e30a97e2741303e2e4630582625954909
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ff3f7072792c76c5d05310451771bde61b61e009
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="azure-functions-hosting-plans-comparison"></a>Az Azure Functions üzemeltetési tervek összehasonlítása
+# <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetéséhez
 
-Az Azure Functions két különböző módban is futtathatja: fogyasztás terv és az Azure App Service-csomag. A felhasználási terv automatikusan osztja ki a számítási teljesítményt, a kódja fut, kimenő terhelés kezelésére, szükség szerint arányosan, és majd arányosan csökken, amikor a kód nem fut. Igen nem kell a tétlen virtuális gépek után kell fizetnie, és nem kell előzetesen tartalékkapacitás. Ez a cikk foglalkozik a fogyasztás terv egy [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) az app model. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service-csomagok részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Az Azure Functions két különböző módban is futtathatja: fogyasztás terv és az Azure App Service-csomag. A felhasználási terv automatikusan osztja ki a számítási teljesítményt, a kódja fut, kimenő terhelés kezelésére, szükség szerint arányosan, és majd arányosan csökken, amikor a kód nem fut. Nem kell fizetni a tétlen virtuális gépeket, és nem kell előzetesen tartalékkapacitás. Ez a cikk foglalkozik a fogyasztás terv egy [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) az app model. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service-csomagok részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
 >[!NOTE]  
 > Linux futtató jelenleg csak az App Service-csomag érhető el.
@@ -84,18 +84,20 @@ Always On érhető csak az App Service-csomag. Felhasználás tervezze a platfor
 
 A felhasználási terv vagy az App Service-csomag a függvény az alkalmazás csak a egy általános Azure Storage-fiók, amely támogatja az Azure Blob, Queue, fájlok és Table storage. Belsőleg az Azure Functions Azure tárolást használ műveletek, például eseményindítók kezelése és naplózási funkciót végrehajtások. Néhány tárfiókok nem támogatják az üzenetsorok és táblák, például csak a blob storage-fiókok (beleértve a prémium szintű storage) és az általános célú tárfiókok zónaredundáns tárolás replikáció. Ezek a fiókok kiszűri a **Tárfiók** panel egy függvény alkalmazás létrehozásakor.
 
+<!-- JH: Does using a PRemium Storage account improve perf? -->
+
 Tárfióktípusokat kapcsolatos további információkért lásd: [az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#introducing-the-azure-storage-services).
 
 ## <a name="how-the-consumption-plan-works"></a>A felhasználási terv működése
 
-A felhasználási tervben a skála vezérlő automatikusan méretezi CPU és memória-erőforrások hozzáadásával további példányait a funkciók gazdagép, a funkciók által kiváltott a várakozó események száma alapján. A funkciók állomás minden példánya 1,5 GB memória korlátozódik.
+A felhasználási tervben a skála vezérlő automatikusan méretezi CPU és memória-erőforrások hozzáadásával további példányait a funkciók gazdagép, a funkciók által kiváltott a várakozó események száma alapján. A funkciók állomás minden példánya 1,5 GB memória korlátozódik.  A gazdagép egy példány a függvény App, tehát a funciton összes függvényeket app erőforrások megosztása belül egy példány és a skála egyszerre.
 
 A felhasználás üzemeltetési terv használatakor függvény kódfájlok Azure fájlmegosztásokat a funkció fő tárfiók tárolja. A fő tárfiókot, a függvény alkalmazás törlése, a függvény kód fájlok törlődnek, és nem állítható helyre.
 
 > [!NOTE]
 > Egy blob eseményindító használatakor a fogyasztás terven lehet legfeljebb 10 perces késleltetést új blobok feldolgozása, ha egy függvény app inaktív állapotba került. A függvény alkalmazás futtatása után blobok feldolgozása azonnal megtörténik. A kezdeti késleltetés elkerülése érdekében fontolja meg az alábbi lehetőségek közül:
 > - Gazdagép a függvény alkalmazást, az App Service-csomagot, a mindig engedélyezve van.
-> - Egy másik mechanizmus használatával indul el, a blob feldolgozására, például egy üzenetsor-üzenetet, amely tartalmazza a blob neve. Egy vonatkozó példáért lásd: a [C# a parancsfájlt és a JavaScript-példák a BLOB bemeneti és kimeneti kötések](functions-bindings-storage-blob.md#input--output---example).
+> - Egy másik mechanizmus használatával indul el, a blob feldolgozására, például egy esemény rács előfizetés vagy egy üzenetsor-üzenetet, amely tartalmazza a blob neve. Egy vonatkozó példáért lásd: a [C# a parancsfájlt és a JavaScript-példák a BLOB bemeneti és kimeneti kötések](functions-bindings-storage-blob.md#input--output---example).
 
 ### <a name="runtime-scaling"></a>Futásidejű skálázás
 
@@ -104,6 +106,20 @@ Az Azure Functions összetevőt használja a *méretezési vezérlő* események
 A skálázási egység a függvény alkalmazást. Ha a függvény app horizontálisan, további erőforrásokat az Azure Functions gazdagép több példányát futtatni. Ezzel ellentétben a számítási igény szerinti csökken, a méretezési vezérlő függvény állomás példányok eltávolítja. A példányok száma van végül méretezhető nulla nem működik a funkció alkalmazások futtatásakor.
 
 ![Skála vezérlő események figyelése és példányok létrehozása](./media/functions-scale/central-listener.png)
+
+### <a name="understanding-scaling-behaviors"></a>Skálázási viselkedés ismertetése
+
+Skálázás tényezők és a menübeállításoktól függően az eseményindító és a kiválasztott nyelvvel méretezést számú eltérőek lehetnek. Vannak azonban néhány szempontja a méretezés, amely létezik a rendszerben ma:
+* Egy egyetlen függvény alkalmazást csak legfeljebb 200 példányok lesz skálázva. Egyetlen példány előfordulhat, hogy több üzenetet vagy kérelem az egyszerre feldolgozandó azonban, nem áll rendelkezésre a készlet egyidejű végrehajtások számára vonatkozó korlátozást.
+* Új példányok csak oszt ki 10 másodpercenként legfeljebb egyszer.
+
+Különböző eseményindítók is rendelkezhetnek, különböző méretezési korlátok, valamint az olyan dokumentált alatt:
+
+* [Event Hub](functions-bindings-event-hubs.md#trigger---scaling)
+
+### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ajánlott eljárásairól és mintáiról méretezhető alkalmazások
+
+Számos szempontot, amelyek befolyásolják, mennyire azt lehessen méretezni, beleértve a gazdagép-konfigurálás, futásidejű erőforrásigényét és az erőforrás hatásfokuk függvény alkalmazás.  Nézet a [méretezhetőség című szakaszban a teljesítmény szempontok](functions-best-practices.md#scalability-best-practices) további információt.
 
 ### <a name="billing-model"></a>Számlázási modell
 

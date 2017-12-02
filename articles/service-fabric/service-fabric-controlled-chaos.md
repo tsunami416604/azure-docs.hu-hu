@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/10/2017
 ms.author: motanv
-ms.openlocfilehash: c78d9e77d807f3ccf8c1f56d856abad8135989c2
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 9a205d1b8e088b7007bb8c3a64139732d8858267
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>A Service Fabric-fürtök ellenőrzött Chaos idéz elő
 Nagy méretű elosztott rendszerek, például a felhőalapú infrastruktúrák nem eredendően megbízhatóak. Az Azure Service Fabric lehetővé teszi a fejlesztők egy nem megbízható infrastruktúrán megbízható elosztott szolgáltatások írni. Egy nem megbízható infrastruktúrán robusztus elosztott szolgáltatások írni fejlesztők kell tesztelni szolgáltatásaik stabilitását, míg az alapul szolgáló megbízhatatlan infrastruktúra megy keresztül bonyolult Állapotváltások hibák miatt.
@@ -70,9 +70,6 @@ Ahhoz, hogy mely hibák Chaos előidézett, használhatja GetChaosReport API-t (
 * **WaitTimeBetweenFaults**: egy egyetlen munkamenetben két egymást követő hibák közti várakozási idő. Minél nagyobb az értéke, annál kisebb a egyidejűségi beállítása pedig (vagy az átfedett) hibákat.
 * **ClusterHealthPolicy**: fürt állapotházirend Between Chaos az ismétlés a fürt állapotának ellenőrzésére szolgál. Ha a fürt állapota hibás, vagy ha egy váratlan kivétel során hiba történik, Chaos a következő-állapotellenőrzése - arra, hogy ellássa a fürt egy ideig recuperate 30 percet várakozik.
 * **A környezetben**: (karakterlánc, karakterlánc) gyűjteménye, írja be kulcs-érték párokat. A térkép Chaos futtatás adatainak rögzítésére is használható. Nem lehet 100-nál több ilyen párok, és minden karakterlánc (kulcs vagy érték), legfeljebb 4095 karakter hosszú lehet. Ez a térkép a Chaos tárolását a környezetben a meghatározott Futtatás futtassa az alapszintű állítja be.
-* **ChaosTargetFilter**: Ez a szűrő cél Chaos hibákra csak egyes csomóponttípusok vagy csak egyes alkalmazáspéldányok használható. Ha nem használja a ChaosTargetFilter, Chaos hibákat entitásokhoz fürt. ChaosTargetFilter használata esetén a Chaos hibákat csak az entitásokat, amelyek megfelelnek a ChaosTargetFilter megadását. NodeTypeInclusionList és ApplicationInclusionList engedélyezése csak a "union" szemantikáját. Ez azt jelenti nincs lehetőség a NodeTypeInclusionList és ApplicationInclusionList metszetét adja meg. Például nincs lehetőség a adja meg a "hiba az alkalmazás csak akkor, ha be van kapcsolva, hogy csomóponttípus." Entitás NodeTypeInclusionList vagy ApplicationInclusionList szerepel, ha az entitás nem zárható ChaosTargetFilter használatával. Akkor is, ha applicationX ApplicationInclusionList nem jelenik meg, néhány Chaos munkamenetben applicationX is hibát jelez, mert akkor fordul elő, egy olyan csomópontján, amely megtalálható a NodeTypeInclusionList nodeTypeY lennie. Ha NodeTypeInclusionList és ApplicationInclusionList egyaránt null értékű vagy üres, egy ArgumentException vált ki.
-    * **NodeTypeInclusionList**: csomóponttípusok foglalandó Chaos hibák listája. Hibák összes típusú (csomópont újraindítása, indítsa újra a codepackage, távolítsa el a replika, indítsa újra a replikát, áthelyezése elsődleges és másodlagos áthelyezése) a következő csomópont típusú csomópontok engedélyezve vannak. Ha a nodetype (azaz NodeTypeX) nem szerepel a NodeTypeInclusionList, akkor soha nem lesz engedélyezve NodeTypeX csomópontjait csomópont szintű hibák (például NodeRestart), de kód csomag és a replika hibák továbbra is engedélyezhető az NodeTypeX Ha az alkalmazás a ApplicationInclusionList NodeTypeX csomópontja elhelyezése történik. Legfeljebb 100 csomópont típusnevek tartalmazhat erre a listára, ezt a számot növelheti, a konfiguráció frissítése a MaxNumberOfNodeTypesInChaosTargetFilter konfigurációhoz szükség.
-    * **ApplicationInclusionList**: az alkalmazás URI-azonosítók Chaos hibák foglalandó listáját. Az alkalmazások szolgáltatásokhoz tartozó összes replika replika hibák (újraindítás replika, távolítsa el a replika, áthelyezés elsődleges és áthelyezése másodlagos) Chaos által kezelhető. Chaos előfordulhat, hogy indítsa újra a kódcsomag, csak akkor, ha a kódcsomag üzemeltető replikái csak ezeket az alkalmazásokat. Ha egy alkalmazás nem jelenik meg ebben a listában, azt is továbbra is hibát jelez néhány Chaos munkamenetben, ha az alkalmazás fejeződik be, amely a NodeTypeInclusionList incuded csomópont típusú csomóponton. Azonban ha applicationX van kötve egy elhelyezési korlátozás és applicationX nodeTypeY hiányzik a ApplicationInclusionList és nodeTypeY hiányzik a NodeTypeInclusionList, majd applicationX soha nem hibát jelez majd. Legfeljebb 1000 alkalmazásnevek tartalmazhat erre a listára, ezt a számot növelheti, a konfiguráció frissítése a MaxNumberOfApplicationsInChaosTargetFilter konfigurációhoz szükség.
 
 ## <a name="how-to-run-chaos"></a>Chaos futtatása
 
@@ -139,23 +136,7 @@ class Program
                 MaxPercentUnhealthyApplications = 100,
                 MaxPercentUnhealthyNodes = 100
             };
-
-            // All types of faults, restart node, restart code package, restart replica, move primary replica, and move secondary replica will happen
-            // for nodes of type 'FrontEndType'
-            var nodetypeInclusionList = new List<string> { "FrontEndType"};
-
-            // In addition to the faults included by nodetypeInclusionList, 
-            // restart code package, restart replica, move primary replica, move secondary replica faults will happen for 'fabric:/TestApp2'
-            // even if a replica or code package from 'fabric:/TestApp2' is residing on a node which is not of type included in nodeypeInclusionList.
-            var applicationInclusionList = new List<string> { "fabric:/TestApp2" };
-
-            // List of cluster entities to target for Chaos faults.
-            var chaosTargetFilter = new ChaosTargetFilter
-            {
-                NodeTypeInclusionList = nodetypeInclusionList,
-                ApplicationInclusionList = applicationInclusionList
-            };
-
+            
             var parameters = new ChaosParameters(
                 maxClusterStabilizationTimeout,
                 maxConcurrentFaults,
@@ -164,7 +145,7 @@ class Program
                 startContext,
                 waitTimeBetweenIterations,
                 waitTimeBetweenFaults,
-                clusterHealthPolicy) {ChaosTargetFilter = chaosTargetFilter};
+                clusterHealthPolicy);
 
             try
             {
@@ -269,26 +250,12 @@ $clusterHealthPolicy.ConsiderWarningAsError = $False
 # This map is set by the starter of the Chaos run to optionally store the context about the specific run.
 $context = @{"ReasonForStart" = "Testing"}
 
-#List of cluster entities to target for Chaos faults.
-$chaosTargetFilter = new-object -TypeName System.Fabric.Chaos.DataStructures.ChaosTargetFilter
-$chaosTargetFilter.NodeTypeInclusionList = new-object -TypeName "System.Collections.Generic.List[String]"
-
-# All types of faults, restart node, restart code package, restart replica, move primary replica, and move secondary replica will happen
-# for nodes of type 'FrontEndType'
-$chaosTargetFilter.NodeTypeInclusionList.AddRange( [string[]]@("FrontEndType") )
-$chaosTargetFilter.ApplicationInclusionList = new-object -TypeName "System.Collections.Generic.List[String]"
-
-# In addition to the faults included by nodetypeInclusionList, 
-# restart code package, restart replica, move primary replica, move secondary replica faults will happen for 'fabric:/TestApp2'
-# even if a replica or code package from 'fabric:/TestApp2' is residing on a node which is not of type included in nodeypeInclusionList.
-$chaosTargetFilter.ApplicationInclusionList.Add("fabric:/TestApp2")
-
 Connect-ServiceFabricCluster $clusterConnectionString
 
 $events = @{}
 $now = [System.DateTime]::UtcNow
 
-Start-ServiceFabricChaos -TimeToRunMinute $timeToRunMinute -MaxConcurrentFaults $maxConcurrentFaults -MaxClusterStabilizationTimeoutSec $maxClusterStabilizationTimeSecs -EnableMoveReplicaFaults -WaitTimeBetweenIterationsSec $waitTimeBetweenIterationsSec -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ClusterHealthPolicy $clusterHealthPolicy -ChaosTargetFilter $chaosTargetFilter
+Start-ServiceFabricChaos -TimeToRunMinute $timeToRunMinute -MaxConcurrentFaults $maxConcurrentFaults -MaxClusterStabilizationTimeoutSec $maxClusterStabilizationTimeSecs -EnableMoveReplicaFaults -WaitTimeBetweenIterationsSec $waitTimeBetweenIterationsSec -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ClusterHealthPolicy $clusterHealthPolicy
 
 while($true)
 {
@@ -319,5 +286,5 @@ while($true)
 
     Start-Sleep -Seconds 1
 }
+
 ```
-git 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: bd5de92a418ae5caa23ae4b081b688707cedcf06
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: ddddf280613554e81884dbcbd0c0011e505500bc
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -269,7 +269,7 @@ SQL Data Warehouse PolyBase közvetlenül támogatja Azure-Blob és az Azure Dat
 A feltételeknek nem felel meg, ha az Azure Data Factory ellenőrzi a beállításait, és automatikusan visszaáll az adatátvitelt jelölik a BULKINSERT mechanizmus.
 
 1. **Forrás társított szolgáltatás** típusa: **AzureStorage** vagy **AzureDataLakeStore**.
-2. A **bemeneti adatkészlet** típusa: **AzureBlob** vagy **AzureDataLakeStoreFile**, és írja be a format `type` tulajdonságai **OrcFormat** , vagy **szöveges** , a következő beállításokat:
+2. A **bemeneti adatkészlet** típusa: **AzureBlob** vagy **AzureDataLakeStoreFile**, és írja be a format `type` tulajdonságai **OrcFormat** , **ParquetFormat**, vagy **szöveges** , a következő beállításokat:
 
    1. `rowDelimiter`kell  **\n** .
    2. `nullValue`értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értéke **igaz**.
@@ -421,11 +421,11 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 |:--- |:--- |
 | bigint |Int64 |
 | Bináris |Byte] |
-| bit |Logikai érték |
+| bit |Logikai |
 | Karakter |Karakterlánc, Char] |
-| Dátum |Dátum és idő |
-| Dátum és idő |Dátum és idő |
-| datetime2 |Dátum és idő |
+| dátum |DateTime |
+| Dátum és idő |DateTime |
+| datetime2 |DateTime |
 | datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
@@ -437,9 +437,9 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 | ntext |Karakterlánc, Char] |
 | Numerikus |Decimális |
 | nvarchar |Karakterlánc, Char] |
-| valós |Egyetlen |
+| valós |Egyedülálló |
 | ROWVERSION |Byte] |
-| smalldatetime |Dátum és idő |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |

@@ -11,12 +11,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 35f7bf0504075e8bb0b99f8492b850df2b7ceae1
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.date: 11/30/2017
+ms.openlocfilehash: 04e5465a56b8da9f2a078e513d5176f134fd011d
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-time-series-insights-explorer"></a>Az Azure idő adatsorozat Insights explorer
 Ez a cikk ismerteti a különböző szolgáltatások és az idő adatsorozat Insights explorer web App lehetőségeket. Képi megjelenítéseket készíthet az adatok idő adatsorozat Insights explorer használja a böngészőben.
@@ -41,7 +41,7 @@ Az az idő adatsorozat Insights-környezethez való csatlakozását az eseményf
 
 4. Figyelje meg, hogy az Azure-felhőbe ikon megnyitná a környezet az Azure portálon.
 
-   ![Adatsorozat Insights környezet](media/time-series-insights-explorer/explorer1.png)
+   ![Time Series Insights-környezet](media/time-series-insights-explorer/explorer1.png)
 
 5. Ezután tekintse meg a diagram, amely a kijelölt timespan során az összes esemény számát tartalmazza.  Itt számos olyan rendszabály rendelkezik:
 
@@ -90,7 +90,7 @@ Az az idő adatsorozat Insights-környezethez való csatlakozását az eseményf
 
 11. A **heatmap** segítségével gyorsan direkt rendellenes vagy egyedi adatsorozatban egy adott lekérdezésben. Csak egy keresési kifejezés is ábrázolt, mint egy heatmap.    
 
-   ![Heatmap](media/time-series-insights-explorer/explorer6.png)
+   ![Intenzitástérkép](media/time-series-insights-explorer/explorer6.png)
 
 12. **Események**: Ha úgy dönt, megismerkedhet események lehetőséget választva, vagy kattintson a jobb gombbal fent, az események panel szeretné elérhetővé tenni.  Itt láthat minden, a nyers események és az események exportálását, JSON vagy CSV-fájlként. Vegye figyelembe, hogy idő adatsorozat Insights tárolja az összes nyers adatok.
 

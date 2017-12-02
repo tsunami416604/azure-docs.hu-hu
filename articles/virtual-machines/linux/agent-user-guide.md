@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 486ad6bb148583a957fb82b7954ff94f853b12cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59266c6d6452eeff56b05e60389ac14f0b2c3f1f
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Megismeréséhez és használatához az Azure Linux ügynök
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -143,6 +143,7 @@ Egy konfigurációs fájl (/ etc/waagent.conf) waagent műveleteit szabályozza.
     Provisioning.MonitorHostName=y
     Provisioning.DecodeCustomData=n
     Provisioning.ExecuteCustomData=n
+    Provisioning.AllowResetSysUser=n
     Provisioning.PasswordCryptId=6
     Provisioning.PasswordCryptSaltLength=10
     ResourceDisk.Format=y
@@ -157,6 +158,7 @@ Egy konfigurációs fájl (/ etc/waagent.conf) waagent műveleteit szabályozza.
     OS.OpensslPath=None
     HttpProxy.Host=None
     HttpProxy.Port=None
+    AutoUpdate.Enabled=y
 
 A különböző konfigurációs beállításait ismerteti részletesen. Beállítási lehetőségek állnak a három típusa létezik; Logikai érték, String vagy Integer. "Y" vagy "n" logikai konfigurációs beállításokat adhat meg. A speciális kulcsszó "None" néhány karakterlánc típusú konfigurációs elemet részletes, az alábbi használható.
 
@@ -209,8 +211,12 @@ Alapértelmezett: n
 
 Ha beállításához waagent végrehajtja a CustomData kiépítése után.
 
+**Provisioning.AllowResetSysUser** típusa: logikai alapértelmezett: n
+
+Ez a beállítás lehetővé teszi, hogy a jelszót a sys felhasználó állítható alaphelyzetbe; alapértelmezett le van tiltva.
+
 **Provisioning.PasswordCryptId**  
-Típus: karakterlánc  
+Típus: Karakterlánc  
 Alapértelmezett: 6
 
 Jelszókivonat létrehozásakor használt titkosítási algoritmus.  
@@ -220,7 +226,7 @@ Jelszókivonat létrehozásakor használt titkosítási algoritmus.
  6 - SHA-512  
 
 **Provisioning.PasswordCryptSaltLength**  
-Típus: karakterlánc  
+Típus: Karakterlánc  
 Alapértelmezett: 10
 
 Jelszókivonat létrehozásához használt véletlenszerű védőérték hosszát.
@@ -290,6 +296,12 @@ Típus: Karakterlánc
 Alapértelmezett: nincs
 
 Ha állítsa be, az ügynök fogja használni a proxykiszolgálót az internet eléréséhez. 
+
+**AutoUpdate.Enabled** típusa: logikai alapértelmezett: y
+
+Engedélyezi vagy letiltja az automatikus frissítés feldolgozása; célt állapothoz Alapértelmezés szerint engedélyezve.
+
+
 
 ## <a name="ubuntu-cloud-images"></a>Ubuntu felhő lemezképek
 Vegye figyelembe, hogy Ubuntu felhő lemezképek használata [felhő inicializálás](https://launchpad.net/ubuntu/+source/cloud-init) számos konfigurációs feladatok végrehajtását, amelyek egyébként volna kezeli az Azure Linux ügynök.  Vegye figyelembe a következő eltérésekkel:

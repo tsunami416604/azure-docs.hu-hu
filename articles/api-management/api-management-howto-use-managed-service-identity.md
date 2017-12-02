@@ -11,11 +11,11 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: ded0809fa90e98b2e845d328fbeec6d21507c46b
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: cf27e4d9997a796fa61af6e6f0af3c0c5a0c296f
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Azure felügyelt Szolgáltatásidentitás használata az Azure API Management
 
@@ -116,6 +116,25 @@ A következő példa bemutatja, hogyan lehet lekérni a tanúsítványt az Azure
 1. Az API Management példányt létrehozni identitással.
 2. A hozzáférési házirendek az Azure Key Vault-példány frissítéséhez, és lehetővé teszik a titkos kulcsok beszerzése az API Management-példányt.
 3. A tanúsítvány egyéni tartománynév beállítása a Key Vault példányból frissíteni az API Management-példány.
+
+### <a name="prerequisites"></a>Előfeltételek
+Végrehajtásához az alábbi arm-sablon igazolnia kell a következő 
+1. A pfx-tanúsítvány a ugyanazt az előfizetést és az Api Management szolgáltatás ugyanazon resourcegroup tartalmazó kulcstároló. Ez a követelmény az arm-sablont. 
+2. A titkos kulcs tartalomtípusa kell *alkalmazás/x-pkcs12*. A következő parancsfájlt használhatja a tanúsítvány feltöltése
+
+```powershell
+$pfxFilePath = "PFX_CERTIFICATE_FILE_PATH" # Change this path 
+$pwd = "PFX_CERTIFICATE_PASSWORD" # Change this password 
+$flag = [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable 
+$collection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection 
+$collection.Import($pfxFilePath, $pwd, $flag) 
+$pkcs12ContentType = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12 
+$clearBytes = $collection.Export($pkcs12ContentType) 
+$fileContentEncoded = [System.Convert]::ToBase64String($clearBytes) 
+$secret = ConvertTo-SecureString -String $fileContentEncoded -AsPlainText –Force 
+$secretContentType = 'application/x-pkcs12' 
+Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -SecretValue $Secret -ContentType $secretContentType
+```
 
 > [!Important]
 > Ha a tanúsítvány objektum verziója nem áll rendelkezésre, az API Management automatikusan beszerzi az újabb verzió, a tanúsítvány Key Vault való feltöltésük után. 

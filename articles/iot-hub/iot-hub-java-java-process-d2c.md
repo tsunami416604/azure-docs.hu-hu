@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Hub eszközről a felhőbe üzenetek (Java) |} Microsoft Docs"
-description: "Az IoT-központ eszközről a felhőbe üzenetek feldolgozásához átirányítani más háttérszolgáltatások üzenetek útválasztási szabályokat és az egyéni végpontokat használatával hogyan."
+title: "Az Azure IoT Hub (Java) útválasztási üzenetek |} Microsoft Docs"
+description: "How Azure IoT Hub eszközről a felhőbe üzenetek feldolgozásához átirányítani más háttérszolgáltatások üzenetek útválasztási szabályokat és az egyéni végpontokat használatával."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.openlocfilehash: 0fb3e9012ae88112515ebb552e49fa463a087f54
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 81f846e1fd8cca586613e6fc57737ec27e43a639
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="process-iot-hub-device-to-cloud-messages-java"></a>Az IoT-központ eszközről a felhőbe üzenetek (Java)
+# <a name="routing-messages-with-iot-hub-java"></a>Üzenetek (Java) az IoT hubbal
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
@@ -44,7 +44,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * [Maven 3](https://maven.apache.org/install.html)
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
 
-Néhány alapvető ismerete szükséges [Azure Storage] és [Azure Service Bus].
+Javasoljuk továbbá kapcsolatos tájékoztatás [Azure Storage] és [Azure Service Bus].
 
 ## <a name="send-interactive-messages-from-a-device-app"></a>Interaktív üzenetek küldése egy eszköz alkalmazásból
 Ebben a szakaszban létrehozott eszközalkalmazás módosítja a [Ismerkedés az IoT-központ] alkalmanként küldéséhez azonnali feldolgozást igénylő oktatóanyag.
@@ -66,9 +66,15 @@ Ebben a szakaszban létrehozott eszközalkalmazás módosítja a [Ismerkedés az
                     String msgStr;
                     Message msg;
                     if (new Random().nextDouble() > 0.7) {
-                        msgStr = "This is a critical message.";
-                        msg = new Message(msgStr);
-                        msg.setProperty("level", "critical");
+                        if (new Random().nextDouble() > 0.5) {
+                            msgStr = "This is a critical message.";
+                            msg = new Message(msgStr);
+                            msg.setProperty("level", "critical");
+                        } else {
+                            msgStr = "This is a storage message.";
+                            msg = new Message(msgStr);
+                            msg.setProperty("level", "storage");
+                        }
                     } else {
                         double currentTemperature = minTemperature + rand.nextDouble() * 15;
                         double currentHumidity = minHumidity + rand.nextDouble() * 20; 
@@ -99,7 +105,7 @@ Ebben a szakaszban létrehozott eszközalkalmazás módosítja a [Ismerkedés az
     }
     ```
    
-    Ez a módszer véletlenszerűen hozzáadja a tulajdonság `"level": "critical"` az eszköz által küldött üzenetek, amely szimulálja egy üzenetet, amely szerint az alkalmazás háttér-azonnali beavatkozást igényel. Az alkalmazás az információt továbbítja az üzenet tulajdonságai ahelyett, hogy az üzenet törzsében úgy, hogy az IoT-központ irányítani tudja a megfelelő üzenet célra az üzenetet.
+    Ez a módszer véletlenszerűen hozzáadja a tulajdonság `"level": "critical"` és `"level": "storage"` az eszköz által küldött üzenetek, amely szimulálja egy üzenetet, amely az alkalmazás háttér-vagy, hogy véglegesen kell tárolni, hogy azonnali beavatkozást igényel. Az alkalmazás az információt továbbítja az üzenet tulajdonságai ahelyett, hogy az üzenet törzsében úgy, hogy az IoT-központ irányítani tudja a megfelelő üzenet célra az üzenetet.
    
    > [!NOTE]
    > Több, különböző esetekre, beleértve a cold-path feldolgozási mellett a gyakran használt adatok elérési útja az itt bemutatott példában üzenettulajdonságok üzenetek is használhatja.
@@ -107,7 +113,7 @@ Ebben a szakaszban létrehozott eszközalkalmazás módosítja a [Ismerkedés az
 2. Mentse és zárja be a simulated-device\src\main\java\com\mycompany\app\App.java fájlt.
 
     > [!NOTE]
-    > Az egyszerűség kedvéért ez az oktatóanyag nem valósítja meg az összes újrapróbálkozási házirendje. Az éles kódban, meg kell valósítania egy újrapróbálkozási házirendje, például az exponenciális leállítási, az MSDN-cikkben leírtak [átmeneti hiba kezelése].
+    > Határozottan javasoljuk, hogy például az exponenciális leállítási, az MSDN-cikkben leírtak újrapróbálkozási házirendje megvalósítása [átmeneti hiba kezelése].
 
 3. Ha a **simulated-device** alkalmazást a Maven használatával szeretné felépíteni, futtassa a következő parancsot a parancssorban a simulated-device mappában:
 
@@ -168,6 +174,30 @@ Most már készen áll a három alkalmazások futtatásához.
    ```
    
    ![Szimulált eszköz futtatása][simulateddevice]
+
+## <a name="optional-add-storage-container-to-your-iot-hub-and-route-messages-to-it"></a>(Választható) Az IoT hub és útvonal üzenetek hozzá a tároló hozzáadása
+
+Ebben a szakaszban hozzon létre egy tárfiókot, csatlakoztassa az IoT hub, és konfigurálja az IoT hub üzeneteket küldhet a fiók, az üzenet tulajdonság alapján. Felügyelni a tárolást kapcsolatos további információkért lásd: [Ismerkedés az Azure Storage szolgáltatással][Azure Storage].
+
+ > [!NOTE]
+   > Ha nem csak egy **végpont**, előfordulhat, hogy a telepítő a **StorageContainer** kívül a **CriticalQueue** , és mindkét simulatneously futtassa.
+
+1. Hozzon létre egy tárfiókot, [Azure Storage-dokumentációt] [lnk-tároló] leírtak szerint. Jegyezze fel a fiók nevét.
+
+2. Az Azure portálon, nyissa meg az IoT hub, és kattintson **végpontok**.
+
+3. Az a **végpontok** panelen válassza a **CriticalQueue** végpontot, és kattintson **törlése**. Kattintson a **Igen**, és kattintson a **Hozzáadás**. A végpont neve **StorageContainer** majd válassza ki a legördülő listákat **Azure-tárolót**, és hozzon létre egy **tárfiók** és egy **tárolási tároló**.  Jegyezze fel a neveket.  Amikor elkészült, kattintson a **OK** alján. 
+
+ > [!NOTE]
+   > Ha nem csak egy **végpont**, nem kell törölnie a **CriticalQueue**.
+
+4. Kattintson a **útvonalak** az IoT Hub a. Kattintson a **Hozzáadás** útválasztási szabály, amely továbbítja az üzeneteket a várólista létrehozása a panel tetején az előzőekben adott hozzá. Válassza ki **eszközre küldött üzenetek** a adatforrásként. Adja meg `level="storage"` feltételt, és válassza a **StorageContainer** útválasztási szabály végpontjának egyéni végpontként. Kattintson a **mentése** alján.  
+
+    Győződjön meg arról, hogy a tartalék útvonal értéke **ON**. Ez a beállítás az alapértelmezett beállítása az IoT-központ.
+
+1. Győződjön meg arról, hogy az előző alkalmazások továbbra is futnak. 
+
+1. Az Azure portálon lépjen a tárfiókhoz a **Blob szolgáltatás**, kattintson a **blobok Tallózás...** .  Jelölje ki a tárolót, keresse meg és kattintson a JSON-fájlt, és kattintson **letöltése** adatok megtekintéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

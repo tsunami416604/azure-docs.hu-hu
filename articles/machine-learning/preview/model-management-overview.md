@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 31b859d86e82c92839462280721c5f84f1d923cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0474e7ae77128a46fc6218de814913d07aa63d97
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning Modellkezelés
 
@@ -124,4 +124,4 @@ Az alábbi ábrán a teljes munkafolyamat ezekről a fogalmakról leíró rögz�
    Abszolút. A szolgáltatások vagy végpontok 100 x futtathatja ugyanazon a fürtön. 
 
 ## <a name="next-steps"></a>Következő lépések
-Első lépések a modell kezelése, lásd: [konfigurálásához modellben felügyeleti](model-management-configuration.md).
+Első lépések a modell kezelése, lásd: [konfigurálásához modellben felügyeleti](deployment-setup-configuration.md).

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a56afa7c5200b53b398f8a99e8a36df3685b2f66
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: c5c2f3cbd6725690fa471560f96c8f5ef17f7738
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Másolja az adatokat, és az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -166,10 +166,10 @@ GO
 ```
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Adatok betöltése az Azure SQL Data Warehouse PolyBase segítségével
-Használatával  **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)**  egy hatékony módszer a nagy mennyiségű adatok betöltését az Azure SQL Data Warehouse nagy átviteli sebességgel. A teljesítmény a nagy nyereség helyett az alapértelmezett BULKINSERT mechanizmus a PolyBase használatával tekintheti meg. Lásd: [teljesítmény hivatkozási szám másolása](data-factory-copy-activity-performance.md#performance-reference) a részletes összehasonlítását. A használati esetek bemutatóért lásd: [1 TB-os betöltése az Azure SQL Data Warehouse a 15 perc Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Használatával ** [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) ** egy hatékony módszer a nagy mennyiségű adatok betöltését az Azure SQL Data Warehouse nagy átviteli sebességgel. A teljesítmény a nagy nyereség helyett az alapértelmezett BULKINSERT mechanizmus a PolyBase használatával tekintheti meg. Lásd: [teljesítmény hivatkozási szám másolása](data-factory-copy-activity-performance.md#performance-reference) a részletes összehasonlítását. A használati esetek bemutatóért lásd: [1 TB-os betöltése az Azure SQL Data Warehouse a 15 perc Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
-* Ha a forrás adatok **Azure Blob vagy az Azure Data Lake Store**, és a formátuma nem kompatibilis a PolyBase, közvetlenül másolhatja az Azure SQL Data Warehouse PolyBase használatával. Lásd:  **[közvetlen másolása a PolyBase használatával](#direct-copy-using-polybase)**  adatokkal.
-* Ha a forrás-tárolót és formátum eredetileg nem támogatott a PolyBase által, használhatja a  **[előkészített másolása a PolyBase használatával](#staged-copy-using-polybase)**  inkább a beállítást. Is biztosít, nagyobb átviteli sebesség automatikusan adatok PolyBase-kompatibilis formátumra való konvertálása, és az adatok tárolása az Azure Blob Storage tárolóban. Majd betölti az SQL Data Warehouse-adatok.
+* Ha a forrás adatok **Azure Blob vagy az Azure Data Lake Store**, és a formátuma nem kompatibilis a PolyBase, közvetlenül másolhatja az Azure SQL Data Warehouse PolyBase használatával. Lásd: ** [közvetlen másolása a PolyBase használatával](#direct-copy-using-polybase) ** adatokkal.
+* Ha a forrás-tárolót és formátum eredetileg nem támogatott a PolyBase által, használhatja a ** [előkészített másolása a PolyBase használatával](#staged-copy-using-polybase) ** inkább a beállítást. Is biztosít, nagyobb átviteli sebesség automatikusan adatok PolyBase-kompatibilis formátumra való konvertálása, és az adatok tárolása az Azure Blob Storage tárolóban. Majd betölti az SQL Data Warehouse-adatok.
 
 Állítsa be a `allowPolyBase` tulajdonságot **igaz** az Azure Data Factoryben az adatok másolása az Azure SQL Data Warehouse polybase szolgáltatást akkor használja a következő példában látható módon. AllowPolyBase értéke igaz, amikor a PolyBase konkrét tulajdonságok használatával megadhatja a `polyBaseSettings` tulajdonságcsoport. Tekintse meg a [SqlDWSink](#SqlDWSink) szakasz kapcsolódó polyBaseSettings használható tulajdonságokról vonatkozó további információért.
 
@@ -196,9 +196,9 @@ SQL Data Warehouse PolyBase közvetlenül támogatja Azure-Blob és az Azure Dat
 A feltételeknek nem felel meg, ha az Azure Data Factory ellenőrzi a beállításait, és automatikusan visszaáll az adatátvitelt jelölik a BULKINSERT mechanizmus.
 
 1. **Forrás társított szolgáltatás** típusa: **AzureStorage** vagy **szolgáltatás egyszerű hitelesítéssel AzureDataLakeStore**.  
-2. A **bemeneti adatkészlet** típusa: **AzureBlob** vagy **AzureDataLakeStore**, és írja be a format `type` tulajdonságai **OrcFormat**, vagy **szöveges** , a következő beállításokat:
+2. A **bemeneti adatkészlet** típusa: **AzureBlob** vagy **AzureDataLakeStore**, és írja be a format `type` tulajdonságai **OrcFormat**, **ParquetFormat**, vagy **szöveges** , a következő beállításokat:
 
-   1. `rowDelimiter`kell  **\n** .
+   1. `rowDelimiter`kell ** \n **.
    2. `nullValue`értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értéke **igaz**.
    3. `encodingName`értéke **utf-8**, amely **alapértelmezett** érték.
    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, és `skipLineCount` nincs megadva.
@@ -303,7 +303,7 @@ Adat-előállító hoz létre a tábla a céltár a tábla néven a forrás-tár
 
 | Forrás SQL-adatbázis oszlop típusa | Cél SQL DW oszlop típusa (méretének korlátozása) |
 | --- | --- |
-| int | int |
+| Int | Int |
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
@@ -317,7 +317,7 @@ Adat-előállító hoz létre a tábla a céltár a tábla néven a forrás-tár
 | Bináris | Bináris |
 | varbinary | Varbinary (legfeljebb 8000) |
 | Dátum | Dátum |
-| Dátum és idő | Dátum és idő |
+| DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Time | Time |
 | DateTimeOffset | DateTimeOffset |
@@ -348,11 +348,11 @@ Leképezése nem ugyanaz, mint a [SQL Server adattípus-hozzárendelése az ADO.
 | --- | --- |
 | bigint |Int64 |
 | Bináris |Byte] |
-| bit |Logikai érték |
+| bit |Logikai |
 | Karakter |Karakterlánc, Char] |
-| Dátum |Dátum és idő |
-| Dátum és idő |Dátum és idő |
-| datetime2 |Dátum és idő |
+| dátum |DateTime |
+| Dátum és idő |DateTime |
+| datetime2 |DateTime |
 | datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
@@ -364,9 +364,9 @@ Leképezése nem ugyanaz, mint a [SQL Server adattípus-hozzárendelése az ADO.
 | ntext |Karakterlánc, Char] |
 | Numerikus |Decimális |
 | nvarchar |Karakterlánc, Char] |
-| valós |Egyetlen |
+| valós |Egyedülálló |
 | ROWVERSION |Byte] |
-| smalldatetime |Dátum és idő |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |

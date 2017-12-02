@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-ms.openlocfilehash: 2c844ce8aec04c74a9c2dbecdd1b3effb286df97
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 649d138a85ca47440e43c00637ee92b86f4eb03e
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="configure-domain-joined-hdinsight-clusters-preview"></a>Tartományhoz csatlakozó HDInsight-fürtök (előzetes verzió) konfigurálása
+# <a name="configure-domain-joined-hdinsight-clusters"></a>A tartományhoz a HDInsight-fürtök konfigurálása
 
 Ismerje meg, hogyan állíthat be az Azure Active Directoryval (Azure AD) Azure HDInsight-fürtök és [Apache Pletyka](http://hortonworks.com/apache/ranger/) kihasználásához erős hitelesítést és a gazdag szerepköralapú hozzáférés-vezérlést (RBAC) házirendek.  A HDInsight-tartományhoz csak Linux-alapú fürtökön konfigurálható. További információkért lásd: [bevezetni a tartományhoz a HDInsight-fürtök](apache-domain-joined-introduction.md).
 

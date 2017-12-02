@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Hub eszközről a felhőbe üzenetek használatával útvonalak (.Net) |} Microsoft Docs"
-description: "Az IoT-központ eszközről a felhőbe üzenetek feldolgozásához átirányítani más háttérszolgáltatások üzenetek útválasztási szabályokat és az egyéni végpontokat használatával hogyan."
+title: "Üzenetek az Azure IoT Hub (.Net) |} Microsoft Docs"
+description: "How Azure IoT Hub eszközről a felhőbe üzenetek feldolgozásához átirányítani más háttérszolgáltatások üzenetek útválasztási szabályokat és az egyéni végpontokat használatával."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 1d2b52ea005ab520bf294efa603512c00a92ee63
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8fed08aa22577574b30b360ec164daf592ed456
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="process-iot-hub-device-to-cloud-messages-using-routes-net"></a>Az IoT-központ eszközről a felhőbe üzenetek útvonalak (.NET) használatával
+# <a name="routing-messages-with-iot-hub-net"></a>Üzenetek az IoT Hub (.NET)
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
@@ -43,7 +43,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * Visual Studio 2015 vagy Visual Studio 2017.
 * Aktív Azure-fiók. <br/>Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) néhány percig.
 
-Néhány alapvető ismerete szükséges [Azure Storage] és [Azure Service Bus].
+Javasoljuk továbbá kapcsolatos tájékoztatás [Azure Storage] és [Azure Service Bus].
 
 ## <a name="send-interactive-messages"></a>Interaktív üzenetek küldése
 
@@ -74,8 +74,16 @@ private static async void SendDeviceToCloudMessagesAsync()
 
         if (rand.NextDouble() > 0.7)
         {
-            messageString = "This is a critical message";
-            levelValue = "critical";
+            if (rand.NextDouble() > 0.5)
+            {
+                messageString = "This is a critical message";
+                levelValue = "critical";
+            }
+            else 
+            {
+                messageString = "This is a storage message";
+                levelValue = "storage";
+            }
         }
         else
         {
@@ -93,13 +101,13 @@ private static async void SendDeviceToCloudMessagesAsync()
 }
 ```
 
-Ez a módszer véletlenszerűen hozzáadja a tulajdonság `"level": "critical"` az eszköz által küldött üzenetek, amely szimulálja egy üzenetet, amely szerint a megoldás háttér-azonnali beavatkozást igényel. Az eszköz alkalmazás az információt továbbítja az üzenet tulajdonságai ahelyett, hogy az üzenet törzsében úgy, hogy az IoT-központ irányítani tudja a megfelelő üzenet célra az üzenetet.
+Ez a módszer véletlenszerűen hozzáadja a tulajdonság `"level": "critical"` és `"level": "storage"` az eszköz által küldött üzenetek, amely szimulálja egy üzenetet, amely az alkalmazás háttér-vagy, hogy véglegesen kell tárolni, hogy azonnali beavatkozást igényel. Az alkalmazás az információt továbbítja az üzenet tulajdonságai ahelyett, hogy az üzenet törzsében úgy, hogy az IoT-központ irányítani tudja a megfelelő üzenet célra az üzenetet.
 
 > [!NOTE]
 > Több, különböző esetekre, beleértve a cold-path feldolgozási mellett az itt bemutatott példában közbeni elérési üzenettulajdonságok üzenetek is használhatja.
 
 > [!NOTE]
-> Az egyszerűség kedvéért ez az oktatóanyag nem valósítja meg az összes újrapróbálkozási házirendje. Az éles kódban, meg kell valósítania egy újrapróbálkozási házirendje, például az exponenciális leállítási, az MSDN-cikkben leírtak [átmeneti hiba kezelése].
+> Határozottan javasoljuk, hogy például az exponenciális leállítási, az MSDN-cikkben leírtak újrapróbálkozási házirendje megvalósítása [átmeneti hiba kezelése].
 
 ## <a name="route-messages-to-a-queue-in-your-iot-hub"></a>Az IoT hub a várólistához üzenetek
 
@@ -177,6 +185,30 @@ Készen áll arra, hogy futtassa az alkalmazásokat.
    
    ![Három konzol alkalmazás][50]
 
+## <a name="optional-add-storage-container-to-your-iot-hub-and-route-messages-to-it"></a>(Választható) Az IoT hub és útvonal üzenetek hozzá a tároló hozzáadása
+
+Ebben a szakaszban hozzon létre egy tárfiókot, csatlakoztassa az IoT hub, és konfigurálja az IoT hub üzeneteket küldhet a fiók, az üzenet tulajdonság alapján. Felügyelni a tárolást kapcsolatos további információkért lásd: [Ismerkedés az Azure Storage szolgáltatással][Azure Storage].
+
+ > [!NOTE]
+   > Ha nem csak egy **végpont**, előfordulhat, hogy a telepítő a **StorageContainer** kívül a **CriticalQueue** , és mindkét simulatneously futtassa.
+
+1. Hozzon létre egy tárfiókot, [Azure Storage-dokumentációt] [lnk-tároló] leírtak szerint. Jegyezze fel a fiók nevét.
+
+2. Az Azure portálon, nyissa meg az IoT hub, és kattintson **végpontok**.
+
+3. Az a **végpontok** panelen válassza a **CriticalQueue** végpontot, és kattintson **törlése**. Kattintson a **Igen**, és kattintson a **Hozzáadás**. A végpont neve **StorageContainer** majd válassza ki a legördülő listákat **Azure-tárolót**, és hozzon létre egy **tárfiók** és egy **tárolási tároló**.  Jegyezze fel a neveket.  Amikor elkészült, kattintson a **OK** alján. 
+
+ > [!NOTE]
+   > Ha nem csak egy **végpont**, nem kell törölnie a **CriticalQueue**.
+
+4. Kattintson a **útvonalak** az IoT Hub a. Kattintson a **Hozzáadás** útválasztási szabály, amely továbbítja az üzeneteket a várólista létrehozása a panel tetején az előzőekben adott hozzá. Válassza ki **eszközre küldött üzenetek** a adatforrásként. Adja meg `level="storage"` feltételt, és válassza a **StorageContainer** útválasztási szabály végpontjának egyéni végpontként. Kattintson a **mentése** alján.  
+
+    Győződjön meg arról, hogy a tartalék útvonal értéke **ON**. Ez a beállítás az alapértelmezett beállítása az IoT-központ.
+
+1. Győződjön meg arról, hogy az előző alkalmazások továbbra is futnak. 
+
+1. Az Azure portálon lépjen a tárfiókhoz a **Blob szolgáltatás**, kattintson a **blobok Tallózás...** .  Jelölje ki a tárolót, keresse meg és kattintson a JSON-fájlt, és kattintson **letöltése** adatok megtekintéséhez.
+
 ## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtudta, hogyan megbízhatóan átirányítani az eszköz a felhőbe küldött üzeneteket az üzenetet az IoT-központ útválasztási funkcióra használatával.
 
@@ -204,5 +236,5 @@ Az üzenetet az IoT hubon útválasztási kapcsolatos további információkért
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
 [Azure IoT fejlesztői központ]: https://azure.microsoft.com/develop/iot
 [átmeneti hiba kezelése]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-c2d]: iot-hub-csharp-csharp-c2d.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/

@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/23/2017
+ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c18ca8e81fefdee723714c6535160e75ef4d698d
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: f69bc731b2858c338d7f7b4d347e7107a0f4eeed
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Egy meglévő egyéni SSL-tanúsítvány kötését az Azure Web Apps
 
@@ -214,61 +214,17 @@ Ehhez marad most csak a győződjön meg arról, hogy HTTPS működik-e az egyé
 
 ## <a name="enforce-https"></a>HTTPS kényszerítése
 
-Alkalmazás szolgáltatásnak nincs *nem* kényszerítése a HTTPS-t, így bárki, aki továbbra is elérheti a HTTP-n keresztül webalkalmazás. A webalkalmazás HTTPS kényszerítéséhez a átdolgozás szabály megadása a _web.config_ fájl a webalkalmazás. App Service használja ezt a fájlt, a nyelvi keretrendszerébe webalkalmazás függetlenül.
+Alapértelmezés szerint bárki továbbra is elérheti a webalkalmazás HTTP-n keresztül. HTTP-kérelmek átirányíthatók a HTTPS-portja.
 
-> [!NOTE]
-> Kérelmek átirányítása nyelvspecifikus van. ASP.NET MVC használhatja a [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) helyett a módosítsa úgy a szabály a szűrő _web.config_.
+Válassza ki az alkalmazást, a weblap a bal oldali navigációs **egyéni tartományok**. Ezt követően a **csak HTTPS**, jelölje be **a**.
 
-Ha a .NET-fejlesztők, ezzel a fájllal viszonylag tisztában kell lennie. A megoldás gyökérkönyvtárában van.
+![HTTPS kényszerítése](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
-Azt is megteheti Ha a PHP, Node.js, Python vagy Java fejleszt, esély van jelenleg ezt a fájlt az Ön nevében létrehozott App Service-ben.
+Ha a művelet befejeződött, nyissa meg a HTTP URL-címek, amelyek az alkalmazás egyik. Példa:
 
-A webalkalmazás FTP végponthoz kapcsolódni a megadott utasítások szerint [telepítse az alkalmazást az Azure App Service segítségével FTP/S](app-service-deploy-ftp.md).
-
-Ez a fájl megtalálható _/home/site/wwwroot_. Ha nem, hozzon létre egy _web.config_ ebben a mappában van a következő XML-fájlt:
-
-```xml   
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-  <system.webServer>
-    <rewrite>
-      <rules>
-        <!-- BEGIN rule ELEMENT FOR HTTPS REDIRECT -->
-        <rule name="Force HTTPS" enabled="true">
-          <match url="(.*)" ignoreCase="false" />
-          <conditions>
-            <add input="{HTTPS}" pattern="off" />
-          </conditions>
-          <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" appendQueryString="true" redirectType="Permanent" />
-        </rule>
-        <!-- END rule ELEMENT FOR HTTPS REDIRECT -->
-      </rules>
-    </rewrite>
-  </system.webServer>
-</configuration>
-```
-
-Egy létező _web.config_ fájlt, másolja a teljes `<rule>` az elem a _web.config_tartozó `configuration/system.webServer/rewrite/rules` elemet. Ha nincsenek más `<rule>` elemeinek a _web.config_, helyezze a másolt `<rule>` elem előtt a másik `<rule>` elemek.
-
-Ez a szabály egy HTTP 301 (Állandó átirányítás) és a HTTPS protokoll ad vissza, amikor a felhasználó egy HTTP-kérelem esetén a webalkalmazáshoz. Például az átirányítja a `http://contoso.com` való `https://contoso.com`.
-
-Az IIS URL-újraíró modult további információkért tekintse meg a [URL-újraíró](http://www.iis.net/downloads/microsoft/url-rewrite) dokumentációját.
-
-## <a name="enforce-https-for-web-apps-on-linux"></a>A Web Apps Linux HTTPS kényszerítése
-
-Linux alkalmazás-szolgáltatásnak nincs *nem* kényszerítése a HTTPS-t, így bárki, aki továbbra is elérheti a HTTP-n keresztül webalkalmazás. A webalkalmazás HTTPS kényszerítéséhez a átdolgozás szabály megadása a _.htaccess_ fájl a webalkalmazás. 
-
-A webalkalmazás FTP végponthoz kapcsolódni a megadott utasítások szerint [telepítse az alkalmazást az Azure App Service segítségével FTP/S](app-service-deploy-ftp.md).
-
-A _/home/site/wwwroot_, hozzon létre egy _.htaccess_ fájl a következő kóddal:
-
-```
-RewriteEngine On
-RewriteCond %{HTTP:X-ARR-SSL} ^$
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-```
-
-Ez a szabály egy HTTP 301 (Állandó átirányítás) és a HTTPS protokoll ad vissza, amikor a felhasználó egy HTTP-kérelem esetén a webalkalmazáshoz. Például az átirányítja a `http://contoso.com` való `https://contoso.com`.
+- `http://<app_name>.azurewebsites.net`
+- `http://contoso.com`
+- `http://www.contoso.com`
 
 ## <a name="automate-with-scripts"></a>Parancsfájlok automatizálásához
 
@@ -312,7 +268,7 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Nyilvános tanúsítványokat (nem kötelező)
-Feltöltheti a [nyilvános tanúsítványokat](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) a webalkalmazáshoz. A webalkalmazásokkal az App Service vagy az App Service-környezet (ASE) a nyilvános tanúsítványokat is használhat. Ha a tanúsítványt a LocalMachine tanúsítványtárolójában van szüksége, kell használni egy webalkalmazást az App Service-környezetben. További részletekért lásd: [konfigurálása a nyilvános tanúsítványokat a webalkalmazáshoz](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+Feltöltheti a [nyilvános tanúsítványokat](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) a webalkalmazáshoz. Az App Service Environment-környezetek alkalmazásokat is használhat nyilvános tanúsítványokat. Ha a tanúsítványt a LocalMachine tanúsítványtárolójában van szüksége, kell használni egy webalkalmazást az App Service Environment-környezet. További információkért lásd: [konfigurálása a nyilvános tanúsítványokat a webalkalmazáshoz](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
 
 ![Nyilvános tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
@@ -330,3 +286,5 @@ A következő oktatóanyag megtudhatja, hogyan használható az Azure Content De
 
 > [!div class="nextstepaction"]
 > [A Content Delivery Network (CDN) hozzáadása az Azure App Service](app-service-web-tutorial-content-delivery-network.md)
+
+További információkért lásd: [egy SSL-tanúsítvány használható az Azure App Service-ben az alkalmazás kódjában](app-service-web-ssl-cert-load.md).

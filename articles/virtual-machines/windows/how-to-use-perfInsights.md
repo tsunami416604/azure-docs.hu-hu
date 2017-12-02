@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 36e204c73e62e950c3f40eab7e1ce6bccd7abd83
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: bb4c21456643532df040df4fcd5f4fa1a4f48d2c
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights használata 
 
@@ -30,7 +30,7 @@ Azt javasoljuk, hogy futtassa ezt a parancsfájlt egy támogatási jegy a Micros
 
 PerfInsights is összegyűjti és elemzi az adatokat több különböző, egyedi forgatókönyvek szerint vannak csoportosítva.
 
-### <a name="collect-disk-configuration"></a>A lemezkonfiguráció gyűjtése 
+### <a name="collect-basic-configuration"></a>Alapszintű konfigurációs gyűjtése 
 
 Ebben a forgatókönyvben a lemezkonfigurációt és egyéb fontos információkat, beleértve a következőket gyűjti:
 
@@ -57,7 +57,7 @@ Ez a passzív gyűjteménye, amely nem befolyásolja a rendszer.
 >[!Note]
 >Ebben a forgatókönyvben az alábbi esetek mindegyikében automatikusan tartalmazza.
 
-### <a name="benchmarkstorage-performance-test"></a>Teljesítményteszt tárolási teljesítményének tesztelése
+### <a name="benchmarking"></a>Teljesítménymérésre
 
 Ez a forgatókönyv futtatása a [diskspd](https://github.com/Microsoft/diskspd) teljesítményteszt (iops-érték és MB/s) a virtuális géphez csatolt összes merevlemezén. 
 
@@ -65,11 +65,11 @@ Ez a forgatókönyv futtatása a [diskspd](https://github.com/Microsoft/diskspd)
 > Ez a forgatókönyv befolyásolhatja a rendszer, és egy éles rendszeren nem futtatható. Ha szükséges, futtassa a ebben a forgatókönyvben egy dedikált karbantartási időszakban esetleges problémák elkerülése érdekében. A nyomkövetési vagy teljesítményteszt teszt által okozott nagyobb munkaterhelést ronthatja a teljesítményt, a virtuális gép.
 >
 
-### <a name="general-vm-slow-analysis"></a>Általános virtuális gép lassú elemzés 
+### <a name="slow-vm-analysis"></a>Lassú VM elemzés 
 
 Ez a forgatókönyv futtatása egy [teljesítményszámláló](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) nyomkövetési a számlálók a Generalcounters.txt fájlban megadott használatával. Ha a virtuális gép az SQL Servert futtató kiszolgálónak, a teljesítmény-számláló nyomkövetési fut a számlálókat, amelyek szerepelnek a Sqlcounters.txt fájl használatával. Teljesítmény diagnosztikai adatokat is tartalmaz.
 
-### <a name="vm-slow-analysis-and-benchmark"></a>Virtuális gép lassú elemzés és teljesítményteszt
+### <a name="slow-vm-analysis-and-benchmarking"></a>Lassú VM elemzés és teljesítménymérésre
 
 Ez a forgatókönyv futtatása egy [teljesítményszámláló](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) nyomkövetési elé egy [diskspd](https://github.com/Microsoft/diskspd) teljesítményteszt. 
 
@@ -99,9 +99,9 @@ Ebben a forgatókönyvben egy különleges teljesítmény számláló rögzíté
 |              | Átlagos Írni a várólista hossza       |
 |              | Átlagos Várólista hossza        |
 
-### <a name="custom-configuration"></a>Egyéni konfiguráció 
+### <a name="custom-slow-vm-analysis"></a>Egyéni lassú VM elemzés 
 
-Egyéni konfiguráció futtatásakor meg (teljesítmény diagnosztika, teljesítményszámláló, következő helyen, hálózati, storport) összes adat a párhuzamosan futó, attól függően, hány különböző nyomkövetések van kiválasztva. Nyomkövetés befejezése után az eszköz a diskspd teljesítményteszt fut, ha az van kiválasztva. 
+Egy egyéni lassú VM elemzés futtatásakor meg (teljesítményszámláló, következő helyen, hálózati, storport) összes adat a párhuzamosan futó, attól függően, hány különböző nyomkövetések van kiválasztva. Nyomkövetés befejezése után az eszköz a diskspd teljesítményteszt fut, ha az van kiválasztva. 
 
 > [!Note]
 > Ez a forgatókönyv befolyásolhatja a rendszer, és egy éles rendszeren nem futtatható. Ha szükséges, futtassa a ebben a forgatókönyvben egy dedikált karbantartási időszakban esetleges problémák elkerülése érdekében. A nyomkövetési vagy teljesítményteszt teszt által okozott nagyobb munkaterhelést ronthatja a teljesítményt, a virtuális gép.
@@ -113,7 +113,7 @@ Windows virtuális gép, lemezt vagy tárolási készletek konfigurációt, telj
 
 |Összegyűjtött adatok                              |  |  | Teljesítmény-forgatókönyvek |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                              | Lemez konfigurációs gyűjtése | Teljesítményteszt tárolási teljesítményének tesztelése | Általános virtuális gép lassú elemzés | Virtuális gép lassú elemzés és teljesítményteszt | Az Azure fájlok elemzés | Egyéni konfiguráció |
+|                              | Alapszintű konfigurációs gyűjtése | Teljesítménymérésre | Lassú VM elemzés | Lassú VM elemzés és teljesítménymérésre | Az Azure fájlok elemzés | Egyéni lassú VM elemzés |
 | Eseménynapló információk      | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Rendszerinformáció               | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Kötet térkép                       | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
@@ -127,7 +127,7 @@ Windows virtuális gép, lemezt vagy tárolási készletek konfigurációt, telj
 | Hálózati konfiguráció            | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Tűzfal-konfiguráció           | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | SQL Server-konfigurációs         | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
-| Teljesítmény diagnosztikai nyomkövetési * |                            |                                    | Igen                      |                                |                      | Igen                  |
+| Teljesítmény diagnosztikai nyomkövetési * | Igen                        | Igen                                | Igen                      |                                | Igen                  | Igen                  |
 | Teljesítményszámláló nyomkövetési **     |                            |                                    |                          |                                |                      | Igen                  |
 | SMB-számláló nyomkövetési **             |                            |                                    |                          |                                | Igen                  |                      |
 | SQL Server számláló nyomkövetési **      |                            |                                    |                          |                                |                      | Igen                  |
@@ -180,9 +180,9 @@ A Diskspd IO munkaterhelés tesztek [operációsrendszer-lemez (írás) és kés
 
 **Lehetséges problémák, a virtuális gépek éles a parancsfájl futtatásakor:**
 
-1.  A parancsfájl kedvezőtlen hatással lehet a virtuális gép teljesítményét és a következő helyen vagy a DiskSpd használatával konfigurált "Referenciaalap" vagy "Egyéni" forgatókönyv együttes használata esetén. Ügyeljen a parancsfájl éles környezetben való futtatásakor.
+1.  Ha bármely Benchmarking esetek vagy az "Egyéni lassú VM analysis" forgatókönyvet, amely a következő helyen vagy a DiskSpd használatára van konfigurálva, a parancsfájl kedvezőtlen hatással lehet a virtuális gép teljesítményére. Ezek a forgatókönyvek futtatása nélkül a CSS mérnöke felügyelete éles környezetben nem ajánlott.
 
-2.  Ha a parancsfájllal együtt a "Referenciaalap" vagy "Egyéni" forgatókönyvhöz, amely a DiskSpd használatával van konfigurálva, győződjön meg arról, hogy nincs más háttértevékenység zavarja a i/o-munkaterhelés a tesztelt lemezeken.
+2.  Ha bármely Benchmarking esetek vagy az "Egyéni lassú VM analysis"-forgatókönyvekben, amelyek a DiskSpd használatára van konfigurálva, győződjön meg arról, hogy nincs más háttértevékenység zavarja a i/o-munkaterhelés a tesztelt lemezeken.
 
 3.  Alapértelmezés szerint a parancsfájl az ideiglenes tárolási meghajtó adatainak gyűjtéséről. Ha nyomkövetése engedélyezve van a hosszabb ideig marad, előfordulhat, hogy a gyűjtött adatok mennyisége megfelelő. Ezzel csökkenthető a lemezen a ideiglenes, ezért érintő bármilyen alkalmazás, amely a meghajtó támaszkodik rendelkezésre állását.
 
@@ -236,7 +236,7 @@ A parancsfájl futtatásához a PerfInsights kövesse az alábbi lépéseket:
 
 8.  PerfInsights felhasználói felület nélkül is futtathatja.
 
-    A következő parancs futtatása a felhasználói felület kérdés nélkül forgatókönyv hibaelhárítás az "általános virtuális gép lassú elemzés", vagy az adatok rögzítéséhez 30 másodpercig. A rendszer kérni fogja, hogy ugyanazon jogi nyilatkozat és a 4. lépésben említett EULA hozzájárulás.
+    A következő parancs futtatása a felhasználói felület kérdés nélkül forgatókönyv hibaelhárítási "lassú VM analysis", vagy az adatok rögzítéséhez 30 másodpercig. A rendszer kérni fogja, hogy ugyanazon jogi nyilatkozat és a 4. lépésben említett EULA hozzájárulás.
 
         powershell.exe -ExecutionPolicy UnRestricted -NoProfile -Command ".\\PerfInsights.ps1 -NoGui -Scenario vmslow -TracingDuration 30"
 
@@ -264,13 +264,13 @@ Parancsfájl hiba tapasztalható még több próbálkozást követően továbbra
 
 A hiba akkor fordul elő, miután a PowerShell-konzol teljes kimenetének másolása HTML-, és elküldi a Microsoft Support ügynök segít a hibaelhárítás elősegítése érdekében.
 
-### <a name="how-do-i-run-the-script-in-custom-configuration-mode"></a>Hogyan futtassa a parancsfájlt egyéni beállításokkal?
+### <a name="how-do-i-run-the-script-in-custom-slow-vm-analysis-mode"></a>A parancsfájl futtatása egyéni lassú VM elemzés módban
 
-Kiválasztásával a **egyéni** konfigurációs, engedélyezheti a párhuzamos (használja a Shift billentyű többszörös kijelöléssel) több nyomkövetési adatokat:
+Kiválasztásával a **egyéni lassú VM elemzés**, engedélyezheti a párhuzamos (használja a Shift billentyű többszörös kijelöléssel) több nyomkövetési adatokat:
 
 ![Válassza ki a forgatókönyvek](media/how-to-use-perfInsights/select-scenario.png)
 
-Ha a teljesítmény diagnosztika, a teljesítmény-számláló nyomkövetési, a következő helyen nyomkövetési, a hálózati nyomkövetés vagy a Storport-nyomkövetési forgatókönyvek választja, a párbeszédpanel utasításait, és Reprodukálja a teljesítményromlást, a nyomkövetések elindítása után próbálja meg.
+Kiválasztásakor a teljesítmény számláló nyomkövetési, a következő helyen nyomkövetési, a hálózati nyomkövetés vagy a Storport-nyomkövetési forgatókönyvek a párbeszédpanel utasításait, és próbálja meg újra a teljesítményromlást előállítani, a nyomkövetések elindítása után.
 
 A következő párbeszédpanelen lehetővé teszi a nyomkövetés indításához:
 
@@ -290,20 +290,21 @@ Belül a **CollectedData\_éééé-hh-nn\_hh\_mm\_ss.zip fájl** , amely PerfIns
 Válassza ki a **megállapítások** fülre.
 
 ![Keresés lap](media/how-to-use-perfInsights/findingtab.png)
+![megállapítások](media/how-to-use-perfInsights/findings.PNG)
 
 **Megjegyzések**
 
--   Piros üzenetek ismert konfigurációs problémákat, amelyek teljesítményproblémákat okozhatnak.
+-   Kategóriába sorolt, kritikus megállapítások előforduló ismert problémákat, amelyek teljesítményproblémákat okozhatnak.
 
--   Sárga üzeneteket, amelyben egy nem szükségszerűen teljesítményproblémákat okozhatnak nem optimális konfigurációkra figyelmeztetések.
+-   Eredmények kategóriába sorolt, fontos jelentik nem optimális konfigurációkra nem feltétlenül teljesítményproblémákat okozhatnak.
 
--   A kék üzenetek csak tájékoztató jellegű utasítások.
+-   Kategóriába sorolt, tájékoztató megállapítások informatív utasítás csak olyan.
 
-Tekintse át az összes hibaüzenet piros a eredményeit, és hogyan azok befolyásolhatják a teljesítményt és ajánlott eljárások a teljesítményre optimalizált konfigurációk kapcsolatos részletes adatok HTTP hivatkozásokat.
+Tekintse át a javaslatok és az összes kritikus fontosságú és fontos megállapítások a eredményeit, és hogyan azok befolyásolhatják a teljesítményt és ajánlott eljárások a teljesítményre optimalizált konfigurációk kapcsolatos részletes adatok mutató hivatkozásokat.
 
-### <a name="disk-configuration-tab"></a>Lemez konfiguráció lap
+### <a name="storage-tab"></a>Tárolás lap
 
-A **áttekintése** szakasz a tárolási konfigurációt, beleértve a Diskpart és a tárolóhelyek különböző nézeteit jelenít meg.
+A **megállapítások** szakasz jelenít meg a különböző megállapítások és tárolással kapcsolatos javaslatokat.
 
 A **DiskMap** és **VolumeMap** szakaszok ismertetik a kettős perspektíva hogyan logikai kötetek és a fizikai lemezek kapcsolódnak egymáshoz.
 
@@ -315,21 +316,24 @@ A kötet perspektíva (*VolumeMap*), a táblázatok bemutatják az egyes logikai
 
 ![kötet lap](media/how-to-use-perfInsights/volumetab.png)
 
-### <a name="sql-server-tab"></a>SQL Server lap
+### <a name="sql-tab"></a>SQL lap
 
-Ha a cél virtuális gép bármely SQL Server-példányokat futtatja, megjelenik egy lap nevű jelentésben **SQL Server**:
+Ha a cél virtuális gép bármely SQL Server-példányokat futtatja, megjelenik egy lap nevű jelentésben **SQL**:
 
 ![SQL lap](media/how-to-use-perfInsights/sqltab.png)
 
-Ez a szakasz egy "Overview" és a további sub lapon minden, a virtuális Gépen futó SQL Server-példánya.
+Ez a szakasz tartalmaz egy "Megállapítások" lapon és a további sub lapon minden, a virtuális Gépen futó SQL Server-példánya.
 
-A "Overview" szakaszban, amely összefoglalja az összes fizikai lemez (rendszer- és adatlemezekkel) futtató és az adatfájlok és a tranzakciós naplófájlok vegyesen tartalmazhatnak, amely hasznos táblát tartalmaz.
+A "Megállapítások" fülre az SQL listáját tartalmazza kapcsolatos teljesítményproblémák található, valamint a javaslatokat.
 
 A következő példában *PhysicalDrive0* (fut a C meghajtó) jelenik meg, mivel mind a *modeldev* és *modellog* fájlok találhatók, a C meghajtó, és azok különböző típusú (például adatfájl és a tranzakciós napló rendre):
 
 ![LogInfo](media/how-to-use-perfInsights/loginfo.png)
 
 Az SQL Server példányspecifikus lapokat tartalmaz egy általános szakaszt, amely a kijelölt példányhoz alapvető információkat jelenít meg, és további szakaszaiban speciális tudnivalókat – többek között a beállításait, a konfiguráció és a felhasználói beállítások.
+
+### <a name="diagnostic-tab"></a>Diagnosztikai lap
+Diagnosztikai lap felső CPU kapcsolatos információkat tartalmaz, a lemez- és memória fogyasztók PerfInsights időtartama lapján futtassa. Megtalálhat más hasznos információk, például a kritikus javítások, hogy a rendszer hiányoznak, feladatlista és fontos rendszer események. 
 
 ## <a name="references-to-the-external-tools-used"></a>A külső eszközök használt mutató hivatkozások
 
