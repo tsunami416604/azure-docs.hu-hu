@@ -15,26 +15,23 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/01/2017
+ms.date: 08/02/2017
 ms.author: ayolubek
-ms.openlocfilehash: 788b9d2e7ff9e1dba2aca5eca982e4ddf045a6c4
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: ae7ce2c138a9948654d96e018c167d12356ae93d
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: Csatlakozás és az adatok lekérdezése az SQL-lekérdezésszerkesztő használatával
 
-Az SQL-lekérdezésszerkesztő egy böngészőből elérhető lekérdezési eszköz, amellyel hatékonyan és egyszerűen hajthat végre SQL-lekérdezéseket az Azure SQL Database-en vagy az Azure SQL Data Warehouse szolgáltatáson az Azure Portal elhagyása nélkül. Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható a Lekérdezésszerkesztő az SQL-adatbázisokhoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. 
+Az SQL-lekérdezésszerkesztő egy böngészőből elérhető lekérdezési eszköz, amellyel hatékonyan és egyszerűen hajthat végre SQL-lekérdezéseket az Azure SQL Database-en vagy az Azure SQL Data Warehouse szolgáltatáson az Azure Portal elhagyása nélkül. Ez a rövid útmutató ismerteti, hogyan használható a Lekérdezésszerkesztő az SQL-adatbázisokhoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja kiindulási pontnak:
+Ez a rövid útmutató az alábbi rövid útmutatókban létrehozott erőforrásokat használja kiindulási pontként:
 
-- [DB létrehozása – portál](sql-database-get-started-portal.md)
-- [DB létrehozása – CLI](sql-database-get-started-cli.md)
-- [DB létrehozása – PowerShell](sql-database-get-started-powershell.md)
-
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
 ## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 

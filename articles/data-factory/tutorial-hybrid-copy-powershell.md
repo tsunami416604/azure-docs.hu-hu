@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/16/2017
 ms.author: jingwang
-ms.openlocfilehash: 77078087e2532ac779d25ef63cc7fa19b40f0851
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: ca8e664ff1fd509d0461b6d167f28743d2e1e69c
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="tutorial-copy-data-from-on-premises-sql-server-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Serverről az Azure Blob Storage-ba
 Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
@@ -51,7 +51,7 @@ Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk **for
 1. Indítsa el az **SQL Server Management Studiót** a gépen. Ha még nem rendelkezik az SQL Server Management Studióval, telepítse a [Letöltőközpontból](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms). 
 2. Csatlakozzon az SQL-kiszolgálóhoz a hitelesítő adataival. 
 3. Hozzon létre egy mintaadatbázist. A fanézetben kattintson a jobb gombbal az **Adatbázisok** elemre, majd válassza az **Új adatbázis** elemet. Az **Új adatbázis** párbeszédpanelen adjon **nevet** az új adatbázisnak, majd kattintson az **OK** gombra. 
-4. Futtassa az alábbi lekérdezést azon az adatbázison, amely létrehozza az **emp** táblát. A fanézetben kattintson a jobb gombbal a létrehozott **adatbázisra**, majd válassza az **Új lekérdezés** elemet. 
+4. Futtassa az alábbi lekérdezésszkriptet az adatbázison, amely létrehozza az **emp** táblát, és beszúr néhány mintaadatot. A fanézetben kattintson a jobb gombbal a létrehozott **adatbázisra**, majd válassza az **Új lekérdezés** elemet. 
 
     ```sql   
     CREATE TABLE dbo.emp
@@ -61,13 +61,10 @@ Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk **for
         LastName varchar(50),
         CONSTRAINT PK_emp PRIMARY KEY (ID)
     )
-    GO
-    ```
-2. Futtassa az alábbi parancsokat az adatbázison, majd illesszen be mintaadatokat a táblába:
 
-    ```sql
     INSERT INTO emp VALUES ('John', 'Doe')
     INSERT INTO emp VALUES ('Jane', 'Doe')
+    GO
     ```
 
 ### <a name="azure-storage-account"></a>Azure Storage-fiók
@@ -105,10 +102,10 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure B
 
     ![Tároló lap](media/tutorial-hybrid-copy-powershell/container-page.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="windows-powershell"></a>Windows PowerShell
 
-#### <a name="install-azure-powershell"></a>Az Azure PowerShell telepítése
-Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. 
+#### <a name="install-powershell"></a>A PowerShell telepítése
+Ha még nincs a gépén, telepítse a PowerShell legújabb verzióját. 
 
 1. A webböngészőben lépjen az [Azure SDK letöltések és SDK-k](https://azure.microsoft.com/downloads/) lapra. 
 2. A **Parancssori eszközök** -> **PowerShell** szakaszban kattintson a **Windows-telepítés** elemre. 
@@ -116,9 +113,9 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját.
 
 Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps). 
 
-#### <a name="log-in-to-azure-powershell"></a>Bejelentkezés az Azure PowerShellbe
+#### <a name="log-in-to-powershell"></a>Bejelentkezés a PowerShellbe
 
-1. Indítsa el a gépén a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell ezeket a parancsokat.
+1. Indítsa el a gépén a **PowerShellt**. Hagyja megnyitva a PowerShell ablakát a rövid útmutató végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell ezeket a parancsokat.
 
     ![A PowerShell indítása](media/tutorial-hybrid-copy-powershell/search-powershell.png)
 1. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt Azure-beli felhasználói nevét és jelszavát:
@@ -142,25 +139,28 @@ Részletes információk: [Az Azure PowerShell telepítése és konfigurálása]
 1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
    
      ```powershell
-    $resourceGroupName = "<Specify a name for the Azure resource group>"
+    $resourceGroupName = "ADFTutorialResourceGroup"
     ```
-2. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az adat-előállító neveként használhat. 
-
-    ```powershell
-    $dataFactoryName = "<Specify a name for the data factory. It must be globally unique.>"
-    ```
-1. Adjon meg egy változót az adat-előállító helyéhez: 
-
-    ```powershell
-    $location = "East US"
-    ```
-4. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához: 
+2. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához: 
 
     ```powershell
     New-AzureRmResourceGroup $resourceGroupName $location
     ``` 
 
-    Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd futtassa újra a parancsot.   
+    Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd futtassa újra a parancsot.
+3. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az adat-előállító neveként használhat. A névnek betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat.
+
+    > [!IMPORTANT]
+    >  Frissítse az adat-előállító nevét, hogy globálisan egyedi legyen. Például: ADFTutorialFactorySP1127. 
+
+    ```powershell
+    $dataFactoryName = "ADFTutorialFactory"
+    ```
+1. Adjon meg egy változót az adat-előállító helyéhez: 
+
+    ```powershell
+    $location = "East US"
+    ```  
 5. Az adat-előállító létrehozásához futtassa az alábbi **Set-AzureRmDataFactoryV2** parancsmagot: 
     
     ```powershell       
@@ -182,12 +182,12 @@ Vegye figyelembe a következő szempontokat:
 
 Ebben a szakaszban egy saját üzemeltetésű integrációs modult hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely adatokat másol a gépen futó SQL Serverről az Azure Blob Storage-ba. 
 
-1. Hozzon létre egy változót az integrációs modul nevéhez. Jegyezze fel ezt a nevet. Az oktatóanyagban későbbi részében használni fogja. 
+1. Hozzon létre egy változót az integrációs modul nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyagban későbbi részében használni fogja. 
 
     ```powershell
-   $integrationRuntimeName = "<your integration runtime name>"
+   $integrationRuntimeName = "ADFTutorialIR"
     ```
-1. Hozzon létre egy saját üzemeltetésű integrációs modult. Használjon egy egyedi nevet, amennyiben már létezne egy integrációs modul ezen a néven.
+1. Hozzon létre egy saját üzemeltetésű integrációs modult. 
 
    ```powershell
    Set-AzureRmDataFactoryV2IntegrationRuntime -Name $integrationRuntimeName -Type SelfHosted -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -230,7 +230,7 @@ Ebben a szakaszban egy saját üzemeltetésű integrációs modult hozhat létre
    State                     : NeedRegistration
    ```
 
-3. Futtassa az alábbi parancsot a **hitelesítési kulcsok** lekéréséhez, hogy a saját üzemeltetésű integrációs modult regisztrálhassa a Data Factory-szolgáltatásban a felhőben. Másolja be az egyik kulcsot (idézőjelek nélkül) a saját üzemeltetésű integrációs modul regisztrálásához, amelyet a következő lépésben telepíteni fog a gépére.  
+3. Futtassa az alábbi parancsot a **hitelesítési kulcsok** lekéréséhez, hogy a saját üzemeltetésű integrációs modult regisztrálhassa a Data Factory-szolgáltatásban a felhőben. 
 
    ```powershell
    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
@@ -243,7 +243,8 @@ Ebben a szakaszban egy saját üzemeltetésű integrációs modult hozhat létre
        "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
        "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
    }
-   ```
+   ```    
+4. Másolja be az egyik kulcsot (idézőjelek nélkül) a saját üzemeltetésű integrációs modul regisztrálásához, amelyet a következő lépésben telepíteni fog a gépére.  
 
 ## <a name="install-integration-runtime"></a>Integrációs modul telepítése
 1. [Töltse le](https://www.microsoft.com/download/details.aspx?id=39717) a saját üzemeltetésű integrációs modult egy helyi windowsos gépre, és futtassa a telepítést. 
@@ -283,6 +284,7 @@ Ebben a szakaszban egy saját üzemeltetésű integrációs modult hozhat létre
     - Adja meg a **felhasználó** nevét. 
     - Adja meg a felhasználónévhez tartozó **jelszót**.
     - Kattintson a **Teszt** gombra, és ellenőrizze, hogy az integrációs modul kapcsolódik-e az SQL Serverhez. Sikeres kapcsolódás esetén egy zöld pipa jelenik meg. Sikertelen csatlakozás esetén a hibához kapcsolódó hibaüzenet jelenik meg. Javítsa ki a hibákat, és ellenőrizze, hogy az integrációs modul kapcsolódik-e az SQL Serverhez.
+    - Jegyezze fel ezeket az értékeket (hitelesítési típus, kiszolgáló, adatbázis, felhasználó, jelszó). Az oktatóanyag részében használni fogja őket. 
     
       
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
@@ -294,7 +296,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 1. Hozzon létre egy **AzureStorageLinkedService.json** nevű JSON-fájlt a **C:\ADFv2Tutorial** mappában az alábbi tartalommal: Ha még nem létezne, hozza létre az ADFv2Tutorial nevű mappát.  
 
     > [!IMPORTANT]
-    > A fájl mentése előtt az &lt;accountName&gt; és az &lt;accountKey&gt; kifejezést cserélje le az Azure Storage-fiók nevére és kulcsára.
+    > A fájl mentése előtt az &lt;accountName&gt; és az &lt;accountKey&gt; kifejezést cserélje le az **Azure Storage-fiók** nevére és kulcsára. Az [előfeltételek](#get-storage-account-name-and-account-key) részeként már feljegyezte ezeket.
 
    ```json
     {
@@ -310,6 +312,8 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
         "name": "AzureStorageLinkedService"
     }
    ```
+
+    Ha a Jegyzettömböt használja, a **Mentés másként** párbeszédpanel **Fájltípus** mezőjénél válassza a **Minden fájl** lehetőséget. Ellenkező esetben a rendszer `.txt` kiterjesztést adhat a fájlhoz. Például: `AzureStorageLinkedService.json.txt`. Ha létrehozza a fájlt a Fájlkezelőben, mielőtt megnyitná a Jegyzettömbben, előfordulhat, hogy nem fogja látni a hozzáadott `.txt` kiterjesztést, mivel alapértelmezés szerint engedélyezve van az **Ismert fájltípusok kiterjesztéseinek elrejtése** beállítás. A továbblépés előtt távolítsa el a hozzáadott `.txt` kiterjesztést. 
 2. Az **Azure PowerShellben** váltson a **C:\ADFv2Tutorial** mappára.
 
    Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot az **AzureStorageLinkedService** társított szolgáltatás létrehozásához. 
@@ -326,6 +330,8 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
     DataFactoryName   : onpremdf0914
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
     ```
+
+    Ha „fájl nem található” hiba jelenik meg. A `dir` parancs futtatásával ellenőrizheti, hogy a fájl létezik-e. Ha a fájlnévhez tartozó kiterjesztés `.txt` (például AzureStorageLinkedService.json.txt), távolítsa el, majd futtassa ismét a PowerShell-parancsot. 
 
 ### <a name="create-and-encrypt-a-sql-server-linked-service-source"></a>SQL Server-alapú társított szolgáltatás létrehozása és titkosítása (forrás)
 Ebben a lépésben a helyszíni SQL Servert társítja az adat-előállítóval.
@@ -366,7 +372,7 @@ Ebben a lépésben a helyszíni SQL Servert társítja az adat-előállítóval.
                     "type": "SecureString",
                     "value": "Server=<server>;Database=<database>;Integrated Security=True"
                 },
-                "userName": "<domain>\\<user>",
+                "userName": "<user> or <domain>\\<user>",
                 "password": {
                     "type": "SecureString",
                     "value": "<password>"

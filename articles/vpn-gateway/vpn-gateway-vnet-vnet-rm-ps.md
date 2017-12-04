@@ -1,6 +1,6 @@
 ---
-title: "Azure-alapú virtuális hálózat csatlakoztatása másik VNethez: PowerShell | Microsoft Docs"
-description: "Ez a cikk lépésről lépésre bemutatja, hogyan csatlakoztathatók a virtuális hálózatok egymáshoz az Azure Resource Manager és a PowerShell használatával."
+title: "Azure-alapú virtuális hálózat csatlakoztatása másik virtuális hálózathoz virtuális hálózatok közötti kapcsolattal: PowerShell | Microsoft Docs"
+description: "Ez a cikk lépésről lépésre bemutatja, hogyan csatlakoztathatók a virtuális hálózatok egymáshoz virtuális hálózatok közötti kapcsolat és a PowerShell használatával."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/17/2017
+ms.date: 11/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 9bcad8ed57980b08e0290e0272a5ff9de46f11a0
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 8a772680355a62c13dbe0361b5b58029642cf84d
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
-Ebből a cikkből megtudhatja, hogyan hozható létre VPN Gateway-kapcsolat virtuális hálózatok között. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben. Amikor különböző előfizetésekről csatlakoztat virtuális hálózatokat, az előfizetéseket nem kell társítani ugyanazzal az Active Directory-bérlővel. 
+Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a virtuális hálózatok egymáshoz virtuális hálózatok közötti kapcsolattal. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben. Amikor különböző előfizetésekről csatlakoztat virtuális hálózatokat, az előfizetéseket nem kell társítani ugyanazzal az Active Directory-bérlővel.
 
 A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak és a PowerShellt használják. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
@@ -37,13 +37,15 @@ A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatk
 >
 >
 
-Egy virtuális hálózat egy másikkal való összekapcsolása (a virtuális hálózatok közötti kapcsolat) nagyon hasonlít egy virtuális hálózat egy helyszíni helyhez való csatlakoztatásához. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához. Ha a virtuális hálózatai azonos régióban találhatóak, fontolja meg az összekötésüket virtuális hálózatok közötti társviszony útján. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
+## <a name="about"></a>Tudnivalók a virtuális hálózatok csatlakoztatásáról
 
-A virtuális hálózatok közötti kommunikáció kombinálható többhelyes konfigurációkkal. Így létrehozhat olyan hálózati topológiákat, amelyek a létesítmények közötti kapcsolatokat a virtuális hálózatok közötti kapcsolatokkal egyesítik, ahogyan azt a következő diagram mutatja:
+Két virtuális hálózat virtuális hálózatok közötti kapcsolattal történő összekapcsolása (VNet2VNet) nagyon hasonlít egy IPsec-kapcsolat helyszíni helyhez való csatlakoztatásához. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához, és mindkettő ugyanúgy működik a kommunikáció során. A kapcsolattípusok közötti különbség a helyi hálózati átjáró konfigurálásának módjában rejlik. Virtuális hálózatok közötti kapcsolat létrehozásakor a helyi hálózati átjáró címtere nem látható. Ennek létrehozása és feltöltése automatikusan történik. Amikor azonban frissíti az egyik virtuális hálózat címterét, a másik automatikusan tudni fogja a frissített címtér útvonalát.
 
-![Tudnivalók a kapcsolatokról](./media/vpn-gateway-vnet-vnet-rm-ps/aboutconnections.png)
+Amikor bonyolult konfigurációkkal dolgozik, a virtuális hálózatok közötti kapcsolatok helyett érdemesebb lehet IPsec-kapcsolatokat használni. Így további címtereket határozhat meg a helyi hálózati átjáróhoz a forgalom irányítása érdekében. Ha IPsec-kapcsolattal csatlakoztatja a virtuális hálózatokat, létre kell hoznia, illetve konfigurálnia kell a helyi hálózati átjárót. További információ: [Helyek közötti konfigurációk](vpn-gateway-create-site-to-site-rm-powershell.md).
 
-### <a name="why-connect-virtual-networks"></a>Miért érdemes összekapcsolni a virtuális hálózatokat?
+Emellett ha a virtuális hálózatai azonos régióban találhatók, fontolja meg az összekötésüket virtuális hálózatok közötti társviszony útján. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót, valamint a díjazása és a funkciója is némiképp eltérő. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
+
+### <a name="why"></a>Mikor érdemes virtuális hálózatok közötti kapcsolatot létrehozni?
 
 A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
 
@@ -55,19 +57,22 @@ A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
 
   * Egy régión belül beállíthat többrétegű alkalmazásokat több, elkülönítéssel vagy felügyeleti követelményekkel összekapcsolt virtuális hálózatokkal.
 
-A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, a [Virtuális hálózatok közötti kapcsolat – gyakori kérdések](#faq) című részben talál.
+A virtuális hálózatok közötti kommunikáció kombinálható többhelyes konfigurációkkal. Így létrehozhat olyan hálózati topológiákat, amelyek a létesítmények közötti kapcsolatokat a virtuális hálózatok közötti kapcsolatokkal kombinálják.
 
 ## <a name="which-set-of-steps-should-i-use"></a>Melyik eljárást használjam?
 
-Ebben a cikkben kétféle lépéssorozatot láthat. Egy lépéssorozat az [azonos előfizetésben található virtuális hálózatokhoz](#samesub). A konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
+Ebben a cikkben kétféle lépéssorozatot láthat. Az egyik lépéssorozat az [azonos előfizetésben található virtuális hálózatokra](#samesub), a másik az [eltérő előfizetésekben található virtuális hálózatokra](#difsub) vonatkozik.
+A kettő között az egyik legfőbb különbség az, hogy az eltérő előfizetésekben található virtuális hálózatok kapcsolatainak konfigurálásához külön PowerShell-munkameneteket kell használnia. 
 
-![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+Ebben a gyakorlatban igény szerint kombinálhatja a konfigurációkat, vagy csak kiválaszthat egyet, amelyet használni kíván. Az összes konfiguráció a virtuális hálózatok közötti kapcsolattípust használja. A hálózati adatforgalom a közvetlenül egymáshoz csatlakoztatott virtuális hálózatok között zajlik. Ebben a gyakorlatban a TestVNet4 forgalma nem a TestVNet5 felé irányul.
 
-Az [eltérő előfizetésben található virtuális hálózatokkal](#difsub) külön cikk foglalkozik. Annak a konfigurációnak a lépései a TestVNet1 és TestVNet5 hálózatot használják.
+* [Azonos előfizetésben található virtuális hálózatok](#samesub): a konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
 
-![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
+  ![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-A két sorozat közötti fő különbség az, hogy lehetséges-e egyetlen PowerShell-munkameneten belül konfigurálni az összes virtuális hálózati és átjáró-erőforrást. Az eltérő előfizetésekben található virtuális hálózatok kapcsolatainak konfigurálásához külön PowerShell-munkameneteket kell használnia. Ha szeretné, a konfigurációkat kombinálhatja, vagy egyszerűen kiválaszthatja a használni kívántat.
+* [Eltérő előfizetésben található virtuális hálózatok](#difsub): a konfiguráció lépései a TestVNet1 és TestVNet5 hálózatot használják.
+
+  ![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 ## <a name="samesub"></a>Azonos előfizetésben található virtuális hálózatok összekapcsolása
 
@@ -77,7 +82,7 @@ Mielőtt hozzálát, telepítenie kell az Azure Resource Manager PowerShell-para
 
 ### <a name="Step1"></a>1. lépés – Az IP-címtartományok megtervezése
 
-A következő lépések során két virtuális hálózatot fogunk létrehozni az azokhoz tartozó átjáróalhálózatokkal és konfigurációkkal. Ezután létrehozunk egy VPN-kapcsolatot a két virtuális hálózat között. Fontos, hogy megtervezze a hálózati konfiguráció IP-címtartományát. Ügyeljen arra, hogy a virtuális hálózata tartományai és a helyi hálózata tartományai ne legyenek átfedésben egymással. Ezekben a példákban nem szerepel DNS-kiszolgáló. Ha névfeloldással szeretné ellátni a virtuális hálózatokat, tekintse meg a [Névfeloldás](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) című cikket.
+A következő lépések során két virtuális hálózatot fog létrehozni, a hozzájuk tartozó átjáróalhálózatokkal és konfigurációkkal együtt. Ezután létrehoz egy VPN-kapcsolatot a két virtuális hálózat között. Fontos, hogy megtervezze a hálózati konfiguráció IP-címtartományát. Ügyeljen arra, hogy a virtuális hálózata tartományai és a helyi hálózata tartományai ne legyenek átfedésben egymással. Ezekben a példákban nem szerepel DNS-kiszolgáló. Ha névfeloldással szeretné ellátni a virtuális hálózatokat, tekintse meg a [Névfeloldás](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) című cikket.
 
 A példákban a következő értékeket használjuk:
 
@@ -284,7 +289,7 @@ A TestVNet1 konfigurálása után a hozza létre a TestVNet4 virtuális hálóza
 
 ## <a name="difsub"></a>Különböző előfizetésben található virtuális hálózatok összekapcsolása
 
-Ebben a forgatókönyvben csatlakoztatjuk a TestVNet1 és a TestVNet5 virtuális hálózatot. A TestVNet1 és a TestVNet5 eltérő előfizetésekben található. Az előfizetéseket nem kell társítani ugyanazzal az Active Directory bérlővel. A jelen és korábbi lépések közötti különbség abban áll, hogy a konfigurációs lépések egy részét külön PowerShell-munkamenetben kell elvégezni a második előfizetés környezetében. Ez különösen akkor van így, ha a két előfizetés különböző szervezetekhez tartozik.
+Ebben a forgatókönyvben csatlakoztatja a TestVNet1 és a TestVNet5 virtuális hálózatot. A TestVNet1 és a TestVNet5 eltérő előfizetésekben található. Az előfizetéseket nem kell társítani ugyanazzal az Active Directory bérlővel. A jelen és korábbi lépések közötti különbség abban áll, hogy a konfigurációs lépések egy részét külön PowerShell-munkamenetben kell elvégezni a második előfizetés környezetében. Ez különösen akkor van így, ha a két előfizetés különböző szervezetekhez tartozik.
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>5. lépés – A TestVNet1 létrehozása és konfigurálása
 

@@ -11,11 +11,11 @@ ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e00dd828ef24b9bc97665f0f5fe8d7e14f4e4630
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1a23835f341bf02f8e662782984d95bfe194030b
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="compare-azure-iot-options"></a>Az Azure IoT lehetőségeinek összehasonlítása
 
@@ -50,7 +50,7 @@ Az Azure IoT-termék kiválasztása kritikus része az IoT-megoldás megtervezé
 | Hozzáférés az alapul szolgáló PaaS szolgáltatásokhoz          | Hozzáféréssel rendelkezik az alapul szolgáló Azure-szolgáltatásokhoz, felügyelheti, vagy igény szerint lecserélheti őket. | SaaS. Teljes körűen felügyelt megoldás, az alapul szolgáló szolgáltatások nem érhetőek el. |
 | Rugalmasság            | Magas. A mikroszolgáltatások kódja nyílt forráskódú, és tetszés szerint módosítható. Ezenkívül az üzembehelyezési infrastruktúra testreszabható.| Közepes. A beépített böngészőalapú felhasználói felületet használhatja a megoldásmodell és a felhasználói felület aspektusainak testreszabásához. Az infrastruktúra nem testreszabható, mert a különböző összetevők nem érhetőek el.|
 | Ismeretek szintje                 | Közepes-magas. A megoldás háttérrendszerének testreszabásához Java- vagy .NET-ismeretek szükségesek. A megjelenítés testreszabásához JavaScript-ismeretek szükségesek. | Alacsony. A megoldás testreszabásához modellezési ismeretek szükségesek. Nincs szükség kódolási ismeretekre. |
-| Felhasználói élmény az első lépések során | Előre konfigurált megoldások implementálnak általános IoT-forgatókönyveket. Percek alatt üzembe helyezhető. | Sablonok előre felépített modelleket biztosítanak. Percek alatt üzembe helyezhető. |
+| Felhasználói élmény az első lépések során | Előre konfigurált megoldások implementálnak általános IoT-forgatókönyveket. Percek alatt üzembe helyezhető. | Az alkalmazás- és eszközsablonok előre felépített modelleket biztosítanak. Percek alatt üzembe helyezhető. |
 | Díjszabás                | Finomhangolhatja a szolgáltatásokat a költségek kézben tartásához. | Egyszerű, kiszámítható díjszabás. |
 
 A döntést, hogy végül melyik terméket használja az IoT-megoldás létrehozásához, a következők határozzák meg:
