@@ -1,6 +1,6 @@
 ---
-title: "Visual Studio Code Tools for Machine Learning az Azure-ban – rövid útmutató | Microsoft Docs"
-description: "Ez a cikk ismerteti a Visual Studio Code Tools for Machine Learning használatának első lépéseit, egy kísérlet létrehozásától egy modell tanításán át egy webszolgáltatás üzembe helyezéséig."
+title: "Visual Studio Tools for Machine Learning az Azure-ban – rövid útmutató | Microsoft Docs"
+description: "Ez a cikk ismerteti a Visual Studio Tools for Machine Learning használatának első lépéseit, egy kísérlet létrehozásától egy modell tanításán át egy webszolgáltatás üzembe helyezéséig."
 services: machine-learning
 author: ahgyger
 ms.author: ahgyger
@@ -10,72 +10,71 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: get-started-article
-ms.date: 09/12/2017
-ms.openlocfilehash: 400fc384519f2ff5c9bb7d83dab6499f5008a833
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.date: 11/15/2017
+ms.openlocfilehash: 582ec5babf2bac34f20d4e9c7517f78ee2002e0b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI
-A Visual Studio Code Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/en-us/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. 
+# <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
+A Visual Studio Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/en-us/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. Emellett könnyített hozzáférést biztosít az [Azure Batch AI előzetes verziójához](https://docs.microsoft.com/en-us/azure/batch-ai/).
  
 ## <a name="getting-started"></a>Bevezetés 
-Első lépésként le kell tölteni és telepíteni kell a [Visual Studio Code](https://code.visualstudio.com/Download)-ot. Miután megnyitotta a Visual Studio Code-ot, hajtsa végre a következő lépéseket:
-1. Kattintson a bővítmény ikonra a tevékenységsávon. 
-2. Keressen a „Visual Studio Code Tools for AI” kifejezésre. 
-3. Kattintson a **Telepítés** gombra. 
-4. A telepítést követően kattintson az **Újbóli betöltés** gombra. 
+Első lépésként le kell tölteni és telepíteni kell a [Visual Studiót](https://www.visualstudio.com/downloads/). A Visual Studio megnyitása után hajtsa végre a következő lépéseket:
+1. Kattintson a Visual Studio menüsorára, és válassza az Extensions and Updates (Bővítmények és frissítések) lehetőséget.
+2. Kattintson az Online lapra, és válassza a Search Visual Studio Marketplace (Keresés a Visual Studio piacterén) elemet.
+3. Keressen a „Visual Studio for AI” kifejezésre. 
+3. Kattintson a **Download** (Letöltés) gombra. 
+4. A telepítés után indítsa újra a Visual Studiót. 
 
-A Visual Studio Code újbóli betöltése után a bővítmény engedélyezve lesz. [További tudnivalók a bővítmények telepítéséről](https://code.visualstudio.com/docs/editor/extension-gallery).
+A Visual Studio újbóli betöltése után a bővítmény engedélyezve lesz. [További tudnivalók a bővítmények kereséséről](hhttps://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions).
+
+> [!NOTE]
+> A Visual Studio Tools for AI használatához a Visual Studio 2015 vagy 2017 Professional vagy Enterprise verziója szükséges. Az Apple OSX verziói nem támogatottak. 
+
 
 ## <a name="exploring-project-samples"></a>Projektminták megismerése
-A Visual Studio Code Tools for AI egy mintatallózóval rendelkezik. A mintatallózóval egyszerűen kereshet mintákat, és ezeket csupán néhány kattintással kipróbálhatja. A tallózó megnyitásához tegye a következőket:   
-1. Nyissa meg a parancskatalógust (Nézet > **Parancskatalógus** vagy **Ctrl+Shift+P**).
-2. Írja be az „AI Sample” (MI-minta) kifejezést. 
-3. A rendszer felajánlja javaslatként az „AI: Open Azure ML Sample Explorer” (MI: Azure ML-mintatallózó megnyitása) parancsot. Ezt válassza ki, majd nyomja le az Enter billentyűt. 
+A Visual Studio Tools for AI egy mintatallózóval rendelkezik. A mintatallózóval egyszerűen kereshet mintákat, és ezeket csupán néhány kattintással kipróbálhatja. A tallózó megnyitásához tegye a következőket:   
+1. Kattintson a menüsávon az **AI Tools** (MI-eszközök) elemre.
+2. Kattintson az Azure Machine Learning Gallery elemre.
 
-Vagy kattintson a mintatallózó ikonjára.
+Megnyílik egy lap, amely az összes Azure ML-mintát tartalmazza.
 
 ## <a name="creating-a-new-project-from-the-sample-explorer"></a>Új projekt létrehozása a mintatallózóból 
 Különböző minták között böngészhet, és további információkat tudhat meg róluk. Tallózással keresse meg a „Classifying Iris” nevű mintát. Egy ezen a mintán alapuló, új projekt létrehozásához tegye a következőket:
-1. Kattintson a telepítés gombra a projektmintán, majd a rendszer kérdéseket tesz fel, hogy végigvezesse az új projekt létrehozásának lépésein. 
-2. Adjon egy nevet a projektnek (például: „Iris”).
-3. Válasszon egy mappaelérési utat a projekt létrehozásához, majd nyomja le az Enter billentyűt. 
-4. Válasszon ki egy meglévő munkaterületet, és nyomja le az Enter billentyűt.
+1. A projektmintánál kattintson az **install** (telepítés) gombra, amely egy új párbeszédpanelt nyit meg. 
+2. Válassza ki az erőforráscsoportot, a fiókot és a munkaterületet.
+3. A projekt típusa maradhat General (Általános).
+4. Adja meg a projekt elérési útját és nevét, majd nyomja le az Enter billentyűt. 
+5. A megnyíló párbeszédpanelen kattintson a mentés elemre. 
 
-Ezután a rendszer létrehozza a projektet.
+A folyamat végén egy új projekt nyílik meg a Visual Studio egy új példányában. 
 
 > [!TIP]
 > Az Azure-erőforrás eléréséhez bejelentkezett állapotban kell lennie. A beágyazott terminálon írja be az „az login” kifejezést, és kövesse az utasításokat. 
 
 ## <a name="submitting-experiment-with-the-new-project"></a>Kísérlet elküldése az új projekttel
-A Visual Studio Code-ban megnyílik egy új projekt, egy feladatot pedig elküldünk különböző számítási céloknak (helyi és Dockerrel rendelkező virtuális gép).
-A Visual Studio Code Tools for AI több módot is biztosít egy kísérlet elküldésére. 
-1. Kattintson a jobb gombbal a helyi menüre, majd válassza az **AI: Submit Job** (MI: feladat elküldése) lehetőséget.
-2. A parancskatalógusban válassza az „AI: Submit Job” (MI: feladat elküldése) parancsot.
-3. A parancsot közvetlenül az Azure CLI használatával is futtathatja, a beágyazott terminál segítségével.
+Amikor a Visual Studióban megnyílt az új projekt, küldjön el egy feladatot egy számítási célnak (helyi vagy Dockerrel rendelkező virtuális gép).
+A feladat elküldéséhez a következőt kell tennie: 
+1. A megoldáskezelőben kattintson a jobb gombbal az elküldeni kívánt fájlra, majd válassza a **Set as Startup File** (Beállítás indítófájlként) elemet.
+2. Válassza ki a projekt nevét, kattintson a jobb egérgombbal, majd válassza a **Submit Job...** (Feladat elküldése) elemet.
+3. Egy új párbeszédpanel nyílik meg, amellyel kiválaszthatja a fürtöt (vagy a számítási célt) a szkript végrehajtásához.
+4. Kattintson a **Submit** (Küldés) gombra
 
-Nyissa meg az iris_sklearn.py fájlt, kattintson a jobb gombbal, és válassza az **AI: Submit Job** (MI: feladat elküldése) parancsot.
-1. Válassza ki az „Azure Machine Learning” platformot.
-2. Válassza ki a „Docker-Python” futtatási konfigurációt.
-
-> [!NOTE]
-> Ha első alkalommal küld el egy feladatot, a rendszer a következő értesítést küldi: „No Machine Learning configuration found, creating...” (Nem található Machine Learning-konfiguráció, létrehozás folyamatban...). Megnyílik egy JSON-fájl, amit mentsen a **Ctrl+S** billentyűkombinációval.
-
-A feladat elküldését követően a beágyazott terminál megjeleníti a futtatások állapotát. 
+A feladat elküldését követően a beágyazott terminál megjeleníti a futtatások állapotát.
 
 ## <a name="view-list-of-jobs"></a>A feladatok listájának megtekintése
-A feladatokat az elküldésüket követően a futtatási előzményekben tekintheti át.
-1. Nyissa meg a parancskatalógust (Nézet > **Parancskatalógus** vagy **Ctrl+Shift+P**).
-2. Írja be az „AI List” (MI lista) kifejezést.
-3. A rendszer felajánlja javaslatként az „AI: List Jobs” parancsot. Ezt válassza ki, majd nyomja le az Enter billentyűt.
+Az elküldött feladatokat a futtatási előzményekben tekintheti át.
+1. A **Server Explorerben** kattintson az **AI Tools** elemre.
+2. Ezután válassza az **Azure Machine Learning** elemet
+3. Kattintson a **Jobs** (Feladatok) menüre.
 
-Megnyílik a feladatok listanézete, amelyben az összes futó elem és azok kapcsolódó adatai láthatók.
+A Feladattallózó a projekthez tartozó összes elküldött kísérletet megjeleníti. 
 
 ## <a name="view-job-details"></a>Feladatok részleteinek megjelenítése
-A megnyitott Feladatlistában kattintson az első elemre.
-Az egyes feladatok eredményeinek mélyebb szintű megismerése érdekében kattintson a felső **feladatazonosítóra** a részletes adatok megjelenítéséhez. 
+A megnyitott Feladattallózóban kattintson az első elemre.
+Így betöltődik a Feladatösszegző, illetve a Naplók és kimenetek panel.
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]

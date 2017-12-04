@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: af27d01108cbfb3bd71023ffbce85f348abb0cfe
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 359887a8527d5432e705d9739e30f0eb2363e34f
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>Szolgáltatásnevek és az Azure Container Service (AKS)
 
@@ -43,7 +43,7 @@ Mikor az `az aks create` paranccsal AKS-fürtöt helyez üzembe, lehetősége va
 A következő példa egy AKS-fürtöt hoz létre, és mivel nincs meglévő szolgáltatásnév megadva, a rendszer létrehoz egyet a fürt számára. A művelet végrehajtásához a fióknak rendelkeznie kell a szükséges jogosultságokkal a szolgáltatásnév létrehozásához.
 
 ```azurecli
-az aks create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys
+az aks create --name myK8SCluster --resource-group myResourceGroup --generate-ssh-keys
 ```
 
 ## <a name="use-an-existing-sp"></a>Meglévő szolgáltatásnév használata
@@ -52,8 +52,6 @@ Használhat egy meglévő Azure AD szolgáltatásnevet, vagy előre létrehozhat
 
 Meglévő szolgáltatásnév használata esetén annak az alábbi követelményeknek kell megfelelnie:
 
-- Hatókör: a fürt üzembe helyezéséhez használt előfizetés
-- Szerepkör: Közreműködő
 - Titkos ügyfélkód: egy jelszónak kell lennie
 
 ## <a name="pre-create-a-new-sp"></a>Új szolgáltatásnév előzetes létrehozása
@@ -61,8 +59,7 @@ Meglévő szolgáltatásnév használata esetén annak az alábbi követelménye
 A szolgáltatásnév Azure CLI felületen való létrehozásához használja az [az ad sp create-for-rbac]() parancsot.
 
 ```azurecli
-id=$(az account show --query id --output tsv)
-az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$id"
+az ad sp create-for-rbac --skip-assignment
 ```
 
 A kimenet a következőkhöz hasonló. Jegyezze fel az `appId` és a `password` értékét. A rendszer ezeket az értékeket használja az AKS-fürtök létrehozása során.
@@ -82,7 +79,7 @@ A kimenet a következőkhöz hasonló. Jegyezze fel az `appId` és a `password` 
 Előre létrehozott szolgáltatásnév használatakor adja be az `appId` és a `password` értékét argumentumértékként az `az aks create` parancsba.
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myK8SCluster --service-principal <appId> ----client-secret <password>
+az aks create --resource-group myResourceGroup --name myK8SCluster --service-principal <appId> --client-secret <password>
 ```
 
 Ha az Azure Portalról helyez üzembe AKS-fürtöt, ezeket az értékeket az AKS-fürt konfigurációs űrlapján adhatja meg.
@@ -99,6 +96,7 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
 * A Kubernetes-fürt mester és csomópont virtuális gépein az egyszerű szolgáltatás hitelesítő adatai az /etc/kubernetes/azure.json fájlban lesznek tárolva.
 * Ha az `az aks create` parancsot használja az egyszerű szolgáltatás automatikus létrehozásához, az egyszerű szolgáltatás hitelesítő adatai a ~/.azure/acsServicePrincipal.json fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
 * Ha az `az aks create` parancsot használja az egyszerű szolgáltatás automatikus létrehozásához, az egyszerű szolgáltatás hitelesíthető egy, ugyanabban az előfizetésben létrehozott [Azure Container Registryvel](../container-registry/container-registry-intro.md).
+* Az `az aks create` használatával létrehozott AKS-fürt törlésekor az automatikusan létrehozott szolgáltatásnév nem törlődik. A következő paranccsal törölheti: `az ad sp delete --id $clientID`.
 
 ## <a name="next-steps"></a>Következő lépések
 

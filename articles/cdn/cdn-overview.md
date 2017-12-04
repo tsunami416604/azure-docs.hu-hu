@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: v-semcev
-ms.openlocfilehash: 909c4dc3feaeaedf56ecacc78f4b7e0e15d98875
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 411c5a43d8a3245fc4642596b3725dadf8745728
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="overview-of-the-azure-content-delivery-network-cdn"></a>Az Azure Content Delivery Network (CDN) áttekintése
-> [!NOTE]
-> Ez a dokumentum bemutatja, hogy mi is az az Azure Content Delivery Network (CDN), ismerteti a rendszer működését, valamint az egyes Azure CDN-termékek funkcióit.  Ha ki szeretné hagyni ezeket az információkat, és rögtön a CDN-végpontok létrehozásáról szóló oktatóanyaggal szeretné kezdeni, akkor tekintse meg [Az Azure CDN szolgáltatás használata](cdn-create-new-endpoint.md) című cikket.  Ha meg szeretné tekinteni a jelenlegi CDN-csomópontok helyének listáját, olvassa el az [Azure CDN POP-helyek](cdn-pop-locations.md) című cikket.
-> 
-> 
+Az Azure Content Delivery Network (CDN) a statikus webtartalmakat stratégiailag kiválasztott helyeken gyorsítótárazza, így maximális átviteli sebességgel tudja kézbesíteni a tartalmakat a felhasználók számára. A CDN a tartalmakat világszerte fizikai csomópontokon gyorsítótárazva globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű kézbesítéséhez. 
 
-Az Azure Content Delivery Network (CDN) a statikus webtartalmakat stratégiailag kiválasztott helyeken gyorsítótárazza, így maximális átviteli sebességgel tudja kézbesíteni a tartalmakat a felhasználók számára.  A CDN a tartalmakat világszerte fizikai csomópontokon gyorsítótárazva globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű kézbesítéséhez. 
+> [!NOTE]
+> Ez a cikk bemutatja, hogy mi is az Azure CDN, ismerteti a rendszer működését, valamint az egyes Azure CDN-termékek funkcióit. Ha ki szeretné hagyni ezeket az információkat, és a CDN-végpontok létrehozásáról szóló oktatóanyaggal szeretné kezdeni, akkor tekintse meg [Az Azure CDN használatának első lépéseit](cdn-create-new-endpoint.md) ismertető cikket. Ha meg szeretné tekinteni a jelenlegi CDN-csomópontok helyének listáját, olvassa el az [Azure CDN POP-helyeket](cdn-pop-locations.md) ismertető cikket.
+> 
 
 A webhelyek objektumainak CDN használatával történő gyorsítótárazása a következő előnyökkel jár:
 
-* Jobb teljesítmény és felhasználói élmény a végfelhasználók számára – különösen az alkalmazások használata esetén, amikor a tartalom betöltéséhez a kiszolgálóval végzett több adatváltásra is szükség van.
+* Jobb teljesítmény és felhasználói élmény a végfelhasználók számára – különösen az alkalmazások használata esetén, amikor a tartalom betöltéséhez több adatváltásra is szükség van.
 * A teljesítmény könnyedén méretezhető az azonnali nagy terheléshez, például a termékbevezetési események kezdetén fellépő magas igényekhez.
-* A felhasználói kérelmek elosztásával és a tartalom peremhálózati kiszolgálókról történő szolgáltatásával csökken a forrásra jutó forgalom.
+* A felhasználói kérelmek elosztásával és a tartalom peremhálózati kiszolgálókról történő közvetlen szolgáltatásával csökken a forrásra jutó forgalom.
+
 
 ## <a name="how-it-works"></a>Működés
 ![A CDN áttekintése](./media/cdn-overview/cdn-overview.png)
@@ -50,36 +50,36 @@ Három Azure CDN termék áll rendelkezésre: az **Akamai Azure CDN Standard**, 
 |  | Akamai Standard | Verizon Standard | Verizon Premium |
 | --- | --- | --- | --- |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  __Teljesítménnyel kapcsolatos szolgáltatások és optimalizálási lehetőségek__ |
-| [Dinamikus helygyorsítás](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration) | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  [Dinamikus helygyorsítás – Adaptív képtömörítés](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-akamai-only) | **&#x2713;**  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  [Dinamikus helygyorsítás – Előzetes objektumbetöltés](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-akamai-only) | **&#x2713;**  |  |  |
-| [Online streamelés optimalizálása](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization) | **&#x2713;**  | \* |  \* |
-| [Nagyméretű fájlok optimalizálása](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization) | **&#x2713;**  | \* |  \* |
-| [Globális kiszolgálói terheléselosztás (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Gyors végleges törlés](cdn-purge-endpoint.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Objektumok előzetes betöltése](cdn-preload-endpoint.md) | |**&#x2713;** |**&#x2713;** |
-| [Lekérdezési sztringek gyorsítótárazása](cdn-query-string.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| Kettős verem (IPv4/IPv6) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [HTTP/2-támogatás](cdn-http2.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [Dinamikus helygyorsítás](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration) | **&amp;#x2713;;**  | **&amp;#x2713;;** | **&amp;#x2713;;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  [Dinamikus helygyorsítás – Adaptív képtömörítés](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-akamai-only) | **&amp;#x2713;;**  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  [Dinamikus helygyorsítás – Előzetes objektumbetöltés](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-akamai-only) | **&amp;#x2713;;**  |  |  |
+| [Online streamelés optimalizálása](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization) | **&amp;#x2713;;**  | \* |  \* |
+| [Nagyméretű fájlok optimalizálása](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization) | **&amp;#x2713;;**  | \* |  \* |
+| [Globális kiszolgálói terheléselosztás (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure) |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [Gyors végleges törlés](cdn-purge-endpoint.md) |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [Objektumok előzetes betöltése](cdn-preload-endpoint.md) | |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [Lekérdezési sztringek gyorsítótárazása](cdn-query-string.md) |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| Kettős verem (IPv4/IPv6) |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [HTTP/2-támogatás](cdn-http2.md) |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  __Biztonság__ |
-| HTTPS-támogatás CDN-végponttal |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Egyéni tartományi HTTPS](cdn-custom-ssl.md) | |**&#x2713;** |**&#x2713;** |
-| [Egyéni tartománynevek támogatása](cdn-map-content-to-custom-domain.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Geoszűrés](cdn-restrict-access-by-country.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Jogkivonat-hitelesítés](cdn-token-auth.md)|  |  |**&#x2713;**| 
-| [Védelem DDOS-támadások ellen](https://www.us-cert.gov/ncas/tips/ST04-015) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| HTTPS-támogatás CDN-végponttal |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [Egyéni tartományi HTTPS](cdn-custom-ssl.md) | |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [Egyéni tartománynevek támogatása](cdn-map-content-to-custom-domain.md) |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [Geoszűrés](cdn-restrict-access-by-country.md) |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [Jogkivonat-hitelesítés](cdn-token-auth.md)|  |  |**&amp;#x2713;;**| 
+| [Védelem DDOS-támadások ellen](https://www.us-cert.gov/ncas/tips/ST04-015) |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  __Elemzések és jelentéskészítés__ |
-| [Egyszerűsített analitika](cdn-analyze-usage-patterns.md) | **&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Speciális HTTP-jelentések](cdn-advanced-http-reports.md) | | |**&#x2713;** |
-| [Valós idejű statisztikák](cdn-real-time-stats.md) | | |**&#x2713;** |
-| [Valós idejű riasztások](cdn-real-time-alerts.md) | | |**&#x2713;** |
+| [Egyszerűsített analitika](cdn-analyze-usage-patterns.md) | **&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [Speciális HTTP-jelentések](cdn-advanced-http-reports.md) | | |**&amp;#x2713;;** |
+| [Valós idejű statisztikák](cdn-real-time-stats.md) | | |**&amp;#x2713;;** |
+| [Valós idejű riasztások](cdn-real-time-alerts.md) | | |**&amp;#x2713;;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  __Könnyű használat__ |
-| Egyszerű integráció az Azure-szolgáltatásokkal – például a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Cloud Services](cdn-cloud-service-with-cdn.md), a [Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md) és a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) szolgáltatással. |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| Felügyelet [REST API](https://msdn.microsoft.com/library/mt634456.aspx), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) vagy [PowerShell](cdn-manage-powershell.md) használatával. |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Testreszabható, szabályalapú tartalomkézbesítési motor](cdn-rules-engine.md) | | |**&#x2713;** |
-| Gyorsítótár-/fejlécbeállítások (a [szabálymotorral](cdn-rules-engine.md)) | | |**&#x2713;** |
-| URL-átirányítás/átírás (a [szabálymotorral](cdn-rules-engine.md)) | | |**&#x2713;** |
-| Mobileszközökre vonatkozó szabályok (a [szabálymotorral](cdn-rules-engine.md)) | | |**&#x2713;** |
+| Egyszerű integráció az Azure-szolgáltatásokkal – például a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Cloud Services](cdn-cloud-service-with-cdn.md), a [Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md) és a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) szolgáltatással. |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| Felügyelet [REST API](https://msdn.microsoft.com/library/mt634456.aspx), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) vagy [PowerShell](cdn-manage-powershell.md) használatával. |**&amp;#x2713;;** |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [Testreszabható, szabályalapú tartalomkézbesítési motor](cdn-rules-engine.md) | | |**&amp;#x2713;;** |
+| Gyorsítótár-/fejlécbeállítások (a [szabálymotorral](cdn-rules-engine.md)) | | |**&amp;#x2713;;** |
+| URL-átirányítás/átírás (a [szabálymotorral](cdn-rules-engine.md)) | | |**&amp;#x2713;;** |
+| Mobileszközökre vonatkozó szabályok (a [szabálymotorral](cdn-rules-engine.md)) | | |**&amp;#x2713;;** |
 
 \* A Verizon támogatja a nagy méretű fájlok és médiatartalmak küldését általános webes kézbesítésen keresztül.
 
@@ -90,13 +90,13 @@ Három Azure CDN termék áll rendelkezésre: az **Akamai Azure CDN Standard**, 
 > 
 
 ## <a name="next-steps"></a>Következő lépések
-A CDN használatbavételének első lépéseiért tekintse meg [Az Azure CDN szolgáltatás használata](cdn-create-new-endpoint.md) című cikket.
+A CDN használatbavételének első lépéseiért tekintse meg [Az Azure CDN használatának első lépéseit](cdn-create-new-endpoint.md) ismertető cikket.
 
 Ha Ön már meglévő CDN-ügyfél, a CDN-végpontjait már a [Microsoft Azure Portal](https://portal.azure.com) vagy a [PowerShell](cdn-manage-powershell.md) használatával is kezelheti.
 
-Ha működés közben szeretné látni a CDN-t, tekintse meg a [Build 2016 konferencián elhangzott előadásunk videófelvételét](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/).
+Ha működés közben szeretné látni a CDN-t, tekintse meg a [Build 2016 konferencián elhangzott előadás videofelvételét](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/).
 
 Ismerje meg, hogyan automatizálhatja az Azure CDN-t a [.NET](cdn-app-dev-net.md) vagy a [Node.js](cdn-app-dev-node.md) segítségével.
 
-Díjszabási információkért tekintse meg [A tartalomkézbesítési hálózat (CDN) díjszabása](https://azure.microsoft.com/pricing/details/cdn/) című cikket.
+Díjszabási információkért tekintse meg [A Content Delivery Network (tartalomkézbesítési hálózat) díjszabását](https://azure.microsoft.com/pricing/details/cdn/) ismertető cikket.
 

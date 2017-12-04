@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/31/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: bb9c19bb489873d1a2175f4a85f7654a3bf099b8
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c073cb28f5c37a402c04d5315d7f8e18de8a1b26
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -87,6 +87,16 @@ A frissítéskezelés engedélyezve van a virtuális gépen.
 A nem Azure-beli virtuális gépeken és számítógépeken a frissítéskezelés engedélyezésének útmutatásáért lásd a [Windows rendszerű számítógépek a Log Analytics szolgáltatáshoz az Azure-ban való csatlakoztatását](../log-analytics/log-analytics-windows-agents.md) ismertető dokumentumot.
 
 A nem Azure-beli linuxos virtuális gépeken és számítógépeken a frissítéskezelés engedélyezésének útmutatásáért lásd a [Linux rendszerű számítógépek Log Analyticshez való csatlakoztatását](../log-analytics/log-analytics-agent-linux.md) ismertető témakört.
+
+## <a name="view-computers-attached-to-your-automation-account"></a>Az Automation-fiókhoz csatlakoztatott számítógépek megtekintése
+Ha engedélyezte a frissítéskezelést a számítógépeken, a vonatkozó adatokat a **Számítógépek** elemre kattintva tekintheti meg. Itt olyan információk érhetők el, mint a *Név*, *Megfelelőség*, *Környezett*, *Operációs rendszer típusa*, *Kritikus és biztonsági frissítések*, illetve *Egyéb frissítések*. 
+
+  ![Számítógépek megtekintése lap](./media/manage-update-multi/update-computers-tab.png)
+
+A frissítéskezeléshez nemrégiben hozzáadott számítógépek esetében előfordulhat, hogy a kiértékelés még nem történt meg. Az ilyen számítógépek megfelelőségi állapota *Nincs értékelve*.  Az alábbi lista a megfelelőségi állapot értékeit sorolja fel:
+* Megfelelő – Azok a számítógépek, amelyről nem hiányzik kritikus vagy biztonsági frissítés.
+* Nem megfelelő – Azok a számítógépek, amelyről legalább egy kritikus vagy biztonsági frissítés hiányzik.
+* Nincs értékelve – A frissítés kiértékelésének adatai nem érkeztek meg a számítógépről a meghatározott időkereten belül.  Ez Linux rendszerű számítógépek esetében az elmúlt három órát, Windows rendszerű számítógépeknél pedig az elmúlt 12 órát jelenti.  
 
 ## <a name="view-an-update-assessment"></a>Frissítésfelmérés megtekintése
 
