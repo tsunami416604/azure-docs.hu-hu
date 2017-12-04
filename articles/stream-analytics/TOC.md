@@ -57,7 +57,6 @@
 ### [Erőforrás-állapot panel](stream-analytics-resource-health.md)
 ### [Feladatábra és metrikák](stream-analytics-job-diagram-with-metrics.md)
 ### [SELECT INTO hibakeresés](stream-analytics-select-into.md)
-### [Eseménysorrend kezelése](stream-analytics-out-of-order-and-late-events.md)
 ### [Eseményrendezési szempontok](stream-analytics-out-of-order-and-late-events.md)
 ### [Eseményközpont olvasói korlátai](stream-analytics-event-hub-consumer-groups.md)
 ### [Diagnosztikai naplók](stream-analytics-job-diagnostic-logs.md)

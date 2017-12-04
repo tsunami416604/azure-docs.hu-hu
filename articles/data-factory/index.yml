@@ -43,6 +43,10 @@ sections:
               src: /azure/data-factory/media/index/portal.svg
             text: Azure Portal
             href: /azure/data-factory/quickstart-create-data-factory-portal
+          - image:
+              src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
+            text: Resource Manager-sablon
+            href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
   - title: Részletes útmutatók
     items:
       - type: paragraph
