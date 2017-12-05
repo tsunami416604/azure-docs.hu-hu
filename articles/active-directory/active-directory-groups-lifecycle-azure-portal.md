@@ -1,5 +1,5 @@
 ---
-title: "Tekintse meg az Azure Active Directoryban Office 365-csoportok lejárati |} Microsoft Docs"
+title: "Az Azure Active Directory csoportokat az Office 365 lejárati |} Microsoft Docs"
 description: "Az Office 365-csoportok az Azure Active Directoryban (előzetes verzió) lejárati beállítása"
 services: active-directory
 documentationcenter: 
@@ -12,29 +12,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 12/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 8a43df84fd050d7b4bd8d937b8c55e744cb805d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c2dd56bd34e5b7845298fab1f36e231113a2e28e
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="configure-office-365-groups-expiration-preview"></a>Office 365 csoportok lejárati (előzetes verzió) konfigurálása
+# <a name="configure-expiration-for-office-365-groups-preview"></a>Az Office 365-csoportok (előzetes verzió) lejárati konfigurálása
 
-Most kezelheti az Office 365-csoportok életciklusát lejárati kiválasztott az Office 365-csoportokra vonatkozó beállításával. Miután a lejárati be van állítva, a újítsa meg a csoporthoz, ha még mindig van szükségük a csoportok a rendszer felkéri a tulajdonosok csoport. Minden Office 365-csoportot, amely nem hosszabbítja meg törlődni fog. Minden Office 365-csoportot, amely törölve lett a csoportházirend-tulajdonosok vagy a rendszergazda által számított 30 napon belül állítható vissza.  
-
+Kezelheti az Office 365-csoportok életciklusát lejárati szolgáltatások beállítása most. Az Azure Active Directory (Azure AD) megadható lejárati idejét csak az Office 365-csoportokat. Ha egyszer már megadta egy csoport lejárati dátuma:
+-   A csoport tulajdonosainak értesítést kap, hogy újítsa meg a csoport a lejárati megújítására
+-   Bármely csoport, amely nem hosszabbítja meg törlődik.
+-   Minden Office 365-csoportot, amely törlődik csoport tulajdonosai vagy a rendszergazda által visszaállítható számított 30 napon belül
 
 > [!NOTE]
-> Beállíthatja, hogy csak az Office 365-csoportok lejárati idejét.
->
-> Az Office 365-csoportok lejárati beállításához, hogy be van-e rendelve egy Azure AD Premium-licenc
->   - A rendszergazda, aki a bérlő a lejárati beállítások konfigurálása
->   - Ez a beállítás a kijelölt csoportok összes tagja
+> Az Office 365-csoportok lejárati beállításához egy Azure AD Premium licenc vagy egy Azure AD alapvető oktatási licencet, amelyhez a csoportok minden tagját a lejárati beállítások érvényesek.
+> 
+> Az Azure AD alapvető oktatási licenccel rendelkező felhasználók: először konfigurálja a házirendet, használja az Azure Active Directory PowerShell-parancsmagok. Ezt követően a PowerShell vagy az Azure AD portálon használatával egy olyan fiókkal, amely a felhasználói fiók rendszergazdájához vagy a globális rendszergazda az Azure AD-bérlő lejárati beállítások segítségével frissítheti.
 
-## <a name="set-office-365-groups-expiration"></a>Állítsa be az Office 365 csoportok lejárata
+Töltse le és telepítse a Azure AD PowerShell-parancsmagokkal kapcsolatos információkért lásd: [Azure Active Directory PowerShell diagramhoz – a nyilvános előzetes 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+
+## <a name="set-group-expiration"></a>Set csoport lejárata
 
 1. Nyissa meg a [az Azure AD felügyeleti központban](https://aad.portal.azure.com) egy olyan fiókkal, amely az Azure AD-bérlő globális rendszergazdája.
 
@@ -51,7 +53,6 @@ Most kezelheti az Office 365-csoportok életciklusát lejárati kiválasztott az
   * Válassza ki, melyik Office 365-csoportok lejár. Engedélyezheti a lejárati **összes** Office 365-csoportokat, választhatók ki az Office 365-csoportokat, vagy választja **nincs** letiltása az összes csoport lejárati.
   * Mentse a beállításokat, amikor elkészült, kiválasztásával **mentése**.
 
-Hogyan töltse le és telepítse a Microsoft PowerShell-modult az Office 365-csoportok PowerShell lejárati konfigurálása, lásd: [Azure Active Directory V2 PowerShell-modul - nyilvános előzetes 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
 Erre például értesítő e-mailek küldése az Office 365 csoport tulajdonosainak a 30 nap, 15 nap, és a csoport lejárta előtt 1 nap.
 
@@ -68,7 +69,8 @@ A csoport kiválasztásával visszaállítható **visszaállítása** vagy a Pow
 Ha most visszaállítása a csoport tartalmazza a dokumentumok, SharePoint-webhelyeken vagy más állandó objektumok, a csoportot és annak tartalmát teljesen visszaállítására akár 24 óráig is eltarthat.
 
 > [!NOTE]
-> * A lejárati beállítások telepítésekor előfordulhat néhány olyan csoportot, a régebbi, mint a lejárati időszak. Ezek a csoportok nem lehet azonnal törlődnek, de a lejáratig 30 nap értékre van beállítva. Az első megújítási értesítő e-mailt által kiküldött egy napon belül. Például csoport 400 nappal ezelőtt lett létrehozva, és a lejárati időköz értéke 180 nap. Lejárati beállítások alkalmazásakor csoport rendelkezik 30 nap elteltével törlődik, kivéve, ha a tulajdonos megújítja azt.
+> * Amikor először állítsa be a lejárati, régebbi, mint a lejárati időköz csoportok lejáratig 30 nap vannak állítva. Az első megújítási értesítő e-mailt által kiküldött egy napon belül. 
+>   Például csoport 400 nappal ezelőtt lett létrehozva, és a lejárati időköz értéke 180 nap. Lejárati beállítások alkalmazásakor csoport rendelkezik 30 nap elteltével törlődik, kivéve, ha a tulajdonos megújítja azt.
 > * Ha egy dinamikus csoport törlése és visszaállítása, látható egy új csoportot, és újra fel az a szabály alapján. Ez a folyamat akár 24 óráig is eltarthat.
 
 ## <a name="next-steps"></a>Következő lépések

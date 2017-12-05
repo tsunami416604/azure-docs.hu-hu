@@ -3,22 +3,21 @@ title: "Azure API Management-szolgáltatások telepítése több Azure-régiók 
 description: "Ismerje meg, hogyan lehet telepíteni az Azure API Management szolgáltatáspéldány több Azure-régiók."
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: erikre
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 47389ad6-f865-4706-833f-846115e22e4d
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 75a0fd7f02bcc7ed5278582f36d0ed6d54aa7bc4
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: e126e34bc9fce21243b0ef79f5ab661aec3a2de6
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Az Azure API Management szolgáltatáspéldány üzembe helyezése több Azure-régiók
 Az API Management több területi környezetben, amely lehetővé teszi, hogy egyetlen API management szolgáltatás szét a kívánt Azure-régiók tetszőleges számú API közzétevők támogatja. Ezzel csökkenthető a kérelem által érzékelt késleltetés földrajzilag elosztott API fogyasztók és a szolgáltatás rendelkezésre állása is támogatja, ha egy régió tartozik offline állapotba kerül. 
@@ -32,7 +31,7 @@ Amikor egy API-kezelés szolgáltatás a kezdetben létrejön, csak az egyik tar
 
 ## <a name="add-region"></a>API-kezelés szolgáltatás példányt telepítése egy új régióban
 > [!NOTE]
-> Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg az [Ismerkedés az Azure API Management szolgáltatással][Get started with Azure API Management] oktatóanyag [API Management szolgáltatáspéldány létrehozása][Create an API Management service instance] című szakaszát.
+> Ha még nem hozott létre az API Management szolgáltatáspéldány, lásd: [hozzon létre egy API-kezelés szolgáltatás példányt][Create an API Management service instance].
 > 
 > 
 
@@ -42,7 +41,7 @@ Az Azure portálon keresse meg a **és az árképzés** az API Management szolg�
 
 Egy új régió telepíteni, kattintson a **+ Hozzáadás régió** az eszköztáron.
 
-![Adja hozzá a régió][api-management-add-region]
+![Régió hozzáadása][api-management-add-region]
 
 A legördülő listából válassza ki a helyet, és állítsa be a csúszkával egységek száma.
 
@@ -70,8 +69,8 @@ A törlés jóváhagyásához, és kattintson a **mentése** a módosítások é
 [api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
 [api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
 
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
-[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: get-started-create-service-instance.md
+[Get started with Azure API Management]: get-started-create-service-instance.md
 
 [Deploy an API Management service instance to a new region]: #add-region
 [Delete an API Management service instance from a region]: #remove-region

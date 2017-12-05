@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: fashah;bradsev
-ms.openlocfilehash: d42377a55b1decc0918932b3ecc13cf575f934a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4157820bad3c0d7c07965e4a5556db2f6fb69fe2
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A művelet az Team tudományos folyamat: SQL Server használata
 Az oktatóanyag ismerteti a folyamatot, amely létrehozása és telepítése a gépi tanulási modellek SQL Server és a nyilvánosan elérhető dataset – a [NYC Taxi Utazgatással](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szabványos adatelemezési munkafolyamatot: betöltési, és áttekintheti az adatokat, a visszafejtés szolgáltatások megkönnyítése tanulási, majd építsenek, és a modell rendszerbe állítása.
@@ -581,7 +581,6 @@ Ebben a gyakorlatban azt már megismerkedett és fejthetők vissza az adatokat a
 3. Az adatbázis DNS-nevét adja meg a **adatbázis-kiszolgáló neve** mező. Formátum:`tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg a **adatbázisnév** a megfelelő mezőben.
 5. Adja meg a **SQL felhasználónév** a a ** Server aqccount felhasználónevet és a jelszót a **kiszolgáló felhasználói fiók jelszavát**.
-6. Ellenőrizze **fogadja el a kiszolgálói tanúsítvány** lehetőséget.
 7. Az a **adatbázis-lekérdezés** szöveg terület szerkesztése, illessze be a lekérdezést, amely a szükséges adatbázis-mezők (beleértve a számított mezőket a címkéket például) és régebbi minták a kívánt mintájának méretét az adatokat.
 
 Az alábbi ábra egy példát egy bináris osztályozási kísérletet, közvetlenül az SQL Server adatbázisából az adatok olvasása van. Hasonló kísérletek multiclass besorolás és a visszavonási lehet létrehozni.

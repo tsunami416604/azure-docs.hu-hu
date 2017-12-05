@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: 6fa563e102569064d045fbb60ebd5d1df52e3e73
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 09d488a7600d85b6feab6a27cdd517240c95104b
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Azure Blob Storage tárolóban az Azure Content Delivery Network lejáratának kezelése
 > [!div class="op_single_selector"]
@@ -113,19 +113,20 @@ Frissítése az *CacheControl* tulajdonság a Tártallózó alkalmazással Azure
 ### <a name="azure-command-line-interface"></a>Azure parancssori felület
 Az a [Azure parancssori felület](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) (CLI) kezelheti az Azure blob-erőforrások a parancssorból. Állítsa be a cache-control fejléc, ha feltölt egy blobot a az Azure parancssori felület, állítsa be a *cacheControl* tulajdonság használatával a `-p` váltani. A következő példa bemutatja, hogyan állítsa be a TTL-t egy óra (3600 másodperc):
   
-"" Az azure CLI azure storage-blob feltöltése a -c <connectionstring> - p cacheControl = "max-kor 3600" .\test.txt myContainer teszt.txt =
+```azurecli
+azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\test.txt myContainer test.txt
 ```
 
-### Azure storage services REST API
-You can use the [Azure storage services REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) to explicitly set the *x-ms-blob-cache-control* property by using the following operations on a request:
+### <a name="azure-storage-services-rest-api"></a>Az Azure storage szolgáltatások REST API-n
+Használhatja a [az Azure storage szolgáltatások REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) explicit módon meghatározhatja a *x-ms-blob-cache-control* tulajdonság használatával a kérelem a következő műveleteket:
   
-   - [Put Blob](https://msdn.microsoft.com/en-us/library/azure/dd179451.aspx)
-   - [Put Block List](https://msdn.microsoft.com/en-us/library/azure/dd179467.aspx)
-   - [Set Blob Properties](https://msdn.microsoft.com/library/azure/ee691966.aspx)
+   - [Helyezze a Blob](https://msdn.microsoft.com/en-us/library/azure/dd179451.aspx)
+   - [PUT tiltólista](https://msdn.microsoft.com/en-us/library/azure/dd179467.aspx)
+   - [A Blob tulajdonságainak beállítása](https://msdn.microsoft.com/library/azure/ee691966.aspx)
 
-## Testing the Cache-Control header
-You can easily verify the TTL settings of your blobs. With your browser's [developer tools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test that your blob includes the `Cache-Control` response header. You can also use a tool such as [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), or [Fiddler](http://www.telerik.com/fiddler) to examine the response headers.
+## <a name="testing-the-cache-control-header"></a>A Cache-Control fejléc tesztelése
+A blobok TTL beállításainak könnyen ellenőrizheti. A böngésző [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), tesztelje, hogy a blob magában foglalja a `Cache-Control` válaszfejlécet. Például egy eszköz is használható [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), vagy [Fiddler](http://www.telerik.com/fiddler) megvizsgálhatja a response fejlécekkel együtt.
 
-## Next Steps
-* [Learn how to manage expiration of Cloud Service content in Azure CDN](cdn-manage-expiration-of-cloud-service-content.md)
+## <a name="next-steps"></a>Következő lépések
+* [Útmutató: Azure CDN felhő Felhőszolgáltatásbeli tartalom lejáratának kezelése](cdn-manage-expiration-of-cloud-service-content.md)
 

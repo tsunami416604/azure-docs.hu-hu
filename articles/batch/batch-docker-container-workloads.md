@@ -1,6 +1,6 @@
 ---
-title: "Azure Batch docker-tároló munkaterhelések |} Microsoft Docs"
-description: "Útmutató: az alkalmazások futtatását Docker tároló képek Azure Batch."
+title: "Azure Batch tároló munkaterhelések |} Microsoft Docs"
+description: "Megtudhatja, hogyan tároló képek Azure Batch alkalmazások futtatását."
 services: batch
 author: v-dotren
 manager: timlt
@@ -8,15 +8,15 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 12/01/2017
 ms.author: v-dotren
-ms.openlocfilehash: fc15b2db051b5ebbf39665b803b22d3a5e4885f9
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 1795bdde5506f599849a30d4e59ed7b916595ac4
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="run-docker-container-applications-on-azure-batch"></a>Azure Batch Docker tároló alkalmazások futtatásához
+# <a name="run-container-applications-on-azure-batch"></a>Azure Batch tároló alkalmazások futtatásához
 
 Az Azure Batch lehetővé teszi futtatásához és méretezéséhez számítási feladatok Azure batch nagyon nagy számú. Eddig kötegelt feladatok közvetlenül a virtuális gépek (VM) a Batch-készlet futtatta, de most már beállíthat egy Batch-készlet Docker-tárolókban lévő feladatok futtatásához.
 
@@ -112,12 +112,11 @@ A lekéréses (vagy előzetes betöltési) folyamat lehetővé teszi a Docker-k�
 
 ### <a name="pool-without-prefetched-container-images"></a>Készlet prefetched tároló képek nélkül
 
-A készlet prefetched tároló képek nélküli konfigurálásához használja a `ContainerConfiguration` a következő példában látható módon. Ez, és a következő példák azt feltételezik, hogy egy egyéni Ubuntu 16.04 LTS lemezképet használ telepítve Docker-motorhoz.
+Adja meg a készlet prefetched tároló képek nélküli konfigurálásához `ContainerConfiguration` és `VirtualMachineConfiguration` objektumokat a következő példában látható módon. Ez, és a következő példák azt feltételezik, hogy egy egyéni Ubuntu 16.04 LTS lemezképet használ telepítve Docker-motorhoz.
 
 ```csharp
 // Specify container configuration
-ContainerConfiguration containerConfig = new ContainerConfiguration(
-    type: "Docker");
+ContainerConfiguration containerConfig = new ContainerConfiguration();
 
 // VM configuration
 VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConfiguration(
@@ -136,14 +135,14 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 pool.Commit();
 ```
 
+
 ### <a name="prefetch-images-for-container-configuration"></a>Előzetesen lehívott a tároló konfigurációjának lemezképei lapok
 
-Előzetesen lehívott lapok tároló képek a készlet, adja hozzá a tároló lemezképek listáját (`containerImageNames`) a tároló konfigurációjának, és adja meg a lemezkép nevét listában. Az alábbi példa feltételezi, hogy a egyéni Ubuntu 16.04 LTS kép, előzetesen lehívott lapok egy TensorFlow lemezkép [Docker Hub](https://hub.docker.com), és a kezdő tevékenység TensorFlow elindításához.
+Előzetesen lehívott lapok tároló képek a készlet, adja hozzá a tároló lemezképek listáját (`containerImageNames`) számára a `ContainerConfiguration`, és nevezze el a képlista. Az alábbi példa feltételezi, hogy a egyéni Ubuntu 16.04 LTS kép, előzetesen lehívott lapok egy TensorFlow lemezkép [Docker Hub](https://hub.docker.com), és a kezdő tevékenység TensorFlow elindításához.
 
 ```csharp
 // Specify container configuration, prefetching Docker images
 ContainerConfiguration containerConfig = new ContainerConfiguration(
-    type: "Docker",
     containerImageNames: new List<string> { "tensorflow/tensorflow:latest-gpu" } );
 
 // VM configuration
@@ -176,7 +175,7 @@ pool.Commit();
 
 ### <a name="prefetch-images-from-a-private-container-registry"></a>Előzetesen lehívott lapok képek a magánfelhő tároló beállításjegyzékből
 
-Akkor is is előzetesen lehívott lapok tároló képek hitelesítik magukat a személyes tárolót beállításjegyzék-kiszolgálón. Az alábbi példa feltételezi, hogy egy egyéni Ubuntu 16.04 LTS lemezképet használ, és egy személyes TensorFlow lemezképet egy saját Azure-tárolót beállításjegyzékből vannak prefetching.
+Akkor is is előzetesen lehívott lapok tároló képek hitelesítik magukat a személyes tárolót beállításjegyzék-kiszolgálón. A következő példában a `ContainerConfiguration` és `VirtualMachineConfiguration` objektumok egy egyéni Ubuntu 16.04 LTS lemezképpel, és előzetesen lehívott lapok egy titkos TensorFlow lemezképet egy saját Azure-tárolót beállításjegyzékből.
 
 ```csharp
 // Specify a container registry
@@ -187,7 +186,6 @@ ContainerRegistry containerRegistry = new ContainerRegistry (
 
 // Create container configuration, prefetching Docker images from the container registry
 ContainerConfiguration containerConfig = new ContainerConfiguration(
-    type: "Docker",
     containerImageNames: new List<string> {
         "myContainerRegistry.azurecr.io/tensorflow/tensorflow:latest-gpu" },
     containerRegistries: new List<ContainerRegistry> { containerRegistry } );

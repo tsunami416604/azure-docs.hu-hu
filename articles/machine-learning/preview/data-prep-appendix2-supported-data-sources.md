@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: db4774de28a17e022de111986f72a1f15ec32beb
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 458338cd23c704c40c512dd96b22a4790f27d017
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>A támogatott adatforrások az Azure Machine Learning adatok előkészítése 
 Ez a cikk ismerteti az Azure Machine Learning adatok előkészítése a jelenleg támogatott adatforrások.
@@ -24,6 +24,25 @@ Ez a cikk ismerteti az Azure Machine Learning adatok előkészítése a jelenleg
 A támogatott adatforrások ebben a kiadásban a következők:
 
 ## <a name="types"></a>Típusok 
+
+### <a name="sql-server"></a>SQL Server
+Helyszíni SQL server vagy az Azure SQL database olvasni.
+
+#### <a name="options"></a>Beállítások
+- Kiszolgálócím
+- Megbízható kiszolgáló (páros, ha a tanúsítványt a kiszolgálón nem érvényes. Óvatosan)
+- Hitelesítési típus (Windows, a kiszolgáló)
+- Felhasználónév
+- Jelszó
+- Az adatbázishoz való kapcsolódáshoz
+- SQL-lekérdezés
+
+#### <a name="notes"></a>Megjegyzések
+- SQL-variant oszlopok nem támogatottak.
+- Idő oszlop adatbázis 1970/1/1 dátum és idő hozzáfűzésével alakítja át a dátum és idő
+- A Spark-fürt végrehajtásakor kapcsolódó összes adatok (dátum, dátum és idő, datetime2, datetimeoffset típusú) oszlopok helytelen értékeket kiértékelik a dátumok előtt 1583
+- Decimális oszlopokban szereplő értékek miatt átalakítása decimális pontosság megszakadhat.
+
 ### <a name="directory-vs-file"></a>Fájl vagy könyvtár
 Válasszon egy fájlt, és olvassa el, az adatok előkészítése. A fájl típusa határozza meg a fájl kapcsolat a következő képernyőn megjelenő alapértelmezett paraméterek elemzett.
 
@@ -88,6 +107,9 @@ Kibővített végrehajtása a Spark Parquet képességek olvasása alapul, és e
 ## <a name="locations"></a>Helyek
 ### <a name="local"></a>Helyi
 A helyi merevlemez-meghajtóról vagy egy csatlakoztatott hálózati tárolási helyét.
+
+### <a name="sql-server"></a>SQL Server
+Helyszíni SQL Server, vagy az Azure SQL database.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 Az Azure Blob storage, amelyhez az Azure-előfizetés szükséges.

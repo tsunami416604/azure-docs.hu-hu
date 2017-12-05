@@ -6,19 +6,18 @@ documentationcenter:
 author: miaojiang
 manager: erikre
 editor: 
-ms.assetid: 7406a8ce-5f9c-4fae-9b0f-e574befb2ee9
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: c2bed904b82c569b28a6e00d0cc9b49107c148dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18869b34b399e33bac00cf125e6324861c8b9f02
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management-átalakítási csoportházirendek
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -79,7 +78,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |Név|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |alkalmazása|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás - mindig - mindig érvényesek.<br />-tartalom típus-json - konvertálás csak akkor, ha a response Content-Type fejléc JSON jelenlétét jelzi.|Igen|N/A|  
-|Vegye figyelembe-elfogadja-fejléc|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás - igaz - alkalmazni, amennyiben JSON kérelem Accept fejlécet.<br />-hamis - átalakítás mindig érvényesek.|Nem|Igaz|  
+|Vegye figyelembe-elfogadja-fejléc|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás - igaz - alkalmazni, amennyiben JSON kérelem Accept fejlécet.<br />-hamis - átalakítás mindig érvényesek.|Nem|igaz|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -123,7 +122,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |----------|-----------------|--------------|-------------|  
 |típusa|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -javascript-barát – az átalakított JSON a JavaScript-fejlesztők számára egyszerű űrlap rendelkezik.<br />a konvertált JSON - közvetlen – az eredeti XML-dokumentum struktúra tükrözi.|Igen|N/A|  
 |alkalmazása|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -mindig - átalakítás mindig.<br />-tartalom típus-xml - konvertálás csak akkor, ha a response Content-Type fejléc XML jelenlétét jelzi.|Igen|N/A|  
-|Vegye figyelembe-elfogadja-fejléc|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás - igaz - alkalmazni, amennyiben XML Accept fejlécet kérés van szükség.<br />-hamis - átalakítás mindig érvényesek.|Nem|Igaz|  
+|Vegye figyelembe-elfogadja-fejléc|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás - igaz - alkalmazni, amennyiben XML Accept fejlécet kérés van szükség.<br />-hamis - átalakítás mindig érvényesek.|Nem|igaz|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -157,7 +156,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
   
 |Név|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|A|A keresendő karakterláncot.|Igen|N/A|  
+|forrás:|A keresendő karakterláncot.|Igen|N/A|  
 |erre:|A behelyettesítendő karakterláncot. Adja meg a nulla hosszúságú helyettesítő karakterláncok eltávolítása a keresési karakterláncot.|Igen|N/A|  
   
 ### <a name="usage"></a>Használat  
@@ -629,7 +628,7 @@ OriginalUrl.
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
 |sablon|A tényleges webes szolgáltatás URL-cím elé a lekérdezési karakterlánc paramétereket. Kifejezések használata esetén a teljes érték kifejezésnek kell lennie.|Igen|N/A|  
-|Másolás páratlan számú paraméterei|Megadja, hogy nincs jelen az eredeti URL-sablonban a bejövő kérelemben szereplő lekérdezési paraméterek kerülnek újbóli írása sablonban megadott URL-|Nem|Igaz|  
+|Másolás páratlan számú paraméterei|Megadja, hogy nincs jelen az eredeti URL-sablonban a bejövő kérelemben szereplő lekérdezési paraméterek kerülnek újbóli írása sablonban megadott URL-|Nem|igaz|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -692,7 +691,7 @@ OriginalUrl.
 |Név|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |XSL-átalakítás|A gyökérelem.|Igen|  
-|A paraméter|Adja meg a transzformáció bemeneti használt változókat használatával|Nem|  
+|paraméter|Adja meg a transzformáció bemeneti használt változókat használatával|Nem|  
 |XSL: stylesheet|Stíluslap gyökérelem. Minden elemek és attribútumok vannak meghatározva hajtsa végre a szabványos [XSLT-specifikációja](http://www.w3.org/TR/xslt)|Igen|  
   
 ### <a name="usage"></a>Használat  
@@ -703,4 +702,9 @@ OriginalUrl.
 -   **Házirend hatókörök:** globális, termék, API-művelet  
   
 ## <a name="next-steps"></a>Következő lépések
-Házirendek használata további információkért lásd: [házirendek az API Management](api-management-howto-policies.md).  
+
+További információkért tekintse át a következők témaköröket:
+
++ [Az API Management házirendek](api-management-howto-policies.md)
++ [Házirend-hivatkozás](api-management-policy-reference.md) házirend-utasításoknál és a beállítások teljes listáját
++ [Házirend-minták](policy-samples.md)   

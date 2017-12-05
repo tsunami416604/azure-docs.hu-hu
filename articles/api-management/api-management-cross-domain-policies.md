@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 05b25ffad4a91859932cd53475d82b11bf3e43e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 590831454e8a18678e357b4824eb35a717d1fee0
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="api-management-cross-domain-policies"></a>Az API Management tartományközi házirendjei
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -26,9 +26,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 ##  <a name="CrossDomainPolicies"></a>Kereszt-tartományi házirendek  
   
 -   [Lehetővé teszi a tartományok közötti hívások](api-management-cross-domain-policies.md#AllowCrossDomainCalls) -elérhetővé válnak az API-t az Adobe Flash és a Microsoft Silverlight webböngésző-alapú ügyfelektől.  
-  
 -   [A CORS](api-management-cross-domain-policies.md#CORS) -hozzáadja az eltérő eredetű erőforrások megosztása (CORS) a támogatási művelet vagy API lehetővé teszi a tartományok közötti hívások webböngésző-alapú ügyfelekről.  
-  
 -   [JSONP](api-management-cross-domain-policies.md#JSONP) -JSON ad hozzá egy műveletet, vagy lehetővé teszi a tartományok közötti hívások JavaScript-ügyfelekből webböngésző-alapú API kitöltési (JSONP) támogatással.  
   
 ##  <a name="AllowCrossDomainCalls"></a>Lehetővé teszi a tartományok közötti hívások  
@@ -63,7 +61,6 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Házirend szakaszok:** bejövő  
-  
 -   **Házirend hatókörök:** globális  
   
 ##  <a name="CORS"></a>A CORS  
@@ -129,7 +126,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |----------|-----------------|--------------|-------------|  
 |a cors|A gyökérelem.|Igen|N/A|  
 |engedélyezett források|Tartalmaz `origin` elemek, amelyek a tartományok közötti kérelmek engedélyezett eredetet ismertetik. `allowed-origins`vagy egyetlen tartalmazhat `origin` megadó elem `*` engedélyezéséhez a forrás vagy egy vagy több `origin` egy URI-t tartalmazó elemek.|Igen|N/A|  
-|Forrás|Az érték lehet `*` minden eredet vagy URI, amely meghatározza egy egyetlen forrás. Az URI tartalmaznia kell egy protokollt, a gazdagép és a port.|Igen|Ha a port nincs megadva az URI, 80-as portot használja HTTP és a 443-as portot használja HTTPS.|  
+|forrás|Az érték lehet `*` minden eredet vagy URI, amely meghatározza egy egyetlen forrás. Az URI tartalmaznia kell egy protokollt, a gazdagép és a port.|Igen|Ha a port nincs megadva az URI, 80-as portot használja HTTP és a 443-as portot használja HTTPS.|  
 |engedélyezett módszerek|Ez az elem szükség, ha a módszerek nem GET vagy POST engedélyezettek. Tartalmaz `method` elemeit, adja meg a támogatott HTTP-műveleteket.|Nem|Ha ez a szakasz nincs jelen, a GET és POST támogatott.|  
 |Módszer|Adja meg a HTTP-műveletet.|Legalább egy `method` elemet kell megadni, ha a `allowed-methods` szakaszt.|N/A|  
 |engedélyezett fejlécek|Ez az elem tartalmaz `header` elemek a fejlécek, a kérelemben szereplő nevének megadása.|Nem|N/A|  
@@ -147,7 +144,6 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Házirend szakaszok:** bejövő  
-  
 -   **Házirend hatókörök:** API-művelet  
   
 ##  <a name="JSONP"></a>JSONP  
@@ -185,8 +181,13 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Házirend szakaszok:** kimenő  
-  
 -   **Házirend hatókörök:** globális, termék, API-művelet  
   
 ## <a name="next-steps"></a>Következő lépések
-Házirendek használata további információkért lásd: [házirendek az API Management](api-management-howto-policies.md).  
+
+Házirendek használata további információkért lásd:
+
++ [Az API Management házirendek](api-management-howto-policies.md)
++ [Átalakítás API-k](transform-api.md)
++ [Házirend-hivatkozás](api-management-policy-reference.md) házirend-utasításoknál és a beállítások teljes listáját
++ [Házirend-minták](policy-samples.md)   

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: c2de89ba3adaaa7d745731cff74269deecef03e2
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 62b1bf66647c762b17410c37fe6ebd996f577d25
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>Másolja az adatokat, vagy Dynamics 365 / Dynamics CRM, Azure Data Factory használatával
 
@@ -30,14 +30,20 @@ Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az A
 
 Adatok másolása Dynamics 365 / Dynamics CRM bármely támogatott fogadó adattár, vagy bármely támogatott forrás adattár Dynamics 365 / Dynamics CRM-adatok másolása. A másolási tevékenység által támogatott adatforrások/mosdók adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Pontosabban a Dynamics összekötő támogatja az alábbi Dynamics verziója és a hitelesítési típus:
+A Dynamics összekötő támogatja az alábbi Dynamics verziója és a hitelesítési típus (*ELÉRÉS rövid a internetes elérésű telepítés*):
 
 | Dynamics verziók | Hitelesítési típusok | A kapcsolódószolgáltatás-minták |
 |:--- |:--- |:--- |
 | Dynamics 365 online <br> A Dynamics CRM online | Office365 | [Dynamics Online + Office365 hitelesítés](#dynamics-365-and-dynamics-crm-online) |
 | Dynamics 365 helyszíni ELÉRÉS <br> Dynamics CRM 2016 helyszíni ELÉRÉS <br> Dynamics CRM 2015 a helyszíni az ELÉRÉS | ELÉRÉS | [Dynamics a helyszíni az internetes Elérésű + ELÉRÉS hitelesítés](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
-*Internetes Elérésű rövid a internetes elérésű telepítés.*
+A Dynamics 365 konkrétan az alábbi alkalmazástípusokat támogatja:
+
+- Dynamics 365 az értékesítés
+- Dynamics 365 az ügyfélszolgálat
+- Dynamics 365 mező szolgáltatás
+- Dynamics 365 a projekt szolgáltatás automatizálásához
+- Dynamics 365 a Marketing
 
 > [!NOTE]
 > Dynamics összekötő használatára, a jelszó az Azure Key Vault tárolja, és lehetővé teszik az ADF másolási tevékenységek lekéréses onnan, adatmásolás végrehajtása során. Tekintse meg a konfigurálása a [szolgáltatástulajdonságok kapcsolódó](#linked-service-properties) szakasz.
@@ -321,7 +327,7 @@ Konfigurálja a megfelelő ADF-adattípus a forrás Dynamics adatok alapján ada
 | Dynamics adattípus | Data factory ideiglenes adattípus | Támogatott forrásaként | A fogadó támogatott |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Hosszú | ✓ | ✓ |
-| AttributeTypeCode.Boolean | Logikai érték | ✓ | ✓ |
+| AttributeTypeCode.Boolean | Logikai | ✓ | ✓ |
 | AttributeType.Customer | GUID | ✓ |  |
 | AttributeType.DateTime | Dátum és idő | ✓ | ✓ |
 | AttributeType.Decimal | Decimális | ✓ | ✓ |
@@ -329,7 +335,7 @@ Konfigurálja a megfelelő ADF-adattípus a forrás Dynamics adatok alapján ada
 | AttributeType.EntityName | Karakterlánc | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | GUID | ✓ |  |
-| AttributeType.ManagedProperty | Logikai érték | ✓ |  |
+| AttributeType.ManagedProperty | Logikai | ✓ |  |
 | AttributeType.Memo | Karakterlánc | ✓ | ✓ |
 | AttributeType.Money | Decimális | ✓ |  |
 | AttributeType.Owner | GUID | ✓ | |

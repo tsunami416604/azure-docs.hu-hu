@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jingwang
-ms.openlocfilehash: 3b2fbab10836b138792efad7ea30f4f0d15905c3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 69707931402de597c9d6a329da349723da2a782a
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure Data Lake Store az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ A következő tulajdonságok esetén a társított szolgáltatásnak Azure Data 
 Tekintse meg a következő szakaszok további tulajdonságokat és más hitelesítési típusok JSON-példák osztályban:
 
 - [Szolgáltatás egyszerű hitelesítést használó](#using-service-principal-authentication)
-- [Felügyelt identitás-hitelesítéssel](#using-managed-service-identitiy-authentication)
+- [Felügyelt identitás-hitelesítéssel](#using-managed-service-identity-authentication)
 
 ### <a name="using-service-principal-authentication"></a>Szolgáltatás egyszerű hitelesítést használó
 

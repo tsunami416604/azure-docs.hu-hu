@@ -1,89 +1,87 @@
 ---
-title: "A fejlesztői portál stílusainak testreszabása az Azure API Managementben | Microsoft Docs"
-description: "Megtudhatja, hogyan módosíthatja a fejlesztői portál lapjainak stílusait az Azure API Managementben."
+title: "A lap testreszabásához az Azure API Management developer portálon |} Microsoft Docs"
+description: "A gyors üzembe helyezés az Azure API Management fejlesztői portálján elemek stílusbeállításokat testreszabásához kövesse."
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: vlvinogr
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/09/2017
-ms.author: antonba
-ms.openlocfilehash: 89baf60d0204a1701e93309f09b90bc94c4ca57b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.custom: mvc
+ms.topic: tutorial
+ms.date: 11/19/2017
+ms.author: apimpm
+ms.openlocfilehash: f427663ba1c437785c8c521925d9f733c45cb40d
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="customize-the-styling-of-the-developer-portal-in-azure-api-management"></a>A fejlesztői portál stílusainak testreszabása az Azure API Managementben
-A fejlesztői portál három alapvető módon szabható testre az Azure API Managementben:
+# <a name="customize-the-style-of-the-developer-portal-pages"></a>A fejlesztői portál lapjai stílusát testreszabása
 
-* [A statikus oldalak tartalmának és oldalelrendezési elemeinek szerkesztése][modify-content-layout]
-* [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles] (részletesen ebben az útmutatóban)
-* [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például: API-dokumentáció, termékek, felhasználói hitelesítés stb.)
+A fejlesztői portálhoz, az Azure API Management testreszabása három leggyakoribb módja van:
+ 
+* [Szerkessze a tartalmat statikus és elrendezés elemei](api-management-modify-content-layout.md)
+* Frissítse a stílusok használt elemei között a fejlesztői portálján (Ez az útmutató alapján)
+* [Módosíthatja a sablonokat a portál által létrehozott lapok](api-management-developer-portal-templates.md) (például API docs, termékek, felhasználói hitelesítés)
 
-## <a name="change-headers-styling"></a>Oldalelemek stílusának módosítása
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
-A portál oldalain megjelenő színeket, betűtípusokat, méreteket, sorközöket és más stíluselemeket a stílusszabályok határozzák meg. 
+> [!div class="checklist"]
+> * Elemek oldalának testreszabásához a **fejlesztői** portál
+> * A módosítás megtekintése
 
-A stílusszabályok a **fejlesztői portálon**, rendszergazdaként bejelentkezve módosíthatóak. Ehhez először nyissa meg az Azure Portalt, és kattintson a **Közzétevő portál** elemre az API Management-példány szolgáltatási eszköztárából.
+![stílus testreszabása](./media/modify-developer-portal-style/developer_portal.png)
 
-![Közzétevő portál][api-management-management-console]
+## <a name="prerequisites"></a>Előfeltételek
 
-Ezután kattintson a **Fejlesztői portálra** a jobb felső sarokban. 
++ Fejezze be a következő gyorsindítási: [hozzon létre egy Azure API Management példányt](get-started-create-service-instance.md).
++ Is, végezze el a következő oktatóanyagot: [importálása és az első API-t közzétenni](import-and-publish.md).
 
-![Fejlesztői portál hivatkozása a közzétevő portálon][api-management-pp-dp-link]
+[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-A testreszabási eszköztár megnyitásához vigye az egérmutatót a testreszabási ikon fölé (vagy válassza ki azt), majd az eszköztárból válassza a „Stílusok” lehetőséget.
+## <a name="customize-the-developer-portal"></a>A fejlesztői portál testreszabása
 
-![Testreszabási eszköztár gombja][api-management-customization-toolbar-button]
+1. Válassza ki **áttekintése**.
+2. Kattintson a **fejlesztői portálján** gombra kattint, a a a **áttekintése** ablak. Másik lehetőségként kattinthat a **fejlesztői portálján URL-cím** hivatkozásra.
+3. A képernyő felső bal oldalán megjelenik egy ikon, két ecsetként áll. Ez az ikon a portál testreszabásának menü megnyitásához mutasson.
 
-A stílusszabályokat két fő módon szerkesztheti: áttekintheti az összes használt stílusszabály alapértelmezés szerint megjelenő listáját, és szükség szerint módosíthatja az egyes stílusokat, vagy kiválaszthatja a **Select an element on the page** (Elem kiválasztása az oldalon) beállítást, és ha az oldalon valahová kattint, kizárólag az adott elemhez tartozó stílusok fognak megjelenni.
+    ![stílus testreszabása](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
+4. Válassza ki **stílusok** lehetőséget a menüből a stílusbeállításokat testreszabási ablaktábla megnyitása.
 
-![Testreszabás eszköztár][api-management-customization-toolbar]
+    Testre szabható használó összes elem **stílusok** az oldalon
+5. A "fejlécére kattintva rendezhető színű" adja meg a **fejlesztői portál megjelenését testreszabásához változók értékeinek módosítása:** mező.
 
-Ehhez a példához kattintson az **Elem kiválasztása az oldalon** lehetőségre.  Ha ezután rámutat az egérrel az elemekre, ki lesznek emelve, ezzel jelezve, hogy kattintás esetén melyik elem stílusait kezdené el szerkeszteni. Vigye az egérmutatót a fejlécben szereplő szöveg fölé (általában itt a vállalat neve található), majd kattintson rá. A stílusszerkesztőben meg fognak jelenni a névvel és kategóriákkal rendelkező stílusszabályok. Minden szabály a kiválasztott elem egy formázási tulajdonságát jelöli. Például a fent kiválasztott fejléc szövegénél a szövegméret @font-size-h1, míg a betűtípus neve alternatívákkal @headings-font-family.
+    A  **@headings-color**  elem lapján jelenik meg. Ez a változó határozza meg a szöveg színét.
 
-> Ha ismeri a [bootstrap][bootstrap] felépítését, ezek a szabályok valójában [LESS változók][LESS variables] a fejlesztői portál által használt bootstrap témában.
-> 
-> 
+    ![stílus testreszabása](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
+    
+6. Kattintson a mező a  **@headings-color**  változó. 
+    
+    Szín kiválasztása legördülő lista megnyitása.
+7. A szín dátumválasztók legördülő listán válassza ki egy új színt.
 
-Módosítsa a fejléc szövegének színét. Válassza ki a **@headings-color** mező bejegyzését, és írja be a **#000000** kódot. Ez a fekete szín hexadecimális kódja. Eközben a szövegmező végén megjelenik egy színjelző négyzet. Ha rákattint a jelzőre, a színválasztó segítségével kiválaszthat egy színt.
+    > [!TIP]
+    > Valós idejű preview összes módosítás érhető el. A testreszabási ablaktábla tetején egy folyamatjelző jelenik meg. Néhány másodpercen belül a fejléc szövege módosításait a szín az újonnan kijelölt.
 
-![Színválasztó][api-management-customization-toolbar-color-picker]
+8. Válassza ki **közzététel** a testreszabási menüjének a bal alsó.
+9. Válassza ki **testreszabások közzététele** a kívánt módosítások nyilvánosan elérhető.
 
-A módosítások előnézete valós időben, végrehajtásukkal egyidejűleg megtekinthető, de kizárólag a rendszergazdáknak jelenik meg. Ha mindenki számára láthatóvá szeretné tenni a módosításokat, kattintson a **Közzététel** gombra a stílusszerkesztőben, és hagyja jóvá a módosításokat.
+## <a name="view-your-change"></a>A módosítás megtekintése
 
-![Közzététel menü][api-management-customization-toolbar-publish-form]
-
-> Az oldal bármely más elemére vonatkozó stílusszabályok módosításához kövesse ugyanazt az eljárást, mint a fejlécnél. Kattintson az **Elem kiválasztása az oldalon** lehetőségre a stílusszerkesztőben, válassza ki a kívánt elemet, majd kezdje el módosítani a képernyőn megjelenő stílusszabályok értékeit.
-> 
-> 
-
+1. Keresse meg a fejlesztői portálján.
+2. A módosítást végzett tekintheti meg.
 
 ## <a name="next-steps"></a>Következő lépések
-* Megtudhatja, hogyan szabhatja testre a fejlesztői portál oldalainak tartalmát a [fejlesztői portál sablonjainak](api-management-developer-portal-templates.md) használatával.
 
-[Change the styling of the headers]: #change-headers-styling
-[Next steps]: #next-steps
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-[Azure Classic Portal]: https://manage.windowsazure.com/
+> [!div class="checklist"]
+> * Elemek oldalának testreszabásához a **fejlesztői** portál
+> * A módosítás megtekintése
 
-[api-management-management-console]: ./media/api-management-customize-styles/api-management-management-console.png
-[api-management-pp-dp-link]: ./media/api-management-customize-styles/api-management-pp-dp-link.png
-[api-management-customization-toolbar-button]: ./media/api-management-customize-styles/api-management-customization-toolbar-button.png
-[api-management-customization-toolbar]: ./media/api-management-customize-styles/api-management-customization-toolbar.png
-[api-management-customization-toolbar-color-picker]: ./media/api-management-customize-styles/api-management-customization-toolbar-color-picker.png
-[api-management-customization-toolbar-publish-form]: ./media/api-management-customize-styles/api-management-customization-toolbar-publish-form.png
-
-[modify-content-layout]: api-management-modify-content-layout.md
-[customize-styles]: api-management-customize-styles.md
-[portal-templates]: api-management-developer-portal-templates.md
-
-[bootstrap]: http://getbootstrap.com/
-[LESS variables]: http://getbootstrap.com/css/
+> [!div class="nextstepaction"]
+> [Az Azure API Management developer portálon sablonok testreszabása](api-management-developer-portal-templates.md)

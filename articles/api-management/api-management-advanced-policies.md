@@ -6,53 +6,38 @@ documentationcenter:
 author: vladvino
 manager: erikre
 editor: 
-ms.assetid: 8a13348b-7856-428f-8e35-9e4273d94323
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 08834531b78a857b54f0e9e792290774f9e477de
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 191870aea5f35830115ae1e8885cd3035597411f
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="api-management-advanced-policies"></a>Házirendek speciális API Management
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
-  
+
 ##  <a name="AdvancedPolicies"></a>Speciális házirendek  
   
 -   [Folyamat szabályozása](api-management-advanced-policies.md#choose) - feltételesen alkalmazza a házirend-utasításoknál logikai értékelése eredményei alapján [kifejezések](api-management-policy-expressions.md).  
-  
 -   [Kérés továbbítása a](#ForwardRequest) -továbbítja a kérést a háttérszolgáltatáshoz.
-
 -   [Korlátozza a feldolgozási](#LimitConcurrency) -megakadályozza, hogy a házirendek egyszerre legfeljebb a megadott számú kérelem végrehajtása közé.
-  
 -   [Az Event Hubs napló](#log-to-eventhub) -üzeneteket küld egy Eseményközpontot, határozzák meg a tranzakciónaplókat tartalmazó entitás a megadott formátumban. 
-
 -   [Válasz mock](#mock-response) -megszakításainak-feldolgozási folyamat végrehajtása és közvetlenül a hívó mocked választ ad vissza.
-  
 -   [Próbálja meg újra](#Retry) -újrapróbálkozások zárt házirend utasítás végrehajtása, ha, és amíg a feltétel nem teljesül. Végrehajtási ismételje meg a megadott időközönként, és a legfeljebb a megadott újrapróbálkozások száma.  
-  
 -   [Térjen vissza a válasz](#ReturnResponse) -megszakításainak-feldolgozási folyamat végrehajtása és a közvetlenül a hívó adott választ. 
-  
 -   [Egyirányú kérés küldése](#SendOneWayRequest) -kérést küld a megadott URL-cím a válaszra való várakozás nélkül.  
-  
 -   [Kérés küldése](#SendRequest) -kérést küld a megadott URL-cím.  
-
 -   [Állítsa be a HTTP-proxy](#SetHttpProxy) -lehetővé teszi a továbbított kérelmek egy HTTP-proxyn keresztül.  
-
 -   [Kérelem módszert állítja be](#SetRequestMethod) -módosíthatja a kérelem HTTP-metódust.  
-  
 -   [Állítsa be. állapotkód:](#SetStatus) – a HTTP-állapotkód: a megadott értékre változik.  
-  
 -   [Új érték](api-management-advanced-policies.md#set-variable) -továbbra is fennáll az elnevezett értéket [környezetben](api-management-policy-expressions.md#ContextVariables) változó későbbi eléréshez.  
-
 -   [Nyomkövetési](#Trace) -be egy karakterláncot ad a [API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) kimeneti.  
-  
 -   [Várjon, amíg](#Wait) -megvárja-e a zárójelek között [küldési kérelmek](api-management-advanced-policies.md#SendRequest), [lehet értéket kiolvasni a gyorsítótár](api-management-caching-policies.md#GetFromCacheByKey), vagy [folyamatot szabályozhatja](api-management-advanced-policies.md#choose) házirendeket befejeződjön, mielőtt továbblép.  
   
 ##  <a name="choose"></a>Folyamata  
@@ -264,7 +249,6 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Házirend szakaszok:** háttér  
-  
 -   **Házirend hatókörök:** minden hatókör  
   
 ##  <a name="LimitConcurrency"></a>A feldolgozási korlátot  
@@ -454,7 +438,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|Az állapot|Logikai szövegkonstans vagy [kifejezés](api-management-policy-expressions.md) adja meg, ha az újrapróbálkozások le kell állítani (`false`) vagy továbbra is (`true`).|Igen|N/A|  
+|feltétel|Logikai szövegkonstans vagy [kifejezés](api-management-policy-expressions.md) adja meg, ha az újrapróbálkozások le kell állítani (`false`) vagy továbbra is (`true`).|Igen|N/A|  
 |darab|Egy pozitív szám, amely megadja az újrapróbálkozások maximális számát kísérlet.|Igen|N/A|  
 |interval|Próbálja meg egy pozitív szám, a között az újrapróbálkozási időköz megadása másodpercben.|Igen|N/A|  
 |maximális-időköz|Egy pozitív szám, a maximális megadása másodpercben Várjon, amíg az újrapróbálkozási kísérletek közötti időközt. Az exponenciális újrapróbálkozási algoritmust végrehajtásához szolgál.|Nem|N/A|  
@@ -570,10 +554,10 @@ status code and media type. If no example or schema found, the content is empty.
 |Elem|Leírás|Szükséges|  
 |-------------|-----------------|--------------|  
 |küldési-egy-módon-kérelmek|A gyökérelem.|Igen|  
-|URL-címe|A kérelem URL-CÍMÉT.|Nincs if mód = másolási; Ellenkező esetben igen.|  
+|url|A kérelem URL-CÍMÉT.|Nincs if mód = másolási; Ellenkező esetben igen.|  
 |Módszer|A kérelem HTTP-metódust.|Nincs if mód = másolási; Ellenkező esetben igen.|  
 |header|Kérelem fejléce. Használjon több több kérelem fejlécek.|Nem|  
-|törzs|A kérés törzsében.|Nem|  
+|törzs|A kérelem törzse.|Nem|  
   
 ### <a name="attributes"></a>Attribútumok  
   
@@ -649,10 +633,10 @@ status code and media type. If no example or schema found, the content is empty.
 |Elem|Leírás|Szükséges|  
 |-------------|-----------------|--------------|  
 |küldési-kérelmek|A gyökérelem.|Igen|  
-|URL-címe|A kérelem URL-CÍMÉT.|Nincs if mód = másolási; Ellenkező esetben igen.|  
+|url|A kérelem URL-CÍMÉT.|Nincs if mód = másolási; Ellenkező esetben igen.|  
 |Módszer|A kérelem HTTP-metódust.|Nincs if mód = másolási; Ellenkező esetben igen.|  
 |header|Kérelem fejléce. Használjon több több kérelem fejlécek.|Nem|  
-|törzs|A kérés törzsében.|Nem|  
+|törzs|A kérelem törzse.|Nem|  
   
 ### <a name="attributes"></a>Attribútumok  
   
@@ -807,7 +791,6 @@ Vegye figyelembe a használatát [tulajdonságok](api-management-howto-propertie
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Házirend szakaszok:** kimenő, háttér,-hiba  
-  
 -   **Házirend hatókörök:** minden hatókör  
 
 ##  <a name="set-variable"></a>Új érték  
@@ -843,72 +826,41 @@ Vegye figyelembe a használatát [tulajdonságok](api-management-howto-propertie
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Házirend szakaszok:** bejövő, kimenő háttér,-hiba  
-  
 -   **Házirend hatókörök:** minden hatókör  
   
 ###  <a name="set-variableAllowedTypes"></a>Engedélyezett típusokkal  
  A használt kifejezések a `set-variable` házirendet a következő alapvető típusok valamelyikét kell visszaadnia.  
   
 -   System.Boolean  
-  
 -   System.SByte  
-  
 -   System.Byte  
-  
 -   System.UInt16  
-  
 -   System.UInt32  
-  
 -   System.UInt64  
-  
 -   System.Int16  
-  
 -   System.Int32  
-  
 -   System.Int64  
-  
 -   System.Decimal  
-  
 -   System.Single  
-  
 -   System.Double  
-  
 -   System.Guid  
-  
 -   System.String  
-  
 -   System.Char  
-  
 -   System.DateTime  
-  
 -   System.TimeSpan  
-  
 -   System.Byte?  
-  
 -   System.UInt16?  
-  
 -   System.UInt32?  
-  
 -   System.UInt64?  
-  
 -   System.Int16?  
-  
 -   System.Int32?  
-  
 -   System.Int64?  
-  
 -   System.Decimal?  
-  
 -   System.Single?  
-  
 -   System.Double?  
-  
 -   System.Guid?  
-  
 -   System.String?  
-  
 -   System.Char?  
-  
 -   System.DateTime?  
 
 ##  <a name="Trace"></a>Nyomkövetési  
@@ -1001,16 +953,19 @@ Vegye figyelembe a használatát [tulajdonságok](api-management-howto-propertie
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|ehhez:|Meghatározza, hogy a `wait` házirend megvárja-e a minden közvetlenül alárendelt házirendek befejezett vagy egyszerűen lesz. Engedélyezett értékek a következők:<br /><br /> -   `all`-Várjon, amíg befejeződik az összes közvetlenül alárendelt házirendek<br />-a - Várjon, amíg egy-egy közvetlen alárendelt házirend befejezéséhez. Az első közvetlenül alárendelt házirend befejezése után a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt.|Nem|Minden|  
+|ehhez:|Meghatározza, hogy a `wait` házirend megvárja-e a minden közvetlenül alárendelt házirendek befejezett vagy egyszerűen lesz. Engedélyezett értékek a következők:<br /><br /> -   `all`-Várjon, amíg befejeződik az összes közvetlenül alárendelt házirendek<br />-a - Várjon, amíg egy-egy közvetlen alárendelt házirend befejezéséhez. Az első közvetlenül alárendelt házirend befejezése után a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt.|Nem|összes|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ 
+Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Házirend szakaszok:** bejövő, kimenő háttér  
-  
--   **Házirend hatókörök:**minden hatókör  
+-   **Házirend hatókörök:** minden hatókör  
   
 ## <a name="next-steps"></a>Következő lépések
+
 Házirendek használata további információkért lásd:
--   [Az API Management házirendek](api-management-howto-policies.md) 
--   [Házirend-kifejezések](api-management-policy-expressions.md)
++ [Az API Management házirendek](api-management-howto-policies.md) 
++ [Házirend-kifejezések](api-management-policy-expressions.md)
++ [Házirend-hivatkozás](api-management-policy-reference.md) házirend-utasításoknál és a beállítások teljes listáját
++ [Házirend-minták](policy-samples.md)   

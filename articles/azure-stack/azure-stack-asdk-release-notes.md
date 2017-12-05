@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 12/03/2017
 ms.author: andredm
-ms.openlocfilehash: 56d8ad4fecf14dfa69ade43438672c31a4954209
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 6abbad8a086571702fd2e9d4d5d172189bb3c339
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Az Azure verem szoftverfejlesztői készlet kibocsátási megjegyzései
 
@@ -56,7 +56,7 @@ A kibocsátási megjegyzések fejlesztései, javítások és Azure verem szoftve
    Az utolsó két problémák megoldása érdekében adhatja meg az előfizetés vagy az erőforráscsoport (ha tudja) neve, vagy a PowerShell segítségével helyette.
 
 - Megjelenik egy **szükséges aktiválási** figyelmeztető riasztás, amely azt ajánlja, hogy regisztrálja az Azure verem szoftverfejlesztői készlet. Ez az elvárt viselkedés.
-- Az a **szükséges aktiválási** figyelmeztető riasztás részleteit, ne kattintson a hivatkozásra kattintva a **AzureBridge** összetevő. Ha így tesz, a **áttekintése** panel sikertelenül megkísérli betölteni, és nem túllépi az időkorlátot.
+- Ha a **összetevő** bármelyik hivatkozásra kattint **infrastruktúra-szerepkör** riasztást, a létrejövő **áttekintése** panel megpróbálja betölteni, és sikertelen lesz. Emellett a ** – áttekintés ** panel does nem túllépi az időkorlátot.
 - Felhasználói előfizetések eredmények az árva erőforrások törlése. A probléma megoldásához először törölnie a felhasználói erőforrásokat és a teljes erőforráscsoport, és törölje a felhasználó előfizetések.
 - Nem áll az előfizetés engedéllyel megtekintheti a verem Azure portál használatával. A probléma megoldásához engedélyek PowerShell használatával ellenőrizheti.
  

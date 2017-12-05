@@ -11,11 +11,11 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: cf27e4d9997a796fa61af6e6f0af3c0c5a0c296f
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 55fac34a5eae169a3a4fd8c64c90c552fdb5df5a
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Azure felügyelt Szolgáltatásidentitás használata az Azure API Management
 
@@ -118,9 +118,8 @@ A következő példa bemutatja, hogyan lehet lekérni a tanúsítványt az Azure
 3. A tanúsítvány egyéni tartománynév beállítása a Key Vault példányból frissíteni az API Management-példány.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Végrehajtásához az alábbi arm-sablon igazolnia kell a következő 
-1. A pfx-tanúsítvány a ugyanazt az előfizetést és az Api Management szolgáltatás ugyanazon resourcegroup tartalmazó kulcstároló. Ez a követelmény az arm-sablont. 
-2. A titkos kulcs tartalomtípusa kell *alkalmazás/x-pkcs12*. A következő parancsfájlt használhatja a tanúsítvány feltöltése
+1. A Key Vault a pfx-tanúsítvány tartalmazó azonos Azure-előfizetést és az API Management szolgáltatás ugyanabban az erőforráscsoportban kell lennie. Ez feltétele az Azure Resource Manager sablon. 
+2. A titkos kulcs tartalom típusúnak kell lennie *alkalmazás/x-pkcs12*. A következő parancsfájl segítségével töltse fel a tanúsítványt:
 
 ```powershell
 $pfxFilePath = "PFX_CERTIFICATE_FILE_PATH" # Change this path 

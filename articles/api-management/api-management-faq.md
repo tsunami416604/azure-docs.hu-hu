@@ -1,6 +1,6 @@
 ---
 title: "Az Azure API Management – gyakori kérdések |} Microsoft Docs"
-description: "Ismerje meg, hogy a gyakori kérdéseket, a mintákat és ajánlott eljárások az Azure API Management választ."
+description: "Ismerje meg a választ gyakran ismételt kérdések (GYIK) kombinációját, és gyakorlati tanácsok az Azure API Management."
 services: api-management
 documentationcenter: 
 author: vladvino
@@ -12,20 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: a9740cf527e4a9811b510ad5c96e5ab769efc2d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d0072a56c2688c297d499533a125926ba9915ff9
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdéseket, a mintákat és ajánlott eljárások az Azure API Management.
 
 ## <a name="contact-us"></a>Kapcsolat
 * [Hogyan lehet I kérdés a Microsoft Azure API Management csapata?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
-
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 * [Mit jelent, ha a szolgáltatás egyelőre?](#what-does-it-mean-when-a-feature-is-in-preview)
@@ -62,7 +61,7 @@ A szolgáltatás egyelőre, az azt jelenti, hogy azt aktívan kérdése megvála
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Hogyan biztosíthassa a kapcsolatot az API Management-átjáró és a háttér-szolgáltatásaihoz?
 Több lehetőség közül választhat az API Management-átjáró és a háttér-szolgáltatásaihoz közötti kapcsolat biztonságossá tétele érdekében. A következőket teheti:
 
-* Egyszerű HTTP-hitelesítést használjon. További információkért lásd: [konfigurálhatja az API-beállítások](api-management-howto-create-apis.md#configure-api-settings).
+* Egyszerű HTTP-hitelesítést használjon. További információkért lásd: [importálása és az első API-t közzétenni](import-and-publish.md).
 * SSL kölcsönös hitelesítést használ, a [háttérszolgáltatások ügyfél segítségével biztonságossá tétele a tanúsítványhitelesítés az Azure API Management](api-management-howto-mutual-certificates.md).
 * IP-engedélyezése a háttér-szolgáltatáshoz felhasználhat. Ha a Standard vagy prémium szint API Management példánya, állandó marad az átjáró IP-címét. Az engedélyezett címekhez, hogy az IP-cím engedélyezése állíthatja be. A IP-címet a API Management példány kaphat az irányítópulton az Azure portálon.
 * Az API Management-példány csatlakozni az Azure virtuális hálózat.
@@ -102,7 +101,7 @@ Ha hozzá szeretne adni a házirend megjelenik a szürkén jelenik meg, vagy a H
 Az API Management API versioning használandó néhány lehetőség közül választhat:
 
 * Az API Management konfigurálhatja az API-k határoz meg különböző verziói. Például lehetséges, hogy két különböző API-k, MyAPIv1 és MyAPIv2. Egy fejlesztő választható használni szeretné a fejlesztői verzió.
-* Az API-t egy szolgáltatási URL-cím, amely nem tartalmazza a szegmens verziójával, például https://my.api is konfigurálhatja. Ezt követően konfigurálja a verzió szegmens minden műveletnek [URL-cím újraírása](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) sablont. Például lehet egy olyan műveletet egy [URL-cím sablon](api-management-howto-add-operations.md#url-template) nevű /resource és egy [URL-cím újraírása](api-management-howto-add-operations.md#rewrite-url-template) nevű sablon/v1/erőforrás. Módosíthatja a verzióértéket szegmens külön-külön az egyes műveletek.
+* Az API-t egy szolgáltatási URL-cím, amely nem tartalmazza a szegmens verziójával, például https://my.api is konfigurálhatja. Ezt követően konfigurálja a verzió szegmens minden műveletnek [URL-cím újraírása](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) sablont. 
 * Ha szeretné megtartani egy "alapértelmezett" verzió szegmens az API-t szolgáltatás URL-címe, a kiválasztott operations használó házirend beállítása a [be háttérszolgáltatás](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) házirend számára, hogy a háttér-kérelem elérési útja módosítható.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hogyan állíthatom be több környezeteknek a egyetlen API-val?
