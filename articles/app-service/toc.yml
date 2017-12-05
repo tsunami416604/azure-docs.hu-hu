@@ -127,6 +127,8 @@
               href: app-service-mobile-how-to-configure-twitter-authentication.md
         - name: Felügyeltszolgáltatás-identitás használata
           href: app-service-managed-service-identity.md
+        - name: SSL-tanúsítvány használata alkalmazáskódban
+          href: app-service-web-ssl-cert-load.md
         - name: TLS kölcsönös hitelesítés beállítása
           href: app-service-web-configure-tls-mutual-auth.md
     - name: Az alkalmazás méretezése

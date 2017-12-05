@@ -133,6 +133,7 @@
 ## [Kiberbiztonsági tanácsadás](azure-security-cyber-services.md)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Biztonsági javaslatok az Azure Marketplace-rendszerképekhez](security-recommendations-azure-marketplace-images.md)
+## [Útmutató a biztonsági eseményekről szóló támogatási jegyek naplózásához](azure-security-event-support-ticket.md)
 ## Forgatókönyvek
 ### [Személyes adatok kezelése az Azure-ban](manage-personal-data-azure.md)
 ### [Személyes adatok felderítése, azonosítása és besorolása az Azure-ban](how-to-discover-classify-personal-data-azure.md)

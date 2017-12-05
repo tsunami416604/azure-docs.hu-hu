@@ -29,14 +29,18 @@
       href: project-ic-tasks.md
 - name: Projektstruktúra
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
-- name: Projekttervezés és -végrehajtás
+- name: Projekttervezés
+  href: team-data-science-process-project-templates.md
+- name: Projekt végrehajtása
   items:
-    - name: Projekttervezés
-      href: team-data-science-process-project-templates.md
-    - name: Projekt végrehajtása
-      items:
-        - name: Adatelemzési projektek
-          href: project-execution.md
+    - name: Rugalmas fejlesztés
+      href: agile-development.md
+    - name: Együttműködésen alapuló kódolás a Gittel
+      href: collaborative-coding-with-git.md
+    - name: Adatelemzési műveletek végrehajtása
+      href: execute-data-science-tasks.md
+    - name: Követés állapota
+      href: track-progress.md
 - name: Példák
   href: walkthroughs.md
   items:
@@ -52,12 +56,12 @@
     - name: Spark PySparkkal és Scalával
       href: walkthroughs-spark.md
       items:
-        - name: Adatok megismerése
+        - name: Vizsgálati és modelladatok
           href: spark-data-exploration-modeling.md
+        - name: Speciális adatfeltárás és modellezés
+          href: spark-advanced-data-exploration-modeling.md
         - name: Relevanciamodellek
           href: spark-model-consumption.md
-        - name: Speciális adatfeltárás
-          href: spark-advanced-data-exploration-modeling.md
     - name: Hive a HDInsight Hadooppal
       href: walkthroughs-hdinsight-hadoop.md
     - name: U-SQL az Azure Data Lake-kel
@@ -136,7 +140,8 @@
             - name: Az AzCopy használata
               href: move-data-to-azure-blob-using-azcopy.md
             - name: A Python használata
-              href: move-data-to-azure-blob-using-python.md
+              href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
+              maintainContext: true
             - name: Az SSIS használata
               href: move-data-to-azure-blob-using-ssis.md
             - name: Áthelyezés virtuális gépre
@@ -211,14 +216,8 @@
             - name: Algoritmus-adatlap
               href: ../studio/algorithm-cheat-sheet.md
               maintainContext: true
-    - name: Modellek üzembe helyezése
-      items:
-        - name: Webszolgáltatással
-          href: ../studio/publish-a-machine-learning-web-service.md
-          maintainContext: true
-        - name: Webszolgáltatás felhasználása
-          href: ../studio/consume-web-services.md
-          maintainContext: true
+    - name: Modellek üzembe helyezése éles környezetben
+      href: deploy-models-in-production.md
 - name: Kapcsolódó
   items:
     - name: Microsoft Cognitive Toolkit – CNTK

@@ -70,6 +70,7 @@
 ### [Azure Automation-runbook hívása Log Analytics-riasztásból](automation-invoke-runbook-from-omsla-alert.md)
 ### [Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban](automation-deploy-template-runbook.md)
 ## Megoldások
+### [Frissítés- és változáskövetés előkészítése](automation-onboard-solutions.md)
 ### [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md)
 #### [Frissítések kezelése több virtuális gép esetén](manage-update-multi.md)
 #### [SCCM-integráció OMS-frissítéskezeléssel](oms-solution-updatemgmt-sccmintegration.md)

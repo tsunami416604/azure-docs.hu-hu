@@ -224,6 +224,8 @@
       items:
         - name: Chef
           href: chef-automation.md
+        - name: Webalkalmazás közzététele a Visual Studióból
+          href: publish-web-app-from-visual-studio.md
     - name: Alkalmazások futtatása
       items:
         - name: SQL Server

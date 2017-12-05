@@ -58,6 +58,7 @@
 
 ## Hibaelhárítás
 ### [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
+### [Sikertelen kapcsolatcsoport alaphelyzetbe állítása](reset-circuit.md)
 ### [ARP-táblák lekérése](expressroute-troubleshooting-arp-resource-manager.md)
 ### [ARP-táblák lekérése (klasszikus)](expressroute-troubleshooting-arp-classic.md)
 

@@ -31,6 +31,7 @@
 ### [Piactér képeinek konfigurálása](devtest-lab-configure-marketplace-images.md)
 ### [Licencelt kép engedélyezése](devtest-lab-enable-licensed-images.md)
 ### [Címke hozzáadása egy laborhoz](devtest-lab-add-tag.md)
+### [Értesítés közzététele tesztkörnyezetben](devtest-lab-announcements.md)
 
 ## [Egyéni rendszerkép vagy képlet kiválasztása](devtest-lab-comparing-vm-base-image-types.md)
 

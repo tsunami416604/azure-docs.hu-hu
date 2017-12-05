@@ -7,8 +7,10 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: AKS-fürt létrehozása
+    - name: AKS-fürt létrehozása – parancssori felület
       href: kubernetes-walkthrough.md
+    - name: AKS-fürt létrehozása – portál
+      href: kubernetes-walkthrough-portal.md
 - name: Oktatóanyagok
   items:
     - name: 1 – Alkalmazás előkészítése az AKS-hez

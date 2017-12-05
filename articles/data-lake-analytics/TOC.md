@@ -31,6 +31,8 @@
 ### [Az U-SQL kognitív bővítményei](data-lake-analytics-u-sql-cognitive.md)
 ### [Webhelynaplók elemzése](data-lake-analytics-analyze-weblogs.md)
 ### [U-SQL egyéni kód a Visual Studio Code-hoz](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+### [U-SQL a Visual Studio Code-hoz](data-lake-analytics-data-lake-tools-for-vscode.md)
+### [U-SQL adatbázis exportálása](data-lake-analytics-data-lake-tools-export-database.md)
 
 ## U-SQL-programok hibakeresése
 ### [Feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
