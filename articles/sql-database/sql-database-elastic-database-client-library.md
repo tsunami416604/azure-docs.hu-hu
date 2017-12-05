@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: ddove
-ms.openlocfilehash: 721b87c67aa5e8002f21faca5a10fe41b8958e1e
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 0674aba66b48b26b70b3ab32d9283de5c63a267a
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="building-scalable-cloud-databases"></a>Skálázható felhőalapú adatbázisok készítése
 Adatbázisok kiterjesztése könnyen elvégezhető méretezhető eszköz és funkció használata az Azure SQL Database. Különösen, használhatja a **Elastic Database ügyféloldali kódtárának** létrehozásához és kezeléséhez kiterjesztett adatbázisok. Ez a funkció lehetővé teszi, hogy könnyen fejleszthet a több száz használó szilánkos alkalmazások – vagy akár több ezer – az Azure SQL-adatbázisok. [Rugalmas feladat](sql-database-elastic-jobs-powershell.md) ezután felhasználhatók ezeknek az adatbázisoknak könnyű kezelés érdekében.
 
 Letöltése:
-* a könyvtár a .NET változata: [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 * a Java verzióját a könyvtárban, lásd: [Maven központi tárházban](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
+* a könyvtár a .NET változata: [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
 ## <a name="documentation"></a>Dokumentáció
 1. [Ismerkedés az Elastic Database-eszközökkel](sql-database-elastic-scale-get-started.md)
@@ -60,11 +60,11 @@ Használó alkalmazások kiterjesztése *horizontális* mind a fejlesztői, vala
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A rugalmas adatbázis ügyféloldali kódtár ([.NET](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22)) – hogy **letöltése** a könyvtárban.
+- A rugalmas adatbázis ügyféloldali kódtár ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) – hogy **letöltése** a könyvtárban.
 
 - [Ismerkedés a rugalmas adatbáziseszközöket](sql-database-elastic-scale-get-started.md) – próbálja meg a **mintaalkalmazás** ügyfél funkciók azt mutatja be.
 
-- GitHub ([.NET](https://github.com/Azure/elastic-db-tools), [Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md)) – a kód hozzájárulások végrehajtásához.
+- GitHub ([Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md), [.NET](https://github.com/Azure/elastic-db-tools)) – a kód hozzájárulások végrehajtásához.
 - [Az Azure SQL Database rugalmas lekérdezési áttekintése](sql-database-elastic-query-overview.md) - rugalmas lekérdezések használata.
 
 - [Adatok áthelyezése másik kiterjesztett felhő adatbázisok](sql-database-elastic-scale-overview-split-and-merge.md) - használatával a **vegyes egyesítéses eszköz**.

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.openlocfilehash: 67c11277142d6616fe77179e03b55ed08993b818
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
+ms.openlocfilehash: 7ceb4bf97c29a18d6879af55615eea46037c51ce
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos adatbázis és az Azure App Service Web Apps Azure Resource Manager-sablonnal telepítése
 Az oktatóanyag bemutatja, hogyan Azure Resource Manager-sablonok segítségével telepítheti, és integrálhatja a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), egy [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) web app és egy minta-webalkalmazáshoz.

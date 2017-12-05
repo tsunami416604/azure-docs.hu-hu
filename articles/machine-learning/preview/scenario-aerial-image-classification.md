@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 10/27/2017
-ms.openlocfilehash: 07e74c64e587cce99612cd5047516bf131943f2e
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: f8ea2c269906732aef8d577c0d744e730c1dedcd
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="aerial-image-classification"></a>Légifelvételes kép besorolás
 
@@ -59,9 +59,14 @@ Az alábbi utasításokat ismerteti, hogyan kell beállítani végrehajtási kö
 - [Az Azure Machine Learning-munkaterület](./overview-what-is-azure-ml.md)
     - Kövesse a [telepítése és gyors üzembe helyezés létrehozása](quickstart-installation.md) telepítése az Azure Machine Learning-munkaterület, és kísérletezés és modell felügyeleti fiókok létrehozása.
 - [A Batch-AI](https://github.com/Azure/BatchAI) Python SDK és Azure CLI 2.0
-    - A kötegelt AI SDK és Azure CLI 2.0 utasításait követve telepítse a [receptet Előfeltételek szakaszában](https://github.com/Azure/BatchAI/tree/master/recipes).
-        - Től írásának, az Azure Machine Learning-munkaterület használja az Azure CLI 2.0 külön elágazás. Az átláthatóság érdekében a parancssori felület "egy az Azure Machine Learning-munkaterület indítani CLI", a munkaterület verziója és az általános eszköz-verzió (is tartalmazó kötegelt AI) lesz az "Azure CLI 2.0."
-    - Hozzon létre egy Azure Active Directory alkalmazás és szolgáltatás egyszerű [ezeket az utasításokat](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials). Rekord az ügyfél-azonosító, a titkos kulcs és a bérlő azonosítója.
+    - Fejezze be a következő részeket a [kötegelt AI receptet információs](https://github.com/Azure/BatchAI/tree/master/recipes):
+        - "Előfeltételek"
+        - "Létrehozása és az Azure Active Directory (AAD) alkalmazás"
+        - "BatchAI erőforrás-szolgáltató regisztrálása" (az "Azure CLI-vel 2.0" receptet futtatása)
+        - "Az Azure Batch AI felügyeleti ügyfél telepítése"
+        - "Az Azure Python SDK telepítése"
+    - Rekord az ügyfél-azonosító, titkos kulcs és az Azure Active Directory-alkalmazás létrehozásához a rendszer irányítja a bérlő azonosítója. Ezeket a hitelesítő adatokat az oktatóanyag későbbi részében fogja használni.
+    - Frissítésétől írásának, Azure Machine Learning-munkaterület és az Azure Batch AI használja az Azure CLI 2.0 külön elágazásokon. Az átláthatóság érdekében a parancssori felület "egy az Azure Machine Learning-munkaterület indítani CLI", a munkaterület verziója és az általános eszköz-verzió (is tartalmazó kötegelt AI) lesz az "Azure CLI 2.0."
 - [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy), egy ingyenes Azure storage-fiókok közötti fájlátvitel összehangolására segédprogram
     - Gondoskodjon arról, hogy a mappát, amely tartalmazza az AzCopy végrehajtható fájlt a rendszer PATH környezeti változóba. (Érhetők el a környezeti változók módosítani [Itt](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp).)
 - Egy SSH-ügyfél; ajánlott [PuTTY](http://www.putty.org/).
@@ -215,7 +220,7 @@ A kötegelt AI fürt fér hozzá a betanítási adatok hálózati fájlkiszolgá
 1. Adja ki a hálózati fájlkiszolgáló létrehozása a következő parancsot:
 
     ```
-    az batchai file-server create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --vm-size Standard_D2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
+    az batchai file-server create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --vm-size Standard_DS2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
     ```
 
 1. A kiépítési állapotának a hálózati fájlkiszolgáló, a következő parancsot:

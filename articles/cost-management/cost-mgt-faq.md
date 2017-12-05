@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/21/2017
+ms.date: 12/04/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 043aea81258d96fc6598903f9b523f29a5bf2c15
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 67ec6489a6aeed946d41ac8b297d3d99b86e4169
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Gyakori kérdések az Azure költség Management
 
@@ -92,20 +92,13 @@ Azon felhőbeli szolgáltatók esetében:
 
 Egy entitás további CSP fiókok hozzáadásához válassza **MSP hozzáférés** ahelyett, hogy **vállalati** az új entitás létrehozásakor. Ha a fiókjához regisztrált nagyvállalati szerződéssel, és hozzá szeretné adni a kriptográfiai Szolgáltató hitelesítő adatai, Cloudyn technikai támogatási csoporthoz módosítania a fiók beállításait. Ha egy fizetős Azure-előfizető, létrehozhat egy új támogatási kérelem az Azure portálon. Válassza ki **súgó + támogatás**, majd válassza ki **új támogatja a kérelem**.
 
-## <a name="how-do-i-change-the-currency-symbol-used-in-cloudyn"></a>Hogyan változtathatom meg a Cloudyn szimbóluma?
+## <a name="currency-symbols-in-cloudyn-reports"></a>Pénznemszimbólumot Cloudyn jelentések
 
-Ha egyetlen entitás összes Azure-fiók ugyanabban a pénznemben használja, a pénznem, amelyekkel automatikusan felismeri. Azonban a pénznemszimbólumot tévesen jelenik meg, mint  **$**  a következő pénznemek bármelyikéhez:
+Lehetséges, hogy a különböző pénznemeket használó több Azure-fiókra. Költség jelentéseket Cloudyn azonban ne jelenjen meg egynél több pénznem típusa jelentésenként.
 
-- GBP Egyesült Királyságban Fontsterling =
-- EUR Európai euro =
-- INR indiai rúpia =
-- NOK norvég korona =
+Ha különböző pénznemek használatával több előfizetéssel rendelkezik, egy szülőentitás és annak gyermek entitás pénznemek jelennek meg a a  **$**  szimbólum. A javasolt ajánlott kerülheti el a különböző pénznemek entitás ugyanabba a hierarchiába. Más szóval egy entitás struktúrájából összes előfizetés megegyező pénznemet kell használni.
 
-Bár a pénznemszimbólumot előfordulhat, hogy megjelenítése  **$**  USD, a költség értékeit a megfelelő pénznemben számított megjelennek. Ha a fiókok használata euros ugyanabban az entitásban, például a _értékek_ euros, akkor is, ha vannak Cloudyn látható a  **$**  szimbólum jelenik meg hibás üzenettel.
-
-Ha az ügyfél egy Azure nagyvállalati szerződéssel, Cloudyn technikai támogatási csoporthoz módosíthatja a pénznemszimbólumot $ költség jelentéseket látható. Az Azure portálon létrehozhat egy új támogatási kérelem. Válassza ki **súgó + támogatás**, majd válassza ki **új támogatja a kérelem**.
-
-Ha egy CSP-ügyfél, a pénznemszimbólum a szám nem módosítható. Cloudyn csak a díjszabási kártyák USD használó támogatja. Cloudyn tervezi díjszabási kártyák támogatják a különböző pénznemben lehetőséget.
+Cloudyn automatikusan észleli a nagyvállalati szerződés előfizetés pénznem és mutatja be megfelelően a jelentésekben.  Azonban Cloudyn csak jelenít meg a  **$**  CSP és a web-közvetlen Azure-fiókra.
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Mik azok a Cloudyn adatok frissítése ütemtervek?
 

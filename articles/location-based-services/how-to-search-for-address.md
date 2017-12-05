@@ -8,11 +8,11 @@ ms.author: philmea
 ms.date: 11/29/2017
 ms.topic: how-to
 ms.service: location-based-services
-ms.openlocfilehash: f7337c1c5821016987096da47dda4ac1124d7910
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: d928e4ff7c6e35291bcc1e6a1359d54542968278
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Hol találhatók az Azure-alapú helyszolgáltatás (előzetes verzió) keresési szolgáltatás segítségével
 A keresési szolgáltatás egy egy RESTful API-k, címek, a helyek, a pontokat iránt érdeklődik, üzleti listák és egyéb földrajzi információk keresése fejlesztők számára készült. A keresési szolgáltatás a szélesség/hosszúsági egy adott cím, alhálózatok közötti utca, földrajzi funkció vagy információs jel (POI) rendeli. A keresési szolgáltatás API-k által visszaadott szélességi és hosszúsági értékeket más Azure-alapú helyszolgáltatás például az útvonal és a forgalom áramlását API-k paramétereiben használható.
@@ -62,12 +62,11 @@ A legtöbb keresési lekérdezések alapértelmezés szerint a "maxFuzzyLevel = 
     
     Az eredmények változnak, ehhez a lekérdezéshez, különösen bárhova kötve. Használhatja a **countrySet** paraméterrel adhatja meg, amelynek az alkalmazás kell érvényességének, országok, az alapértelmezés lesz a teljes globális, potenciálisan visszaadó szükségtelen eredmények kereséséhez.
 
-5. Adja hozzá a következő értéket a lekérdezési karakterláncot, és kattintson a **küldése**:
-    ```
-        ,countrySet=US
-    ```
-    >[!NOTE] 
-    >Győződjön meg arról, hogy Ön vesszővel az elkülönített további URI paraméterek a lekérdezési karakterláncban.
+5. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
+
+    | Kulcs | Érték |
+    |------------------|-------------------------|
+    | countrySet | USA |
     
     Az eredmények most időpontjaihoz az országkódot, és a lekérdezés visszaadja pizzaszósz éttermekben az Amerikai Egyesült Államokban.
     
@@ -116,10 +115,11 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
         400 Broad, Seattle
     ```
 
-5. Adja hozzá a következő értéket a lekérdezési karakterláncot, és kattintson a **küldése**:
-    ```
-        ,typeahead
-    ```
+5. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
+
+    | Kulcs | Érték |
+    |-----|------------|
+    | typeahead | igaz |
 
     A **typeahead** jelző utasítja a cím keresési API-JÁNAK, ha a lekérdezés egy részleges bemenetként és prediktív értékek tömbjét adja vissza.
 
@@ -150,37 +150,43 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     
     Egy "stadium" poi-kategóriát a válasz tartalmazza a POI bejegyzést Safeco mező. 
     
-4. Adja hozzá a következő értéket a lekérdezési karakterláncot, és kattintson a **küldése**:
-    ```
-        ,number
-    ```
+4. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
+
+    | Kulcs | Érték |
+    |-----|------------|
+    | szám | igaz |
+
     Ha a [szám](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezésparaméter a kérelem nem jut, a válasz előfordulhat, hogy tartalmazza a utca (balra vagy jobbra), és az eltolás pozíciója, hogy a kívánt oldalán.
     
-5. Adja hozzá a következő értéket a lekérdezési karakterláncot, és kattintson a **küldése**:
-    ```
-        ,spatialKeys
-    ```
+5. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
+
+    | Kulcs | Érték |
+    |-----|------------|
+    | spatialKeys | igaz |
 
     Ha a [spatialKeys](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válasz egy adott hely védett földrajzi térbeli kulcsfontosságú adatokat tartalmaz.
 
-6. Adja hozzá a következő értéket a lekérdezési karakterláncot, és kattintson a **küldése**:
-    ```
-        ,returnSpeedLimit
-    ```
+6. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
+
+    | Kulcs | Érték |
+    |-----|------------|
+    | returnSpeedLimit | igaz |
     
     Ha a [returnSpeedLimit](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válasz visszaadása, a közzétett Sebességkorlát.
 
-7. Adja hozzá a következő értéket a lekérdezési karakterláncot, és kattintson a **küldése**:
-    ```
-        ,returnRoadUse
-    ```
+7. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
+
+    | Kulcs | Érték |
+    |-----|------------|
+    | returnRoadUse | igaz |
 
     Ha a [returnRoadUse](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a választ ad vissza, a közúti használható tömb reversegeocodes utca szinten.
 
-8. Adja hozzá a következő értéket a lekérdezési karakterláncot, és kattintson a **küldése**:
-    ```
-        ,roadUse
-    ```
+8. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
+
+    | Kulcs | Érték |
+    |-----|------------|
+    | roadUse | igaz |
 
     A fordított geocode lekérdezés egy adott típusú közúti használata használatával korlátozhatja a [roadUse](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter.
     

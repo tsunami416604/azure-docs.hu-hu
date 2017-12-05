@@ -1,7 +1,7 @@
 ---
 title: "Az Azure Storage Explorer Azure Cosmos DB kezelése"
 description: "Útmutató: Azure Cosmos Adatbázist Azure Tártallózó kezelése."
-Keywords: "Azure Cosmos DB, az Azure Tártallózó, a DocumentDB, a MongoDB, a DocumentDB"
+Keywords: Azure Cosmos DB, Azure Storage Explorer, DocumentDB, MongoDB, DocumentDB
 services: cosmos-db
 documentationcenter: 
 author: Jiaj-Li
@@ -14,14 +14,14 @@ ms.custom: Azure Cosmos DB active
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: Jiaj-Li
-ms.openlocfilehash: e695cdd7c51e18a386764ab8444d3336366ae265
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 303fcfbda1934e3b29cb8ed06087c560275489e0
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Az Azure Tártallózó (előzetes verzió) Azure Cosmos DB kezelése
 
@@ -132,7 +132,7 @@ A gyűjtemény csomópont törlődik, és automatikusan frissíti az adatbázist
 #### <a name="create-and-modify-documents"></a>Létrehozása és módosítása a dokumentumok
 Hozzon létre egy új dokumentumot, nyissa meg a **dokumentumok** kattintson a bal oldali **új dokumentum**, szerkesztheti a tartalmakat, a jobb oldali ablaktáblán, majd kattintson a **mentése**. Létező dokumentum frissíteni, és kattintson **mentése**. Módosítások is elvesznek kattintva **elvetése**.
 
-![A dokumentum](./media/tutorial-documentdb-and-mongodb-in-storage-explorer/document.png)
+![Dokumentum](./media/tutorial-documentdb-and-mongodb-in-storage-explorer/document.png)
 
 #### <a name="delete-a-document"></a>Dokumentum törlése
 Kattintson a **törlése** gombbal pedig törölheti a kijelölt dokumentumot.

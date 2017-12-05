@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: juliako
-ms.openlocfilehash: 024b4cbb13001d67e7c1f0b86a84dfb43478c49d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5dd263a2e925989069c3b0257cfafa4c43e6157
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="media-services-development-with-net"></a>A .NET Media Services-fejlesztés
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -66,8 +66,11 @@ Azt is megteheti, a Media Services .NET SDK legújabb bits kaphat a Githubról (
 
     Ha használ [felhasználóhitelesítés](media-services-use-aad-auth-to-access-ams-api.md#types-of-authentication) a konfigurációs fájlban kell az Azure AD-bérlő tartomány és az AMS REST API-végpont értékeit.
     
+    >[!Note]
+    >Az Azure Media Services dokumentációjában legtöbb mintakódok beállításához csatlakozhatnak egy felhasználói (interaktív) típusú hitelesítés az AMS API-t. Ez a hitelesítési módszer alkalmas felügyeleti vagy a natív alkalmazások figyeléséről: mobilalkalmazások, a Windows-alkalmazások és a konzol alkalmazások.
+    
     >[!Important]
-    >Az Azure Media Services dokumentációjában legtöbb mintakódok beállításához csatlakozhatnak egy felhasználói (interaktív) típusú hitelesítés az AMS API-t. Ez a hitelesítési módszer alkalmas felügyeleti vagy a natív alkalmazások figyeléséről: mobilalkalmazások, a Windows-alkalmazások és a konzol alkalmazások. Ez a hitelesítési módszer nem alkalmas kiszolgáló, web services, az alkalmazások API-k típusának.  További információkért lásd: [elérni az AMS API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md).
+    > **Interaktív** hitelesítési metódus nem megfelelő-e a kiszolgáló, webes szolgáltatások, az alkalmazások API-k típusának. Az ilyen típusú alkalmazások használja **egyszerű** hitelesítési módszert. További információkért lásd: [elérni az AMS API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md).
 
         <configuration>
         ...
