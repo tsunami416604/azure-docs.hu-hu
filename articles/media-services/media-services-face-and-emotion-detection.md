@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: a55a0c2ef8c1c065b39fce9dc6ef2f806b60dfdc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89a2e590d7ae80540ac9f4d76be6f5f50049bdd6
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Arcfelismerés és az Azure Media Analytics Érzelemfelismerési észlelése
 ## <a name="overview"></a>Áttekintés
@@ -333,6 +333,13 @@ A következő program bemutatja hogyan:
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
 Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
+
+A minta működjenek, kövesse az alábbi két további lépéseket:
+
+1. Használjon verziójának 4.1.0 **WindowsAzure.MediaServices.Extensions** (mert a hivatkozott csomagot kompatibilitási problémákat). 
+2. Használjon verziójának 3.16.1 **Microsoft.IdentityModel.Clients.ActiveDirectory** (miatt az újabb verziókban egy ismert hiba).
+
+Ezek a követelmények vonatkoznak rá 2017. November 24-től.
 
 #### <a name="example"></a>Példa
 

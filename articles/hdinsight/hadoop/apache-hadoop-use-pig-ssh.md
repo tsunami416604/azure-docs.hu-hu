@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/03/2017
+ms.date: 12/04/2017
 ms.author: larryfr
-ms.openlocfilehash: be18f6db46285233e233c843dab1f389cd553e96
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: fa19913928bad8b91777c0904324ff5983f6472c
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>A Pig parancs (SSH) rendelkező Linux-alapú fürtön Pig feladatok futtatása
 
@@ -35,35 +35,39 @@ Megtudhatja, hogyan interaktív módon futtassa Pig-feladatokhoz az SSH-kapcsola
 
 Az SSH használata a HDInsight-fürthöz való csatlakozáshoz. Az alábbi példa nevű fürthöz csatlakozó **myhdinsight** nevű fiók **sshuser**:
 
-    ssh sshuser@myhdinsight-ssh.azurehdinsight.net
+```bash
+ssh sshuser@myhdinsight-ssh.azurehdinsight.net
+```
 
-**Ha megadott egy SSH-hitelesítési tanúsítvány kulcs** a HDInsight-fürt létrehozása után, szükség lehet a titkos kulcs helyének megadásához az ügyfélrendszeren.
-
-    ssh sshuser@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
-
-**Ha a megadott jelszó SSH hitelesítés** a HDInsight-fürt létrehozásakor adja meg a jelszót.
-
-Az SSH és a HDInsight együttes használatával további információkért lásd: [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a id="pig"></a>A Pig paranccsal
 
 1. A csatlakozás után a következő parancs használatával indítsa el a Pig parancssori felület (CLI):
 
-        pig
+    ```bash
+    pig
+    ```
 
-    Néhány percet, megtekintheti a `grunt>` kérdés.
+    Néhány percet, miután a kérdés vált`grunt>`.
 
 2. Adja meg a következő utasítást:
 
-        LOGS = LOAD '/example/data/sample.log';
+    ```piglatin
+    LOGS = LOAD '/example/data/sample.log';
+    ```
 
     Ez a parancs a sample.log fájl tartalmát betölti a NAPLÓKAT. A fájl tartalmát a következő utasítás használatával tekintheti meg:
 
-        DUMP LOGS;
+    ```piglatin
+    DUMP LOGS;
+    ```
 
 3. A következő átalakíthatja az adatokat úgy, hogy alkalmazza minden rekordot a következő utasítás használatával csak a naplózási szint kibontani reguláris kifejezést:
 
-        LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
+    ```piglatin
+    LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
+    ```
 
     Használhat **DUMP** az átalakítás után az adatok megtekintéséhez. Ebben az esetben használjon `DUMP LEVELS;`.
 
@@ -81,36 +85,48 @@ Az SSH és a HDInsight együttes használatával további információkért lás
 
 5. Az átalakítás eredménye használatával is mentheti a `STORE` utasítást. Például a következő utasítás menti a `RESULT` számára a `/example/data/pigout` a fürt az alapértelmezett tároló könyvtár:
 
-        STORE RESULT into '/example/data/pigout';
+    ```piglatin
+    STORE RESULT into '/example/data/pigout';
+    ```
 
    > [!NOTE]
    > Az adatok tárolási fájlban található a megadott könyvtár `part-nnnnn`. Ha a könyvtár már létezik, akkor egy hibaüzenet.
 
 6. Lépjen ki a grunt parancssorába, írja be a következő utasítást:
 
-        QUIT;
+    ```piglatin
+    QUIT;
+    ```
 
 ### <a name="pig-latin-batch-files"></a>A Pig Latin parancsfájlokat
 
 A Pig-parancs segítségével futtassa a Pig Latin fájlban található.
 
-1. A grunt parancssorába kilépéskor a következő paranccsal pipe STDIN fájlba `pigbatch.pig`. A fájl a kezdőkönyvtárban az SSH-felhasználói fiók jön létre.
+1. A grunt parancssorába kilépéskor a következő paranccsal nevű fájl létrehozása `pigbatch.pig`:
 
-        cat > ~/pigbatch.pig
+    ```bash
+    nano ~/pigbatch.pig
+    ```
 
-2. Írja be vagy illessze be a következő sorokat, és használja a Ctrl + D, amikor befejeződött az.
+2. Írja be vagy illessze be a következő sorokat:
 
-        LOGS = LOAD '/example/data/sample.log';
-        LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
-        FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
-        GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
-        FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
-        RESULT = order FREQUENCIES by COUNT desc;
-        DUMP RESULT;
+    ```piglatin
+    LOGS = LOAD '/example/data/sample.log';
+    LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
+    FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
+    GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
+    FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
+    RESULT = order FREQUENCIES by COUNT desc;
+    DUMP RESULT;
+    ```
+
+    Ha elkészült, használja __Ctrl__ + __X__, __Y__, majd __Enter__ fájl mentéséhez.
 
 3. A következő paranccsal futtassa a `pigbatch.pig` fájl a Pig-parancs használatával.
 
-        pig ~/pigbatch.pig
+    ```bash
+    pig ~/pigbatch.pig
+    ```
 
     Miután befejeződött a kötegelt, a következő eredmény jelenik meg:
 

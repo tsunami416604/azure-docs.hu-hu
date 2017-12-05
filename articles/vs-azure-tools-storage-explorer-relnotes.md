@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: cf077fef6df2fd21cf51f6b4fd4e26a4b5081247
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: b5cd022c87a6a7a9e18f33b869db04e72be5cef7
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Kibocsátási megjegyzések a Microsoft Azure Tártallózó (előzetes verzió)
 
@@ -41,7 +41,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 * A végpontok Azure Amerikai Egyesült államokbeli kormányzati tartomány hibás volt. Rögzítettek.
 * Az Alkalmaz gombra a fiókok kezelése panelen lett néha nehéz kattintson. Ez már nem megtörténik.
 
-### <a name="new"></a>új
+### <a name="new"></a>Új
 * Azure Cosmos DB Preview támogatása:
     * [Online dokumentáció](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
     * Adatbázisok és a gyűjtemények létrehozása
@@ -76,7 +76,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 * Bár az Azure-verem jelenleg nem támogatja a fájlmegosztásokat, fájlmegosztások csomópont továbbra is egy csatolt verem Azure storage-fiók alatt jelenik meg.
 * A Tártallózó által használt elektronsugár rendszerhéj problémák léptek fel néhány (grafikus processzorral) GPU-hardveres gyorsítás rendelkezik. A Tártallózó (üres) üres fő ablak megjelenítése, ha megpróbálhatja Tártallózó indítása a parancssorból, és a GPU gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 ```
-./StorageExplorer.exe --disable-gpu
+./StorageExplorer --disable-gpu
 ```
 * Ubuntu 14.04 felhasználójához, meg kell győződnie arról ÖET folyamatosan naprakész adatokat tartalmazzon – ezt megteheti a következő parancsok futtatásával, és indítsa újra a számítógépet:
 
@@ -102,7 +102,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 * [Töltse le a Mac Azure Tártallózó (előzetes verzió) 0.9.1](https://go.microsoft.com/fwlink/?LinkId=809307)
 * [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.9.1 letöltése](https://go.microsoft.com/fwlink/?LinkId=809308)
 
-### <a name="new"></a>új
+### <a name="new"></a>Új
 * Azure Cosmos DB Preview támogatása:
     * [Online dokumentáció](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
     * Adatbázisok és a gyűjtemények létrehozása
@@ -137,7 +137,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 * Bár az Azure-verem jelenleg nem támogatja a fájlmegosztásokat, fájlmegosztások csomópont továbbra is egy csatolt verem Azure storage-fiók alatt jelenik meg.
 * A Tártallózó által használt elektronsugár rendszerhéj problémák léptek fel néhány (grafikus processzorral) GPU-hardveres gyorsítás rendelkezik. A Tártallózó (üres) üres fő ablak megjelenítése, ha megpróbálhatja Tártallózó indítása a parancssorból, és a GPU gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 ```
-./StorageExplorer.exe --disable-gpu
+./StorageExplorer --disable-gpu
 ```
 * Ubuntu 14.04 felhasználójához, meg kell győződnie arról ÖET folyamatosan naprakész adatokat tartalmazzon – ezt megteheti a következő parancsok futtatásával, és indítsa újra a számítógépet:
 
@@ -179,7 +179,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 ## <a name="version-0816"></a>0.8.16 verzió
 8/21/2017
 
-### <a name="new"></a>új
+### <a name="new"></a>Új
 * Amikor megnyit egy blobot, Tártallózó kérni fogja a letöltött fájl feltöltéséhez, ha egy változást észlel
 * Azure verem bejelentkezési élmény
 * Feltöltése/sok kis fájlok letöltésével egy időben teljesítményének növelése
@@ -219,7 +219,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 ### <a name="version-0814"></a>0.8.14 verzió
 06/22/2017
 
-### <a name="new"></a>új
+### <a name="new"></a>Új
 
 * 1.7.2 több fontos biztonsági frissítést kihasználása érdekében frissített elektronsugár verzióra
 * Most már elérheti az online hibaelhárítási útmutató a Súgó menü
@@ -246,7 +246,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 ### <a name="version-0813"></a>0.8.13 verzió
 05/12/2017
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * A Tártallózó hibaelhárítási [útmutató][2]
 * [Útmutatás] [ 3] a verem Azure-előfizetéshez csatlakozó
@@ -281,7 +281,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 ### <a name="version-0812--0811--0810"></a>Verzió 0.8.12 / 0.8.11 / 0.8.10
 04/07/2017
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * A Tártallózó automatikusan leáll a frissítési értesítés a frissítés telepítésekor
 * Helyben gyors hozzáférést biztosít a fokozott élményt nyújtó a gyakran használt erőforrásokat használata
@@ -329,7 +329,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SrRPCm94mfE?ecver=1" frameborder="0" allowfullscreen></iframe>
 
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * A Tártallózó 0.8.9 automatikusan letölti a legújabb frissítések.
 * A gyorsjavítás: a portál használatával létrehozott SAS URI-t a storage-fiók csatolása eredményezne hiba.
@@ -359,7 +359,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1" frameborder="0" allowfullscreen></iframe>
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * Kiválaszthatja, hogyan egy frissítés, letölthető vagy másolási munkamenet elején a tevékenységek ablakban az ütközések feloldása
 * A lapon, láthatja a tárolási erőforrások elérési útját mutat
@@ -386,7 +386,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 11/18/2016
 ### <a name="version-086"></a>0.8.6 verzió
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * PIN-kód a leggyakrabban használt szolgáltatások a gyors elérés egyszerű kezelhetőség lehet
 * Több szerkesztők egyes lapjainak most már úgy is megnyithatja. Egyetlen kattintással megnyitni egy ideiglenes fülre. Kattintson duplán egy állandó lap megnyitásához. Az ideiglenes lapon abba, hogy egy állandó lapon is kattinthat
@@ -424,7 +424,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 10/03/2016
 ### <a name="version-085"></a>0.8.5 verzió
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * Most már használhatja SAS portál által létrehozott kulcsok Tárfiókokhoz és erőforrások csatolása
 
@@ -447,7 +447,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1" frameborder="0" allowfullscreen></iframe>
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * Közvetlen hivatkozások mutatnak a storage-fiókok, tárolók, várólisták, táblák vagy megosztása a fájlmegosztások létrehozása és egyszerűen hozzáférhetnek a Windows és Mac OS - erőforrások támogatása
 * Keresse meg a blobtárolók, táblák, üzenetsorok, fájlmegosztások vagy a keresőmezőbe a storage-fiókok
@@ -468,7 +468,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1" frameborder="0" allowfullscreen></iframe>
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * Nevezze át a tárolók, táblák, fájlmegosztások
 * Lekérdezés-szerkesztő fejlett élményt
@@ -494,7 +494,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1" frameborder="0" allowfullscreen></iframe>
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * Storage-fiókok vannak csoportosítva, előfizetések; fejlesztési tárolás és a kulcs- vagy SAS keresztül csatlakozó erőforrásokat (helyi és kapcsolódó) csomópont alatt látható
 * Jelentkezzen ki a "Azure-fiók beállítások" panelen fiókokhoz
@@ -521,7 +521,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3zEXJcGdl_k?ecver=1" frameborder="0" allowfullscreen></iframe>
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * Megosztás-támogatás: megtekintése, feltöltése, letöltés, fájlok és könyvtárak, SAS URI-azonosítók másolására (létrehozása, és csatlakozzon)
 * Növelt felhasználói élmény a SAS URI-azonosító vagy a fiók kulccsal rendelkező tárolóhoz való kapcsolódás során
@@ -544,7 +544,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 05/17/2016
 ### <a name="version-07201605090"></a>0.7.20160509.0 verzió
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * Jobb hiba történt az alkalmazás kezelése összeomlik
 
@@ -565,7 +565,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ceX-P8XZ-s8?ecver=1" frameborder="0" allowfullscreen></iframe>
 
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * Táblázat a támogatási szolgálathoz: megtekintésre lekérdezése, importálása és exportálása CRUD műveletek az entitások
 * Feldolgozási sor támogatási: megtekintését, hozzáadását, dequeueing üzenetek
@@ -597,7 +597,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 
 ### <a name="version-07201601050"></a>0.7.20160105.0 verzió
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * Linux-támogatás (OSX paritásos szolgáltatások)
 * Blob tárolók hozzáadása a megosztott hozzáférési aláírásokkal (SAS-) kulcs
@@ -627,7 +627,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes 
 11/18/2015
 ### <a name="version-07201511160"></a>0.7.20151116.0 verzió
 
-#### <a name="new"></a>új
+#### <a name="new"></a>Új
 
 * macOS, és a Windows-verziók
 * Jelentkezzen be a Storage-fiókok megtekintése, – használja a szervezeti fiók Microsoft Account, 2FA, stb.

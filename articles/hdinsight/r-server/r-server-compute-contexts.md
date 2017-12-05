@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 24df96f55b0f207d8576bd05c2c83a884e7fc2bd
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 4c839bf0c39bf10855f8a31770b82a04ed1ca457
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>Számítási környezet lehetőségek R Server on HDInsight
 
@@ -33,12 +33,12 @@ A fürt élcsomópont kényelmes csatlakozzon a fürthöz, és az R parancsfájl
 ## <a name="compute-contexts-for-an-edge-node"></a>Számítási környezetek számára egy élcsomópontot
 Az R Server rendszeren futó élcsomópont R-parancsfájl általában az R parancsértelmező belül fut, ezen a csomóponton. A kivételek olyan ScaleR függvény témakör lépéseit. A ScaleR hívások határozza meg, hogyan állíthatja a ScaleR számítási környezet számítási környezetben fusson.  Amikor az R-parancsfájl egy élcsomópontot futtatja, a számítási környezet lehetséges értékei a következők:
 
-- szekvenciális helyi (*"local"*)
-- helyi párhuzamos (*"localpar"*)
+- szekvenciális helyi (*helyi*)
+- helyi párhuzamos (*localpar*)
 - Térkép csökkentése
 - Spark
 
-A *"local"* és *"localpar"* más-más lehetőségek csak a hogyan **rxExec** hívások végrehajtása. Mindkettő végrehajtani más rx függvényhívások párhuzamos módon összes elérhető magokon hiányában a ScaleR használata **numCoresToUse** beállítás, például `rxOptions(numCoresToUse=6)`. Párhuzamos végrehajtás beállítások optimális teljesítményt nyújtanak.
+A *helyi* és *localpar* más-más lehetőségek csak a hogyan **rxExec** hívások végrehajtása. Mindkettő végrehajtani más rx függvényhívások párhuzamos módon összes elérhető magokon hiányában a ScaleR használata **numCoresToUse** beállítás, például `rxOptions(numCoresToUse=6)`. Párhuzamos végrehajtás beállítások optimális teljesítményt nyújtanak.
 
 A következő táblázat összefoglalja a különböző számítási környezet lehetőségek beállításához hívások végrehajtásának módját:
 
@@ -62,8 +62,8 @@ Adja meg a végrehajtási párhuzamos működésű választja három lehetőség
 Megadott alapelvek, az alábbi szakaszok nyújtanak néhány általános szabályok megoldás a számítási környezet kijelöléséhez.
 
 ### <a name="local"></a>Helyi
-* Ha elemzéséhez adatmennyiség kicsi, és nem igényel ismételt elemzése, majd adatfolyamként közvetlenül be az elemző rutin használatával *"local"* vagy *"localpar"*.
-* Ha elemzéséhez adatmennyiség a kis- és közepes méretű és ismételt elemzése szükséges, majd másolja azt a helyi fájlrendszer XDF importálja és elemezze keresztül *"local"* vagy *"localpar"*.
+* Ha elemzéséhez adatmennyiség kicsi, és nem igényel ismételt elemzése, majd adatfolyamként közvetlenül be az elemző rutin használatával *helyi* vagy *localpar*.
+* Ha elemzéséhez adatmennyiség a kis- és közepes méretű és ismételt elemzése szükséges, majd másolja azt a helyi fájlrendszer XDF importálja és elemezze keresztül *helyi* vagy *localpar*.
 
 ### <a name="hadoop-spark"></a>Hadoop Spark
 * Ha elemzéséhez adatok mennyisége túl nagy, majd importálni kell a Spark DataFrame használatával **RxHiveData** vagy **RxParquetData**, vagy a HDFS-ben XDF (kivéve, ha probléma a tároló), és elemezze a Spark számítási környezetet használ.
@@ -76,7 +76,7 @@ További információt és példákat a ScaleR számítási környezeteket tekin
 
     > ?rxSetComputeContext
 
-Is hivatkozhat a "[ScaleR elosztott számítástechnikai útmutató](https://msdn.microsoft.com/microsoft-r/scaler-distributed-computing)", amely megtalálható a a [R Server MSDN](https://msdn.microsoft.com/library/mt674634.aspx "R Server, az MSDN Webhelyén") könyvtár.
+Azt is jelentheti a [ScaleR elosztott számítástechnikai útmutató](https://msdn.microsoft.com/microsoft-r/scaler-distributed-computing) elérhető a a [R Server MSDN](https://msdn.microsoft.com/library/mt674634.aspx) könyvtár.
 
 ## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, adja meg, hogyan végrehajtási párhuzamos működésű-e a élcsomópont vagy a HDInsight-fürt mag között rendelkezésre álló beállításokkal kapcsolatos. R Server használata a HDInsight-fürtökkel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:

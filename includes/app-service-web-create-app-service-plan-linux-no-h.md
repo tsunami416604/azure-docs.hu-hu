@@ -1,4 +1,4 @@
-A felhő rendszerhéj az erőforráscsoport egy App Service-csomag létrehozása a [az App Service-csomagot hozzon létre](/cli/azure/appservice/plan#create) parancsot.
+A felhő rendszerhéj az erőforráscsoport egy App Service-csomag létrehozása a [az App Service-csomagot hozzon létre](/cli/azure/appservice/plan#az_appservice_plan_create) parancsot.
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 

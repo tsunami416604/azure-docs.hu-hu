@@ -11,14 +11,15 @@ ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: mimig
-ms.openlocfilehash: 1fb8d7b9f1014f37f0f3afa20605fce10c45a967
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.custom: mvc
+ms.openlocfilehash: ff75b4546a85c1c0bbf5c256977a3d33016c8c44
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 3. rész: A felhasználói felület létrehozása az Angular segítségével
 
@@ -434,7 +435,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
     ![Villanykörte a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
 
-8. Kattintson a villanykörtére, majd a **Import Hero from "client/app/hero"** (Fő kép importálása a „client/app/hero” fájlból vagy a **Fő kép importálása a „./hero” fájlból** lehetőségre. (Az üzenet a konfigurációtól függően változik.)
+8. Kattintson a villanykörtére, majd a **Import Hero from "client/app/hero"** (Fő kép importálása a „client/app/hero” fájlból** vagy a **Fő kép importálása a „./hero” fájlból** lehetőségre. (Az üzenet a konfigurációtól függően változik.)
 
     Egy új kódsor jelenik meg a 2. sorban. Ha a 2. sor egy ügyfélre/alkalmazásra/fő képre hivatkozik, módosítsa, hogy a helyi mappában lévő főképfájlra hivatkozzon (./hero). A 2. sornak így kell kinéznie:
 

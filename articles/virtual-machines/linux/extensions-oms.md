@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 6eb07b5ad4b3ebdde75575fc5682ae2153a0c12f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: dcb7a777c66200c5046a6ad34dc4ff5d346f13e0
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>Linux OMS virtuálisgép-bővítmény
 
@@ -41,6 +41,10 @@ Az OMS-ügynököt bővítmény futtatható a Linux terjesztéseket ellen.
 | Debian GNU/Linux | 8, 6, 7 |
 | Ubuntu | 12.04 LTS, 14.04 LTS, 15.04, 15.10, 16.04 LTS |
 | SUSE Linux Enterprise Server | 11 és 12 |
+
+### <a name="azure-security-center"></a>Azure Security Center
+
+Az Azure Security Center automatikusan látja el az OMS-ügynököt, és azt az alapértelmezett naplóelemzési munkaterület az Azure-előfizetés csatlakozik. Ha az Azure Security Center használ, ne futtassa végig a lépéseken, ebben a dokumentumban. Ezzel felülírja a konfigurált munkaterület és a break a kapcsolat az Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
@@ -173,7 +177,7 @@ A következő fájl kerül a bővítmény végrehajtás kimenetének:
 
 ### <a name="error-codes-and-their-meanings"></a>Hibakódok és azok jelentését
 
-| Hibakód: | Jelentése | Lehetséges művelet |
+| Hibakód | Jelentése | Lehetséges művelet |
 | :---: | --- | --- |
 | 10 | Virtuális gép már csatlakoztatva van egy OMS-munkaterület | A virtuális gép csatlakozik a bővítmény sémában megadott munkaterület, stopOnMultipleConnections értéke HAMIS, a nyilvános beállításai, vagy távolítsa el ezt a tulajdonságot. Ez a virtuális gép lekérdezi számlázva után az egyes munkaterületeken van csatlakoztatva. |
 | 11 | A bővítmény megadott Érvénytelen konfiguráció | Kövesse a fenti példákban beállítása a telepítéshez szükséges minden tulajdonság értékével. |
