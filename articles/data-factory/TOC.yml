@@ -4,6 +4,8 @@
   items:
     - name: A Data Factory bemutatása
       href: introduction.md
+    - name: Az 1-es és a 2-es verzió összehasonlítása
+      href: compare-versions.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -19,6 +21,8 @@
           href: quickstart-create-data-factory-rest-api.md
         - name: Portál
           href: quickstart-create-data-factory-portal.md
+        - name: Resource Manager-sablon
+          href: quickstart-create-data-factory-resource-manager-template.md
 - name: Oktatóanyagok
   items:
     - name: 1 – SSIS csomagok üzembe helyezése az Azure-ban

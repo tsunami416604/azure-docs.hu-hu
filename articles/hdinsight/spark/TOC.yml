@@ -104,6 +104,8 @@
           href: apache-spark-streaming-overview.md
         - name: Streamelési események feldolgozása
           href: apache-spark-eventhub-streaming.md
+        - name: Strukturált streamelés az Event Hubs használatával
+          href: apache-spark-eventhub-structured-streaming.md
         - name: Strukturált streamelés a Kafkával
           href: ../hdinsight-apache-kafka-spark-structured-streaming.md
           maintainContext: true

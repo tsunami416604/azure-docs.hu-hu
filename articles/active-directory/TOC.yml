@@ -40,8 +40,6 @@
 - name: Felügyeltszolgáltatás-identitás
   href: msi-overview.md
   items:
-    - name: Útmutató a bejelentkezéshez és a tokenek beszerzéséhez
-      href: msi-how-to-get-access-token-using-msi.md
     - name: Az MSI konfigurálása Azure-beli virtuális géphez
       items:
         - name: Az Azure Portal használata
@@ -62,6 +60,14 @@
           href: msi-howto-assign-access-powershell.md
         - name: Az Azure parancssori felület használata
           href: msi-howto-assign-access-cli.md
+    - name: Virtuális gép MSI használata
+      items:
+        - name: Hozzáférési jogkivonat beszerzése
+          href: msi-how-to-use-vm-msi-token.md
+        - name: Bejelentkezés a PowerShellbe és az Azure CLI-be
+          href: msi-how-to-use-vm-msi-sign-in.md
+        - name: Használat Azure SDK-kal
+          href: msi-how-to-use-vm-msi-sdk.md
     - name: Virtuális gép MSI használata az Azure Data Lake Store eléréséhez
       items:
         - name: Windows rendszerű virtuális gépről

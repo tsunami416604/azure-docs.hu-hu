@@ -63,7 +63,7 @@
       href: functions-cli-samples.md
 - name: Alapelvek
   items:
-    - name: Szolgáltatási csomagok összehasonlítása
+    - name: Méretezés és üzemeltetés
       href: functions-scale.md
     - name: Eseményindítók és kötések
       href: functions-triggers-bindings.md

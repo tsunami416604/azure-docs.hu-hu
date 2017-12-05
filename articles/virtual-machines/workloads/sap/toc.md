@@ -11,8 +11,9 @@
 ### [Magas rendelkezésre állás beállítása a STONITH használatával](ha-setup-with-stonith.md)
 ### [Az operációs rendszer biztonsági mentése II. típusú termékváltozatokhoz](os-backup-type-ii-skus.md)
 # SAP HANA az Azure-beli virtuális gépeken
-## [Egyetlen példánnyal rendelkező SAP HANA](hana-get-started.md)
+## [Egyetlen példánnyal rendelkező SAP HANA telepítése](hana-get-started.md)
 ## [S/4 HANA vagy BW/4 HANA SAP CAL üzembehelyezési útmutatója](cal-s4h.md)
+## [SAP HANA az Azure-műveletek útmutatójában](hana-vm-operations.md)
 ## [SAP HANA magas rendelkezésre állás az Azure-beli virtuális gépeken](sap-hana-high-availability.md)
 ## [SAP HANA biztonsági mentés áttekintése](sap-hana-backup-guide.md)
 ## [SAP HANA fájlszintű biztonsági mentés](sap-hana-backup-file-level.md)

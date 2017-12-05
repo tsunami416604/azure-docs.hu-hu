@@ -12,15 +12,15 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/06/2017
 ms.author: trinadhk;jimpark;markgal;
-ms.custom: 
-ms.openlocfilehash: db4e1392acaeb2431d29a851113b7bc5a6dc1e9d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
+ms.openlocfilehash: 01609c00c6f0585eff4843932b9eb7a090a59c19
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="back-up-azure-virtual-machines-in-azure-at-scale"></a>Készítsen biztonsági másolatot az Azure virtuális gépek Azure léptékű
 
@@ -57,13 +57,13 @@ Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedund
 
 A kezdeti biztonsági mentés futtatása előtt meg kell adni a tárolóban a környezetben. A tároló-környezet a tárolóban lévő védett adatok típusát. Recovery Services-tároló létrehozásakor az alapértelmezett védelem és adatmegőrzési ismét. Az alapértelmezett védelmi házirendet a biztonsági mentési feladatot, a megadott időpontban naponta váltja ki. Az alapértelmezett megőrzési házirend 30 napig őrzi meg a napi helyreállítási pont. Ebben az oktatóanyagban fogadja el az alapértelmezett házirendet. 
 
-Használjon  **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)**  beállítani a tároló a környezetben. A tároló-környezet van beállítva, ha az összes későbbi parancsmag vonatkozik. 
+Használjon ** [Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext) ** beállítani a tároló a környezetben. A tároló-környezet van beállítva, ha az összes későbbi parancsmag vonatkozik. 
 
 ```powershell
 Get-AzureRmRecoveryServicesVault -Name myRSVault | Set-AzureRmRecoveryServicesVaultContext
 ```
 
-Használjon  **[Backup-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem)**  számára a biztonsági mentési feladatot indít. A biztonsági mentési feladat létrehoz egy helyreállítási pontot. Ha a kezdeti biztonsági másolatot, majd a helyreállítási pont teljes biztonsági mentés. További biztonsági mentések növekményes másolatot készíteni.
+Használjon ** [Backup-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem) ** számára a biztonsági mentési feladatot indít. A biztonsági mentési feladat létrehoz egy helyreállítási pontot. Ha a kezdeti biztonsági másolatot, majd a helyreállítási pont teljes biztonsági mentés. További biztonsági mentések növekményes másolatot készíteni.
 
 ```powershell
 $namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM"

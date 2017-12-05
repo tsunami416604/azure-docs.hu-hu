@@ -1,0 +1,165 @@
+- name: A Site Recovery dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a Site Recovery?
+      href: ../site-recovery-overview.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+- name: Oktatóanyagok
+  items:
+    - name: Az Azure beállítása
+      href: ../tutorial-prepare-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: VMware virtuális gépek előkészítése migráláshoz
+      href: ../tutorial-prepare-on-premises-vmware.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Helyszíni gépek áttelepítése az Azure-ba
+      href: tutorial-migrate-on-premises-to-azure.md
+    - name: AWS-példányok áttelepítése az Azure-ba
+      href: tutorial-migrate-aws-to-azure.md
+- name: Alapelvek
+  items:
+    - name: Migrálás az Azure-ba
+      href: ../site-recovery-migrate-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Helyszíniről Azure-ra támogatási mátrix
+      href: ../site-recovery-support-matrix-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Azure-ról Azure-ra támogatási mátrix
+      href: ../site-recovery-support-matrix-azure-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Azure-ról Azure-ra architektúra
+      href: ../concepts-azure-to-azure-architecture.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: VMware-ről Azure-ra architektúra
+      href: ../concepts-vmware-to-azure-architecture.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Hyper-V-ről Azure-ra architektúra
+      href: ../concepts-hyper-v-to-azure-architecture.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Fizikairól Azure-ra architektúra
+      href: ../concepts-hyper-v-to-azure-architecture.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Helyszíniről Azure-ra támogatási mátrix
+      href: ../site-recovery-support-matrix-azure-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Szerepköralapú hozzáférési engedélyek
+      href: ../site-recovery-role-based-linked-access-control.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: GYIK
+      href: ../site-recovery-faq.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+- name: Útmutatók
+  items:
+    - name: Migrálás
+      items:
+        - name: Azure-beli virtuális gépek migrálása másik régióba
+          href: site-recovery-migrate-azure-to-azure.md
+        - name: Gépek replikálása migrálás után
+          href: site-recovery-azure-to-azure-after-migration.md
+    - name: Vészhelyreállítás
+      items:
+        - name: Hyper-V virtuális gépek az Azure-ba
+          href: ../tutorial-hyper-v-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Fizikai kiszolgálók az Azure-ba
+          href: ../tutorial-physical-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Feladatátvétel és feladat-visszavétel
+      items:
+        - name: Azure-ba irányuló feladatátvételi teszt futtatása
+          href: ../tutorial-dr-drill-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Helyreállítási tervek beállítása
+          href: ../site-recovery-create-recovery-plans.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Azure runbookok hozzáadása helyreállítási tervekhez
+          href: ../site-recovery-runbook-automation.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Feladatátvétel futtatása
+          href: ../site-recovery-failover.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Konfigurálás
+      items:
+        - name: A forráskörnyezet beállítása
+          items:
+            - name: Forráskörnyezet beállítása a VMware-hez
+              href: ../site-recovery-set-up-vmware-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+            - name: Forráskörnyezet beállítása fizikai kiszolgálókhoz
+              href: ../site-recovery-set-up-physical-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: A célkörnyezet beállítása
+          items:
+            - name: Célkörnyezet beállítása a VMware-hez
+              href: ../site-recovery-prepare-target-vmware-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+            - name: Célkörnyezet beállítása fizikai kiszolgálókhoz
+              href: ../site-recovery-prepare-target-physical-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+            - name: Replikálási beállítások konfigurálása a VMware-hez
+              href: ../site-recovery-setup-replication-settings-vmware.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: A mobilitási szolgáltatás üzembe helyezése VMware-replikáláshoz
+          href: ../site-recovery-vmware-to-azure-install-mob-svc.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+          items:
+            - name: A mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel
+              href: ../site-recovery-install-mobility-service-using-sccm.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+            - name: A mobilitási szolgáltatás üzembe helyezése az Azure Automation DSC-vel
+              href: ../site-recovery-automate-mobility-service-install.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: A replikáció engedélyezése
+          items:
+            - name: Azure-ról Azure-ba történő replikálás engedélyezése
+              href: ../site-recovery-replicate-azure-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+            - name: VMware-ről Azure-ba történő replikálás engedélyezése
+              href: ../site-recovery-replicate-vmware-to-azure.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Számítási feladatok
+      items:
+        - name: Active Directory és DNS
+          href: ../site-recovery-active-directory.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: SQL Server replikálása
+          href: ../site-recovery-sql.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: SharePoint
+          href: ../site-recovery-sharepoint.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Dynamics AX
+          href: ../site-recovery-dynamicsax.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Távoli asztali szolgáltatások
+          href: '../site-recovery-workload.md#protect-rds?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json'
+        - name: Exchange
+          href: '../site-recovery-workload.md#protect-exchange?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json'
+        - name: SAP
+          href: ../site-recovery-sap.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Fájlkiszolgáló
+          href: ../file-server-disaster-recovery.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: IIS-alapú webalkalmazások
+          href: ../site-recovery-iis.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: Citrix XenApp és XenDesktop
+          href: ../site-recovery-citrix-xenapp-and-xendesktop.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Egyéb számítási feladatok
+          href: '../site-recovery-workload.md#workload-summary?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json'
+    - name: Kezelés
+      items:
+        - name: Frissítés Recovery Services-tárolóra
+          href: ../upgrade-site-recovery-vaults.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Folyamatkiszolgálók kezelése az Azure-ban
+          href: ../site-recovery-vmware-setup-azure-ps-resource-manager.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: A konfigurációs kiszolgáló kezelése
+          href: ../site-recovery-vmware-to-azure-manage-configuration-server.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: vCenter-kiszolgálók kezelése
+          href: ../site-recovery-vmware-to-azure-manage-vCenter.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Kiszolgálók eltávolítása és a védelem letiltása
+          href: ../site-recovery-manage-registration-and-protection.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Tároló törlése
+          href: ../delete-vault.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+    - name: Hibaelhárítás
+      items:
+        - name: Az Azure-ból Azure-ba végzett replikálás problémái
+          href: ../site-recovery-azure-to-azure-troubleshoot-errors.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: A helyszínről az Azure-ba történő replikálás problémái
+          href: ../site-recovery-vmware-to-azure-protection-troubleshoot.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Mobilitási szolgáltatással kapcsolatos problémák
+          href: ../site-recovery-vmware-to-azure-push-install-error-codes.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Az Azure-ba történő feladatátadás problémái
+          href: ../site-recovery-failover-to-azure-troubleshoot.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+        - name: Naplók gyűjtése és helyszíni problémák hibaelhárítása
+          href: ../site-recovery-monitoring-and-troubleshooting.md?toc=%2fazure%2fsite-recovery%2fmigrate%2ftoc.json
+- name: Referencia
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.siterecovery
+    - name: Azure PowerShell (klasszikus)
+      href: /powershell/module/azure/?view=azuresmps-3.7.0
+    - name: REST
+      href: 'https://msdn.microsoft.com/en-us/library/mt750497'
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Blog
+      href: 'http://azure.microsoft.com/blog/tag/azure-site-recovery/'
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
+    - name: Képzési terv
+      href: 'https://azure.microsoft.com/documentation/learning-paths/site-recovery/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/site-recovery/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=site-recovery'

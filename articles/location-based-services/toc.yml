@@ -29,6 +29,8 @@
       href: how-to-manage-account-keys.md
     - name: A térkép vezérlőelem használata
       href: how-to-use-map-control.md
+    - name: Címek keresésének módjai
+      href: how-to-search-for-address.md
 - name: Referencia
   items:
     - name: Azure IoT fejlesztői központ

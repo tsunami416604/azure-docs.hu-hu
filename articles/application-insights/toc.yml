@@ -247,6 +247,8 @@
       items:
         - name: Nincs adat a .NET-hez
           href: app-insights-asp-net-troubleshoot-no-data.md
+        - name: Pillanatkép-hibakereső
+          href: app-insights-troubleshoot-snapshot-debugger.md
         - name: Elemzés
           href: app-insights-analytics-troubleshooting.md
         - name: Java

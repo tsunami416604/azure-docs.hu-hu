@@ -27,6 +27,10 @@
   items:
     - name: A költségjelentések értelmezése
       href: understading-cost-reports.md
+- name: Útmutatók
+  items:
+    - name: A Cost Management jelentéseinek használata
+      href: use-reports.md
 - name: Erőforrások
   items:
     - name: Költségkezelési videók

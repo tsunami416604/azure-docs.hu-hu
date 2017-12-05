@@ -44,6 +44,7 @@ sections:
         items:
           - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Virtuális gépek változásainak monitorozása logikai alkalmazásokkal</a>
           - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">A feltöltött képek átméretezése</a>
+          - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Az Azure Automation integrálása az Event Griddel</a>
   - title: Referencia
     items:
       - type: list

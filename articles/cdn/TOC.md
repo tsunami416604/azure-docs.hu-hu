@@ -21,8 +21,8 @@
 ## Kezelés
 ### [Kezelés az Azure PowerShell-lel](cdn-manage-powershell.md)
 ### Az élettartam konfigurálása
-#### [Web Apps-/Cloud Services-, ASP.NET- vagy IIS-tartalom](cdn-manage-expiration-of-cloud-service-content.md)
-#### [Tárolási blobszolgáltatás-tartalom](cdn-manage-expiration-of-blob-content.md)
+#### [Azure webes tartalom](cdn-manage-expiration-of-cloud-service-content.md)
+#### [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
 ### [Elérés korlátozása ország szerint](cdn-restrict-access-by-country.md)
 ### [A teljesítmény javítása a fájlok tömörítésével](cdn-improve-performance.md)
 ### Tartalom gyorsítótárazása lekérdezési karakterlánc szerint

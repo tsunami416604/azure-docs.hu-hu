@@ -59,6 +59,8 @@
       href: /powershell/module/azurerm.containerregistry
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.containerregistry/registries
+    - name: Webhookséma
+      href: container-registry-webhook-reference.md
 - name: Erőforrások
   items:
     - name: Régiónkénti elérhetőség

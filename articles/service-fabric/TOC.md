@@ -6,7 +6,9 @@
 ## [.NET-alkalmazás létrehozása](service-fabric-quickstart-dotnet.md)
 ## [Linux-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers-linux.md)
 ## [Windows-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers.md)
-## [Java-alkalmazás üzembe helyezése](service-fabric-quickstart-java.md)
+## Java-gyorsútmutatók
+### [Spring Boot-alkalmazás üzembe helyezése](service-fabric-quickstart-java-spring-boot.md)
+### [Reliable Services-alkalmazás üzembe helyezése](service-fabric-quickstart-java-reliable-services.md)
 
 # Oktatóanyagok
 ## .NET-alkalmazás üzembe helyezése
@@ -29,7 +31,9 @@
 #### [1a – Windows rendszerű fürt létrehozása](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 #### [1b – Linux rendszerű fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 ### [2 – A fürt átméretezése](service-fabric-tutorial-scale-cluster.md)
-### [3 – Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
+### [3 – A fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
+### [4 – Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
+
 
 
 # Példák
