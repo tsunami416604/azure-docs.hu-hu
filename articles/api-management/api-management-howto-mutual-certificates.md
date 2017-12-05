@@ -3,22 +3,21 @@ title: "Háttér-szolgáltatásaihoz ügyfél használatával biztonságos tanú
 description: "Megtudhatja, mennyire biztonságos a háttér-szolgáltatásaihoz ügyféltanúsítvány-alapú hitelesítés használata az Azure API Management."
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: erikre
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 43453331-39b2-4672-80b8-0a87e4fde3c6
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 196a91c21afb8c1596c9766f6a2a5d373b828f60
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: c8573c73b0a6dc1b2644f78276d2f3e4fd442cea
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Az Azure API Management tanúsítványhitelesítés biztonságossá tétele a háttér-szolgáltatásaihoz ügyfél használatával
 API-kezelés lehetővé teszi a biztonságos hozzáférés a háttér-szolgáltatásra, az API-k az ügyféltanúsítványok. Ez az útmutató bemutatja az API-közzétevő portálon tanúsítványok kezelése és konfigurálása egy API-t egy tanúsítványt a háttér-szolgáltatás elérésére használhat.
@@ -33,7 +32,7 @@ Első lépésként kattintson a **Közzétevő portál** elemre az API Managemen
 
 ![API-közzétevő portál][api-management-management-console]
 
-> Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg az [Ismerkedés az Azure API Management szolgáltatással][Get started with Azure API Management] oktatóanyag [API Management szolgáltatáspéldány létrehozása][Create an API Management service instance] című szakaszát.
+> Ha még nem hozott létre az API Management szolgáltatáspéldány, lásd: [hozzon létre egy API-kezelés szolgáltatás példányt][Create an API Management service instance].
 > 
 > 
 
@@ -91,7 +90,7 @@ Válassza ki **ügyféltanúsítványok** a a **hitelesítő adatokkal rendelkez
 
 A kívánt tanúsítvány kiválasztása a **ügyféltanúsítvány** legördülő listából. Ha több tanúsítvány vessen egy pillantást a megfelelő tanúsítványt a tulajdonos vagy az ujjlenyomat az előző szakaszban leírtaknak megfelelően utolsó négy számjegyét.
 
-![Tanúsítvány kiválasztása][api-management-select-certificate]
+![Válasszon tanúsítványt][api-management-select-certificate]
 
 Kattintson a **mentése** menteni a konfiguráció módosítását az API-hoz.
 
@@ -144,10 +143,10 @@ Biztonságossá tehető a háttérszolgáltatás, például HTTP alap vagy megos
 [Monitoring and analytics]: ../api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
-[Get started with Azure API Management]: api-management-get-started.md
+[Get started with Azure API Management]: get-started-create-service-instance.md
 [API Management policy reference]: api-management-policy-reference.md
 [Caching policies]: api-management-policy-reference.md#caching-policies
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Create an API Management service instance]: get-started-create-service-instance.md
 
 [Azure API Management REST API Certificate entity]: http://msdn.microsoft.com/library/azure/dn783483.aspx
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet

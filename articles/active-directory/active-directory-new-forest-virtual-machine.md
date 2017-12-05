@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: joflore
-ms.openlocfilehash: 0a45a563d8aed45dd30cc76a13b0e197c248be84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18151f647b857dec78e659a3394359ff21a818c7
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Egy új Active Directory-erdő telepítése Azure virtuális hálózaton
-Ez a témakör bemutatja, hogyan hozzon létre egy új Windows Server Active Directory-környezet az Azure virtuális hálózat (VM) virtuális gépen a egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). Ebben az esetben az Azure virtuális hálózat nem egy helyi hálózathoz csatlakozik.
+Ez a cikk bemutatja, hogyan hozható létre egy új Windows Server Active Directory-környezetben a virtuális gépen (VM) egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). Ebben az esetben az Azure virtuális hálózat nem egy helyi hálózathoz csatlakozik.
 
-Is érdekelheti az alábbi kapcsolódó témakörök:
+Is érdekelheti a kapcsolódó cikkekben:
 
 * Ezeket a lépéseket bemutató videót: [egy új Active Directory-erdő telepítése Azure virtuális hálózat](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
 * Igény szerint is [a telephelyek közötti VPN konfigurálása](../vpn-gateway/vpn-gateway-site-to-site-create.md) és majd egy új erdő telepítéséhez vagy egy Azure virtuális hálózat a helyi erdő kiterjesztése. Ezeket a lépéseket lásd: [egy replika az Active Directory-tartományvezérlő telepítése egy Azure virtuális hálózat](active-directory-install-replica-active-directory-domain-controller.md).
@@ -87,7 +87,7 @@ A tartományvezérlő telepítésének befejezése után csatlakoztassa újra a 
    3. Az a **továbbítók** lapra, kattintson a továbbító IP-címét, majd **szerkesztése**.  Válassza ki az IP-címet, és kattintson a **törlése**.
    4. Kattintson a **OK** a szerkesztő bezárása és **Ok** a DNS-kiszolgáló tulajdonságainak bezárásához.
 2. A DNS-kiszolgáló beállítása a virtuális hálózat frissítése.
-   1. Kattintson a **virtuális hálózatok** > kattintson duplán a virtuális hálózat létrehozott > **konfigurálása** > **DNS-kiszolgálók**, írja be a nevet és egy, a tartományvezérlő/DNS-kiszolgálói szerepkört futtató virtuális gépek DIP, és kattintson a **mentése**.
+   1. Kattintson a **virtuális hálózatok** > kattintson duplán a virtuális hálózat létrehozott > **konfigurálása** > **DNS-kiszolgálók**, írja be a nevet és az IP-címe a virtuális gépek közül amelyen fut a tartományvezérlő/DNS-kiszolgálói szerepkört, majd kattintson **mentése**.
    2. Válassza ki a virtuális Gépet, és kattintson a **indítsa újra a** elindítani a virtuális gépek a DNS-feloldási beállítások konfigurálása az új DNS-kiszolgáló IP-címmel.
 
 ## <a name="create-vms-for-domain-members"></a>Tartományhoz csatlakoztatott virtuális gépek létrehozása

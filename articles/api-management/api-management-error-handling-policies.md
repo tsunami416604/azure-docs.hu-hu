@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: e8837b8d62bb8caeee9460661438368c2d11697a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6bc71c0745493d52128553a78a31c45a3bca30f8
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="error-handling-in-api-management-policies"></a>Hiba történt az API-felügyeleti házirendek kezelése
 Az Azure API Management lehetővé teszi, hogy válaszoljanak a hibaállapotokat, amely jelentkezhet a kérelem feldolgozása során a proxy, adja meg a közzétevők egy `ProxyError` objektum. A `ProxyError` objektum keresztül érhető el a [környezetben. Hiba](api-management-policy-expressions.md#ContextVariables) tulajdonság, és a házirendek által használható a `on-error` házirend szakaszban. Ez a témakör egy hivatkozást a hiba kezelési képességeket biztosít az Azure API Management.  
@@ -56,27 +56,16 @@ Az Azure API Management lehetővé teszi, hogy válaszoljanak a hibaállapotokat
  A következő házirendek is használhatók a `on-error` házirend szakaszban.  
   
 -   [Válassza a](api-management-advanced-policies.md#choose)  
-  
 -   [Set-változó](api-management-advanced-policies.md#set-variable)  
-  
 -   [keresése és cseréje](api-management-transformation-policies.md#Findandreplacestringinbody)  
-  
 -   [visszatérési-válasz](api-management-advanced-policies.md#ReturnResponse)  
-  
 -   [set-fejléc](api-management-transformation-policies.md#SetHTTPheader)  
-  
 -   [set-módszer](api-management-advanced-policies.md#SetRequestMethod)  
-  
 -   [állapot beállítása](api-management-advanced-policies.md#SetStatus)  
-  
 -   [küldési-kérelmek](api-management-advanced-policies.md#SendRequest)  
-  
 -   [küldési-egy-módon-kérelmek](api-management-advanced-policies.md#SendOneWayRequest)  
-  
 -   [napló-eventhub](api-management-advanced-policies.md#log-to-eventhub)  
-  
 -   [JSON-xml](api-management-transformation-policies.md#ConvertJSONtoXML)  
-  
 -   [XML-json](api-management-transformation-policies.md#ConvertXMLtoJSON)  
   
 ## <a name="lasterror"></a>Hiba  
@@ -98,7 +87,7 @@ Az Azure API Management lehetővé teszi, hogy válaszoljanak a hibaállapotokat
 ## <a name="predefined-errors-for-built-in-steps"></a>A beépített lépéseket előre definiált hibák  
  Hibák a következők előre meghatározott beépített feldolgozási lépéseket kiértékelése során előforduló hiba feltételeket.  
   
-|Forrás|Az állapot|Ok|Üzenet|  
+|Forrás|Feltétel|Ok|Üzenet|  
 |------------|---------------|------------|-------------|  
 |konfiguráció|URI nem felel meg a bármely API-t vagy a művelet|OperationNotFound|Nem lehet megfeleltetni a bejövő kérelem művelethez.|  
 |Engedélyezési|Nincs megadva előfizetés-kulcs|SubscriptionKeyNotFound|Hiányzó előfizetés kulcs miatt megtagadva. Ügyeljen arra, hogy ez az API a kérelmet benyújtó előfizetés kulcs tartalmazniuk.|  
@@ -107,25 +96,31 @@ Az Azure API Management lehetővé teszi, hogy válaszoljanak a hibaállapotokat
 ## <a name="predefined-errors-for-policies"></a>Előre definiált hibák házirendek  
  Hibák a következők házirend kiértékelése közben fellépő hibaállapotokat az előre.  
   
-|Forrás|Az állapot|Ok|Üzenet|  
+|Forrás|Feltétel|Ok|Üzenet|  
 |------------|---------------|------------|-------------|  
 |a Sebességhatár|Sávszélesség-korlátjának túllépve|RateLimitExceeded|Sávszélesség-korlátjának túllépésekor|  
 |kvóta|Túllépte a kvótát.|QuotaExceeded|A csomagba foglalt lebeszélhető percek elfogytak. Kvóta lesz tehát fel kell tölteni a xx:xx:xx. - e - sávszélesség kvótát. Kvóta lesz tehát fel kell tölteni a xx:xx:xx.|  
 |jsonp|A visszahívási paraméter értéke érvénytelen (helytelen karaktereket tartalmaz.)|CallbackParameterInvalid|{Visszahívás-paraméter-neve} visszahívási paraméter értéke nem egy érvényes JavaScript-azonosító.|  
-|IP-szűrő|Nem sikerült értelmezni a kérelmet hívó IP|FailedToParseCallerIP|Nem sikerült létrehozni az IP-címet a hívónak. A hozzáférés megtagadva.|  
-|IP-szűrő|Hívó az IP-cím nem az engedélyezettek listájához|CallerIpNotAllowed|Hívó IP-cím {ip-cím} nem engedélyezett. A hozzáférés megtagadva.|  
-|IP-szűrő|Hívó tiltólistán szereplő IP-cím|CallerIpBlocked|Hívó IP-cím le van tiltva. A hozzáférés megtagadva.|  
-|ellenőrzés-fejléc|Nem jelenik meg a szükséges fejléc vagy -érték hiányzik|HeaderNotFound|{Fejlécnév} fejléc nem található a kérelemben. A hozzáférés megtagadva.|  
-|ellenőrzés-fejléc|Nem jelenik meg a szükséges fejléc vagy -érték hiányzik|HeaderValueNotAllowed|{Fejlécérték} {fejlécnév} fejléc értéke nem engedélyezett. A hozzáférés megtagadva.|  
-|jwt ellenőrzése|Jwt jogkivonat nem található a kérelemben|TokenNotFound|A JWT nem található a kérelemben. A hozzáférés megtagadva.|  
-|jwt ellenőrzése|Aláírás érvényesítése nem sikerült|TokenSignatureInvalid|< jwt-könyvtárból üzenet\>. A hozzáférés megtagadva.|  
-|jwt ellenőrzése|Érvénytelen a célközönség|TokenAudienceNotAllowed|< jwt-könyvtárból üzenet\>. A hozzáférés megtagadva.|  
-|jwt ellenőrzése|Érvénytelen kibocsátót|TokenIssuerNotAllowed|< jwt-könyvtárból üzenet\>. A hozzáférés megtagadva.|  
-|jwt ellenőrzése|Token lejárt.|TokenExpired|< jwt-könyvtárból üzenet\>. A hozzáférés megtagadva.|  
-|jwt ellenőrzése|Aláírási kulcs nem lett feloldva-azonosító szerint|TokenSignatureKeyNotFound|< jwt-könyvtárból üzenet\>. A hozzáférés megtagadva.|  
-|jwt ellenőrzése|Szükséges jogcímeket a jogkivonatból hiányoznak|TokenClaimNotFound|JWT jogkivonat hiányzik a következő jogcímeket: < c1\>, < c2\>,... A hozzáférés megtagadva.|  
-|jwt ellenőrzése|Jogcím értékek eltérés|TokenClaimValueNotAllowed|{Jogcímérték} {jogcím-neve} jogcím értéke nem engedélyezett. A hozzáférés megtagadva.|  
+|IP-szűrő|Nem sikerült értelmezni a kérelmet hívó IP|FailedToParseCallerIP|Nem sikerült létrehozni az IP-címet a hívónak. Hozzáférés megtagadva.|  
+|IP-szűrő|Hívó az IP-cím nem az engedélyezettek listájához|CallerIpNotAllowed|Hívó IP-cím {ip-cím} nem engedélyezett. Hozzáférés megtagadva.|  
+|IP-szűrő|Hívó tiltólistán szereplő IP-cím|CallerIpBlocked|Hívó IP-cím le van tiltva. Hozzáférés megtagadva.|  
+|ellenőrzés-fejléc|Nem jelenik meg a szükséges fejléc vagy -érték hiányzik|HeaderNotFound|{Fejlécnév} fejléc nem található a kérelemben. Hozzáférés megtagadva.|  
+|ellenőrzés-fejléc|Nem jelenik meg a szükséges fejléc vagy -érték hiányzik|HeaderValueNotAllowed|{Fejlécérték} {fejlécnév} fejléc értéke nem engedélyezett. Hozzáférés megtagadva.|  
+|jwt ellenőrzése|Jwt jogkivonat nem található a kérelemben|TokenNotFound|A JWT nem található a kérelemben. Hozzáférés megtagadva.|  
+|jwt ellenőrzése|Aláírás érvényesítése nem sikerült|TokenSignatureInvalid|< jwt-könyvtárból üzenet\>. Hozzáférés megtagadva.|  
+|jwt ellenőrzése|Érvénytelen a célközönség|TokenAudienceNotAllowed|< jwt-könyvtárból üzenet\>. Hozzáférés megtagadva.|  
+|jwt ellenőrzése|Érvénytelen kibocsátót|TokenIssuerNotAllowed|< jwt-könyvtárból üzenet\>. Hozzáférés megtagadva.|  
+|jwt ellenőrzése|Token lejárt.|TokenExpired|< jwt-könyvtárból üzenet\>. Hozzáférés megtagadva.|  
+|jwt ellenőrzése|Aláírási kulcs nem lett feloldva-azonosító szerint|TokenSignatureKeyNotFound|< jwt-könyvtárból üzenet\>. Hozzáférés megtagadva.|  
+|jwt ellenőrzése|Szükséges jogcímeket a jogkivonatból hiányoznak|TokenClaimNotFound|JWT jogkivonat hiányzik a következő jogcímeket: < c1\>, < c2\>,... Hozzáférés megtagadva.|  
+|jwt ellenőrzése|Jogcím értékek eltérés|TokenClaimValueNotAllowed|{Jogcímérték} {jogcím-neve} jogcím értéke nem engedélyezett. Hozzáférés megtagadva.|  
 |jwt ellenőrzése|Más érvényesítési hibák|JwtInvalid|< üzenet jwt-könyvtárból\>|
 
 ## <a name="next-steps"></a>Következő lépések
-Házirendek használata további információkért lásd: [házirendek az API Management](api-management-howto-policies.md).  
+
+Házirendek használata további információkért lásd:
+
++ [Az API Management házirendek](api-management-howto-policies.md)
++ [Átalakítás API-k](transform-api.md)
++ [Házirend-hivatkozás](api-management-policy-reference.md) házirend-utasításoknál és a beállítások teljes listáját
++ [Házirend-minták](policy-samples.md)   

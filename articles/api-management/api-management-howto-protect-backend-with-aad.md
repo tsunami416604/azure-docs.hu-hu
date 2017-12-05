@@ -3,22 +3,21 @@ title: "Egy webes API háttéralkalmazás, az Azure Active Directory és az API 
 description: "Ismerje meg, hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management."
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: erikre
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: f856ff03-64a1-4548-9ec4-c0ec4cc1600f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 3dd583c47fd2d9133c8a07e7bedcd49750ffdce4
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 32adec024b2ee2649f2631cfa72ee575094aa0c0
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management
 A következő videó bemutatja, hogyan egy webes API háttéralkalmazás létrehozásához, és a védelmét, és Azure Active Directory és az API Management OAuth 2.0 protokoll használatával.  Ez a cikk áttekintése és további információt a videó lépéseit tartalmazza. A 24 perces videó bemutatja, hogyan számára:
@@ -431,13 +430,13 @@ Mellett a jogkivonat végpontjához beillesztésével, adja hozzá a további v�
 
 Ezt követően adja meg az ügyfél hitelesítő adatait. Ezek a hozzáférési, ez esetben a fejlesztői portálján kívánt erőforrás hitelesítő adatai.
 
-![Ügyfél hitelesítő adatait][api-management-client-credentials]
+![Ügyfél-hitelesítő adatok][api-management-client-credentials]
 
 A beolvasandó a **ügyfél-azonosító**, keresse meg a **konfigurálása** lapján a fejlesztői portálján, és másolja az AAD-alkalmazást a **ügyfél-azonosító**.
 
 A beolvasandó a **Ügyfélkulcs** kattintson a **időtartam válassza** a legördülő a **kulcsok** szakaszt, és adjon meg egy időközt. Ebben a példában 1 év szolgál.
 
-![Ügyfél-azonosító][api-management-aad-client-id]
+![Ügyfélazonosító][api-management-aad-client-id]
 
 Kattintson a **mentése** a konfiguráció mentéséhez, és a kulcs megjelenítéséhez. 
 
@@ -452,7 +451,7 @@ Másolja a vágólapra a kulcsot, lépjen vissza a közzétevő portal, illessze
 
 Azonnal az ügyfél hitelesítő adatait a következő kód egy hitelesítésengedélyezési. Az Azure AD fejlesztői portál alkalmazásba az engedélyezési kód és a kapcsoló készítsen biztonsági másolatot konfigurálása lap, és illessze be a hitelesítésengedélyezési azokat a **válasz URL-CÍMEN** mezőben, majd kattintson a **mentése** újra.
 
-![Válasz URL-címe][api-management-aad-reply-url]
+![Válasz-URL][api-management-aad-reply-url]
 
 A következő lépés a fejlesztői portálhoz AAD-alkalmazást az engedélyek beállításához. Kattintson a **Alkalmazásengedélyek** , és jelölje be a **címtáradatok olvasása**. Kattintson a **mentése** a módosítás mentéséhez, majd **alkalmazás hozzáadása**.
 
@@ -561,5 +560,5 @@ Egy másik bemutató konfigurálása, és ez a házirend használatával, lásd:
 [api-management-client-credentials]: ./media/api-management-howto-protect-backend-with-aad/api-management-client-credentials.png
 [api-management-new-aad-application-menu]: ./media/api-management-howto-protect-backend-with-aad/api-management-new-aad-application-menu.png
 
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
-[Manage your first API]: api-management-get-started.md
+[Create an API Management service instance]: get-started-create-service-instance.md
+[Manage your first API]: import-and-publish.md

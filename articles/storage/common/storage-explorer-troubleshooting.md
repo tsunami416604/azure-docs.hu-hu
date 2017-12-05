@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.openlocfilehash: e06c73c2c00b27178f8431b83b5c5a42110b6b1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3187939fa813f941c2fe12a359df474a6c487c71
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Tártallózó hibaelhárítási útmutató
 
@@ -95,7 +95,7 @@ Ha nem sikerül, a hitelesítés lap, kövesse az alábbi lépéseket a problém
 
 - A fejlesztői konzolján megtekintheti az F12 billentyű lenyomása mellett. Tekintse meg a fejlesztői konzolján válaszát, és ellenőrizze, hogy található bármely clue ennek okát a hitelesítés nem működik.
 
-### <a name="cannot-remove-account"></a>Fiók nem távolítható el.
+### <a name="cannot-remove-account"></a>Sikertelen volt a fiók eltávolítása
 
 Ha nem tudja eltávolítani egy fiókot, vagy az újrahitelesítés elemre hivatkozás nem befolyásolja, kövesse az alábbi lépéseket a probléma elhárítása érdekében:
 
@@ -172,6 +172,14 @@ Ha a szolgáltatás egy SAS URL-cím segítségével, és ezt a hibát tapasztal
 - Győződjön meg arról, hogy az URL-cím nem járt le.
 
 - Ha a hozzáférési házirendek az SAS URL-cím alapú, győződjön meg arról, hogy a házirend nincs visszavonva.
+
+Ha a véletlenül egy SAS URL-cím érvénytelen csatolja, és nem választható le, kövesse az alábbi lépéseket:
+1.  A Tártallózó futtatásakor nyomja le az F12 billentyűt a fejlesztői eszközök ablak megnyitásához.
+2.  Kattintson az alkalmazás fülre, majd kattintson a helyi tároló > file:// a bal oldali fában.
+3.  A szolgáltatás típusa a problematikus SAS URI-társított kulcs található. Például ha a hibás SAS URI blob-tároló, keresse meg a "StorageExplorer_AddStorageServiceSAS_v1_blob" nevű kulcsot.
+4.  A kulcs értékének kell egy JSON-tömb. A hibás URI-azonosítóhoz tartozó objektum található, és távolítsa el.
+5.  Töltse be újra a Tártallózó Ctrl + R billentyűkombinációt.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

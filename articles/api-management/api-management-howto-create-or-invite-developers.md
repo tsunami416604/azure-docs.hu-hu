@@ -3,28 +3,27 @@ title: "Hogyan kezelheti a felhasználói fiókokat az Azure API Management |} M
 description: "Megtudhatja, hogyan hozható létre, vagy a meghívott felhasználóknak az Azure API Management"
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: erikre
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 078abfa5-1e4f-4c9d-b9c7-a172bd19c1a2
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 34343194cb9896916cb02cb8acf61af24f0784c9
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 6f2fd5e4c1a51fe9d1652c9970bcd8d76b25ab60
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Az Azure API Management felhasználói fiókok kezelése
 Az API Management fejlesztők akkor teszi közzé az API Management használata API-k felhasználók. Ez az útmutató bemutatja, hogyan hozhat létre, és a fejlesztők meghívása a az API-k és termékek használatára, hogy elérhetővé számukra az API Management-példánnyal. A felhasználói fiókok kezelése programozott módon információkért lásd: a [felhasználói entitás](https://msdn.microsoft.com/library/azure/dn776330.aspx) dokumentációjában találhatók a [API Management REST](https://msdn.microsoft.com/library/azure/dn776326.aspx) hivatkozás.
 
 ## <a name="create-developer"></a>Hozzon létre egy új fejlesztő
-Hozzon létre egy új fejlesztő, kattintson a **Publisher portal** az Azure portálon az API Management szolgáltatás. Ezzel továbblép az API Management közzétevő portáljára. Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg az [Ismerkedés az Azure API Management szolgáltatással][Get started with Azure API Management] oktatóanyag [API Management szolgáltatáspéldány létrehozása][Create an API Management service instance] című szakaszát.
+Hozzon létre egy új fejlesztő, kattintson a **Publisher portal** az Azure portálon az API Management szolgáltatás. Ezzel továbblép az API Management közzétevő portáljára. Ha még nem hozott létre az API Management szolgáltatáspéldány, lásd: [hozzon létre egy API-kezelés szolgáltatás példányt][Create an API Management service instance].
 
 ![Közzétevő portál][api-management-management-console]
 
@@ -100,6 +99,6 @@ A fejlesztői fiók létrehozása után szerepkörökhöz társítandó, és el�
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 
-[Get started with Azure API Management]: api-management-get-started.md
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Get started with Azure API Management]: get-started-create-service-instance.md
+[Create an API Management service instance]: get-started-create-service-instance.md
 [Configure email templates]: api-management-howto-configure-notifications.md#email-templates

@@ -12,18 +12,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 96455dcdcf2eb90c836675c73c83c0320524fdac
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 58f7f71fd619eea2865ed42d2808fe6ae3e75c1f
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="api-management-policy-expressions"></a>API-felügyeleti házirend-kifejezések
 Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a implicit módon megadott [környezetben](api-management-policy-expressions.md#ContextVariables) változó és egy engedélyezett [részhalmaza](api-management-policy-expressions.md#CLRTypes) .NET-keretrendszer típusú.  
   
-> [!NOTE]
+> [!TIP]
 >  Házirend-kifejezések kapcsolatos további információkért tekintse meg a [házirend-kifejezések](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/) videó.  
 >   
 >  Tekintse meg a házirend-kifejezések használatával házirendek konfigurálásához a bemutatók [felhő fedik le a epizód 177: több API a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Ez a videó tartalmazza a következő házirend-kifejezés bemutatók.  
@@ -206,5 +206,15 @@ Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a
 |byte [] visszafejtése (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet – cyphertext vissza kell fejteni<br /><br />ALG - titkosítási algoritmus<br /><br />Egyszerű szövegként adja vissza.|
 |byte [] visszafejtése (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm, kulcs: byte [], iv:byte[])|bemeneti - bemeneti - cyphertext vissza kell fejteni<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
 
+## <a name="video"></a>Videó
+
+> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player] 
+>
 ## <a name="next-steps"></a>Következő lépések
-Házirendek használata további információkért lásd: [házirendek az API Management](api-management-howto-policies.md).  
+
+Házirendek használata további információkért lásd:
+
++ [Az API Management házirendek](api-management-howto-policies.md)
++ [Átalakítás API-k](transform-api.md)
++ [Házirend-hivatkozás](api-management-policy-reference.md) házirend-utasításoknál és a beállítások teljes listáját
++ [Házirend-minták](policy-samples.md)   

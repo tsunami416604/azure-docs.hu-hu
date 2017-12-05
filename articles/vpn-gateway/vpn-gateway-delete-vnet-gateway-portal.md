@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: cherylmc
-ms.openlocfilehash: 1d289c09465cb8d5e4bfa569441dffcbf562b3bf
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: b67fdfc82bbc132772186e3500079cfcfdafe02b
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Törölje a virtuális hálózati átjáró, a portál használatával
 
@@ -28,11 +28,15 @@ ms.lasthandoff: 11/17/2017
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (klasszikus)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
-Többféle különböző megközelítés közül választhat, ha törli a virtuális hálózati átjáró VPN gateway-konfigurációt.
+A cikkben az Azure VPN gatewayek a Resource Manager üzembe helyezési modellel használatával telepített törlésére vonatkozó utasítások. Többféle különböző megközelítés közül választhat, ha törli a virtuális hálózati átjáró VPN gateway-konfigurációt.
 
 - Ha teljes tartalmának törlése, és kezdje újra a folyamatot, ahogy a gyorsítás esetében is egy tesztkörnyezetben, törölheti az erőforráscsoportot. Ha töröl egy erőforráscsoport, a csoportban lévő összes erőforrást törli. Ez a módszer csak akkor javasolt, ha nem szeretné megtartani az erőforrások az erőforráscsoportban. Ezzel a megközelítéssel csak néhány erőforrásokat külön-külön nem törölhető.
 
 - Ha meg szeretné tartani a erőforrások az erőforráscsoportban, a virtuális hálózati átjáró törlése válik kicsit bonyolultabb. A virtuális hálózati átjáró törlése előtt először törölnie kell az átjáró függő erőforrásokat. A szükséges lépések attól függ, a létrehozott kapcsolatok és a tőle függő erőforrások, minden egyes kapcsolathoz.
+
+> [!IMPORTANT]
+> Az alábbi utasítások azt ismertetik, hogyan törlése az Azure VPN gatewayek a Resource Manager üzembe helyezési modellel használatával telepíthetők. A klasszikus telepítési modell használatával telepített VPN-átjáró törléséhez használja az Azure PowerShell leírtak [Itt](vpn-gateway-delete-vnet-gateway-classic-powershell.md).
+
 
 ## <a name="delete-a-vpn-gateway"></a>VPN Gateway törlése
 

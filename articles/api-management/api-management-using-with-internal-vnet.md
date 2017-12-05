@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 2a496059d1959a6c9e762e70dfbeff9bf961c4d4
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: df2ebb6ee8b1f108c751226188556ced907314e1
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózat az Azure API Management szolgáltatással
 Azure virtuális hálózatok, az Azure API Management kezelheti API-k nem érhető el, az interneten. A kapcsolat VPN technológiáin számos érhetők el. Az API Management olyan virtuális hálózaton belül két fő módban telepíthető:
@@ -50,7 +50,7 @@ Az API-kezelés szolgáltatás a belső virtuális hálózat belső terheléselo
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Engedélyezze a virtuális hálózati kapcsolat az Azure portál használatával
 
 1. Keresse meg az Azure API Management-példány a [Azure-portálon](https://portal.azure.com/).
-2. Válassza ki **egyéni tartományok és SSL**.
+2. Válassza ki **virtuális hálózati**.
 3. A virtuális hálózaton belül telepítendő API Management-példány beállítása.
 
     ![Az Azure API Management a belső virtuális hálózat beállításának menü][api-management-using-internal-vnet-menu]
@@ -121,7 +121,6 @@ További tudnivalókért tekintse meg a következő cikkeket:
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png
 [api-management-custom-domain-name]: ./media/api-management-using-with-internal-vnet/api-management-custom-domain-name.png
 
-
-[Create API Management service]: api-management-get-started.md#create-service-instance
+[Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
 

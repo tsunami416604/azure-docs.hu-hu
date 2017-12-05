@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/22/2017
 ms.author: raynew
-ms.openlocfilehash: 1c21364c3ff5cfb61866c912a699b722f2668607
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: b0818fbc1d227093fcc1b9b925d0859b8580f9c1
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Fedezze fel és felmérheti a helyszíni VMware virtuális gépek áttelepítése az Azure-bA
 
@@ -37,10 +37,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **VMware**: szükség van legalább egy VMware virtuális gép található egy ESXi-állomáson, vagy 5.0-s vagy újabb verzióját futtató fürtre. A gazdagép vagy fürt 5.5, 6.0 vagy 6.5-ös verzióját futtató vCenter-kiszolgálót kell kezelnie.
-- **vCenter fiók**: olvasási fiók rendszergazdai hitelesítő adatokkal a vCenter-kiszolgáló szükséges. Azure áttelepítése a virtuális gépek felderítése ezt a fiókot használja.
+- **VMware**: A virtuális gépek áttelepítését tervezi, a vCenter Server futó verzióját 5.5, 6.0 vagy 6.5 kell kezelnie. Emellett kell egy ESXi gazdagépen futó verziójával 5.0-s vagy újabb, a gyűjtő virtuális gép központi telepítéséhez. 
+ 
+> [!NOTE]
+> Hyper-V támogatása az ütemtervet, és engedélyezve lesz elérhető. 
+
+- **vCenter Server fiók**: a vCenter Server eléréséhez csak olvasható-fiók szükséges. Az Azure áttelepítése ezt a fiókot használja a helyszíni virtuális gépek felderítése.
 - **Engedélyek**: a vCenter-kiszolgáló, a virtuális gép létrehozása a fájl importálásával engedélyekre van szükség. PETESEJTEK formátumban. 
-- **Statisztika beállítások**: A statisztika a vCenter-kiszolgáló beállításait kell megadni 3. szint telepítés megkezdése előtt. Ha alacsonyabb, mint 3 assessment szinten működik, de nem gyűjti a teljesítményadatokat tárolási és hálózati.
+- **Statisztika beállítások**: A statisztika a vcenter Server kell beállítás 3. szint telepítés megkezdése előtt. 3 szintje alacsonyabb, ha assessment működni fog, de nem gyűjti a teljesítményadatokat tárolási és hálózati. Javaslatok ebben az esetben kerül sor mérete teljesítményadatokat lemezek és a hálózati adapterek Processzor és memória- és konfigurációs adatok alapján. 
 
 ## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 Jelentkezzen be az [Azure portálra](https://portal.azure.com).
@@ -51,7 +55,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Keresse meg **Azure áttelepítése**, és válassza ki a szolgáltatást (**Azure áttelepítése (előzetes verzió)** a keresési eredmények között. Ezt követően kattintson a **Create** (Létrehozás) gombra.
 3. Adja meg a projekt nevét, és az Azure-előfizetés a projekthez.
 4. Hozzon létre egy új erőforráscsoportot.
-5. Adja meg, a régiót, amelyben a projekt létrehozásához, majd kattintson a **létrehozása**. Ebben a régióban a helyszíni virtuális gépek összegyűjtött metaadatok tárolódnak. A régióban nyugati középső Régiójában az előzetes verzió csak az Azure áttelepítése projektek hozhat létre. Virtuális gépek felmérheti azonban egy másik hely.
+5. Adja meg, a régiót, amelyben a projekt létrehozásához, majd kattintson a **létrehozása**. Ebben a régióban a helyszíni virtuális gépek összegyűjtött metaadatok tárolódnak. A régióban nyugati középső Régiójában az előzetes verzió csak az Azure áttelepítése projektek hozhat létre. Azonban továbbra is megtervezheti a cél Azure-beli hely az áttelepítéshez. 
 
     ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
     
@@ -93,7 +97,7 @@ Ellenőrizze, hogy a. PETESEJTEK fájl biztonságos, csak telepítheti azt.
 
 ## <a name="create-the-collector-vm"></a>A gyűjtő virtuális gép létrehozása
 
-A letöltött fájlt importálja a vCenter-kiszolgáló.
+A letöltött fájlt importálja a vCenter-kiszolgálóhoz.
 
 1. Kattintson a vSphere Client konzolon **fájl** > **OVF-sablon telepítése**.
 
@@ -143,7 +147,7 @@ Felderítési idő függ VMs hány derít fel. Általában 100 virtuális gépen
 Virtuális gépek később, akkor csoportosításához, és hozzon létre értékelését. 
 
 1. A projekt **áttekintése** kattintson **+ assessment létrehozása**.
-2. Kattintson a **összes** assessment beállításainak ellenőrzéséhez.
+2. Kattintson a **összes** assessment tulajdonságainak áttekintése.
 3. A csoport létrehozásához, és adjon meg egy felügyeleticsoport-nevet.
 4. Válassza ki a gépeket, a csoporthoz hozzáadni kívánt.
 5. Kattintson a **létrehozása Assessment**, a csoport és az értékelés létrehozásához.
@@ -168,13 +172,16 @@ Ez a nézet megjeleníti az egyes gépek készültségi állapotát.
 
 #### <a name="monthly-cost-estimate"></a>Havi költség becslése
 
-Ez a nézet megjeleníti a számítási és a tárolás, az egyes gépek költségszámítás. Becsült költség kiszámítása a teljesítmény-alapú méretével kapcsolatos megfontolások a gépek és a lemezek és az értékelés tulajdonságok használatával.
+Ez a nézet megjeleníti az összes számítási és tárolási költsége Azure-beli virtuális gépek és az egyes gépek részletei. Becsült költség kiszámítása a teljesítmény-alapú méretével kapcsolatos megfontolások a gépek és a lemezek és az értékelés tulajdonságok használatával. 
 
-Becsült havi költségeket a számítási és tárolási összesítése a csoportban lévő virtuális gép esetében. További részletek a részletezéshez minden számítógépen kattinthat. 
+> [!NOTE]
+> A helyszíni virtuális gépek futtatásához használt Azure infrastruktúrában található, mint a szolgáltatási (IaaS) virtuális gép áttelepítése Azure által biztosított költség becslése szolgál. Bármely Platformszolgáltatást (PaaS) vagy a szolgáltatott szoftverként (SaaS) költségek szoftverként nem tekinti. 
+
+Becsült havi költségeket a számítási és tárolási összesítése a csoportban lévő virtuális gép esetében. 
 
 ![Értékelés VM költsége](./media/tutorial-assessment-vmware/assessment-vm-cost.png) 
 
-Egy adott gép lásd a költségek is lebontva.
+Egy adott gép tekintse meg a részleteket is lebontva.
 
 ![Értékelés VM költsége](./media/tutorial-assessment-vmware/assessment-vm-drill.png) 
 

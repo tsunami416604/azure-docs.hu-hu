@@ -3,22 +3,21 @@ title: "Engedélyezi a fejlesztői fiókok Azure Active Directory - Azure API Ma
 description: "Útmutató az Azure Active Directoryval az API Management felhasználók hitelesítéséhez."
 services: api-management
 documentationcenter: API Management
-author: vladvino
-manager: erikre
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 33a69a83-94f2-4e4e-9cef-f2a5af3c9732
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 2e8bc33ddf38657fe2d0d84a7bf64d4177d51572
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 3faa6c1867808436a66a2b33ea1a9d79ede2c8fb
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/04/2017
 ---
 > [!WARNING]
 > Az Azure Active Directory-integráció érhető el a [fejlesztői és a prémium](https://azure.microsoft.com/en-us/pricing/details/api-management/) csak tiers.
@@ -71,7 +70,7 @@ Ha több aktív Azure-könyvtárak nem használható ehhez az alkalmazáshoz, ka
 
 Másolás a **átirányítási URL-cím** a a **Azure Active Directory** szakasza a **külső identitások** a közzétevő portálon lapra, és illessze be azt a **válasz URL-cím** szövegmezőben. 
 
-![Válasz URL-címe][api-management-aad-reply-url]
+![Válasz-URL][api-management-aad-reply-url]
 
 Görgessen az alsó részén a konfigurálása lapon válassza a **Alkalmazásengedélyek** legördülő, és ellenőrizze, **címtáradatok olvasása**.
 
@@ -107,7 +106,7 @@ Kattintson a **mentése** a konfiguráció mentéséhez, és a kulcs megjelenít
 
 Váltás a közzétevő portal, majd illessze be a kulcs a **Ügyfélkulcs** szövegmezőben.
 
-![Ügyfélkulcs][api-management-client-secret]
+![Titkos ügyfélkulcs][api-management-client-secret]
 
 **Bérlők engedélyezett** határozza meg, mely könyvtárak van az API Management service-példány az API-k eléréséhez. Adja meg a tartomány, amelyhez hozzáférést szeretne az Azure Active Directory-példányok. Elkülönítheti a több tartomány ágyazódjanak, szóközzel vagy vesszővel válassza el egymástól.
 
@@ -149,7 +148,7 @@ Váltás a **látható** fülre, majd **csoportok hozzáadása az Azure Active D
 
 Válassza ki a **Azure Active Directory-bérlő** a legördülő listában, és írja be a kívánt csoport neve a **csoportok** adhatók hozzá a szövegmezőben.
 
-![Válassza ki a csoport][api-management-select-group]
+![Csoport kiválasztása][api-management-select-group]
 
 A csoport neve megtalálható a **csoportok** listában az Azure Active Directory, az alábbi példában látható módon.
 
@@ -188,7 +187,7 @@ Kérheti a regisztrációs űrlap Ha bármilyen további információkra szüks�
 
 A felhasználó most jelentkezett be a fejlesztői portálra, az API Management szolgáltatáspéldány.
 
-![Regisztráció kész][api-management-registration-complete]
+![A regisztráció kész.][api-management-registration-complete]
 
 [api-management-management-console]: ./media/api-management-howto-aad/api-management-management-console.png
 [api-management-security-external-identities]: ./media/api-management-howto-aad/api-management-security-external-identities.png
@@ -227,10 +226,10 @@ A felhasználó most jelentkezett be a fejlesztői portálra, az API Management 
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
-[Get started with Azure API Management]: api-management-get-started.md
+[Get started with Azure API Management]: get-started-create-service-instance.md
 [API Management policy reference]: api-management-policy-reference.md
 [Caching policies]: api-management-policy-reference.md#caching-policies
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Create an API Management service instance]: get-started-create-service-instance.md
 
 [http://oauth.net/2/]: http://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet

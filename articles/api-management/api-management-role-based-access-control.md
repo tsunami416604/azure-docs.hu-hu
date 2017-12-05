@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: a3872aae3a9eb8da0b881ec9388f54546e84b08b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c775780a39c4d423c62bf88f55d35675c70442c7
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Szerepköralapú hozzáférés-vezérlés használata az Azure API Management
 Az Azure API Management támaszkodik a átruházásához hozzáférés-vezérlés (RBAC) engedélyezéséhez a részletes hozzáféréskezelést az API Management-szolgáltatások és entitások (például API-k és házirendek). Ez a cikk áttekintést nyújt a beépített és egyéni szerepkörök az API Management. További információ a hozzáférés-kezelés az Azure-portálon: [Ismerkedés az Azure-portálon kezelési](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
@@ -61,9 +61,12 @@ New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinit
 
 A [Azure Resource Manager erőforrás-szolgáltatói műveletekhez](../active-directory/role-based-access-control-resource-provider-operations.md#microsoftapimanagement) a cikk az engedélyeket, az API-felügyeleti szinten engedélyezhetők listáját tartalmazza.
 
-## <a name="watch-a-video-overview"></a>Áttekintő videó megtekintése
+## <a name="video"></a>Videó
 
-További információ a figyelheti a [szerepköralapú hozzáférés-vezérlés az API Management](https://channel9.msdn.com/Blogs/AzureApiMgmt/Role-Based-Access-Control-in-API-Management/player) videó.
+
+> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Role-Based-Access-Control-in-API-Management/player]
+>
+>
 
 ## <a name="next-steps"></a>Következő lépések
 

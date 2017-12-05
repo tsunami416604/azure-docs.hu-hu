@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 35d7c04f245e93d8cc795dca7c01c2bab5a14eb8
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 51a1b65446a1a0db93c21378f156b608a38ef817
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Az Azure Machine Learning data előkészítése Preview ellenőrök támogatott
 Ez a dokumentum ismerteti az előzetes verzióban elérhető ellenőrök készletét.
@@ -33,8 +33,8 @@ Numerikus oszlopoknál a inspector számos különböző statisztikák az oszlop
 - Alacsonyabb KVARTILIS
 - Középérték
 - Felső KVARTILIS
-- Maximális
-- Átlagos
+- Maximum
+- Átlag
 - Szórás
 
 
@@ -113,3 +113,18 @@ Olyan térképet pontokkal ábrázolt, feltéve, hogy a szélességi és hosszú
 Ez inspector támogatja a szűrést, pont kiválasztása a térképen keresztül. Nyomja meg a **Ctrl** billentyűt, majd és az egérrel a pontok körül négyzet kialakításához. Ezután alkalmazza az előzőekben leírt szűrők.
 
 A leképezés csak a lehetséges pontok megjelenítése billentyűkombináció lenyomásával gyorsan méretét a **E** a térkép bal oldalán.
+
+
+## <a name="pattern-frequency"></a>Minta gyakorisága 
+
+Ez inspector a kijelölt oszlopban karakterlánc minták listáját tartalmazza. A minta egy reguláris kifejezés szintaxisa például értékét. A minta rámutató a példákat mutat a minta értékeiből. A mintákat, valamint a hozzávetőleges coverages százalékos tekintetében is látható.
+
+![A minta inspector képe](media/data-prep-appendix4-supported-inspectors/PatternInspectorProductNumber.png)
+
+### <a name="options"></a>Beállítások
+- A felső érték
+- Csökkenő
+- Halo megjelenítése
+
+### <a name="actions"></a>Műveletek
+Ez inspector támogatja a szűrést, a megjelenő minták alapján. Nyomja meg a **Ctrl** billentyűt, majd válassza ki a kitöltött sávok mintát inspector. Ezután alkalmazza az előzőekben leírt szűrők. A felhasználó acion eredményeként egy speciális szűrési lépés jelenik meg. Tekintse meg, és módosíthatja a Python kódgenerálás meghívása a speciális szűrési lépés szerkesztése lehetőséget.

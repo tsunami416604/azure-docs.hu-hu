@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5a0344dcef779a9818be3e320bd5c269a2859f71
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 68686e128d7e9528396f338b95f483adf07c3292
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazásokban kivételek pillanatképek hibakeresése
 
@@ -27,6 +27,16 @@ A portálon, hogy a hívási verem, és vizsgálja meg a változókat, minden eg
 Pillanatkép gyűjtemény érhető el:
 * .NET-keretrendszer és az ASP.NET alkalmazások futó .NET-keretrendszer 4.5-ös vagy újabb.
 * Windows rendszeren futó alkalmazások .NET core 2.0 és 2.0-s ASP.NET Core.
+
+A következő környezetekben támogatottak:
+* Az Azure App Service.
+* Az Azure felhőalapú szolgáltatás operációsrendszer-család fut, 4 vagy újabb verzió.
+* Azure Service Fabric-szolgáltatások a Windows Server 2012 R2 vagy újabb rendszerű.
+* Azure virtuális gépeken futó Windows Server 2012 R2 vagy újabb.
+* Helyi fizikai vagy virtuális gépek Windows Server 2012 R2 rendszerű vagy újabb.
+
+> [!NOTE]
+> Ügyfélalkalmazások (például WPF, a Windows Forms vagy UWP) nem támogatottak.
 
 ### <a name="configure-snapshot-collection-for-aspnet-applications"></a>Pillanatkép gyűjtemény az ASP.NET-alkalmazások konfigurálása
 

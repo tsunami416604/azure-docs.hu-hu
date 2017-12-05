@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 11/23/2017
+ms.date: 12/04/2017
 ms.author: anoopkv
-ms.openlocfilehash: 1b7a2d99cfa9f7d54d5303c21202fc34cf6d15ab
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 2dcca54c9e1e9330bf7c2a37dc08f67817b6af47
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="manage-vmware-vcenter-server-in-azure-site-recovery"></a>VMware vCenter Server az Azure Site Recovery kezelése
 A cikk ismerteti a különböző Site Recovery-műveleteket, amelyek a VMware vCenter végrehajtható.
@@ -27,7 +27,7 @@ A cikk ismerteti a különböző Site Recovery-műveleteket, amelyek a VMware vC
 
 **Támogatja a VMware vCenter és az ESX-gazdagépen VMware vSphere** | **Részletek** |
 |--- | --- |
-|**Helyszíni VMware-kiszolgálók** | Egy vagy több VMware vSphere, futtató kiszolgálók 6.0, 5.5, 5.1 legújabb frissítéseit. Kiszolgálók ugyanazon a hálózaton, mint a konfigurációs kiszolgáló (vagy különálló folyamatkiszolgálót) kell elhelyezni.<br/><br/> Azt javasoljuk, hogy a vCenter-kiszolgálót a legújabb frissítésekkel rendelkező 6.0 vagy 5.5 rendszerű gazdagépek felügyeletéhez. Csak azok a szolgáltatások által biztosított 5.5 6.0-s verzió telepítésekor támogatottak.|
+|**Helyszíni VMware-kiszolgálók** | Egy vagy több VMware vSphere, futtató kiszolgálók 6.5,6.0, 5.5 legújabb frissítéseit. Kiszolgálók ugyanazon a hálózaton, mint a konfigurációs kiszolgáló (vagy különálló folyamatkiszolgálót) kell elhelyezni.<br/><br/> Azt javasoljuk, hogy a vCenter-kiszolgálót a legújabb frissítésekkel rendelkező 6.5,6.0 vagy 5.5 rendszerű gazdagépek felügyeletéhez. Csak azok a szolgáltatások által biztosított 5.5 6.0-s verzió telepítésekor támogatottak.|
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Az automatikus felderítési fiók előkészítése
 A Site Recovery VMware hozzáférésre van szüksége, a folyamatkiszolgálót a virtuális gépek automatikus észlelése és a feladatátvétel és a feladat-visszavételt a virtuális gépek.

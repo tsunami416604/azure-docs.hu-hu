@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: bradsev;weig
-ms.openlocfilehash: 73517a8d58700e987ce80889dadf8791e53170a3
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 9c858427b01f7b94aae87136a46e1d9ae5e09a1c
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Az Team tudományos folyamat működés közben: az SQL Data Warehouse
 Az oktatóanyag azt ismerteti létrehozása és telepítése a gépi tanulási modellek az SQL Data Warehouse (SQL DW) keresztül egy nyilvánosan elérhető adatkészlet--a [NYC Taxi Utazgatással](http://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított képes-e tipp fizetnek útnak, és multiclass besorolás és regressziós modell, amely a terjesztési megjósolható a fizetős tipp adatmennyiség is ismertetése.
@@ -839,7 +839,6 @@ Ebben a gyakorlatban azt már megismerkedett és fejthetők vissza az adatokat a
 3. Az adatbázis DNS-nevét adja meg a **adatbázis-kiszolgáló neve** mező. Formátum:`tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg a **adatbázisnév** a megfelelő mezőben.
 5. Adja meg a *SQL felhasználónév* a a **kiszolgáló felhasználói fiók nevét**, és a *jelszó* a a **kiszolgáló felhasználói fiók jelszavát**.
-6. Ellenőrizze a **fogadja el a kiszolgálói tanúsítvány** lehetőséget.
 7. Az a **adatbázis-lekérdezés** szöveg terület szerkesztése, illessze be a lekérdezést, amely a szükséges adatbázis-mezők (beleértve a számított mezőket a címkéket például) és régebbi minták a kívánt mintájának méretét az adatokat.
 
 Az alábbi ábra a lehet például egy bináris osztályozási kísérletet, adatok beolvasása közvetlenül az SQL Data Warehouse-adatbázis (ne felejtse el lecserélni a tábla neve nyctaxi_trip és nyctaxi_fare a séma és a tábla nevének használta, a forgatókönyv). Hasonló kísérletek multiclass besorolás és a visszavonási lehet létrehozni.
