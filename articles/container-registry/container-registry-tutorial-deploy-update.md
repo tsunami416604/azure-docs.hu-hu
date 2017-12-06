@@ -2,22 +2,15 @@
 title: "Azure tároló beállításjegyzék útmutató - leküldéses frissített regionális használatával végzett központi telepítésekhez"
 description: "A módosított Docker-lemezkép leküldése a georeplikált Azure beállításjegyzék tartalmaz, majd a változtatások több régióba futó webalkalmazások automatikusan telepíti. A három részből sorozat három része."
 services: container-registry
-documentationcenter: 
 author: mmacy
 manager: timlt
-editor: mmacy
-tags: acr, azure-container-registry, geo-replication
-keywords: "Docker, tárolók, beállításjegyzék, Azure"
 ms.service: container-registry
-ms.devlang: 
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 00408c12836d814f2449dda6802cc342992a4014
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 359fdcabd579d277e40f02eba2d4603ebd9f5f1f
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/05/2017

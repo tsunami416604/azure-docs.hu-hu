@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2017
+ms.date: 11/22/2017
 ms.author: jgao
-ms.openlocfilehash: 7d5534649595a3109442619e0adf13c0b354cc0f
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: a65daae8931c5ef892bf01eb049897488d6b15c7
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Hdinsight Hadoop-fürtök kezelése az Azure-portál használatával
 
@@ -36,14 +36,17 @@ Kövesse a cikkben, szüksége lesz egy **Azure-előfizetés**. Lásd: [Ingyenes
 1. Jelentkezzen be [https://portal.azure.com](https://portal.azure.com).
 2. A portál megnyitása után végezhetők el:
 
-   * Kattintson a **új** új fürt létrehozása a bal oldali menüből:
+   * Kattintson a **hozzon létre egy erőforrást** új fürt létrehozása a bal oldali menüből:
 
        ![a HDInsight-fürt új gomb](./media/hdinsight-administer-use-portal-linux/azure-portal-new-button.png)
+
+       Adja meg **HDInsight** a **keresése a piactéren**, kattintson a **HDInsight**, és kattintson a **létrehozása**.
+
    * Kattintson a **a HDInsight-fürtök** a meglévő fürtök elemet a bal oldali menüből:
 
        ![Az Azure portál HDInsight fürt gomb](./media/hdinsight-administer-use-portal-linux/azure-portal-hdinsight-button.png)
 
-       Ha nem látja a **a HDInsight-fürtök** gombra, majd **további szolgáltatások** a listában, és kattintson az alsó **a HDInsight-fürtök** alatt a  **Az eszközintelligencia + analitika** szakasz.
+       Ha nem látja a **a HDInsight-fürtök** gombra, majd **a HDInsight-fürtök** alatt a **Eszközintelligencia + analitika** szakasz.
 
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
@@ -73,7 +76,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba,
 
 ## <a name="list-and-show-clusters"></a>Listában, és a fürt megjelenítése
 1. Jelentkezzen be [https://portal.azure.com](https://portal.azure.com).
-2. Kattintson a **a HDInsight-fürtök** a meglévő fürtök elemet a bal oldali menüből. Ha nem lát **a HDInsight-fürtök**, kattintson a **további szolgáltatások** első.
+2. Kattintson a **a HDInsight-fürtök** a meglévő fürtök elemet a bal oldali menüből. Ha nem lát **a HDInsight-fürtök**, kattintson a **minden szolgáltatás** első.
 3. Kattintson a fürt nevére. Ha a fürt lista hosszú, az oldal tetején a szűrő is használhatja.
 4. Kattintson a listában, a – áttekintés oldalra fürt:
 
@@ -81,6 +84,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba,
     * **Irányítópult**: megnyitja a fürt irányítópultot, amely Ambari Web Linux-alapú fürtökhöz.
     * **Biztonságos rendszerhéj**: jeleníti meg az utasításokat a fürtjét Secure Shell (SSH) kapcsolaton keresztül csatlakozni.
     * **Fürt méretezése**: lehetővé teszi a fürt feldolgozó csomópontok számának megváltoztatására.
+    * **Helyezze át**: helyezze át a fürt ásványolajtermék erőforráscsoportba vagy előfizetésbe.
     * **Törlés**: törli a fürtöt.
 
     **Bal oldali menüben:**
@@ -92,17 +96,18 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba,
     * **Automatizálási parancsfájl**: megjelenítési és a fürt az Azure Resource Manager sablon exportálása. Jelenleg csak exportálhatja a függő Azure storage-fiók. Lásd: [létrehozása Linux-alapú Hadoop-fürtök használata Azure Resource Manager-sablonok hdinsight](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
     * **Gyors üzembe helyezési**: információit jeleníti meg, amely segít a HDInsight használatának megkezdésében.
     * **A HDInsight eszközök**: segítő információk a HDInsight kapcsolódó eszközök.
-    * **A fürt bejelentkezési**: a fürt bejelentkezési adatok megjelenítéséhez.
     * **Előfizetés alapvető használati**: az előfizetéshez tartozó felhasznált és rendelkezésre álló magot megjelenítéséhez.
     * **Fürt méretezése**: növelése és a fürt feldolgozó csomópontok száma csökken. Lásd:[fürtök méretezése](hdinsight-administer-use-management-portal.md#scale-clusters).
-    * **Biztonságos rendszerhéj**: jeleníti meg az utasításokat a fürtjét Secure Shell (SSH) kapcsolaton keresztül csatlakozni. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+    * **SSH + a fürt bejelentkezési**: jeleníti meg az utasításokat a fürtjét Secure Shell (SSH) kapcsolaton keresztül csatlakozni. További információkért lásd: [az SSH a Hdinsighttal](hdinsight-hadoop-linux-use-ssh-unix.md), és a fürt bejelentkezési hitelesítő adatok alaphelyzetbe állítása.
     * **HDInsight-partnert**: a jelenlegi HDInsight-Partner hozzáadása/eltávolítása.
     * **Külső Metaadattárakat**: a Hive és az Oozie metastores megtekintése. A metaadattárakat csak konfigurálható úgy, hogy a fürt létrehozása során. Lásd: [használni a Hive/Oozie metaadattárhoz](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore).
     * **Parancsfájl-műveletek**: futtassa a Bash parancsfájlok a fürtön. Lásd: [testreszabása Linux-alapú HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster-linux.md).
     * **Alkalmazások**: hozzáadása a HDInsight-alkalmazások.  Lásd: [egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).
+    * **Figyelési**: a fürt Azure Operations Management Suite és az Azure Naplóelemzés figyelésére.
     * **Tulajdonságok**: a fürt tulajdonságainak megtekintése.
     * **Storage-fiókok**: a storage-fiókok és a kulcsok megtekintéséhez. A storage-fiókok vannak konfigurálva, a fürt létrehozása során.
-    * **A fürt AAD-identitása**:
+    * **Data Lake Store hozzáférés**: konfigurálja a hozzáférést a Data Lake tárolja.  Lásd: [HDInsight-fürtök létrehozása a Data Lake Store az Azure portál használatával](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+    * **Erőforrás állapota**: lásd: [Azure-erőforrás állapotának áttekintése](../service-health/resource-health-overview.md).
     * **Új támogatási kérelem**: lehetővé teszi egy támogatási jegy létrehozása a Microsoft támogatási szolgálatához.
     
 6. Kattintson a **tulajdonságok**:
@@ -128,7 +133,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba,
 A fürtök törlésével törli az alapértelmezett tárfiókot, sem az összes kapcsolt tárfiókot. Újra létrehozhatja a fürtöt azonos tárfiókok és ugyanazon a metaadattárakat használatával. Azt javasoljuk, hogy egy új alapértelmezett Blob tároló használatával, a fürt ismételt létrehozásakor.
 
 1. Jelentkezzen be a [Portal][azure-portal].
-2. Kattintson a **a HDInsight-fürtök** a bal oldali menüből. Ha nem lát **a HDInsight-fürtök**, kattintson a **további szolgáltatások** első.
+2. Kattintson a **a HDInsight-fürtök** a bal oldali menüből. Ha nem lát **a HDInsight-fürtök**, kattintson a **minden szolgáltatás** első.
 3. Kattintson a törölni kívánt fürtöt.
 4. Kattintson a **törlése** a felső menüben, majd kövesse az utasításokat.
 

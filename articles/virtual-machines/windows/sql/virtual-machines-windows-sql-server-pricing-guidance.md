@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/17/2017
 ms.author: jroth
-ms.openlocfilehash: 391f30e0c81aeaf313d58f1f4af877b5be9ed919
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: fa1611944d266001a54c4d78205c942a5226d97b
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Útmutató a SQL Server Azure virtuális gépek díjszabása
 
@@ -102,8 +102,11 @@ SQL Server 2016 Azure virtuális gép valamelyik, a bring your-saját-licencet l
 - [SQL Server 2016 Enterprise Azure virtuális Gépen](https://ms.portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP1EnterpriseWindowsServer2016)
 - [SQL Server 2016 szabványos Azure virtuális gép](https://ms.portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP1StandardWindowsServer2016)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Ossza meg velünk 10 napon belül hány fogja használni az Azure SQL Server-licencet. Az előző lemezképek mutató hivatkozások utasításokat ennek rendelkezik.
+
+> [!NOTE]
+> Nem lehetséges saját licencre módosítani egy percalapú SQL Server virtuális gép licencelési modelljét. Jelen esetben létre kell hoznia egy új BYOL virtuális gépet, majd az új virtuális gépre kell telepítenie az adatbázisokat. 
 
 ## <a name="avoid-unnecessary-costs"></a>Felesleges költségek elkerülése érdekében
 
@@ -115,7 +118,7 @@ Az SQL Server licencelési költségeit közvetlenül kapcsolódik az magok szá
 
 Nincsenek új méreteket jól használható bizonyos típusú SQL Server számítási feladatait. Ezek a gépek méretű memória, tárolási és i/o-sávszélesség magas szintű karbantartása, de egy alacsonyabb virtualizált magok száma rendelkeznek. Vegyük példaként a következő példa:
 
-| Virtuálisgép-mérettel | Vcpu | Memory (Memória) | Maximális lemezek | A maximális i/o-teljesítmény | SQL-licencelési költségeit. | A teljes költségek (számítási + licencelés) |
+| Virtuális gép mérete | Vcpu | Memory (Memória) | Maximális lemezek | A maximális i/o-teljesítmény | SQL-licencelési költségeit. | A teljes költségek (számítási + licencelés) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51,200 IOPS vagy 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51,200 IOPS vagy 768 MB/s | 75 %-kal alacsonyabb | 57 %-kal alacsonyabb |

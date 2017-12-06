@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
-ms.author: juliako
-ms.openlocfilehash: 3bba48d5425ae47c72aca893af7c11fe270c2929
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/05/2017
+ms.author: juliako;anilmur
+ms.openlocfilehash: 72b4a7b746d446e47b52cf34726a50dd52eaba97
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Az igény szerinti media kódolók Azure összehasonlítása
 
@@ -117,6 +117,7 @@ Az alábbi táblázat összehasonlítja a Media Encoder Standard (MES) és a Med
 | Kimeneti videó kodekek | Media Encoder Standard | Media Encoder Premium-munkafolyamat |
 | --- | --- | --- |
 | AVC (H.264; 8 bites; nagy profil, akár szinten 5.2-es; 4 KB-os Ultra HD; AVC belüli) |4. csak 8 bit: 2:0 |Igen |
+| HEVC (H.265; 8- és 10 bites;)  |Nem |Igen |
 | (A MXF) Avid DNxHD |Nem |Igen |
 | MPEG-2 (legfeljebb 422 profil és a magas szintű; például XDCAM, XDCAM HD, XDCAM IMX, CableLabs® és D10 Variant típusú adatok is beleértve) |Nem |Igen |
 | MPEG-1 |Nem |Igen |

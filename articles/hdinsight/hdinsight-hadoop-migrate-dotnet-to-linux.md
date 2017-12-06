@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2017
+ms.date: 12/05/2017
 ms.author: larryfr
-ms.openlocfilehash: 978606aa5f16842f8198ee67a65b476b4f560ab7
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2657db61ff3161cd87bc97edfe5f84f8b29cbcfb
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>A Windows-alapú HDInsight a Linux-alapú HDInsight .NET megoldások áttelepítése
 
@@ -28,7 +28,7 @@ Linux-alapú HDInsight-fürtök használata [monó (https://mono-project.com)](h
 
 ## <a name="mono-compatibility-with-net"></a>A .NET monó kompatibilitási
 
-Monó verzió 4.2.1 megtalálható HDInsight 3.5-ös verziója. Monó részét képező HDInsight-verzión további információkért lásd: [HDInsight összetevő verziók](hdinsight-component-versioning.md). Egy adott verziójához monó telepítéséhez tekintse át a [telepítse vagy frissítse a monó](hdinsight-hadoop-install-mono.md) dokumentum.
+Monó verzió 4.2.1 3.6 verzió HDInsight része. Monó részét képező HDInsight-verzión további információkért lásd: [HDInsight összetevő verziók](hdinsight-component-versioning.md). Egy adott verziójához monó telepítéséhez tekintse át a [telepítse vagy frissítse a monó](hdinsight-hadoop-install-mono.md) dokumentum.
 
 Monó és a .NET között további információkért tekintse meg a [monó kompatibilitási (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentum.
 

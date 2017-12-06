@@ -1,22 +1,22 @@
 ---
-title: "Azure IoT Hub eszköz kiépítése szolgáltatáshoz (előzetes verzió) áttekintése |} Microsoft Docs"
+title: "Az Azure IoT Hub eszköz-üzembehelyezési szolgáltatás áttekintése |} Microsoft Docs"
 description: "Ismerteti az eszközök kiépítését az Azure-ban az eszköz kiépítése szolgáltatáshoz, és az IoT-központ"
 services: iot-dps
 keywords: 
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 12/05/2017
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a9df3f4e27e0d6e11b9d85a44467f3c62f453121
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 021ff1299321ae1aece3a77fc61129517c85697b
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service-preview"></a>Kiépítés eszközök Azure IoT Hub eszköz kiépítése szolgáltatáshoz (előzetes verzió)
 A Microsoft Azure integrált nyilvános felhőszolgáltatások minden IoT megoldás igényeinek széles skáláját biztosítja. Az IoT Hub-kiépítés szolgáltatást az IoT-központ, amely lehetővé teszi, hogy nulla érintéssel, közvetlenül az időponthoz kötött kiépítése a jobb oldali IoT hub emberi beavatkozás nélkül engedélyezése az ügyfelek számára a kiépítés több millió eszközök biztonságos és skálázható módon telepíthetők a segítő szolgáltatás módon.
@@ -47,7 +47,7 @@ Az előző szakaszban felsorolt összes forgatókönyv elvégezhető az üzembe 
 8. Az eszköz a kívánt állapot lekérése az eszköz iker az IoT-központot.
 
 ## <a name="provisioning-process"></a>Üzembe helyezési folyamat
-Egy eszköz, amelyben az eszköz kiépítése szolgáltatáshoz megtörténik egy részét, amelyek egymástól függetlenül lehet végrehajtani a telepítési folyamat két különálló lépésből áll:
+A telepítési folyamat az eszköz kiépítése szolgáltatáshoz vesz igénybe, amelyek egymástól függetlenül végezhető része eszköz két különálló lépésből áll:
 
 * A **gyártási lépés** amely az eszköz létrehozása és gyári, előkészített és
 * A **felhő telepítő lépés** található, amely az eszköz kiépítése szolgáltatáshoz konfigurált automatikus üzembe helyezését.
@@ -59,7 +59,7 @@ Ez a lépés nem minden mi történik a gyártási sor. A részt ebben a lépés
 
 Az eszköz kiépítése szolgáltatáshoz nem vezet be egy új lépés a gyártási folyamat; Ehelyett azt kötelékek azokat a meglévő lépés a szoftverek, és a hardveres biztonsági MODULT (ideális esetben) telepített az eszközön. Eszközazonosítót létrehozása ebben a lépésben, helyett, a létesítési szolgáltatás lekérése a kapcsolat adatai/IoT-megoldás hozzárendelését, azt a bekapcsolt meghívja a az eszköz egyszerűen programozott van a létesítési szolgáltatás adatokkal.
 
-Ebben a lépésben is a gyártó az eszköz deployer/operátor azonosíthatja a fontos információkat szolgáltat. Ennek oka lehet egyszerűen erősítse meg, hogy minden eszköznek van-e a legfelső szintű hitelesítésszolgáltató az eszköz deployer/operátor szükséges, a TPM-ellenőrző kulcs nyilvános részének kibontása minden TPM eszköz által biztosított előállított X.509 tanúsítvány. Ezek a szolgáltatások még ma számos szilícium gyártó kínálják.
+Ebben a lépésben is a gyártó az eszköz deployer/operátor azonosíthatja a fontos információkat szolgáltat. Ennek oka lehet egyszerűen erősítse meg, hogy minden eszköz egy aláíró tanúsítványt, az eszköz deployer/operátor szükséges, a TPM-ellenőrző kulcs nyilvános részének kibontása minden TPM eszköz által biztosított előállított X.509 tanúsítvánnyal rendelkeznek. Ezek a szolgáltatások még ma számos szilícium gyártó kínálják.
 
 ### <a name="cloud-setup-step"></a>Felhő beállítása lépés
 Ez a lépés nem a felhő beállítása a megfelelő automatikus kiépítés kapcsolatban. Általában két típusa van a felhasználók felhőalapú telepítő lépés:, aki tudja, hogyan kell eszközök kell először állítja be (egy eszköz operátor), és valaki más ki tudja, hogyan eszközök kell osztani, az IoT-központok (Ez a megoldás operátor) között vannak.
@@ -84,19 +84,29 @@ Az eszköz kiépítése szolgáltatáshoz számos olyan szolgáltatást, amelyek
 * **Több elosztási házirendek** hogyan az eszköz kiépítése szolgáltatáshoz rendel eszközök támogatásához az esetek IoT-központok szabályozására.
 * **Megfigyelési és diagnosztikai naplók** való győződjön meg arról, hogy minden megfelelően működik.
 * **Több központi támogatási** amely lehetővé teszi az eszköz kiépítése szolgáltatás eszközöket rendelhet hozzá több IoT-központ. Az eszköz kiépítése szolgáltatáshoz hubs több Azure-előfizetések között működik.
+* **Kereszt-terület támogatása** amely lehetővé teszi az eszköz kiépítése szolgáltatás eszközöket rendeljen az IoT-központok más régiókban.
 
 A fogalmak és az eszközök kiépítését a részt vevő szolgáltatásokkal kapcsolatban részletesebb [eszköz fogalmak](concepts-device.md), [szolgáltatással kapcsolatos fogalmak](concepts-service.md), és [biztonsági fogalmak](concepts-security.md).
 
 ## <a name="cross-platform-support"></a>Többplatformos támogatást
-Az eszközök kiépítés szolgáltatása, minden Azure IoT-szolgáltatásaival, például a különböző operációs rendszereken platformfüggetlen működik. A nyilvános előzetes verzió támogatja, támogatott nyelvek/protokollok korlátozott számú, bár számos további elérhető lesz az eszköz kiépítése szolgáltatás általánosan elérhető esetén. A nyilvános előzetes verzióhoz az eszköz kiépítése szolgáltatáshoz csak HTTPS-kapcsolatok eszköz és a szolgáltatási műveletek támogatja. Az eszköz SDK van C, és a C# az SDK szolgáltatás.
+Az eszközök kiépítés szolgáltatása, minden Azure IoT-szolgáltatásaival, például a különböző operációs rendszereken platformfüggetlen működik. Az Azure-ajánlatok nyissa meg a forrás SDK-k, a különböző [nyelvek](https://github.com/Azure/azure-iot-sdks) megkönnyítésére kapcsolódó eszközök és a szolgáltatás kezelése. Az eszköz kiépítése szolgáltatáshoz kapcsolódó eszközök az alábbi protokollokat támogatja:
+
+* HTTPS
+* AMQP
+* Az AMQP keresztül websocket elemek
+* MQTT
+* MQTT websocket elemek keresztül
+
+Az eszköz kiépítése szolgáltatáshoz a szolgáltatási műveletek HTTPS-kapcsolatok csak támogatja.
 
 ## <a name="regions"></a>Régiók
-Az eszköz kiépítése szolgáltatáshoz érhető el az USA keleti régiója, Nyugat-Európában és Délkelet-Ázsia a nyilvános előzetes verzióhoz. A Microsoft karbantartása meglévő és újonnan frissített listáját bejelentette régiók az összes szolgáltatáshoz.
+Az eszköz kiépítése szolgáltatáshoz sok terület érhető el. Azt a meglévő és újonnan frissített listáját jelentette be az összes szolgáltatáshoz, régiók karbantartása [Azure-régiókat](https://azure.microsoft.com/regions/). Láthatja, ahol az eszköz kiépítése szolgáltatás nem érhető el a [Azure állapot](https://azure.microsoft.com/status/) lap.
 
-* [Azure-régiók](https://azure.microsoft.com/regions/)
+> [!NOTE]
+> Az eszköz kiépítése szolgáltatáshoz a globális, és nem kötött helyre. Azonban meg kell adnia egy régiót, amelyben az eszköz kiépítése szolgáltatáshoz-profilhoz tartozó metaadatok lesznek tárolva.
 
 ## <a name="availability"></a>Rendelkezésre állás
-A nyilvános előzetes karbantartása azt a legjobb a szolgáltatás rendelkezésre állását. Nincs nincs szolgáltatásiszint-megállapodás nyilvános előzetes. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/)-ban található.
+99,9 %-os kezelése a Microsoft szolgáltatásiszint-megállapodás a eszköz kiépítése szolgáltatáshoz, és meg is [olvassa el a szolgáltatásiszint-szerződést](https://azure.microsoft.com/support/legal/sla/iot-hub/). Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/)-ban található.
 
 ## <a name="quotas"></a>Kvóták
 Minden Azure-előfizetéssel rendelkezik alapértelmezett kvótát, amely jelentős hatással lehet az IoT-megoldásból körét. A jelenlegi korlát előfizetésenként alapon előfizetésenként 10 eszköz kiépítése szolgáltatások.

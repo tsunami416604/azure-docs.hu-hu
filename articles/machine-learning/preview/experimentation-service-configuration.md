@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 470bba665dcf8b3517b86ee633a9570ec0f3cd33
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 26ab8f9ab561cc218f3dcb249741a96d8f14c579
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurálása
 
@@ -198,7 +198,7 @@ Távoli VM az alábbi követelményeknek kell megfelelnie:
 A következő parancs segítségével a számítási cél definíció létrehozása és futtatása a Docker-alapú távoli végrehajtások konfigurációját.
 
 ```
-az ml computetarget attach --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" --type remotedocker
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" 
 ```
 
 Ha a számítási cél megfelelően konfigurált, a következő paranccsal futtassa a parancsfájlt.
@@ -211,7 +211,7 @@ $ az ml experiment submit -c remotevm myscript.py
 A Docker konstrukció távoli virtuális gépek pontosan ugyanúgy történik, a helyi Docker folyamat fut, így olyan hasonló végrehajtási környezetet kell látnia.
 
 >[!TIP]
->Ha a Tiltás késése a Docker-lemezkép az első futtatáshoz bevezetett elkerülése érdekében inkább a következő paranccsal készítse elő a számítási célja a parancsfájl végrehajtása előtt. az ml kísérlet - c előkészítése<remotedocker>
+>Ha a Tiltás késése a Docker-lemezkép az első futtatáshoz bevezetett elkerülése érdekében inkább a következő paranccsal készítse elő a számítási célja a parancsfájl végrehajtása előtt. az ml kísérlet - c remotedocker előkészítése
 
 
 _**A Python-parancsfájl végrehajtása távoli vm áttekintése:**_
@@ -221,12 +221,12 @@ _**A Python-parancsfájl végrehajtása távoli vm áttekintése:**_
 ## <a name="running-a-script-on-an-hdinsight-cluster"></a>A HDInsight-fürtök parancsprogram futtatása
 HDInsight egy népszerű big data elemzésre szolgáló Apache Spark támogató platform. Munkaterület lehetővé teszi, hogy a big Data típusú adatok használata a HDInsight Spark-fürtjei kísérletezhet. 
 
->! [MEGJEGYZÉS] A HDInsight-fürt elsődleges tárolóként kell használnia az Azure Blob. Azure Data Lake-tárolót még nem támogatott.
+>![MEGJEGYZÉS] A HDInsight-fürtnek az Azure-blobot kell elsődleges tárolóként használnia. Az Azure Data Lake-tároló használata jelenleg nem támogatott.
 
 Számítási cél létrehozásához, és futtassa a konfiguráció a HDInsight Spark-fürtök az alábbi paranccsal:
 
 ```
-$ az ml computetarget attach --name "myhdi" --address "<FQDN or IP address>" --username "sshuser" --password "sshpassword" --type cluster 
+$ az ml computetarget attach cluster --name "myhdi" --address "<FQDN or IP address>" --username "sshuser" --password "sshpassword"  
 ```
 
 >[!NOTE]
@@ -253,6 +253,29 @@ _**A HDInsight-alapú végrehajtás PySpark parancsfájl áttekintése**_
 ## <a name="running-a-script-on-gpu"></a>A GPU parancsprogram futtatása
 Az útmutató követésével GPU a parancsfájlok futtatásához:[GPU használata az Azure gépi tanulás](how-to-use-gpu.md)
 
+## <a name="using-ssh-key-based-authentication-for-creating-and-using-compute-targets"></a>SSH-kulcs alapú hitelesítés használatával létrehozásával és számítási tárolók használatával
+Az Azure Machine Learning-munkaterület lehetővé teszi létrehozhat és használhat SSH-kulcs alapú hitelesítés mellett a felhasználónév/jelszó alapú séma használatával számítási célokat. Ezt a képességet is használhatja, a számítási célként remotedocker vagy a fürt használata esetén. Ez a séma használata esetén a munkaterület egy nyilvános/titkos kulcspárt hoz létre, és jelentést küld vissza a nyilvános kulcsot. A felhasználónév hozzáfűzése a nyilvános kulcsot az ~/.ssh/authorized_keys a fájlokat. Az Azure Machine Learning-munkaterület majd használ ssh-alapú hitelesítés elérésére, és feldolgozás alatt álló számítási Ez a cél. A titkos kulcsot a számítási cél menti a munkaterület a kulcstároló, mert a munkaterület más felhasználók használhatja a számítási cél ugyanúgy azáltal, hogy a számítási cél létrehozásához a felhasználónevet.  
+
+Lépések a funkció használatához. 
+
+- Hozzon létre egy számítási célt a következő parancsok egyikét.
+
+```
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --use-azureml-ssh-key
+```
+vagy
+```
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" -k
+```
+- A nyilvános kulcsot a ~/.ssh/authorized_keys fájlba a csatolt számítási célszámítógépen munkaterület által generált hozzáfűzése. 
+
+[!IMPORTANT] Jelentkezzen be a számítási célt a számítási tároló létrehozásához használt felhasználónévvel kell. 
+
+- Mostantól előkészítése és a számítási célt SSH-kulcs alapú hitelesítés használata.
+
+```
+az ml experiment prepare -c remotevm
+```
 
 ## <a name="next-steps"></a>Következő lépések
 * [Hozzon létre és telepítse az Azure gépi tanulás](quickstart-installation.md)

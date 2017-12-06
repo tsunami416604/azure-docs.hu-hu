@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 9e20c606973447e0b01eaf9716fabf47eefd228b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: e85515c29d8f626c7eb2bfb636dc6c18da78b5c5
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>Annak-megosztás oktatóanyag: adatok előkészítése az Azure Machine Learning-munkaterület speciális
 Azure Machine Learning-szolgáltatások (előzetes verzió) egy integrált, végpontok közötti adattudomány, de a professional adatszakértőkön át a készítse elő az adatokat, kísérletek fejlesztése és központi telepítése a felhőbeli skálázással modellek speciális elemzési megoldás.
@@ -201,7 +201,7 @@ Vissza a __adatnézet__, jelölje be __adatok__ a lap jobb alsó.
    ![A Szűrés párbeszédpanel képe](media/tutorial-bikeshare-dataprep/weatherfilterinfm15.png)
 
    > [!NOTE]
-   > FM – 15 olyan az időjárási Terminálszolgáltatások repülési rutin időjárási jelentés (METAR). Az FM – 15 jelentések empirically figyelhetők kell lennie a legteljesebb körű, listtle hiányzó adatokkal.
+   > FM – 15 olyan az időjárási Terminálszolgáltatások repülési rutin időjárási jelentés (METAR). Az FM – 15 jelentések empirically figyelhetők kell lennie a legtöbb befejeződött, a hiányzó adatot.
 
 ## <a name="remove-a-column"></a>Egy oszlop eltávolítása
 
@@ -287,7 +287,7 @@ A két órás blokkok előrejelzéshez adatok használatához ki kell számítan
 
    Típus `Jan 01, 2015 12AM-2AM` szemben az első sort, majd kattintson a példaként **Enter**.
 
-   A munkaterület az átalakítás megadta a példa alapján határozza meg. Ebben a példában az eredménye, hogy a dátum, formátuma megváltozott, és a két órát vesz összefűzéséhez.
+   A munkaterület az átalakítás megadta a példa alapján határozza meg. Ebben a példában az eredménye, hogy a dátumformátum megváltozott, és a két órát vesz összefűzéséhez.
 
    ![A példa képe "2015. január 01. de 12 - hajnali 2 óra](media/tutorial-bikeshare-dataprep/wetherdatehourrangeexample.png)
 

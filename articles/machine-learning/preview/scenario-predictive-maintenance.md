@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: dc73c052ad9e0fe12af5042289f304a0e48ae413
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2687eb022bce0b71c217f0be611c8fabdfb66040
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="predictive-maintenance-real-world-scenario"></a>A prediktív karbantartási valós forgatókönyv.
 
@@ -63,7 +63,7 @@ A helyi gépén, futtatását a AML munkaterület `File` menüben válassza a `O
 
 Javasoljuk, hogy az adatok tudományos virtuális gépet futtató Linux (Ubuntu). Miután beállította a DSVM, futtassa az alábbi két parancsot:
 
-`az ml computetarget attach --name [Desired_Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword] --type remotedocker`
+`az ml computetarget attach remotedocker --name [Desired_Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]`
 
 `az ml experiment prepare --target [Desired_Connection_Name] --run-configuration [Desired_Connection_Name]`
 

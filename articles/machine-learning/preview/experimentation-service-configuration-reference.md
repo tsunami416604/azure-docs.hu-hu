@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 6a247c225af734757ab0cb0a7502f39535299ca7
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 16c72f8c22307a124fdb670aabca771084c0d1ec
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurációs fájlok
 
@@ -113,10 +113,10 @@ Egy adott futtatási konfiguráció megadásához a fájlokat két van szükség
 
 ```azurecli
 # create a compute target pointing to a VM via SSH
-$ az ml computetarget attach -n <compute target name> -a <IP address or FQDN of VM> -u <username> -w <password> --type remotedocker
+$ az ml computetarget attach remotedocker -n <compute target name> -a <IP address or FQDN of VM> -u <username> -w <password>
 
 # create a compute context pointing to an HDI cluster head-node via SSH
-$ az ml computetarget attach -n <compute target name> -a <IP address or FQDN of HDI cluster> -u <username> -w <password> --type cluster
+$ az ml computetarget attach cluster -n <compute target name> -a <IP address or FQDN of HDI cluster> -u <username> -w <password> 
 ```
 
 Ezzel a paranccsal létrejön egy meghatározott számítási cél alapuló pár. Tegyük fel, a számítási célként elnevezett _PEL_. A parancs létrehozza _foo.compute_ és _foo.runconfig_ a a **aml_config** mappa.
@@ -131,7 +131,7 @@ _\<számítási cél neve > .compute_ fájl határozza meg a számítási cél a
   - helyi
   - Docker
   - remotedocker
-  - Fürt
+  - fürt
 
 **baseDockerImage**: a Python/PySpark parancsfájl futtatásához használt a Docker-lemezképet. Az alapértelmezett érték _microsoft/mmlspark:plus-0.7.91_. Egy másik lemezképet is támogatja: _microsoft/mmlspark:plus-gpu-0.7.91_, amely hozzáférést biztosít a GPU gazdaszámítógépen (ha jelen a GPU).
 

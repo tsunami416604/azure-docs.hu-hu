@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 85484b79012243afd374a97e7f518e9a8b1043ea
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: a5d539172f03246e3c658f2485d29d3ae389ae52
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-kimenő/fan-a forgatókönyv tartós funkciókkal – felhő biztonsági mentési – példa
 
@@ -49,7 +49,7 @@ Ez a cikk ismerteti a mintaalkalmazást a következő funkciókat:
 
 Az alábbi szakaszok ismertetik a konfiguráció és a kódot, amely az Azure portál fejlesztésére szolgálnak. A Visual Studio fejlesztési kód a cikk végén meg.
 
-## <a name="the-cloud-backup-orchestration"></a>A felhő biztonsági mentési vezénylési
+## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>A felhő biztonsági mentési vezénylési (Visual Studio Code és az Azure portál mintakód)
 
 A `E2_BackupSiteContent` függvény használja a normál *function.json* az orchestrator függvényekhez.
 

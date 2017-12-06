@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/26/2017
+ms.date: 12/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 70c85bcb2c26d2ad3d0515d24e028f84495634c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3965c74d51996b3e4144130fad01fae9e265897
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>A StorSimple Device Manager szolgáltatás segítségével az Azure portál egy kötet klónozása
 
@@ -69,12 +69,7 @@ A következő lépésekkel klónozhatja a kötet a biztonságimásolat-katalógu
    
     ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. Bontsa ki a biztonságimásolat-készletet a társított kötetek megtekintéséhez. Ezek a kötetek offline állapotba kell helyezni a gazdagépet és az eszköz visszaállítani őket. A kötetek elérését a a **kötetek** panelen található az eszközre, majd kövesse a lépéseket [kötet offline állapotba](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) offline állapotba.
-   
-   > [!IMPORTANT]
-   > Győződjön meg arról, hogy elvégezte a kötetek offline állapotba a gazdagépen, mielőtt az eszköz a kötetek offline állapotba. Ha a gazdagép nem hajtja végre a kötetek offline, potenciálisan előfordulhat, hogy sérült adatokat.
-   
-4. Lépjen vissza a **biztonságimásolat-katalógus** és jelöljön ki egy kötetet a biztonságimásolat-készletben. Kattintson a jobb gombbal, és a helyi menüből válassza **Klónozás**.
+3. Bontsa ki a biztonságimásolat-készletet a társított kötet megtekintéséhez, és jelöljön ki egy kötetet az biztonságimásolat-készletből. Kattintson a jobb gombbal, és a helyi menüből válassza **Klónozás**.
 
    ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 

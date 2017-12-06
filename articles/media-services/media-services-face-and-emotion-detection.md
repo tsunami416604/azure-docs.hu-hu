@@ -14,8 +14,8 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 89a2e590d7ae80540ac9f4d76be6f5f50049bdd6
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: d1f5c6e0ab682aedf015189f3540442a5657d462
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/05/2017
@@ -334,12 +334,7 @@ A következő program bemutatja hogyan:
 
 Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
 
-A minta működjenek, kövesse az alábbi két további lépéseket:
 
-1. Használjon verziójának 4.1.0 **WindowsAzure.MediaServices.Extensions** (mert a hivatkozott csomagot kompatibilitási problémákat). 
-2. Használjon verziójának 3.16.1 **Microsoft.IdentityModel.Clients.ActiveDirectory** (miatt az újabb verziókban egy ismert hiba).
-
-Ezek a követelmények vonatkoznak rá 2017. November 24-től.
 
 #### <a name="example"></a>Példa
 

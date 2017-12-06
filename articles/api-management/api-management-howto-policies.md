@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 5c8e0a317126ae651bc93b7a00c3742e12d975fc
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 315e4bd7372416800373f98ecb5d8b1eb440e134
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="policies-in-azure-api-management"></a>Házirendek az Azure API Management
 
@@ -70,7 +70,7 @@ Tekintse meg a [szabályzataihoz](api-management-policy-reference.md) házirend-
 
 ## <a name="policy-samples"></a>Házirend-minták
 
-Lásd: [házirend minták](policy-samples.md) kódmintákat.
+Lásd: [házirend minták](policy-samples.md) kód további példákat.
 
 ## <a name="examples"></a>Példák
 

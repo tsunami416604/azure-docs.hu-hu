@@ -1,28 +1,22 @@
 ---
-title: "Betöltése Azure DC/OS-fürtről a tárolók elosztása |} Microsoft Docs"
+title: "A terhelés elosztása tárolók Azure DC/OS-fürtről"
 description: "Egy Azure tároló szolgáltatás DC/OS-fürtben több tároló terheléselosztása."
 services: container-service
-documentationcenter: 
 author: rgardler
 manager: timlt
-editor: 
-tags: acs, azure-container-service
-keywords: "Tárolók, mikroszolgáltatások, DC/OS, Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 78725c9d23e13d307821a188028ef573d1def038
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8dfa99b609cf2c54d29c55d3f5ba748910f7513b
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Betöltési egyenleg tárolók egy Azure tároló szolgáltatás DC/OS-fürtben
+
 Ebben a cikkben megismerkedhet azt egy belső terheléselosztó létrehozása a DC/OS felügyelete az Azure Tárolószolgáltatás Marathon-LB használatával. Ez a konfiguráció lehetővé teszi az alkalmazások horizontálisan méretezhető. Azt is lehetővé teszi, hogy kihasználhatja a nyilvános és titkos ügynök fürtök úgy, hogy a terheléselosztó a nyilvános és titkos fürtön alkalmazás tárolók skálázása. Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]

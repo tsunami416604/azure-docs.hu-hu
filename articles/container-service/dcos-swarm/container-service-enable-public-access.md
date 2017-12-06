@@ -1,28 +1,22 @@
 ---
-title: "Azure DC/OS tároló alkalmazás hozzáférésének engedélyezése |} Microsoft Docs"
+title: "Azure DC/OS tároló alkalmazás hozzáférésének engedélyezése"
 description: "How Azure Tárolószolgáltatási DC/OS tárolók elérésének engedélyezéséhez."
 services: container-service
-documentationcenter: 
 author: sauryadas
 manager: madhana
-editor: 
-tags: acs, azure-container-service
-keywords: "Docker, tárolók, mikroszolgáltatások, Mesos, Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: c9ef5913859cf3a55a2de2107a9304f1d28a4829
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aedc97335a0b9ad00cf653477b62bf530b556900
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>Azure Tárolószolgáltatás alkalmazáshoz való nyilvános hozzáférés engedélyezésére
+
 A DC/OS-tároló az ACS [nyilvános ügynök készlet](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) automatikusan kommunikál az internettel. Alapértelmezés szerint portok **80-as**, **443-as**, **8080** nyitva vannak, és bármilyen (nyilvános) tároló, ezeket a portokat figyeli érhetők el. Ez a cikk bemutatja, hogyan az alkalmazások több portok megnyitásához az Azure Tárolószolgáltatásban.
 
 ## <a name="open-a-port-portal"></a>Nyisson meg egy portot (portál)
@@ -43,7 +37,7 @@ Először azt kell megnyitni azt szeretnénk, ha a portot.
    | Név |A mintavétel egy leíró nevet. |
    | Port |A port, a tároló teszteléséhez. |
    | Útvonal |(Ha HTTP módban) Mintavételi relatív webhely elérési útja A HTTPS nem támogatott. |
-   | időköz |Mintavételi közötti idő próbál, másodpercben. |
+   | Időköz |Mintavételi közötti idő próbál, másodpercben. |
    | Sérült küszöbérték |Próbálkozások száma egymást követő mintavétel az előtt annak eldöntéséhez, hogy a tároló nem kifogástalan. |
 6. Eközben a az ügynök terheléselosztó tulajdonságainak, kattintson a **terheléselosztási szabályok** , majd **Hozzáadás**.
    

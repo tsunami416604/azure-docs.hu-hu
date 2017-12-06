@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 12/05/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a454199137f8ccc99ddbef66758fd1cabd8fd486
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 5ff0bcf9bdf9eaf1b4f0084acf9e5ee6ccfeba19
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati események
 
@@ -64,9 +64,9 @@ A kockázat esemény a névtelen proxy IP-címként azonosított IP-cím sikeres
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Bejelentkezés szokatlan helyekről
 
-A kockázat esemény két bejelentkezéseket földrajzilag távoli helyről, ahol a helyek közül legalább egy is lehet a felhasználó alapján ezúttal szokatlan, korábbi viselkedés azonosítja. Emellett a között a két bejelentkezést ideje rövidebb, mint az a felhasználót, hogy az első helyen utazik, és a második, amely azt jelzi, hogy egy másik felhasználó használja a hitelesítő adatokkal rendelkezik szükséges idő. 
+A kockázat esemény két bejelentkezéseket földrajzilag távoli helyről, ahol a helyek közül legalább egy is lehet a felhasználó alapján ezúttal szokatlan, korábbi viselkedés azonosítja. Többek között számos a gépi tanulási algoritmus figyelembe veszi a két bejelentkezést és az első helyen utazik, és a második, amely azt jelzi, hogy egy másik felhasználó azonos használ a felhasználó rendelkezik szükséges idő közötti idő hitelesítő adatok.
 
-A gépi tanulási algoritmus figyelmen kívül hagyja a nyilvánvaló "*téves*" lehetetlen odautazás feltételt, például a virtuális magánhálózatok és rendszeresen a szervezeten belüli más felhasználók által használt helyek hozzájáruló.  A rendszer kezdeti tanulási időszaka 14 napos, amely során egy új felhasználó bejelentkezési viselkedésének Tanulja meg.
+Az algoritmus figyelmen kívül hagyja a nyilvánvaló "vakriasztásokat" hozzájárul a lehetetlen odautazás feltételek, például a virtuális magánhálózatok és rendszeresen a szervezeten belüli más felhasználók által használt helyek. A rendszer kezdeti tanulási időszaka 14 napos, amely során egy új felhasználó bejelentkezési viselkedésének Tanulja meg. 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés ismeretlen helyekről
 
@@ -80,7 +80,7 @@ A kockázat esemény aktívan kommunikálni egy botnetes kiszolgálóhoz ismert,
 A kockázat eseménytípus azonosítja az IP-címek, ahol nagyszámú sikertelen bejelentkezési kísérlet volt, körében tapasztalható több felhasználói fiókot, egy rövid időtartamra vonatkozóan. Ez megegyezik a támadók által használt IP-címek adatforgalmi mintái jellemzően, és erős jelzi, hogy fiókok már vagy megsértik a művelettel. Ez az a gépi tanulási algoritmus figyelmen kívül hagyja a nyilvánvaló "*hamis-pozitív*", például az IP-címek, amelyek rendszeresen szolgálnak a szervezeten belüli más felhasználók által.  A rendszer időszaka kezdeti tanulási 14 napos ahol Tanulja meg a bejelentkezési viselkedését egy új felhasználó és egy új bérlőt.
 
 
-## <a name="detection-type"></a>Észlelési típusa
+## <a name="detection-type"></a>Észlelés típusa
 
 Az észlelési típusú tulajdonság azt jelzi (valós idejű vagy kapcsolat nélküli) az a kockázat esemény észlelése időkeretétől.  
 Jelenleg a legtöbb kockázati események észlelésének offline utó-feldolgozási művelet után a kockázati eseményekről.
@@ -90,19 +90,19 @@ A következő táblázat sorolja fel, hogy mennyi ideig tart a kapcsolódó jele
 | Észlelési típusa | Jelentéskészítési késés |
 | --- | --- |
 | Valós idejű | 5-10 perc |
-| Kapcsolat nélküli módban | 2 – 4 óra |
+| Offline | 2 – 4 óra |
 
 
 A kockázat esemény esetében Azure Active Directory észlel az észlelési típusok a következők:
 
 | Kockázati esemény típusa | Észlelési típusa |
 | :-- | --- | 
-| [Kiszivárgott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) | Kapcsolat nélküli módban |
+| [Kiszivárgott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) | Offline |
 | [Névtelen IP-címekről bejelentkezések](#sign-ins-from-anonymous-ip-addresses) | Valós idejű |
-| [Lehetetlen odautazás bejelentkezés szokatlan helyekről](#impossible-travel-to-atypical-locations) | Kapcsolat nélküli módban |
+| [Lehetetlen odautazás bejelentkezés szokatlan helyekről](#impossible-travel-to-atypical-locations) | Offline |
 | [Bejelentkezések ismeretlen helyekről](#sign-in-from-unfamiliar-locations) | Valós idejű |
-| [Fertőzött eszközökről bejelentkezések](#sign-ins-from-infected-devices) | Kapcsolat nélküli módban |
-| [Bejelentkezések gyanús tevékenységeket IP-címekről](#sign-ins-from-ip-addresses-with-suspicious-activity) | Kapcsolat nélküli módban|
+| [Fertőzött eszközökről bejelentkezések](#sign-ins-from-infected-devices) | Offline |
+| [Bejelentkezések gyanús tevékenységeket IP-címekről](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
 
 
 ## <a name="risk-level"></a>Kockázati szint
@@ -165,12 +165,12 @@ Kockázati események védelméhez az Azure AD-identitások foundation rendszer.
 
 | Kockázati esemény típusa | Kockázati szint | Észlelési típusa |
 | :-- | --- | --- |
-| [Kiszivárgott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) | Magas | Kapcsolat nélküli módban |
+| [Kiszivárgott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) | Magas | Offline |
 | [Névtelen IP-címekről bejelentkezések](#sign-ins-from-anonymous-ip-addresses) | Közepes | Valós idejű |
-| [Lehetetlen odautazás bejelentkezés szokatlan helyekről](#impossible-travel-to-atypical-locations) | Közepes | Kapcsolat nélküli módban |
+| [Lehetetlen odautazás bejelentkezés szokatlan helyekről](#impossible-travel-to-atypical-locations) | Közepes | Offline |
 | [Bejelentkezések ismeretlen helyekről](#sign-in-from-unfamiliar-locations) | Közepes | Valós idejű |
-| [Fertőzött eszközökről bejelentkezések](#sign-ins-from-infected-devices) | Alacsony | Kapcsolat nélküli módban |
-| [Bejelentkezések gyanús tevékenységeket IP-címekről](#sign-ins-from-ip-addresses-with-suspicious-activity) | Közepes | Kapcsolat nélküli módban|
+| [Fertőzött eszközökről bejelentkezések](#sign-ins-from-infected-devices) | Alacsony | Offline |
+| [Bejelentkezések gyanús tevékenységeket IP-címekről](#sign-ins-from-ip-addresses-with-suspicious-activity) | Közepes | Offline|
 
 Hol találnak a környezetében észlelt kockázati események?
 Nincsenek két helyen, ahol megtekintheti a jelentett kockázat események:

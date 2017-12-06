@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 12/04/2017
 ms.author: johnkem
-ms.openlocfilehash: f571a723d91db060a1aff5e14bc452d56794db6c
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 1a58db2d424e4280fd56be972d48df89648e8c13
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Támogatott szolgáltatások, sémákkal és az Azure diagnosztikai naplók kategóriák
 
@@ -29,6 +29,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 
 | Szolgáltatás | Séma & Docs |
 | --- | --- |
+| Analysis Services | A séma nem érhető el. |
 | API Management | [API Management diagnosztikai naplók](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Application Gateway átjárók |[Az Alkalmazásátjáró diagnosztikai naplózás](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Az Azure Automation szolgáltatáshoz](../automation/automation-manage-send-joblogs-log-analytics.md) |
@@ -45,7 +46,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 | Logic Apps |[Logic Apps B2B egyéni követési séma](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Hálózati biztonsági csoportok) |[Naplóelemzés hálózati biztonsági csoportokhoz](../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS elleni védelem | A séma nem érhető el. |
-| Recovery Services | A séma nem érhető el.|
+| Recovery Services | [Adatmodell az Azure Backup szolgáltatásra](../backup/backup-azure-reports-data-model.md)|
 | Keresés |[Engedélyezése és a keresési forgalom Analytics használata](../search/search-traffic-analytics.md) |
 | Kiszolgálófelügyelet | A séma nem érhető el. |
 | Service Bus |[Az Azure Service Bus diagnosztikai naplók](../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -56,6 +57,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 ## <a name="supported-log-categories-per-resource-type"></a>Támogatott erőforrástípus napló kategóriát
 |Erőforrás típusa|Kategória|Kategória megjelenített neve|
 |---|---|---|
+|Microsoft.aadiam/tenants|Bejelentkezés|Bejelentkezés|
 |Microsoft.AnalysisServices/servers|Motor|Motor|
 |Microsoft.AnalysisServices/servers|Szolgáltatás|Szolgáltatás|
 |Microsoft.ApiManagement/service|GatewayLogs|Naplók ApiManagement átjáró|
@@ -63,6 +65,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.Automation/automationAccounts|JobStreams|Feladat adatfolyamok|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|A DSC-csomópont állapota|
 |Microsoft.Batch/batchAccounts|ServiceLog|Service naplóit|
+|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Lekérdezi a végpont a metrikákat, például a sávszélesség, a kimenő forgalom, a stb.|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataFactory/factories|ActivityRuns|Feldolgozási sor tevékenységnapló fut.|
 |Microsoft.DataFactory/factories|PipelineRuns|Feldolgozási sor napló fut|
@@ -90,7 +93,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.EventHub/namespaces|OperationalLogs|Műveleti naplókat|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Automatikus méretezési naplók|
 |Microsoft.KeyVault/vaults|AuditEvent|Naplók|
-|Microsoft.Logic/workflows|WorkflowRuntime|A munkafolyamat futásidejű diagnosztikai eseményei|
+|Microsoft.Logic/workflows|WorkflowRuntime|Munkafolyamat futásidejű diagnosztikai eseményei|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integráció fiók nyomon követheti az eseményeket|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Hálózati biztonsági csoport eseménye|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Hálózati biztonsági csoport Szabályszámlálója|
@@ -113,7 +116,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicatedItems|Azure Site Recovery replikált elemek|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationStats|Az Azure Site Recovery replikáció statisztikái|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery helyreállítási pontok|
-|Microsoft.Search/searchServices|OperationLogs|A műveletnaplók|
+|Microsoft.Search/searchServices|OperationLogs|Műveletnaplók|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Műveleti naplókat|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|A Lekérdezéstár futásidejű statisztikája|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|A Lekérdezéstár várakozási statisztikák|
@@ -123,7 +126,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.Sql/servers/databases|Blokkok|Blokkok|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL-elemzések|
 |Microsoft.StreamAnalytics/streamingjobs|Végrehajtás|Végrehajtás|
-|Microsoft.StreamAnalytics/streamingjobs|Szerzői|Szerzői|
+|Microsoft.StreamAnalytics/streamingjobs|Szerzői műveletek|Szerzői műveletek|
 
 ## <a name="next-steps"></a>Következő lépések
 

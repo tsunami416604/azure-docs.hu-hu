@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2017
+ms.date: 12/05/2017
 ms.author: larryfr
-ms.openlocfilehash: befd03d94f816cb2b59219cd9f1f9af238949592
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 372e9465eec1a373ff2b59209673e65fa1f994b6
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="information-about-using-hdinsight-on-linux"></a>Információ a HDInsight használata Linux rendszeren
+# <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
 Az Azure HDInsight-fürtök ismerős Linux környezetben, az Azure felhőben futó Hadoop szolgálnak. A legtöbb feladat akkor működnek, pontosan a másik Hadoop a Linux-telepítés. Ez a dokumentum meghívja a kimenő, meg kell ismernie a speciális eltéréseket.
 
@@ -45,7 +45,7 @@ Tartományhoz csatlakozó HDInsight támogatja egyszerre több felhasználó és
 
 ## <a name="domain-names"></a>Tartománynevek
 
-A teljes tartománynevét (FQDN) az internetről a fürthöz történő csatlakozás során használandó van ** &lt;clustername >. azurehdinsight.net** vagy (az SSH csak) ** &lt;fürtnév-ssh >. azurehdinsight.NET**.
+A teljes tartománynevét (FQDN) az internetről a fürthöz történő csatlakozás során használandó van  **&lt;clustername >. azurehdinsight.net** vagy (az SSH csak)  **&lt;fürtnév-ssh >. azurehdinsight.NET**.
 
 Belső a fürt minden csomópontja rendelkezik a nevet, amely hozzá van rendelve, fürt konfigurálása során. A fürt nevének megkereséséhez lásd: a **állomások** oldalon, az Ambari webes felhasználói felületén. Az Ambari REST API-t az állomások listájához való visszatéréshez is használhatja a következő:
 
@@ -91,6 +91,8 @@ Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentum, és ezután jq
     > [!NOTE]
     > A fürt átjárócsomópontokkal SSH-n keresztül ügyfélgépről csak elérni. Miután csatlakozott, majd hozzáférhet a feldolgozó csomópontok egy headnode SSH használatával.
 
+További információkért lásd: a [a HDInsight Hadoop-szolgáltatás által használt portok](hdinsight-hadoop-port-settings-for-services.md) dokumentum.
+
 ## <a name="file-locations"></a>Fájlhelyek
 
 Hadoop kapcsolatos fájlok találhatók a fürtcsomópontokon, `/usr/hdp`. Ez a könyvtár a következő alkönyvtárakat tartalmaz:
@@ -108,9 +110,6 @@ HDInsight az Azure Storage blobs, vagy az Azure Data Lake Store használja az al
 
 * Olcsó hosszú távú tárolás
 * Kisegítő lehetőségek külső szolgáltatásokból, például a webhelyek, a fájl feltöltése/letöltés segédprogramok, a különböző nyelvi SDK-k és a böngészők
-
-> [!WARNING]
-> Csak a HDInsight támogatja __általános célú__ Azure Storage-fiókokat. Jelenleg nem támogatja a __Blob-tároló__ fiók típusa.
 
 Egy Azure Storage-fiók tárolható 4.75 TB, bár egyes blobok (vagy a HDInsight szempontból fájl) csak lépjen 195 GB. Azure Data Lake Store dinamikusan növelhető trillions fájlok, az egyes nagyobb, mint egy petabájtnyi fájlok tárolásához. További információkért lásd: [ismertetése blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) és [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
 
@@ -234,6 +233,8 @@ A különböző fürttípussal érhető érinti skálázás az alábbiak szerint
 
         1. Nyissa meg **https://CLUSTERNAME.azurehdinsight.net/stormui** a böngészőben, ahol CLUSTERNAME-e a Storm-fürt nevét. Ha a rendszer kéri, írja be a HDInsight fürt Fürtrendszergazda (rendszergazda) nevét és jelszavát, a fürt létrehozásakor megadott.
         2. Válassza ki a topológiát kíván egyensúlyba, majd válassza ki a **egyensúlyba** gombra. Adja meg a késleltetés, a egyensúlyozza ki újra a művelet végrehajtása előtt.
+
+* **Kafka**: skálázás műveletek után kell egyensúlyba a partíció replikákat. További információkért lásd: a [magas rendelkezésre álláshoz az adatok a HDInsight Kafka](./kafka/apache-kafka-high-availability.md) dokumentum.
 
 A HDInsight-fürt méretezése a részletes információkat lásd:
 

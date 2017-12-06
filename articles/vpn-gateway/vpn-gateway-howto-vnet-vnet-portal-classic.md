@@ -1,6 +1,6 @@
 ---
 title: "Kapcsolat létrehozása a Vnetek között: klasszikus: Azure-portál |} Microsoft Docs"
-description: "Hogyan csatlakozzon az Azure virtuális hálózatok együtt a PowerShell és a klasszikus Azure portál használatával."
+description: "Hogyan Csatlakozhatok a PowerShell és az Azure portál használata az Azure virtuális hálózatot."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 12/05/2017
 ms.author: cherylmc
-ms.openlocfilehash: 77097d59077cd8e199acdb5dc0d8427369565eea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e7a7af26fbfb728aa5a6b8a0d63b71f678256bf
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurálja a VNet – VNet-kapcsolatot (klasszikus)
 
@@ -77,7 +77,7 @@ A következő táblázat a Vnetek definiálása példáját mutatja be. Használ
 
 **Példa**
 
-| Virtual Network | Címterület | Régió | Csatlakozik a helyi hálózati telephely |
+| Virtual Network | Címtartomány | Régió | Csatlakozik a helyi hálózati telephely |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA keleti régiója |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA nyugati régiója |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -86,12 +86,12 @@ A következő táblázat a Vnetek definiálása példáját mutatja be. Használ
 
 A két virtuális hálózat létrehozása a [Azure-portálon](https://portal.azure.com). A klasszikus virtuális hálózatok létrehozásához lépéseiért lásd: [klasszikus virtuális hálózat létrehozása](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). 
 
-Amikor a portál segítségével hozzon létre egy klasszikus virtuális hálózatot, akkor kell megkeresnie és kijelölnie a virtuális hálózat panel az alábbi lépéseket követve, ellenkező esetben a klasszikus virtuális hálózat létrehozása a beállítás nem jelenik meg:
+Amikor a portál segítségével hozzon létre egy klasszikus virtuális hálózatot, akkor kell megkeresnie és kijelölnie a virtuális hálózat lap az alábbi lépéseket követve, ellenkező esetben a klasszikus virtuális hálózat létrehozása a beállítás nem jelenik meg:
 
-1. Kattintson a "+" a "New" panel megnyitásához.
+1. Kattintson a "+" a "New" lap megnyitásához.
 2. A "Keresése a piactéren" mezőben írja be a "Virtuális hálózat". Ha ehelyett hálózatkezelés virtuális hálózat ->, létrehozhat egy klasszikus virtuális hálózat nem fog.
-3. Keresse meg a "Virtuális hálózat" a visszaadott listából, és kattintson arra a virtuális hálózat panel megnyitásához. 
-4. A virtuális hálózati panelen válassza ki a "Klasszikus" klasszikus VNet létrehozása. 
+3. Keresse meg a "Virtuális hálózat" a visszaadott listából, és kattintson arra a virtuális hálózat lap megnyitásához. 
+4. A virtuális hálózati lapon válassza az "Klasszikus" klasszikus VNet létrehozása. 
 
 Ha ez a cikk egy gyakorlatot használ, használhatja a következő példában szereplő értékeket:
 
@@ -139,19 +139,19 @@ TestVNet1 például egy helyi hálózati telephely az Ön által létrehozott "V
 
 A hely minden egyes vnet a virtuális hálózat. A konfiguráció a következő példában szereplő értékeket használják:
 
-| Virtual Network | Címterület | Régió | Csatlakozik a helyi hálózati telephely |
+| Virtual Network | Címtartomány | Régió | Csatlakozik a helyi hálózati telephely |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA keleti régiója |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA nyugati régiója |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
-1. Keresse meg a TestVNet1 az Azure portálon. Az a **VPN-kapcsolatok** szakaszban kattintson a panel **átjáró**.
+1. Keresse meg a TestVNet1 az Azure portálon. Az a **VPN-kapcsolatok** szakaszban kattintson a lap **átjáró**.
 
     ![Nincs átjáró](./media/vpn-gateway-howto-vnet-vnet-portal-classic/nogateway.png)
 2. Az a **új VPN-kapcsolat** lapon jelölje be **pont-pont**.
 3. Kattintson a **helyi** nyissa meg a helyi webhelyhez lapját, és adja meg a beállításokat.
 4. Az a **helyi** lapon, a helyi webhely neve. Ebben a példában azt a helyi webhelyhez "VNet4Local" nevet.
 5. A **VPN-átjáró IP-címet**, használhatja a használni kívánt IP-címeket, amíg a egy érvényes formátumban. A tényleges külső IP-cím használna általában VPN-eszközhöz. De klasszikus VNet – VNet-konfigurációt a Vnethez tartozó van rendelve az átjáró nyilvános IP-cím használatára. Fényében, hogy létrehozta a virtuális hálózati átjáró még nincs, adjon meg érvényes nyilvános IP-cím helyőrzőként.<br>Ne hagyja üresen a mezőt,-nem választható, ehhez a konfigurációhoz. Egy későbbi lépésben térjen vissza ezeket a beállításokat, és konfigurálja őket a megfelelő virtuális hálózati átjáró IP-címekkel rendelkező, amennyiben az azt létrehozó Azure.
-6. A **ügyfél Címterület**, használja a virtuális hálózat címtartománya. Tekintse át a tervezési példa. Kattintson a **OK** mentse a beállításokat, és térjen vissza a **új VPN-kapcsolat** panelen.
+6. A **ügyfél Címterület**, használja a virtuális hálózat címtartománya. Tekintse át a tervezési példa. Kattintson a **OK** mentse a beállításokat, és térjen vissza a **új VPN-kapcsolat** lap.
 
     ![helyi webhelyhez](./media/vpn-gateway-howto-vnet-vnet-portal-classic/localsite.png)
 
@@ -159,13 +159,13 @@ A hely minden egyes vnet a virtuális hálózat. A konfiguráció a következő 
 
 Minden virtuális hálózathoz rendelkeznie kell a virtuális hálózati átjáró. A virtuális hálózati átjáró irányítja a, és titkosítja a forgalmat.
 
-1. Az **Új VPN-kapcsolat** panelen jelölje be az **Átjáró azonnali létrehozása** jelölőnégyzetet.
-2. Kattintson a **alhálózat, méret és útválasztási típus**. Az a **átjáró konfigurációs** panelen kattintson a **alhálózati**.
+1. Az **Új VPN-kapcsolat** lapon jelölje be az **Átjáró azonnali létrehozása** jelölőnégyzetet.
+2. Kattintson a **alhálózat, méret és útválasztási típus**. Az a **átjáró konfigurációs** kattintson **alhálózati**.
 3. Az átjáró-alhálózat neve automatikusan kitölti a szükséges "GatewaySubnet" nevű. A **-címtartományt** a számára a VPN-átjáró szolgáltatásokat kiosztott IP-cím szerepel. Bizonyos konfigurációk lehetővé teszik egy átjáró alhálózatának /29, de a legjobb, ha egy /28 vagy /27 használja, amelyre szüksége lehet több IP-címet az átjáró Services jövőbeli konfigurációk befogadásához. A példa beállítások 10.11.1.0/27 használjuk. A címterület módosítsa, majd kattintson az **OK**.
 4. Konfigurálja a **átjáró mérete**. Ez a beállítás hivatkozik a [átjáró-Termékváltozat](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 5. Konfigurálja a **útválasztási típus**. Ebben a konfigurációban kell lennie az Útválasztás típusa **dinamikus**. Az útválasztási típusa nem módosítható később, kivéve, ha az átjáró le szakadjon el, és hozzon létre egy újat.
 6. Kattintson az **OK** gombra.
-7. Az a **új VPN-kapcsolat** panelen kattintson a **OK** a virtuális hálózati átjáró létrehozásának megkezdéséhez. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
+7. Az a **új VPN-kapcsolat** kattintson **OK** a virtuális hálózati átjáró létrehozásának megkezdéséhez. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
 
 ## <a name="vnet4settings"></a>5. lépés - TestVNet4 beállításainak konfigurálása
 
@@ -183,7 +183,7 @@ Miután a virtuális hálózati átjárók mindkét Vnetek létrejött, módosí
 ### <a name="part-1---get-the-virtual-network-gateway-public-ip-address"></a>1. rész – a virtuális hálózati átjáró nyilvános IP-cím beszerzése
 
 1. Keresse meg a virtuális hálózat az Azure portálon.
-2. Ide kattintva nyissa meg a virtuális hálózat **áttekintése** panelen. A panelen a **VPN-kapcsolatok**, tekintse meg az IP-címet a virtuális hálózati átjáró.
+2. Ide kattintva nyissa meg a virtuális hálózat **áttekintése** lap. A lapon a **VPN-kapcsolatok**, tekintse meg az IP-címet a virtuális hálózati átjáró.
 
   ![Nyilvános IP-cím](./media/vpn-gateway-howto-vnet-vnet-portal-classic/publicIP.png)
 3. Másolja az IP-címet. A következő szakaszban még szüksége lesz rájuk.
@@ -192,10 +192,10 @@ Miután a virtuális hálózati átjárók mindkét Vnetek létrejött, módosí
 ### <a name="part-2---modify-the-local-sites"></a>2. rész – a helyi telephely módosítása
 
 1. Keresse meg a virtuális hálózat az Azure portálon.
-2. A virtuális hálózaton **áttekintése** panelen kattintson a helyi webhelyhez.
+2. A virtuális hálózaton **áttekintése** lapján kattintson a helyi webhelyhez.
 
   ![Helyi webhely létrehozása](./media/vpn-gateway-howto-vnet-vnet-portal-classic/local.png)
-3. Az a **pont-pont VPN-kapcsolatok** panelen kattintson a módosítandó hely nevére.
+3. Az a **pont-pont VPN-kapcsolatok** lapján kattintson a módosítani kívánt hely neve.
 
   ![Nyissa meg a helyi webhelyhez](./media/vpn-gateway-howto-vnet-vnet-portal-classic/openlocal.png)
 4. Kattintson a **helyi** , amely a módosítani kívánt.
@@ -204,7 +204,7 @@ Miután a virtuális hálózati átjárók mindkét Vnetek létrejött, módosí
 5. Frissítés a **VPN-átjáró IP-címet** kattintson **OK** menti a beállításokat.
 
   ![átjáró IP](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
-6. Zárja be a más paneleket.
+6. Zárja be a többi oldalán.
 7. Ismételje meg ezeket a lépéseket TestVNet4.
 
 ## <a name="getvalues"></a>A hálózati konfigurációs fájlból olvasható be értékek, 7 -. lépés

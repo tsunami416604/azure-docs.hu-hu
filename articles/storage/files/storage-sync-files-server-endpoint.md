@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 92ac80953623a5a94d3104f30787c9636308c707
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 2ab14183a0ca4ade7873dbdece407937a746b663
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Egy Azure fájlszinkronizálás (előzetes verzió) kiszolgáló végpont hozzáadása
 Az Azure File Sync (előzetes verzió) lehetővé teszi a szervezet Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt úgy éri el, hogy átalakítja a Windows-kiszolgálókat az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
 
-A *végpontját* egy adott helyen jelöli meg a *regisztrált kiszolgáló*, például egy kiszolgáló vagy a kötet gyökerében az egyik mappájába. Több kiszolgáló végpont ugyanazon a köteten létezhet, ha a névterek nem átfedésben lévő (például F:\sync1 és F:\sync2). Beállíthatja felhő rétegezési külön-külön kiszolgáló végpontok. Ha egy kiszolgáló-végpontként szinkronizálási csoport hozzáadása egy kiszolgálón található fájlokat egy meglévő állítja be, ezeket a fájlokat egyesül többi végpont a szinkronizálási csoportban található egyéb fájlok.
+A *végpontját* egy adott helyen jelöli meg a *regisztrált kiszolgáló*, például egy kiszolgáló vagy a kötet gyökerében az egyik mappájába. Több kiszolgáló végpont ugyanazon a köteten létezhet, ha a névterek nem átfedésben lévő (például F:\sync1 és F:\sync2). Beállíthatja felhő rétegezési egyenként az egyes kiszolgáló-végpont esetében. Ha egy kiszolgáló-végpontként szinkronizálási csoport hozzáadása egy kiszolgálón található fájlokat egy meglévő állítja be, ezeket a fájlokat egyesül többi végpont a szinkronizálási csoportban található egyéb fájlok.
 
 Lásd: [Azure fájlszinkronizálás (előzetes verzió) telepítése](storage-sync-files-deployment-guide.md) fájlszinkronizálás Azure-végpontok telepítéséről információk.
 
@@ -35,16 +35,16 @@ Kiszolgáló-végpont létrehozása, akkor előbb ellenőrizze, hogy a következ
 - Győződjön meg arról, hogy a kiszolgáló csatlakozik-e az internethez, és hogy elérhető Azure.
 
 ## <a name="add-a-server-endpoint"></a>A kiszolgáló végpont hozzáadása
-Vegyen fel egy kiszolgáló végpontot, keresse meg a kívánt szinkronizálási csoportot, és válassza a "Kiszolgáló végpont hozzáadása".
+Vegyen fel egy kiszolgáló végpontot, keresse meg a kívánt szinkronizálású csoport, és válassza a "Kiszolgáló végpont hozzáadása".
 
 ![Új kiszolgáló végpont hozzáadása a szinkronizálási ablakban](media/storage-sync-files-server-endpoint/add-server-endpoint-1.png)
 
 A következő adatszolgáltatás **server végpont hozzáadása**:
 
-- **Kiszolgáló regisztrálva**: a kiszolgáló vagy a kiszolgáló-végpont létrehozása a fürt nevét.
+- **Regisztrált kiszolgáló**: a kiszolgáló vagy a kiszolgáló-végpont létrehozása a fürt nevét.
 - **Elérési út**: a szinkronizálási csoport részeként szinkronizálnia kell a Windows Server elérési.
 - **A felhő Tiering**: engedélyezni vagy letiltani a felhő rétegezését egy kapcsolóhoz, mely lehetővé teszi, hogy a ritkán használt vagy nem éri el fájlok helyezhető el a az Azure Fileshoz.
-- **Szabad hely**: lefoglalni a köteten, a kiszolgáló végpont elérhető szabad terület mennyisége. Például ha a kötet szabad terület méretének 50 %-os köteten található egyetlen kiszolgáló végpont van beállítva, körülbelül fél adatmennyiség fog helyezhető el a az Azure Fileshoz. Függetlenül attól, hogy a felhő rétegezéséhez engedélyezve van, az Azure fájlmegosztás mindig rendelkezik az adatok teljes másolata a szinkronizálási csoportban.
+- **Szabad hely**: lefoglalni a köteten, a kiszolgáló végpont elérhető szabad terület mennyisége. Például ha a kötet szabad terület értéke 50 %-os köteten található egy egykiszolgálós végpontot, körülbelül fél adatmennyiséget fog helyezhető el a az Azure Fileshoz. Függetlenül attól, hogy a felhő rétegezéséhez engedélyezve van, az Azure fájlmegosztás mindig rendelkezik az adatok teljes másolata a szinkronizálási csoportban.
 
 Válassza ki **létrehozása** a kiszolgáló végpont hozzáadása. A fájlok egy szinkronizálási csoport egy adott névtéren belül most folyamatosan szinkronban. 
 
@@ -65,7 +65,7 @@ A kiszolgáló végpont eltávolítása:
 
 1. Nyissa meg a tároló szinkronizálási szolgáltatást, ha a kiszolgáló regisztrálva van-e.
 2. Nyissa meg a kívánt szinkronizálású csoport.
-3. Távolítsa el a kiszolgáló végpont felügyelni a szinkronizálási csoport a tároló szinkronizálási szolgáltatás. Ehhez kattintson a jobb gombbal a megfelelő végpontját a szinkronizálási ablakban.
+3. Távolítsa el a kiszolgáló végpont felügyelni a szinkronizálási csoport a tároló szinkronizálási szolgáltatás. Ehhez kattintson a jobb gombbal a kívánt kiszolgálóra végpont a szinkronizálási ablakban.
 
     ![A kiszolgáló végpont szinkronizálási csoportból történő eltávolítása](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
