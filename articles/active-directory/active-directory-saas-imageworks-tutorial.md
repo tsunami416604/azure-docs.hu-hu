@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 12/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 1c12fe2f01c35d70763910c41cb45859bce33aea
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 9e152c43507cea7e6407a349be414c2a895cb5fc
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>Oktatóanyag: A kép WORKS Azure Active Directory-integráció
 
@@ -113,7 +113,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://sp.i-imageworks.jp/iw/<tenantName>/postResponse`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [kép WORKS ügyfél-támogatási csoport](mailto:riki.satou@fujifilm.com) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [kép WORKS ügyfél-támogatási csoport](mailto:iw-sd-support@fujifilm.com) beolvasni ezeket az értékeket. 
  
 4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -127,7 +127,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![KÉP WORKS konfiguráció](./media/active-directory-saas-imageworks-tutorial/tutorial_imageworks_configure.png) 
 
-7. Egyszeri bejelentkezés konfigurálása **kép WORKS** oldalon kell küldeniük a letöltött **Certificate(Base64), Sign-Out URL-címe, SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** való [kép működik támogatási csoport](mailto:riki.satou@fujifilm.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+7. Egyszeri bejelentkezés konfigurálása **kép WORKS** oldalon kell küldeniük a letöltött **Certificate(Base64), Sign-Out URL-címe, SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** való [kép működik támogatási csoport](mailto:iw-sd-support@fujifilm.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -167,7 +167,7 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
  
 ### <a name="create-a-image-works-test-user"></a>KÉP WORKS tesztfelhasználó létrehozása
 
-Ebben a szakaszban hoz létre a felhasználó Britta Simon meghívta LEMEZKÉPÉT működik. Együttműködve [kép WORKS támogatási csoport](mailto:riki.satou@fujifilm.com) a felhasználók hozzáadása a kép WORKS platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt.
+Ebben a szakaszban hoz létre a felhasználó Britta Simon meghívta LEMEZKÉPÉT működik. Együttműködve [kép WORKS támogatási csoport](mailto:iw-sd-support@fujifilm.com) a felhasználók hozzáadása a kép WORKS platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 

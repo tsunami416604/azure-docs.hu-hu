@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
-ms.openlocfilehash: 6412445f4e7a9b639ae9a38a44ff51038c6fcc00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18712b1c19fc81e290ead62f73a177874ebe86cd
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK-val egyéni műveletek nyomon követése
 
@@ -33,7 +33,7 @@ Ez a dokumentum útmutatást nyújt a történő nyomon követheti az Applicatio
 ## <a name="overview"></a>Áttekintés
 Egy művelet egy logikai munkákat az alkalmazások futtatása. Az idő, időtartam, eredmény és olyan környezetben, például a felhasználónevet, a tulajdonságok és az eredmény végrehajtás start neve van. Ha A műveletet kezdeményezett művelet B, majd művelet B be van állítva az A. szülője Egy művelet csak egy szülőhöz lehet, de sok gyermek művelet veheti fel. Műveletek és telemetriai korrelációs további információkért lásd: [Azure Application Insights telemetria korrelációs](application-insights-correlation.md).
 
-Az Application Insights .NET SDK a művelet leírását a absztrakt osztály [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/Extensibility/Implementation/OperationTelemetry.cs) és a leszármazottai [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/RequestTelemetry.cs) és [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/DependencyTelemetry.cs).
+Az Application Insights .NET SDK a művelet leírását a absztrakt osztály [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) és a leszármazottai [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) és [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
 
 ## <a name="incoming-operations-tracking"></a>Bejövő műveletek nyomon követése 
 Az Application Insights webes SDK-t automatikusan gyűjti az ASP.NET futtatni egy IIS-feldolgozási folyamat összes ASP.NET Core alkalmazásokat és a HTTP-kérelmekre. Nincsenek megoldások Közösség által támogatott más platformok és -keretrendszerek számára. Azonban ha az alkalmazás nem támogatja a standard vagy a Közösség által támogatott megoldások bármelyikét, hogy állíthatnak be azt manuálisan.
@@ -123,7 +123,7 @@ A HTTP protokoll a korrelációs is deklarálja a `Correlation-Context` fejléc.
 ## <a name="queue-instrumentation"></a>Várólista instrumentation
 HTTP-kommunikációhoz létrehoztunk Önnek egy protokoll felelt meg a korrelációs részleteit. Az egyes üzenetsorok protokollok adja át további metaadatokat együtt az üzenetet, és másokkal, nem lehet.
 
-### <a name="service-bus-queue"></a>Service Bus-üzenetsorba
+### <a name="service-bus-queue"></a>Service Bus-üzenetsor
 Az Azure-ral [Service Bus-üzenetsorba](../service-bus-messaging/index.md), átadhatók egy tulajdonságcsomagot és az üzenetet. Felelt meg a korrelációs azonosító használjuk
 
 A Service Bus-üzenetsorba TCP-alapú technológiát használ. Az Application Insights nem automatikusan nyomon követheti a várólista műveleteket, így manuálisan azt nyomon őket. A dequeue művelet egy leküldéses stílusú API-t, és a rendszer nem tudja nyomon követni azt.

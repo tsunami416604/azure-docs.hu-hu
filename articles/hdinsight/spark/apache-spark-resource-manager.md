@@ -16,22 +16,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jgao
-ms.openlocfilehash: 3c98150239134c686ac8edebd3c477bec8be7dd8
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: b2208f0553ce62be054409a415723445733708d4
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Az Azure HDInsight az Apache Spark-fürt erőforrásainak kezelése 
 
-Ebben a cikkben megismerheti, hogyan Ambari felhasználói felületén YARN felhasználói felületen, például csatolók eléréséhez, és a Spark-előzmények kiszolgáló a Spark-fürthöz társított. Olvashat az optimális teljesítmény érdekében a fürt konfigurálásának hangolását.
+Útmutató: a felületek, mint az Ambari felhasználói felület, YARN felhasználói felületen és a Spark-fürthöz társított Spark előzmények kiszolgáló eléréséhez, és a fürt konfigurálása az optimális teljesítmény hangolására.
 
 **Előfeltételek:**
 
-* Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * A HDInsight az Apache Spark-fürt. Útmutatásért lásd: [létrehozása az Apache Spark on Azure hdinsight clusters](apache-spark-jupyter-spark-sql.md).
 
-## <a name="how-do-i-launch-the-ambari-web-ui"></a>Hogyan indítsa el az Ambari webes felhasználói felületén?
+## <a name="open-the-ambari-web-ui"></a>Nyissa meg az Ambari webes felhasználói felület
 1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).
 2. A Spark-fürt, kattintson a **irányítópult**. Amikor a rendszer kéri, adja meg a rendszergazdai hitelesítő adatokat a Spark-fürtön.
 
@@ -40,7 +39,7 @@ Ebben a cikkben megismerheti, hogyan Ambari felhasználói felületén YARN felh
 
     ![Ambari webes felhasználói felület](./media/apache-spark-resource-manager/ambari-web-ui.png "Ambari webes felhasználói felület")   
 
-## <a name="how-do-i-launch-the-spark-history-server"></a>Hogyan indítsa el a Spark-előzmények kiszolgáló?
+## <a name="open-the-spark-history-server"></a>Nyissa meg a Spark-előzmények kiszolgáló
 1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton).
 2. A fürt paneljén alatt **Gyorshivatkozások**, kattintson a **fürt irányítópult**. Az a **fürt irányítópult** panelen kattintson a **Spark előzmények Server**.
 
@@ -48,7 +47,7 @@ Ebben a cikkben megismerheti, hogyan Ambari felhasználói felületén YARN felh
 
     Amikor a rendszer kéri, adja meg a rendszergazdai hitelesítő adatokat a Spark-fürtön.
 
-## <a name="how-do-i-launch-the-yarn-ui"></a>Hogyan indítsa el a Yarn felhasználói felületen?
+## <a name="open-the-yarn-ui"></a>Nyissa meg a Yarn felhasználói felületen
 A Spark-fürtön a jelenleg futó alkalmazások figyeléséhez használhatja a YARN felhasználói felületen.
 
 1. A fürt paneljén kattintson **fürt irányítópult**, és kattintson a **YARN**.
@@ -60,7 +59,7 @@ A Spark-fürtön a jelenleg futó alkalmazások figyeléséhez használhatja a Y
    >
    >
 
-## <a name="what-is-the-optimum-cluster-configuration-to-run-spark-applications"></a>Mi az optimális fürtkonfiguráció Spark-alkalmazások futtatásához?
+## <a name="the-optimum-cluster-configuration-to-run-spark-applications"></a>A Spark-alkalmazások futtatására optimális fürtkonfiguráció
 A három legfontosabb paraméterek alkalmazás követelményeitől függően a Spark-konfigurációhoz használható `spark.executor.instances`, `spark.executor.cores`, és `spark.executor.memory`. Egy művelettípus végrehajtója az a folyamat egy Spark-alkalmazáshoz elindítva. A munkavégző csomópont fut, és az alkalmazás feladatokat hajthat végre felelős. Az alapértelmezett számú végrehajtója és a végrehajtó használatos egyes fürtök a feldolgozó csomópontok és a munkavégző csomópont méretének száma alapján van kiszámítva. Ezeket az információkat tárolja `spark-defaults.conf` központi fürtcsomópontokon.
 
 A három konfigurációs paraméterek beállítható, hogy a fürt szintjén (az a fürtön futó összes alkalmazást), vagy minden egyes alkalmazáshoz adható meg.

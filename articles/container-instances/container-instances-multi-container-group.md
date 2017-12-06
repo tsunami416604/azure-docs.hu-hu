@@ -1,41 +1,33 @@
 ---
-title: "Azure-tároló példányokon - többszörös a tárolócsoport |} Az Azure Docs"
-description: "Azure-tároló példányokon - többszörös a tárolócsoport"
+title: "Több tároló csoportokat az Azure-tároló példányok telepítése"
+description: "Útmutató az Azure-tároló esetekben több tároló egy tároló-csoport központi telepítését."
 services: container-instances
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/26/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 140f58582645ea32f77e901eb13364ed145bbecf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e1f23e20b001404d3f781e7e6deac87ede12684
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-a-container-group"></a>A tároló csoport telepítése
 
-Azure-tároló példányokon alakzatot használatával egyetlen állomásra több tároló telepítését támogatja a *a tárolócsoport*. Ez akkor hasznos, ha egy alkalmazás oldalkocsi naplózási, figyelési vagy bármely egyéb konfigurációs felépítése amikor egy szolgáltatás kell egy második csatolt folyamat. 
+Azure-tároló példányokon alakzatot használatával egyetlen állomásra több tároló telepítését támogatja a *a tárolócsoport*. Ez akkor hasznos, ha egy alkalmazás oldalkocsi naplózási, figyelési vagy bármely egyéb konfigurációs felépítése amikor egy szolgáltatás kell egy második csatolt folyamat.
 
 Ez a dokumentum végigvezeti egy egyszerű több tároló oldalkocsi konfigurációs Azure Resource Manager-sablonnal futtatása.
 
 ## <a name="configure-the-template"></a>A sablon konfigurálása
 
-Hozzon létre egy fájlt `azuredeploy.json` és a következő json másolása. 
+Hozzon létre egy fájlt `azuredeploy.json` és a következő json másolása.
 
-Ebben a mintában a tároló két tárolók és a nyilvános IP-cím van definiálva. A csoport első tároló internet felé néző alkalmazás fut. A második tároló, a oldalkocsi egy HTTP kérést küld az elsődleges webes alkalmazás a csoporthoz tartozó helyi hálózaton keresztül. 
+Ebben a mintában a tároló két tárolók és a nyilvános IP-cím van definiálva. A csoport első tároló internet felé néző alkalmazás fut. A második tároló, a oldalkocsi egy HTTP kérést küld az elsődleges webes alkalmazás a csoporthoz tartozó helyi hálózaton keresztül.
 
-Ebben a példában oldalkocsi figyelmeztetést jelenít meg, ha egy HTTP-válaszkód eltérő 200 OK kapott lehetett kibontani. 
+Ebben a példában oldalkocsi figyelmeztetést jelenít meg, ha egy HTTP-válaszkód eltérő 200 OK kapott lehetett kibontani.
 
 ```json
 {
@@ -46,7 +38,7 @@ Ebben a példában oldalkocsi figyelmeztetést jelenít meg, ha egy HTTP-válasz
   "variables": {
     "container1name": "aci-tutorial-app",
     "container1image": "microsoft/aci-helloworld:latest",
-    "container2name": "aci-tutorial-sidecar",    
+    "container2name": "aci-tutorial-sidecar",
     "container2image": "microsoft/aci-tutorial-sidecar"
   },
     "resources": [
@@ -135,7 +127,7 @@ A sablon üzembe helyezése a [az csoport központi telepítésének létrehozá
 az group deployment create --name myContainerGroup --resource-group myResourceGroup --template-file azuredeploy.json
 ```
 
-Néhány másodpercen belül egy kezdeti választ kap az Azure-ból. 
+Néhány másodpercen belül egy kezdeti választ kap az Azure-ból.
 
 ## <a name="view-deployment-state"></a>Központi telepítés állapotának megtekintése
 
@@ -153,9 +145,9 @@ Name              ResourceGroup    ProvisioningState    Image                   
 myContainerGroup  myResourceGrou2  Succeeded            microsoft/aci-tutorial-sidecar,microsoft/aci-tutorial-app:v1      40.118.253.154:80  1.0 core/1.5 gb   Linux     westus
 ```
 
-## <a name="view-logs"></a>Naplók megtekintése   
+## <a name="view-logs"></a>Naplók megtekintése
 
-A kimenet egy tároló használatával megtekintheti a `az container logs` parancsot. A `--container-name` argumentum meghatározza a tároló, amelyből való lekérésére naplókat. Ebben a példában az első tároló van megadva. 
+A kimenet egy tároló használatával megtekintheti a `az container logs` parancsot. A `--container-name` argumentum meghatározza a tároló, amelyből való lekérésére naplókat. Ebben a példában az első tároló van megadva.
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-app --resource-group myResourceGroup

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 42a0e7a3816e0f1d96951feac210e5770add4fe1
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 7b4de3e7b7e98ab76c02ea7c1cf069cee94706fc
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-azure-file-sync-preview"></a>Azure fájlszinkronizálás (előzetes verzió) telepítése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -92,24 +92,24 @@ Miután bejelentkezik, a következő információkat kéri:
 Miután kiválasztotta a megfelelő adatokat, válassza ki a **regisztrálása** befejezéséhez a kiszolgáló regisztrálása. A regisztrációs folyamat részeként kéri egy további bejelentkezés.
 
 ## <a name="create-a-sync-group"></a>Szinkronizálási csoport létrehozása
-A szinkronizálás csoport adja meg a sync-topológiát a fájlokat. A szinkronizálási csoporton belüli végpontok tartják szinkronban vannak egymással. A szinkronizálás csoport tartalmaznia kell a felhő legalább egy végpontot, amely jelöli az Azure fájlmegosztások, és egy kiszolgáló végpont, amely a Windows Server egy elérési utat képvisel. A szinkronizálás csoport létrehozásakor a [Azure-portálon](https://portal.azure.com/)nyissa meg a tároló szinkronizálási szolgáltatással, és válassza ki **+ szinkronizálású csoport**:
+A szinkronizálás csoport adja meg a sync-topológiát a fájlokat. A szinkronizálási csoporton belüli végpontok tartják szinkronban vannak egymással. A szinkronizálás csoport tartalmaznia kell legalább egy felhő végpontot, amely jelöli az Azure fájlmegosztások, és egy kiszolgáló végpont, amely a Windows Server egy elérési utat képvisel. A szinkronizálás csoport létrehozásakor a [Azure-portálon](https://portal.azure.com/)nyissa meg a tároló szinkronizálási szolgáltatással, és válassza ki **+ szinkronizálású csoport**:
 
 ![Hozzon létre egy új szinkronizálási csoportot az Azure-portálon](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
 
 A megnyíló párbeszédpanelen írja be a felhő végponttal szinkronizálási csoport létrehozása a következő információkat:
 
-- **Csoportnév szinkronizálása**: létrehozni a szinkronizálási csoport nevét. Ez a név a tároló szinkronizálási szolgáltatás belül egyedieknek kell lenniük, de bármilyen nevet, amely logikai meg.
+- **Szinkronizálási csoportnév**: létrehozni a szinkronizálási csoport nevét. Ez a név a tároló szinkronizálási szolgáltatás belül egyedieknek kell lenniük, de bármilyen nevet, amely logikai meg.
 - **Előfizetés**: az előfizetést, amelybe telepítette a tároló szinkronizálási szolgáltatás a [a tároló szinkronizálási szolgáltatás telepítése](#deploy-the-storage-sync-service).
 - **A tárfiók**: Ha **válasszon tárfiókot**, egy másik ablak jelenik meg, ahol kiválaszthatja a tárfiókot, amely rendelkezik a szinkronizálni kívánt Azure fájlmegosztás.
 - **Az Azure fájlmegosztás**:, amellyel szinkronizálni kívánt Azure fájlmegosztás nevét.
 
-Vegyen fel egy kiszolgáló végpontot, nyissa meg az újonnan létrehozott szinkronizálási csoporthoz, és válassza **server végpont hozzáadása**.
+Vegyen fel egy kiszolgáló végpontot, nyissa meg az újonnan létrehozott szinkronizálási csoporthoz, és válassza ki **server végpont hozzáadása**.
 
 ![Új kiszolgáló végpont hozzáadása a szinkronizálási ablakban](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
 
 Az a **server végpont hozzáadása** panelen adja meg a kiszolgáló-végpont létrehozása a következő információkat:
 
-- **Kiszolgáló regisztrálva**: a kiszolgáló vagy fürt, ahol szeretne létrehozni a kiszolgáló végpont nevét.
+- **Regisztrált kiszolgáló**: a kiszolgáló vagy fürt, ahol szeretne létrehozni a kiszolgáló végpont nevét.
 - **Elérési út**: A Windows Server elérési útját a szinkronizálási csoport részeként szinkronizálva.
 - **A felhő Tiering**: engedélyezni vagy letiltani a felhő egy kapcsoló rétegezéséhez. A felhőalapú rétegezéséhez, a ritkán használt vagy nem érhető el fájlok is helyezhető el a az Azure Fileshoz.
 - **Szabad hely**: a kiszolgáló végpont tároló kötet tartalékként lefoglalni kívánt szabad terület mennyisége. Például ha a kötet szabad terület értéke 50 %-os köteten, amely egy önálló kiszolgáló végponttal rendelkezik, körülbelül fél adatmennyiség többszintű az Azure Fileshoz. Függetlenül attól, hogy a felhő rétegezéséhez engedélyezve van, az Azure fájlmegosztások mindig rendelkezik az adatok teljes másolata a szinkronizálási csoportban.
@@ -117,7 +117,23 @@ Az a **server végpont hozzáadása** panelen adja meg a kiszolgáló-végpont l
 A kiszolgáló végpont hozzáadásához válassza **létrehozása**. A fájlok vannak most szinkronban legyen az Azure fájlmegosztás és a Windows Server. 
 
 > [!Important]  
-> Felhő Endpoint vagy a szinkronizálási csoport végpontját módosításokat végezheti el, és a fájlok szinkronizálta már a Sync csoport végpontja. Ha módosítja a felhő végpontnak (Azure fájlmegosztás) közvetlenül, módosítások először kell egy Azure fájlszinkronizálás módosítás észlelése észlelhetők. A módosítás észlelése a Felhőbeli végpont 24 óránként csak egyszer indítható. További információkért lásd: [Azure fájlok gyakran ismételt kérdések](storage-files-faq.md#afs-change-detection).
+> Felhő endpoint vagy a szinkronizálási csoport végpontját módosításokat végezheti el, és a fájlok szinkronizálta már a sync csoport végpontja. Ha módosítja a felhő végpontnak (Azure fájlmegosztás) közvetlenül, módosítások először kell egy Azure fájlszinkronizálás módosítás észlelése észlelhetők. A módosítás észlelése a felhőbeli végpont 24 óránként csak egyszer indítható. További információkért lásd: [Azure fájlok gyakran ismételt kérdések](storage-files-faq.md#afs-change-detection).
+
+## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Elosztott fájlrendszer replikációs szolgáltatása (DFS-R) központi telepítés Azure fájlszinkronizálás áttelepítése
+A DFS-R-telepítés át Azure fájlszinkronizálás:
+
+1. Hozzon létre egy szinkronizálási lecseréli a DFS-R-topológia ábrázolására.
+2. Indítsa el a kiszolgálónak a teljes adatkészletet a DFS-R topológia áttelepítéséhez. Telepítse az Azure fájlszinkronizálás ezen a kiszolgálón.
+3. Regisztrálja a kiszolgálót, és át kell az első kiszolgáló kiszolgáló-végpont létrehozása. Ne engedélyezze a felhő rétegezéséhez.
+4. Minden az adatok szinkronizálása az Azure fájlmegosztásba (felhővégpontnak) segítségével.
+5. Telepíti és regisztrálja az Azure fájlszinkronizálás ügynököt minden olyan a többi DFS-R-kiszolgálójára.
+6. Tiltsa le a DFS-R. 
+7. Kiszolgáló-végpont létrehozása minden olyan a DFS-R-kiszolgálójára. Ne engedélyezze a felhő rétegezéséhez.
+8. Győződjön meg arról, szinkronizálás befejeződött, és tesztelje a topológia a kívánt módon működjenek.
+9. A DFS-r kivonása
+10. A felhő rétegezési előfordulhat, hogy minden kiszolgáló végponton tetszés szerint engedélyezni kell.
+
+További információkért lásd: [Azure fájlszinkronizálás együttműködési az elosztott fájlrendszer (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs).
 
 ## <a name="next-steps"></a>Következő lépések
 - [Hozzáadni vagy eltávolítani egy Azure-beli fájl szinkronizáló kiszolgáló végpont](storage-sync-files-server-endpoint.md)

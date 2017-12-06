@@ -12,40 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2017
+ms.date: 12/04/2017
 ms.author: sngun
-ms.openlocfilehash: 60b06cf41ea632219d2f16b29607899bd2e8d789
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 9a0ad3d8c2cdd3cd1d46e789c2b65677ac5a10b1
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Telepítse és konfigurálja a CLI Azure verem való használatra
 
 Ez a cikk azt ismerteti a folyamatot, amely az Azure parancssori felület (CLI) Azure verem szoftverfejlesztői készlet-erőforrások kezeléséhez a Linux és a Mac ügyfél platform használatával. 
-
-## <a name="export-the-azure-stack-ca-root-certificate"></a>Az Azure-verem hitelesítésszolgáltató legfelső szintű tanúsítványának exportálása
-
-CLI-t használ az Azure verem szoftverfejlesztői készlet környezeten belül futó virtuális gépről, ha az Azure-verem legfelső szintű tanúsítvány már telepítve van a virtuális gépen, közvetlenül le azt. CLI kívül a szoftverfejlesztői készlet munkaállomásról használatakor, az Azure-verem hitelesítésszolgáltató legfelső szintű tanúsítvány exportálása a szoftverfejlesztői készlet, és adja hozzá a Python tanúsítványtárolójába a fejlesztő munkaállomás (külső Linux- vagy Mac platform). 
-
-A PEM-formátumba Azure verem legfelső szintű tanúsítványának exportálásához jelentkezzen be a szoftverfejlesztői készlet, és futtassa a következő parancsfájlt:
-
-```powershell
-   $label = "AzureStackSelfSignedRootCert"
-   Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
-   $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
-   if (-not $root)
-   {
-       Log-Error "Certificate with subject CN=$label not found"
-       return
-   }
-
-   Write-Host "Exporting certificate"
-   Export-Certificate -Type CERT -FilePath root.cer -Cert $root
-
-   Write-Host "Converting certificate to PEM format"
-   certutil -encode root.cer root.pem
-```
 
 ## <a name="install-cli"></a>A CLI telepítése
 
@@ -59,7 +36,7 @@ Meg kell jelennie az Azure CLI és más függő tárak, a számítógépre telep
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Az Azure-verem hitelesítésszolgáltató főtanúsítványát megbízhatóság
 
-Azure verem hitelesítésszolgáltató legfelső szintű tanúsítvány megbízható fűzi azokat hozzá a meglévő Python-tanúsítványt. Ha a CLI Azure verem környezetben létrehozott Linux-gépek futtatja, a következő paranccsal bash:
+Az Azure-verem hitelesítésszolgáltató legfelső szintű tanúsítvány beszerzése az Azure-verem operátor és megbízhatónak tekinti. Azure verem hitelesítésszolgáltató legfelső szintű tanúsítvány megbízható fűzi azokat hozzá a meglévő Python-tanúsítványt. Ha a CLI Azure verem környezetben létrehozott Linux-gépek futtatja, a következő paranccsal bash:
 
 ```bash
 sudo cat /var/lib/waagent/Certificates.pem >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
@@ -110,11 +87,10 @@ Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-package
 Write-Host "Python Cert store was updated for allowing the azure stack CA root certificate"
 ```
 
-## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>A virtuális gép aliasok végpontjának beállítása
+## <a name="get-the-virtual-machine-aliases-endpoint"></a>A virtuális gép aliasok végpontjának lekérése
 
-Felhasználók parancssori felület használatával hozhat létre virtuális gépeket, mielőtt kell egy nyilvánosan elérhető végpontot, amely tartalmazza a virtuális gép lemezképének aliasok beállítása az a felhő rendszergazdájához, és regisztrálja ezt a végpontot a felhőben. A `endpoint-vm-image-alias-doc` paramétere a `az cloud register` a parancsnak az erre a célra. Felhő rendszergazdák le kell töltenie a lemezképet a verem Azure piactér csak hozzá kép aliasok végponthoz.
+Felhasználók parancssori felület használatával hozhat létre virtuális gépeket, mielőtt kell lépjen kapcsolatba az Azure-verem operátor és a virtuális gép aliasok végpont URI beolvasása. Például az Azure használja a következő URI Azonosítót: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json. A felhő rendszergazdájához kell állítani egy hasonló végpont Azure verem a a verem Azure piactéren elérhető képek. Felhasználók kell átadni a végpont URI számára a `endpoint-vm-image-alias-doc` paramétert a `az cloud register` parancsot a következő szakaszban ismertetett módon. 
    
-Például az Azure használja a következő URI Azonosítót: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json. A felhő rendszergazdájához kell állítani egy hasonló végpont Azure verem a a verem Azure piactéren elérhető képek.
 
 ## <a name="connect-to-azure-stack"></a>Csatlakozás az Azure Stackhez
 

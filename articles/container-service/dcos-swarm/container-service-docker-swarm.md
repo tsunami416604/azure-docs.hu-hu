@@ -1,28 +1,22 @@
 ---
-title: "Docker API-t Azure Swarm-fürt kezeléséhez |} Microsoft Docs"
+title: "Docker API-t Azure Swarm-fürt kezeléséhez"
 description: "A Docker Swarm-fürt az Azure Tárolószolgáltatás – tárolók üzembe helyezése"
 services: container-service
-documentationcenter: 
 author: rgardler
 manager: madhana
-editor: 
-tags: acs, azure-container-service
-keywords: "Docker, tárolók, mikroszolgáltatások, Mesos, Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 6ca2d2e49c4b7f5eb0580e7091b09209f8b73a7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f8d18bc053bc303ab124ba38c8621d4ee2e8cb8
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="container-management-with-docker-swarm"></a>Tárolókezelés a Docker Swarmmal
+
 A Docker Swarm olyan környezetet biztosít, amelyben tárolóalapú számítási feladatokat helyezhet üzembe egy Docker-gazdagépekből álló készletben. A Docker Swarm a natív Docker API-t használja. A Docker Swarm tárolókezelésének munkafolyamata majdnem azonos az egyetlen tároló-gazdagépen elvégzendő munkafolyamattal. Ez a dokumentum egyszerű példák segítségével ismerteti, hogy miként helyezhetők üzembe a tárolóalapú munkafolyamatok a Docker Swarm Azure tárolószolgáltatás-példányaiban. További részletes dokumentációt a Docker Swarmról a [ Docker.com](https://docs.docker.com/swarm/) webhelyen talál.
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]

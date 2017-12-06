@@ -1,29 +1,22 @@
 ---
-title: "Azure DC/OS-fürtről fájlmegosztásához |} Microsoft Docs"
+title: "Azure DC/OS-fürtről fájlmegosztásához"
 description: "Hozzon létre, és azt csatlakoztatja a fájlmegosztást a DC/OS fürtben, az Azure Tárolószolgáltatásban"
 services: container-service
-documentationcenter: 
 author: julienstroheker
 manager: dcaro
-editor: 
-tags: acs, azure-container-service
-keywords: "Docker, tárolók, Micro-szolgáltatások, a Mesos, a Azure, a fájlmegosztás, a cifs"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: a5905cac12f52f94a5722cc01495d5c1168634f8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1c318f4204efd24a2d9d3d83bb1cb71f5775bdb
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Hozzon létre, és azt csatlakoztatja a fájlmegosztást a DC/OS-fürtről
+
 Ez az oktatóanyag fájlmegosztás létrehozása az Azure-ban, és csatlakoztassa azt minden ügynök és a DC/OS-fürt fő részletezi. Fájlmegosztás beállítása megkönnyíti a fürt, például a konfigurációs, access, naplók és egyéb fájlok megosztása. Ebben az oktatóanyagban a következő műveleteket foglalja:
 
 > [!div class="checklist"]

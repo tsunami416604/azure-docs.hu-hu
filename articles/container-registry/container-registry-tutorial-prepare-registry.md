@@ -2,22 +2,15 @@
 title: "Az Azure tároló beállításjegyzék-oktatóanyag – egy Azure-tárolót georeplikált beállításjegyzék előkészítése"
 description: "Hozzon létre egy Azure-tárolót beállításjegyzék, konfigurálja a georeplikáció, Docker lemezkép előkészítése és telepíteni kell a beállításjegyzéket. Egy háromrészes sorozat része."
 services: container-registry
-documentationcenter: 
 author: mmacy
 manager: timlt
-editor: mmacy
-tags: acr, azure-container-registry, geo-replication
-keywords: "Docker, tárolók, beállításjegyzék, Azure"
 ms.service: container-registry
-ms.devlang: 
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: d751bf99cd081ea83928981db4c42bcacf4c27af
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 9503dc4a1fa8bc7773677de1673fed3abe1c1b51
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/05/2017

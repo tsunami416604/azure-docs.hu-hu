@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: larryfr
-ms.openlocfilehash: f166158d09cd867718acecc6c97ce16b839f49bd
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 5e4fe189a3fa7269a271b422116dc6838e7ef3cb
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>A Parancsfájlműveletek Linux-alapú HDInsight-fürtök testreszabása
 
@@ -76,9 +76,6 @@ A parancsfájlművelet Bash parancsfájlok mutató URI-t biztosító, de a param
         > Csak a HDInsight támogatja __általános célú__ Azure Storage-fiókokat. Jelenleg nem támogatja a __Blob-tároló__ fiók típusa.
 
 * Korlátozható **futhat az egyes csomóponttípusok**, például átjárócsomópontokkal vagy munkavégző csomópontokhoz.
-
-  > [!NOTE]
-  > HDInsight prémium használata esetén adja meg, hogy a parancsfájl az élcsomóponthoz kell használni.
 
 * Lehet **megőrzött** vagy **alkalmi**.
 

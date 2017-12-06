@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 0973f83ae839597f3b499814a4a04a8a640a1fb6
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 9ba1cdc5c72e04802d29794fa6cb40a29cc1d353
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>A tartós funkciók - Hello feladatütemezési minta láncolás működik
 
@@ -39,7 +39,7 @@ Az alábbi szakaszok ismertetik a konfiguráció és a kódot, amely az Azure po
  
 ## <a name="functionjson-file"></a>Function.JSON fájl
 
-Fejlesztés az Azure-portálon használja, ha ez tartalmát a *function.json* az orchestrator függvény fájlt. A legtöbb orchestrator *function.json* fájlok szinte teljesen így jelennek meg.
+Ha Visual Studio Code vagy az Azure-portálon fejlesztési, itt van tartalma a *function.json* az orchestrator függvény fájlt. A legtöbb orchestrator *function.json* fájlok szinte teljesen így jelennek meg.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/function.json)]
 
@@ -48,7 +48,7 @@ Fontos, a `orchestrationTrigger` kötéstípus. Minden orchestrator-funkciók az
 > [!WARNING]
 > Elfogadják a "nincs i/o" szabály orchestrator funkciók, ne használja a bemeneti vagy kimeneti kötések használatakor a `orchestrationTrigger` indítás kötés.  Ha más bemeneti vagy kimeneti kötések van szükség, azok helyette használandó környezetében `activityTrigger` függvények, amelyek az orchestrator által meghívott.
 
-## <a name="c-script"></a>C#-szkript
+## <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# parancsfájl (Visual Studio Code és az Azure portál mintakód) 
 
 A forrás kód itt látható:
 

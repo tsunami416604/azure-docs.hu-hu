@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: ddove
-ms.openlocfilehash: 18870b763546a9bccb77df85b01640cfd3c8b852
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 03e7a3612e1cfcfaee2084db0d2eadb72e8a5f9d
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>A szilánkok térkép manager adatbázisokkal kiterjesztése
 Könnyen horizontális felskálázás az SQL Azure adatbázisokat, használja a shard térkép kezelőjét. A szilánkok térkép manager shard csoportban lévő összes szilánkok (adatbázisok) globális hozzárendelés információt egy különleges adatbázis. A metaadatok lehetővé teszi, hogy egy alkalmazás értéke alapján a megfelelő adatbázishoz való kapcsolódáshoz a **horizontális kulcs**. Emellett minden shard készletében tartalmazza, amelyek nyomon követik a helyi részekre bonthatók az adatok (úgynevezett **shardlets**). 
 
 ![A shard leképezés kezelése](./media/sql-database-elastic-scale-shard-map-management/glossary.png)
 
-Hogyan össze ezeket a maps elengedhetetlen megérteni a shard térkép kezelési. Ebben az esetben a ShardMapManager osztály használatával ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx), [Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager)), a tényleges a [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md) shard leképezések kezelésére.  
+Hogyan össze ezeket a maps elengedhetetlen megérteni a shard térkép kezelési. Ebben az esetben a ShardMapManager osztály használatával ([Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)), a tényleges a [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md) shard leképezések kezelésére.  
 
 ## <a name="shard-maps-and-shard-mappings"></a>A shard leképezések és shard hozzárendelések
 Az egyes shard ki kell választani a típusát, a shard térkép létrehozásához. A választott attól függ, hogy az adatbázis-architektúra: 
@@ -57,7 +57,7 @@ Rugalmasan méretezhető horizontális kulcsok a következő típusok támogatj�
 | hosszú |hosszú |
 | GUID |UUID |
 | Byte]  |Byte] |
-| datetime | időbélyeg |
+| Dátum és idő | időbélyeg |
 | A TimeSpan | Időtartam|
 | datetimeoffset |offsetdatetime |
 
@@ -98,11 +98,28 @@ Az ügyféloldali kódtára a shard térkép manager gyűjteménye shard maps. K
 3. **Alkalmazás-gyorsítótárának**: minden egyes alkalmazás példány elérése a **ShardMapManager** objektum a leképezéseket egy helyi memóriabeli gyorsítótárában megtalálhatók. Útvonal-információkat, amelyek a legutóbb beolvasott tárol. 
 
 ## <a name="constructing-a-shardmapmanager"></a>Egy ShardMapManager létrehozása
-A **ShardMapManager** objektum gyár segítségével jön létre ([.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory), [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory)) mintát. A **ShardMapManagerFactory.GetSqlShardMapManager** ([.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager), [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.getsqlshardmapmanager)) metódus hitelesítő adatait (beleértve a kiszolgáló és adatbázis nevét a GSM okozó) veszi a az űrlap egy **ConnectionString** és egy példányát adja vissza egy **ShardMapManager**.  
+A **ShardMapManager** objektum gyár segítségével jön létre ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)) mintát. A **ShardMapManagerFactory.GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.getsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) metódus hitelesítő adatait (beleértve a kiszolgáló és adatbázis nevét a GSM okozó) veszi a az űrlap egy **ConnectionString** és egy példányát adja vissza egy **ShardMapManager**.  
 
 **Ne feledje:** a **ShardMapManager** kell példányosítani csak egyszer app tartományonként, az inicializálási kód egy alkalmazáshoz. ShardMapManager alkalmazás ugyanabban a tartományban további példányának létrehozása nagyobb memória és CPU-felhasználás az alkalmazás eredményez. A **ShardMapManager** shard maps tetszőleges számú tartalmazhat. Lehet, hogy elegendő-e számos alkalmazás egyetlen shard térképre, amíg nincsenek alkalommal, ha az adatbázisok más-más részhalmazához használt különböző séma vagy egyedi célokra; azokban az esetekben érdemes lehet több shard maps. 
 
-Ezzel a kóddal, az alkalmazás megpróbálja megnyitni egy meglévő **ShardMapManager** a TryGetSqlShardMapManager rendelkező ([.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager)) metódust.  Ha egy globális objektumokból **ShardMapManager** (GSM) létezhet az adatbázis még nem, az ügyféloldali kódtár létrehozásuk van a CreateSqlShardMapManager használatával ([.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager), [Java ](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager)) metódust.
+Ezzel a kóddal, az alkalmazás megpróbálja megnyitni egy meglévő **ShardMapManager** a TryGetSqlShardMapManager rendelkező ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)) metódust.  Ha egy globális objektumokból **ShardMapManager** (GSM) létezhet az adatbázis még nem, az ügyféloldali kódtár létrehozásuk van a CreateSqlShardMapManager használatával ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager), [.NET ](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) metódust.
+
+```Java
+// Try to get a reference to the Shard Map Manager in the shardMapManager database.
+// If it doesn't already exist, then create it.
+ShardMapManager shardMapManager = null;
+boolean shardMapManagerExists = ShardMapManagerFactory.tryGetSqlShardMapManager(shardMapManagerConnectionString,ShardMapManagerLoadPolicy.Lazy, refShardMapManager);
+shardMapManager = refShardMapManager.argValue;
+
+if (shardMapManagerExists) {
+    ConsoleUtils.writeInfo("Shard Map %s already exists", shardMapManager);
+}
+else {
+    // The Shard Map Manager does not exist, so create it
+    shardMapManager = ShardMapManagerFactory.createSqlShardMapManager(shardMapManagerConnectionString);
+    ConsoleUtils.writeInfo("Created Shard Map %s", shardMapManager);
+}
+```
 
 ```csharp
 // Try to get a reference to the Shard Map Manager via the Shard Map Manager database.  
@@ -131,50 +148,10 @@ else
 } 
 ```
 
-```Java
-// Try to get a reference to the Shard Map Manager in the shardMapManager database.
-// If it doesn't already exist, then create it.
-ShardMapManager shardMapManager = null;
-boolean shardMapManagerExists = ShardMapManagerFactory.tryGetSqlShardMapManager(shardMapManagerConnectionString,ShardMapManagerLoadPolicy.Lazy, refShardMapManager);
-shardMapManager = refShardMapManager.argValue;
-
-if (shardMapManagerExists) {
-    ConsoleUtils.writeInfo("Shard Map %s already exists", shardMapManager);
-}
-else {
-    // The Shard Map Manager does not exist, so create it
-    shardMapManager = ShardMapManagerFactory.createSqlShardMapManager(shardMapManagerConnectionString);
-    ConsoleUtils.writeInfo("Created Shard Map %s", shardMapManager);
-}
-```
-
-A .NET-verziója, a Powershell segítségével hozzon létre egy új Shard térkép Manager. Példa: elérhető [Itt](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+A .NET-verziója, a PowerShell segítségével hozzon létre egy új Shard térkép Manager. Példa: elérhető [Itt](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
 ## <a name="get-a-rangeshardmap-or-listshardmap"></a>Szerezze be a RangeShardMap vagy ListShardMap
-Miután létrehozta a shard térkép manager, a RangeShardMap kaphat ([.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map)) vagy ListShardMap ([.NET](https://msdn.microsoft.com/library/azure/dn807370.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map)) használatával a TryGetRangeShardMap ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetrangeshardmap)), a TryGetListShardMap ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx), [Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetlistshardmap)), vagy a GetShardMap ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx), [Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.getshardmap)) metódust.
-
-```csharp
-// Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
-public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shardMapManager, string shardMapName)
-{
-    // Try to get a reference to the Shard Map.
-    RangeShardMap<T> shardMap;
-    bool shardMapExists = shardMapManager.TryGetRangeShardMap(shardMapName, out shardMap);
-
-    if (shardMapExists)
-    {
-        ConsoleUtils.WriteInfo("Shard Map {0} already exists", shardMap.Name);
-    }
-    else
-    {
-        // The Shard Map does not exist, so create it
-        shardMap = shardMapManager.CreateRangeShardMap<T>(shardMapName);
-        ConsoleUtils.WriteInfo("Created Shard Map {0}", shardMap.Name);
-    }
-
-    return shardMap;
-} 
-```
+Miután létrehozta a shard térkép manager, a RangeShardMap kaphat ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map), [.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx)) vagy ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map), [.NET](https://msdn.microsoft.com/library/azure/dn807370.aspx)) használatával a TryGetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetrangeshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)), a TryGetListShardMap ([Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetlistshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)), vagy a GetShardMap ([ Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.getshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx)) metódust.
 
 ```Java
 // Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
@@ -204,6 +181,29 @@ static <T> RangeShardMap<T> createOrGetRangeShardMap(ShardMapManager shardMapMan
 }
 ```
 
+```csharp
+// Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
+public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shardMapManager, string shardMapName)
+{
+    // Try to get a reference to the Shard Map.
+    RangeShardMap<T> shardMap;
+    bool shardMapExists = shardMapManager.TryGetRangeShardMap(shardMapName, out shardMap);
+
+    if (shardMapExists)
+    {
+        ConsoleUtils.WriteInfo("Shard Map {0} already exists", shardMap.Name);
+    }
+    else
+    {
+        // The Shard Map does not exist, so create it
+        shardMap = shardMapManager.CreateRangeShardMap<T>(shardMapName);
+        ConsoleUtils.WriteInfo("Created Shard Map {0}", shardMap.Name);
+    }
+
+    return shardMap;
+} 
+```
+
 ### <a name="shard-map-administration-credentials"></a>A shard térkép felügyeleti hitelesítő adatok
 Felügyelheti és kezelheti a shard maps alkalmazások különböznek, amelyek útvonal kapcsolatok shard leképezve. 
 
@@ -226,19 +226,19 @@ A shard térképre különböző módokon lehet megváltoztatni. Minden, az alá
 
 Ezek a módszerek együttesen érhető el a szilánkos adatbázis környezetében adatok teljes terjesztési módosítását építőelemeiként.  
 
-* Szeretne felvenni vagy eltávolítani a szilánkok: használja **CreateShard** ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map.createshard)) és **DeleteShard** ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard.aspx), [ Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map.deleteshard)), a Shardmap ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map)) osztály. 
+* Szeretne felvenni vagy eltávolítani a szilánkok: használja **CreateShard** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map.createshard), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)) és **DeleteShard** ([Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map.deleteshard), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard.aspx)), a Shardmap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.aspx)) osztály. 
   
     A kiszolgáló és a cél shard képviselő adatbázis már léteznie kell ezeket a műveleteket végrehajtani. Ezek a módszerek gyakorolt hatás nem rendelkezik, az adatbázisok csak a metaadatok a shard a térképen.
-* Létrehozandó vagy eltávolítandó pontokat vagy tartományt a szilánkok van leképezve: használja **CreateRangeMapping** ([.NET](https://msdn.microsoft.com/library/azure/dn841993.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.createrangemapping)), **DeleteMapping** () [.NET](https://msdn.microsoft.com/library/azure/dn824200.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.deletemapping)), a RangeShardMapping ([.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map)) osztályt, és **CreatePointMapping**  ([.NET](https://msdn.microsoft.com/library/azure/dn807218.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map.createpointmapping)), a ListShardMap ([.NET](https://msdn.microsoft.com/library/azure/dn842123.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map)) osztály.
+* Létrehozandó vagy eltávolítandó pontokat vagy tartományt a szilánkok van leképezve: használja **CreateRangeMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.createrangemapping), [.NET](https://msdn.microsoft.com/library/azure/dn841993.aspx)), **DeleteMapping** () [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.deletemapping), [.NET](https://msdn.microsoft.com/library/azure/dn824200.aspx)), a RangeShardMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map), [.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx)) osztályt, és **CreatePointMapping**  ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map.createpointmapping), [.NET](https://msdn.microsoft.com/library/azure/dn807218.aspx)), a ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map), [.NET](https://msdn.microsoft.com/library/azure/dn842123.aspx)) osztály.
   
     Számos különböző pontok vagy tartományok ugyanazt a shard rendelhetők. Ezek a módszerek csak hatással vannak a metaadat - adatokat, amelyek esetleg már szerepel a szilánkok nem befolyásolják. Ha adatok eltávolítva az adatbázisból ahhoz, hogy a konzisztens **DeleteMapping** műveletek, ezeket a műveleteket hajt végre, külön-külön, de ezekkel a módszerekkel együtt.  
-* Meglévő tartományok felosztása két, vagy egyik szomszédos tartományok egyesítése: használja **SplitMapping** ([.NET](https://msdn.microsoft.com/library/azure/dn824205.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.splitmapping)) és **MergeMappings** () [.NET](https://msdn.microsoft.com/library/azure/dn824201.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.mergemappings)).  
+* Meglévő tartományok felosztása két, vagy egyik szomszédos tartományok egyesítése: használja **SplitMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.splitmapping), [.NET](https://msdn.microsoft.com/library/azure/dn824205.aspx)) és **MergeMappings** () [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.mergemappings), [.NET](https://msdn.microsoft.com/library/azure/dn824201.aspx)).  
   
     Vegye figyelembe, hogy ossza fel, és egyesíti az műveletek **ne változtassa meg a shard, amelyhez a értékeit leképezett**. Valószínűségét egy meglévő tartományt bontja két részből áll, de hagyja is, mivel ugyanazt a shard leképezve. Az egyesítés két szomszédos tartományt már hozzárendelt ugyanazt a shard egyesítése őket egy egyetlen tartományba működik.  Pontok vagy a szilánkok közötti maguk tartományok használatával össze kell hangolni kell **UpdateMapping** adatok tényleges mozgatását együtt.  Használhatja a **vegyes/Egyesítés** szolgáltatáshoz, amely rugalmas adatbáziseszközöket koordinálására shard térkép módosításokat adatmozgás, amikor szükség van a mozgás részét. 
-* Újbóli hozzárendelését (vagy áthelyezése) vagy különböző szilánkok vagy egyedi mutat: használja **UpdateMapping** ([.NET](https://msdn.microsoft.com/library/azure/dn824207.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.updatemapping)).  
+* Újbóli hozzárendelését (vagy áthelyezése) vagy különböző szilánkok vagy egyedi mutat: használja **UpdateMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.updatemapping), [.NET](https://msdn.microsoft.com/library/azure/dn824207.aspx)).  
   
     Mivel előfordulhat, hogy szükséges adatokat áthelyezni a shard egy másik ahhoz, hogy a konzisztens **UpdateMapping** műveletek, végre kell hajtania, hogy a mozgás külön-külön, de ezekkel a módszerekkel együtt.
-* Online és offline hozzárendelések érvénybe: használja **MarkMappingOffline** ([.NET](https://msdn.microsoft.com/library/azure/dn824202.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.markmappingoffline)) és **MarkMappingOnline** ([. NETTÓ](https://msdn.microsoft.com/library/azure/dn807225.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.markmappingonline)) leképezéseket online állapotának vezérlésére. 
+* Online és offline hozzárendelések érvénybe: használja **MarkMappingOffline** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.markmappingoffline), [.NET](https://msdn.microsoft.com/library/azure/dn824202.aspx)) és **MarkMappingOnline** ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.markmappingonline), [.NET](https://msdn.microsoft.com/library/azure/dn807225.aspx)) leképezéseket online állapotának vezérlésére. 
   
     A shard hozzárendelések bizonyos műveletek csak vannak engedélyezve, ha a leképezés nem "offline" állapotú, beleértve a **UpdateMapping** és **DeleteMapping**. Amikor egy offline állapotban, a kulcs szerepel a leképezéseket alapuló adatok függő kérelem hibát ad vissza. Emellett egy tartomány első offline állapotba kerül, ha az érintett shard létesített összes kapcsolat vannak automatikusan el leállítja, nehogy szemben az módosítás alatt tartományok lekérdezések inkonzisztens vagy hiányos eredményeket. 
 

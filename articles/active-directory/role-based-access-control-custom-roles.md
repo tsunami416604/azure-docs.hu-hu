@@ -15,11 +15,11 @@ ms.date: 07/11/2017
 ms.author: andredm
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e72f2c8095d13c4b6df3c6576bd58806a3c0f2f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2bb671e1870ae22eb515adc36ce0235e1d8ecddd
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-custom-roles-for-azure-role-based-access-control"></a>Hozzon létre egyéni szerepkörök átruházásához hozzáférés-vezérlés
 Hozzon létre egy egyéni biztonsági szerepkört a átruházásához hozzáférés-vezérlés (RBAC) Ha az adott hozzáférési igényeinek a beépített szerepkörök egyike. Egyéni szerepkörök segítségével hozhatók létre [Azure PowerShell](role-based-access-control-manage-access-powershell.md), [Azure parancssori felület](role-based-access-control-manage-access-azure-cli.md) (CLI), és a [REST API](role-based-access-control-manage-access-rest.md). Hasonlóan a beépített szerepkörök egyéni szerepkörök hozzárendelése felhasználók, csoportok és alkalmazások előfizetés, erőforráscsoport és erőforrás-hatókörök. Egyéni szerepkörök az Azure AD-bérlő tárolódnak, és előfizetések között megosztható legyen.
@@ -28,7 +28,7 @@ Mindegyik bérlő legfeljebb 2000 egyéni szerepköröket hozhatnak létre.
 
 A következő példa bemutatja egy egyéni biztonsági szerepkört a figyelés és a virtuális gépek újraindításával:
 
-```
+```json
 {
   "Name": "Virtual Machine Operator",
   "Id": "cadb4a5a-4e7a-47be-84db-05cad13b6769",
@@ -67,7 +67,7 @@ A **műveletek** egy egyéni biztonsági szerepkört a tulajdonság határozza m
 
 Használjon `Get-AzureRmProviderOperation` (a PowerShell) vagy `azure provider operations show` (az Azure CLI) az Azure erőforrás-szolgáltatók műveletek. Ezek a parancsok annak ellenőrzéséhez, hogy egy művelet karakterlánc érvényes, és bontsa ki a helyettesítő művelet karakterláncok is használhatja.
 
-```
+```powershell
 Get-AzureRMProviderOperation Microsoft.Compute/virtualMachines/*/action | FT Operation, OperationName
 
 Get-AzureRMProviderOperation Microsoft.Network/*
@@ -75,7 +75,7 @@ Get-AzureRMProviderOperation Microsoft.Network/*
 
 ![PowerShell képernyőfelvétel - Get-AzureRMProviderOperation](./media/role-based-access-control-configure/1-get-azurermprovideroperation-1.png)
 
-```
+```azurecli
 azure provider operations show "Microsoft.Compute/virtualMachines/*/action" --js on | jq '.[] | .operation'
 
 azure provider operations show "Microsoft.Network/*"
@@ -118,6 +118,7 @@ A **AssignableScopes** tulajdonsága az egyéni biztonsági szerepkört is vezé
 
 ## <a name="see-also"></a>Lásd még:
 * [Szerepköralapú hozzáférés-vezérlés](role-based-access-control-configure.md): az RBAC első lépései az Azure portálon.
+* Elérhető műveletek listájának megtekintéséhez lásd: [Azure Resource Manager erőforrás-szolgáltató műveletek](role-based-access-control-resource-provider-operations.md).
 * Útmutató: a hozzáférés kezelése:
   * [PowerShell](role-based-access-control-manage-access-powershell.md)
   * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)

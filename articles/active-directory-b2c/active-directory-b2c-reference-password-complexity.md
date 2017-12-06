@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 800199b3d1d91d700d26f988a4d49713028de1ce
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: b7103103201563c6878095cf31cfcdf2938a9c7f
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Az Azure AD B2C: Bonyolult jelszót konfigurálása
 
 > [!NOTE]
-> **A funkció jelenleg előzetes verzió.**  Ügyfél [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com) kell rendelkeznie a tesztbérlővel, ez a szolgáltatás engedélyezve van.
+> **A funkció jelenleg előzetes verzió.**  Ügyfél [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com) kell rendelkeznie a tesztbérlővel, ez a szolgáltatás engedélyezve van.  Csak akkor teszteljen Ez a termelési bérlők.
 
 Az Azure Active Directory B2C (az Azure AD B2C) támogatja a bonyolultsági feltételeknek, egy fiók létrehozásakor a felhasználó által megadott jelszavak módosítása.  Alapértelmezés szerint az Azure AD B2C használja `Strong` jelszavakat.  Az Azure AD B2C beállítások szabályozzák, hogy az ügyfelek használhatják a összetettségét is támogatja.
 
@@ -64,7 +64,7 @@ Lehetővé teszi, hogy el kell fogadnia a számjegyek csak (PIN-ek) vagy a telje
 * **Csak számokat** lehetővé teszi, hogy a számjegyek csak (0-9) során, hogy jelszót írna be.
 * **Minden** lehetővé teszi, hogy bármely karakter, számot vagy szimbólumot.
 
-### <a name="length"></a>Hossza
+### <a name="length"></a>Hossz
 
 Lehetővé teszi, hogy a hosszúsági követelményeknek, a jelszó vezérlését.
 

@@ -12,14 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 11/28/2017
 ms.author: nisoneji
-ms.openlocfilehash: db790f9dc56605b5b752e7ab797903e32b2fc675
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: e2a69f240068d3155c2fdd52c118dc037ccbcdcb
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/05/2017
 ---
+Új javított változata [Azure Site Recovery telepítési planner Hyper-v Azure](site-recovery-hyper-v-deployment-planner.md) jelenleg elérhető és cseréjét régi eszköz. Az új eszköz használata a központi telepítésének megtervezése. Az eszköz biztosít a következő eszközöket: 
+* Virtuális gép jogosultsági értékelése, lemezek, lemez méretét, IOPS, forgalom és néhány virtuális gép jellemzők száma alapján.
+* Hálózati sávszélesség és a helyreállítási Időkorlát assessment kell.
+* Az Azure-infrastruktúrával kapcsolatos követelményei.
+* A helyszíni infrastruktúrával kapcsolatos követelményei.
+* Kezdeti replikálás kötegelés útmutatást.
+* Az Azure-bA összköltsége vész-Helyreállítási becsült.
+
+
 # <a name="hyper-v-capacity-planner-tool-for-site-recovery"></a>A Site Recovery Hyper-V kapacitás planner eszköz
 
 Az Azure Site Recovery üzembe helyezése részeként akkor ki kell deríteni a replikáció és a sávszélesség-követelményekkel. A Hyper-V capacity Planner a Site Recovery segítségével hajthatja végre, a Hyper-V Virtuálisgép-replikációt.

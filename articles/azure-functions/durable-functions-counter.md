@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ec7d51d3f30eb3417a48fbf8d31a9b8359e39ab9
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 05099e868e62f612be0a3354eb8b339507ac7e4a
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="stateful-singletons-in-durable-functions---counter-sample"></a>Állapot-nyilvántartó singletons tartós funkciókkal - számláló minta
 
@@ -45,13 +45,31 @@ Tartós funkciók lehetővé teszi az ilyen forgatókönyv trivial megvalósíta
 
 Ez a cikk végigvezeti a **E3_Counter** mintaalkalmazás függvényt.
 
-Az alábbi szakaszok ismertetik a Visual Studio fejlesztői használt kódot. A kód az Azure portál fejlesztési hasonlít.
+
 
 ## <a name="the-counter-orchestration"></a>A számláló az orchestration
+
+Az alábbi szakaszok ismertetik a kódot, amely a Visual Studio Code és az Azure portál fejlesztésére szolgál.
+
+### <a name="c-script"></a>C# parancsfájl
+
+A function.json fájlt:
+
+[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Counter/function.json)]
+
+A run.csx fájlt:
+
+[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Counter/run.csx)]
+
+### <a name="precompiled-c"></a>Lefordított C# 
+
+Az alábbi szakaszok ismertetik a Visual Studio fejlesztői használt kódot.
 
 A kód, amely megvalósítja az orchestrator függvény itt látható:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Counter.cs)]
+
+### <a name="explanation-of-the-code"></a>A kód ismertetése
 
 Az orchestrator függvény alapvetően a következőket teszi:
 

@@ -11,13 +11,13 @@ ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/13/2017
+ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: da8ccf35dcc873a5c31842c6eb7bdf72879854c2
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 0bcf56e06c34af94746d42d8af18e32fcd9a7496
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven Common Internet File System vagy CIFS). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/20/2017
 Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat, beleértve az Azure fájlszinkronizálás Azure fájlokkal kapcsolatos gyakori kérdésekre. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a növekvő sorrendben) a következő csatornákon keresztül:
 
 1. Ez a cikk megjegyzéseket tartalmazó részét.
-2. [Az Azure Storage fórum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuredata).
+2. [Az Azure Storage fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure-fájlokat UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
 4. Microsoft támogatási szolgálatához. Az Azure portálon, egy új támogatási kérelem létrehozásához a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza **új támogatja a kérelem**.
 
@@ -147,6 +147,9 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
     ```
+
+* <a id="afs-effective-vfs"></a>**Hogyan van *kötet hely* értelmezi, ha egy köteten több kiszolgáló-végpontot?**  
+    Ha egy köteten több kiszolgáló végpont, hatékony kötet szabad terület küszöbértéke bármely kiszolgáló végpont a köteten lévő között megadott legnagyobb kötet szabad terület. Függetlenül attól, hogy melyik kiszolgáló végpont, amelyekhez tartoznak a használati mintáknak megfelelően fog helyezhető el a fájlokat. Például, ha két kiszolgáló végpontok egy köteten, Endpoint1 és Endpoint2, ahol Endpoint1 egy kötet szabad terület küszöbértéke 25 %-os és Endpoint2 rendelkezik egy mennyiségi szabad terület küszöbértéke 50 %-os mindkét kiszolgáló végpont kötet hely küszöbértéke 50 % lesz.
 
 * <a id="afs-files-excluded"></a>**Azure fájlszinkronizálás automatikusan kizárja a mely fájlok vagy mappák?**  
     Alapértelmezés szerint Azure fájlszinkronizálás nem tartalmazza a következő fájlokat:

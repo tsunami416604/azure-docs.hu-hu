@@ -1,27 +1,19 @@
 ---
-title: "Webes felhasználói felület Azure Kubernetes fürt kezelése |} Microsoft Docs"
+title: "Webes felhasználói felület Azure Kubernetes fürt kezelése"
 description: "Az Kubernetes irányítópulttal AKS"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: aks, azure-container-service, kubernetes
-keywords: 
-ms.assetid: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 85be41cd6d355e4a38eceacb5589c1df6029ad16
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 75ee9cc7c4b40e9a724c8ce98d770a18ae654096
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Kubernetes irányítópult Azure tároló szolgáltatás (AKS)
 
@@ -31,7 +23,7 @@ Az Azure CLI segítségével a Kubernetes irányítópult elindításához. Ez a
 
 A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozott egy AKS-fürtöt, és kiépített egy kubectl-kapcsolatot a fürttel. Ha ezeket még létre kell hoznia olvassa el az [AKS gyors útmutatóját](./kubernetes-walkthrough.md).
 
-Is kell az Azure parancssori felület 2.0.21 verzió vagy újabb telepített és konfigurált. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Emellett az Azure CLI 2.0.21-es vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="start-kubernetes-dashboard"></a>Indítsa el a Kubernetes irányítópult
 

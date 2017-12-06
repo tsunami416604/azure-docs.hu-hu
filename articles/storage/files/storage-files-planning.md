@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: c4f997b994bb337ad8a886d7ad09791cb587d4f9
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: c28f341fb64271e2173cd377fa06c567e0e054a6
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők az iparági szabványos SMB protokollon keresztül. Azure fájlok teljes körűen felügyelt, mert sokkal egyszerűbb, mint a központi telepítésére és felügyeletére a fájlkiszolgáló vagy NAS-eszköz telepítés éles helyzetekben. Ez a cikk foglalkozik a témakörök figyelembe kell venni egy Azure fájlmegosztás üzemi használatra a szervezeten belüli központi telepítésekor.

@@ -5,19 +5,20 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
+ms.reviewer: joflore
 ms.assetid: cd5ae365-9ed6-43a6-920b-f7814b993949
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 598387b6066612c6c4a4c92cba5ba03e03a55203
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 8c1816fa272386a9839d93423a8ae81d2cdc8567
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Oktatóanyag: Azure Active Directoryval integrált Trello
 
@@ -25,9 +26,9 @@ Ebben az oktatóanyagban elsajátíthatja Trello integrálása az Azure Active D
 
 Trello integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
-- Megadhatja a Trello hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Trello (egyszeri bejelentkezés) a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Az Azure AD, aki hozzáfér Trello szabályozhatja.
+- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Trello (egyszeri bejelentkezés) a saját Azure AD-fiókok.
+- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
 
@@ -36,7 +37,7 @@ Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, t
 Az Azure AD-integráció konfigurálása a Trello, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- A Trello egyszeri bejelentkezés engedélyezve van az előfizetés
+- A Trello egyszeri bejelentkezés engedélyezve van az előfizetésben
 
 > [!NOTE]
 > Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
@@ -44,7 +45,7 @@ Az Azure AD-integráció konfigurálása a Trello, a következőkre van szüksé
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
 - Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
@@ -59,25 +60,22 @@ Az Azure AD integrálása a Trello konfigurálásához kell hozzáadnia Trello a
 
 1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb][1]
 
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
-    ![Alkalmazások][2]
+    ![A vállalati alkalmazások panel][2]
     
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
 
-    ![Alkalmazások][3]
+    ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Trello**.
+4. Írja be a keresőmezőbe, **Trello**, jelölje be **Trello** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-trello-tutorial/tutorial_trello_search.png)
+    ![Az eredménylistában Trello](./media/active-directory-saas-trello-tutorial/tutorial_trello_addfromgallery.png)
 
-5. Az eredmények panelen válassza ki a **Trello**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-trello-tutorial/tutorial_trello_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Trello.
 
 Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a Trello tartozó felhasználót a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a Trello közötti kapcsolat kapcsolatot kell létrehozni.
@@ -86,45 +84,45 @@ A Trello, rendelje az értékét a **felhasználónév** értékeként Azure AD-
 
 Az Azure AD egyszeri bejelentkezést a Trello tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Trello tesztfelhasználó létrehozása](#creating-a-trello-test-user)**  - való Britta Simon valami Trello, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
+2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+3. **[Trello tesztfelhasználó létrehozása](#create-a-trello-test-user)**  - való Britta Simon valami Trello, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Trello alkalmazásban egyszeri bejelentkezés konfigurálása.
 
 >[!NOTE]
-    >Szerezheti be a  **\<vállalati\>**  a Trello slug. Ha még nem rendelkezik a slug érték, forduljon a [Trello támogatási csoport](mailto:support@trello.com) a slug lekérni a vállalat számára.
+>Szerezheti be a  **\<vállalati\>**  a Trello slug. Ha még nem rendelkezik a slug érték, forduljon a [Trello támogatási csoport](mailto:support@trello.com) vállalati lekérni a slug meg.
     > 
 
 **Konfigurálása az Azure AD az egyszeri bejelentkezés Trello, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure portálon a a **Trello** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
  
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_trello_samlbase.png)
+    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-trello-tutorial/tutorial_trello_samlbase.png)
 
 3. Az a **Trello tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **IDP kezdeményezett mód**, hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_trello_url.png)
-
-    Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://trello.com/auth/saml/consume/<enterprise>`
+    ![Az egyszeri bejelentkezés információk Trello tartomány és az URL-címek](./media/active-directory-saas-trello-tutorial/tutorial_trello_url.png)
+    
+    a. Az a **azonosító** szövegmező, írja be a következő URL-címe:`https://trello.com/auth/saml/metadata`
+    
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://trello.com/auth/saml/consume/<enterprise>`
 
 4. Ha szeretne beállítani az alkalmazás **Szolgáltató kezdeményezett mód**, hajtsa végre a következő lépéseket:
 
-  ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_trello_url1.png)
+    ![Az egyszeri bejelentkezés információk Trello tartomány és az URL-címek](./media/active-directory-saas-trello-tutorial/tutorial_trello_url1.png)
 
-    a. Kattintson a **megjelenítése speciális URL-beállításainak**.
+    a. Ellenőrizze **megjelenítése speciális URL-beállításainak**.
 
-    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe:`https://trello.com/auth/saml/login/<enterprise>`
-
-  c. Az a **azonosító** szövegmező, írja be a következő URL-címe:`https://trello.com/auth/saml/metadata`
+    b. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://trello.com/auth/saml/login/<enterprise>` 
 
 5. Trello alkalmazás vár a SAML helyességi feltételek megadott attribútumokat tartalmaz. Konfigurálja a következő attribútumok ehhez az alkalmazáshoz. Ezek az attribútumok értékének kezelheti a **"Felhasználói attribútumok"** az alkalmazás. Az alábbi képernyőfelvételen látható egy példa a.
 
@@ -142,72 +140,76 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_officespace_04.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_officespace_05.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_attribute_05.png)
 
     b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét. 
 
     c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
     
     d. Kattintson az **OK** gombra. 
- 
-7. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_trello_certificate.png) 
+7. A a **SAML-aláíró tanúsítványa** területén kattintson **tanúsítvány (Base64)** és mentse a metaadat-fájlt a számítógépen.
+
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-trello-tutorial/tutorial_trello_certificate.png) 
 
 8. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_general_400.png)
+    
+9. A a **Trello konfigurációs** kattintson **konfigurálása Trello** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
-6. A a **Trello konfigurációs** kattintson **konfigurálása Trello** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+    ![Trello konfiguráció](./media/active-directory-saas-trello-tutorial/tutorial_trello_configure.png) 
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_trello_configure.png) 
-
-9. Az alkalmazáshoz konfigurált SSO, keresse fel [Trello vállalati SSO konfigurációs](https://trello.com/sso-configuration) küldendő lap [Trello támogatási csoport](mailto:support@trello.com) a **SAML-alapú egyszeri bejelentkezési URL-címe** , és csatlakoztassa a **tanúsítvány (Base64)**.
+10. Egyszeri bejelentkezés konfigurálása **Trello** oldalon meg kell vizsgálni a a [Trello vállalati SSO konfigurációs](https://trello.com/sso-configuration) küldeni a letöltött lap **tanúsítvány (Base64)** és  **SAML-alapú egyszeri bejelentkezési URL-címe** való [Trello támogatási csoport](mailto:support@trello.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
 
-![Az Azure AD-felhasználó létrehozása][100]
+   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-trello-tutorial/create_aaduser_01.png) 
+    ![Az Azure Active Directory gomb](./media/active-directory-saas-trello-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-trello-tutorial/create_aaduser_02.png) 
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-trello-tutorial/create_aaduser_03.png) 
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-trello-tutorial/create_aaduser_02.png)
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-trello-tutorial/create_aaduser_04.png) 
+3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    ![A Hozzáadás gombra.](./media/active-directory-saas-trello-tutorial/create_aaduser_03.png)
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    ![A felhasználó párbeszédpanel](./media/active-directory-saas-trello-tutorial/create_aaduser_04.png)
+
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+
+    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="creating-a-trello-test-user"></a>Trello tesztfelhasználó létrehozása
+### <a name="create-a-trello-test-user"></a>Trello tesztfelhasználó létrehozása
 
-Ebben a szakaszban a Trello Britta Simon nevű felhasználó hoz létre. Ebben a szakaszban a Trello Britta Simon nevű felhasználó hoz létre. Trello támogatja a létesítést just-in-time, és új fiók létrehozása az Azure AD bejelentkezés első alkalommal.
+Ez a szakasz célja Trello Britta Simon nevű felhasználót létrehozni. Trello támogatja just-in-time kiosztást, amely alapértelmezés szerint van engedélyezve. Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre az Ha még nem létezik a Trello elérésére tett kísérlet során.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+>[!Note]
+>Ha a felhasználót manuálisan kell létrehozni, lépjen kapcsolatba kell [Trello támogatási csoport](mailto:support@trello.com).
+
+
+### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
 Ebben a szakaszban Britta Simon által biztosított hozzáférés Trello használatával Azure egyszeri bejelentkezés engedélyezése.
 
-![Felhasználó hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200] 
 
 **Britta Simon hozzárendelése Trello, hajtsa végre az alábbi lépéseket:**
 
@@ -217,15 +219,15 @@ Ebben a szakaszban Britta Simon által biztosított hozzáférés Trello haszná
 
 2. Az alkalmazások listában válassza ki a **Trello**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trello-tutorial/tutorial_trello_app.png) 
+    ![Az alkalmazások listáját a Trello hivatkozás](./media/active-directory-saas-trello-tutorial/tutorial_trello_app.png)  
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![A "Felhasználók és csoportok" hivatkozásra][202]
 
 4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][203]
+    ![A hozzárendelés hozzáadása panelen][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
@@ -233,11 +235,12 @@ Ebben a szakaszban Britta Simon által biztosított hozzáférés Trello haszná
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ez a szakasz célja a hozzáférési panelen az Azure AD SSO-konfigurációjának tesztelése.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
 Ha a hozzáférési panelen Trello csempére kattint, akkor kell beolvasása automatikusan bejelentkezett a Trello alkalmazásba.
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 

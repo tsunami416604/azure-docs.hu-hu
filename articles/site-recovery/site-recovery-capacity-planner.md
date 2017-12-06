@@ -12,19 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 11/28/2017
 ms.author: nisoneji
-ms.openlocfilehash: 840a559a82f3227a865d3c606b2fa321cb6144ab
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: f504888aac9e8d97e974fb5bec0a12a8ede39c76
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/05/2017
 ---
+Új javított változata [Azure Site Recovery telepítési planner Hyper-v Azure](site-recovery-hyper-v-deployment-planner.md) érhető el, és a régi eszköz helyett. Az új eszköz használata a központi telepítésének megtervezése. Az eszköz biztosít a következő eszközöket:
+* Virtuális gép jogosultsági értékelése, lemezek, lemez méretét, IOPS, forgalom és néhány virtuális gép jellemzők száma alapján.
+* Hálózati sávszélesség és a helyreállítási Időkorlát assessment kell.
+* Az Azure-infrastruktúrával kapcsolatos követelményei.
+* A helyszíni infrastruktúrával kapcsolatos követelményei.
+* Kezdeti replikálás kötegelés útmutatást.
+* Az Azure-bA összköltsége vész-Helyreállítási becsült.
+
 # <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>A Site Recovery szolgáltatással a Hyper-V virtuális gépek védelméhez kapacitásának megtervezése
 
 Az Azure Site Recovery Capacity Planner eszköz segítségével mérje fel, a kapacitásigények, az Azure Site Recovery szolgáltatással a Hyper-V virtuális gépek replikálása esetén.
 
-A Site Recovery Capacity Planner segítségével elemezheti a forráskörnyezettel és munkaterhelések becsült sávszélesség igényeinek és kiszolgáló-erőforrás lesz szüksége a forráshely és a (virtuális gép és tárterület stb), szükséges erőforrások a célhelyen.
+A Site Recovery Capacity Planner segítségével elemezheti a forráskörnyezetét és a munkaterhelések, a sávszélesség igényeket, és kiszolgáló-erőforrás lesz szüksége a forráshely és a (virtuális gép és tárterület stb.), szükséges erőforrások a célhelyen .
 
 Néhány módok futtathatja az eszközt:
 

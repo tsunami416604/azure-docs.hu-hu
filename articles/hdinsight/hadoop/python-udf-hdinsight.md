@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 12/05/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 822293da48f14dc3fe29e7e95e7a30faaadbfea4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 002072c8eac37ffb1548b44627ec08e941c96a1d
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Használjon Python felhasználói függvény (UDF), a Hive és a Pig a Hdinsightban
 
@@ -166,7 +166,7 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-A Pig Latin példában meghatározott a `LINE` adjon meg egy chararray, mert nincs a bemeneti konzisztens séma. A Python-parancsfájl az adatok átalakítja a kimeneti konzisztens marad.
+A Pig Latin a példában a `LINE` bemeneti egy chararray típusúként van definiálva, mert nincs a bemeneti konzisztens séma. A Python-parancsfájl az adatok átalakítja a kimeneti konzisztens marad.
 
 1. A `@outputSchema` nyilatkozat meghatározása a Pig számára visszaadott adatok formátuma. Ebben az esetben van egy **adatok tulajdonságcsomag**, amely a Pig adattípus. A csomagban van, amelyek mindegyike chararray (karakterláncok), a következő mezőket tartalmazza:
 
@@ -178,7 +178,7 @@ A Pig Latin példában meghatározott a `LINE` adjon meg egy chararray, mert nin
 
 2. Ezt követően a `def create_structure(input)` azt a Pig kapott sor elemek függvényt.
 
-3. A példaadatokat `sample.log`, főleg megfelel-e a dátum, idő, osztálynév szint, és részletesen sémát kell visszaadnia. Azonban tartalmaz néhány kezdődő sorok `*java.lang.Exception*`. Ezek a sorok felel meg a sémának módosítani kell. A `if` utasítás ellenőrzi azok számára, majd a bemeneti adatok áthelyezése massages a `*java.lang.Exception*` karakterlánc végén, mihamarabb elérhetővé tenni az adatok beágyazott a várt kimeneti sémával.
+3. A példaadatokat `sample.log`, leginkább megfelel-e a dátum, idő, osztálynév szint, és részletességi séma. Azonban tartalmaz néhány kezdődő sorok `*java.lang.Exception*`. Ezek a sorok felel meg a sémának módosítani kell. A `if` utasítás ellenőrzi azok számára, majd a bemeneti adatok áthelyezése massages a `*java.lang.Exception*` karakterlánc végén, mihamarabb elérhetővé tenni az adatok beágyazott a várt kimeneti sémával.
 
 4. Ezt követően a `split` parancs segítségével az adatok, az első négy karaktereket. A kimeneti hozzá van rendelve, a `date`, `time`, `classname`, `level`, és `detail`.
 
@@ -291,7 +291,7 @@ A fájlok feltöltése után az alábbi lépések segítségével a Hive és a P
     #from pig_util import outputSchema
     ```
 
-    Ezzel módosítja a Python-parancsfájl használata helyett Jython C Python. A változás nem lett végrehajtva, ha a **Ctrl + X** a szerkesztőből való kilépéshez. Válassza ki **Y**, majd **Enter** menti a módosításokat.
+    Ezt a sort a Python-parancsfájl használata helyett Jython C Python módosítja. A változás nem lett végrehajtva, ha a **Ctrl + X** a szerkesztőből való kilépéshez. Válassza ki **Y**, majd **Enter** menti a módosításokat.
 
 6. Használja a `pig` indítsa újra a rendszerhéj parancsot. Miután a a `grunt>` kérni, használja a következő a Python-parancsfájl használata a C Python értelmező futtatásához.
 

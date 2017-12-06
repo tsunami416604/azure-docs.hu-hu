@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: ancav
-ms.openlocfilehash: 4b0232db1cfe2d6a7cefd07a8194a88a84a4ffb4
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 70ec03d2ed32cb0362bf2f7b24c66979093603be
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
 Ez a cikk útmutatást ad az ajánlott eljárások az Azure-ban automatikus skálázást. Az Azure a figyelő automatikus skálázás vonatkozik csak a [virtuálisgép-méretezési csoportok](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Felhőszolgáltatások](https://azure.microsoft.com/services/cloud-services/), és [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/). Más Azure-szolgáltatások különböző méretezési módszer használatára.
@@ -30,8 +30,8 @@ Ez a cikk útmutatást ad az ajánlott eljárások az Azure-ban automatikus ská
   Az automatikus skálázási beállítás tartozik egy maximális, minimális és példányok alapértelmezett értéke.
 * Az automatikus skálázási feladat mindig bővítse a, a kapcsolódó metrikát ellenőrizni, hogy az elért kibővített vagy méretezési a beállított küszöbértéket. Listáját megtekintheti a mérőszámok, hogy az automatikus skálázás méretezheti által a [Azure figyelő automatikus skálázás közös metrikák](insights-autoscale-common-metrics.md).
 * Minden küszöbértéke egy példány szintjén kiszámítása. Például "1 példány által végzett méretezési amikor átlagos CPU > 80 %, ha a példányok száma 2", azt jelenti, hogy a kibővített 80 %-nál nagyobb átlagos CPU-csomagbeli összes példányra esetén.
-* Mindig kapják értesítések e-mailben. Pontosabban a tulajdonos, közreműködő és a célerőforrás olvasók e-maileket. Mindig is kap egy *helyreállítási* e-mailt automatikus skálázás helyreállít a hibát, és elindítja a szokásos módon működik-e.
-* Ön részt is megkapja az e-mailek és webhookokkal keresztül sikeres skálázási művelet értesítéseket.
+* A műveletnapló minden automatikus skálázási hibák naplózása. Ezután úgy konfigurálhatja egy [figyelmeztetés a napló](./monitoring-activity-log-alerts.md) , hogy akkor is értesítést e-mailben, SMS-webhook, amikor az automatikus skálázás sikertelen stb.
+* Hasonlóképpen az összes sikeres skálázási művelet feladja a műveletnapló. Is konfigurálhat egy figyelmeztetés a naplót, hogy akkor is értesítést e-mailben, SMS-webhookokkal, amikor a sikeres automatikus skálázási művelet stb. E-mailben vagy webhook értesítések tájékoztatást kaphat az automatikus skálázási beállítás értesítések lapján keresztül sikeres skálázási műveletekhez is konfigurálhatja.
 
 ## <a name="autoscale-best-practices"></a>Automatikus skálázás gyakorlati tanácsok
 Használhatja az automatikus skálázás használja az alábbi gyakorlati tanácsokat.
@@ -40,7 +40,7 @@ Használhatja az automatikus skálázás használja az alábbi gyakorlati tanác
 Ha a beállítást, amely rendelkezik a minimális = 2, maximális = 2, és az aktuális példányszám: 2, akkor fordulhat elő, nem skálázási művelet. Tartsa meg egy megfelelő margója közötti a maximális és minimális példányok számát, amely átfogó jellegűek. Automatikus skálázás mindig méretezze át a korlátok között.
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Manuális skálázás automatikus skálázás min és max alaphelyzetbe állítása
-Manuálisan frissítse a példányok száma fölött vagy alatt a maximális értéket, ha az automatikus skálázás motor automatikusan méretezi a minimális (Ha alacsonyabb) vagy a maximális (Ha újabb). Például állítsa be a 3. és 6 közötti tartományba esik. Ha egy futó példány, az automatikus skálázás motor méretezi a következő futásakor 3 példányára. Ehhez hasonlóan az volna méretezési-a 6 8 példányok vissza a következő futásakor.  Manuális skálázás csak nagyon ideiglenes, kivéve, ha alaphelyzetbe állítja az automatikus skálázási szabályok is.
+Manuálisan frissítse a példányok száma fölött vagy alatt a maximális értéket, ha az automatikus skálázás motor automatikusan méretezi a minimális (Ha alacsonyabb) vagy a maximális (Ha újabb). Például állítsa be a 3. és 6 közötti tartományba esik. Ha egy futó példány, az automatikus skálázás motor méretezi a következő futásakor 3 példányára. Hasonlóképpen ha manuálisan a skálázási 8 példányok, a következő futtatási automatikus skálázási lesz skálázva azt vissza a következő futásakor 6 példányok.  Manuális skálázás csak nagyon ideiglenes, kivéve, ha alaphelyzetbe állítja az automatikus skálázási szabályok is.
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Mindig használja a kibővített és skálázási szabály, amely végrehajtja az növekedés és csökkentése
 Csak egy részét együttes használatakor automatikus skálázás méretezési modul, amely egyetlen, vagy, amíg a maximálisan engedélyezett, vagy a minimális, elérésekor.
@@ -143,14 +143,17 @@ Másrészről, ha a CPU 25 % pedig memória 51 % automatikus skálázás nem **n
 Az alapértelmezett példányszám fontos automatikus skálázás méretezi, hogy ez a szolgáltatás, ha metrikák nem érhetők el. Ezért válasszon egy alapértelmezett példányok száma, amelyek a munkaterhelések biztonságos.
 
 ### <a name="configure-autoscale-notifications"></a>Értesítések automatikus skálázás konfigurálása
-Automatikus skálázás értesíti a rendszergazdák és az erőforrás közreműködők e-mailben, ha az alábbi feltételek bármelyike teljesül:
+Automatikus skálázás fogja elküldeni a tevékenység naplóba, ha az alábbi feltételek bármelyike teljesül:
 
-* automatikus skálázás szolgáltatás nem tudja elvégezni egy műveletet.
+* Automatikus skálázás kibocsát egy skálázási művelet
+* Automatikus skálázási szolgáltatás sikeresen befejezte a skálázási művelet
+* Automatikus skálázás szolgáltatás nem tud a méretezési művelet végrehajtása.
 * Metrikák automatikus skálázás szolgáltatás egy méretezési döntést nem érhetők el.
 * Adatok gyűjtése le elérhető (helyreállítási) újból, hogy a skála döntést hoznak.
-  A fenti feltételek mellett konfigurálhatja az e-mailben vagy webhook értesítések sikeres skálázási műveletekhez tájékoztatást kaphat.
-  
+
 Tevékenységnapló riasztást használhatja az automatikus skálázás motor állapotának figyelésére is. Az alábbiakban példákat [hozzon létre egy tevékenység napló riasztási figyelheti az előfizetés minden automatikus skálázási motor műveletek](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) vagy [hozzon létre egy tevékenység napló riasztási figyelheti az összes sikertelen automatikus skálázás méretezési / műveleteket az előfizetés kiterjesztése](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+
+Mellett napló tevékenységriasztásokat, e-mailben vagy webhook értesítések tájékoztatást kaphat az automatikus skálázási beállítás értesítések lapján keresztül sikeres skálázási műveletekhez is konfigurálhatja.
 
 ## <a name="next-steps"></a>Következő lépések
 - [Hozzon létre egy tevékenység napló riasztási előfizetés minden automatikus skálázási motor műveletek figyelése.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
