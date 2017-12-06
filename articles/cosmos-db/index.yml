@@ -12,7 +12,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/15/2017
+  ms.date: 11/29/2017
   ms.author: carolz
 abstract:
   description: 'Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás. Az itt elérhető rövid útmutatók, oktatóanyagok és minták segítségével dokumentum és kulcs-érték típusú, valamint széles oszlopú és gráfadatbázisokat fejleszthet népszerű API-kkal és programozási modellekkel. Emellett megismerheti, hogyan replikálhatja adatait tetszőleges számú Azure-régióban és skálázhatja az átviteli sebességet a tárolótól függetlenül, úgy, hogy közben kihasználja az átfogó SLA-k nyújtotta előnyöket.'
@@ -63,7 +63,7 @@ sections:
               - href: /azure/cosmos-db/create-graph-java
               - href: /azure/cosmos-db/create-graph-dotnet
               - href: /azure/cosmos-db/create-graph-nodejs
-              - href: null
+              - href: /azure/cosmos-db/create-graph-python
               - href: /azure/cosmos-db/create-graph-gremlin-console
           - title: Tábla API
             values:
