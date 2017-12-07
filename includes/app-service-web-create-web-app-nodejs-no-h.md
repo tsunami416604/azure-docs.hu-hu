@@ -1,6 +1,6 @@
-A felhő rendszerhéj a webalkalmazás létrehozása a `myAppServicePlan` az App Service-csomag a [az webalkalmazás létrehozása](/cli/azure/webapp#create) parancsot. 
+A felhő rendszerhéj a webalkalmazás létrehozása a `myAppServicePlan` az App Service-csomag a [az webalkalmazás létrehozása](/cli/azure/webapp#az_webapp_create) parancsot. 
 
-Az alábbi példában cserélje le `<app_name>` egy globálisan egyedi alkalmazásnévvel rendelkező (érvényes karakterek: `a-z`, `0-9`, és `-`). A futtatókörnyezet értéke `NODE|6.9`. Minden támogatott futtatókörnyezetek megtekintéséhez futtassa [az webalkalmazás lista-futtatókörnyezetek](/cli/azure/webapp#list-runtimes). 
+Az alábbi példában cserélje le `<app_name>` egy globálisan egyedi alkalmazásnévvel rendelkező (érvényes karakterek: `a-z`, `0-9`, és `-`). A futtatókörnyezet értéke `NODE|6.9`. Minden támogatott futtatókörnyezetek megtekintéséhez futtassa [az webalkalmazás lista-futtatókörnyezetek](/cli/azure/webapp#az_webapp_list_runtimes). 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9" --deployment-local-git

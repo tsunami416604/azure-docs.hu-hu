@@ -1,6 +1,6 @@
-A Cloud Shellben az [az webapp create](/cli/azure/webapp#create) paranccsal hozzon létre egy [webalkalmazást](../articles/app-service/containers/app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. 
+A Cloud Shellben az [az webapp create](/cli/azure/webapp#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](../articles/app-service/containers/app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. 
 
-Az alábbi példában cserélje le `<app_name>` egy globálisan egyedi alkalmazásnévvel rendelkező (érvényes karakterek: `a-z`, `0-9`, és `-`). A futtatókörnyezet értéke `dotnetcore|1.1`. Minden támogatott futtatókörnyezetek megtekintéséhez futtassa [az webalkalmazás lista-futtatókörnyezetek](/cli/azure/webapp#list-runtimes). 
+Az alábbi példában cserélje le `<app_name>` egy globálisan egyedi alkalmazásnévvel rendelkező (érvényes karakterek: `a-z`, `0-9`, és `-`). A futtatókörnyezet értéke `dotnetcore|1.1`. Minden támogatott futtatókörnyezetek megtekintéséhez futtassa [az webalkalmazás lista-futtatókörnyezetek](/cli/azure/webapp#az_webapp_list_runtimes). 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "dotnetcore|1.1" --deployment-local-git
