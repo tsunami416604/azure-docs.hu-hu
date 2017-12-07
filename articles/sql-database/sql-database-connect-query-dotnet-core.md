@@ -13,46 +13,37 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/05/2017
+ms.date: 07/07/2017
 ms.author: carlrab
-ms.openlocfilehash: 6eb026b5f478769f680e3899a7c743546c2c9d88
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: MT
+ms.openlocfilehash: 1d2a22500c322a63b134e29e5f7509df271eafb9
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-net-core-c-to-query-an-azure-sql-database"></a>A .NET Core (C#) használata Azure SQL Database-adatbázisok lekérdezéséhez
 
-Ez a gyors üzembehelyezési oktatóanyag ismerteti, hogyan használható a [.NET Core](https://www.microsoft.com/net/) olyan C#-program létrehozásához Windows-/Linux-/macOS-gépeken, amely egy Azure SQL Database-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.
+Ez a rövid útmutató ismerteti, hogyan használható a [.NET Core](https://www.microsoft.com/net/) olyan C#-program létrehozásához Windows-/Linux-/macOS-gépeken, amely egy Azure SQL Database-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyors üzembehelyezési útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
+A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Azure SQL Database-adatbázis. Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja: 
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-   - [DB létrehozása – portál](sql-database-get-started-portal.md)
-   - [DB létrehozása – CLI](sql-database-get-started-cli.md)
-   - [DB létrehozása – PowerShell](sql-database-get-started-powershell.md)
+- A rövid útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
 
-- A gyors üzembe helyezési útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
 - Telepítette az [az operációs rendszerének megfelelő .NET Core-t](https://www.microsoft.com/net/core). 
 
 ## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
 
-Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
+[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
-3. Az adatbázis **Áttekintés** oldalán tekintse meg a teljes kiszolgálónevet, amint az az alábbi képen látható. Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson a másoláshoz** lehetőség. 
+#### <a name="for-adonet"></a>ADO.NET esetén
 
-   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
+1. A folytatáshoz kattintson az **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre.
 
-4. Ha elfelejtette Azure SQL Database-kiszolgálója bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, és itt megtudhatja a kiszolgáló rendszergazdájának nevét. Szükség esetén új jelszót is kérhet.
-
-5. Kattintson az: **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre.
-
-6. Tekintse át az **ADO.NET** teljes kapcsolati karakterláncát.
+2. Tekintse át az **ADO.NET** teljes kapcsolati karakterláncát.
 
     ![ADO.NET kapcsolati karakterlánc](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
 
