@@ -33,6 +33,14 @@
       href: how-to-search-for-address.md
 - name: Referencia
   items:
+    - name: Működő API – REST
+      href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services/'
+    - name: Felügyeleti API – REST
+      href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services-management/'
+    - name: Térkép vezérlőelem-API – Javascript
+      href: 'https://docs.microsoft.com/en-us/javascript/api/location-based-services-javascript/'
+- name: Erőforrások
+  items:
     - name: Azure IoT fejlesztői központ
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure-ütemterv

@@ -13,8 +13,10 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: .NET-alkalmazás létrehozása
+    - name: .NET Core-alkalmazás létrehozása
       href: app-service-web-get-started-dotnet.md
+    - name: .NET-keretrendszerre épülő alkalmazás létrehozása
+      href: app-service-web-get-started-dotnet-framework.md
     - name: Node.js-alapú alkalmazás létrehozása
       href: app-service-web-get-started-nodejs.md
     - name: PHP-alkalmazás létrehozása

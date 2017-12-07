@@ -1,0 +1,57 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az API Management dokumentációja
+metadata:
+  title: Az Azure API Management dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  description: 'Ismerje meg, hogy az API Management hogyan használható az API-k külső rendszerek, partnerek és belső fejlesztők felé történő biztonságos és skálázott közzétételére. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhat létre és kezelhet modern API-átjárókat meglévő háttérrendszerekhez, függetlenül azok üzemeltetési helyétől.'
+  services: api-management
+  author: czeumault
+  manager: carolz
+  ms.service: api-management
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/15/2017
+  ms.author: carolz
+abstract:
+  description: 'Ismerje meg, hogy az API Management hogyan használható az API-k külső rendszerek, partnerek és belső fejlesztők felé történő biztonságos és skálázott közzétételére. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhat létre és kezelhet modern API-átjárókat meglévő háttérrendszerekhez, függetlenül azok üzemeltetési helyétől.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: API Management-példány létrehozása.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg'
+            text: Példány létrehozása – Portal
+            href: /azure/api-management/get-started-create-service-instance
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg'
+            text: Példány létrehozása – PowerShell
+            href: /azure/api-management/powershell-create-service-instance
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: Útmutató az API Management kezeléséhez.
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/api-management/import-and-publish">Az első API importálása és közzététele</a>
+          - html: <a href="/azure/api-management/api-management-howto-add-products">Termékek létrehozása és közzététele</a>
+          - html: <a href="/azure/api-management/mock-api-responses">API válaszok utánzása</a>
+          - html: <a href="/azure/api-management/transform-api">Az API átalakítása és védelme</a>
+          - html: <a href="/azure/api-management/api-management-howto-use-azure-monitor">A közzétett API-k monitorozása</a>
+          - html: <a href="/azure/api-management/api-management-howto-api-inspector">API-k hibakeresése kérelmek nyomkövetésének használatával</a>
+          - html: <a href="/azure/api-management/api-management-get-started-revise-api">Változatok használata a nem jelentős módosítások biztonságos elvégzéséhez</a>
+          - html: <a href="/azure/api-management/api-management-get-started-publish-versions">Az API több verziójának közzététele</a>
+          - html: <a href="/azure/api-management/api-management-customize-styles">A fejlesztői portál oldalstílusának testreszabása</a>
+  - title: Példák
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/api-management/policy-samples">Szabályzat</a>
+          - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>

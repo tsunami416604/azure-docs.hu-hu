@@ -172,8 +172,6 @@
           href: change-vm-size.md
         - name: Virtuális gép címkézése
           href: tag.md
-        - name: A cloud-init használata
-          href: using-cloud-init.md
         - name: Szkriptek futtatása virtuális gépeken
           href: extensions-customscript.md
         - name: A Távoli asztal használata
@@ -252,6 +250,22 @@
               href: terraform-install-configure.md
             - name: Teljes virtuális gép létrehozása
               href: terraform-create-complete-vm.md
+        - name: Cloud-init
+          items:
+            - name: A cloud-init áttekintése
+              href: using-cloud-init.md
+            - name: Virtuális gépek állomásnevének konfigurálása
+              href: cloudinit-update-vm-hostname.md
+            - name: Csomagok frissítése virtuális gépeken
+              href: cloudinit-update-vm.md
+            - name: Felhasználó hozzáadása virtuális gépeken
+              href: cloudinit-add-user.md
+            - name: Lapozófájl konfigurálása
+              href: cloudinit-configure-swapfile.md
+            - name: Meglévő bash-szkript futtatása
+              href: cloudinit-bash-script.md
+            - name: Meglévő virtuális gépek előkészítése a cloud-initre
+              href: cloudinit-prepare-custom-image.md
         - name: Jenkins
           href: ../../jenkins/overview.md
           items:

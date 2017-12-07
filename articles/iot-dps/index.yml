@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure IoT Hub eszközkiépítési szolgáltatás (előzetes verzió) dokumentációja
+title: Az Azure IoT Hub eszközkiépítési szolgáltatás dokumentációja
 metadata:
-  title: 'Az Azure IoT Hub eszközkiépítési szolgáltatás (előzetes verzió) dokumentációja – Oktatóanyagok, API-referencia'
+  title: 'Az Azure IoT Hub eszközkiépítési szolgáltatás dokumentációja – Oktatóanyagok, API-referencia'
   meta.description: Overview of Azure IoT Hub Device Provisioning Service.
   services: iot-dps
   author: nberdy
@@ -14,7 +14,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: nberdy
 abstract:
-  description: 'Az IoT Hub eszközkiépítési szolgáltatás (előzetes verzió) az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT hubon való érintésmentes, igény szerinti üzembe helyezést, és amely által az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az eszközök IoT hub(ok)on történő kiépítésével.'
+  description: 'Az IoT Hub eszközkiépítési szolgáltatás az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT Hubon való érintésmentes, igény szerinti üzembe helyezést, és amely által az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az eszközök IoT hub(ok)on történő kiépítésével.'
 sections:
   - title: 5 perces gyors útmutatók
     items:
@@ -34,7 +34,7 @@ sections:
   - title: Részletes útmutatók
     items:
       - type: paragraph
-        text: 'Ismerje meg, hogyan használhatja az IoT Hub eszközkiépítési szolgáltatást (előzetes verzió) biztonságos eszközök automatikus kiépítésére egy vagy több IoT hubon.'
+        text: 'Ismerje meg, hogyan használhatja az IoT Hub eszközkiépítési szolgáltatást biztonságos eszközök automatikus kiépítésére egy vagy több IoT hubon.'
       - type: list
         style: ordered
         items:
