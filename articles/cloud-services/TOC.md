@@ -41,7 +41,6 @@
 ### [Felhőszolgáltatás létrehozása és üzembe helyezése a portálon](cloud-services-how-to-create-deploy-portal.md)
 ### [Üres felhőszolgáltatás-tároló létrehozása PowerShellben](cloud-services-powershell-create-cloud-container.md)
 ### [Egyéni tartománynév konfigurálása](cloud-services-custom-domain-name-portal.md)
-### [Felhőszolgáltatás üzembe helyezésének ütemezése (Node.js)](cloud-services-nodejs-stage-application.md)
 ### [Csatlakoztatás egyéni tartományvezérlőhöz](cloud-services-connect-to-custom-domain.md)
 
 ## Szolgáltatás kezelése
