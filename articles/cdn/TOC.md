@@ -20,16 +20,19 @@
  
 ## Kezelés
 ### [Kezelés az Azure PowerShell-lel](cdn-manage-powershell.md)
+### [Elérés korlátozása ország szerint](cdn-restrict-access-by-country.md)
+### [A teljesítmény javítása a fájlok tömörítésével](cdn-improve-performance.md)
+### A gyorsítótárazási viselkedés vezérlése
+#### [A gyorsítótárazás működése](cdn-how-caching-works.md)
+#### [A gyorsítótárazási viselkedés vezérlése gyorsítótár-szabályokkal](cdn-caching-rules.md)
+#### Tartalom gyorsítótárazása lekérdezési karakterláncok szerint
+##### [Standard csomag](cdn-query-string.md)
+##### [Premium szintű csomag](cdn-query-string-premium.md)
+#### [Gyorsítótárazott eszközök végleges törlése](cdn-purge-endpoint.md)
+#### [Gyorsítótárazott eszközök előzetes betöltése](cdn-preload-endpoint.md)
 ### Az élettartam konfigurálása
 #### [Azure webes tartalom](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
-### [Elérés korlátozása ország szerint](cdn-restrict-access-by-country.md)
-### [A teljesítmény javítása a fájlok tömörítésével](cdn-improve-performance.md)
-### Tartalom gyorsítótárazása lekérdezési karakterlánc szerint
-#### [Standard csomag](cdn-query-string.md)
-#### [Premium szintű csomag](cdn-query-string-premium.md)
-### [Gyorsítótárazott eszközök végleges törlése](cdn-purge-endpoint.md)
-### [Gyorsítótárazott eszközök előzetes betöltése](cdn-preload-endpoint.md)
 ### [Jogkivonat-hitelesítés](cdn-token-auth.md)
 ### [Erőforrások figyelése](cdn-resource-health.md)
 ### [A működés felülbírálása szabályokkal](cdn-rules-engine.md)

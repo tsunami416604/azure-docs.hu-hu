@@ -38,7 +38,7 @@
 #### [Erőforrások üzembe helyezése](resource-group-template-deploy-portal.md)
 #### [Sablon exportálása](resource-manager-export-template.md)
 ### [REST API](resource-group-template-deploy-rest.md)
-### [Erőforráscsoportok közötti üzembe helyezés](resource-manager-cross-resource-group-deployment.md)
+### [Több erőforráscsoport vagy előfizetés](resource-manager-cross-resource-group-deployment.md)
 ### [Folyamatos integráció a Visual Studio Team Services szolgáltatással](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Biztonságos értékek továbbítása üzembe helyezés során](resource-manager-keyvault-parameter.md)
 
