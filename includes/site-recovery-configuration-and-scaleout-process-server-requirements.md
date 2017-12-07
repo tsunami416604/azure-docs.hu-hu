@@ -13,7 +13,7 @@
 | Csoportházirendek| A következő csoportházirendek nem engedélyezni kell a kiszolgálón <br> -Hozzáférés megakadályozása a parancssorból <br> -Hozzáférés megakadályozása a beállításjegyzék szerkesztésével eszközök <br> -Megbízhatósági fájlmellékletek logika <br> -Kapcsolja be a parancsfájl végrehajtása <br> **Megjegyzés:** található további információ a csoportházirendek [Itt](https://technet.microsoft.com/en-us/library/gg176671(v=ws.10).aspx)|
 | Internet információk Service(IIS) beállításai | -Nincs már meglévő alapértelmezett webhely <br> -Engedélyezése [névtelen hitelesítés](https://technet.microsoft.com/en-us/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/en-us/library/cc753077(v=ws.10).aspx) beállítás  <br> -Egyetlen meglévő websit alkalmazás figyelésére kell a 443-as port<br>|
 | **Hálózat** | |
-| Hálózati adapter típusa | VMXNET3 |
+| Hálózati adapter típusa | VMXNET3 (Ha a VMware virtuális gépként telepített) |
 | IP-cím típusa | Statikus |
 | Internetelérés | A kiszolgálónak el kell tudnia érni az alábbi URL-címeket közvetlenül vagy egy proxykiszolgálón keresztül: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (nem szükséges kibővíthető folyamatkiszolgálókhoz) <br> - time.nist.gov <br> - time.windows.com |
 | Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel)|

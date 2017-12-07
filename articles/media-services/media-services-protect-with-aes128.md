@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: a441e76fae0bda829cb112d307b3b436809b9c9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04c015a6fb6f9398e83b8717e869ba1d8e32a702
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="using-aes-128-dynamic-encryption-and-key-delivery-service"></a>AES-128 dinamikus titkosítás és a kulcs kézbesítési szolgáltatás használatával
 > [!div class="op_single_selector"]
@@ -26,21 +26,21 @@ ms.lasthandoff: 10/11/2017
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
-> 
 
 ## <a name="overview"></a>Áttekintés
 > [!NOTE]
+> Ez [blogbejegyzés](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/) tartalmának kézbesítése az AES titkosítási **macOS a Safari**.
 > Lásd: [ez](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption) videó megtudhatja, hogyan védi meg a média tartalom AES titkosítással.
 > 
 > 
 
-A Microsoft Azure Media Services lehetővé teszi, hogy Http-Live-Streaming (HLS), és zökkenőmentes adatfolyamok titkosítva az Advanced Encryption Standard (AES) (a 128 bites titkosítási kulcsok használatával). Media Services is biztosít a kulcs kézbesítési szolgáltatás letölti a titkosítási kulcsok engedéllyel rendelkező felhasználók számára. Ha azt szeretné, a Media Services az objektum titkosítására, meg kell rendelje hozzá egy titkosítási kulcsot az eszköz és engedélyezési házirendeket, a kulcs is konfigurálhatja. Ha olyan adatfolyamot kell megadni a Windows Media Player van szükség, a Media Services megadott kulcsot használja az dinamikusan titkosítani az AES titkosítással. Az adatfolyam visszafejtése, a Windows Media player a kulcs kézbesítési szolgáltatás fog igényelni a kulcsot. Döntse el, hogy a felhasználó jogosult-e a kulcs eléréséhez, hogy a szolgáltatás értékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
+A Microsoft Azure Media Services lehetővé teszi, hogy Http-Live-Streaming (HLS), és zökkenőmentes adatfolyamok titkosítva az Advanced Encryption Standard (AES) (a 128 bites titkosítási kulcsok használatával). Media Services is biztosít a kulcs kézbesítési szolgáltatás letölti a titkosítási kulcsok engedéllyel rendelkező felhasználók számára. Ha azt szeretné, a Media Services az objektum titkosítására, meg kell rendelje hozzá egy titkosítási kulcsot az eszköz és engedélyezési házirendeket, a kulcs is konfigurálhatja. Ha olyan adatfolyamot kell megadni a Windows Media Player van szükség, a Media Services megadott kulcsot használja az dinamikusan titkosítani az AES titkosítással. Az adatfolyam visszafejtése, a Windows Media player kér a kulcsot a fő kézbesítési szolgáltatás. Döntse el, hogy a felhasználó jogosult-e a kulcs eléréséhez, hogy a szolgáltatás értékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
 
 A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalomkulcs-hitelesítési szabályzat egy vagy több hitelesítési korlátozást tartalmazhat: ezek lehetnek nyitott vagy jogkivonat-korlátozások. A tokennel korlátozott szabályzatokhoz a Secure Token Service (Biztonsági jegykiadó szolgáltatás, STS) által kiadott tokennek kell tartoznia. A Media Services a [Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) és a [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) formátumú tokeneket támogatja. További információkért lásd: [a tartalomkulcs hitelesítési szabályzatának konfigurálása](media-services-protect-with-aes128.md#configure_key_auth_policy).
 
-A dinamikus titkosítás által nyújtott előnyök kihasználásához többszörös sávszélességű MP4-fájlokat vagy Smooth Streaming-forrásfájlokat tartalmazó objektummal kell rendelkeznie. Azt is konfigurálnia kell az eszköz (lásd a témakör későbbi részében) továbbítási szabályzatát. Ezt követően az igényalapú streamelési kiszolgáló a streamelési URL-címben megadott formátumnak megfelelően gondoskodik arról, hogy a rendszer a kiválasztott protokollal továbbítsa a streamet. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
+A dinamikus titkosítás által nyújtott előnyök kihasználásához többszörös sávszélességű MP4-fájlokat vagy Smooth Streaming-forrásfájlokat tartalmazó objektummal kell rendelkeznie. Azt is konfigurálnia kell az eszköz (a cikk későbbi részében leírt) továbbítási szabályzatát. Ezt követően a streamelési URL-címben megadott formátumnak megfelelően, a az Igényalapú Streamelési kiszolgáló biztosítja, hogy az adatfolyam kerül-e a kiválasztott protokollal. Ennek eredményeképpen csak kell tárolni, és a fájlok egyetlen tárolási formátumban díj ellenében és Media Services szolgáltatás létrehozza és betölti az ügyféltől érkező kérésnek megfelelő választ.
 
-Ez a témakör hasznos lehet a fejlesztők számára, amely védett médiafájlok továbbításával foglalkoznak. A témakörben elsajátíthatja, hogy a kulcs kézbesítési szolgáltatás konfigurálása engedélyezési házirendeket, hogy csak az arra jogosult ügyfelek kaphassák meg a titkosítási kulcsokat. Azt is bemutatja, hogyan dinamikus titkosítás használatához.
+Ez a cikk hasznos lehet a fejlesztők számára, amely védett médiafájlok továbbításával foglalkoznak. A cikk bemutatja, hogyan konfigurálja a kulcs kézbesítési szolgáltatás engedélyezési házirendeket, hogy csak az arra jogosult ügyfelek kaphassák meg a titkosítási kulcsokat. Azt is bemutatja, hogyan dinamikus titkosítás használatához.
 
 
 ## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>AES-128, a dinamikus titkosítás és a kulcs kézbesítési szolgáltatás munkafolyamat
@@ -53,19 +53,19 @@ A következőkben általános lépéseket kell végrehajtani, ha AES, a Media Se
 4. [A tartalomkulcs hitelesítési szabályzatának konfigurálása](media-services-protect-with-aes128.md#configure_key_auth_policy). Ahhoz, hogy az ügyfél megkaphassa a tartalomkulcsot, Önnek be kell állítania a tartalomkulcs-hitelesítési szabályzatot, amelynek az ügyfélnek meg kell felelnie.
 5. [Konfigurálja az az objektum továbbítási szabályzatát](media-services-protect-with-aes128.md#configure_asset_delivery_policy). A továbbítási szabályzat konfigurációjához tartalmazza: licenckérési URL-cím és-inicializálási vektor (IV) (az AES-128 szükséges adni, ha titkosítása és visszafejtése azonos IV), objektumtovábbítási protokoll (például MPEG DASH, HLS, Smooth Streaming vagy az összes), a a dinamikus titkosítás (például a boríték vagy a dinamikus titkosítás nélkül).
 
-    Az adott objektum különböző protokolljaira akár eltérő szabályzatokat is alkalmazhat. Beállíthatja például, hogy a PlayReady-titkosítás csak a Smooth/DASH-re vonatkozzon, az AES Envelope pedig csak a HLS-re. A továbbítási szabályzatban meg nem határozott protokollok streameléshez való használatát a rendszer nem engedélyezi (ilyen lehet például, ha csupán egyetlen szabályzatot állít be, amely kizárólag a HLS-protokoll használatát tartalmazza). Kivételt jelent, ha egyáltalán nem állít be objektumtovábbítási szabályzatot. Ebben az esetben a rendszer az összes protokollt engedélyezi.
+    Az adott objektum különböző protokolljaira akár eltérő szabályzatokat is alkalmazhat. Beállíthatja például, hogy a PlayReady-titkosítás csak a Smooth/DASH-re vonatkozzon, az AES Envelope pedig csak a HLS-re. A továbbítási szabályzatban meg nem határozott protokollok streameléshez való használatát a rendszer nem engedélyezi (ilyen lehet például, ha csupán egyetlen szabályzatot állít be, amely kizárólag a HLS-protokoll használatát tartalmazza). Kivételt jelent, ha egyáltalán nem állít be objektumtovábbítási szabályzatot. Ezután minden protokoll engedélyezett szövegként.
 
 6. [Hozzon létre egy OnDemand-kereső](media-services-protect-with-aes128.md#create_locator) egy adatfolyam-továbbítási URL-cím beszerzése érdekében.
 
-Ez a témakör azt is bemutatja [hogyan ügyfélalkalmazás is kérhet egy kulcsot a fő kézbesítési szolgáltatás](media-services-protect-with-aes128.md#client_request).
+A cikk azt is ismerteti [hogyan ügyfélalkalmazás is kérhet egy kulcsot a fő kézbesítési szolgáltatás](media-services-protect-with-aes128.md#client_request).
 
-A teljes .NET található [példa](media-services-protect-with-aes128.md#example) a témakör végén.
+A teljes .NET látnia [példa](media-services-protect-with-aes128.md#example) a cikk végén.
 
 Az alábbi képen a fentiekben leírt munkafolyamatot láthatja. Itt a tokenes hitelesítést használtuk.
 
 ![Védelem 128 bites AES-titkosítással](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
-A témakör további részében részletes magyarázatokat, kódmintákat és olyan témakörökre mutató hivatkozásokat talál, amelyek segítenek elérni a fent leírt célokat.
+Ez a cikk többi részletes magyarázatokat, kódmintákat és olyan, amelyek bemutatják a fent ismertetett feladatok eléréséhez témakörökre mutató hivatkozásokat biztosít.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 Objektumtovábbítási szabályzat hozzáadásakor vagy módosításakor törölnie kell az ahhoz tartozó meglévő lokátort (ha van), majd létre kell hoznia egy új lokátort.
@@ -76,7 +76,7 @@ A videók kezeléséhez, kódolásához és streameléséhez először fel kell 
 További információk: [Upload Files into a Media Services account](media-services-dotnet-upload-files.md) (Fájlok feltöltése a Media Services-fiókba).
 
 ## <a id="encode_asset"></a>Az adaptív sávszélességű MP4 típusú beállításkészlettel fájlt tartalmazó objektum kódolása
-A dinamikus titkosítás segítségével mindössze egy többszörös sávszélességű MP4-fájlokat vagy Smooth Streaming-forrásfájlokat tartalmazó objektumot kell létrehoznia. Ezt követően a jegyzék vagy töredék kérelem, az Igényalapú Streamelési megadott formátumnak megfelelően kiszolgáló biztosítja az adatfolyam kapni a kiválasztott protokollal. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ. További információkért lásd a [Dynamic Packaging Overview](media-services-dynamic-packaging-overview.md) (A dinamikus becsomagolás áttekintése) című témakört.
+A dinamikus titkosítás minden, az kell, ha a többszörös sávszélességű MP4-fájlok vagy többféle sávszélességű Smooth Streaming-forrásfájlokat tartalmazó objektumot. Ezt követően a jegyzék vagy töredék kérelem, az Igényalapú Streamelési megadott formátumnak megfelelően kiszolgáló biztosítja az adatfolyam kapni a kiválasztott protokollal. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ. További információkért lásd: a [dinamikus becsomagolás áttekintése](media-services-dynamic-packaging-overview.md) cikk.
 
 >[!NOTE]
 >Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
@@ -103,10 +103,10 @@ Konfigurálja az objektum továbbítási szabályzatát. Az objektumtovábbítá
 * Az adategység-továbbítási protokoll (pl. MPEG DASH, HLS, Smooth Streaming vagy ezek mindegyike).
 * A dinamikus titkosítás (például AES envelope) típusú vagy a dinamikus titkosítás nélkül. 
 
-További információk: [Objektumtovábbítási szabályzat konfigurálása ](media-services-rest-configure-asset-delivery-policy.md).
+Részletes információkért lásd: [objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md).
 
 ## <a id="create_locator"></a>OnDemand-lokátor létrehozása a streamelési URL-cím lekérése érdekében
-A felhasználók rendelkezésére kell bocsátania a Smooth, DASH vagy HLS streamelési URL-címét.
+Meg kell adnia a felhasználó a streamelési URL-címet a Smooth, DASH vagy HLS.
 
 > [!NOTE]
 > Objektumtovábbítási szabályzat hozzáadásakor vagy módosításakor törölnie kell az ahhoz tartozó meglévő lokátort (ha van), majd létre kell hoznia egy új lokátort.
@@ -135,7 +135,7 @@ A stream kipróbálásához használja az [AMS-lejátszót](http://amsplayer.azu
 Az előző lépésben összeállított jegyzékfájlt mutató URL-CÍMÉT. Az ügyfél a szükséges információk kinyerése adatfolyam fájlok ahhoz, hogy a kulcs kézbesítési szolgáltatás indítson egy lekérdezést kell.
 
 ### <a name="manifest-files"></a>Fájlok
-Az ügyfélnek kell az URL (tartalmazó is tartalomkulcsot azonosítója (kid)) bontsa ki a jegyzékfájl közötti értéket. Az ügyfél a titkosítási kulcs beszerzése a kulcs kézbesítési szolgáltatás majd megpróbálja. Az ügyfél kell bontsa ki a IV érték és az visszafejteni az adatfolyam használata. Az alábbi kódrészletben látható a <Protection> a Smooth Streaming jegyzékfájl elemet.
+Az ügyfélnek kell bontsa ki az URL-cím (tartalom is tartalmazó kulcs azonosítója (kid)) értéket a jegyzékfájlt. Az ügyfél a titkosítási kulcs beszerzése a kulcs kézbesítési szolgáltatás majd megpróbálja. Az ügyfél kell bontsa ki a IV érték és az visszafejteni az adatfolyam használata. Az alábbi kódrészletben látható a <Protection> a Smooth Streaming jegyzékfájl elemet.
 
     <Protection>
       <ProtectionHeader SystemID="B47B251A-2409-4B42-958E-08DBAE7B4EE9">
@@ -160,7 +160,7 @@ Például a legfelső szintű jegyzékfájl van: http://test001.origin.mediaserv
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Ha egy szegmens fájlt (például http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl), it should contain szövegszerkesztőben megnyitása #EXT X-kulcs, amely azt jelzi, hogy a fájl titkosítva van.
+Ha egy szegmens fájlt (például http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl), it should contain szövegszerkesztőben megnyitása #EXT X-kulcs, amely jelzi, hogy a fájl titkosítva van.
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -181,7 +181,7 @@ Ha egy szegmens fájlt (például http://test001.origin.mediaservices.windows.ne
 
 ### <a name="request-the-key-from-the-key-delivery-service"></a>A kulcs kér a kulcs kézbesítési szolgáltatás
 
-A következő kód bemutatja, hogyan kérelmet küld a Media Services kulcs kézbesítési szolgáltatás egy kulcs kézbesítés URI-azonosítóhoz (a jegyzékfájl kinyert) használata, valamint a jogkivonatot (a jelen témakör nem konzultáljon a Secure Token Service Simple Web Tokens tudhat).
+A következő kód bemutatja, hogyan kérelmet küld a Media Services kulcs kézbesítési szolgáltatás egy kulcs kézbesítés URI-azonosítóhoz (a jegyzékfájl kinyert) használata, valamint a jogkivonatot (a cikkben nem konzultáljon a Secure Token Service Simple Web Tokens tudhat).
 
     private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
     {
@@ -238,7 +238,7 @@ A következő kód bemutatja, hogyan kérelmet küld a Media Services kulcs kéz
 Írja felül a Program.cs fájlban található kódot az itt látható kóddal.
  
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért lásd: [ez](media-services-dotnet-manage-entities.md#limit-access-policies) cikk.
 
 Módosítsa úgy a változókat, hogy a bemeneti fájlok tárolásához Ön által használt mappákra mutassanak.
 

@@ -32,3 +32,9 @@
 | Délkelet-Ausztrália | 2                       |
 |                     |                         |
 | Dél-Brazília        | 2                       |
+|                     |                         |
+| USA-beli államigazgatás – Virginia     | 2                       |
+| USA-beli államigazgatás – Texas        | 2                       |
+| USA-beli államigazgatás – Arizona      | 2                       |
+| US DoD – Középső régió      | 2                       |
+| US DoD – Kelet         | 2                       |

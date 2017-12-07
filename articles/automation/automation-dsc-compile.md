@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
-ms.openlocfilehash: 1aadd604e676659475f00760af3b0bdfb13a4792
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b126072424bfc6ad54fd2497ffcdb410b9dc5fe
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Azure Automation DSC-konfigurációja fordítása
 
@@ -128,6 +128,50 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 ```
 
 PSCredentials átadása paraméterként kapcsolatos információkért lásd: <a href="#credential-assets"> **hitelesítő eszközök** </a> alatt.
+
+## <a name="composite-resources"></a>Összetett erőforrások
+
+**Összetett erőforrások** teszik lehetővé a DSC-konfigurációk használata a konfigurációs belül a beágyazott erőforrások.  Ez lehetővé teszi, hogy több konfiguráció alkalmazása egy erőforrást.  Lásd: [összetett erőforrások: a DSC-konfiguráció használata erőforrásként](https://docs.microsoft.com/en-us/powershell/dsc/authoringresourcecomposite) kapcsolatos további **összetett erőforrások**
+
+> [!NOTE]
+> Ahhoz, hogy **összetett erőforrások** megfelelően fordítása, akkor előbb ellenőrizze, hogy az összetett támaszkodik DSC erőforrásokat telepítve legyenek az Azure Automation-fiók modulok tárházban, vagy nem megfelelően fogja importálni.
+
+A DSC hozzáadandó **összetett erőforrás**, hozzá kell adnia a erőforrásmodul archiválhatja (* .zip). A modulok tárház nyissa meg az Azure Automation-fiók.  Kattintson a "Modul hozzá lesz adva egy" gombra.
+
+![A modul hozzáadása](./media/automation-dsc-compile/add_module.png)
+
+Nyissa meg a könyvtárat, amelyben az archívumban található.  Válassza ki az archív fájlt, és kattintson az OK gombra.
+
+![Válassza ki a modul](./media/automation-dsc-compile/select_dscresource.png)
+
+Majd megnyílik vissza a modulok könyvtárba, ahol állapotának figyelése a **összetett erőforrás** kicsomagolja, és regisztrálja az Azure Automation szolgáltatásban.
+
+![Összetett erőforrás importálása](./media/automation-dsc-compile/register_composite_resource.png)
+
+Ha a modul regisztrálva van, majd rákattinthat a úgy, hogy ellenőrizze, hogy a **összetett erőforrások** érhető el egy konfigurációs használhatók.
+
+![Összetett erőforrás ellenőrzése](./media/automation-dsc-compile/validate_composite_resource.png)
+
+Akkor meghívhatja a **összetett erőforrás** azokat a konfigurációs, például így:
+
+```powershell
+
+    Node ($AllNodes.Where{$_.Role -eq "WebServer"}).NodeName
+    {
+            
+            JoinDomain DomainJoin
+            {
+                DomainName = $DomainName
+                Admincreds = $Admincreds
+            }
+
+            PSWAWebServer InstallPSWAWebServer
+            {
+                DependsOn = "[JoinDomain]DomainJoin"
+            }        
+    }
+
+```
 
 ## <a name="configurationdata"></a>ConfigurationData
 **ConfigurationData** lehetővé teszi, hogy a környezet konkrét beállításra a PowerShell DSC szerkezeti konfigurációja különítheti el. Lásd: [mappától "Mi" a "Where" a PowerShell DSC](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) kapcsolatos további **ConfigurationData**.
@@ -242,7 +286,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ## <a name="importing-node-configurations"></a>Csomópont-konfigurációk importálása
 
-Csomópont configuratons (MOF-ot), amely rendelkezik Azure-on kívüli fordított is importálhat. Egy ennek előnye, hogy a csomópont confiturations írhatók alá.
+Csomópont configuratons (MOF-ot), amely rendelkezik Azure-on kívüli fordított is importálhat. Egy ennek előnye, hogy csomópont-konfigurációt írhatók alá.
 Egy aláírt csomópont-konfiguráció ellenőrzése helyileg felügyelt csomóponton a DSC-ügynök, győződjön meg arról, hogy a konfiguráció alkalmazták a csomópont egy hitelesített forrásból származik-e.
 
 > [!NOTE]

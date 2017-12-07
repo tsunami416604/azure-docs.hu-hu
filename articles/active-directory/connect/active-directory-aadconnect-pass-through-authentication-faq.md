@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 12/05/2017
 ms.author: billmath
-ms.openlocfilehash: d6a405f7245bf1b9635872efd0e29f8361d6a2f6
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 8722d7827aad10bcae3e8ec06b7014ebc64179d5
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Az Azure Active Directory áteresztő hitelesítés: Gyakran ismételt kérdések
 
@@ -99,24 +99,20 @@ Igen. Többerdős környezetben támogatottak, ha az Active Directory-erdők kö
 
 Több áteresztő hitelesítés ügynökök telepítése biztosítja [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability). Azonban nem biztosítják a hitelesítési ügynökök között determinisztikus terheléselosztást.
 
-Fontolja meg a maximális és átlagos betöltési bejelentkezési kérelmek várható tekintse meg a bérlő. Egy alapként hitelesítési ügynököt 300,000 való 400000 hitelesítések másodpercenként egy standard 4 magos processzor, 16 GB RAM-kiszolgáló képes kezelni. A legtöbb felhasználó esetén két vagy három hitelesítési ügynökök összesen elegendőek a magas rendelkezésre álláshoz és kapacitásának.
+Fontolja meg a maximális és átlagos betöltési bejelentkezési kérelmek várható tekintse meg a bérlő. Egy alapként hitelesítési ügynököt képes kezelni másodpercenként egy standard 4 magos processzor, 16 GB RAM server 300-400 hitelesítések.
 
-Hitelesítési ügynökök telepítse megközelíti a bejelentkezési késés javítása érdekében a tartományvezérlőket.
+Hálózati forgalom becslése, használja a következő olvasható méretezési Útmutató:
+- Minden egyes kérelem rendelkezik a tartalom méretét (0,5 KB + 1 K * num_of_agents) bájt; például adatokat az Azure AD a hitelesítési ügynök. "Num_of_agents" jelzi a bérlő regisztrált hitelesítési ügynökök.
+- Minden válasz korlátja hasznos 1 KB; például adatait a hitelesítési ügynök az Azure ad Szolgáltatásba.
+
+A legtöbb felhasználó esetén két vagy három hitelesítési ügynökök összesen elegendőek a magas rendelkezésre álláshoz és kapacitásának. Hitelesítési ügynökök telepítse megközelíti a bejelentkezési késés javítása érdekében a tartományvezérlőket.
+
+>[!NOTE]
+>A rendszer korlátainak 12 hitelesítési ügynökök bérlőnként van.
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>Az első áteresztő hitelesítés ügynök telepíthető más Azure AD Connect futtató kiszolgálón?
 
 Nem, ez a forgatókönyv van _nem_ támogatott.
-
-## <a name="how-many-pass-through-authentication-agents-should-i-install"></a>Hány áteresztő hitelesítés ügynököt kell telepíteni?
-
-Azt javasoljuk, hogy:
-
-- Két vagy három hitelesítési ügynökök teljes telepítése. Ez a konfiguráció is elegendő a legtöbb felhasználó.
-- A tartományvezérlőkre telepíthető hitelesítési ügynökök (vagy megközelíti a lehető azok regisztrációja, mivel) bejelentkezési késés javítása érdekében.
-- Biztosíthatja, hogy hozzá van-e a hitelesítés ügynökök telepítési az Active Directory-erdőben, a felhasználók, amelyeknek a jelszavánál érvényesítenie kell a kiszolgálókat.
-
->[!NOTE]
->A rendszer korlátainak 12 hitelesítési ügynökök bérlőnként van.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Hogyan letilthatja az áteresztő hitelesítés?
 

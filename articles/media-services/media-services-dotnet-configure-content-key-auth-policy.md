@@ -3,7 +3,7 @@ title: "Konfigurálja a tartalomkulcs-hitelesítési házirend Media Services .N
 description: "Útmutató: a Media Services .NET SDK használatával tartalomkulcs hitelesítési szabályzatának konfigurálása."
 services: media-services
 documentationcenter: 
-author: Mingfeiy
+author: mingfeiy
 manager: cfowler
 editor: 
 ms.assetid: 1a0aedda-5b87-4436-8193-09fc2f14310c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 75dd9107dca215a0b31db3d44bada69210fe9ac6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9a7aa64d434efcf44553d5d900601638a329a1d
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>A dinamikus titkosítás: konfigurálja a tartalomkulcs-hitelesítési házirend
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -30,28 +30,25 @@ A Media Services is biztosít a **kulcs/Licenctovábbítási szolgáltatása** ,
 
 Ha azt szeretné, a Media Services az objektum titkosítására, hozzá kell rendelni egy titkosítási kulcsot (**CommonEncryption** vagy **EnvelopeEncryption**) az eszközt (leírtak [Itt](media-services-dotnet-create-contentkey.md)) és engedélyezési házirendeket, a kulcs is konfigurálhatja, (ebben a cikkben leírtak).
 
-Ha adatfolyam egy player kérelem érkezik, a Media Services megadott kulcsot használja az dinamikusan titkosítani az AES vagy DRM titkosítással. Az adatfolyam visszafejtése, a Windows Media player a kulcs kézbesítési szolgáltatás fog igényelni a kulcsot. Döntse el, hogy a felhasználó jogosult-e a kulcs eléréséhez, hogy a szolgáltatás értékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
+Ha adatfolyam egy player kérelem érkezik, a Media Services megadott kulcsot használja az dinamikusan titkosítani az AES vagy DRM titkosítással. Az adatfolyam visszafejtése, a Windows Media player kér a kulcsot a fő kézbesítési szolgáltatás. Döntse el, hogy a felhasználó jogosult-e a kulcs eléréséhez, hogy a szolgáltatás értékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
 
 A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalomkulcs-hitelesítési házirend rendelkezhet egy vagy több engedélyezési korlátozás: **nyissa meg a** vagy **token** korlátozás. A tokennel korlátozott szabályzatokhoz a Secure Token Service (Biztonsági jegykiadó szolgáltatás, STS) által kiadott tokennek kell tartoznia. A Media Services tokeneket támogatja a **Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) formátumú és **JSON Web Token** ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) formátumban.
 
-A Media Services nem nyújt Secure Token szolgáltatásokat. Hozzon létre egy egyéni STS, vagy probléma jogkivonatokat a Microsoft Azure ACS kihasználja. Az STS be kell állítani a megadott kulcs és a probléma jogcímek a lexikális elem korlátozás konfigurációs (ebben a cikkben leírtak) megadott aláírt jogkivonat létrehozásához. A Media Services kulcs kézbesítési szolgáltatás a titkosítási kulcs visszatér az ügyfélhez, ha a jogkivonat érvényes, és a jogkivonatában lévő jogcímeket megegyezzenek a tartalomkulcsot.
+A Media Services nem nyújt Secure Token szolgáltatásokat. Hozzon létre egy egyéni STS, vagy probléma jogkivonatokat a Microsoft Azure ACS kihasználja. Az STS be kell állítani a megadott kulcs és a probléma jogcímek a lexikális elem korlátozás konfigurációs (ebben a cikkben leírtak) megadott aláírt jogkivonat létrehozásához. A Media Services kulcs kézbesítési szolgáltatás a titkosítási kulcsot az ügyfélnek ad vissza, ha a jogkivonat érvényes, és a jogkivonatában lévő jogcímeket megegyezzenek a tartalomkulcsot.
 
-További információkért lásd:
-
-[JWT jogkivonat hitelesítési](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-
-[Azure Media Services OWIN MVC-alapú alkalmazások integrálása az Azure Active Directoryban, és korlátozhatja a JWT jogcímei alapján kulcs tartalomkézbesítési](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
-
-[Azure ACS használatával probléma jogkivonatok](http://mingfeiy.com/acs-with-key-services).
+További információkért tekintse át a következő cikkeket:
+- [JWT jogkivonat hitelesítési](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
+- [Azure Media Services OWIN MVC-alapú alkalmazások integrálása az Azure Active Directoryban, és korlátozhatja a JWT jogcímei alapján kulcs tartalomkézbesítési](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
 ### <a name="some-considerations-apply"></a>Vegye figyelembe a következőket:
 * Az AMS-fiók létrehozásakor egy **alapértelmezett** adatfolyam-továbbítási végpontra a fiókja hozzáadódik a **leállítva** állapotát. Start streaming a tartalmat, és használja fel a dinamikus csomagolás és a dinamikus titkosítás, az adatfolyam-továbbítási végpontjának tartalmaznia kell a **futtató** állapotát. 
 * Az eszköz tartalmaznia kell egy adaptív sávszélességű MP4 vagy Smooth Streaming-fájlsorozattá készletét. További információkért lásd: [kódolása egy eszköz](media-services-encode-asset.md).
 * Töltse fel, és használja a kódolásához **AssetCreationOptions.StorageEncrypted** lehetőséget.
-* Ha azt tervezi, szeretné, hogy több tartalomkulcs, amelyek ugyanazt a házirend-konfigurációt igényelnek, erősen ajánlott egyetlen engedélyezési házirend létrehozása, és újra felhasználhatja több tartalomkulcs.
+* Ha azt tervezi, szeretné, hogy több tartalomkulcs, amelyek ugyanazt a házirend-konfigurációt igényelnek, ajánlott egyetlen engedélyezési házirend létrehozása, és újra felhasználhatja több tartalomkulcs.
 * A kulcs kézbesítési szolgáltatás 15 percig gyorsítótárazza a ContentKeyAuthorizationPolicy és a kapcsolódó objektumok (házirend-beállítások és korlátozásai).  Ha létrehoz egy ContentKeyAuthorizationPolicy, és adja meg, hogy a "Token" korlátozás, tesztelje azt, és majd a házirend "Megnyitás" korlátozás, előtt a házirend vált, a "Megnyitás" verziójának a házirend nagyjából 15 percig tart.
 * Objektumtovábbítási szabályzat hozzáadásakor vagy módosításakor törölnie kell az ahhoz tartozó meglévő lokátort (ha van), majd létre kell hoznia egy új lokátort.
 * Jelenleg nem titkosítható progresszív letöltés.
+* Adatfolyam-továbbítási végpontra AMS beállítja a CORS "Hozzáférés-vezérlési-engedélyezése-forrás" fejléc értékének elővizsgálati választ, mint a helyettesítő karakter "\*". Ez a módszer jól játékosokkal legtöbb többek között az Azure Media Player Roku és JW és mások számára. Néhány lejátszó használó dashjs azonban nem működnek óta a hitelesítő adatok mód beállítása "tartalmaz", a saját dashjs XMLHttpRequest nem teszi lehetővé a helyettesítő karakteres "\*" értékeként "" hozzáférés-vezérlési-engedélyezése-forrás ". Ezt a korlátozást a dashjs a megoldás Ha az ügyfél egy egyetlen tartományból üzemeltet Azure Media Services adhat meg adott tartomány az előzetes válaszfejléc. Az Azure portálon keresztül támogatási jegy megnyitásával érheti.
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128, a dinamikus titkosítás
 ### <a name="open-restriction"></a>Nyissa meg a szoftverkorlátozó
@@ -99,9 +96,9 @@ Az alábbi példa létrehoz egy megnyitott engedélyezési szabályzatot, és ho
 ### <a name="token-restriction"></a>Token korlátozása
 Ez a szakasz ismerteti, hogyan hozhat létre a tartalomkulcs-hitelesítési szabályzatot, és társíthatja a tartalomkulcs. Az engedélyezési házirendben ismerteti, milyen hitelesítési követelményeket kell teljesíteni, annak meghatározásához, hogy a felhasználó jogosult-e a kulcs (például biztosítja a "ellenőrzési kulcsot" lista tartalmaz, amely a token aláírt, a kulcs) fogadására.
 
-A token korlátozás beállítás konfigurálásához szüksége XML megadásával írhatja le a jogkivonatot engedélyezési követelményeihez. A token korlátozás konfigurációs XML-t meg kell felelnie a következő XML-séma.
+A token korlátozás beállítás konfigurálásához szüksége XML megadásával írhatja le a jogkivonatot engedélyezési követelményeihez. A token korlátozás konfigurációs XML-t meg kell felelnie a következő XML-séma:
 
-#### <a id="schema"></a>Token korlátozás séma
+#### <a name="token-restriction-schema"></a>Token korlátozás séma
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -149,7 +146,7 @@ A token korlátozás beállítás konfigurálásához szüksége XML megadásáv
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-Konfigurálásakor a **token** korlátozott házirend, meg kell adnia az elsődleges ** ellenőrző kulcs **, **kibocsátó** és **célközönség** paraméterek. A ** elsődleges hitelesítési kulcs ** tartalmazza a kulcsot, amely a token aláírt, **kibocsátó** a biztonságos jogkivonat szolgáltatás, amely kibocsátja a jogkivonatot. A **célközönség** (más néven **hatókör**) ismerteti, a célt a token vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcs kézbesítési szolgáltatás ellenőrzi, hogy ezek az értékek a token egyeznek-e a sablonban szereplő értékeket. 
+Konfigurálásakor a **token** korlátozott házirend, meg kell adnia az elsődleges **ellenőrző kulcs**, **kibocsátó** és **célközönség** a paraméterek. Az elsődleges **ellenőrző kulcs** tartalmazza a kulcsot, amely a token aláírt, **kibocsátó** a biztonságos jogkivonat szolgáltatás, amely kibocsátja a jogkivonatot. A **célközönség** (más néven **hatókör**) ismerteti, a célt a token vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcs kézbesítési szolgáltatás ellenőrzi, hogy ezek az értékek a token egyeznek-e a sablonban szereplő értékeket.
 
 Használata esetén **Media Services SDK for .NET**, használhatja a **TokenRestrictionTemplate** osztályra, hogy a korlátozás-token létrehozásához.
 Az alábbi példa házirendet hoz létre engedélyezési jogkivonat korlátozás. Ebben a példában az ügyfélnek ehhez már van egy jogkivonatot, amely tartalmazza: aláírási kulcs (VerificationKey), a jogkivonat-kibocsátó és a szükséges jogcímeket.
@@ -208,7 +205,7 @@ Az alábbi példa házirendet hoz létre engedélyezési jogkivonat korlátozás
         return TokenRestrictionTemplateSerializer.Serialize(template);
     }
 
-#### <a id="test"></a>Teszt jogkivonat
+#### <a name="test-token"></a>Teszt jogkivonat
 Ahhoz, hogy a teszt jogkivonat alapján, amelyet a kulcshitelesítési szabályzatban használt jogkivonat korlátozása, tegye a következőket.
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
@@ -231,12 +228,12 @@ Ahhoz, hogy a teszt jogkivonat alapján, amelyet a kulcshitelesítési szabályz
 ## <a name="playready-dynamic-encryption"></a>PlayReady dinamikus titkosítás
 Media Services lehetővé teszi, hogy konfigurálja a jogokat és korlátozásokat, amelyeket szeretne a PlayReady DRM futási időben kényszeríteni lejátszásához védett tartalmakat a felhasználó közben. 
 
-A PlayReady a tartalmak védelmére, ha az egyikét meg kell adni a hitelesítési házirend-e egy XML-karakterlánc, amely meghatározza a [PlayReady licencsablon](media-services-playready-license-template-overview.md). A Media Services SDK for .NET a **PlayReadyLicenseResponseTemplate** és **PlayReadyLicenseTemplate** határozza meg a PlayReady Licencsablon osztályok nyújtanak segítséget.
+A PlayReady a tartalmak védelmére, ha az egyikét meg kell adni a hitelesítési házirend-e egy XML-karakterlánc, amely meghatározza a [PlayReady licencsablon](media-services-playready-license-template-overview.md). A Media Services SDK for .NET a **PlayReadyLicenseResponseTemplate** és **PlayReadyLicenseTemplate** osztályok segítségével határozza meg a PlayReady-licenc sablonja.
 
-[Ez a témakör](media-services-protect-with-drm.md) jeleníti meg a tartalom titkosítása **PlayReady** és **Widevine**.
+[Ez a cikk](media-services-protect-with-playready-widevine.md) jeleníti meg a tartalom titkosítása **PlayReady** és **Widevine**.
 
 ### <a name="open-restriction"></a>Nyissa meg a szoftverkorlátozó
-Nyissa meg a szoftverkorlátozó azt jelenti, hogy a rendszer számára, akik egy kulcs kérést fog továbbítani a kulcsot. Ez a korlátozás tesztelési célokra hasznos lehet.
+Nyissa meg a szoftverkorlátozó azt jelenti, hogy a rendszer a kulcs továbbítja bárki, aki egy kulcs kérést. Ez a korlátozás tesztelési célokra hasznos lehet.
 
 Az alábbi példa létrehoz egy megnyitott engedélyezési szabályzatot, és hozzáadja azt a tartalomkulcsot.
 
@@ -415,14 +412,12 @@ A hitelesítési házirend találhat használt token korlátozása alapján tesz
         JWT = 2,
     }
 
-
-
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-step"></a>Következő lépés
-Most, hogy konfigurálta a tartalomkulcs hitelesítési szabályzatának, navigáljon a [objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md) témakör.
+## <a name="next-steps"></a>Következő lépések
+Most, hogy konfigurálta a tartalomkulcs hitelesítési szabályzatának, Ugrás [objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md).
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 895d6307b1cef74e195cc2ffd8dbef4196e97b1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2027aed8a604c33c96c66c23e9ddaa51f632edb5
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>A tartalom Apple FairPlay vagy a Microsoft PlayReady HLS védelme
 Az Azure Media Services lehetővé teszi, hogy dinamikusan titkosítani a HTTP-Live Streaming (HLS) a következő formátum használatával:  
@@ -33,12 +33,12 @@ Az Azure Media Services lehetővé teszi, hogy dinamikusan titkosítani a HTTP-L
 
 Az alábbi képen látható a **HLS + FairPlay vagy PlayReady a dinamikus titkosítás** munkafolyamat.
 
-![A dinamikus titkosítás munkafolyamat diagramja](./media/media-services-content-protection-overview/media-services-content-protection-with-fairplay.png)
+![A dinamikus titkosítás munkafolyamat diagramja](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
 
-Ez a témakör bemutatja, hogyan használja a Media Services dinamikus titkosítást az Apple FairPlay HLS tartalmaihoz. Azt is bemutatja, hogyan használja a Media Services licenctovábbítási szolgáltatása képes biztosítani a FairPlay-licenc ügyfelek számára.
+Ez a cikk bemutatja, hogyan használja a Media Services dinamikus titkosítást az Apple FairPlay HLS tartalmaihoz. Azt is bemutatja, hogyan használja a Media Services licenctovábbítási szolgáltatása képes biztosítani a FairPlay-licenc ügyfelek számára.
 
 > [!NOTE]
-> Ha szeretné titkosítani a HLS a PlayReady, szeretné hozzon létre egy közös tartalomkulcsot, és rendelje hozzá azt az objektumot. Azt is konfigurálnia kell a tartalomkulcs hitelesítési szabályzatának, a [segítségével PlayReady a dynamic common encryption](media-services-protect-with-drm.md).
+> Ha szeretné titkosítani a HLS a PlayReady, szeretné hozzon létre egy közös tartalomkulcsot, és rendelje hozzá azt az objektumot. Azt is konfigurálnia kell a tartalomkulcs hitelesítési szabályzatának, a [segítségével PlayReady a dynamic common encryption](media-services-protect-with-playready-widevine.md).
 >
 >
 
@@ -65,14 +65,14 @@ A következő műveleteket kell állítani a Media Services kulcs kézbesítési
         Nyissa meg azt a mappát, amelyben a FairPlay tanúsítvány és egyéb Apple kézbesítette fájlokat is.
     2. Futtassa az alábbi parancsot a parancssorból. A .cer fájl konvertál egy .pem fájlt.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" x509-der tájékoztatja-a fairplay.cer-fairplay-out.pem kimenő
+        "C:\OpenSSL-Win32\bin\openssl.exe" x509-der tájékoztatja-a FairPlay.cer-FairPlay-out.pem kimenő
     3. Futtassa az alábbi parancsot a parancssorból. A titkos kulcsot tartalmazó .pfx fájlba alakítja a .pem fájl. OpenSSL majd felkéri, a .pfx fájlhoz tartozó jelszót.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12-exportálása - kimenő fairplay-out.pfx-inkey privatekey.pem-fairplay-out.pem - passin file:privatekey-pem-pass.txt a
+        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12-exportálása - kimenő FairPlay-out.pfx-inkey privatekey.pem-FairPlay-out.pem - passin file:privatekey-pem-pass.txt a
   * **Alkalmazás Cert jelszó**: A jelszót a .pfx fájl létrehozásához.
   * **Alkalmazás Cert jelszó azonosítója**: a jelszó, hogyan azok feltölteni más Media Services kulcsok hasonló kell feltöltenie. Használja a **ContentKeyType.FairPlayPfxPassword** Felsorolásérték lekérni a Media Services-azonosító. Ez akkor szükséges a kulcs kézbesítési házirend-beállításként belül használja.
   * **IV**: egy véletlenszerű érték 16 bájt. Meg kell egyeznie a iv az adategység továbbítási házirendjét. Ön hozza létre a iv, és mindkét helyen elhelyezi: az adategység továbbítási házirendjét és a kulcs kézbesítési házirend-beállításként.
-  * **Kérje meg**: Ez a kulcs érkezik, ha a hitelesítésszolgáltató létrehozásakor az Apple fejlesztői portáljáról használatával. Minden egyes fejlesztői csapat egyedi KÉRJEN fog kapni. A KÉRJEN másolatának mentése, és tárolja biztonságos helyen. Szüksége lesz, kérje meg a Media Services később FairPlayAsk konfigurálása.
+  * **Kérje meg**: Ez a kulcs érkezik, ha a hitelesítésszolgáltató létrehozásakor az Apple fejlesztői portáljáról használatával. Minden fejlesztési csapat kap egy egyedi kérje meg. A KÉRJEN másolatának mentése, és tárolja biztonságos helyen. Kérje meg beállítása később a Media Services FairPlayAsk kell.
   * **Kérje meg azonosító**: Ez az azonosító kapjuk meg, kérje meg a Media Services feltöltésekor. Kérje meg a kell feltöltenie az **ContentKeyType.FairPlayAsk** számbavételi érték. Ennek eredményeképpen a Media Services Azonosítót ad vissza, és azt kell használni, ha a beállítás a kulcs kézbesítési házirend-beállításként.
 
 A következő műveleteket kell beállítania a FPS ügyféloldali:
@@ -125,7 +125,7 @@ Az IOS SDK player alkalmazásokat fejleszthet. Nem fogja tudni FairPlay tartalom
     spc=<Base64 encoded SPC>
 
 > [!NOTE]
-> Az Azure Media Player FairPlay lejátszás kívül a mezőben nem támogatja. Ahhoz, hogy FairPlay lejátszás MAC OS x, szerezze be a minta player az Apple developer-fiók.
+> Az Azure Media Player FairPlay lejátszását támogatja. Lásd: [Azure Media Player dokumentáció](https://amp.azure.net/libs/amp/latest/docs/index.html) további tájékoztatást talál.
 >
 >
 
@@ -157,7 +157,7 @@ A következő példa bemutatja teszi a Media Services használatát a FairPlay t
 Írja felül a Program.cs fájlban található kódot az itt látható kóddal.
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért lásd: [ez](media-services-dotnet-manage-entities.md#limit-access-policies) cikk.
 
 Módosítsa úgy a változókat, hogy a bemeneti fájlok tárolásához Ön által használt mappákra mutassanak.
 

@@ -24,7 +24,7 @@ Amikor virtuális gépek csatlakoznak, a nyilvános kulcsú próbál bejelentkez
 
 ## <a name="policies"></a>Házirendek
 
-[Az Azure Resource Manager házirendek](../articles/azure-resource-manager/resource-manager-policy.md) segítségével határozza meg a kívánt viselkedés, a szervezet [Windows virtuális gépek](../articles/virtual-machines/windows/policy.md) és [Linux virtuális gépek](../articles/virtual-machines/linux/policy.md). Házirendek segítségével a szervezetek kényszerítheti a különböző egyezmények és szabályok a vállalaton belül. A kívánt viselkedés végrehajtását segítségével mérsékelhetik a kockázatokat hozzájárul a szervezet sikeres.
+[Az Azure házirendek](../articles/azure-policy/azure-policy-introduction.md) segítségével határozza meg a kívánt viselkedés, a szervezet [Windows virtuális gépek](../articles/virtual-machines/windows/policy.md) és [Linux virtuális gépek](../articles/virtual-machines/linux/policy.md). Házirendek segítségével a szervezetek kényszerítheti a különböző egyezmények és szabályok a vállalaton belül. A kívánt viselkedés végrehajtását segítségével mérsékelhetik a kockázatokat hozzájárul a szervezet sikeres.
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 

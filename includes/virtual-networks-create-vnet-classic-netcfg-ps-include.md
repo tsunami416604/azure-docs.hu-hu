@@ -22,19 +22,26 @@ Virtuális hálózat létrehozása a PowerShell használatával netcfg fájllal,
 4. Ebben a forgatókönyvben a virtuális hálózat létrehozásához adja hozzá a következő XML alatt csak a  **<VirtualNetworkSites>**  elem:
 
    ```xml
-        <VirtualNetworkSite name="TestVNet" Location="East US">
-          <AddressSpace>
-            <AddressPrefix>192.168.0.0/16</AddressPrefix>
-          </AddressSpace>
-          <Subnets>
-            <Subnet name="FrontEnd">
-              <AddressPrefix>192.168.1.0/24</AddressPrefix>
-            </Subnet>
-            <Subnet name="BackEnd">
-              <AddressPrefix>192.168.2.0/24</AddressPrefix>
-            </Subnet>
-          </Subnets>
-        </VirtualNetworkSite>
+         <?xml version="1.0" encoding="utf-8"?>
+         <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+           <VirtualNetworkConfiguration>
+             <VirtualNetworkSites>
+                 <VirtualNetworkSite name="TestVNet" Location="East US">
+                   <AddressSpace>
+                     <AddressPrefix>192.168.0.0/16</AddressPrefix>
+                   </AddressSpace>
+                   <Subnets>
+                     <Subnet name="FrontEnd">
+                       <AddressPrefix>192.168.1.0/24</AddressPrefix>
+                     </Subnet>
+                     <Subnet name="BackEnd">
+                       <AddressPrefix>192.168.2.0/24</AddressPrefix>
+                     </Subnet>
+                   </Subnets>
+                 </VirtualNetworkSite>
+             </VirtualNetworkSites>
+           </VirtualNetworkConfiguration>
+         </NetworkConfiguration>
    ```
    
 5. Mentse a hálózati konfigurációs fájlt.

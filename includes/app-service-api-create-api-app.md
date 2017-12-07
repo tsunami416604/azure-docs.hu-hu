@@ -1,5 +1,5 @@
 
-Az [az webapp create](/cli/azure/webapp#create) paranccsal hozzon létre egy alkalmazást a `myAppServicePlan` App Service-csomagban. 
+Az [az webapp create](/cli/azure/webapp#az_webapp_create) paranccsal hozzon létre egy alkalmazást a `myAppServicePlan` App Service-csomagban. 
 
 A webalkalmazás üzemeltetési tárterületet biztosít a API-hoz, valamint megadja az üzembe helyezett alkalmazás megtekintéséhez szükséges URL-címet.
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 12/05/2017
 ms.author: barclayn
-ms.openlocfilehash: 6c49b086fd35a855fa8e32fa576c5b52d16f1d04
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 0d34a19658ae67a9c98d6f31aaca35e67add5beb
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM által védett és hogyan kulcsok Azure Key vault
 ## <a name="introduction"></a>Bevezetés
@@ -82,10 +82,14 @@ A telepítési utasításokért lásd: [telepítése és konfigurálása az Azur
 ### <a name="step-12-get-your-azure-subscription-id"></a>1.2. lépés: Az Azure előfizetés-azonosító lekérése
 Indítson el egy Azure PowerShell-munkamenetet, és az Azure-fiókjával jelentkezzen be a következő paranccsal:
 
-        Add-AzureAccount
+```Powershell
+   Add-AzureAccount
+```
 Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Ezt követően a [Get-AzureSubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0) parancs:
 
-        Get-AzureSubscription
+```powershell
+   Get-AzureSubscription
+```
 A kimenetben keresse meg az Azure Key Vault használandó előfizetés azonosítója. Később szüksége lesz az előfizetés-azonosító.
 
 Ne zárja be az Azure PowerShell-ablakot.
@@ -188,7 +192,9 @@ KeyVault-BYOK-eszközök – UnitedKingdom.zip
 
 A letöltött BYOK eszközkészlet, az Azure PowerShell-munkamenetben integritásának ellenőrzéséhez használja a [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx) parancsmag.
 
-    Get-FileHash KeyVault-BYOK-Tools-*.zip
+   ```powershell
+   Get-FileHash KeyVault-BYOK-Tools-*.zip
+   ```
 
 Az eszközkészlet a következőket tartalmazza:
 
@@ -208,7 +214,9 @@ Telepítse az nCipher (Thales) támogatószoftvert egy Windows-számítógépen,
 
 Gondoskodjon arról, hogy a Thales-eszközök az elérési úthoz (**%nfast_home%\bin**). Írja be például a következőt:
 
-        set PATH=%PATH%;"%nfast_home%\bin"
+  ```cmd
+  set PATH=%PATH%;"%nfast_home%\bin"
+  ```
 
 További információkért lásd: a Thales HSM-en mellékelt felhasználói útmutatót.
 
@@ -229,7 +237,9 @@ Ha használ a Thales nShield él, állítsa át a módot: 1. A mód gomb segíts
 ### <a name="step-32-create-a-security-world"></a>3.2. lépés: Biztonsági világ létrehozása
 Nyisson meg egy parancsablakot, és futtassa a Thales új világot létrehozó programját.
 
+   ```cmd
     new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
+   ```
 
 Ez a program létrehoz egy **Biztonságivilág** fájl: % NFAST_KMDATA%\local\world, amely a C:\ProgramData\nCipher\Key Management Data\local mappának felel meg. A kvórumhoz különböző értékeket is használhat, de a fenti példában mindegyik három üres kártyát és PIN-kód megadását kéri. Ezután bármelyik két kártya teljes hozzáférést biztosít a biztonsági világhoz. Ezek a kártyák lesznek a **rendszergazdai Kártyakészlete** az új biztonsági világ számára.
 
@@ -293,6 +303,10 @@ A letöltött csomag ellenőrzése:
    * A India:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-INDIA-1 -w BYOK-SecurityWorld-pkg-INDIA-1
+   * Egyesült Királyság:
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
+
      > [!TIP]
      > A Thales szoftver tartalmaz python %NFAST_HOME%\python\bin címen
      >
@@ -370,6 +384,9 @@ Nyisson meg egy új parancssort, és módosítsa az aktuális könyvtárhoz a he
 * A India:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
+* Egyesült Királyság:
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
 
 Ez a parancs futtatásakor cserélje le *contosokey* ugyanarra az értékre az **lépés 3.5: hozzon létre egy új kulcsot** a a [a kulcs létrehozása](#step-3-generate-your-key) lépés.
 
@@ -426,6 +443,9 @@ Attól függően, hogy a földrajzi régióban vagy Azure példánya a következ
 * A India:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* Egyesült Királyság:
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 
 Ez a parancs futtatásakor használja ezeket az utasításokat:
 
@@ -441,7 +461,9 @@ Egy USB-meghajtó vagy más hordozható tárolóeszköz használatával másolja
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>5. lépés: A kulcs átvitele az Azure Key Vault
 Az utolsó lépést, az internetre kapcsolódó munkaállomáson, használja a [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) parancsmag fájlból másolt a kapcsolat nélküli munkaállomáson az Azure Key Vault HSM kulcsátviteli csomag feltöltéséhez:
 
-    Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
+   ```powershell
+        Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
+   ```
 
 Sikeres feltöltés esetén megjelenik a most felvett kulcs tulajdonságainak jelenik meg.
 

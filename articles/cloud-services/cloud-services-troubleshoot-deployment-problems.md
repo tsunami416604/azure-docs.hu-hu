@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: 944a29aebf7abfe32a7789ab239718b1cd2d7b15
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3adf4dd824b31d5e3d368a0199bc2e981cafe176
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Felhőalapú szolgáltatás telepítésével kapcsolatos problémák elhárítása
 Amikor telepít egy felhőalapú szolgáltatás alkalmazáscsomagot az Azure-ba, ezt úgy szerezheti be a telepítéssel kapcsolatos információk a **tulajdonságok** ablaktáblán az Azure portálon. Használhatja a részletek panelen segítséget nyújtanak a felhőalapú szolgáltatással kapcsolatos hibák elhárítása, és megadhatja ezt az információt Azure támogatásához új támogatási kérelem megnyitásakor.
@@ -27,7 +27,6 @@ Amikor telepít egy felhőalapú szolgáltatás alkalmazáscsomagot az Azure-ba,
 Megtalálhatja az **tulajdonságok** ablaktáblán az alábbiak szerint:
 
 * Az Azure portálon kattintson a felhőalapú szolgáltatás telepítését, majd **összes beállítás**, és kattintson a **tulajdonságok**.
-* A klasszikus Azure portálon, kattintson a felhőalapú szolgáltatás telepítését, majd **IRÁNYÍTÓPULT**, a lap jobb alsó sarkában található (alatt **gyors áttekintő**). Vegye figyelembe, hogy nincs nincs "Tulajdonságok" címke ezen az ablaktáblán.
 
 > [!NOTE]
 > Másolhatja a tartalmát a **tulajdonságok** ablaktáblán a jobb felső sarokban található az ikonra kattintva a vágólapra.

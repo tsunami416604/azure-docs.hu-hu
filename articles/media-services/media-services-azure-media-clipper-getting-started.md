@@ -1,6 +1,6 @@
 ---
 title: "Ismerkedés az Azure Media Webmontázskészítő |} Microsoft Docs"
-description: "Ismerkedés az Azure Media Webmontázskészítő, egy eszköz-adathordozót a levágja a eszközök"
+description: "Ismerkedés az Azure Media Webmontázskészítő, egy eszköz a videó videóklipeket felépítése az AMS-eszközök"
 services: media-services
 keywords: "Klip; subclip; kódolás; adathordozó"
 author: dbgeorge
@@ -9,11 +9,11 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 8a4f2c79131664ca0d078fa58c6a75b54243e705
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ac64d97aeeef6147aa62658c9ee440bf058f4db1
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Az Azure Media Webmontázskészítő videóklipeket létrehozása
 Ez a szakasz bemutatja az alapvető lépéseken, Ismerkedés az Azure Media Webmontázskészítő. Hajtsa végre a következő szakaszok konkrétumok az Azure Media Webmontázskészítő konfigurálásához.
@@ -102,9 +102,9 @@ Az inicializálás metódus hívásához a paraméterek a következők:
 - `speedLevels`(Nem kötelező, tömb): speedLevels lehetővé teszi különböző sebességű szint beállítása a videólejátszó című [Azure Media Player dokumentáció](http://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) vonatkozó információ.
 - `resetOnJobDone`(Nem kötelező, logikai): resetOnJobDone lehetővé teszi, hogy a Webmontázskészítő alaphelyzetbe állítja a subclipper Alapállapot, ha a feladat elküldése sikerült.
 - `autoplayVideo`(Nem kötelező, logikai): autoplayVideo lehetővé teszi, hogy Webmontázskészítő automatikus lejátszásának betöltése a videót. Az alapértelmezett érték: igaz.
-- `language`{Nem kötelező, karakterlánc}: nyelv, a widget nyelvének beállítása. Ha nincs megadva, a widget megpróbálja localize az üzenetek a böngésző nyelvének alapján. Ha nincs nyelv észlel a böngészőben, a widget alapértelmezés szerint az angol. További információ a támogatott nyelvek című rész.
-- `languages`{Nem kötelező, JSON}: a nyelv paraméter az alapértelmezett szótár nyelv cseréli a felhasználó által definiált egyéni szótár. További információ a támogatott nyelvek című rész.
-- `extraLanguages`(Nem kötelező, JSON): a extraLanaguages a paraméter hozzáadja az új nyelvek az alapértelmezett szótár. További információ a támogatott nyelvek című rész.
+- `language`{Nem kötelező, karakterlánc}: nyelv, a widget nyelvének beállítása. Ha nincs megadva, a widget megpróbálja localize az üzenetek a böngésző nyelvének alapján. Ha nincs nyelv észlel a böngészőben, a widget alapértelmezés szerint az angol. További információkért lásd: a [honosítási konfigurálása](media-services-azure-media-clipper-localization.md) szakasz.
+- `languages`{Nem kötelező, JSON}: a nyelv paraméter az alapértelmezett szótár nyelv cseréli a felhasználó által definiált egyéni szótár. További információkért lásd: a [honosítási konfigurálása](media-services-azure-media-clipper-localization.md) szakasz.
+- `extraLanguages`(Nem kötelező, JSON): a extraLanaguages a paraméter hozzáadja az új nyelvek az alapértelmezett szótár. További információkért lásd: a [honosítási konfigurálása](media-services-azure-media-clipper-localization.md) szakasz.
 
 ## <a name="typescript-definition"></a>Géppel meghatározása
 A [géppel](https://www.typescriptlang.org/) a Webmontázskészítő definíciós fájljának található [Itt](http://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts).
@@ -112,133 +112,15 @@ A [géppel](https://www.typescriptlang.org/) a Webmontázskészítő definíció
 ## <a name="azure-media-clipper-api"></a>Az Azure Media Webmontázskészítő API
 Ez a szakasz az API felületén a Webmontázskészítő által biztosított dokumentumokat.
 
-- `load(assets)`: az eszközök listáját betöltődnek az Eszközök panelen (együtt nem használhatók `assetsPanelLoaderCallback`). Ez [cikk](media-services-azure-media-clipper-load-assets.md) kapcsolatos részletes tudnivalókért eszközök betölthető a Webmontázskészítő.
+- `ready(handler)`: a JavaScript futtatása, amint a Webmontázskészítő teljesen betöltve és használatra kész módját kínálja.
+- `load(assets)`: az eszközök listáját betöltődnek az widget ütemterv (assetsPanelLoaderCallback együtt nem használható). Ez [cikk](media-services-azure-media-clipper-load-assets.md) kapcsolatos részletes tudnivalókért eszközök betölthető a Webmontázskészítő.
 - `setLogLevel(level)`: a böngészőbeli konzolon megjelenítendő naplózási szintjének beállítása. Lehetséges értékek a következők: `info`, `warn`, `error`.
 - `setHeight(height)`: Beállítja a widget teljes magassága képpontban (minimális magasság értéke 600 képpont eszközök ablaktábla nélkül, és 850 az eszközök ablaktábla képpont).
 - `version`: a widget verzió lekérdezi.
 
-## <a name="configuring-azure-media-clipper"></a>Az Azure Media Webmontázskészítő konfigurálása
+## <a name="next-steps"></a>Következő lépések
 A következő lépések Azure Media Webmontázskészítő konfigurálásához:
 - [Az Azure Media Webmontázskészítő eszközök betöltése](media-services-azure-media-clipper-load-assets.md)
 - [Egyéni billentyűparancsok konfigurálása](media-services-azure-media-clipper-keyboard-shortcuts.md)
 - [A Webmontázskészítő Kivágás-feladatok elküldése](media-services-azure-media-clipper-submit-job.md)
-
-## <a name="supported-languages"></a>Támogatott nyelvek
-A Webmontázskészítő widget 18 nyelveken érhető el. A widget nyelvi beállításához meg kell adnia a `language` paraméter inicializálása során. A kívánt nyelvet kód karakterláncban át az alábbi listából:
-- Kínai (egyszerűsített): zh-hans
-- Kínai (hagyományos): zh-hant
-- Cseh: cs
-- Holland, Flemish: nl
-- Angol: en
-- Francia: fr
-- Német: Németország
-- Magyar: hu
-- Olasz:,
-- Japán: japán
-- Koreai: ko
-- Lengyel: pl
-- Portugál (brazíliai): pt-br
-- Portugál (Portugália): pt-pt
-- Orosz: ru
-- Spanyol: es
-- Svéd: sv
-- Török: tr
-
-Állítsa be az egyéni szótár, vagy az alapértelmezett nyelv szótár kiterjesztése, meg kell határoznia a `languages` vagy `extraLanguages` paraméter, illetve. Adjon át a következő JSON formátummal egyéni szótár:
-
-```javascript
-{
-      "{language-code}":
-          "{message-id}": "{message}"
-          ...
-      }
-      ...
-}
-```
-
-Például az alábbi példa meghatározza, hogy az angol nyelvű honosított karakterláncok:
-
-```javascript
-export default {
-  'VideoPlayer.noPreview': 'No video preview',
-  'VideoPlayer.loadAsset': 'You must provide a valid asset',
-  'AssetsPanel.name': 'Name',
-  'AssetsPanel.type': 'Asset type',
-  'AssetsPanel.actions': 'Actions',
-  'AssetsPanel.loading': 'Loading...',
-  'AssetsPanel.duration': 'Duration',
-  'AssetsPanel.resolution': 'Resolution',
-  'AssetsPanel.pluralFiles': '{0} assets',
-  'AssetsPanel.searchFiles': 'Search assets',
-  'AssetsPanel.showTypes': 'Show:',
-  'AssetsPanel.typesInfo': 'Rendered assets are actual MP4 files. Dynamic manifest filters are filters applied to a parent asset\'s video segment playlist.',
-  'AssetsPanel.filterTypes': 'Filters',
-  'AssetsPanel.assetTypes': 'Assets',
-  'AssetsPanel.assetsAll': 'All',
-  'AssetsPanel.addAsset': 'Add asset to the end',
-  'AssetsPanel.addFilter': 'Add filter to the timeline',
-  'AssetsPanel.invalidAsset': 'The metadata of this asset is not compatible with the other assets in the timeline',
-  'AssetsPanel.addAssetWarning': 'Subclipping on assets with different resolutions may cause resolution autoscaling.',
-  'AssetsPanel.live': 'LIVE',
-  'AssetsPanel.unknown': 'UNKNOWN',
-  'AssetsPanel.minimGapNotMet': 'The asset duration must be greater than the minimum clip duration ({0} seconds)',
-  'VideoPlayer.openAdvancedSettings': 'Advanced settings',
-  'VideoPlayer.singleBitrate': 'Single-bitrate MP4 (rendered)',
-  'VideoPlayer.multiBitrate': 'Multi-bitrate MP4 (rendered)',
-  'VideoPlayer.dynamicManifest': 'Dynamic manifest filter',
-  'VideoPlayer.ErrorWithMessage': 'There was an error in the video player, code {0}, message: {1}',
-  'Common.cancel': 'Cancel',
-  'Common.OK': 'OK',
-  'AdvancedSettings.framerate': 'Frame rate',
-  'Dropdown.select': 'Select an option...',
-  'InputAsset.RemoveInput': 'Remove source',
-  'Zoom.startTime': 'Start time',
-  'Zoom.endTime': 'End time',
-  'VideoPlayer.subclips': 'Subclips:',
-  'VideoPlayer.length': 'Clip length:',
-  'Accordion.scrollLeft': 'Scroll to the left',
-  'Accordion.scrollRight': 'Scroll to the right',
-  'AdvancedSettings.title': 'Advanced settings',
-  'AdvancedSettings.subclipName': 'Subclip name',
-  'AdvancedSettings.subclipType': 'Subclipping mode',
-  'AdvancedSettings.includeAudioTracks': 'Include audio tracks',
-  'AdvancedSettings.subclipTypeInfo': 'Single-bitrate and multi-bitrate MP4s are frame accurate rendered assets. Dynamic manifest filters are group-of-pictures (GOP) accurate filters applied to a parent asset. Creating filters does not create a new asset and does not require encoding. Subclipping jobs on live assets are valid as long as their mark times are within the archive window of the parent asset. Filters are valid as long as the parent asset exists and mark times are within its archive window.',
-  'AdvancedSettings.frameRateInfo': 'We autodetect frame rate under most scenarios. however, If we cannot autodetect, choose a frame rate from the dropdown for the selected asset(s).',
-  'AdvancedSettings.frameRateError': 'Unable to determine frame rate',
-  'AdvancedSettings.subclipNameInfo': 'Choose a name for your subclip.',
-  'AdvancedSettings.singleAudioTrack': '1 audio track selected',
-  'AdvancedSettings.allAudioTracks': 'All audio tracks selected',
-  'AdvancedSettings.someAudioTracks': '{0} audio tracks selected',
-  'AdvancedSettings.includeAllAudioTracks': 'Include all audio tracks',
-  'AssetsPanel.loadingError': 'Failed to retreive assets from server.',
-  'AssetsPanel.retry': 'Retry?',
-  'CommandBar.prevFrameTitle': 'Back up one frame',
-  'CommandBar.prevKeyFrameTitle': 'Back up one GOP',
-  'CommandBar.cleanJob': 'Remove all assets',
-  'CommandBar.cleanJobTitle': 'Remove all assets from timeline',
-  'CommandBar.cleanJobMessage': 'This will empty all video clips from your timeline.',
-  'CommandBar.update': 'Update filter',
-  'CommandBar.createFilter': 'Create filter',
-  'CommandBar.submit': 'Submit subclipper job',
-  'CommandBar.jobErrorTitle': 'Operation failed',
-  'CommandBar.jobErrorMessage': 'Your subclip failed to submit. Please try again.',
-  'CommandBar.markInTitle': 'Set in at playhead',
-  'CommandBar.markInPosition': 'Mark in timecode',
-  'CommandBar.markOutTitle': 'Set out at playhead',
-  'CommandBar.markOutPosition': 'Mark out timecode',
-  'CommandBar.nextFrameTitle': 'Advance one frame',
-  'CommandBar.nextKeyFrameTitle': 'Advance one GOP',
-  'CommandBar.play': 'Play video',
-  'CommandBar.pause': 'Pause video',
-  'CommandBar.playPreviewTitle': 'Play subclip preview',
-  'CommandBar.pausePreviewTitle': 'Pause subclip preview',
-  'CommandBar.redoTitle': 'Redo last action',
-  'CommandBar.removeAsset': 'Remove current asset',
-  'CommandBar.undoTitle': 'Undo last action',
-  'VideoPlayer.errorTitle': 'Error',
-  'VideoPlayer.errorMessage': 'There was an error loading the selected asset.',
-  'Timeline.markIn': 'Mark in bracket',
-  'Timeline.markOut': 'Mark out bracket',
-  'Timeline.playHead': 'Play head',
-};
-```
+- [Honosítási konfigurálása](media-services-azure-media-clipper-localization.md)

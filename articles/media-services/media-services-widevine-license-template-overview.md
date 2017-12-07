@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 667ff16dc7608dab2a5b8b1fd7df715da4620ca1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 68d519cd36d41728f57419cd6cecd2a79d65a4af
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="widevine-license-template-overview"></a>Widevine-licenc sablon – áttekintés
-## <a name="overview"></a>Áttekintés
-Az Azure Media Services lehetővé teszi konfigurálása és Widevine-licencek kérése most. Ha a végfelhasználó player próbál Widevine védett tartalom lejátszása, a licenc beszerzésével kérelmet küldött a kézbesítési szolgáltatás. Ha a szolgáltatás a kérelem jóváhagyása, a licenc, amely az ügyfélnek küldött és fejti vissza és a megadott tartalom lejátszásához használható ad ki.
+Az Azure Media Services lehetővé teszi, hogy konfigurálja és Widevine-licencek kérelem. Ha a végfelhasználó player próbál Widevine védett tartalom lejátszása, a licenc beszerzésével kérelmet küldött a kézbesítési szolgáltatás. Ha a szolgáltatás a kérelem jóváhagyása, a licenc, amely az ügyfélnek küldött és fejti vissza és a megadott tartalom lejátszásához használható ad ki.
 
 Widevine-licenc kérelem JSON üzenet formátuma.  
 
@@ -72,7 +71,7 @@ Widevine-licenc kérelem JSON üzenet formátuma.
 | session_init |JSON-struktúrát, lásd: **munkamenet inicializálási** alatt |Választható adatok kapott licencet. |
 | parse_only |Logikai érték. IGAZ vagy HAMIS eredményt ad |A licenc kérelem elemzi, de licenc nem jelenik meg. Azonban értékek a licenc-kérelmet a válaszban visszaadott képernyő. |
 
-## <a name="content-key-specs"></a>Tartalomkulcs specifikációk
+## <a name="content-key-specs"></a>Tartalom kulcs specifikációk
 Ha egy már meglévő házirend létezik, nincs szükség van valamely értékét adja meg a tartalom kulcs specifikációi.  A már meglévő házirend ehhez a tartalomhoz társított használandó a kimeneti védelmet, például HDCP és CGMS határozza meg.  Ha egy már meglévő házirend a Widevine-licenc kiszolgáló nincs regisztrálva, a tartalomszolgáltató is behelyezése az értékeket a licenc kérelmet.   
 
 Minden egyes content_key_specs összes nyomon követi, függetlenül a beállítás use_policy_overrides_exclusively kell adni. 
@@ -197,5 +196,5 @@ A következő példa bemutatja, hogyan egy egyszerű Widevine-licenc konfigurál
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[PlayReady és/vagy Widevine Dynamic Common Encryption használatával](media-services-protect-with-drm.md)
+[PlayReady és/vagy Widevine Dynamic Common Encryption használatával](media-services-protect-with-playready-widevine.md)
 

@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: twooley
-ms.openlocfilehash: 3d0d5ea6cc3f3cc7bc0550b83dabbf0ae6af8a27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5c7810a88bee65cf22276082f72b18a7f9e983f
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Kezelheti a frissítéseket a Azure verem – áttekintés
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek*
 
-A Microsoft Azure verem integrált rendszerek rendszeresen frissítési csomagokat ad ki. A Microsoft minden kiadása van kötegelt egyetlen frissítési csomag. Azure verem kezelőként könnyen importálhatja, telepítés és a figyelő a telepítési folyamat ezen a felügyeleti portálon-csomagok frissítése. 
+A Microsoft ki lesz integrált Azure verem rendszerek rendszeres ütemben történik, amely általában minden hónap, a negyedik keddjén fog esni frissítési csomagokat általánosan rendelkezésre álló indítása. Az OEM és kérdezze meg a megadott értesítési folyamat frissítési értesítések reach biztosításához a szervezet, vagy jelölje be a Concepts\Release notes\Integrated rendszerek adott verziókról további tudnivalókat.
+
+A Microsoft minden kiadása van kötegelt egyetlen frissítési csomag. Azure verem kezelőként könnyen importálhatja, telepítés és a figyelő a telepítési folyamat ezen a felügyeleti portálon-csomagok frissítése. 
 
 Számítógépgyártó (OEM) hardvergyártójához is frissítéseket, például az illesztőprogram és a belső vezérlőprogram frissítések. Ezeket a frissítéseket a OEM hardver gyártójának külön csomag érkeznek, és a Microsoft-frissítésekből külön felügyelettel.
 

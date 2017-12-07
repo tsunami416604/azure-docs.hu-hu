@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: juliako
-ms.openlocfilehash: c584806105c2583daca944260b65da2f7637bb0c
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0ae5d37507bb6e36589e9755faf8bd3471910257
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>A dinamikus titkosítás: Tartalomkulcs hitelesítési szabályzatának konfigurálása
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -34,13 +34,9 @@ A Media Services szolgáltatásban több különböző módot is beállíthat, a
 
 A Media Services nem nyújt Secure Token szolgáltatásokat. Hozzon létre egy egyéni STS, vagy probléma jogkivonatokat a Microsoft Azure ACS kihasználja. Az STS be kell állítani a megadott kulcs és a probléma jogcímek a lexikális elem korlátozás konfigurációs (ebben a cikkben leírtak) megadott aláírt jogkivonat létrehozásához. A Media Services kulcs kézbesítési szolgáltatás a titkosítási kulcs visszatér az ügyfélhez, ha a jogkivonat érvényes, és a jogkivonatában lévő jogcímeket megegyezzenek a tartalomkulcsot.
 
-További információkért lásd:
-
-[JWT jogkivonat hitelesítési](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-
-[Azure Media Services OWIN MVC-alapú alkalmazások integrálása az Azure Active Directoryban, és korlátozhatja a JWT jogcímei alapján kulcs tartalomkézbesítési](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
-
-[Azure ACS használatával probléma jogkivonatok](http://mingfeiy.com/acs-with-key-services).
+További információkért tekintse át a következő cikkeket:
+- [JWT jogkivonat hitelesítési](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
+- [Azure Media Services OWIN MVC-alapú alkalmazások integrálása az Azure Active Directoryban, és korlátozhatja a JWT jogcímei alapján kulcs tartalomkézbesítési](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
 ### <a name="some-considerations-apply"></a>Vegye figyelembe a következőket:
 * A fogja tudni használni a dinamikus csomagolás és a dinamikus titkosítás, győződjön meg arról, hogy a streamvégpontján, amelyből el kívánja a tartalmak: az a **futtató** állapotát.
@@ -50,6 +46,7 @@ További információkért lásd:
 * A kulcs kézbesítési szolgáltatás 15 percig gyorsítótárazza a ContentKeyAuthorizationPolicy és a kapcsolódó objektumok (házirend-beállítások és korlátozásai).  Ha létrehoz egy ContentKeyAuthorizationPolicy, és adja meg, hogy a "Token" korlátozás, tesztelje azt, és majd a házirend "Megnyitás" korlátozás, előtt a házirend vált, a "Megnyitás" verziójának a házirend nagyjából 15 percig tart.
 * Objektumtovábbítási szabályzat hozzáadásakor vagy módosításakor törölnie kell az ahhoz tartozó meglévő lokátort (ha van), majd létre kell hoznia egy új lokátort.
 * Jelenleg nem titkosítható progresszív letöltés.
+* Adatfolyam-továbbítási végpontra AMS beállítja a CORS "Hozzáférés-vezérlési-engedélyezése-forrás" fejléc értékének elővizsgálati választ, mint a helyettesítő karakter "\*". Ez a módszer jól játékosokkal legtöbb többek között az Azure Media Player Roku és JW és mások számára. Néhány lejátszó használó dashjs azonban nem működnek óta a hitelesítő adatok mód beállítása "tartalmaz", a saját dashjs XMLHttpRequest nem teszi lehetővé a helyettesítő karakteres "\*" értékeként "" hozzáférés-vezérlési-engedélyezése-forrás ". Ezt a korlátozást a dashjs a megoldás Ha az ügyfél egy egyetlen tartományból üzemeltet Azure Media Services adhat meg adott tartomány az előzetes válaszfejléc. Az Azure portálon keresztül támogatási jegy megnyitásával érheti.
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128, a dinamikus titkosítás
 > [!NOTE]
@@ -234,7 +231,7 @@ A token korlátozás beállítás konfigurálásához szüksége XML megadásáv
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-Konfigurálásakor a **token** korlátozott házirend, meg kell adnia az elsődleges ** ellenőrző kulcs **, **kibocsátó** és **célközönség** paraméterek. A ** elsődleges hitelesítési kulcs ** tartalmazza a kulcsot, amely a token aláírt, **kibocsátó** a biztonságos jogkivonat szolgáltatás, amely kibocsátja a jogkivonatot. A **célközönség** (más néven **hatókör**) ismerteti, a célt a token vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcs kézbesítési szolgáltatás ellenőrzi, hogy ezek az értékek a token egyeznek-e a sablonban szereplő értékeket. 
+Konfigurálásakor a **token** korlátozott házirend, meg kell adnia az elsődleges **ellenőrző kulcs**, **kibocsátó** és **célközönség** a paraméterek. Az elsődleges **ellenőrző kulcs** tartalmazza a kulcsot, amely a token aláírt, **kibocsátó** a biztonságos jogkivonat szolgáltatás, amely kibocsátja a jogkivonatot. A **célközönség** (más néven **hatókör**) ismerteti, a célt a token vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcs kézbesítési szolgáltatás ellenőrzi, hogy ezek az értékek a token egyeznek-e a sablonban szereplő értékeket.
 
 Az alábbi példa házirendet hoz létre engedélyezési jogkivonat korlátozás. Ebben a példában az ügyfélnek ehhez már van egy jogkivonatot, amely tartalmazza: aláírási kulcs (VerificationKey), a jogkivonat-kibocsátó és a szükséges jogcímeket.
 

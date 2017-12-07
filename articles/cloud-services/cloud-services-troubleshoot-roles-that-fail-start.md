@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: ec33ba08c6284e90edc1870eef4bf3059b917efb
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d24a55fd3b93760035f852a24537c1cec9e4bab2
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>A felhőalapú szolgáltatás nem indult el szerepkörtől hibaelhárítása
 Az alábbiakban néhány gyakori problémát és Azure felhőszolgáltatások kapcsolatos megoldások szerepköröket, amelyek nem indulnak el.
@@ -62,9 +62,8 @@ Miután a szolgáltatást újra kell telepíteni, megjelenik egy hibaüzenet jel
 Használhatja a távoli asztal eléréséhez a szerepkör, és távolról tekintheti meg bővebb hibainformáció. Az alábbi lépések segítségével meg a hibákat a távoli asztal használatával:
 
 1. Győződjön meg arról, hogy telepítve van-e az Azure SDK 1.3-as vagy újabb.
-2. A megoldás üzembe helyezése közben a Visual Studio használatával válassza a "Konfigurálása távoli asztali kapcsolatokhoz...". A távoli asztali kapcsolat konfigurálásával kapcsolatos további információkért lásd: [a távoli asztal Azure szerepkörök](../vs-azure-tools-remote-desktop-roles.md).
-3. A Microsoft Azure klasszikus portálon, amennyiben az a példány állapota **készen**, kattintson a szerepkörpéldányok egyikére.
-4. Kattintson a **Connect** ikonra a **távelérési** a menüszalagon látható területe.
+2. A megoldás üzembe helyezése közben a Visual Studio használatával válassza a "Konfigurálása távoli asztali kapcsolatokhoz". A távoli asztali kapcsolat konfigurálásával kapcsolatos további információkért lásd: [a távoli asztal Azure szerepkörök](../vs-azure-tools-remote-desktop-roles.md).
+3. A Microsoft Azure portálon, amennyiben az a példány állapota **készen**a példány be távolról. A távoli asztal használatával a Felhőszolgáltatásokkal. További információkért lásd: [szerepkörpéldányokat be távolról](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Jelentkezzen be a virtuális géphez a távoli asztal konfigurálása során megadott hitelesítő adataival.
 6. Nyisson meg egy parancsablakot.
 7. Gépelje be: `IPconfig`.

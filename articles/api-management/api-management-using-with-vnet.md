@@ -6,19 +6,18 @@ documentationcenter:
 author: antonba
 manager: erikre
 editor: 
-ms.assetid: 64b58f7b-ca22-47dc-89c0-f6bb0af27a48
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 7fad1b662c587fed6cd7dd6a1792d8598f0e4f85
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: b3fda4e6f38b0966820cc56d24e52feb07b44d15
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatokról (Vnetekről) helyezze el az Azure-erőforrások bármelyike nem internetes routeable hálózati hozzáférést szabályozó teszik lehetővé. Ezek a hálózatok csatlakozhatnak különböző VPN technológiáin a helyszíni hálózatokhoz. További információk az Azure virtuális hálózatok indítsa el az adatok Itt további: [Azure virtuális hálózat áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -110,11 +109,11 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |Bejövő |TCP |INTERNET / VIRTUAL_NETWORK|Ügyfél-kommunikációt kíván API Management|Külső |
 | * / 3443 |Bejövő |TCP |INTERNET / VIRTUAL_NETWORK|Az Azure portál és a Powershell felügyeleti végpont |Belső |
-| * / 80, 443 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|**Hozzáférés az Azure Storage-végpontok** |Külső és belső |
+| * / 80, 443 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Azure Storage, Azure Service Bus és az Azure Active Directory függőség (ha alkalmazható).|Külső és belső | 
 | * / 1433 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|**Hozzáférés az Azure SQL-végpontok** |Külső és belső |
 | * / 11000 - 11999 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|**Hozzáférés az Azure SQL 12-es verzióra** |Külső és belső |
 | * / 14000 - 14999 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|**Hozzáférés az Azure SQL 12-es verzióra** |Külső és belső |
-| * / 5671 |Kimenő |AMQP |VIRTUAL_NETWORK / INTERNET|Az Event Hubs házirend- és figyelési ügynök napló függőség |Külső és belső |
+| * / 5671, 5672 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Az Event Hubs házirend- és figyelési ügynök napló függőség |Külső és belső |
 | * / 445 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Azure-fájlmegosztáshoz git függőség |Külső és belső |
 | * / 25028 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Csatlakozzon az SMTP-továbbító az e-mailek küldésekor |Külső és belső |
 | * / 6381 - 6383 |Bejövő és kimenő |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Hozzáférés a Redis gyorsítótár példányok RoleInstances között |Külső és belső |
@@ -134,6 +133,8 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
  * Az ExpressRoute konfigurációs hirdeti 0.0.0.0/0, és alapértelmezés szerint kényszerített bújtatja minden kimenő forgalom helyszíni.
  * Az Azure API Management tartalmazó alkalmazva UDR 0.0.0.0/0 az Internet egy következő ugrás típusa határozza meg.
  A kombinált hatását, hogy ezeket a lépéseket az, hogy az alhálózat-szintű UDR elsőbbséget élvez az ExpressRoute kényszerített bújtatás, biztosítva ezzel az Azure API Management a kimenő Internet-hozzáféréssel.
+
+**Virtuális hálózati berendezések keresztül útválasztási**: konfigurációkat, amelyekkel egy olyan alapértelmezett útvonalat (0.0.0.0/0) UDR szánt internetes forgalmat az API Management alhálózatból keresztül egy Azure-beli hálózati vitrual készülék megakadályozza, hogy teljes az API Management és a szükséges szolgáltatások közötti kommunikáció során. Ez a konfiguráció nem támogatott. 
 
 >[!WARNING]  
 >Az Azure API Management használata nem támogatott az ExpressRoute-konfigurációkat, amelyek **helytelenül kereszt-hirdetményt a magánhálózati társviszony-létesítési elérési utat a nyilvános társviszony-létesítési elérési útvonalak**. ExpressRoute-konfigurációk, amelyek rendelkeznek a nyilvános társviszony konfigurálva, a Microsoft Azure IP-címtartományok számos útvonal-hirdetéseinek kap Microsoft. Ha ezen címtartomány helytelenül határokon meghirdetett a magánhálózati társviszony-létesítési elérési úton, a záró eredménye, hogy minden kimenő hálózati rendszer érkező csomagokat, az Azure API Management példány alhálózati helytelenül kényszerített-tunneled az ügyfél a helyi hálózati infrastruktúra. Hálózati folyamatot az Azure API Management megszakítja. Ez a probléma megoldása, hogy állítsa le a kereszt-hirdetési útvonalak a nyilvános társviszony-létesítési elérési útról a magánhálózati társviszony-létesítési elérési utat.

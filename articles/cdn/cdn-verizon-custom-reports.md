@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: v-deasim
-ms.openlocfilehash: 8df9fd46fe3ce8d87e7ad5377a21a0bc7a458d2b
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: f09195dc07a96ebcca7f7a9e4bcf521fae13630c
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon egyéni jelentések
 
@@ -30,7 +30,7 @@ Verizon egyéni jelentések segítségével a kezelés portálon Verizon profilo
 ## <a name="accessing-verizon-custom-reports"></a>Verizon egyéni jelentések használata
 1. A CDN-profil panelje, kattintson a **kezelése** gombra.
    
-    ![CDN-profil panelje kezelése gomb](./media/cdn-reports/cdn-manage-btn.png)
+    ![CDN-profil Manage gomb](./media/cdn-reports/cdn-manage-btn.png)
    
     Megnyitja a CDN-felügyeleti portálon.
 2. Vigye a **Analytics** lapra, és vigye a **egyéni jelentések** menü. Kattintson a **CNAME él**.
@@ -74,11 +74,11 @@ Exportálhatja az Excel formátumú adatokat az Excel szimbólum jobb oldalán k
 | 4xx                       | A kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy 4xx HTTP-állapotkódot eredményez a teljes számát jelöli (például 400 Hibás kérelem, 403 Tiltott vagy 404-es nem található). |
 | 5XX                       | Jelzi a kéréseket, és az átvitt adatok (MB) teljes számát a szegély CNAME REKORDOT, amely egy 5xx HTTP-állapotkódot (például 500 belső kiszolgálóhiba vagy 502 Hibás átjáró) eredményez. |
 | -Gyorsítótárának találati százaléka               | Azt jelzi, hogy a kérelmező gyorsítótár-ről volt szolgáltatott kérelmeznék kérelem azon százaléka. |
-| Találatot eredményező gyorsítótárbeli kereséseinek                | Azt jelzi, hogy a kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy találati aránya (például TCP_EXPIRED_HIT, TCP_HIT vagy TCP_PARTIAL_HIT) eredményez a teljes száma. A gyorsítótár-találat következik be, amikor a kért tartalom egy gyorsítótárazott verziója található. |
+| Gyorsítótárbeli találatok                | Azt jelzi, hogy a kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy találati aránya (például TCP_EXPIRED_HIT, TCP_HIT vagy TCP_PARTIAL_HIT) eredményez a teljes száma. A gyorsítótár-találat következik be, amikor a kért tartalom egy gyorsítótárazott verziója található. |
 | Az átvitt adatmennyiség (MB)     | Azt jelzi, hogy a teljes az átvitt adatok mennyisége (MB) a peremhálózati kiszolgálókról HTTP ügyfelek (webböngésző) a peremhálózati CNAME felé. Az átvitt adatok mennyisége kiszámítása a HTTP-válaszfejlécek ad hozzá az adott válasz törzse. Ennek eredményeképpen a minden eszköz átvitt adatok mérete nagyobb, mint a fájl tényleges mérete. |
 | Leírás               | Az állomásnév szerint él CNAME azonosítja. |
-| A találatok                      | Azt jelzi, a peremhálózati CNAME kérelmek teljes száma |
-| A gyorsítótárbeli sikertelen keresések                    | Azt jelzi, hogy a kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy gyorsítótár-tévesztései (például TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS vagy TCP_MISS) eredményez a teljes száma. A gyorsítótár-tévesztései következik be, amikor a kért tartalom nem került a gyorsítótárba, figyelembe véve a kérelem a biztonsági kiszolgálón. | 
+| Találatok                      | Azt jelzi, a peremhálózati CNAME kérelmek teljes száma |
+| Tévesztések                    | Azt jelzi, hogy a kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy gyorsítótár-tévesztései (például TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS vagy TCP_MISS) eredményez a teljes száma. A gyorsítótár-tévesztései következik be, amikor a kért tartalom nem került a gyorsítótárba, figyelembe véve a kérelem a biztonsági kiszolgálón. | 
 | Gyorsítótár                  | Azt jelzi, hogy a kéréseket, és az átvitt adatok (MB) a peremhálózati CNAME REKORDOT, amely egy CONFIG_NOCACHE gyorsítótár állapotkódot eredményez a teljes száma.  |
 | Egyéb                     | Azt jelzi, hogy a kéréseket, és a 2xx - 5xx tartományon kívül eső HTTP-állapotkódot eredményez átvitt (MB) a peremhálózati CNAME megjelölt adatok teljes száma. |
 | Platform                  | Azt jelzi, hogy a platform, amely a peremhálózati CNAME-forgalmat kezeli. |

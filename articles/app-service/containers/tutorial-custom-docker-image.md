@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 4ba53dd1239290c64907ed431d404b2d1be66c36
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 08503a7f6f32125c324173636dbda0548f3ccb8c
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker kép webalkalmazás a tárolók használata
 
@@ -84,7 +84,7 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 
 A parancs a következőhöz hasonló kimenetet hoz létre:
 
-```bash
+```
 # The output from the commands in this article has been shortened for brevity.
 
 Sending build context to Docker daemon  5.558MB
@@ -130,7 +130,7 @@ A beállításjegyzék olyan alkalmazás, amely üzemelteti a képek és szolgá
 
 Docker, amely lehetővé teszi a saját adattárak nyilvános vagy titkos beállításjegyzékbeli Docker lemezképek is. Egyéni Docker-lemezkép leküldése a nyilvános Docker-hubhoz, használja a [docker leküldéses](https://docs.docker.com/engine/reference/commandline/push/) parancsot, és a teljes lemezképet a felhasználónév és a címke. A teljes lemezképet nevét és az alábbi minta néz címke:
 
-```bash
+```
 <docker-id>/image-name:tag
 ```
 
@@ -143,12 +143,12 @@ docker login --username <docker-id> --password <docker-hub-password>
 "Sikeres bejelentkezés" üzenet jelzi, hogy van bejelentkezve. Miután bejelentkezett, a lemezkép leküldése Docker Hub használata a [docker leküldéses](https://docs.docker.com/engine/reference/commandline/push/) parancsot.
 
 ```bash
-docker push <docker-id>/mydockerimage:v1.0.0 .
+docker push <docker-id>/mydockerimage:v1.0.0
 ```
 
 Győződjön meg arról, hogy az sikeres volt. a parancs megvizsgálásával leküldéses kimenetét.
 
-```bash
+```
 The push refers to a repository [docker.io/<docker-id>/mydockerimage:v1.0.0]
 c33197c3f6d4: Pushed
 ccd2c850ee43: Pushed
@@ -314,7 +314,7 @@ top
 
 A `top` parancs közzététele tároló minden futó folyamatot.
 
-```bash
+```
 PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
  1 root      20   0  945616  35372  15348 S  0.0  2.1   0:04.63 node
 20 root      20   0   55180   2776   2516 S  0.0  0.2   0:00.00 sshd
@@ -343,7 +343,7 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 A parancs azt jelzi, hogy a következő JSON-karakterláncban, megjeleníti, hogy a konfiguráció módosítása sikeres volt hasonló kimenetet:
 
-```bash
+```json
 [
   {
     "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
@@ -383,7 +383,7 @@ az acr create --name <azure-container-registry-name> --resource-group myResource
 
 Tároló létrehozása a következő kimenetet hoz létre:
 
-```bash
+```
  - Finished ..
 Create a new service principal and assign access:
   az ad sp create-for-rbac --scopes /subscriptions/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<azure-container-registry-name> --role Owner --password <password>
@@ -447,6 +447,12 @@ Győződjön meg arról, hogy a bejelentkezés sikeres volt.
 
 ### <a name="push-an-image-to-azure-container-registry"></a>A képfájl leküldése Azure tároló beállításjegyzék
 
+> [!NOTE]
+> Saját rendszerkép használata, címkét a lemezképet az alábbiak szerint:
+> ```bash
+> docker tag <azure-container-registry-name>.azurecr.io/mydockerimage
+> ```
+
 A lemezkép használatával leküldéses a `docker push` parancsot. Címke a kép és a beállításjegyzék, a lemezkép neve, majd a címke nevét.
 
 ```bash
@@ -505,7 +511,7 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 A parancs azt jelzi, hogy a következő JSON-karakterláncban, megjeleníti, hogy a konfiguráció módosítása sikeres volt hasonló kimenetet:
 
-```bash
+```json
 [
   {
     "name": "DOCKER_CUSTOM_IMAGE_NAME",
