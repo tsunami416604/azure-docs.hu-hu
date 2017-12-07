@@ -13,29 +13,25 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 07/10/2017
+ms.date: 07/11/2017
 ms.author: andrela
-ms.openlocfilehash: cb1c387628a79ddfada0786c8c6422b6671a2c19
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: MT
+ms.openlocfilehash: 994705b0a9c7ca850c357a5810f1edb1618098d6
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Java használata Azure SQL Database-adatbázis lekérdezéséhez
 
-Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható a [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) egy Azure SQL Database-adatbázishoz való csatlakozáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.
+Ez a rövid útmutató azt ismerteti, hogyan használható a [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) egy Azure SQL Database-adatbázishoz való csatlakozáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyors üzembehelyezési útmutató befejezéséhez győződjön meg róla, hogy rendelkezik az alábbi előfeltételekkel:
+A rövid útmutató végrehajtásához győződjön meg arról, hogy megfelel az alábbi előfeltételeknek:
 
-- Azure SQL Database-adatbázis. Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja: 
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-   - [DB létrehozása – portál](sql-database-get-started-portal.md)
-   - [DB létrehozása – CLI](sql-database-get-started-cli.md)
-   - [DB létrehozása – PowerShell](sql-database-get-started-powershell.md)
-
-- A gyors üzembe helyezési útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
+- A rövid útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
 
 - Telepítette a Javát és az operációs rendszerének megfelelő kapcsolódó szoftvereket.
 
@@ -45,15 +41,7 @@ A gyors üzembehelyezési útmutató befejezéséhez győződjön meg róla, hog
 
 ## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
 
-Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
-
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
-3. Az adatbázis **Áttekintés** oldalán tekintse meg a teljes kiszolgálónevet az alábbi képen látható módon: Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson ide a másoláshoz** lehetőség.  
-
-   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
-
-4. Ha elfelejtette a kiszolgálói bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, ahol megtekintheti a kiszolgáló rendszergazdájának nevét.  Szükség esetén kérjen új jelszót.     
+[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 ## <a name="create-maven-project-and-dependencies"></a>**Maven-projekt és függőségek létrehozása**
 1. A terminálból hozza létre az **sqltest** nevű új Maven-projektet. 

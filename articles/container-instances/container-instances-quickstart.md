@@ -1,30 +1,23 @@
 ---
-title: "Gyors üzembe helyezés – az első Azure tároló példányok tároló létrehozása"
+title: "Rövid útmutató – Az első Azure Container Instances-tároló létrehozása"
 description: "Az Azure Container Instances üzembe helyezése és az első lépések"
 services: container-instances
-documentationcenter: 
 author: seanmck
 manager: timlt
 editor: mmacy
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/20/2017
+ms.date: 11/29/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 160ba84d2c022ca3af2eb13a9689a282b4a6b198
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
-ms.translationtype: MT
+ms.openlocfilehash: f6c809698bed4f91a7121c4515b4375b3cad6d70
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Az első tároló létrehozása az Azure Container Instances szolgáltatásban
-Az Azure tároló példányok megkönnyíti a létrehozása és kezelése a Docker-tároló az Azure virtuális gépeket, vagy egy magasabb szintű szolgáltatást elfogadása nélkül. A gyors üzembe helyezés a tároló létrehozása az Azure-ban, és tegye elérhetővé azt az interneten, egy nyilvános IP-címmel. Ez a művelet egyetlen paranccsal hajtható végre. Néhány másodpercen belül megjelenik ez a böngészőben:
+Az Azure Container Instances segítségével egyszerűen hozhat létre és felügyelhet Docker-tárolókat az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie, vagy egy magasabb szolgáltatási szintre kellene váltania. Ebben a rövid útmutatóban létrehozhat egy tárolót az Azure-ban, és közzéteheti az interneten egy nyilvános IP-címen keresztül. Ez a művelet egyetlen paranccsal hajtható végre. Néhány másodperc elteltével a következőt láthatja a böngészőben:
 
 ![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-app-browser]
 
@@ -32,13 +25,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Az Azure-felhő rendszerhéj vagy a helyi telepítése az Azure parancssori felület segítségével a gyors üzembe helyezés befejeződik. Rendszererőforrásokra telepíti, és a parancssori felület helyileg, a gyors üzembe helyezés megköveteli, hogy futnak-e az Azure parancssori felület 2.0.21 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+A rövid útmutató teljesítéséhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Ha a CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.21-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure Container Instances Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Ez egy olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot a a [az csoport létrehozása] [ az-group-create] parancsot.
+Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal.
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -48,13 +41,13 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Létrehozhat egy tárolót, adja meg a nevét, egy Docker-lemezképet, és egy Azure erőforráscsoport a [az tároló létrehozása] [ az-container-create] parancsot. Ha szeretné, közzéteheti a tárolót az interneten egy nyilvános IP-cím használatával. A gyors üzembe helyezés, telepít egy tároló, amelyen egy kis webalkalmazás írt [Node.js](http://nodejs.org).
+A tároló létrehozásához meg kell adnia egy nevet, egy Docker-rendszerképet és egy Azure-erőforráscsoportot az [az container create][az-container-create] parancshoz. Ha szeretné, közzéteheti a tárolót az interneten egy nyilvános IP-cím használatával. Ebben az útmutatóban egy olyan tárolót fog üzembe helyezni, amely egy, a [Node.js](http://nodejs.org) használatával létrehozott kisméretű webalkalmazást üzemeltet.
 
 ```azurecli-interactive
 az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public --ports 80
 ```
 
-Néhány másodperc elteltével válasz érkezik a kérésre. Kezdetben a tárolóban van a **létrehozása** állapotát, de néhány másodpercen belül kell kezdődnie. Az állapotkezelő segítségével ellenőrizheti a [az tároló megjelenítése] [ az-container-show] parancs:
+Néhány másodperc elteltével válasz érkezik a kérésre. A tároló kezdetben **Létrehozás** állapotban van, de néhány másodpercen belül el kell indulnia. Az állapotot az [az container show][az-container-show] paranccsal ellenőrizheti:
 
 ```azurecli-interactive
 az container show --name mycontainer --resource-group myResourceGroup
@@ -78,13 +71,13 @@ A kimenet alján látható a tároló kiépítési állapota és IP-címe:
 ...
 ```
 
-Ha áthelyezi a tároló a **sikeres** állapotba kerül, a böngésző, a megadott IP-cím használatával csatlakozni tud hozzá.
+Miután a tároló átvált a **Sikeres** állapotba, elérhetővé válik a böngészőben a megadott IP-címen.
 
 ![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-app-browser]
 
 ## <a name="pull-the-container-logs"></a>A tároló naplóinak lekérése
 
-Képes lekérni a ahhoz a tárolóhoz létrehozott naplók a [az tároló naplók] [ az-container-logs] parancs:
+A létrehozott tároló naplóit az [az container logs][az-container-logs] paranccsal kérheti le:
 
 ```azurecli-interactive
 az container logs --name mycontainer --resource-group myResourceGroup
@@ -93,36 +86,35 @@ az container logs --name mycontainer --resource-group myResourceGroup
 Kimenet:
 
 ```bash
-Server running...
-10.240.255.107 - - [20/Nov/2017:19:16:28 +0000] "GET / HTTP/1.1" 200 1663 "" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
-10.240.255.107 - - [20/Nov/2017:19:16:28 +0000] "GET / HTTP/1.1" 200 1663
-10.240.255.107 - - [20/Nov/2017:19:16:28 +0000] "GET /favicon.ico HTTP/1.1" 404 19
+listening on port 80
+::ffff:10.240.255.107 - - [29/Nov/2017:20:48:50 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
+::ffff:10.240.255.107 - - [29/Nov/2017:20:48:50 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://52.224.178.107/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
 ```
 
 ## <a name="delete-the-container"></a>A tároló törlése
 
-Amikor elkészült, a tárolóval, akkor is távolítsa el azt a [az tároló törlése] [ az-container-delete] parancs:
+Miután végzett a tárolóval, az [az container delete][az-container-delete] parancs használatával távolíthatja el:
 
 ```azurecli-interactive
 az container delete --name mycontainer --resource-group myResourceGroup
 ```
 
-Győződjön meg arról, hogy a tároló törölve lett, hajtsa végre a [az tároló lista](/cli/azure/container#az_container_list) parancs:
+A tároló törlésének ellenőrzéséhez futtassa az [az container list](/cli/azure/container#az_container_list) parancsot:
 
 ```azurecli-interactive
 az container list --resource-group myResourceGroup -o table
 ```
 
-A **mycontainer** tároló nem szerepelnek a parancs kimenetét. Ha nincs más tárolók erőforráscsoportban, nincs kimenet jelenik meg.
+A **mycontainer** tárolónak nem szabad megjelennie a parancs kimenetében. Ha az erőforráscsoportban nincs másik tároló, akkor semmilyen kimenet nem jelenik meg.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A gyors üzembe helyezés tárolójában kódjának összes rendelkezésre áll [a Githubon][app-github-repo], a Dockerfile együtt. Ha próbaképpen szeretné maga létrehozni és üzembe helyezni az Azure Container Instances szolgáltatásban az Azure Container Registry használatával, folytassa az Azure Container Instances oktatóanyagával.
+A jelen rövid útmutatóban alkalmazott tároló kódja a Docker-fájljával egyetemben elérhető [a GitHubon][app-github-repo]. Ha próbaképpen szeretné maga létrehozni és üzembe helyezni az Azure Container Instances szolgáltatásban az Azure Container Registry használatával, folytassa az Azure Container Instances oktatóanyagával.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyagai](./container-instances-tutorial-prepare-app.md)
 
-Próbálja ki az Azure-on futó tárolók az orchestration rendszer beállítások, tekintse meg a [Service Fabric] [ service-fabric] vagy [Azure tároló szolgáltatás (AKS)] [ container-service] quickstarts.
+Ha ki szeretné próbálni a tárolók futtatásának különböző lehetőségeit egy Azure-beli előkészítési rendszerben, tekintse meg a [Service Fabric][service-fabric] vagy az [Azure Container Service (AKS)][container-service] rövid útmutatóit.
 
 <!-- LINKS -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git

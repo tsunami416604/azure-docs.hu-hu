@@ -1,6 +1,6 @@
 ---
-title: "Adatok gyűjtése a helyszíni Linux számítógépekről az Azure Naplóelemzés |} Microsoft Docs"
-description: "Útmutató a Linux Log Analytics-ügynök telepítéséhez és az adott operációs rendszer a Naplóelemzési adatok gyűjtésének engedélyezése."
+title: "Adatok gyűjtése helyszíni linuxos számítógépekről az Azure Log Analyticsszel | Microsoft Docs"
+description: "Megtudhatja, hogyan telepítheti a Linuxhoz készült Log Analytics-ügynököket, és hogyan gyűjthet adatokat Linux rendszerről Log Analytics használatával."
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
@@ -12,67 +12,70 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/13/2017
+ms.date: 11/28/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: d22fe6456c3bd886f8f8863d362c0084fbe03da3
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
-ms.translationtype: MT
+ms.openlocfilehash: 66748adc49ef921ab8adb5306b2a483234b076ae
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>Adatokat gyűjteni a környezetében üzemeltetett Linux rendszerű számítógépek
-[Az Azure Naplóelemzés](log-analytics-overview.md) tud adatokat gyűjteni közvetlenül a fizikai vagy virtuális Linux-számítógépek és egyéb erőforrások a környezetben egy részletes elemzését és a korrelációs tárházba.  A gyors üzembe helyezés bemutatja, hogyan konfigurálja, és adatokat gyűjteni a Linux rendszerű számítógép néhány egyszerű lépésben.  Azure Linux virtuális gépek, a következő témakör [Azure virtuális gépek kapcsolatos adatok gyűjtéséhez](log-analytics-quick-collect-azurevm.md).  
- 
+# <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>Adatok gyűjtése saját környezetben futtatott linuxos számítógépekről
+Az [Azure Log Analytics](log-analytics-overview.md) közvetlenül tud adatokat gyűjteni az Ön környezetében található fizikai vagy virtuális Linux-gépekről és egyéb erőforrásokról egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a Linux rendszerű számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli linuxos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](log-analytics-quick-collect-azurevm.md) ismertető cikket.  
+
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="log-in-to-azure-portal"></a>Jelentkezzen be Azure-portálon
-Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com). 
+## <a name="log-in-to-azure-portal"></a>Bejelentkezés az Azure Portalra
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
 
-## <a name="create-a-workspace"></a>Munkaterületek létrehozása
-1. Az Azure portálon kattintson **további szolgáltatások** bal alsó sarokban található. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Analytics jelentkezzen**.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
-2. Kattintson a **létrehozása**, majd válassza ki a következő elemeket kell:
+## <a name="create-a-workspace"></a>Munkaterület létrehozása
+1. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+2. Kattintson a **Létrehozás** parancsra, majd válassza ki a következő elemek beállításait:
 
-  * Adjon meg egy nevet az új **OMS-munkaterület**, például a *DefaultLAWorkspace*. 
+  * Adja meg az új **OMS-munkaterület** nevét, például: *DefaultLAWorkspace*. 
   * A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
-  * A **erőforráscsoport**, válasszon ki egy meglévő erőforráscsoportot, amely tartalmaz egy vagy több Azure virtuális gépeken.  
-  * Válassza ki a **hely** a virtuális gépek vannak telepítve.  További információkért lásd: amely [Naplóelemzési is elérhető régiók](https://azure.microsoft.com/regions/services/).
-  * Három különböző választhat **tarifacsomagok** Naplóelemzési, de a gyors üzembe helyezés, válassza ki kívánja a **szabad** réteg.  Az adott szintek kapcsolatos további információkért lásd: [napló Analytics díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/).
+  * Az **Erőforráscsoport** beállításnál válasszon ki egy meglévő erőforráscsoportot, amely egy vagy több Azure-beli virtuális gépet tartalmaz.  
+  * Válassza ki a **Helyet** a virtuális gépek üzembehelyezési céljaként.  További információkért tekintse meg [a Log Analytics által támogatott régiókat](https://azure.microsoft.com/regions/services/).
+  * A Log Analytics szolgáltatáshoz három különböző **tarifacsomag** közül választhat. A jelen rövid útmutató esetében válassza az **ingyenes** szintet.  További információt az elérhető csomagokról [a Log Analytics részletes díjszabásában](https://azure.microsoft.com/pricing/details/log-analytics/) találhat.
 
         ![Create Log Analytics resource blade](./media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-01.png)<br>  
-3. Miután megadta a szükséges adatokat a a **OMS-munkaterület** ablaktáblán kattintson a **OK**.  
+3. Miután az **OMS-munkaterület** panelen megadta a szükséges adatokat, kattintson az **OK** gombra.  
 
 Az **Értesítések** menüpontot kiválasztva nyomon követheti, hogyan ellenőrzi a rendszer az adatokat, és hogyan hozza létre a munkaterületet. 
 
-## <a name="obtain-workspace-id-and-key"></a>Munkaterületének Azonosítóját és kulcs beszerzése
-Linux az OMS-ügynök telepítéséhez szükséges a munkaterület azonosítója és kulcsa a Naplóelemzési munkaterületet.  Ez az információ az ügynök burkoló parancsfájl megfelelően konfigurálni az ügynököt, és sikeresen kommunikálni képes Naplóelemzési szükséges.  
+## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
+A Linuxhoz készült OMS-ügynök telepítése előtt szüksége lesz a Log Analytics-munkaterület azonosítójára és kulcsára.  Ezekre az adatokra az ügynök burkoló parancsfájljának lesz szüksége az ügynök konfigurálásához és a Log Analyticsszel való sikeres kommunikációjának biztosításához.  
 
-1. Az Azure portálon kattintson **további szolgáltatások** bal alsó sarokban található. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Analytics jelentkezzen**.
-2. A Naplóelemzési munkaterület listában válassza ki a *DefaultLAWorkspace* korábban létrehozott.
-3. Válassza ki **speciális beállítások**.<br><br> ![Naplóelemzés speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
-4. Válassza ki **csatlakoztatott források**, majd válassza ki **Linux kiszolgálók**.   
-5. Az érték jobb oldalán **munkaterület azonosítója** és **elsődleges kulcs**. Másolással illessze be a kedvenc szerkesztő mindkettő.   
+1. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
+2. A Log Analytics-munkaterületek listájában válassza ki a korábban létrehozott *DefaultLAWorkspace* elemet.
+3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![Log Analytics speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+4. Válassza ki a **Csatlakoztatott források**, majd a **Linuxos kiszolgálók** elemet.   
+5. A **Munkaterület-azonosító** és az **Elsődleges kulcs** jobb oldalán lévő érték. Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.   
 
-## <a name="install-the-agent-for-linux"></a>A Linux-ügynök telepítése
-Az alábbi lépéseket az ügynök a Naplóelemzési telepítő Azure és az Azure Government felhő konfigurálását.  
+## <a name="install-the-agent-for-linux"></a>A Linuxhoz készült ügynök telepítése
+Az alábbi lépésekkel konfigurálhatóak az ügynök beállításai a Log Analytics használatához az Azure és az Azure Government felhőben.  
 
-1. A Log Analyticshez való csatlakozáshoz a Linux-számítógép konfigurálását a következő parancsot a munkaterület azonosítója és kimásolt elsődleges kulcs.  Ez a parancs letölti az ügynök, ellenőrzi az ellenőrzőösszegek és telepíti azt. 
+>[!NOTE]
+>A Linuxhoz készült OMS-ügynököt nem lehet úgy konfigurálni, hogy egynél több Log Analytics-munkaterületre is jelentsen.  
+
+1. A linuxos számítógép a Log Analyticshez való csatlakoztatásának konfigurálásához futtassa az alábbi parancsot, és adja meg a korábban kimásolt munkaterület-azonosítót és elsődleges kulcsot.  A parancs letölti az ügynököt, majd az ellenőrzőösszeg érvényesítése után telepíti azt. 
     
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-2. Azure Government felhőben Log Analyticshez való csatlakozáshoz a Linux-számítógép konfigurálása, a következő parancsot a munkaterület azonosítója és kimásolt elsődleges kulcs.  Ez a parancs letölti az ügynök, ellenőrzi az ellenőrzőösszegek és telepíti azt. 
+2. A linuxos számítógép az Azure Government felhőben futó Log Analyticshez való csatlakoztatásának konfigurálásához futtassa az alábbi parancsot, és adja meg a korábban kimásolt munkaterület-azonosítót és elsődleges kulcsot.  A parancs letölti az ügynököt, majd az ellenőrzőösszeg érvényesítése után telepíti azt. 
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-## <a name="configure-agent-to-communicate-with-a-proxy-server"></a>Ügynök kommunikáljon a proxykiszolgáló konfigurálása
+## <a name="configure-agent-to-communicate-with-a-proxy-server"></a>Az ügynök konfigurálása proxykiszolgálókkal folytatott kommunikációhoz
 
-Hajtsa végre az alábbi lépéseket, ha a Linux rendszerű számítógépek kell szolgáltatáshoz proxykiszolgálón keresztül kommunikálnak.  A proxy konfigurációs érték szintaxisa a következő `[protocol://][user:password@]proxyhost[:port]`.
+A következő lépéseket akkor hajtsa végre, ha a linuxos számítógépeinek egy proxykiszolgálón keresztül kell kommunikálniuk a Log Analyticsszel.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.
 
-1. A fájl szerkesztése `/etc/opt/microsoft/omsagent/proxy.conf` futtassa a következő parancsokat, és módosítsa az értékeket a vonatkozó beállítások.
+1. Szerkessze az `/etc/opt/microsoft/omsagent/proxy.conf` fájlt a következő parancsok futtatásával, és módosítsa az értékeket a saját konkrét beállításaira.
 
     ```
     proxyconf="https://proxyuser:proxypassword@proxyserver01:30443"
@@ -86,39 +89,39 @@ Hajtsa végre az alábbi lépéseket, ha a Linux rendszerű számítógépek kel
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
     ``` 
 
-## <a name="collect-event-and-performance-data"></a>Esemény-és teljesítményadatokat gyűjt
-A Naplóelemzési eseményeket gyűjteni a Linux rendszernaplójába bejegyzett és a teljesítményszámlálók, amennyit megadott a hosszabb távú elemzési és jelentéskészítési, és hajtsa végre a műveletet egy adott esemény észlelése esetén.  Kövesse az alábbi lépéseket a Linux rendszernaplójába bejegyzett, és néhány általános teljesítményszámlálói eseményeinek gyűjtése kezdődnie konfigurálásához.  
+## <a name="collect-event-and-performance-data"></a>Esemény- és teljesítményadatok gyűjtése
+A Log Analytics képes az események gyűjtésére a Linux rendszernaplójából és a megadott teljesítményszámlálókból a hosszabb távú elemzések és jelentések készítéséhez, valamint műveleteket hajt végre bizonyos feltételek észlelése esetén.  A következő lépésekkel konfigurálhatja az események gyűjtését a Linux rendszernaplójából, illetve egyes gyakran használt teljesítményszámlálókból is.  
 
-1. Válassza ki **Syslog**.  
-2. Az Eseménynapló nevében a napló beírásával vegye fel.  Típus **Syslog** és kattintson a plusz jelre  **+** .  
-3. A tábla, törölje a jelet a nyomkövetés alapjául szolgáló **Info**, **értesítés** és **Debug**. 
-4. Kattintson a **mentése** a konfiguráció mentéséhez, a lap tetején.
-5. Válassza ki **Linux teljesítményadatokat** a Windows rendszerű számítógépeken a teljesítményszámlálók gyűjtésének engedélyezése. 
-6. Új Naplóelemzési munkaterület Linux teljesítményszámlálói először konfigurálásakor lehetősége van gyorsan létrehozhat több általános jellegű számlálót. Az egyes jelölőnégyzetét szerepelnek.<br><br> ![Alapértelmezett Windows teljesítményszámlálók kijelölt](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png).<br><br> Kattintson a **adja hozzá a kijelölt teljesítményszámlálók**.  Ezek felvétele, illetve egy második tíz gyűjtemény mintavételi időköznek az adott néven beállítás.  
-7. Kattintson a **mentése** a konfiguráció mentéséhez, a lap tetején.
+1. Válassza a **Syslog** elemet.  
+2. Eseménynaplókat a nevük begépelésével adhat hozzá.  Írja be a **Syslog** kifejezést, majd kattintson a pluszjelre **+**.  
+3. A táblában törölje a **Tájékoztatás**, az **Értesítés** és a **Hibakeresés** súlyossági szint jelölését. 
+4. A konfiguráció mentéséhez kattintson az oldal tetején található **Mentés** parancsra.
+5. Válassza a **Linuxos teljesítményadatok** elemet a teljesítményszámláló-adatok gyűjtésének egy Linux rendszerű gépen történő engedélyezéséhez. 
+6. Amikor először konfigurálja egy új Log Analytics-munkaterület Linux-teljesítményszámlálóit, akkor több gyakran használt számlálót is gyorsan létrehozhat. Ezek mindegyike mellett egy jelölőnégyzet található.<br><br> ![Alapértelmezett Linux-teljesítményszámlálók kiválasztva](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png).<br><br> Kattintson **A kijelölt teljesítményszámlálók felvétele** elemre.  A rendszer hozzáadja a kiválasztott számlálókat, és mindegyikhez beállít egy tíz másodperces mintagyűjtési időszakot.  
+7. A konfiguráció mentéséhez kattintson az oldal tetején található **Mentés** parancsra.
 
 ## <a name="view-data-collected"></a>Összegyűjtött adatok megtekintése
-Most, hogy engedélyezte az adatok gyűjtését, lehetővé teszi, hogy egy egyszerű napló keresési például bizonyos adatai a célszámítógépen futtatni.  
+Most, hogy engedélyezte az adatgyűjtést, futtasson le egy egyszerű naplóbeli keresést, hogy megtekinthessen néhány, a célszámtógépekről származó adatot.  
 
-1. Az Azure-portálon Naplóelemzési keresse meg és jelölje ki a korábban létrehozott munkaterületen.
-2. Kattintson a **naplófájl-keresési** csempe és a napló Keresés ablaktábla a lekérdezés mezőtípus `Perf` , és adja meg, vagy kattintson a Keresés gombra a lekérdezés mező jobb majd nyomja le.<br><br> ![A Naplóelemzési jelentkezzen keresési lekérdezés – példa](media/log-analytics-quick-collect-linux-computer/log-analytics-portal-queryexample.png)<br><br> A lekérdezés az alábbi ábrán például 735 teljesítmény rögzíti adott vissza.<br><br> ![A Naplóelemzési naplófájl-keresési eredmény](media/log-analytics-quick-collect-linux-computer/log-analytics-search-perf.png)
+1. Az Azure Portalon lépjen a Log Analytics felületre, és válassza ki a korábban létrehozott munkaterületet.
+2. Válassza a **Naplóbeli keresés** csempét, és a Naplóbeli keresés panel lekérdezési mezőjében adja meg a `Perf` típust, majd nyomja le az Enter billentyűt, vagy kattintson a lekérdezési mezőtől jobbra található Keresés gombra.<br><br> ![Példa Log Analytics naplóbeli keresési lekérdezésre](media/log-analytics-quick-collect-linux-computer/log-analytics-portal-queryexample.png)<br><br> A következő képen látható lekérdezés 735 teljesítményrekordot adott vissza.<br><br> ![Log Analytics naplóbeli keresés eredménye](media/log-analytics-quick-collect-linux-computer/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szükség, az ügynök eltávolítása a Linux rendszerű számítógép, és a Naplóelemzési munkaterület törlése.  
+Ha már nincs rá szükség, eltávolíthatja az ügynököt a linuxos számítógépről, és törölheti a Log Analytics-munkaterületet.  
 
-Távolítsa el az ügynököt, hajtsa végre az alábbi lépéseket.
+Az ügynök eltávolításához hajtsa végre az alábbi lépéseket.
 
-1. Töltse le a a Linux-ügynök [univerzális parancsfájl](https://github.com/Microsoft/OMS-Agent-for-Linux/releases) arra a számítógépre.
-2. A köteg .sh fájl w futtassa a *--kiürítése* argumentum a számítógépen, amely teljesen eltávolítja az ügynököt és konfigurációja.
+1. Töltse le a linuxos ügynök [univerzális parancsfájlját](https://github.com/Microsoft/OMS-Agent-for-Linux/releases) a számítógépre.
+2. Futtassa a csomag .sh fájlját a *--purge* argumentummal a számítógépen, ami teljesen eltávolítja az ügynököt és annak konfigurációját.
 
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
-A munkaterület törléséhez válassza ki a korábban és az erőforrások lapon kattintson a létrehozott Naplóelemzési munkaterület **törlése**.<br><br> ![A Naplóelemzési erőforrás törlése](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
+A munkaterület törléséhez válassza ki a korábban létrehozott Log Analytics-munkaterületet, és az erőforrás oldalán kattintson a **Törlés** parancsra.<br><br> ![Log Analytics-erőforrás törlése](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy gyűjti a működési és a helyszíni Linux számítógépről teljesítményadatokat, könnyen megkezdheti felfedezése elemzése és a begyűjtött adatok intézkedést *szabad*.  
+Most, hogy már gyűjti a működési és teljesítményadatokat a linuxos számítógépéről, könnyen nekiláthat az *ingyenesen* gyűjtött adatok felfedezésének és elemzésének, és reagálhat a kapott eredményekre.  
 
-Megtudhatja, hogyan tekintheti meg és elemezheti az adatokat, hogy továbbra is az oktatóanyag.   
+Az adatok megtekintésének és elemzésének ismertetéséhez lépjen tovább az útmutatóhoz.   
 
 > [!div class="nextstepaction"]
-> [Megtekintése vagy Naplóelemzési adatok elemzése](log-analytics-tutorial-viewdata.md)
+> [Adatok megtekintése és elemzése a Log Analytics szolgáltatásban](log-analytics-tutorial-viewdata.md)

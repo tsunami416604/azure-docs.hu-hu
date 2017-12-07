@@ -1,35 +1,27 @@
 ---
-title: "Az Azure-tároló szolgáltatás (AKS) fürt frissítése |} Microsoft Docs"
-description: "Az Azure-tároló szolgáltatás (AKS) fürt frissítése"
+title: "Azure Container Service- (AKS-) fürt frissítése"
+description: "Azure Container Service- (AKS-) fürt frissítése"
 services: container-service
-documentationcenter: 
 author: gabrtv
 manager: timlt
-editor: 
-tags: aks, azure-container-service
-keywords: "Kubernetes, Docker, tárolók, mikroszolgáltatások, Azure"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: article
 ms.date: 11/15/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 15e3e96587962ef9cc531e1825f37b92d26928fd
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 40b55309ee4c52743b30682d8751e6e432f9bb4a
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
-# <a name="upgrade-an-azure-container-service-aks-cluster"></a>Az Azure-tároló szolgáltatás (AKS) fürt frissítése
+# <a name="upgrade-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt frissítése
 
-Az Azure tároló szolgáltatás (AKS) megkönnyíti a Kubernetes fürtök frissítése beleértve közös felügyeleti feladatok elvégzésére.
+Az Azure Container Service (AKS) segítségével egyszerűen hajthatók végre az általános felügyeleti tevékenységek, például a Kubernetes-fürtök frissítése.
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS-fürt frissítése
 
-Fürt frissítése előtt használja a `az aks get-versions` parancs futtatásával ellenőrizze, amely feloldja a Kubernetes érhetők el a frissítést.
+A fürtök frissítése előtt az `az aks get-versions` parancs használatával ellenőrizze, hogy mely Kubernetes-kiadások frissíthetők.
 
 ```azurecli-interactive
 az aks get-versions --name myK8sCluster --resource-group myResourceGroup --output table
@@ -43,7 +35,7 @@ Name     ResourceGroup    MasterVersion    MasterUpgrades       NodePoolVersion 
 default  myResourceGroup  1.7.7            1.8.2, 1.7.9, 1.8.1  1.7.7               1.8.2, 1.7.9, 1.8.1
 ```
 
-Három verzióra frissítéshez tudunk: 1.7.9, 1.8.1 és 1.8.2. Így a `az aks upgrade` parancsot az elérhető legújabb verzióra frissítéséhez.  A frissítési folyamat során csomópontra van közé tartoznak gondosan [cordoned és merül le](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/) minimalizálása érdekében a legkisebb mértékű akadályozása érdekében a futó alkalmazások.
+Három verzió érhető el a frissítéshez: 1.7.9, 1.8.1 és 1.8.2. Az `az aks upgrade` paranccsal frissíthetünk a legújabb elérhető verzióra.  A frissítési folyamat során a csomópontok megfelelően [el vannak szigetelve és ki vannak ürítve](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/), hogy minimális hatással legyenek a futó alkalmazásokra.  A fürtfrissítések indítása előtt bizonyosodjon meg arról, hogy rendelkezésre áll elegendő további számítási kapacitás a számítási feladatok a fürtcsomópontok hozzáadása és eltávolítása során történő kezeléséhez.
 
 ```azurecli-interactive
 az aks upgrade --name myK8sCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
@@ -105,7 +97,7 @@ Kimenet:
 }
 ```
 
-Most már ellenőrizheti a frissítés az sikeres volt a `az aks show` parancsot.
+Most az `az aks show` paranccsal ellenőrizheti, hogy sikerült-e a frissítés.
 
 ```azurecli-interactive
 az aks show --name myK8sCluster --resource-group myResourceGroup --output table
@@ -121,7 +113,7 @@ myK8sCluster  eastus     myResourceGroup  1.8.2                Succeeded        
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a központi telepítésére és felügyeletére AKS a AKS oktatóanyagok rendelkező.
+Az AKS üzembe helyezésével és kezelésével kapcsolatos további információkért lásd az AKS oktatóanyagait.
 
 > [!div class="nextstepaction"]
-> [AKS oktatóanyag](./tutorial-kubernetes-prepare-app.md)
+> [AKS-oktatóanyag](./tutorial-kubernetes-prepare-app.md)

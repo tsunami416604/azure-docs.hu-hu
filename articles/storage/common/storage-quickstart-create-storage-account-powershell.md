@@ -1,9 +1,9 @@
 ---
-title: "Azure gyors üzembe helyezés – hozzon létre egy tárfiókot, PowerShell-lel |} Microsoft Docs"
-description: "Gyorsan megismerheti, hogyan kell új tárfiók létrehozása a PowerShell használatával"
+title: "Azure gyors üzembe helyezés – Tárfiók létrehozása a PowerShell-lel | Microsoft Docs"
+description: "Gyorsan megismerheti az új tárfiókok a PowerShell-lel való létrehozásának módját."
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/29/2017
-ms.author: robinsh
-ms.openlocfilehash: c9175cce0cb93e73009fb8d751e54f631603d482
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.author: tamram
+ms.openlocfilehash: b4b917adfb3644cca71b6696df005fbf9e295240
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="create-a-storage-account-using-powershell"></a>Hozzon létre egy tárfiókot, PowerShell használatával
+# <a name="create-a-storage-account-using-powershell"></a>Storage-fiók létrehozása a PowerShell-lel
 
-Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató adatokat egy Azure Storage-fiók létrehozása a PowerShell használatával. 
+Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató az Azure Storage-fiókok a PowerShell-lel való létrehozását ismerteti. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -37,7 +37,7 @@ Jelentkezzen be az Azure-előfizetésbe a `Login-AzureRmAccount` paranccsal, és
 Login-AzureRmAccount
 ```
 
-Ha nem tudja, melyik használni kívánt helyet, listázhatja a helyeket. Miután a lista megjelenik, megtalálja használni kívánt. Ez a példa használandó **eastus**. Ez tárolható egy változóban, és használja a változót, így módosíthatja egy helyen.
+Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ebben a példában az **eastus** régiót használjuk. Tárolja el ezt egy változóban, és használja azt, így szükség esetén csak egy helyen kell módosítania az adatokat.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -55,16 +55,16 @@ $resourceGroup = "contoso-storage-accounts"
 New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
 ```
 
-## <a name="create-a-general-purpose-standard-storage-account"></a>Általános célú szabványos storage-fiók létrehozása
+## <a name="create-a-general-purpose-standard-storage-account"></a>Általános célú standard szintű tárfiók létrehozása
 
-Többféle tárfiókok, attól függően, hogy hogyan fog használni, és melyik szolgáltatás (BLOB, fájlok, táblák vagy várólisták). Az alábbi táblázatban a lehetőségeket.
+Több tárfióktípus is elérhető, a használat módjától és a kiválasztott szolgáltatástól (blob, fájl, tábla vagy sor) függően. Az alábbi táblázat a rendelkezésre álló lehetőségeket mutatja be.
 
 |**Tárfiók típusa**|**Általános célú standard**|**Általános célú prémium**|**Blob Storage, a gyakran és a ritkán használt adatok tárolási rétegei**|
 |-----|-----|-----|-----|
-|**Támogatott szolgáltatások**| A BLOB, a fájl, Table, Queue szolgáltatások | Blob service | Blob service|
-|**Támogatott blobtípusok**|Blokkblobokat, lapblobokat, hozzáfűző blobokat | Lapblobok | Blokkblobok és hozzáfűző blobok|
+|**Támogatott szolgáltatások**| Blob, File, Table és Queue szolgáltatás | Blob szolgáltatás | Blob szolgáltatás|
+|**Támogatott blobtípusok**|Blokkblobok, lapblobok és hozzáfűző blobok | Lapblobok | Blokkblobok és hozzáfűző blobok|
 
-Használjon [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) minden négy szolgáltatáshoz használható általános célú standard szintű storage-fiók létrehozásához. A tárfiók neve *contosomvcstandard*, és konfigurálja úgy, hogy rendelkezik a helyileg redundáns tárolás és a blob-titkosítás engedélyezése.
+A [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) használatával hozzon létre egy általános célú standard szintű tárfiókot, amelyet mind a négy szolgáltatáshoz használhat. Adja a *contosomvcstandard* nevet a tárfióknak, és konfigurálja helyileg redundáns tárolásra, engedélyezett blobtitkosítással.
 
 ```powershell
 New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
@@ -77,7 +77,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége, használhatja a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) parancsot a távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrásokat. Ebben az esetben a létrehozott tárfiók eltávolítja.
+Ha már nincs rá szükség, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás. Ebben az esetben a használatával eltávolítja a létrehozott tárfiókot.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
@@ -85,6 +85,6 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-A gyors üzembe helyezési a létrehozott egy általános célú standard szintű tárfiókot. További információt a BLOB storage-fiók le- és feltöltése, továbbra is a Blob storage gyors üzembe helyezés.
+Ebben a rövid útmutatóban egy általános célú standard szintű tárfiókot hozott létre. Ha szeretne a blobok a tárfiókkal való fel- és letöltésével megismerkedni, folytassa a Blob Storage rövid útmutatójával.
 > [!div class="nextstepaction"]
-> [Átviteli objektumok az Azure Blob storage PowerShell használatával](../blobs/storage-quickstart-blobs-powershell.md)
+> [Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PowerShell-lel](../blobs/storage-quickstart-blobs-powershell.md)
