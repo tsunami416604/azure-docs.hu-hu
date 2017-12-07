@@ -8,15 +8,7 @@
 
 - Az alapszintű rétegméretek elsődlegesen a fejlesztési számítási feladatokhoz és olyan egyéb alkalmazásokhoz valók, amelyekhez nincs szükség terheléselosztásra, automatikus skálázásra vagy memóriaigényes virtuális gépekre. Az éles környezetekhez jobban megfelelő virtuálisgép-méretekkel kapcsolatos információért tekintse meg a (Virtuális gépek méretei)[virtual-machines-size-specs.md], a virtuális gépek díjszabásával kapcsolatban pedig [A virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/)című szakaszt.
 
-## <a name="b-series-preview"></a>B sorozatú (előzetes verzió)
-
-> [!NOTE] 
-> Az előzetes verziójú funkciók rendelkezésre álló, feltéve, hogy elfogadja a használati feltételeket. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> Ebben az előzetes verzióban a következő régiókban korlátozódik:
-> - US - 2. nyugati régiója
-> - US - keleti régiója
-> - Európa - West
-> - Ázsia Csendes-óceáni - Southeast
+## <a name="b-series"></a>B sorozat
 
 A B sorozatnak burstable virtuális gépek ideálisak munkaterhelések esetén, amelyek nem kell a Processzor teljes teljesítményének folyamatosan, például a webkiszolgálók, a kis adatbázisok és a fejlesztési és tesztelési környezetben. Az ilyen terhelések általában burstable teljesítmény követelményekkel rendelkezik. A B sorozatnak teszi lehetővé ezen ügyfelek vásároljon egy egy ár lelkiismereti alapteljesítményének, amely lehetővé teszi, hogy a Virtuálisgép-példány kreditek kialakításához, amikor a virtuális gép kevesebb, mint a kiinduló teljesítményét használ-e a Virtuálisgép-méretet. A virtuális gép jóváírás keletkezett, amikor a virtuális Gépet a virtuális gép alapmennyiséget meghaladóan akár 100 %-a CPU használatát, ha az alkalmazás által igényelt, a nagyobb processzorteljesítmény is kapacitásnövelés.
 
@@ -31,7 +23,7 @@ A B sorozatnak burstable virtuális gépek ideálisak munkaterhelések esetén, 
 | Standard_B8ms | 8           | 32             | 64                         | 135%                  | 81                 | 1944           | 16                                     | 4320 / 50                                 | 4320 / 50                                 | 4  |
 
 
-## <a name="dsv3-series"></a>Dsv3-sorozat
+## <a name="dsv3-series"></a>Dsv3-sorozat *
 
 ACU: 160–190
 
@@ -46,9 +38,9 @@ A Dsv3-sorozat méretei a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) proces
 | Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32,000 / 256 (400)                                                    | 25,600 / 384                              | 8/magas                                       |
 | Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64,000 / 512 (800)                                                    | 51,200 / 768                              | 8 / rendkívül nagy                                       |
 | Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128,000 / 1024 (1600)                                                    | 80,000 / 1200                              | 8 / rendkívül nagy                                       |
+* Dsv3-sorozat VM funkció Intel® Hyper-Threading technológia
 
-
-## <a name="dv3-series"></a>Dv3-sorozat
+## <a name="dv3-series"></a>Dv3-sorozat * 
 
 ACU: 160–190
 
@@ -65,7 +57,7 @@ Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Pr
 | Standard_D16_v3 | 16        | 64          | 400            | 32             | 24000/375/187                                            | 8/magas                     |
 | Standard_D32_v3 | 32        | 128          | 800            | 32             | 48000/750/375                                            | 8 / rendkívül nagy                     |
 | Standard_D64_v3 | 64        | 256          | 1600            | 32             | 96000/1000/500                                            | 8 / rendkívül nagy                     |
-
+* Dv3-sorozat VM funkció Intel® Hyper-Threading technológia
 
 ## <a name="dsv2-series"></a>DSv2-sorozat
 
