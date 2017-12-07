@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 72936a4d38f809934ddea74e5ae4a6029450a97c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92a52910ef8b9f078a8ea6ac409f89719f889b24
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Az Azure API Management sablon modell hivatkozás
 Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sablonok az Azure API Management for közös elemek entitás és típus felelősséget.  
@@ -59,10 +59,10 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |név|Karakterlánc|Az API neve. Nem lehet üres. Hossza legfeljebb 100 karakter lehet.|  
 |leírás|Karakterlánc|Az API leírása. Nem lehet üres. HTML-címkék formázás is tartalmazhat. Hossza legfeljebb 1000 karakter lehet.|  
 |serviceUrl|Karakterlánc|Ez az API végrehajtási háttérszolgáltatást abszolút URL-címe|  
-|Elérési út|Karakterlánc|Egyedi azonosítása, ez az API és az összes az API Management szolgáltatáspéldány belül az erőforrás elérési utak relatív URL-címe. Az API végpont alap URL-cím szolgáltatás példány létrehozásakor megadott kialakításához egy nyilvános URL-címet a API-lesz csatolva.|  
+|elérési út|Karakterlánc|Egyedi azonosítása, ez az API és az összes az API Management szolgáltatáspéldány belül az erőforrás elérési utak relatív URL-címe. Az API végpont alap URL-cím szolgáltatás példány létrehozásakor megadott kialakításához egy nyilvános URL-címet a API-lesz csatolva.|  
 |protokollok|a tömb szám|Ismerteti a protokollok a műveletek az API-ban is elindítható. Két érték engedélyezett `1 - http` és `2 - https`, vagy mindkettőt.|  
 |authenticationSettings|[Engedélyezési kiszolgáló hitelesítési beállítások](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Ez az API szerepel hitelesítési beállítások gyűjteménye.|  
-|subscriptionKeyParameterNames|Objektum|Nem kötelező tulajdonság az előfizetés kulcsot tartalmazó lekérdezés és/vagy a fejléc paraméterek egyéni nevének megadására használható. Ha ez a tulajdonság van meghatározva, akkor tartalmaznia kell a két alábbi tulajdonságok közül legalább egyet.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
+|subscriptionKeyParameterNames|objektum|Nem kötelező tulajdonság az előfizetés kulcsot tartalmazó lekérdezés és/vagy a fejléc paraméterek egyéni nevének megadására használható. Ha ez a tulajdonság van meghatározva, akkor tartalmaznia kell a két alábbi tulajdonságok közül legalább egyet.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="APISummary"></a>API-összefoglalót  
  A `API summary` entitás a következő tulajdonságokkal rendelkezik.  
@@ -84,9 +84,9 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |URL-cím|URI|Az alkalmazás URI.|  
 |Verzió|Karakterlánc|Fájlverzió-információkat az alkalmazás.|  
 |Követelmények|Karakterlánc|Az alkalmazás leírását.|  
-|Állapot|Szám|Az alkalmazás aktuális állapota.<br /><br /> -0 - regisztrálva<br /><br /> -1 - elküldése megtörtént<br /><br /> -Közzétett 2-<br /><br /> -3 - elutasítva<br /><br /> – 4 – közzé nem tett|  
-|RegistrationDate|Dátum és idő|A dátum és idő, az alkalmazás lett regisztrálva.|  
-|CategoryId|Szám|A kategória az alkalmazás (pénzügyi, szórakozás stb.)|  
+|Állapot|szám|Az alkalmazás aktuális állapota.<br /><br /> -0 - regisztrálva<br /><br /> -1 - elküldése megtörtént<br /><br /> -Közzétett 2-<br /><br /> -3 - elutasítva<br /><br /> – 4 – közzé nem tett|  
+|RegistrationDate|DateTime|A dátum és idő, az alkalmazás lett regisztrálva.|  
+|CategoryId|szám|A kategória az alkalmazás (pénzügyi, szórakozás stb.)|  
 |DeveloperId|Karakterlánc|A fejlesztő, a kérelmet egyedi azonosítója.|  
 |Mellékletek|A gyűjtemény [melléklet](#Attachment) entitásokat.|Az alkalmazás, például a képernyőképek vagy ikonok mellékleteit.|  
 |Ikon|[Melléklet](#Attachment)|Az ikonra az alkalmazásához.|  
@@ -109,13 +109,13 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |részlet|Karakterlánc|Ez a tulajdonság elavult, és nem használható.|  
 |Ecset|Karakterlánc|Mely kód szintaxisa a kódminta megjelenítésekor használt sablon színátmenetekhez. Két érték engedélyezett `plain`, `php`, `java`, `xml`, `objc`, `python`, `ruby`, és `csharp`.|  
 |sablon|Karakterlánc|A kód a minta sablon neve.|  
-|Törzs|Karakterlánc|A kód a minta része a kódrészletet helyőrzője.|  
+|törzs|Karakterlánc|A kód a minta része a kódrészletet helyőrzője.|  
 |Módszer|Karakterlánc|A művelet HTTP-metódus.|  
 |séma|Karakterlánc|A művelet kérelem használni kívánt protokollt.|  
-|Elérési út|Karakterlánc|A művelet elérési útját.|  
+|elérési út|Karakterlánc|A művelet elérési útját.|  
 |lekérdezés|Karakterlánc|Lekérdezési karakterlánc például a megadott paraméterekkel.|  
 |állomás|Karakterlánc|Az API-hoz, amely tartalmazza ezt a műveletet az API Management szolgáltatás átjáró URL-CÍMÉT.|  
-|Fejlécek|A gyűjtemény [fejléc](#Header) entitásokat.|Fejlécek ehhez a művelethez.|  
+|fejlécek|A gyűjtemény [fejléc](#Header) entitásokat.|Fejlécek ehhez a művelethez.|  
 |paraméterek|A gyűjtemény [paraméter](#Parameter) entitásokat.|Ehhez a művelethez megadott paraméterek.|  
   
 ##  <a name="Comment"></a>Megjegyzés  
@@ -123,10 +123,10 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Azonosító|Szám|A Megjegyzés azonosítója.|  
+|Azonosító|szám|A Megjegyzés azonosítója.|  
 |CommentText|Karakterlánc|A szervezet a megjegyzés. HTML is tartalmazhat.|  
 |DeveloperCompany|Karakterlánc|A fejlesztői vállalat neve.|  
-|PostedOn|Dátum és idő|A dátum és idő, a megjegyzés megtalálható.|  
+|PostedOn|DateTime|A dátum és idő, a megjegyzés megtalálható.|  
   
 ##  <a name="Issue"></a>A probléma  
  A `issue` entitás a következő tulajdonságokkal rendelkezik.  
@@ -139,7 +139,7 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |Leírás|Karakterlánc|A probléma leírása.|  
 |SubscriptionDeveloperName|Karakterlánc|Utónév a fejlesztő, amely a hibát jelzett.|  
 |IssueState|Karakterlánc|A probléma aktuális állapotát. A lehetséges értékek a következők: Proposed, Opened, lezárva.|  
-|ReportedOn|Dátum és idő|A dátum és idő, a probléma történt a következő.|  
+|ReportedOn|DateTime|A dátum és idő, a probléma történt a következő.|  
 |Megjegyzések|A gyűjtemény [Megjegyzés](#Comment) entitásokat.|A probléma a megjegyzéseit.|  
 |Mellékletek|A gyűjtemény [melléklet](api-management-template-data-model-reference.md#Attachment) entitásokat.|A probléma a mellékleteket.|  
 |Szolgáltatások|A gyűjtemény [API](#API) entitásokat.|Az API-k előfizetett a felhasználót, hogy a probléma bejegyezve.|  
@@ -149,7 +149,7 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Minta|Karakterlánc|Az aktuális keresési kifejezés; vagy `null` nincs keresési kifejezés esetén.|  
+|Mintázat|Karakterlánc|Az aktuális keresési kifejezés; vagy `null` nincs keresési kifejezés esetén.|  
 |Helyőrző|Karakterlánc|A szöveget a keresőmezőbe nincs megadott keresési kifejezés esetén.|  
   
 ##  <a name="Header"></a>Fejléc  
@@ -171,7 +171,7 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |leírás|Karakterlánc|A művelet kérelem leírása.|  
-|Fejlécek|a tömb [fejléc](#Header) entitásokat.|Kérelem fejlécei.|  
+|fejlécek|a tömb [fejléc](#Header) entitásokat.|Kérelem fejlécei.|  
 |paraméterek|a tömb [paraméter](#Parameter)|A művelet a kérelemben szereplő paraméterek gyűjteménye.|  
 |felelősséget|a tömb [ábrázolása](#Representation)|Művelet kérelem felelősséget gyűjteménye.|  
   
@@ -180,7 +180,7 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|statusCode|Pozitív egész szám|A művelet válasz állapotkódja.|  
+|állapotkód|Pozitív egész szám|A művelet válasz állapotkódja.|  
 |leírás|Karakterlánc|A művelet válasz leírása.|  
 |felelősséget|a tömb [ábrázolása](#Representation)|Művelet válasz felelősséget gyűjteménye.|  
   
@@ -223,11 +223,11 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Oldal|Szám|Az aktuális oldalszám.|  
-|PageSize együttes értéke|Szám|Az eredmények maximális száma egy oldalon megjelenő.|  
-|TotalItemCount|Szám|A megjelenítendő elemek száma.|  
+|Oldal|szám|Az aktuális oldalszám.|  
+|PageSize együttes értéke|szám|Az eredmények maximális száma egy oldalon megjelenő.|  
+|TotalItemCount|szám|A megjelenítendő elemek száma.|  
 |ShowAll|Logikai érték|Hason összes annak az eredménye egy oldalon kell-e.|  
-|PageCount|Szám|Az eredmények oldalak száma.|  
+|PageCount|szám|Az eredmények oldalak száma.|  
   
 ##  <a name="Parameter"></a>A paraméter  
  Ez a szakasz ismerteti a `parameter` ábrázolását.  
@@ -239,7 +239,7 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |érték|Karakterlánc|A paraméter értékét.|  
 |beállítások|A karakterlánc tömbje|Lekérdezési paraméter értéke a definiált értékekkel.|  
 |Szükséges|Logikai érték|Meghatározza, hogy paraméter szükség-e vagy sem.|  
-|típusa|Szám|Hogy a paraméter egy elérési utat (1), vagy egy lekérdezési karakterlánc paraméter (2).|  
+|típusa|szám|Hogy a paraméter egy elérési utat (1), vagy egy lekérdezési karakterlánc paraméter (2).|  
 |A TypeName értéke|Karakterlánc|Paraméter típusa.|  
   
 ##  <a name="Product"></a>A termék  
@@ -251,9 +251,9 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |Cím|Karakterlánc|A termék nevét. Nem lehet üres. Hossza legfeljebb 100 karakter lehet.|  
 |Leírás|Karakterlánc|A termék leírása. Nem lehet üres. HTML-címkék formázás is tartalmazhat. Hossza legfeljebb 1000 karakter lehet.|  
 |Fogalmak|Karakterlánc|A termék használati feltételeket. Próbál előfizetni a termék fejlesztők jelenik meg a rendszer, és a rendszer elfogadja ezeket a feltételeket, azok az előfizetés-műveletnek a végrehajtásához szükséges.|  
-|ProductState|Szám|Meghatározza, hogy a termék van közzétéve, vagy nem. Közzétett termékeket a fejlesztői portálján a fejlesztők által felderíthető. A nem közzétett termékek csak a rendszergazdák számára láthatók.<br /><br /> A termék állapota megengedett értékei:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
+|ProductState|szám|Meghatározza, hogy a termék van közzétéve, vagy nem. Közzétett termékeket a fejlesztői portálján a fejlesztők által felderíthető. A nem közzétett termékek csak a rendszergazdák számára láthatók.<br /><br /> A termék állapota megengedett értékei:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
 |AllowMultipleSubscriptions|Logikai érték|Meghatározza, hogy egy felhasználó egy időben a terméket több előfizetéssel is rendelkezhet.|  
-|MultipleSubscriptionsCount|Szám|Az aktuális felhasználó a termék előfizetések száma.|  
+|MultipleSubscriptionsCount|szám|Az aktuális felhasználó a termék előfizetések száma.|  
   
 ##  <a name="Provider"></a>Szolgáltató  
  A `provider` entitás a következő tulajdonságokkal rendelkezik.  
@@ -283,7 +283,7 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |ProductDescription|Karakterlánc|A termék leírása. Nem lehet üres. HTML-címkék formázás is tartalmazhat. Hossza legfeljebb 1000 karakter lehet.|  
 |ProductDetailsUrl|Karakterlánc|Relatív URL-címe a termék részletei.|  
 |state|Karakterlánc|Az előfizetés állapotát. Lehetséges állapota van:<br /><br /> - `0 - suspended`– az előfizetés le van tiltva, és az előfizető nem hívható meg a termék bármely API-k.<br /><br /> - `1 - active`– az előfizetés nem aktív.<br /><br /> - `2 - expired`– az előfizetés elérte a lejárat és inaktiváltuk.<br /><br /> - `3 - submitted`– az előfizetési kérelem a fejlesztő történt, de még nem jóváhagyták vagy elutasították.<br /><br /> - `4 - rejected`– az előfizetési kérelem rendszergazda meg lett tagadva.<br /><br /> - `5 - cancelled`– az előfizetés a fejlesztői vagy a rendszergazda megszakította.|  
-|displayName|Karakterlánc|Az előfizetéshez tartozó megjelenített név.|  
+|Megjelenítendő név|Karakterlánc|Az előfizetéshez tartozó megjelenített név.|  
 |CreatedDate|Dátum és idő|Az előfizetés létrehozásának dátuma, az ISO 8601 formátum: `2014-06-24T16:25:00Z`.|  
 |CanBeCancelled|Logikai érték|Hogy az előfizetés törölni lehessen az aktuális felhasználó.|  
 |IsAwaitingApproval|Logikai érték|Az előfizetés e jóváhagyására vár.|  
@@ -304,7 +304,7 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |Azonosító|Karakterlánc|Erőforrás-azonosítója. Az előfizetés az API Management aktuális szolgáltatáspéldányt belül egyedi azonosítására szolgál. Az érték formátuma érvényes relatív URL- `subscriptions/{sid}` ahol `{sid}` egy előfizetés-azonosító. Ez a tulajdonság csak olvasható.|  
-|displayName|Karakterlánc|Az előfizetés megjelenített neve|  
+|Megjelenítendő név|Karakterlánc|Az előfizetés megjelenített neve|  
   
 ##  <a name="UserAccountInfo"></a>Felhasználói fiók adatainak  
  A `user account info` entitás a következő tulajdonságokkal rendelkezik.  
@@ -332,7 +332,7 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |DelegationEnabled|Logikai érték|Delegált bejelentkezés engedélyezve van-e.|  
 |DelegationUrl|Karakterlánc|A delegált bejelentkezési URL-címe, ha engedélyezve van.|  
 |SsoSignUpUrl|Karakterlánc|Az egyszeri bejelentkezési URL-CÍMÉT a felhasználó számára, ha van ilyen.|  
-|AuxServiceUrl|Karakterlánc|Ha az aktuális felhasználó a rendszergazda, a szolgáltatáspéldány, a klasszikus Azure-portálon mutató hivatkozás.|  
+|AuxServiceUrl|Karakterlánc|Ha a jelenlegi felhasználó rendszergazda, ez az Azure-portálon a szolgáltatáspéldány mutató hivatkozást.|  
 |Szolgáltatók|A gyűjtemény [szolgáltató](#Provider) entitások|A hitelesítésszolgáltatókat ehhez a felhasználóhoz.|  
 |UserRegistrationTerms|Karakterlánc|Azok a feltételek, amelyek a felhasználói bejelentkezés előtt kell fogadnia.|  
 |UserRegistrationTermsEnabled|Logikai érték|E kifejezések engedélyezettek.|  
@@ -344,9 +344,9 @@ Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sa
 |--------------|----------|-----------------|  
 |PasswordConfirm|Logikai érték|Által használt érték a [előfizetési](api-management-page-controls.md#sign-up)előfizetési vezérlő.|  
 |Jelszó|Karakterlánc|Felhasználói fiók jelszavát.|  
-|PasswordVerdictLevel|Szám|Által használt érték a [előfizetési](api-management-page-controls.md#sign-up)előfizetési vezérlő.|  
+|PasswordVerdictLevel|szám|Által használt érték a [előfizetési](api-management-page-controls.md#sign-up)előfizetési vezérlő.|  
 |UserRegistrationTerms|Karakterlánc|Azok a feltételek, amelyek a felhasználói bejelentkezés előtt kell fogadnia.|  
-|UserRegistrationTermsOptions|Szám|Által használt érték a [előfizetési](api-management-page-controls.md#sign-up)előfizetési vezérlő.|  
+|UserRegistrationTermsOptions|szám|Által használt érték a [előfizetési](api-management-page-controls.md#sign-up)előfizetési vezérlő.|  
 |ConsentAccepted|Logikai érték|Által használt érték a [előfizetési](api-management-page-controls.md#sign-up)előfizetési vezérlő.|  
 |E-mail cím|Karakterlánc|E-mail cím. Nem lehet üres, és a szolgáltatáspéldány belül egyedieknek kell lenniük. Maximális hossza 254 karakter.|  
 |Utónév|Karakterlánc|Utónév. Nem lehet üres. Hossza legfeljebb 100 karakter lehet.|  

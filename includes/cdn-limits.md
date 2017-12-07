@@ -1,7 +1,7 @@
 
 | Erőforrás | Alapértelmezett korlát | Felső korlát | 
 | --- | --- | --- |
-| CDN-profil |8 |25 |
+| CDN-profilok |25 |25 |
 | CDN-végpontok profilonként |10 |25 |
 | Egyéni tartományok végpontonként |10 |25 |
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 3e41e293cc5340c0e32cf2cc6ef7ab7534330884
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c18c2b3b0d271f2dbe4f247c132850b49d8f1d9
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="container-security"></a>Tároló biztonsági
 
@@ -36,13 +36,13 @@ A tároló szolgáltatások tanúsítvány megadásával biztosíthatja. A tanú
 
 Az windows-fürtök esetén az alkalmazás indításakor a futtatókörnyezet beolvassa a tanúsítványokat, és a PFX-fájlt, és minden tanúsítvány jelszava. A PFX-fájlt és a jelszó belül a tárolóhely a következő környezeti változók érhetők el: 
 
-* **Certificate_ServicePackageName_CodePackageName_CertName_PFX**
-* **Certificate_ServicePackageName_CodePackageName_CertName_Password**
+* **Certificates_ServicePackageName_CodePackageName_CertName_PFX**
+* **Certificates_ServicePackageName_CodePackageName_CertName_Password**
 
 Linux-fürtök esetén a certificates(PEM) egyszerűen kerülnek keresztül, a tároló X509StoreName által megadott áruházból. A megfelelő környezeti változók linux rendszeren a következők:
 
-* **Certificate_ServicePackageName_CodePackageName_CertName_PEM**
-* **Certificate_ServicePackageName_CodePackageName_CertName_PrivateKey**
+* **Certificates_ServicePackageName_CodePackageName_CertName_PEM**
+* **Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey**
 
 Azt is megteheti, ha már a tanúsítványok szükséges formájában és egyszerűen szeretné-e férni a tároló belül, létrehozhat egy adatcsomag belül az alkalmazáscsomag és adja meg a következőket az alkalmazásjegyzék belül:
 
@@ -54,8 +54,8 @@ Azt is megteheti, ha már a tanúsítványok szükséges formájában és egysze
 A tároló szolgáltatás vagy folyamat feladata a tanúsítvány fájlok importálása a tárolóba. A tanúsítvány importálásához használhatja `setupentrypoint.sh` a parancsfájlok, vagy hajtsa végre a tároló folyamat egyéni kódot. A következő példakód C# nyelven íródtak a PFX-fájl importálása:
 
 ```c#
-    string certificateFilePath = Environment.GetEnvironmentVariable("Certificate_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
-    string passwordFilePath = Environment.GetEnvironmentVariable("Certificate_MyServicePackage_NodeContainerService.Code_MyCert1_Password");
+    string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
+    string passwordFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_Password");
     X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
     string password = File.ReadAllLines(passwordFilePath, Encoding.Default)[0];
     password = password.Replace("\0", string.Empty);

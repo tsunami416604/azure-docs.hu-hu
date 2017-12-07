@@ -1,4 +1,4 @@
-Létre kell hoznia egy VNet és egy átjáró-alhálózatot, először a következő tevékenységek használata előtt. A cikkben [klasszikus portál használatával virtuális hálózat konfigurálása](../articles/expressroute/expressroute-howto-vnet-portal-classic.md) további információt.
+Létre kell hoznia egy VNet és egy átjáró-alhálózatot, először a következő tevékenységek használata előtt.
 
 > [!NOTE]
 > Ezek a példák nem vonatkoznak a S2S/ExpressRoute konfigurációk lehet.
@@ -9,7 +9,7 @@ Létre kell hoznia egy VNet és egy átjáró-alhálózatot, először a követk
 Az alábbi parancs segítségével hozzon létre. Ne felejtse el behelyettesíteni bármely értékeket a saját.
 
 ```powershell
-New-AzureVirtualNetworkGateway -VNetName "MyAzureVNET" -GatewayName "ERGateway" -GatewayType Dedicated -GatewaySKU  Standard
+New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayName "ERGateway" -GatewayType DynamicRouting -GatewaySKU  Standard
 ```
 
 ## <a name="verify-the-gateway-was-created"></a>Ellenőrizze az átjáró létrejött-e
@@ -17,7 +17,7 @@ New-AzureVirtualNetworkGateway -VNetName "MyAzureVNET" -GatewayName "ERGateway" 
 Az alábbi parancs segítségével győződjön meg arról, hogy létrejött-e az átjáró. Ez a parancs is lekéri az átjáró azonosítója, amely a többi művelet van szüksége.
 
 ```powershell
-Get-AzureVirtualNetworkGateway
+Get-AzureVNetGateway
 ```
 
 ## <a name="resize-a-gateway"></a>Átjáró méretezése
@@ -30,7 +30,7 @@ A több [Gateway SKU-n](../articles/expressroute/expressroute-about-virtual-netw
 >
 
 ```powershell
-Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
+Resize-AzureVNetGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 ```
 
 ## <a name="remove-a-gateway"></a>Átjáró eltávolítása
@@ -38,5 +38,5 @@ Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerfor
 Az alábbi parancs segítségével átjáró eltávolítása
 
 ```powershell
-Remove-AzureVirtualNetworkGateway -GatewayId <Gateway ID>
+Remove-AzureVnetGateway -GatewayId <Gateway ID>
 ```

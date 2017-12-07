@@ -8,17 +8,17 @@ Virtuális gép befolyásolja az Azure-ban vezethet három forgatókönyv: a har
 
   Virtuális gépek is tapasztalhat, áramkimaradás vagy az egész adatközpont, vagy akár egy teljes terület érintő vész valószínűtlen esetben az állásidő. Ezek a forgatókönyvek az Azure biztosít a védelmi beállításokat, beleértve a [rendelkezésre állási zónák](../articles/availability-zones/az-overview.md) és [régiók párosítva](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 
-* A **tervezett karbantartási események** a Microsoft által a mögöttes Azure platformon végzett időszakos frissítések, amelyek célja a virtuális gépeket futtató platforminfrastruktúra általános megbízhatóságának, teljesítményének és biztonságának növelése. A frissítések a legtöbb esetben semmilyen hatással nincsenek a virtuális gépek vagy a felhőszolgáltatások működésére (lásd: [VM-megőrző karbantartás](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/preserving-maintenance)). Bár az Azure platform minden esetben VM-megőrző karbantartást igyekszik végrehajtani, egyes ritka esetekben a frissítések megkövetelik a virtuális gép újraindítását, hogy a szükséges frissítéseket telepíteni lehessen a mögöttes infrastruktúrára. Ilyen esetekben karbantartással és ismételt üzembe helyezéssel kiegészített Azure tervezett karbantartási eljárást hajthat végre, ha a megfelelő időtartományban kezdeményezi a virtuális gépek karbantartását. További információkért lásd: [Virtuális gépek tervezett karbantartása](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/planned-maintenance/).
+* A **tervezett karbantartási események** a Microsoft által a mögöttes Azure platformon végzett időszakos frissítések, amelyek célja a virtuális gépeket futtató platforminfrastruktúra általános megbízhatóságának, teljesítményének és biztonságának növelése. A frissítések a legtöbb esetben semmilyen hatással nincsenek a virtuális gépek vagy a felhőszolgáltatások működésére (lásd: [VM-megőrző karbantartás](https://docs.microsoft.com/azure/virtual-machines/windows/preserving-maintenance)). Bár az Azure platform minden esetben VM-megőrző karbantartást igyekszik végrehajtani, egyes ritka esetekben a frissítések megkövetelik a virtuális gép újraindítását, hogy a szükséges frissítéseket telepíteni lehessen a mögöttes infrastruktúrára. Ilyen esetekben karbantartással és ismételt üzembe helyezéssel kiegészített Azure tervezett karbantartási eljárást hajthat végre, ha a megfelelő időtartományban kezdeményezi a virtuális gépek karbantartását. További információkért lásd: [Virtuális gépek tervezett karbantartása](https://docs.microsoft.com/azure/virtual-machines/windows/planned-maintenance/).
 
 
 Az ilyen események okozta állásidő hatásainak csökkentése érdekében javasoljuk, hogy kövesse az alábbi bevált gyakorlatokat a virtuális gépek magas rendelkezésre állásának biztosításához:
 
 * [Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében]
 * [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel]
-* [Ütemezett események használata a virtuális gépeket érintő események proaktív kezeléséhez] (https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-scheduled-events)
+* [Eseményeknek a segítségével ütemezett proaktív érintő események VM válasz] (https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [Az egyes alkalmazásrétegek külön rendelkezésre állási csoportokba konfigurálása]
 * [Terheléselosztók és rendelkezésre állási csoportok együttes alkalmazása]
-* [A rendelkezésre állási zónák használatára a datacenter szintű meghibásodásával szembeni védelemhez]
+* [Rendelkezésre állási zónák használatára a datacenter szintű meghibásodásával szembeni védelemhez]
 
 ## <a name="configure-multiple-virtual-machines-in-an-availability-set-for-redundancy"></a>Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében
 Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Ez a konfiguráció, adatközponton belül biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel a 99,95 % Azure SLA-t. További információkért lásd [a virtuális gépek esetében érvényes SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) részleteit.
@@ -81,3 +81,4 @@ Telepítésével kapcsolatban a [Windows](../articles/virtual-machines/windows/c
 [Terheléselosztók és rendelkezésre állási csoportok együttes alkalmazása]: #combine-a-load-balancer-with-availability-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel]: #use-managed-disks-for-vms-in-an-availability-set
+[Rendelkezésre állási zónák használatára a datacenter szintű meghibásodásával szembeni védelemhez]: #use-availability-zones-to-protect-from-datacenter-level-failures

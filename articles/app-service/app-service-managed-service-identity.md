@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 59e6db7caf4988623e6d2f93e986b423db7d7248
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6b2dcaa4b0e0f59bf8a632b48813ba6a24202ec5
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Azure által felügyelt Szolgáltatásidentitás (nyilvános előzetes verzió) App Service és az Azure Functions használatával
 
@@ -45,6 +45,35 @@ A portálon kezelt szolgáltatásidentitás beállításához először létreho
 4. Kapcsoló **az Azure Active Directoryban regisztrálni** való **a**. Kattintson a **Save** (Mentés) gombra.
 
 ![Az App Service-identitás](media/app-service-managed-service-identity/msi-blade.png)
+
+### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
+
+Az Azure parancssori felület használatával felügyelt szolgáltatásidentitás beállításához kell használni a `az webapp assign-identity` parancs egy meglévő alkalmazást. Ez a szakasz a példák futó három lehetőség közül választhat:
+
+- Használjon [Azure Cloud rendszerhéj](../cloud-shell/overview.md) Azure-portálról.
+- A beágyazott Azure Cloud rendszerhéj a "próbálja" gombra, az alábbi kódrészletet jobb felső sarkában található keresztül használja.
+- [Telepítse a legújabb verziót a CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.21 vagy újabb verzió) Ha a helyi CLI-konzollal szeretné. 
+
+Az alábbi lépéseket végigvezeti hoz létre egy webalkalmazást, és azt a parancssori felület használatával identitás:
+
+1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#login). Egy fiók, amelybe szeretne telepíteni az alkalmazást az Azure-előfizetéshez társított használata:
+
+    ```azurecli-interactive
+    az login
+    ```
+2. Hozzon létre egy webalkalmazást, a parancssori felület használatával. A CLI használata az App Service további példákért lásd [App Service CLI minták](../app-service/app-service-cli-samples.md):
+
+    ```azurecli-interactive
+    az group create --name myResourceGroup --location westus
+    az appservice plan create --name myplan --resource-group myResourceGroup --sku S1
+    az webapp create --name myapp --resource-group myResourceGroup --plan myplan
+    ```
+
+3. Futtassa a `assign-identity` parancsot az alkalmazás identitását létrehozásához:
+
+    ```azurecli-interactive
+    az webapp assign-identity --name myApp --resource-group myResourceGroup
+    ```
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager-sablonnal
 
@@ -134,7 +163,7 @@ A **MSI_ENDPOINT** , amelyből az alkalmazás jogkivonatokat kérhetnek helyi UR
 > |-----|-----|-----|
 > |erőforrás|Lekérdezés|Az aad-ben erőforrás az erőforrás URI azonosítója a jogkivonat meg kell kapott.|
 > |API-verzió|Lekérdezés|A token API használt verziója. "2017-09-01" jelenleg az egyetlen támogatott verzió.|
-> |titkos kulcs|Fejléc|A MSI_SECRET környezeti változó értékét.|
+> |titkos kód|Fejléc|A MSI_SECRET környezeti változó értékét.|
 
 
 A sikeres 200 OK válasz tartalmazza a következő tulajdonságokkal egy JSON-törzsére:

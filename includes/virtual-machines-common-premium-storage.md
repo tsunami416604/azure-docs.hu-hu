@@ -26,7 +26,7 @@ Prémium szintű Storage, első lépésként [az ingyenes Azure-fiók létrehoz�
 Prémium szintű Storage a meglévő virtuális gépek áttelepítéssel kapcsolatos információkért lásd: [alakítsa át a Windows virtuális gép nem felügyelt lemezekből felügyelt](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md) vagy [alakítsa át a Linux virtuális gép nem felügyelt lemezekből felügyelt](../articles/virtual-machines/linux/convert-unmanaged-to-managed-disks.md).
 
 > [!NOTE]
-> Prémium szintű Storage a legtöbb régióban érhető el. Elérhető régiók listáját a [Azure-szolgáltatások régiónként](https://azure.microsoft.com/regions/#services), nézze meg a régiókban, ahol támogatott prémium szintű támogatási mérete sorozatú virtuális gépek (DS-méretek, DSV2-méretek, GS sorozatnak és Fs sorozatú virtuális gépek) támogatottak.
+> Prémium szintű Storage a legtöbb régióban érhető el. Elérhető régiók listáját lásd: a sort **lemezegységet** a [régiónként rendelkezésre Azure termékek](https://azure.microsoft.com/regions/#services).
 > 
 
 ## <a name="features"></a>Szolgáltatások

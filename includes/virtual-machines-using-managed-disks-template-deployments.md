@@ -214,6 +214,6 @@ Teljes információ keresése a REST API előírásoknak, tekintse át a [felüg
     * [A felügyelt lemezes Linux virtuális gép](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
     * [Felügyelt lemezes sablonok teljes listája](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * Látogasson el a [Azure felügyelt lemezekhez – áttekintés](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentum felügyelt lemezek tájékozódhat.
-* Tekintse át a virtuális gép erőforrásai sablon dokumentációját látogasson el a [Microsoft.Compute/virtualMachines sablonra való hivatkozást](/templates/microsoft.compute/virtualmachines) dokumentum.
-* Tekintse át a sablon referenciadokumentációt tartalmaz lemezerőforrásokat látogasson el a [Microsoft.Compute/disks sablonra való hivatkozást](/templates/microsoft.compute/disks) dokumentum.
+* Tekintse át a virtuális gép erőforrásai sablon dokumentációját látogasson el a [Microsoft.Compute/virtualMachines sablonra való hivatkozást](/azure/templates/microsoft.compute/virtualmachines) dokumentum.
+* Tekintse át a sablon referenciadokumentációt tartalmaz lemezerőforrásokat látogasson el a [Microsoft.Compute/disks sablonra való hivatkozást](/azure/templates/microsoft.compute/disks) dokumentum.
  

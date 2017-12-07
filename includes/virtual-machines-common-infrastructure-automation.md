@@ -41,21 +41,24 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 ## <a name="cloud-init"></a>felhő inicializálás
-[Felhő inicializálás](https://cloudinit.readthedocs.io) Linux virtuális gép testreszabása, először elinduló széles körben használt módszer. Felhő inicializálás használhatja csomagok és a fájlok írási, vagy a felhasználók és biztonsági beállításainak. Felhő inicializálás során a rendszerindítási folyamat fut, mert nincsenek további lépéseket vagy a konfiguráció alkalmazásához szükséges ügynökök.
+[Felhő inicializálás](https://cloudinit.readthedocs.io) Linux virtuális gép testreszabása, először elinduló széles körben használt módszer. Felhő inicializálás használhatja csomagok és a fájlok írási, vagy a felhasználók és biztonsági beállításainak. Neve a rendszerindítási folyamat során a felhő inicializálás, mert nincsenek további lépéseket vagy a konfiguráció alkalmazásához szükséges ügynökök.  Helyes formátumban módjáról további információ a `#cloud-config` fájlok, tekintse meg a [felhő-inicializációs dokumentációs oldalát](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`fájlok Base64 kódolású szöveget fájlok.
 
-Felhő inicializálás terjesztéseket is használható. Például, hogy ne használjon **apt-get-telepítés** vagy **yum telepítése** csomag telepítéséhez. Ehelyett adja meg a telepítendő csomagok listáját. Felhő inicializálás automatikusan használja a natív csomag felügyeleti eszköz a distro választja.
+Felhő inicializálás terjesztéseket is használható. Például, hogy ne használjon **apt-get-telepítés** vagy **yum telepítése** csomag telepítéséhez. Helyette megadhatja a telepítendő csomagok listája. Felhő inicializálás automatikusan használja a natív csomag felügyeleti eszköz a distro választja.
 
-A Microsoft a partnerekkel együttműködve az beszerzése felhő inicializálás tartalmazza, és működik-e az Azure biztosít lemezképeket a dolgozik. Az alábbi táblázat ismerteti a jelenlegi felhő inicializálás elérhetőségét Azure platformon lemezképek:
+ Folyamatosan dolgozunk a Linux distro hitelesített Partnereinkkel együtt kell biztosítani a felhő inicializálás engedélyezve képek érhető el az Azure piactéren. Ezeket a lemezképeket fogja elérhetővé teheti a felhő inicializálás és konfigurációk zökkenőmentesen működjön együtt a virtuális gépek és Virtuálisgép-méretezési készletek (VMSS). Az alábbi táblázat ismerteti az Azure platformon aktuális felhő inicializálás engedélyezve képek elérhetőségét:
 
-| Alias | Közzétevő | Ajánlat | SKU | Verzió |
+| Közzétevő | Ajánlat | SKU | Verzió | felhő inicializálás kész
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |legújabb |
-| UbuntuLTS |Canonical |UbuntuServer |16.04-ES LTS VERZIÓ |legújabb |
-| CoreOS |CoreOS |CoreOS |Stable |legújabb |
+|Canonical |UbuntuServer |16.04-ES LTS VERZIÓ |legújabb |igen | 
+|Canonical |UbuntuServer |14.04.5-LTS |legújabb |igen |
+|CoreOS |CoreOS |Stable |legújabb |igen |
+|OpenLogic |CentOS |7-KONFIGURÁCIÓELEM |legújabb |előzetes verzióban |
+|RedHat |RHEL |7-NYERS-KONFIGURÁCIÓELEM |legújabb |előzetes verzióban |
 
-Az alábbiak végrehajtásának módját ismerheti meg:
+Ismerje meg a felhő inicializálás Azure kapcsolatos további részletek:
 
-- [Linux virtuális gép és felhő inicializálás testreszabása](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
+- [Felhő inicializálás támogatja a Linux virtuális gépek Azure-ban](../articles/virtual-machines/linux/using-cloud-init.md)
+- [Automatikus Virtuálisgép-konfiguráció használata felhő inicializálás oktatóanyag próbálja](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
 
 
 ## <a name="powershell-dsc"></a>A PowerShell DSC

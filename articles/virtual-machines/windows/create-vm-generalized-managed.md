@@ -1,34 +1,46 @@
 ---
-title: "Az Azure-ban kezelt Virtuálisgép-lemezképet a virtuális gép létrehozása |} Microsoft Docs"
-description: "Hozzon létre egy Windows rendszerű virtuális gép egy általánosított felügyelt Virtuálisgép-lemezkép az Azure PowerShell, a Resource Manager üzembe helyezési modellben."
+title: "Virtuális gép létrehozása az Azure-ban kezelt lemezképéről |} Microsoft Docs"
+description: "Windows virtuális gép létrehozása Azure PowerShell vagy az Azure-portál használatával a Resource Manager üzembe helyezési modellel általánosított felügyelt lemezképéről."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
-ms.assetid: 
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 12/01/2017
 ms.author: cynthn
-ms.openlocfilehash: 8157b77976a2152cc0b012fe6ad5fa116223bef6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8986c71fd0300af385750af898d620e6d3e1f24
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Egy felügyelt képre a virtuális gép létrehozása
 
-Létrehozhat több virtuális gép az Azure-ban kezelt Virtuálisgép-lemezképet. Felügyelt Virtuálisgép-lemezképet a virtuális gépek, beleértve az operációsrendszer- és adatlemezek létrehozásához szükséges információkat tartalmazza. A virtuális merevlemezeket jött létre a lemezképet, beleértve az operációsrendszer-lemezek és adatok lemezzel, felügyelt lemezként tárolja. 
-
-
-## <a name="prerequisites"></a>Előfeltételek
+A PowerShell vagy az Azure-portálon kezelt Virtuálisgép-lemezkép létrehozhat több virtuális géphez. Felügyelt Virtuálisgép-lemezképet a virtuális gépek, beleértve az operációsrendszer- és adatlemezek létrehozásához szükséges információkat tartalmazza. A virtuális merevlemezeket jött létre a lemezképet, beleértve az operációsrendszer-lemezek és adatok lemezzel, felügyelt lemezként tárolja. 
 
 Már van szükség [felügyelt Virtuálisgép-lemezkép létrehozott](capture-image-resource.md) használandó új virtuális gép létrehozása. 
+
+## <a name="use-the-portal"></a>A portál használata
+
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
+2. A bal oldali menüben válassza ki a **összes erőforrás**. Rendezheti az erőforrásokat a **típus** könnyen megtalálhatják a képeket.
+3. Válassza ki a listából a használni kívánt lemezkép. A kép **áttekintése** lap megnyitásakor.
+4. Kattintson a **+ létrehozás VM** a menüből.
+5. Adja meg a virtuális gép adatait. Az itt megadott felhasználónévvel és jelszóval bejelentkezhet a virtuális gépbe. Amikor végzett, kattintson az **OK** gombra. Az új virtuális gép létrehozása egy meglévő Resrouce csoportba, vagy válasszon **hozzon létre új** tárolja a virtuális gép új erőforráscsoport létrehozásához.
+6. Válasszon méretet a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. 
+7. A **beállítások**, módosítsa szükség szerint, majd kattintson a **OK**. 
+8. Az összefoglalás lapon kell megjelennie a lemezkép neve felsorolt **titkos kép**. Kattintson a **Ok** elindítani a virtuális gépek telepítése során.
+
+
+## <a name="use-powershell"></a>A PowerShell használata
+
+### <a name="prerequisites"></a>Előfeltételek
 
 Győződjön meg arról, hogy rendelkezik-e a AzureRM.Compute és AzureRM.Network PowerShell modulok legújabb verzióját. Nyissa meg rendszergazdaként egy PowerShell-parancssorba, és futtassa a következő parancsot, hogy telepítse őket.
 
@@ -39,7 +51,7 @@ További információkért lásd: [Azure PowerShell Versioning](/powershell/azur
 
 
 
-## <a name="collect-information-about-the-image"></a>A kép kapcsolatos információk gyűjtése
+### <a name="collect-information-about-the-image"></a>A kép kapcsolatos információk gyűjtése
 
 Először igazolnia kell a lemezkép alapvető információkat gyűjt, és hozzon létre egy változót, a lemezkép. Ez a példa egy felügyelt Virtuálisgép-lemezkép nevű **myImage** , hogy a **myResourceGroup** erőforráscsoportja a **nyugati középső Régiójában** helyét. 
 
@@ -50,43 +62,57 @@ $imageName = "myImage"
 $image = Get-AzureRMImage -ImageName $imageName -ResourceGroupName $rgName
 ```
 
-## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 Hozza létre a virtuális hálózat és az alhálózati a [virtuális hálózati](../../virtual-network/virtual-networks-overview.md).
 
-1. Hozza létre az alhálózatot. Ez a példa-alhálózatot hoz létre nevű **mySubnet** a címelőtagot rendelkező **10.0.0.0/24**.  
+Hozza létre az alhálózatot. Ez a példa-alhálózatot hoz létre nevű **mySubnet** a címelőtagot rendelkező **10.0.0.0/24**.  
    
-    ```azurepowershell-interactive
-    $subnetName = "mySubnet"
-    $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-    ```
-2. Hozza létre a virtuális hálózatot. Ebben a példában egy virtuális hálózatot nevű hoz létre **myVnet** a címelőtagot rendelkező **10.0.0.0/16**.  
-   
-    ```azurepowershell-interactive
-    $vnetName = "myVnet"
-    $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
-        -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
-    ```    
+```azurepowershell-interactive
+$subnetName = "mySubnet"
+$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig `
+    -Name $subnetName -AddressPrefix 10.0.0.0/24
+```
 
-## <a name="create-a-public-ip-address-and-network-interface"></a>Hozzon létre egy nyilvános IP-cím és a hálózati kapcsolat
+Hozza létre a virtuális hálózatot. Ebben a példában egy virtuális hálózatot nevű hoz létre **myVnet** a címelőtagot rendelkező **10.0.0.0/16**.  
+   
+```azurepowershell-interactive
+$vnetName = "myVnet"
+$vnet = New-AzureRmVirtualNetwork `
+    -Name $vnetName `
+    -ResourceGroupName $rgName `
+    -Location $location `
+    -AddressPrefix 10.0.0.0/16 `
+    -Subnet $singleSubnet
+```    
+
+### <a name="create-a-public-ip-address-and-network-interface"></a>Hozzon létre egy nyilvános IP-cím és a hálózati kapcsolat
 
 A virtuális hálózaton a virtuális géppel való kommunikáció biztosításához egy [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) és egy hálózati adapter szükséges.
 
-1. Hozzon létre egy nyilvános IP-címet. Ez a példa létrehoz egy nyilvános IP-cím nevű **myPip**. 
+Hozzon létre egy nyilvános IP-címet. Ez a példa létrehoz egy nyilvános IP-cím nevű **myPip**. 
    
-    ```azurepowershell-interactive
-    $ipName = "myPip"
-    $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
-        -AllocationMethod Dynamic
-    ```       
-2. Hozzon létre a hálózati adaptert. Ez a példa létrehoz egy hálózati adapter nevű **myNic**. 
+```azurepowershell-interactive
+$ipName = "myPip"
+$pip = New-AzureRmPublicIpAddress `
+    -Name $ipName `
+    -ResourceGroupName $rgName `
+    -Location $location `
+    -AllocationMethod Dynamic
+```
+       
+Hozzon létre a hálózati adaptert. Ez a példa létrehoz egy hálózati adapter nevű **myNic**. 
    
-    ```azurepowershell-interactive
-    $nicName = "myNic"
-    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location `
-        -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
-    ```
+```azurepowershell-interactive
+$nicName = "myNic"
+$nic = New-AzureRmNetworkInterface `
+    -Name $nicName `
+    -ResourceGroupName $rgName `
+    -Location $location `
+    -SubnetId $vnet.Subnets[0].Id `
+    -PublicIpAddressId $pip.Id
+```
 
-## <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és egy RDP-szabály létrehozása
+### <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és egy RDP-szabály létrehozása
 
 Nem fogja tudni jelentkezzen be a virtuális gép RDP Funkciót használnak, meg kell rendelkeznie a hálózati biztonsági szabály (NSG), amely lehetővé teszi a hozzáférést RDP a 3389-es porton. 
 
@@ -105,7 +131,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 ```
 
 
-## <a name="create-a-variable-for-the-virtual-network"></a>A virtuális hálózat változó létrehozása
+### <a name="create-a-variable-for-the-virtual-network"></a>A virtuális hálózat változó létrehozása
 
 Hozzon létre egy változót, a befejezett virtuális hálózat. 
 
@@ -114,7 +140,7 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 
 ```
 
-## <a name="get-the-credentials-for-the-vm"></a>A hitelesítő adatokat lekérni a virtuális géphez
+### <a name="get-the-credentials-for-the-vm"></a>A hitelesítő adatokat lekérni a virtuális géphez
 
 A következő parancsmag megnyit egy ablakot, ahol egy új felhasználónevet és jelszót ehhez a helyi rendszergazda fiókot távoli eléréséhez a virtuális gép módba lép. 
 
@@ -122,27 +148,28 @@ A következő parancsmag megnyit egy ablakot, ahol egy új felhasználónevet é
 $cred = Get-Credential
 ```
 
-## <a name="set-variables-for-the-vm-name-computer-name-and-the-size-of-the-vm"></a>A virtuális gép nevét, a számítógép nevét és a virtuális gép méretét változók megadása
+### <a name="set-variables-for-the-vm-name-computer-name-and-the-size-of-the-vm"></a>A virtuális gép nevét, a számítógép nevét és a virtuális gép méretét változók megadása
 
-1. A virtuális gép nevét és a számítógép neve változók létrehozása. Ez a példa beállítja a virtuális gép neve, ahogyan **myVM** és a számítógép neve, mint a **Sajátgép**.
+A virtuális gép nevét és a számítógép neve változók létrehozása. Ez a példa beállítja a virtuális gép neve, ahogyan **myVM** és a számítógép neve, mint a **Sajátgép**.
 
-    ```azurepowershell-interactive
-    $vmName = "myVM"
-    $computerName = "myComputer"
-    ```
-2. A virtuális gép méretének beállítása. Ez a példa létrehoz **Standard_DS1_v2** méretű virtuális gép. Tekintse meg a [Virtuálisgép-méretek](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) dokumentációjában talál további információt.
+```azurepowershell-interactive
+$vmName = "myVM"
+$computerName = "myComputer"
+```
 
-    ```azurepowershell-interactive
-    $vmSize = "Standard_DS1_v2"
-    ```
+A virtuális gép méretének beállítása. Ez a példa létrehoz **Standard_DS1_v2** méretű virtuális gép. Tekintse meg a [Virtuálisgép-méretek](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) dokumentációjában talál további információt.
 
-3. A Virtuálisgép-konfiguráció hozzáadása a virtuális gép nevét és méretét.
+```azurepowershell-interactive
+$vmSize = "Standard_DS1_v2"
+```
+
+A Virtuálisgép-konfiguráció hozzáadása a virtuális gép nevét és méretét.
 
 ```azurepowershell-interactive
 $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 ```
 
-## <a name="set-the-vm-image-as-source-image-for-the-new-vm"></a>A Virtuálisgép-lemezkép beállítása forráslemezkép a új virtuális gép számára
+### <a name="set-the-vm-image-as-source-image-for-the-new-vm"></a>A Virtuálisgép-lemezkép beállítása forráslemezkép a új virtuális gép számára
 
 Állítsa be a forrásképből, a felügyelt Virtuálisgép-lemezkép Azonosítóját használja.
 
@@ -150,13 +177,16 @@ $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 $vm = Set-AzureRmVMSourceImage -VM $vm -Id $image.Id
 ```
 
-## <a name="set-the-os-configuration-and-add-the-nic"></a>Az operációs rendszer konfigurációjának, és adja hozzá a hálózati adaptert.
+### <a name="set-the-os-configuration-and-add-the-nic"></a>Az operációs rendszer konfigurációjának, és adja hozzá a hálózati adaptert.
 
 Adja meg a tároló típusa (PremiumLRS vagy StandardLRS) és az operációs rendszer lemezének mérete. Ebben a példában a fiók típusát állítja **PremiumLRS**, a lemez mérete **128 GB-os** és lemezes gyorsítótárazás **ReadWrite**.
 
 ```azurepowershell-interactive
-$vm = Set-AzureRmVMOSDisk -VM $vm  -StorageAccountType PremiumLRS -DiskSizeInGB 128 `
--CreateOption FromImage -Caching ReadWrite
+$vm = Set-AzureRmVMOSDisk -VM $vm  `
+    -StorageAccountType PremiumLRS `
+    -DiskSizeInGB 128 `
+    -CreateOption FromImage `
+    -Caching ReadWrite
 
 $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $computerName `
 -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
@@ -164,7 +194,7 @@ $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $computerName 
 $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 ```
 
-## <a name="create-the-vm"></a>Virtuális gép létrehozása
+### <a name="create-the-vm"></a>Virtuális gép létrehozása
 
 A konfigurációt, amely azt alapul, és tárolja az új virtuális gép létrehozása a **$vm** változó.
 
@@ -172,12 +202,12 @@ A konfigurációt, amely azt alapul, és tárolja az új virtuális gép létreh
 New-AzureRmVM -VM $vm -ResourceGroupName $rgName -Location $location
 ```
 
-## <a name="verify-that-the-vm-was-created"></a>Győződjön meg arról, hogy létrejött-e a virtuális gép
+### <a name="verify-that-the-vm-was-created"></a>Győződjön meg arról, hogy létrejött-e a virtuális gép
 Amikor végzett, megjelenik az újonnan létrehozott virtuális gép a [Azure-portálon](https://portal.azure.com) alatt **Tallózás** > **virtuális gépek**, vagy a következő PowerShell-parancsok használatával:
 
 ```azurepowershell-interactive
-    $vmList = Get-AzureRmVM -ResourceGroupName $rgName
-    $vmList.Name
+$vmList = Get-AzureRmVM -ResourceGroupName $rgName
+$vmList.Name
 ```
 
 ## <a name="next-steps"></a>Következő lépések

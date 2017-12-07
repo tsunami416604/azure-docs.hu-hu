@@ -14,17 +14,17 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 13249ba9a4b317a3154776b411ce0bb1f316b3bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a55a38df765dcd1947312e729dbd37e3284876cf
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="how-to-use-service-management-from-python"></a>Kezelés a Python használata
-Ez az útmutató bemutatja, hogyan programozott módon hajtható végre az általános szolgáltatás-felügyeleti feladatokat a Python. A **ServiceManagementService** osztályt a [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) programozott hozzáférést a nagy részét a szolgáltatás-felügyelettel kapcsolatos funkció elérhető támogatja a [a klasszikus Azure portálon] [ management-portal] (például **létrehozása, frissítése és törlése a felhőszolgáltatások, központi telepítések, adatok szolgáltatások és virtuális gépek**). Ez a funkció akkor lehet hasznos, szolgáltatás-felügyelet programozott hozzáférést igénylő alkalmazások fejlesztése során.
+Ez az útmutató bemutatja, hogyan programozott módon hajtható végre az általános szolgáltatás-felügyeleti feladatokat a Python. A **ServiceManagementService** osztályt a [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) programozott hozzáférést a nagy részét a szolgáltatás-felügyelettel kapcsolatos funkció elérhető támogatja a [Azure portál] [ management-portal] (például **létrehozása, frissítése és törlése a felhőszolgáltatások, központi telepítések, adatok szolgáltatások és virtuális gépek**). Ez a funkció akkor lehet hasznos, szolgáltatás-felügyelet programozott hozzáférést igénylő alkalmazások fejlesztése során.
 
 ## <a name="WhatIs"></a>Kezelő újdonságai
-A Service Management API nagy részét a szolgáltatás felügyeleti funkció keresztül elérhető programozott hozzáférést biztosít a [a klasszikus Azure portálon][management-portal]. Az Azure SDK for Python teszi lehetővé a felhőszolgáltatások és a storage-fiókok kezeléséhez.
+A Service Management API nagy részét a szolgáltatás felügyeleti funkció keresztül elérhető programozott hozzáférést biztosít a [Azure-portálon][management-portal]. Az Azure SDK for Python teszi lehetővé a felhőszolgáltatások és a storage-fiókok kezeléséhez.
 
 A szolgáltatásfelügyeleti API használatával kell [az Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -35,7 +35,7 @@ Az Azure SDK for Python becsomagolja a [Azure szolgáltatásfelügyeleti API][sv
 Ebben a cikkben leírt összes funkcióját érhetők el a `azure-servicemanagement-legacy` csomagot, amely a pip használatával telepítheti. (Például, ha még nem ismeri a Python) telepítésével kapcsolatos további információkért lásd: Ez a cikk: [Python telepítése és az Azure SDK](../python-how-to-install.md)
 
 ## <a name="Connect"></a>Hogyan: szolgáltatásfelügyelet kapcsolódni
-A Service Management végponthoz kapcsolódni, Azure-előfizetése Azonosítóját és egy érvényes felügyeleti tanúsítványt kell. Ezt úgy szerezheti be az előfizetés-Azonosítóval keresztül a [a klasszikus Azure portálon][management-portal].
+A Service Management végponthoz kapcsolódni, Azure-előfizetése Azonosítóját és egy érvényes felügyeleti tanúsítványt kell. Ezt úgy szerezheti be az előfizetés-Azonosítóval keresztül a [Azure-portálon][management-portal].
 
 > [!NOTE]
 > Már lehetséges a Windows futtatásakor OpenSSL létre tanúsítványokat.  Python 2.7.4 igényel vagy újabb. Azt javasoljuk, hogy a felhasználók általi OpenSSL .pfx, helyett óta .pfx-tanúsítványok valószínűleg törlődni fog a későbbiekben támogatása.
@@ -53,7 +53,7 @@ Létrehozásához a `.cer` tanúsítvány, hajtható végre:
 
 Az Azure-tanúsítványokkal kapcsolatos további információkért lásd: [tanúsítványok áttekintése Azure-szolgáltatásokhoz](cloud-services-certs-create.md). OpenSSL-paraméter teljes leírását lásd: a dokumentációban a [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
 
-A létrehozást követően ezeket a fájlokat, szeretné-e feltölteni a `.cer` fájl az Azure-ba, a "Feltöltés" művelet "Beállítások" lapján keresztül a [a klasszikus Azure portálon][management-portal], és jegyezze fel a mentési helyét kell a `.pem` fájl.
+A létrehozást követően ezeket a fájlokat, szeretné-e feltölteni a `.cer` fájl az Azure-ba, a "Feltöltés" művelet "Beállítások" lapján keresztül a [Azure-portálon][management-portal], és jegyezze fel a mentési helyét kell a `.pem` fájlt.
 
 Ha beszerezte az előfizetés-Azonosítóval, létrehozott egy tanúsítványt, és fel kell tölteni a `.cer` fájl az Azure-ba, csatlakozhat az Azure felügyeleti végpont úgy, hogy az előfizetés-azonosító és elérési útját a `.pem` fájl **ServiceManagementService**:
 
@@ -74,7 +74,7 @@ Létrehozhat egy önaláírt felügyeleti tanúsítvány a gép használt `makec
 
 A parancs létrehozza a `.cer` fájlt, és telepíti azt a a **személyes** tanúsítványtárolójába. További információkért lásd: [tanúsítványok áttekintése Azure-szolgáltatásokhoz](cloud-services-certs-create.md).
 
-Miután létrehozta a tanúsítványt, szeretné-e feltölteni a `.cer` fájl az Azure-ba, a "Feltöltés" művelet "Beállítások" lapján keresztül a [a klasszikus Azure portálon][management-portal].
+Miután létrehozta a tanúsítványt, szeretné-e feltölteni a `.cer` fájl az Azure-ba, a "Feltöltés" művelet "Beállítások" lapján keresztül a [Azure-portálon][management-portal].
 
 Ha beszerezte az előfizetés-Azonosítóval, létrehozott egy tanúsítványt, és fel kell tölteni a `.cer` fájl az Azure-ba, csatlakozhat az Azure felügyeleti végpont úgy, hogy az előfizetés-azonosító és a tanúsítvány helye a **személyes** tanúsítványtárolójának **ServiceManagementService** (újra, cserélje le *AzureCertificate* a tanúsítvány neve):
 
@@ -421,7 +421,7 @@ További információ: [Python fejlesztői központban](/develop/python/).
 [How to: Create a virtual machine]: #CreateVM
 [How to: Delete a virtual machine]: #DeleteVM
 [Next Steps]: #NextSteps
-[management-portal]: https://manage.windowsazure.com/
+[management-portal]: https://portal.azure.com/
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 

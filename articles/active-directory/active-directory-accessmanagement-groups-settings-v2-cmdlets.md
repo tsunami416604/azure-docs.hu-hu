@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: rodejo
-ms.openlocfilehash: 5cad44dc7bf415002b3c9872fffdcf0d54bb6ad6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e59528df6a66979c3fc2f596e3e94c1f51f0111
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Csoportok kezelése az Azure Active Directory 2-es parancsmagok
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 Ez a cikk tartalmaz példákat az Azure Active Directory (Azure AD) a csoportok kezelése a PowerShell segítségével.  Azt is bemutatja, hogyan rendszerrel az Azure AD PowerShell modult. Először meg kell [töltse le az Azure AD PowerShell modult](https://www.powershellgallery.com/packages/AzureAD/).
 
-## <a name="installing-the-azure-ad-powershell-module"></a>Az Azure AD PowerShell-modul telepítése
+## <a name="install-the-azure-ad-powershell-module"></a>Az Azure AD PowerShell modul telepítése
 Az Azure AD PowerShell-modul telepítéséhez használja a következő parancsokat:
 
     PS C:\Windows\system32> install-module azuread
@@ -46,7 +46,7 @@ Győződjön meg arról, hogy a modul el lett-e telepítve, használja a követk
 
 Most elindíthatja a modulban a parancsmagok használatával. Az Azure AD modulban a parancsmagok teljes leírása, olvassa el az online dokumentációját [Azure Active Directory PowerShell 2-es verzió](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-## <a name="connecting-to-the-directory"></a>A címtár csatlakoztatása
+## <a name="connect-to-the-directory"></a>A directory rendszerhez kapcsolódni
 Azure AD PowerShell-parancsmagok használatával csoportok kezelése elindításához, csatlakoznia kell a kezelni kívánt könyvtár a PowerShell-munkamenethez. Használja az alábbi parancsot:
 
     PS C:\Windows\system32> Connect-AzureAD
@@ -59,8 +59,10 @@ A parancsmag felszólítja a könyvtár eléréséhez használni kívánt hitele
 
 Most elindíthatja a AzureAD-parancsmagok használatával kezelheti a csoportok a címtárban.
 
-## <a name="retrieving-groups"></a>Csoportok beolvasása
-A Get-AzureADGroups parancsmaggal a címtárban lévő meglévő csoportjainak lekérdezésére. A címtár összes csoportjainak lekérdezésére, paraméterek nélkül a parancsmagot használja:
+## <a name="retrieve-groups"></a>Csoportok beolvasása
+A címtárban lévő meglévő csoportok lekéréséhez használja a Get-AzureADGroups parancsmag. 
+
+A címtár összes csoportjainak lekérdezésére, paraméterek nélkül a parancsmagot használja:
 
     PS C:\Windows\system32> get-azureadgroup
 
@@ -108,14 +110,14 @@ Kereshet egy adott csoport használja a - szűrő paramétert. Ez a paraméter e
     SecurityEnabled              : True
 
 > [!NOTE] 
-> A AzureAD PowerShell-parancsmagok valósítja meg az OData-lekérdezés szabványnak. További információkért lásd: **$filter** a [OData rendszer lekérdezési lehetőségek az OData-végpont használatával](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
+> Az Azure AD PowerShell-parancsmagok valósítja meg az OData-lekérdezés szabványnak. További információkért lásd: **$filter** a [OData rendszer lekérdezési lehetőségek az OData-végpont használatával](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
 
-## <a name="creating-groups"></a>Csoportok létrehozása
+## <a name="create-groups"></a>Csoportok létrehozása
 Új csoport létrehozása a könyvtárban, a New-AzureADGroup parancsmag használható. Ez a parancsmag "Marketing" nevű új biztonsági csoportot hoz létre:
 
     PS C:\Windows\system32> New-AzureADGroup -Description "Marketing" -DisplayName "Marketing" -MailEnabled $false -SecurityEnabled $true -MailNickName "Marketing"
 
-## <a name="updating-groups"></a>Csoportok frissítése
+## <a name="update-groups"></a>Csoportok frissítése
 Meglévő csoport frissítéséhez használja a Set-AzureADGroup parancsmagot. Ebben a példában a Microsoft épp módosított a DisplayName tulajdonsága a következő csoporthoz: "Az Intune-rendszergazdák." Először azt még keresése a csoport, a Get-AzureADGroup parancsmaggal, és a DisplayName attribútum szűrés:
 
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -160,18 +162,20 @@ Most ismét találtunk a csoportot, ha az új érték a Description tulajdonság
     ProxyAddresses               : {}
     SecurityEnabled              : True
 
-## <a name="deleting-groups"></a>Csoportok törlése
+## <a name="delete-groups"></a>Csoportok törlése
 A címtárban lévő csoport törléséhez használja a Remove-AzureADGroup parancsmag az alábbiak szerint:
 
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
 
-## <a name="managing-members-of-groups"></a>A csoportok tagjai kezelése
-Új tagok hozzáadása csoporthoz van szüksége, használja az Add-AzureADGroupMember parancsmagot. Ez a parancs hozzáadja a használtuk az előző példában Intune rendszergazdák csoport tagja:
+## <a name="manage-group-membership"></a>Csoporttagság kezelése 
+### <a name="add-members"></a>Tagok hozzáadása
+Új tagok hozzáadása egy csoporthoz, az Add-AzureADGroupMember parancsmaggal. Ez a parancs hozzáadja a használtuk az előző példában Intune rendszergazdák csoport tagja:
 
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
 -ObjectId paraméter a ObjectID szeretnénk a tag hozzáadása a csoporthoz, és azt szeretné, hogy a csoportba tagként felvenni kívánt felhasználó ObjectID - RefObjectId.
 
+### <a name="get-members"></a>Tagok beolvasása
 A meglévő egy csoport tagjai, amelyet a Get-AzureADGroupMember parancsmag, ebben a példában látható módon:
 
     PS C:\Windows\system32> Get-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
@@ -181,11 +185,13 @@ A meglévő egy csoport tagjai, amelyet a Get-AzureADGroupMember parancsmag, ebb
                           72cd4bbd-2594-40a2-935c-016f3cfeeeea User
                           8120cc36-64b4-4080-a9e8-23aa98e8b34f User
 
+### <a name="remove-members"></a>Tagok eltávolítása
 Távolítsa el a korábban hozzáadott a csoport tagja, használja a Remove-AzureADGroupMember parancsmag, az itt látható:
 
     PS C:\Windows\system32> Remove-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -MemberId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-A felhasználói csoport membership(s), amellyel a Select-AzureADGroupIdsUserIsMemberOf parancsmag. Ez a parancsmag paramétereit, vesz igénybe, a ObjectId, amelyre vonatkozóan szeretné ellenőrizni a csoporttagságot a felhasználó és csoportok, amelyre vonatkozóan szeretné ellenőrizni a csoporttagságot listája. A csoportok listáját megadott "Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck" típusú összetett változó formájában, így azt először hozzon létre egy változót ezzel a típussal kell lennie:
+### <a name="verify-members"></a>Ellenőrizze a tagok
+Ellenőrizze a csoporttagságok a felhasználó, a Select-AzureADGroupIdsUserIsMemberOf parancsmag használható. Ez a parancsmag paramétereit, vesz igénybe, a ObjectId, amelyre vonatkozóan szeretné ellenőrizni a csoporttagságot a felhasználó és csoportok, amelyre vonatkozóan szeretné ellenőrizni a csoporttagságot listája. A csoportok listáját megadott "Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck" típusú összetett változó formájában, így azt először hozzon létre egy változót ezzel a típussal kell lennie:
 
     PS C:\Windows\system32> $g = new-object Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck
 
@@ -204,7 +210,24 @@ Most elleni $g a csoportok ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea rendelk
 
 A visszaadott érték, amelynek tagja a felhasználói csoportok listája. A partnerek, csoportok vagy Szolgáltatásnevekről tagsági csoportok használatával válassza AzureADGroupIdsContactIsMemberOf, válasszon-AzureADGroupIdsGroupIsMemberOf megadott listája ellenőrzési módszert is alkalmazhat vagy SELECT-AzureADGroupIdsServicePrincipalIsMemberOf
 
-## <a name="managing-owners-of-groups"></a>Csoport tulajdonosainak kezelése
+## <a name="disable-group-creation-by-your-users"></a>Tiltsa le a csoport létrehozása a felhasználók által
+Megakadályozhatja, hogy a nem rendszergazda felhasználók biztonsági csoportok létrehozása. A Microsoft Online Directory Services (MSODS) alapértelmezés lesz a nem rendszergazda felhasználók számára csoportok létrehozását, hogy az önkiszolgáló csoportkezelési (SSGM) is engedélyezve van-e. A SSGM beállítás csak a saját alkalmazások hozzáférési panelen viselkedését szabályozza. 
+
+A nem rendszergazdai felhasználók csoport létrehozásának letiltása:
+
+1. Győződjön meg arról, hogy a nem rendszergazda felhasználók hozhatnak létre csoportokat:
+   
+  ````
+  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+  ````
+  
+2. Ha a visszaadott érték `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda felhasználók létrehozhatnak csoportokat. Ez a funkció letiltása:
+  
+  ```` 
+  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+  ````
+  
+## <a name="manage-owners-of-groups"></a>Csoport tulajdonosainak kezelése
 Tulajdonosok hozzáadása egy csoporthoz, az Add-AzureADGroupOwner parancsmaggal:
 
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
@@ -236,7 +259,7 @@ A csoport létrehozásakor egyes végpontokkal, a végfelhasználó számára ad
 * postamester 
 * legfelső szintű 
 * Biztonságos 
-* Biztonsági 
+* biztonság 
 * SSL-rendszergazda 
 * gazdáját 
 

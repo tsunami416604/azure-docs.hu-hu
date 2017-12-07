@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 12/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e7007bd6cca24dc4c2573fb274cecbf88ecfa374
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b507b9108dca2fd3aee4acdac231acad9c9154e8
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>Központi telepítése és figyelése IoT peremhálózati modulok léptékű – előzetes
 
@@ -42,19 +42,21 @@ Eszköz twins és címkékkel kapcsolatos további információkért lásd: [meg
 
 1. Jelentkezzen be a [Azure-portálon] [ lnk-portal] , és keresse meg az IoT hub. 
 1. Válassza ki **IoT peremhálózati (előzetes verzió)**.
-1. Válassza ki **peremhálózati központi telepítés létrehozásához**.
+1. Válassza ki **IoT Edge-telepítés hozzáadása**.
 
 A központi telepítés létrehozásához öt lépésből áll. A következő szakaszok segítségével minden egyes ismerteti. 
 
-### <a name="step-1-label-deployment"></a>1. lépés: Címke központi telepítés
+### <a name="step-1-name-and-label"></a>1. lépés: Nevét és a felirat
 
-1. A központi telepítés adjon egy egyedi azonosítót. Elkerülendő, a szóközöket és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`.
+1. Adjon meg egy egyedi nevet a központi telepítés. Elkerülendő, a szóközöket és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`.
 1. Adjon hozzá a központi telepítések nyomon követéséhez. Címkék: **neve**, **érték** tartalmaznak, amelyek a központi telepítés ismertetik. Például `HostPlatform, Linux` vagy `Version, 3.0.1`.
 1. Válassza ki **következő** lépés két ugrás. 
 
-### <a name="step-2-add-modules"></a>2. lépés: A modulok hozzáadása
+### <a name="step-2-add-modules-optional"></a>2. lépés:, Vegye fel a modulok (nem kötelező)
 
 A modulok, amely egy központi telepítést adhat hozzá két típusa van. Az egyik ki az Azure-szolgáltatások, például a Tárfiók, vagy a Stream Analytics-alapú modul. A második pedig egy modul ki saját kód alapján. A központi telepítés vagy típus több modul adhat hozzá. 
+
+Ha a központi telepítés létrehozásához engedélyezi nincsenek modulok, meglévő modul eltávolítása az eszközöket. 
 
 >[!NOTE]
 >Az Azure Machine Learning és az Azure Functions automatizált Azure szolgáltatás központi telepítése még nem támogatott. A modul egyéni központi telepítés segítségével manuálisan ezekbe a szolgáltatásokba hozzá szeretne adni a telepítéshez. 

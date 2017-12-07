@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 413a2ba9107ca259ed577825bf0a17ff5622f1ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a17de187f67c075147ea8ff7f69434014eea3fdb
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>Logic Apps-hurkok, -hatókörök és -kibontás
   
@@ -26,7 +26,7 @@ A Logic Apps használata tömbök, gyűjtemények, kötegekben, számos, és fut
   
 ## <a name="foreach-loop-and-arrays"></a>ForEach hurok és tömbök
   
-A Logic Apps segítségével hurokba építhető adatok, és egy műveletet minden elemhez.  Ez az alkalmazáson keresztül a `foreach` művelet.  A tervezőben, megadhat hozzáadása egy for-each ciklus.  A tömb kívánja az ismétlés kiválasztása, után elkezdhet műveletek.  Jelenleg csak egy művelet foreach hurok száma korlátozott, de ez a korlátozás az elkövetkező hetektől azonnal fel kell oldani.  Egyszer a hurkon belül elkezdheti adja meg, hogy mi történjen a tömb egyes értéken.
+A Logic Apps segítségével hurokba építhető adatok, és egy műveletet minden elemhez.  Ez az alkalmazáson keresztül a `foreach` művelet.  A tervezőben, megadhat hozzáadása egy for-each ciklus.  A tömb kívánja az ismétlés kiválasztása, után elkezdhet műveletek.  Több műveletek másodpercenkénti foreach hurok adhat hozzá.  Egyszer a hurkon belül elkezdheti adja meg, hogy mi történjen a tömb egyes értéken.
 
 Kód-nézet használata esetén is megadhat egy for-each ciklus például alatt.  Itt látható egy példa egy for-each ciklus, amelyet az összes e-mail címet, amely tartalmazza a "microsoft.com" az e-mailt küld:
 

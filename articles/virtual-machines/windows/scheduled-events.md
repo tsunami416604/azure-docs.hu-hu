@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 2b873501085ba2d293be564009b5d5daccbf9c1e
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 75e811f77bade3701cce2d9945cf35d6e14e376f
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-metadata-service-scheduled-events-preview-for-windows-vms"></a>Az Azure metaadat-szolgáltatás: Ütemezett események (előzetes verzió) Windows virtuális gépek
 
@@ -86,7 +86,7 @@ Ha a metaadat-szolgáltatás, meg kell adnia a fejléc `Metadata:true` annak ér
 Az első alkalommal ütemezett események kérelmet használhat Azure implicit módon lehetővé teszi, hogy a szolgáltatás a virtuális gépen. Ennek eredményeképpen kell késleltetett választ várt akár két perc alatt az első hívásakor.
 
 > [!NOTE]
-> Ütemezett események automatikusan letiltja a szolgáltatás, ha a szolgáltatás végpontját nem igényelnek 1 nap. Amennyiben az ütemezett események a szolgáltatás le van tiltva, a nem lesz a felhasználó által kezdeményezett karbantartás létrehozott események.
+> Ütemezett események automatikusan letiltja a szolgáltatás, ha a szolgáltatás végpontját nem igényelnek 1 nap. Ütemezett események a szolgáltatás le van tiltva, ha a felhasználó által kezdeményezett karbantartás létrehozott események nem lesz.
 
 ### <a name="user-initiated-maintenance"></a>Felhasználó által kezdeményezett karbantartás
 Felhasználó kezdeményezte a virtuális gép karbantartási Azure-portálon a, API-t CLI, vagy PowerShell ütemezett esemény eredményez. Ez lehetővé teszi, hogy a karbantartási előkészítése logika tesztelni az alkalmazás, és lehetővé teszi, hogy a felhasználó által kezdeményezett karbantartási előkészítése az alkalmazás.

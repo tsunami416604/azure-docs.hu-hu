@@ -3,8 +3,8 @@ title: "Az SQL Data Warehouse táblák indexelő |} A Microsoft Azure"
 description: "Ismerkedés az Azure SQL Data Warehouse indexelő táblával."
 services: sql-data-warehouse
 documentationcenter: NA
-author: shivaniguptamsft
-manager: barbkess
+author: barbkess
+manager: jenniehubbard
 editor: 
 ms.assetid: 3e617674-7b62-43ab-9ca2-3f40c41d5a88
 ms.service: sql-data-warehouse
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 07/12/2016
-ms.author: shigu;barbkess
-ms.openlocfilehash: b205ed47833f675286539705e2754d2ea3821b8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/06/2017
+ms.author: barbkess
+ms.openlocfilehash: 672270536a7405e617edbcf5ec0e6eff68be7fde
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse táblák indexelő
 > [!div class="op_single_selector"]
@@ -174,14 +174,14 @@ Miután az adatait, és az eredményeket elemezni megkezdheti a lekérdezés fut
 | [OPEN_rowgroup_rows_MAX] |Mivel a fenti |
 | [OPEN_rowgroup_rows_AVG] |Mivel a fenti |
 | [CLOSED_rowgroup_rows] |Tekintse meg a lezárt sor csoport sorok megerősítést ellenőrzése. |
-| [CLOSED_rowgroup_count] |A lezárt sorcsoportok száma nem lehet alacsony, ha bármelyik minden látható. Az ALTER INDEX használatával tömörített rowg roups lezárt sorcsoportok átalakítható... SZERVEZNI a parancsot. Ez azonban nincs szükség. Lezárt csoportokat automatikusan konvertálja oszlopcentrikus sorcsoportok a háttérben "rekord rekordáthelyezőnek" folyamat. |
+| [CLOSED_rowgroup_count] |A lezárt sorcsoportok száma nem lehet alacsony, ha bármelyik minden látható. Az ALTER INDEX használatával tömörített sorcsoportok lezárt sorcsoportok átalakítható... SZERVEZNI a parancsot. Ez azonban nincs szükség. Lezárt csoportokat automatikusan konvertálja oszlopcentrikus sorcsoportok a háttérben "rekord rekordáthelyezőnek" folyamat. |
 | [CLOSED_rowgroup_rows_MIN] |Lezárt sorcsoportok kell rendelkeznie a nagyon nagy kitöltés értéket. Ha egy lezárt sorcsoport kitöltési mérték alacsony, majd az oszloptárindexet a további elemzésre szükség. |
 | [CLOSED_rowgroup_rows_MAX] |Mivel a fenti |
 | [CLOSED_rowgroup_rows_AVG] |Mivel a fenti |
 | [Rebuild_Index_SQL] |SQL táblázat oszlopcentrikus index újraépítése |
 
 ## <a name="causes-of-poor-columnstore-index-quality"></a>A gyenge oszlopcentrikus index minőségi okok
-Ha táblák gyenge szegmens minőségi azonosította, célszerű a legfelső szintű OK azonosítása érdekében.  Az alábbiakban a gyenge szegmens quaility egyéb gyakori oka:
+Ha táblák gyenge szegmens minőségi azonosította, célszerű a legfelső szintű OK azonosítása érdekében.  Az alábbiakban néhány más jellemző okai a gyenge szegmens minőségi:
 
 1. Memóriaprobléma, ha készült el index
 2. Nagy mennyiségű DML-műveletek
@@ -191,7 +191,7 @@ Ha táblák gyenge szegmens minőségi azonosította, célszerű a legfelső szi
 Ezek a tényezők okozhatják az optimális 1 millió sort foglalnak sor csoportonként kisebb jelentősen rendelkeznie oszlopcentrikus index.  Ugrás a különbözeti sorcsoport tömörített sor csoport helyett sorok is okozhat. 
 
 ### <a name="memory-pressure-when-index-was-built"></a>Memóriaprobléma, ha készült el index
-A tömörített sor csoportonként sorok száma közvetlenül kapcsolódnak a sor- és a sor csoport feldolgozásához használható memória mennyisége szélességét.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  Ezért az ajánlott eljárás, ahhoz, hogy megkapja a munkamenetből, ezt a lehető legtöbb memória oszlopcentrikus index táblák elérésére ír.  Mivel a memória és feldolgozási, a jobb oldali memóriafoglalás útmutatást között függ az adatfájl egyes soraiban a tábla, a rendszeróra kiosztása DWU-mennyiség, és a párhuzamosság tárolóhelyek biztosíthat a munkamenetet, amely számára a tábla az adatok írásakor.  Ajánlott eljárásként javasoljuk, xlargerc DW300 használata vagy kevésbé largerc használata DW600 és mediumrc DW400 DW1000 használata vagy újabb.
+A tömörített sor csoportonként sorok száma közvetlenül kapcsolódnak a sor- és a sor csoport feldolgozásához használható memória mennyisége szélességét.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  Ezért az ajánlott eljárás, ahhoz, hogy megkapja a munkamenetből, ezt a lehető legtöbb memória oszlopcentrikus index táblák elérésére ír.  Mivel a memória és a párhuzamosság között, a jobb oldali memóriafoglalás útmutatást a táblázat minden sorában adatoktól függ, a rendszer, és a párhuzamosság helyek száma felosztott adattárházegységek adhat a munkamenet amely az adatok írása a táblához.  Ajánlott eljárásként javasoljuk, xlargerc DW300 használata vagy kevésbé largerc használata DW600 és mediumrc DW400 DW1000 használata vagy újabb.
 
 ### <a name="high-volume-of-dml-operations"></a>Nagy mennyiségű DML-műveletek
 Frissítése és sorokat törölni a DML-műveletek nagy mennyiségű elégtelenség bevezetéséhez is az oszloptárindexet. Ez akkor különösen igaz olyan esetben, amikor a legtöbb, a sorokat egy sor csoport módosítva lett.
@@ -247,7 +247,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Az SQL Data Warehouse az index újraépítése során offline állapotú.  Indexek újraépítésével kapcsolatos további információkért lásd: az ALTER INDEX REBUILD szakasz [Oszlopcentrikus index töredezettségmentesítési] [ Columnstore Indexes Defragmentation] és a szintaxis témakör [ALTER INDEX] [ ALTER INDEX].
+Az SQL Data Warehouse az index újraépítése során offline állapotú.  Indexek újraépítésével kapcsolatos további információkért lásd: az ALTER INDEX REBUILD szakasz [Oszlopcentrikus index töredezettségmentesítési][Columnstore Indexes Defragmentation], és [ALTER INDEX] [ ALTER INDEX].
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3. lépés: Ellenőrizze, hogy fürtözött oszlopcentrikus szegmens minőség javult
 Futtassa újból a lekérdezést, mely azonosított tábla gyenge minőségi szegmentálni, és ellenőrizze szegmens minőségi javult.  Ha nem javította szegmens minőségének, lehet, hogy nagyon nagy-e a sorokat a táblában.  Az index újraépítésekor a magasabb erőforrásosztály vagy a DWU használata javasolt.

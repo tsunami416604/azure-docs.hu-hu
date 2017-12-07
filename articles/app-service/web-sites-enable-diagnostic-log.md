@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 1d8d0caa1aa9e21bf724d60127dc6f2ac9a49ecf
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: a5ac6c02e28c19346abae9e5ea3dba9af4022dde
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps diagnosztikai naplózás engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -38,7 +38,7 @@ Engedélyezheti vagy letilthatja a naplók a következő típusú:
 * **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek nyomkövetési segítségével dolgozza fel a kérelmet, és minden egyes összetevő szükséges idő az IIS-összetevők többek között. Ez akkor hasznos, ha próbál hely teljesítményének javítása vagy különítse el, mi okozza vissza kell adni egy adott HTTP hiba.
 * **Webalkalmazás-kiszolgáló naplózza a** -HTTP-tranzakciók használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Akkor hasznos, például a kezelt kéréseket, és hogy hány kérésnek egy adott IP-címről van a teljes webhelymetrikák meghatározásakor.
 
-### <a name="application-diagnostics"></a>Application diagnostics
+### <a name="application-diagnostics"></a>Alkalmazásdiagnosztika
 Application diagnostics lehetővé teszi egy webes alkalmazás által létrehozott adatok rögzítését. ASP.NET alkalmazások használhatják a [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) osztály az alkalmazásnaplóba diagnosztikai adatok naplózására. Példa:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -60,7 +60,7 @@ Amikor engedélyezi a **alkalmazásdiagnosztika**, úgy is dönt a **szint**. Ez
 >
 >
 
-A **alkalmazásnaplózás**, ha bekapcsolja a rendszer beállítást ideiglenesen a hibakereséshez. Automatikusan az 12 órában kikapcsolja ezt a beállítást. A blob storage lehetőséggel jelölheti ki a naplókat írni egy blog tároló is bekapcsolása.
+A **alkalmazásnaplózás**, ha bekapcsolja a rendszer beállítást ideiglenesen a hibakereséshez. Automatikusan az 12 órában kikapcsolja ezt a beállítást. A blob storage lehetőséggel jelölheti ki a naplókat írni egy blob tároló is bekapcsolása.
 
 A **webkiszolgáló naplózásának**, kiválaszthatja **tárolási** vagy **fájlrendszer**. Kiválasztása **tárolási** választhatja ki a tárfiók, és egy blob tároló, amely a naplókat a rendszer ír. 
 
@@ -262,7 +262,7 @@ Sikertelen kérelmek nyomkövetési nevű XML-fájlok tárolják **fr ### .xml**
 ### <a name="detailed-error-logs"></a>Részletes hibanaplókat.
 Részletes hibanaplókat a HTML-dokumentumok, amelyek részletes információkat biztosítanak történt a HTTP-hibák. Mivel azok csak a HTML-dokumentumok, azok megtekinthetők a webböngésző.
 
-### <a name="web-server-logs"></a>Webkiszolgáló naplóinak
+### <a name="web-server-logs"></a>Webkiszolgáló naplói
 A webkiszolgáló naplóinak használatával formázott a [W3C bővített naplófájlformátum](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Ezeket az információkat egy szövegszerkesztővel olvasható, vagy a Delimiters segédprogramok például [napló elemző](http://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]

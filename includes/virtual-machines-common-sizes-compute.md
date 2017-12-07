@@ -12,11 +12,11 @@ Az F-sorozat virtuális gépei remek választásnak bizonyulnak az olyan számí
 
 Az Fs-sorozat az F-sorozat összes előnyét biztosítja a prémium szintű tárterület mellett.
 
-## <a name="fsv2-series"></a>Fsv2-sorozat
+## <a name="fsv2-series"></a>Fsv2-sorozat *
 
 ACU: 195-210
 
-| Méret             | vCPU meg | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
+| Méret             | vCPU meg | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|------------------------------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 (32)                                                             | Mérsékelt                                       |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 (64)                                                             | Mérsékelt                                       |
@@ -25,7 +25,7 @@ ACU: 195-210
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 (512)                                                           | Rendkívül nagy                                 |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 (1024)                                                         | Rendkívül nagy                                 |
 | Standard_F72s_v2 | 72     | 144         | 576            | 32             | 144000 (1520)                                                         | Rendkívül nagy                                 |
-
+* Fsv2-sorozat VM funkció Intel® Hyper-Threading technológia
 
 ## <a name="fs-series"></a>Fs-sorozat*
 

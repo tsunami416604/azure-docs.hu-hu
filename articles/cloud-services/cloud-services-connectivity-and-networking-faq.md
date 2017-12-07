@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: genli
-ms.openlocfilehash: 7b435b6904b05228a63e3ed3a9fed78747b843c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d86f3ec043c504c9d79b18f1f0b4c9cf0adb115b
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az ügyfélkapcsolódási és hálózati problémák Azure-szolgáltatásokhoz: gyakran ismételt kérdések (GYIK)
 
@@ -48,8 +48,8 @@ Egy indítási feladat szelektív letiltása az egyes IP-címek is létrehozhat.
 
 ## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>A cloud service-példány a távoli asztali meg, az üzenet jelenik meg, "a felhasználói fiók lejárt."
 "Ez a felhasználói fiók lejárt" hibaüzenet jelenhet meg, ha a lejárati dátum az RDP-beállítások között megadott megkerülése. Módosíthatja a lejárati dátumot a portálról az alábbiak szerint:
-1. Jelentkezzen be az Azure felügyeleti konzol (https://manage.windowsazure.com), keresse meg a felhőalapú szolgáltatás, és válassza ki a **konfigurálása** fülre.
-2. Válassza ki **távoli**.
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), keresse meg a felhőalapú szolgáltatás, és válassza ki a **távoli asztal** fülre.
+2. Válassza ki a **éles** vagy **átmeneti** üzembe helyezési pont.
 3. Módosítsa a "jár le" dátuma, és mentse a konfigurációt.
 
 Most kell tudni az RDP a számítógépen.

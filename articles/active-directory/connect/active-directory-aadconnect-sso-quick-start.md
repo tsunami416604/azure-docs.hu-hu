@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 12/05/2017
 ms.author: billmath
-ms.openlocfilehash: b85afe54832319fae2ea3a2501ec268bc63fc7c1
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 1bc76062b05938992b71eedaa71b3c7dfedd7ef4
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: első lépések
 
@@ -127,7 +127,7 @@ Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő z
 
 ### <a name="browser-considerations"></a>Böngésző kapcsolatos szempontok
 
-#### <a name="mozilla-firefox"></a>Mozilla Firefox
+#### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (minden platform)
 
 Mozilla Firefox automatikusan nem használja a Kerberos-hitelesítést. Minden felhasználó manuálisan kell hozzáadnia az Azure AD URL-címeket a Firefox beállításait, az alábbi lépéseket követve:
 1. Futtassa a Firefox, és adja meg `about:config` a böngésző címsorába. Hagyja figyelmen kívül belőle értesítéseket, amelyek akkor jelennek meg.
@@ -136,11 +136,15 @@ Mozilla Firefox automatikusan nem használja a Kerberos-hitelesítést. Minden f
 4. Adja meg a https://autologon.microsoftazuread-sso.com, a mezőben https://aadg.windows.net.nsatc.net.
 5. Válassza ki **OK** és a böngészőben nyissa meg újra.
 
-#### <a name="safari-on-mac-os"></a>Mac OS Safari
+#### <a name="safari-mac-os"></a>Safari (Mac OS)
 
 Győződjön meg arról, hogy a Mac OS futtató számítógép egy tartományhoz az Azure AD-e. Csatlakozás az Azure AD, lásd: [ajánlott eljárások az Active Directory integrálása OS X](http://training.apple.com/pdf/Best_Practices_for_Integrating_OS_X_with_Active_Directory.pdf).
 
-#### <a name="google-chrome-on-mac-os"></a>Google Chrome Mac OS
+#### <a name="google-chrome-all-platforms"></a>Google Chrome (minden platform)
+
+Ha felülbírálva a [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) vagy a [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) házirend-beállítások a környezetben, győződjön meg arról, hogy hozzáadta-e az Azure AD URL-címek (https:// AutoLogon.microsoftazuread-sso.com és https://aadg.windows.net.nsatc.net) is számukra.
+
+#### <a name="google-chrome-mac-os-only"></a>Google Chrome (Mac OS csak)
 
 Google Chrome a Mac OS és más nem Windows platformokon, tekintse meg a [a króm házirend Projektlista](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) integrált hitelesítés engedélyezett az Azure AD URL-címek olvashat.
 
@@ -149,9 +153,6 @@ Külső Active Directory csoportházirend-bővítmények számára, hogy az Azur
 #### <a name="known-browser-limitations"></a>A böngésző ismert korlátozásai
 
 Privát böngészés módban a Firefox és Edge böngésző zökkenőmentes SSO nem működik. Is nem működik az Internet Explorer böngészőben fokozott védett módban fut. Ha.
-
->[!IMPORTANT]
->A Microsoft nemrég visszaállítása ügyfél jelentett problémák vizsgálatára peremhálózati támogatása.
 
 ## <a name="step-4-test-the-feature"></a>4. lépés: A szolgáltatás tesztelése
 

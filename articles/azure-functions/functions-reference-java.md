@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: e8a4b0cc620c887aac3cc442154429b43336d8f1
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 8586bc63ad9c1b3896b21f494ebbe14e6d25a439
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutató
 > [!div class="op_single_selector"]
@@ -39,8 +39,8 @@ CosmosDB | N/A
 HTTP | <ul><li>`HttpTrigger`</li><li>`HttpOutput`</li></ul>
 Mobile Apps | N/A
 Notification Hubs | N/A
-Storage-Blobba | <ul><li>`BlobTrigger`</li><li>`BlobOutput`</li><li>`BlobOutput`</li></ul>
-Storage Üzenetsorába | <ul><li>`QueueTrigger`</li><li>`QueueOutput`</li></ul>
+Storage-Blobba | <ul><li>`BlobTrigger`</li><li>`BlobInput`</li><li>`BlobOutput`</li></ul>
+Tárolási üzenetsor | <ul><li>`QueueTrigger`</li><li>`QueueOutput`</li></ul>
 Tárolási tábla | <ul><li>`TableInput`</li><li>`TableOutput`</li></ul>
 Időzítő | <ul><li>`TimerTrigger`</li></ul>
 Twilio | N/A
@@ -213,7 +213,7 @@ A `@BindingName` jegyzet fogad el egy `String` tulajdonság, amely a kötés/ese
 
 Ez a funkció meghívásakor a HTTP-kérések forgalma átadja egy nem kötelező, `String` argumentum `in` és az Azure Table Storage `MyObject` típus átadott argumentum `obj`. Használja a `Optional<T>` bemeneti adatok kezeléséhez a függvényekké, amely lehet null értékű típus.
 
-## <a name="outputs"></a>kimenetek
+## <a name="outputs"></a>Kimenetek
 
 Kimenetek lehetnek, mind a visszatérési érték vagy kimeneti paraméterei. Ha csak egy kimeneti, javasoljuk, hogy az eredményül kapott értéket használja. A több kimenet kell használni a kimeneti paraméterek.
 
@@ -270,7 +270,7 @@ public class MyClass {
 
 Néha egy függvény részletes ellenőrzése alatt tartja a be- és kimenetekkel. Típusok a kifejezetten a `azure-functions-java-core` csomag célokat szolgálnak, hogy a kérelem adatok kezelésére, és testre szabni a HTTP-eseményindítóval visszaadott állapotát:
 
-| Speciális típusa      |       cél        | Tipikus használati                  |
+| Speciális típusa      |       Cél        | Tipikus használati                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    HTTP-eseményindítóval     | Módszer, fejlécek vagy lekérdezések beolvasása |
 | `HttpResponseMessage<T>` | Kötelező HTTP-kimenet | 200 eltérő visszatérési állapota   |

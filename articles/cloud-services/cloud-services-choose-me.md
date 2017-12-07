@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: d27a4be968dc12818f7031b59ed40fbc9f9d88d3
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 17ecf39128994dad93f017f87f105254f3017230
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>Cloud Services szolgáltatásokból vagy más kell választanom?
 Az Azure Felhőszolgáltatások a választott meg? Azure biztosít a különböző üzemeltetési modell-alkalmazások futtatására. Mindegyik számos különböző szolgáltatások, ezért úgy dönt, melyiket, attól függ, pontosan milyen próbál tegye.
@@ -50,7 +50,7 @@ Annak ellenére, hogy az alkalmazások virtuális gépek futnak, fontos megérte
 ## <a name="scaling-and-management"></a>Méretezés és kezelése
 A Cloud Serviceshez ne hozzon létre virtuális gépeket. Ehelyett adja meg, amely közli Azure hány kíváncsi, például a konfigurációs fájl **három webalkalmazás-szerepkörpéldányokat** és **két szerepkör feldolgozópéldányok**, és a platform létrehozza azt.  Úgy is dönt [milyen méretű](cloud-services-sizes-specs.md) azokat a virtuális gépek biztonsági kell lennie, de nincs explicit módon létrehozásuk magát. Ha az alkalmazásnak egy nagyobb terhelés kezelésére, további virtuális gépek esetén kérje meg, és azokat a példányokat az Azure létrehoz. Ha a terhelés csökkenése, állítsa le ezeken a példányokon, és állítsa le a számukra fizet.
 
-A Cloud Services alkalmazás általában legyen elérhető a felhasználók számára egy kétlépéses folyamat keresztül. Egy fejlesztő első [az alkalmazás feltöltését](cloud-services-how-to-create-deploy-portal.md) a platform átmeneti területre. Amikor készen áll a fejlesztői ellenőrizze az alkalmazás live, az Azure portál használata felcserélni a üzemi és átmeneti. Ez [átmeneti és üzemi közötti váltás](cloud-services-nodejs-stage-application.md) teheti állásidő nélkül, amely lehetővé teszi, hogy a futó alkalmazások a felhasználók megzavarása nélkül egy új verzióra frissíteni.
+A Cloud Services alkalmazás általában legyen elérhető a felhasználók számára egy kétlépéses folyamat keresztül. Egy fejlesztő első [az alkalmazás feltöltését](cloud-services-how-to-create-deploy-portal.md) a platform átmeneti területre. Amikor készen áll a fejlesztői ellenőrizze az alkalmazás live, az Azure portál használata felcserélni a üzemi és átmeneti. Ez [átmeneti és üzemi közötti váltás](cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production) teheti állásidő nélkül, amely lehetővé teszi, hogy a futó alkalmazások a felhasználók megzavarása nélkül egy új verzióra frissíteni.
 
 ## <a name="monitoring"></a>Figyelés
 Cloud Services csomag figyelést is biztosít. Például Azure virtuális gépek, azt észleli a hibás fizikai kiszolgálóra, és újraindul az új számítógép az adott kiszolgálón futó virtuális gépek. De a Felhőszolgáltatások is észleli a sikertelen virtuális gépeket és alkalmazásokat, nem csak a hardver meghibásodása. Ellentétben a virtuális gépek az ügynök minden webes és feldolgozói szerepkör belül van, és úgy tudja majd elindítani az új virtuális gépek és alkalmazáspéldányok hibák bekövetkezésekor.

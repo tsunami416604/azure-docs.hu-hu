@@ -18,15 +18,15 @@
 | Streamelési egységek streamvégpontonként |10 |
 | Tárfiókok | 1000<sup>5</sup> (rögzített) |
 | Házirendek | 1,000,000<sup>(6)</sup> |
-| Fájlméret| Bizonyos esetekben a Media Services által feldolgozható maximális támogatott fájlméret korlátozva van. <sup>7</sup> |
+| Fájlméret| Bizonyos esetekben korlátozva van a Media Services feldolgozás támogatott maximális fájlméretet. <sup>7</sup> |
   
-<sup>1</sup> Az S3 fenntartott egységek Nyugat-Indiában nem érhetők el. A maximális RU korlátok alaphelyzetbe, ha az ügyfél megváltozik a típusának (például a S1 S2). 
+<sup>1</sup> Az S3 fenntartott egységek Nyugat-Indiában nem érhetők el. Ha módosítja a típusának (például a S1 S2), a maximális RU korlátok állnak vissza.
 
 <sup>2</sup> Ez a szám a várólistás, a befejeződött, az aktív, illetve a megszakított feladatokat is magában foglalja. A törölt feladatokat nem tartalmazza. A régi feladatokat az **IJob.Delete** vagy a **DELETE** HTTP-kérés segítségével lehet törölni.
 
-2017. április 1-től kezdődően a fiókokban a 90 napnál régebbi Feladat rekordok automatikusan törölve lesznek, a kapcsolódó Művelet rekordokkal egyetemben, még ha a rekordok összesített száma nem is éri el a maximális kvótát. A feladatok/műveletek adatainak archiválásához használhatja az [itt](../articles/media-services/media-services-dotnet-manage-entities.md) ismertetett programkódot.
+2017. április 1. frissítésétől bármely feladat rekord 90 napnál régebbi fiókja automatikusan törlődik, a társított feladat bejegyzéseket, valamint akkor is, ha a rekordok száma nem éri el a kvóta felső határát. A feladatok/műveletek adatainak archiválásához használhatja az [itt](../articles/media-services/media-services-dotnet-manage-entities.md) ismertetett programkódot.
 
-<sup>3</sup> A Feladat entitások listázásakor kérésenként maximum 1000 entitás jeleníthető meg. Ha az összes elküldött feladatot nyomon szeretné követni, ezt a top/skip (felső korlát/kihagyás) beállítás segítségével teheti meg az [OData rendszerlekérdezési beállításait](http://msdn.microsoft.com/library/gg309461.aspx) ismertető cikkben leírtak szerint.
+<sup>3</sup> amikor kérést egy listához feladat entitások, legfeljebb 1000 feladatot kérelmenként adja vissza. Ha az összes elküldött feladatot nyomon szeretné követni, ezt a top/skip (felső korlát/kihagyás) beállítás segítségével teheti meg az [OData rendszerlekérdezési beállításait](http://msdn.microsoft.com/library/gg309461.aspx) ismertető cikkben leírtak szerint.
 
 <sup>4</sup> A keresőket nem a felhasználónkénti hozzáférés-vezérlés kezelésére tervezték. Ha az egyes felhasználóknak különböző hozzáférési jogosultságokat szeretne biztosítani, válassza a digitális jogkezelési (DRM) megoldásokat. További információ [itt](../articles/media-services/media-services-content-protection-overview.md) érhető el.
 
@@ -37,9 +37,9 @@
 >[!NOTE]
 > Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket stb. használja, a szabályzatazonosítónak is ugyanannak kell lennie. További információkért és példákért lásd [ezt](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies) a szakaszt.
 
-<sup>7</sup>Ha feltölteni kívánt tartalmat egy eszközhöz, az Azure Media Services szolgáltatás a média processzorok egyikével feldolgozni a biztonsági mentés (azaz kódolók, például hasonló oldallal Media Encoder Standard és a Media Encoder prémium munkafolyamat vagy az analysis motorok Érzékelő), majd kell ügyelnie a korlátozás a maximális méretét. 
+<sup>7</sup>Ha feltölteni kívánt tartalmat egy eszközhöz, az Azure Media Services feldolgozni a szolgáltatás a média processzorok egyikével (Ez azt jelenti, például a Media Encoder Standard és a Media Encoder prémium munkafolyamat vagy az analysis motorok kódolók, például Arcfelismerési érzékelő), Ezután a támogatott maximális fájlméret korlátozásaival tisztában kell lennie. 
 
-2017. május 15. frissítésétől egyetlen BLOB támogatott maximális méretnél 195 TB - fájl largers ennél a, a feladat sikertelen lesz. Dolgozunk a azonnal kijavíthatja a hibákat oldja meg ezt a határt. Emellett a korlátozás a maximális méretét, az eszköz a következőképpen történik.
+Egy BLOB támogatott maximális méretnél jelenleg az Azure Blob Storage legfeljebb 5 TB. Azonban további korlátok alapján a Virtuálisgép-méretek a szolgáltatás által használt Azure Media Services alkalmazni. Az alábbi táblázat a korlátok egyes az adathordozó fenntartott egységek (S1, S2, S3.) Ha a forrásfájl nagyobb, mint a tábla meghatározott korlátozásokat, a kódolási feladat sikertelen lesz. Ha a 4 KB-os feloldási források hosszú időtartam kódolni, meg kell S3 Media fenntartott egységek használja a szükséges teljesítmény eléréséhez. Ha 4 KB-os tartalom, amely nagyobb, mint 260 GB vonatkozó korlátozást a S3 Media fenntartott egységek, lépjen velünk kapcsolatba amshelp@microsoft.com a lehetséges megoldást a támogatásához.
 
 | Media szolgáltatás számára fenntartott egység típusa | Maximális bemeneti méret (GB)| 
 | --- | --- | 

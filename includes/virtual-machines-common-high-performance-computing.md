@@ -139,7 +139,7 @@ Az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a kötegelt
 * [A File storage](../articles/storage/storage-files-introduction.md)
 
 ### <a name="data-and-analytics"></a>Adatok és analitika
-* [HDInsight](../articles/hdinsight/hdinsight-hadoop-introduction.md) a Hadoop-fürtök az Azure-on
+* [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md) a Hadoop-fürtök az Azure-on
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
 * [Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: da2dc87543fd8a0aa99e1de3018a310abe93fa3a
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: fb21280921f353d2300767059290a1a8fac05e71
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="azure-media-services-concepts"></a>Az Azure Media Services alapfogalmaiért
 Ez a témakör áttekintést nyújt a Media Services egyik legfontosabb fogalmak.
@@ -151,10 +151,9 @@ A tartalomkulcs-hitelesítési házirend rendelkezhet egy vagy több engedélyez
 Amikor a jogkivonat konfigurálása korlátozzák a házirend, az elsődleges hitelesítési kulcs, a kibocsátó és a célközönség paramétereket kell megadnia. Az elsődleges hitelesítési kulcs, amely a token aláírt kulcsot tartalmazza, a kibocsátó a biztonságos biztonságijogkivonat-szolgáltatás, amely kibocsátja a jogkivonatot. A célközönség (más néven hatókör) ismerteti a jogkivonat a leképezést, vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcs kézbesítési szolgáltatás ellenőrzi, hogy ezek az értékek a token egyeznek-e a sablonban szereplő értékeket.
 
 További információkért tekintse át a következő cikkeket:
-
-[Tartalom áttekintése védelme](media-services-content-protection-overview.md)
-[védelem az AES-128](media-services-protect-with-aes128.md)
-[védelem DRM az](media-services-protect-with-drm.md)
+- [Védelme tartalom áttekintése](media-services-content-protection-overview.md)
+- [AES-128 védelme](media-services-protect-with-aes128.md)
+- [A PlayReady vagy Widevine védelme](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>Továbbítása
 ### <a id="dynamic_packaging"></a>A dinamikus csomagolás

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 12/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 112bfeea29eacd0615f1d134567ec52264318b5f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 6497421b1c51e361d6881332a19c19c7d47c8e29
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>A jelszókezelés gyakran ismételt kérdések
 
@@ -36,7 +36,7 @@ Ez a GYIK a következő szakaszok oszlik:
 * [Jelszó felügyeleti jelentésekkel kapcsolatos kérdések](#password-management-reports)
 * [A jelszóvisszaírás kapcsolatos kérdések](#password-writeback)
 
-## <a name="password-reset-registration"></a>Jelszó-átállítási regisztrációk
+## <a name="password-reset-registration"></a>Jelszó alaphelyzetbe állításának regisztrációja
 
 * **K: a felhasználók regisztrálhatják saját jelszó alaphelyzetbe állítása adatokat?**
 
@@ -81,6 +81,19 @@ Ez a GYIK a következő szakaszok oszlik:
 
 ## <a name="password-reset"></a>Új jelszó létrehozása
 
+* **K: el azt, hogy többszöri rövid időn belül a jelszó alaphelyzetbe állítása a felhasználók?**
+
+  > **V:** Igen, vannak beépítve a jelszó alaphelyzetbe állítása való visszaélés elleni biztonsági funkciók. 
+  >
+  > A felhasználók megpróbálják is csak öt jelszó átállítani a jelszavát egy 24 órás időszakban ahhoz, azok zárolva van 24 órán belül. 
+  >
+  > Felhasználók próbálkozzon egy telefonszám ellenőrzése, SMS küldése, vagy ellenőrizze a biztonsági kérdések és válaszok csak ötször ahhoz, azok zárolva van 24 órán át egy órán belül. 
+  >
+  > Felhasználó egy e-mailt küldhet a legfeljebb 10-szer ahhoz, azok zárolva van 24 órán át egy 10 perces időszakon belül.
+  >
+  > A számlálók alaphelyzetbe állnak, miután a felhasználó alaphelyzetbe állítja a jelszót.
+  >
+  >
 * **K: mennyi ideig várjon egy e-mailben, SMS vagy telefonhívás fogadása jelszó alaphelyzetbe állítása?**
 
   > **V:** e-mailek, az SMS-t, és telefonhívásokat érkeznek meg egy perc alatt. Normális esetben érték 5-20 másodperc.
@@ -163,11 +176,6 @@ Ez a GYIK a következő szakaszok oszlik:
 * **K:, ha a felhasználó regisztrálva van a több maximális kérdések alaphelyzetbe kell állítani, hogy miként kell a biztonsági kérdések kijelölni alaphelyzetbe állítása során?**
 
   > **V:** *N* biztonsági kérdések számát véletlenszerűen kiválasztott felhasználó regisztrálva van, ahol kérdések száma kívül *N* mutatja meg, hogy be van állítva a  **Számos kérdés alaphelyzetbe kell állítani** lehetőséget. Például ha egy felhasználó által regisztrált öt biztonsági kérdéseket, de csak három szükséges a jelszó alaphelyzetbe állítása, három öt kérdéseket a rendszer véletlenszerűen választja ki és jelennek meg, alaphelyzetbe állítása. Kérdés beütés, elkerülésére, ha a felhasználó élvezheti a kérdésekre adott válaszai nem megfelelő a tanúsítványkiválasztási folyamat elindul keresztül.
-  >
-  >
-* **K: el azt, hogy többszöri rövid időn belül a jelszó alaphelyzetbe állítása a felhasználók?**
-
-  > **V:** Igen, vannak beépítve a jelszó alaphelyzetbe állítása való visszaélés elleni biztonsági funkciók. A felhasználók megpróbálják is csak öt jelszó átállítani a jelszavát ahhoz, azok zárolva van 24 órán át egy órán belül. Felhasználók megpróbálja ellenőrizni a telefonszám csak ötször ahhoz, azok zárolva van 24 órán át egy órán belül. Felhasználók próbálkozzon egy egyetlen hitelesítési módszer csak ötször ahhoz, azok zárolva van 24 órán át egy órán belül.
   >
   >
 * **K: mennyi ideig van az e-mailek és SMS egyszeri PIN-kódok érvényes?**
@@ -275,7 +283,7 @@ Ez a GYIK a következő szakaszok oszlik:
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
 * [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
 * [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
-* [Licencelési kérdése van?](active-directory-passwords-licensing.md)
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
 * [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)

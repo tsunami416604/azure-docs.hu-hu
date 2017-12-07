@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: 37a3a990b5f0164b1b6f53727e92e09fece7f6fb
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 8629f069440299690c68887b0d23d9f4ed7dfcc5
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services tanúsítványok áttekintése
-Rendszer tanúsítványokat használ az Azure felhőszolgáltatások ([tanúsítványok szolgáltatás](#what-are-service-certificates)) és a felügyeleti API hitelesítéséhez ([felügyeleti tanúsítványok](#what-are-management-certificates) a klasszikus Azure portál használata esetén, és nem a nem klasszikus Azure portálon). Ez a témakör hogyan mindkét tanúsítványtípusok általános áttekintést nyújt a [létrehozása](#create) és [telepítése](#deploy) őket az Azure-bA.
+Rendszer tanúsítványokat használ az Azure felhőszolgáltatások ([tanúsítványok szolgáltatás](#what-are-service-certificates)) és a felügyeleti API hitelesítéséhez ([felügyeleti tanúsítványok](#what-are-management-certificates)). Ez a témakör hogyan mindkét tanúsítványtípusok általános áttekintést nyújt a [létrehozása](#create) és [telepítése](#deploy) őket az Azure-bA.
 
 Az Azure-ban használt tanúsítványok x.509 v3 alapján létrehozott tanúsítványok, és egy másik megbízható tanúsítvány aláírását, vagy önaláírt el. Önaláírt tanúsítvány aláírásával rendelkezik saját létrehozó, ezért az nem megbízható alapértelmezés szerint. A legtöbb böngésző figyelmen kívül hagyhatja ezt a problémát. Csak akkor ajánlott önaláírt tanúsítványokat, amikor a fejlesztés és tesztelés felhőszolgáltatásban. 
 
@@ -30,7 +30,7 @@ Azure által használt tanúsítványok is tartalmazhat, egy saját vagy nyilvá
 ## <a name="what-are-service-certificates"></a>Mik azok a szolgáltatási tanúsítványok?
 Szolgáltatási tanúsítványok a felhőalapú szolgáltatások és és a szolgáltatás közötti biztonságos kommunikáció engedélyezése vannak csatolva. Például ha a webes szerepkör, akkor kíván megadni olyan tanúsítvány, amely képes hitelesíteni az elérhetőségi HTTPS-végpontnak. Szolgáltatási tanúsítványok, a szolgáltatás definíciós meghatározott a rendszer automatikusan telepíti a virtuális gépet, hogy fut a szerepkör példánya. 
 
-Szolgáltatási tanúsítványok feltöltheti a klasszikus Azure portálra vagy a klasszikus Azure portál használatával, vagy a klasszikus üzembe helyezési modell használatával. Szolgáltatási tanúsítványokhoz társított egyes adott felhőalapú szolgáltatás. A központi telepítés a szolgáltatásdefiníciós fájlban vannak rendelve.
+Szolgáltatási tanúsítványok feltöltheti az Azure-bA vagy az Azure portál használatával, vagy a klasszikus üzembe helyezési modell használatával. Szolgáltatási tanúsítványokhoz társított egyes adott felhőalapú szolgáltatás. A központi telepítés a szolgáltatásdefiníciós fájlban vannak rendelve.
 
 Szolgáltatási tanúsítványok kezelheti külön-külön a szolgáltatások, és előfordulhat, hogy különböző osztályai kell kezelnie. Egy fejlesztő például előfordulhat, hogy feltöltése a szolgáltatáscsomagot, amelyre hivatkozik egy tanúsítványt, amely az informatikai manager korábban már fel van töltve az Azure-bA. Az informatikai Managerrel kezelhetők és anélkül, hogy egy új service-csomag feltöltése (a szolgáltatás konfigurációjának módosítása) tanúsítvány megújításához. Nélkül egy új service-csomag frissítése már lehetséges, mert a logikai név, a tároló nevét és a tanúsítványt a szolgáltatásdefiníciós fájlban, és amíg a tanúsítvány ujjlenyomatát a szolgáltatás konfigurációs fájlban megadott. A tanúsítvány frissítésére, csak akkor kell töltsön fel új tanúsítványt, és módosítsa az ujjlenyomat értéket, a szolgáltatás konfigurációs fájljában.
 
@@ -95,5 +95,5 @@ Nincsenek számos lapot az interneten tér ki az ehhez az IIS-kiszolgálón. [It
 ## <a name="next-steps"></a>Következő lépések
 [A szolgáltatás-tanúsítvány feltöltése az Azure-portálon](cloud-services-configure-ssl-certificate-portal.md).
 
-Töltse fel a [felügyeleti API tanúsítvány](../azure-api-management-certs.md) a klasszikus Azure portálra. Az Azure-portál nem felügyeleti tanúsítványokat használnak a hitelesítéshez.
+Töltse fel a [felügyeleti API tanúsítvány](../azure-api-management-certs.md) az Azure portálon.
 

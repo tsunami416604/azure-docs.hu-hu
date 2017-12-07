@@ -1,6 +1,6 @@
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -10,7 +10,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. 
 
 Az alábbi példa egy *myVM* nevű virtuális gépet és SSH-kulcsokat hoz létre, ha azok még nem léteznek a kulcsok alapméretezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A parancs is beállítja *azureuser* egy rendszergazda felhasználó névvel. Ez a név később való csatlakozásra használja a virtuális géphez. 
 
@@ -42,7 +42,7 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára 
 
-Alapértelmezés szerint csak az SSH-kapcsolatok engedélyezettek az Azure szolgáltatásba telepített Linux virtuális gépek. Ez a virtuális gép lesz a webkiszolgálón, mert szükség nyissa meg a 80-as porton az internetről. A kívánt port megnyitásához használja az [az vm open-port](/cli/azure/vm#open-port) parancsot.  
+Alapértelmezés szerint csak az SSH-kapcsolatok engedélyezettek az Azure szolgáltatásba telepített Linux virtuális gépek. Ez a virtuális gép lesz a webkiszolgálón, mert szükség nyissa meg a 80-as porton az internetről. A kívánt port megnyitásához használja az [az vm open-port](/cli/azure/vm#az_vm_open_port) parancsot.  
  
 ```azurecli-interactive 
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM

@@ -4,9 +4,9 @@ Azure rendszeres időközönként megbízhatóságát, teljesítményét és a v
 
 - Ha karbantartási újraindítást igényel, kap értesítést, ha a karbantartási tervezett. Ezekben az esetekben akkor lesz is kell adni egy olyan időkeretet, ahol megkezdheti a karbantartási saját magának, megfelelő egyszerre.
 
-Ez a lap ismerteti, hogyan Microsoft Azure-ban mindkét karbantartási típusú. Nem tervezett események (hosszabb idejű) kapcsolatos további információkért lásd: a virtuális gépek rendelkezésre állásának kezelése [Windows] (../articles/virtual-machines/windows/manage-availability.md) vagy [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Ez a lap ismerteti, hogyan Microsoft Azure-ban mindkét karbantartási típusú. Nem tervezett események (hosszabb idejű) kapcsolatos további információkért lásd: a virtuális gépek rendelkezésre állásának kezelése [Windows] (.. / articles/virtual-machines/windows/manage-availability.md) vagy [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
-A virtuális gépen futó alkalmazások jövőbeli frissítések információt tud gyűjteni az Azure metaadat-szolgáltatás használatával [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) vagy [Linux] (../articles/virtual-machines/linux/instance-metadata-service.md).
+A virtuális gépen futó alkalmazások jövőbeli frissítések információt tud gyűjteni az Azure metaadat-szolgáltatás használatával [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) vagy [Linux] (.. / articles/virtual-machines/linux/instance-metadata-service.md).
 
 "" Útmutatót a tervezett maintence kezelését, tekintse meg "Kezelési tervezett karbantartás értesítések" [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) vagy [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
@@ -47,4 +47,4 @@ Egy rendelkezésre állási csoportot belül az egyes virtuális gépek legfelje
 
 Virtuálisgép-méretezési csoportok olyan Azure számítási erőforrás, amely lehetővé teszi, akkor helyezheti üzembe és felügyelheti az azonos virtuális gépek készletét, amely egyetlen erőforrásra. A méretezési automatikusan telepíti a frissítési tartományokon, például a virtuális gépek rendelkezésre állási csoportba. Csakúgy, mint a rendelkezésre állási csoportok esetében a méretezési csoportok csak egyetlen frissítési tartományi van hatással az adott időpontban.
 
-A magas rendelkezésre állású virtuális gépek konfigurálásával kapcsolatos további információkért tekintse meg a virtuális gépek rendelkezésre állásának kezelése a Windows (../articles/virtual-machines/windows/manage-availability.md) vagy [Linux](../articles/virtual-machines/linux/manage-availability.md).
+A magas rendelkezésre állású virtuális gépek konfigurálásával kapcsolatos további információkért tekintse meg a virtuális gépek rendelkezésre állásának kezelése a [Windows](../articles/virtual-machines/windows/manage-availability.md) vagy [Linux](../articles/virtual-machines/linux/manage-availability.md).

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: 6213019131eec60263172f468ced516037a33c61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b236ab8dd80b0c34501e0d60ba74dee3043d262
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Azure Cosmos DB gyűjtemények automatikusan élettartama adatok lejár
 Alkalmazások létrehozására és hatalmas mennyiségű adat tárolására is használható. Az adatok egy részét, például generált gép esemény adatokat, a naplókat, és a felhasználói munkamenet az információ csak véges időn. Miután az adatok válnak az alkalmazás igényeinek felesleges ezek az adatok kiürítése és a tárolási igényeinek, az alkalmazások biztonságos.
@@ -149,6 +149,8 @@ A TTL letiltása teljes egészében a gyűjtemény, majd állítsa le a háttér
     
     await client.ReplaceDocumentCollectionAsync(collection);
 
+## <a name="ttl-and-index-interaction"></a>Élettartam és Index interakció
+Élettartam hozzáadása vagy módosítása: az alapul szolgáló index a módosítása. Ha nincs TTL-t, és akkor adjon meg érvényes élettartamértéket - az eredmény indexelik újra a műveletet. Egységes indexe - felhasználó nem jelenik meg a indexű állapotban változásait. Abban az esetben, ha lassú index - indexe először az összes van mindig elfogja fel, és a TTL-t az módosítását, a rendszer teljesen újra index. Az utóbbi esetben szempontjából, hogy az index rebuild során végzett lekérdezések nem ad vissza a teljes vagy a megfelelő eredményeket. Nem módosítsa TTL Lusta index Ha adatok száma stb kell pontos, mert maga az indexelő mód Lusta.  Ideális esetben konzisztens index kell mindig választani. 
 
 ## <a name="faq"></a>GYIK
 **Mit fog költség TTL-t?**

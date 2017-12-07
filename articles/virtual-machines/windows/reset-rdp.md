@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 12/06/2017
 ms.author: genli
-ms.openlocfilehash: e962016a96cbbdafabc512b055248900b2c68a69
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 7690dd6d830b104e6f4c20affbfcc2384abe5eab
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>A távoli asztal szolgáltatás vagy egy Windows virtuális gépre a bejelentkezés jelszó alaphelyzetbe állítása
 Ha nem tud csatlakozni a Windows rendszerű virtuális gép (VM), a helyi rendszergazda jelszavát, vagy állítsa a távoli asztal szolgáltatás konfigurációját. Használhatja az Azure-portálon vagy a virtuális gép hozzáférési bővítményét az Azure PowerShell a jelszó alaphelyzetbe állításához. Ha a PowerShell használata esetén győződjön meg arról, hogy rendelkezik a [legújabb PowerShell-modul telepítve és konfigurálva](/powershell/azure/overview) és az Azure-előfizetéssel jelentkezik be. Emellett [hajtsa végre ezeket a lépéseket a klasszikus telepítési modellel létrehozott virtuális gépek](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/classic/reset-rdp).
@@ -68,17 +68,14 @@ $cred=Get-Credential
 Az alábbi példa frissíti a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup` megadott hitelesítő adatokhoz.
 
 ```powershell
-Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" `
-    -Name "myVMAccess" -Location WestUS -UserName $cred.GetNetworkCredential().Username `
-    -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
+Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -UserName $cred.GetNetworkCredential().UserName -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
 ### <a name="reset-the-remote-desktop-service-configuration"></a>**Állítsa a távoli asztal szolgáltatás konfigurációját.**
 A virtuális Gépet, a távelérés alaphelyzetbe állításával a [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell-parancsmagot. Az alábbi példa alaphelyzetbe állítja a hozzáférés bővítmény nevű `myVMAccess` nevű virtuális gépen `myVM` a a `myResourceGroup` erőforráscsoport:
 
 ```powershell
-Set-AzureRmVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" `
-    -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
+Set-AzureRmVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
 ```
 
 > [!TIP]

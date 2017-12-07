@@ -9,11 +9,11 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6a5bb66db889dc1c52252773e3f129ba2c3d55f1
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9bb55d5af16056ebafc131e73ac4b9da181bd8c7
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Az Azure Media Webmontázskészítő videóklipeket létrehozása
 Az Azure Media Webmontázskészítő egy ingyenes JavaScript-függvénytárat, amely lehetővé teszi webes fejlesztők számára a felhasználói felülettel történő media videóklipeket létrehozása. Az eszköz integrálhatók a weblapokat, és API felületeket biztosít az eszközök betöltésekor és Kivágás feladatok elküldésekor.
@@ -29,8 +29,11 @@ Az Azure Media Webmontázskészítő teszi lehetővé:
 
 Kérjen új funkciókat, adja meg a ötleteket vagy visszajelzést szeretne küldeni, terjeszt [Azure Media Services UserVoice](http://aka.ms/amsvoice/). Ha rendelkezik, és konkrét problémák, kérdések vagy hibáit, dobja el a Media Services team: egy sor keresés amcinfo@microsoft.com.
 
+Az alábbi ábrán a Webmontázskészítő felület: ![Azure Media Webmontázskészítő](media/media-services-azure-media-clipper-getting-started/media-services-azure-media-clipper-interface.PNG)
+
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
-Az alábbi lista ismerteti a különböző ismert problémák és a legújabb kiadása a Webmontázskészítő a változásnaplója:
+Tekintse meg az alábbi lista a Webmontázskészítő blogbejegyzés, különböző ismert problémák és a legújabb kiadása a Webmontázskészítő a változásnaplója:
+- [Blogbejegyzés](https://azure.microsoft.com/blog/azure-media-clipper/)
 - [Ismert problémák listája](https://amp.azure.net/libs/amc/latest/docs/known_issues.html)
 - [Változásnaplója](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
 
@@ -48,8 +51,8 @@ Az Azure Media Webmontázskészítő modern HTML5 technológiákra épül, és t
 
 ## <a name="language-support"></a>Nyelvi támogatás
 A Webmontázskészítő widget a következő 18 nyelveken érhető el:
-- Kínai (egyszerűsített)
-- Kínai (hagyományos)
+- kínai (egyszerűsített)
+- kínai (hagyományos)
 - cseh
 - Holland, Flemish
 - Angol
@@ -60,8 +63,8 @@ A Webmontázskészítő widget a következő 18 nyelveken érhető el:
 - japán
 - koreai
 - lengyel
-- Portugál (brazíliai)
-- Portugál (Portugália)
+- portugál (brazíliai)
+- portugál (általános)
 - orosz
 - spanyol
 - svéd

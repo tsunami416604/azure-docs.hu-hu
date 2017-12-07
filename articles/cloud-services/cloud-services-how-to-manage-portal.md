@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 9af1fdeb5cfe69631cabe13bd341b43319175aae
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: a06becda42541b22d3e090087dd96cd08c980f44
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>Cloud Services kezelése
-Az a **Felhőszolgáltatások (klasszikus)** területén az Azure portál, a szerepkör-szolgáltatás vagy a központi telepítés frissítése, üzemi szakaszos telepítés előléptetéséhez is erőforrások csatolása a felhőalapú szolgáltatás, hogy tekintse meg az erőforrás-függőségek és az erőforrások együtt méretezhető, és egy felhőalapú szolgáltatás, vagy a központi telepítés törlése.
+Az a **Felhőszolgáltatások** területén az Azure portál, lehet frissíteni a szerepkör-szolgáltatás vagy a központi telepítés, üzemi szakaszos telepítés előléptetéséhez, erőforrások csatolása a felhőalapú szolgáltatás, így megtekintheti az erőforrás-függőségek és a skála a erőforrások együtt, és egy felhőalapú szolgáltatás, vagy a központi telepítés törlése.
 
 További információk a felhőalapú szolgáltatás méretezése [Itt](cloud-services-how-to-scale-portal.md).
 
@@ -80,9 +80,6 @@ Vegye figyelembe, hogy a vendég operációs rendszer frissítése és a szolgá
 **A lapozófájl-kapacitás negatívan befolyásolja az alkalmazáshoz állásidő? Hogyan tudom kezelje azt?**
 
 Az utolsó szakaszban leírt módon egy központi telepítési felcserélés, általában gyors, mert csak egy konfigurációs változásokat az Azure load balancer. Néhány esetben azonban képes tíz vagy több másodpercre és átmeneti kapcsolati hibákat eredményezhet. Hatása az ügyfelek számára korlátozása érdekében vegye fontolóra [ügyfél újrapróbálkozási logika](../best-practices-retry-general.md).
-
-## <a name="how-to-link-a-resource-to-a-cloud-service"></a>Hogyan: erőforrás összekapcsolása egy felhőalapú szolgáltatás
-Az Azure-portál nem összeköt erőforrások, mint a jelenlegi klasszikus Azure portálon does. Ehelyett alkalmazhatja további erőforrásokat a felhőalapú szolgáltatás által használt ugyanabban az erőforráscsoportban.
 
 ## <a name="how-to-delete-deployments-and-a-cloud-service"></a>Útmutató: egy felhőalapú szolgáltatás és a központi telepítései törlése
 Egy felhőalapú szolgáltatás törlése előtt törölni kell minden meglévő telepítés.

@@ -40,11 +40,11 @@ Is [eseményindítók beállítása](../articles/monitoring-and-diagnostics/insi
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>Manuálisan méretezhető méretezési csoportban lévő virtuális gépek
 
-### <a name="horizontal"></a>vízszintes
+### <a name="horizontal"></a>Vízszintes
 
 Adja hozzá, vagy távolítsa el a virtuális gépek a kapacitás, a méretezési módosításával. Az Azure portálon, csökkentse vagy növelje a virtuális gépek számát (megjelennek az helyeként **példány száma**) a rendszer állítja be a felülbírálás feltétel sáv késleltetett a bal és jobb oldali méretezés képernyőn.
 
-Az Azure PowerShell használatával le kell töltenie a méretezési készlet objektum használatával [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss). Ezután a **sku.capacity** tulajdonság a használni kívánt virtuális gépek és a frissítés számára a méretezési rendelkező [frissítés-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss). Azure parancssori felület használatával, a kapacitás módosítja a **– új kapacitás** paramétere a [az vmss méretezési](https://docs.microsoft.com/cli/azure/vmss#scale) parancsot.
+Az Azure PowerShell használatával le kell töltenie a méretezési készlet objektum használatával [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss). Ezután a **sku.capacity** tulajdonság a használni kívánt virtuális gépek és a frissítés számára a méretezési rendelkező [frissítés-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss). Azure parancssori felület használatával, a kapacitás módosítja a **– új kapacitás** paramétere a [az vmss méretezési](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) parancsot.
 
 ### <a name="vertical"></a>Függőleges
 

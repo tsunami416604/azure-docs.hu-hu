@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 438eeee7353cbd1d534f27471c9c9054aecc12e8
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 53c9072f98dfe9c03b85eb7409b8ed91c3c0ce33
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>A távelérés szolgáltatás megbízható szolgáltatásokkal
 Azon szolgáltatások vannak társítva, egy adott kommunikációs protokollt vagy a veremben, mint például a WebAPI, a Windows Communication Foundation (WCF) vagy más, nem a Reliable Services keretrendszer lehetővé teszi a távoli eljáráshívás szolgáltatásokhoz a távoli eljáráshívás beállítása gyorsan és egyszerűen.
@@ -79,10 +79,10 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ```
 
-A távoli eljáráshívás keretrendszer kivételek, a szolgáltatás, az ügyfél propagálása zajlik. Ezért kivételkezelést logika használatával az ügyfél `ServiceProxy` közvetlenül kezelheti a kivételeket, amelyek a szolgáltatás jelez.
+A távoli eljáráshívás keretrendszer tölti ki az ügyfél a szolgáltatás által okozott kivételeket. Ennek eredményeképpen használatakor `ServiceProxy`, az ügyfél nem felelős a szolgáltatás által okozott kivételeket.
 
 ## <a name="service-proxy-lifetime"></a>Szolgáltatási Proxy élettartamát
-ServiceProxy létrehozása egy egyszerűsített művelet, így a felhasználók hozhatnak létre tetszőleges számú van szükségük. Szolgáltatási Proxy példányok újrafelhasználható, amíg a felhasználók szükség lenne rá. A távoli eljáráshívás kivételt jelez, ha felhasználók továbbra is felhasználhatja a proxy-példányt. Minden egyes ServiceProxy a hálózaton keresztül üzenetek küldéséhez használt kommunikációs ügyfél tartalmazza. Közben, hogy a távoli hívásokat, azt belső ellenőrizze, hogy ha a kommunikációs ügyfél esetében érvényes. Az adott eredménye alapján, most újra létrehozzuk a kommunikációs ügyfél szükség esetén. Ezért ha kivétel történik, a felhasználók nem kell újból serviceproxy tartalmaz, de transzparens módon történik.
+ServiceProxy létrehozása egy egyszerűsített művelet, így a felhasználók hozhatnak létre tetszőleges számú van szükségük. Szolgáltatási Proxy példányok újrafelhasználható, amíg a felhasználók szükség lenne rá. A távoli eljáráshívás kivételt jelez, ha felhasználók továbbra is felhasználhatja a proxy-példányt. Minden egyes ServiceProxy a hálózaton keresztül üzenetek küldéséhez használt kommunikációs ügyfél tartalmazza. Közben, hogy a távoli hívásokat, azt belső ellenőrizze, hogy ha a kommunikációs ügyfél esetében érvényes. Az adott eredménye alapján, most újra létrehozzuk a kommunikációs ügyfél szükség esetén. Ezért ha kivétel történik, felhasználóknak nem kell újból `ServiceProxy` transzparens módon történik, mert.
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory élettartama
 [ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) van olyan adat-előállítóval, amely különböző távoli eljáráshívási felületek proxy létrehozza. Ha az API-t használja `ServiceProxy.Create` proxy létrehozására, majd a keretrendszer ServiceProxy egypéldányos létrehozza.
@@ -91,12 +91,13 @@ Létrehozása során drága. ServiceProxyFactory kommunikációs ügyfél belső
 Ajánlott eljárás ServiceProxyFactory gyorsítótárazásához, amíg.
 
 ## <a name="remoting-exception-handling"></a>Távoli eljáráshívás kivételkezelést
-A távoli kivétel lépett fel az service API, majd az AggregateException elküldi az ügyfélnek. Ellenkező esetben RemoteExceptions kell DataContract szerializálható [ServiceException](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) a proxykiszolgálóhoz API azt a szerializálási hiba történt.
+A service API minden távoli kivételek küldése az ügyfélnek az AggregateException a. RemoteExceptions DataContract szerializálható; kell lennie. Ha nem, a proxy API jelez [ServiceException](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) szerepel a szerializálási hiba miatt.
 
-ServiceProxy a szolgáltatás partíció létrejön az összes feladatátvételi kivétel kezelése. Újra feloldja a végpontok feladatátvételi Exceptions(Non-Transient Exceptions) esetén és a megfelelő végponttal hívás újrapróbálja a telepítést. Feladatátvétel kivétel újrapróbálkozások száma: nincs meghatározva.
-Átmeneti kivételek esetén a proxy újrapróbálkozik a hívást.
+ServiceProxy kezeli az összes feladatátvételi kivételeket a szolgáltatás partíció akkor jön létre. Újra oldja fel a végpontok, ha feladatátvételi kivételek (nem átmeneti kivételek), és újrapróbálkozik a hívást a megfelelő végponttal. Az újrapróbálkozások számát, feladatátvevő kivételek nincs meghatározva.
+Átmeneti kivétel lép fel, ha a proxy újrapróbálkozik a hívást.
 
-Alapértelmezett újrapróbálkozási paraméterei [OperationRetrySettings] által biztosított. (https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) Felhasználó OperationRetrySettings objektum ServiceProxyFactory konstruktorának való átadásával konfigurálhatja ezeket az értékeket.
+Alapértelmezett újrapróbálkozási paraméterei által biztosított [OperationRetrySettings](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
+Felhasználó OperationRetrySettings objektum ServiceProxyFactory konstruktorának való átadásával konfigurálhatja ezeket az értékeket.
 ## <a name="how-to-use-remoting-v2-stack"></a>Távoli eljáráshívás V2 verem használata
 2.8 NuGet távoli eljáráshívás csomaggal lehetősége van a távelérése V2 verem használható. Távoli eljáráshívás V2 verem további performant és szolgáltatások, mint az egyéni szerializálható és több moduláris Api biztosít.
 Alapértelmezés szerint nem a következő módosításokat, ha továbbra is távelérése V1 verem használható.

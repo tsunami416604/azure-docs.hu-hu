@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/17/2017
+ms.date: 12/06/2017
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 517f85307e97c1e98a84da95cb51660d6d4fe679
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: ba425e938f81ffb37a2c8bc2a764a4db074e9106
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Kényszeríteni a megfelelőségi szabályzatok létrehozása és kezelése
 
@@ -26,22 +26,6 @@ Az Azure-ban a szabályzatok létrehozása és kezelése megértése fontos megf
 > * Egy új házirend megvalósítása a szervezeten belül
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-## <a name="opt-in-to-azure-policy"></a>Az Azure házirend engedélyezve
-
-Azure házirend jelenleg korlátozott előzetes érhető el, a hozzáférés kéréséhez regisztrálnia kell.
-
-1. Keresse fel Azure házirend https://aka.ms/getpolicy, és válassza ki a **regisztráció** a bal oldali ablaktáblán.
-
-   ![Keresse meg a házirend](media/assign-policy-definition/sign-up.png)
-
-2. Az előfizetések kiválasztásával Azure házirend szeretné a **előfizetés** lista szeretne dolgozni. Válassza ki **regisztrálása**.
-
-   Az előfizetési lista tartalmazza az összes Azure-előfizetések.
-
-   ![Szeretné használni az Azure-házirend](media/assign-policy-definition/preview-opt-in.png)
-
-   Attól függően, hogy igény szerint akkor is tarthat néhány napot ki, hogy fogadja el a regisztrációs kérelmet. Ha a kérés elfogadva lekérdezi, értesítést fog kapni e-mailben, hogy a szolgáltatás segítségével megkezdheti.
 
 ## <a name="assign-a-policy"></a>A házirend kijelölése
 
@@ -69,7 +53,7 @@ Az első lépés betartása Azure házirend, hogy rendelje hozzá a házirend-de
 
    Nincsenek Azure házirend – két tarifacsomagok *szabad* és *szabványos*. Az ingyenes szint csak házirendjeinek betartatásával jövőbeli erőforrásokon, a Standard, is kényszerítheti azokat a meglévő erőforrásokat jobb megértése érdekében a megfelelőségi állapot. Mivel jelenleg korlátozott előzetes, nem még kiadtuk árképzési modellt, így Ön nem kap egy számlázási kiválasztásának *szabványos*. További vonatkozó, tekintse meg: [Azure házirend árképzési](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/).
 
-8. Válassza ki a **hatókör** -előfizetés (vagy erőforráscsoport) korábban regisztrált amikor Azure házirendbe választotta. A hatókör határozza meg, milyen erőforrásokat, vagy az erőforrások csoportosítása a házirend-hozzárendelés lekérdezi kényszeríti az. Ez terjedhet előfizetés erőforráscsoportokhoz.
+8. Válassza ki a **hatókör** -előfizetés (vagy erőforráscsoport) korábban regisztrált. A hatókör határozza meg, milyen erőforrásokat, vagy az erőforrások csoportosítása a házirend-hozzárendelés lekérdezi kényszeríti az. Ez terjedhet előfizetés erőforráscsoportokhoz.
 
    Az ebben a példában ez az előfizetés - használjuk **Azure Analytics kapacitás fejlesztői**. Az előfizetés eltérnek.
 
@@ -94,9 +78,9 @@ Most, hogy a házirend-definíció hozzárendelt igazolnia, az oktatóanyagban m
       - A szabályok/Házirendfeltételek, ebben az esetben – G adatsorozat egyenlő méretű Termékváltozat-méretét
       - A házirend hatása ebben az esetben – **Megtagadás**.
 
-   Ez mit kell hasonlítania a JSON-ban
+    Ez mit kell hasonlítania a JSON-ban
 
-```json
+    ```json
 {
     "policyRule": {
       "if": {
@@ -116,11 +100,9 @@ Most, hogy a házirend-definíció hozzárendelt igazolnia, az oktatóanyagban m
       }
     }
 }
-```
+    ```
 
-<!-- Update the following link to the top level samples page
--->
-   A mintákat a json-kód megtekintéséhez nézze meg a cikk - [sablonok Azure házirend](json-samples.md)
+    A json-kód minták megtekintéséhez olvassa el a [sablonok Azure házirend](json-samples.md) cikk.
 
 4. Kattintson a **Mentés** gombra.
 

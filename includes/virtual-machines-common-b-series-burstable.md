@@ -1,20 +1,11 @@
 
-> [!NOTE] 
-> Az előzetes verziójú funkciók rendelkezésre álló, feltéve, hogy elfogadja a használati feltételeket. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> Ebben az előzetes verzióban a következő régiókban korlátozódik:
-> - US - 2. nyugati régiója
-> - US - keleti régiója
-> - Európa - West
-> - Ázsia Csendes-óceáni - Southeast
-
-
 A B sorozatnak VM termékcsalád lehetővé teszi annak meghatározását, mely Virtuálisgép-méretet a megfelelő alap szint teljesítmény a munkaterhelés a lehetőséget nyújt a CPU-teljesítmény az Intel® Broadwell E5-2673 v4 legfeljebb 100 %-os kapacitásnövelés 2.3 GHz-es, vagy egy Intel® Haswell 2.4 GHz -es E5-2673 v3 processzor vCPU.
 
 A B sorozatú virtuális gépek ideálisak munkaterhelések esetén, amelyek nem kell a Processzor teljes teljesítményének folyamatosan, például a webkiszolgálók, a kis adatbázisok és a fejlesztési és tesztelési környezetben. Az ilyen terhelések általában burstable teljesítmény követelményekkel rendelkezik. A B sorozatnak lehetőséget nyújt a beszerzési egy Virtuálisgép-méretet, a teljesítmény alapértékeiről, és kevesebb, mint az eredeti használata esetén a kreditek elkészít a Virtuálisgép-példány. A virtuális gép jóváírás keletkezett, amikor a virtuális Gépet a alapmennyiséget meghaladóan használatát az akár 100 %-a a vCPU, ha az alkalmazás által igényelt nagyobb processzorteljesítmény is kapacitásnövelés.
 
 A B sorozatnak érkezik a következő hat Virtuálisgép-méretek:
 
-| Méret          | vCPU meg | Memória: GiB | Helyi SSD: GiB | Kiinduló virtuális gép CPU-teljesítmény | Maximális CPU telj VM | Banki kreditek / óra | Maximális banki kreditek |
+| Méret          | vCPU meg | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Kiinduló virtuális gép CPU-teljesítmény | Maximális CPU telj VM | Banki kreditek / óra | Maximális banki kreditek |
 |---------------|--------|-------------|----------------|--------------------------------|---------------------------|-----------------------|--------------------|
 | Standard_B1s  | 1      | 1           | 4              | 10%                            | 100%                      | 6                     | 144                |
 | Standard_B1ms | 1      | 2           | 4              | 20%                            | 100%                      | 12                    | 288                |
@@ -26,16 +17,11 @@ A B sorozatnak érkezik a következő hat Virtuálisgép-méretek:
 
 
 
-## <a name="q--a-about-this-preview"></a>Ez az előnézet kapcsolatos kérdések és válaszok
-
-### <a name="q-how-can-i-participate-in-this-preview"></a>K: hogyan vehessen az előzetes verzióban?
-**A**: kérelem kvóta B-adatsor a támogatott régiók egyikéhez sem.  A kvóta jóváhagyását követően is használhatja a portált, vagy az API-k általában ehhez a központi telepítés, ha Ön szeretné. További információkért lásd: [erőforrás-kezelő core kvóta növelése kérelmek](../articles/azure-supportability/resource-manager-core-quotas-request.md).
+## <a name="q--a"></a>Kérdések és válaszok 
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>K: hogyan 135-ös % alapterv teljesítmény eléréséhez a virtuális gép alapján
 **A**: A 135-ös % 8 vCPU-a Virtuálisgép-méretet alkotó között meg van osztva. Például ha az alkalmazás kihasználja a dolgozik a köteges feldolgozás 8 magos, 4, és ezek 4 vCPU mindegyikének futnak, 30 %-os kihasználtsága a teljes rendszermemóriához viszonyítva VM CPU-teljesítmény 120 % volna egyenlő.  Ami azt jelenti, hogy a virtuális gép volna kell felépítése a 15 % különbözeti a alapteljesítményének a jóváírás időpontokat.  De azt is jelenti, hogy ha van elérhető, hogy ugyanazon VM használhatja minden 8 vCPU 100 %-os kreditek meg ezt a virtuális Gépet egy maximális CPU teljesítményt nyújtó 800 %.
 
-### <a name="q-is-there-a-discount-on-price-during-the-preview"></a>K: van kedvezményes áron az előzetes?
-**A**: Igen, a kép árak tekinthető meg a [árképzést ismertető oldalra](http://aka.ms/vmsizes).
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>K: hogyan követheti nyomon a saját kreditegyenlege és felhasználási
 **A**: azt fogja bevezetése 2 új mérőszámok az elkövetkező hetektől a **jóváírás** metrika lehetővé teszi a virtuális gép rendelkezik banki hány kreditek megtekintése és a **ConsumedCredit** metrika hány megjelenik A virtuális gép már felhasználta a Bank CPU kreditek.    A metrikák panelről metrikákat megtekintheti a portálon vagy programozottan az Azure-figyelő API-k segítségével fogja.
@@ -58,14 +44,7 @@ Ha a 120 jóváírásokat I csúcsidőn kívüli érvénybe és kivonás a 96 kr
 **A**: Igen, támogatja a B sorozatnak különböző méretű a prémium szintű Storage adatok lemezeket.   
     
 
-### <a name="q-which-regions-can-i-access-the-preview-from"></a>K: régiók is érhető el az előzetes verzióját, a?
-**A**: A B sorozatnak preview a következő régiókban elérhető lesz:
-- US - 2. nyugati régiója
-- US - keleti régiója
-- Európa - West
-- Ázsia Csendes-óceáni - Southeast
 
-Az előzetes befejeződése után a B sorozat minden fennmaradó terület azt ad ki.
     
 
     

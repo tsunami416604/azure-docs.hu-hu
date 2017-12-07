@@ -2,7 +2,7 @@ Bizonyos korlátozások érvényesek a mérőszámok számára és az alkalmazá
 
 | **Erőforrás** | **Alapértelmezett korlát** | **Megjegyzés**
 | --- | --- | --- |
-| Napi teljes adatmennyiség | 500 GB | Egy korlát beállításával csökkenthető az adatmennyiség. Ha többre van szüksége, írjon a következő címre: AIDataCap@microsoft.com
+| Napi teljes adatmennyiség | 100 GB | Egy korlát beállításával csökkenthető az adatmennyiség. Ha több, a korlát növeléséhez legfeljebb 1000 GB a portálról. Üzenet küldése a 1000 GB-nál nagyobb kapacitás, AIDataCap@microsoft.com.
 | Havi ingyenes adatmennyiség<br/> (Alapszintű árképzési csomag) | 1 GB | A további adatok számlázása GB-onként történik.
 | Szabályozás | 32 ezer esemény/másodperc | A korlát megállapítása egy percnyi mérés alapján történik.
 | Adatmegőrzés | 90 nap | Ez az erőforrás a [Keresés](../articles/application-insights/app-insights-diagnostic-search.md), [Elemzés](../articles/application-insights/app-insights-analytics.md) és [Metrikaböngésző](../articles/application-insights/app-insights-metrics-explorer.md) esetén használható.
