@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: iainfou
-ms.openlocfilehash: 94f8e3330fb2d6547811315fcfdb8ced338e0247
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: b9156998e36ddb8c4893cc0df98a7ddf3ff5d4f2
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Alakítsa át a Linux virtuális gépek nem felügyelt lemezekből felügyelt
 
@@ -28,6 +28,7 @@ Ha meglévő Linux virtuális gépek (VM), a nem felügyelt lemezeket használó
 Ez a cikk bemutatja, hogyan alakítsa át a virtuális gépek az Azure parancssori felület használatával. Ha szeretné telepíteni vagy frissíteni, lásd: [Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
 
 ## <a name="before-you-begin"></a>Előkészületek
+* Felülvizsgálati [felügyelt lemezekre áttelepítésével kapcsolatos gyakori kérdések](faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
