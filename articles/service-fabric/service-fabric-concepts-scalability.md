@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 680b996e370f66a5e22644ae1d1bf41d314bb4de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 6dc89bda31af35e4c7eb0f2255db301b39ac05eb
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="scaling-in-service-fabric"></a>A Service Fabric skálázás
 Az Azure Service Fabric megkönnyíti a méretezhető alkalmazások hozhat létre a szolgáltatások, partíciók és a fürt csomópontjait a replikák kezelése. Számos különféle munkaterheléshez fut ugyanazon a hardveren lehetővé teszi, hogy a maximális erőforrás-használat, de rugalmas hogyan úgy dönt, hogy a munkaterhelés vertikális is biztosít. 
@@ -69,7 +69,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Létrehozásában és eltávolításában új méretezhetővé nevű szolgáltatások
 A megnevezett példánya egy adott típusú példány szolgáltatás (lásd: [Service Fabric-alkalmazás életciklusa](service-fabric-application-lifecycle.md)) a fürt egyes elnevezett alkalmazáspéldány belül. 
 
-Új elnevezett szolgáltatáspéldány létrehozott (vagy eltávolítása) válik több vagy kevesebb foglalt szolgáltatásként. Ez lehetővé teszi a kérelmek további szolgáltatáspéldány általában így csökkenti a meglévő szolgáltatások a terhelés lesz elosztva. Szolgáltatások létrehozásakor a Service Fabric fürt erőforrás-kezelő a szolgáltatásokat helyezi a fürt egy elosztott módon. A pontos lépéseket kell teljesítenie szabályozza a [metrikák](service-fabric-cluster-resource-manager-metrics.md) a fürt és más elhelyezési szabály. Szolgáltatások számos különböző módon hozható létre, de a legtöbb felügyeleti műveletek, például valaki hívása keresztül [ `New-ServiceFabricService` ](https://docs.microsoft.com/en-us/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps), vagy a kód hívása [ `CreateServiceAsync` ](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet). `CreateServiceAsync`még nem hívható a más szolgáltatásokkal, a fürtön belül.
+Új elnevezett szolgáltatáspéldány létrehozott (vagy eltávolítása) válik több vagy kevesebb foglalt szolgáltatásként. Ez lehetővé teszi a kérelmek további szolgáltatáspéldány általában így csökkenti a meglévő szolgáltatások a terhelés lesz elosztva. Szolgáltatások létrehozásakor a Service Fabric fürt erőforrás-kezelő a szolgáltatásokat helyezi a fürt egy elosztott módon. A pontos lépéseket kell teljesítenie szabályozza a [metrikák](service-fabric-cluster-resource-manager-metrics.md) a fürt és más elhelyezési szabály. Szolgáltatások számos különböző módon hozható létre, de a legtöbb felügyeleti műveletek, például valaki hívása keresztül [ `New-ServiceFabricService` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps), vagy a kód hívása [ `CreateServiceAsync` ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet). `CreateServiceAsync`még nem hívható a más szolgáltatásokkal, a fürtön belül.
 
 Szolgáltatások létrehozása dinamikusan kívüli bármilyen típusú forgatókönyvben is használható, és a megszokott mintát követi. Vegye figyelembe például egy állapotalapú szolgáltatás, amely egy adott munkafolyamat jelöli. Jelölő munka hívások fogja jelenik meg a szolgáltatáshoz, és ez a szolgáltatás állapotra vált, hogy a munkafolyamat-rekord folyamatban van a lépések végrehajtása. 
 

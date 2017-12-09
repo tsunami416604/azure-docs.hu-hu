@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: 8340ae1231b7f40f739d7bbb63cee1bf0f095ab5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: c9ea8164d5866662a7ed81672ee1ba776603b193
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence megoldásértékelési eszköz
 ## <a name="overview"></a>Áttekintés
@@ -95,17 +95,17 @@ A sloution az Azure SQL- vagy Azure SQL DW erőforrásokat az Azure Active Direc
 
 | További információ | Ebben a cikkben találhat |
 | --- | --- |
-| SQL-adatbázis és az SQL Data Warehouse az aad-ben | [Az SQL Database vagy az SQL Data Warehouse hitelesítéshez használandó Azure Active Directory-hitelesítés](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication) |
-| Konfigurálhatja és kezelheti az aad-ben | [Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure) |
-| Az Azure webalkalmazás-hitelesítés | [Hitelesítési és engedélyezési az Azure App Service-ben](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-overview) |
-| Webalkalmazás konfigurálása az aad-ben | [Az App Service alkalmazás használhatja az Azure Active Directory bejelentkezési konfigurálása](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)|
+| SQL-adatbázis és az SQL Data Warehouse az aad-ben | [Az SQL Database vagy az SQL Data Warehouse hitelesítéshez használandó Azure Active Directory-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) |
+| Konfigurálhatja és kezelheti az aad-ben | [Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) |
+| Az Azure webalkalmazás-hitelesítés | [Hitelesítési és engedélyezési az Azure App Service-ben](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) |
+| Webalkalmazás konfigurálása az aad-ben | [Az App Service alkalmazás használhatja az Azure Active Directory bejelentkezési konfigurálása](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)|
 
 ### <a name="datasets-accessible-to-end-users-should-support-role-based-access-control"></a>Végfelhasználók számára elérhető adatkészletek támogatnia kell a szerepköralapú hozzáférés-vezérlés
 A kiértékelési eszközével végrehajtásakor fogja kérni adja meg a jelentésekben vagy erőforrások közzétételéhez. Feltételezzük, hogy ezeket az erőforrásokat szánt hozzáférés végfelhasználók, nem a fejlesztők által. Ezeket az erőforrásokat kell biztosítania kell szerepköralapú hozzáférés-vezérlést (RBAC) ahhoz, hogy, hogy, hogy a végfelhasználók csak hitelesített adatok eléréséhez.
 
 Pontosabban a következő Azure-erőforrások bármelyike RBAC konfigurálható, és elfogadható számítanak:
-- HDInsight biztonságos című [tartományhoz HDInsight-fürtökkel a Hadoop biztonsági bemutatása](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-domain-joined-introduction)
-- Az Azure SQL, lásd: [AAD-hitelesítés és az Azure SQL]( https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication)
+- HDInsight biztonságos című [tartományhoz HDInsight-fürtökkel a Hadoop biztonsági bemutatása](https://docs.microsoft.com/azure/hdinsight/hdinsight-domain-joined-introduction)
+- Az Azure SQL, lásd: [AAD-hitelesítés és az Azure SQL]( https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
 - Az Azure Analysis Services, lásd: [adatbázis-szerepkörök és a felhasználók kezelése az Azure Analysis Services](https://docs.microsoft.com/azure/analysis-services/analysis-services-database-users)
 - Az SQL Data Warehouse (vegye figyelembe, hogy SQL DW nem támogatja a Szerepalapú, nem ajánlott a közvetlen végfelhasználói hozzáférése.)
 
@@ -114,17 +114,17 @@ Ha egy másik erőforrástípust, amely támogatja az RBAC használata esetén a
 ### <a name="azure-data-lake-store-should-use-at-rest-encryption"></a>Azure Data Lake Store kell használnia, inaktív adatok titkosítása
 Azure Data Lake Store-(ADLS-), inaktív adatok titkosítása ADLS-felügyelet alatt álló titkosítási kulcsok használatával alapértelmezés szerint támogatja. Az Azure Key Vault használatával titkosítási is beállítható.
 
-ADLS-titkosítási beállításait, információ [Azure Data Lake Store-fiók létrehozása](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#create-an-azure-data-lake-store-account).
+ADLS-titkosítási beállításait, információ [Azure Data Lake Store-fiók létrehozása](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal#create-an-azure-data-lake-store-account).
 
 ### <a name="azure-sql-and-azure-sql-data-warehouse-should-use-encryption"></a>Az Azure SQL és az Azure SQL Data Warehouse használandó titkosítási
 Az Azure SQL és Azure SQL DW is támogatja a transzparens adatok titkosítás (TDE), amely biztosítja az adatok és a naplófájlok valós idejű titkosításához és visszafejtéséhez.
 
 | További információ | Ebben a cikkben találhat |
 | --- | --- |
-| Az átlátható adattitkosítás (TDE) | [Átlátható adattitkosítás](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-tde) |
-| Az Azure SQL Data Warehouse TDE | [SQL Data Warehouse-Encrption TDE TSQL](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-encryption-tde-tsql) |
-| Az Azure SQL TDE konfigurálása | [Az Azure SQL Database átlátható adattitkosítás](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) |
-| Mindig titkosítja az Azure SQL konfigurálása | [SQL-adatbázis mindig titkosítja az Azure Key Vault](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault)|
+| Az átlátható adattitkosítás (TDE) | [Átlátható adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) |
+| Az Azure SQL Data Warehouse TDE | [SQL Data Warehouse-Encrption TDE TSQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-encryption-tde-tsql) |
+| Az Azure SQL TDE konfigurálása | [Az Azure SQL Database átlátható adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) |
+| Mindig titkosítja az Azure SQL konfigurálása | [SQL-adatbázis mindig titkosítja az Azure Key Vault](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)|
 
 Mellett TDE Azure SQL is támogat mindig titkosítja, egy új titkosítási technológiát, amely biztosítja az adatok titkosítása nem csak nyugalmi és adatátviteli ügyfél és kiszolgáló közötti, hanem adatainak közben során használja a kiszolgálón parancsok végrehajtása során.
 
@@ -133,7 +133,7 @@ Ahhoz, hogy a konzisztens biztonsági szintű AppSource biztosít, kérjük bár
 
 Az Azure piactéren elérhető rendszerkép aktuális listáját, látogasson el a [Microsoft Azure piactérről](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute).
 
-A virtuálisgép-lemezkép közzététele az Azure piactér információkért lásd: [útmutató a virtuálisgép-lemezkép létrehozása az Azure piactéren](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).
+A virtuálisgép-lemezkép közzététele az Azure piactér információkért lásd: [útmutató a virtuálisgép-lemezkép létrehozása az Azure piactéren](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).
 
 ## <a name="scalability-evaluation-considerations"></a>Méretezhetőség értékelési kapcsolatos szempontok
 ### <a name="cortana-intelligence-solutions-should-include-a-scalable-big-data-platform"></a>A Cortana Intelligence megoldások tartalmaznia kell egy méretezhető nagy adatplatform
@@ -145,14 +145,14 @@ Ha a megoldás nem igényel támogatást ezen adatok mérete, vagy egy alternat�
 ### <a name="cortana-intelligence-solutions-should-include-dedicated-ingestion-data-environments"></a>A Cortana Intelligence megoldások dedikált adatfeldolgozást adatok környezetekben kell tartalmaznia.
 A Cortana Intelligence megoldások általában közvetlenül az adatok beszúrása relációs adatforrások kerülendő. Ehelyett nyers adatokat kell tárolni egy strukturálatlan környezetet az idempotent Beszúrások frissítések bármely Azure Data Factory használatával relációs tárolja azokat.
 
-További információ az Azure Data Factory, az adatok másolásának [oktatóanyag: hozzon létre egy folyamatot Visual Studio használatával, a másolási tevékenység](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio).
+További információ az Azure Data Factory, az adatok másolásának [oktatóanyag: hozzon létre egy folyamatot Visual Studio használatával, a másolási tevékenység](https://docs.microsoft.com/azure/data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio).
 
 ### <a name="azure-sql-data-warehouse-should-use-polybase-for-data-ingestion"></a>Az SQL Data Warehouse PolyBase adatfeldolgozást kell használnia
 Az Azure SQL DW PolyBase jól skálázható, párhuzamos adatfeldolgozást támogatja. A PolyBase lehetővé teszi Azure SQL DW használatát vagy az Azure Blob Storage tárolóban, vagy az Azure Data Lake Store tárolt külső adatkészletek probléma lekérdezésekre. Ez a tömeges frissítése alternatív módszerek kiváló teljesítményt biztosít.
 
-Ismerkedés a PolyBase és az Azure SQL DW, lásd: [adatok betöltése a PolyBase az SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-get-started-load-with-polybase).
+Ismerkedés a PolyBase és az Azure SQL DW, lásd: [adatok betöltése a PolyBase az SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-load-with-polybase).
 
-A PolyBase és az Azure SQL DW ajánlott eljárásokra vonatkozó további információkért lásd: [útmutató az SQL Data Warehouse PolyBase használatával](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-load-polybase-guide).
+A PolyBase és az Azure SQL DW ajánlott eljárásokra vonatkozó további információkért lásd: [útmutató az SQL Data Warehouse PolyBase használatával](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-polybase-guide).
 
 ## <a name="availability-evaluation-considerations"></a>Rendelkezésre állási értékelési kapcsolatos szempontok
 
@@ -161,38 +161,38 @@ A kiértékelési eszközével végrehajtásakor fogja kérni adja meg a jelent�
 
 Azure SQL Data Warehouse kifejezetten, nem lehet az egyetlen adatforrás rendelkezésre a végfelhasználók számára. Ha az Azure SQL DW kiemelt felhasználók előírt erőforrásként, Azure Analysis Services kell elérhetővé válik a jellemző felhasználók számára.
 
-Azure SQL DW feldolgozási korlátok kapcsolatos további információkért lásd: [egyidejűségi és munkaterhelés-kezelés az SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-develop-concurrency).
+Azure SQL DW feldolgozási korlátok kapcsolatos további információkért lásd: [egyidejűségi és munkaterhelés-kezelés az SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-concurrency).
 
 Azure Analysis Services kapcsolatos további információkért lásd: [Analysis Services áttekintése](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview).
 
 ### <a name="azure-sql-resources-should-have-a-read-only-replica-for-failover"></a>Azure SQL-erőforrások feladatátvételhez csak olvasható replika kell rendelkeznie.
 Az Azure SQL-adatbázisok másodlagos példányra georeplikáció támogatja. Ez a példány majd segítségével egy feladatátvétel-példányként adja meg a magas rendelkezésre állású alkalmazások.
 
-Az Azure SQL-adatbázisok georeplikáció kapcsolatos további információkért lásd: [SQL adatbázis földrajzi régiók közötti replikáció áttekintése](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview).
+Az Azure SQL-adatbázisok georeplikáció kapcsolatos további információkért lásd: [SQL adatbázis földrajzi régiók közötti replikáció áttekintése](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview).
 
-Az Azure SQL georeplikáció konfigurálásával kapcsolatos útmutatásért lásd: [aktív georeplikáció konfigurálása az Azure SQL Database Transact-SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-transact-sql).
+Az Azure SQL georeplikáció konfigurálásával kapcsolatos útmutatásért lásd: [aktív georeplikáció konfigurálása az Azure SQL Database Transact-SQL](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-transact-sql).
 
 ### <a name="azure-sql-data-warehouse-should-have-geo-redundant-backups-enabled"></a>Az SQL Data Warehouse georedundáns biztonsági mentések engedélyezve kell rendelkeznie.
 Az Azure SQL DW támogatja a georedundáns tárolás napi biztonsági mentések. A georeplikáció biztosítja, hogy visszaállíthassa az adatraktárban még akkor is, ha nem fér hozzá az elsődleges régióban tárolt pillanatképek helyzetekben. Ez a funkció alapértelmezés szerint be van kapcsolva, és nem lehet letiltani a Cortana Intelligence megoldások.
 
-További információ az Azure SQL DW biztonsági mentés és visszaállítás talál [SQL Data Warehouse biztonsági mentések](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-backups).
+További információ az Azure SQL DW biztonsági mentés és visszaállítás talál [SQL Data Warehouse biztonsági mentések](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-backups).
 
 ### <a name="virtual-machines-should-be-configured-with-availability-sets"></a>Virtuális gépek rendelkezésre állási készletek kell konfigurálni
 Az Azure virtuális gépek ahhoz, hogy a tervezett és nem tervezett karbantartási események gyakorolt hatásának minimalizálása érdekében a rendelkezésre állási készletek lehet beállítani.
 
-Azure virtuális gép rendelkezésre állási kapcsolatos további információkért lásd: [a Windows Azure virtuális gépek rendelkezésre állásának kezelése](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability).
+Azure virtuális gép rendelkezésre állási kapcsolatos további információkért lásd: [a Windows Azure virtuális gépek rendelkezésre állásának kezelése](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
 
 ## <a name="other-evaluation-considerations"></a>Egyéb értékelési szempontok
 ### <a name="cortana-intelligence-apps-should-use-a-centralized-tool-for-data-orchestration"></a>A Cortana Intelligence alkalmazásokat kell használnia egy központosított eszköz adatok előkészítése
-Egyetlen eszközzel kezelésére és adatmozgás és átalakítás ütemezése kritikus fontosságú adatok körül konzisztencia biztosítja. Biztosít egy tiszta logika körül újrapróbálkozási logika, a függőségi felügyeleti, a riasztás/naplózási, stb. Azt javasoljuk, hogy használatát [Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-introduction) az adatok előkészítése az Azure-ban.
+Egyetlen eszközzel kezelésére és adatmozgás és átalakítás ütemezése kritikus fontosságú adatok körül konzisztencia biztosítja. Biztosít egy tiszta logika körül újrapróbálkozási logika, a függőségi felügyeleti, a riasztás/naplózási, stb. Azt javasoljuk, hogy használatát [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-introduction) az adatok előkészítése az Azure-ban.
 
 Ha egy eszköz nem Azure Data Factory adatok előkészítése az használ, írja le mely eszköz vagy a használt eszközök.
 ### <a name="azure-machine-learning-models-should-be-retrained-using-azure-data-factory"></a>Az Azure Machine Learning modellek kell retrained Azure Data Factory használatával
 Az Azure Machine Learning (AzureML) biztosít a könnyen használható eszközök létrehozásának és telepítésének prediktív modellezési és gépi tanulási folyamatok. Azonban fontos, hogy az AzureML modellek üzemi környezetek nem egyetlen rögzített adatkészlet alapján, de ehelyett valós jelenségek shifting Dynamics alkalmazkodik.
 
-Megőrzési webszolgáltatások AzureML létrehozásáról további információk: [Machine Learning-modellek szoftveres](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-retrain-models-programmatically).
+Megőrzési webszolgáltatások AzureML létrehozásáról további információk: [Machine Learning-modellek szoftveres](https://docs.microsoft.com/azure/machine-learning/machine-learning-retrain-models-programmatically).
 
-Azure Data Factory használatával modell betanítási folyamatának automatizálásával kapcsolatos további információkért lásd: [frissítése Azure Machine Learning modellek használata az Update-Erőforrástevékenység](https://docs.microsoft.com/en-us/azure//data-factory/v1/data-factory-azure-ml-update-resource-activity).
+Azure Data Factory használatával modell betanítási folyamatának automatizálásával kapcsolatos további információkért lásd: [frissítése Azure Machine Learning modellek használata az Update-Erőforrástevékenység](https://docs.microsoft.com/azure//data-factory/v1/data-factory-azure-ml-update-resource-activity).
 
 ## <a name="existing-documentation"></a>Meglévő dokumentáció
 [A Microsoft Azure hitelesített nő, a felhő üzleti](https://azure.microsoft.com/en-us/marketplace/programs/certified/)

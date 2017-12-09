@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: Vince.Smith
 ms.custom: it-pro;
-ms.openlocfilehash: 7b768ee5dcb16859e88a0f8c0a0c1d5097498477
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
-ms.translationtype: HT
+ms.openlocfilehash: e1e858b19f9aed680f95ad2f5e84310200340bf9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
-Azure Active Directory (Azure AD) segítségével meghatározhat külön rendszergazdák számára, hogy különféle célokat szolgál. Rendszergazdák különböző szolgáltatást az Azure-portálon vagy a klasszikus Azure portálon, és attól függően, hogy azok szerepét, hozzon létre vagy szerkeszthető felhasználók, rendszergazdai szerepkörök hozzárendelése a mások, felhasználók új jelszavainak létrehozására, felhasználói licencek kezelése, és tartományok között más kezelése dolgot. A rendszergazda szerepkörrel felruházott felhasználó ugyanazokkal az engedélyekkel rendelkeznek az összes a felhőszolgáltatások, amelyek a szervezet fizet elő, függetlenül attól, hogy rendelje hozzá a szerepkört az Office 365 portál és a klasszikus Azure portálon vagy az Azure AD-modul segítségével  a Windows PowerShell környezethez.
+Azure Active Directory (Azure AD) segítségével meghatározhat külön rendszergazdák számára, hogy különféle célokat szolgál. Rendszergazdák van a különböző szolgáltatások eléréséhez, az Azure portálon, és attól függően, hogy a szerepkör is hozzon létre vagy felhasználók szerkesztése, rendszergazdai szerepkörök hozzárendelése mások, felhasználók új jelszavainak létrehozására, felhasználói licencek kezelése és kezelhetik a tartományokat, többek között. A rendszergazda szerepkörrel felruházott felhasználó ugyanazokkal az engedélyekkel rendelkeznek az összes, amelyhez a szervezet fizet elő, függetlenül attól, hogy rendelje hozzá a szerepkört az Office 365 portál és az Azure portálon vagy az Azure AD-modul segítségével felhőszolgáltatások A Windows PowerShell.
 
 A következő rendszergazdai szerepkörök állnak rendelkezésre:
 
@@ -117,7 +117,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 | --- | --- |
 | <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Felhasználói jelszavak átállítása</p> <p>Állítsa vissza a többi rendszergazda jelszavát</p>|<p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Jelentések megtekintése</p>|
 
-### <a name="service-administrator"></a>Szolgáltatás-rendszergazda
+### <a name="service-administrator"></a>Szolgáltatásadminisztrátor
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
 | <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p> |<p>Felhasználói jelszavak átállítása</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p> |

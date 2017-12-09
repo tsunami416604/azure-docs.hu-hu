@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: eslesar
-ms.openlocfilehash: 4e7b3049fff76c86956e08d71b22a0f8dbf55b0e
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
-ms.translationtype: HT
+ms.openlocfilehash: 3ab858f98077149983ca12e97a621dac18bb580c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="my-first-python-runbook"></a>Az első Python-forgatókönyv
 
@@ -213,5 +213,5 @@ Kattintson a **OK** a runbook elindításához. A runbook fut, és a megadott vi
 * A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md).
 * A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md)
 * További információk a forgatókönyvek típusairól, az előnyeikről és a korlátaikról: [Az Azure Automation forgatókönyveinek típusai](automation-runbook-types.md)
-* Az Azure Python fejlesztésével kapcsolatos további tudnivalókért lásd: [Azure Python-fejlesztőknek](https://docs.microsoft.com/en-us/python/azure/?view=azure-python).
-* Példa Python 2 runbookok megtekintése: a [Azure Automation GitHub](https://docs.microsoft.com/en-us/python/azure/?view=azure-python).
+* Az Azure Python fejlesztésével kapcsolatos további tudnivalókért lásd: [Azure Python-fejlesztőknek](https://docs.microsoft.com/python/azure/?view=azure-python).
+* Példa Python 2 runbookok megtekintése: a [Azure Automation GitHub](https://docs.microsoft.com/python/azure/?view=azure-python).

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 4eecaf76773927f96f0e4d79d795f0ffe8033a66
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
-ms.translationtype: HT
+ms.openlocfilehash: 77c7163b896c2b364039ea6c669ee70cf8be4d9e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Az IntelliJ Azure eszköztára használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -169,7 +169,7 @@ A telepítési utasításokért lásd: [Azure eszközkészlet telepítése az In
       A feladat kimenetére elérésére, lásd: a "hozzáférés és a HDInsight Spark-fürtök kezelése az intellij-t Azure eszközkészlet használatával" című szakaszban ebben a cikkben található.
 
 ## <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>A Spark-alkalmazások hibakeresését helyileg vagy távolról a HDInsight-fürtök 
-Javasoljuk továbbá egy másik módszer a Spark alkalmazás fürtre elküldése. A paraméterek beállításával is teheti a **Futtatás/Debug konfigurációk** IDE. További információkért lásd: [Spark-alkalmazások hibakeresését helyileg vagy távolról az Azure-eszközkészlet a HDInsight-fürtök az SSH-n keresztül IntelliJ](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
+Javasoljuk továbbá egy másik módszer a Spark alkalmazás fürtre elküldése. A paraméterek beállításával is teheti a **Futtatás/Debug konfigurációk** IDE. További információkért lásd: [Spark-alkalmazások hibakeresését helyileg vagy távolról az Azure-eszközkészlet a HDInsight-fürtök az SSH-n keresztül IntelliJ](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>Férhessen hozzá és felügyelhesse a HDInsight Spark-fürtjei IntelliJ Azure eszközkészlet használatával
 Az intellij-t Azure eszközkészlet használatával különféle műveleteket hajthat végre.
@@ -181,7 +181,7 @@ Az intellij-t Azure eszközkészlet használatával különféle műveleteket ha
 
 2. A jobb oldali ablaktáblában a **Spark feladat megtekintése** lap megjeleníti a fürtön futó összes alkalmazást. Válassza ki, amelynek meg szeretné tekinteni a további részleteket az alkalmazás nevét.
 
-    ![Az alkalmazás részletei](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
+    ![Alkalmazás adatai](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
 
 3. Alapszintű futó feladat adatainak megjelenítéséhez vigye a feladat ábra. A szakaszok grafikon és információt, amely minden feladatot hoz létre megtekintéséhez válasszon ki egy csomópontot a feladat ábra a.
 

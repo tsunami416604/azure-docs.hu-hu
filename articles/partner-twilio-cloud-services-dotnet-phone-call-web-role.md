@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 0899a49cbfda775017dab7fc6d8963bbeb86d74c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: cd9792881182fbe90d9c210130ae8a34b12da363
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Hogyan telefonhívás Twilio webes szerepkörrel rendelkező Azure használatával
 Ez az útmutató bemutatja, hogyan Twilio használata Azure-ban üzemeltetett weblapok hívásakor. Az eredményül kapott alkalmazás felszólítja a felhasználót egy hívás a megadott és az üzenet, az alábbi képernyőfelvételen látható módon.
@@ -186,4 +186,4 @@ Ez a kód Twilio használatát az ASP.NET webes szerepkör Azure alapvető funkc
 
 
 [azure_runtime_ref_dotnet]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
-[azure_webroles_get_started]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-get-started
+[azure_webroles_get_started]: https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-get-started

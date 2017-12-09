@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 07/06/2017
 ms.author: iainfou
-ms.openlocfilehash: 9ccdb3fbca21264065eeb1c4e46314c62af4c2e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 264fe2acbdd393a2f9d349e1522263f1728c5d48
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Részletes SSH hibaelhárításának lépései az Azure Linux virtuális gép csatlakozni
 Nincsenek számos oka lehet, hogy az SSH-ügyfél nem feltétlenül tudni elérni az SSH szolgáltatás a virtuális Gépen. Ha már elvégezte a több keresztül [hibaelhárítási lépések általános SSH](troubleshoot-ssh-connection.md), további hibáinak kapcsolódási problémáját. Ez a cikk végigvezeti részletes hibaelhárítási lépések elvégzésével ellenőrizheti, ha az SSH-kapcsolat nem működik, és a megoldásának módjával.
@@ -113,7 +113,7 @@ A végpont forrásként a probléma kiküszöbölése, távolítsa el az aktuál
 Hálózati biztonsági csoportok lehetővé teszik a részletesebb vezérlést engedélyezett bejövő és kimenő forgalom. Létrehozhat szabályokat, amelyek span alhálózatok és a felhőalapú szolgáltatások egy Azure virtuális hálózatra. Ellenőrizze a hálózati biztonsági csoportszabályok annak ellenőrzéséhez, hogy engedélyezett-e SSH-forgalmat az Internet felé és felől.
 További információkért lásd: [hálózati biztonsági csoportok](../../virtual-network/virtual-networks-nsg.md).
 
-Is használhatja IP ellenőrizze az NSG-konfiguráció érvényesítése céljából. További információkért lásd: [áttekintése Azure hálózatfigyelési](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview). 
+Is használhatja IP ellenőrizze az NSG-konfiguráció érvényesítése céljából. További információkért lásd: [áttekintése Azure hálózatfigyelési](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
 ## <a name="source-5-linux-based-azure-virtual-machine"></a>5. forrás: Az Azure virtuális Linux-alapú számítógép
 A lehetséges problémák utolsó forrása az Azure virtuális gép saját magát.

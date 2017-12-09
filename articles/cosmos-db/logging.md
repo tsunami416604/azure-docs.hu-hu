@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: mimig
-ms.openlocfilehash: 407a9a3be4ae8a9b00a953914e6b4414d8dac8b6
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
-ms.translationtype: HT
+ms.openlocfilehash: 608222da9cbe2895914e14c9f76cc5629ef65684
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
@@ -60,7 +60,7 @@ Az oktatóanyag elvégzéséhez a következőket kell rendelkeznie:
 
 3. Kattintson a **Save** (Mentés) gombra.
 
-    Ha hibaüzenet jelenik meg, amely szerint "nem sikerült frissíteni a diagnosztikai \<munkaterület neve >. Az előfizetés \<előfizetés-azonosító > microsoft.insights használandó nincs regisztrálva. " Kövesse a [hibaelhárítása Azure Diagnostics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-storage) a fiók regisztrálására vonatkozó utasításokat ismételje meg ezt az eljárást.
+    Ha hibaüzenet jelenik meg, amely szerint "nem sikerült frissíteni a diagnosztikai \<munkaterület neve >. Az előfizetés \<előfizetés-azonosító > microsoft.insights használandó nincs regisztrálva. " Kövesse a [hibaelhárítása Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) a fiók regisztrálására vonatkozó utasításokat ismételje meg ezt az eljárást.
 
     Ha szeretné módosítani a diagnosztikai naplók mentési módjának bármikor a jövőben, térhet vissza ezt a lapot, bármikor a fiókja a diagnosztikai beállításainak módosítása.
 
@@ -416,7 +416,7 @@ Az alábbi táblázatban minden naplóbejegyzés tartalmát.
 | Tevékenységazonosító | activityId_g | A naplózott műveletnek egyedi GUID azonosítója. |
 | Felhasználói ügynök | userAgent_s | A kérelem végrehajtása felhasználói ügynök meghatározó karakterlánc. A formátum: {felhasználói ügynök neve} / {version}.|
 | a resourceType | ResourceType | Elért erőforrás típusa. Ez az érték a következő típusok egyike lehet: adatbázis, gyűjtemény, a dokumentum, melléklet, felhasználó, engedéllyel, tárolt eljárás, eseményindító, UserDefinedFunction vagy ajánlat. |
-| statusCode |statusCode_s | A válasz a művelet állapotát. |
+| állapotkód |statusCode_s | A válasz a művelet állapotát. |
 | requestResourceId | ResourceId | Az erőforrás-azonosítója a kérést, vethetők databaseRid, collectionRid vagy documentRid végrehajtott művelettől függően előfordulhat, hogy mutasson.|
 | clientIpAddress | clientIpAddress_s | Az ügyfél IP-címét. |
 | requestCharge | requestCharge_s | A művelet által használt RUs száma |

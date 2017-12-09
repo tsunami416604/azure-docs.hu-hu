@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 6c0d76207233a04bdec604d95f1779c62f6e2d8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: fdbe3c3f2ac7bd6ccb98ef5c1346444ca34e5ac3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programozott módon az Azure-irányítópultot létrehozni
 
@@ -27,7 +27,7 @@ Ebből a dokumentumból a folyamatot, amely programozott módon létrehozása é
 
 ## <a name="overview"></a>Áttekintés
 
-Irányítópultok Azure azok a megosztott [erőforrások](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) hasonlóan a virtuális gépek és tárfiókok.  Ezért ezek kezelhetők programozott módon keresztül a [Azure Resource Manager REST API-k](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api), a [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/overview), [Azure PowerShell-parancsok](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azurermps-4.2.0), és sok [ Azure-portálon](https://portal.azure.com) szolgáltatások felett erőforrást kezelésének megkönnyítése ezen API-k létrehozása.  
+Irányítópultok Azure azok a megosztott [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) hasonlóan a virtuális gépek és tárfiókok.  Ezért ezek kezelhetők programozott módon keresztül a [Azure Resource Manager REST API-k](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-rest-api), a [Azure CLI](https://docs.microsoft.com/cli/azure/overview), [Azure PowerShell-parancsok](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0), és sok [ Azure-portálon](https://portal.azure.com) szolgáltatások felett erőforrást kezelésének megkönnyítése ezen API-k létrehozása.  
 
 Ezen API-k és eszközök kínál módon hozhat létre, a listában, beolvasása, módosítása, és törli az erőforrást.  Mivel az irányítópultok erőforrásokat, válassza ki a kedvenc API, vagy eszköz használatához.
 
@@ -43,7 +43,7 @@ Hozzon létre egy új irányítópult, használja az új irányítópult-parancs
 
 A csempe gyűjteményben található, és hozzáadhatja a csempéket használhatja. Csempék húzva adhatók hozzá. Egyes csempék támogatja átméretezése egy húzza leíró, míg mások támogatása javítja által látható a helyi menü segítségével.
 
-### <a name="drag-handle"></a>A csomóponthúzási leíró
+### <a name="drag-handle"></a>Húzza a leíró
 ![Húzza a leíró](./media/azure-portal-dashboards-create-programmatically/drag-handle.png)
 
 ### <a name="fixed-sizes-via-context-menu"></a>Rögzített méretű keresztül a helyi menü
@@ -55,7 +55,7 @@ Miután konfigurálta az irányítópulton a következő lépésekre közzétét
 
 ![megosztás parancs](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-A Megosztás parancsra jeleníti meg, amely arra kéri, hogy mely közzétételére előfizetésbe és erőforráscsoportba csoport kiválasztása párbeszédpanel. A következőket kell figyelembe venni, hogy [írási hozzáféréssel kell rendelkeznie](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure) a választott előfizetésbe és erőforráscsoportba csoporthoz.
+A Megosztás parancsra jeleníti meg, amely arra kéri, hogy mely közzétételére előfizetésbe és erőforráscsoportba csoport kiválasztása párbeszédpanel. A következőket kell figyelembe venni, hogy [írási hozzáféréssel kell rendelkeznie](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) a választott előfizetésbe és erőforráscsoportba csoporthoz.
 
 ![megosztás- és hozzáférés](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
@@ -79,11 +79,11 @@ Nincs szükség reklámkattintásokat sablon létrehozása az irányítópult JS
 
 Ehhez az irányítópulthoz a virtuális gépek közzététele a jövőben kell ezt a karakterláncot a JSON belül minden előfordulását parametrizálja. 
 
-Az API-t létrehozni az erőforrásokat az Azure-ban két verziója van. [Feltétlenül szükséges API-k](https://docs.microsoft.com/en-us/rest/api/resources/resources) , hozzon létre egy erőforrást, egyszerre, és egy [sablon-alapú üzembe helyezési](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy) rendszer, amely lehet levezényelni a létrehozása több, a függő erőforrások egyetlen API-hívással. Az utóbbi natív módon támogatja a (egyszerű) paraméterezéssel és templating, a fenti példában használjuk.
+Az API-t létrehozni az erőforrásokat az Azure-ban két verziója van. [Feltétlenül szükséges API-k](https://docs.microsoft.com/rest/api/resources/resources) , hozzon létre egy erőforrást, egyszerre, és egy [sablon-alapú üzembe helyezési](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) rendszer, amely lehet levezényelni a létrehozása több, a függő erőforrások egyetlen API-hívással. Az utóbbi natív módon támogatja a (egyszerű) paraméterezéssel és templating, a fenti példában használjuk.
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Programozott módon irányítópultot hozhat létre a sablonból sablon központi telepítéssel
 
-Azure lehetővé teszi annak kell levezényelni a több erőforrás központi telepítését. Létrehozhat egy központi telepítési sablont, amely kifejezi központi telepítéséhez, valamint a köztük lévő viszonyt is erőforrások készletét.  A JSON formátum az egyes erőforrások megegyezik, mintha csak egyenként hozott létre őket. A különbség az, hogy a [sablon nyelvi](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates) néhány fogalommal, például a változók, a paraméterek, az alapvető funkciók és további hozzáadja. Ezt a kiegészítő szintaxis csak akkor támogatott a sablon-üzembehelyezés környezetében, és nem használható, ha a korábban tárgyalt feltétlenül szükséges API-khoz használt.
+Azure lehetővé teszi annak kell levezényelni a több erőforrás központi telepítését. Létrehozhat egy központi telepítési sablont, amely kifejezi központi telepítéséhez, valamint a köztük lévő viszonyt is erőforrások készletét.  A JSON formátum az egyes erőforrások megegyezik, mintha csak egyenként hozott létre őket. A különbség az, hogy a [sablon nyelvi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) néhány fogalommal, például a változók, a paraméterek, az alapvető funkciók és további hozzáadja. Ezt a kiegészítő szintaxis csak akkor támogatott a sablon-üzembehelyezés környezetében, és nem használható, ha a korábban tárgyalt feltétlenül szükséges API-khoz használt.
 
 Ha ez az útvonal fog, majd (egyszerű) paraméterezéssel el kell végezni a sablon paraméter szintaxis használatával.  Lecseréli az erőforrás-azonosító észleltünk a korábbi, ahogy az itt látható az összes példányát.
 
@@ -119,7 +119,7 @@ Is kell deklarálni, néhány szükséges sablont metaadatok és a felső rész�
 
 __Ez a dokumentum végén a teljes, működő sablon tekintheti meg.__
 
-Ha Ön rendelkezik kialakított a sablon használatával telepítheti a [REST API-k](https://docs.microsoft.com/en-us/rest/api/resources/deployments), [PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy), a [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/group/deployment#az_group_deployment_create), vagy a [portál telepítési sablonlap ](https://portal.azure.com/#create/Microsoft.Template).
+Ha Ön rendelkezik kialakított a sablon használatával telepítheti a [REST API-k](https://docs.microsoft.com/rest/api/resources/deployments), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), a [Azure CLI](https://docs.microsoft.com/cli/azure/group/deployment#az_group_deployment_create), vagy a [portál telepítési sablonlap ](https://portal.azure.com/#create/Microsoft.Template).
 
 Az alábbiakban a példa irányítópult JSON két verziója van. Az első verziója, amely azt a portálról, amely olyan erőforráshoz kötött már lett exportálva. A második pedig az, hogy minden virtuális gép szoftveresen kötött és az Azure Resource Manager használatával telepített verziójának.
 

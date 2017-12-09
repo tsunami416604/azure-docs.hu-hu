@@ -12,11 +12,11 @@ ms.prod:
 ms.service: microsoft-keyvault
 ms.technology: 
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: f67f81aeee0775ea8d90e4459f2c46266a774786
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
-ms.translationtype: HT
+ms.openlocfilehash: bff4b15ca2f1c985c4b4e27d159adaa5fd039553
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával
 
@@ -28,7 +28,7 @@ Helyi fejlesztési fejlesztői hitelesítő adatokkal nem biztonságosabb, mert 
 
 A `Microsoft.Azure.Services.AppAuthentication` könyvtár kezeli a hitelesítési automatikusan, viszont lehetővé teszi a megoldás ahelyett, hogy a hitelesítő adatok összpontosítanak.
 
-A `Microsoft.Azure.Services.AppAuthentication` könyvtár támogatja a helyi fejlesztése a Microsoft Visual Studio, az Azure parancssori felület vagy az Azure AD integrált hitelesítést. Azure App Services vagy egy Azure virtuális gép (VM) telepítésekor automatikusan használja-e a szalagtár [Szolgáltatásidentitás felügyelt](/azure/active-directory/msi-overview) (MSI). Kód vagy a konfigurációs módosítások nélküli szükség. A kódtár emellett támogatja az Azure AD közvetlenül is felhasználható [ügyfél hitelesítő adatait](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal) MSI esetén nem érhető el, vagy ha a fejlesztői biztonsági környezet nem határozható meg helyi fejlesztése során.
+A `Microsoft.Azure.Services.AppAuthentication` könyvtár támogatja a helyi fejlesztése a Microsoft Visual Studio, az Azure parancssori felület vagy az Azure AD integrált hitelesítést. Azure App Services vagy egy Azure virtuális gép (VM) telepítésekor automatikusan használja-e a szalagtár [Szolgáltatásidentitás felügyelt](/azure/active-directory/msi-overview) (MSI). Kód vagy a konfigurációs módosítások nélküli szükség. A kódtár emellett támogatja az Azure AD közvetlenül is felhasználható [ügyfél hitelesítő adatait](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal) MSI esetén nem érhető el, vagy ha a fejlesztői biztonsági környezet nem határozható meg helyi fejlesztése során.
 
 <a name="asal"></a>
 ## <a name="using-the-library"></a>A könyvtár használata
@@ -57,7 +57,7 @@ A `Microsoft.Azure.Services.AppAuthentication` könyvtár támogatja a helyi fej
 
 A `AzureServiceTokenProvider` osztály gyorsítótárazza a jogkivonatot a memóriában, és lekéri az Azure AD lejárata előtt. Ennek következtében már nem rendelkezik a lejárati hívása előtt ellenőrizze a `GetAccessTokenAsync` metódust. A metódus csak akkor hívja, amikor a jogkivonat használni kívánt. 
 
-A `GetAccessTokenAsync` metódus használatához egy erőforrás-azonosítót. További tudnivalókért lásd: [amely Azure services támogatja a felügyelt Szolgáltatásidentitás](https://docs.microsoft.com/en-us/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity).
+A `GetAccessTokenAsync` metódus használatához egy erőforrás-azonosítót. További tudnivalókért lásd: [amely Azure services támogatja a felügyelt Szolgáltatásidentitás](https://docs.microsoft.com/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity).
 
 
 <a name="samples"></a>

@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: c96aafeb05293ccdc4c30c2b828cead1dfdb157c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
-ms.translationtype: HT
+ms.openlocfilehash: bfda0475b58556db1236c8b051c59393384720f7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-your-app-to-linux-vms-by-using-jenkins-and-team-services"></a>Az alkalmazás telepítése Linux virtuális gépek Jenkins és Team Services használatával
 
@@ -40,7 +40,7 @@ Az alábbiakat fogja elvégezni:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Jenkins kiszolgálóra történő hozzáférés szükséges. Ha még nem hozott létre egy Jenkins server, lásd: [hozzon létre egy Jenkins fő Azure virtuális géphez](https://docs.microsoft.com/en-us/azure/jenkins/install-jenkins-solution-template). 
+* Jenkins kiszolgálóra történő hozzáférés szükséges. Ha még nem hozott létre egy Jenkins server, lásd: [hozzon létre egy Jenkins fő Azure virtuális géphez](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 
 * Jelentkezzen be a Team Services-fiókhoz (**https://{youraccount}.visualstudio.com**). 
   Beszerezheti a [ingyenes Team Services-fiókot](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308).
@@ -48,9 +48,9 @@ Az alábbiakat fogja elvégezni:
   > [!NOTE]
   > További információkért lásd: [Team Services kapcsolódás](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
 
-*  Linux virtuális gépek központi telepítés célja van szükség.  További információkért lásd: [létrehozása és kezelése a Linux virtuális gépek az Azure parancssori felület](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-manage-vm).
+*  Linux virtuális gépek központi telepítés célja van szükség.  További információkért lásd: [létrehozása és kezelése a Linux virtuális gépek az Azure parancssori felület](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
 
-*  Nyissa meg a virtuális gép a 80-as a bejövő portot. További információkért lásd: [létrehozása az Azure portál használatával a hálózati biztonsági csoportok](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
+*  Nyissa meg a virtuális gép a 80-as a bejövő portot. További információkért lásd: [létrehozása az Azure portál használatával a hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
 
 ## <a name="get-the-sample-app"></a>A minta-alkalmazás letöltése
 
@@ -132,7 +132,7 @@ Kell egy [üzembe helyezési csoport](https://www.visualstudio.com/docs/build/co
    > A következő eljárásban is telepítenie kell az Előfeltételek és *sudo jogosultságokkal ne futtassa a parancsfájlt.*
 
 1. Nyissa meg a **kiadásokban** lapján a **Build &amp; kiadás** központi, nyissa meg **telepítési csoportban**, és válassza ki **+ új**.
-2. Adjon meg egy nevet a központi telepítési csoportot, és opcionális leírását. Válassza ki **létrehozása**.
+2. Adjon meg egy nevet a központi telepítési csoportot, és opcionális leírását. Ezután kattintson a **Létrehozás** elemre.
 3. Válassza ki a központi telepítési cél virtuális gép operációs rendszerét. Válassza például **Ubuntu 16.04 +**.
 4. Válassza ki **személyes hozzáférési jogkivonat a parancsfájl a hitelesítéshez használandó**.
 5. Válassza ki a **rendszerkövetelmények** hivatkozásra. Az operációs rendszer előfeltételeinek telepítése.

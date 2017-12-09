@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: richrund
-ms.openlocfilehash: 1a8bc500c837d60b4106f37f1803415a12b62a88
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
-ms.translationtype: HT
+ms.openlocfilehash: 3910038e788352df45ab00c0f697d9a5426b3498
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Napló Analytics szolgáltatások szolgáltatók
 A Naplóelemzési segítségével felügyelt szolgáltató (MSPs), a nagyobb vállalatok, független szoftvergyártók (ISV-k) és üzemeltetési szolgáltatók kezelni és megfigyelni a kiszolgálók az ügyfél helyszíni vagy felhőalapú infrastruktúrában. 
@@ -26,7 +26,7 @@ A Naplóelemzési segítségével felügyelt szolgáltató (MSPs), a nagyobb vá
 A nagyobb vállalatok megosztása sok a hasonlóság szolgáltatók, különösen, ha egy központi informatikai csoportját, amelyek felügyeletéért felelős informatikai számos különböző üzleti egységek számára. Az egyszerűség, a dokumentum kifejezést használja *szolgáltató* , de ugyanezeket a funkciókat is vállalatok és más ügyfelek számára érhető el.
 
 ## <a name="cloud-solution-provider"></a>Cloud Solution Provider program
-A partnerek és szolgáltatók, amelyek a a [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program, Log Analyticshez az elérhető Azure-szolgáltatások egyik [Azure CSP előfizetés](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview). 
+A partnerek és szolgáltatók, amelyek a a [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program, Log Analyticshez az elérhető Azure-szolgáltatások egyik [Azure CSP előfizetés](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
 
 A Naplóelemzési, az alábbi képességeket engedélyezve van az *Cloud Solution Provider* előfizetések.
 

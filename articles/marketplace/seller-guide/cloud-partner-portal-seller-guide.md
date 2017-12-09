@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: divacc@microsoft.com
-ms.openlocfilehash: 0985c7da429202cc6003df73c6ca17714b5a1287
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
-ms.translationtype: HT
+ms.openlocfilehash: 9a9e9b3116c0d787162284197c8dbbd77374cff3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-marketplace-seller-guide"></a>Azure Marketplace – Eladói útmutató
 
 Üdvözli az Azure piactér értékesítő útmutatóját. Ez az útmutató üzleti felhasználók és a termék vezetői független szoftvergyártók (ISV-k) is kínál a hitelesített Azure virtuálisgép-lemezképeket és a felügyelt alkalmazások informatikai szakemberek és fejlesztők számára készült. Az Azure-ügyfél a világ [Azure piactér](https://azuremarketplace.microsoft.com/) kiváló reach és nyújthat elérhetővé tegyék a termékek.
 
 > [!NOTE]
-> Ha érdekli a kínál a [kezelt alkalmazás](https://docs.microsoft.com/en-us/azure/managed-applications/overview), kövesse az utasításokat segítségével rendezze őket az Azure piactér [Itt](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app).
+> Ha érdekli a kínál a [kezelt alkalmazás](https://docs.microsoft.com/azure/managed-applications/overview), kövesse az utasításokat segítségével rendezze őket az Azure piactér [Itt](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app).
 
 > [!NOTE]
 > Ha érdekli a befejezett szoftver kínál, a szolgáltatott szoftverként (SaaS) termékek _informatikai szakemberek és fejlesztők_, akkor is elérhetők a saas-on-amp@microsoft.com további információt a beállításokat.
@@ -100,7 +100,7 @@ Akkor is előfordulhat, hogy kell végezni, hogy az Azure piactéren valóban-e 
 A munkaterhelés (a virtuális gép vagy a kezelt alkalmazás) függ közzétételének megtervezése, fog hajtsa végre az ajánlatot közzétenni egy másik folyamat. A következő tartalmat közzététel összpontosít _virtuális gép ajánlatok_.
 
 > [!NOTE]
-> Ha érdekli a kínál a [kezelt alkalmazás](https://docs.microsoft.com/en-us/azure/managed-applications/overview), kövesse az utasításokat segítségével rendezze őket az Azure piactér [Itt](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app).
+> Ha érdekli a kínál a [kezelt alkalmazás](https://docs.microsoft.com/azure/managed-applications/overview), kövesse az utasításokat segítségével rendezze őket az Azure piactér [Itt](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app).
 
 > [!NOTE]
 > Ha érdekli a befejezett szoftver kínál, a szolgáltatott szoftverként (SaaS) termékek _informatikai szakemberek és fejlesztők_, akkor is elérhetők a saas-on-amp@microsoft.com további információt a beállításokat.

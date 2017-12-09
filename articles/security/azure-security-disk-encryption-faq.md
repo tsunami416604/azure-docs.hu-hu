@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw
-ms.openlocfilehash: 2ccadfdec0e653264671f5a9a38d4541b0fc4e69
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: db82c2b8f0f9acec41b0b0f87b8839d3d7f49c68
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-disk-encryption-faq"></a>Az Azure Disk Encryption – gyakori kérdések
 
@@ -119,7 +119,7 @@ Ez a cikk kapcsolatos gyakori kérdések (GYIK) lemez titkosítás a Windows Azu
 * Titkosításához (eltarthat több órákig vagy akár napokig függően vm jellemzőit és a mellékelt adatok lemezek mérete)
 * Testre szabhatja, és adjon hozzá szoftvereket a lemezképet, igény szerint.
 
-Ha a munkafolyamat nem lehetséges, a függő [Storage szolgáltatás titkosítási](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption) (SSE), a platform tárolási fiók réteg lehet a teljes lemez titkosítása dm-crypt használata helyett.
+Ha a munkafolyamat nem lehetséges, a függő [Storage szolgáltatás titkosítási](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) (SSE), a platform tárolási fiók réteg lehet a teljes lemez titkosítása dm-crypt használata helyett.
 
 **K:** Mi az a lemez "Bek Volume" vagy "/ mnt/azure_bek_disk"?
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 41eed9c44a226817da9ee5f324e62902bc23754c
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
-ms.translationtype: HT
+ms.openlocfilehash: 04a03436d554d9f06eed0fbdf5cf34a786061e21
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Számítási feladatok Azure-ba való biztonsági mentésének előkészítése a DPM-mel
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Ez a cikk bemutatja azokat a Microsoft Azure Backup segítségével a System Cen
 >
 >
 
-[A System Center DPM](https://docs.microsoft.com/en-us/system-center/dpm/dpm-overview) készít biztonsági másolatot fájl-és alkalmazásadatok. További információ a támogatott munkaterhelésekkel található [Itt](https://docs.microsoft.com/en-us/system-center/dpm/dpm-protection-matrix). Adatok biztonsági mentése a DPM a lemezen, szalagon tárolja, vagy biztonsági mentése az Azure-ba, a Microsoft Azure Backup szolgáltatásnál. A DPM a következőképpen együttműködik az Azure Backup szolgáltatással:
+[A System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) készít biztonsági másolatot fájl-és alkalmazásadatok. További információ a támogatott munkaterhelésekkel található [Itt](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix). Adatok biztonsági mentése a DPM a lemezen, szalagon tárolja, vagy biztonsági mentése az Azure-ba, a Microsoft Azure Backup szolgáltatásnál. A DPM a következőképpen együttműködik az Azure Backup szolgáltatással:
 
 * **Fizikai kiszolgáló vagy a helyszíni virtuális gépként telepített DPM** – Ha a DPM fizikai kiszolgálóként vagy helyszíni Hyper-V virtuális gépként is adatok biztonsági mentését a Recovery Services-tároló lemez és szalag mellett a rendszer biztonsági mentés.
 * **Az Azure virtuális gépként telepített DPM** – a System Center 2012 R2 Update 3, a DPM telepíthető Azure virtuális gépként. Ha a DPM biztonsági másolatot készíthet adatok Azure-os lemezekre Azure virtuális gépként van telepítve a DPM Azure virtuális géphez csatolt, vagy biztonsági mentés Recovery Services-tároló által is kiszervezése a adatok tárolására.
@@ -66,7 +66,7 @@ Az alábbiakban néhány fontos definíciókat az Azure biztonsági mentés a DP
 
 1. **Hitelesítő adatok tároló** – tárolói hitelesítő adatok szükségesek, a gép biztonsági mentési adatokat küldhet egy meghatározott tárolóban, az Azure Backup szolgáltatásban hitelesítést. Letölthető a tárolóból, és 48hrs érvényes.
 2. **Jelszó** – a felhőbe biztonsági másolatok titkosításához használt jelszót. Mentse a fájlt egy biztonságos helyre az előírt módon a helyreállítási művelet során.
-3. **PIN-kód biztonsági** – Ha engedélyezte a [biztonsági beállítások](https://docs.microsoft.com/en-us/azure/backup/backup-azure-security-feature) tároló, biztonsági PIN-kód szükséges kritikus fontosságú biztonsági mentési műveletek végrehajtása. A többtényezős hitelesítés újabb biztonsági réteget ad hozzá. 
+3. **PIN-kód biztonsági** – Ha engedélyezte a [biztonsági beállítások](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) tároló, biztonsági PIN-kód szükséges kritikus fontosságú biztonsági mentési műveletek végrehajtása. A többtényezős hitelesítés újabb biztonsági réteget ad hozzá. 
 4. **A helyreállítási mappa** – a kifejezést a biztonsági mentések a felhőből ideiglenesen a letöltött felhő helyreállítások alatt. Méretének körülbelül a biztonsági mentési elemek párhuzamosan helyreállítani kívánt egyenlőnek kell lennie.
 
 

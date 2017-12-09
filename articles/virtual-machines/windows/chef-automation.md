@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: b6db0fbb4e0de896994954974ddcc39daad9c125
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: c9a67644ff2922875de486b2a2b671f8e82e9449
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Azure-beli virtuális gépek üzembe helyezése a Cheffel
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -59,7 +59,7 @@ Ezután hozzon létre egy második c:\chef\cookbooks nevű könyvtár.
 Most már van szükségünk, Chef képes kommunikálni az Azure-előfizetés, töltse le az Azure-alapú beállítások fájlt.
 
 <!--Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).-->
-Töltse le a közzétételi beállítások a PowerShell Azure használatával [Get-AzurePublishSettingsFile](https://docs.microsoft.com/en-us/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) parancsot. 
+Töltse le a közzétételi beállítások a PowerShell Azure használatával [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) parancsot. 
 
 Mentse a közzétételi beállítások fájlja C:\chef.
 

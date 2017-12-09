@@ -11,11 +11,11 @@ caps.latest.revision: "26"
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: f49004b68f95ae796196009e3cf879e3503ecf91
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: HT
+ms.openlocfilehash: 7ca5502efa281dcc0f374312d8f36f8c64d9c6c9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="security-trimming-with-azure-search"></a>Az Azure Search biztonsági tisztítás
 
@@ -108,13 +108,13 @@ Ha módosítania meglévő dokumentum a csoportok listáját, használhatja a `m
 }
 ```
 
-Létrehozásától vagy frissítésétől egészen a dokumentumok a teljes részletekért elolvashatja [szerkeszthetik a dokumentumokat a](https://docs.microsoft.com/en-us/rest/api/searchservice/addupdate-or-delete-documents).
+Létrehozásától vagy frissítésétől egészen a dokumentumok a teljes részletekért elolvashatja [szerkeszthetik a dokumentumokat a](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
    
 ## <a name="apply-the-security-filter"></a>A biztonsági szűrés
 
 Ahhoz, hogy a dokumentumok alapján trim `group_ids` hozzáférés kell ki egy keresési lekérdezés egy `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` szűrő, ahol "group_id1, group_id2,..." csoportokra, amelyhez a keresési kérelmet kibocsátó tartozik.
 Ez a szűrő megfelelő összes dokumentumot, amelynek a `group_ids` mező egy adott azonosítót tartalmaz.
-Az Azure Search használatával dokumentumok keresése részletes olvasható [dokumentumok keresése](https://docs.microsoft.com/en-us/rest/api/searchservice/search-documents).
+Az Azure Search használatával dokumentumok keresése részletes olvasható [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 Vegye figyelembe, hogy ez a minta bemutatja, hogyan kereshet egy POST kérést használó dokumentumokat.
 
 A HTTP POST-kérelmet ad ki:

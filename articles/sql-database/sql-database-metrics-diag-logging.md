@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 9f201454d58dbc646923d0155ff41761d593ab7e
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
-ms.translationtype: HT
+ms.openlocfilehash: 2e377ef96f6c2b5866ad258a88d6403fd0bb1e41
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database metrikák és diagnosztikai naplózás 
 Az Azure SQL-adatbázis el tudná küldeni, metrikákat és diagnosztikai naplókat a könnyebb figyelése. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
@@ -184,7 +184,7 @@ Egy SQL-adatbázis járműflotta figyelési a Naplóelemzési egyszerű. Három 
 
 2. Válassza ki **figyelési + felügyeleti**.
 
-3. Válassza ki **Analytics jelentkezzen**.
+3. Válassza a **Log Analytics** elemet.
 
 4. A szükséges további információkat a Naplóelemzési űrlap kitöltésével: munkaterület nevét, előfizetés, erőforráscsoportot, helyét és IP-címek.
 
@@ -266,7 +266,7 @@ Megtudhatja, hogyan [metrikák és diagnosztikai naplókat letölteni az tárol�
 |**Erőforrás**|**Metrikák**|
 |---|---|
 |Adatbázis|DTU százalékos DTU használt, DTU határt, a processzor, a fizikai adatáttelepítések olvasási százalékos, napló írása százaléka, a sikeres vagy sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolási százalékos, XTP tárolási százalékos, és Holtpont |
-|Rugalmas készlet|eDTU százalékos eDTU használt, eDTU határt, a processzor, a fizikai adatáttelepítések olvasási százalékos, napló írása százalékos, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolási százalékos, tárolási kapacitás, XTP tárolási százalékos aránya |
+|A rugalmas készlet|eDTU százalékos eDTU használt, eDTU határt, a processzor, a fizikai adatáttelepítések olvasási százalékos, napló írása százalékos, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolási százalékos, tárolási kapacitás, XTP tárolási százalékos aránya |
 |||
 
 ### <a name="query-store-runtime-statistics"></a>A Lekérdezéstár futásidejű statisztikája
@@ -318,7 +318,7 @@ Megtudhatja, hogyan [metrikák és diagnosztikai naplókat letölteni az tárol�
 |query_id_d|A lekérdezés a Lekérdezéstár azonosítója.|
 |plan_id_d|A Lekérdezéstár terv azonosítója.|
 
-További információ [Lekérdezéstár futásidejű statisztikai adatok](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql).
+További információ [Lekérdezéstár futásidejű statisztikai adatok](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql).
 
 ### <a name="query-store-wait-statistics"></a>A Lekérdezéstár várakozási statisztikák
 
@@ -356,7 +356,7 @@ További információ [Lekérdezéstár futásidejű statisztikai adatok](https:
 |query_id_d|A lekérdezés a Lekérdezéstár azonosítója.|
 |plan_id_d|A Lekérdezéstár terv azonosítója.|
 
-További információ [Lekérdezéstár várjon statisztikai adatok](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql).
+További információ [Lekérdezéstár várjon statisztikai adatok](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql).
 
 ### <a name="errors-dataset"></a>Hibák adatkészlet
 
@@ -414,7 +414,7 @@ További információ [SQL Server hibaüzenetek](https://msdn.microsoft.com/en-u
 |delta_wait_time_ms_d|Teljes várakozási idő az időtartamon belül.|
 |delta_waiting_tasks_count_d|Várakozó feladatok száma.|
 
-További információ [várakozási statisztika adatbázis](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql).
+További információ [várakozási statisztika adatbázis](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql).
 
 ### <a name="time-outs-dataset"></a>Időtúllépések adatkészlet
 

@@ -4,23 +4,23 @@ description: "Dinamikus csoport tagsági többek között a speciális szabályo
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: michael.tillman
 editor: 
 ms.assetid: fb434cc2-9a91-4ebf-9753-dd81e289787e
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.tgt_pltfrm: 
+ms.devlang: 
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: b8aa841cca63c0c4eb45105e3ccff91920ad35e3
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
-ms.translationtype: HT
+ms.openlocfilehash: 4b3ef48fbec734d3aea1e04dc77b2ad329f637fe
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist.
@@ -28,13 +28,13 @@ Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csop
 Ha módosítja egy felhasználó vagy eszköz attribútuma, a rendszer kiértékeli az összes dinamikus csoport szabályokat annak ellenőrzéséhez, hogy a módosítás kiváltották bármely csoport hozzáadása vagy eltávolítása a könyvtárban található. Ha egy felhasználó vagy az eszköz megfelel a csoporton szabály, azokat hozzá szeretné adni a csoport tagjai. A szabály már nem megfelelnek eltávolítja.
 
 > [!NOTE]
-> - Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van.
+> Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van.
 >
-> - Ez a szolgáltatás legalább egy dinamikus csoportba felvett felhasználói tagjaihoz tartozó Azure AD Premium P1-licencre van szükség. Nem kötelező ténylegesen licencek hozzárendelése dinamikus csoportok tagjainak kell azokat a felhasználókat, de kell rendelkeznie a licencek minimális számát, amelyek az ilyen felhasználók bérlő. Példa: Ha 1000 egyedi felhasználók teljes minden dinamikus csoport rendelkezik, ahol az Ön bérlőjében, szeretné-e legalább 1000 licenccel rendelkezik az Azure AD Premium P1, vagy a fenti licencszerződés követelménynek.
+> Ez a szolgáltatás legalább egy dinamikus csoportba felvett felhasználói tagjaihoz tartozó Azure AD Premium P1-licencre van szükség. Nem kötelező ténylegesen licencek hozzárendelése dinamikus csoportok tagjainak kell azokat a felhasználókat, de kell rendelkeznie a licencek minimális számát, amelyek az ilyen felhasználók bérlő. Példa: Ha 1000 egyedi felhasználók teljes minden dinamikus csoport rendelkezik, ahol az Ön bérlőjében, szeretné-e legalább 1000 licenccel rendelkezik az Azure AD Premium P1, vagy a fenti licencszerződés követelménynek.
 >
-> - Létrehozhat egy dinamikus csoportot eszközök vagy felhasználók számára, de nem hozható létre egy szabályt, amely a felhasználó és eszköz objektumokat is tartalmaz.
-
-> - Jelenleg nincs lehetőség a felhasználói attribútumok a tulajdonos alapján eszköz csoport létrehozásához. Eszköz tagsági szabályok csak az eszköz a címtárban található objektumokhoz azonnali attribútumok hivatkozhat.
+> Létrehozhat egy dinamikus csoportot eszközök vagy felhasználók számára, de nem hozható létre egy szabályt, amely a felhasználó és eszköz objektumokat is tartalmaz.
+> 
+> A jelenleg nincs lehetőség a tulajdonos felhasználói attribútumok alapján eszköz csoport létrehozásához. Eszköz tagsági szabályok csak az eszköz a címtárban található objektumokhoz azonnali attribútumok hivatkozhat.
 
 ## <a name="to-create-an-advanced-rule"></a>Speciális szabály létrehozása
 1. Jelentkezzen be a [az Azure AD felügyeleti központban](https://aad.portal.azure.com) egy olyan fiókkal, amely egy globális rendszergazda vagy egy felhasználói fiók rendszergazdájához.
@@ -45,7 +45,7 @@ Ha módosítja egy felhasználó vagy eszköz attribútuma, a rendszer kiérték
 
 4. Az a **csoport** panelen adjon nevet és leírást az új csoporthoz. Válassza ki a **tagságtípusának** a következők **dinamikus felhasználói** vagy **dinamikus eszköz**, attól függően, hogy szeretné-e szabályok létrehozása a felhasználók vagy eszközök számára, és adja **Hozzáadás dinamikus lekérdezés**. A szabály jelentéskészítő használni egy egyszerű szabály létrehozásához, vagy saját kezűleg speciális szabály írása. A cikkben olvashat a felhasználó-eszköz attribútumot, valamint a speciális szabályok példái.
 
-   ![Dinamikus csoporttagság szabály hozzáadása](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
+   ![Dinamikus tagsági szabály hozzáadása](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
 
 5. Válassza ki a szabály létrehozása után **Hozzáadás lekérdezés** a panel alján.
 6. Válassza ki **létrehozása** a a **csoport** panelt, és a csoport létrehozásához.
@@ -293,7 +293,7 @@ Olyan szabály, amely kijelöli a tagság eszközobjektumok egy csoportot is lé
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>Dinamikus tagság módosítása a statikus, és ez fordítva is igaz
 Akkor lehet módosítani a módjára vonatkozik a csoport tagságát. Ez akkor hasznos, ha meg szeretné tartani a azonos csoport nevét és Azonosítóját a rendszer úgy, hogy minden meglévő csoporthoz továbbra is érvényes; Új csoport létrehozásakor igényelnének frissítése ezeket a hivatkozásokat.
 
-Az Azure-portál támogatja ezt a funkciót frissítése végezzük. Addig is használhatja a [a klasszikus Azure portálon](https://manage.windowsazure.com) (kövesse az utasításokat [Itt](active-directory-groups-dynamic-membership-azure-portal.md)) vagy a PowerShell-parancsmagok a lent látható módon.
+Az Azure-portál támogatja ezt a funkciót frissítése végezzük. Addig használható PowerShell-parancsmagok alább látható módon.
 
 > [!WARNING]
 > Egy létező statikus csoportot egy dinamikus csoport módosításakor a csoport összes meglévő tag törlődik, és ezután a tagsági szabály dolgoz fel új tagokat adhat. Ha a csoport használatával alkalmazásokhoz és erőforrásokhoz való hozzáférést, az eredeti tagok elveszthetik a hozzáférést a tagsági szabály teljesen feldolgozásáig.
@@ -303,7 +303,7 @@ Az Azure-portál támogatja ezt a funkciót frissítése végezzük. Addig is ha
 **Egy csoport tagságát változáskezelés a PowerShell használatával**
 
 > [!NOTE]
-> Szüksége lesz a parancsmagok használatával dinamikus csoport tulajdonságainak módosításához **előzetes verziójában** [Azure AD PowerShell-verzió 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Az előzetes verzióját, a telepítése [Itt](https://www.powershellgallery.com/packages/AzureADPreview).
+> Szüksége lesz a parancsmagok használatával dinamikus csoport tulajdonságainak módosításához **előzetes verziójában** [Azure AD PowerShell-verzió 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Az előzetes verzióját, a telepítése [Itt](https://www.powershellgallery.com/packages/AzureADPreview).
 
 Íme egy példa, függvények, amelyek tagságkezelés váltani egy meglévő csoporthoz. Vegye figyelembe, hogy van ügyelni megfelelően kezelheti a GroupTypes tulajdonság megőrzéséhez van, előfordulhat, hogy létezik értékek dinamikus tagságot egymástól független.
 

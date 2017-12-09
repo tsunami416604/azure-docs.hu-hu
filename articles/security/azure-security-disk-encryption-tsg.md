@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: devtiw
-ms.openlocfilehash: c7734b8e02b6a2f08f5fc6ebe4b2ec43e34b35c3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: HT
+ms.openlocfilehash: 618e5e6d159a8f0d4610d6d652c21e121a93a5e0
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption hibaelhárítási útmutató
 
@@ -36,7 +36,7 @@ Ez a hiba akkor fordulhat elő, amikor az operációs rendszer lemeztitkosítás
 - Az operációsrendszer-lemezképet egy logikai kötet Manager (LVM) sémát használja. Bár a korlátozott LVM adatok támogatása nem érhető el, egy LVM operációsrendszer-lemez nincs.
 - Minimális memória feltételeknek nem felel meg (az operációs rendszer lemeztitkosítás 7 GB ajánlott).
 - Adatmeghajtók rekurzív módon a /mnt/ könyvtár, vagy egymással (például /mnt/data1, /mnt/data2, /data3 + /data3/data4) csatlakoztatva.
-- Egyéb Azure Disk Encryption [Előfeltételek](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) Linux nem teljesülnek.
+- Egyéb Azure Disk Encryption [Előfeltételek](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) Linux nem teljesülnek.
 
 ## <a name="unable-to-encrypt"></a>Nem sikerült titkosítani a
 

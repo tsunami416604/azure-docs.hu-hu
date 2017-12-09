@@ -101,7 +101,6 @@
 
 ## Alkalmazások kezelése
 ### [Áttekintés](service-fabric-application-lifecycle.md)
-### [Az ImageStoreConnectionString beállítás](service-fabric-image-store-connection-string.md)
 ### Alkalmazás frissítése
 #### [Áttekintés](service-fabric-application-upgrade.md)
 #### [Konfigurálás](service-fabric-visualstudio-configure-upgrade.md)
@@ -109,6 +108,7 @@
 #### [Adatok szerializálása az alkalmazásfrissítésekben](service-fabric-application-upgrade-data-serialization.md)
 #### [Alkalmazásfrissítések – haladó témakörök](service-fabric-application-upgrade-advanced.md)
 ### [A hibaelemzés áttekintése](service-fabric-testability-overview.md)
+### [Az ImageStoreConnectionString beállítás](service-fabric-image-store-connection-string.md)
 
 ## Fürtök létrehozása és felügyelete
 ### [Áttekintés](service-fabric-deploy-anywhere.md)
@@ -136,8 +136,6 @@
 #### [Szabályozás](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [Szolgáltatás áthelyezése](service-fabric-cluster-resource-manager-movement-cost.md)
 
-## [Integráció az API Management szolgáltatással](service-fabric-api-management-overview.md)
-
 ## Megfigyelés és diagnosztika
 ### [Alkalmazások figyelése és diagnosztikája](service-fabric-diagnostics-overview.md)
 ### Események létrehozása
@@ -164,13 +162,14 @@
 #### [Események elemzése az OMS szolgáltatással](service-fabric-diagnostics-event-analysis-oms.md)
 ### [A helyi fürt hibaelhárítása](service-fabric-troubleshoot-local-cluster-setup.md)
 
+## [Integráció az API Management szolgáltatással](service-fabric-api-management-overview.md)
+
 # Útmutatók
 ## A fejlesztési környezet beállítása
 ### [Windows](service-fabric-get-started.md)
 ### [Linux](service-fabric-get-started-linux.md)
 ### [Mac OS](service-fabric-get-started-mac.md)
-
-## [A Service Fabric parancssori felület beállítása](service-fabric-cli.md)
+### [A Service Fabric parancssori felület beállítása](service-fabric-cli.md)
 
 ## Alkalmazás készítése
 ### [Az első saját C# alkalmazás létrehozása a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md)

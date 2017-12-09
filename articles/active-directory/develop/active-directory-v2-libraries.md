@@ -15,19 +15,19 @@ ms.workload: identity
 ms.date: 08/22/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 50a1cc0bf9e00cf5b866b88b3e88c62b06a2376b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 1d423859b299d27472dfa2eb4bbaa7d32d82f2a9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 hitelesítési kódtárai
-A [Azure Active Directory (Azure AD) v2.0-végponttól](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-compare) a szabványos OAuth 2.0 és az OpenID Connect 1.0 protokoll használatát támogatja. A Microsoft és más szervezetek különböző szalagtárak használhatja a v2.0-végponttal.
+A [Azure Active Directory (Azure AD) v2.0-végponttól](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) a szabványos OAuth 2.0 és az OpenID Connect 1.0 protokoll használatát támogatja. A Microsoft és más szervezetek különböző szalagtárak használhatja a v2.0-végponttal.
 
 A v2.0-végpontra használó alkalmazás építésekor azt javasoljuk, hogy használja-e a szalagtár szerepel, amely szerint hajtsa végre a biztonságos fejlesztési Életciklussal (SDL) módszer, például protokoll tartomány szakértők [a Microsoftkövet][Microsoft-SDL]. Ha úgy dönt, hogy az aktuális-kód támogatása a protokollokat, ajánlott hajtsa végre az SDL módszert és figyelmesen elolvassa a biztonsági szempontok a a szabványoknak specifikációi minden protokollhoz.
 
 > [!NOTE]
-> Az Azure AD 1.0-s verziójú függvénytárak (ADAL) keres? Kivételt a [ADAL-könyvtár útmutató](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries). 
+> Az Azure AD 1.0-s verziójú függvénytárak (ADAL) keres? Kivételt a [ADAL-könyvtár útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries). 
 > 
 > 
 
@@ -53,7 +53,7 @@ Szalagtár szerepel, amely a v2.0-végpontra a listája tekintse meg a következ
 > [!IMPORTANT]
 > A MSAL preview könyvtárak olyan éles környezetben használható. Nyújtunk a azonos szintű terméktámogatást et ezekhez a könyvtárakhoz mint mi a jelenlegi üzemi függvénytárak (ADAL). Az előzetes azt is módosíthatja a MSAL API-t, a belső gyorsítótár formátumot, és a más mechanizmusok ezeket a könyvtárakat értesítés nélkül, amely együtt a hibajavításokat és a szolgáltatásokat érintő fejlesztések érvénybe szükséges. Ez hatással lehet az alkalmazás. Például a gyorsítótár-formátum módosítva lett hatással lehet a felhasználók számára, például kelljen jelentkezzen be újra. Egy API-módosítást szükség lehet, hogy frissítse a kódot. Azt adja meg az általános rendelkezésre állási kiadásban lesz kérjük, frissítse az általánosan rendelkezésre álló verzióra hat hónapban, amikor előnézete használatával készítettek alkalmazásokként kódtár verziója előfordulhat, hogy nem fog működni.
 
-| Platform | Részletes ismertetés | Letöltés | Forráskód | Minta | Referencia
+| Platform | Részletes ismertetés | Letöltés | Forráskód | Sample | Referencia
 | --- | --- | --- | --- | --- | --- |
 | .NET ügyfél, a Windows Store UWP, Xamarin iOS és Android rendszerhez | MSAL .NET (előzetes verzió) |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Egy asztali alkalmazás](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  |
 | JavaScript | MSAL.js (előzetes verzió) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [Egyetlen alkalmazás](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |  |
@@ -62,7 +62,7 @@ Szalagtár szerepel, amely a v2.0-végpontra a listája tekintse meg a következ
 
 ## <a name="microsoft-supported-server-middleware-libraries"></a>A Microsoft által támogatott server köztes könyvtárak
 
-| Platform | Részletes ismertetés | Letöltés | Forráskód | Minta | Referencia
+| Platform | Részletes ismertetés | Letöltés | Forráskód | Sample | Referencia
 | --- | --- | --- | --- | --- | --- |
 | .NET 4.x | OWIN OpenID Connect köztes |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[Codeplex webhelyen](http://katanaproject.codeplex.com) |[MVC-alkalmazáshoz](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
 | .NET 4.x | OWIN OAuth tulajdonosi köztes az AzureAD |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[Codeplex webhelyen](http://katanaproject.codeplex.com) |  | |
@@ -73,14 +73,14 @@ Szalagtár szerepel, amely a v2.0-végpontra a listája tekintse meg a következ
 | Node.js |Az Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Webalkalmazás](active-directory-v2-devquickstarts-node-web.md)| |
 
 ## <a name="compatible-client-libraries"></a>Kompatibilis ügyfél függvénytárainak
-| Platform | Szalagtár neve | Tesztelt verziója | Forráskód | Minta |
+| Platform | Szalagtár neve | Tesztelt verziója | Forráskód | Sample |
 |:---:|:---:|:---:|:---:|:---:|
 | Android |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib/wiki) |0.2.1 |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib) |[Natív alkalmazás – minta](active-directory-v2-devquickstarts-android.md) |
 | iOS |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |1.2.8 |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |[Natív alkalmazás – minta](active-directory-v2-devquickstarts-ios.md) |
 | JavaScript |[Hello.js](https://adodson.com/hello.js/) |1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[BIZTONSÁGOS JELSZÓ-HITELESÍTÉS](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
 
 ## <a name="compatible-server-middleware-libraries"></a>Kompatibilis server köztes könyvtárak
-| Platform | Szalagtár neve | Tesztelt verziója | Forráskód | Minta |
+| Platform | Szalagtár neve | Tesztelt verziója | Forráskód | Sample |
 |:---:|:---:|:---:|:---:|:---:|
 | Java | [Scribe Java scribejava](https://github.com/scribejava/scribejava) | [3.2.0 verzió](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/archive/scribejava-3.2.0.zip) | |
 | PHP | [A PHP Liga oauth2-ügyfél](https://github.com/thephpleague/oauth2-client) | [1.4.2 verziója](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [az oauth2-ügyfél](https://github.com/thephpleague/oauth2-client/archive/1.4.2.zip) | |

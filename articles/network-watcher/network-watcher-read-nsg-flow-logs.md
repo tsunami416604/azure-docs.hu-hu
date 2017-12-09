@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 1eea88827733e44bd0ebd88ab5179f4d3a7b6b04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: daf4e70767d59a602d7ff1a2099af904b314c5f9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="read-nsg-flow-logs"></a>Olvasási NSG folyamata naplók
 
@@ -35,7 +35,7 @@ Mielőtt hozzákezd, rendelkeznie kell hálózati biztonsági csoport Flow napl�
 
 ## <a name="retrieve-the-block-list"></a>A tiltólisták beolvasása
 
-A következő PowerShell állít be a lekérdezési napló blob NSG folyamata és a blokkokra bontott listában szükséges változók a [CloudBlockBlob](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) blokkblob. Frissítse a parancsfájlt, amellyel a környezet helyes értékeket tartalmaznak.
+A következő PowerShell állít be a lekérdezési napló blob NSG folyamata és a blokkokra bontott listában szükséges változók a [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) blokkblob. Frissítse a parancsfájlt, amellyel a környezet helyes értékeket tartalmaznak.
 
 ```powershell
 # The SubscriptionID to use

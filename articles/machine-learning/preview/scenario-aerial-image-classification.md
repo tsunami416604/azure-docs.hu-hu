@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 10/27/2017
-ms.openlocfilehash: f8ea2c269906732aef8d577c0d744e730c1dedcd
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: HT
+ms.openlocfilehash: cb66514f40bd37f0495eca5037740d318fd5ea09
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="aerial-image-classification"></a>Légifelvételes kép besorolás
 
@@ -67,7 +67,7 @@ Az alábbi utasításokat ismerteti, hogyan kell beállítani végrehajtási kö
         - "Az Azure Python SDK telepítése"
     - Rekord az ügyfél-azonosító, titkos kulcs és az Azure Active Directory-alkalmazás létrehozásához a rendszer irányítja a bérlő azonosítója. Ezeket a hitelesítő adatokat az oktatóanyag későbbi részében fogja használni.
     - Frissítésétől írásának, Azure Machine Learning-munkaterület és az Azure Batch AI használja az Azure CLI 2.0 külön elágazásokon. Az átláthatóság érdekében a parancssori felület "egy az Azure Machine Learning-munkaterület indítani CLI", a munkaterület verziója és az általános eszköz-verzió (is tartalmazó kötegelt AI) lesz az "Azure CLI 2.0."
-- [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy), egy ingyenes Azure storage-fiókok közötti fájlátvitel összehangolására segédprogram
+- [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy), egy ingyenes Azure storage-fiókok közötti fájlátvitel összehangolására segédprogram
     - Gondoskodjon arról, hogy a mappát, amely tartalmazza az AzCopy végrehajtható fájlt a rendszer PATH környezeti változóba. (Érhetők el a környezeti változók módosítani [Itt](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp).)
 - Egy SSH-ügyfél; ajánlott [PuTTY](http://www.putty.org/).
 

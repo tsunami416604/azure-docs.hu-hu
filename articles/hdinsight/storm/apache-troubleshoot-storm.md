@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: 399ed17e997baf5dcf484f7798d3c4679522c633
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
-ms.translationtype: HT
+ms.openlocfilehash: c0295af2e71d891d07dad7012b7a27402c375178
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Azure HDInsight alatt futó Storm hibaelhárításáról
 
@@ -91,7 +91,7 @@ Az aktuális HDP verem Storm bináris /usr/hdp/current/storm-client szerepelnek.
  
 Előfordulhat, hogy több bináris fájljait (például /usr/hdp/2.5.0.1233/storm) /usr/hdp adott HDP verzióihoz. A /usr/hdp/current/storm-client mappa nem symlinked a legújabb verzióra, hogy fut a fürtön.
 
-További információkért lásd: [egy HDInsight-fürthöz SSH használatával csatlakozhat](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Storm](http://storm.apache.org/).
+További információkért lásd: [egy HDInsight-fürthöz SSH használatával csatlakozhat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Storm](http://storm.apache.org/).
  
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hogyan állapítható meg a telepítési topológia a Storm-fürt?
 Először azonosítsa a HDInsight alatt futó Storm, telepített összetevők. A Storm-fürt négy csomópont kategóriák áll:
@@ -127,10 +127,10 @@ A Storm munkavégző csomópontokhoz futtassa a következő szolgáltatásokat:
 A topológia a Storm event hub spout .jar fájlok használatával kapcsolatos további információkért lásd a következőket.
  
 ### <a name="java-based-topology"></a>Java-alapú topológia
-[Az Azure Event Hubs (Java) futó Storm eseményeinek](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+[Az Azure Event Hubs-eseményközpontok eseményeinek feldolgozása a HDInsight alatt futó Stormmal (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
  
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#-alapú topológia (a HDInsight 3.4 + Linux Storm-fürtök monó)
-[Az Azure Event Hubs-eseményközpontok eseményeinek feldolgozása a HDInsight alatt futó Stormmal (C#)](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[Az Azure Event Hubs-eseményközpontok eseményeinek feldolgozása a HDInsight alatt futó Stormmal (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
  
 ### <a name="latest-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Legújabb Storm event hub spout binárist 3.5 + HDInsight Linux Storm-fürtök
 A legújabb Storm event hub spout, amely kompatibilis a HDInsight 3.5 + Linux Storm-fürtök használatával kapcsolatban lásd: a mvn-tárház [információs fájl](https://github.com/hdinsight/mvn-repo/blob/master/README.md).

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5a7a58d4c402bcaf639bd255bb7c8b111694e548
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
-ms.translationtype: HT
+ms.openlocfilehash: 41b122cdb4dcb836b431004fc162ebe06d0c8b17
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Az Azure parancssori felülettel Azure lemezek kezelése
 
@@ -28,7 +28,7 @@ Az Azure virtuális gépek lemez használata a virtuális gépek operációs ren
 
 > [!div class="checklist"]
 > * Az operációs rendszer és a ideiglenes lemezek
-> * Az adatlemezek
+> * Adatlemezek
 > * Standard és Premium lemezek
 > * Lemez teljesítménye
 > * Csatlakoztatása és adatlemezek előkészítése
@@ -50,7 +50,7 @@ Egy Azure virtuális gép létrehozásakor a rendszer automatikusan csatolja ké
 
 ### <a name="temporary-disk-sizes"></a>Ideiglenes mérete
 
-| Típus | Virtuálisgép-mérettel | Maximális ideiglenes lemez (GB) |
+| Típus | Virtuális gép mérete | Maximális ideiglenes lemez (GB) |
 |----|----|----|
 | [Általános célú](sizes-general.md) | A-D sorozat része | 800 |
 | [Számításra optimalizált](sizes-compute.md) | F sorozat | 800 |
@@ -65,7 +65,7 @@ További adatlemezt felvehető alkalmazások telepítése és adatok tárolásá
 
 ### <a name="max-data-disks-per-vm"></a>Maximális adatlemezek virtuális gépenként
 
-| Típus | Virtuálisgép-mérettel | Maximális adatlemezek virtuális gépenként |
+| Típus | Virtuális gép mérete | Maximális adatlemezek virtuális gépenként |
 |----|----|----|
 | [Általános célú](sizes-general.md) | A-D sorozat része | 32 |
 | [Számításra optimalizált](sizes-compute.md) | F sorozat | 32 |
@@ -233,7 +233,7 @@ Lemez pillanatkép létrehozása van folyamatban a lemez olvasási csak, pont id
 
 ### <a name="create-snapshot"></a>Pillanatkép létrehozása
 
-Mielőtt létrehozna egy virtuálisgép-lemez pillanatképét, az azonosító vagy a lemez neve van szükség. Használja a [az vm megjelenítése](https://docs.microsoft.com/en-us/cli/azure/vm#az_vm_show) parancs sikeresen lefut a lemezazonosítót. Ebben a példában a lemezazonosító van egy változó tárolja, hogy egy későbbi lépésben használható.
+Mielőtt létrehozna egy virtuálisgép-lemez pillanatképét, az azonosító vagy a lemez neve van szükség. Használja a [az vm megjelenítése](https://docs.microsoft.com/cli/azure/vm#az_vm_show) parancs sikeresen lefut a lemezazonosítót. Ebben a példában a lemezazonosító van egy változó tárolja, hogy egy későbbi lépésben használható.
 
 ```azurecli-interactive 
 osdiskid=$(az vm show -g myResourceGroupDisk -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
@@ -289,7 +289,7 @@ Ebben az oktatóprogramban megismerte méretű lemezek témakörök, mint:
 
 > [!div class="checklist"]
 > * Az operációs rendszer és a ideiglenes lemezek
-> * Az adatlemezek
+> * Adatlemezek
 > * Standard és Premium lemezek
 > * Lemez teljesítménye
 > * Csatlakoztatása és adatlemezek előkészítése

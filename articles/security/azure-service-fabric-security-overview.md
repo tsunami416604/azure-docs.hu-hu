@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 908bdaf002e42035567974b204f5b39e73e82024
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 64717da922701aabd27e15a67e8da1b0acb30b77
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-service-fabric-security-overview"></a>Az Azure Service Fabric biztonsági áttekintése
 [Az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) egy elosztott rendszerek platform, amely megkönnyíti a csomag, telepítése és kezelése, méretezhető és megbízható mikroszolgáltatások létrehozására. A Service Fabric fejlesztése és a felhőalapú alkalmazások kezelésének jelentős kihívásaira megoldást. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak.
@@ -50,7 +50,7 @@ Windows rendszeren futó Azure vagy az önálló fürtök a futó fürtök vála
 
 A Service Fabric használ X.509 kiszolgálói tanúsítványok meg kell adnia a fürt létrehozásakor. Mik azok a tanúsítványok, és hogyan szerezni, vagy hozza létre a címzetteket gyors áttekintést, lásd: [tanúsítványok használata](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates).
 
-Tanúsítvány biztonsági konfigurálnia a fürt, vagy az Azure-portálon, az Azure Resource Manager-sablonok vagy egy önálló JSON-sablon létrehozásakor. Megadhat egy elsődleges tanúsítványnak és egy nem kötelező másodlagos tanúsítvány előgörgetések használt tanúsítványt. A megadott elsődleges és másodlagos tanúsítványokat nem lehet ugyanaz, mint a felügyeleti ügyfél és a csak olvasható ügyféltanúsítványok beállításhoz [ügyfél-csomópont biztonsági](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-security).
+Tanúsítvány biztonsági konfigurálnia a fürt, vagy az Azure-portálon, az Azure Resource Manager-sablonok vagy egy önálló JSON-sablon létrehozásakor. Megadhat egy elsődleges tanúsítványnak és egy nem kötelező másodlagos tanúsítvány előgörgetések használt tanúsítványt. A megadott elsődleges és másodlagos tanúsítványokat nem lehet ugyanaz, mint a felügyeleti ügyfél és a csak olvasható ügyféltanúsítványok beállításhoz [ügyfél-csomópont biztonsági](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).
 
 ### <a name="client-to-node-security"></a>Ügyfél-csomópont biztonsági
 Ügyfél-csomópont biztonsági ügyfél identitások segítségével konfigurálhatja. Ügyfél és a fürt közötti megbízhatósági kapcsolat létrehozása, konfigurálnia kell a fürt tudni, hogy melyik ügyfél akkor is megbízhat identitásokat. Ehhez két különböző módon:

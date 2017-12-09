@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2017
 ms.author: xshi
-ms.openlocfilehash: 6a9d5e029e48c1bb62ad4731c7413f023b97c8c9
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
-ms.translationtype: HT
+ms.openlocfilehash: 7d3f610674d9491f7689cc911ba21de0b6b615d7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 csatlakozni az Azure IoT Hub a felhőben
 
@@ -186,7 +186,7 @@ A letöltött .zip fájl tartalmazza a szükséges eszközök és a csomagok Dev
 A zip-fájlt a következő eszközök és csomagokat tartalmazza. Ha már rendelkezik néhány összetevőt telepíteni, a parancsfájl azonosítja, és hagyja ki őket.
 
 * NODE.js és a Yarn: futásidejű a beállítási parancsfájlt és automatikus feladatokat.
-* [Az Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest#a-namemacosinstall-on-macos): platformfüggetlen parancssori élmény Azure-erőforrások kezeléséhez.
+* [Az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest#a-namemacosinstall-on-macos): platformfüggetlen parancssori élmény Azure-erőforrások kezeléséhez.
 * [A Visual Studio Code](https://code.visualstudio.com/) (Visual STUDIO Code): DevKit fejlesztési egyszerűsített kód szerkesztése.
 * [Visual Studio Code kiterjesztése Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino): bővítményt, amely lehetővé teszi, hogy a Visual Studio Code Arduino fejlesztésbe.
 * [Arduino IDE](https://www.arduino.cc/en/Main/Software): eszköz, amely a bővítményt Arduino támaszkodik.

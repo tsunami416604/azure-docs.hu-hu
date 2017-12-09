@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 900447ab931f15e4d27aedd525eba7881ba813b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 15832f94b73057a8bfce7be27e3fd57c7771940d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Azure Data Lake Store teljesítményének hangolása
 
@@ -46,13 +46,13 @@ A hálózati kapcsolat a forrásadatok és az Azure Data Lake store között sz�
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Maximális párhuzamos folyamatkezelést biztosítja az adatfeldolgozást eszközök konfigurálása
 
-Amennyiben a forrás hardver foglalkoztak, és a hálózati kapcsolat szűk keresztmetszetek a fenti, készen áll az adatfeldolgozást eszközök konfigurálásához. A következő táblázat összefoglalja a számos népszerű adatfeldolgozást eszköz beállításait, és biztosít részletes teljesítményhangolás cikkek őket.  A forgatókönyvben használandó eszköztől kapcsolatos további információkért látogasson el a [cikk](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-data-scenarios).
+Amennyiben a forrás hardver foglalkoztak, és a hálózati kapcsolat szűk keresztmetszetek a fenti, készen áll az adatfeldolgozást eszközök konfigurálásához. A következő táblázat összefoglalja a számos népszerű adatfeldolgozást eszköz beállításait, és biztosít részletes teljesítményhangolás cikkek őket.  A forgatókönyvben használandó eszköztől kapcsolatos további információkért látogasson el a [cikk](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios).
 
 | Eszköz               | Beállítások     | További részletekért                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | PerFileThreadCount, ConcurrentFileCount |  [Hivatkozás](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-powershell#performance-guidance-while-using-powershell)   |
-| AdlCopy    | Azure Data Lake Analytics-egységek  |   [Hivatkozás](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| Ból a DistCp            | -m (eseményleképező)   | [Hivatkozás](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| PowerShell       | PerFileThreadCount, ConcurrentFileCount |  [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell#performance-guidance-while-using-powershell) |
+| AdlCopy    | Azure Data Lake Analytics-egységek  |   [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
+| Ból a DistCp            | -m (eseményleképező)   | [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Hivatkozás](../data-factory/copy-activity-performance.md)                          |
 | Sqoop           | FS.Azure.Block.size, -m (eseményleképező)    |   [Hivatkozás](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 

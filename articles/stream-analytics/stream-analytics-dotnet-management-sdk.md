@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/06/2017
 ms.author: samacha
-ms.openlocfilehash: f17225d92fc35a6da9f6aa3cb0397569665e95e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 2ac5d305aae110eff46459ecb7d89ca50ae1823d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>.NET SDK-kezelés: Beállítása és az Azure Stream Analytics API használatával a .NET-hez analytics-feladatok futtatása
 Megtudhatja, hogyan állítson be és használja a Stream Analytics API Management .NET SDK használatával .NET analytics-feladatok futtatása. Projekt beállítása, hozzon létre a bemeneti és kimeneti adatforrások, átalakítások, és úgy indítsa és feladatok. Az analytics-feladatok adatok Blob-tároló vagy az eseményközpont folyamatos átviteléhez.
@@ -29,7 +29,7 @@ Tekintse meg a [felügyeleti referenciadokumentációt tartalmaz a Stream Analyt
 Az Azure Stream Analytics egy olyan teljes körűen felügyelt szolgáltatás biztosít alacsony késésű, magas rendelkezésre állású, méretezhető, összetett Eseményfeldolgozási keresztül a streamelési adatok a felhőben. A Stream Analytics lehetővé teszi az ügyfelek a folyamatos átviteli feladatok beállítása az adatfolyamokat elemzése, és lehetővé teszi a közel valós idejű elemzési meghajtó.  
 
 > [!NOTE]
-> Ebben a cikkben a példakód Azure Stream Analytics Management .NET SDK v2.x verziójával lett frissítve. A által használt lagecy (1.x) SDK-verzió használó példakódot, talál [a Management .NET SDK v1.x használja a Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
+> Ebben a cikkben a példakód Azure Stream Analytics Management .NET SDK v2.x verziójával lett frissítve. A által használt lagecy (1.x) SDK-verzió használó példakódot, talál [a Management .NET SDK v1.x használja a Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
 ## <a name="prerequisites"></a>Előfeltételek
 A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:

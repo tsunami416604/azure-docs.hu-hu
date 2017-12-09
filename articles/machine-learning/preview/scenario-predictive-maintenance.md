@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 2687eb022bce0b71c217f0be611c8fabdfb66040
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: HT
+ms.openlocfilehash: 5a5893df8b734acc2d16f149505ed65c288c9306
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="predictive-maintenance-real-world-scenario"></a>A prediktív karbantartási valós forgatókönyv.
 
@@ -30,7 +30,7 @@ Az alábbiakban látható a hivatkozásra kattintva a nyilvános GitHub-tárház
 
 ## <a name="use-case-overview"></a>Használja az eset áttekintése
 
-Eszköz-gyakori iparágakban a vállalatok által tapasztalt az is gépi problémák késések társított jelentős költségeket. A legtöbb vállalat érdekelt előrejelzésére, ha ezek a problémák merülhetnek fel ahhoz, hogy proaktív módon, hogy mielőtt bekövetkeznének. A cél, hogy a költségek csökkentése állásidő csökkentésével, és esetleg a biztonság fokozása. Tekintse meg a [alkalmazástervezési prediktív karbantartási](https://docs.microsoft.com/en-us/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance) közös részletes leírását használja az esetek, valamint a prediktív karbantartási modellezési megközelítésben.
+Eszköz-gyakori iparágakban a vállalatok által tapasztalt az is gépi problémák késések társított jelentős költségeket. A legtöbb vállalat érdekelt előrejelzésére, ha ezek a problémák merülhetnek fel ahhoz, hogy proaktív módon, hogy mielőtt bekövetkeznének. A cél, hogy a költségek csökkentése állásidő csökkentésével, és esetleg a biztonság fokozása. Tekintse meg a [alkalmazástervezési prediktív karbantartási](https://docs.microsoft.com/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance) közös részletes leírását használja az esetek, valamint a prediktív karbantartási modellezési megközelítésben.
 
 Ebben a forgatókönyvben a azzal a céllal, hogy a lépéseket forgatókönyvek esetében a több valós üzleti problémák összefoglaló alapuló a prediktív modell megvalósításához alkalmazástervezési ötleteket kihasználja. Ez a példa egyesíti közös adatelemek között számos prediktív karbantartási megfigyelt használati esetekben.
 
@@ -40,7 +40,7 @@ A szimulált adatok az üzleti probléma előre problémák okozta összetevőin
 
 * Egy [Azure-fiók](https://azure.microsoft.com/en-us/free/) (az ingyenes próbaverzió érhetők el).
 * Egy telepített példánya [Azure Machine Learning-munkaterület](./overview-what-is-azure-ml.md) következő a [– első lépések a telepítési útmutató](./quickstart-installation.md) telepíteni a programot, és hozzon létre egy munkaterület.
-* Az Azure Machine Learning Operationalization megköveteli egy helyi környezet és a [modellhez tartozó felügyeleti fiók](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-overview)
+* Az Azure Machine Learning Operationalization megköveteli egy helyi környezet és a [modellhez tartozó felügyeleti fiók](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview)
 
 Ebben a példában minden AML munkaterület számítási környezetben futtatható. Azonban ajánlott futtatni a legalább 16 GB memória. Ebben a forgatókönyvben tervezték és távoli DS4_V2 szabványos futó Windows 10-es gépre tesztelték [adatok tudományos virtuális gép Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu).
 
@@ -112,7 +112,7 @@ Ebben a forgatókönyvben áttekintést az olvasó hogyan hozhat létre egy telj
 
 A használati eset korábban kidolgozott több platformon:
 
-* [A prediktív karbantartási megoldás sablon](https://docs.microsoft.com/en-us/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
+* [A prediktív karbantartási megoldás sablon](https://docs.microsoft.com/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
 * [A prediktív karbantartási Fenyegetésmodellezési útmutatója](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
 * [A prediktív karbantartási modellezési útmutató SQL R Services segítségével](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
 * [Python kalauz modellezési prediktív karbantartás](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)

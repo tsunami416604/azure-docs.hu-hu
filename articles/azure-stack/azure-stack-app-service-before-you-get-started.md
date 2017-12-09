@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 17967131853d4334ae2c0ba3c0aa01089b7f3b61
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
-ms.translationtype: HT
+ms.openlocfilehash: d6962bf2ffbf731a4aa301e663c7c7d3428080d4
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Az App Service Azure veremben megkezdése előtt
 
@@ -250,7 +250,7 @@ Az Azure App Service Azure verem futtató és a mérési adatbázisok elő kell 
 
 Az Azure verem szoftverfejlesztői készlet való használatra, használhatja az SQL Express 2014 SP2 vagy újabb.
 
-Éles és magas rendelkezésre állás érdekében, kell teljes verziót az SQL 2014 SP2 vagy újabb, kevert módú hitelesítés engedélyezése, és telepítenie a egy [magas rendelkezésre állású konfigurációban](https://docs.microsoft.com/en-us/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
+Éles és magas rendelkezésre állás érdekében, kell teljes verziót az SQL 2014 SP2 vagy újabb, kevert módú hitelesítés engedélyezése, és telepítenie a egy [magas rendelkezésre állású konfigurációban](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
 
 Az Azure App Service Azure verem SQL-kiszolgálón az összes App Service-szerepkörből elérhetőnek kell lennie. SQL Server az alapértelmezett szolgáltató előfizetésben Azure verem is telepíthető. Lehetőség a szervezeten belül a meglévő infrastruktúra használata (feltéve, nincs kapcsolat az Azure-verem). Ha Azure piactér lemezkép használ, ne felejtse el ennek megfelelően konfigurálja a tűzfalat. 
 

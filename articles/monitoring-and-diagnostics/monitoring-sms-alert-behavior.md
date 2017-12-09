@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.openlocfilehash: 3e4eca174209eeb9cbce1d45111d1e5cc30af8b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 012f001356463a8a7d9b95f186111959627f2c28
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS riasztási művelet csoportok működése
 ## <a name="overview"></a>Áttekintés ##
@@ -37,15 +37,15 @@ Az SMS fogadó, akik egy művelet csoport részeként van konfigurálva, az SMS 
 - A riasztás nevét
 
 ### <a name="unsubscribing-from-sms-alerts-for-one-action-group"></a>Az SMS riasztásokból egy művelet csoport unsubscribing
-A felhasználó leiratkozhat SMS az értesítések egy-egy művelettel csoport által a shortcode 20873 a kulcsszavakkal válaszol: "LETILTÁSA &lt;művelet csoport rövid_név&gt;".
+A felhasználó leiratkozhat SMS az értesítések egy-egy művelettel csoport által a kulcsszavak a rövid kódot 29873 válaszol: "LETILTÁSA &lt;művelet csoport rövid_név&gt;".
 
-Példa Egy művelet csoport a rövid_név "Azure", a riasztások lemondani kívánó felhasználó SMS, amely szerint "Azure tiltsa le a" shortcode 20873 volna küldése
+Példa Egy művelet csoport a rövid_név "Azure", a riasztások lemondani kívánó felhasználó SMS elküldése a rövid kód 29873, amely szerint "LETILTÁSA Azure"
 
 ### <a name="unsubscribing-from-sms-alerts-for-all-action-groups"></a>Az SMS riasztásokból az összes művelet csoport unsubscribing
-A felhasználó válaszol a shortcode 20873 a következő kulcsszavak egyikét a leiratkozhat az összes művelet csoport összes SMS riasztás:
+A felhasználó a rövid kód a következő kulcsszavak egyikét 29873 válaszol leiratkozhat az összes művelet csoport összes SMS riasztás:
 * ÁLLJ
 
-Példa A felhasználó az összes művelet csoport összes SMS riasztás lemondani kívánó, amely szerint a "STOP" shortcode 20873 SMS volna küldése
+Példa A felhasználó az összes művelet csoport összes SMS riasztás lemondani kívánó volna SMS küldése a rövid kódot 29873, amely szerint a "STOP"
 
 >[!NOTE]
 >Ha egy felhasználó leiratkozott a SMS riasztást küld, de egy új művelet csoportba kerül RENDSZER SMS figyelmeztetést a művelet új csoport, hanem marad a művelet minden olyan csoportból korábbi művelet.
@@ -53,20 +53,20 @@ Példa A felhasználó az összes művelet csoport összes SMS riasztás lemonda
 >
 
 ### <a name="resubscribing-to-sms-alerts-for-one-action-group"></a>A művelet egy csoport SMS riasztásokat resubscribing
-A felhasználó is resubscribe SMS az értesítések egy-egy művelettel csoport által a shortcode 20873 a kulcsszavakkal válaszol: "engedélyezése &lt;művelet csoport rövid_név&gt;".
+A felhasználó is resubscribe SMS az értesítések egy-egy művelettel csoport által a kulcsszavak a rövid kódot 29873 válaszol: "engedélyezése &lt;művelet csoport rövid_név&gt;".
 
-Példa A riasztásokat a rövid_név "Azure", a művelet csoportok resubscribe kívánó felhasználó volna SMS küldése a shortcode 20873, amely szerint "Azure engedélyezése"
+Példa A riasztásokat a rövid_név "Azure", a művelet csoportok resubscribe kívánó felhasználó SMS elküldése a rövid kód 29873, amely szerint "Azure engedélyezése"
 
 ### <a name="resubscribing-to-sms-alerts-for-all-action-groups"></a>Az összes művelet csoport SMS riasztás resubscribing
-A felhasználó által válaszol a shortcode 20873 a következő kulcsszavak egyikét a riasztások az összes művelet csoport összes SMS is resubscribe:
+A felhasználó által a rövid kód a következő kulcsszavak egyikét 29873 válaszol a riasztások az összes művelet csoport összes SMS is resubscribe:
 
 * INDÍTSA EL
 
-Példa A felhasználó az összes művelet csoport összes SMS riasztás lemondani kívánó, amely szerint a "START" shortcode 20873 SMS volna küldése
+Példa A felhasználó az összes művelet csoport összes SMS riasztás lemondani kívánó volna SMS küldése a rövid kódot 29873, amely szerint a "START"
 
 ### <a name="requesting-help-via-sms"></a>SMS segítségkérés
-A felhasználó további információt az SMS válaszol a shortcode 20873 a következő kulcsszavak egyikét a kaptak teheti fel:
-* SEGÍTSÉG
+A felhasználó további információt az SMS válaszol a rövid kód a következő kulcsszavak egyikét 29873 kaptak teheti fel:
+* SÚGÓ
 
 Választ a felhasználó egy hivatkozás, ez a cikk kapnak.
 

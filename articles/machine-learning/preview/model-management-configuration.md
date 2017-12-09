@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.openlocfilehash: c89596a6d721c4cba899b8a6e2859ee36cba7b80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 151e7c2dc808a8fa117a0d7a1950185abe9e3152
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="model-management-setup"></a>Modell kezelésének beállítása
 
@@ -27,7 +27,7 @@ Ez a dokumentum végéig a modell felügyeleti környezet beállítása és kés
 
 ## <a name="what-you-need-to-get-started"></a>Mi szükséges a kezdéshez
 Ahhoz, hogy minél hatékonyabb működtetését Ez az útmutató, Azure-előfizetéshez, amely központilag telepíthető a modellek a tulajdonosi hozzáférés kell rendelkeznie.
-A parancssori felület előre előre telepített, az Azure Machine Learning-munkaterület és a [Azure DSVMs](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).
+A parancssori felület előre előre telepített, az Azure Machine Learning-munkaterület és a [Azure DSVMs](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).
 
 ## <a name="using-the-cli"></a>A parancssori felület használatával
 A parancssori felületen (CLIs) az a munkaterület használatához kattintson **fájl** -] **megnyitott parancssori felület**. 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 94658dfcf93e821e24cabb1f010f8dce0c014700
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: e51d31035a8b05238ef0f8d13dd6b6c3f9ad02e8
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>A helyi kapcsolat keresztül VPN-átjárók diagnosztizálása
 
@@ -32,7 +32,7 @@ A pont-pont kapcsolatot az Azure és a helyszíni konfigurálni szeretné a hely
 
 1. Virtuális hálózati átjáró – az Azure VPN-átjáró
 1. Helyi hálózati átjáró - a [helyszíni VPN-átjáró (FortiGate)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) Azure felhőben megjelenítésre
-1. Webhelyek közötti kapcsolattal (útvonal alapján) - [a VPN-átjáró és a helyszíni útválasztót közötti kapcsolat](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#createconnection)
+1. Webhelyek közötti kapcsolattal (útvonal alapján) - [a VPN-átjáró és a helyszíni útválasztót közötti kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#createconnection)
 1. [FortiGate konfigurálása](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 Részletes útmutatást a pont-pont konfiguráció konfigurálásához található ellátogatva: [hozhat létre egy Vnetet az Azure portál használatával webhelyek kapcsolattal rendelkező](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: afee79e5081cbc6c217569a9d1bffdd7726e2f61
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
-ms.translationtype: HT
+ms.openlocfilehash: 7e4cd0b455ab39db01d50943d15f7e138bbd5e4e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-content-keys-with-rest"></a>A többi tartalom kulcsok létrehozása
 > [!div class="op_single_selector"]
@@ -35,18 +35,18 @@ Eszközök kézbesítése az ügyfelek számára, amikor is [dinamikusan legyen 
 
 Titkosított eszközöknek kell társítani **ContentKey**s. A cikkből megtudhatja, hogyan hozzon létre egy tartalomkulcsot.
 
-Az alábbi lépések általános generálásához tartalomkulcs, amely a titkosítani kívánt eszközök fog társítani. 
+Az alábbi lépések általános a titkosítani kívánt eszközök társítani tartalom kulcs létrehozásakor. 
 
 1. Véletlenszerű előállításához a 16 bájtos AES kulcs (a közös és boríték titkosítás) vagy egy 32 bájtos AES kulcs (tárolás titkosítása). 
    
-    Ez lesz a tartalomkulcsot az adategységhez, ami azt jelenti, hogy az adott eszközhöz hozzárendelt összes fájl szükség lesz az azonos tartalomkulcsot a visszafejtés során. 
+    Ez az a tartalomkulcsot az adategységhez, ami azt jelenti, hogy ugyanazt a tartalom kulcsot használhatja a visszafejtés során szükséges társított összes fájlt. 
 2. Hívja a [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) és [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) módszerek megszerezni a helyes X.509-tanúsítvány használatával titkosítja a tartalomkulcsot.
 3. A tartalomkulcs X.509-tanúsítvány nyilvános kulcsával titkosítja. 
    
    Media Services .NET SDK RSA-t használ a OAEP típusú végrehajtásakor a titkosítást.  A példa látható a [EncryptSymmetricKeyData függvény](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
 4. Hozzon létre egy ellenőrzőösszeget (a PlayReady AES-kulcs ellenőrzőösszeg algoritmus alapján) a kulcsazonosító és tartalomkulcsot számítja. További információkért lásd: a PlayReady fejléc objektum-dokumentum található "PlayReady AES ellenőrzőösszeg kulcsalgoritmus" szakasza [Itt](http://www.microsoft.com/playready/documents/).
    
-   A .NET típusú példát, amely a GUID része a kulcsazonosító és egyértelműen tartalomkulcsot ellenőrzőösszeg kiszámítja a következő:
+   A következő .NET típusú példát a GUID része a kulcsazonosító és egyértelműen tartalomkulcsot ellenőrzőösszeg számítja ki.
    
         public static string CalculateChecksum(byte[] contentKey, Guid keyId)
          {
@@ -68,7 +68,7 @@ Az alábbi lépések általános generálásához tartalomkulcs, amely a titkos�
 5. Hozzon létre a tartalomkulcsot a a **EncryptedContentKey** (karakterlánccá base64-kódolású), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType**, és **ellenőrzőösszeg** értékeket az előző lépésben kapott.
 6. Társítsa a **ContentKey** entitás a **eszköz** entitás keresztül a $links műveletet.
 
-Vegye figyelembe, hogy ez a témakör nem szerepelnek az AES-kulcs létrehozása, a kulcs titkosításához és ellenőrzőösszeg számítása. 
+Ez a cikk nem szerepelnek az AES-kulcs létrehozása, a kulcs titkosításához és ellenőrzőösszeg számítása. 
 
 >[!NOTE]
 
@@ -92,7 +92,7 @@ A kérelem:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423034908&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=7eSLe1GHnxgilr3F2FPCGxdL2%2bwy%2f39XhMPGY9IizfU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
 
@@ -124,7 +124,7 @@ A kérelem:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-e769-2233-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423141026&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=lDBz5YXKiWe5L7eXOHsLHc9kKEUcUiFJvrNFFSksgkM%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: 78d1247a-58d7-40e5-96cc-70ff0dfa7382
     Host: media.windows.net
 
@@ -152,7 +152,7 @@ Válasz:
 ## <a name="create-the-contentkey"></a>A ContentKey létrehozása
 Az X.509 tanúsítvány lekérése és a tartalom kulcs titkosításához használt nyilvános kulcsát, akkor létre kell hoznia egy **ContentKey** entitás és a tulajdonság értékek ennek megfelelően beállítva.
 
-A tartalom létrehozása a értékeket, hogy kell-e állítva mikor kulcs egy típus. A következő értékek közül választhat.
+A tartalom létrehozása a értékeket, hogy kell-e állítva mikor kulcs egy típus. A következő értékek közül választhat:
 
     public enum ContentKeyType
     {
@@ -179,7 +179,7 @@ A tartalom létrehozása a értékeket, hogy kell-e állítva mikor kulcs egy t�
     }
 
 
-A következő példa bemutatja, hogyan hozhat létre egy **ContentKey** rendelkező egy **ContentKeyType** tárolás titkosítása ("1") beállítása és a **ProtectionKeyType** azt jelzi, hogy a védelem kulcs azonosítója az X.509 tanúsítvány ujjlenyomata "0" értékre állítva.  
+A következő példa bemutatja, hogyan hozhat létre egy **ContentKey** rendelkező egy **ContentKeyType** tárolás titkosítása ("1") beállítása és a **ProtectionKeyType** , jelezve, hogy a "0" értékre a védelmi kulcs azonosítója: az X.509 tanúsítvány ujjlenyomata.  
 
 Kérés
 
@@ -191,7 +191,7 @@ Kérés
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423034908&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=7eSLe1GHnxgilr3F2FPCGxdL2%2bwy%2f39XhMPGY9IizfU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
     {
     "Name":"ContentKey",
@@ -241,7 +241,7 @@ A kérelem:
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423141026&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=lDBz5YXKiWe5L7eXOHsLHc9kKEUcUiFJvrNFFSksgkM%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
 

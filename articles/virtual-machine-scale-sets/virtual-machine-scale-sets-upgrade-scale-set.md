@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: guybo
-ms.openlocfilehash: c7093e221ff8fe69ded1cfbce4f3ddeb1a195666
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: aef243e34f1d5fc8240576a9803bb8b08693a7b7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoport frissítése
 Ez a cikk ismerteti, hogyan lehet megkezdik az operációs rendszer frissítése egy Azure virtuális gép méretezése állásidő nélkül. Ebben a környezetben az operációs rendszer frissítés magában foglalja a módosítása az operációs rendszer Termékváltozata vagy a verziójával, vagy az egyéni lemezkép URI-Azonosítóinak módosítása. Erre a frissítése nélkül állásidő azt jelenti, hogy frissítési egyszerre helyett virtuális gépet egyszerre, vagy a csoportok (például egy tartalék tartomány egyszerre). Ezzel a módszerrel bármely nem frissített virtuális gépek adatközpontnak futnia.
@@ -31,7 +31,7 @@ Félreérthetőség elkerülése érdekében most különbözteti meg a négy t�
 * A méretezési Azure felügyelt lemezek használatával létrehozott lemezképet hivatkozás módosítása.
 * Javítás az operációs rendszer a virtuális gépen (ezt például a biztonsági javítás telepítése és a Windows Update futtatása). Ez a forgatókönyv használata támogatott, de nem tartalmazza az ebben a cikkben.
 
-Virtuálisgép-méretezési csoportok részeként üzembe helyezett egy [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) fürthöz nem tartoznak ide. Lásd: [javítás Windows operációs rendszer a Service Fabric-fürt](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-patch-orchestration-application) további információt a Service Fabric javítását.
+Virtuálisgép-méretezési csoportok részeként üzembe helyezett egy [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) fürthöz nem tartoznak ide. Lásd: [javítás Windows operációs rendszer a Service Fabric-fürt](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application) további információt a Service Fabric javítását.
 
 Az alapvető sorrend módosítása az operációs rendszer verziója/Termékváltozata platformlemezkép vagy egy egyéni lemezkép URI a következőképpen néz ki:
 

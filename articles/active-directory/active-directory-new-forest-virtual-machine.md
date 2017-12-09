@@ -1,6 +1,6 @@
 ---
 title: "Active Directory-erdő telepítése Azure virtuális hálózatra |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan hozzon létre egy új Active Directory-erdőt egy Azure virtuális hálózat (VM) virtuális gépen."
+description: "Ez az oktatóanyag bemutatja, hogyan hozzon létre egy új Active Directory-erdőt egy virtuális gépen (VM) egy Azure virtuális hálózaton."
 services: active-directory, virtual-network
 keywords: "az Active directory virtuális gép, telepítés active directory-erdőben, az azure active directory-videót "
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 12/06/2017
 ms.author: joflore
-ms.openlocfilehash: 18151f647b857dec78e659a3394359ff21a818c7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: HT
+ms.openlocfilehash: 96020eb305b0a027a2128cdd3e3c8acf998c8e54
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Egy új Active Directory-erdő telepítése Azure virtuális hálózaton
 Ez a cikk bemutatja, hogyan hozható létre egy új Windows Server Active Directory-környezetben a virtuális gépen (VM) egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). Ebben az esetben az Azure virtuális hálózat nem egy helyi hálózathoz csatlakozik.
@@ -45,7 +45,7 @@ Nincs sok tartományvezérlő telepítése az Azure-on és a helyszíni különb
 | **Active Directory adatbázistár** |Igény szerint módosítsa az alapértelmezett tárolási helyét C:\ |Módosítania kell alapértelmezett tárolási helyét a C:\ |
 
 ## <a name="create-an-azure-virtual-network"></a>Az Azure virtuális hálózat létrehozása
-1. Jelentkezzen be a klasszikus Azure portálra.
+1. Jelentkezzen be az Azure portálra.
 2. Hozzon létre egy virtuális hálózatot. Kattintson a **hálózatok** > **hozzon létre egy virtuális hálózatot**. Az alábbi táblázatban szereplő értékek használatához a varázsló befejezéséhez.
 
    | A varázsló e lapján... | Adja meg ezeket az értékeket |
@@ -59,7 +59,7 @@ Ismételje meg a következő lépésekkel hozza létre a tartományvezérlő sze
 
 A virtuális gépek létrehozását a felhasználói felület helyett a Windows PowerShell használatával: [a Azure PowerShell szolgáltatás használatával hozzon létre, és előre konfigurálása a Windows-alapú virtuális gépek](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-1. A klasszikus portálon kattintson **új** > **számítási** > **virtuális gép** > **a gyűjtemény**. A következő értékeket használja a varázsló befejezéséhez. Fogadja el az alapértelmezett érték a következőhöz: setting, kivéve, ha egy másik érték javasolt vagy szükséges.
+1. Válassza ki az Azure-portálon **új** > **számítási**, majd válassza ki a virtuális gép. A következő értékeket használja a varázsló befejezéséhez. Fogadja el az alapértelmezett érték a következőhöz: setting, kivéve, ha egy másik érték javasolt vagy szükséges.
 
    | A varázsló e lapján... | Adja meg ezeket az értékeket |
    | --- | --- |

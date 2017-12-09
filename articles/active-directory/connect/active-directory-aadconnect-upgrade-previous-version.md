@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: c4f0ec95c02116a19f2d69c6fa1e8aa639c56c69
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
-ms.translationtype: HT
+ms.openlocfilehash: 61d384cfcfbbd0726faffe2e2ee09faf35c781e3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Az Azure AD Connect: Frissítés egy korábbi verziójáról a legújabb verzióra
 Ez a témakör ismerteti a különböző módszereket, amelyek az Azure Active Directory (Azure AD) Connect telepítés frissítése a legújabb verzióra. Azt javasoljuk, hogy őrizze meg az Azure AD Connect kiadásainak aktuális. Is használhatja a lépéseket a [áttelepítési éppen](#swing-migration) szakaszában, amikor olyan jelentős konfigurációs módosítást hajt végre.
@@ -48,7 +48,7 @@ Ha a out-of-box szinkronizálási szabályok végrehajtott módosításokat, maj
 
 Helybeni verziófrissítés során előfordulhat bevezetett változások, a frissítés befejezése után hajtható végre a meghatározott szinkronizálási tevékenység (beleértve a teljes importálás és a teljes szinkronizálás lépést) szükséges. Az ilyen tevékenységek késleltető, tekintse át a részt [hogyan késlelteti a frissítés után teljes szinkronizálást](#how-to-defer-full-synchronization-after-upgrade).
 
-Ha az Azure AD Connect nem szabványos Connector (például az általános LDAP-összekötő és az általános SQL-összekötő) használja, frissítenie kell a lévő megfelelő összekötő-konfiguráció a [Synchronization Service Managert](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) Miután a helyben történő frissítést. Hogyan frissítheti az összekötő konfigurációjának a részletekért tekintse meg a cikk szakasz [összekötő Verziókiadások - hibaelhárítás](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting). Ha nem frissíti a konfigurációt, importálása és exportálása lépéseket nem működnek megfelelően az összekötő. A következő hiba történt az alkalmazások eseménynaplójában keresse meg az üzenetet kap *"szerelvény verziója AAD-összekötő konfigurációjában ("X.X.XXX. "X") korábbi, mint a tényleges verzió ("X.X.XXX. "X") a "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll".*
+Ha az Azure AD Connect nem szabványos Connector (például az általános LDAP-összekötő és az általános SQL-összekötő) használja, frissítenie kell a lévő megfelelő összekötő-konfiguráció a [Synchronization Service Managert](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) Miután a helyben történő frissítést. Hogyan frissítheti az összekötő konfigurációjának a részletekért tekintse meg a cikk szakasz [összekötő Verziókiadások - hibaelhárítás](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting). Ha nem frissíti a konfigurációt, importálása és exportálása lépéseket nem működnek megfelelően az összekötő. A következő hiba történt az alkalmazások eseménynaplójában keresse meg az üzenetet kap *"szerelvény verziója AAD-összekötő konfigurációjában ("X.X.XXX. "X") korábbi, mint a tényleges verzió ("X.X.XXX. "X") a "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll".*
 
 ## <a name="swing-migration"></a>Párhuzamos migrálás
 Ha egy összetett üzembe helyezése vagy több objektumot, egy frissítés az élő rendszeren ehhez nem célszerű lehet. Egyes ügyfelek esetén ez a folyamat eltarthat több nap –, és ebben az időszakban nem változáskülönbözeteit feldolgozása. Is használhatja ezt a módszert, ha azt tervezi, hogy a konfiguráció jelentős változtatásokat, és próbálja ki őket ahhoz, azok még leküldeni a felhő szeretné.

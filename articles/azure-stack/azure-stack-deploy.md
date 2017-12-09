@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 8a0d23e14ef50034d5f9595cf154c3513a09c464
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
-ms.translationtype: HT
+ms.openlocfilehash: 19a8db99c62fb4f560ce082d0974ef619080ef2d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack üzembehelyezési előfeltételek
 
@@ -176,7 +176,7 @@ SQL Server telemetriai konfigurálásához lásd: [konfigurálása az SQL Server
 
 A regisztráció Azure verem is konfigurált előre használati adatokat az Azure-bA. Használati jelentésben szabályozott egymástól függetlenül a telemetriai adatokból. Mikor reporting használati kikapcsolható [regisztrálása](azure-stack-register.md) a Githubon a parancsfájl használatával. Állítson be a **$reportUsage** paramétert **$false**.
 
-Használati adatok formátuma részletezett a [jelentés Azure verem használati adatokat az Azure-bA](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting). Az Azure verem szoftverfejlesztői készlet felhasználók ténylegesen nem van szó. Ez a funkció tartalmazza a csomagban, hogy azt is ellenőrizze, hogy használatai jelentések működéséről. 
+Használati adatok formátuma részletezett a [jelentés Azure verem használati adatokat az Azure-bA](https://docs.microsoft.com/azure/azure-stack/azure-stack-usage-reporting). Az Azure verem szoftverfejlesztői készlet felhasználók ténylegesen nem van szó. Ez a funkció tartalmazza a csomagban, hogy azt is ellenőrizze, hogy használatai jelentések működéséről. 
 
 
 ## <a name="next-steps"></a>Következő lépések

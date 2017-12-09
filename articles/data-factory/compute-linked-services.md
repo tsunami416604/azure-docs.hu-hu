@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: shengc
-ms.openlocfilehash: a530b08c276596ddbffafc21e6cffdd9e0e9e3fa
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
-ms.translationtype: HT
+ms.openlocfilehash: db3be2120c998a0c8973a85d375b526f53e73247
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 Ez a cikk ismerteti a különböző számítási környezeteket, melyekkel folyamat vagy átalakítási adatok. Emellett biztosítja az adat-előállító támogatott, ha ezek linking összekapcsolt szolgáltatások konfigurálása (igény szerinti és kapcsolja a saját) különböző konfigurációkkal kapcsolatos részletek számítási környezetek számára egy Azure data factory.
@@ -106,7 +106,7 @@ A következő JSON igény kapcsolódó HDInsight Linux-alapú szolgáltatás hat
 | clusterResourceGroup         | A HDInsight-fürt létrehozása az erőforráscsoportban. | Igen      |
 | a TimeToLive tulajdonság                   | A megengedett üresjárati idő az igény szerinti HDInsight-fürthöz. Meghatározza, mennyi ideig az igény szerinti HDInsight-fürt aktív marad egy tevékenység fut, ha nincsenek a fürt más aktív feladatok befejezése után. A minimális megengedett érték érték 5 perc (00: 05:00).<br/><br/>Például ha egy tevékenység futott 6 percig tart, és az élettartam értéke 5 perc, a fürt marad, a figyelő életben 5 perc, a 6 percnél feldolgozásának a tevékenység futtatása után. Ha egy másik tevékenységfuttatási 6-perc időkeretet, dolgoz fel ugyanabban a fürtben.<br/><br/>Igény szerinti HDInsight fürtök létrehozásával egy (igénybe vehet) drága művelet, ezt a beállítást, mint egy adat-előállító teljesítményének javításával újból felhasználja az igény szerinti HDInsight-fürtök által szükséges Igen használja.<br/><br/>A TimeToLive tulajdonság értékét 0-ra állítja be, ha törölni a fürtöt, amint a tevékenység futtatása befejeződött. Mivel ha a magas érték, a fürt néhány hibaelhárítási bejelentkezést inaktív felfüggesztheti a céllal, de az eredményezhet nagy költségek. Ezért fontos, hogy beállította-e a megfelelő értéket a igényei szerint.<br/><br/>A timetolive tulajdonság értékének megfelelően van beállítva, ha több folyamatok megoszthatja az igény szerinti HDInsight-fürt példányának. | Igen      |
 | clusterType                  | A HDInsight-fürtöt létrehozni típusa. Megengedett értékek: "hadoop" és "külső". Ha nincs megadva, az alapértelmezett érték: hadoop. | Nem       |
-| Verzió                      | A HDInsight-fürt verziószáma. Ha nincs megadva, az aktuális HDInsight meghatározott alapértelmezett verzióját használja. | Nem       |
+| verzió                      | A HDInsight-fürt verziószáma. Ha nincs megadva, az aktuális HDInsight meghatározott alapértelmezett verzióját használja. | Nem       |
 | hostSubscriptionId           | A HDInsight-fürt létrehozásához használt Azure-előfizetése Azonosítóját. Ha nincs megadva, akkor használja az Azure bejelentkezési környezet előfizetés-azonosítója. | Nem       |
 | clusterNamePrefix           | Az előtag HDI-fürt nevét, egy Timestamp típusú automatikusan hozzá lesznek fűzve a fürt nevének végén| Nem       |
 | sparkVersion                 | Ha a fürt típusa "Külső" spark verziója | Nem       |
@@ -136,7 +136,7 @@ A következő JSON igény kapcsolódó HDInsight Linux-alapú szolgáltatás hat
 
 ### <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 
-Az On-Demand HDInsight kapcsolódó szolgáltatás egy szolgáltatás egyszerű hitelesítést a nevünkben a HDInsight-fürtök létrehozásához szükséges. Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regisztrálni kell az Azure Active Directory (Azure AD), és adja meg azt a **közreműködő** szerepkört az előfizetés vagy az erőforráscsoport, amelyben a HDInsight-fürt létrehozása. Részletes útmutató: [használata portálon hozzon létre egy Azure Active Directory erőforrásokat elérő alkalmazás és szolgáltatás egyszerű](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal). Jegyezze fel a következő érték, melynek segítségével határozza meg a társított szolgáltatás:
+Az On-Demand HDInsight kapcsolódó szolgáltatás egy szolgáltatás egyszerű hitelesítést a nevünkben a HDInsight-fürtök létrehozásához szükséges. Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regisztrálni kell az Azure Active Directory (Azure AD), és adja meg azt a **közreműködő** szerepkört az előfizetés vagy az erőforráscsoport, amelyben a HDInsight-fürt létrehozása. Részletes útmutató: [használata portálon hozzon létre egy Azure Active Directory erőforrásokat elérő alkalmazás és szolgáltatás egyszerű](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Jegyezze fel a következő érték, melynek segítségével határozza meg a társított szolgáltatás:
 
 - Alkalmazásazonosító
 - Alkalmazás kulcs 

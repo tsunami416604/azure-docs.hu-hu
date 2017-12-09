@@ -8,11 +8,11 @@ ms.author: philmea
 ms.date: 11/29/2017
 ms.topic: how-to
 ms.service: location-based-services
-ms.openlocfilehash: d928e4ff7c6e35291bcc1e6a1359d54542968278
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: HT
+ms.openlocfilehash: 014dbb38d0f47d926db192a6117f7acd06b41a20
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Hol találhatók az Azure-alapú helyszolgáltatás (előzetes verzió) keresési szolgáltatás segítségével
 A keresési szolgáltatás egy egy RESTful API-k, címek, a helyek, a pontokat iránt érdeklődik, üzleti listák és egyéb földrajzi információk keresése fejlesztők számára készült. A keresési szolgáltatás a szélesség/hosszúsági egy adott cím, alhálózatok közötti utca, földrajzi funkció vagy információs jel (POI) rendeli. A keresési szolgáltatás API-k által visszaadott szélességi és hosszúsági értékeket más Azure-alapú helyszolgáltatás például az útvonal és a forgalom áramlását API-k paramétereiben használható.
@@ -44,7 +44,7 @@ A legtöbb keresési lekérdezések alapértelmezés szerint a "maxFuzzyLevel = 
     | Kérelem URL-je | https://Atlas.microsoft.com/search/fuzzy/JSON? |
     | Engedélyezés | Nincs hitelesítés |
 
-    A **json** URL-címet attribútum meghatározza, hogy a válasz formátumát. Ez a cikk teljes json és olvashatóság érdekében használja. Megtalálhatja a rendelkezésre álló válasz formátumok a **keresési intelligens beolvasása** a [hely alapú szolgáltatások funkcionális API-referencia] definíciója (https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchfuzzy).
+    A **json** URL-címet attribútum meghatározza, hogy a válasz formátumát. Ez a cikk teljes json és olvashatóság érdekében használja. Megtalálhatja a rendelkezésre álló válasz formátumok a **keresési intelligens beolvasása** a [hely alapú szolgáltatások funkcionális API-referencia] definíciója (https://docs.microsoft.com/rest/api/location-based-services/search/getsearchfuzzy).
 
 3. Kattintson a **paraméterei**, és írja be a következő kulcs-érték párok lekérdezés vagy az elérési út paraméter, a kérelem URL-címében használni:
 
@@ -156,7 +156,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     |-----|------------|
     | szám | igaz |
 
-    Ha a [szám](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezésparaméter a kérelem nem jut, a válasz előfordulhat, hogy tartalmazza a utca (balra vagy jobbra), és az eltolás pozíciója, hogy a kívánt oldalán.
+    Ha a [szám](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezésparaméter a kérelem nem jut, a válasz előfordulhat, hogy tartalmazza a utca (balra vagy jobbra), és az eltolás pozíciója, hogy a kívánt oldalán.
     
 5. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
 
@@ -164,7 +164,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     |-----|------------|
     | spatialKeys | igaz |
 
-    Ha a [spatialKeys](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válasz egy adott hely védett földrajzi térbeli kulcsfontosságú adatokat tartalmaz.
+    Ha a [spatialKeys](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válasz egy adott hely védett földrajzi térbeli kulcsfontosságú adatokat tartalmaz.
 
 6. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
 
@@ -172,7 +172,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     |-----|------------|
     | returnSpeedLimit | igaz |
     
-    Ha a [returnSpeedLimit](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válasz visszaadása, a közzétett Sebességkorlát.
+    Ha a [returnSpeedLimit](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válasz visszaadása, a közzétett Sebességkorlát.
 
 7. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
 
@@ -180,7 +180,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     |-----|------------|
     | returnRoadUse | igaz |
 
-    Ha a [returnRoadUse](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a választ ad vissza, a közúti használható tömb reversegeocodes utca szinten.
+    Ha a [returnRoadUse](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a választ ad vissza, a közúti használható tömb reversegeocodes utca szinten.
 
 8. Adja hozzá a következő kulcs / érték pár, hogy a **paraméterei** szakaszt, és kattintson **küldése**:
 
@@ -188,7 +188,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     |-----|------------|
     | roadUse | igaz |
 
-    A fordított geocode lekérdezés egy adott típusú közúti használata használatával korlátozhatja a [roadUse](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter.
+    A fordított geocode lekérdezés egy adott típusú közúti használata használatával korlátozhatja a [roadUse](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter.
     
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>Keresse meg a keresztszűrés utca fordított cím határokon utca keresés
 
@@ -215,4 +215,4 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
 4. Kattintson a **küldése** és tekintse át az adott válasz törzse. 
 
 ## <a name="next-steps"></a>Következő lépések
-- Megismerkedhet a [Azure hely alapú Serices Search szolgáltatás](https://docs.microsoft.com/en-us/rest/api/location-based-services/search) API-JÁNAK dokumentációja 
+- Megismerkedhet a [Azure hely alapú Serices Search szolgáltatás](https://docs.microsoft.com/rest/api/location-based-services/search) API-JÁNAK dokumentációja 

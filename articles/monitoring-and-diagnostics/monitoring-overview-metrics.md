@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: eb519aab87c13e8836bf1d41992812762f0cd737
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 32ca0ce5148ae2641500c98cb04b0d7db1987960
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>A Microsoft Azure-ban mérőszámok áttekintése
 Ez a cikk ismerteti, hogy milyen adatok gyűjtése le van a Microsoft Azure-ban az előnyöket, és használatuk indítása.  
@@ -89,11 +89,11 @@ Az Azure figyelő is rendelkeznek, egy új mérőszámok diagramkészítési él
 ## <a name="access-metrics-via-the-rest-api"></a>A REST API-n keresztül hozzáférést metrikák
 Azure metrikák az Azure-figyelő API-k keresztül érhetők el. Két API-k, amelyek segítenek felderítése és metrikákat eléréséhez:
 
-* Használja a [Azure figyelő metrika definíciók REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricdefinitions) metrikákat, és egyetlen dimenzióhoz sem, a szolgáltatás számára rendelkezésre álló listájának eléréséhez.
-* Használja a [Azure figyelő metrikák REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metrics) szegmentálni, szűréséhez, és a tényleges metrikai adatok elérésére.
+* Használja a [Azure figyelő metrika definíciók REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) metrikákat, és egyetlen dimenzióhoz sem, a szolgáltatás számára rendelkezésre álló listájának eléréséhez.
+* Használja a [Azure figyelő metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) szegmentálni, szűréséhez, és a tényleges metrikai adatok elérésére.
 
 > [!NOTE]
-> Ez a cikk ismerteti a metrikák keresztül a [új API-t a metrikák](https://docs.microsoft.com/en-us/rest/api/monitor/) az Azure-erőforrások. Az API-verzió az új metrikai meghatározásainak és a metrikák API-k 2017-05-01. dátumú előnézeti. Az örökölt metrikai meghatározásainak és a metrikák elérhető verzió 2014-04-01 API-val.
+> Ez a cikk ismerteti a metrikák keresztül a [új API-t a metrikák](https://docs.microsoft.com/rest/api/monitor/) az Azure-erőforrások. Az API-verzió az új metrikai meghatározásainak és a metrikák API-k 2017-05-01. dátumú előnézeti. Az örökölt metrikai meghatározásainak és a metrikák elérhető verzió 2014-04-01 API-val.
 >
 >
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.author: dmpechyo
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 9372e45e8666dc572b805dfd4a505c9446145079
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: HT
+ms.openlocfilehash: 4f739ff26c3df8add01bed6d797f292ff6e26db9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Elosztott, az Azure Machine Learning-munkaterület használatával hiperparaméterek beállítása
 
@@ -36,8 +36,8 @@ Kereszt-ellenőrzési használatával rács keresési időigényes lehet. Ha egy
 * Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverzió érhetők el).
 * Egy telepített példánya [Azure Machine Learning-munkaterület](./overview-what-is-azure-ml.md) következő a [telepítése és gyors üzembe helyezés létrehozása](./quickstart-installation.md) telepíteni a munkaterületet üzemeltető és fiókokat létrehozni.
 * Ez a forgatókönyv azt feltételezi, hogy futtatja Azure ML munkaterület a Windows 10 vagy MacOS a helyileg telepített Docker-motorhoz. 
-* A forgatókönyv olyan távoli Docker-tároló futtatni, kiépítése Ubuntu adatok tudományos virtuális gép (DSVM) követve a [utasításokat](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-provision-vm). Legalább 8 maggal és 28 Gb memóriát a virtuális gép használatát javasoljuk. Virtuális gépek példányait D4 rendelkezik ilyen kapacitással. 
-* Ebben a forgatókönyvben egy Spark-fürt futtatja, Azure HDInsight-fürtök kiépítése követve ezek [utasításokat](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Javasoljuk, hogy rendelkezik legalább egy fürt 
+* A forgatókönyv olyan távoli Docker-tároló futtatni, kiépítése Ubuntu adatok tudományos virtuális gép (DSVM) követve a [utasításokat](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Legalább 8 maggal és 28 Gb memóriát a virtuális gép használatát javasoljuk. Virtuális gépek példányait D4 rendelkezik ilyen kapacitással. 
+* Ebben a forgatókönyvben egy Spark-fürt futtatja, Azure HDInsight-fürtök kiépítése követve ezek [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Javasoljuk, hogy rendelkezik legalább egy fürt 
 - hat munkavégző csomópontokhoz
 - nyolc processzormaggal
 - 28 Gb memóriát a fejléc és a feldolgozó csomópontok. Virtuális gépek példányait D4 rendelkezik ilyen kapacitással. Azt javasoljuk, hogy a fürt teljesítmény maximalizálása a következő paraméterek módosítása.
@@ -45,11 +45,11 @@ Kereszt-ellenőrzési használatával rács keresési időigényes lehet. Ha egy
 - Spark.Executor.cores
 - Spark.Executor.Memory 
 
-Kövesse ezeket [utasításokat](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-resource-manager) és szerkesztése a definíciók "egyéni spark alapértelmezett értéke" szakaszában.
+Kövesse ezeket [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager) és szerkesztése a definíciók "egyéni spark alapértelmezett értéke" szakaszában.
 
      **Troubleshooting**: Your Azure subscription might have a quota on the number of cores that can be used. The Azure portal does not allow the creation of cluster with the total number of cores exceeding the quota. To find you quota, go in the Azure portal to the Subscriptions section, click on the subscription used to deploy a cluster and then click on **Usage+quotas**. Usually quotas are defined per Azure region and you can choose to deploy the Spark cluster in a region where you have enough free cores. 
 
-* Hozzon létre egy Azure storage-fiók, amely a dataset tárolására szolgál. Kövesse a [utasításokat](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account) tárfiók létrehozásához.
+* Hozzon létre egy Azure storage-fiók, amely a dataset tárolására szolgál. Kövesse a [utasításokat](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) tárfiók létrehozásához.
 
 ## <a name="data-description"></a>Adatok leírása
 

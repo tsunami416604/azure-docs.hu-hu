@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: cfcc20b55b9e9b662ea8eec0802727b9a5a0ebf0
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
-ms.translationtype: HT
+ms.openlocfilehash: b99f0a2ff2521438bf543b010f688b13ad19f94c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="automate-mobility-service-installation-by-using-software-deployment-tools"></a>Szoftvertelepítési eszközök segítségével automatizálhatja a mobilitási szolgáltatás telepítési
 
@@ -470,4 +470,4 @@ IF  %ERRORLEVEL% EQU 1 (GOTO :INSTALL) ELSE GOTO :UNINSTALL
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-Most már készen áll a [engedélyezni a védelmet](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-vmware-to-azure#step-6-replicate-applications) a virtuális gépek számára.
+Most már készen áll a [engedélyezni a védelmet](https://docs.microsoft.com/azure/site-recovery/site-recovery-vmware-to-azure#step-6-replicate-applications) a virtuális gépek számára.

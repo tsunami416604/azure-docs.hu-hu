@@ -16,11 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Active
 ms.date: 11/07/2017
 ms.author: carlrab
-ms.openlocfilehash: 4e22a512f7ee11dde14f8eac818506b59791e17f
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
-ms.translationtype: HT
+ms.openlocfilehash: 8a31ed948fe9387720db61018e0edded530cd900
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>SQL Server-adatbázis áttelepítése a felhőbeli SQL Database-be
 Ebben a cikkben az SQL Server 2005 vagy újabb adatbázisok Azure SQL Database-be való migrálásának két elsődleges módszerét ismerheti meg. Az első módszer egyszerűbb, azonban jelentős állásidőt igényelhet a migrálás során. A második módszer bonyolultabb, viszont nem jár állásidővel a migrálás közben.
@@ -39,11 +39,11 @@ Az alábbi lista tartalmazza az SQL Server adatbázis-migrálásának általáno
 
   ![VSSSDT áttelepítési ábra](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
-1. [Értékeléséhez](https://docs.microsoft.com/en-us/sql/dma/dma-assesssqlonprem) az adatbázis kompatibilitási legújabb verziójának használatával az [adatok áttelepítési Segéd (DMA-)](https://www.microsoft.com/download/details.aspx?id=53595).
+1. [Értékeléséhez](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) az adatbázis kompatibilitási legújabb verziójának használatával az [adatok áttelepítési Segéd (DMA-)](https://www.microsoft.com/download/details.aspx?id=53595).
 2. A szükséges javításokat Transact-SQL szkriptekként készítse elő.
 3. Tranzakciós úton konzisztens másolat készítése a forrásadatbázis áttelepítendő -, és győződjön meg arról, amely nincs további módosul a forráshely adatbázisára (vagy hogy kézzel alkalmazhatja az ilyen jellegű változtatásokat az áttelepítés befejezése után). Sokféleképpen elérheti az adatbázisok fokozatos leválasztását, az ügyfélkapcsolat letiltásától [adatbázis-pillanatfelvételének](https://msdn.microsoft.com/library/ms175876.aspx) létrehozásáig.
 4. Helyezze üzembe a Transact-SQL szkripteket a javítások alkalmazásához az adatbázis másolatán.
-5. [Telepítse át](https://docs.microsoft.com/en-us/sql/dma/dma-migrateonpremsql) az adatbázis másolatát egy új Azure SQL Database segítségével az adatok áttelepítési Segéd.
+5. [Telepítse át](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql) az adatbázis másolatát egy új Azure SQL Database segítségével az adatok áttelepítési Segéd.
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>Az adatátviteli teljesítmény optimalizálása migrálás közben 
 

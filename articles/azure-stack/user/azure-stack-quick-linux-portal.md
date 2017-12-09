@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f986c060b26489e412f6230665ec76a4730293f1
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
-ms.translationtype: HT
+ms.openlocfilehash: a97372002052570ccad2bb8bc442eb0dd1ca76d9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>Linux virtuális gép létrehozása az Azure-verem portállal
 
@@ -30,7 +30,7 @@ A verem Azure portálon keresztül verem Azure virtuális gépek hozhatók létr
 
 * **Egy SSH-ügyfél a hozzáférést**
 
-   Az Azure verem Development Kit (ASDK) használ, előfordulhat, hogy nem elérhető lesz az SSH-ügyfél a környezetben. Ez a helyzet, ha több, egy SSH-ügyfelet tartalmazó csomagot közül választhat. Például a PuTTY SSH-ügyfél és a SSH megosztottelérésikulcs-készítő (puttygen.exe) is telepítheti. Opció kapcsolatos további információkért lásd a következő Azure cikk kapcsolódó: [az SSH-kulcsok a Windows Azure hogyan](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
+   Az Azure verem Development Kit (ASDK) használ, előfordulhat, hogy nem elérhető lesz az SSH-ügyfél a környezetben. Ez a helyzet, ha több, egy SSH-ügyfelet tartalmazó csomagot közül választhat. Például a PuTTY SSH-ügyfél és a SSH megosztottelérésikulcs-készítő (puttygen.exe) is telepítheti. Opció kapcsolatos további információkért lásd a következő Azure cikk kapcsolódó: [az SSH-kulcsok a Windows Azure hogyan](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
 
    A gyors üzembe helyezés használja a PuTTY az SSH-kulcsok létrehozásához és a Linux virtuális géphez történő csatlakozáshoz. Töltse le és telepítse a PuTTY, keresse fel [http://www.putty.org/](http://www.putty.org).
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: terrylan
-ms.openlocfilehash: c80e78b39b3fba4dcd9523e1e679822758822805
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: fd238f0b2d877f7f57a27ce495dae8de1ab9c066
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Az Azure Security Centerben a támogatott platformok
 Biztonsági állapotának megfigyelése és javaslatok érhetők el a klasszikus és Resource Manager üzembe helyezési modell használatával létrehozott virtuális gépek (VM).
@@ -59,6 +59,6 @@ Felhőszolgáltatásban futó virtuális gépeket is támogatottak. Csak felhőa
 ## <a name="next-steps"></a>Következő lépések
 
 - [Azure Security Center tervezéséhez és az üzemeltetési útmutatóban](security-center-planning-and-operations-guide.md) – megtudhatja, hogyan tervezhető meg és hogy bevezessék az Azure Security Center tervezéséhez kapcsolódó szempontokat ismertetése
-- [Biztonsági riasztások az Azure Security Centerben típusonként](https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-type.md#virtual-machine-behavioral-analysis) – további információk a virtuális gép viselkedéselemzése és összeomlás-memóriakép memória elemzése a Security Center
+- [Biztonsági riasztások az Azure Security Centerben típusonként](https://docs.microsoft.com/azure/security-center/security-center-alerts-type.md#virtual-machine-behavioral-analysis) – további információk a virtuális gép viselkedéselemzése és összeomlás-memóriakép memória elemzése a Security Center
 - [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center – gyakran ismételt kérdések) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 - [Az Azure biztonsági blog](http://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi

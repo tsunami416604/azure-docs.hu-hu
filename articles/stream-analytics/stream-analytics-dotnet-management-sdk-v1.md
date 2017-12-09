@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/06/2017
 ms.author: samacha
-ms.openlocfilehash: cd8f4e0dd07be8878d6bbb1739fb84a3cc96a186
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 7f434f1fe600877d1a12174ae84aaa47e878a055
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Felügyeleti .NET SDK v1.x: állítsa össze, és az Azure Stream Analytics API használatával a .NET-hez analytics-feladatok futtatása
 Megtudhatja, hogyan állítson be és használja a Stream Analytics API Management .NET SDK használatával .NET analytics-feladatok futtatása. Projekt beállítása, hozzon létre a bemeneti és kimeneti adatforrások, átalakítások, és úgy indítsa és feladatok. Az analytics-feladatok adatok Blob-tároló vagy az eseményközpont folyamatos átviteléhez.
@@ -29,7 +29,7 @@ Tekintse meg a [felügyeleti referenciadokumentációt tartalmaz a Stream Analyt
 Az Azure Stream Analytics egy olyan teljes körűen felügyelt szolgáltatás biztosít alacsony késésű, magas rendelkezésre állású, méretezhető, összetett Eseményfeldolgozási keresztül a streamelési adatok a felhőben. A Stream Analytics lehetővé teszi az ügyfelek a folyamatos átviteli feladatok beállítása az adatfolyamokat elemzése, és lehetővé teszi a közel valós idejű elemzési meghajtó.  
 
 > [!NOTE]
-> Ebben a cikkben a példakód továbbra is az Azure Stream Analytics Management .NET SDK örökölt (1.x) verzióját használja. A mintakód SDK naprakész verzióját használja, ellenőrizze [felügyeleti .NET SDK használata a Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk).
+> Ebben a cikkben a példakód továbbra is az Azure Stream Analytics Management .NET SDK örökölt (1.x) verzióját használja. A mintakód SDK naprakész verzióját használja, ellenőrizze [felügyeleti .NET SDK használata a Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk).
 
 ## <a name="prerequisites"></a>Előfeltételek
 A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:

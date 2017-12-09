@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4bb6becd0b664b9287a1973d5221cff46dca57da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: f4456200d6f497a87424f12a23034dbff00c75aa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK-alapú parancsprogramok segítségével kezelheti a StorSimple eszközökhöz
 
@@ -61,10 +61,10 @@ Ez a szakasz példa parancsfájl vesz igénybe, és a különböző, a parancsf�
 Mielőtt elkezdené, győződjön meg arról, hogy:
 
 *   Az Azure PowerShell telepítése. Azure PowerShell-modulok telepítése:
-    * Egy Windows-környezetben, kövesse a [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0). Telepíthető Azure PowerShell a Windows Server-állomáson a StorSimple Ha egyikének használatával.
-    * Linux- vagy MacOS környezetben, kövesse a [telepítése és konfigurálása az Azure PowerShell MacOS vagy Linux](https://docs.microsoft.com/en-us/powershell/azure/install-azurermps-maclinux?view=azurermps-4.4.0).
+    * Egy Windows-környezetben, kövesse a [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0). Telepíthető Azure PowerShell a Windows Server-állomáson a StorSimple Ha egyikének használatával.
+    * Linux- vagy MacOS környezetben, kövesse a [telepítése és konfigurálása az Azure PowerShell MacOS vagy Linux](https://docs.microsoft.com/powershell/azure/install-azurermps-maclinux?view=azurermps-4.4.0).
 
-Azure PowerShell használatával kapcsolatos további információkért látogasson el [Ismerkedés az Azure PowerShell használatával](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azurermps-4.4.0).
+Azure PowerShell használatával kapcsolatos további információkért látogasson el [Ismerkedés az Azure PowerShell használatával](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.4.0).
 
 ### <a name="run-azure-powershell-script"></a>Azure PowerShell-parancsfájl futtatása
 

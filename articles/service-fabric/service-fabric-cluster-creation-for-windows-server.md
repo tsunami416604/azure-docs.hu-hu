@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: chackdan;maburlik;dekapur
-ms.openlocfilehash: 6aa2905a97ec6b8c125f2ab9572a8e40bf525b27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 4b3b1e8a368419fe4014802f7b2a35b7ae3fba3c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>A Windows Server rendszert futtató önálló fürt létrehozása
 Azure Service Fabric használatával Service Fabric-fürtök létrehozása a virtuális gépek vagy a Windows Server rendszerű számítógépek. Ez azt jelenti, telepítése és a Service Fabric-alkalmazások futtatása bármely összekapcsolt Windows Server számítógépek tartalmazó környezetben is kell azt a helyszíni vagy bármely felhőalapú szolgáltatóhoz. A Service Fabric biztosít a telepítési csomagot a különálló Windows Server csomag nevű Service Fabric-fürtök létrehozása.
@@ -36,7 +36,7 @@ Ez a cikk végigvezeti a különálló Service Fabric-fürt létrehozásának l�
 * A Windows Server a Service Fabric önálló csomag a közösségi kérdezze meg a [Azure Service Fabric fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
 * Nyissa meg a jegy [Professional támogatása a Service Fabric](http://support.microsoft.com/oas/default.aspx?prid=16146).  További tudnivalók a Microsoft-támogatást Professional [Itt](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * Is kaphat támogatási csomag részeként [Microsoft Premier támogatási](https://support.microsoft.com/en-us/premier).
-* További részletekért lásd: [Azure Service Fabric támogatási lehetőségek](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support).
+* További részletekért lásd: [Azure Service Fabric támogatási lehetőségek](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
 * A támogatáshoz gyűjtését, futtassa a [Service Fabric önálló naplógyűjtő](service-fabric-cluster-standalone-package-contents.md).
 
 <a id="downloadpackage"></a>

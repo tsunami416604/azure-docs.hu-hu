@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: a30d7a8e3f2e11a0c5ed05c5b68d75d32b138fb9
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
-ms.translationtype: HT
+ms.openlocfilehash: fbcb4807aa7f6a3d6227cd630c77714c4d2834b3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Hibaelhárítás YARN Azure HDInsight segítségével
 
@@ -35,7 +35,7 @@ Ambari az alábbi lépések segítségével hozzon létre egy új YARN várólis
 Ebben a példában két meglévő várólisták (**alapértelmezett** és **thriftsvr**) is megváltoznak 50 % kapacitásából 25 % kapacitás, amely az új várólista (külső) 50 % kapacitást biztosít.
 | Várólista | Kapacitás | Maximális kapacitás |
 | --- | --- | --- | --- |
-| Alapértelmezett | 25% | 50% |
+| alapérték | 25% | 50% |
 | thrftsvr | 25% | 50% |
 | Spark | 50% | 50% |
 
@@ -139,7 +139,7 @@ A módosítások azonnal a YARN Feladatütemező felhasználói felület az lát
 
 ### <a name="additional-reading-2"></a>További olvasnivaló
 
-- [Csatlakozás HDInsight (Hadoop) SSH használatával](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Csatlakozás HDInsight (Hadoop) SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN fogalmakat és alkalmazások](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
 
 

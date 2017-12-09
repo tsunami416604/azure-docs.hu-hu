@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a0a4558da0b308799a153b300b098891e933712b
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
-ms.translationtype: HT
+ms.openlocfilehash: ebfe23ea1e07e7578e8bd352a482ecb1016829de
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Megbízható életciklusának áttekintése
 > [!div class="op_single_selector"]
@@ -118,7 +118,7 @@ A Service Fabric módosítja az elsődleges számos okból az állapotalapú szo
 
 Szolgáltatások szabályszerűen nem kezelő törlését is több problémákba ütközhetnek. Ezek a műveletek lassúak, mivel a Service Fabric szabályosan leállítja a szolgáltatások vár. Ez végső soron előfordulhat, hogy a sikertelen frissítések adott túllépi az időkorlátot, és állítsa vissza. Hiba a megszakítási token tiszteletben is eredményezheti, hogy imbalanced fürtök. Fürtök válhat egyenetlen, mert a csomópontok gyakran használt adatok lekérése, de a szolgáltatások nem rebalanced, mert azt túl lassan máshol helyezze el őket. 
 
-Mivel a szolgáltatások állapotalapú, akkor valószínű is, hogy használják a [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md). A Service Fabric egy elsődleges lefokozása, az első dolog, ami történik esetén meg kell, hogy a mögöttes állapota írási visszavonva. Ennek eredménye, hogy egy második problémák, amelyek hatással lehetnek a szolgáltatási életciklus. A visszatérési kivételek időzítése, és hogy a replika áthelyezik alapuló gyűjtemények vagy leáll. Az ilyen kivételek megfelelően kell kezelni. A Service Fabric által okozott kivételeket sorolhatók állandó [(`FabricException`)](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) és átmeneti [(`FabricTransientException`)](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) kategóriák. Állandó kivételek legyen naplózva, és alapján néhány újrapróbálkozási logika átmeneti kivételek követően újra ellenőrzésekor.
+Mivel a szolgáltatások állapotalapú, akkor valószínű is, hogy használják a [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md). A Service Fabric egy elsődleges lefokozása, az első dolog, ami történik esetén meg kell, hogy a mögöttes állapota írási visszavonva. Ennek eredménye, hogy egy második problémák, amelyek hatással lehetnek a szolgáltatási életciklus. A visszatérési kivételek időzítése, és hogy a replika áthelyezik alapuló gyűjtemények vagy leáll. Az ilyen kivételek megfelelően kell kezelni. A Service Fabric által okozott kivételeket sorolhatók állandó [(`FabricException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) és átmeneti [(`FabricTransientException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) kategóriák. Állandó kivételek legyen naplózva, és alapján néhány újrapróbálkozási logika átmeneti kivételek követően újra ellenőrzésekor.
 
 A kivételek használatát érkező kezelése a `ReliableCollections` szolgáltatás életciklus-események együtt tesztelése és ellenőrzése egy megbízható szolgáltatás fontos részét képezi. Azt javasoljuk, hogy mindig a szolgáltatás terhelés frissítések végrehajtása közben és [chaos tesztelés](service-fabric-controlled-chaos.md) üzemi környezetben üzembe helyezése előtt. Az alábbi alapvető lépések segítségével, győződjön meg arról, hogy a szolgáltatás megfelelően van megvalósítva, és életciklus-események megfelelően kezeli.
 

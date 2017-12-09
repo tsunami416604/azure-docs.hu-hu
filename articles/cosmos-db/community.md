@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
-ms.openlocfilehash: 4be7f077fa5bc03531baf2443c663f1d8bc4a1c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 09b59630d9aa8d1adf2f56cde6f8039d6bfe6718
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="community-portal"></a>Közösségi portál
 ## <a name="community-spotlight"></a>Közösségi spotlight
@@ -98,7 +98,7 @@ Maradhat, ha a legújabb Azure Cosmos DB hírek és szolgáltatások következő
 
 ## <a name="events-and-recordings"></a>Események és felvételek
 ### <a name="recent-and-upcoming-events"></a>Legutóbbi és a jövőbeni események
-| Esemény neve | Beszélő | Hely | Dátum | Hashtaggel történő |
+| Eseménynév | Beszélő | Hely | Dátum | Hashtaggel történő |
 | --- | --- | --- | --- | --- |
 |[Dél-hogy Codecamp: NoSQL .NET-fejlesztők a 10 perc alatt az Azure documentdb használatával](http://www.fladotnet.com/codecamp/Agenda.aspx)| [Santosh Hari](https://twitter.com/_s_hari)|Davie, FL|2017. március 11.|[#sflcc](https://twitter.com/search?q=%23sflcc&ref_src=twsrc%5Etfw)|
 |[Székesfehérvári Codecamp: NoSQL .NET-fejlesztők a 10 perc alatt az Azure documentdb használatával](http://orlandocodecamp.com/Sessions/Details/20)| [Santosh Hari](https://twitter.com/_s_hari)|Sanford, FL|2017. április 8.|[#OrlandoCC](https://twitter.com/hashtag/OrlandoCC?src=hash&ref_src=twsrc%5Etfw)|
@@ -108,7 +108,7 @@ Maradhat, ha a legújabb Azure Cosmos DB hírek és szolgáltatások következő
 *Azt és beszéljen vagy esemény üzemeltető? [Ossza meg velünk](mailto:askcosmosdb@microsoft.com) hogyan tudunk segíteni!*
 
 ### <a name="previous-events-and-recordings"></a>Előző eseményeket és felvételekhez
-| Esemény neve | Beszélő | Hely | Dátum | Felvétel |
+| Eseménynév | Beszélő | Hely | Dátum | Felvétel |
 | --- | --- | --- | --- | --- |
 |[Az ignite Ausztrália: Hello DocumentDB: Azure gyors és tartozó blazing bolygónk méretű NoSQL-adatbázis](https://msftignite.com.au/sessions/session-details/2115/hello-documentdb-azures-blazing-fast-planetscale-nosql-database-da224) | [Andrew Liu](https://twitter.com/aliuy8)|Queensland, Ausztrália|Szerda. február 15, 2017|Azonnali|
 |[Az ignite Ausztrália: Részletesen az Azure documentdb használatával: particionálás, a adatok modellezést és a földrajzi régiók közötti replikáció](https://msftignite.com.au/sessions/session-details/2116/a-deepdive-with-azure-documentdb-partitioning-data-modelling-and-geo-replication-da335b) | [Andrew Liu](https://twitter.com/aliuy8)|Queensland, Ausztrália|2017. február 16.|Azonnali|
@@ -167,6 +167,7 @@ Maradhat, ha a legújabb Azure Cosmos DB hírek és szolgáltatások következő
 ### <a name="videos-and-podcasts"></a>Podcastok és videók
 | Megjelenítés | Beszélő | Dátum | Epizód |
 | --- | --- | --- | --- |
+| A NoSQL-adatbázis Podcast | Kirill Gavrylyuk | 2017. május 16. | [A DocumentDB Microsoft NoSQL a felhőben](http://nosql.libsyn.com/ndp018-microsoft-documentdb-for-nosql-in-the-cloud) |
 | Azure Friday |Kirill Gavrylyuk |2016. október 31-ig. |[Újdonságok az Azure DocumentDB?](https://channel9.msdn.com/Shows/Azure-Friday/AzureFridayNewinDocumentDB) |
 | 9. csatornán: Microsoft + nyílt forráskódú |Jose Miguel Parrella |2016. április 14. |[Az Azure-ban Bitnami, a Virtuálisgép-méretezési készlet és a DocumentDB DEAN a KÖZÉPÉRTÉK a](https://channel9.msdn.com/Blogs/Open/From-MEAN-to-DEAN-in-Azure-with-Bitnami-VM-Scale-Sets-and-DocumentDB) |
 | Wired2WinWebinar |Sai Sankar Kunnathukuzhiyil |2016. március 9. |[Az Azure documentdb használatával megoldások fejlesztése](https://www.youtube.com/watch?v=xKttEwXv_bs) |

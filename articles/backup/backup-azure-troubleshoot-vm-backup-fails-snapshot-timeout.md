@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: genli;markgal;
-ms.openlocfilehash: a07fb9388f1e83bd167cf7c65cd3cd1e4f51ecd1
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: db92fdcdad6f6a81d749fd7648d48da53c21479f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure biztonsági mentési hiba elhárítása: ügynök és/vagy kiterjesztés problémái
 
@@ -34,6 +34,7 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 ##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>3. ok: [a virtuális gépen telepített ügynök elavult (a Linux virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
 ##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>4. ok: [pillanatkép állapotát nem sikerült beolvasni vagy pillanatkép nem végezhető.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
 ##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>5. ok: [frissítése vagy nem tölthető be nem sikerül a tartalék mellék](#the-backup-extension-fails-to-update-or-load)
+##### <a name="cause-6-azure-classic-vms-may-require-additional-step-to-complete-registrationazure-classic-vms-may-require-additional-step-to-complete-registration"></a>6. ok: [Azure klasszikus virtuális gépeinek szükség lehet további lépés a Regisztrálás](#azure-classic-vms-may-require-additional-step-to-complete-registration)
 
 ## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>Pillanatkép-művelet meghiúsult, mert nincs hálózati kapcsolat a virtuális gépen
 Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás ütemezése, biztonsági mentés indít el a feladat által a biztonsági mentés Virtuálisgép-bővítmény időpontban pillanatképének elkészítéséhez kommunikál. A következő feltételek megakadályozhatja, hogy a pillanatfelvételt a elindul, ami viszont biztonsági mentés sikertelen. Kövesse az alábbi lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet.
@@ -115,7 +116,7 @@ A Virtuálisgép-ügynök előfordulhat, hogy sérült, vagy a szolgáltatás es
 6. Ezután meg kell Windows Vendégügynök services szolgáltatások megtekintése
 7. Próbálja meg futtatni egy a-igény szerinti/ad hoc biztonsági mentés "Biztonsági mentés most" gombra kattintva a portálon.
 
-Emellett ellenőrizze a virtuális gép rendelkezik  **[a rendszeren telepítve a .NET 4.5](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)**. Szükséges, hogy a Virtuálisgép-ügynök a szolgáltatással való kommunikációra az
+Emellett ellenőrizze a virtuális gép rendelkezik  **[a rendszeren telepítve a .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)**. Szükséges, hogy a Virtuálisgép-ügynök a szolgáltatással való kommunikációra az
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>A virtuális gépen telepített ügynök elavult (a Linux virtuális gépek)
 
@@ -183,4 +184,23 @@ Távolítsa el a bővítményt, tegye a következőket:
 6. Kattintson a **eltávolítása**.
 
 Ez az eljárás azt eredményezi, a bővítmény a következő biztonsági mentés során újra kell telepíteni.
+
+### <a name="azure-classic-vms-may-require-additional-step-to-complete-registration"></a>Az Azure klasszikus virtuális gépeinek szükség lehet további lépés a Regisztrálás
+Az ügynök az Azure klasszikus virtuális gépeken kell regisztrálni a biztonsági mentési szolgáltatás kapcsolatot, és a biztonsági mentés indítása
+
+#### <a name="solution"></a>Megoldás
+
+Miután telepítette a virtuális gép vendégügynökének, indítsa el az Azure PowerShell <br>
+1. Bejelentkezés az Azure-fiók használatával <br>
+       `Login-AzureAsAccount`<br>
+2. Ellenőrizze, ha a virtuális gép ProvisionGuestAgent tulajdonság TRUE értéke esetén a következő parancsok <br>
+        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
+        `$vm.VM.ProvisionGuestAgent`<br>
+3. Ha a tulajdonsága hamis értékre van beállítva, kövesse az alábbi parancsok futtatásával igaz értékre kell beállítani<br>
+        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
+        `$vm.VM.ProvisionGuestAgent = $true`<br>
+4. Futtassa a következő parancsot a virtuális gép frissítése <br>
+        `Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>` <br>
+5. Próbálja meg a biztonsági mentés elindítása. <br>
+
 

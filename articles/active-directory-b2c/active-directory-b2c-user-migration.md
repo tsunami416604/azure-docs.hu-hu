@@ -14,17 +14,17 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/04/2017
 ms.author: yoelh
-ms.openlocfilehash: f98f1826b492b8596f352b403b3b12775814c399
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
-ms.translationtype: HT
+ms.openlocfilehash: 131e475a7f313d5844bb93332da183053f8e604c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Az Azure Active Directory B2C: Felhasználói áttelepítése
 Ha végez Identitásszolgáltatóként az Azure Active Directory B2C (az Azure AD B2C), szükség lehet áttelepíteni a felhasználói fiók. Ez a cikk azt ismerteti, hogyan telepíthetők át a meglévő felhasználói fiókokat bármely identitásszolgáltató az Azure AD B2C. A cikk nem célja, hogy lehet előírásoknak megfelelő, de helyett, ismerteti, hogyan kettőnél több megközelítés közül. A fejlesztői felelős az egyes frissítési megfelelőségét.
 
 ## <a name="user-migration-flows"></a>Felhasználó áttelepítési forgalom
-Azure AD B2C, felhasználókon telepíthet át [Graph API](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). A felhasználó áttelepítési folyamat két adatfolyamok beleesik:
+Azure AD B2C, felhasználókon telepíthet át [Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). A felhasználó áttelepítési folyamat két adatfolyamok beleesik:
 
 * **Áttelepítés előtti**: Ez a folyamat vonatkozik, vagy törölje a jelet a hozzáférést egy felhasználó hitelesítő adatait (felhasználónév és jelszó) vagy a azonosító adatok titkosítása, de azokat visszafejtéséhez. Az áttelepítés előtti folyamat a következőkből áll: a felhasználók a régi identitásszolgáltató olvasását, és új fiókot hoz létre az Azure AD B2C-címtárat a.
 
@@ -61,7 +61,7 @@ Először az Azure AD áttelepítési alkalmazás regisztrációja. Ezután (alk
 
 5. Válassza ki **új alkalmazás regisztrációja**.
 
-    ![Új alkalmazás regisztrációja](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
+    ![Új alkalmazásregisztráció](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
 
 6. Hozzon létre egy új alkalmazást a következő módon:
     * A **neve**, használjon **B2CUserMigration** vagy bármilyen más nevet.
@@ -100,7 +100,7 @@ Olvasási és írási directory adatok engedélyt *nem* tartalmazzák a felhaszn
 > A B2C bérlői rendszergazdai fiókot, amely segítségével kell *helyi* a B2C bérlő számára. A fiók nevének szintaxisa  *admin@contosob2c.onmicrosoft.com* .
 
 >[!NOTE]
-> A következő PowerShell-parancsfájl szükséges [Azure Active Directory PowerShell 2-es verzió](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
+> A következő PowerShell-parancsfájl szükséges [Azure Active Directory PowerShell 2-es verzió](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
 
 A PowerShell-parancsfájlt tegye a következőket:
 1. Az online szolgáltatáshoz kapcsolódni. Ehhez futtassa a `Connect-AzureAD` karakterláncot a Windows PowerShell parancsmag parancssort, és adja meg a hitelesítő adatokat. 
@@ -148,7 +148,7 @@ A JSON-fájl szerkesztéséhez nyissa meg a `AADB2C.UserMigration.sln` Visual St
 ![Felhasználói adatok fájl](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Ahogy látja, akkor a fájl felhasználói entitások listáját tartalmazza. Minden felhasználó entitás tulajdonságai a következők:
-* E-mailek
+* e-mail
 * displayName
 * Utónév
 * Vezetéknév
@@ -278,7 +278,7 @@ A jelszó módosítása követheti nyomon, az Azure-tábla használja. Futtatás
     ```
 
 ### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>4.2. lépés: Az Azure App Service a webes alkalmazás központi telepítése
-Az Azure App Service a API szolgáltatást teszik közzé. További információkért lásd: [telepítse az alkalmazást az Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy).
+Az Azure App Service a API szolgáltatást teszik közzé. További információkért lásd: [telepítse az alkalmazást az Azure App Service](https://docs.microsoft.com/azure/app-service-web/web-sites-deploy).
 
 ### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>4.3. lépés: A műszaki profil és a műszaki profil érvényesítési hozzáadása a házirend 
 1. A munkakönyvtár, nyissa meg a *TrustFrameworkExtensions.xml* bővítményfájl házirend. 
@@ -384,7 +384,7 @@ Megtekintheti és naplózási adatok közel valós idejű figyelését.
 
 6. Ellenőrizze a RESTful API kimenetét.
 
-További információkért lásd: [folyamatos átviteli naplók és a konzol](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-streaming-logs-and-console).
+További információkért lásd: [folyamatos átviteli naplók és a konzol](https://docs.microsoft.com/azure/app-service-web/web-sites-streaming-logs-and-console).
 
 > [!IMPORTANT]
 > A diagnosztikai naplók használata csak fejlesztése és tesztelése során. A RESTful API kimeneti előfordulhat, hogy éles környezetben nem szabad felfedni bizalmas információkat tartalmaznak.

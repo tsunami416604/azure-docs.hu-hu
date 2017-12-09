@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/22/2017
 ms.author: pkc
-ms.openlocfilehash: a3ab41d1aa6051e5d4021443c3fe581cbf4c880f
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
-ms.translationtype: HT
+ms.openlocfilehash: 0e4a2aa0ed7327a8ed19e9a716b0bd97abc71d5c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségek
 
@@ -81,7 +81,7 @@ Az alábbiakban a Service Fabric által támogatott verziók listáját és azok
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric előzetes verzió – üzemi használatra nem támogatott.
 Időről időre azt verzióira, amelyek azt szeretnénk, ha visszajelzést, amelyeket mintaként jelentős funkciót. Ezen előzetes verziói csak tesztelési célra használható. Az éles fürt mindig futnia kell egy támogatott, stabil, a Service Fabric-verzió. Előzetes verzióval mindig a fő- és alverzió verziószámát 255 kezdődik. Például a Service Fabric 255.255.5703.949 verzió jelenik meg, ha a verzió csak a tesztfürtökön lévő használni kívánt tartalmaz, és jelenleg előzetes verzióban érhető. Ezen előzetes kiadások is nem jelentik be a [Service Fabric csapat blogja](https://blogs.msdn.microsoft.com/azureservicefabric) és részletek rendelkezzen a szolgáltatásai.
 
-Nincs a preview kiadásokban fizetős támogatási lehetőség. A felsorolt lehetőségek valamelyikével [jelentés Azure Service Fabric problémák](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) felteheti kérdéseit és visszajelzés küldése.
+Nincs a preview kiadásokban fizetős támogatási lehetőség. A felsorolt lehetőségek valamelyikével [jelentés Azure Service Fabric problémák](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) felteheti kérdéseit és visszajelzés küldése.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/20/2017
 ms.author: msfussell
-ms.openlocfilehash: f47a855b94a29a2e9bbf4ca509e68612423aa65d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 9389ab5c3c67525703538cee644af9399417ffd5
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="service-fabric-and-containers"></a>A Service Fabric és a tárolók
 > [!NOTE]
@@ -61,7 +61,7 @@ Az alábbi ábrán látható a különböző típusú virtualizálás és az elk
 ## <a name="scenarios-for-using-containers"></a>Tárolók használatára vonatkozó forgatókönyvek
 Íme jellemző példa arra, ahol a tároló, akkor a:
 
-* **IIS növekedési, és az eltolás mértékét megadó**: Ha rendelkezik meglévő [ASP.NET MVC](https://www.asp.net/mvc) továbbra is használhatja, kívánt alkalmazások helyezze őket egy tároló áttelepítése helyett az ASP.NET Core azokat. ASP.NET MVC alkalmazások az Internet Information Services (IIS) határozza meg. Ezeket az alkalmazásokat a tároló képek a precreated IIS lemezképből csomag, és a Service Fabric telepíteni őket. Lásd: [tároló lemezképek a Windows Server](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server) Windows tárolók kapcsolatos információkat.
+* **IIS növekedési, és az eltolás mértékét megadó**: Ha rendelkezik meglévő [ASP.NET MVC](https://www.asp.net/mvc) továbbra is használhatja, kívánt alkalmazások helyezze őket egy tároló áttelepítése helyett az ASP.NET Core azokat. ASP.NET MVC alkalmazások az Internet Information Services (IIS) határozza meg. Ezeket az alkalmazásokat a tároló képek a precreated IIS lemezképből csomag, és a Service Fabric telepíteni őket. Lásd: [tároló lemezképek a Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) Windows tárolók kapcsolatos információkat.
 * **Tárolók és a Service Fabric mikroszolgáltatások**: meglévő tároló lemezképet használja az alkalmazás a része. Használhatja például a [NGINX tároló](https://hub.docker.com/_/nginx/) a webalkalmazás első végén az alkalmazás- és állapot-nyilvántartó a intenzívebb háttér-számításhoz.
 * **"Zajos szomszédok" szolgáltatások hatásának csökkentéséhez**: tárolók erőforrás irányítás képességét segítségével korlátozni az erőforrások, a szolgáltatás által használt egy gazdagépen. Ha szolgáltatások előfordulhat, hogy sok erőforrást és teljesítményét befolyásoló mások (például egy hosszan futó, a lekérdezés-szerű művelet), fontolja meg, ezek a szolgáltatások üzembe erőforrás irányítás tárolókat.
 
@@ -90,6 +90,6 @@ Ebben a cikkben megtanulta, tárolók, kapcsolatban, hogy a Service Fabric egy t
 
 [Az első Service Fabric-tároló alkalmazás létrehozása Linux rendszeren](service-fabric-get-started-containers-linux.md)
 
-[További információ a Windows-tárolók](https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/)
+[További információ a Windows-tárolók](https://docs.microsoft.com/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

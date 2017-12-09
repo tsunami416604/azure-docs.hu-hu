@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 1979f5bf5e8cab88dab5fba49018afacf24504b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 3c752573be7c07f800b0dce3d12d4dabd7328922
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>A tárolás titkosítása tartalom titkosítása
 
-Helyileg az AES-256 bites titkosítás használata a tartalom titkosításához, és ezután töltse fel az Azure Storage azt tárolására szolgáló titkosítása erősen ajánlott.
+Erősen ajánlott a helyileg az AES-256 bites titkosítás használata tartalom titkosításához, és ezután töltse fel az Azure Storage helyén titkosítása.
 
 Ez a cikk áttekintést AMS tárolás titkosítása, és bemutatja, hogyan töltse fel a tárolási titkosított tartalom:
 
@@ -31,7 +31,7 @@ Ez a cikk áttekintést AMS tárolás titkosítása, és bemutatja, hogyan tölt
   
      Titkosított eszközök tartalomkulcs társítani kell rendelkeznie.
 * A tartalomkulcs csatolása az eszközhöz.  
-* Állítsa be a titkosítás kapcsolatos AssetFile entitásokat paramétereket.
+* Állítsa be a titkosítással kapcsolatos paramétereit a AssetFile entitásokat.
 
 ## <a name="considerations"></a>Megfontolandó szempontok 
 
@@ -43,11 +43,8 @@ A Media Services entitások elérésekor be kell meghatározott fejlécmezők é
 
 Az AMS API-hoz kapcsolódáshoz információkért lásd: [elérni az Azure Media Services API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
 
->[!NOTE]
->Sikeresen csatlakoztassa a https://media.windows.net, adja meg egy másik Media Services URI 301 átirányítást fog kapni. Meg kell nyitnia az új URI későbbi hívásokat.
-
 ## <a name="storage-encryption-overview"></a>Tárolás titkosítási – áttekintés
-Az AMS tárolás titkosítása vonatkozik **AES-Parancsra** mód a titkosítás a teljes fájlt.  AES-Parancsra módja a blokktitkosításon, amelyek titkosíthatják a tetszőleges hosszúságú adatok kitöltési szükségessége nélkül. Egy számláló blokkot, amelynek a AES algoritmust, majd a XOR-ing AES kimenete az adatok titkosítására vagy visszafejtésére titkosításával működik.  A számláló blokk használt összeállított úgy, hogy a számláló értéke 0 és 7 bájtja a InitializationVector értékét, és a számláló értéke 8-15 bájtja értéke nulla. A 16 bájtos számláló blokk bájt 8-15 (azaz a legkisebb helyiértékű bájt) kell használni, mint egy egyszerű 64 bites előjel nélküli egész szám, amely minden ezt követő adatblokk eggyel növeli dolgoz fel, és hálózati maradnak. Vegye figyelembe, hogy a beállítást, ha az egész eléri a maximális értéket (0xFFFFFFFFFFFFFFFF) alaphelyzetbe állítását növekvő a blokk számláló nulla (bájt 8-15) nem befolyásolja a többi 64 bites a számláló (azaz a 0 és 7 bájt).   Ahhoz, hogy az AES-Parancsra mód titkosítási biztonságának fenntartásához, egy adott kulcs azonosítót minden tartalomkulcsot InitializationVector értékét kell minden egyes fájl egyedi, és fájlok legfeljebb 2 ^ 64 blokkok hossza.  Ez azért szükséges, hogy a számláló értéke nem fel újra egy adott kulccsal. A Parancsra móddal kapcsolatos további információkért lásd: [a wiki lapon](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (a a wikicikket "Nonce" helyett "InitializationVector" kifejezést használja).
+Az AMS tárolás titkosítása vonatkozik **AES-Parancsra** mód a titkosítás a teljes fájlt.  AES-Parancsra módja a blokktitkosításon, amelyek titkosíthatják a tetszőleges hosszúságú adatok kitöltési szükségessége nélkül. Egy számláló blokkot, amelynek a AES algoritmust, majd a XOR-ing AES kimenete az adatok titkosítására vagy visszafejtésére titkosításával működik.  A számláló blokk használt összeállított úgy, hogy a számláló értéke 0 és 7 bájtja a InitializationVector értékét, és a számláló értéke 8-15 bájtja értéke nulla. A 16 bájtos számláló blokk bájt 8-15 (Ez azt jelenti, hogy a legkisebb helyiértékű bájt) kell használni, mint egy egyszerű 64 bites előjel nélküli egész szám, amely minden ezt követő adatblokk eggyel növeli dolgoz fel, és hálózati maradnak. Ha az egész eléri a maximális értéket (0xFFFFFFFFFFFFFFFF) majd növekvő alaphelyzetbe állítja a blokk számláló (bájt 8-15) nulla nem befolyásolja a többi 64 bit a számláló (Ez azt jelenti, hogy a 0 és 7 bájt).   Ahhoz, hogy az AES-Parancsra mód titkosítási biztonságának fenntartásához, egy adott kulcs azonosítót minden tartalomkulcsot InitializationVector értékét kell minden egyes fájl egyedi, és fájlok legfeljebb 2 ^ 64 blokkok hossza.  Ez azért szükséges, hogy a számláló értéke nem fel újra egy adott kulccsal. A Parancsra móddal kapcsolatos további információkért lásd: [a wiki lapon](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (a a wikicikket "Nonce" helyett "InitializationVector" kifejezést használja).
 
 Használjon **tárolás titkosítása** a tiszta tartalom helyileg használatával az AES-256 bit a titkosítási és majd töltse fel az Azure Storage helyén titkosítása. Storage-titkosítással védett adategységek automatikusan a titkosítás és helyezni egy titkosított fájlrendszerbe kódolás előtt, és egy új kimeneti eszközként feltöltés előtt esetleg újra titkosítja. A tárolás titkosítása elsődleges használati eset az, amikor biztonságossá tételéhez a kiváló minőségű bemeneti médiafájljait erős titkosítással aktívan a lemezen.
 
@@ -56,11 +53,11 @@ A tárolási titkosított eszköz kezelni, konfigurálnia kell az adategység to
 ## <a name="create-contentkeys-used-for-encryption"></a>A titkosításhoz használt ContentKeys létrehozása
 A titkosított eszközökre kell lennie a tárolási titkosítási kulcs. A tartalomkulcs használt titkosítási az adategység-fájloknak létrehozása előtt létre kell hoznia. Ez a szakasz ismerteti, hogyan hozzon létre egy tartalomkulcsot.
 
-Az alábbi lépések általános generálásához tartalomkulcs, amely a titkosítani kívánt eszközök fog társítani. 
+Az alábbi lépések általános a titkosítani kívánt eszközök társítani tartalom kulcs létrehozásakor. 
 
 1. A tárolás titkosítása véletlenszerűen 32 bájtos AES kulcs létrehozása. 
    
-    Ez lesz a tartalomkulcsot az adategységhez, ami azt jelenti, hogy az adott eszközhöz hozzárendelt összes fájl szükség lesz az azonos tartalomkulcsot a visszafejtés során. 
+    Ez az a tartalomkulcsot az adategységhez, ami azt jelenti, hogy ugyanazt a tartalom kulcsot használhatja a visszafejtés során szükséges társított összes fájlt. 
 2. Hívja a [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) és [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) módszerek megszerezni a helyes X.509-tanúsítvány használatával titkosítja a tartalomkulcsot.
 3. A tartalomkulcs X.509-tanúsítvány nyilvános kulcsával titkosítja. 
    
@@ -101,7 +98,7 @@ Az alábbi lépések általános generálásához tartalomkulcs, amely a titkos�
     ---|---
     Azonosító | A ContentKey azonosítója, amely azt ragozott formáival létrehozása a következő formátumban "nb:kid:UUID:<NEW GUID>".
     ContentKeyType | Ez az a tartalom írja be a tartalom kulcs egész szám lehet. Az érték 1 storage-titkosítás továbbítja azt.
-    EncryptedContentKey | Létrehozhatunk egy új tartalom kulcs értéke pedig 256 bites (32 bájt) értéket. A kulcs titkosított a tárolási titkosítási X.509 tanúsítvány, amely által egy HTTP GET kérelem végrehajtása a GetProtectionKeyId és GetProtectionKey metódusok nem beolvasni a Microsoft Azure Media Services használatával. Tegyük fel, tekintse meg a következő .NET-kódot: a **EncryptSymmetricKeyData** definiált metódus [Itt](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
+    EncryptedContentKey | A Microsoft hozzon létre egy új tartalom kulcs értéket, amely a 256 bites (32 bájt) értéket. A kulcs titkosított tárolási titkosítási X.509-tanúsítvány a következő HTTP GET kérelemre futtatásával GetProtectionKeyId és GetProtectionKey módszerek nem beolvasni a Microsoft Azure Media Services használatával. Tegyük fel, tekintse meg a következő .NET-kódot: a **EncryptSymmetricKeyData** definiált metódus [Itt](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
     ProtectionKeyId | Ez az a védelmi tároló titkosítási X.509-tanúsítvány, amely a tartalom kulcs titkosításához használt kulcs azonosítója.
     ProtectionKeyType | Ez egy, a védelem a tartalom kulcs titkosításához használt kulcs a titkosítási típus. Ez az érték a fenti példában StorageEncryption(1).
     Ellenőrzőösszeg |Az MD5 számított ellenőrzőösszeg a tartalomkulcsot. A tartalom azonosítója a tartalom kulccsal titkosítja számítja ki. A mintakód bemutatja, hogyan ellenőrzőösszeg számítása.
@@ -118,7 +115,7 @@ A kérelem:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423034908&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=7eSLe1GHnxgilr3F2FPCGxdL2%2bwy%2f39XhMPGY9IizfU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
 Válasz:
@@ -149,7 +146,7 @@ A kérelem:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-e769-2233-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423141026&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=lDBz5YXKiWe5L7eXOHsLHc9kKEUcUiFJvrNFFSksgkM%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: 78d1247a-58d7-40e5-96cc-70ff0dfa7382
     Host: media.windows.net
 
@@ -189,7 +186,7 @@ Kérés
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423034908&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=7eSLe1GHnxgilr3F2FPCGxdL2%2bwy%2f39XhMPGY9IizfU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
     {
     "Name":"ContentKey",
@@ -238,7 +235,7 @@ A következő példa bemutatja, hogyan hozzon létre egy eszközt.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
     {"Name":"BigBuckBunny" "Options":1}
@@ -285,7 +282,7 @@ A kérelem:
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423141026&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=lDBz5YXKiWe5L7eXOHsLHc9kKEUcUiFJvrNFFSksgkM%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
     {"uri":"https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A01e6ea36-2285-4562-91f1-82c45736047c')"}
@@ -299,7 +296,7 @@ A [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) en
 
 Vegye figyelembe, hogy a **AssetFile** példány és a tényleges médiafájl két különböző objektum. A AssetFile példány media fájl metaadatainak tartalmaz, míg a médiafájl tartalmazza a tényleges médiatartalmakat.
 
-A digitális adathordozójának fájl feltöltése a blob-tárolóba, után fogja használni a **EGYESÍTÉSE** HTTP-kérelem a AssetFile frissítheti a adatainak media (ebben a témakörben nem látható). 
+A digitális adathordozójának fájl feltöltése a blob-tárolóba, után fogja használni a **EGYESÍTÉSE** HTTP-kérelem a AssetFile frissítheti a adatainak media (ebben a cikkben nem látható). 
 
 **HTTP-kérelem**
 
@@ -310,7 +307,7 @@ A digitális adathordozójának fájl feltöltése a blob-tárolóba, után fogj
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-4ca2-2233-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
     Content-Length: 164
 

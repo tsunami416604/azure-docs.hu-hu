@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/10/2017
-ms.openlocfilehash: 60db74535edd09841a1b660c2bf832af65fbfcad
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
-ms.translationtype: HT
+ms.openlocfilehash: 2c1f566afdbaad719c4abacdd89c2f8c96dc97de
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Az Azure Machine Learning modell Azure IoT peremhálózati eszköz telepítése
 
 Docker-alapú webszolgáltatásként indexelése Azure Machine Learning modellek is Azure IoT peremeszközök futtathatja. További parancsfájlok és utasítások megtalálhatók a [Azure IoT peremhálózati AI eszköztára](http://aka.ms/AI-toolkit).
 
 ## <a name="operationalize-the-model"></a>Azok a modell
-Üzembe helyezheti modelljét utasításait követve [Azure Machine Learning modell felügyeleti webes szolgáltatástelepítés](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-service-deploy) Docker lemezkép létrehozása a modell.
+Üzembe helyezheti modelljét utasításait követve [Azure Machine Learning modell felügyeleti webes szolgáltatástelepítés](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy) Docker lemezkép létrehozása a modell.
 
 ## <a name="deploy-to-azure-iot-edge"></a>Az Azure IoT peremhálózati telepítése
 Az Azure IoT peremhálózati felhő elemzés és üzleti logika áthelyezése eszközök. Minden gépi tanulási modellek IoT peremeszközök is futtathatók. IoT peremhálózati eszköz beállítását, és hozzon létre egy központi telepítési dokumentációjában található [aka.ms/azure-iot-edge-doc](https://aka.ms/azure-iot-edge-doc).

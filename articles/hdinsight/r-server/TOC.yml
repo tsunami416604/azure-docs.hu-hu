@@ -11,6 +11,9 @@
   items:
     - name: Első lépések az R Serverben
       href: r-server-get-started.md
+    - name: HDInsight-alkalmazások telepítése
+      href: ../hdinsight-apps-install-applications.md
+      maintainContext: true
     - name: A fürtök kapacitástervezése
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -43,17 +46,11 @@
           maintainContext: true
     - name: Fürtök kiterjesztése
       items:
-        - name: 'Biztonságos, engedélyezett tárfiók használata'
-          href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-          maintainContext: true
         - name: Fürtök testreszabása a Bootstrap használatával
           href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
           maintainContext: true
         - name: Fürtök testreszabása szkriptműveletek használatával
           href: ../hdinsight-hadoop-customize-cluster-linux.md
-          maintainContext: true
-        - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
-          href: ../connect-on-premises-network.md
           maintainContext: true
         - name: Szkriptműveletek fejlesztése
           href: ../hdinsight-hadoop-script-actions-linux.md
@@ -79,9 +76,6 @@
         - name: A Solr használata
           href: ../hdinsight-hadoop-solr-install-linux.md
           maintainContext: true
-        - name: A Virtual Network használata
-          href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
         - name: A Zeppelin használata
           href: ../hdinsight-apache-spark-zeppelin-notebook.md
           maintainContext: true
@@ -90,9 +84,6 @@
           maintainContext: true
         - name: HDInsight-alkalmazások fejlesztése
           items:
-            - name: HDInsight-alkalmazások telepítése
-              href: ../hdinsight-apps-install-applications.md
-              maintainContext: true
             - name: Egyedi alkalmazások telepítése
               href: ../hdinsight-apps-install-custom-applications.md
               maintainContext: true
@@ -203,20 +194,6 @@
         - name: Az operációs rendszer javításai a HDInsight-fürthöz
           href: ../hdinsight-os-patching.md
           maintainContext: true
-    - name: Figyelés
-      items:
-        - name: Az Azure Log Analytics használata
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: Fürtre jellemző irányítópultok
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
-          maintainContext: true
-        - name: Lekérdezések használata a Log Analytics szolgáltatással
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-          maintainContext: true
-        - name: Fürtteljesítmény monitorozása
-          href: ../hdinsight-key-scenarios-to-monitor.md
-          maintainContext: true
     - name: Hibaelhárítás
       href: ../hdinsight-troubleshoot-guide.md
       maintainContext: true
@@ -256,6 +233,33 @@
             - name: Hive-lekérdezések optimalizálása
               href: ../hdinsight-hadoop-optimize-hive-query.md
               maintainContext: true
+- name: Alkalmasság vállalati használatra
+  items:
+    - name: Adatok védelme
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+      maintainContext: true
+    - name: Hálózati hozzáférés
+      items:
+        - name: HDInsight az Azure VNetben
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+          maintainContext: true
+        - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
+          href: ../connect-on-premises-network.md
+          maintainContext: true
+    - name: Monitorozás az OMS-szel
+      items:
+        - name: Az Azure Log Analytics használata
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+          maintainContext: true
+        - name: Fürtre jellemző irányítópultok
+          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
+          maintainContext: true
+        - name: Lekérdezések használata a Log Analytics szolgáltatással
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+          maintainContext: true
+        - name: Fürtteljesítmény monitorozása
+          href: ../hdinsight-key-scenarios-to-monitor.md
+          maintainContext: true
 - name: Referencia
   items:
     - name: Kódminták

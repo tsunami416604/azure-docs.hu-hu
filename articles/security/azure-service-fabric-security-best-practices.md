@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: tomsh
-ms.openlocfilehash: 682ad79cc5fe4f08051477b7b90ae80981e5d595
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
-ms.translationtype: HT
+ms.openlocfilehash: a8b76e2895edcdbbddafbee7116e163d1789c06d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárások
 Gyors, egyszerű és költséghatékony Azure-alkalmazás központi telepítése. Mielőtt éles környezetben a felhő alkalmazást telepít központilag, tekintse át az alapvető és ajánlott gyakorlati tanácsok a biztonságos fürtök megvalósítása az alkalmazásban listáját.
@@ -64,7 +64,7 @@ A fürtök védetté kell tennie, hogy illetéktelen felhasználók nem tudnak c
 Nincsenek három [forgatókönyvek](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) fürt biztonsági megvalósításához a különböző technológiák használatával:
 
 -   Csomópont-csomópont biztonsági: Ebben a forgatókönyvben a virtuális gépek és a fürtben lévő számítógépek közötti kommunikáció biztonságossá tételére. Ezt az űrlapot a biztonsági biztosítja, hogy azokra a számítógépekre, amelyek jogosultak a fürthöz való csatlakoztatáshoz tárolhatja, alkalmazások és szolgáltatások a fürtben.
-Ebben a forgatókönyvben, az Azure rendszeren futó, vagy fájlkiszolgálófürtökkel önálló Windows, rendszeren futó választhat [biztonsági tanúsítvány](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security) vagy [Windows biztonsági](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-windows-cluster-windows-security) a Windows Server-gépek.
+Ebben a forgatókönyvben, az Azure rendszeren futó, vagy fájlkiszolgálófürtökkel önálló Windows, rendszeren futó választhat [biztonsági tanúsítvány](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security) vagy [Windows biztonsági](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-windows-security) a Windows Server-gépek.
 -   Ügyfél-csomópont biztonsági: Ebben a forgatókönyvben a Service Fabric-ügyfél és a fürt egyes csomópontjain közötti kommunikáció biztonságossá tételére.
 -   Szerepköralapú hozzáférés-vezérlés (RBAC): Ez a forgatókönyv használ külön identitások (tanúsítványok, az Azure ad-vel, és így tovább) minden rendszergazdai és felhasználói ügyfél szerepkörhöz, aki hozzáfér a fürthöz. A szerepkör-identitást a fürt létrehozásakor adja meg.
 
@@ -125,7 +125,7 @@ Minden aktor egy szereplő típusú, a .NET-objektum egy .NET-típus egy példá
 Replikációs konfigurációk konfigurálása a replikátor, amely feladata, hogy az Aktor Állapotszolgáltató állapot nagymértékben megbízható.
 
 ## <a name="configure-ssl-for-azure-service-fabric"></a>Az SSL konfigurálása az Azure Service Fabric
-A kiszolgáló hitelesítési folyamat [hitelesíti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) a fürt felügyeleti végpontok felügyeleti ügyfél számára. A felügyeleti ügyfél majd felismeri, ha a valós fürthöz. Ez a tanúsítvány is biztosít egy [SSL](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-creation-via-arm) a HTTPS-szolgáltatásfelügyeleti API és a Service Fabric Explorer HTTPS-KAPCSOLATON keresztül.
+A kiszolgáló hitelesítési folyamat [hitelesíti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) a fürt felügyeleti végpontok felügyeleti ügyfél számára. A felügyeleti ügyfél majd felismeri, ha a valós fürthöz. Ez a tanúsítvány is biztosít egy [SSL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) a HTTPS-szolgáltatásfelügyeleti API és a Service Fabric Explorer HTTPS-KAPCSOLATON keresztül.
 Be kell szereznie egy egyéni tartománynevet a fürt számára. Ha tanúsítványt kérhet egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosának nevét meg kell egyeznie az egyéni tartománynév, amely a fürt használhatja.
 
 SSL konfigurálása az alkalmazáshoz, először a hitelesítésszolgáltató által aláírt SSL-tanúsítvány beszerzése. A hitelesítésszolgáltató által kiállított tanúsítványok SSL biztonsági okokból megbízható harmadik fél. Ha még nem rendelkezik SSL-tanúsítvány, akkor beszerzése utólag egy vállalat, amely SSL-tanúsítványok értékesít.
