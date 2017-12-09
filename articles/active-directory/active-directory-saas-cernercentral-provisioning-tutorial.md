@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: 84613b7f8d7bd031d492a62da0bc53be96ac45a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: f5e8d6f1e6c08d01f91b30ef40be616db2a16fcc
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="tutorial-configuring-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: Cerner központi konfigurálása az automatikus felhasználó létesítése
 
@@ -123,7 +123,7 @@ Ahhoz, hogy a felhasználói fiókok Cerner központi telepítéséhez, szüksé
 
 Ezzel elindítja a kezdeti szinkronizálás bármely felhasználói és/vagy a felhasználók és csoportok szakaszban Cerner központi rendelt csoportok. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, körülbelül 20 percenként történik, amíg fut a szolgáltatás kiépítését az Azure AD-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentéseit, amelyek a létesítési szolgáltatás az Cerner központi alkalmazás által végzett összes műveletet írják le.
 
-Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 ## <a name="additional-resources"></a>További források
 
@@ -133,4 +133,4 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
 ## <a name="next-steps"></a>Következő lépések
-* [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+* [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).

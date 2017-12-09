@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: sumedhb;aglick
-ms.openlocfilehash: 6419d54c54e7d19103419262b79e7a5268b2268c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 1f19c4bba2152eb021831dedda734fd54ee78d75
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Az Azure Key Vault rendelkezésre állás és redundancia
 Az Azure Key Vault a redundancia csökkentése érdekében győződjön meg arról, hogy a kulcsok és titkos használhatóak maradnak arra az alkalmazás akkor is, ha a szolgáltatás egyes összetevők sikertelen rétege funkciókat.
 
-A kulcstartót tartalmát replikálódnak a régión belül, és egy másodlagos régióban legalább 150 miles számítógépnél, de ugyanazon a földrajzi belül. Ezzel a megoldással magas tartósság a kulcsok és titkos kulcsok. Tekintse meg a [Azure párosítva régiók](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions) dokumentumban talál részletes információt adott régióban párokat.
+A kulcstartót tartalmát replikálódnak a régión belül, és egy másodlagos régióban legalább 150 miles számítógépnél, de ugyanazon a földrajzi belül. Ezzel a megoldással magas tartósság a kulcsok és titkos kulcsok. Tekintse meg a [Azure párosítva régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) dokumentumban talál részletes információt adott régióban párokat.
 
 A kulcstároló szolgáltatáson belül az egyes összetevők sikertelen lesz, ha más összetevők abban a régióban lépéseket teljesíteni a kérést, győződjön meg arról, hogy van-e a funkcióinak csökkenése nélkül működhet. Nem kell elindítani a teendője. Ez automatikusan történik, és lesz érzékelhető.
 
@@ -44,7 +44,7 @@ Van néhány figyelmeztetések-érdemes figyelembe:
   * Naplócsonkulási
   * Kicsomagolásához
   * Ellenőrzés
-  * Bejelentkezés
+  * Aláírás
   * Biztonsági mentés
 * Miután a feladatátvétel nem sikerült vissza, az összes kérelemtípusok (beleértve az olvasás *és* írási kérelmeket szolgál) érhetők el.
 

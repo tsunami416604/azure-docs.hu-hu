@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/06/2017
 ms.author: genli
-ms.openlocfilehash: 7690dd6d830b104e6f4c20affbfcc2384abe5eab
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: e23789d966716b9255d0b9ec62ab26d2666f3ec5
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>A távoli asztal szolgáltatás vagy egy Windows virtuális gépre a bejelentkezés jelszó alaphelyzetbe állítása
-Ha nem tud csatlakozni a Windows rendszerű virtuális gép (VM), a helyi rendszergazda jelszavát, vagy állítsa a távoli asztal szolgáltatás konfigurációját. Használhatja az Azure-portálon vagy a virtuális gép hozzáférési bővítményét az Azure PowerShell a jelszó alaphelyzetbe állításához. Ha a PowerShell használata esetén győződjön meg arról, hogy rendelkezik a [legújabb PowerShell-modul telepítve és konfigurálva](/powershell/azure/overview) és az Azure-előfizetéssel jelentkezik be. Emellett [hajtsa végre ezeket a lépéseket a klasszikus telepítési modellel létrehozott virtuális gépek](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/classic/reset-rdp).
+Ha nem tud csatlakozni a Windows rendszerű virtuális gép (VM), a helyi rendszergazda jelszavát, vagy állítsa a távoli asztal szolgáltatás konfigurációját. Használhatja az Azure-portálon vagy a virtuális gép hozzáférési bővítményét az Azure PowerShell a jelszó alaphelyzetbe állításához. Ha a PowerShell használata esetén győződjön meg arról, hogy rendelkezik a [legújabb PowerShell-modul telepítve és konfigurálva](/powershell/azure/overview) és az Azure-előfizetéssel jelentkezik be. Emellett [hajtsa végre ezeket a lépéseket a klasszikus telepítési modellel létrehozott virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
 
 ## <a name="ways-to-reset-configuration-or-credentials"></a>Konfiguráció vagy a hitelesítő adatok alaphelyzetbe módjai
 Alaphelyzetbe állíthatja a távoli asztali szolgáltatások és a hitelesítő adatokat néhány más-más módon igényeitől függően:

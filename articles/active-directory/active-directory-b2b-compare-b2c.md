@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-ms.openlocfilehash: 44cbbc149787a2d6cf2e0e8750b98d33b52f6136
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 33990e58ffed271b4d6e968b92a5ce16e8bbd287
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Hasonlítsa össze a B2B együttműködés és az Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Egyszeri bejelentkezés (SSO) az összes Azure AD-kompatibilis alkalmazások has
 Partner életciklus: az állomás/meghívása által kezelt szervezet.  | Ügyfél életciklus: önkiszolgáló vagy az alkalmazás által felügyelt.
 Biztonsági házirend és megfelelőség: az állomás/meghívása által kezelt szervezet.  | Biztonsági házirend és megfelelőség: az alkalmazás kezeli.
 Márkajelzési: Állomás/meghívása szervezet márka szolgál.  |    Branding: Alkalmazás kezeli. Általában általában vállalati arculattal rendelkező a szervezet Áttűnés a háttérben történő termék.
-További információ: [blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [dokumentáció](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | További információ: [termékoldalára](https://azure.microsoft.com/en-us/services/active-directory-b2c/), [dokumentáció](https://docs.microsoft.com/en-us/azure/active-directory-b2c/)
+További információ: [blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [dokumentáció](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | További információ: [termékoldalára](https://azure.microsoft.com/en-us/services/active-directory-b2c/), [dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/)
 
 
 ### <a name="next-steps"></a>Következő lépések

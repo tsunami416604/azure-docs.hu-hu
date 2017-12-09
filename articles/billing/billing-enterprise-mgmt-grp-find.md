@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: rithorn
-ms.openlocfilehash: df4d85d0556a62311c112f24431b54d042333c7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: f1b9c1ec2af8240ff71f6907516d8894c36ac9c3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="find-an-azure-subscription-or-management-group"></a>Az Azure-előfizetés vagy felügyeleti csoportok keresése
 
-Ha nem találjuk egy előfizetés vagy a felügyeleti csoport az Azure-ban, előfordulhat, hogy keresünk a megfelelő könyvtárban. Ez a helyzet akkor fordulhat elő, ha a fiók létezik-e több aktív Azure-könyvtárak. Minden egyes [nem függ az active directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-directory-independence) és könyvtárak között nem örökli a hozzáférést.      
+Ha nem találjuk egy előfizetés vagy a felügyeleti csoport az Azure-ban, előfordulhat, hogy keresünk a megfelelő könyvtárban. Ez a helyzet akkor fordulhat elő, ha a fiók létezik-e több aktív Azure-könyvtárak. Minden egyes [nem függ az active directory](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-directory-independence) és könyvtárak között nem örökli a hozzáférést.      
 
 ![Kapcsoló Directory menü](media/billing-enterprise-mgmt-groups/mgempty.png)
 
@@ -41,7 +41,7 @@ Ha azért kapta, egy hibaüzenet "Ez az eszköz nem érhető el" Amikor megprób
 ![eszköz nem található](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 Kérje a rendszergazda az előfizetés vagy felügyeleti csoportok hozzáférést.  
-* Előfizetések hivatkozhat [átruházásához hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure) dokumentum segítséget, amelyen a szerepkör szükséges.
+* Előfizetések hivatkozhat [átruházásához hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) dokumentum segítséget, amelyen a szerepkör szükséges.
 * A felügyeleti csoportok a Szerepalapú hozzáférés nem érhető el, és. hamarosan már az. Forduljon a vállalati portál felügyeletéhez hozzárendelt elérhető legyen.   
 
 ## <a name="improve-your-experience-with-management-groups-and-subscriptions-in-the-same-directory"></a>A felhasználói élmény javítása a felügyeleti csoportok és előfizetések ugyanabban a könyvtárban 

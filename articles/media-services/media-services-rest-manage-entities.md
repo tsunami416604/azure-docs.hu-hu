@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: a336907b605da962f835b8057ac6071f480cd85e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: e322e79c0a11278a6a7d186cfab6b6d6c271ce1a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="managing-media-services-entities-with-rest"></a>A Media Services entitások többi kezelése 
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ A következő példa bemutatja, hogyan egy AccessPolicy létrehozásához.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337067658&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=dithjGvlXR9HlyAf5DE99N5OCYkPAxsHIcsTSjm9%2fVE%3d
     Host: media.windows.net
     Content-Length: 74
@@ -72,7 +72,7 @@ Az alábbi példa lekéri az összes MediaProcessor entitások listáját.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
@@ -83,7 +83,7 @@ Egy adott entitás vagy az összes entitáskészletekben társított egy adott e
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1336907474&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=OpuY0CeTylqFFcFaP4pKUVGesT4PGx4CP55zDf2zXnc%3d
     Host: media.windows.net
 
@@ -92,7 +92,7 @@ Egy adott entitás vagy az összes entitáskészletekben társított egy adott e
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1336907474&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=OpuY0CeTylqFFcFaP4pKUVGesT4PGx4CP55zDf2zXnc%3d
     Host: media.windows.net
 
@@ -103,7 +103,7 @@ Az alábbi példában csak az összes feladat állapota tulajdonság adja vissza
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
@@ -114,7 +114,7 @@ Az alábbi példa adja vissza az összes JobTemplates a következő névvel: "Sa
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
@@ -133,7 +133,7 @@ A következő példa bemutatja, hogyan használható **kihagyása** és **felső
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
@@ -147,7 +147,7 @@ Az alábbi példakód bemutatja, hogyan frissíteni a Name tulajdonság eszköz 
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337083279&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=DMLQXWah4jO0icpfwyws5k%2b1aCDfz9KDGIGao20xk6g%3d
     Host: media.windows.net
     Content-Length: 21
@@ -165,7 +165,7 @@ A következő példa bemutatja, hogyan egy kereső használt-fájl feltöltése 
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337067658&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=dithjGvlXR9HlyAf5DE99N5OCYkPAxsHIcsTSjm9%2fVE%3d
     Host: media.windows.net
     Content-Length: 0

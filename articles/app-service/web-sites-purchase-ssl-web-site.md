@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 256cb9a33d49bc3c24b2d94c417632edb0c8df31
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
-ms.translationtype: HT
+ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
-Ez az oktatóanyag bemutatja, hogyan tegye biztonságossá webalkalmazását által az SSL-tanúsítvány beszerzése a  **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**, biztonságos helyen tárolja [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis), és társítás egyéni tartományt.
+Ez az oktatóanyag bemutatja, hogyan tegye biztonságossá webalkalmazását által az SSL-tanúsítvány beszerzése a  **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**, biztonságos helyen tárolja [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis), és társítás egyéni tartományt.
 
 ## <a name="step-1---log-in-to-azure"></a>1. lépés – Azure való bejelentkezéshez
 
@@ -49,7 +49,7 @@ Válassza ki a **előfizetés**, **erőforráscsoport**, és **tanúsítvány-SK
 ## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>3. lépés - a tanúsítványt az Azure Key Vault
 
 > [!NOTE]
-> [Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) Azure szolgáltatás, amely segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos védelme.
+> [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) Azure szolgáltatás, amely segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos védelme.
 >
 
 Az SSL-tanúsítvány a vásárlás befejezése után meg kell nyitnia a [App Service-tanúsítványokkal](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lap.

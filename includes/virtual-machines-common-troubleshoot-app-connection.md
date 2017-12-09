@@ -115,7 +115,7 @@ Ha az alkalmazást érheti el, győződjön meg arról, hogy az Internet peremh�
 
 ## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Lépés 4 Ha nem fér hozzá az alkalmazás segítségével IP ellenőrizze ellenőrizze a beállításokat. 
 
-További információkért lásd: [áttekintése Azure hálózatfigyelési](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview). 
+További információkért lásd: [áttekintése Azure hálózatfigyelési](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
 ## <a name="additional-resources"></a>További források
 [Távoli asztali kapcsolatok számára Windows-alapú Azure virtuális gép hibaelhárítása](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)

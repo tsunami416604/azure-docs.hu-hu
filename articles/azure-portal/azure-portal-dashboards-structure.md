@@ -13,18 +13,18 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 694b5bd1ddfbaa4c973e9f55bce1c94ffd89c3dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: ed43651c51eaba7112308d7550c2073ccfc5c5ee
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure-irányítópultok szerkezete
 Ez a dokumentum végigvezeti egy Azure-irányítópultot, az alábbi példa irányítópulttal szerkezete:
 
 ![a minta-irányítópult](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-Mivel a megosztott [Azure az irányítópultok olyan erőforrások](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview), ez az irányítópult ábrázolhatók JSON-ként.  A következő JSON az irányítópulton fent ábrázolt jelöli.
+Mivel a megosztott [Azure az irányítópultok olyan erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ez az irányítópult ábrázolhatók JSON-ként.  A következő JSON az irányítópulton fent ábrázolt jelöli.
 
 ```json
 
@@ -294,7 +294,7 @@ A JSON vonatkozó szakaszaihoz most lebontva.  A legfelső szintű tulajdonságo
 
 ### <a name="the-id-property"></a>Az id tulajdonság
 
-Az Azure erőforrás-azonosító, hogy a [elnevezési konvenciói az Azure-erőforrások](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions). Amikor a portál létrehoz egy irányítópultot, általában úgy dönt, az azonosító egy guid formájában, de szabadon bármilyen érvényes nevet használja, a létrehozott programozott módon. 
+Az Azure erőforrás-azonosító, hogy a [elnevezési konvenciói az Azure-erőforrások](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Amikor a portál létrehoz egy irányítópultot, általában úgy dönt, az azonosító egy guid formájában, de szabadon bármilyen érvényes nevet használja, a létrehozott programozott módon. 
 
 ### <a name="the-name-property"></a>A name tulajdonság
 A név nem az erőforrás-azonosító, amely nem tartalmazza az előfizetés, a erőforrás típusa vagy a csoport erőforrásadatok szegmense. Alapvetően akkor az erőforrás-azonosító utolsó részének.
@@ -303,7 +303,7 @@ A név nem az erőforrás-azonosító, amely nem tartalmazza az előfizetés, a 
 Minden az irányítópultok olyan típusú __Microsoft.Portal/dashboards__.
 
 ### <a name="the-location-property"></a>A location tulajdonság
-Más erőforrásokat, eltérően irányítópultok egy futásidejű összetevő nem rendelkezik.  Irányítópultok a hely Megadja, hogy az elsődleges földrajzi hely, amely az irányítópult JSON-megjelenítés tárolja. Az érték egyike lehet: a helykódok, amelyek segítségével lehet lekérni a [az előfizetések erőforrás API helyeihez](https://docs.microsoft.com/en-us/rest/api/resources/subscriptions).
+Más erőforrásokat, eltérően irányítópultok egy futásidejű összetevő nem rendelkezik.  Irányítópultok a hely Megadja, hogy az elsődleges földrajzi hely, amely az irányítópult JSON-megjelenítés tárolja. Az érték egyike lehet: a helykódok, amelyek segítségével lehet lekérni a [az előfizetések erőforrás API helyeihez](https://docs.microsoft.com/rest/api/resources/subscriptions).
 
 ### <a name="the-tags-property"></a>A címkék tulajdonság
 Címke az Azure-erőforrások, amelyek lehetővé teszik az erőforrás által tetszőleges név-érték párok rendszerezésére gyakran elérhető szolgáltatás található. Az irányítópultokat, van egy különleges címke nevű __rejtett cím__. Ha az irányítópult fel ezt a tulajdonságot, majd szolgál, a portál az irányítópulton megjelenített neve. Az Azure erőforrás-azonosítók nem nevezhető át, de címkék is. Ezt a címkét akadályozható meg szeretné, hogy az irányítópult renamable megjelenítendő nevét.

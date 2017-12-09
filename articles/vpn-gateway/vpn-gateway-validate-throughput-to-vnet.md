@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2017
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 3a1a6e2acd2ff40c2b35a6099f8a9fc7eb104bbc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: e7e3c641791e7c72f5c2d6f8ecf674d1d7ee7ffa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Hogyan VPN átviteli virtuális hálózat ellenőrzése
 
@@ -53,7 +53,7 @@ Az alábbi ábrán a logikai kapcsolat a helyszíni hálózat az Azure virtuáli
 4.  Határozza meg, hogy az internetszolgáltató (ISP) sávszélességet.
 5.  A várt átviteli - (VM-átjárón internetszolgáltató) minimális sávszélesség kiszámításához * 0,8 értéket.
 
-A számított teljesítményt nem felel meg az alkalmazás eredeti átviteli követelmények, ha a sávszélességet az azonosított a szűk erőforrás növelnie kell. Tekintse meg az Azure VPN Gateway átméretezéséhez [módosítása egy átjáró-Termékváltozat](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). A virtuális gépek átméretezéséhez lásd: [méretezze át a virtuális gépek](../virtual-machines/virtual-machines-windows-resize-vm.md). Ha nem várt internetes sávszélességet, is érdemes lehet lépjen kapcsolatba az Internetszolgáltatóval.
+A számított teljesítményt nem felel meg az alkalmazás eredeti átviteli követelmények, ha a sávszélességet az azonosított a szűk erőforrás növelnie kell. Tekintse meg az Azure VPN Gateway átméretezéséhez [módosítása egy átjáró-Termékváltozat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). A virtuális gépek átméretezéséhez lásd: [méretezze át a virtuális gépek](../virtual-machines/virtual-machines-windows-resize-vm.md). Ha nem várt internetes sávszélességet, is érdemes lehet lépjen kapcsolatba az Internetszolgáltatóval.
 
 ## <a name="validate-network-throughput-by-using-performance-tools"></a>Hálózati átviteli teljesítmény eszközökkel ellenőrzése
 

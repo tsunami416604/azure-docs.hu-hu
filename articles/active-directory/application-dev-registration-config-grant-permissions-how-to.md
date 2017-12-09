@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 336b945929f80e1a566f7cf71b40fd799a98c12d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: c42dc18580359fc82359710258d9b87d1c4524ba
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Hogyan kell megadni az engedélyeket az egyéni által fejlesztett alkalmazás
 
@@ -39,8 +39,8 @@ Alternatív megoldásként, hogyan hozhat létre a kérelmek *login.microsoftonl
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Hozzájárulás és AzureAD alkalmazások integrálása](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+[Hozzájárulás és AzureAD alkalmazások integrálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
-[Hozzájárulás és Permissioning AzureAD v2.0 az összevont alkalmazások](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Hozzájárulás és Permissioning AzureAD v2.0 az összevont alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
 [AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)

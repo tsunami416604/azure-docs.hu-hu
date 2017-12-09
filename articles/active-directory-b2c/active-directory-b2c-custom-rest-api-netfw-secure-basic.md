@@ -14,18 +14,18 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: 641e0cc691eae77ef0480e5743d85e020cd8d354
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
-ms.translationtype: HT
+ms.openlocfilehash: 33fd86ce92043e1de5b3d72c9fe4bb7b428b4b03
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>A RESTful-szolgáltatásokat biztonságos alapvető HTTP-hitelesítés használatával
 Az egy [kapcsolódó az Azure AD B2C-cikk](active-directory-b2c-custom-rest-api-netfw.md), létrehozhat egy RESTful szolgáltatás (webes API-k), amely az Azure Active Directory B2C (az Azure AD B2C) felhasználói utak hitelesítés nélkül. 
 
 Ebben a cikkben hozzáadhat egyszerű HTTP-hitelesítés a RESTful szolgáltatás érdekében, hogy a csak ellenőrzése és a felhasználók B2C, beleértve az API-t. HTTP egyszerű hitelesítéssel a felhasználói hitelesítő adatokat (Alkalmazásazonosító és alkalmazás titkos kulcs) az egyéni házirendek beállítása. 
 
-További információkért lásd: [egyszerű hitelesítés az ASP.NET web API](https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/basic-authentication).
+További információkért lásd: [egyszerű hitelesítés az ASP.NET web API](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Hajtsa végre a a [integrálja a REST API-t jogcímek az az Azure AD B2C felhasználói út cseréjét](active-directory-b2c-custom-rest-api-netfw.md) cikk.

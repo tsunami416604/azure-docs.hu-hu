@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 11/17/2017
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0328bdc40429e1e82a76f290f5bde39089db0a9d
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: HT
+ms.openlocfilehash: ab609fe9e7b01d7087dd00c22c19e69a471f6599
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>Az Azure üzemeltetési útmutatójának SAP HANA
 Ez az útmutató rendszerűeket SAP HANA Azure virtuális gépeken telepített útmutatást. Ez a dokumentum nem célja, hogy cserélje le a szabványos SAP dokumentációk bármelyikét. SAP útmutatók és megjegyzések az alábbi helyeken találhatók:
@@ -93,7 +93,7 @@ Amikor telepíti a HANA kell futtató virtuális gépeken, a virtuális gépek k
 
 IP-cím hozzárendelése különböző lehetőségeinek áttekintését található [Itt](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
 
-A forgalom útválasztásához a közvetlenül az SAP HANA-példány vagy a jumpbox utasítására [Azure hálózati biztonsági csoportok](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg) , amelyek a HANA-alhálózatot és a felügyeleti alhálózatot társítva.
+A forgalom útválasztásához a közvetlenül az SAP HANA-példány vagy a jumpbox utasítására [Azure hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) , amelyek a HANA-alhálózatot és a felügyeleti alhálózatot társítva.
 
 A teljes a nyers telepítési séma alábbihoz hasonlóan fog kinézni:
 
@@ -112,7 +112,7 @@ SAP HANA biztonsági mentési és helyreállítási lehetőségek ismertetett ez
 
 - [SAP HANA biztonsági másolat áttekintése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
 - [SAP HANA fájlszintű biztonsági mentés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
-- [SAP HANA tárolási pillanatkép teljesítményteszt](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
+- [SAP HANA tárolási pillanatkép teljesítményteszt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
 
 
 
@@ -132,7 +132,7 @@ SAPRouter egy külön virtuális gépre, és nem a Jumpbox virtuális Gépre kel
 Beállítása és karbantartása a távoli támogatásának kapcsolatok SAPRouter keresztül módjáról további információkért ellenőrizze a [SAP forrás](https://support.sap.com/en/tools/connectivity-tools/remote-support.html).
 
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Magas rendelkezésre állású az SAP HANA Azure natív virtuális gépeken
-Az SUSE Linux 12 SP1 és újabb létrehozhat egy támasztja fürt STONITH eszközökkel egy SAP HANA-konfiguráció, amely szinkron replikációt használ a HANA replikációs és automatikus feladatátvételt. A telepítő az eljárást a cikkben ismertetett [magas rendelkezésre állás az SAP HANA Azure virtuális gépeken](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability).
+Az SUSE Linux 12 SP1 és újabb létrehozhat egy támasztja fürt STONITH eszközökkel egy SAP HANA-konfiguráció, amely szinkron replikációt használ a HANA replikációs és automatikus feladatátvételt. A telepítő az eljárást a cikkben ismertetett [magas rendelkezésre állás az SAP HANA Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability).
 
  
 

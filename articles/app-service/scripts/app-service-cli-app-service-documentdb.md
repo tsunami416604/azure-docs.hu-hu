@@ -16,11 +16,11 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: b581f8d5a4e924e0aa88bf614839c917345eb570
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: a59e0512308a85248a10a24c5951984040bedbcc
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="connect-a-web-app-to-cosmos-db"></a>Webes alkalmazás csatlakoztatása az Cosmos-Adatbázishoz
 
@@ -49,8 +49,8 @@ A parancsfájl a következő parancsok segítségével hozzon létre egy erőfor
 | [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
 | [az App Service-csomag létrehozása](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service-csomag létrehozása. Ez olyan, mintha egy kiszolgálófarmon, az Azure webalkalmazás számára. |
 | [az alkalmazás-kulcs létrehozása](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
-| [az cosmosdb létrehozása](https://docs.microsoft.com/en-us/cli/azure/cosmosdb#az_cosmosdb_create) | Létrehoz egy Cosmos-DB-fiókot. Ez az adatok tárolásához. |
-| [az cosmosdb lista-kulcsok](https://docs.microsoft.com/en-us/cli/azure/cosmosdb#az_cosmosdb_list_keys) | A megadott Cosmos DB-fiók elérési kulcsainak listázása. |
+| [az cosmosdb létrehozása](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_create) | Létrehoz egy Cosmos-DB-fiókot. Ez az adatok tárolásához. |
+| [az cosmosdb lista-kulcsok](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_list_keys) | A megadott Cosmos DB-fiók elérési kulcsainak listázása. |
 | [az alkalmazás kulcs appsettings konfiguráció](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Létrehozza vagy frissíti az Azure-webalkalmazás Alkalmazásbeállítás. Alkalmazásbeállítások az alkalmazások környezeti változóként érhetők el. |
 
 ## <a name="next-steps"></a>Következő lépések

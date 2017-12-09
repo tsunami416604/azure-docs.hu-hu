@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: nitinme
-ms.openlocfilehash: d8257056fddda408b622d3da11c707ff39e180db
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: fb77ec001f9f52e0a974f8765f458f831fb63908
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks kapcsolatos gyakori kérdések
 
@@ -94,7 +94,7 @@ Ha nem hozott létre a munkaterületen, és hogy hozzá szeretné adni a felhasz
 
 #### <a name="solution"></a>Megoldás
 
-Databricks fürtök csomópontonként egy nyilvános IP-cím használatára. Ha az előfizetés már használatban van minden a nyilvános IP-címeket, akkor [a kvóta növeléséhez kérelem](https://docs.microsoft.com/en-us/azure/azure-supportability/resource-manager-core-quotas-request). Válasszon **kvóta** , a **típusú**, és **hálózati: ARM** , a **Kvótatípus**. A **részletek**, a nyilvános IP-cím kvótájának növelését. Például ha korlát jelenleg 60, és szeretne létrehozni egy 100-csomópontot tartalmazó fürtben, kérése a 160 a korlát növelését.
+Databricks fürtök csomópontonként egy nyilvános IP-cím használatára. Ha az előfizetés már használatban van minden a nyilvános IP-címeket, akkor [a kvóta növeléséhez kérelem](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Válasszon **kvóta** , a **típusú**, és **hálózati: ARM** , a **Kvótatípus**. A **részletek**, a nyilvános IP-cím kvótájának növelését. Például ha korlát jelenleg 60, és szeretne létrehozni egy 100-csomópontot tartalmazó fürtben, kérése a 160 a korlát növelését.
 
 ### <a name="a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster"></a>A második típusú felhő szolgáltató indítási hiba lépett fel a fürt beállítása
 

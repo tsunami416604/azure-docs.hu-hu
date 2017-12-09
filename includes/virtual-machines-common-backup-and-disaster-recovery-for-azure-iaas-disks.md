@@ -19,7 +19,7 @@ Mielőtt úgy tekintünk, biztonsági mentési és vész-Helyreállítási beál
 
 ### <a name="azure-iaas-resiliency"></a>Az Azure infrastruktúra-szolgáltatási rugalmasság
 
-*Rugalmasság* normál hardverösszetevők az előforduló hibák tolerancia hivatkozik. Rugalmasságra helyreállni hibák után, és továbbra is működik. Nincs kapcsolatos hibák elkerülése, de válaszol a hibák úgy, hogy elkerülhető az állásidő és adatvesztés. A rugalmasság célja térjen vissza az alkalmazást a hiba teljes mértékben működő állapotú. Az Azure virtuális gépek és a lemezek úgy tervezték, hogy közös hardver hibákra rugalmasak lehetnek. Nézzük meg, hogy az Azure infrastruktúra-szolgáltatási platform ez rugalmasságot biztosít.
+*Rugalmasság* normál hardverösszetevők az előforduló hibák tolerancia hivatkozik. Rugalmasságra helyreállni hibák után, és továbbra is működik. Nincs kapcsolatos hibák elkerülése, de válaszol a hibák úgy, hogy elkerülhető az állásidő és adatvesztés. A rugalmasság célja, hogy az alkalmazás egy hibát követően teljesen működőképes állapotba térjen vissza. Az Azure virtuális gépek és a lemezek úgy tervezték, hogy közös hardver hibákra rugalmasak lehetnek. Nézzük meg, hogy az Azure infrastruktúra-szolgáltatási platform ez rugalmasságot biztosít.
 
 A virtuális gépek általában két részből áll: egy számítási kiszolgáló és az állandó lemezek. A hibatűrés egy virtuális gép is érinti.
 
@@ -211,7 +211,7 @@ A növekményes pillanatképek hatékony vész-Helyreállítási másolása, tek
 
 ### <a name="recovery-from-snapshots"></a>A pillanatképek helyreállítás
 
-Pillanatkép lekéréséhez másolja azt, hogy egy új blob legyen. A pillanatkép másolása az elsődleges fiókból, másolhatja a pillanatkép keresztül a pillanatkép alap blob. Ez a folyamat visszaállítja a lemez a pillanatkép. Ez a folyamat a pillanatkép előléptetni néven ismert. A pillanatkép biztonsági másolatából egy írásvédett georedundáns tárfiókot, ha egy másodlagos fiókból másolása egy elsődleges fiókhoz kell másolnia. A pillanatkép által másolhatja [PowerShell-lel](../articles/storage/common/storage-powershell-guide-full.md) vagy az AzCopy segédprogram segítségével. További információkért lásd: [adatátvitel az AzCopy parancssori segédprogram](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy).
+Pillanatkép lekéréséhez másolja azt, hogy egy új blob legyen. A pillanatkép másolása az elsődleges fiókból, másolhatja a pillanatkép keresztül a pillanatkép alap blob. Ez a folyamat visszaállítja a lemez a pillanatkép. Ez a folyamat a pillanatkép előléptetni néven ismert. A pillanatkép biztonsági másolatából egy írásvédett georedundáns tárfiókot, ha egy másodlagos fiókból másolása egy elsődleges fiókhoz kell másolnia. A pillanatkép által másolhatja [PowerShell-lel](../articles/storage/common/storage-powershell-guide-full.md) vagy az AzCopy segédprogram segítségével. További információkért lásd: [adatátvitel az AzCopy parancssori segédprogram](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
 
 Több lemezzel rendelkező virtuális gépekhez át kell másolnia a azonos koordinált visszaállítási pont részét képező összes pillanatképet. Miután a pillanatképek írható VHD-blobok másolta, a blobok segítségével hozza létre újra a virtuális Gépet a sablon használatával a virtuális gép.
 

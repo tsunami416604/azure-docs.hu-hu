@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: Jiaj-Li
-ms.openlocfilehash: 303fcfbda1934e3b29cb8ed06087c560275489e0
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: HT
+ms.openlocfilehash: fc7d9494ddce127cb402d756f5fb03f21c5d3e8c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Az Azure Tártallózó (előzetes verzió) Azure Cosmos DB kezelése
 
@@ -70,7 +70,7 @@ Egy Azure Cosmos DB kapcsolódni megadásának alternatív módja, hogy használ
 
     ![Csatlakozás Azure Cosmos DB kapcsolati karakterlánc](./media/tutorial-documentdb-and-mongodb-in-storage-explorer/connect-to-db-by-connection-string.png)
 
-2. Válassza ki a megfelelő **alapértelmezett élmény** vonatkozó a fióktípust vagy **DocumentDB** vagy **MongoDB**, illessze be a **kapcsolati karakterlánc**, és kattintson a **OK** Azure Cosmos DB fiók kapcsolódni. A kapcsolati karakterlánc beolvasása információkért lásd: [a kapcsolati karakterlánc beolvasása](https://docs.microsoft.com/en-us/azure/cosmos-db/manage-account#get-the--connection-string).
+2. Válassza ki a megfelelő **alapértelmezett élmény** vonatkozó a fióktípust vagy **DocumentDB** vagy **MongoDB**, illessze be a **kapcsolati karakterlánc**, és kattintson a **OK** Azure Cosmos DB fiók kapcsolódni. A kapcsolati karakterlánc beolvasása információkért lásd: [a kapcsolati karakterlánc beolvasása](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
 
     ![kapcsolat-karakterlánc](./media/tutorial-documentdb-and-mongodb-in-storage-explorer/connection-string.png)
 
@@ -152,5 +152,5 @@ A dokumentum-szűrő szerkesztése megadásával egy [SQL-lekérdezés](document
 ## <a name="next-steps"></a>Következő lépések
 
 * Az alábbi videóban megtekinthet Azure Cosmos DB használata az Azure Tártallózó: [Azure Cosmos DB használja az Azure Tártallózó](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
-* További információ a Tártallózó, és csatlakozzon a további szolgáltatások [Ismerkedés a Tártallózó (előzetes verzió)](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* További információ a Tártallózó, és csatlakozzon a további szolgáltatások [Ismerkedés a Tártallózó (előzetes verzió)](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/6/2017
 ms.author: damaerte
-ms.openlocfilehash: 6ec1d8dac4e07b28b92c2aee5d1e9d47fa62b7a1
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 31ba4b68850e14fc038df0bbe91146b90f8ca4b3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Szolgáltatások és eszközök PowerShell Azure Cloud rendszerhéj (előzetes verzió)
 
@@ -47,7 +47,7 @@ Mivel minden kérelmet a felhő rendszerhéj lefoglalni egy ideiglenes gép, fá
 
 A felhő rendszerhéj (előzetes verzió) PowerShell elindul Azure meghajtóban (`Azure:`).
 Az Azure meghajtó lehetővé teszi, hogy könnyen felderítés és az Azure-erőforrások, például a számítási, hálózati, tárolási stb filesystem navigációs hasonló navigációs.
-Továbbra is a megszokott [Azure PowerShell-parancsmagok](https://docs.microsoft.com/en-us/powershell/azure) kezelheti ezeket az erőforrásokat.
+Továbbra is a megszokott [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure) kezelheti ezeket az erőforrásokat.
 Az Azure-erőforrások, vagy közvetlenül az Azure portálon vagy az Azure PowerShell-parancsmagokkal végzett módosítások azonnal megjelennek az Azure meghajtó.
 
 ![](media/features-powershell/azure-drive.png)
@@ -91,7 +91,7 @@ Ezek a parancsok PowerShell távoli eljáráshívás épülnek, és az Azure vir
 
 |**Kategória**    |**Name (Név)**                                 |
 |----------------|-----------------------------------------|
-|Azure-eszközök     |[Az Azure PowerShell (5.0.1-es)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)<br> [Az Azure CLI (2.0.22)](https://docs.microsoft.com/en-us/cli/azure/overview)|
+|Azure-eszközök     |[Az Azure PowerShell (5.0.1-es)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)<br> [Az Azure CLI (2.0.22)](https://docs.microsoft.com/cli/azure/overview)|
 |A szerkesztő szövege    |VIM<br> nano                             |
 |A Package Manager |PowerShellGet<br> PackageManagement<br> npm<br> a pip |
 |A verziókövetési rendszerrel  |git                                      |

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: 278ebf464fbe815568fbe332f80d5ea6b29e1811
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 3f3b2b01d909b5c1d9373a33644e661723178dee
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="tutorial-configuring-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: Samanage konfigurálása az automatikus felhasználó létesítése
 
@@ -92,7 +92,7 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódás Samanage a felhasználói fi
 
 Ez a művelet bármilyen felhasználói és/vagy a felhasználók és csoportok szakaszban Samanage rendelt csoportok a kezdeti szinkronizálás elindul. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához Tevékenységjelentések, amelyek a létesítési szolgáltatás által végzett összes műveletet írják le.
 
-Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 
 ## <a name="additional-resources"></a>További források

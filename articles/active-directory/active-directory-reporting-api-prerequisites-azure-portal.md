@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9fbcac4bd6240aed607c3da6c6535d207a782448
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
-ms.translationtype: HT
+ms.openlocfilehash: 5377512732efdb37b5c7a22a395b091fda6e5af7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Az Azure AD reporting API eléréséhez Előfeltételek
 
@@ -37,10 +37,10 @@ A jelentési adatokat juthatnak az API-n keresztül, egy a következő szerepkö
 Készítse elő a reporting API a hozzáférést, a következőket kell tennie:
 
 1. Egy alkalmazás regisztrálása 
-2. Engedélyek megadása 
+2. Engedélyek 
 3. Konfigurációs beállítások összegyűjtése 
 
-Kérdéseit, vagy visszajelzést, kérjük, [fájlt egy támogatási jegy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-troubleshooting-support-howto).
+Kérdéseit, vagy visszajelzést, kérjük, [fájlt egy támogatási jegy](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
 
 ## <a name="register-an-azure-active-directory-application"></a>Egy Azure Active Directory-alkalmazás regisztrálása
 
@@ -80,7 +80,7 @@ A címtár az Azure AD reporting API eléréséhez konfigurálásához be kell j
     d. Kattintson a **Create** (Létrehozás) gombra. 
 
 
-## <a name="grant-permissions"></a>Engedélyek megadása 
+## <a name="grant-permissions"></a>Engedélyek 
 
 E lépés célja, hogy adja meg az alkalmazás **címtáradatok olvasása** engedélyeket a **Windows Azure Active Directory** API.
 
@@ -120,7 +120,7 @@ E lépés célja, hogy adja meg az alkalmazás **címtáradatok olvasása** enge
 Ez a szakasz bemutatja, hogyan az a Directoryból olvassa ki az alábbi beállításokat:
 
 * Tartománynév
-* Ügyfél-azonosító
+* Ügyfélazonosító
 * Titkos ügyfélkulcs
 
 A jelentéskészítési API hívásainak konfigurálásakor kell ezeket az értékeket. 

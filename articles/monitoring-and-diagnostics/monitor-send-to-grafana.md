@@ -8,11 +8,11 @@ ms.author: robb
 ms.date: 11/06/2017
 ms.topic: article
 ms.service: monitoring-and-diagnostics
-ms.openlocfilehash: 709a98f8bcdb75962f8e41de348ca7a41c677610
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
-ms.translationtype: HT
+ms.openlocfilehash: c189e67c481239a8a68f2e2b30d05bb615cfa24e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana az Azure-szolgáltatások figyelése
 Most is figyelheti az Azure-szolgáltatások és alkalmazások [Grafana](https://grafana.com/) használatával a [Azure figyelő az adatforrás-beépülő modul](https://grafana.com/plugins/grafana-azure-monitor-datasource). A beépülő modul az Application Insights SDK által gyűjtött teljesítmény alkalmazásadatok, valamint az Azure-figyelő által szolgáltatott infrastruktúra adatokat gyűjt. Ezután az Grafana irányítópulton jeleníti meg ezeket az adatokat.
@@ -62,7 +62,7 @@ Grafana használja az Azure Active Directory szolgáltatás egyszerű Azure figy
 
 1. Lásd: [ezeket az utasításokat](../azure-resource-manager/resource-group-create-service-principal-portal.md) egy egyszerű szolgáltatásnév létrehozásához. Másolja ki és mentse a bérlő azonosítója, ügyfél-azonosító és a titkos ügyfélkulcsot.
 
-2. Lásd: [szerepkör alkalmazást](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) az olvasó szerepkört rendelni az Azure Active Directory-alkalmazást.   
+2. Lásd: [szerepkör alkalmazást](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) az olvasó szerepkört rendelni az Azure Active Directory-alkalmazást.     
 
 3. Az Application Insights használatakor is használható az Application Insights API és Alkalmazásazonosító Application Insights-alapú gyűjtéséhez. További információkért lásd: [az API-kulcs és az Alkalmazásazonosító](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 

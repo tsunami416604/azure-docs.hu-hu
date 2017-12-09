@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/14/2017
-ms.openlocfilehash: 2efffd14c748a070fff59bcf9dd21c02eb9f6dcd
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
-ms.translationtype: HT
+ms.openlocfilehash: c7f4bf0fed35ffb2c03e8b983260c6093032fe79
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="configure-the-azure-machine-learning-experimentation-service"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurálása
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Machine Learning kísérletezhet szolgáltatásfiók, a munkaterületet, és a projekt az Azure-erőforrások. Így azok is telepíthető erőforrások Manager-sablonok használatával. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview).
+Az Azure Machine Learning kísérletezhet szolgáltatásfiók, a munkaterületet, és a projekt az Azure-erőforrások. Így azok is telepíthető erőforrások Manager-sablonok használatával. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="deploy-a-template"></a>A sablon üzembe helyezése
 A sablonok telepítésével szükséges csak néhány lépést, az Azure parancssori felület vagy az Azure portálon.
@@ -137,7 +137,7 @@ Hozzon létre egy fájlt az alábbi tartalmat, és mentse < parameters.json >.
 Három értékeket módosíthatja. 
 * AccountName: A kísérleti fiók nevét.
 * Hely: Az egyik támogatott Azure-régiókban.
-* Tárfiók Termékváltozat: Az Azure ML szabványos, nem prémium szintű storage csak támogatja. Tárolási kapcsolatos további információkért lásd: [storage bemutatása](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction). 
+* Tárfiók Termékváltozat: Az Azure ML szabványos, nem prémium szintű storage csak támogatja. Tárolási kapcsolatos további információkért lásd: [storage bemutatása](https://docs.microsoft.com/azure/storage/common/storage-introduction). 
 
 ```json
 {

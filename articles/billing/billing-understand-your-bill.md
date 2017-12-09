@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: 668b32e99ba9a3bdf8e8f16ac51c35c609444cd9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: ade40f8937d56cc561741e251095c4f14b4bb304
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>A Microsoft Azure-hoz kapcsolódó számlák magyarázata
 Az Azure számlázásának ismertetése, hasonlítsa össze a számla a részletes napi használati fájl és a költségek jelentések az Azure portálon.
@@ -31,7 +31,7 @@ Lásd: a számla PDF és a részletes napi használati fájl CSV letölthető m�
 
 Részletes feltételeket és a számla és a napi használat fájl részletes leírását lásd: [a Microsoft Azure számlán feltételek megismeréséhez](billing-understand-your-invoice.md) és [megértése feltételeket a Microsoft Azure részletes használati](billing-understand-your-usage.md). 
 
-További részletek a felügyeleti költségek jelentésekre: [Azure-portálon költségkezelésére](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started).
+További részletek a felügyeleti költségek jelentésekre: [Azure-portálon költségkezelésére](https://docs.microsoft.com/azure/billing/billing-getting-started).
 
 ## <a name="charges"></a>Hogyan tehetem meg arról, hogy helyesen-e a költségeket a számla?
 <div style="padding-top: 56.25%; position: relative; width: 100%;">
@@ -42,7 +42,7 @@ Ha a kívánt további részleteket a számlán járnak, többféle beállítás
 
 ### <a name="option-1-review-your-invoice-and-compare-the-usage-and-costs-with-the-detailed-usage-csv-file"></a>1. lehetőség: Tekintse át a számla és a használati és költségek összehasonlításra a részletes használati CSV-fájl
 
-A részletes használati CSV-fájlt a díjak számlázási időszakban és napi használat jeleníti meg. Ahhoz, hogy a részletes használati CSV-fájlban, lásd: [beolvasni a számlázási számla és a napi használati adatok Azure](https://docs.microsoft.com/en-us/azure/billing/billing-download-azure-invoice-daily-usage-date).
+A részletes használati CSV-fájlt a díjak számlázási időszakban és napi használat jeleníti meg. Ahhoz, hogy a részletes használati CSV-fájlban, lásd: [beolvasni a számlázási számla és a napi használati adatok Azure](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date).
 
 A használati díjak jelennek meg a mérési szinten. A következő feltételek ugyanazt a számla és a részletes használati fájl is jelenti. Például a számlázási ciklusban, a számlán értéke megegyezik a részletes használati fájl számlázási időszakban.
 

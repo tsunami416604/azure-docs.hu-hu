@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 8/20/2017
 ms.author: xujing
-ms.openlocfilehash: e3209abd17c7ba3e39a67f834be69f113c27a021
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: e1fd3cf826915b128039e3d9fe20c309f20ad2c6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 Azure több-Bérlős üzemeltető jogosultságokkal a központi telepítése 
 Az ügyfelek a Windows 10 nagyvállalati E3/E5 egyes felhasználókra vagy a Windows virtuális asztal eléréséhez (bővítmény felhasználói előfizetési licencet vagy előfizetési licenceket) felhasználónként több-Bérlős üzemeltető Rights for Windows 10 lehetővé teszi a Windows 10 licencek kerüljön a felhőben és futtassa a Windows 10-alapú virtuális gépek Azure-on fizető egy másik licenc nélkül. További információkért lásd: [több-Bérlős üzemeltető Windows 10 rendszerhez készült](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -108,7 +108,7 @@ LicenseType              :
 >
 
 ## <a name="next-steps"></a>Következő lépések
-- További információ [konfigurálása VDA Windows 10 rendszerhez](https://docs.microsoft.com/en-us/windows/deployment/vda-subscription-activation)
+- További információ [konfigurálása VDA Windows 10 rendszerhez](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
 - További információ [több-Bérlős üzemeltető Windows 10 rendszerhez](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
 
 

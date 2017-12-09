@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: tarcher
-ms.openlocfilehash: cea4531175df2cc39790497dc049d27e23ffa0c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: c9f293c7c96633cd0116dc3c19189085d24048b4
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Létrehozhat vagy módosíthat labs automatikusan az Azure Resource Manager-sablonok és a PowerShell használatával
 
@@ -30,7 +30,7 @@ Ez a cikk segít ismerteti a folyamatot, ezeket a sablonokat és parancsfájlok 
 Előre végrehajtott található [Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) és [PowerShell-parancsfájlok](https://github.com/Azure/azure-devtestlab/tree/master/Scripts) , a nyilvános [Github-tárházban](https://github.com/Azure/azure-devtestlab). Használja őket-van, vagy testre is szabhatja őket az igényeinek, és tárolja őket a saját [privát Git-tárház](devtest-lab-add-artifact-repo.md). 
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>2. lépés: Az Azure Resource Manager-sablon módosítása
-A következő lépések követésével [az első Azure Resource Manager-sablon létrehozása](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template) Ha soha nem hozott létre egy sablont előtt.
+A következő lépések követésével [az első Azure Resource Manager-sablon létrehozása](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template) Ha soha nem hozott létre egy sablont előtt.
 
 Emellett [ajánlott eljárások Azure Resource Manager-sablonok létrehozásához](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) kínál számos irányelvek és hozhat létre Azure Resource Manager-sablonok, amely javaslatokat is megbízható és könnyen használható. Általában fogja használni a megközelítésekre, vagy a megadott példákat egyik változata, a sablon módosításához az igényeinek.
 

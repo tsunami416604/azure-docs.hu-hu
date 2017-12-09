@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 91b632c0c4bab2f0ac71b662cf1b73f5d37881ff
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: HT
+ms.openlocfilehash: 58f23406f20f6b0e75ec65197e4cebb6e4e788ac
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Telepítse a tartós funkciók bővítményt, és minták (az Azure Functions)
 
@@ -62,7 +62,7 @@ A Visual Studio Code vonatkozó összes fő platformok – a Windows, a macOS é
 
 * Telepítse a [Visual Studio Code legújabb verziója](https://code.visualstudio.com/Download) 
 
-* Kövesse a "Az Azure Functions Core eszközeinek telepítése" a [kódot és helyileg Azure Functions tesztelése](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local)
+* Kövesse a "Az Azure Functions Core eszközeinek telepítése" a [kódot és helyileg Azure Functions tesztelése](https://docs.microsoft.com/azure/azure-functions/functions-run-local)
 
     >[!IMPORTANT]
     > Ha már rendelkezik az Azure funkciók Cross Platform eszközök, frissítse azokat az elérhető legújabb verzióra.

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: 1860ede19202566947b68b715e6bd354f64c1085
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
-ms.translationtype: HT
+ms.openlocfilehash: d593b011ce4d0998ef07bc257d3c26f1286e3b0e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-openshift-origin-in-azure"></a>Az Azure-ban OpenShift származási telepítése
 
@@ -98,7 +98,7 @@ Az alábbi példa létrehoz egy, a szükséges bemeneti adatok azuredeploy.param
 
 
 > [!NOTE] 
-> A következő parancshoz szükséges Azure CLI 2.0.8 vagy újabb. A parancssori felület verziójával ellenőrizheti a `az --version` parancsot. Frissítés a parancssori felület, lásd: [Azure CLI 2.0 telepítése](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+> A következő parancshoz szükséges Azure CLI 2.0.8 vagy újabb. A parancssori felület verziójával ellenőrizheti a `az --version` parancsot. Frissítés a parancssori felület, lásd: [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 A következő példa telepíti a OpenShift és minden kapcsolódó erőforrás a contoso.com, nevű myOpenShiftCluster telepítési nevű erőforráscsoport. A sablon a GitHub-tárház közvetlenül a hivatkozott azuredeploy.parameters.json nevű helyi paraméterek fájl használatával.
 

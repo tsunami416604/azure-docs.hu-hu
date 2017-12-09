@@ -1,37 +1,36 @@
 ---
-title: "Az Azure portálon található Tevékenységjelentések |} Microsoft Docs"
-description: "Útmutató: Azure Active Directory Tevékenységjelentések az Azure portálon található."
+title: "Az Azure portálon található Azure Active Directory felhasználói tevékenység jelentések |} Microsoft Docs"
+description: "Ismerje meg, az Azure-portálon belül hol áll az Azure Active Directory felhasználói tevékenység jelentések."
 services: active-directory
 documentationcenter: 
-author: MarkusVi
-manager: femila
+author: curtand
+manager: michael.tillman
 editor: 
 ms.assetid: d93521f8-dc21-4feb-aaff-4bb300f04812
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/21/2017
-ms.author: dhanyahk;markvi
+ms.date: 12/06/2017
+ms.author: curtand
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6f1485ad57eb28841ef5fe585e8cf1b8eb29e4a7
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
-ms.translationtype: HT
+ms.openlocfilehash: 732a3c376f6e99f6a5b5c3043ef8cb4884a4d468
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Az Azure portálon található Tevékenységjelentések
 
-Ha a klasszikus Azure portálon az Azure portálra, kap egy új Azure Active Directory (Azure AD) tevékenységi naplóit pillantást. Az egy nemrég végrehajtott [blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2016/11/08/azuread-weve-just-turned-on-detailed-auditing-and-sign-in-logs-in-the-new-azure-portal/), azt ismertetik, hogyan láthatja, tevékenység naplózza az Azure-portálon dolgoznak erőforrás környezetében. Ez a cikk azt ismerteti, hogyan használt jelentéseket a klasszikus Azure-portálon az Azure portálon található.
+Ez a cikk azt ismerteti, hogyan Azure Active Directory felhasználói tevékenység jelentések az Azure portálon található.
 
 ## <a name="whats-new"></a>Újdonságok
 
-A klasszikus Azure portálon jelentések kategóriába oszthatók:
-
-1.  Biztonsági jelentések
-2.  Tevékenységjelentések
-3.  Integrált alkalmazás jelentések
+A klasszikus Azure portálon jelentések volt osztva kategóriák:
+* Biztonsági jelentések
+* Tevékenységjelentések
+* Integrált alkalmazás jelentések
 
 ### <a name="activity-and-integrated-app-reports"></a>Tevékenység és integrált alkalmazás jelentések
 
@@ -43,14 +42,14 @@ Ebben a nézetben tekintheti meg a **Azure Active Directory** panel alatt **tev�
 
 Az alábbi jelentések az ebben a nézetben van összevonva:
 
--   Ellenőrzési jelentés
--   Jelszó-visszaállítási tevékenység
--   Jelszó-visszaállítási regisztrációs tevékenység
--   Önkiszolgáló csoportok tevékenységéről
--   Office365 csoport nevének módosítása
--   Tevékenység-kiépítési
--   Jelszó-helyettesítő állapota
--   Alkalmazás-kiépítési hibák
+* Ellenőrzési jelentés
+* Jelszó-visszaállítási tevékenység
+* Jelszó-visszaállítási regisztrációs tevékenység
+* Önkiszolgáló csoportok tevékenységéről
+* Office365 csoport nevének módosítása
+* Tevékenység-kiépítési
+* Jelszó-helyettesítő állapota
+* Alkalmazás-kiépítési hibák
 
 
 Az alkalmazás használati jelentés bővült, és szerepel a **bejelentkezések** nézet. Ebben a nézetben tekintheti meg a **Azure Active Directory** panel alatt **tevékenység**, jelölje be **bejelentkezések**.

@@ -9,11 +9,11 @@ ms.date: 11/13/2017
 ms.service: application-insights
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6ced5941d06c02a2576bf7f561bd535810e7ffd9
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
-ms.translationtype: HT
+ms.openlocfilehash: 5bfbdd0033f966422a84071a694845627827f016
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Folyamatos figyelés felvétele a kiadási folyamat
 
@@ -89,4 +89,4 @@ Válassza ezt a viselkedést betartásának, **kiadásokban** > kattintson a job
 
 ## <a name="next-steps"></a>Következő lépések
 
-További VSTS-Build és tájékozódhat kiadás próbálja ki az alábbiakat [quickstarts.](https://docs.microsoft.com/en-us/vsts/build-release/)
+További VSTS-Build és tájékozódhat kiadás próbálja ki az alábbiakat [quickstarts.](https://docs.microsoft.com/vsts/build-release/)
