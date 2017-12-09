@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: vikdesai
-ms.openlocfilehash: 3fd12bd3c51eeef57c896da030a83e447dc3e8ff
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
-ms.translationtype: HT
+ms.openlocfilehash: d476380fa841617f7eb914167ebd7d5b8aa611c2
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="understand-how-the-reserved-virtual-machine-instance-discount-is-applied"></a>A fenntartott virtuális gép példány kedvezményeket alkalmazásának a módját ismertetése
 Után vásárol egy fenntartott Virtuálisgép-példány, a rendszer automatikusan alkalmaz a Foglalás kedvezményeket az attribútumokat és a foglalási mennyiség virtuális gépek. A foglalási hozzá van rendelve az infrastrukturális költségek a virtuális gépek. A következő táblázat bemutatja a virtuális gép költségek foglalás megvásárlása után. Minden esetben van szó, a tárolás és a hálózatkezelés, a szokásosnál.
@@ -28,7 +28,7 @@ Után vásárol egy fenntartott Virtuálisgép-példány, a rendszer automatikus
 |Linux virtuális gépek szoftver költségek (például a Red Hat) | Foglalási hozzá van rendelve az infrastruktúra fenntartási költségeit. Ha további szoftvereket van szó.|
 |Windows-alapú virtuális gépek nélkül további szoftverek |Foglalási hozzá van rendelve az infrastruktúra fenntartási költségeit. A Windows szoftverfrissítési van szó.|
 |Windows-alapú virtuális gépek további szoftverek (például SQL server) | Foglalási hozzá van rendelve az infrastruktúra fenntartási költségeit. Van szó, vagy további szoftvereket a Windows szoftverek.|
-|Windows virtuális gépek [Azure hibrid juttatás](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Foglalási hozzá van rendelve az infrastruktúra fenntartási költségeit. A Windows szoftverek költségeit az Azure hibrid juttatás tartoznak. További szoftvereket felszámítása külön történik.| 
+|Windows virtuális gépek [Azure hibrid juttatás](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Foglalási hozzá van rendelve az infrastruktúra fenntartási költségeit. A Windows szoftverek költségeit az Azure hibrid juttatás tartoznak. További szoftvereket felszámítása külön történik.| 
 
 ## <a name="application-of-reservation-discount-to-non-windows-vms"></a>A nem - Windows virtuális gépek foglalás kedvezményes alkalmazása
  A foglalási kedvezményeket futó virtuális gép példányait óránként alkalmazzák. A foglalások, amelytől vásárolta a futó virtuális gépeinek alkalmazandó a Foglalás kedvezményeket által kibocsátott kihasználtsága teljesül. A következő ábra szemlélteti számlázható virtuális gépek használata egy foglalási kérelem. Az ábrán két egyező Virtuálisgép-példányok és egy foglalás beszerzési alapul.
@@ -43,7 +43,7 @@ Után vásárol egy fenntartott Virtuálisgép-példány, a rendszer automatikus
 Megértéséhez, valamint az alkalmazás a foglalások a számlázási használati jelentések megtekintése, lásd: [fenntartott Virtuálisgép-példány megértéséhez használati](https://go.microsoft.com/fwlink/?linkid=862757).
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>A Windows virtuális gépek foglalás kedvezményes alkalmazása
-Ha Windows Virtuálisgép-példány futtatja, a Foglalás alkalmazva az infrastrukturális költségek. Az alkalmazás a Windows virtuális gépek esetén a virtuális gép infrastruktúra használati díjait foglalási megegyezik esetében nem - Windows virtuális gépek. Van szó, külön-külön a Windows software / vCPU alapon. Lásd: [Windows szoftverek költségeit rendelkező](https://go.microsoft.com/fwlink/?linkid=862756). A Windows-licencelési költségeit [Azure hibrid előnye a Windows Server] (https://docs.microsoft.com/en-us/azure/virtual-machines/windows/hybrid-use-benefit-licensing) is foglalkozik.
+Ha Windows Virtuálisgép-példány futtatja, a Foglalás alkalmazva az infrastrukturális költségek. Az alkalmazás a Windows virtuális gépek esetén a virtuális gép infrastruktúra használati díjait foglalási megegyezik esetében nem - Windows virtuális gépek. Van szó, külön-külön a Windows software / vCPU alapon. Lásd: [Windows szoftverek költségeit rendelkező](https://go.microsoft.com/fwlink/?linkid=862756). A Windows licencelési költségek rendelkező [Azure hibrid juttatás for Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) is foglalkozik.
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/31/2017
 ms.author: yanacai
-ms.openlocfilehash: 8b16fda041663160c62710cabbe0cd2bd4a83d1e
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
-ms.translationtype: HT
+ms.openlocfilehash: 739d46753729b70a24dbd3d6e2d78f8513e143e6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C# programkódja sikertelen U-SQL feladatok hibakeresése
 
-U-SQL egy C# használatával bővíthetőségi modell biztosít. A U-SQL-parancsfájlok könnyen C#-függvényeket, és hajtsa végre az analitikai függvények nem támogatja az SQL-szerű deklaratív nyelv esetében. A U-SQL bővítést további tudnivalókért lásd: [U-SQL programozástámogatási útmutató](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
+U-SQL egy C# használatával bővíthetőségi modell biztosít. A U-SQL-parancsfájlok könnyen C#-függvényeket, és hajtsa végre az analitikai függvények nem támogatja az SQL-szerű deklaratív nyelv esetében. A U-SQL bővítést további tudnivalókért lásd: [U-SQL programozástámogatási útmutató](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
 
 A gyakorlatban kódok a hibakeresés esetleg, de erősen korlátozott naplófájlokat egy elosztott feladat a felhő egyéni kód a hibakereséshez. [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) nevű funkcióval rendelkezik **csúcspont Debug sikertelen**, mert így könnyebben hibakeresése előforduló hibákat a saját kódjára. U-SQL-feladat sikertelen lesz, ha a szolgáltatás a hibaállapota tartja, és az eszköz segítségével töltse le a felhőkörnyezet hiba a helyi gép a hibakereséshez. A helyi letöltése a teljes felhőkörnyezetben, beleértve a bemeneti adatok és a felhasználói kód rögzíti.
 

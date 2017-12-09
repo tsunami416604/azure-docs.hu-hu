@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: apimpm
-ms.openlocfilehash: 0e8089cbcc5e38504d6b4c7ced372781f9a5e6d8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: HT
+ms.openlocfilehash: ae62638fd1d325822b15b7de998861d4df67bd8e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="api-management-policy-samples"></a>API-felügyeleti házirend minták
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/04/2017
 |[-Képességeket adhat a háttérszolgáltatáshoz és gyorsítótárazza a választ](./policies/cache-response.md?toc=api-management/toc.json) |Bemutatja, hogyan-képességeket adhat a háttérszolgáltatáshoz. Például fogadja el a szélességi és hosszúsági a időjárási előrejelzés API helyett a hely nevét.|
 |[Engedélyezi a hozzáférést a JWT jogcím alapján](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json) |Bemutatja, hogyan engedélyezze az API-k JWT jogcímei alapján meghatározott HTTP-metódus elérésére.|
 |[Engedélyezi a hozzáférést a Google OAuth jogkivonat használatával](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json) |Bemutatja, hogyan a végpontokat, Google OAuth jogkivonat-szolgáltató használatával való hozzáférés engedélyezésére.|
-|[Közös hozzáférésű Jogosultságkód és a kérés továbbítása az Azure storage létrehozása](./policies/generate-shared-access-signature.md?toc=api-management/toc.json) |Bemutatja, hogyan létrehozásához [közös hozzáférésű Jogosultságkód](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1) kifejezésekkel, és továbbítja a kérelmet az Azure storage az átírást-uri-házirendet. |
+|[Közös hozzáférésű Jogosultságkód és a kérés továbbítása az Azure storage létrehozása](./policies/generate-shared-access-signature.md?toc=api-management/toc.json) |Bemutatja, hogyan létrehozásához [közös hozzáférésű Jogosultságkód](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) kifejezésekkel, és továbbítja a kérelmet az Azure storage az átírást-uri-házirendet. |
 |[Szerezze be az OAuth2-hozzáférési tokent az aad-ben, és továbbítja a háttér](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json) |Itt és az átjáró és a háttérkiszolgáló közötti hitelesítéshez OAuth2 használatának példája. Bemutatja, hogy az beszerzése olyan hozzáférési jogkivonatot az aad-ben, és továbbítja azt a háttérkiszolgálóra.|
 |[A küldési kérelem házirenddel SAP-átjáróhoz beolvasása X-CSRF jogkivonat](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json) |Bemutatja, hogyan sok API-k által használt X-CSRF mintát végrehajtásához. Ebben a példában csak az SAP-átjáróhoz elő. |
 |[A kérelem a törzs mérete alapján útvonal](./policies/route-requests-based-on-size.md?toc=api-management/toc.json) |Bemutatja, hogyan kell továbbítani a kérelmet a szervezetek mérete alapján.|

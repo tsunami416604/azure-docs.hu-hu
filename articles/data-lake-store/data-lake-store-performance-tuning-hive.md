@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: e10bf8f7cbae2b81d22823ff74fe652c6bcb2da3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 57bd8758c2ae24922a959c9ce3893aad90dfe7e1
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Útmutatás a Hive HDInsight és az Azure Data Lake Store teljesítményhangolása
 
@@ -29,8 +29,8 @@ Az alapértelmezett beállításokat állították be, hogy a megfelelő teljes�
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Store-fiók**. Hogyan hozhat létre ilyet, lásd: [Ismerkedés az Azure Data Lake Store](data-lake-store-get-started-portal.md)
 * **Az Azure HDInsight-fürt** a Data Lake Store-fiók eléréséhez. Lásd: [HDInsight-fürtök létrehozása a Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy a fürt számára engedélyezi a távoli asztal.
-* **HDInsight Hive futó**.  A HDInsight Hive-feladatok futtatásával kapcsolatos további tudnivalókért lásd: a [használata a HDInsight Hive] (https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-use-hive)
-* **Teljesítményhangolás ADLS iránymutatást**.  Általános teljesítmény fogalmakat, lásd: [Data Lake Store teljesítmény hangolása útmutató](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **HDInsight Hive futó**.  A HDInsight Hive-feladatok futtatásával kapcsolatos további tudnivalókért lásd: a [használata a HDInsight Hive] (https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
+* **Teljesítményhangolás ADLS iránymutatást**.  Általános teljesítmény fogalmakat, lásd: [Data Lake Store teljesítmény hangolása útmutató](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>Paraméterek
 
@@ -56,7 +56,7 @@ Az alábbiakban a továbbfejlesztett ADLS-teljesítmény hangolására legfontos
 
 **Állítsa be a hive.exec.reducer.bytes.per.reducer** – az alapértelmezett érték az adatok tömörítetlen esetén is működik.  A tömörített adatok csökkentse a nyomáscsökkentő méretét.  
 
-**Állítsa be a hive.tez.container.size** – minden csomóponton, a memória yarn.nodemanager.resource.memory MB-os által megadott és kell megfelelően beállítani a HDI-fürtnek alapértelmezés szerint.  A YARN a megfelelő memória beállításával kapcsolatos további információkért tekintse meg a [utáni](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
+**Állítsa be a hive.tez.container.size** – minden csomóponton, a memória yarn.nodemanager.resource.memory MB-os által megadott és kell megfelelően beállítani a HDI-fürtnek alapértelmezés szerint.  A YARN a megfelelő memória beállításával kapcsolatos további információkért tekintse meg a [utáni](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
 
 I/o-igényes munkaterhelések is kihasználhatja a további párhuzamossági Tez tároló méretének csökkentésével. Így a felhasználó további tárolókat, növelve a feldolgozási.  Bizonyos Hive-lekérdezések azonban jelentős mennyiségű memória (pl. MapJoin) szükséges.  Ha a feladat nem rendelkezik elég memóriával, memória kivétel futásidőben kívüli fog kapni.  Ha memória kivételek kívül, majd növelje a memória.   
 

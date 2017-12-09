@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/22/2017
 ms.author: kmouss
-ms.openlocfilehash: c2b406530aec60299ea2db38ad9e34895fe36dcd
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
-ms.translationtype: HT
+ms.openlocfilehash: 245bffbc208ce67d990a63e744c42dc671686b4b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
 Software Assurance rendelkező ügyfelek Azure hibrid juttatás for Windows Server lehetővé teszi a helyszíni Windows Server licencek használja, és futtassa a Windows virtuális gépek Azure költséghatékony. Azure hibrid juttatás for Windows Server bármelyik új virtuális gépek telepítéséhez használható Azure platform Windows Server-lemezképet Windows egyéni támogatott. Ez a cikk halad keresztül lépéseket, a új virtuális gépek Azure hibrid juttatás for Windows Server telepítése, és hogyan frissíthet meglévő futtató virtuális gépek. További információ az Azure hibrid juttatás for Windows Server licencelési és pluszköltséggel kevésbé kell kihasználni, tekintse meg a [Azure hibrid juttatás for Windows Server licencelési oldal](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -58,10 +58,10 @@ Telepítheti ezeket a lemezképeket, közvetlenül az Azure portálról. A Resou
 ```powershell
 Get-AzureRmVMImagesku -Location westus -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
-A lépések segítségével [Windows virtuális gép létrehozása a PowerShell-lel](#https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) , és adja át a LicenseType = "Windows_Server". Ez a beállítás lehetővé teszi a meglévő Windows Server-licenc használatát az Azure-on.
+A lépések segítségével [Windows virtuális gép létrehozása a PowerShell-lel](#https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) , és adja át a LicenseType = "Windows_Server". Ez a beállítás lehetővé teszi a meglévő Windows Server-licenc használatát az Azure-on.
 
 ### <a name="portal"></a>Portál
-A lépések segítségével [Windows virtuális gép létrehozása az Azure portálon](#https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal) és a beállítással használhatja a meglévő Windows Server-licencét.
+A lépések segítségével [Windows virtuális gép létrehozása az Azure portálon](#https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) és a beállítással használhatja a meglévő Windows Server-licencét.
 
 ## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Azure hibrid juttatás for Windows Server egy meglévő virtuális gép átalakítása
 Ha egy meglévő virtuális Gépet, amely szeretné átalakítása Azure hibrid juttatás for Windows Server előnyeit, frissítheti a virtuális gép licenc típusa az alábbiak szerint:
@@ -181,17 +181,17 @@ A virtuális gépen belüli virtuális gépek méretezési csoportjának Resourc
             "adminPassword": "[parameters('adminPassword')]"
     }
 ```
-Emellett [létrehozása és központi telepítése egy virtuálisgép-méretezési csoport](#https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create) és a LicenseType tulajdonság
+Emellett [létrehozása és központi telepítése egy virtuálisgép-méretezési csoport](#https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create) és a LicenseType tulajdonság
 
 ## <a name="next-steps"></a>Következő lépések
 Tudjon meg többet az [Azure hibrid előnyökkel pénz mentése](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
-További információ [Azure hibrid juttatás a Windows Server licencelési részletes útmutatást](https://docs.microsoft.com/en-us/windows-server/get-started/azure-hybrid-benefit)
+További információ [Azure hibrid juttatás a Windows Server licencelési részletes útmutatást](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
 
 További információ [használatával Resource Manager-sablonok](../../azure-resource-manager/resource-group-overview.md)
 
 További információ [Azure hibrid juttatás for Windows Server és az Azure Site Recovery ellenőrizze áttelepítése alkalmazások az Azure-bA még több költséghatékony](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
 
-További információ [Azure több-Bérlős üzemeltető jogosultsággal rendelkező Windows 10-re](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
+További információ [Azure több-Bérlős üzemeltető jogosultsággal rendelkező Windows 10-re](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
 
 Tudjon meg többet az [gyakran ismételt kérdések](#https://azure.microsoft.com/en-us/pricing/hybrid-use-benefit/faq/)

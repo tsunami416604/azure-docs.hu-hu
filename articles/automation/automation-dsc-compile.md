@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
-ms.openlocfilehash: 7b126072424bfc6ad54fd2497ffcdb410b9dc5fe
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 94f4dc2afb04d50d3db699eaebd69662c006d8ca
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Azure Automation DSC-konfigurációja fordítása
 
@@ -131,7 +131,7 @@ PSCredentials átadása paraméterként kapcsolatos információkért lásd: <a 
 
 ## <a name="composite-resources"></a>Összetett erőforrások
 
-**Összetett erőforrások** teszik lehetővé a DSC-konfigurációk használata a konfigurációs belül a beágyazott erőforrások.  Ez lehetővé teszi, hogy több konfiguráció alkalmazása egy erőforrást.  Lásd: [összetett erőforrások: a DSC-konfiguráció használata erőforrásként](https://docs.microsoft.com/en-us/powershell/dsc/authoringresourcecomposite) kapcsolatos további **összetett erőforrások**
+**Összetett erőforrások** teszik lehetővé a DSC-konfigurációk használata a konfigurációs belül a beágyazott erőforrások.  Ez lehetővé teszi, hogy több konfiguráció alkalmazása egy erőforrást.  Lásd: [összetett erőforrások: a DSC-konfiguráció használata erőforrásként](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite) kapcsolatos további **összetett erőforrások**
 
 > [!NOTE]
 > Ahhoz, hogy **összetett erőforrások** megfelelően fordítása, akkor előbb ellenőrizze, hogy az összetett támaszkodik DSC erőforrásokat telepítve legyenek az Azure Automation-fiók modulok tárházban, vagy nem megfelelően fogja importálni.

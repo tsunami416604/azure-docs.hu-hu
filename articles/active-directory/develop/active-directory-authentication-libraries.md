@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 08/25/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 1b79fb5b280b0cb4e087c2acde07796fd51e81fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 603efa917e1b74eca4742795b3f72cb426fcbb2a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Az Azure Active Directory hitelesítési Kódtárai
 Az Azure Active Directory Authentication Library (ADAL) lehetővé teszi az alkalmazásfejlesztők számára hitelesíti a felhasználókat a felhőben, vagy a helyszíni Active Directory (AD), és szerezze be jogkivonatok védelmét biztosító API-hívások. ADAL hitelesítési egyszerűbbé teszi a fejlesztők funkciók révén, mint:
@@ -29,13 +29,13 @@ Az Azure Active Directory Authentication Library (ADAL) lehetővé teszi az alka
  - és további
 
 > [!NOTE]
-> Az Azure AD v2.0 függvénytárak (MSAL) keres? Kivételt a [MSAL könyvtár útmutató](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-libraries). 
+> Az Azure AD v2.0 függvénytárak (MSAL) keres? Kivételt a [MSAL könyvtár útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries). 
 > 
 > 
 
 ### <a name="client-libraries"></a>Ügyfélkönyvtárak
 
-| Platform | Részletes ismertetés | Letöltés | Forráskód | Minta | Referencia
+| Platform | Részletes ismertetés | Letöltés | Forráskód | Sample | Referencia
 | --- | --- | --- | --- | --- | --- |
 | .NET ügyfél, a Windows Store UWP, Xamarin iOS és Android rendszerhez |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Egy asztali alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[Referencia](https://docs.microsoft.com/dotnet/api/?view=identitymodelclientsad-3.13.9) | 
 | .NET ügyfél, a Windows áruház, Windows Phone 8.1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [Egy asztali alkalmazás](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | | 
@@ -48,7 +48,7 @@ Az Azure Active Directory Authentication Library (ADAL) lehetővé teszi az alka
 
 ### <a name="server-libraries"></a>Server könyvtárak 
 
-| Platform | Részletes ismertetés | Letöltés | Forráskód | Minta | Referencia
+| Platform | Részletes ismertetés | Letöltés | Forráskód | Sample | Referencia
 | --- | --- | --- | --- | --- | --- |
 | .NET |OWIN az AzureAD|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[Codeplex webhelyen](http://katanaproject.codeplex.com) |[MVC-alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
 | .NET |A OpenIDConnect OWIN |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[Codeplex webhelyen](http://katanaproject.codeplex.com) |[Webalkalmazás](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |
@@ -59,9 +59,9 @@ Az Azure Active Directory Authentication Library (ADAL) lehetővé teszi az alka
 
 ### <a name="v20-client-libraries-msal"></a>v2.0 Klienskódtárak (MSAL)
 
-A [az Azure AD v2.0-végponttól](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-compare) kombinálja az Azure AD és a Microsoft Accounts mögött egy végpontot. Hozzáférni ehhez a végponthoz, a fejlesztők használhatják a [éles által támogatott előzetes MSAL szalagtárak](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-libraries) helyett az adal-t.
+A [az Azure AD v2.0-végponttól](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) kombinálja az Azure AD és a Microsoft Accounts mögött egy végpontot. Hozzáférni ehhez a végponthoz, a fejlesztők használhatják a [éles által támogatott előzetes MSAL szalagtárak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) helyett az adal-t.
 
-| Platform | Részletes ismertetés | Letöltés | Forráskód | Minta | Referencia
+| Platform | Részletes ismertetés | Letöltés | Forráskód | Sample | Referencia
 | --- | --- | --- | --- | --- | --- |
 | .NET ügyfél, a Windows Store UWP, Xamarin iOS és Android rendszerhez |A .NET-hez (előzetes verzió) MSAL |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client/1.1.0-preview) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Egy asztali alkalmazás](~/articles/active-directory/develop/guidedsetups/active-directory-windesktop.md) |[Referencia](https://docs.microsoft.com/dotnet/api/?view=identityclient-1.1.0-preview) | 
 | JavaScript |MSAL a JavaScript (előzetes verzió) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [Egyetlen alkalmazás](~/articles/active-directory/develop/GuidedSetups/active-directory-javascriptspa.md) | [Referencia](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/docs/classes/_useragentapplication_.msal.useragentapplication.html) | 

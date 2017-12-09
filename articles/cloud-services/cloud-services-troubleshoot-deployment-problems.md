@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: 3adf4dd824b31d5e3d368a0199bc2e981cafe176
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 3c56a5750c9f8a6c59ea07c01c101f358331174b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Felhőalapú szolgáltatás telepítésével kapcsolatos problémák elhárítása
 Amikor telepít egy felhőalapú szolgáltatás alkalmazáscsomagot az Azure-ba, ezt úgy szerezheti be a telepítéssel kapcsolatos információk a **tulajdonságok** ablaktáblán az Azure portálon. Használhatja a részletek panelen segítséget nyújtanak a felhőalapú szolgáltatással kapcsolatos hibák elhárítása, és megadhatja ezt az információt Azure támogatásához új támogatási kérelem megnyitásakor.
@@ -82,6 +82,6 @@ További információ a probléma elhárításáról lásd a következő blogbej
 >
 
 ## <a name="next-steps"></a>Következő lépések
-További [cikkek hibaelhárítási](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-allocation-failures) felhőszolgáltatásai számára.
+További [cikkek hibaelhárítási](https://docs.microsoft.com/azure/cloud-services/cloud-services-allocation-failures) felhőszolgáltatásai számára.
 
 Felhőalapú szolgáltatás szerepkör kapcsolatos problémák elhárítása az Azure PaaS diagnosztikai adatainak használatával kapcsolatban lásd: [Kevin Williamson blog adatsorozat](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

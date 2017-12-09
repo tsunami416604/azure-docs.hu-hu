@@ -9,11 +9,11 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: d29889a4c972638f5d127e9c518aa85fbc19d861
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Az Azure Media Webmontázskészítő Kivágás feladatok elküldéséhez
 Az Azure Media Webmontázskészítő szükséges egy **submitSubclipCallback** Kivágás feladat elküldése kezelése végrehajtandó metódus. Ez a függvény megkülönbözteti a Webmontázskészítő kimeneti webszolgáltatásnak HTTP POST megvalósításához. Ez a webszolgáltatás, ahol is elküldhetik a kódolási feladat. A Webmontázskészítő eredménye vagy a Media Encoder Standard megjelenített feladatok készletet, vagy a REST API forgalma dinamikus jegyzék szűrő hívások kódolást. A csatlakoztatott modell szükség, mert a media services-fiók hitelesítő adatait az ügyfél böngészője nem biztonságosak.
@@ -151,7 +151,7 @@ A feladat kimenete szerződés megjelenített levágás egy JSON-objektum a köv
 }
 ```
 
-A Media Encoder Standard végezhető el a kódolási feladat elküldeni a társított a kódolási feladat az adott néven beállítás. Lásd a jelen cikkben alább kódolás elküldése a feladatok használata a [.NET SDK](https://docs.microsoft.com/en-us/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) vagy [REST API](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-encode-asset).
+A Media Encoder Standard végezhető el a kódolási feladat elküldeni a társított a kódolási feladat az adott néven beállítás. Lásd a jelen cikkben alább kódolás elküldése a feladatok használata a [.NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) vagy [REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-encode-asset).
 
 ## <a name="quickly-creating-video-clips-without-encoding"></a>Gyors létrehozása kódolás nélkül videó videóklipeket
 Ahelyett, hogy egy kódolási feladat, Azure Media Webmontázskészítő használhatja dinamikus manifest-szűrők létrehozásához. Szűrők kódolás nem igényelnek, és nem létrehoz egy új eszközt, gyorsan hozható létre. A szűrő Kivágás kimeneti szerződés egy JSON-objektum a következő tulajdonságokkal:
@@ -227,4 +227,4 @@ Ahelyett, hogy egy kódolási feladat, Azure Media Webmontázskészítő haszná
 }
 ```
 
-Küldje el a REST-hívást dinamikus manifest-szűrő létrehozásához, a Küldés a kapcsolódó szűrő hasznos használatával a [REST API](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-dynamic-manifest).
+Küldje el a REST-hívást dinamikus manifest-szűrő létrehozásához, a Küldés a kapcsolódó szűrő hasznos használatával a [REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest).

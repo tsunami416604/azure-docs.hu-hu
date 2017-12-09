@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: b8d6a998bc86337b286a3434f44f762cca9b7e68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 508b3755556bcae6aa2c7d17a2d86a1430a8109a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Windows hálózati figyelő ügynök virtuálisgép-bővítmény
 
 ## <a name="overview"></a>Áttekintés
 
-[Az Azure hálózati figyelőt](https://review.docs.microsoft.com/en-us/azure/network-watcher/) hálózati teljesítmény figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi az Azure-hálózatok figyelését. A hálózati figyelő ügynök virtuálisgép-bővítményt az egyes hálózati figyelőt szolgáltatásokat az Azure virtuális gépeken működik. Ez magában foglalja, igény szerint és egyéb speciális funkciók a hálózati forgalom rögzítése.
+[Az Azure hálózati figyelőt](https://review.docs.microsoft.com/azure/network-watcher/) hálózati teljesítmény figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi az Azure-hálózatok figyelését. A hálózati figyelő ügynök virtuálisgép-bővítményt az egyes hálózati figyelőt szolgáltatásokat az Azure virtuális gépeken működik. Ez magában foglalja, igény szerint és egyéb speciális funkciók a hálózati forgalom rögzítése.
 
 Ez a dokumentum részletesen a támogatott platformokról és a Windows hálózati figyelő ügynök virtuálisgép-bővítmény vonatkozó telepítési lehetőségeket.
 

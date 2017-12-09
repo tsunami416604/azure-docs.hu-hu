@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/01/2017
 ms.author: bwren
-ms.openlocfilehash: 508f4bb0fc8a443dd7b95cbf19861ab1a1abeb6e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: HT
+ms.openlocfilehash: 7bb90a51ffaca1a67933bc59f42ed08684fca5de
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-runbook típusok
 Azure Automation szolgáltatásbeli számos különböző típusú, amely röviden ismerteti a runbookok támogatja a következő táblázatban.  Az alábbi szakaszokban minden típusát, melynek során vegye figyelembe az egyes esetekben a további információt.
@@ -96,7 +96,7 @@ Python runbookok összeállításához Python 2.  Közvetlenül szerkesztheti a 
 ### <a name="known-issues"></a>Ismert problémák
 Az alábbiakban Python runbookok jelenlegi ismert problémái.
 
-* Ahhoz, hogy a külső könyvtárak használatára, a runbookot futtatni kell egy [Windows hibrid forgatókönyv-feldolgozó](https://docs.microsoft.com/en-us/azure/automation/automation-windows-hrw-install) vagy [Linux hibrid forgatókönyv-feldolgozó](https://docs.microsoft.com/en-us/azure/automation/automation-linux-hrw-install) előtt a számítógépen már telepítve könyvtárakkal a runbook indítását.
+* Ahhoz, hogy a külső könyvtárak használatára, a runbookot futtatni kell egy [Windows hibrid forgatókönyv-feldolgozó](https://docs.microsoft.com/azure/automation/automation-windows-hrw-install) vagy [Linux hibrid forgatókönyv-feldolgozó](https://docs.microsoft.com/azure/automation/automation-linux-hrw-install) előtt a számítógépen már telepítve könyvtárakkal a runbook indítását.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 Akkor figyelembe kell vennie a következő további szempontok számának meghatározásakor az egyes runbookok használandó típust.

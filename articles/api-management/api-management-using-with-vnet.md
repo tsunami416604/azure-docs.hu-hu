@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: b3fda4e6f38b0966820cc56d24e52feb07b44d15
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: b37c9d9de171e69e38a4bae58f9fbac99eae2091
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatokról (Vnetekről) helyezze el az Azure-erőforrások bármelyike nem internetes routeable hálózati hozzáférést szabályozó teszik lehetővé. Ezek a hálózatok csatlakozhatnak különböző VPN technológiáin a helyszíni hálózatokhoz. További információk az Azure virtuális hálózatok indítsa el az adatok Itt további: [Azure virtuális hálózat áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -99,7 +99,7 @@ Az alábbiakban az API-kezelés szolgáltatás telepítése virtuális hálózat
 * **Egyéni DNS-kiszolgáló beállításainak**: az API Management szolgáltatás több Azure-szolgáltatások függ. Amikor az API Management egyéni DNS-kiszolgáló a VNETEN belül üzemel kell feloldani a gazdagép neve az Azure szolgáltatások. Kövesse az [ez](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) egyéni DNS-beállításainak útmutatást. Tekintse meg a portokat az alábbi táblázat és az egyéb hálózati követelmények hivatkozás.
 
 > [!IMPORTANT]
-> Javasoljuk, hogy egy egyéni DNS-kiszolgálói használatakor a vnet beállítása, amely **előtt** bele az API Management szolgáltatás telepítéséhez. Ellenkező esetben frissítenie kell az API Management szolgáltatás minden alkalommal, amikor a DNS-kiszolgálók (s) módosításához futtassa a [alkalmazni a hálózati konfigurációs műveletet](https://docs.microsoft.com/en-us/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)
+> Javasoljuk, hogy egy egyéni DNS-kiszolgálói használatakor a vnet beállítása, amely **előtt** bele az API Management szolgáltatás telepítéséhez. Ellenkező esetben frissítenie kell az API Management szolgáltatás minden alkalommal, amikor a DNS-kiszolgálók (s) módosításához futtassa a [alkalmazni a hálózati konfigurációs műveletet](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)
 
 * **Az API Management szükséges portok**: az API Management telepítése alhálózat a bejövő és kimenő forgalom vezérelhető [hálózati biztonsági csoport][Network Security Group]. Ha ezeket a portokat bármelyike nem érhető el, az API Management nem fog megfelelően működni, és lehetnek nem elérhetők. Rendelkezik egy vagy több ezeket a portokat blokkolva helytelen konfigurálása más gyakori problémák használata esetén az API Management olyan virtuális hálózaton.
 
@@ -148,7 +148,7 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
  > [!IMPORTANT]
  > Után a kapcsolat ellenőrzése, akkor távolítsa el az alhálózatot az API Management telepítése előtt az alhálózaton, telepített erőforrások mindegyikének.
 
-* **Növekményes frissítések**: Ha módosítja a hálózathoz, tekintse meg [NetworkStatus API](https://docs.microsoft.com/en-us/rest/api/apimanagement/networkstatus), ellenőrizheti, hogy az API Management szolgáltatás még nem már nem fér hozzá a kritikus erőforrásokat, amelyek azt határozzák meg. A kapcsolati állapot 15 percenként frissíteni kell.
+* **Növekményes frissítések**: Ha módosítja a hálózathoz, tekintse meg [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus), ellenőrizheti, hogy az API Management szolgáltatás még nem már nem fér hozzá a kritikus erőforrásokat, amelyek azt határozzák meg. A kapcsolati állapot 15 percenként frissíteni kell.
 
 * **Erőforrás-navigációs hivatkozásokkal**: az erőforrás-kezelő stílus vnet alhálózati telepítésekor API Management az alhálózat fenntart egy erőforrás-navigációs hivatkozás létrehozásával. Ha az alhálózat már tartalmaz egy erőforrás más szolgáltatótól származó, központi telepítési program **sikertelen**. Hasonlóképpen amikor egy API-kezelés szolgáltatás áthelyezése egy másik alhálózat vagy törölni, megszüntetjük adott erőforrás-navigációs hivatkozás. 
 

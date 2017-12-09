@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 080c83fd0c34bdcb8978edf0ba4f783402a88b1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 7497753cc27867b1fdb9635ba6613ac75b449090
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Eszközhitelesítési X.509 CA-tanúsítványok használata
 
@@ -85,4 +85,4 @@ Itt megtudhatja, hogyan [eszköz kapcsolat lépés](iot-hub-security-x509-get-st
 
 További tudnivalók [X.509 hitelesítésszolgáltató hitelesítési értékének](iot-hub-x509ca-concept.md) az IoT.
 
-Ismerkedés az IoT-központ [eszköz kiépítése szolgáltatáshoz](https://docs.microsoft.com/en-us/azure/iot-dps/).
+Ismerkedés az IoT-központ [eszköz kiépítése szolgáltatáshoz](https://docs.microsoft.com/azure/iot-dps/).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 397c0c610c05e65d06a6319672446a6e4c9c445a
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
-ms.translationtype: HT
+ms.openlocfilehash: 43c930c18c284a8e6c71174bcf905904001dcde2
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ezen a lapon az Azure Active Directory (Azure AD) B2C kapcsolatos gyakori kérdésekre ad választ. Tartsa biztonsági frissítések keresése.
@@ -37,7 +37,7 @@ Azure AD B2C-bérlő, a legtöbb alkalmazást szeretné, hogy a felhasználó be
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Mely közösségi identitás-szolgáltatóktól támogatják a most? Melyik tervezi a jövőben támogatásához?
 Jelenleg támogatott Facebook, Google +, LinkedIn, Amazon, Twitter (előzetes verzió), WeChat (előzetes verzió), Weibo (előzetes verzió) és Gyorsműveletek (előzetes verzió). A Microsoft támogatni fogják a többi ügyfél igény szerint népszerű közösségi identitás-szolgáltatóktól.
 
-Az Azure AD B2C is hozzá van adva támogatása [egyéni házirendek](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview-custom).  Ezek [egyéni házirendek](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview-custom) lehetővé teszi a fejlesztők saját házirend létrehozásához, amely bármely identitásszolgáltató, amely támogatja a [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) vagy SAML. 
+Az Azure AD B2C is hozzá van adva támogatása [egyéni házirendek](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom).  Ezek [egyéni házirendek](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom) lehetővé teszi a fejlesztők saját házirend létrehozásához, amely bármely identitásszolgáltató, amely támogatja a [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) vagy SAML. 
 
 Ismerkedés az egyéni házirendek kiveszi a [egyéni házirend alapszintű csomag](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
 
@@ -87,7 +87,7 @@ Nem, az Azure AD Connect nem célja, hogy az Azure AD B2C dolgozni. Érdemes leh
 Nem, biztonsági okokból az Azure AD B2C-lap nem nyitható iFrame belül.  A szolgáltatás IFRAME letiltja a böngésző kommunikál.  A biztonsági Közösség általános és a OAUTH2 specifikációját, javasoljuk, szemben az identitással kapcsolatos műveletet, kattintson az-emelési kockázata miatt IFRAME használatával.
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Az Azure AD B2C például a Microsoft Dynamics CRM rendszerrel működik?
-Integráció a Microsoft Dynamics 365 Portal érhető el.  Lásd: [Dynamics 365 portál konfigurálása az Azure AD B2C hitelesítéshez használandó](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/portals/azure-ad-b2c).
+Integráció a Microsoft Dynamics 365 Portal érhető el.  Lásd: [Dynamics 365 portál konfigurálása az Azure AD B2C hitelesítéshez használandó](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Az Azure AD B2C does munkahelyi SharePoint helyszíni 2016 vagy korábbi?
 Az Azure AD B2C nem célja a SharePoint külső partner-megosztási forgatókönyvhöz; Lásd: [Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) helyette.

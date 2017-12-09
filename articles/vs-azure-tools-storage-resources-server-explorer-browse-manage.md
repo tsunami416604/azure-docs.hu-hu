@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/24/2017
 ms.author: kraigb
-ms.openlocfilehash: 9f3d564fd844d982838cc6f29af24399801a62bc
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
-ms.translationtype: HT
+ms.openlocfilehash: ee91ca168acf2fa0d248e18cce64ac546740a2bd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Keresse meg és tárolási erőforrások kezelése a Server Explorer használatával
 
@@ -162,7 +162,7 @@ Az alábbi ábrán egy két üzeneteket tartalmazó sor:
 További információ a tárolási szolgáltatási várólisták létrehozásáról: [Ismerkedés az Azure Queue storage használatának .NET](http://go.microsoft.com/fwlink/?LinkID=264702). A webszolgáltatás tárolási szolgáltatási várólisták, lásd: [a Queue szolgáltatás alapfogalmai](http://go.microsoft.com/fwlink/?LinkId=264788). Üzenetek küldése egy tárolási szolgáltatások üzenetsorba Visual Studio használatával kapcsolatos információkért lásd: [tárolási szolgáltatások várólista-üzenetek küldése](https://msdn.microsoft.com/library/azure/jj649344.aspx).
 
 > [!NOTE]
-> Tárolási szolgáltatások sorok különbözőek az Azure Service Bus-üzenetsorok. További információ a Service Bus-üzenetsorok: [Service Bus-üzenetsorok, témakörök és előfizetések](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions).
+> Tárolási szolgáltatások sorok különbözőek az Azure Service Bus-üzenetsorok. További információ a Service Bus-üzenetsorok: [Service Bus-üzenetsorok, témakörök és előfizetések](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-queues-topics-subscriptions).
 
 ## <a name="work-with-table-resources"></a>A tábla erőforrásokat
 

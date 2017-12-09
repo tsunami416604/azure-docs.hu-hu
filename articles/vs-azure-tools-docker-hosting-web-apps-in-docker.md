@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: 4a87ee69f23779bf4f6f5db40bc05edbcfc7668d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 60efffd9313f6972ae46fd1925d999597d3c6ba2
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a>Telepítse az ASP.NET-tároló egy távoli Docker gazdagépen
 ## <a name="overview"></a>Áttekintés
 Docker olyan egyszerűsített tároló, virtuális géphez, amely állomás alkalmazások és szolgáltatások segítségével bizonyos értelemben hasonló.
-Ez az oktatóanyag bemutatja, hogyan használja a [Docker Visual Studio eszközök](https://docs.microsoft.com/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker) bővítmény ASP.NET Core alkalmazás egy Docker-állomáshoz az Azure PowerShell használatával történő telepítése.
+Ez az oktatóanyag bemutatja, hogyan használja a [Docker Visual Studio eszközök](https://docs.microsoft.com/dotnet/articles/core/docker/visual-studio-tools-for-docker) bővítmény ASP.NET Core alkalmazás egy Docker-állomáshoz az Azure PowerShell használatával történő telepítése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő szükséges az oktatóanyag elvégzéséhez:

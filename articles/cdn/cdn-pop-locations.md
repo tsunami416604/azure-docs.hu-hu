@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 44028b2ef268cb2deff273f755d2f5aeab5bdc17
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 6ebf9f70abc6fbf880d7183ca0f5533a24d59451
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-cdn-pop-locations"></a>Azure CDN POP-helyszínek
 Ez a témakör felsorolja az aktuális POP-helyek **Azure CDN Verizon** és **Akamai Azure CDN**.
@@ -37,12 +37,12 @@ Ez a témakör felsorolja az aktuális POP-helyek **Azure CDN Verizon** és **Ak
 | Kelet- és Észak-Európa | Koppenhága, Dánia<br />Helsinki, Finnország<br />Varsói, lengyel<br />Stockholm, svéd | Bulgária<br />Dánia<br />Finnország<br />Norvégia<br />Lengyelország<br />Svédország<br /> |
 | Nyugat-Európa | Bécs, Ausztria<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Amszterdami, Hollandia<br />Londoni, UK | Ausztria<br />Belgium<br />Franciaország<br />Németország<br />Írország<br />Hollandia<br />Svájc<br />Egyesült Királyság |
 | Dél-Európa | Milánó, Olaszország<br />Madrid, Spanyolország | Görögország<br />Olaszország<br />Portugália<br />Spanyolország |
-| Kelet-Ázsia | Hongkong<br />Batam, indonéziai<br />Dzsakarta, indonéziai<br />Oszaka, japán<br />Tokió, japán<br />Szingapúr<br />Koreai Szöul déli régiója<br />Kaohsiung, Tajvan | Hongkong<br />Indonézia<br />Japán<br />Makaó<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld |
+| Kelet-Ázsia | Hongkong<br />Batam, indonéziai<br />Dzsakarta, indonéziai<br />Oszaka, japán<br />Tokió, japán<br />Szingapúr<br />Koreai Szöul déli régiója<br />Kaohsiung, Tajvan | Hongkong<br />Indonézia<br />Japán<br />Makao<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld |
 | Dél- és közép-ázsiai | Bangalore-i, India<br />Chennai, India<br />Delhi, India<br />Mumbai, India<br />Újdelhi, India | India<br />Srí Lanka |
 | Közel-keleti vagy nyugati Ázsia | Muscat, Omán<br />Fujirah, Egyesült Arab emírségekbeli | Izrael<br />Kuvait<br />Katar<br />Törökország<br />Egyesült Arab Emírségek |
 | Afrika | | Egyiptom<br />Dél-Afrika |
 | Ausztrália és Új-Zéland | Melbourne, Ausztrália<br />Sydney, Ausztrália<br />Aucklandi, Új-Zéland | Ausztrália<br />Új-Zéland |
 
 ## <a name="see-also"></a>Lásd még:
-* [Az Azure CDN peremhálózati csomópontok API legújabb IP-címek lekérése engedélyezése](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
+* [Az Azure CDN peremhálózati csomópontok API legújabb IP-címek lekérése engedélyezése](https://docs.microsoft.com/rest/api/cdn/edgenodes)
 

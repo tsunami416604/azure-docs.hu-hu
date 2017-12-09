@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: anzaman,cherylmc
-ms.openlocfilehash: 0ea696e796ec3a943bc028f56da417978b728b82
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: fa55cbad9fca799faff4e4cef87f9eedb8d2023f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Egy virtuális hálózathoz csatlakozni egy ExpressRoute-kapcsolatcsoportot parancssori felület használatával
 
@@ -35,13 +35,13 @@ Ez a cikk segít virtuális hálózatokról (Vnetekről) hivatkozásra az Azure 
 
 ## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
 
-* A parancssori felület (CLI) legújabb verziójára van szüksége. További információkért lásd: [Azure CLI 2.0 telepítése](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+* A parancssori felület (CLI) legújabb verziójára van szüksége. További információkért lásd: [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 * Át kell tekintenie a [Előfeltételek](expressroute-prerequisites.md), [útválasztási követelmények](expressroute-routing.md), és [munkafolyamatok](expressroute-workflows.md) konfigurálás elkezdése előtt.
 * Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. 
   * Kövesse az utasításokat [ExpressRoute-kapcsolatcsoportot létrehozni](howto-circuit-cli.md) és a kapcsolatcsoport szerint a kapcsolat szolgáltatójánál engedélyezve van. 
   * Győződjön meg arról, hogy rendelkezik az Azure magánhálózati társviszony-létesítés a kapcsolatcsoport konfigurálva. Tekintse meg a [konfigurálja az útválasztást](howto-routing-cli.md) útválasztási miként. 
   * Győződjön meg arról, hogy konfigurálva van-e az Azure magánhálózati társviszony-létesítés. A BGP társviszony-létesítés között a hálózati és a Microsoft be kell, hogy engedélyezheti a végpontok közötti kapcsolat.
-  * Győződjön meg arról, hogy a virtuális hálózat és a virtuális hálózati átjáró létrehozása, és teljesen kiépítve. Kövesse az utasításokat [a virtuális hálózati átjáró konfigurálása ExpressRoute](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Használjon `--gateway-type ExpressRoute`.
+  * Győződjön meg arról, hogy a virtuális hálózat és a virtuális hálózati átjáró létrehozása, és teljesen kiépítve. Kövesse az utasításokat [a virtuális hálózati átjáró konfigurálása ExpressRoute](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Használjon `--gateway-type ExpressRoute`.
 
 * Legfeljebb 10 virtuális hálózatok hozzákapcsolhatja egy szabványos ExpressRoute-kapcsolatcsoportot. Az összes virtuális hálózatot geopolitikai ugyanabban a régióban kell lennie, egy szabványos ExpressRoute-kapcsolatcsoportot használatakor. 
 

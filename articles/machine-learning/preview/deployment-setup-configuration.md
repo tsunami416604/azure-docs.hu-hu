@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 08/29/2017
-ms.openlocfilehash: 61ecea71874b05c2c5f7572aa6128fc320422b1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/6/2017
+ms.openlocfilehash: fe03a24b0d9f5ef6d0f20dac15ea980a8663a7b2
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="model-management-setup"></a>Modell kezelésének beállítása
 
@@ -25,8 +25,8 @@ Azure ML-modell eszköz használatával hatékonyan telepítheti és kezelheti a
 Ez a dokumentum végéig a modell felügyeleti környezet beállítása és készen áll a központi telepítése a gépi tanulási modellek képesnek kell lennie.
 
 ## <a name="what-you-need-to-get-started"></a>Mi szükséges a kezdéshez
-Ahhoz, hogy minél hatékonyabb működtetését Ez az útmutató, Azure-előfizetéshez, amely központilag telepíthető a modellek a tulajdonosi hozzáférés kell rendelkeznie.
-A parancssori felület előre előre telepített, az Azure Machine Learning-munkaterület és a [Azure DSVMs](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).
+Ahhoz, hogy ez az útmutató a legtöbbet, Azure-előfizetés vagy egy erőforráscsoport, amely központilag telepíthető a modellek közreműködői hozzáférést kell rendelkeznie.
+A parancssori felület előre előre telepített, az Azure Machine Learning-munkaterület és a [Azure DSVMs](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).
 
 ## <a name="using-the-cli"></a>A parancssori felület használatával
 A parancssori felületen (CLIs) az a munkaterület használatához kattintson **fájl** -> **nyissa meg a parancssort**. 
@@ -128,7 +128,7 @@ A fürt környezet setup parancs az előfizetésében hoz létre a következőke
 - Az Application insights-fiókot
 
 >[!IMPORTANT]
-> Ahhoz, hogy sikeresen hozzon létre egy fürtözött környezetben, szüksége lesz egy olyan tulajdonost, az Azure-előfizetést, majd is, hogy a számítógép egy szolgáltatásnevet létrehozni. Ellenőrizze, hogy megfelelő engedélyekkel rendelkezik, kövesse az utasításokat ezen az oldalon: [egyszerű szolgáltatás létrehozása az Azure-ban](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+> Fürtkörnyezetben sikeresen létrehozásához szüksége lesz az Azure-előfizetés vagy az erőforráscsoport közreműködői elérhető kell legyen.
 
 Az erőforráscsoport, a tárfiók, valamint a ACR gyorsan hoz létre. Az ACS telepítési akár 20 percig is tarthat. 
 

@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 11e0f2f19acc843f1c558b5d0cfe84291035a6a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: f6844dd6747854a60ff8eb8be0d913b73ca2bdb2
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Keresse meg és diagnosztizálhatja a futásidejű kivételek az Azure Application insights szolgáltatással
 
@@ -37,12 +37,12 @@ Az oktatóanyag elvégzéséhez:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 - Töltse le és telepítse a [Visual Studio pillanatkép hibakereső](http://aka.ms/snapshotdebugger).
-- Engedélyezése [Visual Studio hibakereső pillanatképet készíteni.](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger)
+- Engedélyezése [Visual Studio hibakereső pillanatképet készíteni.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
 - Az Azure-bA egy .NET-alkalmazás központi telepítése és [engedélyezze az Application Insights SDK](app-insights-asp-net.md). 
 - Az oktatóanyag azt követi nyomon az alkalmazásban kivétel azonosítása, így módosíthatja a fejlesztési vagy tesztelési környezetben kivétel létrehozásához a kódot. 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com).
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
 
 
 ## <a name="analyze-failures"></a>Hibák elemzése
@@ -51,7 +51,7 @@ Az Application Insights gyűjti az esetleges hibákat az alkalmazásban, és meg
 1. Válassza ki **Application Insights** és az előfizetés majd.  
 1. Megnyitásához a **hibák** panelen válassza ki **hibák** alatt a **vizsgálat** menüből, vagy kattintson a **sikertelen kérelmek** grafikon.
 
-    ![Sikertelen kérelmek](media/app-insights-tutorial-runtime-exceptions/failed-requests.png)
+    ![Sikertelen kérések](media/app-insights-tutorial-runtime-exceptions/failed-requests.png)
 
 2. A **sikertelen kérelmek** panel jeleníti meg. a sikertelen kérelmek és az érintett felhasználók számát mutatja az alkalmazás minden művelethez.  A felhasználó által az adatok rendezése azonosíthatja azokat, hogy a legtöbb felhasználóit érintő hibák.  Ebben a példában a **beolvasása az alkalmazottak/létrehozása** és **beolvasása ügyfelek/részletek** valószínűleg-zel vizsgálja meg a hibákat és azokat az érintett felhasználók nagy száma miatt.  Egy művelet kiválasztása információkat jeleníti meg további ezt a műveletet a jobb oldali panelen.
 

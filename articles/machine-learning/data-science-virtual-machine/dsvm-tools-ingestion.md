@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 564c06c5017a77431b7d6fed7b43c47141b12252
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 8f1ef4bbc050560287b8638a0f3398e02efec554
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Adatok tudományos virtuális gép adatok adatfeldolgozást eszközök
 
@@ -35,7 +35,7 @@ Az alábbiakban néhány adtunk meg a DSVM adatok mozgása eszközök.
 | Támogatott DSVM verziók      | Windows      |
 | A gyakori felhasználási      | Több BLOB az Azure storage importálása az Azure Data Lake Store.      |
 |  Hogyan használja az / futtatni?    |   Nyisson meg egy parancssort, majd írja be a `adlcopy` Ha segítséget szeretne kérni.    |
-| Minták mutató hivatkozások      | [Használatával AdlCopy] https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| Minták mutató hivatkozások      | [Használatával AdlCopy] https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | A DSVM a kapcsolódó eszközök      | AzCopy, az Azure parancssori     |
 
 ## <a name="azure-command-line"></a>Az Azure parancssori
@@ -58,7 +58,7 @@ Az alábbiakban néhány adtunk meg a DSVM adatok mozgása eszközök.
 | Támogatott DSVM verziók      | Windows      |
 | A gyakori felhasználási      | Fájlok másolása a blob storage, fiókokba BLOB másolása.      |
 |  Hogyan használja az / futtatni?    |   Nyisson meg egy parancssort, majd írja be a `azcopy` Ha segítséget szeretne kérni.    |
-| Minták mutató hivatkozások      | [AzCopy Windowson](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy)      |
+| Minták mutató hivatkozások      | [AzCopy Windowson](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
 | A DSVM a kapcsolódó eszközök      | AdlCopy     |
 
 
@@ -70,7 +70,7 @@ Az alábbiakban néhány adtunk meg a DSVM adatok mozgása eszközök.
 | Támogatott DSVM verziók      | Windows      |
 | A gyakori felhasználási      | Fájlok importálása a virtuális gép CosmosDB, az adatok importálása az Azure table storage CosmosDB vagy adatok importálását az SQL Server-adatbázis CosmosDB.     |
 |  Hogyan használja az / futtatni?    |   A parancssor verzió, nyissa meg egy parancssori ablakot, majd írja be a következőt `dt`. A grafikus felhasználói Felülettel eszközzel, nyisson meg egy parancssort, majd írja be a `dtui`.    |
-| Minták mutató hivatkozások      | [Adatok CosmosDB importálása](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data)      |
+| Minták mutató hivatkozások      | [Adatok CosmosDB importálása](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | A DSVM a kapcsolódó eszközök      | AzCopy, AdlCopy      |
 
 
@@ -82,7 +82,7 @@ Az alábbiakban néhány adtunk meg a DSVM adatok mozgása eszközök.
 | Támogatott DSVM verziók      | Windows      |
 | A gyakori felhasználási      | Importálás CSV-fájl egy SQL Server táblába, SQL Server tábla exportálása fájlba.      |
 |  Hogyan használja az / futtatni?    |   Nyisson meg egy parancssort, majd írja be a `bcp` Ha segítséget szeretne kérni.    |
-| Minták mutató hivatkozások      | [A tömeges másolási segédprogram](https://docs.microsoft.com/en-us/sql/tools/bcp-utility)      |
+| Minták mutató hivatkozások      | [A tömeges másolási segédprogram](https://docs.microsoft.com/sql/tools/bcp-utility)      |
 | A DSVM a kapcsolódó eszközök      | SQL Server, az Sqlcmd használatával      |
 
 

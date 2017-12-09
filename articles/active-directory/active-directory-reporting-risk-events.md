@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 12/07/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5ff0bcf9bdf9eaf1b4f0084acf9e5ee6ccfeba19
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2e0fb528b22c5696aa46a677199b95ff3fbd6a79
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati események
 
@@ -31,9 +31,13 @@ Jelenleg Azure Active Directory észlelt kockázati események típusai hat:
 - [Lehetetlen odautazás bejelentkezés szokatlan helyekről](#impossible-travel-to-atypical-locations) 
 - [Fertőzött eszközökről bejelentkezések](#sign-ins-from-infected-devices) 
 - [Bejelentkezések gyanús tevékenységeket IP-címekről](#sign-ins-from-ip-addresses-with-suspicious-activity) 
-- [Bejelentkezések ismeretlen helyekről](#sign-in-from-unfamiliar-locations) (kizárólag az **Azure Active Directory Premium P2** kiadás)
+- [Bejelentkezések ismeretlen helyekről](#sign-in-from-unfamiliar-locations) 
+
 
 ![Kockázati esemény](./media/active-directory-reporting-risk-events/91.png)
+
+A a észlelt kockázati események történő betekintést az Azure AD-előfizetés van kötve. Ha az Azure AD Premium P1 edition (EMS E3 ajánlat szerepel), amelyek nem tartoznak a licenc jelentett **bejelentkezés az észlelt további kockázat**. Ez azt jelenti megjelenik egy bejelentkezési kockázat esemény észlelhető a következőnél: Azure AD Identity Protection előfizetőknek kizárólagos észlelések további kockázattal.
+
 
 Ez a témakör minden, a rendszer milyen kockázati események részletes áttekintést nyújt, és hogyan használhatja az Azure AD védő.
 

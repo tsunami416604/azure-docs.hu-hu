@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/30/2017
 ms.author: yoelh
-ms.openlocfilehash: e9a5b6ffdf2a2c30ae1bcb2bd8f91adb12f35266
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
-ms.translationtype: HT
+ms.openlocfilehash: 0bc00dd14977e7cf24f5bff6928d09ca67761d3b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Az Azure AD B2C felhasználói út a REST API jogcímek cseréjét integrálása, felhasználói bevitel ellenőrzése
 A identitás élmény keretrendszerrel, amelynek alapjául szolgáló Azure Active Directory B2C (az Azure AD B2C), integrálható egy RESTful API-nak felhasználói út. Ez a forgatókönyv megtudhatja, hogyan kommunikál az Azure AD B2C .NET-keretrendszer RESTful szolgáltatás (webes API-k).
@@ -215,7 +215,7 @@ A webes API-t egy _vezérlő_ olyan objektum, amely HTTP-kérelmeket kezeli. A v
     A **létrehozása az App Service** ablak nyílik meg. Az oktatóanyagban hoz létre minden a szükséges Azure-erőforrások futtatni az ASP.NET webalkalmazás az Azure-ban.
 
     > [!NOTE]
-    >Közzététele kapcsolatos további információkért lásd: [egy ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
+    >Közzététele kapcsolatos további információkért lásd: [egy ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
 
 3. Az a **webalkalmazásnév** mezőbe írja be egy egyedi alkalmazásnévvel (érvényes karakterek: a – z, 0-9 és kötőjelet (-). A webalkalmazás URL-címe http://<app_name>.azurewebsites.NET, ahol *Alkalmazás_neve* a webes alkalmazás neve. Elfogadhatja az automatikusan létrehozott nevet is, amely már egyedi.
 
