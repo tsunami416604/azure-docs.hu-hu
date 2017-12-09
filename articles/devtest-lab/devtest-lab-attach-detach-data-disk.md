@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: 3183c61323b1b9ce22b0b64d9021f683b2276d9d
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
-ms.translationtype: HT
+ms.openlocfilehash: 1e156b2baad0d49c21e852a22d3b149e630b3750
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Csatolása vagy leválasztása adatlemezt a Azure DevTest Labs szolgáltatásban virtuális géphez
-[Azure-lemezeket felügyelt](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview) kezeli a virtuális gép adatlemezek társított tárfiókokat. Egy felhasználó nevű új lemezre egy virtuális géphez, típusa és szükséges lemez méretét adja meg, és az Azure hoz létre, és automatikusan kezeli a lemezt. Az adatlemez majd a virtuális gép választható le, és vagy később az azonos virtuális géphez, vagy egy másik virtuális géphez, amely ugyanahhoz a felhasználóhoz tartozik csatolt objektumkörnyezetben.
+[Azure-lemezeket felügyelt](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) kezeli a virtuális gép adatlemezek társított tárfiókokat. Egy felhasználó nevű új lemezre egy virtuális géphez, típusa és szükséges lemez méretét adja meg, és az Azure hoz létre, és automatikusan kezeli a lemezt. Az adatlemez majd a virtuális gép választható le, és vagy később az azonos virtuális géphez, vagy egy másik virtuális géphez, amely ugyanahhoz a felhasználóhoz tartozik csatolt objektumkörnyezetben.
 
 Ez a funkció elérhető tárhely vagy szoftver kívül minden különálló virtuális gép. Ha a tároló- és szoftver már létezik adatlemezt belül, azt is könnyen csatolt, leválasztott, és minden virtuális géphez adott adatlemez birtokló felhasználó tulajdonában lévő objektumkörnyezetben.
 
 ## <a name="attach-a-data-disk"></a>Adatlemez csatolása
 Mielőtt adatlemezt csatol egy virtuális Gépre, tekintse át a ezek a tippek:
 
-- A virtuális gép mérete csatolhat hány adatlemezek szabályozza. További információkért lásd: [virtuális gépek méretei](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes).
+- A virtuális gép mérete csatolhat hány adatlemezek szabályozza. További információkért lásd: [virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
 - Adatlemez csak csatlakoztatása egy virtuális Gépet futtató. Győződjön meg arról, hogy a virtuális gép fusson, mielőtt újból adatlemezt csatolni.
 
 ### <a name="attach-a-new-disk"></a>Új lemez csatolása

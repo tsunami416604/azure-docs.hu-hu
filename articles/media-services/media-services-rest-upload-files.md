@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 955356ffe6fc524c1528364add7e2c2a336137b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: f198de0bf212f4ae566193954a319bece1e421f6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése a Media Services-fiók használatával REST
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ A Media Services szolgáltatásban a digitális fájlok feltöltése egy adategy
 > 
 > * A Media Services a IAssetFile.Name tulajdonság értékét használja, amikor az adatfolyam-tartalmak (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) a URL-címek kiépítéséhez Emiatt százalék-kódolás nem engedélyezett. Értékét a **neve** tulajdonság nem lehet a következő [százalék kódolás-fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnévkiterjesztés.
 > * A név hossza nem lehet hosszabb 260 karakternél.
-> * A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. A fájlméretre vonatkozó korlátozással kapcsolatban további információt [ebben](media-services-quotas-and-limitations.md) a témakörben talál.
+> * A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. Lásd: [ez](media-services-quotas-and-limitations.md) szóló cikkben olvashat a méretű fájlt választhat.
 > 
 
 A következő alapvető munkafolyamattal eszközök feltöltése a következő szakaszokat tartalmazza:
@@ -54,9 +54,6 @@ AMS is lehetővé teszi az eszközök tömeges feltöltéséhez. További inform
 
 Az AMS API-hoz kapcsolódáshoz információkért lásd: [elérni az Azure Media Services API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
 
->[!NOTE]
->Sikeresen csatlakoztassa a https://media.windows.net, adja meg egy másik Media Services URI 301 átirányítást fog kapni. Meg kell nyitnia az új URI későbbi hívásokat.
-
 ## <a name="upload-assets"></a>Töltse fel az eszközök
 
 ### <a name="create-an-asset"></a>Egy eszköz létrehozása
@@ -65,16 +62,16 @@ Az eszköz egy olyan tároló, típusok vagy a Media Services, beleértve a vide
 
 A tulajdonságokat, amelyeket megadhat egy eszköz létrehozása esetén egyik **beállítások**. **Beállítások** számbavételi érték, amely leírja a titkosítási beállításokat, hogy egy eszköz hozhatók létre. Érvényes értéket a értékeket az alábbi listán, nem az értékek egy kombinációját kell. 
 
-* **Nincs** = **0**: titkosítás nélkül fog történni. Ez az alapértelmezett érték. Vegye figyelembe, hogy ez a beállítás használatakor a tartalom nem védett átvitel, sem tárolás közben.
+* **Nincs** = **0**: Nincs titkosítás. Ez az alapértelmezett érték. Ez a beállítás használatakor a tartalom nem védett átvitel, sem tárolás közben.
     Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget. 
 * **StorageEncrypted** = **1**: Adja meg, ha a fájlok AES-256 bites titkosítással feltöltés és tárolás titkosítását.
   
-    Ha az adategységen tárolótitkosítást alkalmaz, konfigurálnia kell az adategység továbbítási házirendjét. További információ: [objektumtovábbítási szabályzat konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
+    Ha az adategységen tárolótitkosítást alkalmaz, konfigurálnia kell az adategység továbbítási házirendjét. További információkért lásd: [objektumtovábbítási szabályzat konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
 * **CommonEncryptionProtected** = **2**: Adja meg, ha meg feltölteni egy közös titkosítási módszerrel (például PlayReady) védett fájlokkal. 
-* **EnvelopeEncryptionProtected** = **4**: Adja meg, ha AES fájlok titkosított HLS meg feltölteni. Megjegyzés: ehhez a fájlokat a Transform Manager használatával kell kódolni és titkosítani.
+* **EnvelopeEncryptionProtected** = **4**: Adja meg, ha AES fájlok titkosított HLS meg feltölteni. A fájlok kell kódolni és Transform Manager használatával titkosított.
 
 > [!NOTE]
-> Ha az eszköz titkosítást fog használni, létre kell hoznia egy **ContentKey** , és az eszköz a következő témakörben leírtak szerint:[létrehozása egy ContentKey](media-services-rest-create-contentkey.md). Vegye figyelembe, hogy a fájlok feltöltése az objektumba, után frissítenie kell a titkosítási tulajdonságok a a **AssetFile** entitás során kapott értékekkel a **eszköz** titkosítás. Használatával teheti a **EGYESÍTÉSE** HTTP-kérelem. 
+> Ha az eszköz-titkosítást használ, létre kell hoznia egy **ContentKey** , és az eszköz a következő cikkben leírtak szerint: [létrehozása egy ContentKey](media-services-rest-create-contentkey.md). A fájlok feltöltése az objektumba, után frissítenie kell a titkosítási tulajdonságok a a **AssetFile** entitás során kapott értékekkel a **eszköz** titkosítás. Használatával teheti a **EGYESÍTÉSE** HTTP-kérelem. 
 > 
 > 
 
@@ -89,7 +86,7 @@ A következő példa bemutatja, hogyan hozzon létre egy eszközt.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
     {"Name":"BigBuckBunny.mp4"}
@@ -127,9 +124,9 @@ Ha sikeres, a következő adja vissza:
 ### <a name="create-an-assetfile"></a>Hozzon létre egy AssetFile
 A [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entitás egy blob-tárolóban tárolt video- vagy fájlt jelöli. Egy eszköz fájl mindig társítva van egy eszköz, és egy eszköz egy vagy több eszköz fájlt tartalmaz. A Media Services kódoló feladat sikertelen lesz, ha egy eszköz fájl objektumhoz nincs társítva egy digitális fájlhoz egy blob-tárolóban.
 
-Vegye figyelembe, hogy a **AssetFile** példány és a tényleges médiafájl két különböző objektum. A AssetFile példány media fájl metaadatainak tartalmaz, míg a médiafájl tartalmazza a tényleges médiatartalmakat.
+A **AssetFile** példány és a tényleges médiafájl két különböző objektum. A AssetFile példány media fájl metaadatainak tartalmaz, míg a médiafájl tartalmazza a tényleges médiatartalmakat.
 
-Miután a digitális adathordozójának fájl feltöltése a blob-tárolóba, szüksége lesz a **EGYESÍTÉSE** frissíti a AssetFile a médiafájl információit tartalmazó (lásd a témakör későbbi részében) HTTP-kérelem. 
+A digitális adathordozójának fájl feltöltése a blob-tárolóba, után fogja használni a **EGYESÍTÉSE** HTTP-kérelem frissíti a AssetFile a médiafájl információit tartalmazó (a cikk későbbi részében látható). 
 
 **HTTP-kérelem**
 
@@ -140,7 +137,7 @@ Miután a digitális adathordozójának fájl feltöltése a blob-tárolóba, sz
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-4ca2-2233-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
     Content-Length: 164
 
@@ -189,9 +186,9 @@ Miután a digitális adathordozójának fájl feltöltése a blob-tárolóba, sz
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>A AccessPolicy létrehozása írási engedéllyel.
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért lásd: [ez](media-services-dotnet-manage-entities.md#limit-access-policies) cikk.
 
-Fájlok feltöltése a blob-tárolóba, mielőtt írásra, hogy egy eszköz házirend jogosultságok a hozzáférés beállítása. Ehhez a AccessPolicies entitáskészlet HTTP-kérelmek POST. Adjon meg egy DurationInMinutes számot a létrehozása után, vagy egy belső kiszolgálót 500 hibaüzenetet kap vissza válaszként. A AccessPolicies további információkért lásd: [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+Fájlok feltöltése a blob-tárolóba, mielőtt írásra, hogy egy eszköz házirend jogosultságok a hozzáférés beállítása. Ehhez a AccessPolicies entitáskészlet HTTP-kérelmek POST. Adjon meg egy DurationInMinutes számot a létrehozása után, vagy egy belső kiszolgálót 500 hibaüzenetet kapja vissza válaszként. A AccessPolicies további információkért lásd: [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
 A következő példa bemutatja, hogyan hozzon létre egy AccessPolicy:
 
@@ -204,7 +201,7 @@ A következő példa bemutatja, hogyan hozzon létre egy AccessPolicy:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
     {"Name":"NewUploadPolicy", "DurationInMinutes":"440", "Permissions":"2"} 
@@ -237,7 +234,7 @@ A következő példa bemutatja, hogyan hozzon létre egy AccessPolicy:
     }
 
 ### <a name="get-the-upload-url"></a>A feltöltés URL-cím beszerzése
-A tényleges feltöltés URL-címet kap, hozzon létre egy SAS-kereső. Keresők meghatározása a kezdési idő és a csatlakozási végpont típusú ügyfelek számára, szeretné, hogy egy eszköz lévő fájlok eléréséhez. Létrehozhat több lokátor entitás egy adott AccessPolicy és eszköz párhoz különböző ügyfélkérelmek és kell kezelni. Egyes a Lokátorokat segítségével a StartTime érték és a AccessPolicy DurationInMinutes értéke határozza meg egy URL-cím használható idő hosszúsága. További információkért lásd: [lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
+A tényleges feltöltés URL-címet kap, hozzon létre egy SAS-kereső. Keresők meghatározása a kezdési idő és a csatlakozási végpont típusú ügyfelek számára, szeretné, hogy egy eszköz lévő fájlok eléréséhez. Létrehozhat több lokátor entitás egy adott AccessPolicy és eszköz párhoz különböző ügyfélkérelmek és kell kezelni. A Lokátorokat mindegyikének használja a StartTime érték és a AccessPolicy DurationInMinutes értékének mennyi ideig egy URL-cím használható. További információkért lásd: [lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
 
 A SAS URL-cím formátuma a következő:
 
@@ -260,7 +257,7 @@ A következő példa bemutatja, hogyan egy SAS URL-cím lokátor létrehozása a
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-4ca2-2233-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
     {  
        "AccessPolicyId":"nb:pid:UUID:be0ac48d-af7d-4877-9d60-1805d68bffae",
@@ -321,7 +318,7 @@ Most, hogy a fájl feltöltése a FileAsset méret (és más) adatainak frissít
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-4ca2-2233-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
     {  
@@ -346,7 +343,7 @@ Ha sikeres, a következőket adja vissza: HTTP/1.1 204 nem tartalom
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
 **HTTP-válasz**
@@ -364,7 +361,7 @@ Ha sikeres, a következő adja vissza:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
 **HTTP-válasz**
@@ -385,7 +382,7 @@ A IngestManifest egy olyan tároló, azon eszközök, eszköz fájlok és statis
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
     Host: media.windows.net
     Content-Length: 36
@@ -394,7 +391,7 @@ A IngestManifest egy olyan tároló, azon eszközök, eszköz fájlok és statis
     { "Name" : "ExampleManifestREST" }
 
 ### <a name="create-assets"></a>Eszközök létrehozása
-Mielőtt létrehozná a IngestManifestAsset, létrehozásához szükséges az eszköz, amely segítségével tömegesen választásával dolgozhat fel befejeződik. Az eszköz egy olyan tároló, típusok vagy a Media Services, beleértve a videó, hang, képeket, miniatűröket, szöveges nyomon követi és feliratfájlokat fájlok objektumokat. A REST API-ban az eszköz létrehozásához egy HTTP POST kérést küld a Microsoft Azure Media Services és az eszköz minden tulajdonságadatokat helyezi el a kérés törzsében. Ebben a példában az eszköz jön létre, a kérelem törzsében található StorageEncrption(1) funkcióval.
+Mielőtt létrehozná a IngestManifestAsset, létrehozásához szükséges az eszköz, amely segítségével tömegesen választásával dolgozhat fel befejeződik. Az eszköz egy olyan tároló, típusok vagy a Media Services, beleértve a videó, hang, képeket, miniatűröket, szöveges nyomon követi és feliratfájlokat fájlok objektumokat. A REST API-ban az eszköz létrehozásához HTTP POST-kérelmet küld a Microsoft Azure Media Services és az eszköz minden tulajdonságadatokat helyezi el a kérés törzsében. Ebben a példában az eszköz jön létre, a kérelem törzsében található StorageEncrption(1) funkcióval.
 
 **HTTP-válasz**
 
@@ -403,7 +400,7 @@ Mielőtt létrehozná a IngestManifestAsset, létrehozásához szükséges az es
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
     Host: media.windows.net
     Content-Length: 55
@@ -412,7 +409,7 @@ Mielőtt létrehozná a IngestManifestAsset, létrehozásához szükséges az es
     { "Name" : "ExampleManifestREST_Asset", "Options" : 1 }
 
 ### <a name="create-the-ingestmanifestassets"></a>A IngestManifestAssets létrehozása
-IngestManifestAssets belül egy IngestManifest eszközök tömeges választásával dolgozhat fel használt jelölik. A alapvetően az eszköz kapcsolódik a jegyzékfájlban. Az Azure Media Services belső a fájl feltöltése a IngestManifestAsset társított IngestManifestFiles gyűjtemény alapján figyeli. Ha ezek a fájlok feltöltése után az eszköz befejeződött. Létrehozhat egy új IngestManifestAsset egy HTTP POST-kérelmet. A kérelem törzsében szereplő közé tartozik a IngestManifest azonosítója és az eszköz azonosítója, amely a IngestManifestAsset kell összeköt tömeges választásával dolgozhat fel.
+IngestManifestAssets belül egy IngestManifest eszközök tömeges választásával dolgozhat fel használt jelölik. A alapvetően az eszköz kapcsolódik a jegyzékfájlban. Az Azure Media Services belső a fájl feltöltése a IngestManifestAsset társított IngestManifestFiles gyűjtemény alapján figyeli. Ha ezek a fájlok feltöltése után az eszköz befejeződött. Létrehozhat egy új IngestManifestAsset HTTP POST-kérelmet. A kérelem törzsében szereplő közé tartozik a IngestManifest azonosítója és az eszköz azonosítója, amely a IngestManifestAsset kell összeköt tömeges választásával dolgozhat fel.
 
 **HTTP-válasz**
 
@@ -421,7 +418,7 @@ IngestManifestAssets belül egy IngestManifest eszközök tömeges választásá
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
     Host: media.windows.net
     Content-Length: 152
@@ -430,7 +427,7 @@ IngestManifestAssets belül egy IngestManifest eszközök tömeges választásá
 
 
 ### <a name="create-the-ingestmanifestfiles-for-each-asset"></a>Az egyes eszközök a IngestManifestFiles létrehozása
-Egy IngestManifestFile tömeges választásával dolgozhat fel, az eszközhöz tartozó részeként lesz feltöltve tényleges video- vagy blob objektumot jelöli. Titkosítási kapcsolódó tulajdonságok esetén nincs szükség, kivéve, ha az eszköz egy titkosítási beállítást használja. A jelen szakaszban használt példa bemutatja, a korábban létrehozott eszköz használó StorageEncryption egy IngestManifestFile létrehozása.
+Egy IngestManifestFile tömeges választásával dolgozhat fel, az eszközhöz tartozó részeként feltöltött tényleges video- vagy blob objektumot jelöl. Titkosítással kapcsolatos tulajdonságok esetén nincs szükség, kivéve, ha az eszköz egy titkosítási beállítást használja. A jelen szakaszban használt példa bemutatja, a korábban létrehozott eszköz használó StorageEncryption egy IngestManifestFile létrehozása.
 
 **HTTP-válasz**
 
@@ -439,7 +436,7 @@ Egy IngestManifestFile tömeges választásával dolgozhat fel, az eszközhöz t
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
     Host: media.windows.net
     Content-Length: 367
@@ -448,19 +445,19 @@ Egy IngestManifestFile tömeges választásával dolgozhat fel, az eszközhöz t
     { "Name" : "REST_Example_File.wmv", "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "ParentIngestManifestAssetId" : "nb:maid:UUID:beed8531-9a03-9043-b1d8-6a6d1044cdda", "IsEncrypted" : "true", "EncryptionScheme" : "StorageEncryption", "EncryptionVersion" : "1.0", "EncryptionKeyId" : "nb:kid:UUID:32e6efaf-5fba-4538-b115-9d1cefe43510" }
 
 ### <a name="upload-the-files-to-blob-storage"></a>A fájlok feltöltése a Blob Storage
-A nagy sebességű ügyfélalkalmazás képes az eszköz fájlok feltöltése a blob storage tárolót a IngestManifest BlobStorageUriForUpload tulajdonsága által biztosított Uri használható. Egy figyelmet a jelentősebb nagy sebességű feltöltési szolgáltatás [Aspera igény szerinti Azure alkalmazáshoz](http://go.microsoft.com/fwlink/?LinkId=272001).
+A nagy sebességű ügyfélalkalmazás képes az eszköz fájlok feltöltése a blob storage tárolót a IngestManifest BlobStorageUriForUpload tulajdonsága által biztosított Uri használható. Egy fontos a nagy sebességű feltöltési szolgáltatás [Aspera igény szerinti Azure alkalmazáshoz](http://go.microsoft.com/fwlink/?LinkId=272001).
 
 ### <a name="monitor-bulk-ingest-progress"></a>A figyelő tömeges betöltési folyamatban
-Az előrehaladást tömeges választásával dolgozhat fel egy IngestManifest műveletek a IngestManifest statisztika tulajdonságának lekérdezésével. Hogy a tulajdonság egy összetett típus [IngestManifestStatistics](https://docs.microsoft.com/rest/api/media/operations/ingestmanifeststatistics). A statisztika tulajdonság lekérdezésére, igényelnie HTTP GET átadja a IngestManifest azonosítóját.
+Az előrehaladást tömeges választásával dolgozhat fel egy IngestManifest műveletek a IngestManifest statisztika tulajdonságának lekérdezésével. Hogy a tulajdonság egy összetett típus [IngestManifestStatistics](https://docs.microsoft.com/rest/api/media/operations/ingestmanifeststatistics). A statisztika tulajdonság lekérdezésére, küldje el a HTTP GET kérelemre átadja a IngestManifest azonosítóját.
 
 ## <a name="create-contentkeys-used-for-encryption"></a>A titkosításhoz használt ContentKeys létrehozása
-Ha az eszköz titkosítást fog használni, létre kell hoznia az adategység-fájloknak létrehozása előtt titkosításhoz használandó ContentKey. A tárolás titkosítását a következő tulajdonságok tartozhatnak a kérés törzsében.
+Ha az eszköz-titkosítást használ, létre kell hoznia az adategység-fájloknak létrehozása előtt titkosításhoz használandó ContentKey. A tárolás titkosítását a következő tulajdonságok tartozhatnak a kérés törzsében.
 
 | Kérelem törzse tulajdonság | Leírás |
 | --- | --- |
-| Azonosító |A ContentKey azonosítója, amely azt ragozott formáival létrehozása a következő formátumban "nb:kid:UUID:<NEW GUID>". |
+| Azonosító |A ragozott formáival a következő formátumban, azt készítése ContentKey azonosítója "nb:kid:UUID:<NEW GUID>". |
 | ContentKeyType |Ez az a tartalom írja be a tartalom kulcs egész szám lehet. Az érték 1 storage-titkosítás továbbítja azt. |
-| EncryptedContentKey |Létrehozhatunk egy új tartalom kulcs értéke pedig 256 bites (32 bájt) értéket. A kulcs titkosított a tárolási titkosítási X.509 tanúsítvány, amely által egy HTTP GET kérelem végrehajtása a GetProtectionKeyId és GetProtectionKey metódusok nem beolvasni a Microsoft Azure Media Services használatával. |
+| EncryptedContentKey |A Microsoft hozzon létre egy új tartalom kulcs értéket, amely a 256 bites (32 bájt) értéket. A kulcs titkosított tárolási titkosítási X.509-tanúsítvány a következő HTTP GET kérelemre futtatásával GetProtectionKeyId és GetProtectionKey módszerek nem beolvasni a Microsoft Azure Media Services használatával. |
 | ProtectionKeyId |Ez az a védelmi tároló titkosítási X.509-tanúsítvány, amely a tartalom kulcs titkosításához használt kulcs azonosítója. |
 | ProtectionKeyType |Ez egy, a védelem a tartalom kulcs titkosításához használt kulcs a titkosítási típus. Ez az érték a fenti példában StorageEncryption(1). |
 | Ellenőrzőösszeg |Az MD5 számított ellenőrzőösszeg a tartalomkulcsot. A tartalom azonosítója a tartalom kulccsal titkosítja számítja ki. A mintakód bemutatja, hogyan ellenőrzőösszeg számítása. |
@@ -472,7 +469,7 @@ Ha az eszköz titkosítást fog használni, létre kell hoznia az adategység-f�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
     Host: media.windows.net
     Content-Length: 572
@@ -490,7 +487,7 @@ A ContentKey úgy, hogy a HTTP POST-kérelmet küld egy vagy több eszköz társ
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
     Host: media.windows.net
     Content-Length: 113
@@ -505,7 +502,7 @@ A ContentKey úgy, hogy a HTTP POST-kérelmet küld egy vagy több eszköz társ
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
     Host: media.windows.net
 

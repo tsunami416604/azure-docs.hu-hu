@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
-ms.openlocfilehash: cce30360145fe430141ceaf2efc91a6b87938601
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: HT
+ms.openlocfilehash: 127159084fc99866881a93b16fd2b7faebeb3588
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Az Azure AD B2C: Használja az Azure AD Graph API
 
@@ -71,7 +71,7 @@ Most már rendelkezik egy alkalmazás, amely jogosult létrehozása, olvasása �
 ## <a name="configure-delete-permissions-for-your-application"></a>Az alkalmazás törlése engedélyek konfigurálása
 Jelenleg a *címtáradatok olvasása és írása* engedély does **nem** közé tartozik például a felhasználók törlése a törlések ezt. Ha szeretne adni az alkalmazás felhasználók törlésének lehetőségét, PowerShell érintő további lépések elvégzéséhez szüksége lesz, egyéb esetben ugorjon a következő szakaszban.
 
-Először, ha még nincs telepítve, telepítse a [Azure AD PowerShell v1 modult (MSOnline)](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0):
+Először, ha még nincs telepítve, telepítse a [Azure AD PowerShell v1 modult (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0):
 
 ```powershell
 Install-Module MSOnline

@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/20/2017
 ms.author: yoelh
-ms.openlocfilehash: fffb6c82b2e04976c420fba07bbcf967ffd25929
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
-ms.translationtype: HT
+ms.openlocfilehash: 1e8b8359efb75246e40103ee8cbc2a786bfa6b46
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Az Azure Active Directory B2C: A felhasználói felület konfigurálása dinamikus tartalom egyéni házirendek használatával
 Azure Active Directory B2C segítségével (az Azure AD B2C) egyéni házirendek, elküldheti a paraméter egy lekérdezési karakterlánc. Úgy, hogy a paraméter a HTML-végpontot, dinamikusan módosíthatja az oldal tartalmát. Például a háttérkép, a Azure AD B2C regisztráció vagy bejelentkezés lapon adja meg a webkiszolgáló vagy a mobilalkalmazás paramétereinek alapján módosíthatja. 
@@ -155,7 +155,7 @@ Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_backgro
     A **létrehozása az App Service** ablak nyílik meg. Azt elkezdheti hozzon létre az összes szükséges Azure-erőforrást az Azure-ban az ASP.NET webalkalmazás futtatásához.
 
     > [!NOTE]
-    > A közzététel kapcsolatos további információkért lásd: [egy ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
+    > A közzététel kapcsolatos további információkért lásd: [egy ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
 
 3. Az a **webalkalmazásnév** mezőbe írja be egy egyedi alkalmazásnévvel (érvényes karakterek: a – z, A-Z, 0-9 és kiskötőjel (-). A webalkalmazás URL-címe `http://<app_name>.azurewebsites.NET`, amelyben a `<app_name>` a webalkalmazás neve. Elfogadhatja az automatikusan létrehozott nevet is, amely már egyedi.
 

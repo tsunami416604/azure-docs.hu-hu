@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e1fb9ee3147f94b173b0fd324943b8801b984d2b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
-ms.translationtype: HT
+ms.openlocfilehash: e8812f10662ee7b571e8e353074c2537d1a3181b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Ismerje meg, és módosítsa a folyamatos átviteli egységek
 
@@ -27,7 +27,7 @@ Az Azure Stream Analytics összesíti a teljesítmény "weight" a futó feladat 
 
 Adatfolyam-feldolgozási kis késleltetésű eléréséhez Azure Stream Analytics-feladatok minden feldolgozás memória hajtsa végre. Ha kevés a memória, a folyamatos átviteli feladat sikertelen lesz. Ennek eredményeképpen termelési feladat, fontos a folyamatos átviteli feladatnak Erőforrás kihasználtsága figyelésére, és győződjön meg arról, hogy nincs elegendő erőforrás a 24 és Windows 7 rendszerben futó feladatok megőrzése érdekében lefoglalt.
 
-A metrika beállításnak: 0 és 100 %-os százalékos több. A folyamatos átviteli feladat minimális tárhely a SU % kihasználtsági mérőszáma általában 10-20 %-között. Legyen a legjobb, ha a mérték, hogy figyelembe vegye az alkalmi igényeiben jelentkező 80 %.  A metrika riasztást állíthat be (lásd: [metrika riasztások beállítása itt](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-alerts-portal)).
+A metrika beállításnak: 0 és 100 %-os százalékos több. A folyamatos átviteli feladat minimális tárhely a SU % kihasználtsági mérőszáma általában 10-20 %-között. Legyen a legjobb, ha a mérték, hogy figyelembe vegye az alkalmi igényeiben jelentkező 80 %.  A metrika riasztást állíthat be (lásd: [metrika riasztások beállítása itt](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-alerts-portal)).
 
 
 
@@ -82,7 +82,7 @@ Ahhoz, hogy az előző lekérdezés nagy számosságot által okozott problémá
 
 A rendszer több csoport között osztja el a lekérdezést a particionálása után. Ennek eredményeképpen minden csomópont beérkező clusterid száma csökken ilyen módon csökkenti a csoport számossága operátor. 
 
-Event Hub partíciók kell particionálni a csoportosítási gombot, hogy ne kelljen egy csökkentse a lépéshez. További részleteket ismertetnek [Itt](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-overview). 
+Event Hub partíciók kell particionálni a csoportosítási gombot, hogy ne kelljen egy csökkentse a lépéshez. További részleteket ismertetnek [Itt](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview). 
 #### <a name="temporal-join"></a>A historikus illesztés
 A historikus csatlakozzon állapot mérete azzal arányos, hogy az illesztés, amely bemeneti eseménygyakoriság többszörösének által irányításához mozgassa hely méretét historikus irányításához mozgassa helyiségben események száma. 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: ced8ecde1f36c49b479c7b253a90614567783663
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: HT
+ms.openlocfilehash: db9840817d92b4f2f63009d30dbd554666d53dbe
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure Operational biztonsági gyakorlati tanácsok
 Az Azure Operational biztonsági hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelmére az adatok, alkalmazások és egyéb eszközök a Microsoft Azure-ban. Az Azure Operational biztonsági egy keretrendszer, amely magában foglalja a különböző képességeket, amelyek a Microsoftnak, beleértve a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center program egyedi keresztül tapasztalatok épül és részletes tájékoztatást nyújthatnak a a számítógépes fenyegetésekről alkotott képet.
@@ -156,7 +156,7 @@ Az ügyfelek egy Azure-végpontok közötti hálózati koordinálása, és kül�
 A Network Watcherrel hálózati problémákat monitorozhat és diagnosztizálhat a virtuális hálózatokba való bejelentkezés nélkül. Eseményindító [csomagrögzítéssel](https://docs.microsoft.com/azure/network-watcher/network-watcher-alert-triggered-packet-capture) az-riasztások beállítása és a csomag szintjén teljesítményének valós idejű adatokhoz való hozzáférésre. Ha problémát észlel, a jobb diagnosztizálás érdekében részletes vizsgálatot végezhet.
 
 ### <a name="gain-insight-into-your-network-traffic-using-flow-logs"></a>Információszerzés a hálózati forgalomról folyamatnaplók használatával
-Bemutatják a hálózati forgalom mintát használ, létre [hálózati biztonsági csoport folyamata naplók](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-overview). Folyamat naplók által biztosított információk segítik a megfelelés, a naplózás és figyelés a hálózati biztonsági profil adatokat gyűjt.
+Bemutatják a hálózati forgalom mintát használ, létre [hálózati biztonsági csoport folyamata naplók](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). Folyamat naplók által biztosított információk segítik a megfelelés, a naplózás és figyelés a hálózati biztonsági profil adatokat gyűjt.
 
 ### <a name="diagnose-vpn-connectivity-issues"></a>VPN-kapcsolódási problémák diagnosztizálása
 Hálózati figyelő lehetővé teszi a [a VPN-átjáró és a kapcsolatok kapcsolatos leggyakoribb problémák diagnosztizálásához](https://docs.microsoft.com/azure/network-watcher/network-watcher-diagnose-on-premises-connectivity). Így nemcsak a probléma azonosításához, hanem a részletes naplókat létrehozásával elősegítheti a további vizsgálathoz használatára.

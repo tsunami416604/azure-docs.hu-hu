@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 7bae18e151fbdccf95f3fe5f569041d6dd9c42eb
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
-ms.translationtype: HT
+ms.openlocfilehash: e818a1b94891e687d8aa5962092e0a577b0db356
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>A Naplóelemzési konfigurálása Azure PaaS erőforrás metrikáit gyűjteménye
 
@@ -37,7 +37,7 @@ Ellenőrizze, hogy rendelkezik-e a következő Azure Resource Manager-modulok te
 >[!NOTE]
 >Azt javasoljuk, hogy az Azure Resource Manager modulok-példányok kompatibilitás érdekében a Powershellből Azure Resource Manager parancsok futtatásakor azonos verziójúak.
 >
-A számítógépen az Azure Resource Manager modulok legújabb verziójának telepítéséhez tekintse át [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-4.4.1#update-azps).  
+A számítógépen az Azure Resource Manager modulok legújabb verziójának telepítéséhez tekintse át [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.1#update-azps).  
 
 ## <a name="enable-azure-diagnostics"></a>Az Azure Diagnostics engedélyezése  
 Azure Diagnostics konfigurálása PaaS erőforrások úgy érhető el, a parancsfájl végrehajtása **Enable-AzureRMDiagnostics.ps1**, az elérhető a [PowerShell-galériában](https://www.powershellgallery.com/packages/Enable-AzureRMDiagnostics/2.52/DisplayScript).  A parancsfájl a következő szituációkat ismerteti:

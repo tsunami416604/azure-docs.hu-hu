@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 65f02c4675eb752dcc82e9a1d1c7f6c2c193fc32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: e1672474e22411e7f7fca4082ce83146e40ebfbc
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>További tudnivalók a virtuálisgép-méretezési készlet sablonok
 Az [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Az oktatóanyag adatsorozat egy minimális életképes méretezési készlet sablon létrehozása és a különböző forgatókönyvekben megfelelően sablon módosításával jeleníti meg. Minden példában ez származhat [GitHub-tárházban](https://github.com/gatneil/mvss). 
@@ -123,7 +123,7 @@ Ebben az esetben nincs csak egy elemet a listában, a virtuális hálózat az el
        ],
 ```
 ## <a name="specify-scale-set-properties"></a>Adja meg a skála tulajdonságainak beállítása
-Méretezési csoportok a a méretezési csoportban lévő virtuális gépek testreszabásának sok tulajdonságokkal rendelkezik. Ezek a tulajdonságok teljes listáját lásd: a [méretezési REST API-dokumentáció](https://docs.microsoft.com/en-us/rest/api/virtualmachinescalesets/create-or-update-a-set). Ebben az oktatóanyagban helyezünk csak néhány gyakran használt tulajdonságokat.
+Méretezési csoportok a a méretezési csoportban lévő virtuális gépek testreszabásának sok tulajdonságokkal rendelkezik. Ezek a tulajdonságok teljes listáját lásd: a [méretezési REST API-dokumentáció](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set). Ebben az oktatóanyagban helyezünk csak néhány gyakran használt tulajdonságokat.
 ### <a name="supply-vm-size-and-capacity"></a>Adja meg a Virtuálisgép-méretet és a kapacitás
 A méretezési milyen méretű virtuális gép ("sku name") létrehozásához tudnia kell, és hogy hány ilyen virtuális gép létrehozása ("termékváltozat-kapacitás"). Mely Virtuálisgép-méretek érhetők el, olvassa el a [Virtuálisgép-méretek dokumentáció](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
 

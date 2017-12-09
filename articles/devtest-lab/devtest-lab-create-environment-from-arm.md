@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
-ms.openlocfilehash: 4e1aae6c041e4572e7e2281203f969e7649e1480
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 381b3e5cc82e71dde4fe3a4266678dbd5919290d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Hozzon létre virtuális Gépre kiterjedő környezetek és PaaS-erőforrások Azure Resource Manager-sablonok
 
-A [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040) lehetővé teszi, hogy könnyen [létrehozása és a virtuális gép hozzáadása egy laborhoz](https://docs.microsoft.com/en-us/azure/devtest-lab/devtest-lab-add-vm). Egyszerre csak egy virtuális gép létrehozása esetén ez működik. Azonban ha a környezetben több virtuális gépeket tartalmaz, minden virtuális gép rendelkezik külön-külön kell létrehozni. Például egy többrétegű webalkalmazást vagy a SharePoint-farm használata esetén egy olyan mechanizmus szükséges ahhoz, hogy egyetlen lépésben több virtuális gép létrehozásához. Azure Resource Manager-sablonok használatával mostantól határozhatnak meg, az infrastruktúra és az Azure-megoldás konfigurációját, és több virtuális gépek konzisztens állapotban ismételten telepítheti. Ez a funkció a következő előnyöket nyújtja:
+A [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040) lehetővé teszi, hogy könnyen [létrehozása és a virtuális gép hozzáadása egy laborhoz](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Egyszerre csak egy virtuális gép létrehozása esetén ez működik. Azonban ha a környezetben több virtuális gépeket tartalmaz, minden virtuális gép rendelkezik külön-külön kell létrehozni. Például egy többrétegű webalkalmazást vagy a SharePoint-farm használata esetén egy olyan mechanizmus szükséges ahhoz, hogy egyetlen lépésben több virtuális gép létrehozásához. Azure Resource Manager-sablonok használatával mostantól határozhatnak meg, az infrastruktúra és az Azure-megoldás konfigurációját, és több virtuális gépek konzisztens állapotban ismételten telepítheti. Ez a funkció a következő előnyöket nyújtja:
 
 - Az Azure Resource Manager-sablonok töltődnek be közvetlenül a (GitHub vagy Team Services Git) a verziókövetési tárházzal.
 - Beállítása után a felhasználók létrehozásához egy olyan környezetben, miért más Azure-portálról egy Azure Resource Manager sablon kiadási [VM körrel](./devtest-lab-comparing-vm-base-image-types.md).

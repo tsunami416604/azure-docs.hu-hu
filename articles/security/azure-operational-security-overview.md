@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 6ee60c5f9a8049523f05a1f3afd6604768dde602
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: HT
+ms.openlocfilehash: dba643f5c8e926bee1c5d13e71f785e5cc72a2dc
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-operational-security-overview"></a>Az Azure operational biztonsági áttekintése
 Az Azure Operational biztonsági hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelmére az adatok, alkalmazások és egyéb eszközök a Microsoft Azure-ban. [Az Azure Operational biztonsági](https://docs.microsoft.com/azure/security/azure-operational-security) egy keretrendszer, amely magában foglalja a Tudásbázis a különböző képességeket, amelyeket a Microsoft, beleértve a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response egyedi keresztül szerzett Center programot, és részletes tájékoztatást nyújthatnak a számítógépes biztonsági fenyegetésekről alkotott képet.
@@ -158,5 +158,5 @@ DevOps alkalmazásfejlesztés, mielőtt csoportok feladata üzleti követelmény
 Többet OMS biztonsági, naplózási megoldást, olvassa el a következő cikkeket:
 
 - [Az Operations Management Suite |} Biztonsági és megfelelőségi](https://www.microsoft.com/cloud-platform/security-and-compliance).
-- [Figyelés és az Operations Management Suite biztonsági és naplózási megoldás a biztonsági riasztásokra való Reagálásról](https://docs.microsoft.com/en-us/azure/operations-management-suite/oms-security-responding-alerts).
-- [Erőforrások figyelése az Operations Management Suite biztonsági és naplózási megoldás](https://docs.microsoft.com/en-us/azure/operations-management-suite/oms-security-monitoring-resources).
+- [Figyelés és az Operations Management Suite biztonsági és naplózási megoldás a biztonsági riasztásokra való Reagálásról](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts).
+- [Erőforrások figyelése az Operations Management Suite biztonsági és naplózási megoldás](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources).

@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: 867484799020a4e65844523a88240b3d550c69f7
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
-ms.translationtype: HT
+ms.openlocfilehash: 8ba153cf2775fe76c824e142ed9a181d0e956392
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Biztonságos a RESTful szolgáltatás ügyfél-tanúsítványok használatával
 A kapcsolódó cikkében akkor [hozzon létre egy RESTful szolgáltatás](active-directory-b2c-custom-rest-api-netfw.md) , amely együttműködik az Azure Active Directory B2C (az Azure AD B2C).
@@ -41,7 +41,7 @@ Ez a cikk részletek hogyan:
 Beállítása **Azure App Service** ügyféltanúsítványok megköveteléséhez, állítsa be a webes alkalmazás `clientCertEnabled` beállítással hely *igaz*. Ezt a módosítást a REST API-t kell használnia. A beállítás a megoldást vezet be az Azure portálon keresztül érhető el. Állapítsa meg a beállítás a RESTful alkalmazás a **beállítások** menüben, a **Fejlesztőeszközök**, jelölje be **erőforrás-kezelő**.
 
 >[!NOTE]
->Győződjön meg arról, hogy az Azure App Service-csomag Standard vagy nagyobb. További információkért lásd: [Azure App Service-csomagok részletes áttekintése](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
+>Győződjön meg arról, hogy az Azure App Service-csomag Standard vagy nagyobb. További információkért lásd: [Azure App Service-csomagok részletes áttekintése](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
 
 
 Használjon [Azure erőforrás-kezelővel (előzetes verzió)](https://resources.azure.com) beállítása a **clientCertEnabled** tulajdonságot *igaz*, a következő ábrán látható módon:
@@ -49,7 +49,7 @@ Használjon [Azure erőforrás-kezelővel (előzetes verzió)](https://resources
 ![Az Azure erőforrás-kezelőben clientCertEnabled beállítása](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-resource-explorer.png)
 
 >[!NOTE]
->További információt a beállítás a **clientCertEnabled** tulajdonság, lásd: [TLS konfigurálása kölcsönös hitelesítést a web Apps](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
+>További információt a beállítás a **clientCertEnabled** tulajdonság, lásd: [TLS konfigurálása kölcsönös hitelesítést a web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
 
 >[!TIP]
 >Azt is megteheti, hogy egyszerűbb létrehozható a REST API-hívás, használhatja a [ARMClient](https://github.com/projectkudu/ARMClient) eszköz.
@@ -165,7 +165,7 @@ Az Azure AD B2C küld a RESTful szolgáltatás tanúsítványt is nem az Azure W
 Ebben a szakaszban adja hozzá az ASP.NET mintakód, amely ellenőrzi a tanúsítvány tulajdonságainak hitelesítési célokra.
 
 > [!NOTE]
->Ügyféltanúsítvány-alapú hitelesítés az Azure App Service konfigurálásával kapcsolatos további információkért lásd: [TLS konfigurálása kölcsönös hitelesítést a web Apps](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
+>Ügyféltanúsítvány-alapú hitelesítés az Azure App Service konfigurálásával kapcsolatos további információkért lásd: [TLS konfigurálása kölcsönös hitelesítést a web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
 
 ### <a name="61-add-application-settings-to-your-projects-webconfig-file"></a>6.1 Alkalmazásbeállítások hozzáadása a projekthez web.config fájlhoz
 A Visual Studio-projekt korábban létrehozott, adja hozzá a következő alkalmazás beállításait, hogy a *web.config* után fájlt a `appSettings` elem:

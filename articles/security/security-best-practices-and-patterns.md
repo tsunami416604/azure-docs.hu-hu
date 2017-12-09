@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 593cb6da3527a32906e8e9faa11dc13a3ef5440f
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: HT
+ms.openlocfilehash: c8a25d64f3925ec963d8d02c827bd2045994feac
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Az Azure biztonsági ajánlott eljárásairól és mintáiról
 Már van a következő, az Azure biztonsági ajánlott eljárások és minták cikkeket. Győződjön meg arról, hogy a webhelyét rendszeres időközönként frissítéseket az Azure biztonsági ajánlott eljárásairól és mintáiról egyre bővülő listáját lásd:  
@@ -30,7 +30,7 @@ Már van a következő, az Azure biztonsági ajánlott eljárások és minták c
 * [Azure IaaS ajánlott biztonsági eljárások] (azure-security-iaas.md)
 * [Az Azure határ ajánlott biztonsági eljárások](../best-practices-network-security.md)
 * [Biztonságos hibrid hálózati architektúra megvalósítása az Azure-ban](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
-* [Azure PaaS ajánlott eljárásokat] (https://docs.microsoft.com/en-us/azure/security/security-paas-deployments)
+* [Azure PaaS ajánlott eljárásokat] (https://docs.microsoft.com/azure/security/security-paas-deployments)
 
 Azure tartalmaz egy biztonságos platform, amelyen a megoldásokat hozhat létre. Azt is adja meg, szolgáltatásokat és technológiákat biztonságosabbá a megoldások Azure-on. A sok lehetőségeket, mert sokan rendelkezik zöngés Mi a Microsoft azt javasolja, hogy ajánlott eljárásairól és mintáiról biztonsági javítására iránt.
 

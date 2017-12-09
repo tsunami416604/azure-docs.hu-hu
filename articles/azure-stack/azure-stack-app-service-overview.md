@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: anwestg
-ms.openlocfilehash: 19b712d622276b6521317d79c68fc093dba547db
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
-ms.translationtype: HT
+ms.openlocfilehash: fd2d355b2556faddb06acf2998b54ffcc9aa7919
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Az Azure Stack App Service szolgáltatásának áttekintése
 
@@ -37,8 +37,8 @@ Az App Service legfontosabb funkciói és képességei többek között az aláb
 
 App Service alkalmazás számos különböző, amelyek célja, hogy egy adott munkaterhelés gazdagép kínálja:
 
-- [Webalkalmazások](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview) webhelyek és webalkalmazások üzemeltetéséhez.
-- [API-alkalmazások](https://docs.microsoft.com/en-us/azure/app-service-api/app-service-api-apps-why-best-platform) RESTful API-k üzemeltetéséhez.
+- [Webalkalmazások](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) webhelyek és webalkalmazások üzemeltetéséhez.
+- [API-alkalmazások](https://docs.microsoft.com/azure/app-service-api/app-service-api-apps-why-best-platform) RESTful API-k üzemeltetéséhez.
 - Az Azure Functions eseményvezérelt, kiszolgáló nélküli munkaterhelések üzemeltetéséhez.
 
 A word alkalmazás Itt a számítási feladatok futtatására elkülönített üzemeltetési erőforrásokat jelenti. A „webalkalmazás” alatt például általában mind a számítási erőforrásokat, mind az alkalmazáskódot szokták érteni, amelyek a böngészőben együttesen hoznak létre működő funkciót. De az App Service webalkalmazás Azure verem biztosít az alkalmazás kódjában futtató számítási erőforrások.

@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/05/2017
+ms.date: 12/07/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b507b9108dca2fd3aee4acdac231acad9c9154e8
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: c0a102cac9b5b7bd284de6f5f51b75386c2581fe
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>Központi telepítése és figyelése IoT peremhálózati modulok léptékű – előzetes
 
@@ -40,7 +40,7 @@ Eszköz twins és címkékkel kapcsolatos további információkért lásd: [meg
 
 ## <a name="create-a-deployment"></a>Hozzon létre telepítést
 
-1. Jelentkezzen be a [Azure-portálon] [ lnk-portal] , és keresse meg az IoT hub. 
+1. Az a [Azure-portálon][lnk-portal], keresse fel az IoT hub. 
 1. Válassza ki **IoT peremhálózati (előzetes verzió)**.
 1. Válassza ki **IoT Edge-telepítés hozzáadása**.
 
@@ -61,26 +61,25 @@ Ha a központi telepítés létrehozásához engedélyezi nincsenek modulok, meg
 >[!NOTE]
 >Az Azure Machine Learning és az Azure Functions automatizált Azure szolgáltatás központi telepítése még nem támogatott. A modul egyéni központi telepítés segítségével manuálisan ezekbe a szolgáltatásokba hozzá szeretne adni a telepítéshez. 
 
-A modul hozzá lesz egy Azure-ból szolgáltatás kövesse az alábbi lépéseket:
-1. Válassza ki **hozzáadása Azure IoT peremhálózati modul**.
+Azure Stream Analytics egy modul hozzáadásához kövesse az alábbi lépéseket:
+1. Válassza ki **importálási Azure Stream Analytics IoT peremhálózati modul**.
 1. A legördülő menükben segítségével válassza ki az Azure szolgáltatáspéldány, amely számára telepíteni kívánja.
-1. Válassza ki **mentése** a modulok hozzá szeretne adni a telepítéshez. 
+1. Válassza ki **mentése** a modul hozzá szeretne adni a telepítéshez. 
 
 Adja hozzá az egyéni kódot modulként, vagy manuálisan adja hozzá az Azure-szolgáltatások modul, kövesse az alábbi lépéseket:
-1. Válassza ki **hozzáadás egyéni IoT peremhálózati modul**.
+1. Válassza ki **hozzáadása IoT peremhálózati modul**.
 1. A modul adjon egy **neve**.
-1. Az a **kép** mezőbe írja be a Docker-tároló kép a modulhoz tartozó: `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`.
-1. A legördülő menü alatt használható **OS** és **architektúra** a Docker-tároló, ez a modul jelölő tulajdonságainak azonosításához. 
-1. Adja meg az esetleges **beállítások létrehozása** , amely a tárolóban kell átadni. További információkért lásd: [docker létrehozása][lnk-docker-create].
+1. Az a **lemezkép URI** mezőbe írja be a Docker-tároló kép a modulhoz. 
+1. Adja meg az esetleges **tároló létrehozása beállítások** , amely a tárolóban kell átadni. További információkért lásd: [docker létrehozása][lnk-docker-create].
 1. Válassza ki a legördülő menü segítségével egy **indítsa újra a házirend**. A következő lehetőségek közül választhat: 
    * **Mindig** -a modul mindig újraindul, ha bármilyen okból állítja le.
    * **Soha ne** -a modul soha nem indul újra, ha bármilyen okból állítja le.
    * **A sikertelen** -a modul újraindul, ha azt összeomlik, de nem Ha állítja le megfelelően. 
    * **A sérült** -a modul újraindítása, ha összeomlik, vagy a nem kifogástalan állapotú adja vissza. Már minden modul egészségügyi állapot függvény végrehajtásához. 
-1. A legördülő menü segítségével válassza ki az indítási **állapot** modul. A következő lehetőségek közül választhat:
+1. A legördülő menü segítségével válassza ki a **szükséges állapot** modul. A következő lehetőségek közül választhat:
    * **Futó** -Ez az alapértelmezett beállítás. A modul futtató üzembe helyezése után azonnal elindul.
    * **Leállítva** -üzembe helyezése után a modul üresjárat mindaddig, amíg Ön vagy egy másik modul start alapján kell.
-1. Válassza ki **szerkesztés modul iker** Ha hozzá szeretne adni a címkéket és a kívánt tulajdonságokkal modulhoz. 
+1. Válassza ki **engedélyezése** Ha azt szeretné, a címkéket és a kívánt tulajdonságok hozzáadása a modul iker. 
 1. Válassza ki **mentése** a modul hozzá szeretne adni a telepítéshez. 
 
 Ha már konfigurált a modulok, válassza ki a **következő** három lépés áthelyezése.
@@ -172,7 +171,7 @@ Ha töröl egy központi telepítést, azokat az eszközöket, a következő leg
 További információ [modulok telepítése peremeszközök][lnk-deployments].
 
 <!-- Images -->
-[1]: ./media/how-to-deploy-monitor/view-deployments.png
+[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
 
 <!-- Links -->
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md

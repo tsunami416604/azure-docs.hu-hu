@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/27/2017
 ms.author: rickbyh
-ms.openlocfilehash: a6895f7a145c7b925703e4deb32411d51e7a3cab
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: HT
+ms.openlocfilehash: 89a5ee969cf4337dbc0521027f36f80e357c54e5
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Az SQL Server Management Studio és az Azure AD többtényezős hitelesítés beállítása
 
@@ -67,7 +67,7 @@ Ha ellenőrzés befejeződött, az SSMS csatlakozik, általában feltéve, hogy 
 - Többtényezős hitelesítés az Azure SQL Database áttekintését lásd: az univerzális hitelesítési [SQL-adatbázis és az SQL Data Warehouse (többtényezős hitelesítés támogatása SSMS)](sql-database-ssms-mfa-authentication.md).  
 - Az adatbázishoz való hozzáférés engedélyezése mások: [SQL adatbázis-hitelesítés és engedélyezés: hozzáférés biztosítása](sql-database-manage-logins.md)  
 - Győződjön meg arról, hogy mások a tűzfalon keresztül csatlakozhassanak: [az Azure portál használata az Azure SQL Database kiszolgálószintű tűzfal szabály konfigurálása](sql-database-configure-firewall-settings.md)  
-- Használata esetén **Active Directory - univerzális többtényezős hitelesítéssel** hitelesítés ADAL nyomkövetés elérhető kezdődő [SSMS 17.3](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms). Ki alapértelmezés szerint, ha bekapcsolja a ADAL nyomkövetési használatával a **eszközök**, **beállítások** menüben, a **Azure Services**, **Azure felhőbe**,  **ADAL kimeneti ablak nyomkövetési szint**, utána pedig engedélyezése **kimeneti** a a **nézet** menü. A nyomkövetési adatokat érhetők el a kimeneti ablakban lehetőséget választva **Azure Active Directory lehetőséget**.   
+- Használata esetén **Active Directory - univerzális többtényezős hitelesítéssel** hitelesítés ADAL nyomkövetés elérhető kezdődő [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ki alapértelmezés szerint, ha bekapcsolja a ADAL nyomkövetési használatával a **eszközök**, **beállítások** menüben, a **Azure Services**, **Azure felhőbe**,  **ADAL kimeneti ablak nyomkövetési szint**, utána pedig engedélyezése **kimeneti** a a **nézet** menü. A nyomkövetési adatokat érhetők el a kimeneti ablakban lehetőséget választva **Azure Active Directory lehetőséget**.   
 
 
 [1]: ./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png

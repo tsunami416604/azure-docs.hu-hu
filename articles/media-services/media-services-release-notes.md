@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 358b3701773e6cd61b4a3dfddf4bb092741ff713
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 0b10132f1a6be3a237ffa386f45233e3494d10eb
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 A kibocsátási megjegyzések összesítse a módosításokat a korábbi kiadásokban és ismert problémákat.
@@ -58,7 +58,7 @@ A Media Services REST API verziójának előzményei kapcsolatos információké
 2.  Ha a videó kodek H.265(HEVC), például rögzített iOS11 vagy GoPro Hero 6, videó kódolt forrás videó használhatja vagy a prémium szintű kódolás, vagy a adás ezeket a videók kódolásához. Tekintse meg a [Online szolgáltatási feltételek](https://azure.microsoft.com/support/legal/) a szabadalmi licenc egy fontos megjegyzés.
 3.  Ha tartalmazó több nyelv zeneszámok, majd mindaddig, amíg a nyelvi értékek megfelelően a megfelelő fájlformátum specifikációjának (pl. ISO MP4) megfelelően címkével ellátott tartalom, majd segítségével a adás, hogy a tartalom kódolása adatfolyam. Az eredő streamelési locator felsorolja az elérhető hang nyelveket.
 4.  Standard Encoder mostantól támogatja a két új csak rendszer készletek, "AAC hang" és "AAC jó minőségű hang". Mindkét sztereó AAC kimeneti, 128 kb/s és 192 Kbit/s átviteli sebességgel rendre eredményez.
-5.  A prémium szintű kódolás mostantól támogatja az QuickTime/MOV fájlformátumok bemeneti adatként, mindaddig, amíg a videó kodek, vagy egy olyan a [Apple ProRes változatban is elkészíti az itt felsorolt](https://docs.microsoft.com/en-us/azure/media-services/media-services-media-encoder-standard-formats), illetve a hangfelvételen hallható AAC vagy PCM.
+5.  A prémium szintű kódolás mostantól támogatja az QuickTime/MOV fájlformátumok bemeneti adatként, mindaddig, amíg a videó kodek, vagy egy olyan a [Apple ProRes változatban is elkészíti az itt felsorolt](https://docs.microsoft.com/azure/media-services/media-services-media-encoder-standard-formats), illetve a hangfelvételen hallható AAC vagy PCM.
 
 > [!NOTE]
 > A prémium szintű kódolás nem támogatja, például DVC/DVCPro videó QuickTime/MOV fájlok csomagolni bemeneti adatként.  Standard Encoder azonban a Videó kodekek támogatja.

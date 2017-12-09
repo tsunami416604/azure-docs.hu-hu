@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 85da2a521af0ca92c07d8b2041e92b98f98e9661
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: HT
+ms.openlocfilehash: cce112929ff2f4fb48c2c6e2ddc2d4eee743b790
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligens, amelyen az Azure SQL Database teljesítménnyel kapcsolatos problémák elhárítása
 
@@ -52,7 +52,7 @@ Intelligens Insights teljesítményproblémák automatikusan észleli az SQL Dat
 | [Árképzési szint alacsonyabb szintre való visszalépést](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Egy árképzési szint alacsonyabb szintre való visszalépést művelet csökkent SQL adatbázis teljesítményét érintő elérhető erőforrások. |
 
 > [!TIP]
-> Az SQL-adatbázis optimális teljesítményének folyamatos, engedélyezése [Azure SQL Database automatikus hangolása](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning). Ez az SQL Database beépített funkciói egyedi szolgáltatása folyamatosan figyeli az SQL-adatbázis, automatikusan beállítja a indexek és lekérdezés végrehajtási terv javításokat vonatkozik.
+> Az SQL-adatbázis optimális teljesítményének folyamatos, engedélyezése [Azure SQL Database automatikus hangolása](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning). Ez az SQL Database beépített funkciói egyedi szolgáltatása folyamatosan figyeli az SQL-adatbázis, automatikusan beállítja a indexek és lekérdezés végrehajtási terv javításokat vonatkozik.
 >
 
 Az alábbi szakasz a fent felsorolt észlelhető teljesítmény minták részletesebben ismerteti.
@@ -63,7 +63,7 @@ Az alábbi szakasz a fent felsorolt észlelhető teljesítmény minták részlet
 
 Ebben a mintában észlelhető teljesítmény érhető el erőforrás-korlátozások, a munkavégző vonatkozó korlátokat és a munkamenet korlátok elérése kapcsolatos teljesítményproblémák egyesíti. Ezen teljesítményprobléma észleli, miután a diagnosztikai naplófájl Leírás mezőt azt jelzi, hogy a teljesítménycsökkenés oka kapcsolatos erőforrás, a munkavégző vagy a munkamenet korlátok.
 
-SQL-adatbázis erőforrásainak általában nevezzük [DTU-erőforrásokat](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-what-is-a-dtu). Processzor- és i/o-(adatok és a tranzakciós napló i/o) erőforrások kevert mérték állnak. A mintát erőforrás korlátok elérése a rendszer felismeri észlelésekor lekérdezési teljesítmény romlását okozzák bármelyik a mért erőforrás korlátok elérése.
+SQL-adatbázis erőforrásainak általában nevezzük [DTU-erőforrásokat](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu). Processzor- és i/o-(adatok és a tranzakciós napló i/o) erőforrások kevert mérték állnak. A mintát erőforrás korlátok elérése a rendszer felismeri észlelésekor lekérdezési teljesítmény romlását okozzák bármelyik a mért erőforrás korlátok elérése.
 
 A munkamenet-korlátok erőforrás azt jelzi, hogy az SQL-adatbázist a rendelkezésre álló egyidejű bejelentkezések száma. Ez a teljesítmény minta van ismer fel, ha az SQL-adatbázishoz kapcsolódó alkalmazások elérte az adatbázis elérhető egyidejű bejelentkezések száma. Ha alkalmazások próbálnak további munkamenetek, mint amennyi egy adatbázis elérhető, a lekérdezési teljesítményt befolyásolja.
 
@@ -75,7 +75,7 @@ A diagnosztikai naplófájl kimenete lekérdezés kivonatokat a lekérdezések, 
 
 Elérte az elérhető munkamenet-korlátok, ha az alkalmazások optimalizálhatja a adatbázis bejelentkezések számának csökkentésével. Ha nem tud az adatbázishoz az alkalmazásaiból bejelentkezések számának csökkentése érdekében, fontolja meg az adatbázis árképzési szintjének növelése. Vagy ossza fel, és az adatbázis áthelyezése több elosztott terhelésű alkalmazások és szolgáltatások terjesztési több adatbázisra.
 
-Lásd: munkamenet korlátok feloldásával kapcsolatos további javaslatok [SQL adatbázis maximális bejelentkezések határain kezelése](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Az előfizetési szinten érhető el erőforrás-határértékeken regisztrációval, lásd: [SQL-adatbázis erőforrás korlátok](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-resource-limits).
+Lásd: munkamenet korlátok feloldásával kapcsolatos további javaslatok [SQL adatbázis maximális bejelentkezések határain kezelése](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Az előfizetési szinten érhető el erőforrás-határértékeken regisztrációval, lásd: [SQL-adatbázis erőforrás korlátok](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits).
 
 ## <a name="workload-increase"></a>Munkaterhelések növelése
 
@@ -145,7 +145,7 @@ A MAXDOP kiszolgálói konfigurációs beállítás megadása az SQL Database se
 
 A diagnosztika naplóban, amelynek végrehajtása időtartama magasabb, hiszen azok egynél kellett volna volt párhuzamos működésű lekérdezések kapcsolódó lekérdezés kivonatok kimenete. A napló is kiírja CXP várakozási idő. Most azt az időszakot, egyetlen szervező/koordinátor szál (szál 0) arra vár, hogy az eredmények egyesíti, és azokat, amelyek áthelyezése előtt minden más szálak jelöli. Emellett a diagnosztikai naplófájl kimenete, amely a gyenge teljesítményű lekérdezések végrehajtása általános várakoztak a várakozási idő. Ezt az információt alapját képező hibaelhárításhoz használja.
 
-Először is optimalizálhatja, vagy egyszerűsítse a összetett lekérdezések. Jó gyakorlat az, hogy hosszú kötegelt feladatok kisebb feloszthatja. Is ellenőrizze, hogy létrehozta a lekérdezéseket indexek. Manuálisan is párhuzamossági (MAXDOP) a legnagyobb mértékben kényszeríthet egy lekérdezést, amely a gyenge hajt végre lett megjelölve. Ez a művelet T-SQL használatával, lásd: [a MAXDOP kiszolgálói konfigurációs beállítás](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option).
+Először is optimalizálhatja, vagy egyszerűsítse a összetett lekérdezések. Jó gyakorlat az, hogy hosszú kötegelt feladatok kisebb feloszthatja. Is ellenőrizze, hogy létrehozta a lekérdezéseket indexek. Manuálisan is párhuzamossági (MAXDOP) a legnagyobb mértékben kényszeríthet egy lekérdezést, amely a gyenge hajt végre lett megjelölve. Ez a művelet T-SQL használatával, lásd: [a MAXDOP kiszolgálói konfigurációs beállítás](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option).
 
 A beállítás a MAXDOP kiszolgáló konfigurációs beállítás nulla (0), mint az alapértelmezett érték azt jelzi, hogy SQL-adatbázis segítségével az összes rendelkezésre álló logikai Processzormagok parallelize szálainak egyetlen lekérdezés végrehajtása. Beállítás MAXDOP egy (1) azt jelzi, hogy csak egyetlen mag egy egyetlen lekérdezés-végrehajtás nem használható. Gyakorlatilag ez azt jelenti, hogy a párhuzamos végrehajtás ki van kapcsolva. Attól függően, hogy a /-esetenként az adatbázis és a diagnosztika rendelkezésre álló magot naplózza az adatokat, észlelheti a párhuzamos lekérdezés-végrehajtás, abban az esetben, ha a probléma megoldására szolgáló magok száma MAXDOP lehetőséget.
 
@@ -231,7 +231,7 @@ Ez észlelhető teljesítmény minta, amelyben a szűk keresztmetszetek a tempDB
 
 A diagnosztikai naplófájl kimenete tempDB versengés részleteit. A információt használhatja kiindulási pontként hibaelhárításhoz. Két dolgot is végezze el az ilyen versengés enyhítse, és növelhető a teljes munkaterhelés: leállíthatja, az ideiglenes táblák használata. A memóriaoptimalizált táblák is használhatja. 
 
-További információkért lásd: [memóriaoptimalizált táblák bemutatása](https://docs.microsoft.com/en-us/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
+További információkért lásd: [memóriaoptimalizált táblák bemutatása](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 
 ## <a name="elastic-pool-dtu-shortage"></a>A rugalmas készlet DTU kevés
 
@@ -328,10 +328,10 @@ Hozzáférés intelligens Insights Azure SQL elemzés címen az Azure portálon 
 > [!TIP]
 > Válassza ki a folyamatábra PDF-verziójának letöltéséhez.
 
-Intelligens Insights általában kell végrehajtani a kiváltó okának elemzése a teljesítménycsökkenés oka egy órája. Ha a probléma nem találja az intelligens Insights és alapvető fontosságú, használja a Lekérdezéstár kell azonosítania a teljesítmény a probléma okának. (Ezek a problémák általában kevesebb, mint egy órával korábbiak.) További információkért lásd: [figyelemmel kísérni a teljesítményét a Lekérdezéstár használatával](https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
+Intelligens Insights általában kell végrehajtani a kiváltó okának elemzése a teljesítménycsökkenés oka egy órája. Ha a probléma nem találja az intelligens Insights és alapvető fontosságú, használja a Lekérdezéstár kell azonosítania a teljesítmény a probléma okának. (Ezek a problémák általában kevesebb, mint egy órával korábbiak.) További információkért lásd: [figyelemmel kísérni a teljesítményét a Lekérdezéstár használatával](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
 ## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, [intelligens Insights](sql-database-intelligent-insights.md) fogalmakat.
 - Használja a [intelligens Insights Azure SQL Database teljesítményét diagnosztikai naplófájl](sql-database-intelligent-insights-use-diagnostics-log.md).
-- A figyelő [Azure SQL adatbázis Azure SQL elemzés használatával](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql).
+- A figyelő [Azure SQL adatbázis Azure SQL elemzés használatával](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
 - Ismerje meg, hogy [gyűjtése és felhasználása az Azure-erőforrások naplóadatait](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).

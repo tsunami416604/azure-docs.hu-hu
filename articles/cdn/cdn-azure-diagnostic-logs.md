@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: 3e8727e80571be70124fb439f4c7e448f521b692
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 7bb4eebc80d1c0fdcb9fb5d0f6bb7aeeeb3cb08d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -261,7 +261,7 @@ Kövesse az alábbi lépéseket a felügyeleti megoldás hozzáadása:
 
 ### <a name="offers-and-pricing-tiers"></a>Ajánlatok és tarifacsomagok
 
-Ajánlatok és az OMS-kezelési megoldások tarifacsomagok [Itt](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
+Ajánlatok és az OMS-kezelési megoldások tarifacsomagok [Itt](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
 
 ### <a name="customizing-views"></a>Nézetek testreszabása
 
@@ -410,8 +410,8 @@ Példa tulajdonságai:
 
 * [Az Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Egyszerűsített analitika Azure CDN kiegészítő portálon keresztül](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Az Azure OMS szolgáltatáshoz](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-overview)
-* [Az Azure Naplóelemzés REST API-n](https://docs.microsoft.com/en-us/rest/api/loganalytics)
+* [Az Azure OMS szolgáltatáshoz](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Az Azure Naplóelemzés REST API-n](https://docs.microsoft.com/rest/api/loganalytics)
 
 
 

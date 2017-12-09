@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: sujie
-ms.openlocfilehash: 8e3f1ae6739896dfd1329561dbcede38a6069546
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
-ms.translationtype: HT
+ms.openlocfilehash: b06eae6b85f2ca41390955cde2499af2531e2e12
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>A Visual Studio Azure Stream Analytics-eszközök használata
 A Visual Studio Azure Stream Analytics-eszközökkel is általánosan elérhető. Ezek az eszközök a Stream Analytics-felhasználók a hibaelhárítás, valamint összetett lekérdezéseket írhat gazdagabb élmény engedélyezése, és akár a helyi lekérdezéseket írhat. A Stream Analytics-feladat a Visual Studio-projekt is exportálhatja.
@@ -40,7 +40,7 @@ A következő előfeltételek teljesülését, az oktatóanyag teljesítéséhez
 
 * Befejezés legfeljebb "Stream Analytics-feladat létrehozása" lépéseit az oktatóanyag [egy IoT-megoldás létrehozása a Stream Analytics segítségével](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics). 
 * A Visual Studio 2017, a Visual Studio 2015-öt vagy a Visual Studio 2013 Update 4 telepítése. Enterprise (Ultimate/prémium), Professional és Community Edition kiadásai támogatottak. Express kiadás nem támogatott. 
-* Kövesse a [telepítési utasításokat](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) Stream Analytics-eszközök telepítése a Visual Studio.
+* Kövesse a [telepítési utasításokat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) Stream Analytics-eszközök telepítése a Visual Studio.
 
 ## <a name="create-a-stream-analytics-project"></a>A Stream Analytics-projekt létrehozása
 A Visual Studio válassza **fájl** > **új projekt**. A bal oldali sablonok listáján válassza ki a **Stream Analytics**, majd válassza ki **Azure Stream Analytics alkalmazás**.

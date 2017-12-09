@@ -1,24 +1,22 @@
 ---
-title: "A Machine Learning-munkaterület létrehozása |} Microsoft Docs"
+title: "Hozzon létre a Machine Learning Studio munkaterületének |} Microsoft Docs"
 description: "Egy munkaterület létrehozása az Azure Machine Learning Studióban"
 services: machine-learning
-documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
-ms.author: garye;bradsev;ahgyger
-ms.openlocfilehash: 4e1fa0a9abd4721d15a94923263ff2f521bceee8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.date: 12/07/2017
+ms.author: garye
+ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview
+ms.openlocfilehash: 7aad885b1643ddeb25e5d00a151005b8444315fa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterület létrehozása és megosztása
 Ez a menüben a témakörök, amelyek bemutatják, hogyan állíthatja be a különböző adatok tudományos környezetekben a Cortana Analytics folyamat (nagybetűs) által használt mutató hivatkozásokat tartalmaz.
@@ -39,16 +37,16 @@ Azure Machine Learning Studio használatához meg kell rendelkeznie a Machine Le
 
 2. Kattintson a **+ új**
 
-3. Válassza ki **Eszközintelligencia + analitika**, kattintson a **Machine Learning-munkaterület**, majd kattintson a **létrehozása**
+3. Írja be a keresőmezőbe, **Machine Learning Studio munkaterületének** , és válassza ki a megfelelő elemet. Ezután kattintson a kijelölés **létrehozása** az oldal alján.
 
-4. Adja meg a munkaterület adatokat
+4. Adja meg a munkaterület adatokat:
 
     - A *munkaterületnevet* nem adható meg a befejezési legfeljebb 260 karakter lehet. A neve nem tartalmazhatja a következő karaktereket:`< > * % & : \ ? + /`
     - A *web service-csomag* akkor válasszon (vagy hozzon létre), valamint a társított *tarifacsomag* válassza ki, akkor használatos, ha a munkaterület webszolgáltatások telepítése.
 
     ![Új munkaterület létrehozása](./media/create-workspace/create-new-workspace.png)
 
-5. Kattintson a **Create** (Létrehozás) gombra
+5. Kattintson a **Create** (Létrehozás) gombra.
 
 Ha a munkaterületet van telepítve, a Machine Learning Studióban indíthatja el.
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: kakhan
-ms.openlocfilehash: 15ed35ab3a082db3376890992be3a29b6e042a2f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
-ms.translationtype: HT
+ms.openlocfilehash: 4c2d3ba72b768e21a027478dfe912689457049fd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption
 A Microsoft Azure elkötelezett a kifejezetten a adatvédelem, az adatok közös joghatóság alá és a lehetővé teszi, hogy az Azure tárolt adatok végig a vezérlő speciális technológiák titkosításához, szabályozása és titkosítási kulcsok kezeléséhez az adatok vezérlő & naplózási hozzáférést. Ez rugalmasságot biztosít, Azure-ügyfél és válassza ki a saját üzleti igényeinek leginkább megfelelő megoldást. A dokumentum azt kódelemeit egy új technológia megoldás "Azure Disk Encryption for Windows és Linux infrastruktúra-szolgáltatási virtuális gép által" és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni segítségével. A dokumentum biztosít részletes útmutatás a lemezt Azure titkosítási szolgáltatásai, beleértve a támogatott forgatókönyveket, és a felhasználói élmény.
@@ -199,7 +199,7 @@ Mielőtt engedélyezte a támogatott forgatókönyveket, a "Overview" szakaszban
   > [!NOTE]
   > Ha a biztonsági házirend korlátozza az Azure virtuális gépek Internet-hozzáféréssel, oldja meg az előző URI, és egy adott szabályt, amely engedélyezi a kimenő kapcsolódás az IP-címek konfigurálásához.
   >
-  >Konfigurálja, és az Azure Key Vault eléréséhez (https://docs.microsoft.com/en-us/azure/key-vault/key-vault-access-behind-firewall) tűzfal mögött
+  >Konfigurálja, és az Azure Key Vault eléréséhez (https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall) tűzfal mögött
 
 * A legújabb Azure PowerShell SDK-verzió segítségével konfigurálhatja az Azure Disk Encryption. Töltse le a legújabb verzióját [Azure PowerShell kiadás](https://github.com/Azure/azure-powershell/releases)
 
@@ -218,9 +218,9 @@ Mielőtt engedélyezte a támogatott forgatókönyveket, a "Overview" szakaszban
 * Egyéni csoportházirenddel tartományhoz csatlakoztatott virtuális gépeken a BitLocker házirendnek tartalmaznia kell a következő beállítás: `Configure user storage of bitlocker recovery information -> Allow 256-bit recovery key` Azure Disk Encryption sikertelenek lesznek, amikor egyéni csoportházirend-beállítások a BitLocker nem kompatibilisek. Olyan gépeken, amelyek nem rendelkezett a megfelelő házirend-beállításokra, az új házirend alkalmazása, újraindítás az új házirend frissítése (gpupdate.exe Force), és indítsa újra lehet szükség.  
 * Egy Azure AD-alkalmazást létrehozni, hozzon létre egy kulcstartót, vagy állítson be egy meglévő kulcstároló és engedélyezheti a titkosítást, lásd: a [Azure Disk Encryption előfeltétel PowerShell-parancsfájl](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1).
 * Az Azure parancssori felület használatával lemeztitkosítás Előfeltételek konfigurálásához lásd: [a Bash parancsfájlok](https://github.com/ejarvi/ade-cli-getting-started).
-* Az Azure Backup szolgáltatás segítségével biztonsági mentése és visszaállítása titkosított virtuális gépeken, ha az Azure Disk Encryption titkosítás engedélyezve van, a virtuális gépek titkosításához Azure Disk Encryption kulcs konfigurációval. A biztonsági mentési szolgáltatás támogatja a virtuális gépek nem-KEK vagy KEK-konfigurációk használatával titkosított. Lásd: [biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure biztonsági másolatok titkosításának](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).
+* Az Azure Backup szolgáltatás segítségével biztonsági mentése és visszaállítása titkosított virtuális gépeken, ha az Azure Disk Encryption titkosítás engedélyezve van, a virtuális gépek titkosításához Azure Disk Encryption kulcs konfigurációval. A biztonsági mentési szolgáltatás támogatja a virtuális gépek nem-KEK vagy KEK-konfigurációk használatával titkosított. Lásd: [biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure biztonsági másolatok titkosításának](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
-* A Linux operációs rendszer kötetének titkosításához, vegye figyelembe, hogy a virtuális gép újraindítása jelenleg szükséges, a folyamat végén. Ezt megteheti a portálon, a powershell vagy a parancssori felület.   A titkosítási előrehaladását úgy követheti nyomon, rendszeres időközönként lekérdezi a Get-AzureRmVMDiskEncryptionStatus https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus által visszaadott állapotüzenet.  Ha a titkosítás befejeződött, a Ez a parancs által visszaadott állapotüzenet jelzi ezt.  Például "Feladatnézetben: operációsrendszer-lemez titkosítása sikeres volt, indítsa újra a virtuális gép" ezen a ponton a virtuális gép újraindítása és használt.  
+* A Linux operációs rendszer kötetének titkosításához, vegye figyelembe, hogy a virtuális gép újraindítása jelenleg szükséges, a folyamat végén. Ezt megteheti a portálon, a powershell vagy a parancssori felület.   A titkosítási előrehaladását úgy követheti nyomon, rendszeres időközönként lekérdezi a Get-AzureRmVMDiskEncryptionStatus https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus által visszaadott állapotüzenet.  Ha a titkosítás befejeződött, a Ez a parancs által visszaadott állapotüzenet jelzi ezt.  Például "Feladatnézetben: operációsrendszer-lemez titkosítása sikeres volt, indítsa újra a virtuális gép" ezen a ponton a virtuális gép újraindítása és használt.  
 
 * Az Azure Disk Encryption Linux rendszeren való csatlakoztatott fájlrendszer Linux előtt titkosítási adatok lemezt igényel
 
@@ -396,7 +396,7 @@ Hozzon létre egy kulcstartót, használja az alábbi lehetőségek közül:
 * ["101-kulcs-tároló-" Resource Manager-sablon létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 * [Az Azure PowerShell kulcstároló-parancsmagok](/powershell/module/azurerm.keyvault/#key_vault)
 * Azure Resource Manager
-* Hogyan [a kulcstartót biztonságos](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault)
+* Hogyan [a kulcstartót biztonságos](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)
 
 > [!NOTE]
 > Ha már állított be kulcstároló az előfizetéséhez, ugorjon a következő szakaszban.

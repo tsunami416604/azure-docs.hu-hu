@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 87fb2b49ef6680d3d7a46f378aedf99936fb580c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: HT
+ms.openlocfilehash: 0abf2635e08bfc3113e9dec1947b9bb162cd3952
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-konfigurációjának beállítása
 > 
@@ -159,7 +159,7 @@ Ha a helyi módosításokat vannak, és a kiszolgáló tárházba leküldött, a
 
 ![Üzembe helyezés][api-management-configuration-deploy]
 
-Információ a REST API használatával a művelet végrehajtása: [telepítése Git vált, a REST API használatával konfigurációs adatbázis](https://docs.microsoft.com/en-us/rest/api/apimanagement/tenantconfiguration).
+Információ a REST API használatával a művelet végrehajtása: [telepítése Git vált, a REST API használatával konfigurációs adatbázis](https://docs.microsoft.com/rest/api/apimanagement/tenantconfiguration).
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Fájl- és helyi Git-tárház szerkezete-hivatkozás
 A fájlok és mappák a helyi git-tárházban tartalmaz a szolgáltatáspéldány konfigurációs adatait.

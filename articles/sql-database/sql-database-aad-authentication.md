@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 09/12/2017
 ms.author: rickbyh
-ms.openlocfilehash: b6a7a1d6e7c9f8a921dc73bb3bf629de71f85acf
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
-ms.translationtype: HT
+ms.openlocfilehash: 3493ac89775bfccc0139c5cbefc046e9fef35bde
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-or-sql-data-warehouse"></a>Az SQL Database vagy az SQL Data Warehouse hitelesítéshez használandó Azure Active Directory-hitelesítés
 Az Azure Active Directory-hitelesítés a Microsoft Azure SQL-adatbázishoz szeretne csatlakozni egy olyan mechanizmus és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) identitások az Azure Active Directory (Azure AD) segítségével. Az Azure AD-alapú hitelesítés adatbázis-felhasználók identitását, és más Microsoft-szolgáltatásokban egyetlen központi helyen központilag kezelheti. Központi azonosítófelügyeleti biztosít egy helyen adatbázis-felhasználók kezelése és egyszerűbbé teszi a jogosultság kezelése. Előnyei a következők:
@@ -100,7 +100,7 @@ Az Azure Active Directory authentication az identitásokat az Azure AD-adatbázi
 * [Microsoft JDBC illesztőprogram 6.0 az SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) támogatja az Azure AD hitelesítési. Lásd még [kapcsolat tulajdonságainak](https://msdn.microsoft.com/library/ms378988.aspx).   
 * A PolyBase nem tudják hitelesíteni magukat az Azure AD-hitelesítés használatával.   
 * Az Azure AD-alapú hitelesítés van támogatja az SQL Database az Azure-portálon **adatbázis importálása** és **adatbázis exportálása** paneleken. Importálás és exportálás az Azure AD-alapú hitelesítés használata is támogatott a PowerShell-paranccsal.   
-* Az Azure AD-alapú hitelesítés esetén támogatott SQL-adatbázis és az SQL Data Warehouse parancssori felület használatával. További információkért lásd: [konfigurálása és kezelése az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](sql-database-aad-authentication-configure.md) és [SQL Server - az sql server](https://docs.microsoft.com/en-us/cli/azure/sql/server).
+* Az Azure AD-alapú hitelesítés esetén támogatott SQL-adatbázis és az SQL Data Warehouse parancssori felület használatával. További információkért lásd: [konfigurálása és kezelése az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](sql-database-aad-authentication-configure.md) és [SQL Server - az sql server](https://docs.microsoft.com/cli/azure/sql/server).
 
 ## <a name="next-steps"></a>Következő lépések
 - Létrehozása és feltöltése az Azure AD és az Azure AD majd konfigurálása az Azure SQL Database vagy az Azure SQL Data Warehouse kapcsolatban [konfigurálása és kezelése az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](sql-database-aad-authentication-configure.md).

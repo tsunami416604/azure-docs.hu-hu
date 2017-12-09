@@ -10,11 +10,11 @@ ms.date: 11/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fb295b37819788ed14f54e4123ae0fe1b52d0210
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 9c35410ee1bb67c8ee96eeea6e51601bc29f39aa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Azure-függvény, egy IoT-Edge-modul telepítése – előzetes
 Az Azure Functions, amely megvalósítja az üzleti logikát, közvetlenül az IoT peremhálózati eszköz a kód telepítésére használhatja. Ez az oktatóanyag végigvezeti létrehozása és telepítése az Azure-függvény érzékelőadatait a szimulált IoT peremhálózati eszközön létrehozott tartozó telepítése Azure IoT Edge a szimulált eszköz a szűrő [Windows] [ lnk-tutorial1-win]vagy [Linux] [ lnk-tutorial1-lin] oktatóanyagok. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:     
@@ -42,7 +42,7 @@ Ebben az oktatóanyagban egy Azure-függvény létrehozása és használhatja a 
 
 Ebben az oktatóanyagban a Docker-kompatibilis beállításjegyzék is használhatja. Két népszerű Docker beállításjegyzék szolgáltatások érhető el a felhőben vannak **Azure tároló beállításjegyzék** és **Docker Hub**:
 
-- [Az Azure tároló beállításjegyzék](https://docs.microsoft.com/en-us/azure/container-registry/) érhető el egy [előfizetéssel](https://azure.microsoft.com/en-us/pricing/details/container-registry/). Ebben az oktatóanyagban a **alapvető** előfizetés is elegendő. 
+- [Az Azure tároló beállításjegyzék](https://docs.microsoft.com/azure/container-registry/) érhető el egy [előfizetéssel](https://azure.microsoft.com/en-us/pricing/details/container-registry/). Ebben az oktatóanyagban a **alapvető** előfizetés is elegendő. 
 
 - [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) egy szabad titkos tárházat biztosít, ha létrehoz egy (ingyenes) Docker-azonosító. 
     1. Létrehoz egy Docker-Azonosítót, kövesse az utasításokat a [egy Docker-Azonosítót regisztrálni](https://docs.docker.com/docker-id/#register-for-a-docker-id) a Docker helyen. 

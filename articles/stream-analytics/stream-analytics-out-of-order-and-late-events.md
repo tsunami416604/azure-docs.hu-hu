@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 208dfa14d5d18e106d654539cd80bafdeb90cdf8
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
-ms.translationtype: HT
+ms.openlocfilehash: f9854172e08785676a7804433d9a559e623a7b05
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-stream-analytics-event-order-consideration"></a>Az Azure Stream Analytics esemény rendelés szempont
 
 ## <a name="understand-arrival-time-and-application-time"></a>Ismerje meg, érkezésének ideje és kérelem ideje.
 
-Minden esemény historikus adatfolyam események időbélyeg kapja. Az Azure Stream Analytics Timestamp típusú eseményekhez érkezésének ideje vagy alkalmazás idő rendeli hozzá. A "System.Timestamp" oszlop van rendelve az esemény időbélyegzője. Érkezésének ideje hozzá van rendelve a bemeneti forrásnál, ha az esemény eléri a forrás. Érkezési ideje EventEnqueuedTime Eseményközpont bemeneti és [blob utolsó módosítás időpontja](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) blob bemeneti. Alkalmazási hozzá van rendelve, ha az esemény jön létre, és a tartalom egy részét. Alkalmazás ideje eseményeket feldolgozását, használja a "Időbélyeg által" záradék a select lekérdezés. Hiányzik a "Időbélyeg által" záradék, ha érkezésének ideje eseményeket dolgoznak fel. Érkezésének ideje elérhető EventEnqueuedTime tulajdonság használatával az event hubs és a blob bemeneti BlobLastModified tulajdonság használatával. Az Azure Stream Analytics a Timestamp típusú sorrendben kimenetet, és néhány beállítás nem megfelelő sorrendben adatok kezelésére szolgál.
+Minden esemény historikus adatfolyam események időbélyeg kapja. Az Azure Stream Analytics Timestamp típusú eseményekhez érkezésének ideje vagy alkalmazás idő rendeli hozzá. A "System.Timestamp" oszlop van rendelve az esemény időbélyegzője. Érkezésének ideje hozzá van rendelve a bemeneti forrásnál, ha az esemény eléri a forrás. Érkezési ideje EventEnqueuedTime Eseményközpont bemeneti és [blob utolsó módosítás időpontja](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) blob bemeneti. Alkalmazási hozzá van rendelve, ha az esemény jön létre, és a tartalom egy részét. Alkalmazás ideje eseményeket feldolgozását, használja a "Időbélyeg által" záradék a select lekérdezés. Hiányzik a "Időbélyeg által" záradék, ha érkezésének ideje eseményeket dolgoznak fel. Érkezésének ideje elérhető EventEnqueuedTime tulajdonság használatával az event hubs és a blob bemeneti BlobLastModified tulajdonság használatával. Az Azure Stream Analytics a Timestamp típusú sorrendben kimenetet, és néhány beállítás nem megfelelő sorrendben adatok kezelésére szolgál.
 
 
 ## <a name="azure-stream-analytics-handling-of-multiple-streams"></a>Az Azure Stream Analytics kezelésére vonatkozó több adatfolyam

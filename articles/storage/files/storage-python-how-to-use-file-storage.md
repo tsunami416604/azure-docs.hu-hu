@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
-ms.openlocfilehash: f4d3d6a7c6b16ca9c6f1ae7e73b57103a5ae4844
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: HT
+ms.openlocfilehash: cee6ece907950724f6ad4a86c489a5f07dfcaaec
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="develop-for-azure-files-with-python"></a>Az Azure Files Python kialakított
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -33,7 +33,7 @@ Ez az oktatóanyag a Python segítségével alkalmazásokat és szolgáltatások
 * Töltse fel, töltse le és törölje a fájlt
 
 > [!Note]  
-> Azure fájlok érhető SMB-n keresztül, mert akkor lehet egyszerű alkalmazások írását, amelyek a szabványos Python i/o-osztályok és függvény használata Azure fájlmegosztás eléréséhez. Ez a cikk azt ismerteti, hogyan alkalmazások írását, amelyek az Azure Storage Python SDK-val, használja a [Azure fájlok REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/file-service-rest-api) ügyfélcsatornája az Azure Fileshoz.
+> Azure fájlok érhető SMB-n keresztül, mert akkor lehet egyszerű alkalmazások írását, amelyek a szabványos Python i/o-osztályok és függvény használata Azure fájlmegosztás eléréséhez. Ez a cikk azt ismerteti, hogyan alkalmazások írását, amelyek az Azure Storage Python SDK-val, használja a [Azure fájlok REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) ügyfélcsatornája az Azure Fileshoz.
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Töltse le és telepítse az Azure Storage SDK Python-hez
 

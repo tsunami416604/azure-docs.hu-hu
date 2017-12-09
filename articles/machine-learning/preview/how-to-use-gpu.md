@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 4ef5c9ad58f86a669fc5c0bceb085ef2a266a008
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: HT
+ms.openlocfilehash: ca4066396f71865626f4034e490bb069a5f7ddf6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Az Azure Machine Learning GPU használata
 Grafikus processzorra (GPU) széles körben használt, amely általában akkor szükséges, ha bizonyos mély Neurális hálózat modellek betanítása számításilag intenzív feladatok feldolgozásához. Feldolgozóegységekkel használatával jelentősen csökkentheti a modellek képzési idején. Ebben a dokumentumban megismerheti, hogyan konfigurálhatja az Azure ML munkaterület használandó [DSVM (adatok tudományos virtuális gép)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) Feldolgozóegységekkel felszerelt végrehajtási célként. 
@@ -67,7 +67,7 @@ Az Azure ML munkaterület végrehajtási is támogatja a Docker egy Azure Linux 
 Lehetőséget választva a virtuális gép helyét, vegye figyelembe, hogy GPU virtuális gépek találhatók csak bizonyos Azure-régiók, például **déli középső Régiójában**. Lásd: [régiónként rendelkezésre álló termékek számítási](https://azure.microsoft.com/en-us/regions/services/).
 Az OK gombra kattintva mentse a **alapjai** információkat.
 
-6. Válassza ki a virtuális gép méretét. Válasszon ki egy virtuális hálózati vezérlő által az utóbbiak NVidia GPU modulok felszerelt méretét.  Kattintson a **nézet összes** a teljes lista megtekintéséhez, igény szerint. További információ [GPU-ellátva Azure virtuális gépek](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-gpu).
+6. Válassza ki a virtuális gép méretét. Válasszon ki egy virtuális hálózati vezérlő által az utóbbiak NVidia GPU modulok felszerelt méretét.  Kattintson a **nézet összes** a teljes lista megtekintéséhez, igény szerint. További információ [GPU-ellátva Azure virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
 
 7. A többi beállítás befejezéséhez, és a vásárlási információk áttekintéséhez. Kattintson a beszerzési a virtuális gép létrehozásához. Jegyezze fel a virtuális gép számára lefoglalt IP-címét. 
 
@@ -119,7 +119,7 @@ dependencies:
     - https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp35-cp35m-linux_x86_64.whl
 ```
 
-A Microsoft kognitív eszközkészlet, amely biztosít a teljesítménnyel kapcsolatos fejlesztések multi-GPU virtuális gépeken a 1 bit-SGD verziója is használható. Vegye figyelembe [1 bit-SGD licenc kapcsolatos követelmények](https://docs.microsoft.com/en-us/cognitive-toolkit/cntk-1bit-sgd-license).
+A Microsoft kognitív eszközkészlet, amely biztosít a teljesítménnyel kapcsolatos fejlesztések multi-GPU virtuális gépeken a 1 bit-SGD verziója is használható. Vegye figyelembe [1 bit-SGD licenc kapcsolatos követelmények](https://docs.microsoft.com/cognitive-toolkit/cntk-1bit-sgd-license).
 
 ```yaml
 name: project_environment

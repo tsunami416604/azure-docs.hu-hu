@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 3d9ec6325e25477bf4ee0475caeca64b75b1f89f
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
-ms.translationtype: HT
+ms.openlocfilehash: f30042ad8d687db59e1aaa092c46cee371e8c7fb
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Azure-figyelővel képernyő adat-előállítók  
 Sok áthelyezése alkotórészek összetettek a felhőalapú alkalmazásokhoz. Győződjön meg arról, hogy az alkalmazás marad be adatokat, és megfelelő állapotban fut figyelés nyújt. Emellett segít, hogy ki a lehetséges problémák stave és a múltbeli kiépítettektől eltérő hibakeresést. Figyelési adatok segítségével emellett az alkalmazással kapcsolatos átfogó megismerésében. Ennek az információnak a segítséget nyújtanak az alkalmazások teljesítményének vagy karbantartási követelmények, vagy a, amelyek egyébként kézi beavatkozás műveletek automatizálására.
 
-Az Azure biztosít alapszintű infrastruktúra metrikák és a naplókat a legtöbb Microsoft Azure-szolgáltatások. További információkért lásd: [figyelési áttekintés](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Az Azure diagnosztikai naplók erőforrás a művelet részletes, gyakori adatait adja meg az erőforrás által kibocsátott naplók. Adat-előállító kiírja a diagnosztikai naplók az Azure-figyelő. 
+Az Azure biztosít alapszintű infrastruktúra metrikák és a naplókat a legtöbb Microsoft Azure-szolgáltatások. További információkért lásd: [figyelési áttekintés](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Az Azure diagnosztikai naplók erőforrás a művelet részletes, gyakori adatait adja meg az erőforrás által kibocsátott naplók. Adat-előállító kiírja a diagnosztikai naplók az Azure-figyelő. 
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd: [figyelése és kezelése a Data Factory version1 adatcsatornák](v1/data-factory-monitor-manage-pipelines.md).
@@ -112,9 +112,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | naplók| Összetett típus| A diagnosztikai naplófájl kategória neve erőforrástípus. Szerezze be az erőforrás diagnosztikai naplófájl kategóriák listáját, először hajtson végre egy GET diagnosztikai beállítások műveletet. |
 | category| Karakterlánc| Napló kategóriák és az adatmegőrzési tömbje |
 | Időkeretben vannak | Karakterlánc | A lépésköz legyen metrikák rögzített időtartam ISO 8601 formátumban. PT1M (egy percig) kell lennie.|
-| engedélyezve| Logikai érték | Meghatározza, hogy a metrika- vagy naplófájl kategória gyűjteménye engedélyezett ehhez az erőforráshoz|
+| engedélyezve| Logikai | Meghatározza, hogy a metrika- vagy naplófájl kategória gyűjteménye engedélyezett ehhez az erőforráshoz|
 | retentionPolicy| Összetett típus| Az adatmegőrzési metrika- vagy naplófájl kategória ismerteti. Csak a tárolási fiók lehetőséget használja.|
-| nap| int| A metrikák és a naplók a megőrizni kívánt napok száma. A 0 érték határozatlan ideig őrzi meg a naplókat. Csak a tárolási fiók lehetőséget használja. |
+| nap| Int| A metrikák és a naplók a megőrizni kívánt napok száma. A 0 érték határozatlan ideig őrzi meg a naplókat. Csak a tárolási fiók lehetőséget használja. |
 
 **Válasz**
 
@@ -287,7 +287,7 @@ További információ az itt] (https://msdn.microsoft.com/en-us/library/azure/dn
 |pipelineName| Karakterlánc | A folyamat neve | `MyPipeline` |
 |activityName| Karakterlánc | A tevékenység neve. | `MyActivity` |
 |start| Karakterlánc | A timespan, UTC formátumban tevékenységfuttatási elindítása | `2017-06-26T20:55:29.5007959Z`|
-|Vége| Karakterlánc | A tevékenység végén futtatása timespan, UTC formátumban. Ha a tevékenység nem ér véget, mégis (diagnosztikai naplófájl egy tevékenység indítása), alapértelmezett értéke `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
+|vége| Karakterlánc | A tevékenység végén futtatása timespan, UTC formátumban. Ha a tevékenység nem ér véget, mégis (diagnosztikai naplófájl egy tevékenység indítása), alapértelmezett értéke `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
 
 
 ### <a name="pipeline-run-logs-attributes"></a>A következő feldolgozási sorban futtatási naplók attribútumai
@@ -332,7 +332,7 @@ További információ az itt] (https://msdn.microsoft.com/en-us/library/azure/dn
 |operationName| Karakterlánc |A folyamat állapotát a neve. "Futószalag - sikeresen befejeződött" futtatása folyamat befejezésekor végső állapot| `MyPipeline - Succeeded` |
 |pipelineName| Karakterlánc | A folyamat neve | `MyPipeline` |
 |start| Karakterlánc | A timespan, UTC formátumban tevékenységfuttatási elindítása | `2017-06-26T20:55:29.5007959Z`|
-|Vége| Karakterlánc | A tevékenység befejezési futtatható timespan, UTC formátumban. Ha a tevékenység nem ér véget, mégis (diagnosztikai naplófájl egy tevékenység indítása), alapértelmezett értéke `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
+|vége| Karakterlánc | A tevékenység befejezési futtatható timespan, UTC formátumban. Ha a tevékenység nem ér véget, mégis (diagnosztikai naplófájl egy tevékenység indítása), alapértelmezett értéke `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
 |status| Karakterlánc | Végső állapot, a folyamatának futtatása (sikeres vagy sikertelen) | `Succeeded`|
 
 
@@ -389,14 +389,14 @@ ADFV2 bocsát ki a következő metrikák
 
 | **Metrika**           | **Metrika megjelenített neve**         | **Egység** | **Aggregáció típusa** | **Leírás**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRun | Sikerült a folyamat fut metrikák | Mennyiség    | Összes                | Teljes folyamatok futtatása sikeres egy perc időszakban |
+| PipelineSucceededRun | Sikerült a folyamat fut metrikák | Darabszám    | Összes                | Teljes folyamatok futtatása sikeres egy perc időszakban |
 | PipelineFailedRuns   | Nem sikerült a folyamat fut metrikák    | Darabszám    | Összes                | Teljes folyamatok futtatása sikertelen egy perc időszakban    |
 | ActiviySucceededRuns | Sikeres volt a tevékenység futtatása metrikák | Darabszám    | Összes                | Egy perc időszakban a teljes tevékenység sikeres fut  |
 | ActivityFailedRuns   | Nem sikerült a tevékenységi futtatása metrikák    | Darabszám    | Összes                | Teljes tevékenység futtatása sikertelen, egy perc időszakban     |
 | TriggerSucceededRuns | Sikeres volt a trigger futtatása metrikák  | Darabszám    | Összes                | Teljes eseményindító sikeres futtat egy perc időszakban   |
 | TriggerFailedRuns    | Nem sikerült az eseményindító futtatása metrikák     | Darabszám    | Összes                | Teljes eseményindító sikertelen futtat egy perc időszakban      |
 
-A metrikák szeretne használni, kövesse a cikkben - https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+A metrikák hozzáférni, kövesse a cikkben - https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd: [figyelő programozott folyamatok kezelését és](monitor-programmatically.md) cikkben tájékozódhat az figyelése és kezelése a folyamatok futtatásával. 

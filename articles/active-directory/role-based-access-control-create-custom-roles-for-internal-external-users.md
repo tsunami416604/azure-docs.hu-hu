@@ -1,24 +1,26 @@
 ---
-title: "Egyéni szerepköralapú hozzáférés-vezérlés szerepköröket hozhat létre, és rendelje hozzá a belső és külső felhasználók számára az Azure-ban |} Microsoft Docs"
+title: "Hozzon létre egyéni szerepköralapú hozzáférés-vezérlés szerepköreinek, és rendelje hozzá a belső és külső felhasználók számára az Azure-ban |} Microsoft Docs"
 description: "PowerShell és a parancssori felület használatával a belső és külső felhasználók számára létrehozott egyéni RBAC-szerepkörök hozzárendelése"
 services: active-directory
 documentationcenter: 
 author: andreicradu
 manager: catadinu
-editor: kgremban
+editor: 
 ms.assetid: 
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 05/10/2017
+ms.date: 12/06/2017
 ms.author: a-crradu
-ms.openlocfilehash: 213b02205bbe7f767b6aff6a0693bb34b97cb9ec
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
-ms.translationtype: HT
+ms.reviewer: skwan
+ms.custom: it-pro
+ms.openlocfilehash: 595d9de5c3a6e9943f158ae1f21c57ea6e1e81e1
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="intro-on-role-based-access-control"></a>A szerepköralapú hozzáférés-vezérlés – bevezetés
 
@@ -35,7 +37,7 @@ Az RBAC használata az Azure környezetben van szükség:
 * Győződjön meg arról, hogy a következő erőforrás-szolgáltató regisztrálva a felhasználó az előfizetéshez: **Microsoft.Authorization**. Az erőforrás-szolgáltatók regisztrálásával kapcsolatos további információkért lásd: [Resource Manager szolgáltatók, régiók, API verziók és sémák](../azure-resource-manager/resource-manager-supported-services.md).
 
 > [!NOTE]
-> Office 365-előfizetéssel, vagy az Azure Active Directory-licencek (például: Azure Active Directory eléréséhez) kiosztott az Office 365 portál nem érvényes az RBAC használata.
+> Office 365-előfizetéssel, vagy az Azure Active Directory-licencek (például: Azure Active Directory eléréséhez) kiosztott az Office 365 felügyeleti központ nem felel meg az RBAC használata.
 
 ## <a name="how-can-rbac-be-used"></a>Hogyan lehet használni az RBAC
 Az RBAC alkalmazni lehet az Azure-ban három különböző hatóköröket. A legalacsonyabb egy legmagasabb hatálya alá akkor a következők:
@@ -102,7 +104,7 @@ Folyamatban a szervezeten kívül, az új felhasználó nem rendelkezik meglév�
 
 ![meghívót e-mailt az RBAC-szerepkör](./media/role-based-access-control-create-custom-roles-for-internal-external-users/6.png)
 
-A külső felhasználó azt mutatja be az Azure Active Directory-bérlő mostantól külső felhasználóként, és ez az Azure portálon, és a klasszikus portálon tekintheti meg.
+A külső felhasználó azt mutatja be az Azure Active Directory-bérlő mostantól külső felhasználóként, és ez az Azure-portálon tekintheti meg.
 
 
 
@@ -112,14 +114,7 @@ A külső felhasználó azt mutatja be az Azure Active Directory-bérlő mostant
 
 
 
-
-
-![felhasználók panel az azure active Directoryval a klasszikus Azure portálon](./media/role-based-access-control-create-custom-roles-for-internal-external-users/8.png)
-
-Az a **felhasználók** mindkét portálok a külső felhasználók felismeri a nézet:
-
-* A különböző ikon írja be az Azure-portálon
-* A különböző sourcing pont a klasszikus portál
+Az a **felhasználók** nézet, a külső felhasználók felismeri a különböző ikon írja be az Azure-portálon.
 
 Azonban biztosítása **tulajdonos** vagy **közreműködő** a külső felhasználók elérését a **előfizetés** hatókörét, nem engedélyezi a hozzáférést a rendszergazda felhasználó könyvtárába, kivéve, ha a **Globális rendszergazda** lehetővé teszi. A felhasználói tulajdonságokat a **felhasználótípust** két közös paramétert tartalmaz **tag** és **vendég** azonosítható legyen. Egy tag a felhasználó, amely a címtárban regisztrálva van, míg a Vendég egy meghívót, hogy a könyvtár külső forrásból származó felhasználói. További információkért lásd: [hogyan Azure Active Directory rendszergazdák hozzá B2B együttműködés felhasználók](active-directory-b2b-admin-add-users.md).
 
@@ -145,9 +140,6 @@ A beépített RBAC szerepe hozzárendelése **virtuális gép közreműködő** 
 * Az előfizetést nem lehet megtekinteni, bármilyen más típusú erőforrások
 * A módosításokat a számlázási szempontjából nem tud működni.
 
-> [!NOTE]
-> Az RBAC alatt az Azure portál csak szolgáltatásai, azt nem adja meg a klasszikus portál eléréséhez.
-
 ## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>Beépített RBAC szerepkör hozzárendelése egy külső felhasználó
 A különböző esetén ez a vizsgálat, a külső felhasználó a "alflanigan@gmail.com" meg van adva egy **virtuális gép közreműködő**.
 
@@ -156,9 +148,7 @@ A különböző esetén ez a vizsgálat, a külső felhasználó a "alflanigan@g
 
 ![virtuális gép közreműködő beépített szerepkör](./media/role-based-access-control-create-custom-roles-for-internal-external-users/11.png)
 
-A normál beépített szerephez a külső felhasználó működése áttekinthetők és felügyelhetők a csak virtuális gépek és a szomszédos erőforrás-kezelő csak szükséges erőforrások telepítése közben. Úgy lett kialakítva, a korlátozott szerepkörök ajánlat csak a saját Azure-portálon létrehozott levelező erőforrásokhoz való hozzáférés, attól függetlenül történik néhány továbbra is telepíthető a klasszikus portálon (például: virtuális gépek).
-
-
+A normál beépített szerephez a külső felhasználó működése áttekinthetők és felügyelhetők a csak virtuális gépek és a szomszédos erőforrás-kezelő csak szükséges erőforrások telepítése közben. Úgy lett kialakítva a korlátozott szerepkörök ajánlatot csak a saját Azure-portálon létrehozott levelező erőforrásokhoz való hozzáférés.
 
 
 

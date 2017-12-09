@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 3686057a267ef28d6a01ccc36775a399c64a0804
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
-ms.translationtype: HT
+ms.openlocfilehash: 9bd92e48440ad4edf2261221446ce66718ffea17
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure Cosmos-Adatbázisból
 
@@ -36,7 +36,7 @@ Adatok másolása az Azure Cosmos DB az egyetlen támogatott fogadó adattár, v
 
 Konkrétan ez Azure Cosmos DB az összekötő támogatja:
 
-- A cosmos DB [DocumentDB API](https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-introduction).
+- A cosmos DB [DocumentDB API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
 - Importálás/exportálás JSON-dokumentumokat,-, illetve az adatok másolásának/táblázatos dataset például az SQL-adatbázis, a CSV-fájlok, a stb.
 
 Másolja a dokumentumokat-van/JSON-fájlokat vagy egy másik Cosmos DB gyűjteményhez, lásd: [Import/Export JSON-dokumentumok](#importexport-json-documents).

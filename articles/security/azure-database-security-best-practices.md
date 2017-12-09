@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: b3a9befe5c6607c108e11b583f8b67c483710021
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: HT
+ms.openlocfilehash: c8f49a778ab5e32108531cab05cab7f7eb092221
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-database-security-best-practices"></a>Azure-adatbázishoz ajánlott biztonsági eljárások
 
@@ -137,7 +137,7 @@ Az Azure Storage az Azure-portálon való interakció, minden tranzakció tört�
 
 Adatok védelmére átvitel nem válaszoló szervezetek jobban ki vannak téve a rendszer [-átjárójának](https://technet.microsoft.com/library/gg195821.aspx), [lehallgatás](https://technet.microsoft.com/library/gg195641.aspx) és munkamenet-eltérítés. Ilyen támadások lehet az első lépés a bizalmas adatok elérésekor.
 
-További információt Azure VPN lehetőség szerint a cikk elolvasása [tervezése és kialakítása VPN-átjáró](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-plan-design).
+További információt Azure VPN lehetőség szerint a cikk elolvasása [tervezése és kialakítása VPN-átjáró](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
 ## <a name="enable-database-auditing"></a>Adatbázis naplózásának engedélyezése
 Egy példányt az SQL Server adatbázismotor vagy egyedi adatbázis naplózásának magában foglalja a nyomon követése és az adatbázismotor események naplózása. SQL Server-naplózás lehetővé teszi a kiszolgáló felülvizsgálatát, amely a kiszolgálói szintű események naplózási specifikációk server és adatbázis szolgáltatásiszint-események naplózási specifikációk adatbázis létrehozása. A naplózott eseményeket az Eseménynapló bejegyzéseit, vagy azoknak a fájlok naplózása írhatók.

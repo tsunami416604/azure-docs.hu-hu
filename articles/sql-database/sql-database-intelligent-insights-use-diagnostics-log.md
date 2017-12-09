@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 358986f58c431aebfe7b41daa8c40ba641dc408a
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: HT
+ms.openlocfilehash: e147ca57658c232580fd9867790e55c3454e7e05
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Az intelligens Insights Azure SQL Database teljesítményét diagnosztika napló használata
 
@@ -98,7 +98,7 @@ Attól függően, hogy a teljesítménycsökkenés oka észlel, a részletek a d
 | Lassú ügyfél | <li>Lekérdezés kivonatok</li><li>Várakozási idő</li> |
 | Árképzési szint alacsonyabb szintre való visszalépést | <li>Szöveges értesítés</li> |
 
-### <a name="impact"></a>Gyakorolt hatás
+### <a name="impact"></a>Hatás
 
 A hatás tulajdonság ismerteti a problémát, amelynek adatbázis hozzájárult mennyi észlelt viselkedés (hatás). Hatással van az 1 – 3, 3, a legmagasabb hozzájárulás, mérsékelt, 2 és 1 közé eső legalacsonyabb befizetendő. A hatás előfordulhat, hogy használható bemenetként egyéni riasztási automation, attól függően, hogy a saját igényeinek. A tulajdonság-lekérdezéseket érintett (QueryHashes) sorolja fel azokat a lekérdezés a kivonatok, amely egy adott észlelési is hatással volt.
 
@@ -139,13 +139,13 @@ Az intelligens Insights Teljesítménynapló utolsó részének a automatizált 
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Használhatja az intelligens Insights teljesítmény naplóra [Azure Naplóelemzés]( https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) vagy egy külső megoldás egyéni DevOps lehetőséget, és a jelentéskészítési képességek.
+Használhatja az intelligens Insights teljesítmény naplóra [Azure Naplóelemzés]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) vagy egy külső megoldás egyéni DevOps lehetőséget, és a jelentéskészítési képességek.
 
 ## <a name="next-steps"></a>Következő lépések
 - További tudnivalók [intelligens Insights](sql-database-intelligent-insights.md) fogalmakat.
 - Megtudhatja, hogyan [intelligens, amelyen az Azure SQL Database teljesítménnyel kapcsolatos problémák elhárítása](sql-database-intelligent-insights-troubleshoot-performance.md).
-- Megtudhatja, hogyan [figyelje az Azure SQL Database az Azure SQL elemzés](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql).
-- Megtudhatja, hogyan [gyűjtése és felhasználása az Azure-erőforrások naplóadatait](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+- Megtudhatja, hogyan [figyelje az Azure SQL Database az Azure SQL elemzés](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
+- Megtudhatja, hogyan [gyűjtése és felhasználása az Azure-erőforrások naplóadatait](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
 
 

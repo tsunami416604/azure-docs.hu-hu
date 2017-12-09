@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 1dfa93643f45a96ded3fd022aa8b1c71d487acb4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: c872bfe36673af1292b5af9cf40374de39a5c159
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-store"></a>Útmutató a Storm on HDInsight és az Azure Data Lake Store teljesítményhangolása
 
@@ -29,8 +29,8 @@ Ismerje meg a tényezőket kell figyelembe venni, amikor egy Azure Storm-topoló
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Store-fiók**. Hogyan hozhat létre ilyet, lásd: [Ismerkedés az Azure Data Lake Store](data-lake-store-get-started-portal.md).
 * **Egy Azure HDInsight fürt** a Data Lake Store-fiók eléréséhez. Lásd: [HDInsight-fürtök létrehozása a Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy a fürt számára engedélyezi a távoli asztal.
-* **A Data Lake Store egy Storm-fürt futtató**. További információkért lásd: [HDInsight alatt futó Storm](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-storm-overview).
-* **Teljesítményhangolás irányelvek a Data Lake Store**.  Általános teljesítmény fogalmakat, lásd: [Data Lake Store teljesítmény hangolása útmutatást](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance).  
+* **A Data Lake Store egy Storm-fürt futtató**. További információkért lásd: [HDInsight alatt futó Storm](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Teljesítményhangolás irányelvek a Data Lake Store**.  Általános teljesítmény fogalmakat, lásd: [Data Lake Store teljesítmény hangolása útmutatást](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).  
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>A topológia párhuzamosságát hangolása
 

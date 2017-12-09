@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1547b5c3a5c629b85ff5fa9de6b39b25531d9ec9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
-ms.translationtype: HT
+ms.openlocfilehash: b7686dc5c52737106a8bc819c160b67baaffd147
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 > [!NOTE]
@@ -50,7 +50,7 @@ Miután 2017. December 15.:
 
 - Nem lehet létrehozni a Linux-alapú HDInsight 3.3-as verzió (vagy korábbi verziójú) igény szerinti HDInsight társított szolgáltatás használata az Azure Data Factory v1-fürtök. 
 
-- Ha a [osType és/vagy Version tulajdonság](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nincs explicit módon megadott meglévő Azure Data Factory v1 igény szerinti HDInsight társított szolgáltatás JSON-definíciók, az alapértelmezett érték változnak a **verzió = 3.1, osType = Windows** való **verzió 3.6, osType = = Linux**.
+- Ha a [osType és/vagy Version tulajdonság](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nincs explicit módon megadott meglévő Azure Data Factory v1 igény szerinti HDInsight társított szolgáltatás JSON-definíciók, az alapértelmezett érték változnak a **verzió = 3.1, osType = Windows** való **verzió 3.6, osType = = Linux**.
 
 Miután július 31, 2018:
 
@@ -58,10 +58,10 @@ Miután július 31, 2018:
 
  **Javasolt művelet** 
 
-- Frissítés a [osType és/vagy Version tulajdonság](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) az érintett Azure Data Factory v1 igény szerinti HDInsight társított szolgáltatás definíciók újabb Linux-alapú HDInsight segítségével verziók (HDInsight 3.6), hogy biztosan a legfrissebb Hadoop használatával ökoszisztéma összetevők és javításokat. 
-- 2017. December 15. az Azure Data Factory V1 Hive, Pig, MapReduce, és a Hadoop tesztelése előtt győződjön meg arról, hogy az érintett társított szolgáltatás hivatkozó tevékenységek streaming rendszerrel való kompatibilitás szempontjából az új *osType* és/vagy  *Verzió* alapértelmezett érték (verzió 3.6, osType = = Linux) vagy a explicit HDInsight-verzió, és frissíti a osType. Kompatibilitási kapcsolatos további információkért tekintse át a [áttelepítése egy Windows-alapú HDInsight-fürtöt a Linux-alapú fürtre](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-migrate-from-windows-to-linux) és [Mik azok a Hadoop-összetevők és verziók a hdinsight eszközzel?](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions) dokumentáció weblapjain. 
+- Frissítés a [osType és/vagy Version tulajdonság](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) az érintett Azure Data Factory v1 igény szerinti HDInsight társított szolgáltatás definíciók újabb Linux-alapú HDInsight segítségével verziók (HDInsight 3.6), hogy biztosan a legfrissebb Hadoop használatával ökoszisztéma összetevők és javításokat. 
+- 2017. December 15. az Azure Data Factory V1 Hive, Pig, MapReduce, és a Hadoop tesztelése előtt győződjön meg arról, hogy az érintett társított szolgáltatás hivatkozó tevékenységek streaming rendszerrel való kompatibilitás szempontjából az új *osType* és/vagy  *Verzió* alapértelmezett érték (verzió 3.6, osType = = Linux) vagy a explicit HDInsight-verzió, és frissíti a osType. Kompatibilitási kapcsolatos további információkért tekintse át a [áttelepítése egy Windows-alapú HDInsight-fürtöt a Linux-alapú fürtre](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-from-windows-to-linux) és [Mik azok a Hadoop-összetevők és verziók a hdinsight eszközzel?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions) dokumentáció weblapjain. 
 - Explicit módon beállítva a osType Windows előtt 2017. December 15. Ha továbbra is a Windows-alapú HDInsight-fürtök létrehozása az Azure Data Factory v1On-igény szerinti HDInsight társított szolgáltatás segítségével szeretné. Azonban továbbra is ajánlott az áttelepítés Linux-alapú HDInsight-fürtök 2018 július 31 előtt. 
-- Az DotNet egyéni tevékenység JSON-definíciót egy Azure Batch társított szolgáltatást használja, akkor frissítse, ha igény szerinti HDInsight társított szolgáltatás segítségével hajtható végre az Azure Data Factory v1DotNet egyéni tevékenység. A további a [egyéni tevékenységeket felhasználni egy Azure DataFactory folyamat](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-use-custom-activities) dokumentációs weblap. 
+- Az DotNet egyéni tevékenység JSON-definíciót egy Azure Batch társított szolgáltatást használja, akkor frissítse, ha igény szerinti HDInsight társított szolgáltatás segítségével hajtható végre az Azure Data Factory v1DotNet egyéni tevékenység. A további a [egyéni tevékenységeket felhasználni egy Azure DataFactory folyamat](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) dokumentációs weblap. 
 
 >[!Note]
 >A már meglévő Bring Your Own fürt (BYOC) HDInsight társított szolgáltatást az Azure Data Factory v1 vagy azok, akik BYOC és igény szerinti HDInsightLinked szolgáltatás az Azure Data Factory v2 felhasználók a legújabb támogatási házirend ofAzure HDInsight fürtök már kényszerítése, ezért nincs szükség beavatkozásra; csak. 
@@ -125,7 +125,7 @@ Windows-alapú HDInsight-fürtöt használ, állítsa be **osType** való **wind
 | type                         | A type tulajdonságot kell megadni **HDInsightOnDemand**. | Igen      |
 | Nagyobbnak                  | A fürt munkavégző/adatok csomópontok száma. A HDInsight-fürt együtt ez a tulajdonság a megadott munkavégző csomópontok száma 2 átjárócsomópontokkal hozza létre. A csomópontok egy 4 munkavégző csomópontot tartalmazó fürtben veszi 24 mag, 4 mag, rendelkező standard, D3 méretű vannak (4\*a munkavégző csomópontokról, valamint 2 processzormag, 4 = 16\*az átjárócsomópontokkal processzormag, 4 = 8). Lásd: [hdinsight létrehozása Linux-alapú Hadoop-fürtök](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) a standard, D3 réteg vonatkozó további információért. | Igen      |
 | a TimeToLive tulajdonság                   | A megengedett üresjárati idő az igény szerinti HDInsight-fürthöz. Meghatározza, mennyi ideig az igény szerinti HDInsight-fürt aktív marad egy tevékenység fut, ha nincsenek a fürt más aktív feladatok befejezése után.<br/><br/>Például ha egy tevékenység futott 6 percig tart, és az élettartam értéke 5 perc, a fürt marad, a figyelő életben 5 perc, a 6 percnél feldolgozásának a tevékenység futtatása után. Ha egy másik tevékenységfuttatási 6-perc időkeretet, dolgoz fel ugyanabban a fürtben.<br/><br/>Igény szerinti HDInsight fürtök létrehozásával egy (igénybe vehet) drága művelet, ezt a beállítást, mint egy adat-előállító teljesítményének javításával újból felhasználja az igény szerinti HDInsight-fürtök által szükséges Igen használja.<br/><br/>A TimeToLive tulajdonság értékét 0-ra állítja be, ha törölni a fürtöt, amint a tevékenység futtatása befejeződött. Mivel a magas értéket ad meg, ha a fürt felfüggesztheti üresjárati feleslegesen magas költségeket eredményez. Ezért fontos, hogy beállította-e a megfelelő értéket a igényei szerint.<br/><br/>A timetolive tulajdonság értékének megfelelően van beállítva, ha több folyamatok megoszthatja az igény szerinti HDInsight-fürt példányának. | Igen      |
-| Verzió                      | A HDInsight-fürt verziószáma. Az alapértelmezett értéke 3.1 Windows-fürt és a Linux-fürt 3.2-es verzióját. | Nem       |
+| verzió                      | A HDInsight-fürt verziószáma. Az alapértelmezett értéke 3.1 Windows-fürt és a Linux-fürt 3.2-es verzióját. | Nem       |
 | linkedServiceName            | Az Azure tárolás társított szolgáltatásának történő tárolására és feldolgozására adatok az igény szerinti fürt által használható. A HDInsight-fürt létrehozása az Azure Storage-fiók ugyanabban a régióban.<p>Jelenleg nem hozható létre, amely egy Azure Data Lake Store használ a tárolási igény szerinti HDInsight-fürtöt. Ha szeretné tárolni az eredményadatok a HDInsight-feldolgozás alatt álló egy Azure Data Lake Store-ból, a másolási tevékenység segítségével az adatok másolása az Azure Blob Storage-ból az Azure Data Lake Store. </p> | Igen      |
 | additionalLinkedServiceNames | Adja meg a további tárfiókok a HDInsight a társított szolgáltatás, hogy a Data Factory szolgáltatásnak is regisztrálja őket az Ön nevében. Ezekre a tárfiókokra a HDInsight-fürthöz, és a linkedServiceName által megadott tárfiók ugyanabban a régióban létrehozott ugyanabban a régióban kell lennie. | Nem       |
 | osType                       | Az operációs rendszer típusát. Két érték engedélyezett: (alapértelmezett) Windows és Linux | Nem       |

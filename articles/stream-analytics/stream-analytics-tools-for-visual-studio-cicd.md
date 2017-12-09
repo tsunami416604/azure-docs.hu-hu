@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 9/27/2017
 ms.author: sujie
-ms.openlocfilehash: 13fe5e37424704bd5b948d3a6629c28b320025c4
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
-ms.translationtype: HT
+ms.openlocfilehash: 0fdc7bd1a98e147bf6c7f7c290f03a878c83a1a9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-stream-analytics-visual-studio-tools-to-set-up-a-continuous-integration-and-deployment-process"></a>Állítsa be a folyamatos integrációt és a telepítési folyamatot a Stream Analytics Visual Studio eszközök segítségével
 Ebben az oktatóanyagban elsajátíthatja, hogyan használható az Azure Stream Analytics Visual Studio eszközök állíthat be egy folyamatos integrációt és a telepítési folyamat.
 
-A legújabb verzióra (2.3.0000.0 vagy újabb) a [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-tools-for-visual-studio) MSBuild támogatása.
+A legújabb verzióra (2.3.0000.0 vagy újabb) a [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) MSBuild támogatása.
 
 Szerepel továbbá egy újonnan kiadott NuGet-csomag [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Az MSBuild, a helyi Futtatás és a központi telepítési eszközöket, amelyek támogatják a folyamatos integrációt és a telepítési folyamatot a Stream Analytics Visual Studio-projektek biztosít. 
 > [!NOTE] 
 A NuGet-csomag használható a Visual Studio csak a 2.3.0000.0 vagy annál újabb Stream Analytics eszközök. Ha a Visual Studio eszközök korábbi verzióiban létrehozott projektek, nyissa meg őket a 2.3.0000.0 vagy annál újabb, és mentse. Majd az új képességek is engedélyezve vannak. 
 
-Ismerje meg, hogyan használható a [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+Ismerje meg, hogyan használható a [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
 ## <a name="msbuild"></a>MSBuild
 Például a standard Visual Studio MSBuild élmény, a projekt felépítéséhez két lehetőség van. Kattintson jobb gombbal a projektre, és válassza a **Build**. Is használhat, **MSBuild** a NuGet csomag a parancssorból.
@@ -59,7 +59,7 @@ Minden a hitelesítő adatokat, az alapértelmezett értéke null. Ön *szüksé
       "value": null
     },
 ```
-További tudnivalók a [a Resource Manager sablon fájl és az Azure PowerShell telepítése](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy). További tudnivalók a [objektum használata a Resource Manager-sablon egyik paraméterének](https://docs.microsoft.com/en-us/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+További tudnivalók a [a Resource Manager sablon fájl és az Azure PowerShell telepítése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). További tudnivalók a [objektum használata a Resource Manager-sablon egyik paraméterének](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 
 ## <a name="command-line-tool"></a>Parancssori eszköz

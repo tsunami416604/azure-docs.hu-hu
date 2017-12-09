@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 12/07/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 4034fd0aa64627c107a43208dcca766f7f44d5d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 5512be8ce5b9cf28bceb3468ec6032c0778156f4
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékfájlokban
-2.11 kiadástól kezdve a Media Services lehetővé teszi az eszközök szűrőit. Ezek a szűrők, amelyek lehetővé teszik az ügyfelek akkor megteheti, többek között a kiszolgáló oldalán szabályok: lejátszás videó (és nem a teljes videó lejátszása) részt vagy a hang- és interpretációk, amelyet a felhasználói eszköz kezelni tud (és nem minden a interpretációk társított adategységet) csak egy részét. Ez a szűrés a eszközök archivált keresztül **dinamikus Manifest**khoz, az ügyfél kérésre videó adatfolyam jönnek létre a megadott szűrő alapján.
+2.17 kiadástól kezdve a Media Services lehetővé teszi az eszközök szűrőit. Ezek a szűrők, amelyek lehetővé teszik az ügyfelek akkor megteheti, többek között a kiszolgáló oldalán szabályok: lejátszás videó (és nem a teljes videó lejátszása) részt vagy a hang- és interpretációk, amelyet a felhasználói eszköz kezelni tud (és nem minden a interpretációk társított adategységet) csak egy részét. Ez a szűrés a eszközök archivált keresztül **dinamikus Manifest**khoz, az ügyfél kérésre videó adatfolyam jönnek létre a megadott szűrő alapján.
 
 A témakörök ismerteti a gyakori forgatókönyvek, amelyben szűrők segítségével nagyon hasznos a felhasználók és a hivatkozások témakörökre mutatnak, amelyek bemutatják, hogyan lehet programozott módon-szűrők létrehozásához lenne (jelenleg hozhatja létre szűrők REST API-kat csak).
 
@@ -124,12 +124,12 @@ Az eszközök közé tartozik a több hang nyelv, például az angol, spanyol, f
 ![Szűrés nyelvi számok][language_filter]
 
 ## <a name="trimming-start-of-an-asset"></a>Egy eszköz tisztítás kezdő
-A legtöbb események élő adatfolyamainak továbbítása operátorok néhány teszt a tényleges esemény előtt futtassa. Előfordulhat, hogy például tartalmaznak egy lappal például ez az esemény a megkezdése előtt: "Program akkor kezdődik, rövid ideig gombra. Ha a program archiválás van, a vizsgálati és a lappal adatokat is archivált, és fog szerepelni a bemutató. Azonban ezeket az információkat kell nem jeleníthető meg az ügyfelek számára. A dinamikus Manifest kezdési idő szűrő létrehozása, és a nemkívánatos adatok eltávolítása a jegyzékfájlban.
+A legtöbb események élő adatfolyamainak továbbítása operátorok néhány teszt a tényleges esemény előtt futtassa. Előfordulhat, hogy például tartalmaznak egy lappal például ez az esemény a megkezdése előtt: "Program akkor kezdődik, rövid ideig gombra. Ha a program archiválás van, a vizsgálati és a lappal adatokat is archivált és benne a bemutató. Azonban ezeket az információkat kell nem jeleníthető meg az ügyfelek számára. A dinamikus Manifest kezdési idő szűrő létrehozása, és a nemkívánatos adatok eltávolítása a jegyzékfájlban.
 
 ![Tisztítás kezdő][trim_filter]
 
-## <a name="creating-sub-clips-views-from-a-live-archive"></a>Élő archívumból alárendelt videóklipeket (nézetek) létrehozása
-Számos élő esemény hosszú ideig futniuk és élő archív állhatnak több esemény. Az élő esemény után végpontok műsorszolgáltatók érdemes szakítsa meg az élő archívum be logikai programot, és állítsa le a feladatütemezések. Ezt követően a virtuális programok külön-külön nem közzé post az élő archívum feldolgozásához, és nem hozza létre külön az eszközöket, (amelyek nem kap a tartalomtovábbító a előnye, hogy a meglévő gyorsítótárazott töredék). Ilyen virtuális programok (alárendelt videóklipeket) a következők: a negyedévek egy bemutatjuk vagy Kosárlabda játék, a baseball innings vagy egy délután olimpia program az egyes események.
+## <a name="creating-subclips-views-from-a-live-archive"></a>Élő archívumból subclips (nézetek) létrehozása
+Számos élő esemény hosszú ideig futniuk és élő archív állhatnak több esemény. Az élő esemény leteltével műsorszolgáltatók szakítsa meg az élő archívum be logikai programot, és állítsa le a feladatütemezések lehet. Ezt követően a virtuális programok külön-külön nem közzé post az élő archívum feldolgozásához, és nem hozza létre külön eszközök (amely az az előnye, hogy a meglévő gyorsítótárazott töredékek nem beolvasni a tartalomtovábbító). Ilyen virtuális programok a következők: a negyedévek bemutatjuk vagy Kosárlabda játék, a baseball innings vagy bármely sport program események.
 
 A dinamikus Manifest szűrőkkel kezdő és záró időpont használatával, és virtuális nézeteket hozhat létre az élő archívum felső keresztül. 
 
@@ -140,24 +140,24 @@ Szűrt eszköz:
 ![Terveztek][skiing]
 
 ## <a name="adjusting-presentation-window-dvr"></a>Megjelenítési ablakot (DVR) beállítása
-Azure Media Services jelenleg, ahol konfigurálható az időtartam, 5 perc között - 25 óra körkörös archív kínál. Manifest szűrés működés közbeni DVR ablakának létrehozása az archívum felső keresztül media törlése nélkül használható. Nincsenek számos forgatókönyv, ahol műsorszolgáltatók szeretne biztosítani egy korlátozott DVR-ablakot, mely helyezi át, az élő oldala, és egyszerre tartsa egy nagyobb archiválási ablakot. A szórást küldő számítógép érdemes használnia az adatokat, a DVR ablakban jelölje ki a videóklipeket kívül esik, vagy he\she is szeretne biztosítani a különböző DVR windows különböző eszközökhöz. Például a mobil eszközeinek (rendelkezhet egy 2 perces DVR ablakot a mobileszközökhöz és 1 óra asztali ügyfelek) nagy DVR windows kezelik.
+Azure Media Services jelenleg, ahol konfigurálható az időtartam, 5 perc között - 25 óra körkörös archív kínál. Manifest szűrés működés közbeni DVR ablakának létrehozása az archívum felső keresztül media törlése nélkül használható. Nincsenek számos forgatókönyv, ahol műsorszolgáltatók szeretne biztosítani egy korlátozott DVR ablak áthelyezése az élő oldala és egyszerre egy nagyobb archiválási ablakot. A szórást küldő számítógép érdemes használnia az adatokat, a DVR ablakban jelölje ki a videóklipeket kívül esik, vagy he\she is szeretne biztosítani a különböző DVR windows különböző eszközökhöz. Például a mobil eszközeinek (rendelkezhet egy 2 perces DVR ablak azokról az eszközökről és egy órával a asztali ügyfelek részére) nagy DVR windows kezelik.
 
 ![DVR ablak][dvr_filter]
 
 ## <a name="adjusting-livebackoff-live-position"></a>LiveBackoff (élő pozíciótól) beállítása
-Manifest szűrés segítségével néhány másodpercig eltávolítása egy élő program élő szélétől. Ez lehetővé teszi a műsorszolgáltatók tekintse meg a bemutató a preview kiadvány ponton és a hirdetmény beszúrási pontok létrehozása előtt a felhasználóknak az adatfolyamhoz (általában a biztonsági indító által 30 másodperc). Műsorszolgáltatók ezután leküldése a hirdetmények az ügyfél keretrendszerek, hogy időben fogadott és feldolgozni az információkat a hirdetés lehetőség előtt.
+Manifest szűrés segítségével néhány másodpercig eltávolítása egy élő program élő szélétől. Szűrés lehetővé teszi, hogy a műsorszolgáltatók tekintse meg a bemutató a preview kiadvány ponton és a hirdetmény beszúrási pontok létrehozása előtt a felhasználóknak az adatfolyamhoz (biztonsági indító által 30 másodperc). Műsorszolgáltatók ezután leküldése a hirdetmények az ügyfél keretrendszerek, hogy időben fogadott és feldolgozni az információkat a hirdetés lehetőség előtt.
 
-A hirdetés támogatás mellett LiveBackoff ügyfél élő letöltési pozíció hangolását, hogy amikor az ügyfelek eltolódás, majd nyomja le az élő él továbbra is kaphatnak töredék kiszolgálóról 412 vagy 404-es HTTP-hibák helyett használható.
+A hirdetés támogatás mellett a LiveBackoff beállítás segítségével megjelenítők pozíciója beállítja, hogy amikor az ügyfelek eltolódás, majd nyomja le az élő él továbbra is kaphatnak töredék kiszolgálóról helyett HTTP 404-es vagy 412 hiba történt.
 
 ![livebackoff_filter][livebackoff_filter]
 
 ## <a name="combining-multiple-rules-in-a-single-filter"></a>Kombinálásával egyetlen szűrőben több szabály
-Kombinálásával egyetlen szűrőben több szűrési szabályok. Példa egy tartomány szabály lappal eltávolítása egy élő archiválás és szűréssel is elérhető bitrates adhat meg. Több szűrési szabály end eredménye (csak metszetének) összetételének ezeket a szabályokat.
+Kombinálásával egyetlen szűrőben több szűrési szabályok. Megadhatja, hogy a "tartomány szabály" példaként táblagépükkel eltávolítása élő archívum létrehozása, és elérhető bitrates szűrheti is. Több szűrési szabályok alkalmazásakor a végeredménynek az összes szabály metszetét.
 
 ![több-szabályok][multiple-rules]
 
 ## <a name="create-filters-programmatically"></a>Hozzon létre szoftveres szűrők
-A következő témakör ismerteti a Media Services entitások szűrők kapcsolódó. A témakör azt is bemutatja, hogyan szűrők programozott módon létrehozásához.  
+A következő cikk ismerteti a Media Services entitások szűrőkkel kapcsolatos. A cikk azt is bemutatja, hogyan szűrők programozott módon létrehozásához.  
 
 [Hozzon létre szűrők REST API-k](media-services-rest-dynamic-manifest.md).
 
@@ -166,17 +166,17 @@ Az egy URL-cím több szűrő kombinálhatja is.
 
 Az alábbi forgatókönyvet mutatja be, hogy miért érdemes kombinálását szűrők:
 
-1. Meg kell a mobil eszközök, Android vagy iPAD például video minőségű (videó minőségű korlátozásához). A nem kívánt minőségű eltávolításához egy globális szűrőt, amely megfelelő eszközprofilok hozna létre. Fent említett globális szűrők a azonos media services-fiók nélkül további társítás az összes eszköz használható. 
+1. Meg kell a mobil eszközök, Android vagy iPAD például video minőségű (videó minőségű korlátozásához). A nem kívánt minőségű eltávolításához globális szűrőként hozna létre, az eszközprofilok alkalmas. Ahogy azt korábban említettük, az ebben a cikkben, globális szűrők a azonos media services-fiók nélkül további társítás az összes eszköz használható. 
 2. Érdemes lehet levágni a kezdő és záró idő az eszköz. Ennek érdekében ehhez hozzon létre egy helyi szűrőt, és a kezdő és záró idő beállítása. 
-3. Ezek a szűrők (nélkül minőségi szűrés hozzáadása a tisztítás szűrő, amely szűrő használati nehéz kell kombinációja) kombinálni szeretné.
+3. Ezek a szűrők kombinálni szeretné (kombináció, nem kell hozzáadnia minőségi szűrni a tisztítás szűrőt, így nehezebb szűrő használata).
 
 A szűrő nevét a jegyzék lista be kell szűrők egyesítéséhez URL-cím elé pontosvesszővel tagolva. Tegyük fel nevű szűrést *MyMobileDevice* minőségű szűrők, és van egy másik nevű *MyStartTime* beállítani egy adott kezdési időpontja. Ehhez hasonló egyesítheti őket:
 
     http://teststreaming.streaming.mediaservices.windows.net/3d56a4d-b71d-489b-854f-1d67c0596966/64ff1f89-b430-43f8-87dd-56c87b7bd9e2.ism/Manifest(filter=MyMobileDevice;MyStartTime)
 
-3 szűrők kombinálhatja. 
+Legfeljebb három szűrők kombinálhatja. 
 
-További információ: [ez](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) blog.
+További információkért lásd: [ez](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) blog.
 
 ## <a name="know-issues-and-limitations"></a>Tudja, problémák és korlátozások
 * Dinamikus jegyzékfájl működik GOP határok (kulcs keretek), ezért díszítésre rendelkezik GOP pontosságát. 

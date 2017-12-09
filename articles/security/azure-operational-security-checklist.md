@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 499ba030e9768b82dfdc01df416fc9c8fe3de37d
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: HT
+ms.openlocfilehash: de225fde09665f25b326f4012ff0452ab6cef83b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-operational-security-checklist"></a>Az Azure operational biztonsági ellenőrzőlista
 Gyors, egyszerű és költséghatékony Azure-alkalmazás központi telepítése. Felhő alkalmazás hasznos lehet egy ellenőrzőlista éles környezetben az alkalmazást egy listát az alapvető és ajánlott a működési biztonság műveletek figyelembe kell venni kiértékelésekor segít üzembe helyezése előtt.
@@ -52,6 +52,6 @@ Számos szervezet sikeresen telepített és az Azure felhőalapú alkalmazások 
 ## <a name="next-steps"></a>Következő lépések
 E dokumentumban az OMS biztonsági és auditálási megoldást mutattuk be. Az OMS által nyújtott védelemmel kapcsolatos további információkat a következő cikkek tartalmaznak:
 
-- [Az Operations Management Suite (OMS) – áttekintés](https://docs.microsoft.com/en-us/azure/operations-management-suite/operations-management-suite-overview).
+- [Az Operations Management Suite (OMS) – áttekintés](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview).
 - [Tervezési és a működési biztonság](https://www.microsoft.com/trustcenter/security/designopsecurity).
 - [Azure Security Center tervezéséhez és műveletek](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide).

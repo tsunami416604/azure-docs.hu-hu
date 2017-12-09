@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: fboylu
-ms.openlocfilehash: aafa395f8c0593d9597f74cd5cd2a41f26897c6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: da7826c49c3548600187956908f5369cc4891065
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>A Cortana Intelligence megoldás sablon alkalmazástervezési űrtechnikai és más vállalatok prediktív karbantartás
 ## <a name="executive-summary"></a>Vezetői összefoglaló
@@ -97,7 +97,7 @@ Repülőgép motorok nagyon érzékeny és költséges eszközökre és motor r�
 ##### <a name="business-value-of-the-predictive-model"></a>A prediktív modell üzleti értéket
 A többszörös osztály besorolási modell, amely a valószínűsége annak, ha egy bizonyos összetevő miatt nem képes a következő hónapon belül lett létrehozva. Ezek a megoldások alkalmazásával légitársaság is összetevő javítási költségek csökkentése, összetevő-készlet rendelkezésre állásának javítása, csökkentse a kapcsolódó eszközök készlet szintek és javítása karbantartási tervezési.
 
-### <a name="utilities"></a>Segédprogramok
+### <a name="utilities"></a>Közművek
 #### <a name="use-case-1-atm-cash-dispense-failure"></a>Használati eset 1: ATM cash eredményeként hiba
 ##### <a name="business-problem-and-data-sources"></a>*Üzleti probléma és adatforrások*
 Azok a vezetők eszköz intenzív iparágakban gyakran állapot, hogy a vállalkozások számára elsődleges működési kockázat-e az eszközeik váratlan meghibásodások esetén. Tegyük fel gépek adatközponthoz például banki iparági hibája nagyon gyakori probléma gyakran előfordul. Ilyen jellegű problémák készítése prediktív karbantartási megoldásokat nagyon hasznos az operátorok ilyen gépek. A használati eset előrejelzés probléma lesz kiszámítása a valószínűsége annak, hogy egy ATM cash visszavonása tranzakció megszakadt, lekérdezi miatt például egy dokumentum a probléma megoldásáig a pénzbeli adagoló hibája vagy egy része sikertelen volt. Ebben az esetben a fő adatforrások mérések összegyűjtése közben cash megjegyzések anyagot mérnek érzékelő szivattyútelepek érzékelőinek adatai, és karbantartási rekordok összegyűjtött adott idő alatt. Érzékelőadatok érzékelő értékek egyes tranzakciónként befejeződött, és minden mellőzni Megjegyzés / érzékelő értékek tartalmazza. A érzékelő megadott értékek mérési vastagsága, megjegyzések között lévő hézagokat például vegye figyelembe, hogy érkezési távolság stb. Karbantartási hibakódok és javítási információkat tartalmazza. Ezek hiba esetek azonosítására használt.
@@ -165,7 +165,7 @@ Lehetséges, és általában az, hogy hiba előzmények szerepel-e különleges 
 
 Néhány példa a fenti adatelemek a használati esetek a következők:
 
-Hiba előzmények: késleltetés dátumok, repülőgép összetevő hibája dátumok és típusok, ATM cash visszavonása tranzakció sikertelen, vonat/foglalhatja ajtó hibák, berendezés lemez helyettesítő rendelés dátumok, szél turbinás hiba dátumok és áramköri megszakító parancs hibák küzdelemre.
+Hiba előzmények: repülési késleltetés dátumok, repülőgép összetevő hibája dátumok és típusok, ATM cash visszavonása tranzakció sikertelen, vonat/foglalhatja ajtó hibák, berendezés lemez helyettesítő rendelés dátumok, szél turbinás hiba dátumok és áramköri megszakító parancs sikertelen.
 
 Karbantartási előzmények: repülési hibanaplókat, ATM tranzakció hibanaplókat, például karbantartási típusa, rövid leírás stb és áramköri megszakító karbantartási rekordok karbantartási rekordok betanításához.
 
@@ -230,7 +230,7 @@ Szolgáltatás létrehozása során például a hiányzó értékeket vagy norma
 
 A végső szolgáltatás táblában mérnöki lépéseket a korábbi szakaszban tárgyalt funkció kell hasonlítania az alábbi példa adatkulcsokat, ha idő egysége egy nap után:
 
-| Eszköz azonosítója | Time | A szolgáltatás oszlopok | Címke |
+| Eszközazonosító | Time | A szolgáltatás oszlopok | Címke |
 | --- | --- | --- | --- |
 | 1 |Naponta 1 | | |
 | 1 |2 nap | | |
@@ -357,7 +357,7 @@ Számos módon ez érhető el. Egy magas téves besorolás kisebbségi osztály 
 A korábban említett osztály egyensúlyhiány gyenge teljesítményt okoz, algoritmusok általában a legtöbb osztály példák jobb a kisebbségi osztály esetek költség, a teljes téves besorolás hiba sokkal akkor javul, ha a legtöbb osztály helytelenül lett címkézve besorolása. Ez kis visszaírási díjszabás okoz, és egy nagyobb probléma kerül, ha üzleti téves riasztásokat költsége nagyon nagy. Pontosság a legnépszerűbb metrika egy osztályozó teljesítmény leíró használatos. Azonban a fentiekben leírtak szerint pontossága nem helyettesíti, és nem tükrözik egy osztályozó funkció valódi teljesítményét, mert nagyon érzékeny adatok terjesztéseket. Ehelyett más értékelési-metrikák segítségével mérheti fel imbalanced tanulási problémákat. Ezekben az esetekben pontosság, visszaírási és F1 pontszámok kell lennie a kezdeti mérni kívánt nézze meg a prediktív karbantartási modell teljesítmény kiértékelése során. A prediktív karbantartás visszaírási díjszabás jelöl, a sikertelen teszt készletében hány sikerült helyesen azonosítani a modell. A nagyobb visszaírási sebesség jelenti azt a modell sikeres elfogja a true hibák. Pontosság metrika téves riasztásokat, ha alacsonyabb pontosság díjszabás magasabb téves riasztásokat felel meg a aránya vonatkozik. F1 pontszám pontosság és a visszaírási díjszabás ajánlott érték 1 alatt, és legrosszabb 0 figyelembe veszi.
 
 Ezenkívül bináris osztályozási, decile táblák és növekedési diagram olyan nagyon informatív teljesítmény kiértékelése során. Ezeket csak az a pozitív osztály (hibák) koncentrálhat, és adja meg az algoritmus teljesítmény összetettebb képe mint mi a ROC (fogadó működő Fullnosc) görbén csak egy rögzített működési pont megnézzük látható.
-Decile táblák nyerhetők rendelési hibák számított a modell küszöb előtt döntse el, hogy a végső címkén az előre jelzett valószínűség szerint a vizsgálat példák. A rendezett minták majd deciles (azaz a 10 % minták a legnagyobb valószínűség és majd 20 %, 30 % és így tovább) vannak csoportosítva. Minden decile igaz pozitív arányát és annak véletlenszerű baseline (azaz 0,1, 0,2..) hányadosa számítástechnikai által egy megbecsülheti, hogyan algoritmus teljesítményét minden decile módosulnak. Növekedési decile értékek megrajzolásához úgy, hogy decile igaz pozitív sebessége és a véletlenszerű igaz pozitív arány pár összes deciles jól használható. Az első deciles általában az eredményeket a fókusz óta itt látható a legnagyobb növekedését. Első deciles reprezentatív "veszélyben", a prediktív karbantartási használatakor is látható.
+Decile táblák nyerhetők rendelési hibák számított a modell küszöb előtt döntse el, hogy a végső címkén az előre jelzett valószínűség szerint a vizsgálat példák. A rendezett minták majd deciles (azaz a 10 % minták a legnagyobb valószínűség és majd 20 %, 30 % és így tovább) vannak csoportosítva. Minden decile igaz pozitív arányát és annak véletlenszerű baseline (azaz 0,1, 0,2.) hányadosa számítástechnikai által egy megbecsülheti, hogyan algoritmus teljesítményét minden decile módosulnak. Növekedési decile értékek megrajzolásához úgy, hogy decile igaz pozitív sebessége és a véletlenszerű igaz pozitív arány pár összes deciles jól használható. Az első deciles általában az eredményeket a fókusz óta itt látható a legnagyobb növekedését. Első deciles reprezentatív "veszélyben", a prediktív karbantartási használatakor is látható.
 
 ## <a name="sample-solution-architecture"></a>A minta megoldás architektúrája
 A prediktív karbantartási megoldás telepítése, amikor azt is egy teljes körű megoldás, amely biztosítja a folyamatos ciklust adatfeldolgozást, az adatok tárolási modell betanítási, szolgáltatás-létrehozás, előrejelzés és az eredmények együtt egy riasztást a képi megjelenítés például egy eszköz irányítópult figyelési mechanizmus létrehozásakor. Azt szeretnénk, későbbi insights biztosít a felhasználó folyamatos automatikus módon adatok folyamat. Az ilyen egy IoT-adatok adatcsatorna példa prediktív karbantartási architektúrája alábbi 8. ábrán látható. Az architektúra valós idejű telemetriai eseményközpontnak streamelési adatok tárolására szolgáló gyűjti. Ezek az adatok a valós idejű feldolgozási adatok, például a szolgáltatás-létrehozás a stream Analytics van okozhatnak. Eredmények jelennek meg az irányítópult és a szolgáltatások majd szolgálnak a prediktív modell webszolgáltatás hívására. Egy időben feldolgozott adatokat is előzmény-adatbázisban tárolják, és összefésüli a külső adatforrások, például a helyszíni adatok adatbázisok létrehozása a modellezési példák.

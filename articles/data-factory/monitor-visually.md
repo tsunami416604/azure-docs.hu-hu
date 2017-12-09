@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: shlo
-ms.openlocfilehash: e3ddbb88453b3f5d5f8b4566cf91aadbefd8163f
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
-ms.translationtype: HT
+ms.openlocfilehash: 76070b5a9944b4cbb47ad337ba9a4e6171bf12a3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Vizuálisan figyelése az Azure adat-előállítók
 Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehetővé teszi olyan, a felhőben futó, adatvezérelt munkafolyamatok létrehozását, amelyek alkalmasak az adatok átvitelének és átalakításának irányítására és automatizálására. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, feldolgozhatók és átalakíthatók az adatok különböző számítási szolgáltatások használatával (pl. Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning), és a kimeneti adatok közzétehetők olyan adattárakban, mint például az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket.
@@ -45,11 +45,11 @@ A data factory v2 folyamatok futtatása minden folyamatkezelési területeknek l
 | Műveletek | Egyetlen művelettel tevékenységek megtekintéséhez. |
 | Futtassa a Start | A következő feldolgozási sorban Futtatás kezdő időpontja (hh/nn/éééé, óó: pp: mm AM/PM) |
 | Időtartam | Futtassa a időtartama (ÓÓ: pp:) |
-| Által indított | Kézi indítási, ütemezés eseményindító |
+| Kiváltó | Kézi indítási, ütemezés eseményindító |
 | status | Nem sikerült, sikeres volt, a folyamatban lévő |
 | Paraméterek | Feldolgozási sor futtatása (név, érték párok) paraméterek |
 | Hiba | Feldolgozási sor hiba (ha/any) futtatása |
-| Futtatás azonosítója | Futtassa a folyamat azonosítója |
+| Futtatási azonosító | Futtassa a folyamat azonosítója |
 
 ![A figyelő folyamat fut](media/monitor-visually/pipeline-runs.png)
 
@@ -92,15 +92,15 @@ Futtassa a Start desc és az ASC érték rendelés csővezeték ablakban fut, é
 #### <a name="addremove-columns-to-list-view"></a>Listanézet oszlopok hozzáadása/eltávolítása
 Kattintson a jobb gombbal a lista nézet fejléc és a lista nézetben megjelenítendő oszlopok kiválasztása
 
-![oszlopok](media/monitor-visually/columns.png)
+![Oszlopok](media/monitor-visually/columns.png)
 
 #### <a name="reorder-column-widths-in-list-view"></a>Átrendezése oszlopszélesség a listanézet
 Növelheti és csökkentheti a listanézetben oszlopszélesség egyszerűen fölé az oszlop fejlécére
 
-#### <a name="select-data-factory"></a>Válassza ki az adat-előállító
+#### <a name="select-data-factory"></a>Adat-előállító kiválasztása
 Vigye a mutatót a "Data Factory" ikonra a bal felső sarokban. Kattintson a "Nyíl" ikonra azure előfizetések és az adatok előállítók megfigyeléséhez listájának megjelenítéséhez.
 
-![Válassza ki az adat-előállító](media/monitor-visually/select-datafactory.png)
+![Adat-előállító kiválasztása](media/monitor-visually/select-datafactory.png)
 
 #### <a name="guided-tours"></a>Az interaktív bemutatók
 Kattintson a bal alsó a "információs ikon", majd kattintson a "Bemutatók interaktív" részletesen hozzáférhet a feldolgozási sorban lévő és a tevékenység futtatása figyelése.
@@ -114,4 +114,4 @@ Kattintson az "Visszajelzés" ikonra, küldjön visszajelzést a különféle sz
 
 ## <a name="next-steps"></a>Következő lépések
 
-Lásd: [figyelő programozott folyamatok kezelését és](https://docs.microsoft.com/en-us/azure/data-factory/monitor-programmatically) cikkben tájékozódhat az figyelése és folyamatok kezelése
+Lásd: [figyelő programozott folyamatok kezelését és](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) cikkben tájékozódhat az figyelése és folyamatok kezelése

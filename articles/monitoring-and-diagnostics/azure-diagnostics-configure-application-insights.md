@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2016
 ms.author: robb
-ms.openlocfilehash: 67dc2d5bbfa2012e4e098616edda593d023c4c1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 7dd8c6e1fbfba2587aadb3410c3a769b57e06001
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>A felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric diagnosztikai adatok küldése az Application insights szolgáltatással
 Felhőszolgáltatások, virtuális gép, virtuálisgép-méretezési csoportok és a Service Fabric összes adatok összegyűjtéséhez használja az Azure Diagnostics-bővítmény.  Az Azure diagnosztikai adatokat küld az Azure Storage-táblákat.  Azonban is minden cső vagy más helyekre Azure Diagnostics kiterjesztéssel 1.5-ös vagy újabb adatok egy részét.
@@ -220,6 +220,6 @@ Az előző beállítás szerint a következő sorokat jelentése a következő:
 - **Az Application Insights Azure diagnostics bővítmény által gyűjtött blob adatokat nem lehet elküldeni.** Például semmit alatt megadott a *könyvtárak* csomópont. Összeomlási memóriaképek a tényleges összeomlási memóriakép továbbítja a rendszer a blob-tároló, és csak olyan, hogy létrejött-e a összeomlási biztonsági másolatot a rendszer értesítést küld az Application Insights.
 
 ## <a name="next-steps"></a>Következő lépések
-* Ismerje meg, hogyan [tekintse meg az Azure diagnostics](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events) az Application insights szolgáltatással.
+* Ismerje meg, hogyan [tekintse meg az Azure diagnostics](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events) az Application insights szolgáltatással.
 * Használjon [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md) engedélyezi az Azure diagnostics bővítményt az alkalmazáshoz.
 * Használjon [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) engedélyezi az Azure diagnostics bővítményt az alkalmazáshoz

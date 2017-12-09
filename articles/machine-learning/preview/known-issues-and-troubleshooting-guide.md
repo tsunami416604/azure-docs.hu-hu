@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 54038785f513e56b07f5f3fafa3dbd6d4b6e7400
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 1d3ba76336701221484d2879f4b28285936aa656
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -198,9 +198,9 @@ A gyorsjavítást, hogy távolítsa el az összes Docker-lemezképek, már nem h
 $ docker system prune -a
 ```
 
-Is hozzá adatlemezt, majd konfigurálja a adatlemez lemezképek tárolásához használandó Docker-motorhoz. Itt [adatlemez hozzáadása](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/add-disk). Követően [módosítása, ahol a Docker tárolja a képek](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
+Is hozzá adatlemezt, majd konfigurálja a adatlemez lemezképek tárolásához használandó Docker-motorhoz. Itt [adatlemez hozzáadása](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk). Követően [módosítása, ahol a Docker tárolja a képek](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
 
-Vagy, bővítheti az operációsrendszer-lemezképet, és nem kell touch Docker motor konfigurációját. Itt [hogyan bővítheti az operációsrendszer-lemezképet](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/add-disk).
+Vagy, bővítheti az operációsrendszer-lemezképet, és nem kell touch Docker motor konfigurációját. Itt [hogyan bővítheti az operációsrendszer-lemezképet](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
 ## <a name="sharing-c-drive-on-windows"></a>A Windows a C meghajtó megosztása
 Ha végrehajtás alatt álló helyi Docker-tároló a Windows, a beállítás `sharedVolumes` való `true` a a `docker.compute` a fájl `aml_config` végrehajtási teljesítményének. Azonban ehhez a C meghajtó megosztja a _Docker a Windows eszköz_. Ha nem tudja megosztani a C meghajtó, próbáljon a következő tippek:

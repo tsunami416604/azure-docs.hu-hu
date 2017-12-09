@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: larryfr
-ms.openlocfilehash: 07386c2fbb5fe4ce4fe1ca6844f6308cf59cbfb4
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: HT
+ms.openlocfilehash: b05dbdcec3cfb5c78115061567bb6229623cd0ff
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>A többi használatával HDInsight Hadoop Hive-lekérdezések futtatása
 
@@ -122,7 +122,7 @@ Megtudhatja, hogyan futtathat Hive-lekérdezéseket a Hadoop on Azure HDInsight-
 
 4. Ha a feladat állapota módosult **sikeres**, a feladat eredményeinek lekérése Azure Blob Storage tárolóban. A `statusdir` a lekérdezés átadott paraméter tartalmazza a hely a kimeneti fájl; ebben az esetben az **/példa/curl**. Ez a cím tárolja a kimenetét a **példa/curl** könyvtárban lévő a fürtök alapértelmezett tárolót.
 
-    Listáról, és ezek a fájlok letöltésére a [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli). Az Azure Storage az Azure parancssori felület használatával kapcsolatos további információkért tekintse meg a [Azure CLI 2.0 használata Azure Storage](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli#create-and-manage-blobs) dokumentum.
+    Listáról, és ezek a fájlok letöltésére a [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Az Azure Storage az Azure parancssori felület használatával kapcsolatos további információkért tekintse meg a [Azure CLI 2.0 használata Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) dokumentum.
 
 5. A következő utasítások használatával hozzon létre egy új "belső" táblát nevű **errorLogs**:
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 10/23/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 8c9d8dadcd6181d9894ab6ee7110841afdec5708
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
-ms.translationtype: HT
+ms.openlocfilehash: ac734ffc6cb57188b7b0959cbe7655949b2853de
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="protect-a-file-server-using-azure-site-recovery"></a>Egy Azure Site Recovery segítségével fájlkiszolgáló védelme 
 
@@ -145,7 +145,7 @@ Az ajánlott módszer az Azure fájlszinkronizálás integrálása az Azure Site
 
 Az alábbi lépések részletes Azure fájl Sync szolgáltatás használatával:
 
-1. [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Ha úgy dönt, hogy írásvédett georedundáns tárolás (RA-GRS) (ajánlott) a storage-fiókok, rendelkezik olvasási jogosultsággal az adatok katasztrófa esetén egy másodlagos régióban. Tekintse meg a [Azure File megosztás vész-helyreállítási stratégiák](https://docs.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) további információért.
+1. [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Ha úgy dönt, hogy írásvédett georedundáns tárolás (RA-GRS) (ajánlott) a storage-fiókok, rendelkezik olvasási jogosultsággal az adatok katasztrófa esetén egy másodlagos régióban. Tekintse meg a [Azure File megosztás vész-helyreállítási stratégiák](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) további információért.
 2. [Fájlmegosztás létrehozása](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. [Azure fájlszinkronizálás telepítése](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide) a helyi fájlkiszolgálón.
 4. Hozzon létre egy szinkronizálási csoportot: a szinkronizálási csoporton belüli végpontok folyamatosan szinkronban vannak egymással. A szinkronizálás csoport tartalmaznia kell a felhő legalább egy végpontot, amely egy Azure fájlmegosztás jelöli, és egy kiszolgáló végpont, amely a helyszíni Windows Server egy elérési utat képvisel.

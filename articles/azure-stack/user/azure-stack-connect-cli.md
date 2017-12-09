@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: sngun
-ms.openlocfilehash: 9a0ad3d8c2cdd3cd1d46e789c2b65677ac5a10b1
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: HT
+ms.openlocfilehash: 1cfbe988d881075d1a7bfc7513fbe5f44a531abd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Telepítse és konfigurálja a CLI Azure verem való használatra
 
@@ -145,7 +145,7 @@ Azure verem való csatlakozáshoz tegye a következőket:
      --profile 2017-03-09-profile
    ```
 
-4. Jelentkezzen be a Azure verem környezet használatával a `az login` parancsot. Bejelentkezhet az Azure-verem környezet vagy a felhasználó vagy egy [egyszerű](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-application-objects). 
+4. Jelentkezzen be a Azure verem környezet használatával a `az login` parancsot. Bejelentkezhet az Azure-verem környezet vagy a felhasználó vagy egy [egyszerű](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
 
    * Jelentkezzen be egy *felhasználói*: megadhatja a felhasználónevet és jelszót közvetlenül belül a `az login` parancsot, vagy egy böngésző segítségével hitelesíteni. Ehhez az utóbbi, ha a fiók rendelkezik-e többtényezős hitelesítés engedélyezve van.
 

@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 10/23/2017
 ms.author: rortloff;barbkess
-ms.openlocfilehash: 413a9df6d224e53ba42313f6dc5e740710d418e3
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
-ms.translationtype: HT
+ms.openlocfilehash: 575b3c5710d744e99c6e02439577a362eb17c67e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Útmutató a replikált táblák használata az Azure SQL Data Warehouse tervezése
 Ez a cikk tervezése során az SQL Data Warehouse-sémát a replikált táblák ajánlásokat biztosít. Ezek a javaslatok segítségével javíthatja a lekérdezések teljesítményét adatok mozgás és a lekérdezés összetettsége csökkentésével.
@@ -47,7 +47,7 @@ Replikált táblák munkahelyi csillagséma kis dimenzió táblák esetén. Dime
 
 Fontolja meg a replikált tábla esetén:
 
-- A tábla a lemezen mérete 2 GB-nál kevesebb, függetlenül a sorok száma. A tábla mérete megkereséséhez használja a [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) parancs: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
+- A tábla a lemezen mérete 2 GB-nál kevesebb, függetlenül a sorok száma. A tábla mérete megkereséséhez használja a [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) parancs: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
 - A tábla szolgál, amelyek egyébként adatmozgás illesztésekben. Például az kivonatoló elosztott táblákon illesztés adatátvitelt jelölik a szükséges, ha a csatlakozó oszlopok nem áll terjesztési ugyanarra az oszlopra. Ha a kivonat-elosztott tábla kicsi, fontolja meg a replikált tábla. Ciklikus multiplexelés táblán illesztés adatmozgás igényel. Replikált táblák helyett a legtöbb esetben ciklikus multiplexelés táblák használatát javasoljuk. 
 
 

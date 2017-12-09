@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: b9f4004eb69314ad9d4cdad0f7140b6f85af300b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 75d0bbc536c907e6530570b4d7568f39371cfced
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Mi az a felhőalapú megoldások szolgáltatók program StorSimple?
 
@@ -29,7 +29,7 @@ A Microsoft Azure StorSimple igaz hibrid felhő tárolási lehetőségeket a vá
 
 A StorSimple virtuális tömb a felhőalapú megoldások szolgáltató (CSP) lehetővé teszi, hogy a partnerek számára, hogy ez a lehetőség a nagybetűvel. A partnerek saját a végpont ügyfél életciklus közvetlen kiépítés, számlázási és a Microsoft olyan felhőszolgáltatásai támogatása. A partnerek rövid, most is transact a StorSimple együtt a szolgáltatások, az ügyfél számára.
 
-A kriptográfiai Szolgáltató StorSimple kapcsolatos további információkért látogasson el a [Azure CSP áttekintése](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview) lap.
+A kriptográfiai Szolgáltató StorSimple kapcsolatos további információkért látogasson el a [Azure CSP áttekintése](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) lap.
 
 További információ a számlázási árképzési, ösztönzők, és a CSP-hez, a támogatási Ugrás [CSP a StorSimple: gyakran ismételt kérdések](storsimple-partner-csp-faq.md). 
 

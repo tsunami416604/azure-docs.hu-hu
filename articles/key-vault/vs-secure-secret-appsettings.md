@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 3284f9f9c3cef27cba599238f06b0dcf0f35de78
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
-ms.translationtype: HT
+ms.openlocfilehash: 612b8d2c36e9b46e99452e78d1b30fda03474151
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Titkos Alkalmazásbeállítások webalkalmazás biztonságosan mentése
 
@@ -32,7 +32,7 @@ Győződjön meg arról, hogy biztonságos fejlesztési folyamat, hogy tooling �
 ## <a name="aspnet-and-net-core-applications"></a>Az ASP.NET és a .NET core alkalmazások
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Forrásmappa vezérlő kívül esik a felhasználó titkos tárolójában titkos beállításainak mentése
-Ha egy gyors prototípus végez, vagy nem rendelkezik internet-hozzáféréssel, kezdje a vezérlő forrásmappa kívül a titkos beállítások felhasználói titkos kulcsot tároló áthelyezését. Titkos felhasználókhoz tartozó tárolóban, a titkos kulcsok nem ellenőrzi verziókövetési rendszerrel felhasználói Profilkészítő mappában mentett fájlt. A következő ábra bemutatja, hogyan [felhasználói titkos](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) működik.
+Ha egy gyors prototípus végez, vagy nem rendelkezik internet-hozzáféréssel, kezdje a vezérlő forrásmappa kívül a titkos beállítások felhasználói titkos kulcsot tároló áthelyezését. Titkos felhasználókhoz tartozó tárolóban, a titkos kulcsok nem ellenőrzi verziókövetési rendszerrel felhasználói Profilkészítő mappában mentett fájlt. A következő ábra bemutatja, hogyan [felhasználói titkos](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) működik.
 
 ![Felhasználói titkos tartja a verziókövetési kívül titkos beállítások](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
@@ -45,7 +45,7 @@ Ha egy csapatprojekt fejleszt, és meg szeretné osztani a forráskód biztonsá
 
     ![Az Azure Key Vault létrehozása](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Engedélyezze a Key Vault való hozzáférést, és a csoport tagjai. Ha egy nagy csapat, létrehozhat egy [Azure Active Directory-csoport](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-groups-create-azure-portal) , és adja hozzá a biztonsági csoport elérheti a Kulcstárolóba. A a *titkos engedélyek* legördülő menüben ellenőrzése *beolvasása* és *lista* alatt *titkos felügyeleti műveletek*.
+2. Engedélyezze a Key Vault való hozzáférést, és a csoport tagjai. Ha egy nagy csapat, létrehozhat egy [Azure Active Directory-csoport](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal) , és adja hozzá a biztonsági csoport elérheti a Kulcstárolóba. A a *titkos engedélyek* legördülő menüben ellenőrzése *beolvasása* és *lista* alatt *titkos felügyeleti műveletek*.
 
     ![Kulcstároló hozzáférési házirend hozzáadása](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 

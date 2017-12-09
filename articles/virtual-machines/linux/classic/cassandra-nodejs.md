@@ -1,5 +1,5 @@
 ---
-title: Linux Cassandra futtassa az Azure-on |} Microsoft Docs
+title: "Az Azure Linux Cassandra fürt futtassa a Node.js"
 description: "Hogyan Linux Azure Virtual Machines Cassandra fürt futtassa a Node.js-alkalmazás"
 services: virtual-machines-linux
 documentationcenter: nodejs
@@ -15,13 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 28eb281d8d301fa5478afb0925c74349de92ca58
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 176850ff69f8a6f19dda4fc3389bd2b7e022e578
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="running-cassandra-with-linux-on-azure-and-accessing-it-from-nodejs"></a>A linuxos Cassandra futtatása az Azure-ban és az alkalmazás Node.js-ből való elérése
+# <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Az Azure-ban Node.js Linux Cassandra fürt futtatása
+
 > [!IMPORTANT] 
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Tekintse meg a Resource Manager-sablonok [alapszintű Datastax vállalati](https://azure.microsoft.com/documentation/templates/datastax) és [Spark-fürt és Cassandra a CentOS](https://azure.microsoft.com/documentation/templates/spark-and-cassandra-on-centos/).
 
@@ -309,7 +310,7 @@ Ez eltarthat néhány másodpercig, és a lemezkép elérhetőnek kell lennie a 
 <tr><td>Név</td><td>vnet-esetén-nyugati-us</td><td></td></tr>
 <tr><td>Régió</td><td>USA nyugati régiója</td><td></td></tr>
 <tr><td>DNS-kiszolgálók</td><td>None</td><td>Figyelmen kívül hagyja ezt a DNS-kiszolgáló nem használjuk</td></tr>
-<tr><td>Címterület</td><td>10.1.0.0/16</td><td></td></tr>    
+<tr><td>Címtartomány</td><td>10.1.0.0/16</td><td></td></tr>    
 <tr><td>Kezdő IP-Címét</td><td>10.1.0.0</td><td></td></tr>    
 <tr><td>CIDR </td><td>/16 (65531)</td><td></td></tr>
 </table>
@@ -318,8 +319,8 @@ Adja hozzá a következő alhálózatok:
 
 <table>
 <tr><th>Név</th><th>Kezdő IP-Címét</th><th>CIDR</th><th>Megjegyzések</th></tr>
-<tr><td>webalkalmazás</td><td>10.1.1.0</td><td>/24 (251)</td><td>A webfarm-alhálózatot</td></tr>
-<tr><td>Adatok</td><td>10.1.2.0</td><td>/24 (251)</td><td>Az adatbázis-csomópont-alhálózatot</td></tr>
+<tr><td>web</td><td>10.1.1.0</td><td>/24 (251)</td><td>A webfarm-alhálózatot</td></tr>
+<tr><td>adat</td><td>10.1.2.0</td><td>/24 (251)</td><td>Az adatbázis-csomópont-alhálózatot</td></tr>
 </table>
 
 Adatok és a webes alhálózatok hálózati biztonsági csoportokkal, ez a cikk a hatókörén kívül esik a körét, amelyek védhetők.  
@@ -328,16 +329,16 @@ Adatok és a webes alhálózatok hálózati biztonsági csoportokkal, ez a cikk 
 
 <table>
 <tr><th>Gépnév    </th><th>Alhálózat    </th><th>IP-cím    </th><th>Rendelkezésre állási csoport</th><th>DC/Rack</th><th>Kezdőérték?</th></tr>
-<tr><td>HK-c1-nyugati-us    </td><td>Adatok    </td><td>10.1.2.4    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack1 </td><td>Igen</td></tr>
-<tr><td>HK-c2-nyugati-us    </td><td>Adatok    </td><td>10.1.2.5    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack1    </td><td>Nem </td></tr>
-<tr><td>HK-c3-nyugati-us    </td><td>Adatok    </td><td>10.1.2.6    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Igen</td></tr>
-<tr><td>HK-c4-nyugati-us    </td><td>Adatok    </td><td>10.1.2.7    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Nem </td></tr>
-<tr><td>HK-c5-nyugati-us    </td><td>Adatok    </td><td>10.1.2.8    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Igen</td></tr>
-<tr><td>HK-c6-nyugati-us    </td><td>Adatok    </td><td>10.1.2.9    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Nem </td></tr>
-<tr><td>HK-c7-nyugati-us    </td><td>Adatok    </td><td>10.1.2.10    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Igen</td></tr>
-<tr><td>HK-c8-nyugati-us    </td><td>Adatok    </td><td>10.1.2.11    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Nem </td></tr>
-<tr><td>HK-F1-nyugati-us    </td><td>webalkalmazás    </td><td>10.1.1.4    </td><td>HK-w-aset-1    </td><td>                       </td><td>N/A</td></tr>
-<tr><td>HK-w2-nyugati-us    </td><td>webalkalmazás    </td><td>10.1.1.5    </td><td>HK-w-aset-1    </td><td>                       </td><td>N/A</td></tr>
+<tr><td>HK-c1-nyugati-us    </td><td>adat    </td><td>10.1.2.4    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack1 </td><td>Igen</td></tr>
+<tr><td>HK-c2-nyugati-us    </td><td>adat    </td><td>10.1.2.5    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack1    </td><td>Nem </td></tr>
+<tr><td>HK-c3-nyugati-us    </td><td>adat    </td><td>10.1.2.6    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Igen</td></tr>
+<tr><td>HK-c4-nyugati-us    </td><td>adat    </td><td>10.1.2.7    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Nem </td></tr>
+<tr><td>HK-c5-nyugati-us    </td><td>adat    </td><td>10.1.2.8    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Igen</td></tr>
+<tr><td>HK-c6-nyugati-us    </td><td>adat    </td><td>10.1.2.9    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Nem </td></tr>
+<tr><td>HK-c7-nyugati-us    </td><td>adat    </td><td>10.1.2.10    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Igen</td></tr>
+<tr><td>HK-c8-nyugati-us    </td><td>adat    </td><td>10.1.2.11    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Nem </td></tr>
+<tr><td>HK-F1-nyugati-us    </td><td>web    </td><td>10.1.1.4    </td><td>HK-w-aset-1    </td><td>                       </td><td>N/A</td></tr>
+<tr><td>HK-w2-nyugati-us    </td><td>web    </td><td>10.1.1.5    </td><td>HK-w-aset-1    </td><td>                       </td><td>N/A</td></tr>
 </table>
 
 A fenti listában található virtuális gépek létrehozásához a következő folyamat van szükség:
@@ -470,7 +471,7 @@ Jelentkezzen be a klasszikus Azure portálra, és hozzon létre egy virtuális h
 <tr><td>DNS-kiszolgálók        </td><td></td><td>Figyelmen kívül hagyja ezt a DNS-kiszolgáló nem használjuk</td></tr>
 <tr><td>A pont-pont VPN konfigurálása</td><td></td><td>        Figyelmen kívül hagyja ezt</td></tr>
 <tr><td>Webhelyek közötti virtuális magánhálózat konfigurálása</td><td></td><td>        Figyelmen kívül hagyja ezt</td></tr>
-<tr><td>Címterület    </td><td>10.2.0.0/16</td><td></td></tr>
+<tr><td>Címtartomány    </td><td>10.2.0.0/16</td><td></td></tr>
 <tr><td>Kezdő IP-Címét    </td><td>10.2.0.0    </td><td></td></tr>
 <tr><td>CIDR    </td><td>/16 (65531)</td><td></td></tr>
 </table>
@@ -479,8 +480,8 @@ Adja hozzá a következő alhálózatok:
 
 <table>
 <tr><th>Név    </th><th>Kezdő IP-Címét    </th><th>CIDR    </th><th>Megjegyzések</th></tr>
-<tr><td>webalkalmazás    </td><td>10.2.1.0    </td><td>/24 (251)    </td><td>A webfarm-alhálózatot</td></tr>
-<tr><td>Adatok    </td><td>10.2.2.0    </td><td>/24 (251)    </td><td>Az adatbázis-csomópont-alhálózatot</td></tr>
+<tr><td>web    </td><td>10.2.1.0    </td><td>/24 (251)    </td><td>A webfarm-alhálózatot</td></tr>
+<tr><td>adat    </td><td>10.2.2.0    </td><td>/24 (251)    </td><td>Az adatbázis-csomópont-alhálózatot</td></tr>
 </table>
 
 
@@ -489,7 +490,7 @@ Az Azure virtuális hálózatban egy helyi hálózaton, egy proxy címtartomány
 
 Hozzon létre két helyi hálózatok száma a következő adatokat:
 
-| Hálózati név | VPN-átjáró címét | Címterület | Megjegyzések |
+| Hálózatnév | VPN-átjáró címét | Címtartomány | Megjegyzések |
 | --- | --- | --- | --- |
 | HK-lnet-Map-to-East-us |23.1.1.1 |10.2.0.0/16 |A helyi hálózat létrehozásakor adjon címet az átjáró egy helyőrző. Az átjáró létrehozása után a tényleges átjárócím ki van töltve. Győződjön meg arról, hogy a címtartomány pontosan egyezik a megfelelő távoli virtuális hálózat; Ebben az esetben a virtuális hálózat létrehozása az USA keleti régiójában. |
 | HK-lnet-Map-to-West-us |23.2.2.2 |10.1.0.0/16 |A helyi hálózat létrehozásakor adjon címet az átjáró egy helyőrző. Az átjáró létrehozása után a tényleges átjárócím ki van töltve. Győződjön meg arról, hogy a címtartomány pontosan egyezik a megfelelő távoli virtuális hálózat; Ebben az esetben a virtuális hálózat az USA nyugati régiója régióban létrehozott. |
@@ -525,15 +526,15 @@ Ubuntu lemezkép létrehozásához a következő ugyanazokat a lépéseket vagy 
 
 | Gépnév | Alhálózat | IP-cím | Rendelkezésre állási csoport | DC/Rack | Kezdőérték? |
 | --- | --- | --- | --- | --- | --- |
-| HK-c1-keleti-us |Adatok |10.2.2.4 |HK-c-aset-1 |DC = EASTUS állvány = rack1 |Igen |
-| HK-c2-keleti-us |Adatok |10.2.2.5 |HK-c-aset-1 |DC = EASTUS állvány = rack1 |Nem |
-| HK-c3-keleti-us |Adatok |10.2.2.6 |HK-c-aset-1 |DC = EASTUS állvány = rack2 |Igen |
-| HK-c5-keleti-us |Adatok |10.2.2.8 |HK-c-aset-2 |DC = EASTUS állvány = rack3 |Igen |
-| HK-c6-keleti-us |Adatok |10.2.2.9 |HK-c-aset-2 |DC = EASTUS állvány = rack3 |Nem |
-| HK-c7-keleti-us |Adatok |10.2.2.10 |HK-c-aset-2 |DC = EASTUS állvány = rack4 |Igen |
-| HK-c8-keleti-us |Adatok |10.2.2.11 |HK-c-aset-2 |DC = EASTUS állvány = rack4 |Nem |
-| HK-F1-keleti-us |webalkalmazás |10.2.1.4 |HK-w-aset-1 |N/A |N/A |
-| HK-w2-keleti-us |webalkalmazás |10.2.1.5 |HK-w-aset-1 |N/A |N/A |
+| HK-c1-keleti-us |adat |10.2.2.4 |HK-c-aset-1 |DC = EASTUS állvány = rack1 |Igen |
+| HK-c2-keleti-us |adat |10.2.2.5 |HK-c-aset-1 |DC = EASTUS állvány = rack1 |Nem |
+| HK-c3-keleti-us |adat |10.2.2.6 |HK-c-aset-1 |DC = EASTUS állvány = rack2 |Igen |
+| HK-c5-keleti-us |adat |10.2.2.8 |HK-c-aset-2 |DC = EASTUS állvány = rack3 |Igen |
+| HK-c6-keleti-us |adat |10.2.2.9 |HK-c-aset-2 |DC = EASTUS állvány = rack3 |Nem |
+| HK-c7-keleti-us |adat |10.2.2.10 |HK-c-aset-2 |DC = EASTUS állvány = rack4 |Igen |
+| HK-c8-keleti-us |adat |10.2.2.11 |HK-c-aset-2 |DC = EASTUS állvány = rack4 |Nem |
+| HK-F1-keleti-us |web |10.2.1.4 |HK-w-aset-1 |N/A |N/A |
+| HK-w2-keleti-us |web |10.2.1.5 |HK-w-aset-1 |N/A |N/A |
 
 Ugyanezeket az utasításokat, mint #1 régió, de 10.2.xxx.xxx címterület használata.
 

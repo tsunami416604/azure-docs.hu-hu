@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: c2540120bcb1eca9f4ba62c7dbc0675343bf4f99
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
-ms.translationtype: HT
+ms.openlocfilehash: fa672fd7811e68368c311ef6a3f57eac4b240a4a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-and-upload-a-windows-server-vhd-to-azure"></a>Windows Server-alapú VHD létrehozása és feltöltése az Azure-ba
 Ez a cikk bemutatja, hogyan saját általánosított Virtuálisgép-lemezkép feltöltése a virtuális merevlemez (VHD), tehát a virtuális gépek létrehozásához használható. A lemezek és a Microsoft Azure virtuális merevlemezek kapcsolatos további tudnivalókért lásd: [kapcsolatos lemezek és a virtuális merevlemezek a virtuális gépek](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -88,7 +88,7 @@ Egy Azure storage-fiókot kell, hogy jogosult a hely, a .vhd fájl feltöltésé
     ```
 
 ## <a name="step-3-upload-the-vhd-file"></a>3. lépés: A .vhd fájl feltöltése
-Használja a [Add-AzureVhd](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevhd) a virtuális merevlemez feltöltéséhez.
+Használja a [Add-AzureVhd](https://docs.microsoft.com/powershell/module/azure/add-azurevhd) a virtuális merevlemez feltöltéséhez.
 
 Az előző lépésben használt Azure PowerShell-ablakot, írja be a következő parancsot, és cserélje le a változók &lsaquo; zárójeleket &rsaquo; a saját adataival.
 
@@ -97,7 +97,7 @@ Add-AzureVhd -Destination "https://<StorageAccountName>.blob.core.windows.net/<C
 ```
 
 ## <a name="step-4-add-the-image-to-your-list-of-custom-images"></a>4. lépés: Adja hozzá az egyéni lemezképek listája
-Használja a [Add-AzureVMImage](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevmimage) parancsmag használatával adja hozzá az egyéni lemezképek listáját.
+Használja a [Add-AzureVMImage](https://docs.microsoft.com/powershell/module/azure/add-azurevmimage) parancsmag használatával adja hozzá az egyéni lemezképek listáját.
 
 ```powershell
 Add-AzureVMImage -ImageName <ImageName> -MediaLocation "https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/<vhdName>.vhd" -OS "Windows"

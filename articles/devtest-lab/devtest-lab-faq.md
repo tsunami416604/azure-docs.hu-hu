@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
-ms.openlocfilehash: 1f261f97bbd9233d47eadc7e902e00ee87af9e34
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 0a5e686a7f60b15b55d8f4365b73c71de02c4bad
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Azure DevTest Labs kapcsolatos általános kérdésekre adott válaszok.
@@ -207,7 +207,7 @@ A virtuális gépek száma tesztkörnyezetenként létrehozható számát az ado
 >
 >
 
-## <a name="what-is-a-microsoft-account"></a>Mi az Microsoft-fiókkal?
+## <a name="what-is-a-microsoft-account"></a>Mi a Microsoft-fiók?
 A Microsoft-fiók egy csaknem minden Microsoft-eszközöket és szolgáltatásokat a használt fiók. Egy e-mail címet és jelszót, amely jelentkezhet Skype, Outlook.com, OneDrive, Xbox Live, és a Windows phone. Egy olyan fiók, az azt jelenti, hogy a fájlokat, fényképek, névjegyek és beállítások követve, bármilyen eszközről.
 
 > [!NOTE]
@@ -226,11 +226,11 @@ Több lehetősége, hogy a virtuális hálózati pontokat tartalmazza. Ha igen, 
 ## <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Miért jelenik meg a "Szülő erőforrás nem található" hiba történt, amikor egy virtuális Gépet a PowerShell kiépíteni I?
 Amikor egy erőforrást egy másik erőforrásra való szülője, a szülő erőforrás léteznie kell, a gyermek-erőforrás létrehozása előtt. Ha a szülő erőforrás nem létezik, akkor tekintse meg a **ParentResourceNotFound** üzenet. Ha a szülő erőforrás függősége nem adja meg, a gyermek-erőforrás a szülő előtt lehet, hogy telepíteni.
 
-Virtuális gépek gyermekerőforrásait egy erőforráscsoportban, amikor a rendszer. Resource Manager-sablonok használatával történő telepítése a virtuális gépek PowerShell használatával, a PowerShell-parancsfájl a megadott erőforráscsoport-név – a labor az erőforráscsoport nevének kell lennie. További információkért lásd: [az Azure-telepítés gyakori hibáinak az elhárítását](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound).
+Virtuális gépek gyermekerőforrásait egy erőforráscsoportban, amikor a rendszer. Resource Manager-sablonok használatával történő telepítése a virtuális gépek PowerShell használatával, a PowerShell-parancsfájl a megadott erőforráscsoport-név – a labor az erőforráscsoport nevének kell lennie. További információkért lásd: [az Azure-telepítés gyakori hibáinak az elhárítását](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound).
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Hol találok további hibainformációk, ha egy virtuális gép telepítése sikertelen?
 Virtuális gép telepítési hibák tevékenység naplózva lesznek rögzítve. Labor VM tevékenységi naplóit alapján is megtalálhatja **a naplók** vagy **virtuálisgép-diagnosztika** a erőforrás menü a labor virtuális gép panelen (a panelen megjelenik a virtuális gép kiválasztása után a **saját virtuális gépek** lista).
 
-Egyes esetekben a központi telepítési hiba lép fel, a Virtuálisgép-telepítéshez megkezdése előtt. Például akkor, ha a előfizetés hoztak létre a VM erőforrás meghaladja a korlátozást. Ebben az esetben a hiba részletes adatait a labor szintű tevékenység naplózva lesznek rögzítve. Tevékenység naplók találhatók alján a **konfigurációs és házirendek** beállításait. Tevékenység használatáról további információkat naplózza az Azure-ban, a következő témakörben: [tevékenységi naplóit rendszervizsgálati műveleteket az egyes erőforrások megtekintése](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-audit).
+Egyes esetekben a központi telepítési hiba lép fel, a Virtuálisgép-telepítéshez megkezdése előtt. Például akkor, ha a előfizetés hoztak létre a VM erőforrás meghaladja a korlátozást. Ebben az esetben a hiba részletes adatait a labor szintű tevékenység naplózva lesznek rögzítve. Tevékenység naplók találhatók alján a **konfigurációs és házirendek** beállításait. Tevékenység használatáról további információkat naplózza az Azure-ban, a következő témakörben: [tevékenységi naplóit rendszervizsgálati műveleteket az egyes erőforrások megtekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

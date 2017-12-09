@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: pullabhk;markgal;
-ms.openlocfilehash: 696f86f616575364bb65021260daf0c8458fc4e9
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
-ms.translationtype: HT
+ms.openlocfilehash: f75b7540ded85440cf20299836a214337250118e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -26,15 +26,15 @@ ms.lasthandoff: 11/28/2017
 
 ## <a name="invalid-vault-credentials-provided"></a>Megadott érvénytelen tárolói hitelesítő adatok 
 
-Kövesse az alábbi [hibaelhárítási] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) a probléma megoldásához.
+Kövesse az alábbi [hibaelhárítási] (https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) a probléma megoldásához.
 
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-server"></a>Az ügynök művelete sikertelen volt a DPM-Ügynökkoordinátor szolgáltatást a kiszolgálón kommunikációs hiba miatt 
 
-Kövesse az alábbi [hibaelhárítási] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) a probléma megoldásához.
+Kövesse az alábbi [hibaelhárítási] (https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) a probléma megoldásához.
 
 ## <a name="setup-could-not-update-registry-metadata"></a>A telepítő nem tudta frissíteni a beállításjegyzék-metaadatok
 
-Kövesse az alábbi [hibaelhárítási] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#installation-issues) a probléma megoldásához.
+Kövesse az alábbi [hibaelhárítási] (https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#installation-issues) a probléma megoldásához.
 
 
 ## <a name="installation-issues"></a>Telepítési problémák

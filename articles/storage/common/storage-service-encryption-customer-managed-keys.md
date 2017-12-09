@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: lakasa
-ms.openlocfilehash: 6d1e6752fb631114f5be06cb27a63e40547bf6ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 0a05a0d28899cc3db11f8fda8aec5bd6ed9bd5f8
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Felügyelt felhasználói kulcsok használata az Azure Key Vault Storage szolgáltatás titkosítási
 
@@ -50,7 +50,7 @@ A tárolási fiók az SSE engedélyezheti a [Azure-portálon](https://portal.azu
 ![A titkosítási beállítással portál ábrázoló képernyőfelvétel](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
 <br/>*Blob szolgáltatás SSE engedélyezése*
 
-Ha azt szeretné, hogy programozott módon engedélyezze vagy tiltsa le a tárolás titkosítását egy tárfiókon, használja a [Azure Storage erőforrás szolgáltató REST API felülete](https://docs.microsoft.com/en-us/rest/api/storagerp/?redirectedfrom=MSDN), a [Storage erőforrás szolgáltató ügyféloldali kódtára a .NET](https://docs.microsoft.com/en-us/dotnet/api/?redirectedfrom=MSDN), [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-4.0.0), vagy a [Azure CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli).
+Ha azt szeretné, hogy programozott módon engedélyezze vagy tiltsa le a tárolás titkosítását egy tárfiókon, használja a [Azure Storage erőforrás szolgáltató REST API felülete](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN), a [Storage erőforrás szolgáltató ügyféloldali kódtára a .NET](https://docs.microsoft.com/dotnet/api/?redirectedfrom=MSDN), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.0.0), vagy a [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli).
 
 Ezen a képernyőn Ha nem látja a "saját kulcs használata" jelölőnégyzet azt nem jóváhagyott az előzetes verziójára. Az e-mail küldése [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) és jóváhagyás-igénylést.
 
@@ -71,10 +71,10 @@ Ha a tárfiók nincs hozzáférése a Key Vault, futtathatja az Azure Powershell
 Ugrás az Azure Key Vault az Azure portálon, és a tárfiók való hozzáférés biztosítása szerint is engedélyezheti a hozzáférést az Azure-portálon.
 
 ## <a name="step-4-copy-data-to-storage-account"></a>4. lépés: Adatok másolása storage-fiók
-Ha szeretné, hogy a titkosított adatok át az új tárfiók, tekintse meg a [lépés 3 az első lépések a Storage szolgáltatás titkosítási az inaktív adatok](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account).
+Ha szeretné, hogy a titkosított adatok át az új tárfiók, tekintse meg a [lépés 3 az első lépések a Storage szolgáltatás titkosítási az inaktív adatok](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account).
 
 ## <a name="step-5-query-the-status-of-the-encrypted-data"></a>5. lépés: A titkosított adatok állapotának lekérdezése
-A titkosított adatok állapotának lekérdezése, tekintse meg [lépés 4 az első lépések a Storage szolgáltatás titkosítási az inaktív adatok](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data).
+A titkosított adatok állapotának lekérdezése, tekintse meg [lépés 4 az első lépések a Storage szolgáltatás titkosítási az inaktív adatok](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data).
 
 ## <a name="frequently-asked-questions-about-storage-service-encryption-for-data-at-rest"></a>Gyakori kérdések Storage szolgáltatás titkosítási az inaktív adatok
 **K: használom a prémium szintű storage; Használhatok SSE felügyelt ügyfél kulcsokkal?**
@@ -91,7 +91,7 @@ V: nincs az Azure Key Vault használatával költsége. További részletekért 
 
 **K: visszavonja a titkosítási kulcsokat a hozzáférést?**
 
-A: visszavonhatja a hozzáférést Igen, tetszőleges időpontban. Többféleképpen is lehet visszavonni a hozzáférést a kulcsokat. Tekintse meg [Azure Key Vault PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) és [Azure Key Vault CLI](https://docs.microsoft.com/en-us/cli/azure/keyvault) további részleteket. Visszavonni a hozzáférési gyakorlatilag letiltja való hozzáférést a tárfiókban lévő összes BLOB, a fiók titkosítási kulcs Azure Storage nem érhetők el.
+A: visszavonhatja a hozzáférést Igen, tetszőleges időpontban. Többféleképpen is lehet visszavonni a hozzáférést a kulcsokat. Tekintse meg [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) és [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) további részleteket. Visszavonni a hozzáférési gyakorlatilag letiltja való hozzáférést a tárfiókban lévő összes BLOB, a fiók titkosítási kulcs Azure Storage nem érhetők el.
 
 **K: hozható létre a tárfiók és a kulcs másik régióban?**
 
@@ -123,6 +123,6 @@ V: kapcsolattartási [ ssediscussions@microsoft.com ](mailto:ssediscussions@micr
 
 ## <a name="next-steps"></a>Következő lépések
 
-*   További információk az átfogó készletét biztonsági funkciókat nyújtanak, amelyek segítségével a fejlesztők olyan biztonságos alkalmazásokat hozhat létre, lásd: a [tárolási biztonsági útmutatója](https://docs.microsoft.com/en-us/azure/storage/storage-security-guide).
-*   Áttekintés az Azure Key Vault kapcsolatos információkért lásd: [Mi az Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis)?
+*   További információk az átfogó készletét biztonsági funkciókat nyújtanak, amelyek segítségével a fejlesztők olyan biztonságos alkalmazásokat hozhat létre, lásd: a [tárolási biztonsági útmutatója](https://docs.microsoft.com/azure/storage/storage-security-guide).
+*   Áttekintés az Azure Key Vault kapcsolatos információkért lásd: [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
 *   Ismerkedés az Azure Key Vault, lásd: [Ismerkedés az Azure Key Vault](../../key-vault/key-vault-get-started.md).

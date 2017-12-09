@@ -8,11 +8,11 @@ ms.author: victorh
 ms.date: 9/25/2017
 ms.topic: article
 ms.service: azure-stack
-ms.openlocfilehash: 7b7bac508a759a1367ac7328840848efe17ea3c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 3c72c58e63335f1cb440811e283bd742b8124161
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure verem hálózati szempontjai
 
@@ -34,7 +34,7 @@ Ez a cikk áttekintést a hálózat és a szolgáltatások, Azure verem egyedi s
 | |DNS-rekord beállítja az egyes zónák|5000 (alapértelmezett)<br>A kérelem növelhető.|5000|
 ||A zónadelegálás névkiszolgálók|Azure négy névkiszolgálók létrehozott felhasználó (bérlő) zónákkal adja meg.|Azure verem két névkiszolgálók biztosít minden felhasználó (bérlő) zónához, amely jön létre.|
 | Virtuális hálózat|Társviszony létesítése virtuális hálózatok között|Ugyanabban a régióban két virtuális hálózatok csatlakoztatása az Azure gerincét a hálózaton keresztül.|Még nem támogatott.|
-| |Az IPv6-címek|Az IPv6-címek részeként rendelhet a [hálózati konfigurációja](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions).|Kizárólag az IPv4 használata támogatott.|
+| |Az IPv6-címek|Az IPv6-címek részeként rendelhet a [hálózati konfigurációja](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions).|Kizárólag az IPv4 használata támogatott.|
 |VPN-átjárók|Pont – hely típusú VPN-átjáró|Támogatott|Még nem támogatott.|
 | |Vnet – Vnet átjáró|Támogatott|Még nem támogatott.|
 | |VPN Gateway SKU-n|Alapszintű, GW1, GW2, GW3, Standard szintű, nagy teljesítményű, igen nagy teljesítményű támogatása. |Alapszintű, Standard és nagy teljesítményű termékváltozat támogatása.|

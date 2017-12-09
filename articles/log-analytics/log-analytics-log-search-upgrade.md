@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 1806b70ba0d34f49abfb954abebff8d29ae61291
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
-ms.translationtype: HT
+ms.openlocfilehash: f3bb92335ec8d7d6edc0f10346b9b3a26adf65af
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-log-analytics-upgrade-to-new-log-search"></a>Új naplófájl-keresési frissítsen az Azure Naplóelemzés
 
@@ -52,7 +52,7 @@ Ha a munkaterületet automatikusan frissítve van, majd, megjelenik egy szalagc�
 A következő változnak a munkaterület átalakítás után:
 
 - A mentett keresések, a riasztási szabályok és a nézeteket, a nézet-tervezővel létrehozott automatikusan alakítja át az új nyelven.  Megoldások szereplő keresések nem automatikusan történik, de a azok még inkább parancsprogramok megnyitásakor.  
-- [Saját irányítópult](log-analytics-dashboards.md) az alábbi szempontból is elavult [adatforrásnézet-tervezőből](log-analytics-view-designer.md) és [Azure irányítópultok](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards.md).  Saját irányítópult hozzáadott csempék továbbra is elérhetők, de azok most csak olvasható.
+- [Saját irányítópult](log-analytics-dashboards.md) az alábbi szempontból is elavult [adatforrásnézet-tervezőből](log-analytics-view-designer.md) és [Azure irányítópultok](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards.md).  Saját irányítópult hozzáadott csempék továbbra is elérhetők, de azok most csak olvasható.
 - [A Power BI-integráció](log-analytics-powerbi.md) új folyamat helyére.  Minden létrehozott meglévő Power BI ütemezések le lesz tiltva, és ki kell cserélni őket az új folyamat során.
 - A válaszok [műveletek riasztási](log-analytics-alerts-actions.md) webhookok és runbookok használatával új formátumuk, és ennek megfelelően frissíti a riasztási szabályok esetleg.
 - Tekintse meg a következő a [naplófájl-keresési gyakran ismételt kérdések](log-analytics-log-search-faq.md) esetében a frissítés kapcsolatos gyakori kérdésekre.

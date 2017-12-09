@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 9503dc4a1fa8bc7773677de1673fed3abe1c1b51
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: HT
+ms.openlocfilehash: 7ae0fbf5f7566bd3f1f6591501b8b004a1e5cb0f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="prepare-a-geo-replicated-azure-container-registry"></a>Egy Azure-tárolót georeplikált beállításjegyzék előkészítése
 
@@ -93,7 +93,7 @@ Ha a replikáció befejeződött, a portál által adott jelentéseket tükrözi
 
 Most, hogy konfigurálta az georeplikáció, tároló-lemezkép elkészítése, és hogy a beállításjegyzékben. Kell először jelentkezik be a ACR példányát előtt képek rá. A [Basic, Standard és Premium termékváltozat](container-registry-skus.md), az Azure-identitás használatával hitelesítheti.
 
-Használja a [az acr bejelentkezési](https://docs.microsoft.com/en-us/cli/azure/acr#az_acr_login) parancs és a beállításjegyzék a hitelesítő adatok gyorsítótárazása hitelesítéséhez. Cserélje le `<acrName>` az előző lépésekben létrehozott beállításjegyzék nevével.
+Használja a [az acr bejelentkezési](https://docs.microsoft.com/cli/azure/acr#az_acr_login) parancs és a beállításjegyzék a hitelesítő adatok gyorsítótárazása hitelesítéséhez. Cserélje le `<acrName>` az előző lépésekben létrehozott beállításjegyzék nevével.
 
 ```azurecli
 az acr login --name <acrName>

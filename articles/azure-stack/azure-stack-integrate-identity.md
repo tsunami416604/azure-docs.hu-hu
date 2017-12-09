@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: victorh
 keywords: 
-ms.openlocfilehash: e43b9c7a854bc7150247a2b92d2d37ad6d74c705
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
-ms.translationtype: HT
+ms.openlocfilehash: c66761d44266a33ddfa1e95444355d3908186ef8
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure verem datacenter integrációs - identitás
 
@@ -58,7 +58,7 @@ Követelmények:
 |Összetevő|Követelmény|
 |---------|---------|
 |Graph|Microsoft Active Directory 2012/2012 R2/2016|
-|ACTIVE DIRECTORY ÖSSZEVONÁSI SZOLGÁLTATÁSOK|Windows Server 2012 vagy 2012 R2/2016|
+|AD FS|Windows Server 2012 vagy 2012 R2/2016|
 
 ## <a name="setting-up-graph-integration"></a>Graph-integráció beállítása
 
@@ -260,7 +260,7 @@ Nincsenek számos forgatókönyv, amely egy egyszerű szolgáltatásnév (SPN) h
 - Számos olyan alkalmazás
 - A nem interaktív bejelentkezési van szüksége
 
-Egyszerű Szolgáltatásnevet létrehozásával kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév létrehozása az AD FS](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
+Egyszerű Szolgáltatásnevet létrehozásával kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév létrehozása az AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

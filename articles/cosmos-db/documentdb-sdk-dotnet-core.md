@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 835956f185b4ecdcbfa0b486223dd9bc2d0377cb
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
-ms.translationtype: HT
+ms.openlocfilehash: 00ccf09930d1973c6f503fc36cbaa4e6203cd2b2
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK: A kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójával szolgáltatásparitást
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1 
 
-* Kapcsolódó belső változások támogató [Microsoft.Azure.Graphs](https://docs.microsoft.com/en-us/azure/cosmos-db/graph-sdk-dotnet)
+* Kapcsolódó belső változások támogató [Microsoft.Azure.Graphs](https://docs.microsoft.com/azure/cosmos-db/graph-sdk-dotnet)
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0 
 

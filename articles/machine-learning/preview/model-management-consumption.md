@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 39023712f72d5ac874de1f20a110bef9703ed5e8
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
-ms.translationtype: HT
+ms.openlocfilehash: 64141afe421ace44fe71c04f8a2fba48144633c9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="consuming-web-services"></a>Webszolgáltatások felhasználása
 Miután telepít egy modell valós idejű webszolgáltatásként, elküldi a adatok, és előrejelzéseket beolvasása számos különböző rendszerek és alkalmazások. A valós idejű webszolgáltatás közzétesz egy REST API előrejelzéseket kapcsolódnak. A webszolgáltatás lekérni egy vagy több előrejelzéseket, jelenleg egy vagy több sor formátumban adatokat küldhet.
 
-Az a [Azure Machine Learning webszolgáltatás](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-service-deploy), külső alkalmazás szinkron módon kommunikál a prediktív modell azáltal, hogy a HTTP POST híváson a szolgáltatás URL-CÍMÉT. Ahhoz, hogy egy webes szolgáltatás hívása, az ügyfélalkalmazás kell meghatároznia az API-kulcsot, amely jön létre, amikor előrejelzéshez telepíti, és a kérelem adatai üzembe a POST kérés törzsében.
+Az a [Azure Machine Learning webszolgáltatás](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy), külső alkalmazás szinkron módon kommunikál a prediktív modell azáltal, hogy a HTTP POST híváson a szolgáltatás URL-CÍMÉT. Ahhoz, hogy egy webes szolgáltatás hívása, az ügyfélalkalmazás kell meghatároznia az API-kulcsot, amely jön létre, amikor előrejelzéshez telepíti, és a kérelem adatai üzembe a POST kérés törzsében.
 
 Ne feledje, hogy API-kulcsokat csak a fürt telepítési módban érhető el. Helyi webszolgáltatások nincs kulcsok.
 

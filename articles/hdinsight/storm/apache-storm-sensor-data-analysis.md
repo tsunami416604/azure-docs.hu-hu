@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/19/2017
 ms.author: larryfr
-ms.openlocfilehash: 87c2aece68c5de06d683abf971b6c7ccf7f67a54
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
-ms.translationtype: HT
+ms.openlocfilehash: 8c8cda26f2b9b564dee330e4883ec12f39feb652
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="analyze-sensor-data-with-apache-storm-event-hub-and-hbase-in-hdinsight-hadoop"></a>Apache Storm, az Event Hubs és a HBase a HDInsight (Hadoop) érzékelőadatok elemzése
 
@@ -361,7 +361,7 @@ A Storm-fürtök írni a HBase, a HBase bolt kell megadnia a konfigurációs ada
     > [!NOTE]
     > Cserélje le a(z) your_HDInsight_cluster_name a HDInsight-fürt nevét. Amikor a rendszer kéri, adja meg a jelszót a HDInsight-rendszergazdai bejelentkezés.
     >
-    > Ebben a példában az Azure PowerShell szükséges. További információ az Azure PowerShell használatával, lásd: [Ismerkedés az Azure PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/Getting-Started-with-Windows-PowerShell?view=powershell-6)
+    > Ebben a példában az Azure PowerShell szükséges. További információ az Azure PowerShell használatával, lásd: [Ismerkedés az Azure PowerShell](https://docs.microsoft.com/powershell/scripting/Getting-Started-with-Windows-PowerShell?view=powershell-6)
 
     Ezek a példák által visszaadott adatok hasonlít a következő szöveget:
 

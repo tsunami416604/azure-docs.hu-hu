@@ -12,15 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.openlocfilehash: 9fe7a5f254d8b384cae10ecd34e0bdafa433ff13
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 7e25b9a77d5ba7b856c9616c8384a567b7d37bbd
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltató üzemeltetése
 
-Ez a dokumentum minden Microsoft Azure Resource Manager erőforrás-szolgáltató elérhető műveleteinek listázása. Ezek segítségével az egyéni szerepkörök az Azure-erőforrások részletes szerepköralapú hozzáférés-vezérlést (RBAC) engedélyeket biztosítanak. Ne feledje, ez nem az átfogó listáját, és műveletek előfordulhat, hogy kell hozzáadni vagy eltávolítani, mert egyes szolgáltatók frissül. Művelet karakterláncok kövesse formátuma `Microsoft.<ProviderName>/<ChildResourceType>/<action>`. Az átfogó és aktuális listáját használja a `Get-AzureRmProviderOperation` (a PowerShell) vagy `azure provider operations show` (az Azure CLI) az Azure erőforrás-szolgáltatók műveletek.
+Ez a dokumentum minden Microsoft Azure Resource Manager erőforrás-szolgáltató elérhető műveleteinek listázása. Ezek segítségével az egyéni szerepkörök az Azure-erőforrások részletes szerepköralapú hozzáférés-vezérlést (RBAC) engedélyeket biztosítanak. Ne feledje, ez nem az átfogó listáját, és műveletek előfordulhat, hogy kell hozzáadni vagy eltávolítani, mert egyes szolgáltatók frissül. Művelet karakterláncok kövesse formátuma `Microsoft.<ProviderName>/<ChildResourceType>/<action>`. 
+
+> [!NOTE]
+> Az átfogó és aktuális listáját használja a `Get-AzureRmProviderOperation` (a PowerShell) vagy `az provider operation list` (az Azure CLI v2) az Azure erőforrás-szolgáltatók műveletek.
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
@@ -87,7 +90,7 @@ Ez a dokumentum minden Microsoft Azure Resource Manager erőforrás-szolgáltat�
 |/Service/loggers/DELETE|Távolítsa el a meglévő naplózó|
 |/Service/Users/Read|A regisztrált felhasználók listáját, vagy felhasználói fiók adatainak lekérése|
 |/Service/Users/Write|Új felhasználó vagy egy meglévő felhasználó frissítés fiókadatok regisztrálása|
-|/Service/Users/DELETE|Távolítsa el a felhasználói fiók|
+|/Service/Users/DELETE|Felhasználói fiók eltávolítása|
 |/Service/Users/generateSsoUrl/Action|Egyszeri bejelentkezési URL-címet létrehozni. Az URL-cím használható felügyeleti portál eléréséhez|
 |/Service/Users/Subscriptions/Read|Felhasználói előfizetések listájának beolvasása|
 |/Service/Users/keys/Read|Felhasználói kulcsok listájának beolvasása|
@@ -188,9 +191,9 @@ Ez a dokumentum minden Microsoft Azure Resource Manager erőforrás-szolgáltat�
 |/roleDefinitions/DELETE|A megadott egyéni szerepkör-definíció törlése.|
 |/providerOperations/Read|Az összes, szerepkör-definíciókban használható erőforrás-szolgáltató műveleteinek beolvasása.|
 |/policyDefinitions/Read|Szabályzat-definíció adatainak lekérése.|
-|/ policyDefinitions/írása|Egyéni házirend-definíció létrehozása.|
-|/policyDefinitions/DELETE|Házirend-definíció törlése.|
-|/roleAssignments/Read|Információk beolvasása a szerepkör-hozzárendelésről.|
+|/ policyDefinitions/írása|Egyéni szabályzat-definíció létrehozása.|
+|/policyDefinitions/DELETE|Szabályzat-definíció törlése.|
+|/roleAssignments/Read|Szerepkör-hozzárendelés adatainak beolvasása.|
 |/ roleAssignments/írása|Szerepkör-hozzárendelés létrehozása a megadott hatókörben.|
 |/roleAssignments/DELETE|Szerepkör-hozzárendelés törlése a megadott hatókörből.|
 
@@ -294,7 +297,7 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 
 | Művelet | Leírás |
 |---|---|
-|/ mapApis/Olvasás|Olvasási művelete|
+|/ mapApis/Olvasás|Olvasási művelet|
 |/ mapApis/írása|Írási művelet|
 |/ mapApis/törlése|Törlési művelet|
 |/mapApis/regenerateKey/Action|A kulcs újragenerálása|
@@ -309,11 +312,11 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/ checknameavailability/művelet|Ellenőrzi, hogy a név egy új Redis Cache használható|
 |/ regisztrációs/művelet|Előfizetés az "Microsoft.Cache" erőforrás-szolgáltató regisztrálása|
 |/ unregister/művelet|Előfizetés az "Microsoft.Cache" erőforrás-szolgáltató regisztrációjának törlése|
-|/ redis/írása|Redis gyorsítótár beállításainak és konfigurációjának módosítása a felügyeleti portálon|
+|/ redis/írása|Redis gyorsítótár beállításainak és konfigurációjának a kezelési portál módosítása|
 |/redis/Read|Redis gyorsítótár beállításainak és konfigurációjának megtekintése a felügyeleti portálon|
-|/redis/DELETE|Teljes Redis gyorsítótár törlése|
+|/redis/DELETE|A teljes Redis gyorsítótár törlése|
 |/redis/listKeys/Action|Redis gyorsítótár elérésikulcs-értékeinek megtekintése a felügyeleti portálon|
-|/redis/regenerateKey/Action|Redis gyorsítótár elérésikulcs-értékeinek módosítása a felügyeleti portálon|
+|/redis/regenerateKey/Action|Redis gyorsítótár elérési kulcsainak a kezelési portál értékének módosítása|
 |/redis/import/Action|Meghatározott formátumú adatok importálása a Redis szolgáltatásba több blobból|
 |/redis/export/Action|Redis-adatok exportálása előre megadott tárolási blobokba meghatározott formátumban|
 |/redis/forceReboot/Action|Egy gyorsítótárpéldány kényszerített újraindítása, mely adatvesztést okozhat.|
@@ -357,137 +360,137 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 
 | Művelet | Leírás |
 |---|---|
-|/ regisztrációs/művelet|Regisztrálás a Classic Compute szolgáltatónál|
+|/ regisztrációs/művelet|A hagyományos számítási regisztrálása|
 |/ checkDomainNameAvailability/művelet|Az adott tartománynév elérhetőségének ellenőrzése.|
-|/ moveSubscriptionResources/művelet|Minden hagyományos erőforrás áthelyezése egy másik előfizetésbe.|
-|/ validateSubscriptionMoveAvailability/művelet|Annak ellenőrzése, hogy áthelyezhető-e az előfizetés hagyományos áthelyezéssel.|
+|/ moveSubscriptionResources/művelet|Minden hagyományos erőforrás áthelyezése egy másik előfizetést.|
+|/ validateSubscriptionMoveAvailability/művelet|Ellenőrizze az előfizetés elérhetősége a klasszikus áthelyezési művelet.|
 |/operatingSystemFamilies/Read|Felsorolja a Vendég operációsrendszer-család a Microsoft Azure-ban elérhető, és minden f elérhető operációsrendszer-verziókat is felsorolja
-|/Capabilities/Read|Képességek megjelenítése|
-|/operatingSystems/Read|Ez a művelet a Microsoft Azure-ban jelenleg elérhető vendég operációsrendszer-verziókat listázza.|
-|/resourceTypes/skus/Read|Lekérdezi a támogatott erőforrástípusok termékváltozat-listáját.|
+|/Capabilities/Read|A képességek megjelenítése|
+|/operatingSystems/Read|A Microsoft Azure jelenleg elérhető a Vendég-operációsrendszer-verziók listája olvasható.|
+|/resourceTypes/skus/Read|A támogatott erőforrástípusai Sku listájának beolvasása.|
 |/domainNames/Read|Erőforrások tartománynevének visszaadása.|
-|/ domainNames/írása|Erőforrások tartománynevének hozzáadása vagy módosítása.|
+|/ domainNames/írása|Hozzáadása vagy módosítása a erőforrások tartománynevének.|
 |/domainNames/DELETE|Erőforrások tartománynevének eltávolítása.|
-|/domainNames/swap/Action|Átmeneti pont cseréje végleges pontra.|
+|/domainNames/swap/Action|Előkészítési pont cseréje üzemelési pontra.|
 |/domainNames/serviceCertificates/Read|Az alkalmazott szolgáltatási tanúsítványok visszaadása.|
-|/domainNames/serviceCertificates/Write|Alkalmazott szolgáltatási tanúsítványok hozzáadása vagy módosítása.|
+|/domainNames/serviceCertificates/Write|Hozzáadása vagy módosítása az alkalmazott szolgáltatási tanúsítványok.|
 |/domainNames/serviceCertificates/DELETE|Az alkalmazott szolgáltatási tanúsítványok törlése.|
-|/domainNames/serviceCertificates/operationStatuses/Read|A tartománynevek szolgáltatási tanúsítványai műveleti állapotának beolvasása.|
-|/domainNames/Capabilities/Read|A tartománynév-képességek megjelenítése|
-|/domainNames/Extensions/Read|A tartománynév-kiterjesztéseket adja vissza.|
-|/domainNames/Extensions/Write|Tartománynév-kiterjesztések hozzáadása.|
+|/domainNames/serviceCertificates/operationStatuses/Read|Tartománynevek szolgáltatási tanúsítványai a tartományhoz tartozó műveleti állapotának beolvasása.|
+|/domainNames/Capabilities/Read|Megjeleníti a tartományt képességek|
+|/domainNames/Extensions/Read|A tartomány kiterjesztéseket adja vissza.|
+|/domainNames/Extensions/Write|A tartománynév-kiterjesztések hozzáadása.|
 |/domainNames/Extensions/DELETE|A tartománynév-kiterjesztések eltávolítása.|
-|/domainNames/Extensions/operationStatuses/Read|A tartománynév-kiterjesztések műveleti állapotának beolvasása.|
+|/domainNames/Extensions/operationStatuses/Read|A művelet állapotának a kiterjesztések beolvasása.|
 |/domainNames/Active/Write|Az aktív tartománynév beállítása.|
-|/domainNames/slots/Read|Üzembe helyezési pontok megjelenítése.|
-|/domainNames/slots/Write|Telepítés létrehozása vagy frissítése.|
+|/domainNames/slots/Read|Az üzembe helyezési jeleníti meg.|
+|/domainNames/slots/Write|Hoz, vagy az üzemelő példány frissítése.|
 |/domainNames/slots/DELETE|A megadott üzembe helyezési pont törlése.|
-|/domainNames/slots/Start/Action|Üzembe helyezési pont indítása.|
-|/domainNames/slots/STOP/Action|Üzembe helyezési pont felfüggesztése.|
-|/domainNames/slots/operationStatuses/Read|A tartománynevek üzembe helyezési pontjai műveleti állapotának beolvasása.|
-|/domainNames/slots/Roles/Read|Üzembe helyezési pont szerepkörének beolvasása.|
+|/domainNames/slots/Start/Action|Elindít egy üzembe helyezési tárhelyet.|
+|/domainNames/slots/STOP/Action|Felfüggeszti a telepített környezet tárolóhelye.|
+|/domainNames/slots/operationStatuses/Read|Tartománynevek üzembe helyezési pontjai a tartományhoz tartozó műveleti állapotának beolvasása.|
+|/domainNames/slots/Roles/Read|Az üzembe helyezési pont szerepkörének beolvasása.|
 |/domainNames/slots/Roles/extensionReferences/Read|Az üzembe helyezési ponti szerepkör kiterjesztéshivatkozását adja vissza.|
-|/domainNames/slots/Roles/extensionReferences/Write|Az üzembe helyezési ponti szerepkör kiterjesztéshivatkozásának hozzáadása vagy módosítása.|
-|/domainNames/slots/Roles/extensionReferences/DELETE|Eltávolítja az üzembe helyezési ponti szerepkör kiterjesztéshivatkozását.|
-|/domainNames/slots/Roles/extensionReferences/operationStatuses/Read|A tartománynevek üzembe helyezési ponti szerepkörei kiterjesztéshivatkozásai műveleti állapotának beolvasása.|
-|/domainNames/slots/Roles/roleInstances/Read|Szerepkörpéldány beolvasása.|
+|/domainNames/slots/Roles/extensionReferences/Write|Hozzáadása vagy módosítása az üzembe helyezési ponti szerepkör kiterjesztéshivatkozását.|
+|/domainNames/slots/Roles/extensionReferences/DELETE|Távolítsa el az üzembe helyezési ponti szerepkör kiterjesztéshivatkozását.|
+|/domainNames/slots/Roles/extensionReferences/operationStatuses/Read|A tartomány nevét üzembe helyezési ponti szerepkörei kiterjesztéshivatkozásai műveleti állapotának beolvasása.|
+|/domainNames/slots/Roles/roleInstances/Read|A szerepkör példánya beolvasása.|
 |/domainNames/slots/Roles/roleInstances/restart/Action|Újraindítja a szerepkörpéldányt beállítani.|
-|/domainNames/slots/Roles/roleInstances/reimage/Action|Szerepkörpéldány rendszerképének alaphelyzetbe állítása.|
-|/domainNames/slots/Roles/roleInstances/operationStatuses/Read|A tartománynevek üzembe helyezési ponti szerepkörei szerepkörpéldányai műveleti állapotának beolvasása.|
-|/domainNames/slots/State/Start/Write|Az üzembe helyezési pont állapotának leállítottra állítása.|
-|/domainNames/slots/State/STOP/Write|Az üzembe helyezési pont állapotának elindítottra állítása.|
-|/domainNames/slots/upgradeDomain/Write|Verzióváltási tartomány feldolgozása.|
+|/domainNames/slots/Roles/roleInstances/reimage/Action|A szerepkör példánya reimages.|
+|/domainNames/slots/Roles/roleInstances/operationStatuses/Read|A tartomány nevét üzembe helyezési ponti szerepkörei szerepkörpéldányai műveleti állapotának beolvasása.|
+|/domainNames/slots/State/Start/Write|Módosítja az üzembe helyezési pont állapotának leállt.|
+|/domainNames/slots/State/STOP/Write|Módosítja az üzembe helyezési pont állapotának elindult.|
+|/domainNames/slots/upgradeDomain/Write|Bejárása a tartomány frissítéséhez.|
 |/domainNames/internalLoadBalancers/Read|A belső terheléselosztók beolvasása.|
-|/domainNames/internalLoadBalancers/Write|Új belső terheléselosztás létrehozása.|
+|/domainNames/internalLoadBalancers/Write|Létrehoz egy új belső terheléselosztás.|
 |/domainNames/internalLoadBalancers/DELETE|Új belső terheléselosztás eltávolítása.|
-|/domainNames/internalLoadBalancers/operationStatuses/Read|A tartománynevek belső terheléselosztói műveleti állapotának beolvasása.|
-|/domainNames/loadBalancedEndpointSets/Read|Az elosztott terhelésű végpontcsoportok megjelenítése|
+|/domainNames/internalLoadBalancers/operationStatuses/Read|A tartománynevek belső terheléselosztóinak műveleti állapotának beolvasása.|
+|/domainNames/loadBalancedEndpointSets/Read|Megjeleníti az elosztott terhelésű végpontcsoportok megjelenítése|
 |/domainNames/loadBalancedEndpointSets/operationStatuses/Read|A tartománynevek elosztott terhelésű végpontcsoportjai műveleti állapotának beolvasása.|
-|/domainNames/availabilitySets/Read|Az erőforrás rendelkezésre állási csoportjának megjelenítése.|
+|/domainNames/availabilitySets/Read|A rendelkezésre állási csoportot az erőforrás megjelenítése.|
 |/Quotas/Read|Az előfizetés kvótájának beolvasása.|
 |/virtualMachines/Read|Virtuális gépek listájának beolvasása.|
-|/ virtuális gépek vannak/írása|Virtuális gépek hozzáadása vagy módosítása.|
+|/ virtuális gépek vannak/írása|Adja hozzá, vagy módosítsa a virtuális gépek.|
 |/virtualMachines/DELETE|Eltávolítja a virtuális gépek.|
-|/virtualMachines/Start/Action|Virtuális gép elindítása.|
+|/virtualMachines/Start/Action|A virtuális gép elindításához.|
 |/virtualMachines/redeploy/Action|A virtuális gép redeploys.|
 |/virtualMachines/restart/Action|Újraindítja a virtuális gépek.|
-|/virtualMachines/STOP/Action|Virtuális gép leállítása.|
-|/virtualMachines/shutdown/Action|Virtuális gép rendszerének leállítása.|
-|/virtualMachines/attachDisk/Action|Adatlemez csatlakoztatása a virtuális géphez.|
-|/virtualMachines/detachDisk/Action|Adatlemez leválasztása a virtuális gépről.|
-|/virtualMachines/downloadRemoteDesktopConnectionFile/Action|Virtuális gép RDP-fájljának letöltése.|
+|/virtualMachines/STOP/Action|A virtuális gép leáll.|
+|/virtualMachines/shutdown/Action|Állítsa le a virtuális gépet.|
+|/virtualMachines/attachDisk/Action|Adatlemez egy virtuális géphez.|
+|/virtualMachines/detachDisk/Action|A virtuális gépről adatlemez.|
+|/virtualMachines/downloadRemoteDesktopConnectionFile/Action|A virtuális gép RDP-fájljának letöltése.|
 |/virtualMachines/hálózati illesztők /<br>associatedNetworkSecurityGroups olvasása|A hálózati interfészhez társított hálózati biztonsági csoport lekérése.|
 |/virtualMachines/hálózati illesztők /<br>associatedNetworkSecurityGroups írása|A hálózati interfészhez társított hálózati biztonsági csoport hozzáadása.|
 |/virtualMachines/hálózati illesztők /<br>associatedNetworkSecurityGroups vagy törlése|A hálózati interfészhez társított hálózati biztonsági csoport törlése.|
-|/virtualMachines/hálózati illesztők /<br>olvasási idő associatedNetworkSecurityGroups/operationStatuses|A virtuális gépek társított hálózati biztonsági csoportjai műveleti állapotának beolvasása.|
-|/virtualMachines/Providers/Microsoft.Insights/metricDefinitions/Read|A metrikai meghatározások beolvasása.|
-|/virtualMachines/Providers/Microsoft.Insights/diagnosticSettings/Read|Diagnosztikai beállítások beolvasása.|
-|/virtualMachines/Providers/Microsoft.Insights/diagnosticSettings/Write|Diagnosztikai beállítások hozzáadása vagy módosítása.|
-|/virtualMachines/Metrics/Read|Metrika beolvasása.|
+|/virtualMachines/hálózati illesztők /<br>olvasási idő associatedNetworkSecurityGroups/operationStatuses|A virtuális gépek műveleti állapotának társított hálózati biztonsági csoportok beolvasása.|
+|/virtualMachines/Providers/Microsoft.Insights/metricDefinitions/Read|Lekérdezi a metrikák definíciókat.|
+|/virtualMachines/Providers/Microsoft.Insights/diagnosticSettings/Read|A diagnosztikai beállításainak beolvasása.|
+|/virtualMachines/Providers/Microsoft.Insights/diagnosticSettings/Write|Hozzáadása vagy módosítása a diagnosztikai beállításokat.|
+|/virtualMachines/Metrics/Read|A metrikák beolvasása.|
 |/virtualMachines/operationStatuses/Read|A virtuális gépek műveleti állapotának beolvasása.|
-|/virtualMachines/Extensions/Read|Virtuálisgép-bővítmény beolvasása.|
-|/virtualMachines/Extensions/Write|Virtuálisgép-bővítmény hozzáadása.|
+|/virtualMachines/Extensions/Read|A virtuálisgép-bővítmény beolvasása.|
+|/virtualMachines/Extensions/Write|A virtuálisgép-bővítmény helyezi.|
 |/virtualMachines/Extensions/operationStatuses/Read|A virtuálisgép-bővítmények műveleti állapotának beolvasása.|
 |/virtualMachines/asyncOperations/Read|Lehetséges aszinkron műveletek beolvasása|
-|/virtualMachines/Disks/Read|Adatlemezek listájának beolvasása|
+|/virtualMachines/Disks/Read|Az adatlemezek adatlemezek listájának beolvasása|
 |/virtualMachines/associatedNetworkSecurityGroups/Read|A virtuális géphez társított hálózati biztonsági csoport lekérése.|
 |/virtualMachines/associatedNetworkSecurityGroups/Write|A virtuális géphez társított hálózati biztonsági csoport hozzáadása.|
 |/virtualMachines/associatedNetworkSecurityGroups/DELETE|A virtuális géphez társított hálózati biztonsági csoport törlése.|
-|/virtualMachines/associatedNetworkSecurityGroups/operationStatuses/Read|A virtuális gépek társított hálózati biztonsági csoportjai műveleti állapotának beolvasása.|
+|/virtualMachines/associatedNetworkSecurityGroups/operationStatuses/Read|A virtuális gépek műveleti állapotának társított hálózati biztonsági csoportok beolvasása.|
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 | Művelet | Leírás |
 |---|---|
-|/ regisztrációs/művelet|Regisztrálás a Classic Network szolgáltatónál|
+|/ regisztrációs/művelet|Klasszikus hálózathoz regisztrálása|
 |/gatewaySupportedDevices/Read|Támogatott eszközök listájának beolvasása.|
-|/reservedIps/Read|A fenntartott IP-címek beolvasása|
-|/ Keskenyeknek/írása|Új fenntartott IP-cím felvétele|
-|/reservedIps/DELETE|Fenntartott IP-cím törlése.|
-|/reservedIps/Link/Action|Egy fenntartott IP-cím hivatkozása|
-|/reservedIps/JOIN/Action|Csatlakozás egy fenntartott IP-címhez|
+|/reservedIps/Read|A foglalt IP-cím beolvasása|
+|/ Keskenyeknek/írása|Új fenntartott IP-cím hozzáadása|
+|/reservedIps/DELETE|A foglalt IP-cím törlése.|
+|/reservedIps/Link/Action|Hivatkozásra egy fenntartott IP-cím|
+|/reservedIps/JOIN/Action|Csatlakozás egy fenntartott IP-cím|
 |/reservedIps/operationStatuses/Read|A fenntartott IP-címek műveleti állapotának beolvasása.|
-|/virtualNetworks/Read|Virtuális hálózat beolvasása.|
-|/ virtualNetworks/írása|Új virtuális hálózat hozzáadása.|
-|/virtualNetworks/DELETE|A virtuális hálózat törlése.|
-|/virtualNetworks/Peer/Action|Társviszony-létesítés két virtuális hálózat között.|
-|/virtualNetworks/JOIN/Action|Csatlakozás a virtuális hálózathoz.|
-|/virtualNetworks/checkIPAddressAvailability/Action|Az adott IP-cím virtuális hálózaton belüli elérhetőségét ellenőrzi.|
-|/virtualNetworks/Capabilities/Read|Képességek megjelenítése|
+|/virtualNetworks/Read|A virtuális hálózati beolvasása.|
+|/ virtualNetworks/írása|Adjon hozzá egy új virtuális hálózat.|
+|/virtualNetworks/DELETE|Törli a virtuális hálózat.|
+|/virtualNetworks/Peer/Action|A virtuális hálózat egy másik virtuális hálózathoz állomásokhoz.|
+|/virtualNetworks/JOIN/Action|A virtuális hálózathoz csatlakozik.|
+|/virtualNetworks/checkIPAddressAvailability/Action|Egy adott IP-cím virtuális hálózaton rendelkezésre állását ellenőrzi.|
+|/virtualNetworks/Capabilities/Read|A képességek megjelenítése|
 |/virtualNetworks/alhálózatok /<br>associatedNetworkSecurityGroups olvasása|Az alhálózathoz társított hálózati biztonsági csoport lekérése.|
 |/virtualNetworks/alhálózatok /<br>associatedNetworkSecurityGroups írása|Az alhálózathoz társított hálózati biztonsági csoport hozzáadása.|
 |/virtualNetworks/alhálózatok /<br>associatedNetworkSecurityGroups vagy törlése|Az alhálózathoz társított hálózati biztonsági csoport törlése.|
-|/virtualNetworks/alhálózatok /<br>olvasási idő associatedNetworkSecurityGroups/operationStatuses|A virtuális hálózat alhálózatához társított hálózati biztonsági csoport műveleti állapotának beolvasása.|
+|/virtualNetworks/alhálózatok /<br>olvasási idő associatedNetworkSecurityGroups/operationStatuses|Az a virtuális hálózat alhálózatához társított hálózati biztonsági csoport műveleti állapotának beolvasása.|
 |/virtualNetworks/operationStatuses/Read|A virtuális hálózatok műveleti állapotának beolvasása.|
-|/virtualNetworks/Gateways/Read|Virtuális hálózati átjárók beolvasása.|
-|/virtualNetworks/Gateways/Write|Virtuális hálózati átjáró hozzáadása.|
-|/virtualNetworks/Gateways/DELETE|Virtuális hálózati átjáró törlése.|
-|/virtualNetworks/Gateways/startDiagnostics/Action|Virtuális hálózati átjáró diagnosztikájának indítása.|
-|/virtualNetworks/Gateways/stopDiagnostics/Action|Virtuális hálózati átjáró diagnosztikájának leállítása.|
-|/virtualNetworks/Gateways/downloadDiagnostics/Action|Átjáródiagnosztika letöltése.|
+|/virtualNetworks/Gateways/Read|A virtuális hálózati átjárók beolvasása.|
+|/virtualNetworks/Gateways/Write|A virtuális hálózati átjáró hozzáadása.|
+|/virtualNetworks/Gateways/DELETE|A virtuális hálózati átjáró törlése.|
+|/virtualNetworks/Gateways/startDiagnostics/Action|A virtuális hálózati átjáró diagnosztikájának indítása.|
+|/virtualNetworks/Gateways/stopDiagnostics/Action|A virtuális hálózati átjáró diagnosztikájának leállítása.|
+|/virtualNetworks/Gateways/downloadDiagnostics/Action|Az átjáró diagnostics tölti le.|
 |/virtualNetworks/Gateways/listCircuitServiceKey/Action|Kör szolgáltatáskulcsának beolvasása.|
-|/virtualNetworks/Gateways/downloadDeviceConfigurationScript/Action|Eszközkonfigurációs parancsfájl letöltése.|
-|/virtualNetworks/Gateways/listPackage/Action|A virtuális hálózati átjárócsomag listázása.|
+|/virtualNetworks/Gateways/downloadDeviceConfigurationScript/Action|Letölti az eszközkonfigurációs parancsprogram.|
+|/virtualNetworks/Gateways/listPackage/Action|A virtuális hálózati átjárócsomag sorolja fel.|
 |/virtualNetworks/Gateways/operationStatuses/Read|A virtuális hálózati átjárók műveleti állapotának beolvasása.|
 |/virtualNetworks/Gateways/Packages/Read|A virtuális hálózati átjárócsomag beolvasása.|
 |/virtualNetworks/Gateways/Connections/Read|Kapcsolatok listájának beolvasása.|
-|/virtualNetworks/Gateways/Connections/Connect/Action|Webhelyek közötti átjárókapcsolat létesítése.|
-|/virtualNetworks/Gateways/Connections/disconnect/Action|Webhelyek közötti átjárókapcsolat leválasztása.|
-|/virtualNetworks/Gateways/Connections/test/Action|Webhelyek közötti átjárókapcsolat tesztelése.|
-|/virtualNetworks/Gateways/clientRevokedCertificates/Read|Visszavont ügyféltanúsítványok beolvasása.|
-|/virtualNetworks/Gateways/clientRevokedCertificates/Write|Ügyféltanúsítvány visszavonása.|
-|/virtualNetworks/Gateways/clientRevokedCertificates/DELETE|Az ügyféltanúsítvány visszavonásának megszüntetése.|
-|/virtualNetworks/Gateways/clientRootCertificates/Read|Ügyfél főtanúsítványainak megkeresése.|
-|/virtualNetworks/Gateways/clientRootCertificates/Write|Ügyfél új főtanúsítványának feltöltése.|
+|/virtualNetworks/Gateways/Connections/Connect/Action|A webhelyek közötti átjárókapcsolat csatlakozik.|
+|/virtualNetworks/Gateways/Connections/disconnect/Action|A webhelyek közötti átjárókapcsolat leválasztása.|
+|/virtualNetworks/Gateways/Connections/test/Action|A webhelyek közötti átjárókapcsolat tesztelése.|
+|/virtualNetworks/Gateways/clientRevokedCertificates/Read|Visszavont ügyféltanúsítványok olvasni.|
+|/virtualNetworks/Gateways/clientRevokedCertificates/Write|Ügyfél-tanúsítvány visszavonása.|
+|/virtualNetworks/Gateways/clientRevokedCertificates/DELETE|Unrevokes ügyféltanúsítványt.|
+|/virtualNetworks/Gateways/clientRootCertificates/Read|Az ügyfél legfelső szintű tanúsítványok keresése.|
+|/virtualNetworks/Gateways/clientRootCertificates/Write|Egy ügyfél új főtanúsítványának feltöltése.|
 |/virtualNetworks/Gateways/clientRootCertificates/DELETE|A virtuális hálózati átjáró ügyféltanúsítványának törlése.|
-|/virtualNetworks/Gateways/clientRootCertificates/download/Action|Tanúsítvány letöltése ujjlenyomat útján.|
-|/virtualNetworks/Gateways/clientRootCertificates/listPackage/Action|A virtuális hálózati átjáró tanúsítványcsomagjának listázása.|
+|/virtualNetworks/Gateways/clientRootCertificates/download/Action|Letöltést tanúsítvány ujjlenyomata.|
+|/virtualNetworks/Gateways/clientRootCertificates/listPackage/Action|A virtuális hálózati átjárócsomag tanúsítvány sorolja fel.|
 |/networkSecurityGroups/Read|A hálózati biztonsági csoport lekérése.|
 |/ biztonsági csoportok/írása|Új hálózati biztonsági csoport hozzáadása.|
 |/networkSecurityGroups/DELETE|A hálózati biztonsági csoport törlése.|
 |/networkSecurityGroups/operationStatuses/Read|A hálózati biztonsági csoport műveleti állapotának beolvasása.|
-|/networkSecurityGroups/securityRules/Read|A biztonsági szabály beolvasása.|
-|/networkSecurityGroups/securityRules/Write|Egy biztonsági szabály hozzáadása vagy frissítése.|
+|/networkSecurityGroups/securityRules/Read|A szabály lekérdezi.|
+|/networkSecurityGroups/securityRules/Write|Hozzáadása vagy egy biztonsági szabály frissítése.|
 |/networkSecurityGroups/securityRules/DELETE|A biztonsági szabály törlése.|
 |/networkSecurityGroups/securityRules/operationStatuses/Read|A hálózati biztonsági csoport biztonsági szabályai műveleti állapotának beolvasása.|
 |/Quotas/Read|Az előfizetés kvótájának beolvasása.|
@@ -496,45 +499,45 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 
 | Művelet | Leírás |
 |---|---|
-|/ regisztrációs/művelet|Regisztrálás egy hagyományos tárolóba.|
+|/ regisztrációs/művelet|A hagyományos tárolási regisztrálása|
 |/ checkStorageAccountAvailability/művelet|A tárfiók elérhetőségének ellenőrzése.|
-|/Capabilities/Read|Képességek megjelenítése|
-|/publicImages/Read|A nyilvános virtuális gép lemezképének beolvasása.|
-|/Images/Read|A lemezkép visszaadása.|
-|/storageAccounts/Read|Tárfiók visszaadása az adott fiókhoz.|
-|/ storageAccounts/írása|Új tárfiók hozzáadása.|
-|/storageAccounts/DELETE|Tárfiók törlése.|
-|/storageAccounts/listKeys/Action|Tárfiókok elérési kulcsainak listázása.|
-|/storageAccounts/regenerateKey/Action|Tárfiók meglévő elérési kulcsainak újragenerálása.|
+|/Capabilities/Read|A képességek megjelenítése|
+|/publicImages/Read|Lekérdezi a nyilvános virtuálisgép-lemezkép.|
+|/Images/Read|A kép adja vissza.|
+|/storageAccounts/Read|A megadott fiók tárfiók visszaadása.|
+|/ storageAccounts/írása|Hozzáad egy új tárfiókot.|
+|/storageAccounts/DELETE|A tárfiók törlése.|
+|/storageAccounts/listKeys/Action|A tárfiókok elérési kulcsainak listázása.|
+|/storageAccounts/regenerateKey/Action|A tárfiók meglévő elérési kulcsainak újragenerálása.|
 |/storageAccounts/operationStatuses/Read|Az erőforrás műveleti állapotának beolvasása.|
 |/storageAccounts/Images/Read|A tárfióklemezkép beolvasása.|
 |/storageAccounts/Images/DELETE|A megadott tárfióklemezkép törlése.|
-|/storageAccounts/Disks/Read|A tárfióklemez beolvasása.|
-|/storageAccounts/Disks/Write|Új tárfióklemez felvétele.|
-|/storageAccounts/Disks/DELETE|A megadott tárfióklemez törlése.|
+|/storageAccounts/Disks/Read|A tárolási fiók lemez adja vissza.|
+|/storageAccounts/Disks/Write|A tárolási fiók lemez hozzáadása.|
+|/storageAccounts/Disks/DELETE|A megadott fiók tárolólemez törli.|
 |/storageAccounts/Disks/operationStatuses/Read|Az erőforrás műveleti állapotának beolvasása.|
 |/storageAccounts/osImages/Read|A tárfiók operációsrendszer-lemezképének visszaadása.|
 |/storageAccounts/osImages/DELETE|A megadott tárfiók operációsrendszer-lemezképének törlése.|
-|/storageAccounts/Services/Read|Elérhető szolgáltatások beolvasása.|
-|/storageAccounts/Services/metricDefinitions/Read|A metrikai meghatározások beolvasása.|
-|/storageAccounts/Services/Metrics/Read|Metrika beolvasása.|
-|/storageAccounts/Services/diagnosticSettings/Read|Diagnosztikai beállítások beolvasása.|
-|/storageAccounts/Services/diagnosticSettings/Write|Diagnosztikai beállítások hozzáadása vagy módosítása.|
-|/Disks/Read|A tárfióklemez beolvasása.|
-|/osImages/Read|A operációs rendszerkép beolvasása.|
+|/storageAccounts/Services/Read|Az elérhető szolgáltatások beolvasása.|
+|/storageAccounts/Services/metricDefinitions/Read|Lekérdezi a metrikák definíciókat.|
+|/storageAccounts/Services/Metrics/Read|A metrikák beolvasása.|
+|/storageAccounts/Services/diagnosticSettings/Read|A diagnosztikai beállításainak beolvasása.|
+|/storageAccounts/Services/diagnosticSettings/Write|Hozzáadása vagy módosítása a diagnosztikai beállításokat.|
+|/Disks/Read|A tárolási fiók lemez adja vissza.|
+|/osImages/Read|Az operációs rendszer lemezképének visszaadása.|
 |/Quotas/Read|Az előfizetés kvótájának beolvasása.|
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 | Művelet | Leírás |
 |---|---|
-|/accounts/Read|Olvassa be az API-fiókokat.|
-|/ fiókok/írása|Írja az API-fiókokat.|
-|/accounts/DELETE|Törli az API-fiókok|
-|/accounts/listKeys/Action|Listázása|
+|/accounts/Read|API-fiókok beolvasása.|
+|/ fiókok/írása|API-fiókok írása.|
+|/accounts/DELETE|API-fiókok törlése|
+|/accounts/listKeys/Action|Kulcsok listázása|
 |/accounts/regenerateKey/Action|Kulcs újragenerálása|
-|/accounts/skus/Read|Elérhető termékváltozatok a meglévő erőforrás beolvasása.|
-|/accounts/usages/Read|A kvótahasználat lekérése a meglévő erőforrás.|
+|/accounts/skus/Read|Az egy adott meglévő erőforráshoz rendelkezésre álló termékváltozatok beolvasása.|
+|/accounts/usages/Read|Egy meglévő erőforrás kvótahasználatának beolvasása.|
 |Műveletek/olvasása|A művelet leírását.|
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
@@ -595,7 +598,7 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/virtualMachines/DELETE|Törli a virtuális gépet|
 |/virtualMachines/Start/Action|Elindítja a virtuális gépet|
 |/virtualMachines/powerOff/Action|Kikapcsolja a virtuális gép. Vegye figyelembe, hogy a virtuális gép továbbra is fizetnie kell ezért.|
-|/virtualMachines/redeploy/Action|Virtuális gép redeploys|
+|/virtualMachines/redeploy/Action|A virtuális gép újbóli üzembe helyezése|
 |/virtualMachines/restart/Action|Újraindítja a virtuális gépet|
 |/virtualMachines/deallocate/Action|Kikapcsolja a virtuális gépet és felszabadítja a számítási erőforrásokat|
 |/virtualMachines/generalize/Action|Általánosítottra állítja a virtuális gép állapotát és előkészíti a virtuális gépet a rögzítéshez|
@@ -638,11 +641,11 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |---|---|
 |/ updateCommunicationPreference/művelet|Update kommunikációs beállítás|
 |/ listCommunicationPreference/művelet|Lista kommunikációs beállításokat|
-|/Applications/Read|Olvasási művelete|
+|/Applications/Read|Olvasási művelet|
 |/ applications/írása|Írási művelet|
 |/ applications/írása|Írási művelet|
 |/Applications/DELETE|Törlési művelet|
-|/Applications/listSecrets/Action|Titkos kulcsainak listázása|
+|/Applications/listSecrets/Action|Titkos kulcsok listázása|
 |/Applications/listSingleSignOnToken/Action|Olvassa el a jogkivonatok az egyszeri bejelentkezés|
 |/Operations/Read|olvasási műveletek|
 
@@ -654,8 +657,8 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/ hubok/írása|Hozzon létre vagy bármely Azure felhasználói Insights központ frissítése|
 |/hubs/DELETE|Bármely Azure felhasználói Insights Hub törlése|
 |/hubs/Providers/Microsoft.Insights/metricDefinitions/Read|Az erőforrás elérhető metrikai meghatározások beolvasása|
-|/hubs/Providers/Microsoft.Insights/diagnosticSettings/Read|Az erőforrás diagnosztikai beállításainak beolvasása|
-|/hubs/Providers/Microsoft.Insights/diagnosticSettings/Write|Az erőforrás diagnosztikai beállításainak létrehozása vagy frissítése|
+|/hubs/Providers/Microsoft.Insights/diagnosticSettings/Read|Az erőforrás diagnosztikai beállításának beolvasása.|
+|/hubs/Providers/Microsoft.Insights/diagnosticSettings/Write|Létrehozza vagy frissíti az erőforrás diagnosztikai beállításának|
 |/hubs/Providers/Microsoft.Insights/logDefinitions/Read|Naplók erőforrás beolvasása|
 |/hubs/authorizationPolicies/Read|Azure felhasználói elemzéseket megosztott hozzáférési aláírást házirend olvasása|
 |/hubs/authorizationPolicies/Write|Hozzon létre vagy bármely Azure felhasználói Insights megosztott hozzáférési aláírást házirend frissítése|
@@ -767,8 +770,8 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/iotHubs/eventHubEndpoints/consumerGroups/DELETE|Az EventHub felhasználói csoport törlése|
 |/iotHubs/Routing/routes/$ testall parancsot/művelet|A tesztüzenet szemben az összes meglévő útvonal|
 |/iotHubs/Routing/routes/$ testnew/művelet|A tesztüzenet szemben a megadott útvonal tesztelése|
-|IotHubs/diagnosticSettings/olvasása|Az erőforrás diagnosztikai beállításainak beolvasása|
-|/ IotHubs/diagnosticSettings/írása|Az erőforrás diagnosztikai beállításainak létrehozása vagy frissítése|
+|IotHubs/diagnosticSettings/olvasása|Az erőforrás diagnosztikai beállításának beolvasása.|
+|/ IotHubs/diagnosticSettings/írása|Létrehozza vagy frissíti az erőforrás diagnosztikai beállításának|
 |/iotHubs/skus/Read|Érvényes IOT hubbal termékváltozatok beolvasása|
 |/iotHubs/Jobs/Read|Ezzel a feladat a megadott IOT hubbal beküldött adatokat|
 |/iotHubs/routingEndpointsHealth/Read|Az IOT hubbal az összes útválasztási végpontok állapotának beolvasása|
@@ -832,7 +835,7 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/Labs/policySets/Policies/Write|Adja hozzá vagy módosíthat házirendeket.|
 |/Labs/virtualMachines/DELETE|Törölje a virtuális gépeket.|
 |/Labs/virtualMachines/Read|Olvassa el a virtuális gépek.|
-|/Labs/virtualMachines/Write|Virtuális gépek hozzáadása vagy módosítása.|
+|/Labs/virtualMachines/Write|Adja hozzá, vagy módosítsa a virtuális gépek.|
 |/Labs/virtualMachines/Start/Action|Indítsa el a virtuális gépet.|
 |/Labs/virtualMachines/STOP/Action|A virtuális gép leállítása|
 |/Labs/virtualMachines/ApplyArtifacts/Action|Az összetevők vonatkozik a virtuális gép.|
@@ -909,11 +912,11 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 
 | Művelet | Leírás |
 |---|---|
-|/ checkNameAvailability/művelet|A névtér az adott előfizetésben való elérhetőségének ellenőrzése.|
+|/ checkNameAvailability/művelet|A névtér elérhetőségét ellenőrzi megadott előfizetéshez.|
 |/ regisztrációs/művelet|Az EventHub erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása és az EventHub-erőforrások létrehozásának engedélyezése|
 |/ névterek/írása|Namespace erőforrás létrehozása és frissítése a tulajdonságait. Címkék és a Namespace állapota már nem frissíthető tulajdonságait.|
 |/Namespaces/Read|A névtérerőforrások leírásai listájának beolvasása|
-|/ névterek/törlése|Namespace erőforrás törlése|
+|/ névterek/törlése|Egy névtérerőforrás törlése|
 |/Namespaces/metricDefinitions/Read|Namespace metrikák erőforrás leírása listájának beolvasása|
 |/Namespaces/authorizationRules/Read|A névtér-engedélyezési szabályok leírásai listájának beolvasása.|
 |/Namespaces/authorizationRules/Write|A Namespace szintű engedélyezési szabályok létrehozása és frissítése a tulajdonságait. Engedélyezési szabályok hozzáférési jogosultságokat, az elsődleges és másodlagos kulcsok lehet frissíteni.|
@@ -939,9 +942,9 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 
 | Művelet | Leírás |
 |---|---|
-|/Providers/features/Read|Beolvassa az előfizetés szolgáltatásait az adott erőforrás-szolgáltatón.|
+|/Providers/features/Read|Lekérdezi az előfizetés szolgáltatásait az adott erőforrás-szolgáltatón.|
 |/Providers/features/register/Action|Regisztrálja az előfizetéshez tartozó szolgáltatást az adott erőforrás-szolgáltatón.|
-|/features/Read|Beolvassa az előfizetéshez tartozó szolgáltatásokat.|
+|/features/Read|Lekérdezi az előfizetéshez tartozó szolgáltatásokat.|
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -977,13 +980,13 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |Vagy AlertRules/törlése|Riasztási szabály konfigurációjának törlése|
 |AlertRules/olvasása|Riasztási szabály konfigurációjának beolvasása|
 |/ AlertRules/aktiválva/művelet|Riasztási szabály aktiválva|
-|/ AlertRules/feloldva/művelet|Riasztási szabály feloldása|
-|/ AlertRules/Halmozódni/művelet|Riasztási szabály szabályozva van|
+|/ AlertRules/feloldva/művelet|Riasztási szabály feloldva|
+|/ AlertRules/Halmozódni/művelet|A riiasztási szabály elindítva|
 |AlertRules/incidensek/olvasása|Riasztási szabály incidenskonfigurációjának beolvasása|
-|MetricDefinitions/olvasása|Olvassa el a metrikai meghatározásainak|
+|MetricDefinitions/olvasása|A metrikadefiníciók olvasása|
 |/eventtypes/Values/Read|A felügyeleti eseménytípus értékeinek olvasása|
 |/eventtypes/digestevents/Read|A felügyeleti eseménytípus kivonatának olvasása|
-|Metrikák/olvasása|Olvassa el a metrikák|
+|Metrikák/olvasása|Metrikák olvasása|
 |/ LogProfiles/írása|Egy naplózási profil konfiguráció írásakor|
 |Vagy LogProfiles/törlése|Naplóbeállítások profilok törlése|
 |LogProfiles/olvasása|Olvasási napló profilok|
@@ -991,13 +994,13 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |Vagy AutoscaleSettings/törlése|Automatikus skálázási beállítás konfigurációjának törlése|
 |AutoscaleSettings/olvasása|Automatikus skálázási beállítás konfigurációjának beolvasása|
 |/ AutoscaleSettings/Scaleup/művelet|Automatikus vertikális felskálázási művelet|
-|/ AutoscaleSettings/Scaledown/művelet|Automatikus skálázás skálázási művelet le|
-|/AutoscaleSettings/Providers/Microsoft.Insights/MetricDefinitions/Read|Olvassa el a metrikai meghatározásainak|
+|/ AutoscaleSettings/Scaledown/művelet|Automatikus vertikális leskálázási művelet|
+|/AutoscaleSettings/Providers/Microsoft.Insights/MetricDefinitions/Read|A metrikadefiníciók olvasása|
 |/ ActivityLogAlerts/aktiválva/művelet|Elindul a napló figyelmeztetés|
 |/ DiagnosticSettings/írása|Diagnosztikai beállítások konfigurációjának írása|
-|Vagy DiagnosticSettings/törlése|Diagnosztikai beállítások konfiguráció törlése|
+|Vagy DiagnosticSettings/törlése|Diagnosztikai beállítások konfigurációjának törlése|
 |DiagnosticSettings/olvasása|Diagnosztikai beállítások konfigurációjának olvasása|
-|LogDefinitions/olvasása|Olvasási naplófájl-definíciói|
+|LogDefinitions/olvasása|A naplódefiníciók olvasása|
 |/ ExtendedDiagnosticSettings/írása|A bővített diagnosztikai beállítások konfigurációs írása|
 |Vagy ExtendedDiagnosticSettings/törlése|Bővített diagnosztikai beállítások konfiguráció törlése|
 |ExtendedDiagnosticSettings/olvasása|Bővített diagnosztikai beállítások beolvasásakor|
@@ -1007,14 +1010,14 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 | Művelet | Leírás |
 |---|---|
 |/ regisztrációs/művelet|Egy előfizetés regisztrálása|
-|/checkNameAvailability/Read|Annak ellenőrzése, hogy érvényes-e a kulcstartónév, és nincs-e használatban|
-|/vaults/Read|A kulcstartó tulajdonságainak megtekintése|
-|/ tárolók/írása|Új kulcstartó létrehozása, vagy meglévő kulcstartó tulajdonságainak módosítása|
+|/checkNameAvailability/Read|Ellenőrzi, hogy a kulcstároló neve érvényes, és nincs használatban|
+|/vaults/Read|A kulcstároló tulajdonságainak megtekintése|
+|/ tárolók/írása|Hozzon létre egy új kulcstartó, vagy egy meglévő kulcstároló tulajdonságainak módosítása|
 |/vaults/DELETE|Kulcstároló törlése|
 |/vaults/Deploy/Action|Azure-erőforrások telepítésekor kulcstároló titkos kulcsainak elérésének engedélyezése|
-|/vaults/secrets/Read|A titkos kód tulajdonságainak megtekintése, kivéve a kód értékét|
-|/vaults/secrets/Write|Új titkos kód létrehozása, vagy meglévő titkos kód értékének módosítása|
-|/vaults/accessPolicies/Write|Egyesítéssel vagy cserével frissíthet egy meglévő hozzáférési szabályzatot, vagy létrehozhat egy új hozzáférési szabályzatot a tárolóban.|
+|/vaults/secrets/Read|A titkos kulcs, de az érték nem tulajdonságainak megtekintése|
+|/vaults/secrets/Write|Hozzon létre egy új titkos kulcs, vagy frissítse az értéket egy meglévő titok|
+|/vaults/accessPolicies/Write|Frissíteni a meglévő hozzáférési házirendek egyesítése vagy cseréje, vagy vegyen fel egy új házirend egy tárolót.|
 |/deletedVaults/Read|Az enyhe törölt kulcstárolójának tulajdonságainak megtekintése|
 |/Locations/operationResults/Read|Ellenőrizze a hosszú futtatásukkor művelet eredménye|
 |/Locations/deletedVaults/Read|Az enyhe törölt kulcstároló tulajdonságainak megtekintése|
@@ -1041,10 +1044,10 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/workflows/runs/Cancel/Action|Megszakítja egy munkafolyamat futtatását.|
 |/workflows/runs/actions/Read|Beolvassa a munkafolyamat-futtatási műveletet.|
 |/workflows/runs/Operations/Read|Beolvassa a munkafolyamat-futtatás műveleti állapotát.|
-|/workflows/triggers/Read|Beolvassa az eseményindítót.|
-|/workflows/triggers/Run/Action|Végrehajtja az eseményindítót.|
+|/workflows/triggers/Read|Az eseményindító beolvasása.|
+|/workflows/triggers/Run/Action|Az eseményindító végrehajtása.|
 |/workflows/triggers/listCallbackUrl/Action|A visszahívási URL-cím lekérése eseményindító.|
-|/workflows/triggers/histories/Read|Beolvassa az eseményindító-előzményeket.|
+|/workflows/triggers/histories/Read|Az eseményindító alábbi előzményeinek beolvasása.|
 |/workflows/triggers/histories/resubmit/Action|Megismétli a munkafolyamat eseményindító.|
 |/workflows/accessKeys/Read|Beolvassa a hívóbetűt.|
 |/workflows/accessKeys/Write|Létrehozza vagy frissíti a hívóbetűt.|
@@ -1264,7 +1267,7 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/ CheckNamespaceAvailability/művelet|Adott névtér-erőforrásnév elérhetőségének ellenőrzése a Notification Hub szolgáltatásban.|
 |Névterek/írása|Namespace erőforrás létrehozása és frissítése a tulajdonságait. Címkék és a Namespace állapota már nem frissíthető tulajdonságait.|
 |Névterek/olvasása|A névtérerőforrások leírásai listájának beolvasása|
-|Vagy névterek/törlése|Namespace erőforrás törlése|
+|Vagy névterek/törlése|Egy névtérerőforrás törlése|
 |/ Névterek/authorizationRules/művelet|A névtér-engedélyezési szabályok leírásai listájának beolvasása.|
 |/ Névterek/CheckNotificationHubAvailability/művelet|Adott értesítésiközpont-név elérhetőségének ellenőrzése egy névtérben.|
 |Névterek/authorizationRules/írása|A Namespace szintű engedélyezési szabályok létrehozása és frissítése a tulajdonságait. Engedélyezési szabályok hozzáférési jogosultságokat, az elsődleges és másodlagos kulcsok lehet frissíteni.|
@@ -1274,10 +1277,10 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/ Névterek/authorizationRules/regenerateKeys/művelet|Egy névtér-engedélyezési szabály elsődleges vagy másodlagos kulcsának újragenerálása; meg kell adni az újragenerálni kívánt kulcsot|
 |Névterek/NotificationHubs/írása|Hozzon létre egy értesítési központot, és a tulajdonságok frissítése. A Tulajdonságok főként PNS hitelesítő adatok közé tartozik. Az engedélyezési szabályok és a TTL-t|
 |Névterek/NotificationHubs/olvasása|Az értesítésiközpont-erőforrások leírásai listájának beolvasása|
-|Vagy névterek/NotificationHubs/törlése|Értesítési központ erőforrás törlése|
+|Vagy névterek/NotificationHubs/törlése|Értesítésiközpont-erőforrás törlése|
 |/ Névterek/NotificationHubs/authorizationRules/művelet|Az értesítésiközpont-engedélyezési szabályok listájának beolvasása|
 |/ Névterek/NotificationHubs/pnsCredentials/művelet|Minden értesítési központ PNS hitelesítő adatainak lekérése. Ez magában foglalja a wns-ből, a MPNS, a APNS, a GCM és a Baidu hitelesítő adatokat|
-|/ Névterek/NotificationHubs/debugSend/művelet|Teszt leküldéses értesítés küldése.|
+|/ Névterek/NotificationHubs/debugSend/művelet|Leküldéses tesztértesítés küldése.|
 |Névterek/NotificationHubs/metricDefinitions/olvasása|Namespace metrikák erőforrás leírása listájának beolvasása|
 |/Namespaces/NotificationHubs /<br>authorizationRules írása|Értesítési központ engedélyezési szabályok létrehozása és frissítése a tulajdonságait. Engedélyezési szabályok hozzáférési jogosultságokat, az elsődleges és másodlagos kulcsok lehet frissíteni.|
 |/Namespaces/NotificationHubs /<br>authorizationRules olvasása|Az értesítésiközpont-engedélyezési szabályok listájának beolvasása|
@@ -1352,7 +1355,7 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/vaults/replicationFabrics/reassociateGateway/Action|Átjáró újbóli társítása|
 |/ tárolók/replicationFabrics/replicationRecoveryServicesProviders /<br>Olvasás|Olvassa el az összes helyreállítási szolgáltatók|
 |/ tárolók/replicationFabrics/replicationRecoveryServicesProviders /<br>Távolítsa el a/művelet|Recovery Services-szolgáltató eltávolítása|
-|/ tárolók/replicationFabrics/replicationRecoveryServicesProviders /<br>törlése|Bármilyen helyreállítási szolgáltatók törlése|
+|/ tárolók/replicationFabrics/replicationRecoveryServicesProviders /<br>törlés|Bármilyen helyreállítási szolgáltatók törlése|
 |/ tárolók/replicationFabrics/replicationRecoveryServicesProviders /<br>refreshProvider/művelet|Frissítse a szolgáltatót|
 |/vaults/replicationFabrics/replicationStorageClassifications/Read|A Tárhelybesorolások olvasása|
 |/ tárolók/replicationFabrics/replicationStorageClassifications /<br>replicationStorageClassificationMappings olvasása|Olvassa el a tárolási besorolás leképezések|
@@ -1457,11 +1460,11 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 
 | Művelet | Leírás |
 |---|---|
-|/ checkNamespaceAvailability/művelet|A névtér az adott előfizetésben való elérhetőségének ellenőrzése.|
+|/ checkNamespaceAvailability/művelet|A névtér elérhetőségét ellenőrzi megadott előfizetéshez.|
 |/ regisztrációs/művelet|A Relay erőforrás-szolgáltató előfizetésének regisztrálása és a Relay-erőforrások létrehozásának engedélyezése|
 |/ névterek/írása|Namespace erőforrás létrehozása és frissítése a tulajdonságait. Címkék és a Namespace állapota már nem frissíthető tulajdonságait.|
 |/Namespaces/Read|A névtérerőforrások leírásai listájának beolvasása|
-|/ névterek/törlése|Namespace erőforrás törlése|
+|/ névterek/törlése|Egy névtérerőforrás törlése|
 |/Namespaces/authorizationRules/Write|A Namespace szintű engedélyezési szabályok létrehozása és frissítése a tulajdonságait. Engedélyezési szabályok hozzáférési jogosultságokat, az elsődleges és másodlagos kulcsok lehet frissíteni.|
 |/Namespaces/authorizationRules/DELETE|Namespace engedélyezési szabály törlése. Az alapértelmezett Namespace engedélyezési szabály nem törölhető. |
 |/Namespaces/authorizationRules/listkeys/Action|A névtérhez tartozó kapcsolati karakterlánc beolvasása|
@@ -1489,56 +1492,56 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 
 | Művelet | Leírás |
 |---|---|
-|/ checkResourceName/művelet|Erőforrásnév érvényességének ellenőrzése.|
-|/Providers/Read|A szolgáltatók listájának lekérése.|
+|/ checkResourceName/művelet|Az erőforrásnév érvényességének ellenőrzése.|
+|/Providers/Read|A szolgáltatók listájának lekérdezése.|
 |/Subscriptions/Read|Beolvassa az előfizetések listáját.|
-|/Subscriptions/operationresults/Read|Az előfizetési művelet eredményeinek lekérése.|
-|/Subscriptions/Providers/Read|Beolvassa vagy listázza az erőforrás-szolgáltatókat.|
+|/Subscriptions/operationresults/Read|A művelet eredménye tartalmazó előfizetés beszerzéséhez.|
+|/Subscriptions/Providers/Read|Beolvassa vagy listázza az erőforrás-szolgáltatók.|
 |/Subscriptions/tagNames/Read|Beolvassa vagy listázza az előfizetéscímkéket.|
-|/Subscriptions/tagNames/Write|Előfizetéscímke hozzáadása.|
-|/Subscriptions/tagNames/DELETE|Törli az előfizetéscímkét.|
+|/Subscriptions/tagNames/Write|Egy előfizetés címkét ad hozzá.|
+|/Subscriptions/tagNames/DELETE|Egy előfizetés címke törlése.|
 |/Subscriptions/tagNames/tagValues/Read|Beolvassa vagy listázza az előfizetéscímkék értékeit.|
-|/Subscriptions/tagNames/tagValues/Write|Hozzáadja az előfizetéscímke értékét.|
-|/Subscriptions/tagNames/tagValues/DELETE|Törli az előfizetéscímke értékét.|
-|/Subscriptions/Resources/Read|Beolvassa az előfizetéshez tartozó erőforrásokat.|
+|/Subscriptions/tagNames/tagValues/Write|Előfizetés címke érték hozzáadása.|
+|/Subscriptions/tagNames/tagValues/DELETE|Egy előfizetés címke törlése.|
+|/Subscriptions/Resources/Read|Lekérdezi az előfizetés.|
 |/Subscriptions/resourceGroups/Read|Beolvassa vagy listázza az erőforráscsoportokat.|
 |/Subscriptions/resourceGroups/Write|Létrehozza vagy frissíti az erőforráscsoportot.|
 |/Subscriptions/resourceGroups/DELETE|Törli az erőforráscsoportot és az ahhoz tartozó összes erőforrást.|
-|/Subscriptions/resourceGroups/moveResources/Action|Erőforrásokat helyez át az egyik erőforráscsoportból egy másikba.|
-|/Subscriptions/resourceGroups/validateMoveResources/Action|Erőforrások erőforráscsoportok közötti áthelyezésének ellenőrzése.|
+|/Subscriptions/resourceGroups/moveResources/Action|Erőforrásokat helyez át az egyik erőforráscsoportból a másikba.|
+|/Subscriptions/resourceGroups/validateMoveResources/Action|Áthelyezésének ellenőrzése erőforrásokat az egyik erőforráscsoportból a másikba.|
 |/Subscriptions/resourcegroups/Resources/Read|Az erőforráscsoporthoz tartozó erőforrások lekérése.|
-|/Subscriptions/resourcegroups/Deployments/Read|Beolvassa vagy listázza az üzemelő példányokat.|
+|/Subscriptions/resourcegroups/Deployments/Read|Beolvassa vagy listázza az központi telepítéseket.|
 |/Subscriptions/resourcegroups/Deployments/Write|Létrehozza vagy frissíti az üzemelő példányt.|
 |/Subscriptions/resourcegroups/Deployments/operationstatuses/Read|Beolvassa vagy listázza a központi telepítési művelet állapotok.|
 |/Subscriptions/resourcegroups/Deployments/Operations/Read|Beolvassa vagy listázza az üzembe helyezési műveleteket.|
 |/Subscriptions/Locations/Read|Beolvassa a támogatott helyek listáját.|
-|/Links/Read|Beolvassa vagy listázza az erőforrás-hivatkozásokat.|
+|/Links/Read|Beolvassa vagy listázza az erőforrás-hivatkozások.|
 |/ hivatkozások/írása|Létrehozza vagy frissíti az erőforrás-hivatkozást.|
-|/Links/DELETE|Törli az erőforrás-hivatkozást.|
+|/Links/DELETE|Erőforrás-hivatkozást törli.|
 |/tenants/Read|Beolvassa a bérlők listáját.|
-|/resources/Read|Az erőforrások listájának beolvasása szűrők alapján.|
-|/Deployments/Read|Beolvassa vagy listázza az üzemelő példányokat.|
+|/resources/Read|A szűrők alapján erőforrások listájának lekérdezése.|
+|/Deployments/Read|Beolvassa vagy listázza az központi telepítéseket.|
 |/ központi telepítések/írása|Létrehozza vagy frissíti az üzemelő példányt.|
-|/Deployments/DELETE|Törli az üzemelő példányt.|
-|/Deployments/Cancel/Action|Megszakítja az üzembe helyezést.|
-|/Deployments/Validate/Action|Érvényesíti az üzemelő példányt.|
+|/Deployments/DELETE|Törli a központi telepítés.|
+|/Deployments/Cancel/Action|A központi telepítés megszakítása.|
+|/Deployments/Validate/Action|Egy központi telepítésének ellenőrzése.|
 |/Deployments/Operations/Read|Beolvassa vagy listázza az üzembe helyezési műveleteket.|
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 | Művelet | Leírás |
 |---|---|
-|/jobcollections/Read|Feladat gyűjtőjének beolvasása sikertelen|
+|/jobcollections/Read|Feladatgyűjtemény beolvasása|
 |/ feladatgyűjtemények/írása|Feladatgyűjtemények létrehozása és frissítése|
-|/jobcollections/DELETE|Sikertelen feladat-gyűjtemény törlése.|
-|/jobcollections/enable/Action|Lehetővé teszi, hogy feladat-gyűjtemény.|
-|/jobcollections/disable/Action|Letiltja a feladat-gyűjtemény.|
-|/jobcollections/Jobs/Read|Feladat beolvasása.|
+|/jobcollections/DELETE|A feladatgyűjtemény törlése.|
+|/jobcollections/enable/Action|A feladatgyűjtemény engedélyezése.|
+|/jobcollections/disable/Action|A feladatgyűjtemény letiltása.|
+|/jobcollections/Jobs/Read|A feladat beolvasása.|
 |/jobcollections/Jobs/Write|Feladatok létrehozása és frissítése|
-|/jobcollections/Jobs/DELETE|Törli a feladatot.|
-|/jobcollections/Jobs/Run/Action|A feladat futtatásakor.|
+|/jobcollections/Jobs/DELETE|A feladat törlése.|
+|/jobcollections/Jobs/Run/Action|A feladat futtatása.|
 |/jobcollections/Jobs/generateLogicAppDefinition/Action|Logic App-definíció előállítása egy Scheduler-feladat alapján.|
-|/jobcollections/Jobs/jobhistories/Read|Lekérdezi a feladatelőzmények.|
+|/jobcollections/Jobs/jobhistories/Read|A feladatelőzmények beolvasása.|
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -1601,11 +1604,11 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 
 | Művelet | Leírás |
 |---|---|
-|/ checkNameAvailability/művelet|A névtér az adott előfizetésben való elérhetőségének ellenőrzése.|
+|/ checkNameAvailability/művelet|A névtér elérhetőségét ellenőrzi megadott előfizetéshez.|
 |/ regisztrációs/művelet|Regisztrálja az előfizetést a ServiceBus erőforrás-szolgáltatóra, és lehetővé teszi a ServiceBus-erőforrások létrehozását|
 |/ névterek/írása|Namespace erőforrás létrehozása és frissítése a tulajdonságait. Címkék és a Namespace állapota már nem frissíthető tulajdonságait.|
 |/Namespaces/Read|A névtérerőforrások leírásai listájának beolvasása|
-|/ névterek/törlése|Namespace erőforrás törlése|
+|/ névterek/törlése|Egy névtérerőforrás törlése|
 |/Namespaces/metricDefinitions/Read|Namespace metrikák erőforrás leírása listájának beolvasása|
 |/Namespaces/authorizationRules/Write|A Namespace szintű engedélyezési szabályok létrehozása és frissítése a tulajdonságait. Engedélyezési szabályok hozzáférési jogosultságokat, az elsődleges és másodlagos kulcsok lehet frissíteni.|
 |/Namespaces/authorizationRules/Read|A névtér-engedélyezési szabályok leírásai listájának beolvasása.|
@@ -1670,8 +1673,8 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/Servers/elasticPools/DELETE|A meglévő rugalmas készlet törlése|
 |/Servers/elasticPools/operationResults/Read|Egy adott rugalmas adatbázis-készlet művelet részleteinek beolvasása|
 |/Servers/elasticPools/Providers/Microsoft.Insights/<br>metricDefinitions olvasása|Térjen vissza a rugalmas adatbáziskészletek elérhető metrikák típusú|
-|/Servers/elasticPools/Providers/Microsoft.Insights/<br>diagnosticSettings olvasása|Az erőforrás diagnosztikai beállításainak beolvasása|
-|/Servers/elasticPools/Providers/Microsoft.Insights/<br>diagnosticSettings írása|Az erőforrás diagnosztikai beállításainak létrehozása vagy frissítése|
+|/Servers/elasticPools/Providers/Microsoft.Insights/<br>diagnosticSettings olvasása|Az erőforrás diagnosztikai beállításának beolvasása.|
+|/Servers/elasticPools/Providers/Microsoft.Insights/<br>diagnosticSettings írása|Létrehozza vagy frissíti az erőforrás diagnosztikai beállításának|
 |/Servers/elasticPools/Metrics/Read|Térjen vissza a rugalmas készlet Erőforrás kihasználtsága metrikák|
 |/Servers/elasticPools/elasticPoolDatabaseActivity/Read|Tevékenységek és egy adott adatbázisnak, amely része a rugalmas adatbáziskészlet részleteinek beolvasása|
 |/Servers/elasticPools/advisors/Read|A rugalmas készlet elérhető tanácsadók listáját adja vissza|
@@ -1718,8 +1721,8 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/Servers/Databases/securityAlertPolicies/Read|A fenyegetés szabályzat egy adott adatbázisnak konfigurált részleteinek beolvasása|
 |/Servers/Databases/securityAlertPolicies/Write|Egy adott adatbázisnak threat detection szabályzatának módosítása|
 |/Servers/Databases/Providers/Microsoft.Insights/<br>metricDefinitions olvasása|Térjen vissza a típusú ítélt adatbázisokhoz|
-|/Servers/Databases/Providers/Microsoft.Insights/<br>diagnosticSettings olvasása|Az erőforrás diagnosztikai beállításainak beolvasása|
-|/Servers/Databases/Providers/Microsoft.Insights/<br>diagnosticSettings írása|Az erőforrás diagnosztikai beállításainak létrehozása vagy frissítése|
+|/Servers/Databases/Providers/Microsoft.Insights/<br>diagnosticSettings olvasása|Az erőforrás diagnosztikai beállításának beolvasása.|
+|/Servers/Databases/Providers/Microsoft.Insights/<br>diagnosticSettings írása|Létrehozza vagy frissíti az erőforrás diagnosztikai beállításának|
 |/Servers/Databases/Providers/Microsoft.Insights/<br>logDefinitions olvasása|Az adatbázisok naplók beolvasása.|
 |/Servers/Databases/topQueries/Read|Értéket ad vissza kijelölt időszakra összesített értéket a kijelölt lekérdezésre vonatkozó futásidejű statisztikák|
 |/Servers/Databases/topQueries/queryText/Read|A kijelölt lekérdezés Azonosítóját a Transact-SQL szöveget adja vissza|
@@ -1764,13 +1767,13 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 |/storageAccounts/listkeys/Action|A megadott tárfiók hozzáférési kulcsainak lekérése.|
 |/storageAccounts/regeneratekey/Action|A megadott tárfiók hozzáférési kulcsainak újragenerálása.|
 |/storageAccounts/Read|A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése.|
-|/storageAccounts/listAccountSas/Action|A fiók SAS-jogkivonat a megadott tárfiók adja vissza.|
-|/storageAccounts/listServiceSas/Action|Tárolási szolgáltatás SAS-jogkivonat|
+|/storageAccounts/listAccountSas/Action|A fiók SAS-jogkivonatát adja vissza a megadott tárfiókhoz.|
+|/storageAccounts/listServiceSas/Action|Társzolgáltatás SAS-jogkivonata|
 |/storageAccounts/Services/diagnosticSettings/Write|Tárolási fiók diagnosztikai beállításainak létrehozása/frissítése.|
 |/skus/Read|Felsorolja a Microsoft.Storage által támogatott termékváltozat.|
 |/usages/Read|A megadott előfizetésben szereplő erőforrások korlátját és jelenlegi kihasználtsági értéket adja vissza|
 |/Operations/Read|Az aszinkrón műveletek állapotának lekérdezése.|
-|/Locations/deleteVirtualNetworkOrSubnets/Action|Értesíti a Microsoft.Storage, hogy virtuális hálózathoz vagy alhálózathoz törlése folyamatban van|
+|/Locations/deleteVirtualNetworkOrSubnets/Action|A Microsoft.Storage értesítése arról, hogy virtuális hálózat vagy alhálózat törlése van folyamatban|
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
@@ -2194,7 +2197,6 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 ## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [hozzon létre egy egyéni biztonsági szerepkört](role-based-access-control-custom-roles.md).
-
 - Tekintse át a [beépített RBAC-szerepkörök](role-based-access-built-in-roles.md).
-
 - Hozzáférés-hozzárendelések kezelése [felhasználó](role-based-access-control-manage-assignments.md) vagy [erőforrás](role-based-access-control-configure.md) 
+- Megtudhatja, hogyan [tevékenységi naplóit rendszervizsgálati műveleteket az egyes erőforrások megtekintése](~/articles/azure-resource-manager/resource-group-audit.md)

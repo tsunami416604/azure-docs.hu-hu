@@ -50,6 +50,7 @@
 ### [XML érvényességének ellenőrzése](logic-apps-enterprise-integration-xml-validation.md)
 ### [Sémák hozzáadása XML-érvényesítéshez](logic-apps-enterprise-integration-schemas.md)
 ### [XML-átalakítás](logic-apps-enterprise-integration-transform.md)
+### [JSON-átalakítás](logic-apps-enterprise-integration-liquid-transform.md)
 ### [Leképezések hozzáadása XML-átalakításhoz](logic-apps-enterprise-integration-maps.md)
 ### [Tanúsítványok hozzáadása a B2B-biztonság érdekében](logic-apps-enterprise-integration-certificates.md)
 ### [Összetevők metaadatainak tárolása](logic-apps-enterprise-integration-metadata.md)

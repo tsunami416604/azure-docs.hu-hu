@@ -16,11 +16,11 @@ ms.date: 07/28/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;oldportal
-ms.openlocfilehash: 91978cee88d55c99bcb63c63cdaf01581ae84668
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: b84fe16f533db71207effa58b2b596600b4bcd27
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A tartományok közötti Identity Management rendszert használ automatikusan a felhasználók és csoportok az Azure Active Directory alkalmazások telepítéséhez
 
@@ -87,7 +87,7 @@ Ez a cikk a leírt SCIM profil támogató alkalmazások Azure Active Directory, 
 13. Kattintson a **mentése** elindítani az Azure AD szolgáltatás kiépítését. 
 14. Ha csak szinkronizálás hozzárendelve felhasználók és csoportok (ajánlott), ügyeljen arra, hogy válassza ki a **felhasználók és csoportok** lapra, és rendeljen a felhasználók és/vagy csoportok, szinkronizálni szeretne.
 
-Ha a kezdeti szinkronizálás elindult, a **naplók** lapon figyelemmel a folyamat állapotát, amely tartalmazza az alkalmazás a létesítési szolgáltatás által végzett összes műveletet. Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Ha a kezdeti szinkronizálás elindult, a **naplók** lapon figyelemmel a folyamat állapotát, amely tartalmazza az alkalmazás a létesítési szolgáltatás által végzett összes műveletet. Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 >[!NOTE]
 >A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. 
@@ -159,7 +159,7 @@ Az egy SCIM végpontot, amelyhez is fogadja el a kiépítési kérelmekre, az Az
 13. Kattintson a **mentése** elindítani az Azure AD szolgáltatás kiépítését. 
 14. Ha csak szinkronizálás hozzárendelve felhasználók és csoportok (ajánlott), ügyeljen arra, hogy válassza ki a **felhasználók és csoportok** lapra, és rendeljen a felhasználók és/vagy csoportok, szinkronizálni szeretne.
 
-Ha a kezdeti szinkronizálás elindult, a **naplók** lapon figyelemmel a folyamat állapotát, amely tartalmazza az alkalmazás a létesítési szolgáltatás által végzett összes műveletet. Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Ha a kezdeti szinkronizálás elindult, a **naplók** lapon figyelemmel a folyamat állapotát, amely tartalmazza az alkalmazás a létesítési szolgáltatás által végzett összes műveletet. Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 Az utolsó lépés a minta ellenőrzése során, hogy a \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug mappát a Windows-számítógépen nyissa meg a TargetFile.csv fájlt. Az üzembe helyezési folyamat futtatása után ez a fájl társított összes részleteit, és kiosztása a felhasználók és csoportok jeleníti meg.
 
@@ -359,7 +359,7 @@ Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/200
 ### <a name="table-1-default-user-attribute-mapping"></a>1. táblázat: Alapértelmezett felhasználói címtárattribútum-leképezésben
 | Az Azure Active Directory-felhasználó | urn: ietf:params:scim:schemas:extension:enterprise:2.0:User |
 | --- | --- |
-| IsSoftDeleted |Aktív |
+| IsSoftDeleted |aktív |
 | displayName |displayName |
 | Telefax-TelephoneNumber |.value phoneNumbers [típus eq "fax"] |
 | givenName |name.givenName |
@@ -378,12 +378,12 @@ Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/200
 | felhasználó-egyszerű név |Felhasználónév |
 
 ### <a name="table-2-default-group-attribute-mapping"></a>2. táblázat: Alapértelmezett attribútum leképezése
-| Azure Active Directory-csoportok | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
+| Azure Active Directory-csoport | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
 | --- | --- |
 | displayName |externalId |
 | mail |e-mailek [típus eq "munkahelyi"] .value |
 | mailNickname |displayName |
-| Tagok |Tagok |
+| tag |tag |
 | Objektumazonosító |id |
 | proxyAddresses |[Írja be az "egyéb" eq] e-maileket. Érték |
 

@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 10/03/2017
 ms.author: mimig
 ms.custom: cda
-ms.openlocfilehash: 7d26974f67b69b2b861ef11ad8d76f34f53d453f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 39fd3e0df9a9d86272fb94afc9397ff61dd049f0
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>Azure Cosmos DB tippek 20 nap
 
@@ -103,7 +103,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 11 tipp: A kiemelt Build követését célzó alkalmazásai reagálni, Node.js és Azure Cosmos DB használatával.
 
-A cikk: [reagálni és Azure Cosmos DB a MongoDB-alkalmazás létrehozása](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-mongodb-react?WT.mc_id=sicotint)
+A cikk: [reagálni és Azure Cosmos DB a MongoDB-alkalmazás létrehozása](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-mongodb-react?WT.mc_id=sicotint)
 
 [![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910156604875649025)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6315922463670751233)
 
@@ -119,7 +119,7 @@ A cikk: [reagálni és Azure Cosmos DB a MongoDB-alkalmazás létrehozása](http
 
 13. tipp: A nulla és a kiemelt @John_Papa és Azure Cosmos DB. Ismerje meg, hogyan hozhat létre egy átlagos alkalmazás létrehozása
 
-A cikk: [szögben kifejezett és Azure Cosmos DB a MongoDB-alkalmazás létrehozása](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-mongodb-nodejs?WT.mc_id=sicotint&utm_content=buffer2495b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+A cikk: [szögben kifejezett és Azure Cosmos DB a MongoDB-alkalmazás létrehozása](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-mongodb-nodejs?WT.mc_id=sicotint&utm_content=buffer2495b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 
 [![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910881618855907329)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6316647045599944704)
 

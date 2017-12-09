@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: bf5828ecd6b6bd2e862c4d7709014ecac47c6be0
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: b68ceac2056f0a9a7a9c4df7984789858c77a626
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="offline-fairplay-streaming"></a>Adatfolyam-kapcsolat nélküli FairPlay
 A Microsoft Azure Media Services számos tetszetős [védelmi szolgáltatások tartalom](https://azure.microsoft.com/services/media-services/content-protection/), amely:
@@ -189,7 +189,7 @@ Néhány gyakori kérdést talál a hibaelhárítási:
 - **Mit nem az utolsó paraméter alakítson ki a következő API-t a kapcsolat nélküli módban FPS?**
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-Ez az API dokumentációjában található [Itt](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). A paraméter jelöli a egységként óra offline bérleti időtartama.
+Ez az API dokumentációjában található [Itt](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). A paraméter jelöli a egységként óra offline bérleti időtartama.
 - **Mi az az iOS-eszközökön a letöltött vagy offline állapotban fájlstruktúra?** A letöltött fájl struktúra iOS-eszközön a következőképpen néz (képernyőkép) alatt. `_keys`mappában tárolja letöltött FPS licencek egy tárolófájl minden licenc szolgáltatás állomás számára. `.movpkg`a mappa tárolja a hang-és videotartalmakhoz. Az első mappa egy numerikus követ kötőjellel végződő nevű videotartalom tartalmazza. A numerikus értéke a videó interpretációk "PeakBandwidth". 0 követ kötőjellel végződő nevű második mappa tartalmát tartalmazza. A harmadik "Data" nevű mappát a fő lista FPS tartalmat tartalmazza. Boot.XML teljes leírását itt `.movpkg` mappa tartalma (lásd lent boot.xml mintafájl).
 
 ![Kapcsolat nélküli FairPlay iOS Sample App fájlstruktúra](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)

@@ -7,11 +7,11 @@ ms.service: azure-stack
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.openlocfilehash: 68da653052d0e3dfd66d6b65958046e42cefce73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: c37ad8ac5b6c37261e22237e843dd97e2bbd09f9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Bevezetés az Azure-verem virtuális gépek
 
@@ -94,7 +94,7 @@ Az erőforrások az alábbi táblázat a virtuális gép által használt, és v
 |Virtuális hálózat|Igen|A virtuális gépnek egy virtuális hálózat tagjának kell lennie.|
 |Nyilvános IP-cím|Nem|A virtuális gép rendelkezhet hozzárendelt nyilvános IP-címmel, hogy távolról is el lehessen érni.|
 |Hálózati illesztő|Igen|A virtuális gépnek szüksége van a hálózati illesztőre a hálózattal való kommunikációhoz.|
-|Az adatlemezek|Nem|A virtuális gépek a tárolókapacitást bővítő adatlemezeket is tartalmazhatnak.|
+|Adatlemezek|Nem|A virtuális gépek a tárolókapacitást bővítő adatlemezeket is tartalmazhatnak.|
 
 ## <a name="how-do-i-create-my-first-vm"></a>Hogyan hozhatom létre az első virtuális gépemet?
 
@@ -121,8 +121,8 @@ A következő táblázat néhány virtuális gép információt kaphat módot.
 |Módszer|Leírás|
 |---------|---------|
 |Verem Azure portálon|A központ menüben kattintson a virtuális gépeket, és válassza ki a virtuális Gépet a listából. A virtuális gép lapon hozzáférhet áttekintő információkat, a beállítás értéke, és figyelési metrikákat.|
-|Azure PowerShell|Virtuális gépek kezelése az Azure-ban és Azure verem hasonló. További információ a PowerShell használatával a következő témakör Azure:<br>[Hozzon létre és a Windows virtuális gépek kezelése az Azure PowerShell modul](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
-|Ügyfél-SDK-k|A C# használatával felügyeli a virtuális gépek az Azure-ban és Azure verem hasonló. További információ a következő témakör Azure:<br>[Létrehozása és kezelése Windows-alapú virtuális gépek az Azure-ban C#](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/csharp)|
+|Azure PowerShell|Virtuális gépek kezelése az Azure-ban és Azure verem hasonló. További információ a PowerShell használatával a következő témakör Azure:<br>[Hozzon létre és a Windows virtuális gépek kezelése az Azure PowerShell modul](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
+|Ügyfél-SDK-k|A C# használatával felügyeli a virtuális gépek az Azure-ban és Azure verem hasonló. További információ a következő témakör Azure:<br>[Létrehozása és kezelése Windows-alapú virtuális gépek az Azure-ban C#](https://docs.microsoft.com/azure/virtual-machines/windows/csharp)|
 
 ### <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 

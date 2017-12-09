@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 7a051e0f35b2dd943f3569391d7ca0f206a9ef02
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
-ms.translationtype: HT
+ms.openlocfilehash: 7565efd82945f21b83471ee66098cd476b7bb59f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Az Azure HDInsight Spark Caffe elosztott mély tanulási használata
 
@@ -42,7 +42,7 @@ Nincsenek négy fő lépést kell legyen a HDInsight működik.
 3. A szükséges kódtárak összes munkavégző csomópontokhoz terjesztése
 4. Egy Caffe modell összeállítása, és elosztott módon futtassa.
 
-Mivel a HDInsight a PaaS megoldás, azt funkciókat nyújtja a kiváló platform - könnyen egyes feladatok elvégzéséhez. Egyik szolgáltatása, amely a következő blogbejegyzésben fokozottan használjuk nevezik [parancsfájlművelet](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), amellyel testreszabásához fürtcsomópontok (átjárócsomópont, munkavégző csomópont vagy élcsomópont) rendszerhéj parancsot végrehajthat.
+Mivel a HDInsight a PaaS megoldás, azt funkciókat nyújtja a kiváló platform - könnyen egyes feladatok elvégzéséhez. Egyik szolgáltatása, amely a következő blogbejegyzésben fokozottan használjuk nevezik [parancsfájlművelet](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), amellyel testreszabásához fürtcsomópontok (átjárócsomópont, munkavégző csomópont vagy élcsomópont) rendszerhéj parancsot végrehajthat.
 
 ## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>1. lépés: A szükséges függőségek telepítése minden csomópontján
 
@@ -71,14 +71,14 @@ A parancsfájlművelet két lépésből áll. Az első lépés, hogy a szükség
 
 A második lépésben letöltéséhez fordítása, és futásidőben Caffe protobuf 2.5.0 telepítése. Protobuf 2.5.0 [szükséges](https://github.com/yahoo/CaffeOnSpark/issues/87), azonban a jelen verziójában nem áll rendelkezésre Ubuntu 16, a csomag, ezért ellenőriznünk kell, hogy a forrás-kódjában. Nincsenek is néhány erőforrások az interneten, hogy hogyan. További információkért lásd: [Itt](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
 
-A kezdéshez csak a parancsfájlművelet alapján futtathatók a fürt összes munkavégző csomópontokhoz és átjárócsomópontokkal (a HDInsight 3.5). A Parancsfájlműveletek futtathat egy meglévő fürt, vagy a Parancsfájlműveletek használja a fürt létrehozása során. A Parancsfájlműveletek további információkért lásd: a dokumentáció [Itt](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions).
+A kezdéshez csak a parancsfájlművelet alapján futtathatók a fürt összes munkavégző csomópontokhoz és átjárócsomópontokkal (a HDInsight 3.5). A Parancsfájlműveletek futtathat egy meglévő fürt, vagy a Parancsfájlműveletek használja a fürt létrehozása során. A Parancsfájlműveletek további információkért lásd: a dokumentáció [Itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions).
 
 ![A Parancsfájlműveletek függőségek telepítése](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
 ## <a name="step-2-build-caffe-on-spark-for-hdinsight-on-the-head-node"></a>2. lépés: Létrehozása Caffe a hdinsight Spark-kiszolgálón az átjárócsomópont
 
-A második lépés, hogy a headnode Caffe létrehozása, és közzétennie a lefordított tárak összes munkavégző csomópontokhoz. Ebben a lépésben kell [ssh azokat a headnode](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Ezután kövesse a [CaffeOnSpark build folyamat](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Alább van a parancsfájl CaffeOnSpark fejlesztheti az néhány további lépést is használhatja. 
+A második lépés, hogy a headnode Caffe létrehozása, és közzétennie a lefordított tárak összes munkavégző csomópontokhoz. Ebben a lépésben kell [ssh azokat a headnode](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Ezután kövesse a [CaffeOnSpark build folyamat](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Alább van a parancsfájl CaffeOnSpark fejlesztheti az néhány további lépést is használhatja. 
 
     #!/bin/bash
     git clone https://github.com/yahoo/CaffeOnSpark.git --recursive

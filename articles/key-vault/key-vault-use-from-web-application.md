@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: adhurwit
-ms.openlocfilehash: 1846305e6834145046cf9903714c68e9a6fd4f7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4dc4a0bd43f61474692abb8c21e0b6448769f8e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Használja az Azure Key Vault-webalkalmazások
 
@@ -107,7 +107,7 @@ public static async Task<string> GetToken(string authority, string resource, str
 ```
 
 > [!NOTE]
->* Jelenleg a hitelesítés legegyszerűbb módja a Felügyeltszolgáltatás-identitás (Managed Service Identity, MSI) nevű új funkció. További részletekért tekintse meg a következő példát, amely egy [.NET-alapú alkalmazásban található MSI-vel rendelkező kulcstartót](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) használ, valamint tekintse meg az [MSI App Service és Functions szolgáltatásokkal való használatával foglalkozó](https://docs.microsoft.com/en-us/azure/app-service/app-service-managed-service-identity) oktatóanyagot. 
+>* Jelenleg a hitelesítés legegyszerűbb módja a Felügyeltszolgáltatás-identitás (Managed Service Identity, MSI) nevű új funkció. További részletekért tekintse meg a következő példát, amely egy [.NET-alapú alkalmazásban található MSI-vel rendelkező kulcstartót](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) használ, valamint tekintse meg az [MSI App Service és Functions szolgáltatásokkal való használatával foglalkozó](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) oktatóanyagot. 
 >* Ügyfél-azonosító és a titkos ügyfélkódot használata a hitelesítés az Azure AD-alkalmazást egy másik módja. És használja azt a webes alkalmazásban és a kulcskezelést teljesebb körű vezérlése kizárás lehetővé teszi. De azt alapulnak, hogy a titkos Ügyfélkulcs és a konfigurációs beállításaiban, amely az egyes szerint kockázatos, ha a titkos kulcsot, amely a konfigurációs beállításokat a védeni kívánt lehet. Egy ügyfél-azonosító és a tanúsítvány használata helyett az ügyfél-azonosító és a titkos ügyfélkódot hitelesítéséhez az Azure AD-alkalmazás leírását a következő kapcsolatban.
 
 ## <a id="appstart"></a>A titkos kulcsot, az alkalmazás lépések beolvasása

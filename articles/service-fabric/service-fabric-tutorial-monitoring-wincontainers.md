@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69a59ea9fb93f6e9f3f3eea66b1a9e973b1b4eea
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
-ms.translationtype: HT
+ms.openlocfilehash: 8fe3266cfcb7141684f9e1b5dfa74d6569c23b24
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-windows-containers-on-service-fabric-using-oms"></a>A Service Fabric használatával OMS Windows tárolók figyelése
 
@@ -41,7 +41,7 @@ Ez az oktatóanyag elkezdéséhez a következőket:
 
 Abban az esetben használt a [sablon](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) Ez az oktatóanyag első részében, az alábbi kiegészítésekkel általános Service Fabric Azure Resource Manager sablonhoz szerepelnie kell benne. Abban az esetben az eset, hogy rendelkezik-e a saját, amely egy fürt csak a keresett OMS tárolók figyelés beállításához:
 * A következő módosításokat a Resource Manager sablonhoz.
-* Frissítse a fürt által a PowerShell használatával telepítheti [a sablon telepítése](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-creation-via-arm). Az Azure Resource Manager valósít meg, hogy az erőforrás létezik, így fog megkezdik az frissítéseként.
+* Frissítse a fürt által a PowerShell használatával telepítheti [a sablon telepítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm). Az Azure Resource Manager valósít meg, hogy az erőforrás létezik, így fog megkezdik az frissítéseként.
 
 ### <a name="adding-oms-to-your-cluster-template"></a>A fürt sablon OMS hozzáadása
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/13/2017
 ms.author: eugenesh
-ms.openlocfilehash: 49f614fdf3ba84de238139387ea97ee62077b072
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 8b0f3941526214455992ba2f0f6299df24323c9c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Csatlakozás Azure SQL adatbázis Azure Search használatával az indexelők
 
@@ -44,7 +44,7 @@ Egyetlen indexelő csak felhasználhat egy táblát vagy nézetet, de több inde
 
 * Az adatok importálása varázslót a [Azure-portálon](https://portal.azure.com)
 * Az Azure Search [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
-* Az Azure Search [REST API-n](https://docs.microsoft.com/en-us/rest/api/searchservice/indexer-operations)
+* Az Azure Search [REST API-n](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
 
 Ebben a cikkben használjuk a REST API létrehozása **indexelők** és **adatforrások**.
 
@@ -302,7 +302,7 @@ SQL indexelő számos konfigurációs beállítás közzétesz:
 
 | Beállítás | Adattípus | Cél | Alapértelmezett érték |
 | --- | --- | --- | --- |
-| queryTimeout |Karakterlánc |Beállítja az SQL-lekérdezés végrehajtása időtúllépés |5 perc ("00: 05:00") |
+| queryTimeout |karakterlánc |Beállítja az SQL-lekérdezés végrehajtása időtúllépés |5 perc ("00: 05:00") |
 | disableOrderByHighWaterMarkColumn |logikai érték |Az SQL-lekérdezés ORDER BY záradékban hagyja el a magas vízjel alapján házirend segítségével okoz. Lásd: [magas vízjel alapján házirend](#HighWaterMarkPolicy) |hamis |
 
 Ezek a beállítások szerepelnek a `parameters.configuration` objektum indexelő definíciójában. Például szeretné beállítani a lekérdezés időkorlátja 10 percig, hozzon létre, vagy az indexelő frissítése a következő beállításokkal:

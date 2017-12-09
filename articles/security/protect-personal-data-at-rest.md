@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/31/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 2bb8370d23d9450fb8154f21c27817666fd7852c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
-ms.translationtype: HT
+ms.openlocfilehash: 31e41f9befd9319115e5d147b473756486100c6e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Az Azure titkosítási technológiák: a titkosítás aktívan személyes adatok védelme
 
@@ -57,7 +57,7 @@ Azure-szolgáltatások és több inaktív személyes adatok védelméhez titkos�
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
-[Az Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) biztonságitár biztosít az Azure-szolgáltatásokat az inaktív adatok titkosításához használt kulcsok és a javasolt kulcs tárolása és kezelése megoldás. Titkosítási kulcsok kezelése fontos tárolt adatok védelme.
+[Az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) biztonságitár biztosít az Azure-szolgáltatásokat az inaktív adatok titkosításához használt kulcsok és a javasolt kulcs tárolása és kezelése megoldás. Titkosítási kulcsok kezelése fontos tárolt adatok védelme.
 
 #### <a name="how-do-i-use-azure-key-vault-to-protect-keys-that-encrypt-personal-data"></a>Miként használható az Azure Key Vault kulcsok titkosító személyes adatok védelme?
 
@@ -79,13 +79,13 @@ Az Azure Key Vault biztosítható egy szoftveres védelemmel ellátott kulcs, va
 
 Hozzon létre egy kulcsot a helyi HSM-ben is, és vigye át a HSM a Key Vault szolgáltatásban nélkül a kulcs elhagyná a HSM határait.
 
-Az Azure Key Vault használatával részletes utasításokat kövesse a [Ismerkedés az Azure Key Vault.](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-get-started)
+Az Azure Key Vault használatával részletes utasításokat kövesse a [Ismerkedés az Azure Key Vault.](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)
 
-Az Azure Key Vault használt PowerShell-parancsmagok listáját lásd: [AzureRM.KeyVault](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0).
+Az Azure Key Vault használt PowerShell-parancsmagok listáját lásd: [AzureRM.KeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0).
 
 ### <a name="azure-disk-encryption-for-windows"></a>A Windows Azure lemez titkosítása
 
-[Az Azure lemez titkosítása a Windows és Linux IaaS virtuális gépeket](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) Azure virtuális gépeken futó aktívan személyes adatok védelmét, és jól integrálható az Azure Key Vault. Használja az Azure Disk Encryption [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) a Windows és [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) lévő Linux mind az operációs rendszer és az adatlemezek titkosítására. Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016-os, és a Windows 8 és Windows 10-ügyfelek az Azure Disk Encryption támogatott.
+[Az Azure lemez titkosítása a Windows és Linux IaaS virtuális gépeket](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) Azure virtuális gépeken futó aktívan személyes adatok védelmét, és jól integrálható az Azure Key Vault. Használja az Azure Disk Encryption [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) a Windows és [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) lévő Linux mind az operációs rendszer és az adatlemezek titkosítására. Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016-os, és a Windows 8 és Windows 10-ügyfelek az Azure Disk Encryption támogatott.
 
 #### <a name="how-do-i-use-azure-disk-encryption-to-protect-personal-data"></a>Miként használható az Azure Disk Encryption személyes adatok védelme?
 
@@ -103,11 +103,11 @@ Beállításakor a kulcstartót Azure Disk Encryption támogatásához, hozzáad
 
 ![](media/protect-personal-data-at-rest/create-key.png)
 
-Részletes utasítások az adott telepítési forgatókönyvek és a felhasználói élmény szerepelnek [lemez titkosítás a Windows Azure és a Linux IaaS virtuális gépeket.](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)
+Részletes utasítások az adott telepítési forgatókönyvek és a felhasználói élmény szerepelnek [lemez titkosítás a Windows Azure és a Linux IaaS virtuális gépeket.](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 
 ### <a name="azure-storage-service-encryption"></a>Azure Storage Service Encryption
 
-[Az Azure Storage szolgáltatás titkosítási (SSE) inaktív adatok](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) segítségével, és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni. Az Azure Storage automatikusan titkosítja az adatokat, 256 bites AES titkosítással előtt Storage megőrzése, és lekérése előtt visszafejti. A szolgáltatás az Azure-BLOB és a fájlok érhető el.
+[Az Azure Storage szolgáltatás titkosítási (SSE) inaktív adatok](https://docs.microsoft.com/azure/storage/storage-service-encryption) segítségével, és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni. Az Azure Storage automatikusan titkosítja az adatokat, 256 bites AES titkosítással előtt Storage megőrzése, és lekérése előtt visszafejti. A szolgáltatás az Azure-BLOB és a fájlok érhető el.
 
 #### <a name="how-do-i-use-storage-service-encryption-to-protect-personal-data"></a>Hogyan használja a Storage szolgáltatás titkosítási személyes adatok védelme?
 
@@ -129,13 +129,13 @@ A titkosítási beállítás gombra kattintva engedélyezheti vagy letilthatja a
 
 Miután engedélyezte a titkosítás, adatok másolása a tárfiókot, a következő módszerek valamelyikével:
 
-1. Blobok vagy a fájlok másolása a [AzCopy parancssori segédprogram](https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy).
+1. Blobok vagy a fájlok másolása a [AzCopy parancssori segédprogram](https://docs.microsoft.com/azure/storage/storage-use-azcopy).
 
-2. [Az SMB-fájlmegosztás csatlakoztatása](https://docs.microsoft.com/en-us/azure/storage/storage-file-how-to-use-files-windows) , például Robocopy segédprogram segítségével másolja a fájlokat.
+2. [Az SMB-fájlmegosztás csatlakoztatása](https://docs.microsoft.com/azure/storage/storage-file-how-to-use-files-windows) , például Robocopy segédprogram segítségével másolja a fájlokat.
 
-3. Adatok másolása a blob vagy a fájl a és a blob-tároló vagy közötti tárolási fiókok [Storage Ügyfélkódtáraival például .NET](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-blobs).
+3. Adatok másolása a blob vagy a fájl a és a blob-tároló vagy közötti tárolási fiókok [Storage Ügyfélkódtáraival például .NET](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-blobs).
 
-4.  Használja a [Tártallózó](https://docs.microsoft.com/en-us/azure/storage/storage-explorers) blobok feltöltése a tárfiókhoz a titkosítás engedélyezve van.
+4.  Használja a [Tártallózó](https://docs.microsoft.com/azure/storage/storage-explorers) blobok feltöltése a tárfiókhoz a titkosítás engedélyezve van.
 
 ### <a name="transparent-data-encryption"></a>Transzparens adattitkosítás
 
@@ -159,7 +159,7 @@ TDE konfigurálhatja az Azure portálon keresztül, a REST API használatával, 
 
 ![Adatok titkosítás engedélyezése](media/protect-personal-data-at-rest/turn-data-encryption-on.png)
 
-A cikk található útmutatást ahhoz, hogy TDE és visszafejtése TDE védett adatbázisok és egyéb információkat [átlátható adattitkosítást az Azure SQL Database.](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)
+A cikk található útmutatást ahhoz, hogy TDE és visszafejtése TDE védett adatbázisok és egyéb információkat [átlátható adattitkosítást az Azure SQL Database.](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)
 
 ## <a name="summary"></a>Összefoglalás
 
@@ -169,10 +169,10 @@ A az Azure-adatok titkosítására használt kulcs védelme érdekében a válla
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Disk Encryption hibaelhárítási útmutatója](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-tsg)
+- [Azure Disk Encryption hibaelhárítási útmutatója](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg)
 
-- [Azure virtuális gép titkosítása](https://docs.microsoft.com/en-us/azure/security-center/security-center-disk-encryption?toc=%2fazure%2fsecurity%2ftoc.json)
+- [Azure virtuális gép titkosítása](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption?toc=%2fazure%2fsecurity%2ftoc.json)
 
-- [Az Azure Data Lake Store az adatok titkosítása](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-encryption)
+- [Az Azure Data Lake Store az adatok titkosítása](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption)
 
-- [Az Azure Cosmos DB adatbázis titkosítását](https://docs.microsoft.com/en-us/azure/cosmos-db/database-encryption-at-rest)
+- [Az Azure Cosmos DB adatbázis titkosítását](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest)
