@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-ms.openlocfilehash: 0dc9d95729f28dd0846178e24a25425170c893df
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 67aa5bb122b277e998119506bb2a574d6b4fde5e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="install-the-azure-cli-10"></a>Az Azure parancssori felület 1.0-s telepítése
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Gyorsan telepíti az Azure parancssori felület (Azure CLI 1.0-s)-alapú parancs
 
 A további beállítások és a háttérben, tekintse meg a projekt tárház [GitHub](https://github.com/azure/azure-xplat-cli).
 
-Az Azure CLI 1.0-s telepítése után [csatlakoztassa az Azure előfizetéssel rendelkező](xplat-cli-connect.md) , és futtassa a **azure** az Azure-erőforrások kezelésére használható a parancssori felületről (Bash, Terminálszolgáltatások, parancssort, és így tovább) parancsokat.
+Az Azure CLI 1.0-s telepítése után [csatlakoztassa az Azure előfizetéssel rendelkező](/cli/azure/authenticate-azure-cli) , és futtassa a **azure** az Azure-erőforrások kezelésére használható a parancssori felületről (Bash, Terminálszolgáltatások, parancssort, és így tovább) parancsokat.
 
 ## <a name="option-1-install-an-npm-package"></a>1. lehetőség: Egy npm csomag telepítése
 A parancssori felület telepítése npm-csomagból, ellenőrizze, hogy már letöltötte és telepítette a [legújabb Node.js és npm](https://nodejs.org/en/download/package-manager/). Ezután futtassa **npm telepítése** az azure-cli csomag telepítése:
@@ -99,7 +99,7 @@ Az Azure CLI 1.0 telepített verziójának megtekintéséhez írja be a követke
 azure --version
 ```
 
-Most már készen áll! A saját erőforrásokat parancssori felület parancsai eléréséhez [csatlakozzon az Azure-előfizetéshez az Azure parancssori felületen](xplat-cli-connect.md).
+Most már készen áll! A saját erőforrásokat parancssori felület parancsai eléréséhez [csatlakozzon az Azure-előfizetéshez az Azure parancssori felületen](/cli/azure/authenticate-azure-cli).
 
 > [!NOTE]
 > Ha először használja az Azure parancssori felület, megjelenik egy üzenet rákérdez, hogy a Microsoft használati adatokat gyűjthet a. Részvétel önkéntes történik. Ha a részvétel mellett dönt, le is bármikor futtatásával `azure telemetry --disable`. Részvétel bármikor engedélyezéséhez futtassa `azure telemetry --enable`.
@@ -129,7 +129,7 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 
 
 ## <a name="next-steps"></a>Következő lépések
-* [Csatlakoztassa a CLI Azure-előfizetése](xplat-cli-connect.md) létrehozásához és kezeléséhez az Azure-erőforrások.
+* [Csatlakoztassa a CLI Azure-előfizetése](/cli/azure/authenticate-azure-cli) létrehozásához és kezeléséhez az Azure-erőforrások.
 * További tudnivalók az Azure parancssori felület, letöltési forráskódját, kapcsolatos problémákat, vagy a projekt hozzájárul, látogasson el a [az Azure parancssori felület GitHub-tárházban](https://github.com/azure/azure-xplat-cli).
 * Ha az Azure parancssori felület, vagy az Azure használatával kapcsolatos kérdésekre, keresse fel a [Azure fórumok](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).
 

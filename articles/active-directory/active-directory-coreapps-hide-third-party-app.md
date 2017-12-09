@@ -1,6 +1,6 @@
 ---
-title: "A külső alkalmazás Azure Active Directoryban lévő felhasználói élmény elrejtése |} Microsoft Docs"
-description: "A külső alkalmazás Azure Active Directoryban lévő felhasználói élmény elrejtése"
+title: "Az alkalmazás a felhasználói élmény az Azure Active Directoryban elrejtése |} Microsoft Docs"
+description: "Az alkalmazás a felhasználói élmény az Azure Active Directoryban elrejtése"
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,18 +15,18 @@ ms.date: 10/11/2017
 ms.author: billmath
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 976cbb1341493186b9996d250ebca8f2f3688fdf
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 58e3dd23805ada39e77194ddb4ebf507c24fd1f2
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/09/2017
 ---
-# <a name="hide-a-third-party-application-from-users-experience-in-azure-active-directory"></a>A külső alkalmazás Azure Active Directoryban lévő felhasználói élmény elrejtése
+# <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>Az alkalmazás a felhasználói élmény az Azure Active Directoryban elrejtése
 
-Ha egy külső alkalmazás (egy mások, mint a Microsoft által közzétett alkalmazás), hogy nem szeretné, hogy megjeleníti őket a felhasználók hozzáférést panelek vagy Office 365 kilövők, egy lehetőség, hogy az alkalmazás csempéjére elrejtése van. Elrejti a az alkalmazás felhasználók továbbra is engedélye arra, hogy az alkalmazás, de nem látják őket jelennek meg az alkalmazás kilövők. A vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.
+Ha nem kívánja megjeleníteni a felhasználói hozzáférés panelek vagy Office 365 kilövők alkalmazást, nincs egy lehetőség, hogy az alkalmazás csempéjére elrejtése. Ez a beállítás csak érhető el külső alkalmazások (nem a Microsoft által közzétett alkalmazások). Elrejti a az alkalmazás felhasználók továbbra is engedélye arra, hogy az alkalmazás, de nem látják őket jelennek meg az alkalmazás kilövők. A vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie. 
 
-## <a name="hiding-a-third-party-app-from-a-users-experience"></a>A külső alkalmazás a felhasználói élmény a elrejtése
-Az alábbi lépések segítségével egy külső gyártótól származó alkalmazást a felhasználó hozzáférési panelre, és Office 365 app kilövők elrejtése
+## <a name="hiding-an-application-from-users-end-user-experiences"></a>Az alkalmazás a felhasználó végfelhasználói élmény elrejtése
+Az alábbi lépések segítségével az alkalmazás a felhasználó hozzáférési panel és Office 365 app kilövők elrejtése
 
 ### <a name="how-do-i-hide-a-third-party-app-from-users-access-panel-and-o365-app-launchers"></a>Hogyan elrejtése a felhasználó hozzáférési panel és Office 365 app kilövők külső alkalmazásából?
 

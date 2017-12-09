@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: c7ed8e695097d0cf2f5c99f8ccf3378c4e553c3b
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: a9d6ebb2ae92b631d4663b1373c684b2e10a9507
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
 
@@ -46,9 +46,11 @@ Ebben a forgatókönyvben koncentrálhat munkaterhelés előrejelzés minden gé
 Ez a példa futtatásához az Előfeltételek a következők:
 
 * Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverzió érhetők el).
-* Egy telepített példánya [Machine Learning-munkaterület](./overview-what-is-azure-ml.md). A program telepítéséhez, és hozzon létre egy munkaterületet, tekintse meg a [gyors üzembe helyezés a telepítési útmutató](./quickstart-installation.md).
+* Egy telepített példánya [Azure Machine Learning-munkaterület](./overview-what-is-azure-ml.md). A program telepítéséhez, és hozzon létre egy munkaterületet, tekintse meg a [gyors üzembe helyezés a telepítési útmutató](./quickstart-installation.md). Ha több előfizetéssel rendelkezik, akkor [állítsa be a kívánt előfizetés kell lennie az aktuális aktív előfizetéssel](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set).
 * Windows 10 (a példában szereplő utasításokat általában azonosak macOS rendszerekhez).
-* Adatok tudományos virtuális gép (DSVM) Linux (Ubuntu). Megadhat egy Ubuntu DSVM következő [ezeket az utasításokat](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Azt is láthatja, [a gyors üzembe helyezés](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Legalább 8 maggal és 32 GB memóriát a virtuális gép használatát javasoljuk. A DSVM IP-cím, a felhasználónév és a jelszó próbálhatja ki az ebben a példában van szüksége. A következő tábla mentése a későbbi lépésekben DSVM információval:
+* Egy adatok tudományos virtuális gép (DSVM) Linux (Ubuntu), lehetőleg USA keleti régiójában, ahol az adatok megkeresi a rendszerhez. Megadhat egy Ubuntu DSVM következő [ezeket az utasításokat](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Azt is láthatja, [a gyors üzembe helyezés](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Legalább 8 maggal és 32 GB memóriát a virtuális gép használatát javasoljuk. 
+
+Kövesse a [utasítás](https://docs.microsoft.com/en-us/azure/machine-learning/preview/known-issues-and-troubleshooting-guide#remove-vm-execution-error-no-tty-present) a virtuális Gépre jelszó nélküli sudoer hozzáférésének engedélyezésére vonatkozó AML munkaterületet.  Ha szeretné használni [SSH-alapú hitelesítés létrehozásáért és a virtuális gép AML munkaterület](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). Ebben a példában a jelszót a virtuális gép eléréséhez használjuk.  A következő tábla mentése a későbbi lépésekben DSVM információval:
 
  Mező neve| Érték |  
  |------------|------|
@@ -56,9 +58,10 @@ DSVM IP-cím | xxx|
  Felhasználónév  | xxx|
  Jelszó   | xxx|
 
+
  Használja a virtuális gép, és választhatja [Docker-motorhoz](https://docs.docker.com/engine/) telepítve.
 
-* HDInsight Spark-fürtöt, Hortonworks Data Platform 3.6 és Spark-verzióval rendelkező 2.1.x. Látogasson el [Apache Spark-fürt létrehozása az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql) a HDInsight-fürtök létrehozása vonatkozó további információért. Az egyes munkavégző 16 maggal és 112 GB memóriát a három-munkavégző fürt használatát javasoljuk. Vagy egyszerűen kiválaszthatja a virtuális gép típusát `D12 V2` az átjárócsomópont, és `D14 V2` a munkavégző csomópont. A fürt központi telepítése nagyjából 20 percet vesz igénybe. A fürt nevét, az SSH-felhasználónév és a jelszó próbálhatja ki az ebben a példában van szüksége. Mentse a következő táblázat a későbbi lépésekben az Azure HDInsight fürt adatai:
+* HDInsight Spark-fürtöt, Hortonworks Data Platform 3.6 és Spark-verzióval rendelkező 2.1.x, lehetőség szerint az USA keleti régiójában, ahol az adatok keresése. Látogasson el [Apache Spark-fürt létrehozása az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) a HDInsight-fürtök létrehozása vonatkozó további információért. Az egyes munkavégző 16 maggal és 112 GB memóriát a három-munkavégző fürt használatát javasoljuk. Vagy egyszerűen kiválaszthatja a virtuális gép típusát `D12 V2` az átjárócsomópont, és `D14 V2` a munkavégző csomópont. A fürt központi telepítése nagyjából 20 percet vesz igénybe. A fürt nevét, az SSH-felhasználónév és a jelszó próbálhatja ki az ebben a példában van szüksége. Mentse a következő táblázat a későbbi lépésekben az Azure HDInsight fürt adatai:
 
  Mező neve| Érték |  
  |------------|------|
@@ -91,7 +94,7 @@ Futtatás `git status` verziójához nyomkövetési fájlok állapotának vizsg�
 
 ## <a name="data-description"></a>Adatok leírása
 
-Ebben a példában használt adatok szintetizált kiszolgáló-munkaterhelési adatok. Egy Azure Blob storage-fiókot, amely nyilvánosan hozzáférhető lévő található. A speciális tárolási fiók adatainak megtalálhatók a `dataFile` mezőjében [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json). Az adatok közvetlenül a Blob-tároló is használhatja. Ha a tárolót használja a rendszer sok felhasználó által egy időben, [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) az adatok letöltése a saját tárba. 
+Ebben a példában használt adatok szintetizált kiszolgáló-munkaterhelési adatok. Egy Azure Blob storage-fiókot, amely nyilvánosan elérhető az USA keleti régiójában az található. A speciális tárolási fiók adatainak megtalálhatók a `dataFile` mezőjében [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) formátumban "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Az adatok közvetlenül a Blob-tároló is használhatja. Ha a tárolót használja a rendszer sok felhasználó által egy időben, [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) az adatok letöltése a saját tároló legjobb kísérletezhet élmény elérése érdekében. 
 
 Az összes adat mérete körülbelül 1 TB. Minden fájl körülbelül 1 – 3 GB-tal, és a CSV fájlformátum, fejléc nélküli. Minden egyes soraiban levő adatok a terhelés, az adott kiszolgálón tranzakció jelöli. A részletes információkat az adatok séma a következőképpen történik:
 
@@ -270,7 +273,7 @@ Sikeresen befejezte a kis adatokon kísérletezhet, ha továbbra is a kísérlet
 
 A következő két fájlt a aml_config mappában jönnek létre:
     
--  myhdo.COMPUTE: Ez a fájl tartalmazza a távoli végrehajtás cél a kapcsolat és konfigurációs információt.
+-  myhdi.COMPUTE: Ez a fájl tartalmazza a távoli végrehajtás cél a kapcsolat és konfigurációs információt.
 -  myhdi.runconfig: ezt a fájlt a munkaterületre alkalmazásban használt futtatási beállítások van beállítva.
 
 

@@ -4,7 +4,7 @@ description: "Elmagyarázza, hozzáadása, módosítása, figyeléséhez, és t�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2017
+ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 09f4de79ab9b0cdfafd10c7c7c29b0f8e6304f14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9c575f42e6c8730b9404c62fb60e710d9d3bc80
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A StorSimple Device Manager szolgáltatás segítségével kezelheti a kötetek (Update 3-as vagy újabb)
 
@@ -119,11 +119,7 @@ Kövesse az utasításokat ebben az oktatóanyagban a következő feladatokat:
       
        Ha a 8100-as eszközön kioszt egy 8,5 TB-os (vagyis a legnagyobb megengedett méretű) gyors helyi kötetet, azzal elfoglalja az összes rendelkezésre álló helyi területet az eszközön. Innentől kezdve nem hozhat létre további rétegzett köteteket, mivel nincs helyi terület az eszközön, amely üzemeltethetné a rétegzett kötet munkakészletét. A meglévő rétegzett kötetek is hatással vannak a rendelkezésre álló területre. Ha például egy 8100-as eszközhöz már tartozik körülbelül 106 TB rétegzett kötet, akkor csak 4 TB érhető el a gyors helyi kötetekhez.
 
-    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. 
-
-        ![Csatlakoztatott gazdagépek](./media/storsimple-8000-manage-volumes-u2/step5createvol2.png)
-
-    7. Az a **csatlakozó állomások** panelen válassza ki egy meglévő ACR, vagy adja hozzá egy új ACR. Ha úgy dönt, hogy egy új ACR, majd adjon meg egy **neve** az ACR, adja meg a **iSCSI Qualified Name** (IQN) a Windows-állomás. Ha nem tudja az IQN-t, lépjen a [Windows Server-gazdagép IQN nevének lekérése](#get-the-iqn-of-a-windows-server-host) szakaszhoz. Kattintson a **Létrehozás** gombra. Létrejön egy kötet a megadott beállításokkal.
+    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. Az a **csatlakozó állomások** panelen válassza ki egy meglévő ACR, vagy adja hozzá egy új ACR. Ha úgy dönt, hogy egy új ACR, majd adjon meg egy **neve** az ACR, adja meg a **iSCSI Qualified Name** (IQN) a Windows-állomás. Ha nem tudja az IQN-t, lépjen a [Windows Server-gazdagép IQN nevének lekérése](#get-the-iqn-of-a-windows-server-host) szakaszhoz. Kattintson a **Létrehozás** gombra. Létrejön egy kötet a megadott beállításokkal.
 
         ![Kattintson a Létrehozás gombra](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 

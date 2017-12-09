@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: billgib
-ms.openlocfilehash: 0377baaa4a0db7e3cb2041f3ca018322e379f0df
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 1b6c780000d8c5e31a78f7f83ae74c002e8f8349
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS adatbázis bérleti minták
 
@@ -165,7 +165,7 @@ A hibrid modell összes adatbázis kell a sémában a bérlő azonosítója.  Az
 
 Bármikor helyezze át egy adott bérlő több-bérlős adatbázis.  És bármikor, meggondolja magát, helyezze vissza a bérlő több bérlő tartalmazó adatbázis.  Is hozzárendelheti a bérlő új single-bérlő adatbázis amikor az új adatbázis.
 
-A hibrid modell helyezi, amikor a bérlő azonosítható csoportok erőforrásigényeivel nagy különbséget.  Tegyük fel például, hogy részt vesz egy ingyenes próbaverzióra bérlők nem garantált teljesítményéről, amely előfizető bérlőkre azonos magas szintű.  A házirend, amelyet az összes szabad próbabérlőket használ egy több-bérlős adatbázisban tárolja a ingyenes próba fázis lehet a bérlők számára.  Amikor egy ingyenes próba bérlő előfizet az alapvető szolgáltatási szint, a bérlő helyezheti át egy másik olyan több-bérlős adatbázis ajánlott, amelyek kevesebb bérlők lehet.  Olyan előfizetője, amelyik a prémium szolgáltatásszintet fizet sikerült áthelyezni a saját megnyert új egyetlen bérlői adatbázisához.
+A hibrid modell helyezi, amikor a bérlő azonosítható csoportok erőforrásigényeivel nagy különbséget.  Tegyük fel például, hogy részt vesz egy ingyenes próbaverzióra bérlők nem garantált teljesítményéről, amely előfizető bérlőkre azonos magas szintű.  A házirend, amelyet az összes szabad próbabérlőket használ egy több-bérlős adatbázisban tárolja a ingyenes próba fázis lehet a bérlők számára.  Amikor egy ingyenes próba bérlő előfizet az alapvető szolgáltatási szint, a bérlő helyezheti át egy másik olyan több-bérlős adatbázis ajánlott, amelyek kevesebb bérlők lehet.  A saját új single-bérlő adatbázis olyan előfizetője, amelyik a prémium szolgáltatásszintet fizet sikerült áthelyezni.
 
 #### <a name="pools"></a>Készletek
 

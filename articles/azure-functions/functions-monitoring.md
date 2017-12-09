@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 33d4a193cc3152bfab1f03dde32ad4f1bcb0afe1
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 1a8158dd60b6e2eb15a16bf3efb60ef30d602fd6
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions figyelése
 
@@ -78,7 +78,7 @@ A [Metrikaböngésző](../application-insights/app-insights-metrics-explorer.md)
 
 Az a [hibák](../application-insights/app-insights-asp-net-exceptions.md) lapon hozhat létre diagramokat és függvény hibák és a kiszolgáló kivételek alapján riasztásokat. A **műveletnév** függvény neve. Hibák a függőségek nem láthatók, kivéve, ha megvalósítása [egyéni telemetria](#custom-telemetry-in-c-functions) függőségek.
 
-![hibák](media/functions-monitoring/failures.png)
+![Hibák](media/functions-monitoring/failures.png)
 
 Az a [teljesítmény](../application-insights/app-insights-performance-counters.md) lapon elemezheti a teljesítménnyel kapcsolatos problémákat.
 
@@ -486,7 +486,7 @@ Naplófájlokat, hogy egy parancssori munkamenetet egy helyi munkaállomáson az
 
 ### <a name="monitor-function-app-log-files-with-the-azure-cli-10"></a>Függvény app fájlra, amelynek az Azure CLI 1.0 figyelése
 
-A kezdéshez [telepítse az Azure CLI 1.0](../cli-install-nodejs.md) és [jelentkezzen be Azure](../xplat-cli-connect.md).
+A kezdéshez [telepítse az Azure CLI 1.0](../cli-install-nodejs.md) és [jelentkezzen be Azure](/cli/azure/authenticate-azure-cli).
 
 A következő parancsok segítségével engedélyezi a klasszikus szolgáltatásfelügyelet módban, válassza ki az előfizetés és adatfolyam-naplófájlokat:
 

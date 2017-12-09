@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
-ms.openlocfilehash: ed2a17fd735c1b0e67cbf5d08450d36620d4c857
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ccad7e41921c2fecbac113f3b950f654c62b1c8e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Műszaki útmutató a Cortana Intelligence megoldás sablont a havi előrejelzési igény szerint
 ## <a name="overview"></a>**Áttekintés**
@@ -82,7 +82,7 @@ Az igény szerinti előrejelzési energia megoldás sablon az Azure Stream Analy
 
 A [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) lekérdezés találhatók:
 
-* A naplózás a [Azure-portálon](https://manage.windowsazure.com/)
+* A naplózás a [Azure-portálon](https://portal.azure.com/)
 * A stream analytics-feladatok keresése ![](media/cortana-analytics-technical-guide-demand-forecast/icon-stream-analytics.png) , hogy a megoldás telepítésekor jött létre. Egyik tárházat adatokat a blob storage (például mytest1streaming432822asablob), a másik egy az adatok küldése a Power bi-ba (például mytest1streaming432822asapbi).
 * Kiválasztása
 

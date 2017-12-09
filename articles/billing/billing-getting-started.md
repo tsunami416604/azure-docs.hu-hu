@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2017
 ms.author: tonguyen
-ms.openlocfilehash: d74f649a8b5f35ffe16479576959e5ebb2857bf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4bbb13f31c42a57815dca176408d5c2e82feb5e0
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure számlázás és költség felügyeleti váratlan díjak elkerülése végett
 
@@ -28,6 +28,8 @@ Amikor regisztrál az Azure-ba, számos módon teheti a ráfordítás megvilág�
 - Ha az előfizetés egy nagyvállalati szerződés (EA), a nyilvános előzetes verzióhoz való megtekintéséhez az Azure-portálon a költségek érhető el. Ha az előfizetés és a Cloud Solution Provider (CSP), a Azure szponzorálás, majd a következő funkciók némelyike nem feltétlenül vonatkozik meg. Lásd: [további erőforrásokat a EA CSP és szponzorálás](#other-offers) vonatkozó információ.
 
 - Ha az előfizetés egy ingyenes próbaverzióra [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), nyissa meg Nyomtatókategóriák vagy BizSpark, az Azure előfizetés automatikusan le van tiltva, ha a jóváírásokat el is használta. További tudnivalók [költségkeretek](#spending-limit) kívánja kerülni az előfizetés unexpectantly le van tiltva.
+
+- Ha a kiléptette [ingyenes Azure-fiókot](https://azure.microsoft.com/en-us/free/), [is használhatja a legnépszerűbb Azure-szolgáltatások szabad 12 hónapig némelyike](billing-create-free-services-included-free-account.md). Lásd a lenti ajánlásokat, valamint [elkerülése érdekében az ingyenes fiók első felszámított](billing-avoid-charges-free-account.md).
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Becsült költség beolvasása az Azure-szolgáltatás hozzáadása előtt
 

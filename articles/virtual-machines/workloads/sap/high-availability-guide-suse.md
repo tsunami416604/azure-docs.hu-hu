@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: ed728011f2cb7b6108e19a916010fd5447c07093
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 609b811705bb6f116db055b756910450f8990528
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Magas rendelkezésre állás a SAP NetWeaver a SUSE Linux Enterprise Server Azure virtuális gépeken az SAP-alkalmazásokból
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 [sap-hana-ha]:sap-hana-high-availability.md
 
 Ez a cikk ismerteti, hogyan telepítse a virtuális gépeket, a virtuális gépet állíthat be, a fürt-keretrendszer telepítése és magas rendelkezésre állású SAP NetWeaver 7.50 rendszert telepíteni.
-A példa konfigurációkban telepítési parancsok stb. Asc példányszámának 00, SSZON példányszámának 02 és SAP rendszer azonosító NWS szolgál. A példában szereplő erőforrások (például virtuális gépek, virtuális hálózatok) nevei azt feltételezik, használja a [sablon összevont] [ template-converged] SAP rendszer azonosító NWS az erőforrások létrehozásához.
+A példa konfigurációkban telepítési parancsok stb. Asc példányszámának 00, SSZON példány szám 02, és az SAP rendszer azonosító NWS használatos. A példában szereplő erőforrások (például virtuális gépek, virtuális hálózatok) nevei azt feltételezik, használja a [sablon összevont] [ template-converged] SAP rendszer azonosító NWS az erőforrások létrehozásához.
 
 Olvassa el a következő SAP megjegyzések és által írt cikkeket először
 
@@ -142,7 +142,7 @@ Az NFS-kiszolgáló, a SAP NetWeaver ASC, a SAP NetWeaver SCS, a SAP NetWeaver S
 ### <a name="deploying-linux"></a>Linux telepítése
 
 Az Azure piactéren SUSE Linux Enterprise Server SAP alkalmazások 12-es segítségével új virtuális gépek telepítése a kép tartalmazza.
-Segítségével a gyors üzembe helyezési sablonok valamelyikét a githubon központi telepítése az összes szükséges erőforrásokat. A sablon telepíti, a virtuális gépek, a terheléselosztó hasonló adataival, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon telepítéséhez:
+Segítségével a gyorsindítási sablonok egyikét a githubon központi telepítése az összes szükséges erőforrásokat. A sablon telepíti, a virtuális gépek, a terheléselosztó hasonló adataival, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon telepítéséhez:
 
 1. Nyissa meg a [SAP fájl server sablon] [ template-file-server] az Azure-portálon   
 1. Adja meg a következő paraméterek
@@ -475,7 +475,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    sudo crm configure
 
    crm(live)configure# primitive vip_<b>NWS</b>_nfs IPaddr2 \
-     params ip=<b>10.0.0.4</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.4</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_nfs anything \
@@ -495,7 +495,7 @@ A STONITH eszköz egy egyszerű szolgáltatást használ, szemben a Microsoft Az
 
 1. Ugrás a <https://portal.azure.com>
 1. Nyissa meg az Azure Active Directory panelt  
-   Nyissa meg tulajdonságait, és jegyezze fel a könyvtárban. Ez a **bérlőazonosító**.
+   Nyissa meg tulajdonságait, és jegyezze fel a könyvtár-azonosító. Ez a **bérlői azonosító**.
 1. Kattintson az alkalmazás-regisztráció
 1. Kattintson az Add (Hozzáadás) parancsra
 1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például http://localhost) és kattintson a Létrehozás gombra
@@ -503,7 +503,7 @@ A STONITH eszköz egy egyszerű szolgáltatást használ, szemben a Microsoft Az
 1. Válassza ki az új alkalmazást, és a beállítások lapon kattintson a kulcsok
 1. Adja meg egy új kulcs leírását, válassza a "Soha nem jár le", és kattintson a Mentés gombra
 1. Jegyezze fel az értéket. Használják a **jelszó** a szolgáltatás egyszerű
-1. Jegyezze fel az azonosítót. A felhasználónév használják (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatás egyszerű
+1. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használják (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatás egyszerű
 
 A szolgáltatás egyszerű nincs engedélye a alapértelmezés szerint az Azure-erőforrások eléréséhez. Hozzá kell rendelnie a szolgáltatás egyszerű engedélyek indítása és leállítása (felszabadítása) a fürt összes virtuális gépet.
 
@@ -523,13 +523,13 @@ Után szerkeszteni a virtuális gépek engedélyeit, beállíthatja a STONITH es
 <pre><code>
 sudo crm configure
 
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# primitive rsc_st_azure_2 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 
@@ -549,14 +549,14 @@ sudo crm configure property stonith-enabled=true
 
 Az Azure piactéren SUSE Linux Enterprise Server SAP alkalmazások 12-es segítségével új virtuális gépek telepítése a kép tartalmazza. A Piactéri lemezképhez SAP NetWeaver erőforrás ügynökön tartalmazza.
 
-Segítségével a gyors üzembe helyezési sablonok valamelyikét a githubon központi telepítése az összes szükséges erőforrásokat. A sablon telepíti, a virtuális gépek, a terheléselosztó hasonló adataival, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon telepítéséhez:
+Segítségével a gyorsindítási sablonok egyikét a githubon központi telepítése az összes szükséges erőforrásokat. A sablon telepíti, a virtuális gépek, a terheléselosztó hasonló adataival, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon telepítéséhez:
 
 1. Nyissa meg a [ASC/SCS Multi SID sablon] [ template-multisid-xscs] vagy a [sablon összevont] [ template-converged] az Azure-portál a SCS/ASC sablon csak hoz létre a terheléselosztási szabályok SAP NetWeaver ASC/SCS és SSZON példányok (csak Linux), míg az átszervezett is létrejön a terheléselosztási szabályok-adatbázis (például a Microsoft SQL Server vagy az SAP HANA). Ha azt tervezi, hogy az SAP NetWeaver alapú rendszert telepíti, és szeretné telepíteni az adatbázis ugyanazon a gépen, használja a [sablon összevont][template-converged].
 1. Adja meg a következő paraméterek
    1. Erőforrás-előtag (csak a sablon ASC/SCS Multi SID)  
       Adja meg a használni kívánt előtagot. Az érték a telepített erőforrások esetén használatos előtagjaként.
-   3. SAP rendszerazonosító (csak az átszervezett sablon)  
-      Adja meg a telepíteni kívánt SAP rendszer SAP rendszer azonosítója. Az azonosító előtagjaként szolgál a telepített erőforrások esetén.
+   3. SAP Rendszerazonosító (csak az átszervezett sablon)  
+      Adja meg a telepíteni kívánt SAP rendszer SAP rendszer Azonosítóját. Az azonosító előtagjaként szolgál a telepített erőforrások esetén.
    4. A készlet típusa  
       Az SAP NetWeaver verem típusának kiválasztása
    5. Operációs rendszer típusa  
@@ -564,7 +564,7 @@ Segítségével a gyors üzembe helyezési sablonok valamelyikét a githubon kö
    6. DB típusa  
       Válassza ki a HANA
    7. SAP mérete  
-      Az új rendszer biztosít SAP mennyisége. Ha nem tudja, hogy hány SAP, a rendszer szükséges, kérje meg a SAP technológia Partner vagy a rendszer integráló
+      Az új rendszer biztosít SAP mennyisége. Ha nem tudja, hogy hány SAP, a rendszer szükséges, kérje meg, a SAP technológia Partner vagy a rendszer integráló
    8. Rendszer rendelkezésre állás  
       Válassza ki a magas rendelkezésre ÁLLÁSÚ
    9. Rendszergazda felhasználónevét és a rendszergazdai jelszó  
@@ -967,7 +967,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
      op monitor interval="10s"
 
    crm(live)configure# primitive vip_<b>NWS</b>_ASCS IPaddr2 \
-     params ip=<b>10.0.0.10</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.10</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_ASCS anything \
@@ -1008,7 +1008,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
 
 1. **[1]**  SAP NetWeaver ASC telepítése  
 
-   SAP NetWeaver ASC telepítse a legfelső szintű használatával egy virtuális állomásnevet, amely a terheléselosztó előtér-konfiguráció a ASC IP-címe például az első csomóponton <b>nws-ASC</b>, <b>10.0.0.10</b> és a példány számát, például használt a mintavétel a terheléselosztó <b>00</b>.
+   SAP NetWeaver ASC telepítse a legfelső szintű használatával egy virtuális állomásnevet, amely a terheléselosztó előtér-konfiguráció a ASC IP-címe például az első csomóponton <b>nws-ASC</b>, <b>10.0.0.10</b> és a példány számát, amelyet például használ a load balancer mintavétel <b>00</b>.
 
    Használhatja a sapinst paraméter SAPINST_REMOTE_ACCESS_USER sapinst való kapcsolódáshoz nem legfelső szintű felhasználó engedélyezése.
 
@@ -1041,7 +1041,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
      op monitor interval="10s"
 
    crm(live)configure# primitive vip_<b>NWS</b>_ERS IPaddr2 \
-     params ip=<b>10.0.0.11</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.11</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_ERS anything \
@@ -1092,7 +1092,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
 
 1. **[2]**  SAP NetWeaver SSZON telepítése  
 
-   SAP NetWeaver SSZON telepítése a második csomópont használatával egy virtuális állomásnevet, amely a terheléselosztó előtér-konfiguráció a SSZON IP-címe például a legfelső szintű <b>nws-sszon</b>, <b>10.0.0.11</b> és a példány számát, például használt a mintavétel a terheléselosztó <b>02</b>.
+   SAP NetWeaver SSZON telepítése a második csomópont használatával egy virtuális állomásnevet, amely a terheléselosztó előtér-konfiguráció a SSZON IP-címe például a legfelső szintű <b>nws-sszon</b>, <b>10.0.0.11</b> és a példány számát, amelyet például használ a load balancer mintavétel <b>02</b>.
 
    Használhatja a sapinst paraméter SAPINST_REMOTE_ACCESS_USER sapinst való kapcsolódáshoz nem legfelső szintű felhasználó engedélyezése.
 
@@ -1136,7 +1136,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
 
 1. **[A]**  Keep-Alive konfigurálása
 
-   Az SAP NetWeaver alkalmazáskiszolgáló és az ASC/SCS közötti kommunikáció áthalad szoftveres terheléselosztóként üzemeljen. A load balancer inaktív kapcsolatok leválasztása után konfigurálható időtúllépés. Ennek megelőzése szüksége egy paramétert az SAP NetWeaver ASC/SCS profil és a Linux rendszer beállításainak módosítására. Kérjük, olvassa el [SAP Megjegyzés 1410736] [ 1410736] további információt.
+   Az SAP NetWeaver alkalmazáskiszolgáló és az ASC/SCS közötti kommunikáció áthalad szoftveres terheléselosztóként üzemeljen. A load balancer inaktív kapcsolatok leválasztása után konfigurálható időtúllépés. Ennek megelőzése szüksége egy paramétert az SAP NetWeaver ASC/SCS profil és a Linux rendszer beállításainak módosítására. Olvasási [SAP Megjegyzés 1410736] [ 1410736] további információt.
    
    A ASC/SCS profil paraméter célzó/encni/set_so_keepalive már felvették az előző lépésben.
 
@@ -1228,7 +1228,7 @@ A STONITH eszköz egy egyszerű szolgáltatást használ, szemben a Microsoft Az
 
 1. Ugrás a <https://portal.azure.com>
 1. Nyissa meg az Azure Active Directory panelt  
-   Nyissa meg tulajdonságait, és jegyezze fel a könyvtárban. Ez a **bérlőazonosító**.
+   Nyissa meg tulajdonságait, és jegyezze fel a könyvtár-azonosító. Ez a **bérlői azonosító**.
 1. Kattintson az alkalmazás-regisztráció
 1. Kattintson az Add (Hozzáadás) parancsra
 1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például http://localhost) és kattintson a Létrehozás gombra
@@ -1236,7 +1236,7 @@ A STONITH eszköz egy egyszerű szolgáltatást használ, szemben a Microsoft Az
 1. Válassza ki az új alkalmazást, és a beállítások lapon kattintson a kulcsok
 1. Adja meg egy új kulcs leírását, válassza a "Soha nem jár le", és kattintson a Mentés gombra
 1. Jegyezze fel az értéket. Használják a **jelszó** a szolgáltatás egyszerű
-1. Jegyezze fel az azonosítót. A felhasználónév használják (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatás egyszerű
+1. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használják (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatás egyszerű
 
 A szolgáltatás egyszerű nincs engedélye a alapértelmezés szerint az Azure-erőforrások eléréséhez. Hozzá kell rendelnie a szolgáltatás egyszerű engedélyek indítása és leállítása (felszabadítása) a fürt összes virtuális gépet.
 
@@ -1256,13 +1256,13 @@ Után szerkeszteni a virtuális gépek engedélyeit, beállíthatja a STONITH es
 <pre><code>
 sudo crm configure
 
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# primitive rsc_st_azure_2 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 
@@ -1280,7 +1280,7 @@ sudo crm configure property stonith-enabled=true
 
 ## <a name="install-database"></a>A telepítési adatbázis
 
-Ebben a példában egy SAP HANA replikációs telepítve és konfigurálva van. A fürtön, amelyen az SAP NetWeaver ASC/SCS és SSZON SAP HANA fog futni. SAP HANA egy dedikált fürtön is telepíthet. Lásd: [magas rendelkezésre állás az SAP HANA Azure virtuális gépek (VM)] [ sap-hana-ha] további információt.
+Ebben a példában egy SAP HANA replikációs telepítve és konfigurálva van. SAP HANA fut a fürtön, amelyen az SAP NetWeaver ASC/SCS és SSZON. SAP HANA egy dedikált fürtön is telepíthet. További információkért lásd: [magas rendelkezésre állás az SAP HANA Azure virtuális gépek (VM)][sap-hana-ha].
 
 ### <a name="prepare-for-sap-hana-installation"></a>SAP HANA-telepítés előkészítése
 
@@ -1326,7 +1326,7 @@ Ebben a példában egy SAP HANA replikációs telepítve és konfigurálva van. 
    sudo chattr +i /hana/data
    sudo chattr +i /hana/log
    sudo chattr +i /hana/shared
-   # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+   # write down the ID of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
    sudo blkid
    </code></pre>
    
@@ -1440,7 +1440,7 @@ Az alábbi lépéseket a fejezete 4 alapulnak a [SAP HANA SR teljesítmény opti
    <pre><code>
    sudo crm configure
 
-   # replace the bold string with your instance number and HANA system id
+   # replace the bold string with your instance number and HANA system ID
    
    crm(live)configure# primitive rsc_SAPHanaTopology_<b>HDB</b>_HDB<b>03</b>   ocf:suse:SAPHanaTopology \
      operations $id="rsc_sap2_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -1461,7 +1461,7 @@ Az alábbi lépéseket a fejezete 4 alapulnak a [SAP HANA SR teljesítmény opti
    <pre><code>
    sudo crm configure
 
-   # replace the bold string with your instance number, HANA system id and the frontend IP address of the Azure load balancer. 
+   # replace the bold string with your instance number, HANA system ID and the frontend IP address of the Azure load balancer. 
     
    crm(live)configure# primitive rsc_SAPHana_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHana \
      operations $id="rsc_sap_<b>HDB</b>_HDB<b>03</b>-operations" \

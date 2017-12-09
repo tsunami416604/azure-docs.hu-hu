@@ -8,15 +8,15 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/26/2017
-ms.openlocfilehash: b3fba38cacf5b5abcdea7f0def8c1d39e653f0a8
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.date: 12/09/2017
+ms.openlocfilehash: 65dc158a3a8c88a02d66bff7abe34d457cfef10a
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/09/2017
 ---
-# <a name="limitations-in-azure-database-for-mysql-preview"></a>Az Azure-adatbázis korlátozásai MySQL (előzetes verzió)
-Az Azure-adatbázishoz a MySQL-szolgáltatás nyilvános előzetes verziójában van. A következő szakaszok ismertetik a kapacitás és az adatbázis szolgáltatásban működik korlátok. Lásd még: [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL adatbázis-kezelő alkalmazandó.
+# <a name="limitations-in-azure-database-for-mysql"></a>MySQL az Azure-adatbázis korlátozásai
+Az Azure-adatbázishoz a MySQL-szolgáltatás nyilvános előzetes verziójában van. A következő szakaszok ismertetik a kapacitás, tárolási motor támogatja, jogosultság, adatok adatkezelési utasítás támogatásának, és az adatbázis szolgáltatásban működik korlátok. Lásd még: [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL adatbázis-kezelő alkalmazandó.
 
 ## <a name="service-tier-maximums"></a>Szolgáltatási szint méretkorlát
 Azure MySQL-adatbázis egy kiszolgáló létrehozásakor választhat több szolgáltatásszinttel rendelkezik. További információkért lásd: [az egyes szolgáltatásszinteken elérhető](concepts-service-tiers.md).  
@@ -27,7 +27,7 @@ Létezik egy maximális száma érték a kapcsolatok, a számítási egység és
 | :------------------------- | :---------------- |
 | **Kapcsolatok maximális száma**        |                   |
 | Alapszintű 50 számítási egység     | 50 kapcsolatok    |
-| Alapszintű 100 számítási egység    | 100 kapcsolatok száma   |
+| Alapszintű 100 számítási egység    | 100 kapcsolat   |
 | Standard 100 számítási egység | 200 kapcsolatok   |
 | Standard 200 számítási egység | 400 kapcsolatok   |
 | Standard 400 számítási egység | 800 kapcsolatok   |
@@ -42,6 +42,31 @@ Létezik egy maximális száma érték a kapcsolatok, a számítási egység és
 Túl sok a kapcsolat elérésekor a következő hibaüzenet jelenhet meg:
 > 1040 (08004). hiba: Túl sok a kapcsolat
 
+## <a name="storage-engine-support"></a>Storage engine támogatása
+
+### <a name="supported"></a>Támogatott
+- [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
+- [MEMÓRIA](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
+
+### <a name="unsupported"></a>Nem támogatott
+- [MyISAM](https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html)
+- [BLACKHOLE](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
+- [ARCHÍV](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
+- [ÖSSZEVONT](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
+
+## <a name="privilege-support"></a>Jogosultság-támogatás
+
+### <a name="unsupported"></a>Nem támogatott
+- [SUPER jogosultság](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)
+
+## <a name="data-manipulation-statement-support"></a>Adatok adatkezelési utasítás támogatása
+
+### <a name="supported"></a>Támogatott
+- TERHELÉSELOSZTÁSI adatok BEMENETI_FÁJL - támogatott, de adjon meg a [helyi] paraméter, amely egy UNC elérési utat (Azure storage XSMB keresztül csatlakoztatott) van átirányítva.
+
+### <a name="unsupported"></a>Nem támogatott
+- VÁLASSZON... AZ EREDMÉNYFÁJL
+
 ## <a name="preview-functional-limitations"></a>Előzetes verzió működési korlátozásai
 
 ### <a name="scale-operations"></a>A skálázási műveletek
@@ -52,12 +77,14 @@ Túl sok a kapcsolat elérésekor a következő hibaüzenet jelenhet meg:
 ### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítések
 - Fő adatbázis motor verziók közötti automatikus áttelepítési jelenleg nem támogatott.
 
-### <a name="subscription-management"></a>Előfizetés-kezelés
-- Dinamikusan áthelyezése előfizetés és az erőforráscsoport előre létrehozott kiszolgálók jelenleg nem támogatott.
-
 ### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
 - Különböző szolgáltatási rétegben és/vagy számítási egység és a tárhely mérete visszaállítása nem engedélyezett.
-- Az eldobott kiszolgáló visszaállítása nem támogatott.
+- A Törölt kiszolgáló visszaállítása nem támogatott.
+
+## <a name="functional-limitations"></a>Működési korlátai
+
+### <a name="subscription-management"></a>Előfizetés-kezelés
+- Dinamikusan áthelyezése előfizetés és az erőforráscsoport előre létrehozott kiszolgálók jelenleg nem támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 - [Az egyes szolgáltatásszinteken elérhető](concepts-service-tiers.md)

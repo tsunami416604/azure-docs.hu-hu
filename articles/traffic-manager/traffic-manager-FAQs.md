@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: kumud
-ms.openlocfilehash: 5b0a7d423bc0d8d9f9f7cad56838bd006e944050
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: d6681a5b46aa352b1aa0dadedad8a51c9d1e5eaf
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager gyakori kérdések (GYIK)
 
@@ -368,7 +368,7 @@ A Traffic Manager-állapot számát ellenőrzi, hogy a végpont elérése függ 
 
 ### <a name="how-do-i-configure-nested-profiles"></a>Hogyan konfigurálhatók a beágyazott profilok?
 
-Beágyazott Traffic Manager-profilok úgy konfigurálhatók, az Azure Resource Manager és a klasszikus Azure REST API-k, Azure PowerShell-parancsmagok és platformfüggetlen Azure parancssori felület parancsait. Ezeket az új Azure-portálon is támogatja. Ezek nem támogatottak a klasszikus portálon.
+Beágyazott Traffic Manager-profilok úgy konfigurálhatók, az Azure Resource Manager és a klasszikus Azure REST API-k, Azure PowerShell-parancsmagok és platformfüggetlen Azure parancssori felület parancsait. Ezeket az új Azure-portálon is támogatja.
 
 ### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Hány rétegének beágyazási biztosítja Traffic Manager támogatja?
 

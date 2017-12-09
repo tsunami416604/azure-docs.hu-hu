@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 191870aea5f35830115ae1e8885cd3035597411f
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 6392a14f6bbc3c4708b36e3e1ab0b5b45a4d0671
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="api-management-advanced-policies"></a>Házirendek speciális API Management
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -242,8 +242,8 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|Időtúllépés = "integer"|Nem sikerül a időkorlátja, másodpercben. a háttérszolgáltatás hívása előtt.|Nem|Nincs időtúllépés|  
-|hajtsa végre-átirányítások = "true &#124; FALSE"|Megadja, hogy a háttérszolgáltatáshoz átirányítása követi az átjáró vagy visszaérkezik a hívóhoz.|Nem|hamis|  
+|Időtúllépés = "integer"|Nem sikerül a időkorlátja, másodpercben. a háttérszolgáltatás hívása előtt.|Nem|300 másodperc|  
+|hajtsa végre-átirányítások = "true &#124; FALSE"|Megadja, hogy a háttérszolgáltatáshoz átirányítása követi az átjáró vagy visszaérkezik a hívóhoz.|Nem|false|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -645,7 +645,7 @@ status code and media type. If no example or schema found, the content is empty.
 |mód = "karakterlánc"|Meghatározza, hogy ez egy új kérelmet vagy a jelenlegi kérelem egy példányát. Kimenő módban mód = másolása nem sikerült a kérés törzsében.|Nem|Új|  
 |válasz-változó-name = "karakterlánc"|Ha nincs jelen, `context.Response` szolgál.|Nem|N/A|  
 |Időtúllépés = "integer"|Nem sikerül a időkorlátja, másodpercben. az URL-cím hívása előtt.|Nem|60|  
-|Hiba mellőzése|Ha igaz, és hiba történt a kérelem eredményezi:<br /><br /> -Ha a válasz-változó-név lett megadva, null értéket tartalmaz.<br />-Ha a válasz-változó-neve nincs megadva, a környezetben. Kérés nem fog frissülni.|Nem|hamis|  
+|Hiba mellőzése|Ha igaz, és hiba történt a kérelem eredményezi:<br /><br /> -Ha a válasz-változó-név lett megadva, null értéket tartalmaz.<br />-Ha a válasz-változó-neve nincs megadva, a környezetben. Kérés nem fog frissülni.|Nem|false|  
 |név|A neve a fejléc kell beállítani.|Igen|N/A|  
 |létezik-e művelet|Megadja, milyen műveletet hajtson végre a fejléc már meg van adva. Ez az attribútum a következő értékek egyikének kell lennie.<br /><br /> -felülbírálás - lecseréli a meglévő fejléc értékének.<br />-skip – nem helyettesíti a meglévő-fejléc értékét.<br />-hozzáfűzése - az érték hozzáfűzi a meglévő állomásfejléc-érték.<br />-törlés - eltávolítja a fejlécet a kérelemből.<br /><br /> Ha beállítása `override` történő besorolásakor ugyanazzal a névvel több bejegyzést eredményez az összes bejegyzés (amely jelennek meg több alkalommal) megfelelően történő beállítása fejléc; csak a listában szereplő értékek be lesznek állítva az eredményt.|Nem|felülbírálás|  
   

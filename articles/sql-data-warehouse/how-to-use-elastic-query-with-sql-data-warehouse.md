@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 09/18/2017
 ms.author: elbutter
-ms.openlocfilehash: 295cc59fdb23105534b4e7431902eaa720643330
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c351d88b31adfa3443dd2231f67bb442f2b8fe0
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-use-elastic-query-with-sql-data-warehouse"></a>Rugalmas lekérdezés használata az SQL Data Warehouse szolgáltatással
 
@@ -78,7 +78,7 @@ Az SQL database rugalmas lekérdezés további információkért lásd: a [Azure
 
 ### <a name="elastic-querying"></a>Rugalmas lekérdezése
 
-- A külső tábla és a gyorsítótárazott interally tábla létezik-e az SQL-adatbázispéldány különböző objektumok. Vegye figyelembe a nézetek létrehozásával, a külső táblázat és a gyorsítótárazott része tetején keresztül mely egyesítésekhez egyaránt táblázatok és a határ pont minden tábla szűrőket alkalmaz.
+- Sok esetben egy célszerű olyan típusú felhőbe archivált táblázatot, ahol a tábla egy része van az SQL-adatbázis mint gyorsítótárazott adatokat a teljesítmény és a többi SQL Data Warehouse tárolt adatok kezeléséhez. Szüksége lesz a két objektum van az SQL-adatbázis: a külső tábla belül SQL-adatbázis az SQL Data Warehouse, és a tábla az SQL-adatbázis, a "gyorsítótárazott" része az alaptáblára hivatkozik. Vegye figyelembe a nézetek létrehozásával, a külső táblázat és a gyorsítótárazott része tetején keresztül mely egyesítésekhez egyaránt táblázatok és szűrőket, amelyek adatokat közzétéve külső táblák az SQL-adatbázis és az SQL Data Warehouse-adatok materializált vonatkozik.
 
   Képzelje el kell tartani az adatok utolsó évben egy SQL-adatbázispéldány. Két tábla tudunk **kiegészítő Rendelések**, táblák, amely hivatkozik, az adatraktár rendeléseket és **dbo. Rendelések** amely jelenti, hogy a legutóbbi év adat tekinthető meg az SQL-adatbázispéldány belül. Helyett kérni a felhasználókat, kívánja-e egy táblát, vagy egy másik lekérdezni, azt nézetet a mindkét tábla utolsó évben partíció pontján felső keresztül kell létrehozni.
 
@@ -135,13 +135,17 @@ Az SQL database rugalmas lekérdezés további információkért lásd: a [Azure
 
 ## <a name="faq"></a>GYIK
 
-K: használhatok adatbázisok rugalmas lekérdezéssel rugalmas adatbáziskészlet belül?
+K: használható adatbázisok rugalmas készlethez rugalmas lekérdezéssel belül?
 
 V: Igen. SQL-adatbázisok rugalmas készlethez belül rugalmas lekérdezési használhatja. 
 
 K: van-e a tengelysapka hány adatbázisok rugalmas lekérdezés használata?
 
-V: logikai kiszolgáló DTU-korlátokon rendelkezik megelőzni a véletlen túlköltekezés az. Ha engedélyezi a rugalmas lekérdezés mellett egy SQL Data Warehouse-példányokhoz több adatbázisok, határaiba a kap váratlanul. Ha ez történik, igényelnie a logikai kiszolgáló DTU-korlát növeléséhez. A kvótája által [a támogatási jegy létrehozása](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) választja *kvóta* a kérelem típusa
+V: nincs rögzített nyílt hány adatbázisok rugalmas lekérdezési használható. Azonban minden rugalmas lekérdezés (azok a lekérdezések, amelyek az SQL Data Warehouse találati) számít felé a rendes feldolgozási korlátok.
+
+K: vannak rugalmas lekérdezési szerepet játszó DTU-korlátokon?
+
+V: DTU-korlátokon nincsenek bevezetett bármely eltérően a rugalmas lekérdezés. A normál házirend van, úgy, hogy a logikai kiszolgáló DTU-korlátokon rendelkezik megelőzni a véletlen túlköltekezés az. Ha engedélyezi a rugalmas lekérdezés mellett egy SQL Data Warehouse-példányokhoz több adatbázisok, határaiba a kap váratlanul. Ha ez történik, igényelnie a logikai kiszolgáló DTU-korlát növeléséhez. A kvótája által [a támogatási jegy létrehozása](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) választja *kvóta* a kérelem típusa
 
 K: használhatok sor szintű biztonsági/dinamikus adatok maszkolása rugalmas lekérdezéssel?
 

@@ -3,7 +3,7 @@ title: "A gépi tanulási modell újratanítása |} Microsoft Docs"
 description: "Megtudhatja, hogyan működik a modell, és frissíti a az újonnan betanított modell használatára az Azure Machine Learning webszolgáltatás."
 services: machine-learning
 documentationcenter: 
-author: vDonGlover
+author: garyericson
 manager: raymondl
 editor: 
 ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 0270a43f79202d102a8cdfe9cba7011a882e8117
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54655c33336ff3fef261024984947108d6f1df9c
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="retrain-a-machine-learning-model"></a>A gépi tanulási modell újratanítása
 A machine learning modellek Azure Machine Learning operationalization folyamat részeként a modell betanítása és mentve. Majd a használatával hozzon létre egy predicative webszolgáltatás-bővítmény. A webszolgáltatás majd használni képes a webhelyek, az irányítópultok és a mobile apps szolgáltatásban. 

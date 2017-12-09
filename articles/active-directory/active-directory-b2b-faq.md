@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 0e3ae7f176f41b4b0984dbef0748451c7ebff9e7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 9f0ee9174c925f9338dc69bc5560255d66b30493
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B együttműködés – gyakori kérdések
 
@@ -115,7 +115,7 @@ Azt javasoljuk, hogy egy felhasználó a partnerszervezet hívja fel a szervezet
 Ha a partner, amely a helyszíni hitelesítési infrastruktúra össze van vonva az Azure AD-bérlő, a helyszíni egyszeri bejelentkezés (SSO) automatikusan érhető el. Ha a partner az Azure AD-bérlő nem rendelkezik, az Azure AD-fiókot hoz létre az új felhasználók. 
 
 ### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>I-re Azure AD B2B nem fogadta el a gmail.com és Outlook.com-os e-mail címet, és a B2C használatát az ilyen típusú fiókok?
-Megszüntetjük a B2B és üzleti-vállalati (B2C) együttműködés szempontjából identitások támogatottak közötti különbséget. A használt azonosító nem B2B vagy B2C használatával választhat jó oka. Az együttműködési lehetőség kiválasztásával kapcsolatos információkért lásd: [összehasonlítása B2B együttműködés és az Azure Active Directory B2C](active-directory-b2b-compare-b2c.md).
+Megszüntetjük a B2B és üzleti-fogyasztói (B2C) együttműködés szempontjából identitások támogatottak közötti különbséget. A használt azonosító nem B2B vagy B2C használatával választhat jó oka. Az együttműködési lehetőség kiválasztásával kapcsolatos információkért lásd: [összehasonlítása B2B együttműködés és az Azure Active Directory B2C](active-directory-b2b-compare-b2c.md).
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Milyen alkalmazások és szolgáltatások támogatják az Azure B2B vendégfelhasználók?
 Minden Azure Active Directoryba integrált alkalmazások Azure B2B vendég felhasználók támogatására. 

@@ -9,11 +9,11 @@ ms.reviewer: mawah, marhamil, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 2f8b2d9d2396c1f9c9e509257f3cd031a816729f
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 64a035c216e4d7aa4c14baf1812b9a25e27b3e19
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Kép besorolás használata az Azure Machine Learning-munkaterület
 
@@ -51,7 +51,7 @@ Ez a példa futtatásához az Előfeltételek a következők:
 3. A Windows-számítógép. Windows operációs rendszer szükség, mivel a munkaterületet üzemeltető támogatja az csak a Windows és a MacOS, miközben a Microsoft kognitív eszközkészlet (amelyek mély tanulási tárként használatára) csak támogatja a Windows és Linux.
 4. Egy dedikált GPU nincs szükség a SVM képzési végrehajtása részében 1, azonban szükség van a 2. rész ismertetett DNN finomítása. Ha nem rendelkezik egy erős GPU, szeretné, hogy a több Feldolgozóegységekkel betanítása, vagy egy Windows-számítógép nem rendelkezik, fontolja meg Azure mély tanulási virtuális gépek használata a Windows operációs rendszerrel. Lásd: [Itt](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning) egy 1 kattintással telepítési útmutató. Amennyiben telepített, csatlakoztassa a virtuális Gépet egy távoli asztali kapcsolaton keresztül, munkaterület nincs telepítése és a virtuális gépről helyi hajtható végre a kódot.
 5. Például OpenCV különböző Python függvénytárak telepítve kell lennie. Kattintson a *nyissa meg a parancssort* a a *fájl* menü a munkaterületet üzemeltető futtatja a következő parancsokat a függőségek telepítése:  
-    - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.0-cp35-cp35m-win_amd64.whl`  
+    - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-win_amd64.whl`  
     - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl`után a OpenCV kerék letöltésére http://www.lfd.uci.edu/~gohlke/pythonlibs/ (a pontos fájl nevét és verzióját módosítható)
     - `conda install pillow`
     - `pip install -U numpy`
@@ -61,10 +61,11 @@ Ez a példa futtatásához az Előfeltételek a következők:
 ### <a name="troubleshooting--known-bugs"></a>Hibaelhárítási / ismert hibák
 - 2. rész GPU szükséges, és ellenkező esetben a hiba "Kötegelt normalizálási képzési CPU még nincs megvalósítva" azért történik, pontosítsa a DNN tett kísérlet során.
 - Kevés a memória hibák DNN betanítás során elkerülhetők minibatch méretének csökkentésével (változó `cntk_mb_size` a `PARAMETERS.py`).
-- A kód teszteltük CNTK 2.0 és a 2.1-es verzióját, és kell újabb verzióin anélkül is futtassa (vagy csak kisebb) módosításait.
+- A kód teszteltük CNTK 2.2 használatával, illetve is futtassa a régebbi (v2.0 akár) és újabb verziók nélkül, vagy csak kisebb módosításokat kell.
 - A írásának időpontjában az Azure Machine Learning-munkaterület problémákba megjelenítő notebookok nagyobb, mint 5 MB-ban. Ez nagy méretű jegyzetfüzetek akkor fordulhat elő, ha a notebook menti az összes cella kimenet jelenik meg. Ha ez a hiba, majd nyissa meg a parancssort a Fájl menüből a munkaterületet üzemeltető belül, a végrehajtást `jupyter notebook`, nyissa meg a notebook, törölje az összes kimeneti és mentése a notebook. A lépések elvégzése után a notebook nyílik meg megfelelően az Azure Machine Learning-munkaterület belül újra.
+- Ez a példa megadott összes parancsfájl kell hajtható végre, helyileg, nem pedig például a docker távoli környezetekben. Az összes jegyzetfüzet kell kell végrehajtani, állítsa be a helyi projekt kernel névvel kernel "<projectname> helyi" (pl. "helyi myImgClassUsingCNTK").
 
-
+    
 ## <a name="create-a-new-workbench-project"></a>Új munkaterület-projekt létrehozása
 
 Ebben a példában egy sablon használatával új projekt létrehozásához:
@@ -91,7 +92,7 @@ Ezeket a lépéseket hajtja végre a lent látható módon szerkezetének hoz l�
 
 Ez az oktatóanyag használja, mint például egy felső törzs ruházati mintázat adatkészlet legfeljebb 428 képek álló futtató. Egyes lemezképek három különböző textúrák (pontozott, csíkozott, leopard) egyik leképezésként van feliratozva. Azt őrizni csomópontképek száma kisebb ez az oktatóanyag gyorsan hajtható végre. Azonban a kód tesztelt és lemezképek vagy több tízezreit működik. Összes lemezkép volt lekaparták a Bing-lemezkép keresési és aktuális-jegyzetelve leírt alapján [3. rész](#using-a-custom-dataset). A kép URL-címet a megfelelő attribútumaik jelennek meg a */resources/fashionTextureUrls.tsv* fájlt.
 
-A parancsfájl `0_downloadData.py` összes lemezképek letölti a *DATA_DIR/képek/fashionTexture/* könyvtár. A 428 URL-címek valószínűleg sérült. Darabolása nem okoz problémát, és csak azt jelenti, hogy azt a modell betanítására és tesztelésére valamivel kisebb képek.
+A parancsfájl `0_downloadData.py` összes lemezképek letölti a *DATA_DIR/képek/fashionTexture/* könyvtár. A 428 URL-címek valószínűleg sérült. Darabolása nem okoz problémát, és csak azt jelenti, hogy azt a modell betanítására és tesztelésére valamivel kisebb képek. Ez a példa megadott összes parancsfájl kell hajtható végre, helyileg, nem pedig például a docker távoli környezetekben.
 
 Az alábbi ábrán látható példa az attribútumok (bal oldali), pontozott csíkozott (középső), és leopard (jobb oldali). Jegyzetek szerint a felső törzs ruházati elem volt történik.
 
@@ -114,7 +115,7 @@ Az összes fontos paraméter meg van adva, és egy rövid magyarázatot egy hely
 ### <a name="step-1-data-preparation"></a>1. lépés: Adatok előkészítése
 `Script: 1_prepareData.py. Notebook: showImages.ipynb`
 
-A notebook `showImages.ipynb` jelenítheti meg a lemezképeket, és javítsa ki a jegyzet, igény szerint használható. A notebook futtatásához nyissa meg azt az Azure Machine Learning-munkaterület, és kattintson a "Start Notebook kiszolgáló", ha ez a beállítás jelenik, majd végre a notebook valamennyi cellájában. Ha panaszos, hogy túl nagy a megjelenítéshez-e a notebook hibaüzenetet kap, tekintse meg a hibaelhárítási rész ebben a dokumentumban.
+A notebook `showImages.ipynb` jelenítheti meg a lemezképeket, és javítsa ki a jegyzet, igény szerint használható. A notebook futtatásához nyissa meg az Azure Machine Learning munkaterületet, kattintson a "Start Notebook Server" Ez a beállítás jelenik meg, ha módosítsa a helyi projekt kernel nevű "<projectname> helyi" (pl. "myImgClassUsingCNTK helyi"), és minden cellája hajthat végre a notebookot. Ha panaszos, hogy túl nagy a megjelenítéshez-e a notebook hibaüzenetet kap, tekintse meg a hibaelhárítási rész ebben a dokumentumban.
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/notebook_showImages.jpg" alt="alt text" width="700"/>
 </p>
@@ -178,7 +179,7 @@ Mellett pontosságának a: ROC-görbe ábrázolja a megfelelő terület-a-görbe
 <img src="media/scenario-image-classification-using-cntk/roc_confMat.jpg" alt="alt text" width="700"/>
 </p>
 
-Végezetül a notebook `showResults.py` Görgessen végig a teszt képek és jelenítheti meg a megfelelő besorolási pontszámok biztosítja:
+Végezetül a notebook `showResults.py` Görgessen végig a teszt képek és jelenítheti meg a megfelelő besorolási pontszámok megadott. Ahogy az 1. lépés, ez a példa minden notebook használatára van szüksége a helyi projekt kernel nevű "<projectname> helyi":
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/notebook_showResults.jpg" alt="alt text" width="700"/>
 </p>
@@ -190,7 +191,7 @@ Végezetül a notebook `showResults.py` Görgessen végig a teszt képek és jel
 ### <a name="step-6-deployment"></a>6. lépés: központi telepítés
 `Scripts: 6_callWebservice.py, deploymain.py. Notebook: deploy.ipynb`
 
-A betanított rendszer mostantól lehet közzé azt egy REST API-t. Központi telepítés esetén, tekintse meg a notebook a `deploy.ipynb`, és az Azure Machine Learning-munkaterület belül funkciókon alapulnak. További információ a kiváló telepítési szakasza a [IRIS oktatóanyag](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3).
+A betanított rendszer mostantól a REST API tehetők közzé. Központi telepítés esetén, tekintse meg a notebook a `deploy.ipynb`, és az Azure Machine Learning-munkaterület belül funkció alapján (ne felejtse el a projekt helyi kernel névvel kernel állítja "<projectname> helyi"). További információ a kiváló telepítési szakasza a [IRIS oktatóanyag](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3) további központi telepítéshez kapcsolódó információk.
 
 Amennyiben telepített, a webes szolgáltatás hívása a parancsfájllal `6_callWebservice.py`. Vegye figyelembe, hogy a webszolgáltatás IP-címe (helyi vagy a felhőbe) kell először be kell állítani a parancsfájlban. A notebook `deploy.ipynb` ismerteti az IP-cím kereséséhez.
 

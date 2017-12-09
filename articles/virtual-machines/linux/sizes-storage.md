@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 0d972e8b9ffb8bfe158ec394baf237ef65333026
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 1a2107f0f813c39ec3e9676ec952803f6be2ebf9
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Tárolási optimalizált virtuálisgép-méretek
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 12/01/2017
 
 
 ## <a name="other-sizes"></a>Más méretek
-- [Általános célú](../windows/sizes-general.md)
-- [Számításra optimalizált](../windows/sizes-compute.md)
-- [Memóriaoptimalizált](../windows/sizes-memory.md)
-- [GPU](../windows/sizes-gpu.md)
-- [Nagy teljesítményű számítás](../windows/sizes-hpc.md)
+- [Általános célú](sizes-general.md)
+- [Számításra optimalizált](sizes-compute.md)
+- [Memóriaoptimalizált](sizes-memory.md)
+- [GPU](sizes-gpu.md)
+- [Nagy teljesítményű számítás](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Következő lépések
-További tudnivalók [Azure számítási egység (ACU)](../windows/acu.md) segíthetnek a számítási teljesítmény összehasonlítása Azure termékváltozatok mentén.
+További tudnivalók [Azure számítási egység (ACU)](acu.md) segíthetnek a számítási teljesítmény összehasonlítása Azure termékváltozatok mentén.

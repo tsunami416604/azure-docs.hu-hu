@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 5b4d88cb9c9662fe45de8c11534232a2905cf5a4
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 3480fbbecf59fe985103fe39ec27fef2668b3c0a
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Az Azure Search értékkorlátozás szűrő létrehozása 
 
@@ -48,7 +48,7 @@ Bármely [mező típusa](https://docs.microsoft.com/rest/api/searchservice/suppo
 + Edm.String
 + Edm.DateTimeOffset
 + Edm.Boolean
-+ Edm.Collections (lásd: [értékkorlátozás összetett adattípusú hogyan](#facet-complex-fields) című cikkben.)
++ Edm.Collections
 + Numerikus típusú: Edm.Int32, Edm.Int64, Edm.Double
 
 Nem használhatja a Edm.GeographyPoint jellemzőalapú navigáció. Értékkorlátozás emberi olvasható szöveget és számokat össze. Ilyen értékkorlátozás nem támogatottak a földrajzi koordináta. Egy hely szerint értékkorlátozás vagy régiót mezőt kell.

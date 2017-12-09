@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 7b4de3e7b7e98ab76c02ea7c1cf069cee94706fc
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: a9be43e6dd8ce2c8ba8326b06923677eb897765b
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="deploy-azure-file-sync-preview"></a>Azure fájlszinkronizálás (előzetes verzió) telepítése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -33,7 +33,7 @@ Határozottan javasoljuk, hogy olvassa el [Azure fájlok központi telepítésé
 * Legalább egy támogatott Windows Server vagy a Windows Server-fürt Azure fájlszinkronizálás-vel való szinkronizálásának példányát. Windows Server támogatott verzióival kapcsolatos további információkért lásd: [együttműködés a Windows Server](storage-sync-files-planning.md#azure-file-sync-interoperability).
 
 ## <a name="deploy-the-storage-sync-service"></a>A tároló szinkronizálási szolgáltatás telepítése 
-A tároló szinkronizálási szolgáltatás az Azure-fájl szinkronizálás a legfelső szintű Azure-erőforrás. Tárolási szinkronizálási szolgáltatás telepítéséhez keresse fel a [Azure-portálon](https://portal.azure.com/), majd keresse meg a Azure fájlszinkronizálás. A keresési eredmények között, válassza ki **Azure fájlszinkronizálás (előzetes verzió)**, majd válassza ki **létrehozása** megnyitásához a **tárolási szinkronizáló telepítése** lapon.
+A tároló szinkronizálási szolgáltatás az Azure-fájl szinkronizálás a legfelső szintű Azure-erőforrás. Tárolási szinkronizálási szolgáltatás telepítéséhez keresse fel a [Azure-portálon](https://portal.azure.com/), kattintson az új, és az Azure-fájl szinkronizálás kereshet. A keresési eredmények között, válassza ki **Azure fájlszinkronizálás (előzetes verzió)**, majd válassza ki **létrehozása** megnyitásához a **tárolási szinkronizáló telepítése** lapon.
 
 A megjelenő ablakban adja meg a következő adatokat:
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 5950bad397e4b0f08f998ea6756e3c258e84b63e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 3b5087faaf3db087b15b77fedac8df0d7e4a899a
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Az Azure enterprise scaffold - részletes utasításokkal megadott előfizetés-irányítás
 A vállalatok egyre vannak bevezetése a nyilvános felhőben az agilitást és a rugalmasságot. A felhő szintjeiről bevételt, vagy a vállalati erőforrások optimalizálására azok vannak használatával. A Microsoft Azure kínál számos, hogy a vállalatok például építőelemeket munkaterheléseket és alkalmazásokat az széles köréről megoldására összeállíthat. 
@@ -168,7 +168,7 @@ Címkék további példákért lásd [Azure-erőforrások elnevezési szabályai
 ## <a name="resource-group"></a>Erőforráscsoport
 Erőforrás-kezelő lehetővé teszi, amelyre az erőforrások kezelése, számlázási vagy természetes affinitás jelentéssel bíró csoportokba. Amint azt korábban említettük, az Azure két üzembe helyezési modellel rendelkezik. A felügyeleti alapvető egysége a korábbi Klasszikus modell, az előfizetés volt. Előfizetés, amely nagy mennyiségű előfizetések létrehozásához vezetett erőforrások lebontva bonyolult volt. A Resource Manager modellt látott erőforráscsoportok bevezetése. Erőforráscsoportok olyan tárolók, az erőforrások, amelyek egy közös életciklussal vagy megosztani egy attribútum, például az "összes SQL-kiszolgáló" vagy "Alkalmazás A".
 
-Erőforrás-csoportok nem lehetnek benne egymáshoz, és erőforrások csak egy erőforrás-csoporthoz is tartozhatnak. Bizonyos műveleteket egy erőforráscsoportban található összes erőforrást is alkalmazhat. Például egy erőforráscsoport törlése eltávolítja az erőforráscsoporton belül az összes erőforrást. Általában helyez egy teljes alkalmazás vagy a kapcsolódó rendszer ugyanabban az erőforráscsoportban. Például egy Contoso webalkalmazás nevű három réteg alkalmazás tartalmazná a webkiszolgálón, alkalmazás vagy az SQL server ugyanabban az erőforráscsoportban.
+Erőforrás-csoportok nem lehetnek benne egymáshoz, és erőforrások csak egy erőforrás-csoporthoz is tartozhatnak. Bizonyos műveleteket egy erőforráscsoportban található összes erőforrást is alkalmazhat. Például egy erőforráscsoport törlése eltávolítja az erőforráscsoporton belül az összes erőforrást. Általában helyez egy teljes alkalmazás vagy a kapcsolódó rendszer ugyanabban az erőforráscsoportban. Például egy Contoso webalkalmazás nevű háromrétegű alkalmazás tartalmazná a webkiszolgálón, alkalmazás vagy az SQL server ugyanabban az erőforráscsoportban.
 
 > [!TIP]
 > Az erőforráscsoportok elrendezése változhat "Hagyományos informatikai" munkaterhelések "Gyors informatikai" munkaterhelések:

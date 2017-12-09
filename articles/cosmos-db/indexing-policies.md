@@ -15,9 +15,9 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/17/2017
 ms.author: arramac
-ms.openlocfilehash: c079e9c02041cbc1b61f135038fba634a45c574d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: HT
+ms.openlocfilehash: 791446fbd7eb025441f051e2d8f8f2b1e6c47ebe
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/08/2017
 ---
@@ -68,7 +68,7 @@ Azure Cosmos DB három indexelési módot támogat az Azure Cosmos DB gyűjtemé
 
 **Egységes**: Ha egy Azure Cosmos DB gyűjtési "konzisztens" van kijelölve, a lekérdezések egy adott Azure Cosmos DB gyűjtemény hajtsa végre a konzisztencia szintjét a pont olvasása megadott (azaz erős, kötött elavulás, munkamenet vagy végleges). Az index frissítése a dokumentum frissítéssel (azaz insert, replace, update és delete egy dokumentum, egy Azure Cosmos DB gyűjteményben) szinkron módon történik.  Egységes indexelő ugyan lehetséges csökkentése érdekében következetes lekérdezéseket támogat, az írási teljesítmény. Ez a függvény az egyedi elérési utak indexelése igénylő és a "konzisztenciaszint" értéke. Egységes indexelő módban készült "write gyorsan, azonnal lekérdezés" munkaterhelések.
 
-**Lusta**: az index frissítése aszinkron módon ha egy Azure Cosmos DB gyűjteményt videokártyának vagyis ha a gyűjtemény átviteli sebesség nem teljes kihasználását felhasználói kérelem kiszolgálására. A dokumentum adatfeldolgozást igénylő "betöltési, később lekérdezés" munkaterhelésekhez "Lusta" indexelő mód alkalmasak lehetnek. Vegye figyelembe, hogy inkonzisztens eredményeket kaphat, mint adat lekérdezi okozhatnak lassan indexelt. Ez azt jelenti, hogy a count lekérdezés vagy meghatározott lekérdezési eredmények nem garantált, hogy lehet helyes, vagy a repeatable keretein belül az adatok indexelése. Index általában catch mentése módban van. A Failoverdirection Lusta indexelő - TTL változás eredménye az index lekérdezése eldobták és újból létrehozták, így ez a tevékenység váratlan eredményekhez vezethet. Az ügyfelek többsége konzisztens indexelő kell használnia.
+**Lusta**: Ebben az esetben az index frissítése aszinkron módon ha egy Azure Cosmos DB gyűjteményt videokártyának, ez azt jelenti, hogy ha a gyűjtemény átviteli sebesség nem teljes kihasználását felhasználói kérelem kiszolgálására. A dokumentum adatfeldolgozást igénylő "betöltési, később lekérdezés" munkaterhelések esetén a "Lusta" indexelő mód alkalmasak lehetnek. Vegye figyelembe, hogy inkonzisztens eredményeket kaphat, mint adat lekérdezi okozhatnak lassan indexelt. Ez azt jelenti, hogy a COUNT lekérdezés vagy a meghatározott lekérdezési eredmények nem feltétlenül konzisztens vagy repeatable egy adott időpontban. Az index általában catch feldolgozott adatokkal mód be van. Tekintetében Lusta indexelő idő Élettartam (TTL) módosítja az index eldobása és ismételt létrehozása megtörtént, így az a szám és a lekérdezési eredmények inkonzisztens egy ideig eredményez. Ezen okok miatt Azure Cosmos DB fiókok többsége használjon konzisztens indexelő.
 
 **Nincs**: egy gyűjtemény indexe mód "None" jelölésű nincs társítva index tartozik. Ez általában akkor használatos, ha egy kulcs-érték tárolóként első Azure Cosmos DB és dokumentumok csak az ID tulajdonság által elért. 
 

@@ -1,8 +1,8 @@
 ---
-title: "Korlátozza az SMS, e-mailek és webhookokkal értékelje |} Microsoft Docs"
-description: "Ismerje meg, hogyan Azure korlátozza az egy művelet csoport lehetséges SMS, e-mailek vagy webhook értesítések száma."
-author: anirudhcavale
-manager: orenr
+title: "Értékelje az SMS, e-mailek, Azure-alkalmazások leküldéses értesítései és webhookokkal korlátozása |} Microsoft Docs"
+description: "Ismerje meg, hogyan Azure lehetséges SMS, az e-mailek, az Azure App leküldéses vagy webhook értesítéseket művelet csoportból számának korlátozása."
+author: dukek
+manager: chrad
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,29 +12,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
-ms.author: ancav
-ms.openlocfilehash: bde645624ab1860d19ba18470f55845855a7d1fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/8/2017
+ms.author: dukek
+ms.openlocfilehash: c76bf5cf51f18a32b33060d528c64d119e31dbbd
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
-# <a name="rate-limiting-for-sms-messages-emails-and-webhook-posts"></a>Értékelje a bejegyzéseket az SMS-üzenetek, e-mailek és webhook korlátozása
-Az értesítések, amelyek akkor fordul elő, ha túl sok értesítést küld egy adott telefonszámát vagy e-mail címét felfüggesztés sebességkorlátozást. Sebességkorlátozást biztosítja, hogy riasztások kezelhető és hajtható végre.
+# <a name="rate-limiting-for-sms-messages-emails-azure-app-push-notifications-and-webhook-posts"></a>Értékelje a bejegyzéseket az SMS-üzenetek, e-mailek, Azure-alkalmazások leküldéses értesítései és webhook korlátozása
+Az értesítések, amelyek akkor fordul elő, ha túl sok értesítést küld egy adott telefonszám, az e-mail cím vagy az eszköz felfüggesztés sebességkorlátozást. Sebességkorlátozást biztosítja, hogy riasztások kezelhető és hajtható végre.
 
-SMS és az e-mailek szabályait azonosak. A sebesség korlát küszöbértéke:
+A sebesség korlátot küszöbértékeit a következők:
 
- - **SMS**: 10 üzenetek egy óra alatt.
+ - **SMS**: 1-nél több SMS 5 percenként.
  - **E-mailek**: 100 üzenetek egy óra alatt.
+ - **Az Azure App leküldéses értesítések**: van a leküldéses értesítések nem sebességével.
+ - **Webhook**: nincs a webhookok nem sebességével.
 
 ## <a name="rate-limit-rules"></a>Sebesség korlát szabályok
 - Egy adott telefonszámát vagy e-mail sebessége korlátozott, ha a küszöb által engedélyezettnél több üzenetet kapott.
 - Telefonos vagy e-mailek sok előfizetésekhez művelet csoportok része lehet. Minden előfizetésekhez sebességkorlátozást vonatkozik. Amint a küszöbérték elérésekor vonatkozik, akkor is, ha több előfizetéssel az üzenetküldés.  
-- Ha telefonos vagy e-mailek sebessége korlátozott, egy további értesítést küld a sebesség korlátozása kommunikációhoz. A értesítési állapotokat, ha a lejár a sebesség korlátozása.
-
-## <a name="rate-limit-of-webhooks"></a>A webhook sávszélesség-korlátjának ##
-Nincs webhookok a helyen nincs sebességével.
+- Amikor egy e-mail címet sebessége korlátozott, egy további értesítést küld a sebesség korlátozása kommunikációhoz. A értesítési állapotokat, ha a lejár a sebesség korlátozása.
 
 ## <a name="next-steps"></a>Következő lépések ##
 * További információ [SMS riasztási viselkedés](monitoring-sms-alert-behavior.md).

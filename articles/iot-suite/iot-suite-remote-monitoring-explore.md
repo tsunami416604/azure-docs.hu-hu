@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: f4461b5c10ea4e4cce4c13cb590dd398c37cb7b6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 6533889411c3dbadbbabdbe1239050c941a9c300
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás funkcióinak felfedezése
 
@@ -43,7 +43,7 @@ Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el ke
 Használhatja a Contoso IoT üzembe helyezési minta az alapvető forgatókönyv megérteni a távoli felügyeleti megoldás biztosítja, a-kész. Ezek a forgatókönyvek a valós IoT központi telepítések alapulnak. Nagy valószínűséggel lesznek szeretné testre szabhatja a távoli felügyeleti megoldás az adott igényeknek, de a Contoso minta segít az alapvető.
 
 > [!NOTE]
-> Ha a parancssori felület az előkonfigurált megoldás, a fájl központi telepítéséhez használt `deployment-{your deployment name}-output.json` accss a telepített minta URL-címe például a telepítéssel kapcsolatos információkat tartalmaz.
+> Ha a parancssori felület az előkonfigurált megoldás, a fájl központi telepítéséhez használt `deployment-{your deployment name}-output.json` központi telepítést végez a telepített minta eléréséhez URL-CÍMÉT például információkat tartalmaz.
 
 A Contoso minta látja a szimulált eszköz és a szabályok meg őket. Miután megismerte az alapvető forgatókönyv, felfedezése több megoldás szolgáltatásainak folytathatja [végezze el a speciális eszközfigyelés a távoli felügyeleti megoldást használni](iot-suite-remote-monitoring-monitor.md).
 

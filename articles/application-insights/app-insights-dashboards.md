@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 9a4a839e7b5cc772fb9d4c57ed70484d90a87fdd
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a6d3c89f0f99128e2bf754391c79c3d616f0730a
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigációs és az Application Insights portálon irányítópultok
 Miután [Application Insights beállítása a projekten](app-insights-overview.md), az alkalmazás teljesítmény- és használati telemetriai adatokat fog megjelenni az Application Insights-erőforrás a projekt a [Azure-portálon](https://portal.azure.com).
@@ -98,6 +98,9 @@ Ha létrehozott egy irányítópultot, más felhasználókkal megoszthatja azt.
 
 További tudnivalók [szerepkörök és hozzáférés-vezérlés](app-insights-resources-roles-access-control.md).
 
+## <a name="create-dashboards-programmatically"></a>Irányítópultok programozott módon létrehozása
+Irányítópult létrehozása használatával automatizálhatja [Azure Resource Manager](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically) és egy egyszerű JSON-szerkesztő.
+
 ## <a name="app-navigation"></a>Alkalmazás navigációs
 Az Áttekintés panel az alkalmazással kapcsolatos további információkat az átjárót.
 
@@ -124,7 +127,7 @@ Az Áttekintés panel az alkalmazással kapcsolatos további információkat az 
 * [**Hozzáférés-vezérlés** ](app-insights-resources-roles-access-control.md) -hozzáférést biztosítson a csoport tagjai, míg más.
 * [**Címkék** ](../azure-resource-manager/resource-group-using-tags.md) -címkék használata az alkalmazás másokkal csoportosításához.
 
-VIZSGÁLJA MEG
+VIZSGÁLAT
 
 * [**Alkalmazás-hozzárendelés** ](app-insights-app-map.md) -Active térkép, amely az alkalmazás összetevői a függőségi adatokat származik.
 * [**Észlelési intelligens** ](app-insights-proactive-diagnostics.md) -tekintse át a legutóbbi teljesítményével kapcsolatos riasztások.
@@ -136,7 +139,7 @@ VIZSGÁLJA MEG
 * **Böngésző** -nézet és AJAX teljesítmény lapon. Ha elérhető, [állíthatnak be a weblapok](app-insights-javascript.md).
 * **Használati** -lapon nézet, a felhasználó és a munkamenet számát. Ha elérhető, [állíthatnak be a weblapok](app-insights-javascript.md).
 
-KONFIGURÁLÁSA
+KONFIGURÁLÁS
 
 * **Első lépések** -beágyazott oktatóanyag.
 * **Tulajdonságok** -instrumentation kulcs, az előfizetés és az erőforrás-azonosító.

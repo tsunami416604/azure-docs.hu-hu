@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: 55b857bd5b3d0c32553a60ff0649aeeb721cd6da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 772417012e4c6aa519e83177bd8e93778f6af3b5
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Az Azure parancssori felület 1.0 használata az Azure Storage szolgáltatással
 
@@ -95,7 +95,7 @@ A parancsfájl futtatása után rendelkeznie kell egy helyi célmappát, amely t
 
 ## <a name="manage-storage-accounts-with-the-azure-cli"></a>Az Azure parancssori felülettel storage-fiókok kezelése
 ### <a name="connect-to-your-azure-subscription"></a>Csatlakozás az Azure-előfizetéshez
-A legtöbb a storage parancsok Azure-előfizetés nélkül fog működni, amíg azt javasoljuk, hogy az előfizetés csatlakozni az Azure parancssori felületen. Az előfizetés használható az Azure parancssori felület konfigurálásához kövesse a lépéseket [csatlakozás Azure-előfizetéshez az Azure parancssori felületen](../../xplat-cli-connect.md).
+A legtöbb a storage parancsok Azure-előfizetés nélkül fog működni, amíg azt javasoljuk, hogy az előfizetés csatlakozni az Azure parancssori felületen. Az előfizetés használható az Azure parancssori felület konfigurálásához kövesse a lépéseket [csatlakozás Azure-előfizetéshez az Azure parancssori felületen](/cli/azure/authenticate-azure-cli).
 
 ### <a name="create-a-new-storage-account"></a>Új tárfiók létrehozása
 Az Azure storage használatához szüksége lesz egy tárfiókot. Egy új Azure-tárfiókot is létrehozhat, a számítógép csatlakozni az előfizetés konfigurálása után.

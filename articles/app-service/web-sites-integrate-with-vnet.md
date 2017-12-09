@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: ccompy
-ms.openlocfilehash: 72ff0c13319218f8ef91aff9208772fcb0fd9459
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d285e63e64d8f4a260c45143f0ae3f7fddd4a2b6
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure virtuális hálózat
 Ez a dokumentum az Azure App Service virtuális hálózati integráció funkció használatát ismerteti és bemutatja, hogyan állíthatja be az alkalmazásokkal [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ha ismeri az Azure virtuális hálózatokról (Vnetekről), ez az a képesség, amely lehetővé teszi egy nem internetes routeable hálózat elérését Ön szabályozza az Azure-erőforrások számos helyezendő. Ezek a hálózatok csatlakozhat a helyszíni VPN technológiáin különböző hálózatokhoz. Többet szeretne megtudni az Azure Virtual Network, indítsa el az adatok itt: [Azure virtuális hálózat áttekintése][VNETOverview]. 
@@ -39,7 +39,7 @@ A virtuális hálózat integrációs szolgáltatás számára:
 * a Standard, Premium vagy terv árképzési elszigetelt igényel 
 * Klasszikus vagy erőforrás-kezelő virtuális hálózat együttműködik 
 * támogatja a TCP és UDP
-* Webes, mobil és API-alkalmazások esetében működik
+* együttműködik a webes, mobil API-alkalmazások és függvény alkalmazások
 * lehetővé teszi egy alkalmazás egyszerre csak 1 VNet való kapcsolódáshoz
 * lehetővé teszi, hogy az egy App Service-csomag integrációját legfeljebb öt Vnetek 
 * lehetővé teszi, hogy ugyanazt a virtuális hálózatot, több alkalmazást az App Service-csomag által használt
@@ -93,7 +93,7 @@ Ha a virtuális hálózat nem kell egy átjárót, és helyhez ponttal rendelkez
 ![][8]
 
 ##### <a name="enabling-point-to-site-in-a-resource-manager-vnet"></a>Egy erőforrás-kezelő virtuális hely pont engedélyezése
-Egy erőforrás-kezelő virtuális hálózat egy átjáró és egy helyhez pontot konfigurál, használhatja vagy a PowerShell megfelelően Itt [PowerShell virtuális hálózat egy pont – hely kapcsolat beállítása] [ V2VNETP2S] , vagy használja az Azure-portálon dokumentált Itt [egy Vnetet az Azure portál használatával egy pont – hely kapcsolat beállítása][V2VNETPortal]. Ez a funkció végrehajtásához a felhasználói felület még nem érhető el. Vegye figyelembe, hogy kell-e a hely konfigurációjának pont olyan tanúsítványokat hoznak létre. Ez a rendszer automatikusan konfigurálja a webalkalmazás csatlakozhat a virtuális hálózat. 
+Egy erőforrás-kezelő virtuális hálózat egy átjáró és egy helyhez pontot konfigurál, használhatja vagy a PowerShell megfelelően Itt [PowerShell virtuális hálózat egy pont – hely kapcsolat beállítása] [ V2VNETP2S] , vagy használja az Azure-portálon dokumentált Itt [egy Vnetet az Azure portál használatával egy pont – hely kapcsolat beállítása][V2VNETPortal]. Ez a funkció végrehajtásához a felhasználói felület még nem érhető el. Ne feledje, hogy nem szeretné, hogy a pont Helykonfiguráció olyan tanúsítványokat hoznak létre. Ez a rendszer automatikusan konfigurálja a webalkalmazás csatlakozhat a virtuális hálózat. 
 
 ### <a name="creating-a-pre-configured-vnet"></a>Egy előre konfigurált virtuális hálózat létrehozása
 Ha szeretne létrehozni egy új virtuális hálózat átjáróként konfigurált és a pont-pont, a felhasználói felület hálózati App Service rendelkezik a funkció a teendő, de csak egy erőforrás-kezelő virtuális hálózat. Ha szeretne egy klasszikus virtuális hálózatot hozzon létre egy átjáró és a pont-pont, akkor szüksége ehhez manuálisan a hálózat felhasználói felületen keresztül. 
@@ -103,9 +103,9 @@ Hozzon létre egy erőforrás-kezelő virtuális hálózat virtuális integráci
 * Virtuális hálózat neve
 * Virtuális hálózat címterülete
 * Alhálózat neve
-* Alhálózati címterülete
+* Alhálózati címterület
 * Átjáró címterülete
-* Pont-pont címterülete
+* Pont-hely típusú címterület
 
 Ha azt szeretné, hogy ez a virtuális hálózat bármely más hálózatokhoz, majd ne válassza háttérszínnek IP-címtartomány átfedésben az ezekhez a hálózatokhoz. 
 
