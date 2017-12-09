@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2017
 ms.author: billmath
-ms.openlocfilehash: 9d11795aa8b768a8574c3f8bc375b74402825ba3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: be940b694ba95529b5f5a84acfd789240354dae2
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Gyakori kérdések az Azure Active Directory Connect
 
@@ -35,6 +35,11 @@ A 2016. februári a buildek Ez támogatott.
 Igen. Az ügynök telepítése után végezze el a regisztrációs folyamat során a következő PowerShell-parancsmag használatával: 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
+
+**K: AADConnect támogatja az Azure ad-val a két tartomány szinkronizálását?**</br>
+Igen, ez támogatott. Tekintse meg [több tartományban](active-directory-aadconnect-multiple-domains.md)
+ 
+**K: nem támogatjuk kellene több összekötő az Active Directory-tartományhoz az Azure AD connect?**</br> Nem, ez nem támogatott 
 
 ## <a name="network"></a>Network (Hálózat)
 **K: van egy tűzfal, a hálózati eszköz, vagy valami mást, amely korlátozza a maximális időt kapcsolatok maradhat, nyissa meg a hálózaton. Mennyi ideig kell a ügyfél ügyféloldali időkorlát küszöbértéke lehet, ha az Azure AD Connect használatával?**  
@@ -78,8 +83,6 @@ Nem, ez jelenleg nem támogatott.
 **K:, mert az azt manuális módon állítsa be a támogatott merevlemez egyező úgy, hogy a meglévő Azure AD-csoport vagy partner objektumok attribútum ImmutableId a helyszíni AD-csoport vagy partner objektumok?**  
 Nem, ez jelenleg nem támogatott.
 
-
-
 ## <a name="custom-configuration"></a>Egyéni konfiguráció
 **K: hol szerepelnek a PowerShell-parancsmagok az Azure AD Connect?**  
 Kivételével a parancsmagokat ezen a helyen más található az Azure AD Connect PowerShell-parancsmagok nem támogatottak a ügyfél használja.
@@ -95,8 +98,6 @@ Jelenleg nem támogatjuk a bejelentkezési oldal HTML attribútumainak módosít
 
 **K: akadályozza meg, hogy a munkamenetek van?**</br>
 Nem.
-
-
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 **K: hogyan kaphat segítséget az Azure AD Connect?**

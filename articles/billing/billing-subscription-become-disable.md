@@ -16,24 +16,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: f0fb408557f58ddf434cbebb8978dc81342c87c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c6b190c3ddc8e474175693229d2e043196eac92
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Miért van az Azure-előfizetésem le van tiltva, és hogyan aktiválja újra azt?
 
-Előfordulhat, hogy az Azure-előfizetése le van tiltva, mert elérte a költségkeret maximumát, rendelkezik egy lejárt számlázási, elérte a hitelkártya határt, vagy mert az előfizetés megszakították a fiók rendszergazdájához. Tekintse meg, milyen probléma vonatkozik, és kövesse a cikkben az előfizetés újra aktiválni.
+Előfordulhat, hogy az Azure-előfizetés le van tiltva, mert a kreditek lejárt, elérte a költségkeretét, egy lejárt számlázási rendelkezik, a találati hitelkártya vonatkozó felső korlát, vagy mert az előfizetés megszakították a fiók rendszergazdájához. Tekintse meg, milyen probléma vonatkozik, és kövesse a cikkben az előfizetés újra aktiválni.
+
+## <a name="your-credit-is-expired"></a>A kreditek lejárt
+
+Amikor regisztrál egy ingyenes Azure-fiókot, ingyenes előfizetés, amely biztosít egy 200 dolláros keretet az Azure-krediteket 30 napot és az ingyenes szolgáltatásokhoz számított 12 hónapon kap. 30 nap végén Azure letiltja az előfizetéshez. Az előfizetés le van tiltva, elleni véletlenül díjfizetési használati útmutató a jóváírási és az előfizetés az ingyenes szolgáltatásokat. Azure-szolgáltatások használatának folytatásához kell [magasabb szintű előfizetést használatalapú fizetésre előfizetéshez](billing-upgrade-azure-subscription.md). Miután frissítette, az előfizetés még access services 12 hónapig felszabadítja. Ön csak beolvasása szó, a felhasználás meghaladja az ingyenes szolgáltatásokat és a mennyiségek.
 
 ## <a name="you-reached-your-spending-limit"></a>Elérte a költségkeret maximumát
 
-A használati a havi díjak, az előfizetéshez mellékelt kimeríti, amikor a szolgáltatás a számlázott időszak hátralévő részére letiltjuk a. A szolgáltatás le van tiltva, elleni véletlenül díjfizetési az előfizetéshez mellékelt meghaladó használatra. A költségkeret eltávolításához, lásd: [távolítsa el a költségkeret maximumát Account Center](billing-spending-limit.md#remove).
+Azure-előfizetések például az ingyenes próbaverzióval és a Visual Studio Enterprise kreditet rendelkezik költségkeretek rajtuk. Ez azt jelenti, hogy csak a belefoglalt jóváírás legfeljebb szolgáltatások segítségével. Amikor az eléri a költségkeret maximumát, Azure letiltja az előfizetés hátralévő számlázási időszak. Az előfizetés le van tiltva, elleni véletlenül díjfizetési túl a jóváírás az előfizetéshez mellékelt használatra. A költségkeret eltávolításához, lásd: [távolítsa el a költségkeret maximumát Account Center](billing-spending-limit.md#remove).
 
 > [!NOTE] 
-> Ingyenes próba-előfizetéssel rendelkezik, és eltávolította a költségkeret maximumát, ha az előfizetés alakítja át az ingyenes próbaverzióval végén használatalapú fizetésre.
+> Ingyenes próba-előfizetéssel rendelkezik, és eltávolította a költségkeret maximumát, ha az előfizetés alakítja át az ingyenes próbaverzióval végén használatalapú fizetésre. A maradék kreditek megakadályozhatja a teljes 30 napig Miután létrehozta az előfizetést. Elérhető szolgáltatások 12 hónapig felszabadítja is lesz.
 
 Figyelheti és számlázási tevékenység kezelése az Azure- [Azure számlázás és költség felügyeleti váratlan költségek megakadályozása](billing-getting-started.md) és [számlázási értesítések a Microsoft Azure-előfizetések beállítása](billing-set-up-alerts.md).
+
 
 ## <a name="your-bill-is-past-due"></a>A számlázási van határidő után
 

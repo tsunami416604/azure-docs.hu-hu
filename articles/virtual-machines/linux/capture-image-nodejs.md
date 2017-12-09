@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: b1164fbd816eea5189786850f096438e32f8f802
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f990a0da0be7f10dc16aa2e5a6320b456cfffed1
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>Azure-on futó Linux virtuális gép rögzítése
 Kövesse a cikk generalize és rögzítheti az Azure Linux virtuális gép (VM) a Resource Manager üzembe helyezési modellben. Generalize a virtuális Géphez, amikor eltávolítja a személyes fiók adatait, és készítse elő a virtuális gép képként használni. Ekkor egy általánosított virtuális merevlemezt (VHD) az operációs rendszer, a virtuális merevlemezek, a mellékelt adatok lemez, a lemezkép rögzítése és egy [Resource Manager-sablon](../../azure-resource-manager/resource-group-overview.md) új virtuális gép központi telepítéséhez. Ez a cikk részletezi az Azure CLI 1.0 rendelkező Virtuálisgép-lemezkép rögzítése a virtuális gépek nem felügyelt lemezekkel. Emellett [rögzíteni a virtuális gépek Azure felügyelt lemezt az Azure CLI 2.0](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Felügyelt lemezek kezeli az Azure platformon, és nem igényelnek azokról az előkészítő vagy helyen tárolja azokat. További információ: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
@@ -61,7 +61,7 @@ Először futtassa a **waagent** parancsot a **deprovision** paraméter a Linux 
 ## <a name="step-2-capture-the-vm"></a>2. lépés: A virtuális gép rögzítése
 Az Azure parancssori felület használatával generalize és a virtuális gép rögzítése. A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevek a következők **myResourceGroup**, **myVnet**, és **myVM**.
 
-1. A helyi számítógépről nyissa meg az Azure CLI és [jelentkezzen be az Azure-előfizetéshez](../../xplat-cli-connect.md). 
+1. A helyi számítógépről nyissa meg az Azure CLI és [jelentkezzen be az Azure-előfizetéshez](/cli/azure/authenticate-azure-cli). 
 2. Győződjön meg arról, hogy az erőforrás-kezelő módban van.
    
     ```azurecli

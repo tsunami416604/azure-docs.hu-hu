@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/21/2017
 ms.author: chackdan
-ms.openlocfilehash: 874cf647d4b708bbbc64246ac0dff133639ad86c
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 6ddadad6f5697fed006e3f938ef3c3faedb6a354
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>A Service Fabric-fürt létrehozása az Azure-ban az Azure-portálon
 > [!div class="op_single_selector"]
@@ -40,9 +40,9 @@ Ez a cikk részletesen ismerteti, amely végigvezeti a lépéseken, hogyan kell 
 
 A biztonságos fürtre egy fürt, amely megakadályozza a jogosulatlan műveleteket, beleértve telepítése, frissítése és törlése, alkalmazások, szolgáltatások és hogy milyen adatokat tartalmaznak. Egy nem biztonságos fürt olyan fürt, hogy bárki bármikor csatlakozhat, és felügyeleti műveletek. Bár lehetséges egy nem biztonságos fürtök létrehozásához, **erősen ajánlott a biztonságos fürtök**. Egy nem biztonságos fürt **később nem védhető** -léteznie kell egy új fürtöt.
 
-A koncepció ismertetése érdekében azonosak, biztonságos fürtök létrehozására akár a fürtök Windows vagy Linux fájlkiszolgálófürtökkel. További információk és segítő parancsfájlok biztonságos Linux-fürtök létrehozásához, ellenőrizze a [biztonságos fürtök Linux rendszeren létrehozására](service-fabric-cluster-creation-via-arm.md#secure-linux-clusters). A paraméterek megadott segítő parancsfájl révén is bemeneti közvetlenül be a portálra, a szakaszban leírt módon [fürt létrehozása az Azure portálon](#create-cluster-portal).
+A koncepció ismertetése érdekében azonosak, biztonságos fürtök létrehozására akár a fürtök Windows vagy Linux fájlkiszolgálófürtökkel. További információk és segítő parancsfájlok biztonságos Linux-fürtök létrehozásához, ellenőrizze a [biztonságos fürtök létrehozására](service-fabric-cluster-creation-via-arm.md). A paraméterek megadott segítő parancsfájl révén is bemeneti közvetlenül be a portálra, a szakaszban leírt módon [fürt létrehozása az Azure portálon](#create-cluster-portal).
 
-## <a name="configure-key-vault"></a>Kulcstároló konfigurálása 
+## <a name="configure-key-vault"></a>Key Vault beállítása 
 ### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 Ez az útmutató használ [Azure PowerShell][azure-powershell]. Ha egy új PowerShell-munkamenet indítása, jelentkezzen be az Azure-fiókjával, és jelölje ki az előfizetését az Azure parancsok végrehajtása előtt.
 
@@ -84,7 +84,7 @@ Az első lépés, hogy kimondottan a Key Vault hozzon létre egy új erőforrás
 
 ```
 
-#### <a name="create-key-vault"></a>Kulcstároló létrehozása
+#### <a name="create-key-vault"></a>Kulcstartó létrehozása
 A kulcstároló létrehozása az új erőforráscsoportot. A Key Vault **engedélyezni kell a központi telepítés** tanúsítványok beszerzése és telepítése a fürtcsomópontokon a Service Fabric erőforrás-szolgáltató engedélyezéséhez:
 
 ```powershell

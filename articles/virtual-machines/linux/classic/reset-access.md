@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
-ms.openlocfilehash: 74765877e7836d6878284b350a25d8355dc83d7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cad36fdaf0e7b151809cf07ede10abd1abec99d0
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>Linux virtuális gép jelszó vagy SSH-kulcs visszaállítása, javítsa ki az SSH-konfigurációt, és a VMAccess bővítmény használatával lemez konzisztenciájának ellenőrzése
 Ha nem csatlakozik egy Linux virtuális gépet az Azure miatt elfelejtett jelszó, nem megfelelő Secure Shell (SSH) billentyűt, vagy az SSH-konfigurációt, a probléma a VMAccessForLinux bővítmény használni az Azure parancssori felület a jelszó vagy SSH-kulcs visszaállítása, javítsa ki az SSH konfiguráció, és a lemez-konzisztencia ellenőrzése. 
@@ -44,7 +44,7 @@ Az Azure parancssori felület segítségével teheti meg a következő feladatok
 ## <a name="prerequisites"></a>Előfeltételek
 Szüksége lesz a következőkre:
 
-* Szüksége lesz a [az Azure parancssori felület telepítése](../../../cli-install-nodejs.md) és [csatlakozás az előfizetéshez](../../../xplat-cli-connect.md) a fiókjához társított Azure-erőforrások használatára.
+* Szüksége lesz a [az Azure parancssori felület telepítése](../../../cli-install-nodejs.md) és [csatlakozás az előfizetéshez](/cli/azure/authenticate-azure-cli) a fiókjához társított Azure-erőforrások használatára.
 * Állítsa be a klasszikus üzembe helyezési modellben a megfelelő módba írja be a következő parancsot a parancssorba:
     ``` 
         azure config mode asm

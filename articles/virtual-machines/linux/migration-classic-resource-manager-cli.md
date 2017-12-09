@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 1d6f2d8319dde63434041885dcf5ff1a1cde3bcc
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 607ab59dbeb414c69a6272d0aeb00299296bca6a
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Telepítse át IaaS-erőforrásokra a klasszikus Azure Resource Manager Azure parancssori felület használatával
 Ezeket a lépéseket mutatja be az Azure parancssori felület (CLI) parancsok használatával telepítse át az infrastruktúra erőforrásként egy szolgáltatási (IaaS) a klasszikus telepítési modellből az Azure Resource Manager telepítési modellhez. A cikk igényel a [Azure CLI 1.0](../../cli-install-nodejs.md). Mivel Azure CLI 2.0 csak az Azure Resource Manager erőforrások alkalmazható, akkor az áttelepítés nem használható.
@@ -48,7 +48,7 @@ Az alábbiakban néhány gyakorlati tanácsok, azt javasoljuk, áttelepítése I
 > 
 
 ## <a name="step-2-set-your-subscription-and-register-the-provider"></a>2. lépés: Állítsa be az előfizetéshez, és regisztrálja a szolgáltatót
-Áttelepítési forgatókönyvek esetén, be kell állítania a környezetet az mindkét klasszikus és Resource Manager. [Az Azure parancssori felület telepítése](../../cli-install-nodejs.md) és [jelölje ki az előfizetését](../../xplat-cli-connect.md).
+Áttelepítési forgatókönyvek esetén, be kell állítania a környezetet az mindkét klasszikus és Resource Manager. [Az Azure parancssori felület telepítése](../../cli-install-nodejs.md) és [jelölje ki az előfizetését](/cli/azure/authenticate-azure-cli).
 
 Jelentkezzen be fiókjába.
 

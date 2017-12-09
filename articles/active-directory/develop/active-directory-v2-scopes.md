@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 04869a7627ecb3e6a0d11733fae7da2ecb04ed51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1488e8d2a70f7317c97275b83db3b9f05e9deb4b
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Hatókörök, engedélyek és az Azure Active Directory v2.0-végponttól jóváhagyása
 Alkalmazásokat, amelyekbe beépül az Azure Active Directory (Azure AD) hajtsa végre az olyan engedélyezési modell, amely lehetőséget ad a felhasználók szabályozhatják, hogyan az alkalmazások is hozzáférjenek az adataikhoz. A használt engedélyezési modellt v2.0 végrehajtásának már frissítve van, és módosítja, hogy kapcsolatba kell lépnie egy alkalmazást az Azure AD. Ez a cikk ismerteti a engedélyezési modell, beleértve a hatókörök, engedélyek és beleegyezése főbb fogalmait és kifejezéseit.
@@ -46,8 +46,8 @@ Ilyen típusú engedélyek megadásával az erőforrás adatait, és hogyan van 
 
 Az Azure AD és az OAuth, ezek az engedélyek nevezik *hatókörök*. Akkor is néha nevezzük *oAuth2Permissions*. A hatókör karakterlánc-érték jelzi az Azure ad-ben. A Microsoft Graph példát folytatva, a hatókör minden engedély értéke:
 
-* Olvassa el a felhasználó naptár használatával`Calendar.Read`
-* A felhasználó naptár írni használatával`Mail.ReadWrite`
+* Olvassa el a felhasználó naptár használatával`Calendars.Read`
+* A felhasználó naptár írni használatával`Calendars.ReadWrite`
 * Egy felhasználó használt által e-maileket küldjön`Mail.Send`
 
 Egy alkalmazás kérhetnek ezeket az engedélyeket ad meg a hatókörök a kéréseket a v2.0-végponttól.
@@ -58,7 +58,7 @@ Az OpenID Connect v2.0 végrehajtására van néhány jól meghatározott hatók
 ### <a name="openid"></a>openid
 Ha egy alkalmazás segítségével hajtja végre a bejelentkezési [OpenID Connect](active-directory-v2-protocols.md), azt kell igényelnie a `openid` hatókör. A `openid` hatókör jeleníti meg a munkahelyi fiók hozzájárulási oldalán a "Bejelentkezés" engedélyt, és a személyes Microsoft-fiók hozzájárulási oldalán "Profilját és alkalmazások és a Microsoft-fiókjával szolgáltatásokhoz való csatlakozás" engedélyt. Ezzel az engedéllyel, az alkalmazás a felhasználó egyedi azonosítóját fogadhat formájában a `sub` jogcímek. Az alkalmazásnak a hozzáférést a UserInfo végpontnak is biztosít. A `openid` hatóköre lehet használni a v2.0 jogkivonat végpontjához azonosító-jogkivonatokat, amely biztonságos HTTP-hívásokat az alkalmazások különböző összetevői közötti megszerzésére.
 
-### <a name="email"></a>E-mailek
+### <a name="email"></a>e-mailben
 A `email` hatókör használható a `openid` hatókörben és bármely más. Az alkalmazásnak a hozzáférést biztosít a felhasználó elsődleges e-mail címéhez formájában a `email` jogcímek. A `email` jogcím egy jogkivonatba tartalmazza, csak akkor, ha egy e-mail-címmel társítva a felhasználói fiók, amely nem mindig a helyzet. Ha használja a `email` hatókör, kezelni olyan esetben, amikor az alkalmazás kell készíteni a `email` jogcímet a jogkivonat nem létezik.
 
 ### <a name="profile"></a>Profil
@@ -81,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
 &scope=
-https%3A%2F%2Fgraph.microsoft.com%2Fcalendar.read%20
+https%3A%2F%2Fgraph.microsoft.com%2Fcalendars.read%20
 https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```
@@ -145,7 +145,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| Paraméter | Az állapot | Leírás |
+| Paraméter | Feltétel | Leírás |
 | --- | --- | --- |
 | Bérlői |Szükséges |A directory-bérlőt, amelyet az engedélyt. Megadható a GUID vagy rövid név formátumban. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |

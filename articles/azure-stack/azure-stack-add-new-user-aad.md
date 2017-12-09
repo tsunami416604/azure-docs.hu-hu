@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: 91d1c52c0abf14656e08b511e4f6c8041e319020
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b7fd3c36825746a009c01c97fb8664e04278159f
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 *A következőkre vonatkozik: Azure szoftverfejlesztői készletet*
 
@@ -28,7 +28,7 @@ Miután [üzembe helyezése az Azure verem szoftverfejlesztői készlet](azure-s
 ## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>Az Azure portál használatával Azure verem bérlői fiók létrehozása
 Az Azure portál használata Azure-előfizetéssel kell rendelkeznie.
 
-1. Jelentkezzen be [Azure](http://manage.windowsazure.com).
+1. Jelentkezzen be [Azure](https://portal.azure.com).
 2. A Microsoft Azure bal oldali navigációs sávon kattintson **Active Directory**.
 3. A könyvtár listában kattintson arra a címtárra, amely Azure verem használni kívánt, vagy hozzon létre egy újat.
 4. A címtár lapján kattintson a **felhasználók**.

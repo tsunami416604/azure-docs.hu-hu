@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: a0ac1711b6bfb8f461cd775ed1f3409925643615
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 76a13467fff23ad62a857a53e0e31865b1a9fe81
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure multi-factor Authentication jelentései
 
@@ -29,29 +29,27 @@ Az Azure multi-factor Authentication segítségével, és a szervezet több jele
 |:--- |:--- |
 | Használat |A használati jelentések megjelenítési adatok összesített használatát, a – felhasználói összefoglalás és a felhasználó adatait. |
 | Kiszolgáló állapota |Ez a jelentés a fiókjához a multi-factor Authentication kiszolgálók állapotát jeleníti meg. |
-| Blokkolt felhasználó – előzmények |Ezek a jelentések megjelenítése a felhasználók blokkolása és feloldása kérelmek előzményeit. |
-| Mellőzött felhasználó – előzmények |Átugorja a multi-factor Authentication hitelesítés a felhasználó telefonszámának kérelmek előzményeit jeleníti meg. |
-| Visszaélési riasztás |Megjeleníti a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
-| Várakozási sorba helyezve |Listák sorba állított jelentések feldolgozási és azok állapotát. Töltse le, vagy a jelentés megtekintéséhez mutató hivatkozás a jelentés befejezésekor valósul meg. |
+| Letiltott felhasználók előzményei |Ezek a jelentések megjelenítése a felhasználók blokkolása és feloldása kérelmek előzményeit. |
+| Kihagyott felhasználók előzményei |Átugorja a multi-factor Authentication hitelesítés a felhasználó telefonszámának kérelmek előzményeit jeleníti meg. |
+| Csalási riasztás |Megjeleníti a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
+| Várakozik |Listák sorba állított jelentések feldolgozási és azok állapotát. Töltse le, vagy a jelentés megtekintéséhez mutató hivatkozás a jelentés befejezésekor valósul meg. |
 
 ## <a name="view-reports"></a>Jelentések megtekintése
 
-1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com).
-2. A bal oldalon válassza az Active Directory elemet.
-3. Kövesse az e két beállítás megadása, attól függően, hogy használ-e hitelesítésszolgáltatók egyikét:
-   * **1. lehetőség**: a többtényezős hitelesítésszolgáltatók lapon. Válassza ki az MFA-szolgáltatóra, majd kattintson a **kezelése** panel alján.
-   * **2. lehetőség**: válassza ki azt a címtárat, és navigáljon a **konfigurálása** fülre. A többtényezős hitelesítés szakaszban jelölje ki a **Szolgáltatásbeállítások kezelése** elemet. A multi-factor Authentication szolgáltatás beállításainak lap alján kattintson a nyissa meg a portál hivatkozását.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Válassza ki a bal oldali **Azure Active Directory** > **felhasználók és csoportok** > **minden felhasználó** > **multi-factor Authentication Hitelesítési**.
+3. A **a multi-factor authentication**, jelölje be **szolgáltatás beállításai**. Az alsó **speciális beállításai és jelentések megtekintése kezelése**, jelölje be **-portálon végezhető**.
 4. Az Azure multi-factor Authentication kezelési portál, válassza ki a kívánt jelentéstípust a **megtekint egy jelentést** a bal oldali navigációs szakasz.
 
 <center>![Felhő](./media/multi-factor-authentication-manage-reports/report.png)</center>
 
 ## <a name="powershell-reporting"></a>PowerShell-jelentés
 
-A következő Powershell-lel MFA regisztrált felhasználók azonosítása.
+A következő PowerShell-lel MFA regisztrált felhasználók azonosítása.
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName```
 
-A következő Powershell-lel MFA nem regisztrált felhasználók azonosítása.
+A következő PowerShell-lel MFA nem regisztrált felhasználók azonosítása.
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 

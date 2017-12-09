@@ -14,18 +14,19 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: c403a73d03fd5152e2c0617b3e3784926c28f5c3
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: de1220e9b5a01429f4eea5c3605f1cf7221f3e1e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Az Azure SQL Data Warehouse teljesítményét rétegek (előzetes verzió)
 Az SQL Data Warehouse tárfióktípus két teljesítményszinttel analitikai munkaterhelések optimalizált kínál. Ez a cikk ismerteti a teljesítmény rétegek segítségével válassza ki a leginkább megfelelő teljesítményszintet a munkaterheléshez elveit. 
 
-
 ## <a name="what-is-a-performance-tier"></a>Mi az, hogy egy teljesítményszinttel?
 Egy teljesítményszinttel olyan beállítás, amely az adatraktár konfigurációját határozza meg. Ezt a beállítást az egyik első hozott adatraktár létrehozásakor.  
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T140/player]
 
 - A **rugalmasságra optimalizált teljesítményszint** különválasztja a számítási és tárolási rétegeket az architektúrában. Ez a lehetőség az olyan számítási feladatok esetében teljesít kiemelkedően, amelyek teljes mértékben képesek kiaknázni a számítási és a tárolási kapacitások elkülönítése nyújtotta lehetőségeket a rövid tevékenységcsúcsokat kielégítő gyakori átméretezések során. Ez a számítási teljesítményszint rendelkezik a legalacsonyabb belépő költségszinttel, és a skálázásnak köszönhetően jól szolgálja ki az ügyfelek számítási feladatainak nagy részét.
 
@@ -74,7 +75,7 @@ A szolgáltatási szintek, a rugalmasság teljesítmény réteg DW100 és közé
 | DW3000        | 32                     | 30            | 2                              | 12,000                           | 720                                |
 | DW6000        | 32                     | 60            | 1                              | 24,000                           | 1440                               |
 
-### <a name="optimized-for-compute"></a>A számítási optimalizált
+### <a name="optimized-for-compute"></a>Számítási teljesítményre optimalizált
 
 A számítási teljesítmény réteg DW1000c és közé DW30000c optimalizálása a szolgáltatási szintek. 
 
@@ -112,11 +113,11 @@ Minden egyes lekérdezés nulla, egy vagy több egyidejű üzembe helyezési pon
  
 Csak a szabályozott erőforrás lekérdezések párhuzamossági üzembe helyezési ponti felhasználását. Felhasznált párhuzamossági tárhelyek pontos számát határozza meg a lekérdezés [erőforrásosztály](resource-classes-for-workload-management.md).
 
-### <a name="optimized-for-compute"></a>A számítási optimalizált
+### <a name="optimized-for-compute"></a>Számítási teljesítményre optimalizált
 Az alábbi táblázat a maximális párhuzamos lekérdezések és feldolgozási üzembe helyezési ponti minden [dinamikus erőforrásosztály](resource-classes-for-workload-management.md).  Ezek a számítási teljesítmény rétegben optimalizálása vonatkoznak.
 
 **Dinamikus erőforrás-osztályok**
-| Szolgáltatási szint | Maximális párhuzamos lekérdezések | Párhuzamossági üzembe helyezési ponti érhető el | Üzembe helyezési ponti smallrc által használt | Üzembe helyezési ponti mediumrc által használt | Üzembe helyezési ponti largerc által használt | Üzembe helyezési ponti xlargerc által használt |
+| Szolgáltatásszint | Maximális párhuzamos lekérdezések | Párhuzamossági üzembe helyezési ponti érhető el | Üzembe helyezési ponti smallrc által használt | Üzembe helyezési ponti mediumrc által használt | Üzembe helyezési ponti largerc által használt | Üzembe helyezési ponti xlargerc által használt |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW1000c       | 32                         |   40                        | 1                     |  8                     |  16                   |  32                    |
 | DW1500c       | 32                         |   60                        | 1                     |  8                     |  16                   |  32                    |
@@ -134,7 +135,7 @@ Az alábbi táblázat a maximális párhuzamos lekérdezések és feldolgozási 
 
 Az alábbi táblázat a maximális párhuzamos lekérdezések és feldolgozási üzembe helyezési ponti minden [statikus erőforrásosztály](resource-classes-for-workload-management.md).  
 
-| Szolgáltatási szint | Maximális párhuzamos lekérdezések | Párhuzamossági üzembe helyezési ponti érhető el |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Szolgáltatásszint | Maximális párhuzamos lekérdezések | Párhuzamossági üzembe helyezési ponti érhető el |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |

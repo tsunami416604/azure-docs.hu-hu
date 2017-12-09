@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 12/07/2017
 ms.author: guybo
-ms.openlocfilehash: 32358b23bb0a0a878e986150dd992513579d61c4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 6fc52bc779dcb58d4f7e6aa90e25c9d8e8ec6011
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Azure virtuális gépek méretezési automatikus az operációs rendszer frissítései
 
@@ -39,10 +39,10 @@ Operációs rendszer automatikus frissítése a következő jellemzőkkel rendel
 ## <a name="preview-notes"></a>Megjegyzések megtekintése 
 A kép, ha a következő korlátozások és korlátozások vonatkoznak:
 
-- Az operációs rendszer automatikus frissítése csak támogatási [három OS termékváltozatok](#supported-os-images). Nincs SLA-t vagy garanciát. Azt javasoljuk, hogy nem használja az automatikus frissítések a termelési kritikus fontosságú munkaterhelésekhez előzetes.
+- Az operációs rendszer automatikus frissítése csak támogatási [négy operációs rendszer termékváltozatok](#supported-os-images). Nincs SLA-t vagy garanciát. Azt javasoljuk, hogy nem használja az automatikus frissítések a termelési kritikus fontosságú munkaterhelésekhez előzetes.
 - A Service Fabric-fürtök méretezési csoportok támogatása hamarosan elérhető.
 - (Jelenleg az előzetes verzió) Azure lemez titkosítása **nem** virtuális gép méretezési készlet automatikus operációsrendszer-verziófrissítő támogatja.
-- Hamarosan portál felületet.
+- A portál felhasználói élményt nyújtja. hamarosan már az.
 
 
 ## <a name="register-to-use-automatic-os-upgrade"></a>Regisztrálás az automatikus frissítése az operációs rendszer használata
@@ -78,9 +78,11 @@ A következő termékváltozatok jelenleg támogatott (több megkapja):
     
 | Közzétevő               | Ajánlat         |  SKU               | Verzió  |
 |-------------------------|---------------|--------------------|----------|
+| Canonical               | UbuntuServer  | 16.04-ES LTS VERZIÓ          | legújabb   |
 | MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter | legújabb   |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    | legújabb   |
-| Canonical               | UbuntuServer  | 16.04-ES LTS VERZIÓ          | legújabb   |
+| MicrosoftWindowsServer  | WindowsServer | 2016-adatközpont-Smalldisk | legújabb   |
+
 
 
 ## <a name="application-health"></a>Alkalmazás állapotának
@@ -90,6 +92,15 @@ A méretezési igény szerint konfigurálható alkalmazás állapot-mintavételi
 
 A méretezési több elhelyezési csoportok használatára van beállítva, ha vizsgálat használatával egy [szabványos terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) kell használnia.
 
+### <a name="important-keep-credentials-up-to-date"></a>Fontos: Hitelesítő adatok naprakészen tartása
+Ha a méretezési bármely hitelesítő adatokat használja a külső erőforrások eléréséhez, például ha egy Virtuálisgép-bővítmény van konfigurálva egy SAS-jogkivonatot használja a tárfiók, akkor győződjön meg arról, hogy a hitelesítő adatok vannak mindig naprakészek legyenek. Ha a lejárt hitelesítő adatok, beleértve a tanúsítványok és a tokeneket a frissítés sikertelen lesz, és hibás állapotban marad a virtuális gépek első kötegben.
+
+A virtuális gépek helyreállítása, és engedélyezze újra automatikus operációsrendszer-verziófrissítő erőforrás hitelesítési hiba esetén javasolt lépéseket a következők:
+
+* A token (vagy bármely más hitelesítő adatok) lett átadva a fájlformátum(ok) kiterjesztését vagy kiterjesztéseit újragenerálása.
+* Győződjön meg arról, hogy felvegye a külső entitás a virtuális Gépen belül használt hitelesítő adat naprakészek legyenek.
+* A méretezési készlet modell fájlformátum(ok) kiterjesztését vagy kiterjesztéseit frissítése szükséges új jogkivonatokhoz.
+* Telepítse a frissített méretezési készlet, amely frissíti az összes Virtuálisgép-példányok, többek között a sikertelen néhányat a meglévők közül. 
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Konfigurálása egy egyéni Load Balancer mintavételi alkalmazás állapotának mintavételi méretű beállítása
 Ajánlott eljárásként létrehozni a terheléselosztói mintavétel explicit módon méretezési állapotát. Egy meglévő HTTP-vizsgálatot, vagy a TCP-Hálózatfigyelővel azonos végpontja is használható, de előfordulhat, hogy egy állapotmintáihoz hagyományos terheléselosztó-vizsgálatok különböző viselkedés. Például egy hagyományos terheléselosztói mintavétel térhetnek vissza nem kifogástalan, ha a példány terhelése túl nagy, mivel, amely nem lehet megfelelő, a példány állapotának meghatározása az operációs rendszer automatikus frissítés során. Konfigurálja a mintavétel a vizsgálathoz használt magas sebessége kisebb, mint két perc.

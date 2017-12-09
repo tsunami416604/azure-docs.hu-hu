@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/31/2017
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: e3f67b978ff66cbb71709f2f8d66986a33149ae6
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: ebc6b758221d61793dbbd21ca02050d8402dbe71
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Az Azure Active Directory PIM különböző rendszergazdai szerepkör
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -27,9 +27,9 @@ ms.lasthandoff: 11/14/2017
 A szervezet különböző rendszergazdai szerepkörök az Azure AD-felhasználókat rendelhet hozzá. A szerepkör-hozzárendelések szabályozására, milyen feladatokat, például hozzáadása vagy eltávolítása a felhasználók vagy a szolgáltatás beállításainak módosítása a felhasználók tudja elvégezni az Azure ad-val, Office 365 és más Microsoft Online Services és a csatlakoztatott alkalmazások.  
 
 > [!IMPORTANT]
-> A Microsoft javasolja, hogy az Azure Portalon található [Azure AD felügyeleti központból](https://aad.portal.azure.com) kezelje az Azure AD-t az ebben a cikkben javasolt klasszikus Azure portál helyett.
+> A Microsoft azt javasolja, hogy az Azure AD használatával felügyel a [az Azure AD felügyeleti központban](https://aad.portal.azure.com) az Azure portálon.
 
-Egy globális rendszergazda frissítheti, amelyek felhasználók **véglegesen** rendelt szerepkörök az Azure AD PowerShell-parancsmagok használatával, mint `Add-MsolRoleMember` és `Remove-MsolRoleMember`, vagy a klasszikus portálon leírtak [ rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md).
+Egy globális rendszergazda frissítheti, amelyek felhasználók **véglegesen** rendelt szerepkörök az Azure AD PowerShell-parancsmagok használatával, mint `Add-MsolRoleMember` és `Remove-MsolRoleMember`, vagy a portálon, a [hozzárendelése rendszergazdai szerepkörök az Azure Active Directoryban](active-directory-assign-admin-roles-azure-portal.md).
 
 Az Azure AD Privileged Identity Management (PIM) a privilegizált hozzáférés érdekében a felhasználók házirendeket kezeli az Azure ad-ben. A PIM felhasználók hozzárendel egy vagy több szerepkört az Azure ad-ben, és hozzá lehet rendelni valaki véglegesen a szerepkörben vagy abban az esetben jogosult a szerepkör. Amikor a felhasználó véglegesen van rendelve egy szerepkör vagy egy erre jogosult szerepkör-hozzárendelés aktiválja, majd kezelésére Azure Active Directory, az Office 365 és az egyéb alkalmazások és az engedélyek hozzárendelve a szerepkörökhöz.
 
@@ -75,15 +75,14 @@ Azure-előfizetések és -erőforráscsoportok is nem jelennek meg az Azure ad-b
 ## <a name="user-roles-and-signing-in"></a>Felhasználói szerepkörök, és jelentkezzen be
 Microsoft-szolgáltatások és alkalmazások a felhasználó hozzárendelése egy szerepkörhöz nem lehet elegendő, hogy a felhasználó rendszergazdai jogosultság.
 
-A klasszikus Azure portál használatához a felhasználónak kell egy szolgáltatási rendszergazdának vagy társadminisztrátornak az Azure-előfizetéssel, akkor is, ha a felhasználó nem kell az Azure-előfizetések kezeléséhez.  Az Azure AD a klasszikus portálon kezelheti a konfigurációs beállításokat, például egy felhasználónak kell az Azure AD globális rendszergazda, mind az előfizetés társadminisztrátoraként az Azure-előfizetés.  Felhasználók hozzáadása az Azure-előfizetéssel, lásd: [hozzáadása vagy módosítása az Azure-rendszergazdai szerepkörök](../billing/billing-add-change-azure-subscription-administrator.md).
+Az Azure-portál használatához a felhasználónak kell egy szolgáltatási rendszergazdának vagy társadminisztrátornak az Azure-előfizetéssel, akkor is, ha a felhasználó nem kell az Azure-előfizetések kezeléséhez.  Konfigurációs beállítások kezelése az Azure AD, például egy felhasználónak kell egy globális rendszergazda Azure AD-ben és a előfizetés társadminisztrátoraként az Azure-előfizetés.  Felhasználók hozzáadása az Azure-előfizetéssel, lásd: [hozzáadása vagy módosítása az Azure-rendszergazdai szerepkörök](../billing/billing-add-change-azure-subscription-administrator.md).
 
 Microsoft Online Services eléréséhez szükség lehet a felhasználó is hozzá kell rendelni a licencet nyissa meg a szolgáltatás portálján és felügyeleti feladatok.
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Az Azure AD egy felhasználói licenc hozzárendelése
-1. Jelentkezzen be a [a klasszikus Azure portálon](http://manage.windowsazure.com) vagy globális rendszergazdai fiók, vagy egy közös rendszergazdai fiók.
-2. Válassza ki **minden elem** a fő menüből.
-3. Válassza ki a használni kívánt könyvtárba, és a vele társított licenccel rendelkezik, amely.
-4. Válassza ki **licencek**. A rendelkezésre álló licencek listája jelenik meg.
+1. Jelentkezzen be a [Azure-portálon](http://portal.azure.com) vagy globális rendszergazdai fiók, vagy egy közös rendszergazdai fiók.
+3. Válassza ki az Azure AD és a könyvtár a használata, és a vele társított licenccel rendelkezik.
+4. Válassza ki **licencek** a bal oldalon. A rendelkezésre álló licencek listája jelenik meg.
 5. Válassza ki a licenccsomag, amely tartalmazza a terjeszteni kívánt licencek.
 6. Válassza ki **felhasználók hozzárendelése**.
 7. Válassza ki a felhasználót, hogy ki szeretné osztani a szükséges licenccel.

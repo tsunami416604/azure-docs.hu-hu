@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
-ms.openlocfilehash: a542332c921862241f1f000e6a8f0a0ae0e8a934
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b276911ecbbf161cb6068c1af7a035850035b98d
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>A Docker VM-bővítmény használata az Azure parancssori felületével (Azure CLI)
 > [!IMPORTANT] 
@@ -45,7 +45,7 @@ Telepítése és konfigurálása az Azure parancssori felület [az Azure parancs
 > 
 
 ### <a name="connect-the-azure-cli-to-to-your-azure-account"></a>Az Azure CLI csatlakozni az Azure-fiókjával
-Az Azure parancssori felület használata előtt össze kell kapcsolnia a Azure-fiók hitelesítő adatait az Azure parancssori felület a platformon. A szakasz [csatlakoztatása az Azure-előfizetéshez](../../../xplat-cli-connect.md) ismerteti, hogyan töltse le, és importálja a **.publishsettings** fájlt, vagy rendelje hozzá az Azure CLI szervezeti azonosítóval.
+Az Azure parancssori felület használata előtt össze kell kapcsolnia a Azure-fiók hitelesítő adatait az Azure parancssori felület a platformon. A szakasz [csatlakoztatása az Azure-előfizetéshez](/cli/azure/authenticate-azure-cli) ismerteti, hogyan töltse le, és importálja a **.publishsettings** fájlt, vagy rendelje hozzá az Azure CLI szervezeti azonosítóval.
 
 > [!NOTE]
 > Néhány különbségek vannak viselkedés egyik vagy a hitelesítés, olvassa el a dokumentum fenti tudni, hogy a különböző funkcióit, a többi módszer használata esetén.

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: be957651af78519f678321aec511b71cb18a85f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 12835039478b71f86b68218442e321b1a5b404a1
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Az Azure parancssori felület parancsait erőforrás-kezelő módban
 Ez a cikk ismerteti a szintaxis és a beállítások létrehozását és kezelését az Azure Resource Manager üzembe helyezési modellel Azure-erőforrások használata általában az Azure parancssori felület (CLI) parancsok. Ezek a parancsok a parancssori felület futtatásával Resource Manager (arm) módban érhető el. Ez nem teljes, és CLI-verziónak előfordulhat, hogy megjelenítése némileg eltérő parancsok vagy paraméterek. Azure-erőforrások és csoportok általános áttekintést, lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).  
@@ -29,7 +29,7 @@ Ez a cikk ismerteti a szintaxis és a beállítások létrehozását és kezelé
 >Bővebben a [régi és az új Azure CLIs](/cli/azure/old-and-new-clis).
 >
 
-Első lépésként először [az Azure parancssori felület telepítése](../cli-install-nodejs.md) és [csatlakozni az Azure-előfizetéshez](../xplat-cli-connect.md).
+Első lépésként először [az Azure parancssori felület telepítése](../cli-install-nodejs.md) és [csatlakozni az Azure-előfizetéshez](/cli/azure/authenticate-azure-cli).
 
 Aktuális parancs szintaxisa és a Resource Manager módra a parancssorban beállítások megtekintéséhez írja be a következőt `azure help` vagy egy adott parancs súgó megjelenítéséhez a `azure help [command]`. Is találhat CLI példák a dokumentáció létrehozása és kezelése az adott Azure-szolgáltatásokhoz.
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 12/08/2017
 ms.author: yurid
-ms.openlocfilehash: 3ad22e78693c54c62f9230f7f52460e01e5e0022
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: dd5c874406ec184a2526a9eb0843cd6f3b6b3aa1
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="pen-testing"></a>Toll tesztelése
 Az Azure alkalmazás tesztelése és üzembe helyezés előnyei egyik is gyorsan ki, hogy létre környezetekben.  Nem kell aggódnia requisitioning, beszerzése, és "lefejtési és halmozott" a saját helyszíni hardverre.
@@ -29,11 +29,12 @@ Előfordulhat, hogy már tudja, hogy elvégzi a Microsoft [behatolást vagy a bi
 
 Jelenleg nem toll meg az alkalmazás teszteléséhez, de azt szeretné, hogy és tesztelése a saját alkalmazásai toll végrehajtandó fog megértését. Amely azért hasznos, mert az alkalmazások biztonságának növeléséhez, amikor segítséget biztonságosabbá teszi a teljes Azure-ökoszisztéma.
 
-Amikor Ön toll tesztelje az alkalmazásokat, azt nézhet ki például a támadás a számunkra. A Microsoft [folyamatosan figyelni](http://blogs.msdn.com/b/azuresecurity/archive/2015/07/05/best-practices-to-protect-your-azure-deployment-against-cloud-drive-by-attacks.aspx) a támadási mintákat és fogja elindítani az incidensválasz-folyamata, ha igazolnia kell a. Azt nem oldották meg, és azt nem segítsen nekünk, ha azt indít az incidensekre adott reakciók, a megfelelő gondossággal toll teszteléssel miatt.
-
 Mi a teendő ilyenkor?
 
-Amikor készen áll a toll tesztelje az Azure által kezelt alkalmazásokat, lehetősége van egy [ossza meg velünk](https://portal.msrc.microsoft.com/en-us/engage/pentest). Értesítést kap, miután a Microsoft nem véletlenül le fog állni, (például blokkolja a tesztelést IP-cím). A vizsgálatok meg kell felelnie a feltételek tesztelés Azure toll, és a feltételek ismertetett [Microsoft felhő egyesített behatolást vagy a biztonság tesztelés szabályok az Engagement](https://technet.microsoft.com/en-us/mt784683).
+2017. június 15. frissítésétől Microsoft többé nem kell a behatolást vagy a biztonság elvégzésére előtti jóváhagyási tesztek Azure-erőforrások ellen. Az ügyfelek, akik hivatalosan dokumentum jövőbeli behatolást vagy a biztonság tesztelése a Microsoft Azure elleni kapcsolattartás során szeretné hosszúan töltse ki a [Azure szolgáltatás behatolást vagy a biztonság tesztelés értesítési űrlap](https://portal.msrc.microsoft.com/engage/pentest). Ez a folyamat csak kapcsolódik a Microsoft Azure és a nem alkalmazható egyéb felhőalapú Microsoft-szolgáltatást. 
+
+>[!IMPORTANT] 
+>Amíg értesítésére toll tevékenységek tesztelése a Microsoft már nem szükséges az ügyfelek továbbra is megfeleljen a [Microsoft felhő egyesített behatolást vagy a biztonság tesztelés szabályok az Engagement](https://technet.microsoft.com/en-us/mt784683). 
 
 Szabványos teszteket hajthat végre a következők:
 

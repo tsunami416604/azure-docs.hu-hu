@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: dd09a4df42c1022c2a9f96daf69591bbfc777d79
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: ca858408ecb258cc64645571d048de93449689d6
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Biztonságos Windows önálló fürtben, X.509-tanúsítványok
 Ez a cikk ismerteti a különálló Windows fürt különböző csomópontok közötti kommunikáció biztonságossá tételére. Azt is bemutatja, hogyan hitelesítheti a fürt X.509-tanúsítványok használatával csatlakozó ügyfelek. Hitelesítési biztosítja, hogy az csak a hitelesített felhasználóknak a fürt és a központilag telepített alkalmazások elérése és felügyeleti feladatok elvégzésére. Tanúsítvány biztonsági engedélyezni kell a fürt a fürt létrehozásakor.  
@@ -255,7 +255,7 @@ Védett jelszóval egy .pfx fájlba exportálja a tanúsítványt. Első lépés
    Write-Host $cert.ToString($true)
    ```
 
-Azt is megteheti, ha Azure-előfizetéssel rendelkezik, kövesse a szakasz [vegyen fel tanúsítványokat a kulcstartót](service-fabric-cluster-creation-via-arm.md#add-certificates-to-your-key-vault).
+Azt is megteheti, ha Azure-előfizetéssel rendelkezik, kövesse a lépéseket [a Service Fabric-fürt létrehozása az Azure Resource Manager használatával](service-fabric-cluster-creation-via-arm.md).
 
 ## <a name="install-the-certificates"></a>A tanúsítványok telepítése
 Miután tanúsítványok, telepítheti azokat a fürtcsomópontokon. A csomópontok kell rendelkeznie a legújabb Windows PowerShell 3.x rajtuk. Ismételje meg ezeket a lépéseket minden egyes csomóponton fürt és a kiszolgálói tanúsítványokat és a másodlagos tanúsítványok.

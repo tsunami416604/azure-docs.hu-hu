@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/01/2017
 ms.author: larryfr
-ms.openlocfilehash: 25dc37c10435e45bc56fd48488f9f238922ed6e3
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 330e3691307d0b52ed63da3560390beef154f779
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Az Azure parancssori felület használata a HDInsight-fürtök létrehozása
 
@@ -45,7 +45,7 @@ Ez a dokumentum az útmutató egy HDInsight 3.5-ös verzióját az Azure CLI 1.0
 
 ## <a name="log-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
 
-Kövesse a [Csatlakozás Azure-előfizetéshez az Azure parancssori felületről](../xplat-cli-connect.md) lépéseit, és csatlakoztassa az előfizetését a **bejelentkezéses** módszerrel.
+Kövesse a [Csatlakozás Azure-előfizetéshez az Azure parancssori felületről](/cli/azure/authenticate-azure-cli) lépéseit, és csatlakoztassa az előfizetését a **bejelentkezéses** módszerrel.
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 

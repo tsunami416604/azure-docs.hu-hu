@@ -11,9 +11,9 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: adhurwit
-ms.openlocfilehash: e4dc4a0bd43f61474692abb8c21e0b6448769f8e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: HT
+ms.openlocfilehash: 107be940b4c105056c63f793fb0111b03469bf66
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/08/2017
 ---
@@ -36,7 +36,7 @@ Az oktatóanyag teljesítéséhez szüksége lesz:
 * A webalkalmazás. Fogja azt megjelenítő webalkalmazásként Azure szolgáltatásba telepített ASP.NET MVC alkalmazásnak az lépéseit.
 
 >[!IMPORTANT]
->* Ez a minta egy régebbi módja a manuális létesítési AAD identitások függ. Jelenleg egy új szolgáltatás nevű kép [felügyelt szolgáltatás identitásának (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview), amely automatikusan telepíthetik AAD identitások. Tekintse meg az alábbi minta a [github](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) további tájékoztatást talál.
+>* Ez a minta egy régebbi módja a manuális létesítési AAD identitások függ. Jelenleg egy új szolgáltatás nevű kép [felügyelt szolgáltatás identitásának (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview), amely automatikusan telepíthetik AAD identitások. Tekintse meg az alábbi minta a [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) további tájékoztatást talál.
 
 > [!NOTE]
 >* Fontos, hogy végrehajtotta a felsorolt [Ismerkedés az Azure Key Vault](key-vault-get-started.md) ehhez az oktatóanyaghoz, hogy az URI-t a titkos kulcs és az ügyfél-azonosító és a titkos ügyfélkódot webalkalmazás.
@@ -46,7 +46,7 @@ A webes alkalmazás, amely a Key Vault hozzáférhetnek az Azure Active Director
 
 Ez az oktatóanyag célja alapjainak webalkalmazások létrehozása az Azure webalkalmazás-fejlesztőknek. Azure Web Apps kapcsolatos további információkért lásd: [webalkalmazások áttekintése](../app-service/app-service-web-overview.md).
 
-## <a id="packages"></a>Adja hozzá a Nuget-csomagok
+## <a id="packages"></a>Adja hozzá a NuGet-csomagok
 
 Két csomagot, amelyet a webes alkalmazás telepítve van.
 
@@ -147,11 +147,11 @@ Egy Azure AD-alkalmazást hitelesítéséhez egy másik úgy, hogy egy ügyfél-
 Egy teszttanúsítványt használunk a célokra. Az alábbiakban néhány parancsokat, amelyek a fejlesztői parancssor segítségével hozzon létre egy tanúsítványt. Módosítsa a könyvtárat, ahová a létrehozott tanúsítvány fájlok.  Emellett a kezdő és záró dátumot a tanúsítvány, használja az aktuális dátum plusz 1 év.
 
 ```
-makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r
+makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2017 -e 07/31/2018 -r
 pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 ```
 
-Jegyezze fel a záró dátum és a jelszót a .pfx (ebben a példában: 07/31/2016 és test123). Szüksége lesz rájuk az alábbi.
+Jegyezze fel a záró dátum és a jelszót a .pfx (ebben a példában: 07/31/2017 és test123). Szüksége lesz rájuk az alábbi.
 
 Teszttanúsítványt létrehozásával kapcsolatos további információkért lásd: [Útmutató: A saját tesztelése tanúsítvány létrehozása](https://msdn.microsoft.com/library/ff699202.aspx)
 

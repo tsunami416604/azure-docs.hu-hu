@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
-ms.openlocfilehash: ba078a870a3998568170cc197bd6698b97b7fadb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3a425251035e09bb3163fbb052669d0a874806f
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Létrehozása és kezelése az Azure Redis Cache az Azure parancssori felület (CLI) használatával
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Létrehozása és kezelése az Azure Redis Cache példány Azure CLI-vel, az al�
 
 * Azure-fiókkal kell rendelkeznie. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) csak néhány perc múlva.
 * [Az Azure parancssori felület telepítése](../cli-install-nodejs.md).
-* Csatlakozás az Azure parancssori felület telepítése személyes Azure-fiókkal, vagy a munkahelyi vagy iskolai Azure-fiókra, és jelentkezzen be az Azure parancssori felület használatával a `azure login` parancsot. Különbségek megismeréséhez, és válassza ki, [csatlakozás Azure-előfizetéshez az Azure parancssori felület (CLI)](../xplat-cli-connect.md).
+* Csatlakozás az Azure parancssori felület telepítése személyes Azure-fiókkal, vagy a munkahelyi vagy iskolai Azure-fiókra, és jelentkezzen be az Azure parancssori felület használatával a `azure login` parancsot. Különbségek megismeréséhez, és válassza ki, [csatlakozás Azure-előfizetéshez az Azure parancssori felület (CLI)](/cli/azure/authenticate-azure-cli).
 * A következő parancsok futtatásához váltson az Azure parancssori felület Resource Manager módra futtatásával a `azure config mode arm` parancsot. További információkért lásd: [Azure-erőforrások és csoportok kezelése az Azure parancssori felület használatával](../xplat-cli-azure-resource-manager.md).
 
 ## <a name="redis-cache-properties"></a>Redis gyorsítótár tulajdonságai
@@ -50,7 +50,7 @@ Az alábbi tulajdonságokat használja a létrehozása és frissítése a Redis 
 | név |-n,--neve |A Redis gyorsítótárt neve. |
 | erőforráscsoport |-g,--erőforráscsoport |Az erőforráscsoport neve. |
 | location |-l,--helye |Hely gyorsítótár létrehozásához. |
-| Méret |-z, a--mérete |A Redis gyorsítótár méretét. Érvényes értékek: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
+| méret |-z, a--mérete |A Redis gyorsítótár méretét. Érvényes értékek: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | Termékváltozat |-x,--termékváltozat |Redis Termékváltozat. Egyike lehet: [alapszintű, Standard, Premium] |
 | enableNonSslPort |-e,--enable-nem-ssl-port |A Redis Cache EnableNonSslPort tulajdonsága. Adja hozzá ezt a jelzőt, ha azt szeretné, hogy a gyorsítótár a nem SSL Port engedélyezéséhez |
 | Konfigurációs redis |-c,--redis-konfiguráció |Konfigurációs redis. Konfigurációs kulcsok és értékek itt egy JSON formátumú karakterláncot adjon meg. Formátum: "{" ":""," ":" "}" |

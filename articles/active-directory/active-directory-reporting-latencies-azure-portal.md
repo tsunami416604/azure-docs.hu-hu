@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 10/18/2017
 ms.author: markvi;dhanyahk
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 44e31d30cf5f6d6ca216fb7ed9f6be6e38cd8697
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: f060ddc958a7b266464bd28cee774f6ce065088d
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory jelentéskészítés késések
 
@@ -37,10 +37,10 @@ Nincsenek Tevékenységjelentés két terület:
 
 A következő táblázat a késési adatok Tevékenységjelentések.
 
-| Jelentés | Minimális | Átlagos | Maximális |
+| Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
-| Naplók             | 30 perc  | 45 percben | 1 óra     |
-| Bejelentkezések               | 15 perc  | 15 perc | 2 óra *   |
+| Naplók             | 30 perc  | 1 óra | 2 óra     |
+| Bejelentkezések               | 15 perc  | 2 óra * | 24 óra  |
 
 >[!NOTE]
 > Egyes örökölt Office-alkalmazások bejelentkezési tevékenységeinek adatai esetében akár 8 órát is igénybe vehet, amíg a naplóadatok megjelennek. 
@@ -55,7 +55,7 @@ Nincsenek biztonsági reporting két terület:
 
 A következő táblázat a késési adatok biztonsági jelentések.
 
-| Jelentés | Minimális | Átlagos | Maximális |
+| Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
 | Érintett felhasználók          | 5 perc   | 15 perc  | 2 óra  |
 | Kockázatos bejelentkezések         | 5 perc   | 15 perc  | 2 óra  |
@@ -66,7 +66,7 @@ Az Azure Active Directory adaptív gépi tanulási algoritmusok és heurisztikus
 
 A következő táblázat a késési adatok kockázati eseményekről.
 
-| Jelentés | Minimális | Átlagos | Maximális |
+| Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
 | Névtelen IP-címről történő bejelentkezések |5 perc |15 perc |2 óra |
 | Ismeretlen helyekről történt bejelentkezések |5 perc |15 perc |2 óra |

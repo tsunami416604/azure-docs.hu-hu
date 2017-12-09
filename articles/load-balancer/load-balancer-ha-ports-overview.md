@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: f72f4a3a81fc3a03c86805787caeeacbe6135c5e
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 46e284d1636988390f3533d93bfd07399f45dc92
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok áttekintése
 
@@ -74,7 +74,7 @@ Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLL
 
 A támogatott konfigurációk vagy a magas rendelkezésre ÁLLÁSÚ portok szolgáltatáshoz tartozó kivételek a következők:
 
-- Egyetlen előtér-IP-konfigurációja lehet olyan egyetlen DSR terheléselosztó szabályhoz magas rendelkezésre ÁLLÁSÚ porttal, vagy azt, hogy egy egyetlen nem DSR terheléselosztási szabály magas rendelkezésre ÁLLÁSÚ porttal. Mindkettő nem lehet.
+- Egyetlen előtér-IP-konfigurációja lehet egy egyetlen közvetlen kiszolgálói válasz (DSR - fix IP-Címek az Azure-ban) terheléselosztói szabálynak, a magas rendelkezésre ÁLLÁSÚ portokkal, vagy azt, hogy egy egyetlen nem DSR terheléselosztási szabály magas rendelkezésre ÁLLÁSÚ porttal. Mindkettő nem lehet.
 - Egy egyetlen hálózati illesztő IP-konfiguráció csak van egy nem-DSR terheléselosztói szabálynak, a magas rendelkezésre ÁLLÁSÚ portokkal. Az ipconfig más szabályok nem konfigurálható.
 - Egy egyetlen hálózati illesztő IP-konfigurációja is megadták az egy vagy több DSR terheléselosztói szabály a magas rendelkezésre ÁLLÁSÚ portokkal, a megfelelő előtér-IP-konfigurációk mindegyike egyedi.
 - A terheléselosztási szabályok összes magas rendelkezésre ÁLLÁSÚ portok (csak DSR), ha két (vagy több) terheléselosztó-szabály a háttér-készlethez is létezhetnek. Is igaz, ha a szabályok összes nem-magas rendelkezésre ÁLLÁSÚ portok (DSR és nem DSR). Ha magas rendelkezésre ÁLLÁSÚ portok és a nem magas rendelkezésre ÁLLÁSÚ portokra vonatkozó szabályokat, azonban két ilyen terheléselosztási szabályok nem létezhet.

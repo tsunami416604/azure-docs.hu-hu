@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 50190642f59aa8fa7d5cce8bfde5cec9fcfbe7e4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: e0d69d2b744fd08269b1ef87cb60efd3f205a92e
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Az adatáttelepítési eszköz
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag útmutatás a Azure Cosmos DB adatáttelepítési eszköz, am
 Mely API lesz a Azure Cosmos DB használni? 
 * **[A DocumentDB API](documentdb-introduction.md)**  -segítségével az adatok áttelepítési eszköz szerepel a forrás-beállításokat importálhat adatokat.
 * **[Tábla API](table-introduction.md)**  -adatok importálásához használhatja az adatáttelepítés eszközzel vagy az AzCopy. Lásd: [importálhat adatokat az Azure Cosmos DB tábla API való használatra](table-import.md) további információt.
-* **[MongoDB API](mongodb-introduction.md)**  -az adatok áttelepítési eszköz adatainak exportálása MongoDB-adatbázisok Azure Cosmos DB a DocumentDB API-val való használatra. Azonban ha továbbra is használhatja a MongoDB API-k, szeretne, használja az Azure Cosmos DB MongoDB API, és használja mongoimport.exe vagy mongorestore.exe adatainak importálásához. Lásd: [Azure Cosmos DB: adatok áttelepítése a MongoDB API?](mongodb-migrate.md), további információt.
+* **[MongoDB API](mongodb-introduction.md)**  -az adatok áttelepítési eszköz jelenleg nem támogatja a Azure Cosmos DB MongoDB API forrásként és célként. Ha azt szeretné, kívül MongoDB API gyűjtemények az Azure Cosmos Adatbázisba vagy az adatok áttelepítéséhez, tekintse meg a [Azure Cosmos DB: adatok áttelepítése a MongoDB API](mongodb-migrate.md) utasításokat. Az adatok áttelepítési eszköz segítségével exportál adatokat az MongoDB Azure Cosmos DB SQL API gyűjteményekre való használathoz az SQL API-t továbbra is használhatja. 
 * **[Graph API](graph-introduction.md)**  -az adatok áttelepítési eszköz jelenleg nem egy támogatott import eszközt, a Graph API-fiókok. 
 
 Ez az oktatóanyag ismerteti a következő feladatokat:

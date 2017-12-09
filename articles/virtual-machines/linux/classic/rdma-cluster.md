@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 4b2ceb64b1737918458f6d5c692fc2bfbc0f12ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52048fb8ccd445b93296d2686ca46785b0c3e726
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Linuxos RDMA-fürt beállítása MPI-alkalmazások futtatására
 Ismerje meg, hogyan állíthat be az Azure-ban Linux RDMA fürt [nagy teljesítményű számítási Virtuálisgép-méretek](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) párhuzamos Message Passing Interface (MPI) alkalmazások futtatásához. Ez a cikk lépéseit Intel MPI futhat egy fürt Linux HPC lemezkép előkészítése. Előkészítő, miután a virtuális gépek használata a lemezkép és az RDMA-kompatibilis Azure Virtuálisgép-méretek, (jelenleg H16r, H16mr, A8 és A9) egy fürt központi telepítése. A fürt használatával, amely a távoli közvetlen memória-hozzáférés (RDMA) technológián alapulnak, alacsony késésű, nagy átviteli hálózati hatékonyan kommunikációhoz MPI-alkalmazások futtatására.
@@ -47,7 +47,7 @@ A következő lépések bemutatják, hogyan telepítse a SUSE Linux Enterprise S
 * **Azure-előfizetés**: Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) néhány percig. Nagyobb fürtök esetén fontolja meg a használatalapú előfizetés vagy egyéb beszerzési lehetőségek.
 * **Virtuális gép mérete rendelkezésre állási**: A következő példány értékek RDMA-kompatibilis: H16r, H16mr, A8 és A9. Ellenőrizze [régiónként rendelkezésre álló termékek](https://azure.microsoft.com/regions/services/) a Azure-régiók rendelkezésre állás érdekében.
 * **Magok kvóta**: szükség lehet a számítási igényű virtuális gépek fürt központi telepítése magszámra vonatkozó kvóta növeléséhez. Például legalább 128 magok kell, ha azt szeretné, 8 A9 virtuális gépek telepítése ebben a cikkben ismertetett módon. Az előfizetés is lehet, hogy korlátozza az egyes virtuális gép mérete családok, többek között a H-sorozat telepítheti magok száma. A kvóta növelését [nyissa meg az online támogatás ügyfélkérés](../../../azure-supportability/how-to-create-azure-support-request.md) díjmentesen.
-* **Az Azure CLI**: [telepítése](../../../cli-install-nodejs.md) az Azure CLI és [csatlakozni az Azure-előfizetéshez](../../../xplat-cli-connect.md) az ügyfélszámítógépről.
+* **Az Azure CLI**: [telepítése](../../../cli-install-nodejs.md) az Azure CLI és [csatlakozni az Azure-előfizetéshez](/cli/azure/authenticate-azure-cli) az ügyfélszámítógépről.
 
 ### <a name="provision-an-sles-12-sp1-hpc-vm"></a>Az SLES 12 SP1 HPC virtuális gép kiépítése
 Az Azure-bA az Azure parancssori felülettel történő bejelentkezés után futtassa `azure config list` annak ellenőrzéséhez, hogy a kimenet látható-e a szolgáltatásfelügyeleti módban. Ha nem, a mód beállítása a következő parancs futtatásával:

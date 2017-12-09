@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 5a9d455203e50da47208ef1494d38a950161bee1
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: eb9c2ce5170aa02b7502eb5a52f2bf4b3a8ccb9c
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>A v2.0-végpontra érdemes használni?
 Alkalmazások, amelyekbe beépül az Azure Active Directory összeállításakor kell döntse el, hogy a v2.0-végpont és a hitelesítési protokollokat megfelel-e az igényeinek. Az Azure Active Directory eredeti végpont továbbra is teljes mértékben támogatja, és néhány tekintetben a v2.0-nál több szolgáltatás gazdag. Azonban a v2.0-végpontra [vezet be, jelentős előnyt](active-directory-v2-compare.md) a fejlesztők számára.
@@ -110,7 +110,7 @@ A v2.0-végpontra nem támogatja a SAML-alapú vagy a WS-Federation; csak a tám
 * A v2.0-végpontra kibocsátó szerepkör vagy csoport jogcímek azonosító-jogkivonatokat támogatja.
 * A [OAuth 2.0 erőforrás tulajdonosa jelszó hitelesítő adatok megadása](https://tools.ietf.org/html/rfc6749#section-4.3) nem támogatja a v2.0-végponttól.
 
-A v2.0-végpontra addtion, a nem támogatja a SAML-alapú vagy a WS-Federation protokollok bármilyen.
+Emellett a v2.0-végpontra nem támogatja az SAML-alapú vagy a WS-Federation protokollok bármilyen.
 
 Jobb megértése érdekében protokoll funkció támogatja a v2.0-végpontra a körét, olvassa végig a [OpenID Connectet és az OAuth 2.0 protokoll referenciája](active-directory-v2-protocols.md).
 

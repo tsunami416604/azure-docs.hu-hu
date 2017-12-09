@@ -15,11 +15,11 @@ ms.date: 06/26/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: b73b5e47e3e14742e5094b8b0e979de7835cb9c7
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c10374adf9b1438e087aa5fdba670f6d0234ee6f
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Egy felhasználó vagy csoport kétlépéses ellenőrzés megkövetelése
 
@@ -40,11 +40,11 @@ Mindkét lehetőség jeleníti meg az Azure multi-factor Authentication regisztr
 
 Azure multi-factor Authentication felhasználói fiókokat az alábbi három jól elkülöníthető állapottal rendelkeznek:
 
-| status | Leírás | Érintett böngészőn kívüli alkalmazások | Böngészőben megjelenő alkalmazásokba és érintett modern hitelesítéssel |
-|:---:|:---:|:---:|:--:|
-| Letiltva |Új felhasználó alapértelmezett állapota nincs regisztrálva az Azure multi-factor Authentication (MFA). |Nem |Nem |
-| Engedélyezve |A felhasználó előfizetett a Azure MFA, de nincs regisztrálva. Regisztrálja a következő bejelentkezéskor kéri. |Nem.  Ezek továbbra is működnek a regisztrációs folyamat befejezéséig. | Igen. Ha a frissítési jogkivonat a munkamenet lejár, MFA regisztrációs lesz szükség.|
-| Kényszerítve |A felhasználó előfizetett, és a regisztrációs folyamat során az Azure MFA számára befejeződött. |Igen.  Az alkalmazásokhoz alkalmazásjelszókat. |Igen. Multi-factor Authentication a bejelentkezési azonosító szükséges. |
+| status | Leírás | Érintett böngészőn kívüli alkalmazások | Érintett böngészőben megjelenő alkalmazásokba | Érintett modern hitelesítéssel |
+|:---:|:---:|:---:|:--:|:--:|
+| Letiltva |Új felhasználó alapértelmezett állapota nincs regisztrálva az Azure multi-factor Authentication (MFA). |Nem |Nem |Nem |
+| Engedélyezve |A felhasználó előfizetett a Azure MFA, de nincs regisztrálva. Regisztrálja a következő bejelentkezéskor kéri. |Nem.  Ezek továbbra is működnek a regisztrációs folyamat befejezéséig. | Igen. Ha a munkamenet lejár, MFA regisztrációs lesz szükség.| Igen. Ha a hozzáférési jogkivonat lejár, MFA-regisztrációs lesz szükség. |
+| Kényszerítve |A felhasználó előfizetett, és a regisztrációs folyamat során az Azure MFA számára befejeződött. |Igen.  Az alkalmazásokhoz alkalmazásjelszókat. |Igen. Multi-factor Authentication a bejelentkezési azonosító szükséges. | Igen. Multi-factor Authentication a bejelentkezési azonosító szükséges. |
 
 A felhasználói állapot tükrözi, hogy egy rendszergazda regisztrálta őket az Azure MFA, és hogy a regisztrációs folyamat befejeződött-e azokat.
 

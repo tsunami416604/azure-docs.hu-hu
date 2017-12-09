@@ -13,17 +13,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/08/2017
 ms.author: denlee
-ms.openlocfilehash: 122a2f8e506b3f567e73a816cbbeac569339c924
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 1a551615d0ffbbc036d3052cc552fbf4c1098ff7
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>A Spark a valós idejű big data elemzések érdekében, és Azure Cosmos DB-összekötő
 
 A Spark on Azure Cosmos DB összekötőre lehetővé teszi, hogy az Azure Cosmos DB egy bemeneti forrás vagy a kimeneti fogadóját Apache Spark-feladatok nevében járhasson el. Csatlakozás [Spark](http://spark.apache.org/) való [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) felgyorsítják arra, hogy a gyorsan változó adatok tudományos problémák megoldásához használható Azure Cosmos DB gyorsan és adatait. A Spark on Azure Cosmos DB összekötőre hatékonyan használja a natív Azure Cosmos DB felügyelt indexeket. Az indexek frissíthető oszlopok lehetővé teszik, amikor elemzés végrehajtása, és leküldéses-le nyilas predikátum szűrése fast-módosítása globális adatokat, amelyek az eszközök internetes hálózatát (IoT) között adatok tudományos és elemzés forgatókönyvekre.
+
+További információ: Ez a videó az Azure Cosmos DB fő Programvezető Denny Kálmán. 
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T135/player] 
 
 Spark GraphX és a Gremlin graph API-kat az Azure Cosmos DB használata, lásd: [Spark és Apache TinkerPop Gremlin graph időben](spark-connector-graph.md).
 

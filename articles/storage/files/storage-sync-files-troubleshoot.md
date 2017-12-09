@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: f12ee39f900373fcab80e59bc20de59fa039f0ff
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 1b8010876a46999d9cfcefc8c3bf537c7a1deb4e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -102,10 +102,8 @@ Annak megállapítása, hogy a felhasználói fiók szerepkör rendelkezik-e a s
     * **Szerepkör-hozzárendelés** kell **olvasási** és **írási** engedélyek.
     * **Szerepkör-definíció** kell **olvasási** és **írási** engedélyek.
 
-<a id="cloud-endpoint-deleteinternalerror"></a>**Felhő végpont törlése sikertelen, hiba: "MgmtInternalError"**  
-A probléma akkor fordulhat elő, ha a fájl Azure megosztás vagy tárolási fiókot törölték a felhőbeli végpont törlése előtt. A probléma az egy későbbi kiadásban lesz kijavítva. Idő lejárta után lesz a felhővégpontnak törli, a fájl Azure fájlmegosztás vagy a tárolási fiók törlése után.
-
-Eközben érdekében, hogy a probléma lépett fel, törölje a felhő végpont az az Azure file megosztásra vagy a tárolási fiók törlése előtt.
+<a id="server-endpoint-deletejobexpired"></a>**Kiszolgáló-végpont törlése sikertelen, hiba: "MgmtServerJobExpired"**                
+Ez a probléma akkor fordul elő, ha a kiszolgáló offline állapotban, vagy nem rendelkezik hálózati kapcsolattal. Ha a kiszolgáló már nem érhető el, akkor szüntesse meg a kiszolgáló a portálon, amely törli a kiszolgáló végpontok. A kiszolgáló végpontok törléséhez kövesse a ismertetett [a kiszolgáló regisztrációját az Azure fájlszinkronizálás](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
 
 ## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Ha egy fájl létrehozott közvetlenül a saját Azure fájlmegosztások SMB protokollon keresztül vagy a portálon keresztül, mennyi ideig tart a fájl szinkronizálása a szinkronizálási csoport kiszolgálójára?**  

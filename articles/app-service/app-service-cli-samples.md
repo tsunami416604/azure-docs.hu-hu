@@ -16,11 +16,11 @@ ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 6718694af487929d193dae54ecb2d85ece64887a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e6adf0c4b8273facce609c9e162969cdd2afaaa
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-cli-samples"></a>Az Azure CLI-minták
 
@@ -45,6 +45,10 @@ A következő táblázat a bash parancsfájlok az Azure parancssori felület has
 | [Webalkalmazás csatlakoztatása tárfiókhoz](./scripts/app-service-cli-app-service-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás és a storage-fiók létrehozása, majd hozzáadja a tárolási kapcsolati karakterlánc az alkalmazás beállításaiban. |
 | [Egy webes alkalmazás csatlakoztatása a redis gyorsítótár](./scripts/app-service-cli-app-service-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás és a redis gyorsítótár hoz létre, majd hozzáadja a redis kapcsolódási adatait az alkalmazás beállításaiban.) |
 | [Webes alkalmazás csatlakoztatása az Cosmos-Adatbázishoz](./scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás és egy Cosmos DB hoz létre, majd hozzáadja a Cosmos DB kapcsolódási adatait az alkalmazás beállításai. |
+|**Biztonsági mentése és visszaállítása alkalmazás**||
+| [Készítsen biztonsági másolatot a webes alkalmazás](./scripts/app-service-cli-backup-onetime.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás létrehozása és a egyszeri biztonsági hozza létre. |
+| [Ütemezett biztonsági mentés egy webalkalmazás létrehozása](./scripts/app-service-cli-backup-scheduled.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás létrehozása és a hozza létre az ütemezett biztonsági mentés. |
+| [A webes alkalmazás visszaállítja egy biztonsági másolatból](./scripts/app-service-cli-backup-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás visszaállítja egy biztonsági másolatból. |
 |**Alkalmazás monitorozása**||
 | [Webalkalmazás figyelése a webkiszolgáló-naplókkal](./scripts/app-service-cli-monitor.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás létrehozása, engedélyezi a naplózást, és a naplók letölti a helyi számítógépre. |
 | | |

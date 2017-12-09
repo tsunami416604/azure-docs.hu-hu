@@ -1,6 +1,6 @@
 <!-- F-series, Fs-series* -->
 
-Számítási optimalizált Virtuálisgép-méretek a nagy CPU-memória arányt és közepes méretű forgalom webkiszolgálók, hálózati berendezésekbe, kötegelt folyamatok és alkalmazáskiszolgálók. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma.
+Számítási optimalizált Virtuálisgép-méretek a nagy CPU-memória arányt és közepes méretű forgalom webkiszolgálók, hálózati berendezésekbe, kötegelt folyamatok és alkalmazáskiszolgálók. Ez a cikk ismerteti a Vcpu, adatlemezek, és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma.
 
 Fsv2-sorozat alapján Intel® Xeon® Platinum 8168 processzor kiemeli a 2.7 GHz-es alapszintű core gyakoriságát és 3.7 GHz-es maximális egymagos turbo gyakorisága. Intel® AVX-512 utasításokat, amelyek új Intel méretezhető processzoron, akár egy 2 X a vektoros feldolgozási terheléshez egyetlen és a dupla pontosságú lebegőpontos művelet a Teljesítmény program ad meg. Ez azt jelenti azok valóban gyors a számítási munkaterhelés számára. 
 
@@ -12,7 +12,7 @@ Az F-sorozat virtuális gépei remek választásnak bizonyulnak az olyan számí
 
 Az Fs-sorozat az F-sorozat összes előnyét biztosítja a prémium szintű tárterület mellett.
 
-## <a name="fsv2-series"></a>Fsv2-sorozat *
+## <a name="fsv2-series-sup1sup"></a>Fsv2-sorozat <sup>1</sup>
 
 ACU: 195-210
 
@@ -25,9 +25,10 @@ ACU: 195-210
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 (512)                                                           | Rendkívül nagy                                 |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 (1024)                                                         | Rendkívül nagy                                 |
 | Standard_F72s_v2 | 72     | 144         | 576            | 32             | 144000 (1520)                                                         | Rendkívül nagy                                 |
-* Fsv2-sorozat VM funkció Intel® Hyper-Threading technológia
 
-## <a name="fs-series"></a>Fs-sorozat*
+<sup>1</sup>Fsv2 sorozatú virtuális gép funkció Intel® Hyper-Threading technológia
+
+## <a name="fs-series-sup1sup"></a>FS-sorozat <sup>1</sup>
 
 ACU: 210–250
 
@@ -41,7 +42,7 @@ ACU: 210–250
 
 MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
-*Az Fs-sorozatba tartozó virtuális gépek lehetséges maximális lemezteljesítményét (IOPS vagy MBps) a csatolt lemezek mennyisége, mérete és szétosztottsága befolyásolhatja.  Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) című cikket.
+<sup>1</sup> a maximális átviteli sebesség (IOPS vagy MB/s) lehetséges Fs több virtuális gép korlátozhatja a száma, mérete és a csatlakoztatott lemezek az csíkozást.  Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) című cikket.
 
 
 <br>

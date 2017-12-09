@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/31/2017
+ms.date: 12/08/2017
 ms.author: sujayt
-ms.openlocfilehash: 7dae1d903b6cbb6a74f89443ec9601c6b4b9d078
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: ecc81dcfaf8dc158792a3bbcac78ea6da6488822
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Az Azure Site Recovery mátrix a replikálása Azure-bA az Azure-ból
 
@@ -90,11 +90,11 @@ Az alábbi támogatási esetén alkalmazható bármilyen munkaterhelést futtat�
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
 
-(A gépek replikálásához SLES 11 SP3 az SLES 11 SP4 frissítés nem támogatott. Ha a replikált gép SLES 11SP3 az SLES 11 SP4 frissítették, szüksége lesz tiltsa le a replikációt, és a post újra a frissítést a gép védelméhez.)
+(A gépek replikálásához SLES 11 SP3 az SLES 11 SP4 frissítés nem támogatott. Ha a replikált gép SLES 11SP3 az SLES 11 SP4 frissítették, meg kell tiltsa le a replikációt, és a post újra a frissítést a gép védelméhez.)
 
 >[!NOTE]
 >
-> Ubuntu kiszolgálók jelszóval hitelesítés és bejelentkezés, és a felhő inicializálás csomag segítségével konfigurálhatja a felhő virtuális gépek, előfordulhat, hogy rendelkezik jelszó alapú esetén feladatátvevő (attól függően, hogy a cloudinit konfigurációs.) letiltja a bejelentkezési A beállítások menüből a jelszó alaphelyzetbe állításával jelszóalapú bejelentkezési újból engedélyezni a virtuális gép lehet (a támogatási és HIBAELHÁRÍTÁSI alatt. szakasz) a virtuális gép az Azure portálon keresztül.
+> Ubuntu kiszolgálók jelszóalapú hitelesítés és bejelentkezés használatával, és a felhő virtuális gépeket, konfigurálhatja a felhő inicializálás csomag segítségével lehet esetén feladatátvevő (attól függően, hogy a cloudinit konfigurációs.) letiltja a jelszó alapú bejelentkezés A beállítások menüből a jelszó alaphelyzetbe állításával jelszóalapú bejelentkezési újból engedélyezni a virtuális gép lehet (a támogatási és HIBAELHÁRÍTÁSI alatt. szakasz) a virtuális gép az Azure portálon keresztül.
 
 ### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Az Azure virtuális gépek támogatott Ubuntu kernel verziók
 
@@ -122,10 +122,13 @@ Amerikai | Kanada keleti, Kanada központi, Dél-USA középső RÉGIÓJA, közp
 Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Észak-Európa, Nyugat-Európa
 Ázsia | Dél-Indiában, közép-Indiában, Délkelet-Ázsiában, kelet-ázsiai keleti, japán, Nyugat-japán, koreai központi koreai Dél
 Ausztrália   | Kelet-Ausztrália Ausztrália óceáni térség délkeleti régiója
+Azure Government    | USA – (kormányzati) Virginia, USA – (kormányzati) Iowa, USA – (kormányzati) Arizona, USA – (kormányzati) Texas, USA DOD kelet, USA DOD középső régiója
+Németország | Németország központi, Németország szerepel
+Kína | Kínai keleti, Kína északi régiója
 
 >[!NOTE]
 >
-> Dél-Brazília régió akkor csak a replicate és a feladatátvétel egy déli középső Régiójában, nyugati középső Régiójában, USA keleti régiója, USA keleti régiója 2. régiója, USA nyugati régiója, USA 2. nyugati és északi középső Régiójában régiók és visszaállítása sikertelen.
+> Dél-Brazília régió csak replikálásához és déli középső Régiójában, Nyugat középső Régiójában, USA keleti régiója, USA keleti régiója 2. régiója, USA nyugati régiója, USA 2. nyugati és északi középső Régiójában régiók egyikéhez feladatátvételt és a feladat-visszavételt.
 
 
 ## <a name="support-for-compute-configuration"></a>Számítási konfigurációhoz támogatása

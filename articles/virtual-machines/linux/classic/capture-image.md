@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: f140ff3841259251ddaf39124db2756084b26a53
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: e9296241b2128c9abe762f595161895948c8f70c
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>Klasszikus linuxos virtuális gép rögzítése lemezképként
 > [!IMPORTANT]
@@ -59,7 +59,7 @@ Ezek a lépések feltételezik, hogy korábban már létrehozott egy Azure virtu
    > [!NOTE]
    > A fennmaradó lépések azt feltételezik, hogy már rendelkezik [az Azure parancssori felület telepítve](../../../cli-install-nodejs.md) az ügyfélszámítógépen. Az alábbi lépéseket is teheti a [Azure-portálon](http://portal.azure.com).
 
-5. Az ügyfélszámítógépen nyissa meg az Azure parancssori felület, és jelentkezzen be az Azure-előfizetéshez. További információkért olvassa el a [csatlakozás Azure-előfizetéshez az Azure parancssori felületen](../../../xplat-cli-connect.md).
+5. Az ügyfélszámítógépen nyissa meg az Azure parancssori felület, és jelentkezzen be az Azure-előfizetéshez. További információkért olvassa el a [csatlakozás Azure-előfizetéshez az Azure parancssori felületen](/cli/azure/authenticate-azure-cli).
 
    > [!NOTE]
    > Az Azure portálon jelentkezzen be a portálra.

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d8688ab2daefd400e9c0948853459dd238fa0d43
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 54c92937c507cabd9053920baef97e745c2300f6
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>IoT peremhálózati telepítések egyetlen eszközökhöz vagy léptékű megismerése – előzetes
 
@@ -57,7 +57,23 @@ A konfigurációs modulokhoz tartozó metaadatokban:
 
 ### <a name="target-condition"></a>Cél feltétel
 
-Célcsoport-kezelési feltételek adja meg, hogy IoT peremhálózati eszköz egy központi telepítés hatálya alá kell lennie. Célcsoport-kezelési feltételek eszköz iker címkék alapulnak. 
+A célként megadott feltétel folyamatosan bármely új eszközök a követelményeknek, vagy távolítsa el az eszközt, amely már nem programon keresztül az élettartam a központi telepítés értékelése. A központi telepítés újra kell aktiválni, ha a szolgáltatás észleli a célként megadott feltétel változásait. Például, van-e a környezetben A, amely rendelkezik a célként megadott feltétel tags.environment = "termék". A központi telepítés indítsa el, ha nincsenek 10 termék eszközre. A modulok sikeresen ezen 10 eszközök vannak telepítve. Az IoT peremhálózati ügynök állapota megjelenik teljes eszközök 10, 10 sikeresen válaszokat, 0 hiba válaszok és 0 függőben lévő válaszokat. Most a tags.environment 5 további eszközöket ad hozzá = "termék". A szolgáltatás észleli a változást, és az IoT peremhálózati ügynök állapota lesz 15 eszközök teljes száma, 10 sikeresen válaszokat, 0 hiba válaszok és 5 függőben lévő válaszokat során az öt új eszközökre.
+
+Eszköz twins címkék vagy deviceId bármely logikai feltétel segítségével válassza ki a céleszközt. Ha azt szeretné, feltételt is használhat címkékkel, kell hozzáadnia a "címkék" :{} szakasz alatt a Tulajdonságok azonos szinten az eszköz a két. [További tudnivalók az eszköz iker címkék](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins)
+
+Cél feltétel példák:
+* deviceId = "linuxprod1
+* tags.Environment = "termék"
+* tags.Environment = "termék" AND tags.location = "westus"
+* tags.Environment = "termék" OR tags.location = "westus"
+* tags.Operator = "John" AND tags.environment = "termék" nem deviceId = "linuxprod1"
+
+Íme néhány korlátozza, amikor a célként megadott feltétel összeállításához:
+
+* A két eszköz, a címkék vagy deviceId cél feltétel csak készíthető.
+* Dupla idézőjelek között bármely részén a cél az állapot nem engedélyezett. Használjon szimpla idézőjelben.
+* Szimpla idézőjelben megjelölt értékek a célként megadott feltétel. Ezért egy másik egyetlen ajánlattal szimpla idézőjel kell karaktert, ha az eszköz neve része. Például a decisiontreetarget: operator'sDevice kell írható a deviceId = "operátor" sDevice ".
+* Számok, betűk és a következő karakterek engedélyezettek a célként megadott feltétel values:-:.+%_#*? (),=@;$
 
 ### <a name="priority"></a>Prioritás
 
