@@ -1,5 +1,5 @@
 
-1. Jelentkezzen be Azure-előfizetésébe a [Csatlakozás az Azure-hoz az Azure CLI 1.0-s verziójáról](../articles/xplat-cli-connect.md) című cikkben felsorolt lépések végrehajtásával.
+1. Jelentkezzen be Azure-előfizetésébe a [Csatlakozás az Azure-hoz az Azure CLI 1.0-s verziójáról](/cli/azure/authenticate-azure-cli) című cikkben felsorolt lépések végrehajtásával.
 
 2. Az alábbiak szerint győződjön meg róla, hogy a klasszikus üzembe helyezési módban van:
 
