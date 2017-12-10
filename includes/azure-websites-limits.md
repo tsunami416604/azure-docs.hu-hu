@@ -18,14 +18,14 @@
 | Az egyéni tartomány [SSL-támogatás](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |Korlátlan SNI SSL-kapcsolatok |Korlátlan SNI SSL és 1 IP SSL-kapcsolatok tartalmazza |Korlátlan SNI SSL és 1 IP SSL-kapcsolatok tartalmazza |
 | Integrált Load Balancer | |X |X |X |X |
 | [Always On](../articles/app-service/web-sites-configure.md) | | |X |X |X |
-| [Ütemezett biztonsági mentések](../articles/app-service/web-sites-backup.md) | | | |12 naponta |5 percenként egyszer<sup>8</sup> |
+| [Ütemezett biztonsági mentések](../articles/app-service/web-sites-backup.md) | | | | Ütemezett biztonsági mentések 2 óránként legfeljebb 12 biztonsági mentések naponta (manuális + ütemezett) | Ütemezett biztonsági mentések óránként legfeljebb 50 biztonsági mentések naponta (manuális + ütemezett) |
 | [Automatikus méretezése](../articles/app-service/web-sites-scale.md) | | | |X |X |
-| [Webjobs-feladatok](../articles/app-service/web-sites-create-web-jobs.md)<sup>9</sup> |X |X |X |X |X |
+| [Webjobs-feladatok](../articles/app-service/web-sites-create-web-jobs.md)<sup>8</sup> |X |X |X |X |X |
 | [Azure Schedulerrel](https://azure.microsoft.com/services/scheduler/) támogatja | |X |X |X |X |
 | [Végpontmonitoring](../articles/app-service/web-sites-monitor.md) | | |X |X |X |
 | [Átmeneti pontokon](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |
 | Alkalmazásonkénti egyéni tartományok</a> | |500 |500 |500 |500 |
-| SLA | |<p> |99.9% |99.95%<sup>10</sup> |99.95%<sup>10</sup> |
+| SLA | |<p> |99.9% |99.95%<sup>10</sup> |99.95%<sup>9</sup> |
 
 <sup>1</sup>alkalmazások és a tárolási kvótákat is egy App Service-csomag hacsak másként nem jelezzük.  
 <sup>2</sup>a tényleges száma tárolhatja, ezeknek a gépeknek az alkalmazások az alkalmazások tevékenységét, a gép példányok és a megfelelő erőforrás-használat méretétől függ.  
@@ -34,7 +34,6 @@
 <sup>5</sup>a tárolási kapacitás a teljes tartalom mérete összes alkalmazások között ugyanazt az App Service-csomag. További tárolási lehetőségek érhetők el [App Service Environment-környezet](../articles/app-service/environment/app-service-web-configure-an-app-service-environment.md#storage)  
 <sup>6</sup>ezeket az erőforrásokat csak korlátozottan fizikai erőforrások dedikált példányokon (a példány mérete és a példányok száma).  
 <sup>7</sup>Ha egy alkalmazás az alapszintű rétegben két példányokhoz, 350 egyidejű kapcsolatok az egyes két példánya van.  
-<sup>8</sup>prémium csomagban lehetővé teszi a biztonsági mentés gyakoriságát, legfeljebb 5 percenként le App Service Environment-környezetek használatakor és 50 napi időpontot egyéb.  
-<sup>9</sup>egyéni végrehajtható fájlok és/vagy parancsfájlok futtatása az igény szerinti, ütemezés szerint, vagy folyamatosan háttérfeladatként belül az App Service-példány. A folyamatos WebJobs-végrehajtáshoz folyamatos üzem szükséges. Az ütemezett WebJobs-végrehajtás csak az Azure Scheduler Ingyenes vagy Standard rétegével használható. Webjobs-feladatok, futtathat egy App Service-példány számára előre meghatározott korlátozva van, de mi az alkalmazás kódjának van végrehajtását megkísérlő függő gyakorlati határát.   
-<sup>10</sup>használó központi telepítések több példányt az Azure Traffic Manager konfigurálva a feladatátvételi előírt 99,95 %-os SLA-t.  
+<sup>8</sup>egyéni végrehajtható fájlok és/vagy parancsfájlok futtatása az igény szerinti, ütemezés szerint, vagy folyamatosan háttérfeladatként belül az App Service-példány. A folyamatos WebJobs-végrehajtáshoz folyamatos üzem szükséges. Az ütemezett WebJobs-végrehajtás csak az Azure Scheduler Ingyenes vagy Standard rétegével használható. Webjobs-feladatok, futtathat egy App Service-példány számára előre meghatározott korlátozva van, de mi az alkalmazás kódjának van végrehajtását megkísérlő függő gyakorlati határát.   
+<sup>9</sup>használó központi telepítések több példányt az Azure Traffic Manager konfigurálva a feladatátvételi előírt 99,95 %-os SLA-t.  
 

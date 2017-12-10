@@ -4,7 +4,7 @@ További információ a lemezekkel kapcsolatban: [A lemezek és virtuális merev
 <a id="attachempty"></a>
 
 ## <a name="attach-an-empty-disk"></a>Üres lemez csatlakoztatása
-1. Nyissa meg az Azure CLI 1.0-át, és [csatlakozzon Azure-előfizetéséhez](../articles/xplat-cli-connect.md). Bizonyosodjon meg róla, Azure szolgáltatásfelügyelet módban van-e (`azure config mode asm`).
+1. Nyissa meg az Azure CLI 1.0-át, és [csatlakozzon Azure-előfizetéséhez](/cli/azure/authenticate-azure-cli). Bizonyosodjon meg róla, Azure szolgáltatásfelügyelet módban van-e (`azure config mode asm`).
 2. Írja be az `azure vm disk attach-new` parancsot egy új lemez létrehozásához és csatlakoztatásához az alábbi példában látható módon. A *myVM* karakterlánc helyébe írja a Linux virtuális gép nevét, és adja meg a lemez méretét GB-ban, ami ebben a példában *100 GB*:
 
     ```azurecli
@@ -37,7 +37,7 @@ További információ a lemezekkel kapcsolatban: [A lemezek és virtuális merev
 ## <a name="attach-an-existing-disk"></a>Meglévő lemez csatlakoztatása
 Meglévő lemez csatlakoztatása esetén rendelkeznie kell egy tárfiókban elérhető .vhd-vel.
 
-1. Nyissa meg az Azure CLI 1.0-át, és [csatlakozzon Azure-előfizetéséhez](../articles/xplat-cli-connect.md). Bizonyosodjon meg róla, Azure szolgáltatásfelügyelet módban van-e (`azure config mode asm`).
+1. Nyissa meg az Azure CLI 1.0-át, és [csatlakozzon Azure-előfizetéséhez](/cli/azure/authenticate-azure-cli). Bizonyosodjon meg róla, Azure szolgáltatásfelügyelet módban van-e (`azure config mode asm`).
 2. Ellenőrizze, hogy a csatlakoztatni kívánt VHD fel van-e már töltve az Azure-előfizetésére:
    
     ```azurecli

@@ -6,7 +6,7 @@ Ha már nincs szüksége egy virtuális géphez (VM-hez) csatolt adatlemezre, k�
 ## <a name="find-the-disk"></a>A lemez megkeresése
 Mielőtt leválaszthatna egy lemezt egy virtuális gépről, meg kell keresnie a LUN számot, amely a leválasztani kívánt lemez azonosítója. Ehhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az Azure CLI-t, és [csatlakozzon Azure-előfizetéséhez](../articles/xplat-cli-connect.md). Bizonyosodjon meg róla, Azure szolgáltatásfelügyelet módban van-e (`azure config mode asm`).
+1. Nyissa meg az Azure CLI-t, és [csatlakozzon Azure-előfizetéséhez](/cli/azure/authenticate-azure-cli). Bizonyosodjon meg róla, Azure szolgáltatásfelügyelet módban van-e (`azure config mode asm`).
 2. Azonosítsa, hogy mely lemezek vannak a virtuális gépéhez csatolva. Az alábbi példa felsorolja a `myVM` nevű virtuális gép lemezeit:
 
     ```azurecli
