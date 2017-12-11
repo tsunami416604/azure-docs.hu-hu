@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 66ea24cfe9dd03ed62c06daa76ee043886ad7bcc
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
-ms.translationtype: HT
+ms.openlocfilehash: 57a4cb560825e0c05ac49df26ac12ee52da52c3c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-cloud-services"></a>Azure virtuális gépek, a Service Fabric Application Insights Profilkészítő engedélyezése és a felhőalapú szolgáltatások
 
 Ez a cikk bemutatja, hogyan Azure Application Insights Profilkészítő engedélyezése az Azure számítási erőforrás által üzemeltetett ASP.NET-alkalmazások. 
 
-Ebben a cikkben szereplő példák magukban foglalják az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, az Azure Service Fabric és a Azure Cloud Services támogatását. A példák alapulnak, amely támogatja a sablonok a [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) üzembe helyezési modellben.  
+Ebben a cikkben szereplő példák magukban foglalják az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, az Azure Service Fabric és a Azure Cloud Services támogatását. A példák alapulnak, amely támogatja a sablonok a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) üzembe helyezési modellben.  
 
 
 ## <a name="overview"></a>Áttekintés
@@ -47,14 +47,14 @@ Az Azure-portálon hozzon létre, vagy nyissa meg a használni kívánt Applicat
 Ez a példány ugyanaz, mint az alkalmazás kell lennie. Telemetriai adatokat küldjön az egyes kérelmek van konfigurálva.
 Profilkészítő eredmények is érhetők el ehhez a példányhoz.  
 
-Az Azure portálon, hajtsa végre a ismertetett lépéseit [engedélyezése a Profilkészítő](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler) a profilkészítőt a az Application Insights-példány beállításának befejezéséhez. Nem kell a cikkben például webes alkalmazást. Csak győződjön meg arról, hogy a Profilkészítő engedélyezve van-e a portálon.
+Az Azure portálon, hajtsa végre a ismertetett lépéseit [engedélyezése a Profilkészítő](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler) a profilkészítőt a az Application Insights-példány beállításának befejezéséhez. Nem kell a cikkben például webes alkalmazást. Csak győződjön meg arról, hogy a Profilkészítő engedélyezve van-e a portálon.
 
 
 ## <a name="set-up-the-application-source-code"></a>Az alkalmazás forráskódjához beállítása
 
 Állítsa be az alkalmazás számára telemetrikus adatokat küldeni az Application Insights példányt minden egyes `Request` műveletet:  
 
-1. Adja hozzá a [Application Insights SDK](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview#get-started) értékeként adja meg a projektet. Győződjön meg arról, hogy a NuGet csomag verziók a következők:  
+1. Adja hozzá a [Application Insights SDK](https://docs.microsoft.com/azure/application-insights/app-insights-overview#get-started) értékeként adja meg a projektet. Győződjön meg arról, hogy a NuGet csomag verziók a következők:  
   - Az ASP.NET-alkalmazások: [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 vagy újabb.
   - Az ASP.NET Core alkalmazások: [Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) 2.1.0 vagy újabb.
   - Az egyéb .NET és a .NET Core alkalmazások (például a Service Fabric állapotmentes szolgáltatások vagy Felhőszolgáltatások feldolgozói szerepkörök): [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) vagy [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 vagy újabb.  
@@ -138,9 +138,9 @@ Teljes példák:
   * [Virtuálisgép-méretezési csoport](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
   * [Service Fabric-fürt](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
 
-1. Annak érdekében, hogy [.NET-keretrendszer 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb használatban van, győződjön meg arról, hogy a telepített operációs rendszer elegendő `Windows Server 2012 R2` vagy újabb.
+1. Annak érdekében, hogy [.NET-keretrendszer 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb használatban van, győződjön meg arról, hogy a telepített operációs rendszer elegendő `Windows Server 2012 R2` vagy újabb.
 
-2. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) bővítményt a központi telepítési sablont a fájlt, és adja meg a következő `SinksConfig` szakasz az alárendelt elem `WadCfg`. Cserélje le a `ApplicationInsightsProfiler` saját Application Insights instrumentation kulccsal tulajdonság értéke:  
+2. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) bővítményt a központi telepítési sablont a fájlt, és adja meg a következő `SinksConfig` szakasz az alárendelt elem `WadCfg`. Cserélje le a `ApplicationInsightsProfiler` saját Application Insights instrumentation kulccsal tulajdonság értéke:  
   ```json
   "SinksConfig": {
     "Sink": [
@@ -152,16 +152,16 @@ Teljes példák:
   }
   ```
 
-  További információ a diagnosztika bővítmény felvétele a központi telepítési sablont: [használata figyelési és diagnosztika a Windows virtuális gép és az Azure Resource Manager-sablonok](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+  További információ a diagnosztika bővítmény felvétele a központi telepítési sablont: [használata figyelési és diagnosztika a Windows virtuális gép és az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 ### <a name="cloud-services"></a>Cloud Services
 
-1. Annak érdekében, hogy [.NET-keretrendszer 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb használja, az elegendő győződjön meg arról is, hogy ServiceConfiguration.\*. szolgáltatáskonfigurációs séma fájlok egy `osFamily` értékének **"5"** vagy újabb.
+1. Annak érdekében, hogy [.NET-keretrendszer 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb használja, az elegendő győződjön meg arról is, hogy ServiceConfiguration.\*. szolgáltatáskonfigurációs séma fájlok egy `osFamily` értékének **"5"** vagy újabb.
 
-2. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx fájlt az alkalmazás-szerepkör:  
+2. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx fájlt az alkalmazás-szerepkör:  
   ![A diagnosztika konfigurációs fájl helye](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
-  A fájl nem található, ha engedélyezi a diagnosztika bővítményt a Felhőszolgáltatás-projekt, lásd: [diagnosztika beállítása az Azure Cloud Services és a virtuális gépek](https://docs.microsoft.com/en-us/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
+  A fájl nem található, ha engedélyezi a diagnosztika bővítményt a Felhőszolgáltatás-projekt, lásd: [diagnosztika beállítása az Azure Cloud Services és a virtuális gépek](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
 
 3. Adja hozzá a következő `SinksConfig` szakasz az alárendelt elem `WadCfg`:  
   ```xml
@@ -205,11 +205,11 @@ Teljes példák:
 
 2. Ha a kívánt alkalmazás fut [IIS](https://www.microsoft.com/web/platform/server.aspx), engedélyezze a `IIS Http Tracing` Windows-szolgáltatás:  
   
-  1. A környezet a távoli hozzáférést létrehozásához, és használja a [Windows-szolgáltatások hozzáadása]( https://docs.microsoft.com/en-us/iis/configuration/system.webserver/tracing/) ablakban, vagy futtassa a következő parancsot a PowerShell (rendszergazdaként):  
+  1. A környezet a távoli hozzáférést létrehozásához, és használja a [Windows-szolgáltatások hozzáadása]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ablakban, vagy futtassa a következő parancsot a PowerShell (rendszergazdaként):  
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-  2. Ha létrehozó távelérési probléma, akkor használhatja [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) a következő parancsot:  
+  2. Ha létrehozó távelérési probléma, akkor használhatja [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) a következő parancsot:  
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
     ```
@@ -223,7 +223,7 @@ A Profilkészítő hivatalosan támogatása a helyszíni kiszolgálók terv van.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az alkalmazás felé irányuló forgalom előállításához (például elindíthatja egy [elérhetőségi teszt](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-monitor-web-app-availability)). Ezt követően várjon 10 – 15 percet nyomkövetések az Application Insights-példány küldendő elindításához.
-- Lásd: [szolgáltatásprofil-elemzői adat](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler) az Azure portálon.
+- Az alkalmazás felé irányuló forgalom előállításához (például elindíthatja egy [elérhetőségi teszt](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability)). Ezt követően várjon 10 – 15 percet nyomkövetések az Application Insights-példány küldendő elindításához.
+- Lásd: [szolgáltatásprofil-elemzői adat](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler) az Azure portálon.
 - Kérjen segítséget a Profilkészítő hibaelhárításával [hibaelhárítási Profilkészítő](app-insights-profiler.md#troubleshooting).
 - További információk a Profilkészítő [Application Insights Profilkészítő](app-insights-profiler.md).

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 68788efffd27edf2813cf455490b651c2c7106a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: ce854a3dc41dec69c3f8de245a03d55a2354335f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>A Service Fabric az ASP.NET Core alkalmazás figyelése és diagnosztizálása
 Ez az oktatóanyag négy egy sorozat része. Mert végig kell vinnie a figyelés és az ASP.NET Core alkalmazás fut a Service Fabric-fürt használata az Application Insights diagnosztikai beállításának lépéseit. Az oktatóanyag első részét létre az alkalmazásból telemetriai adatokat gyűjtünk [létre olyan .NET Service Fabric-alkalmazás](service-fabric-tutorial-create-dotnet-app.md). 
@@ -153,7 +153,7 @@ HEAD keresztül való az Application Insights-erőforrást az Azure portálon, �
 Kattintson a **áttekintése** térhet vissza az erőforrás kezdőlapja. Kattintson a **keresési** felső várható nyomkövetés megjelenítéséhez. Nyomkövetések az Application Insights megjelenő néhány percet vesz igénybe. Abban az esetben, hogy nem jelennek meg, várjon egy percet, és elérte az **frissítése** gombra az oldal tetején.
 ![AI lásd a nyomkövetési adatokat](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
 
-A lefelé görgetési a *keresési* ablakban jelennek meg a bejövő telemetriai out-of-az-box kap az Application insights szolgáltatással. Minden egyes művelethez, amely az Voting alkalmazásba megtette, nem kell egy kimenő PUT-kérelmet a *VotingWeb* (PUT szavazatok/Put [name]), egy bejövő PUT-kérelmet a *VotingData* (PUT VoteData/Put [neve]), a GET kérelmek jeleníti meg az Adatfrissítés két követ. Is lesz egy függőségi nyomkövetési HTTP – localhost, hiszen ezek HTTP-kérelmek. Ez szerepel-e meg a hogyan egy szavazattal példát: ![AI minta kérelem-nyomkövetés](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
+A lefelé görgetési a *keresési* ablakban jelennek meg a bejövő telemetriai out-of-az-box kap az Application insights szolgáltatással. Minden egyes művelethez, amely az Voting alkalmazásba megtette, nem kell egy kimenő PUT-kérelmet a *VotingWeb* (PUT szavazatok/Put [name]), egy bejövő PUT-kérelmet a *VotingData* (PUT VoteData/Put neve []), a GET kérelmek jeleníti meg az Adatfrissítés két követ. Is lesz egy függőségi nyomkövetési HTTP – localhost, hiszen ezek HTTP-kérelmek. Ez szerepel-e meg a hogyan egy szavazattal példát: ![AI minta kérelem-nyomkövetés](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
 
 Kattintson az egyik nyomkövetés részletes adatainak megtekintéséhez. Az Application Insights, beleértve a által biztosított kérelmekre vonatkozó hasznos információ a *válaszidő* és a *kérelem URL-címe*. Emellett a Service Fabric adott NuGet adott hozzá, mivel is elérhetővé válik adatokat, a Service Fabric-fürt környezetében az alkalmazással kapcsolatos a *egyéni adatok* az alábbi szakasz. Ez magában foglalja a szolgáltatási környezet, így a *PartitionID* és *Replikaazonosítójú* a forrás, a kérést, és jobb localize problémák diagnosztizálása az alkalmazásban szereplő hibák során.
 
@@ -235,4 +235,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Most, hogy az ASP.NET alkalmazás figyelését és diagnosztikai beállításának befejeződött, próbálja meg a következőket:
 - [Figyelés és diagnosztika a Service Fabric felfedezése](service-fabric-diagnostics-overview.md)
 - [Az Application insights szolgáltatással a Service Fabric-esemény elemzése](service-fabric-diagnostics-event-analysis-appinsights.md)
-- Application insights szolgáltatással kapcsolatos további információkért lásd: [Application Insights-dokumentáció](https://docs.microsoft.com/en-us/azure/application-insights/)
+- Application insights szolgáltatással kapcsolatos további információkért lásd: [Application Insights-dokumentáció](https://docs.microsoft.com/azure/application-insights/)

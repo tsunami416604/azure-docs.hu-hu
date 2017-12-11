@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.openlocfilehash: ebb963236a069f272499fce59945d0cf0d3d647f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
-ms.translationtype: HT
+ms.openlocfilehash: 7d5252cab8c6238126c802b8c6a5293bb448e65e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux diagnosztikai kiterjesztésének használatával figyelheti a metrikák és a naplókat
 
@@ -52,7 +52,7 @@ A letölthető konfigurációja, csak egy példa; Módosítsa a saját igényein
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* **Az Azure Linux ügynök 2.2.0 verzió vagy újabb**. A legtöbb Azure virtuális gép Linux gyűjtemény lemezképei 2.2.7 verzióját tartalmazzák, vagy később. Futtatás `/usr/sbin/waagent -version` megerősítéséhez, hogy a virtuális Gépen telepített verzióval. Ha a vendégügynök egy régebbi verzióját a virtuális gép fut, hajtsa végre a [ezeket az utasításokat](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent) frissíti.
+* **Az Azure Linux ügynök 2.2.0 verzió vagy újabb**. A legtöbb Azure virtuális gép Linux gyűjtemény lemezképei 2.2.7 verzióját tartalmazzák, vagy később. Futtatás `/usr/sbin/waagent -version` megerősítéséhez, hogy a virtuális Gépen telepített verzióval. Ha a vendégügynök egy régebbi verzióját a virtuális gép fut, hajtsa végre a [ezeket az utasításokat](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) frissíti.
 * **Azure parancssori felület (CLI)**. [Állítsa be az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) környezet a számítógépen.
 * A wget parancs, ha már nincs: futtatása `sudo apt-get install wget`.
 * Meglévő Azure-előfizetése és a meglévő tárfiók belül úgy, hogy az adatok tárolásához.
@@ -227,7 +227,7 @@ Ez a struktúra a bővítmény által gyűjtött információk szabályozó beá
 
 Elem | Érték
 ------- | -----
-StorageAccount | A tárfiók, amelyben adatot ír a kiegészítő mező neve. A névvel kell lennie, mint a megadott a [beállítások védett](#protected-settings).
+Tárfiók | A tárfiók, amelyben adatot ír a kiegészítő mező neve. A névvel kell lennie, mint a megadott a [beállítások védett](#protected-settings).
 mdsdHttpProxy | (választható) Ugyanaz, mint a a [beállítások védett](#protected-settings). A nyilvános érték felülbírálja a saját értéket, ha beállítása. Helyezze el, amely tartalmazza a titkos kulcs, például a jelszó, a proxybeállításokat a [beállítások védett](#protected-settings).
 
 A fennmaradó összetevőit az alábbi szakaszok részletesen.
@@ -300,8 +300,8 @@ A metrikák performanceCounters szakaszában megadott mintáit összegyűjtött 
 Ez a szakasz választható metrikák gyűjteményét határozza meg. Nyers minták összesítik az egyes [scheduledTransferPeriod](#metrics) ezeket az értékeket létrehozásához:
 
 * témakörök
-* minimális
-* Maximális
+* minimum
+* maximum
 * utolsó összegyűjtött érték
 * a nyers, összesített kiszámítására használt minták száma
 
@@ -309,10 +309,10 @@ Elem | Érték
 ------- | -----
 fogadók esetében | (választható) Egy vesszővel tagolt listája nyelő mely LAD való küld mérték eredményeit összesíti. Minden felsorolt fogadó összes összesített metrikát kerülnek közzétételre. Lásd: [sinksConfig](#sinksconfig). Példa: `"EHsink1, myjsonsink"`.
 type | A metrika a tényleges szolgáltató azonosítja.
-Osztály | "Számláló", és azonosítja az adott metrika a szolgáltató névtéren belül.
+osztály | "Számláló", és azonosítja az adott metrika a szolgáltató névtéren belül.
 A számláló | "Class", és azonosítja az adott metrika a szolgáltató névtéren belül.
 counterSpecifier | Az Azure metrikák névtérben adott metrika azonosítja.
-Az állapot | (választható) Kiválasztja az objektum, amelyhez a metrika vonatkozik, vagy az összesítés kiválasztja, hogy az objektum összes példánya között egy adott példányához. További információkért lásd: a [ `builtin` metrikai meghatározásainak](#metrics-supported-by-builtin).
+feltétel | (választható) Kiválasztja az objektum, amelyhez a metrika vonatkozik, vagy az összesítés kiválasztja, hogy az objektum összes példánya között egy adott példányához. További információkért lásd: a [ `builtin` metrikai meghatározásainak](#metrics-supported-by-builtin).
 sampleRate | Beállítja a változási gyakoriság, amellyel ez a mérőszám a nyers minták gyűjtik 8601 intervallum van. Ha nincs megadva, az adatgyűjtési időköz értéke értékével [sampleRateInSeconds](#ladcfg). A legrövidebb támogatott mintavételi gyakoriság: 15 másodperc (PT15S).
 egység | Ezek a karakterláncok egyike lehet: "Count", "Memória", "S", "Százaléka", "CountPerSecond", "BytesPerSecond", "Ezredmásodperces". Határozza meg a metrika egység. Az összegyűjtött adatok fogyasztóinak várhatóan az összegyűjtött adatok értékeket a egység. LAD figyelmen kívül hagyja ezt a mezőt.
 displayName | A címke (a kapcsolódó területi beállításban megadott nyelven) csatolni kell ezeket az adatokat az Azure metrikákat. LAD figyelmen kívül hagyja ezt a mezőt.
@@ -384,7 +384,7 @@ Elem | Érték
 ------- | -----
 Namespace | (választható) Az OMI névtér belül, amely hajtható végre a lekérdezést. Ha nincs megadva, az alapértelmezett érték: "legfelső szintű/scx", által megvalósított a [a System Center platformfüggetlen szolgáltatók](http://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
 lekérdezés | Az OMI lekérdezés végrehajtására.
-Tábla | (választható) Az Azure storage tábla, a kijelölt tárfiókban lévő (lásd: [beállítások védett](#protected-settings)).
+tábla | (választható) Az Azure storage tábla, a kijelölt tárfiókban lévő (lásd: [beállítások védett](#protected-settings)).
 frequency | (választható) A lekérdezés végrehajtása között eltelt másodpercek száma. Alapértelmezett értéke 300 (5 percig); minimális érték 15 másodpercre.
 fogadók esetében | (választható) További nyelő, amelyhez metrika eredmények nyers minta közzé kell tenni a neveket vesszővel tagolt listája. Nincs összesítési e nyers minták számított a bővítmény vagy Azure metrikákat.
 
@@ -406,8 +406,8 @@ A rögzítés a naplófájlok szabályozza. LAD új szöveges sort rögzíti, me
 
 Elem | Érték
 ------- | -----
-Fájl | A teljes elérési útja a naplófájl figyelése és rögzítése. A pathname nevet egyetlen fájl; nem egy könyvtár nevet és nem tartalmazhat helyettesítő karaktereket.
-Tábla | (választható) Az Azure storage tábla, a kijelölt tárfiókban (meghatározottak szerint a védett configuration), amelybe a "végéről" a fájl új sorok készültek.
+fájl | A teljes elérési útja a naplófájl figyelése és rögzítése. A pathname nevet egyetlen fájl; nem egy könyvtár nevet és nem tartalmazhat helyettesítő karaktereket.
+tábla | (választható) Az Azure storage tábla, a kijelölt tárfiókban (meghatározottak szerint a védett configuration), amelybe a "végéről" a fájl új sorok készültek.
 fogadók esetében | (választható) További nyelő küldött napló sorok a neveket vesszővel tagolt listája.
 
 "Table" vagy "fogadók esetében", vagy mindkettőt, meg kell adni.
