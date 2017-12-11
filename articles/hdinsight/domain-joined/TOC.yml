@@ -1,29 +1,53 @@
 - name: "Azure HDInsight\_– dokumentáció"
   href: /azure/hdinsight
-- name: Vállalati biztonság a HDInsightban
+- name: Vállalati biztonság
   items:
     - name: Áttekintés
       href: apache-domain-joined-introduction.md
-    - name: Tartományhoz csatlakoztatott HDInsight megtervezése
+    - name: Vállalati szintű biztonság megtervezése
       href: apache-domain-joined-architecture.md
-    - name: Összetevő verziókezelése
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-- name: Bevezetés
-  items:
-    - name: Tartományhoz csatlakoztatott HDInsight konfigurálása
+    - name: Vállalati biztonság konfigurálása a HDInsightban
       href: apache-domain-joined-configure.md
-    - name: Tartományhoz csatlakoztatott HDInsight konfigurálása az Azure AD DS használatával
+    - name: Vállalati biztonság konfigurálása a HDInsightban az Azure AD DS-sel
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Hive-házirendek konfigurálása
       href: apache-domain-joined-run-hive.md
     - name: Kapacitástervezés
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
-- name: Útmutató
-  items:
-    - name: Fürtök kezelése
+    - name: Fürtök felügyelete vállalati biztonsági megoldásokkal
       href: apache-domain-joined-manage.md
+- name: Adatok védelme
+  href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+  maintainContext: true
+- name: Hálózati hozzáférés
+  items:
+    - name: HDInsight az Azure VNetben
+      href: ../hdinsight-extend-hadoop-virtual-network.md
+      maintainContext: true
+    - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
+      href: ../connect-on-premises-network.md
+      maintainContext: true
+    - name: HBase-fürt létrehozása az Azure VNetben
+      href: ../hbase/apache-hbase-provision-vnet.md
+      maintainContext: true
+    - name: HBase-fürt replikációja az Azure VNetben
+      href: ../hbase/apache-hbase-replication.md
+      maintainContext: true
+- name: Monitorozás az OMS-szel
+  items:
+    - name: Az Azure Log Analytics használata
+      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+      maintainContext: true
+    - name: Fürtre jellemző irányítópultok
+      href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
+      maintainContext: true
+    - name: Lekérdezések használata a Log Analytics szolgáltatással
+      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+      maintainContext: true
+    - name: Fürtteljesítmény monitorozása
+      href: ../hdinsight-key-scenarios-to-monitor.md
+      maintainContext: true
 - name: Referencia
   items:
     - name: Kódminták
