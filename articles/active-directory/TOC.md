@@ -205,11 +205,6 @@
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 #### [Hibaelhárítás](active-directory-application-proxy-troubleshoot.md)
-#### A klasszikus portál használata
-##### [Letöltési összekötők](application-proxy-enable-classic-portal.md)
-##### [Alkalmazások közzététele](active-directory-application-proxy-publish.md)
-##### [Összekötők használata](active-directory-application-proxy-connectors-azure-portal.md)
-##### [Feltételes hozzáférés](application-proxy-enable-remote-access-sharepoint.md)
 
 ### Vállalati alkalmazások kezelése
 #### [Felhasználók hozzárendelése](active-directory-coreapps-assign-user-azure-portal.md)

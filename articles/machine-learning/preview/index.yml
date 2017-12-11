@@ -1,50 +1,55 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure Machine Learning dokumentációja (előnézet)
+title: "Az Azure Machine Learning dokumentációja (előnézet)"
 metadata:
-  title: Az Azure Machine Learning dokumentációja (előnézet)
+  title: "Az Azure Machine Learning dokumentációja (előnézet)"
   meta.description: Learn how to use Azure Machine Learning public preview features.
   services: machine-learning
-  author: czeumault
-  manager: carolz
+  author: garyericson
+  manager: jhubbard
   ms.service: machine-learning
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 09/06/2017
-  ms.author: carolz
+  ms.author: garye
+  ms.openlocfilehash: c5873c1a9f5a73f700a07fe1050180750bf59cd4
+  ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/09/2017
 abstract:
-  description: 'Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre és helyezhet üzembe modelleket. Az Azure Machine Learning előnézeti funkciói révén ML és AI modelleket felügyelhet, hozhat létre és helyezhet üzembe bármely Python-eszköz és könyvtár használatával. Számos különféle adat- és számítási szolgáltatást használhat az Azure-ban adatai tárolására és feldolgozására.'
+  description: "Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre és helyezhet üzembe modelleket. Az Azure Machine Learning előnézeti funkciói révén ML és AI modelleket felügyelhet, hozhat létre és helyezhet üzembe bármely Python-eszköz és könyvtár használatával. Számos különféle adat- és számítási szolgáltatást használhat az Azure-ban adatai tárolására és feldolgozására."
 sections:
-  - title: 5 perces gyors útmutatók
+- title: "5 perces gyors útmutatók"
+  items:
+  - type: paragraph
+    text: "Az első Machine Learning projekt létrehozása"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: Az első Machine Learning projekt létrehozása
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/machine-learning/media/index/i_machine-learning.svg
-            text: Telepítés és létrehozás
-            href: quickstart-installation
-  - title: Részletes útmutatók
+    - image:
+        src: /azure/machine-learning/media/index/i_machine-learning.svg
+      text: "Telepítés és létrehozás"
+      href: quickstart-installation
+- title: "Részletes útmutatók"
+  items:
+  - type: paragraph
+    text: "Megtudhatja, hogyan készítse elő adatait és kísérleteit, illetve hogyan működtesse modelljeit"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan készítse elő adatait és kísérleteit, illetve hogyan működtesse modelljeit'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-classifying-iris-part-1">Útmutató a Machine Learning-szolgáltatások (előzetes verzió) alapjairól</a>
-          - html: <a href="tutorial-classifying-iris-part-2">A Machine Learning Workbench használata modell létrehozásához az Iris flower adatkészlettel</a>
-          - html: <a href="tutorial-classifying-iris-part-3">Ismerje meg a Machine Learning modellek üzembe helyezésének módját</a>
-          - html: <a href="tutorial-bikeshare-dataprep">Az Azure Machine Learning Workbench használata haladó adatelőkészítéshez</a>
-  - title: Referencia
+    - html: "<a href=\"tutorial-classifying-iris-part-1\">Útmutató a Machine Learning-szolgáltatások (előzetes verzió) alapjairól</a>"
+    - html: "<a href=\"tutorial-classifying-iris-part-2\">A Machine Learning Workbench használata modell létrehozásához az Iris flower adatkészlettel</a>"
+    - html: "<a href=\"tutorial-classifying-iris-part-3\">Ismerje meg a Machine Learning modellek üzembe helyezésének módját</a>"
+    - html: "<a href=\"tutorial-bikeshare-dataprep\">Az Azure Machine Learning Workbench használata haladó adatelőkészítéshez</a>"
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Nyelvek
-            html: '<p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
-          - title: REST
-            html: <p><a href="model-management-api-reference">Modellkezelési REST API</a></p>
+    - title: Nyelvek
+      html: <p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
+    - title: REST
+      html: "<p><a href=\"model-management-api-reference\">Modellkezelési REST API</a></p>"
