@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure-dokumentáció"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
 featureFlags: clicktale
-ms.openlocfilehash: 3ba89d9e704eaacf78c5c6a18c9ed5de01f9785b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: ef6d74496520b61392503bf5a1b9bc3c611b0352
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -229,11 +229,15 @@ ms.lasthandoff: 11/28/2017
                                                 <ul class="noBullet">
                                                     <li>
                                                         <a class="barLink" href="https://docs.microsoft.com/vsts/deploy-azure/">
-                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_vs-team-services.svg" alt=""> Üzembe helyezés az Azure-ban </a>
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt=""> Üzembe helyezés az Azure-ban </a>
                                                     </li>
                                                     <li>
-                                                        <a class="barLink" href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">
-                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_jenkins.svg" alt=""> Jenkins az Azure-beli virtuális gépeken </a>
+                                                        <a class="barLink" href="/azure/jenkins">
+                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_jenkins.svg" alt=""> Jenkins </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="/azure/terraform">
+                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_terraform.svg" alt=""> Terraform </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -975,9 +979,21 @@ ms.lasthandoff: 11/28/2017
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/iot-edge/">
+                                                <img src="media/index/IOT_edge_50.svg" alt="" />
+                                                <p>IoT Edge</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/iot-suite/">
                                                 <img src="media/index/iot-suite.svg" alt="" />
                                                 <p>Azure IoT Suite</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://docs.microsoft.com/azure/location-based-services/">
+                                                <img src="media/index/azure-lbs-icon.svg" alt="" />
+                                                <p>Azure Location Based Services</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1027,7 +1043,7 @@ ms.lasthandoff: 11/28/2017
                                                 <img src="media/index/LogicApp.svg" alt="" />
                                                 <p>Logic Apps</p>
                                             </a>
-                                        </li>
+                                        </li>                                        
                                     </ul>
                                 </div>
                                 <div class="group">
@@ -2803,6 +2819,25 @@ ms.lasthandoff: 11/28/2017
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/iot-edge/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/IOT_edge_50.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>IoT Edge</h3>
+                                                    <p>Felhőintelligencia kiterjesztése Edge-eszközökre</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/iot-suite/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -2821,6 +2856,25 @@ ms.lasthandoff: 11/28/2017
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/location-based-services/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-lbs-icon.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Location Based Services</h3>
+                                                    <p>Térképek, útvonalkeresés, keresés és egyéb hatékony térinformatikai szolgáltatások</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>                            
                             <li>
                                 <a href="/en-us/azure/event-hubs/">
                                     <div class="cardSize">
@@ -2972,7 +3026,7 @@ ms.lasthandoff: 11/28/2017
                                         </div>
                                     </div>
                                 </a>
-                            </li>
+                            </li>                            
                         </ul>
                     </li>
                     <li>
