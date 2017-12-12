@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
-ms.openlocfilehash: 69b8ec86f764077a0e6d029f7c540fa25d022a31
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 2fb989d1fd9ee76ee1d21323574971438d607238
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="introducing-microsoft-azure"></a>Introducing Microsoft Azure
 A Microsoft Azure a Microsoft alkalmazás platformja a nyilvános felhő.  Ez a cikk célja, hogy biztosítson alaprendszert az Azure-ban – alapok megértéséhez még akkor is, ha a felhő semmit nem tudja a számítástechnikai.
@@ -40,7 +40,7 @@ Ez a cikk fogja használni a **másik vállalatnál** hasonló függvény alapj�
  *Ábra: Az Azure internetről elérhető, az Azure adatközpontjaiban futó alkalmazásszolgáltatások biztosít.*
 
 ## <a name="management-portal"></a>Felügyeleti portál
-Azure rendelkezik nevű webes felületet a [kezelési portál](http://manage.windowsazure.com) , amely lehetővé teszi a rendszergazdák eléréséhez és a legtöbb, de nem minden Azure-szolgáltatások felügyeletéhez.  Microsoft a béta újabb felhasználói felület portál általában kiadott régebbi egy kivonás előtt. Az újabb egy elnevezése a ["Azure betekintő portál"](https://portal.azure.com/).
+Azure rendelkezik nevű webes felületet a [kezelési portál](http://manage.windowsazure.com) , amely lehetővé teszi a rendszergazdák eléréséhez és a legtöbb, de nem minden Azure-szolgáltatások felügyeletéhez.  Microsoft a béta újabb felhasználói felület portál általában kiadott régebbi egy kivonás előtt. Az újabb egy elnevezése a ["Azure Portal"](https://portal.azure.com/).
 
 Általában egy hosszú átfedés van amikor mindkét portálok aktívak. Alapvető szolgáltatások mindkét portálok jelenik meg, amíg nem minden funkció is érhetők el. Újabb szolgáltatások jelenik meg a újabb portál első és a régebbi szolgáltatások és funkciók csak lehet, hogy a régebbi egy szerepel.  A itt üzenet, ha nem találja a valamit a régebbi portálon ellenőrizze újabb azzal, és fordítva.
 
@@ -218,7 +218,7 @@ Az alkalmazás tulajdonosa adja meg, hogyan legyenek irányítva felhasználók 
 A TRAFFIC manager Directory szolgáltatás (DNS) használja a útvonal felhasználóknak, hogy végpontok, de további forgalom nem halad keresztül Traffic Manager a kapcsolat létrehozása után. Így a Traffic Manager szűk keresztmetszet, amely a szolgáltatás kommunikációs lelassíthatják nem.
 
 ## <a name="developer-services"></a>Fejlesztői szolgáltatások
-Azure számos eszközök segítségével a fejlesztők és informatikai szakemberek létrehozásához és kezeléséhez a felhőben lévő alkalmazásokhoz.  
+Azure számos eszközök segítségével a fejlesztők és informatikai szakemberek számára hozzon létre és kezelheti az alkalmazásokat a felhőben.  
 
 ### <a name="azure-sdk"></a>Azure SDK
 Vissza a 2008 a legelső előzetes verzióját Azure csak a .NET development támogatott. Napjainkban azonban hozhat létre Azure-alkalmazások lényegében bármilyen nyelven. A Microsoft jelenleg biztosít nyelvspecifikus SDK-k .NET, Java, PHP, Node.js, Ruby és Python. Egy általános Azure SDK-t, amely alapszintű támogatást nyújt bármely nyelvhez, például a C++ is van.  
@@ -228,7 +228,7 @@ Ezek az SDK-k segítségével létrehozása, telepítése és kezelése az Azure
 Segít az Azure-alkalmazások létrehozását, valamint ezek SDK-k is nyújt, amelyek segítenek ügyfélkódtáraival létre szoftver, amely Azure-szolgáltatásokat használ. Például akkor lehet, hogy létre egy alkalmazás, amely beolvassa és az Azure BLOB, vagy hozzon létre olyan eszköz, amely telepíti az Azure-alkalmazások az Azure felügyeleti felületen keresztül.
 
 ### <a name="visual-studio-team-services"></a>Visual Studio Team Services
-A Visual Studio Team Services alhálózatnév marketing egy szám szolgáltatást, amely elősegíti, hogy az Azure-alkalmazások lefedik.
+A Visual Studio Team Services alhálózatnév marketing kiterjedő egy szám szolgáltatásokat, amelyek segítenek az Azure-alkalmazások fejlesztéséhez.
 
 -A félreértések elkerülése érdekében nem meg a Visual Studio központi vagy a Web-alapú verzióját. A Visual Studio helyi futó példányát kell. De számos más eszközt, amely nagyon hasznos lehet.
 
@@ -368,7 +368,7 @@ Adatok azért biztonságosabb, mert a biztonsági mentések átvitele előtt tit
 
 **A forgatókönyvek az Azure Backup szolgáltatásra**
 
-Ha még a Windows Server vagy a System Center használ, az Azure backup egy természetes megoldás a kiszolgálók fájlrendszer, a virtuális gépek és az SQL Server-adatbázisok biztonsági mentése.  A titkosított, ritka és tömörített fájlok működik. Nincsenek bizonyos korlátozások mellett, így akkor [az Azure biztonsági mentés szükséges előfeltételek ellenőrzése](http://technet.microsoft.com/library/dn296608.aspx) első.
+Ha már használja a Windows Server vagy a System Center, Azure biztonsági mentés egy természetes megoldás a kiszolgálók fájlrendszer, a virtuális gépek és az SQL Server-adatbázisok biztonsági mentése.  A titkosított, ritka és tömörített fájlok működik. Nincsenek bizonyos korlátozások mellett, így akkor [az Azure biztonsági mentés szükséges előfeltételek ellenőrzése](http://technet.microsoft.com/library/dn296608.aspx) első.
 
 ## <a name="messaging-and-integration"></a>Üzenettovábbítás és integráció
 Függetlenül attól, milyen műveletet a kód gyakran kell más kód kommunikálni.  Bizonyos helyzetekben szükség van csak a alapvető aszinkron üzenetkezelési. Más esetekben összetettebb kapcsolati szükség. Azure biztosít az ilyen problémák megoldására fejlesztésében többféle formában. 5. ábra a lehetőségeit szemlélteti.
@@ -424,11 +424,11 @@ Bármikor hoz létre Ha sok üzeneteket, amelyek fontos, de különböző aláre
 ![BizTalk szolgáltatások](./media/fundamentals-introduction-to-azure/BizTalkServicesIntroNew.png)   
  *Ábra: BizTalk szolgáltatás lehetővé teszi a átalakítására XML-üzenetek formátumainak a felhőben.*
 
-Egyes esetekben kell csatlakozás rendszerek, amelyek segítségével különböző üzenetkezelési formátumok kommunikálnak. Esetében gyakori, vállalati különböző adatbázis sémák és XML messaging formátumok, akkor is, ha egy általános szabvány érhető el. Helyett a egyéni kódot ír, használhatja a helyszíni BizTalk Server különböző rendszerek integrálására.  Az Azure BizTalk biztosít az azonos típusú szolgáltatást, de a felhőben. Is kell fizetnie csak mi használ, és nem kell foglalkoznia méretezési, mint a helyszíni kellene lennie.
+Egyes esetekben kell kapcsolni rendszerek, amelyek segítségével különböző üzenetkezelési formátumok kommunikálnak. Esetében gyakori, a vállalatok különböző adatbázis sémák és XML messaging formátumok, akkor is, ha egy általános szabvány érhető el. Helyett a egyéni kódot ír, használhatja a helyszíni BizTalk Server különböző rendszerek integrálására.  Az Azure BizTalk biztosít az azonos típusú szolgáltatást, de a felhőben. Is kell fizetnie csak mi használ, és nem kell foglalkoznia méretezési, mint a helyszíni kellene lennie.
 
 **BizTalk szolgáltatások forgatókönyvek**
 
-Üzleti vállalatközi (B2B) kapcsolati gyakran igényelnek fordítási az ilyen típusú.  Például egy vállalat repülőgépek felépítése kell azok részeit különböző részeit beszállítók sorrendben. Sok részből szállítók lesz.  A szállítók rendszerekbe közvetlenül a repülőgép szerkesztők rendszerekből go rendeléseket érdemes automatizálni.  A core rendszerek és üzenetformátumok módosítani szeretné sem üzleti, és nem nagyon valószínű, hogy ezek a formátumok megegyeznek. BizTalk szolgáltatások üzenetek igénybe, és állomásneveket, az új formátum mindkét irányba között. Vagy repülőgép szállítójához teheti meg lefordítani a munkahelyi vagy az egyes szállítók is, attól függően ki szeretne rendelni a további ellenőrzési és a szükséges fordítási mennyisége.     
+Üzleti vállalatközi (B2B) kapcsolati gyakran igényelnek fordítási az ilyen típusú.  Például egy vállalat repülőgépek felépítése kell rendelés részeit különböző részeit beszállítói. Sok részből szállítók lesz.  A szállítók rendszerekbe közvetlenül a repülőgép szerkesztők rendszerekből go rendeléseket érdemes automatizálni.  A core rendszerek és üzenetformátumok módosítani szeretné sem üzleti, és nem nagyon valószínű, hogy ezek a formátumok megegyeznek. BizTalk szolgáltatások üzenetek igénybe, és állomásneveket, az új formátum mindkét irányba között. Vagy repülőgép szállítójához teheti meg lefordítani a munkahelyi vagy az egyes szállítók is, attól függően ki szeretne rendelni a további ellenőrzési és a szükséges fordítási mennyisége.     
 
 ## <a name="compute-assistance"></a>Számítási támogatás
 Azure Services, folyamatosan futtatásához nincs szükség támogatást nyújt.  
@@ -437,7 +437,7 @@ Azure Services, folyamatosan futtatásához nincs szükség támogatást nyújt.
 ![Azure Scheduler](./media/fundamentals-introduction-to-azure/SchedulerIntroNew.png)   
 *Ábra: Azure Schedulerrel módszert kínál a feladatok ütemezése a megadott idő az adott időpontban.*
 
-Más alkalmazások csak futtatnia kell egy bizonyos időpontban. A Azure-ban költségtakarékosabb munkavégzésben az ilyen típusú alkalmazások ahelyett, hogy egy alkalmazás csak tovább futnak 24 x 7-Várakozás az adatok feldolgozásához. Azure Schedulerrel segítségével meghatározhatja, hogy mikor egy alkalmazást kell alapján időközönkénti futásra idő vagy a naptárban. Megbízható, és ellenőrzi, hogy egy folyamat fut-e akkor is, ha a hálózati, a gép és a data center hibákat észlel. A Feladatütemező REST API segítségével kezelheti ezeket a műveleteket.
+Más alkalmazások csak futtatnia kell egy bizonyos időpontban. A Azure-ban költségtakarékosabb munkavégzésben az ilyen típusú alkalmazások ahelyett, hogy egy alkalmazás csak tovább futnak 24 x 7-Várakozás az adatok feldolgozásához. Azure Schedulerrel segítségével meghatározhatja, hogy mikor egy alkalmazás vagy a naptárban időközönkénti alapján futni. Megbízható, és ellenőrzi, hogy egy folyamat fut-e akkor is, ha a hálózati, a gép és a data center hibákat észlel. A Feladatütemező REST API segítségével kezelheti ezeket a műveleteket.
 
 Ütemezett riasztás akkor fordul elő, amikor a Feladatütemező HTTP vagy HTTPS-üzeneteket küld egy adott végponti, vagy egy üzenet lehet helyezni a tároló várólista.  Így kell az alkalmazást, vagy egy elérhető végpontot, vagy azt a tároló várólista figyelése. Majd az üzenetet kap, miután műveleteket hajthat végre azt programozott intézkedéseket.
 
@@ -493,7 +493,7 @@ A HDInsight az Azure Apache Hadoop-alapú szolgáltatás neve. A HDInsight lehet
 HDinsight más összetevők, valamint a Hadoop ökoszisztémájának támogatja, beleértve a Hive és a Pig. A Microsoft is létrehozott összetevők, amelyek megkönnyítik a HDInsight által előállított adatok hagyományos Üzletiintelligencia-eszközök, például a HiveODBC adapter használatával, és együttműködik az Excel adatok Explorer.
 
 ### <a name="high-performance-computing-big-compute"></a>Nagy teljesítményű számítástechnikai (nagy számítási)
-A felhőplatform használatának legtöbb vonzó módjai egyik nagy teljesítményű számítástechnikai (HPC) és más "Nagy számítási" alkalmazások futtatásához. Például a szabványos Message Passing Interface (MPI), valamint a úgynevezett embarrassingly párhuzamos alkalmazások, például pénzügyi kockázat modellek használandó beépített speciális műszaki alkalmazásokhoz.
+A felhőplatform használatának legtöbb vonzó módjai egyik nagy teljesítményű számítástechnikai (HPC) és más "Nagy számítási" alkalmazások futtatásához. Például a szabványos Message Passing Interface (MPI), valamint a úgynevezett embarrassingly párhuzamos alkalmazások, például a pénzügyi kockázat modellek használandó beépített speciális műszaki alkalmazásokhoz.
 
 Nagy számítási lényege végrehajtja az kód sok számítógépre egy időben. Az Azure Ez azt jelenti, hogy számos futó virtuális gépek egyidejűleg, minden egyes probléma megoldására párhuzamosan működik. Ez bármilyen módon erőforrásokhoz és alkalmazásokhoz, azaz ütemezése, a munkahelyi szét ezek a példányok igényel. A Microsoft szabad HPC Pack és a számítási fürt megoldásait elvégezhetnek is Azure, kihasználni a Azure számítási és infrastruktúra-szolgáltatások igény kapacitás hozzáadása egy a helyszíni számítási fürt vagy futtatási nagy számítási alkalmazások teljesen a felhőben .
 
@@ -515,7 +515,7 @@ Az ábrán az látható, a Media Services összetevők a video- és egyéb adath
 
 Ezen a platformon használó alkalmazások az Azure-on vagy máshol futtathatók. Például egy asztali alkalmazás számára a videó éles house előfordulhat, hogy lehetővé teszik a videó feltöltése a Media Services szolgáltatásban a felhasználók majd feldolgozni azt különböző módokon. Azt is megteheti egy Azure-on futó tartalomkezelési felhő alapú szolgáltatás a Media Services feldolgozni, és a videó terjesztése előfordulhat, hogy támaszkodnak. Ahol csak akkor fut, és bármilyen kezeli, minden egyes alkalmazás úgy dönt, összetevőinek kell alkalmaznia, ezek a RESTful-felületeket általi eléréséhez szükséges.
 
-Terjesztéséhez, akkor hozza létre, az alkalmazás az Azure CDN, egy másik CDN használhatja, vagy csak küldéséhez a bits közvetlenül a felhasználók számára. Azonban nem kap, a Media Services használatával létrehozott videó képes használni a különböző ügyfél Systems, Windows, Macintosh, HTML 5, iOS, Android, Windows Phone, Flash és a Silverlight. A cél, hogy könnyebben modern media alkalmazásokat hozhat létre.
+Terjesztéséhez, akkor hozza létre, az alkalmazás az Azure CDN, egy másik CDN használhatja, vagy csak küldéséhez a bits közvetlenül a felhasználók számára. Azonban amikor megkapja van, a Media Services használatával létrehozott videó használni képes különböző ügyfél Systems, Windows, Macintosh, HTML 5, iOS, Android, Windows Phone, Flash és a Silverlight. A cél, hogy könnyebben modern media alkalmazásokat hozhat létre.
 
 **Hivatkozások**
 

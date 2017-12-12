@@ -4,7 +4,7 @@ description: "Ez a cikk ismerteti a Microsoft Lotus Domino-összekötő konfigur
 services: active-directory
 documentationcenter: 
 author: AndKjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: e07fd469-d862-470f-a3c6-3ed2a8d745bf
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/119/2017
 ms.author: barclayn
-ms.openlocfilehash: 15155fd9e1ab2dd6d58bcaf85a465c0585d3bc41
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 80151134821c6106382c58bf0ec68ea0f6d4646a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino-összekötő műszaki útmutatója
 Ez a cikk ismerteti a Lotus Domino-összekötő. A cikk vonatkozik a következő termékek:
@@ -416,7 +416,7 @@ Ez a rész felsorolja a attribútumok megadása kötelező, minden támogatott o
 | Fő-adatbázisban |<li>FullName</li><li>MailFile</li><li>Levelezokiszolgalo</li><li>MailDomain</li> |
 | Személy |<li>Vezetéknév</li><li>MailFile</li><li>Rövid_név</li><li>\_MMS_Password</li><li>\_MMS_IDStoreType</li><li>\_MMS_Certifier</li><li>\_MMS_IDRegType</li><li>\_MMS_UseAdminP</li> |
 | Ügyfél (nincs certifier rendelkező személy) |<li>\_MMS_IDRegType</li> |
-| Erőforrás |<li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>Erőforráskapacitás</li><li>Helykiszolgáló</li><li>displayName</li><li>MailFile</li><li>Levelezokiszolgalo</li><li>MailDomain</li> |
+| Erőforrás |<li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>Erőforráskapacitás</li><li>Hely</li><li>Megjelenítendő név</li><li>MailFile</li><li>Levelezokiszolgalo</li><li>MailDomain</li> |
 
 ## <a name="common-issues-and-questions"></a>Gyakori problémákat és kérdéseket
 ### <a name="schema-detection-does-not-work"></a>Séma észlelése nem működik.

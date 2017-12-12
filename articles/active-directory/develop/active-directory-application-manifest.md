@@ -4,7 +4,7 @@ description: "Az Azure Active Directory alkalmazásjegyzék, amely jelöli az id
 services: active-directory
 documentationcenter: 
 author: sureshja
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 4804f3d4-0ff1-4280-b663-f8f10d54d184
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: sureshja
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: d5e18f41d6eb69ccb7eafaa4de2646c4c38df5e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c92631323040f9be015d3824b9803cdde95d874b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="understanding-the-azure-active-directory-application-manifest"></a>Az Azure Active Directory alkalmazásjegyzékének megismerése
 Alkalmazások, amelyek integrálják az Azure Active Directory (AD) regisztrálni kell az Azure AD-bérlő, az alkalmazás állandó identitása konfigurációjának megadása. Ez a konfiguráció a futásidőben, engedélyezése, hogy az alkalmazás erőforrás kihelyezése és az Azure AD a hitelesítési/engedélyezési replikaszervező forgatókönyvek megkeresett van. Az Azure AD alkalmazásmodell kapcsolatos további információkért tekintse meg a [hozzáadása, frissítése és eltávolítása egy alkalmazás] [ ADD-UPD-RMV-APP] cikk.

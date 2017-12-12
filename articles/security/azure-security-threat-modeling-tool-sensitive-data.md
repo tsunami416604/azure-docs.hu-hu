@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 21d1ba02052862e16ef27ec313d53cd0bffcc21a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 60fcb24ffe813d7fb633c5398252dc8ea7d7a19f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Biztonsági keret: Bizalmas adatok |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 | **Webalkalmazás** | <ul><li>[Győződjön meg arról, hogy bizalmas tartalom nem tárolja a böngészőben](#cache-browser)</li><li>[Webes alkalmazás konfigurációs fájlja bizalmas adatokat tartalmazó szakasz titkosítása](#encrypt-data)</li><li>[Explicit módon letiltja az automatikus kiegészítés HTML attribútum bizalmas űrlapokban és a bemeneti adatok](#autocomplete-input)</li><li>[Győződjön meg arról, hogy a felhasználó képernyőn való megjelenítésének bizalmas adatok van maszkolva](#data-mask)</li></ul> | 
 | **Adatbázis** | <ul><li>[Dinamikus adatmaszkolási bizalmas adatok nem rendszerjogosultságú kitettség felhasználók megvalósítása](#dynamic-users)</li><li>[Győződjön meg arról, hogy a jelszavak sózott kivonatoló formátumban kell tárolni](#salted-hash)</li><li>[Győződjön meg arról, hogy adatbázismezőknek bizalmas adatok titkosítva van](#db-encrypted)</li><li>[Győződjön meg arról, hogy adatbázis szintű titkosítást (TDE) engedélyezve van](#tde-enabled)</li><li>[Győződjön meg arról, hogy titkosítva legyenek-e az adatbázis biztonsági mentése](#backup)</li></ul> | 
 | **Webes API** | <ul><li>[Győződjön meg arról, hogy az webes API-ra vonatkozó bizalmas adatok nem tárolódik a böngésző tárolási](#api-browser)</li></ul> | 
-| Az Azure Document DB rendszerbe | <ul><li>[A documentdb-ben tárolt bizalmas adatok titkosítása](#encrypt-docdb)</li></ul> | 
+| Az Azure Document DB rendszerbe | <ul><li>[Az Azure Cosmos Adatbázisba tárolt bizalmas adatok titkosítása](#encrypt-docdb)</li></ul> | 
 | **Azure IaaS virtuális gép megbízhatósági kapcsolat határán** | <ul><li>[Virtuális gépek által használt lemezek titkosítására használt Azure Disk Encryption](#disk-vm)</li></ul> | 
 | **Service Fabric megbízhatósági kapcsolat határán** | <ul><li>[Service Fabric-alkalmazások titkos kulcsainak titkosítása](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Biztonsági modellezési üzleti egység/csoportok használható, és ha szükséges](#modeling-teams)</li><li>[Kritikus entitások funkciót megosztott minimalizálása érdekében](#entities)</li><li>[A kockázatok a Dynamics CRM megosztás szolgáltatást és jó biztonsági gyakorlat a felhasználók képzése](#good-practices)</li><li>[Közé tartozik a megjelenítő konfigurációs részletek a kivételek kezelése proscribing fejlesztési szabványok szabály](#exception-mgmt)</li></ul> | 

@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f3662ed386c3a3d2d132a483e7192bddc26de06
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Kibocsátási megjegyzések a Azure BizTalk szolgáltatások
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 A kibocsátási megjegyzések a Microsoft Azure BizTalk szolgáltatások ebben a kiadásban az ismert problémákról tartalmaznak.
 
@@ -34,8 +36,8 @@ A kibocsátási megjegyzések a Microsoft Azure BizTalk szolgáltatások ebben a
 * Munkahelyi és iskolai fiókok támogatottak:  
   * **A forgatókönyv**: regisztrálta a BizTalk szolgáltatás központi telepítése a Microsoft-fiókkal (például user@live.com). Ebben a forgatókönyvben csak Microsoft Account kezelése a BizTalk szolgáltatás a BizTalk szolgáltatások portál használatával. Egy szervezeti fiók nem használható.  
   * **A forgatókönyv**: regisztrálta a BizTalk szolgáltatás központi telepítése egy Azure Active Directory szervezeti fiókkal (például user@fabrikam.com vagy user@contoso.com). Ebben a forgatókönyvben csak Azure Active Directory-felhasználók a szervezeten belül kezelheti a BizTalk szolgáltatás a BizTalk szolgáltatások portál használatával. A Microsoft-fiók nem használható.  
-* BizTalk szolgáltatás létrehozása a klasszikus Azure portálon, amikor Ön automatikusan regisztrálva van a BizTalk szolgáltatások portálon.
-  * **A forgatókönyv**: BizTalk szolgáltatás létrehozása a klasszikus Azure-portál ba, és válassza **kezelése** a legelső alkalommal. Amikor megnyílik a BizTalk Services portálra, a BizTalk szolgáltatás automatikusan regisztrálja, és készen áll a központi telepítések a.  
+* BizTalk szolgáltatás létrehozása, amikor Ön automatikusan regisztrálva van a BizTalk szolgáltatások portálon.
+  * **A forgatókönyv**: BizTalk szolgáltatás létrehozása Azure-ba, és válassza **kezelése** a legelső alkalommal. Amikor megnyílik a BizTalk Services portálra, a BizTalk szolgáltatás automatikusan regisztrálja, és készen áll a központi telepítések a.  
     Lásd: [regisztrálása és a BizTalk a BizTalk szolgáltatás központi telepítés frissítése Services portál](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
 
 ### <a name="august-14-update"></a>Augusztus 14 frissítés

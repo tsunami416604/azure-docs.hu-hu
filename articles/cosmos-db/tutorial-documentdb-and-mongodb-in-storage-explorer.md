@@ -1,7 +1,7 @@
 ---
 title: "Az Azure Storage Explorer Azure Cosmos DB kezelése"
 description: "Útmutató: Azure Cosmos Adatbázist Azure Tártallózó kezelése."
-Keywords: Azure Cosmos DB, Azure Storage Explorer, DocumentDB, MongoDB, DocumentDB
+Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
 services: cosmos-db
 documentationcenter: 
 author: Jiaj-Li
@@ -17,22 +17,22 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: Jiaj-Li
-ms.openlocfilehash: fc7d9494ddce127cb402d756f5fb03f21c5d3e8c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 153369270399efbe38ca2e8b8ab2e05cb7e702f9
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Az Azure Tártallózó (előzetes verzió) Azure Cosmos DB kezelése
 
-Azure Tártallózó Azure Cosmos DB használatával lehetővé teszi a felhasználók Azure Cosmos DB entitások kezelése, kezelhetők adatok, frissítse a tárolt eljárások és eseményindítók és egyéb Azure entitások, például a tárolási blobokat és üzenetsorokat. Mostantól ugyanarra az eszközre segítségével kezelheti a különböző Azure entitások egy helyen. Ilyenkor a Azure Tártallózó SQL (DocumentDB) és a MongoDB-fiókokat támogatja.
+Azure Tártallózó Azure Cosmos DB használatával lehetővé teszi a felhasználók Azure Cosmos DB entitások kezelése, kezelhetők adatok, frissítse a tárolt eljárások és eseményindítók és egyéb Azure entitások, például a tárolási blobokat és üzenetsorokat. Mostantól ugyanarra az eszközre segítségével kezelheti a különböző Azure entitások egy helyen. Ilyenkor az Azure Tártallózó SQL és a MongoDB fiókokat támogat.
 
 Ebből a cikkből megismerheti Azure Cosmos DB kezelése a Tártallózó használatával.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy Azure Cosmos DB fiókot egy SQL (DocumentDB) vagy a MongoDB-adatbázist. Ha nincs fiókja, létrehozhat egy Azure-portálon a leírtak szerint [Azure Cosmos DB: .NET és az Azure-portálon DocumentDB API webalkalmazás összeállítása](create-documentdb-dotnet.md).
+Egy Azure Cosmos DB fiókot az SQL API-t vagy a MongoDB API. Ha nincs fiókja, létrehozhat egy Azure-portálon a leírtak szerint [Azure Cosmos DB: .NET és az Azure-portálon az SQL API webalkalmazás összeállítása](create-documentdb-dotnet.md).
 
 ## <a name="installation"></a>Telepítés
 

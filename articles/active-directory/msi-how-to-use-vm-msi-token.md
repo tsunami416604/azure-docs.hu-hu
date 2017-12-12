@@ -4,7 +4,7 @@ description: "Lépésenkénti útmutatás és példák a használatát, az Azure
 services: active-directory
 documentationcenter: 
 author: bryanla
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: bryanla
-ms.openlocfilehash: 20ab8c9ceeb28c92b02a50ab03c9a7fa3fb7c7b7
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 9d80e0e4dbaa010aabd0e7aad91ac79cf2d433d5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Egy Azure virtuális gép felügyelt szolgáltatás Identity (MSI) használata a token beszerzése 
 
@@ -261,7 +261,7 @@ Ha hiba lép fel, a megfelelő HTTP-válasz törzsében a hiba részletes adatai
 
 Ez a szakasz a lehetséges hibaválaszok dokumentumokat. A "200 OK" állapota a sikeres válasz, és a hozzáférési jogkivonat tartalmazza az adott válasz törzsének JSON, a access_token elemben.
 
-| Állapotkód | Hiba | Hibaleírás | Megoldás |
+| Állapotkód | Hiba | Hiba leírása: | Megoldás |
 | ----------- | ----- | ----------------- | -------- |
 | 400 Hibás kérés | invalid_resource | AADSTS50001: Az alkalmazás nevű  *\<URI\>*  nem található a bérlő nevű  *\<TENANT-ID\>*. Ez akkor fordulhat elő, ha az alkalmazás nem lett telepítve a rendszergazda a bérlő által vagy a bérlő bármely felhasználó hozzájárulását. Előfordulhat, hogy elküldött a hitelesítési kérést a megfelelő bérlő számára. \ | (Csak Linux) |
 | 400 Hibás kérés | bad_request_102 | Nincs megadva a szükséges metaadat-fejléccel | Vagy a `Metadata` kérelem mező hiányzik a kérelemből, vagy helytelenül van formázva. Az értéket kell megadni, `true`, az összes kisbetű. A "kérelemmintát" című része a [REST szakasz megelőző](#rest) példát.|

@@ -1,4 +1,3 @@
-
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>A Microsoft hitelesítési könyvtár (MSAL) segítségével bejelentkezés a felhasználói
 
 1.  Hozzon létre egy fájlt `app.js`. Ha a Visual Studio használ, válassza ki a project (projekt gyökérmappájában), kattintson a jobb gombbal, és válassza: `Add`  >  `New Item`  >  `JavaScript File`:

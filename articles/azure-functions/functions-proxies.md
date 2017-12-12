@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: alkarche
-ms.openlocfilehash: 24bc439b6167d335a0862aa93debb9efe5aeae48
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 870dab3770f4595aa8b98e7f2dd18cf666b6dc67
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="work-with-azure-functions-proxies"></a>Az Azure Functions proxyk használata
 
@@ -44,7 +44,7 @@ A proxy most már létezik a függvény alkalmazás egy új végponton. Az ügyf
 
 ## <a name="modify-requests-responses"></a>Kérelem és válasz módosítása
 
-Az Azure Functions proxykat módosíthatja a kérelmeit és válaszait a háttérből. Az átalakításokat változókat is használhat, a [változókkal].
+Az Azure Functions proxykat módosíthatja a kérelmek és a háttér-válaszát. Az átalakításokat változókat is használhat, a [változókkal].
 
 ### <a name="modify-backend-request"></a>Módosítsa a háttér-kérés
 
@@ -60,7 +60,7 @@ Jelenleg nincs portál élmény a válaszok módosítását. Ez a funkció a pro
 
 ## <a name="using-variables"></a>Változók használata
 
-A proxy konfigurációját nem kell lehet statikus. Feltétel úgy, hogy az eredeti kérést, a háttér-válasz vagy alkalmazásbeállítások változókat használja.
+A proxy konfigurációját nem kell lehet statikus. Feltétel úgy, hogy az eredeti ügyfélkérés, a háttér-válasz vagy alkalmazásbeállítások változókat használja.
 
 ### <a name="request-parameters"></a>Hivatkozás a kérelemben szereplő paraméterek
 
@@ -93,7 +93,7 @@ Is hivatkozhat [alkalmazás beállításait, a függvény alkalmazás definiált
 Például a háttér-URL-t *https://%ORDER_PROCESSING_HOST%/api/orders* kellene "% ORDER_PROCESSING_HOST %" ORDER_PROCESSING_HOST beállítás értékével.
 
 > [!TIP] 
-> Háttér-gazdagépek Alkalmazásbeállítások használni, ha több központi telepítését vagy tesztelési környezetben. Így biztosíthatja, hogy mindig beszélünk a jobb oldali háttér az adott környezetben.
+> Háttér-gazdagépek Alkalmazásbeállítások használni, ha több központi telepítését vagy tesztelési környezetben. Így biztosíthatja, hogy mindig beszélünk a megfelelő háttér-környezet számára.
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
@@ -135,9 +135,9 @@ Minden egyes proxy van egy rövid nevet, például a *proxy1* az előző példá
 
 A requestOverrides objektum határozza meg a változások a kérelem a háttér-erőforrás neve. Az objektum a következő tulajdonságok határozzák meg:
 
-* **backend.Request.Method**: A HTTP-metódus hívni a háttérben használt.
-* **backend.Request.QueryString. \<ParameterName\>**: A lekérdezési karakterlánc paraméterként, amely a háttérben hívásának állítható be. Cserélje le  *\<ParameterName\>*  nevű, a beállítani kívánt paramétert. Az üres karakterlánc valósul meg, ha a paraméter nem szerepel a háttér-kérelemre.
-* **backend.Request.Headers. \<Fejléc neve\>**: egy fejléc a háttérben hívásának állítható be. Cserélje le  *\<fejléc neve\>*  be szeretné állítani a fejléc neve. Az üres karakterláncot adjon meg, ha a fejléc nem szerepel a háttér-kérelemre.
+* **backend.Request.Method**: A HTTP-metódus hívása a háttér-használt.
+* **backend.Request.QueryString. \<ParameterName\>**: A lekérdezési karakterlánc paraméterként, amely a háttér-hívásának állítható be. Cserélje le  *\<ParameterName\>*  nevű, a beállítani kívánt paramétert. Az üres karakterlánc valósul meg, ha a paraméter nem szerepel a háttér-kérelemre.
+* **backend.Request.Headers. \<Fejléc neve\>**: egy fejléc a háttér-hívásának állítható be. Cserélje le  *\<fejléc neve\>*  be szeretné állítani a fejléc neve. Az üres karakterláncot adjon meg, ha a fejléc nem szerepel a háttér-kérelemre.
 
 Értékek hivatkozhatnak Alkalmazásbeállítások és a paraméterek az eredeti ügyfél kérelemből.
 

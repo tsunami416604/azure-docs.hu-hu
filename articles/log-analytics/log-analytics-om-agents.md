@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2017
+ms.date: 12/10/2017
 ms.author: magoedte
-ms.openlocfilehash: 387ec757ec17799408ef45bfeb523eb98a5b1013
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6db47c7baa0a345a32d26d56e843acd0204ae50b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Adatforrások csatlakoztatása az Operations Manager szolgáltatáshoz
 A meglévő befektetések a System Center Operations Manager karbantartása, és kiterjesztett képességek használata Naplóelemzési, integrálható az Operations Manager az OMS-munkaterület.  Ez lehetővé teszi, miközben továbbra is használja az Operations Manager OMS lehetőségek is használja:
@@ -40,9 +40,9 @@ Ha az IT-biztonsági házirendeknek nem engedélyezi a számítógépek a háló
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 Megkezdése előtt tekintse át az alábbi részleteket megfelel a szükséges előfeltételek ellenőrzése.
 
-* Csak akkor támogatja az Operations Manager 2016-Operations Manager 2012 SP1 UR10 OMS és nagyobb, és az Operations Manager 2012 R2 UR11 és nagyobb.
+* Csak akkor támogatja az Operations Manager 2016-Operations Manager 2012 SP1 UR6 OMS és nagyobb, és az Operations Manager 2012 R2 UR2 és nagyobb.  A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
 * Az összes Operations Manager-ügynökök meg kell felelnie a minimális támogatási követelményeknek. Győződjön meg arról, hogy ügynökök a minimális frissítéskor, ellenkező esetben a Windows-ügynök forgalom sikertelen lehet, hogy és sok hiba előfordulhat, hogy töltse ki az Operations Manager eseménynaplójában.
-* Az Azure Log Analytics-előfizetéssel.  További információkért tekintse át [Ismerkedés a Naplóelemzési](log-analytics-get-started.md).
+* Az OMS-előfizetéssel.  További információkért tekintse át [Ismerkedés a Naplóelemzési](log-analytics-get-started.md).
 
 ### <a name="network"></a>Network (Hálózat)
 Az alábbi lista a proxy és tűzfal konfigurációs adatokat, az Operations Manager-ügynök, felügyeleti kiszolgálók és operatív konzol OMS folytatott kommunikációhoz szükséges információt.  Minden egyes összetevő érkező forgalom értéke kimenő, a hálózatról az OMS szolgáltatáshoz.     
@@ -208,7 +208,7 @@ Törölje a két összekötőt - Microsoft.SystemCenter.Advisor.DataConnector é
 > 
 
 ```
-    `param(
+    param(
     [String] $connectorName,
     [String] $msName="localhost"
     )

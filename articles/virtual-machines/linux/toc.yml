@@ -124,6 +124,8 @@
       items:
         - name: Infrastruktúrával kapcsolatos irányelvek
           href: infrastructure-example.md
+        - name: vCPU-kvóták
+          href: quotas.md
 - name: Útmutatók
   items:
     - name: Virtuális gépek létrehozása

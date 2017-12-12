@@ -4,7 +4,7 @@ description: "Segítség problémák vagy a szerepköralapú hozzáférés-vezé
 services: azure-portal
 documentationcenter: na
 author: andredm7
-manager: femila
+manager: mtillman
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.openlocfilehash: 407c030ea159915d4d7ac21760a3d17ec2204372
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b7155ed7613d46329229d8e572c75400041022ce
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="role-based-access-control-troubleshooting"></a>Szerepköralapú hozzáférés-vezérlés hibaelhárítása
 
@@ -37,12 +37,12 @@ Ha megadta a felhasználói csak olvasható hozzáférést egyetlen webalkalmaz�
 * Parancsok (például a start, stop, stb.)
 * Általános konfiguráció, a skálázási beállításokat, a biztonsági mentés beállításait és a figyelési beállítások például beállítások módosítása
 * Közzétételi hitelesítő adatokat és más titkos adatokat, például az alkalmazásbeállítások és kapcsolati karakterláncok használata
-* A folyamatos átviteli naplók
+* Folyamatos átviteli naplók
 * Diagnosztikai naplók konfiguráció
 * Konzol (parancssor)
 * Aktív és a legutóbbi központi telepítéseket (helyi git folyamatos üzembe helyezés)
-* Becsült töltött
-* Webteszt
+* Becsült költségek
+* Webtesztek
 * Virtuális hálózat (csak egy olvasó, ha egy virtuális hálózat már be lett állítva egy írási hozzáféréssel rendelkező felhasználó számára látható).
 
 Ha sem tudja már használni ezen csempék, kérje a rendszergazdától, közreműködő eléréséhez a webalkalmazás szeretné.
@@ -63,10 +63,10 @@ Ezek az elemek szükség **írási** a hozzáférést a **App Service-csomag** ,
 Ezek az elemek szükség **írási** a teljes hozzáférés **erőforráscsoport** , amely tartalmazza a webhely:  
 
 * SSL-tanúsítványokat és a kötések (SSL-tanúsítványok megoszthatók ugyanabban az erőforráscsoportban a helyek és a földrajzi helyhez között)  
-* A riasztási szabályok  
+* Riasztási szabályok  
 * automatikus skálázási beállításokat  
 * Application insights összetevőinek  
-* Webteszt  
+* Webtesztek  
 
 ## <a name="virtual-machine-workloads"></a>Virtuális gépek terheléséhez
 Sokkal hasonlóan a web apps, a virtuális gépek paneljét bizonyos funkcióinak írási hozzáférés szükséges a virtuális gépet, vagy további erőforrások az erőforráscsoportban.
@@ -84,7 +84,7 @@ Szükséges **írási** is a hozzáférést a **virtuális gép**, és a **erőf
 
 * Rendelkezésre állási csoport  
 * Elosztott terhelésű készlethez  
-* A riasztási szabályok  
+* Riasztási szabályok  
 
 Ha sem tudja már használni ezen csempék, kérje meg a rendszergazdát az erőforráscsoport közreműködői elérésére.
 

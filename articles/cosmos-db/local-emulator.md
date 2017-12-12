@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2017
 ms.author: arramac
-ms.openlocfilehash: 5ea254110a24ea3315d614ebca2d43bda0e1a674
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 69736670068479ce90cc346a163fe27b340cdb0a
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használja a helyi fejlesztéshez és teszteléshez
 
@@ -64,7 +64,7 @@ Az Azure Cosmos DB Emulator egy valósághű emuláció a Azure Cosmos DB szolg�
 Létrehoztunk egy valósághű helyi emuláció a tényleges Azure Cosmos DB szolgáltatást, amíg az Azure Cosmos DB Emulator végrehajtásának eltér attól, hogy a szolgáltatás. Például a Azure Cosmos DB Emulator szabványos operációs rendszer összetevők például a helyi fájlrendszerben; adatmegőrzési, és a HTTPS protokollhoz tartozó, a hálózati kapcsolatot. Ez azt jelenti, hogy bizonyos funkciók, amely az Azure infrastruktúra például globális replikációs, egyjegyű ezredmásodperces késési olvasása/írása, és beállítható konzisztenciaszinteket nem érhetők el az Azure Cosmos DB Emulator támaszkodik.
 
 > [!NOTE]
-> Ekkor az adatkezelő az emulátorban csak a DocumentDB API gyűjtemények és a MongoDB-gyűjtemény létrehozását támogatja. Az adatkezelő az emulátorban jelenleg nem támogatja a táblák és diagramokat létrehozását. 
+> Jelenleg az adatkezelő az emulátorban csak az SQL API-gyűjtemények és a MongoDB-gyűjtemény létrehozását támogatja. Az adatkezelő az emulátorban jelenleg nem támogatja a táblák és diagramokat létrehozását. 
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Az emulátor és a szolgáltatás közötti különbségek 
 Az Azure Cosmos DB Emulator egy helyi fejlesztői munkaállomáson fut emulált környezetet biztosít, mivel számos bizonyos funkciók és közötti különbségek az emulátor Azure Cosmos DB fiók a felhőben.
@@ -136,7 +136,7 @@ Az emulátor egy helyi hálózaton is futtathatja. Hálózati hozzáférés enge
 A hálózati hozzáférés engedélyezéséhez először a felhasználó az emulátor leállítási kell, és törölje az emulátor adatkönyvtára (C:\Users\user_name\AppData\Local\CosmosDBEmulator).
 
 ## <a name="developing-with-the-emulator"></a>A emulátorral fejlesztése
-Miután az Azure Cosmos DB-emulátort az asztalon, használata támogatott [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) vagy a [Azure Cosmos DB REST API](/rest/api/documentdb/) az emulátor kommunikál. Az Azure Cosmos DB Emulator egy beépített adatkezelő, amely lehetővé teszi a DocumentDB és a MongoDB API-kat, és tekintse meg a gyűjtemények dokumentumok létrehozásához és szerkesztéséhez programozás nélkül is.   
+Miután az Azure Cosmos DB-emulátort az asztalon, használata támogatott [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) vagy a [Azure Cosmos DB REST API](/rest/api/documentdb/) az emulátor kommunikál. Az Azure Cosmos DB Emulator egy beépített adatkezelő, amely lehetővé teszi az SQL- és MongoDB API-kat, és tekintse meg a gyűjtemények dokumentumok létrehozásához és szerkesztéséhez programozás nélkül is.   
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(

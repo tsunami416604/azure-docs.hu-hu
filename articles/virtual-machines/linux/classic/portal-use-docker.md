@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/27/2016
 ms.author: rasquill
-ms.openlocfilehash: a5c1822b7304c0360da866ddb504483f5a53432f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: f5d6bb066f9cee0d072ddb3129867cefefe3e66f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="using-the-docker-vm-extension-with-the-azure-classic-portal"></a>A Docker VM-bővítmény használata a klasszikus Azure portálon
+# <a name="using-the-docker-vm-extension-with-the-azure-portal"></a>A Docker Virtuálisgép-bővítmény használata az Azure-portálon
 > [!IMPORTANT] 
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]

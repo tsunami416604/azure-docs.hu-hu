@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: mahender; mblythe
-ms.openlocfilehash: efa5a50564d94dbecd4bc7fcb4082b01d16f680d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 358c2f7ce568707ea67cfa669de07dc3fb0135f7
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Az Azure által üzemeltetett API-k PowerApps és Microsoft Flow exportálása
 
@@ -34,7 +34,7 @@ Az API-k az exportálás előtt le kell írnia az API-t egy OpenAPI definíció 
 
 Az API-definíció exportálásához kövesse az alábbi lépéseket:
 
-1. Az a [Azure-portálon](https://portal.azure.com), keresse meg az Azure Functions vagy az App Service alkalmazáshoz.
+1. Az a [Azure-portálon](https://portal.azure.com), keresse meg az Azure Functions vagy egy másik App Service-alkalmazás.
 
     Ha az Azure Functions használatával, jelölje ki a függvény alkalmazást, **Platform funkciói**, majd **API-definíció**.
 
@@ -48,11 +48,11 @@ Az API-definíció exportálásához kövesse az alábbi lépéseket:
 
     ![A PowerApps és Microsoft Flow Exportálás gomb](media/app-service-export-api-to-powerapps-and-flow/export-apps-flow.png)
 
-3. Válassza ki a **exportálási mód**:
+3. Válassza ki a **Exportálás módja**:
 
-    **Express** készíthet az egyéni összekötő az Azure portálon. Bejelentkezett a powerapps segítségével vagy a Microsoft Flow, és hozhat létre összekötőket célkörnyezetben igényel. Ez a javasolt, hogy úgy érheti el. Ha ezt a módot használ, kövesse a [expressz exportálással](#express) az alábbi utasításokat.
+    **Express** készíthet az egyéni összekötő az Azure portálon. Bejelentkezett a powerapps segítségével vagy a Microsoft Flow, és hozhat létre összekötőket célkörnyezetben igényel. Ez az az ajánlott módszer, ha a két követelménynek érheti el. Ha ezt a módot használ, kövesse a [expressz exportálással](#express) az alábbi utasításokat.
 
-    **Manuális** lehetővé teszi az API-definíciót, amely exportálása, majd importálja a PowerApps és Microsoft Flow portálokon használatával. Ez az az ajánlott módszer, ha az Azure felhasználói és összekötők létrehozásához engedéllyel rendelkező felhasználók más személyek vagy az összekötő kell létrehozni egy másik-bérlőben. Ha ezt a módot használ, kövesse a [manuális exportálással](#manual) az alábbi utasításokat.
+    **Manuális** lehetővé teszi az API-definíciót, amely exportálása, majd importálja a PowerApps és Microsoft Flow portálokon használatával. Ez az ajánlott módszer az, ha az Azure felhasználói és összekötők létrehozásához engedéllyel rendelkező felhasználók más személyeknek, vagy az összekötő kell létrehozni egy másik Azure-bérlőhöz. Ha ezt a módot használ, kövesse a [manuális exportálással](#manual) az alábbi utasításokat.
 
     ![Exportálás módja](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
 

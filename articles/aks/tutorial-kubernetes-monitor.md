@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 084c6bf3855bdc757c3f2926b35eaf7bba0ef389
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: d10f9ce965e832c826e2b27b4746231b47be83d0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="monitor-azure-container-service-aks"></a>A figyelő az Azure Tárolószolgáltatás (AKS)
 
 A Kubernetes fürt és a tárolók figyelése fontos, különösen akkor, ha egy éles fürt futtató több alkalmazással rendelkező léptékű.
 
-Ebben az oktatóanyagban a AKS fürt használatával figyelés konfigurálása a [Log Analytics-tárolók megoldást](../log-analytics/log-analytics-containers.md).
+Ebben az oktatóanyagban a AKS fürt használatával figyelés konfigurálása a [Log Analytics-tárolók megoldást][log-analytics-containers].
 
 Ebben az oktatóanyagban nyolc, hét részét tartalmazza a következő feladatokat:
 
@@ -32,7 +32,7 @@ Ebben az oktatóanyagban nyolc, hét részét tartalmazza a következő feladato
 
 Az előző oktatóanyagok tároló lemezképek, a feltöltött Azure tároló beállításjegyzék ezeket a lemezképeket és a létrehozott Kubernetes fürt alkalmazás lett csomagolva.
 
-Ha nem volna ezeket a lépéseket, és szeretné követéséhez, vissza [oktatóanyag 1 – létrehozás tároló képek](./tutorial-kubernetes-prepare-app.md).
+Ha nem volna ezeket a lépéseket, és szeretné követéséhez, vissza [oktatóanyag 1 – létrehozás tároló képek][aks-tutorial-prepare-app].
 
 ## <a name="configure-the-monitoring-solution"></a>A figyelési megoldás konfigurálása
 
@@ -58,7 +58,7 @@ Válassza ki az értékek lekérésére, **OMS-munkaterület** a tároló-megold
 
 ## <a name="configure-monitoring-agents"></a>Figyelés ügynökök konfigurálása
 
-A következő Kubernetes jegyzékfájl a tárolófigyelő ügynökök Kubernetes fürt konfigurálásához használható. Létrehoz egy Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), amely egyetlen pod fut a fürt minden csomópontján.
+A következő Kubernetes jegyzékfájl a tárolófigyelő ügynökök Kubernetes fürt konfigurálásához használható. Létrehoz egy Kubernetes [DaemonSet][kubernetes-daemonset], amely egyetlen pod fut a fürt minden csomópontján.
 
 A következő szöveg nevű fájlba mentése `oms-daemonset.yaml`, és cserélje le a helyőrző értékeket az `WSID` és `KEY` a napló Analytics munkaterületének Azonosítóját és kulcsát.
 
@@ -153,7 +153,7 @@ Az Azure-portálon válassza ki a Naplóelemzési munkaterület sikeresen rögz�
 
 ![Irányítópult](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
-Tekintse meg a [Azure Log Analytics-dokumentáció](../log-analytics/index.yml) kérdez le, és a figyelési adatok elemzése részletes útmutatást.
+Tekintse meg a [Azure Log Analytics-dokumentáció] [ log-analytics-docs] kérdez le, és a figyelési adatok elemzése részletes útmutatást.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -167,4 +167,14 @@ Ebben az oktatóanyagban az OMS Kubernetes fürt figyeli. Feladatok kezelt tarta
 A következő oktatóanyag tájékozódhat az új verzióra frissíti Kubernetes továbblépés.
 
 > [!div class="nextstepaction"]
-> [Frissítési Kubernetes](./tutorial-kubernetes-upgrade-cluster.md)
+> [Frissítési Kubernetes][aks-tutorial-upgrade]
+
+<!-- LINKS - external -->
+[kubernetes-daemonset]: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+
+<!-- LINKS - internal -->
+[aks-tutorial-deploy-app]: ./tutorial-kubernetes-deploy-application.md
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[aks-tutorial-upgrade]: ./tutorial-kubernetes-upgrade-cluster.md
+[log-analytics-containers]: ../log-analytics/log-analytics-containers.md
+[log-analytics-docs]: ../log-analytics/index.yml

@@ -4,7 +4,7 @@ description: "A gyakran használt Azure Active Directory fejlesztői fogalmak é
 services: active-directory
 documentationcenter: 
 author: bryanla
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 6a657177087ca01f4507b12048a88850aea1a03f
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 81e0778a0ae168170436213d8aa48c8d60575da2
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Az Azure Active Directory fejlesztői szószedet
 Ez a cikk az Azure Active Directory (AD) fejlesztői alapfogalmakat, amelyek hasznosak, ha az Azure AD alkalmazásfejlesztés megtanulni részénél definíciókat tartalmazza.
@@ -54,7 +54,7 @@ Annak érdekében, hogy egy alkalmazás integrálása, és delegálása az Azure
 
 Lásd: [alkalmazások integrálása az Azure Active Directory] [ AAD-Integrating-Apps] további részleteket.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>hitelesítés
 A folyamat, kihívást egy entitás jogos hitelesítő adatokat, az alapot biztosít egy rendszerbiztonsági tag identitás- és hozzáférés-vezérlési létrehozásához. Során egy [OAuth2 hitelesítésengedélyezési](#authorization-grant) például a felek hitelesítéséhez a következők a szerepkör tölti [erőforrás tulajdonosa](#resource-owner) vagy [ügyfélalkalmazás](#client-application)attól függően, hogy a a támogatás használt.
 
 ## <a name="authorization"></a>Engedélyezési

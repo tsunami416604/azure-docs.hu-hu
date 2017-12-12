@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: mimig
-ms.openlocfilehash: 03127c9d35b8dd0fe54310c84ff89ea087f175b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6414cdc942c43f6eb13ca8f050d6503bdd3e0b42
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>A Power BI oktatóanyag az Azure Cosmos DB: a Power BI-összekötővel adatok megjelenítése
 [Powerbi.com webhelyen](https://powerbi.microsoft.com/) egy olyan online szolgáltatás, ahol létrehozása és megosztása irányítópultokat és jelentéseket, és a szervezet számára fontos adatokkal.  A Power BI Desktop egy dedikált jelentéskészítési eszköz, amely lehetővé teszi a különféle adatforrásokból származó adatok beolvasása egyesítése és a átalakíthatja az adatokat, hatékony képi megjelenítések létrehozásához, és tegye közzé a jelentéseket a Power bi-bA.  A Power BI Desktop legújabb verziójával most csatlakozhat a Cosmos DB összekötőn keresztül Cosmos DB fiókját Power bi.   
@@ -224,5 +224,5 @@ Egy ütemezett frissítés tegye a következőket.
 
 ## <a name="next-steps"></a>Következő lépések
 * További információ a Power BI, [első lépések a Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
-* Cosmos DB kapcsolatos további tudnivalókért tekintse meg a [Azure Cosmos DB dokumentációjának kezdőlapján](https://azure.microsoft.com/documentation/services/documentdb/).
+* Cosmos DB kapcsolatos további tudnivalókért tekintse meg a [Azure Cosmos DB dokumentációjának kezdőlapján](https://azure.microsoft.com/documentation/services/cosmos-db/).
 

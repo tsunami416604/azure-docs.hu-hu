@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Cosmos DB: A DocumentDB Java API, SDK & erőforrások |} Microsoft Docs"
-description: "Tudnivalók a Java API és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB DocumentDB Java SDK verziói között végrehajtott módosításokat."
+title: "Azure Cosmos DB: SQL Java API-t, az SDK és erőforrások |} Microsoft Docs"
+description: "Tudnivalók az SQL Java API-t és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB SQL Java SDK verziói között végrehajtott módosításokat."
 services: cosmos-db
 documentationcenter: java
 author: rnagpal
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 38737c8a296e27a4256e19b8c45cab17fc71b81a
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: c0d3bdfb607d2bbea669d2b0a76f610d42f31b33
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-documentdb-java-sdk-release-notes-and-resources"></a>Azure Cosmos DB: A DocumentDB Java SDK kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API-t Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET-módosítás adatcsatorna](documentdb-sdk-dotnet-changefeed.md)
@@ -34,6 +34,8 @@ ms.lasthandoff: 11/16/2017
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 <table>
 
@@ -173,7 +175,7 @@ Microsoft legalább értesítést küldenek **12 hónapon keresztül** SDK eltá
 A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 
 > [!WARNING]
-> A DocumentDB Java SDK-es vagy korábbi összes verziója **1.0.0** a rendszerből **2016. február 29-én**.
+> Összes verziója az SQL Java SDK-es vagy korábbi **1.0.0** volt használatból **2016. február 29-én**.
 > 
 > 
 

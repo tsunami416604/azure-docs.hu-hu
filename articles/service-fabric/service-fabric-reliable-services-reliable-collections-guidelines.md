@@ -5,20 +5,20 @@ services: service-fabric
 documentationcenter: .net
 author: mcoskun
 manager: timlt
-editor: masnider,rajak
+editor: masnider,rajak,zhol
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 5/3/2017
+ms.date: 12/10/2017
 ms.author: mcoskun
-ms.openlocfilehash: 053a7bca76362035e428fc11806b3e4f83d00946
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9c48598a6bfb33f0151eff74ec5dd0ffb47b228
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure Service Fabric megbízható gyűjtemények
 Ez a szakasz útmutatást nyújt a megbízható állapotkezelője és megbízható gyűjtemények használatával. A cél, hogy a felhasználók közös nehézségek elkerülése érdekében.
@@ -33,6 +33,7 @@ Az irányelvek egyszerű ajánlásokat a feltételeket a következő előtaggal 
 * Ne hozzon létre egy tranzakcióban, másik tranzakcióban `using` utasítás mert holtpont lehet okozni.
 * Győződjön meg arról, hogy a `IComparable<TKey>` implementációjának helyességét. A rendszer mennyi függőségi `IComparable<TKey>` az ellenőrzőpontok és sorok egyesítéshez.
 * Módosítási zárolást szándéka elemet olvasásakor frissítésére használni megakadályozhatja, hogy egy bizonyos osztály holtpont.
+* Vegye figyelembe, ha megtartja az 1000-nél kisebb lehet partíciónként megbízható gyűjtemények száma. Több megbízható gyűjteményeket, amelyek kevesebb elem felett előnyben részesítik a megbízható gyűjtemények további elemeket.
 * Vegye figyelembe a megőrzi az elemeket (például TKey + TValue megbízható szótár) 80 KB alatt: kisebb annál pontosabb. Ez csökkenti a nagy objektumok halommemóriájának kihasználtsága, valamint a lemezek és a hálózati IO-követelményeket. Gyakran csökkentik az ismétlődő adatokat replikál, az érték csak egy kis részét frissítésekor. Közös ennek érdekében a megbízható szótárban módja a sorok megszüntetése több sort.
 * Érdemes biztonsági mentést, és állítsa vissza a vész-helyreállítási funkció.
 * Elkerülése érdekében egyetlen entitás műveletek és többentitásos műveletek (például `GetCountAsync`, `CreateEnumerableAsync`) miatt a különböző elkülönítési szinten ugyanabban a tranzakcióban.

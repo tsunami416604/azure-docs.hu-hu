@@ -4,7 +4,7 @@ description: "Ez a cikk ismerteti a HTTP-üzenetek használata a szolgáltatáso
 services: active-directory
 documentationcenter: .net
 author: navyasric
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0bb74816f216f0965c3ec780c4895cf7e488c3cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb3e01b1b8741253a459a41cfff27da558573551
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatás hívásokon szolgáltatás meghatalmazott az On-meghatalmazásos folyamat-beli felhasználói identitás
 Az OAuth 2.0 On-Behalf-Of folyamat szolgál a használati eset, ahol egy alkalmazás elindítja egy szolgáltatás vagy webes API, amely pedig meg kell hívni egy másik szolgáltatás vagy webes API-t. A lényege való terjesztése, a felhasználó delegált identitása és az engedélyek a kérelem lánc keresztül. A középső rétegbeli szolgáltatás hitelesített kéréseket küld az alárendelt szolgáltatás kell biztonságos hozzáférési tokent az Azure Active Directory (Azure AD), a felhasználó nevében.
@@ -80,7 +80,7 @@ Egy közös titkos kulcs használata esetén a szolgáltatás hozzáférési ké
 | helyességi feltétel |Szükséges | A jogkivonatot, amelyet a kérés értéke. |
 | client_id |Szükséges | Az Azure ad-vel a regisztráció során a hívó szolgáltatáshoz hozzárendelt Alkalmazásazonosító. Az alkalmazás azonosítója az Azure felügyeleti portálon található, kattintson a **Active Directory**, és kattintson arra a címtárra, majd kattintson az alkalmazás nevét. |
 | client_secret |Szükséges | A kulcs a hívó szolgáltatás regisztrálva az Azure ad-ben. Ez az érték rendelkezik lett jegyezni a regisztráció során. |
-| Erőforrás |Szükséges | A fogadó szolgáltatást (védett erőforrás) App ID URI. Az Azure felügyeleti portálon App ID URI megkereséséhez kattintson **Active Directory**kattintson arra a címtárra, kattintson az alkalmazás nevét, kattintson **összes beállítás** , majd **tulajdonságai**. |
+| erőforrás |Szükséges | A fogadó szolgáltatást (védett erőforrás) App ID URI. Az Azure felügyeleti portálon App ID URI megkereséséhez kattintson **Active Directory**kattintson arra a címtárra, kattintson az alkalmazás nevét, kattintson **összes beállítás** , majd **tulajdonságai**. |
 | requested_token_use |Szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. Az On-meghatalmazásos folyamat, az érték lehet **on_behalf_of**. |
 | Hatókör |Szükséges | Egy szóközzel elválasztott a jogkivonatkérelem hatókört. Az OpenID Connect, a hatókör **openid** meg kell adni.|
 
@@ -113,7 +113,7 @@ Szolgáltatás hozzáférési kérelmek tanúsítvánnyal tartalmazza a követke
 | client_id |Szükséges | Az Azure ad-vel a regisztráció során a hívó szolgáltatáshoz hozzárendelt Alkalmazásazonosító. Az alkalmazás azonosítója az Azure felügyeleti portálon található, kattintson a **Active Directory**, és kattintson arra a címtárra, majd kattintson az alkalmazás nevét. |
 | client_assertion_type |Szükséges |Az értéknek kell lennie`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |Szükséges | Egy helyességi feltétel (egy JSON Web Token) hozzon létre, és írja alá a tanúsítványt igénylő regisztrálta hitelesítő adatként az alkalmazáshoz.  További információ a [tanúsítvány a hitelesítő adatok](active-directory-certificate-credentials.md) megtudhatja, hogyan kell regisztrálni a tanúsítványt, és a helyességi feltétel formátuma.|
-| Erőforrás |Szükséges | A fogadó szolgáltatást (védett erőforrás) App ID URI. Az Azure felügyeleti portálon App ID URI megkereséséhez kattintson **Active Directory**kattintson arra a címtárra, kattintson az alkalmazás nevét, kattintson **összes beállítás** , majd **tulajdonságai**. |
+| erőforrás |Szükséges | A fogadó szolgáltatást (védett erőforrás) App ID URI. Az Azure felügyeleti portálon App ID URI megkereséséhez kattintson **Active Directory**kattintson arra a címtárra, kattintson az alkalmazás nevét, kattintson **összes beállítás** , majd **tulajdonságai**. |
 | requested_token_use |Szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. Az On-meghatalmazásos folyamat, az érték lehet **on_behalf_of**. |
 | Hatókör |Szükséges | Egy szóközzel elválasztott a jogkivonatkérelem hatókört. Az OpenID Connect, a hatókör **openid** meg kell adni.|
 
@@ -148,7 +148,7 @@ Sikerességi válasz egy JSON OAuth 2.0 válasz a következő paraméterekkel.
 | Hatókör |Hozzáférést biztosít a jogkivonat körét. |
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejárati idejének. A dátum jelzi másodpercben a 1970-01-01T0:0:0Z UTC, amíg az elévülési időt. Ezt az értéket a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
-| Erőforrás |A fogadó szolgáltatást (védett erőforrás) App ID URI. |
+| erőforrás |A fogadó szolgáltatást (védett erőforrás) App ID URI. |
 | access_token |A kért hozzáférési jogkivonat. A hívó szolgáltatás a fogadó szolgáltatással való hitelesítésre szolgáló használhatja a token. |
 | id_token |A megadott azonosítóhoz jogkivonat. A hívó szolgáltatás ezzel a felhasználó személyazonosságát, és a felhasználói munkamenet elindításához. |
 | refresh_token |A kért hozzáférési jogkivonat frissítési jogkivonat. A hívó szolgáltatás egy új hozzáférési jogkivonat lekérni az aktuális jogkivonat lejárata után is használhatja a token. |

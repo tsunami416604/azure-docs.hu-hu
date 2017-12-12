@@ -4,7 +4,7 @@ description: "Ez a GYIK az Azure AD Connect Health kapcsolatos kérdésekre ad v
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: samueld
+manager: mtillman
 editor: curtand
 ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 0c32ac27187a88dd13bb747f541968d2e81c5064
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 8cbe60ad3eb26aa1152f8eec3bdc36b8006cf242
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk kapcsolatos gyakori kérdések (GYIK) Azure Active Directory (Azure AD) Connect Health rájuk adott válaszokat tartalmazza. Ezeket a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatával kapcsolatos kérdésekre foglalkozik.

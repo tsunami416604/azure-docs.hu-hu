@@ -3,7 +3,7 @@ title: "Egy Azure hibrid identitáskezelési megoldás kiválasztása |} Microso
 description: "Ismerkedjen meg a rendelkezésre álló hibrid identitáskezelési megoldások és javaslatok csak akkor lehet a legjobb identitás irányítás döntés a szervezete."
 keywords: 
 author: jeffgilb
-manager: femila
+manager: mtillman
 ms.reviewer: jsnow
 ms.author: jeffgilb
 ms.date: 7/5/2017
@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: 5838e3276765f4f074bca2e3cae81b17edfa7c69
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4bed74307f6f95cff9c779abc72da6514d869ea3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft hibrid identitáskezelési megoldások
 [A Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) hibrid identitáskezelési megoldások lehetővé teszik a helyszíni címtár objektumainak szinkronizálása az Azure ad szolgáltatással, miközben továbbra is a felhasználók a helyszínen. Az első azt kell eldöntenie, ha a helyszíni Windows Server Active Directory szinkronizálása és az Azure AD tervezési szeretné használni identitás szinkronizált vagy összevont identitás. Szinkronizált identitások, és szükség esetén jelszókivonatait, lehetővé teszi a felhasználók, mind a helyszíni és felhőalapú szervezeti erőforrások eléréséhez használható ugyanazt a jelszót. A speciális forgatókönyv-követelményeinek, például egyszeri bejelentkezéses (SSO) vagy a helyi multi-factor Authentication szolgáltatás használatakor is telepíteni kell az Active Directory összevonási szolgáltatások (AD FS) összevont identitások. 
@@ -39,10 +39,10 @@ A legtöbb szervezet számára, akik csak a felhasználók jelentkezhetnek be az
 > [!TIP]
 > Felhasználói jelszavak a helyi Windows Server Active Directory a tényleges felhasználói jelszó jelölő kivonatot formájában vannak tárolva. A kivonat értéke (a kivonatoló algoritmus) egyirányú matematikai függvény eredménye. Nincs módszer eredménye egy egyirányú működnek, mint az egyszerű szövegként a jelszavak visszaállítását. Jelentkezzen be a helyszíni hálózat Jelszókivonat nem használható. Ha úgy dönthet, hogy a jelszavak szinkronizálása, az Azure AD Connect jelszókivonatait kibontja a helyszíni Active Directoryból, és alkalmazza azok a jelszókivonatok feldolgozás az Azure AD szinkronizálása előtt további biztonsági. A jelszó-szinkronizálás a jelszóvisszaírás együtt is használható a ahhoz, hogy az önkiszolgáló jelszó-változtatási Azure AD-ben. Emellett engedélyezheti az egyszeri bejelentkezés (SSO) a felhasználók számára a vállalati hálózathoz csatlakoznak a tartományhoz csatlakoztatott számítógépeken. Az engedélyezett felhasználók az egyszeri bejelentkezést, csak kell adjon meg egy felhasználónevet biztonságosan hozzáférhessenek a felhőben található erőforrásokat. 
 
-## <a name="pass-through-authentication"></a>Áteresztő hitelesítés
+## <a name="pass-through-authentication"></a>Átmenő hitelesítés
 [Az Azure AD átmenő hitelesítés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication) egyszerű jelszó érvényesítése megoldást kínál az Azure AD-alapú szolgáltatásokhoz a helyszíni Active Directory használatával. Ha a szervezet biztonsági és megfelelőségi házirendek nem teszik lehetővé a felhasználói jelszavak küldése még kivonatolt formában, és csak asztali SSO tartományhoz csatlakoztatott eszközök támogatásához szükséges, ajánlott átmenő hitelesítést használó kiértékelése. Áteresztő hitelesítés nem szükséges a szegélyhálózaton, amely a telepítési infrastruktúrának, az AD FS-hez képest egyszerűsíti a telepítést. Amikor a felhasználók bejelentkeznek az Azure AD, ezt a hitelesítési módszert érvényesíti közvetlenül szemben a helyszíni Active Directory felhasználók jelszavát.
 
-![Áteresztő hitelesítés](./media/choose-hybrid-identity-solution/pass-through-authentication.png)
+![Átmenő hitelesítés](./media/choose-hybrid-identity-solution/pass-through-authentication.png)
 
 Átmenő hitelesítéssel nincs szükség speciális hálózati infrastruktúra, és nem kell a helyszíni jelszavak tárolása a felhőben. Egyszeri bejelentkezés, kombinálva átmenő hitelesítés valóban integrált élményt biztosít, ha az Azure AD bejelentkezés vagy más felhőalapú szolgáltatásokat.
 

@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 8a8b62e2cdf9f4f6c41b041ac20694303203531b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e0977417ec8678db54d91677b1f9bdc709e196b5
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Az Azure HDInsight Hadoop-összetevők kibocsátási megjegyzései
 
@@ -101,7 +101,7 @@ Spark 2.0.1 már a Spark-fürtök (HDInsight 3.5-ös verzió) érhető el.
 * A peremhálózati csomópont hozzáféréshez URI-re módosította **clustername**-kell adnia végrehajtási adatokat-ssh.azurehdinsight.net
 * Az R Server on HDInsight-fürtök kiépítése úgy alakították ki.
 * Az R Server on HDInsight rendszeres HDInsight lehetőség "R Server" fürt típusa, és már nem egy külön HDInsight-alkalmazásokat telepítették. Az élcsomóponthoz és R Server bináris fájlok most már kiépített az R fájlkiszolgálófürt központi telepítésének részeként. Ez növeli a sebesség és a kiépítés megbízhatóságát. Az R Serverhez árképzési modellt a ennek megfelelően frissül.
-* R Server fürt típusa árát a Standard csomag ár plusz R Server emelt díjas ár alapján. Prémium csomagban számára fenntartva Premium szolgáltatásainak különböző fürttípussal érhető között, és R Server-fürt típusa nem használható. Ez a változás nincs hatással az R Server; hatékony díjszabása csak hogyan a díjak jelenjenek meg a számlázási változik. R Server összes meglévő fürt továbbra is működnek, és a Resource Manager-sablonok is érvénytelenítése értesítésig működni. **Ajánlott, ha a parancsfájlalapú telepítésének folyamatát, új Resource Manager-sablonnal használ.**
+* R Server fürt típusa árát a Standard csomag ár plusz R Server emelt díjas ár alapján. Ez a változás nincs hatással az R Server; hatékony díjszabása csak hogyan a díjak jelenjenek meg a számlázási változik. R Server összes meglévő fürt továbbra is működnek, és a Resource Manager-sablonok is érvénytelenítése értesítésig működni. **Ajánlott, ha a parancsfájlalapú telepítésének folyamatát, új Resource Manager-sablonnal használ.**
 
 
 

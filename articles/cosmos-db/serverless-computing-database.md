@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: mimig
-ms.openlocfilehash: f9bcecff4031bcf51e3885ad98da69d9be41b397
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 2bbbde3497d8680ba4203049f66ea05005af0d11
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Az Azure Cosmos DB: Kiszolgáló nélküli adatbázis számítási Azure Functions használatával
 
@@ -44,7 +44,7 @@ Az Azure Cosmos DB eseményindító, a bemeneti kötése és a kimeneti kötése
 * Egy bemeneti kötése egy Cosmos-DB Azure-tárolót egy Azure Cosmos DB eseményindító ugyanabban a függvényben használható, és használható vagy azok nélkül is kötelező kimenettel. Segítségével kombinációban történő alkalmazására naprakész pénznem exchange (lekért be egy bemeneti kötése egy exchange-tárolót) a módosítás hírcsatorna új rendelések a vásárlási bevásárlókocsiból szolgáltatásban. A frissített bevásárlási bevásárlókocsiból teljes, a jelenlegi pénznemátváltásoknál alkalmazza, a csak írható harmadik tárolóhely egy kimeneti kötése.
 
 > [!NOTE]
-> Jelenleg az Azure Cosmos DB eseményindító, a bemeneti kötések és a kimeneti kötések működik, csak a DocumentDB, a táblának és a Graph API fiókokhoz.
+> Jelenleg az Azure Cosmos DB eseményindító, a bemeneti kötések és a kimeneti kötések működik, csak SQL, a táblának és a Graph API fiókokhoz.
 
 ## <a name="use-cases"></a>Használati esetek
 

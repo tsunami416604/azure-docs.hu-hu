@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: f4f0aa2cfc722a1cc61788a1c6ba7caedf6b4c9b
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 0065874c2f992ad9c18f68303878fb580ee8b391
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>A Service Fabric-fürt létrehozása az Azure Resource Manager használatával 
 > [!div class="op_single_selector"]
@@ -115,7 +115,7 @@ az account set --subscription $subscriptionId
 
 Az alábbi parancs segítségével gyorsan, hozzon létre egy fürtöt minimális paraméterek megadásával
 
-A használt sablon megtalálható a [azure service fabric sablon minták: windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-ubuntu-1-NodeTypes-Secure)
+A használt sablon megtalálható a [azure service fabric sablon minták: windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
 Az alábbi működik a Windows és Linux-fürtök létrehozására vonatkozó parancsokat, egyszerűen adja meg az operációs rendszer, ennek megfelelően. A powershell parancssori felület parancsait is kiírja az tanúsítvány-tanúsítványt a megadott theCertificateOutputFolder /. A parancs felsorolásszerűen más paramétereket, valamint például a virtuális gép Termékváltozat.
 
@@ -224,7 +224,7 @@ Ha ez egy hitelesítésszolgáltató által aláírt tanúsítvány, amely kat, 
 
 
 #### <a name="use-the-default-5-node-1-nodetype-template-that-ships-in-the-module"></a>Az alapértelmezett 5-csomópont 1 nodetype sablon, a modul részét képező használata
-A használt sablon megtalálható a [azure-minták: windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-ubuntu-1-NodeTypes-Secure)
+A használt sablon megtalálható a [azure-minták: windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
 ```Powershell
 $resourceGroupLocation="westus"
@@ -693,7 +693,7 @@ Ezen a ponton rendelkezik olyan Azure Active Directory-felügyeleti hitelesíté
 [azure-CLI]:https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [key-vault-get-started]:../key-vault/key-vault-get-started.md
 [aad-graph-api-docs]:https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog
-[azure-classic-portal]: https://manage.windowsazure.com
+[azure-classic-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]: ../active-directory/active-directory-howto-tenant.md
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md

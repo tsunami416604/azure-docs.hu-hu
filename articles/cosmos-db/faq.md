@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: f32d23caa0a89b7f9336628280d726a351fb0603
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: e79a63c4316c50a7af0fc7ba0979a772ff5e6a91
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -30,11 +30,15 @@ Azure Cosmos-adatbázis az ideális megoldás a webes, mobil-, játék- és IoT-
 
 A további adatbázisra vonatkozó kérdések, válaszok és központi telepítésével és a szolgáltatás használatával kapcsolatos útmutatásért lásd az [Azure Cosmos DB-dokumentáció oldalán] ((https://docs.microsoft.com/azure/cosmos-db/).
 
-### <a name="what-happened-to-documentdb"></a>Mi történt a DocumentDB?
-A DocumentDB API egyike a támogatott API-k és az Azure Cosmos DB adatmodellekben. Emellett Azure Cosmos DB támogatja, a Graph API-val (előzetes verzió), a tábla API és a MongoDB API. További információkért lásd: [kérdések a DocumentDB-ügyfelek](#moving-to-cosmos-db).
+### <a name="what-happened-to-the-documentdb-api"></a>Mi történt a DocumentDB API-t?
 
-### <a name="how-do-i-get-to-my-documentdb-account-in-the-azure-portal"></a>Hogyan szerezhetek saját DocumentDB-fiók az Azure-portálon?
-Az Azure-portálon kattintson a Azure Cosmos DB ikonra a bal oldali ablaktáblán. Ha egy DocumentDB-fiókot, mielőtt, most már rendelkezik Azure Cosmos DB adatait, a számlázási módosítása nélkül.
+Az Azure Cosmos DB DocumentDB API-t vagy az SQL (DocumentDB) API mostantól néven Azure Cosmos DB SQL API-t. Nem kell a DocumentDB API-val készült alkalmazások futtatásának bármit módosíthat. A funkció változatlan marad.
+
+Ha egy DocumentDB API-fiókkal, most már rendelkezik egy SQL API-fiókot, a számlázási módosítása nélkül. 
+
+### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Mi történt Azure DocumentDB szolgáltatás?
+
+Az Azure DocumentDB szolgáltatás most az Azure Cosmos DB szolgáltatás részét képezi, és akkor jelentkezik, az SQL API formájában. A Azure documentdb használatával készített alkalmazások szemben Azure Cosmos DB SQL API módosítások nélkül fog futni. Emellett Azure Cosmos DB támogatja, a Graph API-val (előzetes verzió), a tábla API, a MongoDB API és a Cassandra API (előzetes verzió).
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Mik az Azure Cosmos DB jellemző használati esetei?
 Azure Cosmos DB jó választás az új webes, mobil-, játék- és IoT-alkalmazásokhoz, ahol automatikus méretezési, kiszámítható teljesítményt, gyors ezredmásodperces válaszidők sorrendje, illetve a lekérdezés képessége sémamentes adatok azért fontos. Az Azure Cosmos DB adatmodelljeinek gyors fejlesztést és az azt támogató alkalmazás-adatmodellek folyamatos ismétlését. Felhasználó által létrehozott tartalmakat és adatokat kezelő alkalmazások [Azure Cosmos DB gyakori alkalmazási esetei](use-cases.md). 
@@ -42,11 +46,11 @@ Azure Cosmos DB jó választás az új webes, mobil-, játék- és IoT-alkalmaz�
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Hogyan Azure Cosmos DB kiszámítható teljesítményt nyújtanak?
 A [kérelem egység](request-units.md) (RU) azt fejezi ki, az Azure Cosmos Adatbázisba az átviteli sebesség. Egy 1-RU átviteli sebesség egy 1 KB-os dokumentum GET felel meg. Minden Azure Cosmos DB, beleértve az olvasások, írások, SQL-lekérdezések és tárolt eljárás végrehajtások, a művelet egy determinisztikus RU értékkel rendelkezik, amely a művelet végrehajtásához szükséges átviteli alapul. CPU, IO, és a memória és a az alkalmazás átviteli sebességére gyakorolt ezek mindegyike továbbléphetnek helyett kérelemegységet kell figyelembe RU egyetlen mértéket.
 
-Minden Azure Cosmos DB tárolóhoz kiosztott átviteli sebesség szempontjából másodpercenkénti RUs foglalhat. Az alkalmazások valamilyen skálát elvégez egy teljesítménytesztet a RU értékek egyes kérelmeket, és jogosultságok kiosztása a tároló az összes kérelem egység összes kérelem összes kérelemegységének kezeléséhez. Is növelheti vagy csökkentheti a tároló átviteli, az alkalmazás igényeinek változásával igényeinek. Kapcsolatos további információt, és segítséget meghatározása a tárolóban van szüksége, lásd [átviteli igények becslése](request-units.md#estimating-throughput-needs) , és próbálja meg a [átviteli Számológép](https://www.documentdb.com/capacityplanner). A kifejezés *tároló* itt hivatkozik a DocumentDB API gyűjtemény, a Graph API graph, a MongoDB API gyűjtemény és a tábla API tábla hivatkozik. 
+Minden Azure Cosmos DB tárolóhoz kiosztott átviteli sebesség szempontjából másodpercenkénti RUs foglalhat. Az alkalmazások valamilyen skálát elvégez egy teljesítménytesztet a RU értékek egyes kérelmeket, és jogosultságok kiosztása a tároló az összes kérelem egység összes kérelem összes kérelemegységének kezeléséhez. Is növelheti vagy csökkentheti a tároló átviteli, az alkalmazás igényeinek változásával igényeinek. Kapcsolatos további információt, és segítséget meghatározása a tárolóban van szüksége, lásd [átviteli igények becslése](request-units.md#estimating-throughput-needs) , és próbálja meg a [átviteli Számológép](https://www.documentdb.com/capacityplanner). A kifejezés *tároló* itt hivatkozik egy SQL API-gyűjtemény, a Graph API graph, a MongoDB API gyűjtemény és a tábla API tábla hivatkozik. 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Hogyan támogatja az Azure Cosmos DB különböző adatmodellekben, például a kulcs/érték, oszlopos, a dokumentum és a graph?
 
-Kulcs/érték (tábla), oszlopos, dokumentum és modellek rendszer natív módon támogatja a ars-re (atom, rekordok és sorozatok) miatt az összes kialakítása, hogy Azure Cosmos DB Diagramadatok épül. Atom, a rekordok és a feladatütemezések egyszerűen leképezve és különböző adatmodellekben vetítve. Modellek egy része számára az API-k elérhető jobb most (DocumentDB MongoDB, Table és Graph API-k) és mások vonatkozó további adatmodellekben elérhető lesz a jövőben.
+Kulcs/érték (tábla), oszlopos, dokumentum és modellek rendszer natív módon támogatja a ars-re (atom, rekordok és sorozatok) miatt az összes kialakítása, hogy Azure Cosmos DB Diagramadatok épül. Atom, a rekordok és a feladatütemezések egyszerűen leképezve és különböző adatmodellekben vetítve. Modellek egy része számára az API-k elérhető jobb most (SQL, MongoDB, Table és Graph API-k) és mások vonatkozó további adatmodellekben elérhető lesz a jövőben.
 
 Azure Cosmos-adatbázis egy séma független indexelési motor képes automatikusan indexelő azt ingests anélkül, hogy semmilyen sémát, illetve másodlagos indexek a fejlesztőtől származó összes adatot tartalmaz. A motor logikai index elrendezések (fordított, oszlopos, fa), amely a tárolási elrendezés az index és a lekérdezés feldolgozása alrendszerek absztrakcióhoz készlete támaszkodik. A cosmos DB is van lehetősége, bővíthető módon támogatja az átviteli protokollokat és API-k olyan készlete, és kéréseivé átalakítani azokat hatékonyan core adatmodell (1) és (2) így egyedi módon képes több adatmodellekben natív módon támogató logikai index elrendezések.
 
@@ -60,7 +64,7 @@ A teljes adatmennyiség egy tárolót tárolhat Azure Cosmos DB nincs korlátozv
 Összesen mekkora átviteli egy tároló által támogatott az Azure Cosmos Adatbázisba korlátozva van. A kulcs lényege, terjeszteni a munkaterhelés nagyjából egyenlően megfelelően nagy számú partíciós kulcsok között.
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Milyen mértékű nem költségű Azure Cosmos DB?
-További információkért tekintse meg a [Azure Cosmos DB díjszabása](https://azure.microsoft.com/pricing/details/cosmos-db/) lap. Azure Cosmos DB használati díjak kiosztott tárolók, a tárolók volt online, órák száma számát határozza meg, és minden egyes tároló a létesített átviteli sebesség. A kifejezés *tárolók* Itt a DocumentDB API gyűjtemény, a Graph API graph, a MongoDB API gyűjtemény és a tábla API táblák hivatkozik. 
+További információkért tekintse meg a [Azure Cosmos DB díjszabása](https://azure.microsoft.com/pricing/details/cosmos-db/) lap. Azure Cosmos DB használati díjak kiosztott tárolók, a tárolók volt online, órák száma számát határozza meg, és minden egyes tároló a létesített átviteli sebesség. A kifejezés *tárolók* itt az SQL API-gyűjtemény, a Graph API graph, a MongoDB API gyűjtemény és a tábla API táblák hivatkozik. 
 
 ### <a name="is-a-free-account-available"></a>Van egy ingyenes fiókot?
 Igen, regisztrálhat egy időben korlátozott fiók díjmentesen, elkötelezettség nélkül. A feliratkozáshoz látogasson el a [Azure Cosmos DB szabad próbálja](https://azure.microsoft.com/try/cosmosdb/) vagy további információ: a [próbálja Azure Cosmos DB GYIK](#try-cosmos-db).
@@ -81,7 +85,7 @@ Próbálja meg Azure Cosmos DB előfizetések jelennek meg az Azure-portálon me
 
 Azure Cosmos DB próbálja előfizetések a következő feltételek vonatkoznak:
 
-* Egy tároló SQL (a DocumentDB API), a Gremlin (Graph API-val) és a tábla fiókok előfizetésenként.
+* Egy tároló SQL, a Gremlin (Graph API-val) és a tábla fiókok előfizetésenként.
 * A MongoDB-fiókok előfizetésenként legfeljebb 3 gyűjtemények.
 * 10 GB-os tárolási kapacitás.
 * Globális replikációs érhető el a következő [Azure-régiók](https://azure.microsoft.com/regions/): USA középső RÉGIÓJA, Észak-Európában és Délkelet-Ázsia
@@ -91,7 +95,7 @@ Azure Cosmos DB próbálja előfizetések a következő feltételek vonatkoznak:
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB beállítása
 ### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Do I regisztrálás módja az Azure Cosmos DB?
-Azure Cosmos DB érhető el az Azure portálon. Először regisztráljon az Azure-előfizetésre. Most jelentkezett, miután az Azure-előfizetéshez a DocumentDB API, a Graph API-val (előzetes verzió), a tábla API vagy a MongoDB API-fiók adhat.
+Azure Cosmos DB érhető el az Azure portálon. Először regisztráljon az Azure-előfizetésre. Most jelentkezett, miután az Azure-előfizetéshez egy SQL API-t, a Graph API-val (előzetes verzió), a tábla API, a MongoDB API vagy a Cassandra API-fiók adhat.
 
 ### <a name="what-is-a-master-key"></a>Mi a főkulcs?
 A főkulcs egy biztonsági jogkivonat, amellyel egy fiók összes erőforrása elérhető. A főkulccsal rendelkező egyének olvasási és írási hozzáférés az adatbázis-fiókot az összes erőforrást. Legyen körültekintő főkulcsok terjesztésekor. Az elsődleges és másodlagos főkulcsok érhetők el a **kulcsok** panel a [Azure-portálon][azure-portal]. Kulcsokkal kapcsolatos további információkért lásd: [megtekintése, másolása és újragenerálása hívóbetűk](manage-account.md#keys).
@@ -104,22 +108,22 @@ Azure Cosmos-adatbázis az összes Azure-régiók megadott között megtalálhat
 
 Ha úgy állítja be a régió, ne feledje, hogy Azure Cosmos DB tiszteletben tartja a állami és kormányzati felhők. Ez azt jelenti, hogy egy szuverén régióban létrehoz egy fiókot, ha nem replikálja szuverén régió kívül. Hasonlóképpen nem engedélyezhető a replikálás be más szuverén helyeken kívül fiókból. 
 
-## <a name="develop-against-the-documentdb-api"></a>A documentdb használatával API fejlesztése
+## <a name="develop-against-the-sql-api"></a>Az SQL API elleni fejlesztése
 
-### <a name="how-do-i-start-developing-against-the-documentdb-api"></a>Hogyan kezdhetem meg, hogy a DocumentDB API fejlesztésről?
-Microsoft DocumentDB API érhető el a [Azure-portálon][azure-portal]. Először regisztrálnia kell az Azure-előfizetéssel. Regisztrálás után az Azure-előfizetéssel, adhat hozzá a DocumentDB API tároló az Azure-előfizetéshez. Egy Azure Cosmos DB fiók hozzáadására vonatkozó utasításokért lásd: [Azure Cosmos-adatbázis adatbázis-fiók létrehozása](create-documentdb-dotnet.md#create-account). Ha korábban rendelkezett egy DocumentDB-fiókot, most már rendelkezik egy Azure Cosmos DB fiókot. 
+### <a name="how-do-i-start-developing-against-the-sql-api"></a>Hogyan kezdhetem meg, hogy az SQL API fejlesztésről?
+Először regisztrálnia kell az Azure-előfizetéssel. Regisztrálás után az Azure-előfizetéssel, adhat hozzá egy SQL API-tároló az Azure-előfizetéshez. Egy Azure Cosmos DB fiók hozzáadására vonatkozó utasításokért lásd: [Azure Cosmos-adatbázis adatbázis-fiók létrehozása](create-documentdb-dotnet.md#create-account). 
 
 [SDK-k](documentdb-sdk-dotnet.md) a .NET, Python, Node.js, JavaScript és Java esetében érhetők el. A fejlesztők is használhatja a [RESTful HTTP API-k](/rest/api/documentdb/) kommunikál a különböző platformok és nyelvek Azure Cosmos DB erőforrásokat.
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Tudok hozzáférni bizonyos előre elkészített minták segítséget?
-Minták a DocumentDB API [.NET](documentdb-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](documentdb-nodejs-samples.md), és [Python](documentdb-python-samples.md) SDK a Githubon érhetők el.
+Az SQL API-példák [.NET](documentdb-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](documentdb-nodejs-samples.md), és [Python](documentdb-python-samples.md) SDK a Githubon érhetők el.
 
 
-### <a name="does-the-documentdb-api-database-support-schema-free-data"></a>Támogatja a DocumentDB API-adatbázis a sémamentes adatokat?
-Igen, a DocumentDB API lehetővé teszi, hogy sémadefiníciók vagy mutatók nélkül tetszőleges JSON-dokumentumok tárolására alkalmazások. Adatok érhető el azonnal a Azure Cosmos adatbázis SQL-lekérdezési felületén keresztül.  
+### <a name="does-the-sql-api-database-support-schema-free-data"></a>Támogatja az SQL API-adatbázis a sémamentes adatokat?
+Igen, az SQL API lehetővé teszi, hogy sémadefiníciók vagy mutatók nélkül tetszőleges JSON-dokumentumok tárolására alkalmazások. Adatok érhető el azonnal a Azure Cosmos adatbázis SQL-lekérdezési felületén keresztül.  
 
-### <a name="does-the-documentdb-api-support-acid-transactions"></a>Támogatja a DocumentDB API ACID-tranzakciókat?
-Igen, a DocumentDB API támogatja a JavaScript-ben tárolt eljárásokként és eseményindítókként kifejezett dokumentumok közötti tranzakciókat. Tranzakciók vannak egyes gyűjteményeken belül egyetlen partícióra hatókörű végrehajtásuk pedig az ACID szemantikákkal "mindent vagy semmit,", a többi párhuzamosan végrehajtott kódtól vagy felhasználói kérelmektől elkülönítve. A kivételek jelentkeznek a JavaScript alkalmazáskód kiszolgálóoldali végrehajtása, ha a teljes tranzakció vissza lesz állítva. Tranzakciókkal kapcsolatos további információkért lásd: [adatbázis-program tranzakciók](programming.md#database-program-transactions).
+### <a name="does-the-sql-api-support-acid-transactions"></a>Támogatja az SQL API ACID-tranzakciókat?
+Igen, az SQL API támogatja a JavaScript-ben tárolt eljárásokként és eseményindítókként kifejezett dokumentumok közötti tranzakciókat. Tranzakciók vannak egyes gyűjteményeken belül egyetlen partícióra hatókörű végrehajtásuk pedig az ACID szemantikákkal "mindent vagy semmit,", a többi párhuzamosan végrehajtott kódtól vagy felhasználói kérelmektől elkülönítve. A kivételek jelentkeznek a JavaScript alkalmazáskód kiszolgálóoldali végrehajtása, ha a teljes tranzakció vissza lesz állítva. Tranzakciókkal kapcsolatos további információkért lásd: [adatbázis-program tranzakciók](programming.md#database-program-transactions).
 
 ### <a name="what-is-a-collection"></a>Mi a gyűjtemény?
 A gyűjtemény olyan dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát. Egy gyűjtemény egy számlázható entitás, ahol a [költség](performance-levels.md) határozza meg az átviteli sebesség és a tárhelyet használja. Gyűjtemények egy vagy több partíciót, vagy kiszolgálók is kiterjedhet, és gyakorlatilag korlátlan mennyiségű tárterület vagy átviteli sebesség kezelésére méretezhetők.
@@ -132,19 +136,19 @@ Adatbázisok segítségével létrehozható a [Azure-portálon](https://portal.a
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Hogyan állíthatom be a felhasználókat és engedélyeket?
 Egyikének használatával hozhat létre felhasználókat és engedélyeket a [Cosmos DB API SDK-k](documentdb-sdk-dotnet.md) vagy a [REST API-k](/rest/api/documentdb/).  
 
-### <a name="does-the-documentdb-api-support-sql"></a>Támogatja a DocumentDB API SQL?
-Az SQL lekérdező nyelve az SQL által támogatott lekérdezési funkcionalitás továbbfejlesztett alkészlete. Az Azure Cosmos DB SQL lekérdező nyelve gazdag hierarchikus és relációs operátorokat és bővíthetőséget JavaScript-alapú, felhasználó által megadott funkciókat (UDF) biztosít. A JSON-szintaxis lehetővé teszi a modellezési JSON-dokumentumok fákként való címkézett csomópontok, amelyeket az Azure Cosmos DB automatikus indexelési technikái és Azure Cosmos-adatbázis SQL-lekérdezési dialektusa egyaránt használ. SQL-szintaxis használatával kapcsolatos információkért lásd: a [QueryDocumentDB] [ query] cikk.
+### <a name="does-the-sql-api-support-sql"></a>Támogatja az SQL API-t-SQL?
+Az SQL API-fiókok által támogatott SQL lekérdező nyelve az SQL Server által támogatott lekérdezési funkcionalitás továbbfejlesztett alkészlete. Az Azure Cosmos DB SQL lekérdező nyelve gazdag hierarchikus és relációs operátorokat és bővíthetőséget JavaScript-alapú, felhasználó által megadott funkciókat (UDF) biztosít. A JSON-szintaxis lehetővé teszi a modellezési JSON-dokumentumok fákként való címkézett csomópontok, amelyeket az Azure Cosmos DB automatikus indexelési technikái és Azure Cosmos-adatbázis SQL-lekérdezési dialektusa egyaránt használ. SQL-szintaxis használatával kapcsolatos információkért lásd: a [SQL-lekérdezés] [ query] cikk.
 
-### <a name="does-the-documentdb-api-support-sql-aggregation-functions"></a>Támogatja a DocumentDB API SQL összesítő függvények?
-A DocumentDB API támogatja a kis késleltetésű összesítési keresztül összesítő függvények bármilyen léptékben `COUNT`, `MIN`, `MAX`, `AVG`, és `SUM` az SQL-szintaxis használatával. További információkért lásd: [Aggregátumfüggvények](documentdb-sql-query.md#Aggregates).
+### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Támogatja az SQL API-t-SQL összesítő függvények?
+Az SQL API támogatja a kis késleltetésű összesítési keresztül összesítő függvények bármilyen léptékben `COUNT`, `MIN`, `MAX`, `AVG`, és `SUM` az SQL-szintaxis használatával. További információkért lásd: [Aggregátumfüggvények](documentdb-sql-query.md#Aggregates).
 
-### <a name="how-does-the-documentdb-api-provide-concurrency"></a>Hogyan biztosítja a DocumentDB API egyidejűségi?
-A DocumentDB API támogatja az egyidejű hozzáférések optimista vezérlését (OCC) HTTP entitáscímkék vagy ETag-EK keresztül. Minden DocumentDB API erőforrás rendelkezik egy ETag-gel, és az ETag állítsa be a kiszolgálón, minden alkalommal, amikor egy dokumentum frissül. Az ETag fejrészt és a jelenlegi érték szerepel az összes válaszüzenetek. Az If-Match fejléc megengedik döntse el, hogy egy erőforrás frissíteni kell a kiszolgáló ETag-EK is használható. Az If-Match értéke összevetni az ETag érték. Ha az ETag érték a kiszolgálói ETag érték megegyezik, az erőforrás frissül. Ha az ETag már nem aktuális, a kiszolgáló elutasítja a műveletet egy "HTTP 412 sikertelen előfeltétel" válaszkódot. Az ügyfél majd újból lekéri az beszerzése az erőforrás jelenlegi ETag érték erőforrás. Ezenkívül ETag-EK segítségével az If-None-Match fejléc határozza meg, hogy szükség van-e az erőforrás újból beolvasni.
+### <a name="how-does-the-sql-api-provide-concurrency"></a>Hogyan nyújt az SQL API egyidejűségi?
+Az SQL API támogatja az egyidejű hozzáférések optimista vezérlését (OCC) HTTP entitáscímkék vagy ETag-EK keresztül. Minden SQL API erőforrás rendelkezik egy ETag-gel, és az ETag van állítva a kiszolgálón, minden alkalommal, amikor frissül egy dokumentumot. Az ETag fejrészt és a jelenlegi érték szerepel az összes válaszüzenetek. Az If-Match fejléc megengedik döntse el, hogy egy erőforrás frissíteni kell a kiszolgáló ETag-EK is használható. Az If-Match értéke összevetni az ETag érték. Ha az ETag érték a kiszolgálói ETag érték megegyezik, az erőforrás frissül. Ha az ETag már nem aktuális, a kiszolgáló elutasítja a műveletet egy "HTTP 412 sikertelen előfeltétel" válaszkódot. Az ügyfél majd újból lekéri az beszerzése az erőforrás jelenlegi ETag érték erőforrás. Ezenkívül ETag-EK segítségével az If-None-Match fejléc határozza meg, hogy szükség van-e az erőforrás újból beolvasni.
 
 A .NET egyidejű hozzáférések optimista használatához a [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) osztály. .NET mintát, lásd: [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) DocumentManagement minta a Githubon.
 
-### <a name="how-do-i-perform-transactions-in-the-documentdb-api"></a>Hogyan végezhetők tranzakciók a DocumentDB az API-ban?
-A DocumentDB API támogatja a nyelvintegrált tranzakciókat JavaScript-tárolt eljárások és eseményindítók keresztül. A parancsfájlban az összes művelet pillanatkép-elkülönítés lesz végrehajtva. Ha egy egypartíciós gyűjtemény, a végrehajtási a gyűjtemény hatókörét. Ha a gyűjtemény particionálva van, a végrehajtási a gyűjteményen belül azonos partíciókulcs értékkel rendelkező dokumentumok hatókörét. A tranzakció kezdetekor pillanatkép készül a dokumentumverziókról (ETag-ek), és csak akkor lesznek véglegesítve, ha a parancsfájl sikeres. Ha a JavaScript hibát jelez, a tranzakció vissza lesz állítva. További információkért lásd: [Azure Cosmos DB kiszolgálóoldali JavaScript programozás](programming.md).
+### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Hogyan végezhetők tranzakciók az SQL API-ban?
+Az SQL API támogatja a nyelvintegrált tranzakciókat JavaScript-tárolt eljárások és eseményindítók keresztül. A parancsfájlban az összes művelet pillanatkép-elkülönítés lesz végrehajtva. Ha egy egypartíciós gyűjtemény, a végrehajtási a gyűjtemény hatókörét. Ha a gyűjtemény particionálva van, a végrehajtási a gyűjteményen belül azonos partíciókulcs értékkel rendelkező dokumentumok hatókörét. A tranzakció kezdetekor pillanatkép készül a dokumentumverziókról (ETag-ek), és csak akkor lesznek véglegesítve, ha a parancsfájl sikeres. Ha a JavaScript hibát jelez, a tranzakció vissza lesz állítva. További információkért lásd: [Azure Cosmos DB kiszolgálóoldali JavaScript programozás](programming.md).
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Hogyan képes vagyok tömeges beszúrási dokumentumok Cosmos DB be?
 Akkor is tömeges beszúrási dokumentumokat az Azure Cosmos DB két módon:
@@ -152,10 +156,10 @@ Akkor is tömeges beszúrási dokumentumokat az Azure Cosmos DB két módon:
 * Az adatáttelepítés eszközzel, a [adatbázis áttelepítési eszköz az Azure Cosmos DB](import-data.md).
 * Tárolt eljárások, a [Azure Cosmos DB kiszolgálóoldali JavaScript programozás](programming.md).
 
-### <a name="does-the-documentdb-api-support-resource-link-caching"></a>Nem, a DocumentDB API támogatási erőforrás-hivatkozások gyorsítótárazását?
-Igen, mert Azure Cosmos DB egy RESTful szolgáltatás, erőforrás-hivatkozások nem módosíthatók és ezáltal gyorsítótárazhatók. A DocumentDB API ügyfelek adjon meg egy "If-None-Match" fejlécet bármilyen erőforrás-szerű dokumentum vagy gyűjtemény olvasása, és ezután frissítse a helyi példányok, miután a kiszolgáló verziója megváltozott.
+### <a name="does-the-sql-api-support-resource-link-caching"></a>Nem, az SQL API támogatási erőforrás-hivatkozások gyorsítótárazását?
+Igen, mert Azure Cosmos DB egy RESTful szolgáltatás, erőforrás-hivatkozások nem módosíthatók és ezáltal gyorsítótárazhatók. Az SQL API-ügyfelek adjon meg egy "If-None-Match" fejlécet bármilyen erőforrás-szerű dokumentum vagy gyűjtemény olvasása, és ezután frissítse a helyi példányok, miután a kiszolgáló verziója megváltozott.
 
-### <a name="is-a-local-instance-of-documentdb-api-available"></a>Egy helyi példányát a DocumentDB API érhető el?
+### <a name="is-a-local-instance-of-sql-api-available"></a>Az SQL API-t egy helyi példányát érhető el?
 Igen. A [Azure Cosmos DB emulátor](local-emulator.md) egy valósághű emuláció a Cosmos DB szolgáltatást biztosít. Támogatja a funkciót, amely azonos Azure Cosmos DB, például létrehozása, és lekérdezi a JSON-dokumentumokat, kiépítés és gyűjtemények skálázás, és végrehajtása tárolt eljárásokként és eseményindítókként. Fejlesztése és tesztelése az alkalmazások az Azure Cosmos DB Emulator használatával, és telepítheti őket egy globális léptékű azáltal, hogy módosítsa a csatlakozási végpont az Azure Cosmos DB egyetlen konfigurációja.
 
 ## <a name="develop-against-the-api-for-mongodb"></a>Az API-t elleni mongodb fejlesztése
@@ -236,7 +240,7 @@ Visszajelzése megoszthatja a következő módokon:
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Mi az a kapcsolati karakterláncot, amely a tábla API-val való csatlakozáskor használandó kell?
 A kapcsolati karakterlánc::
 ```
-DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountNameFromDocumentDB>.table.cosmosdb.azure.com
+DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountName>.table.cosmosdb.azure.com
 ```
 A kapcsolati karakterlánc lekérheti a csatlakozási karakterlánc oldal az Azure portálon. 
 
@@ -364,7 +368,7 @@ A .NET SDK-ból elküldi az app.config fájlban:
 ```
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Azure Cosmos DB platformként úgy tűnik, hogy számos képesség, rendezés, összesítések, hierarchiát és egyéb funkciókat. Ön hozzáadja ezeket a képességeket a tábla API-val? 
-A tábla API Azure Table storage azonos lekérdezés funkciókat biztosít. Azure Cosmos-adatbázis is támogatja a rendezést, összesítések, a földrajzi lekérdezést, a hierarchia és a számos különféle beépített funkciók. A tábla API jövőbeli szolgáltatásfrissítés további funkciók lesz elérhető. További információkért lásd: [Azure Cosmos DB DocumentDB API SQL-lekérdezések](../documentdb/documentdb-sql-query.md).
+A tábla API Azure Table storage azonos lekérdezés funkciókat biztosít. Azure Cosmos-adatbázis is támogatja a rendezést, összesítések, a földrajzi lekérdezést, a hierarchia és a számos különféle beépített funkciók. A tábla API jövőbeli szolgáltatásfrissítés további funkciók lesz elérhető. További információkért lásd: [SQL-lekérdezések](documentdb-sql-query.md).
  
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Mikor kell módosítani a táblázat API TableThroughput?
 TableThroughput kell módosítani, ha érvényes a következő feltételek valamelyike:
@@ -534,47 +538,6 @@ Az Apache Cassandra API Apache Cassandra azonos CQL funkciókat biztosít. Terve
 
 ### <a name="feature-x-of-regular-cassandra-api-is-not-working-as-today-where-can-the-feedback-be-provided"></a>Szolgáltatás x rendszeres Cassandra API nem működik, ma, ahol a visszajelzés megadható?
 Visszajelzés küldése keresztül [uservoice-visszajelzések](https://feedback.azure.com/forums/263030-azure-cosmos-db).
-
-<a id="moving-to-cosmos-db"></a>
-## <a name="questions-from-documentdb-customers"></a>Kérdések a DocumentDB-ügyfelek
-### <a name="why-are-you-moving-to-azure-cosmos-db"></a>Miért meg áthelyezi az Azure Cosmos Adatbázishoz? 
-
-Azure Cosmos-adatbázis a következő nagy termékek globálisan elosztott, a méretezési felhő adatbázisokban. A DocumentDB ügyfélként most már rendelkezik hozzáféréssel a áttörést jelentő rendszer és az Azure Cosmos DB által kínált lehetőségeket.
-
-Azure Cosmos-adatbázis, "Projekt Firenzében" elhárítása a Microsoft vállalaton belül nagyméretű alkalmazások fejlesztése során a fejlesztők által tapasztalt problémás pontok 2010 elindítása. Kihívásai globálisan elosztott alkalmazások létrehozása nem egyediek a Microsoftnak, így azt a technológia első generációs elérhetővé tett 2015 Azure DocumentDB formájában az Azure a fejlesztők. 
-
-Azóta előre hozzáadott új funkciók és bevezetett jelentős új képességekkel rendelkezik. Az Azure Cosmos DB eredménye. Ebben a kiadásban részeként ügyfelek a DocumentDB-vel adataikat, automatikusan és zökkenőmentesen vásárlás Azure Cosmos DB. Ezek a képességek a core adatbázismotor, valamint a globális terjesztési, a rugalmas méretezhetőség és a iparágvezető, átfogó SLA-k szerepelnek. Pontosabban azt az Azure Cosmos DB adatbázismotor hatékonyan hozzárendelését az alapul szolgáló adatmodellt Azure Cosmos-adatbázis az összes népszerű adatmodellekben típus rendszerek és API-k továbbfejlődtek rendelkezik. 
-
-Az aktuális fejlesztői irányuló megnyilvánulása a munka az újonnan bevezetett támogatása [Gremlin](../cosmos-db/graph-introduction.md) és [Table storage API-kkal](../cosmos-db/table-introduction.md). És ez csak a kezdő. Adja hozzá az egyéb népszerű API-k és az újabb adatmodellekben adott idő alatt, további fejlett teljesítmény- és tárolási globális léptékű tervezzük. 
-
-Fontos, hogy a DocumentDB mutasson [SQL dialektus](../documentdb/documentdb-sql-query.md) mindig az, hogy az alapul szolgáló Azure Cosmos DB támogató sok API-kat csak egyike. A fejlesztők számára, például az Azure Cosmos Database egy teljes körűen felügyelt szolgáltatást alkalmazó a szolgáltatáshoz csak illesztőfelület az API-k által a szolgáltatás. Semmi valóban módosítja a meglévő DocumentDB-ügyfelek. Az Azure Cosmos Adatbázisba pontosan az azonos SQL API-t, amely a DocumentDB kínál beolvasása. És most (és a jövőben) érheti el más korábban nem elérhető képességek 
-
-A folyamatos munka egy másik megnyilvánulása az kiterjesztett alapja a globális és a rugalmas méretezhetőség érdekében az átviteli sebesség és tárterület. Továbbfejlesztettük több eligazodást globális terjesztési alrendszerére. Az számos ilyen fejlesztői irányuló szolgáltatások egyike a konzisztens előtag konzisztencia modell, amely lehetővé teszi egy teljes öt jól meghatározott konzisztencia modellek. Sok érdekesebb képességek, valamint azt ad ki. 
-
-### <a name="what-do-i-need-to-do-to-ensure-that-my-documentdb-resources-continue-to-run-on-azure-cosmos-db"></a>Mit kell tennie, győződjön meg arról, hogy a DocumentDB-erőforrások továbbra is az Azure Cosmos-adatbázis futtatásához?
-
-Nem kell minden módosításokat. A DocumentDB-erőforrások Azure Cosmos DB erőforrásokat, és hiba történt a szolgáltatás megszakítás nélküli fenntartása, az áthelyezés előfordulásakor.
-
-### <a name="what-changes-do-i-need-to-make-for-my-app-to-work-with-azure-cosmos-db"></a>Milyen módosításokat kell az Azure Cosmos DB együttműködni my alkalmazás legyen?
-
-Nincsenek módosítások végrehajtásához. Osztályok, a névterek és a NuGet csomag neve nem módosultak. Ennek mindig azt javasoljuk, hogy Ön az SDK-k naprakészen tartása a legújabb szolgáltatásait és fejlesztéseit előnyeit. 
-
-### <a name="whats-changed-in-the-azure-portal"></a>Változások az Azure-portálon?
-
-A DocumentDB már nem jelenik meg a portálon az Azure-szolgáltatások. Helyette van egy új Azure Cosmos DB ikonra, a következő ábrán látható módon. A gyűjtemények érhetők el, előtt voltak, és továbbra is méretezheti átviteli, a módosítás konzisztenciaszintek és a figyelő SLA-k. Az adatok kezelővel (előzetes verzió) képességeit tovább lett fejlesztve. Mostantól megtekintheti és szerkeszthetik a dokumentumokat, hozzon létre és lekérdezéseket futtathat, és dolgozhassanak tárolt eljárások, eseményindítók és UDF egy oldal, a következő ábrán látható módon: 
-
-![Az Azure Cosmos DB gyűjtemények lap](./media/faq/cosmos-db-data-explorer.png)
-
-### <a name="are-there-changes-to-pricing"></a>Vannak-e árképzési módosításait?
-
-Nem, az alkalmazás futtatásának az Azure-Cosmos adatbázis megegyezik a előtti.
-
-### <a name="are-there-changes-to-the-slas"></a>Vannak-e a szolgáltatásiszint-szerződések módosításait?
-
-Nem, a rendelkezésre állási, a konzisztencia, a késés és a átviteli SLA nem változik, és továbbra is megjelennek a portálon. További információkért lásd: [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/).
-   
-![Tennivalók app mintaadatokkal](./media/faq/azure-cosmosdb-portal-metrics-slas.png)
-
 
 [azure-portal]: https://portal.azure.com
 [query]: documentdb-sql-query.md

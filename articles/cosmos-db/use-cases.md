@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: cd10147047a7d5d8b0a15be08fbba24a07adffad
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 660c0fbe80af125a840ef9ae324a72261c8adc24
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB gyakori alkalmazási esetei
 Ez a cikk számos gyakori alkalmazási esetei áttekintést nyújt az Azure Cosmos DB rendszerhez.  Az ebben a cikkben szereplő ajánlásokhoz szolgál, kiindulási pontként a Cosmos DB alkalmazást fejleszt.   
@@ -33,9 +33,7 @@ A cikk elolvasása után képes lesz a következő kérdések megválaszolásáh
 ## <a name="introduction"></a>Bevezetés
 [Az Azure Cosmos DB](../cosmos-db/introduction.md) globálisan elosztott adatbázis a Microsoft-szolgáltatás. A szolgáltatás célja, hogy lehetővé teszi az ügyfeleknek rugalmasan (és egymástól függetlenül) méretezési átviteli sebesség és tárterület tetszőleges számú földrajzi régiók között. Azure Cosmos DB az első globálisan elosztott adatbázis-szolgáltatás a piacon ma kínálta átfogó [szolgáltatási szintek](https://azure.microsoft.com/support/legal/sla/cosmos-db/) átviteli, a késés, a rendelkezésre állási és a konzisztencia magába. 
 
-Az Azure Cosmos DB projekt indítja el a 2011 "Projekt Firenzében" cím fejlesztői problémás-pontokra kihívással szembesülnek nagy méretű Internet alkalmazások Microsoft vállalaton belül. Tartják be, hogy ezek a problémák a Microsoft-alkalmazások nem egyediek, azt úgy döntött, hogy elérhetővé Azure Cosmos DB általában külső fejlesztők formájában 2015 [Azure DocumentDB](https://azure.microsoft.com/blog/documentdb-moving-to-general-availability/). A szolgáltatás a belső használatú ubiquitously a Microsofton belül, és a leggyorsabban szolgáltatások külsőleg Azure fejlesztők által használt egyik. 
-
-Azure Cosmos-adatbázis egy olyan globális elosztott, több modellre adatbázis, az alkalmazások és a használati esetek széles használt. Akkor érdemes használni az összes [kiszolgáló nélküli](http://azure.com/serverless) alkalmazás, amely kis sorrendben az ezredmásodperces válaszidők kell, és gyorsan és globálisan méretezhető kell. Támogatja a több adatmodellekben (kulcs-érték, a dokumentumok, a diagramok és oszlopos) és az adatok sok API-k eléréséhez, beleértve [MongoDB API](mongodb-introduction.md), [DocumentDB API (SQL)](documentdb-introduction.md), [Graph API-val (Gremlin)](graph-introduction.md), és [táblák API](table-introduction.md) natív módon, és a bővíthető módon. 
+Azure Cosmos-adatbázis egy olyan globális elosztott, több modellre adatbázis, az alkalmazások és a használati esetek széles használt. Akkor érdemes használni az összes [kiszolgáló nélküli](http://azure.com/serverless) alkalmazás, amely kis sorrendben az ezredmásodperces válaszidők kell, és gyorsan és globálisan méretezhető kell. Támogatja a több adatmodellekben (kulcs-érték, a dokumentumok, a diagramok és oszlopos) és az adatok sok API-k eléréséhez, beleértve [MongoDB API](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Graph API-val (Gremlin)](graph-introduction.md), és [táblák API](table-introduction.md) natív módon, és a bővíthető módon. 
 
 Az alábbiakban néhány attribútumok, amelyek nagy teljesítményű alkalmazások, a globális léptéke jól alkalmazható Azure Cosmos-adatbázis.
 

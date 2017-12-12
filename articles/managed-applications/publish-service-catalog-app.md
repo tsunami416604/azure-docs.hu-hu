@@ -1,6 +1,6 @@
 ---
 title: "Hozzon létre, és az Azure szolgáltatás katalógus által felügyelt alkalmazások közzététele |} Microsoft Docs"
-description: "Bemutatja, hogyan hozzon létre egy Azure által felügyelt alkalmazás, amely tagja a szervezet számára készült."
+description: "Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás."
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/26/2017
+ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6b1d609b7b1b21e80cc7f68f05e16e3c1e8eebba
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
-ms.translationtype: HT
+ms.openlocfilehash: 7f00fe304cc4a9de7727882bb2c38f85713bd521
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>A belső felhasználásához kezelt alkalmazás közzététele
 
@@ -32,7 +32,7 @@ Ebben a cikkben a felügyelt alkalmazás tartalmazza a storage-fiók. Célja, ho
 
 ## <a name="create-the-resource-template"></a>Az erőforrás-sablon létrehozása
 
-Minden felügyelt definíciót tartalmaz egy nevű fájlt **mainTemplate.json**. Az oktatóanyagban az Azure-erőforrások kiépítését meghatározása. A sablon nem eltér a normál Resource Manager-sablon.
+Minden felügyelt definíciót tartalmaz egy nevű fájlt **mainTemplate.json**. Az oktatóanyagban az Azure-erőforrások kiépítését meghatározása. A sablon pont olyan, mint egy átlagos Resource Manager-sablon.
 
 Hozzon létre egy fájlt **mainTemplate.json**. A név nem kis-és nagybetűket.
 
@@ -83,7 +83,7 @@ Mentse a mainTemplate.json fájlt.
 
 ## <a name="create-the-user-interface-definition"></a>A felhasználói felület definíció létrehozása
 
-Az Azure-portálon használja a **createUiDefinition.json** fájlt létrehozni a felhasználói felület, a felhasználók számára a kezelt alkalmazás létrehozása. Azt határozza meg, hogyan felhasználói adatbevitelt mindegyik paraméterhez. Beállítások is használhat, például a legördülő listából válassza ki, szövegmezőben, jelszó mezőbe, és más beviteli eszközök. A felhasználói felület csomagdefiníciós fájl egy felügyelt alkalmazás létrehozásához, lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
+Az Azure-portálon használja a **createUiDefinition.json** fájlt létrehozni a felhasználói felület, a felhasználók számára a kezelt alkalmazás létrehozása. Azt határozza meg, hogyan felhasználói adatbevitelt mindegyik paraméterhez. Beállítások is használhat, például a legördülő listából válassza ki, szövegmezőben, jelszó mezőbe, és más beviteli eszközök. Felhasználóifelület-definíciós fájl felügyelt alkalmazáshoz való létrehozásával kapcsolatban tekintse meg a [CreateUiDefinition első lépéseit bemutató](create-uidefinition-overview.md) témakört.
 
 Hozzon létre egy fájlt **createUiDefinition.json**. A név nem kis-és nagybetűket.
 
@@ -164,7 +164,7 @@ Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
   -Context $ctx 
 ```
 
-## <a name="create-the-managed-application-definition"></a>A kezelt alkalmazás-definíció létrehozása
+## <a name="create-the-managed-application-definition"></a>A felügyelt alkalmazás definíciójának létrehozása
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Egy Azure Active Directory felhasználói csoport vagy az alkalmazás létrehozása
 
@@ -176,13 +176,13 @@ Az Objektumazonosító, a felhasználói csoport számára az erőforrások keze
 
 ### <a name="get-the-role-definition-id"></a>A szerepkör-definíció azonosítója beolvasása
 
-A következő lépésben azt szeretné, hogy hozzáférést biztosítson a felhasználó, a felhasználói csoport vagy az alkalmazás RBAC beépített szerepkör szerepkör-definíció azonosítója. Általában akkor használják a tulajdonos vagy közreműködő vagy olvasó szerepkört. A következő parancsot a szerepkör-definíció azonosítója lekérése a tulajdonosi szerepkört mutatja be:
+A következő lépésben azt szeretné, hogy hozzáférést biztosítson a felhasználó, a felhasználói csoport vagy az alkalmazás RBAC beépített szerepkör szerepkör-definíció azonosítója. Általában akkor használják a tulajdonos vagy közreműködő vagy olvasó szerepkört. Az alábbi parancs bemutatja, hogyan kérheti le a tulajdonos szerepkör szerepkördefiníció-azonosítóját:
 
 ```powershell
 $ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
 ```
 
-### <a name="create-the-managed-application-definition"></a>A kezelt alkalmazás-definíció létrehozása
+### <a name="create-the-managed-application-definition"></a>A felügyelt alkalmazás definíciójának létrehozása
 
 Ha még nem rendelkezik egy erőforráscsoportot a kezelt alkalmazás definícióját tárolásához, hozzon létre egyet:
 
@@ -190,7 +190,7 @@ Ha még nem rendelkezik egy erőforráscsoportot a kezelt alkalmazás definíci�
 New-AzureRmResourceGroup -Name appDefinitionGroup -Location westcentralus
 ```
 
-Most hozzon létre a kezelt alkalmazás definícióját erőforrást.
+Most hozza létre a felügyelt alkalmazás definíciójához tartozó erőforrást.
 
 ```powershell
 $blob = Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
@@ -242,7 +242,6 @@ A telepítés befejezése után a kezelt alkalmazás szerepel alkalmazáscsoport
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Felügyelt alkalmazások bemutatása, lásd: [felügyelt használatát áttekintő cikkben](overview.md).
+* A felügyelt alkalmazások bemutatásáért tekintse meg a [felügyelt alkalmazások áttekintését](overview.md).
 * Például a projekteket, lásd: [a kezelt alkalmazások az Azure-hoz](sample-projects.md).
-* Felügyelt alkalmazások közzétételéhez az Azure piactéren kapcsolatos információkért lásd: [Azure felügyelt alkalmazások a piactéren](publish-marketplace-app.md).
-* A felhasználói felület csomagdefiníciós fájl egy felügyelt alkalmazás létrehozásához, lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
+* Felhasználóifelület-definíciós fájl felügyelt alkalmazáshoz való létrehozásával kapcsolatban tekintse meg a [CreateUiDefinition első lépéseit bemutató](create-uidefinition-overview.md) témakört.

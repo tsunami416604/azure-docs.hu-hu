@@ -1,4 +1,3 @@
-
 ## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>Lekérdezi a Microsoft Graph API az iOS-alkalmazás tesztelése
 
 A kód-szimulátorban történő elindításához nyomja le az **parancs** + **R**.

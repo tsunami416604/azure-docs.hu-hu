@@ -4,7 +4,7 @@ description: "Az Azure AD Connect felhasználói bejelentkezés az egyéni beál
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: curtand
 ms.assetid: 547b118e-7282-4c7f-be87-c035561001df
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 7901d6d5668f62a8df7783d6fb1dfe9fc02ebed3
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 4670ec3cacd8d69a4ed59aa2bbbeb2e5c893f173
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Az Azure AD Connect felhasználói bejelentkezés lehetőségei
 Az Azure Active Directory (Azure AD) Connect lehetővé teszi, hogy a felhasználókat, hogy jelentkezzen be a felhő- és a helyszíni erőforrásokhoz ugyanazt a jelszót. Ez a cikk ismerteti az alapvető fogalmakat minden identitás modell segítségével válassza ki az Azure AD bejelentkezés használni kívánt identitását.
@@ -36,7 +36,7 @@ Ha már ismeri az Azure AD identity modell, és szeretné, hogy egy adott módsz
 ## <a name="choosing-the-user-sign-in-method-for-your-organization"></a>A felhasználói bejelentkezési módszer a szervezet kiválasztása
 A legtöbb szervezet számára, hogy csak szeretné engedélyezni a felhasználói bejelentkezés az Office 365, SaaS-alkalmazásokhoz és más Azure AD-alapú erőforrások az alapértelmezett jelszó kivonatát szinkronizálási beállítás ajánlott. Egyes szervezetek azonban rendelkezik egy adott oka, hogy nem használhatja ezt a beállítást. Azok vagy egy összevont bejelentkezési beállítást használhatja, például az AD FS vagy átmenő hitelesítés. Az alábbi táblázat segítségével segít meghozni a megfelelő választás.
 
-Telepítenem kell | Egyszeri bejelentkezési modellel PHS-ben| ESP-alapú egyszeri| ACTIVE DIRECTORY ÖSSZEVONÁSI SZOLGÁLTATÁSOK |
+Telepítenem kell | Egyszeri bejelentkezési modellel PHS-ben| ESP-alapú egyszeri| AD FS |
  --- | --- | --- | --- |
 Új felhasználói, lépjen kapcsolatba, és a felhőbe a helyszíni Active Directoryban automatikus szinkronizálása.|x|x|x|
 A bérlő az Office 365 hibrid forgatókönyvek beállítása.|x|x|x|
@@ -56,7 +56,7 @@ Emellett engedélyezheti [zökkenőmentes SSO](active-directory-aadconnect-sso.m
 
 További információkért lásd: a [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-synchronization.md) cikk.
 
-### <a name="pass-through-authentication"></a>Áteresztő hitelesítés
+### <a name="pass-through-authentication"></a>Átmenő hitelesítés
 Átmenő hitelesítéssel a felhasználó jelszava összevetni a helyszíni Active Directory-tartományvezérlő. A jelszó megtalálható az Azure AD semmilyen formában nem szükséges. Ez lehetővé teszi a helyi házirendek óra bejelentkezési korlátozásokat, például a felhőalapú hitelesítés során kiértékelendő szolgáltatások.
 
 Áteresztő hitelesítés egy egyszerű ügynök a helyszíni környezetben a Windows Server 2012 R2 tartományhoz gép használja. Ez az ügynök a jelszó érvényesítése kéréseket figyeli. Bejövő portra is meg kell nyitni az internethez nem igényel.
@@ -115,7 +115,7 @@ Az Azure AD bejelentkezési oldal megjeleníti az UPN-utótagot, amely a helysz�
 
 | Állapot | Leírás | Beavatkozás szükséges |
 |:--- |:--- |:--- |
-| Ellenőrizve |Az Azure AD Connect található megfelelő ellenőrzött tartományához Azure AD-ben. A tartomány minden felhasználó a helyszíni hitelesítő adatokkal jelentkezhetnek be. |Nincs szükség beavatkozásra. |
+| Hitelesítve |Az Azure AD Connect található megfelelő ellenőrzött tartományához Azure AD-ben. A tartomány minden felhasználó a helyszíni hitelesítő adatokkal jelentkezhetnek be. |Nincs szükség beavatkozásra. |
 | Nincs ellenőrizve |Az Azure AD Connect található egyező egyéni tartományt az Azure ad-ben, de nem ellenőrzi, hogy. Ebben a tartományban a felhasználói UPN-utótagot változnak az alapértelmezett. onmicrosoft.com utótag szinkronizálás, ha a tartomány nem ellenőrzése után. | [Az egyéni tartomány ellenőrzéséhez az Azure ad-ben.](../add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |
 | Nincs hozzáadva |Az Azure AD Connect egyéni tartományok, amelyek megfelelnek az egyszerű Felhasználónévi utótagot nem található. Ebben a tartományban a felhasználói UPN-utótagot változnak az alapértelmezett. onmicrosoft.com utótag, ha a tartomány nem hozzáadja, és ellenőrizte az Azure-ban. | [Adja hozzá, és ellenőrizze, hogy megfelel-e az egyszerű Felhasználónévi utótagot az egyéni tartománynév.](../add-custom-domain.md) |
 
@@ -145,7 +145,7 @@ A következő információkat tegyük fel, hogy a rendszer szerepel a helyszíni
 |:---:|:--- |
 | Nincs hozzáadva |Ebben az esetben nem contoso.com tartozó egyéni tartomány hozzá lett adva az Azure AD-címtárban. Egyszerű felhasználónév a helyszíni utótaggal rendelkező felhasználók @contoso.com nem fogja tudni használni a helyszíni egyszerű Felhasználónévvel jelentkezzen be az Azure-bA. Ezek helyette kell őket az Azure ad által biztosított hozzáadása az alapértelmezett Azure AD-címtár utótagja új egyszerű felhasználónév használata. Például, ha a felhasználók számára az Azure Active directory azurecontoso.onmicrosoft.com, majd a helyi felhasználó van szinkronizálása user@contoso.com kap egy egyszerű user@azurecontoso.onmicrosoft.com. |
 | Nincs ellenőrizve |Ebben az esetben van egy egyéni tartománynév contoso.com, amely fel van véve az Azure AD-címtár. Azonban ez még nincs ellenőrizve. Ha azokat, amelyek a felhasználók szinkronizálását a tartomány ellenőrzése nélkül, majd a felhasználók hozzá fog rendelni egy új UPN az Azure AD csakúgy, mint a "Nem hozzáadott" forgatókönyvben. |
-| Ellenőrizve |Ebben az esetben van egy egyéni tartománynév contoso.com már hozzáadott és ellenőrizni az egyszerű Felhasználónévi utótagot az Azure AD-ben. Felhasználók tudják a helyszíni egyszerű felhasználónév használata, például user@contoso.com, jelentkezzen be Azure azok van-e szinkronizálva az Azure AD számára. |
+| Hitelesítve |Ebben az esetben van egy egyéni tartománynév contoso.com már hozzáadott és ellenőrizni az egyszerű Felhasználónévi utótagot az Azure AD-ben. Felhasználók tudják a helyszíni egyszerű felhasználónév használata, például user@contoso.com, jelentkezzen be Azure azok van-e szinkronizálva az Azure AD számára. |
 
 ###### <a name="ad-fs-federation"></a>AD FS összevonási
 Nem hozható létre egy összevonási az alapértelmezett. onmicrosoft.com tartományt az Azure AD vagy az Azure ad-ben nem ellenőrzött egyéni tartományt. Jelenik meg az Azure AD Connect varázsló, ha az összevonási létrehozásához nem ellenőrzött tartományt, majd az Azure AD Connect jelenít meg a szükséges rekordok hozható létre, amelyen a DNS-kiszolgáló a tartományban található. További információkért lásd: [összevonási kijelölt Azure AD-tartomány ellenőrzése](active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation).
@@ -156,7 +156,7 @@ Ha a felhasználó bejelentkezési lehetőséget választotta **az AD FS összev
 |:---:|:--- |
 | Nincs hozzáadva |Az Azure AD Connect ebben az esetben a egyszerű Felhasználónévi utótagot contoso.com az Azure AD-címtár nem található egyező egyéni tartományt. Kell adnia egy egyéni tartománynév contoso.com, ha felhasználók jelentkezhetnek be az AD FS segítségével, a helyszíni egyszerű Felhasználónévvel (például user@contoso.com). |
 | Nincs ellenőrizve |Ebben az esetben az Azure AD Connect rákérdez, hogyan ellenőrizheti a tartomány egy későbbi időpontban a szükséges adatokat. |
-| Ellenőrizve |Ebben az esetben megkezdheti a konfigurációjával kapcsolatban további műveletek nélkül. |
+| Hitelesítve |Ebben az esetben megkezdheti a konfigurációjával kapcsolatban további műveletek nélkül. |
 
 ## <a name="changing-the-user-sign-in-method"></a>A felhasználói bejelentkezési módszer módosítása
 A felhasználói bejelentkezési módszer módosíthatja a összevonási, Jelszókivonat-szinkronizálást vagy átmenő hitelesítést követően érhetők el az Azure AD Connectben a varázsló az Azure AD Connect a kezdeti konfigurációs feladatok használatával. Futtassa újra az Azure AD Connect varázslót, és láthatja, hogy elvégezhető feladatok listáját. Válassza ki **felhasználói bejelentkezés módosítása** feladatot a listából.

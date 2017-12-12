@@ -12,31 +12,32 @@ ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2016
+ms.date: 12/07/2017
 ms.author: kraig
-ms.openlocfilehash: e953c7978705379a28581213e8f1c665473ddd60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0d0815e71149749cb52efe21e1f0af3cabae21c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure blob storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET)
-[!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a>Áttekintés
+> [!div class="op_single_selector"]
+> - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
+> - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
 
 Az Azure blob storage egy olyan szolgáltatás, hogy a felhő strukturálatlan adatokat objektumként/blobként tárolja. A Blob Storage képes tárolni bármilyen szöveget vagy bináris adatot, például dokumentumot, médiafájlt vagy egy alkalmazástelepítőt. A Blob Storage más néven objektumtárnak is hívható.
 
 Ez az oktatóanyag bemutatja, hogyan írhat kódot ASP.NET olyan gyakori forgatókönyveket tartalmaz, az Azure blob storage használatával. Forgatókönyvek például a blob tároló, létrehozása és feltöltése, listázása, letöltése és blobok törlése.
 
-##<a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
+
+## <a name="prerequisites"></a>Előfeltételek
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Storage-fiók](../storage/common/storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/vs-storage-aspnet-getting-started-create-azure-account.md)]
 
 [!INCLUDE [storage-development-environment-include](../../includes/vs-storage-aspnet-getting-started-setup-dev-env.md)]
 
@@ -59,21 +60,38 @@ Ez az oktatóanyag bemutatja, hogyan írhat kódot ASP.NET olyan gyakori forgat�
     ```csharp
     using Microsoft.Azure;
     using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
 
-## <a name="create-a-blob-container"></a>A blob-tároló létrehozása
+## <a name="connect-to-a-storage-account-and-get-a-container-reference"></a>A tárfiók csatlakozhat, és a tároló hivatkozását beolvasása
 
-Egy blob-tároló blobokat és mappák beágyazott hierarchiája. A következő lépések bemutatják egy blob-tároló létrehozása:
+Egy blob-tároló blobokat és mappák beágyazott hierarchiája.  A jelen dokumentumban leírt lépések többi elő egy blob-tárolóba, hogy a saját módszer újrahasznosításának kódot kell elhelyezni.
 
-> [!NOTE]
-> 
-> Ebben a szakaszban a kód feltételezi, hogy végrehajtotta a lépéseket a területen [beállította a fejlesztőkörnyezetet](#set-up-the-development-environment). 
+Az alábbi lépéseket a tárfiókot, a kapcsolati karakterlánc használatával kapcsolódni metódus létrehozása **Web.config** , és hozzon létre egy hivatkozást egy tárolót.  A kapcsolati karakterlánc beállítása a **Web.config** formátumban lesznek elnevezve `<storageaccountname>_AzureStorageConnectionString`. 
 
 1. Nyissa meg az `BlobsController.cs` fájlt.
 
-1. Adja hozzá a hívott metódus **CreateBlobContainer** , amely visszaadja az **ActionResult**.
+1. Adja hozzá a hívott metódus **GetCloudBlobContainer** , amely adja vissza egy **CloudBlobContainer**.  Ügyeljen arra, hogy a csere `<storageaccountname>_AzureStorageConnectionString` a kulcsot a tényleges nevével **Web.config**.
+    
+    ```csharp
+    private CloudBlobContainer GetCloudBlobContainer()
+    {
+        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                CloudConfigurationManager.GetSetting("<storageaccountname>_AzureStorageConnectionString"));
+        CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+        CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
+        return container;
+    }
+    ```
+
+> [!NOTE]
+> Annak ellenére, hogy *-blob-tároló* nem létezik még, ezt a kódot létrehozza-e egy hivatkozást, a tároló hozhatja létre a `CreateIfNotExists` metódus a következő lépésben látható.
+
+## <a name="create-a-blob-container"></a>A blob-tároló létrehozása
+
+A következő lépések bemutatják egy blob-tároló létrehozása:
+
+1. Adja hozzá a hívott metódus `CreateBlobContainer` , amely visszaadja az `ActionResult`.
 
     ```csharp
     public ActionResult CreateBlobContainer()
@@ -84,37 +102,39 @@ Egy blob-tároló blobokat és mappák beágyazott hierarchiája. A következő 
     }
     ```
  
-1. Belül a **CreateBlobContainer** módszer, lekérni egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A következő kódot használja a tárolási kapcsolati karakterlánc és a tárfiók adatait lekérése az Azure szolgáltatás konfigurációját. (Változás  *&lt;-tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Első egy `CloudBlobContainer` objektum, amely a kívánt blobtároló neve hivatkozást jelöl. 
    
     ```csharp
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-    ```
-   
-1. Első egy **CloudBlobClient** objektum egy blob szolgáltatásügyfél jelöli.
-   
-    ```csharp
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+    CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Első egy **CloudBlobContainer** hivatkozni kell a kívánt blobtároló neve képviselő objektum. A **CloudBlobClient.GetContainerReference** metódus nem tesz egy kérelmet a blob storage. A hivatkozás adja vissza a blob-tároló létezik-e. 
-   
-    ```csharp
-    CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
-    ```
-
-1. Hívja a **CloudBlobContainer.CreateIfNotExists** metódust létrehozni a tárolót, ha még nem létezik. A **CloudBlobContainer.CreateIfNotExists** metódus beolvasása **igaz** , ha a tároló nem létezik, és sikeresen létrejött. Ellenkező esetben **hamis** adja vissza.    
+1. Hívja a `CloudBlobContainer.CreateIfNotExists` metódust létrehozni a tárolót, ha még nem létezik. A `CloudBlobContainer.CreateIfNotExists` metódus beolvasása **igaz** , ha a tároló nem létezik, és sikeresen létrejött. Ellenkező esetben **hamis** adja vissza.    
 
     ```csharp
     ViewBag.Success = container.CreateIfNotExists();
     ```
 
-1. Frissítés a **ViewBag** a blob-tároló nevét.
+1. Frissítés a `ViewBag` nevű, a blob-tároló.
 
     ```csharp
     ViewBag.BlobContainerName = container.Name;
     ```
+    
+    A következő példa a befejezett `CreateBlobContainer` módszert:
 
+    ```csharp
+    public ActionResult CreateBlobContainer()
+    {
+        CloudBlobContainer container = GetCloudBlobContainer();
+        ViewBag.Success = container.CreateIfNotExists();
+        ViewBag.BlobContainerName = container.Name;
+
+        return View();
+    }
+    ```
+
+1. Az a **Solution Explorer**, kattintson a jobb gombbal a **nézetek** mappa, és válassza a helyi menüben a **Hozzáadás -> Új mappa**. Az új mappa neve *Blobok*. 
+ 
 1. Az a **Solution Explorer**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **Blobok**, és a helyi menüből válassza ki a **Hozzáadás -> nézet**.
 
 1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **CreateBlobContainer** a nézet nevét, majd válassza a **Hozzáadás**.
@@ -141,66 +161,65 @@ Egy blob-tároló blobokat és mappák beágyazott hierarchiája. A következő 
 
 1. Futtassa az alkalmazást, és válassza ki **Blob-tároló létrehozása** az alábbi képernyőfelvételhez hasonló eredmények megtekintése érdekében:
   
-    ![A blob-tároló létrehozása](./media/vs-storage-aspnet-getting-started-blobs/create-blob-container-results.png)
+    ![Blobtároló létrehozása](./media/vs-storage-aspnet-getting-started-blobs/create-blob-container-results.png)
 
-    Ahogy korábban említettük a **CloudBlobContainer.CreateIfNotExists** metódus beolvasása **igaz** csak a tároló nem létezik és jön létre. Ezért, ha futtatja a az alkalmazás a tároló létezik, a metódus visszaadja **hamis**. Az alkalmazás többször is lefuthat, törölnie kell a tároló az alkalmazás ismételt futtatása előtt. A tároló törlése megteheti a **CloudBlobContainer.Delete** metódust. Törölheti is a tárolót használja a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040) vagy a [Microsoft Azure Tártallózó](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
+    Ahogy korábban említettük a `CloudBlobContainer.CreateIfNotExists` metódus beolvasása **igaz** csak a tároló nem létezik és jön létre. Ezért, ha az alkalmazás fut, ha a tároló létezik, a metódus visszaadja **hamis**.
 
 ## <a name="upload-a-blob-into-a-blob-container"></a>Egy blob feltöltése a blob-tárolóba
 
-Miután megismerte [létrejött a blob-tároló](#create-a-blob-container), feltöltheti a fájlokat, hogy tárolóba. Ez a szakasz végigvezeti egy helyi fájl feltöltése a blob-tároló. A lépések azt feltételezik, hogy létrehozta a következő nevű blobtárolóban *-blob-tároló*. 
-
-> [!NOTE]
-> 
-> Ebben a szakaszban a kód feltételezi, hogy végrehajtotta a lépéseket a területen [beállította a fejlesztőkörnyezetet](#set-up-the-development-environment). 
+Egyszer a [blob tároló jön létre](#create-a-blob-container), fájlok feltöltése a tárolóba. Ez a szakasz végigvezeti egy helyi fájl feltöltése a blob-tároló. A lépések azt feltételezik, hogy van egy blob-tároló nevű *-blob-tároló*. 
 
 1. Nyissa meg az `BlobsController.cs` fájlt.
 
-1. Adja hozzá a hívott metódus **UploadBlob** , amely visszaadja az **EmptyResult**.
+1. Adja hozzá a hívott metódus `UploadBlob` , amely egy karakterláncot ad vissza.
 
     ```csharp
-    public EmptyResult UploadBlob()
+    public string UploadBlob()
     {
         // The code in this section goes here.
 
-        return new EmptyResult();
+        return "success!";
     }
     ```
  
-1. Belül a **UploadBlob** módszer, lekérni egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A tárolási kapcsolati karakterlánc és tárfiókadatok beolvasása az Azure szolgáltatás konfigurációs az alábbi kód használatával: (módosítása  *&lt;tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Belül a `UploadBlob` módszer, lekérni egy `CloudBlobContainer` objektum, amely a kívánt blobtároló neve hivatkozást jelöl. 
    
     ```csharp
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-    ```
-   
-1. Első egy **CloudBlobClient** objektum egy blob szolgáltatásügyfél jelöli.
-   
-    ```csharp
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+    CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Első egy **CloudBlobContainer** hivatkozni kell a blobtároló neve képviselő objektum. 
-   
+1. Ahogy korábban, az Azure storage támogatja különböző blob típusok. Ez az oktatóanyag a blokkblobokhoz használja.  Egy hivatkozást a blokkblob lekéréséhez hívja meg a `CloudBlobContainer.GetBlockBlobReference` metódust.
+
     ```csharp
-    CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
+    CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
+    
+    > [!NOTE]
+    > A blob nevének beolvasása a blob URL-CÍMÉT részét képezi, és lehet bármilyen karakterlánc, beleértve a fájl nevét.
 
-1. Ahogy korábban, az Azure storage támogatja különböző blob típusok. Oldalakra vonatkozó blob mutató hivatkozás lekéréséhez hívja meg a **CloudBlobContainer.GetPageBlobReference** metódust. Egy hivatkozást a blokkblob lekéréséhez hívja meg a **CloudBlobContainer.GetBlockBlobReference** metódust. Blokkblob általában a blokkblobok használata javasolt. (< Blob-név > módosítása * egyszer feltöltése a blob hozzárendelni kívánt nevét.)
-
-    ```csharp
-    CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
-    ```
-
-1. Miután egy blobhivatkozást, feltöltheti bármely adatfolyam azt a blob referenciaobjektum meghívásával **UploadFromStream** metódust. A **UploadFromStream** hoz létre a blob nem létezik, vagy felülírja, ha már létezik. (Változás  *&lt;fájlfeltöltés >* egy teljesen minősített a feltölteni kívánt fájl elérési útját.)
+1. Amikor egy blobhivatkozást, töltse fel bármely adatfolyam azt a blob referenciaobjektum meghívásával `UploadFromStream` metódust. A `UploadFromStream` hoz létre a blob nem létezik, vagy felülírja, ha már létezik. (Változás  *&lt;fájlfeltöltés >* egy teljesen minősített feltölteni kívánt fájl elérési útját.)
 
     ```csharp
-    using (var fileStream = System.IO.File.OpenRead(<file-to-upload>))
+    using (var fileStream = System.IO.File.OpenRead(@"<file-to-upload>"))
     {
         blob.UploadFromStream(fileStream);
     }
     ```
+    
+    A következő példa a befejezett `UploadBlob` metódust használ (a feltölteni kívánt fájl teljes elérési útja):
 
-1. Az a **Solution Explorer**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **Blobok**, és a helyi menüből válassza ki a **Hozzáadás -> nézet**.
+    ```csharp
+    public string UploadBlob()
+    {
+        CloudBlobContainer container = GetCloudBlobContainer();
+        CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
+        using (var fileStream = System.IO.File.OpenRead(@"c:\src\sample.txt"))
+        {
+            blob.UploadFromStream(fileStream);
+        }
+        return "success!";
+    }
+    ```
 
 1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, majd nyissa meg `_Layout.cshtml`.
 
@@ -210,7 +229,9 @@ Miután megismerte [létrejött a blob-tároló](#create-a-blob-container), felt
     <li>@Html.ActionLink("Upload blob", "UploadBlob", "Blobs")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **feltöltése a blob**.  
+1. Futtassa az alkalmazást, és válassza ki **feltöltése a blob**.  A "success!" szót megjelenjen-e.
+    
+    ![Sikeres ellenőrzés](./media/vs-storage-aspnet-getting-started-blobs/upload-blob.png)
   
 A szakasz - [a blob-tárolóban lévő blobok listázása](#list-the-blobs-in-a-blob-container) -bemutatja, hogyan a blob-tárolóban lévő blobok listázásához.    
 
@@ -218,48 +239,30 @@ A szakasz - [a blob-tárolóban lévő blobok listázása](#list-the-blobs-in-a-
 
 Ez a szakasz bemutatja, hogyan a blob-tárolóban lévő blobok listázásához. A minta kód hivatkozásokat a *-blob-tároló* az szakaszban létrehozott [blob tárolókat hozhat létre](#create-a-blob-container).
 
-> [!NOTE]
-> 
-> Ebben a szakaszban a kód feltételezi, hogy végrehajtotta a lépéseket a területen [beállította a fejlesztőkörnyezetet](#set-up-the-development-environment). 
-
 1. Nyissa meg az `BlobsController.cs` fájlt.
 
-1. Adja hozzá a hívott metódus **ListBlobs** , amely visszaadja az **ActionResult**.
+1. Adja hozzá a hívott metódus `ListBlobs` , amely visszaadja az `ActionResult`.
 
     ```csharp
     public ActionResult ListBlobs()
     {
         // The code in this section goes here.
 
-        return View();
     }
     ```
  
-1. Belül a **ListBlobs** módszer, lekérni egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A tárolási kapcsolati karakterlánc és tárfiókadatok beolvasása az Azure szolgáltatás konfigurációs az alábbi kód használatával: (módosítása  *&lt;tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Belül a `ListBlobs` módszer, lekérni egy `CloudBlobContainer` objektum, amely a blob-tárolóba való hivatkozást jelöl. 
    
     ```csharp
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    CloudBlobContainer container = GetCloudBlobContainer();
     ```
    
-1. Első egy **CloudBlobClient** objektum egy blob szolgáltatásügyfél jelöli.
-   
-    ```csharp
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-    ```
-
-1. Első egy **CloudBlobContainer** hivatkozni kell a blobtároló neve képviselő objektum. 
-   
-    ```csharp
-    CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
-    ```
-
-1. A blob-tárolóban lévő blobok listázásához, használja a **CloudBlobContainer.ListBlobs** metódust. A **CloudBlobContainer.ListBlobs** metódus értéket ad vissza egy **IListBlobItem** objektum, amely a adatoszlopon egy **CloudBlockBlob**, **CloudPageBlob**, vagy **CloudBlobDirectory** objektum. A következő kódrészletet a blob-tároló összes blobjának enumerálása. Minden egyes blob típusúvá a megfelelő objektumot, típusa és a neve alapján van (vagy az URI egy **CloudBlobDirectory**) hozzá van adva egy listájához.
+1. A blob-tárolóban lévő blobok listázásához, használja a `CloudBlobContainer.ListBlobs` metódust. A `CloudBlobContainer.ListBlobs` metódus értéket ad vissza egy `IListBlobItem` objektum, amely képes konvertálható egy `CloudBlockBlob`, `CloudPageBlob`, vagy `CloudBlobDirectory` objektum. A következő kódrészletet a blob-tároló összes blobjának enumerálása. Minden egyes blob típusúvá a megfelelő objektumot, típusa és a neve alapján van (vagy az URI egy **CloudBlobDirectory**) hozzá van adva egy listájához.
 
     ```csharp
     List<string> blobs = new List<string>();
 
-    foreach (IListBlobItem item in container.ListBlobs(null, false))
+    foreach (IListBlobItem item in container.ListBlobs())
     {
         if (item.GetType() == typeof(CloudBlockBlob))
         {
@@ -281,7 +284,7 @@ Ez a szakasz bemutatja, hogyan a blob-tárolóban lévő blobok listázásához.
     return View(blobs);
     ```
 
-    Blob tárolók, blobok mellett könyvtárak tartalmazhat. Most tegyük fel, a következő nevű blobtárolóban *-blob-tároló* , a következő hierarchiája:
+    Blob tárolók, blobok mellett könyvtárak tartalmazhat. Tegyük fel, hogy van egy blob-tároló nevű *-blob-tároló* , a következő hierarchiája:
 
         foo.png
         dir1/bar.png
@@ -293,12 +296,12 @@ Ez a szakasz bemutatja, hogyan a blob-tárolóban lévő blobok listázásához.
         <storage-account-url>/test-blob-container/dir1
         <storage-account-url>/test-blob-container/dir2
 
-    Ahogy látja, a lista tartalmazza-e a csak a legfelső szintű entitások; nem beágyazott megfelelően (*bar.png* és *baz.png*). A blob-tárolóban lévő összes entitás listázásához, meg kell hívnia a **CloudBlobContainer.ListBlobs** metódus és pass **igaz** a a **Listblobs** paraméter.    
+    Látható, a lista tartalmazza-e a csak a legfelső szintű entitások; nem beágyazott megfelelően (*bar.png* és *baz.png*). A blob-tárolóban lévő összes entitás listájában, módosítsa a kódot, hogy a **CloudBlobContainer.ListBlobs** metódus kap **igaz** a a **Listblobs** a paraméter.    
 
     ```csharp
-    ...
+    //...
     foreach (IListBlobItem item in container.ListBlobs(useFlatBlobListing:true))
-    ...
+    //...
     ```
 
     Beállítás a **Listblobs** paramétert **igaz** adja vissza egy strukturálatlan lista összes entitások a blob-tárolóban, és az alábbi eredményeket eredményez:
@@ -306,12 +309,42 @@ Ez a szakasz bemutatja, hogyan a blob-tárolóban lévő blobok listázásához.
         foo.png
         dir1/bar.png
         dir2/baz.png
+    
+    A következő példa a befejezett **ListBlobs** módszert:
+
+    ```csharp
+    public ActionResult ListBlobs()
+    {
+        CloudBlobContainer container = GetCloudBlobContainer();
+        List<string> blobs = new List<string>();
+        foreach (IListBlobItem item in container.ListBlobs(useFlatBlobListing: true))
+        {
+            if (item.GetType() == typeof(CloudBlockBlob))
+            {
+                CloudBlockBlob blob = (CloudBlockBlob)item;
+                blobs.Add(blob.Name);
+            }
+            else if (item.GetType() == typeof(CloudPageBlob))
+            {
+                CloudPageBlob blob = (CloudPageBlob)item;
+                blobs.Add(blob.Name);
+            }
+            else if (item.GetType() == typeof(CloudBlobDirectory))
+            {
+                CloudBlobDirectory dir = (CloudBlobDirectory)item;
+                blobs.Add(dir.Uri.ToString());
+            }
+        }
+
+        return View(blobs);
+    }
+    ```
 
 1. Az a **Solution Explorer**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **Blobok**, és a helyi menüből válassza ki a **Hozzáadás -> nézet**.
 
-1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **ListBlobs** a nézet nevét, majd válassza a **Hozzáadás**.
+1. Az a **nézet hozzáadása** párbeszédpanelen adja meg `ListBlobs` a nézet nevét, majd válassza a **Hozzáadás**.
 
-1. Nyissa meg `ListBlobs.cshtml`, és módosítsa úgy, hogy például a következő kódrészletet:
+1. Nyissa meg `ListBlobs.cshtml`, és cserélje ki annak tartalmát az alábbira:
 
     ```html
     @model List<string>
@@ -347,48 +380,50 @@ Ez a szakasz bemutatja, hogyan töltse le a blob, és vagy megmaradnak, helyi t�
 
 1. Nyissa meg az `BlobsController.cs` fájlt.
 
-1. Adja hozzá a hívott metódus **DownloadBlob** , amely visszaadja az **ActionResult**.
+1. Adja hozzá a hívott metódus `DownloadBlob` , amely egy karakterláncot ad vissza.
 
     ```csharp
-    public EmptyResult DownloadBlob()
+    public string DownloadBlob()
     {
         // The code in this section goes here.
 
-        return new EmptyResult();
+        return "success!";
     }
     ```
  
-1. Belül a **DownloadBlob** módszer, lekérni egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A tárolási kapcsolati karakterlánc és tárfiókadatok beolvasása az Azure szolgáltatás konfigurációs az alábbi kód használatával: (módosítása  *&lt;tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Belül a `DownloadBlob` módszer, lekérni egy `CloudBlobContainer` objektum, amely a blob-tárolóba való hivatkozást jelöl.
    
     ```csharp
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-    ```
-   
-1. Első egy **CloudBlobClient** objektum egy blob szolgáltatásügyfél jelöli.
-   
-    ```csharp
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+    CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Első egy **CloudBlobContainer** hivatkozni kell a blobtároló neve képviselő objektum. 
-   
-    ```csharp
-    CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
-    ```
-
-1. Egy blob referenciaobjektum beolvasása meghívásával **CloudBlobContainer.GetBlockBlobReference** vagy **CloudBlobContainer.GetPageBlobReference** metódust. (Változás  *&lt;blob-neve >* a blob nevével tölti le.)
+1. Egy blob referenciaobjektum beolvasása meghívásával `CloudBlobContainer.GetBlockBlobReference` metódust. 
 
     ```csharp
-    CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
+    CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
 
-1. Egy blob letöltéséhez használjon a **CloudBlockBlob.DownloadToStream** vagy **CloudPageBlob.DownloadToStream** módszer, attól függően, hogy a blob típushoz. A következő kódban részlet a **CloudBlockBlob.DownloadToStream** módszerrel kell továbbítania a blob tartalmát egy stream objektumra, majd egy helyi fájlba fennállásának: (változás  *&lt;helyi fájlnév >* a teljesen minősített fájl nevét képviselő, ha azt szeretné, hogy a blob letöltött.) 
+1. Egy blob letöltéséhez használjon a `CloudBlockBlob.DownloadToStream` metódust. Az alábbi kód átviszi a blob tartalmát egy stream objektumra, majd egy helyi fájlba is megőrződjenek (módosítása  *&lt;helyi fájlnév >* számára a teljesen minősített név képviselő le kell tölteni a blob esetén.): 
 
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
     {
         blob.DownloadToStream(fileStream);
+    }
+    ```
+    
+    A következő példa a befejezett `ListBlobs` metódust használ (a létrehozás alatt áll, helyi fájl teljes elérési útja):
+    
+    ```csharp
+    public string DownloadBlob()
+    {
+        CloudBlobContainer container = GetCloudBlobContainer();
+        CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
+        using (var fileStream = System.IO.File.OpenWrite(@"c:\src\downloadedBlob.txt"))
+        {
+            blob.DownloadToStream(fileStream);
+        }
+        return "success!";
     }
     ```
 
@@ -400,58 +435,53 @@ Ez a szakasz bemutatja, hogyan töltse le a blob, és vagy megmaradnak, helyi t�
     <li>@Html.ActionLink("Download blob", "DownloadBlob", "Blobs")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **letöltési blob** letölteni a blob. A megadott blob a **CloudBlobContainer.GetBlockBlobReference** metódus hívása a megadott helyen letölti a **File.OpenWrite** metódus hívása. 
+1. Futtassa az alkalmazást, és válassza ki **letöltési blob** letölteni a blob. A megadott blob a `CloudBlobContainer.GetBlockBlobReference` metódus hívása a megadott helyről tölti le a `File.OpenWrite` metódus hívása.  A szöveg a "success!" kell megjelenítenie a böngészőben. 
 
 ## <a name="delete-blobs"></a>Blobok törlése
 
 A következő lépések bemutatják egy blob törlése:
 
-> [!NOTE]
-> 
-> Ebben a szakaszban a kód feltételezi, hogy végrehajtotta a lépéseket a területen [beállította a fejlesztőkörnyezetet](#set-up-the-development-environment). 
-
 1. Nyissa meg az `BlobsController.cs` fájlt.
 
-1. Adja hozzá a hívott metódus **DeleteBlob** , amely visszaadja az **ActionResult**.
+1. Adja hozzá a hívott metódus `DeleteBlob` , amely egy karakterláncot ad vissza.
 
     ```csharp
-    public EmptyResult DeleteBlob()
+    public string DeleteBlob()
     {
         // The code in this section goes here.
 
-        return new EmptyResult();
+        return "success!";
     }
     ```
 
-1. Első egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A tárolási kapcsolati karakterlánc és tárfiókadatok beolvasása az Azure szolgáltatás konfigurációs az alábbi kód használatával: (módosítása  *&lt;tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Belül a `DeleteBlob` módszer, lekérni egy `CloudBlobContainer` objektum, amely a blob-tárolóba való hivatkozást jelöl.
    
     ```csharp
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-    ```
-   
-1. Első egy **CloudBlobClient** objektum egy blob szolgáltatásügyfél jelöli.
-   
-    ```csharp
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+    CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Első egy **CloudBlobContainer** hivatkozni kell a blobtároló neve képviselő objektum. 
-   
+1. Egy blob referenciaobjektum beolvasása meghívásával `CloudBlobContainer.GetBlockBlobReference` metódust. 
+
     ```csharp
-    CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
+    CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
 
-1. Egy blob referenciaobjektum beolvasása meghívásával **CloudBlobContainer.GetBlockBlobReference** vagy **CloudBlobContainer.GetPageBlobReference** metódust. (Változás  *&lt;blob-neve >* nevére, a blob törli.)
-
-    ```csharp
-    CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
-        ```
-
-1. To delete a blob, use the **Delete** method.
+1. Egy blob törléséhez használja a `Delete` metódust.
 
     ```csharp
     blob.Delete();
+    ```
+    
+    A befejezett `DeleteBlob` metódust meg kell jelennie az alábbiak szerint:
+    
+    ```csharp
+    public string DeleteBlob()
+    {
+        CloudBlobContainer container = GetCloudBlobContainer();
+        CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
+        blob.Delete();
+        return "success!";
+    }
     ```
 
 1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, majd nyissa meg `_Layout.cshtml`.
@@ -462,10 +492,11 @@ A következő lépések bemutatják egy blob törlése:
     <li>@Html.ActionLink("Delete blob", "DeleteBlob", "Blobs")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **Delete blob** a megadott blob törlése a **CloudBlobContainer.GetBlockBlobReference** metódus hívása. 
+1. Futtassa az alkalmazást, és válassza ki **Delete blob** a megadott blob törlése a `CloudBlobContainer.GetBlockBlobReference` metódus hívása.  A szöveg a "success!" meg kell jelennie a böngészőben.  Kattintson a böngésző **vissza** gombra, majd válasszon **blobok listázása** ellenőrzése a blob már nem a tárolóban.
 
 ## <a name="next-steps"></a>Következő lépések
-Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
+
+Ebben az oktatóanyagban megtanulta, hogyan tárolhatja, listában, és az ASP.NET használatával Azure Storage blobs beolvasása.  Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
 
   * [Ismerkedés az Azure table storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)
   * [Ismerkedés az Azure várólista-tároló és a Visual Studio kapcsolódó szolgáltatások (ASP.NET)](vs-storage-aspnet-getting-started-queues.md)

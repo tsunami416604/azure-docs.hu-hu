@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Cosmos DB DocumentDB API: SQL-szintaxis |} Microsoft Docs'
-description: "Az Azure Cosmos DB DocumentDB API SQL lekérdező nyelve dokumentációját."
+title: "Azure Cosmos DB: SQL-szintaxis lekérdezés referencia |} Microsoft Docs"
+description: "Az Azure Cosmos DB SQL lekérdező nyelve dokumentációját."
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: mimig
-ms.openlocfilehash: 6fc96dae8c7c6983b1d062c22438344278d478e0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 73d20826f24d233653fcf4a2c16e3d14486d9eb2
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-documentdb-api-sql-syntax-reference"></a>Az Azure Cosmos DB DocumentDB API: SQL-szintaxis referencia
+# <a name="azure-cosmos-db-sql-syntax-reference"></a>Az Azure Cosmos adatbázis SQL-szintaxis referencia
 
-Az Azure Cosmos DB DocumentDB API támogatja a dokumentumok lekérdezését a megszokott SQL (Structured Query Language) használatával például nyelvtan hierarchikus JSON-dokumentumok keresztül anélkül, hogy explicit séma vagy a másodlagos indexek létrehozását. Ez a témakör a DocumentDB API SQL lekérdező nyelve dokumentációját.
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-A DocumentDB API SQL lekérdező nyelve bemutatóért lásd: [Azure Cosmos DB DocumentDB API SQL-lekérdezések](documentdb-sql-query.md).  
+A megszokott SQL (Structured Query Language) használó dokumentumokat lekérdezése az Azure Cosmos DB támogatja, mint például nyelvtan hierarchikus JSON-dokumentumok keresztül anélkül, hogy explicit séma vagy a másodlagos indexek létrehozását. Ez a témakör az SQL API-fiókok kompatibilis SQL lekérdező nyelve dokumentációját.
+
+Az SQL lekérdező nyelve bemutatóért lásd: [Azure Cosmos adatbázis SQL-lekérdezések](documentdb-sql-query.md).  
   
 Azt is hívhat meg, hogy keresse fel a [Tesztlekérdezéseket](http://www.documentdb.com/sql/demo) ahol Azure Cosmos DB próbálja és SQL-lekérdezések futtatása az adatkészletet.  
   
@@ -663,7 +665,7 @@ ORDER BY <sort_specification>
   
      **Szintaxis konvenciók**  
   
-     Az alábbi táblázat a DocumentDB API lekérdezési nyelv hivatkozási szintaxist leíró konvenciókat ismerteti.  
+     A következő táblázat ismerteti az egyezmények használt szintaxis a következő SQL-hivatkozás.  
   
     |**Egyezmény**|**A használt**|  
     |-|-|    

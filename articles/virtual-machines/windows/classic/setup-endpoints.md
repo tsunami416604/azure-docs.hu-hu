@@ -1,6 +1,6 @@
 ---
 title: "Állítsa be a klasszikus windowsos virtuális gép végpontja |} Microsoft Docs"
-description: "Ismerje meg, hozzon létre végpontok a klasszikus Azure portálon a Windows virtuális gépek és a Windows rendszerű virtuális gép közötti kommunikáció biztosítása az Azure-ban."
+description: "Ismerje meg, hozzon létre végpontok a klasszikus Windows virtuális gépek Azure-portálon az Azure-ban és Windows rendszerű virtuális gép közötti kommunikáció biztosítása."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: cynthn
-ms.openlocfilehash: bea2a30d67e47342616bbe00946b7c559c5e277b
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 34bfad1e41037f38e950db085c0c13b7066b3e96
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-set-up-endpoints-on-a-classic-windows-virtual-machine-in-azure"></a>A klasszikus Azure-ban Windows rendszerű virtuális gép végpontja beállítása
 Minden Windows virtuális gépek az Azure klasszikus telepítési modellel létrehozott képes automatikusan egy olyan magánhálózat protokollt használó kommunikációra hálózati csatornát a felhőalapú szolgáltatás- vagy virtuális hálózati más virtuális gépekkel. Azonban a számítógépek az interneten vagy más virtuális hálózatok végpontok át tudja irányítani a bejövő hálózati forgalmat a virtuális gép szükséges. Ez a cikk érhető el is [Linux virtuális gépek](../../linux/classic/setup-endpoints.md).

@@ -13,22 +13,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: database
-ms.date: 11/02/2017
+ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: 989ef9915028c42a4da817bf2dd3aa5ad2beb2ef
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 432ffc80d602a9e4eaf83fba15f0e6ebabd13603
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Az Azure Cosmos DB Azure CLI-minták
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 
 A következő táblázat az Azure Cosmos DB Azure CLI mintaparancsfájlok hivatkozásokat tartalmaz. Az összes Azure Cosmos DB parancssori felület parancsait hivatkozás lapok érhetők el a [Azure CLI 2.0 hivatkozás](https://docs.microsoft.com/cli/azure/cosmosdb).
 
 | |  |
 |---|---|
 |**Azure Cosmos DB fiók, az adatbázis és a tárolók létrehozása**||
-|[A DocumentDB API-fiók létrehozása](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| A DocumentDB API hoz létre egyetlen Azure Cosmos DB API-fiók, adatbázis és tárolóhoz való használatra. |
+|[Az SQL API-fiók létrehozása](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Az SQL API-t hoz létre a egyetlen Azure Cosmos DB API-fiók, adatbázis és tárolóhoz való használatra. |
 | [MongoDB API-fiók létrehozása](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy egyetlen Azure Cosmos DB MongoDB API fiók, adatbázis és gyűjtemény. |
 |**Az Azure Cosmos DB méretezése**||
 | [Skála tároló átviteli sebesség](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Módosítja a kiosztott througput tárolóba.|

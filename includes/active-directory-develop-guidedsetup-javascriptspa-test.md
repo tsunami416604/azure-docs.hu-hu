@@ -1,4 +1,3 @@
-
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
 ### <a name="test-with-visual-studio"></a>A Visual Studio tesztelése

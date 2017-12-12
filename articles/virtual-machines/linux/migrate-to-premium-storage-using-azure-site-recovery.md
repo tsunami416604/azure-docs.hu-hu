@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: eda3b0d37f670f179804442710784e18f46bd848
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5ff52449414a6c9796b66195c33721553220f6bc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Prémium szintű Storage telepítse át az Azure Site Recovery segítségével
 
@@ -202,7 +202,7 @@ A Site Recovery hoz létre egy Virtuálisgép-példány, amelynek típusa megegy
    * A klasszikus üzembe helyezési modell használatával létrehozza a virtuális gépek: a virtuális gép hozzáadása a rendelkezésre állási csoportot az Azure portálon. A részletes lépéseket lásd a [hozzáadása egy meglévő virtuális gép rendelkezésre állási csoportok](../linux/classic/configure-availability.md#addmachine).
    * A Resource Manager üzembe helyezési modellel keresztül létrehozza a virtuális gépek: a virtuális gép a konfiguráció mentéséhez, és törölje és hozza létre a virtuális gépek a rendelkezésre állási csoport. Ehhez használja a következő parancsfájl [beállítása Azure Resource Manager virtuális gép rendelkezésre állási csoport](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Ez a parancsfájl futtatása előtt ellenőrizze a korlátozások vonatkoznak, és tervezze meg a leállás.
 
-2. **Törölje a régi virtuális gépek és lemezek**. Győződjön meg arról, hogy a Premium lemezek forráslemezekhez konzisztens és, hogy az új virtuális gépek a forrás virtuális gépeknek ugyanazon művelet végrehajtására szolgál(nak). A Resource Manager üzembe helyezési modellel törölje a virtuális Gépet, és a lemezek törlése a forrás storage-fiókok az Azure portálon. A klasszikus üzembe helyezési modellel törölheti a virtuális gép és a lemezek a klasszikus portálon vagy az Azure-portálon. Ha probléma, amely a lemez nem törölt, annak ellenére, hogy törli a virtuális gép, lásd: [hibák elhárítása a virtuális merevlemezek törlésekor](../../storage/common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
+2. **Törölje a régi virtuális gépek és lemezek**. Győződjön meg arról, hogy a Premium lemezek forráslemezekhez konzisztens és, hogy az új virtuális gépek a forrás virtuális gépeknek ugyanazon művelet végrehajtására szolgál(nak). Törölje a virtuális gép, és a lemezek törlése a forrás storage-fiókok az Azure portálon. Ha probléma, amely a lemez nem törölt, annak ellenére, hogy törli a virtuális gép, lásd: [hibák elhárítása a virtuális merevlemezek törlésekor](../../storage/common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
 
 3. **Az Azure Site Recovery-infrastruktúra tiszta**. Ha már nincs szükség a Site Recovery, törölheti is az infrastruktúra. Törölje a replikált elemek, a konfigurációs kiszolgáló és a helyreállítási irányelv, és törölje az az Azure Site Recovery-tárolóban.
 

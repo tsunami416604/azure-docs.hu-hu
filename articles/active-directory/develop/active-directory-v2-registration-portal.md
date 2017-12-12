@@ -4,7 +4,7 @@ description: "A Microsoft app-regisztrálási portál különféle funkcióinak 
 services: active-directory
 documentationcenter: 
 author: lnalepa
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: f0507c28-9464-4d3e-bd53-de9053fd5278
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: c60499c425a7fd800f7ca9a5bac1fed5af73b801
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3340df3fcc2456a355e523bfcf09978a16966036
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="app-registration-reference"></a>Alkalmazás regisztrálása referencia
 Ez a dokumentum nyújt a környezet és a Microsoft App regisztrációs portálon található különböző szolgáltatások leírása [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList).
@@ -30,7 +30,7 @@ Ez a lista azokat az alkalmazásokat az Azure AD v2.0-végponttal való használ
 ## <a name="live-sdk-applications"></a>Élő SDK-alkalmazásokra
 Ez a lista azokat az alkalmazásokat, kizárólag a Microsoft-fiókkal történő használathoz regisztrált.  Nincsenek engedélyezve az Azure Active Directoryval legyen használható.  Ez az olyan alkalmazásokat, amelyek volt korábban regisztrálva van a msa-t a fejlesztői portálhoz a talál `https://account.live.com/developers/applications`.  A korábban elvégzett összes függvények `https://account.live.com/developers/applications` most már az új portálon hajtható végre `https://apps.dev.microsoft.com`.  Ha a Microsoft-fiók alkalmazásokkal kapcsolatos további kérdése van, lépjen kapcsolatba velünk a következő címen.
 
-## <a name="application-secrets"></a>Alkalmazás titkos kulcsok
+## <a name="application-secrets"></a>Alkalmazástitkok
 Alkalmazás titkokat hitelesítő adatokat, amelyek lehetővé teszik az alkalmazás végrehajtásához megbízható [ügyfél-hitelesítés](http://tools.ietf.org/html/rfc6749#section-2.3) az Azure ad-val.  Az OAuth és az OpenID Connect, egy alkalmazás titkos kulcsok gyakran nevezik egy `client_secret`.  A bármilyen alkalmazás, amely megkapja a biztonsági jogkivonatot egy webes megcímezhető helyen a v2.0 protokoll (használatával egy `https` séma) kell használnia egy alkalmazás titkos kulcs az Azure AD-visszaváltás a biztonsági jogkivonat alapján azonosítja magát.  Továbbá minden natív ügyfél adott recieves jogkivonatok az eszköz lesz tiltott, ügyfél-hitelesítést végezni egy alkalmazás titkos kulcs segítségével nem biztonságos környezetben titkos kulcsok tárolására akadályozása érdekében.
 
 Minden alkalmazás tartalmazhat két érvényes alkalmazás titkok álljon időben.  Két titkos kulcsok fölött, hogy a ablilty rendszeres kulcsváltás végrehajtani az alkalmazás teljes környezet között.  Miután áttelepítette a az alkalmazás számára az új titkos kulcsot a teljes, törölje a régi ügyfélkulcsot, és egy új kiépítéséhez.

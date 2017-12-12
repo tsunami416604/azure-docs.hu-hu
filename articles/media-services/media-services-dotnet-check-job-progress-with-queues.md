@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 5ee89d0ae4c3c56d164aff4e321ee99f015ba4fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b5b1d7723b57db2614dc889282f98e9673b4bbd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Media Services feladat értesítések küldése .NET a figyelheti az Azure Queue storage segítségével
 Kódolási feladatok futtatásakor gyakran van szüksége egy módszerre, amellyel nyomon követheti a feladat előrehaladását. Konfigurálhatja az értesítéseket a Media Services [Azure Queue storage](../storage/storage-dotnet-how-to-use-queues.md). Értesítések lekérése a várólista-tároló által figyelheti a feladat előrehaladását. 
@@ -27,7 +27,7 @@ A Queue storage kézbesített üzenetek elérhető bárhol a világon. A váról
 
 Egy általános forgatókönyv a Media Services értesítések figyelésre néhány további feladat elvégzéséhez szüksége van a tartalomkezelési rendszer fejlesztői egy kódolási feladat befejeződik, (például a következő lépésben egy munkafolyamatot kiváltó, vagy tartalmakat tehetnek közzé).
 
-Ez a témakör bemutatja, hogyan értesítési üzenetek lekérése a Queue storage.  
+Ez a cikk bemutatja, hogyan értesítési üzenetek lekérése a Queue storage.  
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 A Queue storage használata a Media Services-alkalmazások fejlesztésével vegye figyelembe a következőket:
@@ -54,7 +54,7 @@ A Kódpélda ebben a szakaszban a következőket teszi:
 9. A várólista és az értesítési végpont törlése.
 
 > [!NOTE]
-> A javasolt egy feladat állapotának módja által az értesítési üzenetet, figyeli a következő példában látható módon.
+> Az ajánlott módszer a figyelheti a feladat állapota van az értesítési üzenetet, figyeli a következő példában látható módon:
 >
 > Azt is megteheti, ellenőrizheti egy feladat állapota a használatával a **IJob.State** tulajdonság.  A feladat befejezésére vonatkozó értesítési üzenet beérkeznek előtt állapotát az **IJob** értéke **befejezett**. A **IJob.State** tulajdonság némi késéssel pontos állapotát tükrözi.
 >
@@ -63,7 +63,8 @@ A Kódpélda ebben a szakaszban a következőket teszi:
 ### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
 1. Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
-2. Hozzon létre egy új mappát (a mappa a helyi meghajtón bárhol lehet), és másoljon bele egy .mp4-fájlt, amelyet szeretne kódolni vagy fokozatosan letölteni. Ebben a példában a "C:\Media" elérési utat használja.
+2. Hozzon létre egy új mappát (mappa bárhol lehet a helyi meghajtóról) és kódolni vagy fokozatosan letölteni kívánt .mp4 fájl másolása. Ebben a példában a "C:\Media" elérési utat használja.
+3. Adjon hozzá egy hivatkozást, a **System.Runtime.Serialization** könyvtár.
 
 ### <a name="code"></a>Kód
 
@@ -120,9 +121,14 @@ namespace JobNotification
 
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
+
         private static readonly string _StorageConnectionString = 
             ConfigurationManager.AppSettings["StorageConnectionString"];
 
@@ -138,11 +144,15 @@ namespace JobNotification
             string endPointAddress = Guid.NewGuid().ToString();
 
             // Create the context.
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-
+            
             // Create the queue that will be receiving the notification messages.
             _queue = CreateQueue(_StorageConnectionString, endPointAddress);
 
@@ -326,7 +336,8 @@ namespace JobNotification
     }
 }
 ```
-Az előző példában a következő kimeneti hozott létre. Az értékek eltérőek.
+
+Az előző példában a következő kimeneti előállított: az értékek eltérőek.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

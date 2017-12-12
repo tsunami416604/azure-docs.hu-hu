@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: c9a67644ff2922875de486b2a2b671f8e82e9449
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9dabf666c633b59c7d1f9478b0e9cfe9d313e129
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Azure-beli virtuális gépek üzembe helyezése a Cheffel
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef automation kézbesítéséhez egy remek eszköz, és állapot-konfiguráció szükséges.
 
-A felhő-api legújabb kiadással Chef zökkenőmentes integrációt biztosít az Azure-felkínálva kiosztását és telepítését konfigurációs állapotnak egyetlen parancs keresztül lehetőséget.
+A legújabb api felhőalapú kiadás, Chef zökkenőmentes integrációt biztosít az Azure-felkínálva kiosztását és telepítését konfigurációs állapotnak egyetlen parancs keresztül lehetőséget.
 
-Ez a cikk I mutat be, hogyan állíthat be a Chef környezet az Azure virtuális gépeket, és lépésről lépésre egy házirend vagy az "CookBook" hoz létre, és majd a cookbook telepítése Azure virtuális gép.
+Ebben a cikkben, állítsa be a Chef környezetet az Azure virtuális gépeket, és végezze el a házirend vagy a "CookBook" hoz létre, és ez cookbook majd telepítése Azure virtuális gép.
 
 Most megkezdéséhez!
 
 ## <a name="chef-basics"></a>Chef alapjai
-Mielőtt elkezdené, kérem, tekintse át a Chef alapvető fogalmait. Nincs nagy anyagot <a href="http://www.chef.io/chef" target="_blank">Itt</a> és egy gyors olvasási rendelkezik, ez a forgatókönyv megkezdése előtt javasolt. Az alapok azonban I fog recap, azt az első lépések előtt.
+Mielőtt elkezdené, [tekintse át az alapfogalmakat Chef](http://www.chef.io/chef). 
 
 A következő ábra szemlélteti a magas szintű Chef architektúra.
 
@@ -45,12 +45,12 @@ A Chef kiszolgáló a felügyeleti pont és a Chef kiszolgáló két lehetőség
 
 A Chef ügyfél (csomópont) áll az ügynök, amely a kezelt kiszolgálókon.
 
-A Chef munkaállomás a rendszergazdai munkaállomás, amelyen azt a házirendek létrehozása és a felügyeleti parancsok. Futtassa a Microsoft a **kés** parancsot a Chef munkaállomás az infrastruktúra kezelése érdekében.
+A Chef munkaállomás a felügyeleti munkaállomás, ahol azt szabályzatok létrehozása és kezelése parancsok. Futtassa a Microsoft a **kés** parancsot a Chef munkaállomás a infrastruktúra kezelése érdekében.
 
-A "Cookbooks" és "Receptet" fogalmát is van. Ezek a hatékonyan azt határozza meg, és a kiszolgálóink alkalmazni a házirendeket.
+A "Cookbooks" és "Receptet" fogalmát is van. Ezek a hatékonyan a házirendek azt határozza meg, és a kiszolgálókon.
 
 ## <a name="preparing-the-workstation"></a>A munkaállomás előkészítése
-Először is lehetővé teszi, hogy a munkaállomás előkészítése. A szabványos Windows-munkaállomás használata. Hozzon létre egy könyvtárat a konfigurációs fájlokat és cookbooks tároló kell.
+Először is lehetővé teszi, hogy a munkaállomás előkészítése. A szabványos Windows-munkaállomás használata. Hozzon létre egy könyvtárat cookbooks és konfigurációs fájljainak tárolására van szükségünk.
 
 Először létre kell hoznia egy C:\chef nevű könyvtárat.
 
@@ -58,7 +58,6 @@ Ezután hozzon létre egy második c:\chef\cookbooks nevű könyvtár.
 
 Most már van szükségünk, Chef képes kommunikálni az Azure-előfizetés, töltse le az Azure-alapú beállítások fájlt.
 
-<!--Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).-->
 Töltse le a közzétételi beállítások a PowerShell Azure használatával [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) parancsot. 
 
 Mentse a közzétételi beállítások fájlja C:\chef.
@@ -153,7 +152,7 @@ A C:\Chef könyvtárában a következő parancsot.
 
     chef generate cookbook webserver
 
-Ezzel a fájlokat a könyvtárban C:\Chef\cookbooks\webserver hoz létre. Most kell azt szeretné, hogy a Chef ügyfél a felügyelt virtuális gépen parancsok a kulcstulajdonságokat határozza meg.
+Ezzel a fájlokat a könyvtárban C:\Chef\cookbooks\webserver hoz létre. Most kell azt szeretné, hogy a Chef ügyfél a felügyelt virtuális gépen található parancsok a kulcstulajdonságokat határozza meg.
 
 A parancsok a fájl default.rb vannak tárolva. Ebben a fájlban I lesz kell meghatározása parancsok egy halmazát, telepíti az IIS szolgáltatást, az IIS és a sablonfájl a wwwroot mappába másolja.
 

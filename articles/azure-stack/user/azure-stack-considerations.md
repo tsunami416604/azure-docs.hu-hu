@@ -3,8 +3,8 @@ title: "Azure és az Azure-verem különbségei kulcs használatakor a szolgált
 description: "Teendők, ha a szolgáltatások vagy alkalmazások készítéséhez Azure verem."
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: c81f551d-c13e-47d9-a5c2-eb1ea4806228
 ms.service: azure-stack
@@ -13,13 +13,12 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 09/25/2017
-ms.author: twooley
-ms.custom: mvc
-ms.openlocfilehash: 7a385ae50ad3403f41bd31f0676e019ee42d181f
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: mabrigg
+ms.openlocfilehash: 695824ef2537a97ea0530f2c33ad24d5cd9e20f8
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Kulcs szempontok: szolgáltatásokkal vagy az alkalmazások Azure verem
 
@@ -62,7 +61,7 @@ Ha a rendszer Azure verem operátor, lásd: [felügyeleti portálján](../azure-
  
  A Microsoft biztosít több eszközöket és útmutatást tartalmaz, amelyek megkönnyítik az Azure-verem fejlesztése.
 
-| Ajánlás | Referencia | 
+| Javaslat | Referencia | 
 | -------- | ------------- | 
 | A megfelelő telepíti a fejlesztői munkaállomáson. | - [Telepítse a PowerShell](azure-stack-powershell-install.md)<br>- [Eszközök](azure-stack-powershell-download.md)<br>- [PowerShell konfigurálása](azure-stack-powershell-configure-user.md)<br>- [A Visual Studio telepítése](azure-stack-install-visual-studio.md) 
 | A következő információkat tekintheti át:<br>-Az azure Resource Manager sablon kapcsolatos szempontok<br>-Hogyan találhatók gyorsindítási sablonok<br>-Segítségével házirendmodul használata Azure Azure verem fejlesztéséhez | [Fejlesztés az Azure Stackhez](azure-stack-developer.md) | 

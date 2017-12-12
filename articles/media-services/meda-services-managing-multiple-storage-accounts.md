@@ -6,19 +6,18 @@ documentationcenter:
 author: Juliako
 manager: cfowler
 editor: 
-ms.assetid: 4e4a9ec3-8ddb-4938-aec1-d7172d3db858
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: 0b407c3b092fd2c706775154cee3164a9869315a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c99d39a7e33a161d63cf934e0b5983e3977598c4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Eszközök kezelése a Media Services több Tárfiókok között
 A Microsoft Azure Media Services 2.2-es verziótól kezdődően csatolhat több tárfiókot egy Media Services-fiók. Egy Media Services-fiókhoz való csatolására a több tárfiókot a következő előnyöket nyújtja:
@@ -26,7 +25,7 @@ A Microsoft Azure Media Services 2.2-es verziótól kezdődően csatolhat több 
 * Terheléselosztásának az eszközök több tárfiókot.
 * Méretezési Media szolgáltatási tartalom feldolgozása nagy mennyiségű (jelenleg egyetlen tárfiók van maximális legfeljebb 500 TB). 
 
-Ez a témakör bemutatja, hogyan kell csatlakoztatni a több tárfiókot a Media Services segítségével [Azure Resource Manager API-k](https://docs.microsoft.com/rest/api/media/mediaservice) és [Powershell](/powershell/module/azurerm.media). Azt is bemutatja, hogyan adhatja meg a különböző storage-fiókok létrehozása a Media Services SDK használatával eszközök esetén. 
+Ez a cikk bemutatja, hogyan kell csatlakoztatni a több tárfiókot a Media Services segítségével [Azure Resource Manager API-k](https://docs.microsoft.com/rest/api/media/mediaservice) és [Powershell](/powershell/module/azurerm.media). Azt is bemutatja, hogyan adhatja meg a különböző storage-fiókok létrehozása a Media Services SDK használatával eszközök esetén. 
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 Ha több tárfiókok csatolását a Media Services-fiókkal, a következők érvényesek:
@@ -42,7 +41,7 @@ A Media Services értékét használja a **IAssetFile.Name** tulajdonságot, ha 
 
 ## <a name="to-attach-storage-accounts"></a>Tárfiók csatolása  
 
-Storage-fiókok csatolni az AMS-fiók, használja a [Azure Resource Manager API-k](https://docs.microsoft.com/rest/api/media/mediaservice) és [Powershell](/powershell/module/azurerm.media), a következő példában látható módon.
+Storage-fiókok csatolni az AMS-fiók, használja a [Azure Resource Manager API-k](https://docs.microsoft.com/rest/api/media/mediaservice) és [Powershell](/powershell/module/azurerm.media), a következő példában látható módon:
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -91,15 +90,23 @@ namespace MultipleStorageAccounts
 
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static CloudMediaContext _context;
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);

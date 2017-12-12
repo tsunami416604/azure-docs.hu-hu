@@ -13,7 +13,7 @@
       href: quick-backup-vm-powershell.md
     - name: Virtuális gépek biztonsági mentése – Parancssori felület
       href: quick-backup-vm-cli.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Azure-beli virtuális gépek tömeges biztonsági mentése
       href: tutorial-backup-vm-at-scale.md
@@ -209,6 +209,8 @@
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
         - name: Az Azure Backup Server hibaelhárítása
           href: backup-azure-mabs-troubleshoot.md
+        - name: Az Azure Backup Agent hibaelhárítása
+          href: backup-azure-mars-troubleshoot.md
 - name: Referencia
   items:
     - name: Azure PowerShell

@@ -3,8 +3,8 @@ title: "Virtuális gép az Azure-veremben biztonságosan tárolt tanúsítvány 
 description: "Útmutató: virtuális gép telepítése, és küldje le a tanúsítványt az Azure verem kulcstároló használatával"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 46590eb1-1746-4ecf-a9e5-41609fde8e89
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/03/2017
-ms.author: sngun
-ms.openlocfilehash: 29ccdc9eca9911b2f550f9e09da83d0b1d30f9db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: e319f5c6d27d3a223764b0a5593480f02864ddbe
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-a-virtual-machine-and-include-certificate-retrieved-from-a-key-vault"></a>Virtuális gép létrehozása és kulcstároló lekért tanúsítványt
 
@@ -26,7 +26,7 @@ Ez a cikk segít a virtuális gép létrehozása Azure verem és a leküldéses 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Meg kell elő kell fizetnie az ajánlat, amely tartalmazza a Key Vault szolgáltatás. 
+* Az ajánlat, amely tartalmazza a Key Vault szolgáltatás elő kell fizetnie. 
 * [Telepítse a PowerShell Azure verem.](azure-stack-powershell-install.md)  
 * [Az Azure-verem felhasználói PowerShell környezet konfigurálása](azure-stack-powershell-configure-user.md)
 

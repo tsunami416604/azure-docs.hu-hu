@@ -4,7 +4,7 @@ description: "Az alkalmazások és szolgáltatások áthelyezésére a hozzáfé
 services: active-directory
 documentationcenter: dev-center-name
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dastrock
-ms.openlocfilehash: 8c719f4970303c3ff0dd7e80fbd700cb401d2cc5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5ce6b19ebe0b7159b6c68fc50d7d47f0479e0c27
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>A hozzáférés-vezérlés Azure-szolgáltatás áttelepítése
 

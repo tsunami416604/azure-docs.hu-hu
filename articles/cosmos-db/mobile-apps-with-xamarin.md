@@ -14,13 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: 5ab36a16ca87ae7a3e7b26571fc6aadd108841c9
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c6cfe5c3282064573542050ecc477903ded20467
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Mobil a Xamarinnal és Azure Cosmos DB használó alkalmazások
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
 Szükség van a felhőben tárolt adatok a legtöbb mobileszköz-alkalmazások, és Azure Cosmos DB mobilalkalmazások felhő adatbázisába. Minden mobileszköz fejlesztőnek rendelkezik. Az igény szerinti méretezi szolgáltatásként is teljes körűen felügyelt adatbázis. Azt is kerüljön adatait az alkalmazás átlátható módon, a felhasználók a világ minden táján helyétől. Használatával a [Azure Cosmos DB .NET Core SDK](documentdb-sdk-dotnet-core.md), engedélyezheti a Xamarin mobilalkalmazások együttműködhet közvetlenül az Azure Cosmos DB, a középső réteg nélkül.
 
 Ez a cikk nyújt segítséget a Xamarinnal és Azure Cosmos DB mobilalkalmazások létrehozása. Az oktatóanyag: a teljes forráskód található [Xamarinnal és Azure Cosmos DB a Githubon](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin), beleértve a mobileszközök kezelése a felhasználókat és engedélyeket.

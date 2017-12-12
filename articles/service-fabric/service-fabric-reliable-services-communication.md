@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 006f32ea9dea18f8b8e454a256272ec87bfee7f3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 209e657678b7f300f13fc16181a14d8ef422466d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>A Reliable Services kommunikációs API-k használata
 Az Azure Service Fabric platformként rendszer teljesen független kapcsolatos szolgáltatások közötti kommunikáció. Protokollok és a verem elfogadhatók, az UDP HTTP. A szolgáltatás fejlesztők kiválaszthatja, hogyan lépjen kapcsolatba a szolgáltatások van. A Reliable Services alkalmazás-keretrendszer biztosít, beépített kommunikációs verem, valamint az API-t is használhatja a kommunikációhoz egyéni összetevők létrehozása.
@@ -121,7 +121,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 >
 >
 
-Végezetül ismertetik a végpontokat a szolgáltatáshoz szükséges a [szolgáltatás jegyzékfájl](service-fabric-application-model.md) végpontokon szakaszban.
+Végezetül ismertetik a végpontokat a szolgáltatáshoz szükséges a [szolgáltatás jegyzékfájl](service-fabric-application-and-service-manifests.md) végpontokon szakaszban.
 
 ```xml
 <Resources>

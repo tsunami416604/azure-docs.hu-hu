@@ -135,6 +135,8 @@
       items:
         - name: Folyamatos üzembe helyezés
           href: functions-continuous-deployment.md
+        - name: Üzembe helyezés zip-fájlok küldésével
+          href: deployment-zip-push.md
         - name: Erőforrások üzembe helyezésének automatizálása
           href: functions-infrastructure-as-code.md
         - name: Helyszíni függvények

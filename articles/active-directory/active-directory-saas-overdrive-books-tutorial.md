@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: e68cede7-1130-4813-bd55-22a9a6fc6bf5
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 515dd397c46df7c8c82afab9b50051e34db69d7a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3783db3f61f3abe06b0072e7cdc8f84e12b93321
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Oktatóanyag: Azure Active Directoryval integrált gyorsmeneti 
 
@@ -57,7 +57,7 @@ Az Azure AD-be gyorsmeneti integrálása konfigurálásához kell hozzáadnia gy
 
 **A gyűjteményből gyorsmeneti hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a ** [Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -86,11 +86,11 @@ Gyorsmeneti, rendelje hozzá a értékének a **felhasználónév** értékekén
 
 Gyorsmeneti az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on) ** – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user) ** – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Egy gyorsmeneti tesztfelhasználó létrehozása](#creating-an-overdrive-test-user) ** - való egy megfelelője a Britta Simon gyorsmeneti, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user) ** - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on) ** – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
+2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+3. **[Egy gyorsmeneti tesztfelhasználó létrehozása](#creating-an-overdrive-test-user)**  - való egy megfelelője a Britta Simon gyorsmeneti, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 

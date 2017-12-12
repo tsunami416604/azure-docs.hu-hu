@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 12/11/2017
 ms.author: asgang
-ms.openlocfilehash: aa8a79cd152a532ef8989e61c2ec9609b826634b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 8ffc4a5a573b1c5951fab98fb766aed36f626fe4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>A többrétegű Dynamics AX alkalmazás replikálása az Azure Site Recovery segítségével
 
@@ -31,7 +31,6 @@ Ma Dynamics AX nem biztosít semmilyen out-of-az-box vész helyreállítási fun
 
 Ez a cikk azt ismerteti, hogyan készíthető egy vész-helyreállítási megoldást a Dynamics AX-alkalmazás használatával [Azure Site Recovery](site-recovery-overview.md). Egy kattintással helyreállítási tervet, a támogatott konfigurációk és az Előfeltételek segítségével tervezett/nem tervezett feladatátvételi teszteket is ismerteti.
 
-A Site Recovery-alapú vész-helyreállítási megoldást teljes körűen tesztelve, hitelesített, és Dynamics AX által ajánlott.
 
 
 ## <a name="prerequisites"></a>Előfeltételek

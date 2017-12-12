@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: thmullan;jackr
-ms.openlocfilehash: 181ad8471c0d0cb24d8f4eae6bddd9d750b4ee61
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6ca04cf773fc337694626f21ab785baecf68858b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="securing-your-sql-database"></a>Az SQL Database-adatbázis védelme
 
@@ -31,7 +31,7 @@ Az SQL minden fajtájában elérhető biztonsági funkciók teljes körű áttek
 Az SQL Database a mozgásban lévő adatokat a [Transport Layer Security](https://support.microsoft.com/kb/3135244) protokol, az inaktív adatokat [transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), a használatban lévő adatokat pedig az [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) protokoll használatával titkosítja az adatok védelme érdekében. 
 
 > [!IMPORTANT]
->Az Azure SQL Database-hez való kapcsolódáshoz minden esetben titkosítás (SSL/TLS) szükséges, amikor az adatok átvitele folyamatban van az adatbázisból vagy az adatbázisba. Az alkalmazás kapcsolati karakterláncában megadott paraméterekkel állítsa be a kapcsolat titkosítását, és hogy a kiszolgálótanúsítvány *nem* megbízható (ezt elvégzi a rendszer, ha a kapcsolati karakterláncot a klasszikus Azure portálról másolja), különben a kapcsolat nem tudja ellenőrizni a kiszolgáló identitását, és védtelen lesz a közbeékelődéses támadásokkal szemben. Az ADO.NET-illesztő számára például a következők a kapcsolati karakterlánc paraméterei: **Encrypt=True** és **TrustServerCertificate=False**. 
+>Az Azure SQL Database-hez való kapcsolódáshoz minden esetben titkosítás (SSL/TLS) szükséges, amikor az adatok átvitele folyamatban van az adatbázisból vagy az adatbázisba. Az alkalmazás a kapcsolati karakterláncot, meg kell adnia a kapcsolat titkosítására paraméterek és *nem* kell bíznia a kiszolgáló (ebben az esetben, ha a kapcsolati karakterláncot az Azure-portálon kívül), ellenkező esetben a kapcsolat nem ellenőrzi a kiszolgáló identitását, és ki vannak téve a támadások "man közel" lesz. Az ADO.NET-illesztő számára például a következők a kapcsolati karakterlánc paraméterei: **Encrypt=True** és **TrustServerCertificate=False**. 
 
 Az adatok titkosításának egyéb módjaira vonatkozóan fontolja meg az alábbiakat:
 

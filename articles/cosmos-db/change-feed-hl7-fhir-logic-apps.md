@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
-ms.openlocfilehash: d2b50c0b6864af41fb9cfa051721c432772b228d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a041e2121a2762af4307d7044437032cce79f05
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>A Logic Apps és az Azure Cosmos DB használatával HL7 FHIR egészségügyi rekord módosítása betegek értesítése
 
@@ -54,7 +54,7 @@ Ez a megoldás három Logic Apps a fenti követelményeknek, és a megoldás mun
 
 ### <a name="azure-services-used-in-the-solution"></a>A megoldásban használt Azure-szolgáltatások
 
-#### <a name="azure-cosmos-db-documentdb-api"></a>Az Azure Cosmos DB DocumentDB API
+#### <a name="azure-cosmos-db-sql-api"></a>Az Azure Cosmos DB SQL API
 Azure Cosmos-adatbázis a FHIR erőforrások tárháza, az alábbi ábrán látható módon.
 
 ![A HL7 FHIR egészségügyi oktatóanyagban használt Azure Cosmos DB fiók](./media/change-feed-hl7-fhir-logic-apps/account.png)
@@ -86,7 +86,7 @@ Az alábbi ábrán láthatók a betegek várólista. A címke tulajdonság ért�
 #### <a name="api-app"></a>API-alkalmazás
 Az API-alkalmazások Azure Cosmos adatbázis és az új vagy módosított FHIR dokumentumok erőforrástípusok szerint lekérdezések csatlakozik. Ez az alkalmazás rendelkezik egy tartományvezérlő, **FhirNotificationApi** egy művelettel **GetNewOrModifiedFhirDocuments**, lásd: [API-alkalmazás forrását](#api-app-source).
 
-Használjuk a [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) osztály az Azure Cosmos DB DocumentDB .NET API-t. További információkért lásd: a [módosítás hírcsatorna cikk](change-feed.md). 
+Használjuk a [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) osztály az Azure Cosmos DB SQL .NET API-t. További információkért lásd: a [módosítás hírcsatorna cikk](change-feed.md). 
 
 ##### <a name="getnewormodifiedfhirdocuments-operation"></a>GetNewOrModifiedFhirDocuments művelet
 

@@ -5,7 +5,7 @@ services: active-directory
 keywords: "a vállalati állapothordozás, a windows-felhő"
 documentationcenter: 
 author: tanning
-manager: femila
+manager: mtillman
 editor: curtand
 ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: 5082ed8d2f41e72fa979b978e2ac0b0840fdcdac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 21d21c945b622c1695d8856c4baff02c098218cf
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
 Forrásul vagy a biztonsági mentés a Windows 10-beállítások teljes listáját a következő: 
@@ -103,14 +103,14 @@ Beállítások, amelyek nem barangolás vagy a szinkronizálás nem fog tartozni
 | **Edge böngésző**: beállítása képernyő olvasó <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
 | **Kontrasztos**: be- és kikapcsolása |Szinkronizálás |X |Könnyű kezelés |
 | **Kontrasztos**: témák beállításai |Szinkronizálás |X |Könnyű kezelés |
-| **Az Internet Explorer**: Nyissa meg a lapok (URL-cím és cím) |Szinkronizálás |Szinkronizálás |Az Internet Explorer |
-| **Az Internet Explorer**: olvasási lista |Szinkronizálás |Szinkronizálás |Az Internet Explorer |
-| **Az Internet Explorer**: beírt URL-címek |Szinkronizálás |Szinkronizálás |Az Internet Explorer |
-| **Az Internet Explorer**: böngészési előzmények |Szinkronizálás |Szinkronizálás |Az Internet Explorer |
-| **Az Internet Explorer**: Kedvencek |Szinkronizálás |Szinkronizálás |Az Internet Explorer |
-| **Az Internet Explorer**: kizárt URL-címek |Szinkronizálás |Szinkronizálás |Az Internet Explorer |
-| **Az Internet Explorer**: kezdőlapján |Szinkronizálás |Szinkronizálás |Az Internet Explorer |
-| **Az Internet Explorer**: tartomány javaslatok |Szinkronizálás |Szinkronizálás |Az Internet Explorer |
+| **Az Internet Explorer**: Nyissa meg a lapok (URL-cím és cím) |Szinkronizálás |Szinkronizálás |Internet Explorer |
+| **Az Internet Explorer**: olvasási lista |Szinkronizálás |Szinkronizálás |Internet Explorer |
+| **Az Internet Explorer**: beírt URL-címek |Szinkronizálás |Szinkronizálás |Internet Explorer |
+| **Az Internet Explorer**: böngészési előzmények |Szinkronizálás |Szinkronizálás |Internet Explorer |
+| **Az Internet Explorer**: Kedvencek |Szinkronizálás |Szinkronizálás |Internet Explorer |
+| **Az Internet Explorer**: kizárt URL-címek |Szinkronizálás |Szinkronizálás |Internet Explorer |
+| **Az Internet Explorer**: kezdőlapján |Szinkronizálás |Szinkronizálás |Internet Explorer |
+| **Az Internet Explorer**: tartomány javaslatok |Szinkronizálás |Szinkronizálás |Internet Explorer |
 | **Billentyűzet**: felhasználók is kapcsolja be/ki képernyő-billentyűzet |Szinkronizálás |X |Könnyű kezelés |
 | **Billentyűzet**: kapcsolja be a kapcsolódó Igen (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |Könnyű kezelés |
 | **Billentyűzet**: szűrő kulcsok bekapcsolása (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |Könnyű kezelés |

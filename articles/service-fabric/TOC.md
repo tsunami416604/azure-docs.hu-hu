@@ -75,6 +75,7 @@
 ##### [Típusszerializáció](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
 ### [Az alkalmazásmodell](service-fabric-application-model.md)
+### [Alkalmazás- és szolgáltatásjegyzékek](service-fabric-application-and-service-manifests.md)
 ### [Futtatási modell](service-fabric-hosting-model.md)
 
 ### Szolgáltatások

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 1ed64ece4d05dea93fd15e24aaf9921d8614277e
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 84d6c6b134d74e3d739fd1d65134672f2285787f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure példány metaadat-szolgáltatás
 
@@ -76,7 +76,7 @@ A következő táblázat a más adatok formátumok API-k támogathatja a hivatko
 API | Alapértelmezett adatformátum | Eltérő formátumban
 --------|---------------------|--------------
 /instance | JSON-ban | Szöveg
-/scheduledevents | JSON-ban | Egyik sem
+/scheduledevents | JSON-ban | nincs
 
 Egy nem alapértelmezett válaszformátum szeretne használni, adja meg a kért formátumát a kérelem lekérdezési karakterlánc paraméterként. Példa:
 
@@ -283,10 +283,10 @@ Adatok | Leírás | Bevezetett verziója
 -----|-------------|-----------------------
 location | Azure-régió, a virtuális gép fut. | 2017-04-02 
 név | A virtuális gép neve | 2017-04-02
-az ajánlat | A VM-lemezkép információkat nyújtanak. Kép: Azure-galériából telepített lemezképek nincs csak ezt az értéket. | 2017-04-02
+ajánlat | A VM-lemezkép információkat nyújtanak. Kép: Azure-galériából telepített lemezképek nincs csak ezt az értéket. | 2017-04-02
 Közzétevő | A Virtuálisgép-lemezkép kiadója | 2017-04-02
 Termékváltozat | A VM-lemezkép adott Termékváltozat | 2017-04-02
-Verzió | A Virtuálisgép-lemezkép verziója | 2017-04-02
+verzió: | A Virtuálisgép-lemezkép verziója | 2017-04-02
 osType | Linux- vagy Windows | 2017-04-02
 platformUpdateDomain |  [Frissítési tartományok](manage-availability.md) a virtuális gép fut. | 2017-04-02
 platformFaultDomain | [Tartalék tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
@@ -391,7 +391,7 @@ Bash       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.SH
    * A példány metaadat-szolgáltatás a fejlécet igényel `Metadata: true` átadni a kérelemben. Ezt a fejlécet a REST-hívást benyújtása lehetővé teszi, hogy a példány metaadat-szolgáltatás eléréséhez. 
 2. Miért nem jelenik meg a virtuális gép számítási adatai?
    * A példány metaadat-szolgáltatás jelenleg csak az Azure Resource Manager eszközzel létrehozott példányokat támogatja. A jövőben azt előfordulhat, hogy támogassa az Cloud Service virtuális gépeken.
-3. A virtuális gép Azure Resource Manager használatával létrehozott egy while vissza. Miért nem tudok lásd számítási metaadat-információ?
+3. A virtuális gép Azure Resource Manager használatával létrehozott egy while vissza. Miért nem tudok megnéz számítási metaadat-információ?
    * A 2016. szeptember után létrehozott virtuális gépek hozzáadása egy [címke](../../azure-resource-manager/resource-group-using-tags.md) jelenítse meg a számítási metaadatok. (Szeptember 2016 előtt létrehozott) régebbi virtuális gépek hozzáadása a virtuális gép metaadatait extensions vagy adatok lemezét.
 4. Nem látható az összes adat feltöltve az olyan 2017-08-01 új verziója
    * A 2016. szeptember után létrehozott virtuális gépek hozzáadása egy [címke](../../azure-resource-manager/resource-group-using-tags.md) jelenítse meg a számítási metaadatok. (Szeptember 2016 előtt létrehozott) régebbi virtuális gépek hozzáadása a virtuális gép metaadatait extensions vagy adatok lemezét.
@@ -402,7 +402,7 @@ Bash       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.SH
 7. Ez használható lenne a virtuálisgép-méretezési beállítása példányt?
    * Igen metaadat-szolgáltatás esetén méretezési beállítása példányok érhető el. 
 8. Hogyan kérhet támogatást a szolgáltatás?
-   * Segítségre van szüksége a szolgáltatáshoz, hozzon létre egy támogatási probléma Azure-portálon a virtuális gép, amelyen még nem kérhető le a metaadatokat válasz hosszú újrapróbálkozás után 
+   * Segítségre van szüksége a szolgáltatáshoz, hozzon létre egy támogatási kérést Azure-portálon a virtuális gép, amelyen még nem kérhető le a metaadatokat válasz hosszú újrapróbálkozás után 
 
    ![Példány metaadatok támogatása](./media/instance-metadata-service/InstanceMetadata-support.png)
     

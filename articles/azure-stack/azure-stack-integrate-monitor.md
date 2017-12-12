@@ -3,8 +3,8 @@ title: "Külső figyelési megoldást integrálása Azure verem |} Microsoft Doc
 description: "Útmutató: Azure verem integrálni az adatközpontban lévő külső felügyeleti megoldással."
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
-ms.author: twooley
-ms.openlocfilehash: 801e6be91f2b568ce51ec632bccef06a57d809f1
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.author: mabrigg
+ms.openlocfilehash: 76499ac959b77e83494bc4f9593c20a99da5c147
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Külső figyelési megoldást integrálása Azure verem
 
@@ -137,7 +137,7 @@ REST API-hívások segítségével riasztásokat kaphat, riasztások bezárása 
 A kérelem lekérdezi az alapértelmezett szolgáltató előfizetés az összes aktív és lezárt riasztások. Nem található kérelemtörzs van.
 
 
-|Módszer  |Kérelem URI-azonosítója  |
+|Módszer  |Kérés URI-ja  |
 |---------|---------|
 |GET     |   https://{armendpoint}/Subscriptions/{subId}/resourceGroups/System. {RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/Alerts?api-version=2016-05-01 "      |
 |     |         |
@@ -240,7 +240,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 A kérelem egyedi azonosítójú riasztás bezárása után
 
-|Módszer    |Kérelem URI-azonosítója  |
+|Módszer    |Kérés URI-ja  |
 |---------|---------|
 |A PUT     |   https://{armendpoint}/Subscriptions/{subId}/resourceGroups/System. {RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/Alerts/alertid?api-version=2016-05-01 "    |
 
@@ -384,7 +384,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 A kérés állapotát az összes regisztrált erőforrás-szolgáltató lekérdezi.
 
 
-|Módszer  |Kérelem URI-azonosítója  |
+|Módszer  |Kérés URI-ja  |
 |---------|---------|
 |GET    |   https://{armendpoint}/Subscriptions/{subId}/resourceGroups/System. {RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/serviceHealths?api-version=2016-05-01 "   |
 
@@ -455,7 +455,7 @@ A kérelem egy adott regisztrált erőforrás-szolgáltató állapot beolvasása
 
 **Kérés**
 
-|Módszer  |Kérelem URI-azonosítója  |
+|Módszer  |Kérés URI-ja  |
 |---------|---------|
 |GET     |     https://{armendpoint}/Subscriptions/{subId}/resourceGroups/System. {RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/serviceHealths/{RegistrationID}/resourceHealths?api-version=2016-05-01 "    |
 

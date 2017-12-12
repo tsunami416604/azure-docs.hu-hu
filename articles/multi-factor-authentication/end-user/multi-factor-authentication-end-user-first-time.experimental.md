@@ -5,7 +5,7 @@ services: multi-factor-authentication
 keywords: "az azure directory, a felhőben, az active directory-oktatóanyag az active directory használatáról"
 documentationcenter: 
 author: barlanmsft
-manager: angrobe
+manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
 ms.service: multi-factor-authentication
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/12/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: e0f7b08f7ad00679434992874ff5215f2b2c9dd3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7754aac27381e25fca126f7cdd2e07bfa1dcf380
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>A kétlépéses ellenőrzéshez a fiók beállítása
 Kétlépéses ellenőrzés egy további biztonsági lépés, amely segít megvédeni a fiókját úgy, hogy elkészíti a nehezebben más feltörhessék. Ha a cikk elolvasása valószínűleg kapott e-mailt a munkahelyi vagy iskolai rendszergazda többtényezős hitelesítéssel kapcsolatos. Vagy próbált bejelentkezni, és lehet, hogy a további biztonsági ellenőrzés beállítása kérő üzenetet kapott. Ebben az esetben, ha **nem tud bejelentkezni, az automatikus igénylés folyamat befejezése után**.

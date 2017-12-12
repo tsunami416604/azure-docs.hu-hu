@@ -1,7 +1,7 @@
 ---
 title: "Egy Azure Cosmos DB fiók az Azure-portálon kezelése |} Microsoft Docs"
 description: "Megtudhatja, hogyan kezelheti az Azure portál Azure Cosmos DB fiókját. Útmutató az Azure portál használatával megtekintése, másolása, törlés és hozzáférési fiókok található."
-keywords: "Azure-portálon, a documentdb, az azure, a Microsoft azure"
+keywords: "Az Azure portál, azure, a Microsoft azure"
 services: cosmos-db
 documentationcenter: 
 author: kirillg
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: kirillg
-ms.openlocfilehash: 16cdd2780ae090a5388b3d2e6e4ab52a24f8116a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: e5820cb17cfbaa15f10f24881f02a37aec617267
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Egy Azure Cosmos DB fiók kezelése
 Ismerje meg, globális konzisztenciahiba, kulcsok dolgozni, és az Azure portálon Azure Cosmos DB-fiók törlése.

@@ -3,33 +3,33 @@ title: "Telepítse a PowerShell Azure verem |} Microsoft Docs"
 description: "Megtudhatja, hogyan telepítse a PowerShell Azure verem."
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: F8D99A91-15B5-4073-BE07-A43514A6D2CF
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
-ms.author: sngun
-ms.openlocfilehash: 1c4c9aa36836398ad87c3655ff039a9dc8730456
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.author: mabrigg
+ms.openlocfilehash: b5cc53387b6867d776059856b6e7793abbc67c9a
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-powershell-for-azure-stack"></a>A verem az Azure PowerShell telepítése  
 
 Azure verem kompatibilis Azure PowerShell-modulok az Azure veremnek megfelelő működéséhez szükségesek. Az útmutató azt végigvezetik Önt az Azure verem PowerShell telepítéséhez szükséges lépéseket. A lépést, ha a VPN-en keresztül kapcsolódik az Azure verem szoftverfejlesztői készlet, vagy a Windows-alapú külső ügyfél cikkben leírt használhatja.
 
-Ez a cikk tartalmaz részletes utasításokat verem Azure PowerShell telepítése. Ha szeretné gyorsan PowerShell telepítése és konfigurálása, használhatja a "Get működik, és a PowerShell használatával" című témakör parancsfájllal. 
+Ez a cikk tartalmaz részletes utasításokat verem Azure PowerShell telepítése. Ha szeretné gyorsan PowerShell telepítése és konfigurálása, használhatja a parancsfájlt, amely a "Get működik, és a PowerShell használatával" című cikkben találhatók. 
 
 > [!NOTE]
 > A következő lépések végrehajtásához szükséges PowerShell 5.0. A verzió ellenőrzéséhez $PSVersionTable.PSVersion futtatása, és hasonlítsa össze a "Fő" verziószáma.
 
-Azure verem PowerShell-parancsokat a PowerShell-galériában keresztül telepített. A PSGallery tárház regiser nyissa meg egy rendszergazda jogú PowerShell-munkamenetet a csomag vagy a Windows-alapú külső ügyfél Ha VPN-en keresztül csatlakozó és a következő parancsot:
+Azure verem PowerShell-parancsokat a PowerShell-galériában keresztül telepített. Regisztrálja a PSGallery tárház, nyissa meg egy rendszergazda jogú PowerShell-munkamenetet a csomag vagy a Windows-alapú külső ügyfél Ha VPN-en keresztül csatlakozó és a következő parancsot:
 
 ```powershell
 Set-PSRepository `
@@ -78,7 +78,7 @@ A telepítés jóváhagyásához, futtassa a következő parancsot:
   Get-Module `
     -ListAvailable | where-Object {$_.Name -like “Azure*”}
   ```
-  Ha a telepítés sikeres, a kimenet a AzureRM és AzureStack modulok jelennek meg.
+  Ha a telepítés sikeres, az Azure RM-ben és az Azure-verem modulok a kimeneti jelennek meg.
 
 ## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Telepítse a PowerShell egy leválasztott vagy egy részben csatlakoztatott forgatókönyv (az korlátozott internetkapcsolat)
 

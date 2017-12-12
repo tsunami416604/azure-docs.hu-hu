@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 39dea03ef9f42a3ff06dadd94c8d70541cbdc06c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 39286104474ae0f91195ab578a58dacdb2f27d18
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Ismerje meg, azonosítása és besorolni a személyes adatok Microsoft Azure-ban
 
@@ -185,7 +185,7 @@ Először az alapok, látogasson el a [Azure CosmosD DB: lekérdezése SQL haszn
 
 További részletes útmutató az SQL-lekérdezések felépítésével, a Microsoft [Azure Cosmos DB dokumentum DB API SQL-lekérdezések.](../cosmos-db/documentdb-sql-query.md)
 
-Azure Cosmos DB ismerkedik, és megtudhatja, hogyan hozhat létre adatbázist szeretne, ha felvesznek egy gyűjteményt, és adatok hozzáadása, látogasson el a [Azure Cosmos DB: a DocumentDB API webalkalmazás összeállítása](../cosmos-db/create-documentdb-dotnet.md) gyors üzembe helyezési útmutató. Ha azt szeretné, .NET, Java vagy Python, például nyelven ehhez csak válassza ki a kívánt nyelvet Miután a helyhez.
+Azure Cosmos DB ismerkedik, és megtudhatja, hogyan hozhat létre adatbázist szeretne, ha felvesznek egy gyűjteményt, és adatok hozzáadása, látogasson el a [Azure Cosmos DB: egy SQL API-webalkalmazás létrehozása](../cosmos-db/create-documentdb-dotnet.md) gyors üzembe helyezési útmutató. Ha azt szeretné, .NET, Java vagy Python, például nyelven ehhez csak válassza ki a kívánt nyelvet Miután a helyhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,5 +1,5 @@
 ---
-title: "SQL-lekérdezés metrikák Azure Cosmos DB DocumentDB API |} Microsoft Docs"
+title: "SQL lekérdezés metrikák Azure Cosmos DB SQL API-hoz |} Microsoft Docs"
 description: "További tudnivalók állíthatnak be, és a hibakeresési Azure Cosmos DB kérelmek SQL lekérdezési teljesítményét."
 keywords: "SQL-szintaxis, sql-lekérdezést, az sql-lekérdezések, json lekérdezési nyelv, adatbázis fogalmait és az sql-lekérdezések, összesítő függvények"
 services: cosmos-db
@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: f057ee80e8a26595c17e6610a2aaaad08d0346b5
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2cb6319356a536aebc1db3122cf80b8736d1fd4f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési teljesítmény hangolása
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
 Az Azure Cosmos DB biztosít egy [SQL API-t a lekérdezésre adatok](documentdb-sql-query.md), anélkül, hogy a séma vagy másodlagos kulcsot. Ez a cikk a fejlesztők számára a következő adatokat tartalmazza:
 
 * Nagy részletességű Azure Cosmos adatbázis SQL-lekérdezés végrehajtása működéséről
@@ -31,7 +34,7 @@ Az Azure Cosmos DB biztosít egy [SQL API-t a lekérdezésre adatok](documentdb-
 
 ## <a name="about-sql-query-execution"></a>Tudnivalók az SQL-lekérdezés végrehajtása
 
-Az Azure Cosmos Adatbázisba, adattárolásra-tárolókban, amely bármelyik növelhető [tárolási méretét, vagy kérjen teljesítmény](partition-data.md). Azure Cosmos-adatbázis zökkenőmentesen arányosan adatok fizikai partíciók kezeléséhez az adatmennyiség-növekedés, vagy növelje a kiosztott átviteli sebesség a színfalak között. A tárolóhoz, a támogatott közül vagy a REST API használatával adhat ki az SQL-lekérdezések [DocumentDB SDK-k](documentdb-sdk-dotnet.md).
+Az Azure Cosmos Adatbázisba, adattárolásra-tárolókban, amely bármelyik növelhető [tárolási méretét, vagy kérjen teljesítmény](partition-data.md). Azure Cosmos-adatbázis zökkenőmentesen arányosan adatok fizikai partíciók kezeléséhez az adatmennyiség-növekedés, vagy növelje a kiosztott átviteli sebesség a színfalak között. A tárolóhoz, a támogatott közül vagy a REST API használatával adhat ki az SQL-lekérdezések [SQL SDK-k](documentdb-sdk-dotnet.md).
 
 Particionálás rövid áttekintést: megadhatja a partíciós kulcs, például a "város", amely megadja, hogy milyen adatok fizikai partíciók osztani. Egyetlen partíciókulcs tartozó adatokat (például "város" == "Seattle") a fizikai partíción belül található, de általában egyetlen fizikai partícióján több partíciós kulcsok. Amikor egy partíció eléri a tárolási méretét, a szolgáltatás zökkenőmentesen felosztja a partíció két új partíciót és a partíciókulcs egyenlően osztja ezek a partíciók közötti. Mivel partíció átmeneti, az API-k használata egy "partíció kulcs tartományt", amely azt jelzi, a tartományokat a partíciós kulcs kivonatok absztrakciós. 
 
@@ -50,7 +53,7 @@ Az SDK-k a lekérdezés-végrehajtáshoz különböző lehetőségeket kínál. 
 | `EnableScanInQuery` | Igaz értéket, ha az indexelő visszavonta igényét, de a lekérdezés segítségével a vizsgálat futtatását szeretne értékre kell állítani. Csak végezhető el, ha a kért szűrő elérési útja indexelő le van tiltva. | 
 | `MaxItemCount` | A kiszolgáló / oda-vissza visszaadandó elemek maximális száma. -1-beállítása, hogy a kiszolgáló kezelése az elemek száma. Vagy ezt az értéket csak kevés elemek száma oda-vissza beolvasása csökkenthető. 
 | `MaxBufferedItemCount` | Ez egy ügyféloldali beállítást, és korlátozza a memória-felhasználás kereszt-partíció ORDER BY végrehajtása során használt. A nagyobb érték csökkentheti a kereszt-partíció rendezés a késési. |
-| `MaxDegreeOfParallelism` | Lekérdezi vagy beállítja az ügyféloldali futtatása során az Azure DocumentDB adatbázis-szolgáltatás a párhuzamos lekérdezés-végrehajtás párhuzamos műveletek számát. Egy pozitív tulajdonság értéke a értékét párhuzamos műveletek számának korlátozása. Ha az értéke kisebb, mint 0, a rendszer automatikusan úgy dönt, futtatásához párhuzamos műveletek számát. |
+| `MaxDegreeOfParallelism` | Lekérdezi vagy beállítja az ügyféloldali futtatása során az Azure Cosmos DB szolgáltatásban párhuzamos lekérdezés-végrehajtás párhuzamos műveletek számát. Egy pozitív tulajdonság értéke a értékét párhuzamos műveletek számának korlátozása. Ha az értéke kisebb, mint 0, a rendszer automatikusan úgy dönt, futtatásához párhuzamos műveletek számát. |
 | `PopulateQueryMetrics` | Lehetővé teszi, hogy a lekérdezés-végrehajtás, mint a fordítás során, a index hurok idő és a dokumentum különböző fázisait töltött idő statisztika részletes naplózás betöltési ideje. Lekérdezés teljesítmény eseményadatokat Azure-támogatással rendelkező megoszthatja zónalekérdezési statisztika kimenetét. |
 | `RequestContinuation` | A lekérdezés-végrehajtás történő lekérdezés által visszaadott folytatási átlátszatlan folytathatja. A folytatási kód magában foglalja a lekérdezés-végrehajtáshoz szükséges összes állapotát. |
 | `ResponseContinuationTokenLimitInKb` | Korlátozhatja a kiszolgáló által visszaadott folytatási maximális méretét. Szükség lehet állítsa-e az alkalmazás-állomás korlátok a válasz fejléc mérete. A teljes időtartam és a lekérdezés felhasznált RUs növelheti a beállítás.  |
@@ -137,7 +140,7 @@ A kulcs válaszfejlécek a lekérdezés által visszaadott közé tartoznak a k�
 | `x-ms-documentdb-query-metrics` | A lekérdezés végrehajtása statisztikája. Ez a lekérdezés-végrehajtás különböző szakaszainak töltött időt a statisztikai adatait tartalmazó tagolt karakterláncot. Visszaadott if `x-ms-documentdb-populatequerymetrics` értéke `True`. | 
 | `x-ms-request-charge` | Hány [egységek kérelem](request-units.md) a lekérdezés által felhasznált. | 
 
-A REST API kérelemfejléc és a beállítások a részletekért lásd: [erőforrásokat a DocumentDB REST API használatával](https://docs.microsoft.com/rest/api/documentdb/querying-documentdb-resources-using-the-rest-api).
+A REST API kérelemfejléc és a beállítások a részletekért lásd: [erőforrásokat a REST API használatával](https://docs.microsoft.com/rest/api/documentdb/querying-documentdb-resources-using-the-rest-api).
 
 ## <a name="best-practices-for-query-performance"></a>Gyakorlati tanácsok a lekérdezési teljesítmény
 Leggyakoribb Azure Cosmos DB lekérdezések teljesítményét befolyásoló tényezők a következők: A Microsoft feltárva minden, az alábbi témakörökben találja ebben a cikkben.
@@ -212,7 +215,7 @@ Az alábbiakban hogyan a párhuzamos lekérdezések viselkednek a p különböz�
 * (P > 1) = > Min (P, N) párhuzamos tevékenységek 
 * (P < 1) = > Min (N, D) párhuzamos tevékenységek
 
-Az SDK kibocsátási megjegyzéseket, és a részletek megvalósított osztályokat és metódusokat: [DocumentDB SDK-k](documentdb-sdk-dotnet.md)
+Az SDK kibocsátási megjegyzéseket, és részleteket megvalósított osztályokat és metódusokat [SQL SDK-k](documentdb-sdk-dotnet.md)
 
 ### <a name="network-latency"></a>Hálózati késés
 Lásd: [Azure Cosmos DB globális terjesztési](tutorial-global-distribution-documentdb.md) globális terjesztési beállítása, és csatlakozzon a legközelebbi régiót. Hálózati késés jelentős hatással a lekérdezési teljesítményre van szüksége több üzenetváltások utak számát vagy a lekérdezés nagy eredményhalmazt beolvasása. 
@@ -253,9 +256,9 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `documentLoadTimeInMs` | ezredmásodperc | Idő a dokumentum betöltése  | 
 | `systemFunctionExecuteTimeInMs` | ezredmásodperc | A fordított teljes idő végrehajtás alatt álló rendszer (beépített) funkciók ezredmásodpercben  | 
 | `userFunctionExecuteTimeInMs` | ezredmásodperc | Töltött teljes idő, ezredmásodpercben végrehajtó felhasználó által definiált függvények | 
-| `retrievedDocumentCount` | Száma | Lekért dokumentumok száma összesen  | 
-| `retrievedDocumentSize` | Bájtok | A beolvasott dokumentumokat a bájtok teljes mérete  | 
-| `outputDocumentCount` | Száma | Kimeneti dokumentumok száma | 
+| `retrievedDocumentCount` | darab | Lekért dokumentumok száma összesen  | 
+| `retrievedDocumentSize` | bájt | A beolvasott dokumentumokat a bájtok teljes mérete  | 
+| `outputDocumentCount` | darab | Kimeneti dokumentumok száma | 
 | `writeOutputTimeInMs` | ezredmásodperc | Lekérdezés-végrehajtási idő ezredmásodpercben | 
 | `indexUtilizationRatio` | arány (< = 1) | A betöltött dokumentumok száma szűrőt egyező dokumentumok száma aránya  | 
 

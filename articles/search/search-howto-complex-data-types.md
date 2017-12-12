@@ -15,11 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: d576fd7bb267ae7a100589413185b595e3b2be42
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7a7400fe7470439dfa957f1ddb463e0a7f1a271
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Hogyan modell összetett adattípusú az Azure Search
 Az Azure Search-index néha feltöltésére használt külső adatkészletek hierarchikus vagy beágyazott alépítményeit, amely nem felosztása szépen táblázatos sorhalmazt tartalmaz. Példa ilyen struktúrák előfordulhat, hogy több helyről és telefonszámok tartalmazza az egy ügyfél több színek és méretek egyetlen termékváltozat, több szerzők egy könyv, és így tovább. A modellezési feltételeit, ezen szerkezetek néven megjelenhet *összetett adattípusú*, *összetett adattípusú*, *összetett adattípusok*, vagy *összesített adattípusok*, csak hogy néhányat említsünk.
@@ -66,7 +66,7 @@ Az Azure Search-index néha feltöltésére használt külső adatkészletek hie
 Amíg a mezőket "id" nevű, "name" és "Vállalati" csak egyszerűen képezhető le egy az egyhez típusú mezői belül az Azure Search-index, a "helyek" mező a helyek, hogy mindkét egy csoportja hely azonosítók, valamint a hely leírása tömböt tartalmaz. Fényében, hogy az Azure Search nem rendelkezik olyan adattípusú, amely támogatja ezt, igazolnia kell a következő modellre: Ez az Azure Search különböző módokon. 
 
 > [!NOTE]
-> Ezzel a módszerrel is blogbejegyzés ismerteti Kirk Evans által [indexelő DocumentDB az Azure Search](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/), amely mutatja a technika nevű, "az adatok egybesimítását", amely lehetővé teszi, akkor egy egy nevű mező `locationsID` és `locationsDescription` , amely egyaránt [gyűjtemények](https://msdn.microsoft.com/library/azure/dn798938.aspx) (vagy karakterláncok).   
+> Ezzel a módszerrel is blogbejegyzés ismerteti által Kirk Evans [Azure Cosmos DB indexelése az Azure Search](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/), amely mutatja a technika nevű, "az adatok egybesimítását", amely lehetővé teszi, akkor egy egy nevű mező `locationsID` és `locationsDescription` amelyek [gyűjtemények](https://msdn.microsoft.com/library/azure/dn798938.aspx) (vagy karakterláncok).   
 > 
 > 
 

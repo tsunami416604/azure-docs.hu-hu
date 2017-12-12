@@ -3,26 +3,26 @@ title: "Az Azure-verem felhasználói PowerShell környezet beállítása |} Mic
 description: "Az Azure-verem felhasználói PowerShell környezet konfigurálása"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: F4ED2238-AAF2-4930-AA7F-7C140311E10F
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.author: sngun
-ms.openlocfilehash: e0ad968cac50ebb1e9ca0a4ff228c748f2da5f28
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.author: mabrigg
+ms.openlocfilehash: 0bd5b4a98fee7a5d914e53e49a9517f5d3682a88
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>Az Azure-verem felhasználói PowerShell környezet konfigurálása
 
-Azure verem felhasználóként konfigurálhatja az Azure verem szoftverfejlesztői készlet PowerShell környezetben. Miután konfigurálta, PowerShell Azure verem ajánlatokat, például előfizetés erőforrások kezeléséhez használhatja virtuális gépek létrehozásához, központi telepítése Azure Resource Manager-sablonok, stb. Ez a témakör hatóköre a következő környezetekben csak, ha azt szeretné, hogy a felhőkörnyezet operátor PowerShell beállítása tekintse meg a felhasználó használja a [konfigurálása az Azure-verem operátor PowerShell környezet](../azure-stack-powershell-configure-admin.md) témakör. 
+Azure verem felhasználóként konfigurálhatja az Azure verem szoftverfejlesztői készlet PowerShell környezetben. Miután konfigurálta, PowerShell Azure verem ajánlatokat, például előfizetés erőforrások kezeléséhez használhatja virtuális gépek létrehozásához, központi telepítése Azure Resource Manager-sablonok, stb. Ez a témakör hatóköre a következő környezetekben csak, ha azt szeretné, hogy a felhőkörnyezet operátor PowerShell beállítása tekintse meg a felhasználó használja a [konfigurálása az Azure-verem operátor PowerShell környezet](../azure-stack-powershell-configure-admin.md) cikk. 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -33,7 +33,7 @@ Futtassa a következő előfeltételek származhatnak a [szoftverfejlesztői ké
 
 ## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>A felhasználói környezet beállításait, és jelentkezzen be Azure verem
 
-A központi telepítés (Azure AD vagy AD FS), futtassa a következő parancsfájl PowerShell konfigurálása az Azure-vermet (Mindenképp cserélje le a AAD tenantName, GraphAudience végpont és a környezet konfigurációjának megfelelően ArmEndpoint értékek) egyik típus alapján:
+Az alapján a központi telepítés (Azure AD vagy AD FS), PowerShell konfigurálása az Azure-vermet (Ügyeljen rá, hogy cserélje le a AAD tenantName, GraphAudience végpont és a környezet konfigurációjának megfelelően ArmEndpoint értékek) az alábbi parancsfájlok egyikét futtatja:
 
 ### <a name="azure-active-directory-aad-based-deployments"></a>Az Azure Active Directory (AAD)-alapú telepítések
        
@@ -118,7 +118,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -F
 
 ## <a name="test-the-connectivity"></a>A kapcsolat tesztelése
 
-Most, hogy minden beállítással van, lehetővé PowerShell használatával létrehozni Azure verem erőforrásokat. Például hozzon létre egy erőforráscsoportot az alkalmazáshoz, és adja hozzá a virtuális gépet. Az alábbi parancs segítségével hozzon létre egy erőforráscsoportot a "Contoso.com" nevű:
+Most, hogy minden van beállításról, tegyük a PowerShell használatával létrehozni Azure verem erőforrásokat. Például hozzon létre egy erőforráscsoportot az alkalmazáshoz, és adja hozzá a virtuális gépet. Az alábbi parancs segítségével hozzon létre egy erőforráscsoportot a "Contoso.com" nevű:
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"

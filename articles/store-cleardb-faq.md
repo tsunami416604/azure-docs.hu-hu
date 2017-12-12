@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: b0fad1d151799f88c72cfe1359978d69cc1421c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d1e3c826e61b8dee264e1c01fd2d54ba7ebb636
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
 Ez a GYIK kapcsolatos kérdésekre ad közös használatával, és az Azure Web Apps adatbázisok beszerzési a ClearDB MySQL.
@@ -68,7 +68,7 @@ A Web Apps használja a Basic vagy magasabb szintű tarifacsomagban használhat�
 Az a [Azure-portálon](https://portal.azure.com), ClearDB megosztott üzemeltetési adatbázis költenie. Olvassa el ezt [cikk](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/) további. Jelenleg nem támogatjuk frissítés ClearDB prémium fürtök az Azure portálon.
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>Nem látom az Azure-portálon a ClearDB adatbázist?
-Ha a Microsoft Azure Resource Manager használatával ClearDB-adatbázis létrehozása vagy [új Azure-portál](https://portal.azure.com), nem lesz látható a [régi Azure Portal](https://manage.windowsazure.com). Munkaelem-kerülheti jelenti, hogy az adatbázis manuálisan csatolja azt a webalkalmazást. Hasonlóképpen ha ClearDB adatbázist létrehozni a [régi portál](https://manage.windowsazure.com) nem tudnak tekintse meg az adatbázis a [új Azure-portál](https://portal.azure.com). Nincs munkahelyi körül az utóbbi esethez van.
+Ha létrehozott egy ClearDB adatbázist a classic, csak akkor láthatók az adatbázis a [Azure Portal](https://portal.azure.com). Nincs nincs munkahelyi körül ehhez a forgatókönyvhöz.
 
 ## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>Aki tegye I támogatás kérése, amikor az adatbázis nem működik?
 Ügyfél [ClearDB támogatási](https://www.cleardb.com/developers/help/support) az esetleges adatbázis-kapcsolatos probléma. Készüljön fel biztosítani nekik az Azure-előfizetési adatokat.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.openlocfilehash: 1bb87cf3e37e486f9a03da43df652442c19fd218
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 797ac45a41cdf655e7465a01875a0394081c08a7
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Biztonságos átvitele az Azure Storage megkövetelése
 
@@ -54,8 +54,8 @@ A "biztonságos továbbítás szükséges" beállítást, ha a tárfiók létreh
 
 Kötelező a biztonságos átvitele programozott módon, a beállítást használják _supportsHttpsTrafficOnly_ a REST API-t, az eszközök vagy a könyvtárak a tárfiók tulajdonságai:
 
-* [REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) (verzió: 2016-12-01)
-* [PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0) (verzió: 4.1.0)
+* [REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (verzió: 2016-12-01)
+* [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0) (verzió: 4.1.0)
 * [Parancssori felület](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) (verzió: 2.0.11)
 * [NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (verzió: 1.1.0-ás)
 * [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (verzió: 6.3.0)

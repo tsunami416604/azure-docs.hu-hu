@@ -4,7 +4,7 @@ description: "Az NPS-bővítmény telepítése után ezeket a lépéseket haszn�
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 07/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 98c29b4124b31868ef118c39941cf9c3829e2b26
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 23e72fdb2ed063f416e65d34727ca9babc143a26
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>A hálózati házirend-kiszolgáló bővítmény a multi-factor Authentication speciális konfigurációs beállításai
 
@@ -35,9 +35,9 @@ Másodlagos felhasználói azonosítók konfigurálásához Ugrás `HKLM\SOFTWAR
 
 | Név | Típus | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
-| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | Karakterlánc | üres | Jelölje ki, hogy az egyszerű Felhasználónevük helyett használni kívánt Active Directory-attribútum neve. Ez az attribútum van megadva a AlternateLoginId attribútumaként. Ha ez a beállításazonosító értéke egy [érvényes Active Directory-attribútumot](https://msdn.microsoft.com/library/ms675090.aspx) (a példában, levelezési vagy displayName), majd az attribútumérték helyett a felhasználói UPN-hitelesítéshez használt. Ha ez a beállításazonosító nem üres, vagy nincs konfigurálva, majd AlternateLoginId le van tiltva, és a felhasználói UPN-hitelesítéshez használt. |
+| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | karakterlánc | Üres | Jelölje ki, hogy az egyszerű Felhasználónevük helyett használni kívánt Active Directory-attribútum neve. Ez az attribútum van megadva a AlternateLoginId attribútumaként. Ha ez a beállításazonosító értéke egy [érvényes Active Directory-attribútumot](https://msdn.microsoft.com/library/ms675090.aspx) (a példában, levelezési vagy displayName), majd az attribútumérték helyett a felhasználói UPN-hitelesítéshez használt. Ha ez a beállításazonosító nem üres, vagy nincs konfigurálva, majd AlternateLoginId le van tiltva, és a felhasználói UPN-hitelesítéshez használt. |
 | LDAP_FORCE_GLOBAL_CATALOG | Logikai érték | False (Hamis) | Ez a jelző használatával kényszerítheti a globális katalógus az LDAP-keresésekhez használatát AlternateLoginId keresésekor. A tartományvezérlő beállítása a globális katalógus, a AlternateLoginId attribútum hozzáadása a globális katalógus és engedélyeznie kell ezt a jelzőt. <br><br> Ha LDAP_LOOKUP_FORESTS van konfigurálva (nem üres), **Ez a jelző IGAZ van kényszerítve**, függetlenül attól, a beállításjegyzék-beállítás értékét. Ebben az esetben a hálózati házirend-kiszolgáló-bővítményhez olyan a globális katalógus az egyes erdőkhöz AlternateLoginId attribútummal kell konfigurálni. |
-| LDAP_LOOKUP_FORESTS | Karakterlánc | üres | Adja meg a kereséshez erdők pontosvesszővel elválasztott listája. Például *contoso.com;foobar.com*. Ha ez a beállításazonosító van beállítva, a hálózati házirend-kiszolgáló bővítmény ismételt keres az erdők a sorrendet, amelyben szereplő és az első sikeres AlternateLoginId értéket adja vissza. Ha ez a beállításazonosító nincs konfigurálva, a AlternateLoginId keresési korlátozódik az aktuális tartományban.|
+| LDAP_LOOKUP_FORESTS | karakterlánc | Üres | Adja meg a kereséshez erdők pontosvesszővel elválasztott listája. Például *contoso.com;foobar.com*. Ha ez a beállításazonosító van beállítva, a hálózati házirend-kiszolgáló bővítmény ismételt keres az erdők a sorrendet, amelyben szereplő és az első sikeres AlternateLoginId értéket adja vissza. Ha ez a beállításazonosító nincs konfigurálva, a AlternateLoginId keresési korlátozódik az aktuális tartományban.|
 
 Problémák megoldása a másodlagos bejelentkezési azonosítókat, használja az alábbiak [másodlagos bejelentkezési azonosító hibák](multi-factor-authentication-nps-errors.md#alternate-login-id-errors).
 
@@ -49,7 +49,7 @@ Adja meg egy IP-engedélyezési lista, keresse fel `HKLM\SOFTWARE\Microsoft\Azur
 
 | Név | Típus | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
-| IP_WHITELIST | Karakterlánc | üres | Adjon meg egy IP-címek pontosvesszővel elválasztott listája. Gépek, ahol a szolgáltatáskérések származnak, például a NAS és a VPN-kiszolgáló IP-címét tartalmazza. IP-címtartományok olyan alhálózatok nem támogatottak. <br><br> Például *10.0.0.1;10.0.0.2;10.0.0.3*.
+| IP_WHITELIST | karakterlánc | Üres | Adjon meg egy IP-címek pontosvesszővel elválasztott listája. Gépek, ahol a szolgáltatáskérések származnak, például a NAS és a VPN-kiszolgáló IP-címét tartalmazza. IP-címtartományok olyan alhálózatok nem támogatottak. <br><br> Például *10.0.0.1;10.0.0.2;10.0.0.3*.
 
 Ha a kérelem érkezik létezik-e az engedélyezett IP-címről, kétlépéses ellenőrzés kimarad. A megadott IP-címet az IP-engedélyezési lista a rendszer összehasonlítja a *ratNASIPAddress* attribútuma a RADIUS-kérelmet. Ha egy RADIUS-kérelmet a ratNASIPAddress attribútum nélkül érkezik, a következő figyelmeztetést naplóz: "P_WHITE_LIST_WARNING::IP engedélyezett van mellőzve forrás IP-cím a RADIUS-kérelmet NasIpAddress attribútum hiányzik."
 

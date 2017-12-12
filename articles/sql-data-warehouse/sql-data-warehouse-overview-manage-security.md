@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.openlocfilehash: 6ea45c40bc428282faf24b4a08f8b0d345adb3fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36f990dd16a3c6b65d16bab4b945ec56a1bb1000
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Az SQL Data Warehouse adatbázis védelme
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ Többféleképpen korlátozhatja a felhasználók engedélyeit az Azure SQL Data
 * [Adatbázis-szerepkörök] [ Database roles] eltérő db_datareader és db_datawriter nagyobb teljesítményű alkalmazás felhasználói fiókok vagy kevésbé hatékony felügyeleti fiókok létrehozására használható. A beépített rögzített adatbázis-szerepkörök olyan engedélyek megadásához könnyű megoldást biztosítson, de a szükségesnél több jogosultságokat eredményezhet.
 * [Tárolt eljárások] [ Stored procedures] segítségével korlátozhatja a műveleteket, amelyen átvihető az adatbázishoz.
 
-Az adatbázisok és logikai kiszolgálók klasszikus Azure portálon történő, illetve az Azure Resource Manager API-val végzett kezelését a portál felhasználói fiókjának szerepkör-hozzárendelése szabályozza. A témakörrel kapcsolatos további információkért lásd: [Azure portál szerepköralapú hozzáférés-vezérlés][Role-based access control in Azure Portal].
+Az Azure portálról adatbázisok és a logikai kiszolgáló kezelése vagy az Azure Resource Manager API-val a portál felhasználói fiók szerepkör-hozzárendelések vezérli. A témakörrel kapcsolatos további információkért lásd: [Azure portál szerepköralapú hozzáférés-vezérlés][Role-based access control in Azure Portal].
 
 ## <a name="encryption"></a>Titkosítás
 Az Azure SQL Data adatraktár átlátszó adatok titkosítás (TDE) abban a kártékony tevékenység fenyegetés valós idejű titkosítási és visszafejtési az adatok aktívan elvégzésével.  Az adatbázis titkosításakor társított biztonsági másolatok és a tranzakciós naplófájlok vannak titkosítva az alkalmazások módosítása nélkül. TDE teljes adatbázis tárterülete az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával titkosítja. Az SQL-adatbázis az adatbázis-titkosítási kulcs védi egy beépített kiszolgálói tanúsítványt. A beépített kiszolgálói tanúsítványa nem egyedi a következő SQL-adatbázis kiszolgálónként. Microsoft legalább 90 naponta automatikusan elforgatja ezeket a tanúsítványokat. Az SQL Data Warehouse által használt titkosítási algoritmus az AES-256. TDE általános ismertetését lásd: [átlátható adattitkosítási][Transparent Data Encryption].

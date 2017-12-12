@@ -4,7 +4,7 @@ description: "Útmutató a Workday használandó adatforrás azonosító adatok 
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
-manager: femila
+manager: mtillman
 ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
 ms.service: active-directory
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2017
 ms.author: asmalser
-ms.openlocfilehash: 86f5591cd2d67d7f734b7148b79c8ee388336283
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f267a59fadb7f402ac81f43b5465b6ac1f28943e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>Oktatóanyag: A helyszíni Active Directory és az Azure Active Directory-kiépítés automatikus felhasználói Workday konfigurálása
 Ez az oktatóanyag célja a lépéseket kell elvégeznie rendszerbe való importálás érdekében személyek a WORKDAY-ből Active Directoryból és az Azure Active Directory, az egyes attribútumok Workday választható visszaírási mutatjuk be. 
@@ -93,9 +93,9 @@ Munkanapok és Active Directory használata, ha van azonban több forrás és c�
 
 | A forráskiszolgálón rendszer | Célrendszer | Megjegyzések |
 | ---------- | ---------- | ---------- |
-| Munkanapok | Active Directory-erdőben | Minden olyan erdőben, a rendszer egy különálló célrendszerben |
+| Munkanapok | Active Directory-erdő | Minden olyan erdőben, a rendszer egy különálló célrendszerben |
 | Munkanapok | Az Azure AD-bérlő | A felhasználó esetében kötelező, csak felhőalapú |
-| Active Directory-erdőben | Az Azure AD-bérlő | Ez a folyamat végzi el az AAD-csatlakozás még ma |
+| Active Directory-erdő | Az Azure AD-bérlő | Ez a folyamat végzi el az AAD-csatlakozás még ma |
 | Az Azure AD-bérlő | Munkanapok | Az e-mail címek visszaírásához. |
 
 Lehetővé teszi a több munkafolyamat több forrás és cél rendszerre, az Azure AD biztosít több üzembe helyezési összekötő alkalmazást, az Azure AD-alkalmazásgyűjtemény is hozzáadhat:
@@ -347,7 +347,7 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 | **AddressLineData**    |  StreetAddress  |     |   Hozzon létre + frissítése |
 | **PrimaryWorkTelephone**  |  TelephoneNumber   |     | Hozzon létre + frissítése |
 | **BusinessTitle**   |  Cím     |     |  Hozzon létre + frissítése |
-| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])" ,, "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "q",), "([řŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([w" karakter]), "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | UserPrincipalName     |     | Hozzon létre + frissítése                                                   
+| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])" ,, "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "q",), "([řŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([w" karakter]), "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | userPrincipalName     |     | Hozzon létre + frissítése                                                   
 | **Kapcsoló (\[település\], "OU általános jogú felhasználók, OU = felhasználók, OU = alapértelmezett, OU = helyek, DC = contoso, DC = = com", "Dallas", "OU általános jogú felhasználók, OU = felhasználók, OU = Dallas, OU = helyek, DC = contoso, DC = = com", "Austin", "OU általános jogú felhasználók, OU = felhasználók, OU = Austin, OU = helyek, DC = contoso, DC = = com", "Seattle", "OU általános jogú felhasználók, OU = felhasználók, OU = budapesti, OU = helyek, DC = contoso, DC = = com", "Londoni", "OU = általános jogú felhasználók Szervezeti egység felhasználók, OU = London, OU = helyek, DC = contoso, DC = = com ")**  | parentDistinguishedName     |     |  Hozzon létre + frissítése |
   
 ### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>3. lépés: A helyszíni-szinkronizálási ügynök konfigurálása

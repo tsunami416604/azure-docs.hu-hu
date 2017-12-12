@@ -6,33 +6,32 @@ documentationcenter:
 author: juliako
 manager: cfowler
 editor: 
-ms.assetid: 5b6d8b8c-5f4d-4fef-b3d6-dc22c6b5a0f5
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 12/09/2017
 ms.author: juliako;
-ms.openlocfilehash: b3584c5aa5405e7f5acdd9bc0a6573b4acbab855
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e936379968f74eb8bea420916acea2b8d96bb24
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Az Azure Media Analytics lapok kivonása
 ## <a name="overview"></a>Áttekintés
 **Az Azure Media Redactor** van egy [Azure Médiaelemzés használatával](media-services-analytics-overview.md) media processzor (MP), amely a felhőben méretezhető arcfelismerési kivonási nyújt. Arcfelismerési kivonási lehetővé teszi, hogy a videó ahhoz, hogy a kijelölt személyeket felületei életlenítés módosíthatja. Érdemes lehet nyilvános biztonsági és hírek media helyzetekben használhatja a tapasztalt kivonási szolgáltatás. Több lapokat tartalmazó felvételei, néhány perc múlva a kivonás a manuálisan órát is igénybe vehet, de ezzel a szolgáltatással a tapasztalt kivonási folyamat néhány egyszerű lépésben szükséges. További információkért lásd: [ez](https://azure.microsoft.com/blog/azure-media-redactor/) blog.
 
-Ez a témakör kapcsolatos részleteket nyújt **Azure Media Redactor** és a .NET-keretrendszerhez készült Media Services SDK-val való használatát ismerteti.
+Ez a cikk részletezi kapcsolatos **Azure Media Redactor** és a .NET-keretrendszerhez készült Media Services SDK-val való használatát ismerteti.
 
 ## <a name="face-redaction-modes"></a>Arcfelismerési kivonási módok
-Arcfelismerést kivonási működik található videó lapok észlelésére és nyomon követni a tapasztalt objektum mindkét előre és hátra időben, ugyanabból is homályos, a más szögek is. Automatizált kivonási folyamata bonyolult, és nem nem mindig által előállított 100 %-a kívánt kimeneti, ezért Media Analytics tartalmazza a több módon módosítani a végső kimenetet.
+Arcfelismerést kivonási működik található videó lapok észlelésére és nyomon követni a tapasztalt objektum mindkét előre és hátra időben, ugyanabból is homályos, a más szögek is. Az automatizált kivonási folyamata bonyolult, és nem nem mindig által előállított 100 %-a kívánt kimeneti, ezért Media Analytics tartalmazza a több módon módosítani a végső kimenetet.
 
-Mellett a teljesen automatikus üzemmódban van, amely lehetővé teszi, hogy a kijelölés/inaktiválása-selection talált lapok keresztül azonosítók listáját a két-fázis munkafolyamat. Ellenőrizze a keret módosításának a felügyeleti csomag egy tetszőleges is, használja a metaadatfájl JSON formátumban. Ez a munkafolyamat oszlik **elemzés** és **Redact** módot. A két mód, amely mindkét feladat fut egy feladat; egyetlen menetben kombinálva Ebben a módban nevezik **kombinált**.
+Mellett a teljesen automatikus mód nincs két-hozzáférési munkafolyamat, amely lehetővé teszi, hogy a kijelölés/inaktiválása-selection a tényleges lapok keresztül azonosítók listáját. Ellenőrizze a keret módosításának a felügyeleti csomag egy tetszőleges is, használja a metaadatfájl JSON formátumban. Ez a munkafolyamat oszlik **elemzés** és **Redact** módot. A két mód, amely mindkét feladat fut egy feladat; egyetlen menetben kombinálva Ebben a módban nevezik **kombinált**.
 
 ### <a name="combined-mode"></a>Kombinált mód
-Ez a művelet létrehoz egy kivont mp4 automatikusan szükséges bemeneti manuális nélkül.
+Ezzel létrehozza a kivont mp4 automatikusan szükséges bemeneti manuális nélkül.
 
 | Fázis | Fájlnév | Megjegyzések |
 | --- | --- | --- |
@@ -172,7 +171,7 @@ A kivonási MP magas pontosság arcfelismerési hely észleli és nyomon követ�
 A következő program bemutatja hogyan:
 
 1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
-2. Hozzon létre egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján arcfelismerési kivonási feladatokkal. 
+2. Hozzon létre egy feladatot a tapasztalt kivonási tevékenységek, a következő json-készletet tartalmazó konfigurációs fájl alapján: 
    
         {'version':'1.0', 'options': {'mode':'combined'}}
 3. A kimeneti JSON-fájlok letöltésére. 
@@ -183,30 +182,39 @@ A következő program bemutatja hogyan:
 
 #### <a name="example"></a>Példa
 
-    using System;
-    using System.Configuration;
-    using System.IO;
-    using System.Linq;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using System.Threading;
-    using System.Threading.Tasks;
+```
+using System;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.Threading;
+using System.Threading.Tasks;
 
-    namespace FaceRedaction
+namespace FaceRedaction
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         // Field for service context.
         private static CloudMediaContext _context = null;
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -265,11 +273,11 @@ A következő program bemutatja hogyan:
             // for error state and exit if needed.
             if (job.State == JobState.Error)
             {
-            ErrorDetail error = job.Tasks.First().ErrorDetails.First();
-            Console.WriteLine(string.Format("Error: {0}. {1}",
-                            error.Code,
-                            error.Message));
-            return null;
+                ErrorDetail error = job.Tasks.First().ErrorDetails.First();
+                Console.WriteLine(string.Format("Error: {0}. {1}",
+                                error.Code,
+                                error.Message));
+                return null;
             }
 
             return job.OutputMediaAssets[0];
@@ -289,7 +297,7 @@ A következő program bemutatja hogyan:
         {
             foreach (IAssetFile file in asset.AssetFiles)
             {
-            file.Download(Path.Combine(outputDirectory, file.Name));
+                file.Download(Path.Combine(outputDirectory, file.Name));
             }
         }
 
@@ -302,8 +310,8 @@ A következő program bemutatja hogyan:
             .LastOrDefault();
 
             if (processor == null)
-            throw new ArgumentException(string.Format("Unknown media processor",
-                                   mediaProcessorName));
+                throw new ArgumentException(string.Format("Unknown media processor",
+                                       mediaProcessorName));
 
             return processor;
         }
@@ -316,30 +324,31 @@ A következő program bemutatja hogyan:
 
             switch (e.CurrentState)
             {
-            case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished.");
-                Console.WriteLine();
-                break;
-            case JobState.Canceling:
-            case JobState.Queued:
-            case JobState.Scheduled:
-            case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-            case JobState.Canceled:
-            case JobState.Error:
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
-                // Display or log error details as needed.
-                // LogJobStop(job.Id);
-                break;
-            default:
-                break;
+                case JobState.Finished:
+                    Console.WriteLine();
+                    Console.WriteLine("Job is finished.");
+                    Console.WriteLine();
+                    break;
+                case JobState.Canceling:
+                case JobState.Queued:
+                case JobState.Scheduled:
+                case JobState.Processing:
+                    Console.WriteLine("Please wait...\n");
+                    break;
+                case JobState.Canceled:
+                case JobState.Error:
+                    // Cast sender as a job.
+                    IJob job = (IJob)sender;
+                    // Display or log error details as needed.
+                    // LogJobStop(job.Id);
+                    break;
+                default:
+                    break;
             }
         }
-        }
     }
+}
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

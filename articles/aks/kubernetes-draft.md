@@ -9,29 +9,29 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: df5614d8a708b49ee1368c4d7983f45d29920fd8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 312f8d6038718991a563dcf6214aaab4c5f2cd9a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Az Azure Tárolószolgáltatás (AKS) vázlat használata
 
-Vázlat egy nyílt forráskódú eszköz, amely segít a csomag és a kódra Kubernetes fürtben. Vázlat célja a fejlesztési iterációs ciklus; mivel a kód még fejlesztés alatt, de előtt véglegesítése verziókövetésbe. Vázlat gyorsan központilag telepítheti az alkalmazás Kubernetes kód változás. Kapcsolatos további információkért lásd: a [dokumentációnkat a Githubon vázlatszintű](https://github.com/Azure/draft/tree/master/docs).
+Vázlat egy nyílt forráskódú eszköz, amely segít a csomag és a kódra Kubernetes fürtben. Vázlat célja a fejlesztési iterációs ciklus; mivel a kód még fejlesztés alatt, de előtt véglegesítése verziókövetésbe. Vázlat gyorsan központilag telepítheti az alkalmazás Kubernetes kód változás. Kapcsolatos további információkért lásd: a [dokumentációnkat a Githubon vázlatszintű][draft-documentation].
 
 Ez a dokumentum adatokat AKS Kubernetes fürtben, vázlat használata.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozott egy AKS-fürtöt, és kiépített egy kubectl-kapcsolatot a fürttel. Ha ezek az elemek van szüksége, tekintse meg a [AKS gyors üzembe helyezés](./kubernetes-walkthrough.md).
+A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozott egy AKS-fürtöt, és kiépített egy kubectl-kapcsolatot a fürttel. Ha ezek az elemek van szüksége, tekintse meg a [AKS gyors üzembe helyezés][aks-quickstart].
 
-Meg kell egy titkos Docker beállításjegyzék Azure tároló beállításjegyzék (ACR) is. ACR példány telepítésével kapcsolatos útmutatásért lásd: a [Azure tároló beállításjegyzék gyors üzembe helyezés](../container-registry/container-registry-get-started-azure-cli.md).
+Meg kell egy titkos Docker beállításjegyzék Azure tároló beállításjegyzék (ACR) is. ACR példány telepítésével kapcsolatos útmutatásért lásd: a [Azure tároló beállításjegyzék gyors üzembe helyezési] [acr – gyors üzembe helyezés].
 
 ## <a name="install-helm"></a>Helm telepítése
 
 A Helm CLI ügyfél, amely a fejlesztői rendszeren fut, és lehetővé teszi indítása, leállítása és kezelheti az alkalmazásokat az Helm diagramok.
 
-Telepítse a Helm parancssori felület Mac, használja a `brew`. További telepítési lehetőségekről, tekintse meg [telepítése Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md).
+Telepítse a Helm parancssori felület Mac, használja a `brew`. További telepítési lehetőségekről, tekintse meg [telepítése Helm][install-helm].
 
 ```console
 brew install kubernetes-helm
@@ -54,7 +54,7 @@ Bash completion has been installed to:
 
 A Vázlat CLI egy ügyfelet, amelyben a fejlesztői rendszeren fut, és lehetővé teszi, hogy quicky kód telepítése Kubernetes fürtbe.
 
-A Vázlat parancssori felület telepítése egy Mac használata `brew`. További telepítési beállítások talál, a [vázlat telepítése útmutató](https://github.com/Azure/draft/blob/master/docs/install.md).
+A Vázlat parancssori felület telepítése egy Mac használata `brew`. További telepítési beállítások talál, a [vázlat telepítése útmutató][install-draft].
 
 ```console
 brew install draft
@@ -178,7 +178,7 @@ Amikor befejeződött az alkalmazás használatát tesztelés `Control+C` leáll
 
 ## <a name="expose-application"></a>Teszi közzé az alkalmazást
 
-Ha egy alkalmazás tesztelése a Kubernetes, érdemes lehet elérhetővé tenni az alkalmazást az interneten. Ezt megteheti egy Kubernetes szolgáltatással típussal rendelkező [terheléselosztó](https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer) vagy egy [érkező vezérlő](https://kubernetes.io/docs/concepts/services-networking/ingress/). Ez a dokumentum adatokat Kubernetes szolgáltatást használ.
+Ha egy alkalmazás tesztelése a Kubernetes, érdemes lehet elérhetővé tenni az alkalmazást az interneten. Ezt megteheti egy Kubernetes szolgáltatással típussal rendelkező [terheléselosztó] [ kubernetes-service-loadbalancer] vagy egy [érkező vezérlő][kubernetes-ingress]. Ez a dokumentum adatokat Kubernetes szolgáltatást használ.
 
 
 Először a Vázlat csomag annak meghatározása, hogy frissíteni kell a szolgáltatás olyan típusú `LoadBalancer` kell létrehozni. Ehhez az szükséges, frissítse a szolgáltatás típusa a `values.yaml` fájlt.
@@ -302,4 +302,15 @@ Hello World, I'm Java - Draft Rocks!
 Vázlat használatával kapcsolatos további információkért az dokumentációjában vázlat a Githubon.
 
 > [!div class="nextstepaction"]
-> [Vázlat dokumentáció](https://github.com/Azure/draft/tree/master/docs)
+> [Vázlat dokumentáció][draft-documentation]
+
+<!-- LINKS - external -->
+[draft-documentation]: https://github.com/Azure/draft/tree/master/docs
+[install-draft]: https://github.com/Azure/draft/blob/master/docs/install.md
+[install-helm]: https://github.com/kubernetes/helm/blob/master/docs/install.md
+[kubernetes-ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
+[kubernetes-service-loadbalancer]: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
+
+<!-- LINKS - internal -->
+[acr-quicstart]: ../container-registry/container-registry-get-started-azure-cli.md
+[aks-quickstart]: ./kubernetes-walkthrough.md

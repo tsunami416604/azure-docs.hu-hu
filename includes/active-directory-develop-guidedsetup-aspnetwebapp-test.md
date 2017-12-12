@@ -1,4 +1,3 @@
-
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
 A Visual Studióban az alkalmazás teszteléséhez nyomja le az **F5** a projekt futtatásához. A böngésző megnyitja a http://<span></span>localhost: {port} helyre, és tekintse meg a **jelentkezzen be Microsoft** gombra. Kattintson a gombra, majd indítsa el a bejelentkezési folyamat.

@@ -1,7 +1,7 @@
 ---
 title: "A kiszolgálóoldali JavaScript programozás Azure Cosmos DB |} Microsoft Docs"
 description: "Útmutató: Azure Cosmos-Adatbázist kíván használni a tárolt eljárások, eseményindítók adatbázis és a felhasználó által megadott funkciókat (UDF) írását a JavaScript. Adatbázis programing tippeket és több kapják meg."
-keywords: "Adatbázis-eseményindítók, tárolt eljárás, tárolt eljárás, adatbázis program, sproc, a documentdb, azure, a Microsoft azure"
+keywords: "Adatbázis-eseményindítók, tárolt eljárás, tárolt eljárás, adatbázis program, sproc, azure, a Microsoft azure"
 services: cosmos-db
 documentationcenter: 
 author: aliuy
@@ -13,15 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2016
+ms.date: 12/07/2017
 ms.author: andrl
-ms.openlocfilehash: ef191c3c8d85afa389859956d30b5ac0275053d2
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 2fbf716422df324ad15c9400fe1f2e88b1415620
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Az Azure Cosmos DB kiszolgálóoldali programozása: tárolt eljárások, eseményindítók adatbázis és a felhasználó által megadott függvények
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
 Ismerje meg, hogy Azure Cosmos DB nyelvi integrálva, a tranzakciós végrehajtását a JavaScript lehetővé teszi, hogy a fejlesztők írási **tárolt eljárások**, **eseményindítók** és **felhasználó által definiált funkciókat (UDF)** a natív módon egy [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript. Ez lehetővé teszi az alkalmazáslogikák adatbázis program szállított és végre közvetlenül az adatbázis adattárolási partíciókat. 
 
 Azt javasoljuk, hogy Kezdésként tekintse meg az alábbi videót, amelyben Andrew Liu Cosmos DB kiszolgálóoldali adatbázis programozási modell rövid áttekintést nyújt. 
@@ -53,7 +56,7 @@ Ez a megközelítés a *"JavaScript egy T-SQL modern napot"* felszabadítja a re
   * Hozzáadja a nyers adatokat, amely lehetővé teszi az adatok fejlesztők azt fejleszteni az alkalmazásaikat, függetlenül az adatokból fölött egy absztrakciós réteget. Ez különösen hasznos, amikor az adatok séma nélküli, miatt a rideg feltételek, amelyek esetleg bővíthetőség az alkalmazásba, ha közvetlenül az adatok kezelésére.  
   * Ez az absztrakció lehetővé teszi, hogy a vállalatok számára az adatokat a hozzáférést a parancsfájlok a egyszerűsítése biztonsága.  
 
-A létrehozási és az adatbázis eseményindítók, tárolt eljárás és egyéni lekérdezési operátorok végrehajtási keresztül támogatja a [REST API](/rest/api/documentdb/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), és [ügyfél SDK-k](documentdb-sdk-dotnet.md)például .NET, Node.js és JavaScript számos platformon.
+A létrehozási és az adatbázis eseményindítók, tárolt eljárás és egyéni lekérdezési operátorok végrehajtási keresztül támogatja a [Azure-portálon](https://portal.azure.com), a [REST API](/rest/api/documentdb/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), és [ügyfél SDK-k](documentdb-sdk-dotnet.md) például .NET, Node.js és JavaScript számos platformon.
 
 Ez az oktatóanyag használja a [Node.js SDK-val Q tett](http://azure.github.io/azure-documentdb-node-q/) szintaxis és a tárolt eljárások, eseményindítók és felhasználó által megadott függvények használatát mutatja be.   
 
@@ -437,7 +440,7 @@ Ehhez az eseményindítóhoz lekérdezi a metaadat-dokumentum, és frissíti azt
 Az egyik dolog, ami fontos megjegyezni a **tranzakciós** Cosmos DB eseményindítók végrehajtását. Ez utáni eseményindító futtatja ugyanabban a tranzakcióban, mint az eredeti dokumentumhoz létrehozása. Ezért a utáni eseményindítóval (például ha nem sikerült frissíteni a metaadat-dokumentum) azt kivételt jelez, ha a teljes tranzakció sikertelen lesz, és vissza lesz vonva. Nincs dokumentum jön létre, és kivételt adja vissza.  
 
 ## <a id="udf"></a>Felhasználó által definiált függvények
-Felhasználói függvény (UDF) segítségével bővítheti a DocumentDB API SQL-lekérdezési nyelv szintaxis, valamint valósítja meg az üzleti logika. Ezek csak a hívható lekérdezéseken belül. Ezeket a nincs hozzáférése a context objektumot, és célja, hogy csak számítási JavaScript használható. Ezért a felhasználó által megadott függvények a másodlagos replikákon a Cosmos DB szolgáltatás futtatható.  
+Felhasználói függvény (UDF) segítségével bővítheti a Azure Cosmos adatbázis SQL-lekérdezési nyelv szintaxis, valamint valósítja meg az üzleti logika. Ezek csak a hívható lekérdezéseken belül. Ezeket a nincs hozzáférése a context objektumot, és célja, hogy csak számítási JavaScript használható. Ezért a felhasználó által megadott függvények a másodlagos replikákon a Cosmos DB szolgáltatás futtatható.  
 
 Az alábbi minta létrehoz egy UDF kiszámításához adó különböző bevétel zárójeleket sebességet alapján, és azt használja a lekérdezésben található összes olyan személyek, akik több mint 20 000 $ fizetett adók.
 
@@ -479,7 +482,7 @@ Az UDF ezt követően használható lekérdezésekben például a következő mi
     });
 
 ## <a name="javascript-language-integrated-query-api"></a>A JavaScript nyelv integrált lekérdezés API
-Mellett a DocumentDB SQL-szintaxis használatával lekérdezések kiállító, a kiszolgálóoldali SDK teszi lehetővé az SQL ismeretek nélkül Folyékonyan beszél JavaScript-illesztő segítségével optimalizált lekérdezések végrehajtásához. A JavaScript-lekérdezés API lehetővé teszi programozott módon hozhatók létre olyan lekérdezések úgy, hogy a predikátum függvény chainable függvénynek hívások, a megszokott ECMAScript5 tartozó tömb built-ins és népszerű JavaScript szalagtárak például lodash szintaxissal. Lekérdezések hajthatnak végre hatékonyan Azure Cosmos DB indexet a JavaScript futásidejű rendszer elemzi.
+Mellett a kiállító lekérdezések Azure Cosmos adatbázis SQL-szintaxis használatával, a kiszolgálóoldali SDK teszi lehetővé az SQL ismeretek nélkül Folyékonyan beszél JavaScript-illesztő segítségével optimalizált lekérdezések végrehajtásához. A JavaScript-lekérdezés API lehetővé teszi programozott módon hozhatók létre olyan lekérdezések úgy, hogy a predikátum függvény chainable függvénynek hívások, a megszokott ECMAScript5 tartozó tömb built-ins és népszerű JavaScript szalagtárak például lodash szintaxissal. Lekérdezések hajthatnak végre hatékonyan Azure Cosmos DB indexet a JavaScript futásidejű rendszer elemzi.
 
 > [!NOTE]
 > `__`(kettős-aláhúzásjel) aliasként `getContext().getCollection()`.
@@ -642,7 +645,7 @@ Az alábbi leírásokat ismertetik a fenti táblázatban minden egyes lekérdez�
 
 
 ## <a name="runtime-support"></a>Futásidejű támogatása
-[A DocumentDB a JavaScript kiszolgáló oldalán API](http://azure.github.io/azure-documentdb-js-server/) támogatást nyújt a legtöbb funkcióját a alapvető technikai JavaScript nyelv által szabványosított, [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+Az Azure Cosmos DB [JavaScript kiszolgáló oldalán API](http://azure.github.io/azure-documentdb-js-server/) támogatást nyújt a legtöbb funkcióját a alapvető technikai JavaScript nyelv által szabványosított, [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
 ### <a name="security"></a>Biztonság
 JavaScript tárolt eljárások és eseményindítók elkülönített, hogy egy parancsfájl eredő nem nyilvánosságra kerüljenek a másik a pillanatkép-tranzakció elkülönítés az adatbázis szintjén áthaladás nélkül. A futásidejű környezetek készletezett, de tisztítani a környezet után minden egyes futtatásához. Ezért ezek garantáltan biztonságos az oldal nem várt hatások egymástól.
@@ -651,7 +654,7 @@ JavaScript tárolt eljárások és eseményindítók elkülönített, hogy egy p
 Tárolt eljárások, eseményindítók és felhasználó által megadott függvények minden parancsfájl hívás idején fordítási költségek elkerülése érdekében olyan implicit módon lefordított bájt kód formátumba. Ez biztosítja a tárolt eljárások indítások gyors, és egy kis erőforrásigényét.
 
 ## <a name="client-sdk-support"></a>Ügyfél SDK-támogatás
-A DocumentDB API-t a mellett [Node.js](documentdb-sdk-node.md) ügyfél, Azure Cosmos DB rendelkezik [.NET](documentdb-sdk-dotnet.md), [.NET Core](documentdb-sdk-dotnet-core.md), [Java](documentdb-sdk-java.md), [ JavaScript](http://azure.github.io/azure-documentdb-js/), és [Python SDK-k](documentdb-sdk-python.md) a documentdb API. Tárolt eljárások, eseményindítók és felhasználó által megadott függvények hozhatók létre, és végre bármely, valamint a SDK használatával. A következő példa bemutatja, hogyan hozhat létre, és a .NET-ügyfélprogrammal tárolt eljárás végrehajtása. Megjegyzés: a .NET-típusok lett átadva a következő tárolt eljárás JSON-ként és olvasási vissza hogyan.
+Az Azure Cosmos DB mellett [Node.js](documentdb-sdk-node.md) API, Azure Cosmos DB rendelkezik [.NET](documentdb-sdk-dotnet.md), [.NET Core](documentdb-sdk-dotnet-core.md), [Java](documentdb-sdk-java.md), [JavaScript ](http://azure.github.io/azure-documentdb-js/), és [Python SDK-k](documentdb-sdk-python.md) , valamint az SQL API számára. Tárolt eljárások, eseményindítók és felhasználó által megadott függvények hozhatók létre, és végre bármely, valamint a SDK használatával. A következő példa bemutatja, hogyan hozhat létre, és a .NET-ügyfélprogrammal tárolt eljárás végrehajtása. Megjegyzés: a .NET-típusok lett átadva a következő tárolt eljárás JSON-ként és olvasási vissza hogyan.
 
     var markAntiquesSproc = new StoredProcedure
     {
@@ -684,7 +687,7 @@ A DocumentDB API-t a mellett [Node.js](documentdb-sdk-node.md) ügyfél, Azure C
     Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(UriFactory.CreateStoredProcedureUri("db", "coll", "ValidateDocumentAge"), document, 1920);
 
 
-Ez a példa bemutatja, hogyan használható a [DocumentDB .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) előtti eseményindító létrehozása, és hozzon létre egy dokumentumot az eseményindító engedélyezve van. 
+Ez a példa bemutatja, hogyan használható a [SQL .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) előtti eseményindító létrehozása, és hozzon létre egy dokumentumot az eseményindító engedélyezve van. 
 
     Trigger preTrigger = new Trigger()
     {
@@ -705,7 +708,7 @@ Ez a példa bemutatja, hogyan használható a [DocumentDB .NET API](/dotnet/api/
         });
 
 
-A következő példa bemutatja, hogyan hozzon létre egy felhasználói függvény (UDF), és ezért és egy [DocumentDB API SQL-lekérdezés](documentdb-sql-query.md).
+A következő példa bemutatja, hogyan hozzon létre egy felhasználói függvény (UDF), és ezért és egy [SQL-lekérdezés](documentdb-sql-query.md).
 
     UserDefinedFunction function = new UserDefinedFunction()
     {

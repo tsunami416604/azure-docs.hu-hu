@@ -4,7 +4,7 @@ description: "Ismerje meg, hogyan állíthat be Azure Active Directoryhoz csatla
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 415086809efe779c6bcae32719d8be1b48764905
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41ae5d019e303246d7c7c2b06cf73280f6472b6e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Állítsa be az Azure Active Directoryhoz csatlakoztatott eszközök
 
@@ -52,7 +52,7 @@ Egy Windows 10 rendszerű eszköz csatlakozni az eszközregisztrációs szolgál
 
 A szakasz ismerteti a lépéseket a Windows 10 rendszerű eszköz csatlakoztatása az Azure AD. Ha sikeresen csatlakozott az eszközt az Azure AD a **hozzáférés munkahelyi vagy iskolai** párbeszédpanel jelzi ezt egy **csatlakoztatott \<az Azure AD\>**  bejegyzés.
 
-![Csatlakoztatva](./media/device-management-azuread-joined-devices-setup/13.png)
+![Csatlakozva](./media/device-management-azuread-joined-devices-setup/13.png)
 
 
 **A Windows 10-eszköz csatlakozni:**
@@ -87,7 +87,7 @@ A szakasz ismerteti a lépéseket a Windows 10 rendszerű eszköz csatlakoztatá
 
 6. Az a **jelszó megadni** párbeszédpanelen írja be a jelszót, és kattintson **bejelentkezés**.
 
-    ![Adja meg a jelszót](./media/device-management-azuread-joined-devices-setup/05.png)
+    ![Írja be a jelszót](./media/device-management-azuread-joined-devices-setup/05.png)
 
 
 7. Az a **győződjön meg arról, hogy ez a szervezet** párbeszédpanel, kattintson a **csatlakozás**.
@@ -103,16 +103,16 @@ A szakasz ismerteti a lépéseket a Windows 10 rendszerű eszköz csatlakoztatá
 
 Győződjön meg arról, hogy egy eszköz csatlakozik-e az Azure AD, tekintse át a **hozzáférés munkahelyi vagy iskolai** párbeszédpanel az eszközön.
 
-![Csatlakoztatva](./media/device-management-azuread-joined-devices-setup/13.png)
+![Csatlakozva](./media/device-management-azuread-joined-devices-setup/13.png)
 
 Alternatív megoldásként futtathatja a következő parancsot:`dsregcmd /status`  
 Sikeresen csatlakoztatva eszközön **AzureAdJoined** van **Igen**.
 
-![Csatlakoztatva](./media/device-management-azuread-joined-devices-setup/14.png)
+![Csatlakozva](./media/device-management-azuread-joined-devices-setup/14.png)
 
 Emellett áttekintheti az Azure AD portálon Eszközbeállítások.
 
-![Csatlakoztatva](./media/device-management-azuread-joined-devices-setup/15.png)
+![Csatlakozva](./media/device-management-azuread-joined-devices-setup/15.png)
 
 További információkért lásd: [keresse meg az eszközök](device-management-azure-portal.md#locate-devices).
 

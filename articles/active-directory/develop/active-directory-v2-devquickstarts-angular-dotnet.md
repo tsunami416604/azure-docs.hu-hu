@@ -4,7 +4,7 @@ description: "Hogyan hozhat létre, hogy mindkét személyes Microsoft-fiókkal 
 services: active-directory
 documentationcenter: 
 author: jmprieur
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 6a341781-278f-461b-92ca-7572a06e6852
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c68180c0ecabf5c0732f0db77ef1f3cc93be965b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2a2108fb2205f646b2ac807922a90939bdee9f6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---net"></a>Bejelentkezési hozzáadása egy AngularJS egylapos alkalmazás - .NET
 Ebben a cikkben fel kell venni jelentkezzen be az alkalmazás bekapcsolja Microsoft-fiókok AngularJS alkalmazásokhoz az Azure Active Directory v2.0-végponttól használatával.  A v2.0-végpontra lehetővé teszi egyetlen integrációs elvégzéséhez az alkalmazáson belüli és a személyes és munkahelyi vagy iskolai fiókkal rendelkező felhasználók hitelesítéséhez.
@@ -92,7 +92,7 @@ Míg beállítás folyamatban van, folytassuk a háttérrendszer REST API-n műk
 
 Ez egy, a REST API működése megvitatása fogjuk folyamatosan.  Nyugodtan poke, a kódban, de ha szeretné megtudni a további információk védelme webes API-kat az Azure ad-vel, tekintse meg [Ez a cikk](active-directory-v2-devquickstarts-dotnet-api.md). 
 
-## <a name="sign-users-in"></a>A felhasználók beléptetése
+## <a name="sign-users-in"></a>Felhasználók beléptetése
 Identitás kódírást idő.  Észrevette, hogy már adott adal.js egy AngularJS szolgáltatót tartalmaz, amely lehetőségben szépen szögben kifejezett útválasztási mechanizmusokat.  Indítsa el az alkalmazás az adal modul hozzáadásával:
 
 ```js

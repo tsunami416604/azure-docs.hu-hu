@@ -4,7 +4,7 @@ description: "Ez a témakör ismerteti a beépített szerepkörök szerepkörala
 services: active-directory
 documentationcenter: 
 author: andredm7
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 06/28/2017
 ms.author: andredm
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a5de00793621cfdecea887c53a22d482a25d1b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ff900ef2064c077fe75228c191e580e7531a9aa2
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök
 Azure szerepköralapú hozzáférés-vezérlés (RBAC) tartalmaz a következő beépített szerepkörök, felhasználók, csoportok és szolgáltatások rendelhető. A beépített szerepkörök definíciója nem módosítható. Azonban létrehozhat [egyéni szerepkörök az Azure RBAC](role-based-access-control-custom-roles.md) a szervezet igényeinek megfelelően.
@@ -55,7 +55,7 @@ Ez a cikk csak a különböző szerepkörök ma foglalkozik. Amikor szerepkör h
 | [Data Factory közreműködő](#data-factory-contributor) |Hozhat létre, és kezelhet az adat-előállítók és gyermekerőforrásait rajtuk. |
 | [DevTest Labs felhasználó](#devtest-labs-user) |Minden tekintheti meg és csatlakozni, a start, újraindítás és leállítás virtuális gépek |
 | [DNS-zóna közreműködő](#dns-zone-contributor) |Kezelheti a DNS-zónák és rekordok |
-| [Az Azure Cosmos DB fiók közreműködői](#documentdb-account-contributor) |Kezelheti az Azure Cosmos DB fiókok |
+| [A DocumentDB-fiók közreműködői](#documentdb-account-contributor) |Kezelheti az Azure Cosmos DB fiókok |
 | [Intelligens rendszerek fiók közreműködői](#intelligent-systems-account-contributor) |Intelligens rendszerek fiókok is kezelése |
 | Logic App közreműködő | Igen logikai alkalmazás minden szempontjának kezeléséhez, de nem hozzon létre egy újat. |
 | Logic App operátor |Elindíthatók és leállíthatók munkafolyamatok logikai alkalmazás vannak meghatározva. |
@@ -88,7 +88,7 @@ Ez a cikk csak a különböző szerepkörök ma foglalkozik. Amikor szerepkör h
 ## <a name="role-permissions"></a>Szerepkör-engedélyek
 Az alábbi táblázatok bemutatják az egyes szerepkörökhöz megadott engedélyeket. Ez magában foglalhatja **műveletek**, amely adjon engedélyeket, és **NotActions**, amely korlátozza azokat.
 
-### <a name="api-management-service-contributor"></a>API Management szolgáltatás közreműködő
+### <a name="api-management-service-contributor"></a>API Management szolgáltatás közreműködője
 Az API Management szolgáltatásokat kezelheti
 
 | **Műveletek** |  |
@@ -135,7 +135,7 @@ Az API Management szolgáltatásokat kezelheti
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el szerepköröket és szerepkör-hozzárendelések |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="application-insights-component-contributor"></a>Application Insights-összetevővel kapcsolatos közreműködői
+### <a name="application-insights-component-contributor"></a>Application Insights-összetevők közreműködője
 Kezelheti az Application Insights összetevőinek
 
 | **Műveletek** |  |
@@ -274,7 +274,7 @@ Számlázási vonatkozó összes információt megtekinthetik
 | Microsoft.Billing/*/read |Olvassa el a számlázási adatokat |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="biztalk-contributor"></a>BizTalk közreműködő
+### <a name="biztalk-contributor"></a>BizTalk közreműködője
 Kezelheti a BizTalk szolgáltatások
 
 | **Műveletek** |  |
@@ -287,7 +287,7 @@ Kezelheti a BizTalk szolgáltatások
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="cleardb-mysql-db-contributor"></a>ClearDB MySQL DB Contributor
+### <a name="cleardb-mysql-db-contributor"></a>ClearDB MySQL-adatbázisok közreműködője
 Kezelheti a ClearDB MySQL-adatbázisok
 
 | **Műveletek** |  |
@@ -312,7 +312,7 @@ Hozzáférés kivételével mindent felügyelhetnek
 | Microsoft.Authorization/*/Delete |Szerepkörök és szerepkör-hozzárendelések nem lehet törölni |
 | Microsoft.Authorization/*/Write |Nem hozható létre, szerepkörök és szerepkör-hozzárendelések |
 
-### <a name="data-factory-contributor"></a>Data Factory közreműködő
+### <a name="data-factory-contributor"></a>Data Factory közreműködője
 Létrehozása és kezelése az adat-előállítók és gyermekerőforrásait rajtuk.
 
 | **Műveletek** |  |
@@ -325,7 +325,7 @@ Létrehozása és kezelése az adat-előállítók és gyermekerőforrásait raj
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="devtest-labs-user"></a>DevTest Labs felhasználó
+### <a name="devtest-labs-user"></a>DevTest Labs-felhasználó
 Minden tekintheti meg és csatlakozni, a start, újraindítás és leállítás virtuális gépek
 
 | **Műveletek** |  |
@@ -371,20 +371,20 @@ DNS-zónák és rekordok is kezelheti.
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Support/\* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="azure-cosmos-db-account-contributor"></a>Az Azure Cosmos DB fiók közreműködői
-Kezelheti az Azure Cosmos DB fiókok
+### <a name="documentdb-account-contributor"></a>DocumentDB-fiókközreműködő
+Felügyelheti az Azure Cosmos DB fiókjait. Azure Cosmos-adatbázis a DocumentDB nevén.
 
 | **Műveletek** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Olvassa el szerepköröket és hozzárendelések szerepkör |
-| Microsoft.DocumentDb/databaseAccounts/* |A DocumentDB-fiókok létrehozása és kezelése |
+| Microsoft.DocumentDb/databaseAccounts/* |Azure Cosmos DB fiókok létrehozása és kezelése |
 | Microsoft.Insights/alertRules/* |Hozzon létre és riasztási szabályok kezelése |
 | Microsoft.ResourceHealth/availabilityStatuses/read |Az erőforrások állapotának olvasása |
 | Microsoft.Resources/deployments/* |Hozzon létre és erőforrás-csoport központi telepítések felügyeletéhez szükséges |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="intelligent-systems-account-contributor"></a>Intelligens rendszerek fiók közreműködői
+### <a name="intelligent-systems-account-contributor"></a>Intelligens rendszerek fiókközreműködője
 Intelligens rendszerek fiókok is kezelése
 
 | **Műveletek** |  |
@@ -427,7 +427,7 @@ Az összes figyelési adatokat (metrikákat, naplói, stb.) el tud olvasni. Lás
 | Microsoft.OperationalInsights/workspaces/sharedKeys/action |A Naplóelemzési munkaterület kulcsainak listázása. |
 | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* |Olvasási, írási és törlési Naplóelemzési insight tárolókonfigurációkkal. |
 
-### <a name="network-contributor"></a>Hálózat közreműködő
+### <a name="network-contributor"></a>Hálózati közreműködő
 Kezelheti az összes hálózati erőforrás
 
 | **Műveletek** |  |
@@ -467,7 +467,7 @@ Mindent megtekinthetnek, de nem módosítható
 | --- | --- |
 | * / olvasása |Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 
-### <a name="redis-cache-contributor"></a>Redis gyorsítótár közreműködő
+### <a name="redis-cache-contributor"></a>Redis gyorsítótárak közreműködője
 Kezelheti a Redis gyorsítótár
 
 | **Műveletek** |  |
@@ -480,7 +480,7 @@ Kezelheti a Redis gyorsítótár
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="scheduler-job-collections-contributor"></a>A Feladatütemező feladat gyűjtemények közreműködő
+### <a name="scheduler-job-collections-contributor"></a>Scheduler szolgáltatás feladatgyűjteményeinek közreműködője
 Kezelheti a Scheduler feladatgyűjteményei
 
 | **Műveletek** |  |
@@ -493,7 +493,7 @@ Kezelheti a Scheduler feladatgyűjteményei
 | Microsoft.Scheduler/jobcollections/* |Feladat gyűjtemények létrehozásához és kezeléséhez |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="search-service-contributor"></a>Keresési szolgáltatás közreműködő
+### <a name="search-service-contributor"></a>Search szolgáltatás közreműködője
 Kezelheti a keresési szolgáltatások
 
 | **Műveletek** |  |
@@ -506,7 +506,7 @@ Kezelheti a keresési szolgáltatások
 | Microsoft.Search/searchServices/* |Hozzon létre és keresési szolgáltatások kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="security-manager"></a>Biztonsági kezelője
+### <a name="security-manager"></a>Biztonságkezelő
 Kezelheti a biztonsági összetevők, a biztonsági házirendek és a virtuális gépek
 
 | **Műveletek** |  |
@@ -647,7 +647,7 @@ Recovery Services-tárolónak a Site Recovery állapot figyelheti és támogatá
 | Microsoft.RecoveryServices/Vaults/usages/read  |  A Recovery Services-tároló használati adatainak beolvasása |
 | Microsoft.Support/*  |  Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="sql-db-contributor"></a>SQL DB Contributor
+### <a name="sql-db-contributor"></a>SQL-adatbázisok közreműködője
 SQL-adatbázisok, de nem a biztonsági házirendek kezeléséhez
 
 | **Műveletek** |  |
@@ -671,7 +671,7 @@ SQL-adatbázisok, de nem a biztonsági házirendek kezeléséhez
 | Microsoft.Sql/servers/databases/securityAlertPolicies/* |Biztonsági riasztások házirendek nem szerkeszthető. |
 | Microsoft.Sql/servers/databases/securityMetrics/* |Biztonsági metrikák nem szerkeszthető. |
 
-### <a name="sql-security-manager"></a>SQL biztonságkezelő
+### <a name="sql-security-manager"></a>SQL-biztonságkezelő
 Kezelheti az SQL Server-kiszolgálók és adatbázisok biztonsági házirendek
 
 | **Műveletek** |  |
@@ -698,7 +698,7 @@ Kezelheti az SQL Server-kiszolgálók és adatbázisok biztonsági házirendek
 | Microsoft.Sql/servers/securityAlertPolicies/* |SQL server biztonsági riasztás szabályzatok létrehozása és kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="sql-server-contributor"></a>SQL Server közreműködő
+### <a name="sql-server-contributor"></a>SQL Server közreműködője
 SQL Server-kiszolgálók és adatbázisok, de nem a biztonsági házirendek kezeléséhez
 
 | **Műveletek** |  |
@@ -724,7 +724,7 @@ SQL Server-kiszolgálók és adatbázisok, de nem a biztonsági házirendek keze
 | Microsoft.Sql/servers/databases/securityMetrics/* |SQL server-adatbázis biztonsági metrikák nem szerkeszthető. |
 | Microsoft.Sql/servers/securityAlertPolicies/* |SQL server biztonsági riasztás házirendek nem szerkeszthető. |
 
-### <a name="classic-storage-account-contributor"></a>Hagyományos tárolási fiók közreműködői
+### <a name="classic-storage-account-contributor"></a>Hagyományos tárfiók-közreműködő
 Kezelheti a klasszikus tárfiókokba
 
 | **Műveletek** |  |
@@ -737,7 +737,7 @@ Kezelheti a klasszikus tárfiókokba
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="storage-account-contributor"></a>Tárolási fiók közreműködői
+### <a name="storage-account-contributor"></a>Tárfiók-közreműködő
 Igen storage-fiókok kezeléséhez, de nem érhető el.
 
 | **Műveletek** |  |
@@ -769,7 +769,7 @@ Kezelheti a felhasználói hozzáférés az Azure-erőforrások
 | Microsoft.Authorization/* |Engedélyezési kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="classic-virtual-machine-contributor"></a>Klasszikus virtuális gép közreműködő
+### <a name="classic-virtual-machine-contributor"></a>Virtuális gépek hagyományos közreműködője
 Kezelheti a klasszikus virtuális gépeket, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez csatlakoznak
 
 | **Műveletek** |  |
@@ -792,7 +792,7 @@ Kezelheti a klasszikus virtuális gépeket, de nem a virtuális hálózati vagy 
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="virtual-machine-contributor"></a>Virtuális gép közreműködő
+### <a name="virtual-machine-contributor"></a>Virtuális gépek közreműködője
 Kezelheti a virtuális gépek, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez csatlakoznak
 
 | **Műveletek** |  |
@@ -823,7 +823,7 @@ Kezelheti a virtuális gépek, de nem a virtuális hálózati vagy tárolási fi
 | Microsoft.Storage/storageAccounts/read |Olvassa el a storage-fiókok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="classic-network-contributor"></a>Klasszikus hálózat közreműködő
+### <a name="classic-network-contributor"></a>Virtuális hálózatok hagyományos közreműködője
 Kezelheti a klasszikus virtuális hálózatok és foglalt IP-cím
 
 | **Műveletek** |  |
@@ -836,7 +836,7 @@ Kezelheti a klasszikus virtuális hálózatok és foglalt IP-cím
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="web-plan-contributor"></a>Webes terv közreműködő
+### <a name="web-plan-contributor"></a>Webes tarifacsomagok közreműködője
 Kezelheti a webes tervek
 
 | **Műveletek** |  |
@@ -849,7 +849,7 @@ Kezelheti a webes tervek
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 | Microsoft.Web/serverFarms/* |Hozzon létre, és a kiszolgálófarmok kezelése |
 
-### <a name="website-contributor"></a>Webhely közreműködő
+### <a name="website-contributor"></a>Webhelyek közreműködője
 Kezelheti a webhely, de nem a webes terveket, amelyhez csatlakoznak
 
 | **Műveletek** |  |

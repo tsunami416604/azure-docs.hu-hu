@@ -15,14 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: mimig
-ms.openlocfilehash: cd314049a536ad4a95e243eac26aa044c90c8164
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ac83f948e367be2006e677d8d56fbd4c4a3ab57
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Az Azure Cosmos DB: DocumentDB API SQL lekérdezés Adatlap PDF
-A **Azure Cosmos DB: DocumentDB API SQL lekérdezés Cheat lap** segítségével gyorsan DocumentDB API adatok lekérdezéseket írhat megjelenített közös adatbázis-lekérdezések, kulcsszavakat, beépített függvények, és operátorok egy könnyen PDF nyomtatása lap hivatkozik. 
+# <a name="azure-cosmos-db-sql-query-cheat-sheet-pdf"></a>Az Azure Cosmos DB: SQL lekérdezés Adatlap PDF
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
+A **Azure Cosmos DB: SQL-lekérdezés Cheat lap** segítségével gyorsan az SQL API adatok lekérdezéseket írhat megjelenített közös adatbázis-lekérdezések, kulcsszavakat, beépített függvények, és operátorok egy könnyen PDF nyomtatása lap hivatkozik. 
 
 Cosmos DB támogatja a relációs, hierarchikus és térbeli küld lekérdezést a JSON-dokumentumok használatával [SQL](documentdb-sql-query.md) a séma vagy a másodlagos indexek megadása nélkül. A szabványos ANSI SQL kulcsszavak és operátorok mellett Cosmos DB támogatja a JavaScript felhasználó által megadott funkciókat (UDF), a JavaScript kezelők és a beépített funkciók számos.
 
@@ -38,7 +41,7 @@ A gyorsabb lekérdezéseket írhat az SQL-lekérdezés Adatlap letöltése és g
 
 ## <a name="more-help-with-writing-sql-queries"></a>Az SQL-lekérdezések írásáról további segítséget itt találhat
 * A lépésein végighaladva a Cosmos DB lekérdezés lehetőségeit, tekintse meg [lekérdezés Cosmos DB](documentdb-sql-query.md).
-* Tekintse meg a kapcsolódó referenciadokumentációt [Azure Cosmos DB DocumentDB API: SQL-szintaxis hivatkozás](https://msdn.microsoft.com/library/azure/dn782250.aspx).
+* Tekintse meg a kapcsolódó referenciadokumentációt [Azure Cosmos DB SQL API: SQL-szintaxis hivatkozás](https://msdn.microsoft.com/library/azure/dn782250.aspx).
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 Frissítve a 7/29/2016 felső tartalmazza.

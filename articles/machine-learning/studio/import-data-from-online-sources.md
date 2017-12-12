@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: 4c699a8e5a9fafa0fec10bcb731f9ba533e3d283
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: c6185cd240d1c040c993e581c27624e1f170f709
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Adatok importálása az Azure Machine Learning Studióba különböző online adatforrásokból az Adatok importálása modullal
 Ez a cikk ismerteti a támogatás online adatimportálási különböző forrásokból és a források tárolt adatok mozgatása az Azure Machine Learning kísérlet szükséges információkat.
@@ -43,7 +43,7 @@ Használatával a [és adatokat importálhat] [ import-data] modulban lehet elé
 * Az Azure SQL database vagy az SQL Server Azure virtuális gépen
 * A helyszíni SQL Server-adatbázis
 * Egy adatcsatornát jelenleg OData-szolgáltató
-* Az Azure CosmosDB (korábbi nevén DocumentDB)
+* Azure Cosmos DB
 
 A Studio kísérletben online adatforrások eléréséhez vegye fel a [és adatokat importálhat] [ import-data] modult a, válassza ki a **adatforrás**, és adja meg a hozzáféréshez szükséges paraméterek az adatokat. Az alábbi táblázat a támogatott online adatforrások van felsorolva. A táblázat összefoglalja, a támogatott formátumok és adatok eléréséhez használt paraméterek is.
 

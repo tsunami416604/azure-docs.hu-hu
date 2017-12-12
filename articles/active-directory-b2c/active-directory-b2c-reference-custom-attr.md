@@ -4,7 +4,7 @@ description: "Az egyéni attribútumok használata az Azure Active Directory B2C
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
-manager: mbaldwin
+manager: mtillman
 editor: bryanla
 ms.assetid: 055ffb0a-197b-4716-8dad-1fd8a01e174f
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: 356aaeff3a78fc7b682d621e8e0de9312582b2fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3e2c8b3ab223cf269129d7723c37d98c24f0653c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Az Azure Active Directory B2C: Gyűjthet a felhasználókról egyéni attribútumok használata
 Azure Active Directory (Azure AD) B2C-címtárban tartalmaz egy beépített információk (attribútumok): az Utónév, Vezetéknév, város, irányítószámát és egyéb attribútumai. Azonban minden egyes felhasználók felé néző alkalmazás követelményei egyedi attribútumok, mi a fogyasztói gyűjtéséhez. Az Azure AD B2C-ben kiterjesztheti az egyes felhasználói fiókjában tárolt attribútumokat. Létrehozhat egyéni attribútumok a [Azure-portálon](https://portal.azure.com/) és az előfizetési házirendek alább látható módon használhatja. Is olvasási és írási ezek az attribútumok használatával a [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md).
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) B2C-címtárban tartalmaz egy beépített info
 4. Adjon meg egy **neve** az egyéni attribútum (például "ShoeSize"), és szükség esetén egy **leírás**. Kattintson a **Create** (Létrehozás) gombra.
    
    > [!NOTE]
-   > Csak a "karakterlánc" **adattípus** jelenleg rendelkezésre áll.
+   > Csak a "String", "Boolean" és "Int" **adattípusok** jelenleg érhetők el.
    > 
    > 
 

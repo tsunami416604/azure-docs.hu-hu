@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 95c609ab49fe478eda48b2a2eca6a772d1356d18
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 5399fa40542fd9a1163654d5619cb94029bc3c6f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="update-an-application-in-azure-container-service-aks"></a>Az alkalmazás Azure tároló szolgáltatás (AKS) frissítése
 
@@ -35,7 +35,7 @@ Az előző oktatóanyagok egy tároló lemezképet, az Azure-tároló beállít�
 
 Egy alkalmazás tárház lett is klónozott ide tartozik az alkalmazás forráskódjához, és ebben az oktatóanyagban használt előre létrehozott Docker Compose fájl. Győződjön meg arról, hogy létrehozta a tárház másolat, és hogy módosult-könyvtárak a klónozott könyvtárba. Belső út egy könyvtár nevű `azure-vote` és nevű fájlt `docker-compose.yml`.
 
-Ha még nem fejeződött be az alábbi lépéseket, és követéséhez, térjen vissza [oktatóanyag 1 – létrehozás tároló képek](./tutorial-kubernetes-prepare-app.md). 
+Ha még nem fejeződött be az alábbi lépéseket, és követéséhez, térjen vissza [oktatóanyag 1 – létrehozás tároló képek][aks-tutorial-prepare-app]. 
 
 ## <a name="update-application"></a>Alkalmazás frissítése
 
@@ -61,7 +61,7 @@ Mentse és zárja be a fájlt.
 
 ## <a name="update-container-image"></a>Tároló lemezképek
 
-Használjon [docker compose](https://docs.docker.com/compose/) hozza létre az előtér-kép és a frissített alkalmazás futtatásához. A `--build` argumentum használata az utasítási kiadása a Docker Compose újra létre kell hoznia az alkalmazás-lemezképet.
+Használjon [docker compose] [ docker-compose] hozza létre az előtér-kép és a frissített alkalmazás futtatásához. A `--build` argumentum használata az utasítási kiadása a Docker Compose újra létre kell hoznia az alkalmazás-lemezképet.
 
 ```console
 docker-compose up --build -d
@@ -83,13 +83,13 @@ A bejelentkezési kiszolgáló nevét, a [az acr lista](/cli/azure/acr#list) par
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Használjon [docker címke](https://docs.docker.com/engine/reference/commandline/tag/) használatával címkézhesse a lemezképet. Cserélje le `<acrLoginServer>` az Azure-tároló beállításjegyzék bejelentkezési kiszolgáló neve vagy a nyilvános beállításjegyzék állomásnév. Is figyelje meg, hogy a kép verzióra frissül, és `redis-v2`.
+Használjon [docker címke] [ docker-tag] használatával címkézhesse a lemezképet. Cserélje le `<acrLoginServer>` az Azure-tároló beállításjegyzék bejelentkezési kiszolgáló neve vagy a nyilvános beállításjegyzék állomásnév. Is figyelje meg, hogy a kép verzióra frissül, és `redis-v2`.
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Használjon [docker leküldéses](https://docs.docker.com/engine/reference/commandline/push/) való feltölti a lemezképet a beállításjegyzékhez. Cserélje le `<acrLoginServer>` az Azure-tároló beállításjegyzék bejelentkezési kiszolgáló nevével.
+Használjon [docker leküldéses] [ docker-push] való feltölti a lemezképet a beállításjegyzékhez. Cserélje le `<acrLoginServer>` az Azure-tároló beállításjegyzék bejelentkezési kiszolgáló nevével.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:redis-v2
@@ -97,7 +97,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v2
 
 ## <a name="deploy-update-application"></a>Frissítés alkalmazás központi telepítése
 
-Maximális hasznos üzemidő biztosítása érdekében az alkalmazás fogyasztanak több példánya fut. Ez a konfiguráció ellenőrzése a [kubectl beolvasása pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) parancsot.
+Maximális hasznos üzemidő biztosítása érdekében az alkalmazás fogyasztanak több példánya fut. Ez a konfiguráció ellenőrzése a [kubectl beolvasása pod] [ kubectl-get] parancsot.
 
 ```
 kubectl get pod
@@ -120,13 +120,13 @@ Ha nem rendelkezik több három munkaállomás-csoporttal fut az azure-szavazat-
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-Az alkalmazás frissítésére, használja a [kubectl set](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set) parancsot. Frissítés `<acrLoginServer>` a tároló beállításjegyzék bejelentkezési kiszolgáló vagy a gazdagép nevével.
+Az alkalmazás frissítésére, használja a [kubectl set] [ kubectl-set] parancsot. Frissítés `<acrLoginServer>` a tároló beállításjegyzék bejelentkezési kiszolgáló vagy a gazdagép nevével.
 
 ```azurecli
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Az üzemelő példány figyelése a [kubectl beolvasása pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) parancsot. A frissített alkalmazás lett telepítve, mint a három munkaállomás-csoporttal lezárva, és újból létrehozza az új tároló lemezképpel.
+Az üzemelő példány figyelése a [kubectl beolvasása pod] [ kubectl-get] parancsot. A frissített alkalmazás lett telepítve, mint a három munkaállomás-csoporttal lezárva, és újból létrehozza az új tároló lemezképpel.
 
 ```azurecli
 kubectl get pod
@@ -167,4 +167,15 @@ Ebben az oktatóanyagban egy alkalmazás frissítése, és a frissítés Kuberne
 Továbblépés figyelése az Operations Management Suite Kubernetes olvashat a következő oktatóanyag.
 
 > [!div class="nextstepaction"]
-> [A Kubernetes monitorozása a Log Analytics használatával](./tutorial-kubernetes-monitor.md)
+> [A Naplóelemzési figyelő Kubernetes][aks-tutorial-monitor]
+
+<!-- LINKS - external -->
+[docker-compose]: https://docs.docker.com/compose/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-set]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md

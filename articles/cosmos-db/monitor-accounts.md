@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mimig
-ms.openlocfilehash: 2e5cce26bc8bebbe6b9f8ba3c3d03e8c3db8c87c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f07489172306b4f6d03b5a9b1399ed92e007c3c1
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="monitor-azure-cosmos-db"></a>Az Azure Cosmos DB figyelése
 A Azure Cosmos DB-fiókok a figyelheti a [Azure-portálon](https://portal.azure.com/). Minden Azure Cosmos DB fiók metrikák tartalmazó teljes csomag érhető el átviteli, a tároló, a rendelkezésre állási, a késés és a konzisztencia figyelése.
@@ -69,7 +69,7 @@ Metrikák áttekintheti a fiók lapon, az új mérőszámok lap vagy az Azure-fi
      ![Képernyőfelvétel a hozzáadása egy riasztási szabály lap](./media/monitor-accounts/madocdb12.png)
 
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>Azure Cosmos DB programozott módon figyelése
-A fiók szintű metrikák elérhető a portálon, például a fiók tárolási használati és a végösszeg kérelmeket, a DocumentDB API-k segítségével nem érhetők el. Használati adatok, a gyűjtemény szintjén azonban kérheti le a DocumentDB API-k használatával. Gyűjtemény szolgáltatásiszint-adatok beolvasása, tegye a következőket:
+A fiók szintű metrikák elérhető a portálon, például a fiók tárolási használati és a végösszeg kérelmeket, az SQL API-k segítségével nem érhetők el. Használati adatok, a gyűjtemény szintjén azonban az SQL API-k használatával kérheti le. Gyűjtemény szolgáltatásiszint-adatok beolvasása, tegye a következőket:
 
 * A REST API-t használandó [végezze el a gyűjtemény egy GET](https://msdn.microsoft.com/library/mt489073.aspx). A kvóta- és használati adatokat a gyűjtemény eredmény abban az esetben az x-ms-erőforráskvótát és az x-ms-erőforrás-használat fejlécek, a válaszban.
 * A .NET SDK használatához a [DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) metódus, amely adja vissza egy [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) például tartalmazó használati tulajdonság  **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**, stb.

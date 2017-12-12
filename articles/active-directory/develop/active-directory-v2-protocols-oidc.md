@@ -4,7 +4,7 @@ description: "A webalkalmazások Azure AD v2.0 végrehajtása az OpenID Connect 
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: d63692f02b3dec50a1e7df034b8915bb450b4cfd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 568c2128a12abd4f3c366eae943e3ea8c1af2532
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Az Azure Active Directory v2.0 és az OpenID Connect protokoll
 OpenID Connect hitelesítési protokoll segítségével biztonságosan jelentkezzen be a felhasználót, hogy egy webes alkalmazás OAuth 2.0-s épülő. A v2.0-végpontra végrehajtása az OpenID Connect használatakor adhat hozzá bejelentkezési és API-hozzáférés a webalapú alkalmazások. Ebben a cikkben azt mutatja be a független nyelv tegye. Azt ismerteti, hogyan küldésére és fogadására a HTTP-üzenetek a Microsoft nyílt forráskódú kódtárai használata nélkül.
@@ -99,7 +99,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 
 > 
 
-| Paraméter | Az állapot | Leírás |
+| Paraméter | Feltétel | Leírás |
 | --- | --- | --- |
 | Bérlői |Szükséges |Használhatja a `{tenant}` személyek jelentkezhetnek be az alkalmazás a kérelem elérési útjában szereplő értéket. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosítókat. További információkért lásd: [alapjai protokoll](active-directory-v2-protocols.md#endpoints). |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
@@ -152,7 +152,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 ### <a name="error-codes-for-authorization-endpoint-errors"></a>Engedélyezési végpont hibái hibakódok
 A következő táblázat ismerteti a visszaadható hibakódok a `error` paramétere a hibaválaszba:
 
-| Hibakód: | Leírás | Ügyfélművelet |
+| Hibakód | Leírás | Ügyfélművelet |
 | --- | --- | --- |
 | invalid_request |Protokollhiba történt, például egy hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet. Ez a kezdeti tesztelés során általában kiszűri a fejlesztési hiba. |
 | unauthorized_client |Az ügyfélalkalmazás az engedélyezési kód nem lehet kérni. |Ez általában akkor fordul elő, amikor az ügyfél-alkalmazás nincs regisztrálva az Azure ad-ben, vagy nem kerül be a felhasználó Azure AD-bérlő. Az alkalmazás kérheti a felhasználó az alkalmazás telepítéséhez, adja hozzá az Azure AD útmutatást. |
@@ -188,7 +188,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Paraméter | Az állapot | Leírás |
+| Paraméter | Feltétel | Leírás |
 | ----------------------- | ------------------------------- | ------------ |
 | post_logout_redirect_uri | Ajánlott | Az URL-címet, amely a felhasználó sikeresen kijelentkezést követően van átirányítva. Ha a paraméter nincs megadva, a felhasználó a v2.0-végpontra által létrehozott általános üzenet jelenik meg. URL-címet meg kell egyeznie az átirányítási URI-azonosítók regisztrálva az alkalmazás az app-regisztrálási portál egyikét.  |
 

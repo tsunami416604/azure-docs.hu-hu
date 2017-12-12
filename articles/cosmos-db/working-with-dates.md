@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: arramac
-ms.openlocfilehash: b6a77e33eea24000037ffb31d7aae3cb1d345ce9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f26aea674eb2317c976af0cb8e81f619a8d64ae
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Az Azure Cosmos DB dátumok használata
 Azure Cosmos DB biztosítja a sémák rugalmasságát és a gazdag indexelési keresztül natív [JSON](http://www.json.org) adatmodell. Minden Azure Cosmos DB-erőforrások, például az adatbázisok, gyűjtemények, dokumentumok és tárolt eljárások modellezése és tárolása JSON-dokumentumok is. Hordozható lesznek követelményként JSON (és az Azure Cosmos DB) támogatja a típus csak egy kis készletét: karakterlánc, szám, logikai érték, a tömb, objektum és Null. Azonban JSON rugalmas, és engedélyezze a fejlesztők és keretrendszerek képviselő összetett típusok ezek primitívek használatával, és objektumokat vagy tömbök összeállítása őket. 
@@ -75,7 +75,7 @@ A dátum/idő értékek megegyeznek a lekérdezések. Például a tegnap óta l�
 Az indexelő a házirendek konfigurálásával kapcsolatos részletesebb [Azure Cosmos DB indexelő házirendek](indexing-policies.md).
 
 ## <a name="querying-datetimes-in-linq"></a>A LINQ időpontok lekérdezése
-A DocumentDB .NET SDK automatikusan támogatja az Azure Cosmos DB keresztül LINQ tárolt adatok lekérdezésére. Például az alábbi kódrészletben láthatja a LINQ lekérdezés, hogy az elmúlt három napban teljesített szűrők megrendelések.
+Az SQL .NET SDK-t automatikusan támogatja az Azure Cosmos DB keresztül LINQ tárolt adatok lekérdezésére. Például az alábbi kódrészletben láthatja a LINQ lekérdezés, hogy az elmúlt három napban teljesített szűrők megrendelések.
 
     IQueryable<Order> orders = client.CreateDocumentQuery<Order>("/dbs/orderdb/colls/orders")
         .Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
@@ -89,5 +89,5 @@ Ez a cikk azt venni, hogyan tárolhatja, index és az Azure Cosmos Adatbázisba 
 
 ## <a name="next-steps"></a>Következő lépések
 * Töltse le és futtassa a [minták a Githubon Code](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
-* További információ [DocumentDB API-lekérdezés](documentdb-sql-query.md)
+* További információ [SQL-lekérdezések](documentdb-sql-query.md)
 * További információ [Azure Cosmos DB indexelő házirendek](indexing-policies.md)

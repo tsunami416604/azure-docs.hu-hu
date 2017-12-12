@@ -4,7 +4,7 @@ description: "Ezen a lapon nem a Microsofttól Identitásszolgáltatók, amelyek
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: curtand
 ms.assetid: 22c8693e-8915-446d-b383-27e9587988ec
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: billmath
-ms.openlocfilehash: ed1e9276425b2c8577275e7ec6b57f54e5f7ae92
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 86c247b6a9d197e89040109ac6b8686e3310dbf5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Az Azure AD összevonás kompatibilitási listája
 Az Azure Active Directory egyszeri bejelentkezést biztosít, és a bővített alkalmazásbiztonsági hozzáférést az Office 365 és más Microsoft Online services az hibrid és a csak felhőalapú hitelesítés megvalósításához anélkül, hogy a nem Microsoft-megoldás. Office 365, például a Microsoft Online services, a legtöbb a directory services, hitelesítéshez és engedélyezéshez integrálva van az Azure Active Directoryban. Egyszeri bejelentkezés az SaaS-alkalmazásokhoz ezer is biztosít az Azure Active Directory és a helyszíni webalkalmazások. Tekintse meg az Azure Active Directory alkalmazáskatalógusában az támogatott SaaS-alkalmazásokhoz.

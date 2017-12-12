@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Cosmos DB: DocumentDB API cikkek |} Microsoft Docs'
-description: "Összes dokumentum adatbázisok létrehozásához a DocumentDB API-t az Azure Cosmos Adatbázisba vonatkozó cikkek listáját."
+title: 'Az Azure Cosmos DB: SQL API cikkek |} Microsoft Docs'
+description: "Összes dokumentum adatbázisok létrehozásához az SQL API-t az Azure Cosmos Adatbázisba vonatkozó cikkek listáját."
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -13,23 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: mimig
-ms.openlocfilehash: 8d618e00ed274f5d5705346a4ffd8281769de4e3
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+ms.openlocfilehash: b036c52d4b06d95f701e655308d011cb92aa8780
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-documentdb-api-documentation"></a>Az Azure Cosmos DB: DocumentDB API dokumentációja
+# <a name="azure-cosmos-db-sql-api-documentation"></a>Az Azure Cosmos DB: SQL API-JÁNAK dokumentációja
 
-Ez a cikk a DocumentDB API adott Azure Cosmos DB tartalomra mutató hivatkozásokat biztosít.
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
+Ez a cikk az SQL API-t adott Azure Cosmos DB tartalomra mutató hivatkozásokat biztosít.
 
 Ezek a cikkek nem vonatkoznak a Graph API-val, a tábla API vagy a MongoDB API. 
 
 ## <a name="introduction-and-concepts"></a>Bevezetés és fogalmak
 
-Ezek a kell olvasni a témakör és forrás, a DocumentDB API-t az Azure Cosmos DB megismerését elindításához.
+Ezek a kell olvasni a témakör és forrás elindítani az SQL API-t az Azure Cosmos DB megismerését.
 
-- [A DocumentDB API bemutatása](documentdb-introduction.md)
+- [Az SQL API bemutatása](documentdb-introduction.md)
 - [Adatbázis erőforrás-modellje](documentdb-resources.md)
 - Webhely: [tesztlekérdezéseket](https://www.documentdb.com/sql/demo)
 - Lap cheat: [SQL-szintaxis](documentdb-sql-query-cheat-sheet.md)
@@ -109,7 +111,7 @@ Az Azure Cosmos DB SDK-k engedélyezése ügyféloldali alkalmazásfejlesztés s
 
 ## <a name="samples"></a>Példák
 
-Az adott minta lapok adja meg, mintakód és API hivatkozhat DocumentDB API leggyakoribb feladatokat tartalmát.
+Az adott minta lapok adja meg, mintakód és API hivatkozik a leggyakrabban használt SQL API-feladatok tartalmát.
 
 - [.NET](documentdb-dotnet-samples.md)
 - [Node.js](documentdb-nodejs-samples.md)

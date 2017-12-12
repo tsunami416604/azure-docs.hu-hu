@@ -9,22 +9,22 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 12/11/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 461feb952f7e2eddba9c7218b3463868e8cb7965
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 5810ff908d48fc4ff742d734e7c2457fdfe8cb03
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Helyszíni VMware virtuális gépek Azure-bA vész-helyreállítási beállítása
 
-Az oktatóanyag bemutatja, hogyan állíthat be vész-helyreállítási Azure a helyszíni VMware virtuális gép futó Windows. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag bemutatja, hogyan állíthat be az Azure-bA vész-helyreállítási helyszíni VMware virtuális gépek Windows rendszerű. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A Site Recovery Recovery Services-tároló létrehozása
-> * Állítsa be a forrás és cél replikációs környezetekben
+> * Adja meg a forrásként és a célkiszolgálón.
+> * A forrás replikációs környezet beállítása, beleértve a helyszíni Site Recovery-összetevőkhöz, és a cél replikálási környezetet.
 > * Replikációs házirend létrehozása
 > * A virtuális gépek replikálásának engedélyezése
 
@@ -35,37 +35,28 @@ Ez az egy sorozat harmadik oktatóanyaga. Ez az oktatóanyag feltételezi, hogy 
 
 Mielőtt elkezdené, érdemes [tekintse át a architektúra](concepts-vmware-to-azure-architecture.md) vész-helyreállítási forgatókönyv esetében.
 
-## <a name="configure-vmware-account-permissions"></a>VMware-fiók engedélyek konfigurálása
 
-1. Hozzon létre egy szerepkört a vCenter szinten. Nevezze el a szerepkör a **Azure_Site_Recovery**.
-2. A következő engedélyek hozzárendelése a **Azure_Site_Recovery** szerepkör.
+## <a name="select-a-replication-goal"></a>Replikációs cél
 
-   **Tevékenység** | **Szerepkör-engedélyek** | **Részletek**
-   --- | --- | ---
-   **Virtuális gép felderítése** | Adatközpont objektum –> propagálása gyermekobjektum, a szerepkör = csak olvasható | Legalább egy írásvédett felhasználó.<br/><br/> Felhasználói datacenter szinten hozzárendelt, és rendelkezik hozzáféréssel az objektumokhoz az adatközpontban.<br/><br/> A hozzáférés korlátozása érdekében rendelje hozzá a **nem lehet hozzáférni** szerepkört a **gyermekre propagálása** objektum, a gyermekobjektumokra (vSphere-gazdagép, datastores, virtuális gépek és hálózatok).
-   **A teljes replikáció, a feladatátvétel, a feladat-visszavétel** |  Adatközpont objektum –> propagálása gyermekobjektum, a szerepkör = Azure_Site_Recovery<br/><br/> Datastore foglaljon le terület ->, keresse meg az adattároló, alacsony szintű fájlműveletek, távolítsa el a fájlt, frissítse a virtuális géphez tartozó fájlokat<br/><br/> Hálózat -> hálózat hozzárendelése<br/><br/> Erőforrás -> rendelje hozzá a virtuális gép erőforráskészlethez, energiaforrással rendelkező ki a virtuális gép áttelepítése, energiaforrással rendelkező, a virtuális gép áttelepítése<br/><br/> Feladatok -> hozzon létre feladat, a frissítési feladat<br/><br/> Virtuális gép konfigurációja -><br/><br/> Virtuálisgép -> kommunikáció -> válasz kérdést, az eszköz kapcsolat, a CD media konfigurálásához, a konfigurálásához a hajlékonylemezes adathordozót, kapcsolja ki, a bekapcsolás, VMware-eszközök telepítése<br/><br/> Virtuálisgép -> leltár -> létrehozási, regisztrálása, unregister<br/><br/> Virtuálisgép -> kiépítés engedélyezése virtuális gép letöltési ->, hogy a virtuálisgép-fájlok feltöltése<br/><br/> Virtuális gép pillanatkép ->-Remove pillanatképek > | Felhasználói datacenter szinten hozzárendelt, és rendelkezik hozzáféréssel az objektumokhoz az adatközpontban.<br/><br/> A hozzáférés korlátozása érdekében rendelje hozzá a **nem lehet hozzáférni** szerepkört a **gyermekre propagálása** objektum, a gyermekobjektumokra (vSphere-gazdagép, datastores, virtuális gépek és hálózatok).
-
-3. Felhasználó létrehozása a vCenter-kiszolgáló vagy vSphere-gazdagép. A szerepkör hozzárendeléséhez a felhasználóhoz.
-
-## <a name="specify-what-you-want-to-replicate"></a>Adja meg a replikálni kívánt
-
-A mobilitási szolgáltatás minden replikálni kívánt virtuális gép telepítve kell lennie. A Site Recovery automatikusan telepíti ezt a szolgáltatást, ha engedélyezi a virtuális gép replikálása. Automatikus telepítés elő kell készíteni egy Site Recovery eléréséhez a virtuális gép által használt fiók.
-
-A tartományi vagy helyi fiók is használhatja. Linux virtuális gépekhez a fióknak kell lennie a forráskiszolgálón Linux legfelső szintű. Windows virtuális gépek, ha nem használ egy olyan tartományi fiók, tiltsa le a távoli felhasználói hozzáférés-vezérlés a helyi számítógépen:
-
-  - Az a registery alatt **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**, adja hozzá a DWORD bejegyzést **LocalAccountTokenFilterPolicy** majd az értékét állítsa 1.
+1. A **Recovery Services-tárolók**, kattintson a tároló nevére **ContosoVMVault**.
+2. A **bevezetés**, kattintson a helyreállítás. Kattintson a **infrastruktúra előkészítése**.
+3. A **védelmi cél** > **hol vannak a található gép**, jelölje be **helyszíni**.
+4. A ** hol szeretné replikálni a gépeket, jelölje ki **az Azure-bA**.
+5. A **a virtuális gép**, jelölje be **Igen, amelyen a VMware vSphere Hipervizorra**. Ezután kattintson az **OK** gombra.
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
-A Site Recovery az egységes telepítő letöltése, a konfigurációs kiszolgálót állít be, és regisztrálása a tárolóban, és virtuális gépek felderítése a forráskörnyezet beállítása áll.
+Állítsa be a forrás környezetében, töltse le a Site Recovery az egységes telepítő fájlját. Futtatja a telepítőt a helyi Site Recovery-összetevők telepítéséhez, VMware-kiszolgáló regisztrálása a tárolóban és a helyszíni virtuális gépek felderítése.
 
-A konfigurációs kiszolgáló az egyetlen helyszíni VMware virtuális gép üzemeltetésére a Site Recovery-összetevőket. Ez a virtuális gép fut, a konfigurációs kiszolgáló, a folyamatkiszolgáló és a fő célkiszolgálón.
+### <a name="verify-on-premises-site-recovery-requirements"></a>A helyszíni Site Recovery követelményeinek ellenőrzése
+
+Egyetlen, magas rendelkezésre állású, a helyszíni VMware virtuális gép gazdagép helyszíni Site Recovery összetevők kell. Összetevők közé tartoznak a konfigurációs kiszolgáló, a folyamatkiszolgáló és a fő célkiszolgálón.
 
 - A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.
-- A folyamatkiszolgáló egy replikációs átjáróként működik. Fogadja a replikációs adatokat, gyorsítótárazással, tömörítéssel és titkosítással optimalizálja őket, majd továbbítja az Azure Storage-nak. Szeretne replikálni, virtuális gépeken is telepíti a mobilitási szolgáltatást a folyamatkiszolgáló és a virtuális gépek automatikus felderítését végzi, a helyszíni VMware-kiszolgálók.
+- A folyamatkiszolgáló egy replikációs átjáróként működik. Fogadja a replikációs adatokat, gyorsítótárazással, tömörítéssel és titkosítással optimalizálja őket, majd továbbítja az Azure Storage-nak. Szeretne replikálni, virtuális gépeken is telepíti a mobilitási szolgáltatást a folyamatkiszolgáló és a helyszíni VMware virtuális gépek automatikus felderítést hajt végre.
 - A fő célkiszolgáló az Azure-ból a feladat-visszavétel során kezeli a replikációs adatokat.
 
-A konfigurációs kiszolgáló virtuális gép legyen magas rendelkezésre állású VMware virtuális gép, amely megfelel az alábbi követelményeknek:
+A virtuális gép az alábbi követelményeknek kell megfelelnie.
 
 | **Követelmény** | **Részletek** |
 |-----------------|-------------|
@@ -82,30 +73,25 @@ A konfigurációs kiszolgáló virtuális gép legyen magas rendelkezésre áll�
 | IP-cím típusa | Statikus |
 | Portok | 443 (vezérlőcsatorna-vezénylés)<br/>9443 (Adatátvitel)|
 
-A konfigurációs kiszolgáló virtuális gép győződjön meg arról, hogy a rendszer órája szinkronizálva van-e a kiszolgálót.
-Idő 15 percen belül kell szinkronizálni. Ha a időeltérése nagyobb, mint 15 perc, a telepítés meghiúsul.
+Továbbá: 
+- Győződjön meg arról, hogy a virtuális Gépen a rendszeróra szinkronizálva van-e a kiszolgálót. Idő 15 percen belül kell szinkronizálni. Ha az értéke nagyobb, a telepítés meghiúsul.
+a telepítés meghiúsul.
+- Győződjön meg arról, hogy a konfigurációs kiszolgáló VM hozzáférhet az URL-címek:
 
-Győződjön meg arról, hogy a konfigurációs kiszolgáló hozzáférhet az URL-címek:
-
-   [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
+    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
     
-    - Bármely IP-címeken alapuló tűzfalszabályok szabályokat engedélyezni kell az Azure-kommunikációt.
-
-- Engedélyezze az [Azure-adatközpont IP-tartományait](https://www.microsoft.com/download/confirmation.aspx?id=41653) és a HTTPS-portot (443).
+- Győződjön meg arról, hogy IP-címeken alapuló tűzfalszabályok szabályok engedélyezik-e a kommunikációt az Azure-bA.
+    - Engedélyezi a [Azure datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653)port 443-as (HTTPS) és port 9443 (adatreplikáció).
     - Az IP-címtartományok az előfizetés az Azure-régió, valamint a (hozzáférés-vezérlés és identitás kezelésre szolgáló) USA nyugati régiója engedélyezése.
 
-Bármely IP-címeken alapuló tűzfalszabályok szabályok lehetővé kell tennie a kommunikációs [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653), és a 443-as (HTTPS) és 9443 (adatreplikáció). Győződjön meg arról, hogy az IP-címtartományok az előfizetés az Azure-régió, valamint a (hozzáférés-vezérlés és az Identitáskezeléshez használt) USA nyugati régiója.
 
-### <a name="download-the-site-recovery-unified-setup"></a>Töltse le a Site Recovery egyesített telepítő
+### <a name="download-the-site-recovery-unified-setup-file"></a>Töltse le a Site Recovery egyesített telepítő
 
-1. Nyissa meg a [Azure-portálon](https://portal.azure.com) , majd kattintson a **összes erőforrás**.
-2. Kattintson a helyreállítási szolgáltatás tárolójából nevű a **ContosoVMVault**.
-3. Kattintson a **Site Recovery** > **infrastruktúra előkészítése** > **védelmi cél**.
-4. Válassza ki **helyszíni** hol találhatók a a gépeket, a **az Azure-bA** , ha meg szeretné replikálni a gépeket, és **Igen, amelyen a VMware vSphere Hipervizorra**. Kattintson a **OK**.
-5. A Prepare forrás ablaktáblán kattintson **+ konfigurációs kiszolgáló**.
-6. A **kiszolgáló hozzáadása**, ellenőrizze, hogy **konfigurációs kiszolgáló** megjelenik **kiszolgálótípus**.
-7. Töltse le a Site Recovery az egységes telepítő telepítőfájlját.
-8. Töltse le a tárolóregisztrációs kulcsot. Ez szükséges az egységes telepítő futtatásakor. A kulcs a generálásától számított öt napig érvényes.
+1. A tárolóban lévő > **infrastruktúra előkészítése**, kattintson a **forrás**.
+1. A **forrás előkészítése**, kattintson a **+ konfigurációs kiszolgáló**.
+2. A **kiszolgáló hozzáadása**, ellenőrizze, hogy **konfigurációs kiszolgáló** megjelenik **kiszolgálótípus**.
+3. Töltse le a Site Recovery az egységes telepítő telepítőfájlját.
+4. Töltse le a tárolóregisztrációs kulcsot. Ez szükséges az egységes telepítő futtatásakor. A kulcs a generálásától számított öt napig érvényes.
 
    ![A forrás beállítása](./media/tutorial-vmware-to-azure/source-settings.png)
 
@@ -146,9 +132,11 @@ Bármely IP-címeken alapuló tűzfalszabályok szabályok lehetővé kell tenni
 
 ### <a name="configure-automatic-discovery"></a>Automatikus felderítés konfigurálása
 
-Virtuális gépek felderítése, a konfigurációs kiszolgáló kapcsolódnia kell a helyszíni VMware-kiszolgálók. Ez az oktatóanyag céljából vegye fel a vCenter-kiszolgáló vagy vSphere-gazdagép, egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik a kiszolgálón.
+Virtuális gépek felderítése, a konfigurációs kiszolgáló kapcsolódnia kell a helyszíni VMware-kiszolgálók. Ez az oktatóanyag céljából vegye fel a vCenter-kiszolgáló vagy vSphere-gazdagép, egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik a kiszolgálón. Ehhez a fiókhoz létrehozott a [az oktatóanyag előző](tutorial-prepare-on-premises-vmware.md). 
 
-1. A konfigurációs kiszolgálón indítsa el **CSPSConfigtool.exe**. A parancsikonja elérhető az asztalon, az alkalmazás pedig a *telepítési hely*\home\svsystems\bin mappában található.
+Vegye fel a fiókot:
+
+1. A virtuális gép konfigurációs kiszolgálón indítsa el a **CSPSConfigtool.exe**. A parancsikonja elérhető az asztalon, az alkalmazás pedig a *telepítési hely*\home\svsystems\bin mappában található.
 
 2. Kattintson a **Fiókok kezelése** > **Fiók hozzáadása** elemre.
 
@@ -158,12 +146,12 @@ Virtuális gépek felderítése, a konfigurációs kiszolgáló kapcsolódnia ke
 
    ![Részletek](./media/tutorial-vmware-to-azure/credentials2.png)
 
-Kiszolgáló hozzáadása:
+A VMware-kiszolgáló hozzáadása:
 
 1. Nyissa meg a [Azure-portálon](https://portal.azure.com) , majd kattintson a **összes erőforrás**.
 2. Kattintson a helyreállítási szolgáltatás tárolójából nevű a **ContosoVMVault**.
 3. Kattintson a **helyreállítási hely** > **infrastruktúra előkészítése** > **forrás**
-4. Válassza ki **+ vCenter** egy vCenter-kiszolgáló vagy vSphere ESXi gazdagéphez való csatlakozásra.
+4. Válassza ki **+ vCenter**, egy vCenter-kiszolgáló vagy vSphere ESXi gazdagéphez való csatlakozásra.
 5. A **vCenter hozzáadása**, adja meg a kiszolgáló rövid nevét. Ezt követően adja meg az IP-cím vagy teljes Tartománynevét.
 6. Hagyja a értékre a 443-as portot, kivéve, ha a VMware-kiszolgálók a kérelmeket egy másik port figyelésére.
 7. Válassza ki a kiszolgálóhoz való csatlakozáshoz használandó fiókot. Kattintson az **OK** gombra.
@@ -181,7 +169,7 @@ Válassza ki, és ellenőrizze a tároló erőforrásait.
 2. Adja meg-e a cél telepítési modell a Resource Manager-alapú, vagy a klasszikus.
 3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal.
 
-   ![cél](./media/tutorial-vmware-to-azure/storage-network.png)
+   ![Cél](./media/tutorial-vmware-to-azure/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 

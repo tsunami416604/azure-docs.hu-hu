@@ -15,17 +15,19 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81010d91ac7fe8fa7149c52ed56af304cf4e83d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b721f66ef4d453b5c5f0faf40f5eb2b8913a848
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="partitioning-in-azure-cosmos-db-using-the-documentdb-api"></a>Az Azure Cosmos Adatbázisba a DocumentDB API használatával particionálás
+# <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Az Azure Cosmos-Adatbázisba az SQL API-val particionálás
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 [A Microsoft Azure Cosmos DB](../cosmos-db/introduction.md) egy globális elosztott, több modellre adatbázis szolgáltatás célja, hogy gyors és kiszámítható teljesítmény és méretezhetőség zökkenőmentesen együtt az alkalmazás eléréséhez, növekedésével azt. 
 
-Ez a cikk áttekintést Cosmos DB tároló DocumentDB API-val particionálás használata. Lásd: [particionálás és horizontális skálázás](../cosmos-db/partition-data.md) fogalmakat és ajánlott eljárások az Azure Cosmos DB API-k a particionálás áttekintését. 
+Ez a cikk áttekintést Cosmos DB tároló SQL API-val particionálás használata. Lásd: [particionálás és horizontális skálázás](../cosmos-db/partition-data.md) fogalmakat és ajánlott eljárások az Azure Cosmos DB API-k a particionálás áttekintését. 
 
 Első lépésként kóddal, töltse le a projektet a [Github](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark). 
 
@@ -44,7 +46,7 @@ Első lépésként kóddal, töltse le a projektet a [Azure Cosmos DB teljesítm
 
 ## <a name="partition-keys"></a>Partíciós kulcsok
 
-A DocumentDB API-t a partíciós kulcs definíciójában egy JSON-útvonal formájában kell megadni. Az alábbi táblázat példákat partíció fontos definíciókat és a megfelelő értékeket. A partíciós kulcs van megadva egy elérési utat, mint pl. `/department` jelenti. a tulajdonság részleg. 
+Az SQL API-t a partíciós kulcs definíciójában egy JSON-útvonal formájában kell megadni. Az alábbi táblázat példákat partíció fontos definíciókat és a megfelelő értékeket. A partíciós kulcs van megadva egy elérési utat, mint pl. `/department` jelenti. a tulajdonság részleg. 
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -106,7 +108,7 @@ await client.CreateDocumentCollectionAsync(
 Ez a módszer lehetővé teszi a REST API hívása Cosmos DB, és a szolgáltatás kiépíti a kért átviteli sebesség alapján létrehozott partícióknak számos. A teljesítmény kell fejlődnek tudja módosítani az átviteli sebesség a tároló. 
 
 ### <a name="reading-and-writing-items"></a>Olvasott és írt elemek
-Most tegyük beszúrni Cosmos DB adatokat. Íme egy minta osztály, amely tartalmazza egy eszközt, olvasása, és egy tárolóba olvasása új eszköz beszúrása Documentclient hívásakor. Íme egy kihasználva a DocumentDB API:
+Most tegyük beszúrni Cosmos DB adatokat. Íme egy minta osztály, amely tartalmazza egy eszközt, olvasása, és egy tárolóba olvasása új eszköz beszúrása Documentclient hívásakor. Ez az az SQL API-t, ami például:
 
 ```csharp
 public class DeviceReading
@@ -223,7 +225,7 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
 A következő szakaszban úgy tekintünk, hogyan viheti át a particionált tárolók egypartíciós tárolókból.
 
 ## <a name="next-steps"></a>Következő lépések
-Ez a cikk azt megadott használata Azure Cosmos DB tároló DocumentDB API-val particionálás áttekintése. Lásd még: [particionálás és horizontális skálázás](../cosmos-db/partition-data.md) fogalmakat és ajánlott eljárások az Azure Cosmos DB API-k a particionálás áttekintését. 
+Ebben a cikkben azt használata Azure Cosmos DB tároló SQL API-val particionálás áttekintését biztosítja. Lásd még: [particionálás és horizontális skálázás](../cosmos-db/partition-data.md) fogalmakat és ajánlott eljárások az Azure Cosmos DB API-k a particionálás áttekintését. 
 
 * Hajtsa végre a méretezés és teljesítmény Azure Cosmos DB tesztelték. Lásd: [teljesítmény- és Mérettesztelés az Azure Cosmos DB](performance-testing.md) egy minta.
 * Ismerkedés a kódolási a [SDK-k](documentdb-sdk-dotnet.md) vagy a [REST API-n](/rest/api/documentdb/)

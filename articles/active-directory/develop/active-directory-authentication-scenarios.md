@@ -4,7 +4,7 @@ description: "Az öt leggyakoribb hitelesítési forgatókönyvek az Azure Activ
 services: active-directory
 documentationcenter: dev-center-name
 author: skwan
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
-ms.openlocfilehash: 2f9410bdaa037f1839cf7c12c3532b51be669ed5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32077c1e9415dd8be7064a2377ee806ae21d1390
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Hitelesítési forgatókönyvek az Azure AD-hez
 Azure Active Directory (Azure AD) egyszerűbbé teszi a fejlesztők számára hitelesítési megadásával identitás szolgáltatás, például az OAuth 2.0 és az OpenID Connect szabványos protokollt támogat, valamint nyitott forrásként tárak segítségével gyorsan elkezdésére különböző platformokon. Ez a dokumentum segít megérteni a különböző forgatókönyvek az Azure AD által támogatott, és bemutatja, hogyan lásson. Ez a következő részből áll:
@@ -81,7 +81,7 @@ Az Azure AD által kiadott biztonsági jogkivonatokat jogcímeket vagy helyessé
 | Kiállító |Az STS, amely a token, valamint az Azure AD-bérlő kibocsátott azonosítja. |
 | Vezetéknév |Az Azure AD-készlet biztosít a felhasználó vezetékneve. |
 | Név |Emberi olvasható érték, amely azonosítja a token tárgya biztosít. |
-| Objektum azonosítója |Az Azure ad-ben a tulajdonos nem módosítható, egyedi azonosítót tartalmaz. |
+| Objektumazonosító |Az Azure ad-ben a tulajdonos nem módosítható, egyedi azonosítót tartalmaz. |
 | Szerepkörök |Az Azure AD alkalmazás-szerepkörök, amelyek a felhasználó számára engedélyezett rövid nevét tartalmazza. |
 | Hatókör |Azt jelzi, hogy az ügyfélalkalmazás számára megadott engedélyeket. |
 | Tárgy |Azt jelzi, hogy a rendszerbiztonsági tag, amelyekről a token állításokat információkat. |

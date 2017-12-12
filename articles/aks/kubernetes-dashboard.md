@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 75ee9cc7c4b40e9a724c8ce98d770a18ae654096
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: ca828dab7bdb47e41596be2717598cfe828953ca
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Kubernetes irányítópult Azure tároló szolgáltatás (AKS)
 
-Az Azure CLI segítségével a Kubernetes irányítópult elindításához. Ez a dokumentum végigvezeti a Kubernetes irányítópult kezdődően az Azure parancssori felület, és néhány alapvető irányítópult művelet is végigvezeti. További információ a Kubernetes irányítópult lásd [Kubernetes webes felhasználói felületének irányítópultja](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/).
+Az Azure CLI segítségével a Kubernetes irányítópult elindításához. Ez a dokumentum végigvezeti a Kubernetes irányítópult kezdődően az Azure parancssori felület, és néhány alapvető irányítópult művelet is végigvezeti. További információ a Kubernetes irányítópult lásd [Kubernetes webes felhasználói felületének irányítópultja][kubernetes-dashboard].
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozott egy AKS-fürtöt, és kiépített egy kubectl-kapcsolatot a fürttel. Ha ezeket még létre kell hoznia olvassa el az [AKS gyors útmutatóját](./kubernetes-walkthrough.md).
+A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozott egy AKS-fürtöt, és kiépített egy kubectl-kapcsolatot a fürttel. Ha ezek az elemek megjelenítéséhez a [AKS gyors üzembe helyezés][aks-quickstart].
 
-Emellett az Azure CLI 2.0.21-es vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Emellett az Azure CLI 2.0.21-es vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha szeretné telepíteni vagy frissíteni, lásd: [Azure CLI telepítése][install-azure-cli].
 
 ## <a name="start-kubernetes-dashboard"></a>Indítsa el a Kubernetes irányítópult
 
@@ -76,4 +76,11 @@ Válassza ki **frissítés** Ha készen áll.
 A Kubernetes irányítópulttal kapcsolatos további információkért a Kubernetes dokumentációjában talál.
 
 > [!div class="nextstepaction"]
-> [Kubernetes webes felhasználói felületének irányítópultja](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+> [Kubernetes webes felhasználói felületének irányítópultja][kubernetes-dashboard]
+
+<!-- LINKS - external -->
+[kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+
+<!-- LINKS - internal -->
+[aks-quickstart]: ./kubernetes-walkthrough.md
+[install-azure-cli]: /cli/azure/install-azure-cli

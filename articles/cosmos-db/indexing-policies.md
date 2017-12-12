@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/17/2017
 ms.author: arramac
-ms.openlocfilehash: 791446fbd7eb025441f051e2d8f8f2b1e6c47ebe
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 8b990d1887551cbe182fe1c38d2cfd02f3af5e78
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Hogyan működik az Azure Cosmos DB index adatokat?
 
@@ -183,7 +183,7 @@ Az alábbiakban a támogatott index különböző és példákat a lekérdezése
 | Index típusa | Leírás/használati eset                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Kivonat       | Kivonatoló keresztül/prop /? (vagy /) segítségével hatékonyan tudja szolgálni az alábbi lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Kivonatoló keresztül/tulajdonságai / [] /? (és / vagy/tulajdonságai /) segítségével hatékonyan tudja szolgálni az alábbi lekérdezéseket:<br><br>A gyűjtemény c ILLESZTÉSI címke IN c.props címke kiválasztása WHERE címke = 5                                                                                                                       |
-| Tartomány      | Tartomány/prop/keresztül? (vagy /) segítségével hatékonyan tudja szolgálni az alábbi lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop                                                                                                                                                                                                              |
+| tartomány      | Tartomány/prop/keresztül? (vagy /) segítségével hatékonyan tudja szolgálni az alábbi lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop                                                                                                                                                                                                              |
 | Térbeli     | Tartomány/prop/keresztül? (vagy /) segítségével hatékonyan tudja szolgálni az alábbi lekérdezéseket:<br><br>Válassza ki a gyűjtemény c<br><br>HOL ST_DISTANCE (c.prop, {"type": "Terjesztésipont-", "koordináták": [0.0, 10.0]}) < 40<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN(c.prop, {"type": "Polygon",...}) – a pont is engedélyezve van az indexelő<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN({"type": "Point",...}, c.prop)--a sokszög engedélyezve van az indexelő              |
 
 Alapértelmezés szerint hibát ad vissza, mint a tartomány operátorok tartalmazó lekérdezések a > =, ha nincs (a bármely pontosság) tartomány index ahhoz, hogy jelezze, hogy a vizsgálatok akkor lehet szükség, a lekérdezés kiszolgálásához. Az x-ms-documentdb-enable-vizsgálat fejlécet a REST API-t vagy a .NET SDK használatával EnableScanInQuery beállítást tartomány index nélkül lekérdezések végezheti el. Ha nincs más szűrők a lekérdezésben Azure Cosmos DB az index használatával szűrést, akkor nem hibaüzenetet küld.
@@ -229,7 +229,7 @@ Kiválaszthatja, hogy kívánja-e a gyűjtemény összes dokumentumot indexelés
 
 Az automatikus indexeléshez ki van kapcsolva, az index csak bizonyos dokumentumokhoz szelektív továbbra is hozzáadhat. Ezzel ellentétben automatikus az indexelő hagyhatja, és szelektív dönt, hogy csak bizonyos dokumentumokhoz kizárása. Be-és kikapcsolása konfigurációk indexelő akkor hasznos, ha a dokumentumok, amelyeket le kell kérdezni csak egy részhalmazát rendelkezik.
 
-Például a következő példa bemutatja, hogyan dokumentum explicit módon tartalmazza a [DocumentDB API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet) és a [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) tulajdonság.
+Például a következő példa bemutatja, hogyan dokumentum explicit módon tartalmazza a [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet) és a [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) tulajdonság.
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a Document from indexing,
@@ -315,7 +315,7 @@ Ha szeretné módosítja az indexelő házirend az Azure Cosmos DB gyűjteménye
 > 
 
 ## <a name="performance-tuning"></a>Teljesítmény-finomhangolás
-A DocumentDB API-k adjon meg teljesítménymutatók, például a használt index tároló kapcsolatos információkat, és az átviteli sebesség költség (kérelemegység) minden műveletéhez. Ez az információ segítségével összehasonlítása különböző indexelési házirendek és a teljesítményhangolás.
+Az SQL API-k adjon meg teljesítménymutatók, például a használt index tároló kapcsolatos információkat, és az átviteli sebesség költség (kérelemegység) minden műveletéhez. Ez az információ segítségével összehasonlítása különböző indexelési házirendek és a teljesítményhangolás.
 
 A tárolási kvótát és használati gyűjtemény ellenőrzéséhez futtassa HEAD vagy GET kérelmet a gyűjtemény-erőforráshoz, és vizsgálja meg az x-ms-kérelem-kvóta és az x-ms-kérelem-használati fejlécekkel együtt. A .NET SDK-ban a [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) és [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságok [ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) tartalmaznia kell a megfelelő értékeket.
 
@@ -409,7 +409,7 @@ Gyakorlati összehasonlítása Íme egy példa egyéni indexelési házirendet a
 ## <a name="next-steps"></a>Következő lépések
 Kövesse az alábbi hivatkozásokat követve index házirend felügyeleti mintákat és Azure Cosmos DB lekérdezési nyelv tájékozódhat.
 
-1. [A DocumentDB API .NET Indexkezelés mintakódok](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
-2. [A DocumentDB API REST adatgyűjtési műveletek](https://msdn.microsoft.com/library/azure/dn782195.aspx)
+1. [Az SQL API .NET Indexkezelés mintakódok](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
+2. [Az SQL API REST adatgyűjtési műveletek](https://msdn.microsoft.com/library/azure/dn782195.aspx)
 3. [Az SQL lekérdezés](documentdb-sql-query.md)
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: 044de27c75da93c95609110d2b73336c42f746fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8bae22b28b7de2f2579f310c8bd4b0e43885a0d
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: Kivételkezelést és a hibanaplózás a logic Apps alkalmazások
 
@@ -45,7 +45,7 @@ A projekt két fő követelmény rendelkezett:
 
 ## <a name="how-we-solved-the-problem"></a>Hogyan azt megoldotta a problémát
 
-Választottuk [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") , a napló és a hiba (Cosmos DB-dokumentumokként rekordok jelenti) rekordok tára. Mivel Azure Logic Apps összes szabványos sablonját, azt nem kell létrehozni egy egyéni séma. API-alkalmazás sikerült létrehozhatunk **beszúrása** és **lekérdezés** hiba és a naplófájlokon is rekordok. Azt is meghatározhatja a séma minden, az API-alkalmazásban.  
+Választottuk [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") , a napló és a hiba (Cosmos DB-dokumentumokként rekordok jelenti) rekordok tára. Mivel Azure Logic Apps összes szabványos sablonját, azt nem kell létrehozni egy egyéni séma. API-alkalmazás sikerült létrehozhatunk **beszúrása** és **lekérdezés** hiba és a naplófájlokon is rekordok. Azt is meghatározhatja a séma minden, az API-alkalmazásban.  
 
 Egy további követelmény a rekordok kiüríteni egy bizonyos dátum után volt. Cosmos DB nevű tulajdonsággal rendelkezik [élettartama](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "élettartama") (TTL), amely engedélyezett, hogy állítsa be a **élettartama** rekordok vagy gyűjtemény értékét. Ez a funkció Cosmos DB rekord manuálisan törölnie kell számolni.
 
@@ -58,7 +58,7 @@ Az első lépés a logikai alkalmazás létrehozása, és nyissa meg az alkalmaz
 
 A Dynamics CRM Online kívül hamarosan naplórekord fogjuk, kezdjük, míg a lap tetején. Igazolnia kell használnia egy **kérelem** eseményindítót, mert a szülő logikai alkalmazás elindítja a gyermek.
 
-### <a name="logic-app-trigger"></a>Logic app eseményindító
+### <a name="logic-app-trigger"></a>Logikaialkalmazás-trigger
 
 Használjuk a **kérelem** indítható el, mert a következő példában látható módon:
 
@@ -107,7 +107,7 @@ A forrás (kérelem) a beteg rekord azt kell jelentkeznie a Dynamics CRM Online 
    Az eseményindító CRM érkező nyújt nekünk a a **CRM PatentId**, **rekordtípus**, **új vagy frissített rekord** (új vagy frissíteni a logikai értéket), és **SalesforceId**. A **SalesforceId** null is lehet, mert csak a frissítéshez használja.
    A CRM-bejegyzés azt lekérése a CRM használatával **PatientID** és a **rekordtípus**.
 
-2. A következő igazolnia kell a DocumentDB API-alkalmazás hozzáadása **InsertLogEntry** művelet Logic App Designer itt látható módon.
+2. Ezt követően kell az Azure Cosmos DB SQL API-alkalmazás hozzáadása **InsertLogEntry** művelet Logic App Designer itt látható módon.
 
    **Naplóbejegyzés beszúrása**
 
@@ -119,7 +119,7 @@ A forrás (kérelem) a beteg rekord azt kell jelentkeznie a Dynamics CRM Online 
 
    **Ellenőrizze a rekord hiba létrehozása**
 
-   ![Az állapot](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![Feltétel](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Logic app forráskód
 
@@ -400,7 +400,7 @@ Miután lekérni a választ, adja meg a választ a szülő logikai alkalmazást.
 
 ## <a name="cosmos-db-repository-and-portal"></a>Cosmos DB tárház és -portál
 
-A megoldás hozzáadott képességei a [Cosmos DB](https://azure.microsoft.com/services/documentdb).
+A megoldás hozzáadott képességei a [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db).
 
 ### <a name="error-management-portal"></a>Hiba történt a felügyeleti portálon
 
@@ -430,14 +430,14 @@ A naplók megtekintéséhez is létrehoztunk egy MVC webalkalmazás. Az alábbia
 
 A nyílt forráskódú Azure Logic Apps kivétel felügyeleti API app funkciókat biztosítja a itt leírtak – két vezérlők:
 
-* **ErrorController** egy hibarekordot (dokumentumok) szúr be egy DocumentDB-gyűjteményt.
-* **LogController** egy naplóbejegyzést képviselnek (dokumentumok) szúr be egy DocumentDB-gyűjteményt.
+* **ErrorController** szúr be egy hibarekordot (dokumentumok) Azure Cosmos DB gyűjteményben.
+* **LogController** szúr be egy naplóbejegyzést képviselnek (dokumentumok) Azure Cosmos DB gyűjteményben.
 
 > [!TIP]
-> Mindkét vezérlők használata `async Task<dynamic>` műveletek, így a műveletek megoldásához futásidőben, így a DocumentDB séma létrehozhatjuk törzsében. a művelet. 
+> Mindkét vezérlők használata `async Task<dynamic>` műveletek, így a műveletek megoldásához futásidőben, így vannak, létrehozható az Azure Cosmos megadott adatbázissémát törzsében. a műveletet. 
 > 
 
-Minden dokumentumot a documentdb egy egyedi azonosítóval kell rendelkeznie. Használjuk `PatientId` és egy Unix timestamp értéket (kétirányú) konvertált időbélyeg hozzáadása. Az érték, a tört érték eltávolítása csonkolja azt.
+Minden Azure Cosmos DB a dokumentum egy egyedi azonosítóval kell rendelkeznie. Használjuk `PatientId` és egy Unix timestamp értéket (kétirányú) konvertált időbélyeg hozzáadása. Az érték, a tört érték eltávolítása csonkolja azt.
 
 Megtekintheti a hiba vezérlőhöz API forráskódját [a Githubról](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
 
@@ -479,7 +479,7 @@ Az előző példakódban kifejezést keresi a *Create_NewPatientRecord* állapot
 ## <a name="summary"></a>Összefoglalás
 
 * Naplózás és a logikai alkalmazás hibakezelési könnyedén alkalmazni.
-* A DocumentDB a tárház védelemként is alkalmazhatják a napló és a hiba a rekordok (dokumentumok).
+* Azure Cosmos DB a tárház védelemként is alkalmazhatják a napló és a hiba a rekordok (dokumentumok).
 * MVC hozhat létre a napló és a hiba a rekordok megjelenítéséhez a portálon.
 
 ### <a name="source-code"></a>Forráskód

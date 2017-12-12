@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: dc9f354191b9e80ff6a01bd401a874c6998bda79
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ad67efecf9a688ac3e7ccd7cc32576e9a46d1f5
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Az Azure-beli HPC Pack-fürtökben lévő számítási csomópontok számának és elérhetőségének kezelése
 Ha létrehozott egy HPC Pack 2012 R2-fürt az Azure virtuális gépeken, érdemes lehet könnyen hozzáadása, eltávolítása, (kiépíteni) indítása vagy leállítása (deprovision) módjai néhány számítási csomópont virtuális gépek a fürt. Ezek a feladatok elvégzéséhez az átjárócsomóponthoz VM telepített Azure PowerShell-parancsfájlok futtatása. Ezek a parancsfájlok segítségével szabályozhatja, számát és a HPC Pack fürterőforrások rendelkezésre állását, szabályozhatja költségeit.
@@ -59,7 +59,7 @@ Add-HPCIaaSNode.ps1 [-ServiceName] <String> [-ImageName] <String>
 ```
 ### <a name="parameters"></a>Paraméterek
 * **Szolgáltatásnév**: a felhőalapú szolgáltatás, amely új számítási csomópont virtuális gépek neve kerülnek.
-* **ImageName**: Azure virtuális gép lemezképének nevét, amely a klasszikus Azure portálon vagy az Azure PowerShell-parancsmag használatával érhető el **Get-AzureVMImage**. A kép a következő követelményeknek kell megfelelniük:
+* **ImageName**: Azure virtuális gép lemezképének nevét, amely a Azure-portálon vagy az Azure PowerShell-parancsmag használatával érhető el **Get-AzureVMImage**. A kép a következő követelményeknek kell megfelelniük:
   
   1. A Windows operációs rendszert kell telepíteni.
   2. A számítási csomópont szerepkör HPC Pack kell telepíteni.

@@ -1,6 +1,6 @@
 ---
-title: Web App (Node.js) expressz |} Microsoft Docs
-description: "A felhőalapú szolgáltatás oktatóanyag épül, és bemutatja, hogyan használható az Express modul webalkalmazással."
+title: "Hozza létre, és a Node.js Express-alkalmazás telepítése Azure Cloud Services csomag"
+description: "Hozza létre, és a node.js Express.js alkalmazást központilag az Azure Cloud Services csomag"
 services: cloud-services
 documentationcenter: nodejs
 author: craigshoemaker
@@ -14,15 +14,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: aa62438732db9e8df129440e6949858d9a61f65f
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: befca8d95880936e96d1b3618c172f87499627ed
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="build-a-nodejs-web-application-using-express-on-an-azure-cloud-service"></a>Express használata Azure Cloud Service a Node.js-webalkalmazás létrehozása
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Hozza létre és Express használata az Azure Felhőszolgáltatások a Node.js-webalkalmazás telepítése
+
 NODE.js a core runtime a legszükségesebb funkciókat tartalmazza.
-A fejlesztők gyakran használnak a 3. fél modulok nyújt további szolgáltatásokat, a Node.js-alkalmazások fejlesztése során. Ebben az oktatóanyagban létrehoz egy új alkalmazás használja a [Express] [ Express] modult, amely egy MVC keretrendszert biztosít a Node.js webalkalmazás létrehozásához.
+A fejlesztők gyakran használnak a 3. fél modulok nyújt további szolgáltatásokat, a Node.js-alkalmazások fejlesztése során. Ebben az oktatóanyagban létrehoz egy új alkalmazás használja a [Express](https://github.com/expressjs/express) modult, amely egy MVC keretrendszert biztosít a Node.js webalkalmazás létrehozásához.
 
 A kész alkalmazás képernyőfelvételének alatt van:
 

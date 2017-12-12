@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: b360fe9f28eeb9b10c82fce729165b1b572ac3c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 275c0fdfecac558e4f10d36eee71d38528f34679
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-always-on-availability-group-in-azure-virtual-machines-classic"></a>Always On rendelkezésre állási csoport konfigurálása az Azure virtuális gépek (klasszikus)
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Ez az oktatóanyag azt feltételezi, hogy a következő:
 > 
 
 ## <a name="create-the-virtual-network-and-domain-controller-server"></a>A virtuális hálózata és tartománya controller-kiszolgáló létrehozása
-Új Azure próbafiókkal megkezdése. A fiók beállítása után meg kell lennie a kezdőképernyőn a klasszikus Azure portálon.
+Új Azure próbafiókkal megkezdése. A fiók beállítása után meg kell lennie a kezdőképernyőn az Azure portálról.
 
 1. Kattintson a **új** a lap alján a bal oldali sarokban lévő gombra kattint, az alábbi képernyőfelvételen látható módon.
    
@@ -89,7 +89,7 @@ Ez az oktatóanyag azt feltételezi, hogy a következő:
    | Virtuálisgép-konfiguráció |**A FELHŐALAPÚ szolgáltatás** = új felhőalapú szolgáltatás létrehozása<br/>**FELHŐALAPÚ szolgáltatás DNS-név** egy egyedi felhőszolgáltatás neve =<br/>**DNS-név** = egyedi nevét (pl.: ContosoDC123)<br/>**RÉGIÓ/AFFINITÁSCSOPORT/virtuális hálózati** = ContosoNET<br/>**VIRTUÁLIS hálózati ALHÁLÓZAT** = Back(10.10.2.0/24)<br/>**A TÁRFIÓK** = egy automatikusan létrehozott tárfiók használata<br/>**A rendelkezésre ÁLLÁSI csoport** = (nincs) |
    | Virtuális gép beállításai |Alapértelmezések használata |
 
-Miután az új virtuális gépet úgy konfigurál, várja meg a virtuális gép nem provsioned. Ez a folyamat befejezése némi időt vesz igénybe. Ha a **virtuális gép** lapon a klasszikus Azure portálra, a ContosoDC ciklus állapotok a látható **indítása (kiépítés)** való **leállítva**,  **Kezdési**, **fut (kiépítés)**, és végül **futtató**.
+Miután az új virtuális gépet úgy konfigurál, várja meg a virtuális gép nem provsioned. Ez a folyamat befejezése némi időt vesz igénybe. Ha a **virtuális gép** lapon az Azure-portálon a ContosoDC ciklus állapotok a látható **indítása (kiépítés)** való **leállítva**,  **Kezdési**, **fut (kiépítés)**, és végül **futtató**.
 
 A tartományvezérlő kiszolgálóhoz sikeresen most lett kiépítve. A következő, úgy konfigurálja az Active Directory-tartomány a tartományvezérlő kiszolgálóhoz.
 

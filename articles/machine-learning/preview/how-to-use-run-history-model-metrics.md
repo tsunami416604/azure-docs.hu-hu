@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 920155b2e70409fe1c7c3569326cc5a1fa01b222
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 143cbfa66436796e1b61b100def030dde43faac9
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Használjon futtatási előzményei és az Azure Machine Learning-munkaterület modell metrikák
 
@@ -32,7 +32,7 @@ Ez az útmutató Útmutató lépéseit, kell:
 ## <a name="azure-ml-logging-api-overview"></a>Az Azure ML naplózási API – áttekintés
 A [Azure ML-naplózás API](reference-logging-api.md) keresztül érhető el a **azureml.logging** (amely telepítve van az Azure ML-munkaterület.) a Python modul Ez a modul importálása után is használhatja a **get_azureml_logger** metódus példányának létrehozása egy **naplózó** objektum.
 Ezután használhatja a naplózó **napló** a Python-parancsfájl által visszaadott metódus kulcs/érték párok tárolására.
-Jelenleg naplózás modell metrikák skaláris, a szótárban, a listában, dataframe típusok támogatottak látható módon.
+Jelenleg naplózási modell metrikája skaláris és lista típusok támogatottak látható módon.
 
 ```Python
 # create a logger instance in already set up environment 

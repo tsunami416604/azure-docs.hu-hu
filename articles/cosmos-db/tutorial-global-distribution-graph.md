@@ -4,7 +4,7 @@ description: "Útmutató: Azure Cosmos DB globális terjesztési a Graph API-já
 services: cosmos-db
 keywords: "globális terjesztési, graph, gremlin"
 documentationcenter: 
-author: dennyglee
+author: luisbosquez
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: denlee
+ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: eb55bdee60400b4b14f47a6a0b1d0682b267d26f
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 12e1ab5f57d217537ba14183500efb099985ff1e
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-graph-api"></a>How Azure Cosmos DB globális terjesztési a Graph API-jával beállítása
 
@@ -37,7 +37,7 @@ Ez a cikk ismerteti a következő feladatokat:
 
 ## <a name="connecting-to-a-preferred-region-using-the-graph-api-using-the-net-sdk"></a>Csatlakozás előnyben részesített régióba a Graph API a .NET SDK használatával
 
-A Graph API fel van fedve egy bővítmény tárként fölött a DocumentDB SDK-t.
+A Graph API fel van fedve egy bővítmény tárként felett az SQL API-t.
 
 Kihasználása érdekében [globális terjesztési](distribute-data-globally.md), ügyfélalkalmazások is adja meg a dokumentum műveletek végrehajtásához használandó régiók rendezett beállítások listáját. Ezt megteheti a kapcsolat házirend beállításával. Az Azure Cosmos DB-fiók konfigurációja, az aktuális területi rendelkezésre állás és a megadott beállításokat szabályozó lista alapján, a legoptimálisabb végpont választja ki az SDK írási és olvasási műveletek.
 
@@ -87,7 +87,7 @@ Ebben az oktatóanyagban ezt a következők:
 
 > [!div class="checklist"]
 > * Az Azure portál használatával globális terjesztési konfigurálása
-> * A DocumentDB API-k használatával globális terjesztési konfigurálása
+> * Az SQL API-kkal globális terjesztési konfigurálása
 
 Most már folytathatja a következő oktatóanyag megtudhatja, hogyan fejleszthet, helyileg emulátorral Azure Cosmos DB helyi.
 

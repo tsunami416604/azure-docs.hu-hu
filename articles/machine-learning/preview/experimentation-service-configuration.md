@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 26ab8f9ab561cc218f3dcb249741a96d8f14c579
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: bd152cc79c08124a1acab2aefc8652c7d162ea2c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurálása
 
@@ -221,7 +221,8 @@ _**A Python-parancsfájl végrehajtása távoli vm áttekintése:**_
 ## <a name="running-a-script-on-an-hdinsight-cluster"></a>A HDInsight-fürtök parancsprogram futtatása
 HDInsight egy népszerű big data elemzésre szolgáló Apache Spark támogató platform. Munkaterület lehetővé teszi, hogy a big Data típusú adatok használata a HDInsight Spark-fürtjei kísérletezhet. 
 
->![MEGJEGYZÉS] A HDInsight-fürtnek az Azure-blobot kell elsődleges tárolóként használnia. Az Azure Data Lake-tároló használata jelenleg nem támogatott.
+>[!NOTE]
+>A HDInsight-fürt elsődleges tárolóként kell használnia az Azure Blob. Az Azure Data Lake-tároló használata jelenleg nem támogatott.
 
 Számítási cél létrehozásához, és futtassa a konfiguráció a HDInsight Spark-fürtök az alábbi paranccsal:
 
@@ -269,7 +270,8 @@ az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP
 ```
 - A nyilvános kulcsot a ~/.ssh/authorized_keys fájlba a csatolt számítási célszámítógépen munkaterület által generált hozzáfűzése. 
 
-[!IMPORTANT] Jelentkezzen be a számítási célt a számítási tároló létrehozásához használt felhasználónévvel kell. 
+>[!IMPORTANT]
+>Jelentkezzen be a számítási célt a számítási tároló létrehozásához használt felhasználónévvel kell. 
 
 - Mostantól előkészítése és a számítási célt SSH-kulcs alapú hitelesítés használata.
 

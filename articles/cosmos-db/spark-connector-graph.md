@@ -15,11 +15,11 @@ ms.devlang: gremlin
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: khdang
-ms.openlocfilehash: 473cc23c73a721c54bc87c03069f4f3688cde11f
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: d2ea692c5c353586cc2b653e57eca7ccb8c9c7ce
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-perform-graph-analytics-by-using-spark-and-apache-tinkerpop-gremlin"></a>Azure Cosmos DB: Graph elemzés végrehajtása a Spark és Apache TinkerPop Gremlin használatával
 
@@ -176,7 +176,7 @@ Ha az előző lépésben a TinkerPop3 beépített, a folyamat is lekért összes
 
 ## <a name="get-the-azure-cosmos-db-spark-connector"></a>Az Azure Cosmos DB Spark-összekötő beolvasása
 
-1. Az Azure Cosmos DB Spark-összekötő beolvasása `azure-documentdb-spark-0.0.3-SNAPSHOT.jar` és Cosmos DB Java SDK `azure-documentdb-1.10.0.jar` a [Azure Cosmos DB Spark-összekötő a Githubon](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark-0.0.3_2.0.2_2.11).
+1. Az Azure Cosmos DB Spark-összekötő beolvasása `azure-cosmosdb-spark-0.0.3-SNAPSHOT.jar` és Cosmos DB Java SDK `azure-documentdb-1.12.0.jar` a [Azure Cosmos DB Spark-összekötő a Githubon](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark-0.0.3_2.0.2_2.11).
 
 2. Másik lehetőségként hozhat létre, helyileg. A Spark-Gremlin legújabb verzióját a következővel történt 1.6.1-es Spark, és nem kompatibilis a 2.0.2, Spark az Azure Cosmos DB Spark-összekötő jelenleg használt, mert a legújabb TinkerPop3 kód lefordításához, és manuálisan telepíti a JAR-fájlok kivételével. Tegye a következőket:
 

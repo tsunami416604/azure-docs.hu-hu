@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: mimig
-ms.openlocfilehash: d541bb19ba7e5ecb44c9fe91b1e232d4d9c2170e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69501b07369a8d5da15cf9bc7d75f07999bf0999
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>Az Azure Cosmos DB tárolókat átviteli beállítása
 
@@ -57,7 +57,7 @@ A következő táblázat felsorolja a rendelkezésre álló tárolók az átvite
 
 <a id="set-throughput-sdk"></a>
 
-## <a name="to-set-the-throughput-by-using-the-documentdb-api-for-net"></a>Az átviteli sebesség beállítása a .NET-hez a DocumentDB API használatával
+## <a name="to-set-the-throughput-by-using-the-sql-api-for-net"></a>Az átviteli sebesség beállítása a .NET-hez az SQL API használatával
 
 ```C#
 //Fetch the resource to be updated
@@ -81,7 +81,7 @@ await client.ReplaceOfferAsync(offer);
 
 **Hogyan állíthatom be a MongoDB API-jával througput?**
 
-Nincs átviteli sebesség beállításához MongoDB API kiterjesztés nélkül. A javaslat, hogy a DocumentDB API-t használó, ahogy az [az átviteli sebesség beállítása a .NET-hez a DocumentDB API használatával](#set-throughput-sdk).
+Nincs átviteli sebesség beállításához MongoDB API kiterjesztés nélkül. A javaslat, hogy az SQL API-t használó, ahogy az [az átviteli sebesség beállítása a .NET-hez az SQL API használatával](#set-throughput-sdk).
 
 ## <a name="next-steps"></a>Következő lépések
 

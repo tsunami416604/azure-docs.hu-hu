@@ -3,7 +3,7 @@ title: "Azure-identitás megértése |} Microsoft Docs"
 description: "Ismerkedjen meg a Microsoft Azure identitáskezelési megoldás feltételeket, fogalmak és javaslatok csak akkor lehet a legjobb identitás irányítás döntés a szervezete."
 keywords: 
 author: jeffgilb
-manager: femila
+manager: mtillman
 ms.reviewer: jsnow
 ms.author: jeffgilb
 ms.date: 7/17/2017
@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: 4d4e15e1bada54ce06f38187e6a2ea1f8c749dc4
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 4438917db93c37ddbba3e7ee692b2e3c065d2beb
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="understand-azure-identity-solutions"></a>Az Azure identitáskezelési megoldásairól ismertetése
 A Microsoft Azure Active Directory (Azure AD) egy identitás- és hozzáférés kezelési felhőalapú megoldás, amely címtárszolgáltatások, identitás-irányítás és alkalmazáshozzáférés-kezeléshez. Az Azure AD gyorsan [lehetővé teszi az egyszeri bejelentkezés (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) 1, 000 a kereskedelmi és egyéni előre integrált alkalmazások által a [az Azure AD application gallery](https://azure.microsoft.com/marketplace/active-directory/all/). Ezekhez az alkalmazásokhoz számos valószínűleg már használhatja például az Office 365, a Salesforce.com, a mezőbe, a ServiceNow és a Workday.

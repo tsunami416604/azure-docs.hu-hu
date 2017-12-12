@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 96202a4d7e91a221aa655f58f29f2c8e24b86e4e
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 9bcf30fbf1febbd80aa8899253de8cb61f4ae6f8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Hibaelhárítás: Az időnként megszakad az Azure--webhelyek közötti VPN
 
-A probléma, hogy egy új vagy meglévő Microsoft Azure pont-pont VPN-kapcsolat nincs stabil-e, vagy leválik rendszeresen Ön is szembesülhet. Ez a cikk ismerteti lépések segítségével meghatározhatja, és oldja meg a probléma okának elhárítása. 
+A probléma, hogy egy új vagy meglévő Microsoft Azure-webhelyek VPN-kapcsolat nincs stabil-e, vagy leválik rendszeresen Ön is szembesülhet. Ez a cikk ismerteti lépések segítségével meghatározhatja, és oldja meg a probléma okának elhárítása. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
+## <a name="troubleshooting-steps"></a>hibaelhárítási útmutatóját
 
 ### <a name="prerequisite-step"></a>Előfeltétel-ellenőrzési lépés
 

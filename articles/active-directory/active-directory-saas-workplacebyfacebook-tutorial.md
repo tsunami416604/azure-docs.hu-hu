@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 30f2ee64-95d3-44ef-b832-8a0a27e2967c
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 1590a66f215f0c093d24ff602c0ad951ba1e1eea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d8b3046bc242deb90f435498c79eb94420c3909
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Oktatóanyag: Azure Active Directoryval integrált munkahelyi által Facebook-on
 
@@ -57,7 +57,7 @@ Az Azure AD integrálása a munkahely által Facebook konfigurálásához kell h
 
 **Adja hozzá a munkahelyi Facebook által a gyűjteményből, hajtsa végre az alábbi lépéseket:**
 
-1. Az a ** [Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -86,12 +86,12 @@ Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév**
 
 Az Azure AD az egyszeri bejelentkezés a munkahelyi által Facebook tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on) ** – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Újrahitelesítés gyakoriságának beállítása](#configuring-reauthentication-frequency) ** - bekéri a SAML-ellenőrzés a munkahelyi konfigurálásához.
-3. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user) ** – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-4. **[A munkahelyi Facebook teszt felhasználó létrehozása](#creating-a-workplace-by-facebook-test-user) ** - való Britta Simon egy megfelelője a Facebook, a felhasználó az Azure AD-ábrázolását kapcsolódó által munkahelyi.
-5. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user) ** - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-6. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on) ** – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
+2. **[Újrahitelesítés gyakoriságának beállítása](#configuring-reauthentication-frequency)**  - bekéri a SAML-ellenőrzés a munkahelyi konfigurálásához.
+3. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+4. **[A munkahelyi Facebook teszt felhasználó létrehozása](#creating-a-workplace-by-facebook-test-user)**  - való Britta Simon egy megfelelője a Facebook, a felhasználó az Azure AD-ábrázolását kapcsolódó által munkahelyi.
+5. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+6. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 

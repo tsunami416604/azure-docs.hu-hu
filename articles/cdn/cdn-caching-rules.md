@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 8f89ef5a1763d5fc4ad09a9aeae89ccf683138c7
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2a94ba5cb9f026f66bc1f3b379f00b291a2299c9
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="control-azure-content-delivery-network-caching-behavior-with-caching-rules"></a>Vezérlő Azure Content Delivery Network a szabályok gyorsítótárazással gyorsítótárazásának működése
 
@@ -40,13 +40,19 @@ További információ az alapértelmezett viselkedést és a gyorsítótárazás
 Gyorsítótár-CDN hogyan szabályok:
 
 1. Nyissa meg az Azure-portálon, válassza ki a CDN-profilt, majd válasszon ki egy végpontot.
-2. A beállítások a bal oldali ablaktáblában kattintson **gyorsítótár**.
-3. Hozzon létre egy globális gyorsítótárszabályt az alábbiak szerint:
+2. A beállítások a bal oldali ablaktáblában kattintson **szabályok gyorsítótárazás**.
+
+   ![CDN-gyorsítótárazás szabályok gomb](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
+
+1. Hozzon létre egy globális gyorsítótárszabályt az alábbiak szerint:
    1. A **szabályok gyorsítótárazás globális**, beállíthatja **lekérdezési sztringek gyorsítótárazásának** való **lekérdezési karakterláncok figyelmen kívül**.
    2. Állítsa be **gyorsítótárazásának** való **állítja be, ha a hiányzó**.
+       
    3. A **gyorsítótár lejárati időtartam**, adja meg a 10 a **nap** mező.
 
        A globális gyorsítótárszabály érinti a végpont összes kérelem. Ez a szabály eleget tegyen a forrás-gyorsítótár-irányelv fejlécek, ha vannak ilyenek (`Cache-Control` vagy `Expires`); ellenkező esetben, ha nincsenek megadva, a gyorsítótár 10 napos értékre állítja. 
+
+     ![Globális gyorsítótárszabályok](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
 4. Hozzon létre egy egyéni gyorsítótárszabályt az alábbiak szerint:
     1. A **egyéni szabályok gyorsítótárazás**, beállíthatja **feltételének** való **elérési** és **más értékkel egyezik** való `/images/*.jpg`.
@@ -54,7 +60,7 @@ Gyorsítótár-CDN hogyan szabályok:
        
        Az egyéni gyorsítótárszabályt beállítja a gyorsítótárazás időtartama 30 napnyi bármely `.jpg` a képfájlok a `/images` mappában található a végpont. Felülbírálja a `Cache-Control` vagy `Expires` a forráskiszolgáló által küldött HTTP-fejléceket.
 
-  ![Gyorsítótárazás szabályok párbeszédpanel](./media/cdn-caching-rules/cdn-caching-rules-dialog.png)
+    ![Egyéni gyorsítótárszabályok](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 
 > [!NOTE] 
 > A szabály módosítása előtt gyorsítótárba helyezett fájlok karbantartása az eredeti gyorsítótár időtartama beállítás. A gyorsítótár időtartamok alaphelyzetbe állításához kell [a fájl törlése](cdn-purge-endpoint.md). A **Azure CDN Verizon** végpontok, az akár 90 percig is tarthat a gyorsítótárazáshoz szabályok érvénybe léptetéséhez.

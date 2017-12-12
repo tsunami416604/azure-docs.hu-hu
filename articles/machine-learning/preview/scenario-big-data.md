@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: a9d6ebb2ae92b631d4663b1373c684b2e10a9507
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 36de5ed0cfd0e2b41c9725efe69936e0c985e01a
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
 
@@ -108,10 +108,10 @@ Oszlopszám | Mező neve| Típus | Leírás |
 6 | `HTTP1` | Egész szám|  Munkamenet HTTP1 vagy HTTP2 használ
 7 |`ServerType` | Egész szám   |Kiszolgáló típusa
 8 |`SubService_1_Load` | Dupla |   Subservice 1 betöltése
-9 | `SubService_1_Load` | Dupla |  Subservice 2 betöltése
-10 | `SubService_1_Load` | Dupla |     Subservice 3 betöltése
-11 |`SubService_1_Load` | Dupla |  Subservice 4 betöltése
-12 | `SubService_1_Load`| Dupla |      Subservice 5 betöltése
+9 | `SubService_2_Load` | Dupla |  Subservice 2 betöltése
+10 | `SubService_3_Load` | Dupla |     Subservice 3 betöltése
+11 |`SubService_4_Load` | Dupla |  Subservice 4 betöltése
+12 | `SubService_5_Load`| Dupla |      Subservice 5 betöltése
 13 |`SecureBytes_Load`  | Dupla | Biztonságos bájt betöltése
 14 |`TotalLoad` | Dupla | Kiszolgáló teljes terhelése
 15 |`ClientIP` | Karakterlánc|    Ügyfél IP-címe
@@ -327,7 +327,7 @@ Keresse meg a munkaterületet üzemeltető jobb oldalsó sáv a **futtatása** m
 
 ### <a name="operationalize-the-model"></a>Azok a modell
 
-Ebben a szakaszban azok a modell webszolgáltatásként az előző lépésekben létrehozott. Is megismerheti, hogyan használható a webszolgáltatás terhelés előrejelzése. Gép nyelvi operationalization parancssori felületen (CLIs) használja a kód és a függőségek Docker képként csomagot, és közzéteheti a modell indexelése webszolgáltatásként. További információkért lásd: [Ez az Áttekintés](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/operationalization-overview.md).
+Ebben a szakaszban azok a modell webszolgáltatásként az előző lépésekben létrehozott. Is megismerheti, hogyan használható a webszolgáltatás terhelés előrejelzése. Gép nyelvi operationalization parancssori felületen (CLIs) használja a kód és a függőségek Docker képként csomagot, és közzéteheti a modell indexelése webszolgáltatásként.
 
 Futtassa a CLIs használhatja a Machine Learning-munkaterület a parancssorba.  Futtathatja a CLIs Ubuntu Linux követve a [a telepítési útmutató](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/install-on-ubuntu-linux.md). 
 

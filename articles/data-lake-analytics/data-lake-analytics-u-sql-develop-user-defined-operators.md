@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: fdee02fb60b633c26704fc1774dfc3a7825b5e0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e534f96b908d2aa1f4d7c48655509ece8dcf43e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL felhasználói operátorok (udo-k) fejlesztése
 Ismerje meg, hogyan fejleszthet operátorok felhasználói fel adatokat a U-SQL-feladatot.
@@ -130,6 +130,5 @@ Ismerje meg, hogyan fejleszthet operátorok felhasználói fel adatokat a U-SQL-
 2. Bontsa ki a mintákat, bontsa ki a kimenetek, és kattintson duplán **Drivers.csv**.
 
 ## <a name="see-also"></a>Lásd még:
-* [A Data Lake Analytics PowerShell használatának első lépései](data-lake-analytics-get-started-powershell.md)
-* [Ismerkedés a Data Lake Analytics az Azure portál használatával](data-lake-analytics-get-started-portal.md)
+* [U-SQL kifejezések felhasználói kóddal kiterjesztése](https://msdn.microsoft.com/en-us/library/azure/mt621316.aspx)
 * [Használja a Data Lake Tools for Visual Studio a U-SQL-alkalmazások fejlesztésével](data-lake-analytics-data-lake-tools-get-started.md)

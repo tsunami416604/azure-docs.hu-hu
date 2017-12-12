@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: a54ea21ea2d5ce62aabaeca7c5d25281a7d3f4be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9815e01dffb0342979f17974527b559de8146fed
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Használata Azure Webhookok feladat értesítések Media Services .NET figyelése
-Feladatok futtatása, ha gyakran kell segítségével nyomon követheti a feladat előrehaladását. Azure Webhookok használatával figyelheti a Media Services feladat értesítések vagy [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Ez a témakör bemutatja, hogyan webhookok együttműködni.
+Feladatok futtatása, ha gyakran kell segítségével nyomon követheti a feladat előrehaladását. Azure Webhookok használatával figyelheti a Media Services feladat értesítések vagy [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Ez a cikk bemutatja, hogyan webhookok dolgozni.
 
-Ez a témakör bemutatja, hogyan
+Ez a cikk bemutatja, hogyan
 
 *  Adja meg az Azure-függvény, testre szabott webhookok válaszolni. 
     
@@ -33,9 +33,9 @@ Ez a témakör bemutatja, hogyan
     >A folytatás előtt győződjön meg arról, hogy hogyan [Azure Functions HTTP és a webhook kötések](../azure-functions/functions-bindings-http-webhook.md) működik.
     >
     
-* A webhook hozzáadása a kódolási feladat, és adja meg a webhook URL-CÍMÉT és a titkos kulcsot, amely válaszol a webhook. Egy példa, amely egy webhook ad hozzá a kódolási feladat a témakör végén található.  
+* A webhook hozzáadása a kódolási feladat, és adja meg a webhook URL-CÍMÉT és a titkos kulcsot, amely válaszol a webhook. Egy példa, amely egy webhook ad hozzá a kódolási feladat a cikk végén található.  
 
-Definíciók különböző Media Services .NET az Azure Functions (beleértve az ebben a témakörben látható) található [Itt](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
+Definíciók különböző Media Services .NET az Azure Functions (beleértve a cikkben szereplő) található [Itt](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,7 +54,7 @@ Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 A Media Services funkciók fejlesztésekor célszerű adja hozzá a környezeti változókat, amelyek a funkciók használjuk. Beállítások konfigurálásához kattintson az alkalmazás beállításainak konfigurálása hivatkozásra. 
 
-A [Alkalmazásbeállítások](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) szakaszban definiálja a paramétereket, illetve a webhook meghatározva ebben a témakörben. A következő paraméterek is hozzá az alkalmazás beállításaiban. 
+A [Alkalmazásbeállítások](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) szakaszban definiálja a paramétereket, illetve a webhook meghatározva ebben a cikkben. A következő paraméterek is hozzá az alkalmazás beállításaiban. 
 
 |Név|Meghatározás|Példa| 
 |---|---|---|
@@ -72,7 +72,7 @@ A függvény az alkalmazást telepíti, ha megtalálja között **alkalmazásszo
 
 ### <a name="files"></a>Fájlok
 
-Az Azure-függvény kódot és egyéb fájlokat ebben a szakaszban ismertetett társítva. Alapértelmezés szerint a következő függvényt társított **function.json** és **run.csx** (C#) fájlok. Akkor adja hozzá a **project.json** fájlt. Ez a szakasz a többi ezeket a fájlokat a definícióit tartalmazza.
+Az Azure-függvény kódot és egyéb fájlokat ebben a szakaszban ismertetett társítva. Alapértelmezés szerint a következő függvényt társított **function.json** és **run.csx** (C#) fájlok. Hozzá kell adnia egy **project.json** fájlt. Ez a szakasz a többi ezeket a fájlokat a definícióit tartalmazza.
 
 ![Fájlok](./media/media-services-azure-functions/media-services-azure-functions003.png)
 

@@ -4,7 +4,7 @@ description: "Ez az oktatóanyag bemutatja, hogyan egy Windows virtuális gép f
 services: active-directory
 documentationcenter: 
 author: bryanla
-manager: mbaldwin
+manager: mtillman
 editor: bryanla
 ms.service: active-directory
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: bryanla
-ms.openlocfilehash: f43ec5bdbf32c3f7c4c1fb3a5aae8367bd050fc9
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: fbe46b952b72d3379ba3eb0ff8c84b9d036752e3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Az Azure Storage érhetnek el egy SAS-hitelesítő adat szolgáltatás Windows virtuális gép felügyelt identitás használatára
 
@@ -41,7 +41,7 @@ A szolgáltatás SAS teszi lehetővé korlátozott hozzáférést biztosít egy 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com).
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Windows virtuális gép egy új erőforráscsoport létrehozása
 
@@ -82,7 +82,7 @@ Ha még nem rendelkezik egy, most létrehoz egy tárfiókot. Is ezt a lépést k
 5. Győződjön meg arról a **előfizetés** és **erőforráscsoport** az előző lépésben a virtuális gép létrehozásakor megadott megfelelően.
 6. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![új tárfiók létrehozása](media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Új tárfiók létrehozása](media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>A tárfiók egy blob-tároló létrehozása
 

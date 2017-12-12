@@ -4,7 +4,7 @@ description: "Azure Active Directory mintakódok forgatókönyv szerint vannak r
 services: active-directory
 documentationcenter: dev-center-name
 author: msmbaldwin
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: mbaldwin
 ms.custom: aaddev
-ms.openlocfilehash: 19d71e65dc2c78663d94c74228dcff038566391b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba8356a018605331dc4b9cc9ff401929cd8793bf
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-code-samples"></a>Az Azure Active Directory-Kódminták
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -33,7 +33,7 @@ Hozzájárul az általunk biztosított mintákat a Githubon: [Microsoft Azure Ac
 ## <a name="web-browser-to-web-application"></a>Webalkalmazás webböngészőben
 Ezeket a mintákat egy webes alkalmazás, amely arra utasítja a felhasználó böngészőben való bejelentkezéshez őket az Azure AD írásával megjelenítése.
 
-| Nyelvi/Platform | Minta | Leírás |
+| Nyelvi/Platform | Sample | Leírás |
 | --- | --- | --- |
 | C# / .NET |[Webalkalmazás-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) |OpenID Connect (ASP.Net OpenID Connect OWIN köztes) segítségével az Azure AD-bérlő felhasználóit hitelesíti. |
 | C# / .NET |[Webalkalmazás-több-Bérlős-OpenIdConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) |Egy több-bérlős .NET MVC használó webalkalmazások OpenID Connect (ASP.Net OpenID Connect OWIN köztes) a felhasználók hitelesítéséhez több Azure AD-bérlő. |
@@ -42,14 +42,14 @@ Ezeket a mintákat egy webes alkalmazás, amely arra utasítja a felhasználó b
 ## <a name="single-page-application-spa"></a>Egylapos alkalmazások (SPA)
 Ez a példa bemutatja, hogyan az Azure ad-vel védett egylapos alkalmazások írásával.  
 
-| Nyelvi/Platform | Minta | Leírás |
+| Nyelvi/Platform | Sample | Leírás |
 | --- | --- | --- |
 | JavaScript, C# / .NET |[SinglePageApp-DotNet](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) |JavaScript és az Azure AD az ADAL használatával egy ASP.NET web API háttér megvalósítva AngularJS alapú egylapos alkalmazások biztonságos. |
 
 ## <a name="native-application-to-web-api"></a>Natív alkalmazás webes API-hoz
 A Kódminták szemléltetik, amelyet a webes API-t az Azure AD által biztosított hív natív ügyfél alkalmazásokat hozhatnak létre. Használata [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) és [OAuth 2.0, az Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 
-| Nyelvi/Platform | Minta | Leírás |
+| Nyelvi/Platform | Sample | Leírás |
 | --- | --- | --- |
 | Javascript |[NativeClient-MultiTarget-Cordova](https://github.com/Azure-Samples/active-directory-cordova-multitarget) |Az ADAL Apache Cordova beépülő modul segítségével létrehozása egy Apache Cordova-alkalmazást, amely meghívja a webes API-k és az Azure AD használ a hitelesítéshez. |
 | C# / .NET |[NativeClient-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) |Egy .NET WPF-alkalmazás, amely meghívja a webes API-k, amelyek az Azure AD használatával lett biztonságossá. |
@@ -67,7 +67,7 @@ A Kódminták szemléltetik, amelyet a webes API-t az Azure AD által biztosíto
 ## <a name="web-application-to-web-api"></a>Webalkalmazás, webes API-hoz
 Megjelenítése hogyan használja a következő kód mintákat [OAuth 2.0, az Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) a hívás web API-t az Azure AD által biztosított webes alkalmazások készíthetők.
 
-| Nyelvi/Platform | Minta | Leírás |
+| Nyelvi/Platform | Sample | Leírás |
 | --- | --- | --- |
 | C# / .NET |[Webalkalmazás-WebAPI-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect) |A bejelentkezett felhasználó engedélyeivel webes API-hívás. |
 | C# / .NET |[Webalkalmazás-WebAPI-OAuth2-AppIdentity-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity) |Az alkalmazás engedélyekkel webes API-hívás. |
@@ -78,7 +78,7 @@ Megjelenítése hogyan használja a következő kód mintákat [OAuth 2.0, az Az
 ## <a name="server-or-daemon-application-to-web-api"></a>Kiszolgáló vagy démon alkalmazás webes API-hoz
 A Kódminták bemutatják, hogyan hozható létre egy webes API-k használatával erőforrások lekérése démon vagy kiszolgáló-alkalmazás [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) és [OAuth 2.0, az Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 
-| Nyelvi/Platform | Minta | Leírás |
+| Nyelvi/Platform | Sample | Leírás |
 | --- | --- | --- |
 | C# / .NET |[Démon-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-daemon) |A Konzolalkalmazás meghívja a webes API-k. Az ügyfél hitelesítő pedig a jelszót. |
 | C# / .NET |[Démon-CertificateCredential-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) |Egy konzolalkalmazást, amely meghívja a webes API-k. Meg kell egy tanúsítványt az ügyfél hitelesítő adatait. |
@@ -86,7 +86,7 @@ A Kódminták bemutatják, hogyan hozható létre egy webes API-k használatáva
 ## <a name="calling-azure-ad-graph-api"></a>Az Azure AD Graph API felület meghívásakor
 Ezek kódminta alkalmazások összeállítását, amelyek az Azure AD Graph API írási és olvasási címtáradatok szemléltetik.
 
-| Nyelvi/Platform | Minta | Leírás |
+| Nyelvi/Platform | Sample | Leírás |
 | --- | --- | --- |
 | Java |[Webalkalmazás-GraphAPI-Java](https://github.com/Azure-Samples/active-directory-java-graphapi-web) |Egy webalkalmazás, amelyről a Graph API-t használja az Azure Active directory-adatokat. |
 | PHP |[A PHP GraphAPI webalkalmazás](https://github.com/Azure-Samples/active-directory-php-graphapi-web) |Egy webalkalmazás, amelyről a Graph API-t használja az Azure Active directory-adatokat. |
@@ -99,7 +99,7 @@ Ezek kódminta alkalmazások összeállítását, amelyek az Azure AD Graph API 
 ## <a name="authorization"></a>Engedélyezés
 A Kódminták használatát mutatják be az Azure AD a hitelesítéshez.
 
-| Nyelvi/Platform | Minta | Leírás |
+| Nyelvi/Platform | Sample | Leírás |
 | --- | --- | --- |
 | C# / .NET |[Webalkalmazás-GroupClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) |Hajtsa végre a szerepköralapú hozzáférés-vezérlés (RBAC) Azure Active Directory csoport jogcímek használata az Azure ad-vel integrált alkalmazásban. |
 | C# / .NET |[Webalkalmazás-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) |Hajtsa végre a szerepkör alapú hozzáférés-vezérlést (RBAC) integrálva van az Azure AD alkalmazás Azure Active Directory-alkalmazás szerepköröket használ. |
@@ -107,7 +107,7 @@ A Kódminták használatát mutatják be az Azure AD a hitelesítéshez.
 ## <a name="legacy-walkthroughs"></a>A hagyományos forgatókönyvek
 Ezek a forgatókönyvek némileg régebbi technológiát használ, de továbbra is érdemes lehet.
 
-| Nyelvi/Platform | Minta | Leírás |
+| Nyelvi/Platform | Sample | Leírás |
 | --- | --- | --- |
 | C# / .NET |[A Microsoft Azure AD-alkalmazást a szerepkör- és hozzáférés-vezérlési lista-alapú engedélyezési](http://go.microsoft.com/fwlink/?LinkId=331694) |Hajtsa végre az Azure ad-vel integrált alkalmazás szerepköralapú hitelesítés (RBAC) és az ACL-alapú engedélyezési. |
 | C# / .NET |[AAL - REST-szolgáltatást a Windows Áruházbeli alkalmazással - hitelesítés](http://go.microsoft.com/fwlink/?LinkId=330605) |Használjon [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) (korábbi nevén AAL) a Windows áruház Beta felhasználói hitelesítési képességeket adhat a Windows áruház egy alkalmazásához. |

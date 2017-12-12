@@ -4,7 +4,7 @@ description: "Ezen a lapon az a központi hely, az Azure AD Connect használó A
 services: active-directory
 documentationcenter: 
 author: anandyadavmsft
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: f9107cf5-0131-499a-9edf-616bf3afef4d
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: anandy
-ms.openlocfilehash: 6dc5ef81704423c5a1bc136fb2d51d79a9265e20
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 04516e38e72405ca797a0d748d9ed825ae452966
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect és összevonás
 Az összevonási konfigurálását teszi az Azure Active Directory (Azure AD) Connect lehetővé a helyszíni Active Directory összevonási szolgáltatások (AD FS) és az Azure AD. Az összevonási bejelentkezhet engedélyezheti a felhasználók jelentkezhetnek be az Azure AD-alapú szolgáltatásokhoz a helyszíni jelszavak – és a vállalati hálózaton, a jelszavuk ismételt megadása nélkül. Az AD FS összevonási beállításának használata esetén egy új telepítés Active Directory összevonási szolgáltatások telepítése, vagy megadhat egy meglévő telepítését egy Windows Server 2012 R2-farmban.

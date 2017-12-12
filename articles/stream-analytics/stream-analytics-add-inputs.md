@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: 8bdbcf78f2892cbd1e1cc09cef220dff08dd9490
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a4eb8642a0496e126b79724b4048bae7cc15a68
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Adatfolyam-továbbítási adatok beviteli vagy hivatkozás adatok hozzáadása a Stream Analytics-feladat
 Útmutató a Stream Analytics-feladat, mint az Event Hubs vagy hivatkozás adatokat a Blob storage adatbevitel streaming egy adatforrást a számítógéphez.
@@ -38,7 +38,7 @@ A Stream Analytics-feladat bemenete hozzáadása:
 
 1. Az Azure portálon kattintson a **bemenetek** majd **vegye fel a bemeneti** a Stream Analytics-feladat.
    
-    ![Klasszikus Azure portál – bemeneti hozzáadása.](./media/stream-analytics-add-inputs/1-stream-analytics-add-inputs.png)  
+    ![Azure portál – bemeneti hozzáadása.](./media/stream-analytics-add-inputs/1-stream-analytics-add-inputs.png)  
    
     Az Azure portálon kattintson a **bemenetek** csempére a Stream Analytics-feladat.  
    
@@ -61,7 +61,7 @@ A Stream Analytics-feladat bemenete hozzáadása:
 5. Adja meg a bemeneti adatok szerializálási beállításait:
    
    * Győződjön meg arról, hogy a lekérdezések a várt módon működik-e, adja meg a **esemény szerializálási formátum** a bejövő adatok.  Támogatott szerializálási formátumok a következők: JSON, CSV és az Avro.
-   * Ellenőrizze a **kódolás** az adatok számára.  Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.
+   * Ellenőrizze a **kódolás** az adatok számára.  Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum.
      
      ![A bemeneti adatok szerializálási beállítások](./media/stream-analytics-add-inputs/5-stream-analytics-add-inputs.png)  
      

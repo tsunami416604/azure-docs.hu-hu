@@ -1,7 +1,7 @@
 ---
 title: "Oktatóanyag Java alapú alkalmazásfejlesztéshez Azure Cosmos DB használatával | Microsoft Docs"
-description: "A Java webalkalmazásokra vonatkozó oktatóanyag bemutatja tárolására az Azure Cosmos DB és a DocumentDB API használatával és a hozzáférési adatok Azure Websitesban tárolt Java-alkalmazás."
-keywords: "Alkalmazásfejlesztés, adatbázis-oktatóanyag, java-alkalmazás, java-webalkalmazás oktatóanyag, documentdb, azure, Microsoft Azure"
+description: "Ez a Java webalkalmazásokra vonatkozó oktatóanyag bemutatja, tárolására az Azure Cosmos DB és az SQL API segítségével és a hozzáférési adatok Azure Websitesban tárolt Java-alkalmazás."
+keywords: "Alkalmazásfejlesztés, adatbázis-oktatóanyag, java-alkalmazások, java webalkalmazásokra vonatkozó oktatóanyag, azure, a Microsoft azure"
 services: cosmos-db
 documentationcenter: java
 author: dennyglee
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
-ms.openlocfilehash: 7b1053a7ec879294cb2240c9d6b4cd32f923ef9c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0081a080e33b0377516f99d6cdeb9fcc38bc10da
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-documentdb-api"></a>Azure Cosmos DB és a DocumentDB API-t használó Java-webalkalmazás létrehozása
+# <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB és az SQL API-t használó Java-webalkalmazás létrehozása
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
 > * [Node.js](documentdb-nodejs-application.md)
@@ -29,6 +29,8 @@ ms.lasthandoff: 10/11/2017
 > * [Python](documentdb-python-application.md)
 > 
 > 
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Ez a Java webalkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan használja a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás tárolhatja és érheti el az Azure App Service Web Apps tárolt Java-alkalmazás adatait. A témakörben érintett témák köre:
 
@@ -86,8 +88,8 @@ JSP-alkalmazás létrehozása:
    
     ![Hello World – Java-alkalmazásokra vonatkozó oktatóanyag](./media/documentdb-java-application/image12.png)
 
-## <a id="InstallSDK"></a>3. lépés: A DocumentDB Java SDK telepítése
-A DocumentDB Java SDK, valamint annak függőségei a legegyszerűbben az [Apache Maven](http://maven.apache.org/) használatával kérhetők le.
+## <a id="InstallSDK"></a>3. lépés: Telepítse az SQL Java SDK
+A legegyszerűbben az SQL Java SDK-t és annak függőségeit keresztül van [Apache Maven](http://maven.apache.org/).
 
 Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések végrehajtásával:
 
@@ -101,12 +103,12 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
    * Az a **összetevő-azonosító** mezőbe írja be az azure-documentdb.
    * Az a **verzió** 1.5.1 adja meg.
      
-   ![A DocumentDB Java Application SDK telepítése](./media/documentdb-java-application/image13.png)
+   ![SQL Java Application SDK telepítése](./media/documentdb-java-application/image13.png)
      
    * Vagy adja hozzá a függőség XML a csoport és összetevő-azonosító közvetlenül a pom.xml fájlhoz egy szövegszerkesztő:
      
         <dependency><groupId>következőt: com.microsoft.azure</groupId> <artifactId>azure-documentdb</artifactId> <version>1.9.1</version></dependency>
-6. Kattintson a **OK** és után a Maven feltelepíti a DocumentDB Java SDK-t.
+6. Kattintson a **OK** és után a Maven feltelepíti a SQL Java SDK-t.
 7. Mentse a pom.xml fájlt.
 
 ## <a id="UseService"></a>4. lépés: Az Azure Cosmos DB szolgáltatás használata Java-alkalmazásokban
@@ -279,7 +281,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
                 return null;
             }
         }
-7. A DocumentClient ügyfél segítségével szintén lekérheti a teendők gyűjteményét vagy listáját a DocumentDB SQL használatával:
+7. A documentclient ügyfél segítségével azt is gyűjtemény vagy az SQL TodoItems listájának beolvasása:
    
         @Override
         public List<TodoItem> readTodoItems() {

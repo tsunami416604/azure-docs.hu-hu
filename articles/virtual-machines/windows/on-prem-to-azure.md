@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b427556c589c7cc5205bfda16edc8d891814326
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 02dce319c055f7988355cfadbc1d63df5e268e53
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Az Azure-ban kezelt lemezek áttelepítésére Amazon Web Services (AWS) és más platformokra
 
-Feltöltheti a VHD-fájlok AWS vagy a helyszíni virtualizációs megoldások Azure virtuális gépek előnyeit felügyelt lemezek létrehozásához. Azure-lemezeket felügyelt szükségtelenné a storage-fiókok kezelése az Azure IaaS virtuális gépeket. A (prémium és Standard) típusát és méretét csak megadhat lemez van szüksége, és Azure hoz létre, és az Ön kezeli a lemezt. 
+Feltöltheti a VHD-fájlok AWS vagy a helyszíni virtualizációs megoldások Azure virtuális gépek előnyeit felügyelt lemezek létrehozásához. Azure-lemezeket felügyelt szükségtelenné storage-fiókok Azure IaaS virtuális gépek kezeléséhez. A (prémium és Standard) típusát és méretét csak megadhat lemez van szüksége, és Azure hoz létre, és az Ön kezeli a lemezt. 
 
 A virtuális általánosított, és speciális feltöltheti. 
 - **Virtuális merevlemez általánosítva** -volt-e az összes személyes fiókadatait a Sysprep segítségével távolítja el. 

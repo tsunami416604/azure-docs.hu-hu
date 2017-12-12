@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: a934643be02abeadecf9e8384e29bd3e0e1a36f5
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: d051c648ac66a42cefe0113d2571fe0a3050a237
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>How Azure Cosmos DB globális terjesztési a MongoDB API-jával beállítása
 
@@ -101,7 +101,7 @@ Ebben az oktatóanyagban ezt a következők:
 
 > [!div class="checklist"]
 > * Az Azure portál használatával globális terjesztési konfigurálása
-> * A DocumentDB API-k használatával globális terjesztési konfigurálása
+> * Az SQL API-kkal globális terjesztési konfigurálása
 
 Most már folytathatja a következő oktatóanyag megtudhatja, hogyan fejleszthet, helyileg emulátorral Azure Cosmos DB helyi.
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: chackdan
-ms.openlocfilehash: f7c4a00d2c9be2d6b4d3d0b4dfb152deb2d0e217
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cf690b7e5b0a2b19282c1655b6dc32e9eec6884c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>A Service Fabric fürt kapacitástervezésének szempontjai
 Minden éles telepítésében kapacitásának megtervezése fontos lépés. Az alábbiakban néhány kell figyelembe venni, hogy a folyamat részeként elemek.
@@ -107,7 +107,7 @@ Ezüst vagy arany tartóssági minden csomópont típusú használ, amelynek a s
 
 
 > [!WARNING]
-> A virtuális gép SKU méretének módosítása a Virtuálisgép-méretezési készlet nem fut legalább ezüst tartóssági nincs ajánlott maszkolandó. Virtuális gép SKU méretének módosítása egy olyan adatok felülíró helyszíni infrastruktúra művelet. Késleltetés vagy a figyelheti a módosítás legalább néhány képessége nélkül is lehetséges, hogy a művelet állapotalapú szolgáltatások dataloss okozza-e, vagy okoz cselekvései működési problémákkal, még a állapot nélküli munkaterheléseket. 
+> A virtuális gép Termékváltozat-méretét a Virtuálisgép-méretezési készlet nem fut legalább ezüst tartóssági nem ajánlott. Virtuális gép SKU méretének módosítása egy olyan adatok felülíró helyszíni infrastruktúra művelet. Késleltetés vagy a figyelheti a módosítás legalább néhány képessége nélkül is lehetséges, hogy a művelet okozhat az állapotalapú szolgáltatások, vagy más váratlan működési problémákkal rendelkeznek, még a állapot nélküli munkaterheléseket vezethet. 
 > 
     
 3. Vezessen öt csomópontok minimális száma bármely virtuálisgép-méretezési csoport arany szintű tartósságot, vagy ezüst engedélyezve
@@ -142,7 +142,7 @@ Ez a javaslat a megbízhatósági szint választásával.
 | --- | --- |
 | 1 |Adja meg a megbízhatósági szint paramétert, a rendszer kiszámítja az |
 | 3 |Bronz |
-| 5 vagy 6|Ezüst |
+| 5 vagy 6|Silver |
 | 7 vagy 8 |Arany |
 | 9 vagy afölötti |Platinum |
 

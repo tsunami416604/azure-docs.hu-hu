@@ -4,8 +4,8 @@ description: "PowerShell és a parancssori felület használatával a belső és
 services: active-directory
 documentationcenter: 
 author: andreicradu
-manager: catadinu
-editor: 
+manager: mtillman
+editor: kgremban
 ms.assetid: 
 ms.service: active-directory
 ms.devlang: 
@@ -16,11 +16,11 @@ ms.date: 12/06/2017
 ms.author: a-crradu
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 595d9de5c3a6e9943f158ae1f21c57ea6e1e81e1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b3b65812d453a9f7d93ee4381c4261e685a60376
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="intro-on-role-based-access-control"></a>A szerepköralapú hozzáférés-vezérlés – bevezetés
 

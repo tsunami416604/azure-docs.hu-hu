@@ -4,7 +4,7 @@ description: "Egy iOS-alkalmazást, amely képes bejelentkeztetni a felhasznál�
 services: active-directory
 documentationcenter: 
 author: brandwe
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: fd3603c0-42f7-438c-87b5-a52d20d6344b
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cf1455dc3d55ea3581195f7a315556d134c23a26
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 398ddbd004b4a12f4aa79ed64cc85f0e5bc5407a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>Bejelentkezés hozzáadása egy iOS-alkalmazást használ egy külső könyvtár Graph API-t használ a v2.0-végpontra
 A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. A fejlesztők a függvénytárat, hogy integrálni szeretne a szolgáltatások. Segítségével a fejlesztők a platformot használja a többi könyvtárak, azt korábban írt bemutatják, hogyan lehet kapcsolódni a Microsoft identity platform külső szalagtárak konfigurálása a jelen szoftverhez hasonló néhány forgatókönyvek. A legtöbb tárak, amelyek megvalósítják az [a RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) csatlakozni tud-e a Microsoft identity platform.

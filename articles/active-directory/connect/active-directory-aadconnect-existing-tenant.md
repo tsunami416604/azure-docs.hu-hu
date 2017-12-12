@@ -4,7 +4,7 @@ description: "Ez a témakör ismerteti a csatlakozás, ha egy meglévő Azure AD
 services: active-directory
 documentationcenter: 
 author: andkjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: a7df154748a4ce8ac592a41f2a3d6b10ac359113
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: b3efcdd8c3f7173711c005e0fe4d7080bd902663
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Az Azure AD Connect: Ha rendelkezik egy létező bérlő
 Az Azure AD Connect használatával a témaköröket a legtöbb azt feltételezi, hogy a kiindulási pont egy új Azure AD-bérlő és, hogy nincsenek-e egy felhasználó sem, vagy nincs más objektumokat. Azonban ha az Azure AD-bérlő indította megadva, akkor a felhasználók és más objektumok, és most szeretné csatlakozás, akkor ebben a témakörben, hogy a felhasználó.

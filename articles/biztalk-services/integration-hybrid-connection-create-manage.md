@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 7b8b9072d0e2fd054ca07873c0a9ce772dc2941e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1751d33b5f6f6a506654daedd15bbd75ae271483
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Hibridkapcsolatok létrehozása és felügyelete
 
 > [!IMPORTANT]
 > A BizTalk Hybrid Connections ki van vezetve, helyét az App Service Hybrid Connections vette át. További tájékoztatást egyebek között a meglévő BizTalk Hybrid Connections-kapcsolatok kezeléséről az [Azure App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md) című cikkben talál.
 
+>[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 ## <a name="overview-of-the-steps"></a>Lépéseinek áttekintése
 1. Írja be a hibrid kapcsolat létrehozása a **állomásnév** vagy **FQDN** a magánhálózaton a helyi erőforrás.
@@ -48,26 +49,9 @@ Ez a témakör az alábbi lépéseket.
 > 
 
 ## <a name="CreateHybridConnection"></a>A hibrid kapcsolat létrehozása
-Az Azure portálon Web Apps használatával létrehozhat egy hibrid kapcsolat **vagy** BizTalk szolgáltatások használatával. 
+A hibrid kapcsolat hozhatók létre [Azure App Service hibrid kapcsolatok](../app-service/app-service-hybrid-connections.md) **vagy** használatával [BizTalk szolgáltatás REST API-k](https://msdn.microsoft.com/library/azure/dn232347.aspx). 
 
 <!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
-
-**Hibrid kapcsolatok létrehozása a BizTalk szolgáltatások**:
-
-1. Jelentkezzen be a [klasszikus Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. A bal oldali navigációs ablakból válassza **BizTalk szolgáltatások** , és válassza a BizTalk szolgáltatás. 
-   
-    Ha még nem rendelkezik meglévő BizTalk szolgáltatás, akkor [BizTalk szolgáltatás létrehozása](biztalk-provision-services.md).
-3. Válassza ki a **hibrid kapcsolatok** lapon:  
-   ![Hibrid kapcsolatok lapra][HybridConnectionTab]
-4. Válassza ki **egy hibrid kapcsolat létrehozása** vagy válassza ki a **hozzáadása** gomb a tálcán. Írja be a következőket:
-   
-   | Tulajdonság | Leírás |
-   | --- | --- |
-   | Név |A hibrid kapcsolat nevének egyedinek kell lennie, és nem lehet a neve megegyezik a BizTalk szolgáltatás. Adja meg a nevét, de konkrét, annak oka lehet. Példák erre vonatkozóan:<br/><br/>Bérlista*SQLServer*<br/>SupplyList*SharepointServer*<br/>Az ügyfelek*OracleServer* |
-   | Állomásnév |Adja meg a teljesen minősített állomásnév, csak a számítógép neve, vagy a helyi erőforrás IPv4-címét. Példák erre vonatkozóan:<br/><br/>mySQLServer<br/>*mySQLServer*. *Tartomány*. corp.*cegnev*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*. *cegnev*.com<br/>10.100.10.10<br/><br/>Ha IPv4-cím használata, vegye figyelembe, hogy az ügyfél vagy alkalmazás kódot sem oldja meg az IP-címet. Tekintse meg a fontos Megjegyzés: Ez a témakör elején. |
-   | Port |Adja meg a portot a helyi erőforrás. Webalkalmazások használata, adja meg például port a 80-as vagy 443-as portot. Ha az SQL Server használata esetén adja meg az 1433-as port. |
-5. Válassza ki a pipa jelre a telepítés befejezéséhez. 
 
 #### <a name="additional"></a>További
 * Több hibrid kapcsolatok hozhatók létre. Tekintse meg a [BizTalk szolgáltatások: kiadások diagram](biztalk-editions-feature-chart.md) az engedélyezett kapcsolatok számát. 
@@ -78,16 +62,11 @@ A webes alkalmazás vagy az Azure App Service Mobile Apps összekapcsolása egy 
 <!-- See [Access on-premises resources using hybrid connections in Azure App Service](../app-service-web/web-sites-hybrid-connection-get-started.md). -->
 
 ## <a name="InstallHCM"></a>A hibrid Csatlakozáskezelő helyszíni telepítése
-A hibrid kapcsolat létrehozása után a Hybrid Connection Manager telepíthető a helyi erőforrás. Az Azure-webalkalmazásokban, illetve a BizTalk szolgáltatás is letölthetők. BizTalk szolgáltatások lépéseket: 
+A hibrid kapcsolat létrehozása után a Hybrid Connection Manager telepíthető a helyi erőforrás. Az Azure-webalkalmazásokban, illetve a BizTalk szolgáltatás is letölthetők. 
 
-1. Jelentkezzen be a [klasszikus Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. A bal oldali navigációs ablakból válassza **BizTalk szolgáltatások** , és válassza a BizTalk szolgáltatás. 
-3. Válassza ki a **hibrid kapcsolatok** lapon:  
-   ![Hibrid kapcsolatok lapra][HybridConnectionTab]
-4. A tálcán válassza **helyszíni telepítő**:  
-   ![A helyszíni beállítása][HCOnPremSetup]
-5. Válassza ki **telepítése és konfigurálása** futtatásához, vagy töltse le a Hybrid Connection Manager a helyszíni rendszeren. 
-6. Válassza ki a pipa jelre a telepítés elindításához. 
+[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
+ 
+[Az Azure App Service hibrid kapcsolatok](../app-service/app-service-hybrid-connections.md) jó erőforrásként is szerepel.
 
 <!--
 You can also download the Hybrid Connection Manager MSI file and copy the file to your on-premises resource. Specific steps:
@@ -113,25 +92,16 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 * Hibrid kapcsolatok egy másik kiszolgálón egy másik példány a Hybrid Connection Manager telepítésével méretezheti. A helyszíni figyelő ugyanazt a címet az első helyszíni figyelőként használatára konfigurálja. Ebben a helyzetben a forgalmat a helyszíni active figyelői között a véletlenszerűen elosztott (ciklikus időszeletelés). 
 
 ## <a name="ManageHybridConnection"></a>Hibrid kapcsolatok kezelése
-A hibrid kapcsolatok kezelésére, a következőket teheti:
 
-* Az Azure-portálon, és nyissa meg a BizTalk szolgáltatás. 
-* Használjon [REST API-k](http://msdn.microsoft.com/library/azure/dn232347.aspx).
+[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)] 
+
+[Az Azure App Service hibrid kapcsolatok](../app-service/app-service-hybrid-connections.md) jó erőforrásként is szerepel.
 
 #### <a name="copyregenerate-the-hybrid-connection-strings"></a>A hibrid kapcsolati karakterláncok másolási/újragenerálása
-1. Jelentkezzen be a [klasszikus Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. A bal oldali navigációs ablakból válassza **BizTalk szolgáltatások** , és válassza a BizTalk szolgáltatás. 
-3. Válassza ki a **hibrid kapcsolatok** lapon:  
-   ![Hibrid kapcsolatok lapra][HybridConnectionTab]
-4. Válassza ki a hibrid kapcsolatot. A tálcán válassza **kapcsolat kezelése**:  
-   ![Beállítások kezelése][HCManageConnection]
-   
-    **Kapcsolat kezelése** sorolja fel az alkalmazás és a helyszíni kapcsolati karakterláncokat. Másolja a kapcsolati karakterláncokat, vagy a kapcsolódási karakterláncban használt a hozzáférési kulcs újragenerálása. 
-   
-    **Ha Regenerate**, a megosztott elérési kulcsot történik a kapcsolati karakterlánc megváltozott. Tegye a következőket:
-   
-   * A klasszikus Azure portálon, válassza ki a **szinkronizálási kulcsok** az Azure alkalmazásban.
-   * Futtassa újra a **helyszíni telepítő**. Az On-Premises telepítő újbóli futtatásakor a helyi erőforrás automatikusan használatára van konfigurálva a frissített elsődleges kapcsolódási karakterlánc.
+
+[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)] 
+
+[Az Azure App Service hibrid kapcsolatok](../app-service/app-service-hybrid-connections.md) jó erőforrásként is szerepel.
 
 #### <a name="use-group-policy-to-control-the-on-premises-resources-used-by-a-hybrid-connection"></a>A csoportházirendben szabályozhatja a hibrid kapcsolat által használt helyi erőforrások
 1. Töltse le a [hibrid Csatlakozáskezelő felügyeleti sablonok](http://www.microsoft.com/download/details.aspx?id=42963).
@@ -149,7 +119,7 @@ A másolást követően a Helyicsoportházirend-szerkesztő segítségével mód
 ## <a name="see-also"></a>Lásd még:
 [A Microsoft Azure BizTalk szolgáltatások kezelésére szolgáló REST API-n](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)  
-[Klasszikus Azure portál használatával BizTalk szolgáltatás létrehozása](biztalk-provision-services.md)  
+[BizTalk szolgáltatás létrehozása](biztalk-provision-services.md)  
 [BizTalk Services: Irányítópult, Figyelés és Méret lapok](biztalk-dashboard-monitor-scale-tabs.md)
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png

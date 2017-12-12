@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 14783f0464764a11d7f03a5db1c2d63728a4cb50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c5c0450cba541a9346f023057345c5fc9b147903
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Az Azure Stream Analytics használja az SQL Data Warehouse szolgáltatással
 Az Azure Stream Analytics egy olyan teljes körűen felügyelt szolgáltatás biztosítása kis késleltetésű, magas rendelkezésre állású, méretezhető összetett eseményfeldolgozást keresztül a streamelési adatok a felhőben. Az alapok tanul olvasása [Azure Stream Analytics bemutatása][Introduction to Azure Stream Analytics]. Majd megismerheti egy végpont megoldás létrehozása a Stream Analytics a következő a [Azure Stream Analytics használatának első] [ Get started using Azure Stream Analytics] oktatóanyag.
@@ -53,7 +53,7 @@ Adja meg a következő értékeket a következő lapon:
   * Ha az SQL Data Warehouse-adatbázis a Stream Analytics-feladat tárolóként ugyanazt az előfizetést, válassza ki az SQL Database a jelenlegi előfizetés.
   * Ha az adatbázis egy másik előfizetésben, válassza ki az SQL Database egy másik előfizetésből.
 * *Adatbázis*: Adja meg a célként megadott adatbázis nevét.
-* *Kiszolgálónév*: Adja meg az adatbázis csak a megadott kiszolgáló nevét. A klasszikus Azure portál segítségével ez.
+* *Kiszolgálónév*: Adja meg az adatbázis csak a megadott kiszolgáló nevét. Az Azure portál segítségével ez.
 
 ![][server-name]
 

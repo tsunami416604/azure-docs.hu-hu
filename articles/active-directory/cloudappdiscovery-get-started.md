@@ -5,7 +5,7 @@ services: active-directory
 keywords: "a cloud app discovery alkalmazások kezelése"
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 tags: ignite
 ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.openlocfilehash: 92cafe24fc3a038f2acd68ec21ec845316ef46de
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: a3593611c7a2467de1c1639f8b5c6b0eb6f1ecbf
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Az Azure AD Cloud App Discovery beállítása
 

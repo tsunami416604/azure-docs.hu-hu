@@ -4,7 +4,7 @@ description: "A Microsoft Azure Resource Manager erőforrás-szolgáltató elér
 services: active-directory
 documentationcenter: 
 author: jboeshart
-manager: 
+manager: mtillman
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.openlocfilehash: 7e25b9a77d5ba7b856c9616c8384a567b7d37bbd
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 27880402d377701448d095a1295ece875729cd67
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltató üzemeltetése
 
@@ -90,7 +90,7 @@ Ez a dokumentum minden Microsoft Azure Resource Manager erőforrás-szolgáltat�
 |/Service/loggers/DELETE|Távolítsa el a meglévő naplózó|
 |/Service/Users/Read|A regisztrált felhasználók listáját, vagy felhasználói fiók adatainak lekérése|
 |/Service/Users/Write|Új felhasználó vagy egy meglévő felhasználó frissítés fiókadatok regisztrálása|
-|/Service/Users/DELETE|Felhasználói fiók eltávolítása|
+|/Service/Users/DELETE|Távolítsa el a felhasználói fiók|
 |/Service/Users/generateSsoUrl/Action|Egyszeri bejelentkezési URL-címet létrehozni. Az URL-cím használható felügyeleti portál eléréséhez|
 |/Service/Users/Subscriptions/Read|Felhasználói előfizetések listájának beolvasása|
 |/Service/Users/keys/Read|Felhasználói kulcsok listájának beolvasása|
@@ -975,32 +975,32 @@ A szolgáltató nem egy teljes ARM-szolgáltató, és nem biztosít semmilyen AR
 
 | Művelet | Leírás |
 |---|---|
-|/ Regisztrációs/művelet|A Microsoft Insights-szolgáltató regisztrálása|
-|/ AlertRules/írása|Riasztási szabály konfigurációjának írása|
-|Vagy AlertRules/törlése|Riasztási szabály konfigurációjának törlése|
-|AlertRules/olvasása|Riasztási szabály konfigurációjának beolvasása|
+|/ Regisztrációs/művelet|A microsoft insights szolgáltató regisztrálása|
+|/ AlertRules/írása|Riasztási szabály konfigurálása során írása|
+|Vagy AlertRules/törlése|A riasztási szabály a konfiguráció törlése|
+|AlertRules/olvasása|A riasztási szabály konfigurációjának olvasása|
 |/ AlertRules/aktiválva/művelet|Riasztási szabály aktiválva|
-|/ AlertRules/feloldva/művelet|Riasztási szabály feloldva|
-|/ AlertRules/Halmozódni/művelet|A riiasztási szabály elindítva|
-|AlertRules/incidensek/olvasása|Riasztási szabály incidenskonfigurációjának beolvasása|
-|MetricDefinitions/olvasása|A metrikadefiníciók olvasása|
-|/eventtypes/Values/Read|A felügyeleti eseménytípus értékeinek olvasása|
-|/eventtypes/digestevents/Read|A felügyeleti eseménytípus kivonatának olvasása|
-|Metrikák/olvasása|Metrikák olvasása|
+|/ AlertRules/feloldva/művelet|Riasztási szabály feloldása|
+|/ AlertRules/Halmozódni/művelet|Riasztási szabály szabályozva van|
+|AlertRules/incidensek/olvasása|A riasztási szabály az incidens konfigurációjának olvasása|
+|MetricDefinitions/olvasása|Olvassa el a metrikai meghatározásainak|
+|/eventtypes/Values/Read|Olvassa el a felügyeleti esemény típusú értékek|
+|/eventtypes/digestevents/Read|Olvasási felügyeleti esemény típusa kivonatoló|
+|Metrikák/olvasása|Olvassa el a metrikák|
 |/ LogProfiles/írása|Egy naplózási profil konfiguráció írásakor|
 |Vagy LogProfiles/törlése|Naplóbeállítások profilok törlése|
 |LogProfiles/olvasása|Olvasási napló profilok|
-|/ AutoscaleSettings/írása|Automatikus skálázási beállítás konfigurációjának írása|
-|Vagy AutoscaleSettings/törlése|Automatikus skálázási beállítás konfigurációjának törlése|
-|AutoscaleSettings/olvasása|Automatikus skálázási beállítás konfigurációjának beolvasása|
-|/ AutoscaleSettings/Scaleup/művelet|Automatikus vertikális felskálázási művelet|
-|/ AutoscaleSettings/Scaledown/művelet|Automatikus vertikális leskálázási művelet|
-|/AutoscaleSettings/Providers/Microsoft.Insights/MetricDefinitions/Read|A metrikadefiníciók olvasása|
+|/ AutoscaleSettings/írása|Az automatikus skálázási beállítás konfigurációs írása|
+|Vagy AutoscaleSettings/törlése|Az automatikus skálázási beállítás konfiguráció törlése|
+|AutoscaleSettings/olvasása|Az automatikus skálázási beállítás konfigurációjának olvasása|
+|/ AutoscaleSettings/Scaleup/művelet|Automatikus skálázási művelet, felskálázott|
+|/ AutoscaleSettings/Scaledown/művelet|Automatikus skálázás skálázási művelet le|
+|/AutoscaleSettings/Providers/Microsoft.Insights/MetricDefinitions/Read|Olvassa el a metrikai meghatározásainak|
 |/ ActivityLogAlerts/aktiválva/művelet|Elindul a napló figyelmeztetés|
-|/ DiagnosticSettings/írása|Diagnosztikai beállítások konfigurációjának írása|
-|Vagy DiagnosticSettings/törlése|Diagnosztikai beállítások konfigurációjának törlése|
-|DiagnosticSettings/olvasása|Diagnosztikai beállítások konfigurációjának olvasása|
-|LogDefinitions/olvasása|A naplódefiníciók olvasása|
+|/ DiagnosticSettings/írása|A diagnosztikai beállítások konfigurációs írása|
+|Vagy DiagnosticSettings/törlése|Diagnosztikai beállítások konfiguráció törlése|
+|DiagnosticSettings/olvasása|A diagnosztikai beállítások beolvasásakor|
+|LogDefinitions/olvasása|Olvasási naplófájl-definíciói|
 |/ ExtendedDiagnosticSettings/írása|A bővített diagnosztikai beállítások konfigurációs írása|
 |Vagy ExtendedDiagnosticSettings/törlése|Bővített diagnosztikai beállítások konfiguráció törlése|
 |ExtendedDiagnosticSettings/olvasása|Bővített diagnosztikai beállítások beolvasásakor|

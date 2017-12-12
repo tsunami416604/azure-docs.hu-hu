@@ -11,7 +11,7 @@ Bizonyos korlátozások érvényesek a mérőszámok számára és az alkalmazá
 | Tulajdonság- és metrikanév hossza | 150 | Lásd: [írja be a sémák](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
 | Tulajdonságérték-karakterlánc hossza | 8,192 | Lásd: [írja be a sémák](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
 | Nyomkövetési és kivételüzenet hossza | 10 ezer | Lásd: [írja be a sémák](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
-| [Rendelkezésre állási tesztek](../articles/application-insights/app-insights-monitor-web-app-availability.md) száma alkalmazásonként  | 10 |
+| [Rendelkezésre állási tesztek](../articles/application-insights/app-insights-monitor-web-app-availability.md) száma alkalmazásonként  | 100 |
 | [Profilkészítő](../articles/application-insights/app-insights-profiler.md) adatok megőrzése | 5 nap |
 | [Profilkészítő](../articles/application-insights/app-insights-profiler.md) naponta küldött adatok | 10GB |
 

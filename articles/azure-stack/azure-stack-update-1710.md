@@ -3,8 +3,8 @@ title: "Az Azure verem 1710 frissítés (Build 20171020.1) |} Microsoft Docs"
 description: "További tudnivalók az Azure-verem 1710 frissítés Újdonságok integrált rendszerek, az ismert problémák és letöltéséről a frissítést."
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 135314fd-7add-4c8c-b02a-b03de93ee196
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: twooley
-ms.openlocfilehash: acce605fe1f3157898b490c394d24037689a7cb6
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.author: mabrigg
+ms.openlocfilehash: 7945b802e8c1482d9c6379a26618df23535daacf
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Az Azure verem 1710 frissítés (Build 20171020.1)
 

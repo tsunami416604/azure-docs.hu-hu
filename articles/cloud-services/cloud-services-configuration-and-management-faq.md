@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 12/11/2017
 ms.author: genli
-ms.openlocfilehash: 2a20ee1df23df683c49444e8fb3ffdb2085b174f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 355151ee6c3507d8e2fd2ab6cc5127324b3a6d7c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és kezelésének számos Azure-szolgáltatásokhoz: gyakran ismételt kérdések (GYIK)
 
@@ -221,3 +221,65 @@ Miután ez megtörtént, ellenőrizheti, hogy a HTTP/2 engedélyezve van, vagy n
 - F12 fejlesztői eszközét az Internet Explorer vagy Edge engedélyezése, és a hálózati lapon ellenőrizze a protokoll váltani. 
 
 További információkért lásd: [HTTP/2 IIS](https://blogs.iis.net/davidso/http2).
+
+## <a name="the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that"></a>Az Azure-portálon az SDK-verzió a felhőalapú szolgáltatás nem jeleníti meg. Hogyan kaphatok, amely?
+
+Jelenleg is dolgozunk mihamarabb elérhetővé tenni ezt a szolgáltatást az Azure portálon. Eközben segítségével következő PowerShell-parancsok beolvasása az SDK-verzió:
+
+    Get-AzureService -ServiceName "<Cloud service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+
+## <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Az RDP-fájl használatával nem lehet a távoli asztal felhőalapú szolgáltatás virtuális gépre. I get következő a hiba: hitelesítési hiba történt (kód: 0x80004005)
+
+Ez a hiba akkor fordulhat elő, ha az Azure Active Directory tartományhoz csatlakozó gépről az RDP-fájlt használ. A probléma megoldásához kövesse az alábbi lépéseket:
+
+1. Kattintson a jobb gombbal a letöltött RDP-fájlt, és válassza ki **szerkesztése**.
+2. Hozzáadása "&#92;" regisztrációja, mivel a felhasználónév előtt előtag. Tegyük fel például, **. \username** helyett **felhasználónév**.
+
+## <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>Szeretnék több hónapig a felhőalapú szolgáltatás leállítása. Hogyan felhőszolgáltatás számlázási költségeinek csökkentése az IP-cím elvesztése nélkül?
+
+Egy már telepített Felhőszolgáltatásban lekérdezi számlázva a számítási és tárolási használ. Így akkor is, ha az Azure virtuális gép leállítása, Ön továbbra is beolvasása számlázzuk tárolására. 
+
+Ez mit tehet a számlázási csökkenteni a szolgáltatás az IP-cím elvesztése nélkül:
+
+1. [Az IP-címet lefoglalni](../virtual-network/virtual-networks-reserved-public-ip.md) a központi telepítések törlése előtt.  Csak a számlázás történik az IP-cím. IP-cím számlázással kapcsolatos további információkért lásd: [árképzési IP-címek](https://azure.microsoft.com/pricing/details/ip-addresses/).
+2. Törölje a központi telepítéseket. Ne törölje a xxx.cloudapp.net, hogy használhassa a továbbiakban.
+3. Ha azt szeretné, hogy az azonos tartalék IP-cím használatával a felhőalapú szolgáltatás újratelepíteni az előfizetésében lefoglaló című [fenntartott IP-címek felhőalapú szolgáltatásokhoz és a virtuális gépek](https://azure.microsoft.com/blog/reserved-ip-addresses/).
+
+## <a name="my-cloud-service-management-certificate-is-expiring-how-to-renew-it"></a>A felhőalapú szolgáltatás felügyeleti tanúsítvány lejárati ideje. Újítsa meg, hogyan?
+
+A következő PowerShell-parancsok segítségével a felügyeleti tanúsítványok:
+
+    Add-AzureAccount
+    Select-AzureSubscription -Current -SubscriptionName <your subscription name>
+    Get-AzurePublishSettingsFile
+
+A **Get-AzurePublishSettingsFile** hoz létre egy új felügyeleti tanúsítvány **előfizetés** > **felügyeleti tanúsítványok** az Azure portálon. Az új tanúsítvány neve "YourSubscriptionNam]-[CurrentDate] - hitelesítő adatok" tűnik.
+
+## <a name="how-can-i-configure-auto-scale-based-on-memory-metrics"></a>Hogyan konfigurálható a memória mérőszámok alapján automatikus méretezése?
+
+Automatikus méretezése a felhőszolgáltatások memória metrikáját alapján jelenleg nem támogatott. 
+
+A probléma megoldásához használhatja az Application Insights, hogy a diagnosztikai ügynök lenne átirányíthatja a metrikákat az Application Insights. Automatikus méretezése metrikák forrásként az Application Insights támogatja, és a szerepkör-példányok száma, például a "Memória" Vendég metrika alapján is méretezhető.  Konfigurálja az Application Insights a Felhőszolgáltatás-projekt csomagfájl (*.cspkg), és engedélyezi a szolgáltatás a feat végrehajtásához Azure Diagnostics bővítményt kell.
+
+Az Application Insights automatikus méretezése konfigurálása Felhőszolgáltatások keresztül egyéni metrika magukat, hogy hogyan további részletekért lásd: [egyéni mértéket az Azure-ban megismerkedés automatikus méretezése](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)
+
+
+Az Application insights szolgáltatással integrálása Azure Diagnostics Felhőszolgáltatások további információkért lásd: [az Application Insights diagnosztikai adatok küldése a felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+
+Az Application Insights Felhőszolgáltatásai számára engedélyezni készül az további információkért lásd: [Application Insights az Azure Cloud Services csomag](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
+
+További információ az Azure Diagnostics naplózásának engedélyezése a Felhőszolgáltatások: [diagnosztika beállítása az Azure Cloud Services és a virtuális gépek](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+
+## <a name="how-to-automate-the-main-ssl-certificatepfx-and-intermediate-certificatep7b-cert-installation"></a>Hogyan automatizálható a fő SSL tanúsítványt (.pfx) és köztes certificate(.p7b) Tanúsítványtelepítés?
+
+Ez a feladat indítási parancsfájl (kötegelt/cmd/PowerShell) segítségével automatizálhatja, és regisztrálja az adott indítási parancsfájl a szolgáltatásdefiníciós fájlban. Adja hozzá az indítási parancsfájl és a tanúsítványok (.p7b fájl) ugyanabban a könyvtárban, az indítási parancsfájl projektmappában.
+
+További információkért tekintse át a következő cikkeket:
+- [Hogyan lehet konfigurálni és egy felhőalapú szolgáltatás indítási feladatok futtatása](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-startup-tasks)
+- [A felhőalapú szolgáltatás indítási gyakori feladatok](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-startup-tasks-common)
+
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Miért nem Azure-portálon követeljen meg a tárfiók számára történő központi telepítés?
+
+A klasszikus portálon a csomag közvetlenül a felügyeleti API réteg feltöltött, majd a API réteg volna ideiglenesen tegye a csomag egy belső tároló figyelembe.  Ez a folyamat teljesítményének és méretezhetőségének problémákat okoz, mivel az API réteg nem volt célja, hogy a fájl feltöltési szolgáltatás lehet.  Az Azure portálon (Resource Manager üzembe helyezési modellben) azt kell megkerülte az ideiglenes lépés API réteg első feltöltése a gyorsabb és megbízhatóbb központi telepítések eredményez.
+ 
+A költség, mint nagyon kicsi, és újra felhasználhatja a tárfiókon összes központi telepítések egységességét. Használhatja a [tárolási költség Számológép](https://azure.microsoft.com/en-us/pricing/calculator/#storage1) annak meghatározásához, a költség, töltse fel a service-csomag (CSPKG), töltse le a CSPKG, majd törölje a CSPKG.

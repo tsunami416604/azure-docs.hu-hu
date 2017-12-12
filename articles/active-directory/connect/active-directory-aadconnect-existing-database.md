@@ -4,7 +4,7 @@ description: "Ez a témakör ismerteti, hogyan használhatja a meglévő ADSync 
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.reviewer: cychua
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: billmath
-ms.openlocfilehash: 61652d97429336dad23ba14f7349e27bf52d33d7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: d65e12350e6302b0f95091f48f71cdc7d4610e2c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Az ADSync adatbázis Azure AD Connect telepítése
 Az Azure AD Connect SQL Server adatbázis adatainak tárolásához szükséges. Használja az alapértelmezett SQL Server 2012 Express LocalDB az Azure AD Connect telepítve, vagy használja a saját SQL teljes verzióját. Korábban az Azure AD Connect telepítése során az ADSync nevű új adatbázis mindig létrejött. Az Azure AD Connect 1.1.613.0 verziót (vagy után) lehetősége van az Azure AD Connect telepítése mutat, azt a meglévő ADSync adatbázis.

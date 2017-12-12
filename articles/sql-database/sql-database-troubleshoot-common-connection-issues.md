@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: daleche
-ms.openlocfilehash: cc9b1e1474e67628857dd80a63850634469ca5e8
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1d756aa023ae143608acc988ddd0ae8acee1a113
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Az Azure SQL Database kapcsolati problémák elhárítása
 Ha az Azure SQL Database létesített kapcsolat megszakad, [hibaüzenetek](sql-database-develop-error-messages.md). Ez a cikk központi Ez a témakör segítséget nyújt az Azure SQL Database kapcsolódási problémáinak elhárítása. Okozna [gyakori okainak](#cause) kapcsolódási problémák javasolja [hibaelhárításhoz](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , amely segít az identitás a problémát, és megoldásuk megoldására [átmeneti hibák](#troubleshoot-transient-errors) és [állandó vagy nem átmeneti hiba](#troubleshoot-persistent-errors). 
@@ -77,7 +77,7 @@ Ha az alkalmazás tartósan nem Azure SQL adatbázishoz való kapcsolódáshoz, 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Állandó kapcsolódási problémák elhárításának
 1. Állítson be [tűzfal-szabályok](sql-database-configure-firewall-settings.md) lehetővé teszi az ügyfél IP-címet. Ideiglenes tesztelési célokra beállítása egy tűzfalszabályt 0.0.0.0 használja, mint a kezdő IP-címtartomány és 255.255.255.255 használja, mint a záró IP-címtartományt. Ekkor megnyílik a kiszolgáló minden IP-cím. Ha a hálózati probléma így megoldódik, ez a szabály eltávolítása, és hozzon létre egy tűzfalszabályt egy megfelelően korlátozott IP-cím vagy a címtartományt. 
 2. Az ügyfél és az Internet közötti összes tűzfalnak ellenőrizze, hogy a 1433-as port kimenő kapcsolatok nyitva-e. Felülvizsgálati [SQL Server hozzáférés engedélyezése a Windows tűzfal beállításainak](https://msdn.microsoft.com/library/cc646023.aspx) és [hibrid identitás szükséges portok és protokollok](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) a további portokat, meg kell nyitnia az Azure-hoz kapcsolódó további mutatók Active Directory-hitelesítéssel.
-3. Ellenőrizze a kapcsolati karakterlánc és más csatlakozási beállításait. A kapcsolati karakterlánc című a [kapcsolódási problémák a témakör](sql-database-connectivity-issues.md#connections-to-azure-sql-database).
+3. Ellenőrizze a kapcsolati karakterlánc és más csatlakozási beállításait. A kapcsolati karakterlánc című a [kapcsolódási problémák a témakör](sql-database-connectivity-issues.md#connections-to-sql-database).
 4. Ellenőrizze a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy nincs regionális kimaradás, lásd: [kimaradás helyreállíthatók](sql-database-disaster-recovery.md) egy új területet a helyreállítás lépéseit.
 
 ## <a name="next-steps"></a>Következő lépések

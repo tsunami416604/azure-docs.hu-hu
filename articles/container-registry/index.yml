@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Container Registry-dokumentáció
+title: "Azure Container Registry-dokumentáció"
 metadata:
-  title: Az Azure Container Registry dokumentációja – oktatóanyagok | Microsoft Docs
-  description: 'Az Azure Container Registry rendszerképek tárolását és kezelését teszi lehetővé minden típusú tároló-üzembehelyezéshez. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Registry használatával.'
+  title: "Az Azure Container Registry dokumentációja – oktatóanyagok | Microsoft Docs"
+  description: "Az Azure Container Registry rendszerképek tárolását és kezelését teszi lehetővé minden típusú tároló-üzembehelyezéshez. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Registry használatával."
   services: container-registry
   author: czeumault
   manager: carolz
@@ -13,47 +13,54 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
+  ms.openlocfilehash: cdd33e3aed48cc94f91962b78f17628a6e29657d
+  ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/07/2017
 abstract:
-  description: 'Az Azure Container Registry rendszerképek tárolását és kezelését teszi lehetővé minden típusú tároló-üzembehelyezéshez. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Registry használatával.'
+  description: "Az Azure Container Registry rendszerképek tárolását és kezelését teszi lehetővé minden típusú tároló-üzembehelyezéshez. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Registry használatával."
 sections:
-  - title: 5 perces gyors útmutatók
+- title: "5 perces gyors útmutatók"
+  items:
+  - type: paragraph
+    text: "Megismerkedhet az Azure Container Registry üzembe helyezésének módjával."
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: Megismerkedhet az Azure Container Registry üzembe helyezésének módjával.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg'
-            text: Azure CLI
-            href: /azure/container-registry/container-registry-get-started-azure-cli
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure Portal
-            href: /azure/container-registry/container-registry-get-started-portal
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-registry/container-registry-get-started-powershell
-  - title: Részletes útmutatók
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/container-registry/container-registry-get-started-azure-cli
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/container-registry/container-registry-get-started-portal
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/container-registry/container-registry-get-started-powershell
+- title: "Részletes útmutatók"
+  items:
+  - type: paragraph
+    text: "Oktatóanyagaink segítségével megismerkedhet az Azure Container Registry használatával."
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: Oktatóanyagaink segítségével megismerkedhet az Azure Container Registry használatával.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">A Container Registry georeplikációja (előzetes verzió)</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Container Registry és Azure Container Instances</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Container Registry és Azure Container Service (AKS)</a>
-          - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">Container Registry Service Fabric platformmal</a>
-  - title: Referencia
+    - html: "<a href=\"/azure/container-registry/container-registry-tutorial-prepare-registry\">A Container Registry georeplikációja (előzetes verzió)</a>"
+    - html: "<a href=\"/azure/container-instances/container-instances-tutorial-prepare-app\">Container Registry és Azure Container Instances</a>"
+    - html: "<a href=\"/azure/aks/tutorial-kubernetes-prepare-app\">Container Registry és Azure Container Service (AKS)</a>"
+    - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">Container Registry Service Fabric platformmal</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/cli/azure/acr">Azure CLI</a></p><p><a href="/powershell/module/azurerm.containerregistry">PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/containerregistry">REST API-referencia</a></p>
+    - title: Parancssor
+      html: <p><a href="/cli/azure/acr">Azure CLI</a></p><p><a href="/powershell/module/azurerm.containerregistry">PowerShell</a></p>
+    - title: Nyelvek
+      html: <p><a href="/dotnet/api/overview/azure/containerregistry">.NET</a></p><p><a href="/python/api/overview/azure/container-registry">Python</a></p><p><a href="/javascript/api/overview/azure/container-registry">Node.js</a></p>
+    - title: REST
+      html: "<p><a href=\"/rest/api/containerregistry\">REST API-referencia</a></p><p><a href=\"/azure/templates/microsoft.containerregistry/registries\">Resource Manager-sablon</a></p><p><a href=\"/azure/container-registry/container-registry-webhook-reference\">Webhookséma</a></p>"

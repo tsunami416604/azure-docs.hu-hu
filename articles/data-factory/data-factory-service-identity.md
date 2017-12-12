@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: 4b970341f9511a889bfcc288756b1be6a4f4647e
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 350ce0fd9a10d862e811dd1eaa39e0e90076e1ef
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="azure-data-factory-service-identity"></a>Az Azure Data Factory-szolgáltatási identitás
 
@@ -172,3 +172,5 @@ Az alábbi témakörökben bevezető mikor és hogyan használható a data facto
 
 - [Hitelesítő adatok tárolása az Azure Key Vault](store-credentials-in-key-vault.md)
 - [Adatok másolása az/Azure Data Lake Store felügyelt identitás-hitelesítéssel](connector-azure-data-lake-store.md)
+
+Lásd: [MSI áttekintése](~/articles/active-directory/msi-overview.md) További háttérinformációk a felügyelt Szolgáltatásidentitás, mely data factory szolgáltatásidentitás alapul. 

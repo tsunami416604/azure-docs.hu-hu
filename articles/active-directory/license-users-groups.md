@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan licencszerződést saját maga és a felhaszn�
 services: active-directory
 documentationcenter: 
 author: jeffgilb
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeffgilb
 custom: it-pro
-ms.openlocfilehash: c4509cdb003687083d0456c1957b19cf35ee056a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc210b83a9eeb947a15b60548e43096bd9e11c45
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>Gyors üzembe helyezés: Licenccel rendelkező felhasználók az Azure Active Directoryban
 Az Azure AD licencet-alapú szolgáltatások munkahelyi egy Azure Active Directory (Azure AD) az előfizetéshez az Azure-bérlő aktiválása. Miután az előfizetés aktív, szolgáltatási lehetőségeket az Azure AD-rendszergazdák által kezelt és licenccel rendelkező felhasználók által használt. Nagyvállalati mobilitási + biztonsági, prémium szintű Azure AD vagy Azure AD alapvető megvásárolt, a bérlő frissül az előfizetést, beleértve a érvényességi időtartam és a fizetett licenccel. Az előfizetési adatai, beleértve a hozzárendelt vagy elérhető licencek száma alatt az Azure portálon keresztül érhető el **Azure Active Directory** nyissa meg a **licencek** csempére. A **licencek** panel is a legjobb hely a licenc-hozzárendelések kezeléséhez.

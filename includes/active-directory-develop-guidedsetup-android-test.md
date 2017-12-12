@@ -1,4 +1,3 @@
-
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
 1. Az eszköz/emulátor telepíteni a kódot.

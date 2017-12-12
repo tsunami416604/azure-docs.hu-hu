@@ -9,21 +9,25 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 
 
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Szerezze be a kapcsolati karakterláncot az Azure-portálon
-Használja a [Azure-portálon](https://portal.azure.com/) a kapcsolati karakterlánc szükséges az ügyfélprogram kommunikál az Azure SQL Database az beszerzése: 
+Használja a [Azure-portálon](https://portal.azure.com/) beszerzése a kapcsolati karakterlánc, amely szükséges az ügyfélprogram Azure SQL Database kommunikál. 
 
-1. Kattintson a **Tallózás** > **SQL-adatbázisok**.
-2. Adja meg az adatbázis nevét a szűrő szövegmezőbe a bal felső sarokban a közelében a **SQL-adatbázisok** panelen.
-3. Az adatbázis sorára kattintson.
-4. Miután a panelen megjelenik az adatbázishoz, visual kényelmi célokat szolgál kattintson csukja össze a panelen keresse meg és adatbázis-szűrés használt szabványos kis méret vezérlők. 
+1. Válassza ki **összes TALLÓZÁSA** > **SQL-adatbázisok**.
+
+2. Adja meg az adatbázis nevét a szűrő szövegmezőbe közelében bal felső sarkában a **SQL-adatbázisok** panelen.
+
+3. Jelölje ki az adatbázis sort.
+
+4. Miután a panelen megjelenik az adatbázishoz visual kényelmi célokat szolgál, válassza a **kis méret** gombokkal csukja össze a panelen keresse meg és adatbázis-szűrés használja. 
    
     ![Az adatbázis elkülönítése szűrő][10-FilterDatabase]
-5. Az adatbázis paneljén kattintson **adatbázis-kapcsolati karakterláncok megjelenítése**.
+5. Az adatbázis paneljén válassza **adatbázis-kapcsolati karakterláncok megjelenítése**.
+
 6. Ha szeretne használni az ADO.NET kapcsolattára, másolja a karakterláncot, címkével **ADO**. 
    
     ![Másolja a ADO kapcsolati karakterláncot az adatbázishoz][20-CopyAdoConnectionString]
 7. Egy formátumban vagy egy másik a kapcsolati karakterlánc adatok beillesztése az Ügyfélkód program.
 
-További információkért lásd:<br/>[A kapcsolati karakterláncokat és konfigurációs fájlok](http://msdn.microsoft.com/library/ms254494.aspx).
+További információkért lásd: [kapcsolati karakterláncok és konfigurációs fájlok](http://msdn.microsoft.com/library/ms254494.aspx).
 
 <!-- Image references. -->
 

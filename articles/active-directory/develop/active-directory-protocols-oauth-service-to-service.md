@@ -4,7 +4,7 @@ description: "A cikkből megtudhatja, hogyan használható a HTTP-üzenetek OAut
 services: active-directory
 documentationcenter: .net
 author: navyasric
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: cc30a54cd56c0cb03a67f86e4552398baa764e58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad2118130ec36aed1561db763946104501eb0f32
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Ügyfél-hitelesítő (közös titkos kulcs vagy tanúsítvány) hívásokról szolgáltatás
 Az OAuth 2.0 ügyfél hitelesítő adatok Grant Flow lehetővé teszi egy webszolgáltatás-bővítmény (*bizalmas ügyfél*) a saját hitelesítő adatok használata helyett a felhasználó megszemélyesítésekor, hitelesítésére, miközben egy másik webes szolgáltatás hívása. Ebben a forgatókönyvben az ügyfél nem általában egy középső rétegbeli webes szolgáltatás, a démon szolgáltatás vagy a webhely. A magasabb szintű megbízhatóság az Azure AD is lehetővé teszi a hívó szolgáltatás (és nem a közös titkos kulcs) tanúsítványt használják a hitelesítő adatokat.
@@ -55,7 +55,7 @@ Egy közös titkos kulcs használata esetén a szolgáltatás hozzáférési ké
 | grant_type |Szükséges |A kért grant típusát határozza meg. Az ügyfél-hitelesítő adatok Grant flow, az értéknek kell lennie **client_credentials**. |
 | client_id |Szükséges |Adja meg az Azure AD a hívó webszolgáltatás ügyfél-azonosító. A hívó alkalmazás ügyfél-azonosító, a kereséséhez a [Azure-portálon](https://portal.azure.com), kattintson a **Active Directory**kapcsoló directory lehetőséget, kattintson az alkalmazás. A client_id van a *Alkalmazásazonosító* |
 | client_secret |Szükséges |Adjon meg egy kulcsot, a hívó szolgáltatás vagy démon webalkalmazás az Azure ad-ben regisztrált. Az Azure-portálon a kulcs létrehozásához kattintson a **Active Directory**directory váltani, kattintson az alkalmazás, kattintson **beállítások**, kattintson a **kulcsok**, és a kulcs hozzáadása.|
-| Erőforrás |Szükséges |Adja meg az App ID URI az fogadó webszolgáltatás. Az Azure portálon található App ID URI, kattintson a **Active Directory**, directory váltani, kattintson a szolgáltatásalkalmazás, majd **beállítások** és **tulajdonságai** |
+| erőforrás |Szükséges |Adja meg az App ID URI az fogadó webszolgáltatás. Az Azure portálon található App ID URI, kattintson a **Active Directory**, directory váltani, kattintson a szolgáltatásalkalmazás, majd **beállítások** és **tulajdonságai** |
 
 #### <a name="example"></a>Példa
 A következő HTTP POST kérelmek egy jogkivonatot a https://service.contoso.com/ webszolgáltatáshoz. A `client_id` azonosítja a webszolgáltatás, amelyet a hozzáférési jogkivonat igényel.
@@ -77,7 +77,7 @@ Szolgáltatás hozzáférési kérelmek tanúsítvánnyal tartalmazza a követke
 | client_id |Szükséges |Adja meg az Azure AD a hívó webszolgáltatás ügyfél-azonosító. A hívó alkalmazás ügyfél-azonosító, a kereséséhez a [Azure-portálon](https://portal.azure.com), kattintson a **Active Directory**kapcsoló directory lehetőséget, kattintson az alkalmazás. A client_id van a *Alkalmazásazonosító* |
 | client_assertion_type |Szükséges |Az értéknek kell lennie`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |Szükséges | Egy helyességi feltétel (egy JSON Web Token) hozzon létre, és írja alá a tanúsítványt igénylő regisztrálta hitelesítő adatként az alkalmazáshoz. További információ a [tanúsítvány a hitelesítő adatok](active-directory-certificate-credentials.md) megtudhatja, hogyan kell regisztrálni a tanúsítványt, és a helyességi feltétel formátuma.|
-| Erőforrás | Szükséges |Adja meg az App ID URI az fogadó webszolgáltatás. Az Azure portálon található App ID URI, kattintson a **Active Directory**, kattintson arra a címtárra, kattintson az alkalmazást, majd **konfigurálása**. |
+| erőforrás | Szükséges |Adja meg az App ID URI az fogadó webszolgáltatás. Az Azure portálon található App ID URI, kattintson a **Active Directory**, kattintson arra a címtárra, kattintson az alkalmazást, majd **konfigurálása**. |
 
 Figyelje meg, hogy a paraméterek megegyeznek-szinte közös titkos kulcs kérése gazdabuszadaptereken azzal a különbséggel, hogy a client_secret paraméter helyébe két paramétert: egy client_assertion_type és client_assertion.
 
@@ -103,7 +103,7 @@ A sikeres válasz tartalmazza JSON OAuth 2.0 választ a következő paraméterek
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejárati idejének. A dátum jelzi másodpercben a 1970-01-01T0:0:0Z UTC, amíg az elévülési időt. Ezt az értéket a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
 | not_before |Az időt, amelyből a hozzáférési jogkivonat lesz használható. A dátum jelzi másodpercben a 1970-01-01T0:0:0Z UTC, amíg a token érvényességi ideje.|
-| Erőforrás |A fogadó webszolgáltatás App ID URI. |
+| erőforrás |A fogadó webszolgáltatás App ID URI. |
 
 #### <a name="example-of-response"></a>Válasz – példa
 A következő példa bemutatja egy olyan hozzáférési jogkivonatot webszolgáltatásnak kérelemre sikerességi válasz.

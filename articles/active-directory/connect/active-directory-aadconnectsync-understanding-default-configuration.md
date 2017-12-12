@@ -4,7 +4,7 @@ description: "Ez a cikk ismerteti az Azure AD Connect szinkronizálási szolgál
 services: active-directory
 documentationcenter: 
 author: andkjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 32a693c059a1b4261f33a3d6f50f397365e9dac4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6ba1739825a6f0898e417ca37fa6bf370ef17d6c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
 Ez a cikk ismerteti a out-of-box konfigurációs szabályok. Az dokumentumokat, és ezek a szabályok milyen hatással van a konfigurációs szabályok. Azt is bemutatja, hogyan kell az Azure AD Connect szinkronizálási szolgáltatás az alapértelmezett konfigurációját. Az célja, hogy az olvasó együttműködik a deklaratív kiépítés nevű konfigurációs modell egy valós példában alakulását. Ez a cikk feltételezi, hogy már telepített, és állítsa be a telepítési varázsló segítségével az Azure AD Connect sync.
@@ -178,7 +178,7 @@ Szinkronizálási szabályok kiértékelésekor meghatározott illesztési szab�
 
 Ha a fenti kép tekinti meg, akkor láthatja, hogy a szabály próbál csatlakozni, **objectSID** rendelkező **msExchMasterAccountSid** (Exchange) és **msRTCSIP-OriginatorSid** (Lync). Ez az felel meg az elvártnak a fiók-erőforrás erdő topológiájában. Ugyanaz a szabály az összes erdőben található meg. A feltételezi, hogy minden erdőben vagy egy fiókot, vagy az erőforrás erdő lehet. Ez a konfiguráció is működik, ha fiókokat, amelyek az adott erdő live, és nem kell csatlakoztatni.
 
-#### <a name="transformations"></a>Átalakítás
+#### <a name="transformations"></a>Átalakítások
 Transzformációs szakaszából határozza meg az összes attribútumfolyamok, amelyek érvényesek a célobjektum objektumok tartományhoz csatlakoztatott és a hatókör szűrő teljesül-e. Ha visszalép, hogy a **a az AD-felhasználó AccountEnabled** szinkronizálási szabály található a következő átalakítások:
 
 ![Átalakítások szinkronban szabály szerkesztő lap ](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruletransformations.png)

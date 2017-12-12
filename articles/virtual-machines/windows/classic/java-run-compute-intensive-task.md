@@ -15,11 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: a71efa7ff052c7c69de2b9aba3c1ed9328538e3f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 76997f2e31f3edd6260b2ae19631236bc1c0c1b6
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>Számításigényes feladat Javában történő futtatása virtuális gépen
 > [!IMPORTANT] 
@@ -51,7 +51,7 @@ A Java-alkalmazások figyelése a számítási-igényes tevékenység példát a
 [!INCLUDE [create-account-and-vms-note](../../../../includes/create-account-and-vms-note.md)]
 
 ## <a name="to-create-a-virtual-machine"></a>Virtuális gép létrehozása
-1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Kattintson a **új**, kattintson a **számítási**, kattintson a **virtuális gép**, és kattintson a **a gyűjtemény**.
 3. Az a **virtuális gép lemezképét válasszon** párbeszédpanelen jelölje ki **JDK 7 a Windows Server 2012**.
    Vegye figyelembe, hogy **JDK 6 Windows Server 2012** áll rendelkezésre, amennyiben örökölt alkalmazásokat, amelyek még nincsenek JDK 7 futtathatja.
@@ -74,7 +74,7 @@ A Java-alkalmazások figyelése a számítási-igényes tevékenység példát a
    2. Kattintson a **Befejezés** gombra.
 
 ## <a name="to-remotely-log-in-to-your-virtual-machine"></a>A távoli bejelentkezés a virtuális gép
-1. Jelentkezzen be a [a klasszikus Azure portálon](https://manage.windowsazure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Kattintson a **virtuális gépek**.
 3. Kattintson a nevére, a virtuális gép, amelyet szeretne-e jelentkezni.
 4. Kattintson a **Connect** (Csatlakozás) gombra.
@@ -87,15 +87,15 @@ A Service Bus-üzenetsorok Azure-ban való használatához először létre kell
 
 Szolgáltatásnévtér létrehozása:
 
-1. Jelentkezzen be a [a klasszikus Azure portálon](https://manage.windowsazure.com).
-2. A klasszikus Azure portál bal alsó navigációs ablaktábláján kattintson **Service Bus, a hozzáférés-vezérlés és a gyorsítótár**.
-3. A klasszikus Azure-portálon a bal felső ablaktáblán kattintson a **Service Bus** csomópontra, majd a **új** gombra.  
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+2. Az Azure portál bal alsó navigációs ablaktábláján kattintson **Service Bus, a hozzáférés-vezérlés és a gyorsítótár**.
+3. Az Azure-portálon a bal felső ablaktáblán kattintson a **Service Bus** csomópontra, majd a **új** gombra.  
    ![Service Bus csomópont képernyőképe][svc_bus_node]
 4. A a **hozzon létre egy új szolgáltatás Namespace** párbeszédpanelen adja meg egy **Namespace**, és annak ellenőrzése, hogy a rendszer egyedi, kattintson a **ellenőrizze a rendelkezésre állási** gombra.  
    ![Hozzon létre egy új Namespace képernyőképe][create_namespace]
 5. Miután meggyőződött arról, hogy a névtér neve nem érhető el, válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz, és kattintson a **létrehozása Namespace** gombra.  
    
-   A létrehozott névtér fog megjelenni a klasszikus Azure portálra, és aktiválja néhány percet vesz igénybe. Várjon, amíg az állapot **aktív** , mielőtt a következő lépéssel.
+   A létrehozott névtér fog megjelenni az Azure-portálon, és aktiválja néhány percet vesz igénybe. Várjon, amíg az állapot **aktív** , mielőtt a következő lépéssel.
 
 ## <a name="obtain-the-default-management-credentials-for-the-namespace"></a>Az alapértelmezett felügyeleti hitelesítő adatok a névtér beszerzése
 A várólista létrehozásakor az új névtéren, például a kezelési műveletek végrehajtásához kell szereznie a névtérhez tartozó felügyeleti hitelesítő adatokat.

@@ -11,13 +11,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2017
+ms.date: 12/11/2017
 ms.author: alkohli
-ms.openlocfilehash: b5c84dbea574afceba93d978425a70ce33271e36
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 36df62c4b01c623702707d39c6af59f4752ee6e0
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>StorSimple 5000-7000-es adatsorozat 8000 sorozat eszközre adatainak áttelepítésére
 
@@ -73,12 +73,12 @@ Az alábbiakban az örökölt 5000 vagy 7000 adatsorozat eszköz és a StorSimpl
     > [!IMPORTANT]
     > Azt javasoljuk, hogy rendelkezik-e az áttelepítési folyamat során az eszköz soros elérésére. Soros hozzáférés segítségével kell eszköz probléma merül fel, a hibaelhárításban.
 
-* Az 5000 vagy 7000 forrás eszköz szoftver verziója v2.1.1.518 fut. Korábbi verziói nem támogatottak.
+* Az 5000 vagy 7000 forrás-eszközön fut szoftver verziója v2.1.1.518 vagy újabb. Korábbi verziói nem támogatottak.
 * Az a 5000 vagy 7000 adatsorozat futtatott verziójának ellenőrzéséhez tekintse meg a webes felhasználói felület jobb felső sarkában. A szoftververzió, hogy fut-e az eszköz megjelenik. Az áttelepítéshez a 5000 vagy 7000 adatsorozat kell futnia a v2.1.1.518.
 
     ![Ellenőrizze a szoftver verziója elavult eszköz](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Ha az élő eszköz v2.1.1.518 nem fut, frissítse a rendszer szükséges minimális verziója. Részletes útmutatásért tekintse meg [frissítse a rendszert a v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518).
+    * Ha az élő eszköz v2.1.1.518 nem fut, vagy később, akkor frissítse a rendszer szükséges minimális verziója. Részletes útmutatásért tekintse meg [frissítse a rendszert a v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518).
     * Ha v2.1.1.518 futtatja, folytassa a webes felhasználói felület, ha van-e a beállításjegyzék-visszaállítási hibák értesítések. Ha a rendszerleíró adatbázis visszaállítása sikertelen volt, beállításjegyzék visszaállítási fut. További információkért lépjen be, hogyan [beállításjegyzék visszaállítási futtatása](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry).
     * Ha még nem futott v2.1.1.518 lefelé eszköztől, a feladatátvételt egy helyettesítő v2.1.1.518 futtató eszközre elvégezheti. Részletes útmutatásért tekintse meg a 5000/7000-es adatsorozat StorSimple eszköz DR.
     * Készítsen biztonsági másolatot a eszközadatok felhő pillanatkép létrehozása van folyamatban.

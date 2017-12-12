@@ -1,6 +1,6 @@
 ---
 title: "SQL-adatbázis adatkapcsolattárak |} Microsoft Docs"
-description: "Hivatkozások a modulokat, amelyek lehetővé teszik az ügyfél programozási nyelvek széles választékában SQL Server és SQL-adatbázis kapcsolati letöltések."
+description: "Hivatkozások a modulokat, amelyek lehetővé teszik az SQL Server és SQL-adatbázis kapcsolati ügyfél programozási nyelvek széles választékában a letöltéseket."
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -15,29 +15,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: genemi
-ms.openlocfilehash: ce7cfdfa4695283c588bc5c73791b1c04cd2f772
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 012acd2b53fc9205511530d3cc30803dceef88a0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="connectivity-libraries-and-frameworks-for-microsoft-sql-server"></a>Kapcsolat kódtárai és keretrendszerei a Microsoft SQL Server
+# <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>Kapcsolat kódtárai és keretrendszerei az SQL Server
 
-Tekintse meg a [első lépéseket bemutató Oktatóanyagainkat](http://aka.ms/sqldev) gyors Ismerkedés a programozási nyelvek, például a C#, Java, Node.js, PHP és Python, és hozza létre az SQL Server használata a Linux- vagy Windows- vagy Docker macOS alkalmazását.
+Tekintse meg a [első lépések oktatóanyagok](http://aka.ms/sqldev) gyors megkezdéséhez programozási nyelvek, például a C#, Java, Node.js, PHP és Python. Majd hozhat létre egy alkalmazást az SQL Server használata a Linux- vagy Windows- vagy Docker macOS.
 
-Az alábbi táblázat felsorolja a kapcsolat tárak vagy *illesztőprogramok* , hogy az ügyfélalkalmazások nyelvi csatlakozhat és a Microsoft SQL Server rendszert futtató helyszíni vagy a felhőben, Linux, Windows vagy Docker és a különböző használhatja Az Azure SQL Database és az Azure SQL Data Warehouse. 
+A következő táblázat felsorolja a kapcsolat tárak vagy *illesztőprogramok* , hogy az ügyfélalkalmazások, különböző nyelvi csatlakozhat és a helyszíni SQL Serveren, illetve a felhőben használhatja. Használhat Linux, Windows vagy Docker, és használhatja őket az Azure SQL Database és Azure SQL Data warehouse-ba való csatlakozást. 
 
-| Nyelv | Platform | További források | Letöltés | Első lépések |
+| Nyelv | Platform | További források | Letöltés | Bevezetés |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Az SQL Server Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Letöltés](https://www.microsoft.com/net/download/) | [Első lépések](https://www.microsoft.com/en-us/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows, Linux, macOS | [Microsoft JDBC-illesztőprogram SQL Serverhez](http://msdn.microsoft.com/library/mt484311.aspx) | [Letöltés](https://go.microsoft.com/fwlink/?linkid=852460) |  [Első lépések](https://www.microsoft.com/en-us/sql-server/developer-get-started/java/ubuntu)
+| Java | Windows, Linux, macOS | [Az SQL Server Microsoft JDBC-illesztőprogram](http://msdn.microsoft.com/library/mt484311.aspx) | [Letöltés](https://go.microsoft.com/fwlink/?linkid=852460) |  [Első lépések](https://www.microsoft.com/en-us/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows, Linux, macOS| [Az SQL Server PHP SQL-illesztőprogram](http://msdn.microsoft.com/library/dn865013.aspx) | Operációs rendszer: <br/> \*[Windows](https://www.microsoft.com/download/details.aspx?id=20098) <br/> \*[Linux](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) <br/> \*[macOS](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) |  [Első lépések](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/ubuntu)
 | Node.js | Windows, Linux, macOS | [Az SQL Server node.js-illesztőprogram](http://msdn.microsoft.com/library/mt652093.aspx) | [Telepítés](https://msdn.microsoft.com/library/mt652094.aspx) |  [Első lépések](https://www.microsoft.com/en-us/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Python SQL-illesztőprogram](http://msdn.microsoft.com/library/mt652092.aspx) | Telepítse a választási lehetőségek: <br/> \*[pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \*[pyodbc](http://msdn.microsoft.com/library/mt763257.aspx) |  [Első lépések](https://www.microsoft.com/en-us/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows, Linux, macOS | [Az SQL Server Ruby illesztőprogram](http://msdn.microsoft.com/library/mt691981.aspx) | [Telepítés](https://msdn.microsoft.com/library/mt711041.aspx) | [Első lépések](https://www.microsoft.com/en-us/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows, Linux, macOS | [Az SQL Server Microsoft ODBC-illesztőprogram](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) | [Letöltés](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) |  
 
-Az alábbi táblázatban néhány példa a objektum relációs leképezési (ORM) keretrendszerek és a webes keretrendszerek, amellyel az ügyfél alkalmazások a Microsoft SQL Server rendszert futtató helyszíni vagy a felhőben, Linux, Windows vagy Docker és az Azure SQL Database és Azure Az SQL Data Warehouse. 
+Az alábbi táblázatban láthatók példák objektum relációs leképezési (ORM) keretrendszerek és a webes keretrendszerek használó ügyfélalkalmazások SQL Server rendszert futtató helyszíni vagy a felhőben. A keretrendszerek használata Linux, Windows vagy Docker, és SQL-adatbázis és az SQL Data Warehouse való csatlakozáskor használandó őket. 
 
 | Nyelv | Platform | ORM(s) |
 | :-- | :-- | :-- |
@@ -50,7 +50,7 @@ Az alábbi táblázatban néhány példa a objektum relációs leképezési (ORM
 ||||
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-- [SQL Server illesztőprogramok](http://msdn.microsoft.com/library/mt654049.aspx) ügyfélalkalmazások való csatlakozáshoz
+- [SQL Server illesztőprogramok](http://msdn.microsoft.com/library/mt654049.aspx) csatlakozhat a ügyfélalkalmazások használt
 - Csatlakozás SQL Database adatbázishoz:
     - [Csatlakozás az SQL Database-hez a .NET (C#) használatával](sql-database-connect-query-dotnet.md)
     - [Csatlakozás az SQL Database-hez a PHP használatával](sql-database-connect-query-php.md)

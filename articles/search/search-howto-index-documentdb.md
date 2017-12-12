@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: search
 ms.date: 08/10/2017
 ms.author: eugenesh
-ms.openlocfilehash: 2f1791393b1e59721cc5a1030927cd00d74a5f13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfa9bf1661e3a77ae4a2bf51285ab9a8da35e297
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Az Azure Search használatával az indexelők Cosmos DB csatlakozás
 
@@ -29,7 +29,7 @@ A Cosmos DB indexelő beállításához rendelkeznie kell egy [Azure Search szol
 Ha úgy dönt, a portálhoz, a [adatok importálása varázsló](search-import-data-portal.md) végigvezeti Önt a létrehozását ezeket az erőforrásokat.
 
 > [!NOTE]
-> A cosmos DB DocumentDB következő generációja van. Bár a termék neve módosul, szintaxisa azonos az előzővel. Továbbra is meg `documentdb` indexelő cikkben megfelelően. 
+> Azure Cosmos-adatbázis a DocumentDB következő generációja van. Bár a termék neve módosul, szintaxisa azonos az előzővel. Továbbra is meg `documentdb` indexelő cikkben megfelelően. 
 
 > [!TIP]
 > Indítja el a **adatimportálás** varázsló egyszerűbbé teheti az adott adatforrás indexelő Cosmos DB irányítópultról. A kezdéshez lépjen a bal oldali navigációs menüben a **Gyűjtemények** > **Azure Search hozzáadása** elemre.
@@ -295,5 +295,5 @@ A következő példa egy adatforrást egy helyreállítható törlési házirend
 ## <a name="NextSteps"></a>Következő lépések
 Gratulálunk! Azure Cosmos DB integrálása az Azure Search használja az indexelő Cosmos DB megtanulhatta.
 
-* Hogyan Azure Cosmos DB kapcsolatos további tudnivalókért lásd: a [Cosmos DB oldalát](https://azure.microsoft.com/services/documentdb/).
+* Hogyan Azure Cosmos DB kapcsolatos további tudnivalókért lásd: a [Azure Cosmos DB oldalát](https://azure.microsoft.com/services/cosmos-db/).
 * Hogyan Azure Search kapcsolatos további tudnivalókért lásd: a [keresési szolgáltatás lapján](https://azure.microsoft.com/services/search/).

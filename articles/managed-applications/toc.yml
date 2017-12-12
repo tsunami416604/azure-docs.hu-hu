@@ -12,8 +12,6 @@
   items:
     - name: Szolgáltatáskatalógusban elérhető alkalmazás létrehozása
       href: publish-service-catalog-app.md
-    - name: Piactéren elérhető alkalmazás létrehozása
-      href: publish-marketplace-app.md
 - name: Példák
   items:
     - name: Azure CLI

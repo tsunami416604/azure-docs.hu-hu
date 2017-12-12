@@ -5,7 +5,7 @@ keywords: "Az AD FS-, ADFS, az AD FS felügyeleti AAD-csatlakozás, csatlakozás
 services: active-directory
 documentationcenter: 
 author: anandyadavmsft
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: c9ff22c7b4793112da5211162ed9cd58ac86d238
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: e024dd13c6bf25697dbea67ae240a100c27454b8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelése és testreszabása az Active Directory összevonási szolgáltatások az Azure AD Connect használatával
 Ez a cikk ismerteti a kezelése és testreszabása az Active Directory összevonási szolgáltatások (AD FS) Azure Active Directory (Azure AD) Connect használatával. Egyéb gyakori AD FS feladatok, amelyek hasznosak lehetnek az AD FS-farm teljes konfigurációját is tartalmaz.

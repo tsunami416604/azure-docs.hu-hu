@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 8ac45408dab31566be3089cbf2cd7d31d54b1655
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: b561352d702d1c5a415ebebc253869b8a56d68d8
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Az Azure hdinsight Spark-fürtjei Jupyter notebookokhoz kernelek 
 
@@ -82,13 +82,13 @@ Az alábbiakban néhány előnyeit az új kernelek használata Jupyter notebook 
 
    | Varázsszám | Példa | Leírás |
    | --- | --- | --- |
-   | segítség |`%%help` |Létrehoz egy táblát az összes rendelkezésre álló magics példa és leírása |
+   | súgó |`%%help` |Létrehoz egy táblát az összes rendelkezésre álló magics példa és leírása |
    | információ |`%%info` |A jelenlegi Livy végpont kimenetek munkamenet-információk |
-   | Konfigurálása |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfigurálja a paramétereket a munkamenet létrehozásához. A force jelzést (-f) kötelező, ha a munkamenet már létezik, amely ellenőrzi, hogy a munkamenet eldobása és ismételt létrehozása megtörtént. Nézze meg [Livy a FELADÁS egy vagy több /sessions kérelem törzse](https://github.com/cloudera/livy#request-body) érvényes paraméterek listáját. Paraméterek a JSON karakterláncként kell átadnia, és későbbinek kell lennie a következő sorban a Bűvös példa oszlopában látható módon. |
-   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Végrehajtja a Hive-lekérdezések a sqlContext ellen. Ha a `-o` paramétert, a lekérdezés eredménye őrzi a %% helyi Python-környezetben, egy [Pandas](http://pandas.pydata.org/) dataframe. |
+   | konfigurálás |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfigurálja a paramétereket a munkamenet létrehozásához. A force jelzést (-f) kötelező, ha a munkamenet már létezik, amely ellenőrzi, hogy a munkamenet eldobása és ismételt létrehozása megtörtént. Nézze meg [Livy a FELADÁS egy vagy több /sessions kérelem törzse](https://github.com/cloudera/livy#request-body) érvényes paraméterek listáját. Paraméterek a JSON karakterláncként kell átadnia, és későbbinek kell lennie a következő sorban a Bűvös példa oszlopában látható módon. |
+   | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Végrehajtja a Hive-lekérdezések a sqlContext ellen. Ha a `-o` paramétert, a lekérdezés eredménye őrzi a %% helyi Python-környezetben, egy [Pandas](http://pandas.pydata.org/) dataframe. |
    | helyi |`%%local`<br>`a=1` |Az egymás utáni sorok a kód végrehajtása helyileg. Kód még a kernel módjától függetlenül érvényes Python2 kódot kell lennie. Igen, akkor is, ha a kiválasztott **PySpark3** vagy **Spark** kernelek a notebook létrehozása, ha közben az `%%local` magic cellába, ezt a cellát csak rendelkeznie kell érvényes Python2 kódot... |
    | naplók |`%%logs` |A naplók kiírja a Livy aktuális munkamenetre. |
-   | törlése |`%%delete -f -s <session number>` |Egy adott munkamenet a jelenlegi Livy végpont törlése. Vegye figyelembe, hogy maga a kernel kezdeményezett munkamenet nem törölhető. |
+   | törlés |`%%delete -f -s <session number>` |Egy adott munkamenet a jelenlegi Livy végpont törlése. Vegye figyelembe, hogy maga a kernel kezdeményezett munkamenet nem törölhető. |
    | Tisztítás |`%%cleanup -f` |Törli az aktuális Livy végpont, beleértve a jegyzetfüzet munkamenet a munkamenetek. A kényszerített jelző -f megadása kötelező. |
 
    > [!NOTE]
