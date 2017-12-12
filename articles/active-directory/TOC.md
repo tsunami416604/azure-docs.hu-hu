@@ -219,7 +219,6 @@
 ### [Bejelentkezés automatikus gyorsításának konfigurálása HRD-szabályzattal](active-directory-auto-acceleration-using-hrd.md)
 
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
-#### [Önkiszolgáló hozzáférés](active-directory-self-service-application-access.md)
 #### [Egyszeri bejelentkezéses hozzáférés](active-directory-appssoaccess-whatis.md)
 #### [Egyszeri bejelentkezés tanúsítványai](active-directory-sso-certs.md)
 #### [Bérlőkorlátozások](active-directory-tenant-restrictions.md)
