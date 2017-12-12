@@ -4,7 +4,7 @@ description: "Azure Active Directory tartományi szolgáltatások összehasonlí
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mtillman
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
 ms.service: active-directory-ds
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 09a68c7f4e7169a6ca02e33e89e0f048155fa88c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>A használati esetnek megfelelő kiválasztásáról, ha az Azure AD tartományi szolgáltatások
 Az Azure AD tartományi szolgáltatásokkal telepítheti is az Azure infrastruktúra-szolgáltatásokat, a munkaterhelés nem kell foglalkoznia az identitás-infrastruktúra az Azure-ban karbantartása. A felügyelt szolgáltatás eltér a szokásos Windows Server Active Directory központi telepítéséhez, telepítheti és felügyelheti a saját. A szolgáltatás könnyű üzembe helyezni, és kézbesíti az automatizált állapotfigyelést és javítási. Folyamatosan fejlődik azt a szolgáltatás használatát a gyakori telepítési forgatókönyvekben.
@@ -86,7 +86,7 @@ Felügyelt tartományok nem állítható be, a többi tartományhoz (bejövő va
 #### <a name="ldap-read"></a>LDAP olvasása
 A felügyelt tartományra támogatja, olvassa el a munkaterhelések LDAP. Ezért telepíthet alkalmazásokat, amelyek a felügyelt tartományra LDAP olvasási műveleteket végrehajtani.
 
-#### <a name="secure-ldap"></a>Biztonságos LDAP
+#### <a name="secure-ldap"></a>Secure LDAP
 Konfigurálhatja az Azure AD tartományi szolgáltatások biztonságos LDAP hozzáférést biztosít a felügyelt tartományra vonatkozóan, beleértve az interneten keresztül.
 [További információ](active-directory-ds-admin-guide-configure-secure-ldap.md)
 

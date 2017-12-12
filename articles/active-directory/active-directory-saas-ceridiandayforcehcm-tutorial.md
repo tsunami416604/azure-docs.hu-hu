@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 7adf1eb3-d063-45d6-96a8-fd53b329b3f3
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: b2ea3d92f233dab5bd6814e4875f881117eac8e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b87fe59f2761c26319ce9e13168dc6c4bf95f8b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Oktatóanyag: Azure Active Directoryval integrált Ceridian Dayforce HCM
 
@@ -110,23 +110,23 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     a. Az a **URL-cím bejelentkezési** szövegmező, írja be az URL-címet használják-e a felhasználók bejelentkezés az Ceridian Dayforce HCM alkalmazására.
     
-    | Környezet | URL-CÍME |
+    | Környezet | URL-cím |
     | :-- | :-- |
-    | Termelési környezetben | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
+    | Éles környezetekhez | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
     | A teszt | `https://ssotest.dayforcehcm.com/<DayforcehcmNamespace>` |
     
     b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:
     
-    | Környezet | URL-CÍME |
+    | Környezet | URL-cím |
     | :-- | :-- |
-    | Termelési környezetben | `https://ncpingfederate.dayforcehcm.com/sp` |
+    | Éles környezetekhez | `https://ncpingfederate.dayforcehcm.com/sp` |
     | A teszt | `https://fs-test.dayforcehcm.com/sp` |
     
     c. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-címet használják az Azure AD a válaszban küldje.
     
-    | Környezet | URL-CÍME |
+    | Környezet | URL-cím |
     | :-- | :-- |
-    | Termelési környezetben | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
+    | Éles környezetekhez | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
     | A teszt | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
     
     > [!NOTE] 
@@ -142,7 +142,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 6. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti ábrán látható módon, és hajtsa végre a következő lépéseket:
     
-    | Attribútum neve  | Attribútum-érték |
+    | Attribútum neve  | Attribútum értéke |
     | --------------- | -------------------- |    
     | név  | User.extensionattribute2 |    
 

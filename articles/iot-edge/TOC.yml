@@ -49,6 +49,8 @@
       href: iot-edge-as-gateway.md
     - name: Biztonság
       href: security.md
+    - name: IoT Edge-szószedet
+      href: iot-edge-glossary.md
 - name: Erőforrások
   items:
     - name: Azure Certified for IoT eszközkatalógus

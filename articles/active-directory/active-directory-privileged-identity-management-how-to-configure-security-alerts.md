@@ -4,7 +4,7 @@ description: "Útmutató: Azure Privileged Identity Management bővítmény bizt
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 4e0c911a-36c6-42a0-8f79-a01c03d2d04f
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: e057120e31eeebc3da274536c09d6d9972854338
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52a03624b8e3841f559caef564712ff74a614365
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management biztonsági riasztások konfigurálása
 ## <a name="security-alerts"></a>Biztonsági riasztások
@@ -27,7 +27,7 @@ Azure Privileged Identity Management (PIM) riasztásokat állít elő, ha nem bi
 
 ![A PIM irányítópult biztonsági riasztások – képernyőkép][1]
 
-| Riasztás | Eseményindító | Ajánlás |
+| Riasztás | Trigger | Javaslat |
 | --- | --- | --- |
 | **Szerepkörök hozzárendeli PIM-en kívül** |A rendszergazda véglegesen rendelt szerepkör, a PIM felületen kívülre. |Tekintse át az új szerepkör-hozzárendelés. Egyéb szolgáltatások csak rendelhet hozzá az állandó rendszergazdák, mert azt egy jogosult hozzárendeléshez szükség esetén módosítsa. |
 | **Szerepkörök aktiválása túl gyakran van folyamatban** |A beállításokban megadott időn belül az azonos szerepkör túl sok újraaktiválás volt. |Lépjen kapcsolatba a felhasználóval, hogy miért ezek aktiválta a szerepkör annyi alkalommal. Lehet, hogy az időkorlát értéke túl rövid a feladataikat befejeződnek, vagy lehet, hogy ezek segítségével parancsfájlok automatikusan aktiválja a szerepkört. |

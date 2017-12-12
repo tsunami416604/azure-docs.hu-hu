@@ -4,7 +4,7 @@ description: "Az Azure Active Directory B2B együttműködés meghívó e-mail s
 services: active-directory
 documentationcenter: 
 author: sasubram
-manager: femila
+manager: mtillman
 editor: 
 tags: 
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 458a2cab13b7e83f120e0926a95d454070181dfb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae8f96caaaeb9f3dad9f9f122b56fe264a5d7aec
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email"></a>A B2B együttműködés meghívó e-mail elemei
 
@@ -36,7 +36,7 @@ Az e-mail tárgyát a következő mintát követi: meghívjuk az &lt;tenantname&
 ### <a name="from-address"></a>Feladó címe
 A LinkedIn-szerű minta a feladó címe az használjuk.  Legyen törölje a jelet a meghívó, aki és amely a vállalati és is elmagyarázza, hogy az e-mailt származik-e a Microsoft e-mail cím. A formátum: &lt;megjelenített nevével meghívó&gt; a &lt;tenantname&gt; (Microsoft) keresztül <invites@microsoft.com&gt;
 
-### <a name="reply-to"></a>Válasz
+### <a name="reply-to"></a>Válasz címzettje
 A válaszcím e-mailben a meghívó e-mail érhető el, ha van beállítva, hogy a megválaszolása az e-mailt küld egy e-mailt vissza a meghívó.
 
 ### <a name="branding"></a>Védjegyek
@@ -55,7 +55,7 @@ Ha még nem állított profilkép, a meghívó monogramja a kép helyett egy iko
 
   ![a meghívó monogramja megjelenítése](media/active-directory-b2b-invitation-email/inviters-initials.png)
 
-### <a name="body"></a>Törzs
+### <a name="body"></a>Szövegtörzs
 Az üzenet, amely a meghívó composes, vagy a meghívó API keresztül törzsében. Így azt nem dolgozza fel az HTML-címkék biztonsági okokból egy területre.
 
 ### <a name="footer-section"></a>Élőláb szakasz

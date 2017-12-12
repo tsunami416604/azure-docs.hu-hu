@@ -4,7 +4,7 @@ description: "Identitás és a hibrid környezetben a felhasználók az erőforr
 documentationcenter: 
 services: active-directory
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: e3b3b984-0d15-4654-93be-a396324b9f5e
 ms.service: active-directory
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 6404940da460461632616fe49f055d50c2a7aba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 069c83a0bbbb21ba85aea07375c186fe0b11c781
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás hozzáférés-vezérlési követelményeinek meghatározása
 Egy szervezet a hibrid identitáskezelési megoldás rendszer tervezése során ezt a lehetőséget is használhatnak tekintse át az erőforrásokat, azok tervezi, hogy elérhetővé tétele a felhasználók hozzáférési követelményeit. Az adatelérési közötti összes négy oszlopok identitását, amelyek:
 
-* Adminisztráció
-* Authentication
+* Felügyelet
+* Hitelesítés
 * Engedélyezés
 * Naplózás
 
@@ -56,7 +56,7 @@ A szervezet alkalmazott modellt az üzleti igények függvényében változik, s
 * Használ a szervezete egyszeri bejelentkezésre található alkalmazásokhoz a helyszínen vagy a felhőben?
   * Ha igen, az egy hibrid identitás modell bevezetését érinti ez a folyamat?
 
-## <a name="access-control"></a>Access Control
+## <a name="access-control"></a>Hozzáférés-vezérlés
 Hitelesítési és engedélyezési elemei core felhasználó érvényesítési keresztül a vállalati adatokhoz való hozzáférés engedélyezése, amíg fontos is szabályozhatja, hogy ezek a felhasználók lesz, és a rendszergazdák mértékét az azok által kezelt erőforrások keresztül kell hozzáférési szintet. A hibrid identitáskezelési megoldás részletes hozzáférést biztosít erőforrásokat, a delegálással és a szerepköralapú hozzáférés-vezérlést képesnek kell lennie. Győződjön meg arról, hogy a következő kérdésre adott válaszok vonatkozó hozzáférés-vezérlés:
 
 * Rendelkezik a vállalata kezelheti az azonosítási rendszer emelt szintű jogosultságokkal egynél több felhasználó?

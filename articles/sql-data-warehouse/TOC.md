@@ -38,6 +38,7 @@
 
 ## Integrálás
 ### [Áttekintés](sql-data-warehouse-overview-integrate.md)
+### [Az SQL Database rugalmas lekérdezése](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 
 ## Monitorozás és hangolás
@@ -100,9 +101,8 @@
 
 
 ## Integrálás
-###  [Rugalmas lekérdezés konfigurálása az SQL Database-ből](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
+### [Az SQL Database rugalmas lekérdezésének konfigurálása](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ### [Azure Stream Analytics-feladat hozzáadása](sql-data-warehouse-integrate-azure-stream-analytics.md)
-### [Rugalmas lekérdezés konfigurálása](how-to-use-elastic-query-with-sql-data-warehouse.md)
 ### [Gépi tanulás használata](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 ### [Vizualizáció a Power BI használatával](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 

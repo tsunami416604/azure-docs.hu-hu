@@ -4,7 +4,7 @@ description: "Áttekintést nyújt a Windows Hello üzleti és a vállalati Wind
 services: active-directory
 documentationcenter: 
 author: femila
-manager: femila
+manager: mtillman
 editor: 
 tags: azure-classic-portal
 ms.assetid: f907bb90-8776-46ca-9e12-279949af66ff
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
-ms.openlocfilehash: 62adf8a9fd4400a056e2c0f59c79431acbad5865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22534cc5f7f2de235bc1f1212c63ea227083c5a4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>A vállalati Windows Hello jelszó nélkül identitások hitelesítése
 Az aktuális önmagában jelszavakkal hitelesítési módszerek nem elegendőek felhasználók biztonságát. A felhasználók használja fel, és elfelejti a jelszavát. A jelszóban breachable, phishable, repedések hajlamos és kitalálható. Akkor is le a nehéz megjegyezni és vannak téve a támadásoknak, például a "[adja át a kivonat](https://technet.microsoft.com/dn785092.aspx)".

@@ -128,6 +128,8 @@
           href: scenario-tdsp-classifying-us-incomes.md
         - name: Képek besorolása a CNTK használatával
           href: scenario-image-classification-using-cntk.md
+        - name: Mélytanulás a prediktív karbantartáshoz
+          href: scenario-deep-learning-for-predictive-maintenance.md
 - name: Referencia
   items:
     - name: Adatok előkészítése

@@ -4,7 +4,7 @@ description: "Az Azure Active Directory tartományi szolgáltatások által fel�
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mtillman
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory-ds
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 0c9a9a56e1489ee91fcc332beeef36cdc9c93dc1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c324ea5e268d97134202eff6e96764bedc6ca75
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Szinkronizálás az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 A következő ábra bemutatja, hogyan szinkronizálási működik az Azure AD tartományi szolgáltatások felügyelt tartományok.
@@ -60,7 +60,7 @@ A következő táblázat néhány általános attribútumokkal rendelkeznek, és
 
 | A felügyelt tartományok attribútum | Forrás | Megjegyzések |
 |:--- |:--- |:--- |
-| EGYSZERŰ FELHASZNÁLÓNÉV |Felhasználó UPN attribútum az Azure AD-bérlőben |A felügyelt tartományok való szinkronizálása az Azure AD-bérlő az UPN-attribútumot. Ezért a legmegbízhatóbb módszer az, hogy jelentkezzen be a felügyelt tartományok használja az egyszerű felhasználónév. |
+| Egyszerű felhasználónév |Felhasználó UPN attribútum az Azure AD-bérlőben |A felügyelt tartományok való szinkronizálása az Azure AD-bérlő az UPN-attribútumot. Ezért a legmegbízhatóbb módszer az, hogy jelentkezzen be a felügyelt tartományok használja az egyszerű felhasználónév. |
 | sAMAccountName |Felhasználó mailNickname az Azure AD-bérlő attribútumnak, vagy automatikusan generált |A SAMAccountName attribútum a mailNickname attribútumot az Azure AD-bérlő származik. Több felhasználói fiók azonos mailNickname attribútuma van, a SAMAccountName, automatikusan generált. Ha a felhasználó mailNickname vagy UPN előtagja hosszabb 20 karakternél, a SAMAccountName jön létre automatikusan a 20 karakter lehet SAMAccountName attribútumok kielégítéséhez. |
 | Jelszavak |Az Azure AD-bérlő felhasználói jelszó |Az Azure AD-bérlő (más néven kiegészítő hitelesítő adatok) NTLM vagy Kerberos hitelesítéshez szükséges hitelesítő kivonatokat vannak szinkronizálva. Ha az Azure AD-bérlő a szinkronizált bérlők, ezeket a hitelesítő adatokat a helyszíni tartományból forrása. |
 | Elsődleges felhasználó/csoport biztonsági azonosítója |Automatikusan létrehozott |A felhasználó vagy csoport fiókok elsődleges biztonsági azonosítója jön létre automatikusan a kezelt tartományban. Ez az attribútum nem egyezik az elsődleges felhasználó/csoport SID az objektum a helyszíni Active Directory-tartománynak. Ez az eltérés az oka, hogy a felügyelt tartományra névtérrel rendelkező különböző SID mint a helyszíni tartományban. |
@@ -98,7 +98,7 @@ A következő táblázat bemutatja, hogyan adott attribútumok a felhasználói 
 | StreetAddress |StreetAddress |
 | Vezetéknév |sorozatszám |
 | TelephoneNumber |TelephoneNumber |
-| UserPrincipalName |UserPrincipalName |
+| userPrincipalName |userPrincipalName |
 
 ### <a name="attribute-mapping-for-groups"></a>A csoportok címtárattribútum-leképezésben
 A következő táblázat bemutatja, hogyan adott attribútumok csoport az Azure AD-bérlő objektumok lettek szinkronizálva a felügyelt tartományok megfelelő attribútumokat.

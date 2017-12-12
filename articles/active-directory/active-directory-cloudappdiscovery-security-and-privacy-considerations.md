@@ -4,7 +4,7 @@ description: "Ez a témakör ismerteti a biztonsági és adatvédelmi szempontja
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: 2fce5c82-d3de-4097-808f-40214768df9e
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: cec3d2cb02dd34dd5ac631e572936cfd7c8de033
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ebcb5b3b4a84f7a5c25caa3f6b245f97bc8049f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="cloud-app-discovery-security-and-privacy-considerations"></a>Cloud App Discovery biztonsági és adatvédelmi megfontolások
 Ez a témakör azt ismerteti, hogyan adatok gyűjtése, feldolgozása, és Azure Active Directory a Cloud App Discovery belül védett. A Microsoft elkötelezett az Ön adatainak védelmében, és az adatok védelme. A Microsoft biztonságos szoftver fejlesztési életciklus eljárásokat a szolgáltatás működtetéséhez csatlakozik. Biztonságossá tétele és az adatok védelmének a Microsoft a legnagyobb prioritással.
@@ -69,7 +69,7 @@ A következő HTTP-információk:
 * Metódus (GET, POST, stb.)
 * Protokoll (HTTP/1.1, stb.)
 * Felhasználói ügynök karakterlánca
-* Gazdanév
+* Gazdagépnév
 * Cél URI (kivéve a lekérdezési karakterlánc)
 * Tartalom típussal kapcsolatos információk
 * Hivatkozó URL-cím adatait (kivéve a lekérdezési karakterlánc)
@@ -156,7 +156,7 @@ Azonban a rendszergazdák kiválaszthatják a hozzáférést biztosíthat más f
 
 Minden olyan felhasználó, a portál, az adatok elérése az Azure AD Premium licenccel rendelkező licenccel kell rendelkezniük.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 * [Hogyan lehet használt, jóvá nem hagyott felhőalkalmazások felderítése a szervezeten belül](active-directory-cloudappdiscovery-whatis.md)
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
 

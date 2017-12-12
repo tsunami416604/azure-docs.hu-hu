@@ -5,7 +5,7 @@ services: active-directory
 keywords: "alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés"
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 11/29/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f084ea3a9fb97a334f3dec90f2c9020a842bc27c
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 4cb225266a45808e5fda271e901749bf03c636e2
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="controls-in-azure-active-directory-conditional-access"></a>A vezérlők Azure Active Directory feltételes hozzáférés beállítása 
 
@@ -30,11 +30,11 @@ A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory
 
 - "**Majd ehhez**" nevezik **vezérlők**
 
-![Vezérlés](./media/active-directory-conditional-access-controls/11.png)
+![vezérlő](./media/active-directory-conditional-access-controls/11.png)
 
 Egy feltétel utasítást a vezérlőkkel kombinációja a feltételes hozzáférési házirend jelöli.
 
-![Vezérlés](./media/active-directory-conditional-access-controls/12.png)
+![vezérlő](./media/active-directory-conditional-access-controls/12.png)
 
 Minden vezérlő követelmény, hogy teljesülnek a személy által vagy rendszer jelentkezik be, vagy a bejelentkezés után a felhasználó a korlátozását teheti meg. 
 
@@ -53,11 +53,11 @@ Támogatás vezérlőkkel teljesen letiltja a hozzáférést, vagy a kívánt ve
 - Az összes kijelölt vezérlők teljesítendő (*és*) 
 - Egy kijelölt teljesítendő vezérlő (*vagy*)
 
-![Vezérlés](./media/active-directory-conditional-access-controls/17.png)
+![vezérlő](./media/active-directory-conditional-access-controls/17.png)
 
 
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
 Ez a vezérlő segítségével a többtényezős hitelesítést a megadott felhő-alkalmazás eléréséhez. Ez a vezérlő a következő multi-factor Authentication-szolgáltatók támogatja: 
 
@@ -69,7 +69,7 @@ A multi-factor authentication segítségével erőforrások védelme a fent konf
 
 
 
-### <a name="compliant-device"></a>Megfelelő eszköz
+### <a name="compliant-device"></a>Szabályzatnak megfelelő eszköz
 
 Konfigurálhatja, amelyek az eszközalapú feltételes hozzáférési szabályzatokat. Eszközalapú feltételes hozzáférési házirend célja a hozzáférési jogot a konfigurált erőforrások megbízható eszközökről. Megfelelő eszközökre használata egy beállítást meg kell adnia a megbízható eszközök. További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférés szabályzatainak beállítása](active-directory-conditional-access-policy-connected-applications.md).
 
@@ -123,12 +123,12 @@ Másolja át a JSON-adatokat, és illessze be a kapcsolódó szövegmezőbe. Ne 
 
 Hozzon létre egy egyéni vezérlő nem található a **kezelése** szakasza a **feltételes hozzáférés** lap.
 
-![Vezérlés](./media/active-directory-conditional-access-controls/82.png)
+![vezérlő](./media/active-directory-conditional-access-controls/82.png)
 
 Kattintson a **új egyéni vezérlő**, megnyílik egy panel a szövegmezőben a JSON-adatok a vezérlő.  
 
 
-![Vezérlés](./media/active-directory-conditional-access-controls/81.png)
+![vezérlő](./media/active-directory-conditional-access-controls/81.png)
 
 
 ### <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
@@ -152,7 +152,7 @@ Egyéni vezérlő szerkesztése, törlése az aktuális vezérlő, és hozzon l�
 
 Munkamenet vezérlők a felhőalapú alkalmazások korlátozott tapasztalatok teszik lehetővé. A munkamenet vezérlők felhőalkalmazások érvényesíti, és további Azure AD-be a munkamenetre vonatkozó az alkalmazás által biztosított információk alapján.
 
-![Vezérlés](./media/active-directory-conditional-access-controls/31.png)
+![vezérlő](./media/active-directory-conditional-access-controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Használja a kényszerített alkalmazásra vonatkozó korlátozások
 

@@ -5,7 +5,7 @@ services: active-directory
 keywords: "az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend, szószedet kezelése"
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 5b6d2db0a8df31fd159053cceab6b9b320ffd8cb
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 9a291a42d72985b9fe8f9083b265807122ae6343
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Az Azure Active Directory-Identity Protection-szószedet
 ### <a name="at-risk-user"></a>Fennáll a veszélye (felhasználó)
@@ -37,7 +37,7 @@ Egy házirend erőforrásokhoz való hozzáférés biztosítása érdekében. Fe
 ### <a name="credentials"></a>Hitelesítő adatok
 Azonosításra és igazolása helyi való hozzáférés és a hálózati erőforrásokhoz való használt azonosító adatokat. A hitelesítő adatok többek között a felhasználónevek és jelszavak, az intelligens kártyák és a tanúsítványok.
 
-### <a name="event"></a>Esemény
+### <a name="event"></a>Esemény (event)
 Az Azure Active Directoryban tevékenység egy olyan rekordot.
 
 ### <a name="false-positive-risk-event"></a>A vakriasztások (kockázat esemény)
@@ -64,7 +64,7 @@ A kockázat aktuális felhasználói hitelesítő adatok (felhasználónév és 
 ### <a name="mitigation"></a>Kezelés
 Egy műveletet korlátozható vagy kiküszöbölheti a támadó lehetőségét a sérült biztonságú identitás vagy az eszköz visszaállítja a identitás vagy az eszköz biztonságos kihasználásához. A megoldás nem oldja meg a identitás vagy az eszköz társított előző kockázati eseményekről.
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 A hitelesítési módszert, amelyhez két vagy több hitelesítési módszert, amelyek magukban foglalhatják valamit a felhasználó rendelkezik, ez a tanúsítvány; valamit a felhasználó ismer, például felhasználóneveket, jelszavakat vagy fázis kifejezések; fizikai attribútumait, például egy ujjlenyomat; és személyes attribútumait, például a személyes aláírás.
 
 ### <a name="offline-detection"></a>Kapcsolat nélküli észlelése
@@ -73,7 +73,7 @@ A rendellenességek észlelését és az esemény például a bejelentkezési k�
 ### <a name="policy-condition"></a>Házirend feltétel
 Egy olyan biztonsági házirendet, amely meghatározza az entitások (csoportok, felhasználók, alkalmazások, eszközök, eszközök állapotai, IP-címtartományok, ügyféltípusokat) egy része szerepel a házirendben, illetve tiltani szeretné a azt.
 
-### <a name="policy-rule"></a>Házirend szabályai
+### <a name="policy-rule"></a>Szabályzatbeli szabály
 Egy olyan biztonsági házirendet, amely leírja a körülmények között, indítsa el a szabályzatot, és a házirend kiváltásakor végrehajtott műveleteket részét.
 
 ### <a name="prevention"></a>Megelőzés
@@ -91,7 +91,7 @@ A tegye a rendellenességek észlelését és az esemény például a bejelentke
 ### <a name="remediated-risk-event"></a>Kijavítva (kockázat esemény)
 Azonosító adatok védelmét, a kockázat esemény a szabványos szervizelési művelet használata az ilyen típusú kockázat esemény lett kijavítva jelző által automatikusan beállított kockázati esemény állapota. Például amikor a felhasználó jelszavát, sok kockázati események, amelyek jelzik, hogy esetleges biztonsági sérülés esetén a korábbi jelszót vannak pótolja őket automatikusan.
 
-### <a name="remediation"></a>Szervizkiszolgáló
+### <a name="remediation"></a>Szervizelés
 Egy műveletet, biztonságos identitás vagy egy eszköz, amely korábban gyanús vagy megsértik ismert. A javítási művelet visszaállítja a identitás vagy az eszköz biztonságos, és oldja fel a identitás vagy az eszköz társított előző kockázati eseményekről.
 
 ### <a name="resolved-risk-event"></a>Megoldott (kockázat esemény)
@@ -118,7 +118,7 @@ A biztonsági rés priorizálhatja azokat a műveleteket Identity Protection fel
 ### <a name="secure-identity"></a>Biztonságos (identitás)
 Például a jelszó módosítása vagy a gép, egy biztonsági szempontból sértetlen állapotának visszaállításához a potenciálisan veszélyeztetett identitás különösen szervizelési művelet végrehajtása.
 
-### <a name="security-policy"></a>Biztonsági házirend
+### <a name="security-policy"></a>Biztonsági szabályzat
 Szabályok és az állapot gyűjteménye. Egy házirend entitások, például a felhasználók, csoportok, alkalmazások, eszközök, eszközök, eszköz állapotok, IP-címtartományok és Auth2.0 ügyféltípusokat alkalmazhatja. A házirend engedélyezve van, amikor a házirendben entitás erőforrás jogkivonatot ad ki lesznek kiértékelve.
 
 ### <a name="sign-in-v"></a>Jelentkezzen be (v)
@@ -142,7 +142,7 @@ A kockázat felhasználó sikeresen jelentkezik be egy új helyről (IP, széles
 ### <a name="sign-in-risk"></a>Bejelentkezési kockázata
 Tekintse meg a kockázati szintjét (bejelentkezés)
 
-### <a name="sign-in-risk-policy"></a>Bejelentkezési kockázat házirendnek
+### <a name="sign-in-risk-policy"></a>Bejelentkezési kockázati házirend
 Feltételes hozzáférési szabályzatot, amely egy adott jelentkezik be a kockázat és azok mérséklési előre meghatározott feltételt és a szabályok alapján alkalmazza.
 
 ### <a name="user-compromise-risk"></a>Felhasználó biztonsági sérülés kockázata
@@ -151,13 +151,13 @@ Tekintse meg a kockázati szintjét (felhasználói sérült biztonság esetén)
 ### <a name="user-risk"></a>Felhasználói kockázata
 Tekintse meg a kockázati szintjét (felhasználói sérült biztonság esetén).
 
-### <a name="user-risk-policy"></a>Felhasználói kockázat házirendnek
+### <a name="user-risk-policy"></a>Felhasználói kockázati házirend
 Feltételes hozzáférési szabályzatot, amely úgy ítéli meg, a bejelentkezés, és azok mérséklési előre meghatározott feltételt és a szabályok alapján alkalmazza.
 
 ### <a name="users-flagged-for-risk"></a>Kockázatosként megjelölt felhasználók
 Kockázati eseményekről, amelyek aktív vagy szervizelt rendelkező felhasználók
 
-### <a name="vulnerability"></a>A biztonsági rés
+### <a name="vulnerability"></a>Biztonsági rés
 Egy konfigurációs vagy az Azure Active Directoryban, így ki vannak téve a biztonsági rések a könyvtár feltétel vagy fenyegetéseket.
 
 ## <a name="see-also"></a>Lásd még:

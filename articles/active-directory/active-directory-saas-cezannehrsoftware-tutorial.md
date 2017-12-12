@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 620b0f62bceeda6fac87c31b325a078260f7d3d0
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 3934f814a9060adf275a4bdcc83403da4b2a4075
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Oktatóanyag: Azure Active Directory-integráció Cezanne HR szoftverrel
 
@@ -125,25 +125,29 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
 
-6. A a **Cezanne HR szoftverkonfigurációt** kattintson **Cezanne HR szoftver konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. A a **Cezanne HR szoftverkonfigurációt** kattintson **Cezanne HR szoftver konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak.
 
-    ![Cezanne HR szoftverkonfigurációjának összeállítása](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
+    ![Cezanne HR szoftverkonfigurációjának összeállítása](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png)
 
-7. Egy másik webes böngészőablakban bejelentkezés a Cezanne HR szoftver bérlő rendszergazdaként.
+7. Görgessen le a **rövid összefoglaló** szakasz. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe és SAML Entitásazonosító** a a **rövid összefoglaló szakasz.**
 
-8. A bal oldali navigációs ablaktábláján kattintson **rendszerbeállítás**. Ugrás a **biztonsági beállítások**. Majd keresse meg a **egyszeri bejelentkezés konfigurációs**.
+    ![Cezanne HR szoftverkonfigurációjának összeállítása](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure1.png)
+
+8. Egy másik webes böngészőablakban bejelentkezés a Cezanne HR szoftver bérlő rendszergazdaként.
+
+9. A bal oldali navigációs ablaktábláján kattintson **rendszerbeállítás**. Ugrás a **biztonsági beállítások**. Majd keresse meg a **egyszeri bejelentkezés konfigurációs**.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-9. Az a **engedélyezése a felhasználóknak, hogy jelentkezzen be a következő egyszeri bejelentkezés (SSO) szolgáltatás** panelen ellenőrizze a **SAML 2.0** mezőbe, majd válassza ki a **speciális konfiguráció** lehetőséget.
+10. Az a **engedélyezése a felhasználóknak, hogy jelentkezzen be a következő egyszeri bejelentkezés (SSO) szolgáltatás** panelen ellenőrizze a **SAML 2.0** mezőbe, majd válassza ki a **speciális konfiguráció** lehetőséget.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
-10. Kattintson a **új hozzáadása** gombra.
+11. Kattintson a **új hozzáadása** gombra.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
-11. Hajtsa végre a következő lépéseket **SAML 2.0 IDENTITÁS-SZOLGÁLTATÓKTÓL** szakasz.
+12. Hajtsa végre a következő lépéseket **SAML 2.0 IDENTITÁS-SZOLGÁLTATÓKTÓL** szakasz.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
     
@@ -161,7 +165,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     g. Kattintson az **OK** gombra. 
 
-12. Kattintson a **mentése** gombra.
+13. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 

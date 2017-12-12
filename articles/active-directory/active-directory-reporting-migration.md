@@ -4,7 +4,7 @@ description: "Ismerje meg, az Azure-portálon belül hol áll az Azure Active Di
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: michael.tillman
+manager: mtillman
 editor: 
 ms.assetid: d93521f8-dc21-4feb-aaff-4bb300f04812
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 732a3c376f6e99f6a5b5c3043ef8cb4884a4d468
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 23c186e268e9a43982ec6c34d350900793fad8de
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Az Azure portálon található Tevékenységjelentések
 
@@ -64,7 +64,7 @@ A **bejelentkezések** nézet tartalmazza az összes felhasználói bejelentkez�
 
 Bár az Azure-portálon egyetlen nézetben kínál, is vessen egy pillantást konkrét jelentéseket.
 
-### <a name="audit-logs"></a>Naplók
+### <a name="audit-logs"></a>Auditnaplók
 
 Az ügyfelek visszajelzései alapján, az Azure portálon használhatja a speciális szűrési férhetnek hozzá a kívánt adathoz. Használhat egy szűrő egy *tevékenységkategóriákkal*, amely felsorolja a különböző típusú tevékenység naplózza az Azure AD-ben. Éppen megtekintett eredmények szűkítéséhez is válasszon egy kategóriát.
 
@@ -97,10 +97,10 @@ A következő tábla listák az Azure AD rendellenes tevékenységet biztonsági
 | :--- | :--- |
 | Felhasználók, akiknek kiszivárogtak a hitelesítő adatai | Kiszivárgott hitelesítő adatok |
 | Rendszertelen bejelentkezési tevékenység | Bejelentkezés szokatlan helyekről |
-| Bejelentkezések potenciálisan fertőzött eszközökről | Bejelentkezések fertőzött eszközökről|
-| Bejelentkezések ismeretlen forrásokról | Névtelen IP-címről történő bejelentkezések |
+| Bejelentkezések potenciálisan fertőzött eszközökről | Fertőzött eszközökről indított bejelentkezések|
+| Bejelentkezések ismeretlen forrásokról | Névtelen IP-címekről bejelentkezések |
 | Bejelentkezések gyanús tevékenységeket mutató IP-címekkel | Bejelentkezések gyanús tevékenységeket mutató IP-címekkel |
-| - | Ismeretlen helyekről történt bejelentkezések |
+| - | Ismeretlen helyekről indított bejelentkezések |
 
 A következő Azure AD rendellenes tevékenységet biztonsági jelentések nem tartoznak kockázati eseményekről az Azure-portálon:
 
@@ -135,9 +135,9 @@ Ez a szakasz a táblázat meglévő jelentések a klasszikus Azure portálon. Az
 
 ![Naplók](./media/active-directory-reporting-migration/61.png "Naplók")
 
-| klasszikus Azure portál                 | Az Azure portálon található                                                         |
+| Klasszikus Azure-portál                 | Az Azure portálon található                                                         |
 | ---                                  | ---                                                                        |
-| Naplók                           | A **Tevékenységkategóriákkal**, jelölje be **Core Directory**.                       |
+| Auditnaplók                           | A **Tevékenységkategóriákkal**, jelölje be **Core Directory**.                       |
 | Jelszó-visszaállítási tevékenység              | A **Tevékenységkategóriákkal**, jelölje be **önkiszolgáló jelszókezelés**. |
 | Jelszó-visszaállítási regisztrációs tevékenység | A **Tevékenységkategóriákkal**, jelölje be **önkiszolgáló jelszókezelés**.     |
 | Önkiszolgáló csoportok tevékenységéről         | A **Tevékenységkategóriákkal**, jelölje be **önkiszolgáló csoportkezelési**.        |

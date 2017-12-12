@@ -60,6 +60,8 @@
       items:
         - name: Replikáció
           href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Tárfiók-beállítások
+          href: storage-account-options.md
         - name: 'A gyakran és a ritkán használt, valamint az archivált adatok rétege'
           href: storage-blob-storage-tiers.md
         - name: Reagálás az eseményekre

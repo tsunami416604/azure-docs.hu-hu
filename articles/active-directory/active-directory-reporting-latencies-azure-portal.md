@@ -4,7 +4,7 @@ description: "További tudnivalók az jelentési eseményeket az Azure-portálon
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 10/18/2017
 ms.author: markvi;dhanyahk
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f060ddc958a7b266464bd28cee774f6ce065088d
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: f4b3e59cb6cec5ac4ca771818e5eca8509a43d82
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory jelentéskészítés késések
 
@@ -37,9 +37,9 @@ Nincsenek Tevékenységjelentés két terület:
 
 A következő táblázat a késési adatok Tevékenységjelentések.
 
-| Jelentés | Minimális | Átlag | Maximum |
+| Jelentés | Minimum | Átlag | Maximum |
 | :-- | --- | --- | --- |
-| Naplók             | 30 perc  | 1 óra | 2 óra     |
+| Auditnaplók             | 30 perc  | 1 óra | 2 óra     |
 | Bejelentkezések               | 15 perc  | 2 óra * | 24 óra  |
 
 >[!NOTE]
@@ -55,7 +55,7 @@ Nincsenek biztonsági reporting két terület:
 
 A következő táblázat a késési adatok biztonsági jelentések.
 
-| Jelentés | Minimális | Átlag | Maximum |
+| Jelentés | Minimum | Átlag | Maximum |
 | :-- | --- | --- | --- |
 | Érintett felhasználók          | 5 perc   | 15 perc  | 2 óra  |
 | Kockázatos bejelentkezések         | 5 perc   | 15 perc  | 2 óra  |
@@ -66,13 +66,13 @@ Az Azure Active Directory adaptív gépi tanulási algoritmusok és heurisztikus
 
 A következő táblázat a késési adatok kockázati eseményekről.
 
-| Jelentés | Minimális | Átlag | Maximum |
+| Jelentés | Minimum | Átlag | Maximum |
 | :-- | --- | --- | --- |
-| Névtelen IP-címről történő bejelentkezések |5 perc |15 perc |2 óra |
-| Ismeretlen helyekről történt bejelentkezések |5 perc |15 perc |2 óra |
+| Névtelen IP-címekről bejelentkezések |5 perc |15 perc |2 óra |
+| Ismeretlen helyekről indított bejelentkezések |5 perc |15 perc |2 óra |
 | Felhasználók, akiknek kiszivárogtak a hitelesítő adatai |2 óra |4 óra |8 óra |
 | Bejelentkezés szokatlan helyekről |5 perc |1 óra |8 óra  |
-| Bejelentkezések fertőzött eszközökről |2 óra |4 óra |8 óra  |
+| Fertőzött eszközökről indított bejelentkezések |2 óra |4 óra |8 óra  |
 | Bejelentkezések gyanús tevékenységeket mutató IP-címekkel |2 óra |4 óra |8 óra  |
 
 

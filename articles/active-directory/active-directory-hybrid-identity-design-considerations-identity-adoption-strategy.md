@@ -4,7 +4,7 @@ description: "Feltételes hozzáférés-vezérlést az Azure Active Directory el
 documentationcenter: 
 services: active-directory
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 2c57b394beb6382807a4c8c83de975a0ae68d726
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28d10cd6be93226c93bda98c88cee454ec5cb2c7
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia meghatározása
 Ebben a feladatban fogja definiálni, a hibrid identitás bevezetési stratégiát a hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, a tárgyalt:
@@ -59,7 +59,7 @@ A használt stratégia szabja meg, a felhasználói bejelentkezési élmény.  A
 
 **A tartomány tagja, és saját hálózati alkalmazások**:
 
-|  | Szinkronizált identitás | Összevont identitás |
+|  | Szinkronizált identitás | Federated Identity |
 | --- | --- | --- |
 | Webböngészők |Űrlapalapú hitelesítés |Adja meg a szervezet azonosítója szükséges a, néha egyszeri bejelentkezéshez |
 | Outlook |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
@@ -69,7 +69,7 @@ A használt stratégia szabja meg, a felhasználói bejelentkezési élmény.  A
 
 **Külső vagy nem megbízható forrásból**:
 
-|  | Szinkronizált identitás | Összevont identitás |
+|  | Szinkronizált identitás | Federated Identity |
 | --- | --- | --- |
 | Webböngészők |Űrlapalapú hitelesítés |Űrlapalapú hitelesítés |
 | Az Outlook, a Skype vállalati (Lync) Skydrive Pro, Office-előfizetés |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
@@ -189,10 +189,10 @@ Annak ellenére, hogy előfordulhat, hogy kiegyenlítése után a megoldást a s
 | Felhasználó helye | Előnyben részesített tervezési beállítás |
 | --- | --- |
 | Azure Active Directory |Multi-FactorAuthentication a felhőben |
-| Azure AD és helyszíni AD összevonással az AD FS-sel |Mindkét |
-| Az Azure AD és a helyszíni AD az Azure AD Connect nem jelszó-szinkronizálás |Mindkét |
-| Az Azure AD és a helyszíni és a jelszó-szinkronizálás az Azure AD Connect használatával |Mindkét |
-| A helyszíni AD |Multi-Factor Authentication-kiszolgáló |
+| Azure AD és helyszíni AD összevonással az AD FS-sel |Mindkettő |
+| Az Azure AD és a helyszíni AD az Azure AD Connect nem jelszó-szinkronizálás |Mindkettő |
+| Az Azure AD és a helyszíni és a jelszó-szinkronizálás az Azure AD Connect használatával |Mindkettő |
+| A helyszíni AD |Multi-Factor Authentication kiszolgáló |
 
 > [!NOTE]
 > Gondoskodnia kell arról, hogy a multi-factor Authentication hitelesítés tervezési beállítás, amely a kijelölt támogatja-e a kívánt szükséges funkciókat.  További információk [válassza ki a multi-factor Authentication biztonsági megoldást,](../multi-factor-authentication/multi-factor-authentication-get-started.md#what-am-i-trying-to-secure).

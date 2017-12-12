@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan kezelheti a felhasználói fiók kiépítése 
 services: active-directory
 documentationcenter: 
 author: asmalser
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 44476bbf0e878e347d176077e08706d1afd44479
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 122dbdb838377a36020f9ec692b38544004e676c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Vállalati alkalmazások az Azure portálon kiépítés felhasználói fiók kezelése
 Ez a cikk ismerteti, hogyan használható a [Azure-portálon](https://portal.azure.com) automatikus felhasználói fiók üzembe helyezést és megszüntetést újra a számítógépet, amelyek támogatják ezt, különösen azokat, a "kiemelt" kategóriából a ahozzáadottalkalmazásokkezelése[ Az Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Automatikus felhasználói fiók kiépítése és annak működéséről kapcsolatos további információkért lásd: [Felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokhoz az Azure Active Directoryval](active-directory-saas-app-provisioning.md).
@@ -44,12 +44,12 @@ A **kiépítési** panel kezdődik egy **mód** menü, amely bemutatja, milyen �
 ## <a name="configuring-automatic-user-account-provisioning"></a>Automatikus felhasználói fiók kiépítése konfigurálása
 Válassza a **automatikus** beállítás, amely négy részből oszlik képernyő jelenik meg:
 
-### <a name="admin-credentials"></a>Rendszergazdai hitelesítő adatokat
+### <a name="admin-credentials"></a>Rendszergazdai hitelesítő adatok
 Ez azért, ahol a hitelesítő adatokat az alkalmazás felhasználói felügyeleti API van-e megadva csatlakozni az Azure AD szükséges. A szükséges adatokat az alkalmazástól függően változik. A hitelesítőadat-típusok és adott alkalmazásokra vonatkozó követelmények, lásd: a [konfigurációs oktatóanyag az adott alkalmazás](active-directory-saas-app-provisioning.md).
 
 Válassza a **kapcsolat tesztelése** gomb lehetővé teszi a hitelesítő adatok tesztelése azzal, hogy az Azure AD kísérlet az alkalmazáshoz tartozó kiépítés alkalmazásokhoz a megadott hitelesítő adatok használatával.
 
-### <a name="mappings"></a>Hozzárendelések
+### <a name="mappings"></a>Leképezések
 Ez az adott rendszergazdák megtekintéséhez és szerkesztéséhez, milyen felhasználói attribútumok folyamat az Azure AD között és a célalkalmazás, ha a felhasználói fiókok vannak kiépítésekor vagy frissítésekor.
 
 Nincs olyan előre konfigurált megfeleltetéseket az Azure AD felhasználói és minden SaaS-alkalmazás felhasználói objektumok között. Egyes alkalmazások más típusú objektumok, például a csoportok vagy névjegyek kezelése. Egyikének kiválasztásával a leképezések az a táblázat a jobbra, ahol azok megtekinthetők és testre szabott hozzárendelési szerkesztőt.

@@ -4,7 +4,7 @@ description: "Miután az Azure AD Privileged Identity Management indította egy 
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: abc2d3dd-afd5-42cf-8a17-6c11f5674c35
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: ca2a1c7c287e4cf6b1b50cfb0068861b6f525596
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3866438de8fba7a6c42777bbb57746eadf1158eb
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Hogyan lehet elvégezni egy az Azure AD Privileged Identity Management áttekintése
 Kiemelt szerepkörű rendszergazda egyszer emelt szintű hozzáférés is tekintheti a [biztonsági felülvizsgálat elindult](active-directory-privileged-identity-management-how-to-start-security-review.md). Az Azure AD Privileged Identity Management (PIM) automatikusan elküld egy e-mailt arra kéri a felhasználót a hozzáférésüket áttekintéséhez. Ha a felhasználó nem kapott e-mailt, elküldheti azokat az utasításokat [egy biztonsági felülvizsgálat végrehajtása](active-directory-privileged-identity-management-how-to-perform-security-review.md).
@@ -35,13 +35,13 @@ A hozzáférés felülvizsgálati részletei panel lehetőség áll rendelkezés
 
 ![PIM hozzáférés felülvizsgálati gombok – képernyőkép][1]
 
-### <a name="remind"></a>Emlékeztesse
+### <a name="remind"></a>Emlékeztetés
 Ha egy áttekintése be van állítva, így a felhasználók maguk, tekintse át a **emlékeztetése** gomb értesítést küld. 
 
 ### <a name="stop"></a>Leállítás
 Hozzáférés az összes értékelést rendelkezik befejező dátumát, de használhatja a **leállítása** gomb korai befejezéséhez. A felhasználók még nem ellenőrzött időpontig, ha azok nem fogja tudni a felülvizsgálati befejezése után. Nem indítható újra áttekintése után a rendszer leállt.
 
-### <a name="apply"></a>Jelentkezés
+### <a name="apply"></a>Alkalmaz
 A rendszer egy áttekintése után, mert elérte a záró dátum, vagy manuálisan, megszakította a **alkalmaz** gomb valósítja meg a felülvizsgálati eredményeit. A felhasználói hozzáférés megtagadva a felülvizsgálat alatt, ha ez a lépés, amely a szerepkör-hozzárendelés, azzal eltávolítja az.  
 
 ### <a name="export"></a>Exportálás

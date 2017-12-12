@@ -50,14 +50,11 @@
 ## [Terminológia](service-fabric-technical-overview.md)
 
 ## Alkalmazások és szolgáltatások összeállítása
-### Támogatott programozási modellek
-#### [Áttekintés](service-fabric-choose-framework.md)
-#### Tárolók
-##### [Áttekintés](service-fabric-containers-overview.md)
+### [Támogatott programozási modellek](service-fabric-choose-framework.md)
+#### [Tárolók](service-fabric-containers-overview.md)
 ##### [Docker Compose (előzetes verzió)](service-fabric-docker-compose.md)
 ##### [Erőforrások szabályozása](service-fabric-resource-governance.md)
-#### Reliable Services
-##### [Áttekintés](service-fabric-reliable-services-introduction.md)
+#### [Reliable Services](service-fabric-reliable-services-introduction.md)
 ##### [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)
 ##### [A Reliable Services életciklusa – Java](service-fabric-reliable-services-lifecycle-java.md)
 ##### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
@@ -69,8 +66,7 @@
 ##### [A Reliable State Manager és a Reliable Collection belső elemei](service-fabric-reliable-services-reliable-collections-internals.md)
 ##### [Haladó szintű használat](service-fabric-reliable-services-advanced-usage.md)
 
-#### Reliable Actors
-##### [Áttekintés](service-fabric-reliable-actors-introduction.md)
+#### [Reliable Actors](service-fabric-reliable-actors-introduction.md)
 ##### [Architektúra](service-fabric-reliable-actors-platform.md)
 ##### [Életciklus-kezelés és szemétgyűjtés](service-fabric-reliable-actors-lifecycle.md)
 ##### [Állapotkezelés](service-fabric-reliable-actors-state-management.md)
@@ -86,10 +82,9 @@
 #### [Szolgáltatás állapota](service-fabric-concepts-state.md)
 #### [Szolgáltatás particionálása](service-fabric-concepts-partitioning.md)
 #### [A szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
-#### [Replikák és példányok](service-fabric-concepts-replica-lifecycle.md)
+#### [Replika és példány életciklusa](service-fabric-concepts-replica-lifecycle.md)
 #### [Újrakonfigurálás](service-fabric-concepts-reconfiguration.md)
-#### A szolgáltatások közötti kommunikáció
-##### [Áttekintés](service-fabric-connect-and-communicate-with-services.md)
+#### [A szolgáltatások közötti kommunikáció](service-fabric-connect-and-communicate-with-services.md)
 ##### [DNS-szolgáltatás](service-fabric-dnsservice.md)
 ##### [Fordított proxy](service-fabric-reverseproxy.md)
 ##### [Fordított proxy konfigurálása biztonságos kommunikációhoz](service-fabric-reverseproxy-configure-secure-communication.md)
@@ -99,10 +94,8 @@
 
 ### [Alkalmazás kapacitásának megtervezése](service-fabric-capacity-planning.md)
 
-## Alkalmazások kezelése
-### [Áttekintés](service-fabric-application-lifecycle.md)
-### Alkalmazás frissítése
-#### [Áttekintés](service-fabric-application-upgrade.md)
+## [Alkalmazások kezelése](service-fabric-application-lifecycle.md)
+### [Alkalmazásfrissítés](service-fabric-application-upgrade.md)
 #### [Konfigurálás](service-fabric-visualstudio-configure-upgrade.md)
 #### [Alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md)
 #### [Adatok szerializálása az alkalmazásfrissítésekben](service-fabric-application-upgrade-data-serialization.md)
@@ -110,8 +103,7 @@
 ### [A hibaelemzés áttekintése](service-fabric-testability-overview.md)
 ### [Az ImageStoreConnectionString beállítás](service-fabric-image-store-connection-string.md)
 
-## Fürtök létrehozása és felügyelete
-### [Áttekintés](service-fabric-deploy-anywhere.md)
+## [Fürtök létrehozása és felügyelete](service-fabric-deploy-anywhere.md)
 ### Tervezés és előkészítés
 #### [Kapacitástervezés](service-fabric-cluster-capacity.md)
 #### [Vészhelyreállítás](service-fabric-disaster-recovery.md)
@@ -121,8 +113,7 @@
 ### Fürtök az Azure-on
 #### [Csomóponttípusok és virtuálisgép-méretezési csoportok](service-fabric-cluster-nodetypes.md)
 #### [Fürthálózatminták](service-fabric-patterns-networking.md)
-### Fürterőforrás-kezelő
-#### [Áttekintés](service-fabric-cluster-resource-manager-introduction.md)
+### [Fürterőforrás-kezelő](service-fabric-cluster-resource-manager-introduction.md)
 #### [Architektúra](service-fabric-cluster-resource-manager-architecture.md)
 #### [Fürt leírása](service-fabric-cluster-resource-manager-cluster-description.md)
 #### [Az alkalmazáscsoportok áttekintése](service-fabric-cluster-resource-manager-application-groups.md)
@@ -230,7 +221,7 @@
 #### [Titkos alkalmazáskulcsok kezelése](service-fabric-application-secret-management.md)  
 #### [Biztonsági szabályzatok konfigurálása az alkalmazáshoz](service-fabric-application-runas-security.md)
 
-## Munka a Windows fejlesztői környezetében
+## Munka a Windows/VS fejlesztői környezetében
 ### [Alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)
 ### [Biztonságos kapcsolatok konfigurálása a Visual Studióban](service-fabric-visualstudio-configure-secure-connections.md)
 ### [Az alkalmazás konfigurálása több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)
@@ -239,7 +230,7 @@
 ### [Helyi monitorozás és diagnosztika](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 ### [Linux-fürt beállítás Windowson](service-fabric-local-linux-cluster-windows.md)
 
-## Munka a Linux fejlesztői környezetében
+## Munka a Linux/Eclipse fejlesztői környezetében
 ### [Az Eclipse beépülő modul használatának első lépései Java-fejlesztésekhez](service-fabric-get-started-eclipse.md)
 ### [Java szolgáltatás hibakeresése az Eclipse-ben](service-fabric-debugging-your-application-java.md)
 ### [Helyi monitorozás és diagnosztika](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)

@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Mi az a vállalati Állapothordozás, vállalati sync, a windows felhő"
 documentationcenter: 
 author: tanning
-manager: femila
+manager: mtillman
 editor: curtand
 ms.assetid: 83b3b58f-94c1-4ab0-be05-20e01f5ae3f0
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: b3c01f8d332d26e92dc3052681a4b2c95142d440
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1ebf5a9bfc4a1f0f92ff85f9406ecc7d538819
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="enterprise-state-roaming-overview"></a>Vállalati állapothordozás áttekintése
 A Windows 10 [Azure Active Directory (Azure AD)](active-directory-whatis.md) a felhasználók biztonságosan szinkronizálhatók a felhasználói beállítások és a beállítások adatainak a felhőbe kapnak. A vállalati Állapothordozás nyújt a felhasználók számára egy egységes élmény a Windows-eszközön, és csökkenti az új eszköz konfigurálásához szükséges időt. A vállalati Állapothordozás működik, a standard hasonló [fogyasztói szinkronizálása](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) , amely először a Windows 8 rendszerben bevezetett. Emellett a vállalati Állapothordozás kínálja:

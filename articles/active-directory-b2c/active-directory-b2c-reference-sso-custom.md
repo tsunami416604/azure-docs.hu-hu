@@ -4,7 +4,7 @@ description: "Útmutató az Azure AD B2C egyéni házirendekkel egyszeri bejelen
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
-manager: krassk
+manager: mtillman
 editor: parakhj
 ms.assetid: 809f6000-2e52-43e4-995d-089d85747e1f
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: parja
-ms.openlocfilehash: ff767993eaf0305168176d0ad6e15c068b8c85eb
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 676b277ae3fbf4554838eee70c5d3e2d8e12c33d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Az Azure AD B2C: Az egyszeri bejelentkezés (SSO) munkamenet-kezelés
 
@@ -98,8 +98,8 @@ A műszaki profil két metaadat-elemek szerepelnek:
 
 | Elem | Alapértelmezett érték | Lehetséges értékek | Leírás
 | --- | --- | --- | --- |
-| IncludeSessionIndex | Igaz | Igaz/hamis | A szolgáltató jelzi, hogy a munkamenet index kell tárolni. |
-| RegisterServiceProviders | Igaz | Igaz/hamis | Azt jelzi, hogy a szolgáltató minden SAML szolgáltatók, egy helyességi feltétel kiadott kell regisztrálni. |
+| IncludeSessionIndex | igaz | Igaz/hamis | A szolgáltató jelzi, hogy a munkamenet index kell tárolni. |
+| RegisterServiceProviders | igaz | Igaz/hamis | Azt jelzi, hogy a szolgáltató minden SAML szolgáltatók, egy helyességi feltétel kiadott kell regisztrálni. |
 
 Amikor a szolgáltató használata a SAML-identity provider munkamenetek tárolásához, a fenti mindkét értéke csak hamis lehet. A szolgáltató használata a B2C SAML-munkamenetek tárolásához, a fenti kell igaz vagy nincs megadva az alapértelmezett beállításokat teljesül.
 

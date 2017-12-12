@@ -4,7 +4,7 @@ description: "Ismerje meg, hogyan működik a feltételes hozzáférés Azure Ac
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: 51a1ee61-3ffe-4f65-b8de-ff21903e1e74
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 09/01/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: e9dadb3291ee760e7b05caedfa6b4128be77aa7d
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 8941e631976eb11966c1f9ddd207af816df5dadf
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-conditional-access-for-vpn-connectivity-preview"></a>Az Azure Active Directory feltételes hozzáférés a VPN-kapcsolat (előzetes verzió)
 
@@ -124,7 +124,7 @@ Ez a szakasz a VPN-kapcsolatot a feltételes hozzáférési házirend konfigurá
 
 5. Az a **hozzárendelés** kattintson **felhasználók és csoportok**.
 
-    ![Felhasználók és csoportok kijelölése](./media/active-directory-conditional-access-vpn-connectivity-windows10/09.png)
+    ![Felhasználók és csoportok kiválasztása](./media/active-directory-conditional-access-vpn-connectivity-windows10/09.png)
 
 6. Az a **felhasználók és csoportok** lapon, a következő lépésekkel:
 

@@ -3,7 +3,7 @@ title: "Jogcím-leképezés az Azure Active Directoryban (nyilvános előzetes v
 description: "Ez a lap leképezési Azure Active Directory jogcímszolgáltatói ismerteti."
 services: active-directory
 author: billmath
-manager: femila
+manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 78dbbe085fca26ad529c6262ba852f3c06ace404
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f5ca44e08c783fdf22a14d71c56c3019cc2bb52
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>A jogcímek hozzárendelése az Azure Active Directoryban (nyilvános előzetes verzió)
 
@@ -95,7 +95,7 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |domain_dns_name|
 |domain_netbios_name|
 |e_exp|
-|E-mailek|
+|e-mailben|
 |végpont|
 |enfpolids|
 |Exp|
@@ -103,7 +103,7 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |grant_type|
 |Diagram|
 |group_sids|
-|csoportok|
+|Csoportok|
 |hasgroups|
 |hash_alg|
 |home_oid|
@@ -154,9 +154,9 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |refresh_token|
 |refreshtoken|
 |request_nonce|
-|Erőforrás|
-|Szerepkör|
-|roles|
+|erőforrás|
+|szerepkör|
+|szerepkörök|
 |Hatókör|
 |Szolgáltatáskapcsolódási pont|
 |biztonsági azonosító|
@@ -280,7 +280,7 @@ Ha a forrás átalakításában, a **TransformationID** elem szerepelnie kell a 
 Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad meg a jogcímet. Az alábbi táblázat a forrás-értékek érvényes azonosító értékének.
 
 #### <a name="table-3-valid-id-values-per-source"></a>3. táblázat: Érvényes azonosító értékek forrásonként
-|Forrás|ID (Azonosító)|Leírás|
+|Forrás|Azonosító|Leírás|
 |-----|-----|-----|
 |Felhasználó|Vezetéknév|Család neve|
 |Felhasználó|givenName|Utónév|
@@ -288,7 +288,7 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 |Felhasználó|objektumazonosító|Objektumazonosító|
 |Felhasználó|mail|E-mail cím|
 |Felhasználó|userPrincipalName|Egyszerű felhasználónév|
-|Felhasználó|Szervezeti egység|Szervezeti egység|
+|Felhasználó|Szervezeti egység|Részleg|
 |Felhasználó|onpremisessamaccountname|A helyi Sam-fiók neve|
 |Felhasználó|netbiosname|NetBIOS-név|
 |Felhasználó|tartománynév|DNS-tartománynév|
@@ -317,14 +317,14 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 |Felhasználó|othermail|Más E-mail|
 |Felhasználó|Ország|Ország|
 |Felhasználó|city|Város|
-|Felhasználó|state|Állapot|
+|Felhasználó|state|Állam|
 |Felhasználó|Beosztás|Beosztás|
 |Felhasználó|EmployeeID|Alkalmazott azonosítója|
 |Felhasználó|facsimiletelephonenumber|Fax Telefonszám|
 |alkalmazás, erőforrás, a célközönség|DisplayName|Megjelenített név|
 |alkalmazás, erőforrás, a célközönség|kifogásolt|Objektumazonosító|
-|alkalmazás, erőforrás, a célközönség|tags|Szolgáltatás egyszerű címke|
-|Cég|tenantcountry|Bérlő ország|
+|alkalmazás, erőforrás, a célközönség|címkék|Szolgáltatás egyszerű címke|
+|Vállalat|tenantcountry|Bérlő ország|
 
 **TransformationID:** TransformationID elemhez meg kell adni, csak akkor, ha a forráselem "átalakítása" értékre van állítva.
 
@@ -378,7 +378,7 @@ Alapján kiválasztott módszert, amelynek bemenetekhez és kimenetekhez várt. 
 **SAML NameID és egyszerű felhasználónév:** , amelyből forrás NameID és UPN értékek és a jogcímek átalakítása, amelyeknél engedélyezve van, attribútumait korlátozottak.
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>5. táblázat: Attribútumok SAML NameID adatforrásként engedélyezett
-|Forrás|ID (Azonosító)|Leírás|
+|Forrás|Azonosító|Leírás|
 |-----|-----|-----|
 |Felhasználó|mail|E-mail cím|
 |Felhasználó|userPrincipalName|Egyszerű felhasználónév|
@@ -403,7 +403,7 @@ Alapján kiválasztott módszert, amelynek bemenetekhez és kimenetekhez várt. 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>6. táblázat: Átalakítási metódusok SAML NameID engedélyezett
 |TransformationMethod|Korlátozások|
 | ----- | ----- |
-|ExtractMailPrefix|None|
+|ExtractMailPrefix|Nincs|
 |Csatlakozás|A csatlakoztatni kívánt utótagot az erőforrás-bérlő ellenőrzött tartományt kell lennie.|
 
 ### <a name="custom-signing-key"></a>Egyéni aláírási kulcs

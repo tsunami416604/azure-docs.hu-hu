@@ -5,7 +5,7 @@ services: active-directory, virtual-network
 keywords: "az Active directory virtuális gép, telepítés active directory-erdőben, az azure active directory-videót "
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 tags: 
 ms.assetid: eb7170d0-266a-4caa-adce-1855589d65d1
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
 ms.author: joflore
-ms.openlocfilehash: 96020eb305b0a027a2128cdd3e3c8acf998c8e54
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 23bea4b6e3351bdce77e6d265ba258ce60a22a36
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Egy új Active Directory-erdő telepítése Azure virtuális hálózaton
 Ez a cikk bemutatja, hogyan hozható létre egy új Windows Server Active Directory-környezetben a virtuális gépen (VM) egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). Ebben az esetben az Azure virtuális hálózat nem egy helyi hálózathoz csatlakozik.
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan hozható létre egy új Windows Server Active Direct
 Is érdekelheti a kapcsolódó cikkekben:
 
 * Ezeket a lépéseket bemutató videót: [egy új Active Directory-erdő telepítése Azure virtuális hálózat](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
-* Igény szerint is [a telephelyek közötti VPN konfigurálása](../vpn-gateway/vpn-gateway-site-to-site-create.md) és majd egy új erdő telepítéséhez vagy egy Azure virtuális hálózat a helyi erdő kiterjesztése. Ezeket a lépéseket lásd: [egy replika az Active Directory-tartományvezérlő telepítése egy Azure virtuális hálózat](active-directory-install-replica-active-directory-domain-controller.md).
+* Igény szerint is [a telephelyek közötti VPN konfigurálása](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) és majd egy új erdő telepítéséhez vagy egy Azure virtuális hálózat a helyi erdő kiterjesztése. Ezeket a lépéseket lásd: [egy replika az Active Directory-tartományvezérlő telepítése egy Azure virtuális hálózat](active-directory-install-replica-active-directory-domain-controller.md).
 * Active Directory tartományi szolgáltatások (AD DS) telepítése egy Azure virtuális hálózatra vonatkozó fogalmi útmutatóért lásd: [telepítése Windows Server Active Directory telepítése Azure virtuális gépekre vonatkozó irányelvek](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
 ## <a name="scenario-diagram"></a>A forgatókönyv diagramja
@@ -108,7 +108,7 @@ A Windows PowerShell használatával kapcsolatos további információkért lás
 ## <a name="see-also"></a>Lásd még:
 * [Egy új Active Directory-erdő telepítése Azure virtuális hálózat](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
 * [Windows Server Active Directory az Azure virtuális gépeken telepítési útmutatója](https://msdn.microsoft.com/library/azure/jj156090.aspx)
-* [A telephelyek közötti VPN konfigurálása](../vpn-gateway/vpn-gateway-site-to-site-create.md)
+* [A telephelyek közötti VPN konfigurálása](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [A replika Active Directory-tartományvezérlő telepítése egy Azure virtuális hálózatban](active-directory-install-replica-active-directory-domain-controller.md)
 * [A Microsoft Azure informatikai szakemberek IaaS: (01) virtuális gép – alapok](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 * [A Microsoft Azure informatikai szakemberek IaaS: (05) létrehozása virtuális hálózatok és a létesítmények közötti kapcsolat](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)

@@ -4,7 +4,7 @@ description: "További tudnivalók a támogatott forgatókönyveket és a megold
 services: active-directory
 author: MarkusVi
 documentationcenter: na
-manager: femila
+manager: mtillman
 ms.assetid: c6ad7640-8172-4541-9255-770f39ecce0e
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 10/13/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 728bf4caf97fdb742cc1560cb06e4b0c85614020
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: d3e2ed44777a5963c8bd88f6479c4c58bebdb940
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Az Android az Azure Active Directory-alapú hitelesítés
 
@@ -40,16 +40,16 @@ Ez a funkció érhető el az előzetes verzió az Office 365 US Government véde
 ## <a name="microsoft-mobile-applications-support"></a>A Microsoft mobilalkalmazás-támogatás
 | Alkalmazások | Támogatás |
 | --- | --- |
-| Azure Information Protection alkalmazás |![Jelölőnégyzet][1] |
-| Intune vállalati portál |![Jelölőnégyzet][1] |
-| Microsoft Teams |![Jelölőnégyzet][1] |
-| OneNote |![Jelölőnégyzet][1] |
-| OneDrive |![Jelölőnégyzet][1] |
-| Outlook |![Jelölőnégyzet][1] |
-| Power BI |![Jelölőnégyzet][1] |
-| A Skype vállalati verzió |![Jelölőnégyzet][1] |
-| Word / Excel / PowerPoint |![Jelölőnégyzet][1] |
-| Yammer |![Jelölőnégyzet][1] |
+| Azure Information Protection alkalmazás |![Ellenőrzés][1] |
+| Intune vállalati portál |![Ellenőrzés][1] |
+| Microsoft Teams |![Ellenőrzés][1] |
+| OneNote |![Ellenőrzés][1] |
+| OneDrive |![Ellenőrzés][1] |
+| Outlook |![Ellenőrzés][1] |
+| Power BI |![Ellenőrzés][1] |
+| A Skype vállalati verzió |![Ellenőrzés][1] |
+| Word / Excel / PowerPoint |![Ellenőrzés][1] |
+| Yammer |![Ellenőrzés][1] |
 
 
 ### <a name="implementation-requirements"></a>Megvalósítás követelményei

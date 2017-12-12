@@ -5,7 +5,7 @@ services: active-directory
 keywords: 
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: 618c5908-5bf6-4f0d-bf88-5168dfb28a88
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: bb2e1aebc60eee5f94ed486e0efb43265728df6f
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: ad1735d618856fb13ec2846f1da4fdaec1c4e614
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Az önkiszolgáló jelszó-változtatási az Azure AD részletes bemutatója
 
@@ -58,7 +58,7 @@ További információt a jelszó mögötti logika olvassa el a következő lép�
 
 Ha az önkiszolgáló jelszó-Változtatási engedélyezve van, ki kell választania a hitelesítési módszerek az alábbiak közül legalább egyet. Egyes esetekben hallott ezek a beállítások néven "kapuk." Erősen ajánlott legalább két hitelesítési módszerek úgy dönt, hogy a felhasználók több beleszólása van.
 
-* E-mail cím
+* E-mail-cím
 * Mobiltelefon
 * Irodai telefon
 * Biztonsági kérdések
@@ -94,9 +94,9 @@ Ha egy házirendet, amelynek csak egy szükséges hitelesítési módszer az ala
 
 | Több regisztrált módszer | Szükséges módszerek száma | Eredmény |
 | :---: | :---: | :---: |
-| legalább 1 | 1 | **Képes** alaphelyzetbe állítása vagy feloldása |
-| 1 | 2 | **Nem lehet** alaphelyzetbe állítása vagy feloldása |
-| 2 vagy több | 2 | **Képes** alaphelyzetbe állítása vagy feloldása |
+| legalább 1 | 1. | **Képes** alaphelyzetbe állítása vagy feloldása |
+| 1. | 2. | **Nem lehet** alaphelyzetbe állítása vagy feloldása |
+| 2 vagy több | 2. | **Képes** alaphelyzetbe állítása vagy feloldása |
 
 Ha módosítja a hitelesítési módszereket, amelyek a felhasználó típusú, akaratlanul leállhat a felhasználók nem tudnak önkiszolgáló jelszó-Változtatási használja, ha nincs telepítve a minimális mennyiségű adat.
 

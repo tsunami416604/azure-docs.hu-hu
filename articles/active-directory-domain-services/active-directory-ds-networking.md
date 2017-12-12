@@ -4,7 +4,7 @@ description: "Azure Active Directory tartományi szolgáltatások hálózati sze
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory-ds
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: 537643f582f6cc3328bd1c098de03c4f6e07c113
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: b35e87da943de8d47f36b6443fa62e251f742149
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD tartományi szolgáltatások hálózati szempontjai
 ## <a name="how-to-select-an-azure-virtual-network"></a>Egy Azure virtuális hálózat kiválasztása
@@ -66,8 +66,8 @@ A következő portokat Azure AD tartományi szolgáltatások szolgáltatáshoz s
 | --- | --- | --- |
 | 443 | Kötelező |Az Azure AD-bérlő-szinkronizálás |
 | 5986 | Kötelező | A tartomány kezelése |
-| 3389 | Optional | A tartomány kezelése |
-| 636 | Optional | Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
+| 3389 | Választható | A tartomány kezelése |
+| 636 | Választható | Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
 
 **Port 443-as (szinkronizálási Azure AD-val)**
 * Az Azure AD-címtár szinkronizálja a felügyelt tartományok szolgál.

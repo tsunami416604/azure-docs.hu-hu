@@ -4,7 +4,7 @@ description: "Témakör: Azure Active Directory B2C egyéni házirendek"
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
-manager: krassk
+manager: mtillman
 editor: parakhj
 ms.assetid: 1ff398a4-2079-4615-94f1-57de22c0aad6
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.openlocfilehash: 25dada7bc04449c6e527b94d97780d9aef1c33a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c59075bb1eacb05599b23be3d8731fa40eabf98
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Az Azure Active Directory B2C: Egyéni házirendek
 
@@ -30,7 +30,7 @@ Az egyéni szabályzatok olyan konfigurációs fájlok, amelyekkel meghatározha
 
 ## <a name="comparing-built-in-policies-and-custom-policies"></a>Beépített és egyéni házirendeket összehasonlítása
 
-| | Beépített házirendek | Egyéni házirendek |
+| | Beépített házirendek | Egyéni szabályzatok |
 |-|-------------------|-----------------|
 |Azon felhasználók megcélzása | Minden alkalmazásfejlesztők vagy identitás szakértői nélkül | Identitás szakemberek: rendszerintegrátoroktól, tanácsadókkal és házon belüli identitás csoportok. OpenIDConnect folyamatokkal részeként, és identitás-szolgáltatóktól és szolgáltatáson alapuló Jogcímalapú hitelesítés |
 |A konfigurációs módszert | Az Azure portál egy felhasználóbarát felhasználói felületen | XML-fájlok közvetlen szerkesztésével és majd feltölteni az Azure-portálon |
@@ -38,7 +38,7 @@ Az egyéni szabályzatok olyan konfigurációs fájlok, amelyekkel meghatározha
 | Attribútum testreszabása | Szabványos és az egyéni attribútumok | Azonos |
 |Token és munkamenet-kezelés | Egyéni token és több munkamenet-beállításokkal | Azonos |
 |Identitás-szolgáltatóktól| **Ma**: előre meghatározott helyi, közösségi szolgáltató<br><br>**Jövőbeli**: szabványalapú OIDC, SAML, OAuth | **Ma**: OIDC szabványalapú OAUTH, a SAML<br><br>**Jövőbeli**: WsFed |
-|Identitáskezelési tevékenységek (példák) | Regisztráljon vagy jelentkezzen be helyi és sok közösségi fiókok<br><br>Új jelszó önkiszolgáló kérése<br><br>Profil szerkesztése<br><br>Többtényezős hitelesítéssel kapcsolatos forgatókönyvek<br><br>Jogkivonatok és munkamenetek testreszabása<br><br>Hozzáférési jogkivonat adatfolyamok | Végezze el az egyéni identitás-szolgáltatóktól beépített házirendek megegyező feladatok vagy egyéni hatókörök<br><br>A regisztráció alkalmával egy másik rendszer felhasználó létesítése<br><br>Egy üdvözlő e-mailek küldése a saját e-mail-szolgáltató<br><br>A felhasználókhoz tartozó tárolóban kívül B2C használata<br><br>Ellenőrzi, hogy a felhasználó megadott információkat egy megbízható rendszer API-n keresztül |
+|Identitáskezelési tevékenységek (példák) | Regisztráljon vagy jelentkezzen be helyi és sok közösségi fiókok<br><br>Önkiszolgáló jelszóváltoztatás<br><br>Profil szerkesztése<br><br>Többtényezős hitelesítéssel kapcsolatos forgatókönyvek<br><br>Jogkivonatok és munkamenetek testreszabása<br><br>Hozzáférési jogkivonat adatfolyamok | Végezze el az egyéni identitás-szolgáltatóktól beépített házirendek megegyező feladatok vagy egyéni hatókörök<br><br>A regisztráció alkalmával egy másik rendszer felhasználó létesítése<br><br>Egy üdvözlő e-mailek küldése a saját e-mail-szolgáltató<br><br>A felhasználókhoz tartozó tárolóban kívül B2C használata<br><br>Ellenőrzi, hogy a felhasználó megadott információkat egy megbízható rendszer API-n keresztül |
 
 ## <a name="policy-files"></a>Házirend-fájlok
 
@@ -65,7 +65,7 @@ Azure felhasználói identitások és hozzáférések kezelése (CIAM) szolgált
 
 Az Azure AD B2C együttműködő Identitásszolgáltatók, a felhasználók, a más rendszerekkel, és a helyi felhasználói könyvtárnak sorban egy identitás-feladat eléréséhez (például a felhasználó bejelentkezési regisztrálni egy új felhasználót, a jelszó alaphelyzetbe állítása). Az alapul szolgáló platform, amely több résztvevős megbízhatósági kapcsolatot hoz létre, és végrehajtja ezeket a lépéseket nevezik, és egy házirend (más néven az felhasználói út vagy egy megbízhatósági keretrendszer házirend) identitás élmény keretében explicit módon meghatározza a szereplője, a műveletek, a protokollok és a feladatütemezési lépés befejezéséhez.
 
-### <a name="identity-experience-framework"></a>Identity Experience Framework
+### <a name="identity-experience-framework"></a>Identitás-kezelőfelületi keretrendszer
 
 Például OpenIDConnect, OAuth, SAML, WSFed és néhány nem szabványos megfelelően (például REST formázza teljes mértékben konfigurálhatók, házirend-vezérelt, felhőalapú Azure platformon vezénylő (nagyjából Jogcímszolgáltatók) entitások közötti megbízhatósági kapcsolat a szabványos protokoll Operációs rendszerek API-based jogcímek cseréjét). A I2E hoz felhasználóbarát, whitelabelled észlel, amely támogatja a HTML, CSS és javascript.  Ma identitás élmény keretében elérhető, csak az Azure AD B2C szolgáltatás kontextusában és rangsorolt CIAM kapcsolódó feladatok.
 
@@ -74,7 +74,7 @@ Például OpenIDConnect, OAuth, SAML, WSFed és néhány nem szabványos megfele
 Előre definiált konfigurációs fájlokat, amelyek közvetlenül az Azure AD B2C a leggyakrabban használt (azaz a felhasználói regisztráció, bejelentkezés, a jelszó alaphelyzetbe állítása) feladatok és a megbízható entitások, amelynek kapcsolatot is az Azure AD B2C (az előre definiált végrehajtásához viselkedése Példa Facebook identitásszolgáltató, LinkedIn, Microsoft Account, Google-fiókot).  A jövőben beépített házirendek is rendelkezhetnek testreszabási Identitásszolgáltatók, amelyek általában a vállalati tartomány, például az Azure Active Directory Premium, az Active Directory vagy az AD FS, a Salesforce azonosító szolgáltató stb.
 
 
-### <a name="custom-policies"></a>Egyéni házirendek
+### <a name="custom-policies"></a>Egyéni szabályzatok
 
 Az Azure AD B2C-bérlő identitását élmény keretrendszer viselkedését meghatározó konfigurációs fájlok. Egyéni házirendet egy vagy több XML-fájlként (lásd a Házirendfájljait definíciókat) egy függő entitás (például egy alkalmazás) általi meghívásakor identitás élmény keretében által végrehajtott érhető el. Egyéni házirendek közvetlenül szerkeszthetők az identitás fejlesztő közel korlátlan számú feladatok elvégzéséhez. Egyéni házirendek konfigurálásához a fejlesztők kell adnia a megbízható kapcsolatok metaadat-végpontokat felvenni gondos részletesen, pontos jogcímek exchange-definíciókat, és konfigurálja a titkos kulcsokat, a kulcsok és a tanúsítványok minden identitásszolgáltatótól igény szerint.
 
@@ -92,7 +92,7 @@ Egyéni házirendet egy jelenik meg egy vagy több XML-formátumú fájlok, amel
 
 | Házirend fájl típusa | Példák fájl neve | Ajánlott használata | Örököl |
 |---------------------|--------------------|-----------------|---------------|
-| ALAPJA |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | A core jogcímek séma, a jogcímek átalakítása, a Jogcímszolgáltatók és a felhasználó utak állította be a Microsoft tartalmazza<br><br>Minimális módosítja ezt a fájlt | None |
+| ALAPJA |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | A core jogcímek séma, a jogcímek átalakítása, a Jogcímszolgáltatók és a felhasználó utak állította be a Microsoft tartalmazza<br><br>Minimális módosítja ezt a fájlt | Nincs |
 | A bővítmény (kiterjesztés) | TrustFrameworkExtensions.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_EXT.xml | A KIINDULÓ fájl módosításait összesítése<br><br>Módosított Jogcímszolgáltatók<br><br>Módosított felhasználói utak<br><br>A saját egyéni sémadefiníciók | Alap fájl |
 | Függő Entitásonkénti (RP) | B2C_1A_sign_up_sign_in.XML| Token alakzat és módosítása munkamenet Itt| Extensions(ext) fájl |
 

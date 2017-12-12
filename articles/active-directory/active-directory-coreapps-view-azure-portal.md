@@ -4,7 +4,7 @@ description: "A vállalati alkalmazásokat kezeléséhez az Azure Active Directo
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: c4fb6f94-34f8-4323-8bd7-a3ee44901f7d
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 13a45733b3b8d9ea0593e3b546b6ea58aa5f1a46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd933ee33212007a58903b607055f437cc9206fd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Az Azure Active Directoryban is kezelhető az összes vállalati alkalmazást megtekintése
 Kezelheti a vállalati alkalmazások az Azure Active Directory (Azure AD). Ez magában foglalja, megtekintés, alkalmazásokat, kezelheti, hozzárendelése felhasználókat és csoportokat egy alkalmazáshoz, az alkalmazás például az alkalmazás neve/embléma tulajdonságok karbantartása és, hogy a felhasználók nem lehet bejelentkezni, még akkor is letiltása a kérelmet.

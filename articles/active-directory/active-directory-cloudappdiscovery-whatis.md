@@ -5,7 +5,7 @@ services: active-directory
 keywords: "a cloud app discovery alkalmazások kezelése"
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 35b898aa3c03aeef914a7df574ac65a22a6c7bec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5875cf4cc0938607fa1ff6adf840d513d1fb85bd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="find-unmanaged-cloud-applications-with-cloud-app-discovery"></a>A Cloud App Discovery nem felügyelt felhőalapú alkalmazások keresése
 ## <a name="summary"></a>Összefoglalás
@@ -36,7 +36,7 @@ A cloud App Discovery egy olyan szolgáltatás, az Azure Active Directory Premiu
 * Exportálhatja az adatokat kapcsolat nélküli elemzéshez.
 * Ezek az alkalmazások informatikai vezérlése alatt állapotba, és egyszeri bejelentkezés a felhasználói felügyeletének engedélyezése.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A működési elv
 1. Alkalmazás használati ügynök telepítve van a felhasználók számítógépeire.
 2. Az alkalmazás használati adatait, az ügynökök által rögzített a cloud app discovery szolgáltatásba zajlik a biztonságos, titkosított csatornán.
 3. A Cloud App Discovery szolgáltatásba kiértékeli az adatokat, és létrehozza a jelentéseket.

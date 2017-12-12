@@ -4,7 +4,7 @@ description: "Az Azure AD tartományi szolgáltatásokra vonatkozó hibaelhárí
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 3acecdf753162ad703ff51acf40c34335bf6cdcb
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 5fe36241efc11cbb85231137649f7b97e23cc0a5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD tartományi szolgáltatások - hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippek biztosít a problémák jelentkezhetnek, ha beállítása és felügyelete az Azure Active Directory (AD) tartományi szolgáltatásokban.
@@ -57,13 +57,10 @@ Ellenőrizze, hogy van-e egy alkalmazás "Azure AD tartományi szolgáltatások 
 
 A következő lépésekkel az alkalmazás meglétének ellenőrzése és törlése, ha az alkalmazás létezik:
 
-1. Nyissa meg a **klasszikus Azure-portált** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).
-2. Válassza az **Active Directory** csomópontot a bal oldali panelen.
-3. Válassza ki az Azure AD bérlőt (címtárat), amelyiken engedélyezni kívánja az Azure AD tartományi szolgáltatásokat.
-4. Keresse meg a **alkalmazások** fülre.
-5. Válassza ki a **a vállalat tulajdonában lévő alkalmazások** beállítást meg a legördülő listában.
-6. Ellenőrizze az alkalmazás **Azure AD tartományi szolgáltatások szinkronizáló**. Ha az alkalmazás létezik, ugorjon a törölje azt.
-7. Ha törölte az alkalmazáshoz, próbálja meg ismét Azure AD tartományi szolgáltatások engedélyezése.
+1. Keresse meg a **alkalmazások** szakasza az Azure AD-címtárát a [Azure-portálon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/).
+2. Válassza ki **összes alkalmazás** a a **megjelenítése** legördülő menüből. Válassza ki **bármely** a a **alkalmazások állapota** legördülő menüből. Válassza ki **bármely** a a **alkalmazás látható** legördülő menüből.
+3. Típus **Azure AD tartományi szolgáltatások szinkronizáló** be a keresőmezőbe. Ha az alkalmazás létezik, kattintson rá, és kattintson a **törlése** törli-e az eszköztár gombjára.
+4. Ha törölte az alkalmazáshoz, próbálja meg ismét Azure AD tartományi szolgáltatások engedélyezése.
 
 ### <a name="invalid-configuration"></a>Érvénytelen konfiguráció
 **Hibaüzenet:**
@@ -153,7 +150,7 @@ Az Azure AD megvédi Önt a felhasználói objektumok véletlen törlésétől. 
 
 A felhasználói fiók a felügyelt tartományok letiltott állapotban marad, akkor is, ha az Azure AD-címtárát hozza létre a azonos egyszerű Felhasználónévvel rendelkező felhasználói fiókkal. Távolítsa el a felhasználói fiók a felügyelt tartományok, meg kell kényszerített törléséhez az Azure AD-bérlő.
 
-A teljes mértékben eltávolítja a felügyelt tartományok a felhasználói fiók, a felhasználó véglegesen törli az Azure AD-bérlőn. Használja a Remove-MsolUser PowerShell-parancsmagot a „-RemoveFromRecycleBin” paraméterrel, ahogyan az az alábbi [MSDN-cikkben](https://msdn.microsoft.com/library/azure/dn194132.aspx) is olvasható.
+A teljes mértékben eltávolítja a felügyelt tartományok a felhasználói fiók, a felhasználó véglegesen törli az Azure AD-bérlőn. Használja a `Remove-MsolUser` PowerShell parancsmag a `-RemoveFromRecycleBin` lehetőség, mert leírt [MSDN-cikk](https://msdn.microsoft.com/library/azure/dn194132.aspx).
 
-## <a name="contact-us"></a>Kapcsolat
+## <a name="contact-us"></a>Kapcsolatfelvétel
 Lépjen kapcsolatba az Azure Active Directory tartományi szolgáltatások termékért felelős csoport a [visszajelzés fájlmegosztás vagy a támogatáshoz](active-directory-ds-contact-us.md).

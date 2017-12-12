@@ -4,7 +4,7 @@ description: "Feltételes hozzáférés-vezérlést az Azure Active Directory el
 documentationcenter: 
 services: active-directory
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 65f80aea-0426-4072-83e1-faf5b76df034
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 921c8391fc18eca35d10c3ade158a98ae88df397
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3257b5b9c714103773dfe646093cb632f500d459
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Hibrid identitás életciklusának tervezése
 Identitás az egyik a vállalati mobilitás és alkalmazás-hozzáférési stratégia alapjainak. A mobileszköz vagy SaaS-alkalmazás meg bejelentkezni, hogy a személyazonosságát jelenti a kulcsot minden hozzáférjenek. A legmagasabb szintjén az identitáskezelési megoldás magában foglalja a egységesíti és az identitás tárházak találhatók, ide tartozik az automatizálását és erőforrások kiépítési folyamat központosítása közötti szinkronizálása. A megoldást egy központosított identitás a helyszíni és a felhő között legyen, és segítségével is identitás-összevonási valamilyen központosított hitelesítés karbantartása biztonságosan megosztani, és a külső felhasználók és a vállalatok közötti együttműködés. Erőforrások operációs rendszereket és alkalmazásokat olyan személyek között, vagy (DEP) részt, a szervezetek. Szervezeti felépítés is lehet módosítva, hogy megfeleljen a kiépítési szabályzatokat és eljárásokat.
