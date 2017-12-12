@@ -1,29 +1,29 @@
 ---
-title: "Indexelés, lekérdezés és szűrés az Azure Search portál lapjain | Microsoft Docs"
-description: "Az Azure Portalon előre meghatározott mintaadatok használatával indexet hozhat létre. Használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést, a geosearch funkciót és sok mást."
+title: "Azure Search-oktatóanyag – Indexelés, lekérdezés és szűrés a portál használatával | Microsoft Docs"
+description: "Az Azure Portalon előre meghatározott mintaadatokkal indexet hozhat létre az Azure Search szolgáltatásban. Használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést, a geosearch funkciót és sok mást."
 services: search
 documentationcenter: 
 author: HeidiSteen
 manager: jhubbard
 editor: 
 tags: azure-portal
-ms.assetid: 21adc351-69bb-4a39-bc59-598c60c8f958
+ms.assetid: 
 ms.service: search
 ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 06/26/2017
+ms.date: 12/04/2017
 ms.author: heidist
-ms.openlocfilehash: a67de3d385ccb1f65d026acfa0d4413df889bafe
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 098faa777746ac23ce7e88aa01fc727f88d4259c
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>Azure Search-index létrehozása, lekérdezése és szűrése a portálon
 
-Egy előre meghatározott minta adatkészlettel, valamint az **Adatok importálása** varázslóval gyorsan létrehozhat egy indexet az Azure Portalon. A **keresési ablakban** használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést és a geosearch funkciót.  
+Egy előre meghatározott mintaadatkészlettel, valamint az **Adatok importálása** varázslóval gyorsan létrehozhat egy Azure Search-indexet az Azure Portalon. A **keresési ablakban** használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést és a geosearch funkciót.  
 
 Így kódolás nélkül juthat előre meghatározott adatokhoz, és azonnal lehetősége van Önt érdeklő lekérdezések írására. A portál eszközei nem helyettesítik a kódolást, de az eszközök a következő feladatokhoz hasznosak lehetnek:
 

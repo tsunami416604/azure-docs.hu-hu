@@ -13,22 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: shengc
-ms.openlocfilehash: b8c30a2fd68178ddd2bfb3ff079c47ba00928855
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c15d723efdcf273c86f54ddce04904ce1a274631
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
-
-[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
-
-#### <a name="this-tutorial"></a>Ez az oktatóanyag
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd [a Data Factory 1. verziójának dokumentációját](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-
-Ebben az oktatóanyagban az Azure PowerShell-lel hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az Azure PowerShell-lel hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNET) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása 
@@ -39,6 +31,8 @@ Ebben az oktatóanyagban az Azure PowerShell-lel hoz létre egy Data Factory-fol
 > * A folyamat futásának monitorozása 
 > * A kimenet ellenőrzése 
 
+> [!NOTE]
+> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd [a Data Factory 1. verziójának dokumentációját](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -71,22 +65,32 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
    FROM hivesampletable
    ```
 2. Az Azure Blob Storage-ban hozzon létre egy **adftutorial** nevű tárolót, ha még nem létezik.
-3. Hozzon létre egy `hivescripts` nevű mappát.
-4. Töltse fel a `hivescript.hql` fájlt a `hivescripts` almappába.
+3. Hozzon létre egy **hivescripts** nevű mappát.
+4. Töltse fel a **hivescript.hql** fájlt a **hivescripts** almappába.
 
  
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 
-1. Adja meg egyesével a változókat.
+1. Adja meg az erőforráscsoport nevét. Az oktatóanyag során létrehoz majd egy erőforráscsoportot. Ha szeretné, természetesen egy meglévő erőforráscsoportot is használhat. 
 
     ```powershell
-    $subscriptionID = "<subscription ID>" # Your Azure subscription ID
-    $resourceGroupName = "ADFTutorialResourceGroup" # Name of the resource group
-    $dataFactoryName = "MyDataFactory09142017" # Globally unique name of the data factory
-    $pipelineName = "MyHivePipeline" # Name of the pipeline
-    $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" # make it a unique name. 
+    $resourceGroupName = "ADFTutorialResourceGroup" 
+    ```
+2. Adja meg az adat-előállító nevét. A névnek globálisan egyedinek kell lennie.
+
+    ```powershell
+    $dataFactoryName = "MyDataFactory09142017"
+    ```
+3. Adja meg a folyamat nevét. 
+
+    ```powershell
+    $pipelineName = "MyHivePipeline" # 
+    ```
+4. Adja meg a saját üzemeltetésű integrációs modul nevét. Egy saját üzemeltetésű integrációs modulra van szükség, amikor az adat-előállítónak egy virtuális hálózaton belüli erőforrásokhoz (pl. Azure SQL Database) kell hozzáférnie. 
+    ```powershell
+    $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
 2. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat. A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
@@ -226,17 +230,23 @@ Frissítse a következő tulajdonságok értékeit a társított szolgáltatás 
   
         `10.6.0.15 myHDIClusterName.azurehdinsight.net`
 
-Váltson arra a mappára, ahol létrehozta a JSON-fájlokat, és futtassa a következő parancsot a társított szolgáltatások üzembe helyezéséhez: 
+## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
+A PowerShell-ben váltson arra a mappára, ahol létrehozta a JSON-fájlokat, és futtassa a következő parancsot a társított szolgáltatások üzembe helyezéséhez: 
 
+1. A PowerShell-ben váltson arra a mappára, ahol létrehozta a JSON-fájlokat.
+2. Futtassa a következő parancsot egy Azure Storage társított szolgáltatás létrehozásához. 
 
-```powershell
-Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
+    ```powershell
+    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
+    ```
+3. Futtassa a következő parancsot egy Azure HDInsight társított szolgáltatás létrehozásához. 
 
-Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyHDILinkedService" -File "MyHDILinkedService.json"
-```
+    ```powershell
+    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyHDInsightLinkedService" -File "MyHDInsightLinkedService.json"
+    ```
 
 ## <a name="author-a-pipeline"></a>Folyamat létrehozása
-Ebben a lépésben létrehoz egy Hive-tevékenységgel rendelkező új folyamatot. A tevékenység egy Hive-szkript végrehajtásával ad vissza adatokat egy minta táblából, és menti azokat egy megadott elérési útra. Hozzon létre egy JSON-fájlt a kívánt szerkesztőprogrammal, másolja a fájlba egy folyamatdefiníció alábbi JSON-definícióját, majd mentse a fájlt **MyHiveOnDemandPipeline.json** néven.
+Ebben a lépésben létrehoz egy Hive-tevékenységgel rendelkező új folyamatot. A tevékenység egy Hive-szkript végrehajtásával ad vissza adatokat egy minta táblából, és menti azokat egy megadott elérési útra. Hozzon létre egy JSON-fájlt a kívánt szerkesztőprogrammal, másolja a fájlba egy folyamatdefiníció alábbi JSON-definícióját, majd mentse a fájlt **MyHivePipeline.json** néven.
 
 
 ```json

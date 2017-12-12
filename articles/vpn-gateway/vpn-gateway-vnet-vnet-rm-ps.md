@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 8a772680355a62c13dbe0361b5b58029642cf84d
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 54cb7a9630a64be1a3012604929613fe0a843666
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -39,15 +39,23 @@ A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatk
 
 ## <a name="about"></a>Tudnivalók a virtuális hálózatok csatlakoztatásáról
 
-Két virtuális hálózat virtuális hálózatok közötti kapcsolattal történő összekapcsolása (VNet2VNet) nagyon hasonlít egy IPsec-kapcsolat helyszíni helyhez való csatlakoztatásához. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához, és mindkettő ugyanúgy működik a kommunikáció során. A kapcsolattípusok közötti különbség a helyi hálózati átjáró konfigurálásának módjában rejlik. Virtuális hálózatok közötti kapcsolat létrehozásakor a helyi hálózati átjáró címtere nem látható. Ennek létrehozása és feltöltése automatikusan történik. Amikor azonban frissíti az egyik virtuális hálózat címterét, a másik automatikusan tudni fogja a frissített címtér útvonalát.
+A virtuális hálózatok többféleképpen is összekapcsolhatók. Az alábbi szakaszok a virtuális hálózatok összekapcsolásának különböző módjait ismertetik.
 
-Amikor bonyolult konfigurációkkal dolgozik, a virtuális hálózatok közötti kapcsolatok helyett érdemesebb lehet IPsec-kapcsolatokat használni. Így további címtereket határozhat meg a helyi hálózati átjáróhoz a forgalom irányítása érdekében. Ha IPsec-kapcsolattal csatlakoztatja a virtuális hálózatokat, létre kell hoznia, illetve konfigurálnia kell a helyi hálózati átjárót. További információ: [Helyek közötti konfigurációk](vpn-gateway-create-site-to-site-rm-powershell.md).
+### <a name="vnet-to-vnet"></a>Virtuális hálózatok közötti kapcsolat
 
-Emellett ha a virtuális hálózatai azonos régióban találhatók, fontolja meg az összekötésüket virtuális hálózatok közötti társviszony útján. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót, valamint a díjazása és a funkciója is némiképp eltérő. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
+Virtuális hálózatok közötti kapcsolat konfigurálásával könnyedén kapcsolat össze virtuális hálózatokat. Két virtuális hálózat virtuális hálózatok közötti kapcsolattal történő összekapcsolása (VNet2VNet) nagyon hasonlít egy helyek közötti IPsec-kapcsolat helyszíni helyhez való csatlakoztatásához.  Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához, és mindkettő ugyanúgy működik a kommunikáció során. A kapcsolattípusok közötti különbség a helyi hálózati átjáró konfigurálásának módjában rejlik. Virtuális hálózatok közötti kapcsolat létrehozásakor a helyi hálózati átjáró címtere nem látható. Ennek létrehozása és feltöltése automatikusan történik. Amikor azonban frissíti az egyik virtuális hálózat címterét, a másik automatikusan tudni fogja a frissített címtér útvonalát. A virtuális hálózatok közötti kapcsolat létrehozása általában gyorsabb és egyszerűbb, mintha egy helyek közötti kapcsolatot hozna létre a virtuális hálózatok között.
 
-### <a name="why"></a>Mikor érdemes virtuális hálózatok közötti kapcsolatot létrehozni?
+### <a name="site-to-site-ipsec"></a>Helyek közötti kapcsolat (IPsec)
 
-A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
+Amikor bonyolult hálózati konfigurációkkal dolgozik, a virtuális hálózatok közötti kapcsolatok konfigurációs lépései helyett érdemesebb lehet a [helyek közötti kapcsolat](vpn-gateway-create-site-to-site-rm-powershell.md) lépéseit használni virtuális hálózatai összekapcsolására. A helyek közötti kapcsolatokra vonatkozó lépésekkel manuálisan hozhatja létre és konfigurálhatja a helyi hálózati átjárókat. Az egyes virtuális hálózatok helyi hálózati átjárója helyi helyként kezeli a többi virtuális hálózatot. Így további címtereket határozhat meg a helyi hálózati átjáróhoz a forgalom irányítása érdekében. Ha egy virtuális hálózat címtere megváltozik, frissítenie kell a megfelelő helyi hálózati átjárót a változás tükrözése érdekében. Az átjáró nem frissül automatikusan.
+
+### <a name="vnet-peering"></a>Virtuális hálózatok közötti társviszony
+
+Érdemes megfontolni a virtuális hálózatok virtuális hálózatok közötti társviszony útján történő összekötését. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót, és más korlátozásokkal rendelkezik. Emellett a [virtuális hálózatok közötti társviszony díjszabásának](https://azure.microsoft.com/pricing/details/virtual-network) kiszámítása máshogy történik, mint a [virtuális hálózatok közötti VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway) esetén. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
+
+## <a name="why"></a>Mikor érdemes virtuális hálózatok közötti kapcsolatot létrehozni?
+
+A virtuális hálózatokat a következő okokból érdemes virtuális hálózatok közötti kapcsolattal összekapcsolni:
 
 * **Georedundancia és földrajzi jelenlét több régióban**
 
@@ -59,7 +67,7 @@ A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
 
 A virtuális hálózatok közötti kommunikáció kombinálható többhelyes konfigurációkkal. Így létrehozhat olyan hálózati topológiákat, amelyek a létesítmények közötti kapcsolatokat a virtuális hálózatok közötti kapcsolatokkal kombinálják.
 
-## <a name="which-set-of-steps-should-i-use"></a>Melyik eljárást használjam?
+## <a name="steps"></a>Melyik virtuális hálózatok közötti konfigurációs lépést alkalmazzam?
 
 Ebben a cikkben kétféle lépéssorozatot láthat. Az egyik lépéssorozat az [azonos előfizetésben található virtuális hálózatokra](#samesub), a másik az [eltérő előfizetésekben található virtuális hálózatokra](#difsub) vonatkozik.
 A kettő között az egyik legfőbb különbség az, hogy az eltérő előfizetésekben található virtuális hálózatok kapcsolatainak konfigurálásához külön PowerShell-munkameneteket kell használnia. 

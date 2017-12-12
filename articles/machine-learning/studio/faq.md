@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
 ms.author: garye
-ms.openlocfilehash: 2b4d04af7fe7a40a1d907a06ab8772f20956bc19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b162d7534eff0d1f79808fc86bacf92dbfc2f84a
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning szolgáltatásra vonatkozó gyakori kérdések (GYIK): Számlázás, képességek, korlátozások és támogatás
 Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja az Azure Machine Learning szolgáltatással kapcsolatban, amely egy, a webszolgáltatásokon keresztül végrehajtott prediktív modellezést és a megoldások üzembe helyezését célzó felhőalapú szolgáltatás. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket fedik le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
@@ -230,7 +230,7 @@ További információ: [Retrain Machine Learning models programmatically](retrai
 
 **Hogyan követhetem figyelemmel az éles környezetben telepített webszolgáltatásaimat?**
 
-Miután telepített egy prediktív modellt, nyomon követheti a klasszikus Azure portálon (csak a klasszikus webszolgáltatások esetében) vagy az Azure Machine Learning-webszolgáltatások portálján. Minden telepített szolgáltatásnak van egy saját irányítópultja, ahol az adott szolgáltatásra vonatkozó információkat láthatja. A telepített webszolgáltatások kezelésével kapcsolatos további információkért lásd [a webszolgáltatások az Azure Machine Learning-webszolgáltatások portáljának segítségével történő kezelését](manage-new-webservice.md) és [az Azure Machine Learning-munkaterület kezelését](manage-workspace.md) ismertető cikket.
+Miután telepített egy prediktív modellt, monitorozhatja azt az Azure Machine Learning-webszolgáltatások portálján. Minden telepített szolgáltatásnak van egy saját irányítópultja, ahol az adott szolgáltatásra vonatkozó információkat láthatja. A telepített webszolgáltatások kezelésével kapcsolatos további információkért lásd [a webszolgáltatások az Azure Machine Learning-webszolgáltatások portáljának segítségével történő kezelését](manage-new-webservice.md) és [az Azure Machine Learning-munkaterület kezelését](manage-workspace.md) ismertető cikket.
 
 **Láthatom valahol az RRS/BES elemeim kimenetét?**
 
@@ -285,7 +285,7 @@ Nem.
 ## <a name="security-and-availability"></a>Biztonság és elérhetőség
 **Alapértelmezés szerint kiknek van hozzáférése a webszolgáltatások HTTP-végpontjához? Hogyan korlátozhatom a végponthoz való hozzáférést?**
 
-A webszolgáltatások telepítése után egy alapértelmezett végpont kerül létrehozásra az adott szolgáltatáshoz. Az alapértelmezett végpont az API-kulcs használatával hívható meg. Saját kulcsukat használva további végpontokat adhat hozzá a klasszikus Azure portálon keresztül, vagy a webszolgáltatás-kezelési API-k szoftveres használatával. A webszolgáltatásokhoz való meghíváshoz hívóbetűk szükségesek. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).
+A webszolgáltatások telepítése után egy alapértelmezett végpont kerül létrehozásra az adott szolgáltatáshoz. Az alapértelmezett végpont az API-kulcs használatával hívható meg. Saját kulcsukat használva további végpontokat adhat hozzá a Web Services portálon keresztül vagy a webszolgáltatás-felügyeleti API-k programozott használatával. A webszolgáltatásokhoz való meghíváshoz hívóbetűk szükségesek. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).
 
 **Mit kell tenni, ha nem találom az Azure Storage-fiókomat?**
 
@@ -297,7 +297,7 @@ Ha véletlenül törölte a tárfiókot, hozzon létre egy új tárfiókot ugyan
 
 A munkafolyamat végrehajtása során a Machine Learning Studio a felhasználók által megadott Azure Storage-fiók segítségével tárolja a köztes adatokat. Ez a tárfiók egy munkaterület létrehozása során kerül a Machine Learning Studióba, és a hívóbetűk ehhez a munkaterülethez lesznek társítva. Ha a munkaterület létrehozását követően módosítják a hívóbetűket, a munkaterület többé nem lesz képes hozzáférni a tárfiókhoz. A munkamenet működése minden benne futó kísérlettel együtt leáll.
 
-Ha módosította a tárfiók hívóbetűjét, a klasszikus Azure portált használva szinkronizálja újra a hívóbetűt a munkaterületen.  
+Ha módosította a tárfiók hozzáférési kulcsát, az Azure Portal használatával szinkronizálja újra a hozzáférési kulcsot a munkaterületen.  
 
 ## <a name="support-and-training"></a>Támogatás és betanítás
 **Hol kaphatok képzést az Azure Machine Learning használatáról?**
@@ -509,7 +509,7 @@ Mindössze egy Microsoft-fiókra van szükség. Nyissa meg az [Azure Machine Lea
 
 **Hogy tudok regisztrálni az Azure Machine Learning Standard szintjére?**
 
-Ahhoz, hogy Standard Machine Learning-munkaterületet hozhasson létre, Azure-előfizetéssel kell rendelkeznie. Regisztrálhat az Azure 30 napos, ingyenes próba-előfizetésére, és később frissíthet fizetős Azure-előfizetésre, vagy akár egyből megvásárolhatja az Azure-előfizetést. Ha megkapta a hozzáférést az előfizetéshez, a Microsoft klasszikus Azure portáljából létrehozhatja a Machine Learning-munkaterületet. Tekintse meg a [részletes útmutatót](https://azure.microsoft.com/trial/get-started-machine-learning-b/).
+Ahhoz, hogy Standard Machine Learning-munkaterületet hozhasson létre, Azure-előfizetéssel kell rendelkeznie. Regisztrálhat az Azure 30 napos, ingyenes próba-előfizetésére, és később frissíthet fizetős Azure-előfizetésre, vagy akár egyből megvásárolhatja az Azure-előfizetést. Ha megkapta a hozzáférést az előfizetéshez, a Microsoft Azure Portalból létrehozhatja a Machine Learning-munkaterületet. Tekintse meg a [részletes útmutatót](https://azure.microsoft.com/trial/get-started-machine-learning-b/).
 
 Másik lehetőség, ha egy már meglévő Standard Machine Learning-munkaterület tulajdonosa elérést ad Önnek a munkaterületéhez.
 

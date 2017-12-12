@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 11/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3028e913937db304ac0a1df8e6a095072630505d
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 22c5597cf14f27671667176dce8782cf0c79918d
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -56,10 +56,8 @@ Egyes erőforrásokra (fiókokra, számítási csomópontokra, készletekre, fel
 * [Számítási csomópont](#compute-node)
 * [Készlet](#pool)
 * [Feladat](#job)
-
   * [Feladatütemezések](#scheduled-jobs)
 * [Tevékenység](#task)
-
   * [Indítási tevékenység](#start-task)
   * [Feladatkezelő-tevékenység](#job-manager-task)
   * [Feladat-előkészítési és -kiadási tevékenységek](#job-preparation-and-release-tasks)
@@ -263,6 +261,9 @@ Amikor létrehozza a tevékenységet, a következőket kell megadnia:
 * Azok a **korlátozások**, amelyeken belül a tevékenység végrehajtható. Korlátozás például a maximális időtartam, ameddig a tevékenység futhat, a meghiúsult tevékenységek újrapróbálásának maximális száma, valamint a tevékenység munkakönyvtárában tárolt fájlok megőrzésének maximális ideje.
 * Az ütemezett tevékenység futtatására beállított számítási csomópontra üzembe helyezni kívánt **alkalmazáscsomagok**. Az [alkalmazáscsomagok](#application-packages) leegyszerűsítik a tevékenységek által futtatott alkalmazások üzembe helyezését és verziókezelését. A tevékenységszintű alkalmazáscsomagok különösen megosztott készletes környezetekben hasznosak, ahol a különböző feladatok egy készletben futnak, és a rendszer nem törli a készletet a feladat befejezésekor. Ha a feladatnál a készletben kevesebb a tevékenység, mint a csomópont, az alkalmazáscsomagok használatával csökkentheti az adatátviteli igényt, mivel így a rendszer csak azokon a csomópontokon helyezi üzembe az alkalmazást, amelyek ténylegesen futtatják a tevékenységeket.
 * Egy, a Docker Hubban vagy egy privát beállításjegyzékben található **tárolórendszerkép**-referencia és további beállítások egy olyan Docker-tároló létrehozásához, amelyben a feladatok a csomóponton futnak. Ezt az információt csak akkor kell meghatározni, ha a készlet tárolókonfigurációval van beállítva.
+
+> [!NOTE]
+> Egy tevékenység maximális élettartama a feladathoz való hozzáadástól a befejezéséig 7 nap. A befejezett tevékenységek korlátlan ideig megőrződnek; a maximális élettartamon belül nem befejezett tevékenységek adatai nem elérhetőek.
 
 A csomóponton a számítások elvégzéséhez meghatározott tevékenységek mellett a Batch szolgáltatás a következő speciális tevékenységek használatát is lehetővé teszi:
 

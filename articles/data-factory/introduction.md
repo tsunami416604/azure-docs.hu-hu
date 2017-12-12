@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/29/2017
 ms.author: shlo
-ms.openlocfilehash: b797ee3ef270ff3420ff9e7f4aa8032641714d7a
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: fb664b76a948244d96a26b199a4e8e6c83bae0f4
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,63 +67,7 @@ Miután a nyers adatok át lettek alakítva üzleti használatra kész formába,
 ### <a name="monitor"></a>Figyelés
 Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, kövesse figyelemmel az ütemezett tevékenységek és folyamatok sikerességi arányát. Az Azure Data Factory beépített folyamatfigyelési támogatással rendelkezik az Azure Monitor, az API, a PowerShell, a Microsoft Operations Management Suite, valamint az Azure Portal állapotpaneljei révén.
 
-## <a name="whats-different-in-version-2"></a>Melyek a 2. verzió újdonságai?
-Az Azure Data Factory 2. verziója az eredeti Azure Data Factory adatáthelyezési és -átalakítási szolgáltatására épül, de a felhőt előnyben részesítő adatintegrációs forgatókönyvek szélesebb készletét használja. Az Azure Data Factory 2. verziójának képességei:
-
-- Átvitelvezérlés és skálázás
-- SQL Server Integration Services- (SSIS)-csomagok üzembe helyezése és futtatása az Azure-ban
-
-Az 1. verzió kiadását követően felismertük, hogy az ügyfeleknek olyan összetett hibrid adatintegrációs forgatókönyveket kell megtervezniük, amelyekhez a felhőben, a helyszíni és felhőalapú virtuális gépekben történő adatáthelyezésre és -feldolgozásra is szükség van. E követelmények miatt az adatok áthelyezését és feldolgozását biztonságos virtuális hálózati környezeteken belül kell megvalósítani, valamint igény szerinti feldolgozási teljesítményre kell tudni skálázni.
-
-Mivel az adatfolyamatok az üzleti elemzési stratégia kritikus fontosságú részévé váltak, azt tapasztaltuk, hogy ezek a lényeges adattevékenységek rugalmas ütemezést igényelnek a növekményes adatterhelések és az események által kiváltott végrehajtás támogatása érdekében. Végül, ahogy a műveletek bonyolultsága nő, ez történik az általános munkafolyamat-paradigmákat támogató szolgáltatások követelményeivel is, beleértve az elágaztatást, a hurkokat és a feltételes feldolgozást.
-
-A 2. verzióban át is telepíthet meglévő SSIS-csomagokat a felhőbe. Az SSIS-t az ADF-en belül felügyelt Azure-szolgáltatásokhoz hasonlóan kezelheti egy új szolgáltatás, az „Integrációs modulok” (Integration Runtimes, IR) használatával. Ha egy SSIS IR-t a 2. verzióban indít el, akkor a felhőben is képes lesz futtatni, kezelni, monitorozni és kiépíteni az SSIS-csomagokat.
-
-### <a name="control-flow-and-scale"></a>Átvitelvezérlés és skálázás 
-A modern adattárházak különféle integrációs folyamatainak és mintáinak támogatásához a Data Factory egy olyan új, rugalmas adatfolyamat-modell használatát teszi lehetővé, amely nincs idősorozat-adatokhoz kötve. E kiadás használatával modellezheti a feltételes hozzáféréseket és az adatfolyamatok átvitelvezérlés-elágaztatását, valamint explicit módon továbbíthat paramétereket ezen folyamatokon belül és azok között is.
-
-Mostantól bármilyen, az adatintegráció által megkövetelt folyamatstílus modellezhető, illetve továbbítható igény szerint vagy ismétlődő jelleggel, időalapú ütemezéssel. Néhány példa a mostantól elérhető vált folyamatokra:   
-
-- Átvitelvezérlés:
-    - Tevékenységlánc egy adott folyamaton belüli sorozatban
-    - Tevékenységek elágaztatása egy adott folyamaton belül
-    - Paraméterek
-        - A paraméterek folyamatszinten határozhatók meg, az argumentumok pedig a folyamat igény szerinti meghívása során vagy egy eseményindítóból továbbíthatók.
-        - A tevékenységek képesek a folyamat számára továbbított argumentumok feldolgozására.
-    - Egyéniállapot-átadás
-        - A tevékenységkimeneteket (például állapotot) a folyamat soron következő tevékenysége képes feldolgozni.
-    - Tárolók hurkolása
-        - For-each 
-- Eseményindító-alapú folyamatok
-    - A folyamatok igény szerint vagy időpont alapján indíthatók.
-- Változási folyamatok
-    - Paramétereket használhat és magas vízjelet határozhat meg az eltérésmásoláshoz, miközben méret- vagy referenciatáblákat helyezhet át egy helyszíni vagy felhőbeli relációs tárolóból az adatok adattárba történő betöltéséhez. 
-
-További információkért lásd: [Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban](tutorial-control-flow.md).
-
-### <a name="deploy-ssis-packages-to-azure"></a>SSIS-csomagok üzembe helyezése az Azure-ban 
-Az SSIS számítási feladatok áthelyezéséhez létrehozhat 2. verziós Data Factoryt, és üzembe helyezhet ott egy Azure-SSIS integrációs modult. Az Azure-SSIS integrációs modul egy, az SSIS-csomagok felhőben történő futtatására dedikált Azure-beli virtuális gépekből (csomópontokból) álló, teljesen felügyelt fürt. Lépésenkénti útmutatásért lásd a következő oktatóanyagot: [SQL Server Integration Services-csomagok üzembe helyezése az Azure-ban](tutorial-deploy-ssis-packages-azure.md). 
- 
-
-### <a name="sdks"></a>SDK-k
-Ha tapasztalt felhasználóként programozható felületet keres, a 2. verzió az SDK-k széles választékát kínálja, amelyeket a folyamatok létrehozásához, kezeléséhez és monitorozásához használhat, a kedvenc IDE-je használatával.
-
-- *.NET SDK*: A .NET SDK frissült a 2. verzióban. 
-- *PowerShell*: A PowerShell-parancsmagok frissültek a 2. verzióban. A 2. verzió parancsmagjainak nevében szerepel a **DataFactoryV2** tag. Például: Get-AzureRmDataFactoryV2. 
-- *Python SDK*: Ez az SDK a 2. verzióban lett bevezetve.
-- *REST API*: A REST API frissült a 2. verzióban.  
-
-A 2. verzióban frissített SDK-k visszamenőlegesen nem kompatibilisek az 1. verzió ügyfeleivel. 
-
-### <a name="monitoring"></a>Figyelés
-Jelenleg a 2. verzió kizárólag SDK-k használatával támogatja az adat-előállítók monitorozását. A portál még nem támogatja a 2. verziójú adat-előállítók monitorozását. 
-
-## <a name="load-the-data-into-a-lake"></a>Adatok betöltése egy adattárba
-A Data Factory 30-nál több olyan összekötővel rendelkezik, amelyek lehetővé teszik az adatok hibrid, heterogén környezetekből történő betöltését az Azure-ba. A belső tesztek legfrissebb, teljesítménnyel kapcsolatos eredményeit és a hangolási javaslatokat lásd: [Teljesítmény- és finomhangolási útmutató](copy-activity-performance.md). 
-
-Mindezeken felül nemrégiben tettük elérhetővé a magas rendelkezésre állást és a méretezhetőséget a saját üzemeltetésű integrációs modulok esetében. Ezek telepítése magánhálózati környezetben történik a nagy, 1. szintű vállalatiügyfél-követelmények kielégítése, a jobb rendelkezésre állás és méretezhetőség érdekében.
-
-## <a name="top-level-concepts-in-version-2"></a>Felső szintű alapelvek a 2. verzióban
+## <a name="top-level-concepts"></a>Legfelső szintű fogalmak
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. Az Azure Data Factory négy fő összetevőből áll. Ezek együtt alkotják azt a platformot, amelyen létrehozhatók olyan adatvezérelt munkafolyamatok, amelyeknek a lépései áthelyezik és átalakítják az adatokat.
 
 ### <a name="pipeline"></a>Folyamat
@@ -147,8 +91,7 @@ A társított szolgáltatásokat két célból használjuk a Data Factoryban:
 - Olyan **számítási erőforrás** jelölésére, amelyen végrehajtható a tevékenység. A HDInsightHive-tevékenység végrehajtása például egy HDInsight Hadoop-fürtön történik. Az átalakítási tevékenységek és a támogatott számítási környezetek listáját lásd az [adatok átalakítása](transform-data.md) cikkben.
 
 ### <a name="triggers"></a>Eseményindítók
-Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak. Az előzetes verzió az időpont-alapú ütemező eseményindítót támogatja. 
-
+Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak. Az előzetes verzióban a Data Factory az időpont-alapú ütemező eseményindítót támogatja. 
 
 ### <a name="pipeline-runs"></a>Folyamatfuttatások
 A folyamatfuttatások a folyamat-végrehajtás egy-egy példányát jelentik. A folyamatfuttatások példányosítása jellemzően az argumentumoknak a folyamatokban meghatározott paraméterekhez történő továbbításával történik. Az argumentumok továbbítása történhet manuálisan vagy az eseményindító meghatározásán keresztül is.
@@ -179,6 +122,9 @@ Maga az Azure Data Factory nem tárol adatokat. Lehetővé teszi viszont olyan a
 Bár a Data Factory csak az USA keleti régiójában, az USA 2. keleti régiójában, illetve a nyugat-európai régióban érhető el, az adatok Data Factoryval történő áthelyezését biztosító szolgáltatás globálisan számos régióban elérhető. Ha az adattár tűzfal mögött található, akkor a helyszíni környezetben telepített adatkezelési átjáró végzi az adatok áthelyezését.
 
 Tegyük fel például, hogy számítási környezetei, mint például az Azure HDInsight-fürt és az Azure Machine Learning a nyugat-európai régión kívül futnak. Létrehozhat egy Azure Data Factory-példányt Észak-Európában, és felhasználhatja a Nyugat-Európában lévő számítási környezetein futtatott feladatok ütemezéséhez. A Data Factory néhány ezredmásodperc alatt aktiválja a feladatot a számítási környezetben, a feladatnak a számítási környezetben való futtatásához szükséges idő viszont nem változik.
+
+## <a name="compare-with-version-2"></a>Összehasonlítás a 2-es verzióval
+A Data Factory szolgáltatás 1-es és a 2-es verziója közti különbségek listája: [Összehasonlítás az 1-es verzióval](compare-versions.md). 
 
 ## <a name="next-steps"></a>Következő lépések
 A következő gyors útmutatók részletes utasításait végrehajtva megismerkedhet az adat-előállítók létrehozásának módjával: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md) és Azure Portal. 

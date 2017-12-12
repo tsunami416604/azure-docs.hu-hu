@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2017
+ms.date: 11/30/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: c073cb28f5c37a402c04d5315d7f8e18de8a1b26
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: 119d8abcea91bf5c6ea03212fcb886f9e31c1ada
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -43,7 +43,7 @@ A frissítéskezelés a következő operációs rendszereken támogatott:
 
 ### <a name="windows"></a>Windows
 
-* Windows Server 2008 és újabb, a frissítéstelepítések pedig csak Windows Server 2008 R2 SP1 és újabb rendszereken támogatottak. A Server Core és a Nano Server telepítési lehetőségek nem támogatottak.
+* Windows Server 2008 és újabb, a frissítéstelepítések pedig csak Windows Server 2008 R2 SP1 és újabb rendszereken támogatottak. A Nano Server nem támogatott.
 
   Frissítések a Windows Server 2008 R2 SP1 rendszerre való telepítésének támogatásához .NET-keretrendszer 4.5 és Windows Management Framework 5.0 vagy újabb verzió szükséges.
 

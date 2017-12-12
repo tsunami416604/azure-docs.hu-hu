@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/30/2017
 ms.author: yurid
-ms.openlocfilehash: a1ea4007f7399dff6da9d66931e1f5366942be0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1388a351b82beb6b3e7eb61a3a0517aa90c695f5
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában.
@@ -57,6 +57,10 @@ Az oldal alsó részén találhatók az egyes riasztások részletei. Rendezés�
 * **Állapot:** A riasztás aktuális állapota. Kétféle állapot létezik:
   * **Aktív:** A biztonsági riasztást észlelték.
 * **Súlyosság:** A súlyosság szintje lehet magas, közepes vagy alacsony.
+
+> [!NOTE]
+> A Security Center által létrehozott riasztások az Azure tevékenységnapló területén is megjelennek. További információk az Azure tevékenységnaplójának eléréséről: [A tevékenységnaplók megtekintése az erőforrásokon végzett műveletek naplózásához](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
+>
 
 ### <a name="filtering-alerts"></a>A riasztások szűrése
 A riasztások dátum, állapot és súlyosság alapján szűrhetők. A riasztások szűrése olyan esetekben lehet hasznos, amikor szűkíteni kell a megjelenített biztonsági riasztások körét. Például olyankor, ha az elmúlt 24 órában történt biztonsági riasztásokat szeretné kezelni, mert egy, a rendszerbe történő lehetséges behatolást vizsgál.

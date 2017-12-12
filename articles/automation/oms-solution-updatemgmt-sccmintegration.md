@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: eslesar
-ms.openlocfilehash: c3ae8da65e03fe9e11b5657a6a40d02de0567da6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04540524f83e367f92912171ddc55b6e6f82f80e
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
-# <a name="integrate-system-center-configuration-manager-with-oms-update-management-preview"></a>System Center Configuration Manager integrálása az OMS-frissítéskezeléssel [előzetes verzió]
+# <a name="integrate-system-center-configuration-manager-with-oms-update-management"></a>System Center Configuration Manager integrálása az OMS-frissítéskezeléssel
 
 Azok a felhasználók, akik befektettek a System Center Configuration Managerbe a számítógépek, kiszolgálók és mobileszközök kezelése érdekében, a teljesítményét és fejlettségét a szoftverfrissítések kezelése során, a szoftverfrissítés-kezelési (SUM) ciklus részeként is kihasználják.  
 
@@ -42,12 +42,13 @@ Az Azure IaaS-ben futtatott ügyfelek Configuration Manager-környezettel való 
 Hajtsa végre a következő lépéseket, ha a frissítéstelepítések kezelését továbbra is a Configuration Managerből szeretné elvégezni.  Az OMS a Configuration Managerhez csatlakozik, hogy alkalmazza a frissítéseket a Log Analytics-munkaterülethez csatlakoztatott ügyfélszámítógépeken. A frissítés tartalma ugyanúgy elérhető az ügyfélszámítógép gyorsítótárából, mintha a telepítést a Configuration Manager kezelte volna.  
 
 1. Hozzon létre egy szoftverfrissítés-telepítést a legfelső szintű helyről a Configuration Manager-hierarchiában a [szoftverfrissítési eljárás üzembe helyezését](https://docs.microsoft.com/en-us/sccm/sum/deploy-use/deploy-software-updates) ismertető cikkben leírt folyamatot követve.  Az egyetlen beállítás, amelyet egy standard telepítéstől eltérően kell konfigurálnia, a **Ne telepítse a szoftverfrissítéseket** kiválasztása, amely a telepítőcsomag letöltésének viselkedését vezérli. Ezt a viselkedést az OMS frissítéskezelési megoldása kezeli egy ütemezett frissítési telepítés létrehozásával a következő lépésben.  
-2. Az Azure Portalon az **Automation-fiók** képernyőn válassza ki az Automation-fiókot, és az [új változó az Azure Portallal történő létrehozását](../automation/automation-variables.md#to-create-a-new-variable-with-the-azure-portal) ismertető részben leírtakat követve hozzon létre egy **UseOMSForSCCMUpdates** nevű logikai változót **true** értékkel.
-3. Az OMS-portálon nyissa meg a Frissítéskezelés irányítópultot.  Hozzon létre egy új telepítést a [frissítéstelepítés létrehozását](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment) ismertető részben leírtakat követve, majd a legördülő listából válassza ki a megfelelő, OMS-számítógépcsoportként megjelenő Configuration Manager-gyűjteményt.  Tartsa szem előtt az alábbi fontos szempontokat:
+
+1. Az OMS-portálon nyissa meg a Frissítéskezelés irányítópultot.  Hozzon létre egy új telepítést a [frissítéstelepítés létrehozását](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment) ismertető részben leírtakat követve, majd a legördülő listából válassza ki a megfelelő, OMS-számítógépcsoportként megjelenő Configuration Manager-gyűjteményt.  Tartsa szem előtt az alábbi fontos szempontokat:
     1. Ha a karbantartási időszak a kiválasztott Configuration Manager-eszközgyűjteményben van megadva, a gyűjtemény tagjai ezt veszik figyelembe az OMS-ben beállított ütemezett telepítés **Időtartam** beállítása helyett.
-    2. A célgyűjtemény tagjainak csatlakozniuk kell az internethez (közvetlenül, proxykiszolgálón keresztül vagy az OMS Gatewayen keresztül).  
+    1. A célgyűjtemény tagjainak csatlakozniuk kell az internethez (közvetlenül, proxykiszolgálón keresztül vagy az OMS Gatewayen keresztül).  
 
 Az OMS-megoldással végzett frissítéstelepítés után azon célszámítógépek, amelyek a kiválasztott számítógépcsoport tagjai, a helyi ügyfélgyorsítótárukból telepítik a frissítéseket az ütemezett időpontban.  [A frissítéstelepítés állapotát bármikor megtekintheti](../operations-management-suite/oms-solution-update-management.md#viewing-update-deployments) a telepítés eredményeinek monitorozásához.  
+
 
 ### <a name="manage-software-updates-from-oms"></a>Szoftverfrissítések kezelése OMS-ből
 

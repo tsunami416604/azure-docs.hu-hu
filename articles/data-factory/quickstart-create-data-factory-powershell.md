@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: powershell
 ms.topic: hero-article
-ms.date: 11/16/2017
+ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: cb58fe167fe8b369f51e234badd8e419ebd284e4
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 4bbac0e82181e46b84afee5ff7601da018226ec0
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="create-an-azure-data-factory-using-powershell"></a>Azure-beli adat-előállító létrehozása a PowerShell használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,30 +42,26 @@ Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-be
     $resourceGroupName = "ADFQuickStartRG";
     ```
 
-    Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd futtassa újra a parancsot
+    Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$ResourceGroupName` változóhoz, majd futtassa újra a parancsot
 2. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához: 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'eastus'
     ``` 
-    Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd futtassa újra a parancsot. 
+    Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$ResourceGroupName` változóhoz, majd futtassa újra a parancsot. 
 3. Adjon meg egy változót az adat-előállító nevéhez. 
 
     > [!IMPORTANT]
     >  Frissítse az adat-előállító nevét, hogy globálisan egyedi legyen. Például: ADFTutorialFactorySP1127. 
 
     ```powershell
-    $dataFactoryName = "ADFQuickStartFactory";
+    $DataFactoryName = "ADFQuickStartFactory";
     ```
-1. Adjon meg egy változót az adat-előállító helyéhez: 
 
-    ```powershell
-    $location = "East US"
-    ```
-5. Az adat-előállító létrehozásához futtassa az alábbi **Set-AzureRmDataFactoryV2** parancsmagot: 
+5. Az adat-előállító létrehozásához futtassa az alábbi **Set-AzureRmDataFactoryV2** parancsmagot a $ResGrp változó Location és ResourceGroupName tulajdonsága használatával: 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
+    $DataFactory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName -Location $ResGrp.Location -Name $dataFactoryName 
     ```
 
 Vegye figyelembe a következő szempontokat:
@@ -104,10 +100,14 @@ Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adatt�
     Ha a Jegyzettömböt használja, a **Mentés másként** párbeszédpanel **Fájltípus** mezőjénél válassza a **Minden fájl** lehetőséget. Ellenkező esetben a rendszer `.txt` kiterjesztést adhat a fájlhoz. Például: `AzureStorageLinkedService.json.txt`. Ha létrehozza a fájlt a Fájlkezelőben, mielőtt megnyitná a Jegyzettömbben, előfordulhat, hogy nem fogja látni a hozzáadott `.txt` kiterjesztést, mivel alapértelmezés szerint engedélyezve van az **Ismert fájltípusok kiterjesztéseinek elrejtése** beállítás. A továbblépés előtt távolítsa el a hozzáadott `.txt` kiterjesztést.
 2. A **PowerShellben** lépjen az **ADFv2QuickStartPSH** mappára.
 
+```powershell
+Set-Location 'C:\ADFv2QuickStartPSH'
+```
+
 3. Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot az **AzureStorageLinkedService** társított szolgáltatás létrehozásához. 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -DefinitionFile ".\AzureStorageLinkedService.json"
+    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureStorageLinkedService" -DefinitionFile ".\AzureStorageLinkedService.json"
     ```
 
     Itt látható a minta kimenete:
@@ -151,7 +151,7 @@ Ebben a lépésben megad egy adatkészletet, amely a forrásból a fogadóba má
 2. A **BlobDataset** adatkészlet létrehozásához futtassa a **Set-AzureRmDataFactoryV2** parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "BlobDataset" -DefinitionFile ".\BlobDataset.json"
+    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "BlobDataset" -DefinitionFile ".\BlobDataset.json"
     ```
 
     Itt látható a minta kimenete:
@@ -221,7 +221,7 @@ Ebben a rövid útmutatóban létrehoz egy folyamatot egy tevékenységgel, amel
 2. Az **Adfv2QuickStartPipeline** folyamat létrehozásához futtassa a **Set-AzureRmDataFactoryV2Pipeline** parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "Adfv2QuickStartPipeline" -DefinitionFile ".\Adfv2QuickStartPipeline.json"
+    $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "Adfv2QuickStartPipeline" -DefinitionFile ".\Adfv2QuickStartPipeline.json"
     ```
 
     Itt látható a minta kimenete:
@@ -249,7 +249,7 @@ Ebben a lépésben beállítja a folyamatparaméterek értékeit: az **inputPath
 2. Futtassa az **Invoke-AzureRmDataFactoryV2Pipeline** parancsmagot egy folyamat futásának létrehozásához és a paraméterértékek megadásához. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
 
     ```powershell
-    $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName "Adfv2QuickStartPipeline" -ParameterFile .\PipelineParameters.json
+    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineName $DFPipeLine.Name -ParameterFile .\PipelineParameters.json
     ```
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
@@ -258,19 +258,19 @@ Ebben a lépésben beállítja a folyamatparaméterek értékeit: az **inputPath
 
     ```powershell
     while ($True) {
-        $run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
+        $Run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -PipelineRunId $RunId
 
-        if ($run) {
+        if ($Run) {
             if ($run.Status -ne 'InProgress') {
-                Write-Host "Pipeline run finished. The status is: " $run.Status -foregroundcolor "Yellow"
-                $run
+                Write-Output ("Pipeline run finished. The status is: " +  $Run.Status)
+                $Run
                 break
             }
-            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
+            Write-Output  "Pipeline is running...status: InProgress"
         }
 
         Start-Sleep -Seconds 10
-    }
+    }   
     ```
 
     Itt látható a folyamat futásának mintakimenete:
@@ -314,15 +314,15 @@ Ebben a lépésben beállítja a folyamatparaméterek értékeit: az **inputPath
 1. A másolási tevékenység futtatási részleteinek (például az írt vagy olvasott adatok méretének) lekéréséhez futtassa az alábbi szkriptet.
 
     ```powershell
-    Write-Host "Activity run details:" -foregroundcolor "Yellow"
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
-    $result
-    
-    Write-Host "Activity 'Output' section:" -foregroundcolor "Yellow"
-    $result.Output -join "`r`n"
-    
-    Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
-    $result.Error -join "`r`n"
+    Write-Output "Activity run details:"
+    $Result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineRunId $RunId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $Result
+
+    Write-Output "Activity 'Output' section:"
+    $Result.Output -join "`r`n"
+
+    Write-Output "Activity 'Error' section:"
+    $Result.Error -join "`r`n"
     ```
 3. Győződjön meg arról, hogy a kimenet hasonlít az alábbi tevékenységfuttatás eredményének mintakimenetéhez:
 
