@@ -139,24 +139,24 @@
           items:
             - name: Áttekintés és előfeltételek
               href: site-recovery-deployment-planner.md
-            - name: A Deployment Planner futtatása
+            - name: A Deployment Planner eszköz futtatása
               href: site-recovery-vmware-deployment-planner-run.md
             - name: A létrehozott jelentés elemzése
               href: site-recovery-vmware-deployment-planner-analyze-report.md
-            - name: Vészhelyreállítás költségbecslési jelentésének elemzése
+            - name: A költségbecslési jelentés elemzése
               href: site-recovery-vmware-deployment-planner-cost-estimation.md
         - name: Folyamatkiszolgálók horizontális felskálázása VMware-replikációhoz
           href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
-        - name: Üzembehelyezési tervezés és eszköz a Hyper-V Azure-ba történő replikálásához
+        - name: Deployment Planner eszköz a Hyper-V Azure-ba történő replikálásához
           href: null
           items:
             - name: Áttekintés és előfeltételek
               href: site-recovery-hyper-v-deployment-planner.md
-            - name: A Deployment Planner futtatása
+            - name: A Deployment Planner eszköz futtatása
               href: site-recovery-hyper-v-deployment-planner-run.md
             - name: A létrehozott jelentés elemzése
               href: site-recovery-hyper-v-deployment-planner-analyze-report.md
-            - name: Vészhelyreállítás költségbecslési jelentésének elemzése
+            - name: A költségbecslési jelentés elemzése
               href: site-recovery-hyper-v-deployment-planner-cost-estimation.md
         - name: Teljesítményskálázási tesztek a Hyper-V helyszíni helyek közötti replikációjához
           href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md

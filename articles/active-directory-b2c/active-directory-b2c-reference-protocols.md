@@ -4,7 +4,7 @@ description: "Olyan alkalmazások fordítása közvetlenül az Azure Active Dire
 services: active-directory-b2c
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 5e407d0a-73a2-4d74-ac81-3aa6c31ddcee
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-ms.openlocfilehash: 8e7e7bc7633370057f8dc596ad04a3f1d796a7d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb5d0da5b723c5fef81f7d74936ae30d4366385c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Az Azure AD B2C: Hitelesítési protokollok
 Az Azure Active Directory B2C két iparági szabványos protokollok támogatása (az Azure AD B2C) biztosít az az alkalmazások szolgáltatásként identitás: OpenID Connectet és az OAuth 2.0-s. A szolgáltatás szabványoknak megfelelő, de ezeket a protokollokat bármely két implementációja rendelkezhet finom eltérések vannak. 
@@ -53,7 +53,7 @@ Szinte minden OAuth és az OpenID Connect adatfolyamok, a négy felek használna
 
 * A **erőforrás-kiszolgáló** van, amelyben az erőforrás vagy adatok található. A hitelesítési kiszolgáló biztonságosan helyszerepkörre, és az OAuth-ügyfél megbízhatónak fogja tekinteni. Annak érdekében, hogy az erőforráshoz való hozzáférés is adható tulajdonosi jogkivonatot is használ.
 
-## <a name="policies"></a>Házirendek
+## <a name="policies"></a>Szabályzatok
 Az Azure AD B2C-házirendek késései, a legfontosabb funkciókról a szolgáltatás olyan. Az Azure AD B2C a szabványos OAuth 2.0 és az OpenID Connect protokollok házirendek bevezetésével kiterjeszti. Ezek teszik lehetővé az Azure AD B2C sokkal több, mint az egyszerű hitelesítés és engedélyezés végrehajtásához. 
 
 Házirendek teljes leírása fogyasztói identitással kapcsolatos műveletet, beleértve a regisztráció, bejelentkezés, profil és szerkesztését. Házirendek meghatározása egy rendszergazda felhasználói felületén. A HTTP-hitelesítési kérelmek egy speciális lekérdezési paraméter segítségével végrehajthatók. 

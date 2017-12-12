@@ -4,7 +4,7 @@ description: "Az Azure Active Directory B2B együttműködés többtényezős hi
 services: active-directory
 documentationcenter: 
 author: sasubram
-manager: femila
+manager: mtillman
 editor: 
 tags: 
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 09/11/2017
 ms.author: sasubram
-ms.openlocfilehash: d3917754069ad961ffd9233d852aab6fa172eaef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f2cfc351d372d665aac054d52d6e1520e1ffe48
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Feltételes hozzáférés a B2B együttműködés felhasználók
 
@@ -49,7 +49,7 @@ Tekintse meg az érvényesítési megtekintéséhez a következő animáció él
 ### <a name="mfa-reset-for-b2b-collaboration-users"></a>B2B együttműködés felhasználóknak az új MFA
 Jelenleg a rendszergazda megkövetelheti B2B együttműködés felhasználók igazolása be újra csak a következő PowerShell-parancsmagok használatával:
 
-1. Csatlakozás az Azure AD szolgáltatáshoz
+1. Összekapcsolás az Azure AD-vel
 
   ```
   $cred = Get-Credential

@@ -4,7 +4,7 @@ description: "Ismerkedés az Azure Active Directory naplózási API-hoz"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 10/17/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 242fa094010694d7060b05e5892ce738d5b37a32
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 9294d478ef35cac20bd54c2171eecda7c932e7a6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Az Azure Active Directory naplózási API-referencia
 Ez a témakör az Azure Active Directory reporting API-val kapcsolatos témakörök gyűjteményét részét képezi.  
@@ -116,7 +116,7 @@ dátum és idő (UTC) formátumban kell megadni
 | Alapvető könyvtár                   | Címtár |
 | Önkiszolgáló jelszókezelés | SSPR      |
 | Önkiszolgáló csoportkezelés    | SSGM      |
-| Fiók kiépítése             | Sync      |
+| Fiók kiépítése             | Szinkronizálás      |
 | Automatizált jelszóváltás      | Automatizált jelszóváltás |
 | Identity Protection              | IdentityProtection |
 | Meghívott felhasználók                    | Meghívott felhasználók |
@@ -134,7 +134,7 @@ dátum és idő (UTC) formátumban kell megadni
 
 **Támogatott értékek**:
 
-| A tevékenység állapota | Érték |
+| Tevékenységi állapot | Érték |
 | :--             | ---   |
 | Sikeres         | 0     |
 | Hiba         | - 1   |
@@ -158,7 +158,7 @@ dátum és idő (UTC) formátumban kell megadni
 kis-és nagybetűket
 
 - - -
-### <a name="activity"></a>Tevékenység
+### <a name="activity"></a>tevékenység
 **Támogatott operátorok**: eq, tartalmaz, a startswith elemnek
 
 **Példa**:

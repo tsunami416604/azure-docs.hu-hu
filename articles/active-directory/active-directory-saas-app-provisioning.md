@@ -4,7 +4,7 @@ description: "Hogyan használható az Azure AD automatikus kiépítéséhez, bem
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: 0fdb1605487cca7ba3dc7f13fe8cbe3d1be78d44
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: cd82ef109abbc5707db4c02c2f14f9d55dfb74e3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Mi az automatizált felhasználókiépítése SaaS-alkalmazásokhoz?
@@ -81,7 +81,7 @@ Az Azure AD szolgáltatás kiépítését, az indítja el a kiválasztott alkalm
 
 * A "nem galéria alkalmazás" beállítást használja egyéni fejlett SCIM integrációja
 
-![Katalógus](./media/active-directory-saas-app-provisioning/gallery.png)
+![Galéria](./media/active-directory-saas-app-provisioning/gallery.png)
 
 Az alkalmazás felügyeleti képernyőn kiépítés konfigurálva van a **kiépítési** fülre.
 

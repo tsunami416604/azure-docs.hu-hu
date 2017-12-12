@@ -4,7 +4,7 @@ description: "Ismerje meg, hogyan használható a hozzáférési panel (webböng
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a63e2d583e1203708e49c0fcef99876d2055343a
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: d40f67c354e29f3a58c9d0f1967e0154b5b998d0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panel?
 
@@ -58,7 +58,7 @@ Ebben az esetben használhatja ki bármely aktív vagy ellenőrzött és érvén
 
 Minden felhasználó számára lesz jelentkezzen be az Azure AD integrált alkalmazások URL-címét kell.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 A hozzáférési panel elérését, keresztül a munkahelyi vagy iskolai fiókkal az Azure AD lehet hitelesíteni. Az Azure AD közvetlenül hitelesíthetők. Azt is megteheti Ha egy szervezet összevonási konfigurált Active Directory összevonási szolgáltatások (AD FS) vagy egyéb technológiák használatával, akkor hitelesítheti a Windows Server Active Directory.
 

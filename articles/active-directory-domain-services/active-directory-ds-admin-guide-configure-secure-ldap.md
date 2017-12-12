@@ -4,7 +4,7 @@ description: "Biztonságos LDAP (LDAPS) konfigurálása az Azure AD tartományi 
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 0d2e7e6f17fecb9809ac76fbfa0db860b7948a7e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 771ca39b37e6fb2d75a86df3ac785bc293b4cd5f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS) használatos az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz tartozó konfigurálása
 Ez a cikk bemutatja, hogyan engedélyezheti biztonságos Lightweight Directory Access Protocol (LDAPS) vonatkozóan az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz. Biztonságos LDAP más néven az "Lightweight Directory Access Protocol (LDAP) Secure Sockets Layer (SSL) rétegen keresztül / Transport Layer Security (TLS)".
@@ -39,23 +39,18 @@ A cikkben szereplő feladatok elvégzéséhez szüksége:
 ### <a name="requirements-for-the-secure-ldap-certificate"></a>A biztonságos LDAP-tanúsítványra vonatkozó követelményekről
 Szerezzen be egy érvényes tanúsítványt az alábbi útmutatást, /, biztonságos LDAP engedélyezése előtt. Ha megpróbálja engedélyezni a felügyelt tartományok egy érvénytelen vagy helytelen tanúsítvánnyal biztonságos LDAP előforduló hibákat.
 
-1. **A megbízható kiállítók** -a tanúsítványt egy szervezet biztonságos LDAP a felügyelt tartományra kapcsolódó számítógépek megbízhatónak kell kiállítani. A szolgáltató egy nyilvános hitelesítésszolgáltatót megbízhatónak ezeket a számítógépeket is lehet.
+1. **A megbízható kiállítók** -a tanúsítványt egy szervezet biztonságos LDAP a felügyelt tartományra kapcsolódó számítógépek megbízhatónak kell kiállítani. A szolgáltató egy nyilvános hitelesítésszolgáltató (CA) vagy egy vállalati hitelesítésszolgáltató, ezek a számítógépek megbízhatónak lehet.
 2. **Élettartam** -a tanúsítványnak érvényesnek kell lennie legalább a következő 3-6 hónapig. Biztonságos LDAP hozzáférést a felügyelt tartományra megszakad, ha a tanúsítvány lejár.
 3. **Tulajdonos neve** – a tanúsítvány tulajdonos neve a felügyelt tartományok helyettesítő karakter lehet. Például, ha a tartomány neve "contoso100.com", a tanúsítvány tulajdonosának neve lehet "*. contoso100.com". A DNS-nevét (tulajdonos alternatív neve) értéke a helyettesítő karakteres neve.
 4. **Kulcshasználat** -a következő használ - digitális aláírásokra és kulcstitkosítás kell beállítani a tanúsítványt.
 5. **Tanúsítvány célja** -lehet, hogy a tanúsítvány érvényes SSL-kiszolgáló hitelesítéséhez.
-
-> [!NOTE]
-> **Vállalati hitelesítésszolgáltatók:** Azure AD tartományi szolgáltatások nem támogatja a szervezete vállalati hitelesítésszolgáltató által kiállított biztonságos LDAP-tanúsítványok használatával. Ez a korlátozás az oka, hogy a szolgáltatás nem bízik meg a vállalati hitelesítésszolgáltató egy legfelső szintű hitelesítésszolgáltatóként. 
->
->
 
 <br>
 
 ## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>1. feladat – biztonságos LDAP tanúsítvány beszerzése
 Az első tevékenységet foglal magában, beszerzett egy tanúsítványt, a felügyelt tartományra biztonságos LDAP eléréséhez használható. Erre két lehetősége van:
 
-* Szerezzen be egy tanúsítványt nyilvános hitelesítésszolgáltatótól.
+* A nyilvános Hitelesítésszolgáltatótól vagy vállalati hitelesítésszolgáltató tanúsítványának beszerzése.
 * Hozzon létre egy önaláírt tanúsítványt.
 
 > [!NOTE]
@@ -63,7 +58,7 @@ Az első tevékenységet foglal magában, beszerzett egy tanúsítványt, a fel�
 >
 
 ### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Lehetőség (ajánlott) - biztonságos LDAP tanúsítvány beszerzése hitelesítésszolgáltatótól
-Ha a szervezet beszerzi a tanúsítványokat nyilvános hitelesítésszolgáltatótól származó, a biztonságos LDAP-tanúsítvány beszerzése a nyilvános hitelesítésszolgáltatótól.
+Ha a szervezet beszerzi a tanúsítványokat nyilvános Hitelesítésszolgáltatótól származó, a biztonságos LDAP-tanúsítvány beszerzése a nyilvános Hitelesítésszolgáltatótól származó. Ha vállalati Hitelesítésszolgáltatót telepít, a biztonságos LDAP-tanúsítvány beszerzése a vállalati Hitelesítésszolgáltatótól.
 
 > [!TIP]
 > **Önaláírt tanúsítványokat használnak a felügyelt tartományok ". onmicrosoft.com" tartományi utótagokat.**

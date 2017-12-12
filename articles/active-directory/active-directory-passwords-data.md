@@ -5,7 +5,7 @@ services: active-directory
 keywords: 
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: ed82200bf81702bbe35a371e7d86676c2c27d8f4
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 6704db9a722de78d9460703330cf3fdbc238b7d2
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó alaphelyzetbe állítása, anélkül, hogy a végfelhasználói regisztrálási telepítése
 
@@ -40,7 +40,7 @@ Ha az Azure AD Connectben az alapértelmezett beállításokat használja, a kö
 | Helyszíni Active Directory | Azure AD | Az Azure AD hitelesítési kapcsolattartási adatai |
 | --- | --- | --- |
 | TelephoneNumber | Irodai telefon | Telefonszámok |
-| Mobileszköz | Mobiltelefon | Telefonszám |
+| Mobileszköz | Mobiltelefon | Telefon |
 
 
 ## <a name="security-questions-and-answers"></a>Biztonsági kérdések és válaszok
@@ -144,7 +144,7 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
 * [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
 * [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
-* [Licencelési kérdése van?](active-directory-passwords-licensing.md)
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
 * [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)
 * [Mi a jelszóvisszaíró, és miért fontos?](active-directory-passwords-writeback.md)

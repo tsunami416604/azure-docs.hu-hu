@@ -4,7 +4,7 @@ description: "Annak megállapítása, az üzleti tartalomkezelési követelmény
 documentationcenter: 
 services: active-directory
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: dd1ef776-db4d-4ab8-9761-2adaa5a4f004
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 840de1e1fcba74285788d51d8f544375f0affa77
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2689306150f400f5a3cdf000a9ca590b397d812
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás tartalomkezelési követelmények meghatározása
 A Tartalomkezelés felméréséről a vállalati közvetlen hatással lehet a döntést mely hibrid identitáskezelési megoldás használata. A több eszközre és a felhasználók a saját eszközeik elterjedése rendelkező ([BYOD](http://aka.ms/byodcg)), a vállalat a saját adatok kell védeni, de azt is kell módosulna felhasználók adatait. Általában amikor egy felhasználó rendelkezik-e a saját eszköz ő lehet is több hitelesítő adatokat, amelyek alapján az alkalmazás, amely használja a fog váltakozó. Fontos megkülönböztetéséhez tartalmat lett létrehozva, és a vállalati hitelesítő adatok használatával létrehozott megfelelően személyes hitelesítő adataival. A megoldást kell is használhassák a felhőalapú szolgáltatások zökkenőmentes élményt biztosíthat a végfelhasználó közben az adatvédelem biztosításához a, és növeli az adatszivárgás elleni védelem. 

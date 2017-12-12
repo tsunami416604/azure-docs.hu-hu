@@ -5,7 +5,7 @@ services: active-directory
 keywords: "az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése"
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: b3aaf2b717937fdf62de423f5d9219be5ce0ad60
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: d9a83c1f1adb0a3dedaf7f8f0665de8bb809c4e8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -359,7 +359,7 @@ Blokkolja a bejelentkezés:
 
 
 
-## <a name="multi-factor-authentication-registration-policy"></a>A multi-factor authentication regisztráció házirend
+## <a name="multi-factor-authentication-registration-policy"></a>Többtényezős hitelesítési regisztrációs házirend
 Az Azure többtényezős hitelesítés a ellenőrzésére, akik csupán felhasználónévvel és jelszóval használatát igényli módszer. A második biztonsági szintként, a felhasználói bejelentkezéseket és tranzakciókat tartalmaz.  
 Azt javasoljuk, hogy az Azure többtényezős hitelesítés a felhasználói bejelentkezések szükséges el, mert azt:
 

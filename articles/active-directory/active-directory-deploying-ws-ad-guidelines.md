@@ -4,7 +4,7 @@ description: "Ha ismeri az AD tartományi szolgáltatások és a helyszíni AD �
 services: active-directory
 documentationcenter: 
 author: femila
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 04df4c46-e6b6-4754-960a-57b823d617fa
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 342d9e2787add3d04f1b744152e135db98848179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2c9b072551b467785dbb4aae02492ffae6cdb787
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Windows Server Active Directory telepítése Azure virtuális gépekre vonatkozó irányelvek
 Ez a cikk ismerteti a központi telepítése Windows Server Active Directory tartományi szolgáltatások (AD DS) és az Active Directory összevonási szolgáltatások (AD FS) helyszíni és a Microsoft Azure virtuális gépeken történő üzembe fontos különbségei.
@@ -329,8 +329,8 @@ Például ha telepít egy replika tartományvezérlő virtuális hálózaton, é
 
 | Windows Server Active Directory technológiai terület | Döntések | Tényezők |
 | --- | --- | --- |
-| [Hálózati topológia](#BKMK_NetworkTopology) |Virtuális hálózat létrehozása? |<li>Vállalati erőforrások eléréséhez követelmények</li> <li>Authentication</li> <li>Fiókkezelés</li> |
-| [Tartományvezérlő telepítési konfiguráció](#BKMK_DeploymentConfig) |<li>Egy másik erdőben, a bizalmi kapcsolatok nélkül telepítéséhez?</li> <li>Az összevonási új erdő telepítéséhez?</li> <li>Windows Server Active Directory erdőszintű megbízhatósággal új erdőt vagy Kerberos telepítése?</li> <li>Corp erdő kiterjesztése a replika tartományvezérlő üzembe helyezésével?</li> <li>Kiterjeszti a Corp erdőben telepít egy új gyermektartomány vagy tartományfa?</li> |<li>Biztonság</li> <li>Megfelelőség</li> <li>Költségek</li> <li>Rugalmasság és a hibatűrés</li> <li>Alkalmazáskompatibilitás</li> |
+| [Hálózati topológia](#BKMK_NetworkTopology) |Virtuális hálózat létrehozása? |<li>Vállalati erőforrások eléréséhez követelmények</li> <li>Hitelesítés</li> <li>Fiókkezelés</li> |
+| [Tartományvezérlő telepítési konfiguráció](#BKMK_DeploymentConfig) |<li>Egy másik erdőben, a bizalmi kapcsolatok nélkül telepítéséhez?</li> <li>Az összevonási új erdő telepítéséhez?</li> <li>Windows Server Active Directory erdőszintű megbízhatósággal új erdőt vagy Kerberos telepítése?</li> <li>Corp erdő kiterjesztése a replika tartományvezérlő üzembe helyezésével?</li> <li>Kiterjeszti a Corp erdőben telepít egy új gyermektartomány vagy tartományfa?</li> |<li>Biztonság</li> <li>Megfelelőség</li> <li>Költség</li> <li>Rugalmasság és a hibatűrés</li> <li>Alkalmazáskompatibilitás</li> |
 | [Windows Server Active Directory-helyek topológiájával](#BKMK_ADSiteTopology) |Tegye konfigurálásától webhelyek, helykapcsolatok és alhálózatok az Azure virtuális hálózati forgalom optimalizálása, illetve a költségek csökkentése érdekében? |<li>Alhálózat és a webhely-definíciók</li> <li>A hely tulajdonságai és -módosítási értesítés</li> <li>Replikációs tömörítés</li> |
 | [IP-címzést és a DNS-](#BKMK_IPAddressDNS) |Hogyan lehet IP-címek és a névfeloldás? |<li>Hozzárendelhet egy statikus IP-címet a használja a Set-AzureStaticVNetIP parancsmag segítségével</li> <li>Windows Server DNS-kiszolgáló telepítése és konfigurálása a virtuális hálózati tulajdonságok nevét és IP-címet a virtuális gép, amelyen a tartományvezérlő és DNS-kiszolgálói szerepkörök</li> |
 | [Földrajzilag elosztott tartományvezérlők](#BKMK_DistributedDCs) |Hogyan lehet külön virtuális hálózatokon lévő tartományvezérlőkre replikálni? |Ha az Active Directory-helyek topológiáját, amely megfelel-e különböző Azure-régiók, mint a létrehozandó ennek megfelelően az Active Directory-helyek földrajzi rendszerű tartományvezérlő szükséges. [Virtuális hálózati kapcsolat a virtuális hálózat konfigurálása](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) replikálása a tartományvezérlők külön virtuális hálózatokon. |
@@ -339,7 +339,7 @@ Például ha telepít egy replika tartományvezérlő virtuális hálózaton, é
 | [Telepítési módszer](#BKMK_InstallMethod) |Hogyan kell telepíteni a Tartományvezérlőt az Azure-ban? |Vagy: <li>A Windows PowerShell vagy a Dcpromo Active Directory tartományi szolgáltatások telepítése</li> <li>Helyezze át egy helyi virtuális tartományvezérlő virtuális Merevlemezt</li> |
 | [A Windows Server AD DS-adatbázis és a SYSVOL helyét](#BKMK_PlaceDB) |Windows Server AD DS adatbázis, naplófájlok és SYSVOL tárolási helyét? |Módosítsa a Dcpromo.exe alapértékeket. A kritikus Active Directory-fájlok *kell* Azure adatlemezek elhelyezni, amelyek megvalósítják az írási gyorsítótárazást operációsrendszer-lemezek helyett. |
 | [Biztonsági mentés és visszaállítás](#BKMK_BUR) |Hogyan és adatok helyreállításához? |-A rendszerállapot biztonsági mentésének létrehozása |
-| [Összevonási kiszolgáló konfigurációja](#BKMK_FedSrvConfig) |<li>A felhőben összevonással új erdő telepítéséhez?</li> <li>Helyszíni AD FS telepítéséhez, és tegye elérhetővé a proxy a felhőben?</li> |<li>Biztonság</li> <li>Megfelelőség</li> <li>Költségek</li> <li>Üzleti partnerek alkalmazások eléréséhez</li> |
+| [Összevonási kiszolgáló konfigurációja](#BKMK_FedSrvConfig) |<li>A felhőben összevonással új erdő telepítéséhez?</li> <li>Helyszíni AD FS telepítéséhez, és tegye elérhetővé a proxy a felhőben?</li> |<li>Biztonság</li> <li>Megfelelőség</li> <li>Költség</li> <li>Üzleti partnerek alkalmazások eléréséhez</li> |
 | [Felhő konfigurálása](#BKMK_CloudSvcConfig) |Egy felhőalapú szolgáltatás implicit módon van telepítve az első alkalommal hoz létre egy virtuális gépet. Szüksége további felhőalapú szolgáltatások telepítését? |<li>Egy virtuális Gépet vagy virtuális gépek szüksége van az Internet közvetlen kitéve?</li> <li> A szolgáltatás igényel a terheléselosztás?</li> |
 | [Összevonási kiszolgáló követelményei a nyilvános és magánhálózati IP-címzési (virtuális IP-cím és a dinamikus IP)](#BKMK_FedReqVIPDIP) |<li>A Windows Server AD FS-példányt kell nem érhető el közvetlenül az internetről?</li> <li>Igényelnek-e az alkalmazás üzembe helyezéséhez a felhőben saját Internet felé néző IP-cím és port?</li> |Minden virtuális IP-címet a telepítés során szükséges egy felhőalapú szolgáltatás létrehozása |
 | [Windows Server AD FS magas rendelkezésre állás konfigurálása](#BKMK_ADFSHighAvail) |<li>A Windows Server AD FS kiszolgálófarm hány csomópontok?</li> <li>Hány csomópontok központi telepítése a Windows Server AD FS proxy farm?</li> |Rugalmasság és a hibatűrés |

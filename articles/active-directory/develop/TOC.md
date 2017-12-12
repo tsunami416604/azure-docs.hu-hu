@@ -62,6 +62,7 @@
 ### [Mi történt a webes API-projektemmel?](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 ## [ACS migrálása](active-directory-acs-migration.md)
+## [Ajánlott hibakezelési eljárások az ADAL-hoz](active-directory-devhowto-adal-error-handling.md)
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Hitelesítési tárak (ADAL)](active-directory-authentication-libraries.md)

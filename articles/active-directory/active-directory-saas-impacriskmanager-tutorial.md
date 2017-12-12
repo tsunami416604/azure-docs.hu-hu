@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 4d77390e-898c-4258-a562-a1181dfe2880
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 0d3f17b86caaf781ab8825b047853f2949828e9e
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: ade4076917988c5747a0d10a99578b49c917e1db
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Oktatóanyag: Azure Active Directory-integráció IMPAC kockázati-kezelővel
 
@@ -113,9 +113,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:
     | Környezet | Az URL-minta |
     | ---------------|--------------- |    
-    | Termelési környezetben |`https://www.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
+    | Éles környezetekhez |`https://www.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | Átmeneti és képzési  |`https://staging.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
-    | Fejlesztési  |`https://dev.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
+    | Fejlesztéshez  |`https://dev.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | A QA |`https://QA.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | A teszt |`https://test.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
 
@@ -126,9 +126,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:
     | Környezet | Az URL-minta |
     | ---------------|--------------- |    
-    | Termelési környezetben |`https://www.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
+    | Éles környezetekhez |`https://www.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | Átmeneti és képzési  |`https://staging.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
-    | Fejlesztési  |`https://dev.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
+    | Fejlesztéshez  |`https://dev.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | A QA |`https://QA.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | A teszt |`https://test.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
 

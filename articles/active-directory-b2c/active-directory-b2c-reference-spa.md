@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan hozhat létre egyoldalas alkalmazások közvet
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
-manager: krassk
+manager: mtillman
 editor: parakhj
 ms.assetid: a45cc74c-a37e-453f-b08b-af75855e0792
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: parakhj
-ms.openlocfilehash: 44ff168599e9078506e1afdd0f1dc4657ef0964d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ce4aaac117920c1da0b8a29797169d536825c1a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Az Azure AD B2C: Egyoldalas alkalmazások bejelentkezés OAuth 2.0 típusú implicit engedélyezési folyamat használatával
 
@@ -94,13 +94,13 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | --- | --- | --- |
 | client_id |Szükséges |Az alkalmazást a hozzárendelt Alkalmazásazonosító a [Azure-portálon](https://portal.azure.com). |
 | response_type |Szükséges |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezhet. A válasz típusa is tartalmazhatja `token`. Ha `token`, az alkalmazás azonnal fogadhat második kérést a hitelesítési végpontra nélkül hozzáférési token a hitelesítési végpontra.  Ha használja a `token` válaszának típusa, a `scope` paraméternek tartalmaznia kell egy hatókör, amely jelzi, melyik erőforrást kell a jogkivonatot bocsásson ki. |
-| redirect_uri |Ajánlott |Az átirányítási URI-t, az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Az pontosan egyeznie kell az átirányítási URI-k, a portál regisztrált azzal a különbséggel, hogy az URL-kódolású kell lennie. |
-| response_mode |Ajánlott |Meghatározza az eredményül kapott jogkivonat vissza küldése az alkalmazásnak használandó módszert.  Implicit adatfolyamok, használjon `fragment`. |
+| redirect_uri |Javasolt |Az átirányítási URI-t, az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Az pontosan egyeznie kell az átirányítási URI-k, a portál regisztrált azzal a különbséggel, hogy az URL-kódolású kell lennie. |
+| response_mode |Javasolt |Meghatározza az eredményül kapott jogkivonat vissza küldése az alkalmazásnak használandó módszert.  Implicit adatfolyamok, használjon `fragment`. |
 | Hatókör |Szükséges |Hatókörök szóközökkel elválasztott listája. Egy hatókör érték azt jelzi, az Azure AD mindkét kérnek engedély. A `openid` hatókör azt jelzi, a felhasználói azonosító-jogkivonatokat formájában adatait, és jelentkezzen be a felhasználó engedélyt. (Lesz döntésről bővebben Ez a cikk több későbbi részében.) A `offline_access` hatókör megadása nem kötelező web Apps. Azt jelzi, hogy kell-e az alkalmazást egy frissítési jogkivonat hosszú élettartamú erőforrások elérése érdekében. |
-| state |Ajánlott |A kérelemhez, amely az eredmény abban is a lexikális elem szerepel érték. Bármely, a használni kívánt tartalmat karakterlánc lehet. Általában egy véletlenszerűen generált, egyedi érték használata esetén webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében. Az állapot is kódolásához használatos a felhasználói állapot az alkalmazás információkat történt a hitelesítési kérést, mielőtt a lap, amilyenek korábban voltak a. |
+| state |Javasolt |A kérelemhez, amely az eredmény abban is a lexikális elem szerepel érték. Bármely, a használni kívánt tartalmat karakterlánc lehet. Általában egy véletlenszerűen generált, egyedi érték használata esetén webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében. Az állapot is kódolásához használatos a felhasználói állapot az alkalmazás információkat történt a hitelesítési kérést, mielőtt a lap, amilyenek korábban voltak a. |
 | Nonce |Szükséges |A kérelem (az alkalmazás által generált), amely megtalálható az eredményül kapott azonosító jogkivonat jogcímként szerepel érték. Az alkalmazás ezután ellenőrizheti a hitelesítési karakterláncok ismétlésének támadások mérséklése ezt az értéket. Általában értéke véletlenszerű, egyedi karakterlánc, amely segítségével azonosíthatja a kérelem forrása. |
 | P |Szükséges |A házirend végrehajtásához. Olyan házirendet, amely az Azure AD B2C bérlő létrehozása nevét. A házirend nevének értékét kell kezdődnie **b2c\_1\_**. További információkért lásd: [beépített házirendek az Azure AD B2C](active-directory-b2c-reference-policies.md). |
-| parancssor |Optional |A típus a felhasználói beavatkozás szükséges. Az egyetlen érvényes érték jelenleg `login`. Ekkor elemezni, a felhasználó megadja hitelesítő adataikkal, hogy kérésre. Egyszeri bejelentkezés nem lépnek érvénybe. |
+| parancssor |Választható |A típus a felhasználói beavatkozás szükséges. Az egyetlen érvényes érték jelenleg `login`. Ekkor elemezni, a felhasználó megadja hitelesítő adataikkal, hogy kérésre. Egyszeri bejelentkezés nem lépnek érvénybe. |
 
 Ezen a ponton a felhasználónak kapcsolatba a házirend-munkafolyamat végrehajtásához. Ez lehet, hogy magában a írja be a felhasználónevét és jelszavát, felhasználó bejelentkezik egy közösségi identitás regisztrál a könyvtár, vagy több lépésből áll. Felhasználói műveletek attól függ, hogyan van definiálva a házirendet.
 
@@ -140,7 +140,7 @@ error=access_denied
 
 | Paraméter | Leírás |
 | --- | --- |
-| error |Egy hiba kód karakterlánc osztályozva a felmerülő hibákat. Is használhatja a hiba kódja hibaelhárítási célból. |
+| hiba |Egy hiba kód karakterlánc osztályozva a felmerülő hibákat. Is használhatja a hiba kódja hibaelhárítási célból. |
 | error_description |Egy adott hibaüzenet, melyek segíthetnek hitelesítési hiba okának azonosításához. |
 | state |Lásd az előző táblázatban a teljes leírását. Ha egy `state` paraméter szerepel a kérést, ugyanazt az értéket meg kell jelennie a válaszban. Az alkalmazás győződjön meg arról, hogy a `state` a kérelem és a válaszban szereplő értékek azonosak.|
 
@@ -205,10 +205,10 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | --- | --- | --- |
 | client_id |Szükséges |Az alkalmazást a hozzárendelt Alkalmazásazonosító a [Azure-portálon](https://portal.azure.com). |
 | response_type |Szükséges |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezhet.  Az is előfordulhat, hogy tartalmazza a választípus `token`. Ha `token` itt, az alkalmazás azonnal fogadhat olyan hozzáférési jogkivonatot a hitelesítési végpontra, anélkül, hogy egy második kérelmet a hitelesítési végpontra. Ha használja a `token` válaszának típusa, a `scope` paraméternek tartalmaznia kell egy hatókör, amely jelzi, melyik erőforrást kell a jogkivonatot bocsásson ki. |
-| redirect_uri |Ajánlott |Az átirányítási URI-t, az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Az pontosan egyeznie kell az átirányítási URI-azonosítók regisztrálta a portálon, azzal a különbséggel, hogy az URL-kódolású kell lennie. |
+| redirect_uri |Javasolt |Az átirányítási URI-t, az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Az pontosan egyeznie kell az átirányítási URI-azonosítók regisztrálta a portálon, azzal a különbséggel, hogy az URL-kódolású kell lennie. |
 | Hatókör |Szükséges |Hatókörök szóközökkel elválasztott listája.  A jogkivonatok lekérésének tartalmazza a hatóköröket a kívánt erőforrás szükséges. |
-| response_mode |Ajánlott |Megadja azt a módszert, amelynek használatával az eredményül kapott jogkivonat vissza küldése az alkalmazásnak.  Lehet `query`, `form_post`, vagy `fragment`. |
-| state |Ajánlott |A token válaszként visszaadott a kérelemben szereplő érték.  Bármely, a használni kívánt tartalmat karakterlánc lehet.  Általában egy véletlenszerűen generált, egyedi érték használata esetén webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében.  Az állapot is kódolásához használatos a felhasználói állapot az alkalmazás információkat előtt a hitelesítési kérelmet. Például a lap vagy nézet, a felhasználó nem az. |
+| response_mode |Javasolt |Megadja azt a módszert, amelynek használatával az eredményül kapott jogkivonat vissza küldése az alkalmazásnak.  Lehet `query`, `form_post`, vagy `fragment`. |
+| state |Javasolt |A token válaszként visszaadott a kérelemben szereplő érték.  Bármely, a használni kívánt tartalmat karakterlánc lehet.  Általában egy véletlenszerűen generált, egyedi érték használata esetén webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében.  Az állapot is kódolásához használatos a felhasználói állapot az alkalmazás információkat előtt a hitelesítési kérelmet. Például a lap vagy nézet, a felhasználó nem az. |
 | Nonce |Szükséges |A kérelem, az eredményül kapott azonosító jogkivonat jogcímként megtalálható az alkalmazás által generált szerepel érték.  Az alkalmazás ezután ellenőrizheti a hitelesítési karakterláncok ismétlésének támadások mérséklése ezt az értéket. Általában értéke véletlenszerű, egyedi karakterlánc, amely azonosítja a kérelem forrása. |
 | parancssor |Szükséges |Frissítse, valamint egy rejtett iframe a jogkivonatok lekérésére használja `prompt=none` annak érdekében, hogy az iframe nem elakadnak a bejelentkezési oldalon, és azonnal visszaadja az eredményeket. |
 | login_hint |Szükséges |Frissítse, és egy rejtett iframe a jogkivonatok lekérésére, vegye fel a mutató használatával tudja megkülönböztetni a felhasználónak kell egyszerre több munkamenetet a felhasználó felhasználóneve. Kibonthatja a felhasználónév a egy korábbi bejelentkezés használatával a `preferred_username` jogcímek. |
@@ -247,7 +247,7 @@ error=user_authentication_required
 
 | Paraméter | Leírás |
 | --- | --- |
-| error |Hiba történt a felmerülő hibákat besorolására használható kód karakterlánc. A karakterlánc hibák reagálni is használja. |
+| hiba |Hiba történt a felmerülő hibákat besorolására használható kód karakterlánc. A karakterlánc hibák reagálni is használja. |
 | error_description |Egy adott hibaüzenet, melyek segíthetnek hitelesítési hiba okának azonosításához. |
 
 Ez a hiba a iframe kérelmet kap, ha a felhasználó kell interaktív jelentkezzen be újra egy új jogkivonatot lekérdezni. Ez úgy, hogy az alkalmazás számára legjobb képes kezelni.
@@ -269,7 +269,7 @@ p=b2c_1_sign_in
 | Paraméter | Kötelező? | Leírás |
 | --- | --- | --- |
 | P |Szükséges |A házirend a felhasználói kívül az alkalmazás aláírásához. |
-| post_logout_redirect_uri |Ajánlott |Az URL-címet, a felhasználó után a rendszer átirányítja a sikeres kijelentkezési. Ha nincs megadva, az Azure AD B2C alábbi hibaüzenet jelenik meg a felhasználó számára látható. |
+| post_logout_redirect_uri |Javasolt |Az URL-címet, a felhasználó után a rendszer átirányítja a sikeres kijelentkezési. Ha nincs megadva, az Azure AD B2C alábbi hibaüzenet jelenik meg a felhasználó számára látható. |
 
 > [!NOTE]
 > Irányítja a felhasználót, hogy a `end_session_endpoint` néhány, a felhasználó állapotának egyszeri bejelentkezés az Azure AD B2C törli. Azt azonban nem jelentkezik ki a felhasználó közösségi identity provider munkamenet a felhasználó. Ha a felhasználó kijelöli azonos szolgáltató azonosítani egy későbbi bejelentkezés során, a felhasználók újrahitelesítése, a hitelesítő adatok megadása nélkül. Ha egy felhasználó kijelentkezik az Azure AD B2C alkalmazás azt szeretné, akkor nem feltétlenül jelenti teljesen kijelentkezni például Facebook fiókjuk szeretnék. Azonban a helyi fiókok, a felhasználói munkamenet véget ér megfelelően.
@@ -283,7 +283,7 @@ Próbálja meg ezek a kérelmek saját magának, végezze el az alábbi három l
 2. [Hozzon létre egy alkalmazást](active-directory-b2c-app-registration.md) az Alkalmazásazonosító beszerzése és egy `redirect_uri` érték. Vegye fel az alkalmazást egy webalkalmazást vagy webes API. Ha szükséges egy alkalmazás titkos kulcs is létrehozhat.
 3. [A házirendek létrehozása](active-directory-b2c-reference-policies.md) beszerzése a házirend nevét.
 
-## <a name="samples"></a>Példák
+## <a name="samples"></a>Minták
 
 * [Hozzon létre egy alkalmazás számára a Node.js segítségével](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
 * [Hozzon létre egy egyoldalas alkalmazást .NET használatával](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)

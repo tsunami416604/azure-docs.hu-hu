@@ -4,7 +4,7 @@ description: "Támogatja a HTML5/CSS tartalommal, amely dinamikusan változik a 
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/20/2017
 ms.author: yoelh
-ms.openlocfilehash: 1e8b8359efb75246e40103ee8cbc2a786bfa6b46
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 342e82071778156477d216c9b624a938c48cb37f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Az Azure Active Directory B2C: A felhasználói felület konfigurálása dinamikus tartalom egyéni házirendek használatával
 Azure Active Directory B2C segítségével (az Azure AD B2C) egyéni házirendek, elküldheti a paraméter egy lekérdezési karakterlánc. Úgy, hogy a paraméter a HTML-végpontot, dinamikusan módosíthatja az oldal tartalmát. Például a háttérkép, a Azure AD B2C regisztráció vagy bejelentkezés lapon adja meg a webkiszolgáló vagy a mobilalkalmazás paramétereinek alapján módosíthatja. 

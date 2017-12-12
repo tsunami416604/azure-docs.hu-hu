@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Az Active directory-jelszókezelés, jelszókezelés, az Azure AD self service jelszó alaphelyzetbe állítása"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: ae1e6c34b610aff245e051454269f0b8619b54c7
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: b099abb27fbd2adf78b65123a62048967406d401
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -103,7 +103,7 @@ A következő táblázat ismerteti a rendelkezésre álló jelszó házirend-be�
 | Jelszó lejárata |<ul><li>Alapértelmezett érték: **hamis** nap (azt jelzi, hogy a jelszó lejárati engedélyezve van).</li><li>Az érték beállítható az egyes felhasználói fiókok használatával a `Set-MsolUser` parancsmag.</li></ul> |
 | Jelszó-változtatási |Az utolsó jelszó *nem* újra használható, ha a felhasználó megváltoztatja a jelszavát. |
 | Jelszó-átállítási előzmények | Az utolsó jelszó *is* újra használható, amikor a felhasználó visszaállítja az elfelejtett jelszavát. |
-| Fiókzárolás |10 sikertelen bejelentkezési kísérlet után helytelen jelszóval a felhasználó zárolva van egy percig. További helytelen bejelentkezési kísérletek zár ki a felhasználói idő időtartamok növelése. |
+| A fiókzárolásra |10 sikertelen bejelentkezési kísérlet után helytelen jelszóval a felhasználó zárolva van egy percig. További helytelen bejelentkezési kísérletek zár ki a felhasználói idő időtartamok növelése. |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Jelszó lejárati házirendek beállítása az Azure ad-ben
 

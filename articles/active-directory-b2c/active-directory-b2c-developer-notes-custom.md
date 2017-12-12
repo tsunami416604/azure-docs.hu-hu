@@ -4,7 +4,7 @@ description: "Megjegyzések fejlesztők konfigurálása és karbantartása az Az
 services: active-directory-b2c
 documentationcenter: 
 author: rojasja
-manager: krassk
+manager: mtillman
 editor: rojasja
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/13/2017
 ms.author: joroja
-ms.openlocfilehash: 4fa4665115e0682df7c3fe3d8e2664a0f7a77a07
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 064ccec58406e08ae68320b59fcf2a96952a41ee
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Az Azure Active Directory B2C egyéni házirend nyilvános előzetes kibocsátási megjegyzései
 Az egyéni házirend szolgáltatáskészlet már elérhető az összes Azure Active Directory B2C előzetes verzióját nyilvános értékelésre (az Azure AD B2C) ügyfelek. E szolgáltatáskészlet speciális identitás fejlesztők a legösszetettebb identitáskezelési megoldások kialakításának irányul.  
@@ -66,7 +66,7 @@ Kérdéseit felteheti a Stack Overflow [aka.ms/aadb2cso](http://aka.ms/aadb2cso)
 ### <a name="identity-providers-tokens-protocols"></a>Identitás-szolgáltatók jogkivonatokat, protokollok
 Külső összetevőket és alkalmazások rendelkező csatolók
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
 |---------------------------------------------|-------------|---------|----|-------|
 | IDP-OpenIDConnect |  | x |  | például Google + |
 | AZ OAUTH2-IDP |  | x |  | Ha például a Facebook-on  |
@@ -83,7 +83,7 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 ### <a name="component-support"></a>Összetevő támogatása
 
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
 |-------------------------------------------|-------------|---------|----|-------|
 | Azure Multi Factor Authentication |  | x |  |  |
 | Az Azure Active Directory helyi könyvtár |  | x |  |  |
@@ -94,7 +94,7 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 
 ### <a name="content-definition"></a>Tartalom meghatározása
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
 |-----------------------------------------------------------------------------|-------------|---------|----|-------|
 |   Hibalap, api.error |  | x |  |  |
 |   IDP kiválasztása lapon, a api.idpselections |  | x |  |  |
@@ -109,7 +109,7 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 
 
 ### <a name="app-ief-integration"></a>Alkalmazás-IEF integráció
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
 |--------------------------------------------------|-------------|---------|----|-------------------------------------------------|
 | Lekérdezési karakterlánc paraméter id_token_hint | x |  |  |  |
 | Lekérdezési karakterlánc paraméter domain_hint |  | x |  | rendelkezésre álló jogcímként, átadhatók IDP |
@@ -120,7 +120,7 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 
 ### <a name="session-management"></a>Munkamenet-kezelés
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
 |---------------------------------|-------------|---------|----|-------|
 | Egyszeri bejelentkezési munkamenet-szolgáltató |  | x |  |  |
 | Külső bejelentkezési munkamenet-szolgáltató |  | x |  |  |
@@ -128,14 +128,14 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 
 
 ### <a name="security"></a>Biztonság
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
 |---------------------------------------------|-------------|---------|----|-------|
 | Házirend kulcsok létrehozása, manuális, feltöltése |  | x |  |  |
 | Házirend kulcsok - RSA/Cert, titkos kulcsok |  | x |  |  |
 
 
 ### <a name="developer-interface"></a>Fejlesztői felület
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
 |---------------------------------------------|-------------|---------|----|-------|
 | Az Azure portál – IEF UX |  | x |  |  |
 | Application Insights UserJourney naplók  |  | x |  |  |

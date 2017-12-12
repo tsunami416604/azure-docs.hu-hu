@@ -4,7 +4,7 @@ description: "Ez a témakör ismerteti a további részletek funkciók még csak
 services: active-directory
 documentationcenter: 
 author: andkjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: c75cd8cf-3eff-4619-bbca-66276757cc07
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: cbf8f729d0ebfb271bb0d8702ac043442b42c262
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cba65b0fe2c2fa0ed92cd2f95464e300a29a7f54
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="more-details-about-features-in-preview"></a>További információt az előzetes funkciók
 Ez a témakör ismerteti, hogyan jelenleg előzetes funkciók használni.
 
-## <a name="group-writeback"></a>Group writeback (Csoportvisszaíró)
+## <a name="group-writeback"></a>Csoportvisszaírás
 A csoportok visszaírásához választható funkciók a beállítás lehetővé teszi a visszaírási **Office 365-csoportok** telepített Exchange az erdőhöz. Ez az egy csoportot, amely mindig értékűre a felhőben. Ha a helyszíni Exchange-hez, majd írhat vissza ezeket a csoportokat a helyszínen, a felhasználók egy helyszíni Exchange postaládával küldhet és fogadhat e-mailek ezekből a csoportokból.
 
 További információ az Office 365-csoportokat és a használatukat található [Itt](http://aka.ms/O365g).
@@ -42,7 +42,7 @@ Az Office 365-csoportok egy jelenik meg a helyszíni terjesztési csoport Active
 > 
 >
 
-## <a name="user-writeback"></a>Felhasználók visszaírásához.
+## <a name="user-writeback"></a>Felhasználó-visszaírás
 > [!IMPORTANT]
 > A felhasználó-visszaírás előzetes verziójú funkciók el lett távolítva a 2015. augusztus frissítés az Azure AD Connect. Ha engedélyezte azt, majd tiltsa le ezt a szolgáltatást.
 >

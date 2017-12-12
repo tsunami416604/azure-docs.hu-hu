@@ -5,7 +5,7 @@ services: active-directory
 keywords: "alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés"
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 10/23/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: c584eddb5542c2c49d08d35bcaf8e7acb5c5b83a
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 416ae171564fa23473d09bad950d149e201bcc98
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="migrate-classic-policies-in-the-azure-portal"></a>Telepítse át a klasszikus szabályzatokkal az Azure portálon 
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/24/2017
 Ez a témakör segítséget nyújt a meglévő klasszikus házirendek az új áttelepítése az új Azure AD feltételes hozzáférési szabályzatokat.
 
 
-## <a name="classic-policies"></a>Klasszikus házirendek
+## <a name="classic-policies"></a>Klasszikus szabályzatok
 
 A feltételes hozzáférési házirendek az Azure AD és az Intune nem hozott létre az Azure portálon is **klasszikus házirendek**. A klasszikus házirendek áttelepítéséhez, akkor nem hozzáféréssel kell rendelkeznie a klasszikus Azure portálra. Az Azure-portálon tartalmazza a egy [ **klasszikus házirendek (előzetes verzió)** nézet](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) , amely lehetővé teszi, hogy tekintse át a klasszikus házirendeket.
 
@@ -80,7 +80,7 @@ Lásd:
 
 ## <a name="multi-factor-authentication-policy"></a>Többtényezős hitelesítési házirend 
 
-Ez a példa bemutatja, hogyan telepíthet át egy klasszikus házirendet a szükséges többtényezős hitelesítés ** felhőalapú alkalmazások. 
+A példa bemutatja, hogyan telepíthet át egy klasszikus házirend igénylő **a multi-factor authentication** felhőalapú alkalmazások. 
 
 ![Azure Active Directory](./media/active-directory-conditional-access-migration/33.png)
 

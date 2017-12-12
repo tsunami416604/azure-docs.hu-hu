@@ -4,7 +4,7 @@ description: "Azure Active Directory tartományi szolgáltatások kapcsolatos gy
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mtillman
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 12/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 2705e97bd5b259ef68090e5688df57e0d3478f30
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: cfab51f985dd0b9db109f1ca8e4030bc9d0de1cc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Az Azure Active Directory tartományi szolgáltatások: Gyakran ismételt kérdések (GYIK)
 Ezen a lapon az Azure Active Directory tartományi szolgáltatások kapcsolatos gyakori kérdésekre. Tartsa biztonsági frissítések keresése.
@@ -34,10 +34,10 @@ Nem. Csak egyetlen Azure AD tartományi szolgáltatások által kiszolgált egy 
 Igen. Azure AD tartományi szolgáltatások az Azure Resource Manager virtuális hálózat engedélyezhető. Ez a funkció jelenleg előzetes verzió.
 
 #### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Telepíthetek át a meglévő felügyelt tartomány klasszikus virtuális hálózaton keresztül egy erőforrás-kezelő virtuális hálózathoz?
-Jelenleg nem. A mechanizmus, amellyel áttelepítheti a meglévő felügyelt tartomány a klasszikus virtuális hálózatot egy erőforrás-kezelő virtuális hálózatot a jövőben azt fog továbbítani.
+Jelenleg nem. A Microsoft egy mechanizmus, amellyel áttelepítheti a meglévő felügyelt tartomány a klasszikus virtuális hálózatot egy erőforrás-kezelő virtuális hálózatot a jövőben fog továbbítani.
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Az Azure kriptográfiai Szolgáltató (Cloud Solution Provider) előfizetéssel az Azure AD tartományi szolgáltatások engedélyezése
-Nem. Jelenleg is dolgozunk CSP előfizetések támogatását.
+Nem. A termékért felelős csoport dolgozik a CSP-előfizetések támogatását.
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-and-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Engedélyezhető az Azure AD tartományi szolgáltatások egy összevont Azure AD-címtár? I az AD FS segítségével hitelesíti a felhasználókat az Office 365 eléréséhez, és ne szinkronizáljon az Azure AD azok kivonatai. Ez a könyvtár az Azure AD tartományi szolgáltatások engedélyezése
 Nem. Azure AD tartományi szolgáltatások hozzá kell férnie a jelszókivonatait a felhasználói fiókok, NTLM vagy Kerberos használatával a felhasználók hitelesítéséhez. Egy összevont könyvtárban a jelszó-kivonatok nem szerepelnek az Azure AD-címtár. Azure AD tartományi szolgáltatásokat, ezért az ilyen Azure AD-címtártól nem működik.
@@ -46,13 +46,13 @@ Nem. Azure AD tartományi szolgáltatások hozzá kell férnie a jelszókivonata
 A szolgáltatás nem támogatja közvetlenül ebben a forgatókönyvben. A felügyelt tartományok egyszerre csak egy virtuális hálózaton rendelkezésre álló lehet. Azonban előfordulhat, hogy konfigurálnia több virtuális hálózat teszi közzé az Azure AD tartományi szolgáltatásokat másik virtuális hálózatok közötti kapcsolatot. Tekintse meg, hogyan zajlik [csatlakozzon az Azure virtuális hálózatairól](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>PowerShell-lel Azure AD tartományi szolgáltatások engedélyezése
-PowerShell/automatikus telepítése az Azure AD tartományi szolgáltatások jelenleg nem érhető el.
+Igen. Lásd: [engedélyezése az Azure AD tartományi szolgáltatások a PowerShell használatával hogyan](active-directory-ds-enable-using-powershell.md).
 
 #### <a name="is-azure-ad-domain-services-available-in-the-new-azure-portal"></a>Azure AD tartományi szolgáltatások érhető el az új Azure-portálon?
 Igen. Azure AD tartományi szolgáltatások használatával konfigurálható a [Azure-portálon](https://portal.azure.com). A [klasszikus Azure portálon](https://manage.windowsazure.com) már nem támogatott.
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>A Resource Manager sablonnal Azure AD tartományi szolgáltatások engedélyezése
-Nem. Néhány feladatot kell végezni az Azure AD tartományi szolgáltatások engedélyezése részeként. Ezek a feladatok nem lehetségesek a Resource Manager sablon segítségével. Az új Azure-portálon használatával engedélyezze az Azure AD tartományi szolgáltatásokat a címtáron.
+Igen. Lásd: [engedélyezése az Azure AD tartományi szolgáltatások a PowerShell használatával hogyan](active-directory-ds-enable-using-powershell.md).
 
 #### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Hozzáadható-e tartományvezérlők az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz?
 Nem. Az Azure AD tartományi szolgáltatások által biztosított tartománya felügyelt tartományhoz. Nem kell kiépíteni, konfigurálása, vagy egyéb módon kezelje a tartományvezérlők a tartomány - e felügyeleti tevékenységek szolgáltatásként Microsoft által biztosított. További tartományvezérlők (olvasási és írási vagy olvasási) a felügyelt tartomány számára, ezért nem adható hozzá.

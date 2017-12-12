@@ -5,7 +5,7 @@ services: active-directory
 keywords: "az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése"
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 689864b15890d8bc4a8a58a37f2034c66491654a
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: f7abbab27a6794c934344c78ba1776c8dbb97088
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Az Azure AD Identity Protection bejelentkezési élmény
 Az Azure Active Directory azonosító adatok védelmét a következőket teheti:
@@ -104,7 +104,7 @@ Ahhoz, hogy a felhasználó által feloldva felhasználói kockázat biztonsági
 
 ![Szervizelés](./media/active-directory-identityprotection-flows/104.png "szervizelés")
 
-## <a name="reset-password"></a>Új jelszó létrehozása
+## <a name="reset-password"></a>Jelszó alaphelyzetbe állítása
 Sérült biztonságú felhasználók nincs hozzáférése a bejelentkezés, ha a rendszergazda egy ideiglenes jelszót hozhat létre a számukra. A felhasználók módosíthatják a jelszavukat a következő bejelentkezés során lesz.
 
 ![Szervizelés](./media/active-directory-identityprotection-flows/160.png "szervizelés")

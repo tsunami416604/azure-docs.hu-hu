@@ -73,6 +73,9 @@
           href: sizes-compute.md
         - name: Memóriaoptimalizált
           href: sizes-memory.md
+          items:
+            - name: Korlátozott vCPU-k
+              href: constrained-vcpu.md
         - name: Tárolásra optimalizált
           href: sizes-storage.md
         - name: GPU-optimalizált
@@ -164,6 +167,8 @@
       items:
         - name: Előre fizetés virtuális gépekre – Lefoglalt példányok
           href: prepay-reserved-vm-instances.md
+        - name: Virtuálisgép-használat
+          href: vm-usage.md
         - name: Általános CLI-feladatok
           href: cli-manage.md
         - name: Virtuális gép áthelyezése

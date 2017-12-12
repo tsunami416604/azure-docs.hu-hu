@@ -4,7 +4,7 @@ description: "Ismerje meg, hogyan használhatja a feltételes hozzáférés-vez�
 services: active-directory.
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/05/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 5fad793bcf9ac86c2a1bc67e74dfb62af9876100
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 871c1d222d78eccdb7e25bf22276b5f63f8f3b8f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Technikai útmutató az Azure Active Directory feltételes hozzáférés
 
@@ -122,17 +122,17 @@ Ez a beállítás minden böngészőben működik. Azonban kielégítéséhez eg
 
 | Operációs rendszer                     | Böngészők                            | Támogatás     |
 | :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer, a peremhálózati, Chrome     | ![Jelölőnégyzet][1] |
-| Windows 8 / 8.1        | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
-| Windows 7              | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
-| iOS                    | Safari, Intune által felügyelt böngésző      | ![Jelölőnégyzet][1] |
-| Android                | Chrome, Intune által felügyelt böngésző      | ![Jelölőnégyzet][1] |
-| Windows Phone          | Internet Explorer, a peremhálózati             | ![Jelölőnégyzet][1] |
-| Windows Server 2016    | Internet Explorer, a peremhálózati             | ![Jelölőnégyzet][1] |
+| Windows 10             | Internet Explorer, a peremhálózati, Chrome     | ![Ellenőrzés][1] |
+| Windows 8 / 8.1        | Internet Explorer, a Chrome           | ![Ellenőrzés][1] |
+| Windows 7              | Internet Explorer, a Chrome           | ![Ellenőrzés][1] |
+| iOS                    | Safari, Intune által felügyelt böngésző      | ![Ellenőrzés][1] |
+| Android                | Chrome, Intune által felügyelt böngésző      | ![Ellenőrzés][1] |
+| Windows Phone          | Internet Explorer, a peremhálózati             | ![Ellenőrzés][1] |
+| Windows Server 2016    | Internet Explorer, a peremhálózati             | ![Ellenőrzés][1] |
 | Windows Server 2016    | Chrome                              | Hamarosan |
-| Windows Server 2012 R2 | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
-| Windows Server 2008 R2 | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
-| macOS                  | Chrome, Safari                      | ![Jelölőnégyzet][1] |
+| Windows Server 2012 R2 | Internet Explorer, a Chrome           | ![Ellenőrzés][1] |
+| Windows Server 2008 R2 | Internet Explorer, a Chrome           | ![Ellenőrzés][1] |
+| macOS                  | Chrome, Safari                      | ![Ellenőrzés][1] |
 
 
 > [!NOTE]

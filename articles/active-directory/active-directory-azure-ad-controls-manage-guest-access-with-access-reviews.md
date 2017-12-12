@@ -4,7 +4,7 @@ description: "Vendégfelhasználók kezelése egy csoportba, vagy az alkalmazás
 services: active-directory
 documentationcenter: 
 author: markwahl-msft
-manager: femila
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: d67b12eaac17e278724ddf8670e65afba235f099
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8d5cc8035d085ac9c8fc46077376836726afbb1a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Az Azure ad-val vendég-hozzáférés kezelése értékelést eléréséhez
 
@@ -33,7 +33,7 @@ Is könnyen biztosítható, hogy a vendégfelhasználók megfelelő hozzáféré
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Hozzáférés értékelést része a Microsoft nagyvállalati mobilitási + biztonsági, E5 Azure ad Premium P2 kiadásával érhetők el. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások). Minden felhasználó létrehozása áttekintése, áttekintése elérésére, és alkalmazza a felülvizsgálati ezzel a szolgáltatással együttműködő licenc szükséges.
+A hozzáférési felülvizsgálatok az Azure AD Premium P2 kiadásában érhetők el, a Microsoft nagyvállalati mobilitási + biztonsági E5 csomagban. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások). Minden olyan felhasználónak licencre van szüksége, aki a szolgáltatást felülvizsgálat létrehozása, felülvizsgálat elérése vagy felülvizsgálat alkalmazása céljából használja.
 
 Ha azt tervezi, kérje meg a vendégfelhasználók számára saját hozzáférési áttekintéséhez, olvassa el a Vendég felhasználó licencelésével kapcsolatban. További információkért lásd: [Azure AD B2B együttműködés licencelési](active-directory-b2b-licensing.md).
 
@@ -56,11 +56,11 @@ Majd eldöntheti, hogy kérje meg a saját hozzáférésüket áttekintéséhez,
 
 Hozzáférés értékelést segítségével győződjön meg arról, hogy meghívót, és a csoporthoz hozzáadott felhasználók továbbra is hozzá kell férniük. Könnyen megkérheti a vendégek áttekintheti a saját csoport tagjának kell lennie.
 
-1. A csoport egy hozzáférés-ellenőrzés indítása, jelölje be a felülvizsgálati csak a Vendég felhasználói tagjai és tagok ellenőrizze magát. További információkért lásd: [hozzon létre egy áttekintése](active-directory-azure-ad-controls-create-access-review.md).
+1. A csoport egy hozzáférés-ellenőrzés indítása, jelölje be a felülvizsgálati csak a Vendég felhasználói tagjai és tagok ellenőrizze magát. További információkért lásd: [Hozzáférési felülvizsgálat létrehozása](active-directory-azure-ad-controls-create-access-review.md).
 
 2. Kérje meg minden Vendég számára tekintse át a saját tagságát. Alapértelmezés szerint minden Vendég meghívót elfogadó kap egy e-mailt az Azure AD egy hivatkozás, az access-ellenőrzéshez. Azure AD is rendelkezik a vendégek utasításokat való [tekintse át a hozzáférésüket](active-directory-azure-ad-controls-perform-access-review.md).
 
-3. A felülvizsgálók után adjon a bemeneti, állítsa le a hozzáférési tekintse át, és a módosítások életbe léptetéséhez. További információkért lásd: [végrehajtani egy áttekintése](active-directory-azure-ad-controls-complete-access-review.md).
+3. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információkért lásd: [Hozzáférési felülvizsgálat befejezése](active-directory-azure-ad-controls-complete-access-review.md).
 
 4. Mellett a saját szükségességét is folyamatos hozzáférést biztosíthasson megtagadva felhasználók is eltávolíthatja a felhasználók, akik nem válaszolt. A nem válaszoló felhasználók potenciálisan nem e-maileket kapni.
 
@@ -70,21 +70,21 @@ Hozzáférés értékelést segítségével győződjön meg arról, hogy meghí
 
 Kérje meg a támogató vezetővel, például egy csoport, tekintse át a Vendég szükség folyamatos csoporttagságok tulajdonosa.
 
-1. A csoport egy hozzáférés-ellenőrzés indítása, jelölje be a Vendég felhasználói tagjaira áttekintése. Adja meg legalább egy felülvizsgálót. További információkért lásd: [hozzon létre egy áttekintése](active-directory-azure-ad-controls-create-access-review.md).
+1. A csoport egy hozzáférés-ellenőrzés indítása, jelölje be a Vendég felhasználói tagjaira áttekintése. Adja meg legalább egy felülvizsgálót. További információkért lásd: [Hozzáférési felülvizsgálat létrehozása](active-directory-azure-ad-controls-create-access-review.md).
 
-2. Kérje meg a felülvizsgálókat, hogy nyilvánítsanak véleményt. Alapértelmezés szerint minden kapnak e-mailt az Azure AD a hivatkozás a hozzáférési panel, ahol azok [hajtsa végre a áttekintése](active-directory-azure-ad-controls-perform-access-review.md).
+2. Kérje meg a felülvizsgálókat, hogy nyilvánítsanak véleményt. Alapértelmezés szerint mindannyian kapnak egy e-mailt az Azure AD-től, amely a hozzáférési panelre mutató hivatkozást tartalmazza, ahol [elvégezhetik a hozzáférési felülvizsgálatot](active-directory-azure-ad-controls-perform-access-review.md).
 
-3. A felülvizsgálók után adjon a bemeneti, állítsa le a hozzáférési tekintse át, és a módosítások életbe léptetéséhez. További információkért lásd: [végrehajtani egy áttekintése](active-directory-azure-ad-controls-complete-access-review.md).
+3. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információkért lásd: [Hozzáférési felülvizsgálat befejezése](active-directory-azure-ad-controls-complete-access-review.md).
 
 ### <a name="ask-guests-to-review-their-own-access-to-an-application"></a>Kérje meg a vendégek saját alkalmazáshoz való hozzáférés áttekintése
 
 Hozzáférés értékelést segítségével győződjön meg arról, hogy azok a felhasználók, akik meg lettek hívva egy adott alkalmazáshoz továbbra is hozzá kell férniük. A hozzáféréshez szükséges magukat a vendégek áttekintheti a saját egyszerűen kérhet.
 
-1. Az alkalmazás hozzáférési ellenőrzés indítása, jelölje be a felülvizsgálati csak vendégek és, hogy a felhasználók a saját hozzáférésüket tekintse át. További információkért lásd: [hozzon létre egy áttekintése](active-directory-azure-ad-controls-create-access-review.md).
+1. Az alkalmazás hozzáférési ellenőrzés indítása, jelölje be a felülvizsgálati csak vendégek és, hogy a felhasználók a saját hozzáférésüket tekintse át. További információkért lásd: [Hozzáférési felülvizsgálat létrehozása](active-directory-azure-ad-controls-create-access-review.md).
 
 2. Kérje meg minden Vendég számára tekintse át a saját hozzáférni az alkalmazáshoz. Alapértelmezés szerint minden Vendég meghívót elfogadó kap egy e-mailt egy hivatkozás, az Azure AD számára a hozzáférési panelen a szervezet áttekintése. Azure AD is rendelkezik a vendégek utasításokat való [tekintse át a hozzáférésüket](active-directory-azure-ad-controls-perform-access-review.md).
 
-3. A felülvizsgálók után adjon a bemeneti, állítsa le a hozzáférési tekintse át, és a módosítások életbe léptetéséhez. További információkért lásd: [végrehajtani egy áttekintése](active-directory-azure-ad-controls-complete-access-review.md).
+3. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információkért lásd: [Hozzáférési felülvizsgálat befejezése](active-directory-azure-ad-controls-complete-access-review.md).
 
 4. Felhasználók, akik a saját megtagadva mellett kell a folyamatos hozzáférés, is eltávolíthatja vendég felhasználók, akik nem válaszolt. A nem válaszoló felhasználók potenciálisan nem e-maileket kapni. Nem választott részt venni, különösen akkor, ha a közelmúltban lettek meghívott vendég felhasználók is eltávolíthatja. Ezek a felhasználók nem fogadta el a meghívót, ezért nem volt hozzáférni az alkalmazáshoz. 
 
@@ -92,11 +92,11 @@ Hozzáférés értékelést segítségével győződjön meg arról, hogy azok a
 
 Kérje meg a támogató vezetővel, például egy alkalmazást, tekintse át a Vendég szükségességét is folyamatos hozzáférést biztosíthasson az alkalmazás tulajdonosa.
 
-1. Az alkalmazás hozzáférési ellenőrzés indítása, jelölje be a felülvizsgálati vendégek csak felvenni. Majd adja meg egy vagy több felhasználó felülvizsgálók. További információkért lásd: [hozzon létre egy áttekintése](active-directory-azure-ad-controls-create-access-review.md).
+1. Az alkalmazás hozzáférési ellenőrzés indítása, jelölje be a felülvizsgálati vendégek csak felvenni. Majd adja meg egy vagy több felhasználó felülvizsgálók. További információkért lásd: [Hozzáférési felülvizsgálat létrehozása](active-directory-azure-ad-controls-create-access-review.md).
 
-2. Kérje meg a felülvizsgálókat, hogy nyilvánítsanak véleményt. Alapértelmezés szerint minden kapnak e-mailt az Azure AD a hivatkozás a hozzáférési panel, ahol azok [hajtsa végre a áttekintése](active-directory-azure-ad-controls-perform-access-review.md).
+2. Kérje meg a felülvizsgálókat, hogy nyilvánítsanak véleményt. Alapértelmezés szerint mindannyian kapnak egy e-mailt az Azure AD-től, amely a hozzáférési panelre mutató hivatkozást tartalmazza, ahol [elvégezhetik a hozzáférési felülvizsgálatot](active-directory-azure-ad-controls-perform-access-review.md).
 
-3. A felülvizsgálók után adjon a bemeneti, állítsa le a hozzáférési tekintse át, és a módosítások életbe léptetéséhez. További információkért lásd: [végrehajtani egy áttekintése](active-directory-azure-ad-controls-complete-access-review.md).
+3. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információkért lásd: [Hozzáférési felülvizsgálat befejezése](active-directory-azure-ad-controls-complete-access-review.md).
 
 ### <a name="ask-guests-to-review-their-need-for-access-in-general"></a>Kérje meg a vendégek az kell, általában áttekintése
 
@@ -107,11 +107,11 @@ Egyes szervezetekben vendégek nem feltétlenül csoporttagságok tudomást.
 
 1. Biztonsági csoport létrehozása az Azure AD és a vendégek is, ha a megfelelő csoport nem létezik. Például a vendégek manuálisan karbantartott tagként egy csoportot is létrehozhat. Vagy dinamikus csoportot hozhat létre a Vendég UserType attribútuma értékkel rendelkező felhasználók a Contoso bérlő például "Contoso vendégek" nevére.
 
-2. A csoport egy hozzáférés-ellenőrzés indítása, jelölje be a megtekinteni jogosultak a saját magukat. További információkért lásd: [hozzon létre egy áttekintése](active-directory-azure-ad-controls-create-access-review.md).
+2. A csoport egy hozzáférés-ellenőrzés indítása, jelölje be a megtekinteni jogosultak a saját magukat. További információkért lásd: [Hozzáférési felülvizsgálat létrehozása](active-directory-azure-ad-controls-create-access-review.md).
 
 3. Kérje meg minden Vendég számára tekintse át a saját tagságát. Alapértelmezés szerint minden Vendég meghívót elfogadó kap egy e-mailt egy hivatkozás, az Azure AD számára a hozzáférési panelen a szervezet áttekintése. Azure AD is rendelkezik a vendégek utasításokat való [tekintse át a hozzáférésüket](active-directory-azure-ad-controls-perform-access-review.md).
 
-4. Felülvizsgáló, biztosítva a bevitel után állítsa le a áttekintése. További információkért lásd: [végrehajtani egy áttekintése](active-directory-azure-ad-controls-complete-access-review.md).
+4. Felülvizsgáló, biztosítva a bevitel után állítsa le a áttekintése. További információkért lásd: [Hozzáférési felülvizsgálat befejezése](active-directory-azure-ad-controls-complete-access-review.md).
 
 5. Távolítsa el a vendég hozzáférés a Vendégek, akik megvonták, nem fejeződött be a felülvizsgálati vagy korábban nem fogadta el a meghívást. Ha a vendégek némelyike partnerek, akik a kiválasztott részt a tekintse át, mert azok nem korábban elfogadja a meghívót, letilthatja a fiókjukat az Azure-portálon vagy a PowerShell használatával. Ha a vendég nem engedéllyel kell rendelkeznie, és egy ügyfél nem, akkor eltávolíthatja a user objektum a címtár az Azure-portálon vagy a PowerShell használatával.
 

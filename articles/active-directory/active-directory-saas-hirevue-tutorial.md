@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: aadfc342-14db-4d74-a83d-f0c76f0cf63c
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 682d88d3010f5781948a9adde0e1351471608a5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e79526ff45babbca7722aa478347c0e3c9f013cd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>Oktatóanyag: Azure Active Directoryval integrált HireVue
 
@@ -112,16 +112,16 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:
 
-    | Környezet | URL-CÍME |
+    | Környezet | URL-cím |
     |-------------|---|
-    | Éles | `https://<companyname>.hirevue.com` |
+    | Éles környezet | `https://<companyname>.hirevue.com` |
     | Átmeneti    | `https://<companyname>.stghv.com` |
     
     b. Az a **azonosító** szövegmező, adja meg az URL-címet:
     
     | Környezet | URN |
     |-------------|-----|
-    | Éles |`urn:federation:hirevue.com:saml:sp:prod` |
+    | Éles környezet |`urn:federation:hirevue.com:saml:sp:prod` |
     | Átmeneti    | `urn:federation:hirevue.com:saml:sp:staging`|
     
     > [!NOTE] 

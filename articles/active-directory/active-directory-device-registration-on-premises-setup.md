@@ -4,7 +4,7 @@ description: "Egy részletes útmutató a helyszíni alkalmazások feltételes h
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/22/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2342690d983b6e27fa008b5c72a736a9ecda8f47
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 4117414f4605b73d8aab8acc2e788720deff8b99
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>A helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációs használatával
 Ha munkahelyi-csatlakozás a felhasználók saját eszközét, az Azure Active Directory (Azure AD) eszközregisztrációs szolgáltatását, az eszközeik jelölhető, amelyről ismert, hogy a szervezet. Az alábbiakban részletesen ismerteti az Active Directory összevonási szolgáltatások (AD FS) a Windows Server 2012 R2 használatával a helyszíni alkalmazások feltételes hozzáférést tesz lehetővé.
@@ -69,7 +69,7 @@ Az Azure Active Directory eszközregisztrációs szolgáltatás és az Azure Act
 ## <a name="part-1-enable-azure-active-directory-device-registration"></a>1. lépés: Engedélyezze Azure Active Directory eszközregisztráció
 Kövesse az ellenőrzőlista engedélyezése és konfigurálása az Azure Active Directory eszközregisztrációs szolgáltatást.
 
-| Tevékenység | Referencia | 
+| Feladat | Referencia | 
 | --- | --- |
 | Eszközök regisztrációjához az eszközök a munkahelyi csatlakoztatás az Azure Active Directory-bérlőben. Alapértelmezés szerint a Azure multi-factor Authentication szolgáltatás nincs engedélyezve. Azt javasoljuk azonban, hogy többtényezős hitelesítés használata, amikor regisztrál egy eszközt. Ahhoz, hogy a többtényezős hitelesítés az Active Directory eszközregisztrációs szolgáltatás, ügyeljen arra, hogy az AD FS többtényezős hitelesítési szolgáltató. |[Azure Active Directory eszközregisztrációs engedélyezése](active-directory-device-registration-get-started.md)| 
 |Eszközök az Azure Active Directory eszközregisztrációs szolgáltatás felderítéséhez a jól ismert DNS-rekordok megkeresésével. A vállalat DNS-ÉT, hogy az eszköz képes felderíteni az Azure Active Directory eszközregisztrációs szolgáltatás konfigurálása |[Azure Active Directory-eszköz regisztrációs felderítés konfigurálása](active-directory-device-registration-get-started.md)| 
@@ -77,13 +77,13 @@ Kövesse az ellenőrzőlista engedélyezése és konfigurálása az Azure Active
 
 ## <a name="part-2-deploy-and-configure-windows-server-2012-r2-active-directory-federation-services-and-set-up-a-federation-relationship-with-azure-ad"></a>2. lépés: Telepítse és konfigurálja a Windows Server 2012 R2 Active Directory összevonási szolgáltatások, és állítsa be az Azure AD összevonási kapcsolat
 
-| Tevékenység | Referencia |
+| Feladat | Referencia |
 | --- | --- |
 | Active Directory tartományi szolgáltatások telepítése a Windows Server 2012 R2 séma kiterjesztésű fájl. Nem szükséges frissítenie minden tartományvezérlő Windows Server 2012 R2 rendszerre. A séma frissítése nem egyetlen követelménye. |[Az Active Directory tartományi szolgáltatások séma frissítése](#upgrade-your-active-directory-domain-services-schema) |
 | Eszközök az Azure Active Directory eszközregisztrációs szolgáltatás felderítéséhez a jól ismert DNS-rekordok megkeresésével. A vállalat DNS-ÉT, hogy az eszköz képes felderíteni az Azure Active Directory eszközregisztrációs szolgáltatás konfigurálása |[Az Active Directory támogatási eszközök előkészítése](#prepare-your-active-directory-to-support-devices) |
 
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>3. lépés: Engedélyezze az Azure AD eszközvisszaíró
-| Tevékenység | Referencia |
+| Feladat | Referencia |
 | --- | --- |
 | Fejezze be a második rész a "Eszközvisszaírás engedélyezése az Azure AD Connectben." Amikor végzett, térjen vissza az útmutató. |[Eszközvisszaírás engedélyezése az Azure AD Connectben](#upgrade-your-active-directory-domain-services-schema) |
 
@@ -93,7 +93,7 @@ Határozottan javasoljuk, hogy a multi-factor Authentication több lehetőség k
 ## <a name="part-5-verification"></a>5. rész: ellenőrzése
 A telepítés befejeződött, és bizonyos esetekben tekinthetők meg. Az alábbi hivatkozások segítségével a szolgáltatás kísérletezhet, és ismerkedjen meg a szolgáltatásai.
 
-| Tevékenység | Referencia |
+| Feladat | Referencia |
 | --- | --- |
 | Egyes eszközöket csatlakoztat a munkahelyhez Azure Active Directory eszközregisztrációs szolgáltatás használatával. IOS, Windows és Android-eszköz csatlakozhat. |[Eszközök regisztrálása a munkahelyi Azure Active Directory eszközregisztrációs szolgáltatással](#join-devices-to-your-workplace-using-azure-active-directory-device-registration) |
 | Megtekintheti és engedélyezése vagy letiltása a regisztrált eszközöket a felügyeleti portál használatával. Ebben a feladatban néhány regisztrált eszközöket a felügyeleti portál használatával megtekintése. |[Az Azure Active Directory eszközregisztrációs szolgáltatás áttekintése](active-directory-device-registration-get-started.md) |

@@ -4,7 +4,7 @@ description: "REST API jogcím cseréje a Azure AD B2C felhasználói használat
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/30/2017
 ms.author: yoelh
-ms.openlocfilehash: 0bc00dd14977e7cf24f5bff6928d09ca67761d3b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b7ce383b5297b0973f2999e7310fad94a0abe7dd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Az Azure AD B2C felhasználói út a REST API jogcímek cseréjét integrálása, felhasználói bevitel ellenőrzése
 A identitás élmény keretrendszerrel, amelynek alapjául szolgáló Azure Active Directory B2C (az Azure AD B2C), integrálható egy RESTful API-nak felhasználói út. Ez a forgatókönyv megtudhatja, hogyan kommunikál az Azure AD B2C .NET-keretrendszer RESTful szolgáltatás (webes API-k).

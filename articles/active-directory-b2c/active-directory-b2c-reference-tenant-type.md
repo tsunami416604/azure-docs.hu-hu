@@ -4,7 +4,7 @@ description: "Az Azure Active Directory B2C-bérlők típusú témakör:"
 services: active-directory-b2c
 documentationcenter: 
 author: gsacavdm
-manager: krassk
+manager: mtillman
 editor: bryanla
 ms.assetid: 8a0644da-b825-4edc-8ce9-541c3c976afb
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: gsacavdm
-ms.openlocfilehash: facd66f0324e382ea7609a035de8129ba433846f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 752a98ca7f3c77c434de296461790f2cf37e2d5c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Az Azure Active Directory B2C: Régió rendelkezésre állási & adatok rezidens
 Régiónkénti elérhetőség és adatok rezidens olyan Azure többi részétől eltérően az Azure AD B2C vonatkozó két nagyon különböző fogalom. Ez a cikk fog szemléltetik az eltéréseket, ezek két fogalom között, és hasonlítsa össze, ezek hogyan vonatkoznak az Azure és az Azure AD B2C.
@@ -30,7 +30,7 @@ Az Azure AD B2C jelenleg **általánosan elérhető világszerte** a beállítá
 * **Régiónkénti elérhetőség** hivatkozik, ahol a szolgáltatás nem használható.
 * **Adatok rezidens** hivatkozik a felhasználói adatok tárolására.
 
-## <a name="region-availability"></a>Régiónkénti elérhetőség
+## <a name="region-availability"></a>Regionális elérhetőség
 Az Azure AD B2C érhető világszerte az Azure nyilvános felhőjében keresztül. 
 
 Ez eltér a modell legtöbb más Azure-szolgáltatások hajtsa végre, amely az adatok rezidens gömbcsatlakozók a rendelkezésre állási. Erre példa látható, két Azure-ban [termékek elérhető területek szerint](https://azure.microsoft.com/regions/services/) oldal és a [Active Directory B2C díjszabási Számológép](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
@@ -54,7 +54,7 @@ A fennmaradó országokban és régiókban vannak hozzáadva a listához.  Most,
 
 > Afganisztáni, argentin, Ausztrália, Brazília, chilei, Kolumbia, Ecuadori, Hongkong KKT, India, indonéziai, Irak, japán, koreai, malajziai, Új-Zéland, paraguayi, Perui, Fülöp-szigeteki, szingapúri, Srí Lanka, Tajvan, Thaiföld, Uruguayi és Bolivári.
 
-## <a name="preview-tenant"></a>Előzetes bérlői
+## <a name="preview-tenant"></a>Bérlő előnézete
 A B2C-bérlő során az Azure AD B2C előzetes verzió idejének hozna létre, ha valószínű, amely a **típus bérlői** szerint **Preview bérlői**. Ha ez a helyzet, csak a fejlesztési és tesztelési célra, és nem éles alkalmazások esetén a bérlő kell használnia.
 
 > [!IMPORTANT]

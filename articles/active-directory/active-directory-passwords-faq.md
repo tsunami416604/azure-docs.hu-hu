@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Az Active directory-jelszókezelés, jelszókezelés, az Azure AD self service jelszó alaphelyzetbe állítása"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 6497421b1c51e361d6881332a19c19c7d47c8e29
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: c5c3129a50f456e484bf8af2a866059f494bed1d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>A jelszókezelés gyakran ismételt kérdések
 
@@ -79,7 +79,7 @@ Ez a GYIK a következő szakaszok oszlik:
   >
   >
 
-## <a name="password-reset"></a>Új jelszó létrehozása
+## <a name="password-reset"></a>Jelszó lecserélve
 
 * **K: el azt, hogy többszöri rövid időn belül a jelszó alaphelyzetbe állítása a felhasználók?**
 
@@ -240,7 +240,7 @@ Ez a GYIK a következő szakaszok oszlik:
   >
   >
 
-## <a name="password-writeback"></a>Jelszóvisszaíró
+## <a name="password-writeback"></a>Jelszóvisszaírás
 
 * **K: hogyan működik a jelszóvisszaírást a háttérben?**
 

@@ -4,7 +4,7 @@ description: "Tudnivalók az Azure AD által kiállított jogkivonatokat életta
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 8f1c601f5de440346d35e25299f6f800f3e3c10d
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 19cd4ae8dc0ca3efa4eca51e5a6ba102338b4ef9
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurálható jogkivonat élettartamát az Azure Active Directoryban (nyilvános előzetes verzió)
 Megadhat egy Azure Active Directory (Azure AD) által kiállított jogkivonat élettartamát. A szervezet jogkivonat élettartamát a szervezet összes alkalmazást, egy több-bérlős (több szervezet) alkalmazáshoz, vagy egy adott szolgáltatás egyszerű állíthatja be.
@@ -70,7 +70,7 @@ Egy házirend használatával adja meg, miután az első munkamenet-azonosító 
 A jogkivonatok élettartama házirend a csoportházirend-objektum, amely tartalmazza a jogkivonatok élettartama szabályok típusú. A házirend tulajdonságainak segítségével szabályozhatja a megadott jogkivonat élettartamát. Ha nincs házirend van beállítva, a rendszer az alapértelmezett élettartam érték érvénybe lépteti.
 
 ### <a name="configurable-token-lifetime-properties"></a>A jogkivonatok élettartama konfigurálható tulajdonságai
-| Tulajdonság | Házirend tulajdonság karakterlánc | Érint | Alapértelmezett | Minimális | Maximális |
+| Tulajdonság | Házirend tulajdonság karakterlánc | Érint | Alapértelmezett | Minimum | Maximum |
 | --- | --- | --- | --- | --- | --- |
 | Hozzáférés a jogkivonatok élettartama |AccessTokenLifetime |Hozzáférési jogkivonatok, azonosító-jogkivonatokat, egy SAML2 jogkivonatok |1 óra |10 perc |1 nap |
 | Frissítse a Token maximális tétlenség ideje |MaxInactiveTime |Frissítési jogkivonatok |14 napja |10 perc |90 nap |
@@ -474,7 +474,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 
 </br></br>
 
-### <a name="service-principal-policies"></a>Szolgáltatás egyszerű házirendjei
+### <a name="service-principal-policies"></a>Szolgáltatásnév-házirendek
 Szolgáltatás egyszerű házirendjei a következő parancsmag használható.
 
 #### <a name="add-azureadserviceprincipalpolicy"></a>Adja hozzá AzureADServicePrincipalPolicy
