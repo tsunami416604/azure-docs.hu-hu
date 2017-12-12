@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/27/2017
-ms.author: eslesar
-ms.openlocfilehash: 839689ab991fdc251608cf79d65a5810db5eeeb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/01/2017
+ms.author: magoedte;eslesar
+ms.openlocfilehash: 668065933745168c88a1f4bf755f1adc0cc31d7f
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="update-management-solution-in-oms"></a>Frissítéskezelési megoldás az OMS-ben
 
@@ -57,7 +57,7 @@ A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létreh
 A frissítéstelepítésben megadott helyen és időben a célszámítógépek egyszerre hajtják végre a telepítést.  A rendszer először egy vizsgálatot hajt végre, amelynek során ellenőrzi, mely frissítések szükségesek még, és telepíti őket.  Fontos megjegyezni, hogy WSUS-ügyfélszámítógépek esetében sikertelen lesz a frissítéstelepítés, ha a frissítéseket nem hagyja jóvá a WSUS-ben.  Az alkalmazott frissítések eredményeit a rendszer továbbítja az OMS-nek feldolgozásra és összesítésre az irányítópultokon vagy az események keresésével.     
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A megoldás a frissítések állapotának felmérését Windows Server 2008 vagy újabb, a frissítéstelepítéseket pedig csak Windows Server 2008 R2 SP1 vagy újabb rendszerek esetében támogatja.  A Server Core és a Nano Server telepítési lehetőségek nem támogatottak.
+* A megoldás a frissítések állapotának felmérését Windows Server 2008 vagy újabb, a frissítéstelepítéseket pedig csak Windows Server 2008 R2 SP1 vagy újabb rendszerek esetében támogatja.  A Nano Server nem támogatott.
 
     > [!NOTE]
     > Frissítések a Windows Server 2008 R2 SP1 rendszerre való telepítésének támogatásához .NET-keretrendszer 4.5 és WMF 5.0 vagy újabb verzió szükséges.

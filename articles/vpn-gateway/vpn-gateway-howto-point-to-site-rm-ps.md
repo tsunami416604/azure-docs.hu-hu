@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 12/04/2017
 ms.author: cherylmc
-ms.openlocfilehash: 8c4b2d578a8a586fc63c972ab5da694b2dd9d571
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 367288e313ae5517b126b17c905ae291b5b37975
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával: PowerShell
 
@@ -36,7 +36,7 @@ A pont–hely (P2S) VPN-átjáró lehetővé teszi biztonságos kapcsolat létes
 
 A kapcsolódó ügyfelek az alábbi hitelesítési módszereket használhatják:
 
-* RADIUS-kiszolgáló – jelenleg előzetes verzióban
+* RADIUS-kiszolgáló
 * VPN-átjáró – hitelesítés natív Azure-tanúsítvánnyal
 
 Ez a cikk bemutatja, hogyan állíthat be hitelesítést pont–hely konfigurációkhoz az Azure natív tanúsítványalapú hitelesítésével. Ha a RADIUS használatával szeretné hitelesíteni a csatlakozó ügyfeleket, tekintse meg a [Pont–hely kapcsolat RADIUS-hitelesítéssel](point-to-site-how-to-radius-ps.md) című részt.
@@ -47,11 +47,7 @@ A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet
 
 * Az SSTP egy SSL-alapú VPN-alagút, amely kizárólag Windows-ügyfélplatformokon támogatott. Képes áthatolni a tűzfalakon, ezért ideális megoldás az Azure-hoz való csatlakozáshoz bármilyen tetszőleges. A kiszolgálói oldalon az SSTP 1.0, 1.1 és 1.2 verziója támogatott. Az ügyfél dönti el, hogy melyik verziót használja. Windows 8.1 és újabb kiadások esetén az SSTP alapértelmezés szerint az 1.2 verziót használja.
 
-* IKEv2 VPN, egy szabványalapú IPsec VPN-megoldás. Az IKEv2 VPN segítségével Macről is lehetségessé válik a csatlakozás (OSX 10.11-es vagy újabb verziók használata esetén). Az IKEv2 jelenleg előzetes verzióban érhető el.
-
->[!NOTE]
->Az IKEv2 for P2S jelenleg előzetes verzióban érhető el.
->
+* IKEv2 VPN, egy szabványalapú IPsec VPN-megoldás. Az IKEv2 VPN segítségével Macről is lehetségessé válik a csatlakozás (OSX 10.11-es vagy újabb verziók használata esetén).
 
 A natív Azure-tanúsítvánnyal hitelesített pont–hely kapcsolatokhoz a következőkre van szükség:
 
@@ -72,7 +68,7 @@ További információk a pont–hely kapcsolatokról: [Információk a pont–he
 A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat. A változókat a cikk [1](#declare). szakaszában állítjuk be. Megteheti, hogy lépésről lépésre végighalad az eljáráson, és módosítás nélkül ezeket az értékeket használja, de módosíthatja is őket, hogy megfeleljenek a saját környezetének.
 
 * **Név: VNet1**
-* **Címtartomány: 192.168.0.0/16** és **10.254.0.0/16**<br>Ez a példa egynél több címtartományt használ annak szemléltetésére, hogy ez a konfiguráció több címtartománnyal is működik. Azonban nem kötelező több címtartományt megadni ehhez a konfigurációhoz.
+* **Címtartomány: 192.168.0.0/16** és **10.254.0.0/16**<br>Ez a példa egynél több címteret használ annak szemléltetésére, hogy ez a konfiguráció több címtérrel is működik. Azonban nem kötelező több címtartományt megadni ehhez a konfigurációhoz.
 * **Alhálózat neve: FrontEnd**
   * **Alhálózati címtartomány: 192.168.1.0/24**
 * **Alhálózat neve: BackEnd**
@@ -143,7 +139,7 @@ Ez a szakasz a bejelentkezést és a konfigurációban használt értékek dekla
   ```
 3. Hozza létre a virtuális hálózatot.
 
-  Ebben a példában a -DnsServer paramétert nem kötelező megadni. Az érték megadásával nem jön létre új DNS-kiszolgáló. A megadott DNS-kiszolgáló IP-címének olyan DNS-kiszolgálónak kell lennie, amely fel tudja oldani azoknak az erőforrásoknak a nevét, amelyekkel Ön kapcsolatot fog létesíteni a virtuális hálózatról. Ebben a példában egy magánhálózati IP-címet használtunk, de ez valószínűleg nem az Ön DNS-kiszolgálójának IP-címe. Ügyeljen arra, hogy a saját értékeit használja. A megadott értéket a virtuális hálózaton üzembe helyezett erőforrások használják, nem a pont–hely kapcsolat vagy a VPN-ügyfél.
+  Ebben a példában a -DnsServer paramétert nem kötelező megadni. Az érték megadásával nem jön létre új DNS-kiszolgáló. A megadott DNS-kiszolgáló IP-címének olyan DNS-kiszolgálónak kell lennie, amely fel tudja oldani azoknak az erőforrásoknak a nevét, amelyekkel Ön kapcsolatot fog létesíteni a virtuális hálózatról. Ez a példa egy magánhálózati IP-címet használ, de ez valószínűleg nem az Ön DNS-kiszolgálójának IP-címe. Ügyeljen arra, hogy a saját értékeit használja. A megadott értéket a virtuális hálózaton üzembe helyezett erőforrások használják, nem a pont–hely kapcsolat vagy a VPN-ügyfél.
 
   ```powershell
   New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG -Location $Location -AddressPrefix $VNetPrefix1,$VNetPrefix2 -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
@@ -167,14 +163,14 @@ Ez a szakasz a bejelentkezést és a konfigurációban használt értékek dekla
 
 Konfigurálja és hozza létre a virtuális hálózati átjárót a virtuális hálózat számára.
 
-* A *-GatewayType* csak **Vpn** lehet, a *-VpnType* pedig csak **RouteBased** lehet.
-* A -VpnClientProtocols paraméterrel adhatja meg az engedélyezni kívánt alagutak típusát. Alagutak esetén **SSTP** és **IKEv2** közül választhat. Engedélyezheti csak az egyiket, vagy egyszerre mindkettőt. Ha mindkettőt engedélyezni szeretné, akkor adja meg mindkét nevet, vesszővel elválasztva. Az Android- és Linux-alapú Strongswan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re.
-* Egy VPN-átjáró létrehozása akár 45 percet is igénybe vehet a kiválasztott [átjáró termékváltozatától](vpn-gateway-about-vpn-gateway-settings.md) függően. Ebben a példában az IKEv2-t használjuk, amely jelenleg előzetes verzióban érhető el.
+* A -GatewayType csak **Vpn** lehet, a -VpnType pedig csak **RouteBased** lehet.
+* A -VpnClientProtocol paraméterrel adhatja meg az engedélyezni kívánt alagutak típusát. Alagutak esetén **SSTP** és **IKEv2** közül választhat. Engedélyezheti csak az egyiket, vagy egyszerre mindkettőt. Ha mindkettőt engedélyezni szeretné, akkor adja meg mindkét nevet, vesszővel elválasztva. Az Android- és Linux-alapú Strongswan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re.
+* Egy VPN-átjáró létrehozása akár 45 percet is igénybe vehet a kiválasztott [átjáró termékváltozatától](vpn-gateway-about-vpn-gateway-settings.md) függően. Ez a példa az IKEv2-t használja, amely jelenleg előzetes verzióban érhető el.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
--VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocols "IKEv2"
+-VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol "IKEv2"
 ```
 
 ## <a name="addresspool"></a>4. A VPN-ügyfélcímkészlet hozzáadása

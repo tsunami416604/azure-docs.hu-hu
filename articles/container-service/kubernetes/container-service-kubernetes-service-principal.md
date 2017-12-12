@@ -1,26 +1,19 @@
 ---
-title: "Az Azure Kubernetes-fürthöz tartozó egyszerű szolgáltatás | Microsoft Docs"
+title: "Az Azure Kubernetes-fürthöz tartozó egyszerű szolgáltatás"
 description: "Kubernetes-fürthöz tartozó Azure Active Directory egyszerű szolgáltatás létrehozása és felügyelete az Azure Container Service-ben"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: acs, azure-container-service, kubernetes
-keywords: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/26/2017
+ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2c07bebb98345981d36eb928bea14a09df9bc741
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 0c7e05525f1c6d11c17b4b36946dd797a7a95d08
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Kubernetes-fürthöz tartozó Azure AD egyszerű szolgáltatás beállítása a Container Service-ben
 
@@ -36,11 +29,11 @@ Ebben a cikkben különböző lehetőségeket talál arra, hogyan állíthat be 
 
 Meglévő Azure AD egyszerű szolgáltatást is használhat, amely megfelel az alábbi feltételeknek, vagy újat is létrehozhat.
 
-* **Hatókör**: a fürt üzembe helyezéséhez használt erőforráscsoport.
+* **Hatókör**: Erőforráscsoport
 
-* **Szerepkör**: **Közreműködő**
+* **Szerepkör**: Közreműködő
 
-* **Titkos ügyfélkulcs**: egy jelszónak kell lennie. Jelenleg nem használhat egyszerű szolgáltatás beállítást tanúsítvány hitelesítéshez.
+* **Titkos ügyfélkulcs**: Egy jelszónak kell lennie. Jelenleg nem használhat egyszerű szolgáltatás beállítást tanúsítvány hitelesítéshez.
 
 > [!IMPORTANT]
 > Egyszerű szolgáltatás létrehozásához rendelkeznie kell engedélyekkel alkalmazások regisztrációjához az Azure AD bérlőben és alkalmazások szerepkörhöz rendeléséhez az előfizetésben. [Ellenőrizze a portálon](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions), hogy rendelkezik-e a szükséges engedélyekkel.
@@ -59,7 +52,7 @@ az account set --subscription "mySubscriptionID"
 
 az group create --name "myResourceGroup" --location "westus"
 
-az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/mySubscriptionID"
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>"
 ```
 
 A kimenet a következőkhöz hasonló (itt kivonatosan látható):
@@ -126,11 +119,50 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 * Amikor megadja az egyszerű szolgáltatás **ügyfél-azonosítóját**, használhatja az `appId` értékét (ahogyan az a cikkben látható) vagy a megfelelő egyszerű szolgáltatást `name` (például: `https://www.contoso.org/example`).
 
-* A Kubernetes-fürt fő és ügynök virtuális gépein az egyszerű szolgáltatás hitelesítő adatai az /etc/kubernetes/azure.json fájlban vannak tárolva.
+* A Kubernetes-fürt fő és ügynök virtuális gépein az egyszerű szolgáltatás hitelesítő adatai az `/etc/kubernetes/azure.json` fájlban találhatók.
 
-* Ha az `az acs create` parancsot használja az egyszerű szolgáltatás automatikus létrehozásához, az egyszerű szolgáltatás hitelesítő adatai a ~/.azure/acsServicePrincipal.json fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
+* Ha az `az acs create` parancsot használja az egyszerű szolgáltatás automatikus létrehozásához, az egyszerű szolgáltatás hitelesítő adatai a `~/.azure/acsServicePrincipal.json` fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
 
 * Ha az `az acs create` parancsot használja az egyszerű szolgáltatás automatikus létrehozásához, az egyszerű szolgáltatás hitelesíthető egy, ugyanabban az előfizetésben létrehozott [Azure Container Registryvel](../../container-registry/container-registry-intro.md).
+
+* Az egyszerű szolgáltatásban használt hitelesítő adatok érvényessége lejárhat. Ebben az esetben a fürtcsomópontok **NotReady** állapotba kerülhetnek. A kezelési információkat a [Hitelesítő adatok lejárata](#credential-expiration) szakaszban találja.
+
+## <a name="credential-expiration"></a>Hitelesítő adatok lejárata
+
+Az egyszerű szolgáltatásokban használt hitelesítő adatok a létrehozásuktól számítva 1 évig érvényesek, kivéve, ha megad egy egyéni érvényességi időkeretet a `--years` paraméter segítségével. Ha a hitelesítő adatok érvényessége lejár, előfordulhat hogy a fürtcsomópontok **NotReady** állapotba lépnek.
+
+Az egyszerű szolgáltatás lejárati idejének ellenőrzéséhez hajtsa végre az [az ad app show](/cli/azure/ad/app#az_ad_app_show) parancsot a `--debug` paraméterrel, és keresse a `passwordCredentials` `endDate` értékét a kimenet aljához közel:
+
+```azurecli
+az ad app show --id <appId> --debug
+```
+
+Kimenet (itt csonkolva látható):
+
+```json
+...
+"passwordCredentials":[{"customKeyIdentifier":null,"endDate":"2018-11-20T23:29:49.316176Z"
+...
+```
+
+Ha az egyszerű szolgáltatásban használt hitelesítő adatok érvényessége lejárt, az [az ad sp reset-credentials](/cli/azure/ad/sp#az_ad_sp_reset_credentials) parancs segítségével frissítse a hitelesítő adatokat:
+
+```azurecli
+az ad sp reset-credentials --name <appId>
+```
+
+Kimenet:
+
+```json
+{
+  "appId": "4fd193b0-e6c6-408c-a21a-803441ad2851",
+  "name": "4fd193b0-e6c6-408c-a21a-803441ad2851",
+  "password": "404203c3-0000-0000-0000-d1d2956f3606",
+  "tenant": "72f988bf-0000-0000-0000b-2d7cd011db47"
+}
+```
+
+Ezután frissítse az `/etc/kubernetes/azure.json` fájlt az új hitelesítő adatokkal minden fürtcsomóponton, és indítsa újra a csomópontokat.
 
 ## <a name="next-steps"></a>Következő lépések
 

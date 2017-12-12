@@ -1,13 +1,13 @@
-### <a name="windows-powershell"></a>Windows PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 #### <a name="install-powershell"></a>A PowerShell telepítése
 Ha még nincs a gépén, telepítse a PowerShell legújabb verzióját. 
 
-1. A webböngészőben lépjen az [Azure SDK letöltések és SDK-k](https://azure.microsoft.com/downloads/) lapra. 
+1. A webböngészőben lépjen az [Azure letöltések](https://azure.microsoft.com/downloads/) lapra. 
 2. A **Parancssori eszközök** -> **PowerShell** szakaszban kattintson a **Windows-telepítés** elemre. 
 3. Futtassa az **MSI**-fájlt a PowerShell telepítéséhez. 
 
-Részletes információk: [A PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps). 
+Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps). 
 
 #### <a name="log-in-to-powershell"></a>Bejelentkezés a PowerShellbe
 
@@ -19,12 +19,12 @@ Részletes információk: [A PowerShell telepítése és konfigurálása](/power
     ```powershell
     Login-AzureRmAccount
     ```        
-2. Ha több Azure-előfizetéssel is rendelkezik, futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez:
+2. Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
 
     ```powershell
     Get-AzureRmSubscription
     ```
-3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
+3. Ha több előfizetés is tartozik a fiókjához, futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
 
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: 72b724d5cf6787f8d6afc73fb37f4944cbae78a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfae23638e31242dc795922fd62d1abb02579480
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute felhőszolgáltatók (CSP) számára
 A Microsoft hatalmas léptékű szolgáltatásokat kínál a hagyományos viszonteladók és forgalmazók (CSP) számára, hogy gyorsan láthassák el ügyfeleiket új szolgáltatásokat és megoldásokat anélkül, hogy be kellene fektetniük az új szolgáltatások fejlesztésébe. Ahhoz, hogy lehetővé tegye a felhőszolgáltatók (CSP) számára az új szolgáltatások közvetlen felügyeletét, a Microsoft olyan programokat és API-kat biztosít, amelyek segítségével a CSP-k ügyfeleik nevében felügyelhetik a Microsoft Azure-erőforrásokat. Ezeknek az erőforrásoknak az egyike az ExpressRoute. Az ExpressRoute lehetővé teszi, hogy a CSP meglévő ügyfélerőforrásait csatlakoztassa az Azure-szolgáltatásokhoz. Az ExpressRoute egy nagy sebességű privát kommunikációs kapcsolat az Azure-ban lévő szolgáltatásokhoz. 
@@ -30,13 +30,13 @@ Az ExpressRoute két magas rendelkezésre állású kapcsolatcsoportból áll, a
 > 
 > 
 
-A Microsoft Azure egyre nagyobb számban kínál szolgáltatásokat, amelyeket Ön biztosíthat az ügyfeleinek.  A szolgáltatások előnyeinek optimális kiaknázásához ExpressRoute-kapcsolatok használata szükséges a Microsoft Azure környezet nagy sebességű, alacsony késésű elérésének biztosításához.
+A Microsoft Azure egyre nagyobb számban kínál szolgáltatásokat, amelyeket Ön biztosíthat az ügyfeleinek. Az ExpressRoute segít Önnek és az ügyfeleinek kiaknázni ezen szolgáltatások előnyeit azáltal, hogy nagy sebességű, alacsony késleltetésű elérést biztosít a Microsoft Azure környezethez.
 
 ## <a name="microsoft-azure-management"></a>Microsoft Azure-kezelés
 A Microsoft a CSP-k számára API-kat biztosít az Azure-ügyfelek előfizetéseinek kezeléséhez a saját szolgáltatáskezelési rendszereivel való programozott integráció révén. A támogatott kezelési képességek [itt](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx) találhatók.
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure erőforrás-kezelés
-Az ügyfelével kötött szerződése határozza meg az előfizetés kezelésének módját. A CSP közvetlenül kezelheti az erőforrások létrehozását és karbantartását, vagy az ügyfél megtarthatja a Microsoft Azure-előfizetés feletti felügyeletet, és maga hozhat létre igény szerinti Azure-erőforrásokat. Ha Microsoft Azure-előfizetése keretein belül az ügyfél maga kezeli az erőforrások létrehozását, ehhez a két következő modell valamelyikét használja majd: a „Szolgáltatón keresztüli csatlakozás” vagy a „Szolgáltatóhoz való csatlakozás” modellt. A modellek leírását a következő szakaszok tartalmazzák.  
+Az ügyfelével kötött szerződése határozza meg az előfizetés kezelésének módját. A CSP közvetlenül kezelheti az erőforrások létrehozását és karbantartását, vagy az ügyfél megtarthatja a Microsoft Azure-előfizetés feletti felügyeletet, és maga hozhat létre igény szerinti Azure-erőforrásokat. Ha Microsoft Azure-előfizetése keretein belül az ügyfél maga kezeli az erőforrások létrehozását, ehhez a két következő modell valamelyikét használja majd: a „*Szolgáltatón keresztüli csatlakozás*” vagy a „*Szolgáltatóhoz való csatlakozás*” modellt. A modellek leírását a következő szakaszok tartalmazzák.  
 
 ### <a name="connect-through-model"></a>Szolgáltatón keresztüli csatlakozás modell
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -67,7 +67,7 @@ Hogy a két lehetőség közül melyiket érdemes választani, azt az ügyfél i
 
 * **Szerepköralapú hozzáférés-vezérlés (RBAC)** – Az RBAC az Azure Active Directoryn alapul.  Az Azure RBAC-ról [itt](../active-directory/role-based-access-control-configure.md) talál további információt.
 * **Hálózat** – A különféle hálózati témaköröket fedi le a Microsoft Azure-ban.
-* **Azure Active Directory (AAD)** – Az AAD biztosítja az identitáskezelést a Microsoft Azure és a külső szolgáltatók által biztosított SaaS-alkalmazások számára. Az Azure AD-vel kapcsolatos további információkat lásd [itt](https://azure.microsoft.com/documentation/services/active-directory/).  
+* **Azure Active Directory (Azure AD)** – Az Azure AD biztosítja az identitáskezelést a Microsoft Azure és a külső szolgáltatók által biztosított SaaS-alkalmazások számára. Az Azure AD-vel kapcsolatos további információkat lásd [itt](https://azure.microsoft.com/documentation/services/active-directory/).  
 
 ## <a name="network-speeds"></a>Hálózati sebességek
 Az ExpressRoute az 50 Mb/s és 10 Gb/s közti hálózati sebességeket támogatja. Az ügyfelek így az egyedi környezetük által igényelt hálózati sávszélességet vásárolhatják meg.

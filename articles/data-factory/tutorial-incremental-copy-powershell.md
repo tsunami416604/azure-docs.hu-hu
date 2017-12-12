@@ -1,5 +1,5 @@
 ---
-title: "Adatok növekményes másolása az Azure Data Factory használatával | Microsoft Docs"
+title: "Tábla növekményes másolása az Azure Data Factory használatával | Microsoft Docs"
 description: "Az oktatóanyag során egy Azure Data Factory-folyamatot hoz majd létre, amely adatok növekményes másolását végzi majd egy Azure SQL Database-adatbázisból egy Azure Blob Storage-tárolóba."
 services: data-factory
 documentationcenter: 
@@ -13,24 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: shlo
-ms.openlocfilehash: f352f46f2d4c23124f4ee7e886cae9bdd8d5d2c9
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 0b05971b5ab8ec3fd14dd4ce14d07df478e1dcc9
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba
+Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure blobtárolóba. 
 
-[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
-
-#### <a name="this-tutorial"></a>Ez az oktatóanyag
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd [a Data Factory 1. verziójának dokumentációját](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-Az adatintegrációs folyamatok során az egyik széles körben alkalmazott módszer az adatok növekményes betöltése, amelynek keretében a kezdeti adatbetöltést és -elemzéseket követően az elemzési eredmények rendszeresen frissítve lesznek. Ebben az oktatóanyagban arra összpontosítunk, hogyan tölthetők be csak az új és a frissített rekordok az adatforrásokból az adatfogadókba. Ez a folyamat a teljes betöltéseknél sokkal hatékonyabban üzemel – különösen a nagyobb adatkészletek esetében.    
-
-A Data Factory használatával kialakíthat felső küszöbbel rendelkező megoldásokat a növekményes adatbetöltés megvalósítása érdekében a Keresés, a Másolás és a Tárolt eljárás tevékenység a folyamat során történő használatával.  
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -46,7 +41,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 ## <a name="overview"></a>Áttekintés
 A megoldás felsőszintű áttekintő ábrája: 
 
-![Adatok növekményes betöltése](media\tutorial-Incrementally-load-data-from-azure-sql-to-blob\incrementally-load.png)
+![Adatok növekményes betöltése](media\tutorial-Incrementally-copy-powershell\incrementally-load.png)
 
 Az alábbiak a megoldás kialakításának leglényegesebb lépései: 
 
@@ -71,7 +66,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 * **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat.
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Adatforrástábla létrehozása az Azure SQL-adatbázisban
-1. Nyissa meg az **SQL Server Management Studiót**, majd a **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
+1. Nyissa meg az **SQL Server Management Studiót**. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 2. Futtassa a következő SQL-parancsot az Azure SQL-adatbázison egy tábla `data_source_table` néven, adatforrástárként történő létrehozásához.  
     
     ```sql
@@ -151,40 +146,47 @@ END
 ```
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
-
-1. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell a parancsokat.
-
-    Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
-        
-    ```powershell
-    Login-AzureRmAccount
-    ```        
-    Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
-
-    ```powershell
-    Get-AzureRmSubscription
-    ```
-    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
-
-    ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
-    ```
-2. Futtassa a **Set-AzureRmDataFactoryV2** parancsmagot egy adat-előállító létrehozásához. A parancs végrehajtása előtt cserélje le a helyőrzőket a saját értékeire.
-
-    ```powershell
-    Set-AzureRmDataFactoryV2 -ResourceGroupName "<your resource group to create the factory>" -Location "East US" -Name "<specify the name of data factory to create. It must be globally unique.>" 
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
+   
+     ```powershell
+    $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
-    Vegye figyelembe a következő szempontokat:
+    Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd futtassa újra a parancsot
+2. Adjon meg egy változót az adat-előállító helyéhez: 
 
-    * Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra.
+    ```powershell
+    $location = "East US"
+    ```
+3. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához: 
 
-        ```
-        The specified Data Factory name '<data factory name>' is already in use. Data Factory names must be globally unique.
-        ```
+    ```powershell
+    New-AzureRmResourceGroup $resourceGroupName $location
+    ``` 
+    Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd futtassa újra a parancsot. 
+3. Adjon meg egy változót az adat-előállító nevéhez. 
 
-    * Data Factory-példányok létrehozásához az Azure-előfizetés közreműködőjének vagy rendszergazdájának kell lennie.
-    * A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+    > [!IMPORTANT]
+    >  Frissítse az adat-előállító nevét, hogy globálisan egyedi legyen. Például: ADFTutorialFactorySP1127. 
+
+    ```powershell
+    $dataFactoryName = "ADFIncCopyTutorialFactory";
+    ```
+5. Az adat-előállító létrehozásához futtassa az alábbi **Set-AzureRmDataFactoryV2** parancsmagot: 
+    
+    ```powershell       
+    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
+    ```
+
+Vegye figyelembe a következő szempontokat:
+
+* Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra.
+
+    ```
+    The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
+    ```
+* Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie.
+* A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
@@ -224,7 +226,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
     ```
 
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása.
-1. Hozzon létre egy **AzureSQLDatabaseLinkedService.json** nevű JSON-fájlt a **C:\ADF** mappában az alábbi tartalommal (ha még nem létezne, hozza létre az ADF nevű mappát). Mielőtt mentené a fájlt, a **&lt;server&gt;, a &lt;user id&gt; és a &lt;password&gt;** helyőrzőt cserélje az Azure SQL-kiszolgáló nevére, a felhasználói azonosítóra és a jelszóra. 
+1. Hozzon létre egy **AzureSQLDatabaseLinkedService.json** nevű JSON-fájlt a **C:\ADF** mappában az alábbi tartalommal (ha még nem létezne, hozza létre az ADF nevű mappát). Mielőtt mentené a fájlt, a **&lt;server&gt;, a &lt;database&gt; a &lt;user id&gt; és a &lt;password&gt;** helyőrzőt cserélje az Azure SQL Server nevére, az adatbázisra, a felhasználói azonosítóra és a jelszóra. 
 
     ```json
     {
@@ -233,15 +235,15 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
             "type": "AzureSqlDatabase",
             "typeProperties": {
                 "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
+                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database>; Persist Security Info=False; User ID=<user> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
                     "type": "SecureString"
                 }
             }
         }
     }
     ```
-2. Az **Azure PowerShellben** váltson az **ADF** mappára.
-3. Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot az **AzureSqlDatabaseLinkedService** társított szolgáltatás létrehozásához. 
+1. Az **Azure PowerShellben** váltson az **ADF** mappára.
+2. Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot az **AzureSqlDatabaseLinkedService** társított szolgáltatás létrehozásához. 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -512,9 +514,9 @@ Az oktatóanyag során létrehoz egy folyamatot két keresési, egy másolási �
 1. Futtassa az **IncrementalCopyPipeline** folyamatot az **Invoke-AzureRmDataFactoryV2Pipeline** parancsmag használatával. Cserélje le a helyőrzőket a saját erőforráscsoportja és adat-előállítója nevére.
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup "<your resource group>" -dataFactoryName "<your data factory name>"
+    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ``` 
-2. A Get-AzureRmDataFactoryV2ActivityRun parancsmag futtatásával ellenőrizze a folyamat állapotát, amíg azt nem látja, hogy minden tevékenység sikeresen fut. Cserélje le a helyőrzőket a saját megfelelő időértékeire a RunStartedAfter és a RunStartedBefore paraméter esetében.  Ebben az oktatóanyagban a -RunStartedAfter "2017/09/14" és -RunStartedBefore "2017/09/15" paramétert használjuk.
+2. A Get-AzureRmDataFactoryV2ActivityRun parancsmag futtatásával ellenőrizze a folyamat állapotát, amíg azt nem látja, hogy minden tevékenység sikeresen fut. Cserélje le a helyőrzőket a saját megfelelő időértékeire a RunStartedAfter és a RunStartedBefore paraméter esetében.  Ebben az oktatóanyagban a -RunStartedAfter "2017/09/14" és -RunStartedBefore "2017/09/15" paramétert használja
 
     ```powershell
     Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
@@ -632,9 +634,9 @@ Az oktatóanyag során létrehoz egy folyamatot két keresési, egy másolási �
 2. Futtassa ismét az **IncrementalCopyPipeline** folyamatot az **Invoke-AzureRmDataFactoryV2Pipeline** parancsmag használatával. Cserélje le a helyőrzőket a saját erőforráscsoportja és adat-előállítója nevére.
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup "<your resource group>" -dataFactoryName "<your data factory name>"
+    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-3. A **Get-AzureRmDataFactoryV2ActivityRun** parancsmag futtatásával ellenőrizze a folyamat állapotát, amíg azt nem látja, hogy minden tevékenység sikeresen fut. Cserélje le a helyőrzőket a saját megfelelő időértékeire a RunStartedAfter és a RunStartedBefore paraméter esetében.  Ebben az oktatóanyagban a -RunStartedAfter "2017/09/14" és -RunStartedBefore "2017/09/15" paramétert használjuk.
+3. A **Get-AzureRmDataFactoryV2ActivityRun** parancsmag futtatásával ellenőrizze a folyamat állapotát, amíg azt nem látja, hogy minden tevékenység sikeresen fut. Cserélje le a helyőrzőket a saját megfelelő időértékeire a RunStartedAfter és a RunStartedBefore paraméter esetében.  Ebben az oktatóanyagban a -RunStartedAfter "2017/09/14" és -RunStartedBefore "2017/09/15" paramétert használja
 
     ```powershell
     Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
@@ -700,7 +702,7 @@ Az oktatóanyag során létrehoz egy folyamatot két keresési, egy másolási �
     Error             : {errorCode, message, failureType, target}
 
     ```
-4.  Az Azure-blobtárolóban láthatja, hogy egy új fájl lett létrehozva. Ebben az oktatóanyagban az új fájl neve a következő: `Incremental-2fc90ab8-d42c-4583-aa64-755dba9925d7.txt`.  Nyissa meg ezt a fájlt, és láthatja, hogy 2 sornyi rekordot tartalmaz.
+4.  Az Azure-blobtárolóban láthatja, hogy egy új fájl lett létrehozva. Ebben az oktatóanyagban az új fájl neve a következő: `Incremental-2fc90ab8-d42c-4583-aa64-755dba9925d7.txt`.  Nyissa meg ezt a fájlt, és láthatja, hogy két sornyi rekordot tartalmaz:
 5.  Ellenőrizze a `watermarktable` legutolsó értékét, és láthatja, hogy a küszöbérték ismét módosult.
 
     ```sql
@@ -725,10 +727,10 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 > * A folyamat futtatása.
 > * A folyamat futásának monitorozása. 
 
-Folytassa a következő oktatóanyaggal, amelyben az adatok Azure Spark-fürtök használatával való átalakítását ismerheti meg:
+Ebben az oktatóanyagban a folyamat egy Azure SQL adatbázisban lévő **egyetlen táblából** másolt adatokat egy Azure blobtárolóba. Folytassa a következő oktatóanyaggal, amelyben azzal ismerkedhet meg, hogyan másolhat adatokat a helyszíni SQL Server adatbázis **több táblájából** egy Azure SQL-adatbázisba. 
 
 > [!div class="nextstepaction"]
->[Adatok átalakítása a felhőben a Spark használatával](tutorial-transform-data-spark-powershell.md)
+>[Adatok növekményes betöltése az SQL Server több táblájából az Azure SQL Database adatbázisba](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 
 

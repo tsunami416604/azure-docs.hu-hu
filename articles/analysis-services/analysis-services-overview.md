@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 12/04/2017
 ms.author: owend
-ms.openlocfilehash: 350f95b2f9ec8dc4a3e2dc8f7d390f841b248fa1
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 224ecbb80e8fc5b3f1a32e42eda7ec5452e9e553
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -124,7 +124,7 @@ Az ügyfelek MSOLAP-, AMO- vagy ADOMD- [ügyfélkódtárakkal](analysis-services
 ## <a name="get-help"></a>Segítségkérés
 
 #### <a name="documentation"></a>Dokumentáció
-Az Azure Analysis Services könnyen beállítható és kezelhető. Itt minden információt megtalálhat, amely a kiszolgálói szolgáltatások létrehozásához és kezeléséhez szükséges. A kiszolgálóján üzembe helyezendő adatmodell létrehozása nagy mértékben hasonlít a helyszíni kiszolgálón üzembe helyezett adatmodell létrehozásához. Az [Analysis Services](https://docs.microsoft.com/sql/analysis-services/analysis-services) oldalán egy fogalmakat, eljárásokat, oktatóanyagokat és referenciaanyagokat tartalmazó tár található.
+Az Azure Analysis Services könnyen beállítható és kezelhető. Itt minden információt megtalálhat, amely a kiszolgálói szolgáltatások létrehozásához és kezeléséhez szükséges. A kiszolgálóján üzembe helyezendő adatmodell létrehozása nagy mértékben hasonlít a helyszíni kiszolgálón üzembe helyezett adatmodell létrehozásához. Az [SQL Server Analysis Services súgóoldalán](https://docs.microsoft.com/sql/analysis-services/analysis-services) egy fogalmakat, eljárásokat, oktatóanyagokat és referenciaanyagokat tartalmazó könyvtár található.
 
 #### <a name="videos"></a>Videók
 Itt találhat útmutató videókat: [Azure Analysis Services – Channel 9](https://channel9.msdn.com/series/Azure-Analysis-Services).

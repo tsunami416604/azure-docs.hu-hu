@@ -1,0 +1,111 @@
+## <a name="create-a-self-hosted-ir"></a>Saját üzemeltetésű integrációs modul létrehozása
+
+Ebben a szakaszban egy saját üzemeltetésű integrációs modult hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely adatokat másol a gépen futó SQL Serverről az Azure Blob Storage-ba. 
+
+1. Hozzon létre egy változót az integrációs modul nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyagban későbbi részében használni fogja. 
+
+    ```powershell
+   $integrationRuntimeName = "ADFTutorialIR"
+    ```
+1. Hozzon létre egy saját üzemeltetésű integrációs modult. 
+
+   ```powershell
+   Set-AzureRmDataFactoryV2IntegrationRuntime -Name $integrationRuntimeName -Type SelfHosted -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName
+   ```
+
+   Itt látható a minta kimenete:
+
+   ```json
+    Id                : /subscriptions/<subscription ID>/resourceGroups/ADFTutorialResourceGroup/providers/Microsoft.DataFactory/factories/onpremdf0914/integrationruntimes/myonpremirsp0914
+    Type              : SelfHosted
+    ResourceGroupName : ADFTutorialResourceGroup
+    DataFactoryName   : onpremdf0914
+    Name              : myonpremirsp0914
+    Description       :
+    ```
+ 
+
+2. Futtassa az alábbi parancsot a létrehozott integrációs modul állapotának lekéréséhez. Ellenőrizze, hogy a **State** tulajdonság **NeedRegistration** értékű-e. 
+
+   ```powershell
+   Get-AzureRmDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
+   ```
+
+   Itt látható a minta kimenete:
+
+   ```json
+   Nodes                     : {}
+   CreateTime                : 9/14/2017 10:01:21 AM
+   InternalChannelEncryption :
+   Version                   :
+   Capabilities              : {}
+   ScheduledUpdateDate       :
+   UpdateDelayOffset         :
+   LocalTimeZoneOffset       :
+   AutoUpdate                :
+   ServiceUrls               : {eu.frontend.clouddatahub.net, *.servicebus.windows.net}
+   ResourceGroupName         : <ResourceGroup name>
+   DataFactoryName           : <DataFactory name>
+   Name                      : <Integration Runtime name>
+   State                     : NeedRegistration
+   ```
+
+3. Futtassa az alábbi parancsot a **hitelesítési kulcsok** lekéréséhez, hogy a saját üzemeltetésű integrációs modult regisztrálhassa a Data Factory-szolgáltatásban a felhőben. 
+
+   ```powershell
+   Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
+   ```
+
+   Itt látható a minta kimenete:
+
+   ```json
+   {
+       "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
+       "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
+   }
+   ```    
+4. Másolja be az egyik kulcsot (idézőjelek nélkül) a saját üzemeltetésű integrációs modul regisztrálásához, amelyet a következő lépésben telepíteni fog a gépére.  
+
+## <a name="install-integration-runtime"></a>Integrációs modul telepítése
+1. Ha a **Microsoft Integration Runtime** már telepítve van a számítógépen, akkor a **Programok hozzáadása vagy eltávolítása** lehetőséggel távolítsa el azt. 
+2. [Töltse le](https://www.microsoft.com/download/details.aspx?id=39717) a saját üzemeltetésű integrációs modult egy helyi windowsos gépre, és futtassa a telepítést. 
+3. Az **Üdvözli a Microsoft Integrációs modul telepítővarázsló** oldalon kattintson a **Tovább** gombra.  
+4. A **Végfelhasználói licencszerződés** oldalon fogadja el a felhasználási feltételeket és a licencszerződést, majd kattintson a **Tovább** gombra. 
+5. A **Célmappa** lapon kattintson a **Tovább** gombra. 
+6. **A Microsoft Integrációs modul telepítésre kész** oldalon kattintson a **Telepítés** elemre. 
+7. Ha figyelmeztető üzenet jelenik meg azzal kapcsolatban, hogy a számítógép használaton kívül automatikus alvó módba lépésre vagy hibernálásra lesz konfigurálva, kattintson az **OK** gombra. 
+8. Ha megjelenik az **Energiagazdálkodási lehetőségek** ablak, zárja be, és váltson a telepítési ablakra. 
+9. **A Microsoft Integrációs modul telepítővarázslójának befejezése** lapon kattintson a **Befejezés** gombra.
+10. Az **Integrációs modul regisztrálása (Saját üzemeltetésű)** lapon illessze be az előző szakaszban mentett kulcsot, és kattintson a **Regisztráció** gombra. 
+
+   ![Integrációs modul regisztrálása](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
+2. Az integrációs modul sikeres regisztrációja esetén a következő üzenet jelenik meg:
+
+   ![Sikeres regisztráció](media/data-factory-create-install-integration-runtime/registered-successfully.png)
+
+3. Az **Új integrációs (Saját üzemeltetésű) modulcsomópont** lapon kattintson a **Tovább** gombra. 
+
+    ![Új integrációs modulcsomópont lap](media/data-factory-create-install-integration-runtime/new-integration-runtime-node-page.png)
+4. Az **Intranetes kommunikációs csatorna** lapon kattintson a **Kihagyás** gombra. Választhat TLS/SSL-hitelesítést a csomóponton belüli kommunikációhoz többcsomópontos integrációs modul környezetben. 
+
+    ![Intranetes kommunikációs csatorna lap](media/data-factory-create-install-integration-runtime/intranet-communication-channel-page.png)
+5. Az **Integrációs modul regisztrálása (Saját üzemeltetésű)** lapon kattintson a **Konfigurációkezelő indítása** gombra. 
+6. A csomópont a felhőszolgáltatáshoz való csatlakozásakor a következő oldal jelenik meg:
+
+   ![Csomópont csatlakoztatva](media/data-factory-create-install-integration-runtime/node-is-connected.png)
+7. Teszteltje az SQL Server-adatbázissal létesített kapcsolatot.
+
+    ![Diagnosztika lap](media/data-factory-create-install-integration-runtime/config-manager-diagnostics-tab.png)   
+
+    - A **Configuration Manager** ablakban váltson a **Diagnosztika** lapra.
+    - Válassza az **SqlServer** értéket az **Adatforrás típusa** számára.
+    - Adja meg a **kiszolgáló** nevét.
+    - Adja meg az **adatbázis** nevét. 
+    - Válassza ki a **hitelesítési** módot. 
+    - Adja meg a **felhasználó** nevét. 
+    - Adja meg a felhasználónévhez tartozó **jelszót**.
+    - Kattintson a **Teszt** gombra, és ellenőrizze, hogy az integrációs modul kapcsolódik-e az SQL Serverhez. Sikeres kapcsolódás esetén egy zöld pipa jelenik meg. Sikertelen csatlakozás esetén a hibához kapcsolódó hibaüzenet jelenik meg. Javítsa ki a hibákat, és ellenőrizze, hogy az integrációs modul kapcsolódik-e az SQL Serverhez.    
+
+    > [!NOTE]
+    > Jegyezze fel ezeket az értékeket (hitelesítési típus, kiszolgáló, adatbázis, felhasználó, jelszó). Az oktatóanyag részében használni fogja őket. 
+    
