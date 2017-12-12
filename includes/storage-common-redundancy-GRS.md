@@ -1,13 +1,13 @@
-Georedundáns tárolás (GRS) replikálja az adatokat egy másodlagos régióban, amelyek több száz miles elhagyja az elsődleges régióban van. Ha a tárfiók Georedundáns engedélyezve van, az adatok akkor tartós teljes regionális kimaradás vagy az elsődleges régióban nincs helyreállítható katasztrófa esetén is.
+Georedundáns tárolás (GRS) szolgál a legalább 99.99999999999999 % (16 9 tartozó) tartóssági objektumok egy adott évben által az adatok replikálása egy másodlagos régióban, amelyek több száz miles elhagyja az elsődleges régióban van. Ha a tárfiók Georedundáns engedélyezve van, az adatok akkor tartós teljes regionális kimaradás vagy az elsődleges régióban nincs helyreállítható katasztrófa esetén is.
 
-A GRS engedélyezve van a tárfiókon egy frissítés először elkötelezte magát az elsődleges régióban, ahol azt rendszer háromszor replikálja. Majd a frissítés a rendszer replikálja aszinkron módon a másodlagos régióban, ahol azt az háromszor replikálja.
+A GRS engedélyezve van a tárfiókon egy frissítés először véglegesítése az elsődleges régióban. Majd a frissítés a rendszer replikálja aszinkron módon a másodlagos régióban, ahol azt is replikálódnak.
 
 A GRS az elsődleges és másodlagos régióban külön tartalék tartományok közötti replikák kezelése, és frissítse a tárolási méretezési egység LRS leírt tartományban.
 
 Szempontok:
 
 * Mivel a aszinkron replikációs késés, regionális katasztrófa esetén is lehetséges, hogy még nem replikálódott a másodlagos régióba módosítások elvesznek az adatokat nem lehet helyreállítani az elsődleges régióban.
-* A replika nem érhető el, kivéve, ha a Microsoft kezdeményezi a másodlagos régióba. Ha a Microsoft kezdeményezzen feladatátvételt a másodlagos régióban, akkor lesz olvasási és írási engedéllyel a feladatátvételt követően befejeződött. További információkért lásd: [vész-helyreállítási útmutatást](../articles/storage/common/storage-disaster-recovery-guidance.md). 
+* A replika nem érhető el, kivéve, ha a Microsoft kezdeményezi a másodlagos régióba. Ha a Microsoft kezdeményezzen feladatátvételt a másodlagos régióban, akkor lesz olvasási és írási engedéllyel a feladatátvételt követően befejeződött. További információkért lásd: [vész-helyreállítási útmutatást](../articles/storage/common/storage-disaster-recovery-guidance.md).
 * Ha egy alkalmazás szeretné a másodlagos régióba olvasni, a felhasználó engedélyeznie kell a RA-GRS.
 
 A storage-fiók létrehozásakor ki kell választania a fiók az elsődleges régióban. A másodlagos régióba az elsődleges régió alapján történik, és nem módosítható. A következő táblázat az elsődleges és másodlagos régióban párosítása.
@@ -50,6 +50,6 @@ A storage-fiók létrehozásakor ki kell választania a fiók az elsődleges ré
 Használható az Azure-régiók naprakész információkat, lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
 
 >[!NOTE]  
-> USA – (kormányzati) Virginia másodlagos régióba Velünk – (kormányzati) Texas. Velünk – (kormányzati) Virginia korábban, mint egy másodlagos régióban be a US – (kormányzati) Iowa. Tárfiókok továbbra is használhatja a US – (kormányzati) Iowa egy másodlagos régióban, egy másodlagos régióban, a US – (kormányzati) Texas is áttelepíti. 
-> 
-> 
+> USA – (kormányzati) Virginia másodlagos régióba Velünk – (kormányzati) Texas. Velünk – (kormányzati) Virginia korábban, mint egy másodlagos régióban be a US – (kormányzati) Iowa. Tárfiókok továbbra is használhatja a US – (kormányzati) Iowa egy másodlagos régióban, egy másodlagos régióban, a US – (kormányzati) Texas is áttelepíti.
+>
+>

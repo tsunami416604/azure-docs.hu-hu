@@ -3,28 +3,28 @@ title: "Szempontok a virtuális gépek Azure-készletben és különbségeket |}
 description: "További tudnivalók a különbségek és szempontokat, az Azure-veremben lévő virtuális gépek használatakor."
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
+author: mattbriggs
 manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
-ms.author: sngun
-ms.openlocfilehash: fa4816079660467e530237fef62aeadfef7fa8bd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: mabrigg
+ms.openlocfilehash: fe655facf4da99d951a430db8ce603cc0ec7f224
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Virtuális gépek Azure-készletben szempontjai
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Virtuális gépek az igény szerinti, méretezhető számítási erőforrások Azure verem által kínált. Virtuális gépek használatakor ismernie kell, hogy vannak-e az Azure-ban elérhető funkciókat és Azure verem közötti különbséget. Ez a cikk áttekintést a virtuális gépek és a szolgáltatások, Azure verem egyedi szempontjai. Azure verem és az Azure közötti magas szintű különbségek kapcsolatos további tudnivalókért lásd: a [szempontok kulcs](azure-stack-considerations.md) témakör.
+Virtuális gépek az igény szerinti, méretezhető számítási erőforrások Azure verem által kínált. Virtuális gépek használatakor ismernie kell, hogy vannak-e az Azure-ban elérhető funkciókat és Azure verem közötti különbséget. Ez a cikk áttekintést a virtuális gépek és a szolgáltatások, Azure verem egyedi szempontjai. Azure verem és az Azure közötti magas szintű különbségek kapcsolatos további tudnivalókért lásd: a [szempontok kulcs](azure-stack-considerations.md) cikk.
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>Lap cheat: virtuális gép különbségek
 
@@ -33,7 +33,7 @@ Virtuális gépek az igény szerinti, méretezhető számítási erőforrások A
 | Virtuálisgép-rendszerképek | Az Azure piactéren lemezképeket hozhat létre virtuális gépet tartalmaz. Tekintse meg a [Azure piactér](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) lap használatával jeleníthetők meg az Azure piactéren elérhető képeket listáját. | Alapértelmezés szerint nincs képeket elérhető a verem Azure piactéren. Az Azure-verem felhő rendszergazdájának kell közzétételére, vagy töltse le a lemezképet a verem Azure piactéren előtt a felhasználók használni tudják őket. |
 | Virtuálisgép-méretek | Azure virtuális gépek méretű széles választékát támogatja. Az elérhető méretek és a lehetőségek kapcsolatos információkért tekintse meg a [Windows virtuális gépek méretét](../../virtual-machines/virtual-machines-windows-sizes.md) és [Linux virtuálisgép-méretek](../../virtual-machines/linux/sizes.md) témaköröket. | Az Azure verem támogatja az Azure-ban rendelkezésre álló virtuálisgép-méretek egy részét. A támogatott méretek listájának megtekintéséhez, tekintse meg a [virtuálisgép-méretek](#virtual-machine-sizes) című szakaszát. |
 | Virtuális gép kvóták | [Kvótakorlát](../../azure-subscription-service-limits.md#service-specific-limits) a Microsoft által beállított | Az Azure verem felhő rendszergazdájának kell megadnia a kvóták, ahhoz, azok a felhasználók számára virtuális gépek kínálnak. |
-| Virtuálisgép-bővítmények |Azure virtuálisgép-bővítmények széles választékát támogatja. Az elérhető bővítmények kapcsolatos információkért tekintse meg a [virtuálisgép-bővítmények és a szolgáltatások](../../virtual-machines/windows/extensions-features.md) témakör.| Az Azure verem támogatja az Azure-ban rendelkezésre álló bővítmények egy részét, és a bővítmény rendelkező különböző verziókat. Az Azure verem felhő rendszergazda megadhatja, hogy mely bővítmények, amelyeket a felhasználók számára elérhetővé kell tenni. A támogatott bővítmények listájának megtekintéséhez, tekintse meg a [virtuálisgép-bővítmények](#virtual-machine-extensions) című szakaszát. |
+| Virtuálisgép-bővítmények |Azure virtuálisgép-bővítmények széles választékát támogatja. Az elérhető bővítmények kapcsolatos információkért tekintse meg a [virtuálisgép-bővítmények és a szolgáltatások](../../virtual-machines/windows/extensions-features.md) cikk.| Az Azure verem támogatja az Azure-ban rendelkezésre álló bővítmények egy részét, és a bővítmény rendelkező különböző verziókat. Az Azure verem felhő rendszergazda megadhatja, hogy mely bővítmények, amelyeket a felhasználók számára elérhetővé kell tenni. A támogatott bővítmények listájának megtekintéséhez, tekintse meg a [virtuálisgép-bővítmények](#virtual-machine-extensions) című szakaszát. |
 | Virtuálisgép-hálózat | Nyilvános IP-címek hozzárendelését a virtuális gép az interneten keresztül érhetők el.<br><br><br>Az Azure virtuális gépek egy rögzített DNS-névvel rendelkezik. | A bérlői virtuális géphez rendelt nyilvános IP-címek csak Azure verem szoftverfejlesztői készlet környezetben érhetők el. A felhasználóknak rendelkezniük kell az Azure verem szoftverfejlesztői készlet keresztül hozzáférést [RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) vagy [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) csatlakozni a virtuális gép, amely Azure-készletben jön létre.<br><br>Egy Azure verem példány belül létrehozott virtuális gépek rendelkezik egy DNS-nevet, a felhő rendszergazdája által beállított értéke alapján. |
 | Virtuálisgép-tároló | Támogatja a [által kezelt lemezeken.](../../virtual-machines/windows/managed-disks-overview.md) | Felügyelt lemezek még nem támogatottak Azure-készletben. |
 | API-verziók | Azure mindig a legújabb API-verziók a virtuális gép minden funkció rendelkezik. | Azure verem adott Azure-szolgáltatások és az adott API-verziók támogatja ezeket a szolgáltatásokat. A támogatott API-verziók listáját megtekintéséhez tekintse meg a [API-verziók](#api-versions) című szakaszát. |

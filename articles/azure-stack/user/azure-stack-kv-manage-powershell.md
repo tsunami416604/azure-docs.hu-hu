@@ -3,22 +3,22 @@ title: "A verem Azure Key Vault kezelése a PowerShell használatával |} Micros
 description: "A verem Azure Key Vault kezelése a PowerShell használatával"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: 22B62A3B-B5A9-4B8C-81C9-DA461838FAE5
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
-ms.author: sngun
-ms.openlocfilehash: e920ee20268f5f43592e5a27fe82dcf27cb85af1
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.author: mabrigg
+ms.openlocfilehash: 6ee2ceff10d16456a6e8c6283f40fa594b3311bc
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-powershell"></a>A verem Azure Key Vault kezelése a PowerShell használatával
 
@@ -39,7 +39,7 @@ Mielőtt bármely kulcstároló műveleteket adhatnak ki, győződjön meg arró
 ```PowerShell
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
 ```
-**Kimeneti**
+**Kimenet**
 
 Ha az előfizetés engedélyezve van a tárolóban műveletek, az az alábbiakat mutatja be, "RegistrationState" egyenlő "Ajánlott" a kulcstároló minden erőforrástípus esetén.
 
@@ -51,7 +51,7 @@ Tároló műveletek nem engedélyezettek, ha hívása az előfizetés regisztrá
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 ```
 
-**Kimeneti**
+**Kimenet**
 
 Ha a regisztráció sikeres, akkor a következő eredményt adott vissza:
 
@@ -66,7 +66,7 @@ New-AzureRmResourceGroup -Name “VaultRG” -Location local -verbose -Force
 
 ```
 
-**Kimeneti**
+**Kimenet**
 
 ![Új erőforráscsoport](media/azure-stack-kv-manage-powershell/image3.png)
 
@@ -77,7 +77,7 @@ A következő paranccsal hozzon létre egy kulcstartót:
 ```PowerShell
 New-AzureRmKeyVault -VaultName “Vault01” -ResourceGroupName “VaultRG” -Location local -verbose
 ```
-**Kimeneti**
+**Kimenet**
 
 ![Új kulcstartó](media/azure-stack-kv-manage-powershell/image4.png)
 
@@ -107,7 +107,7 @@ Add-AzureKeyVaultKey -VaultName “Vault01” -Name “Key01” -verbose -Destin
 ```
 A **cél** paraméterrel adja meg, hogy a kulcs védett szoftver. Ha a kulcs sikeresen létrejött, a parancs kimenetében a létrehozott kulcs adatait.
 
-**Kimeneti**
+**Kimenet**
 
 ![Új kulcs](media/azure-stack-kv-manage-powershell/image5.png)
 
@@ -133,7 +133,7 @@ $secretvalue = ConvertTo-SecureString “User@123” -AsPlainText -Force
 Set-AzureKeyVaultSecret -VaultName “Vault01” -Name “Secret01” -SecretValue $secretvalue
 ```
 
-**Kimeneti**
+**Kimenet**
 
 ![Titkos kulcs létrehozása](media/azure-stack-kv-manage-powershell/image6.png)
 

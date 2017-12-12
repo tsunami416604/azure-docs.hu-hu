@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: denlee
-ms.openlocfilehash: 1a551615d0ffbbc036d3052cc552fbf4c1098ff7
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: bcd29d0b21d7624f6de10fc27e3dfce2fb3406c6
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>A Spark a valós idejű big data elemzések érdekében, és Azure Cosmos DB-összekötő
 
@@ -56,13 +56,13 @@ Hivatalos támogatott verziók:
 |---------|-------|
 |Apache Spark|2.0+|
 | Scala| 2.11|
-| Az Azure DocumentDB Java SDK | 1.10.0 |
+| Az Azure Cosmos DB SQL Java SDK | 1.10.0 |
 
 Ez a cikk segít néhány egyszerű példák futtatása Python (a pyDocumentDB) keresztül és a Scala-felületek használatával.
 
 Apache Spark és Azure Cosmos DB kétféleképpen történhet:
-- PyDocumentDB keresztül használja a [Azure DocumentDB Python SDK](https://github.com/Azure/azure-documentdb-python).
-- Hozzon létre egy Java-alapú Spark on Azure Cosmos DB-összekötőhöz való használatával a [Azure DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java).
+- PyDocumentDB keresztül használja a [Azure Cosmos DB SQL Python SDK](https://github.com/Azure/azure-documentdb-python).
+- Hozzon létre egy Java-alapú Spark on Azure Cosmos DB-összekötőhöz való használatával a [Azure Cosmos DB SQL Java SDK](https://github.com/Azure/azure-documentdb-java).
 
 ## <a name="pydocumentdb-implementation"></a>pyDocumentDB végrehajtása
 Az aktuális [pyDocumentDB SDK](https://github.com/Azure/azure-documentdb-python) lehetővé teszi a Spark on Azure Cosmos DB csatlakozni, az alábbi ábrán látható módon:
@@ -158,7 +158,7 @@ Spark pyDocumentDB segítségével az Azure Cosmos Adatbázishoz kapcsolódó fo
 
 ## <a name="spark-to-azure-cosmos-db-connector"></a>Spark és Azure Cosmos DB-összekötő
 
-A Spark on Azure Cosmos DB összekötőre használja a [Azure DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java) és mozgatja az adatokat a Spark munkavégző csomópontokhoz és Azure Cosmos DB között, az alábbi ábrán látható módon:
+A Spark on Azure Cosmos DB összekötőre használja a [Azure Cosmos DB SQL Java SDK](https://github.com/Azure/azure-documentdb-java) és mozgatja az adatokat a Spark munkavégző csomópontokhoz és Azure Cosmos DB között, az alábbi ábrán látható módon:
 
 ![A Spark az Azure Cosmos DB összekötő adatfolyama](./media/spark-connector/spark-connector.png)
 
@@ -202,7 +202,7 @@ Ha a notebook szolgáltatással, például az Azure HDInsight Jupyter notebook s
 }
 ```
 
-A **JAR-fájlok kivételével** parancs lehetővé teszi a két JAR-fájlok kivételével, a szükséges **azure-cosmosdb-spark** (önmagában, illetve az Azure DocumentDB Java SDK-t), és amelyeket **scala-tükrözze** , hogy ne zavarja a Livy hívások (Jupyter notebook > Livy > Spark).
+A **JAR-fájlok kivételével** parancs lehetővé teszi a két JAR-fájlok kivételével, a szükséges **azure-cosmosdb-spark** (saját magát és az Azure Cosmos DB SQL Java SDK), és amelyeket **scala-tükrözze**, hogy ne zavarja a Livy hívások (Jupyter notebook > Livy > Spark).
 
 ### <a name="connect-spark-to-azure-cosmos-db-using-the-connector"></a>Spark csatlakozzon az összekötővel Azure Cosmos Adatbázishoz.
 Bár a kommunikációs átviteli egy kicsit bonyolultabb, a lekérdezés végrehajtása a Spark on Azure Cosmos DB-összekötő segítségével is jelentősen gyorsabb.

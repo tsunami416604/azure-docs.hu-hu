@@ -15,25 +15,32 @@ articles/sql-database/sql-database-connect-query.md
 -->
 
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) , http://portal.azure.com/.
-2. Kattintson a bal oldali szalagcím **összes TALLÓZÁSA**. A **Tallózás** panel jelenik meg.
-3. Görgetéssel **SQL Server-kiszolgálók**. A **SQL Server-kiszolgálók** panel jelenik meg.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
+2. A bal oldali listában válassza ki a **Tallózás**. 
+
+3. Görgessen és válassza ki **SQL Server-kiszolgálók**. 
    
     ![Az Azure SQL adatbázis-kiszolgáló található a portálon][b21-FindServerInPortal]
-4. Kényelmi okokból kattintson a kis méretűvé a korábbi **Tallózás** panelen.
+4. Az egyszerűség kedvéért minimalizálása érdekében a **Tallózás** panelen.
+
 5. A Szűrő mezőbe írja be annak a kiszolgálónak a nevét elindításához. A sor jelenik meg.
-6. A kiszolgáló sorára kattintson. A kiszolgáló egy panel jelenik meg.
-7. A kiszolgáló paneljén kattintson **beállítások**. A **beállítások** panel jelenik meg.
-8. Kattintson a **tűzfal**. A **tűzfalbeállítások** panel jelenik meg.
+
+6. Jelölje ki a kiszolgáló sort. A kiszolgáló egy panel jelenik meg.
+
+7. Válassza ki a kiszolgálójuk paneljéről **beállítások**. 
+
+8. Válassza ki **tűzfal**. 
    
-    ![Kattintson a beállítások > tűzfal][b31-SettingsFirewallNavig]
-9. Kattintson a **adja hozzá ügyfél IP**. Adjon meg egy nevet az új szabály az első szövegmezőbe.
+    ![Válassza ki a beállítások > tűzfal][b31-SettingsFirewallNavig]
+9. Válassza ki **adja hozzá ügyfél IP**. Az első szövegmezőbe írja be az új szabály nevét.
+
 10. Adja meg a kis és nagy IP cím a tartomány értékeinek engedélyezni szeretné.
     
-    * Azok az alacsony érték end jöhet **.0** és a magas **.255**.
+    * Azok az alacsony érték end jöhet **.0** és a nagy értékű végződhet **.255**.
     
     ![Engedélyezi az IP-címtartomány hozzáadása][b41-AddRange]
-11. Kattintson a **Save** (Mentés) gombra.
+11. Kattintson a **Mentés** gombra.
 
 <!-- Image references. -->
 

@@ -12,163 +12,173 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2017
+ms.date: 12/11/2017
 ms.author: dobett
-ms.openlocfilehash: 32a62be9578ac802ee8fff1b0aa48e2d39362e63
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: af49a31061152cf44d3818b79b9ed7ba586f8418
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>Az előre konfigurált csatlakoztatott gyári megoldás a Windows vagy Linux-egy átjáró üzembe helyezéséhez
+# <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>A Windows vagy Linux előre konfigurált csatlakoztatott gyári megoldás egy peremhálózati átjáró üzembe helyezéséhez
 
-Az előre konfigurált csatlakoztatott gyári megoldás átjáró telepítéséhez szükséges szoftver két összetevőből áll:
+Egy a peremhálózati átjáró üzembe helyezéséhez két szoftverösszetevőket van szüksége a *csatlakoztatott gyári* előre konfigurált megoldást:
 
-* A *OPC Proxy* kapcsolatot hoz létre az IoT-központ. A *OPC Proxy* majd megvárja-e a parancs és a vezérlő üzenetek a böngészőből integrált OPC, amelyen a csatlakoztatott gyári megoldás portálon.
-* A *OPC Publisher* meglévő helyszíni OPC EE kiszolgálók csatlakozik, és továbbítja telemetriai üzenetek őket az IoT-központ.
+- A *OPC Proxy* csatlakoztatott gyári kapcsolat jön létre. A OPC Proxy várakozik a böngészőből integrált OPC a csatlakoztatott gyári megoldás portálon futó parancs és a vezérlő üzenetek.
 
-Mindkét összetevők nyílt forráskódú és érhetők el a Githubon forrásként és a Docker tárolóként:
+- A *OPC Publisher* csatlakozik a meglévő helyszíni OPC EE-kiszolgálók és telemetriai üzenetek továbbítja őket a csatlakoztatott gyári. Egy OPC klasszikus eszköz használatával is elérheti a [OPC EE-adaptert klasszikus OPC](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
+
+Mindkét összetevők nyílt forráskódú és érhetők el a Githubon forrás és a DockerHub Docker-tároló:
 
 | GitHub | DockerHub |
 | ------ | --------- |
-| [OPC-közzétevő][lnk-publisher-github] | [OPC-közzétevő][lnk-publisher-docker] |
-| [OPC Proxy][lnk-proxy-github] | [OPC Proxy][lnk-proxy-docker] |
+| [OPC-közzétevő](https://github.com/Azure/iot-edge-opc-publisher) | [OPC-közzétevő](https://hub.docker.com/r/microsoft/iot-edge-opc-publisher/)   |
+| [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy)         | [OPC Proxy](https://hub.docker.com/r/microsoft/iot-edge-opc-proxy/) |
 
-Nincs nyilvánosan elérhető IP-cím vagy az átjáró tűzfal lyuk vagy összetevőhöz szükségesek. A OPC Proxy és OPC szoftvergyártó használja a 443-as, 5671 és 8883 csak kimenő portok.
+Nem kell egy nyilvánosan elérhető IP-cím vagy az átjáró tűzfal megnyitott bejövő portra vagy összetevőhöz. A OPC Proxy és OPC szoftvergyártó összetevők csak a 443-as kimenő porton használja.
 
-A cikkben leírt lépéseket mutatja be egy Docker használatával vagy az átjáró üzembe helyezéséhez [Windows](#windows-deployment) vagy [Linux](#linux-deployment). Az átjáró lehetővé teszi, hogy a kapcsolatot a csatlakoztatott gyári előre konfigurált megoldáshoz.
-
-> [!NOTE]
-> A Docker-tároló futó átjáró szoftverek [Azure IoT peremhálózati].
-
-## <a name="windows-deployment"></a>Windows központi telepítése
+A cikkben leírt lépéseket mutatja be egy Docker használata a Windows vagy Linux peremhálózati átjáró üzembe helyezéséhez. Az átjáró lehetővé teszi, hogy a kapcsolatot a csatlakoztatott gyári előre konfigurált megoldáshoz. Az összetevők csatlakoztatott gyári nélkül is használható.
 
 > [!NOTE]
-> Ha még nem rendelkezik egy átjáróeszköz, a Microsoft azt javasolja, kereskedelmi átjáró vásárol a partnerek egyikét. Látogasson el a [Azure IoT eszköz katalógus] a csatlakoztatott gyári megoldás kompatibilis átjáró eszközök listáját. Kövesse az utasításokat, amelyek az átjáró beállítása az eszközre. Azt is megteheti a következő utasításokat követve manuálisan állítsa be a meglévő átjáró egyik.
+> A modulok összetevőket egyaránt használható [Azure IoT peremhálózati](https://github.com/Azure/iot-edge).
 
-### <a name="install-docker"></a>Docker telepítése
+## <a name="choose-a-gateway-device"></a>Válasszon egy átjáróeszköz
 
-Telepítés [Docker for Windows] átjáró Windows-alapú eszközén. Windows Docker a telepítés során válassza ki a Docker megosztása a számítógép egyik meghajtójára. Az alábbi képernyőfelvételen látható megosztása a D meghajtón a Windows rendszeren:
+Ha még nem rendelkezik egy átjáróeszköz, a Microsoft azt javasolja, kereskedelmi átjáró vásárol a partnerek egyikét. A csatlakoztatott gyári megoldás kompatibilis átjáró eszközök listájának megtekintéséhez keresse fel a [Azure IoT eszköz katalógus](https://catalog.azureiotsuite.com/?q=opc). Kövesse az utasításokat, amelyek az átjáró beállítása az eszközre.
 
-![Docker telepítése][img-install-docker]
+Azt is megteheti kövesse az alábbi utasításokat kézzel konfigurálásához egy meglévő átjáró eszközt.
 
-Ezután hozzon létre egy nevű **docker** a megosztott meghajtó gyökérkönyvtárában található.
-Ezt a lépést hajtsa végre a docker telepítése után a **beállítások** menü.
+## <a name="install-and-configure-docker"></a>Telepítse és konfigurálja a Docker
 
-### <a name="configure-the-gateway"></a>Az átjáró konfigurálása
+Telepítés [Docker for Windows](https://www.docker.com/docker-windows) az átjáró Windows-alapú eszközön vagy a Csomagkezelő docker telepítsen az átjáró Linux-alapú eszköz használatát.
 
-1. Van szüksége a **iothubowner** kapcsolati karakterlánca a Azure IoT Suite gyári központi telepítést, hogy az összes átjáró csatlakozik. Az a [Azure-portálon], keresse meg az IoT-központ a csatlakoztatott gyári megoldás üzembe helyezésekor létrehozott erőforráscsoportban. Kattintson a **megosztott elérési házirendek** eléréséhez a **iothubowner** kapcsolati karakterlánc:
+Docker a Windows a telepítés során válassza ki a Docker megosztása a számítógép egyik meghajtójára. Az alábbi képernyőfelvételen látható megosztása a **D** meghajtó a gazdagépen meghajtót egy docker-tároló hozzáférés engedélyezése a Windows rendszeren:
 
-    ![Keresse meg az IoT-központ kapcsolati karakterláncot][img-hub-connection]
-
-    Másolás a **kapcsolati karakterlánc – elsődleges kulcs** érték.
-
-1. Az átjáró konfigurálása az IoT hub a két átjáró modulok futtatásával **után** a parancssorból:
-
-    `docker run -it --rm -h <ApplicationName> -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName> "<IoTHubOwnerConnectionString>"`
-
-    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
-
-    * **&lt;ApplicationName&gt;**  biztosítanak a OPC EE Publisher formátumú neve **publisher.&lt; a teljesen minősített tartománynevét&gt;**. Például, ha a gyári hálózati nevezik **myfactorynetwork.com**, a **ApplicationName** értéke **publisher.myfactorynetwork.com**.
-    * **&lt;IoTHubOwnerConnectionString&gt;**  van a **iothubowner** az előző lépésben kimásolt kapcsolati karakterláncot. Ez a kapcsolati karakterlánc csak ebben a lépésben követően nem kell az alábbi lépéseket:
-
-    Használhatja a csatlakoztatott D:\\docker mappát (a `-v` argumentum) később, a két X.509-tanúsítványokat az átjáró modulok használata megtartására.
-
-### <a name="run-the-gateway"></a>Futtassa az átjáró
-
-1. Indítsa újra az átjárót, az alábbi parancsok használatával:
-
-    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName>`
-
-    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -D /mapped/cs.db`
-
-1. Biztonsági okokból két X.509-tanúsítványokat őrzi meg a D:\\docker mappa tartalmazza a titkos kulcsot. Ez a mappa a hitelesítő adatokhoz való hozzáférés korlátozása (általában **rendszergazdák**) használja a Docker-tároló futtatásához. Kattintson a jobb gombbal a D:\\docker mappát, válassza a **tulajdonságok**, majd **biztonsági**, majd **szerkesztése**. Adjon **rendszergazdák** teljes hozzáférés, és távolítsa el a többi felhasználó:
-
-    ![Engedélyezze, hogy a Docker-megosztás][img-docker-share]
-
-1. Ellenőrizze a hálózati kapcsolatot. A parancssorból, írja be a parancsot `ping publisher.<your fully qualified domain name>` Pingelje meg az átjáró. Ha a cél nem érhető el, adja hozzá az IP-cím és az állomásleíró fájlhoz meg az átjáró az átjárója nevére. A hosts fájl található a **Windows\\System32\\illesztőprogramok\\stb** mappát.
-
-1. Ezt követően próbálja meg csatlakozni a közzétevőhöz, az átjáró fut helyi OPC EE-ügyfél használatával. A OPC EE-végpont URL-cím `opc.tcp://publisher.<your fully qualified domain name>:62222`. Ha egy OPC EE-ügyfél nincs telepítve, töltse le és használja az [nyílt forráskódú OPC EE ügyfél].
-
-1. Ezek a helyi tesztek sikeresen befejeződött, keresse meg a a **csatlakoztassa a saját OPC EE kiszolgálót** lapjára a csatlakoztatott gyári megoldás. Adja meg a kiadó végponti URL-cím (`tcp://publisher.<your fully qualified domain name>:62222`), majd **Connect**. Egy tanúsítvány figyelmeztetés, majd kattintson a **folytatása.** Ezután hibaüzenetet kap, amely a közzétevő nem megbízható az EE webes ügyfél. Ez a hiba megoldása érdekében másolja a **EE webes ügyfél** a tanúsítvány a **D:\\docker\\elutasított tanúsítványok\\Tanúsítványos** mappát a **D:\\docker\\EE-alkalmazások\\Tanúsítványos** az átjáró mappájába. Nem kell újraindítania az átjáró. Ismételje meg ezt a lépést. Most csatlakozhat az átjáró a felhőből, és készen áll a OPC EE-kiszolgálók hozzáadása a megoldáshoz.
-
-### <a name="add-your-opc-ua-servers"></a>A OPC EE-kiszolgálók hozzáadása
-
-1. Keresse meg a **csatlakoztassa a saját OPC EE kiszolgálót** lapjára a csatlakoztatott gyári megoldás. Kövesse a lépéseket, ahogy az előző szakaszban a csatlakoztatott gyári portál és a OPC EE-kiszolgáló közötti megbízhatósági kapcsolat létrehozásához. Ez a lépés a csatlakoztatott gyári portál és a OPC EE-kiszolgálóról a tanúsítványok kölcsönös megbízhatósági kapcsolatot hoz létre, és kapcsolatot hoz létre.
-
-1. Keresse a OPC EE csomópontok fájának OPC EE-kiszolgálóját, kattintson a jobb gombbal a OPC csomópontok, és válassza ki **közzététele**. Közzététel ennek megfelelően működik, a OPC EE-kiszolgáló és a közzétevő ugyanazon a hálózaton kell lennie. Ez azt jelenti Ha a teljesen minősített tartományneve, a közzétevő **publisher.mydomain.com** akkor OPC EE kiszolgáló teljesen minősített tartománynevét kell lennie, például **myopcuaserver.mydomain.com**. Ha a telepítő nem, manuálisan csomópont is hozzáadható a publishesnodes.json fájl található a **D:\\docker** mappa. A publishesnodes.json fájl automatikusan jön létre az első sikeres közzététele egy OPC-csomópont.
-
-1. Telemetria most zajlik az átjáró eszközről. A telemetriai adatok megtekintéséhez a **gyári helyek** a csatlakoztatott gyári portál ábrázolása **új előállító**.
-
-## <a name="linux-deployment"></a>Linux-telepítés
+![A Windows Docker telepítése](./media/iot-suite-connected-factory-gateway-deployment/image1.png)
 
 > [!NOTE]
-> Ha még nem rendelkezik egy átjáróeszköz, a Microsoft azt javasolja, kereskedelmi átjáró vásárol a partnerek egyikét. Látogasson el a [Azure IoT eszköz katalógus] a csatlakoztatott gyári megoldás kompatibilis átjáró eszközök listáját. Kövesse az utasításokat, amelyek az átjáró beállítása az eszközre. Azt is megteheti a következő utasításokat követve manuálisan állítsa be a meglévő átjáró egyik.
+> Ezt a lépést hajtsa végre a docker telepítése után a **beállítások** párbeszédpanel. Kattintson a jobb gombbal a **Docker** ikonjára a Windows tálcán válassza **beállítások**.
 
-[Telepítse a Docker] Linux átjáró eszközén.
+Ha Linux használ, további konfigurációra a fájlrendszer hozzáférés engedélyezése szükséges.
 
-### <a name="configure-the-gateway"></a>Az átjáró konfigurálása
+Hozzon létre egy mappát a meghajtó-és Docker Windows, Linux hozzon létre egy mappát a legfelső szintű fájlrendszer. Ez a forgatókönyv hivatkozik, ez a mappa `<SharedFolder>`.
 
-1. Van szüksége a **iothubowner** kapcsolati karakterlánca a Azure IoT Suite gyári központi telepítést, hogy az összes átjáró csatlakozik. Az a [Azure-portálon], keresse meg az IoT-központ a csatlakoztatott gyári megoldás üzembe helyezésekor létrehozott erőforráscsoportban. Kattintson a **megosztott elérési házirendek** eléréséhez a **iothubowner** kapcsolati karakterlánc:
+Ha hivatkozik a `<SharedFolder>` Docker parancs, ügyeljen arra, hogy a helyes szintaxis használata az operációs rendszerhez. Az alábbiakban két példa, egy másik pedig a Windows és Linux céljából:
 
-    ![Keresse meg az IoT-központ kapcsolati karakterláncot][img-hub-connection]
+- Ha a következők a mappát használja `D:\shared` a Windows, mint a `<SharedFolder>`, a Docker parancs szintaxisa `//d/shared`.
 
-    Másolás a **kapcsolati karakterlánc – elsődleges kulcs** érték.
+- Ha a következők a mappát használja `/shared` Linux, a `<SharedFolder>`, a Docker parancs szintaxisa `/shared`.
 
-1. Az átjáró konfigurálása az IoT hub a két átjáró modulok futtatásával **után** egy rendszerhéjból rendelkező:
+További információ: a [köteteket](https://docs.docker.com/engine/admin/volumes/volumes/) docker motor hivatkozás.
 
-    `sudo docker run -it --rm -h <ApplicationName> -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/ -v /shared:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName> "<IoTHubOwnerConnectionString>"`
+## <a name="configure-the-opc-components"></a>A OPC-összetevők konfigurálása
 
-    `sudo docker run --rm -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
+A OPC-összetevők telepítése előtt végezze el az alábbi lépések végrehajtásával készítse elő a környezetet:
 
-    * **&lt;ApplicationName&gt;**  formátumú létrehozza az átjáró OPC EE-alkalmazás neve **publisher.&lt; a teljesen minősített tartománynevét&gt;**. Például **publisher.microsoft.com**.
-    * **&lt;IoTHubOwnerConnectionString&gt;**  van a **iothubowner** az előző lépésben kimásolt kapcsolati karakterláncot. Ez a kapcsolati karakterlánc csak ebben a lépésben követően nem kell az alábbi lépéseket:
+1. Az átjáró központi telepítés befejezéséhez szükséges a **iothubowner** az IoT-központ a csatlakoztatott gyári környezetben kapcsolati karakterlánca. Az a [Azure-portálon](http://portal.azure.com/), keresse meg az IoT-központ a csatlakoztatott gyári megoldás üzembe helyezésekor létrehozott erőforráscsoportban. Kattintson a **megosztott elérési házirendek** eléréséhez a **iothubowner** kapcsolati karakterlánc:
 
-    Használja a **/ megosztott** mappát (a `-v` argumentum) később, a két X.509-tanúsítványokat az átjáró modulok használata megtartására.
+    ![Keresse meg az IoT-központ kapcsolati karakterláncot](./media/iot-suite-connected-factory-gateway-deployment/image2.png)
 
-### <a name="run-the-gateway"></a>Futtassa az átjáró
+    Másolás a **kapcsolati karakterlánc elsődleges kulcs** érték.
 
-1. Indítsa újra az átjárót, az alábbi parancsok használatával:
+1. Docker-tárolók közötti kommunikáció lehetővé tételéhez, a felhasználó által definiált híd hálózati van szükség. A tárolók skálázása híd hálózat létrehozása a következő parancsokat a parancssorba:
 
-    `sudo docker run -it -h <ApplicationName> --expose 62222 -p 62222:62222 --rm -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v /shared:/shared -v /shared:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName>`
+    ```cmd/sh
+    docker network create -d bridge iot_edge
+    ```
 
-    `sudo docker run -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -D /mapped/cs.db`
+    Győződjön meg arról, hogy a **iot_edge** hálózati híd létrejött, a következő parancsot:
 
-1. Biztonsági okokból két X.509-tanúsítványokat őrzi meg a **/ megosztott** mappa tartalmazza a titkos kulcsot. Ez a mappa a Docker-tároló futtatásához használt hitelesítő adatokhoz való hozzáférés korlátozásához. Az engedélyek beállítása **legfelső szintű** csak, használja a `chmod` rendszerhéj-parancs a mappához.
+    ```cmd/sh
+    docker network ls
+    ```
 
-1. Ellenőrizze a hálózati kapcsolatot. A rendszerhéj, írja be a parancsot `ping publisher.<your fully qualified domain name>` Pingelje meg az átjáró. Ha a cél nem érhető el, adja hozzá az IP-cím és az átjáró a állomások fájlba az átjárója nevére. A hosts fájl található a **/stb** mappát.
+    A **iot_edge** hálózati híd hálózatok listája szerepel.
 
-1. Ezt követően próbálja meg csatlakozni a közzétevőhöz, az átjáró fut helyi OPC EE-ügyfél használatával. A OPC EE-végpont URL-cím `opc.tcp://publisher.<your fully qualified domain name>:62222`. Ha egy OPC EE-ügyfél nincs telepítve, töltse le és használja az [nyílt forráskódú OPC EE ügyfél].
+A OPC Publisher elindításához futtassa a következő parancsot a parancssorba:
 
-1. Ezek a helyi tesztek sikeresen befejeződött, keresse meg a a **csatlakoztassa a saját OPC EE kiszolgálót** lapjára a csatlakoztatott gyári megoldás. Adja meg a kiadó végponti URL-cím (`tcp://publisher.<your fully qualified domain name>:62222`), majd **Connect**. Egy tanúsítvány figyelmeztetés, majd kattintson a **folytatása.** Ezután hibaüzenetet kap, amely a közzétevő nem megbízható az EE webes ügyfél. Ez a hiba megoldása érdekében másolja a **EE-webügyfél** a tanúsítvány a **/megosztott/elutasított tanúsítványok/Tanúsítványos** mappát a **/shared/UA alkalmazások/Tanúsítványos** az átjáró mappájába. Nem kell újraindítania az átjáró. Ismételje meg ezt a lépést. Most csatlakozhat az átjáró a felhőből, és készen áll a OPC EE-kiszolgálók hozzáadása a megoldáshoz.
+```cmd/sh
+docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/corefx/cryptography/x509stores --network iot_edge --name publisher -h publisher -p 62222:62222 --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-publisher:2.1.3 publisher "<IoTHubOwnerConnectionString>" --lf /docker/publisher.log.txt --as true --si 1 --ms 0 --tm true --vc true --di 30
+```
 
-### <a name="add-your-opc-ua-servers"></a>A OPC EE-kiszolgálók hozzáadása
+- A [OPC Publisher GitHub](https://github.com/Azure/iot-edge-opc-publisher) és a [hivatkozás futtatása docker](https://docs.docker.com/engine/reference/run/) kapcsolatos további információk megadására:
 
-1. Keresse meg a **csatlakoztassa a saját OPC EE kiszolgálót** lapjára a csatlakoztatott gyári megoldás. Kövesse a lépéseket, ahogy az előző szakaszban a csatlakoztatott gyári portál és a OPC EE-kiszolgáló közötti megbízhatósági kapcsolat létrehozásához. Ez a lépés a csatlakoztatott gyári portál és a OPC EE-kiszolgálóról a tanúsítványok kölcsönös megbízhatósági kapcsolatot hoz létre, és kapcsolatot hoz létre.
+  - A docker parancssori kapcsolók a tároló neve előtt meg (`microsoft/iot-edge-opc-publisher:2.1.3`).
+  - A tároló neve után megadott OPC Publisher parancssori paraméterek szerinti (`microsoft/iot-edge-opc-publisher:2.1.3`).
 
-1. Keresse a OPC EE csomópontok fájának OPC EE-kiszolgálóját, kattintson a jobb gombbal a OPC csomópontok, és válassza ki **közzététele**. Közzététel ennek megfelelően működik, a OPC EE-kiszolgáló és a közzétevő ugyanazon a hálózaton kell lennie. Ez azt jelenti Ha a teljesen minősített tartományneve, a közzétevő **publisher.mydomain.com** akkor OPC EE kiszolgáló teljesen minősített tartománynevét kell lennie, például **myopcuaserver.mydomain.com**. Ha a telepítő nem, manuálisan csomópont is hozzáadható a publishesnodes.json fájl található a **/ megosztott** mappát. A publishesnodes.json automatikusan jön létre az első sikeres közzététele egy OPC-csomópont.
+- A `<IoTHubOwnerConnectionString>` van a **iothubowner** megosztott hozzáférési házirend kapcsolati karakterláncot az Azure portálról. Ez a kapcsolati karakterlánc az előző lépésben másolt. Csak a kapcsolati karakterlánc szükséges OPC Publisher első alkalommal történő futtatásakor. Utólagosan kell kihagyása, mert azt a biztonsági kockázatnak teheti.
+
+- A `<SharedFolder>` használ, és a szintaxist a szakaszban ismertetett [telepítse és konfigurálja a Docker](#install-and-configure-docker). OPC közzétevő használja a `<SharedFolder>` a OPC Publisher konfigurációs fájl beolvasása, a naplófájlban, és ellenőrizze mindkét ezeknek a fájloknak a tároló kívül érhető el.
+
+- OPC Publisher beolvassa a konfigurációját az a **publishednodes.json** fájlt, amely a helyezze a `<SharedFolder>/docker` mappát. Ezt a konfigurációs fájlt a OPC Publisher elő kell fizetnie megadott OPC EE-kiszolgálón határozza meg, melyik OPC EE-csomópont adatait.
+
+- A OPC EE-kiszolgáló egy változását OPC közzétevője értesíti, amikor az új értéket az IoT-központ küld. A kötegelési beállításaitól függően lehetséges, hogy először a OPC közzétevő az adatok felhalmozhat, az adatokat az IoT hubhoz kötegben küldése előtt.
+
+- Teljes szintaxisát a **publishednodes.json** fájl a leírása a [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) lap a Githubon.
+
+    Az alábbi kódrészletben láthatja egy egyszerű példa egy **publishednodes.json** fájlt. A példa bemutatja, hogyan tehet közzé a **CurrentTime** érték az állomásnév OPC EE-kiszolgálóról **win10pc**:
+
+    ```json
+    [
+      {
+        "EndpointUrl": "opc.tcp://win10pc:48010",
+        "OpcNodes": [
+          {
+            "ExpandedNodeId": "nsu=http://opcfoundation.org/UA/;i=2258"
+          }
+        ]
+      }
+    ]
+    ```
+
+    Az a **publishednodes.json** fájl, a kiszolgáló a végponti URL-cím által megadott OPC EE. Ha az állomásnév címke használata állomásnevet ad meg (például **win10pc**) egy IP-cím helyett, az előző példában szemléltetett a hálózati címfeloldáshoz a tárolóban tudni oldania az állomásnév felirat IP-címnek kell lennie.
+
+- Docker nem támogatja a NetBIOS-névfeloldás, csak a DNS-névfeloldását. Ha egy DNS-kiszolgáló nincs a hálózaton, a megoldás az előző parancssori példában látható módon használhatja. Az előző parancssori példa a `--add-host` paraméter segítségével adjon hozzá egy bejegyzést a tárolók állomások fájlba. Ez a bejegyzés lehetővé teszi, hogy a keresés állomásnév: a megadott `<OpcServerHostname>`, a megadott IP-címre feloldó `<IpAddressOfOpcServerHostname>`.
+
+- OPC EE X.509-tanúsítványokat használ hitelesítésre és titkosításra. Szeretné elhelyezni a OPC szoftvergyártói tanúsítvány kapcsolódik, annak érdekében, megbízhatónak fogja tekinteni OPC Publisher OPC EE-kiszolgálón. A OPC Publisher tanúsítványtárolóban található a `<SharedFolder>/CertificateStores` mappát. A OPC Publisher tanúsítvány található a `trusted/certs` mappájában a `CertificateStores` mappát.
+
+  A OPC EE-kiszolgáló konfigurálásának lépéseit az Ön által használt eszköz függ. Ezeket a lépéseket általában szerepelnek a OPC EE-kiszolgáló felhasználói kézikönyvében található.
+
+A OPC-Proxy telepítéséhez futtassa a következő parancsot a parancssorba:
+
+```cmd/sh
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> Microsoft/iot-edge-opc-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db
+```
+
+Csak futtatásához szükséges a telepítés után a rendszer.
+
+A következő paranccsal futtassa a OPC-Proxy:
+
+```cmd/sh
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> Microsoft/iot-edge-opc-proxy:1.0.2 -D /mapped/cs.db
+```
+
+OPC Proxy menti a kapcsolati karakterláncot a telepítés során. Utólagosan kell nincs megadva a kapcsolati karakterlánc miatt biztonsági kockázatot jelent.
+
+## <a name="enable-your-gateway"></a>Az átjáró engedélyezése
+
+Az alábbi lépésekkel ahhoz, hogy az átjáró a csatlakoztatott gyári előre konfigurált megoldásban:
+
+1. Összetevőket egyaránt futtatásakor tallózással keresse meg a **csatlakoztassa a saját OPC EE kiszolgálót** lapjára a csatlakoztatott gyári megoldás. Ezen a lapon csak rendszergazdák számára érhető el a megoldás. Adja meg a kiadó végponti URL-cím (opc.tcp://publisher: 62222), majd **Connect**.
+
+1. A csatlakoztatott gyári portal és OPC szoftvergyártó közötti megbízhatósági kapcsolat létrehozására. Amikor megjelenik egy tanúsítványfigyelmeztetés, kattintson **folytatása**. Ezt követően, hogy a OPC Publisher nem megbízható a EE-webügyfél hibaüzenet jelenik meg. Ez a hiba megoldása érdekében másolja a **EE-webügyfél** a tanúsítvány a `<SharedFolder>/CertificateStores/rejected/certs` mappát a `<SharedFolder>/CertificateStores/trusted/certs` az átjáró mappájába. Nem kell indítsa újra az átjárót.
+
+Most csatlakozhat az átjáró a felhőből, és készen áll a OPC EE-kiszolgálók hozzáadása a megoldáshoz.
+
+## <a name="add-your-own-opc-ua-servers"></a>A saját OPC EE-kiszolgálók hozzáadása
+
+A csatlakoztatott gyári kiszolgálók hozzáadása a saját OPC USA előre konfigurált a megoldás:
+
+1. Keresse meg a **csatlakoztassa a saját OPC EE kiszolgálót** lapjára a csatlakoztatott gyári megoldás. Kövesse a lépéseket, ahogy az előző szakaszban a csatlakoztatott gyári portál és a OPC EE-kiszolgáló közötti megbízhatósági kapcsolat létrehozására.
+
+    ![Megoldásportál](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
+
+1. Keresse meg a OPC EE csomópontok fájának OPC EE-kiszolgálóját, kattintson a jobb gombbal a csatlakoztatott gyári küldeni, és válassza ki a kívánt OPC csomópontok **közzététele**.
 
 1. Telemetria most zajlik az átjáró eszközről. A telemetriai adatok megtekintéséhez a **gyári helyek** a csatlakoztatott gyári portál ábrázolása **új előállító**.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az előre konfigurált csatlakoztatott gyári megoldás architektúrájával kapcsolatos további tudnivalókért lásd: [csatlakoztatott gyári előre konfigurált megoldás forgatókönyv][lnk-walkthrough].
+Az előre konfigurált csatlakoztatott gyári megoldás architektúrájával kapcsolatos további tudnivalókért lásd: [csatlakoztatott gyári előre konfigurált megoldás forgatókönyv](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
 
-További tudnivalók a [OPC Publisher hivatkozás megvalósítási](iot-suite-connected-factory-publisher.md).
-
-[img-install-docker]: ./media/iot-suite-connected-factory-gateway-deployment/image1.png
-[img-hub-connection]: ./media/iot-suite-connected-factory-gateway-deployment/image2.png
-[img-docker-share]: ./media/iot-suite-connected-factory-gateway-deployment/image3.png
-
-[Docker for Windows]: https://www.docker.com/docker-windows
-[Azure IoT eszköz katalógus]: https://catalog.azureiotsuite.com/?q=opc
-[Azure-portálon]: http://portal.azure.com/
-[nyílt forráskódú OPC EE ügyfél]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
-[Telepítse a Docker]: https://www.docker.com/community-edition#/download
-[lnk-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
-[Azure IoT peremhálózati]: https://github.com/Azure/iot-edge
-
-[lnk-publisher-github]: https://github.com/Azure/iot-edge-opc-publisher
-[lnk-publisher-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua
-[lnk-proxy-github]: https://github.com/Azure/iot-edge-opc-proxy
-[lnk-proxy-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua-proxy
+További tudnivalók a [OPC Publisher hivatkozás megvalósítási](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-connected-factory-publisher).

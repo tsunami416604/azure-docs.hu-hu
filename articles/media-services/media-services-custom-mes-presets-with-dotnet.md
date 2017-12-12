@@ -12,27 +12,27 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: b4d25f07349043da8cb745930fde3371c98f9960
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0391bb627ab899960d38b4eaf4478a6cdb8bd0b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Testreszabás Media Encoder Standard készletek
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a témakör bemutatja, hogyan végrehajtásához advanced kódolása a Media Encoder Standard (MES) egy egyéni készlettel. A témakör .NET használatával hozzon létre egy kódolási feladat és egy feladatot, amely végrehajtja ezt a feladatot.  
+Ez a cikk bemutatja, hogyan kódolásra speciális a Media Encoder Standard (MES) egy egyéni készlettel. A cikk .NET használatával hozzon létre egy kódolási feladat és egy feladatot, amely végrehajtja ezt a feladatot.  
 
-Ebben a témakörben egy előre definiált egyéni megtételével megjelenik a [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) beállított és a rétegek számának csökkentését. A [Media Encoder Standard testreszabása készletek](media-services-advanced-encoding-with-mes.md) a témakörben bemutatjuk egyéni készletek speciális kódolási feladatok végrehajtásához használható.
+Ez a cikk bemutatja, hogyan testre szabhatja egy előre definiált alapul véve a [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) beállított és a rétegek számának csökkentését. A [Media Encoder Standard testreszabása készletek](media-services-advanced-encoding-with-mes.md) a cikk bemutatja, egyéni készletek speciális kódolási feladatok végrehajtásához használható.
 
 ## <a id="customizing_presets"></a>Egy MES készletet testreszabása
 
 ### <a name="original-preset"></a>Eredeti készlet
 
-A JSON-ban meghatározott mentése a [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) néhány .JSON kiterjesztésű kiterjesztésű fájl témakörében. Például **CustomPreset_JSON.json**.
+A JSON-ban meghatározott mentése a [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) cikk egy .JSON kiterjesztésű kiterjesztésű fájlt. Például **CustomPreset_JSON.json**.
 
 ### <a name="customized-preset"></a>Testreszabott beállítások
 
@@ -122,7 +122,7 @@ Az alábbi példakód Media Services .NET SDK-t használja a következő feladat
 
 - Egy kódolási feladat hozzáadása a projekthez. 
 - Adja meg a bemeneti eszköz kódolni kell.
-- Hozzon létre egy kimeneti eszközt, amely tartalmazza majd a kódolt objektumhoz.
+- Hozzon létre egy kimeneti eszközt, amely tartalmazza a kódolt objektumhoz.
 - Adjon hozzá egy eseménykezelő, ellenőrizze a feladat előrehaladását.
 - A feladat elküldéséhez.
    
@@ -132,22 +132,27 @@ Az alábbi példakód Media Services .NET SDK-t használja a következő feladat
 
 #### <a name="example"></a>Példa   
 
-    using System;
-    using System.Configuration;
-    using System.IO;
-    using System.Linq;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using System.Threading;
+```
+using System;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.Threading;
 
-    namespace CustomizeMESPresests
+namespace CustomizeMESPresests
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         // Field for service context.
         private static CloudMediaContext _context = null;
@@ -160,7 +165,11 @@ Az alábbi példakód Media Services .NET SDK-t használja a következő feladat
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -213,26 +222,26 @@ Az alábbi példakód Media Services .NET SDK-t használja a következő feladat
             Console.WriteLine("  Current state: " + e.CurrentState);
             switch (e.CurrentState)
             {
-            case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
-            case JobState.Canceling:
-            case JobState.Queued:
-            case JobState.Scheduled:
-            case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-            case JobState.Canceled:
-            case JobState.Error:
+                case JobState.Finished:
+                    Console.WriteLine();
+                    Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                    break;
+                case JobState.Canceling:
+                case JobState.Queued:
+                case JobState.Scheduled:
+                case JobState.Processing:
+                    Console.WriteLine("Please wait...\n");
+                    break;
+                case JobState.Canceled:
+                case JobState.Error:
 
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
+                    // Cast sender as a job.
+                    IJob job = (IJob)sender;
 
-                // Display or log error details as needed.
-                break;
-            default:
-                break;
+                    // Display or log error details as needed.
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -242,13 +251,14 @@ Az alábbi példakód Media Services .NET SDK-t használja a következő feladat
             ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
             if (processor == null)
-            throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
             return processor;
         }
 
-        }
     }
+}
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

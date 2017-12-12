@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 176850ff69f8a6f19dda4fc3389bd2b7e022e578
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 3d552ae8593773fbf17cd19344f1ddb4d3a49fba
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Az Azure-ban Node.js Linux Cassandra fürt futtatása
 
@@ -134,7 +134,7 @@ Ebben a lépésben a folyamat létrehozunk Ubuntu kép az előfeltételt jelent�
 Azure egy nyilvános kulcsot, amely PEM vagy DER kódolású létesítési időpontjában X509 kér. A el az SSH Linux Azure-on található utasításokat követve nyilvános/titkos kulcspárt létre. Ha tervezi putty.exe Windows vagy Linux SSH-ügyfélként, hogy alakítsa át a PEM-kódolású RSA titkos kulcs PPK formátum használatával puttygen.exe; Ehhez útmutatást a fenti weblapon találhatók.
 
 #### <a name="step-2-create-ubuntu-template-vm"></a>2. lépés: Sablon Ubuntu virtuális gép
-A Virtuálisgép-sablon létrehozásához jelentkezzen be a klasszikus Azure portálra, és kövesse az alábbi eljárást: új, számítási, virtuális gép, FROM GYŰJTEMÉNYE, UBUNTU, Ubuntu Server 14.04 LTS kattintson, majd a jobbra mutató nyílra. Ez az oktatóanyag ismerteti, hogyan hozzon létre egy Linux virtuális Gépet hozzon létre egy virtuális gép futó Linux talál.
+A Virtuálisgép-sablon létrehozásához jelentkezzen be az Azure portálra, és kövesse az alábbi eljárást: új, számítási, virtuális gép, FROM GYŰJTEMÉNYE, UBUNTU, Ubuntu Server 14.04 LTS kattintson, majd a jobbra mutató nyílra. Ez az oktatóanyag ismerteti, hogyan hozzon létre egy Linux virtuális Gépet hozzon létre egy virtuális gép futó Linux talál.
 
 Adja meg a következő információkat a "virtuálisgép-konfiguráció" képernyőn #1:
 

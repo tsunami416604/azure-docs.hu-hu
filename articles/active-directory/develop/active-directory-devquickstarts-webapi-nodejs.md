@@ -1,10 +1,10 @@
 ---
-title: "Ismerkedés az Azure Active Directory Node.js |} Microsoft Docs"
+title: "Ismerkedés az Azure Active Directory Node.js"
 description: "Hogyan hozhat létre a többi Node.js webes API-k, amely az Azure AD használatára a hitelesítéshez."
 services: active-directory
 documentationcenter: nodejs
 author: craigshoemaker
-manager: routlaw
+manager: mtillman
 ms.assetid: 7654ab4c-4489-4ea5-aba9-d7cdc256e42a
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/17/2017
 ms.author: cshoe
 ms.custom: aaddev
-ms.openlocfilehash: 6f67a2cf2baabfa10c6a8e81b085ca6991b981dd
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: c882f717635bef38d15fefef2f4ff6a5c30490b4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="secure-nodejs-web-api-with-azure-active-directory"></a>Node.js webes API-t az Azure Active Directory biztonságossá tétele
 
@@ -76,7 +76,7 @@ Mielőtt az csatlakozna az Azure Active Directory, a következő információkat
 | Név  | Leírás | A konfigurációs fájlban változó neve |
 | ------------- | ------------- | ------------- |
 | Bérlő neve  | [Bérlő neve](active-directory-howto-tenant.md) a hitelesítéshez használni kívánt | `tenantName`  |
-| Ügyfélazonosító  | Ügyfél-azonosító az aad-ben használt OAuth-kifejezésnek _Alkalmazásazonosító_. |  `clientID`  |
+| Ügyfél-azonosító  | Ügyfél-azonosító az aad-ben használt OAuth-kifejezésnek _Alkalmazásazonosító_. |  `clientID`  |
 
 A regisztrációs válasz az Azure-felhő rendszerhéj, másolja a `appId` értékét, és hozzon létre egy új fájlt `config.js`. Ezután adja hozzá az alábbi kódot, és cserélje le az értékeket a zárójeles jogkivonatokat:
 

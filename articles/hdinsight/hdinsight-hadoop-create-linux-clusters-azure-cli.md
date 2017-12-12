@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/01/2017
 ms.author: larryfr
-ms.openlocfilehash: 330e3691307d0b52ed63da3560390beef154f779
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 0ae573922938b775900b839a24a917e4211fbadc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Az Azure parancssori felület használata a HDInsight-fürtök létrehozása
 
@@ -117,7 +117,7 @@ Az alábbi lépéseket kell elvégezni a parancssorból, például a PowerShell 
     * Cserélje le `sshuser` és `sshuserpassword` a felhasználónévvel és SSH használ a fürt eléréséhez használandó jelszót
 
     > [!IMPORTANT]
-    > Ebben a példában a fürt két munkavégző megjegyzéseket hoz létre. Skálázási műveletek elvégzésével fürt létrehozása után is módosíthatja a feldolgozó csomópontok száma. Ha több mint 32 munkavégző csomópontokhoz használatát tervezi, majd ki kell választania egy átjárócsomóponttal mérete legalább 8 maggal és 14 GB RAM. Beállíthatja az átjárócsomópont méret használatával a `--headNodeSize` paraméter fürt létrehozása során.
+    > Ez a példa egy fürtöt hoz létre a két munkavégző csomópontokhoz. Skálázási műveletek elvégzésével fürt létrehozása után is módosíthatja a feldolgozó csomópontok száma. Ha több mint 32 munkavégző csomópontokhoz használatát tervezi, majd ki kell választania egy átjárócsomóponttal mérete legalább 8 maggal és 14 GB RAM. Beállíthatja az átjárócsomópont méret használatával a `--headNodeSize` paraméter fürt létrehozása során.
     >
     > A csomópont-méretek és a társuló költségeket további információkért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/).
 

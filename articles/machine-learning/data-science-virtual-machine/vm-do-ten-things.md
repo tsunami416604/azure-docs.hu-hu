@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: gokuma;weig;bradsev
-ms.openlocfilehash: 9aafd6300bebbb5505aa4ed707cac9716c8e6aa1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 622bb5971a6ad774e770f00d2d9f44999b844d12
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas az adatelemző virtuális gép
 
@@ -803,14 +803,14 @@ Azure Cosmos-adatbázis egy NoSQL-adatbázis a felhőben. Lehetővé teszi péld
 
 A következő lépések szükséges Azure Cosmos DB elérje a DSVM kell.
 
-1. A DocumentDB Python SDK telepítése (Futtatás ```pip install pydocumentdb``` parancssorból)
+1. Az Azure Cosmos DB Python SDK telepítése (Futtatás ```pip install pydocumentdb``` parancssorból)
 2. Hozzon létre egy Azure Cosmos DB fiókot és az adatbázis [Azure-portálon](https://portal.azure.com)
 3. "Azure Cosmos DB áttelepítési eszköz" letölthető [Itt](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) és bontsa ki az Ön által választott könyvtárra
 4. Adatimportálás JSON (mexikói adatok) tárolja egy [nyilvános blob](https://cahandson.blob.core.windows.net/samples/volcano.json) be a következő parancsparaméterek az áttelepítési eszköz (a könyvtárból, amelyre telepítette a Cosmos DB áttelepítési eszköz dtui.exe) Cosmos DB. Adja meg a forrás és cél helyét, ezekkel a paraméterekkel:
    
     /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/; AccountKey = [[kulcs]; adatbázis mexikói /t.Collection:volcano1 =
 
-Az adatok importálása után nyissa meg Jupyter, és nyissa meg a notebook című *DocumentDBSample* tartalmazó python kódját szeretné a hozzáférést a DocumentDB és néhány alapvető lekérdezése. További kapcsolatos Cosmos DB érhetők el a szolgáltatás [dokumentációs oldal](https://docs.microsoft.com/azure/cosmos-db/).
+Az adatok importálása után nyissa meg Jupyter, és nyissa meg a notebook című *DocumentDBSample* tartalmazó python kódját szeretné elérni az Azure Cosmos DB és néhány alapvető lekérdezése. További kapcsolatos Cosmos DB érhetők el a szolgáltatás [dokumentációs oldal](https://docs.microsoft.com/azure/cosmos-db/).
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8. Jelentések és a Power BI Desktop használatával hozhat létre.
 Ossza meg velünk megjelenítheti a Power BI-ban az előző Cosmos DB példában ahhoz, hogy az adatok vizuális betekintést bekerül mexikói JSON-fájlt. Részletes utasítások találhatók a [Power BI-cikk](../../cosmos-db/powerbi-visualize.md). Magas szintű lépései a következők:

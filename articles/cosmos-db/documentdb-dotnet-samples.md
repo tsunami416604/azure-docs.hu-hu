@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Cosmos DB: .NET példák a DocumentDB az API-hoz |} Microsoft Docs"
-description: "C# .NET példák a githubon található gyakori feladatok a documentdb-ben, beleértve a CRUD műveletek."
+title: "Az Azure Cosmos DB: .NET példák az SQL API-hoz |} Microsoft Docs"
+description: "C# .NET példák az Azure Cosmos DB SQL API-t, beleértve a CRUD műveletek gyakori feladatok a githubon található."
 keywords: "NoSQL-példa"
 services: cosmos-db
 author: rnagpal
@@ -15,20 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: bc019e50ba72adc8b399579d623a63e86f21f92c
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: c15440d78c43fce4613953c5151ff76729f28a88
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-net-examples-for-the-documentdb-api"></a>Az Azure Cosmos DB: .NET példák a DocumentDB API-hoz.
+# <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Az Azure Cosmos DB: .NET példák az SQL API-hoz.
 > [!div class="op_single_selector"]
 > * [.NET-példák](documentdb-dotnet-samples.md)
 > * [NODE.js-példák](documentdb-nodejs-samples.md)
 > * [Python példák](documentdb-python-samples.md)
-> * [A minta Azure Kódgalériából.](https://azure.microsoft.com/documentation/samples/?service=documentdb&ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+> * [A minta Azure Kódgalériából.](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Hajtsa végre a CRUD műveletek és más olyan gyakori műveleteket az Azure Cosmos DB erőforrás legfrissebb minta megoldások szerepelnek a [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) GitHub-tárházban. Ez a cikk a következő információkat tartalmazza:
 

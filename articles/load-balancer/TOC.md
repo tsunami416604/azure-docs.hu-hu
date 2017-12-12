@@ -1,8 +1,8 @@
 # Áttekintés
 ## [Mi az a Load Balancer?](load-balancer-overview.md)
 ## [Mi az a Load Balancer Standard?](load-balancer-standard-overview.md)
-## [Internetes Load Balancer](load-balancer-internet-overview.md)
-## [Belső terheléselosztó](load-balancer-internal-overview.md)
+## [Nyilvános Load Balancer](load-balancer-internet-overview.md)
+## [Belső Load Balancer](load-balancer-internal-overview.md)
 ## [A Load Balancer vizsgálatok ismertetése](load-balancer-custom-probe-overview.md)
 ## [A magas rendelkezésre állású portok ismertetése](load-balancer-ha-ports-overview.md)
 ## [Azure Resource Manager-támogatás](load-balancer-arm.md)
@@ -14,25 +14,17 @@
 
 ## [Belső Load Balancer konfigurálása](load-balancer-get-started-ilb-arm-portal.md)
 ### [Belső Load Balancer konfigurálása (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
-### [Belső Load balancer konfigurálása (parancssori felület)](load-balancer-get-started-ilb-arm-cli.md)
+### [Belső Load Balancer konfigurálása (parancssori felület)](load-balancer-get-started-ilb-arm-cli.md)
 ### [Belső Load Balancer konfigurálása (sablon)](load-balancer-get-started-ilb-arm-template.md)
 
-## [Belső Load Balancer konfigurálása a felhőszolgáltatásokhoz](load-balancer-get-started-ilb-classic-cloud.md)
-### [Belső Load Balancer konfigurálása a felhőszolgáltatásokhoz (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
-### [Belső Load Balancer konfigurálása a Cloud Services szolgáltatáshoz (parancssori felület)](load-balancer-get-started-ilb-classic-cli.md)
+## [Nyilvános Load Balancer konfigurálása](load-balancer-get-started-internet-portal.md)
+### [Nyilvános Load Balancer konfigurálása (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
+### [Nyilvános Load Balancer konfigurálása (parancssori felület)](load-balancer-get-started-internet-arm-cli.md)
+### [Nyilvános Load Balancer konfigurálása (sablon)](load-balancer-get-started-internet-arm-template.md)
 
-## [Internetkapcsolattal rendelkező Load Balancer konfigurálása](load-balancer-get-started-internet-portal.md)
-### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (parancssori felület)](load-balancer-get-started-internet-arm-cli.md)
-### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (sablon)](load-balancer-get-started-internet-arm-template.md)
-
-## [Internetkapcsolattal rendelkező Load Balancer konfigurálása – (klasszikus PowerShell)](load-balancer-get-started-internet-classic-ps.md)
-### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (klasszikus felhő)](load-balancer-get-started-internet-classic-cloud.md)
-### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (klasszikus parancssori felület)](load-balancer-get-started-internet-classic-cli.md)
-
-## [Internetkapcsolattal rendelkező Load Balancer konfigurálása IPv6-tal](load-balancer-ipv6-internet-ps.md)
-### [Internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal (parancssori felület)](load-balancer-ipv6-internet-cli.md)
-### [Internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal (sablon)](load-balancer-ipv6-internet-template.md)
+## [Nyilvános Load Balancer létrehozása IPv6-tal](load-balancer-ipv6-internet-ps.md)
+### [Nyilvános Load Balancer létrehozása IPv6-tal (parancssori felület)](load-balancer-ipv6-internet-cli.md)
+### [Nyilvános Load Balancer létrehozása IPv6-tal (sablon)](load-balancer-ipv6-internet-template.md)
 
 ## [Zónaredundáns nyilvános Load Balancer Standard létrehozása](load-balancer-get-started-internet-az-portal.md)
 ### [Zónaredundáns nyilvános Load Balancer Standard létrehozása (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
@@ -50,11 +42,17 @@
 ## [Naplóelemzés az Azure Load Balancerhez](load-balancer-monitor-log.md)
 ## [A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez](load-balancer-ipv6-for-linux.md)
 ## [Magas rendelkezésre állású portok konfigurálása belső Load Balancerhez](load-balancer-configure-ha-ports.md)
-## [Nyilvános IP-cím létrehozása rendelkezésre állási zónában](../virtual-network/create-public-ip-availability-zone-portal.md)
-## [Nyilvános IP-cím létrehozása rendelkezésre állási zónában (PowerShell)](../virtual-network/create-public-ip-availability-zone-powershell.md)
-## [Nyilvános IP-cím létrehozása rendelkezésre állási zónában (parancssori felület)](../virtual-network/create-public-ip-availability-zone-cli.md)
+
 ## Hibaelhárítás
 ### [Azure Load Balancer hibaelhárítása](load-balancer-troubleshoot.md)
+
+## Klasszikus üzemi modellhez kapcsolódó cikkek
+### [Belső Load Balancer konfigurálása a Cloud Services szolgáltatáshoz](load-balancer-get-started-ilb-classic-cloud.md)
+#### [Belső Load Balancer konfigurálása a Cloud Services szolgáltatáshoz (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
+#### [Belső Load Balancer konfigurálása a Cloud Services szolgáltatáshoz (parancssori felület)](load-balancer-get-started-ilb-classic-cli.md)
+### [Nyilvános Load Balancer konfigurálása (klasszikus PowerShell)](load-balancer-get-started-internet-classic-ps.md)
+#### [Nyilvános Load Balancer konfigurálása (klasszikus felhő)](load-balancer-get-started-internet-classic-cloud.md)
+#### [Nyilvános Load Balancer konfigurálása (klasszikus parancssori felület)](load-balancer-get-started-internet-classic-cli.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer)

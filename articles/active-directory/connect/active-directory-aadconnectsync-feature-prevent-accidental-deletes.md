@@ -4,7 +4,7 @@ description: "Ez a témakör az Azure AD Connectben megakadályozása véletlen 
 services: active-directory
 documentationcenter: 
 author: AndKjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: a33fb729cff5007e40820af696cfec823a3ecfde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72283424ab750d10f9a0739347650d0a9eee1520
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Az Azure AD Connect szinkronizálása: véletlen törlések megakadályozása
 Ez a témakör az Azure AD Connectben megakadályozása véletlen törlések (véletlen törlések megakadályozása) szolgáltatást ismerteti.
@@ -32,7 +32,7 @@ Gyakori helyzetek, amikor megjelenik a sok törlések tartalmazza:
 * Egy szervezeti egység összes objektum törlődnek.
 * A szervezeti egység összes objektumára, szinkronizálás hatókörén kívül kell tekinteni, új neve.
 
-A PowerShell használatával módosíthatja az alapértelmezett érték 500 objektumok használatával `Enable-ADSyncExportDeletionThreshold`. Ez az érték a szervezet méretének megfelelően konfigurálni kell. Mivel a szinkronizálásütemező 30 percenként fut, a értéke 30 percen belül látható törlések száma.
+A PowerShell használatával módosíthatja az alapértelmezett érték 500 objektumok használatával `Enable-ADSyncExportDeletionThreshold`, amely az AD-Szinkronizáló modul telepítve az Azure Active Directory Connect része. Ez az érték a szervezet méretének megfelelően konfigurálni kell. Mivel a szinkronizálásütemező 30 percenként fut, a értéke 30 percen belül látható törlések száma.
 
 Ha túl sok törli exportálható az Azure AD előkészített, majd az exportálás nem és egy e-mailt ehhez hasonló:
 

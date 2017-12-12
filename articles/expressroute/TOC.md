@@ -28,10 +28,11 @@
 ### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [Azure CLI](howto-linkvnet-cli.md)
+## [Helyek közötti VPN konfigurálása Microsoft társviszony-létesítésen keresztül](site-to-site-vpn-over-microsoft-peering.md)
 ## Az ExpressRoute virtuális hálózati átjáróinak konfigurálása
 ### [Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-## [Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása](expressroute-howto-coexist-resource-manager.md)
+## [Párhuzamos ExpressRoute- és helyek közötti kapcsolatok konfigurálása](expressroute-howto-coexist-resource-manager.md)
 ## Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása
 ### [Azure Portal](how-to-routefilter-portal.md)
 ### [Azure PowerShell](how-to-routefilter-powershell.md)

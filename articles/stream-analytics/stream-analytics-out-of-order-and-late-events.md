@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: f9854172e08785676a7804433d9a559e623a7b05
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b4ce26fbbb2a494004e9c80462881dd754531497
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-stream-analytics-event-order-consideration"></a>Az Azure Stream Analytics esemény rendelés szempont
 
@@ -78,7 +78,7 @@ Késő érkezés tolerancia alapján módosítás először történik, és nem 
    * Esemény 4 _alkalmazási_ 00:09:00 = _érkezésének ideje_ 00:10:03 = _System.Timestamp_ = 00:09:00, elfogadott eredeti Timestamp értékkel rendelkező alkalmazás ideje területén belül rendelés tűréshatáron.
    * Esemény 5 _alkalmazási_ 00:06:00 = _érkezésének ideje_ 00:10:04 = _System.Timestamp_ 00:07:00, beállítani, mert a kérelem ideje régebbi, mint a nem megfelelő sorrendben = tolerancia.
 
-## <a name="practical-considerations"></a>Gyakorlati szempontok
+### <a name="practical-considerations"></a>Gyakorlati szempontok
 A fent említett *késő érkezés tolerancia* az alkalmazás és érkezési idő maximális különbsége.
 Is amikor alkalmazás feldolgozási idő, újabb, mint a konfigurált események *késő érkezés tolerancia* előtt módosulnak a *üzemen kívüli tolerancia* beállítás lesz érvényes. Igen soron kívüli hatályos késő érkezés tűréshatár és nem megfelelő sorrendben tolerancia minimális.
 
@@ -94,22 +94,33 @@ Konfigurálása közben *késő érkezés tolerancia* és *üzemen kívüli tole
 
 Az alábbiakban néhány példa
 
-### <a name="example-1"></a>1. példa: 
+#### <a name="example-1"></a>1. példa: 
 A lekérdezés "Partíció által PartitionId" záradékot tartalmaz, és belül egyetlen partícióra, az események küldhetők szinkron küldési módszerekkel. Aszinkron küldés módszerek blokk, amíg az események küldhetők.
 Ebben az esetben nem megfelelő sorrendben értéke nulla események explicit megerősítés elküldése a következő esemény előtt a sorrendben vannak elküldve. Késő érkezés az esemény létrehozása és küldése az esemény + a küldő és a bemeneti forrás közötti maximális késleltetés maximális késleltetés
 
-### <a name="example-2"></a>2. példa
+#### <a name="example-2"></a>2. példa
 A lekérdezés "Partíció által PartitionId" záradékot tartalmaz, és belül egyetlen partícióra, az események küldhetők aszinkron küldés metódussal. Aszinkron küldés módszerek is kezdeményezhető több küld egy időben, ami üzemen kívüli események okozhat.
 Ebben az esetben nem megfelelő sorrendben és a késői érkezési az esemény létrehozása és küldése az esemény + a küldő és a bemeneti forrás közötti maximális késleltetés legalább maximális késleltetés.
 
-### <a name="example-3"></a>3. példa:
+#### <a name="example-3"></a>3. példa:
 Lekérdezés nem rendelkezik "Partíció által PartitionId", és legalább két partíció.
 A beállítás ugyanaz, mint a 2. példa. Azonban az egyik partíciója adatok késleltetheti-e a kimenet további * késő érkezés tolerancia "ablak.
+
+## <a name="handling-event-producers-with-differing-timelines"></a>Eltérő ütemtervet tartalmazó esemény gyártók kezelése
+Egyetlen bemeneti esemény adatfolyam gyakran fog tartalmazni (például az egyes eszközökről) több esemény gyártóktól származó események.  Ezek az események sorrendje a korábban tárgyalt okok miatt előfordulhat, hogy érkeznek. Ezekben az esetekben előfordulhat, hogy a rendellenességeket esemény gyártók között nagy, amíg egyetlen termelő eseményeiben rendellenességeket lesz kis (vagy még nem létezik).
+Azure Stream Analytics soron események kezelésére vonatkozó általános mechanizmusokat biztosít, ilyen mechanizmusokat eredményez (való várakozás közben a rendszer eléréséhez straggling események), vagy feldolgozási késedelmeket eldobott vagy igazítva, vagy mindkét.
+Még a sok esetben a kívánt lekérdezést végrehajtja különböző esemény gyártók események egymástól függetlenül.  Például akkor lehet, hogy kell összesítése események ablak eszközönkénti.  Ilyen esetben nincs szükség a megfelelő események készítő miközben a rendszer a többi esemény gyártó szinkronizálásához a kimeneti késleltetése.  Ez azt jelenti nincs szükség a gyártók között eltérésére idő kezelésére, és azt egyszerűen figyelmen kívül hagyható.
+Természetesen ez azt jelenti, hogy a kimeneti eseményekben maguk soron tekintetében az időbélyegzőjüket; az alsóbb rétegbeli fogyasztói az ilyen viselkedést kezelésére képesnek kell lennie.  Azonban minden esemény kimenet lesz megfelelő.
+
+Az Azure Stream Analytics megvalósítja a funkciók használata a [TIMESTAMP BY OVER](https://msdn.microsoft.com/library/azure/mt573293.aspx) záradékban.
+
+
 
 ## <a name="to-summarize"></a>Összefoglalásképpen
 * Késő érkezés tűréshatár és nem megfelelő sorrendben ablak konfigurálni kell a nézetet, késésre vonatkozó követelmény alapján, és is figyelembe kell venni az események küldhetők hogyan.
 * Javasoljuk, hogy nem megfelelő sorrendben tolerancia értéke kisebb a késő érkezés tolerancia.
 * Több ütemtervet egyesítésekor adatokat az adatforrások és a partíciók az egyik hiánya késleltetheti-e a kimenet egy további késő érkezés tűrési által.
+* A sorrend csak fontos az esemény készítő ütemterv belül, esetén a TIMESTAMP BY OVER záradék használatát egy független substream minden esemény gyártó feldolgozni.
 
 ## <a name="get-help"></a>Segítségkérés
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).

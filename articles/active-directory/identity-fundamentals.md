@@ -3,7 +3,7 @@ title: "Azure-identitás kezelése – alapok |} Microsoft Docs"
 description: "Felhőalapú Identitások is keresztül irányítást tarthat fenn a legjobban, és betekintést, hogyan és mikor történjen a felhasználók férhetnek hozzá a vállalati alkalmazásokhoz és adatokhoz."
 keywords: 
 author: jeffgilb
-manager: femila
+manager: mtillman
 ms.reviewr: jsnow
 ms.author: jeffgilb
 ms.date: 07/05/2017
@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: 52f05ee8a5c07fc008da40aef12d1ad8e8136429
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b77fc9e6c9dbb5fde2e2f0d153f348bb553b9f79
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Azure-identitás kezelése – alapok
 Több vállalati digitális erőforrások élő a felhőben, és az eszközökön a vállalati hálózaton kívül, felhőalapú identitás- és hozzáférés felügyeleti kiválóan áttelepítésére válik. Felhőalapú Identitások is keresztül irányítást tarthat fenn a legjobban, és betekintést, hogyan és mikor történjen a felhasználók férhetnek hozzá a vállalati alkalmazásokhoz és adatokhoz.

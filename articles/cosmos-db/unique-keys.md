@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: rafats
-ms.openlocfilehash: 127b42b67a3e29022ac5d9535751a1b2a3be250e
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 85157f3f0bcf86ae049c0bec76afb0ca33797b11
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Egyedi kulcsok vannak az Azure Cosmos-Adatbázisba
 
 Egyedi kulcsok vannak elhelyezve a fejlesztők a adatintegritást réteg hozzáadása az adatbázishoz. Hozzon létre egy egyedi kulcs házirend, a tároló létrehozásakor, egy vagy több érték / egyediségének biztosítása [partíciókulcs](partition-data.md). Egy tároló létrehozása után a egyedi kulcs házirendnek, megakadályozza, hogy az ismétlődő értékek, az egyedi kulcs korlátozás által megadott értéket tartalmazó új vagy frissített elemek létrehozását.   
 
 > [!NOTE]
-> A legújabb verziói által támogatott egyedi kulcsok vannak a [.NET](documentdb-sdk-dotnet.md) és [.NET Core](documentdb-sdk-dotnet-core.md) DocumentDB (SQL) SDK-k, és a [MongoDB API](mongodb-feature-support.md#unique-indexes). A tábla API és a Graph API nem támogatja egyedi kulcsok vannak jelenleg. 
+> A legújabb verziói által támogatott egyedi kulcsok vannak a [.NET](documentdb-sdk-dotnet.md) és [.NET Core](documentdb-sdk-dotnet-core.md) SQL SDK-k, és a [MongoDB API](mongodb-feature-support.md#unique-indexes). A tábla API és a Graph API nem támogatja egyedi kulcsok vannak jelenleg. 
 > 
 >
 
@@ -54,7 +54,7 @@ Egyedi kulcsot kell meghatározni, ha a tároló jön létre, és egyedi kulcsa 
 
 Meglévő tárolók egyedi kulcsok használata nem lehet frissíteni.
 
-A tároló egy egyedi kulcs házirend létrehozása után a házirend nem módosítható, kivéve, ha a tároló hozza létre újra. Ha szeretné valósítsa meg az egyedi kulcsok vannak a meglévő adatok, az új tároló létrehozásához, és a megfelelő adatok áttelepítési eszköz használatával helyezze át az adatokat az új tárolóhoz. A DocumentDB SQL-tárolók, használja a [adatáttelepítési eszköz](import-data.md). A MongoDB-tárolók, használjon [mongoimport.exe vagy mongorestore.exe](mongodb-migrate.md).
+A tároló egy egyedi kulcs házirend létrehozása után a házirend nem módosítható, kivéve, ha a tároló hozza létre újra. Ha szeretné valósítsa meg az egyedi kulcsok vannak a meglévő adatok, az új tároló létrehozásához, és a megfelelő adatok áttelepítési eszköz használatával helyezze át az adatokat az új tárolóhoz. Az SQL-tárolókat, használja a [adatáttelepítési eszköz](import-data.md). A MongoDB-tárolók, használjon [mongoimport.exe vagy mongorestore.exe](mongodb-migrate.md).
 
 Minden egyedi kulcs legfeljebb 16 elérési értéket (például /firstName, /lastName, /address/zipCode stb.) tartalmazhat. 
 
@@ -64,9 +64,9 @@ A kérelem egység díja létrehozásához, frissítéséhez és valamivel nagyo
 
 Ritka egyedi kulcsok használata nem támogatott. Ha néhány egyedi elérési utak értékei hiányoznak, azok tekintendők különleges null értékű, amely szerepel az egyediségre vonatkozó feltételnek.
 
-## <a name="documentdb-sql-api-sample"></a>A DocumentDB (SQL) API-minta
+## <a name="sql-api-sample"></a>Az SQL API-minta
 
-A következő példakód bemutatja, hogyan hozzon létre egy új DocumentDB SQL-tároló két egyedi kulcsra vonatkozó megkötések. Az első pedig az Utónév, a Vezetéknév, e-mailben a korábbi példában bemutatott korlátozás. A második pedig a felhasználók cím/zipCode. Egy minta JSON-fájl által használt elérési utak a egyedi kulcs házirend a Kódpélda követi. 
+A következő példakód bemutatja, hogyan hozzon létre egy új SQL-tároló két egyedi kulcsra vonatkozó megkötések. Az első pedig az Utónév, a Vezetéknév, e-mailben a korábbi példában bemutatott korlátozás. A második pedig a felhasználók cím/zipCode. Egy minta JSON-fájl által használt elérési utak a egyedi kulcs házirend a Kódpélda követi. 
 
 ```csharp
 // Create a collection with two separate UniqueKeys, one compound key for /firstName, /lastName,

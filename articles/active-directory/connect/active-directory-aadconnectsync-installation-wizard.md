@@ -5,7 +5,7 @@ keywords: "Az Azure AD Connect telepítővarázsló lehetővé teszi, hogy konfi
 services: active-directory
 documentationcenter: 
 author: andkjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: d800214e-e591-4297-b9b5-d0b1581cc36a
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 42855b785c0ab334e33a622c8db912ce2438c627
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5688175f5277139b09b648bedbedd7e91e1478f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect szinkronizálása: még egyszer a telepítővarázsló futtatása
 Az Azure AD Connect telepítővarázsló első futtatásakor az végigvezeti a telepítés konfigurálása. Ha újra futtatni a telepítési varázsló, karbantartási lehetőségeinek kínál.
@@ -62,7 +62,7 @@ A többi beállítás a kezdeti telepítés nem módosítható, és nem érhető
 * Másik erdőből származó objektumok csatlakozó módjának módosítása.
 * Csoport-alapú szűrés engedélyezése.
 
-## <a name="refresh-directory-schema"></a>Directory-séma frissítése
+## <a name="refresh-directory-schema"></a>Címtárséma frissítése
 Ez a beállítás használható, ha a séma módosította az egyik a helyszíni AD DS-erdőkből. Például előfordulhat, hogy telepítette az Exchange vagy a Windows Server 2012 sémára eszköz objektumok frissítése. Ebben az esetben szüksége arra utasítani az Azure AD Connect újból beolvasni a sémát az AD DS-ből, és frissíti a gyorsítótárat. Ezzel a művelettel újragenerálja a szinkronizálási szabályok is. Ha például az Exchange-séma ad hozzá, a konfigurációs kerülnek Exchange szinkronizálási szabályait.
 
 Ha ezt a lehetőséget választja, a konfigurációt a könyvtárak jelennek meg. Megtartani az alapértelmezett beállítást, és frissítse az összes erdőben, és némelyikük törölje.

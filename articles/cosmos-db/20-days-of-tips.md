@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 10/03/2017
 ms.author: mimig
 ms.custom: cda
-ms.openlocfilehash: 39fd3e0df9a9d86272fb94afc9397ff61dd049f0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 976be65fc4668a911bfa93ef87a7f14686a79f31
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>Azure Cosmos DB tippek 20 nap
 
@@ -177,7 +177,7 @@ A cikk: [Azure Cosmos DB egység kérése](https://aka.ms/Kt2nbn)
 
 20. tipp: Mindenki loves egy jó régi segédletét. Az Azure #CosmosDB van egy túl. Tekintse meg a [https://aka.ms/Nt01nl](https://aka.ms/Nt01nl)
 
-– Áttekintés: [Azure Cosmos DB: DocumentDB API SQL lekérdezés Adatlap PDF](https://aka.ms/Nt01nl)
+– Áttekintés: [Azure Cosmos DB: SQL-lekérdezés Adatlap PDF](https://aka.ms/Nt01nl)
 
 [![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913793292474732544)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319559027986698241)
 

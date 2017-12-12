@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: f9bdc28349c540ee68b421b7643e4bed099c9fdd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 357937aad5eb13ca87267629eb542cc43119dc0a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>SQL Database PowerShell (előzetes verzió) segítségével a rugalmas feladatok létrehozásához és kezeléséhez
 
@@ -203,7 +203,7 @@ Nyissa meg a rugalmas feladatok kapcsolatot:
 ## <a name="encrypted-credentials-within-the-elastic-database-jobs"></a>A rugalmas feladatok belül titkosított hitelesítő adatokat
 Adatbázis-hitelesítő adatok szúrhatók be, a feladatok *feladatvezérlő adatbázishoz* a jelszóval titkosított. Fontos engedélyezhetik a feladatokat hajthatnak végre egy későbbi időpontban (használatával a feladatok ütemezésének) hitelesítő adatok tárolását.
 
-Titkosítási működik, hozza létre a telepítési parancsfájl részeként tanúsítvány keresztül. A telepítési parancsfájlt hoz létre, és a tanúsítvány tölt be az Azure-Felhőszolgáltatásban tárolt titkosított jelszavak visszafejtéséhez. Az Azure Cloud Service később tárolja a nyilvános kulcsot a feladatok belül *feladatvezérlő adatbázishoz* lehetővé teszi a megadott jelszóval titkosításához anélkül, hogy helyileg telepíteni kell a tanúsítványt a PowerShell API-t vagy a klasszikus Azure portál felület.
+Titkosítási működik, hozza létre a telepítési parancsfájl részeként tanúsítvány keresztül. A telepítési parancsfájlt hoz létre, és a tanúsítvány tölt be az Azure-Felhőszolgáltatásban tárolt titkosított jelszavak visszafejtéséhez. Az Azure Cloud Service később tárolja a nyilvános kulcsot a feladatok belül *feladatvezérlő adatbázishoz* lehetővé teszi a megadott jelszóval titkosításához anélkül, hogy helyileg telepíteni kell a tanúsítványt a PowerShell API-t vagy Azure portál felület .
 
 A hitelesítő adatok jelszavak titkosított és védett, csak olvasási hozzáféréssel rendelkező felhasználók a rugalmas adatbázis-feladatok objektumok. Azonban lehetséges, hogy egy rosszindulatú felhasználó rugalmas adatbázis-feladatok objektumok olvasási és írási hozzáféréssel rendelkező bontsa ki a jelszót. Hitelesítő adatok is felhasználják feladat végrehajtások készültek. Hitelesítő adatai továbbítódnak céladatbázisokhoz kapcsolatok létesítéséhez. Jelenleg nincs korlátozás az egyes hitelesítő adatot használja a céladatbázisokhoz, rosszindulatú felhasználó hozzáadhatja a rosszindulatú felhasználók vezérlése alatt adatbázis egy adatbázis cél. A felhasználó később volt az adatbázis ahhoz, hogy a hitelesítésre szolgáló jelszó célzó feladat indítása.
 

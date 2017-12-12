@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ef0395a9c666732ba117822f46e8d2a7540aee14
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: d134359cd986d654ad411586302d01634914325e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="prepare-application-for-azure-container-service-aks"></a>Felkészülés az alkalmazás Azure tároló szolgáltatás (AKS)
 
@@ -32,9 +32,9 @@ A következő útmutatókból a tároló lemezkép van egy Azure-tároló beáll
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és az alapszintű Docker-parancsokra vonatkozó alapvető ismeretekkel. Amennyiben szükséges, tekintse meg a tárolók alapfogalmainak ismertetését a [Bevezetés a Docker használatába]( https://docs.docker.com/get-started/) című cikkben. 
+Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és az alapszintű Docker-parancsokra vonatkozó alapvető ismeretekkel. Ha szükséges, lásd: [Ismerkedés a Docker] [ docker-get-started] a tároló alapjai a egy ismertetése. 
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Docker-fejlesztési környezetre. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) vagy [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszeren.
+Az oktatóanyag elvégzéséhez szüksége lesz egy Docker-fejlesztési környezetre. Docker biztosít, amely egyszerű konfigurálását a Docker bármely csomagok [Mac][docker-for-mac], [Windows][docker-for-windows], vagy [Linux] [ docker-for-linux] rendszer.
 
 Azure Cloud rendszerhéj nem tartalmazza a Docker-összetevők minden egyes lépéseinek befejezéséhez szükséges az oktatóanyag. Ezért ajánlott egy teljes Docker fejlesztési környezet használatával.
 
@@ -58,7 +58,7 @@ A könyvtárán belül van az alkalmazás forráskódjához, egy előre létreho
 
 ## <a name="create-container-images"></a>Tároló képek létrehozása
 
-[Docker Compose](https://docs.docker.com/compose/) segítségével automatizálhatja a build tároló lemezképeket és az alkalmazások több tároló telepítését.
+[Docker Compose] [ docker-compose] segítségével automatizálhatja a build tároló lemezképeket és az alkalmazások több tároló telepítését.
 
 Futtassa a `docker-compose.yml` fájl tároló lemezkép létrehozásához, letölti a Redis-lemezképet, és indítsa el az alkalmazást.
 
@@ -66,7 +66,7 @@ Futtassa a `docker-compose.yml` fájl tároló lemezkép létrehozásához, let�
 docker-compose up -d
 ```
 
-Amikor elkészült, használja a [docker képek](https://docs.docker.com/engine/reference/commandline/images/) parancsot a létrehozott lemezképek.
+Amikor elkészült, használja a [docker képek] [ docker-images] parancsot a létrehozott lemezképek.
 
 ```console
 docker images
@@ -81,7 +81,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Futtassa a [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) parancsot a futó tárolók megtekintéséhez.
+Futtassa a [docker ps] [ docker-ps] parancsot a futó tárolók megtekintéséhez.
 
 ```console
 docker ps
@@ -131,4 +131,16 @@ Ebben az oktatóanyagban egy alkalmazás teszteltük, és az alkalmazáshoz lét
 Folytassa a következő oktatóanyaggal, amelyben a tárolórendszerképek az Azure Container Registry-ben való tárolásának módját ismerheti meg.
 
 > [!div class="nextstepaction"]
-> [Rendszerképek leküldése az Azure Container Registry-be](./tutorial-kubernetes-prepare-acr.md)
+> [Azure-tároló beállításjegyzék leküldéses lemezképek][aks-tutorial-prepare-acr]
+
+<!-- LINKS - external -->
+[docker-compose]: https://docs.docker.com/compose/
+[docker-for-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-for-mac]: https://docs.docker.com/docker-for-mac/
+[docker-for-windows]: https://docs.docker.com/docker-for-windows/
+[docker-get-started]: https://docs.docker.com/get-started/
+[docker-images]: https://docs.docker.com/engine/reference/commandline/images/
+[docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

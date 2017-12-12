@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/06/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7f5e2939ed09c0fbb4eb81f066075553376ff57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e19ea08823575a535b7bc3e18a97902f72e802eb
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partíció és a skála Azure Cosmos DB
 
@@ -41,7 +41,7 @@ Particionálás működése Minden elem rendelkeznie kell egy partíció és sor
 
 * Egy Azure Cosmos DB tárolóhoz kiépítése `T` kérelmek/s átviteli sebesség.
 * A háttérben Azure Cosmos DB kiépítését kiszolgálásához szükséges partíciókat `T` kérelmek/s. Ha `T` magasabb, mint a maximális átviteli sebesség partíciónként `t`, majd az Azure Cosmos DB rendelkezések `N`  =  `T/t` partíciókat.
-* Azure Cosmos DB foglal le a kulcsfontosságú terület partíció kulcs kivonatok egyenlő vízszintes a `N` partíciókat. Mindegyik partíció (fizikai partícióra), így (logikai partíciót) 1-N partíciókulcs-értékek üzemelteti.
+* Azure Cosmos DB foglal le a kulcsfontosságú terület partíció kulcs kivonatok egyenlő vízszintes a `N` partíciókat. Így minden partíció (fizikai partíció) állomások `1/N` partícióazonosító kulcsértékei (logikai partíciót).
 * Ha egy fizikai partíció `p` eléri a tárolási korlátját, Azure Cosmos DB zökkenőmentesen felosztja a `p` két új partíciókra `p1` és `p2`. Az egyes partíciók körülbelül fél kulcsainak megfelelő értékeket továbbítja. Ez a művelet vágási nem látható, hogy az alkalmazást.
 * Ha ehhez hasonlóan a nagyobb átviteli sebesség kiépítése `t*N`, Azure Cosmos DB felosztja a nagyobb átviteli sebesség támogatásához a partíciók közül legalább egyet.
 
@@ -49,10 +49,10 @@ A partíciós kulcsok szemantikája némileg eltérő minden API szemantikáját
 
 | API | Partíciókulcs | Sorkulcsa |
 | --- | --- | --- |
-| Azure Cosmos DB | egyéni partíciós kulcs elérési útja | rögzített`id` | 
-| MongoDB | Egyéni megosztott kulcs  | rögzített`_id` | 
-| Graph | egyéni partíció kulcstulajdonság | rögzített`id` | 
-| Tábla | rögzített`PartitionKey` | rögzített`RowKey` | 
+| Azure Cosmos DB | egyéni partíciós kulcs elérési útja | `id` kijavítva | 
+| MongoDB | Egyéni megosztott kulcs  | `_id` kijavítva | 
+| Graph | egyéni partíció kulcstulajdonság | `id` kijavítva | 
+| Tábla | `PartitionKey` kijavítva | `RowKey` kijavítva | 
 
 Azure Cosmos-adatbázis használja a particionálás kivonat-alapú. Egy cikk írásakor Azure Cosmos DB csak a partíciós kulcs értékét, és a kivonatolt eredménye alapján határozza meg a mely partíció-elem tárolására. Azure Cosmos-adatbázis ugyanazon fizikai partícióján azonos partíciókulcsú minden elem tárolja. A partíciós kulcs választott egy fontos döntés, hogy módosítania kell a tervezés során nem. Válasszon ki egy tulajdonság neve, amely számos különböző értékeket tartalmaz, és nem is memóriahozzáférési mintáitól.
 

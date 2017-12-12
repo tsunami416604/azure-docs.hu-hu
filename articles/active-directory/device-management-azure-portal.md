@@ -4,7 +4,7 @@ description: "Ismerje meg, hogyan használható az Azure-portálon eszközök ke
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 83a1ba0b97c0617884b1645ad54e259f04052f49
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 1e0d40b996e181a606d16d26633f890b9169ecbb
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Az Azure portál használatával eszközök kezelése
 
@@ -229,8 +229,8 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 - Tevékenység erőforrástípusa
 - Tevékenység
 - Dátumtartomány
-- cél
-- Kezdeményező (Szereplő)
+- Cél
+- (Aktor) által kezdeményezett
 
 A szűrők mellett kereshet adott bejegyzéseket.
 

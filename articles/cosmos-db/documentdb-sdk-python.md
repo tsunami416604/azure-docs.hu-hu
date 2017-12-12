@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB Python API, az SDK és az erőforrások |} Microsoft Docs"
-description: "Tudnivalók a Python API és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB Python SDK verziói között végrehajtott módosításokat."
+title: "Azure Cosmos DB: SQL Python API-t, az SDK és erőforrások |} Microsoft Docs"
+description: "Tudnivalók az SQL Python API és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB Python SDK verziói között végrehajtott módosításokat."
 services: cosmos-db
 documentationcenter: python
 author: rnagpal
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6aecdce1de2e852c8683df0ec29e91de940ba25
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 891af14f347c798d7c661e19d110b5c0a2d8982c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-python-sdk-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK: A kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET-módosítás adatcsatorna](documentdb-sdk-dotnet-changefeed.md)
@@ -34,6 +34,8 @@ ms.lasthandoff: 11/15/2017
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 <table>
 
@@ -81,8 +83,8 @@ ms.lasthandoff: 11/15/2017
 * FELSŐ/ORDERBY lekérdezések particionált gyűjtemények támogatása.
 
 ### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* Szabályozottan halmozott kérelmek hozzáadott újrapróbálkozási házirend támogatása. (A szabályozottan halmozott kérelmek egy kérelem aránya túl nagy kivétel, hibakód 429 kapnak.) Alapértelmezés szerint Azure Cosmos DB újrapróbálja kilenc alkalommal az egyes kérelmek 429. Hibakód: a rendszer észlelt, amikor az retryAfter idő a válaszfejlécet érvényesítenie. A rögzített újrapróbálkozási időköz most már beállítható a RetryOptions tulajdonság részeként a ConnectionPolicy objektum Ha azt szeretné, figyelmen kívül hagyja a próbálkozások közötti kiszolgáló által visszaadott retryAfter idő. Azure Cosmos-adatbázis most megvárja, legfeljebb 30 másodpercig (függetlenül újrapróbálkozások száma) leszabályozta, és visszaadja a választ 429. Hibakód: minden egyes kérelemhez. Most is lehet a RetryOptions tulajdonságban ConnectionPolicy objektumon.
-* Cosmos DB most adja vissza x-ms-szabályozási--újrapróbálkozások és x-ms-throttle-retry-wait-time-ms a válaszfejlécek minden kérelemben a késleltetési jelöléséhez újra számát és a próbálkozások közötti várta a kérelem cummulative idő szerint.
+* Szabályozottan halmozott kérelmek hozzáadott újrapróbálkozási házirend támogatása. (A szabályozottan halmozott kérelmek egy kérelem aránya túl nagy kivétel, hibakód 429 kapnak.) Alapértelmezés szerint Azure Cosmos DB újrapróbálja kilenc alkalommal az egyes kérelmek 429. Hibakód: a rendszer észlelt, amikor az retryAfter idő a válaszfejlécet érvényesítenie. A rögzített újrapróbálkozási időköz most már beállítható a RetryOptions tulajdonság részeként a ConnectionPolicy objektum Ha azt szeretné, figyelmen kívül hagyja a próbálkozások közötti kiszolgáló által visszaadott retryAfter idő. Azure Cosmos-adatbázis most megvárja, legfeljebb 30 másodpercig (függetlenül újrapróbálkozások száma) leszabályozta, és visszaadja a választ 429. Hibakód: minden egyes kérelemhez. Most is felülbírálható lesz a RetryOptions tulajdonságban ConnectionPolicy objektumon.
+* Cosmos DB most adja vissza x-ms-szabályozási--újrapróbálkozások és x-ms-throttle-retry-wait-time-ms a válaszfejlécek minden kérelemben a késleltetési jelöléséhez újra számát és a próbálkozások közötti várta a kérelem összesített idő szerint.
 * Eltávolította a RetryPolicy osztály és a megfelelő tulajdonságával (retry_policy), a document_client osztály kitett, és ehelyett bevezetett teszi ki a ConnectionPolicy osztály, amely felülbírálhatja az alapértelmezett beállítások némelyike használható RetryOptions tulajdonsága RetryOptions osztály.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
@@ -92,7 +94,7 @@ ms.lasthandoff: 11/15/2017
 * Idő a Live(TTL) szolgáltatás dokumentumok támogatása.
 
 ### <a name="a-name161161"></a><a name="1.6.1"/>1.6.1
-* Kiszolgáló oldalán particionálás a különleges karakterek engedélyezéséhez partitionkey elérési kapcsolatos hibajavítások.
+* Hibajavítások kapcsolódó kiszolgálóoldali particionálás a partíciós kulcs elérési útja különleges karakterek engedélyezéséhez.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 * Megvalósított [particionált gyűjtemények](partition-data.md) és [felhasználói teljesítményszintet](performance-levels.md). 
@@ -119,14 +121,14 @@ ms.lasthandoff: 11/15/2017
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Kiadás & használatból való kivonást dátumok
-Microsoft legalább értesítést küldenek **12 hónapon keresztül** SDK eltávolítása érdekében vagy újabb támogatott verzióra való áttérés előtt.
+A Microsoft biztosít értesítési legalább **12 hónapon keresztül** SDK eltávolítása érdekében vagy újabb támogatott verzióra való áttérés előtt.
 
 Új szolgáltatásait és funkcióit és optimalizálás csak hozzá az aktuális SDK, így javasoljuk, hogy mindig a legújabb SDK verzióra frissít legkorábban lehető. 
 
-A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
+A Cosmos DB kivont SDK használatával a szolgáltatás vannak elutasította.
 
 > [!WARNING]
-> Az Azure DocumentDB Python SDK-es vagy korábbi összes verziója **1.0.0** a rendszerből **2016. február 29-én**. 
+> Az Azure SQL SDK for Python-es vagy korábbi összes verziója **1.0.0** volt használatból **2016. február 29-én**. 
 > 
 > 
 

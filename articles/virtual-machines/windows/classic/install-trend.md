@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 7922a9561369acf3c4299e1cadc0dc9f8f8eadb1
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 41b7ecf0d0c71b5c225454cc77ce87d5736c2165
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security szolgáltatásként való telepítése és konfigurálása windowsos virtuális gépen
 > [!IMPORTANT]
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan telepítse és konfigurálja a Trend Micro mély biz
 
 Az ügyfél biztonsági bővítményként keresztül a Virtuálisgép-ügynök telepítve van. Új virtuális gépen, az mély biztonsági ügynök telepítése, mert a Virtuálisgép-ügynök automatikusan hozza létre az Azure-portálon.
 
-A klasszikus portál, az Azure parancssori felület vagy a PowerShell használatával létrehozni meglévő virtuális lehet, hogy nincs egy Virtuálisgép-ügynök. Egy meglévő virtuális gépen, amelyen a Virtuálisgép-ügynök nem rendelkezik akkor kell letöltheti és telepítheti azt. Ez a cikk mindkét eseteire vonatkozik.
+Lehet, hogy egy meglévő virtuális gép létrehozása az Azure-portált használja, az Azure parancssori felület vagy a PowerShell nincs Virtuálisgép-ügynök. Egy meglévő virtuális gépen, amelyen a Virtuálisgép-ügynök nem rendelkezik akkor kell letöltheti és telepítheti azt. Ez a cikk mindkét eseteire vonatkozik.
 
 Ha egy helyszíni megoldás a Trend Micro aktuális előfizetést, használhatja az Azure virtuális gépek védelme érdekében. Ha nem az ügyfél még, regisztrálhat egy próba-előfizetésre. Információ a megoldásról további információkért lásd a következő Trend Micro blogbejegyzésben [Microsoft Azure virtuális gép ügynök bővítmény a mély biztonsági](http://go.microsoft.com/fwlink/p/?LinkId=403945).
 

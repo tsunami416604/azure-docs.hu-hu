@@ -4,7 +4,7 @@ description: "Alkalmazások közzététele az PingAccess és alkalmazás Proxy f
 services: active-directory
 documentationcenter: 
 author: kgremban
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 10/11/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: f6e6bb39164f9b3dea206ebcf850ee98e2506dcf
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 7c2e56a5f747aa2a37fc4bed0e3f3877b64f2be2
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Az egyszeri bejelentkezés az alkalmazásproxy és PingAccess fejléc-alapú hitelesítés
 
@@ -127,7 +127,7 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes l
 
   Most, mentse ezt az értéket, mert nem lehet majd megjeleníteni az ablak bezárását követően.
 
-  ![Hozzon létre egy új kulcsot](./media/application-proxy-ping-access/create-keys.png)
+  ![Új kulcs létrehozása](./media/application-proxy-ping-access/create-keys.png)
 
 6. Zárja be a regisztrációk panelen vagy görgessen egészen a bal oldali térjen vissza az Azure Active Directory menübe.
 7. Válassza ki **tulajdonságok**.

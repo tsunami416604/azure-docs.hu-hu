@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 11/03/2017
 ms.author: elbutter
-ms.openlocfilehash: a13b81213b7a47cb7209bc914f514fa10aede5c4
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 20bbdbbde7edc4351563685761785874870a3c82
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-elastic-query-with-sql-data-warehouse"></a>Rugalmas lekérdezési konfigurálja az SQL Data Warehouse szolgáltatással
 
@@ -39,9 +39,9 @@ Az oktatóanyag elkezdéséhez rendelkeznie kell a következő előfeltételek t
 
 2. A bejelentkezési és a felhasználói adatok adatraktár kapcsolatnak az SQL-adatbázis jelölő létrehozása.
 
-  ```sql
-  CREATE LOGIN SalesDBLogin WITH PASSWORD = 'aReallyStrongPassword!@#';
-  ```
+   ```sql
+   CREATE LOGIN SalesDBLogin WITH PASSWORD = 'aReallyStrongPassword!@#';
+   ```
 
 3. Az új lekérdezés SSMS vagy egy másik lekérdezés ügyfél, nyissa meg a **SQL data warehouse példány** a logikai kiszolgálón.
 
@@ -75,14 +75,14 @@ Az oktatóanyag elkezdéséhez rendelkeznie kell a következő előfeltételek t
 
 9. Hozzon létre egy külső adatforrásból mutat, az adatraktár példánya.
 
-  ```sql
-  CREATE EXTERNAL DATA SOURCE EnterpriseDwSrc WITH 
-      (TYPE = RDBMS, 
-      LOCATION = '<SERVER NAME>.database.windows.net', 
-      DATABASE_NAME = '<SQL DATA WAREHOUSE NAME>', 
-      CREDENTIAL = SalesDBElasticCredential, 
-  ) ;
-  ```
+   ```sql
+   CREATE EXTERNAL DATA SOURCE EnterpriseDwSrc WITH 
+       (TYPE = RDBMS, 
+       LOCATION = '<SERVER NAME>.database.windows.net', 
+       DATABASE_NAME = '<SQL DATA WAREHOUSE NAME>', 
+       CREDENTIAL = SalesDBElasticCredential, 
+   ) ;
+   ```
 
 10. Mostantól létrehozhat külső táblákra hivatkozó a külső adatforráshoz. Azokat a táblákat használata lekérdezések kerülnek az adatraktár példánya feldolgozni és küldi vissza az adatbázispéldány fölött.
 

@@ -3,6 +3,7 @@
 | Előfizetésenként storage-fiókok száma | 200<sup>1</sup> |
 | A maximális tárolókapacitás fiók | 500 TiB<sup>2</sup> |
 | Blob tárolók, blobok, fájlmegosztások, táblák, üzenetsorok, entitásokat vagy tárfiók üzenetek maximális száma | Korlátlan |
+| A tárfiók / maximális lekérdezési gyakorisága | 20 000 kérelmek / másodperc<sup>2</sup> |
 | Maximális érkező<sup>3</sup> tárolási fiókonként (US régió) | Ha a Georedundáns/ZRS 10 GB/s<sup>4</sup> engedélyezve van, az LRS 20 GB/s<sup>2</sup> |
 | Maximális kilépő<sup>3</sup> tárolási fiókonként (US régió) | Ha a ZRS RA-GRS vagy GRS 20 GB/s<sup>4</sup> engedélyezve van, az LRS 30 GB/s<sup>2</sup> |
 | Maximális érkező<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha a Georedundáns/ZRS 5 GB/s<sup>4</sup> engedélyezve van, az LRS 10 GB/s<sup>2</sup> |

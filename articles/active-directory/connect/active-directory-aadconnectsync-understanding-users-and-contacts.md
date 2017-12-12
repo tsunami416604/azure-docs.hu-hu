@@ -4,7 +4,7 @@ description: "Felhasználók, csoportok és az Azure AD Connect szinkronizálás
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: 8d204647-213a-4519-bd62-49563c421602
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi;andkjell
-ms.openlocfilehash: 7bb7bdba21d83817cf5579e779a6a4d509753c01
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: a08e3f3593e1ec04ebf65fef2880c965e02775d6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect szinkronizálása: felhasználók, csoportok és névjegyek
 Miért több Active Directory-erdő kellene lennie, és nincsenek számos különböző központi telepítési topológiák számos különféle oka van. Közös modellek például egy egyesülés & az beszerzése után egy fiók-erőforrások telepítése és a globális Címlista sync'ed erdők. De akkor is, ha nincsenek tiszta modellek, a hibrid modellek is. Az alapértelmezett konfiguráció a Azure AD Connect szinkronizálási szolgáltatás nem feltételezi azt egy meghatározott modellre, de attól függően, hogy hogyan felhasználók egyeztetéséről volt jelölve a telepítési útmutatóban, különböző viselkedés tapasztalható.

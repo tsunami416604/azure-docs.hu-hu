@@ -4,7 +4,7 @@ description: "Ismerje meg, és hárítsa el a meglévő Azure AD tartományi szo
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory-ds
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 12/11/2017
 ms.author: maheshu
-ms.openlocfilehash: 9c9a47e9b3050eb7f41202d6a4b9202ba0f379df
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 24e11769e9b403bc00157e3f60869effa6a9633f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Hárítsa el a meglévő Azure AD tartományi szolgáltatásokat a felügyelt tartományok nem egyező directory hibákat
-Rendelkezik egy meglévő kezelt tartományban, amelyekre engedélyezve voltak a klasszikus Azure portál használatával. Keresse meg az új Azure-portálon, és megtekintheti a felügyelt tartományra, a következő hibaüzenet jelenik meg:
+Meglévő Azure AD tartományi szolgáltatásokkal kezelt tartományban van. Navigáljon az Azure portálra, és megtekintheti a felügyelt tartományra, a következő hibaüzenet jelenik meg:
 
 ![Nem egyező könyvtár hibája](.\media\getting-started\mismatched-tenant-error.png)
 
@@ -33,7 +33,7 @@ Ezt a hibát az okozza, ha a felügyelt tartományok és engedélyezve van a vir
 
 Az új Azure-portálon (és kifejezetten az Azure AD tartományi szolgáltatások kiterjesztése) az Azure Resource Manager-t. A modern Azure Resource Manager-környezetben az egyes korlátozások elküldésére nagyobb biztonságot, és a szerepkör alapú hozzáférés szabályozásához (RBAC) erőforrások érvényesek lesznek. A bizalmas művelet engedélyezése az Azure AD tartományi szolgáltatásokat az Azure AD-bérlő azért, mert azt eredményezi, hogy a felügyelt tartományhoz szinkronizálandó hitelesítő kivonatokat. Ehhez a művelethez szükséges egy Bérlői rendszergazda a címtár adható meg, hogy. Emellett rendszergazdai jogosultságokkal kell rendelkeznie, amelyben a felügyelt tartományra engedélyezi a virtuális hálózaton. Az RBAC ellenőrzi, hogy következetesen működjenek, az a felügyelt tartományra, és a virtuális hálózati kell tartoznia a azonos Azure AD-bérlő.
 
-Rövid nem engedélyezhető egy felügyelt tartomány a "contoso.com" Azure AD-bérlő tulajdonosa egy másik Azure AD-bérlő "fabrikam.com" Azure-előfizetéshez tartozó virtuális hálózatban. A klasszikus Azure portálon nem a Resource Manager platformra épül, és nem kényszeríti ki az ilyen korlátozások.
+Rövid nem engedélyezhető egy felügyelt tartomány a "contoso.com" Azure AD-bérlő tulajdonosa egy másik Azure AD-bérlő "fabrikam.com" Azure-előfizetéshez tartozó virtuális hálózatban. 
 
 **Érvényes konfigurációs**: Ez a telepítési forgatókönyvben a Contoso kezelt tartomány engedélyezve van a Contoso Azure AD bérlői. A felügyelt tartomány fel van fedve egy virtuális hálózaton, a Contoso Azure AD bérlő tulajdonában Azure-előfizetéshez tartozó. Ezért mind a felügyelt tartományra, valamint a virtuális hálózat tartozik ugyanahhoz az Azure AD-bérlő. Ez a konfiguráció nincs érvényes és teljes mértékben támogatott.
 

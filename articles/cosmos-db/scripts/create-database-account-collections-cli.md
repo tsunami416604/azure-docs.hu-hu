@@ -1,6 +1,6 @@
 ---
-title: "Az Azure CLI parancsfájl-Azure Cosmos DB DocumentDB API-fiók létrehozása, az adatbázis és a gyűjtemény |} Microsoft Docs"
-description: "Az Azure CLI-parancsfájlt minták – egy Azure Cosmos DB DocumentDB API-fiók, adatbázis és gyűjtemény létrehozása"
+title: "Az Azure CLI parancsfájl-Azure Cosmos DB SQL API-fiók létrehozása, az adatbázis és a gyűjtemény |} Microsoft Docs"
+description: "Az Azure CLI-parancsfájlt minták – egy Azure Cosmos DB SQL API-fiók, adatbázis és gyűjtemény létrehozása"
 services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/06/2017
 ms.author: mimig
-ms.openlocfilehash: 28f99d56404e47adcd375d9f3106cc234469cbfd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8225b074420983096ee89d5816b0bfe9bc138fe
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-create-an-documentdb-api-account-using-cli"></a>Az Azure Cosmos DB: Parancssori felület használatával DocumentDB API-fiók létrehozása
+# <a name="azure-cosmos-db-create-an-sql-api-account-using-cli"></a>Az Azure Cosmos DB: Parancssori felület használatával SQL API-fiók létrehozása
 
-A parancsfájlpéldát CLI Azure Cosmos DB DocumentDB API fiók, adatbázis és gyűjtemény létrehozása  
+Ez a parancsfájlpélda CLI hoz létre egy Azure Cosmos DB SQL API-fiók, adatbázis és gyűjtemény.  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -32,7 +32,7 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ## <a name="sample-script"></a>Mintaparancsfájl
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Create an Azure Cosmos DB DocumentDB API account, database, and collection")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Create an Azure Cosmos DB SQL API account, database, and collection")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 

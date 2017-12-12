@@ -1,5 +1,5 @@
 ---
-title: "A DocumentDB API Python példák Azure Cosmos DB |} Microsoft Docs"
+title: "Az SQL API Python példák Azure Cosmos DB |} Microsoft Docs"
 description: "Python példák a githubon található Azure Cosmos DB, beleértve a CRUD műveletek az általános feladatok."
 keywords: "Python példák"
 services: cosmos-db
@@ -15,20 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2016
 ms.author: moderakh
-ms.openlocfilehash: 98c00f23a3ce7569c9cc85a62840500cc50ed3a1
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 1e46cde71eace6876f4e83ef0a2fecdb9019ecda
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Az Azure Cosmos DB Python-példák
 > [!div class="op_single_selector"]
 > * [.NET-példák](documentdb-dotnet-samples.md)
 > * [NODE.js-példák](documentdb-nodejs-samples.md)
 > * [Python példák](documentdb-python-samples.md)
-> * [A minta Azure Kódgalériából.](https://azure.microsoft.com/documentation/samples/?service=documentdb&ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+> * [A minta Azure Kódgalériából.](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Minta megoldások, amelyek a CRUD műveletek és más olyan gyakori műveleteket Azure Cosmos DB erőforrások szerepelnek a [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples) GitHub-tárházban. Ez a cikk a következő információkat tartalmazza:
 
@@ -46,12 +48,12 @@ Minta megoldások, amelyek a CRUD műveletek és más olyan gyakori műveleteket
 Emellett szükség van a [Python SDK](documentdb-sdk-python.md). 
    
    > [!NOTE]
-   > Minden minta önálló, maga beállítja, és a szükségtelenné vált maga után. Így a minták ki több hívások [document_client. CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html). Minden alkalommal, amikor ez történik, az előfizetés alapján számlázzuk a létrehozott gyűjtemény teljesítményszint / használati 1 órában. 
+   > Minden minta önálló, maga beállítja, és a szükségtelenné vált maga után. Így a minták ki több hívások [document_client. CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html). Minden alkalommal, amikor ez történik, az előfizetés számlázása a létrehozott gyűjtemény teljesítményszint / használati egy órán keresztül történik. 
    > 
    > 
 
 ## <a name="database-examples"></a>Adatbázis-példák
-A [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement/Program.py) fájlt a [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement) projekt mutatja be a következő feladatok végezhetők el.
+A [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement/Program.py) fájlt a [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement) projekt mutatja be a következő feladatok végezhetők el:
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -62,7 +64,7 @@ A [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samp
 | [Adatbázis törlése](https://github.com/Azure/azure-documentdb-python/blob/d78170214467e3ab71ace1a7400f5a7fa5a7b5b0/samples/DatabaseManagement/Program.py#L113-L126) |[document_client. DeleteDatabase](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html) |
 
 ## <a name="collection-examples"></a>Gyűjtemény példák
-A [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement/Program.py) fájlt a [CollectionManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement) projekt mutatja be a következő feladatok végezhetők el.
+A [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement/Program.py) fájlt a [CollectionManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement) projekt mutatja be a következő feladatok végezhetők el:
 
 | Tevékenység | API-referencia |
 | --- | --- |

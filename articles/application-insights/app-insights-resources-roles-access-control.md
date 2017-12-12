@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: e3aa1d432cf2c510c09b13d4f07833edcb1e9b53
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 6e811c9b427469fa781cf1f5b7c7deff3a8e6eb3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés az Application Insightsban
 Szabályozhatja, aki rendelkezik-e olvasási és hozzáférési frissíteni az adatait az Azure-ban [Application Insights][start], használatával [Microsoft Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).
@@ -42,7 +42,7 @@ Első, néhány definíciók:
 
     ![A Tallózás, erőforráscsoportok, majd válasszon ki egy csoportot](./media/app-insights-resources-roles-access-control/11-group.png)
 
-* [**Előfizetés** ](https://manage.windowsazure.com) - jelentkezzen be Azure-előfizetés az Application Insights vagy más Azure-erőforrások használatára. Minden erőforráscsoport tartozik egy Azure-előfizetéssel, ahol az ár csomag kiválasztása és, ha egy szervezet előfizetés, válassza ki a tagok és a hozzáférési engedélyeket.
+* [**Előfizetés** ](https://portal.azure.com) - jelentkezzen be Azure-előfizetés az Application Insights vagy más Azure-erőforrások használatára. Minden erőforráscsoport tartozik egy Azure-előfizetéssel, ahol az ár csomag kiválasztása és, ha egy szervezet előfizetés, válassza ki a tagok és a hozzáférési engedélyeket.
 * [**Microsoft-fiók** ] [ account] -felhasználónevét és jelszavát, amelyekkel bejelentkezhet a Microsoft Azure előfizetések, XBox Live-, Outlook.com-os és más Microsoft-szolgáltatásokban.
 
 ## <a name="access"></a>Elérés az erőforráscsoportban
@@ -80,7 +80,7 @@ Vagy nem sikerült lépjen be egy másik szint és a felhasználó hozzáadása 
 "Szerkesztés" magában foglalja a létrehozása, törlése és frissítése:
 
 * Erőforrások
-* Webteszt
+* Webtesztek
 * Riasztások
 * Folyamatos exportálás
 

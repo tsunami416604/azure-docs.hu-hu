@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3d3c6c95763bc8eb67f092bda61bb58c7af9daf2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 764eb479733a7d4acdb6e6c3eee721cb4a161c88
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Az Azure portálon keresztül szolgáltatás katalógus alkalmazás közzététele
 
@@ -60,7 +60,6 @@ A kezelt alkalmazás definícióját tartalmazó .zip fájl URI keresztül elér
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Felügyelt alkalmazások bemutatása, lásd: [felügyelt használatát áttekintő cikkben](overview.md).
+* A felügyelt alkalmazások bemutatásáért tekintse meg a [felügyelt alkalmazások áttekintését](overview.md).
 * Kezelt alkalmazás, tekintse meg a [a kezelt alkalmazások az Azure-hoz](sample-projects.md).
-* Felügyelt alkalmazások közzétételéhez az Azure piactéren kapcsolatos információkért lásd: [Azure felügyelt alkalmazások a piactéren](publish-marketplace-app.md).
-* A felhasználói felület csomagdefiníciós fájl egy felügyelt alkalmazás létrehozásához, lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
+* Felhasználóifelület-definíciós fájl felügyelt alkalmazáshoz való létrehozásával kapcsolatban tekintse meg a [CreateUiDefinition első lépéseit bemutató](create-uidefinition-overview.md) témakört.

@@ -2,18 +2,17 @@
 title: "Gyűjtemény Analysis - Azure dokumentum |} Microsoft Docs"
 description: "Hogyan összefoglalója elemzése a dokumentumok, ideértve például kifejezés tanulási modellezési témakör vagy témakör modell elemzés Azure ML munkaterület használatával nagy gyűjteménye."
 services: machine-learning
-documentationcenter: 
 author: kehuan
 ms.author: kehuan
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview
 ms.service: machine-learning
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 5ef1589e28c01d750641873d3c8482f61d90a887
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 49e215e723728f54a34f7c4e3a89217f16250002
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="document-collection-analysis"></a>A dokumentum gyűjtemény elemzés
 
@@ -72,7 +71,7 @@ Hozzon létre egy új projektet, ebben a példában egy sablon használatával:
 
 ## <a name="data-description"></a>Adatok leírása
 
-Az ebben a forgatókönyvben használt adatkészlet szöveg összegzéseket és az Egyesült Államok kongresszusa által a jogszabályi műveletek társított metaadatot tartalmaz. Az adatgyűjtés [GovTrack.us](https://www.govtrack.us/), amely nyomon követi az Amerikai Egyesült Államokban Kongresszus tevékenységeit, és segít Americans nemzeti jogszabályi folyamataikat részt. A tömeges adatok letölthető keresztül [Ez a hivatkozás](https://www.govtrack.us/data/congress/) manuális parancsfájl, amely nem szerepel ebben a forgatókönyvben használatával. Részletesen ismerteti az adatok letöltése nem található a [GovTrack API-JÁNAK dokumentációja](https://www.govtrack.us/developers/api).
+Az ebben a forgatókönyvben használt adatkészlet szöveg összegzéseket és az Egyesült Államok kongresszusa által végrehajtott minden jogszabályi műveletet társított metaadatot tartalmaz. Az adatgyűjtés [GovTrack.us](https://www.govtrack.us/), amely nyomon követi az Amerikai Egyesült Államokban Kongresszus tevékenységeit, és segít Americans nemzeti jogszabályi folyamataikat részt. A tömeges adatok letölthető keresztül [Ez a hivatkozás](https://www.govtrack.us/data/congress/) manuális parancsfájl, amely nem szerepel ebben a forgatókönyvben használatával. Részletesen ismerteti az adatok letöltése nem található a [GovTrack API-JÁNAK dokumentációja](https://www.govtrack.us/developers/api).
 
 ### <a name="data-source"></a>Adatforrás
 

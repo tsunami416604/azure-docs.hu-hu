@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c8789f08a37466862120dda88a0bce7da3e9a91
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 6b72bdc546c824515867daa062c4a94f7326d7fb
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>Egy Azure Cosmos DB és HDInsight Apache Hive, Pig vagy Hadoop feladat futtatása
 Az oktatóanyag bemutatja, hogyan futtathat [Apache Hive][apache-hive], [Apache Pig][apache-pig], és [Apache Hadoop] [ apache-hadoop] MapReduce-feladatok on Azure HDInsight Cosmos DB Hadoop-összekötővel együtt. Cosmos DB Hadoop összekötő lehetővé teszi, hogy a forrás és a Hive, Pig és MapReduce-feladatok fogadó Cosmos DB. Ez az oktatóanyag fog használni Cosmos DB adatforrás mind az átadó a Hadoop-feladatokat.
@@ -178,7 +178,7 @@ Adja meg: </br> <strong>https://portalcontent.BLOB.Core.Windows.NET/scriptaction
         $clusterName = "<HDInsightClusterName>"
 2. <p>Most először hoz létre, a lekérdezési karakterlánc. A Microsoft fog írni Hive lekérdezés összes dokumentumot (_ts) rendszer által létrehozott időbélyegeket és egyedi azonosítók (_rid) egy Azure Cosmos DB gyűjteményből, összes dokumentumot összeadja a percenként, majd tárolja az eredményeket egy új Azure Cosmos DB gyűjteménybe.</p>
 
-    <p>Először hozzon létre olyan Hive táblát az Azure Cosmos DB gyűjteményből. Adja hozzá a következő kódrészletet a PowerShell-parancsfájlt tartalmazó ablaktáblájához való <strong>után</strong> a kódrészletet # 1. Ellenőrizze, hogy tartalmazzák a választható DocumentDB.query paraméter t vágás csak _ts a dokumentumok és _rid.</p>
+    <p>Először hozzon létre olyan Hive táblát az Azure Cosmos DB gyűjteményből. Adja hozzá a következő kódrészletet a PowerShell-parancsfájlt tartalmazó ablaktáblájához való <strong>után</strong> a kódrészletet # 1. Győződjön meg arról, a nem kötelező lekérdezési paraméter lehet levágni a dokumentumokat csak _ts és _rid.</p>
 
    > [!NOTE]
    > **DocumentDB.inputCollections elnevezési nem hiba volt.** Igen, azt felvételének engedélyezése több gyűjtemény bemenetként: </br>
@@ -276,7 +276,7 @@ Adja meg: </br> <strong>https://portalcontent.BLOB.Core.Windows.NET/scriptaction
         # Provide HDInsight cluster name where you want to run the Pig job.
         $clusterName = "Azure HDInsight Cluster Name"
 2. <p>Most először hoz létre, a lekérdezési karakterlánc. A Microsoft fog írni Pig lekérdezés összes dokumentumot (_ts) rendszer által létrehozott időbélyegeket és egyedi azonosítók (_rid) egy Azure Cosmos DB gyűjteményből, összes dokumentumot összeadja a percenként, majd tárolja az eredményeket egy új Azure Cosmos DB gyűjteménybe.</p>
-    <p>Első lépésként betölteni a HDInsight a Cosmos-Adatbázisból dokumentumok. Adja hozzá a következő kódrészletet a PowerShell-parancsfájlt tartalmazó ablaktáblájához való <strong>után</strong> a kódrészletet # 1. Ügyeljen arra, hogy egy DocumentDB-lekérdezés hozzáadása a nem kötelező a DocumentDB lekérdezési paraméter lehet levágni a dokumentumokat csak _ts és _rid.</p>
+    <p>Első lépésként betölteni a HDInsight a Cosmos-Adatbázisból dokumentumok. Adja hozzá a következő kódrészletet a PowerShell-parancsfájlt tartalmazó ablaktáblájához való <strong>után</strong> a kódrészletet # 1. Ügyeljen arra, hogy a lekérdezés hozzáadása a nem kötelező a DocumentDB lekérdezési paraméter lehet levágni a dokumentumokat csak _ts és _rid.</p>
 
    > [!NOTE]
    > Igen, azt felvételének engedélyezése több gyűjtemény bemenetként: </br>

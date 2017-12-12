@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 4597ee28e4c3b797c0ab050b21a126a95d9e8191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ebd6a8cb70f218c3b56bc78c9b853dbf51ab468
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Oktatóanyag: Folyamat EDIFACT számlák Azure BizTalk szolgáltatás használata
 
@@ -55,7 +55,7 @@ A forgatókönyv végrehajtásához a Service Bus-üzenetsorok a Contoso számla
 
 ## <a name="prerequisites"></a>Előfeltételek
 * A Service Bus-névtér kell rendelkeznie. Egy névtér létrehozása vonatkozó utasításokért lásd: [Útmutató: létrehozhat vagy módosíthat egy Service Bus szolgáltatás Namespace](https://msdn.microsoft.com/library/azure/hh674478.aspx). Tételezzük fel, hogy már rendelkezik kiépített, Service Bus-névtér neve **edifactbts**.
-* A BizTalk szolgáltatások előfizetéssel kell rendelkeznie. Útmutatásért lásd: [klasszikus Azure portál használatával BizTalk szolgáltatás létrehozása](http://go.microsoft.com/fwlink/?LinkID=302280). Ebben az oktatóanyagban Tételezzük nevű BizTalk szolgáltatások előfizetéssel rendelkezik **contosowabs**.
+* A BizTalk szolgáltatások előfizetéssel kell rendelkeznie. Ebben az oktatóanyagban Tételezzük nevű BizTalk szolgáltatások előfizetéssel rendelkezik **contosowabs**.
 * BizTalk szolgáltatások előfizetését a BizTalk szolgáltatások portál regisztrálni. Útmutatásért lásd: [egy BizTalk szolgáltatás telepítését a BizTalk szolgáltatások portál regisztrálása](https://msdn.microsoft.com/library/hh689837.aspx)
 * Visual Studio telepítve kell rendelkeznie.
 * BizTalk szolgáltatások SDK telepítve kell rendelkeznie. Letöltheti az SDK [http://go.microsoft.com/fwlink/?LinkId=235057](http://go.microsoft.com/fwlink/?LinkId=235057)  

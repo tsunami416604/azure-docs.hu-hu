@@ -4,7 +4,7 @@ description: "Épület webes alkalmazásokat az Azure AD-megvalósítással az O
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: ae1d7d86-7098-468c-aa32-20df0a10ee3d
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 1cffe40c14b931485cc5cec48a95e02ae770764e
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 06d5000e30850156781496c32ac549ecc0772f46
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 protokoll - OAuth 2.0 Hitelesítésikód-folyamata
 Az OAuth 2.0 hitelesítésengedélyezési kód a védett erőforrások, például webes API-k eléréséhez az eszköz a telepített alkalmazások is használható.  Az app model v2.0 megvalósítással OAuth 2.0 hozzáadhat bejelentkezhet, és a mobil- és asztali alkalmazásokhoz való hozzáférés API.  Ez az Útmutató nyelvtől független, és ismerteti, hogyan lehet üzeneteket küldjön és fogadjon HTTP a nyílt forráskódú kódtárai bármelyikét használata nélkül.
@@ -66,9 +66,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Hatókör |Szükséges |Szóközökkel elválasztott listáját [hatókörök](active-directory-v2-scopes.md) , amelyet a felhasználó beleegyezését számára. |
 | response_mode |Ajánlott |Megadja azt a módszert, amelynek használatával az eredményül kapott jogkivonat vissza küldése az alkalmazásnak.  Lehet `query` vagy `form_post`. |
 | state |Ajánlott |A kérelemhez, amely a token válaszul is visszaadott szerepel érték.  Bármely, a kívánt tartalmat karakterlánc lehet.  Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások megelőzése](http://tools.ietf.org/html/rfc6749#section-10.12).  Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a is használatos. |
-| parancssor |Nem kötelező |Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges.  Jelenleg csak érvényes értékei a "bejelentkezés", "none", és "".  `prompt=login`arra kényszeríti a felhasználó megadja a hitelesítő adataikat, hogy kérésre nem lehet negálni egyszeri bejelentkezést.  `prompt=none`Ellenkező - biztosítja, hogy a felhasználó számára nem jelenik meg minden bármely interaktív kérdés.  Ha a kérelem nem hajtható végre csendes keresztül egyszeri bejelentkezést, akkor a v2.0-végpontra hibát adnak vissza.  `prompt=consent`az OAuth-hozzájárulás párbeszédpanel akkor indul el, miután a felhasználó jelentkezik be, amely kéri a felhasználót, hogy engedélyezze, hogy az alkalmazás. |
-| login_hint |Nem kötelező |Segítségével előre töltse ki a felhasználónév vagy e-mail cím mező annak a bejelentkezési oldal a felhasználó számára, ha tudja, hogy időben a felhasználónevét.  Gyakran alkalmazások ismételt hitelesítés, hogy már kivont a felhasználónév egy korábbi bejelentkezési használatával során fogja használni ezt a paramétert a `preferred_username` jogcímek. |
-| domain_hint |Nem kötelező |Egyike lehet `consumers` vagy `organizations`.  Ha tartalmazza, azt az e-mail alapú felderítési folyamat kihagyja, hogy a felhasználó végighalad a v2.0 bejelentkezési oldal, ami egy nagyobb jelentőséggel zökkenőmentes felhasználói élmény.  Gyakran alkalmazások használja ezt a paramétert ismételt hitelesítés során kivonja a `tid` az előző bejelentkezés.  Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad`, használjon `domain_hint=consumers`.  Ellenkező esetben használja `domain_hint=organizations`. |
+| parancssor |választható |Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges.  Jelenleg csak érvényes értékei a "bejelentkezés", "none", és "".  `prompt=login`arra kényszeríti a felhasználó megadja a hitelesítő adataikat, hogy kérésre nem lehet negálni egyszeri bejelentkezést.  `prompt=none`Ellenkező - biztosítja, hogy a felhasználó számára nem jelenik meg minden bármely interaktív kérdés.  Ha a kérelem nem hajtható végre csendes keresztül egyszeri bejelentkezést, akkor a v2.0-végpontra hibát adnak vissza.  `prompt=consent`az OAuth-hozzájárulás párbeszédpanel akkor indul el, miután a felhasználó jelentkezik be, amely kéri a felhasználót, hogy engedélyezze, hogy az alkalmazás. |
+| login_hint |választható |Segítségével előre töltse ki a felhasználónév vagy e-mail cím mező annak a bejelentkezési oldal a felhasználó számára, ha tudja, hogy időben a felhasználónevét.  Gyakran alkalmazások ismételt hitelesítés, hogy már kivont a felhasználónév egy korábbi bejelentkezési használatával során fogja használni ezt a paramétert a `preferred_username` jogcímek. |
+| domain_hint |választható |Egyike lehet `consumers` vagy `organizations`.  Ha tartalmazza, azt az e-mail alapú felderítési folyamat kihagyja, hogy a felhasználó végighalad a v2.0 bejelentkezési oldal, ami egy nagyobb jelentőséggel zökkenőmentes felhasználói élmény.  Gyakran alkalmazások használja ezt a paramétert ismételt hitelesítés során kivonja a `tid` az előző bejelentkezés.  Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad`, használjon `domain_hint=consumers`.  Ellenkező esetben használja `domain_hint=organizations`. |
 
 Ezen a ponton a kérni fogja a felhasználótól kell adnia a hitelesítő adatait, és a hitelesítés végrehajtásához.  A v2.0-végpontra is biztosítják, hogy a felhasználó hozzájárult szerepelnek az engedélyeket a `scope` lekérdezési paraméter.  Ha a felhasználó nem hozzájárult bármelyik ezeket az engedélyeket, azt kéri a felhasználó számára, hogy a szükséges engedélyekkel.  A részletek [engedélyek, beleegyezése és több-bérlős alkalmazásokhoz itt megadott](active-directory-v2-scopes.md).
 
@@ -105,7 +105,7 @@ error=access_denied
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Engedélyezési végpont hibái hibakódok
 A következő táblázat ismerteti a különböző hibakódok a visszaadható a `error` paramétere a hibaüzenetet.
 
-| Hibakód: | Leírás | Ügyfélművelet |
+| Hibakód | Leírás | Ügyfélművelet |
 | --- | --- | --- |
 | invalid_request |Protokollhiba történt, például a hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet. Ez az fejlesztői hiba általában kezdeti tesztelés során lépett fel. |
 | unauthorized_client |Az ügyfélalkalmazás az engedélyezési kód kérése nem engedélyezett. |Ez általában akkor fordul elő, amikor az ügyfél-alkalmazás nincs regisztrálva az Azure ad-ben, vagy nem kerül be a felhasználó Azure AD-bérlő. Az alkalmazás kérheti a felhasználót az alkalmazás telepítése és az Azure AD hozzáadni utasítás. |
@@ -195,7 +195,7 @@ Hibaválaszok hasonlóan fog kinézni:
 | correlation_id |A kérelem, amelyek segítik a diagnosztika összetevői között egyedi azonosítója. |
 
 #### <a name="error-codes-for-token-endpoint-errors"></a>A token-végpont hibákat hibakódok
-| Hibakód: | Leírás | Ügyfélművelet |
+| Hibakód | Leírás | Ügyfélművelet |
 | --- | --- | --- |
 | invalid_request |Protokollhiba történt, például a hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet |
 | invalid_grant |Az engedélyezési kód érvénytelen vagy lejárt. |Próbálja meg egy új kérelmet a `/authorize` végpont |

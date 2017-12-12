@@ -1,4 +1,4 @@
-## <a name="test-the-function"></a>A függvény tesztelése
+## <a name="test"></a>A függvény tesztelése
 
 Ellenőrizze az üzembe helyezett függvényt a cURL használatával Mac vagy Linux rendszerű számítógépen vagy a Bash használatával Windows rendszerű számítógépen. Hajtsa végre a következő cURL parancsot úgy, hogy a `<app_name>` helyőrzőt lecseréli a függvényalkalmazás nevére. Fűzze hozzá a `&name=<yourname>` lekérdezési karakterláncot az URL-hez.
 

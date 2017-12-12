@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6b26108b000bac56fe7d49a3a634f2be9d7543a8
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6b15be022ba3b8373cfb852be8fc6915824801dc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Az Azure szabványos DDoS-védelem áttekintése
 
@@ -33,7 +33,7 @@ Az alkalmazás tervezési ajánlott eljárásokkal, Azure DDoS védelem DDoS-tá
 ![Az Azure DDoS védelem Standard](./media/ddos-protection-overview/ddos-protection-overview-fig2.png)
 
 > [!IMPORTANT]
-> Az Azure DDoS védelem szabványos jelenleg előzetes verzió. Védelmet biztosítanak a az Azure-erőforrásokkal, amely társítva, például virtuális gépek terheléselosztók vagy alkalmazásátjárót Azure nyilvános IP-címe. Kell [regisztrálása](http://aka.ms/ddosprotection) a szolgáltatás engedélyezése előtt DDoS védelem szabványos az előfizetéséhez. A regisztrálás után az Azure DDoS vonja össze az conacts, és útmutatók segítségével engedélyezése. DDoS védelem szabványos nem áll rendelkezésre az USA keleti régiója, USA keleti régiója 2. régiója, USA nyugati régiója, csak a nyugati középső Régiójában, Észak-Európa, Nyugat-Európában, Nyugat-japán, kelet-japán, Kelet-Ázsia, és Délkelet-Ázsia régiók. Előzetes akkor nem számolnak szolgáltatásunkat használja.
+> Az Azure DDoS védelem szabványos jelenleg előzetes verzió. Védelmet biztosítanak a az Azure-erőforrásokkal, amely társítva, például virtuális gépek terheléselosztók vagy alkalmazásátjárót Azure nyilvános IP-címe. Kell [regisztrálása](http://aka.ms/ddosprotection) a szolgáltatás engedélyezése előtt DDoS védelem szabványos az előfizetéséhez. A regisztrálás után az Azure DDoS csapat felveszi a kapcsolatot, és végigvezeti Önt az engedélyezési folyamat. DDoS védelem szabványos nem áll rendelkezésre az USA keleti régiója, USA keleti régiója 2. régiója, USA nyugati régiója, csak a nyugati középső Régiójában, Észak-Európa, Nyugat-Európában, Nyugat-japán, kelet-japán, Kelet-Ázsia, és Délkelet-Ázsia régiók. Előzetes akkor nem számolnak szolgáltatásunkat használja.
 
 Javasoljuk, hogy próbálja DDoS védelem szabványos, fejlesztési, tesztelési vagy üzemi környezetben. A következő források segítségével visszajelzést adhat az Önnek nyújtott élményt:
 - [A Microsoft Azure fórum Azure DDoS védelem](https://feedback.azure.com/forums/905032-azure-ddos-protection). 

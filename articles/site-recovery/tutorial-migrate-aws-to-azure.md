@@ -15,15 +15,15 @@ ms.workload: storage-backup-recovery
 ms.date: 11/01/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6a10cbf1d3c8043ddcac9a725373fc30a3ecee20
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 814d8ee4952dd08707849eadc1e4e97ab6087da0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) virtuális gépek áttelepítése az Azure-bA
 
-Ez az oktatóanyag útmutatást ad, hogyan telepítheti át az Amazon Web Services (AWS) virtuális gépek (VM), a Site Recovery segítségével Azure virtuális gépekhez. Az Azure-ba, a rendszer kezeli, mintha fizikai, VMsare EC2 példányok áttelepítésekor a helyszíni számítógépek. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag útmutatást ad, hogyan telepítheti át az Amazon Web Services (AWS) virtuális gépek (VM), a Site Recovery segítségével Azure virtuális gépekhez. Amikor áttelepítése EC2 példányok az Azure-ba, a virtuális gépek kell kezelni, mintha fizikai, helyszíni számítógépek. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az Azure erőforrás előkészítése
@@ -193,7 +193,7 @@ Engedélyezze az egyes áttelepíteni kívánt virtuális gépek replikálását
     | Storage-fiók: | Válassza ki a tárolási fiók létrehozott a [előkészítése Azure-erőforrások](#prepare-azure-resources) szakasz.|
     | Azure-hálózathoz: | Válasszon **beállítás most a kijelölt gépekhez**|
     | Feladatátvételt követően Azure-hálózathoz: | Válassza ki a létrehozott hálózatot a [előkészítése Azure-erőforrások](#prepare-azure-resources) szakasz.|
-    | Alhálózati: | Válassza ki a **alapértelmezett** a a legördülő listán.|
+    | Alhálózat: | Válassza ki a **alapértelmezett** a a legördülő listán.|
     
     - Válassza ki a 3 fizikai gépek
         

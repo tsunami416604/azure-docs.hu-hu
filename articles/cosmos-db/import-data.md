@@ -16,18 +16,20 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: e0d69d2b744fd08269b1ef87cb60efd3f205a92e
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: c22f887f0371f70927d42130b959053ef7a0e5cc
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Az adatáttelepítési eszköz
 
-Ez az oktatóanyag útmutatás a Azure Cosmos DB adatáttelepítési eszköz, amelyet importálhat adatokat különböző forrásokból Azure Cosmos DB gyűjtemények és táblákat. JSON fájlok, CSV fájlok, SQL, MongoDB, Azure Table storage, Amazon DynamoDB és még akkor is, Azure Cosmos DB DocumentDB API gyűjtemények importálhatja, és telepíti át, gyűjtemények és táblák az adatokat használó Azure Cosmos DB használja-e. Az adatok áttelepítési eszköz is használható, áttelepítésekor az egypartíciós gyűjtemény több partíció gyűjteménybe a DocumentDB az API-hoz.
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
+Ez az oktatóanyag útmutatás a Azure Cosmos DB adatáttelepítési eszköz, amelyet importálhat adatokat különböző forrásokból Azure Cosmos DB gyűjtemények és táblákat. JSON fájlok, CSV fájlok, SQL, MongoDB, Azure Table storage, Amazon DynamoDB és még akkor is, Azure Cosmos DB SQL API-gyűjtemények importálhatja, és telepíti át, gyűjtemények és táblák az adatokat használó Azure Cosmos DB használja-e. Az adatok áttelepítési eszköz is használható, áttelepítésekor az egypartíciós gyűjtemény több partíció-gyűjteményhez az SQL API-hoz.
 
 Mely API lesz a Azure Cosmos DB használni? 
-* **[A DocumentDB API](documentdb-introduction.md)**  -segítségével az adatok áttelepítési eszköz szerepel a forrás-beállításokat importálhat adatokat.
+* **[Az SQL API](documentdb-introduction.md)**  -segítségével az adatok áttelepítési eszköz szerepel a forrás-beállításokat importálhat adatokat.
 * **[Tábla API](table-introduction.md)**  -adatok importálásához használhatja az adatáttelepítés eszközzel vagy az AzCopy. Lásd: [importálhat adatokat az Azure Cosmos DB tábla API való használatra](table-import.md) további információt.
 * **[MongoDB API](mongodb-introduction.md)**  -az adatok áttelepítési eszköz jelenleg nem támogatja a Azure Cosmos DB MongoDB API forrásként és célként. Ha azt szeretné, kívül MongoDB API gyűjtemények az Azure Cosmos Adatbázisba vagy az adatok áttelepítéséhez, tekintse meg a [Azure Cosmos DB: adatok áttelepítése a MongoDB API](mongodb-migrate.md) utasításokat. Az adatok áttelepítési eszköz segítségével exportál adatokat az MongoDB Azure Cosmos DB SQL API gyűjteményekre való használathoz az SQL API-t továbbra is használhatja. 
 * **[Graph API](graph-introduction.md)**  -az adatok áttelepítési eszköz jelenleg nem egy támogatott import eszközt, a Graph API-fiókok. 
@@ -76,9 +78,9 @@ Az eszköz telepítését követően a rendszer az idő, importálja az adatokat
 * [Azure Table storage](#AzureTableSource)
 * [Amazon DynamoDB](#DynamoDBSource)
 * [A BLOB](#BlobImport)
-* [Az Azure Cosmos DB gyűjtemények](#DocumentDBSource)
+* [Az Azure Cosmos DB gyűjtemények](#SQLSource)
 * [HBase](#HBaseSource)
-* [Az Azure Cosmos DB tömeges importálással](#DocumentDBBulkImport)
+* [Az Azure Cosmos DB tömeges importálással](#SQLBulkImport)
 * [Az Azure Cosmos DB szekvenciális rekord importálása](#DocumentDSeqTarget)
 
 
@@ -210,7 +212,7 @@ A CSV-importálási parancssori minta a következő:
 ## <a id="AzureTableSource"></a>Az Azure Table storage importálása
 Az Azure Table storage importáló forrásbeállítás lehetővé teszi az egyes Azure Table storage táblából importálását. Másik lehetőségként a táblaentitásokat, importálandók végezhet. 
 
-Lehet, hogy az Azure Table Storage importált adatokat kimeneti Azure Cosmos DB táblákat és entitásokat, használható a tábla API-val vagy a gyűjtemények és dokumentumok a DocumentDB API-val való használatra. Azonban; Tábla API csak a parancssori segédprogram cél érhető el, az adatok áttelepítési eszköz felhasználói felületének használatával tábla API nem lehet exportálni. További információkért lásd: [importálhat adatokat az Azure Cosmos DB tábla API való használatra](table-import.md). 
+Lehet, hogy az Azure Table Storage importált adatokat kimeneti Azure Cosmos DB táblákat és entitásokat, használható a tábla API-val vagy a gyűjtemények és dokumentumok, az SQL API való használatra. Azonban; Tábla API csak a parancssori segédprogram cél érhető el, az adatok áttelepítési eszköz felhasználói felületének használatával tábla API nem lehet exportálni. További információkért lásd: [importálhat adatokat az Azure Cosmos DB tábla API való használatra](table-import.md). 
 
 ![Képernyőfelvétel az Azure Table storage forrására vonatkozó beállítások](./media/import-data/azuretablesource.png)
 
@@ -267,7 +269,7 @@ JSON-fájlok importálása az Azure Blob storage parancssori minta a következő
 
     dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
 
-## <a id="DocumentDBSource"></a>A DocumentDB API gyűjtemény importálása
+## <a id="SQLSource"></a>Egy SQL API-gyűjtemény importálása
 Az Azure Cosmos DB adatforrás-importáló beállítást adatokat importálhat egy vagy több Azure Cosmos DB gyűjteményt, és opcionálisan szűréséhez a dokumentumok lekérdezés segítségével teszi lehetővé.  
 
 ![Képernyőfelvétel az Azure Cosmos DB adatforrás-beállítások](./media/import-data/documentdbsource.png)
@@ -342,7 +344,7 @@ A HBase Stargate kapcsolati karakterlánc formátuma:
 
     dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:hbaseimport
 
-## <a id="DocumentDBBulkTarget"></a>A documentdb API (tömeges importálással) importálása
+## <a id="SQLBulkTarget"></a>Az SQL API (tömeges importálással) importálása
 Az Azure Cosmos DB tömeges importáló lehetővé teszi az elérhető forráskiszolgálók beállításokat, egy Azure Cosmos DB tárolt eljárás használatával a hatékonyság importálása. Az eszköz támogatja az importálás egy egyetlen particionált Azure Cosmos DB gyűjteménybe, valamint a szilánkos importálása, amelynek során az adatok több egy particionált Azure Cosmos DB gyűjtemények között particionált van. Adatok partícionálásra vonatkozó további információkért lásd: [particionálás és az Azure Cosmos Adatbázisba skálázás](partition-data.md). Az eszköz hoz létre, végrehajtja, és a tárolt eljárás majd töröl a cél a következő gyűjtemény(ek) készleteit szinkronizálja.  
 
 ![Képernyőfelvétel az Azure Cosmos DB tömeges beállítások](./media/import-data/documentdbbulk.png)
@@ -406,7 +408,7 @@ Az Azure Cosmos DB tömeges importáló a következő további speciális beáll
 > 
 > 
 
-## <a id="DocumentDBSeqTarget"></a>A documentdb API (egymást követő rekord importálása) importálása
+## <a id="SQLSeqTarget"></a>Az SQL API (egymást követő rekord importálása) importálása
 Az Azure Cosmos DB szekvenciális rekord importáló lehetővé teszi, hogy a rekord által rekord alapon az elérhető forráskiszolgálók beállításokat importálhat. Akkor célszerű használni ezt a beállítást, ha importál egy meglevő gyűjteményhez éri el a tárolt eljárásokra vonatkozó kvótáját. Az eszköz támogatja az importálás (egypartíciós és több partíció) egyetlen Azure Cosmos DB gyűjteménybe, valamint a szilánkos importálása, amelynek során az adatok több egypartíciós és/vagy több partíció Azure Cosmos DB gyűjtemények között particionált van. Adatok partícionálásra vonatkozó további információkért lásd: [particionálás és az Azure Cosmos Adatbázisba skálázás](partition-data.md).
 
 ![Képernyőfelvétel az Azure Cosmos DB szekvenciális rekord importálási beállítások](./media/import-data/documentdbsequential.png)
@@ -466,7 +468,7 @@ Az Azure Cosmos DB - szekvenciális rekord importáló a következő további sp
 > 
 
 ## <a id="IndexingPolicy"></a>Adja meg az indexelési házirendet
-Ha engedélyezi az áttelepítési eszköz importálása során Azure Cosmos DB DocumentDB API gyűjtemények létrehozásához, a gyűjtemények az indexelési házirendet is megadhat. A Speciális beállítások szakaszban Azure Cosmos DB tömeges importálással és Azure Cosmos DB szekvenciális rekord beállítások keresse meg az indexelési házirendet szakaszban.
+Ha engedélyezi az áttelepítési eszköz importálása során Azure Cosmos DB SQL API gyűjtemények létrehozásához, a gyűjtemények az indexelési házirendet is megadhat. A Speciális beállítások szakaszban Azure Cosmos DB tömeges importálással és Azure Cosmos DB szekvenciális rekord beállítások keresse meg az indexelési házirendet szakaszban.
 
 ![Képernyőfelvétel az Azure Cosmos DB indexelő házirend Speciális beállítások](./media/import-data/indexingpolicy1.png)
 

@@ -4,7 +4,7 @@ description: "Hogyan hozhat létre, mely aláírja a felhasználók be mindkét 
 services: active-directory
 documentationcenter: 
 author: jmprieur
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 46d81e09-bad0-44ce-9026-881805976e72
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/30/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7389f55ee6fef9548abb0ca4ac1bbd0399868d47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7436db2943a6b3de6ec53cdaa6692aa05d2f2f69
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="add-sign-in-to-a-windows-desktop-app"></a>Bejelentkezés a Windows asztali alkalmazások hozzáadása
 Az a v2.0-végponttól adhat gyorsan hozzá támogatja a személyes Microsoft-fiókot is az asztali alkalmazások hitelesítés és a munkahelyi vagy iskolai fiókok.  Emellett lehetővé teszi az alkalmazásnak, hogy biztonságosan tudjon kommunikálni a háttér webes API-t, valamint [a Microsoft Graph](https://graph.microsoft.io) és néhány a [Office 365 egyesített API-k](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2).

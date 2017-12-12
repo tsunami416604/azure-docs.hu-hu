@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/14/2017
+ms.date: 12/08/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 19a8db99c62fb4f560ce082d0974ef619080ef2d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2bfd9b2603575545fef1c26310a2eecd2c8968e4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack üzembehelyezési előfeltételek
 
@@ -95,7 +95,7 @@ Azure verem telepíteni az Azure AD-fiókot, elő kell készítenie az Azure AD-
    | Munkahelyi vagy iskolai fiókkal, Kína érvényes Azure-előfizetéssel |Igen |
    | Munkahelyi vagy iskolai fiók érvényes US Government Azure-előfizetés |Igen |
 
-## <a name="network"></a>Network (Hálózat)
+## <a name="network"></a>Hálózat
 ### <a name="switch"></a>Kapcsoló
 Egy rendelkezésre álló portot a kapcsolón a development kit gép.  
 
@@ -121,62 +121,6 @@ Győződjön meg róla, hogy egy DHCP-kiszolgáló elérhető azon a hálózaton
 
 ### <a name="internet-access"></a>Internetelérés
 Azure verem internet-hozzáférésre van szüksége, közvetlenül vagy transzparens proxyra. Azure verem nem támogatja az Internet-hozzáférés engedélyezése a WebProxy beállításait. A gazdagép IP, mind az új IP-cím (amelyet a DHCP vagy statikus IP-cím) a MAS BGPNAT01 rendelt érhessék el az Internet kell lennie. A graph.windows.net és login.microsoftonline.com tartományok 80-as és 443-as portot használják.
-
-## <a name="telemetry"></a>Telemetria
-
-Telemetria segít nekünk alakul Azure verem jövőbeli verzióiban. Lehetővé teszi, gyorsan képesek reagálni az visszajelzései alapján, tartalmaz új funkciókat, valamint minőségének javításában. A Microsoft Azure verem tartalmazza a Windows Server 2016-os és az SQL Server 2014. Ezeket a termékeket egyike sem módosulnak az alapértelmezett beállításról, és mindkét által a Microsoft nagyvállalati adatvédelmi nyilatkozat ismerteti. Az Azure verem is tartalmaz, nyílt forráskódú szoftver, amely nem lett módosítva telemetriai adatokat küldeni a Microsoftnak. Az alábbiakban néhány olyan Azure verem telemetriai adatokat:
-
-- központi telepítés regisztrációs adatait
-- Ha riasztás megnyitása és bezárása
-- a hálózati erőforrások számát
-
-Telemetriai adatok folyamat támogatásához port 443-as (HTTPS) nyissa meg a hálózaton kell lennie. Az ügyfélvégpont a következő: https://vortex-win.data.microsoft.com.
-
-Ha nem szeretne biztosítani a telemetriai adatok Azure verem, kikapcsolhatja azt a development kit állomás és az infrastruktúra virtuális gépek, ahogy az alábbi leírásban.
-
-### <a name="turn-off-telemetry-on-the-development-kit-host-optional"></a>Kapcsolja ki a development kit gazdagépen telemetriai (nem kötelező)
-
->[!NOTE]
-Telemetria kikapcsolása az development kit állomás szeretnénk, ha az üzembe helyezési parancsfájl futtatása előtt kell megtenni.
-
-Mielőtt [a asdk-installer.ps1 parancsprogram futtatása]() a development kit gazdagép telepítése, a CloudBuilder.vhdx indul, és egy emelt szintű PowerShell-ablakban futtassa az alábbi parancsfájlt:
-```powershell
-### Get current AllowTelmetry value on DVM Host
-(Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
--Name AllowTelemetry).AllowTelemetry
-### Set & Get updated AllowTelemetry value for ASDK-Host 
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
--Name "AllowTelemetry" -Value '0'  
-(Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
--Name AllowTelemetry).AllowTelemetry
-```
-
-Beállítás **AllowTelemetry** telemetriai 0 kapcsolja ki a központi Windows- és Azure verem számára. Csak az operációs rendszer kritikus fontosságú biztonsági események küldése. A beállítás szabályozza a Windows telemetriai összes gazdagép és virtuális gépek infrastruktúra, és a program újra alkalmazza az új csomópontok vagy virtuális gépek kibővített műveletek esetén.
-
-
-### <a name="turn-off-telemetry-on-the-infrastructure-virtual-machines-optional"></a>Kapcsolja ki az infrastruktúra virtuális gépek telemetriai adatokat (nem kötelező)
-
-A telepítés befejezését követően futtassa a következő parancsfájl egy emelt szintű PowerShell-ablakban (AzureStack\AzureStackAdmin felhasználóként) fejlesztési kit gazdagépen:
-
-```powershell
-$AzSVMs= get-vm |  where {$_.Name -like "AzS-*"}
-### Show current AllowTelemetry value for all AzS-VMs
-invoke-command -computername $AzSVMs.name {(Get-ItemProperty -Path `
-"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name AllowTelemetry).AllowTelemetry}
-### Set & Get updated AllowTelemetry value for all AzS-VMs
-invoke-command -computername $AzSVMs.name {Set-ItemProperty -Path `
-"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Value '0'}
-invoke-command -computername $AzSVMs.name {(Get-ItemProperty -Path `
-"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name AllowTelemetry).AllowTelemetry}
-```
-
-SQL Server telemetriai konfigurálásához lásd: [konfigurálása az SQL Server 2016](https://support.microsoft.com/en-us/help/3153756/how-to-configure-sql-server-2016-to-send-feedback-to-microsoft).
-
-### <a name="usage-reporting"></a>Használati jelentésben
-
-A regisztráció Azure verem is konfigurált előre használati adatokat az Azure-bA. Használati jelentésben szabályozott egymástól függetlenül a telemetriai adatokból. Mikor reporting használati kikapcsolható [regisztrálása](azure-stack-register.md) a Githubon a parancsfájl használatával. Állítson be a **$reportUsage** paramétert **$false**.
-
-Használati adatok formátuma részletezett a [jelentés Azure verem használati adatokat az Azure-bA](https://docs.microsoft.com/azure/azure-stack/azure-stack-usage-reporting). Az Azure verem szoftverfejlesztői készlet felhasználók ténylegesen nem van szó. Ez a funkció tartalmazza a csomagban, hogy azt is ellenőrizze, hogy használatai jelentések működéséről. 
 
 
 ## <a name="next-steps"></a>Következő lépések

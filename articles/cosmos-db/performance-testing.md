@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: d52df1d1f9a29a6fc2a7a3a5e7a6d9fdeaa865e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f72a75f2750d4838566815bece5c2221359ece29
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Teljesítmény és méretezhetőség, az Azure Cosmos DB tesztelése
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
 Teljesítmény- és mérettesztelés az alkalmazásfejlesztés kulcsfontosságú lépés. Több alkalmazás az adatbázis-rétegből átfogó teljesítményét és méretezhetőségét jelentős hatással van. Ezért a teljesítmény tesztelése kritikus összetevője. [Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) erre a célra kialakított rugalmasan méretezhető és kiszámítható teljesítményt. Ezek a képességek egy nagy teljesítményű adatbázis-rétegből igénylő alkalmazásokhoz kiváló méretezése révén. 
 
 Ez a cikk a fejlesztők számára az Azure Cosmos DB munkaterhelések teljesítményét teszt csomagok végrehajtási hivatkozás. Azt is használható Azure Cosmos DB kiértékelendő nagy teljesítményű alkalmazás-forgatókönyveket. Elsősorban az adatbázis vizsgálati elkülönített teljesítmény összpontosít, de ajánlott eljárások az üzemi környezetben működő alkalmazásokat is tartalmazza.
@@ -54,7 +57,7 @@ Lásd az alábbi lépéseket: első lépések a leggyorsabban fordításához é
 
 **3. lépés:** fordítsa le és futtassa a konzolalkalmazást a parancssorból. A következőhöz hasonló kimenetnek kell megjelennie:
 
-    C:\Users\documentdb\Desktop\Benchmark>DocumentDBBenchmark.exe
+    C:\Users\cosmosdb\Desktop\Benchmark>DocumentDBBenchmark.exe
     Summary:
     ---------------------------------------------------------------------
     Endpoint: https://arramacquerymetrics.documents.azure.com:443/

@@ -2,7 +2,7 @@
 title: "Bevezetés az Azure Cosmos DB Graph API-k |} Microsoft Docs"
 description: "Ismerje meg, hogyan használhatja Azure Cosmos DB vannak tárolva, a lekérdezés, és nagy diagramjait és kis késésű Apache TinkerPop Gremlin graph lekérdezés nyelvének segítségével haladnak át."
 services: cosmos-db
-author: dennyglee
+author: luisbosquez
 documentationcenter: 
 ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: denlee
-ms.openlocfilehash: 71d9d03b45d8c4fcf8acb41871dcf3f1304955aa
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: lbosq
+ms.openlocfilehash: 45169394bed2287896ddc93ad56657f7394366f8
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB: Graph API
 
@@ -98,7 +98,7 @@ Azure Cosmos-adatbázis a következő differenciált szolgáltatásokat a többi
 
 * Aprólékosan beállítható konzisztenciaszintek
 
- Válassza ki a öt jól meghatározott konzisztenciaszintek konzisztencia és a teljesítmény közötti optimális kompromisszumot eléréséhez. A lekérdezések és olvasási műveletek esetében az Azure Cosmos DB öt különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. A részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy a hang mellékhatásokkal konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a DocumentDB-ben konzisztenciaszintek használatával](consistency-levels.md).
+ Válassza ki a öt jól meghatározott konzisztenciaszintek konzisztencia és a teljesítmény közötti optimális kompromisszumot eléréséhez. A lekérdezések és olvasási műveletek esetében az Azure Cosmos DB öt különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. A részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy a hang mellékhatásokkal konzisztencia, a rendelkezésre állás és a késleltetés között. További információ: [konzisztenciaszintek hangolható adatokat az Adatbázisba az Azure Cosmos](consistency-levels.md).
 
 Azure Cosmos-adatbázis is használhat, több modellek, például a dokumentum és a graph belül az azonos tárolók adatbázisokat. Egy dokumentum gyűjtemény segítségével Diagramadatok és dokumentumok tárolására. SQL-lekérdezések JSON keresztül és a Gremlin lekérdezések segítségével egy grafikonon ugyanazokat az adatokat lekérdezni.
 
@@ -113,7 +113,7 @@ Az alábbi táblázat a népszerű Gremlin illesztőprogramok szemben Azure Cosm
 | [Node.js](https://www.npmjs.com/package/gremlin) |[Gremlin-JavaScript a Githubon](https://github.com/jbmusso/gremlin-javascript) |
 | [Gremlin konzol](https://tinkerpop.apache.org/downloads.html) |[TinkerPop docs](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |
 
-Azure Cosmos-adatbázis is biztosít, amely rendelkezik a Gremlin kiterjesztésmetódusok .NET könyvtár az [Azure Cosmos DB SDK-k](documentdb-sdk-dotnet.md) NuGet útján. Ebben a könyvtárban az "folyamaton belüli" Gremlin kiszolgáló csatlakozzon közvetlenül a DocumentDB adatok partíciók használó biztosít.
+Azure Cosmos-adatbázis is biztosít, amely rendelkezik a Gremlin kiterjesztésmetódusok .NET könyvtár az [Azure Cosmos DB SDK-k](documentdb-sdk-dotnet.md) NuGet útján. A szalagtár "egy folyamaton belüli" Gremlin kiszolgáló csatlakozzon közvetlenül a adatok partíciók használó biztosít.
 
 | Letöltés | Dokumentáció |
 | --- | --- |

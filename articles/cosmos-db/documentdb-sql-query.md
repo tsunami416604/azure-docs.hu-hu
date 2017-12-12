@@ -1,5 +1,5 @@
 ---
-title: "Az SQL-lekérdezések Azure Cosmos DB DocumentDB API-hoz |} Microsoft Docs"
+title: "Azure Cosmos adatbázis SQL-lekérdezések |} Microsoft Docs"
 description: "A Azure Cosmos DB SQL-szintaxis, adatbázis fogalmait és az SQL-lekérdezések megismerése. SQL Azure Cosmos adatbázis a JSON lekérdezésnyelvet is használja."
 keywords: "SQL-szintaxis, sql-lekérdezést, az sql-lekérdezések, json lekérdezési nyelv, adatbázis fogalmait és az sql-lekérdezések, összesítő függvények"
 services: cosmos-db
@@ -15,19 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: arramac
-ms.openlocfilehash: 862594bcbd6df8a2c62a12340ceb8096fb6bd691
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f620e7eac0bd0c9d3e5047b52bcc149aa11c5644
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="sql-queries-for-azure-cosmos-db-documentdb-api"></a>Az SQL-lekérdezések Azure Cosmos DB DocumentDB API-hoz.
-A Microsoft Azure Cosmos DB támogatja a JSON lekérdezésnyelvet SQL (Structured Query Language) használatával dokumentumok lekérdezését. A cosmos DB valóban sémamentes. A JSON-adatmodell, közvetlenül az adatbázis motorján belül az elkötelezettségének, címtár biztosít automatikus indexeléshez JSON-dokumentumok explicit séma vagy a másodlagos indexek létrehozása nélkül. 
+# <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos adatbázis SQL-lekérdezések
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
+A Microsoft Azure Cosmos DB SQL (Structured Query Language) használatával dokumentumok lekérdezését támogatja egy JSON lekérdezést nyelve az SQL API-fiókot. Az Azure Cosmos DB valóban sémamentes. A JSON-adatmodell, közvetlenül az adatbázis motorján belül az elkötelezettségének, címtár biztosít automatikus indexeléshez JSON-dokumentumok explicit séma vagy a másodlagos indexek létrehozása nélkül.
 
 A lekérdezési nyelv a Cosmos DB tervezésekor két célok szem előtt tartásával volt:
 
 * Helyett egy új JSON lekérdező nyelv inventing, akartunk támogatja az SQL. Az SQL ismerős és a népszerű lekérdezés nyelveinek. Cosmos DB SQL formális programozási modellt biztosít a részletes lekérdezéseket JSON-dokumentumok keresztül.
-* JSON-adatbázisként dokumentum is lehet futtatni az adatbázismotor közvetlenül a JavaScript azt kapcsolniuk a használni kívánt JavaScript programozási modell építkezve a lekérdezési nyelvhez. A DocumentDB API SQL JavaScript típusrendszernek, kifejezés kiértékelése és függvényhívások feltörték. Ez szolgálna természetes programozási modellt biztosít a leképezések relációs, hierarchikus navigációs JSON-dokumentumokat, automatikus illesztések, térbeli lekérdezéseket és teljesen egyéb funkciók között a JavaScript nyelven írt felhasználói függvény (UDF) meghívását. 
+* JSON-adatbázisként dokumentum is lehet futtatni az adatbázismotor közvetlenül a JavaScript azt kapcsolniuk a használni kívánt JavaScript programozási modell építkezve a lekérdezési nyelvhez. Az SQL API a JavaScript típusrendszernek, kifejezés kiértékelése és függvényhívások feltörték. Ez szolgálna természetes programozási modellt biztosít a leképezések relációs, hierarchikus navigációs JSON-dokumentumokat, automatikus illesztések, térbeli lekérdezéseket és teljesen egyéb funkciók között a JavaScript nyelven írt felhasználói függvény (UDF) meghívását. 
 
 Biztosak vagyunk abban, hogy ezek a képességek csökkenti az alkalmazás és az adatbázis közötti súrlódás billentyűt, és fontosságúak a fejlesztést tesz lehetővé.
 
@@ -99,7 +102,7 @@ Ez az egyetlen különbség – a második dokumentum `givenName` és `familyNam
 }
 ```
 
-Most próbáljon néhány lekérdezések írásában, ezeket az adatokat a kulcsfontosságú elemeit annak DocumentDB API SQL megismerését. Például a következő lekérdezés visszaad a Ha az azonosítót tartalmazó mezőt megegyezik `AndersenFamily`. Mivel ez egy `SELECT *`, a lekérdezés eredménye a teljes JSON-dokumentum:
+Most próbáljon néhány lekérdezést megérteni az egyes Azure Cosmos DB SQL lekérdező nyelve a fő szempontjait adatok alapján. Például a következő lekérdezés visszaad a Ha az azonosítót tartalmazó mezőt megegyezik `AndersenFamily`. Mivel ez egy `SELECT *`, a lekérdezés eredménye a teljes JSON-dokumentum:
 
 **Lekérdezés**
 
@@ -166,13 +169,13 @@ A következő lekérdezés gyermekek minden megadott nevét adja vissza a termé
 
 Szeretnénk felhívja a figyelmet a Cosmos DB lekérdezési nyelv eddig is láttuk példákból néhány fontos aspektusait:  
 
-* Mivel a DocumentDB API SQL JSON értékek működéséről, alakú sorok és oszlopok helyett entitások fa foglalkozik. Ezért a nyelv lehetővé teszi, hogy tekintse meg a fa bármilyen tetszőleges mélységben csomópontok például `Node1.Node2.Node3…..Nodem`, akárcsak a két rész hivatkozását hivatkozó relációs SQL `<table>.<column>`.   
+* Mivel az SQL API működik a JSON-értékek, alakú sorok és oszlopok helyett entitások fa foglalkozik. Ezért a nyelv lehetővé teszi, hogy tekintse meg a fa bármilyen tetszőleges mélységben csomópontok például `Node1.Node2.Node3…..Nodem`, akárcsak a két rész hivatkozását hivatkozó relációs SQL `<table>.<column>`.   
 * A strukturált lekérdezésinyelv séma nélküli adatokkal dolgozik. Ezért a típusrendszernek hozzá dinamikusan kell kötni. Ugyanabban a kifejezésben sikerült yield különböző típusaihoz különböző dokumentumokat. A lekérdezés eredménye egy érvényes JSON-érték, de nem biztos, hogy a rögzített sémájába lehet.  
 * Cosmos DB csak szigorú JSON-dokumentumokat támogat. Ez azt jelenti, hogy a rendszert és a kifejezések csak JSON típusok kezelésére korlátozódnak. Tekintse meg a [JSON-specifikáció](http://www.json.org/) további részleteket.  
 * A Cosmos DB gyűjtemény egy olyan sémamentes tároló JSON-dokumentumot. Tartalmazási, és nem a primary key és idegen kulcs kapcsolatokat a rendszer implicit módon rögzíti a kapcsolatokat, az adatok entitások belül, és egy gyűjtemény dokumentumok között. Ez egy fontos eleme érdemes a jelen cikkben ismertetett intra-dokumentum illesztések alapján mutat.
 
 ## <a id="Indexing"></a>A cosmos DB indexelő
-Ahhoz, hogy feltölti a DocumentDB API SQL-szintaxis, az indexelési kialakítást a Cosmos DB felfedezése érdemes. 
+Ahhoz, hogy feltölti az SQL-szintaxis, az Azure Cosmos Adatbázisba indexelési tervezési felfedezése érdemes. 
 
 Adatbázis indexek célja a különböző űrlapok és alakzatok lekérdezések kiszolgálására minimális erőforrás-felhasználás (például CPU és a bemeneti/kimeneti) ugyanakkor biztosítható a jó teljesítmény és kis késleltetése. Adatbázis lekérdezése a megfelelő index a választott gyakran, mennyi tervezést és kísérletezés igényel. Ezt a módszert használja az adatbázisok séma nélküli, ahol az adatok nem felelnek meg a szigorú séma, és gyorsan fejlődésének kihívást jelent. 
 
@@ -280,7 +283,7 @@ A következő lekérdezés kéri a name tulajdonság, amelynek értéke tartalma
     }]
 
 
-Az előző példából kiderült, egy egyszerű egyenlőség lekérdezést. A DocumentDB API SQL számos skaláris kifejezést. A leggyakrabban használt olyan bináris és egyoperandusú kifejezés. A forrás JSON-objektumból tulajdonsághivatkozást egyaránt érvényes kifejezések. 
+Az előző példából kiderült, egy egyszerű egyenlőség lekérdezést. Az SQL API számos skaláris kifejezést. A leggyakrabban használt olyan bináris és egyoperandusú kifejezés. A forrás JSON-objektumból tulajdonsághivatkozást egyaránt érvényes kifejezések. 
 
 A következő bináris operátor jelenleg támogatott, és a következő példákban látható módon a lekérdezésekben használt:  
 
@@ -338,7 +341,7 @@ Az egyoperandusú operátorokat +,-, ~ és nem is támogatottak, és használhat
 Bináris és egyoperandusú operátorok mellett tulajdonsághivatkozást is használhatók. Például `SELECT * FROM Families f WHERE f.isRegistered` adja vissza a tulajdonságot tartalmazó JSON-dokumentum `isRegistered` ahol a tulajdonság értéke megegyezik a JSON `true` érték. Egyéb értékek (false, null, nem definiált, `<number>`, `<string>`, `<object>`, `<array>`stb) kivételével az eredményből forrásdokumentum vezet. 
 
 ### <a name="equality-and-comparison-operators"></a>Egyenlőség és összehasonlító operátorok
-A következő táblázat egyenlőségi összehasonlítás eredménye a DocumentDB SQL-API bármely két JSON-típusok között.
+A következő táblázat az SQL API bármely JSON kétféle közötti egyenlőségi összehasonlítás eredményének megjelenítése.
 
 <table style = "width:300px">
    <tbody>
@@ -373,136 +376,136 @@ A következő táblázat egyenlőségi összehasonlítás eredménye a DocumentD
             <strong>Nincs definiálva<strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>NULL értékű<strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
             <strong>OKÉ</strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Logikai érték<strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
             <strong>OKÉ</strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Szám<strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
             <strong>OKÉ</strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Karakterlánc<strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
             <strong>OKÉ</strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Objektum<strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
             <strong>OKÉ</strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>A tömb<strong>
          </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
-Nincs definiálva </td>
+Meghatározatlan </td>
          <td valign="top">
             <strong>OKÉ</strong>
          </td>
@@ -533,28 +536,28 @@ Eltérően ANSI-SQL, használhatja a BETWEEN záradék a következő példában 
 
 A lekérdezés végrehajtása gyorsabb ne felejtse el elleni bármely numerikus tulajdonságok/elérési utakat a BETWEEN záradék a szűrt index Tartománytípus használó indexelési házirend létrehozása. 
 
-A fő különbség a DocumentDB API és ANSI SQL BETWEEN használata között, hogy akkor is express vegyes típusú tulajdonságokhoz lekérdezések – például lehetséges, hogy "osztály" [5] szám lehet bizonyos dokumentumok és mások számára ("grade4") tartalmazó karakterlánc. Ezekben az esetekben például a JavaScript, a "nem definiált" két különböző típusú eredményt, és a dokumentum összehasonlítása a rendszer kihagyja.
+A fő különbség a között használja az SQL API-t és az ANSI SQL BETWEEN, hogy akkor is express vegyes típusú tulajdonságokhoz lekérdezések – például lehetséges, hogy "osztály" [5] szám lehet bizonyos dokumentumok és mások számára ("grade4") tartalmazó karakterlánc. Ezekben az esetekben például a JavaScript, a "nem definiált" két különböző típusú eredményt, és a dokumentum összehasonlítása a rendszer kihagyja.
 
 ### <a name="logical-and-or-and-not-operators"></a>Logikai (AND, OR, és nem) operátorok
 Logikai operátorok működhet a logikai értékek. Ezen operátorok logikai igazság táblázatokban az alábbi táblázatban láthatók.
 
-| VAGY | True (Igaz) | False (Hamis) | Nincs definiálva |
+| VAGY | True (Igaz) | False (Hamis) | Meghatározatlan |
 | --- | --- | --- | --- |
 | True (Igaz) |True (Igaz) |True (Igaz) |True (Igaz) |
-| False (Hamis) |True (Igaz) |False (Hamis) |Nincs definiálva |
-| Nincs definiálva |True (Igaz) |Nincs definiálva |Nincs definiálva |
+| False (Hamis) |True (Igaz) |False (Hamis) |Meghatározatlan |
+| Meghatározatlan |True (Igaz) |Meghatározatlan |Meghatározatlan |
 
-| ÉS | True (Igaz) | False (Hamis) | Nincs definiálva |
+| ÉS | True (Igaz) | False (Hamis) | Meghatározatlan |
 | --- | --- | --- | --- |
-| True (Igaz) |True (Igaz) |False (Hamis) |Nincs definiálva |
+| True (Igaz) |True (Igaz) |False (Hamis) |Meghatározatlan |
 | False (Hamis) |False (Hamis) |False (Hamis) |False (Hamis) |
-| Nincs definiálva |Nincs definiálva |False (Hamis) |Nincs definiálva |
+| Meghatározatlan |Meghatározatlan |False (Hamis) |Meghatározatlan |
 
 | NEM |  |
 | --- | --- |
 | True (Igaz) |False (Hamis) |
 | False (Hamis) |True (Igaz) |
-| Nincs definiálva |Nincs definiálva |
+| Meghatározatlan |Meghatározatlan |
 
 ### <a name="in-keyword"></a>A kulcsszó
 Az IN kulcsszó segítségével ellenőrizze, hogy a megadott érték megegyezik-e a lista bármely értéke. Például a lekérdezés által visszaadott összes családba tartozó dokumentumok ahol az azonosító: "WakefieldFamily" vagy "AndersenFamily". 
@@ -750,7 +753,7 @@ A következő példában a skaláris kifejezés eredménye egy logikai érték.
 
 
 ### <a name="object-and-array-creation"></a>Az objektum és tömb létrehozása
-A DocumentDB API SQL egy másik alapfunkciója tömb vagy objektum-létrehozás. Az előző példában vegye figyelembe, hogy létrehoztunk egy új JSON-objektum. Hasonlóképpen egy is végezhet tömbök a következő példákban látható módon:
+Az SQL API-t egy másik alapfunkciója tömb vagy objektum-létrehozás. Az előző példában vegye figyelembe, hogy létrehoztunk egy új JSON-objektum. Hasonlóképpen egy is végezhet tömbök a következő példákban látható módon:
 
 **Lekérdezés**
 
@@ -921,14 +924,14 @@ A szűrők együtt is elvégezheti összesíti. Például a következő lekérde
 
     [ 1 ]
 
-A következő táblázat a DocumentDB API támogatott összesítő függvények listáját tartalmazza. `SUM`és `AVG` numerikus érték, keresztül hajtja végre, mivel `COUNT`, `MIN`, és `MAX` karakterláncok, a logikai és nullák keresztül hajtható végre. 
+A következő táblázat az SQL API-ban támogatott összesítő függvények listáját tartalmazza. `SUM`és `AVG` numerikus érték, keresztül hajtja végre, mivel `COUNT`, `MIN`, és `MAX` karakterláncok, a logikai és nullák keresztül hajtható végre. 
 
 | Használat | Leírás |
 |-------|-------------|
 | SZÁMA | A kifejezés a számú elemet ad vissza. |
 | SUM   | A kifejezés értékek összegét adja vissza. |
-| PERC   | A kifejezés minimumértékét adja vissza. |
-| MAXIMÁLIS SZÁMA   | A kifejezés maximumértékét adja vissza. |
+| MIN.   | A kifejezés minimumértékét adja vissza. |
+| MAX.   | A kifejezés maximumértékét adja vissza. |
 | ÁTLAGOS   | Az értékek átlagát adja vissza. a kifejezést. |
 
 Összesíti egy tömb iteráció eredményeit keresztül is elvégezhető. További információkért lásd: [tömb iterációs lekérdezésekben](#Iteration).
@@ -987,7 +990,7 @@ Például ez kártevőcsaládok a rezidens városnév sorrendjét, amely.
 ## <a id="Advanced"></a>Speciális adatbázis fogalmait és az SQL-lekérdezések
 
 ### <a id="Iteration"></a>Ismétlés
-Egy új szerkezet művelettel lett hozzáadva a **IN** DocumentDB API SQL támogatást nyújt a JSON-tömbök keresztül léptetés kulcsszót. A FROM forrás iterációs támogatja. Kezdjük az alábbi példa:
+Egy új szerkezet művelettel lett hozzáadva a **IN** keresztül JSON-tömbök léptetés támogatást nyújt az SQL API kulcsszót. A FROM forrás iterációs támogatja. Kezdjük az alábbi példa:
 
 **Lekérdezés**
 
@@ -1081,7 +1084,7 @@ Ez további használható szűrést végezni a tömb minden egyes bejegyzés, a 
     ]
 
 ### <a id="Joins"></a>Illesztése
-Táblák között csatlakoztatni kell egy relációs adatbázisban, fontos. A logikai corollary az normalizált sémák. Ezzel szemben a DocumentDB API a nem normalizált adatok modell sémamentes dokumentumok foglalkozik. Ez megfelel a logikai a "önillesztés".
+Táblák között csatlakoztatni kell egy relációs adatbázisban, fontos. A logikai corollary az normalizált sémák. Ezzel szemben az SQL API-t a nem normalizált adatok modell sémamentes dokumentumok foglalkozik. Ez megfelel a logikai a "önillesztés".
 
 A nyelvi támogató szintaxisa < from_source1 > Csatlakozás < from_source2 > ILLESZTÉSI... CSATLAKOZTASSA az < from_sourceN >. A teljes, ezt adja vissza, amely **N**- rekordokat (a rekord **N** értékek). A táblakonstruktor minden rekordjának összes gyűjtemény alias léptetés alatt az megfelelő készletek által visszaadott érték tartozik. Más szóval ez az egy teljes a a illesztésben részt vevő készlet keresztszorzatát.
 
@@ -1236,9 +1239,9 @@ Azure Cosmos DB programozási modellt biztosít a feldolgozás alatt álló alap
 * Természetes modellezési folyamatábrán, változó hatókörének, és a hozzárendelés és az adatbázis-tranzakciókhoz a primitívek kivételkezelő integrálását. A JavaScript-integráció Azure Cosmos DB-támogatással kapcsolatos további információkért tekintse meg a JavaScript kiszolgálóoldali programozhatóság dokumentációját.
 
 ### <a id="UserDefinedFunctions"></a>Felhasználói függvény (UDF)
-A típusok már definiálva van ebben a cikkben, valamint a DocumentDB API SQL támogatja az a felhasználó definiált függvény (UDF). Skaláris felhasználó által megadott függvények támogatottak, ahol a fejlesztők nulla vagy több argumentumot adjon át és vissza egyetlen argumentuma eredményt vissza. Minden egyes argumentum ellenőrzése alatt álló engedélyezett JSON-érték.  
+A típusok már definiálva van ebben a cikkben, valamint az SQL API-t a felhasználó definiált függvény (UDF) támogatást nyújt a. Skaláris felhasználó által megadott függvények támogatottak, ahol a fejlesztők nulla vagy több argumentumot adjon át és vissza egyetlen argumentuma eredményt vissza. Minden egyes argumentum ellenőrzése alatt álló engedélyezett JSON-érték.  
 
-A DocumentDB API SQL-szintaxis használatával az ezen felhasználó által definiált függvényeket egyéni alkalmazáslogika támogatása az időtartam. Felhasználó által megadott függvények regisztrálhatók a DocumentDB API, és ezután lehet hivatkozni az SQL-lekérdezés részeként. Valójában a felhasználó által megadott függvények exquisitely tervezték, hogy a lekérdezések hívható. Ezt a döntést maradhassanak felhasználó által megadott függvények nincs hozzáférése a context objektumot, a más JavaScript típusok (tárolt eljárások és eseményindítók) rendelkező. Lekérdezések csak olvashatóként hajtható végre, mert futtathatják az elsődleges vagy másodlagos replikákon. Ezért felhasználó által megadott függvények való más JavaScript típusától eltérően a másodlagos replikákon futtatásra tervezték.
+Az SQL-szintaxis használatával az ezen felhasználó által definiált függvényeket egyéni alkalmazáslogika támogatása az időtartam. Felhasználó által megadott függvények regisztrálhatók SQL API-t, és majd egy SQL-lekérdezés részeként lehet hivatkozni. Valójában a felhasználó által megadott függvények exquisitely tervezték, hogy a lekérdezések hívható. Ezt a döntést maradhassanak felhasználó által megadott függvények nincs hozzáférése a context objektumot, a más JavaScript típusok (tárolt eljárások és eseményindítók) rendelkező. Lekérdezések csak olvashatóként hajtható végre, mert futtathatják az elsődleges vagy másodlagos replikákon. Ezért felhasználó által megadott függvények való más JavaScript típusától eltérően a másodlagos replikákon futtatásra tervezték.
 
 Alább példája egy UDF hogyan lehet regisztrálni, a Cosmos DB adatbázist, kifejezetten egy dokumentumgyűjteményt.
 
@@ -1341,18 +1344,18 @@ Az alábbiakban látható egy példa, gyakorolja az UDF-ben.
     ]
 
 
-A fenti példákban megjelenítve, mert felhasználó által megadott függvények JavaScript nyelv power a DocumentDB API SQL komplex eljárási, feltételes logikai beépített JavaScript futás közbeni képességek segítségével. Ehhez egy gazdag programozható felületet integrálhatja.
+A fenti példákban megjelenítve, mert a felhasználó által megadott függvények integrálását a JavaScript nyelv a power komplex eljárási, feltételes logikai beépített JavaScript futás közbeni képességek segítségével. Ehhez egy gazdag programozható felületet SQL API-val.
 
-A DocumentDB API SQL biztosít az argumentumok a felhasználó által megadott függvények nyilvántartott egyes dokumentumok a forráshelyen szakaszában az aktuális (a WHERE záradékban vagy a SELECT záradékban) UDF feldolgozása. Az eredmény zökkenőmentesen beépített általános végrehajtás folyamatban. Ha a Tulajdonságok által az UDF paraméterek nem találhatók a JSON-érték, akkor a paraméter nincs definiálva, és ezért a rendszer teljesen kihagyja UDF meghívását. Hasonló módon az UDF eredménye nem definiált, ha az nem szerepel az eredményben. 
+Az SQL API-t biztosít az argumentumok a felhasználó által megadott függvények nyilvántartott egyes dokumentumok a forráshelyen szakaszában az aktuális (a WHERE záradékban vagy a SELECT záradékban) UDF feldolgozása. Az eredmény zökkenőmentesen beépített általános végrehajtás folyamatban. Ha a Tulajdonságok által az UDF paraméterek nem találhatók a JSON-érték, akkor a paraméter nincs definiálva, és ezért a rendszer teljesen kihagyja UDF meghívását. Hasonló módon az UDF eredménye nem definiált, ha az nem szerepel az eredményben. 
 
 Összefoglalva felhasználó által megadott függvények olyan nagy eszközöket tegye a bonyolult üzleti logikát a lekérdezés részeként.
 
 ### <a name="operator-evaluation"></a>A kiértékelési operátor
 Cosmos DB, egy JSON-adatbázis, amely nem rendelkezik megrajzolja fekvő JavaScript operátorok és az értékelés szemantikáját. Miközben Cosmos DB megpróbálja megőrizheti a JavaScript szemantikáját JSON támogatása szempontjából, a művelet kiértékelése százalékkal, bizonyos esetekben.
 
-A DocumentDB API SQL, ellentétben a hagyományos SQL típusú értékeket gyakran nem ismert mindaddig, amíg a rendszer beolvassa az értékeket az adatbázis. Ahhoz, hogy hatékonyan hajtsa végre a lekérdezéseket, a kezelők többsége a szigorú szemben támasztott követelményeit. 
+Az SQL API-t ellentétben a hagyományos SQL típusú értékeket gyakran nem ismert mindaddig, amíg az értékeket a rendszer beolvassa az adatbázist. Ahhoz, hogy hatékonyan hajtsa végre a lekérdezéseket, a kezelők többsége a szigorú szemben támasztott követelményeit. 
 
-A DocumentDB API SQL nem hajtható végre implicit konverzió JavaScript eltérően. Például egy lekérdezést, például `SELECT * FROM Person p WHERE p.Age = 21` megegyezik egy kora tulajdonságot, amelynek értéke 21 tartalmazó dokumentumokat. Bármely más, amelynek kora tulajdonsága egyezést mutat a karakterlánc a "21", vagy más valószínűleg végtelen változata dokumentum, például "021", "21,0", "0021", "00021", nem fog egyeztetni stb. Ez a számára a JavaScript-számok implicit módon casted a karakterlánc-értékek esetén ezzel szemben az (pl. operátor szerinti szűrése, alapján: ==). Ez a beállítás nem megfelelő DocumentDB API SQL hatékony index számára elengedhetetlen. 
+Az SQL API-t nem hajtható végre implicit konverzió JavaScript eltérően. Például egy lekérdezést, például `SELECT * FROM Person p WHERE p.Age = 21` megegyezik egy kora tulajdonságot, amelynek értéke 21 tartalmazó dokumentumokat. Bármely más, amelynek kora tulajdonsága egyezést mutat a karakterlánc a "21", vagy más valószínűleg végtelen változata dokumentum, például "021", "21,0", "0021", "00021", nem fog egyeztetni stb. Ez a számára a JavaScript-számok implicit módon casted a karakterlánc-értékek esetén ezzel szemben az (pl. operátor szerinti szűrése, alapján: ==). Ez a beállítás nem kritikus fontosságú SQL API-ja egyezési hatékony index. 
 
 ## <a name="parameterized-sql-queries"></a>A paraméteres SQL-lekérdezések
 Cosmos DB lekérdezéseket támogat, a @ notation az ismerős kifejezett paraméterekkel. A paraméteres SQL hatékony kezelése és escape-karaktersorozat felhasználói bevitelt, megakadályozza az SQL-injektálás az adatok véletlen kitettség biztosít. 
@@ -1665,12 +1668,12 @@ Térbeli funkciók térbeli adatok közelségi kapcsolat lekérdezések végreha
 
 A földrajzi támogatásáról Cosmos DB további részletekért lásd: [földrajzi adatok az Azure Cosmos DB](geospatial.md). Amely foglalja össze a térbeli függvények, és az SQL-szintaxis, a Cosmos DB. Most vessen egy pillantást, hogyan működik, és hogy milyen hatással a használatával lekérdezése LINQ is láttuk eddig.
 
-## <a id="Linq"></a>A DocumentDB API SQL LINQ
+## <a id="Linq"></a>"LINQ to SQL API"
 LINQ .NET programozási modell, amely szerint az objektumok adatfolyamok lekérdezései számítási kifejezze. Cosmos DB egy ügyféloldali szalagtár LINQ illesztőfelület biztosít a JSON és a .NET-objektumok és a leképezés egy LINQ-lekérdezések részét csak akkor Cosmos DB lekérdezések közötti konverzió megkönnyítésével. 
 
 Az alábbi képen a LINQ-lekérdezések Cosmos DB használatával architektúráját mutatja be.  A Cosmos DB-ügyfélprogram segítségével a fejlesztők hozhat létre egy **IQueryable** objektum, amely közvetlenül a Cosmos DB lekérdezés szolgáltatót, majd a LINQ lekérdezés fordítja le egy Cosmos-adatbázis-lekérdezés. A lekérdezés majd kerülnek a Cosmos DB kiszolgálót egy halmazát, az eredmények JSON formátumban. A keresés eredményeit azokat az ügyféloldali .NET objektumok adatfolyam vannak deszerializálni.
 
-![A LINQ-lekérdezések használata a DocumentDB API - SQL-szintaxis, JSON lekérdező nyelv, adatbázis fogalmait és az SQL-lekérdezések architektúrája][1]
+![A LINQ-lekérdezések használata az SQL API-t - SQL-szintaxis, JSON lekérdező nyelv, adatbázis fogalmait és az SQL-lekérdezések architektúrája][1]
 
 ### <a name="net-and-json-mapping"></a>.NET és a JSON-leképezés
 A .NET-objektumokat és a JSON-dokumentumok közötti leképezéseket természetes – minden tag adatmező van rendelve egy JSON-objektum, ahol a mező neve az objektum "kulcsot" része van leképezve, és a "érték" része rekurzív módon leképezve az objektum érték részét. Vegye figyelembe az alábbi példa: A család objektum létrehozása a JSON-dokumentumhoz van rendelve, alább látható módon. És ez fordítva is igaz, a JSON-dokumentumhoz van rendelve vissza egy .NET-objektum.
@@ -1775,7 +1778,7 @@ Először a típus rendszer esetében támogatott összes JSON egyszerű típuso
      új int [] {3, child.grade, 5};
 
 ### <a id="SupportedLinqOperators"></a>Támogatott LINQ operátorok listája
-A LINQ szolgáltatónál tartalmazza a DocumentDB .NET SDK-val támogatott LINQ operátorokat listája itt található.
+A LINQ szolgáltatónál tartalmazza az SQL .NET SDK-val támogatott LINQ operátorokat listája itt található.
 
 * **Válassza ki**: leképezések lefordítani az SQL, válassza ki például objektumkonstrukciók
 * **Ha**: szűrők lefordítani az SQL WHERE, és támogatja a közötti címfordítás & &, || és! az SQL-operátorok
@@ -1992,7 +1995,7 @@ Cosmos DB egy megnyitott RESTful programozási modellt biztosít a HTTP Protokol
 
 Az alapvető interakció modell ezekkel az erőforrásokkal keresztül történik a HTTP-műveletek GET, PUT, POST és DELETE a szabványos tolmácsolási szolgáltatással. A POST műveletet egy új erőforrást, egy tárolt eljárás végrehajtása vagy egy Cosmos-adatbázis-lekérdezés kiadására szolgál. Lekérdezéseket a rendszer mindig csak olvasható műveletekhez, nincs mellékhatásokkal.
 
-Az alábbi példák bemutatják a FELADÁS egy vagy több, amennyiben azt már áttekintette a két minta dokumentumok tartalmazó gyűjtemény ellen DocumentDB API lekérdezéshez. A lekérdezés egy egyszerű szűrési a JSON-name tulajdonsággal rendelkezik. Vegye figyelembe a használatát a `x-ms-documentdb-isquery` és a Content-Type: `application/query+json` fejlécek, hogy-e a művelet egy lekérdezést jelöléséhez.
+A következő példák azt szemléltetik, amennyiben azt már áttekintette a két minta dokumentumok tartalmazó gyűjtemény ellen SQL API lekérdezés POST. A lekérdezés egy egyszerű szűrési a JSON-name tulajdonsággal rendelkezik. Vegye figyelembe a használatát a `x-ms-documentdb-isquery` és a Content-Type: `application/query+json` fejlécek, hogy-e a művelet egy lekérdezést jelöléséhez.
 
 **Kérés**
 
@@ -2120,7 +2123,7 @@ A lekérdezések adatok konzisztencia házirend kezeléséhez használja a `x-ms
 
 Ha a konfigurált indexelési házirendet a gyűjtemény nem támogatja a megadott lekérdezés, az Azure Cosmos adatbázis-kiszolgálót 400 "hibás kérelem" adja vissza. A kivonatoló (egyenlő) keresések, és kifejezetten kizárja indexelő elérési út beállítva elérési utak tartomány lekérdezések esetében adja vissza. A `x-ms-documentdb-query-enable-scan` fejléc adható meg a lekérdezést, hogy vizsgálatot végezzen, ha nem érhető el index engedélyezéséhez.
 
-Úgy, hogy a lekérdezés-végrehajtás részletes metrikák is ki `x-ms-documentdb-populatequerymetrics` fejlécének `True`. További információkért lásd: [Azure Cosmos DB DocumentDB API SQL-lekérdezés metrikáját](documentdb-sql-query-metrics.md).
+Úgy, hogy a lekérdezés-végrehajtás részletes metrikák is ki `x-ms-documentdb-populatequerymetrics` fejlécének `True`. További információkért lásd: [Azure Cosmos DB SQL-lekérdezés metrikáját](documentdb-sql-query-metrics.md).
 
 ### <a id="DotNetSdk"></a>C# (.NET) SDK
 A .NET SDK támogatja a LINQ és az SQL lekérdezése. A következő példa bemutatja, hogyan hajthat végre a rendszerben jelent meg a jelen dokumentum korábbi egyszerű szűrő lekérdezés.

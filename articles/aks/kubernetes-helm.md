@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 002c4376c91f4a7176cc9b00a4d6ba275f87dadb
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 39c6de1ce2443cf027d7cde067281355ea0b7207
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-helm-with-azure-container-service-aks"></a>Helm használata az Azure Tárolószolgáltatás (AKS)
 
-[Helm](https://github.com/kubernetes/helm/) nyílt forráskódú csomagolás eszköz, amely segít telepíteni, és Kubernetes alkalmazások életciklusának kezelését. Például a Linux-csomag kezelői hasonló *APT* és *Yum*, Helm Kubernetes diagramok, amelyek a csomagok előre konfigurált Kubernetes erőforrások kezelésére szolgál.
+[Helm] [ helm] nyílt forráskódú csomagolás eszköz, amely segít telepíteni, és Kubernetes alkalmazások életciklusának kezelését. Például a Linux-csomag kezelői hasonló *APT* és *Yum*, Helm Kubernetes diagramok, amelyek a csomagok előre konfigurált Kubernetes erőforrások kezelésére szolgál.
 
 Ez a dokumentum lépéseit konfigurálásával és használatával Helm AKS Kubernetes fürtben.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozott egy AKS-fürtöt, és kiépített egy kubectl-kapcsolatot a fürttel. Ha ezeket még létre kell hoznia olvassa el az [AKS gyors útmutatóját](./kubernetes-walkthrough.md).
+A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozott egy AKS-fürtöt, és kiépített egy kubectl-kapcsolatot a fürttel. Ha ezek az elemek megjelenítéséhez a [AKS gyors üzembe helyezés][aks-quickstart].
 
 ## <a name="install-helm-cli"></a>Helm parancssori felület telepítése
 
 A Helm CLI ügyfél, amely a fejlesztői rendszeren fut, és lehetővé teszi indítása, leállítása és kezelheti az alkalmazásokat az Helm diagramok.
 
-Ha Azure CloudShell használata esetén a Helm CLI már telepítve van. A Mac használja a Helm CLI telepítendő `brew`. A telepítési beállítások lásd [telepítése Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md).
+Ha Azure CloudShell használata esetén a Helm CLI már telepítve van. A Mac használja a Helm CLI telepítendő `brew`. A telepítési beállítások lásd [telepítése Helm][helm-install-options].
 
 ```console
 brew install kubernetes-helm
@@ -50,7 +50,7 @@ Bash completion has been installed to:
 
 ## <a name="configure-helm"></a>Helm konfigurálása
 
-A [helm init](https://docs.helm.sh/helm/#helm-init) parancs segítségével Helm összetevőinek telepítése Kubernetes fürtben, és az ügyféloldali konfigurációkat. A következő parancsot a AKS fürtön telepíteni a Helm, és a Helm ügyfél konfigurálásához.
+A [helm init] [ helm-init] parancs segítségével Helm összetevőinek telepítése Kubernetes fürtben, és az ügyféloldali konfigurációkat. A következő parancsot a AKS fürtön telepíteni a Helm, és a Helm ügyfél konfigurálásához.
 
 ```azurecli-interactive
 helm init
@@ -59,14 +59,15 @@ helm init
 Kimenet:
 
 ```
-$HELM_HOME has been configured at /Users/user/.helm.
-Not installing Tiller due to 'client-only' flag having been set
+$HELM_HOME has been configured at /home/user/.helm.
+
+Tiller (the Helm server-side component) has been installed into your Kubernetes Cluster.
 Happy Helming!
 ```
 
 ## <a name="find-helm-charts"></a>Helm diagramok keresése
 
-Helm Kubernetes fürtbe alkalmazások központi telepítéséhez jól használható. Keresse meg a korábban létrehozott Helm diagramok, használja a [helm keresési](https://docs.helm.sh/helm/#helm-search) parancsot.
+Helm Kubernetes fürtbe alkalmazások központi telepítéséhez jól használható. Keresse meg a korábban létrehozott Helm diagramok, használja a [helm keresési] [ helm-search] parancsot.
 
 ```azurecli-interactive
 helm search
@@ -94,7 +95,7 @@ stable/datadog                  0.8.0   DataDog Agent
 ...
 ```
 
-Frissítse a diagramok listáját, használja a [helm tárház frissítési](https://docs.helm.sh/helm/#helm-repo-update) parancsot.
+Frissítse a diagramok listáját, használja a [helm tárház frissítési] [ helm-repo-update] parancsot.
 
 ```azurecli-interactive
 helm repo update
@@ -111,7 +112,7 @@ Update Complete. ⎈ Happy Helming!⎈
 
 ## <a name="run-helm-charts"></a>Helm diagramok futtatása
 
-Egy NGINX érkező tartományvezérlő telepítéséhez használja a [helm telepítés](https://docs.helm.sh/helm/#helm-install) parancsot.
+Egy NGINX érkező tartományvezérlő telepítéséhez használja a [helm telepítés] [ helm-install] parancsot.
 
 ```azurecli-interactive
 helm install stable/nginx-ingress
@@ -142,11 +143,11 @@ tufted-ocelot-nginx-ingress-default-backend  1        1        1           1    
 ...
 ```
 
-További tájékoztatást az NGINX érkező vezérlőhöz Kubernetes, lásd: [NGINX érkező vezérlő](https://github.com/kubernetes/ingress/tree/master/controllers/nginx).
+További tájékoztatást az NGINX érkező vezérlőhöz Kubernetes, lásd: [NGINX érkező vezérlő][nginx-ingress].
 
 ## <a name="list-helm-charts"></a>Lista Helm diagramok
 
-A fürtön telepítve diagramok listájának megtekintéséhez használja a [helm lista](https://docs.helm.sh/helm/#helm-list) parancsot.
+A fürtön telepítve diagramok listájának megtekintéséhez használja a [helm lista] [ helm-list] parancsot.
 
 ```azurecli-interactive
 helm list
@@ -164,4 +165,18 @@ bilging-ant     1           Thu Oct  5 00:11:11 2017    DEPLOYED    nginx-ingres
 Kubernetes diagramok kezelésével kapcsolatos további információkért a Helm dokumentációjában talál.
 
 > [!div class="nextstepaction"]
-> [Helm dokumentáció](https://github.com/kubernetes/helm/blob/master/docs/index.md)
+> [Helm dokumentáció][helm-documentation]
+
+<!-- LINKS - external -->
+[helm]: https://github.com/kubernetes/helm/
+[helm-documentation]: https://github.com/kubernetes/helm/blob/master/docs/index.md
+[helm-init]: https://docs.helm.sh/helm/#helm-init
+[helm-install]: https://docs.helm.sh/helm/#helm-install
+[helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
+[helm-list]: https://docs.helm.sh/helm/#helm-list
+[helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
+[helm-search]: https://docs.helm.sh/helm/#helm-search
+[nginx-ingress]: https://github.com/kubernetes/ingress-nginx
+
+<!-- LINKS - internal -->
+[aks-quickstart]: ./kubernetes-walkthrough.md

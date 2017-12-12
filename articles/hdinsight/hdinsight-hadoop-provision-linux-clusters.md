@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: jgao
-ms.openlocfilehash: c0f89f98c26b80e8b71c58fc89ea7ecebe734f71
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f59083510bab1f8d665444f829cffced98f4fe28
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hdinsight Hadoop, Spark, Kafka és több fürt beállítása
 
@@ -62,7 +62,7 @@ Kövesse a alapvető fürttelepítés ehhez a képernyőn megjelenő utasításo
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight 3.3 használatból való kivonást](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
 
-## <a name="resource-group-name"></a>Az erőforráscsoport neve 
+## <a name="resource-group-name"></a>Erőforráscsoport neve 
 
 [Az Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) egy Azure-erőforráscsoportot néven a munkát az erőforrásokkal egy csoportként az alkalmazásban. Telepítéséhez, frissítéséhez, figyelése, vagy törli az összes erőforrást egyetlen, koordinált műveletben az alkalmazáshoz.
 
@@ -98,15 +98,6 @@ További információkért lásd: [csomópont konfigurációs és virtuális gé
 
 ### <a name="hdinsight-version"></a>HDInsight-verzió
 Ehhez a fürthöz HDInsight verziójának kiválasztása. További információkért lásd: [támogatott HDInsight-verziókról](hdinsight-component-versioning.md#supported-hdinsight-versions).
-
-### <a name="cluster-tiers"></a>Fürt réteg: HDInsight szolgáltatásszintek
-
-Az Azure HDInsight a big data felhőajánlatokat két szolgáltatásrétegekben biztosít: Standard és Premium.  További információkért lásd: [HDInsight Standard és HDInsight prémium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium).
-
-Az alábbi képernyőfelvételen a fürt kiválasztása az Azure portál információit tartalmazza.
-
-![HDInsight prémium konfiguráció](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-type-configuration.png)
-
 
 ## <a name="cluster-login-and-ssh-user-name"></a>A fürt bejelentkezési és az SSH-felhasználónév
 HDInsight-fürtökkel fürt létrehozása során két felhasználói fiókokat konfigurálhatja:

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bafbd43d65a0f46f87a13cea4a2a6299d3bf43ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36a2f99b9d5ea4b9e6b313fed79cf7f4dd0e7057
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>A Node.js, Java és Python való használatra Azure Cosmos DB emulátor tanúsítványok exportálása
 
@@ -87,11 +87,11 @@ Egyszer a "CosmosDBEmulatorCertificate" SSL-tanúsítvány telepítve van az alk
 
 ## <a name="how-to-use-the-certificate-in-python"></a>A tanúsítvány használatáról Python
 
-Alapértelmezés szerint a [Python SDK(version 2.0.0 or higher)](documentdb-sdk-python.md) a DocumentDB API nem próbálja meg, és nem használja az SSL-tanúsítvány, ha a helyi emulátor csatlakozik. Ha azonban az SSL-érvényesítési használni kívánt követésével szereplő példák a [Python szoftvercsatorna burkolók](https://docs.python.org/2/library/ssl.html) dokumentációját.
+Alapértelmezés szerint a [Python SDK(version 2.0.0 or higher)](documentdb-sdk-python.md) az SQL API-t nem próbálja meg, és nem használja az SSL-tanúsítvány, ha a helyi emulátor csatlakozik. Ha azonban az SSL-érvényesítési használni kívánt követésével szereplő példák a [Python szoftvercsatorna burkolók](https://docs.python.org/2/library/ssl.html) dokumentációját.
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>A tanúsítvány használata a Node.js-ben
 
-Alapértelmezés szerint a [Node.js SDK(version 1.10.1 or higher)](documentdb-sdk-node.md) a DocumentDB API nem próbálja meg, és nem használja az SSL-tanúsítvány, ha a helyi emulátor csatlakozik. Ha azonban az SSL-érvényesítési használni kívánt követésével szereplő példák a [Node.js dokumentáció](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
+Alapértelmezés szerint a [Node.js SDK(version 1.10.1 or higher)](documentdb-sdk-node.md) az SQL API-t nem próbálja meg, és nem használja az SSL-tanúsítvány, ha a helyi emulátor csatlakozik. Ha azonban az SSL-érvényesítési használni kívánt követésével szereplő példák a [Node.js dokumentáció](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: mimig
-ms.openlocfilehash: fc544a776293e94114d8c07d89df588a17aa1962
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 57e8274d67bff86832d9cd070b781ade6575dee7
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB egység kérése
 Most már hozzáférhető: Azure Cosmos DB [kérelem egység Számológép](https://www.documentdb.com/capacityplanner). További információ: [megbecsülheti, az átviteli sebesség kell](request-units.md#estimating-throughput-needs).
@@ -26,7 +26,7 @@ Most már hozzáférhető: Azure Cosmos DB [kérelem egység Számológép](http
 ![Átviteli sebesség Számológép][5]
 
 ## <a name="introduction"></a>Bevezetés
-[Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) Microsoft globálisan elosztott több modellre adatbázis. Az Azure Cosmos DB nem kell virtuális gépek kölcsönbe, szoftver központi telepítése vagy adatbázisok figyelése. Azure Cosmos DB üzemeltetett, és képes biztosítani a világ osztály rendelkezésre állását, teljesítményét és adatok védelme a Microsoft felső mérnökök folyamatosan figyeli. Az adatok egy szerkesztőprogramban, például az SQL keresztül API-k használatával végezheti el a [DocumentDB API](documentdb-introduction.md), MongoDB API-k, [tábla API](table-introduction.md), és Gremlin keresztül a [Graph API](graph-introduction.md) -összes rendszer natív módon támogatott. Azure Cosmos DB pénzneme kérelem egység (RU). A RUs nem kell olvasási/írási kapacitások vagy rendelkezés Processzor, memória és iops-érték.
+[Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) Microsoft globálisan elosztott több modellre adatbázis. Az Azure Cosmos DB nem kell virtuális gépek kölcsönbe, szoftver központi telepítése vagy adatbázisok figyelése. Azure Cosmos DB üzemeltetett, és képes biztosítani a világ osztály rendelkezésre állását, teljesítményét és adatok védelme a Microsoft felső mérnökök folyamatosan figyeli. Az adatok API-k egy szerkesztőprogramban, például használatával végezheti el a [SQL API](documentdb-introduction.md), [MongoDB API](mongodb-introduction.md), [tábla API](table-introduction.md), és Gremlin keresztül a [Graph API](graph-introduction.md) - minden natív módon támogatottak. Azure Cosmos DB pénzneme kérelem egység (RU). A RUs nem kell olvasási/írási kapacitások vagy rendelkezés Processzor, memória és iops-érték.
 
 Azure Cosmos DB alkalmazásprogramozási támogatja a különböző műveletekkel, egyszerű olvasási műveletek közötti, és összetett graph lekérdezések írja. Mivel nem minden kérelemre egyenlő, hozzárendeli egy normalizált mennyisége **egységek kérelem** a kérelem kiszolgálásához szükséges számítási mennyisége alapján. A száma kérelem művelet nem determinisztikus, és nyomon követheti a válasz fejléce Azure Cosmos DB bármely művelet által felhasznált kérelem egységek száma. 
 
@@ -304,7 +304,7 @@ Az alábbi táblázat hozzávetőleges kérelem egység költségekkel ezt az el
 
 | Művelet | Egységköltség kérése |
 | --- | --- |
-| Konfigurációelem létrehozása |~ 15 RU |
+| Elem létrehozása |~ 15 RU |
 | Elem olvasása |~ 1 RU |
 | Lekérdezés elem azonosítója |~2.5 RU |
 
@@ -326,7 +326,7 @@ Az információ megbecsülheti a RU követelmények az alkalmazáshoz, művelete
 
 | A művelet/lekérdezés | Becsült száma másodpercenként | Szükséges RUs |
 | --- | --- | --- |
-| Konfigurációelem létrehozása |10 |150 |
+| Elem létrehozása |10 |150 |
 | Elem olvasása |100 |100 |
 | Válassza ki a gyártó által élelmiszerek |25 |175 |
 | Válassza ki a étele csoport szerint |10 |700 |

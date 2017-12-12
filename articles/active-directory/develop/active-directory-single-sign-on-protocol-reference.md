@@ -4,7 +4,7 @@ description: "Ez a cikk ismerteti az egyszeri bejelentkezést a SAML protokoll, 
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: f41402fc2cb282975b93071d998365fdb0a21941
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 096a250685bf023f789f98e16d2bea13bf448e3b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezés SAML protokoll
 Ez a cikk ismerteti a SAML 2.0 hitelesítési kérések és válaszok, amelyek az Azure Active Directory (Azure AD) támogatja az egyszeri bejelentkezést.
@@ -47,9 +47,9 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ID (Azonosító) |Szükséges |Az Azure AD használja ezt az attribútumot feltölti a `InResponseTo` a visszaadott válasz attribútum. Azonosító nem kezdődhetnek egy szám, így a közös stratégia illesztenie egy karakterlánc például a "id" GUID karakterláncos ábrázolása. Például `id6c1c178c166d486687be4aaf5e482730` van egy érvényes azonosítót. |
 | Verzió |Szükséges |Ez legyen **2.0**. |
 | IssueInstant |Szükséges |Ez egy dátum és idő (UTC) értékkel és [körbejárási formátumban ("no")](https://msdn.microsoft.com/library/az4se3k1.aspx). Az Azure AD egy DateTime értéket az ilyen típusú vár, de nem kiértékelheti vagy az értéke. |
-| AssertionConsumerServiceUrl |Nem kötelező |Ha a megadott, ennek egyeznie kell a `RedirectUri` a felhőalapú szolgáltatás, az Azure ad-ben. |
-| ForceAuthn |Nem kötelező | Ez egy olyan logikai érték. Igaz értéke esetén ez azt jelenti, hogy a felhasználó lenne kényszerítve újra hitelesíteni, még akkor is, ha azok rendelkeznek-e egy érvényes Azure AD-munkamenetet. |
-| IsPassive |Nem kötelező |Ez az egy logikai érték, amely meghatározza, hogy az Azure AD kell a felhasználói beavatkozás nélküli hitelesítés, felhasználói beavatkozás nélkül a munkamenet cookie-k használata, ha van ilyen. Ha ez igaz, az Azure AD megpróbál hitelesíteni a felhasználót, a munkamenet cookie-k használatával. |
+| AssertionConsumerServiceUrl |választható |Ha a megadott, ennek egyeznie kell a `RedirectUri` a felhőalapú szolgáltatás, az Azure ad-ben. |
+| ForceAuthn |választható | Ez egy olyan logikai érték. Igaz értéke esetén ez azt jelenti, hogy a felhasználó lenne kényszerítve újra hitelesíteni, még akkor is, ha azok rendelkeznek-e egy érvényes Azure AD-munkamenetet. |
+| IsPassive |választható |Ez az egy logikai érték, amely meghatározza, hogy az Azure AD kell a felhasználói beavatkozás nélküli hitelesítés, felhasználói beavatkozás nélkül a munkamenet cookie-k használata, ha van ilyen. Ha ez igaz, az Azure AD megpróbál hitelesíteni a felhasználót, a munkamenet cookie-k használatával. |
 
 Minden más `AuthnRequest` attribútumok, például a hozzájárulási, cél, AssertionConsumerServiceIndex, AttributeConsumerServiceIndex és ProviderName **figyelmen kívül hagyva**.
 

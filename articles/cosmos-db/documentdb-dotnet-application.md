@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
 ms.custom: devcenter
-ms.openlocfilehash: b7c967550f9f89eec29288b24525b5f043615437
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 619886d129c6b9fca62376e366ce3a78d57c56c0
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése az Azure Cosmos DB szolgáltatással
 > [!div class="op_single_selector"]
@@ -30,6 +30,8 @@ ms.lasthandoff: 10/20/2017
 > * [Python](documentdb-python-application.md)
 > 
 > 
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Ez a cikk teljes körűen bemutatja, hogyan építhet teendőkezelő alkalmazást az Azure Cosmos DB eszközzel, és ezáltal hogyan használhatja hatékonyan az Azure Cosmos DB-t a JSON-dokumentumok tárolására és lekérdezésére. A feladatok JSON-dokumentumokként lesznek tárolva az Azure Cosmos DB-ben.
 
@@ -55,7 +57,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 Ez a cikk összes képernyőfelvétele használatával a Microsoft Visual Studio Community 2017 került sor. Ha a rendszer a lehetséges, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek ebben a megoldásban kell működnie egy másik verzió van konfigurálva.
 
 ## <a name="_Toc395637761"></a>1. lépés: Azure Cosmos DB-adatbázisfiók létrehozása
-Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már szerepel egy SQL (DocumentDB) fiók Azure Cosmos DB, vagy ha az oktatóanyag az Azure Cosmos DB Emulator használ, továbbléphet a [hozzon létre egy új ASP.NET MVC alkalmazást](#_Toc395637762).
+Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik az SQL-fiókkal az Azure Cosmos DB, vagy ha az oktatóanyag az Azure Cosmos DB Emulator használ, továbbléphet a [hozzon létre egy új ASP.NET MVC alkalmazást](#_Toc395637762).
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -99,7 +101,7 @@ Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET MVC bekötések nagy
    
     Az eredmények közül telepítse a **Microsoft Microsoft.Azure.DocumentDB** csomag. Ez letölti és telepíti az Azure Cosmos DB csomagot, valamint az összes függőségét, például a newtonsoft.JSON elemet. Kattintson az **OK** gombra a **Preview** (Előnézet) ablakban, majd az **I Accept** (Elfogadás) gombra a **License Acceptance** (Licenc elfogadása) ablakban a telepítés befejezéséhez.
    
-    ![A Manage NuGet Packages (NuGet-csomagok kezelése) ablak képernyőfelvétele, ahol a Microsoft Azure DocumentDB Client Library elem van kiemelve](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
+    ![A NuGet-csomagok kezelése ablakban, a Microsoft Azure Cosmos DB Client Library elem van kiemelve képernyőfelvétele](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
    
       A Csomagkezelő konzollal is telepítheti a csomagot. Ehhez a **Tools** (Eszközök) menüben kattintson a **NuGet Package Manager** (NuGet-csomagkezelő) elemre, majd kattintson a **Package Manager Console** (Csomagkezelő konzol) elemre. A parancssorba írja be a következőt.
    

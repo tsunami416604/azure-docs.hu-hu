@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: 3d867df3ef875d5cc41de418c3d1d269ff751fda
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2010e86e56c1ce7a98fae97a8f6f00c30b61035
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>Stream Analytics Data Lake Store kimeneti
 Stream Analytics-feladatok támogatja több kimeneti módszerek közül az egyik egy [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Az Azure Data Lake Store egy vállalati szintű, nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra. Data Lake Store lehetővé teszi, hogy a műveleti és felderítési jellegű bármilyen méretű, típusú és feldolgozási sebességű adatok.
 
 ## <a name="authorize-a-data-lake-store-account"></a>Data Lake Store-fiók engedélyezése
-1. Data Lake Store az Azure portálon kimenetként kiválasztásakor kérni fogja a meglévő Data Lake Store használatának engedélyezéséhez, vagy kérjen hozzáférést a Data Lake store a klasszikus portálon.
+1. Data Lake Store az Azure portálon kimenetként kiválasztásakor kérni fogja a meglévő Data Lake Store használatának engedélyezéséhez, vagy kérjen hozzáférést a Data Lake Store.
    
    ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.png)  
    
@@ -68,14 +68,14 @@ Miután a Data Lake Store-fiók hitelesítését, a Data Lake Store kimeneti meg
 </tr>
 <tr>
 <td>Encoding</td>
-<td>Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumú, kódolással meg kell adni. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.</td>
+<td>Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumú, kódolással meg kell adni. Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum.</td>
 </tr>
 <tr>
 <td>Elválasztó</td>
 <td>Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogatja a CSV-adatok szerializálása során. Támogatott értékei vesszővel, a pontosvesszővel válassza el, a terület, a lapon és a függőleges vonal.</td>
 </tr>
 <tr>
-<td>Formátumban</td>
+<td>Formátum</td>
 <td>Csak a JSON-szerializálás alkalmazható. Sorral elválasztott beállítás megadja, hogy a kimeneti azzal, hogy minden JSON-objektum sortöréssel elválasztva kell formázni. A tömb határozza meg, hogy a kimeneti lesznek formázva, egy JSON-objektumok tömbjét.</td>
 </tr>
 </tbody>

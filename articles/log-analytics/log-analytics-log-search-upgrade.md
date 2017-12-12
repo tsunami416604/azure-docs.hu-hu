@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: f3bb92335ec8d7d6edc0f10346b9b3a26adf65af
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 36a08cab2b1d409d2de382a07cfd7259a1c94e13
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-log-analytics-upgrade-to-new-log-search"></a>Új naplófájl-keresési frissítsen az Azure Naplóelemzés
 
@@ -58,7 +58,7 @@ A következő változnak a munkaterület átalakítás után:
 - Tekintse meg a következő a [naplófájl-keresési gyakran ismételt kérdések](log-analytics-log-search-faq.md) esetében a frissítés kapcsolatos gyakori kérdésekre.
 
 ## <a name="how-do-i-know-if-there-were-any-issues-from-the-upgrade"></a>Hogyan állapítható meg, hogy történtek-e a frissítés probléma merül fel?
-A frissítés befejezése után nem lesznek egy **összefoglaló frissítése** szakasz a munkaterület beállításait.  Ez a szakasz információt a frissítés és a nézet ellenőrzése a
+A frissítés befejezése után nem lesznek egy **összefoglaló frissítése** szakasz a munkaterület beállításait.  Ez a szakasz információt a frissítés és a felmerülő problémákkal megtekintéséhez ellenőrizze.
 
  ![Frissítési összefoglalót](media/log-analytics-log-search-upgrade/upgrade-summary.png)
 

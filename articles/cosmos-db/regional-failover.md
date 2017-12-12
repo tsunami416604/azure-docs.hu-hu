@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/17/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93a9bf568b1047e1af4e7825c3ca99bf11945560
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: b530cd6f12c08124d9483c6c4898ee4d69b8e5a2
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Az üzletmenet folytonossága érdekében az Azure Cosmos Adatbázisba automatikus regionális feladatátvétel
 Azure Cosmos DB egyszerűbbé teszi a globális adatok terjesztési felajánlásával teljes körűen felügyelt, [több területi adatbázis fiókok](distribute-data-globally.md) biztosító egyértelmű mellékhatásokkal konzisztencia, a rendelkezésre állás és a teljesítmény, az összes megfelelő garanciák között. Cosmos DB fiókok kínálnak a magas rendelkezésre állású, egyetlen számjegy ms késések, [jól meghatározott konzisztenciaszintek](consistency-levels.md), többhelyű API-khoz transzparens regionális feladatátvétel és rugalmasan méretezhető átviteli sebesség és tárterület világszerte képességét. 
@@ -46,7 +46,7 @@ Az alábbi részlet egy több területi alkalmazás inicializálása mutatja be.
 * A konfigurált `West US` beolvassa az alacsony késleltetés első preferált régió szerint
 * A konfigurált `North Europe` , a második preferált régió (magas rendelkezésre állásúként regionális esetén)
 
-A DocumentDB az API-ban Ez a konfiguráció néz ki a következő kódrészletet:
+Az SQL API-ban Ez a konfiguráció néz ki a következő kódrészletet:
 
 ```cs
 ConnectionPolicy usConnectionPolicy = new ConnectionPolicy 
@@ -141,6 +141,6 @@ Ez a cikk azt felül Cosmos DB hogyan manuális és automatikus feladatátvétel
 ## <a id="NextSteps"></a>Következő lépések
 * További tudnivalók arról, hogyan támogatja a Cosmos DB [globális terjesztési](distribute-data-globally.md)
 * További tudnivalók [az Azure Cosmos DB globális egységesítése](consistency-levels.md)
-* Azure Cosmos DB használatával több régióba fejlesztést [DocumentDB API](../cosmos-db/tutorial-global-distribution-documentdb.md)
-* Ismerje meg, hogyan hozhat létre [több területi író architektúrák](multi-region-writers.md) az Azure documentdb használatával
+* Azure Cosmos DB használatával több régióba fejlesztést [SQL API](tutorial-global-distribution-documentdb.md)
+* Ismerje meg, hogyan hozhat létre [több területi író architektúrák](multi-region-writers.md) rendelkező Azure Cosmos DB
 

@@ -4,7 +4,7 @@ description: "Ez a témakör ismerteti a használt, és létrehozott fiókok és
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: billmath
-ms.openlocfilehash: b45e4096cb68c4b88d2d782427d66a11d1b86b33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cde406bd745fe61757eaa69c9fc0cfc98a42d205
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Az Azure AD Connect: Fiókok és engedélyek
 Az Azure AD Connect telepítővarázsló biztosít két különböző elérési utak:
@@ -101,14 +101,14 @@ Az Azure AD Connect egyik verzióról történő frissítésekor egy új kiadás
 >Build 1.1.484 verziótól kezdődően az Azure AD Connect bevezetett egy regressziós hiba, amely az SQL-adatbázis frissítéséhez rendszergazdai engedélyekkel kell rendelkeznie.  Ez a hiba továbbra is megtalálható a legújabb buildjével 1.1.614.  Ha frissíti a buildre, szüksége lesz a rendszergazdai engedélyekkel.  Dbo engedélyek nem elegendőek.  Ha az Azure AD Connect anélkül, hogy a rendszergazdai engedélyek frissítésére tett kísérlet, a frissítés sikertelen lesz, és az Azure AD Connect már nem működik megfelelően, ezt követően.  Microsoft erről tájékoztatni kell, és ennek működik.
 
 
-| Egyszerű | Szükséges jogosultságok | A használt |
+| Rendszerbiztonsági tag | Szükséges jogosultságok | A használt |
 | --- | --- | --- |
 | A telepítővarázsló futtató felhasználó |A helyi kiszolgáló rendszergazdája |A frissítés bináris fájljait. |
 | A telepítővarázsló futtató felhasználó |ADSyncAdmins tagja |Szinkronizálási szabályok és más konfigurációs módosításokat. |
 | A telepítővarázsló futtató felhasználó |A teljes SQL server használata esetén: DBO (vagy hasonlót), a Szinkronizáló vezérlő adatbázisának |Adatbázis szintű módosításokat végezni, például táblák frissítése új oszlopokkal. |
 
 ## <a name="more-about-the-created-accounts"></a>További információ a létrehozott fiókok
-### <a name="active-directory-account"></a>Active Directory-fiókkal
+### <a name="active-directory-account"></a>Active Directory-fiók
 Ha az expressz beállításokat használja, majd egy fiókot az Active Directoryban, amely a szinkronizáláshoz használt jön létre. A létrehozott fiók az erdő gyökértartományának a felhasználók a tárolóban található, és rendelkezik a név előtagként **MSOL_**. A fiók létrejön egy hosszú összetett jelszót, amely nem jár le. Ha a jelszóházirend abban a tartományban, győződjön meg arról, hogy hosszú, és bonyolultabb jelszavakat szeretné engedélyezni az ehhez a fiókhoz.
 
 ![AD-fiókot](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)

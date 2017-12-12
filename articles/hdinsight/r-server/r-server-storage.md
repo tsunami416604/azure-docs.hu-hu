@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: aafcc818af4c6e5d141d3633b31b913802a21752
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 863277294fc0462e9221edffab1dd4e2001d7493
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="azure-storage-solutions-for-r-server-on-hdinsight"></a>Az R Server on HDInsight az Azure tárolási megoldások
 
@@ -43,19 +43,25 @@ A használatára a forgatókönyvéhez leginkább megfelelő tárolási lehetős
 
 ## <a name="use-azure-blob-storage-accounts-with-r-server"></a>R Server Azure Blob storage-fiókok használata
 
-Ha szükséges, az Azure storage-fiókok vagy a tárolókat elérheti a HDI-fürthöz. Ehhez meg kell adnia a további tárfiókok a felhasználói felületen, amikor a fürt létrehozása, majd kövesse az alábbi lépéseket az R Server használandó.
+Ha egynél több tárfiókot az R Server-fürt létrehozásakor megadott, az alábbi utasításokat ismerteti az adatok elérése és a műveletek R Server a másodlagos fiók használata. Tegyük fel, a következő tárfiókok és a tároló: **storage1** és egy alapértelmezett tároló nevű **container1**, és **storage2**.
 
 > [!WARNING]
 > Teljesítmény érdekében a HDInsight-fürt létrehozása a megadott elsődleges tárfiókkal azonos adatközpontba. A storage-fiók egy másik helyen, mint a HDInsight-fürt használata nem támogatott.
 
-1. A tárfiók neve a HDInsight-fürtök létrehozása **storage1** és egy alapértelmezett tároló nevű **container1**.
-2. Adjon meg egy további nevű tárfiókot **storage2**.  
-3. Másolja a mycsv.csv fájlt a /share könyvtárba, és elvégezhetik az elemzést a fájlhoz.  
+1. Egy SSH-ügyfélprogrammal, csatlakozás az élcsomóponthoz a fürt másként remoteuser.  
+
+  + Az Azure portál > HDI fürt oldalát > áttekintés, kattintson a **Secure Shell (SSH)**.
+  + Állomásnév, válassza ki az élcsomóponthoz (Ez magában foglalja *kell adnia végrehajtási adatokat-ssh.azurehdinsight.net* a neve).
+  + Másolja az állomás neve.
+  + Nyisson meg egy SSH-ügyfél, például a PutTY vagy SmartTY, és adja meg a gazdagép nevét.
+  + Adja meg a felhasználónevet, a fürt jelszó követ remoteuser.
+  
+2. Másolja a mycsv.csv fájlt a /share könyvtárba. 
 
         hadoop fs –mkdir /share
         hadoop fs –copyFromLocal myscsv.scv /share  
 
-4. Az R-kód beállítása a név csomópont **alapértelmezés szerint** és állítsa be a könyvtár- és feldolgozni.  
+3. Váltson át R Studio vagy egy másik R-konzolban, és a név csomópont állítható R-kód írása **alapértelmezett** és az elérni kívánt fájl helyét.  
 
         myNameNode <- "default"
         myPort <- 0
@@ -64,7 +70,7 @@ Ha szükséges, az Azure storage-fiókok vagy a tárolókat elérheti a HDI-für
         bigDataDirRoot <- "/share"  
 
         #Define Spark compute context:
-        mySparkCluster <- RxSpark(consoleOutput=TRUE)
+        mySparkCluster <- RxSpark(nameNode=myNameNode, consoleOutput=TRUE)
 
         #Set compute context:
         rxSetComputeContext(mySparkCluster)

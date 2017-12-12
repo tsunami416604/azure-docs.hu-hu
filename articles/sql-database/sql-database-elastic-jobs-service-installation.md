@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 7c741deba180af56414b0711de94ba110aeea9b8
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 232d695421a417286c30dc05b35f084c551a443d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Telepítése rugalmas feladatok – áttekintés
-[**Rugalmas adatbázis-feladatok** ](sql-database-elastic-jobs-overview.md) PowerShell segítségével telepíthető, vagy a klasszikus Azure-Portal.You keresztül is hozzáférhetnek a PowerShell API használata csak akkor, ha a PowerShell telepítéséhez feladatok létrehozásához és kezeléséhez. Emellett a PowerShell API-k jóval több funkciót kínál a portál mint ezen a ponton a időben.
+[**Rugalmas adatbázis-feladatok** ](sql-database-elastic-jobs-overview.md) PowerShell vagy az Azure portálon keresztül is telepíthető. Akkor is hozzáférhetnek a PowerShell API használata csak akkor, ha a PowerShell telepítéséhez feladatok létrehozásához és kezeléséhez. Emellett a PowerShell API-k jóval több funkciót kínál a portál mint ezen a ponton a időben.
 
 Ha már telepítette **rugalmas adatbázis-feladatok** a meglévő a portálon keresztül **rugalmas készlet**, Powershell legújabb előzetes parancsfájlok frissíti a meglévő példányt tartalmaz. Erősen ajánlott a legújabb verzióra frissíteni a telepítést **rugalmas adatbázis-feladatok** összetevők a PowerShell API-k segítségével új funkciók előnyeit.
 

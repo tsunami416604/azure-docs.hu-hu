@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 220d6e04c780cc5c8bedd16228fca5abf31eb681
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7a21dfde5544045e4961549fe5728e14647eb886
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors FabricTransport beállításainak konfigurálása
 
@@ -49,7 +49,7 @@ A következő példa bemutatja, hogyan módosíthatja az alapértelmezett érté
 
 ## <a name="config-package"></a>A konfigurációs csomag
 
-Használhatja a [a konfigurációs csomag](service-fabric-application-model.md) az alapértelmezett konfiguráció módosításához.
+Használhatja a [a konfigurációs csomag](service-fabric-application-and-service-manifests.md) az alapértelmezett konfiguráció módosításához.
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Az aktor szolgáltatás FabricTransport beállításainak konfigurálása
 

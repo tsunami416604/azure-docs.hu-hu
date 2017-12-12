@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: aa457c97292fc9f97d3bc4769ca45d55dd5829a6
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 5fd9a1890c1940cdd4e79cc32e0b3984edd043e8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="upgrade-kubernetes-in-azure-container-service-aks"></a>Az Azure Tárolószolgáltatásban (AKS) Kubernetes frissítése
 
-Az Azure-tároló szolgáltatás (AKS) fürt frissítése az Azure parancssori felület használatával. A frissítési folyamat során Kubernetes csomópontra van közé tartoznak gondosan [cordoned és merül le](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/) minimalizálása érdekében a legkisebb mértékű akadályozása érdekében a futó alkalmazások.
+Az Azure-tároló szolgáltatás (AKS) fürt frissítése az Azure parancssori felület használatával. A frissítési folyamat során Kubernetes csomópontra van közé tartoznak gondosan [cordoned és merül le] [ kubernetes-drain] minimalizálása érdekében a legkisebb mértékű akadályozása érdekében a futó alkalmazások.
 
 Ebben az oktatóanyagban nyolc nyolc része, Kubernetes fürt frissítésekor. Feladatokat, a következők:
 
@@ -30,12 +30,12 @@ Ebben az oktatóanyagban nyolc nyolc része, Kubernetes fürt frissítésekor. F
 
 Az előző oktatóanyagok egy tároló lemezképet, az Azure-tároló beállításjegyzék feltöltött lemezkép és a létrehozott Kubernetes fürt alkalmazás lett csomagolva. Az alkalmazás ezután futtatták a Kubernetes fürtön.
 
-Ha nem volna ezeket a lépéseket, és szeretné követéséhez, térjen vissza a [oktatóanyag 1 – létrehozás tároló képek](./tutorial-kubernetes-prepare-app.md).
+Ha nem volna ezeket a lépéseket, és szeretné követéséhez, térjen vissza a [oktatóanyag 1 – létrehozás tároló képek][aks-tutorial-prepare-app].
 
 
 ## <a name="get-cluster-versions"></a>Fürt verziók beolvasása
 
-Fürt frissítése előtt használja a `az aks get-versions` parancs futtatásával ellenőrizze, amely feloldja a Kubernetes érhetők el a frissítést.
+A fürtök frissítése előtt az `az aks get-versions` parancs használatával ellenőrizze, hogy mely Kubernetes-kiadások frissíthetők.
 
 ```azurecli-interactive
 az aks get-versions --name myK8sCluster --resource-group myResourceGroup --output table
@@ -115,7 +115,7 @@ Kimenet:
 
 ## <a name="validate-upgrade"></a>Frissítésének ellenőrzése
 
-Most már ellenőrizheti a frissítés az sikeres volt a `az aks show` parancsot.
+Most az `az aks show` paranccsal ellenőrizheti, hogy sikerült-e a frissítés.
 
 ```azurecli-interactive
 az aks show --name myK8sCluster --resource-group myResourceGroup --output table
@@ -141,4 +141,11 @@ Ebben az oktatóanyagban Kubernetes AKS fürt frissítése. Befejeződtek a köv
 Kattintson erre a hivatkozásra AKS tájékozódhat.
 
 > [!div class="nextstepaction"]
-> [AKS áttekintése](./intro-kubernetes.md)
+> [AKS áttekintése][aks-intro]
+
+<!-- LINKS - external -->
+[kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
+
+<!-- LINKS - internal -->
+[aks-intro]: ./intro-kubernetes.md
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

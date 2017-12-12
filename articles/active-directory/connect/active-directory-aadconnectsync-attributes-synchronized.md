@@ -4,7 +4,7 @@ description: "Az Azure Active Directoryval szinkronizált attribútumok listája
 services: active-directory
 documentationcenter: 
 author: andkjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: c2bb36e0-5205-454c-b9b6-f4990bcedf51
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 08663916214cf2d34704ef2a355464bc6df9b138
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 1fb5772f58511b33d6927c3d0ff155980ed756ad
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect szinkronizálása: az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör az Azure AD Connect szinkronizálási szolgáltatás által szinkronizált attribútumok listája.  
@@ -35,7 +35,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 >
 >
 
-## <a name="office-365-proplus"></a>Az Office 365 ProPlus
+## <a name="office-365-proplus"></a>Office 365 ProPlus
 | Attribútum neve | Felhasználó | Megjegyzés |
 | --- |:---:| --- |
 | AccountEnabled |X |Meghatározza, hogy a fiók engedélyezve van. |
@@ -45,7 +45,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | pwdLastSet |X |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. A jelszó-szinkronizálás és a összevonási használják. |
 | sourceAnchor |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | usageLocation |X |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
-| UserPrincipalName |X |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
+| userPrincipalName |X |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
 
 ## <a name="exchange-online"></a>Exchange Online
 | Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
@@ -83,7 +83,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | givenName |X |X | | |
 | HomePhone |X |X | | |
 | információ |X |X |X |Ez az attribútum a csoportok jelenleg nem felhasznált. |
-| monogramja |X |X | | |
+| Monogram |X |X | | |
 | l csomag |X |X | | |
 | LegacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
@@ -167,7 +167,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | unauthOrig |X |X |X | |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
 | userCertificate |X |X | | |
-| UserPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
+| userPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
 | userSMIMECertificates |X |X | | |
 | wWWHomePage |X |X | | |
 
@@ -248,9 +248,9 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | thumbnailphoto |X |X | | |
 | Cím |X |X | | |
 | unauthOrig |X |X |X | |
-| URL-címe |X |X | | |
+| url |X |X | | |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
-| UserPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
+| userPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
 | wWWHomePage |X |X | | |
 
 ## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online (ezt követően a Skype vállalati verzió ismert)
@@ -299,7 +299,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | thumbnailphoto |X |X | | |
 | Cím |X |X | | |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
-| UserPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
+| userPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Az Azure RMS
@@ -316,9 +316,9 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | SecurityEnabled | | |X |GroupType származik. |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
-| UserPrincipalName |X | | |Az egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
+| userPrincipalName |X | | |Az egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
 
-## <a name="intune"></a>Intune-ban
+## <a name="intune"></a>Intune
 | Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | AccountEnabled |X | | |Meghatározza, hogy a fiók engedélyezve van. |
@@ -335,7 +335,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | SecurityEnabled | | |X |A groupType származtatni. |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
-| UserPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
+| userPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
 | Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
@@ -368,7 +368,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | TelephoneNumber |X |X | | |
 | Cím |X |X | | |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
-| UserPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
+| userPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
 
 ## <a name="3rd-party-applications"></a>3. fél alkalmazások
 Egy általános munkaterhelés vagy az alkalmazáshoz szükséges minimális attribútumként használt attribútumok. A munkaterhelés nem szerepel egy másik szakaszban, vagy nem Microsoft-alkalmazások használható. Explicit módon használható a következő:
@@ -394,7 +394,7 @@ Ez a csoport olyan attribútumok használható, ha az Azure AD-címtár nem tám
 | sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
-| UserPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
+| userPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
 
 ## <a name="windows-10"></a>Windows 10
 Egy Windows 10-tartományhoz csatlakoztatott computer(device) szinkronizálja az Azure AD egyes attribútumok. A forgatókönyv további információkért lásd: [tartományhoz csatlakozó eszközök csatlakoztatása az Azure AD, a Windows 10 észlel](../active-directory-azureadjoin-devices-group-policy.md). Ezek az attribútumok mindig szinkronizálja, és a Windows 10 nem jelenik meg az alkalmazások törölheti. Windows 10-es tartományhoz csatlakoztatott számítógépet azzal, hogy az attribútum userCertificate feltöltve azonosítja.

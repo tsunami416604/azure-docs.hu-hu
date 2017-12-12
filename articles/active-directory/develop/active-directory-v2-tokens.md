@@ -4,7 +4,7 @@ description: "A jogkivonatok és jogcímek különböző típusairól a Azure AD
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ec25d4375647a2c8983d7573b9912e544fc3e7b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 01994e067bd7ce0343f12ec3334a91bd062251a8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Az Azure Active Directory v2.0 jogkivonatok referenciái
 Az Azure Active Directory (Azure AD) v2.0-végponttól számos különböző típusú minden biztonsági jogkivonatokat bocsát ki [hitelesítési folyamat](active-directory-v2-flows.md). Ezt a hivatkozást a formátuma, a biztonsági jellemzőkkel és a különböző típusú lexikális elem tartalmát ismerteti.
@@ -61,13 +61,13 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | Ki: |`iat` |`1452285331` |Az idő, amelynél a jogkivonat adta ki, epoch időt jelöli. |
 | Lejárati idő |`exp` |`1452289231` |Az idő, ahol a token érvénytelen, válik epoch időt jelöli. Az alkalmazás által használandó ezt az igényt a jogkivonatok élettartama érvényességének ellenőrzésére. |
 | Hatálybalépési idő |`nbf` |`1452285331` |Az idő, amelynél a jogkivonat hatályba lép, epoch időt jelöli. Ez megegyezik általában a kiállítási idő. Az alkalmazás által használandó ezt az igényt a jogkivonatok élettartama érvényességének ellenőrzésére. |
-| Verzió |`ver` |`2.0` |Az azonosító jogkivonatot, az Azure AD által definiált verzióját. A v2.0-végpontra értéke `2.0`. |
+| verzió: |`ver` |`2.0` |Az azonosító jogkivonatot, az Azure AD által definiált verzióját. A v2.0-végpontra értéke `2.0`. |
 | Bérlő azonosítója |`tid` |`b9419818-09af-49c2-b0c3-653adc1f376e` |Az, hogy a felhasználó az Azure AD-bérlő képviselő GUID. A munkahelyi és iskolai fiókok a GUID-azonosító, amely a felhasználó tagja a szervezet nem módosítható bérlői azonosító. A személyes fiókok értéke `9188040d-6c67-4c5b-b112-36a304b66dad`. A `profile` hatókör ezt az igényt fogadásához szükséges. |
 | Kód kivonata |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |A kód kivonat csak akkor, ha a Azonosítót jogkivonatban kiadott OAuth 2.0 hitelesítési kóddal azonosító-jogkivonatokat szerepel. Az engedélyezési kód hitelességének használható. Ezen ellenőrzés végrehajtásával kapcsolatos részletekért lásd: a [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html). |
 | Hozzáférési jogkivonat kivonata |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |A hozzáférési token kivonatoló azonosító szerepel jogkivonatokat, csak ha az azonosító token kiadott olyan OAuth 2.0 hozzáférési jogkivonatot. A hozzáférési token hitelességének használható. Ezen ellenőrzés végrehajtásával kapcsolatos részletekért lásd: a [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html). |
 | Nonce |`nonce` |`12345` |Az egyszeri üzenet hitelesítési karakterláncok ismétlésének támadások kiküszöböléséhez stratégiát. Az alkalmazás megadhat egy nonce engedélyezési kérelmet használatával a `nonce` lekérdezési paraméter. Megadja a kérelemben szereplő érték is ki lesz adva a Azonosítót jogkivonatban `nonce` jogcím változtatás nélkül. Az alkalmazás ellenőrizheti, hogy az érték azt a kérelmet, amely összerendeli az alkalmazás munkamenet egyedi azonosítója jogkivonatok megadott értékkel. Az alkalmazás végre kell hajtania az ellenőrzés az azonosító jogkivonatok érvényesség-ellenőrzése során. |
 | név |`name` |`Babe Ruth` |A jogcím nevét emberek számára olvasható érték, amely azonosítja a token tárgya biztosít. Az érték nem garantált egyedinek kell lennie, változtatható, és úgy van kialakítva, csak megjelenítési célra használható. A `profile` hatókör ezt az igényt fogadásához szükséges. |
-| E-mailek |`email` |`thegreatbambino@nyy.onmicrosoft.com` |Ha létezik egy felhasználói fiókhoz tartozó elsődleges e-mail címe. Az érték változtatható és idővel változhatnak. A `email` hatókör ezt az igényt fogadásához szükséges. |
+| e-mailben |`email` |`thegreatbambino@nyy.onmicrosoft.com` |Ha létezik egy felhasználói fiókhoz tartozó elsődleges e-mail címe. Az érték változtatható és idővel változhatnak. A `email` hatókör ezt az igényt fogadásához szükséges. |
 | előnyben részesített felhasználónév |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |Elsődleges felhasználóneve, amely a felhasználót a v2.0-végpontra jelöli. Ez lehet egy e-mail címet, telefonszámot vagy egy általános felhasználónév nélkül a megadott formátumban. Az érték változtatható és idővel változhatnak. Mivel ez változtatható, ez az érték nem használható engedélyezéshez. A `profile` hatókör ezt az igényt fogadásához szükséges. |
 | Tulajdonos |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | Arról, hogy mely a token állításokat információkat, például egy alkalmazás a felhasználó rendszerbiztonsági tag. Ez az érték nem módosítható és nem lehet újbóli hozzárendelése és nem használja fel újra. Ellenőrzi a engedélyezési biztonságosan, például ha használja a tokent elért egy erőforrást használható, és egy adatbázistáblákban kulcs használható. Mivel a tulajdonos mindig szerepel a jogkivonatokat, hogy az Azure AD-problémák, azt javasoljuk, ez az érték egy általános célú engedélyezési rendszerben. A tulajdonos, azonban egy páros azonosító - egyedi legyen egy adott alkalmazásra.  Ezért ha egy felhasználó bejelentkezik a két különböző alkalmazások két különböző ügyfél-azonosító, az alkalmazások két eltérő értékek tartoznak a tulajdonos jogcím fog kapni.  Ez lehet, hogy vagy a architektúra és adatvédelmi követelményeitől függően nem is kívánatos. |
 | objektum azonosítója |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | A Microsoft identity rendszer ebben az esetben egy felhasználói fiókot az objektum nem módosítható azonosítója.  Azt is segítségével biztonságos és kulcsként az adatbázistáblákban levő engedélyezési ellenőrzéseket hajtanak végre. Ezt az Azonosítót egyedileg azonosítja a felhasználó alkalmazásra – két különböző alkalmazások az azonos felhasználói bejelentkezés fog kapni a ugyanazt az értéket a `oid` jogcímek.  Ez azt jelenti, hogy használható Microsoft online szolgáltatások, például a Microsoft Graph lekérdezések létrehozásakor.  A Microsoft Graph ezt az Azonosítót ad vissza a `id` tulajdonság egy adott felhasználói fiók.  Mivel a `oid` lehetővé teszi, hogy a felhasználók, összefüggéseket több alkalmazást a `profile` hatókör ezt az igényt fogadásához szükséges. Vegye figyelembe, hogy ha egy felhasználó több bérlő, a felhasználó fogja tartalmazni az egyes bérlők különböző Objektumazonosító - nek minősíti azokat külön fiókot annak ellenére, hogy a felhasználó bejelentkezik az egyes fiókokhoz azokkal a hitelesítő adatokkal. |

@@ -41,13 +41,14 @@
 
 ## Elemzés
 ### [Az Azure CDN használati mintáinak elemzése](cdn-log-analysis.md)
-#### [Alapvető jelentések a Verizontól](cdn-analyze-usage-patterns.md)
-#### [Egyéni jelentések a Verizontól](cdn-verizon-custom-reports.md)
 #### [Azure-beli diagnosztikai naplók](cdn-azure-diagnostic-logs.md)
-### Elemzési eszközök az Azure CDN-hez a Verizontól
-#### [Extra szintű HTTP-jelentések létrehozása](cdn-advanced-http-reports.md)
-#### [Valós idejű statisztikák megjelenítése](cdn-real-time-stats.md)
-#### [Élcsomópont teljesítményelemzése](cdn-edge-performance.md)
+#### Elemzési eszközök az Azure CDN-hez a Verizontól
+##### [Alapvető jelentések a Verizontól](cdn-analyze-usage-patterns.md)
+##### [Egyéni jelentések a Verizontól](cdn-verizon-custom-reports.md)
+#### Elemzési eszközök az Azure CDN Premiumhoz a Verizontól
+##### [Extra szintű HTTP-jelentések létrehozása](cdn-advanced-http-reports.md)
+##### [Valós idejű statisztikák megjelenítése](cdn-real-time-stats.md)
+##### [Élcsomópont teljesítményelemzése](cdn-edge-performance.md)
 
 ## Fejlesztés
 ### [.NET](cdn-app-dev-net.md)

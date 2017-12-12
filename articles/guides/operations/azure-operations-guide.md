@@ -15,11 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 1180001c9fe74aab6b51c5b5969b80a8c7e1302f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 4a913e188dd40b0306be375b016b9e8a3739ed72
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Bevezetés a felhőalapú informatika és a Microsoft Azure
 
@@ -100,7 +100,7 @@ Szolgáltatások tárolásához és adatok kezelése:
 
 -   Azure SQL Database
 
--   Azure DocumentDB
+-   Azure Cosmos DB
 
 -   Microsoft Azure StorSimple
 
@@ -132,7 +132,7 @@ Azure-ban, és az Azure és a helyszíni adatközpont között hálózati szolg�
 
 -   Azure Traffic Manager
 
--   Azure Tartalomkézbesítési hálózat
+-   Azure Content Delivery Network
 
 Az Azure-szolgáltatásokat a részletes dokumentációjáért lásd: [Azure szolgáltatás dokumentációja](https://docs.microsoft.com/azure).
 

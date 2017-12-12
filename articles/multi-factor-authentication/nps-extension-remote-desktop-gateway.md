@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Az Azure MFA integrálja a távoli asztali átjáró, Azure Active Directoryban, hálózati házirend-kiszolgáló bővítmény"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: fb78d39b04868c9d8790bfd64147f47bdd4125c7
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: fe831dc21f5e91bc2e78a1f38b655205bbc68971
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 #  <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítményt, és az Azure AD integrálása
 
@@ -182,7 +182,7 @@ Távoli asztali kapcsolat engedélyezési házirendek (RD CAP-ok) adja meg a tá
 
 3. A távoli asztali átjáró Manger, kattintson a jobb egérgombbal  **\[kiszolgálónév\] (helyi)**, és kattintson a **tulajdonságok**.
 
-  ![Kiszolgáló neve](./media/nps-extension-remote-desktop-gateway/image9.png)
+  ![Kiszolgálónév](./media/nps-extension-remote-desktop-gateway/image9.png)
 
 4. A Tulajdonságok párbeszédpanelen válassza ki a **távoli asztali házirendjeihez** fülre.
 5. Válassza ki a távoli asztali házirendjeihez lapon **központi házirend-kiszolgálót futtató**. 
@@ -197,7 +197,7 @@ Távoli asztali kapcsolat engedélyezési házirendek (RD CAP-ok) adja meg a tá
  >Közös titkos kulcsot a RADIUS-kiszolgálók és ügyfelek közötti megbízhatósági kapcsolat létrehozására szolgál. Hosszú és összetett titkos kulcs létrehozása.
  >
 
- ![Közös titkos kulcs](./media/nps-extension-remote-desktop-gateway/image11.png)
+ ![Közös titok](./media/nps-extension-remote-desktop-gateway/image11.png)
 
 9. A párbeszédpanel bezárásához kattintson az **OK** gombra.
 

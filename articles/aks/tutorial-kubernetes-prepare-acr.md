@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1283d3cff4edc0c99d22612c65fda48f9dddfbd3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: d436e7d9046fa9c1bced890c005f98b40b372ef6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Üzembe helyezés és használat Azure tároló beállításjegyzék
 
@@ -28,21 +28,21 @@ A következő útmutatókból adott ACR példány AKS Kubernetes fürttagként v
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az a [az oktatóanyag előző](./tutorial-kubernetes-prepare-app.md), a tároló-lemezkép létrejött egy egyszerű Azure szavazás alkalmazáshoz. Ha nem hozott létre az Azure szavazás alkalmazás lemezképét, térjen vissza [oktatóanyag 1 – létrehozás tároló képek](./tutorial-kubernetes-prepare-app.md).
+Az a [az oktatóanyag előző][aks-tutorial-prepare-app], a tároló-lemezkép létrejött egy egyszerű Azure szavazás alkalmazáshoz. Ha nem hozott létre az Azure szavazás alkalmazás lemezképét, térjen vissza [oktatóanyag 1 – létrehozás tároló képek][aks-tutorial-prepare-app].
 
-Ez az oktatóanyag megköveteli, hogy futnak-e az Azure parancssori felület 2.0.21 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ez az oktatóanyag megköveteli, hogy futnak-e az Azure parancssori felület 2.0.21 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha szeretné telepíteni vagy frissíteni, lásd: [Azure CLI telepítése][azure-cli-install].
 
 ## <a name="deploy-azure-container-registry"></a>Telepítse az Azure tároló beállításjegyzék
 
 Egy Azure-tároló beállításjegyzék való telepítésekor, először egy erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Ebben a példában az erőforráscsoport neve `myResourceGroup` jön létre a `eastus` régióban.
+Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal. Ebben a példában az erőforráscsoport neve `myResourceGroup` jön létre a `eastus` régióban.
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy Azure-tárolóba beállításjegyzéket a [az acr létrehozása](/cli/azure/acr#create) parancsot. Egy tároló beállításjegyzék neve **egyedinek kell lennie**.
+Hozzon létre egy Azure-tárolóba beállításjegyzéket a [az acr létrehozása] [ az-acr-create] parancsot. Egy tároló beállításjegyzék neve **egyedinek kell lennie**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -52,7 +52,7 @@ Ez az oktatóanyag a többi, egész használjuk `<acrName>` számára a tároló
 
 ## <a name="container-registry-login"></a>Tároló beállításjegyzék bejelentkezés
 
-Használja a [az acr bejelentkezési](https://docs.microsoft.com/cli/azure/acr#az_acr_login) próbál bejelentkezni az ACR példány parancsot. Meg kell adnia az egyedi név, a tároló beállításjegyzék létrehozásakor.
+Használja a [az acr bejelentkezési] [ az-acr-login] próbál bejelentkezni az ACR példány parancsot. Meg kell adnia az egyedi név, a tároló beállításjegyzék létrehozásakor.
 
 ```azurecli
 az acr login --name <acrName>
@@ -62,7 +62,7 @@ A parancs visszaadja a "Sikeres bejelentkezés" üzenet, amint befejeződött.
 
 ## <a name="tag-container-images"></a>Címke tároló lemezképek
 
-Lemezképek aktuális listájának megtekintéséhez használja a [docker képek](https://docs.docker.com/engine/reference/commandline/images/) parancsot.
+Lemezképek aktuális listájának megtekintéséhez használja a [docker képek] [ docker-images] parancsot.
 
 ```console
 docker images
@@ -91,7 +91,7 @@ Most, címkét a `azure-vote-front` a tároló beállításjegyzék loginServer 
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v1
 ```
 
-Miután megjelölve, futtassa az [docker képek] (https://docs.docker.com/engine/reference/commandline/images/) a művelet megerősítéséhez.
+Miután megjelölve, futtassa az [docker képek] [ docker-images] ellenőrzése a műveletet.
 
 ```console
 docker images
@@ -121,7 +121,7 @@ Ez a néhány percet vesz igénybe.
 
 ## <a name="list-images-in-registry"></a>A beállításjegyzékben lemezképek felsorolása
 
-Olyan lemezképkészlet, amellyel az Azure-tárolóba beállításjegyzék értesítését listájához való visszatéréshez felhasználói a [az acr tárház lista](/cli/azure/acr/repository#list) parancsot. A parancs frissíti az ACR-példány neve.
+Olyan lemezképkészlet, amellyel az Azure-tárolóba beállításjegyzék értesítését listájához való visszatéréshez felhasználói a [az acr tárház lista] [ az-acr-repository-list] parancsot. A parancs frissíti az ACR-példány neve.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -135,7 +135,7 @@ Result
 azure-vote-front
 ```
 
-A címkék azokba megtekintéséhez használja a [az acr tárház megjelenítése-címkék](/cli/azure/acr/repository#show-tags) parancsot.
+A címkék azokba megtekintéséhez használja a [az acr tárház megjelenítése-címkék] [ az-acr-repository-show-tags] parancsot.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
@@ -163,4 +163,17 @@ Ebben az oktatóanyagban az Azure-tároló beállításjegyzék AKS fürt haszn�
 A következő oktatóanyag az Azure-ban Kubernetes fürt telepítésével kapcsolatos további továbblépés.
 
 > [!div class="nextstepaction"]
-> [Kubernetes fürt központi telepítése](./tutorial-kubernetes-deploy-cluster.md)
+> [Kubernetes fürt központi telepítése][aks-tutorial-deploy-cluster]
+
+<!-- LINKS - external -->
+[docker-images]: https://docs.docker.com/engine/reference/commandline/images/
+
+<!-- LINKS - internal -->
+[az-acr-create]: /cli/azure/acr#create
+[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login
+[az-acr-repository-list]: /cli/azure/acr/repository#list
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#show-tags
+[az-group-create]: /cli/azure/group#az_group_create
+[azure-cli-install]: /cli/azure/install-azure-cli
+[aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

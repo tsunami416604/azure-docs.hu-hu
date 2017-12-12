@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: A DocumentDB API a .NET fejlesztést |} Microsoft Docs"
-description: "Ismerje meg, hogyan fejleszthet Azure Cosmos DB DocumentDB API-t a .NET használatával"
+title: "Az Azure Cosmos DB: Az SQL API-t a .NET fejlesztés |} Microsoft Docs"
+description: "Ismerje meg, hogyan fejleszthet Azure Cosmos DB SQL API-t a .NET használatával"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -16,19 +16,21 @@ ms.workload:
 ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 106eaa1eb64dffd6c8362b13b4edb6452d536965
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f019ae72e380f1c8e5b1ec67bd5177144ce1b345
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmosdb-develop-with-the-documentdb-api-in-net"></a>Azure CosmosDB: A DocumentDB API a .NET fejlesztést
+# <a name="azure-cosmosdb-develop-with-the-sql-api-in-net"></a>Az Azure CosmosDB: Az SQL API-t a .NET fejlesztés
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez az oktatóanyag bemutatja, hogyan hozzon létre egy Azure Cosmos DB fiókot az Azure portál használatával, és majd a dokumentum-adatbázis és gyűjtemény létrehozása egy [partíciókulcs](documentdb-partition-data.md#partition-keys) használatával a [DocumentDB .NET API](documentdb-introduction.md). Hozzon létre egy partíciókulcsot, ha létrehoz egy gyűjteményt, amelyet az alkalmazás kész az adatok növekedésével egyszerűen lehet méretezni. 
+Ez az oktatóanyag bemutatja, hogyan hozzon létre egy Azure Cosmos DB fiókot az Azure portál használatával, és majd a dokumentum-adatbázis és gyűjtemény létrehozása egy [partíciókulcs](documentdb-partition-data.md#partition-keys) használatával a [SQL .NET API](documentdb-introduction.md). Hozzon létre egy partíciókulcsot, ha létrehoz egy gyűjteményt, amelyet az alkalmazás kész az adatok növekedésével egyszerűen lehet méretezni. 
 
-Ez az oktatóanyag ismerteti a következő feladatok segítségével a [DocumentDB .NET API](documentdb-sdk-dotnet.md):
+Ez az oktatóanyag ismerteti a következő feladatok segítségével a [SQL .NET API](documentdb-sdk-dotnet.md):
 
 > [!div class="checklist"]
 > * Azure Cosmos DB-fiók létrehozása
@@ -79,7 +81,7 @@ Először hozzon létre egy Azure Cosmos DB fiókot az Azure portálon.
     Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
 
 ## <a id="Connect"></a>Vegye fel a hivatkozásokat a projekthez
-A fennmaradó lépéseit az oktatóanyag a DocumentDB API kódrészletek, létrehozása és frissítése a projekt Azure Cosmos DB erőforrásainak szükséges adja meg.
+Ebben az oktatóanyagban a további lépéseket adja meg az SQL API kódrészletek, létrehozása és frissítése a projekt Azure Cosmos DB erőforrásainak szükséges.
 
 Először adja hozzá ezeket a hivatkozásokat, hogy az alkalmazást.
 <!---These aren't added by default when you install the pkg?--->
@@ -119,7 +121,7 @@ DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
 
 ## <a id="create-database"></a>Adatbázis létrehozása
 
-Ezután hozzon létre egy Azure Cosmos DB [adatbázis](documentdb-resources.md#databases) használatával a [Documentclient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) metódus vagy [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metódusában a  **DocumentClient** osztályával a [DocumentDB .NET SDK](documentdb-sdk-dotnet.md). Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
+Ezután hozzon létre egy Azure Cosmos DB [adatbázis](documentdb-resources.md#databases) használatával a [Documentclient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) metódus vagy [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metódusában a  **DocumentClient** osztályával a [SQL .NET SDK](documentdb-sdk-dotnet.md). Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
 
 ```csharp
 await client.CreateDatabaseAsync(new Database { Id = "db" });
@@ -259,7 +261,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 ```
 
 ## <a name="parallel-query-execution"></a>Párhuzamos lekérdezés-végrehajtás
-Az Azure Cosmos DB DocumentDB SDK-k 1.9.0 és hajthat végre a particionált gyűjtemények, lekérdezések kis késés, még akkor is, amikor sok partíciók touch kell támogatási párhuzamos lekérdezés végrehajtási beállítások fent. A következő lekérdezés például több partíció párhuzamosan futó van konfigurálva.
+Az Azure Cosmos DB SQL SDK-k 1.9.0 és hajthat végre a particionált gyűjtemények, lekérdezések kis késés, még akkor is, amikor sok partíciók touch kell támogatási párhuzamos lekérdezés végrehajtási beállítások fent. A következő lekérdezés például több partíció párhuzamosan futó van konfigurálva.
 
 ```csharp
 // Cross-partition Order By queries
@@ -275,7 +277,7 @@ A következő paraméterek hangolása kezelheti párhuzamos lekérdezés-végreh
 * Úgy, hogy `MaxDegreeOfParallelism`, szabályozhatja, azaz a gyűjtemény partíciókra egyidejű hálózati kapcsolatok maximális száma párhuzamos mértékét. Ha a-1, milyen párhuzamossági az SDK kezeli. Ha a `MaxDegreeOfParallelism` nem megadott vagy kell állítani, 0, amely az alapértelmezett érték, a gyűjtemény partíciók egyetlen hálózati kapcsolattal lesz.
 * Úgy, hogy `MaxBufferedItemCount`, akkor is kompromisszumot lekérdezés-késleltetés és ügyféloldali memóriahasználata. Ha kihagyja ezt a paramétert, vagy állítsa-1, párhuzamos lekérdezés-végrehajtás során pufferelt elemek száma. az SDK kezeli.
 
-Megadott gyűjtemény olyan állapotban, a párhuzamos lekérdezések lesz az eredményeket ugyanabban a sorrendben, ahogy soros végrehajtása. Rendezés (ORDER BY és/vagy felső) tartalmazó kereszt-partíció lekérdezés végrehajtásakor a a DocumentDB SDK-t állít ki párhuzamos lekérdezés partíciók között, és egyesíti az ügyféloldalon globálisan rendezett eredmények eredményezett részben rendezett eredményez.
+Megadott gyűjtemény olyan állapotban, a párhuzamos lekérdezések lesz az eredményeket ugyanabban a sorrendben, ahogy soros végrehajtása. Rendezés (ORDER BY és/vagy felső) tartalmazó kereszt-partíció lekérdezés végrehajtásakor a az SQL-SDK állít ki a párhuzamos lekérdezés partíciók között, és egyesíti globálisan rendezett eredmények eredményezett ügyféloldali részben rendezett eredményez.
 
 ## <a name="execute-stored-procedures"></a>Tárolt eljárások végrehajtása
 Végül végrehajthat atomi tranzakciókról dokumentumok ilyen azonosítójú eszköz, például ha a következő kódot ad hozzá a projekthez még karbantartása összesítések vagy egy eszközt az egyetlen dokumentum aktuális állapotát.

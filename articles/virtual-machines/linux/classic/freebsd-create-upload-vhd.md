@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: huishao
-ms.openlocfilehash: 7b41826f071174df8f00af56a228e0f31c3cfe2f
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 71ba93c64657725b48ad5915c6bb26dc32e5434d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-and-upload-a-freebsd-vhd-to-azure"></a>Hozzon létre és freebsd rendszerű virtuális merevlemez feltöltése az Azure-bA
 Ez a cikk bemutatja, hogyan hozhat létre, és töltse fel a virtuális merevlemez (VHD), amely tartalmazza a freebsd rendszerű operációs rendszer. Miután a feltöltés, segítségével azt saját képként (VM) virtuális gép létrehozása az Azure-ban.
@@ -133,7 +133,7 @@ A .vhd fájlt tölt fel, ha azt bárhol elhelyezheti a Blob-tároló belül. Az 
 
 * **BlobStorageURL** az URL-cím, a 2. lépésben létrehozott tárfiók.
 * **YourImagesFolder** a Blob storage tárolóban van, hol szeretné tárolni a képeket.
-* **VHDName** a címke sem, hogy a virtuális merevlemez azonosítására a klasszikus Azure portálon megjelenik.
+* **VHDName** a címke sem, amely a virtuális merevlemez azonosításához az Azure-portálon jelenik meg.
 * **PathToVHDFile** a teljes elérési útja és neve a .vhd fájlt.
 
 Az előző lépésben használt Azure PowerShell-ablakot írja be:
@@ -157,7 +157,7 @@ A .vhd fájl feltöltése után hozzáadhatja képként az egyéni lemezképek, 
 3. Virtuális gép létrehozása a gyűjteményből. Az új lemezképet már elérhető a **saját lemezképek**.
 4. Válassza ki az új lemezképet. A következő halad át a megjelenő utasításokat állítson be egy állomásnevet, a jelszót, az SSH-kulcs és a stb.
 
-    ![Kép: egyéni](./media/freebsd-create-upload-vhd/createfreebsdimageinazure.png)
+    ![Egyéni rendszerkép](./media/freebsd-create-upload-vhd/createfreebsdimageinazure.png)
 5. Miután elvégezte a kiépítés, látni fogja az Azure-beli freebsd rendszerű virtuális gép.
 
     ![Az azure-ban freebsd rendszerű kép](./media/freebsd-create-upload-vhd/freebsdimageinazure.png)

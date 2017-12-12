@@ -1,6 +1,6 @@
 ---
-title: "NoSQL-oktatóanyag: DocumentDB API Azure Cosmos DB Java SDK |} Microsoft Docs"
-description: "NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és a Java-konzolalkalmazást a DocumentDB API használatával az Azure Cosmos DB rendszerhez. Az Azure DocumentDB egy NoSQL-alapú adatbázis a JSON formátumhoz."
+title: "NoSQL-oktatóanyag: Azure Cosmos DB Java SDK-t az SQL API |} Microsoft Docs"
+description: "NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és az SQL API-val az Azure Cosmos DB Java konzolalkalmazást. Az Azure SQL egy NoSQL-adatbázis a JSON Formátumhoz."
 keywords: "nosql-oktatóanyag, online adatbázis, java konzolalkalmazás"
 services: cosmos-db
 documentationcenter: Java
@@ -15,13 +15,13 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
-ms.openlocfilehash: ea667a889bc6eaed08619ee5e141d8e3e9add7bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e38595b18817b4034c08fa0e0ec7c5dc8cde1fbb
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="nosql-tutorial-build-a-documentdb-api-java-console-application"></a>NoSQL-oktatóanyag: a DocumentDB API Java Konzolalkalmazás létrehozása
+# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-oktatóanyag: egy SQL API Java-Konzolalkalmazás létrehozása
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -32,7 +32,9 @@ ms.lasthandoff: 10/11/2017
 >  
 > 
 
-Üdvözöljük a NoSQL-oktatóanyagban a DocumentDB API Azure Cosmos DB Java SDK-t! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
+Üdvözöljük a NoSQL-oktatóanyag az SQL API Azure Cosmos DB Java SDK-t! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -73,7 +75,7 @@ A GitHub-adattár klónozásával kezdheti meg [az Azure Cosmos DB és a Java ha
 
     cd azure-cosmos-db-documentdb-java-getting-started
 
-A könyvtár neve tartalmazza a `pom.xml` a projekt és egy `src` Java forrás kód beleértve tartalmazó mappa `Program.java` mely bemutatja hogyan Azure Cosmos DB például a dokumentumok létrehozása és egy gyűjteményben lévő adatok lekérdezése az egyszerű műveleteket hajtanak végre. A `pom.xml` fájl tartalmaz egy [Maven DocumentDB Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)-függőséget.
+A könyvtár neve tartalmazza a `pom.xml` a projekt és egy `src` Java forrás kód beleértve tartalmazó mappa `Program.java` mely bemutatja hogyan Azure Cosmos DB például a dokumentumok létrehozása és egy gyűjteményben lévő adatok lekérdezése az egyszerű műveleteket hajtanak végre. A `pom.xml` a függőséget tartalmaz a [Azure Cosmos DB Java SDK Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
 
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -192,6 +194,5 @@ Gratulálunk! Elvégezte a NoSQL-oktatóanyagot, és egy működőképes Java ko
 * Szüksége van egy Java-webalkalmazás létrehozására vonatkozó oktatóanyagra? Tekintse meg a [Java-webalkalmazás létrehozása az Azure Cosmos DB használatával](documentdb-java-application.md) című cikket.
 * Ismerje meg, hogyan [figyelhet egy Azure Cosmos DB-fiókot](monitor-accounts.md).
 * Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.
-* A programozási modellel kapcsolatos további tudnivalókat az [Azure Cosmos DB-dokumentációs oldalának](https://azure.microsoft.com/documentation/services/documentdb/) Develop (Fejlesztés) szakaszában találja.
 
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png

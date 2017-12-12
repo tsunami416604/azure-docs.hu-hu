@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 5e5c11251cd316e8161dbe362b300be76927ac01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Natív üzemmódú jelentéskészítő kiszolgálót futtató Azure-beli virtuális gép létrehozása a PowerShell-lel
 > [!IMPORTANT] 
@@ -35,7 +35,7 @@ Ez a témakör ismerteti, és bemutatja, hogyan telepítését és konfigurálá
 ## <a name="prerequisites-and-assumptions"></a>Előfeltételek és Előfeltételek
 * **Azure-előfizetés**: Ellenőrizze az elérhető az Azure-előfizetésében magok száma. Ha létrehozta az ajánlott Virtuálisgép-méretet **A3**, kell **4** rendelkezésre álló magot. Ha egy Virtuálisgép-méretet **A2**, kell **2** rendelkezésre álló magot.
   
-  * Ellenőrizze a core korlátot az előfizetéséhez, a klasszikus Azure portálon, kattintson a beállítások gombra a bal oldali ablaktáblán, majd kattintson a használati a felső menüben.
+  * Ellenőrizze a core korlátot, az előfizetés, az Azure portálon kattintson a beállítások gombra a bal oldali ablaktáblán, majd kattintson a használati a felső menüben.
   * A core kvóta növeléséhez forduljon [Azure támogatási](https://azure.microsoft.com/support/options/). Virtuálisgép-méret információkért lásd: [Azure virtuálisgép-méretek](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * **A Windows PowerShell-Parancsprogramokról**: A témakör feltételezi, hogy rendelkezik-e a Windows PowerShell alapszintű ismeretét. Windows PowerShell használatával kapcsolatos további információkért tekintse meg a következőket:
   
@@ -43,7 +43,7 @@ Ez a témakör ismerteti, és bemutatja, hogyan telepítését és konfigurálá
   * [Bevezetés a Windows PowerShell használatával](https://technet.microsoft.com/library/hh857337.aspx)
 
 ## <a name="step-1-provision-an-azure-virtual-machine"></a>1. lépés: Az Azure virtuális gép kiépítése
-1. Tallózással keresse meg a klasszikus Azure portálon.
+1. Tallózással keresse meg az Azure-portálon.
 2. Kattintson a **virtuális gépek** a bal oldali ablaktáblán.
    
     ![a Microsoft azure virtuális gépek](./media/virtual-machines-windows-classic-ps-sql-report/IC660124.gif)
@@ -80,7 +80,7 @@ Ez a témakör ismerteti, és bemutatja, hogyan telepítését és konfigurálá
      * **HTTPS**: az alapértelmezett nyilvános és titkos portok: **443-as**. Biztonsági szempontból ajánlott, hogy módosítsa a magánhálózati port és a tűzfal és a jelentéskészítő kiszolgáló a magánhálózati port használatára. A végpontok további információkért lásd: [hogyan állítsa be kommunikáció a virtuális gép](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Vegye figyelembe, hogy egy 443,-astól eltérő port használata esetén módosítsa a paraméter **$HTTPsport = 443-as** a HTTPS-parancsfájl.
    * Kattintson a Tovább gombra. ![következő](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. A varázsló utolsó oldalán, tartsa meg az alapértelmezett **a Virtuálisgép-ügynök telepítése** kijelölt. A témakörben ismertetett lépések nem használja a Virtuálisgép-ügynök, de ha le szeretné tartani a virtuális Gépet, a Virtuálisgép-ügynök és a bővítmények lehetővé teszi javítása érdekében, hogy CM.  A Virtuálisgép-ügynök további információkért lásd: [ügynök és Virtuálisgép-bővítmények – 1. rész](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Az alapértelmezett telepített kiterjesztéseket ad futó egyik a "BGINFO" bővítményt, amely a virtuális gép asztali, a rendszer-információkat, például a belső IP-cím és a szabad lemezterületet jeleníti meg.
-9. Kattintson a Kész gombra. ![oké](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
+9. Kattintson a Kész gombra. ![ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. A **állapota** látható a virtuális gép **indítása (kiépítés)** a kiépítési folyamat során értékként jelenik majd meg **futtató** a virtuális gép esetén kiosztott és készen áll a használatra.
 
 ## <a name="step-2-create-a-server-certificate"></a>2. lépés: A kiszolgálói tanúsítvány létrehozása
@@ -117,7 +117,7 @@ A virtuális Gépen a HTTPS protokoll használatához megbízható az SSL-tanús
 
 1. Megbízható a legfelső szintű hitelesítésszolgáltató a tanúsítvány a helyi virtuális Gépen, vegye fel a tanúsítványt a **megbízható legfelső szintű hitelesítésszolgáltatók**. A következő szükséges lépések összefoglalása látható. Ismerteti, hogy bízzon meg a hitelesítésszolgáltató, lásd a [a kiszolgálótanúsítvány telepítésének](https://technet.microsoft.com/library/cc740068).
    
-   1. A klasszikus Azure portálon válassza ki a virtuális Gépet, és kattintson a Csatlakozás gombra. A böngésző konfigurációtól függően előfordulhat, hogy kérni fogja menteni egy .rdp fájlt, a virtuális Géphez való kapcsolódáshoz.
+   1. Az Azure-portálon válassza ki a virtuális Gépet, és kattintson a Csatlakozás gombra. A böngésző konfigurációtól függően előfordulhat, hogy kérni fogja menteni egy .rdp fájlt, a virtuális Géphez való kapcsolódáshoz.
       
        ![Csatlakozás az azure virtuális géphez](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) A felhasználói virtuális gép nevét, a felhasználónév és a virtuális gép létrehozásakor beállított jelszót használja. 
       
@@ -153,7 +153,7 @@ Részletes lépéseket, tekintse meg a szakasz [csatlakozzon a virtuális géphe
 ### <a name="use-script-to-configure-the-report-server-and-http"></a>Parancsfájl használata a jelentéskészítő kiszolgáló és a HTTP konfigurálása
 A jelentéskészítő kiszolgáló konfigurálása a Windows PowerShell-parancsfájl használatához kövesse az alábbi lépéseket. A konfiguráció HTTP, HTTPS-nem tartalmazza:
 
-1. A klasszikus Azure portálon válassza ki a virtuális Gépet, és kattintson a Csatlakozás gombra. A böngésző konfigurációtól függően előfordulhat, hogy kérni fogja menteni egy .rdp fájlt, a virtuális Géphez való kapcsolódáshoz.
+1. Az Azure-portálon válassza ki a virtuális Gépet, és kattintson a Csatlakozás gombra. A böngésző konfigurációtól függően előfordulhat, hogy kérni fogja menteni egy .rdp fájlt, a virtuális Géphez való kapcsolódáshoz.
    
     ![Csatlakozás az azure virtuális géphez](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) A felhasználói virtuális gép nevét, a felhasználónév és a virtuális gép létrehozásakor beállított jelszót használja. 
    
@@ -287,7 +287,7 @@ A jelentéskészítő kiszolgáló konfigurálása a Windows PowerShell-parancsf
 ### <a name="use-script-to-configure-the-report-server-and-https"></a>Parancsfájl használata a jelentéskészítő kiszolgáló és a HTTPS konfigurálása
 A jelentéskészítő kiszolgáló konfigurálása a Windows PowerShell használatához kövesse az alábbi lépéseket. A konfiguráció tartalmazza a HTTPS-en nem HTTP.
 
-1. A klasszikus Azure portálon válassza ki a virtuális Gépet, és kattintson a Csatlakozás gombra. A böngésző konfigurációtól függően előfordulhat, hogy kérni fogja menteni egy .rdp fájlt, a virtuális Géphez való kapcsolódáshoz.
+1. Az Azure-portálon válassza ki a virtuális Gépet, és kattintson a Csatlakozás gombra. A böngésző konfigurációtól függően előfordulhat, hogy kérni fogja menteni egy .rdp fájlt, a virtuális Géphez való kapcsolódáshoz.
    
     ![Csatlakozás az azure virtuális géphez](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) A felhasználói virtuális gép nevét, a felhasználónév és a virtuális gép létrehozásakor beállított jelszót használja. 
    
@@ -495,10 +495,10 @@ Az eredmény a következőket tartalmazza:
 ### <a name="use-configuration-manager-to-configure-the-report-server"></a>A jelentéskészítő kiszolgáló konfigurálása a Configuration Manager használatával
 Ha nem szeretné, hogy a jelentéskészítő kiszolgáló konfigurálása a PowerShell parancsfájl futtatásához, kövesse az ebben a szakaszban a jelentéskészítő kiszolgáló konfigurálása a configuration manager jelentéskészítési szolgáltatások natív mód segítségével.
 
-1. A klasszikus Azure portálon válassza ki a virtuális Gépet, és kattintson a Csatlakozás gombra. A felhasználónév és a virtuális gép létrehozásakor beállított jelszó használata.
+1. Az Azure-portálon válassza ki a virtuális Gépet, és kattintson a Csatlakozás gombra. A felhasználónév és a virtuális gép létrehozásakor beállított jelszó használata.
    
     ![Csatlakozás az azure virtuális géphez](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif)
-2. Futtassa a Windows update, és telepítse a frissítéseket a virtuális géphez. Ha a virtuális gép újraindítására szükség, indítsa újra a virtuális gép, és csatlakozzon újra a virtuális Gépet a klasszikus Azure portálon.
+2. Futtassa a Windows update, és telepítse a frissítéseket a virtuális géphez. Ha a virtuális gép újraindítására szükség, indítsa újra a virtuális gép, és csatlakozzon újra a virtuális Gépet az Azure portálról.
 3. A virtuális Gépen a Start menüben írja be a **Reporting Services** , és nyissa meg **Reporting Services Configuration Manager**.
 4. Hagyja meg az alapértelmezett értékeit **kiszolgálónév** és **jelentéskészítő kiszolgáló példánya**. Kattintson a **Connect** (Csatlakozás) gombra.
 5. Kattintson a bal oldali ablaktáblában **webes szolgáltatás URL-címe**.
@@ -546,7 +546,7 @@ Győződjön meg arról, hogy a port van megnyitva, nyisson meg egy Windows Powe
 
     get-netfirewallrule | where {$_.displayname -like "*report*"} | select displayname,enabled,action
 
-## <a name="verify-the-configuration"></a>A konfiguráció ellenőrzése
+## <a name="verify-the-configuration"></a>Ellenőrizze
 Győződjön meg arról, hogy a jelentés alapvető funkcióihoz most működik, nyissa meg a böngésző rendszergazdai jogosultságokkal, és tallózással keressen meg a következő jelentéskészítő kiszolgáló ad Jelentéskezelő URL-CÍMEK:
 
 * A virtuális Gépre keresse meg a jelentéskészítő kiszolgáló URL-címe:
@@ -593,7 +593,7 @@ A következő táblázat összefoglalja az egyes lehetőségekről a helyi szám
 
 ## <a name="minimize-cost-if-you-are-not-using-the-vm"></a>Ha nem használ a virtuális gép minimalizálása érdekében a költség
 > [!NOTE]
-> Költségek minimalizálása érdekében az az Azure virtuális gépek Ha nincsenek használatban, állítsa le a virtuális Gépet a klasszikus Azure portálon. A Windows energiagazdálkodási beállításait használja a virtuális Gépen belül a virtuális gép leállítása, ha még mindig van szó akkora a virtuális gép számára. Költségek csökkentése érdekében le a virtuális Gépet, a klasszikus Azure portálon kell. Ha már nincs szüksége a virtuális Gépet, ne felejtse el a virtuális gép és a hozzárendelt .vhd fájlokat tároló díjak elkerülése érdekében törölje. További információkért lásd: a következő gyakran feltett [virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/).
+> Költségek minimalizálása érdekében az az Azure virtuális gépek Ha nincsenek használatban, állítsa le a virtuális Gépet az Azure portálról. A Windows energiagazdálkodási beállításait használja a virtuális Gépen belül a virtuális gép leállítása, ha még mindig van szó akkora a virtuális gép számára. Költségek csökkentése érdekében le a virtuális Gépet az Azure portálon kell. Ha már nincs szüksége a virtuális Gépet, ne felejtse el a virtuális gép és a hozzárendelt .vhd fájlokat tároló díjak elkerülése érdekében törölje. További információkért lásd: a következő gyakran feltett [virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
 ## <a name="more-information"></a>További információ
 ### <a name="resources"></a>Erőforrások

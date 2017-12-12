@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: b7ce6f353cf8cf48d5fb038ee77b0d3fdae16fb7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0d90f7c6ad136cd1a558f6158cf734de51b9538
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Biztonsági keret: Bemeneti ellenőrzés |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 | **Webalkalmazás** | <ul><li>[A nem megbízható stíluslapok használó összes átalakítások scripting XSLT letiltása](#disable-xslt)</li><li>[Győződjön meg arról, hogy minden felhasználó vezérelhető tartalmat sikerült tartalmazó oldalon jelentésküldési kívül automatikus MIME-elemzése](#out-sniffing)</li><li>[Alakuljanak vagy XML entitás tiltása](#xml-resolution)</li><li>[Alkalmazások használata a http.sys hajtsa végre az URL-cím kanonizálási ellenőrzése](#app-verification)</li><li>[Győződjön meg arról, megfelelő vezérlők érvényben vannak, amikor a felhasználók fájlokat elfogadása](#controls-users)</li><li>[Győződjön meg arról, hogy biztonságos típusú paraméterek használ a webalkalmazás adatelérési](#typesafe)</li><li>[Használjon külön modell kötés osztályok vagy kötés szűrő listázza az MVC tömeges hozzárendelés biztonsági rés megelőzése érdekében](#binding-mvc)</li><li>[Nem megbízható webes kimeneti megjelenítés előtt kódolása](#rendering)</li><li>[Hajtsa végre a bemenet-ellenőrzéshez és a szűrést az összes karakterlánc típusú modell tulajdonságai](#typemodel)</li><li>[Tisztítási mezőknek, amelyekben az összes karakterek, például azt, rich text editor alkalmazandó](#richtext)</li><li>[Ne rendeljen DOM elemek mosdók, amely nem rendelkezik beépített kódolás](#inbuilt-encode)</li><li>[Ellenőrizheti az alkalmazáson belül átirányítások lezárt vagy biztonságosan történik](#redirect-safe)</li><li>[Megvalósítása bemenet-ellenőrzést az összes karakterlánc típusú paramétert fogadja el a tartományvezérlő módszerek](#string-method)</li><li>[Beállítani felső korlátja időkorlátját reguláris kifejezés feldolgozása DoS megelőzése miatt hibás reguláris kifejezések](#dos-expression)</li><li>[Kerülje a Html.Raw Razor nézetekben](#html-razor)</li></ul> | 
 | **Adatbázis** | <ul><li>[Ne használjon dinamikus lekérdezések a tárolt eljárások](#stored-proc)</li></ul> |
 | **Webes API** | <ul><li>[Arról, hogy Modellellenőrzés a webes API-módszer](#validation-api)</li><li>[Megvalósítása bemenet-ellenőrzést az összes karakterlánc típusú paraméterek fogadja el a webes API-módszer](#string-api)</li><li>[Ellenőrizze, hogy biztonságos típusú paraméterek szolgáltatás webes API-ban az adatelérési](#typesafe-api)</li></ul> | 
-| **Az Azure Document DB rendszerbe** | <ul><li>[A DocumentDB paraméteres SQL-lekérdezések használata](#sql-docdb)</li></ul> | 
+| **Az Azure Document DB rendszerbe** | <ul><li>[Azure Cosmos DB paraméteres SQL-lekérdezések használata](#sql-docdb)</li></ul> | 
 | **WCF** | <ul><li>[WCF bemeneti érvényesítési séma kötését keresztül](#schema-binding)</li><li>[WCF - bemenet érvényesítési paraméter ellenőrök keresztül](#parameters)</li></ul> |
 
 ## <a id="disable-xslt"></a>A nem megbízható stíluslapok használó összes átalakítások scripting XSLT letiltása
@@ -660,8 +660,8 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb, mint 11 karakter
 | **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Hivatkozások**              | [A documentdb SQL Parameterization bejelentése](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
-| **Lépések** | Bár a DocumentDB csak olvasási lekérdezéseket támogat, SQL-injektálás továbbra is lehetséges, ha a lekérdezések össze a felhasználói bevitel szereplő. Ahhoz, hogy nem kell érik belül ugyanaz a gyűjtemény rosszindulatú SQL-lekérdezések létrehozásával adatokhoz való hozzáférés egy felhasználó lehet. Használja a paraméteres SQL-lekérdezések Ha lekérdezések össze a felhasználói bevitel alapján. |
+| **Hivatkozások**              | [Az Azure Cosmos DB SQL Parameterization bejelentése](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
+| **Lépések** | Bár az Azure Cosmos DB csak olvasási lekérdezéseket támogat, SQL-injektálás továbbra is lehetséges, ha a lekérdezések össze a felhasználói bevitel szereplő. Ahhoz, hogy nem kell érik belül ugyanaz a gyűjtemény rosszindulatú SQL-lekérdezések létrehozásával adatokhoz való hozzáférés egy felhasználó lehet. Használja a paraméteres SQL-lekérdezések Ha lekérdezések össze a felhasználói bevitel alapján. |
 
 ## <a id="schema-binding"></a>WCF bemeneti érvényesítési séma kötését keresztül
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: mfussell
-ms.openlocfilehash: aae828489b708a5b538df1d63c12be23d0423da7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2ff715d8225bd0a9c7f6108f8804cdfa3189cc8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-security-policies-for-your-application"></a>Biztonsági házirendek beállítása az alkalmazáshoz
 Azure Service Fabric használatával biztonságossá teheti a különböző felhasználói fiókok a fürtben futó alkalmazás számára. A Service Fabric is lehetővé teszi az alkalmazások által használt felhasználói fiók – központi telepítés alkalmával például erőforrásokat, a fájlokat, a könyvtárak és a tanúsítványok biztonságos. Így futó alkalmazást, még akkor is, a megosztott üzemeltetési környezetben, nagyobb biztonságot nyújt, egymástól.
@@ -30,7 +30,7 @@ Alapértelmezés szerint a Service Fabric alkalmazások futnak, a fiók, amely a
 Hozzon létre felhasználói csoportokat, hogy egy vagy több felhasználó is adható hozzá mindegyik csoport felügyelete együtt, és megadása. Ez akkor hasznos, ha több felhasználó különböző belépési pontot, és bizonyos közös jogosultságok, amelyek elérhetők a csoportok szintjén van szükségük.
 
 ## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>A telepítő belépési pont vonatkozó házirend konfigurálása
-Lásd: a [alkalmazásmodell](service-fabric-application-model.md), a telepítő belépési pont **SetupEntryPoint**, egy kiemelt belépési pontja, amelynek ugyanazokat a hitelesítő adatokat, mint a Service Fabric (általában a  *NetworkService* fiók) más belépési pont előtt. A megadott végrehajtható fájl **EntryPoint** általában a hosszan futó szolgáltatás gazdagép legyen. Hogy egy külön telepítő belépési pont elkerülhető, hogy jogosultságokkal történő futtatása az adatszolgáltatás gazdájának végrehajtható magas huzamosabb ideig. A végrehajtható fájl, amely **EntryPoint** megadja futtatása **SetupEntryPoint** sikeresen kilép. Az eredményül kapott folyamat figyeli, és újra kell indítani, és újra kezdődik **SetupEntryPoint** Ha valaha is leáll, vagy összeomlik.
+A [alkalmazás és szolgáltatás jegyzékfájlokban](service-fabric-application-and-service-manifests.md), a telepítő belépési pont **SetupEntryPoint**, egy kiemelt belépési pontja, amelynek ugyanazokat a hitelesítő adatokat, mint a Service Fabric (általában a *NetworkService* fiók) más belépési pont előtt. A megadott végrehajtható fájl **EntryPoint** általában a hosszan futó szolgáltatás gazdagép legyen. Hogy egy külön telepítő belépési pont elkerülhető, hogy jogosultságokkal történő futtatása az adatszolgáltatás gazdájának végrehajtható magas huzamosabb ideig. A végrehajtható fájl, amely **EntryPoint** megadja futtatása **SetupEntryPoint** sikeresen kilép. Az eredményül kapott folyamat figyeli, és újra kell indítani, és újra kezdődik **SetupEntryPoint** Ha valaha is leáll, vagy összeomlik.
 
 Egy egyszerű service manifest példa bemutatja a SetupEntryPoint és a fő belépési pont a szolgáltatás a következő:
 

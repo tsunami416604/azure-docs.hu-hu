@@ -1,4 +1,3 @@
-
 ## <a name="add-the-applications-registration-information-to-your-app"></a>Az alkalmazás regisztrációs adatok hozzáadása az alkalmazáshoz
 
 Ebben a lépésben azt kell konfigurálja az átirányítási URL-cím az alkalmazás regisztrációs adatait, és adja meg az alkalmazásazonosítót a JavaScript SPA-alkalmazáshoz.

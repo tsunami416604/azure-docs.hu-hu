@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Cosmos DB .NET SDK & erőforrások |} Microsoft Docs"
-description: "Tudnivalók a .NET API és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB .NET SDK verziói között végrehajtott módosításokat."
+title: "Azure Cosmos DB: SQL .NET API-t, az SDK és erőforrások |} Microsoft Docs"
+description: "Tudnivalók az SQL .NET API és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB .NET SDK verziói között végrehajtott módosításokat."
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee6d649ac1ab0813098b13750ccc1f6ebf82f684
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: d68079e2bbf12f50eb74b0d2d2c5b17ddb42d28d
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Az Azure DB .NET SDK Cosmos: Töltse le és kibocsátási megjegyzések
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK API-SQL: Töltse le és a kibocsátási megjegyzések
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET-módosítás adatcsatorna](documentdb-sdk-dotnet-changefeed.md)
@@ -34,6 +34,8 @@ ms.lasthandoff: 11/18/2017
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 <table>
 
@@ -86,7 +88,7 @@ ms.lasthandoff: 11/18/2017
 *   Támogatása az egyéni JsonSerializerSettings megadása közben példányának [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet).
 
 ### <a name="a-name11411141"></a><a name="1.14.1"/>1.14.1
-*   Rögzített x64 érintő problémát gépek, amelyek nem támogatják a SSE4 utasítást, és egy SEHException throw Azure Cosmos DB DocumentDB API lekérdezések futtatásakor.
+*   Rögzített x64 érintő problémát gépek, amelyek nem támogatják a SSE4 utasítást, és egy SEHException throw Azure Cosmos adatbázis SQL-lekérdezések futtatásakor.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 *   Egy új konzisztenciaszint támogatása ConsistentPrefix nevezik.
@@ -200,28 +202,28 @@ ms.lasthandoff: 11/18/2017
 * Megvalósított [particionált gyűjtemények](partition-data.md) és [felhasználói teljesítményszintet](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Rögzített] ** Lekérdezése Azure Cosmos DB végpont jelez: "System.Net.Http.HttpRequestException: Hiba történt egy adatfolyamba történő tartalommásoláskor".
+* **[Rögzített]**  Lekérdezése Azure Cosmos DB végpont jelez: "System.Net.Http.HttpRequestException: Hiba történt egy adatfolyamba történő tartalommásoláskor".
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * Bővített LINQ támogatja, beleértve az új operátorok lapozási, a feltételes kifejezések és összehasonlító között.
   * Engedélyezni a felső válassza ki a "LINQ" operátor igénybe
   * CompareTo operátor karakterlánc tartomány összehasonlítása
   * Feltételes (?) és a coalesce operátorok (?)
-* **[Rögzített] ** ArgumentOutOfRangeException modell leképezése egyesítésekor Where-a LINQ lekérdezés. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
+* **[Rögzített]**  ArgumentOutOfRangeException modell leképezése egyesítésekor Where-a LINQ lekérdezés. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
-* **[Rögzített] ** Ha válassza nincs utolsó kifejezés a LINQ szolgáltatónál feltételezve, hogy nincs leképezés, és válasszon előállított * nem megfelelő.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
+* **[Rögzített]**  Ha válassza nincs utolsó kifejezés a LINQ szolgáltatónál feltételezve, hogy nincs leképezés, és válasszon előállított * nem megfelelő.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
 * Megvalósított Upsert, UpsertXXXAsync hozzáadott metódusok
 * Minden olyan kérelem esetében a teljesítménnyel kapcsolatos fejlesztések
 * LINQ szolgáltatónál támogatása feltételes, coalesce, és karakterláncokat CompareTo módszerei
-* **[Rögzített] ** LINQ-szolgáltató--> metódus megvalósítása tartalmaz listán az azonos SQL létrehozásához az IEnumerable és tömb
-* **[Rögzített] ** BackoffRetryUtility használja az ugyanazon HttpRequestMessage újra egy új újrapróbálkozáskor létrehozása helyett
-* **[Elavult] ** UriFactory.CreateCollection--> UriFactory.CreateDocumentCollection használja
+* **[Rögzített]**  LINQ-szolgáltató--> metódus megvalósítása tartalmaz listán az azonos SQL létrehozásához az IEnumerable és tömb
+* **[Rögzített]**  BackoffRetryUtility használja az ugyanazon HttpRequestMessage újra egy új újrapróbálkozáskor létrehozása helyett
+* **[Elavult]**  UriFactory.CreateCollection--> UriFactory.CreateDocumentCollection használja
 
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
-* **[Rögzített] ** Honosítási ad ki, ha nem en kulturális környezet adatokkal például nl-NL stb. 
+* **[Rögzített]**  Honosítási ad ki, ha nem en kulturális környezet adatokkal például nl-NL stb. 
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
 * Azonosító-alapú útválasztási hozzáadva
@@ -242,7 +244,7 @@ ms.lasthandoff: 11/18/2017
 * Támogatja a térbeli indexelő és lekérdezés.
   * A térbeli típusok szerializálása/deszerializálása névterét új Microsoft.Azure.Documents.Spatial, például pont és a sokszög
   * A Cosmos DB GeoJSON adataihoz az indexelés új SpatialIndex osztály
-* **[Rögzített] ** Helytelen SQL-lekérdezést jön létre egy LINQ kifejezésből [#38](https://github.com/Azure/azure-documentdb-net/issues/38).
+* **[Rögzített]**  Helytelen SQL-lekérdezést jön létre egy LINQ kifejezésből [#38](https://github.com/Azure/azure-documentdb-net/issues/38).
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Függőség hozzáadta a Newtonsoft.Json v5.0.7.

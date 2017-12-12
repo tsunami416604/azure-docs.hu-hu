@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 312a66544a5e64daa86b4902b57d4050f1f66af5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9fc92916b4164990059010645daa29e72b7143cb
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="security-frame-authorization--mitigations"></a>Biztonsági keret: Engedélyezési |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 | **Adatbázis** | <ul><li>[Győződjön meg arról, hogy legkevésbé jogosultsági szintű fiók adatbázis-kiszolgálóhoz való csatlakozáshoz használják](#privileged-server)</li><li>[Sor szintű biztonsági RLS megakadályozhatja, hogy a bérlők a másik fél adatokhoz hozzáférő megvalósítása](#rls-tenants)</li><li>[SysAdmin (rendszergazda) szerepkör csak kell érvényes szükséges felhasználók](#sysadmin-users)</li></ul> |
 | **Az IoT átjáró** | <ul><li>[Felhő átjárón legkevésbé jogosultságú tokenek használatára](#cloud-least-privileged)</li></ul> |
 | **Az Azure Event Hubs** | <ul><li>[A csak küldési engedélyeket SAS-kulcsot használ az eszköz jogkivonatokat előállító](#sendonly-sas)</li><li>[Ne használja a jogkivonatot, amely közvetlen hozzáférést biztosít az Event hubs](#access-tokens-hub)</li><li>[Csatlakozás Eseményközpont, amely rendelkezik a szükséges minimális engedélyeket az SAS-kulcsok használata](#sas-minimum-permissions)</li></ul> |
-| **Az Azure Document DB rendszerbe** | <ul><li>[Csatlakozás DocumentDB, amikor csak lehetséges erőforrás jogkivonatok segítségével](#resource-docdb)</li></ul> |
+| **Az Azure Document DB rendszerbe** | <ul><li>[Erőforrás-jogkivonatok segítségével csatlakozzon Azure Cosmos Adatbázishoz. Ha lehetséges](#resource-docdb)</li></ul> |
 | **Az Azure megbízhatósági kapcsolat határán** | <ul><li>[Engedélyezi a részletes hozzáféréskezelést az RBAC használata Azure-előfizetéshez](#grained-rbac)</li></ul> |
 | **Service Fabric megbízhatósági kapcsolat határán** | <ul><li>[Ügyfél elérésének korlátozása a fürt működését az RBAC használata](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Biztonsági modellezési mező biztonság használható, és ha szükséges](#modeling-field)</li></ul> |
@@ -224,7 +224,7 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Hivatkozások**              | N/A  |
-| **Lépések** | Egy erőforrás-jogkivonat DocumentDB engedély-erőforrással társítva, és a kapcsolat rögzíti a felhasználó az adatbázis és az engedélyek között, hogy a felhasználó rendelkezik egy adott DocumentDB alkalmazás erőforrás (pl. gyűjtemény és dokumentum). Mindig használjon egy erőforrás-jogkivonat a DocumentDB eléréséhez, ha az ügyfél nem adható meg megbízhatóként a fő vagy csak olvasható kulcsot – például a hordozható vagy asztali ügyfél végfelhasználói alkalmazás kezelése. A fő oszlopkulcs vagy csak olvasható kulcsokat biztonságosan tárolhatja ezeket a kulcsokat háttér-alkalmazással.|
+| **Lépések** | Egy erőforrás-jogkivonat egy Azure Cosmos DB engedély erőforrás társított, és a kapcsolat rögzíti a felhasználó az adatbázis és az engedélyek között, hogy a felhasználó rendelkezik egy adott Azure Cosmos DB alkalmazás erőforrás (pl. gyűjtemény és dokumentum). Mindig egy erőforrás-jogkivonat segítségével az Azure Cosmos DB elérésére, ha az ügyfél nem adható meg megbízhatóként a fő vagy csak olvasható kulcsot – például a hordozható vagy asztali ügyfél végfelhasználói alkalmazás kezelése. A fő oszlopkulcs vagy csak olvasható kulcsokat biztonságosan tárolhatja ezeket a kulcsokat háttér-alkalmazással.|
 
 ## <a id="grained-rbac"></a>Engedélyezi a részletes hozzáféréskezelést az RBAC használata Azure-előfizetéshez
 

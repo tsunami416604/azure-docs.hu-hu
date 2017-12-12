@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: 25c543528119410dff0684845a713dcb0d6151d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3bdf30dad5e729ae1e028be2d917b6c38e1bebaf
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>PowerShell-lel Azure Cosmos DB-fiók létrehozása
 
@@ -66,7 +66,7 @@ Példa:
 * A fenti példában egy adatbázis-fiók két régió hoz létre. Akkor is egy régió tartozik (amely a írási régió van kijelölve, és a feladatátvételi prioritási értéke csak 0) vagy a több mint két régiók adatbázis-fiók létrehozásához. További információkért lásd: [több területi adatbázis fiókok][scaling-globally].
 * A helyek, amelyben Azure Cosmos DB általánosan elérhető régiók kell lennie. Az aktuális területek listája a a [Azure-régiókat lap](https://azure.microsoft.com/regions/#services).
 
-## <a id="update-documentdb-account-powershell"></a>A DocumentDB-adatbázisfiók frissítése
+## <a id="update-documentdb-account-powershell"></a>Egy Azure Cosmos DB adatbázisfiók frissítése
 
 Ez a parancs lehetővé teszi az Azure Cosmos DB adatbázis fiók tulajdonságainak módosítása. Ez magában foglalja a konzisztencia-házirend és a helyek, amely az adatbázis-fiók létezik-e.
 
@@ -97,7 +97,7 @@ Példa:
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Properties $CosmosDBProperties
 
-## <a id="delete-documentdb-account-powershell"></a>Egy DocumentDB-adatbázisfiók törlése
+## <a id="delete-documentdb-account-powershell"></a>Egy Azure Cosmos DB adatbázisfiók törlése
 
 Ez a parancs lehetővé teszi egy meglévő Azure Cosmos DB adatbázisfiók törlése.
 
@@ -110,7 +110,7 @@ Példa:
 
     Remove-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
-## <a id="get-documentdb-properties-powershell"></a>A DocumentDB adatbázis fiók tulajdonságainak beolvasása
+## <a id="get-documentdb-properties-powershell"></a>Egy Azure Cosmos DB adatbázis fiók tulajdonságainak beolvasása
 
 A parancs lehetővé teszi, hogy egy meglévő Azure Cosmos DB adatbázisfiók tulajdonságainak beolvasása.
 

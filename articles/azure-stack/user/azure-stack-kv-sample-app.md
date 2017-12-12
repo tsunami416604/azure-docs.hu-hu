@@ -3,8 +3,8 @@ title: "Lehetővé teszik az alkalmazások Azure verem Key Vault titkos kulcsok 
 description: "Az Azure verem Key Vault működéséhez egy mintaalkalmazást használ"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 3748b719-e269-4b48-8d7d-d75a84b0e1e5
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/26/2017
-ms.author: sngun
-ms.openlocfilehash: 7cfb78cc5219d4adab5ceddc9d7eb8d1fc71b678
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: 50103dca21d047c5cee211b2250e750739131bc1
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>Kulcsok és titkos key vaultban tárolt használó mintaalkalmazás
 
@@ -132,7 +132,7 @@ Jegyezze fel a **VaultUrl**, **AuthClientId**, és **AuthClientSecret** az előz
 
 ## <a name="download-and-run-the-sample-application"></a>Töltse le és futtassa a mintaalkalmazást
 
-Töltse le a kulcstartót minta az Azure-ból [Key Vault ügyfél minták](https://www.microsoft.com/en-us/download/details.aspx?id=45343) lap. Bontsa ki a .zip fájlt a fejlesztő munkaállomás tartalmát. Nincsenek két minta a minták mappában található. A HellpKeyVault mintát használjuk ebben a témakörben. Keresse meg a **Microsoft.Azure.KeyVault.Samples** > **minták** > **HelloKeyVault** mappa és a HelloKeyVault alkalmazás megnyitása a Visual Studióban. 
+Töltse le a kulcstartót minta az Azure-ból [Key Vault ügyfél minták](https://www.microsoft.com/en-us/download/details.aspx?id=45343) lap. Bontsa ki a .zip fájlt a fejlesztő munkaállomás tartalmát. Nincsenek két minta a minták mappában található. Ebben a cikkben a HellpKeyVault mintát használjuk. Keresse meg a **Microsoft.Azure.KeyVault.Samples** > **minták** > **HelloKeyVault** mappa és a HelloKeyVault alkalmazás megnyitása a Visual Studióban. 
 
 Nyissa meg a HelloKeyVault\App.config fájlt, és cserélje le az értékeket a <appSettings> rendelkező elemet a **VaultUrl**, **AuthClientId**, és **AuthClientSecret** értékek az előző parancsfájl által visszaadott. Alapértelmezés szerint az App.config tartalmaz helyőrzője *AuthCertThumbprint*, de *AuthClientSecret* helyette. A beállítások cseréje után építse újra a megoldás, és indítsa el az alkalmazást.
 

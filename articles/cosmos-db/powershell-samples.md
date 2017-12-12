@@ -15,20 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: database
 ms.date: 10/16/2017
 ms.author: mimig
-ms.openlocfilehash: f2687369b8e247f00e9de5f3f79d8e44be5b8300
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: de892cc631585c55b0c15f4efe1e06ad55afdce5
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure Cosmos DB Azure PowerShell-példák
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 A következő táblázat az Azure Cosmos DB Azure PowerShell-mintaparancsfájlok hivatkozásokat tartalmaz. Jelenleg csak kezelheti az Azure Cosmos DB accountlayer PowerShell; más erőforrások, például adatbázisok és -gyűjtemények nem kezelhető a PowerShell segítségével.
 
 | |  |
 |---|---|
 |**Azure Cosmos DB-fiók létrehozása**||
-|[A DocumentDB API-fiók létrehozása](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy egyetlen Azure Cosmos DB fiókot használni a DocumentDB API-t. |
+|[Az SQL API-fiók létrehozása](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy egyetlen Azure Cosmos DB fiókot az SQL API-t. |
 |**Az Azure Cosmos DB méretezése**||
 |[Azure Cosmos DB fiók több régióba replikálja, és feladatátvételi prioritások beállítása](scripts/scale-multiregion-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Egy adott feladatátvevő prioritású több területekre globálisan replikálja a fiók adatait.|
 |**Az Azure Cosmos DB biztonságos**||

@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: arramac
-ms.openlocfilehash: 8ca4c7fb1ccfe1eb026de80e519894c0ff23028a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e825968981df1aaee4ceb037995209ba48a8f4ec
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>A módosítás adatcsatorna-támogatás az Azure Cosmos Adatbázisba használata
 
@@ -34,7 +34,7 @@ A **módosítás hírcsatorna támogatási** az Azure Cosmos adatbázis létreho
 ![Energiagazdálkodási valós idejű elemzési és számítógépes forgatókönyvek eseményvezérelt hírcsatorna használata Azure Cosmos DB módosítása](./media/change-feed/changefeedoverview.png)
 
 > [!NOTE]
-> Támogatási hírcsatorna módosítása az összes adatmodellek és a tárolók Azure Cosmos DB valósul meg. A módosítás hírcsatorna azonban a DocumentDB-ügyfél használatával olvasható, ezért rendezi sorba elemek JSON formátumban. Miatt az ügyfelek fog tapasztalni MongoDB formázást, JSON formátumú BSON dokumentumokat és a JSON eltérést formázott hírcsatorna módosítása. 
+> Támogatási hírcsatorna módosítása az összes adatmodellek és a tárolók Azure Cosmos DB valósul meg. A módosítás hírcsatorna azonban az SQL-ügyfélprogrammal olvasható, ezért rendezi sorba elemek JSON formátumban. Miatt az ügyfelek fog tapasztalni MongoDB formázást, JSON formátumú BSON dokumentumokat és a JSON eltérést formázott hírcsatorna módosítása. 
 
 ## <a name="how-does-change-feed-work"></a>Hogyan módosítás munkahelyi hírcsatorna?
 
@@ -90,9 +90,9 @@ Eseményindítók hozhatók létre az Azure Functions portálon az Azure Cosmos 
 <a id="rest-apis"></a>
 ## <a name="using-the-sdk"></a>Az SDK használatával
 
-A [DocumentDB SDK-t](documentdb-sdk-dotnet.md) Azure Cosmos DB nyújtott olvassa el és kezelheti a hírcsatorna módosítása a teljesítményt. De a kiváló power származik sok feladatkörök, túl. Ha azt szeretné, ellenőrzési pontjainak felügyelete, a dokumentum sorszámok kezelésére és partíciókulcsok részletes szabályozhatják, majd a SDK használatával lehet a megfelelő módszert.
+A [SQL SDK](documentdb-sdk-dotnet.md) Azure Cosmos DB nyújtott olvassa el és kezelheti a hírcsatorna módosítása a teljesítményt. De a kiváló power származik sok feladatkörök, túl. Ha azt szeretné, ellenőrzési pontjainak felügyelete, a dokumentum sorszámok kezelésére és partíciókulcsok részletes szabályozhatják, majd a SDK használatával lehet a megfelelő módszert.
 
-Ez a szakasz végigvezeti a DocumentDB SDK használatával történő együttműködésre a hírcsatorna módosítása.
+Ez a szakasz végigvezeti az SQL-SDK használatával történő együttműködésre a hírcsatorna módosítása.
 
 1. Indítsa el a következő erőforrások olvasásakor az appconfig. A végpont és a hitelesítési kulcs lekérése a találhatók [frissítse a kapcsolati karakterlánc](create-documentdb-dotnet.md#update-your-connection-string).
 

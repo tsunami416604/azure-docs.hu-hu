@@ -4,7 +4,7 @@ description: "Ismerkedés az Azure Active Directoryval WebApi projektek, miután
 services: active-directory
 documentationcenter: 
 author: kraigb
-manager: ghogen
+manager: mtillman
 editor: 
 ms.assetid: bf1eb32d-25cd-4abf-8679-2ead299fedaa
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: a756316054dd3bb63f3b0a9f59621bb1345bc693
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d510c193ab8c7e65340275017cb2dcd4c76def0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-azure-active-directory-and-visual-studio-connected-services-webapi-projects"></a>Get Started with Azure Active Directory és a Visual Studio kapcsolódó szolgáltatások (WebApi projektek)
 > [!div class="op_single_selector"]

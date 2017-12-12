@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Cosmos DB .NET Core API, az SDK és az erőforrások |} Microsoft Docs"
-description: "Tudnivalók a .NET Core API és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB .NET Core SDK verziói között végrehajtott módosításokat."
+title: "Azure Cosmos DB: SQL .NET Core API-t, az SDK és erőforrások |} Microsoft Docs"
+description: "Tudnivalók az SQL .NET Core API és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB .NET Core SDK verziói között végrehajtott módosításokat."
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00ccf09930d1973c6f503fc36cbaa4e6203cd2b2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 552a9a9cfa1c1fc4eb3636e2d08da7afdc95b87f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK: A kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET-módosítás adatcsatorna](documentdb-sdk-dotnet-changefeed.md)
@@ -34,6 +34,8 @@ ms.lasthandoff: 12/08/2017
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 <table>
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: sstein
-ms.openlocfilehash: 9b6c60a14578842f4b3b1a9e4724eab6de3f8815
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 84706837aeb416d13dab617f51a33d62a934c016
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="performance-recommendations"></a>Teljesítmény javaslatok
 
@@ -57,7 +57,12 @@ Segítsen megbecsülni Ez a javaslat a hatását, hogy átadja a tényleges CPU-
 
 Ha ez a javaslat alkalmaz, lehetővé teszi az kényszerített (egyszerű) paraméterezéssel az adatbázis percen belül, és elindítja a megfigyelési folyamat, amely körülbelül 24 óráig tart. Ezt követően lesz a 24 órát előtt és a javaslat alkalmazását követően a CPU-használat az adatbázis megjelenítő ellenőrzési jelentés megtekintéséhez. SQL Database Advisor segédprogramot, amely automatikusan helyreállítja az alkalmazott ajánlás, abban az esetben, ha a teljesítmény regressziós észlelt biztonsági mechanizmussal rendelkezik.
 
-## <a name="fix-schema-issues-recommendations"></a>Javítsa ki a séma problémák javaslatok
+## <a name="fix-schema-issues-recommendations-preview"></a>Javítsa ki a séma problémák javaslatok (előzetes verzió)
+
+> [!IMPORTANT]
+> Microsoft "Javítsa ki a hibát a séma" javaslatok elavulttá folyamatban van. El kell kezdenie használatával [intelligens Insights](sql-database-intelligent-insights.md) az adatbázis-teljesítménnyel kapcsolatos problémák automatikus figyelésére, amelyek magukban foglalják séma problémák korábban "Javítsa ki a hibát a séma" javaslatok jelez.
+> 
+
 **Séma kapcsolatos problémák megoldása** javaslatok jelennek meg, ha az SQL Database szolgáltatás észleli az anomáliadetektálási séma kapcsolatos SQL hiba történt az az Azure SQL Database számát. Ez a javaslat jellemzően akkor jelenik meg, amikor a adatbázisnál több séma kapcsolatos hibákat (Érvénytelen oszlopnév, érvénytelen objektumnév stb.) egy órán belül.
 
 "Séma problémák" szintaktikai hibák az SQL Server fordulhat elő, ha az SQL-lekérdezés a definíció- és az adatbázis-séma definíciója nem illeszkednek osztály. Például egy, a lekérdezés által várt oszlopok esetleg hiányzik a céloldali tábla, vagy fordítva. 

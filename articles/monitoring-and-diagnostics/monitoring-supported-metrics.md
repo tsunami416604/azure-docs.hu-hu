@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/25/2017
 ms.author: ancav
-ms.openlocfilehash: d66c6760cd2414e377d9c0cf55835a21b4bc5051
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f678bba89adf1450bd6a08909fdad51424a210e8
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure-figyelő támogatott metrikák
 Azure figyelő többféleképpen is kommunikál a metrikákat, többek között a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül, vagy a őket lekérdezése a PowerShell vagy a parancssori felület. Alatt érhető el teljes listáját és az összes metrikák jelenleg Azure figyelő metrika folyamat.
@@ -506,7 +506,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |jobs.cancelJob.failure|Sikertelen feladat sikertelen|Darabszám|Összes|A visszavonni a feladatot az összes sikertelen hívások száma.|Nincs dimenzió|
 |jobs.queryJobs.success|Feladat sikeres lekérdezések|Darabszám|Összes|A lekérdezés feladatok minden sikeres hívások száma.|Nincs dimenzió|
 |jobs.queryJobs.failure|Sikertelen feladat-lekérdezések|Darabszám|Összes|A lekérdezés feladatok összes sikertelen hívások száma.|Nincs dimenzió|
-|jobs.Completed|Befejezett feladatok|Darabszám|Összes|Az összes befejezett feladatok száma.|Nincs dimenzió|
+|jobs.Completed|Befejezett feladatokhoz|Darabszám|Összes|Az összes befejezett feladatok száma.|Nincs dimenzió|
 |jobs.Failed|A sikertelen feladatok|Darabszám|Összes|Összes sikertelen feladatok száma.|Nincs dimenzió|
 |d2c.telemetry.ingress.sendThrottle|Sávszélesség-szabályozási hibák száma|Darabszám|Összes|Azelőtt gyorsítja fel az eszköz átviteli miatt szabályozás hibák száma|Nincs dimenzió|
 |dailyMessageQuotaUsed|Használt üzenetek teljes száma|Darabszám|Átlag|Jelenleg használt teljes üzenetek száma. Ez az összesített érték, amely nulla értékre állítását: 00:00 UTC minden nap.|Nincs dimenzió|
@@ -519,7 +519,9 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |DeviceAssignments|Hozzárendelt eszközök|Darabszám|Összes|Az IoT-központ rendelt eszközök száma|ProvisioningServiceName, IotHubName|
 |AttestationAttempts|Állapotigazolási kísérletek|Darabszám|Összes|Próbált eszköz tanúsítványok száma|ProvisioningServiceName, állapotát, a protokoll|
 
-## <a name="microsoftdocumentdbdatabaseaccounts-cosmosdb"></a>Microsoft.DocumentDB/databaseAccounts (CosmosDB)
+<a id="cosmosdb"></a>
+
+## <a name="microsoftdocumentdbdatabaseaccounts-azure-cosmos-db"></a>Microsoft.DocumentDB/databaseAccounts (Azure Cosmos DB)
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |TotalRequests|Összes kérelem|Darabszám|Darabszám|Kérelmek száma|DatabaseAccount, CollectionName, DatabaseName, régió, StatusCode|
@@ -922,7 +924,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |MemoryWorkingSet|Memória-munkakészlet|Bájt|Átlag|Memória-munkakészlet|Példány|
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Átlag|Átlagos memória-munkakészlet|Példány|
 |AverageResponseTime|Átlagos válaszidő|másodperc|Átlag|Átlagos válaszidő|Példány|
-|FunctionExecutionUnits|Függvény-végrehajtási egység|Darabszám|Átlag|Függvény-végrehajtási egység|Példány|
+|FunctionExecutionUnits|Függvény végrehajtása egység|Darabszám|Átlag|Függvény végrehajtása egység|Példány|
 |FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Átlag|Függvény végrehajtásainak száma|Példány|
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (funkciók)
@@ -934,7 +936,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Http5xx|HTTP-kiszolgálói hibák|Darabszám|Összes|HTTP-kiszolgálói hibák|Példány|
 |MemoryWorkingSet|Memória-munkakészlet|Bájt|Átlag|Memória-munkakészlet|Példány|
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Átlag|Átlagos memória-munkakészlet|Példány|
-|FunctionExecutionUnits|Függvény-végrehajtási egység|Darabszám|Átlag|Függvény-végrehajtási egység|Példány|
+|FunctionExecutionUnits|Függvény végrehajtása egység|Darabszám|Átlag|Függvény végrehajtása egység|Példány|
 |FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Átlag|Függvény végrehajtásainak száma|Példány|
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
@@ -957,7 +959,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |MemoryWorkingSet|Memória-munkakészlet|Bájt|Átlag|Memória-munkakészlet|Példány|
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Átlag|Átlagos memória-munkakészlet|Példány|
 |AverageResponseTime|Átlagos válaszidő|másodperc|Átlag|Átlagos válaszidő|Példány|
-|FunctionExecutionUnits|Függvény-végrehajtási egység|Darabszám|Átlag|Függvény-végrehajtási egység|Példány|
+|FunctionExecutionUnits|Függvény végrehajtása egység|Darabszám|Átlag|Függvény végrehajtása egység|Példány|
 |FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Átlag|Függvény végrehajtásainak száma|Példány|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
@@ -983,16 +985,16 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |HttpQueueLength|HTTP-várólista hossza|Darabszám|Összes|HTTP-várólista hossza|Példány|
 |ActiveRequests|Aktív kérelmek|Darabszám|Összes|Aktív kérelmek|Példány|
 |TotalFrontEnds|Előterek száma|Darabszám|Átlag|Előterek száma|Példány|
-|SmallAppServicePlanInstances|Kis méretű App Service-csomag feldolgozói|Darabszám|Átlag|Kis méretű App Service-csomag feldolgozói|Példány|
-|MediumAppServicePlanInstances|Közepes méretű App Service-csomag feldolgozói|Darabszám|Átlag|Közepes méretű App Service-csomag feldolgozói|Példány|
-|LargeAppServicePlanInstances|Nagy méretű App Service-csomag feldolgozói|Darabszám|Átlag|Nagy méretű App Service-csomag feldolgozói|Példány|
+|SmallAppServicePlanInstances|Kisméretű App Service-csomag munkavállalók|Darabszám|Átlag|Kisméretű App Service-csomag munkavállalók|Példány|
+|MediumAppServicePlanInstances|Közepes méretű App Service-csomag munkavállalók|Darabszám|Átlag|Közepes méretű App Service-csomag munkavállalók|Példány|
+|LargeAppServicePlanInstances|Nagyméretű App Service-csomag munkavállalók|Darabszám|Átlag|Nagyméretű App Service-csomag munkavállalók|Példány|
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|Feldolgozók|Feldolgozók összesen|Darabszám|Átlag|Feldolgozók összesen|Példány|
-|WorkersAvailable|Rendelkezésre álló feldolgozók|Darabszám|Átlag|Rendelkezésre álló feldolgozók|Példány|
+|Feldolgozók|Teljes munkavállalók|Darabszám|Átlag|Teljes munkavállalók|Példány|
+|WorkersAvailable|Rendelkezésre álló munkavállalók|Darabszám|Átlag|Rendelkezésre álló munkavállalók|Példány|
 |WorkersUsed|Használt feldolgozók|Darabszám|Átlag|Használt feldolgozók|Példány|
 
 ## <a name="next-steps"></a>Következő lépések

@@ -4,7 +4,7 @@ description: "Ez a cikk ismerteti, hogyan használható az Azure-portál alkalma
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 7dc7b89f-653f-405a-b5f4-2c1288720c15
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: priyamo
 ms.reviewer: elisol
-ms.openlocfilehash: 2f2817688beb2028fd0bba8522827d87a0097f21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f32f57d4c8b3e13d2aa31b04ee10bb46a6c71f7
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="register-your-application-with-your-azure-active-directory-tenant"></a>Az alkalmazás regisztrálása az Azure Active Directory-bérlő
 
@@ -45,7 +45,7 @@ Könnyen módosíthatja egy meglévő alkalmazás beállításait az Azure port�
   * A **tulajdonságok** lap lehetővé teszi, hogy módosítsa az alkalmazás általános adatokat. Ez magában foglalja az alkalmazás nevét, a bejelentkezési URL-cím és a kijelentkezési URL-CÍMÉT.
   * A **válasz URL-címek** lap lehetővé teszi egy válasz URL-CÍMEN, amely ahol küld az Azure AD a token válaszokat.
   * A **tulajdonosok** lap lehetővé teszi az alkalmazástulajdonosok.
-  * A **engedélyek** lap lehetővé teszi az alkalmazás-engedélyek konfigurálása. Például a Microsoft Graph API eléréséhez kattintson **Hozzáadás** válassza **Microsoft Graph** az API-választó, majd válassza az engedély szükséges, például **címtáradatok olvasása**.
+  * A **szükséges engedélyek** lap lehetővé teszi az alkalmazás-engedélyek konfigurálása. Például a Microsoft Graph API eléréséhez kattintson **Hozzáadás** válassza **Microsoft Graph** az API-választó, majd válassza az engedély szükséges, például **címtáradatok olvasása**.
   * A **kulcsok** lap lehetővé teszi az alkalmazás titkos kulcsok. A titkos kulcs csak jelenik meg, miután a létrehozás után azonnal Igen ügyeljen rá, hogy másolja a további használja.
 
 ## <a name="use-the-inline-manifest-editor"></a>A beágyazott jegyzék szerkesztő használata

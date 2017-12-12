@@ -1,6 +1,6 @@
 ---
-title: "A DocumentDB API teljesítményszintet |} Microsoft Docs"
-description: "További információk a hogyan DocumentDB API teljesítményszintek lehetővé teszik a tároló / alapon átviteli lefoglalni."
+title: "Azure Cosmos DB teljesítményszintet kivonása |} Microsoft Docs"
+description: "További tudnivalók a S1, S2 és S3 teljesítményszintet korábban elérhető az Azure Cosmos-Adatbázisba."
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -15,17 +15,19 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62767163213383c577e74e0aa8fbd07f891cb694
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 01b44169349d8b79cf5861328170916a57df6811
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>A S1, S2 és S3 teljesítményszintet kivonása
 
 > [!IMPORTANT] 
-> A cikkben szereplő S1, S2 és S3 teljesítményszintet használatból van, és már nem érhetők el az új DocumentDB API-fiókokat.
+> A cikkben szereplő S1, S2 és S3 teljesítményszintet használatból van, és már nem érhetők el az új Azure Cosmos DB fiókokat.
 >
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Ez a cikk S1, S2 és S3 teljesítményszintet áttekintést nyújt, és ismerteti, hogyan a gyűjteményeket, a teljesítmény szinteket használó telepíti át az egypartíciós gyűjtemények előrehaladott állapotában 2017. A cikk elolvasása után képes lesz a következő kérdések megválaszolásához:
 
@@ -44,7 +46,7 @@ Ez a cikk S1, S2 és S3 teljesítményszintet áttekintést nyújt, és ismertet
 
 ## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Miért van a S1, S2 és S3 teljesítmény szintek hatókörről?
 
-A S1, S2 és S3 teljesítményszintet biztosít a rugalmasságot, hogy a DocumentDB API gyűjtemények ajánlat. S1, S2, S3 teljesítményszintet, az átviteli sebesség és a tárolási kapacitás előre beállított és nem ajánlja fel a rugalmasság. Azure Cosmos DB kínál testreszabása az átviteli sebesség és tárterület, felkínálva sokkal nagyobb rugalmasságot biztosít arra, hogy a méretezés pedig az igényeinek módosítása.
+A S1, S2 és S3 teljesítményszintet biztosít a szabványos Azure Cosmos DB ajánlat biztosít rugalmasságot. S1, S2, S3 teljesítményszintet, az átviteli sebesség és a tárolási kapacitás előre beállított és nem ajánlja fel a rugalmasság. Azure Cosmos DB kínál testreszabása az átviteli sebesség és tárterület, felkínálva sokkal nagyobb rugalmasságot biztosít arra, hogy a méretezés pedig az igényeinek módosítása.
 
 <a name="compare"></a>
 
@@ -141,7 +143,7 @@ A S1, S2 és S3 teljesítményszintek az Azure portál használatával az egypar
 
 **A .NET SDK használatával az egypartíciós gyűjtemények áttelepítése**
 
-A gyűjtemények teljesítményszintet módosítására vonatkozóan egy másik lehetőség az Azure Cosmos DB SDK-k keresztül történik. Ez a szakasz csak hozzá van rendelve egy gyűjtési teljesítmény módosítása szinten használatával a [DocumentDB .NET API](documentdb-sdk-dotnet.md), a folyamat hasonló, ha a Csomagjától, de.
+A gyűjtemények teljesítményszintet módosítására vonatkozóan egy másik lehetőség az Azure Cosmos DB SDK-k keresztül történik. Ez a szakasz csak hozzá van rendelve egy gyűjtési teljesítmény módosítása szinten használatával a [SQL .NET API](documentdb-sdk-dotnet.md), a folyamat hasonló, ha a Csomagjától, de.
 
 Íme egy kódrészletet a a gyűjtemény átviteli sebességének módosítása a 5 000 kérelemegység / másodperc:
     

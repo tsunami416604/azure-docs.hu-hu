@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: mimig
-ms.openlocfilehash: 608222da9cbe2895914e14c9f76cc5629ef65684
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1a6e4904252d5eda3ff6aeb0821c81c5845cced0
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag segítségével Ismerkedés az Azure Cosmos DB az Azure-port�
 
 ## <a name="what-is-logged"></a>Mi kerül?
 
-* Minden hitelesített REST DocumentDB (SQL) API-kérések naplózása történik, mely tartalmazza a hozzáférési engedélyeket, rendszerhibákból vagy hibás kérésekből adótó sikertelen kérelmeket. MongoDB, a Graph és a tábla API-k támogatása jelenleg nem áll rendelkezésre.
+* Minden hitelesített REST API-SQL kérések naplózása, amely magában foglalja a hozzáférési engedélyeket, rendszerhibákból vagy hibás kérésekből adótó sikertelen kérelmeket. MongoDB, a Graph és a tábla API-k támogatása jelenleg nem áll rendelkezésre.
 * Maga az adatbázis, amely magában foglalja a CRUD-műveleteknek a dokumentumok, tárolók és adatbázisok műveleteket.
 * Műveletek a kulcsait, többek között létrehozása, módosítása vagy törlése a kulcsokat.
 * A 401-es választ eredményező, nem hitelesített kérelmek. Ilyenek például azok a kérelmek, amelyek nem rendelkeznek tulajdonosi jogkivonattal, helytelen formátumúak vagy lejártak, vagy érvénytelen a jogkivonatuk.
@@ -54,9 +54,9 @@ Az oktatóanyag elvégzéséhez a következőket kell rendelkeznie:
     * **Archív tárfiókba**. Használja ezt a beállítást, meglévő tárfiókot csatlakozni kell. Új tárfiók létrehozása a portálon: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md) és kövesse az utasításokat az erőforrás-kezelő, általános célú fiók létrehozásához. Ezután térjen vissza erre a lapra, jelölje be a tárfiók a portálon. Az újonnan létrehozott tárfiók megjelenik a legördülő menü néhány percig is eltarthat.
     * **Az eseményközpontok felé adatfolyam**. Használja ezt a beállítást, egy meglévő Eseményközpont névtér és esemény-központot csatlakozni kell. Az Event Hubs névtér létrehozásához lásd: [hozzon létre egy Event Hubs névtér és egy eseményközpontot, az Azure portál használatával](../event-hubs/event-hubs-create.md). Térjen vissza erre az oldalra a portálon, és válassza ki az Event Hubs-névteret és a házirend nevét.
     * **Naplóelemzési küldése**.     Használja ezt a beállítást, vagy használjon meglévő munkaterülethez vagy hozzon létre egy új Naplóelemzési munkaterület lépéseit követve [hozzon létre egy új munkaterületet](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace) a portálon. A naplók megtekintése a Naplóelemzési további információkért lásd: [Naplóelemzési a naplók megtekintése](#view-in-loganalytics).
-    * **Naplófájl DataPlaneRequests**. Válassza ezt a beállítást, a DocumentDB, diagram és táblázat API fiókok diagnosztika bejelentkezni. Ha archiválni egy tárfiókot, válassza a diagnosztikai naplók megőrzési időtartama. Nincsenek autodeleted naplói a megőrzési időszak lejárta után.
+    * **Naplófájl DataPlaneRequests**. Ezt a beállítást a diagnosztika SQL, a Graph és a tábla API fiókok bejelentkezni. Ha archiválni egy tárfiókot, válassza a diagnosztikai naplók megőrzési időtartama. Nincsenek autodeleted naplói a megőrzési időszak lejárta után.
     * **Naplófájl MongoRequests**. Válassza ezt a beállítást, a MongoDB API fiókok diagnosztika bejelentkezni. Ha archiválni egy tárfiókot, válassza a diagnosztikai naplók megőrzési időtartama. Nincsenek autodeleted naplói a megőrzési időszak lejárta után.
-    * **Metrika kérelmek**. Válassza ezt a beállítást, a részletes adatok tárolására [Azure metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftdocumentdbdatabaseaccounts-cosmosdb). Ha archiválni egy tárfiókot, válassza a diagnosztikai naplók megőrzési időtartama. Nincsenek autodeleted naplói a megőrzési időszak lejárta után.
+    * **Metrika kérelmek**. Válassza ezt a beállítást, a részletes adatok tárolására [Azure metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md#cosmosdb). Ha archiválni egy tárfiókot, válassza a diagnosztikai naplók megőrzési időtartama. Nincsenek autodeleted naplói a megőrzési időszak lejárta után.
 
 3. Kattintson a **Save** (Mentés) gombra.
 

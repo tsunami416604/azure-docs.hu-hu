@@ -1,4 +1,3 @@
-
 ## <a name="setting-up-your-ios-application"></a>Az iOS-alkalmazás beállítása
 
 Ez a szakasz részletesen arról, hogyan hozzon létre egy új projektet bemutatják, hogyan integrálható az iOS-alkalmazás (Swift) rendelkező *jelentkezzen be Microsoft* azt lekérdezhesse jogkivonat igénylő webes API-k.

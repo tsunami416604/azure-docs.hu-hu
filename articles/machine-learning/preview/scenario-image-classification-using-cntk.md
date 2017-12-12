@@ -9,11 +9,11 @@ ms.reviewer: mawah, marhamil, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 64a035c216e4d7aa4c14baf1812b9a25e27b3e19
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 2410ed152674637cb1b287db55da67b8d5f5f072
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Kép besorolás használata az Azure Machine Learning-munkaterület
 
@@ -63,7 +63,7 @@ Ez a példa futtatásához az Előfeltételek a következők:
 - Kevés a memória hibák DNN betanítás során elkerülhetők minibatch méretének csökkentésével (változó `cntk_mb_size` a `PARAMETERS.py`).
 - A kód teszteltük CNTK 2.2 használatával, illetve is futtassa a régebbi (v2.0 akár) és újabb verziók nélkül, vagy csak kisebb módosításokat kell.
 - A írásának időpontjában az Azure Machine Learning-munkaterület problémákba megjelenítő notebookok nagyobb, mint 5 MB-ban. Ez nagy méretű jegyzetfüzetek akkor fordulhat elő, ha a notebook menti az összes cella kimenet jelenik meg. Ha ez a hiba, majd nyissa meg a parancssort a Fájl menüből a munkaterületet üzemeltető belül, a végrehajtást `jupyter notebook`, nyissa meg a notebook, törölje az összes kimeneti és mentése a notebook. A lépések elvégzése után a notebook nyílik meg megfelelően az Azure Machine Learning-munkaterület belül újra.
-- Ez a példa megadott összes parancsfájl kell hajtható végre, helyileg, nem pedig például a docker távoli környezetekben. Az összes jegyzetfüzet kell kell végrehajtani, állítsa be a helyi projekt kernel névvel kernel "<projectname> helyi" (pl. "helyi myImgClassUsingCNTK").
+- Ez a példa megadott összes parancsfájl kell hajtható végre, helyileg, nem pedig például a docker távoli környezetekben. Az összes jegyzetfüzet kell végrehajtani, állítsa be a "Helyi PROJEKTNÉV" nevű (pl. "myImgClassUsingCNTK helyi") a helyi projekt kernel kernel kell.
 
     
 ## <a name="create-a-new-workbench-project"></a>Új munkaterület-projekt létrehozása
@@ -115,7 +115,7 @@ Az összes fontos paraméter meg van adva, és egy rövid magyarázatot egy hely
 ### <a name="step-1-data-preparation"></a>1. lépés: Adatok előkészítése
 `Script: 1_prepareData.py. Notebook: showImages.ipynb`
 
-A notebook `showImages.ipynb` jelenítheti meg a lemezképeket, és javítsa ki a jegyzet, igény szerint használható. A notebook futtatásához nyissa meg az Azure Machine Learning munkaterületet, kattintson a "Start Notebook Server" Ez a beállítás jelenik meg, ha módosítsa a helyi projekt kernel nevű "<projectname> helyi" (pl. "myImgClassUsingCNTK helyi"), és minden cellája hajthat végre a notebookot. Ha panaszos, hogy túl nagy a megjelenítéshez-e a notebook hibaüzenetet kap, tekintse meg a hibaelhárítási rész ebben a dokumentumban.
+A notebook `showImages.ipynb` jelenítheti meg a lemezképeket, és javítsa ki a jegyzet, igény szerint használható. A notebook futtatásához nyissa meg az Azure Machine Learning munkaterület, hogy ezt a beállítást, a "Start Notebook Server" módosítása a helyi projekt kernel néven "PROJEKTNÉV helyi" (pl. "myImgClassUsingCNTK helyi"), kattintson, és hajthat végre az összes cellákig a notebookot. Ha panaszos, hogy túl nagy a megjelenítéshez-e a notebook hibaüzenetet kap, tekintse meg a hibaelhárítási rész ebben a dokumentumban.
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/notebook_showImages.jpg" alt="alt text" width="700"/>
 </p>
@@ -179,7 +179,7 @@ Mellett pontosságának a: ROC-görbe ábrázolja a megfelelő terület-a-görbe
 <img src="media/scenario-image-classification-using-cntk/roc_confMat.jpg" alt="alt text" width="700"/>
 </p>
 
-Végezetül a notebook `showResults.py` Görgessen végig a teszt képek és jelenítheti meg a megfelelő besorolási pontszámok megadott. Ahogy az 1. lépés, ez a példa minden notebook használatára van szüksége a helyi projekt kernel nevű "<projectname> helyi":
+Végezetül a notebook `showResults.py` Görgessen végig a teszt képek és jelenítheti meg a megfelelő besorolási pontszámok megadott. Ahogy az 1. lépés, ez a példa minden notebook használatára van szüksége a helyi projekt kernel "Helyi PROJEKTNÉV" nevű:
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/notebook_showResults.jpg" alt="alt text" width="700"/>
 </p>
@@ -191,7 +191,7 @@ Végezetül a notebook `showResults.py` Görgessen végig a teszt képek és jel
 ### <a name="step-6-deployment"></a>6. lépés: központi telepítés
 `Scripts: 6_callWebservice.py, deploymain.py. Notebook: deploy.ipynb`
 
-A betanított rendszer mostantól a REST API tehetők közzé. Központi telepítés esetén, tekintse meg a notebook a `deploy.ipynb`, és az Azure Machine Learning-munkaterület belül funkció alapján (ne felejtse el a projekt helyi kernel névvel kernel állítja "<projectname> helyi"). További információ a kiváló telepítési szakasza a [IRIS oktatóanyag](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3) további központi telepítéshez kapcsolódó információk.
+A betanított rendszer mostantól a REST API tehetők közzé. Központi telepítés esetén, tekintse meg a notebook a `deploy.ipynb`, és az Azure Machine Learning-munkaterület belül funkció alapján (ne felejtse el a projekt helyi kernel "PROJEKTNÉV helyi" névvel kernel állítja). További információ a kiváló telepítési szakasza a [IRIS oktatóanyag](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3) további központi telepítéshez kapcsolódó információk.
 
 Amennyiben telepített, a webes szolgáltatás hívása a parancsfájllal `6_callWebservice.py`. Vegye figyelembe, hogy a webszolgáltatás IP-címe (helyi vagy a felhőbe) kell először be kell állítani a parancsfájlban. A notebook `deploy.ipynb` ismerteti az IP-cím kereséséhez.
 

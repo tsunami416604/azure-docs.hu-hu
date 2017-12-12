@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: DocumentDB API kezdeti lépéseket ismertető oktatóanyag| Microsoft Docs"
-description: "Oktatóanyag, amely létrehoz egy online adatbázist és egy C# konzolalkalmazást a DocumentDB API használatával."
+title: "Az Azure Cosmos DB: SQL API használatába bevezető oktatóanyagot |} Microsoft Docs"
+description: "Ez az oktatóanyag létrehoz egy online adatbázist és az SQL API-val C# konzolalkalmazást."
 keywords: "nosql-oktatóanyag, online adatbázis, c# konzolalkalmazás"
 services: cosmos-db
 documentationcenter: .net
@@ -15,13 +15,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: anhoh
-ms.openlocfilehash: e5e6a2e5b7ec4bc9c3c81ff37640c98cae36392d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7a6049ac8d196282f146a60de3a0f0cb05943dd
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-documentdb-api-getting-started-tutorial"></a>Azure Cosmos DB: DocumentDB API kezdeti lépéseket ismertető oktatóanyag
+# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Az Azure Cosmos DB: SQL API használatába bevezető oktatóanyagot
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -32,9 +32,11 @@ ms.lasthandoff: 10/11/2017
 >  
 > 
 
-Üdvözöljük az Azure Cosmos DB: DocumentDB API kezdeti lépéseket ismertető oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-Az oktatóanyag a következőket ismerteti:
+Az Azure Cosmos DB SQL API alapszintű bemutató Üdvözöljük! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
+
+Ez az oktatóanyag ismerteti:
 
 * Azure Cosmos DB-fiók létrehozása és csatlakoztatása
 * A Visual Studio megoldás konfigurálása
@@ -48,12 +50,9 @@ Az oktatóanyag a következőket ismerteti:
 
 Nincs elég ideje? Ne aggódjon! A teljes megoldás elérhető a [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-getting-started). A gyors utasításokért ugorjon [A teljes NoSQL-oktatóanyag megoldás beszerzése szakaszra](#GetSolution).
 
-Utána a lap tetején és alján található szavazógomb használatával küldjön visszajelzést felénk. Ha szeretne közvetlenül kapcsolatba lépni velünk, a hozzászólásaiban tüntesse fel az e-mail-címét.
-
 Most pedig lássunk neki!
 
 ## <a name="prerequisites"></a>Előfeltételek
-Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/). 
 
@@ -62,7 +61,7 @@ Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 * [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)].
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
-Hozzunk létre egy Azure Cosmos DB-fiókot. Ha van már olyan fiókja, amelyet használni szeretne, ugorjon előre a [Visual Studio megoldás beállítása](#SetupVS) című lépésre. Ha az Azure Cosmos DB Emulatort használja, kövesse az [Azure Cosmos DB Emulatornál](local-emulator.md) leírt lépéseket az emulátor telepítéséhez, majd ugorjon előre a [Visual Studio Solution beállítása](#SetupVS) című lépésre.
+Hozzunk létre egy Azure Cosmos DB-fiókot. Ha van már olyan fiókja, amelyet használni szeretne, ugorjon előre a [Visual Studio megoldás beállítása](#SetupVS) című lépésre. Ha az Azure Cosmos DB Emulator használ, kövesse a [Azure Cosmos DB emulátor](local-emulator.md) kell beállítania az emulátor, és ugorjon előre [a Visual Studio megoldás beállítása](#SetupVS).
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -74,10 +73,10 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha van már olyan fiókja, amelyet h
 4. A **Megoldáskezelőben** kattintson a jobb gombbal az új konzolalkalmazásra, amely a Visual Studio megoldás alatt található, majd kattintson a **NuGet-csomagok kezelése...** lehetőségre.
     
     ![A Projekt jobb gombos kattintással elérhető menüjének képernyőfelvétele](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
-5. A **NuGet** lapon kattintson a **Tallózás** elemre, majd írja be az **azure documentdb** kifejezést a keresőmezőbe.
+5. Az a **NuGet** lapra, majd **Tallózás**, és írja be **az azure documentdb** be a keresőmezőbe.
 6. A találatok között keresse meg a **Microsoft.Azure.DocumentDB** elemet, majd kattintson a **Telepítés** lehetőségre.
-   Az Azure Cosmos DB DocumentDB API Ügyfélkódtárának Csomagazonosítója van [Microsoft Azure DocumentDB Client Library](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).
-   ![Képernyőfelvétel a Nuget menüről az Azure Cosmos DB ügyféloldali SDK megkereséséhez](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+   A csomag-azonosító az Azure Cosmos DB SQL API ügyféloldali kódtár [Microsoft Azure Cosmos DB ügyféloldali kódtár](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).
+   ![Képernyőfelvétel a NuGet menüről a Azure Cosmos DB ügyfél SDK-kereséshez](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
     Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
 
@@ -116,7 +115,7 @@ Az Azure portálon, navigáljon az Azure Cosmos DB fiókját, és kattintson **k
 
 Másolja ki az URI-t a portálról, és illessze be a program.cs fájl `<your endpoint URL>` elemébe. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `<your primary key>` elembe.
 
-![Képernyőfelvétel a NoSQL-oktatóanyagban a C# Konzolalkalmazás létrehozásához használt Azure-portálon. Megjelenít egy Azure Cosmos DB-fiókot, amelyen az ACTIVE központ, az Azure Cosmos DB-fiók panelén lévő KEYS gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve][keys]
+![Képernyőfelvétel a NoSQL-oktatóanyagban a C# Konzolalkalmazás létrehozásához használt Azure-portálon. Egy Azure Cosmos DB fiók mutatja az ACTIVE központ, a KEYS gomb az Azure Cosmos DB fiók oldalon és az URI, PRIMARY KEY és másodlagos kulcsot értékek, a kulcsok oldalon kiemelve][keys]
 
 Ezt követően létrehozunk egy új **DocumentClient** példányt az alkalmazás elindításához.
 

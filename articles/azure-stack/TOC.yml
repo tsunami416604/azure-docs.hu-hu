@@ -45,11 +45,13 @@
       items:
         - name: Előfeltételek
           href: azure-stack-deploy.md
+        - name: Telemetria
+          href: azure-stack-telemetry.md
         - name: Üzembe helyezés
           href: azure-stack-run-powershell-script.md
         - name: A PowerShell telepítése
           href: azure-stack-powershell-install.md
-        - name: Regisztráljon
+        - name: Regisztráció
           href: azure-stack-register.md
         - name: Csatlakozás az Azure Stackhez
           href: azure-stack-connect-azure-stack.md
@@ -133,7 +135,7 @@
               href: Azure-stack-create-service-principals.md
             - name: A több-bérlős üzemmód engedélyezése
               href: azure-stack-enable-multitenancy.md
-    - name: Szolgáltatások ajánlása
+    - name: Ajánlat szolgáltatásai
       items:
         - name: Szolgáltatásajánlások áttekintése
           href: azure-stack-offer-services-overview.md

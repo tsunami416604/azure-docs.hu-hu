@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 598e7c0c60c82c6f752ec37676dae52488cccb21
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 4feed2537a45784bc8aa19de05bdc18533dd64d5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Amazon Redshift
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -207,7 +207,7 @@ Ez a minta a használati eset, a másolási tevékenység eltávolítást adatai
 
 ## <a name="data-type-mapping-for-amazon-redshift"></a>Az Amazon Redshift adattípus-leképezés
 
-Az adatok másolása Teradata, amikor az Azure Data Factory ideiglenes adattípusok a következő megfeleltetéseket használtak Teradata adattípusokat. Lásd: [séma- és írja be a leképezéseket](copy-activity-schema-and-type-mapping.md) hogyan másolási tevékenység van leképezve a séma- és adatok típusa a fogadó tájékozódhat.
+Az adatok másolása Amazon Redshift, amikor az Azure Data Factory ideiglenes adattípusok a következő megfeleltetéseket használtak Amazon Redshift adattípusokat. Lásd: [séma- és írja be a leképezéseket](copy-activity-schema-and-type-mapping.md) hogyan másolási tevékenység van leképezve a séma- és adatok típusa a fogadó tájékozódhat.
 
 | Amazon Redshift adattípus | Data factory ideiglenes adattípus |
 |:--- |:--- |
@@ -218,7 +218,7 @@ Az adatok másolása Teradata, amikor az Azure Data Factory ideiglenes adattípu
 | DECIMÁLIS |Decimális |
 | A KÉTSZERES PONTOSSÁG |Dupla |
 | EGÉSZ SZÁM |Int32 |
-| VALÓS |Egyetlen |
+| VALÓS |Egyedülálló |
 | SMALLINT |Int16 |
 | SZÖVEG |Karakterlánc |
 | IDŐBÉLYEG |Dátum és idő |

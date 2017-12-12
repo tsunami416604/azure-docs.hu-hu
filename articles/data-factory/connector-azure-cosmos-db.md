@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 9bd92e48440ad4edf2261221446ce66718ffea17
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ab9e7b1b287be408f2d53ea005bad3815dc45f83
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure Cosmos-Adatbázisból
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 12/08/2017
 > * [1. verzió – Általánosan elérhető](v1/data-factory-azure-documentdb-connector.md)
 > * [2. verzió – Előzetes verzió](connector-azure-cosmos-db.md)
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory másolja az adatokat, a kezdő és a Azure Cosmos DB (a DocumentDB API). Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory másolja az adatokat, a kezdő és a Azure Cosmos DB (SQL API-t). Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Azure Cosmos DB connnector a V1](v1/data-factory-azure-documentdb-connector.md).
@@ -36,7 +36,7 @@ Adatok másolása az Azure Cosmos DB az egyetlen támogatott fogadó adattár, v
 
 Konkrétan ez Azure Cosmos DB az összekötő támogatja:
 
-- A cosmos DB [DocumentDB API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- A cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
 - Importálás/exportálás JSON-dokumentumokat,-, illetve az adatok másolásának/táblázatos dataset például az SQL-adatbázis, a CSV-fájlok, a stb.
 
 Másolja a dokumentumokat-van/JSON-fájlokat vagy egy másik Cosmos DB gyűjteményhez, lásd: [Import/Export JSON-dokumentumok](#importexport-json-documents).

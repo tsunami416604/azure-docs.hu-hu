@@ -1,5 +1,5 @@
 ---
-title: "NODE.js-alkalmazás Socket.io segítségével |} Microsoft Docs"
+title: "NODE.js-alkalmazás Socket.io - Azure használatával"
 description: "Ismerje meg, hogyan socket.io használható az Azure-platformon futó node.js-alkalmazás."
 services: cloud-services
 documentationcenter: nodejs
@@ -14,14 +14,15 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 0b4c3c540e27ba06a722cfec4f0c079f19ce7f67
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 186cf5e22468b7abf58d6366ca0dec616be23cc6
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>A Node.js csevegőalkalmazás Socket.IO létrehozása az Azure-Felhőszolgáltatás-kiszolgálón
-Socket.IO biztosít a valós idejű között a node.js-kiszolgáló és az ügyfelek közötti kommunikáció. Ez az oktatóanyag végigvezeti egy szoftvercsatorna üzemeltetéséhez. IO Csevegés alkalmazás Azure-alapú. A Socket.IO további információkért lásd: <http://socket.io/>.
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>A Socket.IO Node.js csevegőalkalmazás létrehozása az Azure Cloud Service-kiszolgálón
+
+Socket.IO biztosít a valós idejű kommunikációt a node.js-kiszolgáló és az ügyfelek között. Ez az oktatóanyag bemutatja, hogyan szoftvercsatorna birtoklás révén. IO Csevegés alkalmazás Azure-alapú. A Socket.IO további információkért lásd: [socket.io](http://socket.io).
 
 A kész alkalmazás képernyőfelvételének alatt van:
 

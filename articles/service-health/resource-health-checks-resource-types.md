@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 22e1768257524400f341cf881dfebfb35115a43b
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: b67e72af8a34799af97cd46f968636050f4ce485
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapotát ellenőrzi az Azure-erőforrás állapota
 Alább az erőforrás állapota keresztül erőforrástípusok által végrehajtott egyetlen ellenőrzés sem teljes listáját.
@@ -73,7 +73,7 @@ Alább az erőforrás állapota keresztül erőforrástípusok által végrehajt
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Minden adatbázis vagy a gyűjtemény kérést, nem szolgálható ki a DocumentDB szolgáltatás elérhetetlensége miatt nem lett volna?</li><li>A dokumentum kéréseit nem szolgálható ki a DocumentDB szolgáltatás elérhetetlensége miatt nem lett volna?</li></ul>|
+|<ul><li>Minden adatbázis vagy a gyűjtemény kérést, nem szolgálható ki egy Azure Cosmos DB szolgáltatás elérhetetlensége miatt nem lett volna?</li><li>A dokumentum kéréseit nem szolgálható ki egy Azure Cosmos DB szolgáltatás elérhetetlensége miatt nem lett volna?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.Network/Connections
 |Végrehajtott ellenőrzések|

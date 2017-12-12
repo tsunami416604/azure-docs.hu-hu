@@ -1,8 +1,8 @@
 ---
-title: "A DocumentDB API Azure Cosmos DB globális telepítési útmutató |} Microsoft Docs"
-description: "Megtudhatja, hogyan beállítani az Azure Cosmos DB globális terjesztési a DocumentDB API használatával."
+title: "Az SQL API-t Azure Cosmos DB globális telepítési útmutató |} Microsoft Docs"
+description: "Útmutató: Azure Cosmos DB globális terjesztési az SQL API-val beállítása."
 services: cosmos-db
-keywords: "globális terjesztési, a documentdb"
+keywords: "Globális terjesztési"
 documentationcenter: 
 author: mimig1
 manager: jhubbard
@@ -16,31 +16,33 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: c3d0d46ac12faa6b1e28edbeadd97c1a987bed1e
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 11b6edb811c6e88941db63cb22f1d2308dd31f66
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-documentdb-api"></a>How Azure Cosmos DB globális terjesztési a DocumentDB API-jával beállítása
+# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Hogyan lehet beállítani az Azure Cosmos DB globális terjesztési az SQL API-val
 
-Ebben a cikkben megmutatjuk, hogyan használható az Azure-portálon Azure Cosmos DB globális terjesztési beállításához, és csatlakoztassa a DocumentDB API használatával.
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
+Ebben a cikkben megmutatjuk, hogyan használható az Azure-portálon Azure Cosmos DB globális terjesztési beállításához, és csatlakozzon az SQL API-val.
 
 Ez a cikk ismerteti a következő feladatokat: 
 
 > [!div class="checklist"]
 > * Az Azure portál használatával globális terjesztési konfigurálása
-> * Globális terjesztési használatával konfigurálja a [DocumentDB API-k](documentdb-introduction.md)
+> * Globális terjesztési használatával konfigurálja a [SQL API-k](documentdb-introduction.md)
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-documentdb-api"></a>A preferált régió a DocumentDB API-jával való kapcsolódás
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>A preferált régió, az SQL API-val való kapcsolódás
 
-Kihasználása érdekében [globális terjesztési](distribute-data-globally.md), ügyfélalkalmazások is adja meg a dokumentum műveletek végrehajtásához használandó régiók rendezett beállítások listáját. Ezt megteheti a kapcsolat házirend beállításával. Az Azure Cosmos DB-fiók konfigurációja, az aktuális területi rendelkezésre állás és a megadott beállításokat szabályozó lista alapján, a legoptimálisabb végpont választja ki a DocumentDB SDK írási és olvasási műveletek.
+Kihasználása érdekében [globális terjesztési](distribute-data-globally.md), ügyfélalkalmazások is adja meg a dokumentum műveletek végrehajtásához használandó régiók rendezett beállítások listáját. Ezt megteheti a kapcsolat házirend beállításával. Az Azure Cosmos DB-fiók konfigurációja, az aktuális területi rendelkezésre állás és a megadott beállításokat szabályozó lista alapján, a legoptimálisabb végpont választja ki az SQL SDK írási és olvasási műveletek.
 
-Ez a beállítás lista van megadva, a DocumentDB SDK-k használata a kapcsolat inicializálása közben. Az SDK-k elfogadása "PreferredLocations" nem kötelező paraméter, amely egy Azure-régiók rendezett listáját.
+Ez a beállítás lista van megadva, az SQL SDK-k használata a kapcsolat inicializálása közben. Az SDK-k elfogadása "PreferredLocations" nem kötelező paraméter, amely egy Azure-régiók rendezett listáját.
 
 Az SDK automatikusan elküld minden írási műveleteket ad ki az aktuális írási régió.
 
@@ -169,7 +171,7 @@ Ebben az oktatóanyagban ezt a következők:
 
 > [!div class="checklist"]
 > * Az Azure portál használatával globális terjesztési konfigurálása
-> * A DocumentDB API-k használatával globális terjesztési konfigurálása
+> * Az SQL API-kkal globális terjesztési konfigurálása
 
 Most már folytathatja a következő oktatóanyag megtudhatja, hogyan fejleszthet, helyileg emulátorral Azure Cosmos DB helyi.
 

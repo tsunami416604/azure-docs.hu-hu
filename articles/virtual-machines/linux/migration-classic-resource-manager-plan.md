@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: ab38f6866519aabe1b4740cfaa26d7ff570d78de
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 246032701d97fc7d16e6cb38ee79fbd5470f65d9
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrásokra a klasszikus Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager nagy mennyiségű elképesztő funkciókat kínál, miközben nagyon fontos tervezze meg az áttelepítési út zökkenőmentesek sure művelet. Tervezési idő költségeik biztosítja, hogy nem tapasztal, az áttelepítési tevékenységek végrehajtása során. 
@@ -96,7 +96,7 @@ A következő volt a nagyobb áttelepítések számos felfedezett problémákat.
 - **Virtuálisgép-bővítmények** -virtuálisgép-bővítmények számára a legnagyobb roadblocks áttelepítése futó virtuális gépek közül. Virtuálisgép-bővítmények szervizelésének sikerült upwards of 1-2 nap igénybe, ezért ennek megfelelően tervezheti.  Egy működő Azure-ügynököt futtató virtuális gépek Virtuálisgép-bővítmény állapotának jelentést van szükség. Az állapot a futó virtuális gépek hibás ismét elérhető lesz, ha ez megáll áttelepítési. Az ügynök önmagát nem kell lenniük ahhoz, hogy áttelepítési, de ha bővítményei a virtuális Gépre, majd mindkét egy működő ügynök AND (DNS) a kimenő internetkapcsolat lesz szükség az áttelepítésre való előre.
   - Ha a DNS-kiszolgálóhoz való csatlakozásra BGInfo v1 kivételével az összes Virtuálisgép-bővítmények az áttelepítés során elvész. \* először el kell távolítani a minden virtuális gép áttelepítésének előkészítése előtt, és ezt követően újból hozzá újra a virtuális gép Azure Resource Manager az áttelepítés után.  **Ez csak futó virtuális gépek esetén.**  Ha a virtuális gépek leállnak felszabadított, Virtuálisgép-bővítmények nem kell eltávolítani. **Megjegyzés:** maguk sok bővítmények, például az Azure diagnostics és a security center figyelési lesz telepítse újra az áttelepítést követően, távolítsa el nincs probléma.
   - Emellett gondoskodjon arról, hogy hálózati biztonsági csoportok nem kimenő internet-hozzáférés korlátozása. Ez akkor fordulhat elő, az egyes hálózati biztonsági csoportok konfigurációk. Kimenő internet-hozzáférés (és a DNS-) szükséges Virtuálisgép-bővítmények az Azure Resource Manager kell áttelepíteni. 
-  - A BGInfo bővítményt két verziója van: v1 és v2.  Ha a virtuális gép létrehozása a klasszikus portál vagy a PowerShell használatával, a virtuális gép lesz valószínűleg kiterjesztése a v1 rajta. Ehhez a kiterjesztéshez nem kell őket távolítani, és a rendszer kihagyja (áttelepítése nem) által az áttelepítés API. Azonban ha a klasszikus virtuális Gépet az új Azure-portálon hozták létre, akkor valószínűleg lesz a JSON-alapú BGInfo, amely az Azure Resource Manager áttelepíthető v2 verziója lett megadva az ügynök működik-e, és a kimenő internet-hozzáférés (és a DNS-) rendelkezik. 
+  - A BGInfo bővítményt két verziója van: v1 és v2.  Ha a virtuális gép létrehozása az Azure-portálon vagy a PowerShell használatával, a virtuális gép lesz valószínűleg kiterjesztése a v1 rajta. Ehhez a kiterjesztéshez nem kell őket távolítani, és a rendszer kihagyja (áttelepítése nem) által az áttelepítés API. Azonban ha a klasszikus virtuális Gépet az új Azure-portálon hozták létre, akkor valószínűleg lesz a JSON-alapú BGInfo, amely az Azure Resource Manager áttelepíthető v2 verziója lett megadva az ügynök működik-e, és a kimenő internet-hozzáférés (és a DNS-) rendelkezik. 
   - **1. javítási lehetőséget**. Ha tudja, hogy a virtuális gépek nem fognak hozzáférni, egy működő DNS-szolgáltatás, és a virtuális gépek Azure ügynökök dolgozik, majd el kell távolítani az összes Virtuálisgép-bővítmények előkészítése előtt az áttelepítés részeként kimenő internet, majd újra kell telepítenie a Virtuálisgép-bővítmények az áttelepítés után. 
   - **2. lehetőség szervizelési**. Ha a Virtuálisgép-bővítmények túl nagy, egy a küszöbértéket, egy másik lehetőség egy leállítás és felszabadítás/minden virtuális gép áttelepítése előtt. A felszabadított virtuális gépek, majd indítsa újra őket az Azure Resource Manager oldalán. Az itt előnye, hogy a Virtuálisgép-bővítmények lesz áttelepítve. A hátránya az, hogy az összes nyilvánosan elérhető a virtuális IP-cím el fog veszni (ez nem alapszintű lehet), és nyilvánvalóan a a virtuális gépeket egy sokkal nagyobb hatással vannak a működő alkalmazások, amely le fog állni.
 

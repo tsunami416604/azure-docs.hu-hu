@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 5d5afdaf22ffea8f3b77a154acb5d0a8dda74405
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92c730addb69bc4d12708ccd789edce0c2336c80
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Az Azure Media videó miniatűrök segítségével egy videó összegzésének létrehozása
 ## <a name="overview"></a>Áttekintés
@@ -26,7 +26,7 @@ A **Azure Media videó miniatűrök** media processzor (MP) hozhat létre, amely
 
 A **Azure Media videó miniatűr** felügyeleti csomag jelenleg előzetes verzió.
 
-Ez a témakör kapcsolatos részleteket nyújt **Azure Media videó miniatűr** és a .NET-keretrendszerhez készült Media Services SDK-val való használatát ismerteti.
+Ez a cikk részletezi kapcsolatos **Azure Media videó miniatűr** és a .NET-keretrendszerhez készült Media Services SDK-val való használatát ismerteti.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -77,7 +77,7 @@ A következő JSON azokat a rendelkezésre álló paramétereket állítja be.
 A következő program bemutatja hogyan:
 
 1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
-2. Létrehoz egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján videó miniatűr feladatokkal. 
+2. Létrehoz egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján videó miniatűr feladatokkal: 
    
         {                
             "version": "1.0",
@@ -109,16 +109,24 @@ A következő program bemutatja hogyan:
         {
             // Read values from the App.config file.
             private static readonly string _AADTenantDomain =
-                ConfigurationManager.AppSettings["AADTenantDomain"];
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
-                ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             // Field for service context.
             private static CloudMediaContext _context = null;
 
             static void Main(string[] args)
             {
-                var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+                AzureAdTokenCredentials tokenCredentials = 
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
                 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);

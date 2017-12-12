@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 8f1ef4bbc050560287b8638a0f3398e02efec554
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8f1477c5fd8f57a815eeb603d2bde580bf78cca2
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Adatok tudományos virtuális gép adatok adatfeldolgozást eszközök
 
@@ -62,11 +62,11 @@ Az alábbiakban néhány adtunk meg a DSVM adatok mozgása eszközök.
 | A DSVM a kapcsolódó eszközök      | AdlCopy     |
 
 
-## <a name="azure-cosmos-db-documentdb-api-data-migration-tool"></a>Az Azure Cosmos DB: DocumentDB API adatáttelepítési eszközét
+## <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB adatáttelepítési eszköz
 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Adatok importálása a különböző forrásokból, beleértve a JSON-fájlokat, a CSV-fájlok, SQL, MongoDB, Azure Table storage, Amazon DynamoDB és Azure Cosmos DB DocumentDB API gyűjtemények Azure Cosmos DB vagy az Azure DocumentDB eszközzel.      |
+| Mi ez?   | Adatok importálása a különböző forrásokból, beleértve a JSON-fájlokat, CSV-fájlok, SQL, MongoDB, Azure Table storage, Amazon DynamoDB és Azure Cosmos DB SQL API gyűjtemények be Azure Cosmos DB eszköz.      |
 | Támogatott DSVM verziók      | Windows      |
 | A gyakori felhasználási      | Fájlok importálása a virtuális gép CosmosDB, az adatok importálása az Azure table storage CosmosDB vagy adatok importálását az SQL Server-adatbázis CosmosDB.     |
 |  Hogyan használja az / futtatni?    |   A parancssor verzió, nyissa meg egy parancssori ablakot, majd írja be a következőt `dt`. A grafikus felhasználói Felülettel eszközzel, nyisson meg egy parancssort, majd írja be a `dtui`.    |

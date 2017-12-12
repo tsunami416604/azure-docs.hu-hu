@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: ca7102f5fd4a5038cee983b5fdd588d41d1b2725
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: b596b74f0aec0c561c8ad48647c16cd0f5c58d83
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>Cél Azure Cosmos DB JSON-kimenetét a Stream Analytics
 A Stream Analytics célba [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenetét, engedélyezi az archiválási és alacsony késésű kérelmek strukturálatlan JSON-adatokat. Ez a dokumentum ismertet néhány gyakorlati tanácsok a konfiguráció alkalmazásához.
@@ -27,7 +27,7 @@ A Stream Analytics célba [Azure Cosmos DB](https://azure.microsoft.com/services
 Azok számára, akiknek nem ismeri az Cosmos DB, vessen egy pillantást [Azure Cosmos DB képzési terv](https://azure.microsoft.com/documentation/learning-paths/documentdb/) a kezdéshez. 
 
 > [!Note]
-> Ilyenkor Azure Stream Analytics csak kapcsolatot támogat CosmosDB használatával **DocumentDB (SQL) API**.
+> Ilyenkor Azure Stream Analytics csak kapcsolatot támogat CosmosDB használatával **SQL API**.
 > Egyéb Azure Cosmos DB API-k még nem támogatott. Ha pont Azure Stream Analytics az Azure Cosmos DB fiókok létrehozása, más API-khoz, az adatok nem megfelelően tárolódhat. 
 
 ## <a name="basics-of-cosmos-db-as-an-output-target"></a>Egy kimeneti célként Cosmos DB alapjai
@@ -36,7 +36,7 @@ Az Azure Cosmos DB kimeneti a Stream Analytics lehetővé teszi, hogy írása a 
 A Cosmos DB adatgyűjtési beállítások némelyike részleteket lejjebb olvashatja.
 
 ## <a name="tune-consistency-availability-and-latency"></a>Konzisztencia, a rendelkezésre állás és a késleltetés hangolása
-Saját alkalmazás igényeinek Cosmos DB lehetővé teszi, hogy jól hangolja az adatbázis és a gyűjtemények és konzisztencia, a rendelkezésre állás és a késleltetés közötti kompromisszumot. Attól függően, hogy milyen szintű olvasási konzisztenciát elleni forgatókönyv igényeinek és olvasási késés, kiválaszthatja a konzisztenciaszint adatbázis fiókja. Alapértelmezés szerint is Cosmos DB engedélyezi szinkron indexelő minden CRUD-műveletnek a gyűjteményhez. Ez a beállítás egy másik hasznos az írási/olvasási teljesítményt Cosmos DB szabályozására. A témakörrel kapcsolatos további információkért tekintse át a [módosítsa az adatbázis és a lekérdezés konzisztenciaszintek](../documentdb/documentdb-consistency-levels.md) cikk.
+Saját alkalmazás igényeinek Cosmos DB lehetővé teszi, hogy jól hangolja az adatbázis és a gyűjtemények és konzisztencia, a rendelkezésre állás és a késleltetés közötti kompromisszumot. Attól függően, hogy milyen szintű olvasási konzisztenciát elleni forgatókönyv igényeinek és olvasási késés, kiválaszthatja a konzisztenciaszint adatbázis fiókja. Alapértelmezés szerint is Cosmos DB engedélyezi szinkron indexelő minden CRUD-műveletnek a gyűjteményhez. Ez a beállítás egy másik hasznos az írási/olvasási teljesítményt Cosmos DB szabályozására. A témakörrel kapcsolatos további információkért tekintse át a [módosítsa az adatbázis és a lekérdezés konzisztenciaszintek](../cosmos-db/consistency-levels.md) cikk.
 
 ## <a name="upserts-from-stream-analytics"></a>A Stream Analytics Upserts
 Cosmos DB Stream Analytics integrációja lehetővé teszi beszúrásához vagy frissítéséhez rögzíti a megadott azonosító oszlop alapján Cosmos DB gyűjteményben. Ez más néven a egy *Upsert*.

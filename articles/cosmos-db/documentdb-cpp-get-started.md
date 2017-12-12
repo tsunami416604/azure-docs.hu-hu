@@ -14,13 +14,13 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 12/25/2016
 ms.author: aasthan
-ms.openlocfilehash: 324b5844362c2712d54fd766eb95e1d9102f757a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9a663387d65ea9413f18599e5cacedd7ed151bf
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-c-console-application-tutorial-for-the-documentdb-api"></a>Azure Cosmos DB: C++ konzolalkalmazás oktatóanyaga DocumentDB API-hoz
+# <a name="azure-cosmos-db-c-console-application-tutorial-for-the-sql-api"></a>Az Azure Cosmos DB: C++ konzol oktatóanyag az SQL API-hoz.
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -30,11 +30,12 @@ ms.lasthandoff: 10/11/2017
 > * [C++](documentdb-cpp-get-started.md)
 >  
 > 
- 
 
-Üdvözöljük az Azure Cosmos DB DocumentDB API által támogatott C++ SDK-hoz készült C++ oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást hozhat létre, amely Azure Cosmos DB-erőforrásokat (például C++ adatbázisokat) hoz létre és kérdez le.
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 
-Az oktatóanyag a következőket ismerteti:
+Az Azure Cosmos DB SQL API által támogatott SDK for C++ – üdvözli a C++-oktatóanyag! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást hozhat létre, amely Azure Cosmos DB-erőforrásokat (például C++ adatbázisokat) hoz létre és kérdez le.
+
+A gyors üzembe helyezés a következőkkel foglalkozik:
 
 * Azure Cosmos DB-fiók létrehozása és csatlakoztatása
 * Az alkalmazás beállítása
@@ -47,10 +48,6 @@ Az oktatóanyag a következőket ismerteti:
 * C++ Azure Cosmos DB-adatbázis törlése
 
 Nincs elég ideje? Ne aggódjon! A teljes megoldás elérhető a [GitHubon](https://github.com/stalker314314/DocumentDBCpp). Gyors útmutatásért tekintse meg [A teljes megoldás beszerzése](#GetSolution) című szakaszt.
-
-A C++ oktatóanyag befejezése után a lap alján található szavazógombok használatával küldhet visszajelzést. 
-
-Ha szeretne közvetlenül kapcsolatba lépni velünk, a hozzászólásaiban tüntesse fel az e-mail-címét, vagy [lépjen kapcsolatba velünk itt](https://www.research.net/r/8BKRJ3Z). 
 
 Most pedig lássunk neki!
 
@@ -104,7 +101,7 @@ Nyissa meg az [Azure Portalt](https://portal.azure.com), és lépjen a létrehoz
         DocumentDBConfiguration conf (L"<account_configuration_uri>", L"<primary_key>");
         DocumentClient client (conf);
    
-    Most, hogy rendelkezik a documentdb-ügyfél elindításához szükséges kóddal, vessünk egy pillantást az Azure Cosmos DB-erőforrások használatára.
+    Most, hogy az ügyfél kóddal, vessen egy pillantást a Azure Cosmos DB erőforrásokat.
 
 ## <a id="CreateDBColl"></a>5. lépés: C++ adatbázis és gyűjtemény létrehozása
 A lépés elvégzése előtt az Azure Cosmos DB-t nem ismerő felhasználók érdekében vegyük át az adatbázis, a gyűjtemény és a dokumentumok kapcsolatát. Az [adatbázisok](documentdb-resources.md#databases) a dokumentumtároló gyűjtemények között particionált logikai tárolói. A [gyűjtemények](documentdb-resources.md#collections) JSON-dokumentumokat és a kapcsolódó JavaScript alkalmazáslogikát tartalmazó tárolók. Az Azure Cosmos DB hierarchikus erőforrásmodellről és fogalmakról további információt az [Azure Cosmos DB hierarchikus erőforrásmodell és fogalmak](documentdb-resources.md) című cikkben talál.

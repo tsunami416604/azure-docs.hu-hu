@@ -1,6 +1,6 @@
 ---
-title: "Konfigurálása terheléselosztó SQL mindig |} Microsoft Docs"
-description: "Terheléselosztó együttműködni SQL mindig és hogyan használhatók ki a terheléselosztó SQL végrehajtása létrehozásához powershell konfigurálása"
+title: "Terheléselosztó SQL Server konfigurálása mindig a |} Microsoft Docs"
+description: "SQL Server Always On együttműködésre, és megtudhatja, hogyan PowerShell használatával történő létrehozásáról az SQL Server végrehajtási terheléselosztó terheléselosztó konfigurálása"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,40 +13,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3ebbf1c4009d89b1f18b2ff8ff5dd243c456dff8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e890f8314c8f191dbfa6c6818d810b91d0e829d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="configure-load-balancer-for-sql-always-on"></a>Konfigurálása terheléselosztó SQL mindig
+# <a name="configure-a-load-balancer-for-sql-server-always-on"></a>A terheléselosztó konfigurálása az SQL Server Always On
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-SQL Server AlwaysOn rendelkezésre állási csoportok futtatható a Példánynak. Rendelkezésre állási csoport egy SQL Server flagship megoldás magas rendelkezésre állási és vészhelyreállítási helyreállításhoz. A rendelkezésre állási csoport figyelőjének ügyfélalkalmazások teszi lehetővé az elsődleges másodpéldány, függetlenül a konfigurációban a replikák száma zökkenőmentesen csatlakozni.
+SQL Server Always On rendelkezésre állási csoportok most futtathatja a belső terheléselosztót. Rendelkezésre állási csoport egy SQL Server flagship megoldás magas rendelkezésre állású és vész-helyreállítási. A rendelkezésre állási csoport figyelőjének ügyfélalkalmazások teszi lehetővé az elsődleges másodpéldány, függetlenül a konfigurációban replikák száma zökkenőmentesen csatlakozni.
 
-A figyelő (DNS) nevet egy elosztott terhelésű IP-cím van leképezve, és Azure terheléselosztója irányítja a bejövő forgalom csak az elsődleges kiszolgálóra a replika.
+A figyelő (DNS) nevet egy elosztott terhelésű IP-cím van leképezve. Az Azure Load Balancer irányítja a bejövő forgalom csak az elsődleges kiszolgálóra a replika.
 
-Az SQL Server AlwaysOn (figyelő) végpontokhoz ILB támogatási is használhatja. Most a figyelő a kisegítő szabályozhatják, és az elosztott terhelésű IP-cím közül választhatnak a megadott alhálózat a virtuális hálózat (VNet).
+Belső terheléselosztó támogatás az SQL Server Always On (figyelő) végpontok is használhatja. Most már tudja befolyásolni a kisegítő lehetőségek a figyelő. Az elosztott terhelésű IP-cím közül választhat egy bizonyos alhálózat a virtuális hálózat.
 
-A figyelő az SQL server endpoint ILB használatával (pl. Server = tcp:ListenerName, 1433; adatbázis = DatabaseName) csak által elérhető:
+A belső terheléselosztó a figyelőnél, az SQL Server endpoint (például a kiszolgáló = tcp:ListenerName, 1433; adatbázis = DatabaseName) csak úgy érhető el:
 
-* Szolgáltatások és az azonos virtuális hálózatban lévő virtuális gépek
-* Szolgáltatások és virtuális gépek csatlakoztatott helyszíni hálózatról
-* Szolgáltatások és az összekapcsolt Vnetek virtuális gépek
+* Szolgáltatások és az azonos virtuális hálózatban lévő virtuális gépek.
+* Szolgáltatások és virtuális gépek csatlakoztatott helyszíni hálózatról.
+* Szolgáltatások és virtuális gépek a virtuális hálózatok egymáshoz.
 
-![ILB_SQLAO_NewPic](./media/load-balancer-configure-sqlao/sqlao1.png)
+![SQL Server Always On belső terheléselosztó](./media/load-balancer-configure-sqlao/sqlao1.png)
 
-1. ábra – az SQL AlwaysOn konfigurálva az Internet felé néző terheléselosztó
+## <a name="add-an-internal-load-balancer-to-the-service"></a>A belső terheléselosztók hozzáadása a szolgáltatás
 
-## <a name="add-internal-load-balancer-to-the-service"></a>A szolgáltatás belső terheléselosztó hozzáadása
-
-1. A következő példában azt egy virtuális hálózatot, amely tartalmazza a "Alhálózat-1" nevű alhálózat konfigurálhatja:
+1. A következő példában egy virtuális hálózatot, amely tartalmazza a "Alhálózat-1" nevű alhálózat konfigurálása:
 
     ```powershell
     Add-AzureInternalLoadBalancer -InternalLoadBalancerName ILB_SQL_AO -SubnetName Subnet-1 -ServiceName SqlSvc
     ```
-2. Elosztott terhelésű végpont-hozzáadáshoz a Példánynak az egyes virtuális gépek
+2. Adja hozzá a belső terheléselosztók végpontjainak elosztott terhelésű minden egyes virtuális gépen.
 
     ```powershell
     Get-AzureVM -ServiceName SqlSvc -Name sqlsvc1 | Add-AzureEndpoint -Name "LisEUep" -LBSetName "ILBSet1" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -
@@ -55,15 +53,12 @@ A figyelő az SQL server endpoint ILB használatával (pl. Server = tcp:Listener
     Get-AzureVM -ServiceName SqlSvc -Name sqlsvc2 | Add-AzureEndpoint -Name "LisEUep" -LBSetName "ILBSet1" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -DirectServerReturn $true -InternalLoadBalancerName ILB_SQL_AO | Update-AzureVM
     ```
 
-    A fenti példában rendelkezik 2 VM hívott "sqlsvc1" és "sqlsvc2" fut a felhőben található "Sqlsvc" szolgáltatás. Miután létrehozta a ILB `DirectServerReturn` kapcsoló ad hozzá elosztott terhelésű végpont a Példánynak, hogy az SQL rendelkezésre állási csoportok figyelői konfigurálása.
+    Az előző példában, hogy két virtuális gépek "sqlsvc1" és "sqlsvc2" néven, amelyek a felhőalapú szolgáltatás "Sqlsvc" futnak. Miután létrehozta a belső terheléselosztót, a `DirectServerReturn` váltani, elosztott terhelésű végpont hozzáadása a belső terheléselosztó. Az elosztott terhelésű végpontokkal SQL Server rendelkezésre állási csoportok figyelői konfigurálásához.
 
-Az SQL AlwaysOn szolgáltatással kapcsolatos további információkért lásd: [belső terheléselosztót egy AlwaysOn rendelkezésre állási csoport konfigurálása az Azure-](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
+SQL Server Always On kapcsolatos további információkért lásd: [belső terheléselosztót egy Always On rendelkezésre állási csoport konfigurálása az Azure-](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
 ## <a name="see-also"></a>Lásd még:
-[Ismerkedés az Internet felé néző terheléselosztó konfigurálása](load-balancer-get-started-internet-arm-ps.md)
-
-[Ismerkedés a belső terheléselosztók konfigurálása](load-balancer-get-started-ilb-arm-ps.md)
-
-[A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
-
-[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
+* [Első lépések egy nyilvános terheléselosztó konfigurálása](load-balancer-get-started-internet-arm-ps.md)
+* [Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-ps.md)
+* [A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
+* [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)

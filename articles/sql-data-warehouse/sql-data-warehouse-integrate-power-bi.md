@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
-ms.openlocfilehash: 4b7609fc5d6ce7bf0e3bd3ebf6d8f52e93a40a75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ea9a2ff0c95a73b348d3b48e9e62957d5cce31c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-power-bi-with-sql-data-warehouse"></a>A Power BI használja az SQL Data Warehouse szolgáltatással
 Mint az Azure SQL Database, SQL Data Warehouse közvetlen kapcsolódás felhasználó hatékony logikai leküldéses közzététele a Power bi analitikai funkciók együtt használni.  Közvetlen csatlakozás esetén a lekérdezések rendszer küldi vissza az Azure SQL Data Warehouse valós idejű, az adatokba.  Ez, az SQL Data Warehouse lehetővé teszi a számára elleni terabájtos adatkészleteket percben dinamikus jelentéseket készít a skála együtt.  A Megnyitás Power BI gomb bevezetése emellett lehetővé teszi a felhasználók kapcsolódhatnak közvetlenül a Power BI az SQL Data Warehouse Azure egyéb részeitől információk gyűjtése nélkül.
@@ -39,7 +39,7 @@ E korlátozások és a megjegyzések módosíthatja, továbbra is a élmény jav
 ## <a name="using-the-open-in-power-bi-button"></a>A "Megnyitás Power BI-ban" gombra kattintva
 Helyezze át a SQL Data Warehouse között a Power bi-ban a legegyszerűbb módja, nyissa meg a Power BI gomb. Ez a gomb lehetővé teszi zökkenőmentesen a Power BI-ban új irányítópultok létrehozásának megkezdéséhez.  
 
-1. Első lépésként nyissa meg az SQL Data Warehouse-példányhoz a klasszikus Azure-portálon.
+1. Első lépésként nyissa meg az SQL Data Warehouse-példányhoz az Azure portálon.
 2. Kattintson a „Megnyitás Power BI-ban” gombra.
 3. Ha jelenleg nem tudjuk szolgáltatásba közvetlenül, vagy ha nem rendelkezik Power BI-fiókja, szüksége lesz jelentkezik be.  
 4. Hogy a rendszer kéri az SQL Data Warehouse csatlakozási oldalán, az SQL Data Warehouse előre feltöltve származó információkkal.

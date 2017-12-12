@@ -4,7 +4,7 @@ description: "Ismerteti az Azure AD Connect szinkronizálási szolgáltatás mű
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 731cfeb3-beaf-4d02-aef4-b02a8f99fd11
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi;andkjell
-ms.openlocfilehash: e178c5fa453c753aabdc38449273f46a90e1194a
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: c852e33621ba7f4280858f3990380b518535b514
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak
 Ez a cikk, a következő témakörben összegzését [ismertetése architektúra](active-directory-aadconnectsync-technical-concepts.md).
@@ -31,13 +31,13 @@ MIIS ILM és FIM épít, az Azure Active Directory szinkronizálási szolgáltat
 
 Az alábbi szakaszokban további információt a FIM szinkronizálási szolgáltatás a következő szempontokat:
 
-* összekötő
+* Összekötő
 * Attribútumfolyam
 * Összekötőtér
 * Metaverzum
 * Kiépítés
 
-## <a name="connector"></a>összekötő
+## <a name="connector"></a>Összekötő
 A csatlakoztatott címtárhoz folytatott kommunikációhoz használt kódmodulok nevezzük összekötők (korábbi nevén kezelőügynökök (MAs)).
 
 Azon a számítógépen, amelyen az Azure AD Connect szinkronizálási szolgáltatás van telepítve. Az összekötők a távoli rendszer protokollok használatával speciális ügynökök telepítése ahelyett Serverhez ügynök nélküli lehetőséget nyújtanak. Ez azt jelenti, csökkentheti kockázat és üzembe helyezési idők, különösen akkor, ha kritikus fontosságú alkalmazások és rendszerek foglalkoznak.
