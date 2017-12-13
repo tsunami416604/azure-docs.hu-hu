@@ -12,6 +12,8 @@
 # Útmutató
 ## Sablonok létrehozása
 ### [Sablon szakaszai](resource-group-authoring-templates.md)
+#### [Paraméterek](resource-manager-templates-parameters.md)
+#### [Változók](resource-manager-templates-variables.md)
 ### [Ajánlott eljárások a sablonokhoz](resource-manager-template-best-practices.md)
 ### [Hivatkozás más sablonokra](resource-group-linked-templates.md)
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)

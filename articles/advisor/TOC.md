@@ -11,7 +11,8 @@
 ## [Bevezetés az Advisor használatába](advisor-get-started.md)
 
 # Referencia
-## [REST](https://docs.microsoft.com/rest/api/advisor)
+## [REST API](https://docs.microsoft.com/rest/api/advisor)
+## [Parancssori felület](https://docs.microsoft.com/cli/azure/advisor)
 
 # Kapcsolódó
 ## [Security Center](https://azure.microsoft.com/services/security-center/)
