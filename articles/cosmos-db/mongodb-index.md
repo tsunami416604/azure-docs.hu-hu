@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2017
+ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 313f176a1f33fcd5f627ec2251380e602027f8b6
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 63cfa92feb08f32081fe02d4202fa6256c7b99dc
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cosmos-db-mongodb-api-documentation"></a>Az Azure Cosmos DB: MongoDB API dokumentációt
 
@@ -31,16 +31,18 @@ Ezek a kell olvasni a témakör és forrás, a MongoDB API-t az Azure Cosmos DB 
 
 - [MongoDB API bemutatása](mongodb-introduction.md)
 - [Csatlakozás a MongoDB-fiókhoz](connect-mongodb-account.md)
+- [MongoDB-szolgáltatások és szintaxis támogatása](mongodb-feature-support.md)
 
 ## <a name="quickstarts"></a>Gyors útmutatók
 
 A gyors üzembe helyezés témakörök szolgálnak a leggyorsabban Azure Cosmos DB hozzon létre egy működő alkalmazást. Minden egyes gyors üzembe helyezés elsajátíthatja a Felhasználóifelület-alapú Azure-portál és a nyelvi kódolási kedvenc használata adatbázis megoldások létrehozásához Azure Cosmos DB számára. Klónozható webalkalmazások minden gyors üzembe helyezés elérhető GitHub területről. 
 
 
-- [MongoDB + Express + AngularJS + Node.js + webalkalmazások](create-mongodb-nodejs.md)
+- [NODE.js + Express + AngularJS + webalkalmazások](create-mongodb-nodejs.md)
 - [.NET + azure-portál + webalkalmazások](create-mongodb-dotnet.md)
 - [Java + Azure-portál + webalkalmazások](create-mongodb-java.md)
 - [Nyissa meg + Azure-portál + Ugrás](create-mongodb-golang.md)
+- [Python + Flask + Azure-portálon](create-mongodb-flask.md)
 
 ## <a name="tutorials"></a>Oktatóanyagok
 

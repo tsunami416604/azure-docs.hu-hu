@@ -1,6 +1,6 @@
 ---
-title: "Az Azure CLI-parancsfájlt minta - webalkalmazás csatlakozzon Cosmos Adatbázishoz |} Microsoft Docs"
-description: "Az Azure CLI-parancsfájlt minták – Cosmos DB webes alkalmazás csatlakoztatása"
+title: "Az Azure CLI-parancsfájlt minták – egy webes alkalmazás csatlakoztatása a mongodb-Protokolltámogatással (Cosmos DB) |} Microsoft Docs"
+description: "Az Azure CLI-parancsfájlt minták – egy webes alkalmazás csatlakoztatása a mongodb-Protokolltámogatással (Cosmos DB)"
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -13,26 +13,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 06/19/2017
+ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: a59e0512308a85248a10a24c5951984040bedbcc
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 67f5f392e360c03c231e0657d453a1df33ffee52
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="connect-a-web-app-to-cosmos-db"></a>Webes alkalmazás csatlakoztatása az Cosmos-Adatbázishoz
 
-Ebben a forgatókönyvben, megtudhatja, hogyan hozzon létre egy Azure Cosmos DB fiókot és egy Azure webalkalmazás számára. A Cosmos DB majd összekapcsolja a webes alkalmazás alkalmazás-beállításokkal.
-
+Ez a parancsfájlpélda Azure Cosmos DB fiók hoz létre a MongoDB API és az Azure-webalkalmazásban. Ezután hivatkozások a MongoDB kapcsolati karakterláncot a webalkalmazás-beállítások használatával.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha telepítése és a parancssori felület helyileg használata mellett dönt, az Azure parancssori felület verzió szüksége 2.0-s vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Mintaparancsfájl
 
@@ -42,16 +40,16 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ## <a name="script-explanation"></a>Parancsfájl ismertetése
 
-A parancsfájl a következő parancsok segítségével hozzon létre egy erőforráscsoportot, webalkalmazás, Cosmos DB, és az összes kapcsolódó erőforrásokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A parancsfájl a következő parancsokat egy erőforráscsoport, webalkalmazás, Cosmos DB és minden kapcsolódó erőforrás létrehozásához. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az App Service-csomag létrehozása](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service-csomag létrehozása. Ez olyan, mintha egy kiszolgálófarmon, az Azure webalkalmazás számára. |
-| [az alkalmazás-kulcs létrehozása](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
-| [az cosmosdb létrehozása](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_create) | Létrehoz egy Cosmos-DB-fiókot. Ez az adatok tárolásához. |
-| [az cosmosdb lista-kulcsok](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_list_keys) | A megadott Cosmos DB-fiók elérési kulcsainak listázása. |
-| [az alkalmazás kulcs appsettings konfiguráció](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Létrehozza vagy frissíti az Azure-webalkalmazás Alkalmazásbeállítás. Alkalmazásbeállítások az alkalmazások környezeti változóként érhetők el. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | App Service-csomag létrehozása. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
+| [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create) | Létrehoz egy Cosmos-DB-fiókot. |
+| [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_connection_strings) | A megadott Cosmos DB fiók kapcsolati karakterláncainak sorolja fel. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) | Létrehozza vagy frissíti az Azure-webalkalmazás Alkalmazásbeállítás. Alkalmazásbeállítások az alkalmazások környezeti változóként érhetők el. |
 
 ## <a name="next-steps"></a>Következő lépések
 

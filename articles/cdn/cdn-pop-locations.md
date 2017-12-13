@@ -1,6 +1,6 @@
 ---
 title: Az Azure CDN POP-helyek |} Microsoft Docs
-description: "Ez a témakör felsorolja az Azure CDN kapcsolódási pont helyeket."
+description: "Ez a cikk felsorolja az Azure CDN kapcsolódási pont helyeket."
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6ebf9f70abc6fbf880d7183ca0f5533a24d59451
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 242be346f975e013004c520a41bf14b95a3f27a4
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cdn-pop-locations"></a>Azure CDN POP-helyszínek
-Ez a témakör felsorolja az aktuális POP-helyek **Azure CDN Verizon** és **Akamai Azure CDN**.
+Ez a cikk ismerteti a jelenlegi pont nyújtó jelenléti (POP) helyét **Azure CDN Verizon** és **Akamai Azure CDN**.
 
 > [!IMPORTANT]
-> \***Akamai Azure CDN** POP város helyek külön-külön nem kerül.  
+> **Akamai Azure CDN** POP város helyek külön-külön nem kerül.  
 > 
 > Mindkét szolgáltató van a CDN-infrastruktúra létrehozásának különböző módon.  Azt javasoljuk, POP-helyek használatának mellőzését döntse el, hogy melyik Azure CDN termék használatára, és helyette fontolja meg a szolgáltatások és a végfelhasználói teljesítmény.  Tesztelje a teljesítményt, mindkét szolgáltatókkal kiválaszthatja a megfelelő Azure CDN termék a felhasználók számára. 
 > 
@@ -32,15 +32,13 @@ Ez a témakör felsorolja az aktuális POP-helyek **Azure CDN Verizon** és **Ak
 
 | Régió | Verizon | Akamai |
 | --- | --- | --- |
-| Észak-Amerika | Atlanta –, ám<br />Boston, MA<br />Chicago, Illinois<br />Dallas, TX<br />Jelenti, CO<br />Másik Debrecenben, CA<br />Miami, FL<br />Budapest<br />Philadelphia, PA<br />San Jose, CA<br />Budapesti, WA<br />Washington, D.C. | Kanada<br />Mexikó<br />Egyesült Államok |
-| Dél-Amerika | Buenos Aires, argentin<br />A Rio de Janeiróban, Brazília<br />São Paulo, Brazília<br />Valparaíso, Chilei<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Minden jog fenntartva<br />Lima, Perui | Argentína<br />Brazília<br />Chile<br />Kolumbia<br />Ecuador<br />Peru<br />Uruguay |
-| Kelet- és Észak-Európa | Koppenhága, Dánia<br />Helsinki, Finnország<br />Varsói, lengyel<br />Stockholm, svéd | Bulgária<br />Dánia<br />Finnország<br />Norvégia<br />Lengyelország<br />Svédország<br /> |
-| Nyugat-Európa | Bécs, Ausztria<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Amszterdami, Hollandia<br />Londoni, UK | Ausztria<br />Belgium<br />Franciaország<br />Németország<br />Írország<br />Hollandia<br />Svájc<br />Egyesült Királyság |
-| Dél-Európa | Milánó, Olaszország<br />Madrid, Spanyolország | Görögország<br />Olaszország<br />Portugália<br />Spanyolország |
-| Kelet-Ázsia | Hongkong<br />Batam, indonéziai<br />Dzsakarta, indonéziai<br />Oszaka, japán<br />Tokió, japán<br />Szingapúr<br />Koreai Szöul déli régiója<br />Kaohsiung, Tajvan | Hongkong<br />Indonézia<br />Japán<br />Makao<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld |
-| Dél- és közép-ázsiai | Bangalore-i, India<br />Chennai, India<br />Delhi, India<br />Mumbai, India<br />Újdelhi, India | India<br />Srí Lanka |
-| Közel-keleti vagy nyugati Ázsia | Muscat, Omán<br />Fujirah, Egyesült Arab emírségekbeli | Izrael<br />Kuvait<br />Katar<br />Törökország<br />Egyesült Arab Emírségek |
-| Afrika | | Egyiptom<br />Dél-Afrika |
+| Észak-Amerika | Atlanta –, ám<br />Boston, MA<br />Chicago, Illinois<br />Dallas, TX<br />Jelenti, CO<br />Másik Debrecenben, CA<br />Miami, FL<br />Budapest<br />Philadelphia, PA<br />San Jose, CA<br />Budapesti, WA<br />Washingtoni, | Kanada<br />Mexikó<br />Egyesült Államok |
+| Dél-Amerika | Buenos Aires, argentin<br />A Rio de Janeiróban, Brazília<br />São Paulo, Brazília<br />Valparaíso, Chilei<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Minden jog fenntartva<br />Lima, Perui | Brazília<br />Peru |
+| Kelet- és Észak-Európa | Koppenhága, Dánia<br />Helsinki, Finnország<br />Varsói, lengyel<br />Stockholm, svéd | Dánia<br />Lengyelország<br />Svédország<br /> |
+| Nyugat-Európa | Bécs, Ausztria<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Amszterdami, Hollandia<br />Londoni, UK | Ausztria<br />Franciaország<br />Németország<br />Írország<br />Hollandia<br />Svájc<br />Egyesült Királyság |
+| Dél-Európa | Milánó, Olaszország<br />Madrid, Spanyolország | Olaszország<br />Spanyolország |
+| Ázsia | Hongkong<br />Bangalore-i, India<br />Chennai, India<br />Delhi, India<br />Mumbai, India<br />Újdelhi, India<br />Batam, indonéziai<br />Dzsakarta, indonéziai<br />Oszaka, japán<br />Tokió, japán<br />Szingapúr<br />Koreai Szöul déli régiója<br />Kaohsiung, Tajvan | Hongkong<br />India<br />Indonézia<br />Japán<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Tajvan<br />Thaiföld<br />Vietnam |
+| Közel-Kelet | Muscat, Omán<br />Fujirah, Egyesült Arab emírségekbeli | Katar |
 | Ausztrália és Új-Zéland | Melbourne, Ausztrália<br />Sydney, Ausztrália<br />Aucklandi, Új-Zéland | Ausztrália<br />Új-Zéland |
 
 ## <a name="see-also"></a>Lásd még:

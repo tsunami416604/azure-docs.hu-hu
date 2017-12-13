@@ -35,12 +35,12 @@
    
         mysql -u root -p
    
-    Adja meg a MySQL gyökér szintű jelszavát (amely módosította az előző lépésben), és akkor lesz jelenik meg a kérdés ahol kiadhatja kommunikál az adatbázis SQL-utasítások.
+    Adja meg a MySQL gyökér szintű jelszavát (amely módosította az előző lépésben), és lehetősége lesz a kérdés ahol kommunikál az adatbázis SQL-utasításokat adhatnak ki.
 7. Hozzon létre egy új MySQL-felhasználó, futtassa a következő parancsot a **mysql >** parancssorba:
    
         CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
-    Megjegyzés: a pontosvesszővel (;) a sorok végén fontosságúak a befejezési a parancsok.
+    Megjegyzés: a pontosvesszővel (;) a sor végén elengedhetetlen a befejezési a parancsot.
 8. Hozzon létre egy adatbázist, és biztosítson számára a `mysqluser` felhasználó engedélyeit adja ki a következő parancsokat:
    
         CREATE DATABASE testdatabase;
@@ -51,24 +51,24 @@
    
         GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
    
-    Ha `ip-address` az IP-cím, a számítógép, amelyen MySQL fog csatlakozni.
+    Ha `ip-address` az IP-cím, a számítógép, amely MySQL csatlakozhat.
 10. Lépjen ki a MySQL-adatbázis felügyeleti segédprogram, írja be:
     
         quit
 
 ## <a name="add-an-endpoint"></a>Végpont hozzáadása
-1. MySQL telepítése után meg kell MySQL távoli eléréséhez a végpont konfigurálása. Jelentkezzen be a [a klasszikus Azure portálon][AzurePortal]. Kattintson a **virtuális gépek**, kattintson az új virtuális gép nevét, majd **végpontok**.
+1. MySQL telepítése után meg kell MySQL távoli eléréséhez a végpont konfigurálása. Jelentkezzen be a [Azure-portálon][AzurePortal]. Kattintson a **virtuális gépek**, kattintson az új virtuális gép nevét, majd **végpontok**.
 2. Kattintson a **Hozzáadás** az oldal alján.
 3. Protokoll "MySQL" nevű végpont hozzáadása **TCP**, és **nyilvános** és **titkos** portok "3306" értékre.
 4. Távoli kapcsolódás a virtuális géphez a számítógépről, írja be:
    
         mysql -u mysqluser -p -h <yourservicename>.cloudapp.net
    
-    Például a létrehozott ebben az oktatóanyagban csúcsszintű gép használja, ezt a parancsot:
+    Például használja a virtuális gépet ebben az oktatóanyagban létrehozta, ezt a parancsot:
    
         mysql -u mysqluser -p -h testlinuxvm.cloudapp.net
 
 [MySQLDocs]: http://dev.mysql.com/doc/
-[AzurePortal]: http://manage.windowsazure.com
+[AzurePortal]: http://portal.azure.com
 
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png

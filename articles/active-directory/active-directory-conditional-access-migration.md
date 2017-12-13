@@ -1,11 +1,11 @@
 ---
 title: "Telepítse át a klasszikus szabályzatokkal az Azure portálon |} Microsoft Docs"
-description: "Telepítse át a klasszikus szabályzatokkal az Azure portálon."
+description: "Ismerje meg, hogy szüksége lehet áttelepíteni a klasszikus szabályzatokkal az Azure portálon."
 services: active-directory
 keywords: "alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés"
 documentationcenter: 
 author: MarkusVi
-manager: mtillman
+manager: femila
 editor: 
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -13,162 +13,156 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/23/2017
+ms.date: 12/11/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 416ae171564fa23473d09bad950d149e201bcc98
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 16628bd4fa41d2e7697e1c2501f2ccd31dbd0496
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="migrate-classic-policies-in-the-azure-portal"></a>Telepítse át a klasszikus szabályzatokkal az Azure portálon 
 
 
-[Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) egy Azure Active Directory (Azure AD), amelyek segítségével szabályozhatja, hogy hogyan funkció engedélyezett a felhasználók hozzáférést a felhőalapú alkalmazásokat. Erre a célra továbbra is megegyezik, amíg az új Azure-portálon kiadása is vezetett be jelentős fejlesztéseket való feltételes hozzáférés működését. A feltételes hozzáférési házirendek konfigurálása az Azure-portálon kívül az új házirendek létrehozásakor az Azure portálon egyszerre is használható. Mindaddig, amíg meg nem letiltása vagy távolítsa el, azok továbbra is alkalmazza a környezetben. Javasoljuk azonban, hogy telepítse át a klasszikus házirendek az új Azure AD feltételes hozzáférési házirendek, mert:
+[Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) egy Azure Active Directory (Azure AD), amelyek segítségével szabályozhatja, hogy hogyan funkció engedélyezett a felhasználók hozzáférést a felhőalapú alkalmazásokat. Erre a célra továbbra is megegyezik, amíg az új Azure-portálon kiadása a feltételes hozzáférés működését jelentős fejlesztéseket vezetett be.
 
-- Az új házirend lehetővé teszi, hogy Ön nem lehet kezelni a klasszikus házirendek forgatókönyvek kezeléséhez.
+Érdemes lehet a házirendek nem hozott létre az Azure portálon mert áttelepítése:
+
+- Ön nem lehet kezelni előtt forgatókönyvek most meg lehet oldani.
 
 - Csökkentése érdekében egyesítse ezeket által felügyelni kell házirendek száma.   
 
-Ez a témakör segítséget nyújt a meglévő klasszikus házirendek az új áttelepítése az új Azure AD feltételes hozzáférési szabályzatokat.
+- Kezelheti egy központi helyen a feltételes hozzáférési szabályzatokat.
 
+- A klasszikus Azure portálon rendszerből.   
 
+Ez a cikk ismerteti a meglévő feltételes hozzáférési házirendek áttelepítéséhez az új keretrendszer tudnia kell.
+ 
 ## <a name="classic-policies"></a>Klasszikus szabályzatok
 
-A feltételes hozzáférési házirendek az Azure AD és az Intune nem hozott létre az Azure portálon is **klasszikus házirendek**. A klasszikus házirendek áttelepítéséhez, akkor nem hozzáféréssel kell rendelkeznie a klasszikus Azure portálra. Az Azure-portálon tartalmazza a egy [ **klasszikus házirendek (előzetes verzió)** nézet](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) , amely lehetővé teszi, hogy tekintse át a klasszikus házirendeket.
+Az a [Azure-portálon](https://portal.azure.com), a [feltételes hozzáférés - házirendek](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) lap, a belépési pontot a feltételes hozzáférési szabályzatok. Azonban a környezetben, előfordulhat, hogy akkor is feltételes hozzáférési házirendek nem hozott létre a lapon. Ezek a házirendek nevezik *klasszikus házirendek*. Klasszikus házirendek feltételes hozzáférési házirendeket, hogy létrehozta a:
 
-![Azure Active Directory](./media/active-directory-conditional-access-migration/33.png)
+- a klasszikus Azure portálon
+- Az Intune klasszikus portál
+- Az Intune App Protection portálon
 
 
-### <a name="open-a-classic-policy"></a>Nyissa meg a klasszikus házirend
+Az a **feltételes hozzáférés** lap, a klasszikus házirendek eléréséhez kattintson [ **klasszikus házirendek (előzetes verzió)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) a a **kezelése** a szakasz. 
 
-**A klasszikus házirend megnyitása:**
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson a bal oldali navigációs sávja **Azure Active Directory**.
+![Azure Active Directory](./media/active-directory-conditional-access-migration/71.png)
 
-    ![Azure Active Directory](./media/active-directory-conditional-access-migration/01.png)
 
-2. Az a **Azure Active Directory** lap a **kezelése** kattintson **feltételes hozzáférés**.
+A **klasszikus házirendek** nézet lehetővé teszi egy lehetőség, hogy:
 
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/02.png)
+- A klasszikus házirendek szűréséhez.
  
-2. Az a **feltételes hozzáférés - házirendek** lap a **kezelése** kattintson **klasszikus házirendek (előzetes verzió)**.
+    ![Azure Active Directory](./media/active-directory-conditional-access-migration/72.png)
 
-3. A klasszikus házirendek listájában jelölje ki az Önt érdeklő házirend.   
+- Tiltsa le a klasszikus házirendek.
 
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/34.png)
+    ![Azure Active Directory](./media/active-directory-conditional-access-migration/73.png)
+   
+- Tekintse át a beállításokat, a klasszikus házirendek (és le kell tiltani).
+
+    ![Azure Active Directory](./media/active-directory-conditional-access-migration/74.png)
+
+
+Klasszikus házirend le van tiltva, ha többé nem tudja visszaállítani ezt a lépést. Ezért a csoport tagságát egy klasszikus házirend használatával módosíthatja a **részletek** megtekintése. 
+
+![Azure Active Directory](./media/active-directory-conditional-access-migration/75.png)
+
+Módosításával vagy a kiválasztott csoportoknak vagy kizárja meghatározott csoportok néhány tesztfelhasználók letiltott klasszikus házirend hatásának tesztelheti a házirend az összes belefoglalt felhasználók és csoportok letiltása előtt. 
 
 
 
 ## <a name="azure-ad-conditional-access-policies"></a>Az Azure AD feltételes hozzáférési házirendek
 
-Ez a témakör részletes lépéseket, amelyek lehetővé teszik a klasszikus házirendek át anélkül, hogy ismeri a Azure AD feltételes hozzáférésével kapcsolatos házirendek. Azonban a ismeri a rendszerhez kapcsolódó alapfogalommal és terminológiát alatt az Azure AD feltételes hozzáférés segítségével az áttelepítés során tapasztal élmény javítására.
+A feltételes hozzáférés az Azure portálon egyetlen központi helyen a házirendek segítségével kezelheti. A feltételes hozzáférés megvalósítása jelentősen megváltozott, mert tanulmányozza át az alapfogalmakat a klasszikus házirendek áttelepítése előtt.
 
 Lásd:
 
-- [Feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md) az alapvető fogalmakat és a terminológia
+- [Feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md) főbb fogalmait és kifejezéseit és terminológiát.
 
-- [Ismerkedés a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal-get-started.md) és ismerje meg az Azure-portálon a felhasználói felületen
+- [Ajánlott eljárások a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-best-practices.md) üzembe helyezni a feltételes hozzáférés a szervezet bizonyos útmutatást eléréséhez.
+
+- [Ismerkedés a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal-get-started.md) és ismerje meg az Azure-portálon a felhasználói felületen.
 
 
  
+## <a name="migration-considerations"></a>Az áttelepítés szempontjai
+
+Ebben a cikkben az Azure AD feltételes hozzáférési házirendeket is nevezzük *új házirendek*.
+A klasszikus házirendek továbbra is működnek az új házirendek és tiltsa le vagy törölje őket. 
+
+A következő szempontokat fontosak házirend összesítés környezetében:
+
+- Klasszikus házirendek egy meghatározott felhőalkalmazás vannak társítva, míg az új házirendet kell annyi felhőalapú alkalmazásokat is választhat.
+
+- Klasszikus házirend és a cloud app új házirend vezérlőelemek megkövetelése minden vezérlő (*és*) teljesítendő. 
+
+
+- Egy új házirend a következőket teheti:
+ 
+    - Több feltétel össze, ha az adott esetben szükséges. 
+
+    - Válassza ki a több biztosítani vonatkoznak, mint a hozzáférés szabályozása és kombinálása egy logikai *vagy* (van szükség a kijelölt vezérlők egyik) vagy egy logikai *és* (a kijelölt vezérlőelemeket szükséges).
+
+        ![Azure Active Directory](./media/active-directory-conditional-access-migration/25.png)
 
 
 
 
+### <a name="office-365-exchange-online"></a>Az Office 365 Exchange online-hoz
 
-## <a name="multi-factor-authentication-policy"></a>Többtényezős hitelesítési házirend 
+Ha az áttelepítendő klasszikus házirendeket **Office 365 Exchange online-hoz** , amelyek tartalmaznak **az Exchange Active Sync** ügyfél alkalmazások feltételként, előfordulhat, hogy nem fogja tudni konszolidálhatják ezeket egy új házirendet. 
 
-A példa bemutatja, hogyan telepíthet át egy klasszikus házirend igénylő **a multi-factor authentication** felhőalapú alkalmazások. 
+Ez helyzet, például a Ha azt szeretné, hogy minden ügyfél alkalmazástípusok támogatásához. Egy új házirendet, amely rendelkezik a **az Exchange Active Sync** ügyfél alkalmazások feltételként nem választhat más ügyfél alkalmazásokat.
 
-![Azure Active Directory](./media/active-directory-conditional-access-migration/33.png)
+![Azure Active Directory](./media/active-directory-conditional-access-migration/64.png)
 
+A konszolidáció be egy új házirend nem lehetséges, ha a klasszikus házirendek a különböző feltételeket tartalmaz. Egy új házirendet, amely rendelkezik **az Exchange Active Sync** ügyfélalkalmazások, konfigurált feltétel nem támogatja a más feltételek:   
 
-**A klasszikus házirend áttelepítése:**
+![Azure Active Directory](./media/active-directory-conditional-access-migration/08.png)
 
-1. [Nyissa meg a klasszikus házirend](#open-a-classic-policy) beolvasni a konfigurációs beállításait.
-2. Hozzon létre egy új Azure AD feltételes hozzáférési házirend felülírja a klasszikus házirend. 
+Ha egy új házirendet, amely rendelkezik **az Exchange Active Sync** ügyfélalkalmazások, konfigurált feltétel, meg kell győződnie, hogy más feltételek nem. 
 
+![Azure Active Directory](./media/active-directory-conditional-access-migration/16.png)
+ 
 
-### <a name="create-a-new-conditional-access-policy"></a>Új feltételes hozzáférési szabályzat létrehozása
+[Alkalmazás-alapú](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) klasszikus szabályzatok az Office 365 Exchange Online, amely tartalmazza az **az Exchange Active Sync** ügyfél alkalmazások feltételként engedélyezése **támogatott** és **nemtámogatott** [eszközplatformok](active-directory-conditional-access-technical-reference.md#device-platform-condition). Az egyes eszközplatformok kapcsolódó új házirendet nem lehet konfigurálni, amíg a támogatási korlátozhatja [támogatott eszközplatformok](active-directory-conditional-access-technical-reference.md#device-platform-condition) csak. 
 
+![Azure Active Directory](./media/active-directory-conditional-access-migration/65.png)
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson a bal oldali navigációs sávja **Azure Active Directory**.
+A konszolidáció több klasszikus házirendeket, amelyek tartalmaznak **az Exchange Active Sync** ügyfél alkalmazások feltételként, ha telepítve:
 
-    ![Azure Active Directory](./media/active-directory-conditional-access-migration/01.png)
+- Csak **az Exchange Active Sync** feltételként 
 
-2. Az a **Azure Active Directory** lap a **kezelése** kattintson **feltételes hozzáférés**.
+- Néhány követelményt a konfigurált hozzáférés
 
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/02.png)
+Egy általános forgatókönyv a összevonása:
 
+- Eszközalapú klasszikus házirend a klasszikus Azure portálon 
+- Az alkalmazás-alapú klasszikus házirend az Intune app védelmi portál 
+ 
+Ebben az esetben a klasszikus házirendek is konszolidálhatják egy új házirendet, amely mindkét kiválasztott követelményekkel rendelkezik.
 
-
-3. A a **feltételes hozzáférés** lapon nyissa meg a **új** lapon, a felső eszköztáron kattintson **Hozzáadás**.
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/03.png)
-
-4. Az a **új** lap a **neve** szövegmező, írja be a házirend nevét.
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/29.png)
-
-5. Az a **hozzárendelések** kattintson **felhasználók és csoportok**.
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/05.png)
-
-    a. Ha a klasszikus házirend kiválasztott összes felhasználó, kattintson a **minden felhasználó**. 
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/35.png)
-
-    b. Ha a klasszikus házirend kijelölt csoportokat, kattintson a **felhasználók és csoportok kiválasztása**, majd válassza ki a szükséges felhasználók és csoportok.
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/36.png)
-
-    c. Ha a kizárási csoportokat, kattintson a **kizárása** lapot, és jelölje ki a szükséges felhasználók és csoportok. 
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/37.png)
-
-6. Az a **új** lapon nyissa meg a **felhőalapú alkalmazásokba** lap a **hozzárendelés** területen kattintson **felhőalapú alkalmazásokba**.
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-azure-portal-get-started/07.png)
-
-8. Az a **felhőalapú alkalmazásokba** lapon, a következő lépésekkel:
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/08.png)
-
-    a. Kattintson a **alkalmazásokról**.
-
-    b. Kattintson a **Kiválasztás** gombra.
-
-    c. A a **válasszon** lapon válassza ki a cloud app, és kattintson a **válasszon**.
-
-    d. Az a **felhőalapú alkalmazásokba** kattintson **végzett**.
+![Azure Active Directory](./media/active-directory-conditional-access-migration/62.png)
 
 
 
-9. Ha rendelkezik **többtényezős hitelesítést** kijelölt:
+### <a name="device-platforms"></a>Eszközök
 
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/26.png)
+Klasszikus szabályzatok [alkalmazás-alapú vezérlők](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) előre konfigurált, az iOS és Android, amelyek a [eszköz platform feltétel](active-directory-conditional-access-technical-reference.md#device-platform-condition). 
 
-    a. Az a **hozzáférés-szabályozási** kattintson **Grant**.
+Az új kell kiválasztania a [eszközplatformok](active-directory-conditional-access-technical-reference.md#device-platform-condition) szeretne támogatni külön-külön.
 
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/27.png)
-
-    b. Az a **Grant** kattintson **hozzáférést**, és kattintson a **többtényezős hitelesítést**.
-
-    c. Kattintson a **Kiválasztás** gombra.
-
-
-10. Kattintson a **a** ahhoz, hogy a házirend.
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/30.png)
-
-11. A klasszikus házirendet. 
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/38.png)
+![Azure Active Directory](./media/active-directory-conditional-access-migration/41.png)
 
 
 
+ 
  
 
 

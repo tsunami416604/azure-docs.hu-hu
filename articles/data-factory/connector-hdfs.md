@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: jingwang
-ms.openlocfilehash: a81d3264964b2433a2c93034ab815493548f0753
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: d423cf7896b66b729faa1e032462277a9283884d
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="copy-data-from-and-to-hdfs-using-azure-data-factory"></a>Másolja az adatokat, a kezdő és a HDFS Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ A következő tulajdonságok HDFS kapcsolódó szolgáltatás támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Hdfs**. | Igen |
-| URL-címe |A HDFS URL-címe |Igen |
+| url |A HDFS URL-címe |Igen |
 | AuthenticationType | Két érték engedélyezett: **névtelen**, vagy **Windows**. <br><br> Használandó **Kerberos-hitelesítés** HDFS-összekötőhöz, tekintse meg [ebben a szakaszban](#use-kerberos-authentication-for-hdfs-connector) ennek megfelelően a helyszíni környezet beállítása. |Igen |
 | Felhasználónév |Felhasználónév a Windows-hitelesítést. A Kerberos-hitelesítés meg `<username>@<domain>.com`. |Igen (a Windows-hitelesítés) |
 | jelszó |A Windows-hitelesítés jelszót. Ez a mező megjelölése SecureString. |Igen (a Windows-hitelesítés) |
@@ -162,7 +162,7 @@ Adatok másolása HDFS, állítsa be a forrás típusa a másolási tevékenysé
 | Rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappát.<br/>Két érték engedélyezett: **igaz** (alapértelmezett), **hamis** | Nem |
 | distcpSettings | A tulajdonságcsoport HDFS ból a DistCp használatakor. | Nem |
 | resourceManagerEndpoint | A Yarn erőforrás-kezelő végpont | Igen, ha ból a DistCp használatával |
-| tempScriptPath | Egy ideiglenes ból a DistCp parancsfájl tárolására használt mappa elérési útja A parancsfájl az ADF elő és másolási feladat befejezése után törlődnek. | Igen, ha ból a DistCp használatával |
+| tempScriptPath | Egy ideiglenes ból a DistCp parancsfájl tárolására használt mappa elérési útja A parancsfájl generálja a Data Factory és másolási feladat befejezése után törlődnek. | Igen, ha ból a DistCp használatával |
 | distcpOptions | További beállítások ból a DistCp parancs megadott. | Nem |
 
 **Példa: HDFS forrás a másolási tevékenység UNLOAD használatával**

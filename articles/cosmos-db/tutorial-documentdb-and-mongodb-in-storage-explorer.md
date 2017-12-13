@@ -4,7 +4,7 @@ description: "Útmutató: Azure Cosmos Adatbázist Azure Tártallózó kezelése
 Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
 services: cosmos-db
 documentationcenter: 
-author: Jiaj-Li
+author: jejiang
 manager: omafnan
 editor: 
 tags: Azure Cosmos DB
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/19/2017
-ms.author: Jiaj-Li
-ms.openlocfilehash: 153369270399efbe38ca2e8b8ab2e05cb7e702f9
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: Jejiang
+ms.openlocfilehash: 8afb85eac8dec502406ca419623407b1dc228931
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Az Azure Tártallózó (előzetes verzió) Azure Cosmos DB kezelése
 
-Azure Tártallózó Azure Cosmos DB használatával lehetővé teszi a felhasználók Azure Cosmos DB entitások kezelése, kezelhetők adatok, frissítse a tárolt eljárások és eseményindítók és egyéb Azure entitások, például a tárolási blobokat és üzenetsorokat. Mostantól ugyanarra az eszközre segítségével kezelheti a különböző Azure entitások egy helyen. Ilyenkor az Azure Tártallózó SQL és a MongoDB fiókokat támogat.
+Azure Tártallózó Azure Cosmos DB használatával lehetővé teszi a felhasználók Azure Cosmos DB entitások kezelése, kezelhetők adatok, frissítse a tárolt eljárások és eseményindítók és egyéb Azure entitások, például a tárolási blobokat és üzenetsorokat. Mostantól ugyanarra az eszközre segítségével kezelheti a különböző Azure entitások egy helyen. Ilyenkor az Azure Tártallózó SQL és a MongoDB fiókokat támogat. Az Azure Cosmos DB helyi Emulator nem működik az Azure Storage-kezelővel. 
 
 Ebből a cikkből megismerheti Azure Cosmos DB kezelése a Tártallózó használatával.
 

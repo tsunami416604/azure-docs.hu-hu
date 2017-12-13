@@ -1,6 +1,6 @@
 ---
-title: "SAP HANA műveletek az Azure-on |} Microsoft Docs"
-description: "SAP HANA műveleteinek Azure natív virtuális gépeken"
+title: "SAP HANA-műveletek az Azure-on |} Microsoft Docs"
+description: "Üzemeltetési útmutató a SAP HANA-rendszerek üzembe helyezett Azure virtuális gépeken."
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: 
 author: juergent
@@ -16,132 +16,133 @@ ms.workload: infrastructure
 ms.date: 11/17/2017
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab609fe9e7b01d7087dd00c22c19e69a471f6599
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e8ddfd5e2ee57d79fecacdc648af9264b6c95240
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>Az Azure üzemeltetési útmutatójának SAP HANA
-Ez az útmutató rendszerűeket SAP HANA Azure virtuális gépeken telepített útmutatást. Ez a dokumentum nem célja, hogy cserélje le a szabványos SAP dokumentációk bármelyikét. SAP útmutatók és megjegyzések az alábbi helyeken találhatók:
+Ez a dokumentum nyújt útmutatást rendszerűeket SAP HANA telepített Azure natív virtuális gépek (VM). Ez a dokumentum nem célja, hogy cserélje le a szabványos SAP dokumentációját, amely a következőket tartalmazza:
 
 - [SAP felügyeleti útmutató](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/330e5550b09d4f0f8b6cceb14a64cd22.html)
 - [SAP telepítési útmutatók](https://service.sap.com/instguides)
-- [SAP Megjegyzés](https://sservice.sap.com/notes)
+- [SAP megjegyzések](https://sservice.sap.com/notes)
 
-Előfeltétel, hogy a különböző Azure összetevői vonatkozó általános ismeretekre:
+## <a name="prerequisites"></a>Előfeltételek
+Ez az útmutató használata esetén a következő Azure összetevők alapszintű ismeretét kell:
 
-- [Az Azure virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-- [Az Azure hálózati és a Vnetek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+- [Azure-alapú virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+- [Az Azure hálózati és a virtuális hálózatok](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 - [Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
-SAP NetWeaver további dokumentációiért és más Azure-SAP összetevőket megtalálhatók a [Azure SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) szakasza a [Azure dokumentációja](https://docs.microsoft.com/azure/).
+SAP NetWeaver és más Azure-SAP összetevőket kapcsolatos további tudnivalókért tekintse meg a [Azure SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) szakasza a [Azure dokumentációja](https://docs.microsoft.com/azure/).
 
 ## <a name="basic-setup-considerations"></a>Alapszintű beállítása szempontokat
-### <a name="connecting-into-azure"></a>Csatlakozás az Azure
-Ahogy [Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver] [-útmutatóban], a csatlakozás az Azure virtuális gépek két alapvető módszer áll rendelkezésre. 
+A következő szakaszok ismertetik az Azure virtuális gépeken futó SAP HANA-rendszerek telepítése alapbeállítások szempontjai.
 
-- Internet- és nyilvános végpontok irányítják a virtuális gép vagy a virtuális gép fut az SAP HANA keresztül csatlakozó
-- Keresztül csatlakozik egy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) vagy Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/)
+### <a name="connect-into-azure-virtual-machines"></a>Csatlakozás az Azure virtuális gépeken
+Ahogy a [tervezési útmutató az Azure virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide), két alapvető módszer Azure virtuális gépeken való csatlakozáshoz:
 
-Üzemi forgatókönyvek vagy forgatókönyvek, amely a termelési forgatókönyvek SAP szoftver együtt nem éles esetekben kell keresztül VPN- vagy ExpressRoute a pont-pont kapcsolattal rendelkezik, az ábrán látható módon:
+- Az internethez, és a irányítják a virtuális gépek publikus végpontjaira keresztül csatlakozni, vagy a virtuális Gépet futtató SAP HANA.
+- Csatlakozhat egy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) vagy Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+
+Hely-hely kapcsolatot keresztül VPN- vagy ExpressRoute szükség, éles környezetben. A kapcsolat típusa nem éles környezetben, amely a termelési forgatókönyvek a SAP szoftver használatára is szükség van. Az alábbi ábrán például a webhelyek közötti kapcsolat:
 
 ![Webhelyek közötti kapcsolat](media/virtual-machines-shared-sap-planning-guide/300-vpn-s2s.png)
 
 
-### <a name="choice-of-azure-vm-types"></a>Azure virtuális gép típusok kiválasztása
-Éles környezetben használható Azure Virtuálisgép-típusokon kereshetők [Itt](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). Nem éles környezetben dönthet úgy, többféle natív Azure virtuális gépeken. Azonban korlátozására, saját magának a Virtuálisgép-típusokon, amelyek [SAP Megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533). Az Azure virtuális gépek telepítési érhető el:
+### <a name="choose-azure-vm-types"></a>Válassza ki az Azure virtuális gép típusa
+A termelési környezetben használható Azure virtuális gép típusok szerepelnek a [IAAS SAP dokumentációja](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). Nem éles környezetben natív Azure Virtuálisgép-típusokon többféle érhető el.
 
-- Azure Portal
-- Az Azure Powershell-parancsmagok
-- Azure CLI
+>[!NOTE]
+>Nem éles környezetben, használja a virtuális gép szerepelnek a [SAP Megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533).
 
-Teljes telepített SAP HANA platform, az Azure virtuális gép szolgáltatások keresztül is telepíthet [SAP felhőplatform](https://cal.sap.com/) dokumentált [Itt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h).
+Központi telepítése a virtuális gépeket az Azure-ban használatával:
 
-### <a name="choice-of-azure-storage"></a>Az Azure storage kiválasztása
-Azure biztosít két fő típusú tárolókat Azure virtuális gépekhez megfelelő SAP HANA fut
+- Az Azure-portálon.
+- Az Azure PowerShell-parancsmagokkal.
+- Az Azure parancssori felület.
+
+Az Azure virtuális gép Services használatával teljes telepített SAP HANA-platform is telepítheti a [SAP felhőplatform](https://cal.sap.com/). A telepítési folyamat ismertetett [telepítése SAP S/4HANA vagy BW/4HANA Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h).
+
+### <a name="choose-azure-storage-type"></a>Azure Storage típusának kiválasztása
+Azure storage két olyan típusú, amelyek SAP HANA futtató Azure virtuális gépekhez megfelelő biztosítja:
 
 - [Az Azure standard szintű tárolót](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
 - [Prémium szintű Azure Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
 
-Az Azure két telepítési módszerek kínál a VHD-k Azure Standard és prémium szintű Storage. Ha engedélyezi a teljes forgatókönyv, javasoljuk, hogy kihasználja [Azure kezelt lemez](https://azure.microsoft.com/services/managed-disks/) központi telepítéseket.
+Az Azure két telepítési módszerek kínál a VHD-k Azure Standard és prémium szintű Storage. Ha engedélyezi a teljes forgatókönyv, előnyeit [Azure kezelt lemez](https://azure.microsoft.com/services/managed-disks/) központi telepítések.
 
-A pontos tárolási típusok és adott típusú tárolókat körül SLA tekintse [jelen dokumentáció](https://azure.microsoft.com/pricing/details/managed-disks/)
+A tárolási típusok és azok SLA-k listája, tekintse át a [kezelt lemezeken Azure dokumentációjában](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-Javasoljuk, hogy Azure Premium lemezek /hana/data és /hana/log köteteihez használja. Hozza létre egy LVM RAID keresztül prémium szintű Storage több lemez, és ezek /hana/data, RAID-kötetek és /hana/log kötetek esetén támogatott.
+Prémium szintű Azure-lemezeket ajánlott /hana/data és /hana/log kötetek. Prémium szintű Storage több lemez keresztül egy LVM RAID létrehozhatja és a RAID-kötetek /hana/data, és a /hana/log kötetek.
 
-A lehetséges konfigurációs közös virtuális gép különböző használó ügyfelek, amennyiben az Azure virtuális gépeken SAP HANA üzemeltetési nézhet:
+A következő táblázat olyan konfigurációja, az ügyfelek a gyakran használt Virtuálisgép-típusokon gazdagépre SAP HANA Azure virtuális gépeken:
 
 | VIRTUÁLIS GÉP TERMÉKVÁLTOZAT | RAM | / hana/adatainak és naplókönyvtárainak/hana /<br /> csíkozott LVM vagy MDADM | / hana/megosztott | / root kötet | / usr/sap | Hana, illetve biztonsági mentési |
 | --- | --- | --- | --- | --- | --- | -- |
-| E16v3 | 128GB | 2 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S10 |
-| E32v3 | 256GB | 2 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| E64v3 | 443GB | 2 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| E16v3 | 128 GB | 2 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S10 |
+| E32v3 | 256 GB | 2 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| E64v3 | 443 GB | 2 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
 | GS5 | 448 GB | 2 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
-| M64s | 1 TB-OS | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
+| M64s | 1 TB | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
 | M64ms | 1.7 TB | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
-| M128s | A 2TB | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
+| M128s | 2 TB | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
 | M128ms | 3.8 TB | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 5 x S30 |
 
 
-### <a name="azure-networking"></a>Az Azure hálózatkezelés
-Feltételezve, hogy az Azure VPN- vagy ExpressRoute-helyek csatlakozási, minimum kellene lennie egy [Azure VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) , amely a VPN- vagy ExpressRoute körön virtuális átjáró csatlakozik. A virtuális átjáró él, az Azure virtuális alhálózat. HANA telepítéséhez a Vneten belül egy másik két alhálózat hozna létre. Egy alhálózatot a virtuális gép van, az SAP HANA-példányokat, és a végleges Jumpbox vagy futtató felügyeleti virtuális gép van, amely egy másik alhálózat rendszerű állomások tárolhatja, SAP HANA Studio vagy más felügyeleti szoftverek.
-Amikor telepíti a HANA kell futtató virtuális gépeken, a virtuális gépek kell rendelkezniük:
+### <a name="set-up-azure-virtual-networks"></a>Az Azure virtuális hálózat beállítása
+Ha a hely-hely kapcsolatot az Azure VPN- vagy ExpressRoute keresztül, rendelkeznie kell legalább egy [Azure-beli virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) , amely a VPN- vagy ExpressRoute körön virtuális átjáró csatlakozik. A virtuális átjáró él, az Azure virtuális hálózat egyik alhálózatát. SAP HANA telepítéséhez hozzon létre két további alhálózatokat a virtuális hálózaton belül. Egy alhálózatot a virtuális gépek futtatásához a SAP HANA-példányokat futtatja. A más alhálózati Jumpbox vagy a felügyeleti virtuális gépek üzemeltetéséhez SAP HANA Studio vagy más felügyeleti szoftverek fut.
 
-- Két virtuális hálózati adaptert telepített, amelyek egy csatlakozik a felügyeleti alhálózatot és egy hálózati adapter az SAP HANA-példányra, az Azure virtuális gépen vagy a helyszíni vagy más hálózatokkal való csatlakozáshoz használt.
-- A mindkét vNICs telepítésére statikus magánhálózati IP-címek
+A virtuális gépek futtatásához SAP HANA telepítésekor kell a virtuális gépek:
 
-IP-cím hozzárendelése különböző lehetőségeinek áttekintését található [Itt](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
+- Két virtuális hálózati adaptert telepített: csatlakozni a felügyeleti alhálózat egy hálózati Adapterre, és csatlakozni a helyi hálózaton vagy más hálózatokhoz, a SAP HANA-példányra, az Azure virtuális gép egyetlen hálózati Adapterrel.
+- Statikus magánhálózati IP-címek, amelyek telepítve vannak az mindkét virtuális hálózati adapter.
 
-A forgalom útválasztásához a közvetlenül az SAP HANA-példány vagy a jumpbox utasítására [Azure hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) , amelyek a HANA-alhálózatot és a felügyeleti alhálózatot társítva.
+A különböző módszereket a IP-címek hozzárendelése áttekintését lásd: [IP-cím, típusok és az Azure-ban elosztási módszer](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
 
-A teljes a nyers telepítési séma alábbihoz hasonlóan fog kinézni:
+[Azure hálózati biztonsági csoportokkal (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) segítségével a forgalmat, annak biztosítására, hogy az SAP HANA-példány vagy a Jumpbox. Az NSG-k legyenek társítva a SAP HANA-alhálózatot és a felügyeleti alhálózatot.
+
+Az alábbi ábrán egy durva telepítési séma áttekintést SAP Hana:
 
 ![SAP HANA nyers telepítési sémája](media/hana-vm-operations/hana-simple-networking.PNG)
 
 
-Ha csupán telepítse az Azure-ban SAP HANA anélkül, hogy a pont-pont (VPN- vagy az Azure ExpressRoute), bár egy nyilvános IP-címet, amely hozzá van rendelve a Jumpbox virtuális Gépet futtató Azure virtuális gép elérésére az SAP HANA-példány. Az egyszerű esetben is használ, az Azure beépített DNS-szolgáltatások állomásnevek feloldásához. Különösen ha nyilvános felé néző IP-címeket használ, érdemes Azure hálózati biztonsági csoportok használatával korlátozhatók a megnyitott portok vagy IP-címtartományt, amely engedélyezi a csatlakozást rendszert futtató eszközök nyilvános felé néző IP-címekkel rendelkező Azure alhálózatokra. A séma, a központi telepítés nézhet:
+Az Azure-ban SAP HANA-helyek létesített kapcsolat nélkül telepítéséhez elérni az SAP HANA-példány, ha egy nyilvános IP-címet. Az IP-cím hozzá kell rendelni a Jumpbox virtuális Gépet futtató Azure virtuális Gépen. Alapvető ilyenkor a központi telepítés állomásnevek feloldani az Azure beépített DNS-szolgáltatásokra támaszkodik. Egy összetettebb környezetben, amennyiben a nyilvánosan elérhető IP-címeket használnak az Azure beépített DNS-szolgáltatások különösen fontosak. Azure NSG-k segítségével korlátozhatja a megnyitott portok vagy IP-címtartományok nyilvánosan elérhető IP-címmel rendelkező eszközök Azure alhálózatokra csatlakoztatható. Az alábbi ábrán egy durva séma üzembe helyezéséhez SAP HANA-helyek létesített kapcsolat nélkül:
   
-![Nyers telepítési séma SAP Hana-helyek kapcsolat nélkül](media/hana-vm-operations/hana-simple-networking2.PNG)
+![Nyers telepítési séma SAP Hana-helyek létesített kapcsolat nélkül](media/hana-vm-operations/hana-simple-networking2.PNG)
  
 
 
-## <a name="operations"></a>Műveletek
-### <a name="backup-and-restore-operations-on-azure-vms"></a>Biztonsági mentési és visszaállítási műveletek Azure virtuális gépeken
-SAP HANA biztonsági mentési és helyreállítási lehetőségek ismertetett ezeket a dokumentumokat:
+## <a name="operations-for-deploying-sap-hana-on-azure-vms"></a>Azure virtuális gépeken SAP HANA telepítéséhez műveletek
+A következő szakaszok ismertetik az Azure virtuális gépeken SAP HANA-rendszerek telepítésével kapcsolatos műveleteket.
 
-- [SAP HANA biztonsági másolat áttekintése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-- [SAP HANA fájlszintű biztonsági mentés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
+### <a name="back-up-and-restore-operations-on-azure-vms"></a>Biztonsági mentése és visszaállítása az Azure virtuális gépeken futó műveletek
+A következő dokumentumok biztonsági mentése és visszaállítása a SAP HANA-telepítés ismertetik:
+
+- [SAP HANA biztonsági mentés áttekintése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [SAP HANA fájlszintű biztonsági mentése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
 - [SAP HANA tárolási pillanatkép teljesítményteszt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
 
 
-
-### <a name="start-and-restart-of-vms-containing-sap-hana"></a>Indítsa el, és indítsa újra a virtuális gépek SAP HANA tartalmazó
-Az Azure nyilvános felhőjében szintjeiről egyike az, hogy csak a rendszer ugyanis számítási percig van szó. Ez azt jelenti, hogy ha kikapcsolja a virtuális gép és az azt futtató SAP HANA, csak a tárolási költségek ebben az időszakban vannak számlázva. Mivel a virtuális gép indítása, a SAP HANA újra, a virtuális gép indítsa el újra lesz, és lesz az azonos IP-címek (ha telepítve vannak a statikus IP-címek). 
-
-
-### <a name="saprouter-enabling-sap-remote-support"></a>SAPRouter engedélyezése SAP távoli támogatása
-Ha a helyi (ek) ről és Azure, és már futtatása az SAP-összetevők közötti pont-pont kapcsolattal rendelkezik, nagyon valószínű, hogy már futtassa SAProuter már. Ebben az esetben nincs mit kell tennie az Azure-ban telepít SAP HANA-osztályt. Kivéve karbantartása a magán- és statikus IP-címet a virtuális gép, amely futtatja HANA SAPRouter konfigurációjában, és az alhálózati tároló NSG rendelkezik a HANA VM leírtakon (forgalom port 3299 engedélyezett TCP/IP-porton keresztül).
-
-Ha SAP HANA telepít, és Azure az interneten keresztül csatlakozik, és nincs telepítve a vnetben, amely a virtuális gép fut, SAP HANA egy SAP-útválasztó, telepítenie kell a SAPRouter egy külön virtuális gépre, ahogy az itt látható a felügyeleti alhálózat :
+### <a name="start-and-restart-vms-that-contain-sap-hana"></a>Indítsa el, és indítsa újra a virtuális gépek, amelyek tartalmazzák az SAP HANA
+Az Azure nyilvános felhőjében jól láthatóan elhelyezett szolgáltatása, hogy most felszámított csak a számítógépes percig. Például egy SAP HANA futtató virtuális gép leállítása, hogy díjon számlázzuk a csak a tárolási költségeket az ebben az időszakban. Egy másik szolgáltatás akkor használható, ha az első központi telepítésben a virtuális gépek a statikus IP-címet megadni. Egy SAP HANA rendelkező virtuális gép újraindítása esetén a virtuális gép korábbi IP-címéhez indul újra. 
 
 
-![Nyers telepítési séma SAP Hana webhelyek kapcsolat és SAPRouter nélkül](media/hana-vm-operations/hana-simple-networking3.PNG)
+### <a name="use-saprouter-for-sap-remote-support"></a>A SAP távoli támogatáshoz SAProuter használja
+Ha a helyszíni helyek és az Azure közötti pont-pont kapcsolattal rendelkezik, és ezt követően valószínűleg már használ SAProuter SAP-összetevők futtatja. Ebben az esetben hajtsa végre a következő elemek távoli támogatásához:
 
-SAPRouter egy külön virtuális gépre, és nem a Jumpbox virtuális Gépre kell telepíteni. A különálló virtuális gép kell egy statikus IP-címet. SAPRouter való csatlakozáshoz a SAPRouter SAP futtató (megfelelőjére SAPRouter-példány telepítése virtuális gép), kapcsolatba kell lépnie az SAP IP-cím lekérése SAP, konfigurálnia kell a SAPRouter példányát. A csak a szükséges portot 3299 TCP-port.
-Beállítása és karbantartása a távoli támogatásának kapcsolatok SAPRouter keresztül módjáról további információkért ellenőrizze a [SAP forrás](https://support.sap.com/en/tools/connectivity-tools/remote-support.html).
+- A magán- és statikus IP-címet a virtuális gép karbantartása, amely futtatja SAP HANA SAProuter konfigurációjában.
+- Az NSG az alhálózat, a forgalom engedélyezése TCP/IP-port 3299 HANA virtuális Gépet üzemeltető konfigurálása.
+
+Ha Azure az interneten keresztül csatlakozik, és az SAP HANA a virtuális gép nem rendelkezik egy SAP útválasztó, majd szeretné telepíteni az összetevőt. Telepítse a SAProuter egy külön virtuális gépre, a felügyeleti alhálózaton. Az alábbi ábrán egy SAP HANA üzembe helyezéséhez, pont-pont kapcsolat nélkül és SAProuter nyers séma:
+
+![Központi telepítés séma nyers SAP Hana webhelyek kapcsolat és SAProuter nélkül](media/hana-vm-operations/hana-simple-networking3.PNG)
+
+Győződjön meg arról, SAProuter telepítéséhez, egy külön virtuális gépre, és nem a Jumpbox virtuális Gépet. A különálló virtuális gép rendelkeznie kell egy statikus IP-címet. A SAProuter csatlakozhat az SAP által futtatott SAProuter, forduljon a SAP az IP-címet. (Az SAP által futtatott SAProuter megfelelője a telepítése a virtuális Gépre SAProuter-példány.) Az IP-cím elérhető segítségével konfigurálhatja a SAProuter példányát. A konfigurációs beállításaiban az csak a szükséges port az 3299 TCP-portot.
+
+Beállításához és karbantartásához távoli támogatási kapcsolatok keresztül SAProuter módjáról további információkért tekintse meg a [SAP dokumentáció](https://support.sap.com/en/tools/connectivity-tools/remote-support.html).
 
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Magas rendelkezésre állású az SAP HANA Azure natív virtuális gépeken
-Az SUSE Linux 12 SP1 és újabb létrehozhat egy támasztja fürt STONITH eszközökkel egy SAP HANA-konfiguráció, amely szinkron replikációt használ a HANA replikációs és automatikus feladatátvételt. A telepítő az eljárást a cikkben ismertetett [magas rendelkezésre állás az SAP HANA Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability).
-
- 
-
-
-
-
-
-
-
-
-
-
+Ha a SUSE Linux 12 SP1 fut, vagy később, létrehozhat egy támasztja fürt STONITH eszközökkel. Az eszközök segítségével egy SAP HANA-konfiguráció, amely szinkron replikáció HANA replikációs és automatikus feladatátvételt használ. A telepítés eljárással kapcsolatos további információkért lásd: [SAP HANA Azure virtuális gépeken futó magas rendelkezésre állású](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability).

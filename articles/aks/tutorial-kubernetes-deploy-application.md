@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1433fce61bc26a6aa0e4742195e623329eb5f0cc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4d4b9a0223fe6e48eb5ea9be089239d729aa1ab7
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="run-applications-in-azure-container-service-aks"></a>Alkalmazások futtatásához Azure tároló szolgáltatás (AKS)
 
@@ -64,7 +64,7 @@ Mentse és zárja be a fájlt.
 
 ## <a name="deploy-application"></a>Alkalmazás központi telepítése
 
-Használja a [kubectl létrehozása] [ kubectl-create] parancsot kell futtatni az alkalmazást. A parancs elemzi az Alkalmazásjegyzék-fájl, és a meghatározott Kubernetes objektumokat létrehozni.
+Használja a [kubectl létrehozása] [ kubectl-create] parancsot kell futtatni az alkalmazást. Ez a parancs a jegyzékfájl elemez, és a meghatározott Kubernetes-objektumokat hoz létre.
 
 ```azurecli
 kubectl create -f azure-vote-all-in-one-redis.yml

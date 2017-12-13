@@ -1,9 +1,7 @@
-1. Jelentkezzen be a [klasszikus Azure portálra](http://manage.windowsazure.com).  
-2. A parancssávon az ablak alján kattintson **új**.
-3. A **számítási**, kattintson a **virtuális gép**, és kattintson a **a gyűjtemény**.
+1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).  
+2. Kattintson a **új** > **számítási** > **tekintse meg az összes** és írja be **SUSE**.
    
-    ![Új virtuális gép létrehozása][Image1]
-4. Az a **SUSE** csoportban, OpenSUSE virtuálisgép-lemezkép válassza ki, majd kattintson a nyílra, a folytatáshoz.
+3. OpenSUSE virtuális gép lemezképének kiválasztása, és kattintson a nyílra a folytatáshoz.
 5. Az első **virtuálisgép-konfiguráció** lap:
    
    * Adjon meg egy **virtuális gép neve**, például a "testlinuxvm". A név kell csak 3 és 15 karakter közötti lehet, is tartalmazhat, csak betűket, számokat és kötőjeleket tartalmazhat, és kell betűvel kezdődhet és betűvel vagy számmal végződhet.
@@ -49,7 +47,5 @@ SSH vagy PuTTY fogja használni a virtuális gép, attól függően, hogy az ope
 3. Telepítés után válassza ki a **Befejezés**.  A rendszer már naprakészek legyenek.
 
 [PuTTYDownload]: http://www.puttyssh.org/download.html
-
-[Image1]: ./media/create-and-configure-opensuse-vm-in-portal/CreateVM.png
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png

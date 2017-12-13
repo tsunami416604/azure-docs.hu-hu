@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/18/2017
+ms.date: 12/11/2017
 ms.author: markvi;dhanyahk
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f4b3e59cb6cec5ac4ca771818e5eca8509a43d82
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fa9ffa8f5380659674301f7e738879c8efb25b7f
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory jelentéskészítés késések
 
@@ -37,13 +37,15 @@ Nincsenek Tevékenységjelentés két terület:
 
 A következő táblázat a késési adatok Tevékenységjelentések.
 
-| Jelentés | Minimum | Átlag | Maximum |
-| :-- | --- | --- | --- |
-| Auditnaplók             | 30 perc  | 1 óra | 2 óra     |
-| Bejelentkezések               | 15 perc  | 2 óra * | 24 óra  |
+| Jelentés | Minimális | Átlag |
+| :-- | --- | --- |
+| Naplók | 30 perc  | 1 óra  |
+| Bejelentkezések | 15 perc  | 2 óra |
 
->[!NOTE]
-> Egyes örökölt Office-alkalmazások bejelentkezési tevékenységeinek adatai esetében akár 8 órát is igénybe vehet, amíg a naplóadatok megjelennek. 
+Peremhálózati esetenként is igénybe vehet:
+
+- két óra naplózási tevékenység adatok jelennek meg.
+- bejelentkezési tevékenységek adatai megjelennek 24 óra. Ez magában foglalja az örökölt office-alkalmazások érkező bejelentkezések-tevékenységek adatait. 
 
 
 ## <a name="security-reports"></a>Biztonsági jelentések
@@ -55,7 +57,7 @@ Nincsenek biztonsági reporting két terület:
 
 A következő táblázat a késési adatok biztonsági jelentések.
 
-| Jelentés | Minimum | Átlag | Maximum |
+| Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
 | Érintett felhasználók          | 5 perc   | 15 perc  | 2 óra  |
 | Kockázatos bejelentkezések         | 5 perc   | 15 perc  | 2 óra  |
@@ -66,7 +68,7 @@ Az Azure Active Directory adaptív gépi tanulási algoritmusok és heurisztikus
 
 A következő táblázat a késési adatok kockázati eseményekről.
 
-| Jelentés | Minimum | Átlag | Maximum |
+| Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
 | Névtelen IP-címekről bejelentkezések |5 perc |15 perc |2 óra |
 | Ismeretlen helyekről indított bejelentkezések |5 perc |15 perc |2 óra |

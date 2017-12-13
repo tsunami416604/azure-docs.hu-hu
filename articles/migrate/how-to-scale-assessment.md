@@ -1,24 +1,16 @@
 ---
 title: "Felderítési és a kiértékelés Azure áttelepítése méretezhető |} Microsoft Docs"
 description: "A helyszíni gépeket az Azure áttelepítése szolgáltatással nagy számú értékeléséhez ismerteti."
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: dde0d07f-94b7-4b6a-a158-a89aa9324a35
-ms.service: migrate
-ms.devlang: na
+ms.service: azure-migrate
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
 ms.date: 11/22/2017
 ms.author: raynew
-ms.openlocfilehash: 930ec182cf329e7dda072dc49bd7f70abb413f2d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e28a2144dd102fcd2ec05531432cac0df250ae01
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Fedezze fel és nagy VMware-környezet felmérése
 
@@ -144,7 +136,7 @@ Minden felderítés kell elvégezni futtassa a gyűjtő felderítéssel virtuál
     - A **gyűjtemény hatókör**, válassza ki a virtuális gép felderítési hatókörét. A gyűjtő csak a megadott hatókörön belüli virtuális gépek képes felderíteni. Egy adott mappában, a datacenter vagy a fürt állítható be hatókör. Hogy 1000-nél több virtuális gép nem tartalmaz. 
     - n **Címke kategória csoportosításhoz**, jelölje be **nincs**.
 
-        ![Hatókör kijelölése](./media/how-to-scale-assessment/select-scope.png)
+        ![Hatókör kiválasztása](./media/how-to-scale-assessment/select-scope.png)
 
 1. A **projekt kiválasztása**, adja meg az Azonosítót, és a projekt kulcsát. Ha nem másolja át a fájlokat, az Azure-portál megnyitása a gyűjtő virtuális gép. A projekt **áttekintése** kattintson **gépek felderítése**, és másolja az értékeket.  
 A **teljes felderítési**, a felderítési folyamat figyelésére, és győződjön meg arról, hogy a virtuális gépek gyűjtött metaadatai a hatókörben. A gyűjtő megadja egy hozzávetőleges felderítés időtartamát.

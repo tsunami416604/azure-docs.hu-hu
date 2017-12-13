@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: yuaxu
-ms.openlocfilehash: f3bfda250b7f8ed679d05057682b95683d402535
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d19a1b7c8d50ef0fde3cf65c9fd469bc34a27adc
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification hubs használatával: gyakori kérdések
 ## <a name="general"></a>Általános kérdések
@@ -179,14 +179,14 @@ Ha a háttérből nincs céleszközökön meg az alkalmazás indításakor, egy 
 Egy adott időszakban, amikor a megnyitott alkalmazásokat futtató eszközökről nem értesítéseket lesz.
 
 ### <a name="is-there-audit-log-capability"></a>Ellenőrzési napló lehetőségek van?
-Minden értesítési központok felügyeleti műveletek műveleti naplói, amelyek ki vannak téve az Ugrás az [a klasszikus Azure portálon].
+Minden értesítési központok felügyeleti műveletek műveleti naplói, amelyek ki vannak téve az Ugrás az [Azure-portálon].
 
 ## <a name="monitoring-and-troubleshooting"></a>Figyelés és hibaelhárítás
 ### <a name="what-troubleshooting-capabilities-are-available"></a>Milyen hibaelhárítási lehetőségek érhetők el?
 Az Azure Notification Hubs számos szolgáltatást biztosít, különösen a leggyakoribb forgatókönyvet eldobott értesítések kapcsolatos problémák megoldása. További információkért lásd: a [Notification Hubs hibaelhárítási] találhatók meg.
 
 ### <a name="what-telemetry-features-are-available"></a>Milyen telemetriai funkciók érhetők el?
-Az Azure Notification Hubs lehetővé teszi, hogy a telemetriai adatokat a [a klasszikus Azure portálon]. A metrikák részletei érhetők el a [Notification Hubs metrikák] lap.
+Az Azure Notification Hubs lehetővé teszi, hogy a telemetriai adatokat a [Azure-portálon]. A metrikák részletei érhetők el a [Notification Hubs metrikák] lap.
 
 > [!NOTE]
 > Sikeres értesítések egyszerűen jelenti, hogy leküldéses értesítéseket a külső pns-sel (például az Apple APNS) vagy a Google GCM lesz küldve. Ez a pns-sel, hogy az értesítések céleszközökre feladata. A pns-sel általában nem fed fel kézbesítési metrikák át harmadik félnek.  
@@ -195,7 +195,7 @@ Az Azure Notification Hubs lehetővé teszi, hogy a telemetriai adatokat a [a kl
 
 Azt is programozott módon (a normál rétegben,) a telemetriai adatok exportálása képességet biztosít. További információkért lásd: a [Notification Hubs metrikák minta].
 
-[a klasszikus Azure portálon]: https://manage.windowsazure.com
+[Azure-portálon]: https://portal.azure.com
 [Notification Hubs-díjszabás]: http://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
 [Esettanulmány: Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
@@ -215,7 +215,7 @@ Azt is programozott módon (a normál rétegben,) a telemetriai adatok exportál
 [Notification Hubs metrikák]: https://msdn.microsoft.com/library/dn458822.aspx
 [Notification Hubs metrikák minta]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [regisztrációk exportálási/importálási]: https://msdn.microsoft.com/library/dn790624.aspx
-[Azure-portálon]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
 [App Service szolgáltatás díjszabása]: https://azure.microsoft.com/pricing/details/app-service/

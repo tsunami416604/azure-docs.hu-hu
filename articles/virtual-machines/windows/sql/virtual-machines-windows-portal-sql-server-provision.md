@@ -1,6 +1,6 @@
 ---
-title: "Windows rendszerű SQL Server 2017 virtuális gép létrehozása az Azure-ban | Microsoft Docs"
-description: "Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Windows rendszerű SQL Server 2017 virtuális gépet az Azure Portalon."
+title: "Windows SQL Server 2017 virtuális gépek konfigurálása az Azure portálon |} Microsoft Docs"
+description: "Ez az útmutató útmutató ismerteti a beállítások a Windows az SQL Server 2017 virtuális gépek létrehozása az Azure portálon."
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -9,39 +9,29 @@ tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 10/10/2017
+ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 48f9f97d6e0aee6b2c84444289a427bebcb296e2
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
-ms.translationtype: HT
+ms.openlocfilehash: 440c783de73652ad2d312cd92db8635dc65df9ed
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
-# <a name="provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Windows rendszerű SQL Server virtuális gép létrehozása az Azure Portalon
+# <a name="how-to-create-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>A Windows az SQL Server virtuális gép létrehozása az Azure-portálon
 
-> [!div class="op_single_selector"]
-> * [Portál](virtual-machines-windows-portal-sql-server-provision.md)
-> * [PowerShell](virtual-machines-windows-ps-sql-create.md)
-> * [Linux](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
+Ez az útmutató végigvezeti az elérhető beállításokról, amikor egy Windows SQL Server virtuális gép létrehozása az Azure portálon. A lépések során a különböző lehetőségek megismerését saját SQL Server virtuális gép létrehozásához. Vagy egy konkrét szakaszra referenciaként lépjen egy adott lépésben a portálon.
 
-Ez a rövid útmutató bemutatja, hogyan hozható létre az Azure Portal segítségével egy Windows rendszerű virtuális gép, amelyen telepítve van az SQL Server.
+> [!TIP]
+> Gyorsan használatba portál az alapértelmezett értékekkel, tekintse meg a [Azure gyors üzembe helyezés – SQL Server virtuális gép létrehozása a portálon](quickstart-sql-vm-create-portal.md).
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
-
-* [SQL virtuálisgép-rendszerkép kiválasztása a katalógusból](#select)
-* [A virtuális gép konfigurálása és létrehozása](#configure)
-* [A virtuális gép megnyitása a távoli asztallal](#remotedesktop)
-* [Távoli csatlakozás az SQL Serverhez](#connect)
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a id="select"></a> SQL virtuálisgép-rendszerkép kiválasztása a katalógusból
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a saját fiókjával.
-
-   > [!NOTE]
-   > Ha nem rendelkezik Azure-fiókkal, az [Azure ingyenes próbát](https://azure.microsoft.com/pricing/free-trial/) biztosít.
 
 1. Az Azure Portalon kattintson az **Új** elemre. A portál megnyitja az **Új** ablakot.
 
@@ -277,19 +267,11 @@ Az üzemelő példány az Azure Portalról monitorozható. A képernyő felső r
 
 A következő lépésekkel csatlakozzon az SQL Server virtuális géphez a távoli asztalról:
 
-> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
+[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
 Az SQL Server virtuális géphez való csatlakozás után elindíthatja az SQL Server Management Studiót, és a helyi rendszergazdai hitelesítő adataival csatlakozhat Windows-hitelesítés használatával. Ha engedélyezte az SQL Server-hitelesítést, akkor az SQL-hitelesítésen keresztül is csatlakozhat a kiépítés során megadott SQL bejelentkezési azonosítójával és jelszavával.
 
 A géphez való hozzáférés lehetővé teszi, hogy igény szerint közvetlenül módosítsa a gép és az SQL Server beállításait. Például konfigurálhatja a tűzfal beállításait, vagy módosíthatja az SQL Server-konfiguráció beállításait.
-
-## <a name="enable-tcpip-for-developer-and-express-editions"></a>TCP/IP engedélyezése a Developer és Express kiadásokhoz
-
-Új SQL Server virtuális gép üzembe helyezésekor az Azure nem engedélyezi automatikusan a TCP/IP protokollt az SQL Server Developer és Express kiadásaihoz. Az alábbi lépések ismertetik, hogyan lehet manuálisan engedélyezni a TCP/IP protokollt, hogy távolról is csatlakozhasson IP-címmel.
-
-Az alábbi lépések az **SQL Server Configuration Manager** segítségével engedélyezik a TCP/IP protokollt az SQL Server Developer és Express kiadásaihoz.
-
-> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
 ## <a id="connect"></a> Távoli csatlakozás az SQL Serverhez
 
@@ -300,7 +282,7 @@ Ebben az útmutatóban **Nyilvános** hozzáférést választottunk a virtuális
 
 A következő szakaszok bemutatják, hogyan csatlakozhat a virtuális gépén található SQL Server-példányhoz egy másik számítógépről az interneten keresztül.
 
-> [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
+[!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

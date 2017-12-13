@@ -58,7 +58,7 @@ Ha problémákat tapasztal a Távoli asztallal vagy az SSH-val kapcsolatban, tel
 
 Windows rendszerű virtuális gépek esetén a további lehetőségek is a rendelkezésére állnak:
 
-* A klasszikus Azure Portalon keresse meg a virtuális gépet, majd a parancssorban kattintson a **Távelérés visszaállítása** parancsra.
+* Az Azure-portálon keresse meg a virtuális Gépet, majd kattintson az **távelérés alaphelyzetbe** a parancssávon.
 * Tekintse át a [távoli asztali kapcsolatok Windows-alapú virtuális gépeken történő hibaelhárításával](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) foglalkozó témakört.
 * Használja a Windows PowerShell távoli eljáráshívást a virtuális géphez való csatlakozásra, vagy hozzon létre további végpontokat egyéb erőforrások számára a virtuális géphez való csatlakozáshoz. Részletekért lásd a [végpontok virtuális gépekhez történő beállítását](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) ismertető cikket.
 
@@ -85,7 +85,7 @@ Ha elfelejtette a felhasználónevet vagy jelszót, és telepítette a VM Agent 
 
 További részletek:
 
-* Linuxos rendszerképek esetén, ha klasszikus Azure portált használ, az „azureuser” az alapértelmezett felhasználónév, de ezt módosíthatja, ha a „Gyors létrehozás” helyett a „Katalógusból” lehetőséget választja a virtuális gép létrehozásához. A „Katalógusból” használatával ezenkívül eldöntheti, hogy a bejelentkezéshez jelszavat, SSH-kulcsot vagy mindkettőt kívánja használni. A felhasználói fiók egy nem kiemelt jogosultságú felhasználó, aki „sudo” hozzáféréssel rendelkezik a kiemelt jogosultságot igénylő parancsok futtatásához. A „root” fiók le van tiltva.
+* A Linux-lemezképek, ha használja az Azure-portálon, "azureuser" kap egy alapértelmezett felhasználónév, de ezt hozza létre a virtuális gépet úgy a "A gyűjtemény" gyors létrehozása helyett segítségével módosíthatja. A „Katalógusból” használatával ezenkívül eldöntheti, hogy a bejelentkezéshez jelszavat, SSH-kulcsot vagy mindkettőt kívánja használni. A felhasználói fiók egy nem kiemelt jogosultságú felhasználó, aki „sudo” hozzáféréssel rendelkezik a kiemelt jogosultságot igénylő parancsok futtatásához. A „root” fiók le van tiltva.
 * Windows-rendszerképek esetén meg kell adnia egy felhasználónevet és jelszót a virtuális gép létrehozásakor. A rendszer hozzáadja a fiókot a Rendszergazdák csoporthoz.
 
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Tud víruskeresőt futtatni az Azure a virtuális gépeimen?
@@ -105,7 +105,7 @@ Az Azure óradíjas rendszerben számláz, a virtuális gép mérete és az oper
 
 A futó és a leállított állapotú virtuális gépek után fizetnie kell, a Leállítva (Felszabadítva) állapotúak után azonban nem. Ha a virtuális gépet Leállítva (Felszabadítva) állapotba kívánja helyezni, tegye a következők egyikét:
 
-* Állítsa le vagy törölje a virtuális gépet a klasszikus Azure portálon.
+* Állítsa le vagy törölje a virtuális gép Azure-portálról.
 * Használja a Stop-AzureVM parancsmagot, amely az Azure PowerShell modulban érhető el.
 * Használja a Szerepkör leállítása műveletet a szolgáltatásfelügyeleti REST API-n, és adja meg a StoppedDeallocated paramétert a PostShutdownAction elemhez.
 
@@ -118,7 +118,7 @@ Nem tervezett karbantartási események előfordulhatnak, ha az Azure komoly har
 
 Bármely különálló virtuális gép esetén (amely azt jelenti, hogy a virtuális gép nem része egy rendelkezésre állási csoportnak) az Azure e-mailben értesíti az előfizetés szolgáltatás-rendszergazdáját legalább egy héttel a tervezett karbantartás előtt, hogy a virtuális gépek újraindulhatnak a frissítés során. Előfordulhat, hogy a virtuális gépeken futtatott alkalmazások működése leáll.
 
-A klasszikus Azure portál vagy az Azure PowerShell használatával az újraindítási naplókat is megtekintheti, amikor az újraindítás egy tervezett karbantartás részeként történt. További részletek: [Virtuális gépek újraindítási naplóinak megtekintése](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
+Is használhatja az Azure portálon vagy az Azure PowerShell megtekintése az újraindítás naplókat, ha az újraindítás tervezett karbantartás miatt történt. További részletek: [Virtuális gépek újraindítási naplóinak megtekintése](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
 
 Redundancia biztosításához helyezzen két vagy több hasonlóan konfigurált virtuális gépet ugyanabba a rendelkezésre állási csoportba. Ezzel biztosítja, hogy legalább egy virtuális gép elérhető maradjon a tervezett vagy nem tervezett karbantartás alatt. Az Azure garantálja a virtuális gépek bizonyos szintű rendelkezésre állását ebben a konfigurációban. Részletes információ: [Virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

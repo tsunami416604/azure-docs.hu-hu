@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: f6496fb62670c480ce543a51225856f0fb5d89b5
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: de71c03784571f4adab9b8936ec1968373c9ac3e
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Diagnosztikai naplók az Azure Data Lake Store elérése
 További diagnosztikai a Data Lake Store-fiók és a fiókja gyűjtött naplók megtekintéséhez a naplózás engedélyezéséhez.
@@ -47,7 +47,7 @@ A szervezetek diagnosztikai naplózását is az Azure Data Lake Store fiók gyű
         
         * Jelölje be a **adatfolyam egy eseményközpontba** adatfolyam napló adatokat az Azure-Eseményközpontok felé. Valószínűleg ezt a beállítást fogja használni, ha egy alárendelt feldolgozási folyamat bejövő naplók valós időben elemezni. Ha ezt a lehetőséget választja, meg kell adnia a használni kívánt Azure Event Hubs részleteit.
 
-        * Jelölje be a **küldeni a Naplóelemzési** használhatja az Azure Naplóelemzés szolgáltatást a előállított naplózási adatok elemzésére. Ha ezt a lehetőséget választja, meg kell adnia a részletek az Operations Management Suite-munkaterülettel a végezze el a webhelynapló elemzése használható.
+        * Jelölje be a **küldeni a Naplóelemzési** használhatja az Azure Naplóelemzés szolgáltatást a előállított naplózási adatok elemzésére. Ha ezt a lehetőséget választja, meg kell adnia a részletek az Operations Management Suite-munkaterülettel a végezze el a webhelynapló elemzése használható. Lásd: [nézet vagy Naplóelemzési napló keresési gyűjtött adatok elemzése](../log-analytics/log-analytics-tutorial-viewdata.md) Naplóelemzési használatával.
      
    * Adja meg, hogy megkapják a naplók vagy kérelmek naplóit vagy mindkettőt.
    * Adja meg, hány nap, amelynek meg kell őrizni az adatokat. Megőrzési csak akkor alkalmazható, ha az Azure storage-fiók segítségével archiválja naplóadatokat.
@@ -177,6 +177,15 @@ A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt n�
 | StreamName |Karakterlánc |Az elérési út a művelet végrehajtásának ideje |
 
 ## <a name="samples-to-process-the-log-data"></a>A naplózási adatok feldolgozása a minták
+Naplók az Azure Data Lake Store Azure figyelő való küldés során (lásd: [nézet vagy Naplóelemzési napló keresési gyűjtött adatok elemzése](../log-analytics/log-analytics-tutorial-viewdata.md) Log Analytics használatával), a következő lekérdezés által visszaadott felhasználók listáját tartalmazó tábla megjelenített neveket, a ideje eseményeket, és az események a vizuális diagram együtt esemény. Könnyen módosíthatók a felhasználó GUID megjelenítése vagy más attribútumok:
+
+```
+search *
+| where ( Type == "AzureDiagnostics" )
+| summarize count(TimeGenerated) by identity_s, TimeGenerated
+```
+
+
 Azure Data Lake Store minta hogyan feldolgozhatja és elemezheti a naplózási adatokat biztosít. A minta a található [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
 
 ## <a name="see-also"></a>Lásd még:

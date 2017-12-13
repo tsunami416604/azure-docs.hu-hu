@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2017
+ms.date: 12/12/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 119189415e75134ff0c77a551536559b81116fc6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8c6707505a6331b53e06b1de60575dd3637ea477
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Gyakorlati tanácsok a feltételes hozzáférés az Azure Active Directoryban
 
@@ -100,86 +100,18 @@ A környezetben kerülje el a következő beállításokat:
 
 ## <a name="policy-migration"></a>Házirend áttelepítése
 
-Ha a klasszikus Azure portálon konfigurált házirendek, kell át azokat az Azure-portálon mert:
+Érdemes lehet a házirendek nem hozott létre az Azure portálon mert áttelepítése:
+
+- Ön nem lehet kezelni előtt forgatókönyvek most meg lehet oldani.
+
+- Csökkentése érdekében egyesítse ezeket által felügyelni kell házirendek száma.   
+
+- Kezelheti egy központi helyen a feltételes hozzáférési szabályzatokat.
+
+- A klasszikus Azure portálon rendszerből.   
 
 
-- Egy felhasználót, aki az Azure klasszikus portál házirend és az Azure portál házirend kell felelnie a mindkét házirend 
-
-- Ha a meglévő szabályzatokat nem települnek át, nem lesz, amelyek hozzáférést-házirendek implementálásához
-
-
-### <a name="migration-from-the-azure-classic-portal"></a>Áttelepítés a klasszikus Azure portálon
-
-Ebben a forgatókönyvben: 
-
-- Az a [a klasszikus Azure portálon](https://manage.windowsazure.com), konfigurálta:
-
-    - SharePoint Online
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-best-practices/14.png)
-
-    - Eszközalapú feltételes hozzáférési házirend
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-best-practices/15.png)
-
-- A mobilalkalmazás-felügyeleti feltételes hozzáférési szabályzat konfigurálása az Azure portálon szeretné 
- 
-
-#### <a name="configuration"></a>Konfiguráció 
-
-- Tekintse át az eszközalapú feltételes hozzáférési házirendek
-
-- Áttelepíthetik őket az Azure-portálon 
-
-- Mobilalkalmazás-felügyeleti feltételes hozzáférési házirendek hozzáadása
-
-
-### <a name="migrating-from-intune"></a>Az Intune-ból áttelepítése 
-
-Ebben a forgatókönyvben:
-
-- A [Intune](https://portal.azure.com/#blade/Microsoft_Intune/SummaryBlade ), vagy Exchange online-hoz egy mobilalkalmazás-felügyeleti feltételes hozzáférési házirenddel rendelkezik, vagy a SharePoint online-hoz konfigurált
-
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-best-practices/15.png)
-
-- Az áttelepítendő mobilalkalmazás-kezelési feltételes hozzáférés az Azure-portál használatával
-
-
-#### <a name="configuration"></a>Konfiguráció 
- 
-- Tekintse át az eszközalapú feltételes hozzáférési házirendek
-
-- Áttelepíthetik őket az Azure-portálon 
-
-- Tekintse át, hogy mobilalkalmazás felügyeleti feltételes hozzáférési szabályzatok beállítása az Exchange Online vagy SharePoint online-hoz az Intune-ban
-
-- A vezérlő hozzáadása **szükséges jóváhagyott alkalmazások** mellett az eszköz-alapú vezérlő 
- 
-
-### <a name="migrating-from-the-azure-classic-portal-and-intune"></a>A klasszikus Azure portál és az Intune áttelepítése
-
-Ebben a forgatókönyvben:
-
-- A következő beállításokkal rendelkezik:
-
-    - **A klasszikus Azure portálon:** eszközalapú feltételes 
-
-    - **Intune:** mobilalkalmazás felügyeleti feltételes hozzáférési házirendek 
-    
-- Mindkét házirend áttelepítendő a mobilalkalmazás-kezelési házirendekkel a feltételes hozzáférés az Azure-portálon
-
-
-#### <a name="configuration"></a>Konfiguráció
-
-- Tekintse át az eszközalapú feltételes hozzáférési házirendek
-
-- Áttelepíthetik őket az Azure-portálon 
-
-- Tekintse át, akkor a Exchange Online vagy a SharePoint online-hoz az Intune-ban mobilalkalmazás felügyeleti feltételes hozzáférési házirend
-
-- A vezérlő hozzáadása **szükséges jóváhagyott alkalmazások** mellett az eszköz-alapú 
-
-
+További információkért lásd: [klasszikus szabályzatokkal az Azure portálon áttelepítése](active-directory-conditional-access-migration.md).
 
 
 ## <a name="next-steps"></a>Következő lépések

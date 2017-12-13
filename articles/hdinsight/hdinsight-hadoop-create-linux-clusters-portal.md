@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 812b6f323e2ddaee9095a7bdf221d6a8ebd69fd2
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 80e797c1b53d62b08c3c7fce99ec961fe26f1f4c
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a Hdinsightban az Azure portál használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -52,25 +52,18 @@ Az Azure-portálon a legtöbb fürt tulajdonságait mutatja. Azure Resource Mana
 
     * Az a **előfizetés** legördülő listából válassza ki a fürthöz használt Azure-előfizetést.
 
-    * Kattintson a **típusú fürt**, majd válassza ki:
-   
-        * **Fürt típusa**: ha nem tudja, hogy melyik a megfelelő, válassza a **Hadoop** lehetőséget. Ez a legnépszerűbb fürttípus.
+    * Kattintson a **típusú fürt**, majd válassza ki a típust (Hadoop, Spark, stb.) a fürt létrehozásához. A **operációs rendszer**, kattintson a **Linux** és majd a megfelelő verzió kiválasztása. Az alapértelmezett verzióját használja, ha nem tudja, mit válassza. További tájékoztatás a [HDInsight cluster versions](hdinsight-component-versioning.md) (A HDInsight-fürtök verziói) című cikkben olvasható.
      
-            > [!IMPORTANT]
-            > HDInsight fürtök típusokat, amelyek megfelelnek a munkaterhelés vagy technológia, amely a fürt úgy van beállítva, a különböző származnak. Nincs támogatott módszer, amely többféle, például a Storm és HBase egy fürtön fürt létrehozásához. 
-            > 
-            > 
+        > [!IMPORTANT]
+        > HDInsight fürtök típusokat, amelyek megfelelnek a munkaterhelés vagy technológia, amely a fürt úgy van beállítva, a különböző származnak. Nincs támogatott módszer, amely többféle, például a Storm és HBase egy fürtön fürt létrehozásához. 
+        > 
+        > 
         
-        * **Operációs rendszer**: válassza a **Linux** lehetőséget.
-        
-        * **Verzió**: ha nem tudja, hogy melyik a megfelelő, válassza az alapértelmezett verziót. További tájékoztatás a [HDInsight cluster versions](hdinsight-component-versioning.md) (A HDInsight-fürtök verziói) című cikkben olvasható.
-        
-
     * A **fürt bejelentkezési felhasználónevének** és **fürt bejelentkezési jelszó**, adja meg a felhasználónevet és jelszót a rendszergazdai felhasználó.
 
     * Adjon meg egy **SSH felhasználónév** és, ha azt szeretné, hogy az SSH-jelszónak ugyanaz, mint a korábban megadott rendszergazdai jelszó, jelölje be a **ugyanazt a jelszót használják a fürt bejelentkezési** jelölőnégyzetet. Ha nem, adja meg, vagy egy **jelszó** vagy **nyilvános kulcs**, az SSH-felhasználó hitelesítéséhez használni. A Microsoft a nyilvános kulcs használatát javasolja. A hitelesítő adatok konfigurációjának mentéséhez kattintson az oldal alján található **Kiválasztás** elemre.
    
-        További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+    További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
     * A **erőforráscsoport**, adja meg, hogy hozzon létre egy új erőforráscsoportot, vagy használjon egy meglévőt.
 

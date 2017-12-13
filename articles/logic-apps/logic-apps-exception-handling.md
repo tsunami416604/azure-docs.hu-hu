@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 4eb6f743479886374692eadcf218b77b4bfcc933
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 20f93d5dbcc91a633f040feb454e96ed3f7d561f
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibákat és kivételeket az Azure Logic Apps alkalmazásokat kezeléséhez
 
@@ -36,7 +36,7 @@ A `exponential` házirendtípus megpróbálja a sikertelen kérelmek exponenciá
 <tr><th> Véletlenszerű változó tartomány </th></tr>
 <tr><td>
 
-| Ismételje meg a számot | Minimális időköz | Maximális időköz |
+| Ismételje meg a számot | Minimális időköze | Maximális időköze |
 | ------------ |  ------------ |  ------------ |
 | 1 | Maximális (0, **minimumInterval**) | Minimális (időköz, **maximumInterval**) |
 | 2 | Max (időköz, **minimumInterval**) | Minimális (2 * időköz, **maximumInterval**) |

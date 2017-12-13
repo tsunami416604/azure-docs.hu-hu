@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: d71c706a7db570e88339c4ff7af05a48c05df65b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c626d6415a27f8495304eeaab480ab62606102ea
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Útmutató a vállalati leküldési architektúrákhoz
 A vállalatok ma egyre fokozatosan áthelyezése felé létrehozása vagy az alkalmazásokat a végfelhasználók számára (külső) vagy (belső) az alkalmazottak számára. Létező háttérrendszerek helyen kell azt Nagyszámítógépek vagy néhány LoB-alkalmazások, amelyek integrálni kell a mobilalkalmazás-architektúra rendelkeznek. Ez az útmutató előadás hogyan legjobb, ha ez az integráció ajánló lehetséges megoldás a gyakori forgatókönyvek.
@@ -212,7 +212,7 @@ A teljes minta kódja megtalálható [Notification Hub minták]. A oszlik három
    
     ![][3]
    
-    g. A "Folyamatos Futtatás" kell, hogy mikor jelentkezik be a feladat a [klasszikus Azure portál] látnia kell a következőhöz:
+    g. A "Folyamatos Futtatás" kell, hogy mikor jelentkezik be a feladat a [Azure-portálon] látnia kell a következőhöz:
    
     ![][4]
 3. **EnterprisePushMobileApp**
@@ -245,7 +245,7 @@ A teljes minta kódja megtalálható [Notification Hub minták]. A oszlik három
 3. Futtassa a **EnterprisePushBackendSystem** konzolalkalmazást, amely szimulálni fogja a LoB háttér és küldésének megkezdése üzeneteket, és a következő megjelenő bejelentési értesítést kell megjelennie:
    
     ![][5]
-4. Service Bus-témaköröktől, amely a Service Bus-előfizetések műveleteit a webes projekt által figyelt eredetileg elküldött üzenetek. Üzenet érkezett, miután értesítést létrejött, de a mobilalkalmazás küldött. A webjobs-feladat bejegyzéseit, amelyek a naplók hivatkozásra lépve, győződjön meg arról, hogy a feldolgozási keresztül meggyőződhet [klasszikus Azure portál] a webes projekt:
+4. Service Bus-témaköröktől, amely a Service Bus-előfizetések műveleteit a webes projekt által figyelt eredetileg elküldött üzenetek. Üzenet érkezett, miután értesítést létrejött, de a mobilalkalmazás küldött. A webjobs-feladat bejegyzéseit, amelyek a naplók hivatkozásra lépve, győződjön meg arról, hogy a feldolgozási keresztül meggyőződhet [Azure-portálon] a webes projekt:
    
     ![][6]
 
@@ -264,4 +264,4 @@ A teljes minta kódja megtalálható [Notification Hub minták]. A oszlik három
 [Service Bus Pub/Sub programozási]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure webjobs-feladat]: ../app-service/web-sites-create-web-jobs.md
 [A Notification Hubs - oktatóanyag univerzális Windows-]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[klasszikus Azure portál]: https://manage.windowsazure.com/
+[Azure-portálon]: https://portal.azure.com/

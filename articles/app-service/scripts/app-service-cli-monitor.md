@@ -13,24 +13,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 06/19/2017
+ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 9630656a00a8a80c8ffd8fb59113dc1c8c523651
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e66b89332ce120133b660b931ba56eaca2a36ae
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="monitor-a-web-app-with-web-server-logs"></a>A webkiszolgáló naplóinak webes alkalmazás figyelése
 
-Ebben a forgatókönyvben létrehoz egy erőforráscsoport, az app service-csomag, a webes alkalmazás, és konfigurálja a webalkalmazás a webkiszolgáló naplóinak engedélyezése. Tekintse át a naplófájlokat, majd letölti azokat.
+Ez a parancsfájlpélda létrehoz egy erőforráscsoport, az app service-csomag és a webalkalmazás, és konfigurálja a webalkalmazás a webkiszolgáló naplóinak engedélyezése. Ezután tekintse át a naplófájlokat tölti le.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha telepítése és a parancssori felület helyileg használata mellett dönt, az Azure parancssori felület verzió szüksége 2.0-s vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Mintaparancsfájl
 
@@ -44,11 +44,11 @@ A parancsfájl a következő parancsokat egy erőforráscsoport, a web app és a
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az App Service-csomag létrehozása](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service-csomag létrehozása. Ez olyan, mintha egy kiszolgálófarmon, az Azure webalkalmazás számára. |
-| [az alkalmazás-kulcs létrehozása](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
-| [az alkalmazás kulcs naplózási konfiguráció](https://docs.microsoft.com/cli/azure/webapp/log#az_webapp_log_config) | Mely Azure-webalkalmazás egészen addig megmarad naplók konfigurálja. |
-| [az alkalmazás kulcs naplófájl letöltése](https://docs.microsoft.com/cli/azure/webapp/log#az_webapp_log_download) | Letölti a naplók az Azure-webalkalmazás a helyi számítógépre. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | App Service-csomag létrehozása. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
+| [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_config) | Mely naplók továbbra is fennáll az Azure-webalkalmazás konfigurálása |
+| [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_download) | A naplók az Azure-webalkalmazás letölti a helyi számítógépre. |
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -3,7 +3,7 @@ title: "Az Azure DNS - Azure CLI 2.0 DNS-zónák kezelése |} Microsoft Docs"
 description: "Kezelheti a DNS-zónákat az Azure CLI 2.0 verziót használja. Ez a cikk bemutatja, hogyan frissítése, törlése és a DNS-zóna létrehozása az Azure DNS szolgáltatásra."
 services: dns
 documentationcenter: na
-author: georgewallace
+author: KumudD
 manager: timlt
 ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
@@ -12,30 +12,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: gwallace
-ms.openlocfilehash: 988f6ff5158eb754cbedeb58a45fcc31f0026f03
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: kumud
+ms.openlocfilehash: 2042d9c2864a4f8da474e0df38882414bfe3417e
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Az Azure DNS az Azure CLI 2.0 használatával DNS-zónák kezelése
 
 > [!div class="op_single_selector"]
 > * [Portál](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
 
 Ez az útmutató bemutatja a platformok közötti Azure parancssori felület használatával, amely érhető el a Windows, Mac és Linux a DNS-zónák kezelése. Emellett kezelhetők a DNS-zónák használatával [Azure PowerShell](dns-operations-dnszones.md) vagy az Azure-portálon.
-
-## <a name="cli-versions-to-complete-the-task"></a>A feladat befejezéséhez használható CLI-verziók
-
-A következő CLI-verziók egyikével elvégezheti a feladatot:
-
-* [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez.
-* [Azure CLI 2.0](dns-operations-dnszones-cli.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli.
 
 ## <a name="introduction"></a>Bevezetés
 

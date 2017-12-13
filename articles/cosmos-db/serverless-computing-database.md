@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 2bbbde3497d8680ba4203049f66ea05005af0d11
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8ec4cf774306a5b74627adc0d405bab09645ec9a
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Az Azure Cosmos DB: Kiszolgáló nélküli adatbázis számítási Azure Functions használatával
 
@@ -44,7 +44,7 @@ Az Azure Cosmos DB eseményindító, a bemeneti kötése és a kimeneti kötése
 * Egy bemeneti kötése egy Cosmos-DB Azure-tárolót egy Azure Cosmos DB eseményindító ugyanabban a függvényben használható, és használható vagy azok nélkül is kötelező kimenettel. Segítségével kombinációban történő alkalmazására naprakész pénznem exchange (lekért be egy bemeneti kötése egy exchange-tárolót) a módosítás hírcsatorna új rendelések a vásárlási bevásárlókocsiból szolgáltatásban. A frissített bevásárlási bevásárlókocsiból teljes, a jelenlegi pénznemátváltásoknál alkalmazza, a csak írható harmadik tárolóhely egy kimeneti kötése.
 
 > [!NOTE]
-> Jelenleg az Azure Cosmos DB eseményindító, a bemeneti kötések és a kimeneti kötések működik, csak SQL, a táblának és a Graph API fiókokhoz.
+> Jelenleg az Azure Cosmos DB eseményindító, a bemeneti kötések és a kimeneti kötések működik, csak SQL API-t és a Graph API fiókokhoz.
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -86,14 +86,14 @@ A következő ábrákon az Azure portálon ebben a forgatókönyvben a kód lát
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>Játék-és nagybetűhasználattal - Azure Cosmos DB eseményindító, és kimeneti kötése
 
-A játékok, ha egy új felhasználó létrehozása kereshet előfordulhat, hogy ismeri a többi felhasználó a [Azure Cosmos DB Graph API](graph-introduction.md). Majd írhat a eredményeket egy [Azure Cosmos Adatbázistáblájából adatbázis](table-introduction.md) partnerek.
+A játékok, ha egy új felhasználó létrehozása kereshet előfordulhat, hogy ismeri a többi felhasználó a [Azure Cosmos DB Graph API](graph-introduction.md). Az eredmények [Azure Cosmos adatbázis SQL-adatbázis] partnerek majd írni.
 
 **Végrehajtás:** egy Azure Cosmos DB eseményindító és egy kimeneti kötése
 
 1. Egy Azure Cosmos DB használatával [graph adatbázis](graph-introduction.md) minden felhasználó tárolására, létrehozhat egy új funkció az Azure Cosmos DB eseményindító. 
 2. Amikor új felhasználó csatlakoztatva van, a függvény meghívták és majd eredménye segítségével tárolják az **kimeneti kötése**.
 3. A függvény lekérdezi a diagram adatbázis, amely közvetlenül kapcsolódik az új felhasználót, és adja vissza, hogy a dataset függvény felhasználók kereséséhez.
-4. Ezek az adatok tárolása már egy Azure Cosmos DB [tábla adatbázis](table-introduction.md) , egy kulcs-érték párok, majd egyszerűen lekérhetők bármely előtér-alkalmazás, amely tartalmazza az új felhasználó az csatlakoztatott ismerősei készletét.
+4. Egy Azure Cosmos DB, amely majd egyszerűen lekérhetők bármely előtér-alkalmazás, amely tartalmazza az új felhasználó az csatlakoztatott ismerősei majd tárolja ezeket az adatokat.
 
 ### <a name="retail-use-case---multiple-functions"></a>Kereskedelmi használati eset - több funkciók
 

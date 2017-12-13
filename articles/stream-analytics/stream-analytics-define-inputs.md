@@ -4,8 +4,8 @@ description: "Ismerje meg a Stream Analytics \"bemenetek\" nevű adatkapcsolatot
 keywords: "az adatfolyam, adatkapcsolat, eseményfelhasználó"
 services: stream-analytics
 documentationcenter: 
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
 ms.service: stream-analytics
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/05/2017
-ms.author: samacha
-ms.openlocfilehash: 652137cf7a41f8d90a56aebe9f82fd37d5e4683d
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 12/11/2017
+ms.author: sngun
+ms.openlocfilehash: e8b55269e861dc010c911491d52973b674dd50ca
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Adatkapcsolat: data Stream Analytics az események adatfolyam-bemenet megismerése
 A Stream Analytics-feladat adatok kapcsolat nem olyan adatfolyamot kell megadni az adatforrás, amelynek a neve a feladat események *bemeneti*. A Stream Analytics rendelkezik első osztályú integráció az Azure data stream móddal, többek között a [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/), és [Azure Blob Storage tárolóban](https://azure.microsoft.com/services/storage/blobs/). A bemeneti források lehet az analytics-feladat az azonos Azure-előfizetés, vagy egy másik előfizetést.
@@ -37,9 +37,9 @@ Adatok bemeneti hivatkozást létrehozni, lásd: [használata referenciaadatok](
 
 ## <a name="compression"></a>Tömörítés
 
-Az Azure Stream Analytics összes adatfolyam bemeneti adatforrások (Event Hubs, az IoT Hub és a Blob storage) keresztül támogatja a tömörítést. Ez a szolgáltatás ad hozzá egy új legördülő lehetőség a **új bemeneti** panel az Azure portálon, így kérheti az adatfolyamokat tömörítése. Támogatott típusok jelenleg nincs GZip, és a Deflate tömörítést. 
+Az Azure Stream Analytics összes adatfolyam bemeneti adatforrások (Event Hubs, az IoT Hub és a Blob storage) keresztül támogatja a tömörítést. Ez a szolgáltatás ad hozzá egy új legördülő lehetőség a **új bemeneti** panel az Azure portálon, így kérheti az adatfolyamokat tömörítése. Jelenleg támogatott referencia típusok van –, hogy nincs GZip, és a Deflate tömörítést. Tömörítés támogatása nem érhető el a referenciaadatoknál.
 
-Tömörítés területtel együtt Avro szerializálása nem támogatott, és nem alkalmazható adatokra hivatkoztak. 
+Adja meg az Avro szerializálási tömörítési típus nem kell. Ha a bemeneti az Avro-adatok tömörített, kezelt transzparens módon. 
 
 ## <a name="create-data-stream-input-from-event-hubs"></a>Az Event Hubs adatfolyam-bemenetre létrehozása
 

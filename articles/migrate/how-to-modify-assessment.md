@@ -1,26 +1,18 @@
 ---
 title: "Azure áttelepítése assessment beállítások testreszabása |} Microsoft Docs"
 description: "Ismerteti, hogyan lehet beállítása és futtatása egy értékelési áttelepítése VMware virtuális gépek esetén az Azure-bA az Azure áttelepítési Planner segítségével"
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: a068b9c7-5f87-4fe1-90b9-3be48d91aa3f
-ms.service: migrate
-ms.devlang: na
+ms.service: azure-migrate
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: 20aeb2073ad307952f92c8377bc9d78169f1756c
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: ce47790f6214864afdba33eb5cbe3a9e49b81cd5
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/12/2017
 ---
-# <a name="customize-an-assessment"></a>Egy értékelési testreszabása
+# <a name="customize-an-assessment"></a>Értékelés testreszabása
 
 [Az Azure áttelepítése](migrate-overview.md) értékelések létrehozza az alapértelmezett beállításokkal. Miután létrehozta a értékelését, módosíthatja ezeket az utasításokat követve ebben a cikkben alapértelmezett beállításokat.
 
@@ -32,9 +24,9 @@ ms.lasthandoff: 11/29/2017
 
     **Beállítás** | **Részletek** | **Alapértelmezett**
     --- | --- | ---
-    **Célhely** | Az Azure-beli hely, amelyre át szeretné. |  USA 2. nyugati alapértelmezett helye.
-    **Adattároló redundanciája, amely** | Az Azure virtuális gépek által használt, az áttelepítés után tárolási típusát. | Csak [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) replikációs jelenleg támogatott.
-    **Megerősítő tényező** | Megerősítő tényező értékelés során használt puffer. Ezzel a fiókot a műveleteket, mint az határozza használati, a rövid teljesítményelőzményei, a későbbi használat valószínűleg növelése. | Alapértelmezett érték 1.3 x.
+    **Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni. |  USA 2. nyugati alapértelmezett helye.
+    **Tárhely-redundancia** | Az a tárolótípus, amelyet az Azure-beli virtuális gépek a migrálás után használni fognak. | Csak [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) replikációs jelenleg támogatott.
+    **Kényelmi faktor** | Megerősítő tényező értékelés során használt puffer. Ezzel a fiókot a műveleteket, mint az határozza használati, a rövid teljesítményelőzményei, a későbbi használat valószínűleg növelése. | Alapértelmezett érték 1.3 x.
     **Teljesítmény-előzmények** | Idő teljesítményelőzményei kiértékelésekor. | Alapértelmezés szerint egy hónap.
     **PERCENTILIS kihasználtsága** | A PERCENTILIS teljesítési előzmények figyelembe kell venni. | Alapértelmezett érték 95 %.
     **Tarifacsomag** | Megadhatja a [tarifacsomag](https://azure.microsoft.com/blog/basic-tier-virtual-machines-2/) egy virtuális gép számára.  | Alapértelmezés szerint a [szabványos](../virtual-machines/windows/sizes-general.md) réteg szolgál.

@@ -13,13 +13,13 @@ ms.devlang: c#
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2017
+ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 09b146740413e74e3030bf3a6cb660a3cfabd239
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: d9dfd856a95d0b1f925487f4ca9d27e617093405
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Testre szabhatja, hogy a csatlakoztatott gyári megoldás OPC EE-kiszolgálóinak adatait jeleníti meg
 
@@ -48,7 +48,7 @@ A csatlakoztatott gyári megoldás a megoldás kapcsolódó OPC EE-kiszolgálók
 
 A csatlakoztatott OPC EE-kiszolgáló küldhet a megoldás az irányítópulton adatelemek tallózással:
 
-1. Keresse meg a **jelöljön ki egy OPC EE** megtekintése:
+1. Válasszon **böngésző** lehetőségre, és navigáljon a **jelöljön ki egy OPC EE** megtekintése:
 
     ![Navigáljon a válassza egy OPC EE-kiszolgáló megtekintése][img-select-server]
 
@@ -57,7 +57,7 @@ A csatlakoztatott OPC EE-kiszolgáló küldhet a megoldás az irányítópulton 
     > [!NOTE]
     > Ez a figyelmeztetés csak egyszer jelenik meg minden olyan kiszolgálón, és a megoldás irányítópult és a kiszolgáló közötti megbízhatósági kapcsolatot létesít.
 
-1. A kiszolgáló elküldheti a megoldáshoz adatelemek tallózhatnak. A megoldáshoz küldött útjuk zöld pipa jelzi:
+1. A kiszolgáló elküldheti a megoldáshoz adatelemek tallózhatnak. A megoldáshoz küldött elemek be van jelölve:
 
     ![Közzétett elemek][img-published]
 
@@ -155,7 +155,7 @@ Más csomópontokra társított értékek a következő táblázat tartalmazza:
 | Műveleti kód     | Hogyan összesíti az adatokat. |
 | egység      | Az irányítópult használatához egység.  |
 | Látható    | Hogy megjelenjenek-e ezt az értéket az irányítópulton. Egyes értékek számítások szerepel, de nem jelenik meg.  |
-| Maximális    | A maximális érték, amely a riasztást az irányítópulton. |
+| Maximum    | A maximális érték, amely a riasztást az irányítópulton. |
 | MaximumAlertActions | A riasztás válasz műveletet. Például egy vonatkozó parancs küldése a állomáshoz. |
 | ConstValue | A számításhoz használt konstans érték. |
 

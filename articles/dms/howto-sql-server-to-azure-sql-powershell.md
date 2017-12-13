@@ -10,15 +10,15 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 11/10/2017
-ms.openlocfilehash: ad6469fcf86aeb7a0076ab5909fbe593596df695
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.date: 12/13/2017
+ms.openlocfilehash: 9eebe8352d6a447df520c194b9906df8c2c9a83f
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Telepítse át a helyszíni SQL Server Azure SQL Database az Azure PowerShell
-Ebben a cikkben az áttelepítést a **Adventureworks2012** adatbázis visszaállítása egy helyszíni példányát az SQL Server 2016 vagy újabb Azure SQL adatbázis a Microsoft Azure PowerShell használatával.  Telepíthet át adatbázisok a helyszíni SQL Server-példány az Azure SQL Database segítségével a `AzureRM.DataMigration` a Microsoft Azure PowerShell modul.
+Ebben a cikkben az áttelepítést a **Adventureworks2012** adatbázis visszaállítása egy helyszíni példányát az SQL Server 2016 vagy újabb Azure SQL adatbázis a Microsoft Azure PowerShell használatával. Telepíthet át adatbázisok a helyszíni SQL Server-példány az Azure SQL Database segítségével a `AzureRM.DataMigration` a Microsoft Azure PowerShell modul.
 
 Ebből a cikkből megismerheti, hogyan:
 > [!div class="checklist"]
@@ -26,7 +26,6 @@ Ebből a cikkből megismerheti, hogyan:
 > * Az Azure-adatbázis áttelepítési szolgáltatás egy példányának létrehozásakor.
 > * Egy Azure adatbázis áttelepítési szolgáltatáspéldány áttelepítési projekt létrehozása
 > * Az áttelepítéshez.
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ezek a lépések elvégzéséhez szüksége:
@@ -36,15 +35,15 @@ Ezek a lépések elvégzéséhez szüksége:
 - Konfigurálhatja a [Windows tűzfalat a hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Egy Azure SQL Database-példányt. Egy Azure SQL Database-példányt hozhat létre a következő cikkben található részletes [Azure SQL-adatbázis létrehozása az Azure portálon](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 - [Adatok áttelepítése Segéd](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 vagy újabb.
-- Az Azure adatbázis áttelepítési szolgáltatásnak szüksége van egy VNETET az Azure Resource Manager telepítési modell, amely webhelyek kapcsolatot biztosít annak a helyszíni adatforrás-kiszolgálók használatával vagy használatával létrehozott [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [ VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+- Az Azure-adatbázis áttelepítési szolgáltatás szükséges egy VNETET az Azure Resource Manager telepítési modell, amely webhelyek kapcsolatot biztosít annak a helyszíni adatforrás-kiszolgálók használatával vagy használatával létrehozott [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [ VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 - Befejeződött az adatok áttelepítési Segéd használatával, a cikkben leírtak szerint a helyi adatbázis és séma áttelepítés értékelése [ a SQL Server-áttelepítési elemzés végrehajtása](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)
-- Töltse le és telepítse a AzureRM.DataMigration modul PowerShell-galériában használatával [Install-modul PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)
-- Az adatforrás SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatokat kell [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedélyek.
-- Azure SQL-adatbázis a célpéldány való kapcsolódáshoz használt hitelesítő adatok a cél Azure SQL Database adatbázisok FELADATVEZÉRLŐ ADATBÁZISHOZ engedéllyel kell rendelkeznie.
+- Töltse le és telepítse a AzureRM.DataMigration modul a PowerShell-galériában bu a [Install-modul PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)
+- Az adatforrás SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatokat kell rendelkeznie a [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedéllyel.
+- Azure SQL-adatbázis a célpéldány való kapcsolódáshoz használt hitelesítő adatok a cél Azure SQL Database-adatbázisok a FELADATVEZÉRLŐ ADATBÁZISHOZ engedéllyel kell rendelkeznie.
+- Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Jelentkezzen be a Microsoft Azure-előfizetés
 A cikk utasításokat használata [jelentkezzen be Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.4.1) jelentkezzenek be az Azure-előfizetése PowerShell használatával.
-
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, a virtuális gépek létrehozása előtt.
@@ -56,7 +55,6 @@ Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *East
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
-
 ## <a name="create-an-azure-database-migration-service-instance"></a>Egy Azure adatbázis áttelepítési szolgáltatáspéldány létrehozása 
 Új Azure adatbázis áttelepítési Service-példány használatával hozhat létre a `New-AzureRmDataMigrationService` parancsmag. Ennek a parancsmagnak a következő paramétereket:
 - *Azure erőforráscsoport-név*. Használhat [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-4.4.1) parancs előzőekben látható Azure erőforráscsoport létrehozása és a name paramétert adja meg.
@@ -130,12 +128,10 @@ $project = New-AzureRmDataMigrationProject -ResourceGroupName myResourceGroup `
 ```
 
 ## <a name="create-and-start-a-migration-task"></a>Hozzon létre, és indítsa el az áttelepítési feladatok
-
 Végül hozzon létre, és indítsa el az Azure-adatbázis áttelepítési feladat. Az Azure adatbázis áttelepítési feladathoz kapcsolat hitelesítő adatokat a forrás és cél- és adatbázis telepíthető át előfeltételként létrehozott projekt már foglalt információk mellett táblák listáját. 
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>Forrás és cél paramétereinek hitelesítő adat létrehozása
-
-Kapcsolat hitelesítő adatokat hozhatók létre [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) objektum. 
+Kapcsolat hitelesítő adatokat hozhatók létre a [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) objektum. 
 
 A következő példa bemutatja *PSCredential* jelszavak karakterlánc típusú változót, így a forrás- és cél kapcsolatok objektumok *$sourcePassword* és *$ targetPassword*. 
 
@@ -200,11 +196,11 @@ $migTask = New-AzureRmDataMigrationTask -TaskType MigrateSqlServerSqlDb `
 Az áttelepítési feladat fut a feladat a következő példában látható módon állapot tulajdonságának lekérdezésével figyelhető meg:
 
 ```powershell
-if (($task.Properties.State -eq "Running") -or ($task.Properties.State -eq "Queued"))
+if (($mytask.ProjectTask.Properties.State -eq "Running") -or ($mytask.ProjectTask.Properties.State -eq "Queued"))
 {
   write-host "migration task running"
 }
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-- Tekintse át az áttelepítési útmutató az [Microsoft adatbázis áttelepítési útmutató](https://datamigration.microsoft.com/)
+- Tekintse át az áttelepítési útmutató a Microsoft [adatbázis áttelepítési útmutató](https://datamigration.microsoft.com/).
