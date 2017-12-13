@@ -146,6 +146,12 @@
               href: app-insights-proactive-trace-severity.md
             - name: Kivételkötet
               href: app-insights-proactive-exception-volume.md
+            - name: Memóriavesztés
+              href: app-insights-proactive-potential-memory-leak.md
+            - name: Erőforrás-használat
+              href: app-insights-proactive-low-utilization-cloud-resources.md
+            - name: Biztonsági észlelés
+              href: app-insights-proactive-application-security-detection-pack.md
         - name: Erőforrás létrehozása
           href: app-insights-create-new-resource.md
     - name: Elemzés

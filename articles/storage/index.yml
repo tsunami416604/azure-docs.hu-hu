@@ -1,82 +1,125 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Storage-dokumentáció
+title: "Azure Storage-dokumentáció"
 metadata:
-  title: Az Azure Storage dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'A Microsoft Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, méretezhető és redundáns tárolást tesz lehetővé. Az Azure Storage a Blob Storage, File Storage és Queue Storage szolgáltatásokat tartalmazza.'
+  title: "Az Azure Storage dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+  description: "Az Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, skálázható redundáns tárolást tesz lehetővé. Az Azure Storage a Blob Storage, File Storage és Queue Storage szolgáltatásokat tartalmazza."
   services: storage
-  author: czeumault
-  manager: carolz
+  author: tamram
+  manager: jeconnoc
   ms.service: storage
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/20/2017
-  ms.author: carolz
+  ms.date: 12/08/2017
+  ms.author: tamram
+  ms.openlocfilehash: 04198a4f256be34dc0b79413c792f2e979b918ed
+  ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/13/2017
 abstract:
-  description: 'A Microsoft Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, méretezhető és redundáns tárolást tesz lehetővé. Az Azure Storage a Blob Storage, File Storage és Queue Storage szolgáltatásokat tartalmazza.  Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan használhatja alkalmazásaiban az Azure Storage-ot.'
+  description: "A Microsoft Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, méretezhető és redundáns tárolást tesz lehetővé. Az Azure Storage a Blob Storage, File Storage és Queue Storage szolgáltatásokat tartalmazza.  Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan használhatja alkalmazásaiban az Azure Storage-ot."
 sections:
-  - title: 5 perces gyors útmutatók
+- title: "5 perces gyors útmutatók"
+  items:
+  - type: paragraph
+    text: "A rövid útmutatókból megismerheti az Azure Storage használatát."
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_powershell.svg
+        text: PowerShell
+    - image:
+        src: media/index/cli.svg
+        text: Azure CLI
+    - image:
+        src: media/index/logo_net.svg
+    - image:
+        src: media/index/logo_java.svg
+    - image:
+        src: media/index/logo_python.svg
+    - image:
+        src: media/index/logo_nodejs.svg
+    rows:
+    - title: "Storage-fiók létrehozása"
+      values:
+      - href: /azure/storage/common/storage-quickstart-create-storage-account-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - href: /azure/storage/common/storage-quickstart-create-storage-account-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+    - title: "Blobokkal kapcsolatos rövid útmutatók"
+      values:
+      - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
+      - href: /azure/storage/blobs/storage-quickstart-blobs-cli
+      - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
+      - href: /azure/storage/blobs/storage-quickstart-blobs-java
+      - href: /azure/storage/blobs/storage-quickstart-blobs-python
+      - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
+- title: "Részletes útmutatók"
+  items:
+  - type: paragraph
+    text: "Megismerheti a felhőbeli rendszerkép-adatok feltöltése és feldolgozásának módját."
+  - type: list
+    style: unordered
     items:
-      - type: paragraph
-        text: Hozzon létre egyedi névteret az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/powershell.svg'
-            text: Azure PowerShell
-            href: /azure/storage/common/storage-quickstart-create-storage-account-powershell
-          - image:
-              src: /azure/virtual-machines/linux/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/storage/common/storage-quickstart-create-storage-account-cli
-  - title: Részletes útmutatók
+    - html: "<a href=\"/azure/storage/blobs/storage-upload-process-images\">Felhőbeli rendszerkép-adatok feltöltése és lekérése</a>"
+    - html: "<a href=\"/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json\">Az Azure Functions aktiválása a blobok feldolgozásához</a>"
+    - html: "<a href=\"/azure/storage/blobs/storage-secure-access-application\">Az alkalmazásadatok védelme</a>"
+    - html: "<a href=\"/azure/storage/blobs/storage-monitor-troubleshoot-storage-application\">Tárterület figyelése és hibaelhárítása</a>"
+  - type: paragraph
+    text: "Megtudhatja, hogyan tervezhet magas rendelkezésre állású alkalmazást az Azure Storage-ban."
+  - type: list
+    style: unordered
     items:
-      - type: paragraph
-        text: Megismerheti a felhőbeli rendszerkép-adatok feltöltése és feldolgozásának módját.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/storage/blobs/storage-upload-process-images">Felhőbeli rendszerkép-adatok feltöltése és lekérése</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Az Azure Functions aktiválása a blobok feldolgozásához</a>
-          - html: <a href="/azure/storage/blobs/storage-secure-access-application">Az alkalmazásadatok védelme</a>
-          - html: <a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Tárterület figyelése és hibaelhárítása</a>
-  - title: Példák
+    - html: "<a href=\"/azure/storage/blobs/storage-create-geo-redundant-storage\">Az alkalmazásadatok magas rendelkezésre állásúvá tétele</a>"
+    - html: "<a href=\"/azure/storage/blobs/storage-simulate-failure-ragrs-account-app\">Írásvédett redundáns tárolók elérése során fellépő hiba szimulálása</a>"
+  - type: paragraph
+    text: "Megismerheti, hogyan kereshet strukturálatlan adatokat az Azure Storage-ban."
+  - type: list
+    style: unordered
     items:
-      - type: paragraph
-        text: Általános kezelési feladatokra szolgáló szkriptek keresése.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
-  - title: Ingyenes Pluralsight videós képzés
+    - html: "<a href=\"/azure/storage/blobs/storage-unstructured-search\">Strukturálatlan adatok keresése felhőalapú tárolóban</a>"
+- title: "Példák"
+  items:
+  - type: paragraph
+    text: "Általános kezelési feladatokra szolgáló szkriptek keresése."
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Fejlesztés a .NET használatával az Azure-ban
-            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
-          - title: Fejlesztés a Node.js használatával az Azure-ban
-            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
-  - title: Referencia
+    - html: ".NET &#58; <a href=\"https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet\">Blobok</a> | <a     href=\"https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet\">Fájlok</a> | <a href=\"https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet\">Üzenetsorok</a>"
+    - html: "Java &#58; <a href=\"https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java\">Blobok</a> | <a href=\"https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java\">Fájlok</a> | <a href=\"https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java\">Üzenetsorok</a>"
+    - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
+    - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
+- title: "Ingyenes Pluralsight videós képzés"
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
-          - title: Nyelvek
-            html: '<p><a href="/java/api/">Java</a></p><p><a href="http://azure.github.io/azure-storage-node">Node.js</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>'
-          - title: REST
-            html: '<p><a href="/rest/api/storageservices/azure-storage-services-rest-api-reference">Blobok, üzenetsorok, táblák és fájlok</a></p><p><a href="/rest/api/storagerp">Erőforrás-szolgáltató</a></p><p><a href="/rest/api/storageimportexport">Importálás és exportálás</a></p><p><a href="/rest/api/storageservices">Storage-adatok REST API-ja</a></p>'
+    - title: "Fejlesztés a .NET használatával az Azure-ban"
+      href: https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents
+    - title: "Fejlesztés a Node.js használatával az Azure-ban"
+      href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Parancssor
+      html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
+    - title: Nyelvek
+      html: <p><a href="/java/api/">Java</a></p><p><a href="http://azure.github.io/azure-storage-node">Node.js</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
+    - title: REST
+      html: "<p><a href=\"/rest/api/storageservices\">Blobok, üzenetsorok, táblák és fájlok</a></p><p><a href=\"/rest/api/storagerp\">Erőforrás-szolgáltató</a></p><p><a href=\"/rest/api/storageimportexport\">Importálás és exportálás</a></p>"

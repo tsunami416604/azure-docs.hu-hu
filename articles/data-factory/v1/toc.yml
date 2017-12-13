@@ -179,6 +179,8 @@
           href: data-factory-troubleshoot.md
         - name: Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
           href: data-factory-troubleshoot-gateway-issues.md
+    - name: SSIS-csomagok meghívása tárolt eljárási tevékenységgel
+      href: how-to-invoke-ssis-package-stored-procedure-activity.md
 - name: Referencia
   items:
     - name: Kódminták

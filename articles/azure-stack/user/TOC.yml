@@ -119,6 +119,10 @@
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.10
     - name: Azure Stack parancssori felület
       href: /cli/azure/?view=azure-cli-2017-03-09-profile
+- name: Kapcsolódó
+  items:
+    - name: Az Azure Stack operátori dokumentációja
+      href: /azure/azure-stack/
 - name: Erőforrások
   items:
     - name: Azure-ütemterv

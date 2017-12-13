@@ -4,18 +4,18 @@
   items:
     - name: Áttekintés
       href: apache-domain-joined-introduction.md
-    - name: Vállalati szintű biztonság megtervezése
+    - name: Tartományhoz csatlakoztatott fürtök megtervezése
       href: apache-domain-joined-architecture.md
-    - name: Vállalati biztonság konfigurálása a HDInsightban
+    - name: Tartományhoz csatlakoztatott tesztkörnyezet konfigurálása
       href: apache-domain-joined-configure.md
-    - name: Vállalati biztonság konfigurálása a HDInsightban az Azure AD DS-sel
+    - name: Tartományhoz csatlakoztatott fürtök konfigurálása az Azure AD DS-sel
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Hive-házirendek konfigurálása
       href: apache-domain-joined-run-hive.md
     - name: Kapacitástervezés
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
-    - name: Fürtök felügyelete vállalati biztonsági megoldásokkal
+    - name: Tartományhoz csatlakoztatott fürtök felügyelete
       href: apache-domain-joined-manage.md
 - name: Adatok védelme
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md

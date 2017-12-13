@@ -51,7 +51,7 @@
           href: azure-stack-run-powershell-script.md
         - name: A PowerShell telepítése
           href: azure-stack-powershell-install.md
-        - name: Regisztráció
+        - name: Regisztráljon
           href: azure-stack-register.md
         - name: Csatlakozás az Azure Stackhez
           href: azure-stack-connect-azure-stack.md
@@ -135,7 +135,7 @@
               href: Azure-stack-create-service-principals.md
             - name: A több-bérlős üzemmód engedélyezése
               href: azure-stack-enable-multitenancy.md
-    - name: Ajánlat szolgáltatásai
+    - name: Szolgáltatások ajánlása
       items:
         - name: Szolgáltatásajánlások áttekintése
           href: azure-stack-offer-services-overview.md
@@ -233,6 +233,10 @@
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9
+- name: Kapcsolódó
+  items:
+    - name: Az Azure Stack felhasználói dokumentációja
+      href: /azure/azure-stack/user/
 - name: Erőforrások
   items:
     - name: Azure-ütemterv
