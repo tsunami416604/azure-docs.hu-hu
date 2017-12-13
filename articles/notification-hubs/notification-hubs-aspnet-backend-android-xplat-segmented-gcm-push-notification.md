@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 76ec01c874fceedab7d76b2ef58e4b45b5489f58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b3fc05cfec2b20501a28f3d76f474ccd49e27e8
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>A legfrissebb hírek elküldése a Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -278,7 +278,7 @@ Az alkalmazás most már befejeződött, és képes tárolni a kategóriák az e
 2. Egy vagy több kategóriák váltógombok engedélyezése, majd kattintson az **előfizetés**.
    
     Az app alakítja át a kiválasztott kategóriákra címkék, és egy új eszköz regisztrálása a kijelölt címkék kéri le az értesítési központban. A regisztrált kategóriák tér vissza, és egy bejelentési értesítés jelenik meg.
-3. Egy új értesítés küldése a .NET-Konzolalkalmazás futtatásával.  Másik lehetőségként az értesítési központ hibakeresési lapján címkézett sablon értesítéseket küldhet a [klasszikus Azure portál].
+3. Egy új értesítés küldése a .NET-Konzolalkalmazás futtatásával.  Másik lehetőségként az értesítési központ hibakeresési lapján címkézett sablon értesítéseket küldhet a [Azure-portálon].
    
     A kiválasztott kategóriákra értesítések bejelentési értesítések jelennek meg.
 
@@ -302,5 +302,5 @@ Az oktatóanyag azt megtudta, hogyan kell közvetíteni legfrissebb hírek kateg
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[klasszikus Azure portál]: https://manage.windowsazure.com
+[Azure-portálon]: https://portal.azure.com
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591

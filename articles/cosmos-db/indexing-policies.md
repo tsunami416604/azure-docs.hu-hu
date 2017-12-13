@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/17/2017
 ms.author: arramac
-ms.openlocfilehash: 8b990d1887551cbe182fe1c38d2cfd02f3af5e78
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 20532763c46f6e87808e36f6dc06aecbd7a426ac
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Hogyan működik az Azure Cosmos DB index adatokat?
 
@@ -258,9 +258,9 @@ Azonban áthelyezheti Lazy vagy "None" átalakítás során az indexelő mód va
 * Amikor Lazy helyezi át, az index házirend módosításakor hatékony azonnal és Azure Cosmos DB elindítja az index létrehozása aszinkron módon történik. 
 * Amikor nincs helyezi át, majd az index a rendszer eldobja hatékony azonnal. Nincs áthelyezése akkor hasznos, ha meg kívánja szakítani az egy folyamatban lévő átalakítása és egy másik indexelési házirendet az alapoktól start. 
 
-Ha a .NET SDK használata esetén is indítsa el az indexelési házirend módosítása az új **ReplaceDocumentCollectionAsync** módszerről és az index átalakítása használatával százalékos állapotának nyomon követése a  **IndexTransformationProgress** válasz tulajdonságot egy **ReadDocumentCollectionAsync** hívható meg. Más SDK és a REST API támogatja egyenértékű tulajdonságai és metódusai indexelési házirend módosítása közben.
-
 Íme egy kódrészletet, amely bemutatja, hogyan lehet módosítani egy gyűjtemény indexelési házirendet-konzisztens indexelési üzemmódról Lusta.
+
+Ha a .NET SDK használata esetén is indítsa el az indexelési házirend módosítása az új **ReplaceDocumentCollectionAsync** metódust.
 
 **Módosítsa Lusta való egységes az indexelési házirendet**
 
@@ -271,10 +271,9 @@ Ha a .NET SDK használata esetén is indítsa el az indexelési házirend módos
 
     await client.ReplaceDocumentCollectionAsync(collection);
 
-
-Egy index átalakítást előrehaladását hívásával ReadDocumentCollectionAsync, például ellenőrizheti a lent látható módon.
-
 **Index átalakítása előrehaladását úgy követheti nyomon**
+
+Nyomon követheti a az index átalakítás előrehaladás százalékosan kifejezve konzisztens index használatával a **IndexTransformationProgress** válasz tulajdonságot egy **ReadDocumentCollectionAsync** hívható meg. Más SDK, és a REST API támogatja egyenértékű tulajdonságai és metódusai indexelési házirend módosítása. Ellenőrizheti a konzisztens indexhez index átalakulása előrehaladását meghívásával **ReadDocumentCollectionAsync**: 
 
     long smallWaitTimeMilliseconds = 1000;
     long progress = 0;
@@ -288,6 +287,14 @@ Egy index átalakítást előrehaladását hívásával ReadDocumentCollectionAs
 
         await Task.Delay(TimeSpan.FromMilliseconds(smallWaitTimeMilliseconds));
     }
+
+> [!NOTE]
+> A IndexTransformationProgress tulajdonság alkalmazható csak egy egységes indexhez átalakításakor. A ResourceResponse.LazyIndexingProgress tulajdonsággal nyomon követése átalakítások Lusta indexhez.
+>
+
+> [!NOTE]
+> A IndexTransformationProgress és a LazyIndexingProgress tulajdonságok fel van töltve, csak a nem particionált gyűjtemény, ez azt jelenti, hogy egy nem tartozik partíciós kulcs létrehozott gyűjtemény esetén.
+>
 
 Egy gyűjtemény indexe a nincs mód indexelő áthelyezésével dobhatja el. Ez akkor lehet hasznos működési eszköz, ha azt szeretné, szakítsa meg a folyamatban lévő átalakulása, és egy új azonnali indítása.
 

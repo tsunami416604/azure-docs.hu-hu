@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 9dc0f5140a538c3a359dd90b74de822dc163fd70
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 02bb5d23ee9468ab1f74396877cdcd6bdd8b8fba
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB táblában .NET API: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/20/2017
 |**Aktuális támogatott keretrendszer**|[Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 > [!IMPORTANT]
-> Ha egy tábla API-fiókot az előzetes hozott létre, hozzon létre egy [új tábla API-fiók](create-table-dotnet.md#create-a-database-account) az általánosan elérhető tábla API SDK-k együttműködni.
+> Ha az előzetes verzióban hozta létre a Table API-fiókot, hozzon létre egy [új Table API-fiókot](create-table-dotnet.md#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.
 >
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
@@ -50,6 +50,8 @@ ms.lasthandoff: 11/20/2017
 ## <a name="release-and-retirement-dates"></a>Kiadás és a használatból való kivonást dátuma
 A Microsoft biztosít értesítési legalább **12 hónapon keresztül** SDK eltávolítása érdekében vagy újabb támogatott verzióra való áttérés előtt.
 
+A [windowsazure.Storage kifejezésre-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) preview csomag elavult, helyébe a [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) csomag. 2018 November 15. a rendszerből a windowsazure.Storage kifejezésre-PremiumTable SDK, mely arra kéri, a kivont SDK nem engedélyezettek lesznek.
+
 Új szolgáltatásait és funkcióit és optimalizálás csak hozzá az aktuális SDK, így javasoljuk, hogy mindig a legújabb SDK verzióra frissít legkorábban lehető. 
 
 A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket visszautasítja.
@@ -58,7 +60,7 @@ A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017. november 15.|--- |
-| [0.9.0-Preview](#0.1.0-preview) |2017. november 11. |--- |
+| [0.9.0-Preview](#0.9.0-preview) |2017. november 11. |--- |
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/20/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9d0db50e5dcf6af97e15019c11fdeafb209de639
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 042b2b4a5c4ccb573b0d1d13abe7855aea779348
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure virtuális gép PowerShell-minták
 
@@ -29,6 +29,7 @@ A következő táblázat a PowerShell-parancsfájlok példák, amelyek Windows v
 | | |
 |---|---|
 |**Virtuális gépek létrehozása**||
+| [Gyorsan létrehozott egy virtuális gép](./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy erőforráscsoportot, a virtuális gép és az összes kapcsolódó erőforrások kér minimális.|
 | [A teljesen konfigurált virtuális gép létrehozása](./../scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások.|
 | [Magas rendelkezésre állású virtuális gépek létrehozása](./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Több magas rendelkezésre állású virtuális gépek és az elosztott terhelésű konfigurációs hoz létre.|
 | [Hozzon létre egy virtuális Gépet, és futtassa a konfigurációs parancsfájl](./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy virtuális gépet, és az Azure egyéni parancsprogramok futtatására szolgáló bővítmény segítségével telepítse az IIS szolgáltatást. |

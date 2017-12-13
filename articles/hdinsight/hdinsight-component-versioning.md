@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
-ms.openlocfilehash: 79f3cfbe5f5603d3c9f42e8af1d4093a5135b267
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0b6afcad6f838170d83f90a2cef8ccab0e2cfc9a
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a hdinsight eszközzel verziók?
 
@@ -206,28 +206,28 @@ Az alábbi táblázatok a HDInsight-fürtök az alapértelmezett virtuális gép
 
 * Dél-Brazília és Nyugat-japán kivételével minden támogatott régiók:
 
-  | Fürttípus | Hadoop | HBase | Storm | Spark | R Server |
-  | --- | --- | --- | --- | --- | --- |
-  | HEAD: alapértelmezett Virtuálisgép-méretet |D3 v2 |D3 v2 |A3 |D12 v2 |D12 v2 |
-  | HEAD: ajánlott Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2 |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
-  | Munkavégző: alapértelmezett Virtuálisgép-méretet |D3 v2 |D3 v2 |D3 v2 |Windows: D12 v2; Linux: D4 v2 |Windows: D12 v2; Linux: D4 v2 |
-  | Munkavégző: ajánlott Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
-  | ZooKeeper: alapértelmezett Virtuálisgép-méretet | |A3 |A2 | | |
-  | ZooKeeper: ajánlott Virtuálisgép-méretek | |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG |A2 MÉRETŰ, A3 MÉRETŰ, A4 | | |
-  | Peremhálózati: alapértelmezett Virtuálisgép-méretet | | | | |Windows: D12 v2; Linux: D4 v2 |
-  | Peremhálózati: ajánlott Virtuálisgép-mérettel | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
+  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark | R Server |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | HEAD: alapértelmezett Virtuálisgép-méretet |D3 v2 |D3 v2 | D13, D14 |A3 |D12 v2 |D12 v2 |
+  | HEAD: ajánlott Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
+  | Munkavégző: alapértelmezett Virtuálisgép-méretet |D3 v2 |D3 v2  | D13, D14 |D3 v2 |Windows: D12 v2; Linux: D4 v2 |Windows: D12 v2; Linux: D4 v2 |
+  | Munkavégző: ajánlott Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |D3 v2, D4 v2, D12 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
+  | ZooKeeper: alapértelmezett Virtuálisgép-méretet | |A3 | |A2 | | |
+  | ZooKeeper: ajánlott Virtuálisgép-méretek | |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG | | A2 MÉRETŰ, A3 MÉRETŰ, A4 | | |
+  | Peremhálózati: alapértelmezett Virtuálisgép-méretet | | | | | |Windows: D12 v2; Linux: D4 v2 |
+  | Peremhálózati: ajánlott Virtuálisgép-mérettel | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Dél-Brazília és Nyugat-japán csak (nincs v2 méretű):
 
-  | Fürttípus | Hadoop | HBase | Storm | Spark | R Server |
-  | --- | --- | --- | --- | --- | --- |
-  | HEAD: alapértelmezett Virtuálisgép-méretet |D3 |D3 |A3 |D12 |D12 |
-  | HEAD: ajánlott Virtuálisgép-méretek |D3 D4, D12 |D3 D4, D12 |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG |D12 D13, D14 |D12 D13, D14 |
-  | Munkavégző: alapértelmezett Virtuálisgép-méretet |D3 |D3 |D3 |Windows: D12; Linux: D4 |Windows: D12; Linux: D4 |
-  | Munkavégző: ajánlott Virtuálisgép-méretek |D3 D4, D12 |D3 D4, D12 |D3 D4, D12 |Windows: D12 D13, D14; Linux: D4, D12 D13, D14 |Windows: D12 D13, D14; Linux: D4, D12 D13, D14 |
-  | ZooKeeper: alapértelmezett Virtuálisgép-méretet | |A2 |A2 | | |
-  | ZooKeeper: ajánlott Virtuálisgép-méretek | |A2 MÉRETŰ, A3 MÉRETŰ, A4 |A2 MÉRETŰ, A3 MÉRETŰ, A4 | | |
-  | Peremhálózati: alapértelmezett Virtuálisgép-méretek | | | | |Windows: D12; Linux: D4 |
-  | Peremhálózati: ajánlott Virtuálisgép-méretek | | | | |Windows: D12 D13, D14; Linux: D4, D12 D13, D14 |
+  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | R Server |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | HEAD: alapértelmezett Virtuálisgép-méretet |D3 |D3  | D13, D14 |A3 |D12 |D12 |
+  | HEAD: ajánlott Virtuálisgép-méretek |D3 D4, D12 |D3 D4, D12  | D13, D14 |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG |D12 D13, D14 |D12 D13, D14 |
+  | Munkavégző: alapértelmezett Virtuálisgép-méretet |D3 |D3  | D13, D14 |D3 |Windows: D12; Linux: D4 |Windows: D12; Linux: D4 |
+  | Munkavégző: ajánlott Virtuálisgép-méretek |D3 D4, D12 |D3 D4, D12  | D13, D14 |D3 D4, D12 |Windows: D12 D13, D14; Linux: D4, D12 D13, D14 |Windows: D12 D13, D14; Linux: D4, D12 D13, D14 |
+  | ZooKeeper: alapértelmezett Virtuálisgép-méretet | |A2 | | A2 | | |
+  | ZooKeeper: ajánlott Virtuálisgép-méretek | |A2 MÉRETŰ, A3 MÉRETŰ, A4 | |A2 MÉRETŰ, A3 MÉRETŰ, A4 | | |
+  | Peremhálózati: alapértelmezett Virtuálisgép-méretek | | | | | |Windows: D12; Linux: D4 |
+  | Peremhálózati: ajánlott Virtuálisgép-méretek | | | | | |Windows: D12 D13, D14; Linux: D4, D12 D13, D14 |
 
 > [!NOTE]
 > - HEAD nevezik *Nimbus* a Storm a fürt típusa.

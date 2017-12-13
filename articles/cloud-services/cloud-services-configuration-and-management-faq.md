@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: genli
-ms.openlocfilehash: 355151ee6c3507d8e2fd2ab6cc5127324b3a6d7c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 35c8e2a2029b3f29b45004c1308de8b3a108f698
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és kezelésének számos Azure-szolgáltatásokhoz: gyakran ismételt kérdések (GYIK)
 
@@ -257,9 +257,9 @@ A **Get-AzurePublishSettingsFile** hoz létre egy új felügyeleti tanúsítván
 
 ## <a name="how-can-i-configure-auto-scale-based-on-memory-metrics"></a>Hogyan konfigurálható a memória mérőszámok alapján automatikus méretezése?
 
-Automatikus méretezése a felhőszolgáltatások memória metrikáját alapján jelenleg nem támogatott. 
+Cloud Services memória mérőszámok alapján automatikus méretezése jelenleg nem támogatott. 
 
-A probléma megoldásához használhatja az Application Insights, hogy a diagnosztikai ügynök lenne átirányíthatja a metrikákat az Application Insights. Automatikus méretezése metrikák forrásként az Application Insights támogatja, és a szerepkör-példányok száma, például a "Memória" Vendég metrika alapján is méretezhető.  Konfigurálja az Application Insights a Felhőszolgáltatás-projekt csomagfájl (*.cspkg), és engedélyezi a szolgáltatás a feat végrehajtásához Azure Diagnostics bővítményt kell.
+A probléma megoldásához használhatja az Application Insights. Automatikus méretezése metrikák forrásként az Application Insights támogatja, és a szerepkör-példányok száma, például a "Memória" Vendég metrika alapján is méretezhető.  Konfigurálja az Application Insights a Felhőszolgáltatás-projekt csomagfájl (*.cspkg), és engedélyezi a szolgáltatás a feat végrehajtásához Azure Diagnostics bővítményt kell.
 
 Az Application Insights automatikus méretezése konfigurálása Felhőszolgáltatások keresztül egyéni metrika magukat, hogy hogyan további részletekért lásd: [egyéni mértéket az Azure-ban megismerkedés automatikus méretezése](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)
 
@@ -270,16 +270,10 @@ Az Application Insights Felhőszolgáltatásai számára engedélyezni készül 
 
 További információ az Azure Diagnostics naplózásának engedélyezése a Felhőszolgáltatások: [diagnosztika beállítása az Azure Cloud Services és a virtuális gépek](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
-## <a name="how-to-automate-the-main-ssl-certificatepfx-and-intermediate-certificatep7b-cert-installation"></a>Hogyan automatizálható a fő SSL tanúsítványt (.pfx) és köztes certificate(.p7b) Tanúsítványtelepítés?
+## <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Hogyan fő SSL tanúsítványt (.pfx) és köztes certificate(.p7b) telepítését?
 
 Ez a feladat indítási parancsfájl (kötegelt/cmd/PowerShell) segítségével automatizálhatja, és regisztrálja az adott indítási parancsfájl a szolgáltatásdefiníciós fájlban. Adja hozzá az indítási parancsfájl és a tanúsítványok (.p7b fájl) ugyanabban a könyvtárban, az indítási parancsfájl projektmappában.
 
 További információkért tekintse át a következő cikkeket:
 - [Hogyan lehet konfigurálni és egy felhőalapú szolgáltatás indítási feladatok futtatása](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-startup-tasks)
 - [A felhőalapú szolgáltatás indítási gyakori feladatok](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-startup-tasks-common)
-
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Miért nem Azure-portálon követeljen meg a tárfiók számára történő központi telepítés?
-
-A klasszikus portálon a csomag közvetlenül a felügyeleti API réteg feltöltött, majd a API réteg volna ideiglenesen tegye a csomag egy belső tároló figyelembe.  Ez a folyamat teljesítményének és méretezhetőségének problémákat okoz, mivel az API réteg nem volt célja, hogy a fájl feltöltési szolgáltatás lehet.  Az Azure portálon (Resource Manager üzembe helyezési modellben) azt kell megkerülte az ideiglenes lépés API réteg első feltöltése a gyorsabb és megbízhatóbb központi telepítések eredményez.
- 
-A költség, mint nagyon kicsi, és újra felhasználhatja a tárfiókon összes központi telepítések egységességét. Használhatja a [tárolási költség Számológép](https://azure.microsoft.com/en-us/pricing/calculator/#storage1) annak meghatározásához, a költség, töltse fel a service-csomag (CSPKG), töltse le a CSPKG, majd törölje a CSPKG.

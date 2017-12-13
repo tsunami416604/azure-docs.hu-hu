@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 91958b14d3e73677b30bbc8f46eb9eada3afde84
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 6247e5a9b3438b45c1694ee3b21d3891faa325a9
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -101,6 +101,9 @@ Annak megállapítása, hogy a felhasználói fiók szerepkör rendelkezik-e a s
 4. Az a **erőforrás-szolgáltató** listáról válassza ki **Microsoft Authorization**. 
     * **Szerepkör-hozzárendelés** kell **olvasási** és **írási** engedélyek.
     * **Szerepkör-definíció** kell **olvasási** és **írási** engedélyek.
+
+<a id="server-endpoint-createjobfailed"></a>**Kiszolgáló-végpont létrehozása sikertelen, hiba: "MgmtServerJobFailed" (hibakód:-2134375898)**                                                                                                                           
+Ez a probléma akkor fordul elő, ha a kiszolgáló végpont elérési útja a rendszerkötet és a felhő rétegezéséhez engedélyezve van. Felhő rétegezéséhez nem támogatott a rendszerköteten. Kiszolgáló-végpont létrehozása a rendszerköteten, tiltsa le a felhő rétegezéséhez, amikor a kiszolgáló-végpont létrehozása.
 
 <a id="server-endpoint-deletejobexpired"></a>**Kiszolgáló-végpont törlése sikertelen, hiba: "MgmtServerJobExpired"**                
 Ez a probléma akkor fordul elő, ha a kiszolgáló offline állapotban, vagy nem rendelkezik hálózati kapcsolattal. Ha a kiszolgáló már nem érhető el, akkor szüntesse meg a kiszolgáló a portálon, amely törli a kiszolgáló végpontok. A kiszolgáló végpontok törléséhez kövesse a ismertetett [a kiszolgáló regisztrációját az Azure fájlszinkronizálás](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).

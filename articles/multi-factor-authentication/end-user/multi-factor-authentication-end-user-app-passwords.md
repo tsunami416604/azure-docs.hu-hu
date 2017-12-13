@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 12/12/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: d785c70dff331f2c5050fd07c65812a4cbc983b2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 166a04fa18a57b239c195cbdd7b53a3baafbad65
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Mik a Azure multi-factor Authentication Alkalmazásjelszókat?
-Bizonyos böngészőn kívüli alkalmazások, például az Apple natív e-mail-ügyfélprogram, amely használja az Exchange Active Sync jelenleg nem támogatják a multi-factor authentication. Többtényezős hitelesítést felhasználónként kell engedélyezni. Ez azt jelenti, hogy ha a felhasználó a többtényezős hitelesítés engedélyezve van, és böngészőn kívüli alkalmazások használatához megpróbálnak, fogják tudni megnyitni. Az alkalmazásjelszó lehetővé teszi, hogy ez megtörténik.
+Bizonyos böngészőn kívüli alkalmazások, például az Apple natív e-mail-ügyfélprogram, amely használja az Exchange Active Sync jelenleg nem támogatják a multi-factor authentication. Többtényezős hitelesítést felhasználónként kell engedélyezni. Ez azt jelenti, hogy ha a felhasználó a többtényezős hitelesítés engedélyezve van, és böngészőn kívüli alkalmazások használatához megpróbálnak, fogják tudni megnyitni. Az alkalmazásjelszó lehetővé teszi, hogy ez megtörténik. Ha a feltételes hozzáférési házirendek és felhasználói MFA révén nem kényszeríti a multi-factor Authentication, nem hozható létre alkalmazásjelszókat. Hozzáférés-vezérlésének feltételes hozzáférési házirendeket használó alkalmazásokat nem kell alkalmazásjelszókat.
 
 Miután egy alkalmazásjelszót, akkor az eredeti jelszóval ezen böngészőn kívüli alkalmazások helyett ezzel. Ennek oka az, amikor regisztrál a kétlépéses ellenőrzést, bárki jelentkezzen be a jelszót, ha azok nem is hajtsa végre a második ellenőrzési lehetővé teszik a nem Microsoft által szólítja fel. A telefonján Apple natív e-mail-ügyfélprogram nem tud bejelentkezni, ha Ön, mert nem a kétlépéses ellenőrzéshez kérje meg. Ez a megoldás, ha egy biztonságosabb alkalmazásjelszót, amelyek nem használják az alkalmazások, amelyek nem támogatják a kétlépéses ellenőrzést napi, de csak. Használja a jelszót, hogy az alkalmazások multi-factor authentication kihagyásához és továbbra is működnek.
 

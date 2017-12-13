@@ -1,26 +1,18 @@
 ---
 title: "Függőség képi megjelenítés Azure áttelepítése |} Microsoft Docs"
 description: "Értékelési számítások az Azure áttelepítése szolgáltatás áttekintése."
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 78e52157-edfd-4b09-923f-f0df0880e0e0
-ms.service: migrate
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/22/2017
+ms.service: azure-migrate
+ms.topic: conceptual
+ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: a8a8cee327dac8adfb0ae53d101c382ef20599d2
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 10bc249aa70852dce71c96e46319925cececdd8b
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/12/2017
 ---
-# <a name="dependency-visualization"></a>A függőségi képi megjelenítés
+# <a name="dependency-visualization"></a>Függőségek vizualizációja
 
 A [Azure áttelepítése](migrate-overview.md) szolgáltatások értékelésére a helyszíni gépeket az Azure-bA áttelepítés csoportját. Gépek csoportosíthatja, függőség képi megjelenítés is használhat. A cikkben a szolgáltatásról.
 
@@ -37,7 +29,7 @@ Az Azure áttelepítése használja a [Szolgáltatástérkép](../operations-man
 - A Naplóelemzési munkaterület navigáljon a **Essentials** projekt **áttekintése** lap.
 - A létrehozott munkaterület van megjelölve, a kulccsal **MigrateProject**, és értéket **projektnevet**. Ezek használhatja a Keresés az Azure-portálon.  
 
-    ![A Naplóelemzési munkaterület](./media/concepts-dependency-visualization/oms-workspace.png)
+    ![Log Analytics-munkaterület](./media/concepts-dependency-visualization/oms-workspace.png)
 
 Függőség képi megjelenítés használata esetén meg kell töltse le és telepítse az ügynököt minden a helyszíni gépen, amely az elemezni kívánt.  
 

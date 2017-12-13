@@ -5,7 +5,7 @@
 
 3. Az **Új fiók** panelen adja meg az Azure Cosmos DB-fiók kívánt beállításait. 
 
-    Az Azure Cosmos DB használata esetén négy programozási modell közül választhat: Gremlin (gráf), MongoDB, SQL (DocumentDB) és a tábla (kulcs-érték). 
+    Az Azure Cosmos DB, akkor válasszon egyet a négy programozási modell: Gremlin (diagramhoz), a MongoDB, az SQL és a tábla (kulcs-érték). 
        
     Ebben a rövid útmutatóban a MongoDB API használatával fogunk programozni, tehát a **MongoDB** lehetőséget fogja választani az űrlap kitöltésekor. Ha azonban közösségi média gráfadataival, a katalógusalkalmazásból származó dokumentumadatokkal vagy kulcs/érték (tábla) típusú adatokkal dolgozik, vegye figyelembe, hogy az Azure Cosmos DB magas rendelkezésre állású, globálisan elosztott adatbázis-szolgáltatási platformot tud biztosítani az összes alapvető fontosságú alkalmazáshoz.
 

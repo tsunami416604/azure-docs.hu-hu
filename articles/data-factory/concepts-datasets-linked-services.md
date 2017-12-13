@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: 
 ms.date: 09/05/2017
 ms.author: shlo
-ms.openlocfilehash: a13e19c7e1a22581b14d1a96e20b8a649c303fc3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: e8572af6187a889067341bbebb254d701b39395a
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Adatkészletek és az Azure Data Factory összekapcsolt szolgáltatások 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,7 +34,7 @@ Ha most ismerkedik a Data Factory, lásd: [Bevezetés az Azure Data Factory](int
 ## <a name="overview"></a>Áttekintés
 A data factory egy vagy több folyamattal rendelkezhet. A **csővezeték** logikai csoportosítása **tevékenységek** , amelyek együtt a feladat elvégzésére. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. A másolási tevékenység használhatja például a adatok másolása az egy helyi SQL Server az Azure Blob Storage tárolóban. Ezután használhatja a egy Hive tevékenységet, amely a Hive parancsfájlok futtatására szolgál egy Azure HDInsight fürt adatfeldolgozásra történő blobtárolóból eredményezett kimeneti adatokat. Végezetül segítségével lehet egy második másolási tevékenység kimeneti adatok másolása az Azure SQL Data Warehouse, mely üzleti intelligenciával reporting megoldások beépített felett. Adatcsatornák és tevékenységgel kapcsolatos további információkért lásd: [folyamatok és a tevékenységek](concepts-pipelines-activities.md) az Azure Data Factory.
 
-Most egy **dataset** egyszerűen mutat, vagy a használni kívánt adatforrásra hivatkozik adatok nevű nézete a **tevékenységek** bemenetekhez és kimenetekhez. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Például egy Azure Blob-adathalmazra határozza meg a blob-tároló és mappa Blob-tároló, ahonnan a tevékenységet olvassa el az adatokat.
+Most egy **dataset** egyszerűen mutat, vagy a használni kívánt adatforrásra hivatkozik adatok nevű nézete a **tevékenységek** bemenetekhez és kimenetekhez. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Az Azure Blob-adatkészlet például meghatározza a blobtárolót és azt a Blob Storage-mappát, amelyből a tevékenység beolvassa az adatokat.
 
 Mielőtt létrehozna egy adatkészletet, létre kell hoznia egy **társított szolgáltatás** az adattároló csatolása az adat-előállítóban. A társított szolgáltatások nagyon hasonlóak a kapcsolati karakterláncokhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Azt gondolja, hogy így; a dataset jelenti. a csatolt adattárolókhoz belül az adatok szerkezete, és a társított szolgáltatás határozza meg a kapcsolat az adatforráshoz. Például egy Azure Storage kapcsolódó szolgáltatás hivatkozások egy tárfiókot az adat-előállítóban. Egy Azure Blob-adathalmazra jelenti. a blob-tároló és a mappában, hogy Azure storage-fiók, amely tartalmazza a bemeneti BLOB feldolgozásra.
 
@@ -43,6 +43,56 @@ Mielőtt létrehozna egy adatkészletet, létre kell hoznia egy **társított sz
 Az alábbi ábrán látható a folyamat, a tevékenység, a dataset és a társított szolgáltatás közötti kapcsolatok adat:
 
 ![Adatcsatorna, adatkészlet, tevékenység társított szolgáltatások közötti kapcsolat](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+
+## <a name="linked-service-json"></a>Társított szolgáltatás JSON
+A Data Factory összekapcsolt szolgáltatás az alábbiak szerint definiáltuk JSON formátumban:
+
+```json
+{
+    "name": "<Name of the linked service>",
+    "properties": {
+        "type": "<Type of the linked service>",
+        "typeProperties": {
+              "<data store or compute-specific type properties>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+A következő táblázat ismerteti a fenti JSON-tulajdonságokat:
+
+Tulajdonság | Leírás | Szükséges |
+-------- | ----------- | -------- |
+név | A társított szolgáltatás neve. Lásd: [Azure Data Factory - elnevezési szabályait](naming-rules.md). |  Igen |
+type | A társított szolgáltatás típusa. Például: AzureStorage (adattár) vagy AzureBatch (számítást). Tekintse meg a typeProperties leírását. | Igen |
+typeProperties | A típus tulajdonságokat minden adattároló különböző vagy számítási. <br/><br/> A támogatott adatok tárolására, típusok és a tulajdonságokat, tekintse meg a [adathalmaztípushoz](#dataset-type) tábla ebben a cikkben. Nyissa meg az adatok tároló összekötő cikkben tájékozódhat az adattárat jellemző tulajdonságokat. <br/><br/> A támogatott számítási típusok és azok típustulajdonságokat: [összekapcsolt szolgáltatások számítási](compute-linked-services.md). | Igen |
+connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló egy magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nem
+
+## <a name="linked-service-example"></a>A kapcsolódószolgáltatás-példa
+A következő társított szolgáltatás az Azure tárolás társított szolgáltatásának. Figyelje meg, hogy a típus AzureStorage van beállítva. Az Azure tárolás társított szolgáltatásának típus tulajdonságai közé tartozik egy kapcsolati karakterláncot. A Data Factory szolgáltatásnak a kapcsolati karakterlánc az adattár futási időben való kapcsolódáshoz használ. 
+
+```json
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 ## <a name="dataset-json"></a>Adatkészlet JSON
 A Data Factory dataset az alábbiak szerint definiáltuk JSON formátumban:
@@ -72,12 +122,12 @@ A Data Factory dataset az alábbiak szerint definiáltuk JSON formátumban:
 ```
 A következő táblázat ismerteti a fenti JSON-tulajdonságokat:
 
-Tulajdonság | Leírás | Szükséges | Alapértelmezett
--------- | ----------- | -------- | -------
-név | A DataSet adatkészlet neve. | Lásd: [Azure Data Factory - elnevezési szabályait](naming-rules.md). | Igen | NA
-type | A dataset típusa. | Adja meg a Data Factory által támogatott típusú (például: AzureBlob, AzureSqlTable). <br/><br/>További információkért lásd: [Dataset típusok](#dataset-types). | Igen | NA
-struktúra | Az adatkészlet sémája. | További információkért lásd: [adatkészlet-szerkezetekben](#dataset-structure). | Nem | NA
-typeProperties | A típus tulajdonságokat eltérőek az egyes (például: Azure Blob, Azure SQL-tábla). A támogatott típusok és tulajdonságaikat a részletekért lásd: [adathalmaztípushoz](#dataset-type). | Igen | NA
+Tulajdonság | Leírás | Szükséges |
+-------- | ----------- | -------- |
+név | A DataSet adatkészlet neve. Lásd: [Azure Data Factory - elnevezési szabályait](naming-rules.md). |  Igen |
+type | A dataset típusa. Adja meg a Data Factory által támogatott típusú (például: AzureBlob, AzureSqlTable). <br/><br/>További információkért lásd: [Dataset típusok](#dataset-types). | Igen |
+struktúra | Az adatkészlet sémája. További információkért lásd: [adatkészlet-szerkezetekben](#dataset-structure). | Nem |
+typeProperties | A típus tulajdonságokat eltérőek az egyes (például: Azure Blob, Azure SQL-tábla). A támogatott típusok és tulajdonságaikat a részletekért lásd: [adathalmaztípushoz](#dataset-type). | Igen |
 
 ## <a name="dataset-example"></a>A DataSet – példa
 A következő példában a dataset jelenti. az SQL-adatbázisban MyTable nevű tábla.
@@ -104,28 +154,6 @@ Vegye figyelembe a következő szempontokat:
 - AzureSqlTable típusúra van beállítva.
 - tableName típusa (AzureSqlTable típus adott) tulajdonsága táblanév.
 - linkedServiceName AzureSqlDatabase, amelyet a következő JSON-részlet típusú társított szolgáltatás hivatkozik.
-
-## <a name="linked-service-example"></a>A kapcsolódószolgáltatás-példa
-AzureSqlLinkedService a következők:
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "description": "",
-        "typeProperties": {
-            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Password=<password>;Integrated Security=False;Encrypt=True;Connect Timeout=30"
-        }
-    }
-}
-```
-Az előző JSON kódtöredékre:
-
-- **típus** AzureSqlDatabase értékre van állítva.
-- **connectionString** típusú tulajdonság határozza meg az adatokat egy SQL-adatbázishoz való kapcsolódáshoz.
-
-Ahogy látja, a társított szolgáltatás SQL-adatbázis csatlakoztatása határozza meg. A dataset határozza meg, milyen tábla bemenetként használja, ezért a folyamat tevékenység kimeneti.
 
 ## <a name="dataset-type"></a>A DataSet típusa
 Nincsenek adathalmazok, attól függően, hogy a tárolót használja számos különböző típusú. Lásd az alábbi táblázatban a Data Factory által támogatott adattárolókhoz listáját. Kattintson a tárolóban annak megismerése, hogyan összekapcsolt szolgáltatás és az adott tároló adatkészlet létrehozásához.

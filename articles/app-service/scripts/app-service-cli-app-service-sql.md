@@ -13,25 +13,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 06/19/2017
+ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 12e373a6503127d57f5fc1ed719c82bf56aed60c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e85b405e61460c7cde8dd8a6001add736c53c713
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="connect-a-web-app-to-a-sql-database"></a>Webes alkalmazás csatlakoztatása SQL-adatbázishoz
 
-Ebben a forgatókönyvben, megtudhatja, hogyan Azure SQL-adatbázis és az Azure-webalkalmazás létrehozása. Az SQL-adatbázis majd összekapcsolja a webes alkalmazás alkalmazás-beállításokkal.
-
+Ez a parancsfájlpélda hoz létre az Azure SQL-adatbázis és az Azure-webalkalmazásban. A web app alkalmazást beállításokkal majd hivatkozik az SQL-adatbázis.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha telepítése és a parancssori felület helyileg használata mellett dönt, az Azure parancssori felület verzió szüksége 2.0-s vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Mintaparancsfájl
 
@@ -45,12 +44,13 @@ A parancsfájl a következő parancsokat egy erőforráscsoport, webalkalmazás,
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az App Service-csomag létrehozása](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service-csomag létrehozása. Ez olyan, mintha egy kiszolgálófarmon, az Azure webalkalmazás számára. |
-| [az alkalmazás-kulcs létrehozása](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
-| [az sql-kiszolgáló létrehozása](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | Létrehoz egy SQL adatbázis-kiszolgálót.  |
-| [az sql-adatbázis létrehozása](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_create) | Létrehoz egy új adatbázist az SQL-kiszolgálóval. |
-| [az alkalmazás kulcs appsettings konfiguráció](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Létrehozza vagy frissíti az Azure-webalkalmazás Alkalmazásbeállítás. Alkalmazásbeállítások az alkalmazások környezeti változóként érhetők el. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | App Service-csomag létrehozása. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
+| [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az_sql_server_create) | Létrehoz egy SQL adatbázis-kiszolgálót.  |
+| [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az_sql_db_create) | Létrehoz egy új adatbázist az SQL-kiszolgálóval. |
+| [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az_sql_db_show_connection_string) | Egy adatbázis kapcsolati karakterláncának generál. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) | Létrehozza vagy frissíti az Azure-webalkalmazás Alkalmazásbeállítás. Alkalmazásbeállítások az alkalmazások környezeti változóként érhetők el. |
 
 ## <a name="next-steps"></a>Következő lépések
 

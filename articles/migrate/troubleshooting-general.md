@@ -1,31 +1,33 @@
 ---
 title: "Azure áttelepítése elhárítása |} Microsoft Docs"
 description: "Ismert problémák a Azure át, és a hibaelhárítási tippek gyakori hibák áttekintése."
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 40faffa3f-1f44-4a72-94bc-457222ed7ac8
-ms.service: migrate
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/22/2017
+ms.service: azure-migrate
+ms.topic: troubleshooting
+ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: 8c7c79a23ee09a7de35252d7819d1f0e5b1d98c5
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 1fcc9e12e63eda73d53ae2085bc2a64d31ea2067
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/12/2017
 ---
-# <a name="troubleshoot-azure-migrate"></a>Azure hibaelhárítása áttelepítése
+# <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
 ## <a name="troubleshoot-common-errors"></a>Gyakori hibák elhárítása
 
 [Az Azure áttelepítése](migrate-overview.md) értékelésére a helyszíni munkaterhelések Azure való áttelepítésre. Ez a cikk segítségével elhárítása üzembe helyezése és használata a Azure áttelepítése során.
 
+
+**Gyűjtő nem tud csatlakozni az internethez**
+
+Ez akkor fordulhat elő, ha a gép, használja a rendszer proxy mögött van. Győződjön meg arról, hogy az engedélyezési hitelesítő adatok megadása, ha a proxy szüksége van rá.
+Ha bármilyen URL-alapú tűzfal proxy segítségével szabályozhatja a kimenő kapcsolat, mindenképp érdemes engedélyezett URL-címeket az alábbi szükséges:
+
+**URL-CÍME** | **Cél**  
+--- | ---
+*. portal.azure.com | Szükséges ellenőrizze a kapcsolatot az Azure-szolgáltatás, és érvényesítésére időszinkronizálást ad ki.
+*. oneget.org | Szükséges letöltése a powershell-alapú vCenter PowerCLI modul.
 
 **A gyűjtő nem tud kapcsolódni a projekt a projekt azonosítójával, és kulcs másolását a portálról.**
 

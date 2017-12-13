@@ -1,3 +1,4 @@
+
 1. Miután az Azure virtuális gép létrejött és fut, kattintson a Virtual Machines ikonra az Azure Portalon a virtuális gépek megtekintéséhez.
 
 1. Kattintson a három pontot ábrázoló gombra (**...**) az új virtuális gép mellett.

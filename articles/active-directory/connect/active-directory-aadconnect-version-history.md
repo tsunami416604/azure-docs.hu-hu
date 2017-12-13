@@ -12,28 +12,93 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/03/2017
+ms.date: 12/12/2017
 ms.author: billmath
-ms.openlocfilehash: 5a47d7f589d4d2dcd40ebb6ff551f2c77fc8a8aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f2d4c3007fb8474da11587973e7623143bf118b1
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
-
-Ez a cikk úgy van kialakítva, segítséget nyújtanak a kiadott verziók nyomon követheti, és tudni, hogy szükséges-e vagy nem a legújabb verzióra frissíteni.
+"Ez a cikk segítséget nyújtanak a kiadott verziók nyomon követheti, és tudni, hogy szükséges-e a legújabb verzióra frissíteni vagy nem úgy van kialakítva.
 
 Ez az kapcsolódó témaköröket:
+
 
 
 Témakör |  Részletek
 --------- | --------- |
 Az Azure AD Connect frissítésének lépései | A különböző módszereket [a legújabb verzióra a korábbi verzióról való frissítés](active-directory-aadconnect-upgrade-previous-version.md) az Azure AD Connect kiadás.
 Szükséges engedélyek | Egy frissítés alkalmazásához szükséges engedélyek, lásd: [fiókok és engedélyek](./active-directory-aadconnect-accounts-permissions.md#upgrade).
-Letöltés| [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?LinkId=615771).
 
+Töltse le |} [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="116540"></a>1.1.654.0
+Állapot: December 12., 2017
+
+>[!NOTE]
+>Ez a biztonsági kapcsolódó gyorsjavítás az Azure AD Connect
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+Ha először telepíti az Azure AD Connect, új fiók is létrehozható, amely az Azure AD Connect-szolgáltatás futtatására szolgál. Ez a kiadás előtt a fiók engedélyezett jelszóval rendelkező adminsitrator jogok a jelszó értékre módosítani tudja azokat a beállításokat hozták létre.  Ez engedélyezett, hogy jelentkezzen be ezt a fiókot használja, és ez a jogosultság biztonsági szabálysértés kiterjesztését jelentene. Ebben a kiadásban a beállítás a fiók, amely jön létre, és eltávolítja a biztonsági rés megfeszíti.
+
+>[!NOTE]
+>Ez a kiadás csak a biztonsági rés az Azure AD Connect, ahol a szolgáltatás fiók a telepítési folyamat által létrehozott új telepítésére. Exisating telepítésére, és azokban az esetekben, ahol meg kell adnia a fiók saját kezűleg hogy sould győződjön meg arról, hogy a biztonsági rés nem létezik.
+
+A beállításokat a szolgáltatás fiók futtatása megerősítéséhez [a PowerShell parancsfájl](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Akkor lesz szigoríthatja a beállításokat a szolgáltatás fiók távolítsa el a biztonsági rést az alábbi értékeket:
+
+*   A megadott objektum öröklődés letiltása
+*   Távolítsa el az adott objektum ACE-k meghatározott önmagára kivételével minden ACE-k. Szeretnénk az alapértelmezett engedélyek mindaddig módosulna, amikor a saját MAGA.
+*   Ezek az engedélyek hozzárendelése:
+
+Típus     | Név                          | Hozzáférés               | Erre vonatkozik
+---------|-------------------------------|----------------------|--------------|
+Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
+Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
+Engedélyezés    | Tartományi rendszergazdák                 | Teljes hozzáférés         | Ez az objektum  |
+Engedélyezés    | Rendszergazdák                | Teljes hozzáférés         | Ez az objektum  |
+Engedélyezés    | Vállalati tartományvezérlők | Tartalmának listázása        | Ez az objektum  |
+Engedélyezés    | Vállalati tartományvezérlők | Az összes tulajdonság olvasása  | Ez az objektum  |
+Engedélyezés    | Vállalati tartományvezérlők | Olvasási engedélyek     | Ez az objektum  |
+Engedélyezés    | Hitelesített felhasználók           | Tartalmának listázása        | Ez az objektum  |
+Engedélyezés    | Hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
+
+#### <a name="powershell-script-to-tighten-a-pre-existing-service-account"></a>PowerShell-parancsfájlt, hogy szigorítsa a már meglévő szolgáltatás-fiók
+
+A PowerShell-parancsfájl segítségével alkalmazza ezeket a beállításokat egy már meglévő szolgáltatási fiókot (a szervezet biztosítja, vagy az Azure AD Connect egy korábbi telepítés által létrehozott éter töltse le a parancsfájl a fent megadott hivatkozás.
+
+##### <a name="usage"></a>Használat
+
+```powershell
+Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
+```
+
+Ha 
+
+$ObjectDN = engedélyeiket kell megfeszíteni kell az Active Directory-fiókot.
+$Credential = a hitelesítő adatokat használja az ügyfél hitelesítésére, miközben az Active Directory van szó. Ez általában az engedélyeiket igények szigorítása a fiók létrehozásához használt vállalati rendszergazdai hitelesítő adatokat.
+
+>[!NOTE] 
+>$credential. Felhasználónevet tartomány\felhasználónév formátumban kell megadni.  
+
+##### <a name="example"></a>Példa:
+
+```powershell
+Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbackdc,DC=com" -Credential $credential 
+```
+### <a name="was-this-vulnerability-used-to-gain-unauthorized-access"></a>A biztonsági rés használt jogosulatlanul hozzáférést?
+
+Megjelenítéséhez, ha a biztonsági rés szerepel-e be az Azure AD Connect konfigurálása, ellenőrizni kell az utolsó jelszó alaphelyzetbe szolgáltatásfiók dátum.  Ha a időbélyeg a váratlan, a további vizsgálatok keresztül az eseménynaplóban, hogy a jelszó alaphelyzetbe esemény, kell végezni.
+
+                                                                                                               
+
+## <a name="116490"></a>1.1.649.0
+Állapot: Október 27 2017
+
+>[!NOTE]
+>A build ügyfélnek az Azure AD Connect automatikus frissítési szolgáltatás nem érhető el
 
 ## <a name="116490"></a>1.1.649.0
 Állapot: Október 27 2017

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: 62b1bf66647c762b17410c37fe6ebd996f577d25
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: ec1b9868ca94392cd00875ef2913d4c14a608110
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>Másolja az adatokat, vagy Dynamics 365 / Dynamics CRM, Azure Data Factory használatával
 
@@ -46,7 +46,7 @@ A Dynamics 365 konkrétan az alábbi alkalmazástípusokat támogatja:
 - Dynamics 365 a Marketing
 
 > [!NOTE]
-> Dynamics összekötő használatára, a jelszó az Azure Key Vault tárolja, és lehetővé teszik az ADF másolási tevékenységek lekéréses onnan, adatmásolás végrehajtása során. Tekintse meg a konfigurálása a [szolgáltatástulajdonságok kapcsolódó](#linked-service-properties) szakasz.
+> Dynamics összekötő használatára, a jelszó tárolása az Azure Key Vault, valamint lehetővé teszik a másolási tevékenységek lekéréses ott adatmásolás végrehajtása során. Tekintse meg a konfigurálása a [szolgáltatástulajdonságok kapcsolódó](#linked-service-properties) szakasz.
 
 ## <a name="getting-started"></a>Bevezetés
 
@@ -322,7 +322,7 @@ Adatok másolása Dynamics, állítsa be a fogadó típusa a másolási tevéken
 
 Ha az adatok másolása Dynamics, az Azure Data Factory ideiglenes adattípusok a következő megfeleltetéseket használtak Dynamics adattípusok. Lásd: [séma- és írja be a leképezéseket](copy-activity-schema-and-type-mapping.md) hogyan másolási tevékenység van leképezve a séma- és adatok típusa a fogadó tájékozódhat.
 
-Konfigurálja a megfelelő ADF-adattípus a forrás Dynamics adatok alapján adatkészlet-szerkezetekben írja be az alábbi leképezési táblázat segítségével:
+A Data Factory megfelelő adattípus konfigurálja a forrás Dynamics adatok alapján adatkészlet-szerkezetekben írja be az alábbi leképezési táblázat segítségével:
 
 | Dynamics adattípus | Data factory ideiglenes adattípus | Támogatott forrásaként | A fogadó támogatott |
 |:--- |:--- |:--- |:--- |

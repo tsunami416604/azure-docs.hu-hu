@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/31/2017
+ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: 8c0bd1aa2236eb44a41142f9cfc20c220ca49e99
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 7d076b970481b68d9c352d54f3452b8e222f5c64
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Tárolási konfigurációt az SQL Server virtuális gépen
 Amikor konfigurál egy SQL Server virtuálisgép-lemezkép az Azure-ban, a portál segítségével automatizálhatja a tárolási konfigurációt. Ez magában foglalja a tárolási csatolása a virtuális gépek, így tárolási elérhető SQL-kiszolgáló számára, és konfigurálja úgy a optimalizálása ki az adott igények szerint.

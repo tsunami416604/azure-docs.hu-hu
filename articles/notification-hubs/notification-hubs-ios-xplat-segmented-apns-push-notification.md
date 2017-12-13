@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: dc47250db6fb3a2853dae24e02bda236154d93fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8aec171b46df3e0e7f2a2d3cc9d44084d064e6fd
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>A legfrissebb hírek elküldése a Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -207,7 +207,7 @@ Az első lépés a felhasználói felületi elemek hozzáadása a meglévő stor
 Az alkalmazás most tárolhat kategóriák készlete eszköz helyi tárolójára regisztrálhatók az értesítési központban, amikor az alkalmazás indítása.  A felhasználó módosíthatja a kiválasztott kategóriák futásidejű, és kattintson a **előfizetés** módszer az eszköz regisztrációjának frissítését. A következő később frissíteni az alkalmazásnak, hogy a legfrissebb híreket tartalmazó értesítések küldése közvetlenül az alkalmazás funkcióit.
 
 ## <a name="optional-sending-tagged-notifications"></a>(választható) Címkézett értesítések küldése
-Ha nem fér a Visual Studio, ugorjon a következő részre, és értesítések küldése az alkalmazás funkcióit. A megfelelő sablon értesítést is küldhet a [klasszikus Azure portál] az értesítési központ hibakeresési lapján. 
+Ha nem fér a Visual Studio, ugorjon a következő részre, és értesítések küldése az alkalmazás funkcióit. A megfelelő sablon értesítést is küldhet a [Azure-portálon] az értesítési központ hibakeresési lapján. 
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
@@ -331,4 +331,4 @@ Az oktatóanyag azt megtudta, hogyan kell közvetíteni legfrissebb hírek kateg
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
-[klasszikus Azure portál]: https://manage.windowsazure.com
+[Azure-portálon]: https://portal.azure.com

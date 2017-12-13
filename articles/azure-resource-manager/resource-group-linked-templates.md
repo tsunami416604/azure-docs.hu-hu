@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2017
+ms.date: 12/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7d6e8f123dd04b98df10b5a941396d7140bcc023
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 78e5749369de1dd9865f61baefd70e6ce4bde31d
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="using-linked-templates-when-deploying-azure-resources"></a>Azure-erőforrások telepítésekor kapcsolt sablonok használata
 
@@ -478,59 +478,13 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 ## <a name="example-templates"></a>Példa sablonok
 
-### <a name="hello-world-from-linked-template"></a>Hello World csatolt sablonból
+A következő példák azt szemléltetik, gyakori használati módjai kapcsolt sablonok.
 
-Központi telepítése a [szülő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) és [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json), PowerShell használata:
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName examplegroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/linkedtemplates/helloworldparent.json
-```
-
-Vagy az Azure parancssori felület:
-
-```azurecli-interactive
-az group deployment create \
-  -g examplegroup \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/linkedtemplates/helloworldparent.json
-```
-
-### <a name="load-balancer-with-public-ip-address-in-linked-template"></a>Terheléselosztó csatolt sablon a nyilvános IP-címmel
-
-Központi telepítése a [szülő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) és [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json), PowerShell használata:
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName examplegroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json
-```
-
-Vagy az Azure parancssori felület:
-
-```azurecli-interactive
-az group deployment create \
-  -g examplegroup \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json
-```
-
-### <a name="multiple-public-ip-addresses-in-linked-template"></a>A csatolt sablon több nyilvános IP-cím
-
-Központi telepítése a [szülő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) és [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json), PowerShell használata:
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName examplegroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json
-```
-
-Vagy az Azure parancssori felület:
-
-```azurecli-interactive
-az group deployment create \
-  -g examplegroup \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json
-```
+|Fő sablon  |Csatolt sablon |Leírás  |
+|---------|---------| ---------|
+|[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Csatolt sablonból karakterlánc értéket ad vissza. |
+|[Nyilvános IP-címmel rendelkező terheléselosztó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Nyilvános IP-címet adja vissza a csatolt sablonból, és beállítja, hogy a terheléselosztó. |
+|[Több IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Több nyilvános IP-cím csatolt sablont hoz létre.  |
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.openlocfilehash: d57f45066387f451463a38d76d3fe6adab77e41f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: fd5bd82a35c5a2ba72cffe35138311322714a1c0
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Más sémák (előzetes verzió) felhő adatbázisokkal átfogó lekérdezése
 ![A különböző adatbázisokhoz táblák átfogó lekérdezése][1]
@@ -43,7 +43,7 @@ Adatbázisok függőleges particionált táblák más-más részhalmazához kül
 ## <a name="create-database-scoped-master-key-and-credentials"></a>Adatbázis hatókörű főkulcs és hitelesítő adatainak létrehozása
 A hitelesítő adatok segítségével a rugalmas lekérdezés csatlakozzon a távoli adatbázishoz.  
 
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
     SECRET = '<password>'
     [;]
@@ -155,14 +155,14 @@ A következő lekérdezés az ügyfelek a két helyi tábla rendelések és a so
 
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Tárolt eljárás távoli T-SQL-végrehajtásra: sp\_execute_remote
-Rugalmas lekérdezési is vezet be a tárolt eljárás, amely a szilánkok közvetlen hozzáférést biztosít. A tárolt eljárás neve [sp\_hajtható végre \_távoli](https://msdn.microsoft.com/library/mt703714) és a távoli adatbázis távoli tárolt eljárások, illetve a T-SQL kód végrehajtásához használható. Ez a következő paramétereket fogadja: 
+Rugalmas lekérdezési is vezet be a tárolt eljárás, amely közvetlen hozzáférést biztosít a távoli adatbázishoz. A tárolt eljárás neve [sp\_hajtható végre \_távoli](https://msdn.microsoft.com/library/mt703714) és a távoli adatbázis távoli tárolt eljárások, illetve a T-SQL kód végrehajtásához használható. Ez a következő paramétereket fogadja: 
 
 * Adatforrás neve (nvarchar): a külső adatforrás RDBMS típusú nevét. 
-* Lekérdezés (nvarchar): A T-SQL-lekérdezést minden shard hajtható végre. 
+* Lekérdezés (nvarchar): A T-SQL-lekérdezést hajtható végre a távoli adatbázishoz. 
 * Paraméterdeklarációhoz (nvarchar) – nem kötelező: adatok típusdefiníciók a paraméterek (például sp_executesql) a következő lekérdezésparaméter használt karakterlánc. 
 * Paraméter értéklistát - választható: paraméterértékek (például sp_executesql) vesszővel tagolt listája.
 
-Az sp\_hajtható végre\_távoli a meghívás paramétereit szerepel a külső adatforrás használja az adott T-SQL-utasítás végrehajtása a távoli adatbázis. A külső adatforrás hitelesítő adatait használja a shardmap manager-adatbázis és a távoli adatbázisokhoz való csatlakozáshoz.  
+Az sp\_hajtható végre\_távoli a meghívás paramétereit szerepel a külső adatforrás használja az adott T-SQL-utasítás végrehajtása a távoli adatbázishoz. A külső adatforrás hitelesítő adatait használja a távoli adatbázishoz való kapcsolódáshoz.  
 
 Példa: 
 

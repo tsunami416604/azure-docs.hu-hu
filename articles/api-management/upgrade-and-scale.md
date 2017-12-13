@@ -11,17 +11,17 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: apimpm
-ms.openlocfilehash: e92c1a44b49c64308438184ab8185a90766c5bcf
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 6ae977344101c02222fd9930e26a083bf5e3f800
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="upgrade-and-scale-an-api-management-instance"></a>Frissítés és az API Management példány méretezése 
 
 Ügyfelek hozzáadása és eltávolítása egységek által méretezhető API Management (APIM) példánya. A **egység** dedikált Azure-erőforrások össze, és egy bizonyos terhelést hordozó API számos meghívja a havi kifejezett kapacitás. Ez az érték nem felel meg a hívás korlátozása, de ahelyett, hogy a maximális átviteli sebesség az értéket a nyers kapacitástervezés. Tényleges átviteli sebesség és a késleltetés függenek körben száma és az egyidejű kapcsolatok sebessége tényezők, a konfigurált házirendek, a kérelem-válasz méretek és a háttérkiszolgáló késleltetés száma és típusa.
 
-Kapacitás és az egyes egységek ára függ a **réteg** a egység létezik. Három réteg közül választhat: **fejlesztői**, **szabványos**, **prémium**. Ha egy réteget egy kézbesítési kapacitásbővítés van szüksége, adja hozzá egy egység. A jelenleg kiválasztott APIM példány réteg nem engedélyezi a további egységeket, ha szüksége, váltson egy magasabb szintű csomagra. 
+Kapacitás és az egyes egységek ára függ a **réteg** a egység létezik. Négy szintek közül választhat: **fejlesztői**, **alapvető**, **szabványos**, **prémium**. Ha egy réteget egy kézbesítési kapacitásbővítés van szüksége, adja hozzá egy egység. A jelenleg kiválasztott APIM példány réteg nem engedélyezi a további egységeket, ha szüksége, váltson egy magasabb szintű csomagra. 
 
 Az ár tárolóegységekhez és a rendelkezésre álló funkciók (például több területi telepítési) a réteg a APIM példány választott függ. A [díjszabása](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) cikk, egység és funkciónak, amelyeket az egyes rétegekbe ára ismerteti. 
 
@@ -59,13 +59,13 @@ Használjon **metrikák** (használt Azure figyelő képességek) ismertetése, 
 
 ## <a name="upgrade-and-scale"></a>A frissítés és a skála 
 
-Ahogy korábban említettük, választhat három réteg: **fejlesztői**, **szabványos**, és **prémium**. A **fejlesztői** réteg értékelni a szolgáltatást kell használni; ez nem használható termelési környezetben. A **fejlesztői** réteg nem rendelkezik SLA-t, és a réteg (hozzáadása egységek) nem lehet méretezni. 
+Ahogy korábban említettük, választhat négy rétegek: **fejlesztői**, **alapvető**, **szabványos** és **prémium**. A **fejlesztői** réteg értékelni a szolgáltatást kell használni; ez nem használható termelési környezetben. A **fejlesztői** réteg nem rendelkezik SLA-t, és a réteg (hozzáadása egységek) nem lehet méretezni. 
 
-**Standard** és **prémium** éles rétegek, amelyek SLA-t, és megadhat vannak. A **szabványos** kiterjeszthető legfeljebb négy egységeire. Tetszőleges számú egységeket is hozzáadhat a **prémium** réteg. 
+**Alapszintű**, **szabványos** és **prémium** éles rétegek, amelyek SLA-t, és megadhat vannak. A **alapvető** réteg a legolcsóbb szint, amely rendelkezik SLA-t, és azok méretezett legfeljebb 2 egység **szabványos** kiterjeszthető legfeljebb négy egységeire. Tetszőleges számú egységeket is hozzáadhat a **prémium** réteg.
 
 A **prémium** réteg lehetővé teszi a kívánt Azure-régiók tetszőleges számú API management egypéldányos szét. Kezdeti létrehozásakor az API Management service, a példány csak egy egységet tartalmaz, és egyetlen Azure-régiót találhatók. A kezdeti régió van kijelölve a **elsődleges** régióban. További régiókban könnyen lehet hozzáadni. Egy régiót hozzáadásakor meg kell adnia a lefoglalni kívánt egységek számát. Például lehet egy egységet a **elsődleges** régió és néhány más régióban öt egység. Könnyebben igazíthatja a forgalomra, minden régióban van egységek száma. További információkért lásd: [üzembe helyezése az Azure API Management szolgáltatáspéldány több Azure-régiók](api-management-howto-deploy-multi-region.md).
 
-Frissítse, és bármely réteg érkező vagy oda irányuló visszaminősítését. Vegye figyelembe, hogy frissítése vagy alacsonyabb verziójúra változtatása távolíthatja el bizonyos szolgáltatásokat – például a Vnetek vagy több régió központi telepítését, ha a Standard a prémium tarifacsomagra alacsonyabb verziójúra változtatása.
+Frissítse, és bármely réteg érkező vagy oda irányuló visszaminősítését. Vegye figyelembe, hogy frissítése vagy alacsonyabb verziójúra változtatása távolíthatja el bizonyos szolgáltatásokat – például a Vnetek vagy több régió központi telepítését, ha a prémium szintű rétegtől alapszintű vagy Standard visszaminősítése.
 
 >[!NOTE]
 >A frissítés vagy skálája eltarthat 15 45 percig alkalmazni. Ha elkészült értesítést kap.

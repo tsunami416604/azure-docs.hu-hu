@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
-ms.openlocfilehash: bd5e2fce31ae597f8ce48fb8f5492e280cbbf28f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 63dd283605553297a7dc8feab90c8bcbd716d5de
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Hogyan használja iOS Azure Mobile Apps készült ügyféloldali kódtára
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -546,7 +546,7 @@ Az Active Directory Authentication Library (ADAL) segítségével a felhasznál�
 3. Futtassa a terminál használatával `pod install` a könyvtárból, amely tartalmazza a projekthez, és nyissa meg a létrehozott Xcode-munkaterületet (ne a projektre).
 4. Adja hozzá a következő kódot az alkalmazás használ nyelvének megfelelően. Minden ellenőrizze a cserét:
 
-   * Cserélje le **INSERT-SZOLGÁLTATÓ-Itt** nevű, a bérlő, amelyben az alkalmazás üzembe. A következő formátumban kell megadni https://login.microsoftonline.com/contoso.onmicrosoft.com. Ez az érték a [klasszikus Azure portálon] az Azure Active Directory tartományi lapján másolhatók.
+   * Cserélje le **INSERT-SZOLGÁLTATÓ-Itt** nevű, a bérlő, amelyben az alkalmazás üzembe. A következő formátumban kell megadni https://login.microsoftonline.com/contoso.onmicrosoft.com. Ez az érték lehet másolni az Azure Active Directory tartományi lapján a [Azure-portálon].
    * Cserélje le **INSERT-erőforrás-azonosító-Itt** az ügyfél-azonosító a mobil-háttéralkalmazás számára. Ezt úgy szerezheti be az ügyfél-azonosító a **speciális** lap **Azure Active Directory beállításai** a portálon.
    * Cserélje le **INSERT-ügyfél-azonosító-Itt** , az ügyfél-Azonosítót a natív ügyfélalkalmazás másolta.
    * Cserélje le **INSERT-REDIRECT-URI-Itt** a hellyel való */.auth/login/done* végpont, a HTTPS protokollt használ. Ez az érték a következőképpen kell kinéznie *https://contoso.azurewebsites.net/.auth/login/done*.
@@ -853,7 +853,7 @@ A Google-bejelentkezés SDK iOS segítségével a felhasználók jelentkezzen be
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
-
+[Azure-portálon]: https://portal.azure.com/
 [Handling Expired Tokens]: http://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
 [Permissions]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx

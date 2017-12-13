@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06b77ce5b6f15e3dae4a7d4bad76def949774678
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 233e0449bc0803709f0aa369a446c2ec5d3f177e
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="create-a-virtual-machine-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel a virtuális gép létrehozása
 
@@ -46,13 +46,13 @@ A gyorsított hálózat előnyeit, hogy engedélyezve van a virtuális gép csak
 A következő korlátozások vonatkoznak az e funkció használata esetén:
 
 * **A hálózati illesztő létrehozása:** gyorsított hálózat csak akkor engedélyezhető, az új hálózati Nem engedélyezhető az egy meglévő hálózati adaptert.
-* **Virtuális gép létrehozása:** A hálózati adapter engedélyezve gyorsított hálózattal csak akkor csatolható a virtuális géphez a virtuális gép létrehozásakor. A hálózati adapter nem lehet csatolni, egy meglévő virtuális gépre.
-* **Régiók:** Windows-alapú virtuális gépek gyorsított hálózattal érhető el az Azure-régióban. Linux virtuális gépek gyorsított hálózattal több régióba érhető el. Ez a funkció érhető el a régiók növekszik. Tekintse meg az Azure virtuális hálózat frissítések blog alatt a legfrissebb információkat.   
+* **Virtuális gép létrehozása:** A hálózati adapter engedélyezve gyorsított hálózattal csak akkor csatolható a virtuális géphez a virtuális gép létrehozásakor. A hálózati adapter nem lehet csatolni, egy meglévő virtuális gépre. Ha a virtuális gép hozzáadása egy meglévő rendelkezésre állási, a rendelkezésre állási csoport virtuális gépeinek kell is rendelkezik az elérését gyorsítja fel engedélyezett hálózati.
+* **Régiók:** Windows-alapú virtuális gépek gyorsított hálózattal érhető el az Azure-régióban. Linux virtuális gépek gyorsított hálózattal több régióba érhető el. A képesség, elérhető régiók növekszik. A legfrissebb információkért tekintse meg a [Azure virtuális hálózat frissítések](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) blog.   
 * **Támogatott operációs rendszerekről:** Windows: Microsoft Windows Server 2012 R2 Datacenter és a Windows Server 2016. Linux: Ubuntu Server 16.04 kernel 4.4.0-77 vagy annál újabb LTS, SLES 12 SP2, RHEL 7.3 és CentOS 7.3 (közzétett "Engedélyezetlen Wave szoftver").
 * **Virtuálisgép-méret:** általános célú és nyolc vagy több maggal rendelkező számítási optimalizált példány mérete. További információkért lásd: a [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gép méretének cikkeket. A Virtuálisgép-példány támogatott méretek készletét a jövőben bont ki.
 * **Telepítés csak Azure Resource Managerrel (ARM) keresztül:** az elérését gyorsítja fel hálózati nincs elérhető a telepítéshez a címterület-kezelés/RDFE keresztül.
 
-Ezek a korlátozások módosításai keresztül történik bejelentés a [Azure virtuális hálózat frissítése](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview/) lap.
+Ezek a korlátozások módosításai keresztül történik bejelentés a [Azure virtuális hálózat frissítése](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) lap.
 
 ## <a name="create-a-windows-vm"></a>Windows rendszerű virtuális gép létrehozása
 Használhatja az Azure-portálon vagy az Azure [PowerShell](#windows-powershell) a virtuális gép létrehozásához.
@@ -164,7 +164,7 @@ Miután létrehozta a virtuális Gépet az Azure-ban, telepítenie kell a Window
 9. Gyorsított hálózatkezelés engedélyezve van a virtuális gép számára.
 
 ## <a name="create-a-linux-vm"></a>Linux rendszerű virtuális gép létrehozása
-Használhatja az Azure-portálon vagy az Azure [PowerShell](#linux-powershell) egy Ubuntu vagy SLES virtuális gép létrehozásához. Az RHEL és CentOS virtuális gépeket egy másik munkafolyamat van.  Ellenőrizze az alábbi utasításokat.
+Használhatja az Azure-portálon vagy az Azure [PowerShell](#linux-powershell) egy Ubuntu vagy SLES virtuális gép létrehozásához. RHEL és a CentOS, lásd: [RHEL és CentOS](#rhel-and-centos).
 
 ### <a name="linux-portal"></a>Portál
 1. Linux preview; Ehhez hajtsa végre az 1-5 lépések a gyorsított hálózati regisztrálható a [hozzon létre egy Linux virtuális Gépet - PowerShell](#linux-powershell) című szakaszát.  A portál előnézethez nem regisztrálható.
@@ -183,7 +183,7 @@ Használhatja az Azure-portálon vagy az Azure [PowerShell](#linux-powershell) e
 2. A PowerShell-munkamenet indításához kattintson a Start gombra, írja be **powershell**, majd kattintson a **PowerShell** a keresési eredmények.
 3. A PowerShell-ablakban írja be a `login-azurermaccount` parancs futtatásával jelentkezzen be a Azure [fiók](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Ha már nincs fiókja, regisztrálhat az egy [ingyenes próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p).
 4. Regisztráció az Azure-gyorsított hálózati preview az alábbi lépések végrehajtásával:
-    - E-mail küldése [ axnpreview@microsoft.com ](mailto:axnpreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) az Azure-előfizetése Azonosítóját és a tervezett használattól. Várjon, amíg egy e-mailes megerősítés tudnivalók az előfizetés engedélyezése a Microsoft.
+    - E-mail küldése [ axnpreview@microsoft.com ](mailto:axnpreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) az Azure-előfizetése Azonosítóját és a tervezett használattól. Az alábbi lépéseket, amíg nem be, miután megkapta az e-mailes megerősítés a Microsofttól, hogy az előfizetés engedélyezve van a gyorsított hálózatkezeléshez.
     - Adja meg annak ellenőrzéséhez, hogy az előzetes regisztrálta a következő parancsot:
     
         ```powershell
@@ -201,7 +201,7 @@ Használhatja az Azure-portálon vagy az Azure [PowerShell](#linux-powershell) e
       >[!NOTE]
       >Amennyiben Ön részt vett a gyorsított hálózatkezelés a Windows virtuális gépek preview (már nem szükséges Windows virtuális gépek hálózati gyorsított használandó regisztrálása), akkor nincsenek automatikusan regisztrálva a gyorsított hálózatkezelési a Linux virtuális gépek megtekintése. Regisztrálnia kell a gyorsított hálózati Linux virtuális gépek Preview részt.
       >
-5. A böngészőben másolja a következő Ubuntu vagy SLES és a kívánt módon működjenek.  Ebben az esetben Redhat és CentOS van egy másik munkafolyamat, az alábbiakban leírt:
+5. A böngészőben másolja a következő Ubuntu vagy SLES és a kívánt módon működjenek.  Ebben az esetben Redhat és CentOS van egy másik munkafolyamat részletes leírást talál [RHEL és CentOS](#rhel-and-centos):
 
     ```powershell
     $RgName="MyResourceGroup"
@@ -309,18 +309,18 @@ Ezen a ponton utasításokat a telepítési módjától függően változhat.
      chmod +x ./configure_hv_sriov.sh
      sudo ./configure_hv_sriov.sh
      ```
-3. A parancsfájl futtatása után a virtuális gép újraindul, 60 másodperc felfüggesztése után.
+3. A parancsfájl futtatása után a virtuális gép újraindul egy 60 másodperces szünet után.
 4. Miután a virtuális gép újraindul, kapcsolódjon újra azt újra 5-7 lépések elvégzésével.
 5. Futtassa a `ifconfig` parancsot, és győződjön meg róla, hogy bond0 merült fel, és a rendszer azt jelzi, fel a kapcsolat. 
  
  >[!NOTE]
       >Gyorsított hálózatkezelés használó alkalmazások kell protokollt használó kommunikációra a *bond0* nem felület *eth0*.  A kapcsolat neve előtt gyorsított hálózatkezelés eléri az általánosan rendelkezésre álló módosíthatja.
 
-#### <a name="rhelcentos"></a>RHEL vagy CentOS
+#### <a name="rhel-and-centos"></a>RHEL és CentOS
 
 A Red Hat Enterprise Linux vagy a CentOS 7.3 VM létrehozásához meg néhány további lépést betölteni a legújabb illesztőprogramokkal SR-iov-t és a virtuális funkciójú (VF) illesztőprogram hálózati kártya számára szükséges. Az első fázisban a utasítás előkészíti egy olyanra, amely egy vagy több virtuális gépeken, amelyek az előre betöltött illesztőprogramokat is használhatók.
 
-##### <a name="phase-one-prepare-a-red-hat-enterprise-linux-or-centos-73-base-image"></a>1. fázis: készítse elő a Red Hat Enterprise Linux vagy a CentOS 7.3 alapjául szolgáló lemezképhez. 
+##### <a name="phase-1-prepare-a-red-hat-enterprise-linux-or-centos-73-base-image"></a>1. fázis: A Red Hat Enterprise Linux vagy a CentOS 7.3 alap lemezkép előkészítése 
 
 1.  Egy nem - PORTPROFIL CentOS 7.3 virtuális Gépet az Azure telepítéséhez
 
@@ -352,9 +352,9 @@ A Red Hat Enterprise Linux vagy a CentOS 7.3 VM létrehozásához meg néhány t
 
 5.  Azure-portálon állítsa le a virtuális gép; Ugrás a virtuális gép "lemez", az OSDisk URI Azonosítójú virtuális merevlemez rögzítése. Ezt az URI és az alapjául szolgáló lemezképhez VHD-t a tárfiók tartalmazza. 
  
-##### <a name="phase-two-provision-new-vms-on-azure"></a>2. fázis: Azure-alapú virtuális gépek új kiépítése
+##### <a name="phase-2-provision-new-vms-on-azure"></a>2. fázis: Az Azure-alapú virtuális gépek új kiépítése
 
-1.  Kiépítés új virtuális gépek és az alapjául szolgáló lemezképhez engedélyezve a virtuális hálózati AcceleratedNetworking, szakaszban rögzített virtuális merevlemez használatával új AzureRMVMConfig alapján:
+1.  Kiépítés új virtuális gépek új AzureRMVMConfig használata az alapjául szolgáló lemezképhez, 1, szakaszban AcceleratedNetworking rögzített VHD engedélyezve van a virtuális hálózati alapján:
 
     ```powershell
     $RgName="MyResourceGroup"
@@ -394,7 +394,7 @@ A Red Hat Enterprise Linux vagy a CentOS 7.3 VM létrehozásához meg néhány t
      -PublicIpAddressId $Pip.Id `
      -EnableAcceleratedNetworking
     
-    # Specify the base image's VHD URI (from phase one step 5). 
+    # Specify the base image's VHD URI (from phase 1, step 5). 
     # Note: The storage account of this base image vhd should have "Storage service encryption" disabled
     # See more from here: https://docs.microsoft.com/azure/storage/storage-service-encryption
     # This is just an example URI, you will need to replace this when running this script
@@ -430,7 +430,7 @@ A Red Hat Enterprise Linux vagy a CentOS 7.3 VM létrehozásához meg néhány t
      -VM $VmConfig
     ```
 
-2.  Után indítsa el a virtuális gépek, ellenőrizze a VF eszköz által "lspci", és ellenőrizze a Mellanox bejegyzést. Például azt kell látnia a lspci kimeneti ezt az elemet:
+2.  Után indítsa el a virtuális gépek, ellenőrizze a VF eszköz által "lspci", és ellenőrizze a Mellanox bejegyzést. Például kell megjelennie a lspci kimenete a következő szöveget:
     
     ```
     0001:00:02.0 Ethernet controller: Mellanox Technologies MT27500/MT27520 Family [ConnectX-3/ConnectX-3 Pro Virtual Function]

@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 12/11/2017
 ms.author: byvinyal
-ms.openlocfilehash: 49dc4551f1a1528d30e489d4ba1c974f84cc70b0
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 1ae97b47d306640f09a535975b8e4461f51dea9e
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem fedi le az összes Azure-szolgáltatásokhoz. Adott idő alatt a lista lesz kibontható vagy frissíteni, amelyek több, a platform.
@@ -85,6 +85,7 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [Szolgáltatásbusz](#service-bus-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
+* [SQL Data Warehouse](#sql-data-warehouse-limits)
 * [Tárolás](#storage-limits)
 * [StorSimple rendszer](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
@@ -308,6 +309,9 @@ További kapcsolatos részletesebb felügyeletét, például a dokumentum méret
 
 ### <a name="sql-database-limits"></a>SQL-adatbázis korlátok
 SQL adatbázis-korlátok, lásd: [SQL adatbázis erőforrás korlátok](sql-database/sql-database-resource-limits.md).
+
+### <a name="sql-data-warehouse-limits"></a>Az SQL Data Warehouse korlátok
+Az SQL Data Warehouse-korlátok, lásd: [SQL Data Warehouse erőforrás korlátok](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
 ## <a name="see-also"></a>Lásd még:
 [Azure korlátozását és növekszik ismertetése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)

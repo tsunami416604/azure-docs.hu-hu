@@ -13,14 +13,14 @@ ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 06/19/2017
+ms.date: 12/11/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 71cd1aeaa336d484d76e9a51511abcd38a878f00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 21006e4a4f6733b54dc18163bbd2362af82fe7aa
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>A webalkalmazás létrehozása és telepítése a kódot egy helyi Git-tárházat
 
@@ -31,7 +31,7 @@ Ez a parancsfájlpélda hoz létre egy webalkalmazást az App Service azok kapcs
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha telepítése és a parancssori felület helyileg használata mellett dönt, az Azure parancssori felület verzió szüksége 2.0-s vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Mintaparancsfájl
 
@@ -45,12 +45,11 @@ A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az App Service-csomag létrehozása](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service-csomag létrehozása. |
-| [az alkalmazás-kulcs létrehozása](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
-| [beállítva az az webalkalmazás üzembe helyező felhasználó](https://review.docs.microsoft.com/cli/azure/webapp/deployment/user#set) | A fiók szintű üzembe helyezési hitelesítő adatok beállítása az App Service. |
-| [az webalkalmazás központi telepítési forrás config-helyi – git](https://review.docs.microsoft.com/cli/azure/webapp/deployment/source#config-local-git) | Létrehoz egy helyi Git-tárház forrás vezérlő konfigurációját. |
-| [az alkalmazás kulcs Tallózás](https://docs.microsoft.com/cli/azure/webapp#az_webapp_browse) | Azure-webalkalmazás megnyitása a böngészőben. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | App Service-csomag létrehozása. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
+| [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az_webapp_deployment_user_set) | A fiók szintű üzembe helyezési hitelesítő adatok beállítása az App Service. |
+| [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) | Létrehoz egy helyi Git-tárház forrás vezérlő konfigurációját. |
 
 ## <a name="next-steps"></a>Következő lépések
 

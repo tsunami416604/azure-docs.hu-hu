@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: app-service
-ms.date: 03/08/2017
+ms.date: 12/12/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 8e6adf0c4b8273facce609c9e162969cdd2afaaa
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: fdc5e03350783fb8c3e30b6c9a40af45a5925ba8
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cli-samples"></a>Az Azure CLI-minták
 
@@ -29,6 +29,7 @@ A következő táblázat a bash parancsfájlok az Azure parancssori felület has
 | | |
 |-|-|
 |**Alkalmazás létrehozása**||
+| [Webalkalmazás létrehozása és központi telepítése FTP-vel fájlok](./scripts/app-service-cli-deploy-ftp.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure webalkalmazás és FTP használatával telepíti a fájl. |
 | [Webalkalmazás létrehozása és kód üzembe helyezése a GitHubról](./scripts/app-service-cli-deploy-github.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás létrehozza, és egy nyilvános GitHub-tárházban lévő kód telepíti. |
 | [Webalkalmazás létrehozása folyamatos üzembe helyezéssel a GitHubról](./scripts/app-service-cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| Saját GitHub-tárházban folyamatos közzététel hoz létre egy Azure-webalkalmazásban. |
 | [Webalkalmazás létrehozása és kód üzembe helyezése helyi Git-tárházból](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás létrehozása, és konfigurálja a helyi Git-tárház kód leküldéses. |

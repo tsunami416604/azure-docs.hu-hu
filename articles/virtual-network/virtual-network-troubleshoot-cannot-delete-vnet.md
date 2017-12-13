@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/03/2017
+ms.date: 12/12/2017
 ms.author: genli
-ms.openlocfilehash: e0e58e443897adad2b6029db4e64fa220cebb6b8
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 60e4a0dbbc15b0414bf1b81e1fd7885e47aa962d
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Hibaelhárítás: Nem sikerült törölni a virtuális hálózat az Azure-ban
 
@@ -35,7 +35,7 @@ Hiba fordulhat elő, a Microsoft Azure virtuális hálózat törlése közben. E
 5. [Ellenőrizze, hogy a virtuális gépek továbbra is fut a virtuális hálózat](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
 6. [Ellenőrizze, hogy a virtuális hálózati áttelepítés Beragadt](#check-whether-the-virtual-network-is-stuck-in-migration).
 
-## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
+## <a name="troubleshooting-steps"></a>hibaelhárítási útmutatóját
 
 ### <a name="check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network"></a>Ellenőrizze, hogy a virtuális hálózati átjáró fut-e a virtuális hálózat
 
@@ -65,13 +65,7 @@ Ha az Active Directory tartományi szolgáltatások engedélyezve van, és a vir
 
 ![Ellenőrizze a csatlakoztatott eszköz](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
-A szolgáltatás letiltása, kövesse az alábbi lépéseket:
-
-1. Nyissa meg a [klasszikus Azure portált](https://manage.windowsazure.com).
-2. A bal oldali panelen válassza ki a **Active Directory**.
-3. Válassza ki az Azure Active Directory (Azure AD) címtár, amely rendelkezik az Active Directory tartományi szolgáltatások engedélyezve.
-4. Válassza a **Konfigurálás** lapot.
-5. A **tartományi szolgáltatások**, módosítsa a **engedélyezése tartományi szolgáltatásokat a címtárhoz** lehetőséggel **nem**.  
+A szolgáltatás letiltása, lásd: [letiltása Azure Active Directory tartományi szolgáltatások az Azure portál használatával](../active-directory-domain-services/active-directory-ds-disable-aadds.md).
 
 ### <a name="check-whether-the-virtual-network-is-connected-to-other-resource"></a>Ellenőrizze, hogy a virtuális hálózathoz kapcsolódik-e más erőforrás
 

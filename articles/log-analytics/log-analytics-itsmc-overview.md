@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: bd384255b3c46b3ae88b1269ab26e0ddaa6f6e77
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 991f86c328aba9aa184658c7da748f24ee2d6506
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>Központi kezelését az informatikai szolgáltatás Management Connector (előzetes verzió) segítségével ITSM munkaelemek
 
@@ -132,7 +132,7 @@ ServiceDeskWorkItemType_s = "módosítási kérés"
 - Ütközés állapota
 - Sürgős
 - Prioritás
-- Kockázati
+- Kockázat
 - Hatás
 - Társítás
 - Létrehozás dátuma
@@ -159,7 +159,7 @@ ServiceDeskWorkItemType_s = "módosítási kérés"
 | ResolvedBy_s | Megoldó|
 | ClosedBy_s  | Lezárt |
 | Source_s| Kapcsolat típusa |
-| AssignedTo_s | Rendelt  |
+| AssignedTo_s | Hozzárendelve  |
 | Category_s | Kategória |
 | Title_s|  Rövid leírás |
 | Description_s|  Megjegyzések |
@@ -175,14 +175,14 @@ ServiceDeskWorkItemType_s = "módosítási kérés"
 | ServiceDeskId_s| Szám |
 | CreatedBy_s | Kérelmező |
 | ClosedBy_s | Lezárt |
-| AssignedTo_s | Rendelt  |
+| AssignedTo_s | Hozzárendelve  |
 | Title_s|  Rövid leírás |
 | Type_s|  Típus |
 | Category_s|  Kategória |
 | CRState_s|  Állapot|
 | Urgency_s|  Sürgős |
 | Priority_s| Prioritás|
-| Risk_s| Kockázati|
+| Risk_s| Kockázat|
 | Impact_s| Hatás|
 | RequestedDate_t  | A kért dátum szerint |
 | ClosedDate_t | Lezárás dátuma |
@@ -292,9 +292,11 @@ Azure riasztási szabály létrehozása/szerkesztése, során művelet csoportot
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>Az OMS ITSM kapcsolatok hibáinak elhárítása
 1.  Ha a kapcsolat hibája esetén a csatlakoztatott adatforrás felhasználói felület egy **hiba történt a kapcsolat mentése** üzenet, a következő lépéseket:
- - A ServiceNow, Cherwell és Provance kapcsolatok esetén – győződjön meg arról, megfelelően beírt a felhasználónév, a jelszó, az ügyfél-azonosító és a titkos ügyfélkulcs az egyes kapcsolatok.
-        -Ellenőrizze, hogy ha a megfelelő engedélyekkel rendelkezik a megfelelő ITSM termékben való csatlakozáshoz.
- - A Service Manager-kapcsolatok esetén – győződjön meg arról, hogy a webalkalmazás telepítése sikeres volt, és a hibrid kapcsolat jön létre. Ellenőrizze, hogy sikeresen létrejött a kapcsolat a helyszíni Service Manager számítógéppel, látogasson el a webes alkalmazás URL-CÍMÉT, hogy dokumentációjában ismertetett módon a [a hibrid kapcsolat](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).
+ - A ServiceNow, Cherwell és Provance kapcsolatok esetén  
+        -Győződjön meg arról, megfelelően beírt a felhasználónév, a jelszó, az ügyfél-azonosító és a titkos ügyfélkulcs az egyes kapcsolatok.  
+        -Ellenőrizze, hogy ha a megfelelő engedélyekkel rendelkezik a megfelelő ITSM termékben való csatlakozáshoz.  
+ - A Service Manager-kapcsolatok esetén  
+        -Ellenőrizze, hogy a webalkalmazás telepítése sikeres volt, és a hibrid kapcsolat jön létre. Ellenőrizze, hogy sikeresen létrejött a kapcsolat a helyszíni Service Manager számítógéppel, látogasson el a webes alkalmazás URL-CÍMÉT, hogy dokumentációjában ismertetett módon a [a hibrid kapcsolat](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Ha ServiceNow adatait nem első szinkronizálva van a Naplóelemzési, győződjön meg arról, hogy a példány nem alszik ServiceNow. A ServiceNow fejlesztői példányok néha Ugrás üresjáratban alvó hosszú ideig. Más jelentse a hibát.
 3.  Ha OMS riasztások érvényesítést, de működik elemek nem jönnek létre ITSM termék és konfigurációs elemek nincsenek létrehozva/kapcsolódó munkaelemek vagy más általános információkat, keresse meg a következő helyen:

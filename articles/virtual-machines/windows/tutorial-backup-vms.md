@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8e58a2290e5034ef393f65cbcddb86e18cf4a6ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20760650b093216a2929de580f5971c45e0534a8
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>Készítsen biztonsági másolatot a Windows virtuális gépek Azure-ban
 
@@ -78,7 +78,7 @@ Ebben a példában megmutatjuk, hogyan helyreállítása a bináris fájl, amely
     ![Alapértelmezett IIS-weblap](./media/tutorial-backup-vms/iis-broken.png)
 
 5. A helyi számítógépen nyisson meg egy új lapot, és nyissa meg a a [Azure-portálon](https://portal.azure.com).
-6. A bal oldali menüben válasszon ki **virtuális gépek** , és jelölje ki a virtuális gép űrlapot a listában.
+6. A bal oldali menüben válasszon ki **virtuális gépek** , és válassza ki a virtuális Gépet a listából.
 8. A virtuális gép panelen a a **beállítások** kattintson **biztonsági mentés**. A **biztonsági mentés** panel nyílik meg. 
 9. A panel tetején menüben válasszon ki **fájlhelyreállítás**. A **fájlhelyreállítás** panel nyílik meg.
 10. A **1. lépés: válassza ki a helyreállítási pont**, a legördülő listán válasszon egy helyreállítási pontot.
