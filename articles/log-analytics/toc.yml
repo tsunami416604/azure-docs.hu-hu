@@ -41,6 +41,8 @@
       href: log-analytics-usage.md
     - name: Hozzáférés kezelése
       href: log-analytics-manage-access.md
+    - name: Hibrid környezek figyelése
+      href: log-analytics-concept-hybrid.md
     - name: Funkciók a szolgáltatók számára
       href: log-analytics-service-providers.md
     - name: Naplók keresése
@@ -58,11 +60,7 @@
         - name: Összekapcsolt források
           items:
             - name: Windows-ügynökök
-              href: log-analytics-windows-agents.md
-            - name: Linux-ügynökök
-              href: log-analytics-agent-linux.md
-            - name: Azure virtuális gépek
-              href: log-analytics-azure-vm-extension.md
+              href: log-analytics-agent-windows.md
             - name: Azure-erőforrások
               href: log-analytics-azure-storage.md
             - name: Azure PaaS-erőforrások
@@ -75,6 +73,8 @@
               href: log-analytics-sccm.md
             - name: OMS-átjáró
               href: log-analytics-oms-gateway.md
+            - name: Linux-ügynök hibaelhárítása
+              href: log-analytics-agent-linux-support.md
         - name: Adatforrások
           items:
             - name: Az adatforrások áttekintése
@@ -158,6 +158,8 @@
           href: log-analytics-solution-alert-management.md
     - name: Kezelés
       items:
+        - name: Ügynökkezelés
+          href: log-analytics-agent-manage.md
         - name: Munkaterületek kezelésének költségei
           href: log-analytics-manage-cost-storage.md
         - name: Munkaterület törlése
