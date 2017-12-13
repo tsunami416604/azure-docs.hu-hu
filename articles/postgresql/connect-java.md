@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 11/03/2017
 ms.openlocfilehash: 0d763d30633e9d808501620c7247ed73567d3f62
 ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-use-java-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: csatlakozás és adatlekérdezés a Java használatával
-Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a cikk a lépések azt feltételezik, hogy ismeri a Java használatával történő fejlesztéséhez, és nem ismeri a működik az Azure Database-PostgreSQL.
+Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
@@ -40,7 +40,7 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
 5. Amennyiben elfelejtette a kiszolgáló bejelentkezési adatait, lépjen az **Overview** (Áttekintés) oldalra, és itt megtudhatja a kiszolgáló rendszergazdájának bejelentkezési nevét, valamint szükség esetén visszaállíthatja a jelszót.
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
-Az alábbi kód segítségével csatlakozzon, és az adatok betöltése az adatbázisba, a függvény használatával egy **BESZÚRÁSA** SQL-utasításban. A módszerek [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html), és [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) van az adatbázishoz való kapcsolódáshoz használt, dobja el, és a tábla létrehozásához. A [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) objektummal hozhatja létre a beszúrási parancsokat, valamint a setString() és a setInt() metódusokkal végezheti el a paraméterértékek kötését. Az [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) metódussal futtathatja az egyes paraméterkészletekhez tartozó parancsot. 
+Az alábbi kóddal csatlakozhat és töltheti be adatokat az adatbázisba a függvény és egy **INSERT** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) metódus az adatbázishoz való csatlakozásra, illetve a tábla eltávolítására és létrehozására szolgál. A [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) objektummal hozhatja létre a beszúrási parancsokat, valamint a setString() és a setInt() metódusokkal végezheti el a paraméterértékek kötését. Az [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) metódussal futtathatja az egyes paraméterkészletekhez tartozó parancsot. 
 
 Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
 
@@ -140,7 +140,7 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>Adatok olvasása
-Az alábbi kód használatával végezheti el az adatok olvasását a **SELECT** SQL-utasítás segítségével. A módszerek [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html), és [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) kapcsolódni az adatbázishoz, létrehozása és futtatása a select utasítás segítségével. Az eredmények feldolgozása a [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) objektum használatával történik. 
+Az alábbi kód használatával végezheti el az adatok olvasását a **SELECT** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) metódus az adatbázishoz való csatlakozásra, illetve a select utasítás létrehozására és futtatására szolgál. Az eredmények feldolgozása a [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) objektum használatával történik. 
 
 Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
 
@@ -227,7 +227,7 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>Adatok frissítése
-Az alábbi kód használatával végezheti el az adatok módosítását az **UPDATE** SQL-utasítás segítségével. A módszerek [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html), és [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) kapcsolódni az adatbázishoz, előkészítése, és futtassa az update utasításban használt. 
+Az alábbi kód használatával végezheti el az adatok módosítását az **UPDATE** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) metódus az adatbázishoz való csatlakozásra, illetve az update utasítás előkészítésére és futtatására szolgál. 
 
 Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
 
@@ -307,7 +307,7 @@ public class UpdateTable {
 }
 ```
 ## <a name="delete-data"></a>Adat törlése
-Az alábbi kód használatával végezheti el az adatok eltávolítását a **DELETE** SQL-utasítás segítségével. A módszerek [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html), és [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) kapcsolódni az adatbázishoz, előkészítése, és a delete utasítás segítségével. 
+Az alábbi kód használatával végezheti el az adatok eltávolítását a **DELETE** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) metódus az adatbázishoz való csatlakozásra, illetve a delete utasítás előkészítésére és futtatására szolgál. 
 
 Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
 

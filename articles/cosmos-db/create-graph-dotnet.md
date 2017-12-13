@@ -1,6 +1,6 @@
 ---
-title: "A Graph API-jával Azure Cosmos DB .NET-keretrendszer vagy Core alkalmazás létrehozásához |} Microsoft Docs"
-description: "Megadja a .NET Framework/Core kódminta segítségével csatlakozhat és Azure Cosmos DB lekérdezése"
+title: "Azure Cosmos DB .NET-keretrendszer vagy Core-alkalmazás létrehozása a Graph API-val | Microsoft Docs"
+description: "Egy .NET-keretrendszer/Core-kódmintát mutat be, amellyel csatlakozhat egy Cosmos DB-adatbázishoz, és lekérdezéseket hajthat végre."
 services: cosmos-db
 documentationcenter: 
 author: dennyglee
@@ -17,11 +17,11 @@ ms.date: 10/06/2017
 ms.author: denlee
 ms.openlocfilehash: 4c90ead99c513a56f8891b889e2c873952a33ec8
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Az Azure Cosmos DB: Összeállíthat egy .NET-keretrendszer vagy Core alkalmazást, a Graph API-val
+# <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Graph API használatával
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
@@ -31,7 +31,7 @@ A bevezető bemutatja, hogyan hozhat létre az Azure Portal segítségével Azur
 
 Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
-Ha már van telepítve a Visual Studio 2017, ügyeljen arra, hogy legfeljebb telepíthető [Visual Studio 2017 Update 3](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).
+Ha a Visual Studio 2017 már telepítve van, győződjön meg arról, hogy minden frissítés telepítve van a [Visual Studio 2017 Update 3](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)-ig bezárólag.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -47,7 +47,7 @@ Ha már van telepítve a Visual Studio 2017, ügyeljen arra, hogy legfeljebb tel
 
 Most pedig klónozunk egy Graph API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-Ez a minta-projekt .NET Core projekt formátumot használja, és van konfigurálva, amelyekre a következő keretek:
+A mintaprojekt a .NET Core projektformátumot használja, és úgy lett beállítva, hogy a következő keretrendszereket célozza:
  - netcoreapp2.0
  - net461
 
@@ -108,13 +108,13 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs f�
 
 Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
 
-1. A Visual Studio 2017 nyissa meg a appsettings.json fájlt. 
+1. Nyissa meg a appsettings.json fájlt a Visual Studio 2017 alkalmazásban. 
 
 2. Az Azure Portalon az Azure Cosmos DB-fiók bal oldali navigációs sávján kattintson a **Kulcsok** elemre. 
 
     ![Elsődleges kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-dotnet/keys.png)
 
-3. Másolás a **URI** értékét a portálról, és tegye azt a appsettings.json a végpont-kulcsnak az értéke. Az értéket az előző képernyőképen látható Másolás gombbal másolhatja.
+3. Másolja az **URI** értéket a portálról, és adja meg az appsettings.json fájl végpontkulcsának értékeként. Az értéket az előző képernyőképen látható Másolás gombbal másolhatja.
 
     `"endpoint": "https://FILLME.documents.azure.com:443/",`
 
@@ -126,13 +126,13 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 
-Mielőtt futtatná az alkalmazást, javasoljuk, hogy frissíti a *Microsoft.Azure.Graphs* csomag a legújabb verzióra.
+Az alkalmazás futtatása előtt javasolt a *Microsoft.Azure.Graphs* csomag legújabb verzióra történő frissítése.
 
 1. A Visual Studióban kattintson a jobb gombbal a **GraphGetStarted** projektre a **Megoldáskezelőben**, majd kattintson a **NuGet-csomagok kezelése** elemre. 
 
-2. A NuGet Package Manager **frissítések** fülre, írja be *Microsoft.Azure.Graphs* , és ellenőrizze a **prerelease tartalmaz** mezőbe. 
+2. A NuGet csomagkezelő **Tallózás** mezőjébe írja be *Microsoft.Azure.Graphs* kifejezést, és jelölje be az **Előzetes verzió is** jelölőnégyzetet. 
 
-3. A találatokban frissítése a **Microsoft.Azure.Graphs** könyvtár a csomag legújabb verzióját. Ezzel telepíti az Azure Cosmos DB gráfbővítmény kódtárcsomagja és annak összes függőségét.
+3. Az eredményekből frissítse a **Microsoft.Azure.Graphs** kódtárat a csomag legújabb verziójára. Ezzel telepíti az Azure Cosmos DB gráfbővítmény kódtárcsomagja és annak összes függőségét.
 
     Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
 

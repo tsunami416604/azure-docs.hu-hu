@@ -1,31 +1,23 @@
 ---
-title: "Azure-tárolót szolgáltatás gyors üzembe helyezés – DC/OS-fürt központi telepítése |} Microsoft Docs"
-description: "Azure-tárolót szolgáltatás gyors üzembe helyezés – DC/OS-fürt központi telepítése"
+title: "Azure Container Service gyors útmutató – DC/OS fürt üzembe helyezése"
+description: "Azure Container Service gyors útmutató – DC/OS fürt üzembe helyezése"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: acs, azure-container-service
-keywords: "Docker, tárolók, mikroszolgáltatások, Kubernetes, DC/OS, Azure"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: azurecli
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/04/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8070d224fe6281e61f67483d4f1dd905a2ab99eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 69f8f415ce851a5d8034d8196ab541e8491dc417
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="deploy-a-dcos-cluster"></a>DC/OS fürt üzembe helyezése
 
-A DC/OS elosztott platformot kínál a futó modern és indexelése alkalmazások. Teljes Azure Tárolószolgáltatás egy éles készen áll a DC/OS-fürtben üzembe, akkor egyszerűen és gyorsan. A gyors üzembe helyezési és részletes adatai az alapvető lépéseken, amelyekkel telepítheti a DC/OS fürt alapvető munkaterhelés futtassa.
+A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató a DC/OS fürt üzembe helyezéséhez és az alapvető számítási feladatok futtatásához szükséges alaplépéseket részletezi.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -49,11 +41,11 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-dcos-cluster"></a>A DC/OS-fürt létrehozása
+## <a name="create-dcos-cluster"></a>DC/OS-fürt létrehozása
 
-A DC/OS-fürt létrehozása a [az acs létre](/cli/azure/acs#create) parancsot.
+Hozzon létre egy DC/OS fürtöt az [az acs create](/cli/azure/acs#create) paranccsal.
 
-Az alábbi példakód létrehozza a DC/OS-fürt nevű *myDCOSCluster* és SSH-kulcsok létrehozása, ha még nem léteznek. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
+Az alábbi példa egy *myDCOSCluster* nevű DC/OS fürtöt és SSH-kulcsokat hoz létre, ha azok még nem léteznek. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
 ```azurecli
 az acs create --orchestrator-type dcos --resource-group myResourceGroup --name myDCOSCluster --generate-ssh-keys
@@ -61,39 +53,39 @@ az acs create --orchestrator-type dcos --resource-group myResourceGroup --name m
 
 Egyes esetekben – például korlátozott próbaverziónál – az Azure-előfizetés korlátozott hozzáféréssel rendelkezik az Azure-erőforrásokhoz. Ha az üzembe helyezés az elérhető magok korlátozott száma miatt hiúsul meg, csökkentse az alapértelmezett ügynökök számát az `--agent-count 1` az [az acs create](/cli/azure/acs#create) parancshoz történő hozzáadásával. 
 
-Pár perc múlva a parancs befejeződik, és a központi telepítés információt ad vissza.
+Néhány perc múlva befejeződik a parancs végrehajtása, és visszaadja az üzembe helyezéssel kapcsolatos adatokat.
 
-## <a name="connect-to-dcos-cluster"></a>Csatlakozzon a DC/OS-fürt
+## <a name="connect-to-dcos-cluster"></a>Csatlakozás DC/OS fürthöz
 
-A DC/OS-fürt létrehozása után célszerű egy SSH-alagúton keresztül fér hozzá. A következő parancsot a DC/OS-főkiszolgáló nyilvános IP-címét adja vissza. Az IP-cím egy változó tárolja és használja a következő lépésben.
+A DC/OS fürt létrehozása után az SSH-alagúton keresztül érhető el. Futtassa a következő parancsot a fő DC/OS nyilvános IP-címének visszaadásához. Ez az IP-cím változóban van tárolva, és a következő lépésben használjuk.
 
 ```azurecli
 ip=$(az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-master')].[ipAddress]" -o tsv)
 ```
 
-Az SSH-alagút létrehozásához a következő parancsot, és kövesse a képernyőn megjelenő utasításokat. Ha a 80-as port már használatban van, a parancs sikertelen lesz. Frissítse a bújtatott port nincs a használatát, például a `85:localhost:80`. 
+Az SSH-alagút létrehozásához futtassa a következő parancsot, és kövesse a képernyőn látható utasításokat. Ha a 80-as port már használatban van, a parancs meghiúsul. Frissítse a bújtatott portot egy nem használtra, például a következőre: `85:localhost:80`. 
 
 ```azurecli
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 ```
 
-Az SSH-alagút tallózással tesztelhető `http://localhost`. Ha egy portot más, a 80-as használták, állítsa be a megfelelő helyre. 
+Az SSH-alagút a következő cím felkeresésével tesztelhető: `http://localhost`. Ha nem a 80-as portot használta, ennek megfelelően módosítsa a helyet. 
 
-Ha az SSH-alagút létrehozása sikeresen megtörtént, a DC/OS portal ad vissza.
+Ha az SSH-alagút sikeresen létrejött, a rendszer visszaadja a DC/OS portált.
 
-![VEZÉNYLŐTÍPUSÚ FELHASZNÁLÓI FELÜLET](./media/container-service-dcos-quickstart/dcos-ui.png)
+![DCOS felhasználói felület](./media/container-service-dcos-quickstart/dcos-ui.png)
 
-## <a name="install-dcos-cli"></a>DC/OS parancssori felület telepítése
+## <a name="install-dcos-cli"></a>A DC/OS parancssori felület telepítése
 
-A DC/OS parancssori felület használatával a DC/OS-fürt kezeléséhez parancsot a parancssorból. A DC/OS parancssori felület használatával telepítse a [az acs vezénylőtípusú install-cli](/azure/acs/dcos#install-cli) parancsot. Ha Azure CloudShell használ, a DC/OS parancssori felület már telepítve van. 
+A DC/OS parancssori felülettel kezelhetők a DC/OS fürtök a parancssorból. Telepítse a DC/OS parancssori felületet az [az acs dcos install-cli](/azure/acs/dcos#install-cli) paranccsal. Az Azure Cloud Shell használata esetén a DC/OS parancssori felület már telepítve van. 
 
-Ha az Azure parancssori felület macOS vagy Linux rendszer használata esetén szükség lehet a sudo futtassa a parancsot.
+Ha az Azure CLI felületet macOS vagy Linux rendszeren futtatja, előfordulhat, hogy sudo módban kell futtatnia a parancsot.
 
 ```azurecli
 az acs dcos install-cli
 ```
 
-Megelőzően a parancssori felület használható a fürt, az SSH-alagút használatára kell konfigurálni. Ehhez futtassa a következő parancsot, és beállítja a port, ha szükséges.
+A parancssori felületet fürttel való használata előtt konfigurálnia kell azt az SSH-alagút használatához. Ehhez futtassa az alábbi parancsot, szükség esetén a port módosításával.
 
 ```azurecli
 dcos config set core.dcos_url http://localhost
@@ -101,7 +93,7 @@ dcos config set core.dcos_url http://localhost
 
 ## <a name="run-an-application"></a>Alkalmazás futtatása
 
-Az alapértelmezett ütemezés mechanizmus egy ACS DC/OS-fürt Marathon. Marathon olyan alkalmazást, és a DC/OS-fürtön alkalmazás állapota kezelésére szolgál. Ütemezés marathon egy alkalmazás, hozzon létre egy fájlt *marathon-app.json*, és a következő tartalom másolása. 
+Az ACS DC/OS fürtök alapértelmezett ütemezési mechanizmusa a Marathon. A Marathon az alkalmazások elindítására és az alkalmazás állapotának kezelésére szolgál a DC/OS fürtön. Ha a Marathonon keresztül szeretne ütemezni egy alkalmazást, hozza létre a *marathon-app.json* nevű fájlt, és másolja bele a következő tartalmakat. 
 
 ```json
 {
@@ -133,38 +125,38 @@ Az alapértelmezett ütemezés mechanizmus egy ACS DC/OS-fürt Marathon. Maratho
 }
 ```
 
-A következő parancsot az alkalmazás futtatásához a DC/OS-fürtön ütemezni.
+Futtassa a következő parancsot az alkalmazás DC/OS fürttel való futásának ütemezéséhez.
 
 ```azurecli
 dcos marathon app add marathon-app.json
 ```
 
-Az alkalmazás központi telepítési állapotának megtekintéséhez futtassa a következő parancsot.
+Az alkalmazás üzembe helyezési állapotának megtekintéséhez futtassa a következő parancsot.
 
 ```azurecli
 dcos marathon app list
 ```
 
-Ha a **Várakozás** oszlopérték vált *igaz* való *hamis*, alkalmazás központi telepítése befejeződött.
+Amikor a **WAITING** (Várakozás) oszlop értéke *True* (Igaz) értékről *False* (Hamis) értékre vált, az alkalmazás üzembe helyezése befejeződött.
 
 ```azurecli
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```
 
-A nyilvános IP-címét a DC/OS-fürt ügynökök beolvasni.
+Szerezze be a DC/OS fürtügynökök nyilvános IP-címét.
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
-Az alapértelmezett NGINX hely keresse meg ezt a címet adja vissza.
+Ha erre a címre ugrik, a rendszer visszaadja az alapértelmezett NGINX helyet.
 
 ![NGINX](./media/container-service-dcos-quickstart/nginx.png)
 
-## <a name="delete-dcos-cluster"></a>A DC/OS-fürt törlése
+## <a name="delete-dcos-cluster"></a>DC/OS fürt törlése
 
-Ha már nincs szüksége, használhatja a [az csoport törlése](/cli/azure/group#delete) parancs eltávolítja az erőforráscsoportot, a DC/OS-fürtről, és az összes kapcsolódó erőforrásokat.
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group#delete) paranccsal eltávolítható az erőforráscsoport, a DC/OS fürt és az összes kapcsolódó erőforrás.
 
 ```azurecli
 az group delete --name myResourceGroup --no-wait
@@ -172,7 +164,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Következő lépések
 
-A gyors üzembe helyezési a DC/OS-fürt telepítése után, és rendelkezik a fürtön futtatni egy egyszerű Docker-tároló. További információt az Azure Tárolószolgáltatás, továbbra is az ACS-oktatóanyagok.
+Ebben a rövid útmutatóban DC/OS fürtöt helyezett üzembe, és egyszerű Docker-tárolót futtatott a fürtön. Az Azure Container Service-ről további információt az ACS oktatóanyagokban talál.
 
 > [!div class="nextstepaction"]
-> [Az ACS a DC/OS-fürt kezeléséhez](container-service-dcos-manage-tutorial.md)
+> [ACS DC/OS fürt kezelése](container-service-dcos-manage-tutorial.md)

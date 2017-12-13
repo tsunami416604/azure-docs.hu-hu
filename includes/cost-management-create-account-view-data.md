@@ -32,4 +32,4 @@ Kattintson a jobb gombbal egy erőforrástípusra, és válassza a **Cost Entiti
 
 ![költségelemek és szolgáltatások](./media/cost-management-create-account-view-data/actual-cost-05.png)
 
-Útmutató videót a felhőben, számlázási adatok megtekintésével kapcsolatban, tekintse meg a [elemzése a számlázási adatokat az Azure költség Management Cloudyn felhő](https://youtu.be/G0pvI3iLH-Y).
+A felhő számlázási adatainak megtekintéséről szóló oktatóvideó megtekintése: [Felhőszámlázási adatok elemzése a Cloudyn Azure Cost Management megoldásával](https://youtu.be/G0pvI3iLH-Y).

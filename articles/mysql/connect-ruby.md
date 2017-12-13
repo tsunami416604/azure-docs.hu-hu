@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 09/22/2017
 ms.openlocfilehash: 10f774262015cb19e158a687138b4618ce50063b
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>A MySQL-hez készült Azure-adatbázis: Csatlakozás és adatlekérdezés a Ruby használatával
-Ez a rövid útmutató ismerteti, hogyan használható egy [Ruby](https://www.ruby-lang.org)-alkalmazás és a [mysql2](https://rubygems.org/gems/mysql2) gem a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz Windows, Ubuntu Linux és Mac platformról. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy jártas használatával Ruby és, hogy még nem ismeri a MySQL az Azure-adatbázis használata.
+Ez a rövid útmutató ismerteti, hogyan használható egy [Ruby](https://www.ruby-lang.org)-alkalmazás és a [mysql2](https://rubygems.org/gems/mysql2) gem a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz Windows, Ubuntu Linux és Mac platformról. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a Ruby használata terén rendelkezik fejlesztési tapasztalatokkal, de a MySQL-hez készült Azure Database használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehozott erőforrásokat használunk kiindulási pontként:
@@ -26,7 +26,7 @@ Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehoz
 - [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-ruby"></a>A Ruby telepítése
-Ruby, Gem és MySQL2 szalagtár telepítse a saját számítógépén. 
+Telepítse a Rubyt, a Gemet és a MySQL2 könyvtárat a saját számítógépére. 
 
 ### <a name="windows"></a>Windows
 1. Töltse le és telepítse a [Ruby](http://rubyinstaller.org/downloads/) 2.3-as verzióját.
@@ -55,20 +55,20 @@ Ruby, Gem és MySQL2 szalagtár telepítse a saját számítógépén.
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Azure-portálon a bal oldali menüben kattintson a **összes erőforrás**, majd keresse meg a kiszolgáló rendelkezik gyűrött (például **myserver4demo**).
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, majd keressen rá a létrehozott kiszolgálóra (például: **myserver4demo**).
 3. Kattintson a **myserver4demo** kiszolgálónévre.
-4. Válassza ki a kiszolgálót **tulajdonságok** lapon, majd jegyezze fel a **kiszolgálónév** és **kiszolgálói rendszergazda bejelentkezési név**.
+4. Válassza a kiszolgáló **Tulajdonságok** lapját, és jegyezze fel a **kiszolgálónevet** és a **kiszolgálói rendszergazdai bejelentkezési nevet**.
  ![MySQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-ruby/1_server-properties-name-login.png)
-5. Ha elfelejti a kiszolgálói bejelentkezési adatok, navigáljon a **áttekintése** lapon megtekintéséhez a rendszergazdai bejelentkezési nevet, és ha szükséges a jelszó alaphelyzetbe állítása.
+5. Amennyiben elfelejtette a kiszolgáló bejelentkezési adatait, lépjen az **Áttekintés** oldalra, ahol kikeresheti a kiszolgáló rendszergazdájának bejelentkezési nevét, valamint szükség esetén új jelszót kérhet.
 
 ## <a name="run-ruby-code"></a>Ruby-kód futtatása 
-1. Az alábbi szakaszok a Ruby kód beillesztése szövegfájlok, és mentse a fájlok a fájl kiterjesztése .rb projekt mappába (például `C:\rubymysql\createtable.rb` vagy `/home/username/rubymysql/createtable.rb`).
-2. A kódra, a parancssor megnyitása, vagy a Bash rendszerhéjat. Lépjen a projektmappára: `cd rubymysql`
-3. Írja be a Ruby parancsot, majd a fájl neve, mint például `ruby createtable.rb` az alkalmazás futtatásához.
-4. A Windows operációs rendszer Ruby alkalmazás esetén nem a a path környezeti változóval szeretne alkalmazás futtatására tett a csomópont, mint például a teljes útvonalat használja`"c:\Ruby23-x64\bin\ruby.exe" createtable.rb`
+1. Illessze be a Ruby-kódot az alábbi szakaszokból szövegfájlokba, majd mentse a fájlokat egy projektmappába .rb kiterjesztéssel (például a `C:\rubymysql\createtable.rb` vagy `/home/username/rubymysql/createtable.rb` elérési úton).
+2. A kód futtatásához nyissa meg a parancssort vagy a Bash rendszerhéjat. Lépjen a projektmappára: `cd rubymysql`
+3. Ezután írja be a Ruby-parancsot, majd a fájlnevet (`ruby createtable.rb`) az alkalmazás futtatásához.
+4. Ha Windows rendszeren a Ruby-alkalmazás nincs a path környezeti változóban, előfordulhat, hogy a teljes elérési utat kell használnia a Node.js-alkalmazás elindításához, például: `"c:\Ruby23-x64\bin\ruby.exe" createtable.rb`
 
 ## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
-Az alábbi kód segítségével csatlakozzon, és hozzon létre egy táblát **CREATE TABLE** SQL-utasítást, és **INSERT INTO** SQL-utasítások sorok felvételének a táblába.
+A következő kód használatával csatlakozhat, és létrehozhat egy táblát a **CREATE TABLE** SQL-utasítással, majd az **INSERT INTO** SQL-utasításokkal sorokat adhat hozzá a táblához.
 
 A kód a [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) class .new() metódust használja a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Ezután többször meghívja a [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) metódust a DROP, a CREATE TABLE és az INSERT INTO parancs futtatásához. Végül pedig a [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 
@@ -113,9 +113,9 @@ end
 ```
 
 ## <a name="read-data"></a>Adatok olvasása
-Az alábbi kód segítségével csatlakozzon, és az adatok olvasása a egy **válasszon** SQL-utasításban. 
+A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással. 
 
-A kód egy [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) class.new() metódus MySQL Azure adatbázishoz való kapcsolódáshoz. Ezután meghívja a [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) metódust a SELECT parancsok futtatásához. Végül pedig a [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
+A kód a [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) class.new() metódust használja az Azure Database for MySQL-hez való csatlakozáshoz. Ezután meghívja a [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) metódust a SELECT parancsok futtatásához. Végül pedig a [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 
 Cserélje le a `host`, `database`, `username`, és `password` karakterláncokat a saját értékekre. 
 
@@ -152,7 +152,7 @@ end
 ```
 
 ## <a name="update-data"></a>Adatok frissítése
-Az alábbi kód segítségével csatlakozzon, és az adatok frissítése a használatával egy **frissítése** SQL-utasításban.
+Az alábbi kód használatával csatlakozhat és végezheti el az adatok módosítását egy **UPDATE** SQL-utasítás segítségével.
 
 A kód a [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) class .new() metódust használja a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Ezután meghívja a [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) metódust az UPDATE parancsok futtatásához. Végül pedig a [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 
@@ -189,7 +189,7 @@ end
 
 
 ## <a name="delete-data"></a>Adat törlése
-Az alábbi kód segítségével csatlakozzon, és az adatok olvasása a egy **törlése** SQL-utasításban. 
+A következő kóddal csatlakozhat, és beolvashatja az adatokat a **DELETE** SQL-utasítással. 
 
 A kód a [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) class .new() metódust használja a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Ezután meghívja a [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) metódust a DELETE parancsok futtatásához. Végül pedig a [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 

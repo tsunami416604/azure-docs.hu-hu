@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Application Insights for DevOps áttekintése |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az Application Insights Ops fejlesztői környezetben."
+title: "Az Azure Application Insights áttekintése fejlesztők és üzemeltetők számára | Microsoft Docs"
+description: "Útmutató az Azure Application Insights eszközfejlesztői és -üzemeltetői környezetben való használatához."
 author: mrbullwinkle
 services: application-insights
 documentationcenter: 
@@ -16,99 +16,99 @@ ms.date: 06/26/2017
 ms.author: mbullwin
 ms.openlocfilehash: b83d08b9dac4fccc033ad4537afd343a6fbe02c2
 ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/01/2017
 ---
-# <a name="overview-of-application-insights-for-devops"></a>Az Application Insights a DevOps áttekintése
+# <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
-A [Application Insights](app-insights-overview.md), azt gyorsan megtudhatja, hogyan működik-e az alkalmazást, és ha az élő használatban. Ha probléma van, lehetővé teszi azt, a segítségével mérje fel a hatás és a segítségével a hiba okának megállapításához.
+Az [Application Insights](app-insights-overview.md) segítségével könnyen megtekintheti az alkalmazása teljesítményét és használatát működés közben. Probléma esetén értesíti Önt, valamint segít a következmények felmérésében és az ok meghatározásában.
 
-Íme egy házon belül fejlesztett alkalmazásokra webalkalmazások csoport fiókját:
+Lássunk egy beszámolót egy webalkalmazásokat fejlesztő csapattól:
 
-* *"Nappal ezelőtt, néhány helyeztünk üzembe egy"kisebb"gyorsjavítás. Jelenleg nem futott a széles körű tesztelési fázis, de néhány váratlan módosítási sajnos kapott egyesített a tartalom, amely az első és hátsó végpontok közötti inkompatibilitás. Azonnal megnövekedett kivételek, a riasztás következik be, és azt a helyzetet tudomást történtek. Azonnal meg az Application Insights portálon mindössze néhány kattintással azt elegendő információt kapott azonosítóértékeket kivétel callstacks szűkítéséhez a problémát. A Microsoft szolgáltatás-profilazonosítóval azonnal, és a sérülés korlátozott. Az Application Insights által végrehajtott ezen része a devops ciklus nagyon egyszerűen és végrehajthatóként."*
+* *„Néhány nappal ezelőtt üzembe helyeztünk egy »kisebb« gyorsjavítást. Nem végeztünk széles körű ellenőrzéseket, de sajnos néhány váratlan módosítás beépült a hasznos adatok közé, ami az előtér- és a háttérrendszerek inkompatibilitásához vezetett. Azonnal jelentkeztek a kiszolgálókivételek, riasztást kaptunk, és értesültünk a helyzetről. Az Application Insights portálon néhány kattintás után elég információnk volt a kivételek hívási vermeiről, hogy azonosítani tudjuk a problémát. Azonnal visszaállítást végeztünk, és korlátoztuk a kárt. Az Application Insights a fejlesztési és üzemeltetési ciklusnak ezt a részét igen könnyűvé és kezelhetővé.”*
 
-Ebben a cikkben azt kövesse, házon belül fejlesztett alkalmazásokra (OBS) hogyan használják az Application Insights gyorsan válaszolni az ügyfelek és a frissítések megjelenítéséhez online banki rendszerbe Fabrikam bankban csoport.  
+Ebben a cikkben a Fabrikam Bank egyik csapatának nyomába szegődünk, akik az online banki rendszert (OBS-t) fejlesztik. Látni fogjuk, hogy az Application Insights segítségével gyorsan válaszolnak az ügyfeleknek, illetve frissítéseket hajtanak végre.  
 
-A csapat az alábbi ábrán látható kitaláltak DevOps ciklusban működik:
+A csapat az alábbi ábra szerint dolgozik a fejlesztői és üzemeltetői cikluson:
 
-![DevOps ciklus](./media/app-insights-detect-triage-diagnose/00-devcycle.png)
+![Fejlesztői és üzemeltetői ciklus](./media/app-insights-detect-triage-diagnose/00-devcycle.png)
 
-A fejlesztési (feladatlista) várakozó fájlok a hírcsatorna követelményeinek. Használhatók rövid sprints, amivel gyakran működő szoftverek – általában formájában kidolgozott fejlesztéseit és a bővítmények számára, a meglévő alkalmazáshoz. Az élő app gyakran frissül új szolgáltatásokkal. Élő is, a csapat figyeli a teljesítmény- és használati Application Insights segítségével. Az APM-adatok hírcsatornák újra üzembe a fejlesztési várakozó fájlok számát.
+A követelmények bekerülnek fejlesztői várólistájukba (feladatlistájukba). Rövid sprintekben dolgoznak, amelyek gyakran eredményeznek működő szoftvert – általában a meglévő alkalmazás fejlesztéseinek és bővítéseinek formájában. Az élő alkalmazás gyakran frissül új funkciókkal. Amikor az alkalmazás használatban van, a csapat az Application Insights segítségével monitorozza a teljesítményét és használatát. Az alkalmazásteljesítmény-figyelési (APM) adatok bekerülnek fejlesztői várólistájukba.
 
-A csapat az Application Insights az élő webalkalmazás szorosan figyeléséhez használja:
+A csapat az Application Insights segítségével pontosan monitorozza a webalkalmazást a következő szempontokból:
 
-* Teljesítmény. Szeretnék tudni, hogyan válaszidők eltérő kérelem Count; milyen mértékű CPU, a hálózati, a lemez és az egyéb erőforrások használják; mely alkalmazáskód lelassítják teljesítmény; és ahol a szűk keresztmetszeteket.
-* Hibák. Ha nincsenek kivételek vagy a sikertelen kérelmek, vagy ha a teljesítményszámláló az kényelmes tartományon kívüli kerül, a csapat tudnia kell, gyorsan, hogy azok hajthat végre műveleteket.
-* Használat. A kiadott új szolgáltatása, a csapat tudni szeretné, milyen mértékben szolgál, és hogy felhasználók bármilyen nehézségbe vele.
+* Teljesítmény. Tudni szeretnék, hogyan változnak a válaszidők a kérelmek számának függvényében; mennyi processzor-erőforrást, hálózatot, lemezterületet és más erőforrást használ az alkalmazás; melyik alkalmazáskód lassította le a teljesítményt; illetve hol vannak a szűk keresztmetszetek.
+* Hibák. Ha kivételek vagy sikertelen kérések jelentkeznek, illetve ha egy teljesítményszámláló a normál tartományon kívüli eredményt mutat, a csapatnak gyorsan kell értesülnie, hogy mielőbb reagálhasson.
+* Használat. A csapat tudni szeretné, hogy a felhasználók mennyire használják ki az újonnan kiadott funkciókat, és hogy tapasztalnak-e problémákat.
 
-A ciklus visszajelzés részét most összpontosítani:
+Koncentráljunk a ciklus visszajelzési szakaszára:
 
-![Észleli-osztályozás-diagnosztizálása](./media/app-insights-detect-triage-diagnose/01-pipe1.png)
+![Azonosítás-Osztályozás-Diagnózis](./media/app-insights-detect-triage-diagnose/01-pipe1.png)
 
 ## <a name="detect-poor-availability"></a>Gyenge rendelkezésre állás észlelése
-Marcela Markova a OBS csapat vezető fejlesztő, és online teljesítmény figyeléséről átfutási vesz igénybe. Állítja be több [rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md):
+Marcela Markova az OBS-csapat vezető fejlesztője, ő irányítja az online teljesítmény monitorozását. Több [rendelkezésre állási tesztet](app-insights-monitor-web-app-availability.md) is beállít:
 
-* Az alkalmazás fő kezdőlapja single-URL-cím vizsgálata http://fabrikambank.com/onlinebanking/. 200-as HTTP-kód és a szöveges feltételeinek állítja "Üdvözöljük!". Ha a teszt sikertelen, nincs valamilyen súlyos hiba történt a hálózati vagy a kiszolgálók, illetve lehet, hogy egy központi telepítési probléma. (Vagy valaki módosította a Üdvözöljük! üzenet a lapon nem saját megkaphat.)
-* Egy mélyebb többlépéses teszteket, amelyek jelentkezik be, és lekérdezi a jelenlegi fiókot listázása, minden oldalon néhány kulcs adatait ellenőrzése. Ez a vizsgálat ellenőrzi, hogy működik-e a hivatkozásra kattintva az adatbázist. Egy fiktív felhasználói azonosítót használja: néhány őket a tesztelési célokra megmaradjanak.
+* Egy egyetlen URL-címre kiterjedő tesztet az alkalmazás fő kezdőlapjához (http://fabrikambank.com/onlinebanking/). Beállítja a 200-as HTTP-kód és az „Üdvözöljük!” szöveg feltételeit. Ha ez a teszt sikertelen, komoly hálózati vagy kiszolgálóhiba, esetleg üzembehelyezési probléma merült fel. (Vagy valaki módosította az Üdvözöljük! üzenetet az oldalon anélkül, hogy Marcelának erről szólt volna.)
+* Egy alaposabb többlépéses tesztet, amely bejelentkezik az oldalra, lekér egy aktuális fióklistát, és minden oldalon ellenőriz néhány kulcsfontosságú részletet. Ez a teszt ellenőrzi, hogy a fiókok adatbázisára mutató hivatkozás működik-e. Marcela egy fiktív ügyfél-azonosítót használ, amelyből tesztelési célokra fenntartanak néhányat.
 
-Állítsa be ezeket a teszteket Marcela benne lesz a csapat gyorsan tudni bármely kimaradás esetén.  
+A tesztek beállítása után, Marcela biztos lehet benne, hogy a csapat gyorsan értesül bármilyen kimaradásról.  
 
-Hibák a webes teszt diagram piros pont jelenik meg:
+A hibák piros pöttyökként jelennek meg a webes tesztdiagramon:
 
-![Megjeleníti a webes tesztjeinek használatát, amelyek futtatták az előző adott időszakban](./media/app-insights-detect-triage-diagnose/04-webtests.png)
+![Az előző időszakban futtatott webes tesztek megjelenítése](./media/app-insights-detect-triage-diagnose/04-webtests.png)
 
-De ennél is fontosabb, a hibával kapcsolatos riasztást az e-mailben a fejlesztői csapat. Ilyen módon tudják kapcsolatos szinte minden az ügyfelek előtt.
+Még fontosabb azonban, hogy minden egyes riasztásról e-mail érkezik a fejlesztői csapathoz. Így szinte minden ügyfélnél korábban értesülnek a problémáról.
 
-## <a name="monitor-performance"></a>Teljesítmény figyelése
-Az Application Insights – áttekintés oldalra, nincs számos megjelenítő diagram [metrikák kulcs](app-insights-web-monitor-performance.md).
+## <a name="monitor-performance"></a>Teljesítmény monitorozása
+Az Application Insights áttekintő oldalán található egy diagram, amely több [kulcsfontosságú metrikát](app-insights-web-monitor-performance.md) tartalmaz.
 
 ![Különböző metrikák](./media/app-insights-detect-triage-diagnose/05-perfMetrics.png)
 
-Böngésző lapbetöltési ideje közvetlenül weblapokhoz küldött telemetriai származik. Kiszolgáló válaszideje, a helykiszolgáló kérelem száma és a sikertelen kérelmek száma a webkiszolgáló összes történik, és ott Application insights szolgáltatásnak elküldött.
+A böngésző oldalbetöltési ideje a közvetlenül a weboldalakról küldött telemetriai adatokból származik. A kiszolgáló válaszidejét, a kiszolgálóhoz érkező kérések számét és a sikertelen kérések számát a webkiszolgáló méri, majd továbbítja az Application Insightsnak.
 
-Marcela a kiszolgáló válasza Graph némileg érintett. Ez a grafikon azt ábrázolja, amikor a kiszolgáló HTTP-kérést kap a felhasználó böngészőben, és ha adja vissza, a válasz közötti átlagos idő. Nem ritka, hogy tekintse meg a változást, ez a diagram, mivel a rendszer terhelését változik. Azonban ebben az esetben úgy tűnik, hogy egy kis emelkedést a kéréseket, és nagy számot közötti összefüggést nő a válaszidőt. Amelyek oka, hogy működik-e a rendszer csak a teljes kapacitásukkal működjenek.
+Marcela kissé aggódik a kiszolgáló válaszadási diagramja miatt. Ez a diagram a felhasználók böngészőjétől kapott HTTP-kérések fogadása és a rájuk adott válasz közötti átlagos időt jeleníti meg. A szórás nem szokatlan ezen a diagramon, mivel a rendszer terhelése változó. Ebben az esetben azonban úgy tűnik, összefüggés van a kérések számának enyhe növekedése és a válaszidő nagy növekedése között. Ez azt jelezheti, hogy a rendszer elérte a teljesítménye korlátait.
 
-Ezzel megnyílik a kiszolgálók diagramok:
+Marcela megnyitja a Kiszolgálók diagramokat:
 
 ![Különböző metrikák](./media/app-insights-detect-triage-diagnose/06.png)
 
-Úgy tűnik, hogy nincs bejelentkezési az erőforrás-korlátozás van, ezért lehet, hogy a kiszolgáló válasza diagramokban egyenetlenségek csak egybeesés.
+Itt nincs jele erőforráshiánynak, így a kiszolgáló válaszadási idejében látható kiugrások talán csak a véletlennek köszönhetőek.
 
-## <a name="set-alerts-to-meet-goals"></a>Céljai értesítések beállítása
-Mindazonáltal ő szeretné nyomon követheti a a válaszidők. Ha azok túl nagy, és szeretné nem értesülnek arról, hogy azonnal.
+## <a name="set-alerts-to-meet-goals"></a>Riasztások beállítása a célok elérése érdekében
+Ettől függetlenül Marcela szeretné szemmel tartani a válaszidőket. Ha túl magasra ugranak, azonnal tudni szeretne róla.
 
-Úgy állítja egy [riasztás](app-insights-metrics-explorer.md), a nagyobb, mint egy tipikus küszöbérték válaszidejét. Ez biztosítja, hogy az vetett bizalmat egyenként kell tudnia: azt, ha lassú a válaszidők.
+Ezért beállít egy [riasztást](app-insights-metrics-explorer.md) a jellemző küszöbértékeket meghaladó válaszidőkre. Így biztos lehet benne, hogy tudni fog az esetleges lassú válaszidőkről.
 
-![Adja hozzá a riasztások panelen](./media/app-insights-detect-triage-diagnose/07-alerts.png)
+![Riasztás hozzáadása panel](./media/app-insights-detect-triage-diagnose/07-alerts.png)
 
-Riasztások széles körét más metrikákkal állítható be. Például e-mailt kap, ha a kivétel számának túlságosan megnő, vagy a rendelkezésre álló memória kerül alacsony, vagy ha nincs csúcsot ügyfélkéréseket.
+Számos másféle metrikára is beállíthat riasztásokat. Például kaphat e-mailt, ha a kivételek száma túl nagy, ha az elérhető memória túl alacsony, illetve ha az ügyfélkérések száma tetőzik.
 
-## <a name="stay-informed-with-smart-detection-alerts"></a>Az intelligens észlelési riasztásokat tájékozott
-Másnap, figyelmeztető e-mailt az Application Insights érkeznek. De amikor megnyitja azt, hogy ő válasz idő riasztást, ő beállítása nem talál. Ehelyett, amelyből megtudja, hirtelen megnövekedhet a sikertelen kérelmek – Ez azt jelenti, hogy vissza kellett volna hibát kódok legalább 500 kérelmek történt.
+## <a name="stay-informed-with-smart-detection-alerts"></a>Naprakész információk az intelligens észlelési riasztásokkal
+Másnap érkezik egy riasztási e-mail az Application Insightstól. Amikor Marcela megnyitja, azt látja, hogy nem a korábban beállított válaszidő-riasztás szerepel benne. Ehelyett az e-mail arról tájékoztatja, hogy hirtelen megnőtt a sikertelen – vagyis az 500-as vagy magasabb számú hibakódot visszaküldő kérések száma.
 
-Sikertelen kérelmek, ahol a felhasználók láthatta hiba – általában a következő kivétel lépett fel a kódban. Lehet, hogy azok tekintse meg az üzenet jelenik meg "Sajnos nem sikerült frissíteni az adatait most." Vagy abszolút kínos legrosszabb egy Veremkiíratás képernyőn jelenik meg a felhasználó,. a webkiszolgálón.
+A sikertelen kérések esetében a felhasználók hibakódot látnak, általában miután kivétel kerül a kódba. Előfordulhat, hogy a következőhöz hasonló üzenetet látnak: „Sajnos jelenleg nem tudtuk frissíteni a részleteket.” Vagy a legrosszabb esetben a webkiszolgáló egy veremkiíratás jeleníthet meg a felhasználó képernyőjén.
 
-Ez a riasztás nem nyújtható, mert a legutóbbi alkalommal ő tekintett meg, a sikertelen kérelmek száma encouragingly alacsony volt. Néhány hiba van a kiszolgáló foglaltsága várható.
+Ez a riasztás meglepő, mert amikor Marcela utoljára látta, a sikertelen kérések száma biztatóan alacsony volt. Egy elfoglalt kiszolgálón várható, hogy előfordul néhány meghiúsult kérés.
 
-Is volt rá, hogy a nyújtható bit mivel ő nem rendelkezik a riasztás konfigurálásához. Az Application Insights intelligens észlelési tartalmazza. Ez automatikusan beállítja az alkalmazás szokásos hiba mintát és egy adott oldalon, vagy nagy terhelés "lekérdezi használt" hibák, vagy egyéb kapcsolódó. A riasztás csak akkor, ha van egy megnövekedhet a fenti mit várhatnak, ismét riasztást.
+Azért is meglepő volt ez számára, mert ezt a riasztást nem kellett konfigurálnia. Az Application Insights tartalmazza az intelligens észlelést. Automatikusan igazodik az alkalmazás megszokott sikertelenségi mintájához, és „hozzászokik” egy adott oldalhoz, a magas terheléshez vagy más mérőszámokhoz kapcsolódó hibákhoz. Csak akkor küld riasztást, ha egy érték a várt szint fölé emelkedik.
 
-![proaktív diagnosztika e-mail](./media/app-insights-detect-triage-diagnose/21.png)
+![proaktív diagnosztikai e-mail](./media/app-insights-detect-triage-diagnose/21.png)
 
-Ez a nagyon hasznos e-mailt. Azt nem csak emelni egy riasztás. Túl sok az osztályozás és diagnosztikai munkahelyi létezik.
+Ez egy roppant hasznos e-mail. Nem egyszerűen csak riasztást küld. Az osztályozási és diagnosztikai munka jó részét is elvégzi.
 
-Azt jeleníti meg, hány ügyfelet érintenének, és melyik weblap vagy a műveletek. Marcela eldöntheti, hogy ő meg kell kapnia a teljes csoport, mint egy tűz részletezési ezen dolgozik, vagy e mellőzhető amíg jövő héten.
+Megmutatja, hány ügyfél, mely weboldalak, illetve műveletek érintettek. Marcela eldöntheti, hogy az egész csapatot riadóztassa-e gyakorlásképpen, vagy a jövő hétig figyelmen kívül hagyhatja.
 
-Az e-mailt is mutatja, hogy egy adott kivétel történt, és – akár több érdekes -, hogy a hibához tartozik egy adott adatbázis sikertelen hívások. Ebben a részben miért a tartalék hirtelen megjelent annak ellenére, hogy Marcela tartozó csoport nem vezette nemrég frissítéseket.
+Ez az e-mail azt is megmutatja, ha szokatlan kivétel történt, és – ami még érdekesebb – azt is, hogy a hiba egy adott adatbázishoz küldött hívásokhoz kapcsolódik-e. Ez megmagyarázza, miért történt hirtelen hiba annak ellenére, hogy Marcela csapata mostanában nem helyezett üzembe frissítéseket.
 
-Marcella Pingeli a adatbázis csoport, az e-mailt alapján vezetője. Ő megtanulja, hogy azok megjelent-e a gyorsjavítás az elmúlt félig órában; és sajnos lehet, hogy előfordulhat, hogy történtek egy kisebb séma módosítása...
+Marcela az e-mail alapján értesíti az adatbáziscsapat vezetőjét. Megtudja, hogy ez a csapat kiadott egy gyorsjavítást az elmúlt fél órában – és hoppá, elképzelhető, hogy történt egy kisebb sémaváltozás...
 
-Így a probléma van folyamatban alatt álló rögzített, azelőtt naplók vizsgálja, és az eredő 15 percen belül. Marcela azonban a hivatkozásra kattintva nyissa meg az Application Insights kattint. Ekkor megnyílik egy sikertelen kérelmek alakzatot rögtön, és áttekinthetők a sikertelen adatbázis hívása a függőségi hívásokra társított közül.
+Így a probléma megoldása folyamatban van még azelőtt, hogy megvizsgálták volna a naplókat – a megjelenéstől számított 15 percen belül. Marcela a hivatkozásra kattint, hogy megnyissa az Application Insightsot. Az Application Insights rögtön egy sikertelen kéréssel nyílik meg, és Marcela a sikertelen adatbázishívást is látja a függőségi hívások kapcsolódó listájában.
 
-![sikertelen kérelmek](./media/app-insights-detect-triage-diagnose/23.png)
+![sikertelen kérés](./media/app-insights-detect-triage-diagnose/23.png)
 
 ## <a name="detect-exceptions"></a>Kivételek észlelése
-A telepítő csak egy kis [kivételek](app-insights-asp-net-exceptions.md) az Application Insights automatikusan jelenti. Akkor is rögzíthetők explicit módon hívások szúrja be [TrackException()](app-insights-api-custom-events-metrics.md#trackexception) szerepeltesse a kódban:  
+Némi beállítással a rendszer automatikusan jelenti a [kivételeket](app-insights-asp-net-exceptions.md) az Application Insightsnak. Részletesen rögzíthetők is, ha a [TrackException()](app-insights-api-custom-events-metrics.md#trackexception) hívásait beilleszti a kódba:  
 
     var telemetry = new TelemetryClient();
     ...
@@ -129,9 +129,9 @@ A telepítő csak egy kis [kivételek](app-insights-asp-net-exceptions.md) az Ap
     }
 
 
-A Fabrikam banki team kialakulásának mindig elküldi a kivételt, telemetriai gyakorlat, kivéve, ha egy nyilvánvaló helyreállítási.  
+A Fabrikam Bank csapata mindig küld telemetriát a kivételekről, hacsak nem nyilvánvaló helyreállításról van szó.  
 
-Stratégiai valójában még szélesebb körű, mint: azok a telemetriai adatokat küldhet a minden esetben, ha az ügyfél hiúsuljon mi kellett kapcsolniuk a kívánt tegye, hogy megfelel a kódban kivétel, vagy nem található. Például ha a külső helyek közötti banki átviteli rendszer működési valamiért (nem az ügyfél tartalék) "nem tudja végrehajtani ezt a tranzakciót" üzenetet adja vissza, majd azok nyomon követheti, hogy esemény.
+Sőt a stratégiájuk még ennél is szélesebb körű: minden esetben küldenek telemetriát, ha az ügyfél nem tudja elvégezni a kívánt műveletet, akár van kivételkód, akár nincs. Ha például a külső bankközi átutalási rendszer „ez a tranzakció nem teljesíthető” üzenetet küld vissza valamilyen működési ok (tehát nem az ügyfél hibája) miatt, nyomon követik ezt az eseményt.
 
     var successCode = AttemptTransfer(transferAmount, ...);
     if (successCode < 0)
@@ -143,96 +143,96 @@ Stratégiai valójában még szélesebb körű, mint: azok a telemetriai adatoka
        telemetry.TrackEvent("transfer failed", properties, measurements);
     }
 
-TrackException jelenti a kivételeket, mivel a veremben egy példányát küldi szolgál. A további események TrackEvent használható. Minden tulajdonság, akkor lehet hasznos diagnosztikai csatolható.
+A TrackException használatával jelenítik meg a kivételeket, mert az másolatot küld a veremről. A TrackEvent használatával más eseményeket lehet jelenteni. Bármilyen tulajdonság csatolható, amely hasznos lehet a diagnózis során.
 
-Kivételeket és eseményeket megjelennek a [diagnosztikai keresési](app-insights-diagnostic-search.md) panelen. A további tulajdonságok és Veremkiíratás részletezhető.
+A kivételek és az események a [Diagnosztikai keresés](app-insights-diagnostic-search.md) panelen jelennek meg. Részletesen is megvizsgálhatja őket a további tulajdonságok és a híváslánc megtekintéséhez.
 
-![A diagnosztikai keresési szűrők segítségével adott típusú adatok megjelenítése](./media/app-insights-detect-triage-diagnose/appinsights-333facets.png)
-
-
-## <a name="monitor-proactively"></a>Proaktív figyelésére
-Marcela nem csupán elhelyezkedik körül riasztások vár. Hamarosan minden újratelepítés után azt veszi egy pillantást [válaszidők](app-insights-web-monitor-performance.md) -általános ábra és a leglassabb kérelmeket, valamint a kivételek száma a táblában.  
-
-![Válasz idő grafikon és rácsot a kiszolgáló válaszidejéhez.](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
-
-Ő felmérheti minden üzembe helyezés, a teljesítményre gyakorolt hatás általában összehasonlítása az egyes az elmúlt hét. Ha hirtelen romlani, ő riasztást, amely a megfelelő fejlesztőkkel.
-
-## <a name="triage-issues"></a>Osztályozás problémák
--A súlyosság és a probléma mértékének felmérése - osztályozás első lépése észlelése után. Kell nevezzük, a csapat éjfélkor? Vagy az maradhatnak, amíg a várakozó fájlok számát a következő kényelmes résnek? Nincsenek az osztályozás kulcsfontosságú kérdésekre.
-
-Milyen gyakran történik az? Az Áttekintés panel diagramok probléma néhány perspektíva biztosítják. Például a Fabrikam alkalmazások által létrehozott négy webes teszt riasztások egy éjszakai. Megnézi a diagram reggel, a csapat látni, hogy történtek-e valóban egy piros pont továbbra is a tesztek a legtöbb zöld mintha. Állapotkategóriák vizsgálatát az elérhetőségi diagram, világossá vált, hogy az összes ilyen időszakos probléma van egy teszt helyről. Nyilvánvalóan csak egy útvonal érintő hálózati hiba történt, és akkor nagy valószínűséggel törölje magát.  
-
-Ezzel szemben egy drámai és állandó megnövekedhet a grafikon kivétel számát vagy a válasz többször nyilvánvalóan valamit kapcsolatos vészhelyzeti.
-
-A hasznos osztályozás tactic próbálja azt saját maga. Ha a probléma, ismernie valós.
-
-Érintett felhasználók milyen hányada? Ha szüksége van egy durva választ, a munkamenetek száma a hibaaránya nullával való osztás.
-
-![Sikertelen kérelmek és munkamenetek diagramok](./media/app-insights-detect-triage-diagnose/10-failureRate.png)
-
-Ha lassú válaszokat, hasonlítsa össze a tábla minden oldalon használati gyakoriságának kérelmek leglassabb válaszol.
-
-Mennyire fontos a letiltott forgatókönyv? Ha blokkolja egy adott felhasználó szövegegység funkcionális problémák, nem számít, hogy sokkal? Ha az ügyfelek nem kell fizetnie a váltók, akkor ez az súlyos; Ha nem módosíthatják a képernyő szín preferenciáik, lehet, hogy azt várja meg, amíg. Az esemény vagy a kivétel részletei, vagy a lassú lap identitásának megtudhatja, ahol az ügyfelek problémát tapasztal.
-
-## <a name="diagnose-issues"></a>Eseményadatokat
-Diagnosztikai nem elég azonos hibakeresést. A kód nyomkövetés megkezdése előtt kell-e egy durva meghatározni, hogy miért, hol és mikor a probléma jelentkezett.
-
-**Ha nem ez történik?** Az esemény és metrika diagramok által biztosított ügyfélállapotainak könnyen hatások kivizsgált lehetséges okok. Ha a válasz ideje vagy kivétel díjszabás időszakos csúcsait, nézze meg a kérelem száma: Ha az egy időben csúcsaira, majd úgy tűnik erőforrás probléma. Szüksége több Processzort vagy memóriát hozzárendelni? Vagy nem tudja kezelni a terhelés függőséget?
-
-**Ez velünk?**  Ha vannak hirtelen csökken – például amikor az ügyfél szeretne egy fiók utasítás - kérelem egy bizonyos típusú teljesítményének fennáll annak a lehetősége, majd a webalkalmazás helyett egy külső alrendszer lehet. A Metrikaböngészőben válassza ki a függőségi hiba sebesség és a függőségi időtartama díjszabás, és hasonlítsa össze az alábbi előzményeinek keresztül az elmúlt néhány órák vagy napok az Ön által észlelt probléma. Módosítások vannak adatok, ha egy külső alrendszer felelős lehet.  
+![A Diagnosztikai keresés panelen szűrők használatával tekinthet meg egyes adattípusokat](./media/app-insights-detect-triage-diagnose/appinsights-333facets.png)
 
 
-![Függőségi hiba és a függőségek hívások időtartama diagramok](./media/app-insights-detect-triage-diagnose/11-dependencies.png)
+## <a name="monitor-proactively"></a>Proaktív monitorozás
+Marcela nem várja tétlenül a riasztásokat. Minden ismételt üzembe helyezés után nem sokkal ellenőrzi a [válaszidőket](app-insights-web-monitor-performance.md) – a teljes képet, a leglassabb kérések táblázatát és a kivételek számát is.  
 
-Bizonyos lassú függőségi problémák a földrajzi hely meghatározásának problémák. Fabrikam banki Azure virtuális gépek használ, és, hogy azok kellett véletlenül található a webkiszolgáló és a fiók-kiszolgáló a különböző országokban felderített. Egy drámai fokozása áttelepítésével újra közül.
+![Válaszidő-grafikon és a kiszolgáló válaszidejének táblázata.](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
 
-**Mi volt végezzük?** Ha a probléma nem jelenik meg, egy függőségi találhatók, és azt nem mindig van, az oka valószínűleg a legutóbbi változás. A metrika és az esemény diagramok által biztosított korábbi perspektíva egyszerűen hirtelen módosításokat összefüggéseket központi telepítéssel. Amely típusra van szűkítve le a keresse meg a problémát. Azonosítsa az alkalmazáskódban található sorok lelassítják a teljesítmény, engedélyezze a Application Insights Profiler. Tekintse meg [profilkészítési élő Azure-webalkalmazásokban az Application insights szolgáltatással](./app-insights-profiler.md). A Profilkészítő engedélyezése után az alábbihoz hasonló nyomkövetés jelenik meg. Az ebben a példában is könnyen észrevehető, amely a metódus *GetStorageTableData* okozta a problémát.  
+Minden üzembe helyezés teljesítményét fel tudja mérni, és általában minden hetet az előzővel hasonlít össze. Ha hirtelen romlást tapasztal, megvitatja az érintett fejlesztőkkel.
 
-![App Insights Profilkészítő nyomkövetési](./media/app-insights-detect-triage-diagnose/AppInsightsProfiler.png)
+## <a name="triage-issues"></a>Osztályozási problémák
+Az osztályozás – a probléma komolyságának és kiterjedésének felmérése – az első lépés az észlelés után. Hívjuk-e éjfélkor a csapatot? Vagy ráér a probléma a következő alkalmas időpontig, amikor kevesebb a feladat? Az osztályozásban felmerül néhány kulcsfontosságú kérdés.
 
-**mi történik?** Egyes problémák csak ritkán fordul elő, és nehéz nyomon követheti a kapcsolat nélküli környezetben végzett teszteléséhez. Összes tehetünk ennek próbálja meg a hiba rögzítéséhez, ha a működés közbeni következik be. A verem memóriaképek kivétel jelentésekben vizsgálhatja meg. Ezenkívül írhat nyomkövetés hívások, a kedvenc naplózási keretrendszer vagy TrackTrace() vagy a trackevent() függvény.  
+Milyen gyakran történik? Az Áttekintés panel diagramjai több szempontból is megvilágítják a problémát. Például a Fabrikam alkalmazása négy webtesztriasztást is létrehozott egy éjszaka alatt. A reggel láthatta, hogy valóban volt néhány piros pötty a diagramon, bár a tesztek többsége még mindig zöld volt. A rendelkezésre állási diagram alaposabb megtekintésekor világossá vált, hogy ezek az időszakos problémák egyetlen teszthelyről származtak. Nyilvánvalóan hálózati problémáról volt szó, egyetlen útvonalat érintett, és valószínűleg magától megszűnt.  
 
-Fabrikam közötti fiók átvitelek, de csak bizonyos fióktípusok probléma volt. Jobban megértse, mi zajlik, azok a kódban, a fiók típusa tulajdonságként csatolása minden hívás kulcs pontokon TrackTrace() hívások szúrja be. Amely megkönnyítette kiszűrhetők a diagnosztikai keresési csak a megadott nyomkövetési adatokat. Akkor is csatolva paraméterértékek tulajdonságok és a mértékek a nyomkövetési hívások.
+Ezzel szemben a kivételszámok vagy válaszidők diagramján látható hirtelen és stabil növekedés egyértelműen aggodalomra ad okot.
 
-## <a name="respond-to-discovered-issues"></a>Felfedezett problémákat válaszolni
-Ha a probléma már megállapításához, hogy egy tervnek oldhatja meg a problémát. Állítsa vissza a legutóbbi változás kell, vagy lehet, hogy csak használatától és elhárításához. Ha a javítás végzett, az Application Insights megtudhatja, hogy sikerült.  
+A személyes próba hasznos osztályozási technika. Ha Ön is tapasztalja a problémát, akkor biztosan valós.
 
-Fabrikam banki fejlesztői csapat TELJESÍTMÉNYMÉRÉSEK több strukturált megközelítését, mint a segítségükkel előtt az Application Insights igénybe vehet.
+A felhasználók mely része érintett? A hozzávetőleges válaszhoz ossza el a sikertelenségi rátát a munkamenetek számával.
 
-* Ezek célkitűzéseket teljesítmény szempontjából egyedi intézkedések az Application Insights – Áttekintés lapon.
-* Az alkalmazás, például a "tölcsérek." felhasználói végrehajtási mérő metrikák Start teljesítményjellemzőit azok tervezése  
+![A sikertelen kérelmek és munkamenetek száma](./media/app-insights-detect-triage-diagnose/10-failureRate.png)
+
+Ha lassúak a válaszok, hasonlítsa össze a leglassabban válaszoló kérések számának táblázatát az egyes oldalak használati gyakoriságával.
+
+Mennyire fontos a letiltási forgatókönyv? Ha egy funkcionális problémáról van szó, amely egy adott felhasználói történetet blokkol, az mennyire fontos? Ha a felhasználók nem tudják kifizetni a számláikat, akkor komoly a helyzet; ha nem tudják megváltoztatni a kijelzőjük színbeállításait, akkor talán várhat a megoldás. Az esemény vagy a kivétel részleteinek megtekintéséből, illetve a lassú oldal azonosításából megtudhatja, hol tapasztalnak problémákat a felhasználók.
+
+## <a name="diagnose-issues"></a>Problémák diagnosztizálása
+A diagnosztizálás nem teljesen ugyanaz, mint a hibakeresés. Mielőtt elkezdené átvizsgálni a kódot, érdemes hozzávetőleges elképzeléssel rendelkeznie arról, hogy miért, hol és mikor történik a probléma.
+
+**Mikor történik?** Az esemény- és a mérőszám-diagramok által biztosított előzménynézettel könnyen összekapcsolhatja a hatásokat és a lehetséges okokat. Ha időszakos kiugrások tapasztalhatók a válaszidőben vagy a kivételarányokban, nézze meg a kérelmek számát: ha ugyanabban az időben mutat kiugrást, akkor valószínűleg erőforrásproblémáról van szó. Több processzort vagy memóriát kell hozzárendelnie? Vagy egy függőség nem tudja kezelni a terhelést?
+
+**A mi hibánk?**  Ha hirtelen esést tapasztal egy adott kérelemtípus teljesítményében – például ha az ügyfél számlakivonatot szeretne – akkor lehetséges, hogy egy külső alrendszer a hibás, és nem az ön webalkalmazása. A Metrikaböngészőben jelölje ki a Függőséghibák arányát és a Függőségi időtartam-arányokat, és hasonlítsa össze az elmúlt néhány óra vagy nap előzményeit az észlelt problémával. Ha vannak összefüggő változások, valószínűleg egy külső alrendszer okozza a problémát.  
 
 
-## <a name="monitor-user-activity"></a>A figyelő felhasználói tevékenység
-Válaszidő következetesen helyes, és néhány kivétel, amikor a fejlesztői csapat áthelyezheti használhatóság. Ezek gondolja át a felhasználói élmény javítása érdekében, valamint ösztönözze a kívánt céljainak eléréséhez több felhasználó is.
+![Függőséghibák és a függőségekhez intézett hívások időtartamának diagramjai](./media/app-insights-detect-triage-diagnose/11-dependencies.png)
 
-Az Application Insights megtudhatja, milyen műveleteket a felhasználók olyan alkalmazással is használható. Ha zökkenőmentesen fut, a csapat tudni szeretné a legnépszerűbb, mely funkciók érhetők milyen felhasználók, például, vagy a nehezen, és milyen gyakran lépnek vissza. Amelyekkel azokat a jövőbeli munkahelyi rangsorolására. És azok is tervezi, hogy az egyes szolgáltatások alkalmazása sikerének mérésében a fejlesztési ciklus részeként.
+Egyes lassúsági függőségi problémákat földrajzi hely okoz. A Fabrikam Bank Azure-beli virtuális gépeket használ, és felfedezték, hogy a webkiszolgálót és a fiókkiszolgálót véletlenül eltérő országokban helyezték el. Miután az egyiket migrálták, drámai javulás következett be.
 
-Például a webhelyen keresztül jellemző felhasználói út rendelkezik egy törölje a jelet "a tölcsér." Sok ügyfél tekintse meg a díjszabás kölcsön különböző típusú. Az ajánlat űrlap kitöltése folytassa kisebb számot. Néhány, aki ajánlat beolvasni, lépjen tovább, és vegye ki a kölcsön.
+**Mit tettünk?** Ha úgy tűnik, hogy a probléma nem függőségben van, és nem volt mindig tapasztalható, valószínűleg egy friss változás okozhatja. Az esemény- és a mérőszám-diagramok által biztosított előzményekkel könnyen összekapcsolhatja a hirtelen változásokat és az üzembe helyezéseket. Ez megkönnyíti a probléma keresését. Engedélyezze az Application Insights Profilert az alkalmazáskód azon sorainak azonosításához, amelyek a lassú teljesítményt okozták. Lásd az [élő Azure-webalkalmazások Application Insightsszal történő profilkészítését](./app-insights-profiler.md) ismertető szakaszt. Miután engedélyezte a profilkészítőt, a következőhöz hasonló nyomot fog látni. Az alábbi példában könnyen észrevehető, hogy a *GetStorageTableData* metódus okozta a problémát.  
 
-![Lapmegtekintés száma](./media/app-insights-detect-triage-diagnose/12-funnel.png)
+![App Insights Profiler-nyom](./media/app-insights-detect-triage-diagnose/AppInsightsProfiler.png)
 
-Figyelembe véve, ahol a legnagyobb számú ügyfél dobja el, az üzleti úgy dolgozhatnak, hogyan kérhet több felhasználó a tölcsér alján. Bizonyos esetekben előfordulhat, hogy a felhasználói élmény (UX) hiba történt – például a "Tovább" gombra az rögzített található, vagy utasításokat nem egyértelmű. Valószínűleg több oka is lehet jelentősebb üzleti az vetett elemek: lehet, hogy a kölcsön túl magas.
+**Mi történik?** Néhány probléma csak ritkán jelentkezik, és offline teszteléssel nehezen lehet megtalálni. Egy dolgot lehet tenni: meg kell próbálni akkor elkapni a hibát, amikor élő használat közben jelentkezik. A veremkiírásokat megtekintheti a kivételjelentésekben. Ezenkívül írhat nyomkövetési hívásokat kedvenc naplózási keretrendszerével, illetve a TrackTrace() vagy a TrackEvent() használatával.  
 
-A bármilyen okból az adatok segítségével a felhasználók tevékenységeit kidolgozására csoport. Több követési hívást részletesebb készíthessenek csak azután lehet beszúrni. A trackevent() függvény segítségével bármely felhasználó, az egyes gombra történő kattintás, az nagy részletességgel célzó műveletek például ki kölcsön fizető jelentős eredmények száma.
+A Fabrikam időnként problémákat tapasztalt a fiókközi átutalásokkal, de csak bizonyos fióktípusoknál. Hogy jobban megérthessék, mi történik, TrackTrace() hívásokat illesztettek a kód kulcspontjaiba, és minden egyes híváshoz hozzácsatolták a fióktípust tulajdonságként. Így könnyen rá tudtak szűrni ezekre a nyomokra a Diagnosztikai keresésben. Ezenkívül paraméterértékeket is csatoltak tulajdonságként és mértékként a nyomkövetési hívásokhoz.
 
-A csoport felhasználói tevékenységre vonatkozó adatokat első segítségével. Napjainkban azok kialakítása új funkciója, amikor azok kidolgozására hogyan fogja használni a használatát visszajelzést. Ezek kialakítási követési meghívja a szolgáltatást a elindítása. A szolgáltatás javítására minden fejlesztési ciklus használata a visszajelzését.
+## <a name="respond-to-discovered-issues"></a>Válasz a felfedezett problémákra
+Ha sikerült diagnosztizálni a problémát, megtervezheti az elhárítását. Lehet, hogy vissza kell vonni egy módosítást, vagy egyszerűen csak kijavíthatja a hibát. Ha a javítás elkészült, az Application Insights tájékoztatja, hogy sikeres volt-e.  
 
-[További információk használatának követéséről](app-insights-usage-overview.md).
+A Fabrikam Bank fejlesztési csapata most már sokkal szervezettebb módon végzi a teljesítménymérést, mint az Application Insights használata előtt.
 
-## <a name="apply-the-devops-cycle"></a>Alkalmazza a DevOps ciklus
-Ezért ez egy csoport Application Insights nem csak az egyes problémák megoldásával kapcsolatban, de a fejlesztési életciklus során javítása érdekében. Az adott Önnek hogyan Application Insights segíthetnek az Alkalmazáskezelés teljesítmény saját alkalmazásaiban ötleteket kívánom I.
+* Az Application Insights áttekintő oldalán célokat határoznak meg bizonyos mértékekhez.
+* Kezdettől fogva teljesítménymértékeket terveznek az alkalmazásba, például olyan mérőszámokat, amelyek a felhasználók előrehaladását mérik a „tölcsérekben”.  
+
+
+## <a name="monitor-user-activity"></a>A felhasználói tevékenység monitorozása
+Ha a válaszidő egységesen jó, és kevés kivétel van, a fejlesztői csapat továbbléphet a használhatóságra. Most már azon is gondolkodhatnak, hogyan javítsanak a felhasználói élményen és hogyan segítség elő, hogy több felhasználó érje el a kívánt célokat.
+
+Az Application Insights segítségével ezenkívül azt is megtudhatják, mire használják a felhasználók az alkalmazásokat. Ha az alkalmazás már simán fut, a csapat szeretné tudni, mely szolgáltatások a legnépszerűbbek, mit szeretnek a felhasználók vagy mivel vannak nehézségeik, illetve milyen gyakran térnek vissza. Ez segíti a csapatot abban, hogy meghatározza a soron következő munkák fontossági sorrendjét. Így a fejlesztési ciklus részeként megtervezheti az egyes szolgáltatások sikerének mérését is.
+
+Egy átlagos felhasználó tevékenysége a webhelyen jól látható „tölcsérként” írható le. Sok ügyfél a különböző típusú hitelek árait nézi meg. Néhányuk kitölti az árajánlatkérő űrlapot. Azok közül, akik megkapják az árajánlatot, néhány úgy döntenek, hogy felveszik a hitelt.
+
+![Oldalmegtekintések száma](./media/app-insights-detect-triage-diagnose/12-funnel.png)
+
+Annak áttekintésével, hol tűnik el a legtöbb ügyfél, a vállalkozás megtervezheti, hogyan juttathat el több felhasználót a tölcsér aljára. Néhány esetben ez a felhasználói felület (UX) hibája lehet; például nehéz megtalálni a Tovább gombot, vagy nem elég egyértelműek az utasítások. Még valószínűbb, hogy az eltűnésekért alapvető üzleti okok felelősek: talán túl magasak a hitelköltségek.
+
+Bármi is az ok, az adatok segítik a csapatot annak meghatározásában, hogy mit is csinálnak a felhasználók. További nyomkövetési hívások beszúrásával még több részlet nyerhető ki. A TrackEvent() segítségével bármilyen felhasználói művelet számát meg lehet határozni, az egyedi kattintások pontos részleteitől a jelentős teljesítményekig, mint például egy hitel kifizetése.
+
+A csapat lassan hozzászokik, hogy információkat kap a felhasználói tevékenységekről. Mostanában a szolgáltatások tervezésekor azt is kidolgozzák, hogyan fognak visszajelzést kapni a használatáról. A kezdetektől beépítik a szolgáltatásba a nyomkövető hívást. A visszajelzés segítségével javítják a szolgáltatást minden fejlesztési szakaszban.
+
+[További információk a használat követéséről](app-insights-usage-overview.md).
+
+## <a name="apply-the-devops-cycle"></a>A fejlesztői és üzemeltetői ciklus alkalmazása
+Ez csapat tehát így használja az Application Insightsot az egyes hibák elhárítására és a fejlesztési ciklus javítására. Remélem, ez a példa adott néhány ötletet arról, hogyan segíthet az Application Insights a saját alkalmazása teljesítményének kezelésében.
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Következő lépések
-Attól függően, hogy az alkalmazás jellemzői többféle módon kezdheti. Válassza ki, milyen legmegfelelőbb beállítást:
+Az alkalmazása tulajdonságaitól függően több módon is hozzáláthat. Válassza ki a legmegfelelőbbet:
 
-* [ASP.NET-webalkalmazás](app-insights-asp-net.md)
+* [ASP.NET-es webalkalmazás](app-insights-asp-net.md)
 * [Java-webalkalmazás](app-insights-java-get-started.md)
-* [NODE.js-webalkalmazás](app-insights-nodejs.md)
-* Már telepített alkalmazásokat, üzemeltetett [IIS](app-insights-monitor-web-app-availability.md), [J2EE](app-insights-java-live.md), vagy [Azure](app-insights-azure.md).
-* [Weblapok](app-insights-javascript.md) -egyetlen oldal alkalmazást vagy szokásos weblap - használja ezt a saját vagy ahhoz a kiszolgálói beállításokat.
-* [Rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md) tesztelheti az alkalmazást a nyilvános interneten keresztül.
+* [Node.js-webalkalmazás](app-insights-nodejs.md)
+* Már üzembe helyezett, az [IIS](app-insights-monitor-web-app-availability.md)-ben, [J2EE](app-insights-java-live.md)-ben vagy [Azure](app-insights-azure.md)-ban működő alkalmazások.
+* [Weblapok](app-insights-javascript.md) – Egylapos alkalmazás vagy átlagos weblap – önmagában vagy bármelyik kiszolgálói lehetőséggel együtt is használható.
+* [Rendelkezésre állási tesztek](app-insights-monitor-web-app-availability.md) az alkalmazás nyilvános internetről való teszteléséhez.

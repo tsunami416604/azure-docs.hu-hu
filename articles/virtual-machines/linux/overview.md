@@ -1,6 +1,6 @@
 ---
-title: "Linux virtuális gépek Azure-ban – áttekintés |} Microsoft Docs"
-description: "A Linux virtuális gépek Azure számítási, tárolási és hálózati szolgáltatások ismerteti."
+title: "Az Azure-beli Linux rendszerű virtuális gépek áttekintése | Microsoft Docs"
+description: "A cikk az Azure Compute, Storage és Networking szolgáltatások Linux virtuális gépekkel történő használatát ismerteti."
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: rickstercdn
@@ -17,124 +17,124 @@ ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: cef9abddf980c695040e99995eb325eeb182fad4
 ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2017
 ---
-# <a name="azure-and-linux"></a>Azure és Linux
-Microsoft Azure integrált nyilvános egyre bővülő gyűjteménye a webes és a felhőalapú szolgáltatások elemzés, virtuális gépek, adatbázisok, mobil-, hálózati, tárolási, beleértve&mdash;épp ezért tökéletes választás a megoldások üzemeltetéséhez.  A Microsoft Azure egy skálázható számítási platformot kínál, amely lehetővé teszi, hogy csak a valóban használt funkciókért fizessen, és csak akkor, amikor használja azokat, mindezt helyszíni hardverberuházások nélkül.  Az Azure készen áll a megoldások vertikális és horizontális skálázásakor, bármilyen méretre is lenne szüksége az ügyfelek igényeinek kiszolgálásához.
+# <a name="azure-and-linux"></a>Az Azure és a Linux
+A Microsoft Azure integrált nyilvános felhőszolgáltatások (például elemzési, virtuálisgép-, adatbázis-, mobil-, hálózati, tárolási és webes szolgáltatások) egyre bővülő gyűjteménye&mdash;ideális a megoldások üzemeltetéséhez.  A Microsoft Azure egy skálázható számítási platformot kínál, amely lehetővé teszi, hogy csak a valóban használt funkciókért fizessen, és csak akkor, amikor használja azokat, mindezt helyszíni hardverberuházások nélkül.  Az Azure készen áll a megoldások vertikális és horizontális skálázásakor, bármilyen méretre is lenne szüksége az ügyfelek igényeinek kiszolgálásához.
 
-Ha jártas Amazon meg különböző funkcióhoz AWS, tekintse meg az Azure vs AWS [definition leképezési dokumentum](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/).
+Ha már ismeri az Amazon AWS különböző funkcióit, tekintse meg az Azure-t és az AWS-t összehasonlító [definícióleképezési dokumentumot](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/).
 
 ## <a name="regions"></a>Régiók
-A Microsoft Azure-erőforrások több földrajzi régióban a világ különböző pontjain.  Egy "régió" azonos földrajzi területen több különböző adatközponthoz jelöli.  Egy további 4 régiók bejelentette a világszerte kell 34 régiók általánosan elérhető. Mivel jelenleg továbbra is a globális érvényességének - bontsa ki azt karbantartása meglévő és újonnan frissített listáját bejelentette régiók.
+A Microsoft Azure-erőforrások világszerte több földrajzi régió között oszlanak meg.  Egy „régió” több adatközpontot jelöl ugyanazon a földrajzi területen.  34 általánosan elérhető régiónk van világszerte, és további 4 már be van jelentve. Mivel folyamatosan növeljük a globális lefedettségünket, frissített listát vezetünk a meglévő és az újonnan bejelentett régiókról.
 
 * [Azure-régiók](https://azure.microsoft.com/regions/)
 
 ## <a name="availability"></a>Rendelkezésre állás
-Azt jelentette be egy iparágban vezető egypéldányos virtuális gép szolgáltatásiszint-megállapodás 99,9 %-a megadott központi telepítése a virtuális gép összes lemeze a prémium szintű Storage.  Ahhoz, hogy a környezetet, hogy a virtuális gép szolgáltatásiszint-szerződés a szabványos 99,95 % jogosultsághoz, továbbra is szeretné a rendelkezésre állási csoportok belül munkaterhelést futtató két vagy több virtuális gépek telepítéséhez. Ezzel biztosíthatja, hogy a virtuális gépek vannak elosztva a adatközpontokban több tartalék tartományok között, valamint a különböző karbantartási időszakok gazdagépekre telepített. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/)-ban található.
+Bejelentettünk egy iparágvezető, 99,9%-os elérhetőséget biztosító egypéldányos virtuálisgép-szolgáltatói szerződést, amelynek az a feltétele, hogy az üzembe helyezett virtuális gép összes lemezén prémium szintű tárolást használjon.  Ahhoz, hogy az üzembe helyezett példány megfeleljen a standard 99,95%-os virtuálisgép-szolgáltatói szerződésünknek, legalább még két virtuális gépet kell üzembe helyeznie a számítási feladatok futtatásához egy rendelkezésre állási csoporton belül. Ezzel biztosítja, hogy a virtuális gépek több tartalék tartomány között legyenek elosztva az adatközpontjainkban, valamint az őket futtató gazdagépeknek különböző karbantartási időszakaik legyenek. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/)-ban található.
 
 ## <a name="managed-disks"></a>Felügyelt lemezek
 
-Által kezelt lemezeken Azure Storage leírók fiók létrehozását és kezelését a háttérben, és biztosítja, nem kell aggódnia a méretezhetőségének korlátai, a tárfiók. Egyszerűen adja meg, a lemez mérete és a teljesítményszintet (Standard vagy prémium), és az Azure hoz létre, és az Ön kezeli a lemezt. Akkor sem kell a használt tárterület miatt aggódnia, ha lemezeket ad hozzá vagy fel-/leskálázza a virtuális gépet. Ha hoz létre új virtuális gépek, [használja az Azure CLI 2.0](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy az Azure-portálon létrehozott virtuális gépet felügyelt operációsrendszer- és adatlemezek. Ha a virtuális gépek nem felügyelt lemezzel rendelkezik, akkor [alakítsa át a virtuális gépek biztonsági felügyelt lemezzel](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+A felügyelt lemezek a háttérben végzik az Azure Storage-fiók létrehozását és kezelését, hogy Önnek ne kelljen foglalkoznia a tárfiók skálázási korlátaival. Egyszerűen csak adja meg a lemez méretét és teljesítményszintjét (Standard vagy Prémium), és az Azure létrehozza és felügyeli a lemezt Ön helyett. Akkor sem kell a használt tárterület miatt aggódnia, ha lemezeket ad hozzá vagy fel-/leskálázza a virtuális gépet. Ha új virtuális gépeket hoz létre, [használja az Azure CLI 2.0-t](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy az Azure Portalt a felügyelt operációs rendszerrel és adatlemezekkel rendelkező virtuális gépek létrehozásához. Ha a virtuális gépei nem felügyelt lemezeket tartalmaznak, [átalakíthatja a virtuális gépeket, hogy felügyelt lemezek támogassák őket](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Az egyéni rendszerképeit Azure-régiónként egyetlen tárfiókban is felügyelheti, és a használatukkal több száz virtuális gépet hozhat létre egy adott előfizetésben. A felügyelt lemezekkel kapcsolatos további információért tekintse meg [a felügyelt lemezek áttekintésével kapcsolatos cikket](../windows/managed-disks-overview.md).
 
-## <a name="azure-virtual-machines--instances"></a>Az Azure Virtual Machines- & példányok
-A Microsoft Azure támogatja futtató számos népszerű Linux terjesztésekről megadott és a partnerei számos tartja fenn.  Megtalálja azokat a terjesztéseket, mint az Red Hat Enterprise, CentOS, SUSE Linux Enterprise, Debian, Ubuntu, CoreOS, RancherOS, freebsd rendszerű, az Azure piactéren. Aktívan dolgozunk az hozzáadása még több változatban is elkészíti a különböző Linux Közösségek a [Azure által támogatott Linux Disztribúciókkal](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) listája.
+## <a name="azure-virtual-machines--instances"></a>Azure-beli virtuális gépek és példányok
+A Microsoft Azure több, különböző partnerek által biztosított és kezelt, népszerű Linux-disztribúció futtatását is támogatja.  Az Azure Marketplace-en olyan disztribúciókat találhat, mint a Red Hat Enterprise, a CentOS, a SUSE Linux Enterprise, a Debian, az Ubuntu, a CoreOS, a RancherOS, a FreeBSD és még sok más. Folyamatosan együttműködünk a különböző-Linux közösségekkel, hogy még tovább bővíthessük az [Azure által támogatott Linux-disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) listáját.
 
-Ha az előnyben részesített Linux distro választott nincs, a rendszer jelenleg a katalógusban "helyezheti a saját Linux" virtuális gép által [létrehozása és feltöltése az Azure Linux virtuális merevlemez](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ha a kívánt Linux-disztribúció jelenleg nem szerepel a katalógusban, „Saját Linux használata” típusú virtuális gépet is használhat. Ehhez [hozzon létre egy Linux VHD-t, és töltse fel az Azure-ba](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Azure virtuális gépek telepítése számos különböző megoldásokat számítástechnikai gyors módon teszik lehetővé. Szinte bármilyen munkaterhelést és szinte bármilyen operációs rendszer – Windows, Linux, a ismeretcikkekkel is telepíthet, vagy egy egyéni létre egyet a partnerek egyre bővülő listáját. Még nem látja éppen megtekintett?  Ne aggódjon, mert a helyszíni is helyezheti a saját lemezképek.
+Az Azure-beli virtuális gépekkel sokféle számítástechnikai megoldást helyezhet gyorsan üzembe. Gyakorlatilag bármilyen számítási feladatot és nyelvet üzembe helyezhet szinte az összes operációs rendszeren – legyen az Windows, Linux vagy egy egyénileg létrehozott operációs rendszer az egyre bővülő partnerlistánkról. Még mindig nem találja, amit keres?  Ne aggódjon – a saját helyszíni rendszerképeit is használhatja.
 
-## <a name="vm-sizes"></a>Virtuálisgép-méretek
-Amikor telepít egy Azure-ban, válassza ki a Virtuálisgép-méretet méretek a sorozata, amely lehetővé teszi a munkaterhelés egyik fog. A mérete befolyásolja a feldolgozási teljesítmény, a memória és a tárolási kapacitás a virtuális gép is. A virtuális gép fut, és a kiosztott erőforrásokat fel idő alapján kell fizetni. Teljes listáját [a virtuális gépek méretét](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="vm-sizes"></a>A virtuális gépek mérete
+Amikor üzembe helyez egy virtuális gépet az Azure-ban, ki kell választania egy virtuálisgép-méretet a számítási feladathoz megfelelő méretsorozatok közül. A méret emellett hatással van a virtuális gép feldolgozási teljesítményére, valamint a memória- és tárhelykapacitására is. A számlázás a virtuális gép futásideje és a lefoglalt erőforrások fogyasztása alapján történik. A [virtuálisgép-méretek](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) teljes listája.
 
-Az alábbiakban néhány alapvető útmutatók kijelölése az adatsorozat (A, D, DS, G és GS) egyik Virtuálisgép-méretet.
-* A-sorozatú virtuális gépek a könnyű munkaterhelések és szolgáltatásának fejlesztési/tesztelési kezdő virtuális gépek áron érték. Hogy széles körben elérhető, amelyek minden régióban, és csatlakozzon, és virtuális gépek számára elérhető összes szabványos erőforrások.
-* (A8 - A11) A-sorozatú értékek különleges számítási intenzív konfigurációk nagy teljesítményű számítástechnikai fürt alkalmazásoknál.
+Az alábbiakban alapvető irányelveket talál a virtuális gép méretének kiválasztásához a sorozataink egyikéből (A, D, DS, G és GS).
+* Az A-sorozat virtuális gépei kedvező árú, belépő szintű virtuális gépek a kisebb számítási feladatokhoz és a fejlesztési/tesztelési forgatókönyvekhez. Széles körben elérhetők az összes régióban, és csatlakozhatnak a virtuális gépek számára elérhető standard erőforrásokhoz, illetve használhatják azokat.
+* Az A-sorozat méretei (A8 – A11) speciális, nagy számításigényű konfigurációk, és megfelelőek a nagy teljesítményű feldolgozási fürttel rendelkező alkalmazásokhoz.
 * A D-sorozat virtuális gépei nagyobb számítási teljesítményt és ideiglenes lemezteljesítményt igénylő alkalmazások futtatására lettek kialakítva. A D-sorozat virtuális gépei gyorsabb processzorokat, nagyobb vCPU-nkénti memóriaarányt, valamint az ideiglenes lemezteljesítményhez SSD meghajtókat kínálnak.
-* Dv2-sorozat, a D sorozat legújabb verziója, nagyobb teljesítményű CPU szolgáltatásokat. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A legújabb generációját alapul 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haskell) processzor, és az Intel Turbo program technológia 2.0 folytathatja legfeljebb 3,2 GHz-es. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
+* A Dv2-sorozat a D-sorozat legújabb verziója, amely nagyobb teljesítményű processzorokat kínál. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A legújabb generációs 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haskell) processzoron alapul, és a teljesítménye az Intel Turbo Boost Technology 2.0 alkalmazásával akár 3,2 GHz-re is növelhető. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 * A G-sorozat virtuális gépei kínálják a legtöbb memóriát, és az Intel Xeon E5 V3 család processzorait tartalmazó gazdagépeken futnak.
 
-Megjegyzés: DS-méretek és GS sorozatnak virtuális gépek hozzáférjen a prémium szintű Storage, mert az SSD biztonsági nagy teljesítményű, alacsony késésű tárolási i/o-igényes munkaterhelések esetében. A Premium Storage szolgáltatás csak bizonyos régiókban érhető el. Részletes információ:
+Megjegyzés: A DS- és a GS-sorozat virtuális gépei hozzáférhetnek a Premium Storage-hoz, amely SSD-alapú, nagy teljesítményű és kis késésű tárolást biztosít az I/O-igényes számítási feladatokhoz. A Premium Storage szolgáltatás csak bizonyos régiókban érhető el. Részletes információ:
 
-* [Prémium szintű Storage: Nagy teljesítményű tárolást az Azure virtuális gépek terheléséhez](../windows/premium-storage.md)
+* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../windows/premium-storage.md)
 
 ## <a name="automation"></a>Automatizálás
-Egy megfelelő DevOps kulturális környezet eléréséhez összes infrastruktúra kódot kell lennie.  Ha minden él, az infrastruktúra kód is könnyen lehet újra (Phoenix kiszolgálók).  Azure például Ansible, Chef, SaltStack és Puppet tooling eszköz fő automation működik.  Azure automation a saját eszközt használunk erre is rendelkezik:
+A megfelelő DevOps-kultúra megteremtéséhez minden infrastruktúrának kódoltnak kell lennie.  Ha minden infrastruktúra kódolt formában létezik, egyszerűen létrehozható újra (Phoenix Servers).  Az Azure az összes fontosabb automatizáló eszközt használja, köztük az Ansible, a Chef, a SaltStack és a Puppet eszközöket.  Az Azure továbbá saját automatizáló eszközökkel is rendelkezik:
 
 * [Azure-sablonok](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Az Azure vmaccess bővítmény](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure VMAccess](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Azure támogatás bevezetéséről [felhő inicializálás](http://cloud-init.io/) között, amelyek támogatják ezt a legtöbb Linux-Disztribúciókkal.  Canonical tartozó Ubuntu virtuális gépek jelenleg a felhő inicializálás alapértelmezés szerint engedélyezve vannak telepítve.  Piros kalap RHEL, CentOS és Fedora támogatja a felhő inicializálás, azonban az Azure-rendszerképek tartja fenn RedHat nem rendelkezik telepített felhő inicializálás.  Felhő inicializálás egy RedHat termékcsalád operációs rendszer használatához létre kell hoznia egy egyéni lemezképet felhő inicializálás telepítve.
+Az Azure bevezeti a [cloud-init](http://cloud-init.io/) támogatását a legtöbb Linux-disztribúcióban, amely támogatja azt.  A Canonical Ubuntu-alapú virtuális gépei jelenleg az üzembe helyezéskor alapértelmezés szerint engedélyezik a cloud-init eszközt.  A Red Hats RHEL, a CentOS és a Fedora támogatják a cloud-init eszközt, a RedHat által karbantartott Azure-rendszerképeken viszont nincs telepítve.  A cloud-init RedHat termékcsaládba tartozó operációs rendszeren való használatához létre kell hoznia egy egyéni rendszerképet, amelyre telepítve van a cloud-init.
 
-* [Az Azure Linux virtuális gépeken futó felhőalapú inicializálás használatával](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [A cloud-init használata Azure-beli Linux rendszerű virtuális gépeken](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quotas"></a>Kvóták
-Minden Azure-előfizetéssel rendelkezik alapértelmezett kvótát, amely jelentős hatással lehet a virtuális gépek nagy számú a projekt telepítését. A jelenlegi határérték minden előfizetés esetében régiónként 20 virtuális gép.  Kvóták is gyorsan következik be, és könnyen egy támogatási jegy maximális kérő tervátalakítási növelheti.  További részletekért a kvótakorlát:
+Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, amelyek akadályt jelenthetnek, ha a projektjéhez nagy számú virtuális gépet szeretne üzembe helyezni. A jelenlegi határérték minden előfizetés esetében régiónként 20 virtuális gép.  A kvótakorlátozások gyorsan és egyszerűen megemelhetők egy, a korlátozás emelését kérvényező támogatási jegy benyújtásával.  További információ a kvótakorlátozásokról:
 
-* [Azure-előfizetés szolgáltatásra vonatkozó korlátozások](../../azure-subscription-service-limits.md)
+* [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../../azure-subscription-service-limits.md)
 
 ## <a name="partners"></a>Partnerek
-Microsoft szorosan együttműködik olyan partnereink számára, győződjön meg a rendelkezésre álló képeket frissítése, és egy Azure futtatókörnyezetet optimalizálva.  Partnereink további információt az alábbi piactér lapok ellenőrizze.
+A Microsoft szorosan együttműködik a partnereivel, hogy az elérhető rendszerképek biztosan frissítve és optimalizálva legyenek az Azure futtatókörnyezetre.  A partnereinkkel kapcsolatos további információkért tekintse meg az alább felsorolt piactéri oldalaikat.
 
-* Az Azure - Linux [által támogatott Disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* SUSE - [Azure piactér - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
-* Redhat - [Azure piactér - RedHat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
-* Canonical - [Azure piactér - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
-* Debian - [Azure piactér – Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
-* Freebsd rendszerű - [Azure piactér - freebsd rendszerű 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
-* CoreOS - [Azure piactér - CoreOS (stabil)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
-* RancherOS - [Azure piactér - RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
-* Bitnami - [Bitnami könyvtár az Azure-bA](https://azure.bitnami.com/)
-* Mesosphere - [Azure piactér - Mesosphere DC/OS az Azure-on](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
-* Docker - [Azure piactér – a Docker Swarm Azure Tárolószolgáltatás](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
-* Jenkins - [Azure piactér - CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
+* Linux az Azure-on – [Támogatott disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* SUSE – [Azure Marketplace – SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
+* Redhat – [Azure Marketplace – RedHat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
+* Canonical – [Azure Marketplace – Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
+* Debian – [Azure Marketplace – Debian 8 „Jessie”](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
+* FreeBSD – [Azure Marketplace – FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
+* CoreOS – [Azure Marketplace – CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
+* RancherOS – [Azure Marketplace – RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
+* Bitnami – [Azure-hoz készült Bitnami Library](https://azure.bitnami.com/)
+* Mesosphere – [Azure Marketplace – Mesosphere DC/OS az Azure-on](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
+* Docker – [Azure Marketplace – Azure Container Service a Docker Swarmmal](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
+* Jenkins – [Azure Marketplace – CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
 
-## <a name="getting-started-with-linux-on-azure"></a>Ismerkedés az Azure-on Linux
-Az Azure-fiók, az Azure parancssori felület telepítése és SSH nyilvános és titkos kulcsok párban kell Azure használatának megkezdéséhez.
+## <a name="getting-started-with-linux-on-azure"></a>A Linuxon futó Azure használatának első lépései
+Az Azure használatának megkezdéséhez szüksége lesz egy Azure-fiókra, telepített Azure CLI-re, valamint egy nyilvános és titkos SSH-kulcspárra.
 
 ### <a name="sign-up-for-an-account"></a>Fiók létrehozása
-Az első lépés az Azure-felhő használatával Azure-fiókot regisztrálni.  Lépjen a [Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/) első lépések lap.
+Az Azure Cloud használatának első lépése egy Azure-fiók létrehozása.  A kezdéshez nyissa meg az [Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/) oldalt.
 
-### <a name="install-the-cli"></a>A parancssori felület telepítése
-Az új Azure-fiókjával, és elkezdheti, azonnal az Azure-portál használatával, amely egy webalapú felügyeleti panel.  Az Azure felhőben keresztül a parancssori kezeléséhez telepítse a `azure-cli`.  Telepítse a [Azure CLI 2.0](/cli/azure/install-azure-cli) a Mac vagy Linux számítógépen.
+### <a name="install-the-cli"></a>A CLI telepítése
+Az új Azure-fiókkal azonnal megkezdheti az Azure Portal használatát, amely egy webalapú felügyeleti panel.  Az Azure Cloud parancssori felületen történő kezeléséhez telepítse a következőt: `azure-cli`.  Telepítse az [Azure CLI 2.0-t](/cli/azure/install-azure-cli) a Mac vagy Linux munkaállomásra.
 
 ### <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
-Most, hogy az Azure-fiók, az Azure web, és az Azure parancssori felület.  A következő lépés, ha az SSH-kulcspárral, amellyel SSH ból Linuxba jelszó nélkül.  [SSH-kulcsok létrehozása Linux és Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) jelszó nélküli bejelentkezéseket és a nagyobb biztonság engedélyezése.
+Ezen a ponton rendelkezik egy Azure-fiókkal, az Azure webportállal és az Azure CLI-vel.  A következő lépés egy SSH-kulcspár létrehozása, amellyel SSH-n keresztül, jelszó használata nélkül jelentkezhet be Linuxba.  [Hozzon létre SSH-kulcsokat a Linux és a Mac rendszerben](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), hogy lehetővé tegye a jelszó nélküli bejelentkezést, és növelje a biztonságot.
 
 ### <a name="create-a-vm-using-the-cli"></a>Virtuális gép létrehozása a parancssori felületről
-A Linux virtuális gép létrehozása a parancssori felület módja a gyors telepítése egy virtuális Gépet anélkül, hogy a Terminálszolgáltatások dolgozik.  Megadhatja a webportálon rendelkezésre álló parancssori jelző vagy kapcsolón keresztül.  
+A Linux rendszerű virtuális gépek parancssori felületről való létrehozása gyors módja a virtuális gépek üzembe helyezésének, anélkül, hogy el kellene hagynia a jelenleg használt terminált.  Minden, amit meg lehet adni a webportálon, elérhető egy parancssori jelzővel vagy kapcsolóval is.  
 
-* [Linux virtuális gép létrehozása a parancssori felület](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux rendszerű virtuális gép létrehozása a parancssori felületről](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-### <a name="create-a-vm-in-the-portal"></a>Hozzon létre egy virtuális Gépet a portálon
-Linux virtuális gép létrehozása az Azure web portal alkalmazásban módja a könnyen pontot, majd kattintson a telepítés gombra a különböző lehetőségeit.  Vagy parancssori kapcsolók helyett is töltött webes elrendezést a különböző lehetőségek és beállítások megtekintéséhez.  Minden elérhető a parancssori felületen keresztül érhető el a portálon.
+### <a name="create-a-vm-in-the-portal"></a>Virtuális gép létrehozása a portálon
+A Linux rendszerű virtuális gépek Azure webportálon való létrehozásával egyszerűen, néhány kattintással választhat a különböző beállítások között az üzembe helyezés előtt.  A parancssori jelzők vagy kapcsolók használata helyett a különböző lehetőségeket és beállításokat egy jól átlátható webes elrendezésben tekintheti meg.  Minden, ami elérhető a parancssori felületen, elérhető a portálon is.
 
-* [Linux virtuális gép létrehozása a portálon](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux rendszerű virtuális gép létrehozása a Portal használatával](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-### <a name="login-using-ssh-without-a-password"></a>Bejelentkezés SSH-jelszó nélkül
-A virtuális gép most már fut az Azure-on, és készen áll-e jelentkezni.  Jelszavak SSH-kapcsolaton keresztül bejelentkezési használata nem biztonságos és sok időt vesz igénybe.  SSH-kulcsok használata a legbiztonságosabb módja, valamint a leggyorsabban használatát a bejelentkezéshez.  Amikor hoz létre, Linux virtuális gép a portál vagy a parancssori felületen keresztül, két hitelesítés lehetősége van.  Ha az SSH egy jelszót, Azure konfigurálja a virtuális gép keresztül jelszavak bejelentkezések engedélyezéséhez.  Ha úgy döntött, hogy nyilvános SSH-kulcsot használ, az Azure konfigurálja a virtuális gép csak engedélyezi az SSH-kulcsok keresztül bejelentkezések, és letiltja a jelszavas bejelentkezéseket. A Linux virtuális gép biztonságos SSH-kulcs bejelentkezések csak tételével, használja az SSH nyilvános kulcs lehetőséggel a portál vagy a CLI-t a virtuális gépek létrehozása során.
+### <a name="login-using-ssh-without-a-password"></a>Bejelentkezés jelszó nélkül, SSH használatával
+A virtuális gép most már az Azure-ban fut, és Ön készen áll a bejelentkezésre.  Az SSH-n keresztüli jelszavas bejelentkezés nem biztonságos, és sok időt vesz igénybe.  Az SSH-kulcsok használata a legbiztonságosabb és a leggyorsabb mód a bejelentkezésre.  Amikor a Linux rendszerű virtuális gépet a portálon vagy a parancssori felületen hozza létre, kétféle hitelesítés közül választhat.  Ha kiválaszt egy jelszót az SSH számára, az Azure úgy konfigurálja a virtuális gépet, hogy engedélyezze a jelszavas bejelentkezést.  Ha az SSH nyilvános kulcs használatát választja, az Azure úgy konfigurálja a virtuális gépet, hogy csak az SSH-kulcsokkal való bejelentkezést engedélyezze, és letiltja a jelszavas bejelentkezést. Ha azzal szeretné védeni a Linux rendszerű virtuális gépet, hogy csak SSH-kulcsokkal engedélyezi a bejelentkezést, a virtuális gép portálon vagy parancssori felületen való létrehozásakor használja az SSH nyilvános kulcs lehetőséget.
 
-## <a name="related-azure-components"></a>Az Azure kapcsolódó összetevők
+## <a name="related-azure-components"></a>Kapcsolódó Azure-összetevők
 ## <a name="storage"></a>Storage
 * [A Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md)
-* [Vegyen fel egy lemezt egy Linux virtuális Gépet az azure parancssori felület használatával](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Hogyan lehet adatlemezt csatolni egy Linux virtuális Gépet az Azure-portálon](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Lemez hozzáadása Linux rendszerű virtuális géphez az azure-cli használatával](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Adatlemez csatlakoztatása Linux rendszerű virtuális géphez az Azure Portalon](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="networking"></a>Hálózat
-* [Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
+* [A Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
-* [Linux virtuális gép portok megnyitása az Azure-ban](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Hozzon létre egy teljesen minősített tartománynevet az Azure-portálon](portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Portok nyitása egy Linux rendszerű virtuális géphez az Azure Portalon](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Teljes tartománynév létrehozása az Azure Portalon](portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="containers"></a>Tárolók
-* [Virtuális gépek és a tárolók az Azure-ban](containers.md)
-* [Azure Tárolószolgáltatás bemutatása](../../container-service/container-service-intro.md)
+* [Virtuális gépek és tárolók az Azure-ban](containers.md)
+* [Az Azure Container Service bemutatása](../../container-service/container-service-intro.md)
 * [Az Azure Container Service-fürt üzembe helyezése](../../container-service/dcos-swarm/container-service-deployment.md)
 
 ## <a name="next-steps"></a>Következő lépések
-Most már rendelkezik Azure-on Linux áttekintését.  A következő lépés az, hogy férhet hozzá, és néhány virtuális gépek létrehozása!
+A cikk a Linux gépek Azure-on való használatáról nyújtott áttekintést.  Következő lépésként hozzon létre néhány virtuális gépet!
 
-* [Mintaparancsfájlok egyre bővülő listáját általános feladatokhoz felfedezés AzureCLI keresztül](cli-samples.md)
+* [Fedezze fel egyre bővülő mintaszkriptlistánkat a gyakori feladatokhoz az Azure CLI-n keresztül](cli-samples.md)

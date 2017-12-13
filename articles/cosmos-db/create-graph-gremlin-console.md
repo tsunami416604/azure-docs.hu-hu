@@ -15,7 +15,7 @@ ms.date: 07/27/2017
 ms.author: denlee
 ms.openlocfilehash: 9755446d2c01313db9fd80b4f2a7f46f8bec500c
 ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/25/2017
 ---
@@ -46,7 +46,7 @@ Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell len
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a id="ConnectAppService"></a>Csatlakozás az alkalmazásszolgáltatáshoz
-1. A Gremlin konzol elindítása előtt hozzon létre, vagy módosítsa a távoli-secure.yaml konfigurációs fájlt a a `apache-tinkerpop-gremlin-console-3.2.5/conf` könyvtár.
+1. A Gremlin konzol elindítása előtt hozza létre vagy módosítsa a remote-secure.yaml konfigurációs fájlt az `apache-tinkerpop-gremlin-console-3.2.5/conf` könyvtárban.
 2. Adja meg a *host* (gazdagép), *Port*, *username* (felhasználónév), *password* (jelszó), *ConnectionPool* (kapcsolatkészlet), és *serializer* (szerializáló) beállításokat:
 
     Beállítás|Ajánlott érték|Leírás
@@ -62,7 +62,7 @@ Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell len
 
     A jelszó értékéhez másolja az **Elsődleges kulcs** értékét a **Kulcsok** lapról: ![Az Azure Portal Kulcsok lapján található elsődleges kulcs megtekintése és másolása](./media/create-graph-gremlin-console/keys.png)
 
-A távoli-secure.yaml fájl kell kinéznie:
+A remote-secure.yaml fájlnak így kell kinéznie:
 
 ```
 hosts: [your_database_server.graphs.azure.com]

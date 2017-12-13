@@ -1,6 +1,6 @@
 ---
-title: "Naplózási és az Azure-előfizetéssel kapcsolatos fontos műveletek értesítéseket |} Microsoft Docs"
-description: "Az erőforrás-kezelést, a szolgáltatás állapotát és a más előfizetés tevékenység a műveletnaplóban előzményeit megértéséhez, majd tevékenységnapló riasztást segítségével egy e-mail értesítéseket kapjanak, amikor egy magas szintű jogosultságokat igénylő műveletet végzi el az előfizetéshez."
+title: "Az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések naplózása és fogadása | Microsoft Docs"
+description: "Megismerkedhet az erőforrás-kezelés előzményadataival, a szolgáltatás állapotával és a Tevékenységnaplóban található egyéb előfizetési tevékenységekkel, majd a tevékenységnapló-riasztások beállításával e-mailes értesítést kaphat, ha kiemelt jogosultságokat igénylő műveletet hajtanak végre az előfizetésén belül."
 author: johnkemnetz
 manager: orenr
 services: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.author: johnkem
 ms.custom: mvc
 ms.openlocfilehash: 636dc0fcae1bc2647cd59add5957884971015ce2
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Naplózási és az Azure-előfizetéssel kapcsolatos fontos műveletek értesítéseket
+# <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések naplózása és fogadása
 
-A **Azure tevékenységnapló** Azure előfizetés-szintű események előzményeit biztosítja. Kapcsolatos információkat kínál *ki* létrehozott, frissített vagy törölt *mi* erőforrások és *amikor* tevékenységük azt. Létrehozhat egy **tevékenységnapló riasztás** fogadni e-mailben, SMS vagy webhook értesítések küldése, ha egy tevékenység következik be, amely a figyelmeztetési feltételek egyeznek. A gyors üzembe helyezés lépéseit egyszerű hálózati biztonsági csoportot hoz létre, keresse meg a műveletnapló esemény megértése és majd szerzői tevékenységnapló riasztást vált értesíti, ha a hálózati biztonsági csoport létrehozása folyamatban a továbbítást.
+Az **Azure-tevékenységnapló** az Azure előfizetés-szintű eseményeit tartalmazza. Információkat biztosít arról, hogy *ki* és *milyen* erőforrásokat hozott létre, frissített vagy törölt, és a műveletekre *mikor* került sor. Ha létrehoz egy **Tevékenységnapló-riasztást**, értesítéseket fog kapni e-mailben, SMS-ben vagy webhookokon keresztül, ha a rendszer a riasztási feltételeknek megfelelő tevékenységeket észlel. Ez a rövid útmutató ismerteti egy egyszerű hálózati biztonsági csoport létrehozását, a Tevékenységnaplóban végzett kereséseket a bekövetkezett események jobb megértéséhez, illetve egy tevékenységnapló-riasztás létrehozását, hogy értesülhessen róla, ha a későbbiekben újabb hálózati biztonsági csoportot hoznak létre.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -30,72 +30,72 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
 
-2. Válassza ki **hálózati**, jelölje be **hálózati biztonsági csoport**.
+2. Válassza a **Hálózatkezelés**, majd a **Hálózati biztonsági csoport** elemet.
 
-3. Adja meg a "myNetworkSG" a **neve** , és hozzon létre egy új erőforráscsoportot **myResourceGroup**. Kattintson a **Létrehozás** gombra.
+3. Adja meg a „myNetworkSG” **nevet**, és hozzon létre egy **myResourceGroup** nevű új erőforráscsoportot. Kattintson a **Létrehozás** gombra.
 
-    ![A hálózati biztonsági csoportok létrehozása a portálon](./media/monitor-quick-audit-notify-action-in-subscription/create-network-security-group.png)
+    ![Hálózati biztonsági csoport létrehozása a portálon](./media/monitor-quick-audit-notify-action-in-subscription/create-network-security-group.png)
 
-## <a name="browse-the-activity-log-in-the-portal"></a>Keresse meg a tevékenység naplója a portálon
+## <a name="browse-the-activity-log-in-the-portal"></a>Tallózás a Tevékenységnaplóban a portálon
 
-Egy esemény most már fel lett véve a műveletnapló, amely a hálózati biztonsági csoport létrehozását ismerteti. A következő utasításokat követve azonosíthatja, hogy esemény.
+A rendszer hozzáad egy, a hálózati biztonsági csoport létrehozását leíró eseményt a Tevékenységnaplóhoz. Az esemény azonosításához támaszkodjon az alábbi utasításokra.
 
-1. Kattintson a **figyelő** gombra a bal oldali navigációs listában található. A műveletnapló részt nyílik meg. Ebben a szakaszban található összes végrehajtott műveletekből felhasználók rendelkeznek az erőforrást az előfizetésében több tulajdonságok alapján szűrhető, mint az előzményeit a **erőforráscsoport**, **Timespan**, és  **Kategória**.
+1. Kattintson a bal oldali navigációs listán található **Figyelés** gombra. Ez megnyitja a Tevékenységnapló szakaszt. Ez a szakasz a felhasználók által az előfizetése erőforrásain végzett minden művelet előzményét tartalmazza. Az adatokat számos tulajdonság szerint szűrheti (például **Erőforráscsoport**, **Időtartomány** és **Kategória**).
 
-2. Az a **tevékenységnapló** területen kattintson a **erőforráscsoport** legördülő menüből válassza ki **myResourceGroup**. Módosítsa a **Timespan** a legördülő lista **elmúlt 1 óra**. Kattintson az **Alkalmaz** gombra.
+2. A **Tevékenységnapló** szakaszban kattintson az **Erőforráscsoport** legördülő listára, és válassza a **myResourceGroup** elemet. Módosítsa az **Időtartomány** legördülő listában az értéket **Elmúlt 1 órára**. Kattintson az **Alkalmaz** gombra.
 
-    ![A műveletnapló szűrése](./media/monitor-quick-audit-notify-action-in-subscription/browse-activity-log.png)
+    ![A Tevékenységnapló szűrése](./media/monitor-quick-audit-notify-action-in-subscription/browse-activity-log.png)
 
-3. Kattintson a **írási biztonsági csoportok** a táblázatban ismertetett esemény.
+3. Kattintson a **NetworkSecurityGroups írása** eseményre az események táblázatában.
 
-## <a name="browse-an-event-in-the-activity-log"></a>Keresse meg a műveletnaplóban esemény
+## <a name="browse-an-event-in-the-activity-log"></a>Esemény keresése a Tevékenységnaplóban
 
-A következő szakasz jelenik meg a műveletet végeznie, beleértve a nevét, a Timestamp értéket, és a felhasználó vagy alkalmazás által végrehajtott azt alapvető részleteit tartalmazza.
+A megjelenő szakasz a végrehajtott művelet alapvető adatait tartalmazza, azaz a nevét, az időbélyeget és a végrehajtó felhasználót vagy alkalmazást.
 
-![A műveletnaplóban összefoglaló esemény megtekintése](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-summary.png)
+![Esemény összegzésének megtekintése a Tevékenységnaplóban](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-summary.png)
 
-Kattintson a **JSON** lapon, a teljes esemény részleteinek megtekintéséhez. Ez tartalmazza a módját a felhasználó vagy alkalmazás lett jogosult elvégezni a műveletet, az eseménykategóriát és szint és a művelet állapotát.
+Az esemény összes részletének megtekintéséhez kattintson a **JSON** lapra. Ez részletesen ismerteti, milyen jogosultsága volt a felhasználónak vagy alkalmazásnak a művelet végrehajtására, és tartalmazza az esemény kategóriáját és szintjét, valamint a művelet állapotát.
 
-![A műveletnapló az esemény részleteinek megtekintése](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-json.png)
+![Esemény részleteinek megtekintése a Tevékenységnaplóban](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-json.png)
 
-## <a name="create-an-activity-log-alert"></a>Tevékenységnapló riasztás létrehozása
+## <a name="create-an-activity-log-alert"></a>Tevékenységnapló-riasztás létrehozása
 
-1. Kattintson a **összefoglaló** lapra való visszatéréshez az esemény összegzése.
+1. Az **Összefoglalás** lapra kattintva térjen vissza az esemény összegzéséhez.
 
-2. Az összegzési területen megjelenő kattintson **Hozzáadás figyelmeztetés a napló**.
+2. A megjelenő összefoglalási szakaszban kattintson a **Tevékenységnapló-riasztás hozzáadása** elemre.
 
-    ![A hálózati biztonsági csoportok létrehozása a portálon](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-summary.png)
+    ![Hálózati biztonsági csoport létrehozása a portálon](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-summary.png)
 
-3. A szakaszban, amely akkor jelenik meg adjon a tevékenységnapló riasztás nevét és leírását.
+3. A megjelenő szakaszban nevezze el a tevékenységnapló-riasztást, és adja meg a leírását.
 
-4. A **feltételek** ügyeljen arra, hogy **eseménykategória** értéke **felügyeleti**, **erőforrástípus** értékre van állítva **hálózati biztonsági csoportok**, **műveletnév** értéke **létrehozás vagy frissítés hálózati biztonsági csoport**, **állapot** értékre van állítva  **Sikeres** és minden egyéb feltételek mezőiben vagy üres, vagy állítsa be a **összes**. A feltételek meghatározzák azon szabályokat határozza meg, hogy a riasztás kell lehet aktiválni, ha új esemény jelenik meg a műveletnaplóban.
+4. A **Feltételek** területen győződjön meg arról, hogy az **Eseménykategória** beállítása **Felügyeleti**, az **Erőforrás típusa** **Hálózati biztonsági csoportok**, a **Művelet neve** **Hálózati biztonsági csoport létrehozása vagy frissítése**, az **Állapot** **Sikeres**, és minden más feltételmező vagy üres, vagy **Összes** értékre van beállítva. A feltételek határozzák meg azokat a szabályokat, amelyek segítségével megállapítható, hogy a riasztást aktiválni kell-e, amikor új esemény kerül be a Tevékenységnaplóba.
 
-    ![A hálózati biztonsági csoportok létrehozása a portálon](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-alert-criteria.png)
+    ![Hálózati biztonsági csoport létrehozása a portálon](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-alert-criteria.png)
 
-5. A **riasztási keresztül** kiválasztása **új** művelet csoportban, és adja meg egy **neve** és **rövid nevét** a művelet csoport. A művelet csoport adja meg a riasztás aktiválásakor (Ha a feltételek egyeznek új esemény) végrehajtott műveletek.
+5. A **Riasztás ezen keresztül:** területen válassza az **Új** műveletcsoportot, és adjon egy **nevet** és egy **rövid nevet** a műveletcsoportnak. A műveletcsoport határozza meg, milyen műveleteket kell elvégezni, ha a riasztás aktiválódik (azaz egy új esemény megfelel a feltételeknek).
 
-6. A **műveletek** adjon hozzá legalább 1 műveleteket, adja meg a egy **neve** a művelet a **művelettípus** (például e-mail vagy SMS), és **részletek**az adott művelettől (például a webhook URL-CÍMÉT, e-mail címét vagy SMS szám).
+6. A **Műveletek** területen vegyen fel 1 vagy több műveletet. Ehhez adja meg a művelet **Nevét**, a **Művelet típusát** (például e-mail vagy SMS) és az adott művelettípus **Részleteit** (például egy webhook URL-jét, e-mail-címet vagy telefonszámot).
 
-    ![A hálózati biztonsági csoportok létrehozása a portálon](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-alert-actions.png)
+    ![Hálózati biztonsági csoport létrehozása a portálon](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-alert-actions.png)
 
-7. Kattintson a **Ok** a tevékenységnapló riasztás mentése.
+7. Kattintson az **OK** gombra a tevékenységnapló-riasztás mentéséhez.
 
-## <a name="test-the-activity-log-alert"></a>A műveletnapló riasztás tesztelése
+## <a name="test-the-activity-log-alert"></a>A tevékenységnapló-riasztás tesztelése
 
 > [!NOTE]
-> Teljes mértékben engedélyezve lesz tevékenységnapló riasztást körülbelül 10 percet vesz igénybe. Mielőtt teljes mértékben engedélyezve van a tevékenységnapló riasztás új események értesítések nem hoznak létre.
+> Egy tevékenységnapló-riasztás életbe léptetése körülbelül 10 percbe telik. Azok az események, amelyekre ennek letelte előtt kerül sor, nem váltanak ki értesítést.
 >
 >
 
-A riasztás teszteléséhez ismételje meg az előző szakaszban **hálózati biztonsági csoport létrehozása**, de másik nevet a hálózati biztonsági csoporthoz, és újra felhasználhatja a meglévő erőforráscsoportot. Néhány percen belül, hogy létrejött-e a hálózati biztonsági csoport egy értesítést fog kapni.
+A riasztás teszteléséhez ismételje meg az előző szakaszt (**hozzon létre egy hálózati biztonsági csoportot**), de ennek a hálózati biztonsági csoportnak adjon másik nevet, és használja újra a meglévő erőforráscsoportot. Néhány percen belül kap egy értesítést a hálózati biztonsági csoport létrejöttéről.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor már nincs szükség, törölje az erőforráscsoportot és a hálózati biztonsági csoport. Ehhez írja be a keresőmezőbe, a portál felső létrehozott erőforráscsoportot, majd kattintson a az erőforráscsoport nevét. Kattintson a csoport, amely akkor jelenik meg a **erőforrás csoport törlése** gombra, írja be a csoport nevét, és kattintson a **törlése**.
+Ha már nincs rájuk szükség, törölje az erőforráscsoportot és a hálózati biztonsági csoportot. Ehhez írja be a létrehozott erőforráscsoport nevét a portál tetején található keresőmezőbe, és kattintson az erőforráscsoport nevére. A megjelenő szakaszban kattintson az **Erőforráscsoport törlése** gombra, írja be az erőforráscsoport nevét, és kattintson a **Törlés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A gyors üzembe helyezési tevékenységnapló esemény létrehozásához műveletet, és hozza létre a tevékenységnapló riasztást vált értesíti, ha ehhez a művelethez újra a jövőben. Majd tesztelni a riasztás által újra, hogy a művelet végrehajtása. Azure lehetővé teszi a rendelkezésre álló tevékenységnapló események az elmúlt 90 nap. Ha szeretné megőrizni az események 90 napnál hosszabb, próbálkozzon a tevékenységnapló adatok mellett a figyelt adatok archiválása.
+Ebben a rövid útmutatóban egy művelet végrehajtásával létrehozott egy tevékenységnapló-eseményt, majd létrehozott egy tevékenységnapló-riasztást, hogy értesüljön róla, ha a művelet a jövőben megismétlődik. Ezután tesztelte a riasztást a művelet ismételt elvégzésével. Az Azure 90 napra visszamenőleg teszi elérhetővé a Tevékenységnapló eseményeit. Ha 90 napnál hosszabb ideig kell megőriznie az eseményeket, próbálja meg archiválni a Tevékenységnapló adatait a többi monitorozási adattal együtt.
 
 > [!div class="nextstepaction"]
 > [Megfigyelési adatok archiválása](./monitor-tutorial-archive-monitoring-data.md)

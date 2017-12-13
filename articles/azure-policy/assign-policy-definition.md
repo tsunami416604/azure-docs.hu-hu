@@ -1,6 +1,6 @@
 ---
-title: "Az Azure környezetben nem kompatibilis erőforrások azonosítására házirend-hozzárendelés létrehozása |} Microsoft Docs"
-description: "Ez a cikk végigvezeti a házirend-definíció nem kompatibilis erőforrások azonosítására létrehozásához."
+title: "Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához | Microsoft Docs"
+description: "Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat egy szabályzatdefiníciót a nem megfelelő erőforrások azonosítására."
 services: azure-policy
 keywords: 
 author: bandersmsft
@@ -11,102 +11,102 @@ ms.service: azure-policy
 ms.custom: mvc
 ms.openlocfilehash: 85136ff2783b21472ef02aee15f8ec5844a00c12
 ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/28/2017
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Az Azure környezetben nem kompatibilis erőforrások azonosítására házirend-hozzárendelés létrehozása
-Az első lépés az Azure-ban ismertetése megfelelőségi ismerete amennyiben állniuk saját aktuális erőforrásokkal. A gyors üzembe helyezés végigvezeti a házirend-hozzárendelés nem felügyelt lemezeket használó virtuális gépek azonosításához létrehozásának folyamatán.
+# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához
+Az Azure-ral való megfelelőség megértéséhez szükséges első szempont a saját jelenlegi erőforrásainak ismerete. Ez a rövid útmutató végigvezeti Önt a folyamaton, amellyel létrehozhat egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést.
 
-Ez a folyamat végén fog sikeresen azonosította virtuális gépekhez, amelyek nem használják a kezelt lemezeken, és ezért *nem megfelelő*.
+A folyamat végén sikeresen fogja azonosítani a felügyelt lemezeket nem használó, azaz *nem megfelelő* virtuális gépeket.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="opt-in-to-azure-policy"></a>Az Azure házirend engedélyezve
+## <a name="opt-in-to-azure-policy"></a>Az Azure Policy használata
 
-Az Azure házirend mostantól nyilvános előzetes verziójában, és a hozzáférés kéréséhez regisztrálnia kell.
+Elérhető az Azure Policy nyilvános előzetes verziója. Hozzáférés kéréséhez regisztráció szükséges.
 
-1. Keresse fel Azure házirend https://aka.ms/getpolicy, és válassza ki a **regisztráció** a bal oldali ablaktáblán.
+1. Látogasson el az Azure Policy webhelyére a https://aka.ms/getpolicy címen, majd válassza ki a **Feliratkozás** lehetőséget a bal oldali panelen.
 
-   ![Keresse meg a házirend](media/assign-policy-definition/sign-up.png)
+   ![Szabályzat keresése](media/assign-policy-definition/sign-up.png)
 
-2. Az előfizetések kiválasztásával Azure házirend szeretné a **előfizetés** lista szeretne dolgozni. Válassza ki **regisztrálása**.
+2. Az Azure Policy használatához válassza ki azokat az előfizetéseket az **Előfizetés** listából, amelyekkel dolgozni szeretne. Ezután kattintson a **Regisztrálás** elemre.
 
-   ![Szeretné használni az Azure-házirend](media/assign-policy-definition/preview-opt-in.png)
+   ![Az Azure Policy használata](media/assign-policy-definition/preview-opt-in.png)
 
-   A kérelem automatikus jóváhagyása Preview. Várja meg a regisztrációt feldolgozni a rendszer akár 30 percet.
+   Az Előzetes verzió használatára vonatkozó kérelmét a rendszer automatikusan jóváhagyja. Kérjük, várjon legfeljebb 30 percet, amíg a rendszer feldolgozza a regisztrációját.
 
-## <a name="create-a-policy-assignment"></a>Házirend-hozzárendelés létrehozása
+## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
-A gyors üzembe helyezés, az azt házirend-hozzárendelés létrehozása, és rendelje hozzá a *naplózási virtuális gépek nélkül kezelt lemezek* házirend-definíció.
+Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hozunk létre, és hozzárendeljük a *Felügyelt lemezek nélküli virtuális gépek naplózása* szabályzatdefiníciót.
 
-1. Válassza ki **hozzárendelések** a bal oldali ablaktáblában az Azure-szabályzatának oldaláról.
-2. Válassza ki **házirend hozzárendelése** tetején a **hozzárendelések** ablaktáblán.
+1. Válassza ki a **Hozzárendelések** elemet az Azure Policy webhely bal oldali panelén.
+2. Válassza a **Szabályzat hozzárendelése** lehetőséget a **Hozzárendelések** panel tetején.
 
-   ![Rendelje hozzá a házirend-definíció](media/assign-policy-definition/select-assign-policy.png)
+   ![Szabályzatdefiníció hozzárendelése](media/assign-policy-definition/select-assign-policy.png)
 
-3. A a **házirend hozzárendelése** kattintson ![házirend-definíció gomb](media/assign-policy-definition/definitions-button.png) melletti **házirend** mezőt nyissa meg a rendelkezésre álló-definíciók listáján.
+3. A **Szabályzat hozzárendelése** oldalon kattintson a ![Szabályzatdefiníció gombra](media/assign-policy-definition/definitions-button.png) a **Szabályzat** mező mellett az elérhető definíciók listájának megnyitásához.
 
-   ![Nyissa meg az elérhető, házirend-definíciók](media/assign-policy-definition/open-policy-definitions.png)
+   ![Elérhető szabályzatdefiníciók megnyitása](media/assign-policy-definition/open-policy-definitions.png)
 
-   Az Azure házirend mellékelt már beépített házirend-definíciókban használható. Például tekintse meg a beépített házirend-definíciók száma:
+   Az Azure Policy beépített szabályzatdefiníciókat tartalmaz, amelyeket felhasználhat. Többek között a következő beépített szabályzat-definíciókat láthatja:
 
-   - Címke és annak értéke
-   - Alkalmazza a címke és annak értéke
-   - Szükséges SQL Server verzió 12.0
+   - Címke és a hozzá tartozó érték kényszerítése
+   - Címke és a hozzá tartozó érték alkalmazása
+   - SQL Server 12.0-ás verziójának megkövetelése
 
-4. Keresés a házirend-definíciók kereséséhez keresztül a *naplózási virtuális gépek, amelyek nem használnak kezelt lemezek* definíciója. Kattintson a házirendhez, és kattintson a **hozzárendelése**.
+4. Keresse meg a *Felügyelt lemezeket nem használó virtuális gépek naplózása* definíciót a szabályzatdefiníciók között. Kattintson a szabályzatra, majd kattintson a **Hozzárendelés** elemre.
 
-   ![A megfelelő házirend-definíció keresése](media/assign-policy-definition/select-available-definition.png)
+   ![A megfelelő szabályzatdefiníció megtalálása](media/assign-policy-definition/select-available-definition.png)
 
-5. Adjon meg egy megjelenítési **neve** a házirend-hozzárendelés. Ebben az esetben most használja *naplózási virtuális gépek, amelyek nem használnak felügyelt lemezek*. Azt is megteheti egy nem kötelező **leírás**. A leírás ismerteti, hogyan a házirend-hozzárendelés azonosítja, amelyek nem használnak felügyelt lemezek ebben a környezetben létrehozott virtuális gépeket.
-6. A tarifacsomagjának módosítása a következőre módosítani **szabványos** annak érdekében, hogy a házirend alkalmazva lesz a meglévő erőforrásokat.
+5. Írjon be egy a szabályzat-hozzárendeléshez tartozó megjelenítendő **Nevet**. Ebben az esetben a név legyen *Felügyelt lemezeket nem használó virtuális gépek naplózása*. Ha szeretné hozzáadhat egy **Leírást**. A leírás információt nyújt arról, hogyan azonosítja a szabályzat-hozzárendelés az összes ebben a környezetben létrehozott, felügyelt lemezeket nem használó virtuális gépet.
+6. Módosítsa a tarifacsomagot a **Standard** szintre, hogy a szabályzat kiterjedjen a meglévő erőforrásokra.
 
-   Nincsenek Azure házirend – két tarifacsomagok *szabad* és *szabványos*. Az ingyenes szint csak házirendjeinek betartatásával jövőbeli erőforrásokon, a Standard, is kényszerítheti azokat a meglévő erőforrásokat jobb megértése érdekében a megfelelőségi állapot. Mivel jelenleg korlátozott előzetes, nem még kiadtuk árképzési modellt, így Ön nem kap egy számlázási kiválasztásának *szabványos*. További vonatkozó, tekintse meg: [Azure házirend árképzési](https://azure.microsoft.com/pricing/details/azure-policy/).
+   Az Azure Policy-ban két tarifacsomag létezik – *Ingyenes* és *Standard*. Az Ingyenes szinten csak a jövőbeli erőforrások esetében kényszeríthet szabályzatokat, míg a Standard szinten már meglévő erőforrások esetében is, hogy jobban átlássa a megfelelőségi állapotot. Mivel ez egy Korlátozott Előzetes Verzió, még nem bocsátottunk ki díjszabási modellt, így nem fog számlát kapni a *Standard* szint kiválasztásakor. A díjszabással kapcsolatos további információkért tekintse meg a következőt: [Azure Policy díjszabás](https://azure.microsoft.com/pricing/details/azure-policy/).
 
-7. Válassza ki a **hatókör** szeretné alkalmazni kívánt házirendet.  A hatókör határozza meg, milyen erőforrásokat, vagy az erőforrások csoportosítása a házirend-hozzárendelés lekérdezi kényszeríti az. Ez terjedhet előfizetés erőforráscsoportokhoz.
-8. Válassza ki az előfizetés (vagy az erőforráscsoport) korábban regisztrált amikor Azure házirendbe választotta. A jelen példában használjuk az előfizetés - **Azure Analytics kapacitás fejlesztői**, de a beállítások eltérőek.
+7. Válassza ki azt a **Hatókört**, amelyben a szabályzatot alkalmazni szeretné.  A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet.
+8. Válassza ki az Azure Policy használatához előzőleg regisztrált előfizetést (vagy erőforráscsoportot). Ebben a példában az alábbi előfizetést használjuk (az Ön lehetőségei ettől különbözni fognak): **Azure Analytics Capacity Dev**.
 
-   ![A megfelelő házirend-definíció keresése](media/assign-policy-definition/assign-policy.png)
+   ![A megfelelő szabályzatdefiníció megtalálása](media/assign-policy-definition/assign-policy.png)
 
-9. Válassza ki **hozzárendelése**.
+9. Válassza a **Hozzárendelés** elemet.
 
-Most már készen áll a megfelelőségi állapotát a környezetében megértéséhez nem kompatibilis erőforrások azonosítására.
+Most már készen áll a nem megfelelő erőforrások azonosítására a környezet megfelelési állapotának megismerése céljából.
 
-## <a name="identify-non-compliant-resources"></a>Nem kompatibilis erőforrások azonosítása
+## <a name="identify-non-compliant-resources"></a>Nem megfelelő erőforrások azonosítása
 
-Válassza ki **megfelelőségi** a bal oldali ablaktáblán, és keresse meg a létrehozott házirend-hozzárendelés.
+Válassza a **Megfelelőség** elemet a bal oldali panelen, majd keresse meg az imént létrehozott szabályzat-hozzárendelést.
 
-![Szabályzatoknak való megfelelés](media/assign-policy-definition/policy-compliance.png)
+![Szabályzatmegfelelőség](media/assign-policy-definition/policy-compliance.png)
 
-Ha a meglévő erőforrásokat, amelyek nem ehhez a hozzárendeléshez megfelelnek, akkor jelennek meg a **nem megfelelő erőforrások** fülre.
+Ha vannak meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, akkor a **Nem megfelelő erőforrások** lapon jelennek meg.
 
-Ha egy feltétel kiértékelése történik a meglévő erőforrások között, és egyes őket ismét meg igaz, ezeket az erőforrásokat jelölésű nem felel meg a házirend. Ez a tábla, hogyan tudunk jelenleg elérhető különböző műveleteket a feltétel kiértékelésének eredménye és az erőforrások megfelelőségi állapotát.
+Ha a meglévő erőforrások kiértékelésekor egy feltétel néhány erőforrás esetében igaz, ezek az erőforrások a szabályzatnak nem megfelelőként lesznek megjelölve. Az alábbi táblázat azt mutatja be, hogyan működnek a ma elérhető különböző műveletek a feltételek kiértékelésének eredményeivel és az erőforrások megfelelőségi állapotával.
 
-|Erőforrás  |Ha a feltétel a házirendben  |A művelet a házirendben   |Megfelelőségi állapot  |
+|Erőforrás  |Ha egy feltétel a szabályzatban  |Művelet a szabályzatban   |Megfelelőségi állapot  |
 |-----------|---------|---------|---------|
 |Létezik     |True (Igaz)     |Megtagadás     |Nem megfelelő |
-|Létezik     |False (Hamis)    |Megtagadás     |Megfelelőség     |
+|Létezik     |False (Hamis)    |Megtagadás     |Megfelelő     |
 |Létezik     |True (Igaz)     |Hozzáfűzés   |Nem megfelelő |
-|Létezik     |False (Hamis)    |Hozzáfűzés   |Megfelelőség     |
+|Létezik     |False (Hamis)    |Hozzáfűzés   |Megfelelő     |
 |Létezik     |True (Igaz)     |Naplózás    |Nem megfelelő |
 |Létezik     |False (Hamis)    |Naplózás    |Nem megfelelő |
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A gyűjtemény útmutatók a gyors üzembe helyezés épül. Ha azt tervezi, folytassa a következő útmutatókból dolgozni, üríti a gyors üzembe helyezés létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást.
-1. Válassza ki **hozzárendelések** a bal oldali ablaktáblán.
-2. Keressen rá az imént létrehozott hozzárendelés.
+Az ebben a gyűjteményben lévő többi útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást.
+1. Válassza ki a **Hozzárendelések** elemet a bal oldali panelen.
+2. Keresse meg az imént létrehozott hozzárendelést.
 
    ![Hozzárendelés törlése](media/assign-policy-definition/delete-assignment.png)
 
-3.  Válassza ki **-hozzárendelés törlése**.
+3.  Válassza ki a **Hozzárendelés törlése** elemet.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A gyors üzembe helyezés, a házirend-definíció annak érdekében, hogy az erőforrások abban a hatókörben megfelelőek, és azonosítása, melyeket nem hatókörbe rendelve.
+Ebben a rövid útmutatóban egy szabályzatdefiníciót rendelt hozzá egy hatókörhöz, hogy biztosítsa a hatókörbe tartozó erőforrások megfelelőségét, illetve, hogy azonosíthassa a nem megfelelő erőforrásokat.
 
-További információt a házirendek annak érdekében, hogy **jövőbeli** erőforrásokat, amelyek létrehozása megfelelőek, továbbra is az oktatóanyag:
+A szabályzatok a **jövőben** létrehozott erőforrások megfelelőségének biztosítása érdekében történő hozzárendeléséről a következő oktatóanyagban találhat több információt:
 
 > [!div class="nextstepaction"]
-> [Létrehozás és házirendek kezelése](./create-manage-policy.md)
+> [Szabályzatok létrehozása és kezelése](./create-manage-policy.md)

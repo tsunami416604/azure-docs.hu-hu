@@ -1,6 +1,6 @@
 ---
-title: "Csatlakozás a PostgreSQL-hez készült Azure Database-hez a Pythonnal | Microsoft Docs"
-description: "Ez a rövid útmutató egy olyan Python-kódmintát biztosít, amellyel csatlakozhat egy PostgreSQL-hez készült Azure-adatbázishoz, és adatokat kérdezhet le arról."
+title: "Csatlakozás az Azure Database for PostgreSQL szolgáltatáshoz Pythonnal | Microsoft Docs"
+description: "Ez a rövid útmutató egy olyan Python-kódmintát biztosít, amellyel csatlakozhat egy Azure Database for PostgreSQL adatbázishoz, és adatokat kérdezhet le."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 11/03/2017
 ms.openlocfilehash: ee310f10b27418c1dcd73755643120121f611f06
 ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/06/2017
 ---
-# <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Python használatával
-Ez a rövid útmutató ismerteti, hogyan használható a [Python](https://python.org) a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Azt is bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatbázisban található adatok macOS, Ubuntu Linux és Windows platformon. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Python használatával kapcsolatosan, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
+# <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Csatlakozás és adatlekérdezés a Python használatával
+Ez a rövid útmutató az ismerteti, hogy a [Python](https://python.org) hogyan használható a Azure Database for PostgreSQL-adatbázishoz való csatlakozáshoz. Azt is bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatbázisban található adatok macOS, Ubuntu Linux és Windows platformon. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Python használatával kapcsolatosan, az Azure Database for PostgreSQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
@@ -47,26 +47,26 @@ Telepítse a [psycopg2](http://initd.org/psycopg/docs/install.html) csomagot, am
     ```
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
-Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
+Kérje le az Azure Database for PostgreSQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Azure-portálon a bal oldali menüben kattintson a **összes erőforrás** keresse meg a **mypgserver-20170401** (a létrehozott kiszolgáló).
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a **mypgserver-20170401** kiszolgálóra (amelyet létrehozott).
 3. Kattintson a **mypgserver-20170401** kiszolgálónévre.
 4. Válassza a kiszolgáló **Áttekintés** lapját, és jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
- ![PostgreSQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-python/1-connection-string.png)
+ ![Azure Database for PostgreSQL – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-python/1-connection-string.png)
 5. Amennyiben elfelejtette a kiszolgálója bejelentkezési adatait, lépjen az **Áttekintés** oldalra, ahol kikeresheti a kiszolgáló-rendszergazda bejelentkezési nevét, valamint szükség esetén új jelszót kérhet.
 
 ## <a name="how-to-run-python-code"></a>Python-kód futtatása
-Ez a cikk tartalmazza, amelyek egy megadott funkciót lát négy mintakódok összesen. Az alábbi utasítások alapján szövegfájlt hozhat létre, kódblokkot szúrhat be, majd mentheti a fájlt későbbi futtatáshoz. Mindenképpen négy külön fájlt hozzon létre, mindegyik blokk számára egyet.
+Ez a cikk összesen négy kódmintát tartalmaz, amelyek mindegyike egy adott funkciót hajt végre. Az alábbi utasítások alapján szövegfájlt hozhat létre, kódblokkot szúrhat be, majd mentheti a fájlt későbbi futtatáshoz. Mindenképpen négy külön fájlt hozzon létre, mindegyik blokk számára egyet.
 
 - Hozzon létre egy új fájlt a kedvenc szövegszerkesztőjével.
 - Másolja és illessze be az alábbi szakaszokban található kódminták egyikét a szövegfájlba. Cserélje le a **gazdagép**, az **adatbázisnév**, a **felhasználó** és a **jelszó** paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg.
-- Mentse a fájlt a .py kiterjesztéssel (például postgres.py) a projektmappába. Ha a Windows rendszeren futtatja, ügyeljen arra, hogy válassza az UTF-8 kódolását, ha a fájl mentése. 
-- Indítsa el a parancssorából, vagy a Terminálszolgáltatások vagy a Bash rendszerhéjat, és módosítsa a könyvtárat a projektmappa például `cd postgres`.
+- Mentse a fájlt a .py kiterjesztéssel (például postgres.py) a projektmappába. Ha Windows rendszert futtat, az UTF-8 kódolást válassza a fájl mentésekor. 
+- Indítsa el a parancssort, a Terminált vagy a Bash felületet, és lépjen a projektmappába, például: `cd postgres`.
 -  A kód futtatásához írja be a Python-parancsot, majd a fájlnevet, például: `Python postgres.py`.
 
 > [!NOTE]
-> Python 3-as verziójú kezdve, előfordulhat, hogy a hibát látja `SyntaxError: Missing parentheses in call to 'print'` a jelentés futtatásakor a következő kódblokkok: Ha ez előfordul, cserélje le a parancs minden egyes hívásakor `print "string"` zárójeleket tartalmazhat, mint például használatával függvényt hívja `print("string")`.
+> A Python 3-as verziójától kezdődően a `SyntaxError: Missing parentheses in call to 'print'` hiba jelenhet meg az alábbi kódblokkok futtatásakor. Ha ez történik, cserélje le a `print "string"` parancs minden hívását egy zárójelet használó függvényhívással, például a következővel: `print("string")`.
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
 Az alábbi kód használatával csatlakozhat és töltheti be az adatokat az **INSERT** SQL-utasítással használt [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) függvény segítségével. A [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) függvény az SQL-lekérdezés PostgreSQL-adatbázison való végrehajtására szolgál. Cserélje le a gazdagép, az adatbázisnév, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg.

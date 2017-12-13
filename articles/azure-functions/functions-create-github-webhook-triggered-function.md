@@ -18,7 +18,7 @@ ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: d70186513b7313c8181092bc93a723f21154f7bc
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
@@ -51,7 +51,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
     ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
 
-2. Válassza ki a **GitHub WebHook** sablont a kívánt nyelvet. **Nevezze el a függvényt**, majd kattintson a **Létrehozás** elemre.
+2. Kattintson a kívánt nyelvhez tartozó **GitHub WebHook**-sablonra. **Nevezze el a függvényt**, majd kattintson a **Létrehozás** elemre.
 
      ![GitHub-webhook által aktivált függvény létrehozása az Azure Portalon](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
 

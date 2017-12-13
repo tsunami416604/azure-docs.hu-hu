@@ -1,6 +1,6 @@
 ---
-title: "Általános webhook által indított Azure függvény létrehozása |} Microsoft Docs"
-description: "Az Azure Functions használatával egy kiszolgáló nélküli függvény, amelyet az Azure-ban a webhook létrehozása."
+title: "Általános webhook által aktivált függvények létrehozása az Azure-ban | Microsoft Docs"
+description: "Használja az Azure Functions szolgáltatást olyan kiszolgáló nélküli függvények létrehozására, amelyeket egy Azure-ban található webhook hív meg."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -18,15 +18,15 @@ ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: f283f8d79c5ae5fb6a72c84c9e9edb7bb8de4a83
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-function-triggered-by-a-generic-webhook"></a>Általános webhook által indított függvény létrehozása
+# <a name="create-a-function-triggered-by-a-generic-webhook"></a>Általános webhook által aktivált függvény létrehozása
 
-Az Azure Functions lehetővé teszi a kód végrehajtását kiszolgáló nélküli környezetben anélkül, hogy először létre kellene hoznia egy virtuális gépet vagy közzé kellene tennie egy webalkalmazást. Konfigurálhatja például, a függvény aktiválására Azure figyelő által kiváltott riasztások alapján. Ez a témakör bemutatja, hogyan hajthat végre a C#-kódban, egy erőforráscsoportot az előfizetéshez való hozzáadásakor.   
+Az Azure Functions lehetővé teszi a kód végrehajtását kiszolgáló nélküli környezetben anélkül, hogy először létre kellene hoznia egy virtuális gépet vagy közzé kellene tennie egy webalkalmazást. Például konfigurálhat úgy egy függvényt, hogy az Azure Monitor riasztására aktiválódjon. Ez a témakör C#-kódok végrehajtásának módját mutatja be erőforráscsoport az előfizetéshez történő hozzáadásakor.   
 
-![Általános webhook indított funkció az Azure-portálon](./media/functions-create-generic-webhook-triggered-function/function-completed.png)
+![Általános webhook által aktivált függvény az Azure Portalon](./media/functions-create-generic-webhook-triggered-function/function-completed.png)
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -42,66 +42,66 @@ Az oktatóanyag elvégzéséhez:
 
 Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
-## <a name="create-function"></a>Általános webhook indított függvény létrehozása
+## <a name="create-function"></a>Általános webhook által aktivált függvény létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez a függvény az első címtárra, a függvény alkalmazásban, válassza ki a **egyéni függvény**. Ez megjeleníti a függvénysablonok teljes készletét.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét.
 
     ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-generic-webhook-triggered-function/add-first-function.png)
 
-2. Válassza ki a **általános WebHook - C#** sablont. Adja meg a C# függvény nevét, majd válasszon **létrehozása**.
+2. Válassza az **Általános webhook – C#** sablont. Adja meg a C#-függvény nevét, majd válassza a **Létrehozás** elemet.
 
-     ![Általános webhook indított függvény létrehozása az Azure-portálon](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png) 
+     ![Általános webhook által aktivált függvény létrehozása az Azure Portalon](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png) 
 
-2. Kattintson az új függvény **<> / Get függvény URL-cím**, majd másolja ki és mentse az értéket. Ez az érték a webhook konfigurálására használt. 
+2. Az új függvényben kattintson a **</> Függvény URL-címének lekérése** elemre, majd másolja és mentse az értéket. Erre az értékre a webhook konfigurálásához lesz szükség. 
 
     ![A függvénykód áttekintése](./media/functions-create-generic-webhook-triggered-function/functions-copy-function-url.png)
          
-A következő hoz létre egy webhook végpont Azure figyelése tevékenység napló riasztást. 
+Ezután hozzon létre egy webhook-végpontot egy Azure Monitor tevékenységnapló-riasztásban. 
 
-## <a name="create-an-activity-log-alert"></a>Tevékenység napló riasztás létrehozása
+## <a name="create-an-activity-log-alert"></a>Tevékenységnapló-riasztás létrehozása
 
-1. Az Azure-portálon lépjen a **figyelő** szolgáltatás, válassza **riasztások**, és kattintson a **Hozzáadás figyelmeztetés a napló**.   
+1. Az Azure Portalon lépjen a **Figyelés** szolgáltatáshoz, válassza a **Riasztások** lehetőséget, majd kattintson a **Tevékenységnapló-riasztás hozzáadása** elemre.   
 
     ![Figyelés](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert.png)
 
 2. Használja a táblázatban megadott beállításokat:
 
-    ![Tevékenység napló riasztás létrehozása](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert-settings.png)
+    ![Tevékenységnapló-riasztás létrehozása](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert-settings.png)
 
     | Beállítás      |  Ajánlott érték   | Leírás                              |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Tevékenység napló riasztás neve** | erőforrás-csoport-létrehozása – figyelmeztetés | A figyelmeztetés a napló nevét. |
-    | **Előfizetés** | Az Ön előfizetése | Az előfizetés ehhez az oktatóanyaghoz használ. | 
-    |  **Erőforráscsoport** | myResourceGroup | A riasztási erőforrások vannak telepítve az erőforráscsoport. Ugyanabban az erőforráscsoportban használata a függvénynek alkalmazásként megkönnyíti az oktatóanyag befejezése után karbantartása. |
-    | **Eseménykategória** | Felügyeleti | Ebbe a kategóriába olyan Azure-erőforrások módosításait.  |
-    | **Erőforrástípus** | Erőforráscsoportok | Szűrők riasztásokat az erőforrás-csoport tevékenységeket. |
-    | **Erőforráscsoport**<br/>és **erőforrás** | Összes | Figyelje az összes erőforrást. |
-    | **A művelet neve** | Create resource group (Erőforráscsoport létrehozása) | Riasztások létrehozásához a műveletek szűrése. |
-    | **Szint** | Tájékoztató | Tájékoztatási szintű riasztások tartalmazzák. | 
-    | **Állapot** | Sikeres | Sikeresen végrehajtott műveletek riasztások szűrése. |
-    | **A művelet csoport** | új | Hozzon létre egy új művelet, amely meghatározza a művelet beolvassa, egy riasztás esetén. |
-    | **A művelet csoport neve** | függvény-webhook | A művelet csoportnak a nevét.  | 
-    | **Rövid név** | funcwebhook | A művelet csoport rövid nevét. |  
+    | **Tevékenységnapló-riasztás neve** | resource-group-create-alert | A tevékenységnapló-riasztás neve. |
+    | **Előfizetés** | Az Ön előfizetése | Az ehhez az oktatóanyaghoz használt előfizetés. | 
+    |  **Erőforráscsoport** | myResourceGroup | Az erőforráscsoport, ahova a riasztás erőforrásai települnek. A függvényalkalmazás által használt erőforráscsoport használata megkönnyíti a fölöslegessé vált elemek eltávolítását az oktatóanyag befejezése után. |
+    | **Eseménykategória** | Adminisztratív | Ez a kategória az Azure-erőforrásokon eszközölt módosításokat tartalmazza.  |
+    | **Erőforrás típusa** | Erőforráscsoportok | A riasztásokat az erőforráscsoport-tevékenységekre szűri. |
+    | **Erőforráscsoport**<br/>és **Erőforrás** | Összes | Minden erőforrás monitorozása. |
+    | **Művelet neve** | Create resource group (Erőforráscsoport létrehozása) | A riasztásokat létrehozási műveletekre szűri. |
+    | **Szint** | Tájékoztató | Tartalmazza a tájékoztató szintű riasztásokat. | 
+    | **Állapot** | Sikeres | A riasztásokat a sikeresen befejezett műveletekre szűri. |
+    | **Műveletcsoport** | Új | Hozzon létre egy új műveletcsoportot, amely meghatározza a riasztáskor végrehajtandó műveletet. |
+    | **Műveletcsoport neve** | function-webhook | A műveletcsoport azonosítására szolgáló név.  | 
+    | **Rövid név** | funcwebhook | A műveletcsoport rövid neve. |  
 
-3. A **műveletek**, a táblázatban megadott beállításokkal művelet hozzáadása: 
+3. A **Műveletek** területen adjon hozzá egy műveletet a táblázatban megadott beállításokkal: 
 
-    ![Egy művelet csoport hozzáadása](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert-settings-2.png)
+    ![Műveletcsoport hozzáadása](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert-settings-2.png)
 
     | Beállítás      |  Ajánlott érték   | Leírás                              |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name (Név)** | CallFunctionWebhook | A művelet nevét. |
-    | **Művelet típusa** | Webhook | A rendszer a választ a riasztást, hogy a Webhook URL-cím neve. |
-    | **Részletek** | Függvény URL-címe | Illessze be a korábban kimásolt függvény a webhook URL-CÍMÉT. |v
+    | **Name (Név)** | CallFunctionWebhook | A művelet neve. |
+    | **Művelettípus** | Webhook | A riasztásra adott válasz egy webhook URL-címének meghívása. |
+    | **Részletek** | Függvény URL-címe | Illessze be a függvényhez tartozó webhook korábban vágólapra másolt URL-címét. |v
 
-4. Kattintson a **OK** a riasztás és művelet csoport létrehozásához.  
+4. A riasztás és a műveletcsoport létrehozásához kattintson az **OK** gombra.  
 
-A webhook neve erőforráscsoport létrehozásakor az előfizetéshez. Következő lépésként frissítse a kódot a kérelem törzsében naplóban JSON-adatokat kezelni a függvényben.   
+A rendszer mostantól meghívja a webhookot, ha erőforráscsoport jön létre előfizetésében. Ezután frissítse a függvény kódját a kérelem törzsében található JSON-naplóadatok kezeléséhez.   
 
 ## <a name="update-the-function-code"></a>A függvénykód módosítása
 
-1. Lépjen vissza a függvény app a portálon, és bontsa ki a függvény. 
+1. Lépjen vissza a függvényalkalmazáshoz a portálon, és bontsa ki a függvényt. 
 
-2. Cserélje le a C# parancsfájlkód a portálon a függvényben a következő kódot:
+2. Cserélje a függvényben lévő C#-szkriptkódot az alábbira a portálon:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -141,19 +141,19 @@ A webhook neve erőforráscsoport létrehozásakor az előfizetéshez. Következ
     }
     ```
 
-A függvény most tesztelheti az előfizetés egy új erőforráscsoport létrehozásával.
+Most tesztelheti a függvényt, ha új erőforráscsoport hoz létre az előfizetésében.
 
 ## <a name="test-the-function"></a>A függvény tesztelése
 
-1. Kattintson az Azure portál, válassza a bal oldali erőforrás csoport ikonra **+ Hozzáadás**, adjon meg egy **erőforráscsoport-név**, és válassza ki **létrehozása** futtatásával hozzon létre egy üres erőforráscsoportot.
+1. Kattintson az erőforráscsoport-ikonra az Azure Portal bal oldalán, válassza a **+ Hozzáadás** lehetőséget, gépeljen be egy **Erőforráscsoport nevet**, majd válassza a **Létrehozás** elemet egy üres erőforráscsoport létrehozásához.
     
     ![Hozzon létre egy erőforráscsoportot.](./media/functions-create-generic-webhook-triggered-function/functions-create-resource-group.png)
 
-2. Lépjen vissza a függvény, és bontsa ki a **naplók** ablak. Az erőforráscsoport létrehozása után a napló figyelmeztetés elindítja a webhook, és a funkciót hajtja végre. Az új erőforráscsoportot, a naplókban is megtekinthetők nevének megtekintéséhez.  
+2. Lépjen vissza a függvényhez, és bontsa ki a **Naplók** ablakot. Miután az erőforráscsoport elkészült, a tevékenységnapló-riasztás aktiválja a webhookot, és a rendszer végrehajtja a függvényt. Az új erőforráscsoport neve megjelenik a naplókban.  
 
-    ![Egy teszt Alkalmazásbeállítás hozzáadása.](./media/functions-create-generic-webhook-triggered-function/function-view-logs.png)
+    ![Adjon hozzá alkalmazástesztelési beállítást.](./media/functions-create-generic-webhook-triggered-function/function-view-logs.png)
 
-3. (Választható) Lépjen vissza, és törölje a létrehozott csoportot. Vegye figyelembe, hogy ez a tevékenység a függvény nem következik. Ennek az az oka törlési műveletek a riasztás által ki van szűrve. 
+3. (Nem kötelező) Lépjen vissza és törölje a saját maga által létrehozott erőforráscsoport. Megjegyezés: ez a művelet nem aktiválja a függvényt. Ennek az az oka, hogy a riasztás kiszűri a törlési műveleteket. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -161,9 +161,9 @@ A függvény most tesztelheti az előfizetés egy új erőforráscsoport létreh
 
 ## <a name="next-steps"></a>Következő lépések
 
-Egy függvényt, amely akkor fut, amikor egy kérelem érkezett egy általános webhook hozott létre. 
+Létrehozott egy függvényt, amely akkor fut, amikor kérelem érkezik egy általános webhookból. 
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-További információt a webhook-eseményindítókról az [Azure Functions – HTTP- és webhookkötések](functions-bindings-http-webhook.md) című témakörben talál. A C# funkciók fejlesztésével kapcsolatos további tudnivalókért lásd: [Azure Functions C# parancsfájl fejlesztői leírás](functions-reference-csharp.md).
+További információt a webhook-eseményindítókról az [Azure Functions – HTTP- és webhookkötések](functions-bindings-http-webhook.md) című témakörben talál. További információt a függvények C# környezetben való fejlesztéséről az [Azure Functions C#-szkript fejlesztői segédanyagok](functions-reference-csharp.md) című témakörben talál.
 

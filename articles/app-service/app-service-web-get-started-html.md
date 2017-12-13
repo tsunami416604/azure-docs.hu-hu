@@ -17,7 +17,7 @@ ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: ee3b53f9e68a739a39478045debbb45dff9d7ed9
 ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
 ---
@@ -99,7 +99,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
-Egy böngészőben nyissa meg az Azure webes alkalmazás URL-címe: `http://<app_name>.azurewebsites.net`.
+Nyissa meg böngészőben az Azure webalkalmazás URL-címét: `http://<app_name>.azurewebsites.net`.
 
 Az oldal Azure App Service webalkalmazásként fut.
 
@@ -111,7 +111,7 @@ Az oldal Azure App Service webalkalmazásként fut.
 
 Egy szövegszerkesztőben nyissa meg az *index.html* fájlt, és hajtson végre módosítást a jelölőnyelvi kódon. Például, módosítsa az „Azure App Service – statikus HTML-mintahely” nevű H1 fejlécet egyszerűen „Azure App Service”-re.
 
-A helyi terminálablakot a Git a változtatások véglegesítése a határidő, és ezután a kód változásainak leküldése Azure.
+A helyi terminálablakban mentse a módosításokat a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
 
 ```bash
 git commit -am "updated HTML"

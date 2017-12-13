@@ -1,31 +1,23 @@
 ---
-title: "Gyors üzembe helyezés – az első Azure tároló példányok tároló létrehozása az Azure portállal"
+title: "Rövid útmutató – Az első Azure Container Instances-tároló létrehozása az Azure Portal segítségével"
 description: "Az Azure Container Instances üzembe helyezése és az első lépések"
 services: container-instances
-documentationcenter: 
 author: mmacy
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/25/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 0179107ece1e150246ab40836783d810425be3ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 7007fa8989f6d87028906918dbbc9c2998cd3bf4
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Az első tároló létrehozása az Azure Container Instances szolgáltatásban
 
-Az Azure Container Instances segítségével egyszerűen hozhat létre és felügyelhet tárolókat az Azure-ban. A gyors üzembe helyezés a tároló létrehozása az Azure-ban, és tegye elérhetővé azt az interneten, egy nyilvános IP-címmel. Ez a művelet az Azure portál használatával. Néhány kattintással jelenik meg ez a böngészőben:
+Az Azure Container Instances segítségével egyszerűen hozhat létre és felügyelhet tárolókat az Azure-ban. Ebben a rövid útmutatóban létrehozhat egy tárolót az Azure-ban, és közzéteheti az interneten egy nyilvános IP-címen keresztül. Ez a művelet az Azure Portal használatával hajtható végre. Néhány kattintás után ezt fogja látni a böngészőben:
 
 ![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-app-browser]
 
@@ -33,39 +25,39 @@ Az Azure Container Instances segítségével egyszerűen hozhat létre és felü
 
 Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
-## <a name="create-a-container-instance"></a>Egy tároló példányának létrehozása
+## <a name="create-a-container-instance"></a>Tárolópéldány létrehozása
 
-Válassza ki a **új** > **tárolók** > **Azure tároló példányok (előzetes verzió)**.
+Válassza a következőket: **Új** > **Tárolók** > **Azure Container Instances (előnézet)**.
 
-![Új tároló példányt az Azure portálon létrehozásának megkezdése][aci-portal-01]
+![Új tárolópéldány létrehozásának megkezdése az Azure Portalon][aci-portal-01]
 
-Adja meg a következő értékeket a **Tárolónév**, **tároló kép**, és **erőforráscsoport** szövegmezőket. A többi érték hagyja meg az alapértelmezett beállításokat, majd kattintson az **OK**.
+Írja be a következő értékeket a **Tároló neve**, **Tárolórendszerkép**, és **Erőforráscsoport** szövegmezőkbe. A többi értéket hagyja az alapértelmezett értéken, majd kattintson az **OK** gombra.
 
-* Tároló neve:`mycontainer`
-* Tároló lemezképet:`microsoft/aci-helloworld`
-* Erőforráscsoport:`myResourceGroup`
+* Tárolónév: `mycontainer`
+* Tárolórendszerkép: `microsoft/aci-helloworld`
+* Erőforráscsoport: `myResourceGroup`
 
-![Új tároló példány alapvető beállítások konfigurálása az Azure-portálon][aci-portal-03]
+![Új tárolópéldány alapbeállításainak konfigurálása az Azure Portalon][aci-portal-03]
 
-Windows- és Linux-tárolókon hozhat létre Azure tároló példányát. A gyors üzembe helyezés, az alapértelmezett hagyja nyitva **Linux** mivel azt egy Linux-alapú tárolót adott (`microsoft/aci-helloworld`) az előző lépésben.
+Windows- és Linux-tárolókat is létrehozhat az Azure Container Instances használatával. Ebben a rövid ismertetőben meghagyjuk a **Linux** alapértelmezett beállítását, mivel az előző lépésben Linux-alapú tárolót (`microsoft/aci-helloworld`) adtunk meg.
 
-Hagyja meg az egyéb beállításokat a **konfigurációs** az alapértelmezett beállításokat, majd kattintson **OK** a konfiguráció érvényesítése céljából.
+Hagyja meg a **Konfiguráció** területen található többi beállítás alapértelmezett értékét, majd kattintson az **OK** gombra a konfiguráció érvényesítéséhez.
 
-![Egy új tároló-példány konfigurálása az Azure-portálon][aci-portal-04]
+![Új tárolópéldány konfigurálása az Azure Portalon][aci-portal-04]
 
-Az érvényesítés befejezését követően a tároló beállítások összefoglalása jelennek meg. Válassza ki **OK** számára a tároló központi telepítési kérelmét.
+Miután az érvényesítés befejeződött, egy összefoglalás jelenik meg a tároló beállításairól. Kattintson az **OK** gombra a tároló üzembe helyezési kérelmének elküldéséhez.
 
-![Beállításainak összegzése egy új tároló példányát az Azure portálon][aci-portal-05]
+![Új tárolópéldány beállításainak összefoglalása az Azure Portalon][aci-portal-05]
 
-Amikor elindul a központi telepítés, egy csempe, amely jelzi, a telepítés előrehaladását a portál irányítópultján helyezkedik el. Telepítés után a csempe van frissül, hogy az új **mycontainer-myc1** a tárolócsoport.
+Az üzembe helyezés kezdetekor az irányítópulton egy csempe jelenik meg, amely az üzembehelyezési folyamatot jelzi. Miután az üzembe helyezés befejeződött, a csempe frissül, és az új**mycontainer-myc1** tárolócsoportot mutatja.
 
-![Azure portál egy új tároló példányának létrehozásának folyamata][aci-portal-08]
+![Új tárolópéldány létrehozásának folyamata az Azure Portalon][aci-portal-08]
 
-Válassza ki a **mycontainer-myc1** tároló csoport tulajdonságainak megjelenítéséhez a tárolócsoport. Vegye figyelembe a **IP-cím** tároló csoport, valamint a **állapot** a tároló.
+Válassza ki a **mycontainer-myc1** tárolócsoportot a tárolócsoport tulajdonságainak megjelenítéséhez. Jegyezze fel a tárolócsoport **IP-címét** és a tároló **ÁLLAPOT** alatt található értékét.
 
-![Az Azure-portálon a tároló csoport – áttekintés][aci-portal-06]
+![Tárolócsoport áttekintése az Azure Portalon][aci-portal-06]
 
-Ha áthelyezi a tároló a **futtató** állapot, keresse meg az IP-cím, az alkalmazást az új tároló megjelenítése az előző lépésben feljegyzett.
+Miután a tároló **Fut** állapotra váltott, navigáljon az előző lépésben feljegyzett IP-címhez az új tárolóban található alkalmazás megjelenítéséhez.
 
 ![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-app-browser]
 
@@ -81,7 +73,7 @@ Ha áthelyezi a tároló a **futtató** állapot, keresse meg az IP-cím, az alk
 
 ## <a name="next-steps"></a>Következő lépések
 
-A gyors üzembe helyezés, a létrehozott Azure-tároló példánya egy nyilvános Docker központi tárházban kép. Ha azt szeretné, megpróbálhatja felépíteni a tároló saját magának, és központilag telepítenie kell az Azure-tároló példányok az Azure-tároló beállításjegyzékkel, továbbra is az Azure-tároló példányok oktatóanyag.
+Ebben a rövid útmutatóban létrehozott egy tárolópéldányt egy rendszerképből egy nyilvános Docker Hub adattárban. Ha próbaképpen szeretne saját maga létrehozni és üzembe helyezni egy tárolót az Azure Container Instances szolgáltatásban az Azure Container Registry használatával, folytassa az Azure Container Instances oktatóanyagával.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyagai](./container-instances-tutorial-prepare-app.md)
