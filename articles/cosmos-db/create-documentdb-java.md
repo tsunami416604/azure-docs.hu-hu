@@ -17,15 +17,15 @@ ms.date: 11/20/2017
 ms.author: mimig
 ms.openlocfilehash: b36de6bce597569b4e1eaa615860acdf28dfa798
 ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/21/2017
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Dokumentum-adatbázis létrehozása a Java és az Azure Portal használatával
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Azure Cosmos DB használja, gyorsan hozzon létre és lekérdezni a felügyelt dokumentumokban, a táblának és a graph-adatbázisokat.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezhet felügyelt dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat.
 
-Ez a rövid útmutató létrehoz egy dokumentum-adatbázist az Azure Cosmos DB-hez készült Azure Portal-eszközök használatával. A rövid útmutató emellett bemutatja, hogyan hozhat létre gyorsan egy Java-konzolalkalmazást a [DocumentDB Java API](documentdb-sdk-java.md) használatával. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. A gyors üzembe helyezés befejezése lesz ismeri a létrehozása és módosítása a dokumentum adatbázis erőforrásainak vagy a felhasználói felület vagy programozott módon, amelyik igény szerint.
+Ez a rövid útmutató létrehoz egy dokumentum-adatbázist az Azure Cosmos DB-hez készült Azure Portal-eszközök használatával. A rövid útmutató emellett bemutatja, hogyan hozhat létre gyorsan egy Java-konzolalkalmazást a [DocumentDB Java API](documentdb-sdk-java.md) használatával. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. A rövid útmutató követésével megismerheti a dokumentumadatbázis-erőforrások létrehozását és módosítását a felhasználói felületen vagy programozás útján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -57,11 +57,11 @@ A dokumentum-adatbázis létrehozásához először létre kell hoznia egy SQL- 
 
 Az Adatkezelő segítségével adatokat adhat hozzá az új gyűjteményhez.
 
-1. Bontsa ki a **elemek** gyűjtemény, kattintson a **dokumentumok** > **új dokumentum**.
+1. Bontsa ki az **Elemek** gyűjteményt, majd kattintson a **Dokumentumok** > **Új dokumentumok** lehetőségre.
 
    ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-documentdb-java/azure-cosmosdb-data-explorer-new-document.png)
   
-2. Most dokumentum hozzáadása a gyűjteményhez a következő struktúrával, és kattintson a **mentése**.
+2. Adjon hozzá egy dokumentumot a gyűjteményhez az alábbi struktúrával, majd kattintson a **Mentés**lehetőségre.
 
      ```json
      {
@@ -75,41 +75,41 @@ Az Adatkezelő segítségével adatokat adhat hozzá az új gyűjteményhez.
 
     ![Másolja át a json-adatokat, és kattintson a Mentés gombra az Adatkezelőben az Azure-portálon](./media/create-documentdb-java/azure-cosmosdb-data-explorer-save-document.png)
 
-3.  Hozzon létre és mentsen módosítja egy további dokumentum `id` 2 és a többi tulajdonság ismertető elférjen módosítása. Mivel az Azure Cosmos DB nem kötelezi egy adott adatséma használatára, új dokumentumaihoz bármilyen struktúrát választhat.
+3.  Hozzon létre és mentsen még egy dokumentumot, amelyben az `id` tulajdonság értékét 2-re állítja át, a többi tulajdonságot pedig tetszés szerint módosítja. Mivel az Azure Cosmos DB nem kötelezi egy adott adatséma használatára, új dokumentumaihoz bármilyen struktúrát választhat.
 
-## <a name="query-your-data"></a>Az adatok lekérdezése
+## <a name="query-your-data"></a>Adatok lekérdezése
 
-Használhatja lekérdezések most adatkezelő lekérdezéséhez és szűrje az adatokat.
+Az Adatkezelővel így már lekérdezések használatával lekérheti és szűrheti adatait.
 
-1. Tekintse meg, hogy alapértelmezés szerint a lekérdezés beállításai `SELECT * FROM c`. Az alapértelmezett lekérdezéssel kéri le, és megjeleníti egy gyűjtemény összes dokumentumot. 
+1. Alapértelmezés szerint a lekérdezés `SELECT * FROM c` értékre van állítva. Ez az alapértelmezett lekérdezés lekéri és megjeleníti a gyűjteményben szereplő összes dokumentumot. 
 
-    ![Az adatok Explorer alapértelmezett lekérdezés "kiválasztása * c"](./media/create-documentdb-java/azure-cosmosdb-data-explorer-query.png)
+    ![Az alapértelmezett lekérdezés az Adatkezelőben a `SELECT * FROM c`](./media/create-documentdb-java/azure-cosmosdb-data-explorer-query.png)
 
-2. A lekérdezés módosításához kattintson a **szűrő szerkesztése** gomb, hozzáadása `ORDER BY c._ts DESC` a lekérdezés predikátum mezőben, és majd kattintson a **szűrés**.
+2. Módosítsa a lekérdezést a **Szűrő szerkesztése** gombra kattintva, a lekérdezési predikátumhoz adja hozzá az `ORDER BY c._ts DESC` elemet, végül pedig kattintson a **Szűrő alkalmazása** lehetőségre.
 
-    ![Módosítsa az alapértelmezett lekérdezés ORDER BY: c._ts DESC hozzáadása, majd kattintson a szűrő alkalmazása](./media/create-documentdb-java/azure-cosmosdb-data-explorer-edit-query.png)
+    ![Az alapértelmezett lekérdezés módosítása az ORDER BY c._ts DESC hozzáadásával és a Szűrő alkalmazása lehetőségre való kattintással](./media/create-documentdb-java/azure-cosmosdb-data-explorer-edit-query.png)
 
-Ez módosítani a lekérdezés listák csökkenő sorrendben az időbélyegzőt, ezért most a második dokumentum alapján a dokumentumokat a lista tetején. Ha ismeri az SQL-szintaxis, megadhatja a támogatott bármelyikét [SQL-lekérdezések](documentdb-sql-query.md) ebben a mezőben. 
+A módosított lekérdezés az időbélyegük alapján csökkenő sorrendben listázza a dokumentumokat, így most már a második dokumentum van a lista elején. Ha ismeri az SQL szintaxisát, bármelyik támogatott [SQL-lekérdezést](documentdb-sql-query.md) megadhatja ebben a mezőben. 
 
-Ezzel befejezte a munkahelyi adatok Explorer. Ahhoz, hogy helyezze át kód használata, ügyeljen arra is használható adatkezelő tárolt eljárások, felhasználó által megadott függvények és eseményindítók hajtsa végre a kiszolgálóoldali üzleti logikát, valamint a méretezhető teljesítmény létrehozásához. Az Adatkezelő hozzáférhetővé teszi az API-k összes beépített, programozható adatelérési funkcióját, és az Azure Portalon tárolt adataihoz is egyszerű hozzáférést biztosít.
+Ezzel befejeződött az Adatkezelőben végzett munkánk. Mielőtt áttérünk a kódokra, ne felejtse el, hogy az Adatkezelővel létrehozhat tárolt eljárásokat, felhasználói függvényeket és a kiszolgálóoldali üzleti logikákat végrehajtó eseményindítókat is, valamint szabályozhatja az átviteli sebességet is. Az Adatkezelő hozzáférhetővé teszi az API-k összes beépített, programozható adatelérési funkcióját, és az Azure Portalon tárolt adataihoz is egyszerű hozzáférést biztosít.
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
 Most pedig váltsunk át kódok használatára. Klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, és futtatjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy parancssort, hozzon létre egy új git-minták nevű mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
     ```
 
-2. Nyisson meg egy git terminálablakot, például a git bash eszközt, és használja a `cd` parancs futtatásával módosíthatja a mintaalkalmazás telepítése az új mappába. 
+2. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` parancs használatával váltson az új mappára, ahol telepíteni szeretné a mintaalkalmazást. 
 
     ```bash
     cd "C:\git-samples"
     ```
 
-3. Futtassa a következő parancsot a minta tárház klónozásához. Ezzel a paranccsal létrejön egy mintaalkalmazás példányát a számítógépen.
+3. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -117,9 +117,9 @@ Most pedig váltsunk át kódok használatára. Klónozunk egy DocumentDB API-al
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létrehozását az adatbázis-erőforrások, az alábbi kódtöredékek tekintheti meg. Kódtöredékek a rendszer az összes átveszi a `Program.java` fájl C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted mappába települ. Egyéb esetben ugorjon előre [frissítse a kapcsolati karakterlánc](#update-your-connection-string). 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a `Program.java` fájlból származnak, amely a C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted mappában található. Egyéb esetben ugorhat [A kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszra. 
 
-* `DocumentClient`az inicializálás. A [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) biztosít az Azure Cosmos-adatbázis adatbázis-szolgáltatás ügyféloldali logikai ábrázolását. Ez az ügyfél konfigurálása és a szolgáltatás kérelmeket szolgál.
+* `DocumentClient` inicializálás. A [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) ügyféloldali logikai leképezést biztosít az Azure Cosmos DB adatbázis-szolgáltatáshoz. Ezzel az ügyféllel a szolgáltatásra irányuló kérések konfigurálhatók és hajthatók végre.
 
     ```java
     this.client = new DocumentClient("https://FILLME.documents.azure.com",
@@ -148,7 +148,7 @@ Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létreh
     this.client.createCollection(databaseLink, collectionInfo, requestOptions);
     ```
 
-* Dokumentum létrehozása használatával a [Documentclient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.createdocument) metódust.
+* Dokumentum létrehozása a [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.createdocument) metódus használatával.
 
     ```java
     // Any Java object within your code can be serialized into JSON and written to Azure Cosmos DB
@@ -161,7 +161,7 @@ Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létreh
     this.client.createDocument(collectionLink, family, new RequestOptions(), true);
     ```
 
-* A JSON SQL lekérdezések végrehajtása használatával történik a [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.querydocuments) metódust.
+* A JSON-on végrehajtott SQL-lekérdezéseket a rendszer a [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.querydocuments) metódus használatával hajtja végre.
 
     ```java
     FeedOptions queryOptions = new FeedOptions();
@@ -181,21 +181,21 @@ Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létreh
 
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
 
-Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás a szolgáltatott adatbázissal való kommunikációhoz.
+Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
-1. Az a [Azure-portálon](http://portal.azure.com/), kattintson a **kulcsok**. 
+1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kulcsok** lehetőségre. 
 
-    A képernyő jobb oldalán lévő másolás gombok segítségével másolja a felső értékét, az URI.
+    A képernyő jobb oldalán található másolási gombok használatával másolja a vágólapra a felső értéket, az URI-t.
 
-    ![Megtekintése és másolása az Azure portál, kulcsok lapján hívóbetű](./media/create-documentdb-java/keys.png)
+    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-documentdb-java/keys.png)
 
-2. Nyissa meg a `Program.java` fájl C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted mappából. 
+2. Nyissa meg a C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted mappában található `Program.java` fájlt. 
 
-3. Illessze be az URI-azonosítóját, a portálon keresztül `https://FILLME.documents.azure.com` 45 sor.
+3. Illessze be a URI értéket a portálról a `https://FILLME.documents.azure.com` helyére a 45. sorban.
 
-4. Lépjen vissza a portálra, és másolja az elsődleges kulcs-érték, a képernyőfelvételen látható módon. Illessze be az elsődleges kulcs-érték a portálon keresztül `FILLME` 46 sor.
+4. Lépjen vissza a portálra, és másolja a vágólapra a PRIMARY KEY (Elsődleges kulcs) értékét a képernyőképen látható módon. Illessze be a PRIMARY KEY értéket a portálról a `FILLME` helyére a 46. sorban.
 
-    A getStartedDemo metódus most ehhez hasonlóan kell kinéznie: 
+    A getStartedDemo metódusnak ekkor a következőképp kell kinéznie: 
     
     ```java
     private void getStartedDemo() throws DocumentClientException, IOException {
@@ -215,27 +215,27 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
     cd "C:\git-samples\azure-cosmos-db-documentdb-java-getting-started"
     ```
 
-2. A git terminálablakot az alábbi parancs segítségével a szükséges Java-csomagok.
+2. A git terminálablakában futtassa a következő parancsot a szükséges Java-csomagok telepítéséhez.
 
     ```
     mvn package
     ```
 
-3. A git terminálablakot a következő parancs segítségével a Java-alkalmazás indításához.
+3. A git terminálablakában futtassa a következő parancsot a Java-alkalmazás elindításához.
 
     ```
     mvn exec:java -D exec.mainClass=GetStarted.Program
     ```
 
-    A terminálablakot, hogy létrejött-e a FamilyDB adatbázis értesítést jelenít meg. 
+    A terminálablakban értesítést kap a FamilyDB adatbázis létrejöttéről. 
     
-4. A gyűjtemény létrehozása billentyű lenyomásával. 
+4. Nyomjon le egy billentyűt a gyűjtemény létrehozásához. 
 
-5. Váltás az adatkezelő és látni fogja, hogy most már tartalmaz egy FamilyDB adatbázis.
+5. Váltson át az Adatkezelőre, ahol láthatja, hogy az már tartalmazza a FamilyDB adatbázist.
     
-6. Továbbra is szeretné, hogy a kód dokumentumok létrehozása és a lekérdezés végrehajtása a konzolablakban billentyűk.
+6. Nyomjon le további billentyűket a konzolablakban, amelynek hatására a kód dokumentumokat hoz létre, valamint végrehajt egy lekérdezést.
     
-    A program végén az alkalmazásból az erőforrások a fiókhoz tartozó, a rendszer törli nem számítunk fel díjakat. 
+    A program futását követően az alkalmazás minden erőforrása törlődni fog a fiókjából, így nem kell többletköltségre számítania. 
 
     ![Konzolkimenet](./media/create-documentdb-java/console-output.png)
 
@@ -250,7 +250,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, dokumentum-adatbázist és gyűjteményt az Adatkezelő segítségével, valamint hogyan futtathat egy alkalmazást, amely programozottan hajtja végre ugyanezt. További adatok most importálása az Azure Cosmos DB-gyűjteménnyel. 
+Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, dokumentum-adatbázist és gyűjteményt az Adatkezelő segítségével, valamint hogyan futtathat egy alkalmazást, amely programozottan hajtja végre ugyanezt. Most már további adatokat importálhat az Azure Cosmos DB-gyűjteménybe. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

@@ -1,6 +1,6 @@
 ---
-title: "Gyors üzembe helyezés – az első Azure tároló példányok tároló létrehozása a PowerShell használatával"
-description: "Ismerkedés az Azure-tároló példányok hozzon létre egy Windows-tároló példányt a PowerShell használatával."
+title: "Rövid útmutató – Az első Azure Container Instances-tároló létrehozása a PowerShell segítségével"
+description: "Ismerje meg az Azure Container Instances szolgáltatást egy Windows-tárolópéldányt létrehozásával a PowerShell segítségével."
 services: container-instances
 documentationcenter: 
 author: mmacy
@@ -19,15 +19,15 @@ ms.author: marsma
 ms.custom: mvc
 ms.openlocfilehash: ca10274fc6a23d7f5e7436dbaf72a6e7a918f275
 ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Az első tároló létrehozása az Azure Container Instances szolgáltatásban
 
-Az Azure tároló példányok megkönnyíti a létrehozása és kezelése a Docker-tároló az Azure virtuális gépeket, vagy egy magasabb szintű szolgáltatást elfogadása nélkül.
+Az Azure Container Instances segítségével egyszerűen hozhat létre és felügyelhet Docker-tárolókat az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie, vagy egy magasabb szolgáltatási szintre kellene váltania.
 
-A gyors üzembe helyezés a Windows-tároló létrehozása az Azure-ban, és tegye elérhetővé, az interneten, egy nyilvános IP-címmel. Ez a művelet egyetlen paranccsal hajtható végre. Belül egy kis ideig megjelenik a futó alkalmazások a böngésző:
+Ebben a rövid útmutatóban létrehozhat egy Windows-tárolót az Azure-ban, és közzéteheti az interneten egy nyilvános IP-címen keresztül. Ez a művelet egyetlen paranccsal hajtható végre. Néhány pillanat elteltével már láthatja is a böngészőben futó alkalmazást.
 
 ![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][qs-powershell-01]
 
@@ -39,7 +39,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy Azure erőforráscsoport [New-AzureRmResourceGroup][New-AzureRmResourceGroup]. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup][New-AzureRmResourceGroup] parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
  ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
@@ -47,19 +47,19 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Létrehozhat egy tárolót, adja meg a nevét, egy Docker-lemezképet, és egy Azure erőforráscsoport a [New-AzureRmContainerGroup] [ New-AzureRmContainerGroup] parancsmag. Ha szeretné, közzéteheti a tárolót az interneten egy nyilvános IP-cím használatával. Ebben az esetben fut az Internet Information Services (IIS) Windows Nano Server tárolója fogjuk használni.
+A tároló létrehozásához meg kell adnia egy nevet, egy Docker-rendszerképet és egy Azure-erőforráscsoportot a [New-AzureRmContainerGroup][New-AzureRmContainerGroup] parancsmaghoz. Ha szeretné, közzéteheti a tárolót az interneten egy nyilvános IP-cím használatával. Ebben az esetben egy Internet Information Services (IIS) szolgáltatást futtató Windows Nano Server-tárolót használunk.
 
  ```azurepowershell-interactive
 New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -IpAddressType Public
 ```
 
-Néhány másodpercen belül egy a irányuló kérelemre adott válasz jelenik meg. Kezdetben a tárolóban van a **létrehozása** állapotát, de egy vagy két percen belül kell kezdődnie. Az állapotkezelő segítségével ellenőrizheti a [Get-AzureRmContainerGroup] [ Get-AzureRmContainerGroup] parancsmagot:
+Néhány másodperc elteltével válasz érkezik a kérésre. A tároló kezdetben **Létrehozás** állapotban van, de néhány percen belül el kell indulnia. Az állapotot a [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] parancsmag használatával ellenőrizheti:
 
  ```azurepowershell-interactive
 Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
-A tároló üzembe helyezési állapota és IP-cím jelenik meg a parancsmag kimenete:
+A tároló üzembe helyezési állapota és IP-címe megjelenik a parancsmag kimenetében:
 
 ```
 ResourceGroupName        : myResourceGroup
@@ -78,13 +78,13 @@ OsType                   : Windows
 Volumes                  :
 ```
 
-A tárolót egyszer **ProvisioningState** áthelyezése `Succeeded`, a böngésző, a megadott IP-cím használatával csatlakozni tud hozzá.
+Miután a tároló **ProvisioningState** értéke `Succeeded` állapotba vált, elérhetővé válik a böngészőben a megadott IP-címen.
 
-![Azure-tároló példányok böngészőben megtekintett használatával telepített IIS][qs-powershell-01]
+![Az Azure Container Instances használatával üzembe helyezett IIS képe a böngészőben][qs-powershell-01]
 
 ## <a name="delete-the-container"></a>A tároló törlése
 
-Amikor elkészült, a tárolóval, akkor is távolítsa el azt a [Remove-AzureRmContainerGroup] [ Remove-AzureRmContainerGroup] parancsmagot:
+Miután végzett a tárolóval, a [Remove-AzureRmContainerGroup][Remove-AzureRmContainerGroup] parancsmag használatával távolíthatja el:
 
  ```azurepowershell-interactive
 Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
@@ -92,10 +92,10 @@ Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontaine
 
 ## <a name="next-steps"></a>Következő lépések
 
-A gyors üzembe helyezés elindított egy előre elkészített Windows tároló Azure tároló példányát. Ha azt szeretné, megpróbálhatja felépíteni a tároló saját magának, és telepítené őket az Azure-tároló példányok az Azure tároló beállításjegyzékkel, továbbra is az Azure-tároló példányok oktatóanyag.
+Ebben a rövid útmutatóban egy előre elkészített Windows-tárolót indított az Azure Container Instances szolgáltatásban. Ha próbaképpen szeretne saját maga létrehozni és üzembe helyezni egy tárolót az Azure Container Instances szolgáltatásban az Azure Container Registry használatával, folytassa az Azure Container Instances oktatóanyagával.
 
 > [!div class="nextstepaction"]
-> [Azure tároló példányok útmutató](./container-instances-tutorial-prepare-app.md)
+> [Az Azure Container Instances oktatóanyaga](./container-instances-tutorial-prepare-app.md)
 
 <!-- LINKS -->
 [New-AzureRmResourceGroup]: /powershell/module/azurerm.resources/new-azurermresourcegroup

@@ -18,13 +18,13 @@ ms.author: glenga
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 638c3bfb5a312c196d09216f3f7bf95bbc983c10
 ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/18/2017
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 
-Az Azure Functions lehetővé teszi, hogy a kód végrehajtása egy [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) környezetben anélkül, hogy először hozzon létre egy virtuális Gépet, vagy tegye közzé a webalkalmazást. Ebben a témakörben megismerheti, hogyan használhatja a Functions szolgáltatást egy „hello world” függvény létrehozására az Azure Portalon.
+Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. Ebben a témakörben megismerheti, hogyan használhatja a Functions szolgáltatást egy „hello world” függvény létrehozására az Azure Portalon.
 
 ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 

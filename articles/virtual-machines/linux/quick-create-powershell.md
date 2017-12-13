@@ -18,13 +18,13 @@ ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: 3b93cdfbfb143c1597d190d87d270b5e6ede9537
 ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-powershell"></a>Linux rendszerű virtuális gép létrehozása PowerShell segítségével
 
-Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. A gyors üzembe helyezés adatokat Ubuntu server operációs rendszert futtató virtuális gép üzembe helyezése az Azure PowerShell modullal. A kiszolgáló üzembe helyezése után a rendszer létrehoz egy SSH-kapcsolatot, és telepít egy NGINX-webkiszolgálót.
+Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a gyorsútmutató részletesen bemutatja, hogyan lehet egy Ubuntu Servert futtató virtuális gépet üzembe helyezni az Azure PowerShell-modullal. A kiszolgáló üzembe helyezése után a rendszer létrehoz egy SSH-kapcsolatot, és telepít egy NGINX-webkiszolgálót.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -139,7 +139,7 @@ Ha a rendszer kéri, adja meg a következő bejelentkezési felhasználónevet: 
 
 ## <a name="install-nginx"></a>Az NGINX telepítése
 
-Az alábbi parancsokkal csomag adatforrások frissítése, és telepítse a legújabb NGINX-csomagot. 
+A következő parancsokkal frissítse a csomagforrásokat, és telepítse a legújabb NGINX-csomagot. 
 
 ```bash 
 # update package source

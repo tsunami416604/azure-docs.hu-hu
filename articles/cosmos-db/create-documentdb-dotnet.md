@@ -17,7 +17,7 @@ ms.date: 05/10/2017
 ms.author: mimig
 ms.openlocfilehash: b8ab132a3e90032c4d70c310a2dd88f7441c4f0a
 ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/11/2017
 ---
@@ -95,19 +95,19 @@ Most pedig váltsunk át kódok használatára. Klónozunk egy DocumentDB API-al
 
 Tekintsük át, hogy mi is történik az alkalmazásban. Nyissa meg a DocumentDBRepository.cs fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB-erőforrásokat. 
 
-* A documentclient ügyfél segítségével sor 78 inicializálva van.
+* A DocumentClient inicializálva van a 78. sorban.
 
     ```csharp
     client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);
     ```
 
-* Egy új adatbázis létrehozása sor 93.
+* A rendszer létrehozza az új adatbázist a 93. sorban.
 
     ```csharp
     await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
     ```
 
-* Sor 112 létrejön egy új gyűjteményt.
+* A rendszer létrehozza az új gyűjteményt a 112. sorban.
 
     ```csharp
     await client.CreateDocumentCollectionAsync(

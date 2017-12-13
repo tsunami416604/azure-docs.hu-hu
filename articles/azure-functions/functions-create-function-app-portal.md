@@ -1,6 +1,6 @@
 ---
-title: "Függvény-alkalmazás létrehozása az Azure portálról |} Microsoft Docs"
-description: "Létrehoz egy új funkció alkalmazást az Azure App Service-ben a portálról."
+title: "Függvényalkalmazás létrehozása az Azure Portal használatával | Microsoft Docs"
+description: "Új függvényalkalmazás létrehozása a portálon Azure App Service használatával."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -18,40 +18,40 @@ ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: 4f9882ebc86b8119e6e683c7442ee3448a8d111b
 ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2017
 ---
-# <a name="create-a-function-app-from-the-azure-portal"></a>Függvény-alkalmazás létrehozása az Azure-portálon
+# <a name="create-a-function-app-from-the-azure-portal"></a>Függvényalkalmazás létrehozása az Azure Portal használatával
 
-Azure függvény alkalmazások az Azure App Service-infrastruktúrát használja. Ez a témakör bemutatja, hogyan függvény alkalmazás létrehozása az Azure portálon. Egy függvény alkalmazást tartalmazó egyéni függvényei végrehajtása. Az App Service üzemeltetési terv egy függvény alkalmazást hoz létre, amikor a függvény app használhatja az App Service összes funkcióját.
+Az Azure Function Apps az Azure App Service infrastruktúráját használja. Ez a témakör bemutatja, hogyan hozhat létre függvényalkalmazást az Azure Portalon. A függvényalkalmazás olyan tároló, amely a különálló függvények végrehajtását futtatja. Ha létrehoz egy függvényalkalmazást az App Service szolgáltatási csomagjában, a függvényalkalmazása az App Service összes szolgáltatását használhatja.
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
 
-Ha létrehoz egy függvény alkalmazást, adja meg egy érvényes **alkalmazásnév**, amely csak betűket, számokat és kötőjeleket tartalmazhat. Az aláhúzás (**_**) nem engedélyezett karakter.
+Ha függvényalkalmazást hoz létre, ügyeljen arra, hogy érvényes **alkalmazásnevet** adjon meg, amely csak betűket, számokat és kötőjelet tartalmazhat. Az aláhúzás (**_**) nem engedélyezett karakter.
 
 A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. A tárfiók nevének egyedinek kell lennie az Azure rendszerben. 
 
-A függvény alkalmazás létrehozása után létrehozhat egyéni függvényei egy vagy több különböző nyelveken. Hozzon létre funkciók [a portál használatával](functions-create-first-azure-function.md#create-function), [folyamatos üzembe helyezés](functions-continuous-deployment.md), vagy a [FTP-vel feltöltése](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp).
+A függvényalkalmazás létrehozása után létrehozhatja a különálló függvényeket egy vagy több nyelven. A [portál használatával](functions-create-first-azure-function.md#create-function), [folyamatos üzembe helyezéssel](functions-continuous-deployment.md), vagy [FTP-s feltöltéssel](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp) is létrehozhatja a függvényeket.
 
-## <a name="service-plans"></a>Service-csomagok
+## <a name="service-plans"></a>Szolgáltatáscsomagok
 
-Az Azure Functions van két különböző service-csomagokról: fogyasztás terv és az App Service-csomag. A felhasználási terv automatikusan lefoglalja számára a számítási teljesítményt, ha a kódja fut, a skála kibővített terhelés kezelése érdekében szükség szerint, és majd méretezik-a kód nem futtatásakor. Az App Service-csomag a függvény alkalmazás hozzáférést biztosít az App Service minden lehetőséget. Ki kell választania a service-csomag, a függvény alkalmazás létrehozása, és azt jelenleg nem módosul. További információkért lásd: [válassza ki az Azure Functions üzemeltetési terv](functions-scale.md).
+Az Azure Functions két különböző szolgáltatáscsomaggal rendelkezik: használatalapú és App Service-csomag. A használatalapú csomag automatikusan foglalja le a számítási teljesítményt a kód futtatásakor: szükség szerint horizontális felskálázást végez a terhelésnek megfelelően, majd horizontális leskálázást hajt végre, ha a kód nem fut. Az App Service-csomag az App Service minden szolgáltatásához hozzáférést nyújt a függvényalkalmazásnak. A szolgáltatáscsomagot a függvényalkalmazás létrehozásakor kell kiválasztania, és a módosítása jelenleg nem lehetséges. További információ: [Azure Functions szolgáltatási csomag kiválasztása](functions-scale.md).
 
-Ha azt tervezi, JavaScript-funkcióként futhat az App Service-csomagot, válasszon egy tervet a kevesebb magok. További információkért lásd: a [függvények JavaScript hivatkozás](functions-reference-node.md#choose-single-vcpu-app-service-plans).
+Ha JavaScript-függvények futtatását tervezi egy App Service-csomagon, kevesebb maggal rendelkező csomagot érdemes választania. További információ: [JavaScript-referencia a Functionshöz](functions-reference-node.md#choose-single-vcpu-app-service-plans).
 
 <a name="storage-account-requirements"></a>
 
-## <a name="storage-account-requirements"></a>Tárolási fiókra vonatkozó követelmények
+## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 
-Egy függvény alkalmazást az App Service létrehozásakor vagy létre kell hoznia egy általános célú Azure Storage-fiók, amely támogatja a Blob, Queue és Table storage kapcsolódik. Belsőleg funkciók tárolást használ műveletek, például eseményindítók kezelése és naplózási funkciót végrehajtások. Néhány tárfiókok nem támogatják az üzenetsorok és táblák, például csak a blob storage-fiókok, a prémium szintű Azure Storage és a ZRS replikáció általános célú tárfiókok esetében. Ezek a fiókok kiszűri kívüli a Storage-fiók panelen egy függvény alkalmazás létrehozásakor.
+Ha függvényalkalmazást hoz létre az App Service-ben, létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobok, az üzenetsorok és a táblák tárolását, vagy hivatkoznia kell egy ilyen Storage-fiókra. A Functions a Storage-ot használja olyan belső műveletekre, mint például az eseményindítók kezelése és a függvénykivételek naplózása. Egyes Storage-fiókok, mint például a csak blobok tárolására alkalmas tárfiókok, az Azure Premium Storage és a ZRS-replikációval rendelkező általános célú tárolófiókok nem támogatják az üzenetsorokat és a táblákat. Ezek a fiókok nem jelennek meg a Storage-fiók panelen a függvényalkalmazások létrehozásakor.
 
 >[!NOTE]
->A felhasználás üzemeltetési terv használatakor függvény kód és a kötés konfigurációs fájljainak Azure File storage a fő tárfiókban vannak tárolva. A fő storage-fiók törlésekor a tartalom törlődik, és nem állítható helyre.
+>A használatalapú szolgáltatási csomag használatakor a rendszer az Azure File Storage a fő tárfiókjában tárolja a függvénykódot és a kötéskonfigurációs fájlokat. Ha törli ezt a fő tárfiókot, ez a tartalom is törlődik, és nem állítható helyre.
 
-Tárfióktípusokat kapcsolatos további információkért lásd: [az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#introducing-the-azure-storage-services). 
+További információ a tárfiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#introducing-the-azure-storage-services). 
 
 ## <a name="next-steps"></a>Következő lépések
 

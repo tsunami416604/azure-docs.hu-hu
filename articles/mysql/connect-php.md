@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/22/2017
 ms.openlocfilehash: 2af5871e8bf67070c83b5faebc1f9e44b0de609e
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>A MySQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a PHP használatával
-Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet [PHP](http://php.net/manual/intro-whatis.php)-alkalmazás használatával csatlakozni a MySQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy ismeri a PHP használatával, és, hogy még nem ismeri a MySQL az Azure-adatbázis használata.
+Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet [PHP](http://php.net/manual/intro-whatis.php)-alkalmazás használatával csatlakozni a MySQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a PHP használata terén rendelkezik fejlesztési tapasztalatokkal, de a MySQL-hez készült Azure Database használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehozott erőforrásokat használunk kiindulási pontként:
@@ -28,16 +28,16 @@ Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehoz
 Telepítse a PHP-t saját kiszolgálón, vagy hozzon létre egy, a PHP-t tartalmazó Azure-[webalkalmazást](../app-service/app-service-web-overview.md).
 
 ### <a name="macos"></a>MacOS
-- Töltse le [PHP 7.1.4 verzió](http://php.net/downloads.php).
-- A PHP telepítése, majd tekintse át a [PHP manuális](http://php.net/manual/install.macosx.php) további konfiguráció.
+- Töltse le a [PHP 7.1.4-es verzióját](http://php.net/downloads.php).
+- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](http://php.net/manual/install.macosx.php).
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Töltse le [PHP 7.1.4 nem szál biztonságos (x64) verzió](http://php.net/downloads.php).
-- A PHP telepítése, majd tekintse át a [PHP manuális](http://php.net/manual/install.unix.php) további konfiguráció.
+- Töltse le a [PHP 7.1.4 non-thread safe (NTS) x64-es verzióját](http://php.net/downloads.php).
+- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](http://php.net/manual/install.unix.php).
 
 ### <a name="windows"></a>Windows
-- Töltse le [PHP 7.1.4 nem szál biztonságos (x64) verzió](http://windows.php.net/download#php-7.1).
-- A PHP telepítése, majd tekintse át a [PHP manuális](http://php.net/manual/install.windows.php) további konfiguráció.
+- Töltse le a [PHP 7.1.4 non-thread safe (NTS) x64-es verzióját](http://windows.php.net/download#php-7.1).
+- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](http://php.net/manual/install.windows.php).
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
@@ -45,14 +45,14 @@ Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szüks�
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. A bal oldali ablaktáblán kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például: **myserver4demo**).
 3. Kattintson a kiszolgálónévre.
-4. Válassza ki a kiszolgálót **tulajdonságok** lapon, majd jegyezze fel a **kiszolgálónév** és **kiszolgálói rendszergazda bejelentkezési név**.
+4. Válassza a kiszolgáló **Tulajdonságok** lapját, és jegyezze fel a **kiszolgálónevet** és a **kiszolgálói rendszergazdai bejelentkezési nevet**.
  ![A MySQL-hez készült Azure Database-kiszolgáló neve](./media/connect-php/1_server-properties-name-login.png)
-5. Ha elfelejti a kiszolgálói bejelentkezési adatok, navigáljon a **áttekintése** lapon megtekintéséhez a rendszergazdai bejelentkezési nevet, és ha szükséges a jelszó alaphelyzetbe állítása.
+5. Amennyiben elfelejtette a kiszolgáló bejelentkezési adatait, lépjen az **Áttekintés** oldalra, ahol kikeresheti a kiszolgáló rendszergazdájának bejelentkezési nevét, valamint szükség esetén új jelszót kérhet.
 
 ## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
-Az alábbi kód segítségével csatlakozzon, és hozzon létre egy táblát **CREATE TABLE** SQL-utasításban. 
+A következő kód segítségével csatlakozzon, és hozzon létre egy táblát a **CREATE TABLE** SQL-utasítás használatával. 
 
-A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód olyan módszereket hív meg [mysqli_init](http://php.net/manual/mysqli.init.php) és [mysqli_real_connect](http://php.net/manual/mysqli.real-connect.php) MySQL való kapcsolódáshoz. Ezután a kód meghívja [mysqli_query](http://php.net/manual/mysqli.query.php) metódust a lekérdezés futtatásához. Végül pedig a [mysqli_close](http://php.net/manual/mysqli.close.php) meghívásával bontja a kapcsolatot.
+A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód meghívja a [mysqli_init](http://php.net/manual/mysqli.init.php) és [mysqli_real_connect](http://php.net/manual/mysqli.real-connect.php) metódust a MySQL-hez történő csatlakozáshoz. Ezután a kód meghívja [mysqli_query](http://php.net/manual/mysqli.query.php) metódust a lekérdezés futtatásához. Végül pedig a [mysqli_close](http://php.net/manual/mysqli.close.php) meghívásával bontja a kapcsolatot.
 
 A host (gazdagép), a username (felhasználónév), a password (jelszó) és a db_name (adatbázisnév) paramétereket cserélje le a saját értékeire. 
 
@@ -89,9 +89,9 @@ mysqli_close($conn);
 ```
 
 ## <a name="insert-data"></a>Adat beszúrása
-Az alábbi kód segítségével csatlakozzon és adatok beszúrása segítségével egy **BESZÚRÁSA** SQL-utasításban.
+Az alábbi kód használatával csatlakozhat, és adatokat szúrhat be egy **INSERT** SQL-utasítás segítségével.
 
-A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített beillesztési parancsot, majd a [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) metódus használatával hozzáköti az egyes beillesztett oszlopokhoz a paramétereket. A kód lefut az utasítás módszerrel [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) , és ezt követően bezárja az utasítás módszerrel [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
+A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített beillesztési parancsot, majd a [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) metódus használatával hozzáköti az egyes beillesztett oszlopokhoz a paramétereket. A kód a [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) metódus használatával futtatja az utasítást, majd a [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php) metódussal lezárja azt.
 
 A host (gazdagép), a username (felhasználónév), a password (jelszó) és a db_name (adatbázisnév) paramétereket cserélje le a saját értékeire. 
 
@@ -126,7 +126,7 @@ mysqli_close($conn);
 ```
 
 ## <a name="read-data"></a>Adatok olvasása
-Az alábbi kód segítségével csatlakozzon, és az adatok olvasása a egy **válasszon** SQL-utasításban.  A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód módszerrel [mysqli_query](http://php.net/manual/mysqli.query.php) hajtsa végre az sql-lekérdezést és metódus [mysqli_fetch_assoc](http://php.net/manual/mysqli-result.fetch-assoc.php) az eredményül kapott sorok beolvasása.
+A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással.  A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_query](http://php.net/manual/mysqli.query.php) metódus használatával végrehajtja az SQL-lekérdezést, és a [mysqli_fetch_assoc](http://php.net/manual/mysqli-result.fetch-assoc.php) metódussal beolvassa az eredményül kapott sorokat.
 
 A host (gazdagép), a username (felhasználónév), a password (jelszó) és a db_name (adatbázisnév) paramétereket cserélje le a saját értékeire. 
 
@@ -157,9 +157,9 @@ mysqli_close($conn);
 ```
 
 ## <a name="update-data"></a>Adatok frissítése
-Az alábbi kód segítségével csatlakozzon, és az adatok frissítése a használatával egy **frissítése** SQL-utasításban.
+Az alábbi kód használatával csatlakozhat és végezheti el az adatok módosítását egy **UPDATE** SQL-utasítás segítségével.
 
-A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített módosítási parancsot, majd a [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) metódus használatával hozzáköti az egyes módosított oszlopokhoz a paramétereket. A kód lefut az utasítás módszerrel [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) , és ezt követően bezárja az utasítás módszerrel [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
+A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített módosítási parancsot, majd a [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) metódus használatával hozzáköti az egyes módosított oszlopokhoz a paramétereket. A kód a [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) metódus használatával futtatja az utasítást, majd a [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php) metódussal lezárja azt.
 
 A host (gazdagép), a username (felhasználónév), a password (jelszó) és a db_name (adatbázisnév) paramétereket cserélje le a saját értékeire. 
 
@@ -195,9 +195,9 @@ mysqli_close($conn);
 
 
 ## <a name="delete-data"></a>Adat törlése
-Az alábbi kód segítségével csatlakozzon, és az adatok olvasása a egy **törlése** SQL-utasításban. 
+A következő kóddal csatlakozhat, és beolvashatja az adatokat a **DELETE** SQL-utasítással. 
 
-A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített törlési parancsot, majd hozzáköti a paramétereket a parancs where záradékához a [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) metódus használatával. A kód lefut az utasítás módszerrel [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) , és ezt követően bezárja az utasítás módszerrel [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
+A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített törlési parancsot, majd hozzáköti a paramétereket a parancs where záradékához a [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) metódus használatával. A kód a [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) metódus használatával futtatja az utasítást, majd a [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php) metódussal lezárja azt.
 
 A host (gazdagép), a username (felhasználónév), a password (jelszó) és a db_name (adatbázisnév) paramétereket cserélje le a saját értékeire. 
 

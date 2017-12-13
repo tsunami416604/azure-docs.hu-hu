@@ -1,6 +1,6 @@
 ---
-title: "Gyors üzembe helyezés: Tábla API-t a Python - Azure Cosmos DB |} Microsoft Docs"
-description: "A gyors üzembe helyezés bemutatja, hogyan hozzon létre egy alkalmazást az Azure portál és a Python az Azure Cosmos DB tábla API használatával"
+title: "Gyors útmutató: Table API a Pythonnal – Azure Cosmos DB | Microsoft Docs"
+description: "Ez a gyors útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Table API alkalmazások létrehozására az Azure Portal és a Python használatával"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -14,17 +14,18 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/16/2017
 ms.author: mimig
-ms.openlocfilehash: 1c64401a7d0ccfa12232b04cfd57e6beaa1dbca8
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: 56c52aef2dda899a7f7ce90a26068897781773da
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Gyors üzembe helyezés: A tábla a Python és az Azure Cosmos DB API-alkalmazás létrehozása
+# <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás felépítése a Python és az Azure Cosmos DB használatával
 
-A gyors üzembe helyezés bemutatja, hogyan használja a Python és az Azure Cosmos DB [tábla API](table-introduction.md) egy példa a Githubról klónozásával az alkalmazás elkészítésére. A gyors üzembe helyezés is bemutatja, hogyan Azure Cosmos DB-fiók létrehozása és adatok kezelővel létrehozása a táblákat és entitásokat a web-alapú Azure-portálon.
+Ez a gyors útmutató azt ismerteti, hogy hogyan használható a Python és az Azure Cosmos DB [Table API](table-introduction.md) egy alkalmazás létrehozására egy GitHubról származó példa klónozásával. Ez a gyors útmutató emellett azt is bemutatja, hogyan hozható létre egy Azure Cosmos DB-fiók, és hogyan használható az Adatkezelő táblák és entitások létrehozására a webes alapú Azure Portalon.
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Gyorsan hozzon létre, és a dokumentum, a kulcs/érték, a wide-oszlop és a graph adatbázisok, amelyek kihasználhassa a globális terjesztési és a horizontális skálázhatóságot képességeket Azure Cosmos DB középpontjában lekérdezése. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték, széles oszlopú és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +41,7 @@ Továbbá:
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
 > [!IMPORTANT] 
-> Szeretne együttműködni a általánosan elérhető tábla API SDK-k új tábla API-fiók létrehozása. Tábla API fiókjainak előzetes nem támogatottak az általánosan elérhető az SDK-k.
+> Létre kell hoznia egy új Table API-fiókot, amely használható az általánosan elérhető Table API SDK-kkal. Az általánosan elérhető SDK-k nem támogatják az előzetes verzióban létrehozott Table API-fiókokat.
 >
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
@@ -56,7 +57,7 @@ Az Adatkezelő segítségével adatokat adhat hozzá az új táblához.
 1. Az Adatkezelőben bontsa ki a **minta tábla** pontot, és kattintson az **Entitások**, ezután pedig az **Entitás hozzáadása** lehetőségre.
 
    ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-document.png)
-2. Most adatok hozzáadása a PartitionKey érték mezőhöz, illetve RowKey értéket, és kattintson a **entitás hozzáadása**.
+2. Adja meg a PartitionKey és a RowKey mezők adatait, és kattintson az **Entitás hozzáadása** lehetőségre.
 
    ![A partíciókulcs és a sorkulcs beállítása új entitások számára](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-entity.png)
   
@@ -66,13 +67,13 @@ Az Adatkezelő segítségével adatokat adhat hozzá az új táblához.
 
 Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és használja a `cd` parancs futtatásával módosíthatja a mintaalkalmazás telepítése mappába. 
+1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` parancs használatával váltson a mappára, ahol telepíteni szeretné a mintaalkalmazást. 
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. Futtassa a következő parancsot a minta tárház klónozásához. Ezzel a paranccsal létrejön egy mintaalkalmazás példányát a számítógépen. 
+2. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén. 
 
     ```bash
     git clone https://github.com/Azure-Samples/storage-python-getting-started.git
@@ -82,19 +83,19 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
 
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
 
-Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás a szolgáltatott adatbázissal való kommunikációhoz. 
+Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
 
-1. Az a [Azure-portálon](http://portal.azure.com/), kattintson a **kapcsolati karakterlánc**. 
+1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati karakterlánc** elemre. 
 
-    ![Megtekintheti, és másolja a KAPCSOLATI KARAKTERLÁNCOT a kapcsolati karakterlánc panelen](./media/create-table-python/connection-string.png)
+    ![Tekintse meg és másolja a vágólapra a CONNECTION STRING (Kapcsolati karakterlánc) értékét a Kapcsolati karakterlánc ablaktáblán](./media/create-table-python/connection-string.png)
 
-2. Másolja a fiók neve, a jobb oldalon a gombra kattintva.
+2. Másolja az ACCOUNT NAME (Fiók neve) értékét a jobb oldalon található gombbal.
 
-3. Nyissa meg a config.py fájlt, és illessze be a fiók nevét a portálról sor 19 STORAGE_ACCOUNT_NAME értékét.
+3. Nyissa meg a config.py fájlt, és illessze be az ACCOUNT NAME értékét a portálról a STORAGE_ACCOUNT_NAME mezőbe a 19. sorban.
 
-4. Lépjen vissza a portálra, és másolja az elsődleges kulcsot.
+4. Lépjen vissza a portálra, és másolja a vágólapra a PRIMARY KEY (Elsődleges kulcs) értékét.
 
-5. Az elsődleges kulcsot a portálról illessze be a sor 20 STORAGE_ACCOUNT_KEY értékét.
+5. Illessze be a PRIMARY KEY értékét a portálról a STORAGE_ACCOUNT_KEY mezőbe a 20. sorban.
 
 3. Mentse a config.py fájlt.
 
@@ -102,7 +103,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 1. A Visual Studióban kattintson jobb gombbal a projekt lehetőségre a **Megoldáskezelőben**, válassza ki a jelenlegi Python-környezetet, majd kattintson a jobb gombbal.
 
-2. Válassza ki a Python-csomag telepítése, majd írja be a **azure-storage-tábla**
+2. Válassza ki az Install Python Package (Python-csomag telepítése) lehetőséget, majd írja be az **azure-storage-table** szöveget
 
 3. Az alkalmazás futtatásához nyomja le az F5 billentyűt. Az alkalmazás megjelenik a böngészőben. 
 
@@ -121,4 +122,4 @@ Lépjen vissza az Adatkezelőbe, ahol lekérdezheti, módosíthatja, és dolgozh
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével táblát készíteni, és hogyan lehet futtatni az alkalmazást.  Most már le tudja kérdezni adatait a Table API segítségével.  
 
 > [!div class="nextstepaction"]
-> [A tábla API tábla adatok importálása](table-import.md)
+> [Táblaadatok importálása a Table API-ba](table-import.md)

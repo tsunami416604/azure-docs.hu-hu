@@ -17,7 +17,7 @@ ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
 ms.openlocfilehash: a17ff3ca73a824f4aa4b45a7cae9428a0fbc96d4
 ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
 ---
@@ -66,7 +66,7 @@ Az alkalmazás a terminálablak megnyitásával és a `Python` parancs használa
 python main.py
 ```
 
-Nyisson meg egy webböngészőt, és navigáljon a minta alkalmazást `http://localhost:5000`.
+Nyisson meg egy webböngészőt, majd keresse meg a mintaalkalmazást a `http://localhost:5000` címen.
 
 Az oldalon látható mintaalkalmazáson ekkor a **Hello World** üzenetnek kell megjelennie.
 
@@ -86,7 +86,7 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-python-no-h.md)]
 
-Keresse meg az újonnan létrehozott webalkalmazáshoz. Cserélje le  _&lt;alkalmazás neve >_ egy egyedi alkalmazásnévvel rendelkező.
+Tallózással keresse meg az újonnan létrehozott webalkalmazást. Az _&lt;app name>_ helyett adja meg a webalkalmazása nevét.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -160,7 +160,7 @@ Egy helyi szövegszerkesztővel nyissa meg a `main.py` fájlt a Python-alkalmaz�
 return 'Hello, Azure!'
 ```
 
-A helyi terminálablakot a Git a változtatások véglegesítése a határidő, és ezután a kód változásainak leküldése Azure.
+A helyi terminálablakban mentse a módosításokat a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
 
 ```bash
 git commit -am "updated output"

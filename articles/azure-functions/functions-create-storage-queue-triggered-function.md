@@ -18,7 +18,7 @@ ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: 3fd5a5b9d2e2eec485fd9ecc5380ad6adb9851d0
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
@@ -68,7 +68,7 @@ Ezután csatlakozzon az Azure Storage-fiókjához, és hozza létre a **myqueue-
 
 ## <a name="create-the-queue"></a>Az üzenetsor létrehozása
 
-1. A függvényben kattintson az **Integráció** elemre, bontsa ki a **Dokumentáció** elemet, és másolja a **Fiók neve** és a **Fiók kulcsa** értéket. Ezek a hitelesítő adatok segítségével csatlakozni az Azure Tártallózó a storage-fiókot. Ha már csatlakozott a tárfiókjához, folytassa a 4. lépéssel.
+1. A függvényben kattintson az **Integráció** elemre, bontsa ki a **Dokumentáció** elemet, és másolja a **Fiók neve** és a **Fiók kulcsa** értéket. Ezekkel a hitelesítő adatokkal csatlakozhat a tárfiókhoz az Azure Storage Explorerben. Ha már csatlakozott a tárfiókjához, folytassa a 4. lépéssel.
 
     ![Kérje le a tárfiókhoz való csatlakozáshoz szükséges hitelesítő adatokat.](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
 
@@ -80,7 +80,7 @@ Ezután csatlakozzon az Azure Storage-fiókjához, és hozza létre a **myqueue-
 
     ![Adja meg a tároló hitelesítő adatait, és csatlakozzon.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
 
-1. Bontsa ki a csatolt storage-fiókot, kattintson a jobb gombbal **várólisták**, kattintson a **várólista létrehozása**, típus `myqueue-items`, és nyomja meg az enter.
+1. Bontsa ki a csatolt tárfiókot, kattintson a jobb gombbal az **Üzenetsorok** elemre, kattintson az **Üzenetsor létrehozása** elemre, írja be a `myqueue-items` értéket, és nyomja meg az Enter billentyűt.
 
     ![Hozzon létre egy tárolási üzenetsort.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-create-queue.png)
 
@@ -88,7 +88,7 @@ Az üzenetsor létrehozása után tesztelheti a függvényt úgy, hogy felvesz e
 
 ## <a name="test-the-function"></a>A függvény tesztelése
 
-1. Vissza az Azure portálon keresse meg a függvény, bontsa ki a **naplók** a lap alján, és győződjön meg arról, hogy a napló streaming nem szünetel.
+1. Térjen vissza az Azure Portalra, keresse meg a függvényt, bontsa ki a **Naplók** elemet a lap alján, és győződjön meg arról, hogy a naplózási adatfolyam nincs leállítva.
 
 1. A Storage Explorerben bontsa ki a tárfiókot, az **Üzenetsorok**, majd az **üzenetsorelemek** elemet, és kattintson az **Üzenet hozzáadása** elemre.
 

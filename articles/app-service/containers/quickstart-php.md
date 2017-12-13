@@ -1,6 +1,6 @@
 ---
-title: "PHP-webalkalmazás létrehozása és telepítése az App Service Linux |} Microsoft Docs"
-description: "Telepítse az első PHP Hello World az App Service Linux perc múlva."
+title: "PHP webalkalmazás létrehozása és üzembe helyezése Linuxon futó App Service-ben | Microsoft Docs"
+description: "Percek alatt üzembe helyezheti az első Hello World PHP-jét a Linuxon futó App Service-ben."
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -17,15 +17,15 @@ ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: a40888af94415f77dfc00e6b254a5fc82aa488c4
 ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
 ---
-# <a name="create-a-php-web-app-in-app-service-on-linux"></a>Hozzon létre egy PHP webalkalmazást az App Service Linux rendszeren
+# <a name="create-a-php-web-app-in-app-service-on-linux"></a>PHP-webalkalmazás létrehozása a Linuxon futó App Service-ben
 
-[App Service Linux](app-service-linux-intro.md) biztosít egy jól skálázható, önálló javítási webhelyszolgáltató a Linux operációs rendszert használ. Gyors üzembe helyezési oktatóanyag bemutatja, hogyan telepítheti a PHP-alkalmazások az Azure App Service Linux. A webalkalmazás létrehozásához beépített lemezkép használata a [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) a felhő rendszerhéjat, és a Git segítségével telepítse a PHP kód a webalkalmazásban.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a gyors útmutató azt ismerteti, hogyan helyezhet üzembe egy PHP-alkalmazást a Linuxon futó Azure App Service-ben. A Cloud Shellben az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozza a webalkalmazást a beépített rendszerképpel, a Gittel pedig üzembe helyezi a PHP-kódot a webalkalmazásban.
 
-! [Mintaalkalmazás Azure-beli]] (media/quickstart-php/hello-world-in-browser.png)
+![Az Azure-ban futó mintaalkalmazás]](media/quickstart-php/hello-world-in-browser.png)
 
 Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti.
 
@@ -40,7 +40,7 @@ A gyorsútmutató elvégzéséhez:
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Egy terminálablakot futtassa a következő parancsok futtatásával klónozza a mintaalkalmazást a helyi gépére, és keresse meg azt a mintakódot tartalmazó könyvtárat.
+Futtassa a következő parancsokat egy terminálablakban. Ezzel klónozza a mintaalkalmazást a helyi gépre, és a mintakódot tartalmazó könyvtárba lép.
 
 ```bash
 git clone https://github.com/Azure-Samples/php-docs-hello-world
@@ -55,7 +55,7 @@ Az alkalmazás a terminálablak megnyitásával és a `php` parancs használatá
 php -S localhost:8080
 ```
 
-Nyisson meg egy webböngészőt, és navigáljon a minta alkalmazást `http://localhost:8080`.
+Nyisson meg egy webböngészőt, majd keresse meg a mintaalkalmazást a `http://localhost:8080` címen.
 
 Az oldalon látható mintaalkalmazáson ekkor a **Hello World!** üzenet jelenik meg.
 
@@ -75,7 +75,7 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
-Keresse meg azt a helyet, az újonnan létrehozott webes alkalmazás a beépített kép megjelenítéséhez. Cserélje le  _&lt;alkalmazás neve >_ és a webes alkalmazás neve.
+Az újonnan létrehozott, beépített rendszerképpel rendelkező webalkalmazás megtekintéséhez tallózással keresse meg a helyet. Az _&lt;app name>_ helyett adja meg a webalkalmazása nevét.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -118,15 +118,15 @@ Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző has
 http://<app_name>.azurewebsites.net
 ```
 
-A PHP mintakód fut a webes alkalmazás beépített lemezképpel.
+A PHP-mintakód beépített rendszerképpel rendelkező webalkalmazásban fut.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-php/hello-world-in-browser.png)
 
-**Gratulálunk!** Az első PHP-alkalmazás az App Service Linux telepítése.
+**Gratulálunk!** Elvégezte az első PHP-webalkalmazás üzembe helyezését a Linuxon futó App Service-ben.
 
 ## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
-A helyi címtárban, nyissa meg a `index.php` fájlt a PHP-alkalmazásban, és olyan módosítást kicsi a karakterláncon belüli szöveg melletti `echo`:
+A helyi könyvtárban nyissa meg az `index.php` fájlt a PHP-alkalmazáson belül, majd módosítsa a szövegét az `echo` melletti karakterláncon belül:
 
 ```php
 echo "Hello Azure!";

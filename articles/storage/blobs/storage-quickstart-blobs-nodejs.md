@@ -1,6 +1,6 @@
 ---
-title: "Azure gyors üzembe helyezés – az Azure Blob storage Node.js| használatának átviteli objektumok Microsoft Docs"
-description: "Gyorsan elsajátíthatják átvitele az objektumok Azure Blob storage használata Node.js és a"
+title: "Azure rövid útmutató – Objektumok áthelyezése az Azure Blob-tárolókra és -tárolókról Node.js használatával| Microsoft Docs"
+description: "Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob-tárolókra és -tárolókról a Node.js használatával"
 services: storage
 documentationcenter: storage
 author: georgewallace
@@ -17,13 +17,13 @@ ms.date: 10/30/2017
 ms.author: gwallace
 ms.openlocfilehash: dd4d3abf082767c40760d020c0997b365452e769
 ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2017
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>Az Azure Blob storage használata Node.js átviteli objektumok
+# <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>Objektumok áthelyezése az Azure Blob-tárolókra és -tárolókról a Node.js használatával
 
-A gyors üzembe helyezés elsajátíthatja Node.js segítségével töltse fel, töltse le, és az Azure Blob storage tárolója blokk blobok listázása.
+A rövid útmutató azt ismerteti, hogyan használható a Node.js blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ben található tárolóban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,19 +37,19 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
-A [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) alapvető Konzolalkalmazás a gyors üzembe helyezés használatban van. 
+A gyors útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) egy egyszerű konzolalkalmazás. 
 
-Használjon [git](https://git-scm.com/) letölteni az alkalmazást a fejlesztési környezet egy példányát.
+A [git](https://git-scm.com/) használatával töltse le az alkalmazás egy másolatát a fejlesztői környezetbe.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-node-quickstart.git
 ```
 
-Ez a parancs klónokat a tárházat a helyi git-mappába. Nyissa meg az alkalmazás keresse meg a storage-BLOB-csomópont – gyors üzembe helyezés mappa, nyissa meg azt, és kattintson duplán arra a index.js.
+Ez a parancs a helyi git mappába klónozza az adattárat. Az alkalmazás megnyitásához keresse meg a storage-blobs-node-quickstart mappát, és kattintson duplán az index.js fájlra.
 
 ## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
 
-Az alkalmazás a kapcsolati karakterláncot kell megadnia a tárfiók. Nyissa meg a `index.js` fájlt, keresse meg a `connectionString` változó. Cserélje le az értékét a teljes Azure-portálról mentett azt a kapcsolati karakterlánc értékét. A tárolási kapcsolati karakterlánc a következő hasonlóan kell kinéznie:
+Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. Nyissa meg az `index.js` fájlt és keresse meg a `connectionString` változót. Cserélje le a kapcsolati karakterlánc teljes értékét arra, amelyet az Azure Portalról elmentett. A tárfiók kapcsolati karakterláncának a következőképpen kell kinéznie:
 
 ```javascript
 // Create a blob client for interacting with the blob service from connection string
@@ -58,19 +58,19 @@ var connectionString = '<Your connection string here>';
 var blobService = storage.createBlobService(connectionString);
 ```
 
-## <a name="install-required-packages"></a>Telepíti a szükséges csomagokat
+## <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-Az alkalmazás könyvtárában, futtassa `npm install` telepítése szükséges a fájlban felsorolt csomagok a `package.json` fájlt.
+Az alkalmazás könyvtárában futtassa az `npm install` parancsot a `package.json` fájlban felsorolt szükséges fájlok telepítéséhez.
 
 ```javascript
 npm install
 ```
 
-## <a name="run-the-sample"></a>A minta futtatásához
+## <a name="run-the-sample"></a>Minta futtatása
 
-Ez a minta létrehoz egy tesztelési a dokumentumok, feltölti a Blob Storage, a tárolóban lévő blobok sorolja fel, majd letölti a fájlt új néven, a régi és új fájlok összehasonlítás.
+Ez a minta létrehoz egy tesztfájlt a Dokumentumok mappában, feltölti a Blob-tárolóba, listázza a tárolóban található blobokat, majd letölti a fájlt új néven, hogy össze lehessen hasonlítani a régebbi fájllal.
 
-A minta futtatásához írja be a `node index.js`. A következő kimenet egy Windows rendszer származik.  A megfelelő elérési utat egy hasonló kimenetet használata Linux várható.
+Futtassa a mintát a következő szöveg beírásával: `node index.js`. A következő kimenet Windows rendszerből származik.  Linux használata esetén hasonló kimenet várható a megfelelő fájlelérési utakkal.
 
 ```
 Azure Storage Node.js Client Library Blobs Quick Start
@@ -97,25 +97,25 @@ Azure Storage Node.js Client Library Blobs Quick Start
 Sample finished running. When you hit <ENTER> key, the temporary files will be deleted and the sample application will exit.
 ```
 
-A folytatás előtt ellenőrizze a két fájl MyDocuments. Nyissa meg őket, és tekintse meg a megegyezik azzal.
+A folytatás előtt ellenőrizze a két fájlt a Dokumentumok mappában. Ha megnyitja őket, láthatja, hogy megegyeznek.
 
-Például egy eszköz is használhatja a [Azure Tártallózó](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) megtekinthetik a fájlokat a Blob Storage tárolóban. Azure Tártallózó egy ingyenes platformfüggetlen eszköz, amely lehetővé teszi a tárfiók adatait.
+Az [Azure Storage Explorert](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy egy ahhoz hasonló eszközt is használhat a fájl megtekintéséhez a Blob-tárolóban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amellyel elérheti a tárfiókjával kapcsolatos információkat.
 
-Miután ellenőrizte, hogy a fájlokat, kattintson a bemutató befejeződését, és törölje a tesztfájlok bármelyik billentyűt. Most, hogy ismeri a minta funkciója, nyissa meg a index.js fájlt nézze meg a kódot. 
+A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez. Most, hogy tudja, hogy működik a minta, nyissa meg az index.js fájlt, és tekintse meg a kódot. 
 
-## <a name="understand-the-sample-code"></a>A mintakód ismertetése
+## <a name="understand-the-sample-code"></a>A mintakód értelmezése
 
-Ezután azt végezze el a mintakódot, hogy megismerheti, hogyan működik.
+A következőkben áttekintjük a mintakódot, és értelmezzük, hogyan működik.
 
-### <a name="get-references-to-the-storage-objects"></a>A tárolási objektum mutató hivatkozások beolvasása
+### <a name="get-references-to-the-storage-objects"></a>Referenciák beszerzése a tárolóobjektumokhoz
 
-Az első lépés az mutató hivatkozás létrehozása a `BlobService` férhessen hozzá és felügyelhesse a Blob storage használatával. Ezek az objektumok egymástól összeállítása – egyes használja a következő egy, a listában.
+Az első teendő a referencia létrehozása a Blob-tároló hozzáféréséhez és kezeléshez használt `BlobService` objektumhoz. Ezek az objektumok egymásra épülnek – mindegyiket a listában utánuk következő használja.
 
-* Hozzon létre egy példányát a  **[BlobService](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService__ctor)**  objektum, amely a tárfiókban lévő a Blob szolgáltatás mutat.
+* Hozza létre a **[BlobService](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService__ctor)** objektum példányát, amely a tárfiókja Blob szolgáltatására mutat.
 
-* Hozzon létre egy új tárolót, és ezután az engedélyekkel a tárolóra, a blobok nyilvánosak, és csak egy URL-cím elérhető. A tároló kezdődik-e **quickstartcontainer -**.
+* Hozzon létre egy új tárolót, majd állítsa be annak engedélyeit úgy, hogy a blobok nyilvánosak és mindössze egy URL-címmel elérhetőek legyenek. A tároló neve a **quickstartcontainer-** szöveggel kezdődik.
 
-Ez a példa [createContainerCreateIfNotExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createContainerIfNotExists) mert szeretnénk hozzon létre egy új tároló minden alkalommal, amikor a minta futtatása. Éles környezetben, ahol az alkalmazás teljes tárolóhoz használ hogy a rendszer jobb eljárás az, hogy csak egyszer hívható meg CreateIfNotExists. Azt is megteheti a tároló időben hozhat létre, így nem kell a kódban létrehozásához.
+Ez a példa a [createContainerCreateIfNotExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createContainerIfNotExists) parancsot használja, mert a minta futtatásakor mindig új tárolót szeretnénk létrehozni. Éles környezetben, ahol ugyanazt a tárolót használja egy alkalmazásban, jobb eljárás a CreateIfNotExists egyszeri hívása. Azt is megteheti, hogy előre létrehozza a tárolót, hogy ne a kódban kelljen létrehoznia.
 
 ```javascript
 // Create a container for organizing blobs within the storage account.
@@ -126,11 +126,11 @@ blobService.createContainerIfNotExists(blockBlobContainerName, { 'publicAccessLe
 
 ### <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
 
-A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. Blokkblobok a leggyakrabban használt. Ideálisak, amelynek az oka alkalmával használták őket a gyors üzembe helyezés szöveg és a bináris adatok tárolására.
+A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A leggyakrabban használt elemek a blokkblobok. Ezek ideálisak a szövegek és a bináris adatok tárolására, és ezért használja őket ez a gyors útmutató is.
 
-Fájl feltöltése a blob, használhatja a [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromLocalFile) metódust. Ez a művelet a blob hoz létre, ha már nem létezik, vagy felülírja, ha már létezik.
+Fájl egy blobba való feltöltéséhez használja a [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromLocalFile) metódust. Ez az eljárás létrehozza a blobot, ha az még nem létezett, és felülírja, ha már igen.
 
-A mintakód létrehoz egy helyi fájlt a feltöltés és letöltés, mint a feltölteni kívánt fájl tárolására használt **localPath** és a blob neve **localFileToUpload**. Az alábbi példa feltölti a tárolóhoz kezdődő **quickstartcontainer -**.
+A mintakód létrehoz egy, a fel- és letöltéshez használatos helyi fájlt, és úgy tárolja el, hogy az a **localPath** néven és a blob nevével elnevezve legyen feltöltve a **localFileToUpload** helyre. A következő példa feltölti a fájlt az Ön tárolójára, amelynek neve a **quickstartcontainer-** szöveggel kezdődik.
 
 ```javascript
 console.log('2. Creating a file in ~/Documents folder to test the upload and download\n');
@@ -143,13 +143,13 @@ handleError(error);
 console.log('   Uploaded Blob URL:', blobService.getUrl(CONTAINER_NAME, BLOCK_BLOB_NAME), '\n');
 ```
 
-Többféleképpen feltöltés, a Blob storage használata. Például ha egy memóriafolyam, használhatja a [createBlockBlobFromStream](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromStream) metódus helyett [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromLocalFile).
+A Blob-tárolóval többféle feltöltési módszer használható. Ha például memóriastreamje van, használhatja a [createBlockBlobFromStream](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromStream) metódust a [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromLocalFile) helyett.
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-Ezt követően az alkalmazás a tárolót használja a fájlok listájának lekérése [listBlobsSegmented](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_listBlobsSegmented). A következő kódot a bináris objektumok listájának beolvasása, majd végighalad őket, az URI-azonosítók található blobok megjelenítő. Másolja az URI a parancsablakot, és illessze be a böngészőt, hogy a fájl.
+Ezután az alkalmazás lekéri a tároló fájljainak listáját a [listBlobsSegmented](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_listBlobsSegmented) utasítással. A következő kód lekéri a blobok listáját, majd végighalad rajtuk, és megjeleníti a talált blobok URI-ját. Az URI-t kimásolhatja a parancsablakból, és a fájl megtekintéséhez beillesztheti egy böngészőbe.
 
-5000 vagy kevesebb BLOB a tárolóban van, ha az összes a blob nevének egy hívás a beolvasott [listBlobsSegmented](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_listBlobsSegmented). Ha több mint 5000 BLOB a tárolóban, a szolgáltatás lekérdezi az 5000-készletek listájában, amíg a blob nevének mindegyikét lettek beolvasva. Ezért először az API neve, az első 5000 blob nevének, valamint a folytatási kód adja vissza. A második alkalommal megadta a jogkivonatot, és a szolgáltatás lekérdezi a blob nevének a következő készletét, és stb a folytatási kód csak NULL értékű, ami azt jelzi, hogy a blob nevének mindegyikét lettek beolvasva.
+Ha 5000 vagy kevesebb blob található a tárolóban, az összes blobnevet lekérheti a [listBlobsSegmented](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_listBlobsSegmented) egyetlen hívásával. Ha több mint 5000 blob található a tárolóban, a szolgáltatás 5000-es csomagokban kéri le a blobnevek listáját, amíg a végükre nem ér. Ennek megfelelően az API az első hívásakor az első 5000 blobnevet és egy folytatási kódot ad vissza. A második alkalommal meg kell adnia ezt a kódot, és a szolgáltatás lekéri a blobnevek következő készletét, és így tovább, amíg a folytatási kód értéke nulla nem lesz – ez jelzi, hogy a rendszer az összes blobnevet lekérte.
 
 ```javascript
 console.log('4. Listing blobs in container\n');
@@ -164,9 +164,9 @@ blobService.listBlobsSegmented(CONTAINER_NAME, null, function (error, data) {
 
 ### <a name="download-blobs"></a>Blobok letöltése
 
-Blobok letöltése a helyi lemezek használata [getBlobToLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_getBlobToLocalFile).
+Blobokat a helyi lemezre a [getBlobToLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_getBlobToLocalFile) utasítással tölthet le.
 
-A következő kódot a blob feltöltése egy korábbi szakaszában "_DOWNLOADED" utótag hozzáadása a blob nevének, így mindkét fájlt a helyi lemezen tölti le. 
+A következő kód letölti az útmutató korábbi fejezetében feltöltött blobot, és hozzáadja a „_DOWNLOADED” (Letöltve) utótagot a nevéhez, így mindkét fájlt láthatja majd a helyi lemezen. 
 
 ```javascript
 console.log('5. Downloading blob\n');
@@ -177,7 +177,7 @@ console.log('   Downloaded File:', DOWNLOADED_FILE_PATH, '\n');
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a blobok a gyors üzembe helyezés feltöltött, törölje a teljes tárolóhoz történő [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists) és [deleteContainerIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteContainerIfExists). Ha már nincs szükség a fájlt is törli. Ez az végrehajtott megvagyunk az alkalmazásban megnyomásakor kilép az alkalmazásból adja meg.
+Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists) és a [deleteContainerIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteContainerIfExists) paranccsal. A létrehozott fájlokat is törölje, ha már nincs szüksége rájuk. Ezt az alkalmazás elvégzi, amikor az Enter billentyűvel kilép belőle.
 
 ```javascript
 console.log('6. Deleting block Blob\n');
@@ -194,9 +194,9 @@ console.log('6. Deleting block Blob\n');
 
 ## <a name="next-steps"></a>Következő lépések
 
-A gyors üzembe helyezés megtanulta, hogyan viheti át a fájlokat a helyi lemezek és az Azure Blob storage használata Node.js között. További információt a Blob storage használata, továbbra is a Blob-tároló útmutató.
+Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Node.js használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
 
 > [!div class="nextstepaction"]
-> [A BLOB Storage műveletek útmutató](storage-nodejs-how-to-use-blob-storage.md)
+> [Blob Storage-műveletek használati útmutatója](storage-nodejs-how-to-use-blob-storage.md)
 
-A Tártallózó alkalmazással és a Blobok kapcsolatos további információkért lásd: [kezelése Azure Blob storage-erőforrások a Tártallózó alkalmazással](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+További információk a Storage Explorerről és a blobokról: [Azure Blob Storage-erőforrások kezelése a Storage Explorer használatával](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

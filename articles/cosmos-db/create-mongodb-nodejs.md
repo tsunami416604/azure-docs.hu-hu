@@ -17,7 +17,7 @@ ms.date: 06/19/2017
 ms.author: mimig
 ms.openlocfilehash: 335c271f3e46d3b6b23e1fcac53e39b89ece796c
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
@@ -27,7 +27,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 
 Ez a bevezető ismerteti a Node.js-ben írt, meglévő [MongoDB](mongodb-introduction.md)-alkalmazások használatát, valamint azok összekapcsolásának menetét a MongoDB-ügyfélkapcsolatokat támogató Azure Cosmos DB-adatbázissal. Más szóval a Node.js-alkalmazás csak azt tudja, hogy a MongoDB API-k használatával csatlakozott egy adatbázishoz. Az alkalmazás nem látja, hogy az adatokat az Azure Cosmos DB tárolja.
 
-Amikor elkészült, hogy egy átlagos alkalmazás (MongoDB, Express, Angular és Node.js) fut a [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). 
+Az útmutató végére a MEAN-alkalmazás (MongoDB, Express, Angular és Node.js) az [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) rendszert használva fog futni. 
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/create-mongodb-nodejs/meanjs-in-azure.png)
 
@@ -63,7 +63,7 @@ cd mean
 npm install
 npm start
 ```
-Az alkalmazás megpróbál csatlakozni a MongoDB forrásra és sikertelen, lépjen tovább, és lépjen ki az alkalmazásból, ha a kimeneti típust ad vissza "[MongoError: csatlakozás ECONNREFUSED 127.0.0.1:27017]".
+Az alkalmazás sikertelenül megkísérel csatlakozni egy MongoDB-forráshoz. Lépjen ki az alkalmazásból, amikor a kimenet a következőt adja vissza: „[MongoError: connect ECONNREFUSED 127.0.0.1:27017]”.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 

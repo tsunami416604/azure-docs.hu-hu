@@ -17,7 +17,7 @@ ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 3639bd568fbad69f65fe933aa871f4effdab9a17
 ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
 ---
@@ -63,7 +63,7 @@ Az alkalmazás a terminálablak megnyitásával és a `npm start` szkript haszn�
 npm start
 ```
 
-Nyisson meg egy webböngészőt, és navigáljon a minta alkalmazást `http://localhost:1337`.
+Nyisson meg egy webböngészőt, majd keresse meg a mintaalkalmazást a `http://localhost:1337` címen.
 
 Az oldalon látható mintaalkalmazáson ekkor a **Hello World** üzenetnek kell megjelennie.
 
@@ -141,7 +141,7 @@ Egy szövegszerkesztő használatával nyissa meg a Node.js-alkalmazáson belül
 response.end("Hello Azure!");
 ```
 
-A helyi terminálablakot a Git a változtatások véglegesítése a határidő, és ezután a kód változásainak leküldése Azure.
+A helyi terminálablakban mentse a módosításokat a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
 
 ```bash
 git commit -am "updated output"

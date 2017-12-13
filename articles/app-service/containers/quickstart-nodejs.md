@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre egy Node.js az Azure App Service Linux |} Microsoft Docs"
-description: "Telepítse az első Node.js Hello World az Azure App Service Linux perc múlva."
+title: "Node.js létrehozása a Linuxon futó Azure App Service-ben | Microsoft Docs"
+description: "Percek alatt üzembe helyezheti első Hello World Node.js-alkalmazását a Linuxon futó Azure App Service-ben."
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -17,13 +17,13 @@ ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 312ff3d4013c7406a9acd86185ab43a6602c539c
 ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
 ---
-# <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Node.js-webalkalmazás létrehozása az Azure App Service Linux rendszeren
+# <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Node.js-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben
 
-[App Service Linux](app-service-linux-intro.md) biztosít egy jól skálázható, önálló javítási webhelyszolgáltató a Linux operációs rendszert használ. A gyors üzembe helyezés üzembe helyezését mutatja be egy Node.js-alkalmazás az App Service Linux beépített lemezképpel. A webalkalmazás létrehozásához beépített lemezkép használata a [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), és a Git használatával telepíti a Node.js-kód a webalkalmazásban.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a gyorsútmutató a Node.js-alkalmazások Linuxon futó App Service-be történő üzembe helyezésén vezeti végig egy beépített rendszerkép használatával. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a beépített rendszerképpel rendelkező webalkalmazást, a Git szoftver használatával pedig üzembe helyezheti a Node.js-kódot a webalkalmazásban.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-nodejs/hello-world-in-browser.png)
 
@@ -40,7 +40,7 @@ A gyorsútmutató elvégzéséhez:
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Egy terminálablakot a számítógépen futtassa a következő parancs futtatásával klónozza a sample app tárházat a helyi számítógépre.
+A gép terminálablakában futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
@@ -62,7 +62,7 @@ Az alkalmazás a terminálablak megnyitásával és a `npm start` szkript haszn�
 npm start
 ```
 
-Nyisson meg egy webböngészőt, és navigáljon a minta alkalmazást `http://localhost:1337`.
+Nyisson meg egy webböngészőt, majd keresse meg a mintaalkalmazást a `http://localhost:1337` címen.
 
 Az oldalon látható mintaalkalmazáson ekkor a **Hello World** üzenetnek kell megjelennie.
 
@@ -82,7 +82,7 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)]
 
-Keresse meg az újonnan létrehozott webalkalmazáshoz. Cserélje le  _&lt;alkalmazás neve >_ és a webes alkalmazás neve.
+Tallózással keresse meg az újonnan létrehozott webalkalmazást. Az _&lt;app name>_ helyett adja meg a webalkalmazása nevét.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -134,15 +134,15 @@ Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző has
 http://<app_name>.azurewebsites.net
 ```
 
-A Node.js mintakód fut a webes alkalmazás beépített lemezképpel.
+A Node.js mintakód beépített rendszerképpel rendelkező webalkalmazásban fut.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-nodejs/hello-world-in-browser.png)
 
-**Gratulálunk!** Az első Node.js-alkalmazás az App Service Linux telepítése.
+**Gratulálunk!** Elvégezte az első Node.js-alkalmazás üzembe helyezését a Linuxon futó App Service-ben.
 
 ## <a name="update-and-redeploy-the-code"></a>A kód frissítése és ismételt üzembe helyezése
 
-A helyi címtárban, nyissa meg a `index.js` a Node.js-alkalmazás fájlt, és a szöveg hívásában kis módosítja `response.end`:
+A helyi könyvtárban nyissa meg a Node.js-alkalmazáson belüli `index.js` fájlt, majd módosítsa annak szövegét a `response.end` hívásán belül:
 
 ```nodejs
 response.end("Hello Azure!");

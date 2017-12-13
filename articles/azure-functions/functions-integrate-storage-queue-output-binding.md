@@ -1,5 +1,5 @@
 ---
-title: "Üzenetek hozzáadása az Azure Storage üzenetsorába függvények használatával |} Microsoft Docs"
+title: "Üzenetek hozzáadása egy Azure Storage-üzenetsorhoz a Functions használatával | Microsoft Docs"
 description: "Használja az Azure Functions szolgáltatást olyan kiszolgáló nélküli függvények létrehozására, amelyeket az Azure Storage üzenetsorába elküldött üzenetek hívnak meg."
 services: azure-functions
 documentationcenter: na
@@ -18,7 +18,7 @@ ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: 822879861ee8189cdd413f0061f26fb91819d88d
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
@@ -38,7 +38,7 @@ Az Azure Functions bemeneti és kimeneti kötései deklaratív módszert biztos�
  
 1. Bontsa ki a függvényalkalmazást és a függvényt.
 
-2. Válassza ki **integráció** és **+ új kimeneti**, majd válassza **Azure Queue storage** válassza **kiválasztása**.
+2. Válassza az **Integráció** és az **+ Új kimenet**, majd az **Azure Queue Storage**, és végül a **Kiválasztás** elemet.
     
     ![Vegye fel egy üzenetsor-tároló kimeneti kötését egy függvénybe az Azure Portalon.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
@@ -60,7 +60,7 @@ Miután meghatározta a kimeneti kötést, módosítania kell a kódot, hogy az 
 
 1. A függvényre kattintva jelenítse meg a szerkesztőben a függvénykódot. 
 
-2. C# függvény, frissítse a függvény definícióját a következőképpen vegye fel a **outputQueueItem** tárolási kötési paraméter. JavaScript-függvény esetében hagyja ki ezt a lépést.
+2. C#-függvény esetében módosítsa a következők szerint a függvény definícióját az **outputQueueItem** kötési paraméter hozzáadásához. JavaScript-függvény esetében hagyja ki ezt a lépést.
 
     ```cs   
     public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
@@ -99,7 +99,7 @@ Ezután csatlakozhat a tárfiókhoz, hogy ellenőrizze az új üzenetsort és az
 
 Hagyja ki az első három lépést, ha már telepítette a Storage Explorert, és már csatlakoztatta azt a tárfiókjához.    
 
-1. Válassza ki a függvény **integráció** és az új **Azure Queue storage** kimeneti kötése, majd bontsa ki a **dokumentáció**. Másolja a **Fiók neve** és a **Fiók kulcsa** értéket. Ezekkel a hitelesítő adatokkal csatlakozhat a tárfiókhoz.
+1. A függvényben jelölje ki az **Integráció** elemet és az új **Azure Queue Storage** kimeneti kötést, majd bontsa ki a **Dokumentáció** elemet. Másolja a **Fiók neve** és a **Fiók kulcsa** értéket. Ezekkel a hitelesítő adatokkal csatlakozhat a tárfiókhoz.
  
     ![Kérje le a tárfiókhoz való csatlakozáshoz szükséges hitelesítő adatokat.](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
 
@@ -111,7 +111,7 @@ Hagyja ki az első három lépést, ha már telepítette a Storage Explorert, é
   
     ![Illessze be a tároló hitelesítő adatait, és csatlakozzon.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
-4. Bontsa ki a csatolt tárfiókot, **várólisták** , és ellenőrizze, hogy a várólista neve **Várólista_neve-elemek** létezik-e. Ezenkívül egy üzenetnek is kell szerepelnie már az üzenetsorban.  
+4. Bontsa ki a csatolt tárfiókot, bontsa ki az **Üzenetsorok** elemet, és ellenőrizze, hogy létezik-e **myqueue-items** nevű üzenetsor. Ezenkívül egy üzenetnek is kell szerepelnie már az üzenetsorban.  
  
     ![Hozzon létre egy tárolási üzenetsort.](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  

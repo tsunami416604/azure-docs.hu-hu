@@ -1,50 +1,41 @@
 ---
-title: "Ajánlott eljárások Azure tároló beállításjegyzék"
-description: "Útmutató az Azure-tárolót beállításjegyzék hatékonyan használja az alábbi gyakorlati tanácsok követve."
+title: "Az Azure Container Registry ajánlott eljárásai"
+description: "Az ajánlott eljárások követésével megismerkedhet az Azure Container Registry leghatékonyabb használatával."
 services: container-registry
-documentationcenter: 
 author: mmacy
 manager: timlt
-editor: mmacy
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-registry
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/05/2017
 ms.author: marsma
-ms.custom: 
-ms.openlocfilehash: 9ec5573082dbf9de1288e1511f5041f8c20b416e
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
-ms.translationtype: MT
+ms.openlocfilehash: 5ccbb3022dc38f13eed9b5aa24beb14dfdb3b5b6
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="best-practices-for-azure-container-registry"></a>Ajánlott eljárások az Azure-tároló beállításjegyzék
+# <a name="best-practices-for-azure-container-registry"></a>Az Azure Container Registry ajánlott eljárásai
 
-Az alábbi gyakorlati tanácsok követve segítségével maximalizálhatja a teljesítményt és költséghatékony a személyes Docker beállításjegyzék az Azure-ban.
+Az itt leírt ajánlott eljárások követésével a legjobb teljesítménnyel és költséghatékonysággal használhatja az Azure-ban található privát Docker regisztrációs adatbázist.
 
-## <a name="network-close-deployment"></a>Hálózati bezárású központi telepítés
+## <a name="network-close-deployment"></a>Hálózatközeli központi telepítés
 
-Hozza létre a tároló beállításkulcs tárolók üzembe helyezésének azonos Azure-régióban. A beállításjegyzék elhelyezése egy területet, amely hálózati zárja be a tárolóba gazdagépek segítségével késés és a költségek csökkentése.
+A tárolóregisztrációs adatbázist ugyanabban az Azure-régióban hozza létre, amelyben a tárolókat helyezi üzembe. Ha a regisztrációs adatbázist a tároló gazdagéphez hálózatban közeli régióba telepíti, az csökkentheti a késést és a költségeket is.
 
-Hálózati bezárású telepítési egyike egy tároló titkos beállításjegyzékkel elsődleges okait. Docker képeknek nagyszerű [réteges szerkezet](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/) , amely lehetővé teszi a növekményes telepítésekhez. Azonban új csomópontok kell lekéréses minden megadott lemezképhez szükséges rétegét lefedi. A kezdeti `docker pull` adhat gyorsan hozzá akár több GB. Rendelkezik egy titkos beállításjegyzék megközelíti a központi telepítés minimálisra csökkenti a hálózati késés korlátozza.
-Minden nyilvános felhők, Azure tartalmazza, továbbá hálózati kilépő díjak valósítja meg. Húzza a másik egy datacenter képek hozzáadja a hálózati kilépő díjakat, a késés mellett.
+A hálózatközeli központi telepítés a privát tárolóregisztrációs adatbázis használatának egyik fő oka. A Docker-rendszerképek [rétegezett felépítésüknek](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/) köszönhetően növekményesen is telepíthetők. Az új csomópontoknak azonban egy adott rendszerképhez minden szükséges réteget le kell kérniük. A kezdeti `docker pull` hamar akár több gigabájttá nőheti ki magát. Az üzemelő példányához közeli privát regisztrációs adatbázis csökkenti a hálózati késést.
+A nyilvános felhők – köztük az Azure is – hálózati forgalmi díjat számítanak fel. A rendszerképek egyes adatközpontok közötti mozgatása hálózati forgalmi díjjal is jár a nagyobb mértékű késés mellett.
 
-## <a name="geo-replicate-multi-region-deployments"></a>Földrajzi-replikálás több területi központi telepítések
+## <a name="geo-replicate-multi-region-deployments"></a>Többrégiós üzemelő példányok georeplikációja
 
-Azure tároló beállításjegyzékben [georeplikáció](container-registry-geo-replication.md) tárolók telepítése esetén több régióba a szolgáltatást. Globális-ügyfelek helyi adatközpontok még kiszolgáló vagy a fejlesztői csapat különböző helyeken, hogy egyszerűbbé teheti a beállításjegyzék kezelését, és késés csökkentése érdekében érdemes földrajzi replikálja a beállításjegyzékben. Jelenleg előzetes, ez a szolgáltatás esetén érhető el [prémium](container-registry-skus.md#premium) nyilvántartó.
+Ha több régióban telepít tárolókat, használja az Azure Container Registry [georeplikációs](container-registry-geo-replication.md) funkcióját. Ha globális ügyfélbázist szolgál ki helyi adatközpontokból, vagy fejlesztői csapatának tagjai különböző helyeken tartózkodnak, a regisztrációs adatbázis georeplikálásával egyszerűsítheti a regisztrációs adatbázis kezelését és minimalizálhatja a késést. Ez a jelenleg előzetes kiadású szolgáltatás a [prémium](container-registry-skus.md#premium) regisztrációs adatbázisokhoz érhető el.
 
-Georeplikálási használja, tekintse meg az három részből, hogyan [Azure tároló beállításjegyzék georeplikáció](container-registry-tutorial-prepare-registry.md).
+A georeplikáció használatának megismeréséhez tekintse meg háromrészes útmutatónkat: [Georeplikáció az Azure Container Registry-ben](container-registry-tutorial-prepare-registry.md).
 
-## <a name="repository-namespaces"></a>Tárház-névterek
+## <a name="repository-namespaces"></a>Adattárnévterek
 
-Tárház névterek használatával engedélyezze a szervezeten belül több csoporttal egyetlen beállításjegyzékbeli megosztása. Nyilvántartó telepítések és a csoportok között megosztható legyen. Azure tároló beállításjegyzék támogatja a beágyazott névterek, csoport-elszigetelési funkciójának engedélyezésével.
+Az adattárnévterek használatával engedélyezheti egyetlen regisztrációs adatbázis megosztását több csoporttal a szervezeten belül. A regisztrációs adatbázisok több környezeten és csoporton keresztül is megoszthatók. Az Azure Container Registry támogatja a beágyazott névtereket, amelyekkel elkülöníthetők a csoportok.
 
-Vegyük példaként a következő tároló kép címkék. Vállalati szintű, például a használt képek `aspnetcore`, amíg tároló képek tulajdonában a termelési és a Marketing csoport minden egyes használja saját névterek a gyökérnévtér helyezi.
+Vegyük példaként a következő tárolórendszerkép-címkéket. A teljes vállalat által használt rendszerképek (például `aspnetcore`) a gyökérnévtérbe kerülnek, a Termelés és a Marketing csoportok tulajdonában lévő rendszerképek pedig a saját névterüket használják.
 
 ```
 contoso.azurecr.io/aspnetcore:2.0
@@ -55,21 +46,21 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 ## <a name="dedicated-resource-group"></a>Dedikált erőforráscsoport
 
-Mivel tároló nyilvántartó több tároló gazdagép használt erőforrások, a beállításjegyzék saját erőforráscsoportban kell tárolni.
+Mivel a tárolóregisztrációs adatbázisok több tárológazdagép által használt erőforrások, a regisztrációs adatbázisoknak tárolniuk kell a saját erőforráscsoportjukat.
 
-Bár előfordulhat, hogy kísérletezik azzal, hogy egy adott állomásra típus, például az Azure-tároló példányok, valószínűleg érdemes törölje a tároló-példányt, amikor elkészült. Azonban érdemes is tartsa meg az Azure-tároló beállításjegyzék leküldött képek gyűjteményét. Úgy, hogy a beállításjegyzék saját erőforráscsoportban, minimálisra csökkenthetők a járulékos véletlenül törli a beállításjegyzékben a képek gyűjteményét, a tároló példány erőforrás csoportjának törlésekor.
+Nyugodtan kísérletezhet speciális gazdagéptípusokkal, például az Azure Container Instances-zel, de utána valószínűleg törölni szeretné majd a tárolópéldányt. Előfordulhat azonban, hogy meg szeretné tartani azokat a rendszerképeket, amelyeket átvitt az Azure Container Registry-be. Azzal, hogy a regisztrációs adatbázis a saját erőforráscsoportjába helyezi, csökkentheti annak esélyét, hogy véletlenül törli a rendszerképeket, amikor törli a tárolópéldány erőforráscsoportját.
 
 ## <a name="authentication"></a>Authentication
 
-Egy Azure-tárolót beállításjegyzék hitelesítésekor vannak-e két elsődleges forgatókönyv: egyéni és szolgáltatási (vagy "távfelügyeleti") hitelesítést. A következő táblázat forgatókönyvekben rövid áttekintését, és a javasolt az egyes hitelesítési módszer.
+Azure tárolóregisztrációs adatbázissal való hitelesítéskor két fő forgatókönyv fordulhat elő: az egyéni hitelesítés és a szolgáltatásos (vagy „távfelügyelt”) hitelesítés. A következő táblázat röviden bemutatja ezeket a forgatókönyveket és a hozzájuk fűződő ajánlott hitelesítési módokat.
 
-| Típus | Példa | Ajánlott módszer |
+| Típus | Példaforgatókönyv | Javasolt módszer |
 |---|---|---|
-| Egyedi azonosító | Egy fejlesztő, húzza a képet, hogy vagy a fejlesztői gépen képek terjesztése. | [az acr bejelentkezés](/cli/azure/acr?view=azure-cli-latest#az_acr_login) |
-| Távfelügyeleti/identitás | Buildelés és üzembe helyezés folyamatok, amikor a felhasználó közvetlenül nem érintettek. | [Egyszerű szolgáltatásnév](container-registry-authentication.md#service-principal) |
+| Egyéni identitás | Egy fejlesztő rendszerképeket hív le a saját számítógépére, vagy helyez át onnan. | [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login) |
+| Távfelügyelt/szolgáltatásos identitás | Buildelési és üzembe helyezési folyamatok, amelyekben a felhasználó nem vesz közvetlenül részt. | [Egyszerű szolgáltatás](container-registry-authentication.md#service-principal) |
 
-Azure-tároló beállításjegyzék hitelesítéssel kapcsolatos részletes információkért lásd: [hitelesítés az Azure-tárolót rendszerleíró](container-registry-authentication.md).
+Az Azure Container Registry-vel kapcsolatos részletes információk: [Hitelesítés Azure tárolóregisztrációs adatbázissal](container-registry-authentication.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure tároló beállításjegyzék több rétegek, SKU, minden más szolgáltatásokat nyújtanak nevű érhető el. Az elérhető termékváltozatok a részletekért lásd: [Azure tároló beállításjegyzék termékváltozatok](container-registry-skus.md).
+Az Azure Container Registry több szinten, azaz termékváltozatban érhető el, melyek különféle képességeket biztosítanak. Részletek az elérhető termékváltozatokról: [Az Azure Container Registry termékváltozatai](container-registry-skus.md).

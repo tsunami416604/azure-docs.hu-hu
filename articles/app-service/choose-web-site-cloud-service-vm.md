@@ -1,6 +1,6 @@
 ---
-title: "Az Azure App Service, a virtuális gépek, a Service Fabric és a Cloud Services összehasonlítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan válassza az Azure App Service, a virtuális gépek, a Service Fabric és a Felhőszolgáltatások webalkalmazások üzemeltetéséhez."
+title: "App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás | Microsoft Docs"
+description: "Ismerje meg, mi alapján választhat az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services szolgáltatások között, ha webalkalmazásokat szeretne üzemeltetni."
 services: app-service\web, virtual-machines, cloud-services
 documentationcenter: 
 author: ggailey777
@@ -17,155 +17,155 @@ ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: bac9169bc41927ef8cf88aee256b2e057ccad4e9
 ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/18/2017
 ---
-# <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Az Azure App Service, a virtuális gépek, a Service Fabric és a Cloud Services összehasonlítása
+# <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás
 ## <a name="overview"></a>Áttekintés
-Azure gazdagép webhelyek számos lehetőséget kínál: [Azure App Service][Azure App Service], [virtuális gépek][Virtual Machines], [Service Fabric][Service Fabric], és [Felhőszolgáltatások][Cloud Services]. Ez a cikk segít ismerni a lehetőségeket, és a webalkalmazás a megfelelő választás.
+Az Azure számos lehetőséget nyújt a webhelyek üzemeltetéséhez: [Azure App Service][Azure App Service], [Virtual Machines][Virtual Machines], [Service Fabric][Service Fabric] és [Cloud Services][Cloud Services]. Ez a cikk segít Önnek megérteni a különbségeket az egyes lehetőségek között, így a webalkalmazása számára leginkább megfelelő döntést hozhatja meg.
 
-Az Azure App Service legtöbb webalkalmazások a legjobb választás. Üzembe helyezési és kezelési integrálva vannak a platform, helyek gyorsan kezelésére méretezhetők nagy forgalomterhelés és a beépített terhelés és a forgalom-kezelő magas rendelkezésre állás biztosításához. Meglévő helyek egyszerűen az Azure App Service áthelyezheti egy [online áttelepítési eszköz](https://www.migratetoazure.net/), nyílt forráskódú alkalmazás használja a webes alkalmazás gyűjteményből, vagy hozzon létre egy új helyet, a keretrendszer és a kiválasztott eszközök használatával. A [WebJobs] [ WebJobs] funkcióval egyszerűen háttérfeldolgozása feladat hozzáadása az App Service webalkalmazás.
+A legtöbb webalkalmazás esetében az Azure App Service a legjobb választás. Az üzembe helyezés és a kezelés integrálva van a platformba, a webhelyek gyorsan méretezhetők a nagyobb adatforgalom kezeléséhez, a beépített terheléselosztás és az adatforgalom-kezelő pedig biztosítja a magas rendelkezésre állást. Egyszerűen áthelyezheti a meglévő helyeket az Azure App Service szolgáltatásba egy [online migrálási eszköz](https://www.migratetoazure.net/) segítségével, nyílt forráskódú alkalmazásokat használhat a Web Application Gallery-ből, vagy akár létrehozhat egy új webhelyet is tetszőleges keretrendszer és eszközök használatával. A [WebJobs][WebJobs] funkció megkönnyíti a háttérfeladatok feldolgozását az App Service webalkalmazásba.
 
-A Service Fabric akkor hasznos, ha létrehoz egy új alkalmazást vagy újraírása mikroszolgáltatási architektúrák használatára, egy meglévő alkalmazást. Alkalmazásokat, egy megosztott készletéhez gépeket futtathatnak, elindíthatja a kis és nagy méretezéssel, több száz vagy ezer gépek igény szerint milyen mértékben. Állapotalapú szolgáltatások könnyen következetesen és megbízhatóan tárolja az alkalmazás állapota, és automatikusan kezeli a Service Fabric szolgáltatás particionálás, a méretezés és a rendelkezésre állási meg.  A Service Fabric is támogatja WebAPI az Open Web Interface .NET (OWIN) és az ASP.NET Core.  App Service képest, a Service Fabric is biztosít további szabályozni, és közvetlen hozzáférést, az alkalmazás mögötti infrastruktúra. Azokat a kiszolgálók távoli is, vagy konfigurálja a kiszolgáló indítása feladatokat. Felhőszolgáltatások szabályozására könnyű használat, illetve a Service Fabric hasonló, de most már egy régebbi szolgáltatás és az új fejlesztési érdemes a Service Fabric.
+A Service Fabric jó választás, ha új alkalmazást hoz létre, vagy egy meglévő alkalmazást ír át mikroszolgáltatási architektúra használatára. A számítógépek egy megosztott készletén futó alkalmazások kis méretben indíthatóak el, és igény szerint nagy léptékűre skálázhatók akár több száz vagy több ezer géppel. Az állapotalapú szolgáltatások megkönnyítik az alkalmazás állapotának következetes és megbízható tárolását, a Service Fabric pedig automatikusan kezeli a szolgáltatások particionálását, méretezését és rendelkezésre állását.  A Service Fabric támogatja a WebAPI, valamint az Open Web Interface for .NET (OWIN) és az ASP.NET Core együttes használatát.  Az App Service szolgáltatáshoz képest a Service Fabric nagyobb mértékben teszi lehetővé az alapul szolgáló infrastruktúra felügyeletét, illetve közvetlen hozzáférést biztosít hozzá. Távolról is bejelentkezhet kiszolgálóiba, vagy konfigurálhatja azok indítási folyamatait. A Cloud Services a Service Fabric szolgáltatáshoz hasonlóan a könnyű használat mellett magas fokú felügyeletet tesz lehetővé, azonban most már örökölt szolgáltatásnak számít, ezért az új fejlesztések esetében a Service Fabric javasolt.
 
-Ha egy meglévő alkalmazást, futtassa az App Service vagy a Service Fabric jelentős módosításai újraindexelést igénylő, megadhatja, virtuális gépek áttelepítése a felhőbe egyszerűsítése érdekében. Azonban megfelelő konfigurálása, biztonságossá tétele és karbantartása virtuális gépek csak sokkal több időt és Azure App Service és a Service Fabric képest informatikai segítséget. Ha tervezi az Azure virtuális gépek, győződjön meg arról, vegye figyelembe a javítás, frissítése és a virtuális gép környezete kezeléséhez szükséges folyamatos karbantartási munkát. Az Azure virtuális gépek infrastruktúra,--szolgáltatás (IaaS), míg az App Service és a Service Fabric Platform,--szolgáltatás (Paas). 
+Ha van olyan meglévő alkalmazása, amelyet nagy mértékben kellene módosítani ahhoz, hogy fusson az App Service vagy Service Fabric szolgáltatásban, akkor a Virtual Machines segítségével egyszerűbbé teheti a felhőbe való migrálás folyamatát. Azonban a virtuális gépek megfelelő konfigurálása, biztonságossá tétele és karbantartása sokkal több időt és informatikai jártasságot igényel, mint az Azure App Service és a Service Fabric. Ha az Azure Virtual Machines használatát fontolgatja, mindenképpen vegye figyelembe a folyamatos karbantartással – a javítások, frissítések és a virtuálisgép-környezet kezelése – járó erőfeszítéseket is. Az Azure Virtual Machines egy szolgáltatott infrastruktúra (IaaS), míg az App Service és a Service Fabric szolgáltatásként nyújtott platformok (PaaS). 
 
 ## <a name="features"></a>Szolgáltatások összehasonlítása
-Az alábbi táblázat összehasonlítja az App Service, a Cloud Services, a virtuális gépek és a Service Fabric képességeit segít meghozni a legjobb választás. Az SLA-t az egyes lehetőségek kapcsolatos aktuális információkért lásd: [Azure szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/).
+A következő táblázatban az App Service, a Cloud Services, a Virtual Machines és a Service Fabric képességeinek összehasonlítása látható, amely alapján eldöntheti, melyik a legjobb választás az Ön számára. Az egyes lehetőségekre vonatkozó aktuális SLA információiért lásd az [Azure szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/) című részt.
 
 | Szolgáltatás | App Service (webalkalmazások) | Cloud Services (webes szerepkörök) | Virtuális gépek | Service Fabric | Megjegyzések |
 | --- | --- | --- | --- | --- | --- |
-| Szinte azonnali telepítés |X | | |X |Egy alkalmazás vagy egy alkalmazás frissítése üzembe egy felhőalapú szolgáltatás, vagy egy virtuális gép létrehozása több percig legalább; egy alkalmazás központi telepítése másodpercet vesz igénybe. |
-| Vertikális felskálázás nagyobb gépekre helyezze üzembe újra nélkül |X | | |X | |
-| Web server-példány osztozik az tartalmát és beállításait, ami azt jelenti, hogy nem kell telepíteni, vagy konfigurálja újra, méretezni. |X | | |X | |
-| Több központi telepítési környezetekben (üzemi és átmeneti) |X |X | |X |A Service Fabric lehetővé teszi az alkalmazások több környezet vagy az alkalmazás-párhuzamos különböző verzióinak központi telepítése. |
-| Az operációs rendszer automatikus frissítéseit |X |X | | |Részlegesen keresztül javítás Vezénylési alkalmazás (POA) és teljes mértékben a jövőben. |
-| Váltás zökkenőmentes platform (32 bites és 64 bites közötti egyszerű váltást) |X |X | | | |
-| Kód a GIT-, FTP telepítése |X | |X | | |
-| Kód a Web Deploy telepítése |X | |X | |Cloud Services támogatja a Web Deploy segítségével telepítheti a frissítéseket az egyes szerepkörpéldányokat. Azonban nem használható egy szerepkör kezdeti telepítését, és a frissítési használatakor a Web Deploy rendelkezik-e a szerepkör minden példányára külön-külön telepíteni. Több példánya van szükség ahhoz, hogy a felhőalapú szolgáltatás garantált szolgáltatási szintje, éles környezetben. |
-| WebMatrix támogatása |X | |X | | |
-| Például a Service Bus, a tárolás, az SQL-adatbázis-szolgáltatásokhoz való hozzáférés |X |X |X |X | |
-| Állomás web vagy webes szolgáltatások réteg többrétegű-architektúra |X |X |X |X | |
-| Állomás középső réteg többrétegű-architektúra |X |X |X |X |App Service web apps könnyen tárolhatja, a REST API középső réteggel, és a [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) szolgáltatás tárolhatja, háttérben történő feldolgozási feladatot. Webjobs-feladatok egy külön webhelyen elérhető független méretezhetősége a réteghez való futtatása. |
-| Integrált MySQL,--szolgáltatás támogatása |X |X | | | |
-| Támogatja az ASP.NET, a klasszikus ASP, Node.js, PHP, Python |X |X |X |X |A Service Fabric támogatja a létrehozását a webes előtér-használatával [ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md) vagy bármilyen (Node.js, Java, stb.) telepítheti egy [Vendég végrehajtható](../service-fabric/service-fabric-deploy-existing-app.md). |
-| Helyezze üzembe újra nélkül több példány horizontálisan |X |X |X |X |Virtuális gépek több példányt lehet horizontálisan, de a rajtuk futó szolgáltatások kell írni a kibővített kezelni. Be kell állítania egy terheléselosztót történő átirányításához kérelmek gépein, és a karbantartás vagy hardveres hibák miatt összes példány egyidejű újraindítást megelőzése érdekében Affinitáscsoport létrehozásához. |
-| SSL támogatása |X |X |X |X |App Service web Apps az egyéni tartománynevek SSL csak Basic és Standard módban támogatott. A webalkalmazásokkal SSL használatával kapcsolatos információkért lásd: [konfigurálása az Azure-webhely SSL-tanúsítvány](app-service-web-tutorial-custom-ssl.md). |
-| Visual Studio-integráció |X |X |X |X | |
+| Közel azonnali üzembe helyezés |X | | |X |Egy alkalmazás vagy alkalmazásfrissítés felhőszolgáltatásba történő telepítése vagy egy virtuális gép létrehozása percekig is eltart; egy alkalmazás webalkalmazásban történő telepítése csupán néhány másodpercet vesz igénybe. |
+| Vertikális felskálázás nagyobb gépekre ismételt üzembe helyezés nélkül |X | | |X | |
+| A webkiszolgálói példányok megosztják a tartalmukat és a konfigurációjukat, ezért skálázás közben nem szükséges újból üzembe helyeznie vagy konfigurálnia azokat. |X | | |X | |
+| Több üzembehelyezési környezet (éles környezet és előkészítés) |X |X | |X |A Service Fabric több környezetet is biztosít alkalmazásai számára, illetve lehetővé teszi az alkalmazás különböző verzióinak párhuzamos üzembe helyezését. |
+| Az operációs rendszer frissítésének automatikus kezelése |X |X | | |Részben a Patch Orchestration Application (POA) alkalmazáson keresztül (a jövőben teljes mértékben) |
+| Zökkenőmentes platformváltás (egyszerű váltás 32 és 64 bites rendszerek között) |X |X | | | |
+| Kód telepítése GIT, FTP használatával |X | |X | | |
+| Kód telepítése a Web Deploy használatával |X | |X | |A Cloud Services támogatja a Web Deploy használatát az egyes szerepkörpéldányok frissítéseinek telepítéséhez. A Web Deploy szolgáltatást azonban nem használhatja a szerepkörök első telepítéséhez, és ha frissítéshez használja, akkor az egyes szerepkörök összes példánya esetében külön kell telepítést végeznie. Több példányra van szükség ahhoz, hogy megfeleljen a felhőszolgáltatás éles környezetekre vonatkozó SLA-jának. |
+| WebMatrix támogatás |X | |X | | |
+| Hozzáférés a Service Bus, Storage, SQL Database és egyéb szolgáltatásokhoz |X |X |X |X | |
+| Egy többrétegű architektúra webes vagy webszolgáltatási szintjének üzemeltetése |X |X |X |X | |
+| Egy többrétegű architektúra középső szintjének üzemeltetése |X |X |X |X |Az App Service Web Apps segítségével könnyedén üzemeltethető egy REST API középső szintje, a [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) szolgáltatás pedig háttérben futó feldolgozási feladatok üzemeltetésére képes. A WebJobs dedikált webhelyen is futtatható a szint független skálázhatóságának érdekében. |
+| Integrált támogatás a MySQL szolgáltatásként való használatához |X |X | | | |
+| Az ASP.NET, a klasszikus ASP, a Node.js, a PHP és a Python támogatása |X |X |X |X |A Service Fabric támogatja a webes kezelőfelületek [ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md) használatával történő létrehozását, de bármilyen típusú alkalmazást (Node.js, Java stb.) telepíthet [vendégalkalmazásként](../service-fabric/service-fabric-deploy-existing-app.md). |
+| Horizontális felskálázás több példányra ismételt üzembe helyezés nélkül |X |X |X |X |A virtuális gépek képesek horizontálisan felskálázni több példányra, de a rajtuk futó szolgáltatásokat úgy kell megírni, hogy kezeljék a felskálázást. A terheléselosztót úgy kell konfigurálnia, hogy irányítsa a kérelmeket a gépek között, és egy olyan affinitáscsoportot hozzon létre, amely a karbantartás vagy a hardveres hibák esetén megakadályozza az összes példány egyidejű újraindulását. |
+| SSL-támogatás |X |X |X |X |App Service webalkalmazások esetén az egyéni tartományneveknél az SSL csak Alapszintű és Standard módban támogatott. További információkért az SSL webalkalmazásokkal történő használatáról lásd az [Azure webhelyek SSL-tanúsítványának konfigurálását](app-service-web-tutorial-custom-ssl.md) ismertető cikket. |
+| Visual Studio integráció |X |X |X |X | |
 | Távoli hibakeresés |X |X |X | | |
-| A TFS-sel kód telepítése |X |X |X |X | |
-| A hálózatelkülönítés [Azure-beli virtuális hálózathoz](/azure/virtual-network/) |X |X |X |X |Lásd még: [Azure-webhelyek virtuális hálózati integráció](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
-| Támogatja az [az Azure Traffic Manager](/azure/traffic-manager/) |X |X |X |X | |
-| Integrált Végpontmonitoring kijelző |X |X |X | | |
-| Kiszolgálók távoli asztal eléréséhez | |X |X |X | |
-| Minden egyéni MSI telepítése | |X |X |X |A Service Fabric lehetővé teszi a végrehajtható fájlt a [Vendég végrehajtható](../service-fabric/service-fabric-deploy-existing-app.md) vagy bármely alkalmazásba telepítheti a virtuális gépeken. |
-| Kezdeti feladatok meghatározásához és végrehajtási képessége | |X |X |X | |
-| Is ETW-események figyelésére | |X |X |X | |
+| Kód telepítése TFS használatával |X |X |X |X | |
+| Hálózatelkülönítés az [Azure Virtual Network](/azure/virtual-network/) használatával |X |X |X |X |Lásd még [a Virtual Network és az Azure Websites integrációját](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) ismertető cikket |
+| [Azure Traffic Manager](/azure/traffic-manager/) támogatása |X |X |X |X | |
+| Integrált végpontmonitoring |X |X |X | | |
+| Távoli asztali hozzáférés a szerverekhez | |X |X |X | |
+| Bármely egyéni MSI telepítése | |X |X |X |A Service Fabric lehetővé teszi a végrehajtható fájlok [futtatható vendégszolgáltatásként](../service-fabric/service-fabric-deploy-existing-app.md) üzemeltetését vagy bármilyen alkalmazás telepítését a virtuális gépre. |
+| Indítási feladatok meghatározása/végrehajtása | |X |X |X | |
+| ETW-események figyelése | |X |X |X | |
 
 ## <a name="scenarios"></a>Forgatókönyvek és javaslatok
-Az alábbiakban néhány gyakori alkalmazás helyzetek a javaslatok, hogy melyik Azure webszolgáltatási beállítás lehet, hogy minden leginkább megfelelő.
+Íme néhány gyakori alkalmazási helyzet a legalkalmasabb Azure webes üzemeltetési ajánlatokkal együtt.
 
-* [Egy előtér-webkiszolgáló háttérben történő feldolgozási és az adatbázis-fájlok integrálva a helyszíni eszközök üzleti alkalmazások futtatásához szükséges.](#onprem)
-* [A vállalati webhely, amely jól méretezi gazdagép megbízható módot kell, és globális ajánlatok elérni.](#corp)
-* [Windows Server 2003 rendszeren futó IIS 6 alkalmazás van.](#iis6)
-* [A kisméretű vállalkozások tulajdonosa vagyok, és a webhely üzemeltetésére egy alacsony költségű módja van szükség, de vegye figyelembe a jövőbeli növekedésre.](#smallbusiness)
-* [Egy webes vagy egy grafikus tervező vagyok, és szeretnék tervezése és készítése a webhelyek a felhasználó.](#designer)
-* [A többrétegű alkalmazást egy előtér-webkiszolgáló vagyok történő a felhőben](#multitier)
-* [Alkalmazás függ a nagy mértékben testre szabott Windows, illetve Linux környezetek és I szeretné helyezze át a felhőbe.](#custom)
-* [A hely nyílt forráskódú szoftvereket használ, és kívánt gazdagép azt az Azure-ban.](#oss)
-* [Van egy sor üzleti alkalmazás, amely a vállalati hálózathoz való kapcsolódáshoz szükséges.](#lob)
-* [Szeretnék REST API-t vagy a mobil ügyfelek webszolgáltatás tárolására szolgál.](#mobile)
+* [Olyan webes kezelőfelületre van szükségem, amely rendelkezik a helyszíni adategységekkel integrált üzleti alkalmazások futtatásához szükséges háttérfeldolgozással és adatbázis-háttérrendszerrel.](#onprem)
+* [Jól skálázható és globális elérhetőséget kínáló megbízható módszerre van szükségem céges webhelyem üzemeltetésére.](#corp)
+* [Windows Server 2003 alatt futó IIS6 alkalmazással rendelkezem.](#iis6)
+* [Kisvállalkozás tulajdonosa vagyok, és a jövőbeli növekedést is lehetővé tevő olcsó webhely-üzemeltetési módszerre van szükségem.](#smallbusiness)
+* [Webes vagy grafikai tervező vagyok, és ügyfeleim számára szeretnék webhelyeket tervezni és építeni.](#designer)
+* [Többszintű, webes kezelőfelülettel rendelkező alkalmazásomat migrálom a felhőbe.](#multitier)
+* [Az alkalmazásom nagymértékben testre szabott Windows vagy Linux környezetektől függ, és át szeretném telepíteni a felhőbe.](#custom)
+* [A webhelyem nyílt forráskódú szoftvert használ, és az Azure-ban szeretném üzemeltetni.](#oss)
+* [Olyan vállalati alkalmazásom van, amelynek a vállalati hálózatra kell csatlakoznia.](#lob)
+* [Mobilügyfelek részére szeretnék REST API-t vagy webszolgáltatást üzemeltetni.](#mobile)
 
-### <a id="onprem"></a>Egy előtér-webkiszolgáló háttérben történő feldolgozási és az adatbázis-fájlok integrálva a helyszíni eszközök üzleti alkalmazások futtatásához szükséges.
-Az Azure App Service egy olyan kiváló megoldás az összetett üzleti alkalmazások. Lehetővé teszi, hogy hogyan fejleszthetnek alkalmazásokat, amelyek automatikusan méretezése terhelés kiegyensúlyozott platformon, és az Active Directory védett és a helyszíni erőforrásokhoz. Lehetővé teszi az alkalmazások könnyen egy világszínvonalú portál és API-k kezelése, és lehetővé teszi, hogy hogyan használják az ügyfelek a őket az alkalmazás insight eszközök betekintést. A [Webjobs] [ Webjobs] funkció lehetővé teszi a háttérfolyamatot futtatni, és a webes réteg, amíg a hibrid kapcsolat és a virtuális hálózat szolgáltatások könnyebben csatlakozhatnak részeként feladatokat a helyszíni erőforrások biztonsági. Az Azure App Service web Apps három 9 SLA biztosít, és lehetővé teszi:
+### <a id="onprem"></a> Olyan webes kezelőfelületre van szükségem, amely rendelkezik a helyszíni adategységekkel integrált üzleti alkalmazások futtatásához szükséges háttérfeldolgozással és adatbázis-háttérrendszerrel.
+Az Azure App Service remek megoldás összetett üzleti alkalmazások számára. Lehetővé teszi az olyan alkalmazások fejlesztését, amelyek automatikusan skálázódnak egy terheléselosztásos platformon, az Active Directory által védettek, és a helyszíni erőforrásokhoz csatlakoznak. A világszínvonalú portál és API-k segítségével egyszerűvé teszi az alkalmazások kezelését, az App Insights eszközök révén pedig lehetővé teszi, hogy betekintést nyerjen, ügyfelei hogyan használják azokat. A [WebJobs][Webjobs] szolgáltatás lehetővé teszi a háttérfolyamatok és a feladatok futtatását a webes szint részeként, míg a hibrid kapcsolat és VNET funkciók egyszerűvé teszik a visszacsatlakozást a helyszíni erőforrásokra. Az Azure App Service három „9-es” SLA-t biztosít a webes alkalmazásoknak, és lehetővé teszi:
 
-* Az alkalmazások futtatásához megbízhatóan öngyógyító, az automatikus javítás felhőalapú platformot.
-* Méretezhető automatikusan adatközpontok globális hálózaton keresztül.
-* Készítsen biztonsági másolatot, és állítsa vissza az adatok helyreállítását.
-* Lehet, ISO SOC2 és PCI szabványoknak.
-* Integráció az Active Directoryval
+* Az alkalmazások önjavító, automatikusan frissülő felhőplatformon történő futtatását.
+* Az automatikus skálázást egy globális adatközpont-hálózaton keresztül.
+* A biztonsági mentést és visszaállítást vészhelyreállítás esetén.
+* Az ISO, SOC2 és PCI szabványoknak való megfelelést.
+* Az integrációt az Active Directoryval.
 
-### <a id="corp"></a>A vállalati webhely, amely jól méretezi gazdagép megbízható módot kell, és globális ajánlatok elérni.
-Az Azure App Service kiválóan alkalmas a vállalati webhely üzemeltetéséhez. Ez lehetővé teszi a webalkalmazások méretezési gyorsan és egyszerűen igényeknek adatközpontok globális hálózaton keresztül. Helyi reach hibatűrést és intelligens forgalom kezeléséhez biztosít. Minden platformon, amely világszínvonalú felügyeleti eszközöket biztosít lehetővé téve betekintést hely állapotának és a webhelyek forgalmát gyorsan és egyszerűen. Az Azure App Service web Apps három 9 SLA biztosít, és lehetővé teszi:
+### <a id="corp"></a> Jól skálázható és globális elérhetőséget kínáló megbízható módszerre van szükségem céges webhelyem üzemeltetésére.
+Az Azure App Service remek megoldás vállalati webhelyek üzemeltetésére. Lehetővé teszi a webalkalmazások gyors és könnyű skálázását, hogy egy globális adatközpont-hálózaton keresztül feleljenek meg az igényeknek. Helyi elérhetőséget, hibatűrést és intelligens forgalomkezelést kínál. Mindezt egy világszínvonalú felügyeleti eszközöket kínáló platformon, amely lehetővé teszi a gyors és könnyű betekintést a webhely állapotába és adatforgalmába. Az Azure App Service három „9-es” SLA-t biztosít a webes alkalmazásoknak, és lehetővé teszi:
 
-* A webhelyek futtatható megbízhatóan öngyógyító, az automatikus javítás felhő platform.
-* Méretezhető automatikusan adatközpontok globális hálózaton keresztül.
-* Készítsen biztonsági másolatot, és állítsa vissza az adatok helyreállítását.
-* Naplóinak kezeléséhez és a forgalom integrált eszközökkel.
-* Lehet, ISO SOC2 és PCI szabványoknak.
-* Integráció az Active Directoryval
+* Az webhelyek önjavító, automatikusan frissülő felhőplatformon történő futtatását.
+* Az automatikus skálázást egy globális adatközpont-hálózaton keresztül.
+* A biztonsági mentést és visszaállítást vészhelyreállítás esetén.
+* A naplók és az adatforgalom beépített eszközökkel történő kezelését.
+* Az ISO, SOC2 és PCI szabványoknak való megfelelést.
+* Az integrációt az Active Directoryval.
 
-### <a id="iis6"></a>Windows Server 2003 rendszeren futó IIS 6 alkalmazás van.
-Az Azure App Service segítségével egyszerűen áttelepítése régebbi IIS6 alkalmazások társított infrastrukturális költségek elkerülése érdekében. A Microsoft létrehozott [részletes áttelepítési útmutató és könnyen használható áttelepítési eszközök](https://www.migratetoazure.net/) , amelyek lehetővé teszik a kompatibilitás-ellenőrzés, és azonosítja a módosításokat kell végezni. Integráció a Visual Studio, a TFS és a közös CMS eszközök egyszerűen IIS6 alkalmazások közvetlenül a felhőben való központi telepítése. Amennyiben telepített, az Azure portálban talál hatékony eszközök, amelyek lehetővé teszik a költségek kezelésére, és legfeljebb megfelel igény szerint szükséges csökkentheti. Az áttelepítési eszköz segítségével:
+### <a id="iis6"></a> Windows Server 2003 alatt futó IIS6 alkalmazással rendelkezem.
+Az Azure App Service egyszerűvé teszi az IIS6 alkalmazások migrálásával társított infrastrukturális költségek elkerülését. A Microsoft [könnyen használható migrálási eszközöket és útmutatást](https://www.migratetoazure.net/) hozott létre, lehetővé téve a kompatibilitás ellenőrzését és az elvégzendő változtatások felismerését. A Visual Studio-val, TFS-el és a gyakori CMS-eszközökkel történő integráció egyszerűvé teszi az IIS6 alkalmazások üzembe helyezését a felhőben. Az üzembe helyezést követően az Azure Portal robusztus felügyeleti eszközöket biztosít, amelyek lehetővé teszik az igény szerinti vertikális leskálázást a költségek felügyelete, illetve a vertikális felskálázást az igényeknek való megfelelés érdekében. A migrálási eszközzel a következőket teheti:
 
-* Gyorsan és egyszerűen telepítse át a korábbi Windows Server 2003 webes alkalmazás a felhőbe.
-* Választhat, hogy a csatolt SQL adatbázis helyszíni egy hibrid alkalmazás létrehozásához.
-* Automatikusan helyezze át az SQL-adatbázis és az örökölt alkalmazást.
+* Az örökölt Windows Server 2003 webalkalmazásának gyors és könnyű felhőre migrálását.
+* Az összekapcsolt SQL-adatbázis helyszínen hagyását hibrid alkalmazások készítéséhez.
+* Az SQL-adatbázis automatikus mozgatását az örökölt alkalmazással együtt.
 
-### <a id="smallbusiness"></a>A kisméretű vállalkozások tulajdonosa vagyok, és a webhely üzemeltetésére egy alacsony költségű módja van szükség, de vegye figyelembe a jövőbeli növekedésre.
-Az Azure App Service nem kiválóan alkalmas ebben a forgatókönyvben, mert használatba szabad, és hozzáadhatja további képességeket, ha szüksége van rájuk. Minden egyes szabad webalkalmazás tartalmaz egy Azure által biztosított tartományt (*your_company*. azurewebsites.net), és a platform integrált üzembe helyezési és kezelési eszközök, valamint az alkalmazás gyűjteménye, amelyek megkönnyítik a kezdéshez. Nem találhatók sok más szolgáltatások és skálázási lehetőségeket, amelyek lehetővé teszik a helyet, hogy az nagyobb felhasználói igényeknek fejleszteni. Az Azure App Service a következőket teheti:
+### <a id="smallbusiness"></a>Kisvállalkozás tulajdonosa vagyok, és a jövőbeli növekedést is lehetővé tevő olcsó webhely-üzemeltetési módszerre van szükségem.
+Az Azure App Service remek megoldás erre az esetre, mert ingyenes elkezdheti használni, és később igény szerint további funkciókat adhat hozzá. Az összes ingyenes webalkalmazáshoz egy, az Azure által biztosított tartomány tartozik (*az_on_cege*.azurewebsites.net), és a platformhoz az egyszerű kezdést lehetővé tévő beépített telepítési és kezelési eszközök, valamint egy alkalmazáskatalógus is tartozik. Számos további szolgáltatás és skálázási lehetőség teszi lehetővé a webhely fejlődését a megemelkedett felhasználói igényhez igazodva. Az Azure App Service-szel a következőket teheti:
 
-* Ingyenes szint kezdődnie, és szükség szerint majd növelheti.
-* Az Application Gallery segítségével gyorsan be lehessen állítani a népszerű webes alkalmazásokhoz, például a WordPress.
-* Hozzá további Azure-szolgáltatások és funkciók az alkalmazáshoz szükség szerint.
-* Tegye biztonságossá webalkalmazását, a HTTPS.
+* Kezdhet az ingyenes szinten, majd igény szerint vertikálisan felskálázhat.
+* Gyorsan beállíthat a Wordpresshez hasonló népszerű webalkalmazásokat az Alkalmazáskatalógus használatával.
+* Igény szerint további Azure-szolgáltatásokat és funkciókat adhat hozzá alkalmazásához.
+* Biztonságossá teheti webalkalmazását a HTTPS segítségével.
 
-### <a id="designer"></a>Egy webes vagy egy grafikus tervező vagyok, és szeretnék tervezése és készítése a webhelyek a felhasználó
-Webes fejlesztők és tervezők körében Azure App Service számos keretrendszerek és eszközök könnyen integrálható, központi telepítés támogatja a Git és az FTP és eszközöket és szolgáltatásokat, például a Visual Studio és az SQL-adatbázis szoros integrációt nyújt. Az App Service-szel a következőket teheti:
+### <a id="designer"></a> Webes vagy grafikai tervező vagyok és ügyfeleim számára szeretnék webhelyeket tervezni és építeni
+A webfejlesztők és tervezők számára az Azure App Service egyszerűen együttműködik számos különböző eszközzel és keretrendszerrel, rendelkezik Git és FTP telepítési támogatással, és szoros integrációt kínál a Visual Studióhoz és az SQL Database-hez hasonló eszközökkel és szolgáltatásokkal. Az App Service-szel a következőket teheti:
 
-* A parancssori eszközök [automatizált feladatokat][scripting].
-* Például együttműködve népszerű nyelvhez [.Net][dotnet], [PHP][PHP], [Node.js][nodejs], és [Python][Python].
-* Jelölje ki a nagyon nagy kapacitások való vertikális felskálázásával három különböző méretezési szintjét.
-* Integrálása más Azure-szolgáltatásokkal, például a [SQL-adatbázis][sqldatabase], [Service Bus] [ servicebus] és [tárolási][Storage], vagy az ajánlatok partnerek a [Azure tárolási][azurestore], például a MySQL és MongoDB.
-* Olyan eszközöket, például a Visual Studio, a Git, a WebMatrix, a WebDeploy, a TFS és az FTP integrálja.
+* Parancssori eszközök használata [automatizált feladatok][scripting] elvégzésére.
+* Olyan népszerű programozási nyelvekkel dolgozhat, mint például a [.Net][dotnet], a [PHP][PHP], a [Node.js][nodejs] és a [Python][Python].
+* Három különböző skálázási szint közül választhat a nagyon magas kapacitások elérése érdekében.
+* Együttműködhet más Azure-szolgáltatásokkal, például az [SQL Database-zel][sqldatabase], [Service Busszal][servicebus] és a [Storage-dzsel][Storage] vagy az [Azure Store][azurestore] partnerajánlataival, például a MySQL-lel vagy a MongoDB-vel.
+* Együttműködhet olyan eszközökkel, mint a Visual Studio, a Git, a WebMatrix, a WebDeploy, a TFS és az FTP.
 
-### <a id="multitier"></a>A többrétegű alkalmazást egy webes előtér-I vagyok áttelepítése a felhőbe
-Ha futtatja a többrétegű alkalmazások, például webkiszolgálót, amely összeköti az adatbázisba, Azure App Service, amely az Azure SQL Database szoros integrációt nyújt jó választás. És a webjobs-feladatok szolgáltatással futó háttéralkalmazás folyamatokhoz.
+### <a id="multitier"></a>Többszintű, webes kezelőfelülettel rendelkező alkalmazásomat migrálom a felhőbe
+Többszintű alkalmazások, például egy adatbázishoz kapcsolódó webkiszolgáló futtatása esetén az Azure App Service jó megoldás, amely szoros együttműködést biztosít az Azure SQL Database-zel. És a háttérfolyamatok futtatására használhatja a WebJobs funkciót.
 
-Válassza a Service Fabric egy vagy több, hogy a rétegek, ha több kell, például távoli az a kiszolgálóra a kiszolgálói környezet felett ellenőrzést, vagy konfigurálja a kiszolgáló indítása feladatokat.
+Ha nagyobb mértékű vezérlésre van szüksége, például a kiszolgáló távoli vezérlésére vagy indítási folyamatainak beállítására, válassza a Service Fabricot egy vagy több szinten.
 
-Ha azt szeretné, hogy a saját gép lemezképére, vagy futtassa a szoftver vagy szolgáltatásokhoz, amelyek nem lehet konfigurálni a Service Fabric válassza ki a virtuális gépek egy vagy több, hogy a rétegek.
+Ha saját rendszerképet vagy a Service Fabricban nem konfigurálható szoftvereket vagy szolgáltatásokat szeretne futtatni, válassza a Virtual Machinest egy vagy több szinten.
 
-### <a id="custom"></a>Alkalmazás függ a nagy mértékben testre szabott Windows, illetve Linux környezetek és I szeretné helyezze át a felhőbe.
-Ha az alkalmazás összetett telepítési vagy a szoftver- és az operációs rendszer konfigurációjához, virtuális gépek oka lehet a legjobb megoldás. A virtuális gépek a következőket teheti:
+### <a id="custom"></a>Az alkalmazásom nagymértékben testre szabott Windows vagy Linux környezetektől függ, és át szeretném telepíteni a felhőbe.
+Ha az alkalmazás összetett telepítést vagy a szoftverek és az operációs rendszer konfigurációját igényli, a Virtual Machines valószínűleg a legjobb megoldás. A Virtual Machines használatával a következőket teheti:
 
-* A virtuális gép galéria segítségével indítsa el a régebbi operációs rendszerrel, például a Windows vagy Linux, és azután testre szabhatják alkalmazás igényeinek.
-* Hozzon létre, és töltse fel az Azure virtuális gépen futtatandó meglévő helyszíni kiszolgáló egyéni lemezképet.
+* A virtuálisgép-katalógus használatával kiindulhat egy operációs rendszerből, például a Windowsból vagy a Linuxból, majd testre szabhatja azt az alkalmazáskövetelmények szerint.
+* Létrehozhat és feltölthet egy helyi kiszolgálóról készült egyéni rendszerképet, majd futtathatja azt egy virtuális gépen az Azure-ban.
 
-### <a id="oss"></a>Helyemről nyílt forráskódú szoftvert használ, és kívánt gazdagép azt az Azure-ban
-Ha a nyílt forráskódú keretrendszer támogatott az App Service, a nyelv és az alkalmazás által igényelt keretrendszer konfigurálása meg automatikusan. App Service lehetővé teszi:
+### <a id="oss"></a>A webhelyem nyílt forráskódú szoftvert használ, és az Azure-ban szeretném üzemeltetni
+Ha az App Service támogatja nyílt forráskódú keretrendszerét, az alkalmazás által igényelt nyelvek és keretrendszerek konfigurálása automatikusan megtörténik. Az App Service használatával a következőket teheti:
 
-* Számos népszerű nyitott forrás nyelven, használjon például [.NET][dotnet], [PHP][PHP], [Node.js][nodejs], és [Python][Python].
-* Állítsa be a WordPress, Drupal, Umbraco, DNN és sok más külső webes alkalmazásokhoz.
-* Telepítse át egy meglévő alkalmazást, vagy hozzon létre egy újat az alkalmazás gyűjteményből.
+* Olyan népszerű nyílt forráskódú programozási nyelveket használhat, mint például a [.Net][dotnet], a [PHP][PHP], a [Node.js][nodejs] és a [Python][Python].
+* Beállíthatja a WordPresst, Drupalt, Umbracót, a DNN-t és sok más hasonló külső webalkalmazást.
+* Migrálhatja a meglévő alkalmazásokat, vagy újat hozhat létre az alkalmazáskatalógusból.
 
-A nyílt forráskódú keretrendszer nem támogatott az App Service, a többi Azure webszolgáltatási beállítások egyik futtathatja. Virtuális gépekkel, telepítése és konfigurálása a szoftver az a számítógép-lemezképen, amely lehet a Windows vagy Linux-alapú.
+Ha az App Service nem támogatja nyílt forráskódú keretrendszerét, a többi Azure webes üzemeltetési lehetőség egyikével futtathatja azt. A Virtual Machines használatával a gép rendszerképén telepítheti és állíthatja be a szoftvert, amely lehet Windows- vagy Linux-alapú.
 
-### <a id="lob"></a>Egy sor üzleti alkalmazás, amely a vállalati hálózathoz való kapcsolódáshoz szükséges van
-Ha azt szeretné, üzleti alkalmazás létrehozása, a webhely-szolgáltatások vagy a vállalati hálózaton lévő adatok közvetlen hozzáférést lehet szükség. Ez az App Service, a Service Fabric és a virtuális gépek lehetséges a [Azure Virtual Network szolgáltatás](/azure/virtual-network/). Az App Service használhatja a [VNET integrációs szolgáltatás](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/), amely lehetővé teszi, hogy az Azure-alkalmazások futtatása, mintha a vállalati hálózaton.
+### <a id="lob"></a>Olyan vállalati alkalmazásom van, amelynek a vállalati hálózatra kell csatlakoznia
+Ha üzleti alkalmazást szeretne létrehozni, a webhelyének közvetlen hozzáférésre lehet szüksége a vállalati hálózat szolgáltatásaihoz vagy adataihoz. Az [Azure Virtual Network szolgáltatás](/azure/virtual-network/) használatával ez lehetséges az App Service, a Service Fabric és a Virtual Machines esetében. Az App Service-ben használhatja a [VNET-integráció funkciót](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/), amely lehetővé teszi az Azure-alkalmazások futtatását úgy, mintha azok a vállalati hálózatán lennének.
 
-### <a id="mobile"></a>Szeretném REST API-t és a mobil ügyfelek webszolgáltatás
-HTTP-alapú webes szolgáltatások lehetővé teszik az ügyfelek, beleértve a mobil ügyfelek széles választékát támogatja. Keretrendszerek, például az ASP.NET Web API integrálása a Visual Studio segítségével könnyebben létrehozását és felhasználását a REST-szolgáltatások.  Ezeket a szolgáltatásokat ki vannak téve a egy webszolgáltatási végpontot, így a bármely webszolgáltatási az eljárást a Azure használni a forgatókönyv támogatása. App Service azonban REST API-k tárolásához kiváló választás. Az App Service-szel a következőket teheti:
+### <a id="mobile"></a>Mobilügyfelek részére szeretnék REST API-t vagy webszolgáltatást üzemeltetni
+A HTTP-alapú webes szolgáltatások lehetővé teszik az ügyfelek széles választékának támogatását, amibe beletartoznak a mobilügyfelek is. Az ASP.NET webes API-hoz hasonló keretrendszerek együttműködnek a Visual Studióval, egyszerűvé téve a REST szolgáltatások létrehozását és felhasználását.  Ezeket a szolgáltatásokat egy webes végpont teszi közzé, így ebben az esetben lehetséges bármely Azure webüzemeltetési módszer használata. Azonban az App Service remek választás a REST API-k üzemeltetésére. Az App Service-szel a következőket teheti:
 
-* Gyorsan létrehozhat egy [mobilalkalmazás](../app-service-mobile/app-service-mobile-value-prop.md) vagy API-alkalmazás futtatására a HTTP webes egy Azure globálisan elosztott adatközpontokban.
-* Telepítse át a meglévő szolgáltatások, vagy hozzon létre újakat.
-* Szolgáltatásiszint-szerződés megvalósítása a rendelkezésre állás érdekében, ha a egyetlen példánya, vagy több dedikált gépekre kiterjesztése.
-* A közzétett webhely használatával REST API-k biztosít bármely HTTP-ügyfelek számára, beleértve a mobil ügyfelek.
+* Gyorsan létrehozhat [mobilalkalmazásokat](../app-service-mobile/app-service-mobile-value-prop.md) vagy API-alkalmazásokat a HTTP webszolgáltatás üzemeltetésére az Azure globálisan elosztott adatközpontjainak egyikében.
+* Migrálhatja meglévő szolgáltatásait, vagy újakat hozhat létre.
+* SLA-t érhet el a rendelkezésre álláshoz egyetlen példánnyal, vagy horizontálisan felskálázhat több dedikált gépre.
+* Használhatja a közzétett oldalt, hogy bármely HTTP-ügyfél számára biztosítsa a REST API-kat, a mobilügyfeleket is beleértve.
 
 > [!NOTE]
-> Ha szeretne egy olyan fiók regisztrálása előtt Ismerkedés az Azure App Service, folytassa a <a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a>, ahol azonnal létrehozhat egy rövid élettartamú alapszintű alkalmazást az Azure App Service szabad. Nincs szükség bankkártyára, nem jár kötelezettségekkel.
+> Ha nem szeretne regisztrálni fiókot az Azure App Service megismerése előtt, lépjen a <a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> oldalra, ahol azonnal ingyenesen létrehozhat egy rövid élettartamú alapszintű alkalmazást az Azure App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
-## <a id="nextsteps"></a>További lépések
-További információ a három webes üzemeltetési beállításai című [Introducing Azure](../fundamentals-introduction-to-azure.md).
+## <a id="nextsteps"></a> Következő lépések
+További információk a három webes üzemeltetési lehetőségről: [Az Azure bemutatása](../fundamentals-introduction-to-azure.md).
 
-Első lépésként az alkalmazás a választott beállításokkal, lásd a következőket:
+Az első lépések megtételét az alkalmazása számára kiválasztott lehetőségekkel a következő források segítik:
 
 * [Azure App Service](/azure/app-service/)
 * [Azure Cloud Services](/azure/cloud-services/)
-* [Az Azure virtuális gépek](/azure/virtual-machines/)
+* [Azure Virtual Machines](/azure/virtual-machines/)
 * [Service Fabric](/azure/service-fabric/)
 
 <!-- URL List -->

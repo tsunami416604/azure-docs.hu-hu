@@ -1,6 +1,6 @@
 ---
-title: "Azure-portálon: PostgreSQL-kiszolgáló Azure-adatbázis létrehozása |} Microsoft Docs"
-description: "Gyors üzembe helyezési útmutató létrehozását és kezelését egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis az Azure portál felhasználói felületének használatával."
+title: "Azure Portal: Azure Database for PostgreSQL-kiszolgáló létrehozása | Microsoft Docs"
+description: "Rövid útmutató Azure Database for PostgreSQL-kiszolgáló létrehozásához és felügyeletéhez az Azure Portal felhasználói felületén."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -12,106 +12,106 @@ ms.topic: quickstart
 ms.date: 11/03/2017
 ms.openlocfilehash: b78009a4b2683bb7ee881808ddbbc792d66dea6c
 ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/06/2017
 ---
-# <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis létrehozása az Azure-portálon
+# <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Azure Database for PostgreSQL-kiszolgáló létrehozása az Azure Portalon
 
-Azure PostgreSQL-adatbázishoz egy felügyelt szolgáltatás, amellyel futtatásához, kezelése és a felhőben magas rendelkezésre állású PostgreSQL-adatbázisok méretezése. A gyors üzembe helyezés bemutatja, hogyan hozzon létre egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis körülbelül öt perc alatt az Azure portál használatával.
+Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre nagyjából öt perc alatt Azure Database for PostgreSQL-kiszolgálót az Azure Portalon.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-Nyissa meg a webböngészőt, és navigáljon a [portal](https://portal.azure.com/). Adja meg a hitelesítő adatait a Portalra való bejelentkezéshez. Az alapértelmezett nézet a szolgáltatási irányítópult.
+Nyissa meg a webböngészőjét, és lépjen a [portálra](https://portal.azure.com/). Adja meg a hitelesítő adatait a Portalra való bejelentkezéshez. Az alapértelmezett nézet a szolgáltatási irányítópult.
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 
 Az Azure-adatbázis PostgreSQL-kiszolgálóhoz [számítási és tárolási erőforrások](./concepts-compute-unit-and-storage.md) egy meghatározott készletével együtt jön létre. A kiszolgáló egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül jön létre.
 
-Egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis létrehozásához tegye a következőket:
+Azure Database for PostgreSQL-kiszolgáló létrehozásához kövesse az alábbi lépéseket:
 1. A portál bal felső sarkában válassza az **Új** (+) gombot.
 
-2. Válassza ki **adatbázisok** > **Azure PostgreSQL-adatbázishoz**.
+2. Válassza az **Adatbázisok** > **Azure Database for PostgreSQL** lehetőséget.
 
-    ![Az "Azure adatbázis a PostgreSQL" beállítás](./media/quickstart-create-database-portal/1-create-database.png)
+    ![Az „Azure Database for PostgreSQL” lehetőség](./media/quickstart-create-database-portal/1-create-database.png)
 
 3. Töltse ki az új kiszolgáló adatainak űrlapját az alábbi információkkal az előző képen látható módon:
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
-    Kiszolgálónév |*mypgserver-20170401*|Egy egyedi nevet, amely azonosítja az Azure-adatbázis PostgreSQL-kiszolgáló. A tartománynév *postgres.database.azure.com* a kiszolgáló nevét, adja meg a rendszer hozzáfűzi. A kiszolgáló csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhat. Legalább 3 és 63 karakter közötti hosszúságú kell tartalmaznia.
-    Előfizetés|Az Ön előfizetése|Az Azure-előfizetés a kiszolgálóval használni kívánt. Ha több előfizetéssel rendelkezik, válassza ki az előfizetést, amelyben Ön díjon számlázzuk az erőforrás.
-    Erőforráscsoport|*myresourcegroup*| Új erőforráscsoport-nevet vagy egy meglévő az előfizetésből.
-    Kiszolgáló-rendszergazdai bejelentkezés |*mylogin*| A saját bejelentkezési fiókot használja a kiszolgálóhoz való csatlakozás. A rendszergazdai bejelentkezési név nem lehet **azure_superuser,** **azure_pg_admin,** **admin,** **rendszergazda,** **legfelső szintű vagy** **Vendég,** vagy **nyilvános.** És nem kezdődhet **pg_**.
-    Jelszó |A választása szerint | Egy új jelszó a kiszolgálói rendszergazdai fiók számára. 8–128 karakter hosszúságú lehet. A jelszó az alábbiak közül hármat tartalmaznia kell: angol nagybetűk, angol ábécé kisbetűi, számok (0 – 9), és nem alfanumerikus karakterek (!, $, #, %, stb.).
-    Hely|A felhasználók a legközelebb eső régiót| A felhasználók a legközelebb eső helyet.
-    PostgreSQL-verzió|A legújabb verzióra| A legújabb verzióra, hacsak nem rendelkezik konkrét követelmények.
-    Tarifacsomag | **Alapszintű**, **50 számítási egység**, **50 GB** | Az új adatbázis szolgáltatás- és teljesítményszintje. Válassza ki **tarifacsomag**. Ezután válassza ki a **alapvető** fülre. Válassza ki a bal oldali vége a **számítási egység** érhető el a legkisebb értéket úgy, hogy a gyors üzembe helyezés a csúszkát. A tarifacsomag kiválasztása mentéséhez válasszon **OK**. További információkért tekintse meg a következő képernyőképet. 
-    Rögzítés az irányítópulton | Jelölőnégyzet | Az első irányítópult-oldalon a portál a kiszolgáló egyszerű követését teszi lehetővé.
+    Kiszolgálónév |*mypgserver-20170401*|Egy egyedi név, amely az Azure Database for PostgreSQL-kiszolgálót azonosítja. A rendszer hozzáfűzi a *postgres.database.azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgáló neve csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Legalább 3, és legfeljebb 63 karakterből állhat.
+    Előfizetés|Az Ön előfizetése|A kiszolgálóhoz használni kívánt Azure-előfizetés. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
+    Erőforráscsoport|*myresourcegroup*| Egy új erőforráscsoport neve vagy egy meglévő az előfizetéséből.
+    Kiszolgáló-rendszergazdai bejelentkezés |*mylogin*| A kiszolgálóhoz való csatlakozáshoz használt bejelentkezési fiókja. A rendszergazdai bejelentkezési név nem lehet **azure_superuser,** **azure_pg_admin,** **admin,** **administrator,** **root,** **guest,** vagy **public.** Nem kezdődhet a következővel: **pg_**.
+    Jelszó |A választása szerint | Egy új jelszó a kiszolgálói rendszergazdai fiók számára. 8–128 karakter hosszúságú lehet. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
+    Hely|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.
+    PostgreSQL-verzió|A legújabb verzió| A legújabb verzió, ha nincsenek egyedi igényei.
+    Tarifacsomag | **Alapszintű**, **50 számítási egység**, **50 GB** | Az új adatbázis szolgáltatás- és teljesítményszintje. Válassza a **Tarifacsomag** lehetőséget, majd az **Alapszintű** lapot. Ezután válassza a **Számítási egységek** csúszka bal oldali végét az ebben a rövid útmutatóban elérhető legkisebb mennyiség kiválasztásához. A tarifacsomag beállításának mentéséhez kattintson az **OK** gombra. További információkért tekintse meg a következő képernyőképet. 
+    Rögzítés az irányítópulton | Jelölőnégyzet | Egyszerűen nyomon követheti a kiszolgálót a portál irányítópultjának első lapján.
 
     > [!IMPORTANT]
-    > A kiszolgáló-rendszergazdai bejelentkezés és a jelszót, az itt megadott jelentkezzen be a kiszolgáló és az adatbázisok későbbi szakaszában a gyors üzembe helyezés szükségesek. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.
+    > A kiszolgáló itt megadott rendszergazdai bejelentkezési nevét és jelszavát kell majd használnia a rövid útmutató későbbi szakaszaiban a kiszolgálóra és az adatbázisaira való bejelentkezéshez. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.
 
-    ![A "Tarifacsomag" ablak](./media/quickstart-create-database-portal/2-service-tier.png)
+    ![A „Tarifacsomag” panel](./media/quickstart-create-database-portal/2-service-tier.png)
 
 4. A kiszolgáló üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. Az üzembe helyezés akár 20 percet is igénybe vehet.
 
-5. Az eszköztáron válassza a **értesítések** szimbólum a telepítési folyamat figyelését.
+5. Az eszköztáron válassza az **Értesítések** szimbólumot az üzembe helyezési folyamat megfigyeléséhez.
 
-    ![A "Értesítések" ablak](./media/quickstart-create-database-portal/3-notifications.png)
+    ![Az „Értesítések” panel](./media/quickstart-create-database-portal/3-notifications.png)
    
-  Alapértelmezés szerint egy **postgres** adatbázis létrehozása a kiszolgálón. A [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) egy alapértelmezett adatbázis, amely a felhasználók, segédprogramok vagy harmadik féltől származó alkalmazások használatra jelent. 
+  Alapértelmezés szerint a **postgres** adatbázis a kiszolgáló alatt jön létre. A [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) adatbázis egy alapértelmezett adatbázis, amelyet a felhasználók, segédprogramok és külső féltől származó alkalmazások általi használatra szántak. 
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása
 
-Azure PostgreSQL-adatbázishoz egy tűzfal a kiszolgáló szintjén hoz létre. Megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgáló és az összes adatbázis a kiszolgálón, kivéve, ha létrehoz egy szabályt a tűzfalat a megadott IP-címek megnyitásához. 
+Az Azure Database for PostgreSQL kiszolgálószinten hoz létre egy tűzfalat. Ez megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz, kivéve, ha olyan szabályt hoz létre, amely adott IP-címek számára megnyitja a tűzfalat. 
 
-1. Az üzembe helyezés végeztével keresse meg a kiszolgálót. Ha szükséges, használja a keresési funkciót. A bal oldali menüben válassza ki például **összes erőforrás**. Adja meg a kiszolgáló nevét, például a példában **mypgserver-20170401**, az újonnan létrehozott kiszolgáló kereséséhez. A keresési eredmények listájáról válassza ki a kiszolgáló nevét. Megnyílik a kiszolgáló **Áttekintés** oldala, amely további konfigurációs lehetőségeket biztosít.
+1. Az üzembe helyezés végeztével keresse meg a kiszolgálót. Ha szükséges, használja a keresési funkciót. Például a bal oldali menüben válassza a **Minden erőforrás** elemet. Ezután írja be a kiszolgáló nevét (például: **mypgserver-20170401**) az újonnan létrehozott kiszolgáló megkereséséhez. Válassza ki a keresési eredmények listájában a kiszolgálónevet. Megnyílik a kiszolgáló **Áttekintés** oldala, amely további konfigurációs lehetőségeket biztosít.
  
-    ![Server name keresés](./media/quickstart-create-database-portal/4-locate.png)
+    ![Kiszolgálónév keresése](./media/quickstart-create-database-portal/4-locate.png)
 
 2. A kiszolgáló lapján válassza a **Kapcsolatbiztonság** elemet.
 
-    ![A "kapcsolat" beállítás](./media/quickstart-create-database-portal/5-firewall-2.png)
+    ![A „Kapcsolatbiztonság” beállítás](./media/quickstart-create-database-portal/5-firewall-2.png)
 
-3. Az a **tűzfal-szabályok** fejléc a a **szabály neve** oszlopból válassza ki a üres szövegmezőben a tűzfalszabály létrehozásának megkezdéséhez. 
+3. A **Tűzfalszabályok** szakasz **Szabály neve** oszlopában válassza az üres mezőt egy új tűzfalszabály létrehozásának megkezdéséhez. 
 
-    A gyors üzembe helyezés, a most hagyjon összes IP-címet az a kiszolgálóra. Töltse ki a szövegmezőben az egyes oszlopok a következő értékekkel:
+    Ebben a rövid útmutatóban engedélyezünk minden bemenő IP-címet a kiszolgálón. Adjuk meg az egyes oszlopok szövegmezőiben a következő értékeket:
 
     Szabály neve | Kezdő IP-cím | Záró IP-cím 
     ---|---|---
     AllowAllIps | 0.0.0.0 | 255.255.255.255
 
-4. A **Kapcsolatbiztonság** lap felső eszköztárában kattintson a **Mentés** gombra. Várjon, amíg az értesítés jelenik meg, hogy a kapcsolat biztonsági frissítés sikeresen befejeződött a folytatás előtt.
+4. A **Kapcsolatbiztonság** lap felső eszköztárában kattintson a **Mentés** gombra. A folytatás előtt várjon, amíg meg nem jelenik a kapcsolatbiztonsági frissítés sikeres befejezését jelző értesítés.
 
     > [!NOTE]
-    > A PostgreSQL-kiszolgálóhoz készült Azure-adatbázis kapcsolatai az 5432-es porton keresztül kommunikálnak. Ha megpróbál kapcsolódni a vállalati hálózaton belül, a hálózati tűzfal előfordulhat, hogy nem engedélyezett a port 5432 kimenő forgalmát. Ha igen, akkor a kiszolgáló nem csatlakozik, kivéve, ha az IT-részleg 5432 portot nyit meg.
+    > A PostgreSQL-kiszolgálóhoz készült Azure-adatbázis kapcsolatai az 5432-es porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben addig nem tud csatlakozni a kiszolgálóhoz, amíg az informatikai részleg meg nem nyitja az 5432-es portot.
     >
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
-A PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis létrehozásakor az alapértelmezett adatbázis nevű **postgres** jön létre. Az adatbázis-kiszolgáló csatlakozni kell a teljes kiszolgáló nevét és a rendszergazdai bejelentkezési hitelesítő adatokat. Ezeket a rövid útmutatóban korábban már feljegyezhette. Ha nem, könnyedén megtalálhatja a kiszolgáló nevét és a bejelentkezési adatok a kiszolgáló **áttekintése** oldal a portálon.
+Az Azure Database for PostgreSQL-kiszolgáló létrehozásakor egy **postgres** nevű alapértelmezett adatbázis jön létre. Az adatbázis-kiszolgálóhoz való csatlakozáshoz a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra van szüksége. Ezeket a rövid útmutatóban korábban már feljegyezhette. Ha nem jegyezte fel, a kiszolgáló nevét és bejelentkezési adatait megtalálja a kiszolgáló **Áttekintés** lapján a portálon.
 
-Nyissa meg kiszolgáló **Áttekintés** lapját. Jegyezze fel a **kiszolgálónév** és a **kiszolgálói rendszergazda bejelentkezési név**. A kurzorral rámutat minden mező, és a példány szimbólum jelenik meg a szöveg jobb. Szükség esetén az értékek másolásához, jelölje ki a példány szimbólumot.
+Nyissa meg kiszolgáló **Áttekintés** lapját. Jegyezze fel a **kiszolgálónevet** és a **kiszolgáló-rendszergazdai bejelentkezési nevet**. Vigye az egérmutatót az egyes mezők fölé. Ekkor a szövegtől jobbra megjelenik a másolási szimbólum. Az értékek másolásához kattintson a másolási szimbólumra.
 
- ![A kiszolgáló "Overview" lap](./media/quickstart-create-database-portal/6-server-name.png)
+ ![A kiszolgáló „Áttekintés” lapja](./media/quickstart-create-database-portal/6-server-name.png)
 
-## <a name="connect-to-the-postgresql-database-by-using-psql-in-cloud-shell"></a>Csatlakozás a PostgreSQL-adatbázisból psql felhő rendszerhéj használatával
+## <a name="connect-to-the-postgresql-database-by-using-psql-in-cloud-shell"></a>Csatlakozás a PostgreSQL-adatbázishoz a psql használatával a Cloud Shellben
 
-Számos különféle alkalmazással csatlakozhat a PostgreSQL-kiszolgálóhoz készült Azure-adatbázishoz. Először használjuk a psql parancssori segédprogramot a kiszolgálóhoz való csatlakozás bemutatásához. Segítségével egy webböngésző és az Azure felhőalapú rendszerhéj itt leírtak nem kell további szoftvereket telepíteniük. Ha a gépén helyileg telepítve van a psql segédprogram, onnan is csatlakozhat.
+Számos különféle alkalmazással csatlakozhat a PostgreSQL-kiszolgálóhoz készült Azure-adatbázishoz. Először használjuk a psql parancssori segédprogramot a kiszolgálóhoz való csatlakozás bemutatásához. Az itt leírtak szerint használhatja a webböngészőt és az Azure Cloud Shellt, és nem szükséges további szoftvert telepítenie. Ha a gépén helyileg telepítve van a psql segédprogram, onnan is csatlakozhat.
 
-1. A felső navigációs ablaktáblán válassza ki a Terminálszolgáltatások szimbólum felhő rendszerhéj megnyitásához.
+1. A felső navigációs panelen válassza a terminál szimbólumot a Cloud Shell megnyitásához.
 
-   ![Azure Cloud rendszerhéj terminál szimbólum](./media/quickstart-create-database-portal/7-cloud-console.png)
+   ![Azure Cloud Shell terminál szimbóluma](./media/quickstart-create-database-portal/7-cloud-console.png)
 
-2. Felhő rendszerhéj megnyitása a böngészőben, ahová beírhatja a Bash rendszerhéjat parancsok.
+2. A Cloud Shell megnyílik a böngészőben, és lehetővé teszi Bash felületi parancsok beírását.
 
-   ![Felhő Bash rendszerhéjat kérdés](./media/quickstart-create-database-portal/8-bash.png)
+   ![Cloud Shell Bash promptja](./media/quickstart-create-database-portal/8-bash.png)
 
-3. A felhő rendszerhéj parancssorba írja be a psql parancssori kapcsolódás az Azure-adatbázis PostgreSQL-kiszolgáló-adatbázishoz.
+3. A Cloud Shell promptnál csatlakozzon az Azure Database for PostgreSQL-kiszolgálón lévő adatbázishoz a psql parancssor beírásával.
 
-    Egy PostgreSQL-kiszolgáló az Azure-adatbázishoz való kapcsolódáshoz a [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogram, használja a következő formátumot:
+    A következő formátum használatával csatlakozhat Azure Database for PostgreSQL-kiszolgálóhoz a [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal:
     ```bash
     psql --host=<yourserver> --port=<port> --username=<server admin login> --dbname=<database name>
     ```
@@ -124,18 +124,18 @@ Számos különféle alkalmazással csatlakozhat a PostgreSQL-kiszolgálóhoz k�
 
     psql paraméter |Ajánlott érték|Leírás
     ---|---|---
-    --host | Kiszolgálónév | A kiszolgáló név-érték, amelyet korábban PostgreSQL-kiszolgáló az Azure-adatbázis létrehozásakor használt. A példa kiszolgáló látható **mypgserver-20170401.postgres.database.azure.com.** A teljesen minősített tartománynevét használja (**\*. postgres.database.azure.com**) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. 
-    --port | 5432 | Az Azure-adatbázishoz PostgreSQL-kiszolgálóhoz való csatlakozáskor használandó portot. 
-    --username | Server admin bejelentkezési név |A kiszolgáló rendszergazdai bejelentkezési felhasználónevének korábbi PostgreSQL-kiszolgáló az Azure-adatbázis létrehozásakor megadott. Ha nem emlékszik a felhasználónév, kövesse az előző szakaszban, a kapcsolat adatainak megszerzése. A formátum *username@servername*.
-    --dbname | *postgres* | Alapértelmezés szerint a rendszer adatbázis neve, amely az első kapcsolat jött létre. Később a saját adatbázis létrehozása.
+    --host | Kiszolgálónév | Az a kiszolgálónév, amelyet korábban az Azure Database for PostgreSQL-kiszolgáló létrehozásakor használt. Az itt látható példakiszolgáló a **mypgserver-20170401.postgres.database.azure.com**. Használja a teljes tartománynevet (**\*.postgres.database.azure.com**), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. 
+    --port | 5432 | Az Azure Database for PostgreSQL-kiszolgálóhoz való csatlakozáskor használt port. 
+    --username | Kiszolgáló-rendszergazdai bejelentkezési név |A kiszolgáló-rendszergazdai bejelentkezési felhasználónév, amelyet korábban az Azure Database for PostgreSQL-kiszolgáló létrehozásakor adott meg. Ha nem emlékszik a felhasználónévre, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum *username@servername*.
+    --dbname | *postgres* | A rendszer által az első csatlakozáshoz létrehozott, alapértelmezett adatbázisnév. Később létrehozhatja a saját adatbázisát.
 
-    A saját paraméterértékekkel a psql parancs futtatása után felkéri adja meg a kiszolgáló rendszergazdai jelszavát. Ez a jelszó nem azonos a kiszolgáló létrehozásakor megadott. 
+    Miután a saját paraméterértékeivel futtatta a psql parancsot, a rendszer felkéri, hogy adja meg a kiszolgáló-rendszergazdai jelszót. Ez ugyanaz az a jelszó, amelyet a kiszolgáló létrehozásakor adott meg. 
 
     psql paraméter |Ajánlott érték|Leírás
     ---|---|---
-    jelszó | A rendszergazdai jelszó | A beírt jelszó karakterek nem látható a bash megkötéseket. Miután beírta a karakterek, válassza ki a **Enter** kulcsot a hitelesítéshez és csatlakozáshoz.
+    jelszó | Az Ön rendszergazdai jelszava | A beírt jelszókarakterek nem jelennek meg a Bash promptban. Miután beírta az összes karaktert, nyomja le az **Enter** billentyűt a hitelesítéshez és a csatlakozáshoz.
 
-    Miután csatlakozott, a psql segédprogram sql-parancsok írhatja postgres kérdés megjelenítése. A kezdeti kapcsolat kimenet figyelmeztetés jelenhet, mert a felhő rendszerhéj psql lehet, hogy az Azure-adatbázishoz a PostgreSQL-kiszolgáló verziója eltérő verzióval. 
+    A csatlakozás után a psql segédprogram egy postgres promptot jelenít meg, ahová az SQL-parancsokat beírhatja. A rendszer a kezdeti kapcsolati kimeneten egy figyelmeztetést jeleníthet meg, mivel a Cloud Shell psql-jének verziója eltérhet az Azure Database for PostgreSQL-kiszolgáló verziójától. 
     
     Példa psql kimenetre:
     ```bash
@@ -149,90 +149,90 @@ Számos különféle alkalmazással csatlakozhat a PostgreSQL-kiszolgálóhoz k�
     ```
 
     > [!TIP]
-    > Ha a tűzfal beállításai nem engedélyezik a felhő rendszerhéj IP-címét, a következő hiba történt:
+    > Ha a tűzfal nincs konfigurálva a Cloud Shell IP-címének engedélyezésére, a következő hiba jelenik meg:
     > 
-    > "psql: súlyos hiba: pg_hba.conf bejegyzés állomás"138.91.195.82"felhasználó"mylogin", adatbázis-"postgres", a végzetes SSL: SSL-kapcsolatra szükség. Adja meg az SSL-beállításokat, és próbálja meg újra.
+    > "psql: FATAL:  no pg_hba.conf entry for host "138.91.195.82", user "mylogin", database "postgres", SSL on FATAL: SSL connection is required. Adja meg az SSL-beállításokat, és próbálkozzon újra.
     > 
-    > A hiba elhárításához győződjön meg arról, hogy a kiszolgáló konfigurációja megfelel az "Egy kiszolgálószintű tűzfalszabály konfigurálása" című szakaszát lépéseit.
+    > A hiba elhárításához győződjön meg róla, hogy a kiszolgáló konfigurációja megegyezik a cikk „Kiszolgálószintű tűzfalszabály konfigurálása” részében található lépésekkel.
 
 4. Hozzon létre egy üres adatbázist a következő parancs beírásával a parancssorba:
     ```bash
     CREATE DATABASE mypgsqldb;
     ```
-    A parancs eltarthat néhány percig. 
+    A parancs teljesítése néhány percet vehet igénybe. 
 
-5. A parancssorból, hajtsa végre a következő parancsot kapcsolatok váltson át az újonnan létrehozott adatbázis **mypgsqldb**:
+5. Amikor a rendszer kéri, hajtsa végre a következő parancsot, hogy az újonnan létrehozott **mypgsqldb** adatbázishoz kapcsolódhasson:
     ```bash
     \c mypgsqldb
     ```
 
-6. Típus `\q`, majd válassza ki a **Enter** kulcs psql kilép. Amikor befejezte a felhő rendszerhéj bezárható.
+6. A psql-ből való kilépéshez írja be a `\q` karakterláncot, majd nyomja le az **Enter** billentyűt. Miután végzett, bezárhatja a Cloud Shellt.
 
-Most, hogy csatlakozik ahhoz az Azure-adatbázishoz PostgreSQL-kiszolgáló, és létrehozott egy üres felhasználói adatbázisból. Folytassa a következő szakasz egy másik közös eszközt, pgAdmin használatával történő kapcsolódást.
+Ezzel csatlakozott az Azure Database for PostgreSQL-kiszolgálóhoz, és létrehozott egy üres felhasználói adatbázist. Folytassa a következő szakasszal, amelyből megtudhatja, hogyan csatlakozhat egy másik ismert eszköz, a pgAdmin segítségével.
 
-## <a name="connect-to-the-postgresql-database-by-using-pgadmin"></a>PgAdmin használatával kapcsolódik a PostgreSQL-adatbázishoz
+## <a name="connect-to-the-postgresql-database-by-using-pgadmin"></a>Csatlakozás a PostgreSQL-adatbázishoz a pgAdmin használatával
 
-Csatlakozás az Azure PostgreSQL-kiszolgálóhoz a grafikus felhasználói Felülettel eszköz pgAdmin:
-1. Indítsa el a pgAdmin alkalmazást az ügyfélszámítógépen. A pgAdmin telepítése a [pgAdmin webhely](http://www.pgadmin.org/).
+Csatlakozás az Azure PostgreSQL-kiszolgálóhoz a pgAdmin GUI eszköz használatával:
+1. Nyissa meg a pgAdmin alkalmazást az ügyfélszámítógépen. A pgAdmin alkalmazást a [pgAdmin webhelyről](http://www.pgadmin.org/) telepítheti.
 
-2. Az irányítópult-oldalon a a **Gyorshivatkozások** szakaszban jelölje be a **új kiszolgáló hozzáadása** szimbólum.
+2. Az Irányítópult lap **Gyorshivatkozások** szakaszában válassza az **Új kiszolgáló hozzáadása** szimbólumot.
 
-3. Az a **- kiszolgáló létrehozása** párbeszédpanel a **általános** lapra, adja meg egy egyedi nevet a kiszolgáló, például **Azure PostgreSQL Server**.
+3. A **Kiszolgáló létrehozása** párbeszédpanel **Általános** lapján adjon meg egy egyedi rövid nevet a kiszolgáló számára, például **Azure PostgreSQL Server**.
 
-    ![Az "Általános" lap](./media/quickstart-create-database-portal/9-pgadmin-create-server.png)
+    ![Az „Általános” lap](./media/quickstart-create-database-portal/9-pgadmin-create-server.png)
 
-4. Az a **- kiszolgáló létrehozása** párbeszédpanel a **kapcsolat** lapon megadott beállítások használatát, és válassza ki **mentése**.
+4. A **Kiszolgáló létrehozása** párbeszédpanel **Kapcsolat** lapján használja a megadott beállításokat, majd válassza a **Mentés** lehetőséget.
 
-   ![A "Kapcsolat" lap](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
+   ![A „Kapcsolat” lap](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
     pgAdmin-paraméter |Ajánlott érték|Leírás
     ---|---|---
-    Gazdagépnév/-cím | Kiszolgálónév | A kiszolgáló név-érték, amelyet korábban PostgreSQL-kiszolgáló az Azure-adatbázis létrehozásakor használt. A példa kiszolgáló **mypgserver-20170401.postgres.database.azure.com.** A teljesen minősített tartománynevét használja (**\*. postgres.database.azure.com**) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. 
-    Port | 5432 | Az Azure-adatbázishoz PostgreSQL-kiszolgálóhoz való csatlakozáskor használandó portot. 
-    Karbantartási adatbázis | *postgres* | Az alapértelmezett a rendszer adatbázis neve.
-    Felhasználónév | Server admin bejelentkezési név | A kiszolgáló rendszergazdai bejelentkezési felhasználónevének korábbi PostgreSQL-kiszolgáló az Azure-adatbázis létrehozásakor megadott. Ha nem emlékszik a felhasználónévre, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum *username@servername*.
-    Jelszó | A rendszergazdai jelszó | A jelszó úgy döntött, hogy a gyors üzembe helyezés során korábban küldje el a kiszolgáló létrehozásakor.
-    Szerepkör | Hagyja üresen | Adjon meg egy szerepkör ezen a ponton szükség van. Hagyja üresen ezt a mezőt.
-    SSL-mód | Szükséges | Alapértelmezés szerint minden Azure PostgreSQL-kiszolgáló SSL-titkosítással jönnek létre történt-e kapcsolva. Kapcsolja ki a SSL kényszerítése, lásd: [kényszerítése SSL](./concepts-ssl-connection-security.md).
+    Gazdagépnév/-cím | Kiszolgálónév | Az a kiszolgálónév, amelyet korábban az Azure Database for PostgreSQL-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mypgserver-20170401.postgres.database.azure.com**. Használja a teljes tartománynevet (**\*.postgres.database.azure.com**), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. 
+    Port | 5432 | Az Azure Database for PostgreSQL-kiszolgálóhoz való csatlakozáskor használt port. 
+    Karbantartási adatbázis | *postgres* | A rendszer által létrehozott alapértelmezett adatbázisnév.
+    Felhasználónév | Kiszolgáló-rendszergazdai bejelentkezési név | A kiszolgáló-rendszergazdai bejelentkezési felhasználónév, amelyet korábban az Azure Database for PostgreSQL-kiszolgáló létrehozásakor adott meg. Ha nem emlékszik a felhasználónévre, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum *username@servername*.
+    Jelszó | Az Ön rendszergazdai jelszava | A rövid útmutatóban a korábbiakban a kiszolgáló létrehozásakor választott jelszó.
+    Szerepkör | Hagyja üresen | Itt nem kell megadni szerepkörnevet. Hagyja üresen ezt a mezőt.
+    SSL-mód | Kötelező | Alapértelmezés szerint a rendszer minden Azure PostgreSQL-kiszolgálót az SSL-kényszerítés bekapcsolása mellett hoz létre. Részletek az SSL-kényszerítés kikapcsolásáról: [SSL kényszerítése](./concepts-ssl-connection-security.md).
     
 5. Kattintson a **Mentés** gombra.
 
-6. Az a **böngésző** a bal oldali ablaktáblán bontsa ki a **kiszolgálók** csomópont. Válassza ki például a kiszolgáló **Azure PostgreSQL Server**. Kattintson a csatlakozáshoz.
+6. A bal oldali **Böngésző** panelen bontsa ki a **Kiszolgálók** csomópontot. Válassza ki például az **Azure PostgreSQL Server** kiszolgálót. Kattintson rá a csatlakozáshoz.
 
-7. Bontsa ki a kiszolgáló-csomópontot, majd bontsa ki az abban található **Adatbázisok** csomópontot is. A lista tartalmazza a meglévő *postgres* adatbázis és minden új felhasználói adatbázis, mint például **mypgsqldb**, amely az előző szakaszban létrehozott. Figyelje meg, hogy létrehozhat egy kiszolgálón több adatbázis az Azure Database PostgreSQL.
+7. Bontsa ki a kiszolgáló-csomópontot, majd bontsa ki az abban található **Adatbázisok** csomópontot is. A listában szerepelnie kell a meglévő *postgres* adatbázisnak, valamint az előző szakaszban esetlegesen újonnan létrehozott felhasználói adatbázisoknak (például a **mypgsqldb** adatbázisnak) is. Vegye figyelembe, hogy az Azure Database for PostgreSQL segítségével kiszolgálónként több adatbázist is létrehozhat.
 
-8. Kattintson a jobb gombbal **adatbázisok**, válassza ki a **létrehozása** menüben, majd válassza ki **adatbázis**.
+8. Kattintson a jobb gombbal az **Adatbázisok** elemre, majd válassza a **Létrehozás** menü **Adatbázis** elemét.
 
-9. Írja be az Ön által választott, az adatbázis nevét a **adatbázis** mezőjét, többek között **mypgsqldb**, a példában látható módon.
+9. Írja be a választott adatbázisnevet az **Adatbázis** mezőbe (a példánkban ez a **mypgsqldb**).
 
-10. Válassza ki a **tulajdonos** az adatbázis, a legördülő listából. Válassza ki a kiszolgáló rendszergazdai bejelentkezési nevet, például a példában **mylogin**.
+10. A listából válassza ki az adatbázis **tulajdonosát**. Válassza ki a kiszolgáló-rendszergazdai bejelentkezési nevet (a példánkban ez a **mylogin**).
 
-11. Válassza ki **mentése** egy új, üres adatbázis létrehozásához.
+11. Egy új, üres adatbázis létrehozásához válassza a **Mentés** lehetőséget.
 
-12. Az a **böngésző** ablaktáblában tekintse meg az adatbázis létrehozott adatbázisok listája alatt a kiszolgáló nevét.
+12. A **Böngésző** panelen tekintse meg az Ön által létrehozott adatbázist az adatbázisok listájában a kiszolgáló nevét viselő területen.
 
-    ![A "Böngésző" ablak](./media/quickstart-create-database-portal/11-pgadmin-database.png)
+    ![A „Böngésző” panel](./media/quickstart-create-database-portal/11-pgadmin-database.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Törölheti is az erőforrásokat, amelyek a gyors üzembe helyezés, az alábbi két módszer egyikével létrehozott. Törölheti az [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md), amely tartalmazza az erőforráscsoportban lévő összes erőforrást. Ha szeretne további erőforrásokat módosulna, csak az önálló kiszolgáló erőforrás törlése.
+Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti az [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md), amely tartalmazza az erőforráscsoportban lévő összes erőforrást. Ha a többi erőforrást érintetlenül szeretné hagyni, csak egy kiszolgálói erőforrást töröljön.
 
 > [!TIP]
-> Az ebben a gyűjteményben található többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy folytatja ezen rövid útmutatók használatát, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem kívánja folytatni, kövesse az alábbi lépéseket törli az erőforrást, amelyet a gyors üzembe helyezés, a portálon.
+> Az ebben a gyűjteményben található többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy folytatja ezen rövid útmutatók használatát, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti a rövid útmutató segítségével létrehozott erőforrásokat a portálon.
 
-A teljes erőforráscsoport, beleértve az újonnan létrehozott kiszolgáló törlése:
-1. Keresse meg az erőforráscsoport a portálon. A bal oldali menüben válassza ki a **erőforráscsoportok**. Válassza ki például a példában az erőforráscsoport neve **myresourcegroup**.
+Ha az újonnan létrehozott kiszolgálót is magában foglaló teljes erőforráscsoportot törölni szeretné:
+1. Keresse meg az erőforráscsoportot a portálon. A bal oldali menüben válassza az **Erőforráscsoportok** lehetőséget. Válassza ki az erőforráscsoport nevét (ebben a példában **myresourcegroup**).
 
-2. Az erőforráscsoport oldalán kattintson a **Törlés** parancsra. Írja be például a példában az erőforráscsoport nevét **myresourcegroup**, a törlés megerősítéséhez szövegmezőben. Válassza a **Törlés** elemet.
+2. Az erőforráscsoport oldalán kattintson a **Törlés** parancsra. Írja be a törölni kívánt erőforrás nevét (ebben a példában **myresourcegroup**) a szövegmezőbe a törlés megerősítéséhez. Válassza a **Törlés** elemet.
 
 Csak az újonnan létrehozott kiszolgáló törlése:
-1. Keresse meg a kiszolgáló a portálon, ha még nincs megnyitva. A bal oldali menüben válassza ki a **összes erőforrás**. Ezután keressen rá az Ön által létrehozott kiszolgálóra.
+1. Keresse meg a kiszolgálót a portálon, ha nincs megnyitva. A bal oldali menüben válassza a **Minden erőforrás** elemet. Ezután keressen rá az Ön által létrehozott kiszolgálóra.
 
 2. Az **Áttekintés** oldalon válassza a **Törlés** elemet.
 
-    ![A "Törlés" gombra.](./media/quickstart-create-database-portal/12-delete.png)
+    ![A „Törlés” gomb](./media/quickstart-create-database-portal/12-delete.png)
 
-3. Erősítse meg a törölni kívánt kiszolgáló nevét, és az érintett tartozó adatbázisok megtekintéséhez. A kiszolgáló nevét írják be a szövegmezőben, például a példában **mypgserver-20170401**. Válassza a **Törlés** elemet.
+3. Erősítse meg a törölni kívánt kiszolgáló nevét, és tekintse meg az érintett adatbázisokat. Írja be a kiszolgáló nevét (ebben a példában **mypgserver-20170401**) a szövegmezőbe. Válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]

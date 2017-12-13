@@ -17,15 +17,15 @@ ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d44fff1e59198d662356c4d7739c05e538ba57b9
 ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Az első Java-webalkalmazás létrehozása az Azure-ban
 
-Azure [webalkalmazások](app-service-web-overview.md) jól skálázható, önálló javítási a webhelyszolgáltató biztosít. Ez a gyorsútmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazásokat az App Service-ben a [Java EE-fejlesztőknek készült Eclipse IDE](http://www.eclipse.org/) használatával.
+Az Azure [Web Apps](app-service-web-overview.md) egy hatékonyan skálázható, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a gyorsútmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazásokat az App Service-ben a [Java EE-fejlesztőknek készült Eclipse IDE](http://www.eclipse.org/) használatával.
 
-A gyors üzembe helyezés befejezése után, az alkalmazás majd meg az alábbi ábrához hasonlóan egy webböngészőben megtekintheti:
+A gyors útmutató befejezését követően alkalmazása webböngészőben megtekintve az alábbi illusztrációra fog hasonlítani:
 
 ![„Hello Azure!” példa webalkalmazás](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
