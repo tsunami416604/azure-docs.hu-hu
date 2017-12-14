@@ -1,6 +1,6 @@
 ---
-title: "Létrehozhat és használhat belső terheléselosztót az Azure App Service-környezet"
-description: "Megtudhatja, hogyan létrehozása és egy internet-egymástól el vannak különítve Azure App Service-környezet használata"
+title: "Belső terheléselosztó létrehozása és használata Azure App Service Environmenttel"
+description: "Részletes információk az internettől elzárt Azure App Service Environment létrehozásáról"
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -10,102 +10,103 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: cc7bdd7860506c20187dc913b72111824d1737ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: 9f7343102cf7af6d7f2ba6b4b2f08b7b855da6f8
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Létrehozhat és használhat belső terheléselosztót az App Service-környezet #
+# <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
- Az Azure App Service Environment-környezet az Azure App Service egy Azure virtuális hálózatot (VNet) lévő alhálózatot történő központi telepítését. Két módon telepítheti az App Service-környezetek (ASE): 
+ Az Azure App Service Environment az Azure App Service egy olyan példánya, amelyet egy Azure virtuális hálózat alhálózatában helyeztek üzembe. Az App Service Environment (ASE) üzembe helyezésének két módja van: 
 
-- A virtuális IP-címre a külső IP-cím, egy külső ASE gyakran nevezik.
-- A virtuális IP-címre a belső IP-címet gyakran nevezik egy ILB ASE, mert a belső végpont nem egy belső terheléselosztón (ILB). 
+- Egy virtuális IP-cím vagy külső IP-cím, azaz külső ASE használatával.
+- Egy virtuális IP-cím vagy belső IP-cím, azaz ILB ASE használatával, amelyet azért neveznek így, mert a belső végpont egy belső terheléselosztó (ILB). 
 
-Ez a cikk bemutatja, hogyan hozzon létre egy ILB ASE. Az a ASE az áttekintést lásd: [Bevezetés az App Service-környezetek][Intro]. Egy külső ASE létrehozásával kapcsolatban lásd: [hozzon létre egy külső ASE][MakeExternalASE].
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy ILB ASE környezetet. Az ASE áttekintését [az App Service Environmentet bemutató][Intro] témakör tartalmazza. A külső ASE létrehozásának folyamatát a [külső ASE létrehozását][MakeExternalASE] ismertető témakor tartalmazza.
 
 ## <a name="overview"></a>Áttekintés ##
 
-A virtuális hálózat telepítheti egy ASE az internetről elérhető végpontok vagy IP-címet. Az IP-címének beállítása a virtuális hálózat címre, a ASE kell telepíteni az egy Példánynak. Ha az egy ILB a ASE telepít, meg kell adnia:
+Az ASE környezetet közvetlenül az internethez csatlakozó végponttal vagy a virtuális hálózatán belüli IP-címmel is telepítheti. Ahhoz, hogy egy IP-címet hozzárendeljen egy virtuális hálózati címhez, az ASE környezetet ILB terheléskiegyenlítővel kell üzembe helyezni. Az ASE ILB-vel történő üzembe helyezéséhez az alábbiak szükségesek:
 
--   A saját tartomány használni, amikor a alkalmazásai létrehozására.
+-   Saját tartomány, amelyet az alkalmazások létrehozásakor használ.
 -   A HTTPS-hez használt tanúsítvány.
--   A tartomány DNS-kezelés.
+-   Tartománya DNS-felügyelete.
 
-Ismét műveleteket végezheti el, mint:
+Cserébe többek között az alábbiakat teheti meg:
 
--   Intranetes alkalmazások üzemeltetését biztonságosan a felhőben, amelyek egy-webhelyek vagy Azure ExpressRoute VPN keresztül érhető el.
--   Állomás alkalmazások a felhőben a nyilvános DNS-kiszolgálók nem jelennek meg.
--   Hozzon létre internet elszigetelt háttér-alkalmazásokat, az előtér-alkalmazások biztonságosan integrálható.
+-   Intranet-alkalmazásokat üzemeltethet biztonságosan a felhőben, amelyeket helyek közötti vagy Azure ExpressRoute VPN használatával érhet el.
+-   A nyilvános DNS-kiszolgálókon nem szereplő alkalmazásokat üzemeltethet a felhőben.
+-   Internettől elzárt háttéralkalmazásokat hozhat létre, amelyekkel az előtéri alkalmazások biztonságosan integrálódhatnak.
 
-### <a name="disabled-functionality"></a>Letiltott funkció ###
+### <a name="disabled-functionality"></a>Letiltott funkciók ###
 
-Néhány dolgot, amely egy ILB ASE használatakor nem hajtható végre:
+Néhány dolog, amit nem tehet meg ILB ASE használata esetén:
 
--   IP-alapú SSL használatára.
--   IP-címek hozzárendelése a megadott alkalmazások.
--   Vásároljon, és egy tanúsítványt használni az alkalmazások az Azure portálon keresztül. Tanúsítványok beszerzése hitelesítésszolgáltatótól származó közvetlenül, és használhatja azokat az alkalmazásokat. Nem lehet beszerezni azokat, az Azure portálon keresztül.
+-   IP-alapú SSL használata.
+-   IP-címek hozzárendelése az egyes alkalmazásokhoz.
+-   Tanúsítvány vásárlása és használata egy alkalmazáshoz az Azure Portalon keresztül. A tanúsítványokat közvetlenül hitelesítésszolgáltatótól szerezheti be, és azokat használhatja az alkalmazásaihoz. Az Azure Portalon keresztül nem szerezheti be őket.
 
-## <a name="create-an-ilb-ase"></a>Hozzon létre egy ILB ASE ##
+## <a name="create-an-ilb-ase"></a>ILB ASE létrehozása ##
 
-Egy ILB ASE létrehozása:
+Az ILB ASE létrehozása:
 
-1. Válassza ki az Azure-portálon **új** > **Web + mobil** > **App Service Environment-környezet**.
+1. Az Azure Portalon válassza az **Új** > **Web + Mobil** > **App Service Environment** elemet.
 
 2. Válassza ki előfizetését.
 
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 
-4. Válassza ki, vagy hozzon létre egy Vnetet.
+4. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
 
-5. Ha egy meglévő virtuális hálózatot választ ki, hozzon létre egy alhálózatot a ASE tárolásához szeretné. Feltétlenül állítson be egy alhálózati méretének elég nagy legyen a ASE jövőbeli növekedésének. Azt javasoljuk, hogy a méretet `/25`, amely 128-címekkel rendelkezik, és kezelni tud a maximális méretű ASE. A minimális méret, kiválaszthatja a `/28`. Után szükség van az infrastruktúra, ez a méret legfeljebb 11-példányok is méretezhető.
+5. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/25` méretet javasoljuk, amely 128 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet. A `/28` a kiválasztható legkisebb méret. Az infrastrukturális igényeket figyelembe véve ez a méret legfeljebb 11 példányra skálázható fel.
 
-    * Keresse meg az alapértelmezett legfeljebb 100 példányok túl az App Service-csomagokról.
+    * Az alapértelmezett maximális 100 példányszámot az App Service-csomagban emelheti meg.
 
-    * Méretezhető, 100 közelében, de gyorsabb előtér-méretezés.
+    * Skálázhat 100 példány körüli méretre, de gyorsabb előtéri skálázással.
 
-6. Válassza ki **virtuális hálózati/hely** > **virtuális hálózati konfiguráció**. Állítsa be a **VIP típus** való **belső**.
+6. Válassza a **Virtuális hálózat/hely** > **Virtuális hálózati konfiguráció** elemet. A **VIP típust** állítsa **Belsőre**.
 
-7. Adja meg a tartomány nevét. Ebben a tartományban, a egy, a ASE létrehozott alkalmazások használt. Nincsenek bizonyos korlátozások vonatkoznak. Nem lehet:
+7. Adjon meg egy tartománynevet. Ezt a tartományt használják az ASE környezetben létrehozott alkalmazások. Van néhány korlátozás. A név nem lehet:
 
-    * nettó   
+    * net   
 
-    * azurewebsites.NET
+    * azurewebsites.net
 
-    * p.azurewebsites.NET
+    * p.azurewebsites.net
 
-    * &lt;asename környezet&gt;. p.azurewebsites.net
+    * &lt;ase neve&gt;.p.azurewebsites.net
 
-   Az egyéni tartománynév az alkalmazások és a tartománynév, a ASE által használt nem lehetnek átfedésben. Egy ILB ASE a tartomány nevét a _contoso.com_, nem használható egyéni tartománynevek az alkalmazásokhoz, például:
+   Az alkalmazásokhoz használt egyéni tartománynév és az ASE által használt egyéni tartománynév nem egyezhet meg. ILB ASE esetében a _contoso.com_ tartománynév használata esetén az alábbi egyéni tartományneveket nem használhatja alkalmazásaihoz:
 
     * www.contoso.com
 
-    * ABCD.def.contoso.com
+    * abcd.def.contoso.com
 
-    * ABCD.contoso.com
+    * abcd.contoso.com
 
-   Ha ismeri az alkalmazások egyéni tartománynevek, válassza ki a tartományt a a ILB ASE, amelyek nem rendelkeznek ezen egyéni tartománynevekkel ütközés. Ebben a példában, használhatja a következőhöz hasonlóan *contoso-internal.com* a tartomány a hajlamosnak mert, amelyek nem ütköznek egyéni tartománynevek végződő *. contoso.com*.
+   Ha ismeri alkalmazásai egyéni tartományneveit, válasszon olyan tartományt az ILB ASE környezetnek, amely nem ütközik az egyéni tartománynevekkel. Ebben a példában használhatja a *contoso-internal.com* nevet az ASE tartományaként, mert az nem ütközik *.contoso.com* végződésű tartománynevekkel.
 
-8. Válassza ki **OK**, majd válassza ki **létrehozása**.
+8. Kattintson az **OK**, majd a **Létrehozás** gombra.
 
     ![ASE létrehozása][1]
 
-Az a **virtuális hálózati** panelen van egy **virtuális hálózati konfiguráció** lehetőséget. Egy külső VIP vagy egy belső VIP kiválasztásához használható. Az alapértelmezett érték **külső**. Ha **külső**, a ASE egy internetről elérhető VIP használja. Ha **belső**, a ASE egy ILB a Vneten belül egy IP-cím van konfigurálva.
+A **Virtuális hálózat** panelen található a **Virtuális hálózat konfigurációja**. Használatával kiválaszthat egy külső vagy belső virtuális IP-címet. Az alapértelmezett érték a **Külső**. Ha a **Külső** lehetőséget választja, az ASE közvetlenül az internethez csatlakozó virtuális IP-címet fog használni. Ha a **Belső** lehetőséget választja, az ASE ILB-vel vagy virtuális hálózati IP-címmel lesz konfigurálva.
 
-Miután kiválasztotta a **belső**, a rendszer eltávolítja több IP-címek hozzáadása a ASE lehetőséget. Ehelyett meg kell adnia a ASE tartományát. Service-környezetben egy külső virtuális IP-címre a ASE nevét, hogy ASE létrehozott alkalmazások szolgál a tartományban.
+A **Belső** lehetőség kiválasztását követően további IP-címek nem adhatók hozzá az ASE környezethez. Ehelyett tartományt kell biztosítania az ASE részére. Külső virtuális IP-címmel rendelkező ASE esetén az ASE környezeten belül létrehozott alkalmazások az ASE nevét használják tartományként.
 
-Ha **VIP típus** való **belső**, a ASE neve szolgál a tartomány nem a ASE. Explicit módon adja meg a tartományt. Ha a tartomány *contoso.corp.net* és abban a ASE nevű alkalmazást hoz létre *timereporting*, az alkalmazás URL-je timereporting.contoso.corp.net.
+Ha a **VIP típusa** beállítást **Belsőre** állítja, akkor nem az ASE neve lesz az ASE környezet tartománya. Külön megadhatja a tartományt. Ha a tartomány *contoso.corp.net* és az ASE környezetben létrehoz egy *timereporting* nevű alkalmazást, akkor az alkalmazás URL-címe timereporting.contoso.corp.net lesz.
 
 
-## <a name="create-an-app-in-an-ilb-ase"></a>Hozzon létre egy alkalmazást-Példánynak környezetben ##
+## <a name="create-an-app-in-an-ilb-ase"></a>Alkalmazás létrehozása az ILB ASE környezetben ##
 
-Létrehozott egy app Service-környezetben általában ugyanúgy-Példánynak környezetben létrehoz egy alkalmazást.
+Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létre alkalmazást.
 
-1. Válassza ki az Azure-portálon **új** > **Web + mobil** > **webes** vagy **Mobile** vagy **API Alkalmazás**.
+1. Az Azure Portalon válassza az **Új** > **Web + Mobil** > **Web** vagy **Mobil** vagy **API-alkalmazás** lehetőséget.
 
 2. Adja meg az alkalmazás nevét.
 
@@ -113,30 +114,30 @@ Létrehozott egy app Service-környezetben általában ugyanúgy-Példánynak k�
 
 4. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 
-5. Válassza ki, vagy hozzon létre egy App Service-csomag. Ha szeretne létrehozni egy új App Service-csomagot, jelölje ki a ASE helyeként. Válassza ki az App Service-csomag létrehozni kívánt munkavégző készletét. Az App Service-csomag létrehozásakor válassza ki a ASE helyét és a munkavégző készletét. Ha az alkalmazás nevét adja meg, az alkalmazás neve alatt a tartomány lép a tartomány által a ASE.
+5. Válassza ki vagy hozzon létre egy App Service-csomagot. Amennyiben új App Service-csomagot szeretne létrehozni, válassza az ASE környezetet helyként. Válassza ki a feldolgozókészletet, amelyben az App Service-csomagot szeretné létrehozni. Amikor létrehozza az új App Service-csomagot, válassza az ASE környezetet helyként és feldolgozókészletként. Az alkalmazás nevének megadásakor az alkalmazás tartománya az ASE tartománynevére cserélődik.
 
-6. Kattintson a **Létrehozás** gombra. Ha azt szeretné, hogy az alkalmazás megjelenik az irányítópulton, válassza a **rögzítés az irányítópulton** jelölőnégyzetet.
+6. Kattintson a **Létrehozás** gombra. Ha szeretné, hogy az alkalmazás megjelenjen az irányítópulton, jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
 
     ![App Service-csomag létrehozása][2]
 
-    A **alkalmazásnév**, a tartomány nevét a tartomány a hajlamosnak megfelelően frissül.
+    Az **Alkalmazásnév** területen a tartománynév frissült az ASE tartományának megfelelően.
 
-## <a name="post-ilb-ase-creation-validation"></a>POST-Példánynak ASE létrehozásának ellenőrzése ##
+## <a name="post-ilb-ase-creation-validation"></a>Érvényesítés az ILB ASE létrehozása után ##
 
-Egy ILB ASE mint a nem - Példánynak ASE némileg eltérő. Már beállításértékeket, mint a saját DNS-kiszolgáló kezelése kell. Meg kell adnia a saját tanúsítvány HTTPS-kapcsolatoknál is.
+Az ILB ASE kissé különbözik az ILB nélküli ASE környezettől. A fenti információknak megfelelően Önnek kell kezelnie a saját DNS-ét. A HTTPS-csatlakozáshoz is saját tanúsítványt kell biztosítania.
 
-Miután létrehozta a ASE, a tartomány nevét a megadott tartomány jeleníti meg. Új elem megjelenik a **beállítás** nevű menü **ILB tanúsítvány**. A ASE olyan tanúsítvány, amely nem adja meg a ILB ASE tartományt hozza létre. A ASE tanúsítványt használja, ha a böngésző megtudhatja, hogy érvénytelen. Ez a tanúsítvány megkönnyíti a HTTPS tesztelése, de kell töltse fel a saját tanúsítványban ILB ASE tartományához van kötve. Ez a lépés nem szükséges, függetlenül attól, hogy a tanúsítvány önaláírt vagy a hitelesítésszolgáltatótól beszerzett.
+Az ASE létrehozását követően a tartomány az Ön által megadott tartománynevet jeleníti meg. A **Beállítás** menüben egy **ILB-tanúsítvány** nevű új elem jelenik meg. Az ASE olyan tanúsítvánnyal jött létre, amely nem határozza meg az ILB ASE tartományát. Amennyiben ezzel a tanúsítvánnyal használja az ASE környezetet, a böngészője érvénytelennek fogja nyilvánítani. A tanúsítvány egyszerűbbé teszi a HTTPS tesztelését, de fel kell töltenie saját, az ILB ASE környezethez kötött rögzített tanúsítványát. Ez a lépés szükséges, függetlenül attól, hogy a tanúsítvány önaláírt vagy hitelesítésszolgáltatótól származik.
 
 ![ILB ASE tartománynév][3]
 
-A ILB ASE érvényes SSL-tanúsítvány szükséges. Belső hitelesítésszolgáltatók használja, vásárolhat egy tanúsítványt egy külső kibocsátó, vagy használhat önaláírt tanúsítványt. Az SSL-tanúsítvány forrását, függetlenül is megfelelően konfigurálni kell a következő tanúsítvány attribútumok:
+Az ILB ASE környezetnek szüksége van egy érvényes SSL-tanúsítványra. Használjon belső tanúsítványszolgáltatót, vásároljon tanúsítványt külső kiállítótól vagy használjon önaláírt tanúsítványt. Az SSL-tanúsítvány forrásától függetlenül az alábbi tanúsítványattribútumokat megfelelően kell konfigurálni:
 
-* **Tulajdonos**: Ez az attribútum *.your-gyökér-tartományi-itt értékre kell állítani.
-* **Tulajdonos alternatív neve**: ennek az attribútumnak kell tartalmaznia a **.your-gyökér-tartományi-Itt* és **.scm.your-gyökér-tartományi-Itt*. Minden alkalmazáshoz társított SCM/Kudu webhely SSL-kapcsolatot az űrlap cím használata *your-app-name.scm.your-root-domain-here*.
+* **Tulajdonos**: Ezt az attribútumot állítsa *.az-ön-gyökértartománya értékre.
+* **Tulajdonos alternatív neve**: Ennek az attribútumnak tartalmaznia kell a **.az-ön-gyökértartománya* és a **.scm.az-ön-gyökértartománya* neveket. Az SCM/Kudu helyhez társított alkalmazások SSL-kapcsolatai egy *az-ön-alkalmazásának-neve.scm.az-ön-gyökértartománya* formátumú címet használnak.
 
-A konvertálás/mentése az SSL-tanúsítvány egy .pfx fájlba. A .pfx fájl tartalmazza az összes köztes kell, és a legfelső szintű tanúsítványok. A biztonság jelszóval.
+Konvertálja/mentse az SSL-tanúsítványt .pfx fájlként. A .pfx fájlnak tartalmaznia kell az összes köztes és főtanúsítványt. Jelszóval gondoskodjon a védelméről.
 
-Ha szeretne létrehozni egy önaláírt tanúsítványt, a PowerShell-parancsok itt is használhatja. A ILB ASE tartománynév helyett használjon *internal.contoso.com*: 
+Amennyiben önaláírt tanúsítványt szeretne létrehozni, itt használhatja a PowerShell-parancsokat. Ügyeljen arra, hogy a saját ILB ASE tartományát használja az *internal.contoso.com* helyett: 
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "\*.internal-contoso.com","\*.scm.internal-contoso.com"
     
@@ -146,81 +147,81 @@ Ha szeretne létrehozni egy önaláírt tanúsítványt, a PowerShell-parancsok 
     $fileName = "exportedcert.pfx" 
     Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password
 
-A tanúsítvány, amely PowerShell-parancsokkal generál böngészők által megjelölt, mert a tanúsítványt a hitelesítésszolgáltatótól, amely megbízhatósági lánc a böngésző nem hozta létre. Ahhoz, hogy egy tanúsítványt, amely megbízik a böngésző, be kell szereznie, a böngésző lánc megbízhatósági kereskedelmi hitelesítésszolgáltatótól származó. 
+A böngészők megjelölik a PowerShell-parancs által létrehozott tanúsítványokat, mert a tanúsítványt nem a böngésző megbízhatósági láncában szereplő egyik hitelesítésszolgáltató hozta létre. A böngésző által is elfogadott tanúsítvány beszerzéséhez vegyen egyet a böngésző megbízhatósági láncában megtalálható üzleti hitelesítésszolgáltatók egyikétől. 
 
-![Állítsa be a ILB tanúsítványt][4]
+![ILB-tanúsítvány beállítása][4]
 
-Töltse fel a saját tanúsítványait, és-hozzáférés tesztelése:
+Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez tegye a következőket:
 
-1. A ASE létrehozása után nyissa meg a ASE felhasználói felületén. Válassza ki **ASE** > **beállítások** > **ILB tanúsítvány**.
+1. Az ASE létrehozása után keresse fel az ASE felhasználói felületét. Válassza az **ASE** > **Beállítások** > **ILB-tanúsítvány** lehetőséget.
 
-2. Állítsa be a ILB tanúsítványt, válassza ki a tanúsítvány .pfx fájlt, és adja meg a jelszót. Ez a lépés bizonyos idő feldolgozni. Egy üzenet jelenik meg, amely meghatározza, hogy, hogy folyamatban van egy feltöltési művelet.
+2. Az ILB-tanúsítvány beállításához válassza ki a tanúsítvány .pfx fájlját, majd adja meg a jelszót. Ennek a lépésnek a feldolgozása beletelhet egy kis időbe. Egy üzenet jelzi, hogy egy feltöltési művelet van folyamatban.
 
-3. A ILB cím lekérése a ASE. Válassza ki **ASE** > **tulajdonságok** > **virtuális IP-cím**.
+3. Szerezze be az ASE ILB-címét. Válassza ki az **ASE** > **Tulajdonságok** > **Virtuális IP-cím** elemet.
 
-4. Webalkalmazás létrehozása a ASE a ASE létrehozása után.
+4. Az ASE létrehozását követően hozzon létre egy webalkalmazást az ASE környezetben.
 
-5. Virtuális gép létrehozása, ha még nincs fiókja, hogy a Vneten belül.
+5. Amennyiben nincs virtuális gépe abban a virtuális hálózatban, hozzon létre egyet.
 
     > [!NOTE] 
-    > Ne kísérelje meg a virtuális gép ugyanazon az alhálózaton, mint a ASE hozható létre, mert sikertelen, vagy problémákhoz.
+    > Ne próbálja az ASE környezettel azonos alhálózatban létrehozni a virtuális gépet, mert az sikertelen lehet vagy problémákat okozhat.
     >
     >
 
-6. Állítsa be a DNS a ASE tartomány. A tartomány a DNS-ben helyettesítő karakter használható. Ehhez az egyszerű tesztek, VIP IP-címre a webalkalmazás nevének beállítása a virtuális gépen a hosts fájl szerkesztése:
+6. Állítsa be az ASE tartomány DNS-ét. A DNS-ben helyettesítő karaktert is használhat tartományhoz. Pár egyszerű teszt végrehajtásához állítsa a webalkalmazás nevét a virtuális IP-címére a virtuális gép hosts fájljának szerkesztésével:
 
-    a. Ha a ASE tartomány neve _. ilbase.com_ hoz létre, hogy a webes alkalmazás neve és _mytestapp_, a címzett _mytestapp.ilbase.com_. Ezután _mytestapp.ilbase.com_ a ILB címhez. (A Windows, a hosts fájl jelenleg _C:\Windows\System32\drivers\etc\_.)
+    a. Ha az ASE tartományneve _.ilbase.com_ és egy _mytestapp_ nevű webalkalmazást hoz létre, akkor annak címe _mytestapp.ilbase.com_ lesz. Ezután állítsa be, hogy a _mytestapp.ilbase.com_ tartománynév az ILB-címre mutasson. (Windows rendszeren a hosts fájl a _C:\Windows\System32\drivers\etc\_ elérési úton található.)
 
-    b. Webes telepítés közzététel vagy a speciális konzoljához való hozzáférés tesztelése, hozzon létre egy rekordot _mytestapp.scm.ilbase.com_.
+    b. A webtelepítés közzétételének teszteléséhez vagy a haladó konzol eléréséhez hozzon létre egy rekordot a _mytestapp.scm.ilbase.com_ tartományban.
 
-7. Használja ezt a virtuális Gépet egy böngészőt, és navigáljon a http://mytestapp.ilbase.com. (Vagy bármilyen a webes alkalmazás neve a tartomány van.)
+7. A virtuális gép böngészőjével keresse fel a http://mytestapp.ilbase.com oldalt. (Vagy keresse fel webalkalmazásának nevét, a saját tartománnyal.)
 
-8. Használja ezt a virtuális Gépet egy böngészőt, és navigáljon a https://mytestapp.ilbase.com. Ha egy önaláírt tanúsítványt használ, fogadja el a biztonsági hiánya.
+8. A virtuális gép böngészőjével keresse fel a https://mytestapp.ilbase.com oldalt. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
 
-    Az IP-címet a ILB megtalálható-e **IP-címek**. Ez a lista is rendelkezik a külső VIP és bejövő felügyeleti adatforgalomhoz használt IP-címét.
+    Az ILB IP-címe az **IP-címek** területen látható. Ez a lista tartalmazza a külső virtuális IP-címet és a bejövő felügyeleti forgalmak IP-címeit is.
 
-    ![ILB IP-cím][5]
+    ![ILB IP-címe][5]
 
-## <a name="web-jobs-functions-and-the-ilb-ase"></a>Webes feladatok, funkciók és a ILB ASE ##
+## <a name="web-jobs-functions-and-the-ilb-ase"></a>WebJobs-feladatok, a Functions és az ILB ASE ##
 
-Egy ILB ASE funkciók és a webes feladatok is támogatottak, de azokat a portálhoz, az SCM helyre hálózati hozzáféréssel kell rendelkeznie.  Ez azt jelenti, hogy a böngésző vagy olyan gazdagépre, amely a áll, vagy a virtuális hálózathoz kell lennie.  
+Az ILB ASE támogatja a Functionst és a WebJobs-feladatokat is, de ahhoz, hogy a portál is működjön velük, rendelkeznie kell hálózati hozzáféréssel egy SCM helyhez.  Ez azt jelenti, hogy a böngészőnek olyan gazdagépen kell lennie, amely csatlakozik a virtuális hálózathoz, vagy azon belül van.  
 
-Ha az Azure Functions egy ILB ASE használja, akkor előfordulhat, hogy hiba jelenik, amely szerint a "jelenleg nem tudjuk a funkciók most beolvasása. Próbálkozzon újra később." Ez a hiba akkor fordul elő, mert a függvények felhasználói felület kihasználja az SCM hely HTTPS-KAPCSOLATON keresztül, és a legfelső szintű tanúsítvány nem a böngésző lánc megbízhatósági. Webes feladatok hasonló problémát észlelt. A probléma elkerülése érdekében tegye a következők egyikét:
+Az Azure Functions ILB ASE környezetben történő használatakor az alábbi hibaüzenet jelenhet meg: „Nem sikerült beolvasni a függvényeket. Próbálkozzon újra később.” Ez a hiba azért fordul elő, mert a Functions felhasználói felülete az SCM helyet használja a HTTPS helyett, és a főtanúsítványt nem tartalmazza a böngésző megbízhatósági lánca. A WebJobs-feladatok hasonló problémába ütköznek. A probléma elkerülése érdekében tegye a következők egyikét:
 
-- A tanúsítvány felvétele a megbízható tanúsítványok tárolójába. Ez feloldja széle és az Internet Explorerben.
-- Chrome használja, és látogasson el az SCM először, fogadja el a nem megbízható tanúsítvány, és folytassa a a portálon.
-- A böngésző megbízhatósági lánc a kereskedelmi tanúsítványt használjon.  Ez a lehetőség ajánlott.  
+- Vegye fel a tanúsítványt a megbízható tanúsítványok tárolójába. Ez megszünteti az Edge és az Internet Explorer blokkolását.
+- A Chrome-ban először keresse fel az SCM helyet, fogadja el a nem megbízható tanúsítványt, majd menjen a portálra.
+- Használja böngészője megbízhatósági láncának egyik kereskedelmi tanúsítványát.  Ez a legjobb lehetőség.  
 
 ## <a name="dns-configuration"></a>DNS-konfiguráció ##
 
-Ha egy külső VIP használja, a DNS Azure kezeli. Bármely alkalmazás a ASE létre automatikusan az Azure DNS-Ez egy nyilvános DNS-ben. A saját DNS-Példánynak környezetben kell kezelni. Például egy adott tartomány _contoso.net_, kell létrehoznia a DNS A rekordokat a a ILB címet mutató DNS-ben:
+Külső virtuális IP-cím használata esetén az Azure kezeli a DNS-t. Az ASE környezetben létrehozott összes alkalmazás automatikusan hozzáadódik Azure DNS-hez, amely egy nyilvános DNS. Az ILB ASE környezetben Önnek kell kezelnie a saját DNS-ét. Egy megadott tartomány, például a _contoso.net_ esetében olyan DNS A-rekordokat kell létrehoznia, amelyek az ILB címére mutatnak:
 
-- *. contoso.net
-- *. scm.contoso.net
+- *.contoso.net
+- *.scm.contoso.net
 
-A ILB ASE tartomány kívül a ASE több dolgot használata esetén szükség lehet a DNS kezelése /-alkalmazás-neve alapján. Ez a módszer van kihívást, mert később szüksége lesz a DNS-kiszolgáló vegyen fel minden új alkalmazásnév létrehozásakor. Ezért azt javasoljuk, hogy dedikált tartományt használ.
+Ha az ILB ASE tartományt az ASE környezeten kívül más dolgokra is használja, lehetséges, hogy a DNS-t alkalmazásnevenként kell kezelnie. Ez a módszer nehézkes, mivel az alkalmazásnevek létrehozásakor egyesével kell hozzáadni azokat a DNS-hez. Ezért javasoljuk egy dedikált tartomány használatát.
 
-## <a name="publish-with-an-ilb-ase"></a>Egy ILB mértékéig közzététele ##
+## <a name="publish-with-an-ilb-ase"></a>Közzététel ILB ASE környezetben ##
 
-Minden alkalmazást, amely jön létre nincsenek két végpontot. -Példánynak környezetben van  *&lt;alkalmazás neve >.&lt; ILB ASE tartományi >* és  *&lt;alkalmazás neve > .scm.&lt; ILB ASE tartományi >*. 
+Minden létrehozott alkalmazásnak két végpontja van. Az ILB ASE környezetben, az *&lt;alkalmazásnév>.&lt;ILB ASE tartomány>* és az *&lt;alkalmazásnév>.scm.&lt;ILB ASE tartomány>* áll rendelkezésre. 
 
-Az SCM helynév megnyitná a Kudu konzol hívása a **speciális portal**, az Azure portálon. A Kudu konzol segítségével megtekintheti a környezeti változók, megtekinti a lemez, használja a konzolon, és még sok más. További információkért lásd: [Kudu konzol az Azure App Service-][Kudu]. 
+Az SCM helynév a Kudu konzolhoz irányítja, az Azure Portal **Speciális portál** részére. A Kudu konzol a környezeti változók megtekintését, a lemez vizsgálatát, a konzol használatát és még sok más funkciót kínál. További információ: [Kudu konzol az Azure App Service-ben][Kudu]. 
 
-A több-bérlős App Service és a külső Service-környezetben van az egyszeri bejelentkezés az Azure-portál és a Kudu konzol között. A ILB ASE azonban meg kell a közzétételi hitelesítő adatai segítségével bejelentkezhetnek a Kudu konzolba.
+A több-bérlős App Service-ben és a külső ASE környezetben az Azure Portal és a Kudu konzol között egyszeri bejelentkezés van. Az ILB ASE esetében viszont közzétételi hitelesítő adatai használatával jelentkezhet be a Kudu konzolba.
 
-Internetes CI rendszereknek, például a Githubon és a Visual Studio Team Services, egy ILB mértékéig nem működnek, mert a közzétételi végpont nem érhető el az internet. Ehelyett kell használnia, amely lekéréses modellt használ, például a Dropbox CI rendszer.
+A GitHubhoz és Visual Studio Team Services-hez hasonló internetes alapú CI rendszerek nem működnek az ILB ASE környezettel, mivel a közzététel végpontja nem elérhető az internetről. Ehelyett egy lekérési modellt használó CI-rendszert kell használnia, ilyen például a Dropbox.
 
-A közzétételi-Példánynak környezetben alkalmazások végpontjainak használja a tartományban, amelyhez a Példánynak ASE hozták létre. Ez a tartomány megjelenik az alkalmazás közzétételi profil és az alkalmazás portálpaneljéhez (**áttekintése** > **Essentials** és is **tulajdonságok**). Ha rendelkezik egy, a altartomány ILB ASE *contoso.net* és az alkalmazás neve *mytest*, használjon *mytest.contoso.net* az FTP és *mytest.scm.contoso.net* központi telepítésére.
+Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Ez a tartomány az alkalmazás közzétételi profilján és az alkalmazás portálpanelén jelenik meg (**Áttekintés** > **Alapvető szolgáltatások** és **Tulajdonságok**). Ha az ILB ASE altartománya *contoso.net* és az alkalmazás neve *mytest*, akkor FTP-hez használja a *mytest.contoso.net*, webes telepítéshez pedig az *mytest.scm.contoso.net* tartományneveket.
 
-## <a name="couple-an-ilb-ase-with-a-waf-device"></a>Egy ILB ASE gömbcsatlakozók WAF-eszközzel rendelkező ##
+## <a name="couple-an-ilb-ase-with-a-waf-device"></a>ILB ASE párosítása WAF-eszközzel ##
 
-Az Azure App Service számos biztonsági intézkedéseket, hogy megóvja a rendszert biztosít. Pedig segít meghatározni, hogy megtámadott lett-e az alkalmazást. A legjobb védelmet webalkalmazás arra üzemeltetési platformtól, például az Azure App Service-ben, a webes alkalmazás tűzfalat (waf-ot). Mivel a ILB ASE egy elszigetelt hálózati alkalmazás végponttal rendelkezik, célszerű a használatra.
+Az Azure App Service számos biztonsági eszközt kínál a rendszer védelmére. Ezek az eszközök azt is segítenek megállapítani, hogy feltörték-e az alkalmazást. A legjobb védelem webalkalmazások részére egy, az Azure App Service-hez hasonló üzemeltetési platform párosítása egy webalkalmazás-tűzfallal (WAF). Mivel az ILB ASE rendelkezik hálózattól elzárt alkalmazásvégpontokkal, így alkalmas erre a használati módra.
 
-A ILB ASE WAF-eszközzel rendelkező konfigurálásával kapcsolatos további tudnivalókért lásd: [webalkalmazási tűzfal konfigurálása az App Service-környezet][ASEWAF]. Ez a cikk bemutatja, hogyan használható a Barracuda virtuális készülék a mértékéig. Egy másik lehetőség, hogy Azure Application Gateway használja. Alkalmazásátjáró OWASP core szabályok használja a biztonságos olyan alkalmazást, akkor mögé. Alkalmazásátjáró kapcsolatos további információkért lásd: [bemutatása az Azure webalkalmazási tűzfal][AppGW].
+Az ILB ASE WAF eszközhöz való konfigurálásáról további információkat a [webalkalmazás-tűzfal és az App Service Environment konfigurálását ismertető cikk][ASEWAF] tartalmaz. Ez a cikk leírja, hogyan használhatja együtt a Barracuda virtuális berendezést az ASE környezettel. Másik lehetőségként az Azure Application Gateway is használható. Az Application Gateway az alapvető OWASP-szabályokat használja a mögötte elhelyezett alkalmazások biztonságossá tételére. Az Application Gatewayről további információt az [Azure webalkalmazási tűzfal bevezető][AppGW] cikke tartalmaz.
 
 ## <a name="get-started"></a>Bevezetés ##
 
-* ASEs megkezdéséhez, lásd: [Bevezetés az App Service-környezetek][Intro].
+* Az ASE használatával kapcsolatos első lépésekről [Az App Service Environment bemutatása][Intro] témakörben olvashat.
  
 <!--Image references-->
 [1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png

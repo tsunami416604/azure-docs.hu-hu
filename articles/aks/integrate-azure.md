@@ -1,0 +1,187 @@
+---
+title: "Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával"
+description: "Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával"
+services: container-service
+author: sozercan
+manager: timlt
+ms.service: container-service
+ms.topic: overview
+ms.date: 12/05/2017
+ms.author: seozerca
+ms.openlocfilehash: 18d082a1cd07e0b3572c93ea24b4e1edd92cad2a
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 12/06/2017
+---
+# <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával
+
+A [Kubernetes szolgáltatáskatalógussal](https://github.com/kubernetes-incubator/service-catalog) együtt az Open Service Broker for Azure (OSBA) lehetővé teszi a fejlesztők számára, hogy az Azure által kezelt szolgáltatásokat használhassák a Kubernetesben. Ez az útmutató a Kubernetes szolgáltatáskatalógus, az Open Service Broker for Azure (OSBA) és olyan alkalmazások üzembe helyezésére összpontosít, amelyek a Kubernetes használatával vesznek igénybe Azure által kezelt szolgáltatásokat.
+
+## <a name="prerequisites"></a>Előfeltételek
+* Azure-előfizetés
+
+* Azure CLI 2.0: [Telepítheti helyileg](/cli/azure/install-azure-cli), vagy használhatja az [Azure Cloud Shellben](../cloud-shell/overview.md).
+
+* Helm CLI 2.7+: [Telepítheti helyileg](kubernetes-helm.md#install-helm-cli), vagy használhatja az [Azure Cloud Shellben](../cloud-shell/overview.md).
+
+* Engedély egyszerű szolgáltatás létrehozásához Azure-előfizetése Közreműködő szerepkörében
+
+* Egy létező Azure Container Service- (AKS-) fürt. Ha egy AKS-fürtre van szüksége, kövesse az [AKS-fürt létrehozása](kubernetes-walkthrough.md) című rövid útmutatót.
+
+## <a name="install-service-catalog"></a>Szolgáltatáskatalógus telepítése
+
+Első lépésként egy Helm-diagram használatával telepítse a szolgáltatáskatalógust a Kubernetes-fürtbe. Frissítse a Tiller-példányát (Helm-kiszolgáló) a fürtben az alábbi módon:
+
+```azurecli-interactive
+helm init --upgrade
+```
+
+Ezután adja hozzá a szolgáltatáskatalógust a Helm-adattárhoz:
+
+```azurecli-interactive
+helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
+```
+
+Végül telepítse a szolgáltatáskatalógust a Helm-diagrammal:
+
+```azurecli-interactive
+helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false
+```
+
+Miután futtatta a Helm-diagramot, ellenőrizze, hogy a `servicecatalog` megjelenik az alábbi parancs kimenetében:
+
+```azurecli-interactive
+kubectl get apiservice
+```
+
+Például az alábbi kimenethez hasonlónak kell megjelennie (itt csonkolva látható):
+
+```
+NAME                                 AGE
+v1.                                  10m
+v1.authentication.k8s.io             10m
+...
+v1beta1.servicecatalog.k8s.io        34s
+v1beta1.storage.k8s.io               10
+```
+
+## <a name="install-open-service-broker-for-azure"></a>Az Open Service Broker for Azure telepítése
+
+A következő lépés az [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure) telepítése, amely tartalmazza az Azure által kezelt szolgáltatások katalógusát. Az elérhető Azure-szolgáltatások között megtalálható például az Azure Database for PostgreSQL, az Azure Redis Cache, az Azure Database for MySQL, az Azure Cosmos DB és az Azure SQL Database.
+
+Kezdésnek adja hozzá az Open Service Broker for Azure-t az Azure Helm-adattárhoz:
+
+```azurecli-interactive
+helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
+```
+
+Hozzon létre egy [egyszerű szolgáltatást](kubernetes-service-principal.md) az alábbi Azure CLI-paranccsal:
+
+```azurecli-interactive
+az ad sp create-for-rbac
+```
+
+A kimenet az alábbihoz hasonló lesz. Jegyezze fel az `appId`, a `password`, és a `tenant` értékét, mert a következő lépésben használni fogja őket.
+
+```JSON
+{
+  "appId": "7248f250-0000-0000-0000-dbdeb8400d85",
+  "displayName": "azure-cli-2017-10-15-02-20-15",
+  "name": "http://azure-cli-2017-10-15-02-20-15",
+  "password": "77851d2c-0000-0000-0000-cb3ebc97975a",
+  "tenant": "72f988bf-0000-0000-0000-2d7cd011db47"
+}
+```
+
+Állítsa be az alábbi környezeti változókat az előbbi értékekkel:
+
+```azurecli-interactive
+AZURE_CLIENT_ID=<appId>
+AZURE_CLIENT_SECRET=<password>
+AZURE_TENANT_ID=<tenant>
+```
+
+Most vegye elő Azure-előfizetési azonosítóját:
+
+```azurecli-interactive
+az account show --query id --output tsv
+```
+
+Majd állítsa be az alábbi környezeti változót az előbbi értékkel:
+
+```azurecli-interactive
+AZURE_SUBSCRIPTION_ID=[your Azure subscription ID from above]
+```
+
+Miután feltöltötte értékkel ezeket a környezeti változókat, hajtsa végre az alábbi parancsot az Open Service Broker for Azure a Helm-diagram használatával történő telepítéséhez:
+
+```azurecli-interactive
+helm install azure/open-service-broker-azure --name osba --namespace osba \
+    --set azure.subscriptionId=$AZURE_SUBSCRIPTION_ID \
+    --set azure.tenantId=$AZURE_TENANT_ID \
+    --set azure.clientId=$AZURE_CLIENT_ID \
+    --set azure.clientSecret=$AZURE_CLIENT_SECRET
+```
+
+Ha az OSBA üzembe helyezése befejeződött, telepítse a [szolgáltatáskatalógus CLI-jét](https://github.com/Azure/service-catalog-cli). Ez egy könnyen használható parancssori felület, amellyel lekérdezhetőek többek között a szolgáltatásközvetítők, a szolgáltatásosztályok és a szolgáltatáscsomagok.
+
+Hajtsa végre az alábbi parancsokat a szolgáltatáskatalógus parancssori felületi binárisának telepítéséhez:
+
+```azurecli-interactive
+curl -sLO https://servicecatalogcli.blob.core.windows.net/cli/latest/$(uname -s)/$(uname -m)/svcat
+chmod +x ./svcat
+```
+
+Ezután listázza ki a telepített szolgáltatásközvetítőket:
+
+```azurecli-interactive
+./svcat get brokers
+```
+
+A következőhöz hasonló kimenetnek kell megjelennie:
+
+```
+  NAME                               URL                                STATUS
++------+--------------------------------------------------------------+--------+
+  osba   http://osba-open-service-broker-azure.osba.svc.cluster.local   Ready
+```
+
+Ezt követően listázza ki az elérhető szolgáltatásosztályokat. A megjelenített szolgáltatásosztályok azok az elérhető, az Azure által kezelt szolgáltatások, amelyek kioszthatóak az Open Service Broker for Azure-on keresztül.
+
+```azurecli-interactive
+./svcat get classes
+```
+
+Végül listázza ki az elérhető szolgáltatáscsomagokat. A szolgáltatáscsomagok az Azure által kezelt szolgáltatások szolgáltatási szintjei. Például az Azure Database for MySQL esetében a csomagok a `basic50` alapszintű, 50 adatbázis-tranzakciós egységtől (DTU) a `standard800` standard szintű, 800 adatbázis-tranzakciós egységig terjednek.
+
+```azurecli-interactive
+./svcat get plans
+```
+
+## <a name="install-wordpress-from-helm-chart-using-azure-database-for-mysql"></a>A WordPress telepítése Helm-diagramból az Azure Database for MySQL használatával
+
+Ebben a lépésben a Helm használatával telepítünk egy frissített Helm-diagramot a WordPress számára. A diagram egy külső Azure Database for MySQL-példányt helyez üzembe, amelyet a WordPress használhat. Ez eltarthat pár percig.
+
+```azurecli-interactive
+helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0
+```
+
+Ha meg szeretne győződni arról, hogy a telepítés a megfelelő erőforrásokat osztotta ki, listázza ki a telepített szolgáltatáspéldányokat és kötéseket:
+
+```azurecli-interactive
+./svcat get instances -n wordpress
+./svcat get bindings -n wordpress
+```
+
+Listázza ki a telepített titkos kulcsokat:
+
+```azurecli-interactive
+kubectl get secrets -n wordpress -o yaml
+```
+
+## <a name="next-steps"></a>Következő lépések
+
+A cikk útmutatásait követve üzembe helyezte a szolgáltatáskatalógust egy Azure Container Service- (AKS-) fürtön. Az Open Service Broker for Azure használatával üzembe helyezett egy WordPress-példányt, amely az Azure által kezelt szolgáltatásokat használja, ebben az esetben az Azure Database for MySQL-t.
+
+További frissített, OSBA-alapú Helm-diagramok eléréséhez tekintse meg az [Azure/helm-charts](https://github.com/Azure/helm-charts) adattárat. Ha szeretné saját, az OSBA-val működő diagramjait létrehozni, tekintse meg az [új diagram létrehozását](https://github.com/Azure/helm-charts#creating-a-new-chart) ismertető részt.

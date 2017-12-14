@@ -5,42 +5,27 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2017
+ms.date: 12/06/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 6ea39618a24249d92b77afdf5cb0ea284b180223
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 88ceb47d46b66e716c6c263098d5b9458e4aff22
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához az Azure CLI használatával
 
 Az Azure-ral való megfelelőség megértéséhez szükséges első szempont a saját jelenlegi erőforrásainak ismerete. Ez a rövid útmutató végigvezeti Önt a folyamaton, amellyel létrehozhat egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést.
 
 A folyamat végén sikeresen fogja azonosítani a felügyelt lemezeket nem használó, azaz *nem megfelelő* virtuális gépeket.
-.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
-
-## <a name="opt-in-to-azure-policy"></a>Az Azure Policy használata
-
-Elérhető az Azure Policy nyilvános előzetes verziója. Hozzáférés kéréséhez regisztráció szükséges.
-
-1. Látogasson el az Azure Policy webhelyére a https://aka.ms/getpolicy címen, majd válassza ki a **Feliratkozás** lehetőséget a bal oldali panelen.
-
-   ![Szabályzat keresése](media/assign-policy-definition/sign-up.png)
-
-2. Az Azure Policy használatához válassza ki azokat az előfizetéseket az **Előfizetés** listából, amelyekkel dolgozni szeretne. Ezután kattintson a **Regisztrálás** elemre.
-
-   ![Az Azure Policy használata](media/assign-policy-definition/preview-opt-in.png)
-
-   Az Előzetes verzió használatára vonatkozó kérelmét a rendszer automatikusan jóváhagyja. Kérjük, várjon legfeljebb 30 percet, amíg a rendszer feldolgozza a regisztrációját.
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
@@ -66,7 +51,7 @@ Következő lépésként adja meg az alábbi információkat, majd futtassa a k�
 - **Szabályzat** – Ez az a szabályzatdefiníció, amely alapján létre fogja hozni a hozzárendelést. Ezúttal a *Felügyelt lemezeket nem használó virtuális gépek naplózása* szabályzatdefiníciót fogjuk használni
 - **Hatókör** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet.
 
-  Használja az Azure Policy használatához előzőleg regisztrált előfizetést (vagy erőforráscsoportot). A jelen példában a következő előfizetés-azonosítót fogjuk használni: **bc75htn-a0fhsi-349b-56gh-4fghti-f84852**. Az erőforráscsoport neve: **FabrikamOMS**. Ne felejtse el módosítani ezeket az Ön által használt előfizetés-azonosítóra, illetve erőforráscsoport-névre.
+  Használja az előzőleg regisztrált előfizetést (vagy erőforráscsoportot). A jelen példában a következő előfizetés-azonosítót fogjuk használni: **bc75htn-a0fhsi-349b-56gh-4fghti-f84852**. Az erőforráscsoport neve: **FabrikamOMS**. Ne felejtse el módosítani ezeket az Ön által használt előfizetés-azonosítóra, illetve erőforráscsoport-névre.
 
 A parancsnak így kell kinéznie:
 

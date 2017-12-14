@@ -1,6 +1,6 @@
 ---
-title: "Gyors üzembe helyezés: A Spark feladat futtatása az Azure Databricks Azure-portál használatával |} Microsoft Docs"
-description: "A gyors üzembe helyezés bemutatja, hogyan használható az Azure-portálon hozzon létre egy Azure Databricks munkaterületet, Apache Spark-fürt, és egy Spark-feladat futtatása."
+title: "Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával | Microsoft Docs"
+description: "Ez a rövid útmutató bemutatja, hogyan használható az Azure Portal egy Azure Databricks-munkaterület és egy Apache Spark-fürt létrehozásához, illetve Spark-feladatok futtatásához."
 services: azure-databricks
 documentationcenter: 
 author: nitinme
@@ -10,96 +10,97 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: nitinme
-ms.openlocfilehash: cffc78c06de6be252704c2a116d7ded2c7e8567f
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: 6a90ac77cd605a41f1fc7d0958662a7e752e3849
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Gyors üzembe helyezés: A Spark feladat futtatása az Azure Databricks az Azure portál használatával
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
 
-A gyors üzembe helyezés az Azure Databricks munkaterülethez és belül futó Apache Spark-fürt létrehozását szemlélteti. Végül megismerheti, hogyan Spark végezzen a Databricks fürtön. Az Azure Databricks további információkért lásd: [Mi az Azure Databricks?](what-is-azure-databricks.md)
+Ez a rövid útmutató bemutatja, hogyan hozható létre Azure Databricks-munkaterület, illetve azon belül egy Apache Spark-fürt. Végezetül azt is ismertetjük, hogyan futtathat Spark-feladatokat a Databricks-fürtön. További információt az Azure Databricksről [az Azure Databrickset](what-is-azure-databricks.md) ismertető cikkben talál.
 
 ## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 
-Jelentkezzen be a [Azure-portálon](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-## <a name="create-a-databricks-workspace"></a>Databricks munkaterület létrehozása
+## <a name="create-a-databricks-workspace"></a>Databricks-munkaterület létrehozása
 
-Ebben a szakaszban hozzon létre egy Azure Databricks munkaterületet, az Azure portál használatával. 
+Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával. 
 
-1. Az Azure portálon kattintson  **+** , kattintson a **adatok + analitika**, és kattintson a **(előzetes verzió) Azure Databricks**. 
+1. Az Azure Portalon kattintson a **+** jelre, majd az **Adatok + analitika**, végül az **Azure Databricks (előzetes verzió)** elemre. 
 
-    ![Azure-portál Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks Azure-portál")
+    ![Databricks az Azure Portalon](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks az Azure Portalon")
 
-2. A **(előzetes verzió) Azure Databricks**, kattintson a **létrehozása**.
+2. Az **Azure Databricks (előzetes verzió)** alatt kattintson a **Létrehozás** elemre.
 
     > [!NOTE]
-    > Az Azure Databricks jelenleg korlátozott előzetes. Ha azt szeretné, hogy figyelembe kell venni az előzetes engedélyezése az Azure-előfizetéshez, adja meg a [bejelentkezési űrlap kitöltése](https://databricks.azurewebsites.net/).
+    > Az Azure Databricks jelenleg korlátozott előzetes verzióban érhető el. Ha szeretné engedélyeztetni Azure-előfizetéséhez az előzetes verziót, ki kell töltenie a [regisztrációs űrlapot](https://databricks.azurewebsites.net/).
 
-2. A **Azure Databricks szolgáltatás**, adja meg a következő értékeket:
+2. Az **Azure Databricks szolgáltatás** alatt a következő értékeket kell megadni:
 
-    ![Hozzon létre egy Azure Databricks munkaterületet](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "hozzon létre egy Azure Databricks munkaterületet")
+    ![Azure Databricks-munkaterület létrehozása](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
 
-    * A **munkaterületnevet**, adja meg a Databricks munkaterület nevét.
-    * A **előfizetés**, a legördülő listában válassza ki az Azure-előfizetéshez.
-    * A **erőforráscsoport**, adja meg, hogy hozzon létre egy új erőforráscsoportot, vagy használjon egy meglévőt. Egy erőforráscsoport egy olyan tároló, amely egy Azure megoldás kapcsolódó erőforrásokat tárol. További információkért lásd: [Azure erőforráscsoport áttekintése](../azure-resource-manager/resource-group-overview.md).
-    * A **hely**, jelölje be **USA keleti régiója 2**. Más elérhető régiók, lásd: [Azure-szolgáltatások rendelkezésre régiónként](https://azure.microsoft.com/regions/services/).
+    * A **Munkaterület neve** mezőben adja meg a Databricks-munkaterület nevét.
+    * Az **Előfizetés** mezőnél válassza ki a legördülő menüből a saját Azure-előfizetését.
+    * Az **Erőforráscsoport** alatt adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../azure-resource-manager/resource-group-overview.md).
+    * A **Hely** mezőnél válassza az **USA 2. keleti régiója** lehetőséget. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).
 
 3. Kattintson a **Create** (Létrehozás) gombra.
 
-## <a name="create-a-spark-cluster-in-databricks"></a>A Databricks Spark-fürt létrehozása
+## <a name="create-a-spark-cluster-in-databricks"></a>Spark-fürt létrehozása a Databricks használatával
 
-1. Az Azure portálon, nyissa meg a létrehozott Databricks munkaterületet, és kattintson **inicializálása munkaterület**.
+1. Az Azure Portalon lépjen a korábban létrehozott Databricks-munkaterülethez, majd kattintson a **Munkaterület inicializálása** elemre.
 
-2. Ekkor megnyílik a Azure Databricks portálon. Kattintson a portálról **fürt**.
+2. A rendszer átirányítja az Azure Databricks portáljára. A portálon kattintson a **Fürt** elemre.
 
-    ![Az Azure-on Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Databricks az Azure-on")
+    ![Databricks az Azure-on](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Databricks az Azure-on")
 
-3. Az a **új fürt** lapján adja meg a fürt létrehozásához.
+3. Az **Új fürt** lapon adja meg a fürt létrehozásához szükséges értékeket.
 
-    ![Databricks Spark-fürt létrehozása az Azure-on](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Azure létrehozása Databricks Spark-fürt")
+    ![Databricks Spark-fürt létrehozása az Azure-on](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-on")
 
-    * Adja meg a fürt nevét.
-    * Mindenképpen jelölje ki a **Terminate tevékenység ___ perc elteltével** jelölőnégyzetet. Adja meg egy időtartamot (percben) leáll a fürtben, ha a fürt nem használja.
+    * Adjon egy nevet a fürtnek.
+    * Mindenképpen jelölje be a **Leállítás ___ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
     * Fogadja el az összes többi alapértelmezett értéket. 
-    * Kattintson a **fürt létrehozása**. Ha fut a fürtön, notebookok csatlakoztatni a fürthöz, és feladatok futtatása Spark.
+    * Kattintson a **Fürt létrehozása** parancsra. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
-Fürtök létrehozásával kapcsolatos további információkért lásd: [Spark-fürt létrehozása az Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
+További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](https://docs.azuredatabricks.net/user-guide/clusters/create.html) ismertető szakaszban talál.
 
-## <a name="run-a-spark-sql-job"></a>A Spark SQL-feladat futtatása
+## <a name="run-a-spark-sql-job"></a>Spark SQL-feladat futtatása
 
-Ez a szakasz a Kezdés előtt végre kell hajtania a következő:
+Mielőtt ehhez a szakaszhoz hozzáfogna, a következőket kell elvégeznie:
 
-* [Az Azure storage-fiók létrehozása](../storage/common/storage-create-storage-account.md#create-a-storage-account). 
-* A minta JSON-fájl letöltésére [a Githubról](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json). 
-* A minta JSON-fájl feltöltése a létrehozott Azure-tárfiókot. Használhat [Microsoft Azure Tártallózó](../vs-azure-tools-storage-manage-with-storage-explorer.md) fájlok feltöltéséhez.
+* [Hozzon létre egy Azure-tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account). 
+* Töltsön le egy JSON-mintafájlt a [GitHubról](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json). 
+* A JSON-mintafájlt töltse fel a már létrehozott Azure-tárfiókba. A fájlfeltöltéshez a [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatát javasoljuk.
 
-A következő lépésekkel a notebook létrehozása Databricks, konfigurálja a notebook adatokat olvasni az Azure Blob storage-fiók, és futtassa a Spark SQL-feladat az adatokat.
+A következő lépések végrehajtásával hozzon létre egy notebookot a Databricksben, konfigurálja a notebookot úgy, hogy az Azure Blob-tárfiókból olvassa be az adatokat, majd ezt követően futtassa le a Spark SQL-feladatot az adatokon.
 
-1. Kattintson a bal oldali ablaktáblában **munkaterület**. Az a **munkaterület** legördülő menüben kattintson **létrehozása**, és kattintson a **Notebook**.
+1. A bal oldali panelen kattintson a **Munkaterület** elemre. A **Munkaterület** legördülő menüjében kattintson a **Létrehozás**, majd a **Notebook** elemre.
 
-    ![Hozzon létre jegyzetfüzetet Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Databricks jegyzetfüzetet létrehozása")
+    ![Notebook létrehozása a Databricksben](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Notebook létrehozása a Databricksben")
 
-2. Az a **Notebook létrehozása** párbeszédpanel mezőben adjon meg egy nevet, válasszon **Scala** nyelv, és válassza ki a korábban létrehozott Spark-fürtön.
+2. A **Notebook létrehozása** párbeszédpanelen adjon meg egy nevet, a nyelvnél válassza a **Scala** lehetőséget, majd válassza ki a korábban létrehozott Spark-fürtöt.
 
-    ![Hozzon létre jegyzetfüzetet Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Databricks jegyzetfüzetet létrehozása")
+    ![Notebook létrehozása a Databricksben](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Notebook létrehozása a Databricksben")
 
     Kattintson a **Create** (Létrehozás) gombra.
 
-3. Cserélje le a következő kódrészletet `{YOUR STORAGE ACCOUNT NAME}` az Azure storage-fiók nevét a létrehozott és `{YOUR STORAGE ACCOUNT ACCESS KEY}` az a fiók tárelérési kulcs. Illessze be a kódrészletet a notebook a cella üres, és nyomja le a SHIFT + ENTER a kódcella futtatásához. Ez részlet konfigurálja a notebook adatokat olvasni az Azure blob Storage tárolóban.
+3. A következő kódtöredék `{YOUR STORAGE ACCOUNT NAME}` helyőrzőjét cserélje le a létrehozott Azure-tárfiók nevére, a `{YOUR STORAGE ACCOUNT ACCESS KEY}` helyére pedig a saját tárfiók hozzáférési kulcsát írja be. Illessze be a kódtöredéket a notebook egyik üres cellájába, majd nyomja le a SHIFT + ENTER billentyűparancsot a kódcella futtatásához. A kódtöredék úgy konfigurálja a notebookot, hogy az Azure Blob-tárfiókból olvassa be az adatokat.
 
        spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
     
-    Hogyan lehet lekérni a tárfiók hívóbetűjét, lásd: [a tárelérési kulcsok kezelése](../storage/common/storage-create-storage-account.md#manage-your-storage-account)
+    A tárfiók elérési kulcsának lekérésével kapcsolatos útmutatásért olvassa el [a tárelérési kulcsok kezelését](../storage/common/storage-create-storage-account.md#manage-your-storage-account) ismertető cikket.
 
     > [!NOTE]
-    > Azure Data Lake Store az Azure Databricks Spark-fürt is használható. Útmutatásért lásd: [használata Data Lake Store az Azure Databricks](https://go.microsoft.com/fwlink/?linkid=864084).
+    > Olyan Spark-fürtöt is létrehozhat, amely az Azure Data Lake Store-t használja az Azure Databricksszel. Útmutatásért lásd [a Data Lake Store és az Azure Databricks együttes használatát](https://go.microsoft.com/fwlink/?linkid=864084) ismertető cikket.
 
-4. Hozzon létre egy ideiglenes tábla a JSON mintaadatfájlokat származó adatok használ egy SQL-utasítás futtatása **small_radio_json.json**. Cserélje le a helyőrző értékeket a következő kódrészletet a tároló nevének és a tárfiók nevét. Illessze be a kódrészletet a notebook celláiban kódot, és nyomja le a SHIFT + ENTER BILLENTYŰT. A kódrészletet a `path` az Azure Storage-fiók feltöltött minta JSON-fájl helyét jelöli.
+4. SQL-utasítás futtatásával hozzon létre egy ideiglenes táblát a JSON-mintaadatfájl, a **small_radio_json.json** adataiból. Az alábbi kódtöredékben cserélje le a helyőrzőket a tároló és a tárfiók nevére. Illessze be a kódtöredéket a notebook egyik kódcellájába, majd nyomja le a SHIFT + ENTER billentyűparancsot. A kódtöredék `path` eleme jelöli annak a JSON-mintafájlnak a helyét, amelyet korábban feltöltött Azure Storage-fiókjába.
 
     ```sql
     %sql 
@@ -110,53 +111,53 @@ A következő lépésekkel a notebook létrehozása Databricks, konfigurálja a 
     )
     ```
 
-    A parancs sikeresen befejeződött, követően az adatok a JSON-fájlból Databricks fürt táblázatként.
+    A parancs sikeres végrehajtása után a JSON-fájl összes adata táblaként jelenik meg a Databricks-fürtben.
 
-    A `%sql` nyelvi magic parancs segítségével futtassa egy SQL-kódot a notebook, akkor is, ha a notebook más típusú. További információkért lásd: [jegyzetfüzet nyelvek keverése](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook).
+    Az `%sql` nyelvi varázsparancs segítségével SQL-kódot futtathat egy másik típusba tartozó notebookról is. További információért olvassa el a [többféle nyelv notebookokban történő használatát](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook) ismertető cikket.
 
-5. Pillanatkép készítése a mintaadatok JSON jobb megértése érdekében a lekérdezést, amely minden vizsgáljuk meg. Az alábbi kódrészletben illessze be a kódot a cellát és nyomja le az **SHIFT + ENTER**.
+5. A futtatott lekérdezés jobb megértéséhez vessünk egy pillantást a JSON-mintafájl adatairól készült pillanatfelvételre. Illessze be a következő kódtöredéket a kódcellába, majd nyomja le a **SHIFT + ENTER** billentyűparancsot.
 
     ```sql
     %sql 
     SELECT * from radio_sample_data
     ```
 
-6. A táblázatos kimenet jelenik például (csak az egyes oszlopok láthatók) az alábbi képernyőfelvételen látható módon:
+6. Így egy, az alábbi képernyőképhez hasonló táblázatos kimenet jelenik meg (csak egyes oszlopok láthatók):
 
-    ![Az JSON-adatokat](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "minta JSON-adatok")
+    ![JSON-mintaadatok](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "JSON-mintaadatok")
 
-    Egyéb részletek a mintaadatok rögzíti a célközönség rádió csatorna nemének (oszlopnév, **nemét**), és hogy az előfizetés ingyenes és fizetős (oszlopnév, **szint**).
+    A mintaadatok többek között tartalmazzák egy rádióadó hallgatóinak nemét (az oszlop neve **gender** (nem)), illetve azt, hogy ingyenes vagy fizetős előfizetéssel rendelkeznek-e (az oszlop neve **level** (szint)).
 
-7. Most hozzon létre az adatok megjelenítése az egyes nemét, hány felhasználó ingyenes fiókkal rendelkezik, és hány fizetett előfizetők vizuális ábrázolását. A táblázatos kimenet alján kattintson a **sávdiagram** ikonra, végül **megrajzolásához beállítások**.
+7. A következőkben vizuálisan jelenítjük meg ezeket az adatokat annak megfelelően, hogy az egyes nemek szerint hány felhasználó rendelkezik ingyenes fiókkal, illetve hányan fizetnek az előfizetésért. A táblázatos kimenet alján kattintson az **Oszlopdiagram** ikonra, majd az **Ábrázolási beállítások** elemre.
 
-    ![Hozzon létre sávdiagram](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "sávdiagram létrehozása")
+    ![Oszlopdiagram létrehozása](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Oszlopdiagram létrehozása")
 
-8. A **testreszabása tőzsdei**, fogd és vidd értékei a képernyőfelvételen látható módon.
+8. A **Ábrázolás testreszabása** lapon húzza az értékeket a megfelelő helyre a képernyőképen látható módon.
 
-    ![Testre szabhatja a sávdiagram](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "sávdiagram testreszabása")
+    ![Oszlopdiagram testreszabása](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Oszlopdiagram testreszabása")
 
-    * Állítsa be **kulcsok** való **nemét**.
-    * Állítsa be **adatsorozat-csoportok** való **szint**.
-    * Állítsa be **értékek** való **szint**.
-    * Állítsa be **összesítési** való **száma**.
+    * A **Kulcsok** mezőben adja meg a **gender** értéket.
+    * Az **Adatsorozat-csoportok** mezőben adja meg a **level** értéket.
+    * Az **Értékek** mezőben adja meg a **level** értéket.
+    * Az **Összesítés** mezőben adja meg a **COUNT** értéket.
 
     Kattintson az **Alkalmaz** gombra.
 
-9. A kimenet a vizuális ábrázolását írja le az alábbi képernyőfelvételen látható:
+9. A kimenetben a következő képernyőképen látható vizuális megjelenítés jelenik meg:
 
-     ![Testre szabhatja a sávdiagram](./media/quickstart-create-databricks-workspace-portal/databricks-sql-query-output-bar-chart.png "sávdiagram testreszabása")
+     ![Oszlopdiagram testreszabása](./media/quickstart-create-databricks-workspace-portal/databricks-sql-query-output-bar-chart.png "Oszlopdiagram testreszabása")
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A Spark-fürt létrehozásakor, ha a jelölőnégyzet kijelölt **Terminate tevékenység ___ perc elteltével**, a fürt automatikusan leáll, ha inaktív volt a megadott időpontban.
+Ha a Spark-fürt létrehozásakor bejelölte a **Leállítás ___ percnyi tétlenség után** jelölőnégyzetet, a fürt a megadott tétlenségi időkeret lejárta után automatikusan leáll.
 
-Ha nem jelölte be a jelölőnégyzetet, a fürtöt kézzel kell véget. Ehhez az Azure Databricks munkaterületről, a bal oldali ablaktáblán kattintson **fürtök**. A fürt megszakítja, vigye a mutatót a három pont alatt **műveletek** oszlopba, és kattintson a **megszakítási** ikonra.
+Amennyiben korábban nem jelölte be ezt a jelölőnégyzetet, manuálisan kell leállítania a fürtöt. Ehhez az Azure Databricks-munkaterület bal oldali panelén kattintson a **Fürtök** elemre. A leállítani kívánt fürtnél vigye az egérmutatót a **Műveletek** oszlopban található három pont fölé, majd kattintson a **Leállítás** ikonra.
 
-![Megszakítás miatt Databricks fürt](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "leáll Databricks fürt")
+![Databricks-fürt leállítása](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben egy Spark-fürt létrehozása az Azure Databricks, és egy adatok az Azure storage használata Spark feladat futott. Is megtalálhatja [adatforrások Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) adatokat importálhat más adatforrások Azure Databricks módjáról. A következő cikkben megtudhatja, hogyan használható az Azure Data Lake Store Azure Databricks továbblépés.
+Ennek a cikknek a segítségével létrehozott egy Spark-fürtöt az Azure Databricksben, illetve lefuttatott egy Spark-feladatot az Azure-tárterület adatainak felhasználásával. A [Spark-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) áttekintésével azt is megismerheti, hogyan importálhat adatokat más adatforrásokból az Azure Databricksbe. A következő cikk az Azure Data Lake Store és az Azure Databricks együttes használatát ismerteti.
 
 > [!div class="nextstepaction"]
->[Használjon Data Lake Store az Azure Databricks](https://go.microsoft.com/fwlink/?linkid=864084)
+>[A Data Lake Store és az Azure Databricks együttes használata](https://go.microsoft.com/fwlink/?linkid=864084)
