@@ -17,7 +17,7 @@
 # Példák
 ## [Azure-erőforrások üzembe helyezése a Terraform segítségével Bashben](example-terraform-bash.md)
 
-# [Díjszabás](pricing.md)
+# [Cloud Shell beágyazása](embed-cloud-shell.md)
 
 # [hibaelhárítással](troubleshooting.md)
 

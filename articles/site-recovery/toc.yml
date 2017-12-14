@@ -176,8 +176,10 @@
               href: site-recovery-prepare-target-physical-to-azure.md
         - name: A VMware–Azure replikálás beállításainak konfigurálása
           href: site-recovery-setup-replication-settings-vmware.md
-        - name: Lemezek kizárása a replikációból
+        - name: Lemezek kizárása a VMware–Azure replikációból
           href: site-recovery-exclude-disk.md
+        - name: Lemezek kizárása a Hyper-V–Azure replikációból
+          href: site-recovery-hyper-v-exclude-disk.md
         - name: A mobilitási szolgáltatás üzembe helyezése VMware-replikáláshoz
           href: site-recovery-vmware-to-azure-install-mob-svc.md
           items:

@@ -22,6 +22,8 @@
       href: storage-quickstart-blobs-java.md
     - name: Blobok használata – Python
       href: storage-quickstart-blobs-python.md
+    - name: Blobok használata – Ruby
+      href: storage-quickstart-blobs-ruby.md
     - name: Blobok használata – Node.js
       href: storage-quickstart-blobs-nodejs.md
     - name: Blobok használata – Storage Explorer
@@ -46,6 +48,16 @@
           href: storage-simulate-failure-ragrs-account-app.md
     - name: Strukturálatlan adatok keresése felhőalapú tárolóban
       href: storage-unstructured-search.md
+    - name: Tárolási alkalmazás teljesítményének és skálázhatóságának optimalizálása
+      items:
+        - name: Virtuális gép és Storage-fiók létrehozása
+          href: storage-blob-scalable-app-create-vm.md
+        - name: Nagy mennyiségű adat feltöltése Azure Storage-fiókba
+          href: storage-blob-scalable-app-upload-files.md
+        - name: Nagy mennyiségű adat letöltése Azure Storage-fiókból
+          href: storage-blob-scalable-app-download-files.md
+        - name: Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése
+          href: storage-blob-scalable-app-verify-metrics.md
 - name: Példák
   items:
     - name: .NET

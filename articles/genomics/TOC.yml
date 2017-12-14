@@ -1,0 +1,31 @@
+- name: A Microsoft Genomics dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az a Microsoft Genomics?
+      href: overview-what-is-genomics.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Minta Genomics-munkafolyamat futtatása
+      href: quickstart-run-genomics-workflow-portal.md
+    - name: Különféle bemenetifájl-formátumok használata
+      items:
+        - name: FASTQ-fájlpárok
+          href: quickstart-input-pair-fastq.md
+        - name: BAM-fájl
+          href: quickstart-input-bam.md
+        - name: Több FASTQ- vagy BAM-fájl
+          href: quickstart-input-multiple.md
+- name: Erőforrások
+  items:
+    - name: Gyakori kérdések
+      href: frequently-asked-questions-genomics.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/genomics/'
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Támogatási lehetőségek
+      href: 'https://azure.microsoft.com/support/options/'
