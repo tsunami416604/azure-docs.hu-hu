@@ -10,7 +10,7 @@ Igen, a helyszíni hálózatokhoz és az Azure virtuális hálózatokhoz is hasz
 ### <a name="are-there-asns-reserved-by-azure"></a>Vannak ASN-ek, amelyeket az Azure lefoglal?
 Igen, az Azure a következő ASN-eket foglalja le a belső és a külső társviszonyok esetén:
 
-* Nyilvános ASN-ek: 8075, 8076, 12076
+* Nyilvános ASN-ek: 8074 8075, 12076
 * Privát ASN-ek: 65515, 65517, 65518, 65519, 65520
 
 Ezeket az ASN-eket nem adhatja meg a helyszíni VPN-eszközök számára, amikor Azure VPN Gateway átjárókhoz csatlakozik.

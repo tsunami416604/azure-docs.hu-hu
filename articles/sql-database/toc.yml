@@ -60,9 +60,8 @@
 - name: Alapelvek
   items:
     - name: Szolgáltatásjellemzők
+      href: sql-database-servers-databases.md
       items:
-        - name: Áttekintés
-          href: sql-database-servers-databases.md
         - name: Szolgáltatásszintek
           href: sql-database-service-tiers.md
         - name: Erőforráskorlátok
@@ -106,9 +105,8 @@
         - name: Az SQL Server általános funkciói
           href: sql-database-features.md
     - name: Biztonság
+      href: sql-database-security-overview.md
       items:
-        - name: Áttekintés
-          href: sql-database-security-overview.md
         - name: Hozzáférés-vezérlés
           href: sql-database-control-access.md
         - name: Azure AD
@@ -121,10 +119,11 @@
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: Adatmaszkolás
           href: sql-database-dynamic-data-masking-get-started.md
+    - name: Magas rendelkezésre állás
+      href: sql-database-high-availability.md
     - name: Az üzletmenet folytonossága
+      href: sql-database-business-continuity.md
       items:
-        - name: Áttekintés
-          href: sql-database-business-continuity.md
         - name: Adatbázis-helyreállítás
           href: sql-database-recovery-using-backups.md
         - name: Biztonság konfigurálása
@@ -140,9 +139,8 @@
         - name: Helyreállítási gyakorlat végrehajtása
           href: sql-database-disaster-recovery-drills.md
     - name: Migrálás az SQL Database-be
+      href: sql-database-cloud-migrate.md
       items:
-        - name: SQL Server-adatbázis migrálása
-          href: sql-database-cloud-migrate.md
         - name: A T-SQL változtatásai
           href: sql-database-transact-sql-information.md
         - name: Adatbázis kezelése a migrálás után
@@ -158,9 +156,8 @@
         - name: Adatok szinkronizálása
           href: sql-database-sync-data.md
     - name: Monitorozás és hangolás
+      href: sql-database-troubleshoot-performance.md
       items:
-        - name: Áttekintés
-          href: sql-database-troubleshoot-performance.md
         - name: Teljesítménymonitorozás
           href: sql-database-single-database-monitor.md
         - name: Teljesítménnyel kapcsolatos javaslatok
@@ -180,9 +177,8 @@
         - name: Memóriabeli megfigyelés
           href: sql-database-in-memory-oltp-monitoring.md
     - name: Horizontális felskálázás
+      href: sql-database-elastic-scale-introduction.md
       items:
-        - name: Áttekintés
-          href: sql-database-elastic-scale-introduction.md
         - name: Szilánkleképezések
           href: sql-database-elastic-scale-shard-map-management.md
         - name: Lekérdezési útválasztás
@@ -220,9 +216,8 @@
         - name: Konfigurálás memórián belül
           href: sql-database-in-memory-oltp-migration.md
     - name: Alkalmazásfejlesztés
+      href: sql-database-develop-overview.md
       items:
-        - name: Áttekintés
-          href: sql-database-develop-overview.md
         - name: Kapcsolatok
           href: sql-database-libraries.md
         - name: Alkalmazás hitelesítése

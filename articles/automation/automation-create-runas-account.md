@@ -3,7 +3,7 @@ title: "Azure Automation futtató fiókok létrehozása | Microsoft Docs"
 description: "Ez a cikk ismerteti, hogyan frissítheti Automation-fiókját és hozhat létre futtató fiókokat a PowerShell-lel vagy a portálról."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 28bfa54c263388d91057118878a3109ec467894a
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 029ecaf43249175504cc1e22d246f24e927234af
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation-fiók hitelesítésének frissítése futtató fiókokkal 
 Az Azure Portalról vagy a PowerShell-lel frissítheti meglévő Automation-fiókját. Erre a következő esetekben lehet szükség:
