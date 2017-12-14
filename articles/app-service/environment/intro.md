@@ -1,6 +1,6 @@
 ---
-title: "Bevezetés az Azure App Service-környezetek"
-description: "Azure App Service-környezetek rövid áttekintése"
+title: "Az Azure App Service Environment bemutatása"
+description: "Az Azure App Service Environment rövid áttekintése"
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -10,73 +10,74 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 2a619943abaf8835e591872cba0ed046d4c6c4a9
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: 803a1cde5387b549504b42346d1a2e6a5df04746
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="introduction-to-app-service-environments"></a>App Service-környezetek bemutatása #
+# <a name="introduction-to-app-service-environments"></a>Az App Service Environment bemutatása #
  
 ## <a name="overview"></a>Áttekintés ##
 
-Az Azure App Service Environment-környezet az Azure App Service szolgáltatása, amely egy teljesen elkülönített és dedikált környezetben történő biztonságos futtatására, nagy méretekben App Service-alkalmazásokhoz. Ez a funkció, a webalkalmazások rendelkezhet [mobilalkalmazások][mobileapps], API-alkalmazás, és [funkciók][Functions].
+Az Azure App Service Environment egy Azure App Service-funkció, amely teljesen elkülönített és dedikált környezetben futtatható az App Service-alkalmazások biztonságos, nagy léptékű futtatása érdekében. Ennek köszönhetően a szolgáltatás képes a webalkalmazások, [mobilalkalmazások][mobileapps], API-alkalmazások és [függvények][Functions] üzemeltetésére.
 
-App Service-környezetek (ASEs) megfelelőek igénylő alkalmazások és szolgáltatások:
+Az App Service Environment (ASE) a következő igényekkel rendelkező összes alkalmazási számítási feladat elvégzésére használható:
 
-- Nagyon nagy méretű.
-- Elkülönítés és a biztonságos hálózati hozzáférést.
-- Magas memóriahasználat.
+- Nagyon nagy skálázhatóság.
+- Elkülönítés és biztonságos hálózati hozzáférés.
+- Magas memóriakihasználtság.
 
-Az ügyfelek több ASEs egyetlen Azure régión belül vagy között több Azure-régiók hozhatnak létre. A rugalmasságnak köszönhetően az ASEs ideális vízszintesen skálázás állapot nélküli alkalmazások rétegek magas RPS munkaterhelések támogatásához.
+Egy vagy több Azure-régión belül több ASE létrehozásának lehetősége az ügyfelek számára. Az ASE környezetek ennek a rugalmasságnak köszönhetik, hogy ideálisak az állapot nélküli, magas RPS-terhelésű alkalmazásszintek horizontális felskálázásához.
 
-ASEs csak az egyetlen ügyfél-alkalmazások futtatása érdekében elkülönített, és mindig telepített virtuális hálózatba. Az ügyfelek befolyásolni részletes bejövő és kimenő hálózati forgalmat. Alkalmazások képes kapcsolatot létrehozni a nagy sebességű biztonságos keresztül VPN-ek a helyszíni vállalati erőforrásokhoz.
+Elkülönítettségük révén az ASE-k környezetek egyetlen ügyfél alkalmazásait futtatják, és üzembe helyezésük mindig egy virtuális hálózaton belül történik. Az ügyfelek teljes mértékben szabályozhatják az alkalmazás bejövő és kimenő hálózati adatforgalmát. Az alkalmazások nagy sebességű, biztonságos VPN-kapcsolatokat létesíthetnek a helyszíni vállalati erőforrásokkal.
 
-* ASEs engedélyezése a nagy méretű alkalmazást üzemeltető biztonságos hálózati hozzáférést. További információkért lásd: a [AzureCon mélyreható](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/) ASEs meg.
-* Több ASEs segítségével horizontálisan méretezhető. További információkért lásd: [egy földrajzilag elosztott alkalmazás erőforrásigényét beállításával](app-service-app-service-environment-geo-distributed-scale.md).
-* ASEs segítségével konfigurálja a biztonsági architektúrája látható módon a AzureCon mélyreható. Hogyan lett konfigurálva a biztonsági architektúrája a AzureCon mélyreható látható, olvassa el a [cikk egy többrétegű biztonsági architektúra megvalósításához](app-service-app-service-environment-layered-security.md) az App Service-környezetek.
-* ASEs futó alkalmazásokra is hozzáférhet a saját felsőbb rétegbeli eszközök, például a webalkalmazási tűzfalak (WAFs) által kezdeményezett. További információkért lásd: [egy WAF az App Service-környezetek konfigurálása](app-service-app-service-environment-web-application-firewall.md).
+* Az ASE környezetek lehetővé teszik a biztonságos hálózati hozzáférésű, magas skálázhatóságú alkalmazásüzemeltetést. További információt az [AzureCon Deep Dive](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/) ASE környezetekről szóló részében talál.
+* Több ASE is felhasználható a horizontális skálázásra. További információkért lásd a [földrajzilag elosztott alkalmazás beállítását](app-service-app-service-environment-geo-distributed-scale.md) ismertető részt.
+* Az ASE környezetek használatával a biztonsági architektúra is konfigurálható, ahogyan azt az AzureCon Deep Dive is bemutatja. Az AzureCon Deep Dive-ban látható biztonsági architektúra konfigurálásáról a [rétegelt biztonsági architektúra App Service Environmenttel történő megvalósításáról szóló cikkben](app-service-app-service-environment-layered-security.md) találhat további információkat.
+* Az ASE környezetekben futó alkalmazások hozzáférésében sorompós kapcsolatok alakíthatók ki alsóbb rétegbeli eszközök, például webalkalmazás-tűzfalak (WAF-ok) segítségével. További információt a [WAF App Service Environmenthez történő konfigurálását](app-service-app-service-environment-web-application-firewall.md) ismertető cikkben talál.
 
-## <a name="dedicated-environment"></a>Dedikált környezetben ##
+## <a name="dedicated-environment"></a>Dedikált környezet ##
 
-Egy ASE kizárólag egyetlen előfizetés van kijelölve, és tárolhatja, 100 példányok. A tartomány 100 egypéldányos App Service-csomagokról egy egyetlen App Service-csomaggal, és mindent az között is kiterjedhet 100 példányok.
+Az ASE kizárólag egyetlen előfizetéshez van dedikálva, és akár 100 példány üzemeltetésére is képes. A tartomány akár 100 példányt is magában foglalhat egyetlen App Service-csomag keretében, vagy 100 egypéldányos App Service-csomagot, illetve ezek között bármennyit.
 
-Egy ASE előtér-webkiszolgálóinak és alkalmazottak tevődik össze. Előtér-webkiszolgálóinak HTTP/HTTPS-lezárást és automatikus terheléselosztást app kérelmek belül egy ASE felelősek. Előtér-webkiszolgálóinak automatikusan, a ASE az App Service-csomagokról is kiterjeszthető.
+Egy ASE előtérrendszerekből és feldolgozókból áll. Az előtérrendszerek a HTTP/HTTPS-végződtetésért, valamint az alkalmazáskérések egy ASE-n belüli automatikus terheléselosztásáért felelősek. Az előtérrendszerek az ASE App Service-csomagjainak felskálázásakor automatikusan hozzáadódnak.
 
-Munkavállalók alkalmazások vevői üzemeltető szerepkörök. Három rögzített méretű munkavállalók érhetők el:
+A feldolgozók az ügyfélalkalmazások üzemeltetéséért felelős szerepkörök. A feldolgozók három állandó méretben érhetők el:
 
-* Egy vCPU/3.5 GB RAM
+* Egy vCPU/3,5 GB RAM
 * Két vCPU/7 GB RAM
 * Négy vCPU/14 GB RAM
 
-Az ügyfelek nem kell kezelniük, előtér-webkiszolgálóinak és alkalmazottak. Az összes infrastruktúra automatikusan nincs felvéve az ügyfelek kibővítési az App Service-csomagokról. Az App Service-csomagok létrehozása, illetve -környezetben méretezhető, a rendszer hozzáadásakor vagy eltávolításakor szükség szerint a szükséges infrastruktúrát.
+Az ügyfeleknek nem kell foglalkozniuk az előtérrendszerek és a feldolgozók kezelésével. Amikor az ügyfelek horizontálisan felskálázzák az App Service-csomagjaikat, az infrastruktúra automatikusan hozzáadódik. Mivel az App Service-csomagok egy ASE-n belül vannak létrehozva vagy skálázva, ezért a szükséges infrastruktúra a helyzetnek megfelelően adható hozzá vagy távolítható el.
 
-Egy egyszerű havi arány egy, az infrastruktúra fizet, és nem módosítja a ASE méretének ASE van. Emellett nincs egy App Service-csomag vCPU onkénti költséget. Minden alkalmazás-környezetben üzemeltetett a Termékváltozat árképzési elszigetelt szerepelnek. Egy ASE az árakkal kapcsolatos információkért lásd: a [App Service díjszabás] [ Pricing] lapon, és tekintse át az elérhető lehetőségek a ASEs.
+Az ASE átalányalapú havidíja fedezi az infrastruktúra költségét, és nem változik az ASE méretével. A további díjakat az App Service-csomagok vCPU-inak száma határozza meg. Egy ASE környezeten belül az összes üzemeltetett alkalmazás az elkülönített díjszabású termékváltozatba tartozik. Az ASE környezetek árképzéséről az [App Service díjszabása][Pricing] oldalon, az ASE környezetek elérhető díjszabási lehetőségei alatt találhat információkat.
 
-## <a name="virtual-network-support"></a>Virtuális hálózati támogatása ##
+## <a name="virtual-network-support"></a>Virtuális hálózatok támogatása ##
 
-Egy ASE csak az Azure Resource Manager virtuális hálózat is létrehozható. Egy Azure virtuális hálózatot kapcsolatos további tudnivalókért tekintse meg a [Azure virtuális hálózatok – gyakori kérdések](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Egy ASE mindig létezik-e virtuális hálózatban, és pontosabban, a virtuális hálózat egy alhálózaton belül. A biztonsági szolgáltatások a virtuális hálózatok segítségével szabályozhatja a bejövő és kimenő hálózati kommunikáció az alkalmazásokhoz.
+ASE környezetek kizárólag az Azure Resource Manager virtuális hálózatán hozhatók létre. Az Azure virtuális hálózatairól további információt az [Azure virtuális hálózatok GYIK](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) dokumentumában talál. Az ASE mindig egy virtuális hálózaton belül, pontosabban a virtuális hálózat alhálózatán működik. A virtuális hálózatok biztonsági funkciói segítségével szabályozhatja az alkalmazásai bejövő és kimenő hálózati kommunikációját.
 
-Egy ASE lehet internetre irányuló nyilvános IP-cím vagy a belső hálózati rendelkező csak egy Azure belső terheléselosztó (ILB)-címén.
+Az ASE lehet internetre irányuló, nyilvános IP-címmel, vagy befelé irányuló, Azure belső terheléselosztási (ILB) címmel.
 
-[Hálózati biztonsági csoportok] [ NSGs] bejövő hálózati kommunikáció a egy ASE tartalmazó alhálózathoz korlátozása. Az NSG-k segítségével mögött fölérendelt eszközöket és szolgáltatásokat, például WAFs és hálózati Szolgáltatottszoftver-szolgáltatók alkalmazásainak futtatásához.
+A [hálózati biztonsági csoportok][NSGs] korlátozzák az ASE alhálózatára beérkező hálózati kommunikációt. A hálózati biztonsági csoportok használatával futtathatja az alkalmazásait alsóbb rétegbeli eszközök és szolgáltatások, valamint WAF-ok és hálózati SaaS-szolgáltatók mögött.
 
-Alkalmazások is gyakran kell hozzáférhet a vállalati erőforrásokhoz, például a belső adatbázisok és webszolgáltatásokat. Ha a VPN-kapcsolat a helyszíni hálózat a virtuális hálózatban ASE telepít, az alkalmazásokat a ASE érhetik el a helyszíni erőforrások. Ez a funkció értéke true, függetlenül attól, hogy van-e VPN-Kapcsolaton egy [pont-pont](https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/) vagy [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/) VPN.
+Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, például belső adatbázisokhoz vagy webes szolgáltatásokhoz. Ha olyan virtuális hálózatban telepíti az ASE környezetet, amely VPN-kapcsolatban van a helyszíni hálózattal, akkor az ASE környezeten belüli alkalmazások hozzáférhetnek a helyszíni erőforrásokhoz. Ez mind a [helyek közötti](https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/), mind az [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/) VPN-kapcsolatok esetében igaz.
 
-A virtuális hálózatok és a helyszíni hálózatokban ASEs működése további információkért lásd: [App Service Environment-környezet hálózati szempontok][ASENetwork].
+Az ASE-k virtuális és helyszíni hálózatokkal történő használatáról az [App Service Environment hálózati szempontjai][ASENetwork] részben találhat további információkat.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player]
 
 ## <a name="app-service-environment-v1"></a>App Service-környezet v1 ##
 
-App Service Environment-környezet két verziója van: ASEv1 és ASEv2. A fenti adatokat ASEv2 alapján. Ez a szakasz a ASEv1 és ASEv2 közötti különbséget mutatja. 
+Kétféle verzió érhető el az App Service Environment szolgáltatáshoz: ASEv1 és ASEv2. A fenti információ az ASEv2 verzión alapul. Ebben a szakaszban az ASEv1 és ASEv2 különbségeiről olvashat. 
 
-ASEv1 szükség manuális kezelése összes erőforrást. Amely tartalmazza az előtér-webkiszolgálóinak dolgozó munkatársak és az IP-alapú SSL-hez használt IP-címek. Ki lehet terjeszteni a App Service-csomagot, mielőtt a feldolgozókészleten, ahol szeretné futtatni az első bővíteni kell.
+Az ASEv1 esetén minden erőforrást manuálisan kell felügyelnie. Ebbe beletartoznak az előtérrendszerek, a feldolgozók, valamint IP-alapú SSL esetén az IP-címek is. Mielőtt horizontálisan felskálázza az App Service-csomagot, először a feldolgozók készletét kell felskáláznia oda, ahol üzemeltetni szeretné azt.
 
-ASEv1 ASEv2 a különböző árképzési modellt használ. A ASEv1 akkor fizessen az egyes lefoglalt vCPU. Az előtér-webkiszolgálóinak vagy bármilyen számítási feladatot nem futtató munkavállalók használt Vcpu, amely tartalmazza. A ASEv1 az alapértelmezett maximális méretű egy ASE mérete 55 összes állomás. Amely tartalmazza a dolgozók és első akkor ér véget. Egy ASEv1 előnye, hogy központilag telepíthető a klasszikus virtuális hálózatot és egy erőforrás-kezelő virtuális hálózatot. ASEv1 kapcsolatos további információkért lásd: [App Service Environment-környezet v1 bemutatása][ASEv1Intro].
+Az ASEv1 díjszabása eltér az ASEv2-étől. Az ASEv1 esetében minden lefoglalt vCPU után fizet. Ez tartalmazza azokat az előtérrendszerekhez és a feldolgozókhoz tartozó vCPU-kat, amelyek nem üzemeltetnek számítási feladatokat. Az ASEv1 esetében egy ASE alapértelmezett maximális skálázhatósága összesen 55 gazdagép. Ez tartalmazza a feldolgozókat és az előtérrendszereket is. Az ASEv1 egyik előnye az, hogy klasszikus, illetve Resource Manager virtuális hálózatokban is üzembe helyezhető. Az ASEv1 verzióról további információt az [App Service Environment v1 bemutatása][ASEv1Intro] témakörben találhat.
 
 <!--Links-->
 [Intro]: ./intro.md

@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2017
+ms.date: 12/06/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 85136ff2783b21472ef02aee15f8ec5844a00c12
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: b28e442a075e38a4fbe7b0d9d46f2c9d23e7c6fb
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához
 Az Azure-ral való megfelelőség megértéséhez szükséges első szempont a saját jelenlegi erőforrásainak ismerete. Ez a rövid útmutató végigvezeti Önt a folyamaton, amellyel létrehozhat egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést.
@@ -21,20 +21,6 @@ Az Azure-ral való megfelelőség megértéséhez szükséges első szempont a s
 A folyamat végén sikeresen fogja azonosítani a felügyelt lemezeket nem használó, azaz *nem megfelelő* virtuális gépeket.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-## <a name="opt-in-to-azure-policy"></a>Az Azure Policy használata
-
-Elérhető az Azure Policy nyilvános előzetes verziója. Hozzáférés kéréséhez regisztráció szükséges.
-
-1. Látogasson el az Azure Policy webhelyére a https://aka.ms/getpolicy címen, majd válassza ki a **Feliratkozás** lehetőséget a bal oldali panelen.
-
-   ![Szabályzat keresése](media/assign-policy-definition/sign-up.png)
-
-2. Az Azure Policy használatához válassza ki azokat az előfizetéseket az **Előfizetés** listából, amelyekkel dolgozni szeretne. Ezután kattintson a **Regisztrálás** elemre.
-
-   ![Az Azure Policy használata](media/assign-policy-definition/preview-opt-in.png)
-
-   Az Előzetes verzió használatára vonatkozó kérelmét a rendszer automatikusan jóváhagyja. Kérjük, várjon legfeljebb 30 percet, amíg a rendszer feldolgozza a regisztrációját.
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
@@ -65,7 +51,7 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hozunk létre, és
    Az Azure Policy-ban két tarifacsomag létezik – *Ingyenes* és *Standard*. Az Ingyenes szinten csak a jövőbeli erőforrások esetében kényszeríthet szabályzatokat, míg a Standard szinten már meglévő erőforrások esetében is, hogy jobban átlássa a megfelelőségi állapotot. Mivel ez egy Korlátozott Előzetes Verzió, még nem bocsátottunk ki díjszabási modellt, így nem fog számlát kapni a *Standard* szint kiválasztásakor. A díjszabással kapcsolatos további információkért tekintse meg a következőt: [Azure Policy díjszabás](https://azure.microsoft.com/pricing/details/azure-policy/).
 
 7. Válassza ki azt a **Hatókört**, amelyben a szabályzatot alkalmazni szeretné.  A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet.
-8. Válassza ki az Azure Policy használatához előzőleg regisztrált előfizetést (vagy erőforráscsoportot). Ebben a példában az alábbi előfizetést használjuk (az Ön lehetőségei ettől különbözni fognak): **Azure Analytics Capacity Dev**.
+8. Válassza ki az előzőleg regisztrált előfizetést (vagy erőforráscsoportot). Ebben a példában az alábbi előfizetést használjuk (az Ön lehetőségei ettől különbözni fognak): **Azure Analytics Capacity Dev**.
 
    ![A megfelelő szabályzatdefiníció megtalálása](media/assign-policy-definition/assign-policy.png)
 

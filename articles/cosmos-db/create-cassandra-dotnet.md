@@ -1,6 +1,6 @@
 ---
-title: "Gyors üzembe helyezés: Cassandra API a .NET - Azure Cosmos DB |} Microsoft Docs"
-description: "A gyors üzembe helyezés bemutatja, hogyan hozzon létre egy profil alkalmazást az Azure portál és a .NET az Azure Cosmos DB Cassandra API használatával"
+title: "Rövid útmutató: Cassandra API .NET-tel – Azure Cosmos DB | Microsoft Docs"
+description: "Ez a rövid útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Cassandra API profilalkalmazások létrehozására az Azure Portal és a .NET használatával"
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -11,30 +11,30 @@ ms.custom: quick start connect, mvc
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: ebfe845fa4f695064773a03f6d765da37ab44189
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
-ms.translationtype: MT
+ms.openlocfilehash: c1830d13e759205935fbd769574c1132a8e70d09
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Gyors üzembe helyezés: A .NET- és az Azure Cosmos DB Cassandra alkalmazás létrehozása
+# <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Rövid útmutató: Cassandra alkalmazás felépítése a .NET és az Azure Cosmos DB használatával
 
-A gyors üzembe helyezés bemutatja, hogyan használja a .NET- és az Azure Cosmos DB [Cassandra API](cassandra-introduction.md) egy példa a Githubról klónozásával egy profil alkalmazás elkészítésére. A gyors üzembe helyezés is bemutatja, hogyan egy Cosmos-DB Azure-fiók létrehozása a web-alapú Azure portál használatával.   
+Ez a rövid útmutató azt ismerteti, hogy hogyan használható a .NET és az Azure Cosmos DB [Cassandra API](cassandra-introduction.md) egy profilalkalmazás létrehozására egy GitHubról származó példa klónozásával. A rövid útmutató emellett azt is bemutatja, hogyan hozható létre egy Azure Cosmos DB-fiók a webes alapú Azure Portal használatával.   
 
-Azure Cosmos-adatbázis egy Microsoft globálisan elosztott több modellre adatbázis szolgáltatás. Gyorsan hozzon létre, és a dokumentum, a tábla, a kulcs-érték és a graph adatbázisok, amelyek kihasználhassa a globális terjesztési és a horizontális skálázhatóságot képességeket Azure Cosmos DB középpontjában lekérdezése. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]Alternatív megoldásként, [Azure Cosmos DB szabad próbálja](https://azure.microsoft.com/try/cosmosdb/) díjmentesen és kötelezettségvállalás ingyenes Azure-előfizetéssel, nélkül.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatív lehetőségként [kipróbálhatja ingyenesen az Azure Cosmos DB-t](https://azure.microsoft.com/try/cosmosdb/) Azure-előfizetés, díjfizetés és elköteleződés nélkül.
 
-Az Azure Cosmos DB Cassandra API programot: a hozzáférést. Ha még nem telepítette a hozzáférés még, [feliratkozás most](cassandra-introduction.md#sign-up-now).
+Csatlakozzon az Azure Cosmos DB Cassandra API előzetes programjához. Ha még nem igényelt hozzáférést, [regisztráljon most](cassandra-introduction.md#sign-up-now).
 
 Továbbá: 
-* Ha még nincs telepítve a Visual Studio 2017, töltse le és használja a **szabad** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
-* Telepítés [Git](https://www.git-scm.com/) a példa klónozását.
+* Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+* Telepítse a [Git szoftvert](https://www.git-scm.com/) a példa klónozásához.
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
@@ -44,15 +44,15 @@ Továbbá:
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig váltsunk át kódok használatára. Most klónozni egy Cassandra API-alkalmazást a Githubból, állítsa be a kapcsolati karakterláncot, és futtassa azt. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most pedig váltsunk át kódok használatára. A következő lépésekben elvégezheti a Cassandra API-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati karakterláncot, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és használja a `cd` parancs futtatásával módosíthatja a mintaalkalmazás telepítése mappába. 
+1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` parancs használatával váltson a mappára, ahol telepíteni szeretné a mintaalkalmazást. 
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. Futtassa a következő parancsot a minta tárház klónozásához. Ezzel a paranccsal létrejön egy mintaalkalmazás példányát a számítógépen.
+2. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-getting-started.git
@@ -62,9 +62,9 @@ Most pedig váltsunk át kódok használatára. Most klónozni egy Cassandra API
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létrehozását az adatbázis-erőforrások, az alábbi kódtöredékek tekintheti meg. Kódtöredékek a rendszer az összes átveszi a `Program.cs` fájl C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample mappába települ. Egyéb esetben ugorjon előre [frissítse a kapcsolati karakterlánc](#update-your-connection-string).
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample mappába telepített `Program.cs` fájlból származnak. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszra.
 
-* A munkafolyamat egy Cassandra a fürt végpontja csatlakozva inicializálása. Az Azure Cosmos-adatbázis a Cassandra API csak TLSv1.2 támogatja. 
+* Egy Cassandra fürtvégponthoz való csatlakozással inicializálja a munkamenetet. Az Azure Cosmos DB-n lévő Cassandra API csak a TLS 1.2-es verziót támogatja. 
 
   ```csharp
    var options = new Cassandra.SSLOptions(SslProtocols.Tls12, true, ValidateServerCertificate);
@@ -73,7 +73,7 @@ Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létreh
    ISession session = cluster.Connect();
    ```
 
-* Hozzon létre egy új kulcstérértesítések használatával.
+* Új kulcsterület létrehozása.
 
     ```csharp
     session.Execute("CREATE KEYSPACE uprofile WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'datacenter1' : 1 };"); 
@@ -85,13 +85,13 @@ Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létreh
   session.Execute("CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)");
    ```
 
-* Helyezze be a felhasználó entitások IMapper objektum segítségével, amely kapcsolódik a uprofile kulcstérértesítések használatával új munkamenettel.
+* Felhasználói entitások beszúrása az IMapper objektum használatával a uprofile kulcsterülethez csatlakozó új munkamenettel.
 
     ```csharp
     mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
     ```
     
-* A lekérdezés az összes felhasználói adatok beolvasása.
+* Összes felhasználói adat lekérdezése.
 
     ```csharp
    foreach (User user in mapper.Fetch<User>("Select * from user"))
@@ -100,7 +100,7 @@ Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létreh
    }
     ```
     
- * A lekérdezés egyetlen felhasználó adatainak megszerzése.
+ * Egyetlen felhasználó adatainak lekérdezése.
 
     ```csharp
     mapper.FirstOrDefault<User>("Select * from user where user_id = ?", 3);
@@ -108,54 +108,54 @@ Ez a lépés nem kötelező megadni. Ha most szeretné ismerni az a kód létreh
 
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
 
-Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. A kapcsolati karakterlánc adatok lehetővé teszi, hogy az alkalmazás a szolgáltatott adatbázissal való kommunikációhoz.
+Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. A kapcsolati karakterlánc adatai lehetővé teszik az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
-1. Az a [Azure-portálon](http://portal.azure.com/), kattintson a **kapcsolati karakterlánc**. 
+1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati karakterlánc** elemre. 
 
-    Használja a ![Másolás gomb](./media/create-cassandra-dotnet/copy.png) a felhasználónév értéket másol a képernyő jobb szélén gombjára.
+    Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-dotnet/copy.png) a USERNAME érték másolásához.
 
-    ![Megtekintése és másolása az Azure portál, csatlakozási karakterlánc oldal hívóbetű](./media/create-cassandra-dotnet/keys.png)
+    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kapcsolati karakterlánc oldalán](./media/create-cassandra-dotnet/keys.png)
 
-2. Nyissa meg a Program.cs fájlra a Visual Studio 2017. 
+2. Nyissa meg a Program.cs fájlt a Visual Studio 2017 alkalmazásban. 
 
-3. Illessze be a USERNAME érték a portálon keresztül `<FILLME>` sor 13.
+3. Illessze be a USERNAME értéket a Portalból a `<FILLME>` helyére a 13. sorban.
 
-    A Program.cs 13 sor most hasonlóan kell kinéznie 
+    A Program.cs 13. sorának ekkor a következőhöz hasonlónak kell kinéznie: 
 
     `private const string UserName = "cosmos-db-quickstart";`
 
-3. Lépjen vissza a portálra, és másolja a jelszó értékét. Illessze be a jelszó értékét a portálon keresztül `<FILLME>` sor 14.
+3. Lépjen vissza a Portalba, és másolja a PASSWORD értéket. Illessze be a PASSWORD értéket a Portalból a 14. sorban található `<FILLME>` érték helyére.
 
-    A Program.cs 14 sor most hasonlóan kell kinéznie 
+    A Program.cs 14. sorának ekkor a következőhöz hasonlóan kell kinéznie: 
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
-4. Lépjen vissza a portálra, és másolja a kapcsolattartó értéket. Illessze be az ügyfél értéket a portálon keresztül `<FILLME>` sor 15.
+4. Lépjen vissza a Portalba, és másolja a CONTACT POINT értéket. Illessze be a CONTACT POINT értéket a Portalból a 15. sorban található `<FILLME>` érték helyére.
 
-    A Program.cs 15 sor most hasonlóan kell kinéznie 
+    A Program.cs 15. sorának ekkor a következőhöz hasonlóan kell kinéznie: 
 
     `private const string CassandraContactPoint = "cosmos-db-quickstarts.documents.azure.com"; //  DnsName`
 
-5. A Program.cs fájl mentéséhez.
+5. Mentse a Program.cs fájlt.
     
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-1. A Visual Studióban kattintson **eszközök** > **NuGet-Csomagkezelő** > **Csomagkezelő konzol**.
+1. A Visual Studióban kattintson a **Tools** (Eszközök)  > **NuGet Package Manager** (NuGet-csomagkezelő) > **Package Manager Console** (Csomagkezelő konzol) elemre.
 
-2. A parancssorba a következő paranccsal telepítse a .NET-illesztőprogram NuGet-csomagot. 
+2. A parancssorban a következő paranccsal telepítse a .NET illesztő NuGet-csomagját. 
 
     ```cmd
     Install-Package CassandraCSharpDriver
     ```
-3. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt. Az alkalmazás a konzolablakban jeleníti meg. 
+3. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt. Az alkalmazás megjelenik a konzolablakban. 
 
-    ![Megtekintheti, és a kimeneti ellenőrzése](./media/create-cassandra-dotnet/output.png)
+    ![A kimenet megtekintése és ellenőrzése](./media/create-cassandra-dotnet/output.png)
 
-    Nyomja le a CTRL + C exection a program és a konzol ablak bezárásához. 
+    Nyomja le a CTRL + C billentyűkombinációt a program futásának megszakításához, és zárja be a konzolablakot. 
     
-    Ezután megnyithatja adatkezelő lekérdezés, módosíthatja, és ezekkel az új adatokkal az Azure portálon. 
+    Most megnyithatja az Adatkezelőt az Azure Portalon, ahol lekérdezheti és módosíthatja az új adatokat, valamint dolgozhat azokkal. 
 
-    ![Az adatkezelő az adatok megjelenítése](./media/create-cassandra-dotnet/data-explorer.png)
+    ![Adatok megtekintése az Adatkezelőben](./media/create-cassandra-dotnet/data-explorer.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
@@ -170,4 +170,4 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 Ebben a rövid útmutatóban megtudtuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni a webalkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB Cassandra adatok importálása](cassandra-import-data.md)
+> [Cassandra-adatok importálása az Azure Cosmos DB-be](cassandra-import-data.md)
