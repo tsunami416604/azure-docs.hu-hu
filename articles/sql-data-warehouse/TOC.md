@@ -32,8 +32,8 @@
 ### [Adatok áttelepítése](sql-data-warehouse-migrate-data.md)
 
 ## Adatok betöltése és áthelyezése
-### [Áttekintés](sql-data-warehouse-overview-load.md)
-### [PolyBase](sql-data-warehouse-load-polybase-guide.md)
+### [Áttekintés](design-elt-data-loading.md)
+### [Útmutatás](guidance-for-loading-data.md)
 
 
 ## Integrálás

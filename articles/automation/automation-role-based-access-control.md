@@ -3,7 +3,7 @@ title: "Szerepköralapú hozzáférés-vezérlés az Azure Automationben | Micro
 description: "A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Ez a cikk ismerteti az RBAC beállítását az Azure Automationben."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 keywords: "automation rbac, szerepköralapú hozzáférés-vezérlés, azure rbac"
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2016
 ms.author: magoedte;sngun
-ms.openlocfilehash: 946d80d40ac0566db72c787f260f2d4faff01e6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59ec4000645583b8cd35f7e8e475b95ea5499232
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
