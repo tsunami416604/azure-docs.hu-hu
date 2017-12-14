@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 558c3c65a811a228f9d8ecae7ce41798ac8178c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 065638c1d724865f45b0c1e2691041848f90ad00
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
@@ -32,7 +32,7 @@ A gyorsútmutató elvégzéséhez:
 - [A .NET Core 2.0 SDK telepítése](https://www.microsoft.com/net/core)
 - Szüksége lesz egy Azure-előfizetésre és egy meglévő .NET Core-webalkalmazásra.
 
-Ha nem rendelkezik ASP.NET Core-webalkalmazással, a létrehozásához követheti az [ASP.NET Core-webalkalmazások létrehozásához készült útmutató](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs) utasításait.
+Ha nem rendelkezik ASP.NET Core-webalkalmazással, a létrehozásához követheti az [ASP.NET Core-webalkalmazások létrehozásához készült útmutató](https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs) utasításait.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -126,4 +126,4 @@ Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyago
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Futásidejű kivételek észlelése és diagnosztizálása](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-tutorial-runtime-exceptions)
+> [Futásidejű kivételek észlelése és diagnosztizálása](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)

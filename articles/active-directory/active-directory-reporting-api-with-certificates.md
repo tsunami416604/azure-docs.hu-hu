@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/08/2017
 ms.author: ramical
-ms.openlocfilehash: 38c240ed1608b2e99bde78f3633e722f8e2fa30b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4900e47084256ad6c85886f7ba363399678da9aa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>Adatok lekérése az Azure AD Reporting API és tanúsítványok használatával
 Ez a cikk azt ismerteti, hogy hogyan kérhetők le adatok címtárakból felhasználói beavatkozás nélkül az Azure AD Reporting API és tanúsítványalapú hitelesítés használatával. 
@@ -89,7 +89,7 @@ Most létrehozhatja a szkriptet. Az alábbi példában az AzureADUtils Invoke-Az
 Most már exportálhatja az eredményeket egy CSV-fájlba, és mentheti egy SIEM-rendszerbe. A szkriptet be is csomagolhatja egy ütemezett feladatba az Azure AD-adatok bérlőtől való időszakos lekérésére úgy is, hogy nem kell a forráskódban tárolnia az alkalmazáskulcsokat. 
 
 ## <a name="next-steps"></a>Következő lépések
-[Az Azure-identitáskezelés alapjai](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity)<br>
+[Az Azure-identitáskezelés alapjai](https://docs.microsoft.com/azure/active-directory/fundamentals-identity)<br>
 
 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 47cdbf31e6b01055405cefedda11d5eeef82f32e
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: b36e8064da2661e6424d68f11b1e08d5af96131f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése  
 
@@ -162,4 +162,4 @@ Az Azure Site Recovery Deployment Planner az alábbi pénznemek bármelyikének 
 |TRY|Török líra (TL)||USD| Amerikai dollár ($)||ZAR|Dél-afrikai rand (R)|
 
 ## <a name="next-steps"></a>Következő lépések
-Többet tudhat meg az [Azure-ba migrált Hyper-V virtuális gépek védelméről az Azure Site Recoveryvel](https://docs.microsoft.com/en-us/azure/site-recovery/tutorial-hyper-v-to-azure).
+Többet tudhat meg az [Azure-ba migrált Hyper-V virtuális gépek védelméről az Azure Site Recoveryvel](https://docs.microsoft.com/azure/site-recovery/tutorial-hyper-v-to-azure).

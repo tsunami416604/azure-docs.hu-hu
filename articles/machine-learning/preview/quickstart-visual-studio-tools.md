@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: get-started-article
 ms.date: 11/15/2017
-ms.openlocfilehash: 582ec5babf2bac34f20d4e9c7517f78ee2002e0b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: f066f0dd0dab0096279c18ded3c024a7cc0cbda0
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
-A Visual Studio Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/en-us/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. Emellett könnyített hozzáférést biztosít az [Azure Batch AI előzetes verziójához](https://docs.microsoft.com/en-us/azure/batch-ai/).
+A Visual Studio Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/en-us/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. Emellett könnyített hozzáférést biztosít az [Azure Batch AI előzetes verziójához](https://docs.microsoft.com/azure/batch-ai/).
  
 ## <a name="getting-started"></a>Bevezetés 
 Első lépésként le kell tölteni és telepíteni kell a [Visual Studiót](https://www.visualstudio.com/downloads/). A Visual Studio megnyitása után hajtsa végre a következő lépéseket:
@@ -28,7 +28,7 @@ Első lépésként le kell tölteni és telepíteni kell a [Visual Studiót](htt
 3. Kattintson a **Download** (Letöltés) gombra. 
 4. A telepítés után indítsa újra a Visual Studiót. 
 
-A Visual Studio újbóli betöltése után a bővítmény engedélyezve lesz. [További tudnivalók a bővítmények kereséséről](hhttps://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions).
+A Visual Studio újbóli betöltése után a bővítmény engedélyezve lesz. [További tudnivalók a bővítmények kereséséről](hhttps://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions).
 
 > [!NOTE]
 > A Visual Studio Tools for AI használatához a Visual Studio 2015 vagy 2017 Professional vagy Enterprise verziója szükséges. Az Apple OSX verziói nem támogatottak. 

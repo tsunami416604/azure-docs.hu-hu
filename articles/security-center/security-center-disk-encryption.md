@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: 8d39aafb0ab7b0e87afdf4d2f50f1e224b8d251f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa55df0c4d5291834035ea5cae58fa3d75de7e02
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure virtuális gép titkosítása
 Az Azure Security Center riasztást küld Önnek, ha azt észleli, hogy egyes virtuális gépek nincsenek titkosítva. Ezek a riasztások magas súlyossági szinttel jelennek meg. A rendszer ilyenkor javasolja, hogy titkosítsa az érintett virtuális gépeket.
@@ -26,7 +26,7 @@ Az Azure Security Center riasztást küld Önnek, ha azt észleli, hogy egyes vi
 ![Lemeztitkosításra vonatkozó javaslat](./media/security-center-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
-> A jelen dokumentumban lévő információk a virtuális gépek Kulcstitkosítási kulcs nélküli titkosítására érvényesek (ez szükséges a virtuális gépek Azure Backuppal történő biztonsági mentéséhez). Tekintse meg az [Azure Disk Encryption Windows és Linux Azure virtuális gépekhez való használatát](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) ismertető cikket, ha további információkra kíváncsi a Kulcstitkosítási kulcs használatáról az Azure Backup támogatáshoz titkosított Azure virtuális gépeknél.
+> A jelen dokumentumban lévő információk a virtuális gépek Kulcstitkosítási kulcs nélküli titkosítására érvényesek (ez szükséges a virtuális gépek Azure Backuppal történő biztonsági mentéséhez). Tekintse meg az [Azure Disk Encryption Windows és Linux Azure virtuális gépekhez való használatát](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) ismertető cikket, ha további információkra kíváncsi a Kulcstitkosítási kulcs használatáról az Azure Backup támogatáshoz titkosított Azure virtuális gépeknél.
 >
 >
 

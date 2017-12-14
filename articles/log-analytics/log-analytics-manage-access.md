@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: d9f86ac19044fd13e77d35d6c3dd9964c3852001
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1549408c6885ee556a142ab7de613ebb1629070d
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -51,7 +51,7 @@ A fenti jellemzők alapján a következő esetekben lehet érdemes több munkate
 * Felügyelt szolgáltatást kínál, és az egyes felügyelt ügyfelek Log Analytics-adatait külön kell tárolnia a többi ügyfél adataitól.
 * Több ügyfelet is kezel, és azt szeretné, hogy az egyes ügyfelek, részlegek és üzleti csoportok lássák ugyan a saját adataikat, de a másokét ne.
 
-Ha az adatgyűjtéshez ügynököket használ, [konfigurálhatja úgy az egyes ügynököket, hogy egy vagy több munkaterületnek küldjenek jelentést](log-analytics-windows-agents.md).
+Ha az adatgyűjtéshez ügynököket használ, [konfigurálhatja úgy az egyes ügynököket, hogy egy vagy több munkaterületnek küldjenek jelentést](log-analytics-windows-agent.md).
 
 A System Center Operations Manager használata esetén az Operations Manager egyes felügyeleti csoportjai csak egy munkaterülethez csatlakoztathatók. Azonban a számítógépre telepített Microsoft Monitoring Agentet úgy is beállíthatja, hogy az Operations Managernek és egy másik Log Analytics-munkaterületnek is küldjön jelentést.  
 

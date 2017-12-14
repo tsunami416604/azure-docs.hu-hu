@@ -3,7 +3,7 @@ title: "Az Azure Automation bemutatása | Microsoft Docs"
 description: "Megtudhatja, mit kínál az Azure Automation, és választ kaphat gyakori kérdésekre, hogy nekiláthasson a forgatókönyvek Azure Automation DSC-ben való létrehozásának és használatának."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: 
 keywords: "az Automation ismertetése, Azure Automation, Azure Automation példák"
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: c9f5c346350a62540ba29444b1b00cc9dc398d56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae2b607be9a02e688a6b513d593f79eeb985ca93
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-automation-overview"></a>Az Azure Automation áttekintése
 A Microsoft Azure Automation segítségével a felhasználók automatizálhatják a manuális, hosszan tartó, sok hibalehetőséget rejtő és gyakran ismétlődő feladatokat, amelyeket gyakran hajtanak végre a felhőben és vállalati környezetben. Ezzel idő takarítható meg, továbbá nő a rendszeres adminisztratív feladatok megbízhatósága, valamint még ütemezhetők is a feladatok, hogy adott időközönként automatikusan végrehajtsa őket a rendszer. A folyamatokat automatizálhatja forgatókönyvek segítségével, vagy automatizálhat konfigurációkezelést a Célállapot-konfigurációval (DSC). Ez a cikk röviden áttekinti az Azure Automationt, valamint választ ad néhány gyakran felmerülő kérdésre. A különböző témakörök részletesebb leírásáért tekintse meg a könyvtár egyéb cikkeit.

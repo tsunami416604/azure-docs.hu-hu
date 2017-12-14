@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.openlocfilehash: 8ff0d38a679b673b148dd808050eda82060cfe80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4aca25f74d3e22911ab5059a8cdec45f189dc8cf
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="overview-of-azure-service-fabric"></a>Az Azure Service Fabric áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését. A Service Fabric emellett választ ad a natív felhőalapú alkalmazások fejlesztésének és felügyeletének jelentős kihívásaira. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak. A Service Fabric egy következő generációs platform az ezen tárolókban futó, nagyvállalati szintű, első rétegbeli, felhőléptékű alkalmazások felépítésére és felügyeletére.
@@ -49,7 +49,7 @@ A Service Fabric bárhol futtatható. Számos környezetben létrehozhat fürtö
 
 ![Service Fabric platform][Image1]
 
-Windows-fejlesztéshez a Service Fabric .NET SDK integrálva van a Visual Studióval és a PowerShell-lel. Lásd [a fejlesztési környezet Windowson való előkészítését](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started.md) ismertető cikket. Linux-fejlesztéshez a Service Fabric Java SDK integrálva van az Eclipse-szel, és a Java-, .NET Core- és tárolóalkalmazások sablonjainak előállítása a Yeoman használatával történik. Lásd [a fejlesztési környezet Linuxon való előkészítését](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started.md) ismertető cikket.
+Windows-fejlesztéshez a Service Fabric .NET SDK integrálva van a Visual Studióval és a PowerShell-lel. Lásd [a fejlesztési környezet Windowson való előkészítését](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started.md) ismertető cikket. Linux-fejlesztéshez a Service Fabric Java SDK integrálva van az Eclipse-szel, és a Java-, .NET Core- és tárolóalkalmazások sablonjainak előállítása a Yeoman használatával történik. Lásd [a fejlesztési környezet Linuxon való előkészítését](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started.md) ismertető cikket.
 
 A fürtök létrehozásával kapcsolatos további információkért olvassa el a [fürtök Windows Serveren vagy Linuxon való létrehozásával](service-fabric-deploy-anywhere.md) kapcsolatos témakört vagy Azure-ral való létrehozás esetén a [fürtök az Azure Portalon való létrehozásával](service-fabric-cluster-creation-via-portal.md) kapcsolatos témakört.
 

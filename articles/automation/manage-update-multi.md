@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/30/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: 119d8abcea91bf5c6ea03212fcb886f9e31c1ada
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: aea0b93e658a0c5dd14deedbd2c5c92bb1fbf652
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -84,7 +84,7 @@ A frissítéskezelés engedélyezve van a virtuális gépen.
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Frissítéskezelés engedélyezése nem Azure-beli virtuális gépeken és számítógépeken
 
-A nem Azure-beli virtuális gépeken és számítógépeken a frissítéskezelés engedélyezésének útmutatásáért lásd a [Windows rendszerű számítógépek a Log Analytics szolgáltatáshoz az Azure-ban való csatlakoztatását](../log-analytics/log-analytics-windows-agents.md) ismertető dokumentumot.
+A nem Azure-beli virtuális gépeken és számítógépeken a frissítéskezelés engedélyezésének útmutatásáért lásd a [Windows rendszerű számítógépek a Log Analytics szolgáltatáshoz az Azure-ban való csatlakoztatását](../log-analytics/log-analytics-windows-agent.md) ismertető dokumentumot.
 
 A nem Azure-beli linuxos virtuális gépeken és számítógépeken a frissítéskezelés engedélyezésének útmutatásáért lásd a [Linux rendszerű számítógépek Log Analyticshez való csatlakoztatását](../log-analytics/log-analytics-agent-linux.md) ismertető témakört.
 

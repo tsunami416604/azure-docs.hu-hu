@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: bwren
-ms.openlocfilehash: 452dd602387db6db04ca87f6834c9e8606185484
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94dedebe48060441cd3167fea87f6b721eb14517
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Mi az az Operations Management Suite (OMS)?
 A cikk az Operations Management Suite (OMS) csomagot mutatja be, és az üzleti értékének, a benne található szolgáltatásoknak és felügyeleti megoldásoknak, valamint a különböző szolgáltatásokhoz és megoldásokhoz kapcsolódó ajánlatoknak a rövid áttekintését tartalmazza.  Az egyes szolgáltatások és megoldások telepítését és használatát ismertető részletes dokumentációra mutató hivatkozásokat is tartalmaz.
@@ -64,7 +64,7 @@ A [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytic
 #### <a name="collecting-data"></a>Adatok gyűjtése
 Számos különféle módon juttathatja el az adatokat a tárházba a Log Analytics általi elemzés céljából.
 
-- **Windows vagy Linux rendszerű számítógépek és virtuális gépek.**  A Microsoft Monitoring Agentet azon [Windows](../log-analytics/log-analytics-windows-agents.md) és [Linux](../log-analytics/log-analytics-linux-agents.md) rendszerű számítógépekre vagy virtuális gépekre telepítse, amelyekről adatokat szeretne gyűjteni.  Az ügynök automatikusan letölti a Log Analyticsből a konfigurációt, amely meghatározza, hogy mely eseményeket és teljesítményadatokat kell gyűjtenie.  Az Azure Portal segítségével egyszerűen telepítheti az ügynököt az Azure-ban futó virtuális gépekre.  Ha rendelkezik meglévő Operations Manager-környezettel, a felügyeleti csoportot csatlakoztathatja a Log Analyticshez, és automatikusan elindíthatja az adatok gyűjtését az összes meglévő ügynökről.
+- **Windows vagy Linux rendszerű számítógépek és virtuális gépek.**  A Microsoft Monitoring Agentet azon [Windows](../log-analytics/log-analytics-windows-agent.md) és [Linux](../log-analytics/log-analytics-linux-agents.md) rendszerű számítógépekre vagy virtuális gépekre telepítse, amelyekről adatokat szeretne gyűjteni.  Az ügynök automatikusan letölti a Log Analyticsből a konfigurációt, amely meghatározza, hogy mely eseményeket és teljesítményadatokat kell gyűjtenie.  Az Azure Portal segítségével egyszerűen telepítheti az ügynököt az Azure-ban futó virtuális gépekre.  Ha rendelkezik meglévő Operations Manager-környezettel, a felügyeleti csoportot csatlakoztathatja a Log Analyticshez, és automatikusan elindíthatja az adatok gyűjtését az összes meglévő ügynökről.
 - **Azure-szolgáltatások.**  A Log Analytics telemetriát gyűjt a tárházba az [Azure Diagnostics és az Azure Monitoring szolgáltatásból](../log-analytics/log-analytics-azure-storage.md), így figyelheti az Azure-erőforrásokat.
 - **Adatgyűjtő API.**  A Log Analytics [REST API-jával bármelyik ügyfélből feltölthet adatokat](../log-analytics/log-analytics-data-collector-api.md).  Így harmadik felek alkalmazásaiból is gyűjthet adatokat, illetve megvalósíthat egyéni felügyeleti forgatókönyveket is.  Gyakori módszer egy runbook használata az Azure Automationben az adatok gyűjtésére, majd a Data Collector API használata az adatoknak a tárházba való írására.
 
