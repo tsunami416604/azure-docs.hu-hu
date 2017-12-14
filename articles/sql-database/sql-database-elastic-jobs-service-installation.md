@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 232d695421a417286c30dc05b35f084c551a443d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ef5a8931eeda0f7ddc485632acaf2d76b71dccde
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Telepítése rugalmas feladatok – áttekintés
 [**Rugalmas adatbázis-feladatok** ](sql-database-elastic-jobs-overview.md) PowerShell vagy az Azure portálon keresztül is telepíthető. Akkor is hozzáférhetnek a PowerShell API használata csak akkor, ha a PowerShell telepítéséhez feladatok létrehozásához és kezeléséhez. Emellett a PowerShell API-k jóval több funkciót kínál a portál mint ezen a ponton a időben.
@@ -155,7 +155,7 @@ Ha elvégezte [egy rugalmas készlet létrehozása](sql-database-elastic-pool-ma
 
 **Oktatóanyag áttekintésének várható időtartama:** 10 perc.
 
-1. Az irányítópult nézetben a rugalmas készlet keresztül a [Azure Portal](https://portal.azure.com/#) , kattintson a **létrehozása feladat**.
+1. Az irányítópult nézetben a rugalmas készlet keresztül a [Azure-portálon](https://portal.azure.com/#) , kattintson a **létrehozása feladat**.
 2. Ha első alkalommal hoz létre egy feladatot, telepítenie kell **rugalmas adatbázis-feladatok** kattintva **PREVIEW feltételek**.
 3. Elfogadja a feltételeket a jelölőnégyzetre kattintva.
 4. A "Szolgáltatások telepítése" nézetben kattintson **feladat hitelesítő adatai**.

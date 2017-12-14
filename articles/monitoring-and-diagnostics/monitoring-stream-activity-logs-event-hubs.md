@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/06/2017
 ms.author: johnkem
-ms.openlocfilehash: 88c5701279f370914fac68872d67b02a7571748a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0e507cf2804edbcdd6c87f47b30defbc6a5eb94
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló adatfolyam
 A [ **Azure tevékenységnapló** ](monitoring-overview-activity-logs.md) továbbítható bármely alkalmazás a beépített "Exportálás" beállítás használatával, a portálon, vagy a Service Bus szabály azonosítója az Azure PowerShell-parancsmagok vagy Azure parancssori felület használatával napló profilban engedélyezésével közel valós időben.
@@ -30,7 +30,7 @@ Az alábbiakban néhány olyan módon, előfordulhat, hogy az adatfolyam-tovább
 * **Egy egyéni telemetriai adatokat, illetve a naplózási platform** – Ha már rendelkezik egy egyedi telemetriai platform vagy csak egy kiválóan méretezhető kiépítésével foglalkozó végezni azok jellegű közzétételi-feliratkozási az Event hubs lehetővé teszi a műveletnapló rugalmasan betöltési. [Az Event Hubs használatával egy globális méretű telemetriai platform itt Dan Rosanova útmutatójában talál.](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)
 
 ## <a name="enable-streaming-of-the-activity-log"></a>A műveletnapló adatfolyamként
-A műveletnapló streaming vagy programozott módon, vagy a portálon keresztül is engedélyezheti. Mindkét módszer esetén, válasszon egy Service Bus Namespace és egy megosztott elérési házirendet a névtérhez, és egy Eseményközpontot, hogy a névtér jön létre, az első új tevékenységnapló esemény bekövetkezésekor. Ha nem rendelkezik egy Service Bus Namespace, először hozzon létre egyet. Ha korábban folyamatos átviteli tevékenység a Service Bus Namespace eseményeket, a korábban létrehozott Eseményközpont fogja használni. A megosztott elérési házirend határozza meg az adatfolyam-továbbítási mechanizmus jogosultságai. Jelenleg az Event hubs streaming van szükség **kezelése**, **küldése**, és **figyelésére** engedélyek. Hozzon létre, vagy módosíthatja a Service Bus Namespace Service Bus Namespace megosztott hozzáférési házirendek az "Beállítása" lapon a klasszikus portálon. A műveletnapló napló profil tartalmazza a streaming frissítése, a felhasználó, a módosítás elvégzése a ListKey engedéllyel kell rendelkeznie a Service Bus engedélyezési szabályt.
+A műveletnapló streaming vagy programozott módon, vagy a portálon keresztül is engedélyezheti. Mindkét módszer esetén, válasszon egy Service Bus Namespace és egy megosztott elérési házirendet a névtérhez, és egy Eseményközpontot, hogy a névtér jön létre, az első új tevékenységnapló esemény bekövetkezésekor. Ha nem rendelkezik egy Service Bus Namespace, először hozzon létre egyet. Ha korábban folyamatos átviteli tevékenység a Service Bus Namespace eseményeket, a korábban létrehozott Eseményközpont fogja használni. A megosztott elérési házirend határozza meg az adatfolyam-továbbítási mechanizmus jogosultságai. Jelenleg az Event hubs streaming van szükség **kezelése**, **küldése**, és **figyelésére** engedélyek. Hozzon létre, vagy módosíthatja a Service Bus Namespace Service Bus Namespace megosztott hozzáférési házirendek az Azure portálon az "Beállítása" lapon. A műveletnapló napló profil tartalmazza a streaming frissítése, a felhasználó, a módosítás elvégzése a ListKey engedéllyel kell rendelkeznie a Service Bus engedélyezési szabályt.
 
 A service bus vagy esemény hub névtér nem kell ugyanazt az előfizetést, mint az előfizetés naplók kibocsátó mindaddig, amíg a beállítás konfigurálása felhasználó hozzáfér megfelelő RBAC mindkét előfizetéshez lehet.
 

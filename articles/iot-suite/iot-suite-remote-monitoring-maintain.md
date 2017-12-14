@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 46b0269b3f5b98e1bcecdbeabd5544e97bb5c06c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: d26275b6b03115b775990c9efb5d4706fcb829d1
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>Hibaelhárítás és szervizelheti azokat a eszközökkel kapcsolatos problémákat
 
@@ -46,11 +46,7 @@ Vizsgálja meg a probléma, válassza ki a **felfedezés riasztás** beállítá
 
 ![Riasztás megismerkedhet az irányítópultról](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
 
-Most már megtekintheti a riasztások listáját a **karbantartási** lap:
-
-![A karbantartási oldalon riasztások listája](media/iot-suite-remote-monitoring-maintain/maintenancealarms.png)
-
-A riasztás részleteinek megjelenítéséhez kattintson a riasztás a **riasztások** listája. A Részletek nézetben látható:
+A riasztás részletes nézete látható:
 
 * Ha lett elindítva. a riasztás
 * A riasztás társított eszköz állapotinformációról
@@ -70,7 +66,7 @@ A listában megtekintheti a **prototípus** felelős a hőmérséklet riasztás 
 
 Kijavítani a problémát a **prototípus** eszköz, meg kell hívnia a **DecreaseTemperature** metódus az eszközön.
 
-Segítségével az eszközön, az eszközök listájában válassza ki, és válassza a **ütemezés**. A **motor** eszközmodell eszköz támogatnia kell a három módszer megadása:
+Segítségével az eszközön, az eszközök listájában válassza ki, és válassza a **ütemezés**. A **prototípus** eszközmodell eszköz támogatnia kell a négy módszer megadása:
 
 ![Az eszköz támogatja a módszerek megtekintése](media/iot-suite-remote-monitoring-maintain/maintenancemethods.png)
 
@@ -78,11 +74,11 @@ Válasszon **DecreaseTemperature** , és a feladat neve **DecreaseTemperature**.
 
 ![A hőmérséklet csökkenti a feladat létrehozása](media/iot-suite-remote-monitoring-maintain/maintenancecreatejob.png)
 
-A feladat állapotának nyomon követheti a **karbantartási** lapon, válassza ki **rendszerállapot**. Használja a **rendszerállapot** nyomon követéséhez a feladatok megtekintése és a megoldás metódushívások:
+A feladat állapotának nyomon követheti a **karbantartási** lapon, válassza ki **feladatok**. Használja a **feladatok** nyomon követéséhez a feladatok megtekintése és a megoldás metódushívások:
 
 ![A hőmérséklet csökkenti a feladat figyeléséhez](media/iot-suite-remote-monitoring-maintain/maintenancerunningjob.png)
 
-Egy adott feladat vagy a metódus hívása részleteinek megtekintéséhez jelölje ki azt a listát a **rendszerállapot** megtekintése:
+Egy adott feladat vagy a metódus hívása részleteinek megtekintéséhez jelölje ki azt a listát a **feladatok** megtekintése:
 
 ![Feladatok részleteinek megjelenítése](media/iot-suite-remote-monitoring-maintain/maintenancejobdetail.png)
 

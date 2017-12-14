@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 9e459a42a9fd7caedfa255a7baf51273eef2265a
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 6a03986288fdb6acaf234a8abf690f728d160fd7
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurálja a hálózati Teljesítményfigyelő az ExpressRoute (előzetes verzió)
 
@@ -109,7 +109,7 @@ Használata hálózati Teljesítményfigyelő más objektumok, vagy a szolgálta
 Azt javasoljuk, hogy telepítse a redundancia érdekében legalább két ügynököket (vagyis a helyszíni Azure Vnetekhez) ExpressRoute-kapcsolat mindkét oldalán. Az ügynökök telepítéséhez tegye a következőket:
 
 1. Futtatás **telepítő** ExpressRoute figyelemmel kísérésére használni kívánt összes kiszolgálón az ügynök telepítéséhez. A figyeléshez használt kiszolgáló lehet egy virtuális Gépet, vagy a helyszíni és internetkapcsolattal kell rendelkeznie. Azure a figyelni kívánt hálózati szegmenshez legalább egy ügynök-hez, és egy ügynököt telepíteni szeretné.
-2. Az a **üdvözlő** kattintson **következő**.
+2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
 3. Az a **licencfeltételeket** lapon olvassa el a licencfeltételeket, és kattintson a **elfogadom**.
 4. Az a **célmappa** lapon módosítani vagy hagyja az alapértelmezett telepítési mappa, és kattintson a **következő**.
 5. Az a **ügynök telepítésének beállításai** lap, dönthet úgy, hogy az ügynök csatlakoztatása az Azure Naplóelemzés (OMS) vagy az Operations Manager. Vagy a választási lehetőségek üresen hagyhatja, ha az ügynök később konfigurálni szeretné. Miután kiválasztotta a selection(s), kattintson a **következő**.
@@ -124,12 +124,12 @@ Azt javasoljuk, hogy telepítse a redundancia érdekében legalább két ügynö
 
     ![Fiók](.\media\how-to-npm\10.png)
 6. Az a **telepítésre kész** lapon ellenőrizze a megadott beállításokat, és kattintson a **telepítése**.
-7. Az a **konfigurálása sikeresen befejeződött** kattintson **Befejezés**.
+7. **A konfigurálás sikeresen befejeződött** lapon kattintson a **Befejezés** gombra.
 8. Amikor végzett, a Microsoft Monitoring Agent jelenik meg a Vezérlőpultot. Tekintse át a hiba a konfiguráció, és ellenőrizze, hogy az ügynök csatlakozik-e az Operational Insights (OMS). Csatlakoztatva az OMS-be, amikor az ügynök jeleníti meg a következő üzenet: **a Microsoft Monitoring Agent sikeresen csatlakozott-e a Microsoft Operations Management Suite szolgáltatással**.
 
 ### <a name="proxy"></a>2.3: konfigurálja a proxybeállításokat (nem kötelező)
 
-Ha olyan webproxyt használ az Internet eléréséhez, az alábbi lépések segítségével a Microsoft Monitoring Agent proxy beállításainak konfigurálása. Hajtsa végre ezeket a lépéseket minden olyan kiszolgáló. Ha sok kiszolgálót kell konfigurálnia, akkor érdemes lehet parancsfájl használatával automatizálni a folyamatot. Ha igen, tekintse meg a [proxybeállításokat a Microsoft Monitoring Agent egy olyan parancsfájllal](../log-analytics/log-analytics-windows-agents.md#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script).
+Ha olyan webproxyt használ az Internet eléréséhez, az alábbi lépések segítségével a Microsoft Monitoring Agent proxy beállításainak konfigurálása. Hajtsa végre ezeket a lépéseket minden olyan kiszolgáló. Ha sok kiszolgálót kell konfigurálnia, akkor érdemes lehet parancsfájl használatával automatizálni a folyamatot. Ha igen, tekintse meg a [proxybeállításokat a Microsoft Monitoring Agent egy olyan parancsfájllal](../log-analytics/log-analytics-windows-agent.md).
 
 A Microsoft Monitoring Agent a Vezérlőpulton Proxybeállítások konfigurálása:
 
@@ -200,7 +200,7 @@ Miután befejezte a korábbi szakaszokban, és győződjön meg arról, hogy ki 
   ![szolgáltatás telepítése](.\media\how-to-npm\npm2.png)
 3. A konfiguráció lapon keresse meg a bal oldali panelen található az "ExpressRoute-Társviszony" lapon. Kattintson a **most felderítése**.
 
-  ![Felderítése](.\media\how-to-npm\13.png)
+  ![felderítés](.\media\how-to-npm\13.png)
 4. Felderítési befejezését követően megjelenik szabályok egyedi áramkör és virtuális hálózat nevét. Kezdetben ezek a szabályok le vannak tiltva. A szabályok engedélyezése, majd válassza ki a felügyeleti ügynökök és a küszöbérték.
 
   ![szabályok](.\media\how-to-npm\14.png)

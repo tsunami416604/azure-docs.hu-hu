@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: b780385ad0af34bcb15639683d1aa5d689b38b50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a5a97a5d9f06aa73f1ad521e112fa25f215724f
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Az Azure Import/Export szolgáltatás REST API-jának használata
 
-A Microsoft Azure Import/Export szolgáltatás közzétesz egy REST API, hogy az importálási/exportálási feladatok programozott hozzáférést. A REST API segítségével elvégzik az importálási/exportálási műveleteket hajthat végre a a [Azure-portálon](https://portal.azure.com/). Emellett a REST API használatával bizonyos a részletes műveletek, például egy feladatot, amely már nem érhető el a klasszikus Azure portálon százalékos megvalósításának lekérdezése.
+A Microsoft Azure Import/Export szolgáltatás közzétesz egy REST API, hogy az importálási/exportálási feladatok programozott hozzáférést. A REST API segítségével elvégzik az importálási/exportálási műveleteket hajthat végre a a [Azure-portálon](https://portal.azure.com/). Emellett a REST API használatával bizonyos a részletes műveletek, például egy feladatot, amely már nem érhető el az Azure portálon százalékos megvalósításának lekérdezése.
 
-Lásd: [adatok átviteléhez a Blob Storage a Microsoft Azure Import/Export szolgáltatás használata](../storage-import-export-service.md) az Import/Export szolgáltatás és mutatja be a klasszikus portál segítségével történő létrehozása és kezelése az importálás és exportálni a feladatokat áttekintését.
+Lásd: [adatok átviteléhez a Blob Storage a Microsoft Azure Import/Export szolgáltatás használata](../storage-import-export-service.md) az Import/Export szolgáltatás és az oktatóanyag bemutatja, hogyan használhatja a portált létrehozása és kezelése az importálás és exportálni a feladatokat áttekintését.
 
 ## <a name="service-endpoints"></a>Szolgáltatás-végpontok
 

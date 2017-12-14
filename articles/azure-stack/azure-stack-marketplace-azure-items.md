@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 12/13/2017
 ms.author: JeffGoldner
-ms.openlocfilehash: 1a6dbe2f4a66a44222e0b34b34a283c101b055de
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 8a4e92dbcf65d907e7b95b5f52597fc625e77897
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -29,6 +29,7 @@ A Microsoft Azure verem támogatja a következő Azure piactéren elemek:
 |  | Elem neve | Leírás | Közzétevő |
 | --- | --- | --- | --- |
 | ![](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.docker-arm?tab=Overview) | A Linux virtuális gépek docker-kiterjesztés. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | SQL IaaS-bővítmény | <b>Töltse le a bővítményt, a Windows Piactéri elemek bármely SQL Server telepítéséhez.<b> | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a Windows Server 2016 9.2.1 kiszolgáló](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016?tab=Overview) | Microsoft gépi tanulási 9.2.1 kiszolgáló a Windows Server 2016. | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a 9.2.1 Ubuntu 16.04 Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604?tab=Overview) | Microsoft gépi tanulási Ubuntu 16.04 9.2.1 kiszolgálón. | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a CentOS Linux 7.2 9.2.1 kiszolgáló](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72?tab=Overview) | Microsoft gépi tanulási Server 9.2.1 CentOS Linux 7.2. | Microsoft |
@@ -156,8 +157,8 @@ A Microsoft Azure verem támogatja a következő Azure piactéren elemek:
 | ![](media/azure-stack-marketplace-azure-items/x2enginesalescrm.png) | [X2Engine értékesítési CRM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.x2enginesalescrm?tab=Overview) | Kompakt marketing, az értékesítések és a felhasználói alkalmazás. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/xoops.png) | [Xoops](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.xoops?tab=Overview) | A CMS és webes portál Program által létrehozott dinamikus webhelyeket.
 | ![](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.zurmo?tab=Overview) | Nyissa meg a forrás CRM-rendszerbe: Mobile, társadalombiztosítási és Gamified. | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point vSEC biztonsági kezelése](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec?tab=Overview) | Check Point vSEC nyújt az Azure-ban a felhasználói eszközök megvédeni a kártevőktől és kifinomult fenyegetésektől speciális, többrétegű fenyegetés megelőzése. | Ellenőrzőpont |
-| ![](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef automatizálása](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview) | Létre, telepíthetnek és kezelése a Chef automatizálhatja, a folyamatos automatizálási Platform. | Chef szoftver, Inc |
+| ![](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point vSEC biztonsági kezelése](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec?tab=Overview) | Check Point vSEC nyújt az Azure-ban a felhasználói eszközök megvédeni a kártevőktől és kifinomult fenyegetésektől speciális, többrétegű fenyegetés megelőzése. <b>Töltse le mindkét ellenőrzés pont vSEC Piactéri elemek.</b> | Ellenőrzőpont |
+| ![](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef automatizálása](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview) | Létre, telepíthetnek és kezelése a Chef automatizálhatja, a folyamatos automatizálási Platform. <b>Töltse le mindkét Chef Piactéri elemek</b> | Chef szoftver, Inc |
 | ![](media/azure-stack-marketplace-azure-items/coreos.png) | [Tároló Linux által CoreOS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CoreOS.CoreOS?tab=Overview) | Tároló Linux a modern és minimális Linux terjesztési tárolók futtatásához, a fürtök kezeléséhez és a zökkenőmentesen frissítése a kiszolgálók egyszerű módot biztosít - összetevők, amelyek lehetővé teszik az adatraktár-skálázási számítási. | CoreOS |
 | ![](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Canonical.UbuntuServer?tab=Overview) | Ubuntu Server a globális legnépszerűbb Linux felhőalapú környezetek. | Canonical |
 | ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian?tab=Overview) | Debian GNU/Linux egyike a legnépszerűbb Linux terjesztéseket. | credativ |
@@ -171,7 +172,9 @@ A Microsoft Azure verem támogatja a következő Azure piactéren elemek:
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [A részletes biztonsági Linux-ügynök](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/TrendMicroDeepSecurity.dsa-linux?tab=Overview) | Linux Trend Micro mély biztonsági kiterjesztése. | Trend Micro |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [A részletes biztonsági ügynök a Windows](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/TrendMicroDeepSecurity.dsa-windows-arm?tab=Overview) | Windows Trend Micro mély biztonsági kiterjesztése. | Trend Micro |
 | ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown szoftvereket eszköz](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zerodown_software.zerodown-software-tool-7_1?tab=Overview) | ZeroDown szoftver eszköz v7.1 - áttelepítése + magas rendelkezésre ÁLLÁSÚ. | ZeroDown szoftver |
-
+| ![](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet vállalati segítségével automatizálhatja az Azure-verem infrastruktúra teljes életciklusát. <b>Töltse le mindkét Puppet Piactéri elemek.</b> | Puppet |
+| ![](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa hibrid AWS S3 compatibe - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | S3-kompatibilis tárolási szolgáltatás helyezkednek nyilvános és helyszíni erőforrások kapacitás. | NooBaa |
+| ![](media/azure-stack-marketplace-azure-items/hortonworks.png) | [A védőfal Hortonworks Data Platform (HDP)](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | 2,5 100 %-os HDP technológiával Hadoop, Spark, Storm, HBase, Kafka, struktúra, Ambari megnyitásához forrás platform. | Hortonworks |
 
 ### <a name="next-steps"></a>Következő lépések
 [Töltse le a Piactéri elemet](azure-stack-download-azure-marketplace-item.md)

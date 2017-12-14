@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: 3d3f31775ae9384faeae20f108b71cea5dcc2934
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04742a587284cf72632360a9575a63a576da36e8
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-stack-development-kit-deployment-quickstart"></a>Az Azure Stack fejlesztői készletének telepítése – rövid útmutató
 
@@ -31,9 +31,9 @@ A [Azure verem szoftverfejlesztői készlet](azure-stack-poc.md) egy tesztelési
 
 2. [**Töltse le, és bontsa ki a központi telepítési csomag**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit). A központi telepítési csomag letöltheti a development kit gazdagépre vagy egy másik számítógépre. A kibontott tároló 60 GB szabad lemezterület, tarthat, ezért egy másik számítógép segítségével csökkentheti a development kit gazdagép hardverkövetelményeinek.
 
-3. [**Készítse elő a development kit gazdagép** ](azure-stack-run-powershell-script.md#prepare-the-development-kit-host) a telepítő használatával. Ez a lépés után a development kit gazdagép fog indulni, a Cloudbuilder.vhdx (egy virtuális merevlemez-meghajtóról, amely egy rendszerindításra alkalmas operációs rendszer és az Azure-verem tartalmazza a fájlok telepítéséhez).
+3. [**Készítse elő a development kit gazdagép** ](azure-stack-run-powershell-script.md) a telepítő használatával. Ez a lépés után a development kit gazdagép fog indulni, a Cloudbuilder.vhdx (egy virtuális merevlemez-meghajtóról, amely egy rendszerindításra alkalmas operációs rendszer és az Azure-verem tartalmazza a fájlok telepítéséhez).
 
-4. [**A csomag telepítése** ](azure-stack-run-powershell-script.md#deploy-the-development-kit) a development kit gazdagépen.
+4. [**A csomag telepítése** ](azure-stack-run-powershell-script.md) a development kit gazdagépen.
 
 5. Ha az Azure Alkalmazásveremben üzembe az Azure Active Directory használ, meg kell [Azure verem regisztrálni Azure](azure-stack-register.md) , hogy [töltse le az Azure piactéren elemek](azure-stack-download-azure-marketplace-item.md) Azure verem.
 

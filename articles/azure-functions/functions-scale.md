@@ -14,21 +14,21 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff3f7072792c76c5d05310451771bde61b61e009
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 38499fd1e27cf6e8253ad1172701fd18b338abad
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetéséhez
 
 Az Azure Functions két különböző módban is futtathatja: fogyasztás terv és az Azure App Service-csomag. A felhasználási terv automatikusan osztja ki a számítási teljesítményt, a kódja fut, kimenő terhelés kezelésére, szükség szerint arányosan, és majd arányosan csökken, amikor a kód nem fut. Nem kell fizetni a tétlen virtuális gépeket, és nem kell előzetesen tartalékkapacitás. Ez a cikk foglalkozik a fogyasztás terv egy [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) az app model. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service-csomagok részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
 >[!NOTE]  
-> Linux futtató jelenleg csak az App Service-csomag érhető el.
+> [Linux futtató](functions-create-first-azure-function-azure-cli-linux.md) jelenleg csak az App Service-csomag érhető el.
 
 Ha nem ismeri az Azure Functions, tekintse meg a [Azure Functions áttekintése](functions-overview.md).
 
@@ -46,7 +46,7 @@ Az App Service-csomag a méretezhető különböző mennyiségű erőforrást le
 Amikor egy fogyasztás tervet használja, az Azure Functions állomás példányai dinamikusan felvétele, illetve eltávolítása a bejövő események száma alapján. Ez a csomag automatikusan méretezi, és van szó, a számítási erőforrások csak akkor, ha a függvények futnak. Felhasználás tervezze a függvény legfeljebb 10 perc futtathatja. 
 
 > [!NOTE]
-> Az alapértelmezett időtúllépési fogyasztás tervezze függvények érték 5 perc. Az érték növelhető 10 perc a függvény alkalmazás tulajdonságának módosításával `functionTimeout` a [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
+> Az alapértelmezett időtúllépési fogyasztás tervezze függvények érték 5 perc. Az érték növelhető 10 perc a függvény alkalmazás tulajdonságának módosításával `functionTimeout` a a [host.json](functions-host-json.md#functiontimeout) projektfájlt.
 
 Számlázási végrehajtások, a végrehajtási idő és a felhasznált memória alapul. Számlázási összesíti egy függvény alkalmazásból minden funkciók között. További információkért lásd: a [árképzést ismertető oldalra Azure Functions].
 
@@ -80,7 +80,7 @@ Ha az App Service-csomagot futtatja, engedélyeznie kell a **mindig a** beállí
 
 Always On érhető csak az App Service-csomag. Felhasználás tervezze a platform aktiválja függvény alkalmazások automatikusan.
 
-## <a name="storage-account-requirements"></a>Tárolási fiókra vonatkozó követelmények
+## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 
 A felhasználási terv vagy az App Service-csomag a függvény az alkalmazás csak a egy általános Azure Storage-fiók, amely támogatja az Azure Blob, Queue, fájlok és Table storage. Belsőleg az Azure Functions Azure tárolást használ műveletek, például eseményindítók kezelése és naplózási funkciót végrehajtások. Néhány tárfiókok nem támogatják az üzenetsorok és táblák, például csak a blob storage-fiókok (beleértve a prémium szintű storage) és az általános célú tárfiókok zónaredundáns tárolás replikáció. Ezek a fiókok kiszűri a **Tárfiók** panel egy függvény alkalmazás létrehozásakor.
 

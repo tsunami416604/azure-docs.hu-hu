@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: ancav
-ms.openlocfilehash: 70ec03d2ed32cb0362bf2f7b24c66979093603be
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: d5b33b15c315c7538bba7bf9ae067946f3b6d3c4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
 Ez a cikk útmutatást ad az ajánlott eljárások az Azure-ban automatikus skálázást. Az Azure a figyelő automatikus skálázás vonatkozik csak a [virtuálisgép-méretezési csoportok](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Felhőszolgáltatások](https://azure.microsoft.com/services/cloud-services/), és [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/). Más Azure-szolgáltatások különböző méretezési módszer használatára.
@@ -44,9 +44,6 @@ Manuálisan frissítse a példányok száma fölött vagy alatt a maximális ér
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Mindig használja a kibővített és skálázási szabály, amely végrehajtja az növekedés és csökkentése
 Csak egy részét együttes használatakor automatikus skálázás méretezési modul, amely egyetlen, vagy, amíg a maximálisan engedélyezett, vagy a minimális, elérésekor.
-
-### <a name="do-not-switch-between-the-azure-portal-and-the-azure-classic-portal-when-managing-autoscale"></a>Nem Váltás az Azure-portál és a klasszikus Azure portálon automatikus skálázás kezelése
-Felhőalapú szolgáltatásokhoz és alkalmazásszolgáltatások (webalkalmazások), az Azure portál használatával (portal.azure.com) automatikus skálázási beállítások létrehozása és kezelése. A virtuálisgép-méretezési csoportok segítségével PowerShell, a parancssori felületen vagy a REST API létrehozása és kezelése az automatikus skálázási beállítás. Vált a klasszikus Azure portálon (manage.windowsazure.com) és az Azure portálon (portal.azure.com) közötti automatikus skálázás konfigurációk kezelése. A klasszikus Azure portálra, és az alapul szolgáló háttér korlátai. Az Azure-portálon lépjen a grafikus felhasználói felület használatával automatikus skálázás kezelése. Az is, hogy használja az automatikus skálázás PowerShell, a parancssori felületen vagy a REST API-t (az Azure erőforrás-kezelő) keresztül.
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Válassza ki a megfelelő statisztika a diagnosztika mérőszám
 Diagnosztika metrikáihoz közül választhat *átlagos*, *minimális*, *maximális* és *teljes* , bővítse a metrikát. A leggyakoribb statisztikai adat *átlagos*.

@@ -4,7 +4,7 @@ description: "Nyisson meg egy portot / hozzon létre egy végpontot a Linux virt
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
 ms.service: virtual-machines-linux
@@ -12,23 +12,33 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/21/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: d176187fe465264b5f433260de5178b48ca9dd4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eaa3039c369057d39dfce0896b9a4d1cfad75550
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Nyisson meg portokat és a Linux virtuális gép végpontokat az Azure parancssori felület
 Nyissa meg a portot, vagy hozzon létre egy végpontot a virtuális gép (VM), az Azure-ban egy alhálózatot vagy a virtuális gép hálózati illesztő hálózati szűrő létrehozásával. Ezek a szűrők, amely szabályozza a bejövő és kimenő forgalmat, a hálózati biztonsági csoport az erőforrás a forgalmat fogadó csatolva helyezze el. Ilyenek például a webes forgalom most használja a 80-as porton. Ez a cikk bemutatja, hogyan nyisson meg egy portot a virtuális gépre az Azure CLI 2.0. Az [Azure CLI 1.0-s](nsg-quickstart-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
 
-
-## <a name="quick-commands"></a>Gyors parancsok
 Hálózati biztonsági csoport és a legújabb szükséges szabályok létrehozásához [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#login).
 
 A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevek a következők *myResourceGroup*, *myNetworkSecurityGroup*, és *myVnet*.
 
+
+## <a name="quickly-open-a-port-for-a-vm"></a>Gyorsan nyisson meg egy portot a virtuális gépek
+Ha gyorsan nyisson meg egy portot a virtuális gépek a fejlesztési és tesztelési célú forgatókönyvek van szüksége, használhatja a [az vm-port megnyitása](/cli/azure/vm#az_vm_open_port) parancsot. Ez a parancs hálózati biztonsági csoportot hoz létre, szabály hozzáadása, és alkalmazza azt a virtuális gép vagy alhálózat. Az alábbi példa portot nyit meg *80* nevű virtuális gépen *myVM* az erőforráscsoport neve *myResourceGroup*.
+
+```azure-cli
+az vm open-port --resource-group myResourceGroup --name myVM --port 80
+```
+
+Pontosabban a szabályokat, például egy forrás IP-címtartomány meghatározása további ebben a cikkben további lépéseket.
+
+
+## <a name="create-a-network-security-group-and-rules"></a>Hálózati biztonsági csoport és a szabályok létrehozása
 A hálózati biztonsági csoport létrehozása [az hálózati nsg létrehozása](/cli/azure/network/nsg#create). Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNetworkSecurityGroup* a a *eastus* helye:
 
 ```azurecli
@@ -50,6 +60,8 @@ az network nsg rule create \
     --destination-port-range 80
 ```
 
+
+## <a name="apply-network-security-group-to-vm"></a>Hálózati biztonsági csoport alkalmazása a virtuális gép
 A hálózati biztonsági csoport társítani a virtuális gép hálózati illesztőt (NIC) a [az hálózati nic frissítés](/cli/azure/network/nic#update). A következő példa egy olyan meglévő hálózati adapter nevű társítja *myNic* együtt a hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
 
 ```azurecli

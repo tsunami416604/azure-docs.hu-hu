@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: f60b858d76dd021a158a62b32199be9b1c4ed822
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 858bc1dd2880583a3283522a01c9a48679b76296
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Az Azure CDN szabályok motor-funkciók
 Ez a cikk részletes leírását tartalmazza az elérhető szolgáltatások az Azure Content Delivery Network (CDN) [szabálymotor](cdn-rules-engine.md).
@@ -48,13 +48,13 @@ Név | Cél
 [Sávszélesség-paraméterek](#bandwidth-parameters) | Meghatározza, hogy aktívak-e a sávszélesség szabályozási paraméterek (például ec_rate és ec_prebuf).
 [Sávszélesség-szabályozás](#bandwidth-throttling) | Azelőtt gyorsítja fel a sávszélességet, a peremhálózati kiszolgálóinak által biztosított válasz.
 [Gyorsítótár megkerülése](#bypass-cache) | Meghatározza, hogy a kérelem kell gyorsítótárazásának mellőzése.
-[A Cache-Control fejléc kezelése](#cache-control-header-treatment) | Meghatározza a peremhálózati kiszolgáló Cache-Control fejlécek előállítását, aktív külső maximális-életkora szolgáltatás esetén.
+[A Cache-Control fejléc kezelése](#cache-control-header-treatment) | A következő generációja meghatározza `Cache-Control` fejlécek, a peremhálózati kiszolgáló aktív külső maximális-életkora szolgáltatás esetén.
 [Gyorsítótár-kulcs lekérdezési karakterlánc](#cache-key-query-string) | Meghatározza, hogy a a gyorsítótár-kulcsot tartalmaz, vagy zárja ki a lekérdezési karakterlánc paramétereinek a kérelemhez társított.
 [Gyorsítótár-kulcs átdolgozás](#cache-key-rewrite) | Felülírja a kérelemhez társított gyorsítótár-kulcs.
 [Fejezze be a gyorsítótár kitöltés](#complete-cache-fill) | Meghatározza, hogy mi történik, amikor egy kérelem egy részleges gyorsítótár-tévesztései eredményez az egy biztonsági kiszolgálót.
 [Fájltípusok tömörítése](#compress-file-types) | Meghatározza a fájlformátumokat, amelyek tömörítése a kiszolgálón.
 [Alapértelmezett belső maximális életkora](#default-internal-max-age) | Meghatározza, hogy az alapértelmezett maximális-életkora időközt biztonsági kiszolgálót az eredeti kiszolgáló gyorsítótár ismételt érvényesítése.
-[Fejléc kezelés lejár](#expires-header-treatment) | Ha a külső maximális-életkora szolgáltatás aktív szabályozza a Expires fejléc generációját által egy biztonsági kiszolgálót.
+[Fejléc kezelés lejár](#expires-header-treatment) | A következő generációja meghatározza `Expires` fejlécek alapján egy biztonsági kiszolgálót, ha a külső maximális-életkora szolgáltatás aktív.
 [Külső maximális-kor](#external-max-age) | Meghatározza, hogy a peremhálózati kiszolgáló a gyorsítótár ismételt érvényesítése böngészőben maximális-életkora intervallumát.
 [Kényszerített belső maximális életkora](#force-internal-max-age) | Határozza meg a biztonsági kiszolgáló az eredeti kiszolgáló gyorsítótár ismételt érvényesítése maximális-életkora intervallumát.
 [H.264 támogatási (HTTP a progresszív letöltés)](#h264-support-http-progressive-download) | Meghatározza, hogy a tartalom adatfolyamként történő küldéséhez használható H.264 fájlformátumok típusú.
@@ -162,7 +162,7 @@ Név | Cél
 -----|--------
 [Kérelmeznék HTTP-metódus](#cacheable-http-methods) | Határozza meg, hogy a hálózat gyorsítótárazható további HTTP-metódus.
 [Kérelmeznék kérelem törzse mérete](#cacheable-request-body-size) | Határozza meg a küszöbérték meghatározásához, hogy a FELADÁS egy vagy több válasz gyorsítótárazható.
-[Felhasználói változó](#user-variable) | Használt primarity Lua parancsfájlok.
+[Felhasználói változó](#user-variable) | Csak belső használatra.
 
  
 ## <a name="url-features"></a>URL-cím szolgáltatások
@@ -181,7 +181,7 @@ Név | Cél
 
 ---
 ### <a name="age-response-header"></a>Kor válaszfejléc
-**Cél**: határozza meg, hogy egy kora válaszfejléc lesz a válaszként küldött a kérelmező.
+**Cél**: meghatározza, hogy egy kora válasz fejléce szerepel-e a válaszként küldött a kérelmező.
 Érték|Eredmény
 --|--
 Engedélyezve | A Korszűrő válaszfejléc a választ küldött a kérelmező tartalmazza.
@@ -295,10 +295,10 @@ Az ilyen típusú konfigurációs eléréséhez legkönnyebben helyezhető el a 
 
 Érték|Eredmény
 --|--
-Felülírás|Biztosítja, hogy a következő műveletek történnek:<br/> -Felülírja a Cache-Control-fejlécet az eredeti kiszolgálón állítja elő. <br/>-Hozzáadja a `Cache-Control` fejléc hozott létre a külső maximális-életkora szolgáltatást, hogy a válasz.
+Felülírás|Biztosítja, hogy a következő műveletek történnek:<br/> -Felülírja a `Cache-Control` fejléc az eredeti kiszolgálón állítja elő. <br/>-Hozzáadja a `Cache-Control` fejléc hozott létre a külső maximális-életkora szolgáltatást, hogy a válasz.
 Továbbítása|Biztosítja, hogy a `Cache-Control` a külső maximális-életkora szolgáltatás által előállított fejléc soha nem kerül a választ. <br/> Ha a forráskiszolgáló hoz létre egy `Cache-Control` fejléc, haladnak keresztül a végfelhasználók. <br/> Ha a forráskiszolgáló nem hoz egy `Cache-Control` fejlécben, akkor ez a beállítás okozhat a válasz fejléce nem tartalmazza a `Cache-Control` fejléc.
-Ha hiányoznak hozzáadása|Ha egy `Cache-Control` fejléc nem érkezett meg a forráskiszolgálóról, akkor ez a beállítás nagyobb a `Cache-Control` a külső maximális-életkora szolgáltatás által előállított fejléc. Ez a beállítás akkor hasznos ahhoz, hogy minden eszközök lesz hozzárendelve egy `Cache-Control` fejléc.
-Eltávolítás| Ez a beállítás biztosítja, hogy egy `Cache-Control` fejléc nem része a válasz fejrészét. Ha egy `Cache-Control` fejléc már hozzá van rendelve, akkor a válasz fejrészét a rendszer nélkül.
+Ha hiányoznak hozzáadása|Ha egy `Cache-Control` fejléc nem érkezett meg a forráskiszolgálóról, akkor ez a beállítás nagyobb a `Cache-Control` a külső maximális-életkora szolgáltatás által előállított fejléc. Ez a beállítás akkor hasznos ahhoz, hogy az összes eszköz hozzárendelve egy `Cache-Control` fejléc.
+Eltávolítás| Ez a beállítás biztosítja, hogy egy `Cache-Control` fejléc nem része a válasz fejrészét. Ha egy `Cache-Control` fejléc már hozzá van rendelve, akkor a rendszer eltávolítja a válasz fejrészét.
 
 **Alapértelmezés:** felülírásához.
 
@@ -424,7 +424,7 @@ This feature is not available for the ADN platform. The typical traffic on this 
 --->
 A részleges gyorsítótár-tévesztései rendszerint azért fordul elő, miután a felhasználó megszakít egy letölthető vagy eszközök kizárólag kért tartomány HTTP-kérelmek használatával. Ez rendkívül nagy eszközök esetén a leghasznosabb ahol felhasználók nem általában letöltik azokat (például videók) szolgáltatásra. Ennek köszönhetően ez a funkció alapértelmezés szerint engedélyezve van a HTTP nagy platformon. Le van tiltva az összes többi platformon.
 
-Javasoljuk, hogy az alapértelmezett konfigurációt, a HTTP nagy platform, mivel csökkentik a terhelést, az ügyfél forrás kiszolgálón, és növelje a sebesség, amellyel az ügyfelek a tartalom letöltése.
+Tartsa meg az alapértelmezett konfigurációt, a HTTP nagy platform, mivel csökkenti az ügyfél eredeti kiszolgálóra, és növeli a sebesség, amellyel az ügyfelek a tartalom letöltése.
 
 Mely gyorsítótárában beállítások követi módon, mert ez a funkció nem rendelhető hozzá a következő feltételek egyeznek: peremhálózati Cname, kérelem fejléc literális, kérelem fejléc helyettesítő, URL-cím lekérdezés literális és URL-cím lekérdezés helyettesítő.
 
@@ -527,15 +527,15 @@ Letiltva|Az X-EK-Debug válaszfejléc nem kerülnek be a válasz.
 
 Kapcsolatos információkat:
 
-- Ez a művelet csak akkor kerül sor a válaszok egy forráskiszolgálóról, amely nem társít egy maximális-életkora arra utal, hogy a Cache-Control vagy Expires fejléc található.
+- Ez a művelet csak akkor kerül sor a válaszok, egy forráskiszolgálóról, amely nem társít egy maximális-életkora arra utal, hogy az a `Cache-Control` vagy `Expires` fejléc.
 - Ez a művelet nem kerül sor eszközök fontosságúnak ítélt nem gyorsítótárazható.
-- Ez a művelet nem befolyásolja a peremhálózati kiszolgáló gyorsítótárában revalidations böngészőben. Az ilyen típusú revalidations a Cache-Control vagy Expires fejléc a böngészőre, amely testre szabható a külső maximális-életkora szolgáltatással küldött határozza meg.
+- Ez a művelet nem befolyásolja a peremhálózati kiszolgáló gyorsítótárában revalidations böngészőben. Az ilyen típusú revalidations határozza meg a `Cache-Control` vagy `Expires` a böngésző, amely testre szabható a külső maximális-életkora szolgáltatással küldött fejléceket.
 - Ez a művelet eredménye nem rendelkezik a válaszfejlécek megfigyelhető hatással, és a tartalmat adott vissza a tartalom peremhálózati kiszolgálókról, de a peremhálózati kiszolgálókról az eredeti kiszolgálóra küldött ismételt érvényesítése forgalom mennyisége hatással lehet.
 - Ez a szolgáltatás által konfigurálása:
     - Az állapotkód: egy alapértelmezett belső maximális-életkora alkalmazhassa kiválasztása.
     - Adja meg egy egész számot, és jelölje be a kívánt időegység (például másodperc, perc, óra, stb.). Ez az érték határozza meg az alapértelmezett belső maximális-életkora időköz.
 
-- Beállítást "Ki" időegységét hozzárendel egy alapértelmezett belső maximális-életkora 7 napos időszak, amely nincs hozzárendelve egy maximális-életkora arra utal, hogy a Cache-Control vagy Expires fejléc a kérelmek.
+- Egy alapértelmezett belső maximális-életkora 7 napos időszak a kéréseket, amely nincs hozzárendelve egy maximális-életkora arra utal, hogy a beállítást "Ki" időegységét rendeli a `Cache-Control` vagy `Expires` fejléc.
 - Mely gyorsítótárában beállítások követi módon, mert ez a funkció nem rendelhető hozzá a következő feltételek egyeznek: 
     - Peremhálózati 
     - CNAME
@@ -571,16 +571,16 @@ Letiltva| Visszaállítja az alapértelmezett viselkedés. Az alapértelmezett v
 
 ---
 ### <a name="expires-header-treatment"></a>Fejléc kezelés lejár
-**Cél:** Expires fejléc generációját szabályozza által egy biztonsági kiszolgálót, ha a külső maximális-életkora szolgáltatás aktív.
+**Cél:** generációja meghatározza `Expires` fejlécek alapján egy biztonsági kiszolgálót, ha a külső maximális-életkora szolgáltatás aktív.
 
 Az ilyen típusú konfigurációs eléréséhez legkönnyebben helyezhető el a külső maximális életkora és a lejárati fejléc-kezelés szolgáltatások ugyanabban az utasításban.
 
 Érték|Eredmény
 --|--
-Felülírás|Biztosítja, hogy a következő műveletek akkor kerül sor:<br/>-Felülírja az eredeti kiszolgálón állítja elő Expires fejléc.<br/>-A a külső maximális-életkora szolgáltatást, hogy a válasz által előállított Expires fejléc hozzáadása.
-Továbbítása|Biztosítja, hogy a a külső maximális-életkora szolgáltatás által előállított Expires fejléc soha nem adja hozzá a válaszhoz. <br/> Ha a forráskiszolgáló egy Expires fejléc hoz létre, akkor továbbítja a végfelhasználói. <br/>Ha a forráskiszolgáló nem hoz egy Expires fejléc, ez a beállítás egy Expires fejléc nem tartalmaz a válaszfejlécet okozhat.
-Ha hiányoznak hozzáadása| Egy Expires fejléc nem érkezett meg a forráskiszolgálóról, ha ez a beállítás nagyobb a a külső maximális-életkora szolgáltatás által előállított Expires fejléc. Ez a beállítás akkor hasznos, annak biztosítására, hogy az összes eszköz kioszt egy Expires fejléc.
-Eltávolítás| Ellenőrzi, hogy egy Expires fejléc nem tartalmazza a válasz fejrészét. Ha már használja egy Expires fejléc, majd azt fogja lehet üres karaktert törölni a válasz fejrészét a.
+Felülírás|Biztosítja, hogy a következő műveletek akkor kerül sor:<br/>-Felülírja a `Expires` fejléc az eredeti kiszolgálón állítja elő.<br/>-Hozzáadja a `Expires` fejléc hozott létre a külső maximális-életkora szolgáltatást, hogy a válasz.
+Továbbítása|Biztosítja, hogy a `Expires` a külső maximális-életkora szolgáltatás által előállított fejléc soha nem kerül a választ. <br/> Ha a forráskiszolgáló hoz létre egy `Expires` fejléc, akkor továbbítja a felhasználó. <br/>Ha a forráskiszolgáló nem hoz egy `Expires` fejlécben, akkor ez a beállítás okozhat a válasz fejléce nem tartalmazza egy `Expires` fejléc.
+Ha hiányoznak hozzáadása| Ha egy `Expires` fejléc nem érkezett meg a forráskiszolgálóról, akkor ez a beállítás nagyobb a `Expires` a külső maximális-életkora szolgáltatás által előállított fejléc. Ez a beállítás akkor hasznos ahhoz, hogy az összes eszköz kioszt egy `Expires` fejléc.
+Eltávolítás| Biztosítja, hogy egy `Expires` fejléc nem része a válasz fejrészét. Ha egy `Expires` fejléc már hozzá van rendelve, akkor a rendszer eltávolítja a válasz fejrészét.
 
 **Alapértelmezés:** felülírása
 
@@ -592,14 +592,14 @@ Eltávolítás| Ellenőrzi, hogy egy Expires fejléc nem tartalmazza a válasz f
 ### <a name="external-max-age"></a>Külső maximális-kor
 **Cél:** határozza meg a peremhálózati kiszolgáló a gyorsítótár ismételt érvényesítése böngészőben maximális-életkora intervallumát. Ez azt jelenti mennyi ideig, mielőtt egy böngésző adja meg, hogy egy eszköz egy biztonsági kiszolgálót az új verzióhoz tartozó ellenőrizheti.
 
-A funkció engedélyezése hoz létre gyorsítótár-vezérlés: maximális-kor és a peremhálózati kiszolgálókról fejlécek lejár, és küldje el a HTTP-ügyfél. Alapértelmezés szerint ezek a fejlécek felülírja az eredeti kiszolgálóra által létrehozott. Azonban a Cache-Control fejléc kezelését és a lejárati fejléc-kezelés szolgáltatások használható útválasztását ezen viselkedés megváltoztatásához.
+A funkció engedélyezése hoz létre `Cache-Control: max-age` és `Expires` fejlécek, a peremhálózati kiszolgálókról, és küldje el a HTTP-ügyfél. Alapértelmezés szerint ezek a fejlécek felülírja az eredeti kiszolgálóra által létrehozott. Azonban a Cache-Control fejléc kezelését és a lejárati fejléc-kezelés szolgáltatások használható útválasztását ezen viselkedés megváltoztatásához.
 
 Kapcsolatos információkat:
 
-- Ez a művelet nem befolyásolja a peremhálózati kiszolgáló az eredeti kiszolgáló gyorsítótár revalidations. Ilyen típusú revalidations határozza meg a gyorsítótár-Control vagy Expires fejléc kapott a forráskiszolgálóról, és testre szabható az alapértelmezett belső maximális-kor és a kényszerített belső maximális életkora szolgáltatásokkal.
+- Ez a művelet nem befolyásolja a peremhálózati kiszolgáló az eredeti kiszolgáló gyorsítótár revalidations. Az ilyen típusú revalidations határozza meg a `Cache-Control` és `Expires` fejlécek kapott a forráskiszolgálóról, és az alapértelmezett belső maximális-kor és a kényszerített belső maximális életkora szolgáltatásokkal testre szabható.
 - Adja meg egy egész számot, majd válassza a kívánt időegység (például másodperc, perc, óra, stb.) Ez a szolgáltatás konfigurálása
-- Ez a funkció beállítása negatív értékre után a peremhálózati kiszolgálóinak elküldeni egy gyorsítótár-vezérlés: nem-gyorsítótár és a lejárati ideje ameddig az egyes a böngészőnek adott válaszban a múltban van beállítva. Bár a HTTP-ügyfél nem lesz gyorsítótárazza a választ, ez a beállítás nem érinti a peremhálózati kiszolgáló gyorsítótárazza a választ a forráskiszolgálóról lehessen.
-- Az attribútum "off" időegységét letiltja ezt a szolgáltatást. A gyorsítótár-Control vagy Expires fejléc gyorsítótárazza a választ az eredeti kiszolgáló továbbítja a böngészőben.
+- Ez a funkció beállítása negatív értékre után a peremhálózati kiszolgálóinak elküldeni egy `Cache-Control: no-cache` és egy `Expires` minden a böngészőnek adott válaszban a korábban beállított idő. Bár a HTTP-ügyfél nem lesz gyorsítótárazza a választ, ez a beállítás nem érinti a peremhálózati kiszolgáló gyorsítótárazza a választ a forráskiszolgálóról lehessen.
+- Az attribútum "off" időegységét letiltja ezt a szolgáltatást. A `Cache-Control` és `Expires` gyorsítótárazza a választ az eredeti kiszolgáló fejlécek továbbítja a böngészőben.
 
 **Alapértelmezés:** kikapcsolása
 
@@ -674,7 +674,7 @@ Kapcsolatos információkat:
 ### <a name="honor-no-cache-request"></a>No-Cache kérés elfogadása
 **Cél:** határozza meg, hogy egy HTTP-ügyfél által no-cache kérelmeket továbbítja az eredeti kiszolgálóra.
 
-A HTTP-ügyfél üzenetet küld egy gyorsítótárban történik a no-cache kérelem-vezérlés: nem-gyorsítótár és/vagy Pragma:no-gyorsítótár fejléc a következő a HTTP-kérelem.
+No-cache kérelmet akkor fordul elő, ha a HTTP-ügyfél küld egy `Cache-Control: no-cache` és/vagy `Pragma: no-cache` a HTTP-kérelem fejléce.
 
 Érték|Eredmény
 --|--
@@ -747,7 +747,7 @@ A biztonsági kiszolgáló nem tud kapcsolatot az eredeti kiszolgálóra ilyen i
 
 Vegye figyelembe, hogy ez alatt az időtartam alatt kezdődik, amikor az eszköz maximális-életkora lejár, nem a sikertelen ismételt érvényesítése esetén. A maximális idő, amikor egy eszköz sikeres ismételt érvényesítése nélkül szolgáltatható ezért maximális-kor és a max elavult kombinációja által megadott idő. Például ha egy eszköz került a gyorsítótárba, 9:00 30 perc maximális életkora és 15 percenként maximális elavult, majd egy sikertelen ismételt érvényesítése kísérlet 9:44 eredményeznének fogadása a elavult gyorsítótárazott objektumhoz, amíg egy sikertelen ismételt érvényesítése kísérlet 9:46 eredményeznének a en felhasználó d felhasználói 504-es számú átjáró időtúllépése fogadásakor.
 
-Bármely ezt a szolgáltatást felváltotta a konfigurált értéket `Cache-Control:must-revalidate` vagy `Cache-Control:proxy-revalidate` fejlécek kapott a forráskiszolgálóról. Ha ezeket a fejléceket fogadásakor. a forráskiszolgálóról, ha egy eszköz kezdetben gyorsítótárazza, majd a biztonsági kiszolgáló nem teljesíti a gyorsítótárazott elavult eszköz. Ebben az esetben ha a biztonsági kiszolgáló nem tudja kísérelje meg újra érvényesítését az eredeti amikor az eszköz maximális-életkora időköz lejárt, a peremhálózati kiszolgáló hibaüzenetet adja vissza egy 504-es számú átjáró időtúllépése.
+Bármely ezt a szolgáltatást felváltotta a konfigurált értéket `Cache-Control: must-revalidate` vagy `Cache-Control: proxy-revalidate` fejlécek kapott a forráskiszolgálóról. Ha ezeket a fejléceket fogadásakor. a forráskiszolgálóról, ha egy eszköz kezdetben gyorsítótárazza, majd a biztonsági kiszolgáló nem teljesíti a gyorsítótárazott elavult eszköz. Ebben az esetben ha a biztonsági kiszolgáló nem tudja kísérelje meg újra érvényesítését az eredeti amikor az eszköz maximális-életkora időköz lejárt, a peremhálózati kiszolgáló hibaüzenetet adja vissza egy 504-es számú átjáró időtúllépése.
 
 Kapcsolatos információkat:
 
@@ -823,7 +823,7 @@ Törlés|Törli a megadott kérelemfejlécet.|**A kérelem fejléc értéke (üg
 Kapcsolatos információkat:
 
 - Győződjön meg arról, hogy a meghatározott a beállítás értéke a kívánt kérelemfejléc pontos egyezést.
-- Eset nem veszi figyelembe fejléc azonosítása céljából. Például a Cache-Control fejléc neve a következő lehetőségek bármelyikét segítségével képes azonosítani:
+- Eset nem veszi figyelembe fejléc azonosítása céljából. Például a következő lehetőségek bármelyikét a `Cache-Control` fejlécnév azonosításához használható:
     - a cache-control
     - A CACHE-CONTROL
     - a cachE-Control
@@ -861,7 +861,7 @@ Törlés|Törli a megadott válaszfejlécet.|**Válasz állomásfejléc-érték 
 Kapcsolatos információkat:
 
 - Győződjön meg arról, hogy a meghatározott a beállítás értéke a kívánt választ fejléc pontos egyezést. 
-- Eset nem veszi figyelembe fejléc azonosítása céljából. Például a Cache-Control fejléc neve a következő lehetőségek bármelyikét segítségével képes azonosítani:
+- Eset nem veszi figyelembe fejléc azonosítása céljából. Például a következő lehetőségek bármelyikét a `Cache-Control` fejlécnév azonosításához használható:
     - a cache-control
     - A CACHE-CONTROL
     - a cachE-Control
@@ -1241,8 +1241,11 @@ Ez a funkció tartalmazza a megfelelő feltételek, amelyeknek teljesülniük ke
 
 ---
 ### <a name="user-variable"></a>Felhasználói változó
-**Cél:** primarity használt Lua parancsfájlok. A felhasználói változó szolgáltatás segítségével kivonatoló hasonló funkciókat biztonságos Lua parancsfájllal letöltési URL-cím.
+**Cél:** csak belső használatra.
 
+[Lap tetejére](#azure-cdn-rules-engine-features)
+
+</br>
 
 ## <a name="next-steps"></a>Következő lépések
 * [Szabályok motor referencia](cdn-rules-engine-reference.md)

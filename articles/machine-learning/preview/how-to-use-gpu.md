@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: ca4066396f71865626f4034e490bb069a5f7ddf6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ce1557aed09384b0d7a0b65aabd473fe72ab740c
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Az Azure Machine Learning GPU használata
 Grafikus processzorra (GPU) széles körben használt, amely általában akkor szükséges, ha bizonyos mély Neurális hálózat modellek betanítása számításilag intenzív feladatok feldolgozásához. Feldolgozóegységekkel használatával jelentősen csökkentheti a modellek képzési idején. Ebben a dokumentumban megismerheti, hogyan konfigurálhatja az Azure ML munkaterület használandó [DSVM (adatok tudományos virtuális gép)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) Feldolgozóegységekkel felszerelt végrehajtási célként. 
@@ -64,7 +64,7 @@ Az Azure ML munkaterület végrehajtási is támogatja a Docker egy Azure Linux 
 4. Kattintson a **létrehozása** egy Ubuntu DSVM létrehozásához.
 
 5. Töltse ki a **alapjai** a szükséges információt a képernyőn.
-Lehetőséget választva a virtuális gép helyét, vegye figyelembe, hogy GPU virtuális gépek találhatók csak bizonyos Azure-régiók, például **déli középső Régiójában**. Lásd: [régiónként rendelkezésre álló termékek számítási](https://azure.microsoft.com/en-us/regions/services/).
+Lehetőséget választva a virtuális gép helyét, vegye figyelembe, hogy GPU virtuális gépek találhatók csak bizonyos Azure-régiók, például **déli középső Régiójában**. Lásd: [régiónként rendelkezésre álló termékek számítási](https://azure.microsoft.com/regions/services/).
 Az OK gombra kattintva mentse a **alapjai** információkat.
 
 6. Válassza ki a virtuális gép méretét. Válasszon ki egy virtuális hálózati vezérlő által az utóbbiak NVidia GPU modulok felszerelt méretét.  Kattintson a **nézet összes** a teljes lista megtekintéséhez, igény szerint. További információ [GPU-ellátva Azure virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).

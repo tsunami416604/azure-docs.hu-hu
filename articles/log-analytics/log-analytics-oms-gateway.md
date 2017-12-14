@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: c09a01af8053feb4d5450b350503484507014765
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 16d79f02bffeb3db22a0190822d4304d3a1de73b
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="connect-computers-without-internet-access-to-oms-using-the-oms-gateway"></a>Internet-hozzáférés nélküli számítógépeket csatlakoztatni az OMS Szolgáltatáshoz az OMS-átjáró
 
@@ -104,7 +104,7 @@ Háromféleképpen az OMS-átjáró telepítési fájl letöltéséhez.
 Telepít egy átjárót, hajtsa végre a következő lépéseket.  Ha egy korábbi verzióját telepítette, korábbi nevén *napló Analytics továbbító*, frissíti az ebben a kiadásban.  
 
 1. Kattintson duplán a célmappa **OMS Gateway.msi**.
-2. Az a **üdvözlő** kattintson **következő**.<br><br> ![Átjáró telepítővarázslója](./media/log-analytics-oms-gateway/gateway-wizard01.png)<br> 
+2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.<br><br> ![Átjáró telepítővarázslója](./media/log-analytics-oms-gateway/gateway-wizard01.png)<br> 
 3. Az a **licencszerződés** lapon jelölje be **elfogadom a licencszerződés feltételeit** elfogadja a végfelhasználói LICENCSZERZŐDÉST, majd **következő**.
 4. Az a **Port és a proxy címét** lap:
    1. Írja be az átjáró használandó TCP-portszámát. A telepítő konfigurálja egy bejövő forgalomra vonatkozó szabály ezen a portszámon, a Windows tűzfalat.  Az alapértelmezett érték: 8080-as.
@@ -129,7 +129,7 @@ Tervezéséhez és a Windows Server 2016-os hálózati terheléselosztási fürt
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>OMS-ügynököt, és az Operations Manager felügyeleti csoport konfigurálása
 Az alábbi szakasz a közvetlenül csatlakoztatott OMS-ügynököt, az Operations Manager felügyeleti csoport vagy Azure Automation hibrid forgatókönyv-feldolgozók konfigurálásáról az OMS-átjáróval kommunikálni az OMS lépéseivel.  
 
-Követelmények és az OMS-ügynök telepítése a Windows rendszerű számítógépeken az OMS Szolgáltatáshoz való közvetlen csatlakozás lépéseit ismertetése: [csatlakozás Windows rendszerű számítógépeken az OMS Szolgáltatáshoz](log-analytics-windows-agents.md) vagy a Linux rendszerű számítógépek lásd [OMS csatlakozás Linux rendszerű számítógépeket](log-analytics-linux-agents.md). 
+Követelmények és az OMS-ügynök telepítése a Windows rendszerű számítógépeken az OMS Szolgáltatáshoz való közvetlen csatlakozás lépéseit ismertetése: [csatlakozás Windows rendszerű számítógépeken az OMS Szolgáltatáshoz](log-analytics-windows-agent.md) vagy a Linux rendszerű számítógépek lásd [OMS csatlakozás Linux rendszerű számítógépeket](log-analytics-linux-agents.md). 
 
 ### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>A OMS-ügynököt az Operations Manager az OMS-átjáró képező és a proxykiszolgáló konfigurálása
 

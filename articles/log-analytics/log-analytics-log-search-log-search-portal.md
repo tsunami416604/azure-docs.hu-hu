@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: bwren
-ms.openlocfilehash: 6fc556ceb34cde26d5f3789a2397cdaa34b0b84d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08d8ebfd18491eb78190651b76f444ffe0eca899
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Napló keresések létrehozása az Azure Naplóelemzés a naplófájl-keresési portál használatával
 
@@ -34,7 +34,7 @@ A keresések a Advanced Analytics portál helyett a naplófájl-keresési portá
 Ez az oktatóanyag feltételezi, hogy már rendelkezik a Naplóelemzési munkaterület legalább egy csatlakoztatott forrás, amely a lekérdezések elemzéséhez adatokat állít elő.  
 
 - Ha a munkaterületet nincs, létrehozhat egy ingyenes egy, a következő eljárás segítségével [Ismerkedjen meg a Naplóelemzési munkaterület](log-analytics-get-started.md).
-- Csatlakozás legalább egy [Windows-ügynök](log-analytics-windows-agents.md) vagy egy [Linux-ügynök](log-analytics-linux-agents.md) a munkaterületre.  
+- Csatlakozás legalább egy [Windows-ügynök](log-analytics-windows-agent.md) vagy egy [Linux-ügynök](log-analytics-linux-agents.md) a munkaterületre.  
 
 ## <a name="open-the-log-search-portal"></a>Nyissa meg a keresési napló portált
 Indítsa el a napló keresési portál megnyitásával.  Az Azure-portálon vagy az OMS-portálon hozzá tud férni.

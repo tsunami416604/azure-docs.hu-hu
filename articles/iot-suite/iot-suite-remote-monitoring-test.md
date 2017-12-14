@@ -7,20 +7,20 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 8b84b90e72f8cac1fc1f8a90391b7a5a4f6be1f4
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 7550748c496f4e5c671ab49f9b139d2d4926d497
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>A megoldás tesztelése szimulált eszközökkel
 
-Az oktatóanyag bemutatja, hogyan használható az eszköz szimulátor mikroszolgáltatási a távoli felügyeleti előkonfigurált megoldás testreszabása. Ez az oktatóanyag két esetben használja a Contoso IoT alkalmazásban megjelenítése az eszköz szimulátor képességeit.
+Az oktatóanyag bemutatja, hogyan szabhatja testre az eszköz szimulátor mikroszolgáltatási a távoli felügyeleti előkonfigurált megoldás. Ez az oktatóanyag két esetben használja a Contoso IoT alkalmazásban megjelenítése az eszköz szimulátor képességeit.
 
 Az első esetben Contoso szeretné egy új intelligens villanykörte eszközt. A tesztek kerülnek végrehajtásra, létrehozhat egy új szimulált eszköz a következő jellemzőkkel:
 
@@ -34,7 +34,7 @@ Az első esetben Contoso szeretné egy új intelligens villanykörte eszközt. A
 
 *Telemetria*
 
-A következő táblázat a ligthbulb a felhőbe, mint egy adatfolyam jelentések adatainak megjelenítése:
+A következő táblázat a villanykörte a felhőbe, mint egy adatfolyam jelentések adatainak megjelenítése:
 
 | Név   | Értékek      |
 | ------ | ----------- |
@@ -177,7 +177,7 @@ A `lightbulb-01.json` fájl határozza meg a típus jellemzői, például a tele
       "SwitchOff": {
         "Type": "javascript",
         "Path": "SwitchOff-method.js"
-      },
+      }
     }
     ```
 
@@ -273,9 +273,9 @@ Tesztelése és hibakeresése a módosításokat a helyi [eszköz szimuláció �
 
 Másolja az új projekt konfigurálása **villanykörte** eszköz fájlok a kimeneti könyvtárba:
 
-* Ha a Visual Studio használ, ellenőrizze, hogy adja hozzá az előző szakaszban létrehozott három új villanykörte fájlokat a **szolgáltatások** projektre a megoldásban. Ezután **megoldáskezelőben** megjelölhetők a kimeneti könyvtárba kell másolni.
+* Ha a Visual Studio használ, ellenőrizze, hogy adja hozzá az előző szakaszban létrehozott négy új villanykörte fájlokat a **szolgáltatások** projektre a megoldásban. Ezután **megoldáskezelőben** megjelölhetők a kimeneti könyvtárba kell másolni.
 
-* Ha a Visual Studio Code használ, nyissa meg a **Services.csproj** fájlt, és adja hozzá az előző szakaszban létrehozott három új villanykörte fájlokat. Tekintse meg a meglévő eszköz modell fájl bejegyzések a **Services.csproj** fájl példaként.
+* Ha a Visual Studio Code használ, nyissa meg a **Services.csproj** fájlt, és adja hozzá az előző szakaszban létrehozott négy új villanykörte fájlokat. Tekintse meg a meglévő eszköz modell fájl bejegyzések a **Services.csproj** fájl példaként.
 
 Az új eszköz a telepített megoldás teszteléséhez valamelyike látható:
 

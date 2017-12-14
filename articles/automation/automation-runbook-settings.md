@@ -3,7 +3,7 @@ title: "Runbookok beállításainak |} Microsoft Docs"
 description: "Azure Automation és módosítsa őket az Azure felügyeleti portálon és a Windows PowerShell használatával az egyes runbookok konfigurációs beállításokat ismerteti."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: stevenka
 editor: tysonn
 ms.assetid: a726f20c-a952-48b8-88ee-36d76aa3ac61
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-ms.openlocfilehash: 534ea7e3f2f8e5640db4d351c2bb3245f29b6eec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d626465bcfdb4efa9cf85c41a2ee679e30eadaf
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="runbook-settings"></a>Runbook beállításai
 Azure Automation minden egyes runbookja több beállítással, amelyek segítenek azonosítani és módosítani annak naplózási viselkedését rendelkezik. Egyes beállítások alábbiakban módosításukhoz szükséges eljárások leírását.

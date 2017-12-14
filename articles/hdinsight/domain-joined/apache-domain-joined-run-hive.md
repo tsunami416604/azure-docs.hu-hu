@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.openlocfilehash: 812acea414096880c2b80958cb7c6f410f0d9c98
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 35a74ffb6a30fe2ae7db686be5b6774800ce37b1
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>A tartományhoz csatlakoztatott HDInsight Hive-szabályzatok konfigurálása
 Útmutató ahhoz, hogyan lehet az Apache Ranger-házirendeket a Hive számára konfigurálni. Ebben a cikkben két Ranger-házirendet hoz létre a hivesampletable nevű táblához való hozzáférés korlátozása érdekében. A hivesampletable HDInsight-fürtöket tartalmaz. Miután konfigurálta a házirendeket, az Excel és az ODBC-illesztőprogram használatával kapcsolódjon a HDInsight Hive-tábláihoz.
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/01/2017
 1. Egy böngészőből csatlakozzon a Ranger felügyeleti felhasználói felületéhez. Az URL-cím: https://&lt;ClusterName>.azurehdinsight.net/Ranger/.
 
    > [!NOTE]
-   > A Ranger más hitelesítő adatokat használ, mint a Hadoop-fürt. Ha szeretné megakadályozni, hogy a böngészők gyorsítótárazott Hadoop hitelesítő adatokat használjanak, új InPrivate-böngészőablakból csatlakozzon a Ranger felügyeleti felhasználói felületéhez.
+   > A Ranger más hitelesítő adatokat használ, mint a Hadoop-fürt. Gyorsítótárazott hitelesítő adatok használata Hadoop böngészők megakadályozásához használja az új InPrivate-böngészőablakot a Pletyka felügyeleti felhasználói felület való kapcsolódáshoz.
    >
    >
 2. Jelentkezzen be a fürt rendszergazdai tartományi felhasználónevével és jelszavával:
@@ -45,10 +45,10 @@ ms.lasthandoff: 12/01/2017
     A Ranger jelenleg csak a Yarn és a Hive rendszerrel működik.
 
 ## <a name="create-domain-users"></a>Tartományi felhasználók létrehozása
-A [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad) című részben létrehozott egy hiveuser1 és egy hiveuser2 nevű felhasználót. A két felhasználói fiókot fogja ebben az oktatóprogramban használni.
+A [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md#optional-create-ad-users-and-groups) című részben létrehozott egy hiveuser1 és egy hiveuser2 nevű felhasználót. Ebben az oktatóanyagban két felhasználói fiókot használja.
 
 ## <a name="create-ranger-policies"></a>Ranger-házirendek létrehozása
-Ebben a szakaszban két Ranger-házirendet fog létrehozni a hivesampletable eléréséhez. Adjon kiválasztási engedélyt a különböző oszlopcsoportokra vonatkozóan. Mindkét felhasználó a [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad) című részben lett létrehozva.  A következő szakaszban a két házirendet Excelben fogja tesztelni.
+Ebben a szakaszban hozzon létre két Pletyka házirendeket hivesampletable elérése. Adjon kiválasztási engedélyt a különböző oszlopcsoportokra vonatkozóan. Mindkét felhasználó a [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md#optional-create-ad-users-and-groups) című részben lett létrehozva.  A következő szakaszban a két házirendet Excelben fogja tesztelni.
 
 **Ranger-házirendek létrehozása**
 
@@ -105,7 +105,7 @@ Az utolsó szakaszban két házirendet konfigurált.  A hiveuser1 nevű felhaszn
     ![Adatkapcsolat varázsló megnyitása] [img-hdi-simbahiveodbc.excel.dataconnection]
 3. Válassza ki az **ODBC DSN** adatforrást, majd kattintson a **Tovább** gombra.
 4. Az ODBC-adatforrások közül válassza ki az előző lépésben létrehozott adatforrásnevet, majd kattintson a **Tovább** gombra.
-5. Írja be újból a fürthöz tartozó jelszót a varázslóban, majd kattintson az **OK** gombra. Várja meg, amíg megnyílik az **Adatbázis és tábla kiválasztása** párbeszédpanel. Ez eltarthat néhány másodpercig.
+5. Írja be újból a jelszót a varázslóban a fürthöz, és kattintson a **OK**. Várja meg, amíg megnyílik az **Adatbázis és tábla kiválasztása** párbeszédpanel. Ez eltarthat néhány másodpercig.
 6. Válassza ki a **hivesampletable** táblát, majd kattintson a **Tovább** gombra.
 7. Kattintson a **Finish** (Befejezés) gombra.
 8. Az **Adatok importálása** párbeszédpanelen módosíthatja vagy megadhatja a lekérdezést. Ehhez kattintson a **Tulajdonságok** elemre. Ez eltarthat néhány másodpercig.
@@ -113,17 +113,17 @@ Az utolsó szakaszban két házirendet konfigurált.  A hiveuser1 nevű felhaszn
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
 
-   A definiált Ranger-házirendek alapján a hiveuser1 az összes oszlopra vonatkozó kiválasztási engedéllyel rendelkezik.  Ezért ez a lekérdezés hiveuser1 hitelesítő adataival működik, azonban hiveuser2 hitelesítő adataival nem működik.
+   A definiált Ranger-házirendek alapján a hiveuser1 az összes oszlopra vonatkozó kiválasztási engedéllyel rendelkezik.  Így működik, ez a lekérdezés hiveuser1 tartozó hitelesítő adatokkal, de ez a lekérdezés nem tud együttműködni hiveuser2 tartozó hitelesítő adatokat.
 
    ![Kapcsolat tulajdonságai] [img-hdi-simbahiveodbc-excel-connectionproperties]
 10. A kapcsolat tulajdonságai párbeszédpanel bezárásához kattintson az **OK** gombra.
 11. Az **Adatok importálása** párbeszédpanel bezárásához kattintson az **OK** gombra.  
 12. Írja be újra a hiveuser1 jelszavát, majd kattintson az **OK** gombra. Az adatok importálása az Excelbe néhány másodpercet vesz igénybe. Amikor kész van, 11 adatoszlopnak kell megjelennie.
 
-Az utolsó szakaszban létrehozott második (read-hivesampletable-devicemake) házirend tesztelése
+Az utolsó szakaszban létrehozott tesztszabályzat a második (olvasás-hivesampletable-devicemake),
 
 1. Adjon hozzá egy új munkalapot az Excelben.
-2. Az adatok importálásához kövesse az utolsó eljárást.  Csupán annyit kell változtatnia, hogy a hiveuser2 hitelesítő adatai helyett a hiveuser1 hitelesítő adatait használja. Ez sikertelenséghez vezet, mert hiveuser2 csak két oszlop megtekintésére jogosult. A következő hibaüzenetnek kell megjelennie:
+2. Az adatok importálásához kövesse az utolsó eljárást.  Mindössze annyi a változás, akkor ellenőrizze, hogy hiveuser2 tartozó hitelesítő adatok használata helyett hiveuser1 meg. Ez nem sikerül, mert hiveuser2 csak jogosult két oszlopok megjelenítéséhez. A következő hibaüzenetnek kell megjelennie:
 
         [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
 3. Az adatok importálásához kövesse ugyanazt az eljárást. Ez alkalommal hiveuser2 hitelesítő adatait használja, és módosítsa a kiválasztási utasítást erről:
@@ -138,7 +138,7 @@ Az utolsó szakaszban létrehozott második (read-hivesampletable-devicemake) h�
 
 ## <a name="next-steps"></a>Következő lépések
 * A tartományhoz csatlakoztatott HDInsight-fürtök konfigurálásához lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md).
-* A tartományhoz csatlakoztatott HDInsight-fürtök kezeléséhhez lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök kezelése](apache-domain-joined-manage.md).
+* Tartományhoz csatlakozó HDInsight fürt kezelése, lásd: [kezelése tartományhoz a HDInsight-fürtök](apache-domain-joined-manage.md).
 * Az SSH használata a tartományhoz csatlakoztatott HDInsight-fürtökön Hive-lekérdezéseket futtat, tekintse meg a [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 * A Hive JDBC segítségével történő Hive-csatlakoztatáshoz olvassa el a [Csatlakozás a Hive-hoz az Azure HDInsight rendszerben a Hive JDBC-illesztőprogrammal](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md) című részt
 * Ha az Excelt a Hive ODBC segítségével szeretné a Hadoophoz csatlakoztatni, olvassa el [Az Excel csatlakoztatása a Hadoophoz a Microsoft Hive ODBC-meghajtó segítségével](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) című részt

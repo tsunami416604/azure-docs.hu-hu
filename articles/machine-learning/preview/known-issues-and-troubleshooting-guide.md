@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 1d3ba76336701221484d2879f4b28285936aa656
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 0f7b90a77ab321ee726245c82ea27635438070c0
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -113,7 +113,7 @@ Sajnos van nem egyszerű ezen a projekten. Akkor kell távolítania a telepítet
    - a fenti szkript indító parancsikon eltávolítása
    - a telepítő https://aka.ms/azureml-wb-msi töltse le és telepítse újra.
 
-## <a name="get-stuck-at-checking-experimentation-account-screen-after-logging-in"></a>A bejelentkezés után elakadnak "Kísérletezhet fiók ellenőrzése" képernyő
+## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>A bejelentkezés után "Kísérletezhet fiók ellenőrzése" képernyő Beragadt
 A bejelentkezés után a munkaterületet üzemeltető alkalmazás előfordulhat, hogy elakadnak a üres képernyőt ábrázoló "Ellenőrzése kísérletezhet fiók" egy forgó rájuk üzenetet. A probléma megoldásához tegye a következőket:
 1. Az alkalmazás leállítása
 2. Törölje a következő fájlt:
@@ -147,6 +147,13 @@ Ha Windows 10 alá esik Creators frissítést, és a projekt egy, a onedrive vá
 
 ## <a name="file-name-too-long-on-windows"></a>A fájlnév túl hosszú a Windows rendszeren
 Ha Windows munkaterületet használja, mutatjuk be a alapértelmezett maximális 260 karakteres fájl neve maximális hossz, amely "a rendszer nem találja a megadott elérési út" hibaként surface sikerült. Egy beállításkulcs-érték engedélyezi sokkal hosszabb fájl elérési útja módosítható. Felülvizsgálati [Ez a cikk](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) beállításával kapcsolatos további részletekért a _MAX_PATH_ beállításkulcsot.
+
+## <a name="interrupt-cli-execution-output"></a>Parancssori végrehajtás kimenetének megszakítási
+Ha egy kísérletezés, futtatni használatával indítsa el `az ml experiment submit` vagy `az ml notebook start` és a kimeneti megszakítási szeretné: 
+- A Windows használja a Ctrl + Break billentyűkombinációt a billentyűzet
+- A macOS használja a Ctrl-c kiszolgálóra.
+
+Vegye figyelembe, hogy ez csak megzavarja a kimeneti adatfolyamba, a parancssori ablakban. Azt nem ténylegesen leállíthat feladatot végrehajtott. Ha meg kívánja szakítani a folyamatban lévő feladat, `az ml experiment cancel -r <run_id> -t <target name>` parancsot.
 
 ## <a name="docker-error-read-connection-refused"></a>Docker hiba "olvasható: Kapcsolat elutasítva"
 Végrehajtása egy helyi Docker-tároló, időnként megjelenhet a következő hibával: 

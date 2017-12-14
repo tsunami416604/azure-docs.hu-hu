@@ -10,14 +10,14 @@ ms.service: postgresql
 ms.custom: 
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 3173964f0315559b0839fd7e659f8f3bd2c30b2a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: d84a9fd45f2e6e44218ebd36d19c6a6c5f3438ce
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>SSL-kapcsolatot PostgreSQL Azure-adatbázis konfigurálása
-Azure-adatbázis PostgreSQL inkább csatlakozás az ügyfél alkalmazásait, és a Secure Sockets Layer (SSL) használatával PostgreSQL-szolgáltatás. Az adatbázis-kiszolgáló és az ügyfél alkalmazások közötti SSL-kapcsolatok kényszerítése segít lánctámadások elleni védelem érdekében "man a középső" az adatfolyamot a kiszolgáló és az alkalmazás közötti titkosításával.
+Azure-adatbázis PostgreSQL inkább csatlakozás az ügyfél alkalmazásait, és a Secure Sockets Layer (SSL) használatával PostgreSQL-szolgáltatás. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
 
 Alapértelmezés szerint a PostgreSQL-adatbázis szolgáltatás SSL-kapcsolat megkövetelése van konfigurálva. Másik lehetőségként letilthatja kapcsolódni az adatbázis-szolgáltatás, ha az ügyfélalkalmazást nem támogatja az SSL-kapcsolatot az SSL megkövetelése. 
 
@@ -110,10 +110,6 @@ openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
 
 ### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>Azure-adatbázishoz szeretne csatlakozni a PostgreSQL SSL tanúsítványalapú hitelesítéssel ellátott
 Most, hogy sikeres rendelkeznek dekódolni, a tanúsítványt, akkor is csatlakozhat az adatbázis-kiszolgáló biztonságos SSL-en keresztül. Ahhoz, hogy a kiszolgáló tanúsítványellenőrzést, a tanúsítványt kell helyezni a fájlt ~/.postgresql/root.crt az a felhasználó saját könyvtárához. (A Microsoft Windows a fájl neve % APPDATA%\postgresql\root.crt.). A következő útmutatás PostgreSQL az Azure-adatbázishoz szeretne csatlakozni.
-
-> [!NOTE]
-> Jelenleg egy ismert probléma használatakor "sslmode ellenőrizze teljes =" a kapcsolat a szolgáltatással, a kapcsolat nem tud a következő hiba miatt: _kiszolgálótanúsítvány "&lt;régió&gt;. control.database.windows.net" (és más neveket 7) nem egyezik meg a gazdagép neve "&lt;kiszolgálónév&gt;. postgres.database.azure.com"._
-> Ha "sslmode ellenőrizze teljes =" van szükség, használja a kiszolgáló elnevezési  **&lt;kiszolgálónév&gt;. database.windows.net** a gazdagép neve a kapcsolati karakterláncban. Távolítsa el ezt a korlátozást a jövőben tervezzük. Egyéb használó kapcsolatok [SSL módok](https://www.postgresql.org/docs/9.6/static/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS) továbbra is használja az előnyben részesített elnevezési  **&lt;kiszolgálónév&gt;. postgres.database.azure.com**.
 
 #### <a name="using-psql-command-line-utility"></a>Psql parancssori segédprogrammal
 A következő példa bemutatja, hogyan tud sikeresen csatlakozni a psql parancssori segédprogram használatával PostgreSQL-kiszolgálóhoz. Használja a `root.crt` fájl létrehozása és a `sslmode=verify-ca` vagy `sslmode=verify-full` lehetőséget.

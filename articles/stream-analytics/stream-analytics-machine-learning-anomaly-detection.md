@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: dubansal
-ms.openlocfilehash: 43a2a9784668fad2aa5b1441cfd37751c0c240b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db72b1ca936e69a049d64f939d3399bfd9cdf89c
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="using-the-anomalydetection-operator"></a>A ANOMALYDETECTION operátorral
 
@@ -38,12 +38,12 @@ Opcionálisan feldolgozható események külön alapján a kulcs van megadva a c
 
 ## <a name="syntax"></a>Szintaxis
 
-`ANOMALYDETECTION(\<scalar_expression\>) OVER ([PARTITION BY \<partition key\>] LIMIT DURATION(\<unit\>, \<length\>) [WHEN boolean_expression])` 
+`ANOMALYDETECTION(<scalar_expression>) OVER ([PARTITION BY <partition key>] LIMIT DURATION(<unit>, <length>) [WHEN boolean_expression])` 
 
 
 ## <a name="example-usage"></a>Példa használati
 
-`SELECT id, val, ANOMALYDETECTION(val) OVER(PARTITION BY id LIMIT DURATION(hour, 1) WHEN id \> 100) FROM input`|
+`SELECT id, val, ANOMALYDETECTION(val) OVER(PARTITION BY id LIMIT DURATION(hour, 1) WHEN id > 100) FROM input`|
 
 
 ## <a name="arguments"></a>Argumentumok
@@ -56,7 +56,7 @@ Opcionálisan feldolgozható események külön alapján a kulcs van megadva a c
 
 - **partition_by_clause** 
 
-  A `PARTITION BY \<partition key\>` záradék osztja a tanulási és a képzési külön partíciók között. Más szóval egy külön modell használni / értékének `\<partition key\>` és tanulási és, hogy a modell a tanítási használják ezt az értéket csak eseményeket. Például:
+  A `PARTITION BY <partition key>` záradék osztja a tanulási és a képzési külön partíciók között. Más szóval egy külön modell használni / értékének `<partition key>` és tanulási és, hogy a modell a tanítási használják ezt az értéket csak eseményeket. Például:
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
@@ -80,7 +80,7 @@ A függvény minden három pontszámok kimenetként tartalmazó rekordot ad viss
 
 Az egyedi értékek kívül a rekord kibontásához használja a **GetRecordPropertyValue** függvény. Példa:
 
-`SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) \> 3.25` 
+`SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
 
 Az anomáliadetektálási egy adott típusú észlelt a anomáliadetektálási pontok egyikét ebbe a küszöbértéket. A küszöbérték lehet bármely lebegőpontos számnak \>= 0. Küszöbértéke egy érzékenységi és az vetett bizalmat közötti kompromisszumot. Például alacsonyabb küszöbértékkel Ehhez ellenőrizze észlelési érzékenyebb a módosításokat, és további riasztást állítson elő, mivel a magasabb küszöbértéket sikerült észlelés kevésbé érzékeny és több biztosnak, azonban néhány rendellenességeket maszk. A pontos küszöbérték használni a forgatókönyv függ. Nincs felső korlátja, de a javasolt tartománya 3,25 – 5.
@@ -160,12 +160,12 @@ Amint azt megelőzően nem hagyja ki a `FillInMissingValuesStep` lépés a lép�
 
     WHERE
 
-        CAST(GetRecordPropertyValue(scores, 'BiLevelChangeScore') as float) \>= 3.25
+        CAST(GetRecordPropertyValue(scores, 'BiLevelChangeScore') as float) >= 3.25
 
-        OR CAST(GetRecordPropertyValue(scores, 'SlowPosTrendScore') as float) \>=
+        OR CAST(GetRecordPropertyValue(scores, 'SlowPosTrendScore') as float) >=
         3.25
 
-       OR CAST(GetRecordPropertyValue(scores, 'SlowNegTrendScore') as float) \>=
+       OR CAST(GetRecordPropertyValue(scores, 'SlowNegTrendScore') as float) >=
        3.25
 
 ## <a name="references"></a>Referencia

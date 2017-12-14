@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan bontsa ki a virtuális merevlemezek, a Linux v
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/21/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: b82cc0473c003da767ee230ab485c69b233977d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6bc370c1f02eedf996824136b117a4021915fc57
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>A Linux virtuális gép és az Azure parancssori felület virtuális merevlemezek kibontása
 Az alapértelmezett virtuális merevlemezt az operációs rendszer mérete általában 30 GB Linux virtuális gépre (VM) az Azure-ban. Is [adatok lemezek hozzáadása a](add-disk.md) további tárhelyet, de így is célszerű bontsa ki a meglévő adatok lemez. Ez a cikk a Linux virtuális gépek az Azure CLI 2.0-s verziójával kezelt lemezek kibontása részletezi. A nem felügyelt operációsrendszer-lemez kibontva a [Azure CLI 1.0](expand-disks-nodejs.md).
@@ -26,7 +26,7 @@ Az alapértelmezett virtuális merevlemezt az operációs rendszer mérete álta
 > [!WARNING]
 > Mindig győződjön meg arról, hogy készítsen biztonsági másolatot az adatokat, mielőtt elvégezné a lemez átméretezése műveletek. További információkért lásd: [készítsen biztonsági másolatot a Linux virtuális gépek Azure-ban](tutorial-backup-vms.md).
 
-## <a name="expand-disk"></a>Bontsa ki a lemez
+## <a name="expand-azure-managed-disk"></a>Bontsa ki az Azure felügyelt lemezes
 Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#login).
 
 Ez a cikk egy meglévő Azure-ban az legalább egy adatlemezt csatolni, és előkészített van szükség. Ha még nem rendelkezik a virtuális gépek közül választhat, tekintse meg [létrehozása és készítse elő a virtuális gép és adatlemezek](tutorial-manage-disks.md#create-and-attach-disks).
@@ -40,7 +40,7 @@ A következő mintában cserélje le a saját értékeit példa paraméterek nev
     ```
 
     > [!NOTE]
-    > `az vm stop`fel a számítási erőforrásokat. A számítási erőforrásokat kiadási használja `az vm deallocate`. A virtuális gép felszabadítása kell a virtuális merevlemez bővítéséhez.
+    > A virtuális gép felszabadítása kell a virtuális merevlemez bővítéséhez. `az vm stop`fel a számítási erőforrásokat. A számítási erőforrásokat kiadási használja `az vm deallocate`.
 
 2. Felügyelt lemezek listájának megtekintése a erőforráscsoportban [az Lemezlista](/cli/azure/disk#list). Az alábbi példa felügyelt lemezek listáját jeleníti meg az erőforráscsoportot *myResourceGroup*:
 
@@ -69,13 +69,17 @@ A következő mintában cserélje le a saját értékeit példa paraméterek nev
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
-4. SSH-kapcsolatot a virtuális Gépet a megfelelő hitelesítő adatokkal. Ezt úgy szerezheti be a nyilvános IP-címet a virtuális gép a [az vm megjelenítése](/cli/azure/vm#show):
+
+## <a name="expand-disk-partition-and-filesystem"></a>Bontsa ki a kívánt lemezpartíciót és fájlrendszer
+A kibontott lemezt használ, meg kell bontsa ki az alapul szolgáló partíció és fájlrendszer.
+
+1. SSH-kapcsolatot a virtuális Gépet a megfelelő hitelesítő adatokkal. Ezt úgy szerezheti be a nyilvános IP-címet a virtuális gép a [az vm megjelenítése](/cli/azure/vm#show):
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
     ```
 
-5. A kibontott lemezt használ, meg kell bontsa ki az alapul szolgáló partíció és fájlrendszer.
+2. A kibontott lemezt használ, meg kell bontsa ki az alapul szolgáló partíció és fájlrendszer.
 
     a. Ha már csatlakoztatva van, leválasztani a lemezt:
 
@@ -116,25 +120,25 @@ A következő mintában cserélje le a saját értékeit példa paraméterek nev
 
     d. Lépjen ki, írja be a következőt`quit`
 
-5. Átméretezték, ezért a partíció, ellenőrizze a partíció konzisztenciájának `e2fsck`:
+3. Átméretezték, ezért a partíció, ellenőrizze a partíció konzisztenciájának `e2fsck`:
 
     ```bash
     sudo e2fsck -f /dev/sdc1
     ```
 
-6. A fájlrendszer most átméretezése `resize2fs`:
+4. A fájlrendszer most átméretezése `resize2fs`:
 
     ```bash
     sudo resize2fs /dev/sdc1
     ```
 
-7. A partíció a kívánt helyre, például a csatlakoztatási `/datadrive`:
+5. A partíció a kívánt helyre, például a csatlakoztatási `/datadrive`:
 
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
 
-8. Az operációs rendszer lemezének át lett méretezve, amellyel `df -h`. Az alábbi példa kimenetben látható az adatmeghajtó */dev/sdc1*, 200 GB-os áll:
+6. Az operációs rendszer lemezének át lett méretezve, amellyel `df -h`. Az alábbi példa kimenetben látható az adatmeghajtó */dev/sdc1*, 200 GB-os áll:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

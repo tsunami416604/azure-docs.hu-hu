@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: robb
-ms.openlocfilehash: 1c05bd6dc4c4d394aa043b9995de9c184e4f14c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca0dd96389a605ed8bf34af81eb4d75bef581338
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Adatfolyam-Azure diagnosztikai adatokat a gyakran használt adatok elérési útja az Event Hubs használatával
 Az Azure Diagnostics metrikák és a naplók összegyűjtésére felhőalapú szolgáltatások virtuális gépek (VM) és az eredmények átvitele az Azure Storage rugalmas módszereket biztosítja. A 2016. március (SDK 2.9) időkereten belül-től kezdődően diagnosztika küldése egyéni adatforrások, működés közbeni elérési adatok átviteléhez az másodpercben használatával [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -28,7 +28,7 @@ Támogatott adattípusok a következők:
 * A Windows esemény-nyomkövetés (ETW) eseményei
 * Teljesítményszámlálók
 * Windows-Eseménynapló
-* Alkalmazás-naplók
+* Alkalmazásnaplók
 * Az Azure Diagnostics infrastruktúra naplók
 
 Ez a cikk bemutatja, hogyan Azure Diagnostics konfigurálása az Event Hubs végpontok közötti. Útmutató a következő gyakori forgatókönyvek esetén is ismerteti:
@@ -104,7 +104,7 @@ Az Event Hubs fogadó is kell deklarált és definiált a **PrivateConfig** szak
 }
 ```
 
-A `SharedAccessKeyName` értékének meg kell felelnie egy közös hozzáférésű Jogosultságkód (SAS) és egy házirendet, amely definiálva van a **Event Hubs** névtér. Keresse meg az Event Hubs irányítópult a [Azure-portálon](https://manage.windowsazure.com), kattintson a **konfigurálása** lapot, és hozzon létre egy elnevezett házirendet (például "SendRule"), amely rendelkezik *küldése* engedélyek. A **StorageAccount** deklarálva van a **PrivateConfig**. Nincs szükség itt értékeket módosíthatja, ha működnek. Ebben a példában azt az értéket üresen hagyja, ez az a jele, hogy egy alárendelt eszköz állítja be az értékeket. Például a *ServiceConfiguration.Cloud.cscfg* környezet konfigurációs fájl beállítja a környezet megfelelő neveket és a kulcsokat.  
+A `SharedAccessKeyName` értékének meg kell felelnie egy közös hozzáférésű Jogosultságkód (SAS) és egy házirendet, amely definiálva van a **Event Hubs** névtér. Keresse meg az Event Hubs irányítópult a [Azure-portálon](https://portal.azure.com), kattintson a **konfigurálása** lapot, és hozzon létre egy elnevezett házirendet (például "SendRule"), amely rendelkezik *küldése* engedélyek. A **StorageAccount** deklarálva van a **PrivateConfig**. Nincs szükség itt értékeket módosíthatja, ha működnek. Ebben a példában azt az értéket üresen hagyja, ez az a jele, hogy egy alárendelt eszköz állítja be az értékeket. Például a *ServiceConfiguration.Cloud.cscfg* környezet konfigurációs fájl beállítja a környezet megfelelő neveket és a kulcsokat.  
 
 > [!WARNING]
 > Az Event Hubs SAS-kulcsot a egyszerű szövegként vannak tárolva a *.wadcfgx* fájlt. Gyakran ezt a kulcsot rendszer ellenőrzi, hogy verziókövetési vagy érhető el a build Server eszközként, szükség szerint kell védeni. Azt javasoljuk, hogy egy SAS-kulcsot használ itt a *csak küldése* engedélyeit, hogy egy rosszindulatú felhasználó írhat az event hubs, de nem hallgatni vagy az adatbázis felügyeletét.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: ancav
-ms.openlocfilehash: d171538ea57839eccddcc74ca099a39aee34ea10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e16926b5a1c28c0c8c80ee8c17e8c2fdb9e55a7
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="scale-instance-count-manually-or-automatically"></a>Méretezhető példányszám manuális vagy automatikus
 Az a [Azure Portal](https://portal.azure.com/), manuálisan állíthatja be a példányok száma a szolgáltatás, vagy paramétert adhat meg, hogy automatikusan méretezési igény szerint. Ez általában nevezzük *horizontális felskálázás* vagy *méretezése*.
@@ -26,11 +26,6 @@ Az a [Azure Portal](https://portal.azure.com/), manuálisan állíthatja be a p�
 Előtt példányok száma alapján skálázás, vegye figyelembe, hogy skálázás érintett **tarifacsomag** példányok száma kívül. Különböző tarifacsomagjainak lehet eltérő számú maggal és a memória, és így rendelkeznek jobb teljesítményt nyújt a példányok azonos számú (amely *vertikális felskálázás* vagy *csökkentheti*). Ez a cikk foglalkozik kifejezetten *méretezése* és *kimenő*.
 
 Méretezheti a portálon, és használhatja a [REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx) vagy [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) méretezési úgy, hogy automatikusan vagy manuálisan.
-
-> [!NOTE]
-> Ez a cikk ismerteti az automatikus skálázási beállítás létrehozása a portálon, a [http://portal.azure.com](http://portal.azure.com). Ezen a portálon létrehozott automatikus skálázási beállítások értéke nem lehet szerkeszteni, a klasszikus portálon ([http://manage.windowsazure.com](http://manage.windowsazure.com)).
-> 
-> 
 
 ## <a name="scaling-manually"></a>Manuális skálázás
 1. A a [Azure Portal](https://portal.azure.com/), kattintson a **Tallózás**, majd keresse meg az erőforrás méretezésére, például egy **App Service-csomag**.

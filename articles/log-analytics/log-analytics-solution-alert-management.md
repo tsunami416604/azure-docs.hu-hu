@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: bwren
-ms.openlocfilehash: 4a394ead09794c52e92dbd2db8be8166d1fab83b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ec80fccdf4521792ff6be115ec66227f0fe1ed2
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="alert-management-solution-in-operations-management-suite-oms"></a>Riasztási felügyeleti megoldás az Operations Management Suite (OMS)
 
@@ -49,7 +49,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 
 | Összekapcsolt forrás | Támogatás | Leírás |
 |:--- |:--- |:--- |
-| [Windows-ügynökök](log-analytics-windows-agents.md) | Nem |A közvetlen Windows-ügynökök nem hoznak létre riasztásokat.  Napló Analytics riasztások az események hozhatók létre, és a Windows ügynökök gyűjtött teljesítményadatokat. |
+| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem |A közvetlen Windows-ügynökök nem hoznak létre riasztásokat.  Napló Analytics riasztások az események hozhatók létre, és a Windows ügynökök gyűjtött teljesítményadatokat. |
 | [Linux-ügynökök](log-analytics-linux-agents.md) | Nem |Közvetlen Linux-ügynökök nem hoznak létre riasztásokat.  Napló Analytics riasztások hozhatók létre az események és teljesítményadatok összegyűjtésére a Linux-ügynököt.  Nagios és Zabbix riasztások ezeken a kiszolgálókon, a Linux-ügynök igénylő gyűjtenek. |
 | [System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md) |Igen |Az Operations Manager-ügynökök generált riasztások kézbesíteni a felügyeleti csoporthoz, és továbbítja a Naplóelemzési.<br><br>Közvetlen kapcsolat az Operations Manager-ügynökök szolgáltatáshoz nincs szükség. Riasztási adatokat a Naplóelemzési tárház továbbítódik a felügyeleti csoportból. |
 

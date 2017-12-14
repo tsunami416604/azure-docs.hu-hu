@@ -2,26 +2,25 @@
 title: "Az Azure verem datacenter integrációs - identitás"
 description: "Útmutató: Azure verem AD FS integrálása az AD FS adatközpont"
 services: azure-stack
-author: troettinger
+author: mattbriggs
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/20/2017
-ms.author: victorh
+ms.date: 12/12/2017
+ms.author: mabrigg
 keywords: 
-ms.openlocfilehash: c66761d44266a33ddfa1e95444355d3908186ef8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 642ed3298eec0bab5515df117c0310786358e417
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure verem datacenter integrációs - identitás
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek*
 
-Az Azure verem az identitás-szolgáltatóktól Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS) használatával is telepíthető. Ez a választás a központi telepítés előtt kell elvégezni. A központi telepítést az AD FS is nevezzük Azure verem kapcsolat nélküli módban való telepítése.
+Az identitás-szolgáltatóktól Azure verem Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS) használatával telepítheti. Azure verem központi telepítése előtt meg kell nyitnia a választás. AD FS segítségével központi telepítés is nevezzük Azure verem kapcsolat nélküli módban való telepítése.
 
 A következő táblázatban a két azonosító lehetőségek közötti eltéréseket:
-
 
 ||Fizikailag leválasztása|Csatlakoztatva|
 |---------|---------|---------|
@@ -75,33 +74,36 @@ A következő információkra szükség az automation paraméterek bemeneteként
 Szükség esetén a meglévő Active Directory Graph szolgáltatás fiók hozhat létre. Hajtsa végre ezt a lépést, ha még nem rendelkezik egy használni kívánt fiókot.
 
 1. A meglévő Active Directoryban hozzon létre a következő felhasználói fiókot (ajánlott):
-   - Felhasználónév: graphservice
-   - Jelszó: erős jelszó használatát.<br>Konfigurálja a jelszó soha nem jár le.
+   - **Felhasználónév**: graphservice
+   - **Jelszó**: erős jelszó használata<br>Konfigurálja a jelszó soha nem jár le.
 
-   Nincsenek különleges engedélyekhez és a tagság szükség
+   Nincsenek különleges engedélyekhez és a tagság megadása kötelező.
 
-**Eseményindító automatizálás graph konfigurálása**
+#### <a name="trigger-automation-to-configure-graph"></a>Eseményindító automatizálás graph konfigurálása
 
 Ez az eljárás az adatközponti hálózat, amely képes kommunikálni a kiemelt végpont Azure-készletben lévő számítógépet használni.
 
-2. Nyisson meg egy emelt szintű Windows PowerShell-munkamenetet (Futtatás rendszergazdaként), és kapcsolódjon a kiemelt végpont IP-címét. CloudAdmin hitelesítő adatai segítségével hitelesíti.
+2. Nyisson meg egy emelt szintű Windows PowerShell-munkamenetet (Futtatás rendszergazdaként), és kapcsolódjon a kiemelt végpont IP-címét. A hitelesítő adatok használata **CloudAdmin** hitelesítéséhez.
 
-   ```
+   ```powershell
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-3. Most, hogy a kiemelt végpont csatlakozik, a következő parancsokat. Amikor a rendszer kéri, adja meg a Graph-szolgáltatáshoz (például graphservice) használni kívánt felhasználói fiók hitelesítő adatait.
+3. Most, hogy a kiemelt végpont csatlakozik, a következő parancsot: 
 
-   `Register-DirectoryService -CustomADGlobalCatalog contoso.com`
+   ```powershell
+   Register-DirectoryService -CustomADGlobalCatalog contoso.com
+   ```
+
+   Amikor a rendszer kéri, adja meg a Graph-szolgáltatáshoz (például graphservice) használni kívánt felhasználói fiók hitelesítő adatait.
 
    > [!IMPORTANT]
    > Várja meg a hitelesítő adatok előugró (Get-Credential parancsmag nem támogatott a rendszerjogosultságú végpont) és a Graph-szolgáltatásfiók hitelesítő adatokat.
 
-**Graph protokollok és portok**
+#### <a name="graph-protocols-and-ports"></a>Graph protokollok és portok
 
 Graph szolgáltatás Azure-készletben a következő protokollokat és portokat használ a cél az Active Directory folytatott kommunikációhoz:
-
 
 |Típus|Port|Protokoll|
 |---------|---------|---------|
@@ -114,7 +116,6 @@ Graph szolgáltatás Azure-készletben a következő protokollokat és portokat 
 
 A következő információkra szükség az automation paraméterek bemenetként:
 
-
 |Paraméter|Leírás|Példa|
 |---------|---------|---------|
 |CustomAdfsName|A jogcím-szolgáltató neve. <cr>Úgy tűnik, így az AD FS kezdőlapja.|Contoso|
@@ -123,22 +124,26 @@ A következő információkra szükség az automation paraméterek bemenetként:
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Eseményindító automatizálási jogcím-szolgáltatói megbízhatóság Azure verem konfigurálása
 
-Az eljárás használatához Azure-készletben a rendszerjogosultságú végponttal, amely képes kommunikálni a számítógépet használni. Valószínű, hogy a fiók az AD STS FS által használt tanúsítvány megbízható-e Azure verem.
+Az eljárás használatához Azure-készletben a rendszerjogosultságú végponttal, amely képes kommunikálni a számítógépet használni. Várható, hogy a partner által használt tanúsítvány **STS AD FS** Azure verem megbízhatónak.
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és a kiemelt végponthoz kapcsolódni.
 
-   ```
+   ```powershell
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Most, hogy a kiemelt végpont csatlakozik, a következő parancsot a környezetének megfelelő paraméterekkel:
 
-   `Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml`
+   ```powershell
+   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
+   ```
 
 3. A következő parancsot a környezetének megfelelő paraméterekkel az alapértelmezett szolgáltató előfizetés tulajdonosának frissítése:
 
-   `Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"`
+   ```powershell
+   Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
+   ```
 
 ## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>Az AD FS integrációjának beállításában, adja meg a összevonási metaadatait tartalmazó fájl
 
@@ -161,7 +166,7 @@ A következő eljáráshoz lesz a fiók STS meglévő AD FS-telepítés hálóza
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsot, a környezetnek megfelelő paraméterekkel:
 
-   ```
+   ```powershell
    [XML]$Metadata = Invoke-WebRequest -URI https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml -UseBasicParsing
 
    $Metadata.outerxml|out-file c:\metadata.xml
@@ -176,18 +181,22 @@ Az eljárás használatához Azure-készletben a rendszerjogosultságú végpont
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és a kiemelt végponthoz kapcsolódni.
 
-   ```
+   ```powershell
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Most, hogy a kiemelt végpont csatlakozik, a következő parancsot a környezetének megfelelő paraméterekkel:
 
-   `Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml`
+   ```powershell
+   Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml
+   ```
 
 3. A következő parancsot a környezetének megfelelő paraméterekkel az alapértelmezett szolgáltató előfizetés tulajdonosának frissítése:
 
-   `Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"`
+   ```powershell
+   Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
+   ```
 
 ## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>Függő entitás konfigurálja a meglévő AD FS üzembe helyezése (fiók STS)
 
@@ -199,7 +208,7 @@ Ha úgy dönt, hogy manuálisan futtassa a parancsokat, kövesse az alábbi lép
 
 1. A következő tartalmat átmásolja egy .txt fájlt (például c:\ClaimRules.txt mentett) az Adatközpont AD FS-példány vagy a farm tag:
 
-   ```
+   ```text
    @RuleTemplate = "LdapClaims"
    @RuleName = "Name claim"
    c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname", Issuer == "AD AUTHORITY"]
@@ -232,28 +241,43 @@ Ha úgy dönt, hogy manuálisan futtassa a parancsokat, kövesse az alábbi lép
 
 2. Windows Forms-alapú hitelesítés engedélyezéséhez nyissa meg a Windows PowerShell-munkamenetet emelt szintű felhasználóként, és futtassa a következő parancsot:
 
-   `Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")`
+   ```powershell
+   Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")
+   ```
 
 3. A függő entitás megbízhatóságának hozzáadásához futtassa a következő Windows PowerShell-parancsot az AD FS-példányt vagy egy farm tagja. Győződjön meg arról, hogy az AD FS végpont frissítése, és az 1. lépésben létrehozott fájlt.
 
    **Az AD FS 2016**
 
-   `Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"`
+   ```powershell
+   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"
+   ```
 
    **AD FS 2012/2012 R2-höz**
 
-   `Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true`
+   ```powershell
+   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true
+   ```
 
    > [!IMPORTANT]
    > Kell használnia az AD FS beépülő MMC-modulban a kiállítás-engedélyezési szabályok konfigurálása a Windows Server 2012 vagy 2012 R2 AD FS használata esetén.
 
 4. Internet Explorer vagy használatakor az Edge böngésző Azure verem eléréséhez, akkor kell figyelmen kívül a token kötések. Ellenkező esetben a bejelentkezési kísérlet sikertelen. Az AD FS-példányt vagy egy farm tagja a következő parancsot:
 
-   `Set-AdfsProperties -IgnoreTokenBinding $true`
+   ```powershell
+   Set-AdfsProperties -IgnoreTokenBinding $true
+   ```
+
+5. Ahhoz, hogy a frissítési jogkivonatokat, nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsot:
+
+   ```powershell
+   Set-ADFSRelyingPartyTrust -TargetName AzureStack -TokenLifeTime 1440
+   ```
 
 ## <a name="spn-creation"></a>Egyszerű szolgáltatásnév létrehozása
 
 Nincsenek számos forgatókönyv, amely egy egyszerű szolgáltatásnév (SPN) hitelesítés használata szükséges. Az alábbiakban néhány példát:
+
 - Az AD FS telepítésének Azure verem CLI használata
 - A System Center felügyeleti csomag az AD FS telepítésekor Azure verem
 - Az AD FS telepítésekor Azure verem erőforrás-szolgáltató
@@ -271,21 +295,25 @@ Ha hiba lép fel, hogy a környezet olyan állapotban, amelyben már nem hiteles
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsokat:
 
-   ```
+   ```powershell
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Ezután futtassa a következő parancsmagot:
 
-   `Reset-DatacenterIntegationConfiguration`
+   ```powershell
+   Reset-DatacenterIntegationConfiguration
+   ```
 
-   Miután a visszaállítási művelet, az összes konfigurációs módosítás visszavonásra kerül. Lehetőség csak a beépített "CloudAdmin" felhasználói hitelesítés.
+   Miután a visszaállítási művelet, az összes konfigurációs módosítás visszavonásra kerül. Csak a beépített hitelesítési **CloudAdmin** felhasználói lehetőség.
 
    > [!IMPORTANT]
    > Konfigurálnia kell az alapértelmezett szolgáltató előfizetés eredeti tulajdonosa
 
-   `Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"`
+   ```powershell
+   Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"
+   ```
 
 ### <a name="collecting-additional-logs"></a>További naplófájlok összegyűjtése
 
@@ -293,14 +321,16 @@ Ha nem sikerül, a parancsmagokat használatával hozhatja létre további napl�
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsokat:
 
-   ```
+   ```powershell
    $creds = Get-Credential
    Enter-pssession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Ezután futtassa a következő parancsmagot:
 
-   `Get-AzureStackLog -OutputPath \\myworstation\AzureStackLogs -FilterByRole ECE`
+   ```powershell
+   Get-AzureStackLog -OutputPath \\myworstation\AzureStackLogs -FilterByRole ECE
+   ```
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 28/9/2017
+ms.date: 12/11/2017
 ms.author: seguler
-ms.openlocfilehash: e73a2424d3eb633f6bec63189786a67161750d4f
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 1cf1ce1cb739d8958767f0e84380ff6ba57eb1b6
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Adatátvitel az AzCopy Linux rendszeren
-AzCopy Linux egy parancssori segédprogram, az adatok másolása, és a Microsoft Azure-Blob és a fájl tárolási egyszerű parancsokkal optimális teljesítménnyel. Másolhatja adatok egy objektum a másikra a tárfiókon belül vagy tárfiókok között.
+AzCopy Linux egy parancssori segédprogram, az adatok másolása, és a Microsoft Azure-Blob és a fájl tárolási egyszerű parancsokkal optimális teljesítménnyel. Is másolhatja adatok egy objektum a másikra a tárfiókon belül vagy tárfiókok között.
 
 AzCopy, letöltheti a két verziója van. AzCopy Linux ajánlat POSIX-stílusú parancssori kapcsolók Linux platformon célozza .NET Core keretrendszerrel épül. [A Windows AzCopy](../storage-use-azcopy.md) a .NET-keretrendszer épül, és ez biztosítja a Windows stílus parancssori kapcsolókat. Ez a cikk a Linux AzCopy ismerteti.
 
@@ -30,7 +30,7 @@ AzCopy, letöltheti a két verziója van. AzCopy Linux ajánlat POSIX-stílusú 
 
 A cikk Ubuntu különböző kiadásaiban parancsokat tartalmaz.  Használja a `lsb_release -a` erősítse meg az terjesztésű kiadású és concero kódnevű parancsot. 
 
-AzCopy Linux szükséges a .NET Core framework (verzió 1.1.x) a platformon. A telepítési utasításokat tekintse meg a [.NET Core](https://www.microsoft.com/net/download/linux) lap.
+AzCopy Linux szükséges a .NET Core framework (verzió: 2.0) a platformon. A telepítési utasításokat tekintse meg a [.NET Core](https://www.microsoft.com/net/download/linux) lap.
 
 Tegyük fel most telepítse a .NET Core Ubuntu 16.04. A legfrissebb telepítési útmutató a Microsoft [.NET Core Linux](https://www.microsoft.com/net/download/linux) telepítési oldal.
 
@@ -40,7 +40,7 @@ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microso
 sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 sudo apt-get update
-sudo apt-get install dotnet-dev-1.1.4
+sudo apt-get install dotnet-sdk-2.0.2
 ```
 
 A .NET Core telepítése után töltse le és telepítse az AzCopy.
@@ -68,22 +68,20 @@ Az alábbi példák bemutatják a különböző forgatókönyvek másolása adat
 
 ```azcopy
 azcopy \
-    --source https://myaccount.blob.core.windows.net/mycontainer \
-    --destination /mnt/myfiles \
-    --source-key <key> \
-    --include "abc.txt"
+    --source https://myaccount.blob.core.windows.net/mycontainer/abc.txt \
+    --destination /mnt/myfiles/abc.txt \
+    --source-key <key> 
 ```
 
-Ha a mappa `/mnt/myfiles` nem létezik, AzCopy létrehozza, és letölti `abc.txt ` az új mappába.
+Ha a mappa `/mnt/myfiles` nem létezik, AzCopy létrehozza, és letölti `abc.txt ` az új mappába. 
 
 ### <a name="download-single-blob-from-secondary-region"></a>A másodlagos régióba egyetlen blob letöltése
 
 ```azcopy
 azcopy \
-    --source https://myaccount-secondary.blob.core.windows.net/mynewcontainer \
-    --destination /mnt/myfiles \
-    --source-key <key> \
-    --include "abc.txt"
+    --source https://myaccount-secondary.blob.core.windows.net/mynewcontainer/abc.txt \
+    --destination /mnt/myfiles/abc.txt \
+    --source-key <key>
 ```
 
 Vegye figyelembe, hogy írásvédett georedundáns tárolás engedélyezve kell rendelkeznie.
@@ -189,10 +187,9 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source /mnt/myfiles \
-    --destination https://myaccount.blob.core.windows.net/mycontainer \
-    --dest-key <key> \
-    --include "abc.txt"
+    --source /mnt/myfiles/abc.txt \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/abc.txt \
+    --dest-key <key>
 ```
 
 Ha a megadott célhely tároló nem létezik, az AzCopy létrehozása, és a fájlt tölt be.
@@ -201,10 +198,9 @@ Ha a megadott célhely tároló nem létezik, az AzCopy létrehozása, és a fá
 
 ```azcopy
 azcopy \
-    --source /mnt/myfiles \
-    --destination https://myaccount.blob.core.windows.net/mycontainer \
-    --dest-key <key> \
-    --include "abc.txt"
+    --source /mnt/myfiles/abc.txt \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/vd/abc.txt \
+    --dest-key <key>
 ```
 
 Ha a megadott virtuális könyvtár nem létezik, az AzCopy feltölti a fájlt a virtuális könyvtárat a blob nevének (*pl.*, `vd/abc.txt` a fenti példában).
@@ -315,11 +311,10 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source https://myaccount.blob.core.windows.net/mycontainer1 \
-    --destination https://myaccount.blob.core.windows.net/mycontainer2 \
+    --source https://myaccount.blob.core.windows.net/mycontainer1/abc.txt \
+    --destination https://myaccount.blob.core.windows.net/mycontainer2/abc.txt \
     --source-key <key> \
-    --dest-key <key> \
-    --include "abc.txt"
+    --dest-key <key>
 ```
 
 Ha--másolatának szinkronizálása beállítás nélkül egy blobot másol egy [kiszolgálóoldali másolatot](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) művelet.
@@ -328,11 +323,10 @@ Ha--másolatának szinkronizálása beállítás nélkül egy blobot másol egy 
 
 ```azcopy
 azcopy \
-    --source https://sourceaccount.blob.core.windows.net/mycontainer1 \
-    --destination https://destaccount.blob.core.windows.net/mycontainer2 \
+    --source https://sourceaccount.blob.core.windows.net/mycontainer1/abc.txt \
+    --destination https://destaccount.blob.core.windows.net/mycontainer2/abc.txt \
     --source-key <key1> \
-    --dest-key <key2> \
-    --include "abc.txt"
+    --dest-key <key2>
 ```
 
 Ha--másolatának szinkronizálása beállítás nélkül egy blobot másol egy [kiszolgálóoldali másolatot](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) művelet.
@@ -341,11 +335,10 @@ Ha--másolatának szinkronizálása beállítás nélkül egy blobot másol egy 
 
 ```azcopy
 azcopy \
-    --source https://myaccount1-secondary.blob.core.windows.net/mynewcontainer1 \
-    --destination https://myaccount2.blob.core.windows.net/mynewcontainer2 \
+    --source https://myaccount1-secondary.blob.core.windows.net/mynewcontainer1/abc.txt \
+    --destination https://myaccount2.blob.core.windows.net/mynewcontainer2/abc.txt \
     --source-key <key1> \
-    --dest-key <key2> \
-    --include "abc.txt"
+    --dest-key <key2>
 ```
 
 Vegye figyelembe, hogy írásvédett georedundáns tárolás engedélyezve kell rendelkeznie.
@@ -354,8 +347,8 @@ Vegye figyelembe, hogy írásvédett georedundáns tárolás engedélyezve kell 
 
 ```azcopy
 azcopy \
-    --source https://sourceaccount.blob.core.windows.net/mycontainer1 \
-    --destination https://destaccount.blob.core.windows.net/mycontainer2 \
+    --source https://sourceaccount.blob.core.windows.net/mycontainer1/ \
+    --destination https://destaccount.blob.core.windows.net/mycontainer2/ \
     --source-key <key1> \
     --dest-key <key2> \
     --include "abc.txt" \
@@ -392,10 +385,9 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source https://myaccount.file.core.windows.net/myfileshare/myfolder1/ \
-    --destination /mnt/myfiles \
-    --source-key <key> \
-    --include "abc.txt"
+    --source https://myaccount.file.core.windows.net/myfileshare/myfolder1/abc.txt \
+    --destination /mnt/myfiles/abc.txt \
+    --source-key <key>
 ```
 
 Ha a megadott forrás az Azure fájlmegosztások, akkor meg kell adnia a fájl pontos nevét (*pl.* `abc.txt`) egyetlen fájl letöltéséhez vagy beállítást adja meg `--recursive` a megosztás rekurzív módon található összes fájl letöltéséhez. Adjon meg egy fájl mintát és a beállítás próbál `--recursive` hiba együtt eredményez.
@@ -417,10 +409,9 @@ Vegye figyelembe, hogy a rendszer nem tölti le üres mappák.
 
 ```azcopy
 azcopy \
-    --source /mnt/myfiles \
-    --destination https://myaccount.file.core.windows.net/myfileshare/ \
-    --dest-key <key> \
-    --include abc.txt
+    --source /mnt/myfiles/abc.txt \
+    --destination https://myaccount.file.core.windows.net/myfileshare/abc.txt \
+    --dest-key <key>
 ```
 
 ### <a name="upload-all-files"></a>Minden fájl feltöltése
@@ -543,11 +534,10 @@ AzCopy sikertelen lesz, ha a paraméter osztani két sort, az itt látható a `-
 
 ```azcopy
 azcopy \
-    --source https://myaccount.blob.core.windows.net/mycontainer1 \
-    --destination https://myaccount.blob.core.windows.net/mycontainer2 \
+    --source https://myaccount.blob.core.windows.net/mycontainer1/abc.txt \
+    --destination https://myaccount.blob.core.windows.net/mycontainer2/abc.txt \
     --source-sas <SAS1> \
-    --dest-sas <SAS2> \
-    --include abc.txt
+    --dest-sas <SAS2>
 ```
 
 Azt is megadhatja egy SAS URI tárolón:
@@ -558,8 +548,6 @@ azcopy \
     --destination /mnt/myfiles \
     --recursive
 ```
-
-Vegye figyelembe, hogy az AzCopy jelenleg csak az támogatja a [fiók SAS](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1).
 
 ### <a name="journal-file-folder"></a>Napló fájlmappa
 Minden alkalommal, amikor egy parancs kiadni az AzCopy, ellenőrzi, hogy a napló fájl megtalálható-e az alapértelmezett mappába, vagy hogy keresztül ez a beállítás a megadott mappa létezik. A napló fájl nem létezik egyik helyen sem, ha az AzCopy kezeli a művelet új, és létrehoz egy új naplófájl.
@@ -609,47 +597,12 @@ azcopy \
 ### <a name="specify-the-number-of-concurrent-operations-to-start"></a>Adja meg elindítani a párhuzamos műveletek száma
 A beállítás `--parallel-level` egyidejű másolási műveletek számát adja meg. Alapértelmezés szerint az AzCopy bizonyos száma párhuzamos műveletek az adatok átvitel átviteli sebesség növelése elindul. A párhuzamos műveletek száma rendelkezik processzorok száma nyolc alkalommal. AzCopy kis sávszélességű hálózaton keresztül futtatja, ha sikertelen a erőforrás konkurencia elkerülése érdekében a--párhuzamos szintű kevesebb is megadhat.
 
-[!TIP]
+>[!TIP]
 >AzCopy paraméterek teljes listájának megtekintéséhez tekintse meg a "azcopy – súgó" menü.
 
 ## <a name="known-issues-and-best-practices"></a>Ismert problémák és ajánlott eljárások
-### <a name="error-net-core-is-not-found-in-the-system"></a>Hiba: A .NET Core nem található a rendszerben.
-Ha a program hibát kap, hogy a .NET Core nincs telepítve a rendszeren, a .NET Core bináris fájl elérési ÚTJA `dotnet` lehet, hogy hiányzik.
-
-Ahhoz, hogy a probléma megoldásához keresse meg a .NET Core bináris a rendszerben:
-```bash
-sudo find / -name dotnet
-```
-
-Ez az elérési útját adja a dotnet bináris. 
-
-    /opt/rh/rh-dotnetcore11/root/usr/bin/dotnet
-    /opt/rh/rh-dotnetcore11/root/usr/lib64/dotnetcore/dotnet
-    /opt/rh/rh-dotnetcore11/root/usr/lib64/dotnetcore/shared/Microsoft.NETCore.App/1.1.2/dotnet
-
-Most az elérési út hozzáadása a PATH változóban. A sudo secure_path tartalmazó elérési útját a bináris dotnet szerkesztése:
-```bash 
-sudo visudo
-### Append the path found in the preceding example to 'secure_path' variable
-```
-
-Ebben a példában secure_path változó olvassa be, mint:
-
-```
-secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/rh/rh-dotnetcore11/root/usr/bin/
-```
-
-Az aktuális felhasználó szerkesztése.bash_profile/.profile elérési útját a PATH változóban bináris dotnet tartalmazza 
-```bash
-vi ~/.bash_profile
-### Append the path found in the preceding example to 'PATH' variable
-```
-
-Győződjön meg arról, hogy a .NET Core most az elérési út:
-```bash
-which dotnet
-sudo which dotnet
-```
+### <a name="error-net-sdk-20-is-not-found-in-the-system"></a>Hiba: A .NET SDK 2.0-s nem található a rendszerben.
+AzCopy attól függ, hogy a .NET SDK 2.0-s verziójától kezdve az AzCopy 7.0-s verzió. Korábbi verziói AzCopy használt .NET Core 1.1. Ha hibaüzenet jelenik meg, amely meghatározza, hogy, hogy a .NET Core 2.0 nincs telepítve a rendszeren, szükség lehet telepíteni vagy frissíteni a használatával a [.NET Core telepítési utasításokat](https://www.microsoft.com/net/learn/get-started/linuxredhat).
 
 ### <a name="error-installing-azcopy"></a>Hiba történt az AzCopy telepítése
 Ha hibát tapasztal az AzCopy telepítési, megpróbálhatja újból futtatni a bash parancsfájlok használatát a kibontott AzCopy `azcopy` mappa.

@@ -3,7 +3,7 @@ title: "A Runbook végrehajtása az Azure Automationben |} Microsoft Docs"
 description: "Azure Automation forgatókönyv feldolgozásának módja részleteit ismerteti."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: d10c8ce2-2c0b-4ea7-ba3c-d20e09b2c9ca
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 22852fed184022b4eae298d6cc531fd383eff552
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: c883421c6fc79b233b2d47afde9cbe6edb909a51
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="runbook-execution-in-azure-automation"></a>A Runbook végrehajtása az Azure Automationben
 Az Azure Automationben elindít egy runbookot, ha egy feladat jön létre. Egy feladat a runbook egyszeri futtatási példánya. Egy Azure Automation munkavégző rendelt minden feladat futtatása. Munkavállalók több Azure-fiókra által megosztott, amíg feladatokat azok másik Automation-fiók el különítve egymástól. Nem irányítás melyik Worker-szolgáltatások a feladat a kérelmet. Egyetlen runbook fut egyszerre több feladattal rendelkezhet.  Az Automation-fiók a feladatok végrehajtási környezetnek felhasználhatók. Az Azure portálon megtekintett forgatókönyvek listája, amely minden runbook indított összes feladatok állapotának sorolja fel. Megtekintheti a feladatok minden runbook egyes állapotának nyomon követése érdekében. A különböző feladatállapotok leírását [feladatállapotok](#job-statuses).
@@ -49,7 +49,7 @@ A következő táblázat ismerteti a különböző állapotok feladat lehetsége
 | Leállítva |A feladatot a felhasználó leállította, mielőtt befejeződhetett volna. |
 | Leállítás |A rendszer a feladat leállítása folyamatban van. |
 | Felfüggesztve |A felhasználó által, a rendszer, vagy a runbook egy parancsa felfüggesztette a feladatot. A felfüggesztett feladatokat újra lehet indítani, és azok az utolsó ellenőrzőponttól vagy a runbook elejétől folytatása, ha nincs beállítva a ellenőrzőpontokat. A runbook csak felfüggeszti a rendszer egy kivétel. Alapértelmezés szerint ErrorActionPreference értéke **Folytatás**, tehát a feladat a hiba folyamatosan működik. Ha ezt a preferenciaváltozót **leállítása**, majd a feladat felfüggeszti az hiba.  Érvényes [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md) csak. |
-| Felfüggesztése |A rendszer megkísérli a feladat felfüggesztését a felhasználó kérésére. A runbooknak el kell érnie a következő ellenőrzőpontot felfüggesztés előtt. Ha már elhagyta az utolsó ellenőrzőpontot, majd befejezné a felfüggesztés előtt.  Érvényes [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md) csak. |
+| Felfüggesztés |A rendszer megkísérli a feladat felfüggesztését a felhasználó kérésére. A runbooknak el kell érnie a következő ellenőrzőpontot felfüggesztés előtt. Ha már elhagyta az utolsó ellenőrzőpontot, majd befejezné a felfüggesztés előtt.  Érvényes [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md) csak. |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Az Azure-portál a feladat állapotának megtekintése
 Megtekintheti az összes runbook-feladatok összesített állapotának vagy elemezze az Azure-portálon vagy az integráció konfigurálása a Microsoft Operations Management Suite (OMS) Naplóelemzési munkaterület továbbítják a runbook-feladat állapotát és a feladat az adott runbook-feladatok részleteit adatfolyamokat.  OMS Naplóelemzési integrálása kapcsolatos további információkért lásd: [továbbítása feladat állapotát és a feladat adatfolyamok Automation való Naplóelemzés (OMS)](automation-manage-send-joblogs-log-analytics.md).  

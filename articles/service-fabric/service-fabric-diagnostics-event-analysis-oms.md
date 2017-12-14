@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 09542c0e7f628ca4fea00a6562c0b9525432c213
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 977c5d64a32157b39aa6b618196dde20c4c3cc8e
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="event-analysis-and-visualization-with-oms"></a>Esemény elemzése és az OMS képi megjelenítés
 
@@ -41,7 +41,7 @@ Lásd: [OMS Naplóelemzési beállítása](service-fabric-diagnostics-oms-setup.
 
 ## <a name="using-the-oms-agent"></a>Az OMS-ügynök használatával
 
-Ez nem ajánlott használandó EventFlow és ÜVEGVATTA összesítési megoldások mert lehetővé teszik a több moduláris megközelítést diagnosztikát és figyelési. Például ha szeretné módosítani a kimenetek EventFlow, igényel a tényleges instrumentation, a konfigurációs fájl csak egy egyszerű módosítása nem változik. Ha azonban úgy dönt, hogy beruházásának OMS Naplóelemzési használ, be kell állítania a [OMS-ügynököt](../log-analytics/log-analytics-windows-agents.md). Is használjon az OMS-ügynököt a fürthöz, a tárolók telepítésekor lásd alább. 
+Ez nem ajánlott használandó EventFlow és ÜVEGVATTA összesítési megoldások mert lehetővé teszik a több moduláris megközelítést diagnosztikát és figyelési. Például ha szeretné módosítani a kimenetek EventFlow, igényel a tényleges instrumentation, a konfigurációs fájl csak egy egyszerű módosítása nem változik. Ha azonban úgy dönt, hogy beruházásának OMS Naplóelemzési használ, be kell állítania a [OMS-ügynököt](../log-analytics/log-analytics-windows-agent.md). Is használjon az OMS-ügynököt a fürthöz, a tárolók telepítésekor lásd alább. 
 
 Központi keresztül történő [adja hozzá az OMS-ügynököt a fürthöz](service-fabric-diagnostics-oms-agent.md) a lépéseket.
 

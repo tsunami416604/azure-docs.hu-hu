@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 528b569ff9ffb3659e9210ea70e3aa06921cfe0d
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 81cc7f78ef777e02b195422a81d9a9f15cb63564
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>A környezetben, a változáskövetési megoldás a szoftver változásainak követése
 
@@ -32,7 +32,7 @@ Milyen típusú telepített ügynök frissítéséhez megoldás telepítése. Te
 ## <a name="installing-and-configuring-the-solution"></a>Telepítése és a megoldás konfigurálása
 Az alábbi információk segítségével telepítse és konfigurálja a megoldást.
 
-* Rendelkeznie kell egy [Windows](log-analytics-windows-agents.md), [Operations Manager](log-analytics-om-agents.md), vagy [Linux](log-analytics-linux-agents.md) ügynököt minden olyan számítógépen, ahol módosításokat figyelni kívánt.
+* Rendelkeznie kell egy [Windows](log-analytics-windows-agent.md), [Operations Manager](log-analytics-om-agents.md), vagy [Linux](log-analytics-linux-agents.md) ügynököt minden olyan számítógépen, ahol módosításokat figyelni kívánt.
 * A változáskövetési megoldás hozzáadása az OMS-munkaterület az a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview). Vagy a megoldás található információk segítségével adhat hozzá [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md). További beállításokra nincs is szükség.
 
 ### <a name="configure-linux-files-to-track"></a>Linux-fájlok nyomon követéséhez beállítása
@@ -87,7 +87,7 @@ A változáskövetési megoldás jelenleg nem támogatja a következő elemek:
 * Helyettesítő karakterek Windows fájl nyomon követése
 * Elérésiút-változók
 * Hálózati fájlrendszer
-* Fájl tartalma
+* A fájl
 
 Egyéb korlátozások is érvényesek:
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: f136faf3df761b048c88e72f564f81fd32e630ab
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 23b313a473b93ba0eab7fc4cf97a5d26bfa31505
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>A memórián belüli technológiái az SQL-adatbázis teljesítményének optimalizálása
 
@@ -77,9 +77,7 @@ Részletes videók technológiákkal kapcsolatos:
 
 A memórián belüli online Tranzakciófeldolgozási memóriaoptimalizált táblákkal, felhasználói adatok tárolásához használt tartalmazza. Ezek a táblázatok memóriában szükségesek. Kezelheti a memória közvetlenül az SQL Database szolgáltatásban, mert a felhasználói adatok egy kvótát fogalmát van. Ezzel az ötlettel nevezzük *memórián belüli online Tranzakciófeldolgozási tárolási*.
 
-Minden tarifacsomag és minden rugalmas készlet árképzési szint támogatott önálló adatbázis bizonyos mennyiségű memórián belüli online Tranzakciófeldolgozási tárolási tartalmazza. Írásának időpontjában a tárolási gigabájt minden 125 adatbázis-tranzakciós egységek (dtu-i) vagy a rugalmas adatbázis-tranzakciós egységek (edtu-k) beolvasása.
-
-A [SQL adatbázis szolgáltatásszintjeinek](sql-database-service-tiers.md) cikk rendelkezik a memórián belüli online Tranzakciófeldolgozási elérhető tároló minden támogatott önálló adatbázis és a rugalmas készlet árképzési szint hivatalos listája.
+Minden tarifacsomag és minden rugalmas készlet árképzési szint támogatott önálló adatbázis bizonyos mennyiségű memórián belüli online Tranzakciófeldolgozási tárolási tartalmazza. Írásának időpontjában a tárolási gigabájt minden 125 adatbázis-tranzakciós egységek (dtu-i) vagy a rugalmas adatbázis-tranzakciós egységek (edtu-k) beolvasása. További információkért lásd: [erőforrás korlátok](sql-database-resource-limits.md).
 
 A következő elemek felé a memórián belüli online Tranzakciófeldolgozási tároló maximális száma:
 

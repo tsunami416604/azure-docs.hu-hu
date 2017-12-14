@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 31b0df0442a46761cb19e390e723535ff5a81594
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: e033b1005902a9639fc352ffb9af91cb20875bee
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Pont használatával, Azure-alapú helyszolgáltatás közelben keresése
 
@@ -105,7 +105,7 @@ Az Azure térkép vezérlőelem API egy kényelmes ügyféloldali kódtár, amel
     <body>
         <div id="map"></div>
         <script>
-        // Embed Map Control JavaScript code here
+            // Embed Map Control JavaScript code here
         </script>
     </body>
 
@@ -115,7 +115,7 @@ Az Azure térkép vezérlőelem API egy kényelmes ügyféloldali kódtár, amel
  
 3.  Adja hozzá a következő JavaScript-kódot a *parancsfájl* blokk a HTML-fájl. Cserélje le a helyőrző *< insert-kulcs >* a hely alapú Services-fiók elsődleges kulccsal. 
 
-    ```HTML/JavaScript
+    ```JavaScript
     // Instantiate map to the div with id "map"
     var subscriptionKey = "<insert-key>";
     var map = new atlas.Map("map", {
@@ -126,7 +126,7 @@ Az Azure térkép vezérlőelem API egy kényelmes ügyféloldali kódtár, amel
 
 4. Adja hozzá a következő JavaScript-kódot a *parancsfájl* blokkot, a keresési PIN-kódok réteg hozzáadása a térkép vezérlőelem:
 
-    ```HTML/JavaScript
+    ```JavaScript
     // Initialize the pin layer for search results to the map
     var searchLayerName = "search-results";
     map.addPins([], {
@@ -146,7 +146,7 @@ Az Azure térkép vezérlőelem API egy kényelmes ügyféloldali kódtár, amel
 Ez a szakasz bemutatja, hogyan használható az Azure-alapú helyszolgáltatás Search szolgáltatás API érdeklő pont megtalálásához a térképen. Egy RESTful API, címek, bizonyos elemek kikeresése és más földrajzi információk keresése fejlesztők számára készült. A keresési szolgáltatás rendel a megadott cím a szélességi és hosszúsági információkat. 
 
 1. Nyissa meg a **MapSearch.html** fájl az előző szakaszban létrehozott, és adja hozzá a következő JavaScript-kódot a *parancsfájl* letiltása, hogy bemutassa a keresési szolgáltatás. 
-    ```HTML/JavaScript
+    ```JavaScript
     // Perform a request to the search service and create a pin on the map for each result
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -189,7 +189,7 @@ Ez a szakasz bemutatja, hogyan használható az Azure-alapú helyszolgáltatás 
 
 2. Adja hozzá a következő kódot a *parancsfájl* blokkot, a XMLHttpRequest küldeni az Azure-alapú helyszolgáltatás keresési szolgáltatást:
 
-    ```HTML/JavaScript
+    ```JavaScript
     var url = "https://atlas.microsoft.com/search/fuzzy/json?";
     url += "&api-version=1.0";
     url += "&query=gasoline%20station";
@@ -205,7 +205,7 @@ Ez a szakasz bemutatja, hogyan használható az Azure-alapú helyszolgáltatás 
 
 3. Adja hozzá a következő sorokat a *parancsfájl* blokkot, a keresési szolgáltatás által visszaadott egyik fontos pontok előugró ablakok létrehozásához:
 
-    ```HTML/JavaScript
+    ```JavaScript
     // Add a popup to the map which will display some basic information about a search result on hover over a pin
     var popup = new atlas.Popup();
     map.addEventListener("mouseover", searchLayerName, (e) => {

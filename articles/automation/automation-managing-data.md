@@ -3,7 +3,7 @@ title: "Azure Automation-adatok kezelése |} Microsoft Docs"
 description: "Ez a cikk egy Azure Automation-környezet kezelése több témaköröket tartalmazza.  Jelenleg magában foglalja az adatok megőrzése és az Azure Automation vész-helyreállítási az Azure Automationben biztonsági mentéséről."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: stevenka
 editor: tysonn
 ms.assetid: 2896f129-82e3-43ce-b9ee-a3860be0423a
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/02/201
 ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: e4a90f47167cfa2497e1ad5ae9db025d2d7d91dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 58ba74585f650c570b5962408a3935e9cd2e591c
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation-adatok kezelése
 Ez a cikk egy Azure Automation-környezet kezelése több témaköröket tartalmazza.

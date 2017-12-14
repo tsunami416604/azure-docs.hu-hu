@@ -3,7 +3,7 @@ title: "Verziókövetés integrálása az Azure Automation forrás |} Microsoft 
 description: "Ez a cikk ismerteti a verziókövetés integrálása az Azure Automation a Githubon."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 224d7375-9887-44dd-b137-06ffe396a4b4
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;sngun
-ms.openlocfilehash: d8f236a012648062e703fa2c4123d139c0e115ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb1ce4ceaa3d0c9aea014fc810ea269641dec14c
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 Verziókövetés integrálása lehetővé teszi az Automation-fiók egy GitHub verziókövetési tárházat a runbookok hozzárendelni. A verziókövetési rendszerrel lehetővé teszi, hogy egyszerűen együttműködni a csapatával, követni a változásokat, és visszaállíthatja a runbookok korábbi verzióiban. Például verziókezelő lehetővé teszi a fejlesztői, tesztelési vagy éles Automation-fiók, így könnyen kódot, amely a fejlesztési környezetet az éles tárhely Automation tesztelését elősegítő forrás vezérlőelemet ággal szinkronizálása fiók.
@@ -43,10 +43,10 @@ Ha már rendelkezik egy GitHub-fiók és az Azure Automation hivatkozás kíván
    
    | **A paraméter** | **Leírás** |
    |:--- |:--- |
-   | Forrás kiválasztása |Válasszon ki forrást. Jelenleg csak **GitHub** esetén támogatott. |
+   | Forrás választása |Válasszon ki forrást. Jelenleg csak **GitHub** esetén támogatott. |
    | Engedélyezés |Kattintson a **engedélyezés** Azure Automation-hozzáférést biztosít a GitHub-tárház gombra. Ha már bejelentkezett GitHub-fiókjában másik ablakban, a fiók hitelesítő adatait fogja használni. Ha engedélyezési sikeres, a lapon megjelenik-e a GitHub-felhasználónevét, a **engedélyezési tulajdonság**. |
    | Válassza ki a tárházban |Válasszon ki egy GitHub-tárházban elérhető adattárak a listából. |
-   | Válassza ki a fiókiroda |Válasszon ki egy ágat elérhető ággal a listából. Csak a **fő** fiókirodai látható, ha még nem hozott létre bármely ágak. |
+   | Fiókiroda választása |Válasszon ki egy ágat elérhető ággal a listából. Csak a **fő** fiókirodai látható, ha még nem hozott létre bármely ágak. |
    | Runbook-mappa elérési útja |A runbook-mappa elérési útját adja meg az elérési út a GitHub-tárházban, amelyből el kívánja leküldéses és lekéréses a kódot. A formátumban kell megadni **/mappanév/almappanév**. Az Automation-fiók csak a runbook-mappa elérési útját a runbookok lesznek szinkronizálva. Runbookok a runbook-mappa elérési útja almappáiban fog **nem** szinkronizálva. Használjon  **/**  alatt a tárházban lévő runbookok szinkronizálására. |
 3. Például, ha a tárház nevű **PowerShellScripts** , amely tartalmaz egy nevű mappát **RootFolder**, amely tartalmaz egy nevű mappát **almappa**. A következő karakterláncok használatával mappa szintenként szinkronizálása:
    

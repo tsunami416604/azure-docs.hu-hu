@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: bf661e8970011aeb3b810056a11659d57258dde9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ffcf0766b89cdab7c79c28dad6bf4c80275e33fc
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -177,6 +177,8 @@ Szállítási helyek támogatottak:
 * Kelet-Kína
 * Észak-Kína
 * Az Egyesült Királyság déli régiója
+* Közép-Németország
+* Északkelet-Németország
 
 ### <a name="shipping"></a>Szállítási
 **Az Adatközpont meghajtók szállítási:**
@@ -250,7 +252,7 @@ A következő feladatállapotok attól függően, hogy a meghajtó a folyamat so
 |:--- |:--- |
 | Létrehozás | A feladat létrehozása után létrehozása állapotában van beállítva. A feladat létrehozása állapotban van, amíg az Import/Export szolgáltatás azt feltételezi, hogy rendelkezik a meghajtók nem lett kiadva az adatközpontban. Egy feladat két héttel, amely után a rendszer automatikusan törli a szolgáltatás létrehozása állapotban maradhat. |
 | Szállítási | Miután a csomag küldje el, frissítenie kell a nyomkövetési információk az Azure portálon.  Ez a feladat ikonná "Szállítási". A feladat két héttel a szállítási állapotban marad. 
-| Fogadva | Miután az összes meghajtó az adatközpontban a fogadott, a feladat állapotát állítja be a fogadott. |
+| Érkezett | Miután az összes meghajtó az adatközpontban a fogadott, a feladat állapotát állítja be a fogadott. |
 | Átvitele | Miután legalább egy meghajtó már megkezdődött a feldolgozás, a feladat állapotát állítja be a átadása. Című rész a meghajtó állapota alatt részletes információkat. |
 | Csomag | Után az összes meghajtó feldolgozása befejeződött, a feladat kerülnek csomagolás állapota mindaddig, amíg a meghajtók szállítják vissza. |
 | Befejezve | Miután az összes meghajtó még szállított vissza az ügyfél számára, ha a feladat befejezése nem jelenik meg hibaüzenet, majd a kész állapot úgy lesz beállítva, a feladat. A feladat automatikusan törli 90 nap után befejezve állapotban. |
@@ -262,7 +264,7 @@ A következő táblázat ismerteti az egyes állapot esetében egy feladat minde
 | Meghajtó állapotát | Leírás |
 |:--- |:--- |
 | A megadott | Az importálási feladatnak a feladat létrehozásakor az Azure-portálon, a kezdeti egy meghajtó állapota a megadott állapot. Exportálási feladat, a meghajtó nem adható meg a feladat jön létre, mert a kezdeti meghajtó állapota fogadott állapotát. |
-| Fogadva | A meghajtó tér át a kapott állapota, akkor az Import/Export szolgáltatás operátor feldolgozta-e a meghajtókat, hogy az importálás a szállítási vállalati érkezett. Az exportálási feladat kezdeti meghajtó állapota fogadott állapotát. |
+| Érkezett | A meghajtó tér át a kapott állapota, akkor az Import/Export szolgáltatás operátor feldolgozta-e a meghajtókat, hogy az importálás a szállítási vállalati érkezett. Az exportálási feladat kezdeti meghajtó állapota fogadott állapotát. |
 | NeverReceived | A meghajtó NeverReceived állapotát helyezi át, ha a csomag feladat megérkeznek, de a csomag nem tartalmaz a meghajtó. A meghajtó is áthelyezheti a állapotba, ha két héten lett, mert a szolgáltatás a szállítási adatokat kapott, de a csomag még nem érkezett meg az Adatközpont. |
 | Átvitele | A meghajtó átadása állapotát helyezi át, ha a szolgáltatás megkezdi az adatok átvitele a meghajtó Windows Azure Storage. |
 | Befejezve | A meghajtó helyezi át a kész állapot, ha a szolgáltatás sikeresen átadta a hibátlan az adatokat.

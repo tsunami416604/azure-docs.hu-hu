@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 6bd259f3da1005228b8137415c30660221507909
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: ce249694035c48d3f626006e63724f47fee3d877
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Az Azure Automationben Azure PowerShell-modulok frissítése
 
@@ -28,11 +28,11 @@ Modulok rendszeresen frissülnek a csoport által, mert negatívan befolyásolha
 
 ## <a name="updating-azure-modules"></a>Az Azure modulok frissítése
 
-1. A modulokban panelen található az Automation-fiók nincs lehetőség érhető el nevű **frissítés Azure modulok**.  Mindig engedélyezve van.<br><br> ![Modulok panel Azure modulok beállítás frissítése](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
+1. Az Automation-fiók modulok lapján, a rendszer felajánlja a nevű **frissítés Azure modulok**. Mindig engedélyezve van.<br><br> ![Azure-modulok beállítás modulok oldalon frissítése](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-2. Kattintson a **frissítés Azure modulok** és az Ön számára jelenik meg, amely arra kéri, ha folytatni kívánja megerősítési értesítés.<br><br> ![Azure-modulok értesítési frissítése](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
+2. Kattintson a **frissítés Azure modulok** és, amely arra kéri, ha folytatni kívánja megerősítési értesítés jelenik meg.<br><br> ![Azure-modulok értesítési frissítése](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
-3. Kattintson a **Igen** , és a modul frissítési folyamat megkezdődik.  A frissítési folyamat veszi körülbelül 15 – 20 perc frissítése a következő modult:
+3. Kattintson a **Igen** és a modul frissítési folyamat megkezdése. A frissítési folyamat veszi körülbelül 15 – 20 perc frissítése a következő modult:
 
   * Azure
   * Azure.Storage
@@ -43,12 +43,12 @@ Modulok rendszeresen frissülnek a csoport által, mert negatívan befolyásolha
   * AzureRm.Sql
   * AzureRm.Storage
 
-    Ha a modulok már naprakészek legyenek, majd a folyamat befejezi néhány másodpercen belül.  A frissítési folyamat befejezéséről értesítést fog kapni.<br><br> ![Azure-modulok frissítési állapotának frissítése](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+    Ha a modulok már naprakészek legyenek, majd a folyamat befejezése néhány másodpercen belül. A frissítési folyamat befejezéséről értesítést fog kapni.<br><br> ![Azure-modulok frissítési állapotának frissítése](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
 > [!NOTE]
-> Azure Automation szolgáltatásbeli használni fog a legújabb modulok az Automation-fiók egy új ütemezett feladat futtatásakor.    
+> Azure Automation szolgáltatásbeli használja a legújabb modulok az Automation-fiók egy új ütemezett feladat futtatásakor.    
 
-Ha használatával ezek Azure PowerShell-modulok parancsmagjait a runbookok Azure-erőforrások kezeléséhez, majd célszerű minden hónapban a frissítési folyamat végrehajtásához vagy így ahhoz, hogy biztosítsa, hogy rendelkezik-e a legújabb modulok.
+Használatakor a Azure PowerShell-modulok parancsmagjait a runbookok Azure erőforrások kezeléséhez, majd szeretne végrehajtani a frissítési folyamat minden hónap vagy így ahhoz, hogy biztosítsa, hogy rendelkezik-e a legújabb modulok.
 
 ## <a name="next-steps"></a>Következő lépések
 

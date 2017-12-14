@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: b099abb27fbd2adf78b65123a62048967406d401
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b1abd23c6f578a3a776e6174d1ea0f47b3ba27d
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -97,7 +97,7 @@ A következő táblázat ismerteti a rendelkezésre álló jelszó házirend-be�
 | --- | --- |
 | Karakterből állhat |<ul><li>A – Z</li><li>a - z-ig</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
 | Karakterek nem használhatók. |<ul><li>Unicode-karaktereket.</li><li>Szóközöket.</li><li> Csak az erős jelszavak: egy karaktersor nem tartalmazhat "." közvetlenül megelőző a "@" szimbólummal.</li></ul> |
-| Jelszó-korlátozások |<ul><li>Legalább 8 karakter, és legfeljebb 16 karakter hosszúságú lehet.</li><li>Csak az erős jelszavak: a következő három kívüli négy igényel:<ul><li>Kis character.s</li><li>Nagybetűs karaktereket.</li><li>Számok (0-9).</li><li>A szimbólumok (lásd az előző Jelszó korlátozások).</li></ul></li></ul> |
+| Jelszó-korlátozások |<ul><li>Legalább 8 karakter, és legfeljebb 16 karakter hosszúságú lehet.</li><li>Csak az erős jelszavak: a következő három kívüli négy igényel:<ul><li>Kisbetűk.</li><li>Nagybetűs karaktereket.</li><li>Számok (0-9).</li><li>A szimbólumok (lásd az előző Jelszó korlátozások).</li></ul></li></ul> |
 | Jelszavak érvényességi időtartamát |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Érték konfigurálható használatával a `Set-MsolPasswordPolicy` az Active Directory modul Windows Powershellhez készült Azure parancsmagjával.</li></ul> |
 | Jelszó lejáratáról szóló értesítés |<ul><li>Alapértelmezett érték: **14** napig (lejárt jelszó).</li><li>Érték konfigurálható használatával a `Set-MsolPasswordPolicy` parancsmag.</li></ul> |
 | Jelszó lejárata |<ul><li>Alapértelmezett érték: **hamis** nap (azt jelzi, hogy a jelszó lejárati engedélyezve van).</li><li>Az érték beállítható az egyes felhasználói fiókok használatával a `Set-MsolUser` parancsmag.</li></ul> |

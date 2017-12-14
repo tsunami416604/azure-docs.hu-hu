@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 0823cc54731ac1cd7f39de256a899696683375a8
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.openlocfilehash: ba6dc69fa4aca8e0ee03ba97668d8b2ab1191002
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép konfigurálása
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, módon úgy gondolja, hogy azok--összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép kiszolgálók, folyamatok és portok közötti kapcsolatok között nincs konfigurációjával kapcsolatban egy ügynök telepítése nem szükséges bármely TCP-csatlakoztatott architektúra jeleníti meg.
@@ -35,9 +35,9 @@ Ez a cikk ismerteti a Service Map és bevezetése az ügynökök konfigurálása
 ## <a name="connected-sources"></a>Összekapcsolt források
 Szolgáltatástérkép az adatok lekérése a Microsoft függőségi ügynök. A függőségi ügynök az OMS-ügynököt az Operations Management Suite kapcsolatai függ. Ez azt jelenti, hogy a kiszolgálónak rendelkeznie kell az OMS-ügynököt telepítette és konfigurálta az első, majd a függőségi ügynök telepíthető. A következő táblázat ismerteti a Service Map megoldás támogatja a csatlakoztatott forrásból.
 
-| Csatlakoztatott adatforrás | Támogatott | Leírás |
+| Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | Szolgáltatástérkép elemzi és Windows-ügynök számítógépekről gyűjt adatokat. <br><br>Kívül a [OMS-ügynököt](../log-analytics/log-analytics-windows-agents.md), Windows-ügynökök szükséges a Microsoft függőségi ügynök. Tekintse meg a [támogatott operációs rendszerek](#supported-operating-systems) operációs rendszerek teljes listáját. |
+| Windows-ügynökök | Igen | Szolgáltatástérkép elemzi és Windows-ügynök számítógépekről gyűjt adatokat. <br><br>Kívül a [OMS-ügynököt](../log-analytics/log-analytics-windows-agent.md), Windows-ügynökök szükséges a Microsoft függőségi ügynök. Tekintse meg a [támogatott operációs rendszerek](#supported-operating-systems) operációs rendszerek teljes listáját. |
 | Linux-ügynökök | Igen | Szolgáltatástérkép elemzi, és a Linux-ügynök számítógépekről gyűjt adatokat. <br><br>Kívül a [OMS-ügynököt](../log-analytics/log-analytics-linux-agents.md), Linux-ügynököt a Microsoft függőségi ügynök szükséges. Tekintse meg a [támogatott operációs rendszerek](#supported-operating-systems) operációs rendszerek teljes listáját. |
 | System Center Operations Manage felügyeleti csoport | Igen | Szolgáltatástérkép elemzi, és összegyűjti az adatokat a Windows és Linux-ügynökök a csatlakoztatott [System Center Operations Manager felügyeleti csoport](../log-analytics/log-analytics-om-agents.md). <br><br>Az Operations Management Suite a System Center Operations Manager ügynök számítógépről közvetlen kapcsolatra szükség. Az Operations Management Suite tárházba adat továbbítódik a felügyeleti csoportból.|
 | Azure Storage-fiók | Nem | Szolgáltatástérkép adatokat gyűjt a ügynök számítógépekről, nincsenek adatok, az Azure Storage-ból gyűjtését. |
@@ -74,7 +74,7 @@ A függőségi ügynök telepítve van a Windows rendszerű számítógépeken I
 
 Az alábbi lépések segítségével a függőségi ügynök telepítése a Windows számítógépekre:
 
-1.  Telepítse az OMS-ügynököt található utasítások segítségével: [csatlakozás Windows-számítógépek számára az Azure Naplóelemzés szolgáltatás](../log-analytics/log-analytics-windows-agents.md).
+1.  Telepítse az OMS-ügynököt található utasítások segítségével: [csatlakozás Windows-számítógépek számára az Azure Naplóelemzés szolgáltatás](../log-analytics/log-analytics-windows-agent.md).
 2.  A Windows-ügynök letöltése, és futtassa a következő paranccsal: <br>`InstallDependencyAgent-Windows.exe`
 3.  Kövesse a varázsló az ügynök telepítéséhez.
 4.  Ha a függőségi ügynök nem indul el, tekintse meg a hibával kapcsolatos részletes információk a naplókat. A Windows-ügynökök a naplózási könyvtár %Programfiles%\Microsoft függőségi Agent\logs. 

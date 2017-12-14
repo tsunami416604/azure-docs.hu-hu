@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfe52ef5d9d09ffe179faaf6ffbd90ef964fbda9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e56687519459f93998bcdd92336050093539270a
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Naplóelemzési Active Directory replikációs állapot figyelése
 
@@ -32,7 +32,7 @@ Az AD-replikáció állapotát megoldáscsomag rendszeresen figyeli az Active Di
 ## <a name="installing-and-configuring-the-solution"></a>Telepítése és a megoldás konfigurálása
 Az alábbi információk segítségével telepítse és konfigurálja a megoldást.
 
-* Telepítenie kell ügynökök olyan tartományvezérlőn, amely a tartomány tagjaként kell kiértékelni. Vagy telepíthet ügynököket a kiszolgálókon és az ügynökök AD replikációs adatokat küldeni a OMS konfigurálnia kell. Windows rendszerű számítógépek csatlakoztatása OMS ismertetése: [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agents.md). Ha a tartományvezérlő már tartozik egy meglévő System Center Operations Manager-környezet, amelyet szeretne csatlakoztatni az OMS Szolgáltatáshoz, lásd: [csatlakozás az Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
+* Telepítenie kell ügynökök olyan tartományvezérlőn, amely a tartomány tagjaként kell kiértékelni. Vagy telepíthet ügynököket a kiszolgálókon és az ügynökök AD replikációs adatokat küldeni a OMS konfigurálnia kell. Windows rendszerű számítógépek csatlakoztatása OMS ismertetése: [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agent.md). Ha a tartományvezérlő már tartozik egy meglévő System Center Operations Manager-környezet, amelyet szeretne csatlakoztatni az OMS Szolgáltatáshoz, lásd: [csatlakozás az Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
 * Az Active Directory replikációs állapotát megoldás hozzáadása az OMS-munkaterület ismertetett eljárással [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).  Nincs szükség további konfigurációra.
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD replikációs állapot adatok gyűjtemény részletei
@@ -47,7 +47,7 @@ Ha nem szeretne összekapcsolni bármely tartományvezérlő közvetlenül az OM
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>Egy nem tartományvezérlő AD adatokat küldeni a OMS engedélyezése
 1. Győződjön meg arról, hogy a számítógép a figyelheti a replikációs állapot AD megoldást használni kívánt tartomány tagja.
-2. [A Windows-számítógép csatlakoztatni az OMS Szolgáltatáshoz](log-analytics-windows-agents.md) vagy [csatlakoztassa az OMS-be a meglévő Operations Manager környezet használatával](log-analytics-om-agents.md), ha az nincs csatlakoztatva.
+2. [A Windows-számítógép csatlakoztatni az OMS Szolgáltatáshoz](log-analytics-windows-agent.md) vagy [csatlakoztassa az OMS-be a meglévő Operations Manager környezet használatával](log-analytics-om-agents.md), ha az nincs csatlakoztatva.
 3. Az adott számítógépen állítsa be a következő beállításkulcsot:
 
    * Kulcs: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management csoportok\<ManagementGroupName > \Solutions\ADReplication**
@@ -148,7 +148,7 @@ A: az Active Directory normál felhasználói engedélyek megfelelőek.
 ## <a name="troubleshoot-data-collection-problems"></a>Adatok gyűjtése kapcsolatos problémák elhárítása
 Ahhoz, hogy az adatok gyűjtéséhez az AD-replikáció állapotát megoldáscsomag kell csatlakoztatni az OMS-munkaterület legalább egy tartományvezérlő van szükség. Csatlakozzon egy olyan tartományvezérlőre, amíg megjelenik egy üzenet azt jelzi, hogy **továbbra is gyűjtenek adatokat**.
 
-Csatlakozás egy tartományvezérlő segítségre van szüksége, ha címen tekintheti [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agents.md). Azt is megteheti, ha a tartományvezérlő már csatlakoztatva van egy meglévő System Center Operations Manager-környezetbe, megtekintheti címen [csatlakozás a System Center Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
+Csatlakozás egy tartományvezérlő segítségre van szüksége, ha címen tekintheti [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agent.md). Azt is megteheti, ha a tartományvezérlő már csatlakoztatva van egy meglévő System Center Operations Manager-környezetbe, megtekintheti címen [csatlakozás a System Center Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
 
 Ha nem szeretne összekapcsolni, a tartományvezérlőket bármelyikét közvetlenül OMS vagy SCOM, [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
