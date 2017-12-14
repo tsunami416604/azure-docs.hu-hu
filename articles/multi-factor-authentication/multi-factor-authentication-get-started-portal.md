@@ -4,7 +4,7 @@ description: "Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezd
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 06b419fa-3507-4980-96a4-d2e3960e1772
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 2a4f64524f94a782434306f89f6ad1034297c4cc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 15f4ef7b70027a820dc50a9399891bbab77d7e12
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Felhasználói portál az Azure Multi-Factor Authentication-kiszolgálóhoz
 
@@ -45,7 +45,7 @@ Mindkét forgatókönyvre érvényes, hogy ha az Azure Multi-Factor Authenticati
 3. Végezze el a telepítést az alapértelmezett értékekkel, hacsak nem kell valamilyen okból módosítania őket.
 4. Kössön egy SSL-tanúsítványt a helyhez az IIS-ben.
 
-Ha kérdései vannak az SSL-tanúsítvány IIS-kiszolgálón történő konfigurálásáról, olvassa el [Az SSL beállítása az IIS-en](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) cikket.
+Ha kérdései vannak az SSL-tanúsítvány IIS-kiszolgálón történő konfigurálásáról, olvassa el [Az SSL beállítása az IIS-en](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) cikket.
 
 A Web Service SDK védelméhez SSL-tanúsítvány használata szükséges. Erre a célra megfelel egy önaláírt tanúsítvány. Importálja a tanúsítványt a felhasználói portál webkiszolgálójának helyi számítógépfiókja „Megbízható legfelső szintű hitelesítésszolgáltatók” tárolójába, hogy az megbízhatónak tekintse ezt a tanúsítványt az SSL-kapcsolat elindításakor.
 
@@ -73,7 +73,7 @@ A felhasználói portál üzembe helyezéséhez kövesse az alábbi lépéseket:
 
 ![MFA-kiszolgáló felhasználói portáljának telepítése](./media/multi-factor-authentication-get-started-portal/install.png)
 
-Ha kérdései vannak az SSL-tanúsítvány IIS-kiszolgálón történő konfigurálásáról, olvassa el [Az SSL beállítása az IIS-en](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) cikket.
+Ha kérdései vannak az SSL-tanúsítvány IIS-kiszolgálón történő konfigurálásáról, olvassa el [Az SSL beállítása az IIS-en](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) cikket.
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>A felhasználói portál telepítése különálló kiszolgálón
 
@@ -110,7 +110,7 @@ A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól e
 
 6. Nyisson meg egy webböngészőt valamelyik számítógépről, és lépjen arra az URL-címre, ahol a felhasználói portál telepítve van (például: https://mfa.contoso.com/MultiFactorAuth). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 
-Ha kérdései vannak az SSL-tanúsítvány IIS-kiszolgálón történő konfigurálásáról, olvassa el [Az SSL beállítása az IIS-en](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) cikket.
+Ha kérdései vannak az SSL-tanúsítvány IIS-kiszolgálón történő konfigurálásáról, olvassa el [Az SSL beállítása az IIS-en](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) cikket.
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>A felhasználói portál beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
 

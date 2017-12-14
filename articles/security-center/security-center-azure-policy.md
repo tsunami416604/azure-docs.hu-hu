@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: f0cb50c5ad991073b83dc5e87fbfb0300f40fc03
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: c359b77efbfdbcf7d2c0193dc015ce418a3d997d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>A Security Center biztonsági szabályzatainak integrálása az Azure Policyvel
 Ez a cikk segítséget nyújt az Azure Security Center biztonsági szabályzatainak konfigurálásában, amelyek az Azure Policyre épülnek. 
@@ -30,7 +30,7 @@ A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szab�
 * Szabályzatoknak való megfelelés figyelése.
 
 > [!NOTE]
-> Az Azure Policy jelenleg csak korlátozott előzetes verzióban érhető el. Ha csatlakozni szeretne, lépjen [az Azure Policyre való regisztrálással](https://aka.ms/getpolicy) kapcsolatos részhez. Az Azure Policyvel kapcsolatos további információkért olvassa el [a megfelelőség szabályzatok létrehozásával és kezelésével történő kikényszerítésével](http://docs.microsoft.com/en-us/azure/azure-policy/create-manage-policy) foglalkozó témakört.
+> Az Azure Policy jelenleg csak korlátozott előzetes verzióban érhető el. Ha csatlakozni szeretne, lépjen [az Azure Policyre való regisztrálással](https://aka.ms/getpolicy) kapcsolatos részhez. Az Azure Policyvel kapcsolatos további információkért olvassa el [a megfelelőség szabályzatok létrehozásával és kezelésével történő kikényszerítésével](http://docs.microsoft.com/azure/azure-policy/create-manage-policy) foglalkozó témakört.
 
 ## <a name="edit-security-policies"></a>Biztonsági szabályzatok szerkesztése
 Az egyes Azure-előfizetések alapértelmezett biztonsági szabályzatait a Security Centerben szerkesztheti. Biztonsági szabályzat módosításához az előfizetésben vagy az azt tartalmazó felügyeleti csoportban tulajdonos, közreműködő vagy biztonsági rendszergazda szerepkörrel kell rendelkeznie. A Security Centerben a biztonsági szabályzatok megtekintéséhez tegye a következőket:

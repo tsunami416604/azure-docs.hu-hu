@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.openlocfilehash: 5ddf71dcd9c5a2b03e3b1441d8c9b4d91b6bad12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89970b50a2f7246a43ac9666be4d992649605cbf
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-security-center-platform-migration"></a>Az Azure Security Center platform migrációja
 
@@ -36,7 +36,7 @@ A későbbiekben a Security Center a Microsoft Monitoring Agent ügynököt hasz
 
 ## <a name="agent"></a>Ügynök
 
-Az átmenet részeként a Microsoft Monitoring Agent ([Windows](../log-analytics/log-analytics-windows-agents.md) vagy [Linux](../log-analytics/log-analytics-linux-agents.md) rendszerhez) minden olyan Azure virtuális gépre telepítve lesz, amelyről jelenleg adatgyűjtés folyik.  Ha a virtuális gépre már telepítve van a Microsoft Monitoring Agent, a Security Center a jelenleg telepített ügynököt fogja használni.
+Az átmenet részeként a Microsoft Monitoring Agent ([Windows](../log-analytics/log-analytics-windows-agent.md) vagy [Linux](../log-analytics/log-analytics-linux-agents.md) rendszerhez) minden olyan Azure virtuális gépre telepítve lesz, amelyről jelenleg adatgyűjtés folyik.  Ha a virtuális gépre már telepítve van a Microsoft Monitoring Agent, a Security Center a jelenleg telepített ügynököt fogja használni.
 
 Egy ideig (általában néhány napig), mindkét ügynök futni fog párhuzamosan, hogy biztosított legyen az adatveszteség nélküli, zökkenőmentes átmenet. Ez lehetővé teszi a Microsoft számára, hogy a jelenlegi adatcsatorna használatának megszüntetése előtt ellenőrizze az új adatcsatorna működését. Az ellenőrzést követően az Azure Monitoring Agent el lesz távolítva a virtuális gépeiről. Az Ön részéről nincs szükség beavatkozásra. Az összes ügyfél migrálásának befejeződéséről e-mailben fog értesítést kapni.
  

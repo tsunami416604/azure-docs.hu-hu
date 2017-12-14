@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: 668065933745168c88a1f4bf755f1adc0cc31d7f
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: e3d605b12a1db2fca1048be15e7b365e5336f663
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="update-management-solution-in-oms"></a>Frissítéskezelési megoldás az OMS-ben
 
@@ -81,7 +81,7 @@ A frissítéstelepítésben megadott helyen és időben a célszámítógépek e
     > Ebben a megoldásban nem támogatott az olyan Linuxhoz készült OMS-ügynök, amely több OMS-munkaterületnek való jelentésre van konfigurálva.  
     >
 
-További információért a Linuxhoz készült OMS-ügynök telepítéséről és a legújabb verzió letöltéséről tekintse meg a [Linuxhoz készült Operations Management Suite-ügynökkel](https://github.com/microsoft/oms-agent-for-linux) kapcsolatos részt.  További információért a Windowshoz készült OMS-ügynök telepítésével kapcsolatban tekintse meg a [Windowshoz készült Operations Management Suite-ügynökkel](../log-analytics/log-analytics-windows-agents.md) kapcsolatos részt.  
+További információért a Linuxhoz készült OMS-ügynök telepítéséről és a legújabb verzió letöltéséről tekintse meg a [Linuxhoz készült Operations Management Suite-ügynökkel](https://github.com/microsoft/oms-agent-for-linux) kapcsolatos részt.  További információért a Windowshoz készült OMS-ügynök telepítésével kapcsolatban tekintse meg a [Windowshoz készült Operations Management Suite-ügynökkel](../log-analytics/log-analytics-windows-agent.md) kapcsolatos részt.  
 
 ### <a name="permissions"></a>Engedélyek
 A frissítéstelepítések létrehozásához közreműködői szerepkörrel kell rendelkeznie az Automation-fiókjában és Log Analytics-munkaterületén egyaránt.  
@@ -126,7 +126,7 @@ Windows rendszerű számítógépen a következők áttekintésével ellenőrizh
 1.  Nyissa meg a Microsoft Monitoring Agentet a Vezérlőpulton. Az **Azure Log Analytics (OMS)** fülön az ügynök megjeleníti a következő üzenetet: **A Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatáshoz**.   
 2.  Nyissa meg a Windows Eseménynaplóját, lépjen az **Alkalmazás- és szolgáltatásnaplók\Operations Manager** részhez, és keresse meg a 3000-es, illetve az 5002-es eseményazonosítót a forrás szolgáltatás-összekötőből.  Ezek az események jelzik, hogy a számítógép regisztrálva van az OMS-munkaterületen, és konfigurációt kap.  
 
-Ha az ügynök nem tud kommunikálni az OMS szolgáltatással, és úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, a [ Windows ügynök hálózati konfigurációját](../log-analytics/log-analytics-windows-agents.md#network) vagy a [Linux ügynök hálózati konfigurációját](../log-analytics/log-analytics-agent-linux.md#network) bemutató témakör áttekintésével ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva.
+Ha az ügynök nem tud kommunikálni az OMS szolgáltatással, és úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, a [ Windows ügynök hálózati konfigurációját](../log-analytics/log-analytics-windows-agent.md) vagy a [Linux ügynök hálózati konfigurációját](../log-analytics/log-analytics-agent-linux.md) bemutató témakör áttekintésével ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva.
 
 > [!NOTE]
 > Ha Linux rendszerei proxyval vagy OMS-átjáróval való kommunikációra vannak konfigurálva, és ezt a megoldást most vezeti be, a *proxy.conf* engedélyek frissítésével biztosítson az omiuser csoportnak olvasási engedélyt a fájlhoz. Ezt a következő parancsok végrehajtásával teheti meg:  

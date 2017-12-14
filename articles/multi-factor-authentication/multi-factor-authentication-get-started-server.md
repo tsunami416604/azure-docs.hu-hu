@@ -5,7 +5,7 @@ services: multi-factor-authentication
 keywords: "hitelesítési kiszolgáló, azure multi factor authentication alkalmazásaktiválási oldal, hitelesítési kiszolgáló letöltése"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: e94120e4-ed77-44b8-84e4-1c5f7e186a6b
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: a164dfa23a0bd8a598eb8871a160ced4158b172a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 4a3e7bd851c2b7e082caeeb451c865eab4fe6635
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
@@ -89,7 +89,7 @@ Ha nem használja az eseménymegerősítési szolgáltatást, a felhasználók p
 | 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |
 | 70.37.154.200/29 |255.255.255.248 |70.37.154.201 – 70.37.154.206 |
 
-## <a name="download-the-mfa-server---public-preview"></a>Az MFA-kiszolgáló nyilvános előzetes verziójának letöltése
+## <a name="download-the-mfa-server"></a>Az MFA-kiszolgáló letöltése
 
 Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-kiszolgálót az Azure Portalról:
 
@@ -101,28 +101,6 @@ Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-
    ![Az MFA-kiszolgáló letöltése](./media/multi-factor-authentication-get-started-server/downloadportal.png)
 
 5. Hagyja megnyitva ezt az oldalt, mivel a telepítő futtatása után még hivatkozni fogunk rá.
-
-
-## <a name="download-the-mfa-server"></a>Az MFA-kiszolgáló letöltése
-
-Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-kiszolgálót a pfweb portálról:
-
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. A bal oldalon válassza az **Active Directory** elemet
-3. Válassza a **Felhasználók és csoportok** lehetőséget
-4. Válassza a **Minden felhasználó** lehetőséget
-5. Válassza a **Multi-Factor Authentication** lehetőséget
-6. A **Többtényezős hitelesítés** szakaszban válassza a **Szolgáltatásbeállítások** elemet
-
-   ![Szolgáltatásbeállítások oldal](./media/multi-factor-authentication-get-started-server/servicesettings.png)
-
-6. A Szolgáltatásbeállítások lapon, a képernyő alsó részén kattintson az **Ugrás a portálra** elemre. Megnyílik egy új lap.
-7. Válassza a **Letöltés** lehetőséget.
-8. Kattintson a **Letöltés** hivatkozásra, és mentse a telepítőt.
-
-   ![Az MFA-kiszolgáló letöltése](./media/multi-factor-authentication-get-started-server/download4.png)
-
-9. Hagyja megnyitva ezt az oldalt, mivel a telepítő futtatása után még hivatkozni fogunk rá.
 
 ## <a name="install-and-configure-the-mfa-server"></a>Az MFA-kiszolgáló telepítése és konfigurálása
 

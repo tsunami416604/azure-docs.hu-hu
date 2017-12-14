@@ -15,17 +15,17 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 11/06/2017
 ms.author: elbutter
-ms.openlocfilehash: e2138f26a78338406b466bdd2aa6e756e602726d
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 8947da9d34261be46ad9aea961b6020141484172
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-functions-to-automate-sql-dw-compute-levels"></a>Az SQL DW számítási szintjeinek automatizálása az Azure Functions használatával
 
 Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Functionst az Azure SQL Data Warehouse számítási szintjeinek kezelésére. Az architektúrák használata a [rugalmasságra optimalizált][Performance Tiers] SQL Data Warehouse esetén ajánlott.
 
-Az Azure-függvényalkalmazás és az SQL Data Warehouse együttes használatához létre kell hoznia egy közreműködői hozzáféréssel rendelkező [egyszerű szolgáltatásfiókot](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal) ugyanahhoz az előfizetéshez, amelyhez az adattárház-példány is tartozik. 
+Az Azure-függvényalkalmazás és az SQL Data Warehouse együttes használatához létre kell hoznia egy közreműködői hozzáféréssel rendelkező [egyszerű szolgáltatásfiókot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) ugyanahhoz az előfizetéshez, amelyhez az adattárház-példány is tartozik. 
 
 ## <a name="deploy-timer-based-scaler-with-an-azure-resource-manager-template"></a>Időzítőalapú skálázó üzembe helyezése Azure Resource Manager-sablonnal
 
