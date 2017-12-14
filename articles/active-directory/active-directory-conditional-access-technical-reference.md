@@ -1,6 +1,6 @@
 ---
-title: "Technikai útmutató az Azure Active Directory feltételes hozzáférés |} Microsoft Docs"
-description: "Ismerje meg, hogyan használhatja a feltételes hozzáférés-vezérlés az Azure Active Directoryban. Adja meg a feltételeket a felhasználók hitelesítéséhez és az alkalmazásokhoz való hozzáférés szabályozása. Ha a megadott feltételek teljesülnek, a felhasználók hitelesítése, és hozzáférést kap az alkalmazáshoz."
+title: "Az Azure Active Directory feltételes hozzáférési beállítások útmutatója |} Microsoft Docs"
+description: "A támogatott beállítások áttekintést kaphat az Azure Active Directory feltételes hozzáférési házirendben."
 services: active-directory.
 documentationcenter: 
 author: MarkusVi
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2017
+ms.date: 12/12/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 871c1d222d78eccdb7e25bf22276b5f63f8f3b8f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9d9680b22864e95c5953ddac50f2179b147b1e21
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
-# <a name="azure-active-directory-conditional-access-technical-reference"></a>Technikai útmutató az Azure Active Directory feltételes hozzáférés
+# <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférési beállításainak ismertetése
 
-Használhat [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) annak finomhangolásához, hogy hogyan engedéllyel rendelkező felhasználók férhetnek hozzá az erőforrásokat.   
+Használható [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) vezérlésére hogyan engedéllyel rendelkező felhasználók férhetnek hozzá az erőforrásokat.   
 
-Ez a cikk azt ismerteti támogatás az alábbi konfigurációs elemek egy feltételes hozzáférési házirend: 
+Ez a cikk azt ismerteti támogatja a feltételes hozzáférési házirendet a következő konfigurációs beállítások: 
 
 - Felhőalapú alkalmazások hozzárendelések
 
@@ -35,6 +35,7 @@ Ez a cikk azt ismerteti támogatás az alábbi konfigurációs elemek egy felté
 - Jóváhagyott alkalmazás követelményeinek
 
 
+Ha ez nem csak a keresett információkat, hozzászólásban Ez a cikk végén.
 
 ## <a name="cloud-apps-assignments"></a>Felhőalapú alkalmazások hozzárendelések
 
@@ -122,17 +123,17 @@ Ez a beállítás minden böngészőben működik. Azonban kielégítéséhez eg
 
 | Operációs rendszer                     | Böngészők                            | Támogatás     |
 | :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer, a peremhálózati, Chrome     | ![Ellenőrzés][1] |
-| Windows 8 / 8.1        | Internet Explorer, a Chrome           | ![Ellenőrzés][1] |
-| Windows 7              | Internet Explorer, a Chrome           | ![Ellenőrzés][1] |
-| iOS                    | Safari, Intune által felügyelt böngésző      | ![Ellenőrzés][1] |
-| Android                | Chrome, Intune által felügyelt böngésző      | ![Ellenőrzés][1] |
-| Windows Phone          | Internet Explorer, a peremhálózati             | ![Ellenőrzés][1] |
-| Windows Server 2016    | Internet Explorer, a peremhálózati             | ![Ellenőrzés][1] |
+| Windows 10             | Internet Explorer, a peremhálózati, Chrome     | ![Jelölőnégyzet][1] |
+| Windows 8 / 8.1        | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
+| Windows 7              | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
+| iOS                    | Safari, Intune által felügyelt böngésző      | ![Jelölőnégyzet][1] |
+| Android                | Chrome, Intune által felügyelt böngésző      | ![Jelölőnégyzet][1] |
+| Windows Phone          | Internet Explorer, a peremhálózati             | ![Jelölőnégyzet][1] |
+| Windows Server 2016    | Internet Explorer, a peremhálózati             | ![Jelölőnégyzet][1] |
 | Windows Server 2016    | Chrome                              | Hamarosan |
-| Windows Server 2012 R2 | Internet Explorer, a Chrome           | ![Ellenőrzés][1] |
-| Windows Server 2008 R2 | Internet Explorer, a Chrome           | ![Ellenőrzés][1] |
-| macOS                  | Chrome, Safari                      | ![Ellenőrzés][1] |
+| Windows Server 2012 R2 | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
+| Windows Server 2008 R2 | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
+| macOS                  | Chrome, Safari                      | ![Jelölőnégyzet][1] |
 
 
 > [!NOTE]

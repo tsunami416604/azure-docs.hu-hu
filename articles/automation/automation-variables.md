@@ -3,7 +3,7 @@ title: "Az Azure Automationben változó eszközök |} Microsoft Docs"
 description: "Változó eszközök értékeket összes forgatókönyve és az Azure Automation DSC-konfiguráció számára elérhető.  Ez a cikk ismerteti a változók és a szöveges és a grafikus szerzői őket munkavégzés részleteit."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: b880c15f-46f5-4881-8e98-e034cc5a66ec
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: d3b04dcc856d4637cf7029701a5e169d3096d15c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e642a63486317387d66a9403b8276d2e0bd38fb6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="variable-assets-in-azure-automation"></a>Az Azure Automationben változó eszközök
 
@@ -48,7 +48,7 @@ A rendelkezésre álló Automation változó típusainak listáját a következ�
 * Karakterlánc
 * Egész szám
 * Dátum és idő
-* Logikai érték
+* Logikai
 * NULL értékű
 
 ## <a name="scripting-the-creation-and-management-of-variables"></a>A létrehozását és kezelését a változók parancsfájlok

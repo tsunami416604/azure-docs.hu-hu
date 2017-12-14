@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: c7650fe4e10b9dcfe6068152398922723587a658
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a58cf1402d31538cb4d9753a66846f683839810c
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Egy eszköz kódolással Media Encoder Standard használatával
 > [!div class="op_single_selector"]
@@ -57,8 +57,6 @@ Az AMS API-hoz kapcsolódáshoz információkért lásd: [elérni az Azure Media
 > Dolgozunk a Media Services REST API-t, ha a következők érvényesek:
 >
 > A Media Services entitások elérésekor be kell meghatározott fejlécmezők és értékek a HTTP-kérelmekre. További információkért lásd: [Media Services REST API fejlesztési telepítő](media-services-rest-how-to-use.md).
->
-> Sikeresen csatlakoztassa a https://media.windows.net, adja meg egy másik Media Services URI 301 átirányítást fog kapni. Meg kell nyitnia az új URI későbbi hívásokat. Az AMS API-hoz kapcsolódáshoz információkért lásd: [elérni az Azure Media Services API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md).
 >
 > Ha JSON használatával és használandó megadásával a **__metadata** kulcsszó a kérés (például, hogy a hivatkozás csatolt objektum), meg kell adni a **elfogadás** fejlécének [részletes JSON formátumban](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Fogadja el: az application/json; odata = részletes.
 >

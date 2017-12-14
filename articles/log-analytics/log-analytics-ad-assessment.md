@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e78ca1da8cafe93e76d640c0e6d5ad5309655c1b
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 6919b40ac6edff289f3eb171e88ca6d76288f2a3
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Az Active Directory-környezet, az Active Directory állapotát ellenőrző megoldással a Naplóelemzési optimalizálása
 
@@ -52,7 +52,7 @@ Után, a megoldás felvett ellenőrzése kész, összefoglaló adatait fókuszte
 
 A tartományvezérlők, amelyek a tartomány tagjai kiértékelendő állapot-ellenőrzés végrehajtásához szükséges egy ügynök és a kapcsolat a következő támogatott módszerek egyikének használatával szolgáltatáshoz:
 
-1. Telepítse a [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agents.md) Ha a tartományvezérlő nem már figyel a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2.
+1. Telepítse a [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Ha a tartományvezérlő nem már figyel a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2.
 2. Ha a számítógép megfigyelés alatt áll a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2 és a felügyeleti csoport nem integrálva van a Naplóelemzési szolgáltatás, a tartományvezérlő is lehet, többhelyű a Log Analyticshez az adatok gyűjtéséhez és továbbítja a szolgáltatást, és továbbra is az Operations Manager által figyelt.  
 3. Ellenkező esetben, ha az Operations Manager felügyeleti csoportjának integrálva van a szolgáltatás, kell hozzáadnia a tartományvezérlők, az adatok gyűjtésével a következő lépéseket a szolgáltatás által [ügynök által felügyelt számítógépek hozzáadása](log-analytics-om-agents.md#connecting-operations-manager-to-oms) engedélyezése után a megoldás a munkaterületen.  
 
@@ -62,7 +62,7 @@ Az ügynök jelentéseket az Operations Manager felügyeleti csoport gyűjti az 
 
 Active Directory állapotát ellenőrző gyűjti az adatokat, hogy engedélyezte-ügynök használatával az alábbi forrásokból:
 
-- Beállításkulcs 
+- Beállításjegyzék 
 - LDAP 
 - .NET-keretrendszer
 - Eseménynapló 
@@ -108,8 +108,8 @@ Azt követően, megtekintheti a javaslatok összegzése a állapotának ellenőr
 Az összesített megfelelőségi értékelése az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Az egy fókuszban terület javaslatok megtekintése és a szükséges javítási műveletek
-1. Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com). 
-2. Az Azure portálon kattintson **további szolgáltatások** bal alsó sarokban található. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Analytics jelentkezzen**.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
+2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 3. A Naplóelemzési előfizetések ablaktáblán jelölje ki a munkaterület, és kattintson a **OMS-portálon** csempére.  
 4. Az a **áttekintése** lapján kattintson a **AD állapotának ellenőrzése** csempére. 
 5. Az a **állapotának ellenőrzése** lapon. Ellenőrizze az összefoglaló információkat a fókusz terület paneleken egyikében, majd kattintson egy adott fókusz területre javaslatok megtekintéséhez.

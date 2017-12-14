@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: b5a3537355bef593cc7796af041a53a5eca76b23
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 69150acf483d776e8ecad6e5076a54675bff7439
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -158,6 +158,7 @@ Az Azure fájlszinkronizálás csak a következő régiókban Preview érhető e
 
 | Régió | Adatközpont helye |
 |--------|---------------------|
+| USA keleti régiója | Virginia, USA |
 | USA nyugati régiója | Kaliforniai, USA |
 | Nyugat-Európa | Hollandia |
 | Délkelet-Ázsia | Szingapúr |

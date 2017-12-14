@@ -3,7 +3,7 @@ title: "Azure Automation DSC – áttekintés |} Microsoft Docs"
 description: "Egy áttekintés az Azure Automation szükséges konfiguráló (DSC), a feltételek és ismert problémák"
 services: automation
 documentationcenter: dev-center-name
-author: eslesar
+author: georgewallace
 manager: carmonm
 keywords: "PowerShell dsc, a kívánt állapot konfigurációs, a powershell dsc azure"
 ms.assetid: fd40cb68-c1a6-48c3-bba2-710b607d1555
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
-ms.author: eslesar
-ms.openlocfilehash: 468321fa6863d78bc0d179fbe5c2ed6195040d50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: gwallace
+ms.openlocfilehash: 7440fa58f9cbd201984d178a7e9a2c12afc84783
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC – áttekintés
 

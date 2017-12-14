@@ -148,7 +148,7 @@ Ebben a szakaszban hozzá egy új tartományvezérlő a WebAPI hátteret a tanú
    
         using Microsoft.Azure.NotificationHubs;
 
-6. Cserélje le a `Notifications` osztály definícióját a következő kódra, és a két helyőrzőket cserélje le a kapcsolati karakterlánc (teljes hozzáférés) az értesítési központban és a központ nevét (rendelkezésre álló [a klasszikus Azure portálon](http://manage.windowsazure.com)):
+6. Cserélje le a `Notifications` osztály definícióját a következő kódra, és a két helyőrzőket cserélje le a kapcsolati karakterlánc (teljes hozzáférés) az értesítési központban és a központ nevét (rendelkezésre álló [Azure-portálon](http://portal.azure.com)):
    
         public class Notifications
         {

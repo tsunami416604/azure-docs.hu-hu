@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 173ffbdd70313ef5a0d2af2cf1c8996d2395274a
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e00c4ab2fc8bb13a765f7c2154555607dddfc651
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="detect-issues-using-threshold-based-rules"></a>Küszöbérték-alapú szabályok használatával kapcsolatos problémák észlelése
 
@@ -40,7 +40,7 @@ Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el ke
 
 ## <a name="view-the-rules-in-your-solution"></a>A megoldásban a szabályok megtekintése
 
-A **szabályok & műveletek** lap a megoldás az aktuális szabályok listáját jeleníti meg:
+A **szabályok és a műveletek** lap a megoldás az aktuális szabályok listáját jeleníti meg:
 
 ![Szabályok és a Műveletek lap](media/iot-suite-remote-monitoring-automate/rulesactions.png)
 
@@ -67,16 +67,16 @@ A szabály létrehozásához a következő értékeket használja:
 | Beállítás          | Érték                                 |
 | ---------------- | ------------------------------------- |
 | Név             | Hűtő figyelmeztetés                       |
-| Forrás           | **Hűtő** eszközcsoport              |
-| Eseményindító mező    | nyomás                              |
+| Forrás           | **Hőmérsékletű** eszközcsoport             |
+| Eseményindító mező    | pressure                              |
 | Eseményindító operátor | Nagyobb mint                          |
 | Eseményindítási    | 150                                   |
 | Súlyossági szint   | Figyelmeztetés                               |
-| Riasztás eseményszöveg | Hűtő nyomás túllépte a 150 PSI |
+| Leírás      | Hűtő nyomás túllépte a 150 PSI |
 
 Az új szabály mentéséhez válassza **alkalmaz**.
 
-Megtekintheti a szabály a kiváltásakor a **szabályok & műveletek** lap vagy az a **irányítópult** lap.
+Megtekintheti a szabály a kiváltásakor a **szabályok és a műveletek** lap vagy az a **irányítópult** lap.
 
 ## <a name="edit-an-existing-rule"></a>Meglévő szabály szerkesztése
 

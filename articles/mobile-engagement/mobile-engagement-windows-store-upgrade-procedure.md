@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: fe85a99a92fb39082cafe7422b356de1f20f14bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2bd2329026057a4a23295880d0d304e4e8effd1c
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="windows-universal-apps-sdk-upgrade-procedures"></a>Univerzális Windows-alkalmazások SDK eljárások frissítése
 Ha Ön már rendelkezik integrált Engagement régebbi verzióját az alkalmazásba, hogy az SDK-val történő frissítése során, vegye figyelembe a következő szempontokat.
@@ -294,7 +294,7 @@ Ha azt szeretné, ehelyett meg futásidőben, hívása előtt az Engagement ügy
     /* Initialize Engagement agent with above configuration. */
     EngagementAgent.Instance.Init(args, engagementConfiguration);
 
-A kapcsolati karakterlánc az alkalmazás a klasszikus Azure-portálon jelenik meg.
+A kapcsolati karakterlánc az alkalmazás az Azure-portálon jelenik meg.
 
 ### <a name="items-name-change"></a>Elemek kiszolgálónév-változás
 Minden elem nevű *capptain* megnevezett *engagement*. Ehhez hasonlóan az *Capptain* való *Engagement*.

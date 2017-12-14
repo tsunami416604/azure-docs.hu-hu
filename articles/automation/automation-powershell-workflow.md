@@ -3,7 +3,7 @@ title: "Azure Automation PowerShell-munkafolyamati tanulási |} Microsoft Docs"
 description: "Ez a cikk szándék szerint egy gyors lecke használta a Powershellt szerzők adott PowerShell és a PowerShell munkafolyamatok és a vonatkozó Automation-runbook fogalmak közötti különbségek megismeréséhez."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: 84bf133e-5343-4e0e-8d6c-bb14304a70db
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 6dce88bdd85a28ce05e1621b08a0f4b148b02627
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: caa13099b22311502f7a527e4fa017aefeee73c7
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Tanulási automatizálási runbookok Windows PowerShell munkafolyamat alapfogalmai 
 Azure Automation Runbookjai Windows PowerShell-munkafolyamatként vannak megvalósítva.  A Windows PowerShell munkafolyamat hasonló Windows PowerShell-parancsfájlba, de néhány jelentős különbség az, hogy egy új felhasználóhoz zavaró lehet.  Ez a cikk segítséget nyújt a runbookok használatával. a PowerShell-munkafolyamat írása készült, de javasolt PowerShell használatával, ha nem kell az ellenőrzőpontok runbookok írása.  Több szintaktikai különbségek vannak PowerShell munkafolyamat runbookok létrehozásakor, és ezek a különbségek egy kicsit nagyobb munkahelyi hatékony munkafolyamatok írása szükséges.  
@@ -198,7 +198,7 @@ A következő példa az előző példában a fájlok másolása a párhuzamos ha
 > A gyermekrunbookok a párhuzamosan futó, mivel ez kimutatták, hogy megbízhatatlan eredményekhez nem ajánlott.  Egyes esetekben a gyermekrunbook kimenetét nem jelenik meg, és egy gyermek runbook beállítás hatással lehet a más párhuzamos gyermekrunbookokra
 >
 
-## <a name="checkpoints"></a>Az ellenőrzőpontok
+## <a name="checkpoints"></a>Ellenőrzőpontok
 A *ellenőrzőpont* az aktuális állapot, amely tartalmazza a változók aktuális értékét és bármi addig létrejött adott pontra a munkafolyamat egy pillanatkép. Ha egy munkafolyamatot fejeződik be a hiba, vagy fel van függesztve, majd a következő futtatáskor elindul, azok az utolsó ellenőrzőponttól helyett a worfklow elindítása.  Egy munkafolyamatban állíthat be ellenőrzőpontot a **Checkpoint-Workflow** tevékenység.
 
 Az alábbi példakód a kivétel activity2 tevékenység után következik be, amely a munkafolyamat befejezéséhez. Ha a munkafolyamat fut újra, runbook az Activity2 futtatásával, hisz itt volt beállítva az utolsó ellenőrzőpont után kezdődik.

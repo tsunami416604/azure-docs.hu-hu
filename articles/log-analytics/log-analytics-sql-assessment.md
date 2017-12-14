@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ec66c322550ac3a7729dc1fddc8c026fb4ec1895
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 04a5959d69cd42e77317161d743be7d778e3186d
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>A Naplóelemzési az SQL Server állapotának ellenőrzése megoldás SQL környezetében optimalizálása
 
@@ -52,7 +52,7 @@ Után, a megoldás felvett értékelését fejezhető be, összefoglaló adatait
 
 Hajtsa végre a rendszerállapot-ellenőrzést futtat az SQL Server-kiszolgálók, szükségük van egy ügynök és a kapcsolat szolgáltatáshoz a következő támogatott módszerek egyikének használatával:
 
-1. Telepítse a [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agents.md) Ha a kiszolgáló nem már figyel a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2.
+1. Telepítse a [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Ha a kiszolgáló nem már figyel a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2.
 2. Ha a számítógép megfigyelés alatt áll a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2 és a felügyeleti csoport nem integrálva van a Naplóelemzési szolgáltatás, a kiszolgáló többhelyű a Log Analyticshez az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is lehet az Operations Manager általi megfigyelés alatt.  
 3. Ellenkező esetben, ha az Operations Manager felügyeleti csoportjának integrálva van a szolgáltatás, kell hozzáadnia a tartományvezérlők, az adatok gyűjtésével a következő lépéseket a szolgáltatás által [ügynök által felügyelt számítógépek hozzáadása](log-analytics-om-agents.md#connecting-operations-manager-to-oms) engedélyezése után a megoldás a munkaterületen.  
 
@@ -64,7 +64,7 @@ Ha az SQL Server az Operations Manager által figyelt, akkor konfigurálása egy
 SQL állapotának ellenőrzése gyűjti az adatokat, hogy engedélyezte-ügynök használatával az alábbi forrásokból: 
 
 * A Windows Management Instrumentation (WMI) 
-* Beállításkulcs 
+* Beállításjegyzék 
 * Teljesítményszámlálók
 * SQL Server dinamikus felügyeleti eredmények megtekintése 
 
@@ -163,8 +163,8 @@ Egy értékelési megoldás a Naplóelemzési használata előtt rendelkeznie ke
 Az összesített megfelelőségi értékelése az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Az egy fókuszban terület javaslatok megtekintése és a szükséges javítási műveletek
-1. Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com). 
-2. Az Azure portálon kattintson **további szolgáltatások** bal alsó sarokban található. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Analytics jelentkezzen**.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
+2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 3. A Naplóelemzési előfizetések ablaktáblán jelölje ki a munkaterület, és kattintson a **OMS-portálon** csempére.  
 4. Az a **áttekintése** lapján kattintson a **SQL állapotának ellenőrzése** csempére. 
 5. Az a **állapotának ellenőrzése** lapon. Ellenőrizze az összefoglaló információkat a fókusz terület paneleken egyikében, majd kattintson egy adott fókusz területre javaslatok megtekintéséhez.
@@ -245,7 +245,7 @@ Ha figyelmen kívül hagyása kívánt ajánlásokat, létrehozhat egy szövegf�
 
 * A következő típusú adatok gyűjtése történt:
   * WMI
-  * Beállításkulcs
+  * Beállításjegyzék
   * Teljesítményszámlálók
   * Az SQL-dinamikus felügyeleti nézetek (DMV).
 

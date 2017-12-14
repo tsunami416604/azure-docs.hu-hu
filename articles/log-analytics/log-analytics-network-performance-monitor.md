@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: banders
-ms.openlocfilehash: 10e8eeaade5d51b1a15c30802b28600bcf6c72d9
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: d5d5ec1b524fa455c8d2231c7c16fd7942f713c4
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>A hálózati Naplóelemzési Teljesítményfigyelő megoldás
 
@@ -46,7 +46,7 @@ Ha szeretné figyelni a üzletági alkalmazás, használhatja a hálózati Telje
 Is ha már más hálózati eszközök figyelési fektet, majd a megoldás is kiegészíteni ezekhez az eszközökhöz, mert a hagyományos hálózati figyelési megoldások nem betekintést teljesítménymutatók végpontok közötti hálózati veszteségeket és késéseket hasonlóan.  A hálózati Teljesítményfigyelő megoldás segítségével töltse ki az adott térközét.
 
 ## <a name="installing-and-configuring-agents-for-the-solution"></a>A megoldás ügynökök telepítése és konfigurálása
-A legfontosabb folyamatok segítségével telepíthet ügynököket a [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agents.md) és [csatlakozás az Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
+A legfontosabb folyamatok segítségével telepíthet ügynököket a [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agent.md) és [csatlakozás az Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
 
 > [!NOTE]
 > Ahhoz, hogy kevés az adat a felderítésére és figyelésére a hálózati erőforrások legalább 2 ügynökök telepítése lesz szüksége. Ellenkező esetben a megoldás marad konfigurálása állapotban telepítése és konfigurálása további ügynökök.

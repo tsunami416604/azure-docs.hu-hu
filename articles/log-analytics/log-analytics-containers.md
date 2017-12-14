@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: d200587e211758ade85b14cbeb206ebce9291f1d
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 4087cb787e43c3d1b40ad082e84534b34918c9e9
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>A Naplóelemzési tároló figyelés megoldás
 
@@ -52,7 +52,7 @@ Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendsze
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Szolgáltatás<br>Háló | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
-| Red Hat megnyitása<br>SHIFT | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
+| Red Hat megnyitása<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(önálló) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Linux-kiszolgáló<br>(önálló) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 
@@ -113,7 +113,7 @@ Tekintse át a [Docker-motorhoz Windows](https://docs.microsoft.com/virtualizati
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Telepítse és konfigurálja a Linux-tároló állomások
 
-Ha már telepítette a Docker, használja a következő beállításokat, a tároló állomás Docker használható az ügynök konfigurálása. Először szükség van a OMS-munkaterület azonosítója és a kulcs, amely az Azure portálon található. A munkaterületen kattintson **gyors üzembe helyezés** > **számítógépek** megtekintéséhez a **munkaterület azonosítója** és **elsődleges kulcs**.  Másolással illessze be a kedvenc szerkesztő mindkettő.
+Ha már telepítette a Docker, használja a következő beállításokat, a tároló állomás Docker használható az ügynök konfigurálása. Először szükség van a OMS-munkaterület azonosítója és a kulcs, amely az Azure portálon található. A munkaterületen kattintson **gyors üzembe helyezés** > **számítógépek** megtekintéséhez a **munkaterület azonosítója** és **elsődleges kulcs**.  Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
 
 **Linux tároló állomások CoreOS kivételével:**
 
@@ -137,7 +137,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **Egy tároló telepített Linux ügynök használatával való váltás**
 
-Ha korábban a közvetlenül telepített ügynök használt, és használja a tárolóban futó ügynök szeretne, el kell távolítania az OMS-ügynököt Linux. Lásd: [az OMS-ügynök eltávolítása Linux](log-analytics-agent-linux.md#uninstalling-the-oms-agent-for-linux) annak megértése, hogyan sikeresen távolítsa el az ügynököt.  
+Ha korábban a közvetlenül telepített ügynök használt, és használja a tárolóban futó ügynök szeretne, el kell távolítania az OMS-ügynököt Linux. Lásd: [az OMS-ügynök eltávolítása Linux](log-analytics-agent-linux.md) annak megértése, hogyan sikeresen távolítsa el az ügynököt.  
 
 #### <a name="configure-an-oms-agent-for-docker-swarm"></a>A Docker Swarmra OMS-ügynököt konfigurálása
 
@@ -515,9 +515,9 @@ Windows tárolók használt Docker démon konfigurációjával kapcsolatos tová
 
 #### <a name="install-windows-agents"></a>Windows-ügynökök telepítése
 
-Windows és a Hyper-V tároló figyelés engedélyezéséhez telepítse a Microsoft Monitoring Agent (MMA) Windows rendszerű számítógépeken, amelyek tároló gazdagépek. A helyszíni környezetben futó Windows-számítógépek esetén lásd: [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agents.md). A virtuális gépek Azure-ban futó csatlakoztassa őket Naplóelemzési használatával a [virtuálisgép-bővítmény](log-analytics-azure-vm-extension.md).
+Windows és a Hyper-V tároló figyelés engedélyezéséhez telepítse a Microsoft Monitoring Agent (MMA) Windows rendszerű számítógépeken, amelyek tároló gazdagépek. A helyszíni környezetben futó Windows-számítógépek esetén lásd: [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agent.md). A virtuális gépek Azure-ban futó csatlakoztassa őket Naplóelemzési használatával a [virtuálisgép-bővítmény](log-analytics-azure-vm-extension.md).
 
-A Service Fabric futó Windows-tárolók figyelheti. Azonban csak [az Azure-ban futó virtuális gépek](log-analytics-azure-vm-extension.md) és [a helyszíni környezetben a Windows rendszert futtató számítógépek](log-analytics-windows-agents.md) jelenleg a Service Fabric támogatottak.
+A Service Fabric futó Windows-tárolók figyelheti. Azonban csak [az Azure-ban futó virtuális gépek](log-analytics-azure-vm-extension.md) és [a helyszíni környezetben a Windows rendszert futtató számítógépek](log-analytics-windows-agent.md) jelenleg a Service Fabric támogatottak.
 
 Ellenőrizheti, hogy a tároló figyelésére szolgáló megoldás helyesen van megadva a Windows. Ellenőrizze, hogy a felügyeleti csomag megfelelő volt-e letöltésre, keressen *ContainerManagement.xxx*. A fájlok a C:\Program Files\Microsoft figyelési Agent\Agent\Health State\Management szervizcsomagok mappában kell lennie.
 
@@ -534,7 +534,7 @@ A tároló figyelésére szolgáló megoldás különböző metrikák és a napl
 Adatgyűjtés három percenként a következő ügynök típusok.
 
 - [Linux OMS-ügynök](log-analytics-linux-agents.md)
-- [Windows-ügynök](log-analytics-windows-agents.md)
+- [Windows-ügynök](log-analytics-windows-agent.md)
 - [Napló Analytics Virtuálisgép-bővítmény](log-analytics-azure-vm-extension.md)
 
 

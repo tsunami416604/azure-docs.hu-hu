@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 3dfc5809344af920540a88e097ce399cce653363
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 2e6d965d9177a61f974b319a1bd2155c9132533f
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Hajtsa végre a távoli felügyeleti megoldást használni speciális figyelésére
 
@@ -90,9 +90,6 @@ A térkép kiemeli az aktuális szűrővel rendelkező eszközök **riasztások*
 Használhatja a **rendszer riasztások** úgy, hogy a legutóbbi riasztások időtartamának szűrő. Alapértelmezés szerint a panel megjeleníti az elmúlt órában a riasztás:
 
 ![A riasztások szűrése idő](media/iot-suite-remote-monitoring-monitor/dashboardalarmsfilter.png)
-
-> [!NOTE]
-> Görgessen jobbra span időszűrője megjelenítéséhez.
 
 ## <a name="view-the-system-kpis"></a>A rendszer a KPI-k megtekintése
 

@@ -3,7 +3,7 @@ title: "Létrehozása vagy egy Azure Automation forgatókönyv importálása"
 description: "Ez a cikk ismerteti, hogyan hozzon létre egy új runbookot az Azure Automationben vagy importálása egy fájlból."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 24414362-b690-4474-8ca7-df18e30fc31d
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: ad070333b85b70d911a492a35cc89c8c4a60e5c1
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: f2e34e6a4d3d2f29fe6320d805e38e6fccbb74de
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Létrehozása vagy egy Azure Automation forgatókönyv importálása
 Hozzáadhat egy runbook az Azure Automation által [újat hoz létre](#creating-a-new-runbook) vagy egy létező runbookot importál egy fájlból, vagy a a [forgatókönyvek](automation-runbook-gallery.md). Ez a cikk bemutatja, létrehozása és runbookok importálása fájlból.  Összes közösségi runbookok és a modulok használata a részletes kaphat [az Azure Automation forgatókönyv- és gyűjtemények](automation-runbook-gallery.md).

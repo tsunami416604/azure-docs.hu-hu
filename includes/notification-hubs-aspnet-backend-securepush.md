@@ -1,6 +1,6 @@
 ## <a name="webapi-project"></a>WebAPI projekt
 1. A Visual Studióban nyissa meg a **AppBackend** a projekt a **felhasználók értesítése** oktatóanyag.
-2. Notifications.cs, cserélje le a teljes **értesítések** osztály a következő kóddal. Ne felejtse el a helyőrzőket cserélje le a kapcsolati karakterlánc (teljes hozzáférés) az értesítési központot, és a központ nevét. Ezt úgy szerezheti be ezeket az értékeket a [klasszikus Azure portál](http://manage.windowsazure.com). Ez a modul most a különböző biztonságos értesítések küldendő jelöli. A megvalósítás az értesítések tárolódnak adatbázis; Az egyszerűség kedvéért ebben az esetben tároljuk őket a memóriában.
+2. Notifications.cs, cserélje le a teljes **értesítések** osztály a következő kóddal. Ne felejtse el a helyőrzőket cserélje le a kapcsolati karakterlánc (teljes hozzáférés) az értesítési központot, és a központ nevét. Ezt úgy szerezheti be ezeket az értékeket a [Azure-portálon](http://portal.azure.com). Ez a modul most a különböző biztonságos értesítések küldendő jelöli. A megvalósítás az értesítések tárolódnak adatbázis; Az egyszerűség kedvéért ebben az esetben tároljuk őket a memóriában.
    
         public class Notification
         {

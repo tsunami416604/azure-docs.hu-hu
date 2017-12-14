@@ -3,7 +3,7 @@ title: "Azure Automation DSC-konfigurációja fordítása |} Microsoft Docs"
 description: "Ez a cikk ismerteti, hogyan Azure Automation kívánt állapot konfigurációs szolgáltatása (DSC) konfigurációi összeállításához."
 services: automation
 documentationcenter: na
-author: eslesar
+author: georgewallace
 manager: carmonm
 ms.assetid: 49f20b31-4fa5-4712-b1c7-8f4409f1aecc
 ms.service: automation
@@ -12,16 +12,16 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
-ms.author: magoedte; eslesar
-ms.openlocfilehash: 94f4dc2afb04d50d3db699eaebd69662c006d8ca
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: magoedte; gwallace
+ms.openlocfilehash: 96702fb1b377861c3692358a5754e73475cee84d
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Azure Automation DSC-konfigurációja fordítása
 
-Az Azure Automation szolgáltatásban kétféle módon kívánt állapot konfigurációs szolgáltatása (DSC) konfigurációk állíthat össze: az Azure portálon, és a Windows PowerShell használatával. Az alábbi táblázat segítségével meghatározhatja, hogy az egyes jellemzők alapján módszer használatával:
+Az Azure Automation szolgáltatásban kétféle módon kívánt állapot konfigurációs szolgáltatása (DSC) konfigurációk állíthat össze: az Azure portálon, és a Windows PowerShell használatával. Az alábbi táblázat segít meghatározni, mikor érdemes használni, amelyen az egyes jellemzők alapján metódus:
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -47,7 +47,7 @@ Miután eldöntötte, hogy egy fordítási metódusra, követheti a vonatkozó f
 1. Az Automation-fiók kattintson **a DSC-konfigurációk**.
 2. Kattintson a konfigurációját, és nyissa meg a panelt.
 3. Kattintson a **fordítási**.
-4. Ha a konfigurációs paraméterek nélkül, kérni fogja annak ellenőrzéséhez, hogy kívánja-e, hogy. Ha a konfigurációs paraméterek, a **fordítási konfigurációs** panel nyílik meg, megadhatja a paraméterértékek. Tekintse meg a [ **alapvető paraméterek** ](#basic-parameters) alatt további tájékoztatást talál a Paraméterek szakaszban.
+4. Ha a konfiguráció nincs paraméterekkel rendelkezik, ellenőrizze, hogy kívánja-e, hogy kéri. Ha a konfigurációs paraméterek, a **fordítási konfigurációs** panel nyílik meg, megadhatja a paraméterértékek. Tekintse meg a [ **alapvető paraméterek** ](#basic-parameters) alatt további tájékoztatást talál a Paraméterek szakaszban.
 5. A **fordítási feladat** panel meg van nyitva, így nyomon követheti a fordítási feladat állapotát, és a csomópont-konfigurációt (MOF konfigurációs dokumentumok) az Azure Automation DSC-lekéréses kiszolgáló elhelyezését okozta.
 
 ## <a name="compiling-a-dsc-configuration-with-windows-powershell"></a>A Windows PowerShell DSC-konfiguráció fordítása
@@ -131,16 +131,16 @@ PSCredentials átadása paraméterként kapcsolatos információkért lásd: <a 
 
 ## <a name="composite-resources"></a>Összetett erőforrások
 
-**Összetett erőforrások** teszik lehetővé a DSC-konfigurációk használata a konfigurációs belül a beágyazott erőforrások.  Ez lehetővé teszi, hogy több konfiguráció alkalmazása egy erőforrást.  Lásd: [összetett erőforrások: a DSC-konfiguráció használata erőforrásként](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite) kapcsolatos további **összetett erőforrások**
+**Összetett erőforrások** teszik lehetővé a DSC-konfigurációk használata a konfigurációs belül a beágyazott erőforrások. Ez lehetővé teszi, hogy több konfiguráció alkalmazása egy erőforrást.  Lásd: [összetett erőforrások: a DSC-konfiguráció használata erőforrásként](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite) kapcsolatos további **összetett erőforrások**
 
 > [!NOTE]
 > Ahhoz, hogy **összetett erőforrások** megfelelően fordítása, akkor előbb ellenőrizze, hogy az összetett támaszkodik DSC erőforrásokat telepítve legyenek az Azure Automation-fiók modulok tárházban, vagy nem megfelelően fogja importálni.
 
-A DSC hozzáadandó **összetett erőforrás**, hozzá kell adnia a erőforrásmodul archiválhatja (* .zip). A modulok tárház nyissa meg az Azure Automation-fiók.  Kattintson a "Modul hozzá lesz adva egy" gombra.
+A DSC hozzáadandó **összetett erőforrás**, hozzá kell adnia a erőforrásmodul archiválhatja (* .zip). A modulok tárház nyissa meg az Azure Automation-fiók. Kattintson a "Modul hozzá lesz adva egy" gombra.
 
 ![A modul hozzáadása](./media/automation-dsc-compile/add_module.png)
 
-Nyissa meg a könyvtárat, amelyben az archívumban található.  Válassza ki az archív fájlt, és kattintson az OK gombra.
+Nyissa meg a könyvtárat, amelyben az archívumban található. Válassza ki az archív fájlt, és kattintson az OK gombra.
 
 ![Válassza ki a modul](./media/automation-dsc-compile/select_dscresource.png)
 
@@ -286,7 +286,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ## <a name="importing-node-configurations"></a>Csomópont-konfigurációk importálása
 
-Csomópont configuratons (MOF-ot), amely rendelkezik Azure-on kívüli fordított is importálhat. Egy ennek előnye, hogy csomópont-konfigurációt írhatók alá.
+Csomópont-konfigurációt (MOF-ot), amely rendelkezik Azure-on kívüli fordított is importálhat. Egy ennek előnye, hogy csomópont-konfigurációt írhatók alá.
 Egy aláírt csomópont-konfiguráció ellenőrzése helyileg felügyelt csomóponton a DSC-ügynök, győződjön meg arról, hogy a konfiguráció alkalmazták a csomópont egy hitelesített forrásból származik-e.
 
 > [!NOTE]

@@ -3,7 +3,7 @@ title: "Azure Automation-Runbook típusok |} Microsoft Docs"
 description: "Ismerteti a runbookok, amelyek az Azure Automation és kapcsolatos szempontokat, akkor figyelembe kell vennie annak meghatározása, amelyek használatához írja be. "
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 9265c975-4281-4819-a84f-d86641277f36
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/01/2017
 ms.author: bwren
-ms.openlocfilehash: 7bb90a51ffaca1a67933bc59f42ed08684fca5de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e4a8ab0e68d6614fea1b44f0115a1c633f145277
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-runbook típusok
 Azure Automation szolgáltatásbeli számos különböző típusú, amely röviden ismerteti a runbookok támogatja a következő táblázatban.  Az alábbi szakaszokban minden típusát, melynek során vegye figyelembe az egyes esetekben a további információt.

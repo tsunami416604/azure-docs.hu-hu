@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 12/13/2017
 ms.author: curtand
 ms.reviewer: Vince.Smith
 ms.custom: it-pro;
-ms.openlocfilehash: 0ecba72de9604fe1fd13a993f58bcdb1e8097501
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 66df4d709b60f2eb80329b8527b2a6edeb123168
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -76,7 +76,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 
 * **Emelt szintű rendszergazdai szerepkör**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik a szerepkör-hozzárendelések az Azure Active Directoryban, valamint az Azure AD Privileged Identity Management belül. Emellett ez a szerepkör lehetővé teszi a Privileged Identity Management minden szempontját kezelését.
 
-* **Biztonsági rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek a csak olvasási engedéllyel a biztonsági olvasó szerepkört, és képes kezelni a biztonsággal kapcsolatos szolgáltatások konfigurációs: Azure Active Directory azonosító adatok védelmét, a kiemelt Az Identitáskezelés, és az Office 365 biztonsági és megfelelőségi központ. Office 365 engedélyekkel kapcsolatos további információt [engedélyek az Office 365 biztonsági és megfelelőségi központ](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+* **Biztonsági rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek a csak olvasási engedéllyel a biztonsági olvasó szerepkört, és képes kezelni a biztonsággal kapcsolatos szolgáltatások konfigurációs: Azure Active Directory azonosító adatok védelmét és az Azure- Adatvédelem, Privileged Identity Management és az Office 365 biztonsági és megfelelőségi központ. Office 365 engedélyekkel kapcsolatos további információt [engedélyek az Office 365 biztonsági és megfelelőségi központ](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
 * **Biztonsági olvasó**: Ezzel a szerepkörrel rendelkező felhasználók globális csak olvasási hozzáféréssel rendelkezik, többek között az összes adatot az Azure Active Directory, a azonosító adatok védelmét, a Privileged Identity Management, valamint Azure Active Directory bejelentkezési jelentések Olvasás és a naplók. A szerepkör is biztosít az Office 365 biztonsági és megfelelőségi központ olvasási engedéllyel. Office 365 engedélyekkel kapcsolatos további információt [engedélyek az Office 365 biztonsági és megfelelőségi központ](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -110,7 +110,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 ### <a name="global-administrator"></a>Globális rendszergazda
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
-|<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Felhasználói jelszavak átállítása</p><p>Állítsa vissza a többi rendszergazda jelszavát</p> <p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |N.A. |
+|<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Felhasználói jelszavak átállítása</p><p>Állítsa vissza a többi rendszergazda jelszavát</p> <p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |N/A |
 
 ### <a name="password-administrator"></a>Jelszókezelő
 | Teheti meg | Nem hajtható végre |

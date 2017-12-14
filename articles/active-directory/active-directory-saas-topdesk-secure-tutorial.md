@@ -1,177 +1,230 @@
 ---
 title: "Oktatóanyag: Azure Active Directoryval integrált TOPdesk - biztonságos |} Microsoft Docs"
-description: "TOPdesk - használata az Azure Active Directoryval engedélyezése egyszeri bejelentkezéshez, automatizált üzembe helyezést és további biztonságos!."
+description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és TOPdesk - biztonságos között."
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
-manager: mtillman
-ms.assetid: 8e149d2d-7849-48ec-9993-31f4ade5fdb4
+manager: femila
+ms.reviewer: joflore
+ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/22/2017
+ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: e165a18c5a24071d52838ca95edbb5e6b39e63a5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ca3362bc3f966adaf9940f6eb4bec5235c6ea7d8
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Oktatóanyag: Azure Active Directoryval integrált TOPdesk - biztonságos
-Ez az oktatóanyag célja az Azure és TOPdesk - biztonságos integrálását megjelenítése.  
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő elemek:
 
-* Egy érvényes Azure-előfizetés
-* A TOPdesk - biztonságos egyszeri bejelentkezés engedélyezve van az előfizetés
+Ebben az oktatóanyagban elsajátíthatja TOPdesk - integrálása az Azure Active Directoryval (Azure AD) biztonságos.
 
-Ez az oktatóanyag befejezése után az Azure AD-felhasználók TOPdesk - biztonságos rendelt fog tudni egyetlen jelentkezzen be az alkalmazást a TOPdesk - biztonságos vállalati helyhez (szolgáltatás szolgáltató által kezdeményezett bejelentkezés), vagy a [a hozzáférés bemutatása Panel](active-directory-saas-access-panel-introduction.md).
+TOPdesk - biztonságos integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
-Ebben az oktatóanyagban leírt forgatókönyv az alábbi építőelemeket áll:
+- Az Azure AD, aki hozzáfér TOPdesk - biztonságos szabályozhatja.
+- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett TOPdesk - biztonságos (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
+- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-1. A TOPdesk - biztonságos alkalmazás-integráció engedélyezése
-2. Egyszeri bejelentkezés konfigurálása
-3. Felhasználók átadására
-4. Felhasználók hozzárendelése
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
 
-![A forgatókönyv](./media/active-directory-saas-topdesk-secure-tutorial/IC790596.png "forgatókönyv")
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="enabling-the-application-integration-for-topdesk---secure"></a>A TOPdesk - biztonságos alkalmazás-integráció engedélyezése
-Ez a szakasz célja a TOPdesk - biztonságos alkalmazás-integráció engedélyezése felvázoló.
+Az Azure AD-integráció konfigurálása a TOPdesk - biztonságos, kell a következő elemek:
 
-### <a name="to-enable-the-application-integration-for-topdesk---secure-perform-the-following-steps"></a>Ahhoz, hogy az alkalmazás-integráció TOPdesk - biztonságos, hajtsa végre a következő lépéseket:
-1. A klasszikus Azure portálon, a bal oldali navigációs panelen kattintson a **Active Directory**.
-   
-    ![Az Active Directory](./media/active-directory-saas-topdesk-secure-tutorial/IC700993.png "Active Directory")
+- Az Azure AD szolgáltatásra
+- A TOPdesk - biztonságos egyszeri bejelentkezés engedélyezve van az előfizetés
 
-2. Az a **Directory** listára, válassza ki a könyvtárat, amelyhez a címtár-integrációs engedélyezni szeretné.
+> [!NOTE]
+> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
 
-3. A könyvtár nézetben a alkalmazások nézet megnyitásához kattintson **alkalmazások** a felső menüben.
-   
-    ![Alkalmazások](./media/active-directory-saas-topdesk-secure-tutorial/IC700994.png "alkalmazások")
+Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-4. Kattintson a **Hozzáadás** az oldal alján.
-   
-    ![Alkalmazás hozzáadása](./media/active-directory-saas-topdesk-secure-tutorial/IC749321.png "alkalmazás hozzáadása")
+- Ne használja az éles környezetben, nem szükséges.
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
-5. Az a **mi történjen a teendő** párbeszédpanel, kattintson a **hozzáadhat egy alkalmazást a katalógusból**.
-   
-    ![Alkalmazás hozzáadása a gallerry](./media/active-directory-saas-topdesk-secure-tutorial/IC749322.png "gallerry az alkalmazás hozzáadása")
+## <a name="scenario-description"></a>Forgatókönyv leírása
+Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
-6. Az a **keresőmezőbe**, típus **TOPdesk - biztonságos**.
-   
-    ![Alkalmazáskatalógusában](./media/active-directory-saas-topdesk-secure-tutorial/IC790597.png "Alkalmazáskatalógusában")
+1. Hozzáadás TOPdesk - biztonságos a gyűjteményből
+2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-7. Az eredmények ablaktáblájában válassza **TOPdesk - biztonságos**, és kattintson a **Complete** hozzáadása az alkalmazáshoz.
-   
-    ![TOPdesk - biztonságos](./media/active-directory-saas-topdesk-secure-tutorial/IC791933.png "TOPdesk - biztonságos")
+## <a name="adding-topdesk---secure-from-the-gallery"></a>Hozzáadás TOPdesk - biztonságos a gyűjteményből
+Biztonságos TOPdesk - integrációjának konfigurálása az Azure AD-be kell TOPdesk hozzáadása – biztonságos a gyűjteményből a felügyelt SaaS listájának alkalmazásokat.
 
-## <a name="configuring-single-sign-on"></a>Egyszeri bejelentkezés konfigurálása
-Ez a szakasz célja engedélyezése a felhasználók számára a hitelesítést a TOPdesk - vázlat biztonságos fiókkal az Azure AD összevonási alapján a SAML protokoll használatával.  
-Konfigurálása egyszeri bejelentkezéshez az TOPdesk - biztonságos kell embléma ikon fájl feltöltése. Ahhoz, hogy az ikonfájl, lépjen kapcsolatba a TOPdesk támogatási csapatával.
+**TOPdesk - hozzáadása a gyűjteményből biztonságos, hajtsa végre a következő lépéseket:**
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>Egyszeri bejelentkezés konfigurálásához hajtsa végre az alábbi lépéseket:
-1. Jelentkezzen be a **TOPdesk - biztonságos** vállalati hely rendszergazdaként.
-2. Az a **TOPdesk** menüben kattintson a **beállítások**.
-   
-    ![Beállítások](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "beállítások")
+1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
-3. Kattintson a **bejelentkezési beállítások**.
-   
-    ![Bejelentkezési beállítások](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "bejelentkezési beállítások")
+    ![Az Azure Active Directory gomb][1]
 
-4. Bontsa ki a **bejelentkezési beállítások** menüben, majd kattintson **általános**.
-   
-    ![Általános](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "általános")
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
-5. Az a **biztonságos** szakasza a **SAML bejelentkezési** konfigurációs szakaszban, hajtsa végre a következő lépéseket:
-   
-    ![Műszaki beállítások](./media/active-directory-saas-topdesk-secure-tutorial/IC790855.png "műszaki beállításai")
+    ![A vállalati alkalmazások panel][2]
+    
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+
+    ![Az új alkalmazás gomb][3]
+
+4. Írja be a keresőmezőbe, **TOPdesk - biztonságos**, jelölje be **TOPdesk - biztonságos** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+    ![TOPdesk - az eredménylistában biztonságos](./media/active-directory-saas-topdesk-secure-tutorial/tutorial_topdesk-secure_addfromgallery.png)
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a TOPdesk tesztelése és konfigurálása – a "Britta Simon" nevű tesztfelhasználó biztonságos alapján.
+
+Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a TOPdesk - biztonságos tartozó felhasználót a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a TOPdesk - biztonságos hivatkozás kapcsolatának kell létrehozni.
+
+A TOPdesk - biztonságos, az értéket a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+
+Az Azure AD egyszeri bejelentkezést a TOPdesk - tesztelése és konfigurálása biztonságos, kell végrehajtani a következő építőelemeket:
+
+1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
+2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+3. **[Hozzon létre egy TOPdesk - biztonságos tesztfelhasználó](#create-a-topdesk---secure-test-user)**  - kell rendelkeznie a megfelelője a Britta Simon a TOPdesk - biztonságos, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a TOPdesk - biztonságos alkalmazás egyszeri bejelentkezés konfigurálása.
+
+**Az Azure AD az egyszeri bejelentkezés konfigurálása TOPdesk - biztonságos, hajtsa végre a következő lépéseket:**
+
+1. Az Azure portálon a a **TOPdesk - biztonságos** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+
+    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+
+2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+ 
+    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-topdesk-secure-tutorial/tutorial_topdesk-secure_samlbase.png)
+
+3. Az a **TOPdesk - biztonságos tartománya és URL-címek** területen tegye a következőket:
+
+    ![Az egyszeri bejelentkezés információk TOPdesk - biztonságos tartomány és az URL-címek](./media/active-directory-saas-topdesk-secure-tutorial/tutorial_topdesk-secure_url.png)
+
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.topdesk.net`
+
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.topdesk.net/tas/secure/login/verify`
+
+    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.topdesk.net/tas/public/login/saml`
+
+    > [!NOTE] 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Válasz URL-CÍMEN kifejtett oktatóanyag későbbi részében. Ügyfél [TOPdesk - biztonságos ügyfél-támogatási csoport](http://www.topdesk.com/us/support) beolvasni ezeket az értékeket. 
+
+4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-topdesk-secure-tutorial/tutorial_topdesk-secure_certificate.png) 
+
+5. Kattintson a **mentése** gombra.
+
+    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-topdesk-secure-tutorial/tutorial_general_400.png)
+
+6. A a **TOPdesk - konfiguráció biztonságos** kattintson **konfigurálása TOPdesk - biztonságos** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+
+    ![TOPdesk - biztonságos konfigurációt](./media/active-directory-saas-topdesk-secure-tutorial/tutorial_topdesk-secure_configure.png)
+    
+7. Jelentkezzen be a **TOPdesk - biztonságos** vállalati hely rendszergazdaként.
+
+8. Az a **TOPdesk** menüben kattintson a **beállítások**.
+
+    ![Beállítások](./media/active-directory-saas-topdesk-secure-tutorial/ic790598.png "beállítások")
+
+9. Kattintson a **bejelentkezési beállítások**.
+
+    ![Bejelentkezési beállítások](./media/active-directory-saas-topdesk-secure-tutorial/ic790599.png "bejelentkezési beállítások")
+
+10. Bontsa ki a **bejelentkezési beállítások** menüben, majd kattintson **általános**.
+
+    ![Általános](./media/active-directory-saas-topdesk-secure-tutorial/ic790600.png "általános")
+
+11. Az a **biztonságos** szakasza a **SAML bejelentkezési** konfigurációs szakaszban, hajtsa végre a következő lépéseket:
+
+    ![Műszaki beállítások](./media/active-directory-saas-topdesk-secure-tutorial/ic790855.png "műszaki beállításai")
    
     a. Kattintson a **letöltése** a nyilvános metaadatait tartalmazó fájl letöltéséhez, és mentse helyileg a számítógépen.
    
     b. Nyissa meg a metaadat-fájlt, és keresse meg a **AssertionConsumerService** csomópont.
     
-    ![Helyességi feltétel fogyasztói szolgáltatás](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "helyességi feltétel fogyasztói szolgáltatás")
+    ![Helyességi feltétel fogyasztói szolgáltatás](./media/active-directory-saas-topdesk-secure-tutorial/ic790856.png "helyességi feltétel fogyasztói szolgáltatás")
    
-    c. Másolás a **AssertionConsumerService** érték.  
-      
-    > [!NOTE]
-    > Szüksége lesz az értéket a **alkalmazás URL-cím konfigurálása** szakasz az oktatóanyag későbbi részében.
-    > 
-    > 
+    c. Másolás a **AssertionConsumerService** értékét, illessze be ezt az értéket a válasz URL-CÍMEN textbox **TOPdesk - biztonságos tartománya és URL-címek** szakasz.
 
-6. Egy másik webes böngészőablakban, jelentkezzen be a **a klasszikus Azure portálon** rendszergazdaként.
-
-7. Az a **TOPdesk - biztonságos** alkalmazás integráció lapján, kattintson a **konfigurálása egyszeri bejelentkezéshez** megnyitásához a ** konfigurálása egyszeri bejelentkezés ** párbeszédpanel.
-   
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-topdesk-secure-tutorial/IC790602.png "egyszeri bejelentkezés konfigurálása")
-
-8. Az a **hová bejelentkezni TOPdesk - biztonságos felhasználók** lapon jelölje be **Microsoft Azure AD az egyszeri bejelentkezés**, és kattintson a **tovább**.
-   
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-topdesk-secure-tutorial/IC790603.png "egyszeri bejelentkezés konfigurálása")
-
-9. Az a **alkalmazás URL-cím konfigurálása** lapon, a következő lépésekkel:
-   
-    ![Alkalmazás URL-CÍMEK konfigurálása](./media/active-directory-saas-topdesk-secure-tutorial/IC790604.png "alkalmazás URL-CÍMEK konfigurálása")
-   
-    a. Az a **TOPdesk - bejelentkezési biztonságos az URL-cím** szövegmező, írja be az URL-cím segítségével a felhasználók jelentkezzen be a TOPdesk - védett alkalmazás (pl.: "*https://qssolutions.topdesk.net*").
-   
-    b. Az a **TOPdesk – válasz URL-címe** szövegmező, illessze be a **TOPdesk - biztonságos AssertionConsumerService URL-** (pl.: "*https://qssolutions.topdesk.net/tas/public/login/saml*")
-   
-    c. Kattintson a **Tovább** gombra.
-
-10. A a **konfigurálhatja az egyszeri bejelentkezés TOPdesk - biztonságos** töltse le a metaadat-fájlt, kattintson **metaadatok letöltése**, és mentse helyileg a fájlt a számítógépen.
+12. A tanúsítványfájl létrehozásához hajtsa végre az alábbi lépéseket:
     
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-topdesk-secure-tutorial/IC790605.png "egyszeri bejelentkezés konfigurálása")
+    ![Tanúsítvány](./media/active-directory-saas-topdesk-secure-tutorial/ic790606.png "tanúsítvány")
+    
+    a. Nyissa meg a letöltött metaadatfájl Azure-portálon.
 
-11. A tanúsítványfájl létrehozásához hajtsa végre az alábbi lépéseket:
-    
-    ![Tanúsítvány](./media/active-directory-saas-topdesk-secure-tutorial/IC790606.png "tanúsítvány")
-    
-    a. Nyissa meg a letöltött metaadatait tartalmazó fájl.
     b. Bontsa ki a **RoleDescriptor** csomópont egy **xsi: type** a **táplált: ApplicationServiceType**.
+
     c. Másolja a értékének a **x.509** csomópont.
+
     d. Mentse a másolt **x.509** érték helyileg a fájlt a számítógépen.
 
-12. A TOPdesk - a vállalati webhely biztonságos a **TOPdesk** menüben kattintson a **beállítások**.
+13. Az a **nyilvános** kattintson **Hozzáadás**.
     
-    ![Beállítások](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "beállítások")
+    ![Adja hozzá](./media/active-directory-saas-topdesk-secure-tutorial/ic790607.png "hozzáadása")
 
-13. Kattintson a **bejelentkezési beállítások**.
+14. Az a **SAML-alapú konfigurációs Segéd** párbeszédpanel lapon, a következő lépésekkel:
     
-    ![Bejelentkezési beállítások](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "bejelentkezési beállítások")
-
-14. Bontsa ki a **bejelentkezési beállítások** menüben, majd kattintson **általános**.
+    ![SAML-alapú konfigurációs Segéd](./media/active-directory-saas-topdesk-secure-tutorial/ic790608.png "SAML-alapú konfigurációs Segéd")
     
-    ![Általános](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "általános")
-
-15. Az a **nyilvános** kattintson **Hozzáadás**.
-    
-    ![Adja hozzá](./media/active-directory-saas-topdesk-secure-tutorial/IC790607.png "hozzáadása")
-
-16. Az a **SAML-alapú konfigurációs Segéd** párbeszédpanel lapon, a következő lépésekkel:
-    
-    ![SAML-alapú konfigurációs Segéd](./media/active-directory-saas-topdesk-secure-tutorial/IC790608.png "SAML-alapú konfigurációs Segéd")
-    
-    a. A letöltött metaadatait tartalmazó fájl feltöltése a **összevonási metaadatok**, kattintson a **Tallózás**.
+    a. Töltse fel az Azure-portálon, a letöltött metaadatfájl **összevonási metaadatok**, kattintson a **Tallózás**.
 
     b. Töltse fel a tanúsítványfájlt, a **tanúsítvány (RSA)**, kattintson a **Tallózás**.
 
     c. Fel kell töltenie az embléma fájlt során kapott azonosítóértékeket TOPdesk terméktámogatással a **embléma ikon**, kattintson a **Tallózás**.
 
-    d. Az a **felhasználói név attribútum** szövegmezőhöz típus **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    d. Az a **felhasználói név attribútum** szövegmezőhöz típus `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     e. Az a **megjelenített név** szövegmező, adja meg a konfiguráció nevét.
 
     f. Kattintson a **Save** (Mentés) gombra.
 
-17. A klasszikus Azure portálon, válassza ki az egyszeri bejelentkezés konfigurációs megerősítő, és kattintson **Complete** bezárásához a **konfigurálása egyszeri bejelentkezés** párbeszédpanel.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-topdesk-secure-tutorial/IC790609.png "egyszeri bejelentkezés konfigurálása")
+> [!TIP]
+> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
 
-## <a name="configuring-user-provisioning"></a>Felhasználók átadására
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+
+Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+
+   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+
+**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+
+1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+
+    ![Az Azure Active Directory gomb](./media/active-directory-saas-topdesk-secure-tutorial/create_aaduser_01.png)
+
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-topdesk-secure-tutorial/create_aaduser_02.png)
+
+3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+
+    ![A Hozzáadás gombra.](./media/active-directory-saas-topdesk-secure-tutorial/create_aaduser_03.png)
+
+4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+
+    ![A felhasználó párbeszédpanel](./media/active-directory-saas-topdesk-secure-tutorial/create_aaduser_04.png)
+
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+
+    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+
+    d. Kattintson a **Create** (Létrehozás) gombra.
+ 
+### <a name="create-a-topdesk---secure-test-user"></a>Hozzon létre egy TOPdesk - biztonságos tesztfelhasználó számára
+
 Ahhoz, hogy az Azure AD-felhasználók TOPdesk - be tudjon jelentkezni biztonságos, akkor ki kell építenie TOPdesk - biztonságos be.  
 TOPdesk - esetén biztonságos, egy kézi tevékenység.
 
@@ -179,15 +232,15 @@ TOPdesk - esetén biztonságos, egy kézi tevékenység.
 1. Jelentkezzen be a **TOPdesk - biztonságos** vállalati hely rendszergazdaként.
 2. Kattintson a felső menüben **TOPdesk \> új \> támogatófájljait \> operátor**.
    
-    ![Operátor](./media/active-directory-saas-topdesk-secure-tutorial/IC790610.png "operátor")
+    ![Operátor](./media/active-directory-saas-topdesk-secure-tutorial/ic790610.png "operátor")
 
 3. Az a **új operátor** párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![Új operátor](./media/active-directory-saas-topdesk-secure-tutorial/IC790611.png "új operátor")
+    ![Új operátor](./media/active-directory-saas-topdesk-secure-tutorial/ic790611.png "új operátor")
    
-    a. Kattintson az Általános fülre.
+    a. Kattintson a **általános** fülre.
    
-    b. Az a **vezetékneve** a szövegmező a **általános** területen írja be egy érvényes Azure Active Directory-fiókot rendelkezés kívánt utolsó nevét.
+    b. Az a **vezetékneve** szövegmezőhöz, például a felhasználó vezetékneve típusú **Simon**.
    
     c. Válassza ki a **hely** a fiók a **hely** szakasz.
    
@@ -197,21 +250,60 @@ TOPdesk - esetén biztonságos, egy kézi tevékenység.
 
 > [!NOTE]
 > Bármely más TOPdesk - biztonságos felhasználói fiók létrehozása eszközök vagy TOPdesk - felhasználói fiókok AAD kiépítése biztonságos által nyújtott API-kat is használhatja.
-> 
-> 
 
-## <a name="assigning-users"></a>Felhasználók hozzárendelése
-A konfiguráció teszteléséhez kell biztosítania az Azure AD-felhasználók számára engedélyezni, használja az alkalmazás elérésére hozzárendelésével.
+### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-### <a name="to-assign-users-to-topdesk---secure-perform-the-following-steps"></a>Felhasználók hozzárendelése TOPdesk - biztonságos, hajtsa végre a következő lépéseket:
-1. A klasszikus Azure portálon hozzon létre egy olyan fiókot.
-2. Az a ** TOPdesk - biztonságos ** alkalmazás integráció lapján, kattintson a **felhasználók hozzárendelése**.
-   
-    ![Felhasználók hozzárendelése](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "felhasználók hozzárendelése")
+Ebben a szakaszban Britta Simon használandó Azure egyszeri bejelentkezés által biztosított TOPdesk - biztonságos hozzáférés engedélyezése.
 
-3. Adja meg a tesztfelhasználó számára, kattintson **hozzárendelése**, és kattintson a **Igen** a hozzárendelés megerősítéséhez.
-   
-    ![Igen](./media/active-directory-saas-topdesk-secure-tutorial/IC767830.png "Igen")
+![A felhasználói szerepkör hozzárendelése][200] 
 
-Ha azt szeretné, az egyszeri bejelentkezés beállításainak ellenőrzéséhez nyissa meg a hozzáférési Panel. A hozzáférési Panel kapcsolatos további tudnivalókért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md).
+**Britta Simon hozzárendelése TOPdesk - biztonságos, hajtsa végre a következő lépéseket:**
+
+1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+
+    ![Felhasználó hozzárendelése][201] 
+
+2. Az alkalmazások listában válassza ki a **TOPdesk - biztonságos**.
+
+    ![A TOPdesk – az alkalmazások listáját a biztonságos kapcsolat](./media/active-directory-saas-topdesk-secure-tutorial/tutorial_topdesk-secure_app.png)  
+
+3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+
+    ![A "Felhasználók és csoportok" hivatkozásra][202]
+
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+
+    ![A hozzárendelés hozzáadása panelen][203]
+
+5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+
+6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+
+7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+    
+### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+
+TOPdesk - biztonságos csempe a hozzáférési panelen kattintva meg kell beolvasása automatikusan bejelentkezett a TOPdesk - biztonságos alkalmazás számára.
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
+
+## <a name="additional-resources"></a>További források
+
+* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-topdesk-secure-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-topdesk-secure-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-topdesk-secure-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-topdesk-secure-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-topdesk-secure-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-topdesk-secure-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-topdesk-secure-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-topdesk-secure-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-topdesk-secure-tutorial/tutorial_general_203.png
 

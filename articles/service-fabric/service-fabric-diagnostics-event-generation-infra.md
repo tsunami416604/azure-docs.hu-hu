@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: dekapur
-ms.openlocfilehash: 1277969d820c6348392d07e2dc5f35b52377fd7e
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 8452b5ae733b21254b0beecaec44a968897ae491
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="platform-level-event-and-log-generation"></a>Platform szintű esemény és a napló létrehozása
 
@@ -105,7 +105,7 @@ A teljesítményszámlálók gyűjtése, ha a Service Fabric használatával lis
 
 Az alábbiakban, amelyben a fürt teljesítményadatok összegyűjtésére beállíthat két gyakori módjai:
 
-* Ügynök használatával: Ez az előnyben részesített módja teljesítmény begyűjtése egy számítógépen, mivel ügynökök általában rendelkeznek is lehetséges teljesítménymutatók listáját, és egy viszonylag egyszerű folyamat kiválasztása a metrikák szeretne gyűjteni, vagy módosítsa őket. További információ a [az OMS konfigurálása a Service Fabric](service-fabric-diagnostics-event-analysis-oms.md) és [állítja be az OMS Windows-ügynök](../log-analytics/log-analytics-windows-agents.md) cikkekből tudhat meg többet az OMS-ügynököt, amely egy ilyen figyelési ügynök, amely képes felvétele a fürt virtuális gépek teljesítményadatokat és tárolók telepítése.
+* Ügynök használatával: Ez az előnyben részesített módja teljesítmény begyűjtése egy számítógépen, mivel ügynökök általában rendelkeznek is lehetséges teljesítménymutatók listáját, és egy viszonylag egyszerű folyamat kiválasztása a metrikák szeretne gyűjteni, vagy módosítsa őket. További információ a [az OMS konfigurálása a Service Fabric](service-fabric-diagnostics-event-analysis-oms.md) és [állítja be az OMS Windows-ügynök](../log-analytics/log-analytics-windows-agent.md) cikkekből tudhat meg többet az OMS-ügynököt, amely egy ilyen figyelési ügynök, amely képes felvétele a fürt virtuális gépek teljesítményadatokat és tárolók telepítése.
 
 * Teljesítményszámlálók írni egy tábla diagnosztika konfigurálása: az Azure-fürtök esetén ez azt jelenti, hogy a megfelelő teljesítményszámlálók érvényesítéséhez a virtuális gépek a fürt által az Azure Diagnostics-konfiguráció megváltoztatását, és lehetővé téve számára a docker statisztikák átvételéhez, ha a rendszer bármely tárolók telepítése. További információ a konfigurálása [ÜVEGVATTA teljesítményszámlálók](service-fabric-diagnostics-event-aggregation-wad.md) a Service Fabric teljesítményszámlálók gyűjteményét a beállítása.
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2017
 ms.author: terrylan
-ms.openlocfilehash: 69d0c368eb11953d1a6e954990a3be10df7044f0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6ccf104ea09dc1fbce1dd34a06168205d6f5fac8
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="security-center-platform-migration-faq"></a>A Security Center platform áttelepítési – gyakori kérdések
 Korai. június 2017 az Azure Security Center megkezdte a Microsoft Monitoring Agent használatával gyűjt, és adatokat. További tudnivalókért lásd: [Azure Security Center Platform áttelepítési](security-center-platform-migration.md). Ez a GYIK a platform áttelepítésével kapcsolatos kérdésekre ad választ.
@@ -175,7 +175,7 @@ Bármikor kikapcsolhatják az előfizetések a biztonsági szabályzatban automa
 Az áttelepítés után a Security Center nem állíthatja biztonsági adatokat gyűjteni a virtuális Gépet, és egyes biztonsági javaslatok és értesítések nem érhetők el. Ha kikapcsolja ezt a beállítást, a Microsoft Monitoring Agent manuálisan kell telepítenie. Lásd: [ajánlott lépéseket, ha a engedélyezés](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning).
 
 ### <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>Mik azok a javasolt lépéseket, ha meggátolható a automatikus kiépítés?
-A Microsoft Monitoring Agent manuálisan kell telepítenie, így a Security Center biztonsági adatokat gyűjteni a virtuális gépeket, és adja meg a javaslatokra és riasztásokra. Lásd: [csatlakozás Windows-számítógépek számára az Azure Naplóelemzés szolgáltatás](../log-analytics/log-analytics-windows-agents.md) telepítési útmutatót.
+A Microsoft Monitoring Agent manuálisan kell telepítenie, így a Security Center biztonsági adatokat gyűjteni a virtuális gépeket, és adja meg a javaslatokra és riasztásokra. Lásd: [csatlakozás Windows-számítógépek számára az Azure Naplóelemzés szolgáltatás](../log-analytics/log-analytics-windows-agent.md) telepítési útmutatót.
 
 Az ügynök csatlakoztatása a meglévő egyéni munkaterület, vagy a Security Center létre munkaterületet. Ha egy egyéni munkaterület nem rendelkezik a "Security" vagy "SecurityCenterFree" megoldások engedélyezve van, akkor kell alkalmazni a megoldást. Szeretné alkalmazni, válassza ki az egyéni munkaterület vagy előfizetés, és a tarifacsomagot keresztül alkalmazza a **biztonsági szabályzat – tarifacsomag** panelen.
 

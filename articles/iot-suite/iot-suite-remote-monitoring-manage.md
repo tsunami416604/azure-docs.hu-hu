@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 84c2eaaab2dfc09c93fbfeac3fe2bfcc7066a411
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fab3fd4163141aadc06b385f5759c19eece7fd14
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="manage-and-configure-your-devices"></a>Kezelése és az eszközök konfigurálása
 
@@ -40,13 +40,13 @@ Ez az oktatóanyag van szükség a távoli felügyeleti megoldás telepített p�
 
 Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [a távoli felügyeleti előkonfigurált megoldás üzembe helyezéséhez](iot-suite-remote-monitoring-deploy.md) oktatóanyag.
 
-## <a name="provision-a-simulated-device"></a>A szimulált eszköz kiépítése
+## <a name="add-a-simulated-device"></a>A szimulált eszköz hozzáadása
 
-Keresse meg a **eszközök** a megoldás lapját, és válassza a **rendelkezés**. Az a **rendelkezés** panelen, kattintson a **szimulált**:
+Keresse meg a **eszközök** a megoldás lapját, és válassza a **új eszköz**. Az a **új eszköz** panelen, kattintson a **szimulált**:
 
 ![A szimulált eszköz kiépítése](media/iot-suite-remote-monitoring-manage/devicesprovision.png)
 
-Az eszközök számát hagyja beállítása rendelkezésre **1**. Válasszon **motor** , a **eszközmodell**, és válassza a **alkalmaz** a szimulált eszköz létrehozásához:
+Az eszközök számát hagyja beállítása rendelkezésre **1**. Válasszon **hibás motor** , a **eszközmodell**, és válassza a **alkalmaz** a szimulált eszköz létrehozásához:
 
 ![A szimulált motor eszköz kiépítése](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 
@@ -68,7 +68,7 @@ Részletes diagnosztikai megtekintéséhez görgessen le a nézet **diagnosztika
 
 ## <a name="act-on-a-device"></a>Az eszközön működésre
 
-Segítségével az eszközön, az eszközök listájában válassza ki, és válassza a **ütemezés**. A **motor** eszközmodell eszköz támogatnia kell a négy módszer megadása:
+Segítségével egy vagy több eszközön, az eszközök listájában jelölje ki őket, és válassza a **ütemezés**. A **motor** eszközmodell eszköz támogatnia kell a négy módszer megadása:
 
 ![Motor módszerek](media/iot-suite-remote-monitoring-manage/devicesmethods.png)
 
@@ -76,7 +76,7 @@ Válasszon **indítsa újra a**, a feladat neve **RestartEngine**, és válassza
 
 ![A restart metódust ütemezése](media/iot-suite-remote-monitoring-manage/devicesrestartengine.png)
 
-A feladat állapotának nyomon követheti a **karbantartási** lapon, válassza ki **rendszerállapot**:
+A feladat állapotának nyomon követheti a **karbantartási** lapon, válassza ki **feladatok**:
 
 ![A figyelő az ütemezések feladat](media/iot-suite-remote-monitoring-manage/maintenancerestart.png)
 
@@ -96,7 +96,7 @@ Olyan módosítást, vegye fel a feladatnak a nevét, a tulajdonságértékek fr
 
 ![Frissítés eszköz tulajdonság értéke](media/iot-suite-remote-monitoring-manage/devicesreconfigurephysical.png)
 
-A feladat állapotának nyomon követheti a **karbantartási** lapon, válassza ki **rendszerállapot**.
+A feladat állapotának nyomon követheti a **karbantartási** lapon, válassza ki **feladatok**.
 
 ## <a name="next-steps"></a>Következő lépések
 

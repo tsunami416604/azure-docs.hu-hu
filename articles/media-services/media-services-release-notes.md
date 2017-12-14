@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 0b10132f1a6be3a237ffa386f45233e3494d10eb
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 0da456e13042168f3c8e871f180e6477b73392d5
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 A kibocsátási megjegyzések összesítse a módosításokat a korábbi kiadásokban és ismert problémákat.
@@ -324,13 +324,6 @@ Media Services SDK for .NET verziója most 3.0.0.7
 * **Forrás** át lett nevezve a(z) [StreamingEndpoint].
 * A módosítás az alapértelmezett viselkedés használata esetén a **Azure-portálon** kódolásához, és tegye közzé az MP4-fájlokat.
 
-Korábban, ha közzététele egy egyfájlos MP4 videó SAS URL-címet a klasszikus Azure portál segítségével hozhatók létre (SAS URL-címek lehetővé teszik a videó letöltése a blob-tároló). Jelenleg a klasszikus Azure portál használatával kódolására, és tegye közzé a egyfájlos MP4 video asset, a létrehozott URL mutat, egy Azure Media Services adatfolyam-továbbítási végpontra.  Ez a változás nincs hatással, amelyek közvetlenül Media Services feltöltött és Azure Media Services által kódolás nélkül közzétett MP4-videók.
-
-Jelenleg a következő két lehetősége megoldani a problémát.
-
-* Engedélyezze a folyamatos átviteli egységeket, és a dinamikus becsomagolás segítségével adatfolyamként küldje el a .mp4 eszköz zavartalan adatfolyam bemutatóként.
-* Hozzon létre egy SAS URL-címet a .mp4 letöltése (vagy fokozatosan lejátszása). Az SAS-kereső létrehozásával kapcsolatos további információkért lásd: [tartalom továbbítása].
-
 ### <a id="sept_14_GA_changes"></a>Új funkciók/forgatókönyvek GA kiadás részét képező
 * **Az indexelő Media processzor**. További információkért lásd: [médiafájlok indexelése az Azure Media Indexer].
 * A [StreamingEndpoint] entitás mostantól lehetővé teszi egyéni tartománynevek (gazda).
@@ -443,7 +436,7 @@ Ebben a szakaszban említett módosítások a 2013. június Media Services kiad�
 
 * Lehetővé teszi több storage-fiókok összekapcsolása egy Media Services-fiókját. 
   
-    Tárfiók
+    StorageAccount
   
     Asset.StorageAccountName és Asset.StorageAccount
 * Job.Priority frissítésének lehetőségét. 
@@ -561,7 +554,7 @@ Az alábbi funkciókat lett az SDK. novemberi kiadásában új.
 [Media Services díjszabása]: http://azure.microsoft.com/pricing/details/media-services/
 [bemeneti metaadatok]: http://msdn.microsoft.com/library/azure/dn783120.aspx
 [kimeneti metaadatok]: http://msdn.microsoft.com/library/azure/dn783217.aspx
-[tartalom továbbítása]: http://msdn.microsoft.com/library/azure/hh973618.aspx
+[Delivering Content]: http://msdn.microsoft.com/library/azure/hh973618.aspx
 [médiafájlok indexelése az Azure Media Indexer]: http://msdn.microsoft.com/library/azure/dn783455.aspx
 [StreamingEndpoint]: http://msdn.microsoft.com/library/azure/dn783468.aspx
 [működik-e az Azure Media Services élő adatfolyam]: http://msdn.microsoft.com/library/azure/dn783466.aspx

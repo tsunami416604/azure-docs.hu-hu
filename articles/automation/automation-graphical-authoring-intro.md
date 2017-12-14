@@ -3,7 +3,7 @@ title: "Azure Automation grafikus szerzői |} Microsoft Docs"
 description: "Grafikus szerzői lehetővé teszi a runbookok létrehozását az Azure Automation kód használata nélkül. Ez a cikk ismerteti a grafikus szerzői bemutatása és grafikus forgatókönyvnek létrehozásához szükséges összes adatot."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: 4b6f840c-e941-4293-a728-b33407317943
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 137e8503b9759136510db59700c3032853246c89
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59f1f8c544c7ab3dce9373d65e0f6cbaa62c8f67
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus készítése az Azure Automationben
 ## <a name="introduction"></a>Bevezetés
@@ -114,7 +114,7 @@ Amikor megad egy paraméter értékét, ki kell választania egy adatforrást ha
 
 | Adatforrás | Leírás |
 |:--- |:--- |
-| Állandó érték |Adja meg a paraméter értékét.  Ez a tulajdonság csak a következő típusok esetében érhető el: Int32, Int64, String, Boolean, DateTime, kapcsoló. |
+| Konstans érték |Adja meg a paraméter értékét.  Ez a tulajdonság csak a következő típusok esetében érhető el: Int32, Int64, String, Boolean, DateTime, kapcsoló. |
 | Tevékenység kimeneti |Egy tevékenység, amely megelőzi az aktuális tevékenység a munkafolyamat kimenetét.  Az összes érvényes tevékenység megjelenik.  Válassza ki a használandó kimenetét a paraméter értéke csak a tevékenység.  Ha a tevékenység kimenete több tulajdonságait azonosítójú objektum, majd beírhatja a tulajdonság nevében a tevékenység kiválasztása után. |
 | A Runbook bemeneti |Jelölje ki a forgatókönyv bemeneti paramétert a tevékenység-paraméter számára. |
 | Változóeszköz |Válassza ki a egy automatizálási változó bemeneti adatként. |
@@ -185,7 +185,7 @@ Válassza ki a hivatkozásra kattintva konfigurálja a tulajdonságait a konfigu
 | Kapcsolat típusa | Leírás |
 |:--- |:--- |
 | Folyamat |A céltevékenységre van egyszeri futtatás minden objektum kimeneti a forrás tevékenységből.  A céltevékenységre nem működik, ha a forrás tevékenység nincs kimenet eredményez.  A forrástevékenység kimeneti objektumként érhető el. |
-| Feladatütemezési |A céltevékenységre csak egyszer fut le.  A forrás tevékenységből kap egy objektumokból álló tömb.  A forrástevékenység kimeneti objektumokat tömbként érhető el. |
+| Szekvencia |A céltevékenységre csak egyszer fut le.  A forrás tevékenységből kap egy objektumokból álló tömb.  A forrástevékenység kimeneti objektumokat tömbként érhető el. |
 
 ### <a name="starting-activity"></a>Kezdő tevékenység
 Egy grafikus forgatókönyvnek a tevékenységeket, amelyek nem rendelkeznek olyan bejövő hivatkozás indul el.  Ez gyakran lesz volna el a kezdő tevékenység a runbook csak egy tevékenységgel.  Ha több tevékenység nem rendelkezik olyan bejövő hivatkozás, majd a runbook indul el, párhuzamosan futtatásával.  Akkor lesz majd hivatkozásokból az egyéb tevékenységeket futtatnak, mivel minden egyes befejezése.
@@ -226,7 +226,7 @@ Az alábbi példában egy runbookot, amely elindítja a virtuális gépek halmaz
 
 ![Szinkronizációs pont](media/automation-graphical-authoring-intro/runbook-junction.png)
 
-### <a name="cycles"></a>Ciklus
+### <a name="cycles"></a>Ciklusok
 A ciklus akkor, ha vissza a forrástevékenység vagy egy másik tevékenységgel, végül a forrás-hivatkozásokat biztonsági rendeltetési tevékenység hivatkozásainak.  Ciklus jelenleg nem engedélyezettek grafikus szerzői.  Ha a runbook rendelkezik ciklust, megfelelően menti, de egy hibaüzenetet fog kapni, amikor fut az.
 
 ![Ciklus](media/automation-graphical-authoring-intro/runbook-cycle.png)
@@ -245,7 +245,7 @@ Tevékenység kimeneti is le egy **PowerShell-kifejezést** adatforrás vagy egy
     $ActivityOutput['Activity Label']
     $ActivityOutput['Activity Label'].PropertyName 
 
-### <a name="checkpoints"></a>Az ellenőrzőpontok
+### <a name="checkpoints"></a>Ellenőrzőpontok
 Beállíthatja azt [ellenőrzőpontokat](automation-powershell-workflow.md#checkpoints) egy grafikus PowerShell-munkafolyamati forgatókönyv kiválasztásával a *ellenőrzőpont runbook* olyan tevékenységeket.  Ennek hatására a tevékenység futtatása után kell beállítani egy ellenőrzőpontot.
 
 ![Ellenőrzőpont](media/automation-graphical-authoring-intro/set-checkpoint.png)

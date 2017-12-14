@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: 0bcf56e06c34af94746d42d8af18e32fcd9a7496
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f0337002bbaf554a6a775464edefc032e6c7bab2
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven Common Internet File System vagy CIFS). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
@@ -80,7 +80,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 
 ## <a name="azure-file-sync"></a>Az Azure File szinkronizálása
 * <a id="afs-region-availability"></a>**Milyen régiókban támogatott Azure fájlszinkronizálás (előzetes verzió)?**  
-    Azure fájlszinkronizálás jelenleg elérhető az USA nyugati régiója, Nyugat-Európában, Kelet-Ausztrália és Délkelet-Ázsia. További régiókhoz fogja támogatni, általánosan rendelkezésre álló felé dolgozunk. További információkért lásd: [régiónkénti elérhetőség](storage-sync-files-planning.md#region-availability).
+    Azure fájlszinkronizálás jelenleg elérhető az USA keleti régiója, USA nyugati régiója, Nyugat-Európában, Kelet-Ausztrália és Délkelet-Ázsia. További régiókhoz fogja támogatni, általánosan rendelkezésre álló felé dolgozunk. További információkért lásd: [régiónkénti elérhetőség](storage-sync-files-planning.md#region-availability).
 
 * <a id="cross-domain-sync"></a>**Szinkronizálási ugyanabban a csoportban is rendelkezem tartományhoz csatlakoztatott és a nem tartományhoz csatlakoztatott?**  
     Igen. A szinkronizálási csoport tartalmazhat rendelkeznek eltérő Active Directory tagsági server-végpontokat, akkor is, ha nem a tartományhoz. Bár technikailag működik, ebben a konfigurációban, nem ajánlott ennek a szokásos beállításokkal, mert a hozzáférés-vezérlési listák (ACL) a fájlok és mappák több kiszolgálón definiált nem feltétlenül érvénybe lépteti a szinkronizálási csoport többi kiszolgálójára. A legjobb eredmények elérése érdekében ajánlott szinkronizálása az Active Directory-erdőben lévő kiszolgálók között, kiszolgálók, amelyek más Active Directory-erdőben található, de amelyek bizalmi kapcsolatok létesítése vagy kiszolgálók, amelyek nincsenek a tartomány között. Ajánlott elkerülni, álló ezeket a beállításokat használja.

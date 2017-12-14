@@ -2,55 +2,55 @@
 title: "Oktatóanyag: Azure Active Directoryval integrált SciQuest töltött igazgató |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és SciQuest töltött igazgató között."
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
-manager: mtillman
-editor: 
+manager: femila
+ms.reviewer: joflore
 ms.assetid: 9fab641b-292e-4bef-91d1-8ccc4f3a0c1f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 2fe4d6a5fdaeebac142e28a72eced9556ef86795
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: be9b17f31bedca1ae5704b484760c3ad24fbb14d
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Oktatóanyag: Azure Active Directoryval integrált SciQuest töltött igazgató
-Ez az oktatóanyag célja SciQuest töltött igazgató integrálása az Azure Active Directory (Azure AD) mutatjuk be.  
-SciQuest töltött igazgató integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja: 
 
-* Megadhatja a SciQuest töltött igazgató hozzáféréssel rendelkező Azure AD-ben 
-* Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett SciQuest töltött igazgató (egyszeri bejelentkezés)
-* Kezelheti a fiókokat, egy központi helyen - a klasszikus Azure portálon
+Ebben az oktatóanyagban elsajátíthatja SciQuest töltött igazgató integrálása az Azure Active Directory (Azure AD).
+
+SciQuest töltött igazgató integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+
+- Az Azure AD, aki hozzáfér SciQuest töltött igazgató szabályozhatja.
+- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett SciQuest töltött igazgató (egyszeri bejelentkezés).
+- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Konfigurálása az Azure AD-integrációs SciQuest töltött igazgató, a következőkre van szükség:
 
-* Az Azure AD szolgáltatásra
-* Egy SciQuest töltött igazgató egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD szolgáltatásra
+- Egy SciQuest töltött igazgató egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
 > Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
-> 
-> 
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-* Ne használja az éles környezetben, ha ez nem szükséges.
-* Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/). 
+- Ne használja az éles környezetben, nem szükséges.
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ez az oktatóanyag célja ahhoz, hogy egy tesztkörnyezetben az Azure AD az egyszeri bejelentkezés tesztelése.  
-Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
-1. A gyűjteményből SciQuest töltött igazgató hozzáadása 
+1. A gyűjteményből SciQuest töltött igazgató hozzáadása
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
 ## <a name="adding-sciquest-spend-director-from-the-gallery"></a>A gyűjteményből SciQuest töltött igazgató hozzáadása
@@ -58,205 +58,175 @@ Az Azure AD integrálása a SciQuest töltött igazgató konfigurálásához kel
 
 **A gyűjteményből SciQuest töltött igazgató hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a **a klasszikus Azure portálon**, a bal oldali navigációs ablaktábláján kattintson **Active Directory**. 
-   
-    ![Active Directory][1]
+1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
-2. Az a **Directory** listára, válassza ki a könyvtárat, amelyhez a címtár-integrációs engedélyezni szeretné.
+    ![Az Azure Active Directory gomb][1]
 
-3. A könyvtár nézetben a alkalmazások nézet megnyitásához kattintson **alkalmazások** a felső menüben.
-   
-    ![Alkalmazások][2]
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
-4. Kattintson a **Hozzáadás** az oldal alján.
-   
-    ![Alkalmazások][3]
+    ![A vállalati alkalmazások panel][2]
+    
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
 
-5. Az a **mi történjen a teendő** párbeszédpanel, kattintson a **hozzáadhat egy alkalmazást a katalógusból**.
-   
-    ![Alkalmazások][4]
+    ![Az új alkalmazás gomb][3]
 
-6. Írja be a keresőmezőbe, **sciQuest töltött igazgató**.
-   
-    ![Alkalmazások][5]
+4. Írja be a keresőmezőbe, **SciQuest töltött igazgató**, jelölje be **SciQuest töltött igazgató** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-7. Az eredmények ablaktáblájában válassza **SciQuest töltött igazgató**, és kattintson a **Complete** az alkalmazás hozzáadása.
-   
-    ![Alkalmazások][6]
+    ![Az eredménylistában SciQuest töltött igazgató](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_addfromgallery.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ez a szakasz célja bemutatják a konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés SciQuest töltött igazgató "Britta Simon" nevű tesztfelhasználó alapján.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner felhasználó SciQuest töltött igazgató egy olyan felhasználó számára az Azure ad-ben van. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó SciQuest töltött Director közötti kapcsolat kapcsolatot kell létrehozni.  
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** SciQuest töltött Director.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés SciQuest töltött igazgató "Britta Simon" nevű tesztfelhasználó alapján.
+
+Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó SciQuest töltött Director a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó SciQuest töltött Director közötti kapcsolat kapcsolatot kell létrehozni.
+
+SciQuest töltött igazgató, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
 Az Azure AD egyszeri bejelentkezést a SciQuest töltött igazgató tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
-1. **[Az Azure AD egy egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[SciQuest töltött igazgató tesztfelhasználó létrehozása](#creating-a-halogen-software-test-user)**  - való egy megfelelője a Britta Simon SciQuest töltött igazgató, amely csatolva van rá, hogy az Azure AD ábrázolása.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
+2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+3. **[SciQuest töltött igazgató tesztfelhasználó létrehozása](#create-a-sciquest-spend-director-test-user)**  - való egy megfelelője a Britta Simon SciQuest töltött igazgató, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-single-sign-on"></a>Az Azure AD egy egyszeri bejelentkezés konfigurálása
-Ez a szakasz célja engedélyezése az Azure AD az egyszeri bejelentkezés a klasszikus Azure portálon, és konfigurálása egyszeri bejelentkezéshez az SciQuest töltött igazgató alkalmazásban.
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az SciQuest töltött igazgató alkalmazásban.
 
 **Az Azure AD az egyszeri bejelentkezés konfigurálása SciQuest töltött igazgató, hajtsa végre az alábbi lépéseket:**
 
-1. A klasszikus Azure portálon a a **SciQuest töltött igazgató** alkalmazás integráció lapján, kattintson a **konfigurálása egyszeri bejelentkezéshez** megnyitásához a **konfigurálása egyszeri bejelentkezéshez** párbeszédpanel.
-   
-    ![Egyszeri bejelentkezés konfigurálása][8]
+1. Az Azure portálon a a **SciQuest töltött igazgató** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
 
-2. A a **hová bejelentkezni SciQuest töltött igazgató felhasználók** lapon jelölje be **az Azure AD az egyszeri bejelentkezés**, és kattintson a **következő**.
-   
-    ![Az Azure AD-egyszeri bejelentkezés][9]
+    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
-3. Az a **Alkalmazásbeállítások konfigurálása** párbeszédpanel lapon, a következő lépésekkel: 
-   
-    ![Alkalmazásbeállítások konfigurálása][10]
-   
-     a. Az a **URL-cím bejelentkezési** szövegmező, írja be az URL-cím segítségével a felhasználók jelentkezzen be a SciQuest töltött igazgató alkalmazást a következő mintát: *https://.* sciquest.com/.**
-   
-     b. Az a **válasz URL-CÍMEN** szövegmezőhöz beírt ugyanazt az értéket írja be a **URL-cím bejelentkezési** szövegmező. 
-   
-     c. Kattintson a **Tovább** gombra.
+2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+ 
+    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_samlbase.png)
 
-4. A a **konfigurálhatja az egyszeri bejelentkezés SciQuest töltött igazgató** lapján kattintson **metaadatok letöltése**, és mentse helyileg a számítógépen a metaadatait tartalmazó fájl.
-   
-    ![Mi az az Azure AD Connect?][11]
+3. Az a **SciQuest töltött Director tartomány és az URL-címek** területen tegye a következőket:
 
-5. Kapcsolattartási SciQuest támogatja ezt a hitelesítési módszert a fent letöltött metaadatok segítségével engedélyezéséhez.
+    ![Az egyszeri bejelentkezés információt SciQuest töltött Director tartomány és az URL-címek](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_url.png)
 
-6. A klasszikus Azure portálon, válassza ki az egyszeri bejelentkezés konfigurációs megerősítő, és kattintson **Complete** bezárásához a **konfigurálása egyszeri bejelentkezés** párbeszédpanel. 
-   
-    ![Mi az az Azure AD Connect?][15]
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>`
 
-7. Az a **az egyszeri bejelentkezés megerősítő** kattintson **Complete**.  
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.sciquest.com`
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása a klasszikus Azure portálon Britta Simon nevezik.
+    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
+
+    > [!NOTE] 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím, azonosítóját és a válasz URL-CÍMEN. Ügyfél [SciQuest töltött igazgató ügyfél-támogatási csoport](https://www.jaggaer.com/contact-us/) beolvasni ezeket az értékeket. 
+
+4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_certificate.png) 
+
+5. Kattintson a **mentése** gombra.
+
+    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_400.png)
+
+6. Egyszeri bejelentkezés konfigurálása **SciQuest töltött igazgató** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [SciQuest töltött igazgató támogatási csoport](https://www.jaggaer.com/contact-us/).
+
+> [!TIP]
+> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+
+Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+
+   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **a klasszikus Azure portálon**, a bal oldali navigációs ablaktábláján kattintson **Active Directory**.
-   
-    ![Mi az az Azure AD Connect?][100] 
+1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
-2. Az a **Directory** listára, válassza ki a könyvtárat, amelyhez a címtár-integrációs engedélyezni szeretné.
+    ![Az Azure Active Directory gomb](./media/active-directory-saas-sciquest-spend-director-tutorial/create_aaduser_01.png)
 
-3. A felhasználók listájának megjelenítéséhez a felső menüben, kattintson a **felhasználók**.
-   
-    ![Mi az az Azure AD Connect?][101] 
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
-4. Lehetőségre a **felhasználó hozzáadása** párbeszédpanel alján, az eszköztárban kattintson **felhasználó hozzáadása**. 
-   
-    ![Mi az az Azure AD Connect?][102] 
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-sciquest-spend-director-tutorial/create_aaduser_02.png)
 
-5. Az a **adja meg azt a felhasználó** párbeszédpanel lapon, a következő lépésekkel:
-   
-    ![Mi az az Azure AD Connect?][103] 
-   
-    a. Mint **felhasználó típusa**, jelölje be **a szervezet új felhasználó**.
-   
-    b. A felhasználó nevében **szövegmező**, típus **BrittaSimon**.
-   
-    c. Kattintson a **Tovább** gombra.
+3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
 
-6. Az a **felhasználói profil** párbeszédpanel lapon, a következő lépésekkel: 
-   
-    ![Mi az az Azure AD Connect?][104] 
-   
-    a. Az a **Utónév** szövegmezőhöz típus **Britta**.  
-   
-    b. Az a **Vezetéknév** txtbox, típusa, **Simon**.
-   
-    c. Az a **megjelenített név** szövegmezőhöz típus **Britta Simon**.
-   
-    d. Az a **szerepkör** listáról válassza ki **felhasználói**.
-   
-    e. Kattintson a **Tovább** gombra.
+    ![A Hozzáadás gombra.](./media/active-directory-saas-sciquest-spend-director-tutorial/create_aaduser_03.png)
 
-7. Az a **ideiglenes jelszó beszerzése** párbeszédpanel lap, kattintson a **létrehozása**.
-   
-    ![Mi az az Azure AD Connect?][105]  
+4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
-8. Az a **ideiglenes jelszó beszerzése** párbeszédpanel lapon, a következő lépésekkel:
-   
-    ![Mi az az Azure AD Connect?][106]   
-   
-    a. Jegyezze fel az értéket a **új jelszó**.
-   
-    b. Kattintson a **Befejezés** gombra.   
+    ![A felhasználó párbeszédpanel](./media/active-directory-saas-sciquest-spend-director-tutorial/create_aaduser_04.png)
 
-### <a name="creating-a-sciquest-spend-director-test-user"></a>SciQuest töltött igazgató tesztfelhasználó létrehozása
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+
+    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+
+    d. Kattintson a **Create** (Létrehozás) gombra.
+ 
+### <a name="create-a-sciquest-spend-director-test-user"></a>SciQuest töltött igazgató tesztfelhasználó létrehozása
+
 Ez a szakasz célja SciQuest töltött igazgató Britta Simon nevű felhasználót létrehozni.
 
-Szeretné a SciQuest töltött igazgató támogatási csoportjához, és adja meg a teszt fiókját is létre részleteit.
+Kapcsolatba kell lépnie a [SciQuest töltött igazgató támogatási csoport](https://www.jaggaer.com/contact-us/) és adja meg a teszt fiókját is létre részleteit.
 
 Másik lehetőségként is kihasználhatja just-in-time kiépítés, egyetlen bejelentkezés szolgáltatásként SciQuest töltött igazgató által támogatott.  
 Ha közvetlenül az időponthoz kötött kiépítés engedélyezve van, felhasználók automatikusan létrejönnek SciQuest töltött igazgató egy egyszeri bejelentkezési kísérlet során, ha azok még nem léteznek. Ez a funkció nem kell létrehoznia az egyszeri bejelentkezés tartozó felhasználók.
 
-Közvetlenül az időponthoz kötött kiépítés engedélyezve beszerzéséhez kapcsolatba kell lépnie még a SciQuest töltött igazgató támogatási csoportjához.
+Közvetlenül az időponthoz kötött kiépítés engedélyezve beszerzéséhez kapcsolatba kell lépnie a [SciQuest töltött igazgató támogatási csoport](https://www.jaggaer.com/contact-us/).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
-Ez a szakasz célja Britta Simon nyújtó saját SciQuest töltött igazgató használandó Azure egyszeri bejelentkezés engedélyezése.
+### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-![Mi az az Azure AD Connect?][200]
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés SciQuest töltött igazgató Azure egyszeri bejelentkezéshez használandó.
+
+![A felhasználói szerepkör hozzárendelése][200] 
 
 **Britta Simon hozzárendelése SciQuest töltött igazgató, hajtsa végre az alábbi lépéseket:**
 
-1. A klasszikus Azure portálon, a könyvtár nézetben a alkalmazások nézet megnyitásához kattintson **alkalmazások** a felső menüben.
-   
-    ![Mi az az Azure AD Connect?][201]
+1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+
+    ![Felhasználó hozzárendelése][201] 
 
 2. Az alkalmazások listában válassza ki a **SciQuest töltött igazgató**.
-   
-    ![Mi az az Azure AD Connect?][202]
 
-3. Kattintson a felső menüben **felhasználók**.
-   
-    ![Mi az az Azure AD Connect?][203]
+    ![Az alkalmazások listáját a SciQuest töltött igazgató hivatkozás](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_app.png)  
 
-4. A felhasználók listában válassza ki a **Britta Simon**.
-   
-    ![Mi az az Azure AD Connect?][204]
+3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
-5. Kattintson az alsó eszköztár **hozzárendelése**.
-   
-    ![Mi az az Azure AD Connect?][205]
+    ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
-Ez a szakasz célja tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.  
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+
+    ![A hozzárendelés hozzáadása panelen][203]
+
+5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+
+6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+
+7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+    
+### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+
 Ha a hozzáférési panelen SciQuest töltött igazgató csempére kattint, meg kell beolvasása automatikusan bejelentkezett az SciQuest töltött igazgató alkalmazására.
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
+
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
+
 [1]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_01.png
 [2]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_02.png
 [3]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_04.png
-[5]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquest_spend_director_01.png
-[6]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquest_spend_director_05.png
-[8]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_06.png
-[9]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_07.png
-[10]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_08.png
-[11]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquest_spend_director_03.png
-[15]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquest_spend_director_04.png
 
-[100]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_09.png 
-[101]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_10.png 
-[102]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_11.png 
-[103]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_12.png 
-[104]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_13.png 
-[105]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_14.png 
-[106]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_15.png 
-[200]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_16.png 
-[201]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_17.png 
-[202]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquest_spend_director_06.png
-[203]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_18.png
-[204]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_19.png
-[205]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_20.png
+[100]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_203.png
 

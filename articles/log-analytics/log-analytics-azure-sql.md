@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 957b8b9aca0ae27362923c87c7a0161cf2c052b7
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 209968a598d3a579cc40edaf52bd7344fa3f60ed
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Azure SQL adatbázis Azure SQL elemzés (előzetes verzió) Naplóelemzési figyelése
 
@@ -43,7 +43,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 
 | Összekapcsolt forrás | Támogatás | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](log-analytics-windows-agents.md) | Nem | A közvetlen Windows-ügynökök nem használják a megoldás. |
+| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem | A közvetlen Windows-ügynökök nem használják a megoldás. |
 | [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | Közvetlen Linux-ügynökök nem használják a megoldás. |
 | [SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | Közvetlen kapcsolat az SCOM-ügynököt a szolgáltatáshoz a megoldás nem használja. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A Naplóelemzési nem beolvasni az adatokat egy tárfiókot. |

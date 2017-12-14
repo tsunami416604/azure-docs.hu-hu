@@ -13,21 +13,22 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
+ms.date: 12/13/2017
 ms.workload: On Demand
-ms.date: 09/08/2017
 ms.author: sashan
-ms.openlocfilehash: 0fb11ee553685618cc7466d3ad8b07ba01611027
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.reviewer: carlrab
+ms.openlocfilehash: 3d6ad95c1ca316b2e7c3f722315d2ddec03a3716
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Azure SQL Database használata magas rendelkezésre állású szolgáltatások tervezése
 
 Összeállításakor, és az Azure SQL Database-magas rendelkezésre állású szolgáltatások telepítése, használata [feladatátvételi csoportok és aktív georeplikáció](sql-database-geo-replication-overview.md) regionális kimaradások és a végzetes hibák rugalmasság biztosításához. Azt is lehetővé teszi, hogy a másodlagos adatbázisok gyors helyreállítás. Ez a cikk általános alkalmazás-minták összpontosít, és az előnyöket és az egyes lehetőségek kompromisszumot ismerteti. Aktív georeplikáció a rugalmas készletek kapcsolatos információkért lásd: [rugalmas készlet vész-helyreállítási stratégiák](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 ## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>1. példa: A két Azure-régiók az üzletmenet folytonosságának minimális állásidővel használata
-Ebben a forgatókönyvben az alkalmazásokat a következő jellemzőkkel rendelkezik: 
+Ebben a forgatókönyvben az alkalmazásokat az alábbi tulajdonságokkal rendelkeznek: 
 *   Azure-régió, egy alkalmazás aktív
 *   Minden adatbázis-munkamenetek szükséges olvasási és írási hozzáférést (RW) adatokhoz
 *   Webes réteg és az adatszint a kell a késleltetés és a forgalom költségek csökkentése a közös elhelyezésű 
@@ -151,7 +152,7 @@ Van azonban néhány, de **mellékhatásokkal**:
 ## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Üzleti folytonosság tervezési: Válasszon egy alkalmazás tervét felhő katasztrófa utáni helyreállítás
 Egyes adott felhőalapú vész-helyreállítási stratégiát kombinálhatja, vagy az alkalmazás igényeinek leginkább megfelelő ezek a kialakítási minták kiterjesztése.  A korábban említett stratégia az SLA-t szeretne ajánlani az ügyfelek és az alkalmazás üzembe helyezési topológia alapul. A következő részekben talál a döntést, hogy az alábbi táblázat összehasonlítja a választási lehetőségek a helyreállítási időkorlát (RPO) és a becsült helyreállítási idő (Beszúrása) alapján.
 
-| Minta | A HELYREÁLLÍTÁSI IDŐKORLÁT | BESZÚRÁSA |
+| Mintázat | A HELYREÁLLÍTÁSI IDŐKORLÁT | BESZÚRÁSA |
 |:--- |:--- |:--- |
 | Aktív-passzív telepítési közös elhelyezésű adatbázis-hozzáférést katasztrófa utáni helyreállítás |Olvasási és írási hozzáférése < 5 másodperc |Hiba észlelése időpontja + a DNS-élettartam |
 | Aktív-aktív központi telepítés alkalmazás terheléselosztás |Olvasási és írási hozzáférése < 5 másodperc |Hiba észlelése időpontja + a DNS-élettartam |

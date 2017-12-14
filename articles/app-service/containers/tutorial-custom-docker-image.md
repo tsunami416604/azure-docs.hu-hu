@@ -1,7 +1,7 @@
 ---
 title: "Egyéni Docker lemezképet használ az tárolókat - Azure webalkalmazás számára |} Microsoft Docs"
 description: "Hogyan használható az egyéni Docker-lemezkép webalkalmazás az tárolókat."
-keywords: "az Azure app service, a webes alkalmazás, a linux, a docker, a tároló"
+keywords: azure app service, web app, linux, docker, container
 services: app-service
 documentationcenter: 
 author: SyntaxC4
@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 08503a7f6f32125c324173636dbda0548f3ccb8c
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
-ms.translationtype: MT
+ms.openlocfilehash: 6a89db8b93f29c29e935afd94da727d2460af889
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker kép webalkalmazás a tárolók használata
 
@@ -186,7 +186,7 @@ Natív Linux alkalmazásaikat a felhőben tárolhatja, Azure Web Apps használat
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-no-h.md)] 
 
-### <a name="create-a-linux-app-service-plan"></a>A Linux App Service-csomag létrehozása
+### <a name="create-a-linux-app-service-plan"></a>Linux App Service-csomag létrehozása
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)] 
 
@@ -198,7 +198,7 @@ A Cloud Shellben az [az webapp create](/cli/azure/webapp#create) paranccsal hozz
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --deployment-container-image-name <docker-ID>/mydockerimage:v1.0.0
 ```
 
-Ha a webalkalmazás létrejött, az Azure parancssori felület kimenetét mutatja be az alábbi példához hasonló:
+A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló eredményeket jelenít meg:
 
 ```json
 {
@@ -294,10 +294,15 @@ SSH lehetővé teszi, hogy a tároló és az ügyfél közötti biztonságos kom
 
     ```docker
     EXPOSE 8000 2222
-
-    RUN service ssh start
     ```
 
+* Ügyeljen arra, hogy [indítsa el az ssh szolgáltatás ](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) /bin könyvtárban rendszerhéj parancsfájl használatával.
+ 
+    ```bash
+    #!/bin/bash
+    service ssh start
+    ```
+     
 ### <a name="open-ssh-connection-to-container"></a>Tároló SSH-kapcsolat
 
 Webes alkalmazás a tárolók nem engedélyezi a külső kapcsolatokat a tárolóhoz. Az SSH egy csak a a Kudu helyre, amely elérhető a `https://<app_name>.scm.azurewebsites.net`.

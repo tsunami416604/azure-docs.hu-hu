@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: c5c3129a50f456e484bf8af2a866059f494bed1d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4216c417d137c00587bf65b39410eca6f4cef8bc
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>A jelszókezelés gyakran ismételt kérdések
 
@@ -41,6 +41,11 @@ Ez a GYIK a következő szakaszok oszlik:
 * **K: a felhasználók regisztrálhatják saját jelszó alaphelyzetbe állítása adatokat?**
 
   > **V:** Igen. Mindaddig, amíg engedélyezve van a jelszó alaphelyzetbe állítása, és azok licencét, felhasználók lépjen a jelszó-visszaállítási portál (http://aka.ms/ssprsetup) regisztrálása a hitelesítési adatokat. A felhasználók is regisztrálhatják a hozzáférési Panel (http://myapps.microsoft.com) keresztül. A hozzáférési Panel keresztül regisztrálásához szükséges a profilkép megadásához válassza **profil**, majd válassza ki a **regisztrálhatnak a jelszóváltoztatásra** lehetőséget.
+  >
+  >
+* **K: Ha engedélyezhető a jelszó alaphelyzetbe állítása egy csoport, és úgy dönt, hogy engedélyezze a Mindenki a felhasználók szükség regisztrálja újra?**
+
+  > **V.:** Nem. Felhasználók, akik rendelkeznek feltöltve a hitelesítési adatok nem szükséges ismételten a regisztrációt.
   >
   >
 * **K: jelszó alaphelyzetbe állítása adatok is definiálása a felhasználók nevében?**
@@ -79,7 +84,7 @@ Ez a GYIK a következő szakaszok oszlik:
   >
   >
 
-## <a name="password-reset"></a>Jelszó lecserélve
+## <a name="password-reset"></a>Új jelszó létrehozása
 
 * **K: el azt, hogy többszöri rövid időn belül a jelszó alaphelyzetbe állítása a felhasználók?**
 
@@ -240,7 +245,7 @@ Ez a GYIK a következő szakaszok oszlik:
   >
   >
 
-## <a name="password-writeback"></a>Jelszóvisszaírás
+## <a name="password-writeback"></a>Jelszóvisszaíró
 
 * **K: hogyan működik a jelszóvisszaírást a háttérben?**
 

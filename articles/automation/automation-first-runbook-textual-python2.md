@@ -3,7 +3,7 @@ title: "Az első Python-runbook az Azure Automationben |} Microsoft Docs"
 description: "Az oktatóanyag végigvezeti a létrehozása, tesztelése és egy egyszerű Python runbook közzététele."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.service: automation
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
-ms.author: eslesar
-ms.openlocfilehash: 3ab858f98077149983ca12e97a621dac18bb580c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: gwallace
+ms.openlocfilehash: 8a7c03f10d4310bcdb13ef76b598c22912707c08
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="my-first-python-runbook"></a>Az első Python-forgatókönyv
 

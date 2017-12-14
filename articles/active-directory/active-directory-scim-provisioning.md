@@ -12,25 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.custom: aaddev;it-pro;oldportal
-ms.openlocfilehash: e433baf69ea0e66465612de077d8e59f5e234ee5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: aaddev;it-pro
+ms.openlocfilehash: 82649b0da67882a0088876798b6f0d79e46051a7
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A tartományok közötti Identity Management rendszert használ automatikusan a felhasználók és csoportok az Azure Active Directory alkalmazások telepítéséhez
 
 ## <a name="overview"></a>Áttekintés
 Azure Active Directory (Azure AD) automatikusan is konfigurálta a felhasználókat és csoportokat, a felülettel webszolgáltatás által az fronted alkalmazás vagy identitás tároló definiálva a [a tartományok közötti Identity Management (SCIM) 2.0-s protokoll specifikációja rendszer](https://tools.ietf.org/html/draft-ietf-scim-api-19). Az Azure Active Directory küldhet kérelmek létrehozása, módosítása, illetve törlési rendelt felhasználók és csoportok a webszolgáltatás. A webszolgáltatás majd így felszabadulhatnak ezeket a kérelmeket, olyan műveleteket végez a célként megadott identitás tárolására. 
-
-> [!IMPORTANT]
-> A Microsoft javasolja, hogy az Azure Portalon található [Azure AD felügyeleti központból](https://aad.portal.azure.com) kezelje az Azure AD-t az ebben a cikkben javasolt klasszikus Azure portál helyett. 
-
-
 
 ![][0]
 *1. ábra: A webszolgáltatáson keresztül identitás tárolóhoz az Azure Active Directory kiépítés.*

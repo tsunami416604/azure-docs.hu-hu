@@ -3,7 +3,7 @@ title: "Runbook-bemeneti paraméterekhez |} Microsoft Docs"
 description: "Forgatókönyv bemeneti paraméterei a rugalmasabb, a runbookok a azáltal, hogy mechanizmusok adatok átadására a runbook, amikor elindul. Ez a cikk ismerteti a különböző alkalmazási helyzetek, amely bemeneti paraméterek runbookok használják."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 4d3dff2c-1f55-498d-9a0e-eee497e5bedb
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: sngun
-ms.openlocfilehash: e5a2afdc0dbe6171b27c11400f460eac46147f37
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 889d1ac1597bd88ae7455ac98bfdb34f4013e0de
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="runbook-input-parameters"></a>Runbook bemeneti paraméterei
 

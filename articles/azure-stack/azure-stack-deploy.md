@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/08/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 2bfd9b2603575545fef1c26310a2eecd2c8968e4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0fa0d00112e731a9f2effd453ba74f5561fca358
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack üzembehelyezési előfeltételek
 
@@ -85,7 +85,7 @@ Azure verem telepíteni az Azure AD-fiókot, elő kell készítenie az Azure AD-
 
 1. Hozzon létre egy Azure AD-fiókot, amely legalább egy Azure ad a directory-rendszergazda. Ha már rendelkezik ilyen fiókkal, használhatja azt. Ellenkező esetben létrehozhat egy ingyenes [http://azure.microsoft.com/en-us/pricing/free-trial/](http://azure.microsoft.com/pricing/free-trial/) (kínai, látogasson el a <http://go.microsoft.com/fwlink/?LinkID=717821> helyett). Ha azt tervezi, hogy később [Azure verem regisztrálni Azure](azure-stack-register.md), rendelkeznie kell előfizetéssel a az újonnan létrehozott fiók.
    
-    6. lépésében menteni ezeket a hitelesítő adatokat [a csomag telepítése](azure-stack-run-powershell-script.md#deploy-the-development-kit). Ez a *szolgáltatás-rendszergazdai* fiók konfigurálhat és kezelhet erőforrásfelhőket, felhasználói fiókokat, bérlői csomagokat, kvótákat és díjszabást. A portálon létrehozhatnak felhőket webhelyhez, magánfelhőket virtuális géphez, csomagokat, és kezelhetik a felhasználói előfizetéseket.
+    6. lépésében menteni ezeket a hitelesítő adatokat [a csomag telepítése](azure-stack-run-powershell-script.md). Ez a *szolgáltatás-rendszergazdai* fiók konfigurálhat és kezelhet erőforrásfelhőket, felhasználói fiókokat, bérlői csomagokat, kvótákat és díjszabást. A portálon létrehozhatnak felhőket webhelyhez, magánfelhőket virtuális géphez, csomagokat, és kezelhetik a felhasználói előfizetéseket.
 2. [Hozzon létre](azure-stack-add-new-user-aad.md) legalább egy fiókot, hogy a development Kit hez bérlőként bejelentkezhet.
    
    | **Azure Active Directory-fiók** | **Támogatott?** |
@@ -95,7 +95,7 @@ Azure verem telepíteni az Azure AD-fiókot, elő kell készítenie az Azure AD-
    | Munkahelyi vagy iskolai fiókkal, Kína érvényes Azure-előfizetéssel |Igen |
    | Munkahelyi vagy iskolai fiók érvényes US Government Azure-előfizetés |Igen |
 
-## <a name="network"></a>Hálózat
+## <a name="network"></a>Network (Hálózat)
 ### <a name="switch"></a>Kapcsoló
 Egy rendelkezésre álló portot a kapcsolón a development kit gép.  
 

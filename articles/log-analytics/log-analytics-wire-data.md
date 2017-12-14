@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 3bb4c82268fe7805227c213000dc803307876fe7
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 331cc9d27dd416900e0145f3e453dfd3bfcfbcb5
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>A Naplóelemzési átviteli adatok 2.0 (előzetes verzió) megoldás
 
@@ -58,7 +58,7 @@ Azonban mivel megtekintett metaadatok, célszerű nem feltétlenül részletes h
 
 | **Csatlakoztatott adatforrás** | **Támogatott** | **Leírás** |
 | --- | --- | --- |
-| Windows-ügynökök | Igen | Átviteli adatokat elemzi, és a Windows-ügynök számítógépekről gyűjt adatokat. <br><br> Kívül a [OMS-ügynököt](log-analytics-windows-agents.md), Windows-ügynökök szükséges a Microsoft függőségi ügynök. Tekintse meg a [támogatott operációs rendszerek](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) operációs rendszerek teljes listáját. |
+| Windows-ügynökök | Igen | Átviteli adatokat elemzi, és a Windows-ügynök számítógépekről gyűjt adatokat. <br><br> Kívül a [OMS-ügynököt](log-analytics-windows-agent.md), Windows-ügynökök szükséges a Microsoft függőségi ügynök. Tekintse meg a [támogatott operációs rendszerek](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) operációs rendszerek teljes listáját. |
 | Linux-ügynökök | Igen | Átviteli adatokat elemzi, és a Linux-ügynök számítógépekről gyűjt adatokat.<br><br> Kívül a [OMS-ügynököt](log-analytics-quick-collect-linux-computer.md), Linux-ügynököt a Microsoft függőségi ügynök szükséges. Tekintse meg a [támogatott operációs rendszerek](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) operációs rendszerek teljes listáját. |
 | System Center Operations Manage felügyeleti csoport | Igen | Átviteli adatokat elemzi, és összegyűjti az adatokat a Windows és Linux-ügynökök a csatlakoztatott [System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md). <br><br> Naplóelemzési a System Center Operations Manager ügynök számítógépről közvetlen kapcsolatra szükség. Adatok Naplóelemzési továbbítódik a felügyeleti csoportból. |
 | Azure Storage-fiók | Nem | Átviteli adatokat adatokat gyűjt a ügynök számítógépekről, nincsenek adatok, az Azure Storage-ból gyűjtését. |
@@ -208,7 +208,7 @@ A függőségi ügynök InstallDependencyAgent-Windows.exe Windows rendszert fut
 
 A függőségi ügynök telepítése minden Windows rendszerű számítógépen tegye a következőket:
 
-1. Az OMS-ügynököt lépéseit követve telepítse [adatok gyűjtése a Windows rendszerű számítógépek a környezetében üzemeltetett](log-analytics-windows-agents.md).
+1. Az OMS-ügynököt lépéseit követve telepítse [adatok gyűjtése a Windows rendszerű számítógépek a környezetében üzemeltetett](log-analytics-windows-agent.md).
 2. Töltse le a Windows függőségi ügynök az előző szakaszban hivatkozás segítségével, és futtassa a következő paranccsal:`InstallDependencyAgent-Windows.exe`
 3. Kövesse a varázsló az ügynök telepítéséhez.
 4. Ha a függőségi ügynök nem indul el, tekintse meg a hibával kapcsolatos részletes információk a naplókat. Windows-ügynökök a naplózási könyvtár %Programfiles%\Microsoft függőségi Agent\logs esetén.

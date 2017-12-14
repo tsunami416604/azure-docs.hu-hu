@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2017
+ms.date: 12/13/2017
 ms.author: mimig
-ms.openlocfilehash: 69501b07369a8d5da15cf9bc7d75f07999bf0999
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: ba24ee0926928503b3f466405d8651b1dab6fb95
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>Az Azure Cosmos DB tárolókat átviteli beállítása
 
@@ -36,7 +36,7 @@ A következő táblázat felsorolja a rendelkezésre álló tárolók az átvite
         <tr>
             <td valign="top"><p>Minimális átviteli sebesség</p></td>
             <td valign="top"><p>400 kérelem egység / másodperc</p></td>
-            <td valign="top"><p>2500 kérést egység / másodperc</p></td>
+            <td valign="top"><p>1000 kérelem egység / másodperc</p></td>
         </tr>
         <tr>
             <td valign="top"><p>Maximális átviteli sebesség</p></td>
@@ -51,7 +51,7 @@ A következő táblázat felsorolja a rendelkezésre álló tárolók az átvite
 1. Egy új ablakban nyissa meg a [Azure-portálon](https://portal.azure.com).
 2. A bal oldali sávon kattintson **Azure Cosmos DB**, vagy kattintson a **több szolgáltatások** alsó, majd görgessen a **adatbázisok**, és kattintson a **Azure Cosmos DB**.
 3. Válassza ki a Cosmos DB fiókját.
-4. Kattintson az új ablakban **adatok kezelővel (előzetes verzió)** a navigációs menü.
+4. Kattintson az új ablakban **adatkezelő** a navigációs menü.
 5. Az új ablakban bontsa ki az adatbázis és a tároló majd **skála & beállítások**.
 6. Az új ablakban írja be az új átviteli értéket a **átviteli** gombra, majd **mentése**.
 
@@ -60,7 +60,7 @@ A következő táblázat felsorolja a rendelkezésre álló tárolók az átvite
 ## <a name="to-set-the-throughput-by-using-the-sql-api-for-net"></a>Az átviteli sebesség beállítása a .NET-hez az SQL API használatával
 
 ```C#
-//Fetch the resource to be updated
+// Fetch the offer of the collection whose throughput needs to be updated
 Offer offer = client.CreateOfferQuery()
     .Where(r => r.ResourceLink == collection.SelfLink)    
     .AsEnumerable()
@@ -69,7 +69,7 @@ Offer offer = client.CreateOfferQuery()
 // Set the throughput to the new value, for example 12,000 request units per second
 offer = new OfferV2(offer, 12000);
 
-//Now persist these changes to the database by replacing the original resource
+// Now persist these changes to the collection by replacing the original offer resource
 await client.ReplaceOfferAsync(offer);
 ```
 
@@ -77,7 +77,7 @@ await client.ReplaceOfferAsync(offer);
 
 **I állíthatja az átviteli sebesség kisebb, mint 400 RU/mp?**
 
-400 RU/mp a minimális átviteli sebesség érhető el a Cosmos DB az egypartíciós gyűjtemények (2500 RU/mp a particionált gyűjtemények minimális). Kérelem egységek 100 RU/mp intervallumok belül vannak beállítva, de az átviteli sebesség nem állítható be 100 RU/mp vagy bármely érték kisebb, mint a 400 RU/mp. Ha fejlesztéséhez és teszteléséhez Cosmos DB költséghatékony módszert keres, akkor használhatja az ingyenes [Azure Cosmos DB emulátor](local-emulator.md), amely központilag telepíthető helyileg ingyenesen. 
+400 RU/mp a minimális átviteli sebesség érhető el a Cosmos DB egypartíciós tárolók (1000 RU/mp az particionált tárolókat minimális). Kérelem egységek 100 RU/mp intervallumok belül vannak beállítva, de az átviteli sebesség nem állítható be 100 RU/mp vagy bármely érték kisebb, mint a 400 RU/mp. Ha fejlesztéséhez és teszteléséhez Cosmos DB költséghatékony módszert keres, akkor használhatja az ingyenes [Azure Cosmos DB emulátor](local-emulator.md), amely központilag telepíthető helyileg ingyenesen. 
 
 **Hogyan állíthatom be a MongoDB API-jával througput?**
 

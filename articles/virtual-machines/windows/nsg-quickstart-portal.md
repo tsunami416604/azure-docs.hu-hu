@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan nyisson meg egy portot / hozzon létre egy vé
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/21/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 33bc0be0aeae6d0276fd8999b9ac0a010e3067ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08f0af6ecdb45b263d39c3d2d6442f4ed555e3c3
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Egy virtuális géphez portok megnyitása és az Azure portál
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -38,7 +38,12 @@ Válassza ki az új hálózati biztonsági csoporthoz. Válassza a "Bejövő biz
 
 ![Egy bejövő forgalomra vonatkozó szabály hozzáadása](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-Válasszon egy közös **szolgáltatás** a legördülő menüből, például a *HTTP*. Igény szerint kiválaszthatja *egyéni* arra, hogy egy adott port használatára. Ha szükséges, módosítsa a prioritás vagy neve. A prioritás hatással van, amelyben a szabályok érvényesek - minél alacsonyabb a numerikus érték, a korábban a szabály vonatkozik. Igény szerint kiválaszthatja **speciális** adja meg például egy adott forrás IP-blokk vagy port tartomány, a képernyő tetején. Amikor elkészült, válassza ki a **OK** a szabály létrehozásához:
+Egy szabály létrehozására, amely lehetővé teszi, hogy a forgalmat:
+
+- Válassza ki a **alapvető** gombra. Alapértelmezés szerint a **speciális** ablaka néhány további konfigurációs beállítások, például egy adott forrás IP-blokk vagy port tartomány meghatározásához.
+- Válasszon egy közös **szolgáltatás** a legördülő menüből, például a *HTTP*. Igény szerint kiválaszthatja *egyéni* arra, hogy egy adott port használatára. 
+- Ha szükséges, módosítsa a prioritás vagy neve. A prioritás hatással van, amelyben a szabályok érvényesek - minél alacsonyabb a numerikus érték, a korábban a szabály vonatkozik.
+- Amikor elkészült, válassza ki a **OK** a szabály létrehozásához:
 
 ![Egy bejövő forgalomra vonatkozó szabály létrehozása](./media/nsg-quickstart-portal/create-inbound-rule.png)
 

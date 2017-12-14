@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
-ms.date: 11/28/2017
+ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 17b10011af915a06e7c65f8d321a1e452956c28a
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 1825b2a58e1022f22c71395477a5fca54c715455
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-minták
 
@@ -32,6 +32,7 @@ A következő táblázat a PowerShell parancsfájlok mintának, hogy a Service F
 |-|-|
 | **Fürt létrehozása** ||
 | [Hozzon létre egy fürtöt (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Az Azure Service Fabric-fürtöt hoz létre. |
+|[A tesztfürthöz (Azure) létrehozása](./scripts/service-fabric-powershell-create-test-cluster.md)| Azure Service Fabric-fürt három csomópontos teszt hoz létre.|
 | **Fürt csomópont és infrastruktúra kezelése** ||
 | [Egy alkalmazás-tanúsítvány hozzáadása](./scripts/service-fabric-powershell-add-application-certificate.md)| Egy alkalmazás X.509 tanúsítvány felvétele a fürt összes csomópontján. |
 | [A virtuális gépek fürtön RDP-porttartomány frissítése](./scripts/service-fabric-powershell-change-rdp-port-range.md)|Módosítja az RDP porttartomány fürtben telepített virtuális gépek fürtcsomóponton.|

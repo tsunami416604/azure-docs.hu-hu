@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 0f784e8ecd8fc94c12df1a819055718e06547b6b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: f2be9ca98330866ac8b6fb12efd56efdc711eedf
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>Útvonal-használatával, Azure-alapú helyszolgáltatás pontra
 
@@ -65,12 +65,12 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
             }
         </style>
     </head>
+
     <body>
         <div id="map"></div>
         <script>
-        // Embed Map Control JavaScript code here
+            // Embed Map Control JavaScript code here
         </script>
-
     </body>
 
     </html>
@@ -79,68 +79,67 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
 
 3. Adja hozzá a következő JavaScript-kódot a *parancsfájl* blokk a HTML-fájl. Cserélje le a helyőrző *< insert-kulcs >* a hely alapú Services-fiók elsődleges kulccsal.
 
-    ```HTML
-            // Instantiate map to the div with id "map"
-            var subscriptionKey = "<insert-key>";
-            var map = new atlas.Map("map", {
-                "subscription-key": subscriptionKey
-            });
-
+    ```JavaScript
+    // Instantiate map to the div with id "map"
+    var subscriptionKey = "<insert-key>";
+    var map = new atlas.Map("map", {
+        "subscription-key": subscriptionKey
+    });
     ```
     A **atlas. Térkép** vezérlő biztosít a vizuális és interaktív webes térképre, és az Azure térkép vezérlőelem API összetevője.
 
 4. Adja hozzá a következő JavaScript-kódot a *parancsfájl* blokkot. Ez biztosítja, hogy a réteget *linestring* az útvonalat a térkép vezérlőelem számára:
 
-    ```HTML
-            // Initialize the linestring layer for routes on the map
-            var routeLinesLayerName = "routes";
-            map.addLinestrings([], {
-                name: routeLinesLayerName,
-                color: "#2272B9",
-                width: 5,
-                cap: "round",
-                join: "round",
-                before: "labels"
-            });
+    ```JavaScript
+    // Initialize the linestring layer for routes on the map
+    var routeLinesLayerName = "routes";
+    map.addLinestrings([], {
+        name: routeLinesLayerName,
+        color: "#2272B9",
+        width: 5,
+        cap: "round",
+        join: "round",
+        before: "labels"
+    });
     ```
 
 5. Adja hozzá a következő JavaScript-kód létrehozása a kezdő- és végpontok az útvonal:
 
-    ```HTML
-            // Create the GeoJSON objects which represent the start and end point of the route
-            var startPoint = new atlas.data.Point([-122.130137, 47.644702]);
-            var startPin = new atlas.data.Feature(startPoint, {
-                title: "Microsoft",
-                icon: "pin-round-blue"
-            });
+    ```JavaScript
+    // Create the GeoJSON objects which represent the start and end point of the route
+    var startPoint = new atlas.data.Point([-122.130137, 47.644702]);
+    var startPin = new atlas.data.Feature(startPoint, {
+        title: "Microsoft",
+        icon: "pin-round-blue"
+    });
 
-            var destinationPoint = new atlas.data.Point([-122.3352, 47.61397]);
-            var destinationPin = new atlas.data.Feature(destinationPoint, {
-                title: "Contoso Oil & Gas",
-                icon: "pin-blue"
-            });
+    var destinationPoint = new atlas.data.Point([-122.3352, 47.61397]);
+    var destinationPin = new atlas.data.Feature(destinationPoint, {
+        title: "Contoso Oil & Gas",
+        icon: "pin-blue"
+    });
     ```
     Ez a kód létrehoz két [GeoJSON objektumok](https://en.wikipedia.org/wiki/GeoJSON) kezdő- és végpontok útvonal képviseli. A végpont az egyik a szélesség/hosszúság kombináció a *üzemanyag állomások* keres az előző oktatóanyag [keresési közelben pont használatával, Azure-alapú helyszolgáltatás](./tutorial-search-location.md).
 
 6. Adja hozzá a PIN-kódok a kezdő- és végpontok hozzáadása a leképezés a következő JavaScript-kódot:
 
-    ```HTML
-            // Fit the map window to the bounding box defined by the start and destination points
-            var swLon = Math.min(startPoint.coordinates[0], destinationPoint.coordinates[0]);
-            var swLat = Math.min(startPoint.coordinates[1], destinationPoint.coordinates[1]);
-            var neLon = Math.max(startPoint.coordinates[0], destinationPoint.coordinates[0]);
-            var neLat = Math.max(startPoint.coordinates[1], destinationPoint.coordinates[1]);
-            map.setCameraBounds({
-                bounds: [swLon, swLat, neLon, neLat],
-                padding: 50
-            });
+    ```JavaScript
+    // Fit the map window to the bounding box defined by the start and destination points
+    var swLon = Math.min(startPoint.coordinates[0], destinationPoint.coordinates[0]);
+    var swLat = Math.min(startPoint.coordinates[1], destinationPoint.coordinates[1]);
+    var neLon = Math.max(startPoint.coordinates[0], destinationPoint.coordinates[0]);
+    var neLat = Math.max(startPoint.coordinates[1], destinationPoint.coordinates[1]);
+    map.setCameraBounds({
+        bounds: [swLon, swLat, neLon, neLat],
+        padding: 50
+    });
 
-            // Add pins to the map for the start and end point of the route
-            map.addPins([startPin, destinationPin], {
-                name: "route-pins",
-                textFont: "SegoeUi-Regular",
-                textOffset: [0, -20]
-            });
+    // Add pins to the map for the start and end point of the route
+    map.addPins([startPin, destinationPin], {
+        name: "route-pins",
+        textFont: "SegoeUi-Regular",
+        textOffset: [0, -20]
+    });
     ``` 
     Az API-t **map.setCameraBounds** beállítja a térkép ablakban a kezdő- és végpontjainak koordinátáival megfelelően. Az API-t **map.addPins** a térkép vezérlőelem visual összetevőként a pontok hozzáadása.
 
@@ -154,38 +153,38 @@ Ez a szakasz bemutatja, hogyan használható az Azure-alapú helyszolgáltatás 
 
 1. Nyissa meg a **MapRoute.html** fájl az előző szakaszban létrehozott, és adja hozzá a következő JavaScript-kódot a *parancsfájl* letiltása, hogy bemutassa a útvonal-szolgáltatás.
 
-    ```HTML
-            // Perform a request to the route service and draw the resulting route on the map
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    var response = JSON.parse(xhttp.responseText);
+    ```JavaScript
+    // Perform a request to the route service and draw the resulting route on the map
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(xhttp.responseText);
 
-                    var route = response.routes[0];
-                    var routeCoordinates = [];
-                    for (var leg of route.legs) {
-                        var legCoordinates = leg.points.map((point) => [point.longitude, point.latitude]);
-                        routeCoordinates = routeCoordinates.concat(legCoordinates);
-                    }
+            var route = response.routes[0];
+            var routeCoordinates = [];
+            for (var leg of route.legs) {
+                var legCoordinates = leg.points.map((point) => [point.longitude, point.latitude]);
+                routeCoordinates = routeCoordinates.concat(legCoordinates);
+            }
 
-                    var routeLinestring = new atlas.data.LineString(routeCoordinates);
-                    map.addLinestrings([new atlas.data.Feature(routeLinestring)], { name: routeLinesLayerName });
-                }
-            };
+            var routeLinestring = new atlas.data.LineString(routeCoordinates);
+            map.addLinestrings([new atlas.data.Feature(routeLinestring)], { name: routeLinesLayerName });
+        }
+    };
     ```
     A kódrészletet létrehoz egy [XMLHttpRequest](https://xhr.spec.whatwg.org/), és hozzáadja a bejövő válasz elemzése eseménykezelő. Sikeres választ akkor az első visszaadott útvonal sor szegmensek koordináták tömbje hoz létre. E koordináták útvonal csoportja majd hozzáadása a térkép *linestring* réteg.
 
 2. Adja hozzá a következő kódot a *parancsfájl* blokkot, a XMLHttpRequest küldeni az Azure-alapú helyszolgáltatás útvonal-szolgáltatás:
 
-    ```HTML
-            var url = "https://atlas.microsoft.com/route/directions/json?";
-            url += "&api-version=1.0";
-            url += "&subscription-key=" + subscriptionKey;
-            url += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
-                destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
-    
-            xhttp.open("GET", url, true);
-            xhttp.send();
+    ```JavaScript
+    var url = "https://atlas.microsoft.com/route/directions/json?";
+    url += "&api-version=1.0";
+    url += "&subscription-key=" + subscriptionKey;
+    url += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
+        destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
+
+    xhttp.open("GET", url, true);
+    xhttp.send();
     ```
     A fenti kérelmet a szükséges paramétereket, amelyek a fiókkulcs előfizetés, és a koordináták a kezdő és végpontja, a megadott sorrendben jeleníti meg. 
 

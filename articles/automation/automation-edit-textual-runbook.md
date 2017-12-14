@@ -3,7 +3,7 @@ title: "Azure Automation runbookjai szöveges szerkesztése"
 description: "Ez a cikk biztosít a különböző eljárásokkal a PowerShell és a PowerShell-munkafolyamati forgatókönyvek az Azure Automationben használata a szöveges szerkesztővel."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: stevenka
 editor: tysonn
 ms.assetid: 6f5b48fb-6f30-4e99-9e14-9061b5554b08
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: ae36342ab0f42c364dedd4107a59f5b0ffc20a0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e166700be0ec6b32d40f34bd47f92a7cff1cc7bf
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Azure Automation runbookjai szöveges szerkesztése
 Az Azure Automationben szöveges szerkesztő segítségével szerkesztése [PowerShell-forgatókönyvek](automation-runbook-types.md#powershell-runbooks) és [PowerShell munkafolyamat-forgatókönyvekről](automation-runbook-types.md#powershell-workflow-runbooks). Azt az egyéb kód szerkesztőt, például a intellisense és további speciális funkciók színkódolás segítséget nyújt a runbookok közös erőforrások eléréséhez a tipikus funkcióit.  Ez a cikk nyújt a részletes lépéseket a szerkesztővel különböző funkcióihoz.

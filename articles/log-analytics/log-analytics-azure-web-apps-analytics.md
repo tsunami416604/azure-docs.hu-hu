@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: banders
-ms.openlocfilehash: 9ef26d4b6bfd92925a70b7bbdf8979e287c73445
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d910339cc35e09705e543706b40dfe8e0ea9dd42
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Az Azure-webalkalmazás-erőforrások között metrikáihoz analitikai adatok megtekintése
 
@@ -39,7 +39,7 @@ Legtöbb egyéb Naplóelemzési megoldásoktól eltérően adatokat nem gyűjtö
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](log-analytics-windows-agents.md) | Nem | A megoldás a Windows-ügynökök nem gyűjt adatokat. |
+| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem | A megoldás a Windows-ügynökök nem gyűjt adatokat. |
 | [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
 | [SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | A megoldás nem gyűjt adatokat az ügynökök a csatlakoztatott SCOM felügyeleti csoport. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A megoldás nem az Azure storage nem gyűjtemény adatait. |
@@ -58,10 +58,10 @@ Hajtsa végre a következő lépésekkel állíthatja be az Azure Web Apps Analy
 Az Azure Web Apps elemzési megoldások metrikák két készletét gyűjti az Azure-ból:
 
 - Az Azure Web Apps metrikák
-  - Munkakészlet átlagos memória
+  - Átlagos memória-munkakészlet
   - Átlagos válaszidő
   - Küldött vagy fogadott bájtok
-  - CPU-idő
+  - Processzoridő
   - Kérelmek
   - Munkakészlet memória
   - Httpxxx

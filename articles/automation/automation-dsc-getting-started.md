@@ -3,7 +3,7 @@ title: "Ismerkedés az Azure Automation DSC szolgáltatással |} Microsoft Docs"
 description: "MAGYARÁZAT és példákat a leggyakoribb feladatokat az Azure Automation szükséges konfiguráló (DSC)"
 services: automation
 documentationcenter: na
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: a3816593-70a3-403b-9a43-d5555fd2cee2
@@ -13,26 +13,26 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/21/2016
-ms.author: magoedte;eslesar
-ms.openlocfilehash: 8a10d961ad7c107c68b57c64ee6c88544ff8832b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: magoedte;gwallace
+ms.openlocfilehash: e8b7d0d38f59589cbe6f82798b4e725af7b20e23
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Ismerkedés az Azure Automation DSC
-Ez a témakör ismerteti a leggyakoribb feladatokat az Azure Automation szükséges konfiguráló (DSC), például a létrehozása, importálása, és konfigurációk, kezeléséhez, a bevezetési gépek fordítása és jelentések megtekintése. Milyen Azure Automation DSC áttekintést van, a következő témakörben: [Azure Automation DSC – áttekintés](automation-dsc-overview.md). A DSC-dokumentáció, lásd: [Windows PowerShell kívánt állapot beállítása – áttekintés](https://msdn.microsoft.com/PowerShell/dsc/overview).
+Ez a cikk ismerteti a leggyakoribb feladatokat az Azure Automation szükséges konfiguráló (DSC), például a létrehozása, importálása, és konfigurációk, kezeléséhez, a bevezetési gépek fordítása és jelentések megtekintése. Milyen Azure Automation DSC áttekintést van, a következő témakörben: [Azure Automation DSC – áttekintés](automation-dsc-overview.md). A DSC-dokumentáció, lásd: [Windows PowerShell kívánt állapot beállítása – áttekintés](https://msdn.microsoft.com/PowerShell/dsc/overview).
 
-Ez a témakör részletesen ismerteti, Azure Automation DSC használata. Ha azt szeretné, hogy egy minta-környezet, amely már be van állítva a jelen témakörben ismertetett lépések nélkül, [a következő ARM-sablon](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup). Ez a sablon állít be egy befejezett Azure Automation DSC-környezetben, például egy Azure Automation DSC által felügyelt Azure virtuális Gépen.
+A cikkben egy Azure Automation DSC használata lépésenkénti útmutatót. Ha azt szeretné, hogy egy minta-környezet, amely már be van állítva a cikkben ismertetett lépések nélkül, a következő használható [Resource Manager-sablon](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup). Ez a sablon állít be egy befejezett Azure Automation DSC-környezetben, például egy Azure Automation DSC által felügyelt Azure virtuális Gépen.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ebben a témakörben szereplő példák elvégzéséhez a következőkre szükség:
+Ebben a cikkben szereplő példák elvégzéséhez a következőkre szükség:
 
 * Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) kapcsolatos részt.
 * Az Azure Resource Manager virtuális gép (klasszikus) Windows Server 2008 R2 rendszerű vagy újabb. A virtuális gépek létrehozásával kapcsolatos információkért tekintse meg a [Windows virtuális gép létrehozása az Azure Portallal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) című cikket.
 
 ## <a name="creating-a-dsc-configuration"></a>A DSC-konfiguráció létrehozása
-Létre fogunk hozni egy egyszerű [DSC-konfiguráció](https://msdn.microsoft.com/powershell/dsc/configurations) megléte vagy hiánya, ezzel biztosítható a **webkiszolgáló** Windows szolgáltatás (IIS), attól függően, hogy hogyan lehet kijelölni csomópontok.
+Létrehozhat egy egyszerű [DSC-konfiguráció](https://msdn.microsoft.com/powershell/dsc/configurations) megléte vagy hiánya, ezzel biztosítható a **webkiszolgáló** Windows szolgáltatás (IIS), attól függően, hogy hogyan lehet kijelölni csomópontok.
 
 1. Indítsa el a Windows PowerShell ISE (és bármilyen szövegszerkesztővel).
 2. Írja be a következőket:
@@ -67,7 +67,7 @@ Létre fogunk hozni egy egyszerű [DSC-konfiguráció](https://msdn.microsoft.co
 Ez a konfiguráció minden csomópont blokkban meghívja a egy erőforrást a [WindowsFeature erőforrás](https://msdn.microsoft.com/powershell/dsc/windowsfeatureresource), megléte vagy hiánya, ezzel biztosítható a **webkiszolgáló** szolgáltatás.
 
 ## <a name="importing-a-configuration-into-azure-automation"></a>Azure Automation konfiguráció importálása
-Ezután azt fogja importálnia kell a konfiguráció az Automation-fiók.
+Ezután a konfigurációt importálja az Automation-fiók.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A központ menüben kattintson a **összes erőforrás** és majd az Automation-fiók nevét.
@@ -129,7 +129,7 @@ Egy fordítási feladat sikeres létrehozása után egy vagy több új csomópon
     ![A DSC-Csomópontkonfigurációk paneljét bemutató képernyőkép](./media/automation-dsc-getting-started/NodeConfigs.png)
 
 ## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-dsc"></a>Egy Azure virtuális gép Management az Azure Automation DSC Szolgáltatásban
-Azure Automation DSC segítségével kezelheti az Azure virtuális gépeken (klasszikus és Resource Manager), a helyszíni virtuális gépek, Linux rendszerű gépek, AWS virtuális gépek és a helyszíni fizikai gépeket. Ebben a témakörben azt fedezi történő előkészítésére csak Azure Resource Manager virtuális gépeken. Gépek, más típusú bevezetési kapcsolatos információk: [bevezetési gépeket Azure Automation DSC általi kezelésre](automation-dsc-onboarding.md).
+Azure Automation DSC segítségével kezelheti az Azure virtuális gépeken (klasszikus és Resource Manager), a helyszíni virtuális gépek, Linux rendszerű gépek, AWS virtuális gépek és a helyszíni fizikai gépeket. Ebből a cikkből megismerheti, hogyan kell bevezetni csak Azure Resource Manager virtuális gépek. Gépek, más típusú bevezetési kapcsolatos információk: [bevezetési gépeket Azure Automation DSC általi kezelésre](automation-dsc-onboarding.md).
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-dsc"></a>A bevezetni az Azure Resource Manager virtuális gép Azure Automation DSC általi kezelésre
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -151,10 +151,10 @@ Azure Automation DSC segítségével kezelheti az Azure virtuális gépeken (kla
    
     ![A regisztrációs paneljét bemutató képernyőkép](./media/automation-dsc-getting-started/RegisterVM.png)
    
-    A megadott csomópont-konfiguráció által meghatározott időközönként alkalmazzuk a virtuális gép a **konfigurációs mód gyakoriságának**, és a virtuális gép frissítések a csomópont-konfiguráció által meghatározott időközönként ellenőrzi a  **Frissítési gyakoriság**. Ezek az értékek módjáról további információkért lásd: [konfigurálása a helyi Configuration Manager](https://msdn.microsoft.com/PowerShell/DSC/metaConfig).
+    A csomópont-konfiguráció által meghatározott időközönként alkalmazzák a virtuális géphez megadott a **konfigurációs mód gyakoriságának**, és a virtuális gép frissítések a csomópont-konfiguráció által meghatározott időközönként ellenőrzi a **frissítése Gyakoriság**. Ezek az értékek módjáról további információkért lásd: [konfigurálása a helyi Configuration Manager](https://msdn.microsoft.com/PowerShell/DSC/metaConfig).
 9. Az a **adja hozzá az Azure virtuális gépek** panelen kattintson a **létrehozása**.
 
-Azure indul el a virtuális gép folyamatán. Ha befejeződött, a virtuális Gépet fog megjelenni a **DSC-csomópontok** az Automation-fiók panelén.
+Azure elindítja a folyamatot, a virtuális gép. Ha befejeződött, a virtuális gép megjelenik a **DSC-csomópontok** az Automation-fiók panelén.
 
 ## <a name="viewing-the-list-of-dsc-nodes"></a>A DSC-csomópontok listájának megtekintése
 Lett előkészítve felügyeletre a az Automation-fiókban lévő összes gép listáját megtekintheti a **DSC-csomópontok** panelen.

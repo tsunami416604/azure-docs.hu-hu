@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2017
+ms.date: 12/09/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
-ms.openlocfilehash: a196df5b4ab47b234b48594da45cd4d72f604086
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ad23a098ee0482b3c8c853ab5cee989f752a101
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Egy függvény OpenAPI definíció létrehozása
 REST API-k gyakran ismerteti egy OpenAPI definíció használatával (korábbi néven egy [Swagger](http://swagger.io/) fájl). Ez a definíció milyen műveleteket elérhetők az API-k, és hogy a kérés- és az API-adatszerkezet információkat tartalmaz.
@@ -48,9 +48,17 @@ Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának
 
 Ez az oktatóanyag használja egy indított HTTP-függvény, amely két paramétert fogad: becsült ideje a turbina létrehozásához javítása (órákban); és (a kilowattban) turbinás kapacitását. A függvény majd kiszámítja mennyi javítási ára, és mekkora a bevétel a turbinás lehetett létrehozni egy 24 órás időszakban.
 
-1. Bontsa ki a függvény app, kattintson a  **+**  gombra **funkciók**, kattintson a **HTTPTrigger** sablont. Adja meg `TurbineRepair` a függvény **neve** kattintson **létrehozása**.
+1. Bontsa ki a függvény alkalmazást, és válassza ki a  **+**  gombra **funkciók**. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét. 
 
-    ![Függvény alkalmazások panelről, Funkciók +](media/functions-openapi-definition/add-function.png)
+    ![Függvények gyors létrehozásának oldala az Azure Portalon](media/functions-openapi-definition/add-first-function.png)
+
+2. Írja be a keresőmezőbe, `http` majd **C#** a HTTP-eseményindító sablon. 
+ 
+    ![A HTTP-eseményindítóval kiválasztása](./media/functions-openapi-definition/select-http-trigger-portal.png)
+
+3. Típus `TurbineRepair` a függvény **neve**, válassza a `Function` a  **[hitelesítési szint](functions-bindings-http-webhook.md#http-auth)**, majd válassza ki **létrehozása**.  
+
+    ![Az indított HTTP-függvény létrehozása](./media/functions-openapi-definition/select-http-trigger-portal-2.png)
 
 1. Cserélje le a run.csx fájl tartalmát a következő kódra, majd kattintson az **mentése**:
 

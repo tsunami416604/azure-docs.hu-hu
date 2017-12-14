@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/8/2017
+ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: bcbf536390786b61544d3e09638d89e6b3b5c004
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 1d7d6200196eee96186dc5e597abc84fa0aa86c5
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Az Azure virtuálisgép-skálázási készletekben – gyakori kérdések
 
@@ -219,7 +219,7 @@ Megadhat egyszerű szöveges nyilvános SSH-kulcsok Linux virtuális gép létre
 linuxConfiguration elem neve | Szükséges | Típus | Leírás
 --- | --- | --- | --- |  ---
 ssh | Nem | Gyűjtemény | Adja meg a Linux operációs rendszert futtató SSH-kulcs konfigurációja
-Elérési út | Igen | Karakterlánc | Ha az SSH-kulcsok vagy tanúsítványt kell elhelyezkedniük Linux elérési
+elérési út | Igen | Karakterlánc | Ha az SSH-kulcsok vagy tanúsítványt kell elhelyezkedniük Linux elérési
 keyData | Igen | Karakterlánc | Megadja a base64-kódolású nyilvános SSH-kulcs
 
 Egy vonatkozó példáért lásd: [a 101-vm-ssh-kulcsfájl GitHub gyors üzembe helyezési sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
@@ -291,7 +291,7 @@ Ez a probléma nem tapasztal, amikor, mert a titkos kulcsot az Azure Service Fab
  
 Az Azure Key Vault dokumentáció szerint, hogy az beszerzése titkos REST API-t a legújabb verzióját a titkos kulcsot kell visszaadnia, ha nincs megadva a verziója.
  
-Módszer | URL-CÍME
+Módszer | URL-cím
 --- | ---
 GET | https://mykeyvault.vault.Azure.NET/secrets/ {titkos kulcs neve} / {titkos-version}? api-version = {api-version}
 
@@ -369,7 +369,13 @@ A virtuálisgép-méretezési csoportok bővítmény alkalmazás-előkészítés
  
 ### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>Hogyan tegye alaphelyzetbe állítani a jelszót a virtuális gépek a virtuálisgép-méretezési csoportban lévő?
 
-A virtuálisgép-méretezési csoportban lévő virtuális gépek a jelszó alaphelyzetbe állítása, használja a virtuális gép eléréséhez kapcsolódó kiegészítő mezőket. 
+A jelszó módosítása virtuális gépek esetén a méretezési készlet két fő módja van.
+
+1. Állítsa át a VMSS modellt közvetlenül. A számítási API 2017-12-01 és újabb verziói.
+
+Frissítse a rendszergazdai hitelesítő adatokat közvetlenül a modellben méretezési készlet (például az Azure erőforrás-kezelő, a PowerShell vagy a parancssori felület használatával). Miután a méretezési frissített, minden új virtuális gépek lesz az új hitelesítő adatokkal. Meglévő virtuális gépek csak fog rendelkezni az új hitelesítő adatokkal, ha azok lemezképet. 
+
+2. Alaphelyzetbe állítja a jelszót a virtuális gép eléréséhez kapcsolódó kiegészítő mezőket.
 
 Használja a következő PowerShell-példát:
 

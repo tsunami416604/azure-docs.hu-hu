@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: a96e7f4979965300a513e4d598bbd8566337a21f
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: 02761b0e4a25e9aa2312d66bb8c6ab861fb0c3cc
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="authorize-users-for-ambari-views"></a>Az Ambari Views használatának engedélyezése felhasználók számára
 
@@ -123,7 +123,7 @@ A lista nézet két kategóriába gyors szerkesztési képességeket biztosít: 
 
     ![Szerepkörök listanézet - felhasználók](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* A csoportok kategória a listanézet összes csoport és az egyes csoportokhoz rendelt szerepkör jeleníti meg. A jelen példában csoportok listájának szinkronizálása a megadott Azure AD-csoport a **hozzáférés felhasználói csoport** a fürt tartománybeállítások tulajdonsága. Lásd: [hozzon létre HDInsight-fürt](./domain-joined/apache-domain-joined-configure.md#create-hdinsight-cluster).
+* A csoportok kategória a listanézet összes csoport és az egyes csoportokhoz rendelt szerepkör jeleníti meg. A jelen példában csoportok listájának szinkronizálása a megadott Azure AD-csoport a **hozzáférés felhasználói csoport** a fürt tartománybeállítások tulajdonsága. Lásd: [hozzon létre HDInsight-fürt](./domain-joined/apache-domain-joined-configure.md#create-an-hdinsight-cluster-in-the-vnet).
 
     ![Szerepkörök listanézet - csoportok](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

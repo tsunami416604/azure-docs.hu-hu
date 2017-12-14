@@ -8,7 +8,7 @@
 Az oktatóanyag végrehajtása egy **hűtő** eszköz, amely a következő telemetriai adatokat küld a távoli megfigyelési [előre konfigurált megoldás](../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md):
 
 * Hőmérséklet
-* nyomás
+* Pressure
 * Páratartalom
 
 Az egyszerűség, a kódot állít elő, a telemetriai adatok mintaértékek a **hűtő**. A minta lehetett bővíteni a valódi érzékelők csatlakozik az eszközt, és valós telemetriai adatok küldését.
@@ -54,7 +54,7 @@ Keresse meg az eszköz kell az előkonfigurált megoldás való csatlakozáskor 
 
 1. Keresse meg az erőforráscsoport, amely tartalmazza a távoli felügyeleti megoldás az Azure-szolgáltatásokhoz. Az erőforráscsoport neve megegyezik a távoli figyelési megoldást igényelnek létesített rendelkezik.
 
-1. Nyissa meg az IoT-központ az erőforráscsoportban. Válassza a **eszköz explorer**:
+1. Nyissa meg az IoT-központ az erőforráscsoportban. Válassza a **az IoT-eszközök**:
 
     ![Eszköz explorer](media/iot-suite-selector-connecting/deviceexplorer.png)
 

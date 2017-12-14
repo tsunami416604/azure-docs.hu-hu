@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: banders
-ms.openlocfilehash: 62d31ed486458245156f7fc832294d662c62991e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6785bfcefb09fa6135ba451fafa76efc8c2e6c76
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Adatforrások csatlakoztatása a Configuration Manager szolgáltatáshoz
 Csatlakozhat a System Center Configuration Manager az OMS szolgáltatáshoz szinkronizálási eszköz gyűjtemény adatait. Így az adatok a Configuration Manager hierarchiából OMS érhető el.
@@ -28,9 +28,9 @@ Csatlakozhat a System Center Configuration Manager az OMS szolgáltatáshoz szin
 A Naplóelemzési támogatja a System Center Configuration Manager aktuális ágának, 1606 vagy újabb verziója.  
 
 ## <a name="configuration-overview"></a>Konfigurálása – áttekintés
-Az alábbi lépéseket foglalja össze a folyamat a Configuration Manager szolgáltatáshoz kapcsolódni.  
+A következő lépésekkel foglalható össze a Configuration Manager szolgáltatáshoz kapcsolódni.  
 
-1. Az Azure felügyeleti portálon regisztrálja a Configuration Manager egy webalkalmazás és/vagy webes API-alkalmazást, és gondoskodjon arról, hogy az ügyfél-azonosító és a titkos ügyfélkulcsot a regisztráció az Azure Active Directoryból származó. Lásd: [erőforrásokat elérő alkalmazás és szolgáltatás egyszerű létrehozásához az Active Directory használata portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) kapcsolatos részletes információkat ebben a lépésben megvalósításához.
+1. Az Azure felügyeleti portálon regisztrálja a Configuration Manager egy webalkalmazás és/vagy webes API-alkalmazást, és gondoskodjon arról, hogy az ügyfél-azonosító és a titkos ügyfélkulcsot a regisztráció az Azure Active Directoryból származó. Lásd: [erőforrásokat elérő alkalmazás és szolgáltatás egyszerű létrehozásához az Active Directory használata portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) részletesen bemutatja, hogyan hajthat végre ezt a lépést.
 2. Az Azure felügyeleti portálon [adja meg a Configuration Manager (a regisztrált webalkalmazás) OMS hozzáféréssel rendelkező](#provide-configuration-manager-with-permissions-to-oms).
 3. A Configuration Managerben [-kapcsolatot az OMS-kapcsolat hozzáadása varázsló használatával](#add-an-oms-connection-to-configuration-manager).
 4. A Configuration Managerben [a kapcsolat tulajdonságainak frissítéséhez](#update-oms-connection-properties) Ha a jelszó vagy ügyfél titkos kulcs soha lejár vagy elvész.
@@ -44,33 +44,33 @@ További az OMS-be, a Configuration Manager összekapcsolásával kapcsolatos [s
 Az alábbi eljárás biztosít az Azure felügyeleti portálon, amelyik megfelelő engedélyekkel rendelkezik az OMS Szolgáltatáshoz. Pontosabban, meg kell adnia a *közreműködői szerepkör* a felhasználók számára az erőforráscsoportot, annak érdekében, hogy az Azure felügyeleti portál csatlakozni a Configuration Manager az OMS Szolgáltatáshoz.
 
 > [!NOTE]
-> A Configuration Manager OMS engedélyeket kell megadnia. Ellenkező esetben hibaüzenetet fog kapni, ha a konfigurációs varázsló a Configuration Manager alkalmazásban.
+> A Configuration Manager OMS engedélyeket kell megadnia. Ellenkező esetben hibaüzenetet kap, ha a konfigurációs varázsló a Configuration Manager alkalmazásban.
 >
 >
 
-1. Nyissa meg a [Azure-portálon](https://portal.azure.com/) kattintson **Tallózás** > **Naplóelemzés (OMS)** Naplóelemzés (OMS) panel megnyitásához.  
-2. Az a **Naplóelemzés (OMS)** panelen kattintson a **Hozzáadás** megnyitásához a **OMS-munkaterület** panelen.  
-   ![OMS panel](./media/log-analytics-sccm/sccm-azure01.png)
-3. Az a **OMS-munkaterület** panelen adja meg a következő adatokat, és kattintson a **OK**.
+1. Nyissa meg a [Azure-portálon](https://portal.azure.com/) kattintson **Tallózás** > **Naplóelemzés (OMS)** Naplóelemzés (OMS) lehetőségre.  
+2. A **Naplóelemzés (OMS)**, kattintson a **Hozzáadás** megnyitásához **OMS-munkaterület**.  
+   ![OMS](./media/log-analytics-sccm/sccm-azure01.png)
+3. A **OMS-munkaterület**, adja meg a következő adatokat, és kattintson a **OK**.
 
    * **OMS-munkaterület**
    * **Előfizetés**
    * **Erőforráscsoport**
    * **Hely**
    * **Tarifacsomag**  
-     ![OMS panel](./media/log-analytics-sccm/sccm-azure02.png)  
+     ![OMS](./media/log-analytics-sccm/sccm-azure02.png)  
 
      > [!NOTE]
      > A fenti példa létrehoz egy új erőforráscsoportot. Az erőforráscsoport csak segítségével adja meg a Configuration Manager az OMS-munkaterület ebben a példában engedélyt.
      >
      >
-4. Kattintson a **Tallózás** > **erőforráscsoportok** megnyitásához a **erőforráscsoportok** panelen.
-5. Az a **erőforráscsoportok** panel, az erőforráscsoport létrehozott fenti megnyitásához kattintson a &lt;erőforráscsoport-név&gt; beállítások panelen.  
-   ![Erőforráscsoport beállítások panel](./media/log-analytics-sccm/sccm-azure03.png)
-6. Az a &lt;erőforráscsoport-név&gt; beállítási paneljén hozzáférés-vezérlés (IAM) megnyitásához kattintson a &lt;erőforráscsoport-név&gt; felhasználók paneljét.  
-   ![Erőforráscsoport felhasználók panel](./media/log-analytics-sccm/sccm-azure04.png)  
-7. A a &lt;erőforráscsoport-név&gt; felhasználók paneljén kattintson **hozzáadása** megnyitásához a **hozzáférés hozzáadása** panelen.
-8. A a **hozzáférés hozzáadása** panelen kattintson **Szerepkörválasztás**, majd válassza ki a **közreműködő** szerepkör.  
+4. Kattintson a **Tallózás** > **erőforráscsoportok** megnyitásához **erőforráscsoportok**.
+5. A **erőforráscsoportok**, az erőforráscsoport létrehozott fenti megnyitásához kattintson a &lt;erőforráscsoport-név&gt; beállításait.  
+   ![csoport beállításai](./media/log-analytics-sccm/sccm-azure03.png)
+6. A &lt;erőforráscsoport-név&gt; beállításokat, kattintson a hozzáférés-vezérlés (IAM) megnyitása &lt;erőforráscsoport-név&gt; felhasználók.  
+   ![Erőforráscsoport felhasználók](./media/log-analytics-sccm/sccm-azure04.png)  
+7. A &lt;erőforráscsoport-név&gt; használ, kattintson a **Hozzáadás** megnyitásához **hozzáférés hozzáadása**.
+8. A **hozzáférés hozzáadása**, kattintson a **Szerepkörválasztás**, majd válassza ki a **közreműködő** szerepkör.  
    ![szerepkör kiválasztása](./media/log-analytics-sccm/sccm-azure05.png)  
 9. Kattintson a **felhasználók hozzáadása az**válassza ki a Configuration Manager felhasználói **válasszon**, és kattintson a **OK**.  
    ![felhasználók hozzáadása](./media/log-analytics-sccm/sccm-azure06.png)  
@@ -85,16 +85,16 @@ Ahhoz, hogy az OMS-kapcsolat hozzáadása, a Configuration Manager környezetet 
    2. Az Azure felügyeleti portálon létrehozott egy alkalmazás titkos kulcs a regisztrált alkalmazás Azure Active Directoryban.  
    3. Az Azure felügyeleti portálon a megadott a regisztrált web app az OMS hozzáférési engedélyt.  
       ![Kapcsolat az OMS varázsló Általános lapja](./media/log-analytics-sccm/sccm-console-general01.png)
-3. A a **Azure Active Directory** képernyőn, a kapcsolat konfigurálása az OMS-be azáltal, hogy a **bérlői** , **ügyfél-azonosító** , és **titkos Ügyfélkulcsot** , majd jelölje be **következő**.  
+3. Az a **Azure Active Directory** képernyőn, a kapcsolat konfigurálása az OMS-be azáltal, hogy a **bérlői**, **ügyfél-azonosító**, és **ügyfél titkos kulcs** , majd jelölje be **következő**.  
    ![Kapcsolat az OMS varázsló Azure Active Directory lap](./media/log-analytics-sccm/sccm-wizard-tenant-filled03.png)
-4. Ha Ön valósítható meg az egyéb eljárások sikeres legyen, majd az adatokat a a **OMS-kapcsolat konfigurációs** képernyő automatikusan meg fog jelenni ezen a lapon. A kapcsolódási beállítások adatait meg kell jelennie a a **Azure-előfizetés** , **Azure erőforráscsoport** , és **Operations Management Suite-munkaterület**.  
+4. Ha Ön valósítható meg az egyéb eljárások sikeres legyen, majd az adatokat a a **OMS-kapcsolat konfigurációs** képernyő automatikusan meg fog jelenni ezen a lapon. A kapcsolódási beállítások adatait meg kell jelennie a a **Azure-előfizetés**, **Azure erőforráscsoport**, és **Operations Management Suite-munkaterület**.  
    ![Kapcsolat OMS varázsló OMS kapcsolati lapra](./media/log-analytics-sccm/sccm-wizard-configure04.png)
 5. A varázsló csatlakozhat az OMS szolgáltatáshoz, a korábban megadott információk segítségével. Válassza ki az OMS szinkronizálni, és kattintson a kívánt eszközgyűjtemények **Hozzáadás**.  
    ![Gyűjtemények kiválasztása](./media/log-analytics-sccm/sccm-wizard-add-collections05.png)
 6. Ellenőrizze, hogy a kapcsolat beállításait a **összegzés** képernyőt, majd válassza ki **következő**. A **folyamatban** képernyő kapcsolat állapotát jeleníti meg, majd kell **Complete**.
 
 > [!NOTE]
-> Csatlakoztatni kell OMS a legfelső szintű helyet a hierarchiában. Ha az OMS Szolgáltatáshoz kapcsolódni egy önálló elsődleges helyhez, és adja hozzá a központi adminisztrációs hely a környezetében, összekapcsolta, törölje és hozza létre újra az OMS-kapcsolatot az új hierarchiában.
+> Csatlakoztatni kell OMS a legfelső szintű helyet a hierarchiában. Ha az OMS csatlakozni egy önálló elsődleges helyhez, és adja hozzá a központi adminisztrációs hely a környezetben, akkor törölje és hozza létre újra az OMS-kapcsolatot az új hierarchiában.
 >
 >
 
@@ -103,15 +103,15 @@ Miután a Configuration Manager az OMS-be, adja hozzá vagy távolítson el gyű
 ## <a name="update-oms-connection-properties"></a>OMS kapcsolat tulajdonságainak frissítéséhez
 Ha egy jelszót vagy az ügyfél titkos kulcs soha lejár vagy elvész, akkor frissítenie kell manuálisan az OMS-kapcsolat tulajdonságai.
 
-1. Keresse meg a Configuration Managerben **Felhőszolgáltatások** , majd jelölje be **OMS-összekötő** megnyitásához a **OMS kapcsolat tulajdonságai** lap.
+1. Keresse meg a Configuration Managerben **Felhőszolgáltatások**, majd jelölje be **OMS-összekötő** megnyitásához a **OMS kapcsolat tulajdonságai** lap.
 2. Ezen a lapon kattintson a **Azure Active Directory** fülre kattintva megtekintheti a **bérlői**, **ügyfél-azonosító**, **ügyfél titkos kulcs lejárati**. **Győződjön meg arról** a **titkos ügyfélkulcsot** , ha már lejárt.
 
 ## <a name="download-and-install-the-agent"></a>Töltse le és telepítse az ügynököt
-1. Az OMS-portálon [töltse le az ügynököt telepítő fájl az OMS Szolgáltatáshoz](log-analytics-windows-agents.md#download-the-agent-setup-file-from-oms).
+1. Az OMS-portálon [töltse le az ügynököt telepítő fájl az OMS Szolgáltatáshoz](log-analytics-windows-agent.md).
 2. A következő módszerek valamelyikével telepíteni és konfigurálni az ügynököt azon a számítógépen, amelyen a Configuration Manager service szolgáltatáskapcsolódási pont helyrendszer-szerepkörrel:
-   * [Telepítse az ügynököt, a telepítőprogram használatával](log-analytics-windows-agents.md#install-the-agent-using-setup)
-   * [Telepítse az ügynököt, a parancssor használatával](log-analytics-windows-agents.md#install-the-agent-using-the-command-line)
-   * [Telepítse az ügynököt az Azure Automation DSC használata](log-analytics-windows-agents.md#install-the-agent-using-dsc-in-azure-automation)
+   * [Telepítse az ügynököt, a telepítőprogram használatával](log-analytics-windows-agent.md)
+   * [Telepítse az ügynököt, a parancssor használatával](log-analytics-windows-agent.md)
+   * [Telepítse az ügynököt az Azure Automation DSC használata](log-analytics-windows-agent.md)
 
 ## <a name="import-collections"></a>Gyűjtemények importálása
 Az OMS-kapcsolat hozzáadása a Configuration Manager és az ügynök telepítése után azon a számítógépen, amelyen a Configuration Manager szolgáltatáskapcsolódási pont helyrendszerszerepkör, a következő lépés annak gyűjteményeket importálhat a Configuration Manager az OMS, számítógépcsoportokat.

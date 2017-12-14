@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/04/2017
+ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 794ad146ee8cb72370216677913013b6bbcb4b8f
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 9402dbbf66bbbf7ff23f3fc29cbb38f8aa8615e6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Hozzon létre egy függvényt, amely az Azure Logic Apps
 
@@ -72,28 +72,31 @@ A szolgáltatások kognitív API-k érhetők el az Azure-ban egyéni erőforrás
  
     ![Kulcsok](media/functions-twitter-email/keys.png)
 
-## <a name="create-the-function"></a>A függvény létrehozása
+[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
+
+## <a name="create-the-function-app"></a>A függvény-alkalmazás létrehozása
 
 A Functions kiváló módja annak, kiszervezheti a logic apps munkafolyamat feldolgozási feladatokat. Ez az oktatóanyag feldolgozása tweetet véleményeket pontszámok kognitív szolgáltatásokból és kategória érték visszaadása egy indított HTTP függvény segítségével.  
 
-1. Kattintson a **új** gombra, majd az **számítási** > **függvény App**. Az alábbi táblázat a beállításokat, majd használni. Fogadja el a feltételeket, majd válasszon **rögzítés az irányítópulton**.
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-    ![A függvény az Azure-alkalmazás létrehozása](media/functions-twitter-email/create_fun.png)
+## <a name="create-an-http-triggered-function"></a>Az indított HTTP-függvény létrehozása  
 
-    | Beállítás      |  Ajánlott érték   | Leírás       |
-    | --- | --- | --- |
-    | **Name (Név)** | MyFunctionApp | Válasszon egy egyedi fióknevet. |
-    | **Erőforráscsoport** | myResourceGroup | Ebben az oktatóanyagban minden szolgáltatáshoz használja ugyanazt az erőforráscsoportot.|
-    | **Üzemeltetési terv** | Használatalapú csomag | Ez határozza meg a költségeket és a használati lefoglalt területet.
-    | **Hely** | USA nyugati régiója | Legközelebbi helyet használja. |
-    | **Tárolás** | Új létrehozása | Automatikusan létrehoz egy új tárfiókot.|
-    | **Tarifacsomag** | F0 | Első lépésként legalacsonyabb. Ha elfogy a hívásokat, méretezhető, magasabb szintű használható.|
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét.
 
-2. Válassza ki a funkciók alkalmazást az irányítópultról, és bontsa ki a funkció, kattintson a  **+**  gombra **funkciók**, kattintson a **Webhook + API**,  **A csharp nyelvű**, majd **Ez a függvény létrehozása**. Ezzel létrehoz egy függvény HTTPTrigger C# sablon használatával. A kód megjelenik egy új ablakban`run.csx`
+    ![Függvények gyors létrehozásának oldala az Azure Portalon](media/functions-twitter-email/add-first-function.png)
 
-    ![Függvény alkalmazások panelről, Funkciók +](media/functions-twitter-email/add_fun.png)
+2. Írja be a keresőmezőbe, `http` majd **C#** a HTTP-eseményindító sablon. 
 
-3. Cserélje le a tartalmát a `run.csx` fájlt az alábbi kódot, majd kattintson az **mentése**:
+    ![A HTTP-eseményindítóval kiválasztása](./media/functions-twitter-email/select-http-trigger-portal.png)
+
+3. Adjon meg egy **neve** a függvény kiválasztása `Function` a  **[hitelesítési szint](functions-bindings-http-webhook.md#http-auth)**, majd válassza ki **létrehozása**. 
+
+    ![Az indított HTTP-függvény létrehozása](./media/functions-twitter-email/select-http-trigger-portal-2.png)
+
+    Ez a C# parancsfájl függvényt a HTTP-eseményindítóval sablonnal hoz létre. A kód jelenik meg, mint egy új ablakban `run.csx`.
+
+4. Cserélje le a tartalmát a `run.csx` fájlt az alábbi kódot, majd kattintson az **mentése**:
 
     ```csharp
     using System.Net;

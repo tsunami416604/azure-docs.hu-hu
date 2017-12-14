@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.openlocfilehash: fe6c003e095b25cf3ec3430fc68dcd399150b3ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1f543d3379b7f6a29cb57b5d41825abaacabfc3
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Application Insights-összekötő megoldás (előzetes verzió) Operations Management Suite (OMS)
 
@@ -39,7 +39,7 @@ Legtöbb egyéb Naplóelemzési megoldásoktól eltérően nem összegyűjtött 
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](log-analytics-windows-agents.md) | Nem | A megoldás a Windows-ügynökök nem gyűjt adatokat. |
+| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem | A megoldás a Windows-ügynökök nem gyűjt adatokat. |
 | [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
 | [SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | A megoldás nem gyűjt adatokat az ügynökök a csatlakoztatott SCOM felügyeleti csoport. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A megoldás nem az Azure storage nem gyűjtemény adatait. |
@@ -247,7 +247,7 @@ Egy rekordot egy *típus* a *ApplicationInsights* jön létre az egyes bemeneti 
 | Kérelemazonosító | A kérelem egyedi azonosításához azonosítója |
 | RequestName | GET/POST + alap URL-je |
 | RequestDuration | A kérelem időtartam másodpercben |
-| URL-CÍME | A kérelem nem többek között a gazdagépre URL-címe |
+| URL-cím | A kérelem nem többek között a gazdagépre URL-címe |
 | Gazdagép | Web server állomás |
 | URLBase | A kérelem teljes URL-címe |
 | ApplicationProtocol | Az alkalmazás által használt protokoll típusát |

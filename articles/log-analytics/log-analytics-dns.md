@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.openlocfilehash: 0e8fc0ffb8e0d0bdf00bea46594fe050c00b6c8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f83d019c0168aa5abbf3211b4a599f631e9f426
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>A DNS-infrastruktúra DNS Analytics Preview megoldással észrevételeket összegyűjtése
 
@@ -42,7 +42,7 @@ A következő táblázat a csatlakoztatott adatforrások, ez a megoldás által 
 
 | **Csatlakoztatott adatforrás** | **Támogatás** | **Leírás** |
 | --- | --- | --- |
-| [Windows-ügynökök](log-analytics-windows-agents.md) | Igen | A megoldás DNS információt gyűjt a Windows-ügynökök. |
+| [Windows-ügynökök](log-analytics-windows-agent.md) | Igen | A megoldás DNS információt gyűjt a Windows-ügynökök. |
 | [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás nem DNS-információkat gyűjtsön a közvetlen Linux-ügynököt. |
 | [System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md) | Igen | A megoldás DNS adatokat gyűjt az ügynökök a csatlakoztatott Operations Manager felügyeleti csoportban. Az Operations Management Suite közvetlen kapcsolat az Operations Manager-ügynök nincs szükség. Az Operations Management Suite tárházba adat továbbítódik a felügyeleti csoportból. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | Az Azure storage a megoldás nem használja. |
@@ -55,7 +55,7 @@ A megoldás gyűjti DNS-készlet és a DNS-esemény kapcsolatos adatok a DNS-kis
 
 Az alábbi információk segítségével konfigurálja a megoldást:
 
-- Rendelkeznie kell egy [Windows](log-analytics-windows-agents.md) vagy [Operations Manager](log-analytics-om-agents.md) ügynök figyelni kívánt minden DNS-kiszolgálón.
+- Rendelkeznie kell egy [Windows](log-analytics-windows-agent.md) vagy [Operations Manager](log-analytics-om-agents.md) ügynök figyelni kívánt minden DNS-kiszolgálón.
 - Az Operations Management Suite munkaterületen, a DNS elemzési megoldások is hozzáadhat a [Azure piactér](https://aka.ms/dnsanalyticsazuremarketplace). Használhatja a ismertetett folyamatot [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
 
 A megoldás további konfiguráció nélkül adatgyűjtés megkezdése. A következő konfigurációs használatával azonban adatgyűjtés testreszabása.

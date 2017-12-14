@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 6533889411c3dbadbbabdbe1239050c941a9c300
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: e57ad43cc9a82e3944e93c6500ad5740818d10cc
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás funkcióinak felfedezése
 
@@ -101,11 +101,11 @@ Kezelőként megjelenik az irányítópulton, hogy van-e egy egy hűtő nyomás 
 
 1. Bezárás **eszköz részletei**.
 
-1. Navigáljon a **karbantartási** kattintson **...**  a a **felfedezés riasztás** a riasztást a riasztás rácsban melletti oszlopra.
+1. Navigáljon a **karbantartási** lapon, válassza ki **karbantartási** a navigációs menü.
 
 Az a **karbantartási** lapon megtekintheti az adatokat a szabály a hűtő nyomás riasztás kiváltó.
 
-1. A szám, ahányszor a riasztás kiváltása, a visszaigazolások és a nyitott és lezárt riasztások látható:
+1. Az értesítések listájában a szám, ahányszor a riasztás kiváltása, a visszaigazolások és a nyitott és lezárt riasztásokat jeleníti meg:
 
     ![Karbantartási lap rendelkezik kiváltott riasztások listáját jeleníti meg.](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
@@ -123,9 +123,9 @@ Most azonosította a problémát, amely aktiválódik a riasztás és a társít
 
     ![Válassza ki az eszközt, és ütemezés szerinti művelet](media/iot-suite-remote-monitoring-explore/maintenanceschedule.png)
 
-1. A feladat állapotának megtekintéséhez, térjen vissza a **karbantartási** lapon, és a feladatok listájának megtekintése a **rendszerállapot** nézet. A feladat futott a hűtő szelep nehezedő kijelölése látható:
+1. A feladat állapotának megtekintéséhez, térjen vissza a **karbantartási** lapon, és a feladatok listájának megtekintése a **feladatok** nézet. A feladat futott a hűtő szelep nehezedő kijelölése látható:
 
-    ![A rendszer állapota a feladatok állapotát](media/iot-suite-remote-monitoring-explore/maintenancerunningjob.png)
+    ![A feladatok nézetben a feladatok állapota](media/iot-suite-remote-monitoring-explore/maintenancerunningjob.png)
 
 Végül ellenőrizze, hogy a hűtő telemetriai értékeinek vissza a normál értéket.
 
@@ -159,7 +159,7 @@ A szükséges feladatok végrehajtásához használja a **eszközök** lap. Ind�
     ![Az eszköz belső vezérlőprogram-frissítés ütemezése](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
     > [!NOTE]
-    > A szimulált eszköz valamennyi URL-cím, tetszés szerint használhatja a **Firemware URI** érték. A szimulált eszköz nem érhető el az URL-címet.
+    > A szimulált eszköz valamennyi URL-cím, tetszés szerint használhatja a **belső vezérlőprogram URI** érték. A szimulált eszköz nem érhető el az URL-címet.
 
 1. Megjegyzés: a feladat befolyásolja, hogy hány eszköz, és válassza a **alkalmaz**:
 
@@ -167,13 +167,13 @@ A szükséges feladatok végrehajtásához használja a **eszközök** lap. Ind�
 
 Használhatja a **karbantartási** lapon nyomon követheti a feladat futtatása közben.
 
-1. A feladatok megtekintéséhez nyissa meg a **karbantartási** lapot, és kattintson **rendszerállapot**.
+1. A feladatok megtekintéséhez nyissa meg a **karbantartási** lapot, és kattintson **feladatok**.
 
 1. Keresse meg a létrehozott a feladathoz kapcsolódó esemény. Győződjön meg arról, hogy a belső vezérlőprogram frissítési folyamat megfelelően kezdeményezték.
 
-Létrehozhat egy szűrőt, amely megfelelően ellenőrizze a belső vezérlőprogram verziója frissítés.
+Létrehozhat egy szűrőt, amely a belső vezérlőprogram verziójának frissítése megfelelően ellenőrizze.
 
-1. Létrehozhat egy szűrőt, lépjen a **eszközök** lapon, és válassza **kezelése**:
+1. Létrehozhat egy szűrőt, lépjen a **eszközök** lapon, és válassza **szűrők kezelése**:
 
     ![Eszköz szűrők kezelése](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
@@ -202,7 +202,7 @@ Eszközök használata a címkenevek hozhat létre.
 
     ![Válassza ki a prototípus és teherautó eszközöket](media/iot-suite-remote-monitoring-explore/devicesmultiselect.png)
 
-1. Válasszon **címke** és hozzon létre egy új karakterlánc címke nevű **FieldService** értékű **ConnectedVehicle**. Válassza ki a feladat nevét. Kattintson a **alkalmaz**:
+1. Válasszon **címke** és hozzon létre egy új szöveges címke nevű **FieldService** értékű **ConnectedVehicle**. Válassza ki a feladat nevét. Kattintson a **alkalmaz**:
 
     ![Címke hozzáadása prototípus és teherautó eszközök](media/iot-suite-remote-monitoring-explore/devicesaddtag.png)
 
@@ -210,7 +210,7 @@ Eszközök használata a címkenevek hozhat létre.
 
     ![Válassza ki a hűtő motor és foglalhatja eszközöket](media/iot-suite-remote-monitoring-explore/devicesmultiselect2.png)
 
-1. Válasszon **címke** majd létre szeretne hozni egy új címke nevű **FieldService** értékű **SmartBuilding**. Válassza ki a feladat nevét. Kattintson a **mentése**:
+1. Válasszon **címke** és hozzon létre egy új szöveges címke nevű **FieldService** értékű **SmartBuilding**. Válassza ki a feladat nevét. Kattintson a **mentése**:
 
     ![Címke hozzáadása hűtő, motor és foglalhatja eszközök](media/iot-suite-remote-monitoring-explore/devicesaddtag2.png)
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dastrock
-ms.openlocfilehash: 5ce6b19ebe0b7159b6c68fc50d7d47f0479e0c27
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f3de9016fe29a51ab2c7fb9e93fcd33af0f0e871
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>A hozzáférés-vezérlés Azure-szolgáltatás áttelepítése
 
@@ -85,7 +85,7 @@ Minden Microsoft felhőszolgáltatás, amely fogadja a hozzáférés-vezérlés 
 | ------- | -------- |
 | Azure Service Bus | [Közös hozzáférésű jogosultságkód áttelepítése](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Az Azure Service Bus-továbbító | [Közös hozzáférésű jogosultságkód áttelepítése](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Azure Redis Cache | [Migrate to Azure Redis Cache (Áttelepítés Azure Redis Cache-re)](https://docs.microsoft.com/azure/redis-cache/cache-faq#which-azure-cache-offering-is-right-for-me) |
+| Az Azure Managed Cache | [Migrate to Azure Redis Cache (Áttelepítés Azure Redis Cache-re)](https://docs.microsoft.com/azure/redis-cache/cache-faq#which-azure-cache-offering-is-right-for-me) |
 | Azure datamarket szolgáltatásból | [A kognitív szolgáltatások API-k áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | BizTalk Services | [Az Azure App Service Logic Apps szolgáltatás áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | Az Azure Media Services | [Telepítse át az Azure AD-alapú hitelesítés](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
@@ -146,7 +146,7 @@ Magas szinten *Azure Active Directory oka valószínűleg az áttelepítéshez a
 | WS-Trust | Támogatott | Nem támogatott |
 | **Token formátumok** | | |
 | JWT-T | A béta támogatott | Támogatott |
-| SAML 1.1 | Támogatott | Támogatott |
+| SAML 1.1 | Támogatott | Előzetes verzió |
 | SAML 2.0 | Támogatott | Támogatott |
 | SWT | Támogatott | Nem támogatott |
 | **Testreszabások** | | |
@@ -226,29 +226,26 @@ Ha úgy dönt, hogy az Azure AD B2C-e a legjobb áttelepítési útvonal az alka
 - [Az Azure AD B2C díjszabási](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 
-#### <a name="other-migration-options"></a>Egyéb áttelepítési lehetőségek
+#### <a name="migrate-to-ping-identity-or-auth0"></a>Ping identitás vagy Auth0 áttelepítése
 
-Ha az Azure AD és az Azure AD B2C nem felelnek meg a webes alkalmazás igényeinek, lépjen velünk kapcsolatba. Tudunk segíteni, hogy azonosítsa a legjobb áttelepítési út.
+Bizonyos esetekben előfordulhat, hogy az Azure AD és az Azure AD B2C nem elegendő a hozzáférés-vezérlés cserélnie a webalkalmazások fő kód módosítása nélkül. Néhány gyakori példán állhatnak:
 
-<!--
+- Jelentkezzen be például a Google vagy Facebook közösségi Identitásszolgáltatók a WIF vagy a WS-Federation használó webalkalmazásokat.
+- Hajtsa végre a közvetlen összevonási vállalati webalkalmazások szolgáltató azonosítsa a WS-Federation protokollon keresztül.
+- A webes alkalmazásokat, amelyek a hozzáférés-vezérlés által kiállított jogkivonatokat a jogcím egy közösségi identitásszolgáltató (például a Google vagy Facebook-on) által kiállított jogkivonat van szükség.
+- Összetett token átalakítási szabályok, amelyek az Azure AD vagy az Azure AD B2C nem képesek alkalmazások.
+- Több-bérlős webes alkalmazásokhoz, amelyek ACS segítségével központilag kezelheti a sok különböző identitás-szolgáltatóktól összevonáshoz
 
-#### Migrate to Ping Identity or Auth0
+Ebben az esetben érdemes esetleg térjen át a webes alkalmazás egy másik hitelesítési felhőszolgáltatáshoz. Azt javasoljuk, hogy a következők feltárása. Hozzáférés-vezérlés hasonló képességeket kínál az alábbi beállításokat:
 
-In some cases, you might find that Azure AD and Azure AD B2C aren't sufficient to replace Access Control in your web applications without making major code changes. Some common examples might include:
 
-- Web applications that use WIF or WS-Federation for sign-in with social identity providers such as Google or Facebook.
-- Web applications that perform direct federation to an enterprise identify provider over the WS-Federation protocol.
-- Web applications that require the access token issued by a social identity provider (such as Google or Facebook) as a claim in the tokens issued by Access Control.
-- Web applications with complex token transformation rules that Azure AD or Azure AD B2C can't reproduce.
 
-In these cases, you might want to consider migrating your web application to another cloud authentication service. We recommend exploring the following options. Each of the following options offer capabilities similar to Access Control:
+|     |     | 
+| --- | --- |
+| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy rugalmas felhőalapú identitás-szolgáltatás által létrehozott [magas szintű áttelepítési útmutatója a hozzáférés-vezérlés ügyfeleknek](https://auth0.com/acs), és támogatja szinte minden, amelyet az ACS szolgáltatást. |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping identitás](https://www.pingidentity.com) ACS hasonló két megoldásokat kínál. PingOne, amely támogatja a számos olyan funkciót ACS identitás felhőszolgáltatás, PingFederate pedig egy hasonló helyszíni identitás-terméket, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást útmutatást](https://www.pingidentity.com/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) kapcsolatban további részleteket a ezeket a termékeket.  |
 
-- [Auth0](https://auth0.com/) has created [high-level migration guidance for customers of Access Control](https://auth0.com/blog/windows-azure-acs-alternative-replacement/), and provides a feature-by-feature comparison of Access Control and Auth0.
-- Enterprise customers also should consider [Ping Identity](https://www.pingidentity.com). If you contact us, we can connect you with a representative from Ping who is prepared to help identify potential solutions.
-
-Our aim in working with Ping Identity and Auth0 is to ensure that all Access Control customers have a migration path for their apps and services that minimizes the amount of work required to move from Access Control.
-
--->
+A végzett munka során Ping identitás- és Auth0 célja, hogy biztosítsa, hogy minden hozzáférés-vezérlés az ügyfelek áttelepítési elérési azok az alkalmazások és szolgáltatások számára való hozzáférés-vezérlés áthelyezése minimálisra csökkentse.
 
 <!--
 
@@ -295,28 +292,22 @@ Végrehajtási kiszolgálók forgatókönyvekkel kapcsolatos útmutatásért lá
 - [Egyszerű jelszó ügyfél hitelesítő adatok használatával démon kódminta](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [Kódminta démon tanúsítvány ügyfél hitelesítő adatok használatával](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 
-#### <a name="other-migration-options"></a>Egyéb áttelepítési lehetőségek
+#### <a name="migrate-to-ping-identity-or-auth0"></a>Ping identitás vagy Auth0 áttelepítése
 
-Ha az Azure AD nem felel meg a webszolgáltatás igényeinek, hagyja üresen a megjegyzés. Tudunk segíteni, hogy az adott esethez tartozó legjobb terv azonosítása.
+Bizonyos esetekben előfordulhat, hogy az Azure AD-ügyfél hitelesítő adatait, és az OAuth adjon megvalósítási nem elegendő az architektúrák fő kód módosítása nélkül hozzáférés-vezérlés lecseréli. Néhány gyakori példán állhatnak:
 
-<!--
+- Kiszolgáló-kiszolgáló hitelesítési tokent formázza JWTs eltérő.
+- Kiszolgáló-kiszolgáló hitelesítési egy külső identitásszolgáltatótól megadott bemeneti token használatával.
+- Kiszolgáló-kiszolgáló hitelesítési jogkivonat átalakítási szabályok, amelyek az Azure AD nem képesek a.
 
-#### Migrate to Ping Identity or Auth0
+Ebben az esetben érdemes a webalkalmazást egy másik felhőalapú hitelesítési szolgáltatás áttelepítése. Azt javasoljuk, hogy a következők feltárása. Hozzáférés-vezérlés hasonló képességeket kínál az alábbi beállításokat:
 
-In some cases, you might find that the Azure AD client credentials and the OAuth grant implementation aren't sufficient to replace Access Control in your architecture without major code changes. Some common examples might include:
+|     |     | 
+| --- | --- |
+| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy rugalmas felhőalapú identitás-szolgáltatás által létrehozott [magas szintű áttelepítési útmutatója a hozzáférés-vezérlés ügyfeleknek](https://auth0.com/acs), és támogatja szinte minden, amelyet az ACS szolgáltatást. |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping identitás](https://www.pingidentity.com) ACS hasonló két megoldásokat kínál. PingOne, amely támogatja a számos olyan funkciót ACS identitás felhőszolgáltatás, PingFederate pedig egy hasonló helyszíni identitás-terméket, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást útmutatást](https://www.pingidentity.com/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) kapcsolatban további részleteket a ezeket a termékeket.  |
 
-- Server-to-server authentication using token formats other than JWTs.
-- Server-to-server authentication using an input token provided by an external identity provider.
-- Server-to-server authentication with token transformation rules that Azure AD cannot reproduce.
-
-In these cases, you might consider migrating your web application to another cloud authentication service. We recommend exploring the following options. Each of the following options offer capabilities similar to Access Control:
-
-- [Auth0](https://auth0.com/) has created [high-level migration guidance for customers of Access Control](https://auth0.com/blog/windows-azure-acs-alternative-replacement/), and provides a feature-by-feature comparison of Access Control and Auth0.
-- Enterprise customers should also consider [Ping Identity](https://www.pingidentity.com). If you contact us, we can connect you with a representative from Ping who is prepared to help identify potential solutions.
-
-Our aim in working with Ping Identity and Auth0 is to ensure that all Access Control customers have a migration path for their apps and services that minimizes the amount of work required to move from Access Control.
-
--->
+A végzett munka során Ping identitás- és Auth0 célja, hogy biztosítsa, hogy minden hozzáférés-vezérlés az ügyfelek áttelepítési elérési azok az alkalmazások és szolgáltatások számára való hozzáférés-vezérlés áthelyezése minimálisra csökkentse.
 
 ## <a name="questions-concerns-and-feedback"></a>Kérdéseit, problémákat és visszajelzés
 

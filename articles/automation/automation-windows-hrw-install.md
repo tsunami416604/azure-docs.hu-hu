@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: d889fda72f54af3a5f6db24f7ee6632f72eacb88
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 5f55d64d08a9c3ed98a47aa4ba00a6b1f698144e
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>A Windows hibrid forgatókönyv-feldolgozók központi telepítése
 
@@ -61,7 +61,7 @@ A következő lépésekkel automatizálhatja a telepítése és konfigurálása 
   *  *WorkspaceName* (nem kötelező) – az OMS-munkaterület nevét.  Ha nem rendelkezik az OMS-munkaterület, a parancsfájl létrehozza és konfigurálja az egyik.  
 
      > [!NOTE]
-     > A támogatott OMS-integrációját csak Automation régiók jelenleg - **Ausztrália délkeleti**, **USA keleti régiója 2**, **Délkelet-Ázsia**, és **Nyugat-Európa **.  Ha az Automation-fiók nem egy adott helyre, a parancsfájl létrehoz egy OMS-munkaterület, de figyelmeztetést kap, hogy azt nem összeköt őket.
+     > A támogatott OMS-integrációját csak Automation régiók jelenleg - **Ausztrália délkeleti**, **USA keleti régiója 2**, **Délkelet-Ázsia**, és **Nyugat-Európa** .  Ha az Automation-fiók nem egy adott helyre, a parancsfájl létrehoz egy OMS-munkaterület, de figyelmeztetést kap, hogy azt nem összeköt őket.
      >
 2. A számítógépen indítása **Windows PowerShell** a a **Start** képernyő rendszergazdai módban.  
 3. Az PowerShell parancssori rendszerhéj lépjen abba a mappába, amely tartalmazza a parancsfájl letöltése, és végrehajtja a paraméterek értékeinek módosítása *- AutomationAccountName*, *- ResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, és *- WorkspaceName*.
@@ -96,7 +96,7 @@ Kövesse az utasításokat, [hozzáadása a megoldások végzi megoldás](../log
 
 A Microsoft Monitoring Agent a számítógépek Operations Management Suite kapcsolatot.  Telepítse az ügynököt a helyi számítógépen, és csatlakoztassa a munkaterület, automatikusan letölti a hibrid forgatókönyv-feldolgozó szükséges összetevőket.
 
-Kövesse az utasításokat, [Log Analyticshez való csatlakozás Windows számítógépek](../log-analytics/log-analytics-windows-agents.md) az ügynök telepítéséhez a helyi számítógépen.  Megismételheti a folyamatot a több számítógép számára több Worker hozzá a környezethez.
+Kövesse az utasításokat, [Log Analyticshez való csatlakozás Windows számítógépek](../log-analytics/log-analytics-windows-agent.md) az ügynök telepítéséhez a helyi számítógépen.  Megismételheti a folyamatot a több számítógép számára több Worker hozzá a környezethez.
 
 Ha az ügynök sikeresen csatlakozott-e az Operations Management Suite, akkor jelenik meg a **csatlakoztatott források** az Operations Management Suite lapján **beállítások** ablaktáblán.  Ellenőrizheti, hogy az ügynök megfelelően sikeresen letöltötte az Automation-megoldást, ha egy nevű mappát **AzureAutomationFiles** a C:\Program Files\Microsoft figyelési Agent\Agent.  A hibrid forgatókönyv-feldolgozó verziójával megerősítéséhez lépjen C:\Program Files\Microsoft figyelési Agent\Agent\AzureAutomation\, majd jegyezze fel a \\ *verzió* almappájában.   
 
