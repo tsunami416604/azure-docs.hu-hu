@@ -107,6 +107,8 @@
           href: azure-stack-viewing-public-ip-address-consumption.md
         - name: Tárolási erőforrások kezelése
           href: azure-stack-manage-storage-accounts.md
+        - name: Tárolási kapacitás kezelése
+          href: azure-stack-manage-storage-shares.md
         - name: A Microsoft Azure Pack virtuális gépeinek kezelése
           href: azure-stack-manage-windows-azure-pack.md
         - name: A hardver cseréje

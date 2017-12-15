@@ -241,6 +241,8 @@
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
         - name: vCenter-kiszolgálók kezelése
           href: site-recovery-vmware-to-azure-manage-vCenter.md
+        - name: Több-bérlős rendszer kezelése felhőszolgáltatóval
+          href: site-recovery-manage-multi-tenancy-with-csp.md
         - name: Kiszolgálók eltávolítása és a védelem letiltása
           href: site-recovery-manage-registration-and-protection.md
         - name: Tároló törlése

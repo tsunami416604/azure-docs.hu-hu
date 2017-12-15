@@ -75,6 +75,7 @@
 ## Külső VPN-eszközök konfigurálása
 ### [Áttekintés és Azure-konfiguráció](vpn-gateway-3rdparty-device-config-overview.md)
 ### [Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
+## [Áttelepítés klasszikusról Resource Manager-alapú környezetbe](vpn-gateway-classic-resource-manager-migration.md)
 ## Hibaelhárítás
 ### [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
 ### [Közösség által javasolt VPN- vagy tűzfaleszköz-beállítások](vpn-gateway-third-party-settings.md)

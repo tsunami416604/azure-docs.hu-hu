@@ -71,6 +71,7 @@
 ### [Átjáró telepítése csatlakoztatott factoryhoz](iot-suite-connected-factory-gateway-deployment.md)
 ### [Csatlakoztatott factory testreszabása](iot-suite-connected-factory-customize.md)
 ### [Az OPC-kiadó használata a csatlakoztatott factoryhoz](iot-suite-connected-factory-publisher.md)
+### [Csatlakoztatott gyár konfigurálása](iot-suite-connected-factory-configure.md)
 ## [Engedélyek az azureiotsuite.com webhelyen](iot-suite-permissions.md)
 
 # Referencia
