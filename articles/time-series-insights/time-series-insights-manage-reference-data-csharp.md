@@ -1,5 +1,5 @@
 ---
-title: "Referenciaadatok Azure idő adatsorozat Insights környezetben kezelése C# használatával |} Microsoft Docs"
+title: "Azure idő adatsorozat Insights környezetben C# referencia adatok kezelése |} Microsoft Docs"
 description: "Ez a cikk a C# (c-éles) .NET nyelve egyéni alkalmazás létrehozásával referenciaadatok Azure idő adatsorozat Insights környezet kezelését ismerteti."
 services: time-series-insights
 ms.service: time-series-insights
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/21/2017
-ms.openlocfilehash: 7a7a72aab6a540191a0be5417fc61e6a747f28d0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b08b6af7abccb550884adc6cc90d180cfcadb2af
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# használatával referenciaadatok Azure idő adatsorozat Insights környezet kezelése
 

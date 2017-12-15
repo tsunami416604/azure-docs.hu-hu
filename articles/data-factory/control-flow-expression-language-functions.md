@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 13e9b951c46ae1cd16c7f38d5ade8a4f8a156e63
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eee276f2bcf6a8b7b2c79139bfeb01e1ebf761c9
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Kifejezések és az Azure Data Factory funkciók
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,11 +33,12 @@ JSON-értékek meghatározásában szövegkonstans vagy futásidőben kiértéke
 "name": "value"
 ```
 
- vagy  
+ (vagy)  
   
 ```json
-"name": "@parameters('password') "
+"name": "@pipeline().parameters.password"
 ```
+
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [funkciók és a Data Factory V1 változók](v1/data-factory-functions-variables.md).
@@ -46,27 +47,103 @@ JSON-értékek meghatározásában szövegkonstans vagy futásidőben kiértéke
 ## <a name="expressions"></a>Kifejezések  
 Kifejezések bárhol megjelenhet egy JSON karakterláncértéket, és egy másik JSON-érték mindig eredményez. A JSON értéke egy kifejezés, ha a szervezet a kifejezés ki kell olvasni, a-kukac eltávolításával (@). Egy szöveges karakterlánc van szüksége a kezdetű @, @ használatával kell megjelölni@. Az alábbi példák bemutatják, hogyan kifejezések kiértékelése.  
   
-|JSON-érték|eredménye|  
+|JSON-érték|Eredmény|  
 |----------------|------------|  
 |"paraméterek"|A "parameters" karaktert adja vissza.|  
 |"[1] Paraméterek"|A "parameters [1]" karaktert adja vissza.|  
 |"@@"|Egy 1 tartalmazó karakterlánc ' @' adja vissza.|  
 |" @"|Egy 2 tartalmazó karakterlánc ' @' adja vissza.|  
   
- Kifejezések akkor is megjelenhet, karakterláncok, belül nevű szolgáltatás segítségével *köztes karakterlánc* adott kifejezések csomagolni vannak `@{ ... }`. Például:`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName'}"`  
+ Kifejezések akkor is megjelenhet, karakterláncok, belül nevű szolgáltatás segítségével *köztes karakterlánc* adott kifejezések csomagolni vannak `@{ ... }`. Például:`"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
- Karakterlánc köztes használ, az eredmény: mindig karakterlánc. Tegyük fel például, meg van adva `myNumber` , `42` és `myString` ༖༗ mint:  
+ Karakterlánc köztes használ, az eredmény: mindig karakterlánc. Tegyük fel például, meg van adva `myNumber` , `42` és `myString` , `foo`:  
   
-|JSON-érték|eredménye|  
+|JSON-érték|Eredmény|  
 |----------------|------------|  
-|"@parameters("sajatString")"|Beolvasása `foo` karakterláncként.|  
-|"@{parameters('myString')}"|Beolvasása `foo` karakterláncként.|  
-|"@parameters("SajatSzam")"|Beolvasása `42` , egy *szám*.|  
-|"@{parameters('myNumber')}"|Beolvasása `42` , egy *karakterlánc*.|  
-|"Válasz: @{parameters('myNumber')}"|A karakterláncot ad vissza, `Answer is: 42`.|  
-|"@concat(" Válasz: ", string(parameters('myNumber')))"|A karakterláncot ad vissza`Answer is: 42`|  
-|"Válasz: @@ {parameters('myNumber')}"|A karakterláncot ad vissza, `Answer is: @{parameters('myNumber')}`.|  
+|"@pipeline(). parameters.myString"| Beolvasása `foo` karakterláncként.|  
+|"@{a következő feldolgozási sorban ().parameters.myString}"| Beolvasása `foo` karakterláncként.|  
+|"@pipeline(). parameters.myNumber"| Beolvasása `42` , egy *szám*.|  
+|"@{a következő feldolgozási sorban ().parameters.myNumber}"| Beolvasása `42` , egy *karakterlánc*.|  
+|"Válasz: @{a következő feldolgozási sorban ().parameters.myNumber}"| A karakterláncot ad vissza, `Answer is: 42`.|  
+|"@concat(" Válasz: ", string(pipeline().parameters.myNumber))"| A karakterláncot ad vissza`Answer is: 42`|  
+|"Válasz: @@ {a következő feldolgozási sorban ().parameters.myNumber}"| A karakterláncot ad vissza, `Answer is: @{pipeline().parameters.myNumber}`.|  
   
+### <a name="examples"></a>Példák
+
+#### <a name="a-dataset-with-a-parameter"></a>A paraméter egy olyan adatkészlet
+A következő példában a BlobDataset egy paramétert fogad, nevű **elérési**. Az érték szolgál egy értéket, az a **folderPath** tulajdonság a következő kifejezés használatával: `@{dataset().path}`. 
+
+```json
+{
+    "name": "BlobDataset",
+    "properties": {
+        "type": "AzureBlob",
+        "typeProperties": {
+            "folderPath": "@dataset().path"
+        },
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "path": {
+                "type": "String"
+            }
+        }
+    }
+}
+```
+
+#### <a name="a-pipeline-with-a-parameter"></a>Egy folyamat paraméterrel
+A következő példában a feldolgozási folyamat veszi **inputPath** és **outputPath** paraméterek. A **elérési** a paraméteres BLOB adatkészlet van beállítva, ezek a paraméterek használatával. Az itt használt szintaxisa: `pipeline().parameters.parametername`. 
+
+```json
+{
+    "name": "Adfv2QuickStartPipeline",
+    "properties": {
+        "activities": [
+            {
+                "name": "CopyFromBlobToBlob",
+                "type": "Copy",
+                "inputs": [
+                    {
+                        "referenceName": "BlobDataset",
+                        "parameters": {
+                            "path": "@pipeline().parameters.inputPath"
+                        },
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "BlobDataset",
+                        "parameters": {
+                            "path": "@pipeline().parameters.outputPath"
+                        },
+                        "type": "DatasetReference"
+                    }
+                ],
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
+                    },
+                    "sink": {
+                        "type": "BlobSink"
+                    }
+                }
+            }
+        ],
+        "parameters": {
+            "inputPath": {
+                "type": "String"
+            },
+            "outputPath": {
+                "type": "String"
+            }
+        }
+    }
+}
+```
   
 ## <a name="functions"></a>Functions  
  Kifejezések függvények hívása. Az alábbi szakaszok ismertetik a funkciók kifejezésben használható.  
@@ -76,7 +153,7 @@ Kifejezések bárhol megjelenhet egy JSON karakterláncértéket, és egy másik
   
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
-|Concat|Tetszőleges számú karakterláncok együtt egyesíti. Például, ha parameter1 `foo,` meghaladná a következő kifejezés `somevalue-foo-somevalue`:`concat('somevalue-',parameters('parameter1'),'-somevalue')`<br /><br /> **Számú paraméter**: 1...*n*<br /><br /> **Név**: karakterlánc*n*<br /><br /> **Leírás**: kötelező. A karakterláncok egyesítése egyetlen karakterlánccá egyesít.|  
+|Concat|Tetszőleges számú karakterláncok együtt egyesíti. Például, ha parameter1 `foo,` meghaladná a következő kifejezés `somevalue-foo-somevalue`:`concat('somevalue-',pipeline().parameters.parameter1,'-somevalue')`<br /><br /> **Számú paraméter**: 1...*n*<br /><br /> **Név**: karakterlánc*n*<br /><br /> **Leírás**: kötelező. A karakterláncok egyesítése egyetlen karakterlánccá egyesít.|  
 |Substring|Egy karakterlánc karakterből álló alkészletet ad vissza. Például a következő kifejezést:<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> adja vissza:<br /><br /> `foo`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc<br /><br /> **Leírás**: kötelező. A karakterláncot, ahol a substring használatban van.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: kezdőindex<br /><br /> **Leírás**: kötelező. Ahol a substring megkezdődik az 1. paraméter indexe.<br /><br /> **Számú paraméter**: 3<br /><br /> **Név**: hossza<br /><br /> **Leírás**: kötelező. A substring hosszát.|  
 |cserélje le|Lecseréli a karakterlánc egy adott karakterláncot. Ha például a kifejezésnek:<br /><br /> `replace('the old string', 'old', 'new')`<br /><br /> adja vissza:<br /><br /> `the new string`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc<br /><br /> **Leírás**: kötelező.  Ha a paramétert 2 paraméter 1, a keresés paraméter 2 és 3. paraméter frissült karakterláncot tartalmaz.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: régi karakterlánc<br /><br /> **Leírás**: kötelező. Ha van egyezés paraméter 1 paraméterrel 3 cserélendő karakterláncot<br /><br /> **Számú paraméter**: 3<br /><br /> **Név**: új karakterlánc<br /><br /> **Leírás**: kötelező. Cserélje le a karakterlánc a 2. paraméter, ha van egyezés paraméter 1 használt karakterlánc.|  
 |GUID| Globálisan egyedi karakterlánc (más néven. (GUID). Például sikerült létrehozni a következő kimeneti `c2ecc88d-88c8-4096-912c-d6f2e2b138ce`:<br /><br /> `guid()`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: formátum<br /><br /> **Leírás**: nem kötelező. Egyetlen formátummegadó jelző [a Guid értékének formázása](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx). A formátum-paraméter "N", "D", "B", "P" vagy "X" lehet. Ha formátum nem áll rendelkezésre, "D" szolgál.|  
@@ -109,8 +186,8 @@ Kifejezések bárhol megjelenhet egy JSON karakterláncértéket, és egy másik
   
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
-|egyenlő|Igaz értéket ad eredményül, ha két érték egyenlő. Például ha parameter1 PEL, az alábbi kifejezés alakítanák vissza `true`:`equals(parameters('parameter1'), 'foo')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: kötelező. Az objektum összehasonlítandó **objektum 2**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: 2 objektum<br /><br /> **Leírás**: kötelező. Az objektum összehasonlítandó **objektum 1**.|  
-|kevesebb|Igaz értéket ad eredményül, ha az első argumentum nem kisebb, mint a második. Vegye figyelembe, hogy értékek csak lehetnek típusa egész szám, lebegőpontos vagy karakterlánc. Például az alábbi kifejezés eredménye `true`:`less(10,100)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: kötelező. Az objektum ellenőrizze, hogy van legalább **objektum 2**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: 2 objektum<br /><br /> **Leírás**: kötelező. Annak ellenőrzése, hogy az nagyobb, mint az objektum **objektum 1**.|  
+|egyenlő|Igaz értéket ad eredményül, ha két érték egyenlő. Például ha parameter1 PEL, az alábbi kifejezés alakítanák vissza `true`:`equals(pipeline().parameters.parameter1), 'foo')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: kötelező. Az objektum összehasonlítandó **objektum 2**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: 2 objektum<br /><br /> **Leírás**: kötelező. Az objektum összehasonlítandó **objektum 1**.|  
+|kevesebb részlet|Igaz értéket ad eredményül, ha az első argumentum nem kisebb, mint a második. Vegye figyelembe, hogy értékek csak lehetnek típusa egész szám, lebegőpontos vagy karakterlánc. Például az alábbi kifejezés eredménye `true`:`less(10,100)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: kötelező. Az objektum ellenőrizze, hogy van legalább **objektum 2**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: 2 objektum<br /><br /> **Leírás**: kötelező. Annak ellenőrzése, hogy az nagyobb, mint az objektum **objektum 1**.|  
 |lessOrEquals|Igaz értéket ad eredményül, ha az első argumentum értéke nagyobb, mint a második. Vegye figyelembe, hogy értékek csak lehetnek típusa egész szám, lebegőpontos vagy karakterlánc. Például az alábbi kifejezés eredménye `true`:`lessOrEquals(10,10)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: kötelező. Annak ellenőrzése, hogy az kisebb vagy egyenlő objektum **objektum 2**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: 2 objektum<br /><br /> **Leírás**: kötelező. Nagyobb vagy egyenlő esetén ellenőrizze az objektum **objektum 1**.|  
 |nagyobb|Igaz értéket ad eredményül, ha az első argumentum értéke nagyobb, mint a második. Vegye figyelembe, hogy értékek csak lehetnek típusa egész szám, lebegőpontos vagy karakterlánc. Például az alábbi kifejezés eredménye `false`:`greater(10,10)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: kötelező. Annak ellenőrzése, hogy az nagyobb, mint az objektum **objektum 2**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: 2 objektum<br /><br /> **Leírás**: kötelező. Az objektum ellenőrizze, hogy van legalább **objektum 1**.|  
 |greaterOrEquals|Igaz értéket ad eredményül, ha az első argumentum nagyobb vagy egyenlő a második. Vegye figyelembe, hogy értékek csak lehetnek típusa egész szám, lebegőpontos vagy karakterlánc. Például az alábbi kifejezés eredménye `false`:`greaterOrEquals(10,100)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: kötelező. Nagyobb vagy egyenlő esetén ellenőrizze az objektum **objektum 2**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: 2 objektum<br /><br /> **Leírás**: kötelező. Annak ellenőrzése, hogy az kisebb vagy egyenlő, mint az objektum **objektum 1**.|  
@@ -122,7 +199,7 @@ Kifejezések bárhol megjelenhet egy JSON karakterláncértéket, és egy másik
 ## <a name="conversion-functions"></a>Átalakítás funkciók  
  Ezek a függvények minden nyelven natív típusai közötti átváltásra használhatók:  
   
--   Karakterlánc  
+-   karakterlánc  
   
 -   egész szám  
   
@@ -137,11 +214,11 @@ Kifejezések bárhol megjelenhet egy JSON karakterláncértéket, és egy másik
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
 |int|A paraméter átalakítása egy egész számot. Például a következő kifejezést ad vissza, nem pedig egy karakterlánc, 100:`int('100')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely alakítja át egy egész számot.|  
-|Karakterlánc|A paraméter alakítható át karakterlánccá. Például az alábbi kifejezés eredménye `'10'`: `string(10)` is átválthat egy objektum egy karakterlánc, például ha a **PEL** paraméter egy tulajdonság az objektum `bar : baz`, akkor a következő lenne térjen vissza `{"bar" : "baz"}``string(parameters('foo'))`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely karakterlánccá alakítja át.|  
+|karakterlánc|A paraméter alakítható át karakterlánccá. Például az alábbi kifejezés eredménye `'10'`: `string(10)` is átválthat egy objektum egy karakterlánc, például ha a **PEL** paraméter egy tulajdonság az objektum `bar : baz`, akkor a következő lenne térjen vissza `{"bar" : "baz"}``string(pipeline().parameters.foo)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely karakterlánccá alakítja át.|  
 |JSON-ban|A paraméternek JSON típusú értékké konvertálni. String() ellentéte. Például az alábbi kifejezés eredménye `[1,2,3]` tömb, nem pedig egy karakterlánc:<br /><br /> `parse('[1,2,3]')`<br /><br /> Hasonlóképpen átválthat a karakterlánc objektum. Például `json('{"bar" : "baz"}')` adja vissza:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc<br /><br /> **Leírás**: kötelező. A karakterlánc, amely natív típusa értékre alakítja át.<br /><br /> A json-függvény xml bemenet is támogatja. Ha például a paraméter értékét:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> a következő JSON formátumúvá alakul:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |Lebegőpontos|A paraméter argumentum konvertálható lebegőpontos szám. Például az alábbi kifejezés eredménye `10.333`:`float('10.333')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely a lebegőpontos számként alakítja át.|  
 |logikai érték|A paraméter átalakítása olyan logikai érték. Például az alábbi kifejezés eredménye `false`:`bool(0)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely egy logikai érték alakítja át.|  
-|Egyesítés|Az argumentumként átadott az első nem null objektumot ad vissza. Megjegyzés: üres karakterlánc értéke nem null. Például ha az 1. és 2 paraméterek nincsenek megadva, ez visszaad `fallback`:`coalesce(parameters('parameter1'), parameters('parameter2') ,'fallback')`<br /><br /> **Számú paraméter**: 1...*n*<br /><br /> **Név**: objektum*n*<br /><br /> **Leírás**: kötelező. Az objektumok kereséséhez `null`.|  
+|Egyesítés|Az argumentumként átadott az első nem null objektumot ad vissza. Megjegyzés: üres karakterlánc értéke nem null. Például ha az 1. és 2 paraméterek nincsenek megadva, ez visszaad `fallback`:`coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **Számú paraméter**: 1...*n*<br /><br /> **Név**: objektum*n*<br /><br /> **Leírás**: kötelező. Az objektumok kereséséhez `null`.|  
 |a Base64|A bemeneti karakterlánc a base64 alakot adja vissza. Például az alábbi kifejezés eredménye `c29tZSBzdHJpbmc=`:`base64('some string')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc-1<br /><br /> **Leírás**: kötelező. A karakterlánc helyére base64 kódolása.|  
 |base64ToBinary|A base64 kódolású karakterlánc bináris alakot adja vissza. Például az alábbi kifejezés egy karakterlánc bináris alakot adja vissza: `base64ToBinary('c29tZSBzdHJpbmc=')`.<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc<br /><br /> **Leírás**: kötelező. A base64 kódolású karakterlánc.|  
 |base64ToString|A based64 kódolású karakterlánc karakterlánc alakot adja vissza. Például az alábbi kifejezés egy karakterláncot ad vissza: `base64ToString('c29tZSBzdHJpbmc=')`.<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc<br /><br /> **Leírás**: kötelező. A base64 kódolású karakterlánc.|  
@@ -157,22 +234,22 @@ Kifejezések bárhol megjelenhet egy JSON karakterláncértéket, és egy másik
 |uriComponentToBinary|Visszaadja a bináris megjelenítése egy URI-kódolású karakterlánc. Például az alábbi kifejezés egy bináris alakot adja vissza `You Are:Cool/Awesome`:`uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc<br /><br />**Leírás**: kötelező. Az URI-kódolású karakterlánc.|  
 |uriComponentToString|Visszaadja a URI karakterlánc-ábrázolása kódolású karakterlánc. Például az alábbi kifejezés eredménye `You Are:Cool/Awesome`:`uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **Számú paraméter**: 1<br /><br />**Név**: karakterlánc<br /><br />**Leírás**: kötelező. Az URI-kódolású karakterlánc.|  
 |xml|Térjen vissza az értéket XML-ábrázolása. Például az alábbi kifejezés egy XML-kódot eredményezzen tartalom által képviselt `'\<name>Alan\</name>'`: `xml('\<name>Alan\</name>')`. Az xml-függvény JSON objektum bemeneti is támogatja. Például a paraméter `{ "abc": "xyz" }` alakítja át egy XML-tartalom`\<abc>xyz\</abc>`<br /><br /> **Számú paraméter**: 1<br /><br />**Név**: érték<br /><br />**Leírás**: kötelező. Az érték átalakítása XML.|  
-|XPath|Az xpath-kifejezés az érték, amely az xpath kifejezés értéke megfelelő XML-csomópontnak tömbjét adja vissza.<br /><br />  **1. példa**<br /><br /> Tegyük fel, a "p1" paraméter értéke a következő XML-karakterlánc-ábrázolása:<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1. Ezt a kódot:`xpath(xml(parameters('p1'), '/lab/robot/name')`<br /><br /> alakítanák vissza<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> mivel<br /><br /> 2. Ezt a kódot:`xpath(xml(parameters('p1'), ' sum(/lab/robot/parts)')`<br /><br /> alakítanák vissza<br /><br /> `13`<br /><br /> <br /><br /> **2. példa**<br /><br /> Adja meg a következő XML-tartalom:<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.  Ezt a kódot:`@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> vagy<br /><br /> 2. Ezt a kódot:`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> adja vissza<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> és<br /><br /> 3. Ezt a kódot:`@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> adja vissza<br /><br /> ``bar``<br /><br /> **Számú paraméter**: 1<br /><br />**Név**: Xml<br /><br />**Leírás**: kötelező. Az XML, amelyiken az XPath-kifejezés kiértékelése.<br /><br /> **Számú paraméter**: 2. régiója<br /><br />**Név**: XPath<br /><br />**Leírás**: kötelező. Az XPath-kifejezés kiértékelése.|  
-|A tömb|A paraméter átalakítása tömb.  Például a következő kifejezés reutrns `["abc"]`:`array('abc')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely a tömb alakítja át.|
-|createArray|A paraméter egy tömb jön létre.  Például az alábbi kifejezés eredménye `["a", "c"]`:`createArray('a', 'c')`<br /><br /> **Számú paraméter**: 1 ... n<br /><br /> **Név**: bármely n<br /><br /> **Leírás**: kötelező. Az értékek egy tömb egységgé kombinálják.|
+|XPath|Az xpath-kifejezés az érték, amely az xpath kifejezés értéke megfelelő XML-csomópontnak tömbjét adja vissza.<br /><br />  **1. példa**<br /><br /> Tegyük fel, a "p1" paraméter értéke a következő XML-karakterlánc-ábrázolása:<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1. Ezt a kódot:`xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> alakítanák vissza<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> mivel<br /><br /> 2. Ezt a kódot:`xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> alakítanák vissza<br /><br /> `13`<br /><br /> <br /><br /> **2. példa**<br /><br /> Adja meg a következő XML-tartalom:<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.  Ezt a kódot:`@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> vagy<br /><br /> 2. Ezt a kódot:`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> adja vissza<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> és<br /><br /> 3. Ezt a kódot:`@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> adja vissza<br /><br /> ``bar``<br /><br /> **Számú paraméter**: 1<br /><br />**Név**: Xml<br /><br />**Leírás**: kötelező. Az XML, amelyiken az XPath-kifejezés kiértékelése.<br /><br /> **Számú paraméter**: 2. régiója<br /><br />**Név**: XPath<br /><br />**Leírás**: kötelező. Az XPath-kifejezés kiértékelése.|  
+|tömb|A paraméter átalakítása tömb.  Például az alábbi kifejezés eredménye `["abc"]`:`array('abc')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely a tömb alakítja át.|
+|createArray|A paraméter egy tömb jön létre.  Például az alábbi kifejezés eredménye `["a", "c"]`:`createArray('a', 'c')`<br /><br /> **Számú paraméter**: 1.. n<br /><br /> **Név**: bármely n<br /><br /> **Leírás**: kötelező. Az értékek egy tömb egységgé kombinálják.|
 
 ## <a name="math-functions"></a>Matematikai függvények  
  Ezeket a funkciókat használhatja bármelyik típusú számot: **egész számok** és **képest az előtérben**.  
   
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
-|Hozzáadása|A két szám hozzáadása eredményét adja vissza. Például, a függvény `20.333`:`add(10,10.333)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: Summand 1<br /><br /> **Leírás**: kötelező. A hozzáadni kívánt számot **Summand 2**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: Summand 2<br /><br /> **Leírás**: kötelező. A hozzáadni kívánt számot **Summand 1**.|  
+|hozzáadás|A két szám hozzáadása eredményét adja vissza. Például, a függvény `20.333`:`add(10,10.333)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: Summand 1<br /><br /> **Leírás**: kötelező. A hozzáadni kívánt számot **Summand 2**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: Summand 2<br /><br /> **Leírás**: kötelező. A hozzáadni kívánt számot **Summand 1**.|  
 |Sub|A kivonás a két szám eredményét adja vissza. Például adja vissza ezt a funkciót: `-0.333`:<br /><br /> `sub(10,10.333)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: Minuend<br /><br /> **Leírás**: kötelező. A szám, amely **Subtrahend** törlődik.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: Subtrahend<br /><br /> **Leírás**: kötelező. Távolítsa el a számot a **Minuend**.|  
 |MUL számú|A két szám a szorzás eredményét adja vissza. Például a következő értéket ad vissza `103.33`:<br /><br /> `mul(10,10.333)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: Multiplicand 1<br /><br /> **Leírás**: kötelező. A szám szorzóját **Multiplicand 2** együtt.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: Multiplicand 2<br /><br /> **Leírás**: kötelező. A szám szorzóját **Multiplicand 1** együtt.|  
 |DIV|A két szám hányadosának eredményét adja vissza. Például a következő értéket ad vissza `1.0333`:<br /><br /> `div(10.333,10)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: osztandó<br /><br /> **Leírás**: kötelező. A szám nullával a **osztó**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: osztó<br /><br /> **Leírás**: kötelező. A szám felosztása a **osztandó** által.|  
-|MOD|A két szám (modulo) osztás után a fennmaradó eredményét adja vissza. Például az alábbi kifejezés eredménye `2`:<br /><br /> `mod(10,4)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: osztandó<br /><br /> **Leírás**: kötelező. A szám nullával a **osztó**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: osztó<br /><br /> **Leírás**: kötelező. A szám felosztása a **osztandó** által. A felosztás végrehajtott remainderis után.|  
+|MOD|A két szám (modulo) osztás után a fennmaradó eredményét adja vissza. Például az alábbi kifejezés eredménye `2`:<br /><br /> `mod(10,4)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: osztandó<br /><br /> **Leírás**: kötelező. A szám nullával a **osztó**.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: osztó<br /><br /> **Leírás**: kötelező. A szám felosztása a **osztandó** által. A felosztás után ezeket a többi használatban van.|  
 |perc|Nincsenek a két különböző mintát, ez a függvény hívásakor: `min([0,1,2])` itt min tömb lehet. A kifejezés eredménye `0`. Azt is megteheti, ez a funkció is igénybe vehet az értékek vesszővel tagolt listáját: `min(0,1,2)` ezt a funkciót is 0 értéket adja vissza. Vegye figyelembe, minden értékek csak számokat, ha a paraméter egy tömb van való csak számokat.<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény vagy érték<br /><br /> **Leírás**: kötelező. Ez lehet egy tömböt találja a minimális értéknél, vagy egy első értékét.<br /><br /> **Számú paraméter**: 2...*n*<br /><br /> **Név**: érték*n*<br /><br /> **Leírás**: nem kötelező. Ha az első paraméter értéke, majd lehet további értéket átadni, és a minimális átadott értékek ad vissza.|  
-|maximális|Nincsenek két különböző mintát, ez a függvény hívásakor:`max([0,1,2])`<br /><br /> Itt maximális tömb lehet. A kifejezés eredménye `2`. Azt is megteheti, ez a funkció is igénybe vehet az értékek vesszővel tagolt listáját: `max(0,1,2)` Ez a függvény a 2 értéket adja vissza. Vegye figyelembe, minden értékek csak számokat, ha a paraméter egy tömb van való csak számokat.<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény vagy érték<br /><br /> **Leírás**: kötelező. A maximális érték vagy egy első érték található egy tömböt lehetnek.<br /><br /> **Számú paraméter**: 2...*n*<br /><br /> **Név**: érték*n*<br /><br /> **Leírás**: nem kötelező. Ha az első paraméter értéke, majd lehet további értéket átadni, és a maximális átadott értékek ad vissza.|  
+|max.|Nincsenek két különböző mintát, ez a függvény hívásakor:`max([0,1,2])`<br /><br /> Itt maximális tömb lehet. A kifejezés eredménye `2`. Azt is megteheti, ez a funkció is igénybe vehet az értékek vesszővel tagolt listáját: `max(0,1,2)` Ez a függvény a 2 értéket adja vissza. Vegye figyelembe, minden értékek csak számokat, ha a paraméter egy tömb van való csak számokat.<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény vagy érték<br /><br /> **Leírás**: kötelező. A maximális érték vagy egy első érték található egy tömböt lehetnek.<br /><br /> **Számú paraméter**: 2...*n*<br /><br /> **Név**: érték*n*<br /><br /> **Leírás**: nem kötelező. Ha az első paraméter értéke, majd lehet további értéket átadni, és a maximális átadott értékek ad vissza.|  
 |tartomány| Létrehoz egy adott értéket egész számok tömbje és a visszaadott tömb hosszának megadása. Például, a függvény `[3,4,5,6]`:<br /><br /> `range(3,4)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: kezdőindex<br /><br /> **Leírás**: kötelező. A tömb első egész.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: száma<br /><br /> **Leírás**: kötelező. Egész számok, amelyek a tömb száma.|  
 |VÉL| Létrehoz egy véletlenszerű egész (mindkét vége között lehet a megadott tartományban. Ez visszaadhatja például `42`:<br /><br /> `rand(-1000,1000)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: minimális<br /><br /> **Leírás**: kötelező. A legkisebb egész szám visszatérő.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: maximális<br /><br /> **Leírás**: kötelező. A legnagyobb egész számot visszatérő.|  
   

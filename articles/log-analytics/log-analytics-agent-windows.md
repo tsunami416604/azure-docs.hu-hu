@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 12/14/2017
 ms.author: magoedte
-ms.openlocfilehash: 473b8d1a735f4b6b1dfd0935f9d6950431f3d245
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 35e271f943901091041f7b1e9fad6cb9cd46df5b
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -33,32 +33,34 @@ Az ügynök az alábbi módszerek egyikének használatával telepíthetők. A l
 * PowerShell-parancsfájlt.
 * Resource Manager-sablon virtuális gépek helyszíni Windows Azure-készletben.  
 
+A Windows-ügynök telepítése a hálózati és a rendszer követelmények megértése érdekében tekintse át a [adatokat gyűjteni a környezet az Azure Naplóelemzés](log-analytics-concept-hybrid.md#prerequisites).
+
 ## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
-A Microsoft figyelési ügynök a Windows telepítéséhez szükséges a munkaterület azonosítója és kulcsa a Naplóelemzési munkaterületet.  Szükség az egyes telepítési módszerek megfelelően konfigurálni az ügynököt, és képes sikeresen kommunikálni a Naplóelemzési szolgáltatással a telepítés során.  
+A Windowshoz készült Microsoft Monitoring Agent telepítése előtt szüksége lesz a Log Analytics-munkaterület azonosítójára és kulcsára.  Szükség az egyes telepítési módszerek megfelelően konfigurálni az ügynököt, és képes sikeresen kommunikálni a Naplóelemzési szolgáltatással a telepítés során.  
 
 1. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Naplóelemzési munkaterület, jelölje ki az ügynök konfigurálásáról jelenteni szeretné a munkaterületen.
-3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![Log Analytics speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
-4. Válassza ki **csatlakoztatott források**, majd válassza ki **Windows kiszolgálók**.   
+3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![A Log Analytics speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+4. Válassza ki a **Csatlakoztatott források**, majd a **Windowsos kiszolgálók** elemet.   
 5. A **Munkaterület-azonosító** és az **Elsődleges kulcs** jobb oldalán lévő érték. Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.   
    
 ## <a name="install-the-agent-using-setup"></a>Telepítse az ügynököt, a telepítőprogram használatával
-Az alábbi lépéseket telepítése, és az ügynök a Naplóelemzési konfigurálása Azure és az Azure Government felhőben, a telepítőprogram használatával a Microsoft Monitoring Agent a számítógépen.  Az ügynök telepítőprogramját a letöltött fájl tartalmazza, és annak érdekében, hogy ki kell nyerni 
+Az alábbi lépésekkel telepíthető és konfigurálható az ügynök a Log Analytics használatához az Azure és az Azure Government-felhőben a Microsoft Monitoring Agent telepítőjének használatával a számítógépén.  Az ügynök telepítőprogramját a letöltött fájl tartalmazza, és annak érdekében, hogy ki kell nyerni 
 
-1. Az a **Windows kiszolgálók** lapon, válassza ki a megfelelő **Windows-ügynök letöltése** letöltése attól függően, hogy a processzor architektúrájától, a Windows operációs rendszer verziója.
-2. A telepítőprogramot az ügynök telepítése a számítógépre.
-2. Az a **üdvözlő** kattintson **következő**.
-3. Az a **licencfeltételeket** lapon, olvassa el a licencfeltételeket, majd kattintson **elfogadom**.
-4. Az a **célmappa** lapon, módosítása vagy a megadott alapértelmezett telepítési mappát, majd kattintson **következő**.
-5. Az a **ügynök telepítésének beállításai** lapon, csatlakoztassa az ügynököt az Azure Naplóelemzés (OMS), majd válassza ki **következő**.   
-6. Az a **Azure Naplóelemzés** lapján tegye a következőket:
-   1. Beillesztés a **munkaterület azonosítója** és **Munkaterületkulcsot (elsődleges kulcs)** korábban kimásolt.  Ha a számítógép a Naplóelemzési munkaterület Azure Government felhőben kell jelentsenek, jelölje be **Azure Amerikai Egyesült államokbeli kormányzati** a a **Azure felhőbe** legördülő listából.  
-   2. Ha a számítógép szükség van a Naplóelemzési szolgáltatás proxykiszolgálón keresztül kommunikálnak, kattintson a **speciális** és URL-címét, és a proxykiszolgáló portszámát.  Ha a proxykiszolgálóhoz hitelesítés szükséges, írja be a felhasználónevet és jelszót a proxykiszolgáló hitelesítéséhez szükséges, és kattintson a **következő**.  
-7. Kattintson a **következő** biztosítása a konfigurációs beállításokat befejezése után.<br><br> ![illessze be a munkaterület azonosítója és az elsődleges kulcs](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-setup-laworkspace.png)<br><br>
-8. Az a **telepítésre kész** lapon, ellenőrizze a megadott beállításokat, majd kattintson **telepítése**.
-9. Az a **konfigurálása sikeresen befejeződött** kattintson **Befejezés**.
+1. A **Windowsos kiszolgálók** lapon válassza ki a Windows operációs rendszer processzorarchitektúrájának megfelelő verziójú **Windows-ügynök letöltése** lehetőséget.
+2. Futtassa a telepítőt, és telepítse az ügynököt a számítógépre.
+2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
+3. A **Licencfeltételek** oldalon olvassa el és fogadja el a licencet, majd kattintson az **Elfogadom** gombra.
+4. A **Célmappa** lapon fogadja el az alapértelmezett telepítési mappát, vagy adjon meg egy másikat, majd kattintson a **Tovább** gombra.
+5. **Az ügynök telepítésének beállításai** lapon csatlakoztassa az ügynököt az Azure Log Analyticshez (OMS), majd kattintson a **Tovább** gombra.   
+6. Az **Azure Log Analytics** lapon végezze el a következőket:
+   1. Illessze be az előzőleg kimásolt **Munkaterület-azonosítót** és **Munkaterületkulcsot (Elsődleges kulcs)**.  Ha a gépnek egy Azure Government-felhőbeli Log Analytics-munkaterületnek kell jelentenie, válassza az **Azure US Government** lehetőséget az **Azure Cloud** legördülő listából.  
+   2. Ha a számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, kattintson a **Speciális** gombra, majd adja meg a proxykiszolgáló URL-címét és portszámát.  Ha a proxykiszolgáló hitelesítést igényel, írja be a felhasználónevet és jelszót a proxykiszolgálóval való hitelesítéshez, majd kattintson a **Tovább** gombra.  
+7. A szükséges konfigurációs beállítások megadása után kattintson a **Tovább** gombra.<br><br> ![illessze be a Munkaterület-azonosítót és az Elsődleges kulcsot](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-setup-laworkspace.png)<br><br>
+8. A **Telepítésre kész** oldalon ellenőrizze a beállításokat, majd kattintson a **Telepítés** elemre.
+9. **A konfigurálás sikeresen befejeződött** lapon kattintson a **Befejezés** gombra.
 
-Amikor végzett, a **Microsoft-Figyelőügynök** megjelenik **Vezérlőpult**. Erősítse meg a jelentések szolgáltatáshoz, tekintse át [Naplóelemzési ügynök ellenőrzésére](#verify-agent-connectivity-to-log-analytics). 
+Ennek végeztével a **Microsoft Monitoring Agent** megjelenik a **Vezérlőpulton**. Erősítse meg a jelentések szolgáltatáshoz, tekintse át [Naplóelemzési ügynök ellenőrzésére](#verify-agent-connectivity-to-log-analytics). 
 
 ## <a name="install-the-agent-using-the-command-line"></a>Telepítse az ügynököt, a parancssor használatával
 Az ügynök a letöltött fájl csomag egy önálló telepítő IExpress létre.  A telepítőprogram az ügynök és a fájlokat a csomagban található, és megfelelően a parancssorból a következő példákban telepítéséhez ki kell.  Ez a metódus támogatja, hogy az Azure kereskedelmi és az USA szövetségi kormányzatának felhőbeli konfigurálása.  
@@ -154,7 +156,7 @@ A kódot közvetlenül az ügynök telepítési csomag lekérdezni, használhatj
 
 Az ügynök instalaltion végrehajtása után ellenőrzése, hogy sikeresen csatlakozott, és reporting kétféleképpen végezhető.  
 
-A számítógépről a **Vezérlőpult**, keresse meg az elemet **Microsoft Monitoring Agent**.  Válassza ki azt, és a a **Azure Naplóelemzés (OMS)** lapon, az ügynök megjelenjen-e a következő üzenet: **a Microsoft Monitoring Agent sikeresen csatlakozott-e a Microsoft Operations Management Suite szolgáltatással.**<br><br> ![A Naplóelemzési MMA létesített kapcsolat állapotát](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+A számítógépről a **Vezérlőpult**, keresse meg az elemet **Microsoft Monitoring Agent**.  Válassza ki azt, és a a **Azure Naplóelemzés (OMS)** lapon, az ügynök megjelenjen-e a következő üzenet: **a Microsoft Monitoring Agent sikeresen csatlakozott-e a Microsoft Operations Management Suite szolgáltatással.**<br><br> ![MMA kapcsolati állapota a Log Analytics felé](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 Egyszerű napló keresést az Azure portálon is elvégezheti.  
 

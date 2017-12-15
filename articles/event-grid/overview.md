@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 12/14/2017
 ms.author: babanisa
-ms.openlocfilehash: 5b522b40b136e354c6ca83a56ac7ad690151ad7d
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: e6665b3b0c6e92ed462f18dbd41d62ccd9304928
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event rács bemutatása
 
@@ -20,9 +20,18 @@ Az Azure Event rács lehetővé teszi az architektúrák esemény-alapú alkalma
 
 Szűrők segítségével meghatározott események különböző végpontokhoz, több végpontot, csoportos küldéssel történő továbbításához, és győződjön meg arról, hogy az események megbízhatóan érkeznek. Esemény rács is rendelkezik beépített egyéni és külső események támogatása.
 
-Az előzetes verzió esetén az Event Grid a **westus2** és a **westcentralus** helyet támogatja. Más régiókban lesz hozzáadva.
+Esemény rács jelenleg a következő régióban:
 
-Ez a cikk áttekintést Azure esemény rács. Ha azt szeretné, esemény rács használatába, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md).
+* USA középső régiója
+*   USA keleti régiója
+*   USA 2. keleti régiója
+*   USA nyugati középső régiója
+*   USA nyugati régiója
+*   USA nyugati régiója, 2.
+
+Más régiókban lesz hozzáadva.
+
+Ez a cikk áttekintést Azure esemény rács. Ha azt szeretné, esemény rács használatába, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md). A következő kép bemutatja, hogyan csatlakozzon az esemény rács a közzétevők és kezelők, de nem biztosít a támogatott beállítások átfogó listáját.
 
 ![Esemény rács működési modell](./media/overview/event-grid-functional-model.png)
 
@@ -30,11 +39,11 @@ Ez a cikk áttekintést Azure esemény rács. Ha azt szeretné, esemény rács h
 
 Jelenleg az Azure-szolgáltatásokat kell beépített publisher az esemény rács:
 
-* Erőforráscsoportok (műveletek)
 * Azure-előfizetések (műveletek)
-* Event Hubs
-* Storage-Blobba
 * Egyéni kapcsolatos témakörök
+* Event Hubs
+* Erőforráscsoportok (műveletek)
+* Storage-Blobba
 
 Más Azure-szolgáltatásokkal fog bővülni az év.
 
@@ -42,11 +51,12 @@ Más Azure-szolgáltatásokkal fog bővülni az év.
 
 Jelenleg az Azure-szolgáltatásokat kell beépített kezelő az esemény rács: 
 
-* Azure Functions
-* Logic Apps
 * Azure Automation
-* Webhook
+* Azure Functions
+* Event Hubs
+* Logic Apps
 * Microsoft folyamata
+* Webhookok
 
 Más Azure-szolgáltatásokkal fog bővülni az év.
 

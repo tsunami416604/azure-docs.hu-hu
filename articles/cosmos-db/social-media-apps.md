@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.openlocfilehash: 9f2a3e104df579029da56ba515b2159c18f4eae6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c89b2db6d5a80f184ca98ef757605272d385a81c
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Az Azure Cosmos DB közösségi címen
 A nagymértékben összekapcsolt társadalom élő azt jelenti, hogy a életben bármikor lesz része egy **közösségi hálózati**. Közösségi hálózatokkal való kapcsolattartásra ismerősök, munkatársakat, termékcsalád vagy néha nekünk kihívás megosztása élők közös érdekében használjuk.
@@ -103,7 +103,7 @@ Hírcsatornák létrehozásakor csak egy adott fontossági sorrendben post azono
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-Azt a létrehozási dátum szerint rendezve bejegyzéseket rendelkezhetnek a "legutóbbi" adatfolyam, ezeket a bejegyzéseket a "hottest" adatfolyam több kedveli az elmúlt 24 órában, akár sikerült megvalósítása az egyes felhasználók például followers és érdeklődési logikán alapuló egyéni adatfolyam és p listáját kell osts. Hogyan hozhat létre a listák kérdése, de az olvasási teljesítmény akadálytalan marad. Ha e listák valamelyikébe szerezni, hogy egyetlen lekérdezést kapni Cosmos DB használatával az [OPERÁTORBAN](documentdb-sql-query.md#WhereClause) bejegyzéseket lapjain beszerzése egyszerre.
+Azt a létrehozási dátum szerint rendezve bejegyzéseket rendelkezhetnek a "legutóbbi" adatfolyam, ezeket a bejegyzéseket a "hottest" adatfolyam több kedveli az elmúlt 24 órában, akár sikerült megvalósítása az egyes felhasználók például followers és érdeklődési logikán alapuló egyéni adatfolyam és p listáját kell osts. Hogyan hozhat létre a listák kérdése, de az olvasási teljesítmény akadálytalan marad. Ha e listák valamelyikébe szerezni, hogy egyetlen lekérdezést kapni Cosmos DB használatával az [OPERÁTORBAN](sql-api-sql-query.md#WhereClause) bejegyzéseket lapjain beszerzése egyszerre.
 
 Az adatcsatorna adatfolyamokat használatával épülhet [Azure App Services](https://azure.microsoft.com/services/app-service/) háttér-folyamatok: [Webjobs](../app-service/web-sites-create-web-jobs.md). A feladás egy vagy több létrehozása után a háttérben történő feldolgozás használatával is elindítható [Azure Storage](https://azure.microsoft.com/services/storage/) [várólisták](../storage/queues/storage-dotnet-how-to-use-queues.md) és használatával indított Webjobs a [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)végrehajtási, a Propagálás utáni saját egyéni logika alapuló belül. 
 
@@ -237,7 +237,7 @@ Mi történik, ha a dolgok folyton jobb és a felhasználók egy másik régiób
 
 Várjon..., de azt hamarosan vegye figyelembe a felhasználói élmény a platformon nincs optimalizálva; Amennyiben távol is működési régiójától, hogy a várakozási Félelmetes, és nyilvánvalóan szeretné letiltani való kilépéshez. Ha csak a egyszerűen történt **kiterjesztése a globális reach**..., de nincs!
 
-Cosmos DB lehetővé teszi, hogy [globálisan replikálja az adatokat](../cosmos-db/tutorial-global-distribution-documentdb.md) és transzparens módon végzett néhány kattintással, és automatikusan válassza ki az elérhető régiók között a [Ügyfélkód](../cosmos-db/tutorial-global-distribution-documentdb.md). Ez azt is jelenti, hogy rendelkezik [feladatátvétel több régióba](regional-failover.md). 
+Cosmos DB lehetővé teszi, hogy [globálisan replikálja az adatokat](../cosmos-db/tutorial-global-distribution-sql-api.md) és transzparens módon végzett néhány kattintással, és automatikusan válassza ki az elérhető régiók között a [Ügyfélkód](../cosmos-db/tutorial-global-distribution-sql-api.md). Ez azt is jelenti, hogy rendelkezik [feladatátvétel több régióba](regional-failover.md). 
 
 Amikor globálisan replikálja az adatokat, győződjön meg arról, hogy az ügyfelek is igénybe vehet fel kell. Ha egy webes előtér- vagy egypéldányú API-k mobilügyfelek használ, telepítheti [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) és az Azure App Service minden kívánt terület, a teljesítmény segítségével támogatása a kiterjesztett klónozni globális érvényességének. Amikor az ügyfelek hozzáférnek az előtérbeli vagy API-k, akkor továbbítja a, csatlakozik a helyi Cosmos adatbázis-replika legközelebbi App Service.
 

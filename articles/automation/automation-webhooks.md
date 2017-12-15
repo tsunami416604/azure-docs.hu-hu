@@ -3,7 +3,7 @@ title: "Egy Azure Automation-runbook kezdődő, és olyan webhook |} Microsoft D
 description: "A webhook, amely lehetővé teszi az ügyfél elindít egy forgatókönyvet az Azure Automation egy HTTP-hívás.  Ez a cikk ismerteti a webhook létrehozása, és hogyan hívhatja meg egy runbook indítása."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 9b20237c-a593-4299-bbdc-35c47ee9e55d
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: d384a1f6e0f6bf49cf94020265fe5675ffc0029d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1b9b804aa696419b52a03f127c59037c337be66
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Egy Azure Automation-runbook kezdődő, és olyan webhook
 A *webhook* lehetővé teszi az adott forgatókönyv indítása az Azure Automationben egyetlen HTTP-kérelem keresztül. Ez lehetővé teszi, hogy a külső szolgáltatások, például a Visual Studio Team Services, GitHub, a Microsoft Operations Management Suite Naplóelemzési vagy egy Azure Automation API használatával teljes megoldás megvalósításának nélküli runbookok elindítását egyéni alkalmazások.  
@@ -32,7 +32,7 @@ A következő táblázat ismerteti a tulajdonságokat, amelyeket konfigurálnia 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Név |Megadhat egy nevet, egy webhook óta ez nincs felfedve, az ügyfélnek.  Azt csak az Ön azonosítására szolgál a runbook az Azure Automationben. <br>  Ajánlott eljárásként adjon a webhook kapcsolódik az ügyfél által használt nevet. |
-| URL-CÍME |A webhook URL-címe az ügyfelek egy HTTP POST a webhook csatolva a runbook elindításához hívja a egyedi cím.  A webhook létrehozásakor automatikusan történik.  Egy egyéni URL-címe nem adható meg. <br> <br>  Az URL-cím egy biztonsági jogkivonatot, amely lehetővé teszi a forgatókönyv további hitelesítés nélküli külső rendszer által meghívandó tartalmaz. Ezért azt kell kezelni, például a jelszó.  Biztonsági okokból csak megtekintheti az URL-cím az Azure portálon, a rendszer a webhook létrehozása során. Vegye figyelembe a jövőbeli használatra egy biztonságos helyre az URL-címet. |
+| URL-cím |A webhook URL-címe az ügyfelek egy HTTP POST a webhook csatolva a runbook elindításához hívja a egyedi cím.  A webhook létrehozásakor automatikusan történik.  Egy egyéni URL-címe nem adható meg. <br> <br>  Az URL-cím egy biztonsági jogkivonatot, amely lehetővé teszi a forgatókönyv további hitelesítés nélküli külső rendszer által meghívandó tartalmaz. Ezért azt kell kezelni, például a jelszó.  Biztonsági okokból csak megtekintheti az URL-cím az Azure portálon, a rendszer a webhook létrehozása során. Vegye figyelembe a jövőbeli használatra egy biztonságos helyre az URL-címet. |
 | Lejárat dátuma |Például egy tanúsítványt egyes webhook van ekkor már nem használható lejárati dátuma.  A lejárati dátumot a webhook létrehozása után módosítható. |
 | Engedélyezve |A webhook alapértelmezés szerint engedélyezve van, ha létrehozták.  Ha beállította azt le van tiltva, akkor nincs ügyfél lesz használni tudja.  Beállíthatja a **engedélyezve** tulajdonság a webhook, vagy bármikor egyszer létrehozásakor jön létre. |
 
@@ -85,10 +85,10 @@ Egy másik olyan stratégia, hogy a runbook egy külső állapot néhány ellen�
 ## <a name="creating-a-webhook"></a>A webhook létrehozása
 A következő eljárással hozhat létre egy új webhook csatolva egy runbookot, az Azure portálon.
 
-1. Az a **Runbookok panel** a runbookot elindító a webhook megtekintéséhez a részletek panelen kattintson az Azure-portálon.
-2. Kattintson a **Webhook** lehetőségre a panel tetején a **hozzáadása Webhook** panelen. <br>
+1. Az a **Runbookok lap** az Azure portálon kattintson a runbookot elindító a webhook megtekintéséhez annak információs lapját.
+2. Kattintson a **Webhook** nyissa meg a lap tetején a **hozzáadása Webhook** lap. <br>
    ![Webhook gomb](media/automation-webhooks/webhooks-button.png)
-3. Kattintson a **hozzon létre új webhook** megnyitásához a **létrehozás webhook panel**.
+3. Kattintson a **hozzon létre új webhook** megnyitásához a **létrehozása webhook oldal**.
 4. Adjon meg egy **neve**, **lejárati dátum** a webhook, és hogy azt engedélyezni kell. Lásd: [olyan webhook részleteit](#details-of-a-webhook) további információt ezeket a tulajdonságokat.
 5. A Másolás ikonra, majd nyomja meg a Ctrl + C billentyűkombinációval a webhook URL-címét.  Biztonságos helyen, majd rögzítse azt.  **A webhook létrehozása után újra az URL-cím nem lehet beolvasni.** <br>
    ![Webhook URL-CÍMÉT](media/automation-webhooks/copy-webhook-url.png)
@@ -105,9 +105,9 @@ Az ügyfél kap a következő visszatérési kódok a POST-kérelmet.
 | Kód | Szöveg | Leírás |
 |:--- |:--- |:--- |
 | 202 |Elfogadva |Elfogadta a kérést, és a runbook sikeresen várólistára került. |
-| 400 |Helytelen kérelem |A kérelem nem fogadták a következő okok valamelyike miatt. <ul> <li>A webhook érvényessége lejárt.</li> <li>A webhook le van tiltva.</li> <li>A lexikális elem szerepel az URL-cím érvénytelen.</li>  </ul> |
+| 400 |Hibás kérelem |A kérelem nem fogadták a következő okok valamelyike miatt. <ul> <li>A webhook érvényessége lejárt.</li> <li>A webhook le van tiltva.</li> <li>A lexikális elem szerepel az URL-cím érvénytelen.</li>  </ul> |
 | 404 |Nem található |A kérelem nem fogadták a következő okok valamelyike miatt. <ul> <li>A webhook nem található.</li> <li>A runbook nem található.</li> <li>A fiók nem található.</li>  </ul> |
-| 500 |Belső kiszolgálóhiba. |Az URL-cím érvénytelen volt, de hiba történt.  Küldje el a kérelmet. |
+| 500 |Belső kiszolgálóhiba |Az URL-cím érvénytelen volt, de hiba történt.  Küldje el a kérelmet. |
 
 Feltéve, hogy a kérelem sikeres, a webhook válasz tartalmazza a feladatazonosítót JSON formátumban az alábbiak szerint. Egyetlen feladatazonosító fogja tartalmazni, de lehetséges jövőbeli fejlesztések lehetővé teszi a JSON formátumban.
 
@@ -189,7 +189,7 @@ A runbookok Webhook-kompatibilis használható reagálni [Azure riasztások](../
 
 Használata Azure riasztások értesítési rendszert, mellett is is indítsa el a runbookok riasztás. Azure Automation szolgáltatásbeli lehetővé teszi runbookok webhook-kompatibilis Azure riasztások futtatásához. Ha egy metrika meghaladja a beállított küszöbértéknél majd a riasztási szabály válik aktívvá, és elindítja az automation-webhook, amely ezután végrehajtja a runbookot.
 
-![webhook](media/automation-webhooks/webhook-alert.jpg)
+![Webhookok](media/automation-webhooks/webhook-alert.jpg)
 
 ### <a name="alert-context"></a>Riasztás környezete
 Érdemes lehet például egy virtuális gépet egy Azure-erőforrás, a CPU-felhasználás gép egyik legfontosabb teljesítményi metrikát. Ha a Processzor kihasználtsága 100 %-os vagy bizonyos egynél hosszú időn keresztül, érdemes próbálja megoldani a problémát a virtuális gép újraindításához. Ez megoldható egy riasztási szabály, amely a virtuális gép konfigurálása, és ez a szabály tart, mint a metrika processzorszázaléka. Itt processzorszázaléka csak példaként lesz végrehajtva, de nincsenek sok más metrikákkal konfigurálható az Azure-erőforrások és a virtuális gép újraindítása egy műveletet, amelyekre szükség van, a probléma megoldásához, konfigurálhatja a forgatókönyvet, hogy más műveletek.

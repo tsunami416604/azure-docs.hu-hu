@@ -1,5 +1,5 @@
 ---
-title: "Az Azure-ban a PHP és a MySQL webes alkalmazás létrehozása |} Microsoft Docs"
+title: "A PHP és a MySQL webalkalmazás az Azure App Service létrehozása Linux rendszeren |} Microsoft Docs"
 description: "Ismerje meg, hogyan kérhet egy PHP-alkalmazásokban az Azure, az Azure-ban MySQL adatbázis-kapcsolat használata."
 services: app-service\web
 documentationcenter: nodejs
@@ -12,15 +12,19 @@ ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3496b00960ad1fe1213f2005d2173543988b4ff9
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: bf6efd96bea8a6f563ec72d5469d91b4cbfbd5fe
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="build-a-php-and-mysql-web-app-in-azure"></a>Az Azure-ban a PHP és a MySQL webalkalmazás létrehozása
+# <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>A PHP és a MySQL webalkalmazás az Azure App Service létrehozása Linux-kiszolgálón
 
-[App Service Linux](app-service-linux-intro.md) biztosít egy jól skálázható, önálló javítási webhelyszolgáltató a Linux operációs rendszert használ. Ez az oktatóanyag bemutatja, hogyan hozzon létre egy PHP webalkalmazást, és csatlakoztassa a MySQL-adatbázis. Amikor végzett, konfigurálnia kell egy [Laravel](https://laravel.com/) az App Service Linux rendszeren futó alkalmazást.
+> [!NOTE]
+> Ez a cikk egy alkalmazást az App Service Linux központilag telepíti. Az App Service üzembe _Windows_, lásd: [létrehozása az Azure-ban a PHP és a MySQL webalkalmazás](../app-service-web-tutorial-php-mysql.md).
+>
+
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozzon létre egy PHP webalkalmazást, és csatlakoztassa a MySQL-adatbázis. Amikor végzett, konfigurálnia kell egy [Laravel](https://laravel.com/) az App Service Linux rendszeren futó alkalmazást.
 
 ![PHP-alkalmazás fusson az Azure App Service](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
@@ -155,7 +159,7 @@ Ebben a lépésben a MySQL-adatbázis létrehozása [MySQL (előzetes verzió) a
 
 ### <a name="create-a-mysql-server"></a>A MySQL-kiszolgáló létrehozása
 
-A kiszolgáló létrehozása az Azure-adatbázisban a MySQL (előzetes verzió) a [az mysql kiszolgáló létrehozni](/cli/azure/mysql/server#az_mysql_server_create) parancsot.
+A kiszolgáló létrehozása az Azure-adatbázisban a MySQL (előzetes verzió) a [az mysql kiszolgáló létrehozni](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) parancsot.
 
 Az alábbi parancs helyettesítse a MySQL-kiszolgáló nevét, ahol megjelenik a  _&lt;mysql_server_name >_ helyőrző (érvényes karakterek: `a-z`, `0-9`, és `-`). Ez a név része a MySQL-kiszolgáló állomásneve (`<mysql_server_name>.database.windows.net`), kell lennie a globálisan egyedi.
 
@@ -180,7 +184,7 @@ A MySQL-kiszolgáló létrehozása esetén, az Azure parancssori felület kapcso
 
 ### <a name="configure-server-firewall"></a>Kiszolgáló tűzfal konfigurálása
 
-Hozzon létre egy tűzfalszabályt az MySQL-kiszolgálót, hogy lehetővé tegyék az ügyfélkapcsolatokat használatával a [az mysql-tűzfalszabály létrehozása](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) parancsot.
+Hozzon létre egy tűzfalszabályt az MySQL-kiszolgálót, hogy lehetővé tegyék az ügyfélkapcsolatokat használatával a [az mysql-tűzfalszabály létrehozása](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) parancsot.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -331,7 +335,7 @@ Ebben a lépésben az Azure App Service PHP MySQL-kompatibilis alkalmazást tele
 
 ### <a name="configure-database-settings"></a>Adatbázis-beállítások konfigurálása
 
-Az App Service-ben, a környezeti változók beállítása _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancsot.
+Az App Service-ben, a környezeti változók beállítása _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot.
 
 A következő parancsot konfigurálása az alkalmazás beállításaiban `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, és `DB_PASSWORD`. Cserélje le a helyőrzőket  _&lt;alkalmazásnév >_ és  _&lt;mysql_server_name >_.
 
@@ -363,7 +367,7 @@ Használjon `php artisan` egy új alkalmazás-kulcs létrehozása úgy, hogy men
 php artisan key:generate --show
 ```
 
-Alkalmazás kulcsát állítani az App Service web app használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancsot. Cserélje le a helyőrzőket  _&lt;alkalmazásnév >_ és  _&lt;outputofphpartisankey: készítése >_.
+Alkalmazás kulcsát állítani az App Service web app használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot. Cserélje le a helyőrzőket  _&lt;alkalmazásnév >_ és  _&lt;outputofphpartisankey: készítése >_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -375,7 +379,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 Állítsa be a virtuális alkalmazás elérési útja a webalkalmazás számára. Ez a lépés akkor szükséges, mert a [Laravel alkalmazás életciklusa](https://laravel.com/docs/5.4/lifecycle) kezdődik a _nyilvános_ könyvtárhoz, az alkalmazás gyökérkönyvtárában helyett. Egyéb PHP keretrendszerek, amelynek életciklus indítsa el a gyökérkönyvtár használható az alkalmazás virtuális elérési út kézi konfigurálása nélkül.
 
-A virtuális alkalmazás elérési útjának beállítása használatával a [az erőforrás frissítési](/cli/azure/resource#az_resource_update) parancsot. Cserélje le a  _&lt;alkalmazásnév >_ helyőrző.
+A virtuális alkalmazás elérési útjának beállítása használatával a [az erőforrás frissítési](/cli/azure/resource?view=azure-cli-latest#az_resource_update) parancsot. Cserélje le a  _&lt;alkalmazásnév >_ helyőrző.
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01

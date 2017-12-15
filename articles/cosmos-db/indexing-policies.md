@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/17/2017
 ms.author: arramac
-ms.openlocfilehash: 20532763c46f6e87808e36f6dc06aecbd7a426ac
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: a0e19fc9a5ee41dc61c8ced65206e81efe817681
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Hogyan működik az Azure Cosmos DB index adatokat?
 
@@ -229,7 +229,7 @@ Kiválaszthatja, hogy kívánja-e a gyűjtemény összes dokumentumot indexelés
 
 Az automatikus indexeléshez ki van kapcsolva, az index csak bizonyos dokumentumokhoz szelektív továbbra is hozzáadhat. Ezzel ellentétben automatikus az indexelő hagyhatja, és szelektív dönt, hogy csak bizonyos dokumentumokhoz kizárása. Be-és kikapcsolása konfigurációk indexelő akkor hasznos, ha a dokumentumok, amelyeket le kell kérdezni csak egy részhalmazát rendelkezik.
 
-Például a következő példa bemutatja, hogyan dokumentum explicit módon tartalmazza a [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet) és a [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) tulajdonság.
+Például a következő példa bemutatja, hogyan dokumentum explicit módon tartalmazza a [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) és a [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) tulajdonság.
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a Document from indexing,
@@ -418,5 +418,5 @@ Kövesse az alábbi hivatkozásokat követve index házirend felügyeleti mintá
 
 1. [Az SQL API .NET Indexkezelés mintakódok](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
 2. [Az SQL API REST adatgyűjtési műveletek](https://msdn.microsoft.com/library/azure/dn782195.aspx)
-3. [Az SQL lekérdezés](documentdb-sql-query.md)
+3. [Az SQL lekérdezés](sql-api-sql-query.md)
 

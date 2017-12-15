@@ -15,15 +15,19 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a9b321fcf8a8d1234989a9433da227142d954cb4
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: c2087af14ad456c679479334c9391055f6b2e45e
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>A Node.js és a MongoDB webalkalmazás az Azure App Service létrehozása Linux-kiszolgálón
 
-[App Service Linux](app-service-linux-intro.md) biztosít egy jól skálázható, önálló javítási webhelyszolgáltató a Linux operációs rendszert használ. Ez az oktatóanyag bemutatja, hogyan Node.js-webalkalmazás létrehozása, helyileg csatlakoztassa a MongoDB-adatbázist, majd telepítse az Azure a MongoDB API-jával CosmosDB adatbázishoz kapcsolódó. Amikor elkészült, konfigurálnia kell egy átlagos alkalmazás (MongoDB, Express, AngularJS és Node.js) az App Service-ben futó Linux. Az egyszerűség kedvéért a mintaalkalmazást használ a [MEAN.js webes keretrendszer](http://meanjs.org/).
+> [!NOTE]
+> Ez a cikk egy alkalmazást az App Service Linux központilag telepíti. Az App Service üzembe _Windows_, lásd: [összeállítása a Node.js és a MongoDB webalkalmazás az Azure-ban](../app-service-web-tutorial-nodejs-mongodb-app.md).
+>
+
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan Node.js-webalkalmazás létrehozása, helyileg csatlakoztassa a MongoDB-adatbázist, majd telepítse az Azure a MongoDB API-jával CosmosDB adatbázishoz kapcsolódó. Amikor elkészült, konfigurálnia kell egy átlagos alkalmazás (MongoDB, Express, AngularJS és Node.js) az App Service-ben futó Linux. Az egyszerűség kedvéért a mintaalkalmazást használ a [MEAN.js webes keretrendszer](http://meanjs.org/).
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -126,7 +130,7 @@ Ez az oktatóanyag használja a MongoDB, [Azure Cosmos DB](/azure/documentdb/). 
 
 ### <a name="create-a-cosmos-db-account"></a>A Cosmos DB-fiók létrehozása
 
-A felhő rendszerhéj a Cosmos DB-fiók létrehozása a [az cosmosdb létrehozása](/cli/azure/cosmosdb#create) parancsot.
+A felhő rendszerhéj a Cosmos DB-fiók létrehozása a [az cosmosdb létrehozása](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create) parancsot.
 
 Az alábbi parancs egyedi Cosmos DB nevet helyettesítse a  *\<cosmosdb_name >* helyőrző. Ez a név a Cosmos DB végpont részeként használatos `https://<cosmosdb_name>.documents.azure.com/`, így a nevének egyedinek kell lennie az Azure-ban összes Cosmos DB fiók. A név csak kisbetűket, számokat és a kötőjel (-) karaktert kell tartalmaznia, és 3 – 50 karakter közé kell esnie.
 
@@ -160,7 +164,7 @@ Ebben a lépésben csatlakoztatja az imént létrehozott, a MongoDB-kapcsolati k
 
 ### <a name="retrieve-the-database-key"></a>Az adatbázis-kulcs beolvasása
 
-A Cosmos DB adatbázishoz való kapcsolódáshoz szükséges az adatbázis-kulcs. A felhő rendszerhéj használata a [az cosmosdb lista-kulcsok](/cli/azure/cosmosdb#list-keys) parancsot az elsődleges kulcs lekéréséhez.
+A Cosmos DB adatbázishoz való kapcsolódáshoz szükséges az adatbázis-kulcs. A felhő rendszerhéj használata a [az cosmosdb lista-kulcsok](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_keys) parancsot az elsődleges kulcs lekéréséhez.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
@@ -252,7 +256,7 @@ Ebben a lépésben az Azure App Service a Node.js MongoDB-kompatibilis alkalmaz�
 
 Alapértelmezés szerint a MEAN.js projekt tartja _config/env/local-production.js_ kívül a Git-tárházba. Ezért a Azure webalkalmazás app beállításai segítségével határozza meg a MongoDB-kapcsolati karakterlánc.
 
-Alkalmazásbeállítások beállításához használja a [az webapp config appsettings frissítése](/cli/azure/webapp/config/appsettings#update) a felhő rendszerhéj parancsot.
+Alkalmazásbeállítások beállításához használja a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) a felhő rendszerhéj parancsot.
 
 A következő példa egy `MONGODB_URI` Alkalmazásbeállítás az Azure web app alkalmazásban. Cserélje le a  *\<alkalmazás_neve >*,  *\<cosmosdb_name >*, és  *\<primary_master_key >* helyőrzők.
 

@@ -1,4 +1,4 @@
-Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan#create) paranccsal.
+Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) paranccsal.
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 

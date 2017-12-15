@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: jgao
-ms.openlocfilehash: f59083510bab1f8d665444f829cffced98f4fe28
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ee6a91a22d84ba938423c04edc6f8be795b46ebb
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hdinsight Hadoop, Spark, Kafka és több fürt beállítása
 
@@ -98,6 +98,10 @@ További információkért lásd: [csomópont konfigurációs és virtuális gé
 
 ### <a name="hdinsight-version"></a>HDInsight-verzió
 Ehhez a fürthöz HDInsight verziójának kiválasztása. További információkért lásd: [támogatott HDInsight-verziókról](hdinsight-component-versioning.md#supported-hdinsight-versions).
+
+### <a name="enterprise-security-package"></a>A vállalati biztonsági csomag
+
+Hadoop, Spark és interaktív lekérdezés fürt esetében, ha szeretné, engedélyezze a **vállalati biztonsági csomag**. Ez a csomag biztosít lehetőséget, ha a biztonságosabb fürttelepítés Apache Pletyka használatával, és az Azure Active Directory integrálása. További információkért lásd: [vállalati biztonsági csomag Azure hdinsight](./domain-joined/apache-domain-joined-introduction.md).
 
 ## <a name="cluster-login-and-ssh-user-name"></a>A fürt bejelentkezési és az SSH-felhasználónév
 HDInsight-fürtökkel fürt létrehozása során két felhasználói fiókokat konfigurálhatja:

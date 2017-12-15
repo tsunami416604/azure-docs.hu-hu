@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: mimig
-ms.openlocfilehash: ab7448d3f55a921d3fb8c06d54c230d262dbec6a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 1f56e7ae96388ff1135017e07771138ebfc5ac33
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="performance-tips-for-azure-cosmos-db"></a>Teljesítmény tippek az Azure Cosmos DB rendszerhez
 
@@ -88,7 +88,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 ## <a name="sdk-usage"></a>SDK használata
 1. **A legutóbbi SDK telepítése**
 
-    A Cosmos DB SDK-k a rendszer folyamatosan javult a legjobb teljesítmény elérése érdekében. Tekintse meg a [Cosmos DB SDK](documentdb-sdk-dotnet.md) lapok használatával állapítsa meg a legutóbbi SDK, és tekintse át a fejlesztései.
+    A Cosmos DB SDK-k a rendszer folyamatosan javult a legjobb teljesítmény elérése érdekében. Tekintse meg a [Cosmos DB SDK](sql-api-sdk-dotnet.md) lapok használatával állapítsa meg a legutóbbi SDK, és tekintse át a fejlesztései.
 2. **Az alkalmazás teljes egypéldányos Cosmos DB ügyfél használata**
 
     Vegye figyelembe, hogy minden DocumentClient példány szálbiztos, és végrehajtja a hatékony kapcsolat kezelése és a címek gyorsítótárazása, ha közvetlen módban működik. Engedélyezése hatékony kapcsolat kezelése és DocumentClient által jobb teljesítmény érdekében javasoljuk, hogy egyetlen példány futhat egy AppDomain DocumentClient használni az alkalmazás élettartamának.
@@ -99,7 +99,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
     Cosmos DB-kérelmek keresztül HTTPS/REST átjáró üzemmódban, és az alapértelmezett kapcsolati felső határ az egyes állomásnév vagy IP-címet kell vizsgálni. Szükség lehet ahhoz a MaxConnections (100-1000) magasabb értékre, hogy az ügyféloldali kódtár nyújthatnak a Cosmos DB több egyidejű kapcsolatok. A .NET SDK 1.8.0 és az alapértelmezett érték felett [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50, és módosítsa az értéket, beállíthatja a [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx)magasabb értékre.   
 4. **A particionált gyűjtemények párhuzamos lekérdezések hangolása**
 
-     SQL .NET SDK 1.9.0 verzió vagy újabb támogatási párhuzamos lekérdezések, amelyek lehetővé teszik egy particionált gyűjtemény párhuzamos lekérdezés (lásd: [az SDK-k használata](documentdb-partition-data.md#working-with-the-azure-cosmos-db-sdks) és a kapcsolódó [Kódminták](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) további információt a). Párhuzamos lekérdezések úgy tervezték, hogy a soros megfelelőjére javítja a lekérdezés-késleltetés és a teljesítményt. Párhuzamos lekérdezések adja meg, hogy a felhasználók észlelheti a rájuk vonatkozó követelményeket, a MaxDegreeOfParallelism egyéni méretezése két paramétert: szabályozhatja a maximális számú partíciót majd, és (b) MaxBufferedItemCount kérdezhetők le: a száma előre lehívott eredmények.
+     SQL .NET SDK 1.9.0 verzió vagy újabb támogatási párhuzamos lekérdezések, amelyek lehetővé teszik egy particionált gyűjtemény párhuzamos lekérdezés (lásd: [az SDK-k használata](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks) és a kapcsolódó [Kódminták](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) további információt a). Párhuzamos lekérdezések úgy tervezték, hogy a soros megfelelőjére javítja a lekérdezés-késleltetés és a teljesítményt. Párhuzamos lekérdezések adja meg, hogy a felhasználók észlelheti a rájuk vonatkozó követelményeket, a MaxDegreeOfParallelism egyéni méretezése két paramétert: szabályozhatja a maximális számú partíciót majd, és (b) MaxBufferedItemCount kérdezhetők le: a száma előre lehívott eredmények.
 
     (a) ***hangolása MaxDegreeOfParallelism\:***  párhuzamos lekérdezés works több partíció párhuzamosan lekérdezésével. Azonban az egyes particionált összegyűjtendő adatok beolvassa Feladattervek tekintetében a lekérdezést. Igen a MaxDegreeOfParallelism beállítást a partíciók számának rendelkezik elérése érdekében a legtöbb performant lekérdezés maximális esélyét megadott egyéb rendszer feltételek változatlanok maradnak. Ha nem ismeri a partíciók számát, a MaxDegreeOfParallelism állíthatja be a magas érték, és a rendszer úgy dönt, mint a MaxDegreeOfParallelism minimális (partíciók, felhasználó által megadott bemeneti száma).
 
@@ -113,7 +113,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
     Bizonyos esetekben segíthet a szemétgyűjtés gyakoriságának csökkentését. A .NET, állítsa be [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) igaz értékre.
 6. **Leállítási RetryAfter időközönként megvalósítása**
 
-    Teljesítmény tesztelés során terhelés csak a kis mértékben kérelmek get halmozódni növelje meg. Ha szabályozva, az ügyfélalkalmazás kell a késleltetési leállítási a kiszolgáló által megadott újrapróbálkozási időköz. A leállítási tiszteletben biztosítja, hogy az újrapróbálkozások közötti várakozási idő a lehető legrövidebb idő. Újrapróbálkozási házirend támogatása a rendszer része, a verzió 1.8.0 és az újabb, az SQL [.NET](documentdb-sdk-dotnet.md) és [Java](documentdb-sdk-java.md), 1.9.0 verzió vagy újabb verzió, a [Node.js](documentdb-sdk-node.md) és [Python](documentdb-sdk-python.md), és az összes támogatott verziója a [.NET Core](documentdb-sdk-dotnet-core.md) SDK-k. További információkért lásd: [Exceeding fenntartott átviteli sebességének korlátai](request-units.md#RequestRateTooLarge) és [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
+    Teljesítmény tesztelés során terhelés csak a kis mértékben kérelmek get halmozódni növelje meg. Ha szabályozva, az ügyfélalkalmazás kell a késleltetési leállítási a kiszolgáló által megadott újrapróbálkozási időköz. A leállítási tiszteletben biztosítja, hogy az újrapróbálkozások közötti várakozási idő a lehető legrövidebb idő. Újrapróbálkozási házirend támogatása a rendszer része, a verzió 1.8.0 és az újabb, az SQL [.NET](sql-api-sdk-dotnet.md) és [Java](sql-api-sdk-java.md), 1.9.0 verzió vagy újabb verzió, a [Node.js](sql-api-sdk-node.md) és [Python](sql-api-sdk-python.md), és az összes támogatott verziója a [.NET Core](sql-api-sdk-dotnet-core.md) SDK-k. További információkért lásd: [Exceeding fenntartott átviteli sebességének korlátai](request-units.md#RequestRateTooLarge) és [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
 7. **Horizontális felskálázás az ügyfél-alkalmazások és szolgáltatások**
 
     Ha nagy átviteli szinten teszteli (> 50 000 RU/mp), az ügyfélalkalmazás gép határértékét el a Processzor- vagy hálózati kihasználtsága miatt a szűk keresztmetszetek válhat. Ha eléri ezt a pontot, továbbra is a Cosmos DB fiók további leküldéses által az ügyfélalkalmazások kiterjesztése több kiszolgáló között.

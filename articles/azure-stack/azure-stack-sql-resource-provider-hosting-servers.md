@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 12/14/2017
 ms.author: JeffGo
-ms.openlocfilehash: 58c83b74041e0e2e82729f569c53aca59f3aed43
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: da76eaf92bf27195b4f1780511818a7689300f66
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="add-hosting-servers-for-use-by-the-sql-adapter"></a>Az SQL-adapter általi használatra üzemeltetési kiszolgáló hozzáadása
 
@@ -28,11 +28,9 @@ A virtuális gépeken belül az SQL Server-példányok is használhatja a [Azure
 * A függő Entitás- és felhasználói feladatait által az SQL-példány dedikált való használatra. Bármely más fogyasztó, beleértve az App Service szolgáltatások által használt SQL-példány nem használható.
 * A függő Entitás adapter nincs tartományhoz csatlakoztatva, és csak kapcsolódhatnak az SQL-hitelesítéssel.
 * A függő Entitás számára megfelelő jogosultságokkal rendelkező fiókkal kell konfigurálnia.
-* Hálózati forgalmat a függő Entitás SQL 1433-as portot használja, és nem módosítható.
 * A függő Entitás és a felhasználók például a Web Apps használ a felhasználói hálózati, így az SQL-példány a hálózati kapcsolatra szükség. Ez a követelmény általában azt jelenti, hogy az IP-Címek az SQL Server-példányok nyilvános hálózaton kell lennie.
 * Az SQL Server-példányok és gazdagépeik felügyeleti rendszer Öntől; a függő Entitás nem javítási, biztonsági mentés végrehajtásához, hitelesítőadat-Elforgatás stb.
 * SKU használható osztályokat hozhatnak létre különböző SQL funkcióit, például a teljesítmény érdekében mindig a stb.
-
 
 
 SQL IaaS virtuális számítógépképet számos a piactér-kezelési funkción keresztül érhetők el. Ellenőrizze, hogy mindig a virtuális gép egy Piactéri elemet központi telepítése előtt töltse le az SQL IaaS bővítmény legújabb verziója. Az SQL-rendszerképek ugyanazok, mint az SQL virtuális gépen elérhető az Azure-ban. Ezeket a lemezképeket, az IaaS-bővítmény a létrehozott SQL virtuális gépen, és a megfelelő portál fejlesztései biztosítják az automatikus javítás és a biztonsági mentési funkciókat szolgáltatásokat.
@@ -73,6 +71,8 @@ Már kiépített kiszolgálót futtató önálló hozzáadásához kövesse az a
 
   ![Új üzemeltetési kiszolgálóhoz](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
+    Nem kötelezően megadhatja a példány nevét, és egy portszámot megadható, ha a példány nem hozzá van rendelve az alapértelmezett port a 1433-as értéket.
+
   > [!NOTE]
   > Mindaddig, amíg az SQL-példány elérhetők, a felhasználó és rendszergazda Azure Resource Manager, az erőforrás-szolgáltató ellenőrzése alatt lehet tenni. Az SQL-példány __kell__ lehet kizárólag a függő Entitás számára.
 
@@ -86,10 +86,10 @@ Már kiépített kiszolgálót futtató önálló hozzáadásához kövesse az a
 
     Példa:
 
-    ![Termékváltozat](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+![Termékváltozatok](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
 >[!NOTE]
-SKU órát is igénybe vehet egy megjeleníteni a portálon. Egy adatbázis nem hozható létre, amíg a Termékváltozat teljesen létre.
+> SKU órát is igénybe vehet egy megjeleníteni a portálon. Felhasználók nem hozható létre a Termékváltozat teljesen létrehozásáig.
 
 ## <a name="provide-capacity-using-sql-always-on-availability-groups"></a>SQL Always On rendelkezésre állási csoportok használatával kapacitás
 SQL Always On példányok konfigurálásához további lépéseket igényel, és legalább három virtuális gépek (vagy fizikai gépek) vonatkozik.
@@ -126,7 +126,7 @@ SQL Always On üzemeltetési kiszolgáló hozzáadásához kövesse az alábbi l
     A **SQL üzemeltető kiszolgálók** panel, amelyen keresztül csatlakozhat az SQL Server erőforrás-szolgáltató, amely az erőforrás-szolgáltató háttér módon ellenőrizhető, hogy az SQL Server tényleges példányait.
 
 
-3. Az űrlap kitöltése a kapcsolódási adatait. az SQL Server-példány, figyeljen arra, hogy az mindig a figyelő FQDN vagy IPv4-cím használata. Adja meg a fiók rendszergazdai jogosultságokkal konfigurálta a fiók adatait.
+3. Az űrlap kitöltése a kapcsolódási adatait. az SQL Server-példány, figyeljen arra, hogy mindig figyelő (és nem kötelező portszám) teljes Tartománynevét vagy IPv4-cím használata. Adja meg a fiók rendszergazdai jogosultságokkal konfigurálta a fiók adatait.
 
 4. SQL Always On rendelkezésre állási csoportnak példányok támogatásának engedélyezése jelölőnégyzet.
 
@@ -137,7 +137,7 @@ SQL Always On üzemeltetési kiszolgáló hozzáadásához kövesse az alábbi l
 
 ## <a name="making-sql-databases-available-to-users"></a>SQL-adatbázisok elérhetővé tétele a felhasználók számára
 
-Tervek és SQL-adatbázisok a felhasználók számára elérhetővé ajánlatok létrehozása. A Microsoft.SqlAdapter szolgáltatás hozzáadása a tervet, és adja hozzá egy meglévő kvóta, vagy hozzon létre egy újat. Kvóta létrehozása, ha a felhasználó a kapacitás is megadhat.
+Tervek és SQL-adatbázisok a felhasználók számára elérhetővé ajánlatok létrehozása. A Microsoft.SqlAdapter szolgáltatás hozzáadása a tervet, és adja hozzá vagy egy meglévő kvóta, vagy hozzon létre egy újat. Kvóta létrehozása, ha a kapacitás, a felhasználó adja meg.
 
 ![Tervek és adatbázisokat tartalmazza ajánlatok létrehozása](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
 

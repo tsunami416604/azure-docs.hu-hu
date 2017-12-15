@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: 4427e65930aaeac6335e31dcfe3479baa6fdb6cd
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0be81802996f27a4c063e4e728a3c95ad757bea0
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Globális adatok Azure Cosmos DB terjesztése
 Azure a széles körű – folyamatosan bővülő, és egy globális erőforrásigényét tért 30 + földrajzi régiók között. A globális jelenlét, az Azure felajánlja, hogy a fejlesztők differenciált képességeit egyik létre, telepíthetnek és könnyen globálisan elosztott alkalmazások kezelésére képes. 
@@ -88,7 +88,7 @@ Az automatikus és manuális feladatátvételi lehetőségeket jelenleg az adatb
 ### <a id="MultiHomingAPIs"></a>Az Azure Cosmos DB többhelyű API-k
 Azure Cosmos DB teszi lehetővé az adatbázis segítségével együttműködhet logikai (régió független) vagy a fizikai (régióspecifikus) végpontok. A logikai végpontok biztosítja, hogy az alkalmazás átlátható módon lehet többhelyű feladatátvétel esetén is. Az utóbbi, fizikai végpontok, adja meg, az alkalmazásnak, hogy átirányítsa a részletesebb vezérlés olvas, és írja az adott régióban.
 
-Olvasási beállításainak konfigurálásával kapcsolatos információkért a [SQL API](../cosmos-db/tutorial-global-distribution-documentdb.md), [Graph API](../cosmos-db/tutorial-global-distribution-graph.md), [tábla API](../cosmos-db/tutorial-global-distribution-table.md), és [MongoDB API](../cosmos-db/tutorial-global-distribution-mongodb.md) a saját megfelelő csatolt cikkeket.
+Olvasási beállításainak konfigurálásával kapcsolatos információkért a [SQL API](../cosmos-db/tutorial-global-distribution-sql-api.md), [Graph API](../cosmos-db/tutorial-global-distribution-graph.md), [tábla API](../cosmos-db/tutorial-global-distribution-table.md), és [MongoDB API](../cosmos-db/tutorial-global-distribution-mongodb.md) a saját megfelelő csatolt cikkeket.
 
 ### <a id="TransparentSchemaMigration"></a>Átlátható és konzisztens legyen az adatbázis-séma- és index áttelepítése 
 Azure Cosmos-adatbázis található teljesen [sémát független](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf). Az adatbázismotor egyedi kialakításának lehetővé teszi, hogy automatikusan, és szinkron módon index összes, anélkül, hogy semmilyen sémát, illetve másodlagos indexek, az Ön ingests adat. Ez lehetővé teszi, hogy az globálisan elosztott alkalmazás gyorsan többször aggódni az adatbázisban séma- és index áttelepítési vagy összehangolása a sémamódosítások több fázisban alkalmazás végrehajtása nélkül. Azure Cosmos DB garantálja, hogy Ön kifejezetten tett házirendek indexelő módosításait nem lesz a teljesítmény vagy a rendelkezésre állási teljesítménycsökkenése.  
@@ -219,7 +219,7 @@ Azure Cosmos DB transzparens módon az átviteli sebesség, a késés, a konzisz
 ![Az Azure Cosmos DB felhasználói által látható SLA-metrikáinak](./media/distribute-data-globally/customer-slas.png)
 
 ## <a id="Next Steps"></a>Következő lépések
-* Globális többszörözésére Azure Cosmos DB fiókja az Azure portál használatával, lásd: [hogyan hajthat végre az Azure portál használatával Azure Cosmos DB globális adatbázis-replikáció](tutorial-global-distribution-documentdb.md).
+* Globális többszörözésére Azure Cosmos DB fiókja az Azure portál használatával, lásd: [hogyan hajthat végre az Azure portál használatával Azure Cosmos DB globális adatbázis-replikáció](tutorial-global-distribution-sql-api.md).
 * Az Azure Cosmos DB több főkiszolgálós architektúrák megvalósításához, lásd: [több főkiszolgálós adatbázis architektúrák rendelkező Azure Cosmos DB](multi-region-writers.md).
 * További információ az automatikus és manuális feladatátvétel Azure Cosmos DB fog működni, lásd: [regionális feladatátvétel az Azure Cosmos Adatbázisba](regional-failover.md).
 

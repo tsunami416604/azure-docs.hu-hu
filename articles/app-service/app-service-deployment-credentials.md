@@ -13,16 +13,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 2f8691b0aadbd97e87996c2683849a6db3b74618
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3039d29bbb92280c12d683702aeef54cb6c538cb
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Telepítési hitelesítő adatok beállítása az Azure App Service
 [Az Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) támogatja a hitelesítő adatok kétféle [helyi Git-telepítésének](app-service-deploy-local-git.md) és [FTP/S telepítési](app-service-deploy-ftp.md). Ezek olyan nem ugyanaz, mint az Azure Active Directorybeli hitelesítő adatokat.
 
-* **Felhasználói szintű hitelesítő adatokat**: a teljes Azure-fiók hitelesítő adatait egy készletét. Az App Service a telepíteni kívánt alkalmazást, minden előfizetést, az Azure-fiókra van hozzáférése a használható. Ezek az alapértelmezett hitelesítő adatok beállítása, amelyet megadtak a **alkalmazásszolgáltatások** > **&lt;alkalmazás_neve >** > **üzembe helyezési hitelesítő adatok**. Ez egyben az alapértelmezett, amely a grafikus felhasználói Felülettel portálon illesztett van (például a **áttekintése** és **tulajdonságok** az alkalmazás [erőforráspanelen](../azure-resource-manager/resource-group-portal.md#manage-resources)).
+* **Felhasználói szintű hitelesítő adatokat**: a teljes Azure-fiók hitelesítő adatait egy készletét. Az App Service a telepíteni kívánt alkalmazást, minden előfizetést, az Azure-fiókra van hozzáférése a használható. Ezek az alapértelmezett hitelesítő adatok beállítása, amelyet megadtak a **alkalmazásszolgáltatások** > **&lt;alkalmazás_neve >** > **üzembe helyezési hitelesítő adatok**. Ez egyben az alapértelmezett, amely a grafikus felhasználói Felülettel portálon illesztett van (például a **áttekintése** és **tulajdonságok** az alkalmazás [erőforrás oldala](../azure-resource-manager/resource-group-portal.md#manage-resources)).
 
     > [!NOTE]
     > Azure-erőforrások szerepköralapú hozzáférés vezérlés (RBAC) vagy társadminisztrátornak engedélyek hozzáférés delegálásához, ha minden Azure felhasználói, amely fogad egy alkalmazás hozzáférési jogának képes személyes felhasználói szintű hitelesítő adatokat használhatna, amíg hozzáférését visszavonja. A központi telepítési hitelesítő adatokat nem lehet megosztva Azure másokkal.
@@ -38,14 +38,14 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="userscope"></a>Állítsa be, és a felhasználói szintű hitelesítő adatok alaphelyzetbe állítása
 
-Konfigurálhatja a felhasználói szintű hitelesítő adatokat a bármely alkalmazás [erőforráspanelen](../azure-resource-manager/resource-group-portal.md#manage-resources). Minden alkalmazás és az Azure-fiókjával a előfizetéseket függetlenül melyik alkalmazás konfigurálja ezeket a hitelesítő adatokat, vonatkozik. 
+Konfigurálhatja a felhasználói szintű hitelesítő adatokat a bármely alkalmazás [erőforrás oldala](../azure-resource-manager/resource-group-portal.md#manage-resources). Minden alkalmazás és az Azure-fiókjával a előfizetéseket függetlenül melyik alkalmazás konfigurálja ezeket a hitelesítő adatokat, vonatkozik. 
 
 A felhasználói szintű hitelesítő adatok konfigurálása:
 
 1. Az a [Azure-portálon](https://portal.azure.com), kattintson az App Service >  **&lt;any_app >** > **üzembe helyezési hitelesítő adatok**.
 
     > [!NOTE]
-    > A portálon rendelkeznie kell legalább egy alkalmazást a központi telepítési hitelesítő adatok panelt elérése előtt. Azonban a a [Azure CLI](/cli/azure/webapp/deployment/user#set), konfigurálhatja a felhasználói szintű hitelesítő adatok nélkül egy meglévő alkalmazást.
+    > A portálon rendelkeznie kell legalább egy alkalmazást a központi telepítési hitelesítő adatok lap elérése előtt. Azonban a a [Azure CLI](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az_webapp_deployment_user_set), konfigurálhatja a felhasználói szintű hitelesítő adatok nélkül egy meglévő alkalmazást.
 
 2. Konfigurálja a felhasználónevet és jelszót, és kattintson **mentése**.
 

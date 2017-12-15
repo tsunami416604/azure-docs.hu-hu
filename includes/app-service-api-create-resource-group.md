@@ -1,4 +1,4 @@
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal.
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group?view=azure-cli-latest#az_group_create) paranccsal.
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 

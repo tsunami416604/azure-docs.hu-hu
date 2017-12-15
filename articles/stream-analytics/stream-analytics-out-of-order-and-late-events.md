@@ -15,112 +15,119 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: b4ce26fbbb2a494004e9c80462881dd754531497
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 71929b449f2a0fa55327fd3f9741208506859e85
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
-# <a name="azure-stream-analytics-event-order-consideration"></a>Az Azure Stream Analytics esemény rendelés szempont
+# <a name="azure-stream-analytics-event-order-considerations"></a>Az Azure Stream Analytics esemény rendelés kapcsolatos szempontok
 
-## <a name="understand-arrival-time-and-application-time"></a>Ismerje meg, érkezésének ideje és kérelem ideje.
+## <a name="arrival-time-and-application-time"></a>Érkezésének ideje és kérelem ideje
 
-Minden esemény historikus adatfolyam események időbélyeg kapja. Az Azure Stream Analytics Timestamp típusú eseményekhez érkezésének ideje vagy alkalmazás idő rendeli hozzá. A "System.Timestamp" oszlop van rendelve az esemény időbélyegzője. Érkezésének ideje hozzá van rendelve a bemeneti forrásnál, ha az esemény eléri a forrás. Érkezési ideje EventEnqueuedTime Eseményközpont bemeneti és [blob utolsó módosítás időpontja](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) blob bemeneti. Alkalmazási hozzá van rendelve, ha az esemény jön létre, és a tartalom egy részét. Alkalmazás ideje eseményeket feldolgozását, használja a "Időbélyeg által" záradék a select lekérdezés. Hiányzik a "Időbélyeg által" záradék, ha érkezésének ideje eseményeket dolgoznak fel. Érkezésének ideje elérhető EventEnqueuedTime tulajdonság használatával az event hubs és a blob bemeneti BlobLastModified tulajdonság használatával. Az Azure Stream Analytics a Timestamp típusú sorrendben kimenetet, és néhány beállítás nem megfelelő sorrendben adatok kezelésére szolgál.
+A historikus adatfolyam események minden esemény hozzá van rendelve az időbélyegző. Az Azure Stream Analytics időbélyegzőt minden esemény érkezési idő vagy alkalmazás idő segítségével rendeli. A **System.Timestamp** oszlopnak van rendelve az esemény időbélyege. 
+
+Érkezésének ideje hozzá van rendelve a bemeneti forrásnál, ha az esemény eléri a forrás. Érkezésének ideje használatával végezheti el a **EventEnqueuedTime** tulajdonsága event hub bemeneti és a használatával a [BlobProperties.LastModified](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) blob bemeneti tulajdonság. 
+
+Alkalmazási hozzá van rendelve, ha az esemény jön létre, és a tartalom egy részét. Alkalmazás ideje eseményeket feldolgozását, használja a **időbélyeg által** a select lekérdezés záradékot. Ha a **által időbélyeg** záradék hiányzik, érkezésének ideje eseményeket dolgoznak fel. 
+
+Az Azure Stream Analytics időbélyegző sorrendben kimenetet, és beállítások soron adatok kezelésére szolgál.
 
 
-## <a name="azure-stream-analytics-handling-of-multiple-streams"></a>Az Azure Stream Analytics kezelésére vonatkozó több adatfolyam
+## <a name="handling-of-multiple-streams"></a>Több adatfolyam kezelése
 
-Az Azure Stream Analytics-feladat egyesíti, beleértve néhány esetben több ütemtervet származó események
+Egy Azure Stream Analytics-feladat egyesíti a következőhöz hasonló esetekben több ütemtervet származó események:
 
-* A több partíciót állít elő. Lekérdezések, amelyek nem rendelkeznek egy explicit "partíció által PartitionId" kellene kombinálhatja a partícióról származó események.
+* A több partíciót állít elő. Lekérdezések, amelyek nem rendelkeznek explicit **PartitionID partíció** záradékban kell alakítania a partícióról származó események.
 * A UNION két vagy több különböző bemeneti forrásból.
 * Csatlakozás a bemeneti forrásból.
 
-Olyan esetekben, ahol több ütemtervet a rendszer kombinálja, Azure Stream Analytics a művelet létrehoz egy Timestamp típusú kimeneti *t1* csak követően a rendszer kombinálja összes forrás legalább időpontban *t1*.
-Például, ha a lekérdezés olvas egy *Eseményközpont* lemezpartíción, két partíció, és a partíció *P1* események rendelkezik időpontig *t1* és más partíció  *P2* események rendelkezik időpontig *t1 + x*, kimeneti hozzák időpontig *t1*.
-Azonban ha merült fel egy explicit *"Partíció által PartitionId"* záradék, mind a partíciók megfelelően egymástól függetlenül.
-Késő érkezés tolerancia beállítás az adatok az egyes partíciók kezelésére szolgál.
+Olyan esetekben, ahol több ütemtervet a rendszer kombinálja, Azure Stream Analytics időbélyeg a kimenetet hoz létre *t1* csak követően a rendszer kombinálja összes forrás legalább időpontban *t1*. Tegyük fel például, hogy a lekérdezés két partíciókkal event hub partíción olvassa be. A partíciók egyik *P1*, események rendelkezik időpontig *t1*. A többi partíció *P2*, események rendelkezik időpontig *t1 + x*. Kimeneti majd előállított időpontig *t1*. De ha nincs explicit **PartitionID partíció** záradék, mind a partíciók előrehaladás egymástól függetlenül.
 
-## <a name="configuring-late-arrival-tolerance-and-out-of-order-tolerance"></a>Késő érkezés tűréshatár és nem megfelelő sorrendben tolerancia beállítása
+Késő érkezés tolerancia beállítást az adatok az egyes partíciók kezelésére szolgál.
+
+## <a name="configuring-late-arrival-tolerance-and-out-of-order-tolerance"></a>Késő érkezés tűréshatár és soron tolerancia beállítása
 Bemeneti adatfolyamot, amelyek nincsenek sorrendben vagy szerepelnek:
-* Rendezett (és ezért **késleltetett**).
-* A felhasználó által megadott házirendnek megfelelően igazítva a rendszer.
+* Rendezett (és ezért késleltetett)
+* A rendszer a felhasználó által megadott házirendnek megfelelően igazítva
 
-A Stream Analytics eltűr késői és üzemen kívüli események által feldolgozásakor **alkalmazási**. A következő beállítások érhetők el a a **esemény rendelési** beállítás Azure-portálon: 
+A Stream Analytics eltűr késői és soron események alkalmazás időpontjára feldolgozásakor van. A következő beállítások érhetők el a a **esemény rendelési** lehetőséget az Azure-portálon: 
 
 ![Stream Analytics eseménykezelésnek](media/stream-analytics-event-handling/stream-analytics-event-handling.png)
 
-**Késő érkezés tolerancia**
-* A beállítás akkor alkalmazható, csak akkor, ha alkalmazási általi feldolgozás, ellenkező esetben figyelmen kívül.
-* Ez a maximális érkezésének ideje és kérelem időpont között. Ha alkalmazás idő előtt (érkezési idő - késő érkezés ablak), akkor időre van beállítva (érkezési - késő érkezés ablakban)
-* Több partíciót az ugyanazon bemeneti adatfolyamból vagy több bemeneti adatfolyam együttesen együtt, késő érkezés tolerancia az a maximális időtartam minden partíció megvárja-e az új adatokat. 
+### <a name="late-arrival-tolerance"></a>Késő érkezés tolerancia
+Késő érkezés tolerancia csak akkor alkalmazási idő még feldolgozás esetén alkalmazható. Ellenkező esetben a beállítást a rendszer figyelmen kívül hagyja.
 
-Késő érkezés ablak röviden, a maximális késleltetési az eseménygenerálás és a bemeneti forrásnál esemény fogadását között.
-Késő érkezés tolerancia alapján módosítás először történik, és nem megfelelő sorrendben történik mellett. A **System.Timestamp** oszlop lesz a végső időbélyeg az esemény rendelt.
+Késő érkezés tolerancia érkezésének ideje és kérelem idő közötti legnagyobb különbség. Ha egy esemény érkezik a késő érkezés tolerancia később (például alkalmazás idő *app_t* < érkezésének ideje *arr_t* -késő érkezés házirend tolerancia *late_t*), a esemény módosul a késő érkezés tűréshatáron maximális (*arr_t* - *late_t*). A késő érkezés ablak az eseménygenerálás és a bemeneti forrásnál esemény fogadását maximális késleltetés. 
 
-**Nem megfelelő sorrendben tolerancia**
-* Az események sorrendje nem, de a "üzemen kívüli tűrési" halmazában érkező **által időbélyeg átrendezésekor**. 
-* Legkésőbb tolerancia érkező események **eldobni vagy módosítani**.
-    * **Igazítva**: igazítva érkezett meg a legújabb elfogadható idő jelennek meg. 
-    * **Eldobott**: vetve.
+Több partíciót az ugyanazon bemeneti adatfolyamból vagy több bemeneti adatfolyam együttes használatakor késő érkezés tolerancia az a maximális időt, amely minden partíció megvárja-e az új adatokat. 
 
-"Üzemen kívüli tűrési" belül fogadott események sorrendjének módosításához a lekérdezés eredménye **által üzemen kívüli tűrési késleltetett**.
+Késő érkezés tolerancia alapján módosítás először történik. Soron tolerancia alapján módosítása ezután történik. A **System.Timestamp** oszlopnak van rendelve az esemény végső időbélyegzőjét.
 
-**Példa**
+### <a name="out-of-order-tolerance"></a>Soron tolerancia
+Az események sorrendje nem megérkezni, hanem a készlet soron tűrési belül rendezi újra időbélyeg által. A tűrési később érkező események vagy szerepelnek:
+* **Igazítva**: igazítva érkezett meg a legújabb elfogadható idő jelennek meg. 
+* **Eldobott**: vetve.
+
+A Stream Analytics átrendezi a soron tűrési belül fogadott események, amikor a lekérdezés kimenetét a soron tűrési által késleltetett.
+
+### <a name="example"></a>Példa
 
 * Késő érkezés tolerancia = 10 perc<br/>
-* Rendelés tolerancia kívül = 3 perc<br/>
+* Soron tolerancia = 3 perc<br/>
 * Feldolgozási idő szerint<br/>
 * Események:
-   * Esemény 1 _alkalmazási_ 00:00:00 = _érkezésének ideje_ = 00:10:01, _System.Timestamp_ 00:00:01, mert igazítva = (_érkezésének ideje_  -  _Alkalmazási_) nagyobb, mint késő érkezés tolerancia.
-   * Esemény 2 _alkalmazási_ = 00:00:01, _érkezésének ideje_ = 00:10:01, _System.Timestamp_ = 00:00:01, nem beállítani, mert a kérelem ideje a késő érkezés belül ablak.
-   * Esemény 3 _alkalmazási_ 00:10:00 = _érkezésének ideje_ 00:10:02 = _System.Timestamp_ 00:10:00, nem módosul, mert alkalmazások idő késő érkezés ablakban = .
-   * Esemény 4 _alkalmazási_ 00:09:00 = _érkezésének ideje_ 00:10:03 = _System.Timestamp_ = 00:09:00, elfogadott eredeti Timestamp értékkel rendelkező alkalmazás ideje területén belül rendelés tűréshatáron.
-   * Esemény 5 _alkalmazási_ 00:06:00 = _érkezésének ideje_ 00:10:04 = _System.Timestamp_ 00:07:00, beállítani, mert a kérelem ideje régebbi, mint a nem megfelelő sorrendben = tolerancia.
+   1. **Alkalmazási** 00:00:00 = **érkezésének ideje** = 00:10:01, **System.Timestamp** 00:00:01, mert igazítva = (**érkezésének ideje - alkalmazási**) van több, mint a késő érkezés tolerancia.
+   2. **Alkalmazási** = 00:00:01, **érkezésének ideje** = 00:10:01, **System.Timestamp** = 00:00:01, mert alkalmazási késő érkezés ablakban nem módosul.
+   3. **Alkalmazási idő** 00:10:00 = **érkezésének ideje** 00:10:02 = **System.Timestamp** = 00:10:00, mert alkalmazási késő érkezés ablakban nem módosul.
+   4. **Alkalmazási** 00:09:00 = **érkezésének ideje** 00:10:03 = **System.Timestamp** = 00:09:00, az eredeti időbélyeg fogadhatók el, mert a kérelem ideje a-soron belül van tolerancia.
+   5. **Alkalmazási** 00:06:00 = **érkezésének ideje** 00:10:04 = **System.Timestamp** 00:07:00, beállítani, mert a kérelem ideje régebbi, mint a soron tolerancia =.
 
 ### <a name="practical-considerations"></a>Gyakorlati szempontok
-A fent említett *késő érkezés tolerancia* az alkalmazás és érkezési idő maximális különbsége.
-Is amikor alkalmazás feldolgozási idő, újabb, mint a konfigurált események *késő érkezés tolerancia* előtt módosulnak a *üzemen kívüli tolerancia* beállítás lesz érvényes. Igen soron kívüli hatályos késő érkezés tűréshatár és nem megfelelő sorrendben tolerancia minimális.
+A korábban említett késő érkezés tolerancia az alkalmazás és érkezési idő közötti legnagyobb különbség. Alkalmazás által éppen feldolgozása, eseményeket, amelyek újabb, mint a megadott késő érkezés tűrést módosul a soron tolerancia beállítás alkalmazása előtt. Igen soron kívüli hatályos késő érkezés tűréshatár és soron tolerancia minimális.
 
-Üzemen kívüli események belül adatfolyam fordulhat elő, beleértve, oknál
-* A küldők között óraeltérés.
-* Változó késés küldő és a bemeneti forrás között.
+Az adatfolyam belül soron események okai:
+* Az óra eltérésére a küldők között.
+* Változó késés a küldő és a bemeneti forrás között.
 
-Késő érkezés történik, többek között, oknál
-* Feladók a batch-, és küldje el a események időtartamra később, az időszak után.
-* Az esemény feladó küldése és fogadása az esemény bemeneti forrás közötti késleltetés.
+Késő érkezés okai például:
+* Feladók kötegelés és az események küldése az az időtartam alatt később, az időszak után.
+* Az esemény feladó küldése és fogadása az esemény a bemeneti forrás közötti késleltetés.
 
-Konfigurálása közben *késő érkezés tolerancia* és *üzemen kívüli tolerancia* egy adott feladat, a nézetet, a késési követelményekkel, és fent tényezőket érdemes figyelembe venni.
+Konfigurálja a késő érkezés tűréshatár és soron tolerancia egy adott feladat, vegye figyelembe helyességét, késési követelményekkel és az előző tényezőket.
 
-Az alábbiakban néhány példa
+Az alábbiakban néhány példa.
 
-#### <a name="example-1"></a>1. példa: 
-A lekérdezés "Partíció által PartitionId" záradékot tartalmaz, és belül egyetlen partícióra, az események küldhetők szinkron küldési módszerekkel. Aszinkron küldés módszerek blokk, amíg az események küldhetők.
-Ebben az esetben nem megfelelő sorrendben értéke nulla események explicit megerősítés elküldése a következő esemény előtt a sorrendben vannak elküldve. Késő érkezés az esemény létrehozása és küldése az esemény + a küldő és a bemeneti forrás közötti maximális késleltetés maximális késleltetés
+#### <a name="example-1"></a>1. példa 
+A lekérdezés tartalmaz egy **PartitionID partíció** záradékban. Belül egyetlen partícióra az események küldhetők szinkron küldési módszerek segítségével. Aszinkron küldés módszerek blokk, amíg az események küldhetők.
+
+Ebben az esetben nem megfelelő sorrendben oka nulla események küldése fel explicit megerősítő, a következő esemény elküldése előtt. Késő érkezés az esemény létrehozása és küldése az eseményt, valamint a küldő és a bemeneti forrás közötti maximális késleltetés maximális késleltetés.
 
 #### <a name="example-2"></a>2. példa
-A lekérdezés "Partíció által PartitionId" záradékot tartalmaz, és belül egyetlen partícióra, az események küldhetők aszinkron küldés metódussal. Aszinkron küldés módszerek is kezdeményezhető több küld egy időben, ami üzemen kívüli események okozhat.
-Ebben az esetben nem megfelelő sorrendben és a késői érkezési az esemény létrehozása és küldése az esemény + a küldő és a bemeneti forrás közötti maximális késleltetés legalább maximális késleltetés.
+A lekérdezés tartalmaz egy **PartitionID partíció** záradékban. Belül egyetlen partícióra az események küldhetők aszinkron küldés módszerek segítségével. Aszinkron küldés módszerek több küld egy időben, amelyek soron események esetén is kezdeményezhető.
 
-#### <a name="example-3"></a>3. példa:
-Lekérdezés nem rendelkezik "Partíció által PartitionId", és legalább két partíció.
-A beállítás ugyanaz, mint a 2. példa. Azonban az egyik partíciója adatok késleltetheti-e a kimenet további * késő érkezés tolerancia "ablak.
+Ebben az esetben nem megfelelő sorrendben és a késői érkezési legalább az esemény létrehozása és küldése az eseményt, valamint a küldő és a bemeneti forrás közötti maximális késleltetés maximális késleltetés.
+
+#### <a name="example-3"></a>3. példa
+A lekérdezés nem rendelkezik egy **PartitionID partíció** záradék, és legalább két partíció.
+
+Konfigurációs megegyezik a 2. példa. Azonban az egyik partíciója adatok késleltetheti a kimenet egy további késő érkezés tűrési által.
 
 ## <a name="handling-event-producers-with-differing-timelines"></a>Eltérő ütemtervet tartalmazó esemény gyártók kezelése
-Egyetlen bemeneti esemény adatfolyam gyakran fog tartalmazni (például az egyes eszközökről) több esemény gyártóktól származó események.  Ezek az események sorrendje a korábban tárgyalt okok miatt előfordulhat, hogy érkeznek. Ezekben az esetekben előfordulhat, hogy a rendellenességeket esemény gyártók között nagy, amíg egyetlen termelő eseményeiben rendellenességeket lesz kis (vagy még nem létezik).
-Azure Stream Analytics soron események kezelésére vonatkozó általános mechanizmusokat biztosít, ilyen mechanizmusokat eredményez (való várakozás közben a rendszer eléréséhez straggling események), vagy feldolgozási késedelmeket eldobott vagy igazítva, vagy mindkét.
-Még a sok esetben a kívánt lekérdezést végrehajtja különböző esemény gyártók események egymástól függetlenül.  Például akkor lehet, hogy kell összesítése események ablak eszközönkénti.  Ilyen esetben nincs szükség a megfelelő események készítő miközben a rendszer a többi esemény gyártó szinkronizálásához a kimeneti késleltetése.  Ez azt jelenti nincs szükség a gyártók között eltérésére idő kezelésére, és azt egyszerűen figyelmen kívül hagyható.
-Természetesen ez azt jelenti, hogy a kimeneti eseményekben maguk soron tekintetében az időbélyegzőjüket; az alsóbb rétegbeli fogyasztói az ilyen viselkedést kezelésére képesnek kell lennie.  Azonban minden esemény kimenet lesz megfelelő.
+Egyetlen bemeneti esemény adatfolyam gyakran több esemény-gyártók, például az egyes eszközökről származó eseményeket tartalmazza. Ezek az események sorrendje a korábban tárgyalt okok miatt előfordulhat, hogy érkeznek. A következő használati helyzetekben bár lehet, hogy a rendellenességeket esemény gyártók között nagy, egyetlen termelő eseményeiben rendellenességeket kis (vagy még nem létezik).
 
-Az Azure Stream Analytics megvalósítja a funkciók használata a [TIMESTAMP BY OVER](https://msdn.microsoft.com/library/azure/mt573293.aspx) záradékban.
+Az Azure Stream Analytics soron események kezelésére vonatkozó általános mechanizmust biztosít. Ilyen mechanizmusokat eredményez a feldolgozási késedelmeket (való várakozás közben a rendszer eléréséhez straggling események), eldobott vagy módosul az események, vagy mindkettőt.
 
+Még a sok esetben a kívánt lekérdezést végrehajtja különböző esemény gyártók események egymástól függetlenül. Például, előfordulhat, hogy lehet összesítése egy ablak, minden eszközhöz események. Ebben az esetben nincs szükség a kimeneti, amely megfelel a más esemény gyártók szinkronizálásához várakozás közben egy esemény készítő késleltetése. Ez azt jelenti nincs szükség a gyártók között eltérésére idő kezelésére. Figyelmen kívül hagyhatja azt.
 
+Természetesen ez azt jelenti, hogy a kimeneti eseményekben maguk nem megfelelő sorrendben az időbélyegzőjüket tekintetében. Az alsóbb rétegbeli fogyasztói az ilyen viselkedést kezelésére képesnek kell lennie. Azonban minden esemény kimenet helyességéről.
 
-## <a name="to-summarize"></a>Összefoglalásképpen
-* Késő érkezés tűréshatár és nem megfelelő sorrendben ablak konfigurálni kell a nézetet, késésre vonatkozó követelmény alapján, és is figyelembe kell venni az események küldhetők hogyan.
-* Javasoljuk, hogy nem megfelelő sorrendben tolerancia értéke kisebb a késő érkezés tolerancia.
-* Több ütemtervet egyesítésekor adatokat az adatforrások és a partíciók az egyik hiánya késleltetheti-e a kimenet egy további késő érkezés tűrési által.
-* A sorrend csak fontos az esemény készítő ütemterv belül, esetén a TIMESTAMP BY OVER záradék használatát egy független substream minden esemény gyártó feldolgozni.
+Az Azure Stream Analytics segítségével valósítja meg ezt a funkciót a [TIMESTAMP BY OVER](https://msdn.microsoft.com/library/azure/mt573293.aspx) záradékban.
+
+## <a name="summary"></a>Összefoglalás
+* Késő érkezés tűréshatár és a helyességét, és késésre vonatkozó követelmény alapján soron ablak konfigurálása. Is figyelembe venni, hogyan kerülnek az eseményeket.
+* Azt javasoljuk, hogy soron tolerancia értéke kisebb a késő érkezés tolerancia.
+* Több ütemtervet egyesítésekor éppen adatokat az adatforrások és a partíciók az egyik hiánya késleltetheti-e a kimenet egy további késő érkezés tűrési által.
 
 ## <a name="get-help"></a>Segítségkérés
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).

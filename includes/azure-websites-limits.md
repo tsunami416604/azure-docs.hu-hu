@@ -29,7 +29,7 @@
 
 <sup>1</sup>alkalmazások és a tárolási kvótákat is egy App Service-csomag hacsak másként nem jelezzük.  
 <sup>2</sup>a tényleges száma tárolhatja, ezeknek a gépeknek az alkalmazások az alkalmazások tevékenységét, a gép példányok és a megfelelő erőforrás-használat méretétől függ.  
-<sup>3</sup>dedikált példányok különböző méretű lehet. Lásd: [App Service szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/data-transfers/pricing/details/app-service/) további részleteket.  
+<sup>3</sup>dedikált példányok különböző méretű lehet. Lásd: [App Service szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/app-service/) további részleteket.  
 <sup>4</sup>prémium csomagban lehetővé teszi, hogy legfeljebb 50 kiszámítja példányok (függvényében a rendelkezésre állás), és 500 GB lemezterület használata az App Service Environment-környezetek esetén, és 20 számítási példányok és 250 GB tárhely ellenkező esetben.  
 <sup>5</sup>a tárolási kapacitás a teljes tartalom mérete összes alkalmazások között ugyanazt az App Service-csomag. További tárolási lehetőségek érhetők el [App Service Environment-környezet](../articles/app-service/environment/app-service-web-configure-an-app-service-environment.md#storage)  
 <sup>6</sup>ezeket az erőforrásokat csak korlátozottan fizikai erőforrások dedikált példányokon (a példány mérete és a példányok száma).  

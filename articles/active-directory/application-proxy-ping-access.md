@@ -15,11 +15,11 @@ ms.date: 10/11/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7c2e56a5f747aa2a37fc4bed0e3f3877b64f2be2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5b05813034a08457ca46ef47c93e16016534f0ef
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Az egyszeri bejelentkezés az alkalmazásproxy és PingAccess fejléc-alapú hitelesítés
 
@@ -73,6 +73,10 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes l
 4. Válassza ki **helyszíni alkalmazás**.
 5. Töltse ki a kötelező mezőket az új alkalmazás adatait tartalmazó. A következő útmutatást használhatja a beállításokat:
    - **Belső URL-cím**: általában viszi az alkalmazás bejelentkezési oldalára, ha a vállalati hálózaton már megnyitott URL-címet adjon meg. Ebben a forgatókönyvben az összekötő kell a PingAccess proxy tekinti az alkalmazás első oldalán. Ezt a formátumot használja: `https://<host name of your PA server>:<port>`. A port 3000 alapértelmezés szerint, de a PingAccess konfigurálhatja.
+
+    > [!WARNING]
+    > Az ilyen típusú SSO a belső URL-cím HTTPS protokollt kell használnia, és nem használható http.
+
    - **Előhitelesítési módszer**: Azure Active Directoryban
    - **URL-címet a fejlécekben fordítása**: nincs
 
@@ -127,7 +131,7 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes l
 
   Most, mentse ezt az értéket, mert nem lehet majd megjeleníteni az ablak bezárását követően.
 
-  ![Új kulcs létrehozása](./media/application-proxy-ping-access/create-keys.png)
+  ![Hozzon létre egy új kulcsot](./media/application-proxy-ping-access/create-keys.png)
 
 6. Zárja be a regisztrációk panelen vagy görgessen egészen a bal oldali térjen vissza az Azure Active Directory menübe.
 7. Válassza ki **tulajdonságok**.
@@ -135,7 +139,7 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes l
 
 ### <a name="optional---update-graphapi-to-send-custom-fields"></a>Nem kötelező – a frissítés GraphAPI küldése egyéni mezők
 
-A biztonsági jogkivonatok, amelyek az Azure AD küld a hitelesítéshez listájáért lásd: [az Azure AD-jogkivonatok referenciájából](./develop/active-directory-token-and-claims.md). Ha egy egyéni jogcím, amelyet más tokenekbe küld van szüksége, GraphAPI beállításához használja az alkalmazás mező *acceptMappedClaims* való **igaz**. Azure AD Graph Explorer segítségével csak ellenőrizze ezt a konfigurációt. 
+A biztonsági jogkivonatok, amelyek az Azure AD küld a hitelesítéshez listájáért lásd: [az Azure AD-jogkivonatok referenciájából](./develop/active-directory-token-and-claims.md). Ha egy egyéni jogcím, amelyet más tokenekbe küld van szüksége, Graph Explorer vagy a jegyzék az alkalmazás az Azure portálon beállításához használja az alkalmazás mező *acceptMappedClaims* való **igaz**.    
 
 Ez a példa Graph Explorer:
 
@@ -146,6 +150,13 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
   "acceptMappedClaims":true
 }
 ```
+Ez a példa a [Azure-portálon](https://portal.azure.com) való udpate a *acceptedMappedClaims* mező:
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) globális rendszergazdaként.
+2. Válassza ki **Azure Active Directory** > **App regisztrációk**.
+3. Válassza ki az alkalmazás > **Manifest**.
+4. Válassza ki **szerkesztése**, keresse meg a *acceptedMappedClaims* mezőben, és módosítsa az értéket a következőre **igaz**.
+![Alkalmazás-jegyzékfájl](media/application-proxy-ping-access/application-proxy-ping-access-manifest.PNG)
+1. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
 >Egy egyéni jogcím használatával is rendelkeznie kell egy egyéni házirend határozza meg, és az alkalmazáshoz hozzárendelni.  Ez a házirend az összes egyéni attribútumot kell tartalmaznia.

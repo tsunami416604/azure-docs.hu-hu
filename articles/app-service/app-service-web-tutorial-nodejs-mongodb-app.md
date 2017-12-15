@@ -15,13 +15,17 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c1c18deb41e16ec57eacd8272094dc418503b0fc
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
-ms.translationtype: HT
+ms.openlocfilehash: 7603625da3f5f54862b2a0ead0ebb68f4fb1cfa8
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure"></a>Az Azure-ban Node.js és a MongoDB webalkalmazás létrehozása
+
+> [!NOTE]
+> Ez a cikk a Windows App Service egy alkalmazást telepíti. Az App Service üzembe _Linux_, lásd: [egy Node.js és a MongoDB webalkalmazást az Azure App Service létrehozása Linux-kiszolgálón](./containers/tutorial-nodejs-mongodb-app.md).
+>
 
 Az Azure Web Apps jól skálázható, önálló javítási a webhelyszolgáltató biztosít. Ez az oktatóanyag bemutatja, hogyan Node.js-webalkalmazás létrehozása az Azure-ban, és csatlakoztassa a MongoDB-adatbázist. Amikor elkészült, konfigurálnia kell egy átlagos alkalmazás (MongoDB, Express, AngularJS és Node.js) fut a [Azure App Service](app-service-web-overview.md). Az egyszerűség kedvéért a mintaalkalmazást használ a [MEAN.js webes keretrendszer](http://meanjs.org/).
 
@@ -127,7 +131,7 @@ Ez az oktatóanyag használja a MongoDB, [Azure Cosmos DB](/azure/documentdb/). 
 
 ### <a name="create-a-cosmos-db-account"></a>A Cosmos DB-fiók létrehozása
 
-A felhő rendszerhéj a Cosmos DB-fiók létrehozása a [az cosmosdb létrehozása](/cli/azure/cosmosdb#create) parancsot.
+A felhő rendszerhéj a Cosmos DB-fiók létrehozása a [az cosmosdb létrehozása](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create) parancsot.
 
 Az alábbi parancs egyedi Cosmos DB nevet helyettesítse a  *\<cosmosdb_name >* helyőrző. Ez a név a Cosmos DB végpont részeként használatos `https://<cosmosdb_name>.documents.azure.com/`, így a nevének egyedinek kell lennie az Azure-ban összes Cosmos DB fiók. A név csak kisbetűket, számokat és a kötőjel (-) karaktert kell tartalmaznia, és 3 – 50 karakter közé kell esnie.
 
@@ -161,7 +165,7 @@ Ebben a lépésben csatlakoztatja az imént létrehozott, a MongoDB-kapcsolati k
 
 ### <a name="retrieve-the-database-key"></a>Az adatbázis-kulcs beolvasása
 
-A Cosmos DB adatbázishoz való kapcsolódáshoz szükséges az adatbázis-kulcs. A felhő rendszerhéj használata a [az cosmosdb lista-kulcsok](/cli/azure/cosmosdb#list-keys) parancsot az elsődleges kulcs lekéréséhez.
+A Cosmos DB adatbázishoz való kapcsolódáshoz szükséges az adatbázis-kulcs. A felhő rendszerhéj használata a [az cosmosdb lista-kulcsok](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_keys) parancsot az elsődleges kulcs lekéréséhez.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
@@ -257,7 +261,7 @@ Ebben a lépésben az Azure App Service a Node.js MongoDB-kompatibilis alkalmaz�
 
 Alapértelmezés szerint a MEAN.js projekt tartja _config/env/local-production.js_ kívül a Git-tárházba. Ezért a Azure webalkalmazás app beállításai segítségével határozza meg a MongoDB-kapcsolati karakterlánc.
 
-Alkalmazásbeállítások beállításához használja a [az webapp config appsettings frissítése](/cli/azure/webapp/config/appsettings#update) a felhő rendszerhéj parancsot. 
+Alkalmazásbeállítások beállításához használja a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) a felhő rendszerhéj parancsot. 
 
 A következő példa egy `MONGODB_URI` Alkalmazásbeállítás az Azure web app alkalmazásban. Cserélje le a  *\<alkalmazás_neve >*,  *\<cosmosdb_name >*, és  *\<primary_master_key >* helyőrzők.
 
@@ -461,7 +465,7 @@ Ha korábban hozzáadott olyan cikkek, továbbra is láthatja azokat. A Cosmos D
 
 A Node.js-alkalmazás futtatása az Azure App Service-ben, közben kaphat az adatcsatornán a terminálon a konzol naplói. Ily módon kaphat segítséget nyújtanak az alkalmazáshibák debug diagnosztikai ugyanazokat az üzeneteket.
 
-Napló streaming indításához használja a [az webapp napló végéről](/cli/azure/webapp/log#tail) a felhő rendszerhéj parancsot.
+Napló streaming indításához használja a [az webapp napló végéről](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) a felhő rendszerhéj parancsot.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/23/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03000679ef7fc36842b1f55d4d98131dfe400c87
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e02b286db42d8a9de8f1df8263f40c3732484038
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>Több főkiszolgálós globálisan replikált Azure Cosmos DB az adatbázis-architektúra
 Azure Cosmos DB támogatja kulcsrakész [globális replikációs](distribute-data-globally.md), amely lehetővé teszi, hogy több területre kis késleltetésű hozzáféréssel bárhol a munkaterhelési adatok terjesztése. Ebben a modellben van általánosan használt publisher/fogyasztói ahol egy-egy földrajzi régiót íróhoz és egyéb (olvasás) régiókban globálisan elosztott olvasók van. 
@@ -318,6 +318,6 @@ Ez a cikk azt leírt használatát globálisan elosztott több területi olvasá
 * További tudnivalók arról, hogyan támogatja a Azure Cosmos DB [globális terjesztési](distribute-data-globally.md)
 * További tudnivalók [automatikus és manuális feladatátvételt az Azure Cosmos-Adatbázisba](regional-failover.md)
 * További tudnivalók [az Azure Cosmos DB globális egységesítése](consistency-levels.md)
-* Több régiókat fejlesztést a [Azure Cosmos DB - SQL API](tutorial-global-distribution-documentdb.md)
+* Több régiókat fejlesztést a [Azure Cosmos DB - SQL API](tutorial-global-distribution-sql-api.md)
 * Több régiókat fejlesztést a [Azure Cosmos DB - MongoDB API](tutorial-global-distribution-MongoDB.md)
 * Több régiókat fejlesztést a [Azure Cosmos DB - tábla API](tutorial-global-distribution-table.md)

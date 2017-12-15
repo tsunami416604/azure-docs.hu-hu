@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.date: 10/20/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba6352704dd0d0322746feb0f6970d95ce7db129
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 3e778f4a9b7ec4935d53eb335462f3c414ff99cd
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>A földrajzi és GeoJSON helyre adatokat az Adatbázisba az Azure Cosmos használata
 Ez a cikk az a földrajzi funkcióinak bemutatása [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Ez elolvasása, után lesz a következő kérdések megválaszolásához:
@@ -155,7 +155,7 @@ Ha nem rendelkezik a szélességi és hosszúsági adatokat, de a fizikai címek
 Most, hogy azt már hozott földrajzi adatok beszúrása egy pillantást, vessen egy pillantást SQL és a LINQ használatával Azure Cosmos DB használatával az adatok lekérdezése.
 
 ### <a name="spatial-sql-built-in-functions"></a>Térbeli SQL beépített funkciók
-Azure Cosmos DB támogatja a következő nyissa meg a földrajzi konzorcium (OGC) beépített függvények földrajzi lekérdezése. Az SQL-nyelv beépített függvények teljes készletének a további részletekért lásd: [lekérdezés Azure Cosmos DB](documentdb-sql-query.md).
+Azure Cosmos DB támogatja a következő nyissa meg a földrajzi konzorcium (OGC) beépített függvények földrajzi lekérdezése. Az SQL-nyelv beépített függvények teljes készletének a további részletekért lásd: [lekérdezés Azure Cosmos DB](sql-api-sql-query.md).
 
 <table>
 <tr>
@@ -396,6 +396,6 @@ Ismerkedés az Azure Cosmos Adatbázisba földrajzi támogatásával kapcsolatos
 
 * A elkezdésére a [földrajzi .NET mintakódjainak megtekintése a Githubon](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
 * Beavatkozás nélküli lekérdezni földrajzi kérdez le a [Azure Cosmos DB Tesztlekérdezéseket](http://www.documentdb.com/sql/demo#geospatial)
-* További információ [Azure Cosmos adatbázis-lekérdezés](documentdb-sql-query.md)
+* További információ [Azure Cosmos adatbázis-lekérdezés](sql-api-sql-query.md)
 * További információ [Azure Cosmos DB indexelő házirendek](indexing-policies.md)
 

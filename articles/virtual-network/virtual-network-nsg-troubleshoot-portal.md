@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92816a5b1a74be5b64d974ad9ade47374db5db10
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Hálózati biztonsági csoportok az Azure portál használatával hibaelhárítása
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Az alábbi lépésekkel hibáinak elhárítása az NSG-ket a virtuális gépek:
 
 A hatékony biztonsági szabályok teljes listáját megtekintheti a hálózati Adapterhez, maga a virtuális gépről. Azt is megteheti, módosítása, és a hálózati adapter és az alhálózati NSG-szabályok törlése a hatékony szabályokat paneljéről, ha Ön rendelkezik engedéllyel a műveletek végrehajtására.
 
-1. Az Azure portálon, a https://portal.azure.com bejelentkezni.
+1. Az Azure portál, Azure-fiókkal rendelkező https://portal.azure.com bejelentkezni. Ön fiókjához társítva kell lenni a *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* műveletet a hálózati adapter. Műveletek fiókokhoz rendeléséhez, lásd: [egyedi szerepkörök létrehozását, hozzáférés-vezérlési átruházásához](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Kattintson a **további szolgáltatások**, majd kattintson a **virtuális gépek** a megjelenő listában.
 3. Jelöljön ki egy virtuális Gépet, a listában megjelenő hibaelhárítása, és a beállítások egy virtuális gép panel jelenik meg.
 4. Kattintson a **derítse & felmerülő problémák megoldásához** , és válassza a gyakori probléma. Ehhez a példához **nem lehet csatlakozni a windowsos virtuális Gépemhez** van kiválasztva. 

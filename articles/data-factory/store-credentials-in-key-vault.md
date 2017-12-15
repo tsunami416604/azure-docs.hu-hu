@@ -10,17 +10,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 12/14/2017
 ms.author: jingwang
-ms.openlocfilehash: f7604e251bd62ec382ac9ace3de058e345abb863
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 145c2bc0556010389e78e523fde6fd4b9063f930
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása az Azure Key Vault
 
-Az adattároló hitelesítő adatait tárolhatja egy [Azure Key Vault](../key-vault/key-vault-whatis.md). Az Azure Data Factory olvassa be a hitelesítő adatokat, a tárolót használó tevékenység végrehajtása közben. Jelenleg csak [Dynamics összekötő](connector-dynamics-crm-office-365.md) és [Salesforce összekötő](connector-salesforce.md) támogatja ezt a szolgáltatást.
+Az adattároló hitelesítő adatait tárolhatja egy [Azure Key Vault](../key-vault/key-vault-whatis.md). Az Azure Data Factory olvassa be a hitelesítő adatokat, a tárolót használó tevékenység végrehajtása közben.
+
+Jelenleg [Dynamics összekötő](connector-dynamics-crm-office-365.md), [Salesforce összekötő](connector-salesforce.md) és néhány újonnan összekötők támogatásának engedélyezése Ezt a szolgáltatást. Várhatóan több hamarosan újabb. A részletek minden összekötő témakör ellenőrizheti. A titkos mezők, amely támogatja ezt a szolgáltatást, a leírás megkapta a megjegyzés megjelenik "*esetén dönthet úgy, hogy ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault, és lehetővé teszik a másolási tevékenységek lekéréses onnan adatok másolása – végrehajtása során az adattárolóhoz használandó hitelesítő adatok a Key Vault további.* "
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [adat-előállító version1 dokumentációja](v1/data-factory-introduction.md).
@@ -70,7 +72,7 @@ A következő tulajdonságok kulcstároló titkos kulcs hivatkozó társított s
 | type | A mező a type tulajdonságot kell beállítani: **AzureKeyVaultSecret**. | Igen |
 | secretName | Az azure key vault a titkos kulcs neve. | Igen |
 | secretVersion | A titkos kulcsot az azure key vault verzióját.<br/>Ha nincs megadva, a legújabb verzióját a titkos kulcsot mindig használja.<br/>Ha meg van adva, majd csatlakoztat a megadott verzió lesz.| Nem |
-| tároló | Egy Azure Key Vault kapcsolódó szolgáltatás, amely a hitelesítő adatok tárolása hivatkozik. | Igen |
+| áruház | Egy Azure Key Vault kapcsolódó szolgáltatás, amely a hitelesítő adatok tárolása hivatkozik. | Igen |
 
 **Példa: (lásd a "password")**
 

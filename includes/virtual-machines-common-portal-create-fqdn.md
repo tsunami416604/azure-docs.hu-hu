@@ -6,7 +6,7 @@
 2. Adja meg a kívánt DNS-nevet, és válassza ki **mentése**.
    
    ![Adjon meg egy DNS-névcímke a nyilvános IP-erőforrás](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
- 
+
 
 3. Térjen vissza a virtuális gép – áttekintés panelt, zárja be a *nyilvános IP-cím* panelen. Ellenőrizze, hogy a *DNS-név* most látható.
    

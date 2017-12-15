@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: rafats
-ms.openlocfilehash: 85157f3f0bcf86ae049c0bec76afb0ca33797b11
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: c530b34edf9bfa0651b7b114dcf7e8add0d906ed
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Egyedi kulcsok vannak az Azure Cosmos-Adatbázisba
 
 Egyedi kulcsok vannak elhelyezve a fejlesztők a adatintegritást réteg hozzáadása az adatbázishoz. Hozzon létre egy egyedi kulcs házirend, a tároló létrehozásakor, egy vagy több érték / egyediségének biztosítása [partíciókulcs](partition-data.md). Egy tároló létrehozása után a egyedi kulcs házirendnek, megakadályozza, hogy az ismétlődő értékek, az egyedi kulcs korlátozás által megadott értéket tartalmazó új vagy frissített elemek létrehozását.   
 
 > [!NOTE]
-> A legújabb verziói által támogatott egyedi kulcsok vannak a [.NET](documentdb-sdk-dotnet.md) és [.NET Core](documentdb-sdk-dotnet-core.md) SQL SDK-k, és a [MongoDB API](mongodb-feature-support.md#unique-indexes). A tábla API és a Graph API nem támogatja egyedi kulcsok vannak jelenleg. 
+> A legújabb verziói által támogatott egyedi kulcsok vannak a [.NET](sql-api-sdk-dotnet.md) és [.NET Core](sql-api-sdk-dotnet-core.md) SQL SDK-k, és a [MongoDB API](mongodb-feature-support.md#unique-indexes). A tábla API és a Graph API nem támogatja egyedi kulcsok vannak jelenleg. 
 > 
 >
 

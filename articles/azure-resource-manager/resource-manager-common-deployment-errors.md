@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2017
 ms.author: tomfitz
-ms.openlocfilehash: db7561c31c0748ae5c1500ba8c39dfa79274901e
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 560f888776d5b3e5103ee2084b5c3c999f014fad
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Hibaelhárítás általános az Azure-telepítés az Azure Resource Manager eszközzel
 
@@ -34,7 +34,7 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | AllocationFailed | A fürt vagy a régió nincs forrásanyag is elérhető, vagy nem támogatja a kért Virtuálisgép-méretet. Próbálja megismételni a kérést később, vagy kérje meg egy másik Virtuálisgép-méretet. | [Kiépítés és lefoglalás problémái Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md) és [Windows kiépítés és lefoglalás problémái](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) |
 | AnotherOperationInProgress | Várjon, amíg egyidejű művelet elvégzéséhez. | |
 | AuthorizationFailed | A fióknév vagy egyszerű szolgáltatásnév nincs engedélye a központi telepítés befejezéséhez. Ellenőrizze a szerepkör a fiókja tagja, és a hozzáférése a központi telepítés hatókör. | [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md) |
-| Hibás kérés | Központi telepítés értékek, amelyek nem egyeznek, mi várható erőforrás-kezelő által küldött. Ellenőrizze a belső hibaállapot-üzeneteket a hibaelhárítás támogatásához. | [Sablonra való hivatkozást](/azure/templates/) és [támogatott helyek](resource-manager-template-location.md) |
+| Hibás kérés | Központi telepítés értékek, amelyek nem egyeznek, mi várható erőforrás-kezelő által küldött. Ellenőrizze a belső hibaállapot-üzeneteket a hibaelhárítás támogatásához. | [Sablonra való hivatkozást](/azure/templates/) és [támogatott helyek](resource-manager-templates-resources.md#location) |
 | Ütközés | A kért műveletet az erőforrás a jelenlegi állapotban nem engedélyezett. Például a lemezek átméretezése engedélyezett csak akkor, ha a virtuális gép létrehozása, vagy ha a virtuális gép felszabadítása. | |
 | DeploymentActive | Várjon, amíg párhuzamos központi telepítést, hogy ez az erőforráscsoport befejezéséhez. | |
 | DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg egy másik nevet, vagy módosítsa a meglévő bejegyzést. | |
@@ -51,7 +51,7 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | InvalidTemplate | Ellenőrizze a hibákat a sablon szintaxisát. | [Érvénytelen a sablon feloldása](resource-manager-invalid-template-errors.md) |
 | LinkedAuthorizationFailed | Ellenőrizze, hogy ha a fiókja tagja ugyanannak a bérlőnek a telepíti erőforráscsoportként működnek. | |
 | LinkedInvalidPropertyId | Az erőforrás-azonosítója egy erőforrás nem megfelelően van feloldása. Ellenőrizze, hogy értékeket ad meg minden szükséges erőforrás-azonosítóhoz, beleértve az előfizetés-azonosító, az erőforráscsoport neve, erőforrástípus, szülő erőforrás neve (ha szükséges) és erőforrás neve. | |
-| LocationRequired | Adjon meg egy helyet, az erőforrás. | [Hely beállítása](resource-manager-template-location.md) |
+| LocationRequired | Adjon meg egy helyet, az erőforrás. | [Hely beállítása](resource-manager-templates-resources.md#location) |
 | MissingRegistrationForLocation | Ellenőrizze az erőforrás-szolgáltató regisztrációs állapotát, és a támogatott helyek. | [Hárítsa el a regisztrációs](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Az előfizetés regisztrálása az erőforrás-szolgáltató. | [Hárítsa el a regisztrációs](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Erőforrás-szolgáltató regisztráció állapotának ellenőrzése. | [Hárítsa el a regisztrációs](resource-manager-register-provider-errors.md) |

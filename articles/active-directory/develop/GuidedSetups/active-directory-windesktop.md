@@ -1,6 +1,6 @@
 ---
-title: "Az Azure AD v2 Windows asztali bevezetés |} Microsoft Docs"
-description: "A Windows asztali .NET (XAML) alkalmazások hogyan szereznie egy hozzáférési jogkivonatot, és a hívja az API-k védi az Azure Active Directory v2 végpont."
+title: "Ismerkedés az Azure Active Directory v2 Windows asztali |} Microsoft Docs"
+description: "A Windows asztali .NET (XAML) alkalmazások hogyan szereznie egy hozzáférési jogkivonatot, és a hívja az API-k egy Azure Active Directory v2 végpont által védett."
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 95b8279fd909f88a4d3f314dd5c525f8d4afb583
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4b809f3f77cfcefcd52821c5c92d9f6c9b79fb38
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 [!INCLUDE [1. Introduction](..\..\..\..\includes\active-directory-develop-guidedsetup-windesktop-introduction.md)]
 [!INCLUDE [2. Setup](..\..\..\..\includes\active-directory-develop-guidedsetup-windesktop-setup.md)]

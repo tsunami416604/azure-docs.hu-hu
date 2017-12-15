@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01b44169349d8b79cf5861328170916a57df6811
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 9ddce64b53e8c5627050ca77f11de2ba144276a1
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>A S1, S2 és S3 teljesítményszintet kivonása
 
@@ -95,7 +95,7 @@ Feltéve, hogy 10 S1 gyűjtemények, 1 GB tárhelyet minden, a US keleti terüle
 
 ## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>Mi történik, ha több mint 10 GB tárhelyet kell?
 
-E rendelkezik egy gyűjtemény egy S1, S2 vagy S3 teljesítményszint szükséges, vagy ezek mindegyike rendelkezik, 10 GB-os kapacitású, a Cosmos DB adatáttelepítés eszközzel az adatok áttelepítéséhez egy particionált gyűjtemény gyakorlatilag az egypartíciós gyűjtemény korlátlan tárterület. A particionált gyűjtemény előnyeivel kapcsolatos információk: [particionálás és az Azure Cosmos Adatbázisba skálázás](documentdb-partition-data.md). 
+E rendelkezik egy gyűjtemény egy S1, S2 vagy S3 teljesítményszint szükséges, vagy ezek mindegyike rendelkezik, 10 GB-os kapacitású, a Cosmos DB adatáttelepítés eszközzel az adatok áttelepítéséhez egy particionált gyűjtemény gyakorlatilag az egypartíciós gyűjtemény korlátlan tárterület. A particionált gyűjtemény előnyeivel kapcsolatos információk: [particionálás és az Azure Cosmos Adatbázisba skálázás](sql-api-partition-data.md). 
 
 <a name="change-before"></a>
 
@@ -134,7 +134,7 @@ A S1, S2 és S3 teljesítményszintek az Azure portál használatával az egypar
 
 4. Kattintson a **mentése** menti a módosításokat.
 
-    Ha azt állapítja meg, hogy van szüksége további átviteli sebesség (nagyobb, mint 10000 RU/mp) vagy további tárhelyet (10 GB-nál nagyobb) particionált gyűjtemény hozható létre. Az egypartíciós gyűjtemény egy particionált gyűjtemény áttelepítéséhez lásd: [egypartíciós telepít át a particionált gyűjtemények](documentdb-partition-data.md#migrating-from-single-partition).
+    Ha azt állapítja meg, hogy van szüksége további átviteli sebesség (nagyobb, mint 10000 RU/mp) vagy további tárhelyet (10 GB-nál nagyobb) particionált gyűjtemény hozható létre. Az egypartíciós gyűjtemény egy particionált gyűjtemény áttelepítéséhez lásd: [egypartíciós telepít át a particionált gyűjtemények](sql-api-partition-data.md#migrating-from-single-partition).
 
     > [!NOTE]
     > Standard S1, S2 vagy S3 módosítása két percet is igénybe vehet.
@@ -143,7 +143,7 @@ A S1, S2 és S3 teljesítményszintek az Azure portál használatával az egypar
 
 **A .NET SDK használatával az egypartíciós gyűjtemények áttelepítése**
 
-A gyűjtemények teljesítményszintet módosítására vonatkozóan egy másik lehetőség az Azure Cosmos DB SDK-k keresztül történik. Ez a szakasz csak hozzá van rendelve egy gyűjtési teljesítmény módosítása szinten használatával a [SQL .NET API](documentdb-sdk-dotnet.md), a folyamat hasonló, ha a Csomagjától, de.
+A gyűjtemények teljesítményszintet módosítására vonatkozóan egy másik lehetőség az Azure Cosmos DB SDK-k keresztül történik. Ez a szakasz csak hozzá van rendelve egy gyűjtési teljesítmény módosítása szinten használatával a [SQL .NET API](sql-api-sdk-dotnet.md), a folyamat hasonló, ha a Csomagjától, de.
 
 Íme egy kódrészletet a a gyűjtemény átviteli sebességének módosítása a 5 000 kérelemegység / másodperc:
     
@@ -177,6 +177,6 @@ Nagyvállalati ügyfelek az aktuális szerződés végéig védett ár is.
 ## <a name="next-steps"></a>Következő lépések
 Tarifa- és Azure Cosmos DB adatok kezelésével kapcsolatos további tudnivalókért ismerheti meg ezeket az erőforrásokat:
 
-1.  [Particionálás adatokat az Adatbázisba az Cosmos](documentdb-partition-data.md). Az egypartíciós tároló particionált tárolók, valamint tippek az zökkenőmentesen méretezési jó particionálási stratégia megvalósítása közötti különbségek megértése.
+1.  [Particionálás adatokat az Adatbázisba az Cosmos](sql-api-partition-data.md). Az egypartíciós tároló particionált tárolók, valamint tippek az zökkenőmentesen méretezési jó particionálási stratégia megvalósítása közötti különbségek megértése.
 2.  [Cosmos DB árképzési](https://azure.microsoft.com/pricing/details/cosmos-db/). További információk a telepítés átviteli sebesség és a tároló felhasználása költsége.
 3.  [Egységek kérelem](request-units.md). Ismerje meg, a felhasználás átviteli különböző művelet-típusok, például a rekordhoz olvasási, írási, lekérdezés.

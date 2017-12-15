@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 12/14/2017
 ms.author: JeffGo
-ms.openlocfilehash: e1752bfe40fb53568b79e2b7eec56ca9f3139d4c
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 37fc6a737bd1cfb09caf69ea2c6d81ea0b7d8693
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -59,6 +59,10 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
     a. A Azure verem Development Kit (ASDK) telepítésekre jelentkezzen be a fizikai állomáson.
 
     b. Több csomópontos rendszerek esetében a gazdagép egy rendszer, amely hozzáférhet a kiemelt végpont kell lennie.
+    
+    >[!NOTE]
+    > A rendszer, ha a parancsfájl futtatása *kell* egy Windows 10 vagy Windows Server 2016 rendszert a legújabb verzióra a .NET-futtatókörnyezet telepítve lesz. Ellenkező esetben telepítése sikertelen. A ASDK gazdagép megfelel a feltételeknek.
+    
 
 3. Töltse le a MySQL erőforrás-szolgáltató bináris, és egy ideiglenes könyvtárhoz tartalmának önkibontó hajtható végre.
 
@@ -67,15 +71,19 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
 
     | Az Azure verem Build | MySQL RP-telepítő |
     | --- | --- |
-    | 1.0.171122.1 | [MySQL RP 1.1.10.0 verziója](https://aka.ms/azurestackmysqlrp) |
+    | 1.0.171122.1 | [MySQL RP 1.1.12.0 verziója](https://aka.ms/azurestackmysqlrp) |
     | 1.0.171028.1 | [MySQL RP 1.1.8.0 verziója](https://aka.ms/azurestackmysqlrp1710) |
     | 1.0.170928.3 | [MySQL RP 1.1.3.0 verziója](https://aka.ms/azurestackmysqlrp1709) |
 
 4.  Az Azure-verem legfelső szintű tanúsítvány veszi át a kiemelt végpont. A ASDK önaláírt tanúsítvány jön létre a folyamat során. Több csomópontos meg kell adnia egy megfelelő tanúsítványt.
 
-    Ha saját van szüksége, a következő tanúsítványra van szükség:
+    Ha saját van szüksége, szüksége lesz a PFX-fájlba helyezi a **DependencyFilesLocalPath** (lásd alább) az alábbiak szerint:
 
-    A helyettesítő tanúsítványt \*.dbadapter.\< a régióban\>.\< külső fqdn\>. Ezt a tanúsítványt megbízhatónak kell lennie, például a állít ki egy hitelesítésszolgáltatónak. Ez azt jelenti, hogy a megbízhatósági lánc léteznie kell anélkül, hogy a köztes tanúsítványok. Egy egyetlen hely használhatja a explicit Virtuálisgép-név [mysqladapter] telepítés során használt.
+    - Vagy egy helyettesítő tanúsítvány \*.dbadapter.\< a régióban\>.\< külső fqdn\> vagy egyhelyes tanúsítvány köznapi neve a mysqladapter.dbadapter.\< a régióban\>.\< külső fqdn\>
+    - Ezt a tanúsítványt megbízhatónak kell lennie, például a állít ki egy hitelesítésszolgáltatónak. Ez azt jelenti, hogy a megbízhatósági lánc léteznie kell anélkül, hogy a köztes tanúsítványok.
+    - Csak egyetlen tanúsítványfájlt a DependencyFilesLocalPath szerepel.
+    - A fájl neve nem tartalmazhat speciális karaktereket.
+
 
 
 5. Nyissa meg a **új** emelt szintű (felügyeleti) PowerShell-konzolt, és módosítsa a könyvtárra, amelybe kibontotta a fájlokat. Egy új ablak segítségével a rendszer helytelen PowerShell-modul már be van töltve az esetleg felmerülő problémák elkerülése érdekében.

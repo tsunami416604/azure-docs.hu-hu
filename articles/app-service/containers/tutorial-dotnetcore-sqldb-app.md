@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ef68f64437935f08f76c29ecf15d574279cca7f1
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: d6c679518bfc712e6a08ffae722b0cc5d2b038aa
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>A .NET Core és az SQL-adatbázis webalkalmazás az Azure App Service létrehozása Linux-kiszolgálón
 
-[App Service Linux](app-service-linux-intro.md) biztosít egy jól skálázható, önálló javítási webhelyszolgáltató a Linux operációs rendszert használ. Ez az oktatóanyag bemutatja, hogyan .NET Core-webalkalmazás létrehozása, és csatlakoztassa egy SQL-adatbázisban. Amikor elkészült, akkor a .NET Core MVC alkalmazás az App Service-ben futó Linux kell.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan .NET Core-webalkalmazás létrehozása, és csatlakoztassa egy SQL-adatbázisban. Amikor elkészült, akkor a .NET Core MVC alkalmazás az App Service-ben futó Linux kell.
 
 ![az alkalmazás az App Service-ben futó Linux](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
@@ -93,7 +93,7 @@ Az SQL Database esetén ez az oktatóanyag használja [Azure SQL Database](/azur
 
 ### <a name="create-a-sql-database-logical-server"></a>SQL Database logikai kiszolgáló létrehozása
 
-A felhő rendszerhéj az SQL Database logikai kiszolgáló létrehozása a [létrehozása az sql server](/cli/azure/sql/server#create) parancsot.
+A felhő rendszerhéj az SQL Database logikai kiszolgáló létrehozása a [létrehozása az sql server](/cli/azure/sql/server?view=azure-cli-latest#az_sql_server_create) parancsot.
 
 Cserélje le a  *\<kiszolgáló_neve >* egyedi SQL-adatbázis nevű helyőrző. Ez a név az SQL-adatbázis végpont részeként használatos `<server_name>.database.windows.net`, így a nevének egyedinek kell lennie az Azure-ban minden logikai kiszolgáló között. A név csak kisbetűket, számokat és a kötőjel (-) karaktert kell tartalmaznia, és 3 – 50 karakter közé kell esnie. Továbbá cserélje le  *\<db_username >* és  *\<db_password >* felhasználónévvel és jelszóval az Ön által választott. 
 
@@ -124,7 +124,7 @@ Ha az SQL Database logikai kiszolgáló létrehozása az Azure parancssori felü
 
 ### <a name="configure-a-server-firewall-rule"></a>Konfiguráljon egy kiszolgálói tűzfalszabályt
 
-Hozzon létre egy [Azure SQL Database kiszolgálószintű tűzfalszabályt](../../sql-database/sql-database-firewall-configure.md) az [az sql server firewall create](/cli/azure/sql/server#create) parancs használatával. Ha mind a kezdő IP-Címét, és a záró IP-0.0.0.0 van beállítva, a tűzfal csak van megnyitva más Azure-erőforrások. 
+Hozzon létre egy [Azure SQL Database kiszolgálószintű tűzfalszabályt](../../sql-database/sql-database-firewall-configure.md) az [az sql server firewall create](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az_sql_server_firewall_rule_create) parancs használatával. Ha mind a kezdő IP-Címét, és a záró IP-0.0.0.0 van beállítva, a tűzfal csak van megnyitva más Azure-erőforrások. 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -132,7 +132,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 
 ### <a name="create-a-database"></a>Adatbázis létrehozása
 
-Hozzon létre egy [S0 teljesítményszintű](../../sql-database/sql-database-service-tiers.md) adatbázist a kiszolgálón az [az sql db create](/cli/azure/sql/db#create) paranccsal.
+Hozzon létre egy [S0 teljesítményszintű](../../sql-database/sql-database-service-tiers.md) adatbázist a kiszolgálón az [az sql db create](/cli/azure/sql/db?view=azure-cli-latest#az_sql_db_create) paranccsal.
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server_name> --name coreDB --service-objective S0
@@ -166,7 +166,7 @@ Ebben a lépésben a Linux App Service .NET Core SQL Database-kompatibilis alkal
 
 ### <a name="configure-an-environment-variable"></a>Egy környezeti változó beállítása
 
-Kapcsolati karakterláncok az Azure alkalmazás beállításához használja a [az webapp config appsettings frissítése](/cli/azure/webapp/config/appsettings#update) a felhő rendszerhéj parancsot. A következő parancsban cserélje le  *\<alkalmazás neve >*, valamint a  *\<connection_string >* paraméter a korábban létrehozott kapcsolati karakterlánccal.
+Kapcsolati karakterláncok az Azure alkalmazás beállításához használja a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) a felhő rendszerhéj parancsot. A következő parancsban cserélje le  *\<alkalmazás neve >*, valamint a  *\<connection_string >* paraméter a korábban létrehozott kapcsolati karakterlánccal.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer

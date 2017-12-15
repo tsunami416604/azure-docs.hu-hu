@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe6612e8c3fb557097866b23bad32d7edc45492f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0338fb386fc4da3f34cb4e810dbd57d50b5d5329
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok áthelyezése, és az Azure Cosmos Adatbázisba az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -489,7 +489,7 @@ Azure Cosmos-adatbázis egy NoSQL-tároló JSON-dokumentumok, amelyben beágyazo
 2. **Kérdés:** hogyan működik az Azure Cosmos DB kezelésére másolatának újrapróbálkozást már másolt rekordok?
 
     **Válasz:** ha rögzíti egy "ID" mezőt rendelkezik, és a másolási művelet megkísérli beszúrására ugyanezzel az Azonosítóval rendelkező, a másolási művelet hibát jelez.  
-3. **Kérdés:** nem támogatja a Data Factory [tartományt vagy a kivonat-alapú adatparticionálás](../../cosmos-db/documentdb-partition-data.md)?
+3. **Kérdés:** nem támogatja a Data Factory [tartományt vagy a kivonat-alapú adatparticionálás](../../cosmos-db/sql-api-partition-data.md)?
 
     **Válasz:** nem.
 4. **Kérdés:** állítható be egy táblához több Azure Cosmos DB gyűjtemény?

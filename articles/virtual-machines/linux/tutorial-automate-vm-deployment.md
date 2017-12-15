@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan használható felhőalapú inicializálás és
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2017
+ms.date: 12/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e2d07a03902a8c837150da8d50ab9abec8d1c95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 83773e513ee2c92da733df05cd17dda2940a28cd
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Az első rendszerindító Linux virtuális gépek testreszabása
 Egy korábbi oktatóanyagban megtanulta, hogyan telepítse a virtuális gép (VM), és manuálisan SSH NGINX. Virtuális gépek gyors és egységes módon létrehozásához valamilyen automatizált művelettel általában van szükség. Általános gyakorlatként javasolt első indításakor a virtuális gépek testreszabása, hogy használja [felhő inicializálás](https://cloudinit.readthedocs.io). Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -39,7 +39,7 @@ Telepítése és a parancssori felület helyileg használata mellett dönt, ha e
 
 
 
-## <a name="cloud-init-overview"></a>Felhő inicializálás áttekintése
+## <a name="cloud-init-overview"></a>A cloud-init áttekintése
 [Felhő inicializálás](https://cloudinit.readthedocs.io) Linux virtuális gép testreszabása, először elinduló széles körben használt módszer. Felhő inicializálás használhatja csomagok és a fájlok írási, vagy a felhasználók és biztonsági beállításainak. Felhő inicializálás során a rendszerindítási folyamat fut, mert nincsenek további lépéseket vagy a konfiguráció alkalmazásához szükséges ügynökök.
 
 Felhő inicializálás terjesztéseket is használható. Például, hogy ne használjon **apt-get-telepítés** vagy **yum telepítése** csomag telepítéséhez. Helyette megadhatja a telepítendő csomagok listája. Felhő inicializálás automatikusan használja a natív csomag felügyeleti eszköz a distro választja.
@@ -51,6 +51,8 @@ A Microsoft a partnerekkel együttműködve az beszerzése felhő inicializálá
 | UbuntuLTS |Canonical |UbuntuServer |16.04-ES LTS VERZIÓ |legújabb |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |legújabb |
 | CoreOS |CoreOS |CoreOS |Stable |legújabb |
+| | OpenLogic | CentOS | 7-KONFIGURÁCIÓELEM | legújabb |
+| | RedHat | RHEL | 7-NYERS-KONFIGURÁCIÓELEM | legújabb
 
 
 ## <a name="create-cloud-init-config-file"></a>Felhő inicializálás konfigurációs fájl létrehozása
