@@ -1,12 +1,12 @@
-A Cloud Shellben az [az webapp create](/cli/azure/webapp#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](../articles/app-service/containers/app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. 
+A Cloud Shellben az [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](../articles/app-service/containers/app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. 
 
-Az alábbi példában cserélje le `<app_name>` egy globálisan egyedi alkalmazásnévvel rendelkező (érvényes karakterek: `a-z`, `0-9`, és `-`). A futtatókörnyezet értéke `dotnetcore|1.1`. Minden támogatott futtatókörnyezetek megtekintéséhez futtassa [az webalkalmazás lista-futtatókörnyezetek](/cli/azure/webapp#az_webapp_list_runtimes). 
+A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `dotnetcore|1.1` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [az webapp list-runtimes](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) parancsot. 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "dotnetcore|1.1" --deployment-local-git
 ```
 
-Ha a webalkalmazás létrejött, az Azure parancssori felület kimenetét mutatja be az alábbi példához hasonló:
+A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló eredményeket jelenít meg:
 
 ```json
 Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
@@ -27,5 +27,5 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 Létrehozott egy üres webalkalmazás Linux tároló, a git-telepítés engedélyezve van.
 
 > [!NOTE]
-> A Git távoli URL-CÍMÉT is megjelennek a `deploymentLocalGitUrl` tulajdonság formátumban `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Az URL-cím akkor menteni, mert később szüksége.
+> A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Mentse el ezt az URL-t, később még szüksége lesz rá.
 >

@@ -265,6 +265,7 @@
 #### [Rendszergazdai szerepkörök hozzárendelése](active-directory-users-assign-role-azure-portal.md)
 ### [Felügyeleti egységek](active-directory-administrative-units-management.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
+### [A rendszergazdai fiókok vészhelyzeti hozzáférésének kezelése](active-directory-admin-manage-emergency-access-accounts.md)
 
 ## Hozzáférési felülvizsgálatok
 ### [Hozzáférési felülvizsgálatok áttekintése](active-directory-azure-ad-controls-access-reviews-overview.md)

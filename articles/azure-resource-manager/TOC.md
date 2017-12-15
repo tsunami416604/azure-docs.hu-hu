@@ -15,12 +15,11 @@
 #### [Paraméterek](resource-manager-templates-parameters.md)
 #### [Változók](resource-manager-templates-variables.md)
 #### [Erőforrások](resource-manager-templates-resources.md)
-### [Ajánlott eljárások a sablonokhoz](resource-manager-template-best-practices.md)
+#### [Kimenetek](resource-manager-templates-outputs.md)
 ### [Hivatkozás más sablonokra](resource-group-linked-templates.md)
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)
 ### [Több példány létrehozása](resource-group-create-multiple.md)
-### [Erőforrás frissítése](resource-manager-update.md)
-### [Állapot megosztása hivatkozott sablonok között](best-practices-resource-manager-state.md)
+### [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource)
 ### [Minták sablonok tervezéséhez](best-practices-resource-manager-design-templates.md)
 
 

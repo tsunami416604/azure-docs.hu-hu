@@ -21,6 +21,7 @@
 ## [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
 ## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
 ## [Horizontális felskálázás konfigurálása](analysis-services-scale-out.md)
+## [Kiszolgálónév aliasának konfigurálása](analysis-services-server-alias.md)
 ## [Kapcsolódás Excellel](analysis-services-connect-excel.md)
 ## [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
 ## [.odc fájl létrehozása](analysis-services-odc.md)
