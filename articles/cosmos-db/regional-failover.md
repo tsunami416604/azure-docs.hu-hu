@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/17/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b530cd6f12c08124d9483c6c4898ee4d69b8e5a2
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 3a8b32440ce3ec6cd2da7aaccf218a94e0ee3e77
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Az üzletmenet folytonossága érdekében az Azure Cosmos Adatbázisba automatikus regionális feladatátvétel
 Azure Cosmos DB egyszerűbbé teszi a globális adatok terjesztési felajánlásával teljes körűen felügyelt, [több területi adatbázis fiókok](distribute-data-globally.md) biztosító egyértelmű mellékhatásokkal konzisztencia, a rendelkezésre állás és a teljesítmény, az összes megfelelő garanciák között. Cosmos DB fiókok kínálnak a magas rendelkezésre állású, egyetlen számjegy ms késések, [jól meghatározott konzisztenciaszintek](consistency-levels.md), többhelyű API-khoz transzparens regionális feladatátvétel és rugalmasan méretezhető átviteli sebesség és tárterület világszerte képességét. 
@@ -141,6 +141,6 @@ Ez a cikk azt felül Cosmos DB hogyan manuális és automatikus feladatátvétel
 ## <a id="NextSteps"></a>Következő lépések
 * További tudnivalók arról, hogyan támogatja a Cosmos DB [globális terjesztési](distribute-data-globally.md)
 * További tudnivalók [az Azure Cosmos DB globális egységesítése](consistency-levels.md)
-* Azure Cosmos DB használatával több régióba fejlesztést [SQL API](tutorial-global-distribution-documentdb.md)
+* Azure Cosmos DB használatával több régióba fejlesztést [SQL API](tutorial-global-distribution-sql-api.md)
 * Ismerje meg, hogyan hozhat létre [több területi író architektúrák](multi-region-writers.md) rendelkező Azure Cosmos DB
 

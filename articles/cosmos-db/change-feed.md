@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: arramac
-ms.openlocfilehash: e825968981df1aaee4ceb037995209ba48a8f4ec
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d1968e9fea0fb08edfdbf9e09acca9c4af00b048
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>A módosítás adatcsatorna-támogatás az Azure Cosmos Adatbázisba használata
 
@@ -90,11 +90,11 @@ Eseményindítók hozhatók létre az Azure Functions portálon az Azure Cosmos 
 <a id="rest-apis"></a>
 ## <a name="using-the-sdk"></a>Az SDK használatával
 
-A [SQL SDK](documentdb-sdk-dotnet.md) Azure Cosmos DB nyújtott olvassa el és kezelheti a hírcsatorna módosítása a teljesítményt. De a kiváló power származik sok feladatkörök, túl. Ha azt szeretné, ellenőrzési pontjainak felügyelete, a dokumentum sorszámok kezelésére és partíciókulcsok részletes szabályozhatják, majd a SDK használatával lehet a megfelelő módszert.
+A [SQL SDK](sql-api-sdk-dotnet.md) Azure Cosmos DB nyújtott olvassa el és kezelheti a hírcsatorna módosítása a teljesítményt. De a kiváló power származik sok feladatkörök, túl. Ha azt szeretné, ellenőrzési pontjainak felügyelete, a dokumentum sorszámok kezelésére és partíciókulcsok részletes szabályozhatják, majd a SDK használatával lehet a megfelelő módszert.
 
 Ez a szakasz végigvezeti az SQL-SDK használatával történő együttműködésre a hírcsatorna módosítása.
 
-1. Indítsa el a következő erőforrások olvasásakor az appconfig. A végpont és a hitelesítési kulcs lekérése a találhatók [frissítse a kapcsolati karakterlánc](create-documentdb-dotnet.md#update-your-connection-string).
+1. Indítsa el a következő erőforrások olvasásakor az appconfig. A végpont és a hitelesítési kulcs lekérése a találhatók [frissítse a kapcsolati karakterlánc](create-sql-api-dotnet.md#update-your-connection-string).
 
     ``` csharp
     DocumentClient client;
@@ -166,7 +166,7 @@ Igen a checkpoint tömb csak megakadályozza a minden partíció esetében Napl�
 <a id="change-feed-processor"></a>
 ## <a name="using-the-change-feed-processor-library"></a>A módosítás hírcsatorna processzor könyvtár használata 
 
-A [Azure Cosmos DB módosítás hírcsatorna processzor könyvtár](https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet-changefeed) esemény feldolgozása könnyen szét több felhasználóból nyújt segítséget. Ezt a szalagtárat olvasási módosítások partíciók és párhuzamosan működik több szál egyszerűbbé teszi.
+A [Azure Cosmos DB módosítás hírcsatorna processzor könyvtár](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) esemény feldolgozása könnyen szét több felhasználóból nyújt segítséget. Ezt a szalagtárat olvasási módosítások partíciók és párhuzamosan működik több szál egyszerűbbé teszi.
 
 Változás hírcsatorna processzor könyvtár fő előnye, hogy ne kelljen minden partíció kezelése és folytatási kód, és ne kelljen manuálisan kérdezze le az egyes gyűjtemények.
 
@@ -276,11 +276,11 @@ Az Azure Functions Azure Cosmos DB használatával kapcsolatos további informá
 
 További tájékoztatást a módosítás hírcsatorna processzor kódtár használatával használja a következőket:
 
-* [Információ lap](documentdb-sdk-dotnet-changefeed.md) 
+* [Információ lap](sql-api-sdk-dotnet-changefeed.md) 
 * [Nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
 * [1-6 lépéseket bemutató mintakód](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
 * [További minták a Githubon](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
 
 További információ a módosítás hírcsatorna keresztül az SDK használatával használja a következőket:
 
-* [SDK adatai lap](documentdb-sdk-dotnet.md)
+* [SDK adatai lap](sql-api-sdk-dotnet.md)

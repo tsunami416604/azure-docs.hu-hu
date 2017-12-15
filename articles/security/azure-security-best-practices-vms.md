@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1af02c90c6a97bed612903de438b4d8c26be19b6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db8b0cc58738308116da84f2a45d6507c87f3cde
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Ajánlott eljárások az Azure virtuális gép biztonsági
 
@@ -51,7 +51,7 @@ A virtuális gép védelmének első lépése annak érdekében, hogy csak a hit
 
 Természetesen az erőforráscsoporthoz tartozó virtuális gépek a házirendek jelentik. Bár javasolt ezt a módszert használja a virtuális gépek kezelése, is is elérését Ön szabályozza az egyes Virtuálisgép-házirendek használatával [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-configure.md).
 
-Ha engedélyezi az erőforrás-kezelő házirendek és a virtuális gép hozzáférés-vezérlésének RBAC, tökéletesítése általános virtuális gép biztonsági. Azt javasoljuk, hogy Ön konszolidálhatják virtuális gépek azonos életciklusával ugyanabban az erőforráscsoportban. Erőforráscsoport-sablonok használatával telepítheti, figyeléséhez és költségek az erőforrások számlázási összesítő. Ahhoz, hogy a felhasználók számára a hozzáférést, és állítsa be a virtuális gépek, használja a [legalacsonyabb jogosultsági megközelítés](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models). És jogosultságok hozzárendelése felhasználókhoz, ha tervezi, hogy a következő beépített Azure szerepkörök:
+Ha engedélyezi az erőforrás-kezelő házirendek és a virtuális gép hozzáférés-vezérlésének RBAC, tökéletesítése általános virtuális gép biztonsági. Azt javasoljuk, hogy Ön konszolidálhatják virtuális gépek azonos életciklusával ugyanabban az erőforráscsoportban. Erőforráscsoport-sablonok használatával telepítheti, figyeléséhez és költségek az erőforrások számlázási összesítő. Ahhoz, hogy a felhasználók számára a hozzáférést, és állítsa be a virtuális gépek, használja a [legalacsonyabb jogosultsági megközelítés](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models). És jogosultságok hozzárendelése felhasználókhoz, ha tervezi, hogy a következő beépített Azure szerepkörök:
 
 - [Virtuális gép közreműködő](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor): kezelheti a virtuális gépek, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez csatlakoznak.
 - [Klasszikus virtuális gép közreműködő](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor): kezelheti a klasszikus üzembe helyezési modellel, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez a virtuális gépek csatlakoznak használatával létrehozott virtuális gépeket.
@@ -80,7 +80,7 @@ A szervezeteknek, amelyek nem kényszerítenek hálózati-hozzáférés korláto
 
 Adatok titkosítása és megakadályozhatja az adatok a szervezeti biztonsági és megfelelőségi követelmények teljesítéséhez is alkalmazhatja. A szervezet érdemes megfontolni titkosítással segítségével mérsékelhetik a kockázatokat jogosulatlan kapcsolatos adatok elérése. Javasoljuk továbbá, a meghajtók titkosítja azokat a bizalmas adatok írása előtt.
 
-Győződjön meg arról, a virtuális gép az adatkötetek a védelmükhöz, az Azure storage-fiók aktívan titkosításához. A titkosítási kulcsok és titkos kulcs védelme használatával [Azure Key Vault](https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/).
+Győződjön meg arról, a virtuális gép az adatkötetek a védelmükhöz, az Azure storage-fiók aktívan titkosításához. A titkosítási kulcsok és titkos kulcs védelme használatával [Azure Key Vault](https://azure.microsoft.com/documentation/articles/key-vault-whatis/).
 
 A szervezetek, amelyeket nem az adattitkosítás több adatintegritás problémák vannak kitéve. Például az illetéktelen vagy rosszindulatú felhasználók előfordulhat, hogy sérült biztonságú fiók adatok ellopására vagy ClearFormat a kódolt adatok jogosulatlan elérésére. Mellett véve ilyen kockázatokról, iparági szabályozások ahhoz, hogy a vállalatok igazolja, hogy gondossággal gyakorló, és megfelelő biztonsági vezérlők segítségével javítható az adatok biztonsági.
 
@@ -122,7 +122,7 @@ A szervezeteknek, amelyek nem kényszerítenek az erős biztonságot, a virtuál
 
 Erőforrás visszaélések problémát okozhat, ha a virtuális gép folyamat több erőforrást, mint azok kell. Teljesítménnyel kapcsolatos problémák, a virtuális gép sérti a rendszerbiztonsági tagot rendelkezésre állási szolgáltatás megszűnésének vezethet. Ezért rendkívül fontos VM hozzáférés nem csak reaktív figyelésére, amíg egy probléma jelentkezett, de is proaktív alapteljesítményének a normál működés során mért ellen.
 
-Elemzésével [Azure diagnosztikai naplófájlok](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/), figyelheti a Virtuálisgép-erőforrások, és, mely veszélyeztetheti a teljesítmény és rendelkezésre állás lehetséges problémák azonosítása. Az Azure Diagnostics bővítmény figyelése és diagnosztikai képességeket biztosít a Windows-alapú virtuális gépeken. Ezek a képességek a kiterjesztéssel együtt részeként engedélyezheti a [Azure Resource Manager sablon](../virtual-machines/windows/extensions-diagnostics-template.md).
+Elemzésével [Azure diagnosztikai naplófájlok](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/), figyelheti a Virtuálisgép-erőforrások, és, mely veszélyeztetheti a teljesítmény és rendelkezésre állás lehetséges problémák azonosítása. Az Azure Diagnostics bővítmény figyelése és diagnosztikai képességeket biztosít a Windows-alapú virtuális gépeken. Ezek a képességek a kiterjesztéssel együtt részeként engedélyezheti a [Azure Resource Manager sablon](../virtual-machines/windows/extensions-diagnostics-template.md).
 
 Is [Azure figyelő](../monitoring-and-diagnostics/monitoring-overview-metrics.md) címinfrastruktúra megjelenítési lehetőségeinek az erőforrás állapotát.
 

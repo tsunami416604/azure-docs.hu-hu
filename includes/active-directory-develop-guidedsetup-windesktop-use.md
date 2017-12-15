@@ -1,93 +1,92 @@
 
-## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>A Microsoft hitelesítési könyvtár (MSAL) segítségével szolgáltatáshitelesítést egy token a Microsoft Graph API-hoz.
+## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>A Microsoft Graph API a szolgáltatáshitelesítést egy token MSAL segítségével
 
-Ez a szakasz bemutatja, hogyan MSAL szolgáltatáshitelesítést egy token a Microsoft Graph API segítségével.
+Ebben a szakaszban a MSAL jogkivonat lekérése a Microsoft Graph API használhatja.
 
-1.  A `MainWindow.xaml.cs`, MSAL könyvtár mutató hivatkozás hozzáadása az osztályhoz:
+1.  Az a *MainWindow.xaml.cs* fájlt, a hivatkozás hozzáadása a osztály MSAL:
 
-```csharp
-using Microsoft.Identity.Client;
-```
+    ```csharp
+    using Microsoft.Identity.Client;
+    ```
 <!-- Workaround for Docs conversion bug -->
-<ol start="2">
-<li>
-Cserélje le <code>MainWindow</code> osztály kódot:
-</li>
-</ol>
 
-```csharp
-public partial class MainWindow : Window
-{
-    //Set the API Endpoint to Graph 'me' endpoint
-    string _graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
+2. Cserélje le a `MainWindow` osztályban az alábbi kódot:
 
-    //Set the scope for API call to user.read
-    string[] _scopes = new string[] { "user.read" };
-
-
-    public MainWindow()
+    ```csharp
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
-    }
+        //Set the API Endpoint to Graph 'me' endpoint
+        string _graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
 
-    /// <summary>
-    /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
-    /// </summary>
-    private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
-    {
-        AuthenticationResult authResult = null;
+        //Set the scope for API call to user.read
+        string[] _scopes = new string[] { "user.read" };
 
-        try
+        public MainWindow()
         {
-            authResult = await App.PublicClientApp.AcquireTokenSilentAsync(_scopes, App.PublicClientApp.Users.FirstOrDefault());
+            InitializeComponent();
         }
-        catch (MsalUiRequiredException ex)
+
+        /// <summary>
+        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+        /// </summary>
+        private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
-            // A MsalUiRequiredException happened on AcquireTokenSilentAsync. This indicates you need to call AcquireTokenAsync to acquire a token
-            System.Diagnostics.Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
+            AuthenticationResult authResult = null;
 
             try
             {
-                authResult = await App.PublicClientApp.AcquireTokenAsync(_scopes);
+                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(_scopes, App.PublicClientApp.Users.FirstOrDefault());
             }
-            catch (MsalException msalex)
+            catch (MsalUiRequiredException ex)
             {
-                ResultText.Text = $"Error Acquiring Token:{System.Environment.NewLine}{msalex}";
-            }
-        }
-        catch (Exception ex)
-        {
-            ResultText.Text = $"Error Acquiring Token Silently:{System.Environment.NewLine}{ex}";
-            return;
-        }
+                // A MsalUiRequiredException happened on AcquireTokenSilentAsync. This indicates you need to call AcquireTokenAsync to acquire a token
+                System.Diagnostics.Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
 
-        if (authResult != null)
-        {
-            ResultText.Text = await GetHttpContentWithToken(_graphAPIEndpoint, authResult.AccessToken);
-            DisplayBasicTokenInfo(authResult);
-            this.SignOutButton.Visibility = Visibility.Visible;
+                try
+                {
+                    authResult = await App.PublicClientApp.AcquireTokenAsync(_scopes);
+                }
+                catch (MsalException msalex)
+                {
+                    ResultText.Text = $"Error Acquiring Token:{System.Environment.NewLine}{msalex}";
+                }
+            }
+            catch (Exception ex)
+            {
+                ResultText.Text = $"Error Acquiring Token Silently:{System.Environment.NewLine}{ex}";
+                return;
+            }
+
+            if (authResult != null)
+            {
+                ResultText.Text = await GetHttpContentWithToken(_graphAPIEndpoint, authResult.AccessToken);
+                DisplayBasicTokenInfo(authResult);
+                this.SignOutButton.Visibility = Visibility.Visible;
+            }
         }
     }
-}
-```
+    ```
 
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
-#### <a name="getting-a-user-token-interactive"></a>Egy felhasználói jogkivonat interaktív beolvasása
-Hívja a `AcquireTokenAsync` módszer eredményezi egy ablak, jelentkezzen be a felhasználótól. Az alkalmazásoknak általában egy felhasználó a védett erőforrások eléréséhez szükséges először interaktív bejelentkezéshez, vagy ha egy figyelő művelet szerezzen be egy tokent sikertelen (pl. a jelszó lejárt).
+#### <a name="get-a-user-token-interactively"></a>A felhasználó interaktív token beszerzése
+Hívja a `AcquireTokenAsync` módszer eredményezi egy ablak, amely felszólítja a felhasználók jelentkezhetnek be. Alkalmazások általában a felhasználóknak az első alkalommal védett erőforrás eléréséhez szükséges interaktív bejelentkezéshez. Előfordulhat, hogy is szükségük jelentkezzen be, amikor egy csendes jogkivonat megszerzése sikertelen (például, ha a jelszó lejárt).
 
-#### <a name="getting-a-user-token-silently"></a>A felhasználói token első beavatkozás nélkül
-`AcquireTokenSilentAsync`kezeli a token kérése és -megújítás felhasználói beavatkozás nélkül. Után `AcquireTokenAsync` végrehajtása az első alkalommal `AcquireTokenSilentAsync` a szokásos módszer segítségével kéri le a jogkivonatok későbbi hívások - védett erőforrások eléréséhez használt, mivel kérelmezése vagy megújítása jogkivonatok hívásainak beavatkozás nélkül történik.
-Végül `AcquireTokenSilentAsync` sikertelen lesz, – például a felhasználó rendelkezik-e kijelentkezteti, vagy egy másik eszközön a jelszó megváltozott. Amikor MSAL azt észleli, hogy a probléma megoldásához érdemes egy interaktív műveletet igénylő, akkor következik be egy `MsalUiRequiredException`. Az alkalmazás kezeli ezt a kivételt, két módon:
+#### <a name="get-a-user-token-silently"></a>A felhasználói beavatkozás nélkül token beszerzése
+A `AcquireTokenSilentAsync` metódus kezeli a token kérése és megújításokat felhasználói beavatkozás nélkül. Miután `AcquireTokenAsync` végrehajtása az első alkalommal `AcquireTokenSilentAsync` lekérdezni a jogkivonatokat, amelyek további hívások, a védett erőforrások eléréséhez, vagy megújítása jogkivonatok hívások csendes válnak, mert a szokásos módszer.
 
-1.  Hívás elleni `AcquireTokenAsync` azonnal, ennek eredményeképpen a felhasználótól jelentkezik be. Ebben a mintában általában az online alkalmazások használják, ha nincs kapcsolat nélküli tartalom az alkalmazásban a felhasználó számára elérhető. Az interaktív telepítő által létrehozott mintánkban Ez a minta: tekintheti meg a minta végrehajtása az első művelet időben: felhasználó nem használta az alkalmazást, mert `PublicClientApp.Users.FirstOrDefault()` fogja tartalmazni null értékű, és egy `MsalUiRequiredException` kivételt fog jelezni. A kód a minta majd kezeli a kivételt meghívásával `AcquireTokenAsync` jelentkezik be a felhasználó megkérdezése eredményez.
+Végül a `AcquireTokenSilentAsync` metódus sikertelen lesz. A hiba oka lehet, hogy a felhasználó rendelkezik-e vagy kijelentkezteti, vagy módosítani a jelszavát egy másik eszközön. Amikor MSAL azt észleli, hogy a probléma megoldásához érdemes egy interaktív műveletet igénylő, akkor következik be egy `MsalUiRequiredException` kivétel. Az alkalmazás kezeli ezt a kivételt, két módon:
 
-2.  Alkalmazások is végezhet egy visual arra utal, hogy a felhasználót, hogy egy interaktív bejelentkezés szükség, hogy a felhasználó kiválaszthatja a megfelelő időben való bejelentkezéshez, vagy az alkalmazás újra `AcquireTokenSilentAsync` egy későbbi időpontban. Ez általában akkor használatos, amikor a felhasználó éppen megszakad nélkül tudja használni az alkalmazás egyéb funkciók – például nincs offline tartalma elérhető az alkalmazásban. Ebben az esetben a felhasználó eldöntheti, ha szeretne jelentkezzen be a védett erőforrások eléréséhez, vagy frissítse a elavult adatait, vagy eldöntheti, hogy az alkalmazást, majd ismételje meg `AcquireTokenSilentAsync` amikor hálózati átmenetileg nem érhető el állapota után állítják vissza.
+* Az elleni hívás kezdeményezése `AcquireTokenAsync` azonnal. A hívás eredménye jelentkezzen be a felhasználótól. Ebben a mintában általában az online alkalmazások használják, amennyiben a felhasználó nem érhető el kapcsolat nélküli tartalmat. A minta az interaktív telepítő által létrehozott követi, ebben a mintában a művelet az első alkalommal a minta végrehajtása meg. 
+    * Mivel a felhasználó nem használta az alkalmazás `PublicClientApp.Users.FirstOrDefault()` null értéket tartalmaz, és egy `MsalUiRequiredException` kivétel történt. 
+    * A kód a minta majd kezeli a kivételt meghívásával `AcquireTokenAsync`, ennek eredményeképpen a felhasználótól a bejelentkezéshez.
+
+* Azt is inkább jelenthet vizuális jelzést felhasználók számára, amelyek egy interaktív bejelentkezés szükség, hogy a megfelelő időben való bejelentkezéshez választhatja. Vagy az alkalmazás újra `AcquireTokenSilentAsync` később. Ezt a mintát gyakran használt, amikor a felhasználók használhatják más alkalmazás működésének szüneteltetése--nélkül például, ha helyben tárolt tartalom érhető el az alkalmazást. Ebben az esetben felhasználók dönthet arról szeretne bejelentkezni a védett erőforrások eléréséhez, vagy az elavult adatok frissítése. Másik lehetőségként az alkalmazás dönt, hogy újra `AcquireTokenSilentAsync` amikor állítják vissza. a hálózati elvégzése után átmenetileg nem érhető el.
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>A Microsoft Graph API használatával csak megszerzett jogkivonattal hívható
+## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>A Microsoft Graph API hívása csak megszerzett jogkivonattal használatával
 
-1. Adja hozzá az alábbi új metódust a `MainWindow.xaml.cs`. A metódus végrehajtásához használatos a `GET` Graph API-val egy engedélyezés fejlécet kérelmet:
+Adja hozzá a következő új metódust a `MainWindow.xaml.cs`. A metódus végrehajtásához használatos a `GET` Graph API kérelmet az engedélyezés fejléc használatával:
 
 ```csharp
 /// <summary>
@@ -116,14 +115,14 @@ public async Task<string> GetHttpContentWithToken(string url, string token)
 }
 ```
 <!--start-collapse-->
-### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>További információ a ellen védett API REST hívás
+### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>További információt a REST-hívást ellen védett API
 
-Ebben a minta az alkalmazásban a `GetHttpContentWithToken` módszer használható HTTP `GET` kérelem ellen védett erőforrás jogkivonat szükséges, és térjen vissza a tartalom a hívó. Ez a módszer hozzáadja a megszerzett lexikális elem szerepel a *HTTP Authorization fejlécet*. Ez a minta az erőforrás a Microsoft Graph API *me* végpont – amely a felhasználói profil adatait jeleníti meg.
+A mintaalkalmazás, használhatja a `GetHttpContentWithToken` módszer HTTP `GET` kérelem ellen védett erőforrás jogkivonat szükséges, és térjen vissza a tartalom a hívó. Ez a módszer a megszerzett token hozzáadja a HTTP-hitelesítési fejlécéhez. Ez a minta az erőforrás a Microsoft Graph API *me* végpont, amely a felhasználói profil adatait jeleníti meg.
 <!--end-collapse-->
 
-## <a name="add-a-method-to-sign-out-the-user"></a>A felhasználó kijelentkezik egy olyan metódus hozzáadása
+## <a name="add-a-method-to-sign-out-a-user"></a>A felhasználó kijelentkezik egy olyan metódus hozzáadása
 
-1. Adja hozzá a következő metódust a `MainWindow.xaml.cs` a felhasználó kijelentkezik:
+A felhasználó kijelentkezik, adja hozzá az alábbi metódust a `MainWindow.xaml.cs` fájlt:
 
 ```csharp
 /// <summary>
@@ -148,15 +147,16 @@ private void SignOutButton_Click(object sender, RoutedEventArgs e)
 }
 ```
 <!--start-collapse-->
-### <a name="more-info-on-sign-out"></a>További információ a kijelentkezési
+### <a name="more-information-about-user-sign-out"></a>További információ a felhasználó kijelentkezési
 
-`SignOutButton_Click`eltávolítja a felhasználót a felhasználói gyorsítótárat MSAL – ez gyakorlatilag megmondja MSAL az aktuális felhasználó törlésére, így a későbbi kérelmek egy jogkivonat csak akkor sikeres, ha kell interaktív teszi.
-Bár ez a példa az alkalmazás támogatja az egy-egy felhasználóhoz, MSAL szituációkat Ha egyszerre több fiók lehet bejelentkezve – Ha a felhasználó rendelkezik-e a több fiók például e-mail alkalmazást.
+A `SignOutButton_Click` metódus eltávolítja azokat a felhasználókat, a felhasználó az aktuális felhasználó törlésére, így a későbbi kérelmek egy jogkivonat akkor sikeres, csak akkor, ha történik, hogy interaktív MSAL gyakorlatilag megmondja MSAL gyorsítótárból.
+
+Bár ez a példa az alkalmazás egyetlen felhasználót támogat, MSAL támogatja a forgatókönyvekben, ahol több fiók is bejelentkezhet a egyszerre. Példa: Ha a felhasználó rendelkezik-e a több fiók e-mail alkalmazást.
 <!--end-collapse-->
 
 ## <a name="display-basic-token-information"></a>Alapvető lexikális elem adatainak megjelenítése
 
-1. Adja hozzá a következő metódust az a `MainWindow.xaml.cs` a token kapcsolatos alapvető információk megjelenítése:
+A token alapvető információ megjelenítéséhez adja hozzá az alábbi metódust a *MainWindow.xaml.cs* fájlt:
 
 ```csharp
 /// <summary>
@@ -177,6 +177,6 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
 
-Jogkivonatok keresztül szerzett *OpenID Connect* egy szűk köre a felhasználók számára vonatkozó információkat is tartalmazhat. `DisplayBasicTokenInfo`a token alapvető információkat jeleníti meg: például a felhasználó megjelenített neve és azonosítója, valamint a jogkivonat lejárati dátum és a karakterlánc, amely a hozzáférési token magát. Ez az információ, ezért nehezen olvasható jelenik meg. Is elérte a *Microsoft Graph API hívása* többször gombra, és tekintse meg, hogy ugyanezt a tokent további kérelmeknél lett-e használni. Megtekintheti a lejárati dátum, amikor MSAL úgy dönt, hogy kiterjesztendő az idő a token megújításához.
+Mellett a hozzáférési jogkivonat, amellyel a Microsoft Graph API hívása után a felhasználó bejelentkezik MSAL is beolvassa az ID-tokent. Ez a token egy szűk köre a felhasználók számára vonatkozó információkat tartalmaz. A `DisplayBasicTokenInfo` metódus a jogkivonat az alapvető információkat jeleníti meg. Például azt jeleníti meg a felhasználó megjelenített neve és azonosítója, valamint a jogkivonat lejárati dátum és a karakterlánc, amely a hozzáférési jogkivonat magát. Kiválaszthatja a *Microsoft Graph API hívása* többször gombra, és tekintse meg, hogy ugyanezt a tokent további kérelmeknél lett-e használni. Megtekintheti a lejárati dátum, amikor MSAL úgy dönt, hogy kiterjesztendő az idő a token megújításához.
 <!--end-collapse-->
 

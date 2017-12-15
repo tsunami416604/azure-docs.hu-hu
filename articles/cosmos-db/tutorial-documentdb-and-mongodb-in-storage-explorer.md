@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: Jejiang
-ms.openlocfilehash: 8afb85eac8dec502406ca419623407b1dc228931
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 6ed5ddab021006da633b30cafc4e1988a064ab92
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Az Azure Tártallózó (előzetes verzió) Azure Cosmos DB kezelése
 
@@ -32,7 +32,7 @@ Ebből a cikkből megismerheti Azure Cosmos DB kezelése a Tártallózó haszná
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy Azure Cosmos DB fiókot az SQL API-t vagy a MongoDB API. Ha nincs fiókja, létrehozhat egy Azure-portálon a leírtak szerint [Azure Cosmos DB: .NET és az Azure-portálon az SQL API webalkalmazás összeállítása](create-documentdb-dotnet.md).
+Egy Azure Cosmos DB fiókot az SQL API-t vagy a MongoDB API. Ha nincs fiókja, létrehozhat egy Azure-portálon a leírtak szerint [Azure Cosmos DB: .NET és az Azure-portálon az SQL API webalkalmazás összeállítása](create-sql-api-dotnet.md).
 
 ## <a name="installation"></a>Telepítés
 
@@ -137,7 +137,7 @@ Hozzon létre egy új dokumentumot, nyissa meg a **dokumentumok** kattintson a b
 #### <a name="delete-a-document"></a>Dokumentum törlése
 Kattintson a **törlése** gombbal pedig törölheti a kijelölt dokumentumot.
 #### <a name="query-for-documents"></a>A dokumentumok lekérdezés
-A dokumentum-szűrő szerkesztése megadásával egy [SQL-lekérdezés](documentdb-sql-query.md) majd **alkalmaz**.
+A dokumentum-szűrő szerkesztése megadásával egy [SQL-lekérdezés](sql-api-sql-query.md) majd **alkalmaz**.
 
 ![Szűrés](./media/tutorial-documentdb-and-mongodb-in-storage-explorer/filter.png)
 

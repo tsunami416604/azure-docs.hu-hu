@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.openlocfilehash: b876881af6ead69906c14cf7aeeab70130ba66ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5979e5e4baa385cc0aaff5f1277f2a0f7492c426
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Az eszközök internetes hálózatát biztonsági másolatot az alapoktól
 A az eszközök internetes hálózatát (IoT) működő vállalkozásoknak világszerte egyedi biztonsági, adatvédelmi és megfelelőségi kihívást jelent. Hagyományos számítógépes technológia, ahol a problémák szoftver, és hogyan megvalósított köré szerveződik, eltérően IoT vonatkozik, mi történik, ha a számítógépes és a fizikai világot átszervezését. Az IoT-megoldások védelmét biztosítja az eszközöket, ezek az eszközök és a felhőben és a feldolgozás és a tárolás során a felhőben biztonságos adatvédelem közötti biztonságos kapcsolat biztonságos kiépítése igényel. Eszközök fejlesztésének ilyen funkció, azonban a következők erőforrás-korlátozott eszközök, központi telepítések földrajzi eloszlása, és számos olyan megoldást belüli eszközök.
@@ -84,7 +84,7 @@ A titkosított kommunikáció feldolgozási adatok a felhőben az Azure IoT Suit
 
 Ha adatok a felhőben, feldolgozni, és bármely felhasználó által definiált munkafolyamat tárolja. Minden az adatok egy részét a hozzáférést az Azure Active Directoryval, attól függően, hogy a társzolgáltatás használt vezérlik.
 
-Az IoT-infrastruktúra által használt összes kulcsok segítségével abban az esetben kell kulcsokat újra kiosztott váltása a biztonsági tároló, a felhőben vannak tárolva. Adatok tárolhatók [Azure Cosmos DB](../documentdb/documentdb-introduction.md) vagy [SQL-adatbázisok](../sql-database/sql-database-faq.md), engedélyezi a szükséges biztonsági szintjét. Emellett Azure biztosítja az figyelésére és az adatokat, hogy riasztást küldjön, bármely behatolás az elérésére, vagy a jogosulatlan hozzáférés naplózása.
+Az IoT-infrastruktúra által használt összes kulcsok segítségével abban az esetben kell kulcsokat újra kiosztott váltása a biztonsági tároló, a felhőben vannak tárolva. Adatok tárolhatók [Azure Cosmos DB](../cosmos-db/introduction.md) vagy [SQL-adatbázisok](../sql-database/sql-database-faq.md), engedélyezi a szükséges biztonsági szintjét. Emellett Azure biztosítja az figyelésére és az adatokat, hogy riasztást küldjön, bármely behatolás az elérésére, vagy a jogosulatlan hozzáférés naplózása.
 
 ## <a name="conclusion"></a>Összegzés
 Az eszközök internetes hálózatát kezdődik-e a dolgok – a legfontosabb dolgokról szolgáltatnak a vállalkozások számára. Az IoT biztosíthat elképesztő érték üzleti költségek csökkentése, árbevétel növelését, és üzleti átalakítása. Sikerült az átalakítás nagymértékben függ a megfelelő IoT szoftver és szolgáltatás szolgáltató kiválasztásához. Ez azt jelenti, hogy olyan szolgáltatót, amely nem csak az átalakítás által az üzleti igények ismertetése és követelmények catalyzes, de emellett a szolgáltatások és szoftverek biztonsági, adatvédelmi, átláthatóság és megfelelőségi fő tervezési megfontolások a következővel keresése. A Microsoft szerzett, kiterjedt tapasztalatunkat fejlesztésük és biztonságos szoftverek és szolgáltatások telepítése és egy vezető továbbra is az új élettartamát az eszközök internetes hálózatát. 

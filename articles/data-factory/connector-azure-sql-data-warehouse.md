@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 12/14/2017
 ms.author: jingwang
-ms.openlocfilehash: ddddf280613554e81884dbcbd0c0011e505500bc
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 42b241affa470d42dfa06eba102a2bce5faccf4a
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -296,7 +296,6 @@ A feltételeknek nem felel meg, ha az Azure Data Factory ellenőrzi a beállít�
 
 3. Nincs nincs `skipHeaderLineCount` beállítás alatt **BlobSource** vagy **AzureDataLakeStore** a másolási tevékenységhez, a folyamat.
 4. Nincs nincs `sliceIdentifierColumnName` beállítás alatt **SqlDWSink** a másolási tevékenységhez, a folyamat. (A PolyBase garantálja, hogy minden adat frissül, vagy nem frissül, az egyszeri futtatás. Eléréséhez **ismételhetőség**, használhat `sqlWriterCleanupScript`).
-5. Nincs nincs `columnMapping` használatban lévő a kapcsolódó, a másolási tevékenység.
 
 ```json
 "activities":[
@@ -423,9 +422,9 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 | Bináris |Byte] |
 | bit |Logikai |
 | Karakter |Karakterlánc, Char] |
-| dátum |DateTime |
-| Dátum és idő |DateTime |
-| datetime2 |DateTime |
+| Dátum |Dátum és idő |
+| Dátum és idő |Dátum és idő |
+| datetime2 |Dátum és idő |
 | datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
@@ -439,7 +438,7 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 | nvarchar |Karakterlánc, Char] |
 | valós |Egyedülálló |
 | ROWVERSION |Byte] |
-| smalldatetime |DateTime |
+| smalldatetime |Dátum és idő |
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |

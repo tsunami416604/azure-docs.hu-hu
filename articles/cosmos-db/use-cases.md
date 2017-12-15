@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 660c0fbe80af125a840ef9ae324a72261c8adc24
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: bcafc999c30d1e72971c8e26e951169ea6b56416
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB gyakori alkalmazási esetei
 Ez a cikk számos gyakori alkalmazási esetei áttekintést nyújt az Azure Cosmos DB rendszerhez.  Az ebben a cikkben szereplő ajánlásokhoz szolgál, kiindulási pontként a Cosmos DB alkalmazást fejleszt.   
@@ -105,7 +105,7 @@ JSON formátuma nem támogatott Cosmos DB egy hatékony formátuma nem csak egys
 ![Az Azure Cosmos DB webes alkalmazás referencia-architektúrában](./media/use-cases/personalization.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Ismerkedés az Azure Cosmos DB, hajtsa végre a [gyors üzembe helyezések](create-documentdb-dotnet.md), amely végigvezetik Önt egy fiókot és az első lépések Cosmos DB létrehozása. 
+Ismerkedés az Azure Cosmos DB, hajtsa végre a [gyors üzembe helyezések](create-sql-api-dotnet.md), amely végigvezetik Önt egy fiókot és az első lépések Cosmos DB létrehozása. 
 
 Vagy, ha azt szeretné, hogy további kapcsolatos Cosmos DB használatával az ügyfelek, a következő felhasználói szövegek érhetők el:
 

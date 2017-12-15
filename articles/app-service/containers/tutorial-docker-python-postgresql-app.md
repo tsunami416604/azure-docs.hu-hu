@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/29/2017
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: 161d9fda75caa7836e012e6e1ff79df576281137
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0bd4f390e4507fccd1ca564c48c0f321412e229d
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Az Azure-ban Docker Python és PostgreSQL webalkalmazás létrehozása
 
@@ -121,7 +121,7 @@ Ebben a lépésben létrehoz egy PostgreSQL-adatbázisban az Azure-ban. Az alkal
 
 ### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Most kívánja használni az Azure CLI 2.0 létrehozása a Python-alkalmazás a tárolók a webalkalmazás üzemeltetéséhez szükséges erőforrásokat.  Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/#az_login) paranccsal, és kövesse a képernyőn látható utasításokat.
+Most kívánja használni az Azure CLI 2.0 létrehozása a Python-alkalmazás a tárolók a webalkalmazás üzemeltetéséhez szükséges erőforrásokat.  Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/?view=azure-cli-latest#az_login) paranccsal, és kövesse a képernyőn látható utasításokat.
 
 ```azurecli
 az login
@@ -129,7 +129,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md) az [az group create](/cli/azure/group#az_group_create) paranccsal.
+Hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md) az [az group create](/cli/azure/group?view=azure-cli-latest#az_group_create) paranccsal.
 
 [!INCLUDE [Resource group intro](../../../includes/resource-group.md)]
 
@@ -139,11 +139,11 @@ A következő példa egy erőforráscsoportot az USA nyugati régiója régióba
 az group create --name myResourceGroup --location "West US"
 ```
 
-Használja a [az App Service lista-helyek](/cli/azure/appservice#az_appservice_list_locations) lista elérhető helyről az Azure parancssori felület parancsot.
+Használja a [az App Service lista-helyek](/cli/azure/appservice?view=azure-cli-latest#az_appservice_list_locations) lista elérhető helyről az Azure parancssori felület parancsot.
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 
-Hozzon létre egy PostgreSQL-kiszolgáló ezzel a [az postgres kiszolgáló létrehozni](/cli/azure/postgres/server#az_postgres_server_create) parancsot.
+Hozzon létre egy PostgreSQL-kiszolgáló ezzel a [az postgres kiszolgáló létrehozni](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) parancsot.
 
 Az alábbi parancs helyettesítse be egy egyedi kiszolgálónevet számára a  *\<postgresql_name >* helyőrző és egy felhasználói nevet a  *\<admin_username >* helyőrző. A kiszolgáló nevét használja a PostgreSQL-végpontot részeként (`https://<postgresql_name>.postgres.database.azure.com`), így a nevének egyedinek kell lennie az Azure-ban minden kiszolgálóra. A felhasználónév megadása a kezdeti adatbázis rendszergazdai felhasználói fiókhoz. Válassza ki a felhasználó jelszavát kéri.
 
@@ -364,7 +364,7 @@ Ebben a lépésben alkalmazást telepít központilag a Docker tároló-alapú P
 
 ### <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
-Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) paranccsal.
+Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) paranccsal.
 
 [!INCLUDE [app-service-plan](../../../includes/app-service-plan-linux.md)]
 
@@ -414,7 +414,7 @@ Az App Service-csomag létrehozásakor az Azure parancssori felület kapcsolatos
 
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A webalkalmazás létrehozása a *myAppServicePlan* az App Service-csomag a [az webalkalmazás létrehozása](/cli/azure/webapp#az_webapp_create) parancsot.
+A webalkalmazás létrehozása a *myAppServicePlan* az App Service-csomag a [az webalkalmazás létrehozása](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) parancsot.
 
 A webes alkalmazás lehetővé teszi az üzemeltető adható meg a kód telepítésére, és biztosítja, hogy a telepített alkalmazás megtekintése egy URL-CÍMÉT. A webalkalmazás létrehozásához használja.
 
@@ -445,7 +445,7 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 Az oktatóanyag korábbi részében definiált környezeti változók a PostgreSQL-adatbázishoz való kapcsolódáshoz.
 
-Az App Service-ben, a környezeti változók beállítása _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancsot.
+Az App Service-ben, a környezeti változók beállítása _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot.
 
 A következő példa az adatbázis-kapcsolat adatai Alkalmazásbeállítások adja meg. Is használja a *PORT* PORT 5000-leképezés változót a Docker-tároló, a 80-as PORT HTTP-forgalom fogadására.
 

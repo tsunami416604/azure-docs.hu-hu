@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: mimig
-ms.openlocfilehash: 1a6e4904252d5eda3ff6aeb0821c81c5845cced0
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 14dce37a953984d3e1ce80b813f386210e85d261
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag segítségével Ismerkedés az Azure Cosmos DB az Azure-port�
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőket kell rendelkeznie:
 
-* Egy meglévő Azure Cosmos DB fiók, adatbázis, és a tároló. Ezek az erőforrások létrehozásának, lásd: [az Azure portál használatával adatbázisfiók létrehozása](create-documentdb-dotnet.md#create-a-database-account), [CLI minták](cli-samples.md), vagy [PowerShell-példák](powershell-samples.md).
+* Egy meglévő Azure Cosmos DB fiók, adatbázis, és a tároló. Ezek az erőforrások létrehozásának, lásd: [az Azure portál használatával adatbázisfiók létrehozása](create-sql-api-dotnet.md#create-a-database-account), [CLI minták](cli-samples.md), vagy [PowerShell-példák](powershell-samples.md).
 
 <a id="#turn-on"></a>
 ## <a name="turn-on-logging-in-the-azure-portal"></a>Kapcsolja be a naplózás az Azure-portálon

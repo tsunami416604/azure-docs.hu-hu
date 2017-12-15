@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b72bdc546c824515867daa062c4a94f7326d7fb
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e69edcae53b9e6614cb02932abd1e2022c558a14
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>Egy Azure Cosmos DB és HDInsight Apache Hive, Pig vagy Hadoop feladat futtatása
 Az oktatóanyag bemutatja, hogyan futtathat [Apache Hive][apache-hive], [Apache Pig][apache-pig], és [Apache Hadoop] [ apache-hadoop] MapReduce-feladatok on Azure HDInsight Cosmos DB Hadoop-összekötővel együtt. Cosmos DB Hadoop összekötő lehetővé teszi, hogy a forrás és a Hive, Pig és MapReduce-feladatok fogadó Cosmos DB. Ez az oktatóanyag fog használni Cosmos DB adatforrás mind az átadó a Hadoop-feladatokat.
@@ -161,7 +161,7 @@ Adja meg: </br> <strong>https://portalcontent.BLOB.Core.Windows.NET/scriptaction
 
     ![Az Azure PowerShell diagramja][azure-powershell-diagram]
 
-## <a name="RunHive"></a>3. lépés: Egy Cosmos-adatbázis és a HDInsight Hive-feladat futtatása
+## <a name="RunHive"></a>3. lépés: Azure Cosmos DB és HDInsight Hive feladat futtatása
 > [!IMPORTANT]
 > < > Által jelzett minden értéket meg kell adni a konfigurációs beállítások használata.
 >
@@ -187,7 +187,7 @@ Adja meg: </br> <strong>https://portalcontent.BLOB.Core.Windows.NET/scriptaction
 
         '*DocumentDB.inputCollections*' = '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*' A1A</br> The collection names are separated without spaces, using only a single comma.
 
-        # Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
+        # Create a Hive table using data from Azure Cosmos DB. Pass Azure Cosmos DB the query to filter transferred data to _rid and _ts.
         $queryStringPart1 = "drop table DocumentDB_timestamps; "  +
                             "create external table DocumentDB_timestamps(id string, ts BIGINT) "  +
                             "stored by 'com.microsoft.azure.documentdb.hive.DocumentDBStorageHandler' "  +
@@ -207,7 +207,7 @@ Adja meg: </br> <strong>https://portalcontent.BLOB.Core.Windows.NET/scriptaction
    >
    >
 
-       # Create a Hive table for the output data to DocumentDB.
+       # Create a Hive table for the output data to Azure Cosmos DB.
        $queryStringPart2 = "drop table DocumentDB_analytics; " +
                              "create external table DocumentDB_analytics(Month INT, Day INT, Hour INT, Minute INT, Total INT) " +
                              "stored by 'com.microsoft.azure.documentdb.hive.DocumentDBStorageHandler' " +
@@ -286,7 +286,7 @@ Adja meg: </br> <strong>https://portalcontent.BLOB.Core.Windows.NET/scriptaction
 
     Dokumentumok lesz elosztott ciklikus multiplexelés több gyűjtemények között. A kötegelt dokumentumok fogja tárolni egy gyűjteményt, majd a második kötegelt dokumentumok fogja tárolni a következő gyűjteményben, és így tovább.
 
-        # Load data from Cosmos DB. Pass DocumentDB query to filter transferred data to _rid and _ts.
+        # Load data from Cosmos DB. Pass the Azure Cosmos DB query to filter transferred data to _rid and _ts.
         $queryStringPart1 = "DocumentDB_timestamps = LOAD '<DocumentDB Endpoint>' USING com.microsoft.azure.documentdb.pig.DocumentDBLoader( " +
                                                         "'<DocumentDB Primary Key>', " +
                                                         "'<DocumentDB Database Name>', " +
@@ -397,7 +397,7 @@ Tudunk nyissa meg a Hadoop összekötő forrása. Ha szeretné használni, akkor
 
 További tudnivalókért tekintse meg a következő cikkeket:
 
-* [A Documentdb Java-alkalmazások fejlesztése][documentdb-java-application]
+* [Az Azure Cosmos DB Java-alkalmazások fejlesztése][sql-api-java-application]
 * [A hdinsight Hadoop Java MapReduce programok fejlesztése][hdinsight-develop-deploy-java-mapreduce]
 * [Hadoop használatának megkezdésében a hdinsight Hive elemzéséhez mobil kézibeszélő használata][hdinsight-get-started]
 * [Use MapReduce with HDInsight][hdinsight-use-mapreduce]
@@ -409,14 +409,14 @@ További tudnivalókért tekintse meg a következő cikkeket:
 [apache-hadoop-doc]: http://hadoop.apache.org/docs/current/
 [apache-hive]: http://hive.apache.org/
 [apache-pig]: http://pig.apache.org/
-[getting-started]: documentdb-get-started.md
+[getting-started]: sql-api-get-started.md
 
 [azure-portal]: https://portal.azure.com/
 [azure-powershell-diagram]: ./media/run-hadoop-with-hdinsight/azurepowershell-diagram-med.png
 
 [hdinsight-samples]: http://portalcontent.blob.core.windows.net/samples/documentdb-hdinsight-samples.zip
 [github]: https://github.com/Azure/azure-documentdb-hadoop
-[documentdb-java-application]: documentdb-java-application.md
+[sql-api-java-application]: sql-api-java-application.md
 [import-data]: import-data.md
 
 [hdinsight-custom-provision]: ../hdinsight/hdinsight-provision-clusters.md

@@ -1,59 +1,59 @@
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ez a szakasz részletesen arról, hogyan hozzon létre egy új projektet bemutatják, hogyan integrálhatja a Windows asztali .NET-alkalmazás (XAML) rendelkező *jelentkezzen be Microsoft* azt lekérdezhesse jogkivonat szükséges, webes API-k.
+Ebben a szakaszban a létrehozhat egy új projektet bemutatják, hogyan integrálhatja a Windows asztali .NET-alkalmazás (XAML) *jelentkezzen be Microsoft* , hogy az alkalmazás webes API-k jogkivonat igénylő lekérdezheti.
 
-Ez az útmutató által létrehozott alkalmazás közzététele egy diagramot és az eredmények képernyőn és kijelentkezési gomb megjelenítése gombra.
+Az alkalmazást, amely létrehozta a jelen útmutató egy grafikon, az eredményeket a képernyőn megjeleníthető területe meghívásához használt, és a kijelentkezési gomb jeleníti meg.
 
-> Ez a minta Visual Studio-projekt letöltése helyette inkább? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip) és ugorjon a [konfigurációs lépés](#create-an-application-express) konfigurálása a kódminta végrehajtása előtt.
+> [!NOTE]
+> Ez a minta Visual Studio-projekt letöltése helyette inkább? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip), és ugorjon a [konfigurációs lépés](#create-an-application-express) konfigurálása a példakód azt végrehajtása előtt.
+>
 
+Az alkalmazás létrehozásához tegye a következőket:
+1. A Visual Studio válassza **fájl** > **új** > **projekt**.
+2. A **sablonok**, jelölje be **Visual C#**.
+3. Válassza ki **WPF-alkalmazás** vagy **WPF-alkalmazás**, attól függően, a Visual Studio verziója használata verzióját.
 
-### <a name="create-your-application"></a>Az alkalmazás létrehozása
-1. A Visual Studio:`File` > `New` > `Project`<br/>
-2. A *sablonok*, jelölje be`Visual C#`
-3. Válassza ki `WPF App` (vagy *WPF-alkalmazás* attól függően, hogy a Visual Studio verziója)
+## <a name="add-msal-to-your-project"></a>MSAL hozzáadása a projekthez
+1. A Visual Studio válassza **eszközök** > **NuGet-Csomagkezelő**> **Csomagkezelő konzol**.
+2. A Package Manager Console ablakban illessze be a következő Azure PowerShell-parancsot:
 
-## <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>A Microsoft hitelesítési könyvtár (MSAL) hozzáadása a projekthez
-1. A Visual Studio:`Tools` > `Nuget Package Manager` > `Package Manager Console`
-2. Másolja és illessze be a következő, a Package Manager Console ablakban:
+    ```powershell
+    Install-Package Microsoft.Identity.Client -Pre
+    ```
 
-```powershell
-Install-Package Microsoft.Identity.Client -Pre
-```
-
-> A fenti csomag telepíti a Microsoft hitelesítési könyvtár (MSAL). MSAL kezeli az beszerzése, gyorsítótárazás, és védi az Azure Active Directory v2 API-k elérésére használt felhasználói toskens frissítésekor.
+    > [!NOTE] 
+    > Ez a parancs telepíti a Microsoft-hitelesítési tár. MSAL kezeli az beszerzése, gyorsítótárazás, és az Azure Active Directory v2 által védett API-k elérésére használt felhasználói jogkivonatokhoz frissítésekor.
+    >
 
 ## <a name="add-the-code-to-initialize-msal"></a>Adja hozzá a kódot MSAL inicializálása
-Ez a lépés az hozzon létre egy osztályt, például jogkivonatokat kezelésének MSAL könyvtárban való együttműködéshez kezeléséhez nyújt segítséget.
+Ebben a lépésben hozzon létre egy osztályt, például jogkivonatokat kezelésének MSAL, interakcióba kezelésére.
 
-1. Nyissa meg a `App.xaml.cs` fájlt, és a hivatkozás MSAL szalagtár osztályra:
+1. Nyissa meg a *App.xaml.cs* fájlt, és adja hozzá a hivatkozás MSAL az osztályra:
 
-```csharp
-using Microsoft.Identity.Client;
-```
+    ```csharp
+    using Microsoft.Identity.Client;
+    ```
 <!-- Workaround for Docs conversion bug -->
-<ol start="2">
-<li>
-Frissítse az alkalmazás osztály a következőhöz:
-</li>
-</ol>
 
-```csharp
-public partial class App : Application
-{
-    //Below is the clientId of your app registration. 
-    //You have to replace the below with the Application Id for your app registration
-    private static string ClientId = "your_client_id_here";
+2. Frissítse az alkalmazás osztály a következőhöz:
 
-    public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
+    ```csharp
+    public partial class App : Application
+    {
+        //Below is the clientId of your app registration. 
+        //You have to replace the below with the Application Id for your app registration
+        private static string ClientId = "your_client_id_here";
 
-}
-```
+        public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
 
-## <a name="create-your-applications-ui"></a>Az alkalmazás felhasználói Felületüket létrehozni
-Az alábbi szakasz bemutatja, hogyan tudja lekérdezni egy alkalmazás például a Microsoft Graph védett háttérkiszolgálóhoz. Egy MainWindow.xaml fájl automatikusan a projekt sablon részeként hozható létre. Ezt a fájlt megnyitni a fájlt, és kövesse az alábbi utasításokat:
+    }
+    ```
 
-Cserélje le az alkalmazás `<Grid>` a következő lesz:
+## <a name="create-the-application-ui"></a>Az alkalmazás felhasználói felület létrehozása
+Ez a szakasz bemutatja, hogyan tudja lekérdezni egy alkalmazást a védett háttér-kiszolgálók, például a Microsoft Graph. 
+
+A *MainWindow.xaml* fájl automatikusan létrejöjjön a projekt sablon részeként. Nyissa meg a fájlt, és lecseréli a az alkalmazás  *\<rács >* csomópont a következő kóddal:
 
 ```xml
 <Grid>
@@ -69,3 +69,4 @@ Cserélje le az alkalmazás `<Grid>` a következő lesz:
     </StackPanel>
 </Grid>
 ```
+

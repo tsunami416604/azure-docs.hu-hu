@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/20/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 29e6187c59f34122e98819b5775af261494995ca
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: dbcf2b3164aa4351301c52ccadecbc211193d19b
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: A tábla API a .NET fejlesztést
 
@@ -65,7 +65,7 @@ Ez az oktatóanyag bemutatja az Azure Cosmos DB tábla API a .NET SDK használat
 ### <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
 Ez az oktatóanyag a fejlesztők számára, aki ismeri az Azure Table storage SDK, és a premium szolgáltatásainak használatához használja Azure Cosmos DB. Alapul [Ismerkedés az Azure Table storage használatának .NET](table-storage-how-to-use-dotnet.md) és bemutatja, hogyan további szolgáltatásokat, például a másodlagos indexek, a létesített átviteli sebesség és a többszörös homing előnyeit. A Microsoft foglalkozik az Azure-portál használatával hozzon létre egy Azure Cosmos DB fiókot és build és egy tábla alkalmazás központi telepítése. A Microsoft .NET példákból létrehozása és egy tábla törlésével és beszúrni, frissítése, törlése és tábla adatok lekérdezése is ismerteti. 
 
-Ha még nincs telepítve a Visual Studio 2017, töltse le és használja a **szabad** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -74,7 +74,7 @@ Ha még nincs telepítve a Visual Studio 2017, töltse le és használja a **sza
 Először hozzon létre egy Azure Cosmos DB fiókot az Azure portálon.  
  
 > [!IMPORTANT]  
-> Szeretne együttműködni a általánosan elérhető tábla API SDK-k új tábla API-fiók létrehozása. Tábla API fiókjainak előzetes nem támogatottak az általánosan elérhető az SDK-k. 
+> Létre kell hoznia egy új Table API-fiókot, amely használható az általánosan elérhető Table API SDK-kkal. Az általánosan elérhető SDK-k nem támogatják az előzetes verzióban létrehozott Table API-fiókokat. 
 >
 
 [!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
@@ -83,13 +83,13 @@ Először hozzon létre egy Azure Cosmos DB fiókot az Azure portálon.
 
 Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és használja a `cd` parancs futtatásával módosíthatja a mintaalkalmazás telepítése mappába. 
+1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` parancs használatával váltson a mappára, ahol telepíteni szeretné a mintaalkalmazást. 
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. Futtassa a következő parancsot a minta tárház klónozásához. Ezzel a paranccsal létrejön egy mintaalkalmazás példányát a számítógépen. 
+2. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén. 
 
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-dotnet-getting-started.git
@@ -99,30 +99,30 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
 
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
 
-Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás a szolgáltatott adatbázissal való kommunikációhoz. 
+Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
 
-1. Az a [Azure-portálon](http://portal.azure.com/), kattintson a **kapcsolati karakterlánc**. 
+1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati karakterlánc** elemre. 
 
-    A képernyő jobb oldalán lévő másolás gombok segítségével másolja az elsődleges KAPCSOLATI KARAKTERLÁNCOT.
+    A képernyő jobb oldalán található másolási gombok használatával másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati karakterlánc) értékét.
 
-    ![Megtekintheti, és másolja a KAPCSOLATI KARAKTERLÁNCOT a kapcsolati karakterlánc panelen](./media/create-table-dotnet/connection-string.png)
+    ![Tekintse meg és másolja a vágólapra a CONNECTION STRING (Kapcsolati karakterlánc) értékét a Kapcsolati karakterlánc ablaktáblán](./media/create-table-dotnet/connection-string.png)
 
 2. Nyissa meg az app.config fájlt a Visual Studióban. 
 
-3. Állítsa vissza a StorageConnectionString sor 8 és a StorageConnectionString sor 7 megjegyzésbe, mivel ez az oktatóanyag nem használ a Storage Emulator. 7. és 8 sor most példához hasonló:
+3. Állítsa vissza a 8. sorban található StorageConnectionString értéket, és tegye megjegyzésbe a 7. sorban szereplő StorageConnectionString értéket, mert ebben az oktatóanyagban nem fogjuk használni a Storage Emulatort. A 7. és a 8. sornak így kell kinéznie:
 
     ```
     <!--key="StorageConnectionString" value="UseDevelopmentStorage=true;" />-->
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
     ```
 
-4. Az elsődleges KAPCSOLATI KARAKTERLÁNCOT a portálról illessze be a StorageConnectionString érték a 8. Illessze be a karakterláncot, az idézőjelek közé foglalt belül.
+4. Illessze be a PRIMARY CONNECTION STRING (Elsődleges kapcsolati karakterlánc) értékét a portálról a 8. sor StorageConnectionString értékébe. Illessze be a karakterláncot az idézőjelek közé.
    
     > [!IMPORTANT]
-    > Ha a végpont által használt documents.azure.com, amely azt jelenti, hogy előzetes fiókkal rendelkezik, és kell létrehoznia egy [új tábla API-fiók](#create-a-database-account) működéséhez az általánosan elérhető tábla API SDK-val. 
+    > Ha a végpont a documents.azure.com címet használja, akkor előzetes fiókkal rendelkezik, és létre kell hoznia egy [új Table API-fiókot](#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal. 
     >
 
-    Sor 8 most hasonlóan kell kinéznie:
+    A 8. sornak ekkor a következőképp kell kinéznie:
 
     ```
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
@@ -140,7 +140,7 @@ Bizonyos funkciókat, amelyek lehetővé teszik egy szükséges kapcsolat házir
 | Tábla kapcsolatbeállításai | Leírás |
 | --- | --- |
 | Csatlakozási mód  | Azure Cosmos-adatbázis két csatlakozási módot támogat. A `Gateway` mód, mindig kérések az Azure Cosmos DB átjárón, amely továbbítja a megfelelő adatok partíciókat. A `Direct` csatlakozási mód, az ügyfél lekéri a táblák leképezése partíciókra, és a kérések közvetlenül az adatok partíciók szemben. Ajánlott `Direct`, az alapértelmezett.  |
-| Kapcsolat protokollja | Az Azure Cosmos DB támogatja két kapcsolat protokoll - `Https` és `Tcp`. `Tcp`az alapértelmezett és ajánlott, mivel az több egyszerűsített. |
+| Csatlakozási protokoll | Az Azure Cosmos DB támogatja két kapcsolat protokoll - `Https` és `Tcp`. `Tcp`az alapértelmezett és ajánlott, mivel az több egyszerűsített. |
 | Elsődleges helyek | Előnyben részesített (többhelyű) helyek az olvasási műveletek vesszővel elválasztott listája. Minden Azure Cosmos DB fiókhoz társítható 1-30 + régiók. Minden ügyfél példány e régiók részhalmazát megadhat kis késleltetésű olvasása csatlakozási kísérleteinek kívánt sorrendjét. A régiók névvel kell ellátni használatával a [megjelenített neveket](https://msdn.microsoft.com/library/azure/gg441293.aspx), például `West US`. Lásd még: [több homing API-k](tutorial-global-distribution-table.md). |
 | Konzisztenciaszint | Akkor is kompromisszumot közötti késleltetés, konzisztencia- és rendelkezésre állás öt jól meghatározott konzisztenciaszintek közötti választással: `Strong`, `Session`, `Bounded-Staleness`, `ConsistentPrefix`, és `Eventual`. Alapértelmezett érték a `Session`. A választott konzisztenciaszint lehetővé teszi több területi beállítások jelentős teljesítménybeli különbség. Lásd: [konzisztenciaszintek](consistency-levels.md) részleteiről. |
 
@@ -301,7 +301,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-Azure Cosmos-adatbázis Azure Table storage azonos lekérdezés funkciókat támogatja a tábla API-hoz. Azure Cosmos-adatbázis is támogatja a rendezést, összesítések, a földrajzi lekérdezést, a hierarchia és a számos különféle beépített funkciók. A további funkciókat nyújtanak a jövőbeli szolgáltatásfrissítés tábla API. Lásd: [Azure Cosmos adatbázis-lekérdezés](documentdb-sql-query.md) ezeket a képességeket áttekintését. 
+Azure Cosmos-adatbázis Azure Table storage azonos lekérdezés funkciókat támogatja a tábla API-hoz. Azure Cosmos-adatbázis is támogatja a rendezést, összesítések, a földrajzi lekérdezést, a hierarchia és a számos különféle beépített funkciók. A további funkciókat nyújtanak a jövőbeli szolgáltatásfrissítés tábla API. Lásd: [Azure Cosmos adatbázis-lekérdezés](sql-api-sql-query.md) ezeket a képességeket áttekintését. 
 
 ## <a name="replace-an-entity"></a>Entitás cseréje
 Ha frissíteni kíván egy entitást, kérje le a Table szolgáltatásból, módosítsa az entitásobjektumot, majd mentse a módosításokat a Table szolgáltatásba. A következő kód egy meglévő ügyfél telefonszámát módosítja. 

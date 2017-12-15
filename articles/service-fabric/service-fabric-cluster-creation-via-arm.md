@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: 0065874c2f992ad9c18f68303878fb580ee8b391
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 19ad079c58728479a7f39ce7520bd8eaebdff1f5
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>A Service Fabric-fürt létrehozása az Azure Resource Manager használatával 
 > [!div class="op_single_selector"]
@@ -377,7 +377,7 @@ WebApplicationReplyUrl az alapértelmezett végpont az Azure AD a felhasználók
 
 https://&lt;cluster_domain&gt;: 19080/Explorer
 
-Jelentkezzen be az Azure AD-bérlő rendszergazdai jogosultsággal rendelkező fiók kéri. Miután bejelentkezik, a parancsfájl hoz létre, a web- és natív alkalmazások a Service Fabric-fürt képviseli. Ha megnézi a bérlős alkalmazásokhoz a [a klasszikus Azure portálon][azure-classic-portal], két új bejegyzést kell megjelennie:
+Jelentkezzen be az Azure AD-bérlő rendszergazdai jogosultsággal rendelkező fiók kéri. Miután bejelentkezik, a parancsfájl hoz létre, a web- és natív alkalmazások a Service Fabric-fürt képviseli. Ha megnézi a bérlős alkalmazásokhoz a [Azure-portálon][azure-portal], két új bejegyzést kell megjelennie:
 
    * *ClusterName*\_fürt
    * *ClusterName*\_ügyfél
@@ -615,7 +615,7 @@ Ha problémákat tapasztal, és mégis fontos kontextusinformációkat üzenetek
 <a name="assign-roles"></a>
 
 ## <a name="assign-users-to-roles"></a>Felhasználók hozzárendelése szerepkörökhöz
-Miután létrehozta a fürt képviselő alkalmazások, a felhasználók a szerepkörökhöz rendeljen hozzá a Service Fabric által támogatott: olvasási és a rendszergazda segítségét. A szerepkörök használatával rendelhet a [a klasszikus Azure portálon][azure-classic-portal].
+Miután létrehozta a fürt képviselő alkalmazások, a felhasználók a szerepkörökhöz rendeljen hozzá a Service Fabric által támogatott: olvasási és a rendszergazda segítségét. A szerepkörök használatával rendelhet a [Azure-portálon][azure-portal].
 
 1. Az Azure portálon, nyissa meg az-bérlőjéhez tartozik, és válassza **alkalmazások**.
 2. Válassza ki a webalkalmazás, melynek neve például `myTestCluster_Cluster`.
@@ -693,7 +693,7 @@ Ezen a ponton rendelkezik olyan Azure Active Directory-felügyeleti hitelesíté
 [azure-CLI]:https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [key-vault-get-started]:../key-vault/key-vault-get-started.md
 [aad-graph-api-docs]:https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog
-[azure-classic-portal]: https://portal.azure.com/
+[azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]: ../active-directory/active-directory-howto-tenant.md
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md

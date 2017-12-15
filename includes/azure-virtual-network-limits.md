@@ -32,7 +32,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Hálózati adapterek (NIC) |350 |20000 |
 | Hálózati biztonsági csoportok (NSG) |100 |5000 |
 | NSG-ben szereplő NSG-szabályok |200 |500 |
-| IP-címek és a szabály a cél- és a megadott tartományok |2000 |4000 |
+| IP-címek és egy biztonsági csoportot a cél- és a megadott tartományok |2000 |4000 |
 | Alkalmazásbiztonsági csoportok |200 |500 |
 | Biztonsági csoportok / IP-konfiguráció, egy hálózati adapter |10 |20 |
 | IP-konfigurációk alkalmazás biztonsági csoportonként |1000 |4000 |

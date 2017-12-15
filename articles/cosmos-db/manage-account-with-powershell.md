@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: 3bdf30dad5e729ae1e028be2d917b6c38e1bebaf
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d2436ad639c53360f4d1afde99d668285b606aa9
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>PowerShell-lel Azure Cosmos DB-fiók létrehozása
 
-Ez az útmutató ismerteti a parancsok automatizált felügyelete az Azure Powershell Azure Cosmos DB adatbázis fiók. Parancsok kulcsait és a feladatátvételi prioritások kezelésére is tartalmaz [több területi adatbázis fiókok][scaling-globally]. Az adatbázisfiók frissítése lehetővé teszi a konzisztencia-házirendek módosíthatók és régiók hozzáadása/eltávolítása. A platformok közötti felügyeleti Azure Cosmos DB-fiókja, választhat [Azure CLI](cli-samples.md), a [erőforrás-szolgáltató REST API][rp-rest-api], vagy a [Azure-portálon ](create-documentdb-dotnet.md#create-account).
+Ez az útmutató ismerteti a parancsok automatizált felügyelete az Azure Powershell Azure Cosmos DB adatbázis fiók. Parancsok kulcsait és a feladatátvételi prioritások kezelésére is tartalmaz [több területi adatbázis fiókok][scaling-globally]. Az adatbázisfiók frissítése lehetővé teszi a konzisztencia-házirendek módosíthatók és régiók hozzáadása/eltávolítása. A platformok közötti felügyeleti Azure Cosmos DB-fiókja, választhat [Azure CLI](cli-samples.md), a [erőforrás-szolgáltató REST API][rp-rest-api], vagy a [Azure-portálon ](create-sql-api-dotnet.md#create-account).
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -194,8 +194,7 @@ Példa:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A csatlakozás, .NET használatával, lásd: [kapcsolódás és lekérdezés .NET](create-documentdb-dotnet.md).
-* Csatlakozni a .NET Core segítségével, lásd: [kapcsolódás és lekérdezés a .NET Core platformmal](create-documentdb-dotnet-core.md).
+* A csatlakozás, .NET használatával, lásd: [kapcsolódás és lekérdezés .NET](create-sql-api-dotnet.md).
 * A csatlakozás, Node.js használatával, lásd: [kapcsolódás és lekérdezés a Node.js és a MongoDB-alkalmazás](create-mongodb-nodejs.md).
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->

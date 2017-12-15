@@ -13,9 +13,9 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: 468a6bc77b354f2e0fbe981c3d4a5691eac4ec4d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
-ms.translationtype: HT
+ms.openlocfilehash: 89e4b52e7d306bd495c426bcf775f59d0f30eb55
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/14/2017
 ---
@@ -140,7 +140,7 @@ Erőforrás esetében, amelyek többnyire keresztül érhető el egy másik erő
 }
 ```
 
-## <a name="resource-location"></a>Erőforrás helye
+## <a name="location"></a>Hely
 Ha a sablonok telepítésével, meg kell adnia az egyes erőforrások helyét. Különböző típusú támogatott különböző helyeken. Az adott erőforrástípus előfizetés számára elérhető helyek listáját megjelenítéséhez használja az Azure PowerShell vagy az Azure parancssori felület. 
 
 Az alábbi példában PowerShell a helyek az beszerzése a `Microsoft.Web\sites` erőforrás típusa:

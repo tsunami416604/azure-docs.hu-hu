@@ -13,13 +13,13 @@ ms.devlang: c#
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: d9dfd856a95d0b1f925487f4ca9d27e617093405
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 48c8036d0bc9534ce94529b96d32b004769246c1
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Testre szabhatja, hogy a csatlakoztatott gyári megoldás OPC EE-kiszolgálóinak adatait jeleníti meg
 
@@ -72,92 +72,7 @@ A konfigurációs fájlt is használhatja:
 - A meglévő szimulált előállítók, éles sorok és állomások szerkesztése.
 - Valós OPC EE-kiszolgálókhoz, amelyek a megoldással az adatok leképezése.
 
-Klónozza a csatlakoztatott gyári Visual Studio megoldás egy példányát, a következő git paranccsal:
-
-`git clone https://github.com/Azure/azure-iot-connected-factory.git`
-
-A fájl **ContosoTopologyDescription.json** a leképezés a OPC EE-kiszolgáló az elemeket a nézetek meghatározása a csatlakoztatott gyári megoldás irányítópulton. A konfigurációs fájlban található a **Contoso\Topology** mappájában a **WebApp** projektet a Visual Studio-megoldásban.
-
-A JSON-fájl tartalmának gyári, termelési sor és állomás csomópontok hierarchikus vannak rendezve. Ezt a hierarchiát a navigációs hierarchia a csatlakoztatott gyári irányítópult határozza meg. A hierarchia minden egyes csomóponton értékek meghatározzák, hogy az irányítópulton megjelenő információkat. Például a JSON-fájl tartalmazza a következő értékek München a beépített:
-
-```json
-"Guid": "73B534AE-7C7E-4877-B826-F1C0EA339F65",
-"Name": "Munich",
-"Description": "Braking system",
-"Location": {
-    "City": "Munich",
-    "Country": "Germany",
-    "Latitude": 48.13641,
-    "Longitude": 11.57754
-},
-"Image": "munich.jpg"
-```
-
-A nevét, leírását és helyen jelennek meg ebben a nézetben az irányítópulton:
-
-![Az irányítópult München adatok][img-munich]
-
-Minden egyes gyári, a termelési sor és a állomás van az image tulajdonság. Ezeket a JPEG-fájlok találhatók a **Content\img** mappájában a **WebApp** projekt. A kép fájlok megjelenítése a csatlakoztatott gyári irányítópulton.
-
-Minden állomás több részletes meghatározó tulajdonságok biztosítása a leképezés a OPC EE adatelemek tartalmazza. A következő szakaszok ismertetik ezeket a tulajdonságokat:
-
-### <a name="opcuri"></a>OpcUri
-
-A **OpcUri** értéke az EE OPC-alkalmazás, amely egyedileg azonosítja a OPC EE-kiszolgáló URI. Például a **OpcUri** a szerelvény állomás éles sor 1 München a következőhöz hasonló, a következő érték: **urn: scada2194:ua:munich:productionline0:assemblystation**.
-
-Az URI-azonosítók a csatlakoztatott OPC EE-kiszolgálók a megoldás irányítópultjának tekintheti meg:
-
-![Nézet OPC EE kiszolgáló URI-azonosítók][img-server-uris]
-
-### <a name="simulation"></a>Szimuláció
-
-Az információk a **szimuláció** csomópont csak a OPC EE szimuláció, amelyen a OPC EE-kiszolgálókon alapértelmezés szerint törlődnek az. A valós OPC EE-kiszolgáló nem szolgál.
-
-### <a name="kpi1-and-kpi2"></a>Kpi1 és Kpi2
-
-Ezek a csomópontok ismertetik, hogyan hozzájárul az adatok az állomásról a két KPI érték az irányítópulton. Alapértelmezett telepítésében ezen KPI értékei óránként egységek és óránként kWh. A megoldás kiszámítja a KPI vales állomás szintjén, és összesíti azokat az éles sor és a gyári szintjén.
-
-Egyes KPI-KET egy minimális, maximális és célértékéhez rendelkezik. Minden KPI értéket adhat meg riasztási műveletek végrehajtásához a csatlakoztatott gyári megoldás. Az alábbi kódrészletben láthatja a KPI-definíciókat a szerelvény állomás éles sor München 1:
-
-```json
-"Kpi1": {
-  "Minimum": 150,
-  "Target": 300,
-  "Maximum": 600
-},
-"Kpi2": {
-  "Minimum": 50,
-  "Target": 100,
-  "Maximum": 200,
-  "MinimumAlertActions": [
-    {
-      "Type": "None"
-    }
-  ]
-}
-```
-
-Az alábbi képernyőfelvételen a KPI adatainak megjelenítése az irányítópulton.
-
-![Az irányítópult KPI-információk][lnk-kpi]
-
-### <a name="opcnodes"></a>OpcNodes
-
-A **OpcNodes** csomópontok azonosíthatja a közzétett adatelemeket a OPC EE-kiszolgálóról, és adja meg, hogyan kell feldolgozni az adatokat.
-
-A **NodeId** érték azonosítja az adott OPC EE NodeID a OPC EE-kiszolgálóról. A szerelvény állomás gyártási sor München 1 első csomópontjának értéke **ns = 2, i = 385**. A **NodeId** érték határozza meg, az elem olvasni a OPC EE-kiszolgálóról, és a **melynek** biztosít egy felhasználóbarát nevet a az irányítópulton az adatok.
-
-Más csomópontokra társított értékek a következő táblázat tartalmazza:
-
-| Érték | Leírás |
-| ----- | ----------- |
-| Találati pontosság  | A KPI-t és OEE értékek hozzájárul az adatok. |
-| Műveleti kód     | Hogyan összesíti az adatokat. |
-| egység      | Az irányítópult használatához egység.  |
-| Látható    | Hogy megjelenjenek-e ezt az értéket az irányítópulton. Egyes értékek számítások szerepel, de nem jelenik meg.  |
-| Maximum    | A maximális érték, amely a riasztást az irányítópulton. |
-| MaximumAlertActions | A riasztás válasz műveletet. Például egy vonatkozó parancs küldése a állomáshoz. |
-| ConstValue | A számításhoz használt konstans érték. |
+Leképezési, és az adatokat az adott igényeknek összesítése kapcsolatos további információkért lásd: [konfigurálása a csatlakoztatott gyári előre konfigurált megoldás ](iot-suite-connected-factory-configure.md).
 
 ## <a name="deploy-the-changes"></a>A módosítások telepítése
 

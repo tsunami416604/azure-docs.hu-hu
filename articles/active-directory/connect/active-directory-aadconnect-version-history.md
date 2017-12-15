@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/13/2017
+ms.date: 12/14/2017
 ms.author: billmath
-ms.openlocfilehash: 0781aef200ec075f8f7a21027cb8f9b65965cb43
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
-ms.translationtype: HT
+ms.openlocfilehash: 76415de270ddd6eef0100263e5c8db8e69ff500f
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
@@ -57,7 +57,7 @@ A következő engedély módosítások alkalmazásával segítse a helyszíni AD
 *   Távolítsa el az adott objektum ACE-k meghatározott önmagára kivételével minden ACE-k. Szeretnénk az alapértelmezett engedélyek mindaddig módosulna, amikor a saját MAGA.
 *   Ezek az engedélyek hozzárendelése:
 
-Típus     | Név                          | Hozzáférés               | Erre vonatkozik
+Típus     | Név                          | Hozzáférés               | A következőkre vonatkozik
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
@@ -84,11 +84,12 @@ Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 
 Ha 
 
-$ObjectDN = engedélyeiket kell megfeszíteni kell az Active Directory-fiókot.
-$Credential = a hitelesítő adatokat használja az ügyfél hitelesítésére, miközben az Active Directory van szó. Ez általában az engedélyeiket igények szigorítása a fiók létrehozásához használt vállalati rendszergazdai hitelesítő adatokat.
+**$ObjectDN** = engedélyeiket kell megfeszíteni kell az Active Directory-fiókot.
+
+**$Credential** = rendszergazdájának hitelesítő adatait, amely rendelkezik a szükséges jogosultságokkal a $ObjectDN fiók engedélyek korlátozása. Ez általában a vállalat vagy a tartományi rendszergazda az. Használja a teljesen minősített tartománynevét a rendszergazdai fiók fiók keresési hibák elkerülése érdekében. Példa: contoso.com\admin.
 
 >[!NOTE] 
->$credential. Felhasználónevet tartomány\felhasználónév formátumban kell megadni.  
+>$credential. Felhasználónév FQDN\username formátumúnak kell lennie. Példa: contoso.com\admin 
 
 ##### <a name="example"></a>Példa:
 

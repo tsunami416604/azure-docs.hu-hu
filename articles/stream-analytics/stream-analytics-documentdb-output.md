@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: b596b74f0aec0c561c8ad48647c16cd0f5c58d83
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 29be0f5100aabe8374a26e6548effe20ccb9ac86
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>Cél Azure Cosmos DB JSON-kimenetét a Stream Analytics
 A Stream Analytics célba [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenetét, engedélyezi az archiválási és alacsony késésű kérelmek strukturálatlan JSON-adatokat. Ez a dokumentum ismertet néhány gyakorlati tanácsok a konfiguráció alkalmazásához.
@@ -48,7 +48,7 @@ A cosmos DB [particionált gyűjtemények](../cosmos-db/partition-data.md) az aj
 
 Egyetlen Cosmos DB gyűjtemények Stream Analytics továbbra is lehetővé teszi az adatok a lekérdezési mintáknak és a teljesítménye az alkalmazás igényeinek alapuló particionálásához. Minden gyűjtemény legfeljebb 10GB adatot (maximum) tartalmazhat, és jelenleg nincs mód vertikális felskálázás (vagy túlcsordulás) egy gyűjtemény. Kiterjesztése, a Stream Analytics lehetővé teszi több gyűjtemény egy adott előtaggal rendelkező írni (használati részleteit lásd alább). A Stream Analytics használ a konzisztens [kivonatoló partíció feloldó](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx) stratégia alapján a felhasználó a megadott kimeneti rekordjai particionálásához PartitionKey oszlop. A folyamatos átviteli feladat kezdési időpontban a megadott előtaggal rendelkező gyűjtemények száma használatos a kimeneti partíciók száma, amelyre párhuzamosan ír a feladat (Cosmos DB gyűjtemények = kimeneti partíciók). A lusta indexelési ezzel együtt egyetlen gyűjtemény csak szúrja be, kapcsolatos 0,4 MB/s teljesítménye várhatók. Több gyűjteményt használ lehetővé teszi, nagyobb átviteli sebesség és a nagyobb kapacitás elérése érdekében.
 
-Ha azt tervezi, a partíciók száma növelésére a jövőben, szükség lehet a feladat leállítása, a meglévő gyűjtemények új gyűjteményekbe adatait újraparticionálása, és indítsa újra a Stream Analytics-feladat. További részleteket a PartitionResolver használatával, és újra particionálás mintakód, valamint követő post fognak szerepelni. A cikk [particionálás és Cosmos DB skálázás](../documentdb/documentdb-partition-data.md) is részletesen itt.
+Ha azt tervezi, a partíciók száma növelésére a jövőben, szükség lehet a feladat leállítása, a meglévő gyűjtemények új gyűjteményekbe adatait újraparticionálása, és indítsa újra a Stream Analytics-feladat. További részleteket a PartitionResolver használatával, és újra particionálás mintakód, valamint követő post fognak szerepelni. A cikk [particionálás és Cosmos DB skálázás](../cosmos-db/sql-api-partition-data.md) is részletesen itt.
 
 ## <a name="cosmos-db-settings-for-json-output"></a>JSON kimeneti cosmos DB beállításai
 Az alább látható információt adatkérést Cosmos-adatbázis létrehozása a Stream Analytics kimenetként állít elő. Ez a szakasz a Tulajdonságok definíció magyarázattal szolgál.

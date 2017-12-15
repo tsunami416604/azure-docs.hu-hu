@@ -15,13 +15,17 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 8b8d7b026973de9dee6c834404f2ed80b2c9ad21
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ad53575b655ebec5a134c8d76b963708caf14334
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="build-a-java-and-mysql-web-app-in-azure"></a>Az Azure Java és MySQL webalkalmazás létrehozása
+
+> [!NOTE]
+> Ez a cikk a Windows App Service egy alkalmazást telepíti. Az App Service üzembe _Linux_, lásd: [indexelése rugó rendszerindító alkalmazás telepítése az Azure-bA](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin).
+>
 
 Az oktatóanyag bemutatja, hogyan Java-webalkalmazás létrehozása az Azure-ban, és csatlakoztassa a MySQL-adatbázis. Ha elkészült, akkor egy [rugó rendszerindító](https://projects.spring.io/spring-boot/) adattárolásra alkalmazás [MySQL az Azure-adatbázis](https://docs.microsoft.com/azure/mysql/overview) futó [Azure App Service Web Apps](app-service-web-overview.md).
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 0794952fdfbcc49cc66273be2d46484014ae1677
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 74051c5a6c7cb58f5132411bfc66d4947ed916d6
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,12 +36,11 @@ Egy Azure Data Factory-folyamathoz használható tevékenységeknek két típusa
 
 Adatok áthelyezése az adat-előállító nem támogatja az adattárat, hozzon létre egy **egyéni tevékenység** a saját adatok mozgása logika és használja a tevékenység egy folyamatot. Hasonlóképpen átalakító/folyamat számára adatokat úgy, hogy a Data Factory nem támogatja, egyéni tevékenység létrehozása a saját adatok átalakítása logikával, és használja a tevékenységet egy folyamaton belül. 
 
-Konfigurálhat egy egyéni tevékenység segítségével futtatja egy **Azure Batch** készlete virtuális gépek vagy a Windows-alapú **Azure HDInsight** fürt. Azure Batch használatakor csak egy meglévő Azure Batch-készlet is használhatja. Mivel a HDInsight használata esetén használható egy meglévő HDInsight-fürtre vagy olyan fürt, amely automatikusan jön létre, igény szerinti futásidőben.  
+Konfigurálhat egy egyéni tevékenység segítségével futtatja egy **Azure Batch** virtuális gépek készletét. Azure Batch használatakor csak egy meglévő Azure Batch-készlet is használhatja.
 
-A következő forgatókönyv részletesen bemutatja egy egyéni .NET tevékenység létrehozásáért és az egyéni tevékenység egy folyamaton belül. A forgatókönyv egy **Azure Batch** társított szolgáltatás. Egy Azure HDInsight használata társított szolgáltatás helyette, típusú társított szolgáltatás létrehozása **HDInsight** (egyéni HDInsight-fürt) vagy **HDInsightOnDemand** (Data Factory létrehoz egy HDInsight-fürt igény szerinti). Ezt követően konfigurálja a kapcsolódó HDInsight szolgáltatásokat egyéni tevékenység. Lásd: [használata Azure HDInsight összekapcsolt szolgáltatások](#use-hdinsight-compute-service) című szakaszban talál információt az egyéni tevékenység futtatásához Azure HDInsight eszközzel.
+A következő forgatókönyv részletesen bemutatja egy egyéni .NET tevékenység létrehozásáért és az egyéni tevékenység egy folyamaton belül. A forgatókönyv egy **Azure Batch** társított szolgáltatás. 
 
 > [!IMPORTANT]
-> - Az egyéni .NET-tevékenységek futtatásához csak a Windows-alapú HDInsight-fürtökön. Ez a korlátozás a megoldás, hogy a térkép csökkentése tevékenység használja egyéni Java-kódot futtathatnak egy Linux-alapú HDInsight-fürtöt. Egy másik lehetőség, hogy a virtuális gépek Azure Batch-készlet használja egy HDInsight-fürt használata helyett egyéni tevékenységek futtatásához.
 > - Nincs lehetőség egyéni tevékenység az adatkezelési átjárót a helyszíni adatforrások eléréséhez használható. Jelenleg [az adatkezelési átjáró](data-factory-data-management-gateway.md) csak a másolási tevékenység és a tárolt eljárási tevékenység támogatja az adat-előállítóban.   
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Forgatókönyv: egyéni tevékenység létrehozása
@@ -479,8 +478,6 @@ A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat
 
        Az a **poolName** tulajdonság, azt is megadhatja a tárolókészlet neve helyett a készlet Azonosítóját.
 
-      > [!IMPORTANT]
-      > A Data Factory szolgáltatásnak nem támogatja egy igény szerinti lehetőséget az Azure hdinsight azonban nem. Csak a saját Azure Batch-készlet használhatja az Azure data factory.   
     
 
 ### <a name="step-3-create-datasets"></a>3. lépés: Adatkészletek létrehozása
@@ -555,7 +552,7 @@ Ebben a lépésben hoz létre a bemeneti és kimeneti adatok adatkészletek.
 
     Egy kimeneti blob/fájl az egyes bemeneti szeletek jön létre. Ez hogyan kimeneti fájl neve az egyes szeletek. A kimeneti fájlok akkor jönnek létre, egy kimeneti mappában: **adftutorial\customactivityoutput**.
 
-   | Szelet | Kezdési idő | Kimeneti fájlja |
+   | Szelet | Kezdés időpontja | Kimeneti fájlja |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
@@ -786,115 +783,6 @@ Lásd: [automatikus méretezési számítási csomópontok az Azure Batch-készl
 
 Ha az alkalmazáskészlet által használt alapértelmezett [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), a Batch szolgáltatás a virtuális gép előkészítése az egyéni tevékenység futtatása előtt 15 – 30 percet vehet igénybe.  Ha a készlet egy másik autoScaleEvaluationInterval használ, a Batch szolgáltatás autoScaleEvaluationInterval + 10 percet is beletelhet.
 
-## <a name="use-hdinsight-compute-service"></a>HDInsight számítási szolgáltatás használata
-A forgatókönyv Azure Batch számítási az egyéni tevékenység futtatásához használt. Is használhatja a saját Windows-alapú HDInsight-fürt vagy adat-előállító igény szerinti Windows-alapú HDInsight-fürtöt, és az egyéni tevékenység, futtassa a HDInsight-fürt rendelkezik. Az alábbiakban a magas szintű lépései a HDInsight-fürtöt használ.
-
-> [!IMPORTANT]
-> Az egyéni .NET-tevékenységek futtatásához csak a Windows-alapú HDInsight-fürtökön. Ez a korlátozás a megoldás, hogy a térkép csökkentése tevékenység használja egyéni Java-kódot futtathatnak egy Linux-alapú HDInsight-fürtöt. Egy másik lehetőség, hogy a virtuális gépek Azure Batch-készlet használja egy HDInsight-fürt használata helyett egyéni tevékenységek futtatásához.
- 
-
-1. Hozzon létre egy Azure HDInsight társított szolgáltatást.   
-2. Használja a HDInsight társított szolgáltatás helyett **AzureBatchLinkedService** az adatcsatorna JSON-NÁ.
-
-Ha azt szeretné, akkor a forgatókönyv teszteléséhez, módosítsa **start** és **end** alkalommal fordult elő a tölcsér, hogy az Azure HDInsight szolgáltatással a forgatókönyv teszteléséhez.
-
-#### <a name="create-azure-hdinsight-linked-service"></a>Azure HDInsight társított szolgáltatás létrehozása
-Az Azure Data Factory szolgáltatásnak az igény szerinti fürt létrehozását támogatja, és használja úgy eredményezett kimeneti adatokat bemenet feldolgozása. Használhatja a saját fürt azonos végrehajtásához. Igény szerinti HDInsight-fürt használata esetén a fürt minden egyes szeletre vonatkozó végrehajtásakor létrejön. Mivel a saját HDInsight-fürtöt használ, ha a szelet feldolgozása azonnal készen áll a fürt. Ezért igény-fürtöt használ, akkor előfordulhat, hogy nem jelennek meg kimeneti adatokat leggyorsabban saját fürt használata esetén.
-
-> [!NOTE]
-> Futásidőben a .NET tevékenység példánya fut. csak a HDInsight fürt; egy munkavégző csomópont több csomópont futtathatnak nem lehet méretezni. A HDInsight-fürt csomópontjai párhuzamosan .NET tevékenység több példánya is futtathatók.
->
->
-
-##### <a name="to-use-an-on-demand-hdinsight-cluster"></a>Igény szerinti HDInsight-fürt használatára
-1. Az a **Azure-portálon**, kattintson a **fejlesztés és üzembe helyezés** a Data Factory kezdőlapján.
-2. Kattintson a Data Factory Editor **új számítási** a parancssávon, és válassza ki a **igény szerinti HDInsight-fürt** a menüből.
-3. A következő módosításokat a JSON-parancsfájlba:
-
-   1. Az a **nagyobbnak** tulajdonság, adja meg a HDInsight-fürt méretét.
-   2. Az a **timeToLive** tulajdonság, adja meg, mennyi ideig az ügyfél üresjáratban lehet, mielőtt az törlődni fog.
-   3. Az a **verzió** tulajdonság, adja meg a használni kívánt HDInsight-verzió. Ha kizárja a ezt a tulajdonságot, a legújabb verziót használja.  
-   4. Az a **linkedServiceName**, adja meg **AzureStorageLinkedService**.
-
-        ```JSON
-        {
-           "name": "HDInsightOnDemandLinkedService",
-           "properties": {
-               "type": "HDInsightOnDemand",
-               "typeProperties": {
-                   "clusterSize": 4,
-                   "timeToLive": "00:05:00",
-                   "osType": "Windows",
-                   "linkedServiceName": "AzureStorageLinkedService",
-               }
-           }
-        }
-        ```
-
-    > [!IMPORTANT]
-    > Az egyéni .NET-tevékenységek futtatásához csak a Windows-alapú HDInsight-fürtökön. Ez a korlátozás a megoldás, hogy a térkép csökkentése tevékenység használja egyéni Java-kódot futtathatnak egy Linux-alapú HDInsight-fürtöt. Egy másik lehetőség, hogy a virtuális gépek Azure Batch-készlet használja egy HDInsight-fürt használata helyett egyéni tevékenységek futtatásához.
-
-4. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Deploy** (Üzembe helyezés) elemére.
-
-##### <a name="to-use-your-own-hdinsight-cluster"></a>A saját HDInsight-fürt használatára:
-1. Az a **Azure-portálon**, kattintson a **fejlesztés és üzembe helyezés** a Data Factory kezdőlapján.
-2. Az a **Data Factory Editor**, kattintson a **új számítási** a parancssávon, és válassza ki a **HDInsight-fürt** a menüből.
-3. A következő módosításokat a JSON-parancsfájlba:
-
-   1. Az a **clusterUri** tulajdonság, a HDInsight meg az URL-CÍMÉT. Például: https://<clustername>.azurehdinsight.net/     
-   2. Az a **felhasználónév** tulajdonság, írja be a felhasználónevet, aki hozzáférhet a HDInsight-fürthöz.
-   3. Az a **jelszó** tulajdonság, írja be a felhasználó jelszavát.
-   4. Az a **LinkedServiceName** tulajdonság, adja meg **AzureStorageLinkedService**.
-4. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Deploy** (Üzembe helyezés) elemére.
-
-Lásd: [összekapcsolt szolgáltatások számítási](data-factory-compute-linked-services.md) részleteiről.
-
-Az a **JSON-feldolgozási folyamat**, HDInsight használata (igény vagy a saját) társított szolgáltatáshoz:
-
-```JSON
-{
-  "name": "ADFTutorialPipelineCustom",
-  "properties": {
-    "description": "Use custom activity",
-    "activities": [
-      {
-        "Name": "MyDotNetActivity",
-        "Type": "DotNetActivity",
-        "Inputs": [
-          {
-            "Name": "InputDataset"
-          }
-        ],
-        "Outputs": [
-          {
-            "Name": "OutputDataset"
-          }
-        ],
-        "LinkedServiceName": "HDInsightOnDemandLinkedService",
-        "typeProperties": {
-          "AssemblyName": "MyDotNetActivity.dll",
-          "EntryPoint": "MyDotNetActivityNS.MyDotNetActivity",
-          "PackageLinkedService": "AzureStorageLinkedService",
-          "PackageFile": "customactivitycontainer/MyDotNetActivity.zip",
-          "extendedProperties": {
-            "SliceStart": "$$Text.Format('{0:yyyyMMddHH-mm}', Time.AddMinutes(SliceStart, 0))"
-          }
-        },
-        "Policy": {
-          "Concurrency": 2,
-          "ExecutionPriorityOrder": "OldestFirst",
-          "Retry": 3,
-          "Timeout": "00:30:00",
-          "Delay": "00:00:00"
-        }
-      }
-    ],
-    "start": "2016-11-16T00:00:00Z",
-    "end": "2016-11-16T05:00:00Z",
-    "isPaused": false
-  }
-}
-```
 
 ## <a name="create-a-custom-activity-by-using-net-sdk"></a>Egyéni tevékenység létrehozása .NET SDK használatával
 A forgatókönyv ebben a cikkben akkor hozzon létre egy adat-előállító egy folyamatot, amely az egyéni tevékenység használ az Azure-portál használatával. A következő kód bemutatja, hogyan helyette .NET SDK használatával a data factory létrehozása. Adatcsatornák programozott módon létrehozásához SDK használatával kapcsolatos további részleteket megtalálja a [.NET API használatával hozzon létre egy folyamatot másolási tevékenység](data-factory-copy-activity-tutorial-using-dotnet-api.md) cikk. 
@@ -1141,7 +1029,7 @@ A [Azure Data Factory - helyi környezetben](https://github.com/gbrueckl/Azure.D
 
 
 ## <a name="sample-custom-activities-on-github"></a>Egyéni tevékenységek mintát a Githubon
-| Minta | Milyen egyéni tevékenység does |
+| Sample | Milyen egyéni tevékenység does |
 | --- | --- |
 | [HTTP-adatok letöltő](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Letölti a adatokat a HTTP-végponttal Azure Blob Storage használatával egyéni tevékenység C# adat-előállítóban. |
 | [Twitter véleményeket elemzési minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Meghívja az Azure ML modellje és do véleményeket elemzése, pontozási, előrejelzés stb. |

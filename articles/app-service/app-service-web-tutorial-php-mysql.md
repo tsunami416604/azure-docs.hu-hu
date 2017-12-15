@@ -15,13 +15,17 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 08e9f58cc81122ae36db67d916cf2550490ec4ef
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: be3fba0c148cc7ee07fa3d50e0783916790e7cab
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>Az Azure-ban a PHP és a MySQL webalkalmazás létrehozása
+
+> [!NOTE]
+> Ez a cikk a Windows App Service egy alkalmazást telepíti. Az App Service üzembe _Linux_, lásd: [egy PHP és a MySQL webalkalmazást az Azure App Service létrehozása Linux-kiszolgálón](./containers/tutorial-php-mysql-app.md).
+>
 
 Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan hozzon létre egy PHP webalkalmazást az Azure-ban, és csatlakoztassa a MySQL-adatbázis. Amikor végzett, konfigurálnia kell egy [Laravel](https://laravel.com/) Azure App Service Web Apps futó alkalmazáshoz.
 
@@ -158,7 +162,7 @@ Ebben a lépésben a MySQL-adatbázis létrehozása [MySQL (előzetes verzió) a
 
 ### <a name="create-a-mysql-server"></a>A MySQL-kiszolgáló létrehozása
 
-A felhő rendszerhéj a kiszolgáló létrehozása az Azure-adatbázisban a MySQL (előzetes verzió) a [az mysql kiszolgáló létrehozni](/cli/azure/mysql/server#create) parancsot.
+A felhő rendszerhéj a kiszolgáló létrehozása az Azure-adatbázisban a MySQL (előzetes verzió) a [az mysql kiszolgáló létrehozni](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) parancsot.
 
 Az alábbi parancs helyettesítse a MySQL-kiszolgáló nevét, ahol megjelenik a  _&lt;mysql_server_name >_ helyőrző (érvényes karakterek: `a-z`, `0-9`, és `-`). Ez a név része a MySQL-kiszolgáló állomásneve (`<mysql_server_name>.database.windows.net`), kell lennie a globálisan egyedi.
 
@@ -188,7 +192,7 @@ A MySQL-kiszolgáló létrehozása esetén, az Azure parancssori felület kapcso
 
 ### <a name="configure-server-firewall"></a>Kiszolgáló tűzfal konfigurálása
 
-A felhő rendszerhéj hozzon létre egy tűzfalszabályt az MySQL-kiszolgálót, hogy lehetővé tegyék az ügyfélkapcsolatokat használatával a [az mysql-tűzfalszabály létrehozása](/cli/azure/mysql/server/firewall-rule#create) parancsot.
+A felhő rendszerhéj hozzon létre egy tűzfalszabályt az MySQL-kiszolgálót, hogy lehetővé tegyék az ügyfélkapcsolatokat használatával a [az mysql-tűzfalszabály létrehozása](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) parancsot.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -341,7 +345,7 @@ Ebben a lépésben az Azure App Service PHP MySQL-kompatibilis alkalmazást tele
 
 Szerint korábban, csatlakozhat az Azure-beli MySQL adatbázis App Service környezeti változók használatát.
 
-A felhő rendszerhéj környezeti változókat, mint a beállított _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings#set) parancsot.
+A felhő rendszerhéj környezeti változókat, mint a beállított _Alkalmazásbeállítások_ használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot.
 
 A következő parancsot konfigurálása az alkalmazás beállításaiban `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, és `DB_PASSWORD`. Cserélje le a helyőrzőket  _&lt;alkalmazásnév >_ és  _&lt;mysql_server_name >_.
 
@@ -372,7 +376,7 @@ A helyi terminálablakot, használjon `php artisan` egy új alkalmazás-kulcs l�
 php artisan key:generate --show
 ```
 
-A felhő rendszerhéj kulcsát állítsa a alkalmazás az App Service a web app használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings#set) parancsot. Cserélje le a helyőrzőket  _&lt;alkalmazásnév >_ és  _&lt;outputofphpartisankey: készítése >_.
+A felhő rendszerhéj kulcsát állítsa a alkalmazás az App Service a web app használatával a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot. Cserélje le a helyőrzőket  _&lt;alkalmazásnév >_ és  _&lt;outputofphpartisankey: készítése >_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -447,7 +451,7 @@ Ebben a lépésben módosítja egyszerű való a `task` adatmodell, és a webalk
 
 A feladatok esetben módosítani az alkalmazást, hogy a feladatoknak befejezettként.
 
-### <a name="add-a-column"></a>Egy oszlop hozzáadása
+### <a name="add-a-column"></a>Oszlop hozzáadása
 
 A helyi terminálablakot navigáljon a Git-tárház gyökérkönyvtárában.
 
@@ -587,7 +591,7 @@ Ha olyan feladatokat, jelennek meg az adatbázisban. Az adatok séma frissítés
 
 Míg a PHP-alkalmazások az Azure App Service-ben, a terminálon az adatcsatornán konzolnaplófájlokban kaphat. Ily módon kaphat segítséget nyújtanak az alkalmazáshibák debug diagnosztikai ugyanazokat az üzeneteket.
 
-Napló streaming indításához használja a [az webapp napló végéről](/cli/azure/webapp/log#tail) a felhő rendszerhéj parancsot.
+Napló streaming indításához használja a [az webapp napló végéről](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) a felhő rendszerhéj parancsot.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup

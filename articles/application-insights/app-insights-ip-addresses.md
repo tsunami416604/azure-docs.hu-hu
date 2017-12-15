@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 12/13/2017
 ms.author: mbullwin
-ms.openlocfilehash: 79ead157dc7509f035c491f9a4c4290eb4d70334
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 384f875702f2dee3bf0e806675a7df9f190d93bd
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és Naplóelemzési által használt IP-címek
 A [Azure Application Insights](app-insights-overview.md) szolgáltatás által használt IP-címek száma. Szükség lehet tudja ezeket a címeket, ha a figyelt alkalmazás egy tűzfal mögött található.
@@ -30,7 +30,7 @@ A [Azure Application Insights](app-insights-overview.md) szolgáltatás által h
 ## <a name="outgoing-ports"></a>Kimenő portok
 Néhány kimenő portok megnyitása a kiszolgáló engedélyezéséhez az Application Insights SDK és/vagy állapotfigyelő adatokat küldeni a portálon kell:
 
-| Cél | URL-CÍME | IP | Portok |
+| Cél | URL-cím | IP | Portok |
 | --- | --- | --- | --- |
 | Telemetria |DC.Services.visualstudio.com<br/>DC.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244 |443 |
 | Élő Stream metrikák |Rt.Services.visualstudio.com<br/>Rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
@@ -39,7 +39,7 @@ Néhány kimenő portok megnyitása a kiszolgáló engedélyezéséhez az Applic
 ## <a name="status-monitor"></a>Állapotfigyelője
 Állapot figyelő - szükséges konfiguráció csak akkor, ha módosítja.
 
-| Cél | URL-CÍME | IP | Portok |
+| Cél | URL-cím | IP | Portok |
 | --- | --- | --- | --- |
 | Konfiguráció |`management.core.windows.net` | |`443` |
 | Konfiguráció |`management.azure.com` | |`443` |
@@ -51,7 +51,7 @@ Néhány kimenő portok megnyitása a kiszolgáló engedélyezéséhez az Applic
 | Telepítés |`packages.nuget.org` | |`443` |
 
 ## <a name="hockeyapp"></a>HockeyApp
-| Cél | URL-CÍME | IP | Portok |
+| Cél | URL-cím | IP | Portok |
 | --- | --- | --- | --- |
 | Összeomlási adatok |GATE.hockeyapp.NET |104.45.136.42 |80, 443 |
 
@@ -76,6 +76,10 @@ CH : Zurich
 94.245.66.44
 94.245.66.45
 94.245.66.48
+52.136.140.221
+52.136.140.222
+52.136.140.223
+52.136.140.226
 FR : Paris
 94.245.72.44
 94.245.72.45
@@ -83,6 +87,10 @@ FR : Paris
 94.245.72.49
 94.245.72.52
 94.245.72.53
+52.143.140.242 
+52.143.140.246
+52.143.140.247
+52.143.140.249
 HK : Hong Kong
 13.75.121.122
 23.99.115.153

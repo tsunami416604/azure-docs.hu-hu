@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: lbosq
-ms.openlocfilehash: 45169394bed2287896ddc93ad56657f7394366f8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4ae7d7e2c6ac54a6063d9ac0342083105610f026
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB: Graph API
 
@@ -113,7 +113,7 @@ Az alábbi táblázat a népszerű Gremlin illesztőprogramok szemben Azure Cosm
 | [Node.js](https://www.npmjs.com/package/gremlin) |[Gremlin-JavaScript a Githubon](https://github.com/jbmusso/gremlin-javascript) |
 | [Gremlin konzol](https://tinkerpop.apache.org/downloads.html) |[TinkerPop docs](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |
 
-Azure Cosmos-adatbázis is biztosít, amely rendelkezik a Gremlin kiterjesztésmetódusok .NET könyvtár az [Azure Cosmos DB SDK-k](documentdb-sdk-dotnet.md) NuGet útján. A szalagtár "egy folyamaton belüli" Gremlin kiszolgáló csatlakozzon közvetlenül a adatok partíciók használó biztosít.
+Azure Cosmos-adatbázis is biztosít, amely rendelkezik a Gremlin kiterjesztésmetódusok .NET könyvtár az [Azure Cosmos DB SDK-k](sql-api-sdk-dotnet.md) NuGet útján. A szalagtár "egy folyamaton belüli" Gremlin kiszolgáló csatlakozzon közvetlenül a adatok partíciók használó biztosít.
 
 | Letöltés | Dokumentáció |
 | --- | --- |

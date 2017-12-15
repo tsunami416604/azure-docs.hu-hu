@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 12/14/2017
 ms.author: JeffGo
-ms.openlocfilehash: 6c74071cedb1da9a59f47b10eaf538d24cb9ab01
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 111b6274f4a3633fa4dd367866bf4e4e72d6e2df
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
 
@@ -47,7 +47,11 @@ Meg kell egy (vagy több) SQL-kiszolgálókat hoz létre és/vagy a külső SQL 
 
     a. A Azure verem Development Kit (ASDK) telepítésekre jelentkezzen be a fizikai állomáson.
 
-    b. Több csomópontos rendszerek esetében a gazdagép egy rendszer, amely hozzáférhet a kiemelt végpont kell lennie.
+    b. Több csomópontos rendszerek esetében a gazdagép egy rendszer, amely hozzáférhet a kiemelt végpont kell lennie. 
+    
+    >[!NOTE]
+    > A rendszer, ha a parancsfájl futtatása *kell* egy Windows 10 vagy Windows Server 2016 rendszert a legújabb verzióra a .NET-futtatókörnyezet telepítve lesz. Ellenkező esetben telepítése sikertelen. A ASDK gazdagép megfelel a feltételeknek.
+
 
 3. Töltse le az SQL erőforrás-szolgáltató bináris, és egy ideiglenes könyvtárhoz tartalmának önkibontó hajtható végre.
 
@@ -56,16 +60,19 @@ Meg kell egy (vagy több) SQL-kiszolgálókat hoz létre és/vagy a külső SQL 
 
     | Az Azure verem Build | SQL RP-telepítő |
     | --- | --- |
-    | 1.0.171122.1 | [SQL RP 1.1.10.0 verziója](https://aka.ms/azurestacksqlrp) |
+    | 1.0.171122.1 | [SQL RP 1.1.12.0 verziója](https://aka.ms/azurestacksqlrp) |
     | 1.0.171028.1 | [SQL RP 1.1.8.0 verziója](https://aka.ms/azurestacksqlrp1710) |
     | 1.0.170928.3 | [SQL RP 1.1.3.0 verziója](https://aka.ms/azurestacksqlrp1709) |
    
 
 4. Az Azure-verem legfelső szintű tanúsítvány veszi át a kiemelt végpont. A ASDK önaláírt tanúsítvány jön létre a folyamat során. Több csomópontos meg kell adnia egy megfelelő tanúsítványt.
 
-    Ha saját van szüksége, a következő tanúsítványra van szükség:
+    Ha saját van szüksége, szüksége lesz a PFX-fájlba helyezi a **DependencyFilesLocalPath** (lásd alább) az alábbiak szerint:
 
-    A helyettesítő tanúsítványt \*.dbadapter.\< a régióban\>.\< külső fqdn\>. Ezt a tanúsítványt megbízhatónak kell lennie, például a állít ki egy hitelesítésszolgáltatónak. Ez azt jelenti, hogy a megbízhatósági lánc léteznie kell anélkül, hogy a köztes tanúsítványok. Egy egyetlen hely használhatja a explicit Virtuálisgép-név [sqladapter] telepítés során használt.
+    - Vagy egy helyettesítő tanúsítvány \*.dbadapter.\< a régióban\>.\< külső fqdn\> vagy egyhelyes tanúsítvány köznapi neve a sqladapter.dbadapter.\< a régióban\>.\< külső fqdn\>
+    - Ezt a tanúsítványt megbízhatónak kell lennie, például a állít ki egy hitelesítésszolgáltatónak. Ez azt jelenti, hogy a megbízhatósági lánc léteznie kell anélkül, hogy a köztes tanúsítványok.
+    - Csak egyetlen tanúsítványfájlt a DependencyFilesLocalPath szerepel.
+    - A fájl neve nem tartalmazhat speciális karaktereket.
 
 
 5. Nyissa meg a **új** emelt szintű (felügyeleti) PowerShell-konzolt, és módosítsa a könyvtárra, amelybe kibontotta a fájlokat. Egy új ablak segítségével a rendszer helytelen PowerShell-modul már be van töltve az esetleg felmerülő problémák elkerülése érdekében.

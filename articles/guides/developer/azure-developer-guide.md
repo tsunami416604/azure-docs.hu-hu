@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 37942b7aa2fa675e316f368e8c74cb2081ba4648
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: b54b806aad1e15702d2167dcf2870ba19c4708df
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -108,7 +108,7 @@ A legtöbb alkalmazást úgy kell tárolnia adatok, függetlenül attól, milyen
 -   **Az Azure Cosmos DB**: egy globálisan elosztott, több modellre dokumentumadatbázis-szolgáltatás, amely lehetővé teszi, hogy rugalmasan méretezhető átviteli sebesség és tárterület tetszőleges számú egy átfogó SLA földrajzi régiók között. 
     >**Mikor érdemes használni:** Ha az alkalmazás a dokumentum, táblázat vagy graph-adatbázisok, beleértve a MongoDB-adatbázisok esetén több jól meghatározott konzisztencia modellekkel. 
 
-    >**Első lépések**: [egy Azure Cosmos DB web app Build](../../cosmos-db/create-documentdb-dotnet.md). Ha Ön a MongoDB fejlesztő, lásd: [Azure Cosmos DB a MongoDB webalkalmazás összeállítása](../../cosmos-db/create-mongodb-dotnet.md).
+    >**Első lépések**: [egy Azure Cosmos DB web app Build](../../cosmos-db/create-sql-api-dotnet.md). Ha Ön a MongoDB fejlesztő, lásd: [Azure Cosmos DB a MongoDB webalkalmazás összeállítása](../../cosmos-db/create-mongodb-dotnet.md).
 
 -   **Az Azure Storage**: BLOB, üzenetsorok, fájlok és más típusú nonrelational adatok tartós, magas rendelkezésre állású tároló kínál. Tárolási a tárolási alapokat nyújt a virtuális gépek.
 

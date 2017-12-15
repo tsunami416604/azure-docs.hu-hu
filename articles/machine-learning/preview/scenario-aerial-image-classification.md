@@ -7,12 +7,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.topic: article
 ms.service: machine-learning
 services: machine-learning
-ms.date: 10/27/2017
-ms.openlocfilehash: cb66514f40bd37f0495eca5037740d318fd5ea09
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 12/13/2017
+ms.openlocfilehash: 57b81dfb2cb58fb43d4c420e8ce58c0c226316df
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="aerial-image-classification"></a>Légifelvételes kép besorolás
 
@@ -157,14 +157,14 @@ Azt hozni a tárfiókot, hogy állomások projektfájlok, amelyet a HDInsight Sp
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/scripts /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.file.core.windows.net/baitshare/scripts /DestKey:%STORAGE_ACCOUNT_KEY% /S
     ```
 
-    Várt fájlátvitel legfeljebb 20 percet vesz igénybe. Várakozással, folytassa a következő részt: nyisson meg egy másik parancssori felületen keresztül munkaterületet, majd definiálja újra az ideiglenes változók szeretne.
+    Várt fájlátvitel érvénybe körülbelül egy óra. Várakozással, folytassa a következő részt: nyisson meg egy másik parancssori felületen keresztül munkaterületet, majd definiálja újra az ideiglenes változók szeretne.
 
 #### <a name="create-the-hdinsight-spark-cluster"></a>A HDInsight Spark-fürt létrehozása
 
 Az ajánlott módszer a HDInsight-fürtök létrehozásához használja a HDInsight Spark fürt resource manager-sablon szerepel a projekt "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" almappája.
 
-1. A HDInsight Spark-fürt sablon "template.json" fájlt a projekt "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" almappája. Alapértelmezés szerint a sablon egy Spark-fürt 40 munkavégző csomópontokhoz hoz létre. Ha úgy dönt, hogy a kívánt kell, nyissa meg a sablon a kedvenc szövegszerkesztőjével, és cserélje le a munkavégző csomópont száma a kiválasztott "40" az összes példányát.
-    - Ha úgy dönt, a feldolgozó csomópontok száma kis kevés a memória hibák fordulhatnak elő. Elleni észlelt memóriahibák jelentésére, futtathatja a képzés és operationalization parancsfájlok a rendelkezésre álló adatok egy részét a jelen dokumentum későbbi szakaszában leírtak szerint.
+1. A HDInsight Spark-fürt sablon "template.json" fájlt a projekt "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" almappája. Alapértelmezés szerint a sablon egy Spark-fürt 40 munkavégző csomópontokhoz hoz létre. Ha úgy dönt, hogy a kívánt kell, nyissa meg a sablon a kedvenc szövegszerkesztőben, és minden példányát "40" cserélje le a munkavégző csomópont száma az Ön által választott.
+    - Ha úgy dönt, a feldolgozó csomópontok száma kisebb, később jelentkezhetnek kevés a memória hibák. Elleni észlelt memóriahibák jelentésére, futtathatja a képzés és operationalization parancsfájlok a rendelkezésre álló adatok egy részét a jelen dokumentum későbbi szakaszában leírtak szerint.
 2. Válassza ki egy egyedi nevet és jelszót a hdinsight fürt, és beírhatók az alábbi parancs a jelzett: a parancsok kiadása a fürt létrehozásához:
 
     ```
@@ -248,12 +248,10 @@ Ha szükséges, úgy ellenőrizheti, hogy az adatátvitel járt-e, mint a fájlk
 
 #### <a name="create-a-batch-ai-cluster"></a>Hozzon létre egy kötegelt AI fürtöt
 
-1. A fürt létrehozása a következő parancsok beírásával:
+1. A fürt létrehozása a következő parancsot:
 
     ```
-    set AZURE_BATCHAI_STORAGE_ACCOUNT=%STORAGE_ACCOUNT_NAME%
-    set AZURE_BATCHAI_STORAGE_KEY=%STORAGE_ACCOUNT_KEY%
-    az batchai cluster create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 
+    az batchai cluster create -n landuseclassifier2 -u demoUser -p Dem0Pa$$w0rd --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 --storage-account-name %STORAGE_ACCOUNT_NAME% 
     ```
 
 1. Az alábbi parancs segítségével ellenőrizze, hogy a fürthöz tartozó előkészítési állapotát:
@@ -304,7 +302,7 @@ Ha a HDInsight-fürt létrehozása befejeződött, a projekthez számítási cé
 1.  Írja meg az Azure Machine Learning parancssori felület a következő parancsot:
 
     ```
-    az ml computetarget attach --name myhdi --address %HDINSIGHT_CLUSTER_NAME%-ssh.azurehdinsight.net --username sshuser --password %HDINSIGHT_CLUSTER_PASSWORD% -t cluster
+    az ml computetarget attach cluster --name myhdi --address %HDINSIGHT_CLUSTER_NAME%-ssh.azurehdinsight.net --username sshuser --password %HDINSIGHT_CLUSTER_PASSWORD%
     ```
 
     Ez a parancs két fájlt ad hozzá `myhdi.runconfig` és `myhdi.compute`, a projekthez `aml_config` mappát.

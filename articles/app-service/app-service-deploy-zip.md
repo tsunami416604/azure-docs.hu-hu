@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: cephalin;sisirap
-ms.openlocfilehash: 9838f0810f4827df3eb4f9407d4d4fbc1ad0ff4d
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
-ms.translationtype: HT
+ms.openlocfilehash: a0e4df0ef0a1c873f1efcac1d8dbfe3cada18218
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-file"></a>Telepítse az alkalmazást az Azure App Service egy ZIP-fájllal
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan telepítésére való használatával egy ZIP-fájl 
 
 A ZIP-fájl központi telepítéshez használja ugyanezt a Kudu szolgáltatást, hogy powers folyamatos integráció-alapú telepítések. A kudu ZIP fájlt központi telepítését támogatja a következő funkciókat: 
 
-- Egy korábbi telepítésből csatlakoztatási kísérletéből fájlok törlése.
+- Egy korábbi telepítésből maradtak fájlok törlése.
 - A beállítás az alapértelmezett felépítési folyamat, köztük a csomag visszaállítási bekapcsolása.
 - [Telepítés testreszabása](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings), többek között a következőket üzembe helyezési parancsfájlok futtatása.  
 - Központi telepítés naplófájljai. 
@@ -92,7 +92,7 @@ Ez az alkalmazás központi telepítésének listájának megtekintése a REST A
 
 Összetettebb központi telepítési forgatókönyve esetén próbálja [üzembe helyezése az Azure git](app-service-deploy-local-git.md). Az Azure Git-alapú telepítést lehetővé teszi a verziókövetés, a csomag visszaállítás, az MSBuild és több.
 
-## <a name="more-resources"></a>További források
+## <a name="more-resources"></a>További erőforrások
 
 * [Kudu: A zip-fájlból történő telepítése](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
 * [Az Azure App Service üzembe helyezési hitelesítő adatok](app-service-deploy-ftp.md)

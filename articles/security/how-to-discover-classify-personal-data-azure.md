@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 39286104474ae0f91195ab578a58dacdb2f27d18
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0d99df534da4575f3c34ec6b3475cdd1bdc3308a
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Ismerje meg, azonosítása és besorolni a személyes adatok Microsoft Azure-ban
 
@@ -183,9 +183,9 @@ blogbejegyzést. És az információk az Azure Information Protection bővebben 
 
 Először az alapok, látogasson el a [Azure CosmosD DB: lekérdezése SQL használatával](../cosmos-db/tutorial-query-documentdb.md) oktatóanyag. Az oktatóanyag egy minta dokumentumot és két minta az SQL-lekérdezések és eredmények biztosít.
 
-További részletes útmutató az SQL-lekérdezések felépítésével, a Microsoft [Azure Cosmos DB dokumentum DB API SQL-lekérdezések.](../cosmos-db/documentdb-sql-query.md)
+További részletes útmutató az SQL-lekérdezések felépítésével, a Microsoft [Azure Cosmos DB dokumentum DB API SQL-lekérdezések.](../cosmos-db/sql-api-sql-query.md)
 
-Azure Cosmos DB ismerkedik, és megtudhatja, hogyan hozhat létre adatbázist szeretne, ha felvesznek egy gyűjteményt, és adatok hozzáadása, látogasson el a [Azure Cosmos DB: egy SQL API-webalkalmazás létrehozása](../cosmos-db/create-documentdb-dotnet.md) gyors üzembe helyezési útmutató. Ha azt szeretné, .NET, Java vagy Python, például nyelven ehhez csak válassza ki a kívánt nyelvet Miután a helyhez.
+Azure Cosmos DB ismerkedik, és megtudhatja, hogyan hozhat létre adatbázist szeretne, ha felvesznek egy gyűjteményt, és adatok hozzáadása, látogasson el a [Azure Cosmos DB: egy SQL API-webalkalmazás létrehozása](../cosmos-db/create-sql-api-dotnet.md) gyors üzembe helyezési útmutató. Ha azt szeretné, .NET, Java vagy Python, például nyelven ehhez csak válassza ki a kívánt nyelvet Miután a helyhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

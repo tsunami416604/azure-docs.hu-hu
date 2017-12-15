@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 12/12/2017
 ms.author: billmath
-ms.openlocfilehash: 3dc6be73abafb99772ed428bd4f22c1797c9b1bc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e201140f5c5f2f738bcc4976ba7ca166c5bcfb75
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-ad-connect-sync-how-to-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálása: hogyan lehet módosítani az alapértelmezett konfiguráció
 Ez a témakör célja végigvezetik Önt az Azure AD Connect szinkronizálási szolgáltatás az alapértelmezett konfiguráció módosításához. Lépéseket biztosít olyan gyakori forgatókönyveket tartalmaz. Ennek az információnak a tudni a saját üzleti szabályok alapján saját konfigurációs néhány egyszerű módosítást kell lennie.
@@ -293,7 +293,7 @@ A bejövő szinkronizálási szabály lehetővé teszi a forrásattribútum a he
  
     | Típusa | TARGET attribútuma | Forrás | Egyszer alkalmazása | Egyesítési típus |
     | --- | --- | --- | --- | --- |
-    | Közvetlen | PreferredDataLocation | Válassza ki az adatforrás-attribútum | Nincs bejelölve | Frissítés |
+    |Közvetlen | PreferredDataLocation | Válassza ki az adatforrás-attribútum | Nincs bejelölve | Frissítés |
 
 7. Kattintson a **Hozzáadás** a bejövő szabály létrehozásához.
 
@@ -311,10 +311,10 @@ A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték fel�
 4. Az a **leírás** lapra, adja meg a következő konfigurációt:
 
     | Attribútum | Érték | Részletek |
-    | --- | --- | --- |
+    | ----- | ------ | --- |
     | Név | *Adjon meg egy nevet* | Ha például a "Kimenő az aad-ben – felhasználói PreferredDataLocation" |
-    | Leírás | *Adjon meg egy leírást* |
-    | Csatlakoztatott rendszer | *Válassza ki az AAD-összekötő* |
+    | Leírás | *Adjon meg egy leírást* ||
+    | Csatlakoztatott rendszer | *Válassza ki az AAD-összekötő* ||
     | Objektumtípus csatlakoztatva | Felhasználó ||
     | Metaverzum-objektum típusa | **Személy** ||
     | Kapcsolat típusa | **Csatlakozás** ||
@@ -407,6 +407,202 @@ Engedélyezze újra a beépített szinkronizálásütemezési:
 
 2. Újra engedélyezi az ütemezett szinkronizálás parancsmag futtatásával:`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
+
+## <a name="enable-synchronization-of-usertype"></a>UserType szinkronizálásának engedélyezése
+Az Azure AD Connect szinkronizálásának támogatja a **UserType** az attribútum **felhasználói** objektumok verziójában 1.1.524.0 és után. Pontosabban a következő módosításokat vezettek:
+
+- A séma az objektumtípus **felhasználói** a az Azure AD-összekötő az időtartam UserType attribútuma, amely karakterlánc típusú, és egyértékű tartalmazza.
+- A séma az objektumtípus **személy** a Metaverzumban ki van bővítve UserType attribútuma, amely karakterlánc típusú, és egyértékű tartalmazza.
+
+Alapértelmezés szerint a UserType attribútuma nincs engedélyezve a szinkronizáláshoz, mert nincs megfelelő UserType attribútum a helyszíni Active Directoryban. Manuálisan kell engedélyezné a szinkronizálást. Ahhoz, hogy a UserType attribútuma szinkronizálását, jegyezze fel a következő viselkedés kényszeríti ki az Azure AD akkor kell végrehajtani: 
+
+- Az Azure AD csak két érték UserType attribútuma – fogad **tag** és **vendég**.
+- Ha UserType attribútuma nem engedélyezett a szinkronizálás az Azure AD Connectben, a címtár-szinkronizálás segítségével létrehozott Azure Active Directory-felhasználók kellene UserType attribútuma beállítása **tag**.
+- Az Azure AD UserType attribútuma nem engedélyezi a meglévő Azure AD-felhasználók az Azure AD Connect módosítható. Csak beállítható az Azure AD-felhasználók létrehozása közben.
+
+Ahhoz, hogy a UserType attribútuma szinkronizálását, el kell döntenie hogyan a UserType attribútuma származik a helyszíni AD. Két gyakori módszer a következők:
+
+- Egy nem használt kijelölni a helyszíni AD-attribútum (például extensionAttribute1), az adatforrás-attribútum használható. A kijelölt helyszíni AD attribútum típusúnak kell lennie **karakterlánc**értéket tartalmaz, amely a egyértékű **tag** vagy **vendég**. Ha ezt a módszert választja, gondoskodnia kell arról, hogy a kijelölt attribútum a helyes értéket minden meglévő felhasználói objektumhoz a helyszíni Active Directoryban, amely szinkronizálva az Azure AD-UserType attribútuma szinkronizálásának engedélyezése előtt a telepítéskor .
+- Másik lehetőségként UserType attribútum értéke is származik egyéb tulajdonságait. Például minden felhasználó szinkronizálni vendégként, ha szeretné a helyszíni AD UserPrincipalName attribútum a tartományrészt végződik "@partners.fabrikam123.org". Ahogy korábban említettük, az Azure AD Connect nem teszi lehetővé UserType attribútuma a meglévő Azure AD-felhasználók az Azure AD Connect módosítható. Ezért akkor biztosítania kell, hogy kiválasztotta konzisztensek legyenek hogyan UserType attribútuma már be van állítva az összes meglévő Azure Active Directory-felhasználók az Ön bérelt szolgáltatásának logikát.
+
+Történő engedélyezéséről a UserType attribútuma szinkronizálását összegezhető: 
+
+>[!NOTE]
+> Ez a szakasz a többi ezeket a lépéseket ismerteti. Azok a környezet az Azure AD központi telepítés egyerdős topológiával rendelkező és anélküli egyéni szinkronizálási szabályait ismerteti. Ha több erdőből topológia, egyéni szinkronizálási szabályok konfigurálva, vagy egy átmeneti kiszolgálón rendelkezik, ennek megfelelően módosítsa a lépéseket kell.
+
+1.  Tiltsa le a **Feladatütemező szinkronizálása** , és ellenőrizze, hogy nincs folyamatban lévő szinkronizálás
+2.  Adja hozzá a **forrásattribútum** a helyszíni AD-összekötő séma
+3.  Adja hozzá **UserType** az Azure AD-összekötő séma
+4.  Az attribútum értékét a helyszíni Active Directoryból rendszer vonatkozó bejövő szinkronizálási szabály létrehozása
+5.  Az attribútumérték az Azure AD-rendszer kimenő szinkronizálási szabály létrehozása
+6.  Futtatás **teljes szinkronizálás** ciklus
+7.  Engedélyezése **Feladatütemező szinkronizálása**
+
+
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>1. lépés: Tiltsa le a szinkronizálásütemező, és ellenőrizze, hogy nincs folyamatban lévő szinkronizálás
+Győződjön meg arról, szinkronizálás nem történik meg, amíg nem szándékolt módosításokat az Azure AD-exportálás alatt álló elkerülése érdekében a szinkronizálási szabályok frissítése közepén. A beépített szinkronizálásütemezési letiltása:
+
+ 1. Indítsa el a PowerShell-munkamenetben az Azure AD Connect-kiszolgálón.
+ 2. Tiltsa le az ütemezett szinkronizálás parancsmag futtatásával:`Set-ADSyncScheduler -SyncCycleEnabled $false`
+ 3. Indítsa el a **Synchronization Service Managert** START → szinkronizálási szolgáltatás címen.
+ 4. Lépjen a **műveletek** lapra, és ellenőrizze, nincs művelet, amelynek állapota *"folyamatban."*
+
+![Synchronization Service Managert - ellenőrizze, nincs folyamatban lévő műveletekkel](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step1.png)
+
+### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>2. lépés: Az adatforrás-attribútum hozzáadása a helyszíni AD-összekötő séma
+Nem minden AD attribútumot a rendszer importálta a helyszíni AD kapcsolódási térbe. Az adatforrás-attribútum hozzáadása az importált attribútumok listáját:
+
+ 1. Lépjen a **összekötők** lapon a Synchronization Service Managert.
+ 2. Kattintson a jobb gombbal a **helyszíni AD-összekötő** válassza **tulajdonságok**.
+ 3. Az előugró párbeszédpanelen keresse meg a **attribútumok kiválasztása** fülre.
+ 4. Győződjön meg arról, hogy az adatforrás-attribútum be van jelölve, a attribútum listában.
+ 5. Kattintson a **OK** mentéséhez.
+![Adatforrás-attribútum hozzáadása a helyszíni AD-összekötő séma](./media/active-directory-aadconnectsync-change-the-configuration/usertype1.png)
+
+### <a name="step-3-add-usertype-to-the-azure-ad-connector-schema"></a>3. lépés: Az Azure AD-összekötő séma UserType hozzáadása
+Alapértelmezés szerint az Azure AD Connect terület UserType attribútuma nem importálta. Az importált attribútumlistát UserType attribútuma hozzáadása:
+
+ 1. Lépjen a **összekötők** lapon a Synchronization Service Managert.
+ 2. Kattintson a jobb gombbal a **Azure AD-összekötő** válassza **tulajdonságok**.
+ 3. Az előugró párbeszédpanelen keresse meg a **attribútumok kiválasztása** fülre.
+ 4. Ellenőrizze, hogy a PreferredDataLocation attribútum be van jelölve, a attribútum listában.
+ 5. Kattintson a **OK** mentéséhez.
+
+![Adatforrás-attribútum hozzáadása az Azure AD-összekötő séma](./media/active-directory-aadconnectsync-change-the-configuration/usertype2.png)
+
+### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>4. lépés: Az attribútum értékét a helyszíni Active Directoryból rendszer vonatkozó bejövő szinkronizálási szabály létrehozása
+A bejövő szinkronizálási szabály lehetővé teszi a forrásattribútum a helyszíni Active Directoryból a Metaverzumba haladjanak attribútumérték:
+
+1. Indítsa el a **szinkronizálási szabályok szerkesztő** START → szinkronizálási szabályok szerkesztő címen.
+2. Állítsa be a keresési szűrő **irány** kell **bejövő**.
+3. Kattintson a **új szabály hozzáadása** gombra kattintva hozzon létre egy új bejövő szabályt.
+4. Az a **leírás** lapra, adja meg a következő konfigurációt:
+
+    | Attribútum | Érték | Részletek |
+    | --- | --- | --- |
+    | Név | *Adjon meg egy nevet* | Például *"az ad-felhasználó UserType"* |
+    | Leírás | *Adjon meg egy leírást* |  |
+    | Csatlakoztatott rendszer | *Válassza ki a helyszíni AD-összekötő* |  |
+    | Objektumtípus csatlakoztatva | **Felhasználó** |  |
+    | Metaverzum-objektum típusa | **Személy** |  |
+    | Kapcsolat típusa | **Csatlakozás** |  |
+    | Sorrend | *Válassza ki az 1 – 99 közötti szám* | 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Nem válasszon egy másik szinkronizálási szabály által használt érték. |
+
+5. Lépjen a **Scoping szűrő** lapra, és adja hozzá a **egyetlen tartalmazó szűrő csoportban található, a következő záradék**:
+ 
+    | Attribútum | Operátor | Érték |
+    | --- | --- | --- |
+    | adminDescription | NOTSTARTWITH | Felhasználó\_ | 
+ 
+    Tartalmazó szűrő határozza meg, amely a helyszíni AD-objektumokat a vonatkozó bejövő szinkronizálási szabály vonatkozik. Ebben a példában használjuk a azonos tartalmazó szűrő használt "a az AD-felhasználó közös" OOB szinkronizálási szabály, amely megakadályozza, hogy a szinkronizálási szabály Azure AD-felhasználó-visszaírás funkción keresztül létrehozott felhasználói objektumok vonatkozik. Szükség lehet az Azure AD Connect telepítési megfelelően tartalmazó szűrő végeznünk.
+
+6. Lépjen a **átalakítása lapon** és valósítja meg a kívánt átalakítási szabállyal. Például kijelölt egy nem használt helyszíni AD-attribútum (például extensionAttribute1) UserType adatforrás-attribútum, mint egy közvetlen Attribútumfolyam valósíthat meg:
+ 
+    | Típusa | TARGET attribútuma | Forrás | Egyszer alkalmazása | Egyesítési típus |
+    | --- | --- | --- | --- | --- |
+    | Közvetlen | UserType | extensionAttribute1 | Nincs bejelölve | Frissítés |
+
+    Egy másik példa – érdemes UserType attribútuma értéke származik a többi tulajdonság. Például minden felhasználó szinkronizálni vendégként, ha szeretné a helyszíni AD UserPrincipalName attribútum a tartományrészt végződik "@partners.fabrikam123.org". Egy kifejezés valósíthatja meg:
+
+    | Típusa | TARGET attribútuma | Forrás | Egyszer alkalmazása | Egyesítési típus |
+    | --- | --- | --- | --- | --- |
+    | Közvetlen | UserType | IIf(IsPresent([userPrincipalName]),IIf(CBool(Instr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0), "Tag", "Vendég"), hiba ("UserPrincipalName nincs jelen UserType meghatározásához")) | Nincs bejelölve | Frissítés |
+
+7. Kattintson a **Hozzáadás** a bejövő szabály létrehozásához.
+
+![Bejövő szinkronizálási szabályának létrehozása](./media/active-directory-aadconnectsync-change-the-configuration/usertype3.png)
+
+### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>5. lépés: Az attribútum értéke az Azure AD-rendszer kimenő szinkronizálási szabály létrehozása
+A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték felé haladjanak a Metaverzumba a PreferredDataLocation attribútumhoz az Azure ad-ben:
+
+1. Lépjen a **szinkronizálási szabályok** szerkesztő.
+2. Állítsa be a keresési szűrő **irány** kell **kimenő**.
+3. Kattintson a **új szabály hozzáadása** gombra.
+4. Az a **leírás** lapra, adja meg a következő konfigurációt:
+
+    | Attribútum | Érték | Részletek |
+    | ----- | ------ | --- |
+    | Név | *Adjon meg egy nevet* | Ha például a "Kimenő az aad-ben – felhasználói UserType" |
+    | Leírás | *Adjon meg egy leírást* ||
+    | Csatlakoztatott rendszer | *Válassza ki az AAD-összekötő* ||
+    | Objektumtípus csatlakoztatva | Felhasználó ||
+    | Metaverzum-objektum típusa | **Személy** ||
+    | Kapcsolat típusa | **Csatlakozás** ||
+    | Sorrend | *Válassza ki az 1 – 99 közötti szám* | 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. YDo nem válasszon egy másik szinkronizálási szabály által használt érték. |
+
+5. Lépjen a **Scoping szűrő** lapra, és adja hozzá a **egyetlen tartalmazó szűrő csoportban található, két záradékok**:
+ 
+    | Attribútum | Operátor | Érték |
+    | --- | --- | --- |
+    | sourceObjectType | EGYENLŐ | Felhasználó |
+    | cloudMastered | NOTEQUAL | True (Igaz) |
+
+    Hatókörként szűrő határozza meg, mely az Azure AD-objektumokat a kimenő szinkronizálási szabály vonatkozik. A jelen példában használjuk "Az AD-felhasználók identitását Out" azonos tartalmazó szűrőjének OOB-szinkronizálási szabály. Megakadályozza, hogy a szinkronizálási szabály alkalmazták felhasználói objektumok, amelyek nincsenek szinkronizálva a helyszíni Active Directoryból. Szükség lehet az Azure AD Connect telepítési megfelelően tartalmazó szűrő végeznünk.
+    
+6. Lépjen a **átalakítása** lapra, és valósítja meg a következő átalakítási szabályt:
+
+    | Típusa | TARGET attribútuma | Forrás | Egyszer alkalmazása | Egyesítési típus |
+    | --- | --- | --- | --- | --- |
+    | Közvetlen | UserType | UserType | Nincs bejelölve | Frissítés |
+
+7. Bezárás **Hozzáadás** a kimenő forgalomra vonatkozó szabály létrehozásához.
+
+![Kimenő szinkronizálási szabály létrehozása](./media/active-directory-aadconnectsync-change-the-configuration/usertype4.png)
+
+### <a name="step-6-run-full-synchronization-cycle"></a>6. lépés: Teljes szinkronizálás futtatása ciklus
+Általában teljes szinkronizálási ciklust azért szükséges, mert mindkét az ad jelentek meg új attribútumokat és Azure AD-összekötőt, valamint a bevezetett egyéni szinkronizálási szabályait. Javasoljuk, hogy a módosítások ellenőrzéséhez őket az Azure AD-exportálás előtt. Az alábbi lépések segítségével a módosítások ellenőrzéséhez a lépéseket egy teljes szinkronizálási ciklust alkotó manuális futtatása során. 
+
+1. Futtatás **teljes importálás** a lépés a **helyszíni AD-összekötő**:
+
+   1. Lépjen a **műveletek** lapon a Synchronization Service Managert.
+   2. Kattintson a jobb gombbal a **helyszíni AD-összekötő** válassza ki **futtatása...**
+   3. Az előugró párbeszédpanelen válassza ki a **teljes importálás** kattintson **OK**.
+   4. Várjon, amíg a művelet befejezését.
+
+    > [!NOTE]
+    > Teljes importálás kihagyhatja a helyszíni AD-összekötő, ha az adatforrás-attribútum már szerepel a listájában importált attribútumok. Ez azt jelenti, hogy nem rendelkezett során bármilyen módosítást [2. lépés: az adatforrás-attribútum hozzáadása a helyszíni AD-összekötő séma](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
+
+2. Futtatás **teljes importálás** a lépés a **Azure AD-összekötő**:
+
+   1. Kattintson a jobb gombbal a **Azure AD-összekötő** válassza ki **futtatása...**
+   2. Az előugró párbeszédpanelen válassza ki a **teljes importálás** kattintson **OK**.
+   3. Várjon, amíg a művelet befejezését.
+
+3. A felhasználói objektum, a szinkronizálási szabály módosítások ellenőrzéséhez:
+
+    A forrásattribútumot, a helyszíni Active Directory és az Azure AD UserType importálva lettek a megfelelő összekötő területet. Teljes szinkronizálás lépés folytatása előtt javasoljuk, hogy végezzen egy **előzetes** egy meglévő felhasználó az objektum a helyszíni AD kapcsolódási térbe. Az objektum, amelyet kivételezett kell rendelkeznie a forrásattribútum feltöltve. A sikeres **előzetes** feltöltve a Metaverzumban UserType egy jól jelzi, hogy konfigurálta a szinkronizálás szabályainak megfelelően. Ehhez információ egy **előzetes**, tekintse át a részt [ellenőrzéséhez](#verify-the-change).
+
+4. Futtatás **teljes szinkronizálás** a lépés a **helyszíni AD-összekötő**:
+
+   1. Kattintson a jobb gombbal a **helyszíni AD-összekötő** válassza ki **futtatása...**
+   2. Az előugró párbeszédpanelen válassza ki a **teljes szinkronizálás** kattintson **OK**.
+   3. Várjon, amíg a művelet befejezését.
+
+5. Győződjön meg arról **függőben lévő Exportálásokról** az Azure AD:
+
+   1. Kattintson a jobb gombbal a **Azure AD-összekötő** válassza **Összekötőtér keresési**.
+
+   2. Összekötőtér keresési előugró párbeszédpanelen:
+
+      1. Állítsa be **hatókör** való **exportálási függőben lévő**.
+      2. Ellenőrizze a három jelölőnégyzetet, beleértve a **hozzáadása, módosítása és törlése**.
+      3. Kattintson a **keresési** gombra kell kattintania a módosítások exportálható objektumok listáját. Vizsgálja meg az adott objektum a módosításokat, kattintson duplán az objektum.
+      4. Ellenőrizze, hogy a változások várhatók.
+
+6. Futtatás **exportálása** a lépés a **Azure AD Connectoron**
+      
+   1. Kattintson a jobb gombbal a **Azure AD-összekötő** válassza **futtatása...**
+   2. Az összekötő futtatásához előugró párbeszédpanelen válassza ki **exportálása** kattintson **OK**.
+   3. Várjon, amíg az exportálás végrehajtásához az Azure AD.
+
+> [!NOTE]
+> Előfordulhat, hogy a lépéseket tartalmazza a teljes szinkronizálás és az Azure AD Connectoron exportálási lépést. A lépések esetén nincs szükség, mert az attribútum értékei vannak áramlanak a helyszíni Active Directory csak az Azure ad.
+
+### <a name="step-7-re-enable-sync-scheduler"></a>7. lépés: Engedélyezze újra a szinkronizálásütemező
+Engedélyezze újra a beépített szinkronizálásütemezési:
+
+1. Indítsa el a PowerShell-munkamenetben.
+2. Újra engedélyezi az ütemezett szinkronizálás parancsmag futtatásával:`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 
 ## <a name="next-steps"></a>Következő lépések

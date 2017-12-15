@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: e79a63c4316c50a7af0fc7ba0979a772ff5e6a91
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 5797d8db5f82d1c7edbb67f8e2335a5c0be21882
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -111,12 +111,12 @@ Ha úgy állítja be a régió, ne feledje, hogy Azure Cosmos DB tiszteletben ta
 ## <a name="develop-against-the-sql-api"></a>Az SQL API elleni fejlesztése
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Hogyan kezdhetem meg, hogy az SQL API fejlesztésről?
-Először regisztrálnia kell az Azure-előfizetéssel. Regisztrálás után az Azure-előfizetéssel, adhat hozzá egy SQL API-tároló az Azure-előfizetéshez. Egy Azure Cosmos DB fiók hozzáadására vonatkozó utasításokért lásd: [Azure Cosmos-adatbázis adatbázis-fiók létrehozása](create-documentdb-dotnet.md#create-account). 
+Először regisztrálnia kell az Azure-előfizetéssel. Regisztrálás után az Azure-előfizetéssel, adhat hozzá egy SQL API-tároló az Azure-előfizetéshez. Egy Azure Cosmos DB fiók hozzáadására vonatkozó utasításokért lásd: [Azure Cosmos-adatbázis adatbázis-fiók létrehozása](create-sql-api-dotnet.md#create-account). 
 
-[SDK-k](documentdb-sdk-dotnet.md) a .NET, Python, Node.js, JavaScript és Java esetében érhetők el. A fejlesztők is használhatja a [RESTful HTTP API-k](/rest/api/documentdb/) kommunikál a különböző platformok és nyelvek Azure Cosmos DB erőforrásokat.
+[SDK-k](sql-api-sdk-dotnet.md) .NET, Python, Node.js, JavaScript és Java elérhető. A fejlesztők is használhatja a [RESTful HTTP API-k](/rest/api/documentdb/) kommunikál a különböző platformok és nyelvek Azure Cosmos DB erőforrásokat.
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Tudok hozzáférni bizonyos előre elkészített minták segítséget?
-Az SQL API-példák [.NET](documentdb-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](documentdb-nodejs-samples.md), és [Python](documentdb-python-samples.md) SDK a Githubon érhetők el.
+Az SQL API-példák [.NET](sql-api-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](sql-api-nodejs-samples.md), és [Python](sql-api-python-samples.md) SDK a Githubon érhetők el.
 
 
 ### <a name="does-the-sql-api-database-support-schema-free-data"></a>Támogatja az SQL API-adatbázis a sémamentes adatokat?
@@ -131,16 +131,16 @@ A gyűjtemény olyan dokumentumokat és a kapcsolódó JavaScript-alkalmazáslog
 Gyűjtemények egyaránt az Azure Cosmos DB számlázási egységei. Egyes gyűjtemények számlázása óránként történik, a létesített átviteli sebesség alapján, és tárolóhely használt. További információkért lásd: [Azure Cosmos DB árképzési](https://azure.microsoft.com/pricing/details/cosmos-db/). 
 
 ### <a name="how-do-i-create-a-database"></a>Hogyan hozható létre adatbázis?
-Adatbázisok segítségével létrehozható a [Azure-portálon](https://portal.azure.com)leírtak szerint [egy gyűjtemény hozzáadása](create-documentdb-dotnet.md#create-collection), egy, a [Azure Cosmos DB SDK-k](documentdb-sdk-dotnet.md), vagy a [REST API-k](/rest/api/documentdb/). 
+Adatbázisok segítségével létrehozható a [Azure-portálon](https://portal.azure.com)leírtak szerint [egy gyűjtemény hozzáadása](create-sql-api-dotnet.md#create-collection), egy, a [Azure Cosmos DB SDK-k](sql-api-sdk-dotnet.md), vagy a [REST API-k](/rest/api/documentdb/). 
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Hogyan állíthatom be a felhasználókat és engedélyeket?
-Egyikének használatával hozhat létre felhasználókat és engedélyeket a [Cosmos DB API SDK-k](documentdb-sdk-dotnet.md) vagy a [REST API-k](/rest/api/documentdb/).  
+Egyikének használatával hozhat létre felhasználókat és engedélyeket a [Cosmos DB API SDK-k](sql-api-sdk-dotnet.md) vagy a [REST API-k](/rest/api/documentdb/).  
 
 ### <a name="does-the-sql-api-support-sql"></a>Támogatja az SQL API-t-SQL?
 Az SQL API-fiókok által támogatott SQL lekérdező nyelve az SQL Server által támogatott lekérdezési funkcionalitás továbbfejlesztett alkészlete. Az Azure Cosmos DB SQL lekérdező nyelve gazdag hierarchikus és relációs operátorokat és bővíthetőséget JavaScript-alapú, felhasználó által megadott funkciókat (UDF) biztosít. A JSON-szintaxis lehetővé teszi a modellezési JSON-dokumentumok fákként való címkézett csomópontok, amelyeket az Azure Cosmos DB automatikus indexelési technikái és Azure Cosmos-adatbázis SQL-lekérdezési dialektusa egyaránt használ. SQL-szintaxis használatával kapcsolatos információkért lásd: a [SQL-lekérdezés] [ query] cikk.
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Támogatja az SQL API-t-SQL összesítő függvények?
-Az SQL API támogatja a kis késleltetésű összesítési keresztül összesítő függvények bármilyen léptékben `COUNT`, `MIN`, `MAX`, `AVG`, és `SUM` az SQL-szintaxis használatával. További információkért lásd: [Aggregátumfüggvények](documentdb-sql-query.md#Aggregates).
+Az SQL API támogatja a kis késleltetésű összesítési keresztül összesítő függvények bármilyen léptékben `COUNT`, `MIN`, `MAX`, `AVG`, és `SUM` az SQL-szintaxis használatával. További információkért lásd: [Aggregátumfüggvények](sql-api-sql-query.md#Aggregates).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Hogyan nyújt az SQL API egyidejűségi?
 Az SQL API támogatja az egyidejű hozzáférések optimista vezérlését (OCC) HTTP entitáscímkék vagy ETag-EK keresztül. Minden SQL API erőforrás rendelkezik egy ETag-gel, és az ETag van állítva a kiszolgálón, minden alkalommal, amikor frissül egy dokumentumot. Az ETag fejrészt és a jelenlegi érték szerepel az összes válaszüzenetek. Az If-Match fejléc megengedik döntse el, hogy egy erőforrás frissíteni kell a kiszolgáló ETag-EK is használható. Az If-Match értéke összevetni az ETag érték. Ha az ETag érték a kiszolgálói ETag érték megegyezik, az erőforrás frissül. Ha az ETag már nem aktuális, a kiszolgáló elutasítja a műveletet egy "HTTP 412 sikertelen előfeltétel" válaszkódot. Az ügyfél majd újból lekéri az beszerzése az erőforrás jelenlegi ETag érték erőforrás. Ezenkívül ETag-EK segítségével az If-None-Match fejléc határozza meg, hogy szükség van-e az erőforrás újból beolvasni.
@@ -292,7 +292,7 @@ Igen, az azonos API támogatja.
 Nem hozhat létre és használja a meglévő Azure Table storage eszközök bármilyen megszakítás nélkül. Azonban ha nem használja a tábla API-t, nem kihasználhatja a az automatikus index, a további konzisztencia beállítás vagy a globális terjesztési. 
 
 ### <a name="how-do-i-add-replication-of-the-data-in-the-table-api-across-multiple-regions-of-azure"></a>Hogyan vehető fel az adatok replikálása a tábla API Azure különféle régiókban?
-Használhatja az Azure Cosmos DB portal [globális replikációs beállítások](tutorial-global-distribution-documentdb.md#portal) hozzáadása az alkalmazáshoz megfelelő régiók. Globálisan elosztott alkalmazások fejlesztéséhez, akkor is fel kell az alkalmazás beállítása a helyi régió biztosítani azt az olvasási kis késleltetésű PreferredLocation adatokkal. 
+Használhatja az Azure Cosmos DB portal [globális replikációs beállítások](tutorial-global-distribution-sql-api.md#portal) hozzáadása az alkalmazáshoz megfelelő régiók. Globálisan elosztott alkalmazások fejlesztéséhez, akkor is fel kell az alkalmazás beállítása a helyi régió biztosítani azt az olvasási kis késleltetésű PreferredLocation adatokkal. 
 
 ### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api"></a>Hogyan változtathatom meg a tábla API a fiók elsődleges írási régióját?
 Az Azure Cosmos DB globális replikációs portál ablaktábla segítségével adja hozzá egy régiót, és ezután átveheti a szükséges terület. Útmutatásért lásd: [fejlesztés az Azure Cosmos DB fiókok több területi](regional-failover.md). 
@@ -368,7 +368,7 @@ A .NET SDK-ból elküldi az app.config fájlban:
 ```
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Azure Cosmos DB platformként úgy tűnik, hogy számos képesség, rendezés, összesítések, hierarchiát és egyéb funkciókat. Ön hozzáadja ezeket a képességeket a tábla API-val? 
-A tábla API Azure Table storage azonos lekérdezés funkciókat biztosít. Azure Cosmos-adatbázis is támogatja a rendezést, összesítések, a földrajzi lekérdezést, a hierarchia és a számos különféle beépített funkciók. A tábla API jövőbeli szolgáltatásfrissítés további funkciók lesz elérhető. További információkért lásd: [SQL-lekérdezések](documentdb-sql-query.md).
+A tábla API Azure Table storage azonos lekérdezés funkciókat biztosít. Azure Cosmos-adatbázis is támogatja a rendezést, összesítések, a földrajzi lekérdezést, a hierarchia és a számos különféle beépített funkciók. A tábla API jövőbeli szolgáltatásfrissítés további funkciók lesz elérhető. További információkért lásd: [SQL-lekérdezések](sql-api-sql-query.md).
  
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Mikor kell módosítani a táblázat API TableThroughput?
 TableThroughput kell módosítani, ha érvényes a következő feltételek valamelyike:
@@ -540,4 +540,4 @@ Az Apache Cassandra API Apache Cassandra azonos CQL funkciókat biztosít. Terve
 Visszajelzés küldése keresztül [uservoice-visszajelzések](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 [azure-portal]: https://portal.azure.com
-[query]: documentdb-sql-query.md
+[query]: sql-api-sql-query.md

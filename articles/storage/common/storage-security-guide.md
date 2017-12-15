@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: c3973c7e529cd1d0ecd98ae17d4d979d0d458ef3
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 9cb109dd9ce5a14bb80be61577c10d7191ec5ce6
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutató
 ## <a name="overview"></a>Áttekintés
@@ -295,7 +295,7 @@ Ez az a beállítást, amely a teljes tárfiókot vonatkozik. Engedélyezi, és 
 
 Ilyenkor a titkosításához használt kulcsok a Microsoft által felügyelt. Azt a kulcsok létrehozásához eredetileg, és tárolja biztonságos kulcsok, valamint rendszeres elforgatási belső Microsoft házirend által definiált konfigurációjának kialakításához. A jövőben meg fog képes kezelni a saját titkosítási kulcsok lekérése, és adja meg a Microsoft által felügyelt kulcsok áttelepítési elérési kulcsok ügyfél által felügyelt.
 
-Ez a funkció a Resource Manager telepítési modellel készült Standard és prémium szintű Storage-fiókok érhető el. SSE csak a blokkblobokat, lapblobokat és hozzáfűző blobok vonatkozik. A más típusú adatok, beleértve a táblák, üzenetsorok és fájlok, nem lesznek titkosítva.
+Ez a funkció a Resource Manager telepítési modellel készült Standard és prémium szintű Storage-fiókok érhető el. Adatok bármilyen érvényes SSE: blokkblobokat, lapblobokat, hozzáfűző blobokat, táblák, üzenetsorok és fájlokat.
 
 Adatok titkosítása csak egy, ha SSE engedélyezve van, és az adatok kerülnek a Blob Storage. Engedélyezés vagy letiltás SSE nem befolyásolja a meglévő adatokat. Ez azt jelenti Ha engedélyezi ezt a titkosítást, nem lépjen vissza, és már létező; adatok titkosítása sem fog visszafejteni az adatokat, már létező SSE letiltásakor.
 
@@ -380,7 +380,7 @@ Az ügyféloldali titkosítással táblaentitásokat, az üzenetsor-üzeneteket 
 #### <a name="storage-service-encryption-sse"></a>Storage szolgáltatás titkosítási (SSE)
 Azure Storage SSE kezeli. SSE használatával nem biztosítja a biztonsági adatok az átvitel során, de az adatok titkosítása, Azure Storage változatlan formában. Nincs hatással a teljesítményre gyakorolt a szolgáltatás használata során.
 
-Csak titkosítása blokkblobokat, hozzáfűző blobokat és lapblobokat SSE használatával. Ha tábla vagy várólista-adatok titkosítására van szüksége, érdemes ügyféloldali titkosítással történik.
+Titkosíthatja az adatokat a tárfiók SSE használatával bármilyen típusú (blokkblobokat, hozzáfűző blobokat, a lapblobokat, a tábla adatai, a várólista adatok és a fájlok).
 
 Ha egy archív vagy a könyvtár a VHD-fájlokat az új virtuális gépek létrehozásának alapjaként használja, hozzon létre egy új tárfiókot, SSE engedélyezése és majd töltse fel a VHD-fájlok ezekhez a fiókokhoz. Ezeket a VHD-fájlok Azure Storage titkosítva legyen.
 

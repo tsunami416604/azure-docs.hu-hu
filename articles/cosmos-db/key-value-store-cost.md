@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 189f576f9ead5d67b76b3e47c312f3de76df77fe
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: e6f87cd82ebe31965fcaac1f66d2df03fd58294f
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos-adatbázis egy kulcs-érték tárolóként – költség áttekintése
 
-Azure Cosmos-adatbázis egy olyan globálisan elosztott, több modellre adatbázis szolgáltatás magas rendelkezésre állású, nagy méretű alkalmazások könnyen készítéséhez. Alapértelmezés szerint Azure Cosmos DB automatikusan elvégzi az ingests, hatékony összes adatot. Ez lehetővé teszi, hogy gyors és egységes [SQL](documentdb-sql-query.md) (és [JavaScript](programming.md)) az adatok bármilyen lekérdezések. 
+Azure Cosmos-adatbázis egy olyan globálisan elosztott, több modellre adatbázis szolgáltatás magas rendelkezésre állású, nagy méretű alkalmazások könnyen készítéséhez. Alapértelmezés szerint Azure Cosmos DB automatikusan elvégzi az ingests, hatékony összes adatot. Ez lehetővé teszi, hogy gyors és egységes [SQL](sql-api-sql-query.md) (és [JavaScript](programming.md)) az adatok bármilyen lekérdezések. 
 
 Ez a cikk ismerteti a Azure Cosmos DB költségét egyszerű írásra, és olvasási műveleteket, ha egy kulcs-érték tárolóként szolgál. Az írási műveletek közé tartozik a beszúrások, cserél, törléseket és dokumentumok upserts. Egy 99,99 % biztosítása mellett összes egyetlen régión fiók és minden több területi fiókok laza konzisztencia, 99.999 % SLA-elérhetőséget olvasni elérhetőségét a fiókokhoz több területi adatbázis Azure Cosmos DB ajánlatok garantált < 10-ms késleltetés az beolvassa és < 15-ms késleltetés (indexelt) esetében: a 99th PERCENTILIS, írja. 
 

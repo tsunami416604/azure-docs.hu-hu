@@ -5,7 +5,7 @@ keywords: "ssh kapcsolat visszautasította, ssh hiba és az azure-ssh, SSH-kapcs
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: support-article
-ms.date: 07/06/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 264fe2acbdd393a2f9d349e1522263f1728c5d48
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5908c9572901bfb68ce03d7e6ccb08f84f38e567
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Részletes SSH hibaelhárításának lépései az Azure Linux virtuális gép csatlakozni
 Nincsenek számos oka lehet, hogy az SSH-ügyfél nem feltétlenül tudni elérni az SSH szolgáltatás a virtuális Gépen. Ha már elvégezte a több keresztül [hibaelhárítási lépések általános SSH](troubleshoot-ssh-connection.md), további hibáinak kapcsolódási problémáját. Ez a cikk végigvezeti részletes hibaelhárítási lépések elvégzésével ellenőrizheti, ha az SSH-kapcsolat nem működik, és a megoldásának módjával.
@@ -39,14 +39,14 @@ A következő lépések segítenek a különítse el a hiba forrását, és hogy
 
 2. Válassza ki **beállítások** vizsgálata végpontok, IP-címek, hálózati biztonsági csoportok és egyéb beállításokat.
 
-   A virtuális gép rendelkeznie kell egy SSH-forgalomhoz, megtekintheti a definiált végpontot **végpontok** vagy  **[hálózati biztonsági csoport](../../virtual-network/virtual-networks-nsg.md)**. Az erőforrás-kezelő használatával létrehozott virtuális gépeken végpontok hálózati biztonsági csoport vannak tárolva. Azt is ellenőrizze, hogy a szabályok vannak alkalmazva a hálózati biztonsági csoportot, és, hogy azok által hivatkozott alhálózaton.
+   A virtuális gép rendelkeznie kell egy SSH-forgalomhoz, megtekintheti a definiált végpontot **végpontok** vagy  **[hálózati biztonsági csoport](../../virtual-network/virtual-networks-nsg.md)**. Az erőforrás-kezelő használatával létrehozott virtuális gépeken végpontok hálózati biztonsági csoport vannak tárolva. Győződjön meg arról, hogy a szabályok vannak alkalmazva a hálózati biztonsági csoportot, és az alhálózati hivatkozott.
 
-Ellenőrizze a hálózati kapcsolatot, ellenőrizze a beállított végpontjaikra, és tekintse meg, ha a virtuális gép egy másik protokoll, például http- vagy egy másik szolgáltatás keresztül érhető el.
+Ellenőrizze a hálózati kapcsolatot, ellenőrizze a beállított végpontjaikra, és képes-e csatlakozni a virtuális gép egy másik protokoll, például http- vagy egy másik szolgáltatás keresztül.
 
 Ezeket a lépéseket alatti próbálja meg újra az SSH-kapcsolat.
 
 ## <a name="find-the-source-of-the-issue"></a>Keresse meg a probléma forrása
-Az SSH-ügyfél a számítógépen előfordulhat, hogy nem sikerül az SSH szolgáltatás az Azure virtuális gépen hibái vagy a következő területeken konfigurációs hibák miatt:
+Az SSH-ügyfél, a számítógép csatlakozni az SSH szolgáltatás az Azure virtuális gépen hibái vagy a következő területeken konfigurációs hibák miatt meghiúsulhat:
 
 * [SSH-ügyfélszámítógép](#source-1-ssh-client-computer)
 * [Szervezet a peremhálózati eszköz](#source-2-organization-edge-device)
@@ -76,11 +76,11 @@ Ha a tanúsítvány alapú hitelesítést használ, ellenőrizze, hogy rendelkez
 * Chmod 644 ~/.ssh/known_hosts (SSH-kapcsolaton keresztül csatlakozott gazdagépeket tartalmaz)
 
 ## <a name="source-2-organization-edge-device"></a>2. forrás: Szervezet peremhálózati eszköz
-A szervezet a peremhálózati eszköz a probléma forrása a hibát, győződjön meg arról, hogy olyan számítógépre, amely közvetlenül kapcsolódik az internethez SSH-kapcsolatok tehet az Azure virtuális gép. Ha a telephelyek közötti VPN vagy Azure ExpressRoute-kapcsolaton keresztül érik el a virtuális Gépet, folytassa a [forrás 4: a hálózati biztonsági csoportok](#nsg).
+A szervezet megszüntetéséhez peremhálózati eszköz, a hiba a forrás győződjön meg arról, hogy a számítógép közvetlenül csatlakozik az internethez végezhet SSH-kapcsolatok az Azure virtuális gép. Ha a telephelyek közötti VPN vagy Azure ExpressRoute-kapcsolaton keresztül érik el a virtuális Gépet, folytassa a [forrás 4: a hálózati biztonsági csoportok](#nsg).
 
 ![Diagram, amely kiemeli a szervezet a peremhálózati eszköz](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-Ha még nem rendelkezik olyan számítógépre, amely közvetlenül csatlakozik az internethez, hozzon létre egy új Azure virtuális gép saját erőforráscsoportban vagy felhőalapú szolgáltatás és használják. További információkért lásd: [Azure-ban futó Linux virtuális gép létrehozása](quick-create-cli.md). Amikor elkészült, a tesztet, törölje az erőforráscsoportba vagy a virtuális gép és a felhőalapú szolgáltatás.
+Ha még nem rendelkezik olyan számítógépre, amely közvetlenül kapcsolódik az internethez, hozzon létre egy új Azure virtuális Gépet a saját erőforráscsoportban vagy a felhőalapú szolgáltatás és használja ezt a új virtuális Gépet. További információkért lásd: [Azure-ban futó Linux virtuális gép létrehozása](quick-create-cli.md). Amikor elkészült, a tesztet, törölje az erőforráscsoportba vagy a virtuális gép és a felhőalapú szolgáltatás.
 
 Ha az SSH-kapcsolat létrehozhat egy olyan számítógéppel, közvetlenül csatlakozik az internethez, ellenőrizze a szervezet peremhálózati eszközön:
 
@@ -94,7 +94,7 @@ A hálózati rendszergazda segítségét, a szervezet biztonsági eszközök a b
 > [!NOTE]
 > Ebből a forrásból csak a klasszikus üzembe helyezési modell használatával létrehozott virtuális gépek vonatkozik. Virtuális gépek erőforrás-kezelő használatával létrehozott, folytassa a [forrás-4: a hálózati biztonsági csoportok](#nsg).
 
-A felhőalapú szolgáltatás végpontjának és hozzáférés-vezérlési lista kiküszöbölhetők a hiba a forrásaként, győződjön meg arról, hogy az ugyanazon virtuális hálózatban lévő másik Azure virtuális gép SSH-kapcsolatok tehet a virtuális gép.
+Elkerülése érdekében a felhőalapú szolgáltatás végpontjának és hozzáférés-vezérlési lista forrása a hiba, győződjön meg arról, hogy az ugyanazon virtuális hálózatban lévő másik Azure virtuális gép is kapcsolódnak, SSH használatával.
 
 ![Diagram, amely kiemeli a felhőalapú szolgáltatás végpontjának és hozzáférés-vezérlési lista](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 

@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Vállalati állapot barangolási beállításokat, a windows-felhő, gyakran ismételt kérdések a vállalati állapothordozás"
 documentationcenter: 
 author: tanning
-manager: swadhwa
+manager: mtillman
 editor: curtand
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 9968d9fa1ebbc92b5647a23c75e75fb819f5d5ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f9431a695f2acaa2067e623788a0c3c3b4183c9
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 Ez a témakör néhány rendszergazdák rendelkezhet beállításait, valamint az alkalmazás adatszinkronizálás kérdésekre ad választ.
@@ -72,7 +72,7 @@ Windows 10 November 2015-ös vagy újabb kiadásaiban a vállalati Állapothordo
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>Azure AD-fiókok több bérlő beállítások is szinkronizálja?
 Ha több Azure AD különböző fiókok Azure AD bérlőre ugyanarra az eszközre, frissítenie kell az eszköz beállításjegyzékébe minden Azure AD-bérlő az Azure Rights Management (Azure RMS) folytatott kommunikációhoz.  
 
-1. Minden Azure AD-bérlő a GUID keresése. Nyissa meg a klasszikus Azure portálra, és válassza ki az Azure AD-bérlő. A bérlőhöz tartozó GUID szerepel az URL-CÍMÉT a böngésző címsorába. Például:`https://manage.windowsazure.com/YourAccount.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/Tenant GUID/directoryQuickStart`
+1. Minden Azure AD-bérlő a GUID keresése. Nyissa meg az Azure-portálon, és válassza ki az Azure AD-bérlő. A bérlőhöz tartozó GUID szerepel az URL-CÍMÉT a böngésző címsorába. Például:`https://manage.windowsazure.com/YourAccount.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/Tenant GUID/directoryQuickStart`
 2. Miután a globálisan egyedi Azonosítót, akkor a beállításkulcs **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<bérlői azonosító GUID >**.
    Az a **bérlői azonosító GUID** kulcsot, hozzon létre egy új karakterláncsoros értéket (REG-MULTI-SZ) **AllowedRMSServerUrls**. Az adatait adja meg a licencelési terjesztési pont URL-címei a más Azure bérlőre, az eszköz hozzáférő.
 3. A terjesztési pont licencelési URL-címeket található futtatásával a **Get-AadrmConfiguration** parancsmag. Ha az értékek a **LicensingIntranetDistributionPointUrl** és **LicensingExtranetDistributionPointUrl** eltérőek, mindkét értéket adni. Ha az értékek megegyeznek, csak egyszer adja meg az értéket.

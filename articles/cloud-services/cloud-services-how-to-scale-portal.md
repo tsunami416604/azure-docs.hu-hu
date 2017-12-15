@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 708b35252429e30b44226030d3d83b928f2a9520
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: c2164d36c234309dcd855247cd1c1067de36284c
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Az automatikus skálázás egy felhőalapú szolgáltatás, a portál konfigurálása
 
@@ -39,6 +39,8 @@ Az alkalmazás skálázás konfigurálása előtt gondolja át a következő inf
 * További erőforrások, az Ön előfizetéséhez rendelve is méretezheti.
 
 * Ahhoz, hogy az alkalmazás magas rendelkezésre állású, akkor győződjön meg arról, hogy két vagy több szerepkör osztályt telepítették. További információkért lásd: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/).
+
+* Automatikus méretezési csak akkor fordul elő, ha a szerepkörök **készen** állapotát.  
 
 
 ## <a name="where-scale-is-located"></a>Ahol a méretezési

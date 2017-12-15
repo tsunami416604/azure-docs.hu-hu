@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: corywink
-ms.openlocfilehash: d4cb452b34ddefc70dc1adcff0e5fead072aa16a
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.date: 12/12/2017
+ms.author: dobett
+ms.openlocfilehash: 16685787b04d26f09e2b8778faac257571162aac
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Gyakori kérdések az IoT Suite csatlakoztatott beépített, előre konfigurált megoldás
 
@@ -42,7 +42,7 @@ OPC egyesített architektúra révén, 2008, amely a szabványos platformfügget
 
 ### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Miért Microsoft adta meg OPC EE a csatlakoztatott gyári előre konfigurált megoldáshoz?
 
-Microsoft OPC EE választotta, mert a nyitott, a nem tulajdonosi platform független, iparági ismeri fel és bevált szabványnak. Ez feltétele Industrie 4.0-s verzióját (RAMI4.0) referencia architektúra megoldások gyártási eljárások széles körét és berendezések együttműködésével biztosítása. Microsoft igény szerinti, ügyfeleink Industrie 4.0 megoldások látja. OPC EE támogatása segítségével csökkenthető az ügyfelek számára a kitűzött célokat a korlát, és azonnali üzleti értéket ad a őket.
+Microsoft OPC EE választotta, mert a nyitott, a nem tulajdonosi platform független, iparági ismeri fel és bevált szabványnak. Ez feltétele Industrie 4.0-s verzióját (RAMI4.0) referencia architektúra megoldások gyártási eljárások széles körét és berendezések együttműködésével biztosítása. Microsoft látja az ügyfelek igény Industrie 4.0 megoldások létrehozásához. OPC EE támogatása segítségével csökkenthető az ügyfelek számára a kitűzött célokat a korlát, és azonnali üzleti értéket ad a őket.
 
 ### <a name="how-do-i-add-a-public-ip-address-to-the-simulation-vm"></a>Hogyan egy nyilvános IP-cím hozzáadása a virtuális gép szimuláció?
 
@@ -143,6 +143,64 @@ Vizsgálja meg a kiadó eszközök egyike által küldött adatokat:
 * Publisher.Seattle.Corp.contoso
 
 Ha nem az IoT-központ küldött adatokat, majd nincs a szimuláció kapcsolatos problémát. Első lépésként elemzés elemezni kell a naplófájlok a szimuláció összetevőt. Lásd: [Hogyan juthatok naplóadatait a szimuláció összetevői?](#how-can-i-get-log-data-from-the-simulation-components) Ezt követően próbálja állítsa le és indítsa el a szimuláció, és még nincs adat küldése, ha frissíti a szimuláció teljesen. Lásd: [hogyan frissíthetők a szimuláció, a virtuális gép?](#how-do-i-update-the-simulation-in-the-vm)
+
+### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Hogyan engedélyezhető az interaktív térkép a csatlakoztatott gyári-megoldásban?
+
+Ahhoz, hogy a csatlakoztatott gyári megoldásban interaktív térkép, rendelkeznie kell egy meglévő Bing térképek API vállalati terv. Ha a Bing térképek API vállalati terv a csatlakoztatott gyári megoldást www.azureiotsuite.com telepítésekor, az interaktív térkép automatikusan engedélyezve van az Ön.
+
+### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Hogyan hozható létre a Bing térképek API vállalati fiók?
+
+Kérhet egy ingyenes *belső tranzakciók szintjét 1 a Bing Maps vállalati* terv. Azonban csak hozzáadhat ezen sémák két Azure-előfizetéshez. Ha még nem rendelkezik vállalati fiók a Bing térképek API, hozzon létre egyet az Azure portálon kattintva **+ hozzon létre egy erőforrást**. Majd keresse meg a **Bing Maps API for Enterprise** és kövesse az utasításokat annak létrehozásához.
+
+![Bing kulcs](media/iot-suite-faq-cf/bing.png)
+
+### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>A Bing térképek API beszerzése a vállalati QueryKey
+
+Miután létrehozta a Bing térképek API-t a vállalati terv, a Bing Maps vállalati erőforrás hozzáadása az Azure-portálon a csatlakoztatott gyári megoldás erőforráscsoportját.
+
+1. Az Azure-portálon lépjen a Bing térképek API-t a vállalati terv tartalmazó erőforráscsoportot.
+
+1. Kattintson a **összes beállítás**, majd **kulcskezelés**.
+
+1. Két kulcs van: **főkulcsos** és **QueryKey**. Másolás a **QueryKey** érték.
+
+1. A kulcsot észlelnie a `build.ps1` parancsfájl, a környezeti változót `$env:MapApiQueryKey` a PowerShell-környezetében a **QueryKey** a csomag. A build script majd automatikusan értéket adja meg az App Service beállításait.
+
+1. Futtassa a helyi vagy felhőalapú használó telepítés a `build.ps1` parancsfájl.
+
+### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Hogyan engedélyezhető az interaktív térkép helyileg hibakeresés során?
+
+Az interaktív térkép közben helyileg hibakeresést engedélyezéséhez állítsa be a beállítás értékének `MapApiQueryKey` fájlok `local.user.config` és `<yourdeploymentname>.user.config` gyökérkönyvtárában található a központi telepítés értékének a **QueryKey** másolt korábban.
+
+### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>Hogyan használható egy másik lemezképet, az irányítópult kezdőlapján?
+
+Módosítsa a statikus kép io látható az irányítópult kezdőlapján cserélje le a lemezképet `WebApp\Content\img\world.jpg`. Majd újraépítése, és telepítse újra a webalkalmazást.
+
+### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Miként használható az eszközök nem OPC EE csatlakoztatott Factory?
+
+A telemetriai adatokat küldeni a nem OPC EE eszközök csatlakoztatott gyári:
+
+1. [Egy új állomás konfigurálása a csatlakoztatott gyári topológia](iot-suite-connected-factory-configure.md) a a `ContosoTopologyDescription.json` fájlt.
+
+1. A telemetriai adatok csatlakoztatott gyári kompatibilis JSON formátumban betöltési:
+
+    ```json
+    [
+      {
+        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
+        "DisplayName": "<name_of_the_datapoint>",
+        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
+        "Value": {
+          "Value": <datapoint_value>,
+          "SourceTimestamp": "<timestamp>"
+        }
+      }
+    ]
+    ```
+
+1. Formátuma `<timestamp>` van:`2017-12-08T19:24:51.886753Z`
+
+1. Indítsa újra a csatlakoztatott gyári App Service.
 
 ### <a name="next-steps"></a>Következő lépések
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2016
 ms.author: arramac
-ms.openlocfilehash: 041982f251ddee7570619c0e7e61d07906aaed2f
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 73e546dea2c1c102736a2043e0b67f0f2c622b18
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>Modellezési dokumentum adatok NoSQL-adatbázisok
 Amíg a sémamentes adatbázisok, például Azure Cosmos DB, könnyebben super könnyen vezessék be a módosításokat az adatmodellbe kell továbbra is töltött bizonyos idő számbavétele szolgál az adatokról. 
@@ -39,7 +39,7 @@ Amikor elkezdi az adatok Azure Cosmos DB, például egy dokumentum áruházban m
 
 Ahhoz, hogy férhet hozzá túl sokkal tovább, ossza meg velünk néhány lépésekkel vissza és tekintse meg a következő hogyan azt előfordulhat, hogy a modell egy relációs adatbázisban, velünk számos már ismeri a tárgy valamit. A következő példa bemutatja, hogyan tárolódhat egy személy egy relációs adatbázisban. 
 
-![Relációs adatbázis-modell](./media/documentdb-modeling-data/relational-data-model.png)
+![Relációs adatbázis-modell](./media/sql-api-modeling-data/relational-data-model.png)
 
 Relációs adatbázisok használata, ha azt korábban lett tanított évig optimalizálására, optimalizálására, optimalizálására.
 
@@ -290,7 +290,7 @@ A fenti példában a unbounded gyűjtemény csökkentek azt a közzétevő dokum
 ### <a name="how-do-i-model-manymany-relationships"></a>Hogyan a több: többhöz kapcsolatok modell?
 Egy relációs adatbázisban *több: több* kapcsolatok gyakran van modellezve a táblákat, amelyek csak csatlakozás együtt más táblákból származó rekordokat. 
 
-![Táblák illesztése](./media/documentdb-modeling-data/join-table.png)
+![Táblák illesztése](./media/sql-api-modeling-data/join-table.png)
 
 Előfordulhat, hogy ugyanazt a dokumentumok használatával replikálja, és előállít egy adatmodell, az alábbihoz hasonló kísértésbe.
 
@@ -395,4 +395,4 @@ Nincs nincs egyetlen konkrét módszert meghatározni a képernyőn megjelenő a
 
 Azure Cosmos DB kapcsolatos további tudnivalókért tekintse meg a szolgáltatás [dokumentáció](https://azure.microsoft.com/documentation/services/cosmos-db/) lap. 
 
-Megértése, hogyan shard az adatok így vannak elrendezve több partíciót lásd [particionálás adatokat az Adatbázisba az Azure Cosmos](documentdb-partition-data.md). 
+Megértése, hogyan shard az adatok így vannak elrendezve több partíciót lásd [particionálás adatokat az Adatbázisba az Azure Cosmos](sql-api-partition-data.md). 

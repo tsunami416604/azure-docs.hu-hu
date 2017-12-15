@@ -16,11 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 08/25/2017
 ms.author: sashan
-ms.openlocfilehash: 936f95700cb57325a572e5509334398a724c4986
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c2c5f18b736c83c281d56e0bdda977a9f8c48101
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -129,7 +129,7 @@ A használt üzletmenet-folytonossági funkciótól függetlenül végre kell ha
 Ha nem megfelelő, az alkalmazások helyeznek online, miután a feladatátvétel, vagy egy adatbázis helyreállítási további időt igényel, és valószínűleg is szükség lehet magas terhelés - rossz kombinációjából egyszerre hibaelhárítás.
 
 ### <a name="fail-over-to-a-geo-replicated-secondary-database"></a>Feladatok átadása a georeplikált másodlagos adatbázis
-Aktív georeplikáció és automatikus feladatátvételt csoportok (az előzetes verzió) a helyreállítási mechanizmusként használ, ha az Automatikus feladatátvétel házirendek konfigurálásához, vagy használjon [kézi feladatátvételre](sql-database-disaster-recovery.md#fail-over-to-geo-replicated-secondary-database). Indítják el, ha a feladatátvétel hatására az új elsődleges, és jegyezze fel új tranzakciók és lekérdezések - minimális adatvesztéssel az adatok replikálása még nem kész a másodlagos. Információ a feladatátvételi folyamat tervezéséről: [egy alkalmazás felhő vész-helyreállítási](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+Aktív georeplikáció és automatikus feladatátvételt csoportok (az előzetes verzió) a helyreállítási mechanizmusként használ, ha az Automatikus feladatátvétel házirendek konfigurálásához, vagy használjon [kézi feladatátvételre](sql-database-disaster-recovery.md#fail-over-to-geo-replicated-secondary-server-in-the-failover-group). Indítják el, ha a feladatátvétel hatására az új elsődleges, és jegyezze fel új tranzakciók és lekérdezések - minimális adatvesztéssel az adatok replikálása még nem kész a másodlagos. Információ a feladatátvételi folyamat tervezéséről: [egy alkalmazás felhő vész-helyreállítási](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
 > [!NOTE]
 > Az Adatközpont ismét online elérhető lesz a régi eredményezi automatikusan kapcsolódjon újra az új elsődleges, és a másodlagos adatbázisok válnak. Helyezze át az elsődleges vissza az eredeti régió van szüksége, ha manuálisan is kezdeményezhető a tervezett feladatátvétel (feladat-visszavétel). 
