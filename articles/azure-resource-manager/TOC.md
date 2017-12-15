@@ -19,11 +19,7 @@
 ### [Hivatkozás más sablonokra](resource-group-linked-templates.md)
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)
 ### [Több példány létrehozása](resource-group-create-multiple.md)
-### [Hely beállítása](resource-manager-template-location.md)
-### [Címkék hozzárendelése](resource-manager-template-tags.md)
-### [Gyermekerőforrás nevének és típusának megadása](resource-manager-template-child-resource.md)
 ### [Erőforrás frissítése](resource-manager-update.md)
-### [Objektumok használata a paraméterekhez](resource-manager-objects-as-parameters.md)
 ### [Állapot megosztása hivatkozott sablonok között](best-practices-resource-manager-state.md)
 ### [Minták sablonok tervezéséhez](best-practices-resource-manager-design-templates.md)
 

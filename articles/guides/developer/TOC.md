@@ -64,8 +64,8 @@
 ## Adattárolás
 ### [Blobok](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)
 ### [Fájlmegosztások](https://docs.microsoft.com/azure/storage/files/storage-dotnet-how-to-use-files)
-### [Kulcs-érték párok](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-dotnet)
-### [JSON-dokumentumok](https://docs.microsoft.com/azure/cosmos-db/documentdb-get-started)
+### [Kulcs-érték párok](https://docs.microsoft.com/azure/cosmos-db/create-table-dotnet)
+### [JSON-dokumentumok](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet)
 ### [Kapcsolati táblák](https://docs.microsoft.com/azure/sql-database/sql-database-get-started)
 ### [Üzenetsorok](https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues)
 
