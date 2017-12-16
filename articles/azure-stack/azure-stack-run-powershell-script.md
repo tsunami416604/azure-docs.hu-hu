@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/11/2017
+ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 7c320c6ba51ae0800407aab7aee92c42b2b441a7
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 470a45aea253e1e238983527427b600117e413fe
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Az Azure verem szoftverfejlesztői készlet telepítése
 
@@ -104,7 +104,7 @@ A ASDK számítógép előkészítése, miután a ASDK az alábbi lépéseket k�
 1. Miután a számítógép sikeresen elindul a CloudBuilder.vhdx lemezképpel, jelentkezzen be az előző lépésben megadott rendszergazdai hitelesítő adatokkal. 
 2. Nyisson meg egy emelt szintű PowerShell-konzolt, és futtassa a **\AzureStack_Installer\asdk-installer.ps1** parancsfájlt (most lehet egy másik meghajtón a CloudBuilder.vhdx kép). Kattintson az **Install** (Telepítés) gombra.
 3. Az a **típus** legördülő mezőben válassza **Azure felhőbe** vagy **AD FS**.
-    - **Azure-felhőbe**: konfigurálja az Azure Active Directory (Azure AD) identitás-szolgáltatóként. A funkció használatához szüksége lesz az internethez, a teljes nevet, egy Azure ad directory-bérlő formájában *tartománynév*. onmicrosoft.com és a megadott könyvtár globális rendszergazdai hitelesítő adatokat. 
+    - **Azure-felhőbe**: konfigurálja az Azure Active Directory (Azure AD) identitás-szolgáltatóként. A funkció használatához szüksége lesz az internethez, a teljes nevet, egy Azure ad directory-bérlő formájában *tartománynév*. onmicrosoft.com vagy egy Azure AD ellenőrizte az egyéni tartomány nevét, és a globális rendszergazdai hitelesítő adatokat a megadott könyvtár. 
     - **Az AD FS**: A címtárszolgáltatás lesz az identitásszolgáltató alapértelmezett stamp. Az alapértelmezett fiók a bejelentkezéshez azurestackadmin@azurestack.local, és a jelszó használata a telepítés részeként megadott.
 4. A **helyi rendszergazda jelszavát**, a a **jelszó** mezőbe, írja be a helyi rendszergazda jelszavát (amelynek meg kell egyeznie az aktuális beállított helyi rendszergazdai jelszót), és kattintson a **Következő**.
 5. Válasszon olyan hálózati adaptert kíván használni a csomagot, és kattintson a **következő**.
@@ -206,7 +206,7 @@ Ha az Azure AD identity kapcsolódó **nagyobb, mint egy** Azure AD-címtár:
 cd C:\CloudDeployment\Setup 
 $adminpass = Get-Credential Administrator 
 $aadcred = Get-Credential "<Azure AD global administrator account name>" #Example: user@AADDirName.onmicrosoft.com 
-.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<specific Azure AD directory in the form of domainname.onmicrosoft.com>" -TimeServer 52.168.138.145 #Example time server IP address.
+.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<Azure AD directory in the form of domainname.onmicrosoft.com or an Azure AD verified custom domain name>" -TimeServer 52.168.138.145 #Example time server IP address.
 ```
 
 Ha a környezet **nem** van DHCP engedélyezve van, akkor meg kell adni a következő további paraméterek (például használati megadott) feletti lehetőségek közül: 
@@ -219,7 +219,7 @@ Ha a környezet **nem** van DHCP engedélyezve van, akkor meg kell adni a követ
 |Paraméter|Kötelező/választható|Leírás|
 |-----|-----|-----|
 |AdminPassword|Szükséges|A helyi rendszergazda fiók és minden egyéb felhasználói fiók beállítása development kit központi telepítésének részeként létrehozott összes virtuális gépet. Ezt a jelszót meg kell egyeznie az aktuális helyi rendszergazda jelszavát, a gazdagépen.|
-|InfraAzureDirectoryTenantName|Szükséges|Beállítja a bérlő címtárát. A paraméter segítségével adjon meg egy adott könyvtár ahol az AAD-fiókba jogosult több könyvtárak kezeléséhez. Teljes név egy AAD Directory bérlő formátumban. onmicrosoft.com.|
+|InfraAzureDirectoryTenantName|Szükséges|Beállítja a bérlő címtárát. A paraméter segítségével adjon meg egy adott könyvtár ahol az AAD-fiókba jogosult több könyvtárak kezeléséhez. Teljes név egy AAD Directory bérlő formátumban. onmicrosoft.com vagy egy Azure AD ellenőrizte az egyéni tartomány nevét.|
 |TimeServer|Szükséges|Ez a paraméter segítségével adjon meg egy konkrét kiszolgálót. Ez a paraméter egy érvényes idő kiszolgáló IP-címet meg kell adni. Kiszolgálók nevei nem támogatottak.|
 |InfraAzureDirectoryTenantAdminCredential|Optional|Beállítja az Azure Active Directory-felhasználónevet és jelszót. Ezek az Azure hitelesítő adatait kell megadni a szervezeti azonosítóval.|
 |InfraAzureEnvironment|Optional|Válassza ki az Azure környezetben szeretné regisztrálni a Azure Alkalmazásveremben üzembe. A választható lehetőségek nyilvános Azure-ban Azure - Kína, Azure - Amerikai Egyesült államokbeli kormányzati.|

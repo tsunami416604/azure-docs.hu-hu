@@ -4,6 +4,16 @@
   items:
     - name: Mi az Azure Stack?
       href: azure-stack-poc.md
+    - name: Kibocsátási megjegyzések
+      items:
+        - name: Fejlesztői csomag kibocsátási megjegyzései
+          href: azure-stack-asdk-release-notes.md
+        - name: Integrált rendszerek kibocsátási megjegyzései
+          items:
+            - name: 1711 frissítés
+              href: azure-stack-update-1711.md
+            - name: 1710 frissítés
+              href: azure-stack-update-1710.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -23,16 +33,6 @@
       href: azure-stack-planning-considerations.md
     - name: Karbantartási szabályzat
       href: azure-stack-servicing-policy.md
-    - name: Kibocsátási megjegyzések
-      items:
-        - name: Fejlesztői csomag kibocsátási megjegyzései
-          href: azure-stack-asdk-release-notes.md
-        - name: Integrált rendszerek kibocsátási megjegyzései
-          items:
-            - name: 1711 frissítés
-              href: azure-stack-update-1711.md
-            - name: 1710 frissítés
-              href: azure-stack-update-1710.md
     - name: A legfontosabb jellemzők és fogalmak
       href: azure-stack-key-features.md
     - name: Fejlesztői csomag architektúrája
