@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 10/31/2016
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.author: joeyong;barbkess;kevin
+ms.openlocfilehash: 56bae284bb83b1ff18bf2caf644e6dd071b8eb69
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 A cikkből megtudhatja, hogyan lehet a számítási feladat figyeléséhez, és vizsgálja meg a lekérdezés végrehajtása az Azure SQL Data Warehouse dinamikus felügyeleti nézetek (dinamikus felügyeleti nézetek) segítségével.
@@ -174,7 +174,7 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 Ha a lekérdezés aktívan Várakozás egy másik lekérdezés erőforrások, akkor az állapot lesz **AcquireResources**.  Ha a lekérdezés rendelkezik a szükséges erőforrásokat, akkor az állapot lesz **engedélyezve**.
 
 ## <a name="monitor-tempdb"></a>A figyelő a tempdb
-A tempdb magas kihasználtsága lehet az alapvető ok, a lassú teljesítmény és a kimenő memóriaproblémák léptek fel. Először ellenőrizze Ha adatokat eltérésére vagy gyenge minőségű rowgroups rendelkezik, és hajtsa végre a megfelelő műveleteket. Fontolja meg az adatraktár skálázás, ha a tempdb teljes kapacitásukkal működjenek elérése a lekérdezés végrehajtása közben. A következő útmutató minden egyes csomóponton lekérdezésenként tempdb használatának azonosítása. 
+A tempdb magas kihasználtsága lehet az alapvető ok, a lassú teljesítmény és a kimenő memóriaproblémák léptek fel. Fontolja meg az adatraktár skálázás, ha a tempdb teljes kapacitásukkal működjenek elérése a lekérdezés végrehajtása közben. A következő útmutató minden egyes csomóponton lekérdezésenként tempdb használatának azonosítása. 
 
 Hozzon létre a következő nézetet társítja a megfelelő csomópont sys.dm_pdw_sql_requests azonosítóját. Ez lehetővé teszi a használhatják fel a többi csatlakoztatott dinamikus felügyeleti nézetek, és ezek a táblák sys.dm_pdw_sql_requests illesztése.
 
@@ -233,7 +233,7 @@ ORDER BY sr.request_id;
 ```
 ## <a name="monitor-memory"></a>A figyelő memória
 
-Memória lehet az alapvető ok, a lassú teljesítmény és a kimenő memóriaproblémák léptek fel. Először ellenőrizze Ha adatokat eltérésére vagy gyenge minőségű rowgroups rendelkezik, és hajtsa végre a megfelelő műveleteket. Fontolja meg az adatraktár skálázás, ha SQL Server memóriahasználatának teljes kapacitásukkal működjenek elérése a lekérdezés végrehajtása közben.
+Memória lehet az alapvető ok, a lassú teljesítmény és a kimenő memóriaproblémák léptek fel. Fontolja meg az adatraktár skálázás, ha SQL Server memóriahasználatának teljes kapacitásukkal működjenek elérése a lekérdezés végrehajtása közben.
 
 A következő lekérdezés visszaadja az SQL Server használatát és Memóriaterhelést csomópontonként:   
 ```sql
@@ -258,7 +258,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>A figyelő tranzakciós napló mérete
-A következő lekérdezés a tranzakciós napló mérete minden terjesztési adja vissza. Győződjön meg arról, ha az adatok eltérésére vagy gyenge minőségű rowgroups rendelkezik, és hajtsa végre a megfelelő műveleteket. Ha egy, a naplófájlok 160GB közel jár, érdemes a példány vertikális felskálázásával, vagy a tranzakció mérete korlátozza. 
+A következő lekérdezés a tranzakciós napló mérete minden terjesztési adja vissza. Ha egy, a naplófájlok 160GB közel jár, érdemes a példány vertikális felskálázásával, vagy a tranzakció mérete korlátozza. 
 ```sql
 -- Transaction log size
 SELECT

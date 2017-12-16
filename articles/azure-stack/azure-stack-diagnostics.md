@@ -7,14 +7,14 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 16b56c71e2c81bead7c578a973840391996e845b
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: fdbf9b1b77c2c64b3ebfcdbc5463916f317e4881
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Az Azure verem diagnosztikai eszközök
 
@@ -29,11 +29,11 @@ A diagnosztikai eszközök biztosíthatja a napló gyűjtemény módszer haszná
  
 ## <a name="trace-collector"></a>Nyomkövetési adatgyűjtő
  
-A nyomkövetési adatgyűjtő alapértelmezés szerint engedélyezve van, és minden esemény Windows (nyomkövetés) gyűjteni Komponensszolgáltatások Azure verem háttérben fut, folyamatosan. Egy közös helyi megosztás mással egy öt nap korhatár ETW naplók tárolja. Ha eléri ezt a korlátot, a legrégebbi fájlok törlődnek, amikor újakat hoz létre. Az alapértelmezett maximális engedélyezett az egyes fájlok mérete 200MB. A mérete ellenőrzés akkor fordul elő, rendszeres időközönként (2 percenként), és ha az aktuális fájl > = 200 MB, azok mentésekor, és egy új fájl jön létre. Az esemény-munkamenet létrehozott fájlok összesített mérete a is van egy 8 GB-os korlátot. 
+A nyomkövetési adatgyűjtő alapértelmezés szerint engedélyezve van, és minden esemény Windows (nyomkövetés) gyűjteni Komponensszolgáltatások Azure verem háttérben fut, folyamatosan. Egy közös helyi megosztás mással egy öt nap korhatár ETW naplók tárolja. Ha eléri ezt a korlátot, a legrégebbi fájlok törlődnek, amikor újakat hoz létre. Az alapértelmezett maximális engedélyezett az egyes fájlok mérete 200 MB. A méret ellenőrzés 2 percenként történik, és ha az aktuális fájl > = 200 MB, azok mentésekor, és egy új fájl jön létre. Az esemény-munkamenet létrehozott fájlok összesített mérete a is van egy 8 GB-os korlátot. 
 
 ## <a name="log-collection-tool"></a>Napló gyűjtemény eszköz
  
-A PowerShell-parancsmag **Get-AzureStackLog** gyűjteni a összetevőit Azure verem környezetben is használható. Azokat a zip-fájloknak a felhasználó által definiált helyre menti. Ha a technikai támogatási csapat a naplók megoldhatja a problémát, akkor megkérheti, hogy az eszköz futtatásához.
+A PowerShell-parancsmag **Get-AzureStackLog** gyűjteni a összetevőit Azure verem környezetben is használható. Azokat a zip-fájloknak a felhasználó által definiált helyre menti. Ha az Azure-verem technikai támogatást nyújtó csoportnak a naplók megoldhatja a problémát, akkor megkérheti, hogy az eszköz futtatásához.
 
 > [!CAUTION]
 > Ezekben a naplófájlokban tartalmazhatnak személyes azonosításra alkalmas adatokat (PII). Ez figyelembe kell venni a könyvelés nyilvánosan minden naplófájl előtt.
@@ -136,11 +136,11 @@ if($s)
 
 
 ### <a name="collect-logs-using-a-graphical-user-interface"></a>Naplógyűjtéshez egy grafikus felhasználói felület használatával
-Ahelyett, hogy a Get-AzureStackLog parancsmag Azure verem naplók beolvasni a szükséges paramétereket ad meg, a rendelkezésre álló nyílt forráskódú Azure verem eszközök található, a fő Azure verem eszközök GitHub-tárházban, http://aka.ms/AzureStackTools is használhatja.
+Ahelyett, hogy a Get-AzureStackLog parancsmag Azure verem naplók beolvasása szükséges paraméterek biztosít, kihasználhatja a rendelkezésre álló nyílt forráskódú Azure verem eszközök a fő Azure verem eszközök GitHub eszközök tárházban http://aka.ms/AzureStackTools címen található.
 
-A **ERCS_AzureStackLogs.ps1** PowerShell-parancsfájl a GitHub-tárházban eszközök tárolja, és rendszeresen frissül. Indította el egy felügyeleti PowerShell-munkamenetet, a parancsfájl a rendszerjogosultságú végpont csatlakozik, és futtatja a Get-AzureStackLog megadott paraméterekkel. Ha paraméter nélkül van megadva, a parancsfájl alapértelmezett paraméterek grafikus felhasználói felületen keresztül kér.
+A **ERCS_AzureStackLogs.ps1** PowerShell-parancsfájl a GitHub-tárházban eszközök tárolja, és rendszeresen frissül. Győződjön meg arról, hogy rendelkezik-e az elérhető legújabb verzióra, hogy le kell töltenie azt közvetlenül a http://aka.ms/ERCS. Indította el egy felügyeleti PowerShell-munkamenetet, a parancsfájl a rendszerjogosultságú végpont csatlakozik, és futtatja a Get-AzureStackLog megadott paraméterekkel. Ha paraméter nélkül van megadva, a parancsfájl alapértelmezés szerint az adatkérés paraméterek grafikus felhasználói felületen keresztül.
 
-További információ a ERCS_AzureStackLogs.ps1 PowerShell parancsfájl, akkor további megtekinthetnek [egy rövid videót](https://www.youtube.com/watch?v=Utt7pLsXEBc) vagy a parancsfájl megtekintése [információs fájl](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) a Azure verem eszközök GitHub-tárházban található. 
+További információt a ERCS_AzureStackLogs.ps1 PowerShell-parancsfájlt, figyelheti az [egy rövid videót](https://www.youtube.com/watch?v=Utt7pLsXEBc) vagy a parancsfájl megtekintése [információs fájl](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) a Azure verem eszközök GitHub-tárházban található. 
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés
 

@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 413bc8a0e0347498c004b93fb37f51d86ad029f5
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 93acec3bada30364b6e3338e037b442d7e6cd309
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="supported-matrix-for-this-release"></a>Ebben a kiadásban támogatott mátrix 
 Ha a kód adatokat tölt az Azure Machine Learning adatforrások vagy az Azure Machine Learning adatok előkészített, vagy egy Pandas első használatával, vagy a Spark dataframe, kísérlet a következő kombinációk számítási és az adatok helyek támogatottak:
@@ -37,4 +37,4 @@ Ha a helyi elérési utat használ, a projekt fájlok átmásolja a számítási
 
 ** Maven JDBC SQL Server-illesztőprogramot 6.2.1 használ. Gondoskodnia kell arról, hogy a csomagban (vagy egy kompatibilis egy) a számítási környezet a spark_dependencies.yml fájl tartalmazza.
 
-Támogatja az Azure SQL Database, az Azure SQL Data Warehouse vagy az SQL Server megadott, az adatbázis elérhető a számítási környezetből. 
+Támogatja az Azure SQL Database vagy az SQL Server megadott, az adatbázis elérhető a számítási környezetből. 

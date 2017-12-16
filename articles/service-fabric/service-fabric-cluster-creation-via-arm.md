@@ -14,8 +14,8 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: 19ad079c58728479a7f39ce7520bd8eaebdff1f5
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 251f7fc99f1c8d79f31118df11b7522930903c25
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/15/2017
@@ -617,15 +617,20 @@ Ha problémákat tapasztal, és mégis fontos kontextusinformációkat üzenetek
 ## <a name="assign-users-to-roles"></a>Felhasználók hozzárendelése szerepkörökhöz
 Miután létrehozta a fürt képviselő alkalmazások, a felhasználók a szerepkörökhöz rendeljen hozzá a Service Fabric által támogatott: olvasási és a rendszergazda segítségét. A szerepkörök használatával rendelhet a [Azure-portálon][azure-portal].
 
-1. Az Azure portálon, nyissa meg az-bérlőjéhez tartozik, és válassza **alkalmazások**.
-2. Válassza ki a webalkalmazás, melynek neve például `myTestCluster_Cluster`.
-3. Kattintson a **felhasználók** fülre.
-4. Válasszon ki egy felhasználót rendelni, és kattintson a **hozzárendelése** gomb a képernyő alján.
+1. Az Azure-portálon válassza ki a bérlő jobb felső sarokban.
 
-    ![Felhasználók hozzárendelése szerepkörökhöz gomb][assign-users-to-roles-button]
-5. Válassza ki a szerepkör hozzárendelése a felhasználóhoz.
+    ![Válassza ki a bérlő gomb][select-tenant-button]
+2. Válassza ki **Azure Active Directory** a bal oldali lapon, és a vállalati alkalmazások"select".
+3. Válassza ki a "Minden alkalmazások", keresése és válassza a webes alkalmazás, melynek neve például `myTestCluster_Cluster`.
+4. Kattintson a **felhasználók és csoportok** fülre.
 
-    !["A felhasználók hozzárendelése" párbeszédpanel][assign-users-to-roles-dialog]
+    ![Felhasználók és csoportok lapon][users-and-groups-tab]
+5. Kattintson a **felhasználó hozzáadása** gombra kattint, az új oldalon, a felhasználó és a szerepkör hozzárendelése, majd válassza ki a **válasszon** gombra az oldal alján.
+
+    ![Felhasználók hozzárendelése szerepkörök lap][assign-users-to-roles-page]
+6. Kattintson a **hozzárendelése** gombra az oldal alján.
+
+    ![Adja hozzá a hozzárendelés megerősítése][assign-users-to-roles-confirm]
 
 > [!NOTE]
 > További információ a szerepkörök a Service Fabric: [szerepköralapú hozzáférés-vezérlés a Service Fabric ügyfelek](service-fabric-cluster-security-roles.md).
@@ -665,7 +670,7 @@ A Service Fabric Explorerben Azure ad bejelentkezés megkísérlésekor a lap ad
 A fürt (webalkalmazás) Service Fabric Explorer jelölő kísérletet tesz az Azure AD hitelesítése, és a kérés részeként biztosítja a átirányítási visszatérési URL-CÍMÉT. Az URL-címe nem szerepel az Azure AD-alkalmazás, de **válasz URL-CÍMEN** listája.
 
 #### <a name="solution"></a>Megoldás
-A a **konfigurálása** lapon a fürt (webalkalmazás) alkalmazás hozzáadása az URL-címet a Service Fabric Explorer számára a **válasz URL-CÍMEN** listában, és cserélje le a listában található elemek egyikét. Ha végzett, mentse a módosítást.
+Válassza ki az "App regisztrációk" AAD lapon, válassza ki a fürt alkalmazást, majd a **válasz URL-címek** gombra. A "Válasz URL-címek" lapon Service Fabric Explorer URL-cím hozzáadása a listához, vagy cserélje le a listában található elemek egyikét. Ha végzett, mentse a módosítást.
 
 ![Webes alkalmazás válasz URL-címe][web-application-reply-url]
 
@@ -703,13 +708,15 @@ Ezen a ponton rendelkezik olyan Azure Active Directory-felügyeleti hitelesíté
 [service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure
 [resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
-[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#Create-a-Service-Fabric-cluster- Resource-Manager-template
+[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template
 
 <!-- Images -->
 [cluster-security-arm-dependency-map]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-arm-dependency-map.png
 [cluster-security-cert-installation]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-cert-installation.png
-[assign-users-to-roles-button]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-button.png
-[assign-users-to-roles-dialog]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles.png
+[select-tenant-button]: ./media/service-fabric-cluster-creation-via-arm/select-tenant-button.png
+[users-and-groups-tab]: ./media/service-fabric-cluster-creation-via-arm/users-and-groups-tab.png
+[assign-users-to-roles-page]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-page.png
+[assign-users-to-roles-confirm]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-confirm.png
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png

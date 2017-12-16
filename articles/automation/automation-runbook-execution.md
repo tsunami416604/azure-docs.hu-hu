@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: c883421c6fc79b233b2d47afde9cbe6edb909a51
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: a443071aee3e0f845de4387322d2866157a9fe87
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="runbook-execution-in-azure-automation"></a>A Runbook végrehajtása az Azure Automationben
 Az Azure Automationben elindít egy runbookot, ha egy feladat jön létre. Egy feladat a runbook egyszeri futtatási példánya. Egy Azure Automation munkavégző rendelt minden feladat futtatása. Munkavállalók több Azure-fiókra által megosztott, amíg feladatokat azok másik Automation-fiók el különítve egymástól. Nem irányítás melyik Worker-szolgáltatások a feladat a kérelmet. Egyetlen runbook fut egyszerre több feladattal rendelkezhet.  Az Automation-fiók a feladatok végrehajtási környezetnek felhasználhatók. Az Azure portálon megtekintett forgatókönyvek listája, amely minden runbook indított összes feladatok állapotának sorolja fel. Megtekintheti a feladatok minden runbook egyes állapotának nyomon követése érdekében. A különböző feladatállapotok leírását [feladatállapotok](#job-statuses).
@@ -40,12 +40,12 @@ A következő táblázat ismerteti a különböző állapotok feladat lehetsége
 |:--- |:--- |
 | Befejezve |A feladat sikeresen befejeződött. |
 | Sikertelen |A [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md), a runbookot nem sikerült lefordítani.  A [PowerShell-parancsfájl runbookok](automation-runbook-types.md), a runbookot nem sikerült elindítani, vagy a feladat kivételbe ütközött. |
-| Nem sikerült, erőforrás Várakozás |A feladat sikertelen volt, mert elérte a [igazságos elosztása révén](#fairshare) háromszor korlátjának növelését, és az azonos ellenőrzőpont vagy a runbook elindítása indított minden alkalommal. |
+| Nem sikerült, erőforrás Várakozás |A feladat sikertelen volt, mert elérte a [igazságos elosztása révén](#fair-share) háromszor korlátjának növelését, és az azonos ellenőrzőpont vagy a runbook elindítása indított minden alkalommal. |
 | Várakozási sorba helyezve |A feladat arra vár erőforrások egy automatizálási feldolgozó elérhető lesz, így indíthatók el. |
 | Indulás alatt |A feladat egy feldolgozónak van kiosztva, és az elindítás folyamatban van. |
 | Folytatás |A folytatása a feladat felfüggesztését követően annak folyamatban van. |
 | Fut |A feladat fut. |
-| Rendszert futtató erőforrások vár |A feladat le lett távolítva a memóriából, mert elérte a [igazságos elosztása révén](#fairshare) korlátot. Röviddel a legutóbbi ellenőrzőponttól folytatja. |
+| Rendszert futtató erőforrások vár |A feladat le lett távolítva a memóriából, mert elérte a [igazságos elosztása révén](#fair-share) korlátot. Röviddel a legutóbbi ellenőrzőponttól folytatja. |
 | Leállítva |A feladatot a felhasználó leállította, mielőtt befejeződhetett volna. |
 | Leállítás |A rendszer a feladat leállítása folyamatban van. |
 | Felfüggesztve |A felhasználó által, a rendszer, vagy a runbook egy parancsa felfüggesztette a feladatot. A felfüggesztett feladatokat újra lehet indítani, és azok az utolsó ellenőrzőponttól vagy a runbook elejétől folytatása, ha nincs beállítva a ellenőrzőpontokat. A runbook csak felfüggeszti a rendszer egy kivétel. Alapértelmezés szerint ErrorActionPreference értéke **Folytatás**, tehát a feladat a hiba folyamatosan működik. Ha ezt a preferenciaváltozót **leállítása**, majd a feladat felfüggeszti az hiba.  Érvényes [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md) csak. |

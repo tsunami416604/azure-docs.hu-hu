@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/20/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 6a168b600833c7e4544da7a5f5f4b7a0af73e0b5
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 6555b41f2debdfe46ec2d4ece8e3281155099a77
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="create-container-for-deployment-to-azure-container-instances"></a>Tároló létrehozása az Azure Container Instances szolgáltatásban való üzembe helyezéshez
 
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/aci-helloworld.git
 A mintatárházban elérhető Docker-fájl bemutatja a tároló felépítésének menetét. Egy [hivatalos Node.js rendszerképpel][dockerhub-nodeimage] indul, amely az [Alpine Linux](https://alpinelinux.org/) rendszeren alapul – ez egy kisebb kiadás, amely jól használható a tárolókkal. Ezután bemásolja az alkalmazásfájlokat a tárolóba, telepíti a függőségeket a Node Package Manager használatával, és végül elindítja az alkalmazást.
 
 ```Dockerfile
-FROM node:8.2.0-alpine
+FROM node:8.9.3-alpine
 RUN mkdir -p /usr/src/app
 COPY ./app/* /usr/src/app/
 WORKDIR /usr/src/app
@@ -71,13 +71,13 @@ Kimenetét a `docker build` parancs (csonkolt olvashatóság érdekében) a köv
 
 ```bash
 Sending build context to Docker daemon  119.3kB
-Step 1/6 : FROM node:8.2.0-alpine
-8.2.0-alpine: Pulling from library/node
+Step 1/6 : FROM node:8.9.3-alpine
+8.9.3-alpine: Pulling from library/node
 88286f41530e: Pull complete
 84f3a4bf8410: Pull complete
 d0d9b2214720: Pull complete
 Digest: sha256:c73277ccc763752b42bb2400d1aaecb4e3d32e3a9dbedd0e49885c71bea07354
-Status: Downloaded newer image for node:8.2.0-alpine
+Status: Downloaded newer image for node:8.9.3-alpine
  ---> 90f5ee24bee2
 ...
 Step 6/6 : CMD node /usr/src/app/index.js

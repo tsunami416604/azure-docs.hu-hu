@@ -4,7 +4,7 @@ description: "Az Azure load balancer használata magas rendelkezésre állású 
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/11/2017
+ms.date: 12/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6738d88d5a0430abaf3855dbf97a618e4c83617f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6eee852e703d25ccc4b13401c3e4ab46d09655da
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="how-to-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Betöltése egyenleg Windows virtuális gépek magas rendelkezésre állású alkalmazás létrehozása az Azure-ban
 Terheléselosztás biztosít a rendelkezésre állási magasabb szintű bejövő kérelmek elosztásával el több virtuális gépre. Ebben az oktatóanyagban elsajátíthatja az Azure load balancer különböző összetevőit, ossza el a forgalmat, és magas rendelkezésre állás biztosításához. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -68,7 +68,7 @@ $publicIP = New-AzureRmPublicIpAddress `
 ```
 
 ### <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
-Hozzon létre egy előtérbeli IP-cím [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig). Az alábbi példa létrehoz egy előtérbeli IP-cím nevű *myFrontEndPool*: 
+Hozzon létre egy előtérbeli IP-készlet [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig). Az alábbi példakód létrehozza a nevű előtérbeli IP-címkészlet *myFrontEndPool* , és csatolja a *myPublicIP* cím: 
 
 ```powershell
 $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig `
@@ -76,13 +76,13 @@ $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-Hozzon létre egy háttér-címkészlet, amely [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig). Az alábbi példa létrehoz egy háttér címkészletet nevű *myBackEndPool*:
+Hozzon létre egy háttér-címkészlet, amely [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig). A virtuális gépek csatlakoztatása ehhez a háttérkészlethez, a fennmaradó lépéseit. Az alábbi példa létrehoz egy háttér címkészletet nevű *myBackEndPool*:
 
 ```powershell
 $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name myBackEndPool
 ```
 
-Hozza létre a terheléselosztót, [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer). Az alábbi példa létrehoz egy terhelés-kiegyenlítő nevű *myLoadBalancer* használatával a *myPublicIP* cím:
+Hozza létre a terheléselosztót, [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer). Az alábbi példa létrehoz egy terhelés-kiegyenlítő nevű *myLoadBalancer* az előző lépésben létrehozott használatakor az előtér- és háttérszolgáltatások IP-készletek:
 
 ```powershell
 $lb = New-AzureRmLoadBalancer `
@@ -98,7 +98,7 @@ Ahhoz, hogy a terheléselosztó a figyelheti az alkalmazás állapotát, haszná
 
 Az alábbi példa létrehoz egy TCP-Hálózatfigyelővel. Egyéni HTTP mintavételt további részletes állapotának ellenőrzésére is létrehozhat. Ha egy egyéni HTTP-vizsgálatot, létre kell hoznia az állapot ellenőrzése lapon, például a *healthcheck.aspx*. A mintavétel kell visszaadnia egy **HTTP 200 OK** válasz megtartja a gazdagép Elforgatás a terheléselosztóhoz.
 
-A TCP állapotmintáihoz létrehozásához használhatja [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig). Az alábbi példa létrehoz egy nevű állapotmintáihoz *myHealthProbe* , amely figyeli az egyes virtuális gépek:
+A TCP állapotmintáihoz létrehozásához használhatja [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig). Az alábbi példa létrehoz egy nevű állapotmintáihoz *myHealthProbe* minden virtuális gép, amely figyeli a *TCP* port *80*:
 
 ```powershell
 Add-AzureRmLoadBalancerProbeConfig `
@@ -110,7 +110,7 @@ Add-AzureRmLoadBalancerProbeConfig `
   -ProbeCount 2
 ```
 
-Frissítse a terheléselosztót, [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer):
+A állapotmintáihoz alkalmazásához frissíteni a terheléselosztót, [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer):
 
 ```powershell
 Set-AzureRmLoadBalancer -LoadBalancer $lb
@@ -119,7 +119,7 @@ Set-AzureRmLoadBalancer -LoadBalancer $lb
 ### <a name="create-a-load-balancer-rule"></a>Hozzon létre olyan terheléselosztó szabályhoz
 Olyan terheléselosztó szabályhoz hogyan adatforgalom elosztása a virtuális gépek azonosítására szolgál. Megadhatja az előtér-IP-konfigurációjának megadása a bejövő forgalom és a háttér IP-címkészlet, valamint a megfelelő forrás és cél portot forgalom fogadására. Győződjön meg arról, hogy csak a megfelelő virtuális gépek forgalom fogadására, hogy is megadhatja a használandó állapotmintáihoz.
 
-Hozzon létre olyan terheléselosztó szabályhoz rendelkező [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig). Az alábbi példa létrehoz egy terheléselosztási szabály nevű *myLoadBalancerRule* és porton forgalom egyenlege *80*:
+Hozzon létre olyan terheléselosztó szabályhoz rendelkező [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig). Az alábbi példa létrehoz egy terheléselosztási szabály nevű *myLoadBalancerRule* és a forgalom egyenlege *TCP* port *80*:
 
 ```powershell
 $probe = Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $lb -Name myHealthProbe

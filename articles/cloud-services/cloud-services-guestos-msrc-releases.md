@@ -12,23 +12,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/8/2017
+ms.date: 12/14/2017
 ms.author: raiye
-ms.openlocfilehash: f753a30fa833aaf19069b01607c8beaadcc667f5
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 435aca91fa7b46fd47d5031290028b93bfadde48
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="azure-guest-os"></a>Az Azure vendég operációs rendszer
 Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC) frissítések alkalmazása az Azure vendég operációs rendszeren. Ez a cikk határozza meg, ha az adott frissítés használ, a vendég operációs rendszer összes keresése. Frissítések mindig áthozott az adott [termékcsalád] [ family-explain] bevezetett azokat.
+
+## <a name="november-guest-os"></a>November vendég operációs rendszer
+| Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| Rel 17-10 | [4048953] |Windows 10-es frissítések |5.13 |2017. november 14. |
+| Rel 17-10 | [4048960], [4048962], [4048961] |Csak a Windows biztonsági |2.68, 3.55, 4.48 |2017. november 14. |
+| Rel 17-10 | [4047206] |Az Internet explorer |2.68, 3.55, 4.48 |2017. november 14. |
+| Rel 17-10 | [4048951] |Flash |3.55, 4.48, 5.13 |2017. november 14. |
+| N/A | [4041681] |Október nem a biztonság összegzése |2.67 |2017. október 10. |
+| N/A | [4041690] |Október nem a biztonság összegzése |3.55 |2017. október 10. |
+| N/A | [4041693] |Október nem a biztonság összegzése |4.48 |2017. október 10. |
+| N/A | [3191565] |Frissítés a Windows Management Framework 5.1  |3.55 |2017. szeptember 12. |
+| N/A | [3191564] |Frissítés a Windows Management Framework 5.1  |4.48 |2017. szeptember 12. |
 
 ## <a name="october-guest-os"></a>Október vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | Rel 17-10 | [4041691] |Windows 10-es frissítések |5.12 |2017. október 10. |
 | Rel 17-10 | [4041678], [4041679], [4041687] |Csak a Windows biztonsági |2.67, 3.54, 4.47 |2017. október 10. |
-| Rel 17-10 | [4040685], |Az Internet Explorer |2.67, 3.54, 4.47 |2017. október 10. |
+| Rel 17-10 | [4040685], |Internet Explorer |2.67, 3.54, 4.47 |2017. október 10. |
 | Rel 17-10 | [4041681], [4041690], [4041693] |Havi Windows-frissítések |2.67, 3.54, 4.47 |2017. október 10. |
 | N/A | [4038777] |Szeptembertől nem a biztonság összegzése |2.67 |2017. szeptember 12. |
 | N/A | [4038799] |Szeptembertől nem a biztonság összegzése |3.54 |2017. szeptember 12. |
@@ -56,7 +69,7 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-07 rel | [4034679] |Csak a Windows biztonsági |2.65 |2017. augusztus 8. |
 | 17-07 rel | [4034672] |Csak a Windows biztonsági |4.45 |2017. augusztus 8. |
 | 17-07 rel | [4034666] |Csak a Windows biztonsági |3.52 |2017. augusztus 8. |
-| 17-07 rel | [4034733] |Az Internet Explorer |2.65, 3.52, 4.45, 5.10 |2017. augusztus 8. |
+| 17-07 rel | [4034733] |Internet Explorer |2.65, 3.52, 4.45, 5.10 |2017. augusztus 8. |
 | 17-07 rel | [4034664], [4034665], [4034681] |Havi Windows-frissítések |2.65, 3.52, 4.45 |2017. augusztus 8. |
 | 17-07 rel | [4034668], [4034660], [4034658], [4034674] |Újra CVE-2017-0071, újra kiadása CVE-2017-0228 kiadása |5.10 |2017. augusztus 8. |
 | 17-07 rel | [4025341] |Július nem a biztonság összegzése |2.65 |2017. július 11. |
@@ -71,7 +84,7 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-07 rel | [4025333] |Csak a Windows biztonsági |4.44 |2017. július 11. |
 | 17-07 rel | [4025343] |Csak a Windows biztonsági |3.51 |2017. július 11. |
 | 17-07 rel | [4025376] |Flash |3.51, 4.44, 5.9 |2017. július 11. |
-| 17-07 rel | [4025252] |Az Internet Explorer |2.64, 3.51, 4.44 |2017. július 11. |
+| 17-07 rel | [4025252] |Internet Explorer |2.64, 3.51, 4.44 |2017. július 11. |
 | N/A | [4020322] |Időzóna frissítése |2.64, 3.51, 4.44 |2017. július 11. |
 | N/A | [4022719] |Június nem a biztonság összegzése |2.64 |2017. június 13. |
 | N/A | [4022724] |Június nem a biztonság összegzése |3.51 |2017. június 13. |
@@ -84,7 +97,7 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-06 rel | [4022722] |Csak a Windows biztonsági |2.63 |2017. június 13. |
 | 17-06 rel | [4022717] |Csak a Windows biztonsági |4.43 |2017. június 13. |
 | 17-06 rel | [4022718] |Csak a Windows biztonsági |3.50 |2017. június 13. |
-| 17-06 rel | [4021558] |Az Internet Explorer|2.63, 3.50, 4.43 |2017. június 13. |
+| 17-06 rel | [4021558] |Internet Explorer|2.63, 3.50, 4.43 |2017. június 13. |
 | 17-06 rel | [4022719], [4022724], [4022726] |Havi Windows-frissítések |2.63, 3.50, 4.43 |2017. június 13. |
 | 17-06 rel | [4022730] |Frissítés az Adobe Flash Player |3.50, 4.43, 5.8 |2017. június 13. |
 | 17-06 rel | [4015217], [4015221], [4015583], [4015550], [4015219] |Újra CVE-2017-0167 kiadása |4.43, 5.8 |2017. április 11. |
@@ -548,6 +561,19 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | N/A |[3007054] |PIN-kóddal védett nyomtatás a beállítás mindig jeleníti meg, amikor egy Windows Áruházbeli alkalmazást, a Windows belül dokumentum nyomtatása |4.15, 3.22, 2.34 |Január 13 2015 |
 | N/A |[2999802] |Pontozott vonal helyett folytonos vonal lista tartalmazza a Windows rendszerben |4.15, 3.22, 2.34 |Január 13 2015 |
 | N/A |[2896881] |A felhasználók nyomtatók hozzárendelését a Windows bejelentkezési folyamat során a AddPrinterConnection VBScript parancs használatakor hosszú bejelentkezési idő |4.15, 3.22, 2.34 |Január 13 2015 |
+
+[4048953]: http://support.microsoft.com/kb/4048953
+[4048960]: http://support.microsoft.com/kb/4048960 
+[4048962]: http://support.microsoft.com/kb/4048962
+[4048961]: http://support.microsoft.com/kb/4048961
+[4047206]: http://support.microsoft.com/kb/4047206
+[4048951]: http://support.microsoft.com/kb/4048951
+[4041681]: http://support.microsoft.com/kb/4041681
+[4041693]: http://support.microsoft.com/kb/4041693
+[4041690]: http://support.microsoft.com/kb/4041690
+[3191565]: http://support.microsoft.com/kb/3191565
+[3191564]: http://support.microsoft.com/kb/3191564
+
 
 [4041691]: http://support.microsoft.com/kb/4041691 
 [4041678]: http://support.microsoft.com/kb/4041678 

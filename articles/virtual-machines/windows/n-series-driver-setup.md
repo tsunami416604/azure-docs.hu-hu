@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/09/2017
+ms.date: 12/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b16e57e06d5055fc0c2750385630a908e10bd217
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 58ca4ea85b6097f7210a21db45791bb43b0e99ea
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>Windows Server rendszert futtató N sorozatú virtuális gépek GPU illesztőprogramok beállítása
 A Windows Server 2016 vagy a Windows Server 2012 R2 rendszert futtató Azure N sorozatú virtuális gépek GPU lehetőségeinek kihasználásához, telepítse a támogatott NVIDIA video-illesztőprogramok. Ez a cikk lépéseit illesztőprogram beállítása az N-sorozatú virtuális gép telepítése után. Telepítési információk illesztőprogram érhető el is [Linux virtuális gépek](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -54,12 +54,12 @@ A GPU eszköz állapotát lekérdező, futtassa a [nvidia-smi](https://developer
 
 ![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi.png)  
 
-## <a name="rdma-network-for-nc24r-vms"></a>RDMA hálózati NC24r virtuális gépekhez
+## <a name="rdma-network-connectivity"></a>RDMA hálózati kapcsolat
 
-Az azonos rendelkezésre állási készlet telepített NC24r virtuális gépek RDMA hálózati kapcsolat engedélyezhető. Telepítse a Windows hálózati illesztőprogramokat, amelyek lehetővé teszik az RDMA-kapcsolatot a HpcVmDrivers bővítmény szerepelnie kell. A Virtuálisgép-bővítmény adhat hozzá egy NC24r VM [Azure PowerShell](/powershell/azure/overview) az Azure Resource Manager parancsmagok.
+RDMA hálózati kapcsolat engedélyezhető RDMA N sorozatú virtuális gépek engedélyezve van, például az azonos rendelkezésre állási készlet NC24r telepítve. Telepítse a Windows hálózati illesztőprogramokat, amelyek lehetővé teszik az RDMA-kapcsolatot a HpcVmDrivers bővítmény szerepelnie kell. A Virtuálisgép-bővítmény adhat hozzá egy RDMA-kompatibilis N sorozatú virtuális gépre [Azure PowerShell](/powershell/azure/overview) az Azure Resource Manager parancsmagok.
 
 > [!NOTE]
-> Jelenleg csak Windows Server 2012 R2 támogatja az RDMA hálózati NC24r virtuális gépeken.
+> Jelenleg csak Windows Server 2012 R2 támogatja az RDMA hálózati N sorozatú virtuális gépeken.
 > 
 
 A legújabb 1.1-es verziójának telepítése HpcVMDrivers bővítmény egy meglévő RDMA-kompatibilis virtuális gépen az USA nyugati régiója régióban myVM nevű virtuális:
@@ -73,10 +73,6 @@ Az RDMA hálózati Message Passing Interface (MPI) forgalmat támogatja a futó 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az N-sorozatú virtuális gépeken a NVIDIA Feldolgozóegységekkel kapcsolatos további információkért lásd:
-    * [NVIDIA Tesla K80](http://www.nvidia.com/object/tesla-k80.html) (az Azure NC virtuális gépek)
-    * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html) (az Azure Permanens virtuális gépek)
-
-* Alkalmazások GPU-az elérését gyorsítja fel a NVIDIA Tesla Feldolgozóegységekkel a fejlesztők is letöltheti és telepítheti a CUDA eszközkészlet 8 [Windows Server 2016](https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_win10-exe) vagy [Windows Server 2012 R2](https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_windows-exe). További információkért lásd: a [CUDA a telepítési útmutató](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
+* A fejlesztők a NVIDIA Tesla Feldolgozóegységekkel a GPU-gyorsított alkalmazások is letöltheti és telepítheti a [CUDA eszközkészlet 9.1](https://developer.nvidia.com/cuda-downloads). További információkért lásd: a [CUDA a telepítési útmutató](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
 
 

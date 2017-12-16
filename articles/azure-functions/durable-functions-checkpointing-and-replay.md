@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: d8a5f3c915b1e3b6e11cec9c5540fa192f5f85dd
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: b1bca62e256c1ede5df6888dd7c47ce2aa816bb9
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Ellenőrzőpontok és a tartós függvények (az Azure Functions) ismétlés
 
@@ -63,10 +63,10 @@ Az ellenőrzőpont végrehajtása után az orchestrator függvény szabad eltáv
 
 Létrehozása után a korábban bemutatott függvény előzményeinek jelenjenek meg a következőhöz Azure Table Storage (illusztrációs célokat szolgálnak rövidítése):
 
-| PartitionKey (InstanceId)                     | Esemény típusa             | időbélyeg               | Input (Bemenet) | Név             | eredménye                                                    | status | 
+| PartitionKey (InstanceId)                     | Esemény típusa             | Időbélyeg               | Input (Bemenet) | Név             | Eredmény                                                    | status | 
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | NULL értékű  | E1_HelloSequence |                                                           |                     | 
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     | 
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     | 
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     | 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     | 
@@ -79,7 +79,7 @@ Létrehozása után a korábban bemutatott függvény előzményeinek jelenjenek
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     | 
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello London!" ""                                       |                     | 
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokió!" ",""Hello Seattle!" ",""Hello London!" "]" | Befejeződött           | 
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokió!" ",""Hello Seattle!" ",""Hello London!" "]" | Befejezve           | 
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     | 
 
 Néhány megjegyzések oszlop értékeit:
@@ -90,7 +90,7 @@ Néhány megjegyzések oszlop értékeit:
     * **TaskScheduled**: egy tevékenység függvény lett ütemezve. A tevékenység függvény neve bekerül az a `Name` oszlop.
     * **TaskCompleted**: egy tevékenység függvény végre lett hajtva. A függvény eredménye az a `Result` oszlop.
     * **TimerCreated**: tartós időzítő hozták létre. A `FireAt` oszlop tartalmaz ütemezett időpontja UTC idő szerint, ahol az időkorlát lejár.
-    * **TimerFired**: tartós időzítője lejárt.
+    * **TimerFired**: tartós időzítő következik be.
     * **EventRaised**: külső esemény a vezénylési példány lett küldve. A `Name` oszlop rögzíti az esemény neve és a `Input` oszlop az esemény hasznos adatait rögzíti.
     * **OrchestratorCompleted**: az orchestrator függvény rá várakozni.
     * **ContinueAsNew**: az orchestrator függvény befejeződött, és új állapotú újraindul saját magát. A `Result` oszlop értékét, a bemeneti újraindított példány használt tartalmazza.
@@ -98,7 +98,7 @@ Néhány megjegyzések oszlop értékeit:
 * **Timestamp típusú**: az előzmények esemény időbélyegzője az UTC.
 * **Név**: lett meghívva függvény nevét.
 * **Bemeneti**: a függvény a JSON-formátumú bemenetet.
-* **Kimeneti**: annak a függvénynek a kimeneti; Ez azt jelenti, hogy a visszatérési érték.
+* **Eredmény**: annak a függvénynek a kimeneti; Ez azt jelenti, hogy a visszatérési érték.
 
 > [!WARNING]
 > Bár ez hasznos hibakeresési eszköz, ebben a táblázatban nem lép bármely függőségi. A tartós funkciók bővítmény fejlődésének meg.

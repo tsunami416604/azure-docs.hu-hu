@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/16/2017
+ms.date: 12/14/2017
 ms.author: raiye
-ms.openlocfilehash: e19bb15be29fefbfbc94f7396bb2b68f8236f66a
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: fa90953d4bf88ac9aab1c9277ef6767153862111
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrix
 Itt való naprakész információkat a legújabb Azure vendég operációs rendszer feloldja a Felhőszolgáltatásai számára. Ez az információ segít a frissítési lépések megtervezéséről, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissíti a [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], nem elengedhetetlen, hogy olvassa el ezen a lapon.
@@ -42,6 +42,8 @@ Itt való naprakész információkat a legújabb Azure vendég operációs rends
 Nem tudja, hogy milyen a vendég operációs rendszer, vagy hogyan a vendég operációs rendszer feloldja a munkát? Olvasási [ez](#how-it-works) szakasz.
 
 ## <a name="news-updates"></a>Hírek
+###### <a name="december-14-2017"></a>**2017. december 14.**
+November vendég operációs rendszer adott ki.
 
 ###### <a name="november-8-2017"></a>**2017. november 8.**
 Október vendég operációs rendszer adott ki.
@@ -88,16 +90,16 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.13_201711-01 |2017. december 14. |POST 5.15 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.12_201710-02 |2017. november 8. |POST 5.14 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.11_201709-01 |2017. október 6. |POST 5.13. |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.10_201708-01 |2017. augusztus 24. |POST 5.12 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.11_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.10_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.9_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.8_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.7_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.6_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.5_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.4_201612-01~~ |2017. január 10. |2017. június 5.|TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.3_201611-01~~ |2016. december 14. |2017. május 9. |TBD |
 
 ## <a name="family-4-releases"></a>Feloldja a családja 4
 **Windows Server 2012 R2 rendszerben**
@@ -111,16 +113,16 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.48_201711-01 |2017. december 14. |POST 4,50 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.47_201710-02 |2017. november 8. |POST 4.49 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.46_201709-01 |2017. október 6. |POST 4.48 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.45_201708-01 |2017. augusztus 24. |POST 4.47 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.46_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.45_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.44_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.43_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.42_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.41_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.40_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.39_201612-01~~ |2017. január 10. |2017. június 5. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.38_201611-01~~ |2016. december 14. |2017. május 9. |TBD |
 
 ## <a name="family-3-releases"></a>Feloldja a családja 3
 **Windows Server 2012-ben**
@@ -134,16 +136,16 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.55_201711-01 |2017. december 14. |POST 3.57 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-3.54_201710-02 |2017. november 8. |POST 3.56 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.53_201709-01 |2017. október 6. |POST 3.55 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.52_201708-01 |2017. augusztus 24. |POST 3.54 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.53_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.52_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.51_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.50_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.49_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.48_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.47_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.46_201612-01~~ |2017. január 10. |2017. június 5. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.45_201611-01~~ |2016. december 14. |2017. május 9. |TBD |
 
 ## <a name="family-2-releases"></a>Feloldja a családja 2
 **Windows Server 2008 R2 SP1**
@@ -157,9 +159,10 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.68_201710-01 |2017. december 14. |POST 2.70. bekezdés |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-2.67_201710-02 |2017. november 8. |POST 2.69 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.66_201709-01 |2017. október 6. |POST 2.68 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.65_201708-01 |2017. augusztus 24. |POST 2.67 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.66_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.65_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.64_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.63_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.62_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
@@ -167,7 +170,6 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.60_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.59_201701-01~~ |2017. január 10. |2017. június 5. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.58_201612-01~~ |2017. január 10. |2017. május 9.|TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.57_201611-01~~ |2016. december 14. |2017. április 10. |TBD |
 
 
 ## <a name="msrc-patch-updates"></a>MSRC javítás frissítések

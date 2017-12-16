@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: bd0ddfcffdb6f946f9a3786f3d0add1740be861b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1d1e6dc7899a9f3367c8aa05d862a863f1f88135
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="energy-demand-time-series-forecasting"></a>Energiát igény szerint a Time Series előrejelzési
 
@@ -56,13 +56,11 @@ Ebben a forgatókönyvben a machine learning-megoldás az előrejelzés energia 
 - Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverzió érhetők el).
 - Egy telepített példánya [Azure Machine Learning-munkaterület](./overview-what-is-azure-ml.md) következő a [– első lépések a telepítési útmutató](./quickstart-installation.md) telepíteni a programot, és hozzon létre egy munkaterület.
 - A példa feltételezi, hogy futtatja a Windows 10 Azure ML munkaterület [Docker-motorhoz](https://www.docker.com/) helyileg telepített. MacOS használatakor utasításokat ugyanazok a nagy mértékben.
-- Az Azure Machine Learning Operationalization telepítve a helyi környezet beállítása és a modell felügyeleti fiókja ez leírtak szerint létrehozott [útmutató](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/getting-started.md).
+- Az Azure Machine Learning Operationalization telepítve a helyi környezet beállítása és a modell felügyeleti fiókja ez leírtak szerint létrehozott [útmutató](./model-management-configuration.md).
 - Ez a minta igényel a Pandas telepítés 0.20.3 verzióra frissíteni vagy magasabb és matplotlib telepítse. Kattintson a *nyissa meg a parancssort* a a *fájl* menü a munkaterületet üzemeltető futtatja a következő parancsokat a függőségek telepítése:
 
     ```
-    conda install "pandas>=0.20.3"
-
-    conda install matplotlib
+    conda install "pandas>=0.21.1"
     ```
     
 ## <a name="create-a-new-workbench-project"></a>Új munkaterület-projekt létrehozása
@@ -77,7 +75,7 @@ Hozzon létre egy új projektet, ebben a példában egy sablon használatával:
 
 ## <a name="data-description"></a>Adatok leírása
 
-Két adatkészletet van: `nyc_demand.csv` és `nyc_weather.csv`:
+Két adatkészletet a minta kapnak, és segítségével letöltődnek a `1-data-preparation.ipynb` notebook: `nyc_demand.csv` és `nyc_weather.csv`.
 
 **nyc_demand.csv** 2012-2017 évig óránkénti New York Város energia igény szerinti értéket tartalmaz. Az adatok egyszerű struktúrája a következő:
 
@@ -98,7 +96,7 @@ Igény szerinti értékei megawatt óra (MWh). Alább energia igény szerint a 2
 | --- | --- | --- |
 | 2012-01-01 00:00:00 | 0.0 | 46.13 |
 | 2012-01-01 01:00:00 | 0.01 | 45.89 |
-| 2012-01-01 02:00:00 | 0.05 | 45.04 |
+| 2012-01-01 02:00:00 | 0,05 | 45.04 |
 | 2012-01-01 03:00:00 | 0.02 | 45.03 |
 
 *precip* utaló szintjének százalékos mértéke. *temp* (hőmérséklet) értékek rendelkezik lett rescaled, úgy, hogy az összes érték tartozik, a [0, 100] intervallumban.

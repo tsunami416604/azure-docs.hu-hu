@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 12/06/2017
+ms.date: 12/14/2017
 ms.author: barbkess
-ms.openlocfilehash: d736ad0dbfb109500a150d2bc3f7c40b16206fdb
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 46f7d2ea19a88e65b2d039fdf36d1619c4d74020
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse táblák áttekintése
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ A statisztikákat egy rendkívül fontos, hogy a lehető legjobb teljesítményt
 Az ideiglenes táblák olyan táblák csak a bejelentkezési időtartama létezik, és más felhasználók által nem láthatók.  Az ideiglenes táblák lehet szeretné megakadályozni, hogy mások ideiglenes eredmények megtekintése és karbantartása szükségességét is csökkentheti.  Az ideiglenes táblák is a helyi tároló használatára, mivel egyes műveletek esetében gyorsabb teljesítményt is biztosítanak.  Tekintse meg a [ideiglenes tábla] [ Temporary] cikkek az ideiglenes táblák további információt.
 
 ## <a name="external-tables"></a>Külső táblák
-Külső táblák, más néven a Polybase táblák olyan táblák, amely az SQL Data Warehouse, de pont lekérdezhetők, az SQL Data Warehouse külső adatokhoz.  Például pontot hozhat létre a külső tábla mely Azure Blob Storage tárolóban lévő fájlokhoz.  Hogyan hozhat létre, és a külső tábla lekérdezése a további részletekért lásd: [adatok betöltése a Polybase][Load data with Polybase].  
+Külső táblák, más néven a Polybase táblák olyan táblák, amely az SQL Data Warehouse, de pont lekérdezhetők, az SQL Data Warehouse külső adatokhoz.  Például pontot hozhat létre a külső tábla mely Azure Blob Storage vagy az Azure Data Lake Store-fájlokba.  Hogyan hozhat létre, és a külső tábla lekérdezése a további részletekért lásd: [adatok betöltése a Polybase][Load data with Polybase].  
 
 ## <a name="unsupported-table-features"></a>A tábla nem támogatott funkciók
 Az SQL Data Warehouse számos más adatbázisok által kínált tábla funkciót tartalmaz, amíg nincsenek néhány funkció, amely még nem támogatottak.  Alább felsoroljuk a néhány tábla funkciója még nem támogatott.

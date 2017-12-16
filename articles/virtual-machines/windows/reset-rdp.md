@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/06/2017
 ms.author: genli
-ms.openlocfilehash: e23789d966716b9255d0b9ec62ab26d2666f3ec5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b5c6c6e06f6e4173730e6b030b86f443c58aa0f0
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>A távoli asztal szolgáltatás vagy egy Windows virtuális gépre a bejelentkezés jelszó alaphelyzetbe állítása
-Ha nem tud csatlakozni a Windows rendszerű virtuális gép (VM), a helyi rendszergazda jelszavát, vagy állítsa a távoli asztal szolgáltatás konfigurációját. Használhatja az Azure-portálon vagy a virtuális gép hozzáférési bővítményét az Azure PowerShell a jelszó alaphelyzetbe állításához. Ha a PowerShell használata esetén győződjön meg arról, hogy rendelkezik a [legújabb PowerShell-modul telepítve és konfigurálva](/powershell/azure/overview) és az Azure-előfizetéssel jelentkezik be. Emellett [hajtsa végre ezeket a lépéseket a klasszikus telepítési modellel létrehozott virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
+Ha nem tud csatlakozni a Windows rendszerű virtuális gép (VM), a helyi rendszergazda jelszavát, vagy állítsa a távoli asztal szolgáltatás konfigurációját (a Windows rendszerű tartományvezérlők nem támogatott). Használhatja az Azure-portálon vagy a virtuális gép hozzáférési bővítményét az Azure PowerShell a jelszó alaphelyzetbe állításához. Ha a PowerShell használata esetén győződjön meg arról, hogy rendelkezik a [legújabb PowerShell-modul telepítve és konfigurálva](/powershell/azure/overview) és az Azure-előfizetéssel jelentkezik be. Emellett [hajtsa végre ezeket a lépéseket a klasszikus telepítési modellel létrehozott virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
 
 ## <a name="ways-to-reset-configuration-or-credentials"></a>Konfiguráció vagy a hitelesítő adatok alaphelyzetbe módjai
 Alaphelyzetbe állíthatja a távoli asztali szolgáltatások és a hitelesítő adatokat néhány más-más módon igényeitől függően:
@@ -63,7 +63,8 @@ $cred=Get-Credential
 ```
 
 > [!NOTE] 
-> Ha a virtuális Gépet a neve eltér az aktuális helyi rendszergazdai fiók, a VMAccess bővítmény átnevezi a helyi rendszergazdai fiók, rendeli hozzá a megadott jelszó ezekhez a fiókokhoz, és kibocsát egy távoli asztali kijelentkezési esemény. Ha a helyi rendszergazdai fiókhoz az a virtuális gép le van tiltva, a VMAccess bővítmény lehetővé teszi.
+> Ha neve eltér az aktuális helyi rendszergazdai fiók írja be a virtuális Gépet, a VMAccess bővítmény fog adja hozzá egy helyi rendszergazdai fiók ezzel a névvel, és rendelje hozzá a megadott jelszó ezekhez a fiókokhoz. Ha a helyi rendszergazdai fiókhoz az a virtuális gép létezik, azt alaphelyzetbe állítja a jelszót, és a fiók le van tiltva, ha a VMAccess bővítmény lehetővé teszi.
+
 
 Az alábbi példa frissíti a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup` megadott hitelesítő adatokhoz.
 

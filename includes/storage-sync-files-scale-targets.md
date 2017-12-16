@@ -1,7 +1,7 @@
 | Erőforrás | Cél | Rögzített korlátját |
 |----------|--------------|------------|
 | Tárolási szinkronizálási szolgáltatások előfizetésenként | 15 tárolási szinkronizálási szolgáltatások | Nem |
-| Szinkronizálási csoportok száma tároló szinkronizálási szolgáltatás | 20 szinkronizálási csoportok | Nem |
+| Szinkronizálási csoportok száma tároló szinkronizálási szolgáltatás | 30 szinkronizálási csoportok | Igen |
 | Felhő végpontok szinkronizálási csoportonként | 1 felhővégpontnak | Igen |
 | Kiszolgáló végpontok szinkronizálási csoportonként | 50 kiszolgáló-végpontok | Nem |
 | Kiszolgáló végpontok kiszolgálónként | 33-99 server végpontok | Igen, de a konfiguráció alapján változik |

@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 09/15/2017
+ms.date: 12/14/2017
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 4c3ca2a26fe47a8f0831a1ce4edf2c35911f3fc1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a2a7d15eb51374b828d1d641e0e6754115f7aaf6
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Adatok betöltése az Azure Data Lake Store az SQL Data Warehouse
-Ez a dokumentum lehetővé teszi az összes lépést kell az Azure Data Lake Store-(ADLS-) a saját adatok betöltése az SQL Data Warehouse PolyBase használatával.
+Ez a dokumentum lehetővé teszi az összes lépést kell az Azure Data Lake Store-(ADLS-) adatok betöltése az SQL Data Warehouse PolyBase használatával.
 Miközben az ad hoc lekérdezéseket futtatnia a külső táblák segítségével ADLS tárolt adatokat képes, ajánlott eljárásként javasoljuk, hogy az adatok importálása az SQL Data Warehouse.
 
 Ebből az oktatóanyagból megtudhatja, hogyan:
@@ -42,15 +42,9 @@ Ez az oktatóanyag futtatásához szükséges:
 
 * SQL Server Management Studio vagy SQL Server Data Tools SSMS töltse le és csatlakoztassa [lekérdezés SSMS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)
 
-* Egy Azure SQL Data Warehouse létrehozása egy kövesse: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
+* Egy Azure SQL Data Warehouse létrehozása egy kövesse: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision _
 
-* Egy Azure Data Lake Store, vagy a engedélyezhető a titkosítás nélkül. Egy utólagos létrehozni: https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
-
-
-
-
-## <a name="configure-the-data-source"></a>Konfigurálja az adatforrást
-A polybase külső T-SQL-objektumok a hely és a külső adatokra vonatkozó attribútumok megadhatók. A külső objektumok SQL Data Warehouse tárolja, és a th külsőleg tárolt adatokra hivatkoztak.
+* Egy Azure Data Lake Store egy utólagos létrehozni: https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
 
 
 ###  <a name="create-a-credential"></a>Hitelesítő adatok létrehozása
@@ -88,7 +82,7 @@ WITH
 
 
 ### <a name="create-the-external-data-source"></a>A külső adatforrás létrehozása
-Ezzel [külső ADATFORRÁS létrehozása] [ CREATE EXTERNAL DATA SOURCE] parancs a helyét, valamint az adatok, milyen típusú adatok tárolásához. Az ADL URI az Azure portálon található, az Azure Data Lake Store keresse meg, és tekintse meg a Essentials panelen.
+Ezzel [külső ADATFORRÁS létrehozása] [ CREATE EXTERNAL DATA SOURCE] parancs használatával tárolja az adatok helyét. Az ADL URI az Azure portálon található, az Azure Data Lake Store keresse meg, és tekintse meg a Essentials panelen.
 
 ```sql
 -- C: Create an external data source
@@ -104,11 +98,8 @@ WITH (
 );
 ```
 
-
-
 ## <a name="configure-data-format"></a>Az adatformátum konfigurálása
 Az adatok importálása ADLS, meg kell adnia a külső fájlformátumot. Ez a parancs formátummal kapcsolatos beállítások és az adatok leírására rendelkezik.
-Alább példája egy gyakran használt fájlformátum cső tagolt szövegfájl.
 Tekintse át a T-SQL dokumentációját teljes listáját [külső FÁJLFORMÁTUM létrehozása][CREATE EXTERNAL FILE FORMAT]
 
 ```sql
@@ -116,7 +107,7 @@ Tekintse át a T-SQL dokumentációját teljes listáját [külső FÁJLFORMÁTU
 -- FIELD_TERMINATOR: Marks the end of each field (column) in a delimited text file
 -- STRING_DELIMITER: Specifies the field terminator for data of type string in the text-delimited file.
 -- DATE_FORMAT: Specifies a custom format for all date and time data that might appear in a delimited text file.
--- Use_Type_Default: Store all Missing values as NULL
+-- Use_Type_Default: Store missing values as default for datatype.
 
 CREATE EXTERNAL FILE FORMAT TextFileFormat
 WITH
@@ -130,7 +121,7 @@ WITH
 ```
 
 ## <a name="create-the-external-tables"></a>A külső táblák létrehozása
-Most, hogy a megadott forrás- és a fájl adatformátum, készen áll a külső táblák létrehozására. Külső táblák, hogyan működnek együtt a külső adatforráshoz. A polybase rekurzív directory átjárás segítségével annak a könyvtárnak a hely paraméterben megadott alkönyvtáraiban található összes fájl olvasása. Emellett a következő példa bemutatja, hogyan lehet létrehozni az objektumot. Az utasítást, hogy az adatok kezeléséhez vannak ADLS testreszabásához szükséges.
+Most, hogy a megadott forrás- és a fájl adatformátum, készen áll a külső táblák létrehozására. Külső táblák, hogyan működnek együtt a külső adatforráshoz. A hely paraméter adhat meg egy fájl vagy könyvtár. Meghatározza egy könyvtárat, ha a könyvtárban található összes fájl lesz betöltve.
 
 ```sql
 -- D: Create an External Table
@@ -161,18 +152,15 @@ WITH
 ## <a name="external-table-considerations"></a>A külső tábla kapcsolatos szempontok
 Egy külső tábla létrehozása egyszerű, de van néhány apró igénylő tárgyalja.
 
-A polybase-zel adatok betöltése erős típusmegadású. Ez azt jelenti, hogy minden egyes sorára okozhatnak alatt álló adatokat meg kell felelniük a tábla sémadefiníciója.
-Ha egy adott sor nem egyezik meg a sémadefiníciót, a sort a terhelés fogja elutasítani.
+Külső táblák erős típusmegadású vannak. Ez azt jelenti, hogy minden egyes sorára okozhatnak alatt álló adatokat meg kell felelniük a tábla sémadefiníciója.
+Egy sor nem egyezik meg a sémadefiníciót, ha a terhelést a sor fogja elutasítani.
 
-A REJECT_TYPE és REJECT_VALUE beállítások megadása a sorok számát, vagy az adatok hány százaléka szerepelnie kell a végső tábla teszik lehetővé.
-Betöltéskor utasítsa el az érték elérésekor, a betöltés sikertelen lesz. Elutasított sorok leggyakoribb oka schema definíció nem egyeznek.
-Például ha az oszlop helytelenül int sémája nincs megadva, ha a fájl egy karakterlánc, minden sor fognak tudni betöltődni.
+A REJECT_TYPE és REJECT_VALUE beállítások megadása a sorok számát, vagy az adatok hány százaléka szerepelnie kell a végső tábla teszik lehetővé. Betöltéskor utasítsa el az érték elérésekor, a betöltés sikertelen lesz. Elutasított sorok leggyakoribb oka schema definíció nem egyeznek. Például ha az oszlop helytelenül int sémája nincs megadva, ha a fájl egy karakterlánc, minden sor fognak tudni betöltődni.
 
-A hely határozza meg, a legfelső directory adatokat olvasni kívánt.
-Ebben az esetben volt /DimProduct/ PolyBase alkönyvtárába alkönyvtárak belül minden adat importálásától. Azure Data Lake store szerepköralapú hozzáférés vezérlés (RBAC) segítségével az adatok hozzáférésének vezérléséhez. Ez azt jelenti, hogy a szolgáltatás egyszerű Olvasás engedéllyel kell rendelkeznie a könyvtárak a hely paraméterben meghatározott, és végső könyvtárat és fájlokat gyermekei. Ez lehetővé teszi, hogy a hitelesítéshez, és olvassa el az adatok betöltése a PolyBase. 
+ Azure Data Lake store szerepköralapú hozzáférés vezérlés (RBAC) segítségével az adatok hozzáférésének vezérléséhez. Ez azt jelenti, hogy a szolgáltatás egyszerű Olvasás engedéllyel kell rendelkeznie a könyvtárak a hely paraméterben meghatározott, és végső könyvtárat és fájlokat gyermekei. Ez lehetővé teszi, hogy a hitelesítéshez, és olvassa el az adatok betöltése a PolyBase. 
 
 ## <a name="load-the-data"></a>Az adatok betöltése
-Az adatok betöltése az Azure Data Lake Store használatát a [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] utasítást. A CTAS betöltése a létrehozott szigorú típusmegadású külső tábla használja.
+Az adatok betöltése az Azure Data Lake Store használatát a [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] utasítást. 
 
 CTAS új táblát hoz létre, és feltölti a select utasítás a eredményekkel. CTAS határozza meg az új tábla ugyanazon oszlopok és adattípusok rendelkezik, mint a select utasítás eredményét. Ha minden oszlop egy külső tábla, az új táblázat a külső tábla az adattípusokat és az oszlopok egy replikát.
 

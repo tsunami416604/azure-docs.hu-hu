@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 12/06/2017
 ms.author: cynthn
-ms.openlocfilehash: 1db25a5d9ff5cb6aa2787a0cafa40cfb010e3b06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f4b739fd34cc0c85d47b97b7b42a70eb7f5f5ac7
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>A Windows virtuális gépek áthelyezése egy másik Azure-előfizetés vagy az erőforrás-csoportok
 Ez a cikk végigvezeti a Windows virtuális gépek áthelyezése erőforráscsoportok vagy előfizetések között. Az előfizetések közötti áthelyezés lehet hasznos, ha az eredetileg létrehozott virtuális gép személyes előfizetés, és most szeretné helyezze át a vállalat előfizetésének a munka folytatásához.
@@ -34,33 +34,31 @@ Ez a cikk végigvezeti a Windows virtuális gépek áthelyezése erőforráscsop
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="use-powershell-to-move-a-vm"></a>Helyezze át a virtuális Gépet a Powershell használatával
-A virtuális gép áthelyezése egy másik erőforráscsoportban, győződjön meg arról, hogy Ön is a függő erőforrásokat áthelyezni kell. A Move-AzureRMResource parancsmag használatához szüksége van az erőforrás nevének és az erőforrás típusát. A keresés-AzureRMResource parancsmag is kaphat.
 
-    Find-AzureRMResource -ResourceGroupNameContains "<sourceResourceGroupName>"
+A virtuális gép áthelyezése egy másik erőforráscsoportban, győződjön meg arról, hogy Ön is a függő erőforrásokat áthelyezni kell. A Move-AzureRMResource parancsmagot használja, az erőforrás-azonosítója az egyes erőforrások kell. Az erőforrás-azonosítója használatával listája kaphat a [keresés-AzureRMResource](/powershell/module/azurerm.resources/find-azurermresource) parancsmag.
 
+```azurepowershell-interactive
+ Find-AzureRMResource -ResourceGroupNameContains <sourceResourceGroupName> | Format-table -Property ResourceId 
+```
 
-Helyezze át a virtuális Gépet kell a több erőforrások áthelyezése. Jelenleg csak az egyes erőforrások külön változók létrehozása, és rendezze őket. Ebben a példában az alapvető erőforrások többségét tartalmazza a virtuális gépek, de igény szerint több is hozzáadhat.
+Helyezze át a virtuális Gépet kell a több erőforrások áthelyezése. Is használjuk keresés-AzureRMResource kimenetének létrehozása az erőforrás-azonosítók vesszővel tagolt listáját, és adja át, amely a [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) áthelyezheti őket a cél. 
 
-    $sourceRG = "<sourceResourceGroupName>"
-    $destinationRG = "<destinationResourceGroupName>"
+```azurepowershell-interactive
 
-    $vm = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Compute/virtualMachines" -ResourceName "<vmName>"
-    $storageAccount = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Storage/storageAccounts" -ResourceName "<storageAccountName>"
-    $diagStorageAccount = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Storage/storageAccounts" -ResourceName "<diagnosticStorageAccountName>"
-    $vNet = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/virtualNetworks" -ResourceName "<vNetName>"
-    $nic = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/networkInterfaces" -ResourceName "<nicName>"
-    $ip = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/publicIPAddresses" -ResourceName "<ipName>"
-    $nsg = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/networkSecurityGroups" -ResourceName "<nsgName>"
-
-    Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
-
+Move-AzureRmResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+    -ResourceId <myResourceId,myResourceId,myResourceId>
+```
+    
 Az erőforrások áthelyezése másik előfizetést, tartalmazza a **- DestinationSubscriptionId** paraméter. 
 
-    Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
+```azurepowershell-interactive
+Move-AzureRmResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
+    -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+    -ResourceId <myResourceId,myResourceId,myResourceId>
+```
 
 
-
-Győződjön meg arról, hogy szeretné-e a megadott erőforrások áthelyezése fog kérni. Típus **Y** annak ellenőrzéséhez, hogy szeretné-e az erőforrások áthelyezése.
+Győződjön meg arról, hogy szeretné-e a megadott erőforrások áthelyezése fog kérni. 
 
 ## <a name="next-steps"></a>Következő lépések
 Számos különböző típusú erőforrások áthelyezheti erőforráscsoport-sablonok és előfizetések között. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../../resource-group-move-resources.md).    

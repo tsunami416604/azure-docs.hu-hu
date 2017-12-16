@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
-ms.author: trinadhk;markgal;
-ms.openlocfilehash: 284a1b64fbb15d0aa800182c6671d447e191b76a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cwatson
+ms.openlocfilehash: 658a4576c5fd664ce33737a1fcf9deafccd4c8b0
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
 > [!div class="op_single_selector"]
@@ -30,13 +30,13 @@ ms.lasthandoff: 10/11/2017
 Észlelt, miközben az Azure Backup segítségével információkat az alábbi táblázatban szereplő hibák is elháríthatók.
 
 ## <a name="discovery"></a>Felderítés
-| Biztonsági mentési művelet | Hiba legutolsó részletes adatai | Megkerülő megoldás |
+| Biztonsági mentési művelet | Hiba részletei | Megkerülő megoldás |
 | --- | --- | --- |
 | Felderítés |Nem sikerült felderíteni az új elemek - észlelt a Microsoft Azure biztonsági mentés és a belső hiba. Várjon néhány percet, és próbálkozzon újra a művelettel. |15 perc múlva próbálkozzon újra a felderítési folyamat. |
 | Felderítés |Nem sikerült felderíteni az új cikkek – egy másik felderítési művelet már folyamatban van. Várjon, amíg a jelenlegi felderítési művelet befejeződik. |None |
 
 ## <a name="register"></a>Regisztráljon
-| Biztonsági mentési művelet | Hiba legutolsó részletes adatai | Megkerülő megoldás |
+| Biztonsági mentési művelet | Hiba részletei | Megkerülő megoldás |
 | --- | --- | --- |
 | Regisztráljon |A virtuális géphez csatolt adatlemezek száma meghaladta a megengedett értéket – adja válassza le a virtuális gépen néhány adatlemezek, és próbálja megismételni a műveletet. Azure biztonsági mentés támogatja a biztonsági mentéshez egy Azure virtuális géphez legfeljebb 16 adatlemez |None |
 | Regisztráljon |A Microsoft Azure Backup szolgáltatás belső hibába ütközött - Várjon, amíg az néhány percet, majd próbálja megismételni a műveletet. Ha nem szűnik meg a probléma, forduljon a Microsoft támogatási szolgálatához. |Ez a hiba miatt a virtuális gépet a következő nem támogatott konfiguráció egyikét a prémium szintű LRS érheti el. <br> Prémium szintű storage virtuális gépek biztonsági másolat készíthető a recovery services-tároló segítségével. [További információ](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup) |
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 | Regisztráljon |Virtuálisgép-ügynök nincs jelen a virtuális gépen – telepítse a szükséges előfeltételt, az ügynököt, és indítsa újra a műveletet. |[További](#vm-agent) Virtuálisgép-ügynök telepítése, és a Virtuálisgép-ügynök telepítésének ellenőrzése. |
 
 ## <a name="backup"></a>Biztonsági mentés
-| Biztonsági mentési művelet | Hiba legutolsó részletes adatai | Megkerülő megoldás |
+| Biztonsági mentési művelet | Hiba részletei | Megkerülő megoldás |
 | --- | --- | --- |
 | Biztonsági mentés |Nem sikerült a pillanatkép állapotával kapcsolatos kommunikáció a virtuális gépeket kezelő ügynökkel. Pillanatkép virtuális gép sub feladat túllépte az időkorlátot. – Tekintse meg a hibaelhárítási útmutató a probléma megoldásához hogyan. |Ez a hiba fordul elő, ha a probléma oka a Virtuálisgép-ügynök vagy az Azure-infrastruktúra hálózati hozzáférését blokkolja a valamilyen módon. További információ [virtuális gépet hibakeresés pillanatkép-problémák](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md). <br> Ha a Virtuálisgép-ügynök nem okoz probléma merül fel, majd indítsa újra a virtuális Gépet. Esetenként a virtuális gép állapota nem megfelelő problémákat okozhatnak, és a virtuális gép újraindítása alaphelyzetbe állítja a "hibás állapot" |
 | Biztonsági mentés |Biztonsági mentés egy belső hiba miatt nem sikerült – a művelet néhány perc múlva próbálkozzon újra. Ha a probléma továbbra is fennáll, forduljon a Microsoft Support |Győződjön meg arról, ha van egy átmeneti hiba Virtuálisgép-tároló elérése közben. Győződjön meg róla [Azure állapot](https://azure.microsoft.com/en-us/status/) van-e bármilyen folyamatos probléma compute/tárolási vagy hálózati régióban kapcsolódik. Próbálja megismételni a biztonsági mentés utáni probléma elhárítására. |
@@ -60,7 +60,7 @@ ms.lasthandoff: 10/11/2017
 | Biztonsági mentés |Virtuálisgép-ügynök nincs jelen a virtuális gépen – telepítse a szükséges előfeltételt, az ügynököt, és indítsa újra a műveletet. |[További](#vm-agent) Virtuálisgép-ügynök telepítése, és a Virtuálisgép-ügynök telepítésének ellenőrzése. |
 
 ## <a name="jobs"></a>Feladatok
-| Művelet | Hiba legutolsó részletes adatai | Megkerülő megoldás |
+| Művelet | Hiba részletei | Megkerülő megoldás |
 | --- | --- | --- |
 | Megszakítása |Megszakítása nem támogatott ilyen típusú feladatokat - Várjon, amíg a feladat befejeződik. |None |
 | Megszakítása |A feladat nem törölhető állapotban van,-várjon, amíg a feladat befejeződik. <br>VAGY<br> A kiválasztott feladat nem törölhető állapotban van,-várjon a feladat végrehajtásához. |A feladat minden valószínűség szerint, majdnem kész; Várjon, amíg a feladat befejezése után |
@@ -68,7 +68,7 @@ ms.lasthandoff: 10/11/2017
 | Megszakítása |Nem sikerült visszavonni a feladatot - Várjon, amíg a feladat befejeződik. |None |
 
 ## <a name="restore"></a>Visszaállítás
-| Művelet | Hiba legutolsó részletes adatai | Megkerülő megoldás |
+| Művelet | Hiba részletei | Megkerülő megoldás |
 | --- | --- | --- |
 | Visszaállítás |Visszaállítás felhő belső hiba miatt sikertelen volt |<ol><li>A felhőalapú szolgáltatás, amelyhez visszaállítani kívánt DNS-beállításokkal van konfigurálva. Ellenőrizheti a <br>$deployment get-AzureDeployment - szolgáltatásnév "ServiceName" =-tárolóhely "Éles" Get-AzureDns - DnsSettings $deployment. DnsSettings<br>Ha nincs konfigurált címet, ez azt jelenti, hogy a DNS-beállítások vannak konfigurálva.<br> <li>Felhőalapú szolgáltatás, amelyre szeretné visszaállítani kívánt foglalt IP-cím van konfigurálva, és a meglévő virtuális gépek által a felhőalapú szolgáltatás leállított állapotban van.<br>Ellenőrizheti a felhőszolgáltatás van foglalt IP-cím a következő powershell-parancsmagok használatával:<br>$deployment = get-AzureDeployment - szolgáltatásnév "servicename"-"Éles" $tárolóhely DEP ReservedIPName <br><li>Állítsa vissza a következő speciális hálózati beállításokat a virtuális gép ugyanazon a felhőalapú szolgáltatás kívánt. <br>– Virtuális gépek a terheléselosztó-konfigurációja (külső és belső)<br>-A virtuális gépek a több foglalt IP-cím<br>-A virtuális gépek több hálózati adapterrel rendelkező<br>Válasszon ki egy új felhőalapú szolgáltatást a felhasználói felületen, vagy tekintse meg [szempontok visszaállítása](backup-azure-restore-vms.md#restoring-vms-with-special-network-configurations) speciális hálózati konfigurációk rendelkező virtuális gépek</ol> |
 | Visszaállítás |A kijelölt DNS-név már használatban van – adjon meg egy másik DNS-nevet, és próbálkozzon újra. |A DNS-neve itt hivatkozik a felhőszolgáltatás neve (általában végződő. cloudapp.net). Ennek egyedinek kell lennie. Ha ezt a hibát észlel, akkor válasszon egy másik Virtuálisgép-nevet a visszaállítás során. <br><br> Ez a hiba csak az Azure-portálon a felhasználók számára látható. A visszaállítási műveletet az PowerShell sikeres lesz, mert csak visszaállítja a lemezeket, és nem hoz létre a virtuális Gépet. A hiba akkor lesz tapasztalt, a virtuális gép létrehozásakor explicit módon Ön által a lemezre visszaállítási művelet után. |
@@ -82,7 +82,7 @@ ms.lasthandoff: 10/11/2017
 | Visszaállítás |Nem létezik a kijelölt alhálózat – válasszon ki egy alhálózatot, amely létezik |None |
 
 ## <a name="policy"></a>Szabályzat
-| Művelet | Hiba legutolsó részletes adatai | Megkerülő megoldás |
+| Művelet | Hiba részletei | Megkerülő megoldás |
 | --- | --- | --- |
 | Házirend létrehozása |Nem sikerült létrehozni a házirend - csökkentse a megőrzési lehetőségek folytatja a házirend-konfigurációt. |None |
 

@@ -4,7 +4,7 @@ description: "Megtudhatja, mennyire biztonságos a NGINX webkiszolgáló SSL-tan
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/17/2017
+ms.date: 12/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d2d6a0b00704e1d97be9a4c5bd00ba37374419e5
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 6b333b75f571e367470037ab9ce8b273fcae5498
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="secure-a-web-server-with-ssl-certificates-on-a-linux-virtual-machine-in-azure"></a>Biztonságos Linux virtuális gépre az Azure-ban SSL-tanúsítványokkal egy webkiszolgáló
 Biztonságos webkiszolgálók, a Secure Sockets később (SSL) tanúsítvány használható webes forgalom titkosításához. E SSL-tanúsítványokat tárolhatja az Azure Key Vault, és a Linux virtuális gépek (VM) tanúsítványok biztonságos telepítéshez engedélyezése az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -33,7 +33,7 @@ Biztonságos webkiszolgálók, a Secure Sockets később (SSL) tanúsítvány ha
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).  
+Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.22 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).  
 
 
 ## <a name="overview"></a>Áttekintés
@@ -83,7 +83,7 @@ vm_secret=$(az vm format-secret --secret "$secret")
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>Hozzon létre egy felhő-init config NGINX védelméhez
 [Felhő inicializálás](https://cloudinit.readthedocs.io) Linux virtuális gép testreszabása, először elinduló széles körben használt módszer. Felhő inicializálás használhatja csomagok és a fájlok írási, vagy a felhasználók és biztonsági beállításainak. Felhő inicializálás során a rendszerindítási folyamat fut, mert nincsenek további lépéseket vagy a konfiguráció alkalmazásához szükséges ügynökök.
 
-Ha hoz létre egy virtuális Gépet, a tanúsítványok és kulcsok tárolása a a védett */var/lib/waagent/* könyvtár. A tanúsítvány felvétele a virtuális gép és a webkiszolgáló konfigurálása automatizálását, használja a felhő inicializálás. Ebben a példában azt telepítse és konfigurálja a NGINX webkiszolgáló. Telepítése és konfigurálása az Apache használhatja ugyanazt a folyamatot. 
+Ha hoz létre egy virtuális Gépet, a tanúsítványok és kulcsok tárolása a a védett */var/lib/waagent/* könyvtár. A tanúsítvány felvétele a virtuális gép és a webkiszolgáló konfigurálása automatizálását, használja a felhő inicializálás. Ebben a példában telepítse és konfigurálja a webkiszolgálót, NGINX. Telepítése és konfigurálása az Apache használhatja ugyanazt a folyamatot. 
 
 Hozzon létre egy fájlt *felhő-init-webalkalmazás-server.txt* , majd illessze be a következő konfigurációt:
 

@@ -4,7 +4,7 @@ description: "További tudnivalók a főbb tervezési és megvalósítási irán
 documentationcenter: 
 services: virtual-machines-linux
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
@@ -13,19 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2017
+ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18be0d81d6fad7328edb47c9b69af4eecd3b971
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae7df08e7502fbfd500944f89a3fa6ee4806522a
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux virtuális gépek Azure-infrastruktúra bemutató példa
-
-[!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
-
 Ez a cikk végigvezeti egy példa infrastruktúrát létrehozására. A Microsoft részletességi összegyűjti az összes irányelvek és elnevezési konvenciókat, a rendelkezésre állási csoportok, a virtuális hálózatok és terheléselosztók döntések egyszerű online tároló-infrastruktúrák tervezése, és ténylegesen telepítése az a virtuális gépek (VM).
 
 ## <a name="example-workload"></a>Példa munkaterhelés

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: genli
-ms.openlocfilehash: 35c8e2a2029b3f29b45004c1308de8b3a108f698
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 3d8dde74687154eaf173f3ca7316262e5c1a871c
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és kezelésének számos Azure-szolgáltatásokhoz: gyakran ismételt kérdések (GYIK)
 
@@ -98,7 +98,7 @@ Egy statikus IP-cím beállításához létrehozásához szükséges egy fenntar
 Lásd: [szolgáltatásspecifikus korlátozza](../azure-subscription-service-limits.md#subscription-limits).
 
 ## <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Miért nem jelennek meg a meghajtót, a felhőalapú szolgáltatás VM nagyon kevés a szabad lemezterület?
-Ez az elvárt működés, és ennek nem szabad következtében az alkalmazásba bármilyen probléma. Naplózási be van kapcsolva a % uproot % meghajtót az Azure PaaS virtuális gépeken, amelyek alapvetően használ a fájlok általában foglalnak lemezterületről összeg fel. Azonban számos szempontot figyelembe vennie, amely lényegében a ikonná ez nem probléma.
+Ez az elvárt működés, és ennek nem szabad következtében az alkalmazásba bármilyen probléma. A % approot % meghajtót az Azure PaaS virtuális gépeken, amelyek alapvetően használ a fájlok általában foglalnak lemezterületről összeg be van kapcsolva a naplózást. Azonban számos szempontot figyelembe vennie, amely lényegében a ikonná ez nem probléma.
 
 % Approot % meghajtó méretének kiszámítása: < méret .cspkg + napló maximális mérete > + os szabad lemezterület, vagy 1,5 GB-os, amelyik történik, nagyobb. A virtuális gép mérete nincs hatással a számítás rendelkezik. (A Virtuálisgép-méretet csak hatással van az ideiglenes C: meghajtóra.) 
 

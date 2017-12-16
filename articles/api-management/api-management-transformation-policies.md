@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 18869b34b399e33bac00cf125e6324861c8b9f02
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 18b0a7d15c50ee147690063ac251f815c7fa34be
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management-átalakítási csoportházirendek
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -264,6 +264,7 @@ Ebben a példában a házirend továbbítja a kérelmet a service fabric hátté
 |ú-replika-típusa|Csak érvényes a háttérkiszolgálón a Service Fabric-szolgáltatás, és a "háttér-id" van megadva. Szabályozza, hogy a kérelem el kell küldeni egy partíció elsődleges vagy másodlagos replikája. |Nem|N/A|    
 |ú-resolve-feltétel|Csak érvényes a Service Fabric-szolgáltatás esetén a háttér. A feltétel azonosítja a Service Fabric háttér hívása új megoldás meg kell ismételni van-e.|Nem|N/A|    
 |ú-példány-szolgáltatásnév|Csak érvényes a Service Fabric-szolgáltatás esetén a háttér. Lehetővé teszi, hogy futásidőben szolgáltatáspéldány módosítása. |Nem|N/A|    
+|ú-figyelő-neve|Csak érvényes a háttérkiszolgálón a Service Fabric-szolgáltatás, és a "háttér-id" van megadva. Service Fabric Reliable Services lehetővé teszi egy szolgáltatás több figyelők létrehozására. Ez az attribútum egy adott hallgató válassza ki, ha a háttérkiszolgáló megbízható szolgáltatás több figyelő szolgál. Ha ez az attribútum nincs megadva, az API Management név nélküli figyelő használatát kísérli meg. Figyelő név nélküli része jellemzően Reliable Services, amelyek csak egy figyelőt. |Nem|N/A|  
 
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  

@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: d59e1cb71de6ff804e7cefd67ed25de49ea93a06
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: c162ed156e9c7c64ee85ca86b30779e826d34bcd
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure Data Lake Store az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -70,8 +70,8 @@ Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regis
 
 >[!IMPORTANT]
 > Győződjön meg arról, hogy biztosítsa a szolgáltatás egyszerű megfelelő engedélyeket az Azure Data Lake Store:
->- Forrásaként, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés (IAM).
->- Mint fogadó, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Ha Azure IR segítségével másolja át és (a forrás- és fogadó vannak felhő), ahhoz, hogy lehetővé teszik a Data Factory észleli a Data Lake Store-régió, adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha szeretné-e a IAM szerepkör elkerüléséhez explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a helyét, valamint a Data Lake Store, a Data Lake Store-ban társítása a társított szolgáltatás a következő példa:
+>- **Forrásként**, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés (IAM).
+>- **Mint fogadó**, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Ha Azure IR segítségével másolja át és (a forrás- és fogadó vannak felhő), ahhoz, hogy lehetővé teszik a Data Factory észleli a Data Lake Store-régió, adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha szeretné-e a IAM szerepkör elkerüléséhez explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a helyét, valamint a Data Lake Store, a Data Lake Store-ban társítása a társított szolgáltatás a következő példa:
 
 A következő tulajdonságok támogatottak:
 
@@ -117,8 +117,8 @@ Felügyelt szolgáltatás identitásának (MSI) hitelesítés használatára:
 
 >[!IMPORTANT]
 > Győződjön meg arról, hogy az engedélyeket a data factory szolgáltatás identitás megfelelő az Azure Data Lake Store:
->- Forrásaként, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés (IAM).
->- Mint fogadó, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Ha Azure IR segítségével másolja át és (a forrás- és fogadó vannak felhő), ahhoz, hogy lehetővé teszik a Data Factory észleli a Data Lake Store-régió, adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha szeretné-e a IAM szerepkör elkerüléséhez explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a helyét, valamint a Data Lake Store, a Data Lake Store-ban társítása a társított szolgáltatás a következő példa:
+>- **Forrásként**, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés (IAM).
+>- **Mint fogadó**, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Ha Azure IR segítségével másolja át és (a forrás- és fogadó vannak felhő), ahhoz, hogy lehetővé teszik a Data Factory észleli a Data Lake Store-régió, adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha szeretné-e a IAM szerepkör elkerüléséhez explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a helyét, valamint a Data Lake Store, a Data Lake Store-ban társítása a társított szolgáltatás a következő példa:
 
 Az Azure Data Factoryben nem kell határozhat meg semmilyen mellett az általános Data Lake Store-információkat a szolgáltatásnak.
 

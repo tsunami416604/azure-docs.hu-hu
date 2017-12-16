@@ -8,3 +8,5 @@
 * Az átalakítás közben felszabadítja a virtuális gépet. A virtuális gép új IP-címet kap, amikor elindul az átalakítás után. Szükség esetén [hozzárendelhet egy statikus IP-címet](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) a virtuális géphez.
 
 * A virtuális gép által az átalakítás előtt használt eredeti virtuális merevlemezeket és a tárfiókot nem törli a rendszer. A futtatásuk továbbra is költségekkel jár. Annak érdekében, hogy ezekért az összetevőkért a továbbiakban ne fizessen, törölje az eredeti virtuálismerevlemez-blobokat, miután meggyőződött arról, hogy az átalakítás befejeződött.
+
+* Nézze át az Azure Virtuálisgép-ügynök az átalakítási folyamat támogatásához szükséges minimális verzióját. Ellenőrizze és frissítse az ügynök verziója kapcsolatos információkért lásd: [VM-ügynökök az Azure-ban által támogatott minimális verzió](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)

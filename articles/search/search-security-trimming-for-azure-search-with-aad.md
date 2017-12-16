@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Active Directoryval az Azure Search díszítésre biztonsági |} Microsoft Docs"
-description: "Azure keresési szűrő és az Azure Active Directory biztonsági elrejtés megvalósításához."
+title: "Az Azure keresési találatok Active Directory identitásokkal levágási biztonsági szűrők |} Microsoft Docs"
+description: "Hozzáférés-vezérlés az Azure Search tartalmakat a biztonsági szűrők és az Active Directory-identitás használatával."
 services: search
 author: revitalbarletz
 manager: jlembicz
@@ -8,15 +8,15 @@ ms.service: search
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 8d277ff43aa0d5d14471426632b5aa369df0e316
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="security-trimming-in-azure-search-with-azure-active-directory"></a>Az Azure Search és az Azure Active Directory biztonsági tisztítás
+# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Az Azure Active Directory identitásokkal találatok díszítésre biztonsági szűrők
 
-Ez a cikk bemutatja, hogyan Azure Active Directory (AAD) együtt az Azure Search segítségével korlátozhatja a dokumentum hozzáférést felhasználói csoporttagság alapján.
+Ez a cikk bemutatja, hogyan használható az Azure Active Directory (AAD) biztonsági azonosítók szűrők együtt az Azure Search lehet levágni a keresési eredmények felhasználói csoporttagság alapján.
 
 Ez a cikk ismerteti a következő feladatokat:
 > [!div class="checklist"]
@@ -187,5 +187,6 @@ Ebben a bemutatóban megismerte technikák használatával AAD bejelentkezések 
 
 ## <a name="see-also"></a>Lásd még:
 
-+ [Az Azure Search biztonsági tisztítás](search-security-trimming-for-azure-search.md)
++ [Azure Search szűrőkkel azonosító-alapú hozzáférés-vezérlés](search-security-trimming-for-azure-search.md)
 + [Az Azure Search szűrők](search-filters.md)
++ [Adatok biztonsági és hozzáférés-vezérlés az Azure Search műveletek](search-security-overview.md)

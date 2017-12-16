@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan telepítheti és konfigurálhatja a Linux virt
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/23/2017
+ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: e19c09558285497f29eb78b4f4ae5b15d7f1a191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a9797e1fe3d03840e3a20589a50c90968ea5de0
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Hogyan kell telepíteni, és konfigurálja a MongoDB a Linux virtuális gép
 [MongoDB](http://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk bemutatja, hogyan telepítse és konfigurálja a MongoDB a Linux virtuális gép az Azure CLI 2.0. Az [Azure CLI 1.0-s](install-mongodb-nodejs.md) verziójával is elvégezheti ezeket a lépéseket. Példák, amelyek részletesen hogyan számára:
@@ -57,18 +57,18 @@ ssh azureuser@<publicIpAddress>
 Adja hozzá a telepítési források mongodb, hozzon létre egy **yum** tárház fájlt az alábbiak szerint:
 
 ```bash
-sudo touch /etc/yum.repos.d/mongodb-org-3.4.repo
+sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
 ```
 
-Nyissa meg a MongoDB-tárház fájlt szerkesztésre. Adja hozzá a következő sorokat:
+Nyissa meg a MongoDB-tárház fájlt szerkesztésre, mint például a `vi` vagy `nano`. Adja hozzá a következő sorokat:
 
 ```sh
-[mongodb-org-3.4]
+[mongodb-org-3.6]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 ```
 
 Telepítse a MongoDB használatával **yum** az alábbiak szerint:
@@ -125,26 +125,17 @@ Ebben a környezetben, meg kell a legújabb [Azure CLI 2.0](/cli/azure/install-a
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután telepítse a MongoDB-sablont a [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#create). Adja meg a saját erőforrás nevét, és ahol szükséges, az ilyen méretű *newStorageAccountName*, *virtualNetworkName*, és *vmSize*:
+Ezután telepítse a MongoDB-sablont a [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#create). Amikor a rendszer kéri, adja meg a saját egyedi értékeket az *newStorageAccountName*, *dnsNameForPublicIP*, és a rendszergazda felhasználónevét és jelszavát:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
-  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
-    "adminUsername": {"value": "azureuser"},
-    "adminPassword": {"value": "P@ssw0rd!"},
-    "dnsNameForPublicIP": {"value": "mypublicdns"},
-    "virtualNetworkName": {"value": "myVnet"},
-    "vmSize": {"value": "Standard_DS2_v2"},
-    "vmName": {"value": "myVM"},
-    "publicIPAddressName": {"value": "myPublicIP"},
-    "nicName": {"value": "myNic"}}' \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
 Jelentkezzen be a virtuális gép használata a nyilvános DNS-címét, a virtuális gép. Megtekintheti a nyilvános DNS-cím [az vm megjelenítése](/cli/azure/vm#show):
 
 ```azurecli
-az vm show -g myResourceGroup -n myVM -d --query [fqdns] -o tsv
+az vm show -g myResourceGroup -n myLinuxVM -d --query [fqdns] -o tsv
 ```
 
 SSH-kapcsolatot a virtuális Gépet, a saját felhasználónévvel és a nyilvános DNS-címét:

@@ -16,87 +16,53 @@ ms.date: 07/20/2017
 ms.author: sureshja
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: c92631323040f9be015d3824b9803cdde95d874b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f3284d4cbb15f21522549c678410815b54344744
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/16/2017
 ---
-# <a name="understanding-the-azure-active-directory-application-manifest"></a>Az Azure Active Directory alkalmazásjegyzékének megismerése
-Alkalmazások, amelyek integrálják az Azure Active Directory (AD) regisztrálni kell az Azure AD-bérlő, az alkalmazás állandó identitása konfigurációjának megadása. Ez a konfiguráció a futásidőben, engedélyezése, hogy az alkalmazás erőforrás kihelyezése és az Azure AD a hitelesítési/engedélyezési replikaszervező forgatókönyvek megkeresett van. Az Azure AD alkalmazásmodell kapcsolatos további információkért tekintse meg a [hozzáadása, frissítése és eltávolítása egy alkalmazás] [ ADD-UPD-RMV-APP] cikk.
+# <a name="azure-active-directory-application-manifest"></a>Az Azure Active Directory alkalmazásjegyzékének
+Alkalmazásokat, amelyekbe beépül az Azure AD az Azure AD-bérlő regisztrálva kell lennie. Ez az alkalmazás az alkalmazás-jegyzékfájl (alatt az Azure AD panel) használatával konfigurálható a [Azure-portálon](https://portal.azure.com).
 
-## <a name="updating-an-applications-identity-configuration"></a>Az alkalmazás identitását konfigurációjának frissítése
-Ténylegesen több lehetőség áll rendelkezésre az alkalmazás identitását konfigurációban, képességeit és nehezen, beleértve a következő mértékben változó tulajdonságainak frissítése:
+## <a name="manifest-reference"></a>Hivatkozás manifest
 
-* A  **[Azure portal] [ AZURE-PORTAL] webes felhasználói felület** lehetővé teszi egy alkalmazás általános tulajdonságainak frissítéséhez. Ez a leggyorsabb és legalább egy hiba nagyon eséllyel fordulnak elő módja az alkalmazás tulajdonságainak frissítése, de nem Ön teljes hozzáférést biztosít minden tulajdonságai, például a következő két módszer.
-* Speciális forgatókönyvek esetén be kell frissíteni, amelyek nem érhetők el a klasszikus Azure portálon tulajdonságait, módosíthatja a **alkalmazásjegyzék**. Ez a cikk a fókusz, és további részletes információkat a következő szakaszban indítása.
-* Akkor is lehet **használó alkalmazásokat a [Graph API] [ GRAPH-API]**  frissítése az alkalmazás, amely a legtöbb beavatkozást igényel. Ennek az lehet vonzó lehetőség, ha, ha felügyeleti szoftver ír, vagy alkalmazás tulajdonságai automatizált módon rendszeresen frissíteni kell.
-
-## <a name="using-the-application-manifest-to-update-an-applications-identity-configuration"></a>Az alkalmazás jegyzékében használata az alkalmazás identitását konfiguráció frissítése
-Keresztül a [Azure-portálon][AZURE-PORTAL], az alkalmazás identitáskonfigurációs kezelheti az alkalmazás jegyzékében a beágyazott jegyzék szerkesztővel frissítésével. Letöltheti, és töltse fel az alkalmazás jegyzékében JSON-fájlként. Nincs tényleges fájl a könyvtárban található. Az alkalmazás jegyzékében csupán egy HTTP GET művelet az Azure AD Graph API-alkalmazás entitáson, és a feltöltés során HTTP javítására, de az alkalmazás entitáson.
-
-Ennek eredményeképpen a formátum és az alkalmazás jegyzékében tulajdonságainak megértése, fog hivatkoznia kell a Graph API [alkalmazás entitás] [ APPLICATION-ENTITY] dokumentációját. Például, ha az alkalmazás jegyzékében feltöltés végrehajtható frissítések:
-
-* **Deklarálja engedélyhatókörök (oauth2Permissions)** jelennek meg, ha a webes API-t. A "Kitettségének webes API-k az egyéb alkalmazások" témakörében [alkalmazások integrálása az Azure Active Directoryval] [ INTEGRATING-APPLICATIONS-AAD] információk segítségével a oauth2Permissions felhasználói megszemélyesítés delegált engedélyek hatókör. Ahogy korábban említettük, a alkalmazás entitás tulajdonságai szerepelnek-e a Graph API [entitás és a komplex típus] [ APPLICATION-ENTITY] áttekintésével foglalkozó cikkben, beleértve a oauth2Permissions tulajdonság, amely gyűjtemény a típus [OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION].
-* **Deklarálja az alkalmazás által elérhetővé tett alkalmazás-szerepkörök (appRoles)**. Az alkalmazás entitás appRoles tulajdonság típusú gyűjteményhez [birtokolhat][APPLICATION-ENTITY-APP-ROLE]. Tekintse meg a [szerepköralapú hozzáférés-vezérlés az Azure AD felhőalapú alkalmazások] [ RBAC-CLOUD-APPS-AZUREAD] cikk egy megvalósítási példát.
-* **Deklarálja ismert ügyfél alkalmazások (knownClientApplications)**, amelyek lehetővé teszik, hogy az erőforrás vagy webes API-hoz a megadott ügyfél alkalmazás(ok) beleegyezése logikailag kötése.
-* **Azure AD-csoport tagságát jogcímet kérelem** a bejelentkezett felhasználó (groupMembershipClaims).  Ez is konfigurálhatja a felhasználók directory szerepkörök tagságát kapcsolatos jogcímek kiállítására. Tekintse meg a [felhőalapú alkalmazások AD-csoportok használata az engedélyezési] [ AAD-GROUPS-FOR-AUTHORIZATION] cikk egy megvalósítási példát.
-* **Az alkalmazás OAuth 2.0 Implicit grant támogatásához** adatfolyamok (oauth2AllowImplicitFlow). Az ilyen típusú grant flow beágyazott JavaScript weblapok vagy a lap alkalmazások (SPA) használatos. Az implicit hitelesítésengedélyezési további információkért lásd: [OAuth2 implicit ismertetése adja meg az Azure Active Directoryban folyamat][IMPLICIT-GRANT].
-* **X509 használatának engedélyezése a titkos kulcs tanúsítványokhoz** (keyCredentials). Tekintse meg a [Office 365 szolgáltatás és -démon alkalmazások készítéséhez] [ O365-SERVICE-DAEMON-APPS] és [fejlesztői útmutatója a hitelesítés az Azure Resource Manager API-JÁVAL] [ DEV-GUIDE-TO-AUTH-WITH-ARM] cikkek megvalósítási példákat.
-* **Adja hozzá egy új App ID URI** az alkalmazáshoz (identifierURIs[]). App ID URI-k segítségével egyedi módon azonosítja az alkalmazás az Azure AD-bérlő (vagy több Azure AD-bérlőre, több-bérlős forgatókönyvek minősített ellenőrzött egyéni tartomány keresztül). Egy erőforrás-alkalmazást, vagy egy erőforrás-alkalmazást a hozzáférési token beszerzése jogosultságokkal kérésekor használják. Ha ezt az elemet frissít, ugyanazt a frissítést él, az alkalmazás saját bérlőt a megfelelő szolgáltatás egyszerű servicePrincipalNames [] gyűjtemény történik.
-
-Az alkalmazás jegyzékében is biztosít a legegyszerűbben az alkalmazás regisztrációja állapotának nyomon követését. JSON-formátumban, mert a fájl megjelenítése a verziókövetési, valamint az alkalmazás forráskódjához való ellenőrizhetők.
-
-## <a name="step-by-step-example"></a>Lépés példa alapján lépés
-Most már lehetővé teszi, hogy végezze el az alkalmazás identitását konfigurációs keresztül az alkalmazás jegyzékében frissítéséhez szükséges lépéseket. Ki a fenti példákban egyik bemutatja, hogyan meg kell adnia egy új engedély hatókör egy erőforrás-alkalmazáshoz:
-
-1. Jelentkezzen be az [Azure Portalra][AZURE-PORTAL].
-2. Ön már hitelesítése után válassza ki az Azure AD-bérlő el az oldal jobb felső sarkában.
-3. Válassza ki **Azure Active Directory** a bal oldali navigációs panelen, majd kattintson a bővítmény **App regisztrációk**.
-4. Frissítse a listában, és kattintson rá alkalmazás megkeresése.
-5. Az alkalmazás lapon kattintson a **Manifest** a jegyzék beágyazott-szerkesztő megnyitásához. 
-6. Közvetlenül szerkesztheti a jegyzéket a szerkesztő. Vegye figyelembe, hogy a jegyzék követi a sémát a [alkalmazás entitás] [ APPLICATION-ENTITY] azt a korábban említett: például, feltéve, hogy szeretnénk megvalósítása/elérhetővé tétele egy új engedély hívása "Employees.Read.All" a erőforrás-alkalmazáshoz (API), akkor volna egyszerűen vegyen fel egy új/másodperc oauth2Permissions gyűjtemény ie:
-   
-        "oauth2Permissions": [
-        {
-        "adminConsentDescription": "Allow the application to access MyWebApplication on behalf of the signed-in user.",
-        "adminConsentDisplayName": "Access MyWebApplication",
-        "id": "aade5b35-ea3e-481c-b38d-cba4c78682a0",
-        "isEnabled": true,
-        "type": "User",
-        "userConsentDescription": "Allow the application to access MyWebApplication on your behalf.",
-        "userConsentDisplayName": "Access MyWebApplication",
-        "value": "user_impersonation"
-        },
-        {
-        "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
-        "adminConsentDisplayName": "Read-only access to Employee records",
-        "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
-        "isEnabled": true,
-        "type": "User",
-        "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
-        "userConsentDisplayName": "Read-only access to your Employee records",
-        "value": "Employees.Read.All"
-        }
-        ],
-   
-    A bejegyzés egyedinek kell lennie, és ezért létre kell hoznia egy új globálisan egyedi Azonosítót (GUID) a `"id"` tulajdonság. Ebben az esetben mivel azt a megadott `"type": "User"`, ezzel az engedéllyel is kell átadni kívánt hozzájárult e által az Azure AD által hitelesített bármely fiók bérlői található az erőforrás/API-alkalmazás regisztrálva van. Ez engedélyezi az ügyfél-e férni a fiók nevében alkalmazás számára. A leírás és megjelenítendő név karakterláncok hozzájárulási során, és az Azure-portálon megjelenítendő szolgálnak.
-6. Ha végzett a jegyzékfájl frissítése, kattintson a **mentése** a jegyzékfájl mentése.  
-   
-Most, hogy a jegyzékfájl mentése adhat a regisztrált ügyfél alkalmazás-hozzáférés a fentiekben hozzáadott új engedélyt. Ezúttal az Azure-portál webes felhasználói felületén használhatja az ügyfél alkalmazásjegyzék szerkesztése helyett:  
-
-1. Nyissa meg a a **beállítások** , amelyhez hozzá kívánja hozzáféréssel az új API-t, hogy az ügyfélalkalmazás panelen kattintson a **szükséges engedélyek** válassza **API kiválasztása**.
-2. Majd meg fog jelenni a bérlő (API-k) regisztrált erőforrás-alkalmazások listáját. Kattintson rá kattintva jelölje ki az erőforrás-alkalmazáshoz, vagy írja be a keresőmezőbe alkalmazás nevét. Ha az alkalmazás talált, kattintson **válasszon**.  
-3. Ekkor megjelenik a a **Select engedélyeket** lap, amely elérhetővé válik az erőforrás alkalmazás delegált engedélyek és Alkalmazásengedélyek listáját. Válassza ki ahhoz, hogy vegye fel azt az ügyfél kért engedélyeket az új engedély. Ez az új engedély az ügyfélalkalmazás identitáskonfigurációs, a "requiredResourceAccess" gyűjteménytulajdonság tárolódnak.
-
-
-Ennyi az egész. Most már az alkalmazásokat az új identitás-konfigurációt használni fog futni.
+>[!div class="mx-tdBreakAll"]
+>[!div class="mx-tdCol2BreakAll"]
+|Kulcs  |Érték típusa |Példaérték  |Leírás  |
+|---------|---------|---------|---------|
+|Alkalmazásazonosító     |  Azonosító karakterlánca       |""|  Az alkalmazás-alkalmazásokhoz az Azure AD által hozzárendelt egyedi azonosítója.|
+|appRoles     |    Tömb típusa     |[{<br>&emsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&emsp;],<br>&emsp;"description": "Olvasás csak való hozzáférés eszközadatokat",<br>&emsp;"displayName": "Csak Olvasás",<br>&emsp;"id": guid,<br>&emsp;"isEnabled": igaz értéke esetén<br>&emsp;"a érték": "ReadOnly"<br>}]|Szerepkörök, amelyek az alkalmazás nyilváníthat gyűjteménye. Ezek a szerepkörök a felhasználók, csoportok vagy szolgáltatásnevekről rendelhetők.|
+|AvailableToOtherTenants|Logikai érték|igaz|Ha ez a beállítás értéke igaz, az alkalmazás áll rendelkezésre más bérlők számára.  Ha FALSE értéke esetén az alkalmazás csak a bérlő mavenen van regisztrálva.  További információ:: [bármely Azure Active Directory (AD) felhasználó a több-bérlős alkalmazás minta használatával bejelentkezés](active-directory-devhowto-multi-tenant-overview.md). |
+|displayName     |karakterlánc         |MyRegisteredApp         |A megjelenítési nevet az alkalmazásnak. |
+|errorURL     |karakterlánc         |http:<i></i>//MyRegisteredAppError         |Hiba történt egy alkalmazás URL-CÍMÉT. |
+|GroupMembershipClaims     |    karakterlánc     |    1     |   Bitmaszk, amely a kibocsátott "csoportok" jogcím egy felhasználó vagy az OAuth 2.0 hozzáférési jogkivonatot, amely az alkalmazás vár konfigurálja. A bitmaszk értékei: 0: None, 1: biztonsági csoportok és szerepkörök az Azure AD, 2: fenntartott, 4: foglalt. A bitmaszk beállítás 7 összes a biztonsági csoportok, a terjesztési csoportok és az Azure Active directory szerepkörök, amely a bejelentkezett felhasználó tagja megkapja.      |
+|optionalClaims     |  karakterlánc       |     null    |    A jogkivonat a biztonsági jogkivonat-szolgáltatás az adott alkalmazás által visszaadott választható jogcímeket.     |
+|acceptMappedClaims    |      Logikai érték   | igaz        |    Ha a beállítás értéke TRUE, lehetővé teszi az alkalmazás-leképezés jogcímek egy egyéni aláírási kulcs megadása nélkül.|
+|Kezdőlap     |  karakterlánc       |http:<i></i>//MyRegistererdApp         |    Az alkalmazás kezdőlapját URL-CÍMÉT.     |
+|identifierUris     |  Karakterlánc-tömbben       | http:<i></i>//MyRegistererdApp        |   Felhasználó által definiált URI(s), amely egyedileg azonosítja az egy webalkalmazást az Azure AD-bérlő vagy egyéni ellenőrzött tartományt, ha az alkalmazás több-bérlős.      |
+|keyCredentials     |   Tömb típusa      |   [{<br>&nbsp;"customKeyIdentifier": null,<br>"endDate": "2018-09-13T00:00:00Z",<br>"keyId": "\<guid >",<br>"startDate": "2017-09-12T00:00:00Z",<br>"type": "AsymmetricX509Cert"<br>"használati": "Hitelesítés"<br>"a érték": NULL értékű<br>}]      |   Ez a tulajdonság tárolja a hitelesítő alkalmazás által hozzárendelt, a közös titkokat karakterlánc-alapú és az X.509-tanúsítványokat.  Ezek a hitelesítő adatok kerülnek play hozzáférési jogkivonatok kérésekor (ha az alkalmazás az ügyfél nevében jár el egy inkább, mint a forrás).     |
+|knownClientApplications     |     Tömb típusa    |    [guid]     |     Az érték kötegelése szerezni a hozzájárulásukat szolgál, ha olyan megoldás, amely két részből áll, egy ügyfél-alkalmazás és egy egyéni webes API-alkalmazás tartalmazza. Az ügyfélalkalmazás appID ezt az értéket ad meg, ha a felhasználó csak kell egyszer hozzájárul az ügyfélalkalmazás. Megtudhatja, hogy az Azure AD, hogy hozzájárul ahhoz, hogy az ügyfél azt jelenti, amely implicit módon hozzájárul ahhoz, hogy a webes API-t, és automatikusan kiállít szolgáltatásnevekről az ügyfél és a webes API-t (az ügyfél és a webes API-alkalmazást regisztrálni kell az azonos egyszerre Bérlői).|
+|logoutUrl     |   karakterlánc      |     http:<i></i>//MyRegisteredAppLogout    |   Jelentkezzen ki az alkalmazás URL-CÍMÉT.      |
+|oauth2AllowImplicitFlow     |   Logikai érték      |  hamis       |       Meghatározza, hogy a webes alkalmazás kérhet OAuth2.0 implicit engedélyezési folyamat jogkivonatokat. Az alapértelmezett értéke false. Böngészőalapú alkalmazások, például Javascript egylapos alkalmazások szolgál. |
+|oauth2AllowUrlPathMatching     |   Logikai érték      |  hamis       |   Megadja, hogy, az OAuth 2.0 token kérelmek részeként, az Azure AD engedélyezi az átirányítási URI-t az alkalmazás replyUrls szemben a megfelelő elérési útja. Az alapértelmezett értéke false.      |
+|oauth2Permissions     | Tömb típusa         |      [{<br>"adminConsentDescription": "Engedélyezéséhez az alkalmazás a bejelentkezett felhasználó nevében erőforrások eléréséhez."<br>"adminConsentDisplayName": "Hozzáférési resource1",<br>"id": "\<guid >",<br>"isEnabled": igaz értéke esetén<br>"type": "User"<br>"userConsentDescription": "Engedélyezéséhez az alkalmazás az Ön nevében resource1 eléréséhez."<br>"userConsentDisplayName": "Hozzáférési resources",<br>"a érték": "user_impersonation"<br>}]   |  Az OAuth 2.0-engedélyhatókörök, amely a webes API (erőforrás) alkalmazás ügyfélalkalmazások számára elérhetővé teszi gyűjteménye. Ezek engedélyhatókörök hozzájárulási során adható ügyfélalkalmazások számára. |
+|oauth2RequiredPostResponse     | Logikai érték        |    hamis     |      Megadja, hogy, az OAuth 2.0 token kérelmek részeként, az Azure AD engedélyezi POST-kérésnél az GET kérelmek szemben. Az alapértelmezett értéke false, amely megadja, hogy csak a GET-kérésekhez engedélyezett lesz.   
+|Objektumazonosító     | Azonosító karakterlánca        |     ""    |    A könyvtárban az alkalmazás egyedi azonosítója.  Ez az azonosítója alapján határozza meg az alkalmazás minden protokoll tranzakcióban.  Felhasználói feladata a hivatkozik az objektumra directory lekérdezésekben.|
+|passwordCredentials     | Tömb típusa        |   [{<br>"customKeyIdentifier": null,<br>"endDate": "2018-10-19T17:59:59.6521653Z",<br>"keyId": "\<guid >",<br>"startDate": "2016-10-19T17:59:59.6521653Z",<br>"a érték": NULL értékű<br>}]      |    Tekintse meg a keyCredentials tulajdonság leírását.     |
+|PublicClient     |  Logikai érték       |      hamis   | Megadja, hogy egy alkalmazás egy nyilvános ügyfél (például egy telepített alkalmazás egy mobileszközön fut). Alapértelmezett értéke false.        |
+|supportsConvergence     |  Logikai érték       |   hamis      | Ez a tulajdonság nem lehet szerkeszteni.  Fogadja el az alapértelmezett értéket.        |
+|replyUrls     |  Karakterlánc-tömbben       |   http:<i></i>//localhost     |  Ez a többértékű tulajdonság tárolja, amely az Azure AD elfogadja, célként regisztrált redirect_uri értékek listájának amikor returining jogkivonatokat. |
+|RequiredResourceAccess     |     Tömb típusa    |    [{<br>"resourceAppId": "00000002-0000-0000-c000-000000000000"<br>"resourceAccess": [{<br>&nbsp;&nbsp;&nbsp;&nbsp;"id": "311a71cc-e848-46a1-bdf8-97ff7156d8e6"<br>&nbsp;&nbsp;&nbsp;&nbsp;"type": "Hatókör"<br>&nbsp;&nbsp;}]<br>}]     |   Adja meg az ehhez az alkalmazáshoz való hozzáférés és az OAuth-engedélyhatókörök és alkalmazás-szerepkörök, az egyes erőforrások szükséges erőforrásokat. A szükséges erőforrások elérése előtti konfigurációját a hozzájárulási élmény meghajtók.|
+|resourceAppId     |    Azonosító karakterlánca     |  ""      |   Az erőforrás, amely kell elérnie az alkalmazás egyedi azonosítója. Ez az érték a célalkalmazás erőforrás deklarált appId egyenlőnek kell lennie.     |
+|resourceAccess     |  Tömb típusa       | Lásd: a példában a requiredResourceAccess tulajdonság értékét.        |   OAuth2.0 engedélyhatókörök és alkalmazás-szerepkörök, az alkalmazás által a megadott erőforrás (azonosító és a típus értékeket a megadott erőforrások tartalmazza)        |
+|samlMetadataUrl|karakterlánc|http:<i></i>//MyRegisteredAppSAMLMetadata|Az alkalmazás SAML metaadatainak URL-CÍMÉT.| 
 
 ## <a name="next-steps"></a>Következő lépések
-* Az alkalmazás és szolgáltatás egyszerű objektumok az alkalmazás közötti kapcsolat a további részletekért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure AD][AAD-APP-OBJECTS].
+* Az alkalmazás alkalmazás- és szolgáltatásnevet objektumok közötti kapcsolatot további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure AD][AAD-APP-OBJECTS].
 * Tekintse meg a [az Azure AD fejlesztői szószedet] [ AAD-DEVELOPER-GLOSSARY] bizonyos Azure Active Directory (AD) fejlesztői alapfogalmakat-definíciók.
 
-A Megjegyzések az alábbi szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+Az alábbi Megjegyzések szakasz segítségével visszajelzést, amellyel pontosíthatja és a tartalom.
 
 <!--article references -->
 [AAD-APP-OBJECTS]: active-directory-application-objects.md

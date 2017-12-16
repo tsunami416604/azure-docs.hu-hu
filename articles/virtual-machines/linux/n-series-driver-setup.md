@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/09/2017
+ms.date: 12/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59790185c4603eac99032dd77a79bd8315402538
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 11415f416bf101e7f30a9d85b8e344ab40200760
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>N-sorozat linuxos virtuális gépek NVIDIA GPU illesztőprogramok telepítéséhez
 
@@ -32,6 +32,150 @@ N sorozatú virtuális gép specifikációk, tárolási kapacitás, és a lemez 
 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
+
+## <a name="install-cuda-drivers-for-nc-ncv2-and-nd-vms"></a>A hálózati vezérlő által, NCv2 és ND virtuális gépek CUDA illesztőprogramok telepítése
+
+Az alábbiakban a NVIDIA CUDA eszközkészlet a Linux NC gépeken NVIDIA illesztőprogramok telepítésének lépéseit. 
+
+C és C++ fejlesztők is telepíthet a teljes eszközkészlet GPU-gyorsított alkalmazásokat hozhatnak létre. További információkért lásd: a [CUDA a telepítési útmutató](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+
+
+> [!NOTE]
+> CUDA illesztőprogram letöltési hivatkozásokat itt megadott aktuális kiadvány időpontban. A legújabb CUDA illesztőprogramokat, látogasson el a [NVIDIA](https://developer.nvidia.com/cuda-zone) webhelyet.
+>
+
+CUDA eszközkészlet telepítése, ellenőrizze az SSH-kapcsolat az egyes virtuális. Ellenőrizze, hogy a rendszer egy CUDA-kompatibilis grafikus processzort tartalmaz, futtassa a következő parancsot:
+
+```bash
+lspci | grep -i NVIDIA
+```
+(Egy NVIDIA Tesla K80 kártya megjelenítő) az alábbi példához hasonló kimenetet fog látni:
+
+![lspci parancs kimenete](./media/n-series-driver-setup/lspci.png)
+
+Majd a terjesztéshez futtatási telepítési parancsokat.
+
+### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+
+1. Töltse le és telepítse a CUDA illesztőprogramokat.
+  ```bash
+  CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+
+  wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
+
+  sudo dpkg -i /tmp/${CUDA_REPO_PKG}
+
+  sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
+
+  rm -f /tmp/${CUDA_REPO_PKG}
+
+  sudo apt-get update
+
+  sudo apt-get install cuda-drivers
+
+  ```
+
+  A telepítés több percet is igénybe vehet.
+
+2. A teljes CUDA eszközkészlet telepíti, írja be:
+
+  ```bash
+  sudo apt-get install cuda
+  ```
+
+3. A virtuális gép újraindul, és ellenőrizheti a telepítést.
+
+#### <a name="cuda-driver-updates"></a>Illesztőprogram-frissítést CUDA
+
+Azt javasoljuk, hogy rendszeres időközönként frissíti CUDA illesztőprogramok a telepítés utáni.
+
+```bash
+sudo apt-get update
+
+sudo apt-get upgrade -y
+
+sudo apt-get dist-upgrade -y
+
+sudo apt-get install cuda-drivers
+
+sudo reboot
+```
+
+### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>7.3 centOS-alapú vagy a Red Hat Enterprise Linux 7.3.
+
+1. Telepítse a legújabb Hyper-v Linux integrációs szolgáltatások.
+
+  > [!IMPORTANT]
+  > Ha telepítette a CentOS-alapú HPC-lemezkép egy NC24r VM, folytassa a 3. lépés. Mivel az Azure RDMA-illesztőprogramjai és a Linux integrációs szolgáltatások a HPC-lemezképben előre telepített, LIS nem kell frissíteni, és a kernel frissítések alapértelmezés szerint le vannak tiltva.
+  >
+
+  ```bash
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-2.tar.gz
+ 
+  tar xvzf lis-rpms-4.2.3-2.tar.gz
+ 
+  cd LISISO
+ 
+  sudo ./install.sh
+ 
+  sudo reboot
+  ```
+ 
+3. Csatlakozzon újra a virtuális Gépet, és folytathatja a telepítést a következő parancsokat:
+
+  ```bash
+  sudo yum install kernel-devel
+
+  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+  sudo yum install dkms
+
+  CUDA_REPO_PKG=cuda-repo-rhel7-9.1.85-1.x86_64.rpm
+
+  wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+
+  sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
+
+  rm -f /tmp/${CUDA_REPO_PKG}
+
+  sudo yum install cuda-drivers
+  ```
+
+  A telepítés több percet is igénybe vehet. 
+
+4. A teljes CUDA eszközkészlet telepíti, írja be:
+
+  ```bash
+  sudo yum install cuda
+  ```
+
+5. A virtuális gép újraindul, és ellenőrizheti a telepítést.
+
+
+### <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
+
+
+Lekérdezni a GPU eszközállapotba SSH a virtuális gép, és futtassa a [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) parancssori segédprogram illesztőprogrammal telepítve. 
+
+Ha az illesztőprogram telepítve van, látni fogja a következőhöz hasonló kimenetet. Vegye figyelembe, hogy **GPU-Util** 0 % mutatja, kivéve, ha meg van nyitva egy GPU munkaterhelés a virtuális Gépen. A illesztőprogramjának verziószámát és a GPU részletek látható eltérő lehet.
+
+![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi.png)
+
+
+
+## <a name="rdma-network-connectivity"></a>RDMA hálózati kapcsolat
+
+RDMA hálózati kapcsolatot az RDMA-kompatibilis N sorozatú virtuális gépeken futó engedélyezhető, mint például az azonos rendelkezésre állási készlet NC24r telepítve. Az RDMA hálózati Message Passing Interface (MPI) forgalmat támogatja az Intel MPI futó alkalmazások 5.x-es vagy újabb verziója. Kövesse a további követelmények:
+
+### <a name="distributions"></a>Azokat a terjesztéseket
+
+RDMA-kompatibilisek-e N sorozatú virtuális gépeket, egy az Azure piactéren, amely támogatja az RDMA-kapcsolatot a következő lemezképek központi telepítése:
+  
+* **Ubuntu** -Ubuntu Server 16.04 LTS. RDMA-illesztőprogramok konfigurálja a virtuális Gépre, és regisztrálhatja az Intel Intel MPI letöltése:
+
+  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
+
+* **CentOS-alapú HPC** -7.3 HPC CentOS-alapú. RDMA-illesztőprogramok és Intel MPI 5.1 telepítve vannak a virtuális Gépet. 
 
 ## <a name="install-grid-drivers-for-nv-vms"></a>Portok HV virtuális gépek rács illesztőprogramok telepítése
 
@@ -95,10 +239,6 @@ Portok HV virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez a
 
 ### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>7.3 centOS-alapú vagy a Red Hat Enterprise Linux 7.3.
 
-> [!IMPORTANT]
-> Ne futtassa `sudo yum update` CentOS 7.3 vagy a Red Hat Enterprise Linux 7.3 a kernel verzió módosítására. Jelenleg illesztőprogram telepítése és a frissítések nem működik, ha a kernel frissül.
->
-
 1. A kernel és DKMS frissítése.
  
   ```bash  
@@ -122,9 +262,9 @@ Portok HV virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez a
 3. Indítsa újra a virtuális gép, csatlakozzon újra, és telepítse a legújabb Linux integrációs szolgáltatásokat a Hyper-V:
  
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-2.tar.gz
 
-  tar xvzf lis-rpms-4.2.3.tar.gz
+  tar xvzf lis-rpms-4.2.3-2.tar.gz
 
   cd LISISO
 
@@ -165,7 +305,7 @@ Portok HV virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez a
 
 Lekérdezni a GPU eszközállapotba SSH a virtuális gép, és futtassa a [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) parancssori segédprogram illesztőprogrammal telepítve. 
 
-A következő eredmény jelenik meg. A illesztőprogramjának verziószámát és a GPU részletek látható eltérő lehet.
+Ha az illesztőprogram telepítve van, látni fogja a következőhöz hasonló kimenetet. Vegye figyelembe, hogy **GPU-Util** 0 % mutatja, kivéve, ha meg van nyitva egy GPU munkaterhelés a virtuális Gépen. A illesztőprogramjának verziószámát és a GPU részletek látható eltérő lehet.
 
 ![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi-nv.png)
  
@@ -202,163 +342,13 @@ if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; 
 
 Hozzon létre egy bejegyzést, az ezt a fájlt is elindítható a rendszerindító legfelső szintű `/etc/rc.d/rc3.d`.
 
-
-## <a name="install-cuda-drivers-for-nc-vms"></a>Hálózati vezérlő által virtuális gépek CUDA illesztőprogramok telepítése
-
-Az alábbiakban a NVIDIA CUDA eszközkészlet a Linux NC gépeken NVIDIA illesztőprogramok telepítésének lépéseit. 
-
-C és C++ fejlesztők is telepíthet a teljes eszközkészlet GPU-gyorsított alkalmazásokat hozhatnak létre. További információkért lásd: a [CUDA a telepítési útmutató](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
-
-
-> [!NOTE]
-> CUDA illesztőprogram letöltési hivatkozásokat itt megadott aktuális kiadvány időpontban. A legújabb CUDA illesztőprogramokat, látogasson el a [NVIDIA](https://developer.nvidia.com/cuda-zone) webhelyet.
->
-
-CUDA eszközkészlet telepítése, ellenőrizze az SSH-kapcsolat az egyes virtuális. Ellenőrizze, hogy a rendszer egy CUDA-kompatibilis grafikus processzort tartalmaz, futtassa a következő parancsot:
-
-```bash
-lspci | grep -i NVIDIA
-```
-(Egy NVIDIA Tesla K80 kártya megjelenítő) az alábbi példához hasonló kimenetet fog látni:
-
-![lspci parancs kimenete](./media/n-series-driver-setup/lspci.png)
-
-Majd a terjesztéshez futtatási telepítési parancsokat.
-
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
-
-1. Töltse le és telepítse a CUDA illesztőprogramokat.
-  ```bash
-  CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
-
-  wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
-
-  sudo dpkg -i /tmp/${CUDA_REPO_PKG}
-
-  sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
-
-  rm -f /tmp/${CUDA_REPO_PKG}
-
-  sudo apt-get update
-
-  sudo apt-get install cuda-drivers
-
-  ```
-
-  A telepítés több percet is igénybe vehet.
-
-2. A teljes CUDA eszközkészlet telepíti, írja be:
-
-  ```bash
-  sudo apt-get install cuda
-  ```
-
-3. A virtuális gép újraindul, és ellenőrizheti a telepítést.
-
-#### <a name="cuda-driver-updates"></a>Illesztőprogram-frissítést CUDA
-
-Azt javasoljuk, hogy rendszeres időközönként frissíti CUDA illesztőprogramok a telepítés utáni.
-
-```bash
-sudo apt-get update
-
-sudo apt-get upgrade -y
-
-sudo apt-get dist-upgrade -y
-
-sudo apt-get install cuda-drivers
-
-sudo reboot
-```
-
-### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>7.3 centOS-alapú vagy a Red Hat Enterprise Linux 7.3.
-
-1. Telepítse a legújabb Hyper-v Linux integrációs szolgáltatások.
-
-  > [!IMPORTANT]
-  > Ha telepítette a CentOS-alapú HPC-lemezkép egy NC24r VM, folytassa a 3. lépés. Mivel az Azure RDMA-illesztőprogramjai és a Linux integrációs szolgáltatások a HPC-lemezképben előre telepített, LIS nem kell frissíteni, és a kernel frissítések alapértelmezés szerint le vannak tiltva.
-  >
-
-  ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-1.tar.gz
- 
-  tar xvzf lis-rpms-4.2.3-1.tar.gz
- 
-  cd LISISO
- 
-  sudo ./install.sh
- 
-  sudo reboot
-  ```
- 
-3. Csatlakozzon újra a virtuális Gépet, és folytathatja a telepítést a következő parancsokat:
-
-  ```bash
-  sudo yum install kernel-devel
-
-  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
-  sudo yum install dkms
-
-  CUDA_REPO_PKG=cuda-repo-rhel7-9.0.176-1.x86_64.rpm
-
-  wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
-
-  sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
-
-  rm -f /tmp/${CUDA_REPO_PKG}
-
-  sudo yum install cuda-drivers
-  ```
-
-  A telepítés több percet is igénybe vehet. 
-
-4. A teljes CUDA eszközkészlet telepíti, írja be:
-
-  ```bash
-  sudo yum install cuda
-  ```
-
-5. A virtuális gép újraindul, és ellenőrizheti a telepítést.
-
-
-### <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
-
-
-Lekérdezni a GPU eszközállapotba SSH a virtuális gép, és futtassa a [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) parancssori segédprogram illesztőprogrammal telepítve. 
-
-A következő eredmény jelenik meg:
-
-![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi.png)
-
-
-
-## <a name="rdma-network-for-nc24r-vms"></a>RDMA hálózati NC24r virtuális gépekhez
-
-Az azonos rendelkezésre állási készlet telepített NC24r virtuális gépek RDMA hálózati kapcsolat engedélyezhető. Az RDMA hálózati Message Passing Interface (MPI) forgalmat támogatja az Intel MPI futó alkalmazások 5.x-es vagy újabb verziója. Kövesse a további követelmények:
-
-### <a name="distributions"></a>Azokat a terjesztéseket
-
-Telepítés NC24r virtuális gépeket az Azure piactéren, amely támogatja az RDMA-kapcsolatot az alábbi képek egyikét:
-  
-* **Ubuntu** -Ubuntu Server 16.04 LTS. RDMA-illesztőprogramok konfigurálja a virtuális Gépre, és regisztrálhatja az Intel Intel MPI letöltése:
-
-  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
-
-* **CentOS-alapú HPC** -7.3 HPC CentOS-alapú. RDMA-illesztőprogramok és Intel MPI 5.1 telepítve vannak a virtuális Gépet. 
-
-
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 * Egy ismert probléma az Azure virtuális gépeken N-sorozat a 4.4.0-75 Linux kernel futó Ubuntu 16.04 LTS CUDA illesztőprogramok van. Ha egy korábbi kernel frissít, frissítsen legalább kernel verzió 4.4.0-77.
 
-* Adatmegőrzési mód használatával állíthatja be `nvidia-smi` , a parancs kimenetében esetén gyorsabb lekérdezés kártyák kell. Adatmegőrzési üzemmód beállítása, hajtsa végre a `nvidia-smi -pm 1`. Vegye figyelembe, hogy a virtuális gép újraindul, ha a üzemmódját eltűnik majd. Lehet mindig parancsprogramot futtatni a üzemmódját indításkor végrehajtásához.
+* Adatmegőrzési mód használatával állíthatja be `nvidia-smi` , a parancs kimenetében esetén gyorsabb lekérdezés kártyák kell. Adatmegőrzési üzemmód beállítása, hajtsa végre a `nvidia-smi -pm 1`. Vegye figyelembe, hogy a virtuális gép újraindul, ha a üzemmódját eltűnik. Lehet mindig parancsprogramot futtatni a üzemmódját indításkor végrehajtásához.
 
 
 ## <a name="next-steps"></a>Következő lépések
-
-* Az N-sorozatú virtuális gépeken a NVIDIA Feldolgozóegységekkel kapcsolatos további információkért lásd:
-    * [NVIDIA Tesla K80](http://www.nvidia.com/object/tesla-k80.html) (az Azure NC virtuális gépek)
-    * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html) (az Azure Permanens virtuális gépek)
 
 * A Linux virtuális gép lemezképének a telepített NVIDIA illesztőprogramokkal, lásd: [generalize és a Linux virtuális gép rögzítése](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
