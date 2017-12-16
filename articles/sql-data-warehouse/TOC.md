@@ -26,7 +26,6 @@
 
 ## Migrálás az SQL Data Warehouse-ba
 ### [Áttekintés](sql-data-warehouse-overview-migrate.md)
-### [Áttelepítési eszköz](sql-data-warehouse-migrate-migration-utility.md)
 ### [Séma áttelepítése](sql-data-warehouse-migrate-schema.md)
 ### [Kód áttelepítése](sql-data-warehouse-migrate-code.md)
 ### [Adatok áttelepítése](sql-data-warehouse-migrate-data.md)
