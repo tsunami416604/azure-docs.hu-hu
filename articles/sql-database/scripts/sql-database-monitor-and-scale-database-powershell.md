@@ -14,13 +14,13 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 06/23/2017
+ms.date: 12/14/2017
 ms.author: janeng
-ms.openlocfilehash: 123e6c4f0f4fdde46199d80fdbc2db9c78f69f5f
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 70dcac2449b18e7afef3f96817593128ca1ab315
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-sql-database"></a>PowerShell segítségével figyelheti, és egy SQL-adatbázis méretezése
 
@@ -31,6 +31,9 @@ A PowerShell-mintaparancsfájl figyeli a metrikák egy adatbázis méretezi a ma
 ## <a name="sample-script"></a>Mintaparancsfájl
 
 [!code-powershell[main](../../../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1?highlight=13-14 "Monitor and scale single SQL Database")]
+
+> [!TIP]
+> Használjon [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) adatbázis műveleti állapotának beolvasása és használata [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity) való visszavonja az adatbázis frissítési művelet.
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 

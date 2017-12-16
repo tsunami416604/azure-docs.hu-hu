@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2017
+ms.date: 12/14/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 67ec6489a6aeed946d41ac8b297d3d99b86e4169
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: f62e5a224c2fb33714a80bc47b98238208b787e5
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Gyakori kérdések az Azure költség Management
 
@@ -46,6 +46,29 @@ Mielőtt Cloudyn beállítása Azure nagyvállalati szerződés API-kulcsot is l
 
 Is szükség lehet ahhoz, hogy megkapja a részleg, a fiókhoz tulajdonosainak és a vállalati rendszergazdák engedélyeket _díjak megtekintése_ számlázási API-val.
 
+## <a name="why-dont-i-see-optimizer-recommendations"></a>Miért nem látom az optimalizáló javaslatok?
+
+Javaslat információk csak aktív fiókokhoz érhető el. Nem jelenik meg minden javaslat információ **optimalizáló** kategóriák fiókok, amelyek jelentést *aktivált*, többek között a következőket:
+
+- Optimalizálás Manager
+- Méretezési optimalizálása
+- Hatékonyság hiánya
+
+Ha bármely optimalizáló javaslat adatai nem tekinthetők meg, a legvalószínűbb ok az, akkor rendelkezik aktivált fiókok. Egy fiók aktiválásához szüksége regisztrálja őket az Azure hitelesítő adatait.
+
+Aktivált fiókra:
+
+1.  A Cloudyn portálon kattintson **beállítások** a felső, jobb és válassza ki a **felhő fiókok**.
+2.  A Microsoft Azure-fiók lapon keresse meg a fiókokat, amelyek rendelkeznek egy **aktivált** előfizetés.
+3.  Kattintson a jobb oldalán egy aktivált fiókhoz, a **szerkesztése** egy ceruza levő szimbólum.
+4.  A bérlői és sebessége azonosító automatikusan észleli. Kattintson a **Tovább** gombra.
+5.  A program átirányítja az Azure-portálon. Jelentkezzen be a portálra, és az Azure adatok eléréséhez Cloudyn adatgyűjtő engedélyezéséhez.
+6.  A következő program átirányítja a Cloudyn fiókok kezelése lapon, és az előfizetésben **aktív** Fiókállapot. Azt illusztrálja, egy zöld pipa szimbólumot.
+7.  Ha egy vagy több előfizetés nem egy zöld pipa szimbólumot lát, az azt jelenti, Ön nem jogosult az előfizetés olvasó alkalmazás (CloudynCollector) létrehozása. Az előfizetés magasabb szintű engedélyekkel rendelkező felhasználó kell ismételje meg a 3. és 4.  
+
+A fenti lépések végrehajtása után megtekintheti a optimalizáló ajánlások egy-két napon belül. Azonban legfeljebb öt napig érhető el teljes optimalizálási adatokat is igénybe vehet.
+
+
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>Hogyan engedélyezhető felfüggesztett vagy zárolt felhasználók?
 
 Ha engedélyezi a hozzáférést egy felhasználó kéri figyelmeztetést kap, a felhasználói fiók aktiválása szeretné.
@@ -66,10 +89,7 @@ Cloudyn e-mail-címét az Azure-ban az alapértelmezett cím vált, ha a fiók k
 
 Azt javasoljuk, hogy legalább két Cloudyn rendszergazdai fiókokat hoz létre, abban az esetben, ha az egyik fiók lekérdezi zárolása.
 
-Ha Ön nem jelentkezhet be a Cloudyn portálra, győződjön meg arról, hogy bejelentkezni Cloudyn a helyes Azure költség felügyeleti URL-címet használja. A következő URL-címek egyikét használja:
-
-- https://Azure.cloudyn.com
-- https://MS.Portal.Azure.com/#Blade/Microsoft_Azure_CostManagement/CloudynMainBlade
+Ha Ön nem jelentkezhet be a Cloudyn portálra, győződjön meg arról, hogy bejelentkezni Cloudyn a helyes Azure költség felügyeleti URL-címet használja. Használjon [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
 Kerülje a Cloudyn közvetlen URL-cím https://app.cloudyn.com.
 

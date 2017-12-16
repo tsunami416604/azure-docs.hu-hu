@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: JeffGoldner
-ms.openlocfilehash: 939ae243c02eb375251cc4d959ab5d46dc41c040
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 4701891600ab0f3eb6105bec26ca4b911568c4ee
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/15/2017
@@ -30,10 +30,13 @@ Tanácsos ezek letöltése, amikor csak szüksége van a Virtuálisgép-bővítm
 
 |  | Elem neve | Leírás | Közzétevő | Operációs rendszer típusa |
 | --- | --- | --- | --- | --- |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [SQL IaaS-bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>Töltse le a Windows Piactéri elemet bármely SQL Server telepítéséhez a bővítmény - Erre azért szükség.</b> | Microsoft | Windows |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [Egyéni parancsprogramok futtatására szolgáló bővítmény](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>Töltse le a frissítés a beépített Windows-verzió az egyéni parancsfájl kiterjesztése a.</b> | Microsoft | Windows |
+| ![](media/azure-stack-marketplace-azure-items/dsc.png) | [PowerShell DSC-bővítményt](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>A frissítés letöltése a PowerShell DSC-bővítményt a beépített verziójára.</b> | Microsoft | Windows |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [A Microsoft Antimalware-bővítmény](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| Az Azure-hoz a Microsoft Antimalware egy olyan single-ügynök megoldás az alkalmazások és a bérlői környezetekben, emberi beavatkozás nélkül a háttérben futnak. | Microsoft | Windows |
 | ![](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.docker-arm) | A Linux virtuális gépek docker-kiterjesztés. | Microsoft | Linux |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL IaaS-bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>Töltse le a Windows Piactéri elemet bármely SQL Server telepítéséhez a bővítmény - Erre azért szükség.</b> | Microsoft | Windows |
-| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [A Windows Acronis biztonsági mentés bővítmény](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | A Microsoft Azure Acronis biztonsági mentés kiterjesztése a Acronis biztonsági mentés termékcsalád data protection részét képezi. | Nemzetközi GmbH Acronis. | Windows |
 | ![](media/azure-stack-marketplace-azure-items/acronis.png) | [Linux Acronis biztonsági mentés kiterjesztése](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | A Microsoft Azure Acronis biztonsági mentés kiterjesztése a Acronis biztonsági mentés termékcsalád data protection részét képezi. | Nemzetközi GmbH Acronis. | Linux |
+| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [A Windows Acronis biztonsági mentés bővítmény](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | A Microsoft Azure Acronis biztonsági mentés kiterjesztése a Acronis biztonsági mentés termékcsalád data protection részét képezi. | Nemzetközi GmbH Acronis. | Windows |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [A részletes biztonsági Linux-ügynök](https://azuremarketplace.microsoft.com/marketplace/apps/TrendMicroDeepSecurity.dsa-linux) | Linux Trend Micro mély biztonsági kiterjesztése. | Trend Micro | Linux |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [A részletes biztonsági ügynök a Windows](https://azuremarketplace.microsoft.com/marketplace/apps/TrendMicroDeepSecurity.dsa-windows-arm) | Windows Trend Micro mély biztonsági kiterjesztése. | Trend Micro | Windows |
 

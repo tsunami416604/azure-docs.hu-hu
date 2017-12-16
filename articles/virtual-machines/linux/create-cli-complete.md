@@ -4,7 +4,7 @@ description: "Tárolási, Linux virtuális gép, egy virtuális hálózati és a
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
@@ -13,13 +13,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/06/2017
+ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: e5c4785428b2150e951923e98079e00808a82d87
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd470144dc0fcbbfab662125b57d414c6ee1ccdd
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes Linux virtuális gép létrehozása az Azure parancssori felülettel
 Gyorsan létrehozhat egy virtuális gép (VM) az Azure-ban, egy Azure CLI parancs, amely az alapértelmezett értékeket használja, minden szükséges támogató erőforrások létrehozására használhatja. Erőforrások, például a virtuális hálózat, a nyilvános IP-cím és a hálózati biztonsági csoportszabályok automatikusan jönnek létre. Nagyobb mértékben vezérelheti a az éles környezetben használja, előfordulhat, hogy ezeket az erőforrásokat előre létrehozni, majd a virtuális gépek hozzá őket. Ez a cikk végigvezeti egy virtuális Gépet, és mindegyik egyenként támogató erőforrás létrehozása.
@@ -61,7 +61,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-A kimeneti jeleníti meg az alhálózat szerint logikailag létrehozni a virtuális hálózaton belül:
+Az alábbiakat mutatja be, az alhálózati logikailag jön létre a virtuális hálózaton belül:
 
 ```json
 {
@@ -102,7 +102,7 @@ A kimeneti jeleníti meg az alhálózat szerint logikailag létrehozni a virtuá
 
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
-Most hozzon létre egy nyilvános IP-cím [létrehozása az hálózati nyilvános ip-](/cli/azure/network/public-ip#create). A nyilvános IP-cím lehetővé teszi a virtuális gépek csatlakozni az internetről. Mivel az alapértelmezett cím dinamikus, azt is létrehozhat az elnevezett DNS-bejegyzés a `--domain-name-label` lehetőséget. Az alábbi példa létrehoz egy nyilvános IP-cím nevű *myPublicIP* a DNS-nevét *mypublicdns*. Mivel a DNS-nevének egyedinek kell lennie, adja meg a saját egyedi DNS-név:
+Most hozzon létre egy nyilvános IP-cím [létrehozása az hálózati nyilvános ip-](/cli/azure/network/public-ip#create). A nyilvános IP-cím lehetővé teszi a virtuális gépek csatlakozni az internetről. Mivel az alapértelmezett cím dinamikus, hozzon létre egy elnevezett DNS-bejegyzést a a `--domain-name-label` paraméter. Az alábbi példa létrehoz egy nyilvános IP-cím nevű *myPublicIP* a DNS-nevét *mypublicdns*. Mivel a DNS-nevének egyedinek kell lennie, adja meg a saját egyedi DNS-név:
 
 ```azurecli
 az network public-ip create \
@@ -141,7 +141,7 @@ Kimenet:
 
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-A forgalmat a virtuális gépek mindkét szabályozására, a hálózati biztonsági csoport létrehozása. Hálózati biztonsági csoport egy hálózati adapter vagy az alhálózat alkalmazhatók. Az alábbi példában [az hálózati nsg létrehozása](/cli/azure/network/nsg#create) hozhat létre a hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
+A forgalmat a virtuális gépek mindkét szabályozásához alkalmaz a hálózati biztonsági csoport a virtuális hálózati adapter vagy alhálózat. Az alábbi példában [az hálózati nsg létrehozása](/cli/azure/network/nsg#create) hozhat létre a hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nsg create \
@@ -149,7 +149,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Megadhatja a szabályokat, amelyek az adott adatforgalom engedélyezéséhez vagy letiltásához. (SSH támogatásához) 22-es portot a bejövő kapcsolatok engedélyezéséhez hozzon létre egy bejövő szabályt az a hálózati biztonsági csoport [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#create). Az alábbi példa létrehoz egy nevű szabályt *myNetworkSecurityGroupRuleSSH*:
+Megadhatja a szabályokat, amelyek adott adatforgalom engedélyezéséhez vagy letiltásához. (Az SSH-hozzáférés engedélyezése) 22-es portot a bejövő kapcsolatok engedélyezéséhez hozzon létre egy bejövő forgalomra vonatkozó szabály a [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#create). Az alábbi példa létrehoz egy nevű szabályt *myNetworkSecurityGroupRuleSSH*:
 
 ```azurecli
 az network nsg rule create \
@@ -162,7 +162,7 @@ az network nsg rule create \
     --access allow
 ```
 
-Engedélyezi a bejövő kapcsolatokat (a webes forgalom támogatásához) 80-as porton, vegyen fel egy másik hálózati biztonsági csoport szabály. Az alábbi példa létrehoz egy nevű szabályt *myNetworkSecurityGroupRuleHTTP*:
+(A webes forgalomban) 80-as portot a bejövő kapcsolatok engedélyezéséhez vegyen fel egy másik hálózati biztonsági csoport szabály. Az alábbi példa létrehoz egy nevű szabályt *myNetworkSecurityGroupRuleHTTP*:
 
 ```azurecli
 az network nsg rule create \
@@ -332,7 +332,7 @@ Kimenet:
 ```
 
 ## <a name="create-a-virtual-nic"></a>A virtuális hálózati adapter létrehozása
-Virtuális hálózati adapterek (NIC), ezért programozott módon való használatukat alkalmazhat. Egynél több is lehet. Az alábbi [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#create) parancsban, létrehozhat egy hálózati adapter nevű *myNic* és rendelje hozzá azt a hálózati biztonsági csoport. A nyilvános IP-cím *myPublicIP* is kapcsolódik a virtuális hálózati adaptert.
+Virtuális hálózati adapterek (NIC), ezért programozott módon való használatukat alkalmazhat. Attól függően a [Virtuálisgép-méretet](sizes.md), több virtuális hálózati adapter csatlakoztatása egy virtuális Gépet. Az alábbi [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#create) parancsban, létrehozhat egy hálózati adapter nevű *myNic* és rendelje hozzá azt a hálózati biztonsági csoport. A nyilvános IP-cím *myPublicIP* is kapcsolódik a virtuális hálózati adaptert.
 
 ```azurecli
 az network nic create \
@@ -476,10 +476,10 @@ A kimeneti megjegyzések tartalék tartományok és a frissítési tartományok:
 ```
 
 
-## <a name="create-the-linux-vms"></a>A Linux virtuális gépek létrehozása
-A hálózati erőforrásokhoz az internetről elérhető virtuális gépek támogatásához létrehozott. Most hozzon létre egy virtuális Gépet, és biztosíthatja az SSH-kulcsot. Ebben az esetben egy Ubuntu virtuális gép a legutóbbi LTS alapján hozzon létre programot fogjuk. További képekkel található [az vm képlistában](/cli/azure/vm/image#list)leírtak szerint [Azure Virtuálisgép-rendszerképekről keresése](cli-ps-findimage.md).
+## <a name="create-a-vm"></a>Virtuális gép létrehozása
+A hálózati erőforrásokhoz az internetről elérhető virtuális gépek támogatásához létrehozott. Most hozzon létre egy virtuális Gépet, és biztosíthatja az SSH-kulcsot. Ebben a példában hozzon létre egy Ubuntu virtuális gép a legutóbbi LTS alapján. További képekkel található [az vm képlistában](/cli/azure/vm/image#list)leírtak szerint [Azure Virtuálisgép-rendszerképekről keresése](cli-ps-findimage.md).
 
-Azt is megadhatja egy SSH-kulcsot a hitelesítéshez használandó. Ha még nem rendelkezik az SSH nyilvános kulcsból álló kulcspárt, akkor [hozza létre a címzetteket](mac-create-ssh-keys.md) , vagy használja a `--generate-ssh-keys` paraméter kell létrehoznia őket. Ha Ön már egy kulcspár, ez a paraméter meglévő kulcsokat használ a `~/.ssh`.
+Adjon meg egy SSH-kulcsot a hitelesítéshez használandó. Ha még nem rendelkezik az SSH nyilvános kulcsból álló kulcspárt, akkor [hozza létre a címzetteket](mac-create-ssh-keys.md) , vagy használja a `--generate-ssh-keys` paraméter kell létrehoznia őket. Ha már rendelkezik egy kulcspár, ezt a paramétert a meglévő kulcsokat használ-e `~/.ssh`.
 
 A virtuális gép létrehozása az erőforrások és információk együtt hozásával a [az virtuális gép létrehozása](/cli/azure/vm#create) parancsot. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM*:
 
@@ -521,7 +521,7 @@ The authenticity of host 'mypublicdns.eastus.cloudapp.azure.com (13.90.94.252)' 
 ECDSA key fingerprint is SHA256:SylINP80Um6XRTvWiFaNz+H+1jcrKB1IiNgCDDJRj6A.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added 'mypublicdns.eastus.cloudapp.azure.com,13.90.94.252' (ECDSA) to the list of known hosts.
-Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.4.0-81-generic x86_64)
+Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.11.0-1016-azure x86_64)
 
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com

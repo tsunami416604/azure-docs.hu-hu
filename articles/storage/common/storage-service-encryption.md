@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: tamram
-ms.openlocfilehash: 772c36c8310a4bf30c62def507382fe74427e0d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32f622c39583a25a7bc53ffcb6d9be779459badc
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Az Azure Storage szolgáltatás inaktívadat-titkosítása
 Az Azure Storage szolgáltatás titkosítási (SSE) inaktív adatok segítségével és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni. Ezzel a funkcióval a Azure Storage automatikusan titkosítja az adatokat a tárhelyre megőrzése előtt, és lekérése előtt visszafejti. A titkosítási, visszafejtési és kulcskezelés rendszer teljesen átlátható a felhasználók számára.
@@ -159,7 +159,7 @@ V: jelenleg nem; a kulcsok teljes mértékben a Microsoft által felügyelt.
 
 **K: SSE alapértelmezés szerint engedélyezve van, egy új tárfiók létrehozásakor?**
 
-V: SSE; alapértelmezés szerint nincs engedélyezve az Azure portál segítségével engedélyezheti azt. Ez a funkció a tárolási erőforrás-szolgáltató REST API használatával programozott módon is engedélyezhető.
+V: az Azure Storage csapat titkosítás alapértelmezés szerint a Microsoft által felügyelt kulcsok használatával, minden Azure Storage (Blob, a fájl, a tábla és a Queue storage) írt adatok, valamint az összes tárfiók (Azure Resource Manager és klasszikus tárolási engedélyezése folyamatban van fiókok), meglévő és új.
 
 **K: hogyan eltér a Azure Disk Encryption?**
 

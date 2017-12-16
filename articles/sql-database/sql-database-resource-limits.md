@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 10/11/2017
+ms.date: 12/14/2017
 ms.author: carlrab
-ms.openlocfilehash: 2e0acc3cc09de4293dcc049c37bee6b899e6101a
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 63e6b21dad4f58dbaa1df58e8eb1d6e3f6b7f762
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-sql-database-resource-limits"></a>Az Azure SQL Database erőforrás korlátok
 
@@ -49,8 +49,7 @@ Az adatbázis szolgáltatásszintjének és/vagy teljesítményszintjének megv�
 A teljes felskálázási folyamat időtartama az adatbázis a módosítás előtti és utáni méretétől és szolgáltatásszintjétől függ. Például változik, a, vagy a szabványos szolgáltatásréteg, 250 GB-os adatbázis hat órán belül kell végrehajtani. Adatbázis méretének teljesítményszintet belül a prémium szolgáltatásszintet változik a méretezett három órán belül kell végrehajtani.
 
 > [!TIP]
-> A folyamatban lévő művelet skálázás SQL adatbázis állapotának ellenőrzéséhez használhatja a következő lekérdezés: ```select * from sys.dm_operation_status```.
->
+> A-e-mailekben műveletek figyeléséről lásd:: [SQL REST API használatával műveleteinek a felügyeletét,](/rest/api/sql/Operations/List), [parancssori felület használatával műveleteinek a felügyeletét,](/cli/azure/sql/db/op), [műveletek T-SQL használatával figyelheti](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) , és ez a két PowerShell-parancsok: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) és [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
 
 * Ha frissíti a szolgáltatási szint vagy a teljesítmény a magasabb, az adatbázis maximális méretét nem növekszik, hacsak Ön kifejezetten megad egy nagyobb méretű (maxsize).
 * Egy adatbázis megállapításában, a használt adatbázis-terület kisebb, mint a megengedett maximális méret a célként megadott szolgáltatás és teljesítményszintet szinten kell lennie. 

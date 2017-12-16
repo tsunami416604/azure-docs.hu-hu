@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Search biztonsági tisztítás"
-description: "Alkalmazzon biztonsági elrejtés Azure Search-szűrők használata."
+title: "Azure Search levágási eredményez a biztonsági szűrők |} Microsoft Docs"
+description: "Hozzáférés-vezérlés az Azure Search tartalmakat a biztonsági szűrők és a felhasználói identitások használatával."
 ms.custom: 
 ms.date: 08/07/2017
 ms.service: search
@@ -11,15 +11,15 @@ caps.latest.revision: "26"
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: 7ca5502efa281dcc0f374312d8f36f8c64d9c6c9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: c829399f9c21846d8ee5b43945e2565565279820
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="security-trimming-with-azure-search"></a>Az Azure Search biztonsági tisztítás
+# <a name="security-filters-for-trimming-results-in-azure-search"></a>Azure Search levágási eredményez a biztonsági szűrők
 
-A felhasználó identitása alapján dokumentum hozzáférés korlátozása a keresési eredmények biztonsági szűrőket is alkalmazhat. A keresési funkciók általában megköveteli a személy, aki a keresés elleni ezeket az alapelveket, akik a dokumentum tartalmazó mező kérelmek identitásának összehasonlítása. A program egyezést talál, a felhasználó vagy az egyszerű (például egy csoport vagy szerepkör) dokumentum hozzáférése van.
+Szűrőket biztonsági lehet levágni a keresési eredmények az Azure Search felhasználó identitása alapján. A keresési funkciók általában megköveteli a személy, aki a keresés elleni ezeket az alapelveket, akik a dokumentum tartalmazó mező kérelmek identitásának összehasonlítása. A program egyezést talál, a felhasználó vagy az egyszerű (például egy csoport vagy szerepkör) dokumentum hozzáférése van.
 
 Biztonsági eléréséhez a egyirányú szűrési keresztül történik egy bonyolult vagy műveletet egyenlőség kifejezések: például `Id eq 'id1' or Id eq 'id2'`, és így tovább. Erre akkor hibákhoz vezethet, nehéz a kezelése, és azokban az esetekben, ahol a lista tartalmazza-e a több száz vagy ezer értékek lassítja a lekérdezési válaszidőt hány másodpercig által. 
 
@@ -155,3 +155,8 @@ A dokumentumok szerezheti vissza, ha `group_ids` "group_id1" vagy "group_id2" ta
 
 Ez a hogyan szűrheti a felhasználói azonosító és az Azure keresési eredmény `search.in()` függvény. Ez a funkció használatával adjon át az egyes céldokumentumban társított egyszerű azonosítók egyeztetéshez a kérelmező felhasználó egyszerű azonosítót. Keresési kérelem kezelésekor a `search.in` függvény kiszűri a keresési eredmények között, amelyekhez nincs a felhasználó rendszerbiztonsági tagok olvasási hozzáféréssel rendelkezik. Az egyszerű azonosítók jelenthet többek között a biztonsági csoportok, szerepkörök vagy akár a felhasználó saját identitását.
  
+## <a name="see-also"></a>Lásd még:
+
++ [Active Directory azonosító-alapú hozzáférés-vezérlés Azure Search-szűrők használata](search-security-trimming-for-azure-search-with-aad.md)
++ [Az Azure Search szűrők](search-filters.md)
++ [Adatok biztonsági és hozzáférés-vezérlés az Azure Search műveletek](search-security-overview.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: de71c03784571f4adab9b8936ec1968373c9ac3e
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 1ca825d14b7d2bb7424883362a3053f243123462
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Diagnosztikai naplók az Azure Data Lake Store elérése
 További diagnosztikai a Data Lake Store-fiók és a fiókja gyűjtött naplók megtekintéséhez a naplózás engedélyezéséhez.
@@ -177,7 +177,7 @@ A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt n�
 | StreamName |Karakterlánc |Az elérési út a művelet végrehajtásának ideje |
 
 ## <a name="samples-to-process-the-log-data"></a>A naplózási adatok feldolgozása a minták
-Naplók az Azure Data Lake Store Azure figyelő való küldés során (lásd: [nézet vagy Naplóelemzési napló keresési gyűjtött adatok elemzése](../log-analytics/log-analytics-tutorial-viewdata.md) Log Analytics használatával), a következő lekérdezés által visszaadott felhasználók listáját tartalmazó tábla megjelenített neveket, a ideje eseményeket, és az események a vizuális diagram együtt esemény. Könnyen módosíthatók a felhasználó GUID megjelenítése vagy más attribútumok:
+Küldésekor naplók az Azure Data Lake Store az Azure Naplóelemzés szolgáltatáshoz (lásd: [nézet vagy Naplóelemzési napló keresési gyűjtött adatok elemzése](../log-analytics/log-analytics-tutorial-viewdata.md) Log Analytics használatával), a következő lekérdezés által visszaadott felhasználók listáját tartalmazó tábla megjelenített neveket, a ideje eseményeket, és az események a vizuális diagram együtt esemény. Könnyen módosíthatók a felhasználó GUID megjelenítése vagy más attribútumok:
 
 ```
 search *

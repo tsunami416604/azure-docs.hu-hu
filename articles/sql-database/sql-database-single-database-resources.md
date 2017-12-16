@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 10/11/2017
+ms.date: 12/14/2017
 ms.author: carlrab
-ms.openlocfilehash: f2dca5ac40dff077f9e5ce983b15fcb5b2624a14
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0f88b09c342c1849a5c61fdb5dc048d7cbadc83b
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Az Azure SQL-adatbázis egy adatbázis-erőforrások kezelése
 
@@ -35,6 +35,10 @@ Az adatbázist az adatbázis számára a szükséges kezeli az alkalmazások és
 
 ![Szolgáltatási szint és a teljesítmény szint konfigurálása](./media/sql-database-single-database-resources/change-service-tier.png)
 
+Kattintson a **áttekintése** figyelése és/vagy egy folyamatban lévő művelet megszakításához.
+
+![A művelet megszakítása](./media/sql-database-single-database-resources/cancel-operation.png)
+
 > [!IMPORTANT]
 > Felülvizsgálati [P11 és P15 adatbázisok maximális mérete 4 TB méretű a jelenlegi korlátozások](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb) P11 vagy P15 szolgáltatásréteg kiválasztásakor.
 >
@@ -48,6 +52,8 @@ PowerShell-parancsmagok segítségével, vagy módosítsa a Azure SQL-adatbázis
 |[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|Létrehoz egy adatbázis |
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Egy vagy több adatbázis beolvasása|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Az adatbázis tulajdonságainak megadása, vagy a meglévő adatbázis áthelyezése rugalmas készletbe. Tegyük fel például, a **MaxSizeBytes** tulajdonság beállítása az adatbázis maximális méretét.|
+|[Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity)|Adatbázis-művelet állapotát olvassa be. |
+|[STOP-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity)|Az aszinkron frissítése a művelet visszavonja.|
 
 
 > [!TIP]
@@ -64,7 +70,8 @@ Beállítása vagy módosítása az Azure SQL-adatbázisok szolgáltatási szint
 |[az sql server-tűzfalszabály megjelenítése](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|A tűzfalszabályok részleteit tartalmazza|
 |[az sql server tűzfal-szabály frissítése](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|A tűzfal szabály frissítése|
 |[az sql server-tűzfalszabály törlése](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Egy tűzfalszabály törlése|
-
+|[az sql db op listája](/cli/azure/sql/db/op?#az_sql_db_op_list)|Az adatbázison végrehajtott műveletek listájának lekérése.|
+|[az sql db op Mégse](/cli/azure/sql/db/op#az_sql_db_op_cancel)|Az adatbázis aszinkron művelet visszavonása.|
 
 > [!TIP]
 > Az Azure parancssori felület példa parancsfájl, amely egy Azure SQL-adatbázis különböző teljesítményszintet is méretezi a méretre vonatkozó adatok az adatbázis lekérdezése után, lásd: [használata CLI figyelését, valamint egy SQL-adatbázis méretezése](scripts/sql-database-monitor-and-scale-database-cli.md).
@@ -102,6 +109,7 @@ Beállítása vagy módosítása az Azure SQL-adatbázisok szolgáltatási szint
 |[Adatbázis - lista által javasolt rugalmas készlet](/rest/api/sql/databases/listbyrecommendedelasticpool)|Adatbázisok belül egy recommented rugalmas készletet listáját adja vissza.|
 |[Adatbázis - kiszolgáló listája](/rest/api/sql/databases/listbyserver)|A Server-adatbázisok listáját adja vissza.|
 |[Adatbázis - frissítés](/rest/api/sql/databases/update)|Egy meglévő adatbázist frissíti.|
+|[Műveletek – lista](/rest/api/sql/Operations/List)|Megjeleníti az elérhető SQL Rest API-műveleteket.|
 
 
 

@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 0d59dccec4532ff0903972f2b15ed9dd8429a2ed
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: aef74d3968f90a4e8a8f84660d92d6f8a38795c7
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>A gépi tanulási modellek webszolgáltatásként telepítése
 
@@ -48,7 +48,7 @@ saved_model = pickle.dumps(clf)
 ```
 
 ### <a name="2-create-a-schemajson-file"></a>2. Hozzon létre egy schema.json fájlt
-Ez a lépés nem kötelező megadni. 
+Ez a lépés nem kötelező. 
 
 Hozzon létre egy séma a bemeneti és kimeneti a webszolgáltatás automatikusan érvényesítéséhez. A CLIs is használhatja a séma létrehozni a Swagger-dokumentum a webszolgáltatáshoz.
 
@@ -86,9 +86,9 @@ A fájl két funkciók tartalmaznia kell: init és futtatásához.
 
 Adja hozzá a következő kód funkciónak az adatok gyűjtése, amelyek segítségével a modell bemeneti és a előrejelzési adatokat gyűjteni a score.py fájl tetején
 
-    ```
-    from azureml.datacollector import ModelDataCollector
-    ```
+```python
+from azureml.datacollector import ModelDataCollector
+```
 
 Ellenőrizze [modellhez tartozó adatok gyűjtésének](how-to-use-model-data-collection.md) ezzel a szolgáltatással kapcsolatos további információkért.
 

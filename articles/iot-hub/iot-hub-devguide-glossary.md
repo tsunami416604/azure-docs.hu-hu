@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 7e6590b97470bb00c5967f232e3ae134ce20a347
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 406fd095896e2c00920555d3dfce1b5c2ae7fca7
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT-központ szószedet
 Ez a cikk az általános kifejezés, amely az IoT-központ cikkeket mutatja be.
@@ -161,48 +161,7 @@ A [identitásjegyzékhez](iot-hub-devguide-identity-registry.md) az IoT-központ
 ## <a name="interactive-message"></a>Interaktív üzenet
 Egy interaktív üzenetről, hogy egy [felhő eszközre](#cloud-to-device) üzenet, amely elindítja a megoldás háttérrendszeréhez egy azonnali műveletet. Például egy eszköz el tudja küldeni egy kell automatikusan kilépteti a CRM-rendszerbe, a hibával kapcsolatos riasztás.
 
-## <a name="iot-edge"></a>IoT Edge
-Az Azure IoT peremhálózati lehetővé teszi, hogy a felhő alapú telepítését Azure-szolgáltatások és a helyszíni eszközök Megoldásfüggő kódot. IoT peremeszközök képes összesíteni az adatokat más számítástechnikai végrehajtásához eszközök és az elemzés az adatok a felhőben való elküldése előtt. További információk: [Azure IoT peremhálózati](https://docs.microsoft.com/azure/iot-edge/).
-
-## <a name="iot-edge-agent"></a>Az IoT-Edge ügynök
-Az IoT peremhálózati runtime telepítését és megfigyelését modulok felelős részét.
-
-## <a name="iot-edge-device"></a>IoT Edge-eszköz
-Az IoT-peremeszközök az IoT él runtime telepítve, és vannak megjelölve, mint a "IoT peremhálózati eszköz" az eszköz részletes adatainak rendelkezik. Megtudhatja, hogyan [Azure IoT peremhálózati telepítése Linux a szimulált eszköz – előzetes](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
-
-## <a name="iot-edge-deployment"></a>Az IoT-Edge központi telepítés
-Az IoT-Edge központi telepítésének konfigurálása IoT peremeszközök futtatása az IoT-Edge modulok cél készlete. Minden központi telepítési folyamatosan biztosítja, hogy minden olyan eszköz, a cél feltételének futtatja a megadott adapterkészlet olyan modulok, még akkor is, ha új eszközök jönnek létre, vagy módosultak, hogy a célként megadott feltételnek megfelelő. Minden egyes IoT peremhálózati eszköz csak megkapja a legmagasabb prioritású központi telepítést akiknek cél állapota megfelel-e. További információ [IoT peremhálózati telepítési](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
-
-## <a name="iot-edge-deployment-manifest"></a>Az IoT-Edge üzembe helyezési jegyzék
-Egy vagy több IoT peremhálózati eszköz modul twin(s) modulok, útvonalak és társított modul telepítése a másolni kívánt adatokat tartalmazó Json-dokumentumból szükséges tulajdonságai.
-
-## <a name="iot-edge-gateway-device"></a>Az IoT-peremhálózati átjáró eszköz
-Az IoT-peremhálózati eszköz alárendelt eszközzel. Az alsóbb rétegbeli eszköz IoT peremhálózati vagy a nem a IoT peremhálózati eszköz lehet.
-
-## <a name="iot-edge-hub"></a>Peremhálózati IoT hub
-A modul a modul-kommunikációhoz (felé az IoT-központ) felsőbb és alsóbb rétegbeli (elhagyja az IoT-központ) felelős IoT peremhálózati futásidejű részét kommunikáció. 
-
-## <a name="iot-edge-leaf-device"></a>Az IoT-peremhálózati levél eszköz
-Az IoT peremhálózati eszköz nincs az alárendelt eszközzel. 
-
-## <a name="iot-edge-module"></a>Az IoT-Edge modul
-Az IoT-Edge modul egy Docker-tároló, amely központilag telepíthető a IoT peremeszközök. Egy adott feladat, például választásával dolgozhat fel egy eszközről egy üzenetet, egy üzenet átalakítása vagy üzenetet küld az IoT-központ hajtja végre. Egyéb modulok kommunikál, és az IoT-Edge futásidejű adatokat küld. [Követelmények és eszközök IoT peremhálózati modulok fejlesztési](https://docs.microsoft.com/azure/iot-edge/module-development).
-
-## <a name="iot-edge-module-identity"></a>Az IoT-Edge modul identitás
-Az IoT-központ modul identitásjegyzékhez, és részletesen leírja a létezését és a biztonsági hitelesítő adatokat, amelyek egy modul egy peremhálózati központ vagy az IoT-központ szolgáltatással való hitelesítésre rekord.
-
-## <a name="iot-edge-module-image"></a>Az IoT-Edge modul kép
-A docker lemezkép, amellyel az IoT-Edge-futtatókörnyezet modul példányok elindítását.
-
-## <a name="iot-edge-module-twin"></a>Az IoT-Edge modul iker
-A Json-dokumentum őrzi meg az IoT Hub, amely tárolja az állapotadatokat, a modul példányához. 
-
-## <a name="iot-edge-runtime"></a>IoT Edge-futtatókörnyezet
-Az IoT-Edge futásidejű tartalmaz mindent, ami Microsoft ellátó IoT peremhálózati eszköz kell telepíteni. Ezt tartalmazzák a peremhálózati ügynök, a peremhálózati hub és a peremhálózati CTL eszköz.
-
-## <a name="iot-edge-set-modules-to-a-single-device"></a>IoT peremhálózati egyetlen eszközt modulok beállítása
-Másolja a tartalmat egy IoT peremhálózati jegyzékfájl egy eszközön művelet "modul iker. Az alapul szolgáló API egy általános "alkalmazni a konfiguráció", amely egyszerűen veszi az IoT-Edge jegyzékfájl bemenetként.
-s
+[!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="iot-hub"></a>IoT Hub
 IoT-központot egy teljes körűen felügyelt Azure szolgáltatás, amely lehetővé teszi a megbízható és biztonságos kétirányú kommunikációs eszközök millióira között, és a megoldás háttérrendszere. További információkért lásd: [Mi az Azure IoT Hub?](iot-hub-what-is-iot-hub.md) Használja a [Azure-előfizetés](#subscription), IoT-központok a munkaterhelések üzenetküldési IoT kezelésére is létrehozhat.
@@ -239,9 +198,6 @@ Egy fizikai eszköz egy valódi eszköz, például egy málna Pi, amely összek�
 
 ## <a name="primary-and-secondary-keys"></a>Az elsődleges és másodlagos kulcsok
 Amikor egy eszköz- vagy szolgáltatás néző végpont az IoT-központ a csatlakozik a [kapcsolati karakterlánc](#connection-string) hozzáférést kulcsot tartalmaz. Az eszköz hozzáadásakor a [identitásjegyzékhez](#identity-registry) , vagy adja hozzá a [megosztott hozzáférési házirend](#shared-access-policy) a központnak a szolgáltatás egy elsődleges és másodlagos kulcsot hoz létre. A két kulcs lehetővé teszi váltása az egyik kulcsról a másikra az IoT hub való hozzáférés elvesztése nélkül a kulcs frissítésekor.
-
-## <a name="priority"></a>Prioritás
-Ha két IoT peremhálózati telepítés cél ugyanarra az eszközre, a központi telepítést, a nagyobb prioritású alkalmazva. Ha két központi telepítések a azonos prioritással rendelkezik, a központi telepítés létrehozása dátumnál későbbi alkalmazva. További információ [prioritás](#https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority).
 
 ## <a name="protocol-gateway"></a>Protokoll-átjáró
 A protokoll-átjáró általában a rendszer a felhőben, és protokoll fordítási szolgáltatásokat biztosít a kapcsolódó eszközök [IoT-központ](#iot-hub). További információkért lásd: [Mi az Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
@@ -287,9 +243,6 @@ A környezetében a [eszköz iker](iot-hub-devguide-device-twins.md), rendszer t
 
 ## <a name="tags"></a>Címkék
 A környezetében a [eszköz iker](iot-hub-devguide-device-twins.md), címke található eszköz metaadatait tárolja, és melyeket a megoldás háttérrendszeréhez, egy JSON-dokumentum formájában. Címkék nem láthatók el alkalmazásokat az eszközön.
-
-## <a name="target-condition"></a>Cél feltétel
-IoT Edge-telepítés, cél feltétele bármely logikai feltétel jelölje be például a központi telepítés, a Céleszközök eszköz twins címkékre "tag.environment = prod". Cél feltétel folyamatosan értékelése követelményeknek megfelelő új eszköz vagy az eszközöket, amelyek többé nem távolíthatja el. További információ [céloz feltétel](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)
 
 ## <a name="telemetry"></a>Telemetria
 Eszközök gyűjt telemetrikus adatokat, például a szél sebesség vagy hőmérséklet, és használjon [adatpont üzenetek](#data-point-messages) a telemetriai adatokat küldhet egy IoT-központot.

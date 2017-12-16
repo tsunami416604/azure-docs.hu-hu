@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
-ms.openlocfilehash: 2fb989d1fd9ee76ee1d21323574971438d607238
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f52252aca0ce89d6a86e620a97e749461181016f
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="introducing-microsoft-azure"></a>Introducing Microsoft Azure
 A Microsoft Azure a Microsoft alkalmazás platformja a nyilvános felhő.  Ez a cikk célja, hogy biztosítson alaprendszert az Azure-ban – alapok megértéséhez még akkor is, ha a felhő semmit nem tudja a számítástechnikai.
@@ -534,6 +534,6 @@ A kettő közötti különbség, hogy az Azure felügyeleti portálon kívül es
 SendGrid egy alkalmazás az Azure-tárolóban, amely lehetővé teszi az e-mail üzenetek küldéséhez. További funkciók, például a megbízható kézbesítési és a statisztika kínál.  Akkor is az alkalmazás és a kapcsolódó szolgáltatások megvásárlása ahelyett saját kezűleg ilyen infrastruktúra kialakítása során.  
 
 ## <a name="getting-started"></a>Első lépések
-Most, hogy a nagy vonalakban tekinti, a következő lépés az első Azure-alkalmazások írásával. Válassza ki azt a nyelvet, [a megfelelő SDK beszerzése](/downloads/), és válassza ki azt. Felhőalapú informatika az új alapértelmezett – első lépések megkezdése.
+Most, hogy a nagy vonalakban tekinti, a következő lépés az első Azure-alkalmazások írásával. Válassza ki azt a nyelvet, [a megfelelő SDK beszerzése](https://azure.microsoft.com/en-us/downloads/), és válassza ki azt. Felhőalapú informatika az új alapértelmezett – első lépések megkezdése.
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 835b7c139fc466719489c6fd1986dcbf16de549f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 42632dcf8997ec5e987ac8a6615aae24e903399a
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Oktatóanyag: Azure Active Directoryval integrált Cisco Webex
 
@@ -27,25 +27,25 @@ Ebben az oktatóanyagban elsajátíthatja Cisco Webex integrálása az Azure Act
 Cisco Webex integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
 - Az Azure AD, aki hozzáfér a Cisco Webex szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Cisco Webex (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Cisco Webex a saját Azure AD-fiókok.
+- A fiók egyetlen központi helyen--az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS alkalmazásintegráció kapcsolatos további tudnivalókért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a Cisco Webex, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- A Cisco Webex egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Egy-egy bejelentkezési a alkalmas Cisco Webex előfizetéshez
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Nem ajánlott, éles környezetben teszteléséhez lépéseit az oktatóanyag segítségével.
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+Ez az oktatóanyag lépéseit teszteléséhez hajtsa végre az ezek az ajánlások:
 
 - Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [ingyenes egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
@@ -53,54 +53,56 @@ Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy 
 1. Cisco Webex hozzáadása a gyűjteményből
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-## <a name="adding-cisco-webex-from-the-gallery"></a>Cisco Webex hozzáadása a gyűjteményből
+## <a name="add-cisco-webex-from-the-gallery"></a>Cisco Webex hozzáadása a gyűjteményből
 Az Azure AD integrálása a Cisco Webex konfigurálásához kell hozzáadnia a Cisco Webex a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
 
-**Cisco Webex hozzáadása a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Cisco Webex hozzáadása a gyűjteményből, tegye a következőket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Ugrás a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
     ![A vállalati alkalmazások panel][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Egy új alkalmazást szeretne telepíteni, válassza ki a **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Cisco Webex**, jelölje be **Cisco Webex** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. Írja be a keresőmezőbe, **Cisco Webex**. 
+
+5. Válassza ki **Cisco Webex** az eredmények panelen. Válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Cisco Webex az eredménylistában](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés Cisco Webex "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a Cisco Webex "Britta Simon." nevű tesztfelhasználó alapján
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a Cisco Webex tartozó felhasználót a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Cisco Webex közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, aki a Cisco Webex tartozó felhasználót egy felhasználó számára az Azure AD. Más szóval kell Cisco Webex az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat létrehozásához.
 
-A Cisco Webex, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Cisco Webex biztosítanak a érték **felhasználónév** azonos érték, mint a **felhasználónév** az Azure ad-ben. Most hozott létre a hivatkozást a két felhasználó között. 
 
-Az Azure AD egyszeri bejelentkezést a Cisco Webex tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezést a Cisco Webex tesztelése és konfigurálása, végezze el a következő építőelemeket:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Cisco Webex tesztfelhasználó létrehozása](#create-a-cisco-webex-test-user)**  - való Britta Simon egy megfelelője a Cisco Webex, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. [Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy a felhasználók számára a szolgáltatás használatához.
+2. [Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+3. [Cisco Webex tesztfelhasználó létrehozása](#create-a-cisco-webex-test-user) való Britta Simon egy megfelelője a Cisco Webex, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+4. [Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+5. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) , hogy működik-e a konfiguráció ellenőrzése.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Cisco Webex alkalmazásban egyszeri bejelentkezés konfigurálása.
 
-**Cisco Webex konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**Cisco Webex konfigurálása az Azure AD egyszeri bejelentkezést, tegye a következőket:**
 
-1. Az Azure portálon a a **Cisco Webex** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure portálon a a **Cisco Webex** alkalmazás integrációs lapon jelölje be **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Is engedélyezhető az egyszeri bejelentkezés, a **egyszeri bejelentkezés** párbeszédpanel a **mód** legördülő listában válassza **SAML-alapú bejelentkezés**.
  
     ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_samlbase.png)
 
@@ -108,34 +110,34 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Cisco Webex tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.webex.com`
+    a. Az a **bejelentkezési URL-cím** mezőbe írja be a következő mintát olyan URL-címe:`https://<subdomain>.webex.com`
 
-    b. Az a **azonosító** szövegmező, írja be az URL-cím:`http://www.webex.com`
+    b. Az a **azonosító** mezőben adja meg az URL-cím `http://www.webex.com`.
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company`
+    c. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe:`https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company`
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Cisco Webex ügyfél-támogatási csoport](https://www.webex.co.in/support/support-overview.html) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-címet és bejelentkezés URL-CÍMÉT. Ügyfél [Cisco Webex ügyfél-támogatási csoport](https://www.webex.co.in/support/support-overview.html) beolvasni ezeket az értékeket. 
 
-5. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+5. Az a **SAML-aláíró tanúsítványa** szakaszban jelölje be **metaadatainak XML-kódja**, és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_certificate.png) 
 
-6. Kattintson a **mentése** gombra.
+6. Kattintson a **Mentés** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-cisco-webex-tutorial/tutorial_general_400.png)
+    ![Az egyszeri bejelentkezés mentési gomb konfigurálása](./media/active-directory-saas-cisco-webex-tutorial/tutorial_general_400.png)
     
-6. A a **Cisco Webex konfigurációs** kattintson **konfigurálásához Cisco Webex** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **Cisco Webex konfigurációs** szakaszban jelölje be **konfigurálásához Cisco Webex** megnyitásához a **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-cím**, **SAML Entitásazonosító**, és **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló** szakasz.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_configure.png) 
 
 7. Egy másik webes böngészőablakban jelentkezzen be a Cisco Webex vállalati webhely rendszergazdaként.
 
-8. Kattintson a felső menüben **helyfelügyelet**.
+8. A felső menüben válassza ki a **helyfelügyelet**.
 
     ![Hely felügyelete](./media/active-directory-saas-cisco-webex-tutorial/ic777621.png "hely felügyelete")
 
-9. Az a **kezelése hely** területén kattintson **SSO konfigurációs**.
+9. Az a **kezelése hely** szakaszban jelölje be **SSO konfigurációs**.
    
     ![Egyszeri bejelentkezés konfigurációs](./media/active-directory-saas-cisco-webex-tutorial/ic777622.png "SSO-konfiguráció")
 
@@ -145,26 +147,26 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Az a **összevonási protokoll** listáról válassza ki **SAML 2.0**.
 
-    b. Mint **egyszeri bejelentkezési profil**, jelölje be **SP Intiated**.
+    b. A **egyszeri bejelentkezési profil**, jelölje be **Szolgáltató kezdeményezett**.
 
-    c. A letöltött tanúsítvány megnyitása a Jegyzettömbben, és másolja a tartalmát.
+    c. A letöltött tanúsítvány megnyitása a Jegyzettömbben, és másolja a tartalmat.
 
-    d. Kattintson a **SAML-metaadatok importálása**, majd illessze be a tanúsítvány másolt tartalmát.
+    d. Válassza ki **SAML-metaadatok importálása**, majd illessze be a tanúsítvány másolt tartalmát.
 
-    e. Az a **SAML (IdP ID) kiállító** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító** ami Azure-portálon másolta.
+    e. Az a **SAML (IdP ID) kiállító** mezőbe illessze be az értékét a **SAML Entitásazonosító** másolt Azure-portálról.
 
-    f. Az a **ügyfél SSO szolgáltatás bejelentkezési URL-címe** szövegmezőhöz Beillesztés **SAML-alapú egyszeri bejelentkezési URL-címe** ami Azure-portálon másolta.
+    f. Az a **ügyfél SSO szolgáltatás bejelentkezési URL-címe** mezőbe illessze be **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure portálról másolt.
 
     g. Az a **NameID formátum** listáról válassza ki **E-mail cím**.
 
-    h. Az a **AuthnContextClassRef** szövegmezőhöz típus **urn: oasis: nevek: tc: SAML:2.0:ac:classes:Password**.
+    h. Az a **AuthnContextClassRef** mezőbe írja be **urn: oasis: nevek: tc: SAML:2.0:ac:classes:Password**.
 
-    i. Az a **ügyfél egyszeri bejelentkezési szolgáltatás kijelentkezési URL-címe** szövegmezőhöz Beillesztés **Sign-Out URL-cím** ami Azure-portálon másolta.
+    i. Az a **ügyfél egyszeri bejelentkezési szolgáltatás kijelentkezési URL-címe** mezőbe illessze be **Sign-Out URL-cím**, amely másolt Azure-portálról.
    
-    j. Kattintson a **frissítés**.
+    j. Válassza ki **frissítés**.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com) közben állítja be az alkalmazást. Ez az alkalmazás a hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** lapot, és hozzáférhet a beágyazott a dokumentáció a **konfigurációs** alsó szakasz. További, a beágyazott dokumentáció szolgáltatásról [az Azure AD dokumentációjában beágyazott](https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -174,19 +176,19 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure portálon a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/active-directory-saas-cisco-webex-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, majd válassza ki **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-cisco-webex-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
 
     ![A Hozzáadás gombra.](./media/active-directory-saas-cisco-webex-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+4. Az a **felhasználói** párbeszédpanel mezőben a következő lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/active-directory-saas-cisco-webex-tutorial/create_aaduser_04.png)
 
@@ -196,79 +198,82 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** gombra.
  
 ### <a name="create-a-cisco-webex-test-user"></a>Cisco Webex tesztfelhasználó létrehozása
 
 Ahhoz, hogy az Azure AD-felhasználók Cisco Webex bejelentkezni, akkor ki kell építenie a Cisco Webex. Cisco Webex, ha egy kézi tevékenység.
 
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók létrehozásához a következő lépéseket:**
 
 1. Jelentkezzen be a **Cisco Webex** bérlő.
 
-2. Ugrás a **felhasználók kezelése \> felhasználó hozzáadása**.
+2. Ugrás a **felhasználók kezelése** > **felhasználó hozzáadása**.
    
     ![Felhasználók hozzáadása az](./media/active-directory-saas-cisco-webex-tutorial/ic777625.png "felhasználók hozzáadása")
 
-3. A felhasználó hozzáadása területen hajtsa végre a következő lépéseket:
+3. Az a **felhasználó hozzáadása** területen tegye a következőket:
    
     ![Felhasználó hozzáadása](./media/active-directory-saas-cisco-webex-tutorial/ic777626.png "felhasználó hozzáadása")   
 
-    a. Mint **fióktípus**, jelölje be **állomás**.
+    a. A **fióktípus**, jelölje be **állomás**.
 
-    b. Az a **Keresztnév** szövegmezőhöz felhasználói Britta például az első nevét.
+    b. Az a **Utónév** mezőbe írja be a felhasználó utóneve (ebben az esetben **Britta**).
 
-    c. Az a **Vezetéknév** szövegmező, írja be például Simon felhasználó vezetékneve.
+    c. Az a **Vezetéknév** mezőbe írja be a felhasználó vezetékneve (ebben az esetben **Simon**).
 
-    d. Az a **felhasználónév** szövegmezőben, az e-mailt a felhasználó típusát, például Brittasimon@contoso.com.
+    d. Az a **felhasználónév** mezőbe írja be az e-mail a felhasználó (ebben az esetben  **Brittasimon@contoso.com** ).
 
-    e. Az a **E-mail** szövegmező, a felhasználó e-mail címe típusát, például Brittasimon@contoso.com.
+    e. Az a **E-mail** mezőbe írja be a felhasználó e-mail címe (ebben az esetben  **Brittasimon@contoso.com** ).
 
-    f. Az a **jelszó** szövegmező, írja be a felhasználó jelszavát.
+    f. Az a **jelszó** mezőbe írja be a jelszót.
 
-    g. Az a **megerősítése** jelszó szövegmezőjét, adja meg újból a felhasználó jelszavát.
+    g. Az a **megerősítése** jelszó mezőbe írja be újra a jelszót.
 
-    h. Kattintson az **Add** (Hozzáadás) parancsra.
+    h. Válassza a **Hozzáadás** lehetőséget.
 
 >[!NOTE]
->Bármely más Cisco Webex felhasználói fiók létrehozása eszközök vagy rendelkezés AAD felhasználói fiókokhoz Cisco Webex által nyújtott API-k. 
+>Cisco Webex felhasználói fiók létrehozása eszközök vagy Cisco Webex kiépíteni az Azure AD-felhasználói fiókok által nyújtott API-kat is használhatja. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Cisco Webex Azure egyszeri bejelentkezéshez használandó.
+Ez a szakasz lehetővé teszik a felhasználónak Britta Simon szerint Cisco Webex hozzáférést adna Azure egyszeri bejelentkezéshez használandó.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Cisco Webex Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+**Cisco Webex Britta Simon hozzárendeléséhez a következő lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Nyissa meg az alkalmazások megtekintése az Azure-portálon. Következő, nyissa meg a könyvtár nézet, majd a **vállalati alkalmazások**.  
+
+2. Válassza ki **összes alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Cisco Webex**.
+3. Az alkalmazások listában válassza ki a **Cisco Webex**.
 
     ![Az alkalmazások listáját a Cisco Webex hivatkozás](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben válasszon ki **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Válassza ki a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a a **hozzáadása hozzárendelés** párbeszédpanel megnyitásához.
 
     ![A hozzárendelés hozzáadása panelen][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a a **felhasználók** listája.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Az a **felhasználók és csoportok** párbeszédpanel, kattintson a **válasszon** gombra.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Válassza ki a **hozzárendelése** gombra a **hozzáadása hozzárendelés** párbeszédpanel megnyitásához.
     
 ### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel segítségével tesztelheti.
 
-Ha a hozzáférési panelen a Cisco Webex csempére kattint, akkor kell beolvasása automatikusan bejelentkezett a Cisco Webex alkalmazásba.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
+Ha bejelöli a Cisco Webex csempe a hozzáférési panelen automatikusan lekérni jelentkezett be a Cisco Webex alkalmazás.
+
+A hozzáférési panel kapcsolatos további információkért lásd: [a hozzáférési panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 

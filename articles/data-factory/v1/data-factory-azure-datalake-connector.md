@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 12/15/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ceac2897e7b584c90945f3f556afc12891bf8a25
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: cc3128d3d07210d5c8e3ebe70c6c1d8ebaa9b863
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Adatok másolása, illetve onnan Data Lake Store Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -86,9 +86,9 @@ Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regis
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy biztosítsa a szolgáltatás egyszerű megfelelő engedélyeket az Azure Data Lake Store:
->- Data Lake Store használatára forrásaként, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés.
->- Data Lake Store fogadó használja, biztosítania kell legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Azure IR használatakor építve a másolás és (a forrás- és fogadó vannak felhő), lehetővé teszik a Data Factory Data Lake Store régió észleli, hogy adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha el szeretné kerülni ezt a IAM-szerepkört [adja meg a executionLocation](data-factory-data-movement-activities.md#global) a Data Lake Store a másolási tevékenység az helyét.
->- Ha a folyamatok történő másolása varázslót használja, adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Is, adja meg legalább **olvasási + Execute** engedéllyel a Data Lake Store gyökér ("/") és gyermekét. Ellenkező esetben előfordulhat, hogy megjelenik az üzenet "a megadott hitelesítő adatok érvénytelenek."
+>- **Data Lake Store forrásként használandó**, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés.
+>- **A fogadó Data Lake Store használandó**, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Azure IR használatakor építve a másolás és (a forrás- és fogadó vannak felhő), lehetővé teszik a Data Factory Data Lake Store régió észleli, hogy adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha el szeretné kerülni ezt a IAM-szerepkört [adja meg a executionLocation](data-factory-data-movement-activities.md#global) a Data Lake Store a másolási tevékenység az helyét.
+>- Ha Ön **a folyamatok történő másolása varázslóval**, adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Is, adja meg legalább **olvasási + Execute** engedéllyel a Data Lake Store gyökér ("/") és gyermekét. Ellenkező esetben előfordulhat, hogy megjelenik az üzenet "a megadott hitelesítő adatok érvénytelenek."
 
 Szolgáltatás egyszerű hitelesítés használatára a következő tulajdonságok megadásával:
 
@@ -126,9 +126,9 @@ Felhasználói hitelesítő adatok hitelesítése segítségével azt is megtehe
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy az engedélyeket a felhasználó megfelelő az Azure Data Lake Store:
->- Data Lake Store használatára forrásaként, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés.
->- Data Lake Store fogadó használja, biztosítania kell legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Azure IR használatakor építve a másolás és (a forrás- és fogadó vannak felhő), lehetővé teszik a Data Factory Data Lake Store régió észleli, hogy adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha el szeretné kerülni ezt a IAM-szerepkört [adja meg a executionLocation](data-factory-data-movement-activities.md#global) a Data Lake Store a másolási tevékenység az helyét.
->- Ha a folyamatok történő másolása varázslót használja, adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Is, adja meg legalább **olvasási + Execute** engedéllyel a Data Lake Store gyökér ("/") és gyermekét. Ellenkező esetben előfordulhat, hogy megjelenik az üzenet "a megadott hitelesítő adatok érvénytelenek."
+>- **Data Lake Store forrásként használandó**, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés.
+>- **A fogadó Data Lake Store használandó**, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Azure IR használatakor építve a másolás és (a forrás- és fogadó vannak felhő), lehetővé teszik a Data Factory Data Lake Store régió észleli, hogy adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha el szeretné kerülni ezt a IAM-szerepkört [adja meg a executionLocation](data-factory-data-movement-activities.md#global) a Data Lake Store a másolási tevékenység az helyét.
+>- Ha Ön **a folyamatok történő másolása varázslóval**, adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Is, adja meg legalább **olvasási + Execute** engedéllyel a Data Lake Store gyökér ("/") és gyermekét. Ellenkező esetben előfordulhat, hogy megjelenik az üzenet "a megadott hitelesítő adatok érvénytelenek."
 
 **Példa: Felhasználók hitelesítő adatok hitelesítése**
 ```json
@@ -189,6 +189,49 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 A Data Factory osztályok, a kódban használt kapcsolatos részletekért lásd: a [AzureDataLakeStoreLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), és [ AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témaköröket. Adjon hozzá egy hivatkozást verzióra `2.9.10826.1824` a `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` a a `WindowsFormsWebAuthenticationDialog` a kódban használt osztály.
+
+## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
+
+**Jelenség:** adatok másolásakor **történő** Azure Data Lake Store, ha a másolási tevékenység során a következő hiba miatt sikertelen:
+
+  ```
+  Failed to detect the region for Azure Data Lake account {your account name}. Please make sure that the Resource Group name: {resource group name} and subscription ID: {subscription ID} of this Azure Data Lake Store resource are correct.
+  ```
+
+**Alapvető ok:** 2 oka:
+
+1. A `resourceGroupName` és/vagy `subscriptionId` az Azure Data Lake Store kapcsolódó szolgáltatás megadott helytelen;
+2. A felhasználó vagy az egyszerű szolgáltatás nem rendelkezik a szükséges engedéllyel.
+
+**Megoldás:**
+
+1. Győződjön meg arról, hogy a `subscriptionId` és `resourceGroupName` adja meg, ha a hivatkozott szolgáltatásban található `typeProperties` azok valóban, amelyekre a data lake-fiókhoz tartozik.
+
+2. Győződjön meg arról, hogy megadja a legalább "**olvasó**" a felhasználó vagy a data lake-fiókhoz az egyszerű szolgáltatásnév szerepkör. Ahhoz, hogyan itt található:
+
+    1. Azure portálon válassza a Data Lake Store-fiók ->
+    2. A Data Lake Store panelen kattintson az "Access Control (IAM)"
+    3. Kattintson a "Hozzáadás" a panelen az "Access Control (IAM)"
+    4. Állítsa be a "Szerepkör", "Olvasó", és válassza ki a felhasználó vagy a szolgáltatás egyszerű hozzáférést példány használata
+
+3. Ha nem szeretné, a felhasználó vagy szolgáltatás egyszerű "Olvasó" szerepkör megadását, alernative, hogy [explicit módon adja meg egy végrehajtás helyet](data-factory-data-movement-activities.md#global) a másolási activitywith a Data Lake Store helyét. Példa:
+
+    ```json
+    {
+      "name": "CopyToADLS",
+      "type": "Copy",
+      ......
+      "typeProperties": {
+        "source": {
+          "type": "<source type>"
+        },
+        "sink": {
+          "type": "AzureDataLakeStoreSink"
+        },
+        "exeuctionLocation": "West US"
+      }
+    }
+    ```
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szeretné megadni a bemeneti adatok egy Data Lake Store a dataset, állítsa be a **típus** a DataSet tulajdonság **AzureDataLakeStore**. Állítsa be a **linkedServiceName** a Data Lake Store nevét a DataSet tulajdonság társított szolgáltatás. JSON-szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. A JSON-ban, a DataSet adatkészlet szakaszok például **struktúra**, **rendelkezésre állási**, és **házirend**, minden adatkészlet esetében hasonló (Azure SQL-adatbázis, az Azure blob és az Azure tábla a Példa). A **typeProperties** szakaszban nem egyezik az adatkészlet egyes típusú, és megjelenik többek között a hely és az adattár adatok formátuma. 

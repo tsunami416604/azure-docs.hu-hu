@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: a348647becbb9119cc649e366f34c4c37f2bea43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c3b691022b02aa2f3836c4e3a96dd5db7affad76
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>A feltételes hozzáférés az Azure Active Directory fejlesztői útmutató
 
@@ -110,7 +110,7 @@ A jogcímek kihívás belül van a ```WWW-Authenticate``` fejlécet, amely érte
 
 A ```WWW-Authenticate``` fejléc egyedi struktúrával rendelkezik, és nem triviális érték kivonása elemzése.  Íme egy rövid módszer segítségével.
 
-    ```C#
+```C#
         /// <summary>
         /// This method extracts the claims value from the 403 error response from MS Graph. 
         /// </summary>
@@ -138,7 +138,7 @@ A ```WWW-Authenticate``` fejléc egyedi struktúrával rendelkezik, és nem triv
             }
             return null; 
         }
-    ```
+```
 
 Kód mintákat, amelyek bemutatják, hogyan lehet kezelni a jogcímek kihívás, tekintse meg a [a nevében-az kódminta](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) ADAL .NET-keretrendszerhez készült.
 

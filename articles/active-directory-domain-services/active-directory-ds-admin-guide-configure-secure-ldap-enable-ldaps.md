@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 12/15/2017
 ms.author: maheshu
-ms.openlocfilehash: e070dfad6ca51b941f1af60f85463f4534493dff
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d55abe651f69e3539e7584b40a7aedf419bccda1
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS) használatos az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz tartozó konfigurálása
 
@@ -117,6 +117,7 @@ Ha sikerült csatlakozni a biztonságos LDAP a felügyelt tartományra, hajtsa v
 * Győződjön meg arról, hogy az LDAP-ügyfél (például az ldp.exe) csatlakozik-e a biztonságos LDAP végpont egy DNS-név, ne az IP-címet.
 * Ellenőrizze az LDAP-ügyfél kapcsolódik a nyilvános IP-címre oldja fel a rendszer biztonságos LDAP a felügyelt tartomány DNS-nevét.
 * Ellenőrizze, hogy a biztonságos LDAP a felügyelt tartományok tanúsítványnál a tulajdonos vagy a tulajdonos alternatív neve attribútum DNS-nevét.
+* Ha az interneten keresztül biztonságos LDAP csatlakozik, győződjön meg arról, a virtuális hálózat NSG beállításainak engedélyezi a forgalom port: 636 az internetről érkező.
 
 Ha továbbra is problémákat tapasztal a felügyelt tartományra biztonságos LDAP kapcsolódás [lépjen kapcsolatba a termékért felelős csoport](active-directory-ds-contact-us.md) segítségét. A probléma diagnosztizálásához jobban segítségével a következő információkat tartalmazza:
 * A kapcsolat létrehozása és sikertelen ldp.exe képernyőképe.

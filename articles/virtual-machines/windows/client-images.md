@@ -4,7 +4,7 @@ description: "Visual Studio előfizetés előnyöket használatáról központi 
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/05/2017
+ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 207a6562965b4913416bd4dbf3eb132b42938dc9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6db900981daa2139a0d2e951f41fc48d5c291074
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/Tesztelési forgatókönyvek
 Használhatja a Windows 7, Windows 8 vagy Windows 10 fejlesztési és tesztelési célú forgatókönyvek az Azure-ban biztosított megfelelő (korábbi nevén MSDN) Visual Studio-előfizetéssel rendelkezik. Ez a cikk ismerteti az Azure-ban és az Azure-katalógus képek használatát futó Windows-ügyfél jogosultsági követelményei.
@@ -26,7 +26,7 @@ Használhatja a Windows 7, Windows 8 vagy Windows 10 fejlesztési és tesztelés
 ## <a name="subscription-eligibility"></a>Előfizetés jogosultság
 Aktív (személyek szerezték be egy Visual Studio előfizetői licenccel) Visual Studio-előfizetők fejlesztési és tesztelési célra használhatja Windows ügyfél. Windows-ügyfél hardver- és a saját Azure-előfizetés típusú futó Azure virtuális gépek is használhatók. Windows-ügyfél lehet, hogy nem kell telepített használt Azure normális üzemi használatra, vagy azok, akik nem aktív Visual Studio-előfizetők által használt.
 
-Az Ön kényelme érdekében a Microsoft bizonyos Windows 10-lemezképek elérhetővé tett az Azure katalógusából belül [jogosult fejlesztési és tesztelési célú kínál](#eligible-offers). A Visual Studio-előfizetők ajánlat bármilyen típusú belül is [megfelelően készítse elő és hozzon létre](prepare-for-upload-vhd-image.md) egy 64 bites Windows 7, Windows 8 vagy Windows 10-lemezképet, majd [feltöltése az Azure-bA](upload-generalized-managed.md). Használatát marad által aktív Visual Studio-előfizetők fejlesztési és tesztelési célú korlátozódik.
+Az Ön kényelme érdekében bizonyos Windows 10-lemezképek érhetők el az Azure katalógusából belül [jogosult fejlesztési és tesztelési célú kínál](#eligible-offers). A Visual Studio-előfizetők ajánlat bármilyen típusú belül is [megfelelően készítse elő és hozzon létre](prepare-for-upload-vhd-image.md) egy 64 bites Windows 7, Windows 8 vagy Windows 10-lemezképet, majd [feltöltése az Azure-bA](upload-generalized-managed.md). Használatát marad által aktív Visual Studio-előfizetők fejlesztési és tesztelési célú korlátozódik.
 
 ## <a name="eligible-offers"></a>Jogosult ajánlatok
 Az alábbi táblázat részletezi az ajánlat azonosítóját, amely jogosult központi telepítése a Windows 10 és az Azure katalógusában. Az itt következő ajánlatok csak láthatók a Windows 10-lemezképeket. Ki kell futtatnia a Windows-ügyfél egy másik ajánlattípus a Visual Studio-előfizetők megkövetelik a [megfelelően készítse elő és hozzon létre](prepare-for-upload-vhd-image.md) egy 64 bites Windows 7, Windows 8 vagy Windows 10 lemezképet és [majd töltse fel az Azure-bA](upload-generalized-managed.md).
@@ -45,11 +45,11 @@ Az alábbi táblázat részletezi az ajánlat azonosítóját, amely jogosult k�
 ## <a name="check-your-azure-subscription"></a>Ellenőrizze az Azure-előfizetéshez
 Ha nem ismeri a ajánlat Azonosítóját, szerezheti be, ezek két módszer egyikével az Azure portálon keresztül:  
 
-- Az "Előfizetés" panel:
+- Az a *előfizetések* ablakban:
 
   ![Az ajánlat részletei az Azure-portálon](./media/client-images/offer-id-azure-portal.png) 
 
-- Vagy kattintson a **számlázási** , majd az előfizetés-azonosító. Az ajánlat azonosítója a számlázási panel jelenik meg.
+- Vagy kattintson a **számlázási** , majd az előfizetés-azonosító. Az ajánlat azonosító szerepel a *számlázási* ablak.
 
 Az ajánlat Azonosítót a is megtekintheti a ["Előfizetések" lapon](http://account.windowsazure.com/Subscriptions) az Azure-fiókportál:
 

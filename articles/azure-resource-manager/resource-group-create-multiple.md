@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: ac72190ddf01301eba595995d2167904ba4b0c05
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e19833cb58f37f5f8b83d5558d74255583137684
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Egy erőforrás vagy egy tulajdonság az Azure Resource Manager sablonokban több példányának telepítése
 Ez a cikk bemutatja, hogyan feltételesen központi telepítése egy erőforrást, és több példánya erőforrás létrehozása az Azure Resource Manager sablonban felépítésének módját.
@@ -395,140 +395,19 @@ Az alábbi példa megvalósítását mutatja be:
 }]
 ```
 
-## <a name="deploy-example-templates"></a>Példa sablonok telepítése
+## <a name="example-templates"></a>Példa sablonok
 
-### <a name="resource-iteration"></a>Erőforrás iterációs
+A következő példák azt szemléltetik, erőforrások és a Tulajdonságok gyakori forgatókönyvei.
 
-A [tárolási másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) sablon telepíti egy index számot a név több tárfiókot.
-
-PowerShell esetén használja az alábbi parancsot:
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName examplegroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/multipleinstance/copystorage.json
-```
-
-Azure CLI esetén használja az alábbi parancsot:
-
-```azurecli-interactive
-az group deployment create \
-  --resource-group examplegroup \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/multipleinstance/copystorage.json
-```
-
-### <a name="serial-resource-iteration"></a>Soros erőforrás iterációs
-
-A [soros tároló](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) sablon telepít több tárfiókot egy időben. A neve tartalmazza a indexszámát.
-
-PowerShell esetén használja az alábbi parancsot:
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName examplegroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/multipleinstance/serialcopystorage.json
-```
-
-Azure CLI esetén használja az alábbi parancsot:
-
-```azurecli-interactive
-az group deployment create \
-  --resource-group examplegroup \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/multipleinstance/serialcopystorage.json
-```
-
-### <a name="resource-iteration-from-array"></a>Egy olyan tömbből, erőforrás iterációs
-
-A [másolja a tömb tárolási](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) sablon telepíti a több tárfiókot. A név egy olyan tömbből értéket tartalmaz.
-
-PowerShell esetén használja az alábbi parancsot:
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName examplegroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/multipleinstance/copystoragewitharray.json
-```
-
-Azure CLI esetén használja az alábbi parancsot:
-
-```azurecli-interactive
-az group deployment create \
-  --resource-group examplegroup \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/multipleinstance/copystoragewitharray.json
-```
-
-### <a name="conditionally-deploy-resources"></a>Feltételesen az erőforrások telepítése
-
-A [virtuális gép és egy új vagy meglévő virtuális hálózat, a tároló és a nyilvános IP-cím](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions) sablon telepíti az új vagy meglévő erőforrásokat egy virtuális géppel.
-
-PowerShell esetén használja az alábbi parancsot:
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName examplegroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-new-or-existing-conditions/azuredeploy.json
-```
-
-Azure CLI esetén használja az alábbi parancsot:
-
-```azurecli-interactive
-az group deployment create \
-  --resource-group examplegroup \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-new-or-existing-conditions/azuredeploy.json
-```
-
-### <a name="property-iteration"></a>Tulajdonság iterációs
-
-A [adatlemezek változó több Virtuálisgép-telepítéshez](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) sablont egy virtuális gép több adatlemezek telepíti.
-
-PowerShell esetén használja az alábbi parancsot:
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName examplegroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-windows-copy-datadisks/azuredeploy.json
-```
-
-Azure CLI esetén használja az alábbi parancsot:
-
-```azurecli-interactive
-az group deployment create \
-  --resource-group examplegroup \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-windows-copy-datadisks/azuredeploy.json
-```
-
-### <a name="variable-iteration"></a>Változó iterációs
-
-A [változók másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) sablon a különböző módokat a változók léptetés mutatja be.
-
-PowerShell esetén használja az alábbi parancsot:
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName examplegroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/multipleinstance/copyvariables.json
-```
-
-Azure CLI esetén használja az alábbi parancsot:
-
-```azurecli-interactive
-az group deployment create \
-  --resource-group examplegroup \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/multipleinstance/copyvariables.json
-```
-
-### <a name="variable-iteration-to-create-resources"></a>Változó iterációs erőforrások létrehozása
-
-A [több biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) sablon több biztonsági szabály telepíti a hálózati biztonsági csoport. Akkor hoz létre a biztonsági szabályok paraméter.
-
-PowerShell esetén használja az alábbi parancsot:
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName examplegroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json `
-  -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json
-```
+|Sablon  |Leírás  |
+|---------|---------|
+|[Tároló](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |A név egy index számával több tárfiókot telepíti. |
+|[Soros tároló](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Telepíti a több tárfiókot egy időben. A neve tartalmazza a indexszámát. |
+|[A tömb tároló](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Több tárfiókot telepíti. A név egy olyan tömbből értéket tartalmaz. |
+|[Virtuális gép és egy új vagy meglévő virtuális hálózati, tárolási és nyilvános IP-cím](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions) |Feltételesen telepíti az új vagy meglévő erőforrásokat egy virtuális géppel. |
+|[Az adatlemezek változó száma a Virtuálisgép-telepítéshez](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |A virtuális gépekkel több adatlemezek telepíti. |
+|[Másolja a változók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |A különböző módokat a változók léptetés mutatja be. |
+|[Több biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Hálózati biztonsági csoport több biztonsági szabály telepíti. Akkor hoz létre a biztonsági szabályok paraméter. |
 
 ## <a name="next-steps"></a>Következő lépések
 * Ha azt szeretné, további információt a szakaszok egy sablon, lásd: [Azure Resource Manager sablonok készítése](resource-group-authoring-templates.md).

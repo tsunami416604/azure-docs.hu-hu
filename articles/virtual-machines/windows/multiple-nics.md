@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 941791ba398a3abbaa5137c36391fd23789cd3b1
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: fab9f4ab1f0e974da68e1e9f36bc10687ea0b631
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Létrehozása és kezelése a Windows rendszerű virtuális gép, amely több hálózati adapterrel rendelkezik.
 Virtuális gépek (VM) az Azure-ban rendelkezhet több virtuális hálózati adapterek (NIC) kapcsolódik. Egy gyakori forgatókönyv, hogy az előtér- és kapcsolat, vagy a hálózaton, figyelési vagy biztonsági mentési megoldásra dedikált különböző alhálózatokon. Ez a cikk részletesen létrehozása, amely rendelkezik a több hálózati adapter nem csatlakoztatható. Azt is megtudhatja, hogyan lehet hozzáadni vagy eltávolítani a hálózati adapter egy meglévő virtuális gépről. Különböző [Virtuálisgép-méretek](sizes.md) több hálózati adapter támogatja, így méretezés ennek megfelelően a virtuális Gépet.
@@ -232,6 +232,60 @@ Is `copyIndex()` több hozzáfűzése erőforrás neve. Ezután létrehozhat *my
 ```
 
 Átfogó példát olvasható [több hálózati adapter létrehozása a Resource Manager-sablonok segítségével](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
+
+## <a name="configure-guest-os-for-multiple-nics"></a>A vendég operációs rendszer konfigurálása több hálózati adapter
+
+Azure rendeli hozzá az első (elsődleges) hálózati illesztő a virtuális géphez csatolt alapértelmezett átjárót. Az Azure nem rendel hozzá alapértelmezett átjárót a virtuális géphez csatolt további (másodlagos) hálózati adapterekhez. Alapértelmezés szerint ezért nem lehetséges a kommunikáció olyan erőforrásokkal, amelyek a másodlagos hálózati adaptert tartalmazó alhálózaton kívül vannak. Másodlagos hálózati adapterrel, azonban kommunikálhat az alhálózati kívüli erőforrásokhoz, ha a kommunikáció engedélyezése az operációs rendszer különböző operációs rendszereken.
+
+1. Egy Windows parancssori ablakba, futtassa a `route print` parancsot, amely a kimenetet visszaadja a kimeneti két csatlakoztatott hálózati adapterrel rendelkező virtuális gép a következőhöz hasonló:
+
+    ```
+    ===========================================================================
+    Interface List
+    3...00 0d 3a 10 92 ce ......Microsoft Hyper-V Network Adapter #3
+    7...00 0d 3a 10 9b 2a ......Microsoft Hyper-V Network Adapter #4
+    ===========================================================================
+    ```
+ 
+    Ebben a példában **Microsoft Hyper-V hálózati Adapter 4** (7) objektumfelület. a másodlagos hálózati adapter, amely nincs hozzárendelve alapértelmezett átjárót.
+
+2. Egy parancssorból futtassa a `ipconfig` parancsot mely IP-cím hozzá van rendelve a másodlagos hálózati illesztő megtekintéséhez. Ebben a példában 192.168.2.4 felület 7 van hozzárendelve. A másodlagos hálózati adapter nincs alapértelmezett átjárójának címét adja vissza.
+
+3. A cím az alhálózat a másodlagos hálózati adapter az alhálózat átjáró kívül szánt forgalom irányításához, futtassa a következő parancsot:
+
+    ```
+    route add -p 0.0.0.0 MASK 0.0.0.0 192.168.2.1 METRIC 5015 IF 7
+    ```
+
+    Az átjáró cím az alhálózat első IP-címét (ikonra.1 végződése) definiálva az alhálózat címtartománya. Ha nem szeretné kívül az alhálózat összes forgalmat, hozzáadhatja egyéni útvonalak adott helyre, helyette. Ha csak a másodlagos hálózati illesztő forgalom átirányítása a 192.168.3.0 például hálózati, írja be a parancsot:
+
+      ```
+      route add -p 192.168.3.0 MASK 255.255.255.0 192.168.2.1 METRIC 5015 IF 7
+      ```
+  
+4. Ellenőrizze az erőforrás a 192.168.3.0 sikeres kommunikáció hálózati, írja be például a következő parancsot a ping 192.168.3.4 7 (192.168.2.4) felhasználói felületén:
+
+    ```
+    ping 192.168.3.4 -S 192.168.2.4
+    ```
+
+    Nyissa meg az ICMP, még a következő paranccsal pingelés az eszköz a Windows tűzfalon keresztül szeretne:
+  
+      ```
+      netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
+      ```
+  
+5. Erősítse meg a hozzáadott útvonal az útválasztási táblázatban, írja be a következőt a `route print` parancsot, amely kimenet az alábbihoz hasonló:
+
+    ```
+    ===========================================================================
+    Active Routes:
+    Network Destination        Netmask          Gateway       Interface  Metric
+              0.0.0.0          0.0.0.0      192.168.1.1      192.168.1.4     15
+              0.0.0.0          0.0.0.0      192.168.2.1      192.168.2.4   5015
+    ```
+
+    Az útvonal meglétüket *192.168.1.1* alatt **átjáró**, a útvonalat, amely alapértelmezés szerint az elsődleges hálózati adapter van-e. Az útvonal *192.168.2.1* alatt **átjáró**, a hozzáadott útvonalat.
 
 ## <a name="next-steps"></a>Következő lépések
 Felülvizsgálati [Windows Virtuálisgép-méretek](sizes.md) próbál, ha több hálózati adapterrel rendelkező virtuális gép létrehozása. Nagy figyelmet fordítani az egyes Virtuálisgép-méretet támogató hálózati adapterek maximális száma. 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c80281a520159965066c6cd166f47ecac66e552b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: e0f4a284a46ba56ba4e3229a72e99efef0cf9dc2
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Azure Data Factory entitásokat hozhatnak létre a sablonok segítségével
 > [!NOTE]
@@ -231,7 +231,7 @@ Tekintse meg [folyamatok meghatározása](data-factory-create-pipelines.md#pipel
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Adat-előállító sablon paraméterezése
-Gyakorlati tanácsok a paraméterezése, lásd: [ajánlott eljárások Azure Resource Manager-sablonok létrehozásához](../../azure-resource-manager/resource-manager-template-best-practices.md#parameters) cikk. Általában a paraméter használatával kell tartani, különösen akkor, ha a változók helyett használhatók. Csak adja meg a paramétereket a következő esetekben:
+Gyakorlati tanácsok a paraméterezése, lásd: [ajánlott eljárások Azure Resource Manager-sablonok létrehozásához](../../azure-resource-manager/resource-manager-template-best-practices.md). Általában a paraméter használatával kell tartani, különösen akkor, ha a változók helyett használhatók. Csak adja meg a paramétereket a következő esetekben:
 
 * Beállítások eltérőek lehetnek a környezet által (Példa: fejlesztői, tesztelési és éles)
 * Titkos kulcsokat (például a jelszavak)

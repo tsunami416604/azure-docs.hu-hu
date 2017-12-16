@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 54c92937c507cabd9053920baef97e745c2300f6
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: e9e0106c66002ba5b0851833d582d5d5409a18a5
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>IoT peremhálózati telepítések egyetlen eszközökhöz vagy léptékű megismerése – előzetes
 
@@ -62,7 +62,7 @@ A célként megadott feltétel folyamatosan bármely új eszközök a követelm�
 Eszköz twins címkék vagy deviceId bármely logikai feltétel segítségével válassza ki a céleszközt. Ha azt szeretné, feltételt is használhat címkékkel, kell hozzáadnia a "címkék" :{} szakasz alatt a Tulajdonságok azonos szinten az eszköz a két. [További tudnivalók az eszköz iker címkék](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins)
 
 Cél feltétel példák:
-* deviceId = "linuxprod1
+* deviceId = "linuxprod1"
 * tags.Environment = "termék"
 * tags.Environment = "termék" AND tags.location = "westus"
 * tags.Environment = "termék" OR tags.location = "westus"

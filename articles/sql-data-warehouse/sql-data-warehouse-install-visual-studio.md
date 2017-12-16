@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: connect
-ms.date: 03/30/2017
-ms.author: anvang;barbkess
-ms.openlocfilehash: f7023b78c241a7bc8014276cd0bfa455165b42cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.author: kevin;barbkess
+ms.openlocfilehash: e8170eefb2e359719684e08749180a4e7784f9b6
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>A Visual Studio és az SSDT telepítése SQL Data Warehouse
 Alkalmazások fejlesztéséhez az SQL Data Warehouse, azt javasoljuk, a Visual Studio legújabb verziójának SQL Server Data Tools (SSDT) legújabb verziójával.  A Visual Studio 2013 Update 5 és az SSDT együttes használata is támogatott a visszamenőleges kompatibilitás érdekében.  
@@ -27,7 +27,7 @@ Alkalmazások fejlesztéséhez az SQL Data Warehouse, azt javasoljuk, a Visual S
 A Visual Studio és az SSDT együttes használata révén az SQL Server Object Explorerrel vizuálisan derítheti fel a táblákat, a nézeteket, a tárolt eljárásokat és sok más objektumot az SQL Data Warehouse-ban, továbbá lekérdezéseket is futtathat.
 
 > [!NOTE]
-> Az SQL Data Warehouse még nem támogatja a Visual Studio-adatbázisprojekteket.  Ez a szolgáltatás egy későbbi verzióban lesz elérhető.
+> Az SQL Data Warehouse még nem támogatja a Visual Studio-adatbázisprojekteket.  Ez a szolgáltatás egy későbbi verzióban lesz elérhető. Ez a funkció a rendszeres frissítések fogadásához adjon szavazhatnak [UserVoice].
 > 
 > 
 
@@ -59,3 +59,4 @@ Most, hogy az SSDT legújabb verzióját, készen áll [csatlakozás] [ connect]
 [Töltse le a Visual Studio]: https://www.visualstudio.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
+[UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu

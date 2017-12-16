@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: jroth
-ms.openlocfilehash: 6386678bdac3630f3e003187ff3d12c0ce053b90
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 03580952800e595125fc48d169f7d4aa7846dd3f
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Ajánlott eljárások az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növeléséhez
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/15/2017
 
 Ez a témakör gyakorlati tanácsokat megfelelően a Microsoft Azure virtuális gép az SQL Server teljesítményének optimalizálásához. SQL Server rendszert futtató Azure virtuális gépeken, miközben azt javasoljuk, hogy folytatja a helyszíni környezetben SQL Server megfelelő lehetőségeket teljesítményhangolás ugyanazon adatbázis használatával. A nyilvános felhőben egy relációs adatbázis teljesítménye azonban, például egy virtuális gép méretét, és az adatlemezek konfigurációjának számos tényezőtől függ.
 
-SQL Server-lemezképek létrehozásakor [fontolja meg a virtuális gépek Azure-portálon kiépítés](virtual-machines-windows-portal-sql-server-provision.md). SQL Server virtuális gépen a portálon a Resource Manager üzembe valósítja meg az alábbi gyakorlati tanácsok, beleértve a tárolási konfiguráció.
+SQL Server-lemezképek létrehozásakor [fontolja meg a virtuális gépek Azure-portálon kiépítés](virtual-machines-windows-portal-sql-server-provision.md). SQL Server virtuális gépen a portálon a Resource Manager üzembe kövesse a bevált gyakorlatokat.
 
 Ez a cikk témáját arra irányul, hogy a *legjobb* az Azure virtuális gépeken futó SQL Server teljesítményét. Ha a terhelést szabadulnak, minden alábbi optimalizálási nem lehet szükség. Vegye figyelembe a teljesítményigény és a terhelési mintázatok, ezek a javaslatok értékeli.
 
@@ -87,9 +87,12 @@ D sorozatú, Dv2-sorozat és G sorozatú virtuális gépeket a virtuális gépek
 
 Virtuális gépekhez, amely támogatja a prémium szintű Storage (DS-méretek, DSv2-sorozat és GS sorozatnak) azt javasoljuk, amely támogatja a prémium szintű Storage engedélyezve olvasási gyorsítótárazás lemezre TempDB tárolására. Nincs az egyetlen kivétel ez a javaslat; Ha a TempDB használata írási igényű, nagyobb teljesítményt érhet el, a TempDB tárolja a helyi **D** meghajtót, amely egyben a ezek méreteket SSD-alapú.
 
-### <a name="data-disks"></a>Az adatlemezek
+### <a name="data-disks"></a>Adatlemezek
 
 * **Adatlemezek használja az adatok és a naplófájlok**: legalább 2 prémium szintű Storage használata [P30 lemezek](../premium-storage.md#scalability-and-performance-targets) ahol egy lemezt a naplófájl (oka) t tartalmaz, és a másik az adatokat és a TempDB adatbázis (oka) t tartalmaz. Minden prémium szintű tároló lemez számos iops-érték és a sávszélesség (MB/s) attól függően, hogy annak méretét, a következő cikkben leírtak szerint: [prémium szintű Storage használatával lemezek](../premium-storage.md).
+
+   > [!NOTE]
+   > Ha egy SQL Server virtuális Gépet a portálon, lehetősége van módosítani a tárolási konfigurációt. A konfigurációtól függően az Azure egy vagy több lemezt állít be. Több lemezzel rendelkező csíkozást egyetlen tárolókészlet van egyesítve. Az adat- és naplófájljai együtt ebben a konfigurációban, nem pedig két különböző lemezen találhatók. További információkért lásd: [tárolási konfigurációt az SQL Server VMs](virtual-machines-windows-sql-server-storage-configuration.md).
 
 * **Lemez csíkozást**: további átviteli sebesség eléréséhez, adhat hozzá további adatlemezt és lemez csíkozást használja. Az adatlemezek számának megállapításához kell elemeznie iops-érték és a sávszélességre van szüksége a naplófájl (oka) t, és az adatok és a TempDB adatbázis (oka) t. Figyelje meg, hogy más Virtuálisgép-méretek iops-érték és a támogatott sávszélesség számára különböző korlátokkal rendelkeznek, tekintse meg a táblák iops-értéket a [Virtuálisgép-méretet](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Kövesse az alábbi iránymutatásokat:
 

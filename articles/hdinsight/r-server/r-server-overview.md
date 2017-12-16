@@ -15,15 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 57e28215124bc0330517c541e4cb74a66d939ff5
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 247cc4175b70e31c9496df7037d45e8c7e2c7494
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/16/2017
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>R Server, és nyílt forráskódú R képességek a HDInsight bemutatása
 
 Microsoft R Server a HDInsight-fürtök létrehozása az Azure-ban esetén érhető el, mint a központi telepítési lehetőség. Ez az új képesség biztosít adatelemzők, statisztikusok és R-t használó programozók méretezhető, igény szerinti hozzáféréssel rendelkező elosztott elemzés hdinsight platformon történő módszerek.
+
+[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 Fürtök méretének a projektek és az elvégzendő feladatok, és ha azok már nincs szükség majd bontva. Mivel azok Azure HDInsight részei, ezeken a fürtökön rendelkeznek vállalati szintű 24/7 támogatása, szolgáltatásiszint-szerződésben garantált 99,9 %-os üzemidőt, valamint a integrálása az Azure-ökoszisztéma más összetevői.
 
@@ -96,7 +98,7 @@ Egy másik teljes IDE lehetőség egy asztali IDE telepítse, és a fürt elérn
 Végül, az R Server konzolra élcsomópont begépelésével érhetik el **R** SSH vagy PuTY segítségével történő kapcsolódás után Linux parancs parancssorba. Ha a konzol felhasználói felületén, célszerű egy szövegszerkesztőben R-parancsfájl fejlesztési futtassa egy másik ablakban, és Kivágás, és illessze be a parancsfájl szakaszok a R konzolba, igény szerint.
 
 ## <a name="learn-about-pricing"></a>További tudnivalók díjszabása
-A díjak, az R Server a HDInsight-fürtök rendelt hasonlóan a szabványos HDInsight-fürtök díja van felépítve. Az alapul szolgáló virtuális gépek méretezési a neve, adatokat és peremhálózati csomópontok, azonban kiegészül a core órás uplift alapulnak. További információ a HDInsight árak, és egy 30 napos ingyenes próbaverzióval rendelkezésre állásáról: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/).
+A díjak, az R Server a HDInsight-fürtök rendelt hasonlóan a szabványos HDInsight-fürtök díja van felépítve. Az alapul szolgáló virtuális gépek méretezési a neve, adatokat és peremhálózati csomópontok, azonban kiegészül a core órás uplift alapulnak. HDInsight árazással kapcsolatos további információért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="next-steps"></a>Következő lépések
 R Server használata a HDInsight-fürtökkel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
