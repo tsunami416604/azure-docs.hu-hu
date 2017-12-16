@@ -32,6 +32,8 @@
       href: how-to-deploy-monitor.md
     - name: IoT Core-eszköz kiépítése
       href: how-to-install-iot-core.md
+    - name: Hibaelhárítás
+      href: troubleshoot.md
 - name: Alapelvek
   items:
     - name: IoT Edge-modulok

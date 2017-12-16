@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 12/15/2017
 ms.author: zivr
-ms.openlocfilehash: 80c029866f3d28712be823692f3bf4ce6e210405
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: b0103acf1e407a6a198159fad227b7ccc25052d2
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>A tervezett karbantartás értesítések Windows virtuális gépek kezelése
 
@@ -32,9 +32,9 @@ Azure rendszeres időközönként megbízhatóságát, teljesítményét és a v
 
 A rendszer újraindítását igénylő tervezett karbantartás hullámok van ütemezve. Minden egyes wave hatóköre különböző (régió).
 
-- A hanghullám kezdődik-e egy értesítést, az ügyfél számára. Alapértelmezés szerint az előfizetés tulajdonosa és a társtulajdonosok értesítést küld. Az értesítések további címzettek és e-mailek, az SMS és Webhookokkal, például üzenetküldési beállítások adhat hozzá.  
-- Az értesítés követően egy önkiszolgáló ablak van beállítva. Ezen időszak alatt található a virtuális gépek közül melyik megtalálható a hanghullám és kezdő karbantartási proaktív helyezze üzembe újra használatával. 
-- Az önkiszolgáló ablak következő ütemezett karbantartási időszak kezdődik. Jelenleg az Azure ütemezi, és a szükséges karbantartás vonatkozik a virtuális gép. 
+- A hanghullám kezdődik-e egy értesítést, az ügyfél számára. Alapértelmezés szerint az előfizetés tulajdonosa és a társtulajdonosok értesítést küld. Adhat hozzá további címzettek és e-mailek, az SMS és Webhookokkal, például üzenetküldési beállítások az Azure használatával értesítések [napló Tevékenységriasztásokat](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).  
+- Az értesítés időpontjában egy *önkiszolgáló ablak* szeretné elérhetővé tenni. Ezen időszak alatt található a virtuális gépek szerepelnek a hanghullám, és proaktív indítsa el a karbantartási ütemezési szükség szerint.
+- Az önkiszolgáló ablak után egy *ütemezett karbantartási időszaknál* kezdődik. Ebben az ablakban során egy ponton Azure ütemezi, és a szükséges karbantartás vonatkozik a virtuális gép. 
 
 Rendelkezik két windows a célja, hogy a karbantartási indítása, és indítsa újra a virtuális gép tudatában, amikor Azure automatikusan elindul, karbantartási elegendő időt biztosítanak.
 
@@ -42,8 +42,38 @@ Rendelkezik két windows a célja, hogy a karbantartási indítása, és indíts
 Az Azure-portálon, a PowerShell, a REST API-t és a parancssori felület segítségével lekérdezheti a karbantartási időszakok a virtuális gépek, és indítsa el az önkiszolgáló karbantartási.
 
  > [!NOTE]
- > Próbál indítsa el a karbantartási és sikertelen lesz, ha az Azure jelöli meg a virtuális Gépet állítsanak **kihagyva** nem indítsa újra a rendszert, az ütemezett karbantartási időszak alatt. Ehelyett meg próbál kapcsolódni a később egy új ütemezéssel. 
+ > Ha karbantartási indításakor, és a kérés nem teljesíthető, Azure jelöli meg a virtuális Gépet állítsanak **kihagyva**. Rendszer már nem fogja tudni használni az ügyfél által kezdeményezett karbantartási lehetőséget. A virtuális Gépet újra kell majd indítani az Azure-ban az ütemezett karbantartási fázisban kell.
 
+
+ 
+## <a name="should-you-start-maintenance-using-during-the-self-service-window"></a>Kell karbantartási használatának megkezdése az önkiszolgáló időszak alatt?  
+
+A következő irányelveket kell segítségével döntse el, hogy kell ezzel a funkcióval és karbantartási kezdjék a saját idő.
+
+> [!NOTE] 
+> Önkiszolgáló karbantartási nem feltétlenül érhető el az összes, a virtuális gépek. Annak megállapítása, hogy proaktív helyezze üzembe újra a virtuális gép számára elérhető, keresse meg a **most** a karbantartási állapota. Önkiszolgáló karbantartási szolgáltatás jelenleg nem érhető el a Cloud Services (webes/munkavégző szerepkör), a Service Fabric és a virtuálisgép-méretezési készlet.
+
+
+Önkiszolgáló karbantartási üzembe helyezése nem ajánlott **rendelkezésre állási készletek** mivel ezek a magas rendelkezésre állású beállításokat, ahol a csak egy frissítési tartományt kihatással van egy adott időpontban. 
+    - Lehetővé teszik a karbantartási Azure eseményindító, de vegye figyelembe, hogy a frissítési tartományok befolyásolja sorrendjét nem feltétlenül fordulhat elő egymás után, és hogy van-e a 30 perces szünet frissítési tartományok között.
+    - Átmenetileg megszakad a kapacitás (1/frissítési tartományok számának) néhány fontos, ha azt is könnyen lehet kompenzálni hozzáadása példány lefoglalása a karbantartási időszakban. 
+
+**Nem** önkiszolgáló karbantartási a következő helyzetekben használhatja: 
+    - Ha leállítja a virtuális gépek gyakran, akár manuálisan, használja a DevTest labs, az automatikus rendszerleállítást, vagy olyan ütemezés, azt nem sikerült a karbantartási állapot visszaállítása és ezért a további állásidőt okoz.
+    - A rövid élettartamú virtuális gépeken is tudja, hogy törli a karbantartási wave lejárta előtt. 
+    - A helyi (rövid élettartamú) lemezre, amely a frissítés után fenntartásához szükséges tárolt nagy állapotú munkaterhelésekhez. 
+    - Olyan esetekben, ahol a virtuális gép átméretezésekor, gyakran ahogy térhet karbantartási állapotát. 
+    - Ha az ütemezett események, amelyek proaktív feladatátvételi vagy biztonságos leállításának részét a munkaterhelésből, karbantartási leállítási kezdetét 15 percet lehetővé teszik alkalmazó
+
+**Használjon** önkiszolgáló karbantartási, ha szeretne futtatni az ütemezett karbantartási fázisban megszakítás nélkül a virtuális Gépet, és a fent említett másik jelzések sem alkalmazható. 
+
+A legcélszerűbb önkiszolgáló karbantartási használatát a következő esetekben:
+    - A felügyeleti vagy záró-ügyfél egy pontos karbantartási időszak közölnie kell. 
+    - Egy adott időpontig a karbantartás végrehajtásához szükséges. 
+    - Szeretné karbantartási, például többrétegű alkalmazást garantálja a biztonságos helyreállítás sorrendjének szabályozásához.
+    - Frissítési tartományok (UDs) között a virtuális gép helyreállítási idő több mint 30 perc van szüksége. Frissítési tartományok között eltelő idő szabályozásához indít el a kell karbantartási a virtuális gépek egy frissítési tartomány (UD) egyszerre.
+
+ 
 
 [!INCLUDE [virtual-machines-common-maintenance-notifications](../../../includes/virtual-machines-common-maintenance-notifications.md)]
 
@@ -120,7 +150,7 @@ Ahhoz, hogy a karbantartási egy virtuális gép állapotát, írja be:
 Get-AzureVM -ServiceName <Service name> -Name <VM name>
 ```
 
-Indítsa el karbantartás, a klasszikus virtuális Gépet, írja be:
+Indítsa el a karbantartási a klasszikus virtuális gépén, írja be:
 
 ```
 Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
@@ -136,15 +166,9 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 **K:, ha szeretnék kövesse a magas rendelkezésre állásra rendelkezésre állási csoport használatával, tudom biztonságos?**
 
-**V:**egy rendelkezésre állási telepített virtuális gépek vagy virtuálisgép-méretezési csoportok rendelkezik a következő formátumban: a frissítési tartományok (UD). Ha karbantartást végez, Azure eleget tegyen a UD megkötés, és nem újraindul a virtuális gépek különböző UD (belül az azonos rendelkezésre állási csoport).  Azure is legalább 30 percet, mielőtt a következő csoportba tartozó virtuális gépek áthelyezése vár. 
+**V:** egy rendelkezésre állási telepített virtuális gépek vagy virtuálisgép-méretezési csoportok rendelkezik a következő formátumban: a frissítési tartományok (UD). Ha karbantartást végez, Azure eleget tegyen a UD megkötés, és nem újraindul a virtuális gépek különböző UD (belül az azonos rendelkezésre állási csoport).  Azure is legalább 30 percet, mielőtt a következő csoportba tartozó virtuális gépek áthelyezése vár. 
 
-További információ a magas rendelkezésre állású kezelése tekintse meg a Windows Azure virtuális gépek rendelkezésre állását, vagy Azure Linux virtuális gépek rendelkezésre állásának kezelése.
-
-**K: van állítva egy másik régióban vész-helyreállítási. Tudom biztonságos?**
-
-**V:** minden Azure-régióban párosított belül az azonos földrajzi hely (például az Egyesült Államok, Európa vagy Ázsia) egy másik régióban. A tervezett Azure-frissítések egyszerre csak a régiópár egyik tagján jelennek meg, ami csökkenti az állásidőt és az alkalmazáskimaradás kockázatát. Tervezett karbantartás közben Azure is ütemezheti a felhasználók számára a karbantartási start hasonló ablak, azonban az ütemezett karbantartási időszaknál párosított régiók közötti eltérőek lesznek.  
-
-További információ az Azure-régiók régiók és az Azure virtuális gép rendelkezésre állási tájékozódhat.  Itt a regionális párok teljes listája látható.
+További információ a magas rendelkezésre állású: [régiók és az Azure virtuális gép rendelkezésre állási](regions-and-availability.MD).
 
 **K: hogyan tegye I get értesítse a tervezett karbantartások?**
 
@@ -154,38 +178,28 @@ További információ az Azure-régiók régiók és az Azure virtuális gép re
 
 **V:** tervezett karbantartási kapcsolódó áll rendelkezésre információ csak a virtuális gépek, amelyek negatív hatással lehet az fog a tervezett karbantartások hullám során. Ez azt jelenti Ha adatokat nem jelenik meg, annak oka lehet, hogy a karbantartási wave rendelkezik már befejeződött (vagy nem kezdődött el) vagy az, hogy a virtuális gép már található egy frissített kiszolgálót.
 
-**K: kell a karbantartási is elindítani a virtuális gépen?**
-
-**V:** általában egy felhőalapú szolgáltatás, a rendelkezésre állási csoport vagy a virtuális gépek méretezési, telepítendő munkaterhelések rugalmasak tervezett karbantartás.  Tervezett karbantartás közben csak egyetlen frissítési tartományi egy adott időpontban van hatással. Vegye figyelembe, hogy a frissítési tartományok befolyásolja sorrendjét nem feltétlenül fordulhat elő egymás után.
-
-Érdemes lehet start karbantartási saját magának a következő esetekben:
-- Az alkalmazás egy virtuális gépen fut, és az összes karbantartás alatt munkaidőn kívüli alkalmaznia kell a
-- A karbantartás ideje koordinálja a szolgáltatásiszint-szerződés részeként kell
-- Kell több mint 30 perc közötti minden virtuális gép újraindítása még akkor is a rendelkezésre állási belül meg.
-- A teljes alkalmazás (többrétegű konfigurációk, több frissítési tartományt) befejezéséhez gyorsabb karbantartás miatt le szeretné.
-
 **K: van mód, pontosan, ha a virtuális gép érintett?**
 
-**V:** az ütemezés beállítása, azt határozzák meg, időkerete pedig néhány nap. Azonban a kiszolgálók (és a virtuális gépek) belüli megakadályozásához pontos sorrendi állapota ismeretlen. Az ügyfelek, akik a virtuális gépek a pontos idő tudni szeretné használhatja ütemezett események és a virtuális gépekről a lekérdezés és a virtuális gép újraindításig eltelő 10 perc értesítést.
-  
+**V:** az ütemezés beállítása, azt határozzák meg, időkerete pedig néhány nap. Azonban a kiszolgálók (és a virtuális gépek) belüli megakadályozásához pontos sorrendi állapota ismeretlen. Az ügyfelek, akik a pontos idő tudni, hogy a virtuális gépek szeretné használható [események ütemezett](scheduled-events.md) és a virtuális gépekről lekérdezés és a virtuális gép újraindítása előtt 15 perces értesítést.
+
 **K: mennyi ideig tart a virtuális gép újraindítását?**
 
-**V:** attól függően, hogy a virtuális gép méretét, újraindítás is eltarthat néhány percig. Beállítja a Megjegyzés, abban az esetben használhatja a felhőszolgáltatások, méretezhető, vagy a rendelkezésre állási csoport, az aktiválási 30 perc, a virtuális gépek (UD) csoportjai között. 
+**V:** attól függően, hogy a virtuális gép méretét, újraindítás is eltarthat néhány percig. Vegye figyelembe, hogy arra az esetre Cloud Services (webes/munkavégző szerepkör), a virtuálisgép-skálázási készletekben vagy a rendelkezésre állási készletek használja, az aktiválási 30 perc, a virtuális gépek (UD) csoportjai között. 
 
-**K: Mi lesz a felhőszolgáltatásokat, a méretezési készlet és a Service Fabric esetén a felhasználói élmény?**
+**K: Mi található a Cloud Services (webes/munkavégző szerepkör), a Service Fabric és a virtuálisgép-méretezési csoportok esetében?**
 
-**V:** ezekről a platformokról tervezett karbantartás által érintett, amíg ezek platformokat használó ügyfelek minősülnek kap, hogy csak virtuális gépek a egy egyetlen frissítési tartományi (UD) biztonságos csökkenhet az adott időpontban.  
+**V:** ezekről a platformokról tervezett karbantartás által érintett, amíg ezek platformokat használó ügyfelek minősülnek kap, hogy csak virtuális gépek a egy egyetlen frissítési tartományi (UD) biztonságos csökkenhet az adott időpontban. Önkiszolgáló karbantartási szolgáltatás jelenleg nem érhető el a Cloud Services (webes/munkavégző szerepkör), a Service Fabric és a virtuálisgép-méretezési készlet.
 
 **K: I hardver leállítására vonatkozó e-mailben kapott, megegyezik a tervezett karbantartások?**
 
-**V:** hardver leszerelése az tervezett karbantartási esemény, amíg van még nincs előkészítve a használati eset az új felületet.  Várhatóan az ügyfelek számára Zavarba, abban az esetben, ha két különböző tervezett karbantartási hullámok kapcsolatos két hasonló e-mailt kapnak.
+**V:** hardver leszerelése az tervezett karbantartási esemény, amíg van még nincs előkészítve a használati eset az új felületet.  
 
 **K: nem szerepel az összes karbantartási információkat a virtuális gépeken. Mi a probléma?**
 
 **V:** miért is nem lát minden karbantartási információt a a virtuális gépek számos oka lehet:
 1.  A Microsoft belső jelölésű előfizetését használja.
 2.  A virtuális gépek nem ütemezett karbantartás céljából. Lehet, hogy a karbantartási wave véget ért, megszakadt, vagy módosítható úgy, hogy a virtuális gépek által már nem érintettek.
-3.  A virtuális gép listanézet hozzáadott "karbantartás" oszlop nem rendelkezik. Ez az oszlop alapértelmezett nézetbe jelentek meg, amíg az ügyfelek, akik nem alapértelmezett oszlopok megjelenítéséhez konfigurált manuálisan kell hozzáadni a **karbantartási** a virtuális gép listanézet alapját képező oszlop.
+3.  Nem rendelkezik a **karbantartási** a virtuális gép listanézetre felvett oszloppal. Ez az oszlop alapértelmezett nézetbe jelentek meg, amíg az ügyfelek, akik nem alapértelmezett oszlopok megjelenítéséhez konfigurált manuálisan kell hozzáadni a **karbantartási** a virtuális gép listanézet alapját képező oszlop.
 
 **K: a virtuális gép második ütemezett karbantartás céljából. Hogy miért?**
 
@@ -194,6 +208,11 @@ További információ az Azure-régiók régiók és az Azure virtuális gép re
 2.  A virtuális Géphez lett *beforrott szolgáltatás* hardverhibája okozza egy másik csomópontjára
 3.  Állítsa le a kijelölt (felszabadítása), és indítsa újra a virtuális gép
 4.  Rendelkezik **automatikus leállítási** engedélyezve van a virtuális gép
+
+
+**K: a rendelkezésre állási csoport karbantartási hosszú ideig tart, és a "kihagyva" állapot egyes a rendelkezésre állási beállítása példányok ekkor megjelenik. Hogy miért?** 
+
+**V:** kattintott, a rendelkezésre állási készlet rövid egymás után több példány frissítéséhez, ha Azure ezek a kérelmek várólistára kerülnek, és egyszerre csak egy frissítési tartomány (UD) VMs frissítése elindítja. Azonban mivel előfordulhat, hogy egy szünet frissítési tartományok között, a frissítés úgy tűnhet, hogy tovább tart. Ha a frissítés várólista hosszabb 60 percnél hosszabb időt vesz igénybe, bizonyos esetekben jelennek-e a **kihagyva** állapot akkor is, ha azok sikeresen frissítve. Ez helytelen állapotot elkerülése érdekében a rendelkezésre állási készletek kattintva csak egy rendelkezésre állási példány frissítés beállítása, és várja meg a frissítés befejeződése után kattintson a különböző frissítési tartományban a következő virtuális gép esetében a.
 
 
 ## <a name="next-steps"></a>Következő lépések
