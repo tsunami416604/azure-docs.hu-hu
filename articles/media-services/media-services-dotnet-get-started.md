@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/31/2017
+ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: f0be787ba1ccee067fb1d7e6a6554be32f886089
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c66488ce4381a3c5f796aa9826810195b2738769
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Tartalmak továbbítása igény szerint a .NET SDK használatával
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -86,22 +86,26 @@ A streamvégpont elindításához tegye a következőket:
 
 A .NET-keretrendszerű Media Services-szolgáltatások használatakor a **CloudMediaContext** osztályt kell használnia a legtöbb Media Services-programozási feladathoz – ilyenek például a Media Services-fiókhoz való csatlakozás, továbbá az adategységek, adategységfájlok, feladatok, hozzáférési házirendek, keresők és egyebek létrehozása, frissítése, elérése és törlése.
 
-Írja felül az alapértelmezett Program osztályt a következő kóddal. A kód bemutatja, hogyan olvashatja be a csatlakozási értékeket az App.config fájlból, és hogyan hozhatja létre a Media Services-csatlakozáshoz szükséges **CloudMediaContext** objektumot. További információ: [Connecting to the Media Services API](media-services-use-aad-auth-to-access-ams-api.md) (Csatlakozás a Media Services API-hoz).
+Írja felül az alapértelmezett Program osztályt a következő kóddal: A kód bemutatja, hogyan olvashatja be a csatlakozási értékeket az App.config fájlból, és hogyan hozhatja létre a Media Services-csatlakozáshoz szükséges **CloudMediaContext** objektumot. További információ: [Connecting to the Media Services API](media-services-use-aad-auth-to-access-ams-api.md) (Csatlakozás a Media Services API-hoz).
 
 Ne feledje frissíteni a fájl nevét és elérési útvonalát a médiafájl helyének megfelelően.
 
 A **Fő** függvény olyan módszereket hív meg, amelyek jelen szakasz során később lesznek meghatározva.
 
 > [!NOTE]
-> Amíg nem veszi fel az összes függvénydefinícióit, a rendszer fordítási hibát jelez.
+> Amíg nem veszi fel a jelen cikk későbbi szakaszaiban meghatározott összes függvénydefiníciót, a rendszer fordítási hibát jelez.
 
     class Program
     {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static CloudMediaContext _context = null;
 
@@ -109,7 +113,11 @@ A **Fő** függvény olyan módszereket hív meg, amelyek jelen szakasz során k
         {
         try
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -137,7 +145,7 @@ A **Fő** függvény olyan módszereket hív meg, amelyek jelen szakasz során k
             Console.ReadLine();
         }
         }
-    }
+    
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Új adategység létrehozása és videofájl feltöltése
 
@@ -145,7 +153,7 @@ A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimene
 
 Az alábbiakban meghatározott **UploadFile** módszer a **CreateFromFile** módszert hívja meg (amely a .NET SDK-bővítmények között van meghatározva). A **CreateFromFile** létrehoz egy új adategységet, amelybe a megadott forrásfájl fel lesz töltve.
 
-A **CreateFromFile** módszer számára az **AssetCreationOptions** alapján határozhatja meg, hogy az alábbi adategység-létrehozási lehetőségek közül melyiket használja:
+A **CreateFromFile** módszer számára az **AssetCreationOptions alapján határozhatja meg, hogy az alábbi adategység-létrehozási lehetőségek közül melyiket használja:
 
 * **Nincs** – Nincs titkosítás. Ez az alapértelmezett érték. Ügyeljen arra, hogy ezen lehetőség használatakor a tartalom sem átvitel, sem tárolás közben nincs védve.
   Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget.
@@ -228,7 +236,7 @@ Egy adategység továbbításához vagy letöltéséhez először a „közzét�
 
 ### <a name="some-details-about-url-formats"></a>Néhány információ az URL-formátumokról
 
-A keresők létrehozása után összeállíthatja a fájlok továbbításához vagy letöltéséhez használandó URL-címeket. Az oktatóanyagban lévő minta kimenetei olyan URL-címek, amelyek a megfelelő böngészőkbe beilleszthetőek. Ez a szakasz néhány rövid példán mutatja be a különféle formátumokat.
+A keresők létrehozása után összeállíthatja a fájlok továbbításához vagy letöltéséhez használandó URL-címeket. Az oktatóanyagban lévő minta kimenetei olyan URL-címek, amelyek a megfelelő böngészőkbe beilleszthetők. Ez a szakasz néhány rövid példán mutatja be a különféle formátumokat.
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>Egy MPEG DASH-továbbítási URL-címnek a következő formátumban kell lennie:
 

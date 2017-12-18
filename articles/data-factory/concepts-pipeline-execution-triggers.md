@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 6f4c0b11039bbdaf29c90ec2358934dc1c24af90
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c472cf080f8138ec6d0210f3ca4a8b3f3c33e7ae
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -131,7 +131,7 @@ Teljes példa: [Gyors útmutató: adat-előállító létrehozása .NET használ
 ## <a name="triggers"></a>Eseményindítók
 Az eseményindítók a folyamatfuttatás végrehajtásának másik eszközei. Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A Data Factory jelenleg a folyamatokat időpont-alapú ütemező szerint meghívó eseményindítókat támogatja. A neve **Ütemező eseményindító**. A Data Factory jelenleg nem támogatja az eseményalapú eseményindítókat, mint például azokat az eseményindítókat, amelyek egy fájlérkezés esetében indítják el a folyamatot.
 
-A folyamatok és az eseményindítók között nincsen „n-m” kapcsolat. Egyetlen folyamatot több eseményindító is indíthat, és ugyanaz az eseményindító indíthat több folyamatot is. Az eseményindító alábbi JSON-definíciójában a **folyamatok** tulajdonság az egy adott eseményindító által aktivált folyamatok és a folyamat paramétereihez megadott értékek listájára vonatkozik.
+A folyamatok és az eseményindítók között több-a-többhöz kapcsolat áll fenn. Egy folyamatot több eseményindító is indíthat, és egyetlen eseményindító indíthat több folyamatot is. Az eseményindító alábbi JSON-definíciójában a **folyamatok** tulajdonság az egy adott eseményindító által aktivált folyamatok és a folyamat paramétereihez megadott értékek listájára vonatkozik.
 
 ### <a name="basic-trigger-definition"></a>Alap eseményindító meghatározása: 
 ```json
@@ -165,7 +165,7 @@ Az ütemező eseményindító egy időpont-alapú ütemezőn futtatja a folyamat
 ### <a name="scheduler-trigger-json-definition"></a>Ütemező eseményindító JSON-definíciója
 Amikor létrehoz egy ütemező eseményindítót, a JSON segítségével megadhatja az ütemezést és az ismétlődést a szakaszban található példában látható módon. 
 
-Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, az eseményindító meghatározásába foglalja bele az adott folyamat referenciáját. A folyamatok és az eseményindítók között nincsen „n-m” kapcsolat. Egyetlen folyamatot több eseményindító is indíthat. Ugyanaz az eseményindító elindíthat több folyamatot is.
+Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, az eseményindító meghatározásába foglalja bele az adott folyamat referenciáját. A folyamatok és az eseményindítók között több-a-többhöz kapcsolat áll fenn. Egyetlen folyamatot több eseményindító is indíthat. Egyetlen eseményindító elindíthat több folyamatot is.
 
 ```json
 {

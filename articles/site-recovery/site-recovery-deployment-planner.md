@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: 665bb65d17e9abec98262b92afffba008ed6c891
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 0910d5802d64ca637b3ecd1e392a6df8629c7f25
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Azure Site Recovery Deployment Planner VMware – Azure-hoz
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -42,6 +42,8 @@ Az eszköz a következő részleteket biztosítja:
 * A változásreplikáláshoz szükséges becsült hálózati sávszélesség
 * Átviteli sebesség a Site Recovery számára a helyszíni rendszerek és az Azure között
 * A kötegelendő virtuális gépek száma a becsült sávszélesség alapján a kezdeti replikálás adott időn belüli végrehajtásához
+* Az adott sávszélesség esetén elérhető RPO
+* A kívánt RPO-ra gyakorolt hatás kisebb sávszélesség kiosztása esetén.
 
 **Azure infrastruktúra-követelmények**
 
@@ -55,7 +57,7 @@ Az eszköz a következő részleteket biztosítja:
 **Helyszíni infrastruktúra-követelmények**
 * A megfelelő számú helyszíni konfigurációs és folyamatkiszolgáló üzembe helyezése
 
-**Becsült vészhelyreállítási költségek az Azure-hoz** 
+**Becsült vészhelyreállítási költségek az Azure-hoz**
 * A becsült teljes vészhelyreállítási költség Azure-hoz: számítás, tárolás, hálózat és az Azure Site Recovery licencköltsége
 * Részletes költségelemzés virtuális gépenként
 

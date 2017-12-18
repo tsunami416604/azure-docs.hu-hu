@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: 765d12bc283d991783fb3190ce7917b573f9fc78
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c80d104fc456849f8bfd5169dd8ce1361d906a65
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Végpontok felvétele, letiltása, engedélyezése és törlése
 
@@ -39,7 +39,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
     1. A **Típusnál** kattintson az **Azure-végpont** lehetőségre.
     2. Adjon meg egy **Nevet**, amelyről felismeri majd a végpontot.
     3. A **Célerőforrás típusánál** válassza ki a megfelelő erőforrástípust a legördülő listából.
-    4. A **Célerőforrásnál** válassza ki a megfelelő célerőforrást a legördülő listából az előfizetéshez tartozó, az **Erőforrások panelen** listázott erőforrások megjelenítéséhez. A megjelenő **Erőforrás** panelen válassza ki az első végpontként hozzáadni kívánt szolgáltatást.
+    4. A **Célerőforrásnál** kattintson a **Kiválasztás...** választóra az **Erőforrások panelen** azonos előfizetéshez tartozó erőforrások felsorolásához. A megjelenő **Erőforrás** panelen válassza ki az első végpontként hozzáadni kívánt szolgáltatást.
     5. A **Prioritásnál** válassza az **1-es** értéket. Ennek eredményeképpen a teljes forgalom erre a végpontra irányul, ha ez nem befolyásolja a rendszer megfelelő működését.
     6. A **Beállítás letiltottként** jelölőnégyzetet ne jelölje ki.
     7. Kattintson az **OK** gombra

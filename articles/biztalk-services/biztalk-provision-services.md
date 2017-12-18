@@ -14,102 +14,25 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: eca77b4a82eb67e1755717bb4429f8d450a64dc5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61776b19ba0ee273b78e3b0a6f610e5701251dd0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>BizTalk Services létrehozása az Azure Portallal
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 > [!TIP]
 > Az Azure Portalra való bejelentkezéshez Azure-fiókra és Azure-előfizetésre van szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. Lásd: [Ingyenes Azure-próbafiók](http://go.microsoft.com/fwlink/p/?LinkID=239738).
 
 
 ## <a name="CreateService"></a>BizTalk-szolgáltatás létrehozása
-A kiválasztott kiadástól függően lehet, hogy nem mindegyik BizTalk-szolgáltatásbeállítás érhető el.
 
-1. Jelentkezzen be az [Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. A navigációs ablak alján kattintson a **NEW** (ÚJ) elemre:  
-   ![Válassza a New (Új) gombot][NEWButton]
-3. Válassza az **APP SERVICES** (ALKALMAZÁSSZOLGÁLTATÁSOK) > **BIZTALK SERVICE** > **CUSTOM CREATE** (EGYÉNI LÉTREHOZÁS) elemet:  
-   ![Válassza a BizTalk Service elemet, majd a Custom Create (Egyéni létrehozás) elemet][NewBizTalkService]
-4. Adja meg a BizTalk-szolgáltatásbeállításokat:
-   
-    <table border="1">
-    <tr>
-    <td><strong>BizTalk-szolgáltatás neve</strong></td>
-    <td>Bármilyen nevet megadhat, de használjon konkrét nevet. Néhány példa:<br/><br/>
-    <em>mycompany</em>.biztalk.windows.net<br/>
-    <em>mycompanymyapplication</em>.biztalk.windows.net<br/>
-    <em>myapplication</em>.biztalk.windows.net<br/><br/>A „.biztalk.windows.net” automatikusan hozzá lesz adva megadott névhez. Ez olyan URL-t hoz létre, amellyel elérheti a BizTalk-szolgáltatást (például <strong>https://<em>myapplication</em>.biztalk.windows.net</strong>).
-    </td>
-    </tr>
-    <tr>
-    <td><strong>Kiadás</strong></td>
-    <td>Ha a tesztelési/fejlesztési fázisban van, válassza a <strong>Developer</strong> elemet. Ha a termelési fázisban van, a <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302279">BizTalk Services: Kiadások diagramja</a> szakasz alapján határozza meg, hogy a <strong>Premium</strong>, <strong>Standard</strong> vagy <strong>Alapszintű</strong> a legmegfelelőbb választás az üzleti forgatókönyvéhez.
-    </td>
-    </tr>
-    <tr>
-    <td><strong>Régió</strong></td>
-    <td>Válassza ki a BizTalk-szolgáltatás földrajzi helyét.</td>
-    </tr>
-    <tr>
-    <td><strong>Tartomány URL-je</strong></td>
-    <td><strong>Választható</strong>. Alapértelmezés szerint a tartomány URL-je a <em>SajázBizTalkSzolgáltatásNeve</em>.biztalk.windows.net. Egyéni tartomány is beírható. Ha a tartománya például a <em>contoso</em>, beírhatja a következőt: <br/><br/>
-    <em>Sajátvállalat</em>.contoso.com<br/>
-    <em>SajátVállalatSajátAlkalmazás</em>.contoso.com<br/>
-    <em>SajátAlkalmazás</em>.contoso.com<br/>
-    <em>BizTalkSzolgáltatásNeve</em>.contoso.com<br/>
-    </td>
-    </tr>
-    </table>
-Válassza a TOVÁBB nyilat.
-5. Adja meg a tároló és az adatbázis beállításait:  <table border="1">
-    <tr>
-    <td><strong>Megfigyelő/archiváló tárfiók</strong></td>
-    <td>Válasszon meglévő Storage-fiókot, vagy hozzon létre egy új Storage-fiókot. <br/><br/>Ha új Storage-fiókot hoz létre, adja meg a <strong>Storage-fiók nevét</strong>.</td>
-    </tr>
-    <tr>
-    <td><strong>Nyomkövető adatbázis</strong></td>
-    <td>Ha meglévő Azure SQL Database-adatbázist használ, azt nem használhatja másik BizTalk-szolgáltatás. Meg kell adnia az Azure SQL Database Server létrehozásakor megadott bejelentkezési nevet és jelszót.<br/><br/><strong>TIPP</strong> A nyomkövető adatbázist és a megfigyelő/archiváló tárfiókot ugyanabban a régióban hozza létre, mint a BizTalk-szolgáltatást.</td>
-    </tr>
-    </table>
-Válassza a TOVÁBB nyilat.
-6. Adja meg az adatbázis beállításait:  <table border="1">
-    <tr>
-    <td><strong>Name (Név)</strong></td>
-    <td>Akkor érhető el, ha az előző képernyőn az <strong>Új SQL Database-példány létrehozását</strong> választotta.
-    <br/><br/>
-Írja be a BizTalk-szolgáltatás által használandó SQL Database-adatbázis nevét.</td>
-    </tr>
-    <tr>
-    <td><strong>Kiszolgáló</strong></td>
-    <td>Akkor érhető el, ha az előző képernyőn az <strong>Új SQL Database-példány létrehozását</strong> választotta.
-    <br/><br/>
-Válasszon egy meglévő SQL Database-kiszolgálót vagy hozzon létre új SQL Database-kiszolgálót.</td>
-    </tr>
-    <tr>
-    <td><strong>Kiszolgáló bejelentkezési neve</strong></td>
-    <td>Adja meg a bejelentkezési felhasználónevet.</td>
-    </tr>
-    <tr>
-    <td><strong>Kiszolgáló bejelentkezési jelszava</strong></td>
-    <td>Adja meg a bejelentkezési jelszót.</td>
-    </tr>
-    <tr>
-    <td><strong>Régió</strong></td>
-    <td>Akkor érhető el, ha az <strong>Új SQL Database-példány létrehozását</strong> választotta. Válassza ki az SQL Database földrajzi helyét.</td>
-    </tr>
-    </table>
-
-Kattintson a pipára a varázsló befejezéséhez. Megjelenik az állapotjelző ikon:  
-![Az állapotjelző ikon megjelenik, ha befejeződött][ProgressComplete]
-
-Amikor elkészült, létrejön az Azure BizTalk-szolgáltatás, és készen áll az alkalmazásokhoz. Az alapértelmezett beállítások elegendőek. Ha módosítani kívánja az alapértelmezett beállításokat, válassza a bal oldali navigációs panelen a **BIZTALK SERVICES** elemet, majd válassza ki a BizTalk-szolgáltatását. A fenti [Irányítópult, Figyelő és Méretezés lapokon](biztalk-dashboard-monitor-scale-tabs.md) további beállítások jelennek meg.
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 A BizTalk-szolgáltatás állapotától függően néhány művelet nem végezhető el. Ezen műveletek listájáért tekintse meg a [BizTalk-szolgáltatások állapota diagramot](biztalk-service-state-chart.md).
 
@@ -119,27 +42,16 @@ A BizTalk-szolgáltatás állapotától függően néhány művelet nem végezhe
 * [A hozzáférés-vezérlési névtér beszerzése](#ACS)
 
 #### <a name="InstallCert"></a>A tanúsítvány telepítése helyi számítógépre
-A BizTalk-szolgáltatás kiépítésének részeként létrejön egy önaláírt tanúsítvány, amely társítva van a BizTalk-szolgáltatás előfizetésével. Le kell töltenie és telepítenie kell ezt a tanúsítványt azokra a számítógépekre, amelyekről üzembe helyezi a BizTalk-szolgáltatás alkalmazásait, vagy amelyekről üzeneteket küld a BizTalk-szolgáltatás végpontjaira.
 
-1. Jelentkezzen be az [Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. Válassza a bal oldali navigációs panelen a **BIZTALK SERVICES** elemet, majd válassza ki a BizTalk-szolgáltatás előfizetését.
-3. Kattintson az **Irányítópult** fülre.
-4. Válassza az **SSL-tanúsítvány letöltése** elemet:  
-   ![SSL-tanúsítvány módosítása][QuickGlance]
-5. Kattintson duplán a tanúsítványra, és haladjon végig a varázslón a tanúsítvány telepítéséhez. Győződjön meg arról, hogy a **Megbízható gyökérhitelesítő hatóságok** tárolóba telepítette a tanúsítványt.
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 #### <a name="AddCert"></a>Termelésre kész tanúsítvány hozzáadása
-A BizTalk-szolgáltatások létrehozásakor automatikusan létrejött önaláírt tanúsítvány csak fejlesztési környezetekben használható. A termelési forgatókönyvekhez cserélje le egy termelésre kész tanúsítványra.
 
-1. Az **Irányítópult** lapon válassza az **SSL-tanúsítvány frissítése** lehetőséget.
-2. Keresse meg a BizTalk-szolgáltatás nevét tartalmazó személyes SSL-tanúsítványt (*CertificateName*.pfx), írja be a jelszót, majd kattintson a pipára.
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 #### <a name="ACS"></a>A hozzáférés-vezérlési névtér beszerzése
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. Válassza a bal oldali navigációs panelen a **BIZTALK SERVICES** elemet, majd válassza ki a BizTalk-szolgáltatást.
-3. A tálcán válassza a **Connection Information** (Kapcsolódási adatok) lehetőséget:  
-   ![Kattintson a Connection Information (Kapcsolatadatok) elemre.][ACSConnectInfo]
-4. Másolja a hozzáférés-vezérlési értékeket.
+
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 Amikor BizTalk Service-projektet helyez üzembe a Visual Studióból, ezt a hozzáférés-vezérlési névteret írja be. A hozzáférés-vezérlési névtér automatikusan létrejön a BizTalk Services-szolgáltatáshoz.
 
@@ -167,11 +79,11 @@ Ezek a követelmények nem érvényesek az ingyenes kiadásra.
 </tr>
 <tr>
 <td>Azure-előfizetés</td>
-<td>Az előfizetés határozza meg, hogy ki jelentkezhet be az Azure Portalra. A fióktulajdonos hozza létre az előfizetést az <a HREF="https://account.windowsazure.com/Subscriptions"> Azure-előfizetésekben</a>.
+<td>Az előfizetés határozza meg, hogy ki jelentkezhet be az Azure-ba. A fióktulajdonos hozza létre az előfizetést az <a HREF="https://account.windowsazure.com/Subscriptions"> Azure-előfizetésekben</a>.
 <br/><br/>
-Az Azure-fiók több előfizetéssel rendelkezhet, és bárki felügyelheti, aki erre jogosult. Az Azure-fióktulajdonos például létrehozhat egy <em>BizTalkServiceSubscription</em> nevű előfizetést, és hozzáférést adhat a vállalaton (például ContosoBTSAdmins@live.com) belüli BizTalk-rendszergazdáknak az előfizetéshez. Ebben a forgatókönyvben a BizTalk-rendszergazdák bejelentkeznek az Azure Portalra, és teljes rendszergazdai jogosultságokkal rendelkeznek az előfizetés összes üzemeltetett szolgáltatásához, beleértve az Azure BizTalk-szolgáltatásokat is. A BizTalk-rendszergazdák nem az Azure-fiók tulajdonosai, és ezért nem érik el a számlázási információkat.
+Az Azure-fiók több előfizetéssel rendelkezhet, és bárki felügyelheti, aki erre jogosult. Az Azure-fióktulajdonos például létrehozhat egy <em>BizTalkServiceSubscription</em> nevű előfizetést, és hozzáférést adhat a vállalaton (például ContosoBTSAdmins@live.com) belüli BizTalk-rendszergazdáknak az előfizetéshez. Ebben a forgatókönyvben a BizTalk-rendszergazdák bejelentkeznek az Azure-ba, és teljes rendszergazdai jogosultságokkal rendelkeznek az előfizetés összes üzemeltetett szolgáltatásához, beleértve az Azure BizTalk-szolgáltatásokat is. A BizTalk-rendszergazdák nem az Azure-fiók tulajdonosai, és ezért nem érik el a számlázási információkat.
 <br/><br/>További információt az 
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">előfizetések és tárfiókok az Azure Portalon való kezelését</a> ismertető szakaszban talál.
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">előfizetések és tárfiókok az Azure-ban való kezelését</a> ismertető szakaszban talál.
 </td>
 </tr>
 <tr>
@@ -200,7 +112,7 @@ Az SQL Database méretének konfigurálása automatikusan történik. Az alapér
 <td>Hozzáférést nyújt a BizTalk Services-szolgáltatás által használt táblázatokhoz, blobokhoz és sorokhoz a következők mentése érdekében:
 
 <ul>
-<li>A BizTalk Services-szolgáltatást figyelő naplófájlok. A megfigyelés kimenete az Azure Portal **Figyelés** lapján is megjelenik.</li>
+<li>A BizTalk Services-szolgáltatást figyelő naplófájlok. </li>
 <li>Amikor X12- vagy AS2-egyezményt hoz létre partnerek között, engedélyezheti az Archiválás funkciót az üzenettulajdonságok tárolása érdekében. Ezeket az adatokat a tárfiókba menti a rendszer.</li>
 </ul>
 <br/>

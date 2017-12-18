@@ -3,7 +3,7 @@ title: "Azure AD felhasználói fiók létrehozása | Microsoft Docs"
 description: "Ez a cikk azt ismerteti, hogyan kell egy Azure AD felhasználói fiók hitelesítő adatait létrehozni az Azure Automation runbookjaihoz úgy, hogy Azure- és klasszikus Azure-hitelesítést is végezzen."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 keywords: "azure active directory felhasználó, azure szolgáltatás kezelése, azure ad és felhasználói fiók"
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 8f24e6e57c2eec5950c8c12d9f4383ce11cf5c11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 700c4419821934daac89025c889b21d8e2ef46b6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Runbookok hitelesítése a klasszikus Azure üzemi modellel és a Resource Managerrel
 Ez a cikk azokat a lépéseket ismerteti, amelyeket végre kell hajtania egy Azure AD felhasználói fiók konfigurálásához klasszikus Azure üzemi modellen vagy Azure Resource Manager-erőforrásokon futó Azure Automation-runbookokhoz.  Miközben ez továbbra is egy támogatott hitelesítési identitás az Azure Resource Manager-alapú runbookok számára, a javasolt módszer egy Azure-beli futtató fiók használata.       
 
 ## <a name="create-a-new-azure-active-directory-user"></a>Egy új Azure Active Directory-felhasználó létrehozása
-1. Jelentkezzen be a klasszikus Azure portálra azon Azure-előfizetés szolgáltatás-rendszergazdájaként, amelyet kezelni szeretne.
+1. Jelentkezzen be a klasszikus Azure portálra a kezelni kívánt Azure-előfizetés szolgáltatás-rendszergazdájaként.
 2. Válassza az **Active Directory** lehetőséget, majd válassza ki a szervezete címtárának nevét.
 3. Válassza a **Felhasználók** lapot, majd a parancsterületen válassza a **Felhasználó hozzáadása** parancsot.
 4. A **Felhasználó bemutatása** lap **Felhasználó típusa** területén válassza az **Új felhasználó a szervezetben** elemet.
@@ -36,17 +36,17 @@ Ez a cikk azokat a lépéseket ismerteti, amelyeket végre kell hajtania egy Azu
 9. Válassza a **Beállítások > Rendszergazdák > Hozzáadás** elemet.
 10. Írja be a teljes felhasználónevet, amelyet létrehozott.
 11. Válassza ki a felhasználó által kezelendő előfizetést.
-12. Lépjen ki az Azure-ból, majd lépjen vissza a fiókkal, amelyet az imént létrehozott. A rendszer meg fogja kérni a felhasználó jelszavának módosítására.
+12. Lépjen ki az Azure-ból, majd lépjen vissza a fiókkal, amelyet az imént létrehozott. A rendszer felkéri a felhasználó jelszavának módosítására.
 
 ## <a name="create-an-automation-account-in-azure-classic-portal"></a>Automation-fiók létrehozása a klasszikus Azure portálon
 Ebben a szakaszban végre fogja hajtani a következő lépéseket egy Azure Automation-fiók létrehozásához az Azure portálon, amely a runbookokkal együtt erőforrások kezelésére használható a klasszikus Azure üzemi modellben.  
 
 > [!NOTE]
-> A klasszikus Azure portálon létrehozott Automation-fiókokat a klasszikus portálon és az Azure Portalon, valamint mindkét parancsmagkészlettel is lehet kezelni. A fiók létrehozása után mindegy, hogyan hoz létre és kezel erőforrásokat a fiókon belül. Ha továbbra is a klasszikus Azure portál használatát tervezi, inkább azon hozzon létre Automation-fiókokat az Azure Portal helyett.
+> A klasszikus Azure portálon létrehozott Automation-fiókokat a klasszikus portálon és az Azure Portalon, valamint mindkét parancsmagkészlettel is lehet kezelni. A fiók létrehozása után mindegy, hogyan hoz létre és kezel erőforrásokat a fiókon belül. Ha továbbra is a klasszikus Azure portál használatát tervezi, inkább azon hozzon létre Automation-fiókokat az Azure portál helyett.
 > 
 > 
 
-1. Jelentkezzen be a klasszikus Azure portálra azon Azure-előfizetés szolgáltatás-rendszergazdájaként, amelyet kezelni szeretne.
+1. Jelentkezzen be a klasszikus Azure portálra a kezelni kívánt Azure-előfizetés szolgáltatás-rendszergazdájaként.
 2. Válassza az **Automation** elemet.
 3. Az **Automation** oldalon válassza az **Automation-fiók létrehozása** elemet.
 4. Az **Automation-fiók létrehozása** mezőben adjon egy nevet az új Automation-fióknak, és válasszon egyet a **Régió** legördülő listából.  

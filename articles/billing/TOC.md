@@ -27,17 +27,17 @@
 ### [Fenntartott példányok vállalati használata](billing-understand-reserved-instance-usage-ea.md)
 
 ## Előfizetések kezelése
+### [Előfizetési vagy felügyeleti csoport keresése](billing-enterprise-mgmt-grp-find.md)
 ### [Rendszergazdai szerepkörök kezelése](billing-add-change-azure-subscription-administrator.md)
 ### [Előfizetés tulajdonosi jogainak átruházása](billing-subscription-transfer.md)
 ### [Letiltott előfizetés újbóli aktiválása](billing-subscription-become-disable.md)
 ### [Frissítés ingyenes előfizetésről](billing-upgrade-azure-subscription.md)
 ### [Váltás előfizetési ajánlatok között](billing-how-to-switch-azure-offer.md)
+### [Azure AD-bérlő kapcsolása](../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json)
 ### [Előfizetés lemondása](billing-how-to-cancel-azure-subscription.md)
-### [Előfizetési vagy felügyeleti csoport keresése](billing-enterprise-mgmt-grp-find.md)
 ## Fiók kezelése
 ### [Profil szerkesztése](billing-how-to-change-azure-account-profile.md)
 ### [Fizetési információk frissítése](billing-how-to-change-credit-card.md)
-### [Office 365-bérlő csatolása](billing-add-office-365-tenant-to-azure-subscription.md)
 ### [Előfizetések fizetése számla alapján](billing-how-to-pay-by-invoice.md)
 ## [Fenntartott VM-példányok felügyelete](billing-manage-reserved-vm-instance.md)
 ## Hibaelhárítás

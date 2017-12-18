@@ -3,7 +3,7 @@ title: "Azure Automation-runbook hívása Log Analytics-riasztásból | Microsof
 description: "Ez a cikk az Automation-runbookok Microsoft OMS Log Analytics-riasztásokból való meghívásának áttekintését tartalmazza."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 10b445f8fcaa80182119e47f37ffb11240a46869
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0c0b15f33a177afc70a3662c5bd008eb236ed0d6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="calling-an-azure-automation-runbook-from-an-oms-log-analytics-alert"></a>Azure Automation-runbook hívása OMS Log Analytics-riasztásból
 
@@ -43,7 +43,7 @@ Ha az OMS-munkaterületen telepítve és konfigurálva van az Automatizálás é
 
 ## <a name="characteristics-of-a-runbook-for-both-options"></a>A runbookok jellemzői (mindkét lehetőség esetében)
 
-Érdemes megismernie a runbookok Log Analytics-riasztásokból való meghívására szolgáló két módszer jellemzőit, mielőtt konfigurálná a riasztásokat.
+Érdemes megismernie a runbookok Log Analytics-riasztásokból való meghívására szolgáló két módszer jellemzőit, mielőtt konfigurálná a riasztásokat. A riasztási adatok JSON formátumban vannak, és egyetlen, **SearchResult** nevű tulajdonságban találhatók. Ez a formátum a szabvány hasznos adatokkal végzett runbook- és webhook-műveletekhez használható. Az egyéni hasznos adatokkal végzett webhook-műveletek esetében (pl. **IncludeSearchResults:True** művelet a **RequestBody** tulajdonságban) a tulajdonság értéke **SearchResults**.
 
 * Rendelkeznie kell egy **WebhookData** elnevezésű és **Objektum** típusú bemeneti runbookparaméterrel. Ez lehet kötelező vagy nem kötelező. A riasztás a keresési eredményeket a runbooknak ezen a bemeneti paraméteren keresztül adja át.
 
@@ -61,6 +61,7 @@ Ha az OMS-munkaterületen telepítve és konfigurálva van az Automatizálás é
     ```
 
     A *$SearchResult* egy objektumtömb, amelyben mindegyik objektum egy keresési eredmény értékeit tároló mezőket tartalmaz
+
 
 ## <a name="example-walkthrough"></a>Forgatókönyv – példa
 
@@ -80,6 +81,9 @@ $SearchResult.SvcDisplayName_CF
 Ha a szolgáltatás leáll, a Log Analyticsben lévő riasztási szabály egyezést észlel, majd aktiválja a runbookot, és továbbítja neki a riasztás környezetét. A runbook munkához lát, és ellenőrzi, hogy a szolgáltatás valóban leállt-e, és amennyiben igen, megkísérli újraindítani azt, majd ellenőrzi, hogy megfelelően elindult-e, és elküldi az eredményeket a kimenetre.     
 
 Ha az Automation-fiók nincs az OMS-munkaterülethez társítva, alternatív megoldásként a riasztási szabályt a webhook művelettel úgy kell beállítania, hogy a runbookot aktiválja, továbbá konfigurálnia kell a runbookot, hogy az konvertálja a JSON-formátumú karakterláncot, és a \*.SearchResult\* tömbre szűrjön a fenti útmutatásoknak megfelelően.    
+
+>[!NOTE]
+> Ha a munkaterülete frissítve lett az [új Log Analytics lekérdezési nyelvre](../log-analytics/log-analytics-log-search-upgrade.md), akkor a webhook hasznos adatai módosultak.  A formátum részletei: [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse).
 
 ## <a name="next-steps"></a>Következő lépések
 
