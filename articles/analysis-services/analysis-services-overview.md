@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/04/2017
+ms.date: 12/08/2017
 ms.author: owend
-ms.openlocfilehash: 224ecbb80e8fc5b3f1a32e42eda7ec5452e9e553
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 60097a18afc76e09ecd7d69eececea53e9712bec
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -116,7 +116,7 @@ További információk az Azure Securityről: [Microsoft biztonsági és adatkez
 ## <a name="supports-the-latest-client-tools"></a>Támogatja a legújabb ügyféleszközöket
 ![Adatmegjelenítések](./media/analysis-services-overview/aas-overview-clients.png)
 
-Az olyan modern adatáttekintési és vizualizációs eszközök, mint például a Power BI, az Excel, illetve a harmadik felektől származó eszközök interaktív és vizuálisan gazdag modelladat-elemzéseket biztosítanak a felhasználóknak.
+Az olyan modern adatáttekintési és vizualizációs eszközök, mint például a Power BI, az Excel, az SQL Server 2017 Reporting Services, illetve a harmadik felektől származó eszközök egyaránt támogatottak, így interaktív és vizuálisan gazdag modelladat-elemzéseket biztosítanak a felhasználóknak. 
 
 Az ügyfelek MSOLAP-, AMO- vagy ADOMD- [ügyfélkódtárakkal](analysis-services-data-providers.md) kapcsolódnak az Analysis Services-kiszolgálókhoz. Az olyan Microsoft-ügyfélalkalmazások, mint a Power BI Desktop és az Excel mindhárom ügyfélkódtárat telepítik. Ne feledje azonban, hogy a frissítések verziószámától vagy gyakoriságától függően előfordulhat, hogy az ügyfélkódtárak verziója nem a legújabb, az Azure Analysis Services használatához szükséges verzió. Ugyanez vonatkozik az egyéni alkalmazásokra vagy olyan egyéb felületekre, mint például az AsCmd, a TOM vagy az ADOMD.NET. Ezekben az alkalmazásokban a kódtárakat rendszerint manuálisan, egy csomag részeként kell telepíteni.
 

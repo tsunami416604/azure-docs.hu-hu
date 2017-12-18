@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: c4e0d792ae8f4c17d53430f49d81d179e56b9722
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 09a661b2a100245dd424e24d8a8ddef56c573b02
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="introducing-apache-kafka-on-hdinsight"></a>A HDInsight alatt futó Apache Kafka bemutatása
 
@@ -62,6 +62,8 @@ A HDInsight alatt futó Kafka a következő szolgáltatásokat biztosítja:
 ![Kafka-fürtkonfiguráció](./media/apache-kafka-introduction/kafka-cluster.png)
 
 Ez az ábra egy tipikus Kafka-konfigurációt mutat be, amely felhasználói csoportok, particionálás és replikálás használatával biztosítja az események párhuzamos olvasását hibatűréssel. Az Apache ZooKeeper az egyidejű, rugalmas és kis késleltetésű tranzakciókhoz készült, mivel a Kafka-fürt állapotát kezeli. A Kafka *témakörökben* tárolja a rekordokat. A rekordokat *előállítók* hozzák létre, és *fogyasztók* használják fel. Az előállítók *Kafka-közvetítőktől* kérik le a rekordokat. A HDInsight-fürt mindegyik feldolgozó csomópontja egy Kafka-közvetítő. Minden felhasználóhoz tartozik egy partíció, amely lehetővé teszi a streamadatok párhuzamos feldolgozását. A partíciók csomópontok közötti elosztása érdekében a rendszer replikációt alkalmaz, amely védelmet nyújt a csomópontok (közvetítők) leállásával szemben. Az *(L)* jelölésű partíció az adott partíció vezetője. Az előállítói forgalmat a csomópontok vezetőjéhez irányítja a rendszer a ZooKeeper által kezelt állapot segítségével.
+
+Mindegyik Kafka-közvetítő az Azure Managed Disks szolgáltatást használja. A lemezek számát a felhasználó adja meg, és közvetítőnként akár 16 TB tárhely is biztosítható.
 
 > [!IMPORTANT]
 > A Kafka nem észleli az Azure-adatközpontban lévő alapul szolgáló hardvereket (rackszekrényeket). A partíciók az alapul szolgáló hardverek közötti megfelelő kiegyensúlyozásához lásd: [az adatok magas szintű rendelkezésre állásának konfigurálásával (Kafka)](apache-kafka-high-availability.md) kapcsolatos cikket.

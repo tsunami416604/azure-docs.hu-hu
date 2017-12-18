@@ -4,7 +4,7 @@ description: "Nyilvános és titkos SSH-kulcspár létrehozása és használata 
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 34ae9482-da3e-4b2d-9d0d-9d672aa42498
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 6fcdcc96c7762e2362aebf909ef25f4a5ab62f99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 806d297c40af6ae2834ad529aaa11c51d26826dd
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
-Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, így nincs szükség jelszavakra a bejelentkezéshez. Ez a cikk bemutatja, hogyan hozhat létre gyorsan és hogyan használhat az SSH-protokoll 2. verziójára épülő nyilvános és titkosított RSA-kulcspárt a Linux rendszerű virtuális gépekhez. Részletes lépéseket és a további példákat az [SSH-kulcspárok és -tanúsítványok létrehozásának lépései](create-ssh-keys-detailed.md) között talál.
+Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, így nincs szükség jelszavakra a bejelentkezéshez. Ez a cikk bemutatja, hogyan hozhat létre gyorsan és hogyan használhat az SSH-protokoll 2. verziójára épülő nyilvános és titkosított RSA-kulcspárt a Linux rendszerű virtuális gépekhez. Ezeket a lépéseket Azure Cloud Shell használatával, macOS- vagy Linux-gazdagépen, illetve a Linux Windows alrendszerén is végrehajthatja. Részletes lépéseket és a további példákat az [SSH-kulcspárok és -tanúsítványok létrehozásának lépései](create-ssh-keys-detailed.md) között talál.
 
 ## <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
 Használja az `ssh-keygen` parancsot nyilvános és titkos SSH-kulcs fájljainak létrehozására. Ezek a fájlok alapértelmezés szerint a `~/.ssh` könyvtárban jönnek létre, de megadhat más helyet és egy további hozzáférési kódot (a titkosított kulcsfájl eléréséhez), amikor a parancssori felület erre kéri. Futtassa a következő parancsot egy Bash-rendszerhéjból, és a kéréseket válaszolja meg saját adatainak megfelelően.

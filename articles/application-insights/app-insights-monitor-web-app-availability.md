@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8f4fcc3eb0dac2c5796b0a291425ad17a60a5bae
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: afe37dd1fcf2b663f3bf97d04b187b356381f3f3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -29,7 +29,7 @@ A rendelkezésre állási teszteknek két típusuk van:
 * [URL-ping teszt](#create): egyszerű teszt, amelyet az Azure Portalon hozhat létre.
 * [Többlépéses webes teszt](#multi-step-web-tests): ezt a Visual Studio Enterprise segítségével hozhatja létre és feltöltheti a portálra.
 
-Alkalmazás-erőforrásonként legfeljebb 25 rendelkezésre állási tesztet hozhat létre.
+Alkalmazás-erőforrásonként legfeljebb 100 rendelkezésre állási tesztet hozhat létre.
 
 ## <a name="create"></a>1. Erőforrás megnyitása a rendelkezésre állási tesztek jelentéseihez
 

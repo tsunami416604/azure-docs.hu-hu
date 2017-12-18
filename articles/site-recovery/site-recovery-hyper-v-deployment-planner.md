@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 54edb2d02701d36af52088cb8df7e252504a8760
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 815148d2a39ce8b18092619c9687a56b457c8339
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Azure Site Recovery Deployment Planner a Hyper-V – Azure-hoz
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a Hyper-V–Azure éles környezetben való üzembe helyezéséhez.
@@ -40,6 +40,9 @@ Az eszköz a következő részleteket biztosítja:
 
 * A változásreplikáláshoz szükséges becsült hálózati sávszélesség
 * Átviteli sebesség az Azure Site Recovery számára a helyszíni rendszerek és az Azure között
+* Az adott sávszélesség esetén elérhető RPO
+* A kívánt RPO-ra gyakorolt hatás kisebb sávszélesség kiosztása esetén.
+
     
 **Azure infrastruktúra-követelmények**
 
@@ -52,6 +55,7 @@ Az eszköz a következő részleteket biztosítja:
 
 **Helyszíni infrastruktúra-követelmények**
 * A Hyper-V-tároló egyes kötetein a sikeres kezdeti replikációhoz és a változásreplikációhoz szükséges szabad tárterület, amelynek megléte esetén a virtuális gépek replikációja semmiképpen nem okozza a termelési alkalmazások nem kívánt leállását
+* A Hyper-V-replikáció számára beállítható maximális másolási gyakoriság
 
 **Útmutató a kezdeti replikáció kötegeléséhez** 
 * A védelemhez használni kívánt virtuálisgép-kötegek száma

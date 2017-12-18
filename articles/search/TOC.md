@@ -33,6 +33,10 @@
 ### [Szolgáltatási korlátozások](search-limits-quotas-capacity.md)
 ### [A szolgáltatás méretezhetősége](search-capacity-planning.md)
 ### [Kialakítási minták a több-bérlős módhoz](search-modeling-multitenant-saas-applications.md)
+## Biztonság
+### [Adat- és működési biztonság](search-security-overview.md)
+### [Védelem identitásszűrőkkel](search-security-trimming-for-azure-search.md)
+### [Védelem Active Directoryval](search-security-trimming-for-azure-search-with-aad.md)
 ## Fejlesztés
 ### [API-verziók](search-api-versions.md)
 ### [Fejlesztés Node.js-ben](search-get-started-nodejs.md)
@@ -42,13 +46,6 @@
 ### [Összetett adattípusok modellezése](search-howto-complex-data-types.md)
 ### [Egyidejű frissítések kezelése](search-howto-concurrency.md)
 ### [Kódminták](https://azure.microsoft.com/resources/samples/?service=search)
-## Kezelés
-### Az Azure Search felügyelete
-#### [Azure Portal](search-manage.md)
-#### [Azure PowerShell](search-manage-powershell.md)
-### [Használat és statisztikák figyelése](search-monitor-usage.md)
-### [Forgalmi elemzések keresése](search-traffic-analytics.md)
-### [Teljesítmény és optimalizálás](search-performance-optimization.md)
 ## Adatok betöltése
 ### [Az indexelő áttekintése](search-indexer-overview.md)
 ### [Azure Blob Storage-indexelő](search-howto-indexing-azure-blob-storage.md)
@@ -73,8 +70,6 @@
 #### [Áttekintés](search-filters.md)
 #### [Jellemzők szűrői](search-filters-facets.md)
 #### [Nyelvi szűrők](search-filters-language.md)
-#### [Biztonsági szűrők (általános)](search-security-trimming-for-azure-search.md)
-#### [Biztonsági szűrők (AAD)](search-security-trimming-for-azure-search-with-aad.md)
 #### [Kifejezés szintaxisának referenciája](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
 ### [Lapozás eredményei](search-pagination-page-layout.md)
 ### [Pontozás](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
@@ -82,6 +77,12 @@
 ### [Jellemzőalapú navigáció](search-faceted-navigation.md)
 ### [Szinonimák előzetes verziója](search-synonyms.md)
 ### [moreLikeThis előzetes verziója](search-more-like-this.md)
+## Felügyelet és elemzés
+### [Kezelés az Azure Portal használatával](search-manage.md)
+### [Kezelés a PowerShell használatával](search-manage-powershell.md)
+### [Használat és statisztikák figyelése](search-monitor-usage.md)
+### [Forgalmi elemzések keresése](search-traffic-analytics.md)
+### [Teljesítmény és optimalizálás](search-performance-optimization.md)
 
 # Referencia
 

@@ -58,6 +58,7 @@
 #### [B2B-felhasználó hozzáadása szerepkörhöz](active-directory-b2b-add-guest-to-role.md)
 #### [Dinamikus csoportok és B2B-felhasználók](active-directory-b2b-dynamic-groups.md)
 #### [Naplózás és jelentéskészítés](active-directory-b2b-auditing-and-reporting.md)
+#### [B2B hibrid cégekhez és vállalkozásokhoz](active-directory-b2b-hybrid-organizations.md)
 #### [Külső B2B- és Office 365-megosztás](active-directory-b2b-o365-external-user.md)
 #### [B2B-licencelés](active-directory-b2b-licensing.md)
 #### [Aktuális korlátozások](active-directory-b2b-current-limitations.md)

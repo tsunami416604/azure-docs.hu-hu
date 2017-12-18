@@ -15,16 +15,18 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/06/2017
 ms.author: barbkess
-ms.openlocfilehash: f24dc2600bec8b7086ee34a960e777a8a1b288ad
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 861c2c977fa9d0341125127852bc7747dfd6001a
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Ajánlott eljárások az Azure SQL Data Warehouse-hoz
 Ez a cikk számos ajánlott eljárás gyűjteménye, amelyek segítenek optimális teljesítményt kihozni az Azure SQL Data Warehouse-ból.  A cikkben található fogalmak némelyike könnyen elmagyarázható, míg mások összetettebb fogalmak, amelyeket csak nagy vonalakban mutatunk be.  A cikk célja, hogy némi alapszintű útmutatással és a legfontosabb dolgok hangsúlyozásával segítse Önt az adattárház létrehozásában.  Minden szakasz röviden bemutat egy fogalmat, majd részletesebb cikkekhez irányít át, amelyek a fogalmat alaposabban is körüljárják.
 
 Ha csak most kezdi el használni az Azure SQL Data Warehouse-t, ne hagyja, hogy ez a cikk megijessze.  A témakörök nagyjából fontossági sorrendben követik egymást.  Ha kezdetnek csak az első néhány fogalommal foglalkozik, az tökéletesen elegendő.  Miután már jobban megismerte és kényelmesebben tudja használni az SQL Data Warehouse-ot, folytassa néhány újabb fogalommal.  Nem fog sokáig tartani, amíg a dolgok világosan összeállnak.
+
+Útmutatás a betöltéshez: [Útmutató az adatok betöltéséhez](guidance-for-loading-data.md).
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Költségek csökkentése felfüggesztés és méretezés által
 Az SQL Data Warehouse egyik legfőbb jellemzője, hogy ha nem használja, felfüggesztheti a szolgáltatást, ezzel leállítva a számítási erőforrások számlázását.  Egy másik fontos jellemző az erőforrások méretezhetősége.  A felfüggesztés és a méretezés az Azure Portalon keresztül vagy PowerShell-parancsok használatával lehetséges.  Ezen funkciók elsajátítása nagy mértékben csökkentheti az adattárházzal kapcsolatos kiadásait, amikor azt épp nem használja.  Ha azt szeretné, hogy az adattárháza folyamatosan rendelkezésre álljon, érdemes lehet azt a legkisebb méretre, a DW100-ra skálázni a felfüggesztés helyett.
@@ -52,7 +54,7 @@ Az SQL Data Warehouse az adatok több eszközzel (például az Azure Data Factor
 Lásd még: [Adatok betöltése][Load data], [Útmutató a PolyBase használatához][Guide for using PolyBase], [Azure SQL Data Warehouse betöltési minták és stratégiák][Azure SQL Data Warehouse loading patterns and strategies], [Adatok betöltése az Azure Data Factoryvel][Load Data with Azure Data Factory], [Adatok áthelyezése az Azure Data Factoryvel][Move data with Azure Data Factory], [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT], [Create table as select (CTAS)][Create table as select (CTAS)]
 
 ## <a name="load-then-query-external-tables"></a>Betöltés, majd külső táblák lekérdezése
-Míg a PolyBase, más néven a külső táblák használata lehet az adatok betöltésének leggyorsabb módja, lekérdezésekhez nem ez a legjobb megoldás. Az SQL Data Warehouse PolyBase-táblák egyelőre még csak az Azure-blob fájlokat támogatják. Ezekhez a fájlokhoz nem tartoznak külön számítási erőforrások.  Ennek eredményeképpen az SQL Data Warehouse nem tudja kiszervezni a munkát, és be kell olvasnia a teljes fájlt úgy, hogy betölti a tempdb adatbázisba.  Ezért ha több olyan lekérdezése is van, amelyek ennek a fájlnak az adatait kérik le, érdemesebb egyszer betölteni az adatokat, és úgy beállítani a lekérdezéseket, hogy a helyi táblát használják.
+Míg a PolyBase, más néven a külső táblák használata lehet az adatok betöltésének leggyorsabb módja, lekérdezésekhez nem ez a legjobb megoldás. Az SQL Data Warehouse PolyBase-táblák egyelőre még csak az Azure-blobfájlokat és az Azure Data Lake-tárolót támogatják. Ezekhez a fájlokhoz nem tartoznak külön számítási erőforrások.  Ennek eredményeképpen az SQL Data Warehouse nem tudja kiszervezni a munkát, és be kell olvasnia a teljes fájlt úgy, hogy betölti a tempdb adatbázisba.  Ezért ha több olyan lekérdezése is van, amelyek ennek a fájlnak az adatait kérik le, érdemesebb egyszer betölteni az adatokat, és úgy beállítani a lekérdezéseket, hogy a helyi táblát használják.
 
 Lásd még a [PolyBase használatára vonatkozó útmutatót][Guide for using PolyBase].
 
@@ -127,8 +129,8 @@ A szolgáltatással kapcsolatos kéréseit az [Azure SQL Data Warehouse visszaje
 [Table partitioning]: ./sql-data-warehouse-tables-partition.md
 [Manage table statistics]: ./sql-data-warehouse-tables-statistics.md
 [Temporary tables]: ./sql-data-warehouse-tables-temporary.md
-[Guide for using PolyBase]: ./sql-data-warehouse-load-polybase-guide.md
-[Load data]: ./sql-data-warehouse-overview-load.md
+[Guide for using PolyBase]: ./guidance-for-loading-data.md
+[Load data]: ./design-elt-data-loading.md
 [Move data with Azure Data Factory]: ../data-factory/transform-data-using-machine-learning.md
 [Load data with Azure Data Factory]: ./sql-data-warehouse-get-started-load-with-azure-data-factory.md
 [Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md

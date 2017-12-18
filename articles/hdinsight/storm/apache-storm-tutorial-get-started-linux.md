@@ -13,14 +13,14 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/06/2017
+ms.date: 12/05/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: d8b7d5830684b5e19eadd1b145a933527c2aa9fd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 19ab428913517e4f3df156c93782fe23f1cd67ec
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/07/2017
 ---
 #<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>A HDInsight-alapú Apache Storm rendszer használatának első lépései Storm Starter-példákkal
 
@@ -47,7 +47,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
 
     ![HDInsight-fürt létrehozása](./media/apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
-2. Az **Alapvető beállítások** panelen adja meg a következőket:
+2. Az **Alapvető beállítások** szakaszban adja meg a következőket:
 
     * **Fürt neve**: A HDInsight-fürt neve.
     * **Előfizetés**: Válassza ki a használni kívánt előfizetést.
@@ -58,7 +58,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
 
    ![Előfizetés kiválasztása](./media/apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
-3. Válassza ki a **Fürt típusát**, majd állítsa be a következő értékeket a **Fürtkonfiguráció** panelen:
+3. Válassza ki a **Fürt típusát**, majd állítsa be a következő értékeket a **Fürtkonfiguráció** szakaszban:
 
     * **Fürt típusa**: Storm
 
@@ -74,11 +74,11 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
 
 4. A fürt típusának kijelölése után erősítse meg a beállítást a __Kiválasztás__ gombbal. Ezután kattintson a __Tovább__ gombra az alapszintű konfiguráció befejezéséhez.
 
-5. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépések esetében a panel többi mezőjét hagyja az alapértelmezett értékeken. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez.
+5. A **Tárolás** szakaszban válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a jelen szakaszban található többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez.
 
     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 
-6. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül kattintson a __Létrehozás__ gombra a fürt létrehozásához.
+6. Az **Összegzés** szakaszban tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül kattintson a __Létrehozás__ gombra a fürt létrehozásához.
 
     ![A fürtkonfiguráció összegzése](./media/apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
 
@@ -95,7 +95,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
     > Lehetséges, hogy az SSH-ügyfél szerint a gazdaszámítógép nem hitelesíthető. Ebben az esetben írja be a `yes` parancsot a folytatáshoz.
 
     > [!NOTE]
-    > Ha az SSH-felhasználói fiókhoz jelszót használt, a rendszer felkéri annak megadására. Nyilvános kulcs használatakor lehetséges, hogy az `-i` paraméter használatára van szükség a megfelelő titkos kulcs megadásához. Például: `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
+    > Ha az SSH-felhasználói fiókhoz jelszót használt, a rendszer felkéri annak megadására. Nyilvános kulcs használatakor lehetséges, hogy az `-i` paraméter használata szükséges a megfelelő titkos kulcs megadásához. Például: `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
 
     További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -103,10 +103,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
 
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
 
-    > [!NOTE]
-    > A HDInsight előző verzióiban a topológia osztályneve `org.apache.storm.starter.WordCountTopology` helyett `storm.starter.WordCountTopology`.
-
-    Ez a parancs a „wordcount” rövid néven elindítja a fürtön a WordCount-példatopológiát. Ez véletlenszerűen állít elő mondatokat, majd az egyes szavak előfordulását számolja meg a mondatokban.
+    Ez a parancs elindítja a fürtön a WordCount példatopológiát. Ez a topológia véletlenszerűen állít elő mondatokat, majd az egyes szavak előfordulását számolja meg a mondatokban. A topológia rövid neve: `wordcount`.
 
     > [!NOTE]
     > A saját topológiák a fürtre történő elküldésekor a fürtöket tartalmazó jar-fájlt a `storm` parancs használata előtt kell másolnia. A fájl másolásához használja az `scp` parancsot. Például: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
@@ -199,7 +196,7 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 Ebből az Apache Storm-oktatóanyagból megismerhette a Storm HDInsightban való használatának alapjait. A következő szakaszban a [Java-alapú topológiák fejlesztését ismertetjük Maven használatával](apache-storm-develop-java-topology.md).
 
-Ha már ismeri a Java-alapú topológiák fejlesztését, és egy meglévő topológiát kíván üzembe helyezni a HDInsighton, tekintse meg a következő cikket: [HDInsighton futó Apache Storm-topológiák üzembe helyezése és kezelése](apache-storm-deploy-monitor-topology-linux.md).
+Ha már ismeri a Java-alapú topológiák fejlesztését, akkor tekintse meg a következő dokumentumot: [HDInsighton futó Apache Storm-topológiák üzembe helyezése és kezelése](apache-storm-deploy-monitor-topology-linux.md).
 
 A.NET-fejlesztők C#- vagy hibrid C#/Java-topológiákat hozhatnak létre a Visual Studio használatával. További információk: [C#-topológiák fejlesztése HDInsight alatt futó Apache Stormra a Visual Studio Hadoop-eszközeinek használatával](apache-storm-develop-csharp-visual-studio-topology.md).
 
