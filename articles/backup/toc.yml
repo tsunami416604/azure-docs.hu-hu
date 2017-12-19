@@ -59,8 +59,6 @@
           items:
             - name: Az Azure Backup Server számítási feladatainak előkészítése az Azure Portalon
               href: backup-azure-microsoft-azure-backup.md
-            - name: Az Azure Backup Server számítási feladatainak előkészítése a klasszikus portálon
-              href: backup-azure-microsoft-azure-backup-classic.md
             - name: Tárterület hozzáadása az Azure Backup Serverhez
               href: backup-mabs-add-storage.md
             - name: Az Azure Backup Server frissítése a 2-es verzióra
@@ -89,8 +87,6 @@
               href: backup-azure-arm-vms-prepare.md
             - name: Linuxos virtuális gépek alkalmazáskonzisztens biztonsági mentései
               href: backup-azure-linux-app-consistent.md
-            - name: Az Azure-beli virtuális gépek előkészítése
-              href: backup-azure-vms-prepare.md
         - name: A környezet megtervezése
           items:
             - name: Virtuális gépek biztonsági mentési infrastruktúrájának tervezése
@@ -101,16 +97,12 @@
               href: backup-azure-arm-vms.md
             - name: Titkosított virtuális gépek biztonsági mentése
               href: backup-azure-vms-encryption.md
-            - name: Azure-beli virtuális gépek biztonsági mentése
-              href: backup-azure-vms.md
         - name: Virtuális gépek kezelése és monitorozása
           items:
             - name: Azure-beli virtuális gépek biztonsági másolatainak kezelése az Azure Portalon
               href: backup-azure-manage-vms.md
             - name: Azure-beli virtuális gépek biztonsági másolataival kapcsolatos riasztások figyelése az Azure Portalon
               href: backup-azure-monitor-vms.md
-            - name: Azure-beli virtuális gépek biztonsági másolatainak kezelése és figyelése a klasszikus portálon
-              href: backup-azure-manage-vms-classic.md
         - name: Virtuális gépek adatainak visszaállítása
           items:
             - name: Fájlok helyreállítása Azure-beli virtuális gépek biztonsági másolataiból
@@ -119,8 +111,6 @@
               href: backup-azure-arm-restore-vms.md
             - name: Titkosított virtuális gépek visszaállítása
               href: backup-azure-vms-encryption.md
-            - name: Virtuális gépek visszaállítása az Azure-ban
-              href: backup-azure-restore-vms.md
             - name: A titkosított virtuális gépekhez tartozó Key Vault-kulcs és titkos kulcs visszaállítása
               href: backup-azure-restore-key-secret.md
     - name: Azure Backup-jelentések konfigurálása
@@ -135,8 +125,6 @@
       items:
         - name: A DPM számítási feladatainak előkészítése az Azure Portalon
           href: backup-azure-dpm-introduction.md
-        - name: A DPM számítási feladatainak előkészítése a klasszikus portálon
-          href: backup-azure-dpm-introduction-classic.md
         - name: A System Center DPM használata Exchange-kiszolgálók biztonsági mentéséhez
           href: backup-azure-backup-exchange-server.md
         - name: Adatok helyreállítása egy másik DPM-kiszolgálóra
@@ -149,16 +137,10 @@
       items:
         - name: Azure-beli virtuális gépek az Azure Portalon
           href: backup-azure-vms-automation.md
-        - name: Azure-beli virtuális gépek a klasszikus portálon
-          href: backup-azure-vms-classic-automation.md
         - name: DPM az Azure Portalon
           href: backup-dpm-automation.md
-        - name: DPM a klasszikus portálon
-          href: backup-dpm-automation-classic.md
         - name: Windows Server az Azure Portalon
           href: backup-client-automation.md
-        - name: Windows Server a klasszikus portálon
-          href: backup-client-automation-classic.md
     - name: Azure SQL Database
       items:
         - name: A biztonsági másolatok hosszú távú megőrzésének konfigurálása
@@ -181,14 +163,6 @@
           href: backup-azure-restore-system-state.md
         - name: Recovery Services-tárolók figyelése és kezelése
           href: backup-azure-manage-windows-server.md
-        - name: Biztonsági mentés és visszaállítás a klasszikus portállal
-          items:
-            - name: Klasszikus üzemi modellt használó Windows Server
-              href: backup-configure-vault-classic.md
-            - name: Backup-tárolók kezelése a klasszikus üzemi modellel
-              href: backup-azure-manage-windows-server-classic.md
-            - name: Fájlok helyreállítása a Windows Serverre a klasszikus üzemi modell használatával
-              href: backup-azure-restore-windows-server-classic.md
     - name: Recovery Services-tároló
       items:
         - name: A Recovery Services-tárolók áttekintése
@@ -201,8 +175,6 @@
       items:
         - name: Azure-beli virtuális gép biztonsági mentésével kapcsolatos problémák az Azure Portalon
           href: backup-azure-vms-troubleshoot.md
-        - name: Azure-beli virtuális gép biztonsági mentésével kapcsolatos problémák a klasszikus portálon
-          href: backup-azure-vms-troubleshoot-classic.md
         - name: 'Az Azure-beli virtuális gép mentése sikertelen: nem sikerült lekérni a virtuálisgép-ügynökről a pillanatkép-állapotot – a VM-pillanatképet készítő részfeladat időtúllépést okozott'
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Az Azure Backup-fájlok és -mappák lassú biztonsági mentése
