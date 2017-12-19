@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
-ms.openlocfilehash: f7fc4d367a0594a77d7ee25bbd1e40c4b2949c19
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 96aa4aa303f2322733a8383e5abc377ff873a926
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
-> [!div class="op_single_selector"]
-> * [Recovery services-tároló](backup-azure-vms-troubleshoot.md)
-> * [Mentési tároló](backup-azure-vms-troubleshoot-classic.md)
->
->
-
 Észlelt, miközben az Azure Backup segítségével információkat az alábbi táblázatban szereplő hibák is elháríthatók.
 
 ## <a name="backup"></a>Biztonsági mentés
@@ -34,15 +28,15 @@ ms.lasthandoff: 12/08/2017
 ### <a name="error-the-specified-disk-configuration-is-not-supported"></a>Hiba: A megadott lemezkonfiguráció nem támogatott
 
 > [!NOTE]
-> Biztonsági mentések rendelkező virtuális gépek támogatásához a private Preview verziójára kell > nem felügyelt 1 TB-os lemezeken. A részletekért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
+> Rendelkezünk egy privát előzetes verzióval olyan virtuális gépek biztonsági mentésének támogatásához, amelyeknél a nem felügyelt lemezek mérete meghaladja az 1 TB-ot. A részletekért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
 >
 >
 
 Azure Backup szolgáltatás jelenleg nem támogatja lemezméret [1023GB-nál nagyobb](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm). 
-- Ha a lemez 1 TB-nál nagyobb [új lemez csatolása](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) 1 Terabájtnál kisebb ezek <br>
-- Ezután másolja újonnan létrehozott lemez(ek) 1 TB-nál kisebb méretű lemez 1TB-nál nagyobb az adatokat. <br>
-- Győződjön meg arról, hogy minden adat másolta, és távolítsa el a nagyobb, mint 1 TB-os lemezeken
-- Indítsa el a biztonsági mentés.
+- 1 TB-nál nagyobb lemez esetén [csatlakoztasson új lemezeket](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal), melyek mérete nem haladja meg az 1 TB-ot. <br>
+- Ezt követően másolja át az 1 TB-nál nagyobb lemez adatait az újonnan létrehozott, 1 TB-ot nem meghaladó lemez(ek)re. <br>
+- Ellenőrizze, hogy az összes adatot átmásolta-e, és válassza le az 1 TB-ot meghaladó lemezeket.
+- Indítsa el a biztonsági mentést.
 
 | Hiba részletei | Megkerülő megoldás |
 | --- | --- |
@@ -137,7 +131,7 @@ A Virtuálisgép-ügynök verziója, a Windows virtuális gépek ellenőrzésén
 Virtuális gép biztonsági mentése támaszkodik a mögöttes tároló pillanatkép parancsok kiadása. Nem tárolási vagy késést a hozzáférést egy pillanatkép-feladat végrehajtása okozhat a biztonsági mentési feladat sikertelen lesz. A következő pillanatkép-feladat hibát okozhat.
 
 1. Tárhely hálózati elérhetőségét le van tiltva, NSG-t használ<br>
-    További információ arról, hogy további [hálózati hozzáférés engedélyezése](backup-azure-vms-prepare.md#network-connectivity) tárolóhely-vagy engedélyezett IP-címek vagy proxykiszolgálón keresztül.
+    További információ arról, hogy további [hálózati hozzáférés engedélyezése](backup-azure-arm-vms-prepare.md#network-connectivity) tárolóhely-vagy engedélyezett IP-címek vagy proxykiszolgálón keresztül.
 2. Sql Server biztonsági másolat konfigurált virtuális gépek okozhat a pillanatkép tevékenység késleltetés <br>
    Virtuális gép alapértelmezés szerint a biztonsági mentés problémák VSS teljes biztonsági mentés a Windows virtuális gépeken. A virtuális gépeken futó Sql Server-kiszolgálók és az Sql Server biztonsági másolat úgy van konfigurálva ez a késleltetés a pillanatkép végrehajtása okozhat. Ha biztonsági mentési hibák pillanatkép problémák miatt merülnek állítsa be a következő beállításkulcsot.
 
@@ -169,7 +163,7 @@ Után a névfeloldás helyesen végezték el, az Azure IP-címek elérését is 
    * Az IP-címek használatával feloldása a [New-NetRoute](https://technet.microsoft.com/library/hh826148.aspx) parancsmag. Futtassa ezt a parancsmagot, az Azure virtuális Gépen belül, egy emelt szintű PowerShell-ablakban (Futtatás rendszergazdaként).
    * Vegye fel szabályok az NSG-t (ha van érvényben) az IP-címek eléréséhez.
 2. A HTTP-forgalom áramlását az elérési utat hoz létre
-   * Ha rendelkezik néhány helyen (hálózati biztonsági csoport, például) a hálózati korlátozás a forgalmat a HTTP-proxy kiszolgáló központi telepítése. Egy HTTP-Proxy kiszolgáló telepítése is található [Itt](backup-azure-vms-prepare.md#network-connectivity).
+   * Ha rendelkezik néhány helyen (hálózati biztonsági csoport, például) a hálózati korlátozás a forgalmat a HTTP-proxy kiszolgáló központi telepítése. Egy HTTP-Proxy kiszolgáló telepítése is található [Itt](backup-azure-arm-vms-prepare.md#network-connectivity).
    * Vegye fel szabályok az NSG-t (ha van érvényben) számára engedélyezi az INTERNET elérését a HTTP-Proxy.
 
 > [!NOTE]

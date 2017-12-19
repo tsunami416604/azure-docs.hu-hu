@@ -5,7 +5,7 @@ services: active-directory
 keywords: 
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: f8cd7e68-2c8e-4f30-b326-b22b16de9787
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4e2f788f4e4dfd013754925d8f6dbc3bf35b1a91
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 79089f09342f520f7d43115cc606d794db6c1602
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének sikeres bevezetése
 
@@ -37,6 +37,10 @@ Az Azure Active Directory (Azure AD) önkiszolgáló jelszóváltoztatási (SSPR
 9. A regisztráció kényszerítésének meghatározása. Bármikor dönthet úgy, hogy kényszeríti a regisztrációt. Azt is megkövetelheti a felhasználóktól, hogy bizonyos idő elteltével újra erősítsék meg a hitelesítési adataikat.
 10. A jelentéskészítő képesség használata. Áttekintheti a felhasználók regisztrációra vonatkozó és használati adatait az [Azure AD által nyújtott jelentéskészítő képességgel](active-directory-passwords-reporting.md).
 11. Az új jelszó kérésének engedélyezése. Amikor elkészült, engedélyezze az új jelszó kérését az összes felhasználónak: állítsa az **Új jelszó önkiszolgáló kérése engedélyezve** beállítást a **Mindenki** értékre. 
+
+   > [!NOTE]
+   > Ha a beállítást egy kiválasztott csoportról mindenkire módosítja, a felhasználók által egy tesztcsoport tagjaként regisztrált meglévő hitelesítési adatok nem vesztik érvényüket. A konfigurált felhasználók, akik érvényes hitelesítési adatokat regisztráltak, továbbra is működni fognak.
+
 12. [Az új jelszó kérésének engedélyezése a Windows 10-felhasználók számára a bejelentkezési képernyőn](active-directory-passwords-login.md).
 
    > [!IMPORTANT]
@@ -56,9 +60,9 @@ Számos ügyfél szerint egy egyszerűen követhető útmutatással ellátott e-
 
 Sok ügyfél dönt webhelyek üzemeltetése és gyökérszintű DNS-bejegyzések létrehozása mellett. Például: https://jelszo.contoso.com. Ezután feltöltik az oldalt a következő információk hivatkozásaival:
 
-* [Azure AD új jelszó létrehozására szolgáló portál](https://aka.ms/sspr)
-* [Azure AD új jelszó létrehozására szolgáló regisztrációs portál](http://aka.ms/ssprsetup)
-* [Azure AD jelszóátállítási portál](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)
+* [Azure AD új jelszó létrehozására szolgáló portál – https://aka.ms/sspr](https://aka.ms/sspr)
+* [Azure AD új jelszó létrehozására szolgáló regisztrációs portál – http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)
+* [Azure AD jelszóátállítási portál – https://account.activedirectory.windowsazure.com/ChangePassword.aspx](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)
 * A szervezetre jellemző egyéb információk
 
 A kiküldött e-mailekben vagy közleményekben feltüntethet egy márkaüzenettel ellátott, könnyen megjegyezhető URL-címet, amelyre a felhasználók ellátogathatnak, amikor szükségük van a szolgáltatásokra. Létrehoztunk Önnek egy [új jelszó létrehozására szolgáló mintaoldalt](https://github.com/ajamess/password-reset-page), amelyet a szervezet igényei szerint használhat és szabhat testre.

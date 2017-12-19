@@ -195,6 +195,8 @@
               href: site-recovery-replicate-vmware-to-azure.md
     - name: Automatizálás
       items:
+        - name: VMware virtuális gépek replikálása az Azure-ba PowerShell használatával
+          href: site-recovery-vmware-to-azure-powershell.md
         - name: Hyper-V-replikálás beállítása az Azure-ba (VMM nélkül) a PowerShell-lel
           href: site-recovery-deploy-with-powershell-resource-manager.md
         - name: Hyper-V-replikálás beállítása az Azure-ba (VMM-el) a PowerShell-lel
@@ -262,7 +264,7 @@
 - name: Referencia
   items:
     - name: Azure PowerShell
-      href: /powershell/module/azurerm.siterecovery
+      href: /powershell/module/azurerm.recoveryservices.siterecovery
     - name: Azure PowerShell (klasszikus)
       href: /powershell/module/azure/?view=azuresmps-3.7.0
     - name: REST

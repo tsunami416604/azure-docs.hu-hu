@@ -14,18 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
-ms.openlocfilehash: 597d8e12377ca19b0c58eb2fc8bdb7597c1c6c07
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f4613746a427e6987366eeb46605524cd3aacbe2
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése
-> [!div class="op_single_selector"]
-> * [Azure virtuális gép biztonsági mentések kezelése](backup-azure-manage-vms.md)
-> * [Klasszikus virtuális gép biztonsági mentések kezelése](backup-azure-manage-vms-classic.md)
->
->
 
 Ez a cikk nyújt útmutatást a virtuális gép biztonsági másolatok kezelésére, és a biztonsági mentési riasztás adatait a portál irányítópultján érhető el. Az útmutató a virtuális gépek használata a Recovery Services-tárolók vonatkozik. Ez a cikk nem foglalkozik a virtuális gépek létrehozását, és nem az azt ismertetik, hogyan védi a virtuális gépek nem. A Recovery Services-tároló virtuális gépek Azure Resource Manager üzembe az Azure-ban ellátásáról ismertetése, lásd: [először: készítsen biztonsági mentést a Recovery Services-tároló virtuális gépek](backup-azure-vms-first-look-arm.md).
 
@@ -224,4 +219,4 @@ A virtuális gépen, a biztonsági mentési adatok törléséhez a *biztonsági 
     Egy értesítési üzenetet lehetővé teszi a biztonsági mentési adatok törölve lett.
 
 ## <a name="next-steps"></a>Következő lépések
-Hozza létre újra a virtuális gép helyreállítási pontból információkért tekintse meg [visszaállítása az Azure virtuális gépek](backup-azure-restore-vms.md). Ha a virtuális gépek védelméről tájékoztatásra van szüksége, tekintse meg [először: készítsen biztonsági mentést a Recovery Services-tároló virtuális gépek](backup-azure-vms-first-look-arm.md). Események figyelésével kapcsolatos további információkért lásd: [figyelése az Azure virtuális gépek biztonsági mentéseinek riasztások](backup-azure-monitor-vms.md).
+Hozza létre újra a virtuális gép helyreállítási pontból információkért tekintse meg [visszaállítása az Azure virtuális gépek](backup-azure-arm-restore-vms.md). Ha a virtuális gépek védelméről tájékoztatásra van szüksége, tekintse meg [először: készítsen biztonsági mentést a Recovery Services-tároló virtuális gépek](backup-azure-vms-first-look-arm.md). Események figyelésével kapcsolatos további információkért lásd: [figyelése az Azure virtuális gépek biztonsági mentéseinek riasztások](backup-azure-monitor-vms.md).

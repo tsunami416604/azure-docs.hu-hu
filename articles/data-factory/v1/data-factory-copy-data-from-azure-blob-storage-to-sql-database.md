@@ -16,10 +16,10 @@ ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
 ms.openlocfilehash: c3a2d4b126d43017ec004bde82deb190584455c4
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: Adatok másolása Blob-tároló az SQL Database Data Factory használatával
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/02/2017
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [másolási tevékenység oktatóanyag 2-es dokumentációjának](../quickstart-create-data-factory-dot-net.md). 
+> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Ha a Data Factory szolgáltatás előzetes verzióban elérhető 2. verzióját használja, tekintse meg [a másolási tevékenység oktatóanyagát a 2. verzió dokumentációjában](../quickstart-create-data-factory-dot-net.md). 
 
 Ebben az oktatóanyagban létrehoz egy adat-előállító és a Blob-tároló az SQL database-adatok másolása.
 

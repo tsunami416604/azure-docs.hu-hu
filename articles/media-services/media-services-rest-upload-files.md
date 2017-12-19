@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
 ms.openlocfilehash: f198de0bf212f4ae566193954a319bece1e421f6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése a Media Services-fiók használatával REST
 > [!div class="op_single_selector"]
@@ -186,7 +186,7 @@ A digitális adathordozójának fájl feltöltése a blob-tárolóba, után fogj
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>A AccessPolicy létrehozása írási engedéllyel.
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért lásd: [ez](media-services-dotnet-manage-entities.md#limit-access-policies) cikk.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
 Fájlok feltöltése a blob-tárolóba, mielőtt írásra, hogy egy eszköz házirend jogosultságok a hozzáférés beállítása. Ehhez a AccessPolicies entitáskészlet HTTP-kérelmek POST. Adjon meg egy DurationInMinutes számot a létrehozása után, vagy egy belső kiszolgálót 500 hibaüzenetet kapja vissza válaszként. A AccessPolicies további információkért lásd: [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 

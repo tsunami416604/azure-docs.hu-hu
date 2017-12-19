@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: tamram
-ms.openlocfilehash: cdd457dbe6802f58f0167efb97d60628c17a97af
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ff0f6446b51c4549e5a367b5b767d4777a1d946d
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
-A Microsoft Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, méretezhető és redundáns tárolást tesz lehetővé. A karbantartást és a kritikus problémák kezelését a Microsoft végzi el Önnek. 
+A Microsoft Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, méretezhető és redundáns tárolást tesz lehetővé. A karbantartást és a kritikus problémák kezelését a Microsoft végzi el Önnek.
 
 Az Azure Storage a következő három adatszolgáltatást tartalmazza: Blob Storage, File Storage és Queue Storage. A Blob Storage standard és prémium szintű tárolást is kínál – a prémium tárolás kizárólag SSD meghajtókon történik a lehető leggyorsabb teljesítmény biztosítása érdekében. Egy másik szolgáltatás a ritkán használt adatok tárolása, amelynek keretében az ilyen adatok nagy mennyiségben tárolhatók alacsony költségek mellett.
 
@@ -31,9 +31,9 @@ Ebben a cikkben megismerkedhet a következőkkel:
 * a tárfiókok típusai,
 * a blobokhoz, üzenetsorokhoz és fájlokhoz való hozzáférés módjai,
 * titkosítás
-* replikáció, 
+* replikáció,
 * az adatok a tárolóba vagy a tárolóból való áthelyezése,
-* valamint a számos elérhető Storage ügyfélkódtár. 
+* valamint a számos elérhető Storage ügyfélkódtár.
 
 Az Azure Storage gyors üzembe helyezésével kapcsolatban tekintse meg az alábbi rövid útmutatókat:
 * [Storage-fiók létrehozása a PowerShell-lel](storage-quickstart-create-storage-account-powershell.md)
@@ -41,28 +41,28 @@ Az Azure Storage gyors üzembe helyezésével kapcsolatban tekintse meg az aláb
 
 ## <a name="introducing-the-azure-storage-services"></a>Az Azure Storage szolgáltatásainak bemutatása
 
-Az Azure Storage által biztosított szolgáltatások – Blob Storage, File Storage és Queue Storage – használatához először létre kell hoznia egy tárfiókot, majd ezután azon a fiókon belül viheti át az adatait egy adott szolgáltatásba, illetve a szolgáltatásból máshová. 
+Az Azure Storage által biztosított szolgáltatások – Blob Storage, File Storage és Queue Storage – használatához először létre kell hoznia egy tárfiókot, majd ezután azon a fiókon belül viheti át az adatait egy adott szolgáltatásba, illetve a szolgáltatásból máshová.
 
 ## <a name="blob-storage"></a>Blob Storage
 
-A blobok lényegében ugyanolyan fájlok, mint amilyeneket a számítógépén (vagy táblagépén, mobileszközén stb.) is tárol. Lehetnek képek, Microsoft Excel-fájlok, HTML-fájlok, virtuális merevlemezek (VHD-k), big data (például naplók), vagy adatbázisok biztonsági másolatai – lényegében szinte bármi. A blobok tárolása tárolókban történik, amelyek a mappákhoz hasonlatosak. 
+A blobok lényegében ugyanolyan fájlok, mint amilyeneket a számítógépén (vagy táblagépén, mobileszközén stb.) is tárol. Lehetnek képek, Microsoft Excel-fájlok, HTML-fájlok, virtuális merevlemezek (VHD-k), big data (például naplók), vagy adatbázisok biztonsági másolatai – lényegében szinte bármi. A blobok tárolása tárolókban történik, amelyek a mappákhoz hasonlatosak.
 
-A fájlok Blob Storage tárolóban való elhelyezése után a világ bármely pontjáról elérheti azokat URL-címek, a REST-felület vagy az Azure SDK-tároló ügyfélkódtárai használatával. A tárolók ügyfélkódtárai több nyelvhez, köztük a Node.js, a Java, a PHP, a Ruby, a Python és a .NET nyelvekhez is elérhetők. 
+A fájlok Blob Storage tárolóban való elhelyezése után a világ bármely pontjáról elérheti azokat URL-címek, a REST-felület vagy az Azure SDK-tároló ügyfélkódtárai használatával. A tárolók ügyfélkódtárai több nyelvhez, köztük a Node.js, a Java, a PHP, a Ruby, a Python és a .NET nyelvekhez is elérhetők.
 
 A bloboknak három típusa létezik: a blokkblobok, a lapblobok (ezek a VHD-fájlokhoz használatosak) és a hozzáfűző blobok.
 
-* A blokkblobokban hagyományos fájlok tárolhatók legfeljebb nagyjából 4,7 TB méretig. 
+* A blokkblobokban hagyományos fájlok tárolhatók legfeljebb nagyjából 4,7 TB méretig.
 * A lapblobokban közvetlen elérésű fájlok tárolhatók legfeljebb 8 TB méretig. Ezek a virtuális gépek alapját képező VHD-fájlokhoz használatosak.
 * A hozzáfűző blobok a blokkblobokhoz hasonlóan blokkokból állnak, azonban a hozzáfűzési műveletekhez vannak optimalizálva. Ezek például több virtuális gép adatainak egyazon blobba történő naplózására használhatók.
 
 A nagy adatkészleteknél, ahol a hálózati korlátok miatt irreális lenne az adatok vezetékes le- vagy feltöltése a Blob Storage-ba, elküldhet a Microsoftnak egy teljes merevlemez-készletet, hogy az adatokat közvetlenül az adatközpontból importálják vagy oda exportálják. Lásd: [Use the Microsoft Azure Import/Export Service to Transfer Data to Blob Storage](../storage-import-export-service.md) (A Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez a Blob Storage-ba).
 
 ## <a name="azure-files"></a>Azure Files
-Az [Azure Files](../files/storage-files-introduction.md) segítségével magas rendelkezésre állású hálózati fájlmegosztásokat hozhat létre, amelyek az SMB protokollon keresztül érhetőek el. Ez azt jelenti hogy ugyanazokhoz a fájlokhoz több virtuális gép is hozzáférhet olvasási és írási jogosultsággal. A fájlokat a REST-felület vagy a Storage klienskódtáraival is olvashatja. 
+Az [Azure Files](../files/storage-files-introduction.md) segítségével magas rendelkezésre állású hálózati fájlmegosztásokat hozhat létre, amelyek az SMB protokollon keresztül érhetőek el. Ez azt jelenti hogy ugyanazokhoz a fájlokhoz több virtuális gép is hozzáférhet olvasási és írási jogosultsággal. A fájlokat a REST-felület vagy a Storage klienskódtáraival is olvashatja.
 
-Az egyik dolog, ami megkülönbözteti az Azure Files szolgáltatást a fájlok a vállalati fájlmegosztásokon való tárolásától, hogy a fájlokat a világ bármely pontjáról elérheti a rájuk mutató URL-címekkel, amelyek közös hozzáférésű jogosultságkód- (SAS-) tokenekkel rendelkeznek. SAS-tokeneket Ön is létrehozhat: ezek határozott ideig biztosítanak egyedi hozzáférést a privát objektumokhoz. 
+Az egyik dolog, ami megkülönbözteti az Azure Files szolgáltatást a fájlok a vállalati fájlmegosztásokon való tárolásától, hogy a fájlokat a világ bármely pontjáról elérheti a rájuk mutató URL-címekkel, amelyek közös hozzáférésű jogosultságkód- (SAS-) tokenekkel rendelkeznek. SAS-tokeneket Ön is létrehozhat: ezek határozott ideig biztosítanak egyedi hozzáférést a privát objektumokhoz.
 
-A fájlmegosztások számos gyakori forgatókönyvhöz használhatók: 
+A fájlmegosztások számos gyakori forgatókönyvhöz használhatók:
 
 * Számos helyszíni alkalmazás használ fájlmegosztásokat. Ezzel a szolgáltatással könnyebb migrálni azokat az alkalmazásokat, amelyek az Azure-ban osztják meg az adatokat. Ha a fájlmegosztást ugyanarra a meghajtóhelyre csatlakoztatja, amelyet a helyszíni alkalmazás használ, az alkalmazás fájlmegosztáshoz kapcsolódó része minimális vagy semennyi módosítással használható.
 
@@ -74,7 +74,7 @@ Jelenleg az Active Directory-alapú hitelesítés és a hozzáférés-vezérlés
 
 ## <a name="queue-storage"></a>Queue Storage
 
-Az Azure Queue szolgáltatás üzenetek tárolására és lehívására használható. Az üzenetsor üzenetei egyenként legfeljebb 64 KB méretűek lehetnek, és az üzenetsor akár több millió üzenetet is tartalmazhat. Az üzenetsorok általában aszinkron feldolgozásra szánt üzenetek listáit tárolják. 
+Az Azure Queue szolgáltatás üzenetek tárolására és lehívására használható. Az üzenetsor üzenetei egyenként legfeljebb 64 KB méretűek lehetnek, és az üzenetsor akár több millió üzenetet is tartalmazhat. Az üzenetsorok általában aszinkron feldolgozásra szánt üzenetek listáit tárolják.
 
 Tegyük fel például, hogy biztosítani szeretné az ügyfelei számára, hogy képeket tölthessenek fel, az egyes képekhez pedig miniatűröket szeretne létrehozni. Választhatná azt, hogy az ügyfeleknek a feltöltéskor várniuk kelljen a miniatűrök létrehozására. Alternatív megoldásként azonban használhat üzenetsort is. Amint az ügyfél befejezte a feltöltést, írjon egy üzenetet az üzenetsorba. Ezután egy Azure-függvénnyel hívja le az üzenetet az üzenetsorból, és hozza létre a miniatűrt. Ennek az eljárásnak minden egyes része külön méretezhető, és így szabadabban hangolhatja a felhasználási céloknak megfelelően.
 
@@ -86,7 +86,7 @@ Az Azure Table Storage mostantól az Azure Cosmos DB része. Az Azure Table Stor
 
 Az Azure Storage emellett a virtuális gépek által használt felügyelt és nem felügyelt lemez képességeket is tartalmazza. További információkért ezekkel a szolgáltatásokkal kapcsolatban lásd a [Számítási szolgáltatások dokumentációját](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 
-## <a name="types-of-storage-accounts"></a>A tárfiókok típusai 
+## <a name="types-of-storage-accounts"></a>A tárfiókok típusai
 
 Ez a táblázat a tárfiókok típusait és az egyes típusokkal használható objektumokat mutatja be.
 
@@ -97,9 +97,9 @@ Ez a táblázat a tárfiókok típusait és az egyes típusokkal használható o
 
 ### <a name="general-purpose-storage-accounts"></a>Általános célú tárfiókok
 
-Kétféle általános célú tárfiók létezik. 
+Kétféle általános célú tárfiók létezik.
 
-#### <a name="standard-storage"></a>Standard szintű Storage 
+#### <a name="standard-storage"></a>Standard szintű Storage
 
 A legszélesebb körben használt tárfiók a standard tárfiók, amely bármilyen típusú adathoz használható. A standard szintű tárfiókok az adatokat mágneses adathordozókon tárolják.
 
@@ -109,39 +109,39 @@ A prémium szintű tárfiók nagy teljesítményű tárolást biztosít a lapblo
 
 ### <a name="blob-storage-accounts"></a>Blob Storage-fiókok
 
-A Blob Storage-fiók egy specializált tárfiók blokkblobok és hozzáfűző blobok tárolásához. Az ilyen fiókokban nem lehet lapblobokat tárolni, így VHD-fájlokat sem. Ezekben a fiókokban beállíthatja a hozzáférési szintet (gyakran vagy ritkán használt adatok). Ez a szint bármikor módosítható. 
+A Blob Storage-fiók egy specializált tárfiók blokkblobok és hozzáfűző blobok tárolásához. Az ilyen fiókokban nem lehet lapblobokat tárolni, így VHD-fájlokat sem. Ezekben a fiókokban beállíthatja a hozzáférési szintet (gyakran vagy ritkán használt adatok). Ez a szint bármikor módosítható.
 
 A gyakran használt adatok hozzáférési szintje a gyakran elérni kívánt adatok tárolására szolgál – a tárolási költségek magasabbak, a blobok hozzáférési költsége azonban sokkal alacsonyabb. A ritkán használt adatok hozzáférési szintjén tárolt blobok hozzáférési költsége magasabb, a tárolási költség azonban sokkal alacsonyabb.
 
 ## <a name="accessing-your-blobs-files-and-queues"></a>A blobok, fájlok és üzenetsorok elérése
 
-Mindegyik tárfiók két hitelesítési kulccsal rendelkezik, amely bármelyike használható bármilyen művelethez. Mivel két kulcs van, időről-időre leválthatja ezeket, így növelhető a biztonság. A kulcsok biztonságba helyezése kritikus fontosságú, mivel a fiók nevével együtt korlátlan hozzáférést biztosítanak a tárfiókban tárolt összes adathoz. 
+Mindegyik tárfiók két hitelesítési kulccsal rendelkezik, amely bármelyike használható bármilyen művelethez. Mivel két kulcs van, időről-időre leválthatja ezeket, így növelhető a biztonság. A kulcsok biztonságba helyezése kritikus fontosságú, mivel a fiók nevével együtt korlátlan hozzáférést biztosítanak a tárfiókban tárolt összes adathoz.
 
 Ebben a szakaszban két módját ismertetjük a Storage-fiók és a benne lévő adatok védelmének. A tárfiók és a benne lévő adatok védelmével kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](storage-security-guide.md).
 
 ### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>A tárfiókokhoz való hozzáférés biztonságossá tétele az Azure AD használatával
 
-A tároló adataihoz való hozzáférés biztonságossá tételének egyik módja a tárfiók kulcsaihoz való hozzáférés szabályozása. A Resource Manager szerepköralapú hozzáférés-vezérlésének (RBAC) használatával szerepköröket rendelhet felhasználókhoz, csoportokhoz és alkalmazásokhoz. Ezek a szerepkörök engedélyezett vagy nem engedélyezett műveletek csoportjaihoz vannak rendelve. Ha az RBAC használatával ad hozzáférést egy tárfiókhoz, azzal csak a tárfiók felügyeleti műveleteit, például a hozzáférési szint módosítását engedélyezi. Az RBAC használatával nem adhat hozzáférést az adatobjektumokhoz, például az egyes tárolókhoz vagy fájlmegosztásokhoz. Mindazonáltal, az RBAC használatával hozzáférést adhat a tárfiók kulcsaihoz, amelyek lehetővé teszik az adatobjektumok olvasását. 
+A tároló adataihoz való hozzáférés biztonságossá tételének egyik módja a tárfiók kulcsaihoz való hozzáférés szabályozása. A Resource Manager szerepköralapú hozzáférés-vezérlésének (RBAC) használatával szerepköröket rendelhet felhasználókhoz, csoportokhoz és alkalmazásokhoz. Ezek a szerepkörök engedélyezett vagy nem engedélyezett műveletek csoportjaihoz vannak rendelve. Ha az RBAC használatával ad hozzáférést egy tárfiókhoz, azzal csak a tárfiók felügyeleti műveleteit, például a hozzáférési szint módosítását engedélyezi. Az RBAC használatával nem adhat hozzáférést az adatobjektumokhoz, például az egyes tárolókhoz vagy fájlmegosztásokhoz. Mindazonáltal, az RBAC használatával hozzáférést adhat a tárfiók kulcsaihoz, amelyek lehetővé teszik az adatobjektumok olvasását.
 
-### <a name="securing-access-using-shared-access-signatures"></a>Hozzáférés biztonságossá tétele közös hozzáférésű jogosultságkódok használatával 
+### <a name="securing-access-using-shared-access-signatures"></a>Hozzáférés biztonságossá tétele közös hozzáférésű jogosultságkódok használatával
 
 A közös hozzáférésű jogosultságkódok és a tárolt hozzáférési szabályzatok használatával gondoskodhat az adatobjektumok védelméről. A közös hozzáférésű jogosultságkód (SAS) egy biztonsági jogkivonatot tartalmazó karakterlánc, amelyet egy adategység URI azonosítójához csatolva hozzáférés adható adott tárolóobjektumokhoz, valamint korlátozások határozhatók meg, például engedélyek vagy a hozzáférés dátum-/időtartománya. Ez a szolgáltatás kiterjedt képességeket biztosít. Részletes információkért lásd: [Using Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) (Közös hozzáférésű jogosultságkódok (SAS) használata).
 
 ### <a name="public-access-to-blobs"></a>Nyilvános hozzáférés a blobokhoz
 
-A Blob szolgáltatás segítségével nyilvános hozzáférést adhat a tárolókhoz és annak blobjaihoz, vagy egy adott blobhoz. Ha egy tárolót vagy blobot nyilvánosként jelöl meg, bárki névtelenül, hitelesítés nélkül megtekintheti. Például akkor lehet érdemes ezt alkalmaznia, ha a webhelyén blobtárolóban lévő képeket, videókat vagy dokumentumokat használ. További információk: [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Tárolók és blobok névtelen olvasási hozzáférésének kezelése). 
+A Blob szolgáltatás segítségével nyilvános hozzáférést adhat a tárolókhoz és annak blobjaihoz, vagy egy adott blobhoz. Ha egy tárolót vagy blobot nyilvánosként jelöl meg, bárki névtelenül, hitelesítés nélkül megtekintheti. Például akkor lehet érdemes ezt alkalmaznia, ha a webhelyén blobtárolóban lévő képeket, videókat vagy dokumentumokat használ. További információk: [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Tárolók és blobok névtelen olvasási hozzáférésének kezelése).
 
 ## <a name="encryption"></a>Titkosítás
 
-A Storage-szolgáltatásokban több alapszintű titkosítási módszer áll rendelkezésre. 
+A Storage-szolgáltatásokban több alapszintű titkosítási módszer áll rendelkezésre.
 
-### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban 
+### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
-A Storage Service Encryption (SSE) az Azure tárfiókhoz tartozó Files szolgáltatáson (előzetes verzió) vagy Blob szolgáltatáson engedélyezhető. Engedélyezésével az adott szolgáltatásba írt összes adat titkosítva lesz az írást megelőzően. Az adatok olvasásakor a rendszer visszafejti az adatokat, mielőtt visszaadná azokat. 
+A Storage Service Encryption (SSE) az Azure tárfiókhoz tartozó Files szolgáltatáson (előzetes verzió) vagy Blob szolgáltatáson engedélyezhető. Engedélyezésével az adott szolgáltatásba írt összes adat titkosítva lesz az írást megelőzően. Az adatok olvasásakor a rendszer visszafejti az adatokat, mielőtt visszaadná azokat.
 
 ### <a name="client-side-encryption"></a>Ügyféloldali titkosítás
 
-A Storage ügyfélkódtárai tartalmaznak olyan metódusokat, amelyek meghívásával az adatok programozott módon titkosíthatóak, mielőtt az ügyfélből az Azure-ba kerülnének. Az adatok tárolása titkosítva történik, tehát inaktív állapotban is titkosítva vannak. Az adatok lehívásakor azok visszafejtése a megérkezésük után történik. 
+A Storage ügyfélkódtárai tartalmaznak olyan metódusokat, amelyek meghívásával az adatok programozott módon titkosíthatóak, mielőtt az ügyfélből az Azure-ba kerülnének. Az adatok tárolása titkosítva történik, tehát inaktív állapotban is titkosítva vannak. Az adatok lehívásakor azok visszafejtése a megérkezésük után történik.
 
 ### <a name="encryption-in-transit-with-azure-file-shares"></a>Titkosítás az átvitel során az Azure-fájlmegosztásokkal
 
@@ -151,27 +151,27 @@ A Storage-fiók védelmével és a titkosítással kapcsolatos további informá
 
 ## <a name="replication"></a>Replikáció
 
-Az adatok tartósságának biztosítása érdekében az Azure Storage egyszerre több példányban képes tárolni (és kezelni) az adatokat. Ezt replikációnak vagy más néven redundanciának nevezzük. A Storage-fiók üzembe helyezésekor meg kell választania a replikáció típusát. A legtöbb esetben ez a beállítás a tárfiók üzembe helyezését követően módosítható. 
+Az adatok tartósságának biztosítása érdekében az Azure Storage egyszerre több példányban képes tárolni (és kezelni) az adatokat. Ezt replikációnak vagy más néven redundanciának nevezzük. A Storage-fiók üzembe helyezésekor meg kell választania a replikáció típusát. A legtöbb esetben ez a beállítás a tárfiók üzembe helyezését követően módosítható.
 
-Mindegyik tárfiókban elérhető a **helyileg redundáns tárolás (LRS)**. Ez azt jelenti, hogy az Azure Storage három példányban tárolja az adatokat a tárfiók beállításakor megadott adatközpontban. Az adatok egyik példányának módosításakor a rendszer frissíti a másik két példányt is, mielőtt sikeres eredményt adna vissza. Ez azt jelenti, hogy a három replika mindig szinkronban van. Emellett a rendszer a három példányt külön tartalék tartományokban és frissítési tartományokban tárolja, aminek következtében az adatok akkor is elérhetők maradnak, ha az azokat tároló valamelyik tárolócsomópont meghibásodik, vagy frissítés következtében offline állapotba kerül. 
+Mindegyik tárfiókban elérhető a **helyileg redundáns tárolás (LRS)**, amelyet úgy terveztek, hogy legalább 99,999999999%-os (11 db 9-es) tartós állapotot biztosítson az objektumok számára egy adott évben. Ez azt jelenti, hogy az Azure Storage több példányban tárolja az adatokat a tárfiók beállításakor megadott adatközpontban. Módosítás esetén a rendszer az összes példányt frissíti, mielőtt sikeres eredményt adna vissza. Ez azt jelenti, hogy a replikák mindig szinkronban vannak. Emellett a rendszer a példányokat külön tartalék tartományokban és frissítési tartományokban tárolja, aminek következtében az adatok akkor is elérhetők maradnak, ha az azokat tároló valamelyik tárolócsomópont meghibásodik, vagy frissítés következtében offline állapotba kerül.
 
 **Helyileg redundáns tárolás (LRS)**
 
-Amint azt fent kifejtettük, az LRS esetében az adatok három példányban vannak tárolva egyetlen adatközpontban. Így az adatok akkor is elérhetőek maradnak, ha egy tárolócsomópont meghibásodik vagy frissítés következtében offline állapotba kerül, akkor viszont nem, ha a teljes adatközpont elérhetetlenné válik.
+Amint azt fent kifejtettük, az LRS esetében az adatok több példányban vannak tárolva egyetlen adatközpontban. Így az adatok akkor is elérhetőek maradnak, ha egy tárolócsomópont meghibásodik vagy frissítés következtében offline állapotba kerül, akkor viszont nem, ha a teljes adatközpont elérhetetlenné válik.
 
 **Zónaredundáns tárolás (ZRS)**
 
-A zónaredundáns tárolás (ZRS) is három helyi példányt őriz az adatokból, azonban emellett egy másik hárompéldányos készlet is rendelkezésre áll. A második három példányból álló készlet aszinkron módon van replikálva egy vagy két másik régióban lévő adatközpontokba. Megjegyzendő, hogy a ZRS kizárólag általános célú tárfiókokban lévő blokkblobokhoz érhető el. Továbbá, miután létrehozott egy tárfiókot és kiválasztotta a ZRS-t, már nem módosíthatja a replikáció típusát más típusra, és ugyanez fordítva is igaz.
+A zónaredundáns tárolási (ZRS) szolgáltatást úgy tervezték, hogy legalább 99,9999999999%-os (12 db 9-es) tartós állapotot biztosítson az objektumok számára egy adott évben azáltal, hogy az adatok helyi példánya mellett azok egy másik példánykészletét is őrzi. A második készlet aszinkron módon van replikálva egy vagy két másik régióban lévő adatközpontba. Megjegyzendő, hogy a ZRS kizárólag általános célú tárfiókokban lévő blokkblobokhoz érhető el. Továbbá, miután létrehozott egy tárfiókot és kiválasztotta a ZRS-t, már nem módosíthatja a replikáció típusát más típusra, és ugyanez fordítva is igaz.
 
-A ZRS-fiókok nagyobb tartósságot biztosítanak az LRS-fiókoknál, azonban nem rendelkeznek metrikákkal vagy naplózási funkciókkal. 
+A ZRS-fiókok nagyobb tartósságot biztosítanak az LRS-fiókoknál, azonban nem rendelkeznek metrikákkal vagy naplózási funkciókkal.
 
 **Georedundáns tárolás (GRS)**
 
-A georedundáns tárolási (GRS) szolgáltatás is három helyi példányt őriz az adatokból egy elsődleges régióban, valamint emellett egy másik hárompéldányos készletet egy másodlagos régióban több száz kilométerre az elsődleges régiótól. Ha az elsődleges régióban hiba történne, az Azure Storage feladatátvételt hajt végre a másodlagos régióba. 
+A georedundáns tárolási (GRS) szolgáltatást úgy tervezték, hogy 99,99999999999999%-os (16 db 9-es) tartós állapotot biztosítson az objektumok számára egy adott évben azáltal, hogy helyi példányokat őriz az adatokból egy elsődleges régióban, valamint emellett egy másik példánykészletet egy másodlagos régióban több száz kilométerre az elsődleges régiótól. Ha az elsődleges régióban hiba történne, az Azure Storage feladatátvételt hajt végre a másodlagos régióba.
 
-**Írásvédett georedundáns tárolás (RA-GRS)** 
+**Írásvédett georedundáns tárolás (RA-GRS)**
 
-Az írásvédett georedundáns tárolás megegyezik a GRS tárolással, annyi különbséggel, hogy itt olvasási jogokat kap a másodlagos helyen lévő adatokhoz. Ha az elsődleges adatközpont ideiglenesen elérhetetlenné válna, továbbra is olvashatja az adatokat a másodlagos helyről. Ezt rendkívül hasznos lehet. Például lehet egy olyan webalkalmazása, amely ilyenkor írásvédett módba vált, és a másodlagos példányra mutat, így valamilyen szinten továbbra is hozzáférést biztosít, még ha a frissítsek nem is érhetők el. 
+Az írásvédett georedundáns tárolás megegyezik a GRS tárolással, annyi különbséggel, hogy itt olvasási jogokat kap a másodlagos helyen lévő adatokhoz. Ha az elsődleges adatközpont ideiglenesen elérhetetlenné válna, továbbra is olvashatja az adatokat a másodlagos helyről. Ezt rendkívül hasznos lehet. Például lehet egy olyan webalkalmazása, amely ilyenkor írásvédett módba vált, és a másodlagos példányra mutat, így valamilyen szinten továbbra is hozzáférést biztosít, még ha a frissítsek nem is érhetők el.
 
 > [!IMPORTANT]
 > A tárfiók létrehozása után módosíthatja az adatok replikálási módját, kivéve ha a fiók létrehozásakor a ZRS módot választotta. Azonban ügyeljen arra, hogy ha az  LRS-ről  GRS-re vagy RA- GRS-re vált, akkor lehetséges, hogy egyszeri adatátviteli díjat kell fizetnie.

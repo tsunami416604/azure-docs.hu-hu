@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 11/06/2017
 ms.author: barbkess
 ms.openlocfilehash: 2349708f607364c34926a2ea1baa025201934973
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse táblák statisztikák kezelése
 > [!div class="op_single_selector"]
@@ -421,7 +421,7 @@ AND     st.[user_created] = 1
 ## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS() példák
 DBCC SHOW_STATISTICS() statisztika objektumon belül tárolt adatainak megjelenítése. Ezek az adatok származnak három részből áll.
 
-1. Fejléc
+1. Élőfej
 2. Sűrűség vektoros
 3. Hisztogram
 

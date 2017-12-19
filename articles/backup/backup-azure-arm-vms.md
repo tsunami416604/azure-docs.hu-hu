@@ -16,18 +16,13 @@ ms.topic: article
 ms.date: 8/15/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40983a3de104238d09b976b5fcf2419da42c1bba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 892a88a2bc9d492f8a3afe59c05b4729f4830e6d
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése Recovery Services-tárolóba
-> [!div class="op_single_selector"]
-> * [Recovery Services-tároló virtuális gépek mentésére](backup-azure-arm-vms.md)
-> * [Biztonsági másolatot a virtuális gépek mentési tárolóba](backup-azure-vms.md)
->
->
 
 Ez a cikk részletesen biztonsági mentése Azure virtuális gépeken (telepített Resource Manager és klasszikus telepített) a Recovery Services-tároló. Virtuális gépek biztonsági mentéséről a munka nagyobb része a előkészítése. Előtt készítsen biztonsági másolatot, vagy egy virtuális gép védelmét, végre kell hajtania a [Előfeltételek](backup-azure-arm-vms-prepare.md) készítse fel a környezetet a virtuális gépek védelmére. Miután befejezte az előfeltételeket, majd is kezdeményezhető a pillanatképek készítése a virtuális gép biztonsági mentési művelet.
 

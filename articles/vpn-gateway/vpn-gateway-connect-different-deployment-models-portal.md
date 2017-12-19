@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2017
 ms.author: cherylmc
 ms.openlocfilehash: 8fd058d74d00ecc980d295ee6bd9680ff832f891
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok csatlakoztatása a különböző üzembe helyezési modellel, a portál használatával
 
@@ -80,7 +80,7 @@ Ebben a konfigurációban az a virtuális hálózatok közötti IPsec/IKE VPN-al
 
 A következő táblázat a példa Vnetek és helyi helyek definiálásának módját példáját mutatja be:
 
-| Virtual Network | Címterület | Régió | Csatlakozik a helyi hálózati telephely |
+| Virtual Network | Címtartomány | Régió | Csatlakozik a helyi hálózati telephely |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA nyugati régiója | RMVNetLocal (192.168.0.0/16) |
 | RMVNet | (192.168.0.0/16) |USA keleti régiója |ClassicVNetLocal (10.0.0.0/24) |
@@ -179,7 +179,7 @@ Virtuális hálózati átjáró létrehozása előtt először hozza létre az �
 
 **Példaértékek:** helyi hálózati átjáró = ClassicVNetLocal
 
-| Virtual Network | Címterület | Régió | Csatlakozik a helyi hálózati telephely |Átjáró nyilvános IP-címe|
+| Virtual Network | Címtartomány | Régió | Csatlakozik a helyi hálózati telephely |Átjáró nyilvános IP-címe|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA nyugati régiója | RMVNetLocal (192.168.0.0/16) |A nyilvános IP-cím, amely hozzá van rendelve a ClassicVNet átjáró|
 | RMVNet | (192.168.0.0/16) |USA keleti régiója |ClassicVNetLocal (10.0.0.0/24) |A nyilvános IP-cím, amely a RMVNet átjáró van hozzárendelve.|

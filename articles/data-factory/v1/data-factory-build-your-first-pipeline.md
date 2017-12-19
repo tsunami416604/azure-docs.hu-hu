@@ -16,10 +16,10 @@ ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
 ms.openlocfilehash: a1a0679b91304df5cbc3dcaec14abfeaaa25c04f
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Oktatóanyag: Felépítheti első folyamatát átalakítására adatok Hadoop-fürt használatával
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/02/2017
 
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [gyors üzembe helyezés: hozzon létre egy Azure Data Factory 2-es verzióját használó adat-előállító](../quickstart-create-data-factory-dot-net.md).
+> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Ha a Data Factory szolgáltatás előzetes verzióban elérhető 2. verzióját használja, tekintse meg a [Gyors útmutató: Adat-előállító létrehozása az Azure Data Factory 2. verziójának használatával](../quickstart-create-data-factory-dot-net.md) című cikket.
 
 Ebben az oktatóanyagban a első Azure data factory és olyan adatokat hoz létre. A feldolgozási sor bemeneti adatok átalakítja az Azure HDInsight (Hadoop) eredményezett kimeneti adatokat fürtökön Hive parancsfájl futtatásával.  
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
 ms.openlocfilehash: c3fa22bd599026b0838b134e26062d9837df703e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Virtuális hálózati átjáró és az Azure hálózati figyelő PowerShell kapcsolatok hibáinak elhárítása
 
@@ -66,7 +66,7 @@ Az a **részletek** szakasz az ablak a **állapot** lapon állapotát jeleníti 
 |Tárolási elérési útja     |  A tárfiók és tároló, amely tartalmazza a naplók (Ha bármelyik keletkezett a futtatás során) elérési útja. Ez a beállítás nem maradnak, ha kilép a portálon.        |
 |Összefoglalás     | Az erőforrás állapotának összegzését.        |
 |Részletek     | Az erőforrás állapota részletes tájékoztatást.        |
-|Legutóbbi futtatás     | Az az idő az utolsó idejű hibaelhárításhoz lett futott.        |
+|Utolsó futtatás     | Az az idő az utolsó idejű hibaelhárításhoz lett futott.        |
 
 
 A **művelet** lapon általános útmutatást nyújt a probléma megoldásához. Is művelet az a probléma, ha egy hivatkozás által biztosított további útmutatást. Abban az esetben nincs további útmutatás, ha a válasz biztosít nyissa meg a támogatási esetet URL-címét.  A válasz és tartalmát képező tulajdonságaival kapcsolatos további információkért látogasson el a [hálózati figyelő hibaelhárítása – áttekintés](network-watcher-troubleshoot-overview.md)

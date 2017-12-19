@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: e849f7952962d177f40ce99307ef1c305e089827
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-10"></a>Megtudhatja, milyen a következő ugrás típusa a következő ugrás funkció használata az Azure CLI 1.0 Azure hálózati figyelőt használ
 
@@ -55,7 +55,7 @@ azure network watcher next-hop -g resourceGroupName -n networkWatcherName -t tar
 > [!NOTE]
 Ha a virtuális Gépnek több hálózati adapter legyen, és IP-továbbítás engedélyezve van, bármely, a hálózati adapterek, akkor a hálózati adapter paramétert (-i nic-id) meg kell adni. Ellenkező esetben nem kötelező.
 
-## <a name="review-results"></a>Tekintse át az eredményeket
+## <a name="review-results"></a>Eredmények áttekintése
 
 Amikor végzett, a eredményei. Továbbá az erőforrás típusa a következő ugrás IP-címet adja vissza.
 
@@ -70,7 +70,7 @@ Az alábbi listában a jelenleg rendelkezésre álló NextHopType értékeket mu
 
 * Internet
 * VirtualAppliance
-* Pedig
+* VirtualNetworkGateway
 * VnetLocal
 * HyperNetGateway
 * VnetPeering

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo;ricksal
 ms.openlocfilehash: 35935e911f1f17989beb71978396c6d1b7d601d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="android-sdk-integration-for-azure-mobile-engagement"></a>Az Azure Mobile Engagement Android SDK-integráció
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Ez a dokumentum ismerteti az összes integrációs és konfigurációs beállít
 ## <a name="prerequisites"></a>Előfeltételek
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-android-prereqs.md)]
 
-## <a name="advanced-features"></a>A speciális funkciók
+## <a name="advanced-features"></a>Speciális funkciók
 ### <a name="reporting-features"></a>Jelentési szolgáltatások
 Ezeket a szolgáltatásokat is hozzáadhat:
 

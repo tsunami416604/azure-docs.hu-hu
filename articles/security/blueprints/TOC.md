@@ -54,6 +54,8 @@
 #### [Megfelelőség – UK-OFFICIAL](uk-official-three-tier-applications-overview.md)
 ##### [Áttekintés](uk-official-three-tier-applications-overview.md)
 ##### [Alapelvek áttekintése](uk-official-three-tier-applications-principles-overview.md)
+#### [Megfelelőség – Pénzügyi szolgáltatások](financial-services-regulated-workloads.md)
+##### [Pénzügyi szolgáltatások szabályozott számítási feladatokhoz](financial-services-regulated-workloads.md)
 
 # Első lépések
 ## [Ismerkedés az Azure biztonsági szolgáltatásaival](../azure-security-getting-started.md)

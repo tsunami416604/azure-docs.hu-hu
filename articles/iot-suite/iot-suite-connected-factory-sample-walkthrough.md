@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2017
+ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 237ca28c699984e89127a95b2141fe9131ad868c
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 88fe50460baf8b7180da113b33a03120f39cf44f
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Előre konfigurált csatlakoztatott gyár megoldás – bemutató
 
@@ -166,11 +166,11 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
     - TCP/TLS által védett kommunikációt használ.
     - Ez a lépés az adatközpontban történik.
 
-11. A webböngésző a csatlakoztatott gyári webalkalmazáshoz csatlakozik.
-    - Rendereli a csatlakoztatott gyári irányítópultot.
+11. A webböngésző a csatlakoztatott gyár webalkalmazásához csatlakozik.
+    - Rendereli a csatlakoztatott gyár irányítópultját.
     - HTTPS-en keresztül csatlakozik.
-    - A csatlakoztatott gyári alkalmazás eléréséhez az Azure Active Directoryn keresztül kell hitelesíteni a felhasználót.
-    - A csatlakoztatott gyári alkalmazásba irányuló összes WebApi-hívást hamisítás elleni tokenek védik.
+    - A csatlakoztatott gyár alkalmazásának eléréséhez az Azure Active Directoryn keresztül kell hitelesíteni a felhasználót.
+    - A csatlakoztatott gyár alkalmazásába irányuló összes WebApi-hívást hamisítás elleni tokenek védik.
 
 12. Amikor adatfrissítés történik, a csatlakoztatott gyári webalkalmazás frissített adatokat küld a webböngészőnek.
     - A SignalR protokollt használja.
@@ -190,7 +190,7 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
     - Beolvassa az összes ismert eszközét az IoT Hubról.
     - Socketen vagy Secure WebSocketen keresztüli TLS protokollon keresztüli MQTT-t használ.
 
-3. A webböngésző a csatlakoztatott gyári webalkalmazáshoz csatlakozik, és rendereli a csatlakoztatott gyári irányítópultot.
+3. A webböngésző a csatlakoztatott gyár webalkalmazásához csatlakozik, és rendereli a csatlakoztatott gyár irányítópultját.
     - HTTPS-t használ.
     - A felhasználó kiválasztja azt az OPC UA-kiszolgálót, amelyhez csatlakozni kíván.
 
@@ -199,7 +199,7 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
 
 5. Az OPC-proxyátvitel kérést kap az OPC UA-veremtől, hogy TCP szoftvercsatorna-kapcsolatot létesítsen az OPC UA-kiszolgálóval.
     - Csak lekéri a TCP hasznos adatokat és módosítás nélkül használja őket.
-    - Ez a lépés a csatlakoztatott gyári webalkalmazásban történik.
+    - Ez a lépés a csatlakoztatott gyár webalkalmazásában történik.
 
 6. Az OPC-proxy (ügyfélösszetevő) megkeresi az OPC-proxy (kiszolgáló-összetevő) eszközt az IoT Hub eszközjegyzékében. Ezután meghívja az OPC-proxy (kiszolgáló-összetevő) eszközmetódusát az IoT Hubon.
     - TCP/TLS protokollon keresztüli HTTPS-t használ az OPC-proxy kereséséhez.
@@ -215,7 +215,7 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
 
 10. Az OPC-proxy (kiszolgáló-összetevő) szoftvercsatornája fogadja a választ.
     - Az OPC-proxy az eszközmetódus visszatérési értékeként küldi el az adatokat az IoT Hubra és az OPC-proxyra (ügyfélösszetevő).
-    - Ezeket az adatokat az OPC UA-szoftvercsatornára kézbesíti a rendszer a csatlakoztatott gyári alkalmazásban.
+    - Ezeket az adatokat az OPC UA-verembe kézbesíti a rendszer a csatlakoztatott gyári alkalmazásban.
 
 11. A csatlakoztatott gyári webalkalmazás visszaküldi az OPC UA-kiszolgálótól kapott OPC UA-specifikus adatokkal kiegészült OPC UX-et a webböngészőnek renderelésre.
     - Az OPC-címtérben való böngészés és az OPC-címtérben lévő csomópontokra történő függvényalkalmazás közben az OPC böngészői UX HTTPS-en keresztüli, hamisításgátló jogkivonatokkal védett AJAX-hívásokkal kéri le az adatokat a csatlakoztatott gyár webalkalmazásából.
@@ -225,7 +225,7 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
 > Az OPC-proxy (kiszolgáló-összetevő) és az OPC-proxy (ügyfél) összetevő elvégzi a 4-10. lépéseket az OPC UA-kommunikációhoz kapcsolódó összes TCP-forgalomhoz.
 
 > [!NOTE]
-> A csatlakoztatott gyár webalkalmazásán belüli OPC UA-kiszolgáló és OPC UA-verem esetén az OPC-proxy kommunikáció átlátszó, és a hitelesítésre és titkosításra vonatkozó összes OPC UA biztonsági funkció érvényben van.
+> A csatlakoztatott gyár webalkalmazásán belüli OPC UA-kiszolgáló és OPC UA-verem esetén az OPC–proxy kommunikáció átlátszó, és a hitelesítésre és titkosításra vonatkozó összes OPC UA biztonsági funkció érvényben van.
 
 ## <a name="next-steps"></a>Következő lépések
 

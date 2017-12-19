@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: Mingfeiy;willzhan;Juliako
 ms.openlocfilehash: 5b69e804809f834e81221fb2787a997a52dbe286
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe
 > [!div class="op_single_selector"]
@@ -53,9 +53,9 @@ A következő táblázat ismerteti az AMS JWT jogkivonat.
 | Kiállító | A választott kibocsátó karakterláncot Secure Token Service (STS) |
 | --- | --- |
 | Célközönség |A használt STS a célközönség karakterlánc |
-| Jogcímek |Jogcímek egy készletét |
+| Igénylések |Jogcímek egy készletét |
 | NotBefore |A token érvényességének kezdő |
-| Lejár |A token érvényességének vége |
+| Elévül |A token érvényességének vége |
 | SigningCredentials |A kulcs, amelyet használ PlayReady licenckiszolgáló, castLabs licenckiszolgáló és STS, annak oka lehet szimmetrikus vagy aszimmetrikus kulcs. |
 
 ### <a name="jwt-token-in-castlabs"></a>A castLabs JWT jogkivonat

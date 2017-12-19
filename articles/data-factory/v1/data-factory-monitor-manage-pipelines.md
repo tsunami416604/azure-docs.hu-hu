@@ -16,10 +16,10 @@ ms.date: 10/15/2017
 ms.author: spelluru
 robots: noindex
 ms.openlocfilehash: ccc0755385d2f170939e5c19f32b168132b6839b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Figyelheti és kezelheti az Azure Data Factory-folyamatok az Azure portál és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Ez a szakasz azt is ismerteti, hogyan dataset szelet átkerül egy állapotból 
    ![Keresse meg az összes > adat-előállítók](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 3. Az a **adat-előállítók** panelen válassza ki az adat-előállító kíváncsiak vagyunk.
 
-    ![Válassza ki az adat-előállító](./media/data-factory-monitor-manage-pipelines/select-data-factory.png)
+    ![Adat-előállító kiválasztása](./media/data-factory-monitor-manage-pipelines/select-data-factory.png)
 
    A data factory kezdőlapjának kell megjelennie.
 
@@ -86,7 +86,7 @@ A dataset szeletek adat-előállító a következő állapotok egyike lehet:
 
 <table>
 <tr>
-    <th align="left">Állapot</th><th align="left">Alállapota</th><th align="left">Leírás</th>
+    <th align="left">Állapot</th><th align="left">Alállapot</th><th align="left">Leírás</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozás</td><td>ScheduleTime</td><td>A szelet futtatásának időpontjában még nem érkezett.</td>
@@ -104,7 +104,7 @@ A dataset szeletek adat-előállító a következő állapotok egyike lehet:
 <td>ActivityResume</td><td>A tevékenység szüneteltetve van, és nem tudja futtatni a szeleteket, amíg a tevékenység folytatja a működését.</td>
 </tr>
 <tr>
-<td>Próbálja meg újra</td><td>Tevékenység végrehajtási lesz hajtva.</td>
+<td>Retry</td><td>Tevékenység végrehajtási lesz hajtva.</td>
 </tr>
 <tr>
 <td>Ellenőrzés</td><td>Érvényesítés még a még nem indult el.</td>
@@ -114,24 +114,24 @@ A dataset szeletek adat-előállító a következő állapotok egyike lehet:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Esetbejegyzések</td><td>Ellenőrzése</td><td>Ellenőrzése folyamatban van.</td>
+<td rowspan="2">Folyamatban</td><td>Érvényesítés</td><td>Ellenőrzése folyamatban van.</td>
 </tr>
 <td>-</td>
 <td>A szelet feldolgozása folyamatban van.</td>
 </tr>
 <tr>
-<td rowspan="4">Nem sikerült</td><td>Időtúllépésbe került</td><td>A tevékenység végrehajtási tevékenység által megengedett érték időt vett igénybe.</td>
+<td rowspan="4">Sikertelen</td><td>Időtúllépésbe került</td><td>A tevékenység végrehajtási tevékenység által megengedett érték időt vett igénybe.</td>
 </tr>
 <tr>
 <td>Törölve</td><td>A szelet felhasználói művelet megszakította.</td>
 </tr>
 <tr>
-<td>Ellenőrzés</td><td>Sikertelen volt.</td>
+<td>Ellenőrzés</td><td>Az érvényesítés nem sikerült.</td>
 </tr>
 <tr>
 <td>-</td><td>A szelet jön létre, illetve érvényesítése sikertelen.</td>
 </tr>
-<td>Készen áll</td><td>-</td><td>A szelet készen áll a felhasználásra.</td>
+<td>Kész</td><td>-</td><td>A szelet készen áll a felhasználásra.</td>
 </tr>
 <tr>
 <td>Kihagyva</td><td>None</td><td>A szelet feldolgozása folyamatban nem.</td>
@@ -366,11 +366,11 @@ Ez a példa állít be az előfizetés az összes adat-előállítók kapcsolato
 
 A következő táblázat az elérhető műveletek és állapotok (és részállapotok) listáját tartalmazza.
 
-| A művelet neve | status | A részállapot |
+| Művelet neve | status | A részállapot |
 | --- | --- | --- |
-| RunStarted |Megkezdődött |Indulás alatt |
+| RunStarted |Elindítva |Indulás alatt |
 | RunFinished |Nem sikerült / sikeres volt. |FailedResourceAllocation<br/><br/>Sikeres<br/><br/>FailedExecution<br/><br/>Időtúllépésbe került<br/><br/>< megszakítva<br/><br/>FailedValidation<br/><br/>Elhagyott |
-| OnDemandClusterCreateStarted |Megkezdődött | |
+| OnDemandClusterCreateStarted |Elindítva | |
 | OnDemandClusterCreateSuccessful |Sikeres | |
 | OnDemandClusterDeleted |Sikeres | |
 

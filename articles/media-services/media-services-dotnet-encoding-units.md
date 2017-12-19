@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 12/16/2017
 ms.author: juliako;milangada;
-ms.openlocfilehash: 72a8729d22a9e76c8076d7a3347619a2163e4f09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a1bf91c3b3e9dd4d42d84f205a9bc07a71525c2
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>A kódolás méretezése a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -29,6 +29,10 @@ ms.lasthandoff: 10/11/2017
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 
+
+> [!NOTE]
+> A legújabb verzióra Java SDK és az Java fejlesztés első [első lépései a Java-ügyféllel SDK a Media Services](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use). <br/>
+> A Media Services SDK legújabb PHP letöltéséhez 0.5.7 a Microsoft/WindowAzure csomag verziója a keres a [Packagist tárház](https://packagist.org/packages/microsoft/windowsazure#v0.5.7).  
 
 ## <a name="overview"></a>Áttekintés
 > [!IMPORTANT]

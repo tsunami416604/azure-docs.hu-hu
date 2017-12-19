@@ -6,11 +6,11 @@
       href: overview.md
 - name: Gyors útmutatók
   items:
-    - name: Felügyelt alkalmazás létrehozása az Azure CLI-vel
+    - name: Felügyelt alkalmazás létrehozása
       href: managed-apps-quickstart-cli.md
 - name: Oktatóanyagok
   items:
-    - name: Szolgáltatáskatalógusban elérhető alkalmazás létrehozása
+    - name: Felügyelt alkalmazásfájlok létrehozása
       href: publish-service-catalog-app.md
 - name: Példák
   items:
@@ -26,7 +26,7 @@
       href: create-uidefinition-overview.md
     - name: Kezelt erőforrások frissítése
       href: update-managed-resources.md
-    - name: Szolgáltatáskatalógusban elérhető alkalmazás közzététele – portál
+    - name: Közzététel a portál használatával
       href: publish-portal.md
 - name: Referencia
   items:

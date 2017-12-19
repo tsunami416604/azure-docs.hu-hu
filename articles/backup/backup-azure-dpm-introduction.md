@@ -15,18 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 04a03436d554d9f06eed0fbdf5cf34a786061e21
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: c22e6fc85e88d89007107c8c3bad142ac91e9d12
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Számítási feladatok Azure-ba való biztonsági mentésének előkészítése a DPM-mel
 > [!div class="op_single_selector"]
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
-> * [Az Azure Backup Server (klasszikus)](backup-azure-microsoft-azure-backup-classic.md)
-> * [SCDPM (klasszikus)](backup-azure-dpm-introduction-classic.md)
 >
 >
 
@@ -113,7 +111,7 @@ A tároló hitelesítőadat-fájlja csak a regisztrációs munkafolyamat során 
 A tárolói hitelesítő adatok fájlját az Azure-portálról egy biztonságos csatornán keresztül letöltődik. Az Azure Backup szolgáltatás nem érzékeli a tanúsítványhoz tartozó titkos kulcsot, és a titkos kulcs nem őrzi meg a portál vagy a szolgáltatás. Az alábbi lépések segítségével töltse le a tárolói hitelesítő adatok fájlját a helyi számítógépen.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Nyissa meg, amelyhez Recovery Services-tároló, amely kívánja DPM regisztrálását a gép.
+2. Nyissa meg a Recovery Services-tároló, amelyet szeretne regisztrálni a DPM-számítógépről.
 3. Alapértelmezés szerint megnyílik beállítások panelen. Ha be van zárva, kattintson a **beállítások** tároló irányítópult beállítások panel megnyitásához. A beállítások panelen, kattintson a **tulajdonságok**.
 
     ![Tároló panelének megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
@@ -131,7 +129,7 @@ A portál a tároló hitelesítő adatait, a tároló neve és az aktuális dát
 ### <a name="3-install-backup-agent"></a>3. Biztonsági mentési ügynök telepítése
 Miután létrehozta az Azure Backup-tárolóban, az ügynök telepíthető mindegyik a Windows gép (Windows Server, a Windows ügyfél, a System Center Data Protection Manager-kiszolgáló vagy Azure biztonsági mentési kiszolgálóként működő számítógép), amely lehetővé teszi, hogy készítsen biztonsági másolatot az adat és alkalmazás az Azure-bA.
 
-1. Nyissa meg, amelyhez Recovery Services-tároló, amely kívánja DPM regisztrálását a gép.
+1. Nyissa meg a Recovery Services-tároló, amelyet szeretne regisztrálni a DPM-számítógépről.
 2. Alapértelmezés szerint megnyílik beállítások panelen. Ha be van zárva, kattintson a **beállítások** beállítások panel megnyitásához. A beállítások panelen, kattintson a **tulajdonságok**.
 
     ![Tároló panelének megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
@@ -139,7 +137,7 @@ Miután létrehozta az Azure Backup-tárolóban, az ügynök telepíthető minde
 
     ![Letöltés](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
-   Ha az ügynök le van töltve, kattintson duplán az Azure Backup szolgáltatás ügynökének telepítésének indításakor MARSAgentInstaller.exe. Válassza ki a telepítési mappa és az ügynök számára szükséges ideiglenes mappa. A gyorsítótár helyére szabad területet, amely a biztonsági mentési adatok legalább 5 %-át kell rendelkeznie.
+   Ha az ügynök le, futtassa a MARSAgentInstaller.exe az Azure Backup szolgáltatás ügynökének telepítésének indításakor. Válassza ki a telepítési mappa és az ügynök számára szükséges ideiglenes mappa. A gyorsítótár helyére szabad területet, amely a biztonsági mentési adatok legalább 5 %-át kell rendelkeznie.
 4. Ha csatlakozni az internethez, a proxykiszolgálót használni a **proxykonfigurációt** képernyőn, írja be a proxy-kiszolgáló adatait. Ha egy hitelesített proxykiszolgálót használ, adja meg a felhasználói nevet és jelszót adatokat ezen a képernyőn.
 5. Az Azure Backup szolgáltatás ügynökének telepíti a .NET-keretrendszer 4.5 és Windows PowerShell (Ha még nem érhető el) a telepítés befejezéséhez.
 6. Az ügynök telepítése után **Bezárás** az ablak.

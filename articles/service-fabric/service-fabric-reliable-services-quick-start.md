@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: f67b69e7ad1f7588280de82669040bad5ec6172b
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 > [!div class="op_single_selector"]
@@ -224,7 +224,7 @@ Miután a szolgáltatás fut, a létrehozott esemény Windows (nyomkövetés) es
 
 [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)
 
-[Az alkalmazásfrissítés](service-fabric-application-upgrade.md)
+[Alkalmazásfrissítés](service-fabric-application-upgrade.md)
 
 [Fejlesztői útmutató a Reliable Services](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
