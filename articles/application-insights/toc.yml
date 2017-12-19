@@ -51,6 +51,8 @@
           href: app-insights-windows-desktop.md
         - name: ASP.NET-mag
           href: app-insights-asp-net-core.md
+        - name: Konzol
+          href: application-insights-console.md
     - name: Java-alkalmazások figyelése
       items:
         - name: Webalkalmazások
