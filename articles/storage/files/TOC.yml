@@ -24,6 +24,8 @@
   items:
     - name: Tervezés és kialakítás
       items:
+        - name: Tárfiók-beállítások
+          href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Az Azure Files üzembe helyezésének megtervezése
           href: storage-files-planning.md
         - name: Az Azure Files üzembe helyezése
