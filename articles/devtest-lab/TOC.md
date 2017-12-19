@@ -61,6 +61,9 @@
 
 ## [A labor skálázása](devtest-lab-scale-lab.md)
 
+## Integrálás a CI/CD-vel
+### [Laborok integrálása VSTS CI/CD-folyamatába](devtest-lab-integrate-ci-cd-vsts.md)
+
 # Referencia
 ## [CLI 2.0](/cli/azure/lab)
 ## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)

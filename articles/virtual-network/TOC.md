@@ -5,6 +5,7 @@
 ## [Virtuális hálózati szolgáltatásvégpontok](virtual-network-service-endpoints-overview.md)
 ## [Virtuális hálózatot az Azure-szolgáltatásokhoz](virtual-network-for-azure-services.md)
 ## [Biztonság](security-overview.md)
+## [Tárolóalapú hálózatkezelés](container-networking.md)
 ## [Az üzletmenet folytonossága](virtual-network-disaster-recovery-guidance.md)
 ## [IP-címzés](virtual-network-ip-addresses-overview-arm.md)
 ## [Védelem DDOS-támadások ellen](ddos-protection-overview.md)

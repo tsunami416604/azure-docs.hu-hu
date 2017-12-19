@@ -16,10 +16,10 @@ ms.date: 10/15/2017
 ms.author: spelluru
 robots: noindex
 ms.openlocfilehash: 65b5389837dc1d1693b1c4326b98264c8d75fd06
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Figyelheti és kezelheti az Azure Data Factory adatcsatornák a figyelés és felügyelet alkalmazással
 > [!div class="op_single_selector"]
@@ -179,7 +179,7 @@ Tevékenység windows a következő állapotok valamelyikében lehet:
 <td>ActivityResume</td><td>A tevékenység szüneteltetve van, és nem futtatható a tevékenység windows folytatásáig.</td>
 </tr>
 <tr>
-<td>Próbálja meg újra</td><td>A tevékenység végrehajtási lesz hajtva.</td>
+<td>Retry</td><td>A tevékenység végrehajtási lesz hajtva.</td>
 </tr>
 <tr>
 <td>Ellenőrzés</td><td>Érvényesítés még a még nem indult el.</td>
@@ -189,24 +189,24 @@ Tevékenység windows a következő állapotok valamelyikében lehet:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Esetbejegyzések</td><td>Ellenőrzése</td><td>Ellenőrzése folyamatban van.</td>
+<td rowspan="2">Folyamatban</td><td>Érvényesítés</td><td>Ellenőrzése folyamatban van.</td>
 </tr>
 <td>-</td>
 <td>A tevékenység ablakban feldolgozása folyamatban van.</td>
 </tr>
 <tr>
-<td rowspan="4">Nem sikerült</td><td>Időtúllépésbe került</td><td>A tevékenység végrehajtási tevékenység által megengedett érték időt vett igénybe.</td>
+<td rowspan="4">Sikertelen</td><td>Időtúllépésbe került</td><td>A tevékenység végrehajtási tevékenység által megengedett érték időt vett igénybe.</td>
 </tr>
 <tr>
 <td>Törölve</td><td>A tevékenység ablakban felhasználói művelet megszakította.</td>
 </tr>
 <tr>
-<td>Ellenőrzés</td><td>Sikertelen volt.</td>
+<td>Ellenőrzés</td><td>Az érvényesítés nem sikerült.</td>
 </tr>
 <tr>
 <td>-</td><td>Tevékenységéhez generált vagy érvényesítése nem sikerült.</td>
 </tr>
-<td>Készen áll</td><td>-</td><td>A tevékenység ablakban készen áll a felhasználásra.</td>
+<td>Kész</td><td>-</td><td>A tevékenység ablakban készen áll a felhasználásra.</td>
 </tr>
 <tr>
 <td>Kihagyva</td><td>-</td><td>A tevékenység ablak nincs feldolgozva.</td>
@@ -324,10 +324,10 @@ A következő táblázat a rendelkezésre álló eseményeket és állapotokat (
 
 | esemény neve | status | A részállapot |
 | --- | --- | --- |
-| A tevékenység futtatása megkezdődött |Megkezdődött |Indulás alatt |
+| A tevékenység futtatása megkezdődött |Elindítva |Indulás alatt |
 | A tevékenység futtatása befejeződött |Sikeres |Sikeres |
-| A tevékenység futtatása befejeződött |Nem sikerült |Nem sikerült erőforrás-elosztás<br/><br/>Sikertelen végrehajtása<br/><br/>Túllépte az időkorlátot<br/><br/>Érvényesítés<br/><br/>Elhagyott |
-| Igény szerinti HDI-fürtöt létrehozni elindítva |Megkezdődött |-|
+| A tevékenység futtatása befejeződött |Sikertelen |Nem sikerült erőforrás-elosztás<br/><br/>Sikertelen végrehajtása<br/><br/>Időtúllépést okozott<br/><br/>Érvényesítés<br/><br/>Elhagyott |
+| Igény szerinti HDI-fürtöt létrehozni elindítva |Elindítva |-|
 | Igény szerinti HDI-fürtnek sikeresen létrehozva |Sikeres |-|
 | Igény szerinti HDI-fürtnek törlése |Sikeres |-|
 

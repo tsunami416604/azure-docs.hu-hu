@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
 ms.openlocfilehash: b70780b2e1d169aced3412f6fe6d13ad4dab82be
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Esemény összevonásának és a gyűjtemény Linux Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Egy feltöltése és naplógyűjtéshez módja Linux Azure Diagnostics (LAD) bő
 ### <a name="service-fabric-platform-events"></a>A Service Fabric platform események
 A Service Fabric bocsát ki néhány out-of-az-box naplók keresztül [LTTng](http://lttng.org), beleértve a működési események vagy futásidejű események. Ezek a naplók tárolására használt, amely a fürt Resource Manager-sablon meghatározza a hely. Futtasson, vagy állítsa be a tárfiókadatok, keresse meg a címke **AzureTableWinFabETWQueryable** , és keressen **StoreConnectionString**.
 
-### <a name="application-events"></a>Alkalmazás-események
+### <a name="application-events"></a>Alkalmazásesemények
  Ha a szoftver tagolása leírt módon, hogy az alkalmazások és szolgáltatások kódból kibocsátott események. Szöveges naplófájlok – például LTTng ír naplózási megoldások is használhatja. További információ a nyomkövetési az alkalmazás LTTng dokumentációjában találhat.
 
 [Figyelése és diagnosztizálása szolgáltatásai a helyi számítógép fejlesztési telepítő](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).

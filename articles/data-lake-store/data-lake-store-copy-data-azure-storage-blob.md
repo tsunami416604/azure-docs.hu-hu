@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 10/03/2017
 ms.author: nitinme
 ms.openlocfilehash: 2dd327f4e4abf19d41a54919c8b9c2e488d34d68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>Adatok másolása az Azure Storage-blobokból a Data Lake Store-ba
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ A paraméterek a szintaxist a leírása a következő:
 | SourceKey |Adja meg a hozzáférési kulcsot az Azure storage-blob adatforrásra vonatkozóan. Ez azért szükséges, csak ha a forrás egy blob-tároló vagy egy blobot. |
 | Fiók |**Választható**. Akkor használja, ha azt szeretné, a másolási feladat futtatása az Azure Data Lake Analytics-fiók használatával. Ha használja a /Account lehetőséget a szintaxissal, de nem adja meg a Data Lake Analytics-fiók, AdlCopy egy alapértelmezett fiók használatával futtatni a feladatot. Is ha ezt a beállítást használja, hozzá kell adnia a forrás (Azure Storage-Blobba) és a cél (az Azure Data Lake Store) adatforrásaként a Data Lake Analytics-fiókhoz. |
 | egység |Itt adhatja meg, amely jelzi a másolási feladatot a Data Lake Analytics egységek száma. Ez a beállítás nem kötelező, ha a **/fiók** beállítással adhatja meg a Data Lake Analytics-fiók. |
-| Minta |Adja meg a reguláris kifejezéssel mintát, amely azt jelzi, mely blobokkal vagy a fájlok másolása. AdlCopy használja a megfelelő kis-és nagybetűket. Az alapértelmezett használható, ha nincs minta van megadva a mintája, másolja az összes elemet. Több fájl minták megadása nem támogatott. |
+| Mintázat |Adja meg a reguláris kifejezéssel mintát, amely azt jelzi, mely blobokkal vagy a fájlok másolása. AdlCopy használja a megfelelő kis-és nagybetűket. Az alapértelmezett használható, ha nincs minta van megadva a mintája, másolja az összes elemet. Több fájl minták megadása nem támogatott. |
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>Használják AdlCopy (önálló) adatok másolása az Azure Storage-blobba
 1. Nyisson meg egy parancssort, és keresse meg azt a könyvtárat, AdlCopy futtató, általában `%HOMEPATH%\Documents\adlcopy`.
@@ -72,7 +72,7 @@ A paraméterek a szintaxist a leírása a következő:
 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-    >[AZURE.NOTE] A fenti szintaxist határozza meg, hogy a fájl másolása egy mappába a Data Lake Store-fiókban. AdlCopy eszköz egy mappát hoz létre, ha a megadott mappanév nem létezik.
+    >[AZURE.NOTE]A fenti szintaxist határozza meg, hogy a fájl másolása egy mappába a Data Lake Store-fiókban. AdlCopy eszköz egy mappát hoz létre, ha a megadott mappanév nem létezik.
 
     A rendszer bekéri a hitelesítő adatok megadása az Azure-előfizetés alapján, amely rendelkezik a Data Lake Store-fiók. Egy a következőhöz hasonló kimenetet fog látni:
 

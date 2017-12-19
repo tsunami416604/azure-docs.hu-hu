@@ -16,10 +16,10 @@ ms.date: 01/31/2017
 ms.author: jroth
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 4218b6d274abbeda542c1507aec998ba56f5c145
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (hagyományos üzembe helyezési modell)
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Ez a témakör ismerteti, hogyan egy Azure virtuális gépen futó SQL Server-p�
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ha az erőforrás-kezelő virtuális gépeket használ, tekintse meg [csatlakozás az SQL Server virtuális gép az Azure Resource Manager használatával](../sql/virtual-machines-windows-sql-connect.md).
 
 ## <a name="connection-scenarios"></a>Kapcsolat-forgatókönyvek
-Az ügyfél csatlakozik egy virtuális gépen futó SQL Server módja attól függően, hogy az ügyfél és a machine/hálózati konfigurációja helyét. Ezek a forgatókönyvek a következők:
+Az ügyfél csatlakozik egy virtuális gépen futó SQL Server módja attól függően, hogy az ügyfél és a machine/hálózati konfigurációja helyét. Ezek a forgatókönyvek a következőket biztosítják:
 
 * [Kapcsolódás SQL Server ugyanazon a felhőszolgáltatásban található](#connect-to-sql-server-in-the-same-cloud-service)
 * [Csatlakozás az SQL-kiszolgálón az interneten keresztül](#connect-to-sql-server-over-the-internet)

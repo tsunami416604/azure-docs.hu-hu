@@ -15,27 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/3/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: b8a770323d115390d323352826457eee62be5f6f
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 9b3584a93766be6052c822f40328169910de26c7
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
-> [!div class="op_single_selector"]
-> * [Erőforrás-kezelő modell](backup-azure-arm-vms-prepare.md)
-> * [Klasszikus modell](backup-azure-vms-prepare.md)
->
->
 
 Ez a cikk a biztonsági mentése egy erőforrás-kezelő telepített virtuális gép (VM) a környezet előkészítése a lépéseit ismerteti. A leírt eljárások lépés használja az Azure-portálon.  
 
 Az Azure Backup szolgáltatás kétféle tárolók (biztonságimásolat-tárolók és a recovery services-tárolók) a virtuális gépek védelmére. A mentési tároló klasszikus telepítési modellel telepített virtuális gépek védelmére. A recovery services-tároló védi **mindkét klasszikus telepített és erőforrás-kezelő telepített virtuális gépek**. A Resource Manager telepített virtuális gépek védelméhez a Recovery Services-tárolónak kell használnia.
 
 > [!NOTE]
-> Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Lásd: [készítse elő a környezetet a biztonsági mentése Azure virtuális gépek](backup-azure-vms-prepare.md) talál részletes információt használata a klasszikus telepítési modell virtuális gépek.
->
->
+> Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). 
 
 Mielőtt védeni, vagy készítsen biztonsági másolatot egy erőforrás-kezelő telepített virtuális gép (VM), ellenőrizze, az Előfeltételek létezik:
 
@@ -45,7 +38,7 @@ Mielőtt védeni, vagy készítsen biztonsági másolatot egy erőforrás-kezel�
 * Ellenőrizze a hálózati kapcsolatot
 * Linux virtuális gépekhez, abban az esetben, ha szeretné testre szabni a biztonsági környezetet az alkalmazás konzisztens biztonsági másolatok kérjük, kövesse a [pillanatkép előtti és a pillanatkép utáni parancsfájlok konfigurálásának lépései](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)
 
-Ha tudja, hogy ezek a feltételek már létezik a környezetben, majd folytassa a [készítsen biztonsági másolatot a virtuális gépek cikk](backup-azure-vms.md). Ha szeretné beállítani, vagy ellenőrizze, az Előfeltételek bármelyike Ez a cikk végigvezeti Önt a készíti elő az, hogy az megfelel a lépéseket.
+Ha tudja, hogy ezek a feltételek már létezik a környezetben, majd folytassa a [készítsen biztonsági másolatot a virtuális gépek cikk](backup-azure-arm-vms.md). Ha szeretné beállítani, vagy ellenőrizze, az Előfeltételek bármelyike Ez a cikk végigvezeti Önt a készíti elő az, hogy az megfelel a lépéseket.
 
 ##<a name="supported-operating-system-for-backup"></a>Támogatott operációs rendszer biztonsági mentése
  * **Linux**: Az Azure Backup az [Azure által támogatott disztribúciókat](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) támogatja, a Core OS Linux kivételével. _Más kerüljön-a-saját-Linux terjesztéseket is előfordulhat, hogy működni, amíg a Virtuálisgép-ügynök érhető el a virtuális gépen, a Python létezik támogatása. Azonban azt hitelesíti ezeket terjesztéseket, a biztonsági mentéshez._
@@ -58,7 +51,7 @@ Mielőtt a környezet előkészítése, tartsa szem előtt a korlátozások vona
 * Virtuális gépek biztonsági mentését adatokkal 1023GB-nál nagyobb mérete nem támogatott.
 
 > [!NOTE]
-> Biztonsági mentések rendelkező virtuális gépek támogatásához a private Preview verziójára kell > nem felügyelt 1 TB-os lemezeken. A részletekért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
+> Rendelkezünk egy privát előzetes verzióval olyan virtuális gépek biztonsági mentésének támogatásához, amelyeknél a nem felügyelt lemezek mérete meghaladja az 1 TB-ot. A részletekért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
 >
 >
 
@@ -69,8 +62,9 @@ Mielőtt a környezet előkészítése, tartsa szem előtt a korlátozások vona
 * Egy meglévő virtuális gép cseréje a visszaállítás során nem támogatott. Ha úgy próbálja visszaállítani a virtuális gép, ha a virtuális gép létezik, a visszaállítási művelet sikertelen.
 * Kereszt-régió biztonsági mentése és visszaállítása nem támogatottak.
 * Készíthet biztonsági másolatot az összes nyilvános régióiba Azure virtuális gépek (lásd a [ellenőrzőlista](https://azure.microsoft.com/regions/#services) a támogatott régiók). A régiót, amelyben keres jelenleg nem támogatott, ha már nem jelenik a legördülő lista tároló létrehozása során.
-* A tartományvezérlők visszaállítását (DC) virtuális Gépet, amely része egy multi-tartományvezérlő-konfiguráció támogatott csak a PowerShell segítségével. Tudjon meg többet az [multi-DC tartományvezérlő visszaállítása](backup-azure-restore-vms.md#restoring-domain-controller-vms).
-* Az alábbi speciális beállításokkal rendelkező virtuális gépek visszaállításakor csak a PowerShell használatával támogatott. A visszaállítási munkafolyamat a felhasználói felület használatával létrehozott virtuális gépek mindaddig nem lesz a hálózati konfigurációt, a visszaállítási művelet befejeződése után. További tudnivalókért lásd: [visszaállítását virtuális gépek speciális hálózati konfigurációkkal](backup-azure-restore-vms.md#restoring-vms-with-special-network-configurations).
+* A tartományvezérlők visszaállítását (DC) virtuális Gépet, amely része egy multi-tartományvezérlő-konfiguráció támogatott csak a PowerShell segítségével. Tudjon meg többet az [multi-DC tartományvezérlő visszaállítása](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
+* Az alábbi speciális beállításokkal rendelkező virtuális gépek visszaállításakor csak a PowerShell használatával támogatott. A visszaállítási munkafolyamat a felhasználói felület használatával létrehozott virtuális gépek mindaddig nem lesz a hálózati konfigurációt, a visszaállítási művelet befejeződése után. További tudnivalókért lásd: [visszaállítását virtuális gépek speciális hálózati konfigurációkkal](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
+
   * Virtuális gépek a terheléselosztó-konfigurációja (belső és külső)
   * Virtuális gépek több foglalt IP-címmel
   * Virtuális gépek több hálózati adapterrel
@@ -232,8 +226,6 @@ Az alábbi példa képen lépéseit mutatja be, a három kvórumbeállítási sz
 * Proxy VM lehetővé teszi a bejövő forgalom virtuális gépek a virtuális hálózat.
 * A hálózati biztonsági csoport (NSG) nevű Elégtelen-zárolási kell egy biztonsági szabály engedélyezése kimenő internetforgalom Proxy virtuális gépről.
 
-![NSG a HTTP-proxy telepítési diagram](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
-
 A nyilvános internethez való kommunikációhoz HTTP proxyk használatára, kövesse az alábbi lépéseket:
 
 #### <a name="step-1-configure-outgoing-network-connections"></a>1. lépés A kimenő hálózati kapcsolatok konfigurálása
@@ -285,16 +277,10 @@ HttpProxy.Port=<proxy port>
 
 #### <a name="step-2-allow-incoming-connections-on-the-proxy-server"></a>2. lépés A proxykiszolgáló bejövő kapcsolatok engedélyezése:
 1. Nyissa meg a proxykiszolgáló, a Windows tűzfal. A legegyszerűbben úgy lehet hozzáférni a tűzfal fokozott biztonságú Windows tűzfal kereséséhez.
-
-    ![Nyissa meg a tűzfal](./media/backup-azure-vms-prepare/firewall-01.png)
 2. A Windows tűzfal párbeszédpanelen kattintson a jobb gombbal **bejövő szabályok** kattintson **új szabály létrehozása...** .
-
-    ![Új szabály létrehozása](./media/backup-azure-vms-prepare/firewall-02.png)
 3. Az a **új bejövő szabály varázsló**, válassza ki a **egyéni** választás, a **szabálytípus** kattintson **következő**.
 4. A lapon válassza ki a **Program**, válassza a **minden program** kattintson **következő**.
 5. Az a **protokoll és portok** lapon adja meg a következő adatokat, majd kattintson **következő**:
-
-    ![Új szabály létrehozása](./media/backup-azure-vms-prepare/firewall-03.png)
 
    * a *protokolltípus* válasszon *TCP*
    * a *helyi port* válasszon *adott*, az alábbi mezőben adja meg a ```<Proxy Port>``` be van állítva.
@@ -323,6 +309,6 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 ## <a name="next-steps"></a>Következő lépések
 Most, hogy előkészítette a környezetet az biztonsági mentése a virtuális Gépet, a következő logikai lépésre biztonsági mentés létrehozásához. A tervezési cikk virtuális gépek biztonsági mentéséről további részletes információkat tartalmazza.
 
-* [Készítsen biztonsági másolatot a virtuális gépek](backup-azure-vms.md)
+* [Készítsen biztonsági másolatot a virtuális gépek](backup-azure-arm-vms.md)
 * [A virtuális gép biztonsági mentési infrastruktúra megtervezése](backup-azure-vms-introduction.md)
 * [Virtuális gépek biztonsági mentéseinek kezelése](backup-azure-manage-vms.md)

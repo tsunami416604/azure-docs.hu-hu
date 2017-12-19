@@ -16,11 +16,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jejiang
-ms.openlocfilehash: de0c83e4c99894f98de18eb089ce11cdf5c70f2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26d8399ce4ea23b51677def85b3732468dcbc02f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-visual-studio-connected-service-preview"></a>Azure Cosmos DB: a Visual Studio csatlakoztatott szolgáltatása (előzetes verzió)
 
@@ -119,8 +119,8 @@ Ebben a dokumentumban a következőket mutattuk be:
 
 Most, hogy a Csatlakoztatott szolgáltatás működik az Azure Cosmos DB-fiókjával, folytassa a következő oktatóanyagok egyikével, és kezdje el fejleszteni saját megoldását:
 
-* [Fejlesztés a DocumentDB API-val .NET-keretrendszerben](tutorial-develop-documentdb-dotnet.md).
-* [Azure Cosmos DB: A DocumentDB API kezdeti lépéseit ismertető oktatóanyag](documentdb-get-started.md).
+* [Fejlesztés az SQL API-val .NET-keretrendszerben](tutorial-develop-documentdb-dotnet.md).
+* [Azure Cosmos DB: Az SQL API kezdeti lépéseit ismertető oktatóanyag](documentdb-get-started.md).
 * Méret- és teljesítménytesztelést szeretne végezni az Azure Cosmos DB használatával? Tekintse meg a következőt: [Teljesítmény- és mérettesztelés az Azure Cosmos DB használatával](performance-testing.md).
 * Ismerje meg, hogyan [monitorozhat egy Azure Cosmos DB-fiókot](monitor-accounts.md).
 

@@ -14,18 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/16/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 231dd61f95267b3a504ed70e9b3a5abc470b69b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b259009a8d96e81a141e7718c0d54d40d7b67d1
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windows-kiszolgálóra vagy -ügyfélre a Resource Manager-alapú üzemi modell használatával
-> [!div class="op_single_selector"]
-> * [Azure Portal](backup-azure-restore-windows-server.md)
-> * [Klasszikus portál](backup-azure-restore-windows-server-classic.md)
->
->
 
 Ez a cikk azt ismerteti, hogyan adatok helyreállítását a biztonsági mentési tárolóból. Adatok visszaállítása, használja az adatok helyreállítása varázsló a Microsoft Azure Recovery Services (MARS) ügynök. Adatok helyreállításakor lehetősége:
 

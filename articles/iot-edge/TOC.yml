@@ -32,6 +32,12 @@
       href: how-to-deploy-monitor.md
     - name: IoT Core-eszköz kiépítése
       href: how-to-install-iot-core.md
+    - name: A VS Code használata IoT Edge-megoldások fejlesztéséhez
+      items:
+        - name: 'C# modul fejlesztése és üzembe helyezése'
+          href: how-to-vscode-develop-csharp-module.md
+        - name: 'C# modul hibakeresése'
+          href: how-to-vscode-debug-csharp-module.md
     - name: Hibaelhárítás
       href: troubleshoot.md
 - name: Alapelvek

@@ -15,18 +15,13 @@ ms.workload: storage-backup-recovery
 ms.date: 11/28/2017
 ms.author: markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddd45dfb1f9e08add7a61a42e4f9b570dc25495d
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: b873337cf69ea1dda956ebf8c004754a7737e79c
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Készítsen biztonsági másolatot a virtuális gépek AzureRM.RecoveryServices.Backup-parancsmagok használatával
-> [!div class="op_single_selector"]
-> * [Resource Manager](backup-azure-vms-automation.md)
-> * [Klasszikus](backup-azure-vms-classic-automation.md)
->
->
 
 Ez a cikk bemutatja, hogyan Azure PowerShell-parancsmagok segítségével biztonsági mentése és helyreállítása Azure virtuális gép (VM) a Recovery Services-tároló. Recovery Services-tároló egy Azure Resource Manager-erőforrás és védelmét az adatok és eszközök is az Azure Backup, és az Azure Site Recovery szolgáltatásban. Recovery Services-tároló segítségével Azure Service Manager telepített virtuális gépek és az Azure Resource Manager telepített virtuális gépek védelme.
 

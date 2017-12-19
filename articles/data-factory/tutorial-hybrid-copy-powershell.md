@@ -1,6 +1,6 @@
 ---
-title: "Adatok másolása az SQL Serverről a Blob Storage-ba az Azure Data Factory használatával | Microsoft Docs"
-description: "Megismerheti az adatok a helyszíni adattárolókból az Azure-beli felhőbe, az Azure Data Factory saját üzemeltetésű integrációs moduljával történő másolásának folyamatát."
+title: "Adatok másolása az SQL Server-adatbázisból Blob Storage-tárolóba az Azure Data Factory használatával | Microsoft Docs"
+description: "Megismerheti az adatok a helyszíni adattárolókból az Azure-beli felhőbe, az Azure Data Factory saját üzemeltetésű Integration Runtime átjáróval történő másolásának folyamatát."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: ba47f3e3f331929b884f27f49bf6e484ff363765
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 5708bf3550725fb85cf5a75f1e3c05543d2eb816
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/13/2017
 ---
-# <a name="tutorial-copy-data-from-on-premises-sql-server-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Serverről az Azure Blob Storage-ba
-Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
+# <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
+Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű Integration Runtime átjárót, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
 
 > [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd [a Data Factory 1. verziójának dokumentációját](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Ez a cikk az Azure Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd [a Data Factory 1. verziójának dokumentációját](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
-> Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md). 
+> Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. További információkért lásd: [Az Azure Data Factory bemutatása](introduction.md). 
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
-> * Hozzon létre egy saját üzemeltetésű integrációs modult.
+> * Hozzon létre egy saját üzemeltetésű Integration Runtime átjárót.
 > * SQL Server- és Azure Storage-beli társított szolgáltatások létrehozása. 
 > * SQL Server- és Azure Blob-adatkészletek létrehozása.
 > * Folyamat létrehozása másolási tevékenységgel az adatok áthelyezéséhez
@@ -40,94 +40,102 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 ### <a name="azure-subscription"></a>Azure-előfizetés
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha még nem rendelkezik Azure-előfizetéssel, első lépésként [hozzon létre egy ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ### <a name="azure-roles"></a>Azure-szerepkörök
-Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie. Az Azure Portalon kattintson a **felhasználónévre** a jobb felső sarokban, majd válassza az **Engedélyek** elemet az előfizetésben található engedélyek megtekintéséhez. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. Ha szeretne példautasításokat látni egy felhasználó szerepkörhöz adására, olvassa el a [Szerepkörök hozzáadása](../billing/billing-add-change-azure-subscription-administrator.md) című cikket.
+Az adat-előállító példányok létrehozásához annak a felhasználói fióknak, amellyel belép az Azure-ba, a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie. 
 
-### <a name="sql-server-201420162017"></a>SQL Server 2014/2016/2017
-Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk **forrásadattárként**. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol egy helyszíni SQL Server-adatbázisból (forrás) egy Azure Blob Storage tárolóba (fogadó). Hozzon létre egy **emp** nevű táblát az SQL Server-adatbázisban, és szúrjon be a táblába néhány mintabejegyzést. 
+Az előfizetésben található engedélyek megtekintéséhez kattintson az Azure Portalon a felhasználónevére a jobb felső sarokban, majd válassza az **Engedélyek** elemet. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. Ha szeretne példautasításokat látni egy felhasználó szerepkörhöz adására, olvassa el a [Szerepkörök hozzáadása](../billing/billing-add-change-azure-subscription-administrator.md) című cikket.
 
-1. Indítsa el az **SQL Server Management Studiót** a gépen. Ha még nem rendelkezik az SQL Server Management Studióval, telepítse a [Letöltőközpontból](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms). 
-2. Csatlakozzon az SQL-kiszolgálóhoz a hitelesítő adataival. 
-3. Hozzon létre egy mintaadatbázist. A fanézetben kattintson a jobb gombbal az **Adatbázisok** elemre, majd válassza az **Új adatbázis** elemet. Az **Új adatbázis** párbeszédpanelen adjon **nevet** az új adatbázisnak, majd kattintson az **OK** gombra. 
-4. Futtassa az alábbi lekérdezésszkriptet az adatbázison, amely létrehozza az **emp** táblát, és beszúr néhány mintaadatot. A fanézetben kattintson a jobb gombbal a létrehozott **adatbázisra**, majd válassza az **Új lekérdezés** elemet. 
+### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 és 2017
+Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk *forrásadattárként*. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol egy helyszíni SQL Server-adatbázisból (forrás) egy Azure Blob Storage-tárolóba (fogadó). Ezután létre fog hozni egy **emp** nevű táblát az SQL Server-adatbázisban, és beszúr a táblába néhány mintabejegyzést. 
 
-    ```sql   
-    CREATE TABLE dbo.emp
-    (
-        ID int IDENTITY(1,1) NOT NULL,
-        FirstName varchar(50),
-        LastName varchar(50),
-        CONSTRAINT PK_emp PRIMARY KEY (ID)
-    )
+1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [Az SQL Server Management Studio letöltését ismertető](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) szakaszt. 
 
-    INSERT INTO emp VALUES ('John', 'Doe')
-    INSERT INTO emp VALUES ('Jane', 'Doe')
-    GO
-    ```
+2. Csatlakozzon az SQL Server-példányához a hitelesítő adataival. 
+
+3. Hozzon létre egy mintaadatbázist. A fanézetben kattintson a jobb gombbal a **Databases** (Adatbázisok) elemre, majd válassza a **New Database** (Új adatbázis) elemet. 
+ 
+4. Az **New Database** (Új adatbázis) ablakban adjon nevet az új adatbázisnak, majd kattintson az **OK** gombra. 
+
+5. Az **emp** tábla létrehozásához és néhány mintaadat beszúrásához futtassa a következő lekérdezési szkriptet az adatbázison:
+
+   ```
+       INSERT INTO emp VALUES ('John', 'Doe')
+       INSERT INTO emp VALUES ('Jane', 'Doe')
+       GO
+   ```
+
+6. A fanézetben kattintson a jobb gombbal a létrehozott adatbázisra, majd válassza a **New Query** (Új lekérdezés) elemet.
 
 ### <a name="azure-storage-account"></a>Azure Storage-fiók
-Ebben az oktatóanyagban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk **cél-/fogadóadattárként**. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, tekintse meg a [Tárfiók létrehozását](../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol a helyszíni SQL Server-adatbázisból (forrás) az Azure Blob Storage tárolóba (fogadó). 
+Ebben az oktatóanyagban egy általános célú Azure Storage-fiókot (ebben az esetben Azure Blob Storage-tárolót) használunk cél-/fogadóadattárként. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, tekintse meg a [Tárfiók létrehozását](../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol a helyszíni SQL Server-adatbázisból (forrás) az Azure Blob Storage tárolóba (fogadó). 
 
 #### <a name="get-storage-account-name-and-account-key"></a>Tárfióknév és fiókkulcs beszerzése
-Ebben az oktatóanyagban az Azure Storage-fiók nevét és kulcsát használjuk. Az alábbi eljárás bemutatja a tárfióknév és -kulcs beszerzéséhez szükséges lépéseket. 
+Ebben az oktatóanyagban az Azure Storage-fiók nevét és kulcsát használjuk. A tárfiók nevét és kulcsát az alábbi módon szerezheti be: 
 
-1. Nyisson meg egy webböngészőt, és keresse fel az [Azure Portalt](https://portal.azure.com). Jelentkezzen be az Azure-beli felhasználónevével és jelszavával. 
-2. Kattintson a **További szolgáltatások >** elemre a bal oldali menüben, állítson be egy szűrőt a **Tárfiók** kulcsszóval, majd válassza a **Tárfiókok** lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure felhasználónevével és jelszavával. 
+
+2. A bal oldali ablaktáblán válassza ki a **További szolgáltatások** lehetőséget, szűrjön rá a **Tárolás** kulcsszóra, majd válassza ki a **Tárfiókok** lehetőséget.
 
     ![Tárfiók keresése](media/tutorial-hybrid-copy-powershell/search-storage-account.png)
-3. A tárfiókok listájában állítson be szűrőt a tárfiók nevéhez (ha szükséges), majd válassza ki a **tárfiókját**. 
-4. A **Tárfiók** oldalon a menüben válassza a **Hozzáférési kulcsok** elemet.
+
+3. A tárfiókok listájában állítson be szűrőt a tárfiók nevéhez (ha szükséges), majd válassza ki a tárfiókját. 
+
+4. A **Tárfiók** ablakban válassza a **Hozzáférési kulcsok** elemet.
 
     ![Tárfióknév és -kulcs beszerzése](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
-5. Másolja a **Tárfiók neve** és az **1. kulcs** mezők értékét a vágólapra. Illessze be őket a Jegyzettömbbe, vagy bármely más szerkesztőbe, majd mentse a fájlt. Használja az oktatóprogramban használt tárfióknevet és -kulcsot. 
+
+5. Másolja a **Tárfiók neve** és **1. kulcs** mező értékét, majd illessze be őket egy jegyzettömbbe vagy más szerkesztőbe az oktatóanyag későbbi részeiben történő használatra. 
 
 #### <a name="create-the-adftutorial-container"></a>Adftutorial tároló létrehozása 
 Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure Blob Storage-ban. 
 
-1. A **Storage-fiók** lapon váltson át az **Áttekintés** panelre, majd kattintson a **Blobok** elemre. 
+1. A **Tárfiók** ablakban váltson át az **Áttekintés** panelre, majd válassza a **Blobok** elemet. 
 
     ![A Blobok elem választása](media/tutorial-hybrid-copy-powershell/select-blobs.png)
-1. A **Blob service** lapon kattintson az eszköztár **+ Tároló** elemére. 
+
+2. A **Blob service** ablakban válassza a **Tároló** elemet. 
 
     ![Tároló hozzáadása gomb](media/tutorial-hybrid-copy-powershell/add-container-button.png)
-3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra. 
+
+3. Az **Új tároló** ablak **Név** mezőjébe írja be az **adftutorial** nevet, majd kattintson az **OK** gombra. 
 
     ![Tárolónév megadása](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
+
 4. A tárolók listájában kattintson az **adftutorial** elemre.  
 
     ![A tároló kiválasztása](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
-5. Ne zárja be az **adftutorial** **tároló** lapját. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 
-    ![Tároló lap](media/tutorial-hybrid-copy-powershell/container-page.png)
+5. Ne zárja be az **adftutorial** **tároló** ablakát. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
+
+    ![Tároló ablaka](media/tutorial-hybrid-copy-powershell/container-page.png)
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 
-#### <a name="install-powershell"></a>A PowerShell telepítése
-Ha még nincs a gépén, telepítse a PowerShell legújabb verzióját. 
+#### <a name="install-azure-powershell"></a>Az Azure PowerShell telepítése
+Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. 
 
-1. A webböngészőben lépjen az [Azure SDK letöltések és SDK-k](https://azure.microsoft.com/downloads/) lapra. 
-2. A **Parancssori eszközök** -> **PowerShell** szakaszban kattintson a **Windows-telepítés** elemre. 
-3. Futtassa az **MSI**-fájlt az Azure PowerShell telepítéséhez. 
+1. Lépjen az [Azure SDK letöltések](https://azure.microsoft.com/downloads/) lapjára. 
+
+2. A **Parancssori eszközök** terület **PowerShell** szakaszában kattintson a **Telepítés Windows rendszeren** elemre. 
+
+3. Futtassa az MSI-fájlt az Azure PowerShell telepítéséhez. 
 
 Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps). 
 
 #### <a name="log-in-to-powershell"></a>Bejelentkezés a PowerShellbe
 
-1. Indítsa el a gépén a **PowerShellt**. Hagyja megnyitva a PowerShell ablakát a rövid útmutató végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell ezeket a parancsokat.
+1. Indítsa el a PowerShellt a számítógépen, és ne zárja be a gyors üzembe helyezési oktatóanyag végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell ezeket a parancsokat.
 
-    ![A PowerShell indítása](media/tutorial-hybrid-copy-powershell/search-powershell.png)
-1. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt Azure-beli felhasználói nevét és jelszavát:
+    ![A PowerShell elindítása](media/tutorial-hybrid-copy-powershell/search-powershell.png)
+
+2. Futtassa a következő parancsot, majd adja meg az Azure Portalra való bejelentkezéshez használt Azure-beli felhasználói nevét és jelszavát:
        
     ```powershell
     Login-AzureRmAccount
     ```        
-2. Ha több Azure-előfizetéssel is rendelkezik, futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez:
 
-    ```powershell
-    Get-AzureRmSubscription
-    ```
 3. Ha több Azure-előfizetéssel rendelkezik, futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
 
     ```powershell
@@ -136,11 +144,12 @@ Részletes információk: [Az Azure PowerShell telepítése és konfigurálása]
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét (idézőjelek között, például így: `"adfrg"`), majd futtassa a parancsot. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
     ```
+
 2. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához: 
 
     ```powershell
@@ -148,54 +157,54 @@ Részletes információk: [Az Azure PowerShell telepítése és konfigurálása]
     ``` 
 
     Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd futtassa újra a parancsot.
+
 3. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az adat-előállító neveként használhat. A névnek betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat.
 
     > [!IMPORTANT]
-    >  Frissítse az adat-előállító nevét, hogy globálisan egyedi legyen. Például: ADFTutorialFactorySP1127. 
+    >  Frissítse az adat-előállító nevét egy globálisan egyedi névvel. Például: ADFTutorialFactorySP1127. 
 
     ```powershell
     $dataFactoryName = "ADFTutorialFactory"
     ```
-1. Adjon meg egy változót az adat-előállító helyéhez: 
+
+4. Adjon meg egy változót az adat-előállító helyéhez: 
 
     ```powershell
     $location = "East US"
     ```  
-5. Az adat-előállító létrehozásához futtassa az alábbi **Set-AzureRmDataFactoryV2** parancsmagot: 
+
+5. Az adat-előállító létrehozásához futtassa az alábbi `Set-AzureRmDataFactoryV2`-parancsmagot: 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
+    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
-Vegye figyelembe a következő szempontokat:
+> [!NOTE]
+> 
+> * Az adat-előállító nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra.
+>    ```
+>    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
+>    ```
+> * Az adat-előállító példányok létrehozásához annak a felhasználói fióknak, amellyel belép az Azure-ba, a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie.
+> * A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
+> 
+> 
 
-* Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra.
+## <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 
-    ```
-    The specified Data Factory name 'ADFv2TutorialDataFactory' is already in use. Data Factory names must be globally unique.
-    ```
+Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű Integration Runtime az a komponens, amely adatokat másol a gépen futó SQL Server-adatbázisból az Azure Blob Storage-ba. 
 
-* Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie.
-* A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-
-## <a name="create-a-self-hosted-ir"></a>Saját üzemeltetésű integrációs modul létrehozása
-
-Ebben a szakaszban egy saját üzemeltetésű integrációs modult hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely adatokat másol a gépen futó SQL Serverről az Azure Blob Storage-ba. 
-
-1. Hozzon létre egy változót az integrációs modul nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyagban későbbi részében használni fogja. 
+1. Hozzon létre egy változót az Integration Runtime nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyagban későbbi részében használni fogja. 
 
     ```powershell
    $integrationRuntimeName = "ADFTutorialIR"
     ```
-1. Hozzon létre egy saját üzemeltetésű integrációs modult. 
 
-   ```powershell
-   Set-AzureRmDataFactoryV2IntegrationRuntime -Name $integrationRuntimeName -Type SelfHosted -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName
-   ```
+2. Hozzon létre egy saját üzemeltetésű Integration Runtime átjárót. 
 
-   Itt látható a minta kimenete:
+    Itt látható a minta kimenete:
 
-   ```json
+    ```json
     Id                : /subscriptions/<subscription ID>/resourceGroups/ADFTutorialResourceGroup/providers/Microsoft.DataFactory/factories/onpremdf0914/integrationruntimes/myonpremirsp0914
     Type              : SelfHosted
     ResourceGroupName : ADFTutorialResourceGroup
@@ -203,100 +212,120 @@ Ebben a szakaszban egy saját üzemeltetésű integrációs modult hozhat létre
     Name              : myonpremirsp0914
     Description       :
     ```
- 
 
-2. Futtassa az alábbi parancsot a létrehozott integrációs modul állapotának lekéréséhez.
+3. Futtassa az alábbi parancsot a létrehozott Integration Runtime állapotának lekéréséhez:
 
-   ```powershell
+    ```powershell
    Get-AzureRmDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
-   ```
+    ```
 
-   Itt látható a minta kimenete:
+    Itt látható a minta kimenete:
+    
+    ```json
+    Nodes                     : {}
+    CreateTime                : 9/14/2017 10:01:21 AM
+    InternalChannelEncryption :
+    Version                   :
+    Capabilities              : {}
+    ScheduledUpdateDate       :
+    UpdateDelayOffset         :
+    LocalTimeZoneOffset       :
+    AutoUpdate                :
+    ServiceUrls               : {eu.frontend.clouddatahub.net, *.servicebus.windows.net}
+    ResourceGroupName         : <ResourceGroup name>
+    DataFactoryName           : <DataFactory name>
+    Name                      : <Integration Runtime name>
+    State                     : NeedRegistration
+    ```
 
-   ```json
-   Nodes                     : {}
-   CreateTime                : 9/14/2017 10:01:21 AM
-   InternalChannelEncryption :
-   Version                   :
-   Capabilities              : {}
-   ScheduledUpdateDate       :
-   UpdateDelayOffset         :
-   LocalTimeZoneOffset       :
-   AutoUpdate                :
-   ServiceUrls               : {eu.frontend.clouddatahub.net, *.servicebus.windows.net}
-   ResourceGroupName         : <ResourceGroup name>
-   DataFactoryName           : <DataFactory name>
-   Name                      : <Integration Runtime name>
-   State                     : NeedRegistration
-   ```
+4. Futtassa az alábbi parancsot a *hitelesítési kulcsok* lekéréséhez, hogy a saját üzemeltetésű Integration Runtime átjárót regisztrálhassa a Data Factory-szolgáltatásban a felhőben. Másolja be az egyik kulcsot (idézőjelek nélkül) a saját üzemeltetésű Integration Runtime regisztrálásához, amelyet a következő lépésben telepíteni fog a gépére. 
 
-3. Futtassa az alábbi parancsot a **hitelesítési kulcsok** lekéréséhez, hogy a saját üzemeltetésű integrációs modult regisztrálhassa a Data Factory-szolgáltatásban a felhőben. 
+    ```powershell
+    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
+    ```
+    
+    Itt látható a minta kimenete:
+    
+    ```json
+    {
+        "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
+        "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
+    }
+    ```
 
-   ```powershell
-   Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
-   ```
+## <a name="install-the-integration-runtime"></a>Az Integration Runtime telepítése
+1. Töltse le az [Azure Data Factory Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) modult egy helyi Windows-gépre, és futtassa a telepítést. 
 
-   Itt látható a minta kimenete:
+2. A **Microsoft Integration Runtime telepítővarázslójának üdvözlő oldalán** kattintson a **Tovább** gombra.  
 
-   ```json
-   {
-       "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
-       "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
-   }
-   ```    
-4. Másolja be az egyik kulcsot (idézőjelek nélkül) a saját üzemeltetésű integrációs modul regisztrálásához, amelyet a következő lépésben telepíteni fog a gépére.  
+3. A **Végfelhasználói licencszerződés** ablakban fogadja el a felhasználási feltételeket és a licencszerződést, majd válassza a **Tovább** lehetőséget. 
 
-## <a name="install-integration-runtime"></a>Integrációs modul telepítése
-1. [Töltse le](https://www.microsoft.com/download/details.aspx?id=39717) a saját üzemeltetésű integrációs modult egy helyi windowsos gépre, és futtassa a telepítést. 
-2. Az **Üdvözli a Microsoft Integrációs modul telepítővarázsló** oldalon kattintson a **Tovább** gombra.  
-3. A **Végfelhasználói licencszerződés** oldalon fogadja el a felhasználási feltételeket és a licencszerződést, majd kattintson a **Tovább** gombra. 
-4. A **Célmappa** lapon kattintson a **Tovább** gombra. 
-5. **A Microsoft Integrációs modul telepítésre kész** oldalon kattintson a **Telepítés** elemre. 
+4. A **Célmappa** ablakban válassza a **Tovább** lehetőséget. 
+
+5. A **Microsoft Integration Runtime telepítésre kész** ablakban kattintson a **Telepítés** gombra. 
+
 6. Ha figyelmeztető üzenet jelenik meg azzal kapcsolatban, hogy a számítógép használaton kívül automatikus alvó módba lépésre vagy hibernálásra lesz konfigurálva, kattintson az **OK** gombra. 
+
 7. Ha megjelenik az **Energiagazdálkodási lehetőségek** ablak, zárja be, és váltson a telepítési ablakra. 
-8. **A Microsoft Integrációs modul telepítővarázslójának befejezése** lapon kattintson a **Befejezés** gombra.
-9. Az **Integrációs modul regisztrálása (Saját üzemeltetésű)** lapon illessze be az előző szakaszban mentett kulcsot, és kattintson a **Regisztráció** gombra. 
 
-   ![Integrációs modul regisztrálása](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
-2. Az integrációs modul sikeres regisztrációja esetén a következő üzenet jelenik meg:
+8. **A Microsoft Integration Runtime telepítővarázslójának befejező lapján** kattintson a **Befejezés** gombra.
 
-   ![Sikeres regisztráció](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
+9. Az **Integration Runtime (helyi) regisztrálása** ablakban illessze be az előző szakaszban mentett kulcsot, és kattintson a **Regisztráció** gombra. 
 
-3. Az **Új integrációs (Saját üzemeltetésű) modulcsomópont** lapon kattintson a **Tovább** gombra. 
+    ![Az Integration Runtime regisztrálása](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-    ![Új integrációs modulcsomópont lap](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
-4. Az **Intranetes kommunikációs csatorna** lapon kattintson a **Kihagyás** gombra. Választhat TLS/SSL-hitelesítést a csomóponton belüli kommunikációhoz többcsomópontos integrációs modul környezetben. 
+    A helyi Integration Runtime sikeres regisztrációja esetén a következő üzenet jelenik meg: 
 
-    ![Intranetes kommunikációs csatorna lap](media/tutorial-hybrid-copy-powershell/intranet-communication-channel-page.png)
-5. Az **Integrációs modul regisztrálása (Saját üzemeltetésű)** lapon kattintson a **Konfigurációkezelő indítása** gombra. 
-6. A csomópont a felhőszolgáltatáshoz való csatlakozásakor a következő oldal jelenik meg:
+    ![Sikeres regisztráció](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
 
-   ![Csomópont csatlakoztatva](media/tutorial-hybrid-copy-powershell/node-is-connected.png)
-7. Teszteltje az SQL Server-adatbázissal létesített kapcsolatot.
+10. Az **Integration Runtime (helyi) új csomópontja** ablakban kattintson a **Tovább** gombra. 
+
+    ![Integration Runtime új csomópontja ablak](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
+
+11. Az **Intranetes kommunikációs csatorna** ablakban kattintson a **Kihagyás** gombra.  
+    Választhat TLS/SSL-hitelesítést a csomóponton belüli kommunikációhoz többcsomópontos Integration Runtime környezetben.
+
+    ![Intranetes kommunikációs csatorna ablak](media/tutorial-hybrid-copy-powershell/intranet-communication-channel-page.png)
+
+12. Az **Integration Runtime (helyi) regisztrálása** ablakban kattintson **A Configuration Manager indítása** gombra. 
+
+13. A csomópont a felhőszolgáltatáshoz való csatlakozásakor a következő üzenet jelenik meg:
+
+    ![Csomópont csatlakoztatva](media/tutorial-hybrid-copy-powershell/node-is-connected.png)
+
+14. Teszteltje az SQL Server-adatbázissal létesített kapcsolatot az alábbi módon:
 
     ![Diagnosztika lap](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)   
 
-    - A **Configuration Manager** ablakban váltson a **Diagnosztika** lapra.
-    - Válassza az **SqlServer** értéket az **Adatforrás típusa** számára.
-    - Adja meg a **kiszolgáló** nevét.
-    - Adja meg az **adatbázis** nevét. 
-    - Válassza ki a **hitelesítési** módot. 
-    - Adja meg a **felhasználó** nevét. 
-    - Adja meg a felhasználónévhez tartozó **jelszót**.
-    - Kattintson a **Teszt** gombra, és ellenőrizze, hogy az integrációs modul kapcsolódik-e az SQL Serverhez. Sikeres kapcsolódás esetén egy zöld pipa jelenik meg. Sikertelen csatlakozás esetén a hibához kapcsolódó hibaüzenet jelenik meg. Javítsa ki a hibákat, és ellenőrizze, hogy az integrációs modul kapcsolódik-e az SQL Serverhez.
-    - Jegyezze fel ezeket az értékeket (hitelesítési típus, kiszolgáló, adatbázis, felhasználó, jelszó). Az oktatóanyag részében használni fogja őket. 
+    a. A **Configuration Manager** ablakban váltson a **Diagnosztika** lapra.
+
+    b. Az **Adatforrás típusa** mezőben válassza az **SqlServer** lehetőséget.
+
+    c. Adja meg a kiszolgáló nevét.
+
+    d. Adja meg az adatbázis nevét. 
+
+    e. Válassza ki a hitelesítési módot. 
+
+    f. Adja meg a felhasználónevet. 
+
+    g. Adja meg a felhasználónévhez tartozó jelszót.
+
+    h. Annak ellenőrzéséhez, hogy az Integration Runtime kapcsolódik-e az SQL Serverhez, kattintson a **Teszt** gombra.  
+    Sikeres csatlakozás esetén egy zöld pipa jelenik meg. Sikertelen csatlakozás esetén a hibához kapcsolódó hibaüzenet jelenik meg. Javítsa ki a hibákat, és ellenőrizze, hogy az Integration Runtime kapcsolódik-e az SQL Server-példányhoz.
+
+    Jegyezze fel az összes korábbi értéket, hogy az oktatóanyag további részében is felhasználhassa őket.
     
-      
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
-Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóhoz történő társításához. Ebben az oktatóanyagban társítani fogja az Azure Storage-fiókot és a helyszíni SQL Servert az adattárhoz. A társított szolgáltatások azon kapcsolatadatokkal rendelkeznek, amelyeket a Data Factory szolgáltatás használ futtatáskor a hozzájuk való kapcsolódáshoz. 
+Adattárak és a számítási szolgáltatások adat-előállítóhoz történő társításához társított szolgáltatásokat kell létrehoznia az adat-előállítóban. Ebben az oktatóanyagban társítani fogja az Azure Storage-fiókot és a helyszíni SQL Server-példányt az adattárhoz. A társított szolgáltatások azon kapcsolatadatokkal rendelkeznek, amelyeket a Data Factory szolgáltatás használ futtatáskor a hozzájuk való kapcsolódáshoz. 
 
 ### <a name="create-an-azure-storage-linked-service-destinationsink"></a>Azure Storage-beli társított szolgáltatás (cél/fogadó) létrehozása
 Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 
-1. Hozzon létre egy **AzureStorageLinkedService.json** nevű JSON-fájlt a **C:\ADFv2Tutorial** mappában az alábbi tartalommal: Ha még nem létezne, hozza létre az ADFv2Tutorial nevű mappát.  
+1. Hozzon létre egy *AzureStorageLinkedService.json* nevű JSON-fájlt a *C:\ADFv2Tutorial* mappában a következő kóddal. Ha még nem létezik *ADFv2Tutorial* nevű mappa, hozzon létre egyet.  
 
     > [!IMPORTANT]
-    > A fájl mentése előtt az &lt;accountName&gt; és az &lt;accountKey&gt; kifejezést cserélje le az **Azure Storage-fiók** nevére és kulcsára. Az [előfeltételek](#get-storage-account-name-and-account-key) részeként már feljegyezte ezeket.
+    > A fájl mentése előtt az \<accountName> és az \<accountKey> kifejezést cserélje le az Azure Storage-fiókja nevére, illetve kulcsára. Ezeket az [Előfeltételek](#get-storage-account-name-and-account-key) szakaszban jegyezte fel.
 
    ```json
     {
@@ -313,10 +342,9 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
     }
    ```
 
-    Ha a Jegyzettömböt használja, a **Mentés másként** párbeszédpanel **Fájltípus** mezőjénél válassza a **Minden fájl** lehetőséget. Ellenkező esetben a rendszer `.txt` kiterjesztést adhat a fájlhoz. Például: `AzureStorageLinkedService.json.txt`. Ha létrehozza a fájlt a Fájlkezelőben, mielőtt megnyitná a Jegyzettömbben, előfordulhat, hogy nem fogja látni a hozzáadott `.txt` kiterjesztést, mivel alapértelmezés szerint engedélyezve van az **Ismert fájltípusok kiterjesztéseinek elrejtése** beállítás. A továbblépés előtt távolítsa el a hozzáadott `.txt` kiterjesztést. 
-2. Az **Azure PowerShellben** váltson a **C:\ADFv2Tutorial** mappára.
+2. A PowerShellben váltson a *C:\ADFv2Tutorial* mappára.
 
-   Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot az **AzureStorageLinkedService** társított szolgáltatás létrehozásához. 
+3. Futtassa a `Set-AzureRmDataFactoryV2LinkedService` parancsmagot az AzureStorageLinkedService társított szolgáltatás létrehozásához: 
 
    ```powershell
    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -331,17 +359,17 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
     ```
 
-    Ha „fájl nem található” hiba jelenik meg. A `dir` parancs futtatásával ellenőrizheti, hogy a fájl létezik-e. Ha a fájlnévhez tartozó kiterjesztés `.txt` (például AzureStorageLinkedService.json.txt), távolítsa el, majd futtassa ismét a PowerShell-parancsot. 
+    Ha „fájl nem található” hiba jelenik meg, a `dir` parancs futtatásával ellenőrizze, hogy a fájl létezik-e. Ha a fájlnévhez tartozó kiterjesztés *.txt* (például AzureStorageLinkedService.json.txt), távolítsa el, majd futtassa ismét a PowerShell-parancsot. 
 
 ### <a name="create-and-encrypt-a-sql-server-linked-service-source"></a>SQL Server-alapú társított szolgáltatás létrehozása és titkosítása (forrás)
-Ebben a lépésben a helyszíni SQL Servert társítja az adat-előállítóval.
+Ebben a lépésben a helyszíni SQL Server-példányt társítja az adat-előállítóval.
 
-1. Hozzon létre egy **SqlServerLinkedService.json** nevű JSON-fájlt a **C:\ADFv2Tutorial** mappában a következő tartalommal: Válassza ki az SQL Serverhez való kapcsolódáshoz használt **hitelesítési** módszernek megfelelő szakaszt.  
+1. Hozzon létre egy *SqlServerLinkedService.json* nevű JSON-fájlt a *C:\ADFv2Tutorial* mappában a következő kód használatával:
 
     > [!IMPORTANT]
-    > Válassza ki az SQL Serverhez való kapcsolódáshoz használt **hitelesítési** módszernek megfelelő szakaszt.
+    > Válassza ki az SQL Serverhez való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.
 
-    **SQL-hitelesítés (sa) használata esetén másolja a következő JSON-definíciót:**
+    **SQL-hitelesítés használata (sa):**
 
     ```json
     {
@@ -361,7 +389,8 @@ Ebben a lépésben a helyszíni SQL Servert társítja az adat-előállítóval.
         "name": "SqlServerLinkedService"
     }
    ```    
-    **Windows-hitelesítés használata esetén másolja a következő JSON-definíciót:**
+
+    **Windows-hitelesítés használata:**
 
     ```json
     {
@@ -386,19 +415,21 @@ Ebben a lépésben a helyszíni SQL Servert társítja az adat-előállítóval.
         "name": "SqlServerLinkedService"
     }    
     ```
-    > [!IMPORTANT]
-    > - Válassza ki az SQL Serverhez való kapcsolódáshoz használt **hitelesítési** módszernek megfelelő szakaszt.
-    > - Cserélje le az **&lt;integration** **runtime** **name>** értéket az integrációs modul nevére.
-    > - A fájl mentése előtt a **&lt;servername>**, **&lt;databasename>**, **&lt;username>** és **&lt;password>** értékeket cserélje le az SQL Server értékeire.
-    > - Ha perjel karaktert (`\`) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja az escape-karaktert (`\`). Például: `mydomain\\myuser`. 
 
-2. A bizalmas adatok (felhasználónév, jelszó stb.) titkosításához futtassa a **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** parancsmagot. A titkosítás a hitelesítő adatokat az adatvédelmi API (DPAPI) segítségével titkosítja. A titkosított hitelesítő adatok tárolása a saját üzemeltetésű integrációs modul csomópontján helyileg történik (a helyi gépen). A kimenő hasznos adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben az „encryptedLinkedService.json” fájlba), amely titkosított hitelesítő adatokat tartalmaz.
+    > [!IMPORTANT]
+    > - Válassza ki az SQL Server-példányhoz való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.
+    > - Cserélje le az **\<integration runtime name>** értéket az Integration Runtime nevére.
+    > - A fájl mentése előtt a **\<servername>**, **\<databasename>**, **\<username>** és **\<password>** értékeket cserélje le az SQL Server-példány értékeire.
+    > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *sajáttartomány\\\\sajátfelhasználó* értéket. 
+
+2. A bizalmas adatok (felhasználónév, jelszó stb.) titkosításához futtassa a `New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential` parancsmagot.  
+    A titkosítás a hitelesítő adatokat az adatvédelmi API (DPAPI) segítségével titkosítja. A titkosított hitelesítő adatok tárolása a saját üzemeltetésű Integration Runtime csomópontján helyileg történik (a helyi gépen). A kimenő hasznos adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben az *encryptedLinkedService.json* fájlba), amely titkosított hitelesítő adatokat tartalmaz.
     
    ```powershell
    New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
-3. Futtassa az alábbi parancsot, amely létrehozza az **EncryptedSqlServerLinkedService** fájlt:
+3. Futtassa az alábbi parancsot, amely létrehozza az EncryptedSqlServerLinkedService fájlt:
 
    ```powershell
    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
@@ -406,12 +437,12 @@ Ebben a lépésben a helyszíni SQL Servert társítja az adat-előállítóval.
 
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
-Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amelyek a másolási művelet be- és kimeneti adatait képezik majd (Helyszíni SQL Server-adatbázis => Azure Blob Storage).
+Ebben a lépésben bemeneti és kimeneti adatkészleteket hoz létre. Ezek a helyszíni SQL Server-adatbázisból az Azure Blob Storage-ba történő másolási művelet be- és kimeneti adatait képezik majd.
 
-### <a name="create-a-dataset-for-source-sql-database"></a>Adatkészlet létrehozása a forrás SQL-adatbázishoz
-Ebben a lépésben megadhat egy adatkészletet, amely az SQL Server-adatbázisban tárolt adatokat jelöli. Az adatkészlet típusa **SqlServerTable**. Ez az előző lépésben létrehozott **SQL Server társított szolgáltatásra** vonatkozik. A társított szolgáltatás azon **kapcsolatadatokkal** rendelkezik, amelyeket a Data Factory szolgáltatás használ futtatáskor az SQL Serverhez való kapcsolódásra. Ez az adatkészlet határozza meg az **SQL-táblát** az adatokat tartalmazó adatbázisban. Ebben az oktatóanyagban a forrásadatokat az `emp` tábla tartalmazza. 
+### <a name="create-a-dataset-for-the-source-sql-server-database"></a>Adatkészlet létrehozása a forrás SQL Server-adatbázishoz
+Ebben a lépésben megadhat egy adatkészletet, amely az SQL Server-adatbázispéldányban tárolt adatokat jelöli. Az adatkészlet típusa SqlServerTable. Ez az előző lépésben létrehozott SQL Server társított szolgáltatásra vonatkozik. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory szolgáltatás használ futtatáskor az SQL Server-példányhoz való kapcsolódásra. Ez az adatkészlet határozza meg az SQL-táblát az adatokat tartalmazó adatbázisban. Ebben az oktatóanyagban a forrásadatokat az **emp** tábla tartalmazza. 
 
-1. Hozzon létre egy **SqlServerDataset.json** nevű JSON-fájlt a **C:\ADFv2Tutorial** mappában a következő tartalommal:  
+1. Hozzon létre egy *SqlServerDataset.json* nevű JSON-fájlt a *C:\ADFv2Tutorial* mappában a következő kóddal:  
 
     ```json
     {
@@ -443,7 +474,7 @@ Ebben a lépésben megadhat egy adatkészletet, amely az SQL Server-adatbázisba
     }
     ```
 
-2. Az **SqlServerDataset** adatkészlet létrehozásához futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot.
+2. Az SqlServerDataset adatkészlet létrehozásához futtassa a `Set-AzureRmDataFactoryV2Dataset` parancsmagot.
 
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
@@ -459,10 +490,12 @@ Ebben a lépésben megadhat egy adatkészletet, amely az SQL Server-adatbázisba
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-azure-blob-storage"></a>Adatkészlet létrehozása a fogadó Azure Blob Storage-hoz
-Ebben a lépésben az Azure Blob Storage-be másolni kívánt adatokat képviselő adatkészletet adja meg. Az adatkészlet típusa **AzureBlob**. Ez az oktatóanyagban korábban létrehozott **Azure Storage társított szolgáltatásra** vonatkozik. A társított szolgáltatás azon **kapcsolatadatokkal** rendelkezik, amelyeket a Data Factory szolgáltatás használ futtatáskor az Azure Storage-fiókhoz való kapcsolódásra. Ez az **adatkészlet** azt az Azure Storage-beli **mappát** határozza meg, amelybe a rendszer az adatokat másolja az SQL Server-adatbázisból. Ebben az oktatóanyagban a mappa a következő: `adftutorial/fromonprem`, ahol az `adftutorial` a blobtároló, a `fromonprem` pedig a mappa. 
+### <a name="create-a-dataset-for-azure-blob-storage-sink"></a>Adatkészlet létrehozása a Azure Blob Storage-hez (fogadó)
+Ebben a lépésben az Azure Blob Storage-be másolni kívánt adatokat képviselő adatkészletet adja meg. Az adatkészlet típusa AzureBlob. Ez az oktatóanyagban korábban létrehozott Azure Storage társított szolgáltatásra vonatkozik. 
 
-1. Hozzon létre egy **AzureBlobDataset.json** nevű JSON-fájlt a **C:\ADFv2Tutorial** mappában a következő tartalommal:
+A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket az adat-előállító használ futtatáskor az Azure Storage-fiókhoz való kapcsolódásra. Ez az adatkészlet azt az Azure Storage-beli mappát határozza meg, amelybe a rendszer az adatokat másolja az SQL Server-adatbázisból. Ebben az oktatóanyagban a mappa a következő: *adftutorial/fromonprem*, ahol az `adftutorial` a blobtároló, a `fromonprem` pedig a mappa. 
+
+1. Hozzon létre egy *AzureBlobDataset.json* nevű JSON-fájlt a *C:\ADFv2Tutorial* mappában a következő kóddal:
 
     ```json
     {
@@ -483,7 +516,7 @@ Ebben a lépésben az Azure Blob Storage-be másolni kívánt adatokat képvisel
     }
     ```
 
-2. Az **AzureBlobDataset** adatkészlet létrehozásához futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot.
+2. Az AzureBlobDataset adatkészlet létrehozásához futtassa a `Set-AzureRmDataFactoryV2Dataset` parancsmagot.
 
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
@@ -500,9 +533,9 @@ Ebben a lépésben az Azure Blob Storage-be másolni kívánt adatokat képvisel
     ```
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
-Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendelkező folyamatot. A másolási tevékenység az **SqlServerDataset** készletet használja bemeneti adatkészletként, illetve az **AzureBlobDataset** készletet kimeneti adatkészletként. A forrás típusa **SqlSource**, a fogadó típusa **BlobSink**.
+Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendelkező folyamatot. A másolási tevékenység az SqlServerDataset készletet használja bemeneti adatkészletként, illetve az AzureBlobDataset készletet kimeneti adatkészletként. A forrás típusa *SqlSource*, a fogadó típusa *BlobSink*.
 
-1. Hozzon létre egy **SqlServerToBlobPipeline.json** nevű JSON-fájlt a **C:\ADFv2Tutorial** mappában a következő tartalommal:
+1. Hozzon létre egy *SqlServerToBlobPipeline.json* nevű JSON-fájlt a *C:\ADFv2Tutorial* mappában a következő kóddal:
 
     ```json
     {
@@ -538,7 +571,7 @@ Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendel
     }
     ```
 
-2. Az **SQLServerToBlobPipeline** folyamat létrehozásához futtassa a **Set-AzureRmDataFactoryV2Pipeline** parancsmagot.
+2. Az SQLServerToBlobPipeline folyamat létrehozásához futtassa a `Set-AzureRmDataFactoryV2Pipeline` parancsmagot.
 
     ```powershell
     Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
@@ -554,9 +587,8 @@ Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendel
     Parameters        :  
     ```
 
-
 ## <a name="create-a-pipeline-run"></a>Folyamat futásának létrehozása
-Indítsa el az „SQLServerToBlobPipeline” folyamat futását, és őrizze meg a folyamat futtatási azonosítóját későbbi monitorozás céljából.
+Indítsa el az SQLServerToBlobPipeline folyamat futását, és őrizze meg a folyamat futtatási azonosítóját későbbi monitorozás céljából.
 
 ```powershell
 $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'SQLServerToBlobPipeline'
@@ -564,7 +596,7 @@ $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-1. Az **SQLServerToBlobPipeline** folyamat futási állapotának folyamatos ellenőrzéséhez futtassa a következő szkriptet, majd nyomtassa ki a végső eredményt. Másolja/illessze be az alábbi szkriptet a PowerShell-ablakba, majd nyomja le az Enter billentyűt.
+1. Az SQLServerToBlobPipeline folyamat futási állapotának folyamatos ellenőrzéséhez futtassa a következő szkriptet PowerShellben, majd nyomtassa ki a végső eredményt:
 
     ```powershell
     while ($True) {
@@ -600,7 +632,7 @@ $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -
     Error             : {errorCode, message, failureType, target}
     ```
 
-3. Az **SQLServerToBlobPipeline** folyamat futtatási azonosítójának lekéréséhez és a tevékenységfuttatás részletes eredményének áttekintéséhez futtassa az alábbi parancsot: 
+2. Az SQLServerToBlobPipeline folyamat futtatási azonosítójának lekéréséhez és a tevékenységfuttatás részletes eredményének áttekintéséhez futtassa az alábbi parancsot: 
 
     ```powershell
     Write-Host "Pipeline 'SQLServerToBlobPipeline' run result:" -foregroundcolor "Yellow"
@@ -623,15 +655,15 @@ $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -
     ```
 
 ## <a name="verify-the-output"></a>Kimenet ellenőrzése
-A folyamat automatikusan létrehozza a `fromonprem` nevű kimeneti mappát az `adftutorial` blobtárolóban. Győződjön meg arról, hogy a **dbo.emp.txt** fájl megjelenik a kimeneti mappában. 
+A folyamat automatikusan létrehozza a *fromonprem* nevű kimeneti mappát az `adftutorial` blobtárolóban. Győződjön meg arról, hogy a *dbo.emp.txt* fájl megjelenik a kimeneti mappában. 
 
-1. Az Azure Portal **adftutorial** tároló lapján kattintson a **Frissítés** elemre a kimeneti mappa megtekintéséhez.
+1. Az Azure Portal **adftutorial** tároló ablakában kattintson a **Frissítés** elemre a kimeneti mappa megtekintéséhez.
 
-    ![kimeneti mappa létrehozva](media/tutorial-hybrid-copy-powershell/fromonprem-folder.png)
-2. A mappák listájában kattintson a `fromonprem` elemre. 
+    ![Kimeneti mappa létrehozva](media/tutorial-hybrid-copy-powershell/fromonprem-folder.png)
+2. A mappák listájában válassza a `fromonprem` elemet. 
 3. Ellenőrizze, hogy megjelenik-e a `dbo.emp.txt` nevű fájl.
 
-    ![kimeneti fájl](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
+    ![Kimeneti fájl](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
 
 
 ## <a name="next-steps"></a>Következő lépések
@@ -639,14 +671,14 @@ A példában szereplő folyamat adatokat másol az egyik helyről egy másikra e
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
-> * Hozzon létre egy saját üzemeltetésű integrációs modult.
+> * Hozzon létre egy saját üzemeltetésű Integration Runtime átjárót.
 > * SQL Server- és Azure Storage-beli társított szolgáltatások létrehozása. 
 > * SQL Server- és Azure Blob-adatkészletek létrehozása.
 > * Folyamat létrehozása másolási tevékenységgel az adatok áthelyezéséhez
 > * Folyamat futásának indítása
 > * A folyamat futásának monitorozása.
 
-Az Azure Data Factory által támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+A Data Factory által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) cikk tartalmazza.
 
 Folytassa a következő oktatóanyaggal, amelyben az adatok egy forrásból egy célhelyre történő tömeges másolását ismerheti meg:
 

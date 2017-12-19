@@ -19,7 +19,7 @@ ms.openlocfilehash: 46f7d2ea19a88e65b2d039fdf36d1619c4d74020
 ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse táblák áttekintése
 > [!div class="op_single_selector"]

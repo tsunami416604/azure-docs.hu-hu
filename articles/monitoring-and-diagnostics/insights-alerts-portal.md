@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
 ms.openlocfilehash: 3e09c145d35665ec1c2467b60f06191ac51a5c16
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Hozzon létre metrika riasztások Azure figyelése az Azure-szolgáltatások - Azure-portálon
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ Konfigurálhatja és metrika riasztási szabályok adatainak beolvasása
 
 3. Válassza ki a **riasztás hozzáadása** parancsot, és töltse ki a mezőket.
 
-    ![Riasztások hozzáadása](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
+    ![Riasztás beállítása](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 
 4. **Név** a riasztás szabályt, majd válassza ki a **leírása**, amely értesítési e-mailt is mutatja.
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: shengc
 ms.openlocfilehash: 88ff71956c82d79fb244f1a687debeb726291ae8
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Az Azure Data Factoryben az adatok átalakítása
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Az idő múlásával a Machine Learning scoring-kísérletek a prediktív modell
 
 Lásd: [használata a Machine Learning tevékenységek](transform-data-using-machine-learning.md) ezeket a Machine Learning tevékenységeket vonatkozó további információért. 
 
-## <a name="stored-procedure-activity"></a>A tárolt eljárási tevékenység
+## <a name="stored-procedure-activity"></a>Tárolt eljárás tevékenysége
 Használhatja az SQL Server tárolt eljárási tevékenység a Data Factory-folyamat a következő adatokat tárolja egyikében tárolt eljárás meghívása: Azure SQL Database, Azure SQL Data Warehouse szolgáltatásban a vállalat SQL Server-adatbázis vagy egy Azure virtuális Gépen. Lásd: [tárolt eljárási tevékenység](transform-data-using-stored-procedure.md) cikkben alább.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-tevékenység

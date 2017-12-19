@@ -33,6 +33,10 @@
           href: monitoring-overview-metrics.md
         - name: Riasztások
           href: monitoring-overview-alerts.md
+        - name: Riasztások (előnézet)
+          href: monitoring-overview-unified-alerts.md
+        - name: Naplóriasztások
+          href: monitor-alerts-unified-log.md
         - name: Automatikus méretezés
           href: monitoring-overview-autoscale.md
         - name: Tevékenységnapló
@@ -74,6 +78,8 @@
           href: monitoring-near-real-time-metric-alerts.md
         - name: Riasztások beállítása az Azure Portalon
           href: insights-alerts-portal.md
+        - name: Metrika- vagy naplóriasztások beállítása az Azure Portalon
+          href: monitor-alerts-unified-usage.md
         - name: Riasztások beállítása a parancssori felületről
           href: insights-alerts-command-line-interface.md
         - name: Riasztások beállítása az Azure PowerShell-lel
