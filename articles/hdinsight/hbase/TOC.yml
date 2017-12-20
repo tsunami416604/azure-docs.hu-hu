@@ -271,9 +271,6 @@
         - name: YARN-alkalmazásnaplók elérése
           href: ../hdinsight-hadoop-access-yarn-app-logs.md
           maintainContext: true
-        - name: Az Apache Phoenix és az SQuirreL használata
-          href: ../hdinsight-hbase-phoenix-squirrel.md
-          maintainContext: true
         - name: Filmajánlók létrehozása a Mahout használatával
           href: ../hdinsight-mahout.md
           maintainContext: true

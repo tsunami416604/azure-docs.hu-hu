@@ -32,7 +32,7 @@
 
 ## Adatok betöltése és áthelyezése
 ### [Áttekintés](design-elt-data-loading.md)
-### [Útmutatás](guidance-for-loading-data.md)
+### [Ajánlott eljárások](guidance-for-loading-data.md)
 
 
 ## Integrálás
