@@ -32,6 +32,7 @@
 ### [Licencelt kép engedélyezése](devtest-lab-enable-licensed-images.md)
 ### [Címke hozzáadása egy laborhoz](devtest-lab-add-tag.md)
 ### [Értesítés közzététele tesztkörnyezetben](devtest-lab-announcements.md)
+### [Támogatási információ hozzáadása egy laborhoz](devtest-lab-internal-support-message.md)
 
 ## [Egyéni rendszerkép vagy képlet kiválasztása](devtest-lab-comparing-vm-base-image-types.md)
 
