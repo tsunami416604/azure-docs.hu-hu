@@ -19,7 +19,7 @@ A Blob Storage-fiókokban elérhető a **Hozzáférési szint** attribútum, ame
 * Egy **Gyakori** hozzáférési szint, amely a tárfiókban tárolt objektumok gyakoribb elérésére utal. Az adatait így alacsonyabb hozzáférési költség mellett tárolhatja.
 * Egy **Ritka** hozzáférési szint, amely a tárfiókban tárolt objektumok ritkább elérésére utal. Az adatait így alacsonyabb adattárolási költség mellett tárolhatja.
 
-Ha változik az adatok használati módja, bármikor válthat a hozzáférési rétegek közt. A hozzáférési rétegek módosítása további díjakat vonhat maga után. További részletek: [Blob Storage-fiókok – Árak és számlázás](../articles/storage/blobs/storage-account-options.md#pricing-and-billing).
+Ha változik az adatok használati módja, bármikor válthat a hozzáférési rétegek közt. A hozzáférési rétegek módosítása további díjakat vonhat maga után. További részletek: [Blob Storage-fiókok – Árak és számlázás](../articles/storage/common/storage-account-options.md#pricing-and-billing).
 
 Blob Storage-fiókok további részletei: [Azure Blob Storage: Cool and Hot tiers](../articles/storage/blobs/storage-blob-storage-tiers.md) (Azure Blob Storage: Ritka és Gyakori hozzáférési szintek).
 

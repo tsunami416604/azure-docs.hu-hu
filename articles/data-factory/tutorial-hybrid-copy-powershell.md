@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 5708bf3550725fb85cf5a75f1e3c05543d2eb816
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 5d7506afbc51338973322e4fcb27cbb4352fd513
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
-Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű Integration Runtime átjárót, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
+Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
 
 > [!NOTE]
 > Ez a cikk az Azure Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd [a Data Factory 1. verziójának dokumentációját](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
@@ -31,7 +31,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
-> * Hozzon létre egy saját üzemeltetésű Integration Runtime átjárót.
+> * Hozzon létre egy saját üzemeltetésű integrációs modult.
 > * SQL Server- és Azure Storage-beli társított szolgáltatások létrehozása. 
 > * SQL Server- és Azure Blob-adatkészletek létrehozása.
 > * Folyamat létrehozása másolási tevékenységgel az adatok áthelyezéséhez
@@ -50,7 +50,7 @@ Az előfizetésben található engedélyek megtekintéséhez kattintson az Azure
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 és 2017
 Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk *forrásadattárként*. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol egy helyszíni SQL Server-adatbázisból (forrás) egy Azure Blob Storage-tárolóba (fogadó). Ezután létre fog hozni egy **emp** nevű táblát az SQL Server-adatbázisban, és beszúr a táblába néhány mintabejegyzést. 
 
-1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [Az SQL Server Management Studio letöltését ismertető](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) szakaszt. 
+1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [Az SQL Server Management Studio letöltését ismertető](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) szakaszt. 
 
 2. Csatlakozzon az SQL Server-példányához a hitelesítő adataival. 
 
@@ -194,13 +194,13 @@ Részletes információk: [Az Azure PowerShell telepítése és konfigurálása]
 
 Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű Integration Runtime az a komponens, amely adatokat másol a gépen futó SQL Server-adatbázisból az Azure Blob Storage-ba. 
 
-1. Hozzon létre egy változót az Integration Runtime nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyagban későbbi részében használni fogja. 
+1. Hozzon létre egy változót az integrációs modul nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyagban későbbi részében használni fogja. 
 
     ```powershell
    $integrationRuntimeName = "ADFTutorialIR"
     ```
 
-2. Hozzon létre egy saját üzemeltetésű Integration Runtime átjárót. 
+2. Hozzon létre egy saját üzemeltetésű integrációs modult. 
 
     Itt látható a minta kimenete:
 
@@ -272,7 +272,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
 9. Az **Integration Runtime (helyi) regisztrálása** ablakban illessze be az előző szakaszban mentett kulcsot, és kattintson a **Regisztráció** gombra. 
 
-    ![Az Integration Runtime regisztrálása](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
+    ![Integrációs modul regisztrálása](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
     A helyi Integration Runtime sikeres regisztrációja esetén a következő üzenet jelenik meg: 
 
@@ -283,7 +283,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
     ![Integration Runtime új csomópontja ablak](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
 11. Az **Intranetes kommunikációs csatorna** ablakban kattintson a **Kihagyás** gombra.  
-    Választhat TLS/SSL-hitelesítést a csomóponton belüli kommunikációhoz többcsomópontos Integration Runtime környezetben.
+    Választhat TLS/SSL-hitelesítést a csomóponton belüli kommunikációhoz többcsomópontos integrációs modul környezetben.
 
     ![Intranetes kommunikációs csatorna ablak](media/tutorial-hybrid-copy-powershell/intranet-communication-channel-page.png)
 
@@ -423,7 +423,7 @@ Ebben a lépésben a helyszíni SQL Server-példányt társítja az adat-előál
     > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *sajáttartomány\\\\sajátfelhasználó* értéket. 
 
 2. A bizalmas adatok (felhasználónév, jelszó stb.) titkosításához futtassa a `New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential` parancsmagot.  
-    A titkosítás a hitelesítő adatokat az adatvédelmi API (DPAPI) segítségével titkosítja. A titkosított hitelesítő adatok tárolása a saját üzemeltetésű Integration Runtime csomópontján helyileg történik (a helyi gépen). A kimenő hasznos adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben az *encryptedLinkedService.json* fájlba), amely titkosított hitelesítő adatokat tartalmaz.
+    A titkosítás a hitelesítő adatokat az adatvédelmi API (DPAPI) segítségével titkosítja. A titkosított hitelesítő adatok tárolása a saját üzemeltetésű integrációs modul csomópontján helyileg történik (a helyi gépen). A kimenő hasznos adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben az *encryptedLinkedService.json* fájlba), amely titkosított hitelesítő adatokat tartalmaz.
     
    ```powershell
    New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
@@ -671,7 +671,7 @@ A példában szereplő folyamat adatokat másol az egyik helyről egy másikra e
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
-> * Hozzon létre egy saját üzemeltetésű Integration Runtime átjárót.
+> * Hozzon létre egy saját üzemeltetésű integrációs modult.
 > * SQL Server- és Azure Storage-beli társított szolgáltatások létrehozása. 
 > * SQL Server- és Azure Blob-adatkészletek létrehozása.
 > * Folyamat létrehozása másolási tevékenységgel az adatok áthelyezéséhez

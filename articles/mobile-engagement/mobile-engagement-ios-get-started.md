@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: 1b87a2ebb35b31ee3d3139ecead6267e62eb1033
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 913a60df4ce7c431b1c260135785972aac00c69d
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>Ismerkedés az Azure Mobile Engagement Objective C nyelven írt iOS-alkalmazásokkal való használatával
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -55,26 +55,34 @@ Létre fogunk hozni egy alapszintű alkalmazást az XCode segítségével az int
 3. Kattintson jobb gombbal a projektre, majd válassza az **Add files to** (Fájlok hozzáadása ehhez:) elemet.
 
     ![][1]
+
 4. Lépjen abba a mappába, ahová kibontotta az SDK-t, válassza ki az `EngagementSDK` mappát, kattintson a bal alsó sarokban található **Beállítások** elemre, és ellenőrizze, hogy az **Elemek másolása, ha szükséges** jelölőnégyzet és a célhoz tartozó jelölőnégyzet be van-e jelölve, majd kattintson az **OK** gombra.
 
     ![][2]
+
 5. Nyissa meg a **Build Phases** (Összeállítási fázisok) lapot, majd a **Link Binary With Libraries** (Bináris összekapcsolása könyvtárakkal) menüben adja hozzá a keretrendszereket az alábbiakban láthatók szerint:
 
     ![][3]
+
 6. Lépjen vissza az Azure Portalra az alkalmazás **Connection Info** (Kapcsolati adatok) lapjáról, és másolja a kapcsolati karakterláncot.
 
-    ![][4]
+    ![](../../includes/media/mobile-engagement-create-app-in-portal-new/app-connection-info.png)
 7. Adja hozzá a következő kódsort az **AppDelegate.m** fájlhoz.
 
-        #import "EngagementAgent.h"
+    ```obj-c
+    #import "EngagementAgent.h"
+    ```
 8. Illessze be a kapcsolati karakterláncot a `didFinishLaunchingWithOptions` delegáltba.
 
-        - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-        {
-              [...]   
-              [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
-              [...]
-        }
+    ```obj-c
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+    {
+            [...]   
+            [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
+            [...]
+    }
+    ```
+
 9. `setTestLogEnabled` egy választható utasítás, amely engedélyezi az SDK-naplókat a problémák azonosításához.
 
 ## <a id="monitor"></a>Valós idejű figyelés engedélyezése
@@ -82,10 +90,15 @@ Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felh
 
 1. Nyissa meg a **ViewController.h** fájlt, és importálja az **EngagementViewController.h** fájlt:
 
-    `#import "EngagementViewController.h"`
-2. Cserélje le a **ViewController** felületének főosztályát az `EngagementViewController` fájllal:
+    ```obj-c
+    #import "EngagementViewController.h"
+    ```
 
-    `@interface ViewController : EngagementViewController`
+2. Cserélje le a **ViewController** felületének főosztályát az `EngagementViewController` fájllal:
+ 
+    ```obj-c
+   @interface ViewController : EngagementViewController
+   ```
 
 ## <a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
@@ -107,55 +120,70 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 ### <a name="modify-your-application-delegate"></a>Az alkalmazás delegáltjának módosítása
 1. Az **AppDeletegate.m** fájlban importálja az Engagement Reach modulját.
 
-        #import "AEReachModule.h"
-        #import <UserNotifications/UserNotifications.h>
+    ```obj-c
+    #import "AEReachModule.h"
+    #import <UserNotifications/UserNotifications.h>
+    ```
+
 2. Az `application:didFinishLaunchingWithOptions` módszerben hozzon létre egy Reach modult, és adja át azt az Engagement meglévő inicializációs sorának:
 
-        - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-            AEReachModule * reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
-            [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}" modules:reach, nil];
-            [...]
-            return YES;
-        }
+    ```obj-c
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        AEReachModule * reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
+        [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}" modules:reach, nil];
+        [...]
+        return YES;
+    }
+    ```
 
 ### <a name="enable-your-app-to-receive-apns-push-notifications"></a>APNS leküldéses értesítések fogadásának engedélyezése az alkalmazásban
 1. Adja a következő sort az `application:didFinishLaunchingWithOptions` módszerhez:
 
-        if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
+    ```obj-c
+    if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
+    {
+        if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
         {
-            if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
-            {
-                [UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {}];
-            }else
-            {
-                [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)   categories:nil]];
-            }
-            [application registerForRemoteNotifications];
-        }
-        else
+            [UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {}];
+        }else
         {
-            [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+            [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)   categories:nil]];
         }
+        [application registerForRemoteNotifications];
+    }
+    else
+    {
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+    ```
 2. Adja hozzá a `application:didRegisterForRemoteNotificationsWithDeviceToken` módszert az alábbiak szerint:
 
-        - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-        {
-             [[EngagementAgent shared] registerDeviceToken:deviceToken];
-            NSLog(@"Registered Token: %@", deviceToken);
-        }
+    ```obj-c
+    - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+    {
+            [[EngagementAgent shared] registerDeviceToken:deviceToken];
+        NSLog(@"Registered Token: %@", deviceToken);
+    }
+    ```
+
 3. Adja hozzá a `didFailToRegisterForRemoteNotificationsWithError` módszert az alábbiak szerint:
 
-        - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
-        {
-           NSLog(@"Failed to get token, error: %@", error);
-        }
+    ```obj-c
+    - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+    {
+        NSLog(@"Failed to get token, error: %@", error);
+    }
+    ```
+
 4. Adja hozzá a `didReceiveRemoteNotification:fetchCompletionHandler` módszert az alábbiak szerint:
 
-        - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
-        {
-            [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
-        }
-
+    ```obj-c
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
+    {
+        [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
+    }
+    ```
+    
 [!INCLUDE [mobile-engagement-ios-send-push-push](../../includes/mobile-engagement-ios-send-push.md)]
 
 <!-- URLs. -->
