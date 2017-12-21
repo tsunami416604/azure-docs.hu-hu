@@ -12,11 +12,11 @@ ms.topic: get-started-article
 ms.workload: iaas-sql-server
 ms.date: 10/02/2017
 ms.author: jroth
-ms.openlocfilehash: 787e696edd2a446bec280b763fe5ac591782c8ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f044fcba92eb7aa7f4ac44608571fab3db0e03f5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
 
@@ -37,7 +37,7 @@ Számos oka lehet annak, amiért úgy dönt, az adatokat az Azure-ban tárolja. 
 
 Az Azure virtuális gépeken futó SQL Server a relációs adatok Azure-ban való tárolásának egyik módja. Lehetősége van az Azure SQL Database szolgáltatás használatára is. A virtuális gépen futó SQL Server és az Azure SQL Database közti választásról további információt a [felhőalapú SQL Server-verzió kiválasztását (Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS))](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md) ismertető cikkben talál.
 
-## <a name="create-a-new-sql-vm"></a>Új SQL virtuális gép létrehozása
+## <a id="create"></a>Új SQL virtuális gép létrehozása
 
 Az új SQL-alapú virtuális gép létrehozásának részletes útmutatóját a [Linux rendszerű SQL Server virtuális gép az Azure-ban történő létrehozását](provision-sql-server-linux-virtual-machine.md) ismertető cikkben találja.
 
