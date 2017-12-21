@@ -18,7 +18,8 @@
 ### [Irányítás az Azure-ban](../governance-in-azure.md)
 ### [Adattitkosítás inaktív állapotban](../azure-security-encryption-atrest.md)
 ### Architektúratervek
-#### [Megfelelőség – PCI DSS](payment-processing-blueprint.md)
+#### Megfelelőség – PCI DSS
+##### [Fizetésfeldolgozás a PCI DSS előírásainak megfelelő környezetekben](payment-processing-blueprint.md)
 ##### [Követelmények áttekintése](pci-dss-requirements-overview.md)
 ##### [1. követelmény – tűzfalak](pci-dss-requirement-1-firewall.md)
 ##### [2. követelmény – jelszavak](pci-dss-requirement-2-password.md)
@@ -32,7 +33,8 @@
 ##### [10. követelmény – monitorozás](pci-dss-requirement-10-monitoring.md)
 ##### [11. követelmény – tesztelés](pci-dss-requirement-11-testing.md)
 ##### [12. követelmény – szabályzat](pci-dss-requirement-12-policy.md)
-#### [Megfelelőség – FedRAMP ](fedramp.md)
+#### Megfelelőség – FedRAMP
+##### [Webalkalmazások FedRAMP-hoz](fedramp.md)
 ##### [Biztonsági vezérlők áttekintése](fedramp-controls-overview.md)
 ##### [Hozzáférés-vezérlés](fedramp-access-controls.md)
 ##### [Naplózás és felelősségre vonhatóság](fedramp-audit-accountability-controls.md)
@@ -51,10 +53,11 @@
 ##### [Rendszer- és kommunikációvédelem](fedramp-system-communications-protection-controls.md)
 ##### [Rendszerek és információk integritása](fedramp-system-information-integrity-controls.md)
 ##### [Rendszerek és szolgáltatások beszerzése](fedramp-system-services-acquisition-controls.md)
-#### [Megfelelőség – UK-OFFICIAL](uk-official-three-tier-applications-overview.md)
+#### Megfelelőség – UK-OFFICIAL
+##### [Háromszintű webalkalmazások UK-OFFICIAL-hoz](uk-official-three-tier-applications-overview.md)
 ##### [Áttekintés](uk-official-three-tier-applications-overview.md)
 ##### [Alapelvek áttekintése](uk-official-three-tier-applications-principles-overview.md)
-#### [Megfelelőség – Pénzügyi szolgáltatások](financial-services-regulated-workloads.md)
+#### Megfelelőség – Pénzügyi szolgáltatások
 ##### [Pénzügyi szolgáltatások szabályozott számítási feladatokhoz](financial-services-regulated-workloads.md)
 
 # Első lépések

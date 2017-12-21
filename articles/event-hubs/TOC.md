@@ -22,6 +22,8 @@
 
 # Útmutató
 ## Tervezés és kialakítás
+### [Felügyeltszolgáltatás-identitás (előzetes verzió)](event-hubs-managed-service-identity.md)
+### [Szerepköralapú hozzáférés-vezérlés (előzetes verzió)](event-hubs-role-based-access-control.md)
 ### [Geo-vészhelyreállítás és georeplikáció](event-hubs-geo-dr.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [A hitelesítési és biztonsági modell áttekintése](event-hubs-authentication-and-security-model-overview.md)

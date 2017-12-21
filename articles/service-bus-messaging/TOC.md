@@ -26,6 +26,8 @@
 
 # Útmutató
 ## Tervezés és kialakítás
+### [Felügyeltszolgáltatás-identitás (előzetes verzió)](service-bus-managed-service-identity.md)
+### [Szerepköralapú hozzáférés-vezérlés (előzetes verzió)](service-bus-role-based-access-control.md)
 ### [Prémium szintű üzenettovábbítás](service-bus-premium-messaging.md)
 ### [Azure-üzenetsorok és Azure Service Bus-üzenetsorok összehasonlítása](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ### [Teljesítmény optimalizálása](service-bus-performance-improvements.md)

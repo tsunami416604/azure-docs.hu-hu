@@ -13,18 +13,21 @@
 ## [Modell létrehozása az Azure Portalon (előnézet)](analysis-services-create-model-portal.md)
 
 # Használati útmutató 
-## [Kiszolgáló kezelése](analysis-services-manage.md)
-## [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
-## [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
-## [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md)
 ## [Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)
-## [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
 ## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
+## [Frissítés a REST API-val](analysis-services-async-refresh.md)
 ## [Horizontális felskálázás konfigurálása](analysis-services-scale-out.md)
-## [Kiszolgálónév aliasának konfigurálása](analysis-services-server-alias.md)
-## [Kapcsolódás Excellel](analysis-services-connect-excel.md)
-## [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
-## [.odc fájl létrehozása](analysis-services-odc.md)
+## Kiszolgálófelügyelet
+### [Kiszolgálónév aliasának konfigurálása](analysis-services-server-alias.md)
+### [Kiszolgáló kezelése](analysis-services-manage.md)
+### [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
+### [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
+### [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md)
+## Kapcsolódás
+### [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
+### [Kapcsolódás Excellel](analysis-services-connect-excel.md)
+### [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
+### [.odc fájl létrehozása](analysis-services-odc.md)
 ## oktatóanyagokat
 ### [Az Adventure Works oktatóanyaga](tutorials/aas-adventure-works-tutorial.md)
 ### [1. lecke: Új táblázatos modellprojekt létrehozása](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)

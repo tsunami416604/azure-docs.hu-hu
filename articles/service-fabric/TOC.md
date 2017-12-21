@@ -34,8 +34,6 @@
 ### [3 – A fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
 ### [4 – Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
 
-
-
 # Példák
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=service-fabric)
 ## [Azure PowerShell](service-fabric-powershell-samples.md)
@@ -49,66 +47,61 @@
 ## [Architektúra](service-fabric-architecture.md)
 ## [Terminológia](service-fabric-technical-overview.md)
 
-## Alkalmazások és szolgáltatások összeállítása
-### [Támogatott programozási modellek](service-fabric-choose-framework.md)
-#### [Tárolók](service-fabric-containers-overview.md)
-##### [Docker Compose (előzetes verzió)](service-fabric-docker-compose.md)
-##### [Erőforrások szabályozása](service-fabric-resource-governance.md)
-#### [Reliable Services](service-fabric-reliable-services-introduction.md)
-##### [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)
-##### [A Reliable Services életciklusa – Java](service-fabric-reliable-services-lifecycle-java.md)
-##### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
-##### [Reliable Collections – irányelvek és javaslatok](service-fabric-reliable-services-reliable-collections-guidelines.md)
-##### [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
-##### [Tranzakciók és zárolások](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-##### [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md)
-##### [Reliable Collections-szerializáció](service-fabric-reliable-services-reliable-collections-serialization.md)
-##### [A Reliable State Manager és a Reliable Collection belső elemei](service-fabric-reliable-services-reliable-collections-internals.md)
-##### [Haladó szintű használat](service-fabric-reliable-services-advanced-usage.md)
+## [Támogatott programozási modellek](service-fabric-choose-framework.md)
+### [Tárolók](service-fabric-containers-overview.md)
+#### [Docker Compose (előzetes verzió)](service-fabric-docker-compose.md)
+#### [Erőforrások szabályozása](service-fabric-resource-governance.md)
+### [Reliable Services](service-fabric-reliable-services-introduction.md)
+#### [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)
+#### [A Reliable Services életciklusa – Java](service-fabric-reliable-services-lifecycle-java.md)
+#### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
+#### [Reliable Collections – irányelvek és javaslatok](service-fabric-reliable-services-reliable-collections-guidelines.md)
+#### [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
+#### [Tranzakciók és zárolások](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+#### [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md)
+#### [Reliable Collections-szerializáció](service-fabric-reliable-services-reliable-collections-serialization.md)
+#### [A Reliable State Manager és a Reliable Collection belső elemei](service-fabric-reliable-services-reliable-collections-internals.md)
+#### [Haladó szintű használat](service-fabric-reliable-services-advanced-usage.md)
 
-#### [Reliable Actors](service-fabric-reliable-actors-introduction.md)
-##### [Architektúra](service-fabric-reliable-actors-platform.md)
-##### [Életciklus-kezelés és szemétgyűjtés](service-fabric-reliable-actors-lifecycle.md)
-##### [Állapotkezelés](service-fabric-reliable-actors-state-management.md)
-##### [Polimorfizmus](service-fabric-reliable-actors-polymorphism.md)
-##### [Újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
-##### [Típusszerializáció](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+### [Reliable Actors](service-fabric-reliable-actors-introduction.md)
+#### [Architektúra](service-fabric-reliable-actors-platform.md)
+#### [Életciklus-kezelés és szemétgyűjtés](service-fabric-reliable-actors-lifecycle.md)
+#### [Állapotkezelés](service-fabric-reliable-actors-state-management.md)
+#### [Polimorfizmus](service-fabric-reliable-actors-polymorphism.md)
+#### [Újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
+#### [Típusszerializáció](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
+## Alkalmazások és szolgáltatások
 ### [Az alkalmazásmodell](service-fabric-application-model.md)
 ### [Alkalmazás- és szolgáltatásjegyzékek](service-fabric-application-and-service-manifests.md)
 ### [Futtatási modell](service-fabric-hosting-model.md)
 
-### Szolgáltatások
-#### [Szolgáltatás-erőforrások](service-fabric-service-manifest-resources.md)
-#### [Szolgáltatás állapota](service-fabric-concepts-state.md)
-#### [Szolgáltatás particionálása](service-fabric-concepts-partitioning.md)
-#### [A szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
-#### [Replika és példány életciklusa](service-fabric-concepts-replica-lifecycle.md)
-#### [Újrakonfigurálás](service-fabric-concepts-reconfiguration.md)
-#### [A szolgáltatások közötti kommunikáció](service-fabric-connect-and-communicate-with-services.md)
-##### [DNS-szolgáltatás](service-fabric-dnsservice.md)
-##### [Fordított proxy](service-fabric-reverseproxy.md)
-##### [Fordított proxy konfigurálása biztonságos kommunikációhoz](service-fabric-reverseproxy-configure-secure-communication.md)
-##### [Fordítottproxy-diagnosztika](service-fabric-reverse-proxy-diagnostics.md)
+### [Szolgáltatás állapota](service-fabric-concepts-state.md)
+### [Szolgáltatás particionálása](service-fabric-concepts-partitioning.md)
 ### [Az alkalmazások méretezhetősége](service-fabric-concepts-scalability.md)
-### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
+### [A szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
+### [Replika és példány életciklusa](service-fabric-concepts-replica-lifecycle.md)
+### [Újrakonfigurálás](service-fabric-concepts-reconfiguration.md)
 
-### [Alkalmazás kapacitásának megtervezése](service-fabric-capacity-planning.md)
+### [A szolgáltatások közötti kommunikáció](service-fabric-connect-and-communicate-with-services.md)
+#### [DNS-szolgáltatás](service-fabric-dnsservice.md)
+#### [Fordított proxy](service-fabric-reverseproxy.md)
+#### [Fordított proxy konfigurálása biztonságos kommunikációhoz](service-fabric-reverseproxy-configure-secure-communication.md)
+#### [Fordítottproxy-diagnosztika](service-fabric-reverse-proxy-diagnostics.md)
+#### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 
-## [Alkalmazások kezelése](service-fabric-application-lifecycle.md)
-### [Alkalmazásfrissítés](service-fabric-application-upgrade.md)
-#### [Konfigurálás](service-fabric-visualstudio-configure-upgrade.md)
-#### [Alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md)
-#### [Adatok szerializálása az alkalmazásfrissítésekben](service-fabric-application-upgrade-data-serialization.md)
-#### [Alkalmazásfrissítések – haladó témakörök](service-fabric-application-upgrade-advanced.md)
-### [A hibaelemzés áttekintése](service-fabric-testability-overview.md)
-### [Az ImageStoreConnectionString beállítás](service-fabric-image-store-connection-string.md)
+### [Alkalmazás-életciklus](service-fabric-application-lifecycle.md)
+#### [Alkalmazásfrissítés](service-fabric-application-upgrade.md)
+##### [Konfigurálás](service-fabric-visualstudio-configure-upgrade.md)
+##### [Alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md)
+##### [Adatok szerializálása az alkalmazásfrissítésekben](service-fabric-application-upgrade-data-serialization.md)
+##### [Alkalmazásfrissítések – haladó témakörök](service-fabric-application-upgrade-advanced.md)
+#### [Alkalmazások tesztelése hibaelemzéssel](service-fabric-testability-overview.md)
+#### [Az ImageStoreConnectionString beállítás](service-fabric-image-store-connection-string.md)
 
-## [Fürtök létrehozása és felügyelete](service-fabric-deploy-anywhere.md)
-### Tervezés és előkészítés
-#### [Kapacitástervezés](service-fabric-cluster-capacity.md)
-#### [Vészhelyreállítás](service-fabric-disaster-recovery.md)
-### [Fürt leírása](service-fabric-cluster-resource-manager-cluster-description.md)
+### [Szolgáltatás-erőforrások](service-fabric-service-manifest-resources.md)
+
+## [Fürtök](service-fabric-deploy-anywhere.md)
 ### [Fürtbiztonság](service-fabric-cluster-security.md)
 ### [Különbségek a Linux és a Windows szolgáltatásai között](service-fabric-linux-windows-differences.md)
 ### Fürtök az Azure-on
@@ -128,7 +121,7 @@
 #### [Szabályozás](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [Szolgáltatás áthelyezése](service-fabric-cluster-resource-manager-movement-cost.md)
 
-## Megfigyelés és diagnosztika
+## Monitorozás és diagnosztika
 ### [Alkalmazások figyelése és diagnosztikája](service-fabric-diagnostics-overview.md)
 ### Események létrehozása
 #### [Platformszintű események létrehozása](service-fabric-diagnostics-event-generation-infra.md)
@@ -163,15 +156,30 @@
 ### [Mac OS](service-fabric-get-started-mac.md)
 ### [A Service Fabric parancssori felület beállítása](service-fabric-cli.md)
 
+## Tervezés és előkészítés
+### [Fürtkapacitás tervezése](service-fabric-cluster-capacity.md)
+### [Önálló fürtkonfiguráció tervezése](service-fabric-cluster-standalone-deployment-preparation.md)
+### [Felkészülés vészhelyreállításra](service-fabric-disaster-recovery.md)
+### [Alkalmazás kapacitásának megtervezése](service-fabric-capacity-planning.md)
+
+## Első alkalmazás létrehozása...
+### [C# alkalmazás a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md)
+### [Windows-alapú tárolóalkalmazás](service-fabric-get-started-containers.md)
+### [Linux-alapú tárolóalkalmazás](service-fabric-get-started-containers-linux.md)
+### [C# Reliable Services-alkalmazás Windows rendszeren](service-fabric-reliable-services-quick-start.md)
+### [Java Reliable Services-alkalmazás Linux rendszeren](service-fabric-reliable-services-quick-start-java.md)
+### [C# Reliable Services-alkalmazás Linux rendszeren](service-fabric-create-your-first-linux-application-with-csharp.md)
+### [C# Reliable Actors-alkalmazás Windows rendszeren](service-fabric-reliable-actors-get-started.md)
+### [Java Reliable Actors-alkalmazás Linux rendszeren](service-fabric-create-your-first-linux-application-with-java.md)
+### [Futtatható vendégalkalmazás Windows rendszeren](quickstart-guest-app.md)
+### [Önálló fürt](service-fabric-get-started-standalone-cluster.md)
+
 ## Alkalmazás készítése
-### [Az első saját C# alkalmazás létrehozása a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md)
+
 ### Futtatható vendégszolgáltatás készítése
-#### [Node.js-alkalmazás üzemeltetése Windowsban](quickstart-guest-app.md)
 #### [Futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-existing-app.md)
 #### [Több futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-multiple-apps.md)
 ### Tárolószolgáltatás készítése
-#### [Tárolóalkalmazás létrehozása Windowshoz](service-fabric-get-started-containers.md)
-#### [Tárolóalkalmazás létrehozása Linuxhoz](service-fabric-get-started-containers-linux.md)
 #### [Tárolóbiztonság](service-fabric-securing-containers.md)
 #### [Docker Compose (előzetes verzió)](service-fabric-docker-compose.md)
 #### [Tárolók és szolgáltatások erőforrás-szabályozása](service-fabric-resource-governance.md)
@@ -185,10 +193,6 @@
 ##### [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md)
 ##### [Reliable Collections-szerializáció](service-fabric-reliable-services-reliable-collections-serialization.md)
 
-#### Bevezetés
-##### [C# Windowson](service-fabric-reliable-services-quick-start.md)
-##### [Java Linuxon](service-fabric-reliable-services-quick-start-java.md)
-##### [C# alkalmazás létrehozása Linuxban](service-fabric-create-your-first-linux-application-with-csharp.md)
 #### Kommunikáció a szolgáltatásokkal
 ##### [Kommunikáció a Reliable Services szolgáltatással](service-fabric-reliable-services-communication.md)
 
@@ -203,9 +207,6 @@
 #### [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
 
 ### Reliable Actors-szolgáltatás összeállítása
-#### Bevezetés
-##### [C# Windowson](service-fabric-reliable-actors-get-started.md)
-##### [Java Actor Linuxon](service-fabric-create-your-first-linux-application-with-java.md)
 #### [Értesítések küldése](service-fabric-reliable-actors-events.md)
 #### [Időzítők és emlékeztetők beállítása](service-fabric-reliable-actors-timers-reminders.md)
 #### [KvsActorStateProvider konfigurálása](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
@@ -285,9 +286,7 @@
 #### [Törlés](service-fabric-cluster-delete.md)
 
 ### Önálló fürtök
-#### [Tervezés és felkészülés az üzembe helyezésre](service-fabric-cluster-standalone-deployment-preparation.md)
 #### Létrehozás
-##### [Az első saját önálló fürt létrehozása](service-fabric-get-started-standalone-cluster.md)
 ##### [Helyszíni létrehozás](service-fabric-cluster-creation-for-windows-server.md)
 ##### [Biztonságossá tétel tanúsítványokkal](service-fabric-windows-cluster-x509-security.md)  
 ##### [Biztonságossá tétel a Windows-rendszerbiztonság használatával](service-fabric-windows-cluster-windows-security.md)

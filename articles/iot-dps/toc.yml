@@ -36,7 +36,11 @@
 - name: Útmutatók
   items:
     - name: Eszközök beléptetésének kezelése
-      href: how-to-manage-enrollments.md
+      items:
+        - name: Eszközök beléptetésének kezelése az Azure Portalon
+          href: how-to-manage-enrollments.md
+        - name: Eszközök beléptetésének kezelése szolgáltatási SDK-kal
+          href: how-to-manage-enrollments-sdks.md
     - name: A HSM használata az SDK-val
       href: use-hsm-with-sdk.md
     - name: Eszközkiépítési szolgáltatás hozzáférés-vezérlése

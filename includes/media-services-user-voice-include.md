@@ -7,4 +7,4 @@ A [User Voice](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) fórum
 * [Media analytics (Médiaelemzés)](https://feedback.azure.com/forums/169396-media-services/category/146181-media-analytics)
 * [Azure Portal](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
 * [REST API and platform (REST API és platform)](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform/)
-* [Igényalapú videostreaming](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)
+* [Adatfolyam-videotartalom](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)

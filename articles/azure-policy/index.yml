@@ -1,0 +1,69 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: "Az Azure Policy dokumentációja"
+metadata:
+  title: "Az Azure Policy dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+  description: "Az Azure Policy segítségével kezelheti és megelőzheti az erőforrásokra vonatkozó szabályokat és műveleteket kikényszerítő szabályzatdefiníciókkal kapcsolatos informatikai problémákat. Az Azure Policy használatával gondoskodhat róla, hogy az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatói szerződéseknek. Rövid útmutatóink, oktatóanyagaink és példáink a szabályzatdefiníciók létrehozásának, hozzárendelésének és kezelésének módját ismertetik."
+  services: azure-policy
+  author: czeumault
+  manager: carolz
+  ms.service: azure-policy
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 12/18/2017
+  ms.author: carolz
+  ms.openlocfilehash: b5945fe76973aba267b529078466c7a97e5e6421
+  ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/20/2017
+abstract:
+  description: "Az Azure Policy segítségével kezelheti és megelőzheti az erőforrásokra vonatkozó szabályokat és műveleteket kikényszerítő szabályzatdefiníciókkal kapcsolatos informatikai problémákat. Az Azure Policy használatával gondoskodhat róla, hogy az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatói szerződéseknek. Rövid útmutatóink, oktatóanyagaink és példáink a szabályzatdefiníciók létrehozásának, hozzárendelésének és kezelésének módját ismertetik."
+sections:
+- title: "5 perces gyors útmutatók"
+  items:
+  - type: paragraph
+    text: "Megtudhatja, hogyan hozhat létre, rendelhet hozzá és kezelhet szabályzatdefiníciókat az Azure-ban."
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/azure-policy/assign-policy-definition
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/azure-policy/assign-policy-definition-ps
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/cli.svg
+      text: Azure CLI
+      href: /azure/azure-policy/assign-policy-definition-cli
+- title: "Részletes útmutatók"
+  items:
+  - type: paragraph
+    text: "Megtudhatja, hogyan hozhat létre, rendelhet hozzá és kezelhet szabályzatdefiníciókat az Azure-ban."
+  - type: list
+    style: unordered
+    items:
+    - html: "<a href=\"/azure/azure-policy/create-manage-policy\">Azure-szabályzat létrehozása és kezelése</a>"
+- title: "Példák"
+  items:
+  - type: paragraph
+    text: "Az alábbi JSON-minták segítségével hozhat létre szabályzatdefiníciókat az Azure-ban."
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/azure-policy/json-samples">Azure PowerShell</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Parancssor
+      html: <p><a href="https://docs.microsoft.com/en-us/cli/azure/policy">Azure CLI</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>
