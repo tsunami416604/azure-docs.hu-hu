@@ -1,6 +1,8 @@
+- name: Az Azure Policy dokumentációja
+  href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure szabályzatának áttekintése
+    - name: Az Azure Policy áttekintése
       href: azure-policy-introduction.md
 - name: Gyors útmutatók
   expanded: true

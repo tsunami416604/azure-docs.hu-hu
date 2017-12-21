@@ -48,6 +48,10 @@
 ### [Csatlakoztatott factory-megoldás áttekintése](iot-suite-connected-factory-overview.md)
 ### [Csatlakoztatott gyáron alapuló megoldás bemutatója](iot-suite-connected-factory-sample-walkthrough.md)
 
+## Eszközszimuláció
+### [Eszközszimuláció üzembe helyezése](iot-suite-device-simulation-deploy.md)
+### [Ismerkedés az eszközszimulációval](iot-suite-device-simulation-explore.md)
+
 # Útmutatók
 ## Távoli figyelés
 ### [Speciális monitorozás végrehajtása](iot-suite-remote-monitoring-monitor.md)

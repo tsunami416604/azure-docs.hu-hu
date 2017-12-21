@@ -90,6 +90,8 @@
           href: monitoring-enable-alerts-using-template.md
     - name: Automatikus méretezés használata
       items:
+        - name: Ismerkedés az automatikus méretezési beállításokkal
+          href: monitoring-understanding-autoscale-settings.md
         - name: Ajánlott eljárások
           href: insights-autoscale-best-practices.md
         - name: Gyakori metrikák

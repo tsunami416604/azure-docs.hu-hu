@@ -16,7 +16,7 @@ Névtér létrehozása:
 ### <a name="obtain-the-management-credentials"></a>A felügyeleti hitelesítő adatok beszerzése
 Az elsődleges és másodlagos kulcsok, hogy minden egyes teljes hozzáférés a névtér összes elemeit társított párjának automatikusan hozza létre egy új névtér hoz létre egy kezdeti közös hozzáférésű Jogosultságkód (SAS) szabály. Lásd: [Service Bus hitelesítési és engedélyezési](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) több további szabályok létrehozásával kapcsolatos információkat a korlátozott jogok rendszeres küldő és a. A kezdeti szabály másolásához kövesse az alábbi lépéseket: 
 
-1. A névterek listájában kattintson az újonnan létrehozott névtér nevére.
+1.  Kattintson a **összes erőforrás**, majd kattintson az újonnan létrehozott névtér nevére.
 2. A névtér ablakában kattintson **megosztott elérési házirendek**.
 3. Az a **megosztott elérési házirendek** kattintson **RootManageSharedAccessKey**.
    

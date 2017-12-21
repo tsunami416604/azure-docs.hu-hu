@@ -17,6 +17,7 @@
 ### [Stream Analytics az IoT Edge-en (előzetes verzió)](stream-analytics-edge.md)
 ### [Anomáliadetektálás az Azure-ban – használati útmutató (előzetes verzió)](stream-analytics-machine-learning-anomaly-detection.md)
 ### [Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel](stream-analytics-high-frequency-trading.md)
+### [Az Azure Functions használata az Azure Stream Analyticsszel](stream-analytics-with-azure-functions.md)
 
 ## Feladatok létrehozása
 ### [Bemenetek létrehozása](stream-analytics-define-inputs.md)

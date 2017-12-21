@@ -38,6 +38,10 @@
           href: how-to-vscode-develop-csharp-module.md
         - name: 'C# modul hibakeresése'
           href: how-to-vscode-debug-csharp-module.md
+        - name: Azure-függvények kifejlesztése és üzembe helyezése
+          href: how-to-vscode-develop-azure-function.md
+        - name: Azure-függvények hibakeresése
+          href: how-to-vscode-debug-azure-function.md
     - name: Hibaelhárítás
       href: troubleshoot.md
 - name: Alapelvek
