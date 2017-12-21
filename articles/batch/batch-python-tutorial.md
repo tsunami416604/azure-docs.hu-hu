@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Ismerkedés a Pythonhoz készült Batch SDK-val
 
@@ -493,7 +493,7 @@ blob_client = azureblob.BlockBlobService(account_name=args.storageaccount,
 
 ## <a name="step-6-monitor-tasks"></a>6. lépés: Tevékenységek figyelése
 ![Tevékenységek figyelése][6]<br/>
-*A parancsfájl (1) megfigyeli a tevékenységek végrehajtása állapotát, és (2) a tevékenységek eredményadatokat töltenek fel az Azure Storage-ba*
+*A parancsfájl (1) megfigyeli a tevékenységek végrehajtásának állapotát, és (2) a tevékenységek eredményadatokat töltenek fel az Azure Storage-ba*
 
 A feladatokhoz hozzáadott tevékenységet a rendszer automatikusan várólistára helyezi, és ütemezi a futtatásukat az adott feladathoz társított készleten belüli számítási csomópontokon. A Batch a megadott beállítások alapján elvégzi a tevékenységek várólistára helyezésével, ütemezésével, újrapróbálásával kapcsolatos minden feladatot, valamint a tevékenységekhez kapcsolódó egyéb rendszergazdai teendőket.
 

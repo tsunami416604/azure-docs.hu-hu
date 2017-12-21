@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: c22d516506ae89d8591e8fe162347e115a89cb34
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 323c1e7bb4703833cfc3047db9e6116eb7237162
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 ## <a name="install-the-sdk-and-tools"></a>Az SDK és az eszközök telepítése
 ### <a name="to-use-visual-studio-2017"></a>A Visual Studio 2017 használata
-A Service Fabric-eszközök a Visual Studio 2017 Azure Development and Management Workload munkafolyamatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
+A Service Fabric-eszközök a Visual Studio 2017 Azure Development Workload munkafolyamatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
 Emellett telepítenie kell a Microsoft Azure Service Fabric SDK-t is a webplatform-telepítővel.
 
 * [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
