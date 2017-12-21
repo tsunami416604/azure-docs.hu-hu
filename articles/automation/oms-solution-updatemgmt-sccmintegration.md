@@ -3,7 +3,7 @@ title: "Frissítések céljainak beállítása az SCCM-gyűjtemények használat
 description: "Ebből a cikkből megtudhatja, hogyan konfigurálhatja a System Center Configuration Managert ezzel a megoldással az SCCM által kezelt számítógépek frissítéseinek kezelésére."
 services: operations-management-suite
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
-ms.author: eslesar
-ms.openlocfilehash: ec97432cd14c6289928f0419c242e1ccc2c8d876
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: gwallace
+ms.openlocfilehash: 40e343ab75a2c2508d64ec0aeb293f5154813135
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="integrate-system-center-configuration-manager-with-oms-update-management"></a>System Center Configuration Manager integrálása az OMS-frissítéskezeléssel
 

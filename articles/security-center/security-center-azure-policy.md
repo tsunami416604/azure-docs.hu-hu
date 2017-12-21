@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: c359b77efbfdbcf7d2c0193dc015ce418a3d997d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 045cf83caa15cb2487b4781f3c1f42752880580c
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>A Security Center biztonsági szabályzatainak integrálása az Azure Policyvel
 Ez a cikk segítséget nyújt az Azure Security Center biztonsági szabályzatainak konfigurálásában, amelyek az Azure Policyre épülnek. 
@@ -39,14 +39,14 @@ Az egyes Azure-előfizetések alapértelmezett biztonsági szabályzatait a Secu
 
 2. A **Security Center** irányítópultjának **Általános** területén válassza a **Biztonsági szabályzat** elemet.
 
-    ![A Szabályzatkezelés panel](./media/security-center-policies/security-center-policies-fig10.png)
+    ![A Szabályzatkezelés panel](./media/security-center-azure-policy/security-center-policies-fig10.png)
 
 3. Válassza ki azt az előfizetést, amelyhez biztonsági szabályzatot szeretne engedélyezni.  
 
 4. A **Szabályzat összetevői** szakaszban válassza a **Biztonsági szabályzat** elemet.  
     Megnyílik az **Alapvető beállítások** ablak.
 
-    ![Szabályzat összetevői](./media/security-center-policies/security-center-policies-fig12.png)
+    ![Szabályzat összetevői](./media/security-center-azure-policy/security-center-policies-fig12.png)
 
 5. Szabályzatdefiníció törléséhez a **Szabályzatok és paraméterek** területen, a törölni kívánt definíció mellett válassza a **Törlés** elemet.
 
@@ -57,12 +57,12 @@ Az egyes Azure-előfizetések alapértelmezett biztonsági szabályzatait a Secu
 
     * Szabályzatdefiníció hozzáadásához válassza a definíció melletti a plusz jelet (+).
 
-    ![Elérhető szabályzatdefiníciók](./media/security-center-policies/security-center-policies-fig11.png)
+    ![Elérhető szabályzatdefiníciók](./media/security-center-azure-policy/security-center-policies-fig11.png)
 
     * A szabályzatok részletes leírásáért válassza ki a kívánt szabályzatot.  
     Megnyílik egy **Előnézet** ablak a definícióhoz. Ez megjeleníti a definíció leírását és egy, a [szabályzatdefiníció](../azure-policy/policy-definition.md) struktúráját megadó JSON-kódra mutató hivatkozást.
 
-    ![Előnézet ablak a definícióhoz](./media/security-center-policies/security-center-policies-fig14.png)
+    ![Előnézet ablak a definícióhoz](./media/security-center-azure-policy/security-center-policies-fig14.png)
 
 7. Amikor befejezte a szerkesztést, válassza a **Mentés** elemet.
 

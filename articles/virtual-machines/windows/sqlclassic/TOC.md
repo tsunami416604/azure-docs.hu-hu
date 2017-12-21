@@ -12,7 +12,6 @@
 # Útmutató
 ## Magas rendelkezésre állás konfigurálása
 ### [Magas rendelkezésre állású lehetőségek](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json) 
-### [AlwaysOn rendelkezésre állási csoport konfigurálása a portálon](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 ### [AlwaysOn rendelkezésre állási csoport konfigurálása PowerShellel](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
 ### [Belső figyelő konfigurálása rendelkezésre állási csoporthoz](virtual-machines-windows-classic-ps-sql-int-listener.md)
 ### [Külső figyelő konfigurálása rendelkezésre állási csoporthoz](virtual-machines-windows-classic-ps-sql-ext-listener.md)

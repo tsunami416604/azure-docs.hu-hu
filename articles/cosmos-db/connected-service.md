@@ -16,11 +16,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jejiang
-ms.openlocfilehash: 26d8399ce4ea23b51677def85b3732468dcbc02f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f63c20831a2700f1024507bef614a5a7cc87d00e
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-visual-studio-connected-service-preview"></a>Azure Cosmos DB: a Visual Studio csatlakoztatott szolgáltatása (előzetes verzió)
 
@@ -33,7 +33,7 @@ A csatlakoztatott szolgáltatásban az Adatkezelővel tárolt eljárásokat, fel
 Győződjön meg róla, hogy rendelkezik az alábbi elemekkel:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/). 
-* Azure Cosmos DB-fiók. Ha még nem rendelkezik ilyennel, kövesse az [Azure Cosmos DB-fiók létrehozása](create-documentdb-dotnet.md) című témakör lépéseit, és hozzon létre egyet az Azure Portalon, vagy tekintse meg az [Azure Cosmos DB-fiók csatlakoztatott szolgáltatás eszközben való létrehozását ismertető cikket](#Create-an-Azure-Cosmo-DB-account-in-Connected-Service-tool). 
+* Azure Cosmos DB-fiók. Ha még nem rendelkezik ilyennel, kövesse az [Azure Cosmos DB-fiók létrehozása](create-sql-api-dotnet.md) című témakör lépéseit, és hozzon létre egyet az Azure Portalon, vagy tekintse meg az [Azure Cosmos DB-fiók csatlakoztatott szolgáltatás eszközben való létrehozását ismertető cikket](#Create-an-Azure-Cosmo-DB-account-in-Connected-Service-tool). 
 * Ha helyi környezetet szeretne használni fejlesztési célokra, használhatja az [Azure Cosmos DB Emulatort](local-emulator.md). A környezet emulálja az Azure Cosmos DB szolgáltatást.
 * [Visual Studio](http://www.visualstudio.com/).
 * Az Azure Cosmos DB csatlakoztatott szolgáltatás legújabb elemei. Az Azure Cosmos DB csatlakoztatott szolgáltatást az alábbi képernyőfelvételen láthatók szerint töltheti le a Visual Studio piacteréről. Nyissa meg a **Visual Studiót** a számítógépén. A **Tools** (Eszközök) menüben válassza az **Extensions and update...** (Bővítmények és frissítés) lehetőséget, majd válassza az **Online** / **Visual Studio Marketplace** (Visual Studio-piactér) elemet. Írja be a **cosmosdb** szöveget az eszköz megkereséséhez.
@@ -119,8 +119,8 @@ Ebben a dokumentumban a következőket mutattuk be:
 
 Most, hogy a Csatlakoztatott szolgáltatás működik az Azure Cosmos DB-fiókjával, folytassa a következő oktatóanyagok egyikével, és kezdje el fejleszteni saját megoldását:
 
-* [Fejlesztés az SQL API-val .NET-keretrendszerben](tutorial-develop-documentdb-dotnet.md).
-* [Azure Cosmos DB: Az SQL API kezdeti lépéseit ismertető oktatóanyag](documentdb-get-started.md).
+* [Fejlesztés az SQL API-val .NET-keretrendszerben](tutorial-develop-sql-api-dotnet.md).
+* [Azure Cosmos DB: Az SQL API kezdeti lépéseit ismertető oktatóanyag](sql-api-get-started.md).
 * Méret- és teljesítménytesztelést szeretne végezni az Azure Cosmos DB használatával? Tekintse meg a következőt: [Teljesítmény- és mérettesztelés az Azure Cosmos DB használatával](performance-testing.md).
 * Ismerje meg, hogyan [monitorozhat egy Azure Cosmos DB-fiókot](monitor-accounts.md).
 

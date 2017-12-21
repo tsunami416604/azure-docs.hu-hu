@@ -3,7 +3,7 @@ Ha engedélyezni szeretné, hogy a Mobile Engagement leküldéses értesítések
 
 1. Lépjen a Mobile Engagement portálra. Győződjön meg arról, hogy a megfelelő helyen van, majd kattintson a lap alján található **Engage** (Aktiválás) gombra:
    
-    ![](./media/mobile-engagement-ios-send-push/engage-button.png)
+    ![](./media/mobile-engagement-create-app-in-portal-new/engage-button.png)
 2. Kattintson a **Settings** (Beállítások) lapra az Engagement portálon. Itt kattintson a **Native Push** (Natív leküldés) szakaszra a p12-tanúsítvány feltöltéséhez:
    
     ![](./media/mobile-engagement-ios-send-push/engagement-portal.png)

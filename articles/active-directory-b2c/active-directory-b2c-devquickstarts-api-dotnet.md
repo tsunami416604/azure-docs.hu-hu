@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.openlocfilehash: 9341fe50b8a51197da0696bd28d7f05feae23de6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 713bf8ea670b1c2b35a05ebd8cd9450c711cbf3b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: .NET webes API készítése
 
@@ -41,8 +41,6 @@ A következő lépésben hozzon létre egy webes API-alkalmazást a B2C-címtár
 * Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Erre később még szüksége lesz.
 * Adjon meg egy alkalmazásazonosítót az **Alkalmazásazonosító URI** mezőben. Másolja át a teljes **Alkalmazásazonosító URI-t**. Erre később még szüksége lesz.
 * Adjon hozzá engedélyeket a **Közzétett hatókörök** menüből.
-
-  [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Szabályzatok létrehozása
 
