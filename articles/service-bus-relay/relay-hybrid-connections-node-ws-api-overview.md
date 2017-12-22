@@ -1,5 +1,5 @@
 ---
-title: "Az Azure továbbítási csomópont API-k áttekintése |} Microsoft Docs"
+title: "Az Azure továbbítási csomópont API-k áttekintése | Microsoft Docs"
 description: "Továbbítják a csomópont API – áttekintés"
 services: service-bus-relay
 documentationcenter: na
