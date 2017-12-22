@@ -286,6 +286,7 @@
 #### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
 #### [Az Office 365-szolgáltatások eszközszabályzatainak ismertetése](active-directory-conditional-access-device-policies.md)
 #### [Klasszikus szabályzatok migrálása](active-directory-conditional-access-migration.md)
+#### [Lehetőségelemzési eszköz](active-directory-conditional-access-whatif.md)
 #### Feladatok
 ##### [Klasszikus MFA-szabályzat migrálása](active-directory-conditional-access-migration-mfa.md)
 ##### [Eszközalapú feltételes hozzáférés beállítása](active-directory-conditional-access-policy-connected-applications.md)

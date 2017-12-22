@@ -1,6 +1,7 @@
 # Áttekintés
 
 ## [Az SQL Data Warehouse bemutatása](sql-data-warehouse-overview-what-is.md)
+## [Hasznos tanácsok](cheat-sheet.md)
 
 # Gyors útmutatók
 

@@ -2,9 +2,12 @@
 ## [Mik a virtuálisgép-méretezési csoportok?](virtual-machine-scale-sets-overview.md)
 
 # Első lépések
-## [Méretezési csoport üzembe helyezése az Azure Portalon](virtual-machine-scale-sets-portal-create.md)
-## [Méretezési csoport üzembe helyezése a PowerShell-lel vagy az Azure CLI-vel](virtual-machine-scale-sets-create.md)
-## [Automatikus méretezést végző alkalmazás üzembe helyezése sablon használatával](virtual-machine-scale-sets-deploy-scaling-app-template.md)
+## [Létrehozás az Azure Portalon](virtual-machine-scale-sets-create-portal.md)
+## [Létrehozás az Azure CLI 2.0 használatával](virtual-machine-scale-sets-create-cli.md)
+## [Létrehozás az Azure PowerShell-lel](virtual-machine-scale-sets-create-powershell.md)
+## Létrehozás sablon alapján
+### [Linux méretezési csoport](virtual-machine-scale-sets-create-template-linux.md)
+### [Windows méretezési csoport](virtual-machine-scale-sets-create-template-windows.md)
 
 # Útmutató
 ## Tervezés és kialakítás
@@ -17,9 +20,7 @@
 ### [Vendégalapú automatikus méretezés használata Linux rendszerű méretezésicsoport-sablonnal](virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)
 
 ## Üzembe helyezés
-### [Létrehozás az Azure Portalon](virtual-machine-scale-sets-portal-create.md)
 ### [Létrehozás a Visual Studióval](virtual-machine-scale-sets-vs-create.md)
-### [Létrehozás az Azure PowerShell-lel vagy az Azure CLI-vel](virtual-machine-scale-sets-create.md)
 ### [Méretezési csoport a Managed Disksszel](virtual-machine-scale-sets-managed-disks.md)
 ### [Méretezési csoport automatikus méretezése](virtual-machine-scale-sets-autoscale-overview.md)
 #### [Az Azure Portal használata](virtual-machine-scale-sets-autoscale-portal.md)
