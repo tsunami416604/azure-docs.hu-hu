@@ -164,6 +164,8 @@
       href: monitoring-metric-charts.md
     - name: Mérőszámok küldése a Grafana számára
       href: monitor-send-to-grafana.md
+    - name: Monitorozási adatok küldése egy eseményközpontba
+      href: monitor-stream-monitoring-data-event-hubs.md
 - name: Referencia
   items:
     - name: Azure CLI

@@ -79,6 +79,8 @@
           href: concepts-on-premises-to-azure-networking.md
         - name: IP-címzés beállítása másodlagos helyhez való feladatátvétel utáni hozzáféréshez
           href: concepts-on-premises-to-on-premises-networking.md
+        - name: Hálózati adapter kezelése helyszíni Azure-forgatókönyvek esetében
+          href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
     - name: Vészhelyreállítás
       items:
         - name: Hyper-V virtuális gépek az Azure-ba
