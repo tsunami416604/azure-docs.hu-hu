@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/12/2017
+ms.date: 12/14/2017
 ms.author: jroth
-ms.openlocfilehash: 140e59b971da379d7475097bf3e26d5b070fa610
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 95a18e4b2437ca628e84f6d6f580e12f2f26e111
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az az Azure Virtual Machines szolgáltatásban futó SQL Server? (Windows)
 
@@ -42,12 +42,19 @@ Az SQL Server Azure virtuális gépek használni képesek az [automatikus bizton
 
 Ha magas rendelkezésre állásra van szüksége, fontolja meg az SQL Server rendelkezésre állási csoportok konfigurálását. Ehhez több SQL Server Azure virtuális gépre van szükség egy virtuális hálózaton. Konfigurálhatja magas rendelkezésre állású megoldását manuálisan, vagy használhat sablonokat az Azure Portalról az automatikus konfiguráláshoz. A magas rendelkezésre állási lehetőségekről szóló áttekintésért lásd az [Azure Virtual Machines szolgáltatásban futó SQL Server magas rendelkezésre állását és vészhelyreállítását](virtual-machines-windows-sql-high-availability-dr.md) bemutató cikkben.
 
+## <a name="performance"></a>Teljesítmény
+
+Az Azure-beli virtuális gépek a számítási feladatokkal kapcsolatos különböző igényeknek megfelelően eltérő gépméretekkel érhetők el. Az SQL virtuális gépek automatikus, a teljesítménnyel kapcsolatos követelményekhez optimalizált tárolókonfigurálást is nyújtanak. További információ az SQL virtuális gépek konfigurálásáról: [Tárolókonfigurálás SQL Server rendszerű virtuális gépekhez](virtual-machines-windows-sql-server-storage-configuration.md). További információ a teljesítmény finomhangolásáról: [Ajánlott eljárások az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növeléséhez](virtual-machines-windows-sql-performance.md).
+
 ## <a name="get-started-with-sql-vms"></a>SQL virtuális gépek – első lépések
 
 Első lépésként válassza ki a megfelelő verziójú, kiadású és operációs rendszerű SQL Server virtuális gép rendszerképét. Az alábbi szakaszokban közvetlen hivatkozások találhatók az Azure Portalra az SQL Server virtuálisgép-katalógus rendszerképeinek letöltéséhez.
 
 > [!TIP]
 > Az ezekhez a rendszerképekhez tartozó virtuális gépek és SQL díjszabásának megismeréséhez tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
+
+> [!TIP]
+> Az SQL Server virtuálisgép-katalógusbeli rendszerképeinek frissítési és életciklus-szabályzatárólaz [SQL Server virtuális gépek GYIK](virtual-machines-windows-sql-server-iaas-faq.md#images) dokumentumában olvashat.
 
 ### <a id="payasyougo"></a> Használatalapú fizetés
 A következő táblázat a használatalapú fizetéssel elérhető SQL Server-rendszerképeket foglalja össze.

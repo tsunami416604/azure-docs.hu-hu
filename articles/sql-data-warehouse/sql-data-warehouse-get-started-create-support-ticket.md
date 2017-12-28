@@ -15,69 +15,52 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: 058ff1229acee5d03db7c0305c5565ae95a85758
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66aa12431e39ce295ce76411693bd20535a5c70c
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>Támogatási jegy létrehozása az SQL Data Warehouse-hoz
-Ha bármilyen probléma merül fel az SQL Data Warehouses-szal kapcsolatban, hozzon létre egy támogatási jegyet, hogy mérnöki csapatunk a segítségére lehessen.
-
-> [!NOTE] 
-> 2016. december 20-tól az Azure Portal erőforrásállapot-ellenőrzése nem biztosít pontos eredményeket. Folyamatosan dolgozunk a probléma megoldásán. 
-
+Ha bármilyen probléma merül fel az SQL Data Warehouse-szal kapcsolatban, hozzon létre egy támogatási jegyet, hogy mérnöki támogató csapatunk a segítségére lehessen.
 
 ## <a name="create-a-support-ticket"></a>Támogatási jegy létrehozása
 1. Nyissa meg az [Azure Portalt][Azure portal].
-2. A kezdőképernyőn kattintson a **Súgó és támogatás** csempére.
+2. A kezdőképernyőn kattintson a **Súgó és támogatás** fülre.
    
-    ![Súgó és támogatás](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
-3. A Súgó és támogatás panelen kattintson a **Támogatási kérelem létrehozása** gombra.
-   
-    ![Új támogatási kérelem](./media/sql-data-warehouse-get-started-create-support-ticket/create-support-request.png)
-   
-    <a name="request-quota-change"></a> 
-4. Válassza ki a **Kérelemtípust**.
-   
-    ![Kérelemtípus](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)
-   
-   > [!NOTE]
-   > Alapértelmezés szerint minden SQL-kiszolgáló (például a myserver.database.windows.net) rendelkezik egy 45 000 egységnyi **DTU-kvótával**. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótát egy támogatási jegy létrehozásával, és a kérelem típusaként a *Kvóta* kiválasztásával növelheti meg. A DTU-igény kiszámításához szorozza meg 7,5-tel az összes szükséges [DWU][DWU] értékét. Ha például két DW6000-et szeretne üzemeltetni egy SQL-kiszolgálón, akkor 90 000 egységnyi DTU-kvótát kell igényelnie.  Az aktuális DTU-felhasználást az SQL-kiszolgáló panelen tekintheti meg a portálon. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. 
-   > 
-   > 
-5. Válassza ki az **Előfizetést**, amely alatt az az adatbázis fut, amellyel kapcsolatban támogatást kér.
-   
-    ![Előfizetést](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
-6. Erőforrásként adja meg a **SQL Data Warehouse** szolgáltatást.
-   
-    ![Erőforrás](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
-7. Jelölje ki az [Azure támogatási csomagot][Azure support plan].
+    ![Súgó és támogatás](./media/sql-data-warehouse-get-started-create-support-ticket/MainPage.PNG)
+3. A Súgó és támogatás panelen kattintson az **Új támogatási kérelem** elemre, és töltse ki az **Alapvető beállítások** panelt.
+
+   Jelölje ki az [Azure támogatási csomagot][Azure support plan].
    
    * A **számlázással, kvótával és az előfizetés kezelésével** kapcsolatos támogatás minden támogatási szinten elérhető.
-   * A **javítás/csere** támogatás a [Fejlesztői][Developer], a [Standard][Standard], a [Közvetlen professzionális támogatás][Professional Direct] vagy a [Premier szintű támogatás][Premier] esetén érhető el. A javítás/csere típusú problémákkal az Azure használata során fellépő hibák esetén lehet a támogatáshoz fordulni, ha a hibát nagy valószínűséggel a Microsoft terméke okozta.
+   * A **javítás/csere** támogatás a [Fejlesztői][Developer], a [Standard][Standard], a [Közvetlen professzionális támogatás][Professional Direct] vagy a [Premier szintű támogatás][Premier] szinten érhető el. A javítás/csere típusú problémákkal az Azure használata során fellépő hibák esetén lehet a támogatáshoz fordulni, ha a hibát nagy valószínűséggel a Microsoft terméke okozta.
    * A **fejlesztői mentorálás** és a **tanácsadási szolgáltatás** [Közvetlen professzionális támogatás][Professional Direct] és [Premier szintű támogatás][Premier] esetén érhető el. 
      
      Premier szintű támogatás megléte esetén az SQL Data Warehouse-szal kapcsolatos problémákat is jelentheti a [Microsoft Premier online portálon][Microsoft Premier online portal].  Az [Azure-támogatás ügyfeleknek][Azure support plan] című témakör részletesen bemutatja a támogatási csomagokat, beleértve azok hatókörét, a válaszidőt, a díjszabást és egyéb információkat.  Az Azure-támogatással kapcsolatos gyakori kérdéseket az [Azure-támogatás – gyakori kérdések][Azure support FAQs] című témakör tekinti át.  
-     
-     ![Támogatási csomag](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
-8. Válassza ki a **Problem Type** (Probléma típusa) és a **Category** (Kategória) mezőt. Ebben a példában a választott problématípus az „Eszközök”, a kategória pedig az „Ügyféleszközök”. 
+        
+    ![Alapvető beállítások panel](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_1.PNG)
+    ![Alapvető beállítások panel1](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_2.PNG)
+4. Töltse ki a **Probléma** panelt.
+    ![Problem_blade](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_3.PNG)
    
-    ![Probléma típusa és kategóriája](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
-9. Írja le a problémát, és hogy az milyen mértékben hat az üzleti működésre.
+   > [!NOTE]
+   > Alapértelmezés szerint minden SQL-kiszolgáló (például a myserver.database.windows.net) rendelkezik egy 45 000 egységnyi **DTU-kvótával**. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótát egy támogatási jegy létrehozásával, és a kérelem típusaként a *Kvóta* kiválasztásával növelheti meg. A DTU-igény kiszámításához szorozza meg 7,5-del az összes szükséges [DWU][DWU] értékét. Ha például két DW6000-et szeretne üzemeltetni egy SQL-kiszolgálón, akkor 90 000 egységnyi DTU-kvótát kell igényelnie.  Az aktuális DTU-felhasználást az SQL-kiszolgáló panelen tekintheti meg a portálon. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. 
+   > 
+   > 
    
-    ![A probléma leírása](./media/sql-data-warehouse-get-started-create-support-ticket/problem-description.png)
-10. A támogatási jegyen előre ki lesznek töltve a **kapcsolattartási adatok**. Ha szükséges, pontosítsa azokat.
+5. Töltse ki a **kapcsolattartási adatait**.
+![Contact_information](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_4.PNG)
+
     
-    ![Kapcsolattartási adatok](./media/sql-data-warehouse-get-started-create-support-ticket/contact-info.png)
-11. Kattintson a**Create** (Létrehozás) gombra a támogatási kérelem elküldéséhez.
+6. Kattintson a**Create** (Létrehozás) gombra a támogatási kérelem elküldéséhez.
 
 ## <a name="monitor-a-support-ticket"></a>Támogatási jegy nyomon követése
-A támogatási kérelem elküldése után az Azure támogatási csapata kapcsolatba lép Önnel. A kérelem állapotának és részleteinek megtekintéséhez kattintson a **Támogatási kérelmek kezelése** elemre az irányítópulton.
+A támogatási kérelem elküldése után az Azure támogatási csapata kapcsolatba lép Önnel. A kérelem állapotának és részleteinek megtekintéséhez kattintson a **Minden támogatási kérelem** elemre az irányítópulton.
 
-![Állapot ellenőrzése](./media/sql-data-warehouse-get-started-create-support-ticket/check-status.png)
+![Állapot ellenőrzése](./media/sql-data-warehouse-get-started-create-support-ticket/Monitor_ticket.PNG)
 
-## <a name="other-resources"></a>Egyéb források
+## <a name="other-resources"></a>Egyéb erőforrások
 Azt is megteheti, hogy kapcsolatba lép az SQL Data Warehouse-közösséggel a [Stack Overflow][Stack Overflow] webhelyen vagy az [Azure SQL Data Warehouse MSDN fórumon][Azure SQL Data Warehouse MSDN forum].
 
 <!--Image references--> 

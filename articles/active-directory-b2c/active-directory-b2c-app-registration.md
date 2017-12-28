@@ -1,12 +1,11 @@
 ---
-title: "Azure Active Directory B2C: Alkalmazás regisztrációja | Microsoft Docs"
+title: "Alkalmazásregisztráció – Azure Active Directory B2C"
 description: "Hogyan regisztrálhatja alkalmazását Azure Active Directory B2C-vel?"
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 20e92275-b25d-45dd-9090-181a60c99f69
+editor: parakhj
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
-ms.openlocfilehash: 36a421056b123f397c3d5f7d7bfb4c5314c82b78
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b1d145466382c8fc2ea6c5e4e295940b0f000b97
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Az alkalmazás regisztrációja
 
@@ -28,7 +27,7 @@ Ez a gyors útmutató pár percben összefoglalja egy alkalmazás regisztrálás
 
 A felhasználói regisztrációt és bejelentkezést elfogadó alkalmazás létrehozásához először regisztrálnia kell az alkalmazást egy Azure Active Directory B2C-bérlővel. Hozzon létre egy saját bérlőt az [Azure AD B2C bérlő létrehozása](active-directory-b2c-get-started.md) részben ismertetett lépések segítségével.
 
-Az Azure Portal Azure AD B2C paneljén létrehozott alkalmazásokat ugyanarról a helyről kell kezelnie. Ha a B2C-alkalmazásokat a PowerShell vagy egy másik portál használatával szerkeszti, a rendszer nem támogatja többé az alkalmazásokat, és nem fognak működni az Azure AD B2C-vel. További részletek a [hibás alkalmazások](#faulted-apps) szakaszban. 
+Az Azure Portalon létrehozott alkalmazásokat ugyanarról a helyről kell kezelnie. Ha az Azure AD B2C-alkalmazásokat a PowerShell vagy egy másik portál használatával szerkeszti, a rendszer nem támogatja többé az alkalmazásokat, és nem fognak működni az Azure AD B2C-vel. További részletek a [hibás alkalmazások](#faulted-apps) szakaszban. 
 
 A jelen cikkben bemutatott példák segítségével megismerkedhet a minták használatával. A következő cikkekből többet is megtudhat ezekről a mintákról.
 
@@ -117,7 +116,7 @@ Hozzáadhatja az utóbbi kettőt, mivel az első válasz URL-cím, a contoso.com
 
 A mobil-/natív alkalmazások átirányítási URI-jának kiválasztásakor két fontos szempontot kell megfontolnia:
 
-* **Egyedi**: Az átirányítási URI sémájának minden alkalmazás esetén egyedinek kell lennie. A példánkban (com.onmicrosoft.contoso.appname://redirect/path) a com.onmicrosoft.contoso.appnév a séma. Javasoljuk, hogy ezt a mintát kövesse. Ha két alkalmazás ugyanazt a sémát használja, akkor a felhasználó egy „Alkalmazás kiválasztása” párbeszédpanelt fog látni. Ha a felhasználó helytelenül választ, a bejelentkezés meghiúsul.
+* **Egyedi**: Az átirányítási URI sémájának minden alkalmazás esetén egyedinek kell lennie. A példában (com.onmicrosoft.contoso.appname://redirect/path) a com.onmicrosoft.contoso.appname a séma. Javasoljuk, hogy ezt a mintát kövesse. Ha két alkalmazás ugyanazt a sémát használja, akkor a felhasználó egy „Alkalmazás kiválasztása” párbeszédpanelt fog látni. Ha a felhasználó helytelenül választ, a bejelentkezés meghiúsul.
 * **Teljes**: Az átirányítási URI-nak sémával és elérési útvonallal kell rendelkeznie. Az útvonalnak a tartomány után legalább egy perjelet kell tartalmaznia (például a //contoso/ helyes, de a //contoso nem).
 
 Ügyeljen rá, hogy az átirányítási uri ne tartalmazzon különleges karaktereket, például aláhúzásjeleket.
@@ -126,16 +125,16 @@ A mobil-/natív alkalmazások átirányítási URI-jának kiválasztásakor két
 
 A B2C-alkalmazások NEM szerkeszthetők:
 
-* Egyéb alkalmazáskezelési portálokon, például a [klasszikus Azure portálon](https://manage.windowsazure.com/) vagy az [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/).
+* Egyéb alkalmazáskezelési portálokon, például az [Alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/).
 * Graph API vagy PowerShell használata
 
-Ha a fent leírtak alapján szerkeszti a B2C-alkalmazást, és ezután megpróbálja újra szerkeszteni az Azure Portal Azure AD B2C-funkciókat tartalmazó paneljén, az alkalmazás hibás alkalmazássá válik, és többé nem lehet majd használni az Azure AD B2C-vel. Az alkalmazást ekkor törölnie kell, és újra létre kell hoznia.
+Ha a leírtak alapján szerkeszti az Azure AD B2C-alkalmazást, és ezután megpróbálja újra szerkeszteni az Azure Portal Azure AD B2C-funkciókat az Azure Portalon, az alkalmazás hibás alkalmazássá válik, és többé nem lehet majd használni az Azure AD B2C-vel. Az alkalmazást ekkor törölnie kell, és újra létre kell hoznia.
 
 Az alkalmazás törléséhez lépjen az [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/), ahol törölheti az alkalmazást. Ahhoz, hogy láthatóvá lehessen tenni az alkalmazást, Önnek kell lennie az alkalmazás tulajdonosának (és nem csak a bérlő rendszergazdájának).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután az Azure AD B2C-vel regisztrált egy alkalmazást, [gyors üzembe helyezési oktatóanyagunk](active-directory-b2c-overview.md#get-started) segítségével elsajátíthatja a használatát.
+Most, hogy az Azure AD B2C-vel regisztrált egy alkalmazást, [gyors üzembehelyezési oktatóanyagaink](active-directory-b2c-overview.md#get-started) segítségével elsajátíthatja a használatát.
 
 > [!div class="nextstepaction"]
 > [ASP.NET-webalkalmazás létrehozása regisztrációval, bejelentkezéssel és új jelszó kérésével](active-directory-b2c-devquickstarts-web-dotnet-susi.md)

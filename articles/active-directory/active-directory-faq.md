@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory – gyakori kérdések | Microsoft Docs"
-description: "Az Azure Active Directoryval kapcsolatos gyakori kérdések az Azure és az Azure Active Directory elérésével, a jelszókezeléssel és az alkalmazások elérésével kapcsolatos kérdésekre ad választ."
+description: "Az Azure Active Directoryval kapcsolatos gyakori kérdések az Azure-ral és az Azure Active Directoryval, a jelszókezeléssel és az alkalmazások elérésével kapcsolatos kérdésekre ad választ."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2017
+ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 5ec11f1a125cc4c6e7f5165091411dea7daca193
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7640d2ba495d465f06bd918df0c08f0d85b42e76
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -27,9 +27,9 @@ További információkért lásd: [Mi az az Azure Active Directory?](active-dire
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Az Azure és az Azure Active Directory elérése
-**K: Miért kapok „Nem találhatók előfizetések” üzenetet, amikor megpróbálom elérni az Azure AD-t a klasszikus Azure portálon?**
+**K: Miért kapok „Nem találhatók előfizetések” üzenetet, amikor megpróbálom elérni az Azure AD-t az Azure Portalon?**
 
-**V:** A klasszikus Azure portál eléréséhez mindegyik felhasználónak engedélyekre van szüksége egy Azure-előfizetés keretében. Ha fizetős Office 365- vagy Azure AD előfizetésselrendelkezik, látogasson el a [http://aka.ms/accessAAD](http://aka.ms/accessAAD) címre egy egyszeri aktiváláshoz. Egyébként aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/) vagy egy fizetős előfizetést.
+**V:** Az Azure Portal eléréséhez mindegyik felhasználónak engedélyekre van szüksége egy Azure-előfizetés keretében. Ha fizetős Office 365- vagy Azure AD előfizetésselrendelkezik, látogasson el a [http://aka.ms/accessAAD](http://aka.ms/accessAAD) címre egy egyszeri aktiváláshoz. Egyébként aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/) vagy egy fizetős előfizetést.
 
 További információkért lásd:
 
@@ -44,11 +44,9 @@ További információkért lásd:
 A webes szolgáltatások használatához beállított összes felhasználó felhasználói fiókként van meghatározva egy vagy több Azure AD-példányban. Beállíthatja ezeket a fiókokat az ingyenes Azure AD-képességekhez, például a felhőalkalmazások eléréséhez.
 
 A fizetős Azure AD szolgáltatások, például az Enterprise Mobility + Security, átfogó vállalati méretű felügyeleti és biztonsági megoldásokkal egészítenek ki más webes szolgáltatásokat, például az Office 365-öt és a Microsoft Azure-t.
-- - -
-**K: Be tudok jelentkezni az Azure Portalra, de a klasszikus Azure portálra nem. Mi ennek az oka?**
 
-**V:** Az Azure Portal használatához nincs szükség érvényes előfizetésre, míg a klasszikus portálhoz rendelkeznie kell érvényes előfizetéssel.  Ha nem rendelkezik előfizetéssel, nem tud bejelentkezni a klasszikus portálra.
 - - -
+
 **K: Mi a különbség az előfizetés-rendszergazda és a címtárrendszergazda között?**
 
 **V:** Alapértelmezés szerint Önhöz az előfizetés-rendszergazda szerepkör van rendelve az Azure-ba történő regisztráláskor. Az előfizetés-rendszergazda használhat egy Microsoft-fiókot vagy egy munkahelyi és iskolai fiókot abból a címtárból, amelyhez az Azure-előfizetés társítva van.  Ez a szerepkör jogosult szolgáltatások kezelésére az Azure Portalon.
@@ -137,16 +135,20 @@ Azure AD-felhasználók esetében a rendszergazdák a következő módszerek val
 
 - - -
 ## <a name="security"></a>Biztonság
-**K: Zárolja a rendszer a fiókokat egy adott számú hibás kísérlet után, vagy ennél kifinomultabb stratégiát alkalmaz?**</br>
+**K: Zárolja a rendszer a fiókokat egy adott számú hibás kísérlet után, vagy ennél kifinomultabb stratégiát alkalmaz?**
+
 A fiókok zárolásához ennél kifinomultabb stratégiát alkalmazunk.  A zárolás a kérés IP-címe és a megadott jelszavak alapján történik. A zárolás időtartama annál hosszabb, minél inkább valószínűsíthető, hogy támadásról van szó.  
 
-**K: Egyes (gyakori) jelszavakat a rendszer „ezt a jelszót már túl sokszor használták” üzenettel dob vissza. Igaz ez az aktuális Active Directory-környezetben használt jelszavakra is?**</br>
+**K: Egyes (gyakori) jelszavakat a rendszer „ezt a jelszót már túl sokszor használták” üzenettel dob vissza. Igaz ez az aktuális Active Directory-környezetben használt jelszavakra is?**
+
 Ez a visszautasítás a világszerte gyakran használt jelszavakra, például a „Jelszó” (Password) és a „123456” karakterláncok különböző változataira vonatkozik.
 
-**K: Blokkolja a rendszer a kétes forrásokból (botnetek, TOR-végpontok) érkező bejelentkezési kéréseket a B2C-bérlőkön, vagy ehhez alap- vagy prémium szintű bérlőre van szükség?**</br>
+**K: Blokkolja a rendszer a kétes forrásokból (botnetek, TOR-végpontok) érkező bejelentkezési kéréseket a B2C-bérlőkön, vagy ehhez alap- vagy prémium szintű bérlőre van szükség?**
+
 Az átjárónk szűri a kéréseket és bizonyos fokú védelmet biztosít a botnetek ellen. Ez minden B2C-bérlőre vonatkozik.
 
 ## <a name="application-access"></a>Alkalmazás-hozzáférés
+
 **K: Hol találom az Azure Ad-vel előre integrált alkalmazások és azok képességeinek listáját?**
 
 **V:** Az Azure AD a Microsoft vállalat, az alkalmazásszolgáltatók és a partnerek több mint 2600 előre integrált alkalmazásával rendelkezik. Mindegyik előre integrált alkalmazás támogatja az egyszeri bejelentkezést (SSO). Az egyszeri bejelentkezéssel a szervezeti hitelesítő adatokkal érheti el az alkalmazásokat. Néhány alkalmazás az automatikus üzembe helyezést és megszüntetést is támogatja.

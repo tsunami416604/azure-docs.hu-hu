@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: jgao
-ms.openlocfilehash: 983c7d1f7e3b562a8b89f6afaf52a3289ab33f17
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 833ac053b3ad23a60b84adce1dfa9015bee99046
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop oktatóanyag: A Hadoop első lépései a HDInsightban
 
@@ -58,7 +58,7 @@ Az oktatóanyagban használt Resource Manager-sablon a [GitHubon](https://azure.
     Egyes tulajdonságok szoftveresen kötöttek a sablonban.  Ezeket az értéteket a sablonból konfigurálhatja.
 
     * **Hely**: A fürt és a függő tárfiók helye megegyezik az erőforráscsoport helyével.
-    * **Fürt verziója**: 3.5
+    * **Fürt verziója**: 3.6
     * **Operációs rendszer típusa**: Linux
     * **Munkavégző csomópontok száma**: 2
 
@@ -66,11 +66,11 @@ Az oktatóanyagban használt Resource Manager-sablon a [GitHubon](https://azure.
      
      További magyarázat ezekről a tulajdonságokról: [Hadoop-fürtök létrehozása a HDInsightban](../hdinsight-hadoop-provision-linux-clusters.md).
 
-3. Válassza az **Elfogadom a fenti feltételeket** és a **Rögzítés az irányítópulton** lehetőséget, majd kattintson a **Vásárlás** elemre. A portál irányítópultján egy új csempe jelenik meg **Sablon üzemelő példányának üzembe helyezése** címmel. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. A fürt létrejötte után a csempe felirata átvált az Ön által megadott erőforráscsoport-névre. A portál pedig automatikusan megnyitja az erőforráscsoportot egy új panelen. A panelen a fürt és az alapértelmezett tároló is megjelenik.
+3. Válassza az **Elfogadom a fenti feltételeket** és a **Rögzítés az irányítópulton** lehetőséget, majd kattintson a **Vásárlás** elemre. A portál irányítópultján egy új csempe jelenik meg **Sablon üzemelő példányának üzembe helyezése** címmel. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. A fürt létrejötte után a csempe felirata átvált az Ön által megadott erőforráscsoport-névre. A portál pedig automatikusan megnyitja az erőforráscsoportot. A panelen a fürt és az alapértelmezett tároló is megjelenik.
    
     ![A HDInsight (Linux) használatának első lépései – erőforráscsoport](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png "Azure HDInsight-alapú fürt erőforráscsoportja").
 
-4. A fürt nevére kattintva a fürt megnyílik egy új panelen.
+4. A fürt nevére kattintva a fürt megnyílik.
 
    ![fürtbeállítások](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png "HDInsight-fürttulajdonságok")
 
@@ -120,7 +120,7 @@ Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál irányítópultján kattintson arra a csempére, amelynek a neve megegyezik a fürt létrehozásakor használt erőforráscsoport-névvel.
-3. Kattintson az erőforrás paneljének **Törlés** gombjára a fürtöt és az alapértelmezett tárfiókot tartalmazó erőforrás törléséhez, vagy kattintson az **Erőforrások** csempén a fürt nevére, majd a fürt paneljén kattintson a **Törlés** elemre. Vegye figyelembe, hogy az erőforráscsoport törlése a tárfiókot is törli. Ha szeretné megtartani a tárfiókot, csak a fürtöt törölje.
+3. Kattintson a **Törlés** gombra a fürtöt és az alapértelmezett tárfiókot tartalmazó erőforráscsoport törléséhez, vagy kattintson az **Erőforrások** csempén a fürt nevére, majd kattintson a **Törlés** elemre. Vegye figyelembe, hogy az erőforráscsoport törlése a tárfiókot is törli. Ha szeretné megtartani a tárfiókot, csak a fürtöt törölje.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -136,12 +136,12 @@ A HDInsight használatával történő adatelemzésről az alábbi cikkekben tal
 * További információ a Hadoopon adatokat feldolgozó programok írására szolgáló MapReduce módszerről: [A MapReduce használata a HDInsighttal](hdinsight-use-mapreduce.md).
 * A HDInsight-adatok elemzésére szolgáló HDInsight Tools for Visual Studio szolgáltatással kapcsolatos további információkért lásd: [Get started using Visual Studio Hadoop tools for HDInsight](apache-hadoop-visual-studio-tools-get-started.md) (A HDInsight Visual Studio Hadoop-eszközeinek használatára vonatkozó első lépések).
 
-Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következőket:
+Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következő cikkeket:
 
 * További információt az Azure Storage HDInsight általi használatáról [az Azure Storage és a HDInsight együttes használatát](../hdinsight-hadoop-use-blob-storage.md) ismertető cikkben talál.
 * További információ a HDInsightba való adatfeltöltésről: [Adatok feltöltése a HDInsightba](../hdinsight-upload-data.md).
 
-A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további információkért lásd:
+A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további információkért lásd a következő cikkeket:
 
 * Információk a Linux-alapú HDInsight-fürtök kezeléséhez: [Manage HDInsight clusters using Ambari](../hdinsight-hadoop-manage-ambari.md) (HDInsight-fürtök kezelése az Ambari segítségével).
 * További információ a HDInsight-fürtök létrehozásakor kiválasztható beállításokról: [Creating HDInsight on Linux using custom options](../hdinsight-hadoop-provision-linux-clusters.md) (HDInsight létrehozása Linux rendszeren egyéni beállításokkal).

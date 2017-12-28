@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2017
+ms.date: 12/14/2017
 ms.author: billmath
-ms.openlocfilehash: a935c3a7a5eeead8eaac5d8d0980c289b17f3289
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c01ea7c6a05c77244ab29fe6eec00ed1e49b6f7e
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Azure Active Directory – Használati feltételek funkció (Előzetes verzió)
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal.  Így gondoskodni lehet róla, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat.
@@ -52,14 +52,16 @@ A használati feltételek véglegesítése után a hozzáadáshoz kövesse a kö
 ### <a name="to-add-terms-of-use"></a>Használati feltételek hozzáadása
 1. Lépjen a [https://aka.ms/catou](https://aka.ms/catou) címen található irányítópultra
 2. Kattintson az Add (Hozzáadás) parancsra.</br>
-![Használati feltételek hozzáadása](media/active-directory-tou/tou2.png)
+![Használati feltételek hozzáadása](media/active-directory-tou/tou12.png)
 3. Adja meg a használati feltételek **nevét**.
 4. Adja meg a **megjelenítendő nevet**.  A felhasználók ezt a fejlécet látják bejelentkezéskor.
 5. A **Tallózás** lehetőséggel keresse meg a véglegesített használati feltételeket tartalmazó pdf fájlt, és válassza ki.  Ajánlott betűméret: 24.
-6. A feltöltött használati feltételeket sablon vagy egyéni feltételes hozzáférési szabályzat segítségével **Kényszerítheti ki**.  Az egyéni feltételes hozzáférési szabályzat részletes használati feltételek alkalmazását teszi lehetővé, amelyeket akár egy adott felhőalkalmazásra vagy felhasználói csoportra is leszűkíthet.  További információkért lásd a [feltételes hozzáférés konfigurálását bemutató részt](active-directory-conditional-access-best-practices.md)
-7. Kattintson a **Create** (Létrehozás) gombra.
-8. Ha egyéni feltételes hozzáférési sablont választott, akkor egy új képernyő jelenik meg, amelyen testre szabható a feltételes hozzáférési szabályzat.
-7. Ezután már az új használati feltételek jelennek meg.</br>
+6. **Válassza ki** a használati feltételek nyelvét.  A nyelvi beállítás lehetővé teszi, hogy több használati feltételt töltsön fel, különböző nyelveken.  A használati feltételek végfelhasználó által látott verziója a böngésző beállításaitól függ.
+7. Kapcsolja be vagy ki az **A felhasználóknak legyen kötelező a használati feltételek megtekintése** beállítást.  Ha bekapcsolja, a végfelhasználóknak meg kell tekinteniük a használati feltételeket, mielőtt elfogadhatnák őket.
+8. A feltöltött használati feltételeket sablon vagy egyéni feltételes hozzáférési szabályzat segítségével **Kényszerítheti ki** a **Feltételes hozzáférés** szakaszban.  Az egyéni feltételes hozzáférési szabályzat részletes használati feltételek alkalmazását teszi lehetővé, amelyeket akár egy adott felhőalkalmazásra vagy felhasználói csoportra is leszűkíthet.  További információkért lásd a [feltételes hozzáférés konfigurálását bemutató részt](active-directory-conditional-access-best-practices.md)
+9. Kattintson a **Create** (Létrehozás) gombra.
+10. Ha egyéni feltételes hozzáférési sablont választott, akkor egy új képernyő jelenik meg, amelyen testre szabható a feltételes hozzáférési szabályzat.
+11. Ezután már az új használati feltételek jelennek meg.</br>
 
 ![Használati feltételek hozzáadása](media/active-directory-tou/tou3.png)
 
@@ -90,6 +92,19 @@ Az érintett felhasználók a használati feltételek létrehozása és kénysze
 ![Esemény naplózása](media/active-directory-tou/tou10.png)
 -   A képernyő mobileszközökön így jelenik meg</br></br>
 ![Esemény naplózása](media/active-directory-tou/tou11.png)
+
+### <a name="review-terms-of-use"></a>A használati feltételek áttekintése
+A felhasználók áttekinthetik és láthatják az általuk elfogadott használati feltételeket.  Ezt a következő eljárással teheti meg:
+
+1. Nyissa meg a [https://myapps.microsoft.com](https://myapps.microsoft.com) webhelyet, és jelentkezzen be.
+2. A jobb felső sarokban kattintson a nevére, és válassza a **Profil** lehetőséget a legördülő menüből.
+![Profil](media/active-directory-tou/tou14.png)
+
+3. A profiljában kattintson a **Használati feltételek áttekintése** elemre.
+![Esemény naplózása](media/active-directory-tou/tou13a.png)
+
+4.  Itt áttekintheti az elfogadott használati feltételeket. 
+
 
 ## <a name="additional-information"></a>További információ
 Az alábbi információkkal érdemes tisztában lenni, mivel segítenek a használati feltételek alkalmazásában.

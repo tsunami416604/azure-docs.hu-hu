@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 91ef8aece812c0495fcb3bc31401606f40b7ba97
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 20b95f16e16c4b42289e1e25def4910fbca70db5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Az HDInsight alatt futó Apache Kafka használatának első lépései
 
@@ -168,7 +168,7 @@ A parancs kimenete listázza a Kafka-témaköröket, és tartalmazza a **test** 
 
 ## <a name="produce-and-consume-records"></a>Rekordok létrehozása és felhasználása
 
-A Kafka témakörökben tárolja a *rekordokat*. A rekordokat *előállítók* hozzák létre, és *fogyasztók* használják fel. Az előállítók *Kafka-közvetítőktől* kérik le a rekordokat. A HDInsight-fürt mindegyik feldolgozó csomópontja egy Kafka-közvetítő.
+A Kafka témakörökben tárolja a *rekordokat*. A rekordokat *előállítók* hozzák létre, és *fogyasztók* használják fel. Az előállítók Kafka-*közvetítőknek* adják tovább a rekordokat. A HDInsight-fürt mindegyik feldolgozó csomópontja egy Kafka-közvetítő.
 
 Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test témakörben való eltárolására, majd a beolvasásukra egy fogyasztó használatával:
 

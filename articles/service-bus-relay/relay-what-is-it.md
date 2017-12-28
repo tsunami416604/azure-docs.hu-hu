@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 77ee85db0bcc701514a1a98da9405a79d658d49d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1b1c0661458669dc8f05a49037943320de2ecb3
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="what-is-azure-relay"></a>Mi az az Azure Relay?
 
@@ -28,7 +28,7 @@ A továbbítási szolgáltatás támogatja a hagyományos egyirányú, a kérele
 
 A továbbítón keresztüli adatátviteli mintában a helyszíni szolgáltatás csatlakozik a továbbítási szolgáltatáshoz egy kimenő porton keresztül, majd létrehoz egy adott szinkronizálási címhez kötött kétirányú szoftvercsatornát a kommunikációhoz. Az ügyfél ezután kommunikálhat a helyszíni szolgáltatással, ha a szinkronizálási címet megcélozva forgalmat küld a továbbítási szolgáltatásnak. A továbbítási szolgáltatás ezután továbbítja az adatokat a helyszíni szolgáltatásba az egyes ügyfelek számára kijelölt kétirányú szoftvercsatornán keresztül. Az ügyfélnek nincs szüksége közvetlen kapcsolatra a helyszíni szolgáltatással, és azt sem kell tudnia, hol található, a helyszíni szolgáltatásnak pedig nincs szüksége megnyitott bejövő portra a tűzfalon.
 
-A Relay által biztosított kulcsfontosságú képesség a TPC-szerű szabályozással, végpontészleléssel, kapcsolati állapottal és átfedő végpontvédelemmel rendelkező, hálózati határok között történő kétirányú, nem pufferelt kommunikációban rejlik. A továbbítási képességek abban térnek el az olyan hálózati szintű integrációs technológiáktól mint például a VPN, hogy a továbbítás egyetlen alkalmazásvégpontra is fókuszálható a gépen, míg a VPN technológia ennél jóval agresszívabb, hiszen a hálózati környezet módosítására támaszkodik.
+A Relay által biztosított kulcsfontosságú képesség a TCP-szerű szabályozással, végpontészleléssel, kapcsolati állapottal és átfedő végpontvédelemmel rendelkező, hálózati határok között történő kétirányú, nem pufferelt kommunikációban rejlik. A továbbítási képességek abban térnek el az olyan hálózati szintű integrációs technológiáktól mint például a VPN, hogy a továbbítás egyetlen alkalmazásvégpontra is fókuszálható a gépen, míg a VPN technológia ennél jóval agresszívabb, hiszen a hálózati környezet módosítására támaszkodik.
 
 Az Azure Relay két funkciója:
 
@@ -54,11 +54,12 @@ Az [Azure Relay Hibrid kapcsolatok képesség](relay-hybrid-connections-protocol
 
 A Hibrid kapcsolatok pótolja a korábbi, hasonló nevű „BizTalk Services” funkciót, amely az Azure Service Bus WCF-továbbítóra épült. Az új Hibrid kapcsolatok képesség kiegészíti a már meglévő WCF-továbbítót, és a két szolgáltatási képesség egymás mellett fog működni az Azure Relay szolgáltatásban. E szolgáltatások közös átjáróval rendelkeznek, de ettől eltekintve különböző megvalósításról van szó.
 
-## <a name="wcf-relays"></a>WCF-továbbítók
+## <a name="wcf-relay"></a>WCF-továbbító
 
-A WCF-továbbító a teljes .NET-keretrendszer (NETFEX) és a WCF esetén működik. A kapcsolatot a helyszíni és a továbbítási szolgáltatás között kezdeményezheti egy WCF továbbító kötéskészlet használatával. A színfalak mögött a továbbítási kötéseket a rendszer a Service Busszal a felhőben integrálódó WCF-csatornaösszetevők létrehozására tervezett új átviteli kötőelemekké képezi le.
+A WCF-továbbító a teljes .NET-keretrendszerrel (NETFX) és a WCF-fel is használható. A kapcsolatot a helyszíni és a továbbítási szolgáltatás között kezdeményezheti egy WCF továbbító kötéskészlet használatával. A színfalak mögött a továbbítási kötéseket a rendszer a Service Busszal a felhőben integrálódó WCF-csatornaösszetevők létrehozására tervezett új átviteli kötőelemekké képezi le. További információ: [Ismerkedés a WCF-továbbító szolgáltatással](relay-wcf-dotnet-get-started.md).
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektúra: Bejövő továbbítási kérelmek feldolgozása
+
 Amikor egy ügyfél kérelmet küld az [Azure Relay](/azure/service-bus-relay/) szolgáltatásnak, az Azure Load Balancer továbbítja azt valamelyik átjárócsomópontnak. Ha kérelem figyelési kérelem, az átjárócsomópont létrehoz egy új továbbítót. Ha kérelem egy adott továbbítóhoz való kapcsolódásra irányul, az átjárócsomópont továbbítja a kapcsolódási kérelmet annak az átjárócsomópontnak, amely a továbbító tulajdonosa. A továbbítót birtokló átjárócsomópont küld egy szinkronizálási kérelmet a figyelő ügyfélnek, amelyben arra kéri a figyelőt, hogy hozzon létre egy ideiglenes csatornát ahhoz az átjárócsomóponthoz, amely a kapcsolódási kérelmet kapta.
 
 Ha a továbbítási kapcsolat létrejött, az ügyfelek üzeneteket válthatnak a szinkronizálásra használt átjárócsomóponton keresztül.

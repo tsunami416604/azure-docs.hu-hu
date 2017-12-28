@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: 767dc34471db7dc1d095929e67e85197711b52ce
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 7b5675dacd1d9effd73f3bc51ea4efc0ea6be029
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="virtual-network-service-endpoints-preview"></a>Virtuális hálózati szolgáltatásvégpontok (előzetes verzió)
 
@@ -59,7 +59,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
   Alapértelmezés szerint a virtuális hálózatokhoz biztosított Azure-szolgáltatási erőforrások nem érhetők el helyszíni hálózatokról. Ha engedélyezni szeretné a helyszíni eredetű forgalmat, ahhoz engedélyeznie kell a nyilvános (általában NAT) IP-címeket is a helyszíni vagy ExpressRoute-kapcsolatokon. Ezeket az IP-címeket az Azure-szolgáltatási erőforrások IP-tűzfalainak konfigurálásával lehet megadni.
 
-  ExpressRoute: Ha [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-ot használ a helyszíni eredetű forgalomhoz vagy a nyilvános társviszony-létesítéshez, akkor mindegyik ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezt a két nyilvános IP-címet az erőforrás IP-tűzfalának beállításai között. Az ExpressRoute-kapcsolatcsoport IP-címeinek megtekintéséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk a [NAT az ExpressRoute nyilvános társviszony-létesítési szolgáltatásához történő beállításáról](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
+  ExpressRoute: Ha [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-ot használ a helyszíni eredetű nyilvános társviszony-létesítéshez vagy Microsoft-társviszony-létesítéshez, meg kell határoznia a használt NAT IP-címeket. Nyilvános társviszony-létesítés esetén alapértelmezés szerint minden ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. Microsoft-társviszony-létesítés esetén a használt NAT IP-cím(ek)et vagy az ügyfél vagy a szolgáltató adja meg. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címeinek megkereséséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
 
 ![Azure-szolgáltatások biztosítása virtuális hálózatokhoz](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: 1eddd18e9b5ac0b4cb174e635f0f3cfd2f41059d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: fe50f159baedf5455c2ea3cfe825d6d826e70851
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner-jelentés
 Az elkészített Microsoft Excel-jelentés a következő táblázatokat tartalmazza:
@@ -234,8 +234,8 @@ Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vag
 * A virtuális gép teljes mérete (replikáció + TFO) meghaladja a támogatott tárfiók méretkorlátozását (35 TB). Ez a fajta inkompatibilitás általában akkor fordul elő, ha a virtuális gép egy lemezének egyik teljesítményjellemzője meghaladja a támogatott standard szintű tárolóra vonatkozó Azure- vagy Site Recovery-korlátozásokat. Egy ilyen példány a prémium szintű tárolózónába kényszeríti a virtuális gépet. A prémium szintű tárfiókok maximális támogatott mérete azonban 35 TB, és egyetlen védett virtuális gép nem védhető több tárfiókon keresztül. Ügyeljen arra is, hogy amikor a feladatátvételi tesztet védett virtuális gépen hajtja végre, akkor az ugyanazon a tárfiókon fut, ahol a replikáció folyik. Ezen a példányon a lemez méretének kétszeresét kell kiosztani, hogy a replikáció is folytatódhasson, és ezzel párhuzamosan a feladatátvételi teszt is sikeres legyen.
 * A forrás IOPS-érték meghaladja a tároló lemezenkénti 5000-es IOPS-korlátját.
 * A forrás IOPS-érték meghaladja a tároló virtuális gépenkénti 80 000-es IOPS-korlátját.
-* Az átlagos adatváltozás meghaladja a Site Recovery lemezenkénti átlagos I/O-mérethez megadott 10 MBps értékű adatváltozási korlátját.
-* Total data churn across all disks on the VM exceeds the maximum supported Site Recovery data churn limit of 54 MBps per VM (Az összes virtuális gépre vonatkozó teljes adatváltozás meghaladja a Site Recovery virtuális gépenkénti 54 Mbps-os támogatott adatváltozási korlátját)
+* Az átlagos adatváltozás meghaladja a Site Recovery lemezenkénti átlagos I/O-mérethez megadott 10 MB/s értékű adatváltozási korlátját.
+* Az összes virtuális gépre vonatkozó teljes adatváltozás meghaladja a Site Recovery virtuális gépenkénti 54 Mb/s-os támogatott adatváltozási korlátját.
 * Az átlagos tényleges írási IOPS-érték meghaladja a Site Recovery lemezenkénti 840-es támogatott IOPS-korlátját.
 * A kiszámított pillanatkép-tároló mérete meghaladja a 10 TB-os támogatott méretet.
 
@@ -263,12 +263,12 @@ Az alábbi táblázat az Azure Site Recovery korlátait tartalmazza. Ezek a korl
  
 **Replikáció tárolási célja** | **Forráslemez átlagos I/O-mérete** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
 ---|---|---|---
-Standard szintű Storage | 8 KB | 2 MBps | Lemezenként 168 GB
-Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MBps | Lemezenként 168 GB
-Prémium szintű P10 vagy P15 lemez | 16 KB | 4 MBps |  Lemezenként 336 GB
-Prémium szintű P10 vagy P15 lemez | 32 KB vagy több | 8 MBps | Lemezenként 672 GB
-Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MBps | Lemezenként 421 GB
-Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |10 MBps | Lemezenként 842 GB
+Standard szintű Storage | 8 KB | 2 MB/s | Lemezenként 168 GB
+Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MB/s | Lemezenként 168 GB
+Prémium szintű P10 vagy P15 lemez | 16 KB | 4 MB/s |  Lemezenként 336 GB
+Prémium szintű P10 vagy P15 lemez | 32 KB vagy több | 8 MB/s | Lemezenként 672 GB
+Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MB/s | Lemezenként 421 GB
+Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |10 MB/s | Lemezenként 842 GB
 
 Ezek átlagos értékek, amelyek 30 százalékos I/O-átfedést feltételeznek. A Site Recovery képes magasabb átviteli sebesség kezelésére az átfedési arány, a nagyobb írási méretek és a számítási feladatok tényleges I/O-viselkedése alapján. Az előbbi számok egy általános, körülbelül ötperces várólistát feltételeznek. Ez azt jelenti, hogy a feltöltést követő öt percben megtörténik az adat feldolgozása, és létrejön egy helyreállítási pont.
 
