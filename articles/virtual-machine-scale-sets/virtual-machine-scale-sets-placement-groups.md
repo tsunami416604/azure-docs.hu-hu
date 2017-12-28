@@ -3,8 +3,8 @@ title: "Nagyméretű Azure-beli virtuálisgép-méretezési csoportok használat
 description: "Tudnivalók a nagyméretű Azure-beli virtuálisgép-méretezési csoportok használatáról"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/9/2017
-ms.author: guybo
-ms.openlocfilehash: b2d6aba2c8efa7f20753de7bfb79c2f22b07318b
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: negat
+ms.openlocfilehash: 192f2c01be0992e22ce67e3df6d641ba707e22fd
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Nagyméretű virtuálisgép-méretezési csoportok használata
 Mostantól akár 1000 virtuális gép kapacitású Azure [virtuálisgép-méretezési csoportokat](/azure/virtual-machine-scale-sets/) is létrehozhat. Ebben a dokumentumban a _nagyméretű virtuálisgép-méretezési csoport_ egy 100 virtuális gépnél nagyobb skálázásra képes méretezési csoportként van meghatározva. Ezt a képességet a méretezési csoport egyik tulajdonsága adja meg (_singlePlacementGroup=False_). 
@@ -37,7 +37,7 @@ Annak eldöntéséhez, hogy az alkalmazás hatékony tudja-e használni a nagym�
 - A nagyméretű méretezési csoportokhoz az Azure Managed Disks szükséges. Azokhoz a méretezési csoportokhoz, amelyeket nem a Managed Disksszel hoztak létre, több tárfiókra van szükség (egyre minden 20 virtuális géphez). A nagyméretű méretezési csoportokat arra tervezték, hogy kizárólag a Managed Disksszel működjenek annak érdekében, hogy csökkenjen a tárolókezelés munkaterhelése, és hogy megszűnjön a tárfiókhoz tartozó előfizetés-korlát elérésének veszélye. Ha nem használja a Managed Diskst, a méretezési csoport legfeljebb 100 virtuális gép méretű lehet.
 - Az Azure Marketplace rendszerképekből létrehozott méretezési csoportok akár 1000 virtuális gépig skálázhatók.
 - Az egyéni rendszerképekből (olyan virtuálisgép-rendszerképek, amelyeket a felhasználó maga hoz létre és tölt fel) létrehozott méretezési csoportok akár 300 virtuális gépig skálázhatók.
-- A 4. rétegbeli terheléselosztáshoz több elhelyezési csoportból álló méretezési csoport esetén szükség van az [Azure Load Balancer standard termékváltozatára](../load-balancer/load-balancer-standard-overview.md). A Load Balancer standard termékváltozata további előnyöket biztosít, például a több méretezési csoport közötti terheléselosztást. A standard termékváltozat emellett azt is megköveteli, hogy a méretezési csoporthoz hozzá legyen rendelve egy hálózati biztonsági csoport, különben a NAT-készletek nem fognak megfelelően működni. Ha az Azure Load Balancer alapszintű termékváltozatát szeretné használni, győződjön meg arról, hogy a méretezési csoport egyetlen elhelyezési csoport használatára van konfigurálva, ami az alapértelmezett beállítás is.
+- A 4. rétegbeli terheléselosztáshoz több elhelyezési csoportból álló méretezési csoport esetén szükség van az [Azure Load Balancer standard termékváltozatára](../load-balancer/load-balancer-standard-overview.md). A Load Balancer standard termékváltozata további előnyöket biztosít, például a több méretezési csoport közötti terheléselosztást. A standard termékváltozat emellett azt is megköveteli, hogy a méretezési csoporthoz hozzá legyen rendelve egy hálózati biztonsági csoport, különben a NAT-készletek nem működnek megfelelően. Ha az Azure Load Balancer alapszintű termékváltozatát szeretné használni, győződjön meg arról, hogy a méretezési csoport egyetlen elhelyezési csoport használatára van konfigurálva, ami az alapértelmezett beállítás is.
 - A 7. rétegbeli terheléselosztás az Azure Application Gatewayjel minden méretezési csoporthoz támogatott.
 - A méretezési csoport egyetlen alhálózattal van meghatározva – győződjön meg róla, hogy az alhálózat megfelelő méretű névtérrel rendelkezik minden virtuális géphez. A méretezési csoport alapértelmezés szerint a szükségesnél több erőforrást hoz létre (további virtuális gépeket hoz létre az üzembe helyezés során vagy a felskálázáskor, amelyek nem járnak többletköltséggel), hogy javítsa az üzembe helyezés megbízhatóságát és teljesítményét. Lehetővé teszi egy címtér számára, hogy 20%-kal nagyobb legyen, mint a virtuális gépek száma, amelyekhez skálázni szeretne.
 - Ha több virtuális gépet tervez üzembe helyezni, a Számítási vCPU-kvóta korlátozásának emelése lehet szükséges.
@@ -49,13 +49,13 @@ A méretezési csoport létrehozásakor az Azure Portalon engedélyezheti, hogy 
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
-Létrehozhat egy nagyméretű méretezési csoportot az [Azure CLI](https://github.com/Azure/azure-cli) _az vmss create_ parancsával. Ez a parancs az intelligens alapértelmezett beállításokat (például a _példányszám_ argumentumon alapuló alhálózat méretét) adja meg:
+Az [Azure CLI](https://github.com/Azure/azure-cli) _az vmss create_ parancsával létrehozhat egy nagyméretű virtuálisgép-méretezési csoportot. Ez a parancs az intelligens alapértelmezett beállításokat (például a _példányszám_ argumentumon alapuló alhálózat méretét) adja meg:
 
 ```bash
 az group create -l southcentralus -n biginfra
 az vmss create -g biginfra -n bigvmss --image ubuntults --instance-count 1000
 ```
-Ügyeljen arra, hogy a _vmss create_ parancs alapértelmezett értékeket használ egyes konfigurációs értékek esetében, ha nem határozza meg azokat. Az elérhető és felülbírálható beállítások megtekintéséhez használja a következő parancsot:
+A _vmss create_ parancs alapértelmezett értékeket használ egyes konfigurációs értékekhez, ha nincsenek meghatározva. Az elérhető és felülbírálható beállítások megtekintéséhez használja a következő parancsot:
 ```bash
 az vmss create --help
 ```
@@ -80,7 +80,7 @@ Ha egy Azure Resource Manager-sablon összeállításával hoz létre nagyméret
 A nagyméretű méretezésicsoport-sablon teljes példájáért lásd: [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json).
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Meglévő méretezési csoportok konvertálása, hogy több elhelyezési csoportra terjedjenek ki
-Ahhoz, hogy egy már meglévő virtuálisgép-méretezési csoport több mint 100 virtuális géphez skálázódhasson, a _singplePlacementGroup_ tulajdonságot _hamis_ értékre kell állítani a méretezésicsoport-modellben. Az [Azure Resource Explorerrel](https://resources.azure.com/) tesztelheti ennek a tulajdonságnak a módosítását. Keressen egy már létező méretezési csoportot, válassza a _Szerkesztés_ lehetőséget, majd módosítsa a _singlePlacementGroup_ tulajdonságot. Ha nem látja ezt a tulajdonságot, előfordulhat, hogy a Microsoft.Compute API egy régebbi változatával tekinti meg a méretezési csoportot.
+Ahhoz, hogy egy már meglévő virtuálisgép-méretezési csoport több mint 100 virtuális géphez skálázódhasson, a _singplePlacementGroup_ tulajdonságot _false_ értékre kell állítania a méretezésicsoport-modellben. Az [Azure Resource Explorerrel](https://resources.azure.com/) tesztelheti ennek a tulajdonságnak a módosítását. Keressen egy már létező méretezési csoportot, válassza a _Szerkesztés_ lehetőséget, majd módosítsa a _singlePlacementGroup_ tulajdonságot. Ha nem látja ezt a tulajdonságot, előfordulhat, hogy a Microsoft.Compute API egy régebbi változatával tekinti meg a méretezési csoportot.
 
 >[!NOTE] 
 Módosíthat egy méretezési csoportot, hogy ne csak (az alapértelmezett működés szerinti) egy, hanem több elhelyezési csoportot támogasson, de ennek fordítottjára nincs lehetőség. Ezért a konvertálás előtt győződjön meg róla, hogy tisztában van a nagyméretű méretezési csoportok tulajdonságaival.

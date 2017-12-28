@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 12/15/2017
 ms.author: raynew
-ms.openlocfilehash: 3987b50a7a1798d2094e8271ad2cc317c7f472ef
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 3105eaa9e97f02f2337832bef538959a94263ea4
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
 
@@ -32,7 +32,7 @@ A szervezeteknek szükségük van egy üzletmenet-folytonossági és vészhelyre
 
 Az Azure Site Recovery segít a BCDR-stratégia kidolgozásában. A Site Recovery használatával alkalmazásbarát replikációt végezhet a felhőbe vagy egy másodlagos helyre. Függetlenül attól, hogy alkalmazásai Windows- vagy Linux-alapúak, illetve hogy fizikai, VMware- vagy Hyper-V-kiszolgálón futnak, a Site Recovery koordinálja a replikációt, elvégzi a vészhelyreállítás tesztelését, valamint feladatátvételt és -visszavételt hajt végre.
 
-A Site Recovery számos Microsoft-alkalmazással (például SharePoint, Exchange, Dynamics, SQL Server és Active Directory) képes együttműködni. A Microsoft továbbá szorosan együttműködik az olyan vezető szállítókkal, mint az Oracle, a SAP vagy a Red Hat. A replikációs megoldásokat alkalmazásonként szabhatja testre.
+A Site Recovery számos Microsoft-alkalmazással (például SharePoint, Exchange, Dynamics, SQL Server és Active Directory) együttműködik. A Microsoft továbbá szorosan együttműködik az olyan vezető szállítókkal, mint az Oracle, a SAP vagy a Red Hat. A replikációs megoldásokat alkalmazásonként szabhatja testre.
 
 ## <a name="why-use-site-recovery-for-application-replication"></a>Miért előnyös a Site Recovery használata az alkalmazásreplikációhoz?
 
@@ -49,21 +49,20 @@ A Site Recovery az alábbi módokon járul hozzá az alkalmazásszintű védelem
 ## <a name="workload-summary"></a>A számítási feladatok összefoglalása
 A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes replikálni. Ezenfelül a termékekért felelős csoportokkal együttműködésben további, alkalmazásspecifikus teszteket is végrehajtottunk.
 
-| **Számítási feladat** | **Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** |
-| --- | --- | --- | --- | --- |
-| Active Directory, DNS |I |I |I |I |
-| Webalkalmazások (IIS, SQL) |I |I |I |I |
-| System Center Operations Manager |I |I |I |I |
-| SharePoint |I |I |I |I |
-| SAP<br/><br/>Replikálás SAP-helyről az Azure-ba nem fürtözött rendszer esetén |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |
-| Exchange (nem DAG) |I |I |I |I |
-| Távoli asztal/VDI |I |I |I |N/A |
-| Linux (operációs rendszer és alkalmazások) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |
-| Dynamics AX |I |I |I |I |
-| Dynamics CRM |I |Hamarosan |I |Hamarosan elérhető |
-| Oracle |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |
-| Windows fájlkiszolgáló |I |I |I |I |
-| Citrix XenApp és XenDesktop |N/A |I |N/A |I |
+| **Számítási feladat** |**Virtuális gépek replikálása az Azure-ba** |**Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** |
+| --- | --- | --- | --- | --- |---|
+| Active Directory, DNS |I |I |I |I |I|
+| Webalkalmazások (IIS, SQL) |I |I |I |I |I|
+| System Center Operations Manager |I |I |I |I |I|
+| SharePoint |I |I |I |I |I|
+| SAP<br/><br/>Replikálás SAP-helyről az Azure-ba nem fürtözött rendszer esetén |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján)|
+| Exchange (nem DAG) |I |I |I |I |I|
+| Távoli asztal/VDI |I |I |I |I |I|
+| Linux (operációs rendszer és alkalmazások) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján)|
+| Dynamics AX |I |I |I |I |I|
+| Oracle |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján)|
+| Windows fájlkiszolgáló |I |I |I |I |I|
+| Citrix XenApp és XenDesktop |I|N/A |I |N/A |I |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory és DNS replikálása
 A legtöbb vállalati alkalmazás számára elengedhetetlen az Active Directory- és DNS-infrastruktúra használata. A vészhelyreállítás során a számítási feladatok és az alkalmazások helyreállítása előtt ezeket az infrastruktúra-összetevőket meg kell védenie és helyre kell állítania.
@@ -106,13 +105,16 @@ Az Azure Site Recovery szolgáltatással az alábbi módokon biztosíthatja a Dy
 A távoli asztali szolgáltatások (RDS) lehetővé teszik a virtuális asztali infrastruktúra (VDI), illetve a munkamenet-alapú asztal és alkalmazások használatát, így a felhasználók bárhonnan dolgozhatnak. Az Azure Site Recovery segítségével:
 
 * Felügyelt vagy nem felügyelt, készletbe vont virtuális asztalait másodlagos helyre, távoli alkalmazásait és munkameneteit pedig másodlagos helyre vagy az Azure-ba replikálhatja.
+
 * A következőket replikálhatja:
 
-| **RDS** | **Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** | **Fizikai kiszolgálók replikálása másodlagos helyre** | **Fizikai kiszolgálók replikálása az Azure-ba** |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Készletezett virtuális asztal (nem kezelt)** |Igen |Nem |Igen |Nem |Igen |Nem |
-| **Készletezett virtuális asztal (kezelt, UPD nélküli)** |Igen |Nem |Igen |Nem |Igen |Nem |
-| **Távoli alkalmazások és asztali munkamenetek (UPD nélkül)** |Igen |Igen |Igen |Igen |Igen |Igen |
+| **RDS** |**Virtuális gépek replikálása az Azure-ba** | **Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** | **Fizikai kiszolgálók replikálása másodlagos helyre** | **Fizikai kiszolgálók replikálása az Azure-ba** |
+|---| --- | --- | --- | --- | --- | --- | --- |
+| **Készletezett virtuális asztal (nem kezelt)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |
+| **Készletezett virtuális asztal (kezelt, UPD nélküli)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |
+| **Távoli alkalmazások és asztali munkamenetek (UPD nélkül)** |Igen|Igen |Igen |Igen |Igen |Igen |Igen |
+
+[Vészhelyreállítás beállítása a távoli asztali szolgáltatásokhoz (RDS) az Azure Site Recovery használatával](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure).
 
 [Itt részletes tájékoztatást olvashat](https://gallery.technet.microsoft.com/Remote-Desktop-DR-Solution-bdf6ddcb) az RDS védelméről.
 
@@ -138,7 +140,7 @@ A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az SAP véd
 ## <a name="protect-iis"></a>Az IIS védelme
 A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemelő IIS-példány védelmét:
 
-Az Azure Site Recovery úgy gondoskodik a vészhelyreállításról, hogy a környezet kritikus összetevőit replikálja egy offline távoli helyre, vagy egy, a Microsoft Azure-hoz hasonló nyilvános felhőbe. Mivel a rendszer a webkiszolgálóval és az adatbázissal együtt replikálja a virtuális gépet a helyreállítási helyen, nincs szükség a konfigurációs fájlok vagy tanúsítványok külön biztonsági mentésére. A feladatátvétel után módosult környezeti változóktól függő alkalmazásleképezések és -kötések a vészhelyreállítás tervekbe integrált szkriptekkel frissíthetők. A virtuális gépek csak feladatátvétel esetén kerülnek a helyreállítási helyre. Az Azure Site Recovery a végpontok közötti feladatátvétel összehangolását is elősegíti az alábbi képességek biztosításával:
+Az Azure Site Recovery úgy gondoskodik a vészhelyreállításról, hogy a környezet kritikus összetevőit replikálja egy offline távoli helyre, vagy egy, a Microsoft Azure-hoz hasonló nyilvános felhőbe. Mivel a rendszer a webkiszolgálóval és az adatbázissal együtt replikálja a virtuális gépeket a helyreállítási helyen, nincs szükség a konfigurációs fájlok vagy tanúsítványok külön biztonsági mentésére. A feladatátvétel után módosult környezeti változóktól függő alkalmazásleképezések és -kötések a vészhelyreállítás tervekbe integrált szkriptekkel frissíthetők. A virtuális gépek csak feladatátvétel esetén kerülnek a helyreállítási helyre. Az Azure Site Recovery a végpontok közötti feladatátvétel összehangolását is elősegíti az alábbi képességek biztosításával:
 
 -   A virtuális gépek leállításának és indításának sorrendbe állítása a különböző szinteken.
 -   Szkriptek hozzáadása az alkalmazásfüggőségek és -kötések frissítésének biztosításához a virtuális gépek elindítása után. A szkriptek a DNS-kiszolgáló frissítésére is használhatók, hogy a helyreállítási helyre mutasson.

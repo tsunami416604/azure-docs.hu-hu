@@ -1,5 +1,5 @@
 ---
-title: "Továbbító típusú névtér létrehozása az Azure Portal használatával | Microsoft Docs"
+title: "Továbbítónévtér létrehozása az Azure Portal használatával | Microsoft Docs"
 description: "Relay-névtér létrehozása az Azure Portal használatával."
 services: service-bus-relay
 documentationcenter: .net
@@ -12,19 +12,20 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 27cc817fd4fc2d88b0b7d87f99d58795a6b8b864
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8391199fe4045ffdb5091cda69d50f592a4bfb83
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Továbbítónévtér létrehozása az Azure Portal használatával
-A névtér egy közös tároló az Azure Relay valamennyi összetevője számára. Egyetlen névtér több Relayt is tartalmazhat, és a névterek gyakran alkalmazástárolóként is szolgálnak. A Relay-névterek létrehozásának jelenleg két különböző módja van.
 
-1. Azure Portal (ez a cikk)
-2. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) sablonok
+A névtér egy hatókörkezelési tároló az Azure Relay valamennyi összetevője számára. Egyetlen névtér több Relayt is tartalmazhat, és a névterek gyakran alkalmazástárolóként is szolgálnak. A Relay-névterek létrehozásának jelenleg két különböző módja van:
+
+1. Azure Portal (ez a cikk).
+2. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-sablonok.
 
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Névtér létrehozása az Azure Portalon
 
@@ -33,7 +34,7 @@ A névtér egy közös tároló az Azure Relay valamennyi összetevője számár
 Gratulálunk! Ezzel létrehozott egy új Relay-névteret.
 
 ## <a name="next-steps"></a>Következő lépések:
-* [Továbbító – gyakori kérdések](relay-faq.md)
+* [Relay – gyakori kérdések](relay-faq.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)
 

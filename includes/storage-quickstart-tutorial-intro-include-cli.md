@@ -10,7 +10,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-Az [az storage account create](/cli/azure/storage/account#create) paranccsal hozzon létre egy általános célú standard szintű tárfiókot. Az általános célú standard szintű tárfiók mind a négy szolgáltatással (blobok, fájlok, táblák és üzenetsorok) használható. 
+Az [az storage account create](/cli/azure/storage/account#create) paranccsal hozzon létre egy általános célú tárfiókot. Az általános célú tárfiók mind a négy szolgáltatással (blobok, fájlok, táblák és üzenetsorok) használható. 
 
 ```azurecli-interactive
 az storage account create \

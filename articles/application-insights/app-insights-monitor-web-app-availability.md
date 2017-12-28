@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: afe37dd1fcf2b663f3bf97d04b187b356381f3f3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 12/14/2017
+ms.author: sdash
+ms.openlocfilehash: 6932802e7852efa90551c27f9145f7ca6e685d7e
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -31,7 +31,7 @@ A rendelkezésre állási teszteknek két típusuk van:
 
 Alkalmazás-erőforrásonként legfeljebb 100 rendelkezésre állási tesztet hozhat létre.
 
-## <a name="create"></a>1. Erőforrás megnyitása a rendelkezésre állási tesztek jelentéseihez
+## <a name="create"></a>Erőforrás megnyitása a rendelkezésre állási tesztek jelentéseihez
 
 **Ha már konfigurálta az Application Insights szolgáltatást** a webapphoz, nyissa meg a hozzá tartozó Application Insights-erőforrást [az Azure Portalon](https://portal.azure.com).
 
@@ -41,7 +41,7 @@ Alkalmazás-erőforrásonként legfeljebb 100 rendelkezésre állási tesztet ho
 
 Az új erőforrás Áttekintés paneljének megnyitásához kattintson az **Összes erőforrás** lehetőségre.
 
-## <a name="setup"></a>2. URL-ping teszt létrehozása
+## <a name="setup"></a>URL-ping teszt létrehozása
 Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
 ![Töltse ki legalább a webhelye URL-címét](./media/app-insights-monitor-web-app-availability/13-availability.png)
@@ -68,7 +68,7 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 Adjon hozzá további teszteket. Például a kezdőlap tesztelése mellett egy keresés URL-címének tesztelésével ellenőrizni lehet, hogy az adatbázis működik-e.
 
 
-## <a name="monitor"></a>3. A rendelkezésre állási teszt eredményeinek megtekintése
+## <a name="monitor"></a>A rendelkezésre állási teszt eredményeinek megtekintése
 
 Néhány perc elteltével kattintson a **Frissítés** elemre a teszteredmények megtekintéséhez. 
 
@@ -102,14 +102,11 @@ Kattintson egy piros pontra.
 A rendelkezésre állási tesztek eredményei alapján a következőket teheti:
 
 * Megvizsgálhatja a kiszolgálótól érkezett választ.
-* Megnyithatja a kiszolgálóalkalmazás által a sikertelen kéréspéldány feldolgozása közben küldött telemetriát.
+* Diagnosztizálhatja a hibákat a sikertelen kéréspéldány feldolgozásakor begyűjtött kiszolgálóoldali telemetriával.
 * Naplózhat egy problémát vagy munkaelemet a Git vagy a VSTS segítségével a probléma nyomon követéséhez. A hiba tartalmazni fog egy hivatkozást erre az eseményre.
 * Megnyithatja a webes teszt eredményét a Visual Studióban.
 
-
-*Úgy tűnik, hogy rendben van, mégis sikertelenként lett jelentve?* Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha ezek közül bármelyik hibás, a teszt sikertelenként lesz jelentve, még akkor is, ha a fő HTML-oldal megfelelően töltődik be.
-
-*Nem találhatók kapcsolódó elemek?* Ha a kiszolgálóoldali alkalmazásához be van állítva az Application Insights, akkor ezt okozhatja az, hogy [mintavételezés](app-insights-sampling.md) van folyamatban. 
+*Úgy tűnik, hogy rendben van, mégis sikertelenként lett jelentve?* A zaj csökkentésére a [GYIK](#qna) dokumentumban talál lehetőségeket.
 
 ## <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
@@ -256,6 +253,20 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 * Állítson be egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer riasztás esetén hív meg.
 
 ## <a name="qna"></a>Kérdése van? Problémákat tapasztal?
+* *Az időszakos teszt meghiúsult egy protokollmegsértési hibával?*
+
+    A „protokollmegsértés... A CR karakter után LF karakternek kell következnie” hiba a kiszolgáló (vagy a függőségek) problémáját jelzi. Ez akkor történik, amikor hibás formátumú fejlécek vannak beállítva a válaszban. Ezt a terheléselosztók vagy a CDN-ek okozhatják. Előfordulhat, hogy néhány fejléc nem a CRLF-fel jelzi a sor végét, ami nem felel meg a HTTP-specifikációnak, ezért az ellenőrzés meghiúsul a .NET WebRequest szintjén. Vizsgálja meg, hogy nincsenek-e a válaszban nem megfelelő fejlécek.
+    
+    Megjegyzés: Lehet, hogy az URL nem hiúsul meg olyan böngészőkön, amelyek kevésbé szigorúan ellenőrzik a HTTP-fejléceket. A hiba részletes leírását a következő blogbejegyzésben találja: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+* *A webhely megfelelőnek tűnik, de tesztelési hibák láthatók?*
+
+    * Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha ezek közül bármelyik hibás, a teszt sikertelenként lesz jelentve, még akkor is, ha a fő HTML-oldal megfelelően töltődik be. Ha a tesztet érzéketlenné szeretné tenni az ilyen erőforráshibákkal szemben, egyszerűen törölje a „Függő kérelmek elemzése” jelölőnégyzet jelölését a tesztkonfigurációban. 
+
+    * Az átmeneti hálózati jelekből és hasonlókból származó zajok esélyének csökkentése érdekében győződjön meg róla, hogy be van jelölve az „Enable retries for test failures” (Újrapróbálkozások engedélyezése teszthibák esetén) beállítás. Több helyről is tesztelhet, és az eredményeknek megfelelően kezelheti a riasztási szabály küszöbértékét, hogy meggátolja az indokolatlan riasztásokat okozó helyspecifikus hibákat.
+    
+* *Nem látok kapcsolódó kiszolgálóoldali telemetriát a teszthibák diagnosztizálásához*
+    
+    Ha a kiszolgálóoldali alkalmazásához be van állítva az Application Insights, akkor ezt okozhatja az, hogy [mintavételezés](app-insights-sampling.md) van folyamatban.
 * *Meghívhatok egy kódot a webes tesztből?*
 
     Nem. A .webtest fájlnak tartalmaznia kell a teszt lépéseit. Nem hívhat meg más teszteket, és nem használhat hurkokat. Azonban számos beépülő modul van, amely hasznos lehet.

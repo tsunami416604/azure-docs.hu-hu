@@ -3,7 +3,7 @@
 2. Kattintson az **Új**, a **Web + Mobil**, majd a **Mobile Engagement** elemre.
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)
-3. A megjelenő **Új Mobile Engagement-alkalmazáskatalógus** panelen a klasszikus Azure Portallal szemben nem egy alkalmazást, hanem egy alkalmazáskatalógust hozhat létre. Adja meg a következő információkat:
+3. A megjelenő **Új Mobile Engagement-alkalmazáskatalógus** panelen egy alkalmazáskatalógust hozhat létre. Adja meg a következő információkat:
    
     ![](./media/mobile-engagement-create-app-in-portal-new/new-azme-app.png)
    

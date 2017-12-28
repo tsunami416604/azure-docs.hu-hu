@@ -13,23 +13,23 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: connect
-ms.date: 10/31/2016
-ms.author: anvang;barbkess
-ms.openlocfilehash: 72c2b404e66611da421eca0dc30aa71e18c6d120
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.author: anvang;barbkess;kevin
+ms.openlocfilehash: bd2e89f39d54a2186fa9ca343d04135b2da5d352
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Csatlakozás az Azure SQL Data Warehouse-hoz
 Ennek a cikknek a segítségével első alkalommal csatlakozhat az SQL Data Warehouse-hoz.
 
 ## <a name="find-your-server-name"></a>A kiszolgálónév lekérdezése
-Az SQL Data Warehouse-hoz való kapcsolódás első lépése a kiszolgálónév lekérdezési módjának ismerete.  A kiszolgáló neve az alábbi példában sample.database.windows.net. A teljes kiszolgálónév lekérdezése:
+Az SQL Data Warehouse-hoz való kapcsolódás első lépése a kiszolgálónév lekérdezési módjának ismerete.  A kiszolgáló neve az alábbi példában samplesvr.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
 1. Nyissa meg az [Azure Portalt][Azure portal].
-2. Kattintson az **SQL-adatbázisok** elemre 
-3. Kattintson arra az adatbázisra, amelyhez csatlakozni kíván.
+2. Kattintson az **SQL-adattárházak** elemre.
+3. Kattintson arra az adattárházra, amelyhez csatlakozni kíván.
 4. Keresse meg a teljes kiszolgálónevet.
    
     ![Teljes kiszolgálónév][1]
@@ -93,6 +93,6 @@ A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Leké
 [Azure portal]: https://portal.azure.com
 
 <!--Image references-->
-[1]: media/sql-data-warehouse-connect-overview/get-server-name.png
+[1]: media/sql-data-warehouse-connect-overview/server-connect.PNG
 
 

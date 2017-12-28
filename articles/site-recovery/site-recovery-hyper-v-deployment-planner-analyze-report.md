@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 714c2074f643d2b168c054c5af467b550f57daba
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 9340fe48c1da874d6c0cf02c026e5dec6ddabbe7
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Az Azure Site Recovery Deployment Planner jelentés elemzése
 Az elkészített Microsoft Excel-jelentés a következő táblázatokat tartalmazza:
@@ -188,7 +188,7 @@ Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vag
 
 **Peak R/W IOPS (with Growth Factor)** (Maximális írási/olvasási IOPS (növekedési tényezővel)): A lemez írási/olvasási IOPS-csúcsértéke (alapértelmezés szerint a 95. percentilis), beleértve a későbbi növekedési faktort is (az alapértelmezett érték: 30%). Vegye figyelembe, hogy egy virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. Ez azért van, mert a virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
-**Peak Data Churn in MBps (with Growth Factor)** (Maximális adatváltozás (Mbps) (növekedési tényezővel)): A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. percentilis), beleértve a későbbi növekedési faktort is (alapértelmezés szerint: 30%). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes lemezek adatváltozásának összegével. Ez azért van, mert a virtuális gép adatváltozásának csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozás-értékek legmagasabb összege.
+**Peak Data Churn in MB/s (with Growth Factor)** (Maximális adatváltozás (MB/s) (növekedési tényezővel)): A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. percentilis), beleértve a későbbi növekedési faktort is (alapértelmezés szerint: 30%). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes lemezek adatváltozásának összegével. Ez azért van, mert a virtuális gép adatváltozásának csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozás-értékek legmagasabb összege.
 
 **Azure VM Size** (Azure-beli virtuális gép mérete): Az Azure Cloud Services-beli hozzárendelt virtuális gép ideális mérete az adott helyszíni virtuális gép esetén. A hozzárendelés a helyszíni virtuális gép memóriáján, a lemezek/magok/hálózati adapterek számán és az olvasási/írási IOPS-értéken alapul. Mindig a legalacsonyabb, a helyszíni virtuális gép összes jellemzőjének megfelelő Azure-beli virtuálisgép-méretet ajánlott használni.
 
@@ -235,15 +235,15 @@ Az Azure Site Recovery Deployment Planner által létrehozott Microsoft Excel je
 
 * A forrás IOPS-érték meghaladja a tároló virtuális gépenkénti 80 000-es IOPS-korlátját.
 
-* Az átlagos adatváltozás meghaladja az Azure Site Recovery lemezenkénti átlagos I/O-mérethez megadott 10 MBps értékű adatváltozási korlátját.
+* A forrás virtuális gép átlagos adatváltozása meghaladja az Azure Site Recovery átlagos I/O-mérethez megadott 10 MB/s értékű adatváltozási korlátját.
 
-* Az átlagos tényleges írási IOPS-érték meghaladja az Azure Site Recovery lemezenkénti 840-es támogatott IOPS-korlátját.
+* A forrás virtuális gép átlagos tényleges írási IOPS-értéke meghaladja az Azure Site Recovery lemezenkénti 840-es támogatott IOPS-korlátját.
 
 * A kiszámított pillanatkép-tároló mérete meghaladja a 10 TB-os támogatott méretet.
 
 **Peak R/W IOPS (with Growth Factor)** (Maximális írási/olvasási IOPS (növekedési tényezővel)): A lemez IOPS-csúcsértéke (alapértelmezés szerint a 95. percentilis), beleértve a későbbi növekedési faktort is (az alapértelmezett érték: 30%). Vegye figyelembe, hogy a virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. Ez azért van, mert a virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
-**Peak Data Churn in MBps (with Growth Factor)** (Maximális adatváltozás (Mbps) (növekedési tényezővel)): A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. percentilis), beleértve a későbbi növekedési faktort is (alapértelmezés szerint: 30%). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes lemezek adatváltozásának összegével. Ez azért van, mert a virtuális gép adatváltozásának csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozás-értékek legmagasabb összege.
+**Peak Data Churn in MB/s (with Growth Factor)** (Maximális adatváltozás (MB/s) (növekedési tényezővel)): A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. percentilis), beleértve a későbbi növekedési faktort is (alapértelmezés szerint: 30%). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes lemezek adatváltozásának összegével. Ez azért van, mert a virtuális gép adatváltozásának csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozás-értékek legmagasabb összege.
 
 **Number of Disks** (Lemezek száma): A virtuális gép VHD-inek teljes száma.
 
@@ -260,14 +260,11 @@ Az Azure Site Recovery Deployment Planner által létrehozott Microsoft Excel je
 ## <a name="azure-site-recovery-limits"></a>Az Azure Site Recovery korlátai
 Az alábbi táblázat az Azure Site Recovery korlátait tartalmazza. Ezek a korlátok a saját tesztjeinken alapulnak, de nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. A legjobb eredmények érdekében még az üzembe helyezés megtervezése után is ajánlott az alkalmazás alapos tesztelése feladatátvételi tesztek használatával, így valós képet kaphat az alkalmazás teljesítményéről.
  
-**Replikáció tárolási célja** | **Forráslemez átlagos I/O-mérete** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
+**Replikáció tárolási célja** | **Forrás virtuális gép átlagos I/O-mérete** |**Forrás virtuális gép átlagos adatváltozása** | **Forrás virtuális gép teljes napi adatváltozása**
 ---|---|---|---
-Standard szintű Storage | 8 KB | 2 MBps | Lemezenként 168 GB
-Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MBps | Lemezenként 168 GB
-Prémium szintű P10 vagy P15 lemez | 16 KB | 4 MBps |  Lemezenként 336 GB
-Prémium szintű P10 vagy P15 lemez | 32 KB vagy több | 8 MBps | Lemezenként 672 GB
-Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MBps | Lemezenként 421 GB
-Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |10 MBps | Lemezenként 842 GB
+Standard szintű Storage | 8 KB | Virtuális gépenként 2 MB/s | Virtuális gépenként 168 GB
+Prémium szintű Storage | 8 KB  | Virtuális gépenként 5 MB/s | Virtuális gépenként 421 GB
+Prémium szintű Storage | 16 KB vagy több| Virtuális gépenként 10 MB/s | Virtuális gépenként 842 GB
 
 Ezek átlagos határértékek, amelyek 30 százalékos I/O-átfedést feltételeznek. Az Azure Site Recovery képes magasabb átviteli sebesség kezelésére az átfedési arány, a nagyobb írási méretek és a számítási feladatok tényleges I/O-viselkedése alapján. Az előbbi számok egy általános, körülbelül ötperces várólistát feltételeznek. Ez azt jelenti, hogy a feltöltést követő öt percben megtörténik az adat feldolgozása, és létrejön egy helyreállítási pont.
 

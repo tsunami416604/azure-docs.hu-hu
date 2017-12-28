@@ -3,8 +3,8 @@ title: "Azure virtuálisgép-méretezési csoportok – Áttekintés | Microsoft
 description: "További információk az Azure virtuálisgép-méretezési csoportokról"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2017
-ms.author: guybo
+ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a0d181ad0732458e67d0f3f1d6676be099b52fc
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 7f2048a39f28a74ca8a31c2e6d7466c69ba4d58f
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Mik azok a virtuálisgép-méretezési csoportok az Azure-ban?
-A virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások, amelyek egymással teljesen azonos virtuális gépek csoportjainak üzembe helyezésére és felügyeletére használhatók. Az egyformán konfigurált virtuális gépeket tartalmazó méretezési csoportok a valódi automatikus méretezés támogatására készültek – szükségtelenné téve a virtuális gépek előzetes kiépítését. Ezzel is egyszerűsödik a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokra koncentráló nagyméretű szolgáltatások kiépítése.
+A virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások, amelyek egymással teljesen azonos virtuális gépek csoportjainak üzembe helyezésére és felügyeletére használhatók. Az egyformán konfigurált virtuális gépeket tartalmazó méretezési csoportok a valódi automatikus méretezés támogatására készültek – szükségtelenné téve a virtuális gépek előzetes kiépítését. Ezzel is egyszerűsödik a nagy számítási igényű, nagy adatmennyiséget kezelő és tárolóalapú számítási feladatokra koncentráló nagyméretű szolgáltatások kiépítése.
 
 A számítási erőforrások horizontális fel- és leskálázását igénylő alkalmazások esetében a méretezési műveletek implicit módon oszlanak el a tartalék- és frissítési tartományok között. A méretezési csoportokra vonatkozó részletesebb bevezetést [ebben az Azure-blogbejegyzésben](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/) talál.
 
@@ -50,7 +50,7 @@ A gyors üzembe helyezési útmutató példasablonjainak esetében az egyes sabl
 ## <a name="autoscale"></a>Automatikus méretezés
 Az alkalmazás állandó teljesítményének fenntartása érdekében automatikusan növelheti vagy csökkentheti a méretezési csoportban lévő virtuálisgép-példányok számát. Ez az automatikus méretezési lehetőség csökkenti a kezelési terhelést a méretezési csoport monitorozásakor és finomhangolásakor, ahogy az ügyféligények idővel változnak. Szabályokat teljesítmény-mérőszámok, alkalmazásválaszok vagy meghatározott ütemezés alapján lehet meghatározni, és a méretezési csoport szükség szerint automatikusan elvégzi a méretezést.
 
-Az alapvető automatikus méretezési szabályokhoz gazdagépalapú teljesítmény-mérőszámokat használhat, például a CPU-használatot és a lemez I/O adatait. Ezek a gazdagépalapú mérőszámok azonnal használhatók, nem kell további ügynököket vagy bővítményeket telepíteni és konfigurálni. A gazdagépalapú mérőszámokat használó automatikus méretezési szabályok a következő eszközökkel hozhatók létre:
+Az alapvető automatikus méretezési szabályokhoz gazdagépalapú teljesítmény-mérőszámokat használhat, például a CPU-használatot és a lemez I/O adatait. Ezek a gazdagépalapú mérőszámok automatikusan, további ügynökök vagy bővítmények telepítése és konfigurálása nélkül használatba vehetők. A gazdagépalapú mérőszámokat használó automatikus méretezési szabályok a következő eszközökkel hozhatók létre:
 
 - [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
@@ -123,7 +123,7 @@ Ez a szakasz a méretezési csoportok használatának néhány tipikus esetét s
 ## <a name="scale-set-performance-and-scale-guidance"></a>A virtuálisgép-méretezési csoportok teljesítményével és skálázásával kapcsolatos útmutató
 * A méretezési csoportok legfeljebb 1000 virtuális gépet támogatnak. Ha a saját VM-rendszerképeit hozza létre és tölti fel, a korlát 300. A nagy méretezési csoportok használatánál megfontolandó szempontokról a [nagyméretű virtuálisgép-méretezési csoportok használatát](virtual-machine-scale-sets-placement-groups.md) ismertető cikkben olvashat.
 * A méretezési csoporthoz nem szükséges előzetesen Azure tárfiókot létrehozni. A méretezési csoportok támogatják az Azure Managed Disks használatát, amely megszünteti a tárfiókonkénti lemezek számával kapcsolatos teljesítményproblémákat. További információ: [Azure virtuálisgép-méretezési csoportok és felügyelt lemezek](virtual-machine-scale-sets-managed-disks.md).
-* Érdemes megfontolni az Azure Prémium Storage használatát az Azure Storage helyett a gyorsabb és kiszámíthatóbb VM-üzembehelyezési idők és a jobb I/O-teljesítmény érdekében.
+* Érdemes megfontolni az Azure Premium Storage használatát az Azure Storage helyett a virtuális gépek gyorsabb és kiszámíthatóbb üzembehelyezési ideje és a jobb I/O-teljesítmény érdekében.
 * A létrehozható virtuális gépek számának a telepítést végrehajtó régióban érvényes vCPU-kvóta szab határt. Előfordulhat, hogy kapcsolatba kell lépnie az ügyfélszolgálattal a számítási kvótahatár további növelése érdekében, még akkor is, ha az Azure Cloud Serviceshez használt vCPU-k esetében magas a határérték. A kvóta lekérdezéséhez futtathatja a következő Azure CLI-parancsot: `az vm list-usage`. Vagy futtassa ezt a PowerShell-parancsot: `Get-AzureRmVMUsage`.
 
 ## <a name="frequently-asked-questions-for-scale-sets"></a>A méretezési csoportokkal kapcsolatos gyakori kérdések
@@ -159,10 +159,10 @@ Ez a szakasz a méretezési csoportok használatának néhány tipikus esetét s
 
 **K.** Ha több bővítményt használok egy méretezési csoportban, van lehetőség végrehajtási sorrend kényszerítésére?
 
-**V.** Közvetlenül nem, bár a customScript bővítmény esetében a szkript megvárhatja egy másik bővítmény futtatásának befejezését. További útmutató a végrehajtási sorrendről az alábbi blogbejegyzésben található: [Extension Sequencing in Azure VM Scale Sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) (Végrehajtási sorrendbe állítás Azure-alapú virtuálisgép-méretezési csoportokban).
+**V.** Közvetlenül nem, bár a customScript bővítmény esetében a szkript megvárhatja egy másik bővítmény futtatásának befejezését. A végrehajtási sorrendről az [Azure-alapú virtuálisgép-méretezési csoportok végrehajtási sorrendjének beállítását](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) ismertető blogbejegyzésben talál további információt.
 
 **K.** Használhatok virtuálisgép-méretezési csoportokat Azure rendelkezésre állási csoportokkal?
 
-**V.** Igen. A méretezési csoport egy implicit rendelkezésre állási csoport 5 tartalék és 5 frissítési tartománnyal. A 100-nál több virtuális gépet tartalmazó méretezési csoportok több *elhelyezési csoportra* is kiterjednek, amelyek több rendelkezésre állási csoportnak felelnek meg. További információ az elhelyezési csoportokról: [Nagyméretű virtuálisgép-méretezési csoportok használata](virtual-machine-scale-sets-placement-groups.md). A virtuális gépek rendelkezésre állási csoportja létrejöhet ugyanabban a virtuális hálózatban, mint a virtuálisgép-méretezési csoport. Az egyik gyakran alkalmazott konfiguráció egy rendelkezésre állási csoportba helyezi a vezérlő csomópont virtuális gépeit (ezek gyakran igényelnek egyéni konfigurálást), és a méretezési csoportba helyezi az adatcsomópontokat.
+**V.** Igen. A méretezési csoport egy implicit rendelkezésre állási csoport öt tartalék és öt frissítési tartománnyal. A 100-nál több virtuális gépet tartalmazó méretezési csoportok több *elhelyezési csoportra* is kiterjednek, amelyek több rendelkezésre állási csoportnak felelnek meg. További információ az elhelyezési csoportokról: [Nagyméretű virtuálisgép-méretezési csoportok használata](virtual-machine-scale-sets-placement-groups.md). A virtuális gépek rendelkezésre állási csoportja létrejöhet ugyanabban a virtuális hálózatban, mint a virtuálisgép-méretezési csoport. Az egyik gyakran alkalmazott konfiguráció egy rendelkezésre állási csoportba helyezi a vezérlő csomópont virtuális gépeit (ezek gyakran igényelnek egyéni konfigurálást), és a méretezési csoportba helyezi az adatcsomópontokat.
 
 A méretezési csoportokra vonatkozó kérdésekre további válaszok [az Azure virtuálisgép-méretezési csoportokkal kapcsolatos gyakori kérdésekben](virtual-machine-scale-sets-faq.md) találhatók.

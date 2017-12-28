@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 11/29/2017
-ms.openlocfilehash: b48e5bc2552c92b45e0417e5a8a34705a473073e
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 70286104db1b70aebd2f8b0feb4a0854b3cc2bb9
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Írisz osztályozása, 3. rész: Modell üzembe helyezése
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
@@ -206,7 +206,7 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
 1. Valós idejű webszolgáltatás létrehozásához használja a következő parancsot:
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c amlconfig\conda_dependencies.yml
    ```
    Ez a parancs létrehoz egy webszolgáltatás-azonosítót, amelyet később felhasználhat.
 
@@ -216,6 +216,7 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
    * `--model-file`: A modellfájl. Ebben az esetben ez a model.pkl pickle-fájl.
    * `-r`: A modell típusa. Ebben az esetben ez a Python-modell.
    * `--collect-model-data true`: Ez engedélyezi az adatgyűjtést.
+   * `-c`: A további csomagokat tartalmazó Conda-függőségfájl elérési útja.
 
    >[!IMPORTANT]
    >A szolgáltatásnév, amely az új Docker-rendszerkép neve is, csak kisbetűkből állhat. Ellenkező esetben a rendszer hibaüzenetet küld. 
@@ -254,10 +255,10 @@ Először regisztrálja a modellt. Ezután hozza létre a jegyzéket, állítsa 
 
 3. Hozzon létre egy Docker-rendszerképet.
 
-   Docker-rendszerkép létrehozásához használja a következő parancsot, és adja meg a jegyzékazonosító kimenetét az előző lépésből:
+   Docker-rendszerkép létrehozásához használja a következő parancsot, és adja meg a jegyzékazonosító kimenetét az előző lépésből. Szükség esetén belefoglalhatja a Conda-függőségeket is a `-c` kapcsoló használatával.
 
    ```azurecli
-   az ml image create -n irisimage --manifest-id <manifest ID>
+   az ml image create -n irisimage --manifest-id <manifest ID> -c amlconfig\conda_dependencies.yml
    ```
    Ez a parancs létrehoz egy Docker-rendszerképazonosítót.
    

@@ -12,15 +12,15 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 089a60ebccabac99771cd06ca8fbf0ea1fb2f1a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb4df0495420776ba2ff7b471c44c4ca3aa1dcff
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="create-an-event-hubs-namespace-with-an-event-hub-and-enable-capture-using-an-azure-resource-manager-template"></a>Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager-sablonjának használatával
+# <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése sablon használatával
 
 Ez a cikk ismerteti egy olyan Azure Resource Manager-sablon használatát, amely egy Event Hubs-névteret hoz létre egy Event Hubs-példánnyal, valamint leírja az eseményközpont [Capture funkciójának](event-hubs-capture-overview.md) engedélyezését is. A cikk leírja továbbá, hogyan kell meghatározni, hogy mely erőforrások lesznek üzembe helyezve, és hogyan kell meghatározni az üzembe helyezés végrehajtásakor megadandó paramétereket. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
@@ -161,7 +161,7 @@ Az az időintervallum, amelyben az Event Hubs Capture elkezdi az adatok rögzít
     "minValue":60,
     "maxValue":900,
     "metadata":{
-         "description":"the time window in seconds for the capture"
+         "description":"The time window in seconds for the capture"
     }
 }
 ```
@@ -248,7 +248,7 @@ Az Event Hubs-névtér és az Azure Data Lake Store előfizetés-azonosítója. 
 "subscriptionId": {
     "type": "string",
     "metadata": {
-        "description": "Subscription Id of both Azure Data Lake Store and Event Hub namespace"
+        "description": "Subscription ID of both Azure Data Lake Store and Event Hubs namespace"
      }
  }
 ```
@@ -268,20 +268,20 @@ A rögzített események Azure Data Lake Store-neve.
 
 ###<a name="datalakefolderpath"></a>dataLakeFolderPath
 
-A rögzített események célmappájának elérési útja. Ez a Data Lake Store-fiókban lévő azon mappa, amelybe az eseményeket a Capture mappából áthelyezi. A mappa engedélyeinek beállításához tekintse meg az [Event Hubsból származó adatok az Azure Data Lake Store segítségével történő rögzítését ismertető](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-archive-eventhub-capture) cikket.
+A rögzített események célmappájának elérési útja. Ez az a mappa a Data Lake Store-fiókban, amelybe a rendszer leküldi az eseményeket a rögzítési művelet során. A mappa engedélyeinek beállításáról lásd [az Event Hubsból származó adatok Azure Data Lake Store segítségével történő rögzítését ismertető](../data-lake-store/data-lake-store-archive-eventhub-capture.md) cikket.
 
 ```json
 "dataLakeFolderPath": {
     "type": "string",
     "metadata": {
-        "description": "Destination archive folder path"
+        "description": "Destination capture folder path"
     }
 }
 ```
 
 ## <a name="resources-to-deploy-for-azure-storage-as-destination-to-captured-events"></a>Az Azure Storage-ban történő eseményrögzítéshez üzembe helyezendő erőforrások
 
-Létrehoz egy **EventHubs** típusú névteret egy eseményközponttal, valamint engedélyezi az Azure Blob Storage-ba való rögzítést is.
+Létrehoz egy **EventHub** típusú névteret egy eseményközponttal, valamint engedélyezi az Azure Blob Storage-ba való rögzítést is.
 
 ```json
 "resources":[  
@@ -342,7 +342,7 @@ Létrehoz egy **EventHubs** típusú névteret egy eseményközponttal, valamint
 
 ## <a name="resources-to-deploy-for-azure-data-lake-store-as-destination"></a>Az Azure Data Lake Store célhelyként való használatához üzembe helyezendő erőforrások
 
-Létrehoz egy **EventHubs** típusú névteret egy eseményközponttal, valamint engedélyezi az Azure Data Lake Store-ba való rögzítést is.
+Létrehoz egy **EventHub** típusú névteret egy eseményközponttal, valamint engedélyezi az Azure Data Lake Store-ba való rögzítést is.
 
 ```json
  "resources": [
@@ -407,7 +407,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -T
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Az Azure Blob Storage kiválasztása célhelyként:
+Az Azure Blob Storage mint célhely:
 
 ```azurecli
 azure config mode arm
@@ -415,7 +415,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
-Az Azure Data Lake Store kiválasztása célhelyként:
+Az Azure Data Lake Store mint célhely:
 
 ```azurecli
 azure config mode arm
