@@ -15,11 +15,11 @@ ms.date: 07/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 53c9bde37215e4b7e315b6bc28f0e638816a48f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7960a398ac25ad0192300632dd6d5add94fd4a7c
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Hárítsa el a hálózati házirend-kiszolgáló bővítmény hibaüzeneteket az Azure multi-factor Authentication
 
@@ -27,7 +27,7 @@ Ha hibákba ütközik a hálózati házirend-kiszolgáló kiterjesztésű Azure 
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>Gyakori hibák hibaelhárítási lépéseket
 
-| Hibakód | hibaelhárítási útmutatóját |
+| Hibakód | Hibaelhárítási útmutató |
 | ---------- | --------------------- |
 | **CONTACT_SUPPORT** | [Forduljon a támogatási szolgálathoz](#contact-microsoft-support), és említse meg a naplók gyűjtésére szolgáló lépéseket listáját. Minél több információt arról, mi történt a hiba, beleértve a bérlő azonosítója, és egyszerű felhasználónév (UPN) előtt teheti meg. |
 | **CLIENT_CERT_INSTALL_ERROR** | Előfordulhat, hogy az ügyféltanúsítvány telepítése vagy a tenanthoz társított hogyan kapcsolatos problémát. Kövesse az utasításokat a [az MFA NPS-bővítmény hibaelhárítási](multi-factor-authentication-nps-extension.md#troubleshooting) ügyfél cert problémák vizsgálatára. |
@@ -44,7 +44,7 @@ Ha hibákba ütközik a hálózati házirend-kiszolgáló kiterjesztésű Azure 
 
 ### <a name="alternate-login-id-errors"></a>Másodlagos bejelentkezési azonosító hibák
 
-| Hibakód | Hibaüzenet | hibaelhárítási útmutatóját |
+| Hibakód | Hibaüzenet | Hibaelhárítási útmutató |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Hiba: userObjectSid keresés sikertelen volt | Győződjön meg arról, hogy a felhasználó létezik-e a helyszíni Active Directory-példányban. Erdők közötti bizalmi kapcsolatok, használatakor [forduljon a támogatási szolgálathoz](#contact-microsoft-support) további segítségért. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Hiba: Nem sikerült másik LoginId keresési | Ellenőrizze, hogy LDAP_ALTERNATE_LOGINID_ATTRIBUTE egy [érvényes active directory-attribútumot](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> Ha LDAP_FORCE_GLOBAL_CATALOG igaz értékre van beállítva, vagy LDAP_LOOKUP_FORESTS egy nem üres érték van beállítva, győződjön meg arról, hogy konfigurálta-e a globális katalógus és, hogy a AlternateLoginId attribútum hozzáadni. <br><br> LDAP_LOOKUP_FORESTS egy nem üres érték van beállítva, győződjön meg arról, hogy az érték megfelelő. Ha egynél több erdő neve, a neveket pontosvesszővel, szóközt nem külön kell. <br><br> Ha ezeket a lépéseket nem segít a problémán, [forduljon a támogatási szolgálathoz](#contact-microsoft-support) további segítséget itt találhat. |
@@ -53,7 +53,7 @@ Ha hibákba ütközik a hálózati házirend-kiszolgáló kiterjesztésű Azure 
 
 ## <a name="errors-your-users-may-encounter"></a>A felhasználók szembesülhetnek hibák
 
-| Hibakód | Hibaüzenet | hibaelhárítási útmutatóját |
+| Hibakód | Hibaüzenet | Hibaelhárítási útmutató |
 | ---------- | ------------- | --------------------- |
 | **Hozzáférés megtagadva** | Hívó bérlő nem rendelkezik hozzáférési engedélyekkel a felhasználó hitelesítést | Ellenőrzése, hogy a bérlő tartománya és a egyszerű felhasználónév (UPN) azonos. Például győződjön meg arról, hogy user@contoso.com a Contoso bérlő hitelesítést próbál. Az egyszerű Felhasználónevet érvényes felhasználó jelenti. a bérlő az Azure-ban. |
 | **AuthenticationMethodNotConfigured** | A felhasználó nem konfigurálta a megadott hitelesítési módszert. | A felhasználó hozzáadása, és ellenőrizze a hitelesítési módszerek az utasításainak megfelelően [kezelheti a kétlépéses ellenőrzés beállításait](./end-user/multi-factor-authentication-end-user-manage-settings.md). |
@@ -96,7 +96,7 @@ Ha egy ezeket a hibákat észlel, azt javasoljuk, hogy Ön [forduljon a támogat
 | **VersionNotSupported** |  |
 | **MFAPinNotSetup** |  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="troubleshoot-user-accounts"></a>Felhasználói fiókok hibáinak elhárítása
 
@@ -106,9 +106,10 @@ Ha a felhasználók is [problémák adódtak a kétlépéses ellenőrzéshez has
 
 Ha további segítségre van szüksége, forduljon a támogatási szakember keresztül [Azure multi-factor Authentication kiszolgáló támogatási](https://support.microsoft.com/oas/default.aspx?prid=14947). Lépjen kapcsolatba velünk, ha esetén lehet hasznos információt tartalmazhatnak a lehető problémával kapcsolatos. Megadhat olyan információkat tartalmaz az oldal, ahol a hiba, a konkrét hibakód megtekinthető látta az adott munkamenet-azonosító, a hiba látott, és hibakeresési naplókat, a felhasználó Azonosítóját.
 
-Támogatási diagnosztikai hibakeresési naplók összegyűjtésére, tegye a következőket: 
+Támogatási diagnosztikai hibakeresési naplók összegyűjtésére, használja a hálózati házirend-kiszolgálón az alábbi lépéseket:
 
-1. Nyisson meg egy rendszergazdai parancssort, és futtassa az alábbi parancsokat:
+1. Nyissa meg a Beállításszerkesztőt, és keresse meg a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa set **VERBOSE_LOG** való **igaz**
+2. Nyisson meg egy rendszergazdai parancssort, és futtassa az alábbi parancsokat:
 
    ```
    Mkdir c:\NPS
@@ -118,9 +119,9 @@ Támogatási diagnosztikai hibakeresési naplók összegyűjtésére, tegye a k�
    logman update trace "NPSExtension" -p {EC2E6D3A-C958-4C76-8EA4-0262520886FF} 0xffffffffffffffff 0xff -ets
    ```
 
-2. A probléma reprodukálásához szükséges
+3. A probléma reprodukálásához szükséges
 
-3. Állítsa le a nyomkövetést a következő parancsokkal:
+4. Állítsa le a nyomkövetést a következő parancsokkal:
 
    ```
    logman stop "NPSExtension" -ets
@@ -131,6 +132,7 @@ Támogatási diagnosztikai hibakeresési naplók összegyűjtésére, tegye a k�
    Start .
    ```
 
-4. A ZIP-C:\NPS mappa tartalmát, és a zip-fájl csatolása a támogatási esetet.
+5. Nyissa meg a Beállításszerkesztőt, és keresse meg a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa set **VERBOSE_LOG** való **hamis**
+6. A ZIP-C:\NPS mappa tartalmát, és a zip-fájl csatolása a támogatási esetet.
 
 

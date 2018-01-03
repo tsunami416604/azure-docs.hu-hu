@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: acc599c1fbe13b2739fc5480d6204f90e59b0242
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 4362512121ca426fcae6716c74e1f8effa0986f1
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Tölt fel az eszközről a felhőbe az IoT hubbal .NET használatával
 
@@ -170,7 +170,7 @@ Készen áll arra, hogy futtassa az alkalmazásokat.
 
     ![][50]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóprogramban megismerte fájlfeltöltéseket eszközökről leegyszerűsítése érdekében az IoT-központ fájl feltöltése funkcióinak használatát. IoT hub-szolgáltatások és a forgatókönyvet a következő cikkek az eltérések felfedezése továbbra is:
 
@@ -180,7 +180,7 @@ Ebben az oktatóprogramban megismerte fájlfeltöltéseket eszközökről leegys
 
 Az IoT-központ képességeit további megismeréséhez lásd:
 
-* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 
 <!-- Images. -->
 
@@ -192,7 +192,7 @@ Az IoT-központ képességeit további megismeréséhez lásd:
 
 [Azure-portálon]: https://portal.azure.com/
 
-[Azure IoT fejlesztői központ]: http://www.azure.com/develop/iot
+[Azure IoT fejlesztői központ]: http://azure.microsoft.com/develop/iot
 
 [átmeneti hiba kezelése]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure IoT szolgáltatás SDK NuGet-csomag]: https://www.nuget.org/packages/Microsoft.Azure.Devices/

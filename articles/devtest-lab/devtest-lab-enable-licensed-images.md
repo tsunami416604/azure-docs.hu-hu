@@ -3,7 +3,7 @@ title: "Engedélyezze a licencelt lemezkép a laborban a Azure DevTest Labs szol
 description: "Útmutató: Azure DevTest Labs szolgáltatásban az Azure portál használatával egy licencelt lemezképet engedélyezése"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 221390d2-8d3b-4e1f-b454-43d33f8072b7
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
-ms.author: tarcher
-ms.openlocfilehash: a74eff05285602574e45703dbe5b6caf074adecd
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.author: v-craic
+ms.openlocfilehash: 3c969495454db2cd301fc985e512531ef0d4b103
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>A tesztkörnyezet a Azure DevTest Labs szolgáltatásban egy licencelt lemezképet engedélyezése
 
@@ -81,6 +81,6 @@ Következő lépések végrehajtásával engedélyezheti a licencelt lemezképek
 - [Egyéni lemezképek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 - [Az Azure DevTest Labs között egyéni lemezképek másolása](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [A virtuális gépek hozzáadása a tesztkörnyezet](./devtest-lab-add-vm-with-artifacts.md)
+- [A virtuális gépek hozzáadása a tesztkörnyezet](devtest-lab-add-vm.md)

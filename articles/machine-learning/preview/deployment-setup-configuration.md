@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
-ms.openlocfilehash: fe03a24b0d9f5ef6d0f20dac15ea980a8663a7b2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d6686af546f43db663a6e5d6742096776ad185a6
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="model-management-setup"></a>Modell kezelésének beállítása
 
@@ -84,10 +84,12 @@ Ha a környezetben a telepítés befejezése:
 - A hitelesítési folyamat során kéri egy olyan fiók való hitelesítéshez szükséges. Fontos: Válasszon egy érvényes Azure-előfizetés és a fiókban. az erőforrások létrehozásához szükséges engedélyekkel rendelkező fiók - napló a befejeződése után az előfizetési adatai számára jelenik meg, és a rendszer megkérdezi, hogy folytatni szeretné a kiválasztott fiókot.
 
 ### <a name="environment-setup"></a>Környezet beállítása
-A telepítés megkezdéséhez szüksége a környezet szolgáltató regisztrálásához a következő parancs beírásával:
+A telepítés megkezdéséhez szüksége néhány környezet szolgáltatók regisztrálása a következő parancsok beírásával:
 
 ```azurecli
 az provider register -n Microsoft.MachineLearningCompute
+az provider register -n Microsoft.ContainerRegistry
+az provider register -n Microsoft.ContainerService
 ```
 #### <a name="local-deployment"></a>Helyi telepítés
 A webes szolgáltatás a helyi számítógép telepítéséhez és teszteléséhez a következő paranccsal helyi környezet beállítása. Az erőforráscsoport neve nem kötelező megadni.
@@ -169,5 +171,5 @@ Most már készen áll a mentett modell webszolgáltatásként központi telepí
 az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a sok minták a gyűjteményben.

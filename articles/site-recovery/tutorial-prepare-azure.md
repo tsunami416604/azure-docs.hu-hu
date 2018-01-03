@@ -2,30 +2,23 @@
 title: "Erőforrások használatra létrehozása az Azure Site Recovery szolgáltatással |} Microsoft Docs"
 description: "Ismerje meg, hogyan készíti elő az Azure a helyszíni gépeket az Azure Site Recovery szolgáltatással a replikációhoz."
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 321e304f-b29e-49e4-aa64-453878490ea7
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/01/2017
+ms.topic: tutorial
+ms.date: 12/31/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2fa7e731a05e19697603058829f130074bb5b522
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 71d740107eb2082e3f112941e1d4abd715d25807
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>A helyszíni gépeket replikálása Azure-erőforrások előkészítése
 
 A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás által az üzleti alkalmazások, és az elérhető futtató tervezett és nem tervezett leállások során hozzájárul az üzleti folytonossági és vészhelyreállítási (BCDR) helyreállítási stratégiát. A Site Recovery koordinálja a vész-helyreállítási a helyi gép és az Azure virtuális gépek (VM), beleértve a replikáció, feladatátvétel és helyreállítás, valamint a kezelésére.
 
-Az oktatóanyag bemutatja, hogyan készíti elő az Azure összetevők, ha meg szeretné a helyszíni virtuális gépek és fizikai kiszolgálók replikálása Azure-bA. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag bemutatja, hogyan készíti elő az Azure összetevők, ha meg szeretné a helyszíni virtuális gépek (Hyper-V vagy VMware), vagy windowsos/Linuxos fizikai kiszolgálók replikálása Azure-bA. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Ellenőrizze a fiók rendelkezik-e replikációs engedélyek
@@ -40,9 +33,9 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
 ## <a name="verify-account-permissions"></a>Fiók engedélyek ellenőrzése
 
-Ha most hozott létre az ingyenes Azure-fiók esetén a rendszer a rendszergazda az előfizetés. Ha nem Ön az előfizetés rendszergazdája, dolgozni a rendszergazdához, és rendelje hozzá a szükséges engedélyekkel. Ahhoz, hogy egy új virtuális gép replikálását, rendelkeznie kell:
+Ha az imént létrehozott az ingyenes Azure-fiókjával, majd a rendszergazdaként az előfizetéséhez. Ha nem Ön az előfizetés rendszergazdája, dolgozni a rendszergazdához, és rendelje hozzá a szükséges engedélyekkel. Ahhoz, hogy egy új virtuális gép replikálását, rendelkeznie kell:
 
-- A virtuális gép létrehozása a kijelölt erőforráscsoportban engedély
+- Virtuális gép létrehozása a kijelölt erőforráscsoportban engedély
 - Engedéllyel a kiválasztott virtuális hálózatban lévő virtuális gép létrehozása
 - A kiválasztott tárolási fiók írásához engedély
 
@@ -53,13 +46,13 @@ A "Virtuális gép közreműködő" beépített szerepkör tartalmazza azokat az
 Lemezképek replikált gép az Azure storage tartanak. Azure virtuális gépek jönnek létre a tárból, amikor a rendszer átadja a helyszíni Azure.
 
 1. Az a [Azure-portálon](https://portal.azure.com) menüben kattintson a **új** -> **tárolási** -> **tárfiók**.
-2. Adja meg a tárfiók nevét. Ezek az oktatóanyagok az nevét használjuk **contosovmsacct1910171607**. A névnek kell Azure belül egyedieknek kell, és 3 – 24 karakter, witn számokat, és csak kisbetűket között lehet.
+2. Adja meg a tárfiók nevét. Ezek az oktatóanyagok az nevét használjuk **contosovmsacct1910171607**. A névnek kell Azure belül egyedieknek kell, és csak kisbetűket és számokat 3 és 24 karakter közötti lehet.
 3. Használja a **erőforrás-kezelő** üzembe helyezési modellben.
 4. Válassza ki **általános célú** > **szabványos**.
 5. Válassza ki az alapértelmezett **RA-GRS** az adattároló redundanciája, amely.
 6. Válassza ki az előfizetést, amelyikben az új tárfiókot létre szeretné hozni.
-7. Adjon meg egy új erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ezek az oktatóanyagok az nevét használjuk **ContosoRG**.
-8. Válassza ki a tárfiók földrajzi helyét. A tárfiók és a Recovery Services-tárolónak ugyanabban a régióban kell lennie. Ezek az oktatóanyagok azt használja a hely **Nyugat-Európában**.
+7. Adjon meg egy új erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ezek az oktatóanyagok nevét használjuk **ContosoRG**.
+8. Válassza ki a tárfiók földrajzi helyét. A tárfiók és a Recovery Services-tárolónak ugyanabban a régióban kell lennie. Ezek az oktatóanyagok használjuk a **Nyugat-Európában** régióban.
 
    ![Hozzon létre storageacct](media/tutorial-prepare-azure/create-storageacct.png)
 
@@ -71,7 +64,7 @@ Lemezképek replikált gép az Azure storage tartanak. Azure virtuális gépek j
     **biztonsági mentés és helyreállítás**.
 2. A **Név** mezőben adja meg a tárolót azonosító rövid nevet. Ebben az oktatóanyagban használjuk **ContosoVMVault**.
 3. Válassza ki a meglévő erőforráscsoportot **contosoRG**.
-4. Adja meg az Azure-régió **Nyugat-Európában**.
+4. Adja meg az Azure-régió **Nyugat-Európában**, hogy ez az oktatóanyag készlet használunk.
 5. Gyors hozzáférést a tárolóhoz az irányítópultról, kattintson a **rögzítés az irányítópulton** > **létrehozása**.
 
    ![Új tároló](./media/tutorial-prepare-azure/new-vault-settings.png)
@@ -97,7 +90,7 @@ Azure virtuális gépek a feladatátvételt követően létrehozásakor a tárol
 
    A virtuális hálózat létrehozásához néhány másodpercet vesz igénybe. Miután létrehozott látható az Azure portál Irányítópultjára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A helyszíni VMware-infrastruktúra előkészítése az Azure-bA katasztrófa utáni helyreállítás](tutorial-prepare-on-premises-vmware.md)

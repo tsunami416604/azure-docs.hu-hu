@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: alkarche
-ms.openlocfilehash: 870dab3770f4595aa8b98e7f2dd18cf666b6dc67
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: dd022b189783f2d8c6209a6cd656704ff144bfd6
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="work-with-azure-functions-proxies"></a>Az Azure Functions proxyk használata
 
@@ -50,13 +50,13 @@ Az Azure Functions proxykat módosíthatja a kérelmek és a háttér-válaszát
 
 Alapértelmezés szerint a háttér-kérelem, az eredeti kérelem másolatként inicializálása. A háttérkiszolgáló URL-cím mellett, a HTTP metódus, a fejlécek és a lekérdezési karakterlánc paraméterek módosításokat végezheti el. A módosított értékek hivatkozhatnak [Alkalmazásbeállítások] és [az eredeti ügyfélkérés származó paraméterek].
 
-Jelenleg nincs portál élmény, a háttér-kérelmek módosítását. Ez a funkció a proxies.json alkalmazásáról további tudnivalókért lásd: [megadása egy requestOverrides objektum].
+Jelenleg nincs portál élmény, a háttér-kérelmek módosítását. Ezt a képességet a alkalmazásáról további *proxies.json*, lásd: [megadása egy requestOverrides objektum].
 
 ### <a name="modify-response"></a>A válasz módosítása
 
 Alapértelmezés szerint az ügyfél válaszára inicializálva van a háttér-válasz egy másolatát. A válasz állapotkódja, indoklás, fejlécek és body módosításokat végezheti el. A módosított értékek hivatkozhatnak [Alkalmazásbeállítások], [az eredeti ügyfélkérés származó paraméterek], és [paramétert a háttér-válasz].
 
-Jelenleg nincs portál élmény a válaszok módosítását. Ez a funkció a proxies.json alkalmazásáról további tudnivalókért lásd: [megadása egy responseOverrides objektum].
+Jelenleg nincs portál élmény a válaszok módosítását. Ezt a képességet a alkalmazásáról további *proxies.json*, lásd: [megadása egy responseOverrides objektum].
 
 ## <a name="using-variables"></a>Változók használata
 
@@ -84,7 +84,7 @@ Válasz paraméterek módosítása az ügyfél válasz részeként használható
 
 * **{backend.response.statusCode}** : A HTTP-állapotkód, amely akkor adja vissza a háttér-válasz.
 * **{backend.response.statusReason}** : A háttér-válasz visszaadott HTTP-indoklás.
-* **{backend.response.headers. \<Fejléc neve\>}**: egy fejléc a háttér-válaszban szereplő olvasható. Cserélje le  *\<fejléc neve\>*  olvasni szeretné a fejlécet nevével. A kérelem nem tartalmazza a fejlécet, ha az érték lesz az üres karakterlánc.
+* **{backend.response.headers. \<Fejléc neve\>}**: egy fejléc a háttér-válaszban szereplő olvasható. Cserélje le  *\<fejléc neve\>*  olvasni szeretné a fejlécet nevével. A válasz nem tartalmazza a fejlécet, ha az érték lesz az üres karakterlánc.
 
 ### <a name="use-appsettings"></a>Referencia-Alkalmazásbeállítások
 
@@ -97,12 +97,12 @@ Például a háttér-URL-t *https://%ORDER_PROCESSING_HOST%/api/orders* kellene 
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
-Az Ön által konfigurált proxyk proxies.json fájl, a függvény alkalmazás gyökérkönyvtáraként található vannak tárolva. Manuálisan szerkessze a fájlt és központi telepítése során az alkalmazás bármelyik használatakor a [telepítési módszerek](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) a Functions támogatja. A szolgáltatás kell [engedélyezett](#enable) a fájl feldolgozását. 
+Az Ön által konfigurált proxyk vannak tárolva egy *proxies.json* fájl, a függvény alkalmazás gyökérkönyvtáraként található. Manuálisan szerkessze a fájlt és központi telepítése során az alkalmazás bármelyik használatakor a [telepítési módszerek](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) a Functions támogatja. Kell lennie az Azure Functions proxyk [engedélyezett](#enable) a fájl feldolgozását. 
 
 > [!TIP] 
-> Ha nem állította be a központi telepítési módszerekkel, akkor is a proxies.json fájl használatához a portálon. Nyissa meg a függvény alkalmazáshoz, jelölje be **Platform funkciói**, majd válassza ki **App Service-szerkesztő**. Ezzel a módszerrel a teljes fájl struktúra az függvény alkalmazás megtekintheti és majd a módosításokat.
+> Ha nem állította be a központi telepítési módszerekkel, is dolgozhat a *proxies.json* fájl a portálon. Nyissa meg a függvény alkalmazáshoz, jelölje be **Platform funkciói**, majd válassza ki **App Service-szerkesztő**. Ezzel a módszerrel a teljes fájl struktúra az függvény alkalmazás megtekintheti és majd a módosításokat.
 
-Proxies.JSON határozza meg a proxyk objektum, amely megnevezett proxyk és a definíciójukat. Nem kötelező, ha a szerkesztő lehetővé teszi, melyeket referenciaként használhat egy [JSON-séma](http://json.schemastore.org/proxies) kód befejezésére. Egy példa fájl nézhet ki például a következőket:
+*Proxies.JSON* határozzák meg a proxyk objektum, amely megnevezett proxyk és a definíciójukat. Nem kötelező, ha a szerkesztő lehetővé teszi, melyeket referenciaként használhat egy [JSON-séma](http://json.schemastore.org/proxies) kód befejezésére. Egy példa fájl nézhet ki például a következőket:
 
 ```json
 {
@@ -129,7 +129,7 @@ Minden egyes proxy van egy rövid nevet, például a *proxy1* az előző példá
 * **responseOverrides**: egy objektum, amely az ügyfél válaszára átalakítások definiálja. Lásd: [megadása egy responseOverrides objektum].
 
 > [!NOTE] 
-> Az útvonal tulajdonság Azure Functions proxyk nem veszi figyelembe a funkciók a gazdagép konfigurálása routePrefix tulajdonságát. Ha szeretne egy címelőtagot, például /api, azt a útvonal tulajdonság kell szerepelnie.
+> A *útvonal* tulajdonság az Azure Functions proxyk nem veszi figyelembe a *routePrefix* a függvény Alkalmazáskonfiguráció állomás tulajdonsága. Ha olyan előtagot, mint például `/api`, azt kell szerepelnie a *útvonal* tulajdonság.
 
 ### <a name="requestOverrides"></a>Adja meg a requestOverrides objektum
 
@@ -193,7 +193,7 @@ Egy példa konfiguráció látható a következő:
 }
 ```
 > [!NOTE] 
-> Ebben a példában a szervezet beállítása közvetlenül, ezért nem `backendUri` tulajdonság van szükség. A példa bemutatja, hogyan használhatja Azure Functions proxyk mocking API-k esetében.
+> Ebben a példában a választörzs értéke közvetlenül, ezért nem `backendUri` tulajdonság van szükség. A példa bemutatja, hogyan használhatja Azure Functions proxyk mocking API-k esetében.
 
 ## <a name="enable"></a>Az Azure Functions proxyk engedélyezése
 

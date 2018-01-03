@@ -12,11 +12,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/08/2017
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5464eea75c89a95e6bf74b3f24fe92f3652f5db9
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 3db1ead1f1a8b83cc47f53b915ed54bb78db7ab3
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Beállítása a vészhelyreállítás Azure virtuális gépek egy másodlagos Azure-régiót (előzetes verzió)
 
@@ -129,10 +129,10 @@ A Site Recovery lekéri az előfizetés és az erőforrás/felhőszolgáltatás 
 
 A Site Recovery alapértelmezett beállításait és a cél régió replikációs házirendet hoz létre. Módosíthatja a beállításokat a követelmények alapján.
 
-1. Kattintson a **beállítások** a célként megadott beállítások megtekintéséhez.
-2. Az alapértelmezett tároló beállításainak a felülbírálásához **Testreszabás**. 
+1. Kattintson a **beállítások** a cél- és a replikációs beállítások megtekintéséhez.
+2. Az alapértelmezett tároló beállításainak a felülbírálásához **Testreszabás** melletti **erőforráscsoport, hálózati, tárolási és rendelkezésre állási készletek**.
 
-![Beállítások konfigurálása](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+  ![Beállítások konfigurálása](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
 - **Célhelye**: vész-helyreállítási cél régióját. Azt javasoljuk, hogy a célhely megegyezik-e a Site Recovery-tároló helyét.
@@ -148,11 +148,23 @@ A Site Recovery alapértelmezett beállításait és a cél régió replikáció
 
 - **Rendelkezésre állási készletek cél**: alapértelmezés szerint a Site Recovery hoz létre egy új rendelkezésre állási csoportban, a "automatikus" utótaggal rendelkező cél régióban. Rendelkezésre állási csoportok csak virtuális gépek részei egy készlet a forrás régióban adhat hozzá.
 
+Az alapértelmezett replikációs házirend-beállítások felülbírálásához **Testreszabás** melletti **replikációs házirend**.  
+
 - **Replikációs házirend neve**: a házirend nevét.
 
 - **Helyreállítási pontok megőrzésének ideje**: alapértelmezés szerint a Site Recovery helyreállítási pontok tartja 24 órán át. Beállíthatja, hogy egy 1 és 72 óra közötti értéket.
 
 - **Alkalmazáskonzisztens pillanatkép gyakorisága**: alapértelmezés szerint a Site Recovery pillanatfelvételt egy alkalmazáskonzisztens 4 óránként. Beállíthatja, hogy bármely érték 1 és 12 óra között. Alkalmazáskonzisztens pillanatkép a virtuális Gépen belül az alkalmazásadatok pont időponthoz kötött pillanatképet. Kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy a virtuális Gépen lévő alkalmazás konzisztens állapotban legyenek a pillanatkép készítésének időpontjában.
+
+- **Replikációs csoport**: Ha az alkalmazás virtuális Gépre kiterjedő konzisztencia virtuális gépek között van szüksége, létrehozhat egy replikációs csoport azok számára, virtuális gépek. Alapértelmezés szerint a kijelölt virtuális gépek részei valamelyik replikációs csoport.
+
+  Kattintson a **Testreszabás** melletti **replikációs házirend** , és válassza **Igen** annak a virtuális gépek több virtuális Gépre kiterjedő konzisztencia replikációs csoport része. Hozzon létre egy új replikációs csoportot, vagy adjon meg egy meglévő replikációs csoportot. Válassza ki a virtuális gépeket, a replikációs csoportot, majd kattintson a részeként **OK**.
+
+> [!IMPORTANT]
+  A replikációs csoport összes gép lesz megosztva összeomlik miattuk konzisztens és alkalmazáskonzisztens helyreállítási pontokat, ha a feladatátvételt. Lehetővé teszi több virtuális Gépre kiterjedő konzisztencia befolyásolhatja a teljesítményt a munkaterhelés, és csak akkor, ha a gép ugyanaz az alkalmazás fut, és több gép közötti konzisztenciára van szükség.
+
+> [!IMPORTANT]
+  Ha engedélyezi a virtuális Gépre kiterjedő konzisztencia, a replikációs csoport gépek kommunikálhatnak egymással 20004 porton keresztül. Ellenőrizze, hogy nem blokkolja-e a belső kommunikáció 20004 porton keresztül a virtuális gépek közötti tűzfal készüléket. Ha azt szeretné, hogy a Linux virtuális gépek a replikációs csoport részeként, győződjön meg arról, a kimenő adatforgalmat a port 20004 manuálisan megnyitott állapotokban az adott Linux verzió útmutatást.
 
 ### <a name="track-replication-status"></a>Replikáció állapotának nyomon követése
 
@@ -162,7 +174,7 @@ A Site Recovery alapértelmezett beállításait és a cél régió replikáció
 
 3. A **beállítások** > **replikált elemek**, megtekintheti az állapotát, a virtuális gépek és a kezdeti replikáció folyamatban van. Kattintson a virtuális gépek a részletekbe menően tárhatják fel annak beállításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a vész-helyreállítási egy Azure virtuális gép konfigurálta. Következő lépés, hogy tesztelje a konfigurációt.
 

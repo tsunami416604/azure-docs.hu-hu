@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 12/09/2017
-ms.openlocfilehash: 65dc158a3a8c88a02d66bff7abe34d457cfef10a
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: e16982e4e57ba9f2f11e9ee59f88f24b3fe3fe3f
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>MySQL az Azure-adatbázis korlátozásai
 Az Azure-adatbázishoz a MySQL-szolgáltatás nyilvános előzetes verziójában van. A következő szakaszok ismertetik a kapacitás, tárolási motor támogatja, jogosultság, adatok adatkezelési utasítás támogatásának, és az adatbázis szolgáltatásban működik korlátok. Lásd még: [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL adatbázis-kezelő alkalmazandó.
@@ -57,7 +57,8 @@ Túl sok a kapcsolat elérésekor a következő hibaüzenet jelenhet meg:
 ## <a name="privilege-support"></a>Jogosultság-támogatás
 
 ### <a name="unsupported"></a>Nem támogatott
-- [SUPER jogosultság](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)
+- DBA szerepkör számos Server paraméterek és beállítások véletlenül rontják a kiszolgáló teljesítményét vagy az adatbázis-kezelő ACID tulajdonságainak semlegesítsék. Így a szolgáltatás integritás-és SLA-t, a termék szinten nem elérhetővé kell tenni a DBA-szerepkört, az ügyfél számára. Az alapértelmezett felhasználói fiók, amely egy új adatbázis-példány létrehozásakor összeállított, lehetővé teszi az ügyfelek a felügyelt adatbázispéldány DDL és DML-utasítások hajthatók végre. 
+- SUPER jogosultsággal hasonlóképpen [SUPER jogosultság](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) is korlátozódik.
 
 ## <a name="data-manipulation-statement-support"></a>Adatok adatkezelési utasítás támogatása
 
@@ -83,9 +84,12 @@ Túl sok a kapcsolat elérésekor a következő hibaüzenet jelenhet meg:
 
 ## <a name="functional-limitations"></a>Működési korlátai
 
-### <a name="subscription-management"></a>Előfizetés-kezelés
+### <a name="subscription-management"></a>Előfizetés kezelése
 - Dinamikusan áthelyezése előfizetés és az erőforráscsoport előre létrehozott kiszolgálók jelenleg nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="current-known-issues"></a>Jelenlegi ismert problémák:
+- Kapcsolat létrejötte után a MySQL server-példány helytelen verzióját jeleníti meg. A megfelelő kiszolgálói példány versioning használatához válassza version(); a MySQL-parancssorba parancsot.
+
+## <a name="next-steps"></a>További lépések
 - [Az egyes szolgáltatásszinteken elérhető](concepts-service-tiers.md)
 - [MySQL-adatbázis támogatott verziói](concepts-supported-versions.md)

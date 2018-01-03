@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 01/02/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e19ea08823575a535b7bc3e18a97902f72e802eb
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 86bc61ffcefd12289168d35b2773d61fac4c3652
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partíció és a skála Azure Cosmos DB
 
@@ -60,7 +60,7 @@ Azure Cosmos-adatbázis használja a particionálás kivonat-alapú. Egy cikk í
 > Ajánlott eljárás, számos eltérő érték (minimum több ezer több száz) tartalmazó partíció kulcsa.
 >
 
-Az Azure Cosmos DB tárolók hozhatók létre *rögzített* vagy *korlátlan*. Rögzített méretű tárolók rendelkezik egy legfeljebb 10 GB és 10000 RU/s átviteli sebesség. Egyes API-k a rögzített méretű tárolók nem kell a partíciós kulcs. Egy tároló korlátlan mint létrehozásához meg kell adnia minimális átviteli sebességgel 2500 RU/mp.
+Az Azure Cosmos DB tárolók hozhatók létre *rögzített* vagy *korlátlan*. Rögzített méretű tárolók rendelkezik egy legfeljebb 10 GB és 10000 RU/s átviteli sebesség. Egy tároló korlátlan, létrehozásához, meg kell adnia egy minimális átviteli sebességgel 1000 RU/mp, és meg kell adnia egy partíciókulcsot.
 
 Célszerű ellenőrizze, hogy az adatok hogyan oszlik meg a partíciók. Portál ennek ellenőrzéséhez nyissa meg a Azure Cosmos DB-fiókjába, majd kattintson a **metrikák** a **figyelés** szakaszt, és a jobb oldali ablaktáblában kattintson a **tárolási** meg, hogy az adatok lap a particionált különböző fizikai partícióján.
 
@@ -127,25 +127,18 @@ Eredmények:
 
 ### <a name="table-api"></a>Tábla API
 
-A tábla API-val ad meg, a táblák adatátviteli sebességét az appSettings konfigurációs az alkalmazáshoz.
-
-```xml
-<configuration>
-    <appSettings>
-      <!--Table creation options -->
-      <add key="TableThroughput" value="700"/>
-    </appSettings>
-</configuration>
-```
-
-Majd hoz létre egy táblát az Azure Table storage SDK használatával. A partíciós kulcs implicit módon jön létre a `PartitionKey` érték. 
+Az Azure Cosmos DB tábla API-val tábla létrehozásához használja a CreateIfNotExists módszert. 
 
 ```csharp
 CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
 CloudTable table = tableClient.GetTableReference("people");
-table.CreateIfNotExists();
+table.CreateIfNotExists(throughput: 800);
 ```
+
+Átviteli sebesség CreateIfNotExists argumentumként van beállítva.
+
+A partíciós kulcs implicit módon jön létre a `PartitionKey` érték. 
 
 Egyetlen entitás az alábbi kódrészletben használatával kérheti le:
 
@@ -207,7 +200,7 @@ Azure Cosmos DB használatával megvalósításához egy több-bérlős alkalmaz
 
 Egy kombináció/rétegzett megközelítés, amely kis bérlők collocates és áttelepíti a nagyobb bérlők saját tárolót is használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben azt előírt fogalmakat és ajánlott eljárások áttekintését particionálás bármely Azure Cosmos DB API-t. 
 
 * További tudnivalók [Azure Cosmos DB a létesített átviteli sebesség](request-units.md).

@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: security
-ms.date: 10/31/2016
+ms.date: 12/14/2017
 ms.author: rortloff;barbkess
-ms.openlocfilehash: 36f990dd16a3c6b65d16bab4b945ec56a1bb1000
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: aa0d6cb03196167ec077b0ed4bbbb9d118951219
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Az SQL Data Warehouse adatbázis védelme
 > [!div class="op_single_selector"]
@@ -35,11 +35,11 @@ Ez a cikk végigvezeti az Azure SQL Data Warehouse-adatbázis védelme alapjait.
 ## <a name="connection-security"></a>Kapcsolatbiztonság
 A kapcsolatbiztonság azt jelenti, hogy hogyan korlátozza és védi az adatbázis kapcsolatait a tűzfalszabályok és a csatlakozástitkosítás használatával.
 
-A tűzfalszabályokat a kiszolgáló és az adatbázis is felhasználja, hogy elutasítsa a csatlakozási kísérleteket a nem kifejezetten engedélyezett IP-címekről. Az alkalmazás ügyfél gép nyilvános IP- címének kapcsolódásának engedélyezéséhez először létre kell hoznia egy kiszolgálószintű tűzfalszabályt, az Azure portálon, a REST API-t vagy a PowerShell használatával. Az ajánlott eljárás a kiszolgáló tűzfalán átengedett IP-címtartományokat lehető legnagyobb mértékű korlátozása.  Az Azure SQL Data Warehouse hozzáférést a helyi számítógépen, győződjön meg arról, a hálózat és a helyi számítógépen a tűzfal lehetővé teszi, hogy az 1433-as TCP-port kimenő kommunikációra.  További információkért lásd: [Azure SQL Database-tűzfal][Azure SQL Database firewall], [sp_set_firewall_rule][sp_set_firewall_rule], és [sp_set_database_ firewall_rule][sp_set_database_firewall_rule].
+A tűzfalszabályokat a kiszolgáló és az adatbázis is felhasználja, hogy elutasítsa a csatlakozási kísérleteket a nem kifejezetten engedélyezett IP-címekről. Az alkalmazás ügyfél gép nyilvános IP- címének kapcsolódásának engedélyezéséhez először létre kell hoznia egy kiszolgálószintű tűzfalszabályt, az Azure portálon, a REST API-t vagy a PowerShell használatával. Az ajánlott eljárás a kiszolgáló tűzfalán átengedett IP-címtartományokat lehető legnagyobb mértékű korlátozása.  Az Azure SQL Data Warehouse hozzáférést a helyi számítógépen, győződjön meg arról, a hálózat és a helyi számítógépen a tűzfal lehetővé teszi, hogy az 1433-as TCP-port kimenő kommunikációra.  További információkért lásd: [Azure SQL Database-tűzfal][Azure SQL Database firewall], [sp_set_firewall_rule][sp_set_firewall_rule].
 
 Az SQL Data warehouse kapcsolatokat a rendszer alapértelmezés szerint titkosítja.  Tiltsa le a titkosítást a kapcsolódási beállítások módosítása a rendszer figyelmen kívül hagyja.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. SQL Data Warehouse jelenleg támogatja az SQL Server-hitelesítés egy felhasználónév és jelszó, valamint egy Azure Active Directoryban. 
 
 Az adatbázis logikai kiszolgálójának létrehozásakor megadta a „kiszolgálói rendszergazda” bejelentkezés felhasználónevét és jelszavát. Ezeket a hitelesítő adatokat használ, elvégezheti a hitelesítést bármely adatbázis a kiszolgálón az adatbázis tulajdonosa vagy a "dbo" SQL Server-hitelesítésen keresztül.
@@ -73,11 +73,17 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 A kapcsolódáshoz használt kiszolgálói rendszergazdai fiók a db_owner szerepkör tagja, így teljes körű engedélyekkel rendelkezik az adott adatbázisban. Tartsa meg ezt a fiókot a sémafrissítések üzembe helyezéséhez és egyéb felügyeleti műveletekhez. Használja kevesebb engedéllyel rendelkező „ApplicationUser” fiókot, ha az alkalmazásból kíván csatlakozni az adatbázishoz az alkalmazás által minimálisan igényelt engedélyekkel.
 
-Többféleképpen korlátozhatja a felhasználók engedélyeit az Azure SQL Database-ben:
+Tovább korlátozhatja a felhasználók mit tehetnek az Azure SQL Data Warehouse szolgáltatással módja van:
 
-* A részletes [engedélyek] [ Permissions] lehetővé teszik, hogy vezérlő milyen műveletek is az egyes oszlopok, táblák, nézetek, eljárások és egyéb objektumok az adatbázisban. A részletes engedélyeket használ a legtöbb vezérlő, majd adja meg a minimálisan szükséges engedélyeket. A részletes engedély rendszer némileg bonyolult, és néhány vizsgálat hatékony használata esetén.
+* A részletes [engedélyek] [ Permissions] lehetővé teszik, hogy mely műveletek, akkor az egyes oszlopok, táblák, megtekinti vezérlő, sémák, eljárások és egyéb objektumok az adatbázisban. A részletes engedélyeket használ a legtöbb vezérlő, majd adja meg a minimálisan szükséges engedélyeket. A részletes engedély rendszer némileg bonyolult, és néhány vizsgálat hatékony használata esetén.
 * [Adatbázis-szerepkörök] [ Database roles] eltérő db_datareader és db_datawriter nagyobb teljesítményű alkalmazás felhasználói fiókok vagy kevésbé hatékony felügyeleti fiókok létrehozására használható. A beépített rögzített adatbázis-szerepkörök olyan engedélyek megadásához könnyű megoldást biztosítson, de a szükségesnél több jogosultságokat eredményezhet.
 * [Tárolt eljárások] [ Stored procedures] segítségével korlátozhatja a műveleteket, amelyen átvihető az adatbázishoz.
+
+Az alábbiakban példája olvasási hozzáférés egy felhasználó által definiált séma megadása.
+```sql
+--CREATE SCHEMA Test
+GRANT SELECT ON SCHEMA::Test to ApplicationUser
+```
 
 Az Azure portálról adatbázisok és a logikai kiszolgáló kezelése vagy az Azure Resource Manager API-val a portál felhasználói fiók szerepkör-hozzárendelések vezérli. A témakörrel kapcsolatos további információkért lásd: [Azure portál szerepköralapú hozzáférés-vezérlés][Role-based access control in Azure Portal].
 
@@ -86,7 +92,7 @@ Az Azure SQL Data adatraktár átlátszó adatok titkosítás (TDE) abban a kár
 
 Az adatbázis használatával titkosíthatja az [Azure Portal] [ Encryption with Portal] vagy [T-SQL][Encryption with TSQL].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Részletek és csatlakozás az SQL Data Warehouse a különböző protokollokkal példák: [csatlakozás az SQL Data Warehouse][Connect to SQL Data Warehouse].
 
 <!--Image references-->

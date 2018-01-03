@@ -3,7 +3,7 @@ title: "VHD-fájl feltöltése az Azure DevTest Labs segítségével a Microsoft
 description: "Használatával a Microsoft Azure Tártallózó tesztlabor a tárfiók VHD-fájl feltöltése"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
-ms.author: tarcher
-ms.openlocfilehash: 502e2536fb0fd2e9dfc4c7b85a6fb4e18202f38f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 25675aae77fbe2610fe416210de9a306c1c09f3d
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Használatával a Microsoft Azure Tártallózó tesztlabor a tárfiók VHD-fájl feltöltése
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 Azure DevTest Labs szolgáltatásban, a VHD-fájlok segítségével hozzon létre egyéni képek, amelyek segítségével virtuális gépeket. Ez a cikk bemutatja, hogyan használandó [Microsoft Azure Tártallózó](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy VHD-fájlt feltölteni a tesztkörnyezet tárfiókja. Miután a VHD-fájl feltöltött a [további lépések szakaszt](#next-steps) felsorolja az egyes cikkeket, amelyek bemutatják, hogyan lehet a feltöltött VHD-fájl létrehozása egyéni lemezkép. További információ a lemezek és a VHD-ken az Azure-ban: [lemezek és a virtuális merevlemezek a virtuális gépek](../virtual-machines/linux/about-disks-and-vhds.md)
 
-## <a name="step-by-step-instructions"></a>Lépésenkénti utasítások
+## <a name="step-by-step-instructions"></a>Részletes útmutató
 
 A következő lépések végigvezetik a VHD-fájl feltöltése a DevTest Labs segítségével [Microsoft Azure Tártallózó](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
@@ -100,7 +100,7 @@ A következő lépések végigvezetik a VHD-fájl feltöltése a DevTest Labs se
 
     1. A Tártallózó jobb oldali ablaktáblában kell megjelennie a blobok a lista tartalmazza a **feltölt** blob tároló a tesztkörnyezet tárfiókja. Válassza a blob-szerkesztő eszköztár **feltöltése** 
         
-        ![Töltse fel gomb][6]
+        ![Feltöltés gomb][6]
     
     1. Az a **feltöltése** legördülő menüben válassza **fájlok feltöltése...** .
     
@@ -120,7 +120,7 @@ A következő lépések végigvezetik a VHD-fájl feltöltése a DevTest Labs se
 
         ![Fájlfeltöltés állapot][10]  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Létrehozhat egyéni rendszerképeket a VHD-fájl az Azure portál használata az Azure DevTest Labs szolgáltatásban](devtest-lab-create-template.md)
 - [Egyéni lemezkép létrehozása a PowerShell használatával VHD-fájl az Azure DevTest Labs szolgáltatásban](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

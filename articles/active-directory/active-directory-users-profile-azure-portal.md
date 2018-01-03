@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.openlocfilehash: 4121f94e15d9ba938d90d72e70d7bcb49a6c1ed5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6f1085a8b434aca18499e17ba1c1d086edfc302e
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>Adja hozzá, vagy egy Azure Active Directoryban lévő felhasználói profil adatainak módosítása
 Ez a cikk azt ismerteti, hogyan hozzáadása a felhasználói profillal kapcsolatos információk, például a profilkép vagy a telefonos és e-mailek hitelesítési adatokat, az Azure Active Directory (Azure AD). A szervezetben új felhasználók hozzáadásával kapcsolatos további információkért lásd: [új felhasználók hozzáadása az Azure Active Directory](active-directory-users-create-azure-portal.md).
@@ -38,9 +38,8 @@ Ez a cikk azt ismerteti, hogyan hozzáadása a felhasználói profillal kapcsola
     ![Nyitó munkahelyi adatokat](./media/active-directory-users-profile-azure-portal/active-directory-create-users-profile.png)
 6. Adja hozzá, vagy módosítsa a profil adatai. Ezt követően a parancssávon válassza **mentése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Új felhasználók hozzáadása az Azure Active Directoryhoz](active-directory-users-create-azure-portal.md)
 * [Az Azure Active Directoryban a felhasználó jelszavának visszaállítása](active-directory-users-reset-password-azure-portal.md)
 * [Felhasználó hozzárendelése az Azure Active Directory rendszergazdai szerepkörök](active-directory-users-assign-role-azure-portal.md)
-* [Adja hozzá, vagy egy Azure Active Directoryban lévő felhasználói profil adatainak módosítása](active-directory-users-work-info-azure-portal.md)
 * [A felhasználó töröl egy könyvtárat az Azure Active Directoryban](active-directory-users-delete-user-azure-portal.md)

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2017
 ms.author: seguler
-ms.openlocfilehash: 1a4c52babe76e59eacb30e8be91ed934cdbe305b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d4a7ceabc8cdb97fc8a0f29756d7648d253fe21
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Adatátvitel az AzCopy a Windows rendszeren
-AzCopy az adatok másolása, és az egyszerű parancsokkal optimális teljesítménnyel Microsoft Azure Blob, a fájl és a Table storage egy parancssori segédprogram. Másolhatja adatok egy objektum a másikra a tárfiókon belül vagy tárfiókok között.
+AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob, a fájl és a tábla tárolási, adat másolása az optimális teljesítményének készült egyszerű parancsok használatával. Másolhat adatokat a fájlrendszer és a storage-fiók, vagy tárfiókok között.  
 
 AzCopy, letöltheti a két verziója van. AzCopy a Windows a .NET-keretrendszer épül, és ez biztosítja a Windows stílus parancssori kapcsolókat. [AzCopy Linux](storage-use-azcopy-linux.md) épül, a .NET Core keretprogram, amelyik ajánlat POSIX-stílusú parancssori kapcsolók Linux platformon célozza. Ez a cikk a Windows AzCopy ismerteti.
 
@@ -967,7 +967,7 @@ A tulajdonság "AzureStorageUseV1MD5":
 
 Alapértelmezés szerint a Windows a FIPS előírásainak megfelelő algoritmusok le vannak tiltva. Módosíthatja a házirend-beállítás a számítógépre. A Futtatás ablakba (Windows + R), írja be a secpol.msc megnyitásához a **helyi biztonsági házirend** ablak. Az a **biztonsági beállítások** ablakban, keresse meg **biztonsági beállítások** > **helyi házirendek** > **biztonságibeállítások**. Keresse meg a **rendszer-kriptográfia: FIPS előírásainak megfelelő algoritmusok használata titkosításhoz, kivonatoláshoz és aláíráshoz** házirend. A házirendjében a megjelenített érték megjelenítéséhez kattintson duplán a **biztonsági beállítás** oszlop.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Azure Storage és AzCopy kapcsolatos további információkért lásd a következőket:
 

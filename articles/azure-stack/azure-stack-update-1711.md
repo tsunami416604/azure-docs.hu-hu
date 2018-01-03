@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: andredm
-ms.openlocfilehash: 3c51348be75a11419c12bc517ab7131323016a55
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 578d17bcfbb7e12c9855132772c2068a5cdf1f62
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-stack-1711-update"></a>Az Azure verem 1711 frissítés
 
@@ -51,6 +51,7 @@ A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure 
 - Felhasználók is most Windows virtuális gépek automatikus aktiválása
 - A hozzáadott kiemelt végpont PowerShell-parancsmag használatával a BitLocker helyreállítási kulcsok megőrzési célokra beolvasása
 - A kapcsolat nélküli lemezképek frissítését infrastruktúra frissítésekor támogatása
+- Engedélyezze a biztonsági mentési szolgáltatás biztonsági másolatának infrastruktúra engedélyezése
 
 #### <a name="fixes"></a>Javítások
 
@@ -139,6 +140,17 @@ Az Azure Active Directory összevonási szolgáltatások (ADFS) környezetben te
 > [!IMPORTANT]
 > Annak ellenére, hogy a **azurestack\cloudadmin** fiók telepített AD FS-környezetben az alapértelmezett szolgáltató előfizetés tulajdonosának, nincs az állomás a távoli asztali engedélyek. Továbbra is használhatja a **azurestack\azurestackadmin** vagy a helyi rendszergazdai fiók bejelentkezési, eléréséhez és a gazdagép kezelése, igény szerint.
 
+#### <a name="infrastructure-backup-sevice"></a>Biztonsági mentési szolgáltatási infrastruktúra
+<!-- 1974890-->
+
+- **Előtti-1711 biztonsági másolatok nem támogatottak a helyreállítási felhő.**  
+  Előtti-1711 biztonsági mentés nem kompatibilisek-e a helyreállítási felhő. 1711 először frissíteni kell, és biztonsági mentéseket. Ha a biztonsági mentések már engedélyezve van, győződjön meg arról, biztonsági mentés végrehajtása 1711 történő frissítés után. Előre-1711 biztonsági mentések törölni kell.
+
+- **Lehetővé teszi infrastruktúra biztonsági másolatának ASDK csak tesztelési célokra van.**  
+  Infrastruktúra-biztonsági mentések többcsomópontos megoldások visszaállítására használható. Engedélyezheti a biztonsági mentés infrastruktúra ASDK, de nincs helyreállítási teszteléséhez mód.
+
+További információ: [Azure verem és az infrastruktúra biztonsági mentési szolgáltatás biztonsági mentési és az adatok helyreállítását](C:\Git\MS\azure-docs-pr\articles\azure-stack\azure-stack-backup-infrastructure-backup.md).
+
 ## <a name="download-the-update"></a>A frissítés letöltése
 
 Letöltheti az Azure verem 1711 frissítési csomagot [Itt](https://aka.ms/azurestackupdatedownload).
@@ -149,7 +161,7 @@ A Microsoft közzétett segítségével figyelheti, és folytathatja a használa
 
 - Tekintse meg a [figyelése Azure-készletben a rendszerjogosultságú végpont dokumentációnak frissítések](https://docs.microsoft.com/azure/azure-stack/azure-stack-monitor-update). 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - Lásd: [kezelheti a frissítéseket az Azure-verem áttekintés](azure-stack-updates.md) a frissítéskezelés Azure verem áttekintését.
 - Lásd: [Azure verem frissítések alkalmazása](azure-stack-apply-updates.md) Azure verem frissítések alkalmazásával kapcsolatos további információt.

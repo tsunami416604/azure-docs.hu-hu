@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c0aded35066b4dd819a754a663fdbbf0b0bf6feb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b6267dd2bc1b29229b2e8016e2429ed88b7bf676
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="using-azure-files-with-kubernetes"></a>Az Azure Files használata Kubernetes
 
@@ -66,7 +66,7 @@ A következő kódolja a tárfiók kulcsára. Szükség esetén cserélje le a `
 echo -n $STORAGE_KEY | base64
 ```
 
-Hozzon létre egy fájlt `azure-secret.yml` és a következő YAM másolja. Frissítés a `azurestorageaccountname` és `azurestorageaccountkey` értékeket a base64 kódolású értékeket az előző lépésben beolvasott.
+Hozzon létre egy fájlt `azure-secret.yaml` és a következő YAM másolja. Frissítés a `azurestorageaccountname` és `azurestorageaccountkey` értékeket a base64 kódolású értékeket az előző lépésben beolvasott.
 
 ```yaml
 apiVersion: v1
@@ -82,12 +82,12 @@ data:
 Használja a [kubectl létrehozása] [ kubectl-create] parancsot a titkos kulcs létrehozásához.
 
 ```azurecli-interactive
-kubectl create -f azure-secret.yml
+kubectl create -f azure-secret.yaml
 ```
 
 ## <a name="mount-file-share-as-volume"></a>Fájlmegosztás csatlakoztatása kötetként
 
-A pod be az Azure-fájlok megosztás a kötetet a spec konfigurálásával lehet csatlakoztatni. Hozzon létre egy új fájlt `azure-files-pod.yml` a következő tartalommal. Frissítés `aksshare` az Azure-fájlok neve azonos.
+A pod be az Azure-fájlok megosztás a kötetet a spec konfigurálásával lehet csatlakoztatni. Hozzon létre egy új fájlt `azure-files-pod.yaml` a következő tartalommal. Frissítés `aksshare` az Azure-fájlok neve azonos.
 
 ```yaml
 apiVersion: v1
@@ -112,12 +112,12 @@ spec:
 Kubectl segítségével hozzon létre egy pod.
 
 ```azurecli-interactive
-kubectl apply -f azure-files-pod.yml
+kubectl apply -f azure-files-pod.yaml
 ```
 
 Az Azure fájlmegosztás-e csatlakoztatva a most már rendelkezik egy futó tároló a `/mnt/azure` könyvtár. Láthatja, hogy a kötet csatlakoztatási vizsgálatakor ellenőrizze a pod keresztül `kubectl describe pod azure-files-pod`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók Kubernetes kötetek Azure fájlokat használja.
 

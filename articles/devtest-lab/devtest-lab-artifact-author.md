@@ -3,7 +3,7 @@ title: "Egyéni összetevők a DevTest Labs szolgáltatásban virtuális gép l�
 description: "Megtudhatja, hogyan hozhatnak létre a saját Azure DevTest Labs használni kívánt összetevőket."
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 32dcdc61-ec23-4a01-b731-78c029ea5316
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2017
-ms.author: tarcher
-ms.openlocfilehash: 679819618452d65847c6163569e04945ba8a414d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 7766227d66df94eca72072f52ff02928f8ee277b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Egyéni összetevők a DevTest Labs szolgáltatásban virtuális gép létrehozása
 
@@ -55,7 +55,7 @@ A következő példa bemutatja az alapvető szerkezete egy csomagdefiníciós f�
 | Elem neve | Kötelező? | Leírás |
 | --- | --- | --- |
 | $schema |Nem |A JSON-fájl helyét. A JSON-fájl segítségével ellenőrizheti a csomagdefiníciós fájl érvényességét. |
-| Cím |Igen |A labor megjelenő összetevő nevét. |
+| cím |Igen |A labor megjelenő összetevő nevét. |
 | leírás |Igen |A labor megjelenő összetevő leírása. |
 | iconUri |Nem |Ikon, a laborban URI Azonosítóját. |
 | targetOsType |Igen |Operációs rendszer a virtuális gép, amelyen telepítve van-e az összetevő. Támogatott beállítások a Windows és Linux esetén. |
@@ -129,6 +129,6 @@ A következő példa bemutatja, hogyan értéket összeállításához kifejezé
 * [A DevTest Labs szolgáltatásban összetevő hibák diagnosztizálása](devtest-lab-troubleshoot-artifact-failure.md)
 * [Meglévő Active Directory-tartományban a DevTest Labs szolgáltatásban a Resource Manager-sablon használatával egy virtuális gép csatlakoztatása](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [egy Git összetevőtárban hozzáadása egy laborhoz](devtest-lab-add-artifact-repo.md).
 

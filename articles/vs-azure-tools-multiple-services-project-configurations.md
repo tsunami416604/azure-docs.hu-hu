@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2017
 ms.author: kraigb
-ms.openlocfilehash: a6f9b300cd832c5f9615f70ee297e3c5ad728e44
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 8125ef36f730b745d63c39493f48d14a5a33d76c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>A Visual Studio több szolgáltatáskonfiguráció használata az Azure-projekt konfigurálása
 
@@ -77,7 +77,7 @@ Válassza ki az új vagy meglévő kapcsolati karakterláncok **...** * jobb old
 
 1. A **protokoll használatával kapcsolódó levelezőprogramokkal**, válassza ki a **az előfizetés** kiválaszthatja azokat a tárfiók előfizetésből. A Visual Studio majd beolvassa a tárfiók hitelesítő adatainak automatikusan a a `.publishsettings` fájlt.
 1. Kiválasztása **manuálisan kell megadni a hitelesítő adatok** segítségével adja meg a fiók nevét, valamint kulcs közvetlenül az Azure-portálról információk alapján. A fiók kulcsának az átmásolása: egy. Keresse meg az Azure portál, és válassza ki a tárfiók **kulcsok kezelése**.
-    2. Az a **kulcsok hozzáférés kezelése** lapon válassza ki a szöveget az elsődleges elérési kulcsát, és nyomja le a Ctrl + C billentyűkombinációval másolja.
+    2. A fiók kulcsának az átmásolása, keresse meg az Azure portálon, válassza ki a tárfiók **beállítások > hívóbetűk**, majd használja az elsődleges elérési kulcsot a vágólapra másolni a Másolás gombra.
 1. A kapcsolódási beállítások valamelyikét kell választani. **Egyéni végpontokat határoz meg** arra kéri, hogy a blobok, táblák, adott URL-címének megadása, és várólistára helyezi. Egyéni végpontokkal használatát [egyéni tartományok](storage/blobs/storage-custom-domain-name.md) és pontosabban, a hozzáférés vezérlése érdekében. Lásd: [konfigurálása az Azure Storage kapcsolati karakterláncok](./storage/common/storage-configure-connection-string.md).
 1. Válassza ki **OK**, majd **fájl > Mentés** frissíteni a beállításait az új kapcsolati karakterlánccal.
 

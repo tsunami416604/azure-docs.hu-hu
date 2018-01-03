@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/13/2017
 ms.author: bwren
-ms.openlocfilehash: ee11f64484a66fad06b6536a18f9b3e239fa40d5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: a0897113660f764cb23239b066bc93c479a9a553
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>A Naplóelemzési riasztások ismertetése
 
@@ -31,7 +31,7 @@ A riasztási szabályok létrehozásának folyamatán tekintse meg a következő
 - Riasztási szabályok létrehozására [REST API-n](log-analytics-api-alerts.md)
 
 
-## <a name="alert-rules"></a>A riasztási szabályok
+## <a name="alert-rules"></a>Riasztási szabályok
 
 A riasztási szabályok, amelyek automatikusan futnak a napló keresések rendszeres időközönként riasztások jönnek létre.  Ha a napló keresés eredményeit az adott feltételeknek megfelelő, egy riasztás rekord jön létre.  A szabály úgy automatikusan futtatja egy vagy több műveletek proaktív értesítést küldenek, a figyelmeztetés vagy meg kíván hívni egy másik folyamat.  Különböző típusú riasztási szabályok az elemzés végrehajtásához használja a másik programot.
 
@@ -80,13 +80,13 @@ Ha szeretné a processzor futtatásakor riasztás például több mint 90 %, has
 
     
 
-Riasztás, ha a processzor átlagosan több mint 90 %-át egy adott időtartomány szeretne, ha szeretné használni egy lekérdezés segítségével a [parancs mérésére](log-analytics-search-reference.md#commands) , például a küszöbértéket, a riasztási szabály a következőre **0-nálnagyobb**.
+Ha riasztást küld, ha a processzor átlagosan több mint 90 %-át egy adott időtartomány, használhatja a következő lekérdezést a küszöbértékkel a riasztási szabály **0-nál nagyobb**.
 
-    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90
+    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | where CounterValue>90 | summarize avg(CounterValue) by Computer
 
     
 >[!NOTE]
-> Ha a munkaterületet van még nincsenek frissítve az a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), majd a fenti lekérdezések megváltozna a következők:`Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90`
+> Ha a munkaterületet van még nincsenek frissítve az a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), majd a fenti lekérdezések megváltozna a ez utóbbi használatával a következő a [parancs mérésére](log-analytics-search-reference.md#commands):`Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90`
 > `Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90`
 
 
@@ -113,8 +113,8 @@ Fontolja meg egy olyan forgatókönyvet, ahol keresett riasztást, ha a számít
 **Lekérdezés:** telj |} ahol ObjectName == "Processzor" és a CounterName == "kihasználtsága (%) |} AggregatedValue összefoglalója bin (TimeGenerated, 5 m), a számítógép által avg(CounterValue) =<br>
 **Időablak:** 30 perc<br>
 **Riasztási gyakoriságot:** 5 perc<br>
-**Értéket összesítő:** kiváló 90-nél<br>
-**Eseményindító riasztás alapján:** összege nagyobb, mint 5 feltöri<br>
+**Értéket összesítő:** 90-nél több<br>
+**Eseményindító riasztás alapján:** összesen feltöri nagyobb, mint 2<br>
 
 A lekérdezés 5 perces időközönként hozna létre az egyes számítógépek átlagos értékét.  Ez a lekérdezés az előző 30 perc át 5 percenként összegyűjtött adatok kell futnak.  Mintaadatokat három számítógépek alább láthatók.
 
@@ -143,7 +143,7 @@ A Naplóelemzési riasztási szabályok által létrehozott riasztás rekordok r
 Más típusú által létrehozott riasztás rekordok léteznek a [riasztás felügyeleti megoldás](log-analytics-solution-alert-management.md) és [Power BI exportálja](log-analytics-powerbi.md).  Ezek minden rendelkeznek egy **típus** a **riasztási** alapján megkülönböztetett, de azok **SourceSystem**.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Telepítse a [Riasztáskezelési megoldás](log-analytics-solution-alert-management.md) Naplóelemzési begyűjti a System Center Operations Manager riasztásokat együtt létrehozott riasztások elemzéséhez.
 * Tudjon meg többet az [keresések jelentkezzen](log-analytics-log-searches.md) , amely riasztást generál.
 * A forgatókönyv a [konfigurálása egy webhook](log-analytics-alerts-webhooks.md) a riasztási szabályt.  

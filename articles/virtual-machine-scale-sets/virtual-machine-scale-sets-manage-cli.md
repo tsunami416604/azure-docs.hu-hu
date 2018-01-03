@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 5686d8bd3f9817be2308583afe778e0615154580
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+ms.openlocfilehash: 6ae05dc8faf950f584806d9b4a3e7e1466ded652
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>A virtuálisgép-méretezési beállítása az Azure CLI 2.0 kezelése
 A virtuálisgép-méretezési csoport életciklusa során szükség lehet egy vagy több felügyeleti feladatok futtatásához. Emellett érdemes lehet különböző életciklus-feladatokat automatizáló parancsfájlokat hozhatnak létre. Ez a cikk részletezi az egyes közös Azure CLI 2.0 parancsok, amelyek lehetővé teszik, hogy ezeket a műveleteket.
 
-Felügyeleti feladatok elvégzéséhez szüksége van a legújabb Azure CLI 2.0 build. Hogyan kell telepíteni, és a legújabb verzióját használja a további információkért lásd: [az Azure CLI 2.0-s verzióját](/cli/azure/install-azure-cli). Ha egy virtuálisgép-méretezési csoport létrehozásához szükséges, akkor [hozzon létre egy méretezési beállítása az Azure portálon](virtual-machine-scale-sets-portal-create.md).
+Felügyeleti feladatok elvégzéséhez szüksége van a legújabb Azure CLI 2.0 build. Hogyan kell telepíteni, és a legújabb verzióját használja a további információkért lásd: [az Azure CLI 2.0-s verzióját](/cli/azure/install-azure-cli). Ha egy virtuálisgép-méretezési csoport létrehozásához szükséges, akkor [hozzon létre egy méretezési beállítása az Azure portálon](virtual-machine-scale-sets-create-portal.md).
 
 
 ## <a name="view-information-about-a-scale-set"></a>A méretezési adatainak megtekintése
@@ -127,7 +127,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 
 
 ## <a name="remove-vms-from-a-scale-set"></a>Távolítsa el a virtuális gépek egy méretezési készlet
-Méretezési csoportban lévő egy vagy több virtuális gép eltávolításához használja [az vmss delete-példányok](/cli/azure/vmss#delete-instances). A "--példány-azonosítók" paraméter lehetővé teszi egy vagy több virtuális gépek eltávolítása. Ha megad * azonosító, a méretezési csoportban lévő összes virtuális gép eltávolítása a példány. Több virtuális gép eltávolításához külön szóközzel minden példány azonosítója.
+Méretezési csoportban lévő egy vagy több virtuális gép eltávolításához használja [az vmss delete-példányok](/cli/azure/vmss#delete-instances). A `--instance-ids` paraméter lehetővé teszi egy vagy több virtuális gépek eltávolítása. Ha megad * azonosító, a méretezési csoportban lévő összes virtuális gép eltávolítása a példány. Több virtuális gép eltávolításához külön szóközzel minden példány azonosítója.
 
 A következő példában eltávolítjuk példány *0* a méretezési készletben elnevezett a *myScaleSet* és a *myResourceGroup* erőforráscsoportot. Adja meg a következőképpen:
 
@@ -136,5 +136,5 @@ az vmss delete-instances --resource-group myResourceGroup --name myScaleSet --in
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A méretezési készlet kapcsolatos további általános feladatok közé tartozik hogyan [alkalmazás üzembe helyezése](virtual-machine-scale-sets-deploy-app.md), és [Virtuálisgép-példányok frissítéséhez](virtual-machine-scale-sets-upgrade-scale-set.md). Használhatja az Azure CLI [automatikus méretezése szabályok konfigurálása](virtual-machine-scale-sets-autoscale-overview.md).

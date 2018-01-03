@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 11/15/2017
+ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: f95a0abcd50b94714a76b36a0b5f9c73da909879
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 59d926f54c8dfc2991929f2eb42b20056e3a09c3
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin graph-támogatás
 Azure Cosmos-adatbázis támogatja [Apache Tinkerpop](http://tinkerpop.apache.org) átjárás nyelvi diagramot [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), vagyis egy grafikonon API graph entitások létrehozására és a graph lekérdezés műveletet hajt végre. A Gremlin nyelv segítségével (csúcsban és szélek) graph entitásokat hozhatnak létre, belül entitásokból tulajdonságainak módosítása, hajtsa végre a lekérdezéseket és traversals és entitások törlésére. 
 
 Azure Cosmos DB vállalati használatra kész szolgáltatások során az graph-adatbázishoz. Ez magában foglalja a globális terjesztési, független méretezése tárolási és átviteli, előre jelezhető egyjegyű ezredmásodperces késések fordulnak elő, az automatikus indexeléshez SLA-k, olvassa el a rendelkezésre állási adatbázis fiókok két vagy több Azure-régiók átfedés. Mivel az Azure Cosmos DB TinkerPop/Gremlin támogatja, egyszerűen áttelepítheti egy másik graph-adatbázis segítségével anélkül, hogy a kód módosítások írt alkalmazások. Emellett Gremlin támogatási címtár Azure Cosmos DB zökkenőmentesen integrálható a TinkerPop-kompatibilis analytics keretrendszerek, például a [Apache Spark GraphX](http://spark.apache.org/graphx/). 
 
-Ez a cikk azt ismertetik a gyors Gremlin, és a Gremlin szolgáltatások és a Graph API-támogatást előnézete által támogatott lépéseket számbavétele.
+Ebben a cikkben azt ismertetik a gyors Gremlin, és a Gremlin szolgáltatások és a Graph API által támogatott lépéseket számbavétele.
 
 ## <a name="gremlin-by-example"></a>Példa alapján gremlin
 Egy minta graph használatával megérteni, hogyan lekérdezések Gremlin lehet megadni. Az alábbi ábrán egy üzleti alkalmazás, amely felügyeli a felhasználók, érdeklődési és egy grafikonon formájában eszközök adatait.  
@@ -80,7 +80,7 @@ A következő táblázat, amelyeket a rendszer Azure Cosmos DB TinkerPop szolgá
 
 | Kategória | Az Azure Cosmos DB végrehajtása |  Megjegyzések | 
 | --- | --- | --- |
-| Graph-funkciók | Előzetes adatmegőrzési és ConcurrentAccess nyújt. Hogy a tranzakciók támogatása | Számítógép-módszereket a Spark-összekötőn keresztül valósítható meg. |
+| Graph-funkciók | Adatmegőrzési és ConcurrentAccess biztosít. Hogy a tranzakciók támogatása | Számítógép-módszereket a Spark-összekötőn keresztül valósítható meg. |
 | Változó szolgáltatások | Támogatja a logikai, egész, bájt, duplán, lebegőpontos, egész, hosszú, karakterlánc | Támogatja az egyszerű típusok, kompatibilis adatmodellt összetett típus |
 | Csúcspont szolgáltatások | Támogatja a RemoveVertices, MetaProperties, AddVertices, MultiProperties, StringIds, UserSuppliedIds, AddProperty, RemoveProperty  | Támogatja a létrehozása, módosítása és törlése csúcsban |
 | Csúcspont tulajdonság szolgáltatások | StringIds, UserSuppliedIds, AddProperty, RemoveProperty, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Támogatja a létrehozása, módosítása és törlése csúcspont tulajdonságai |
@@ -204,6 +204,6 @@ Mostantól az Azure Cosmos DB által támogatott Gremlin lépéseket vizsgáljuk
 
 Azure Cosmos adatbázis-írási optimalizált kezelő támogatja az automatikus indexeléshez levő összes tulajdonság belül és a csúcsban alapértelmezés szerint. Ezért lekérdezi tartománnyal lekérdezések rendezésére, szűrők, vagy bármely tulajdonság összesíti az index a feldolgozott és hatékony és kiszolgálása között. További információ a hogyan indexelési működéséről az Azure Cosmos Adatbázisba, lásd a dokumentum [séma-független indexelő](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Első lépések egy grafikonon alkalmazás felépítése [az SDK-k használatával](create-graph-dotnet.md) 
 * További információ [Azure Cosmos DB graph-támogatás](graph-introduction.md)

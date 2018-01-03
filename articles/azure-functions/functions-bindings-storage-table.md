@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: a1305432d98c2e9f9f8bc30cacc62d49b1a8ba36
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5cfb968b201f49d5b7029a0b677e3ce2a8aa6cb9
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table storage kötései Azure Functions
 
@@ -35,8 +35,8 @@ Az Azure Table storage bemeneti kötése segítségével olvasni egy táblát az
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C# egy entitás olvasása](#input---c-example-1)
-* [Lefordított C# több entitás olvasása](#input---c-example-2)
+* [C# egy entitás olvasása](#input---c-example-1)
+* [C# több entitás olvasása](#input---c-example-2)
 * [C# parancsfájl - olvasni egy entitás](#input---c-script-example-1)
 * [C# parancsfájl - több entitás olvasása](#input---c-script-example-2)
 * [F#](#input---f-example-2)
@@ -44,7 +44,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 ### <a name="input---c-example-1"></a>Bemenet – C# 1. példa
 
-Az alábbi példában látható [előre le fordítva C#](functions-dotnet-class-library.md) kódot, amely egy-egy sorának beolvasása. 
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , amelyek egy-egy sorának olvassa be. 
 
 A sor kulcs értéke "{queueTrigger}" azt jelzi, hogy a sorkulcs származik-e a várólista üzenet-karakterlánc.
 
@@ -71,7 +71,7 @@ public class TableStorage
 
 ### <a name="input---c-example-2"></a>Bemenet – C# 2. példa
 
-Az alábbi példában látható [előre le fordítva C#](functions-dotnet-class-library.md) kódot, amely több tábla sorok beolvasása. Vegye figyelembe, hogy a `MyPoco` származik- `TableEntity`.
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , amely több tábla sorainak olvassa be. Vegye figyelembe, hogy a `MyPoco` származik- `TableEntity`.
 
 ```csharp
 public class TableStorage
@@ -286,7 +286,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>Bemenet – attribútumok
  
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók bemeneti táblakötéssel konfigurálása a következő attribútumokat használhatja:
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), bemeneti táblakötéssel konfigurálása a következő attribútumokat használhatja:
 
 * [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
 
@@ -316,7 +316,7 @@ A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók bemeneti
   }
   ```
 
-  Tekintse meg a teljes például [bemenet – C# előfordított példa](#input---c-example).
+  Tekintse meg a teljes például [bemenet – C# példa](#input---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)NuGet-csomagot a definiált [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs)
 
@@ -389,14 +389,14 @@ Egy Azure Table storage kimeneti entitások írni egy Azure Storage-fiókban lé
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#output---c-example)
-* [C# parancsfájl](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# parancsfájl (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Kimeneti - C# – példa
 
-Az alábbi példában látható [előre le fordítva C#](functions-dotnet-class-library.md) írni egy-egy sorának egy HTTP-eseményindítóval használó kódot. 
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) írni egy-egy sorának egy HTTP-eseményindítóval, amely használja. 
 
 ```csharp
 public class TableStorage
@@ -569,7 +569,7 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>Kimeneti - attribútumok
 
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
 
 Az attribútum konstruktora a táblanév vesz igénybe. A használat egy `out` paraméter vagy a visszatérési érték a, a következő példában látható módon:
 
@@ -597,9 +597,9 @@ public static MyPoco TableOutput(
 }
 ```
 
-Tekintse meg a teljes például [kimeneti - előfordított például C#](#output---c-example).
+Tekintse meg a teljes például [kimeneti - C# példa](#output---c-example).
 
-Használhatja a `StorageAccount` attribútum segítségével adhatja meg a tárfiók osztály, módszer vagy paraméter szinten. További információkért lásd: [bemenet - attribútumok](#input---attributes-for-precompiled-c).
+Használhatja a `StorageAccount` attribútum segítségével adhatja meg a tárfiók osztály, módszer vagy paraméter szinten. További információkért lásd: [bemenet - attribútumok](#input---attributes).
 
 ## <a name="output---configuration"></a>Kimeneti - konfiguráció
 
@@ -635,7 +635,7 @@ A Table storage kimeneti kötése támogatja a következő esetekben:
 
   JavaScript-funkcióként, nyissa meg a tábla használatával kimeneti `context.bindings.<name>`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

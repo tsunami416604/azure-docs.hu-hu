@@ -13,42 +13,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/30/2017
+ms.date: 12/19/2017
 ms.author: genli
-ms.openlocfilehash: d78174cd968c0f918a07027daf1e59665d6b6c1e
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: bb82eeda21fe4913acbe930696aa110ea1554f28
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>Hozzáadása vagy módosítása, hogy az előfizetés vagy a szolgáltatások kezelése az Azure rendszergazdai szerepkörök
+# <a name="add-or-change-azure-subscription-administrators"></a>Hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái
 
-Módosíthatja az Azure rendszergazdai, amely kezeli az Azure-előfizetéshez és nem is kezeli az előfizetésében használt Azure-szolgáltatásokhoz. Azure számlázási adatokat előfizetések megtekintése és kezelése, akkor be kell jelentkeznie a fiók középre fiók rendszergazdaként. 
+Klasszikus Azure-előfizetések rendszergazdái és az Azure [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-what-is.md) Azure erőforrásokhoz való hozzáférés kezelése a két rendszer:
+
+* Hagyományos előfizetés rendszergazdai szerepkörök egyszerű kezelés és a fiók rendszergazdájához, szolgáltatás-rendszergazda és Társrendszergazdák.
+    * Amikor regisztrál egy új Azure-előfizetéséhez, a fiók a a fiók rendszergazdájához, és a szolgáltatás rendszergazdája, alapértelmezés szerint van beállítva.
+    * Társrendszergazdák után jelentkezzen lehet hozzáadni.
+* Az RBAC egy újabb rendszerre, amely részletes hozzáféréskezelést számos beépített szerepkörök, hatókörű, és egyéni szerepkörök rugalmasságot biztosít.
+    * Csak az RBAC-szerepkörök és a nem hagyományos előfizetés rendszergazdai szerepkörök rendelkező felhasználók azonban nem tudja kezelni az Azure klasszikus üzembe helyezés.
+
+Jobban ellenőrizhető és kezelési egyszerűsítése, ajánlott RBAC használata az összes access felügyeleti igényeinek megfelelően. Ha lehetséges azt javasoljuk, hogy a meglévő hozzáférési házirendekkel RBAC újrakonfigurálása. 
 
 <a name="add-an-admin-for-a-subscription"></a>
 
 ## <a name="add-an-rbac-owner-admin-for-a-subscription-in-azure-portal"></a>Adja hozzá a Szerepalapú tulajdonos rendszergazda-előfizetéshez tartozó Azure-portálon 
 
-Valaki hozzáadásához az előfizetéshez az Azure portálon rendszergazdaként ajánlott engedélyezése egy [RBAC](../active-directory/role-based-access-control-configure.md) tulajdonosi szerepkört. A tulajdonosi szerepkört kezelheti az erőforrásokat az előfizetéshez társított, és nem rendelkezik hozzáférési jogosultság más előfizetésekkel is. A tulajdonosok keresztül hozzáadhat a [Azure-portálon](https://portal.azure.com) erőforrás nem tudja kezelni a [a klasszikus Azure portálon](https://manage.windowsazure.com).
+Valaki hozzáadásához az Azure-előfizetés szolgáltatás-felügyeleti rendszergazdaként számukra az RBAC tulajdonosi szerepkört az előfizetéshez. A tulajdonosi szerepkört kezelheti az erőforrásokat az előfizetéshez társított, és nem rendelkezik hozzáférési jogosultság más előfizetésekkel is.
 
-1. Jelentkezzen be a [előfizetések megtekintéséhez az Azure portálon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Válassza ki az előfizetést, amelyet a rendszergazda eléréséhez.
+1. Látogasson el [ **előfizetések** Azure-portálon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Válassza ki az előfizetést, amelyet a hozzáférés biztosítása.
 1. Válassza ki **hozzáférés-vezérlés (IAM)** a menüben.
 1. Válassza ki **hozzáadása** > **szerepkör** > **tulajdonos**. Írja be a kívánt tulajdonosa adja, jelölje ki a felhasználót, és válassza ki a felhasználó e-mail címe **mentése**.
 
     ![A tulajdonosi szerepkört a kiválasztott képernyőkép](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
+A felhasználó számára teljes hozzáférést ad az összes erőforrást, beleértve a mások számára delegálása jobb. Hozzáférést egy másik hatókört, például egy erőforráscsoport, látogasson el a IAM menü, az adott hatókörnél. 
+
 ## <a name="add-or-change-co-administrator"></a>Hozzáadása vagy módosítása társadminisztrátoraként
 
 Csak egy olyan tulajdonost társadminisztrátoraként adhatók hozzá. Szerepkörök, például közreműködői és ahhoz való olvasóra rendelkező más felhasználók társadminisztrátorként nem adható hozzá.
 
+> [!TIP]
+> Csak kell hozzáadnia a "Tulajdonos" fiók a közös rendszergazdaként, ha a felhasználónak van szüksége az Azure klasszikus üzembe helyezés kezelése. Minden más célra RBAC használatát javasoljuk.
+
 1. Még nem tette meg, ha valaki egy olyan tulajdonost, a fenti utasításokat követve adja hozzá.
-2. **Kattintson a jobb gombbal** a tulajdonosa, az előzőekben adott hozzá, és válassza **közös rendszergazdaként Hozzáadás**. Ha nem látja a **közös rendszergazdaként Hozzáadás** lehetőségét, friss az oldalon, vagy próbálkozzon egy másik böngészőben. 
+2. **Kattintson a jobb gombbal** a tulajdonosa, az előzőekben adott hozzá, és válassza **közös rendszergazdaként Hozzáadás**. Ha nem látja a **közös rendszergazdaként Hozzáadás** lehetőségét, frissítse az oldalt, vagy próbálkozzon egy másik böngészőben. 
 
-     ![Képernyőkép a társadminisztrátoraként hozzáadása](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
-
-    >[!TIP]
-    >Kell hozzáadnia a "Tulajdonos" fiók a közös rendszergazdaként, ha a felhasználónak van szüksége az Azure-szolgáltatások kezelése [a klasszikus Azure portálon](https://manage.windowsazure.com/).
+    ![Képernyőkép a társadminisztrátoraként hozzáadása](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
 
     Eltávolítja a közös rendszergazdai jogosultsággal, **kattintson a jobb gombbal** "Közös rendszergazda" felhasználói és válassza ki **közös rendszergazda eltávolítása**.
 
@@ -58,7 +68,7 @@ Csak egy olyan tulajdonost társadminisztrátoraként adhatók hozzá. Szerepkö
 
 ## <a name="change-the-service-administrator-for-an-azure-subscription"></a>Módosítsa az Azure-előfizetés szolgáltatás-rendszergazda
 
-Csak a Fiókadminisztrátor az előfizetés szolgáltatás-rendszergazda módosíthatja. Alapértelmezés szerint amikor regisztrál, a szolgáltatás-rendszergazda megegyezik a fiók-rendszergazdaként.
+Csak a Fiókadminisztrátor az előfizetés szolgáltatás-rendszergazda módosíthatja. Alapértelmezés szerint amikor regisztrál, a szolgáltatás-rendszergazda megegyezik a fiók-rendszergazdaként. Ha a szolgáltatás-rendszergazda egy másik felhasználó módosul, majd a Fiókadminisztrátor elveszítette a hozzáférését az Azure-portálhoz. Azonban a Fiókadminisztrátor mindig segítségével Account Center módosíthatja a szolgáltatás-rendszergazda vissza a saját magukat.
 
 1. Győződjön meg arról, hogy a forgatókönyv által támogatott a [vonatkozó szolgáltatás-rendszergazdák módosítása](#limits).
 1. Jelentkezzen be [Account Center](https://account.windowsazure.com/subscriptions) fiók rendszergazdaként.
@@ -74,7 +84,7 @@ Csak a Fiókadminisztrátor az előfizetés szolgáltatás-rendszergazda módos�
 
 ### <a name="limitations-for-changing-service-administrators"></a>Szolgáltatás-rendszergazdák módosítása vonatkozó korlátozások
 
-* Az Azure AD-címtár minden előfizetés tartozik. A könyvtárat, az előfizetéshez társított találja, a [a klasszikus Azure portálon](https://manage.windowsazure.com/), jelölje be **beállítások** > **előfizetések**. Ellenőrizze az előfizetés-azonosító található a könyvtárban.
+* Az Azure AD-címtár minden előfizetés tartozik. A könyvtárat, az előfizetéshez társított találja, [ **előfizetések**](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), majd válasszon ki egy előfizetést tekintse meg a könyvtárban.
 * Ha jelentkezett be a munkahelyi vagy iskolai fiókkal, a más fiókokat is hozzáadhat a szolgáltatás-rendszergazdaként a szervezetében. Például abby@contoso.com adhat hozzá bob@contoso.com , szolgáltatás-rendszergazda nem adható hozzá, de john@notcontoso.com kivéve, ha john@notcontoso.com rendelkezik-e a contoso.com directory jelenlétét. Munkahelyi vagy iskolai fiókok bejelentkezve felhasználók továbbra is vegye fel a Microsoft Account felhasználók szolgáltatás-rendszergazdaként.
 
   | Bejelentkezési módszer | Adja hozzá a Microsoft Account felhasználó rendszergazdai (SA)? | Adja hozzá a munkahelyi vagy iskolai fiókjával társításként ugyanazon a szervezeten belül? | Adja hozzá a munkahelyi vagy iskolai fiókjával társításként másik vállalatnál? |
@@ -84,28 +94,28 @@ Csak a Fiókadminisztrátor az előfizetés szolgáltatás-rendszergazda módos�
 
 ## <a name="change-the-account-administrator-for-an-azure-subscription"></a>A Fiókadminisztrátor az Azure-előfizetés módosítása
 
-A Fiókadminisztrátor az előfizetés módosításához lásd [egy másik fiókot az Azure-előfizetés tulajdonjogának átruházása](billing-subscription-transfer.md).
+A Fiókadminisztrátor a felhasználót, hogy kezdetben az Azure-előfizetésre iratkozott fel, és az előfizetés számlázási tulajdonosaként felelős. A Fiókadminisztrátor az előfizetés módosításához lásd [egy másik fiókot az Azure-előfizetés tulajdonjogának átruházása](billing-subscription-transfer.md).
 
 <a name="check-the-account-administrator-of-the-subscription"></a>
 
 **Nem biztos benne, aki a fiók rendszergazdájához?** Kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [előfizetések megtekintéséhez az Azure portálon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Látogasson el [ **előfizetések** Azure-portálon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Válassza ki az előfizetést, és ellenőrizze, majd keresse meg a **beállítások**.
-1. Válassza ki **tulajdonságok**. A fiókadminisztrátor az előfizetés jelenik meg a **Fiókadminisztrátor** mezőbe.  
+1. Válassza ki **tulajdonságok**. A Fiókadminisztrátor az előfizetés jelenik meg a **Fiókadminisztrátor** mezőbe.  
 
-## <a name="types-of-azure-admin-accounts"></a>Az Azure rendszergazdai fiókok típusai
+## <a name="types-of-classic-subscription-admins"></a>Klasszikus előfizetés rendszergazdái típusai
 
- Fiók rendszergazdájához, szolgáltatás-rendszergazda és társadminisztrátoraként háromféle a Microsoft Azure-ban rendszergazdai szerepkörrel. A következő táblázat ismerteti ezeket három rendszergazdai szerepkörök közötti különbség.
+ Fiók rendszergazdájához, szolgáltatás-rendszergazda és társadminisztrátoraként háromféle a hagyományos előfizetés rendszergazdai szerepköröket az Azure-ban. A fiók, amellyel regisztráció az Azure automatikusan a a fiók rendszergazdájához, és a szolgáltatás rendszergazdája állítja. Ezt követően további Társrendszergazdák lehet hozzáadni. A következő táblázat ismerteti ezeket három rendszergazdai szerepkörei pontos különbségei. 
 
-| Rendszergazdai szerepkör | Korlát | Leírás |
+> [!TIP]
+> A vezérlő jobb és a részletes hozzáféréskezelést azt javasoljuk, Azure szerepköralapú hozzáférés-vezérlés (RBAC), amely lehetővé teszi a felhasználóknak adható hozzá több szerepkört. További tudnivalókért lásd: [Azure Active Directory szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md).
+
+| Hagyományos előfizetés-adminisztrátor | Korlát | Leírás |
 | --- | --- | --- |
-| A Fiókadminisztrátor (AA) |1 / Azure-fiók |Ez az a személy, aki regisztrált a vásárolt Azure-előfizetések és elérésére jogosult a [Account Center](https://account.azure.com/Subscriptions) és különféle felügyeleti feladatok elvégzésére. Például előfizetések létrehozása, előfizetések megszakítja, módosítsa az előfizetés számlázási, és módosítsa a szolgáltatás-rendszergazda. |
-| Szolgáltatás-rendszergazdai (SA) |1 / Azure-előfizetés |Ezt a szerepkört a szolgáltatások kezelésére jogosult a [Azure-portálon](https://portal.azure.com). Alapértelmezés szerint egy új előfizetés a fiók rendszergazdájához is a szolgáltatás rendszergazdájával. |
-| A társadminisztrátoraként (CA) a [a klasszikus Azure portálon](https://manage.windowsazure.com) |200 előfizetésenként |Ez a szerepkör ugyanazokkal a hozzáférési jogosultságokkal rendelkezik, mint a szolgáltatás-rendszergazda, de nem módosíthatja az előfizetések és az Azure-címtárak közötti társítást. |
-
-Az Azure Active Directory szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi a felhasználóknak adható hozzá több szerepkört. További információkért lásd: [Azure Active Directory szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).
-
+| A Fiókadminisztrátor (AA) |1 / Azure-fiók |Ez az az Azure-előfizetésre iratkozott fel, és elérésére jogosult felhasználó a [Account Center](https://account.azure.com/Subscriptions) és különféle felügyeleti feladatok elvégzésére. Például hozzon létre új előfizetések, előfizetések megszakítja, módosítsa az előfizetés számlázási és módosítsa a szolgáltatás-rendszergazda. A Fiókadminisztrátor fogalmilag, az előfizetés számlázási tulajdonosa. Az RBAC a fiók rendszergazdájához nincs hozzárendelve szerepkör.|
+| Szolgáltatás-rendszergazdai (SA) |1 / Azure-előfizetés |Ezt a szerepkört a szolgáltatások kezelésére jogosult a [Azure-portálon](https://portal.azure.com). Alapértelmezés szerint egy új előfizetés a fiók rendszergazdájához is a szolgáltatás rendszergazdájával. Az RBAC a tulajdonosi szerepkört kap a a szolgáltatás-rendszergazda az előfizetés hatókörben.|
+| Társadminisztrátoraként (CA) |200 előfizetésenként |Ez a szerepkör ugyanazokkal a hozzáférési jogosultságokkal rendelkezik, mint a szolgáltatás-rendszergazda, de nem módosíthatja az előfizetések és az Azure-címtárak közötti társítást. Az RBAC a tulajdonosi szerepkört kap az előfizetési hatókört közös rendszergazdájának.|
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>További információ az erőforrás hozzáférés-vezérlés és az Active Directory
 

@@ -12,19 +12,19 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 05/10/2017
+ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: ae60cb03d9777b607a6df77155d7f50faaab1de1
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: ddbfe11e4415e1c240914142f4daf54b3032f5d8
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Az Azure Cosmos DB: A Graph API a .NET fejlesztés
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez az oktatóanyag azt mutatja be, az Azure portál használatával egy Cosmos-DB Azure-fiók létrehozása és egy grafikonon adatbázis és a tároló létrehozása. Az alkalmazás ezután létrehoz egy egyszerű közösségi hálózati használatával négy személyekkel a [Graph API](graph-sdk-dotnet.md) (előzetes verzió), akkor lép át, és lekérdezi a graph használatával Gremlin.
+Ez az oktatóanyag azt mutatja be, az Azure portál használatával egy Cosmos-DB Azure-fiók létrehozása és egy grafikonon adatbázis és a tároló létrehozása. Az alkalmazás ezután létrehoz egy egyszerű közösségi hálózati használatával négy személyekkel a [Graph API](graph-sdk-dotnet.md), majd halad át, és a graph használatával Gremlin lekérdezi.
 
 Ez az oktatóanyag ismerteti a következő feladatokat:
 
@@ -270,7 +270,7 @@ Ha az alkalmazást már nem használja, a következő lépések használatával 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban ezt a következők:
 

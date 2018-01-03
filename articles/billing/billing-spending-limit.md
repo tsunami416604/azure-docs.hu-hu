@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/08/2017
+ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: 9313f3bd09b24db8e33b1f89eb5aebea871605b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d222300a591bcba556be5813ada2de555d25a1f0
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Azure-korlátozás és annak eltávolításáról költségeik ismertetése
 
@@ -48,8 +48,10 @@ Az alábbi lépéseket követve távolíthatja el a költségkeretet:
 
 1. Jelentkezzen be a [Account Center](https://account.windowsazure.com/Subscriptions).
 1. Válasszon egy előfizetést.
-1. Ha az előfizetés le van tiltva, mert elérte a költségkeret maximumát, kattintson az értesítés: "Előfizetés elérte a Költségkeretét és díjak elkerülése végett letiltottuk." Ellenkező esetben kattintson a **költségkeret eltávolítása** a a **ELŐFIZETÉS ÁLLAPOTÁT** területen.
+. Ha az előfizetés le van tiltva, mert elérte a költségkeret maximumát, kattintson az értesítés: "Előfizetés elérte a Költségkeretét és díjak elkerülése végett letiltottuk." Ellenkező esetben kattintson a **költségkeret eltávolítása** a a **ELŐFIZETÉS ÁLLAPOTÁT** területen.
 1. Válasszon egy Önnek megfelelő lehetőséget.
+
+![A költségkeret távolítsa el a megfelelő beállítás kiválasztása](./media/billing-spending-limit/remove-spending-limit.PNG)
 
 |Beállítás|Következmény|
 |-------|-----|
@@ -80,8 +82,10 @@ Nem tudunk egyéni korlátokat ma töltenek. Azonban a naplózott a [számlázá
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>A költségkeret maximumát akadályozza a díjak megfizetése az Azure-ból?
 
-Néhány [Microsoft-szolgáltatások és a külső vállalati arculattal szolgáltatások](billing-understand-your-azure-marketplace-charges.md) is függő díj terheli alatt a fizetési módot, még akkor is, ha a költségkeret maximumát be van állítva. Ilyen például a Visual Studio licencek, a prémium szintű Azure Active Directory, a támogatási csomagokat, és a legtöbb külső vállalati arculattal szolgáltatások értékesített keresztül a [Azure piactér](https://azure.microsoft.com/marketplace/).
+[Egyes külső szolgáltatások közzététele az Azure piactéren](billing-understand-your-azure-marketplace-charges.md) nem használható az előfizetési kreditek, és külön költségek is fel Önnek, akkor is, ha a költségkeret maximumát van beállítva. Ilyen például a Visual Studio licencek, a Azure Active Directory premium, a támogatási csomagokat és a legtöbb külső vállalati arculattal szolgáltatások. Ha egy új külső szolgáltatás kiépítése, figyelmeztetés jelenik meg arról, hogy a szolgáltatások külön vannak számlázva:
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+![Piactér-beszerzési figyelmeztetés](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
+
+## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 
 Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.

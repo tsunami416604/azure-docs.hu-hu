@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: 5797d8db5f82d1c7edbb67f8e2335a5c0be21882
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 0bc0551259e47cdbd74d323d8d9877c74dd64c4b
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -38,7 +38,7 @@ Ha egy DocumentDB API-fiókkal, most már rendelkezik egy SQL API-fiókot, a sz�
 
 ### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Mi történt Azure DocumentDB szolgáltatás?
 
-Az Azure DocumentDB szolgáltatás most az Azure Cosmos DB szolgáltatás részét képezi, és akkor jelentkezik, az SQL API formájában. A Azure documentdb használatával készített alkalmazások szemben Azure Cosmos DB SQL API módosítások nélkül fog futni. Emellett Azure Cosmos DB támogatja, a Graph API-val (előzetes verzió), a tábla API, a MongoDB API és a Cassandra API (előzetes verzió).
+Az Azure DocumentDB szolgáltatás most az Azure Cosmos DB szolgáltatás részét képezi, és akkor jelentkezik, az SQL API formájában. A Azure documentdb használatával készített alkalmazások szemben Azure Cosmos DB SQL API módosítások nélkül fog futni. Emellett Azure Cosmos DB támogatja, a Graph API-val, a tábla API, a MongoDB API és a Cassandra API (előzetes verzió).
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Mik az Azure Cosmos DB jellemző használati esetei?
 Azure Cosmos DB jó választás az új webes, mobil-, játék- és IoT-alkalmazásokhoz, ahol automatikus méretezési, kiszámítható teljesítményt, gyors ezredmásodperces válaszidők sorrendje, illetve a lekérdezés képessége sémamentes adatok azért fontos. Az Azure Cosmos DB adatmodelljeinek gyors fejlesztést és az azt támogató alkalmazás-adatmodellek folyamatos ismétlését. Felhasználó által létrehozott tartalmakat és adatokat kezelő alkalmazások [Azure Cosmos DB gyakori alkalmazási esetei](use-cases.md). 
@@ -95,7 +95,7 @@ Azure Cosmos DB próbálja előfizetések a következő feltételek vonatkoznak:
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB beállítása
 ### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Do I regisztrálás módja az Azure Cosmos DB?
-Azure Cosmos DB érhető el az Azure portálon. Először regisztráljon az Azure-előfizetésre. Most jelentkezett, miután az Azure-előfizetéshez egy SQL API-t, a Graph API-val (előzetes verzió), a tábla API, a MongoDB API vagy a Cassandra API-fiók adhat.
+Azure Cosmos DB érhető el az Azure portálon. Először regisztráljon az Azure-előfizetésre. Most jelentkezett, miután az Azure-előfizetéshez egy SQL API-t, a Graph API-val, a tábla API, a MongoDB API vagy a Cassandra API-fiók adhat.
 
 ### <a name="what-is-a-master-key"></a>Mi a főkulcs?
 A főkulcs egy biztonsági jogkivonat, amellyel egy fiók összes erőforrása elérhető. A főkulccsal rendelkező egyének olvasási és írási hozzáférés az adatbázis-fiókot az összes erőforrást. Legyen körültekintő főkulcsok terjesztésekor. Az elsődleges és másodlagos főkulcsok érhetők el a **kulcsok** panel a [Azure-portálon][azure-portal]. Kulcsokkal kapcsolatos további információkért lásd: [megtekintése, másolása és újragenerálása hívóbetűk](manage-account.md#keys).
@@ -414,14 +414,14 @@ Az Azure Table storage és Azure Cosmos DB tábla API használ az azonos SDK-k, 
 ### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api"></a>Miért tegye I get halmozódni létrehozásához táblák számos egymás után a tábla API meg?
 Azure Cosmos-adatbázis az SLA-alapú rendszerek késés, teljesítményt, rendelkezésre állási és konzisztencia biztosítja biztosító. Mivel a kiépített rendszert, ezek a követelmények biztosításához erőforrások foglalja le. Táblázatok létrehozása a gyors aránya észlelt és szabályozva. Azt javasoljuk, hogy tekintse meg a táblák létrehozását aránya, és csökkentése a kevesebb mint 5 percenként. Ne feledje, hogy a tábla API kiépített rendszer. A kiépítése, hamarosan kész kezdve látni fogja azt kell fizetnie. 
 
-## <a name="develop-against-the-graph-api-preview"></a>A Graph API (előzetes verzió) ellen fejlesztése
-### <a name="how-can-i-apply-the-functionality-of-graph-api-preview-to-azure-cosmos-db"></a>Hogyan alkalmazhatók az Graph API-val (előzetes verzió) funkcióit Azure Cosmos DB?
-Egy bővítmény könyvtár segítségével alkalmazhat a Graph API-val (előzetes verzió) funkcióit. Ezt a szalagtárat a Microsoft Azure diagramjait nevezik, és a NuGet érhető el. 
+## <a name="develop-against-the-graph-api"></a>A Graph API elleni fejlesztése
+### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>Hogyan lehet alkalmazni Azure Cosmos DB Graph API működését?
+Egy bővítmény könyvtár segítségével alkalmazhat a Graph API működését. Ezt a szalagtárat a Microsoft Azure diagramjait nevezik, és a NuGet érhető el. 
 
 ### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>Úgy tűnik, a Gremlin graph átjárás nyelv támogatott. Biztosítani kívánja a lekérdezés további formáit hozzáadása?
 Igen, tervezzük adja hozzá a jövőben más mechanizmusok lekérdezéshez. 
 
-### <a name="how-can-i-use-the-new-graph-api-preview-offering"></a>Hogyan használhatók a Graph API-val (előzetes verzió) az új ajánlat? 
+### <a name="how-can-i-use-the-new-graph-api-offering"></a>Hogyan használhatók az új Graph API-val elérhető? 
 Először végezze el a [Graph API](../cosmos-db/create-graph-dotnet.md) gyors üzembe helyezési cikk.
 
 <a id="cassandra"></a> 

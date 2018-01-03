@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 3480fbbecf59fe985103fe39ec27fef2668b3c0a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 02a027845e56407bc8cc95f54a46d9534cb6de92
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Az Azure Search értékkorlátozás szűrő létrehozása 
 
@@ -33,7 +33,7 @@ Jellemzőalapú navigációs szolgál a lekérdezési eredmények keresési alka
 
 Értékkorlátozás dinamikus és lekérdezés visszaadott. Keresési válaszok velük kapcsolja a értékkorlátozó kategóriákat használatával keresse meg az eredményeket. Ha nem ismeri a Decimal típushoz, a következő példa olyan bemutatásáért jellemzőalapú navigációs szerkezetben.
 
-  ![](./media/search-filters/facet-nav.png)
+  ![](./media/search-filters-facets/facet-nav.png)
 
 Most ismerkedik jellemzőalapú navigációs és a kívánt több részletességi? Lásd: [jellemzőalapú navigációs megvalósítható az Azure Search](search-faceted-navigation.md).
 
@@ -127,7 +127,7 @@ A dimenzió navigációs az Azure Search kihívásai egyike, hogy létezik-e ér
 
 Bár ez egy gyakori használati eset, nincs valamit a jellemzőalapú navigációs szerkezetben out-of-az-box tartalmaz. A fejlesztők számára statikus értékkorlátozás általában két szűrt lekérdezések kiállításával áthidalni a korlátozást: egyet az eredmények hatókörét, a másik navigációs célokra értékkorlátozás statikus listájának létrehozásához használt.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Az Azure Search szűrők](search-filters.md)
 + [Index REST API-t létrehozni](https://docs.microsoft.com/rest/api/searchservice/create-index)

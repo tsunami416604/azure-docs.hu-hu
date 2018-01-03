@@ -12,13 +12,13 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4a2ac24442c425e1c2f2e81badef5dbd3a8dcf5e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 108ae4a66d2c13906cd0892b6c8ee5b20c3ca605
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service-preview"></a>Kiépítés eszközök Azure IoT Hub eszköz kiépítése szolgáltatáshoz (előzetes verzió)
+# <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub eszköz kiépítése szolgáltatáshoz kiépítés-eszközök
 A Microsoft Azure integrált nyilvános felhőszolgáltatások minden IoT megoldás igényeinek széles skáláját biztosítja. Az IoT Hub-kiépítés szolgáltatást az IoT-központ, amely lehetővé teszi, hogy nulla érintéssel, közvetlenül az időponthoz kötött kiépítése a jobb oldali IoT hub emberi beavatkozás nélkül engedélyezése az ügyfelek számára a kiépítés több millió eszközök biztonságos és skálázható módon telepíthetők a segítő szolgáltatás módon.
 
 ## <a name="when-to-use-device-provisioning-service"></a>Mikor érdemes használni az eszköz kiépítése szolgáltatáshoz
@@ -111,14 +111,14 @@ Az eszköz kiépítése szolgáltatáshoz sok terület érhető el. Azt a meglé
 ## <a name="quotas"></a>Kvóták
 Minden Azure-előfizetéssel rendelkezik alapértelmezett kvótát, amely jelentős hatással lehet az IoT-megoldásból körét. A jelenlegi korlát előfizetésenként alapon előfizetésenként 10 eszköz kiépítése szolgáltatások.
 
-További részletekért a kvótakorlát:
+További információ a kvótakorlátozásokról:
 
-* [Azure-előfizetés szolgáltatásra vonatkozó korlátozások](../azure-subscription-service-limits.md)
+* [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../azure-subscription-service-limits.md)
 
-## <a name="related-azure-components"></a>Az Azure kapcsolódó összetevők
+## <a name="related-azure-components"></a>Kapcsolódó Azure-összetevők
 Az eszköz kiépítése szolgáltatáshoz automatizálja az Azure IoT-központ az eszközök kiépítését. További információ [IoT-központ](https://docs.microsoft.com/azure/iot-hub/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már rendelkezik az Azure IoT-eszközök kiépítés áttekintése. A következő lépés egy végpontok közötti IoT forgatókönyv kipróbálásához.
 > [!div class="nextstepaction"]
 > [Az Azure-portálon az IoT Hub eszköz kiépítése szolgáltatáshoz beállítása](quick-setup-auto-provision.md)

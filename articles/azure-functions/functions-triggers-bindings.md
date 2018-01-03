@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: e3413c9e1055ca9198dae4a467bcf47372ad4ecb
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: ab5550ee0c057c9abc4b706929d780a495aaff65
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 Az Azure Functions lehetővé teszi a kód válaszul Azure-ban és egyéb szolgáltatások események írása keresztül *eseményindítók* és *kötések*. Ez a cikk eseményindítók elméleti áttekintését és kötések az összes támogatott programozási nyelveket. Funkciókat, amelyek megegyeznek az összes kötését dokumentum ismerteti.
@@ -410,7 +410,11 @@ module.exports = function (context, info) {
 
 C# és egyéb .NET-nyelveket, használhat egy imperatív kötés mintát, szemben a deklaratív kötések *function.json*. Imperatív kötés akkor hasznos, ha a kötési paraméterekhez kell számítani a Tervező helyett futásidejű időpontban. További tudnivalókért lásd: [imperatív kötéseken keresztül futásidőben kötés](functions-reference-csharp.md#imperative-bindings) a C# fejlesztői útmutatóban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="functionjson-file-schema"></a>Function.JSON fájl séma
+
+A *function.json* fájl séma érhető el: [http://json.schemastore.org/function](http://json.schemastore.org/function).
+
+## <a name="next-steps"></a>További lépések
 Egy adott kötés további információkért tekintse meg a következő cikkeket:
 
 - [HTTP és webhookok](functions-bindings-http-webhook.md)
@@ -419,7 +423,7 @@ Egy adott kötés további információkért tekintse meg a következő cikkeket
 - [Blob Storage](functions-bindings-storage-blob.md)
 - [Table Storage](functions-bindings-storage-table.md)
 - [Event Hub](functions-bindings-event-hubs.md)
-- [Szolgáltatásbusz](functions-bindings-service-bus.md)
+- [Service Bus](functions-bindings-service-bus.md)
 - [Azure Cosmos DB](functions-bindings-documentdb.md)
 - [Microsoft Graph](functions-bindings-microsoft-graph.md)
 - [SendGrid](functions-bindings-sendgrid.md)

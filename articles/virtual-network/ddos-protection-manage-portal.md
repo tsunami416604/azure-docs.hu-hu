@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 019d4ba9124173a7de555c46d32881ecf639a34c
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 958533079c0e0864ff0e561ad865114ef2a415a8
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelése Azure DDoS védelem szabványos az Azure portál használatával
 
@@ -31,21 +31,21 @@ Megtudhatja, hogyan engedélyezése és elosztott szolgáltatásmegtagadásos (D
 ## <a name="enable-ddos-protection-standard---new-virtual-network"></a>DDoS védelem szabványos – új virtuális hálózat engedélyezése
 
 1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-2. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+2. Kattintson a **hozzon létre egy erőforrást** az Azure portál bal felső sarokban.
 3. Válassza ki **hálózati**, majd válassza ki **virtuális hálózati**.
-4. Virtuális hálózat létrehozása a kiválasztott beállításokkal. Virtuális hálózatok létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy virtuális hálózatot](virtual-networks-create-vnet-arm-pportal.md). A *DDoS-védelem*, kattintson a **engedélyezve**, és kattintson a **létrehozása**.
+4. Virtuális hálózat létrehozása a kiválasztott beállításokkal. Virtuális hálózatok létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy virtuális hálózatot](virtual-networks-create-vnet-arm-pportal.md). A **DDoS-védelem**, kattintson a **engedélyezve**, és kattintson a **létrehozása**. Ha nem lát **DDoS-védelem**, ennek valószínű oka az, hogy az előfizetés nincs regisztrálva a szolgáltatást. Meg kell adnia a [regisztrációs](http://aka.ms/ddosprotection), és értesítést kap, hogy az előfizetés engedélyezve van a szolgáltatás számára, mielőtt **DDoS-védelem** jelenik meg.
 
     ![Virtuális hálózat létrehozása](./media/ddos-protection-manage-portal/ddos-create-vnet.png)   
 
     > [!WARNING]
-    > A régió kiválasztásakor válassza a listából egy támogatott régióban [Azure DDoS védelem szabványos áttekintése](ddos-protection-overview.md).
+    > A régió kiválasztásakor válassza a listából egy támogatott régióban [Azure DDoS védelem szabványos áttekintése](ddos-protection-overview.md). Ha nem adja meg egy támogatott régióban, a virtuális hálózat létrehozása sikertelen lesz.
 
     Figyelmeztetés jelzi, hogy DDoS-védelem engedélyezése terhel. Nincsenek terhelések a DDoS védelem előzetes felmerülő. Díjak általánosan rendelkezésre álló gyakorisága. 30 napos értesítés díjakat és általánosan rendelkezésre álló elindítása előtt fog kapni.
 
 ## <a name="enable-ddos-protection-standard---existing-virtual-network"></a>DDoS védelem Standard - meglévő virtuális hálózat engedélyezése 
 
 1. Kattintson a **virtuális hálózatok** az az Azure-portál menüjében, majd válassza ki a virtuális hálózat.
-2. Kattintson a **DDoS-védelem**, kattintson a **engedélyezve** a a *DDoS-védelem* képernyőn, és kattintson a **mentése**. 
+2. Kattintson a **DDoS-védelem**, kattintson a **engedélyezve** a a *DDoS-védelem* képernyőn, és kattintson a **mentése**. Ha nem lát **DDoS-védelem**, ennek valószínű oka az, hogy az előfizetés nincs regisztrálva a szolgáltatást. Meg kell adnia a [regisztrációs](http://aka.ms/ddosprotection), és értesítést kap, hogy az előfizetés engedélyezve van a szolgáltatás számára, mielőtt **DDoS-védelem** jelenik meg. 
 
     > [!WARNING]
     > A virtuális hálózati léteznie kell egy támogatott régióban. A támogatott régiók listáját lásd: [Azure DDoS védelem szabványos áttekintése](ddos-protection-overview.md).
@@ -99,7 +99,7 @@ A mérték nevének jelenlegi különböző csomagtípusok és bájt csomagok, �
 - **Továbbított címke nevét (pl.: bejövő továbbított csomagok DDoS)**: a DDoS rendszer, hogy a cél VIP – nem szűrt forgalmat továbbított csomagok száma.
 - **Nincs címke nevét (például: bejövő csomagok DDoS):** a háttértisztítás rendszerbe – a csomagok összege képviselő kapott csomagok száma dobva, és továbbítja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További tudnivalók az Azure diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [A Naplóelemzési az Azure storage naplóinak elemzése](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

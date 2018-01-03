@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 85d6ec20fb0447165c672ba267569994e3a96e45
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: bc5b97192e0d4ad896d6d74a8745a3866d053a25
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Kérdések az Azure VM Backup szolgáltatással kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure VM Backup összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -29,7 +29,7 @@ A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan �
 A Recovery Services-tárolók mindkét modellt támogatják.  Mind a klasszikus (azaz a klasszikus portálon létrehozott), mind a Resource Manager-alapú (azaz az Azure Portalon létrehozott) virtuális gépekről készíthet biztonsági mentést egy Recovery Services-tárolóba.
 
 ### <a name="what-configurations-are-not-supported-by-azure-vm-backup"></a>Milyen konfigurációk nem támogatottak az Azure virtuális gép biztonsági mentése?
-Lépkedjen végig [támogatott operációs rendszerek](backup-azure-arm-vms-prepare.md#supported-operating-system-for-backup) és [korlátozásai a virtuális gép biztonsági mentése](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
+Lépkedjen végig [támogatott operációs rendszerek](backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup) és [korlátozásai a virtuális gép biztonsági mentése](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>Miért nem látom a virtuális gépemet a Biztonsági mentés konfigurálása varázslóban?
 A biztonsági mentés varázslóban konfigurálása Azure Backup szolgáltatás csak felsorolja képező virtuális gépek:

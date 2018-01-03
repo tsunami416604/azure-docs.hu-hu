@@ -14,14 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: f961ef253fd090d3f064c9da5950d5eab6547e61
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d89e51e61b52e7337b8faf28f42944ec29f1b94f
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
 Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD Connect Health új szolgáltatásait és funkcióit. Ez a cikk felsorolja a kiadott szolgáltatások és verziókat.
+
+## <a name="december-2017"></a>2017. december
+**Ügynök frissítése:**
+
+*   Az Azure AD Connect Health-ügynök az AD DS (3.0.145.0 verzió)
+  1. Ügynök rendelkezésre állással kapcsolatos fejlesztések 
+  2. A hozzáadott új ügynök hibaelhárítási parancsok
+  3. Hibajavításokat tartalmaz, és általános fejlesztések
+*   Az Azure AD Connect Health-ügynök az AD FS (3.0.145.0 verzió)
+  1. A hozzáadott új ügynök hibaelhárítási parancsok
+  2. Ügynök rendelkezésre állással kapcsolatos fejlesztések 
+  3. Hibajavításokat tartalmaz, és általános fejlesztések
+
+## <a name="july-2017"></a>2017. július
+**Ügynök frissítése:**
+
+*   Az Azure AD Connect Health-ügynök az AD DS (3.0.68.0 verzió)
+  1. Hibajavításokat tartalmaz, és általános fejlesztések
+  2. Szuverén felhő támogatása
+*   Az Azure AD Connect Health-ügynök az AD FS (3.0.68.0 verzió)
+  1. Hibajavításokat tartalmaz, és általános fejlesztések
+  2. Szuverén felhő támogatása
+
+## <a name="april-2017"></a>2017. április      
+**Ügynök frissítése:**
+
+*   Az Azure AD Connect Health-ügynök az AD FS (3.0.12.0 verzió)
+  1. Hibajavításokat tartalmaz, és általános fejlesztések
+*   Az Azure AD Connect Health-ügynök az AD DS (3.0.12.0 verzió)
+  1. Teljesítményszámlálók feltöltése fejlesztései
+  2. Hibajavításokat tartalmaz, és általános fejlesztések
 
 ## <a name="october-2016"></a>2016. október
 **Ügynök frissítése:**
@@ -94,6 +125,6 @@ Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD
 * Alkalmazások, hiba típusok stb szerint csoportosítva AD FS-kiszolgáló a sikertelen kérelmek trendeket.
 * Egyszerűbb ügynök központi telepítése az Azure AD globális rendszergazda hitelesítő adataival.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ [a helyszíni identitás infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben](active-directory-aadconnect-health.md).
 

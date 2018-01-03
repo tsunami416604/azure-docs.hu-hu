@@ -1,4 +1,4 @@
-A [User Voice](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) fórumon visszajelzést adhat az Azure Media Services szolgáltatásról, és javaslatokat tehet annak javítására. Közvetlenül be is léphet az alábbi kategóriák valamelyikébe:
+A [User Voice](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) fórumon visszajelzést adhat az Azure Media Services szolgáltatásról, és javaslatokat tehet annak javítására. Is lépjen közvetlenül az alábbi kategóriák valamelyikébe:
 
 * [Azure Media Player](https://feedback.azure.com/forums/169396-media-services/category/109320-azure-media-player/)
 * [Client SDK libraries (Ügyféloldali SDK-könyvtárak)](https://feedback.azure.com/forums/169396-media-services/category/144435-client-sdks/)

@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2016
+ms.date: 12/28/2017
 ms.author: eugenesh
-ms.openlocfilehash: 60ca696a6fa8f277a13875c39b44577c4b38c92a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 40b7f1f4f75d389a64329e7d8fd3c7feb79d5e55
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Az Azure Search-indexelőt, blob CSV blobok indexelő
 Alapértelmezés szerint [blob Azure Search-indexelőt](search-howto-indexing-azure-blob-storage.md) elemez szöveg blobok szöveg egyetlen adattömb jelölik. Azonban a CSV-adatokat tartalmazó BLOB, gyakran szeretné kezelni a blob, különálló dokumentumként soronként. Például adja a következő tagolt szöveget: 
@@ -32,7 +32,7 @@ Alapértelmezés szerint [blob Azure Search-indexelőt](search-howto-indexing-az
 Ebben a cikkben megismerheti, hogyan elemzése az Azure Search blob indexelő CSV blobok lesz. 
 
 > [!IMPORTANT]
-> Ez a funkció jelenleg előzetes verzió. Csak a REST API verziójával érhető el **2015-02-28-előzetes**. Adjon ne feledje, az előzetes API-k tesztelésében és értékelésében készült, és nem használható üzemi környezetben. 
+> Ez a szolgáltatás jelenleg csak előzetes verzióban érhető el. Csak a REST API verziójával érhető el **2015-02-28-előzetes**. Adjon ne feledje, az előzetes API-k tesztelésében és értékelésében készült, és nem használható üzemi környezetben. 
 > 
 > 
 
@@ -52,7 +52,12 @@ Blobok nem tartalmaznak egy kezdeti fejlécsort, ha a fejlécek az indexelő kon
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-Jelenleg csak az UTF-8 kódolást használata támogatott. Továbbá csak a vesszővel `','` utasításként támogatott, az elválasztó karaktert. Ha segítségre más kódolások vagy elválasztó karaktert, tudassa velünk, a [a UserVoice webhelyén](https://feedback.azure.com/forums/263029-azure-search).
+Az elválasztó karakter használatával testre szabhatja a `delimitedTextDelimiter` konfigurációs beállítás. Példa:
+
+    "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
+
+> [!NOTE]
+> Jelenleg csak az UTF-8 kódolást használata támogatott. Ha segítségre más kódolás, tudassa velünk, a [a UserVoice webhelyén](https://feedback.azure.com/forums/263029-azure-search).
 
 > [!IMPORTANT]
 > A tagolt szövegfájl elemzése mód használata esetén Azure Search azt feltételezi, hogy az adatforrás összes BLOB lesz-e a fürt megosztott kötetei szolgáltatás. Ha támogatja a megosztott Fürtkötet, valamint nem CSV-blobok vegyesen ugyanarra az adatforrásra van szüksége, tudassa velünk, a [a UserVoice webhelyén](https://feedback.azure.com/forums/263029-azure-search).

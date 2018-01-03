@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: genli;markgal;
-ms.openlocfilehash: db92fdcdad6f6a81d749fd7648d48da53c21479f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ad98262af8ccebcc71013f1aac24eaa0b80a7c3b
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure biztonsági mentési hiba elhárítása: ügynök és/vagy kiterjesztés problémái
 
@@ -70,14 +70,14 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 ## <a name="the-specified-disk-configuration-is-not-supported"></a>A megadott lemezkonfiguráció nem támogatott.
 
 > [!NOTE]
-> Biztonsági mentések rendelkező virtuális gépek támogatásához a private Preview verziójára kell > nem felügyelt 1 TB-os lemezeken. A részletekért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
+> Rendelkezünk egy privát előzetes verzióval olyan virtuális gépek biztonsági mentésének támogatásához, amelyeknél a nem felügyelt lemezek mérete meghaladja az 1 TB-ot. A részletekért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
 >
 >
 
 Azure Backup szolgáltatás jelenleg nem támogatja lemezméret [1023GB-nál nagyobb](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm). 
-- Ha a lemez 1 TB-nál nagyobb [új lemez csatolása](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) 1 Terabájtnál kisebb ezek <br>
-- Ezután másolja újonnan létrehozott lemez(ek) 1 TB-nál kisebb méretű lemez 1TB-nál nagyobb az adatokat. <br>
-- Győződjön meg arról, hogy minden adat másolta, és távolítsa el a nagyobb, mint 1 TB-os lemezeken
+- 1 TB-nál nagyobb lemez esetén [csatlakoztasson új lemezeket](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal), melyek mérete nem haladja meg az 1 TB-ot. <br>
+- Ezt követően másolja át az 1 TB-nál nagyobb lemez adatait az újonnan létrehozott, 1 TB-ot nem meghaladó lemez(ek)re. <br>
+- Ellenőrizze, hogy az összes adatot átmásolta-e, és válassza le az 1 TB-ot meghaladó lemezeket.
 - A biztonsági mentése
 
 ## <a name="causes-and-solutions"></a>Okait és megoldásait
@@ -100,7 +100,7 @@ A probléma megoldása érdekében próbálkozzon az alábbi módszerek valamely
 1. Ha korlátozásait a hálózati hely (például a hálózati biztonsági csoport) található, a forgalmat a HTTP-proxy kiszolgáló telepítése
 2. Engedélyezi az Internet elérését a HTTP-proxy kiszolgáló, a szabályok hozzáadása a hálózati biztonsági csoporthoz, ha rendelkezik ilyennel.
 
-Megtudhatja, hogyan állíthat be egy HTTP-proxy a virtuális gép biztonsági mentésekhez, lásd: [készítse elő a környezetet a biztonsági mentése Azure virtuális gépek](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups).
+Megtudhatja, hogyan állíthat be egy HTTP-proxy a virtuális gép biztonsági mentésekhez, lásd: [készítse elő a környezetet a biztonsági mentése Azure virtuális gépek](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 Abban az esetben felügyelt lemezt használ, szükség lehet egy további port (8443) nyitása a tűzfalon a.
 

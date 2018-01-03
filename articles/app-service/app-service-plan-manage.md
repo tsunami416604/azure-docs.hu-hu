@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 5369946b1e8a4851ee940cf6fe91a1bdb94db5f3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 61179c5bf29ed2c338b45ba909ec01237806cf26
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Az Azure App Service-csomagot kezelése
 
-Egy [App Service-csomag](azure-web-sites-web-hosting-plans-in-depth-overview.md) biztosít az erőforrások egy App Service alkalmazást kell futtatni. Ez az útmutató útmutató bemutatja, hogyan kezelheti az App Service-csomag. 
+Egy [App Service-csomag](azure-web-sites-web-hosting-plans-in-depth-overview.md) biztosít az erőforrások egy App Service alkalmazást kell futtatni. Ez az útmutató útmutató bemutatja, hogyan kezelheti az App Service-csomag.
 
 ## <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
@@ -69,6 +69,8 @@ Válassza ki **módosítás App Service-csomag** a folyamat elindításához.
 
 ![App Service-csomag választó.][change]
 
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
+
 Minden egyes tervnek a saját IP-címek. Például áthelyezése egy helyet a **szabad** a réteg a **szabványos** réteg, lehetővé teszi, hogy a szolgáltatások és erőforrások rendelt minden alkalmazás a **szabványos** réteg. Azonban egy alkalmazást egy magasabb rétegzett tervből áthelyezése egy alacsonyabb rétegzett terv azt jelenti, hogy már nem bizonyos szolgáltatások eléréséhez. Az alkalmazás, amely nem érhető el a célként megadott tervben szolgáltatást használja, ha hibaüzenet jelenik meg, mely szolgáltatásokat, amely nincs használatban van. Például, ha az alkalmazások SSL-tanúsítványokat használ, előfordulhat, hogy a hibaüzenet jelenik: `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`ebben az esetben kell a célként megadott terv az árképzési szint növelheti **alapvető** vagy újabb verzióját, vagy el kell távolítania az összes SSL-kapcsolatok az alkalmazás, a továbblépés előtt az alkalmazást a cél-csomagra.
 
 ## <a name="move-an-app-to-a-different-region"></a>Az alkalmazások áthelyezése egy másik régióban található
@@ -95,7 +97,7 @@ Az App Service-csomag az utolsó alkalmazás törlésekor váratlan díjak elker
 > [!IMPORTANT]
 > **App Service-csomagok** , amelyek nem találhatók alkalmazások hozzájuk társított továbbra is függő díj terheli, mivel azok továbbra is a konfigurált Virtuálisgép-példányok lefoglalni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Vertikális felskálázás egy alkalmazást az Azure-ban](web-sites-scale.md)

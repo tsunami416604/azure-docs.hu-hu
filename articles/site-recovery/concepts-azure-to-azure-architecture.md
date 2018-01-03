@@ -1,29 +1,21 @@
 ---
-title: "Tekintse át az Azure virtuális gépek Azure-régiók közötti replikáció architektúrája |} Microsoft Docs"
+title: "Azure Site Recovery architektúrájáról Azure az Azure-bA replikációs |} Microsoft Docs"
 description: "Ez a cikk a összetevők és használható, ha az Azure virtuális gépek replikálása az Azure Site Recovery szolgáltatással Azure-régiók közötti architektúra áttekintése."
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 12/08/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 8251534b2e1e0d223f5e1df5dbd33831604615cb
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: b37af3462a58f4418653d0e1b2300b5805e0a864
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Azure-az Azure-bA replikációs architektúrája
 
 
-Ez a cikk ismerteti, architektúrájának és folyamatainak használható, ha a replikálása, feladatátvétele és helyreállítása Azure virtuális gépek (VM) közötti Azure-régiók, használja a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
+Ez a cikk ismerteti a használható, ha a replikálása, feladatátvétele és helyreállítása Azure virtuális gépek (VM) használó Azure régiók közötti architektúra a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
 
 >[!NOTE]
 >A Site Recovery szolgáltatásban az Azure virtuális gép replikációs jelenleg előzetes verzió.
@@ -45,7 +37,7 @@ A következő ábra egy Azure virtuális környezetben (a példában az USA kele
 
 ### <a name="step-1"></a>1. lépés
 
-Ha engedélyezi az Azure virtuális gép replikációs, az alábbi erőforrások automatikusan létrejönnek a cél régióban forrás régió beállításai alapján. Testre szabhatja a cél erőforrások beállításokat szükség szerint. 
+Ha engedélyezi az Azure Virtuálisgép-replikációt, az alábbi erőforrások automatikusan létrejönnek a cél a régióban, a forrás régió beállításai alapján. Testre szabhatja a cél erőforrások beállításokat szükség szerint.
 
 ![Engedélyezze a replikálási folyamat, 1. lépés](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
 
@@ -53,7 +45,7 @@ Ha engedélyezi az Azure virtuális gép replikációs, az alábbi erőforrások
 --- | ---
 **Cél-erőforráscsoport** | Az erőforráscsoport, amelybe a replikált virtuális gépek a feladatátvételt követően tartoznak.
 **Virtuális hálózati cél** | A virtuális hálózatot, amelyben replikált virtuális gépek a feladatátvétel után. A hálózatleképezés jön létre a forrás és cél virtuális hálózatok között, és ez fordítva is igaz.
-**Gyorsítótár-storage-fiókok** | Mielőtt a forrás virtuális gépek változásai replikálódnak a cél tárfiókkal, ezeket nyomon követheti és a gyorsítótár storage-fiókot a célhely számára küldött. Ez biztosítja, hogy a virtuális gépen az üzemi alkalmazások gyakorolt minimális hatás mellett.
+**Gyorsítótár-storage-fiókok** | Ahhoz a forrás virtuális gép változásai replikálódnak a cél tárfiókkal, ezeket nyomon követheti és a gyorsítótár tárfiók a forráshely küldött. Ez a lépés biztosítja a virtuális Gépen futó termelési alkalmazások gyakorolt minimális hatás mellett.
 **Cél storage-fiókok**  | Storage-fiók, amelyhez a rendszer replikálja az adatokat a célhelyre.
 **Cél rendelkezésre állási csoportok**  | Rendelkezésre állási készletek, amelyek a replikált virtuális gépek a feladatátvétel után.
 
@@ -67,8 +59,17 @@ Replikálás engedélyezve van, mint a Site Recovery bővítmény mobilitási sz
 
    ![Engedélyezze a replikálási folyamat, 2. lépés](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
 
-  
- A Site Recovery soha nem kell a VM bejövő kapcsolatot. Csak kimenő kapcsolatra van szükség, a Site Recovery szolgáltatás URL-címek vagy IP-címek, az Office 365 authentication URL-címek vagy IP-címek és a gyorsítótár tárolási fiók IP-címek.
+
+ A Site Recovery soha nem kell a VM bejövő kapcsolatot. Csak a kimenő kapcsolat a következőkre van szükség.
+
+ - Site Recovery szolgáltatás URL-címek vagy IP-címek
+ - Az Office 365 authentication URL-címek vagy IP-címek
+ - Gyorsítótár tárolási fiók IP-címek
+
+Ha engedélyezi a virtuális Gépre kiterjedő konzisztencia, a replikációs csoport gépek kommunikálhatnak egymással 20004 porton keresztül. Ellenőrizze, hogy nem blokkolja-e a belső kommunikáció 20004 porton keresztül a virtuális gépek közötti tűzfal készüléket.
+
+> [!IMPORTANT]
+Ha azt szeretné, hogy a Linux virtuális gépek a replikációs csoport részeként, győződjön meg arról, a kimenő adatforgalmat a port 20004 manuálisan megnyitott állapotokban az adott Linux verzió útmutatást.
 
 ### <a name="step-3"></a>3. lépés
 
@@ -80,7 +81,6 @@ Kezdeményezzen feladatátvételt, ha a virtuális gépek létrehozása a célk�
 
 ![Feladatátvételi folyamat](./media/concepts-azure-to-azure-architecture/failover.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse át a támogatási mátrix oktatóanyag az Azure virtuális gép replikáláshoz másodlagos régióba.
-Futtassa a feladatátvételi és a feladat-visszavétel.
+[Gyorsan replikálja](azure-to-azure-quickstart.md) egy Azure virtuális gép távoli másodlagos régióba.

@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 52015dc2f8450bb1af1587df8c0ccc3bda3c9db8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a2a55a6ad6a721a39c9f064aad817f841dd3235
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Az Azure Active Directory hozzáférés-vezérlési szolgáltatásban közös hozzáférésű Jogosultságkód engedélyezési áttelepítése
 
-A Service Bus alkalmazások korábban rendelkezett kiválaszthatja, hogy két különböző engedélyezési modell használatával: a [közös hozzáférésű Jogosultságkód (SAS)](service-bus-sas.md) token modell, közvetlenül a Service Bus által biztosított, és egy összevont modell ahol kezeléséhez az engedélyezési szabályok által kezelt belül a [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS), és az ACS-től kapott jogkivonatok kerülnek átadásra a Service Bus, amelyek engedélyezik a kívánt funkciók.
+A Service Bus alkalmazások korábban volt kiválaszthatja, hogy két különböző engedélyezési modell használatával: a [közös hozzáférésű Jogosultságkód (SAS)](service-bus-sas.md) token modell, közvetlenül a Service Bus által biztosított, és egy összevont modell ahol kezeléséhez az engedélyezési szabályok által kezelt belül a [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS), és az ACS-től kapott jogkivonatok kerülnek átadásra a Service Bus, amelyek engedélyezik a kívánt funkciók.
 
 Az ACS-engedélyezési modellt hosszú újabbra cserélték [SAS engedélyezési](service-bus-authentication-and-authorization.md) modellt, valamint az összes dokumentációját, útmutatás és példák kizárólag használja SAS ma. Ezenkívül az már nem lehet létrehozni új Service Bus-névterek ACS van párosítva.
 
@@ -59,7 +59,7 @@ Ezen új és további konfigurációja SAS helyben a meglévő névtér, amely �
 
 SAS-szabályok nem célja, hogy fiókokat, de megnevezett aláírási kulcsokat, társított jogosultságok. Ilyen forgatókönyvek, amelyben az alkalmazás számos szolgáltatás-identitások hoz létre, és megadja számára hozzáférési jogosultsággal több entitások, vagy a teljes névtér továbbra is szükséges a jogkivonat-kiállító közvetítő. Ezt úgy szerezheti be által ilyen köztes útmutatást [lépjen kapcsolatba az ügyfélszolgálattal](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Service Bus-hitelesítéssel kapcsolatos további tudnivalókért lásd a következő témaköröket:
 

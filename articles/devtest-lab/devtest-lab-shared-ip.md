@@ -3,7 +3,7 @@ title: "Megosztott IP-címek az Azure DevTest Labs megértése |} Microsoft Docs
 description: "Ismerje meg, hogyan Azure DevTest Labs megosztott IP-címeket használó minimalizálása érdekében a nyilvános IP-címek, a labor virtuális gépek eléréséhez szükséges."
 services: devtest-lab
 documentationcenter: na
-author: camsoper
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2017
-ms.author: casoper
-ms.openlocfilehash: 9f6e1980bf5ea5b41da98a135d89f1c5159921a7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 921db397a9a30a102d47d5e6c379e98daba6e5c5
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Megosztott IP-címek az Azure DevTest Labs ismertetése
 
@@ -50,7 +50,7 @@ Virtuális gép megosztott IP engedélyezve és az alhálózati ad hozzá, amiko
 
 - **Windows-felhasználók:** válassza ki a **Connect** gomb az Azure portál egy előre konfigurált RDP-fájl letöltésére, és a virtuális gép eléréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Labor házirendeket definiálhat az Azure DevTest Labs szolgáltatásban](devtest-lab-set-lab-policy.md)
 * [A Azure DevTest Labs szolgáltatásban virtuális hálózat konfigurálása](devtest-lab-configure-vnet.md)

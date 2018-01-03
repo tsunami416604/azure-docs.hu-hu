@@ -1,6 +1,6 @@
 ---
-title: "Az Event Hubs Namespace Azure diagnosztikai naplók adatfolyam |} Microsoft Docs"
-description: "Útmutató az Azure diagnosztikai naplók az Event Hubs névtérhez adatfolyamként történő küldéséhez."
+title: "Adatfolyam-Azure diagnosztikai naplók az eseményközpontba |} Microsoft Docs"
+description: "Útmutató az Azure diagnosztikai naplók az eseményközpontba adatfolyamként történő küldéséhez."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 12/22/2017
 ms.author: johnkem
-ms.openlocfilehash: 01ba8ddfcf90e1368ac147296fd180f99420d96f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bcb9fcb2371217e7082d96ddbba4a095e6d9a00f
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="stream-azure-diagnostic-logs-to-an-event-hubs-namespace"></a>Az Event Hubs Namespace Azure diagnosztikai naplók adatfolyam
-**[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható bármely alkalmazás a beépített "Exportálás az Event Hubs" beállítás használatával, a portálon, vagy egy diagnosztikai beállítás, az Azure PowerShell-parancsmagok vagy Azure parancssori felület használatával a Service Bus Szabályazonosító engedélyezésével közel valós időben.
+# <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Az adatfolyam Azure diagnosztikai naplók az eseményközpontba
+**[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható közel valós idejű bármely alkalmazás a beépített "Exportálás az Event Hubs" beállítás használatával, a portálon, vagy a központi engedélyezési szabály eseményazonosító keresztül az Azure diagnosztikai beállítás engedélyezésével PowerShell-parancsmagok vagy Azure CLI-t.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Mi mindent diagnosztikai naplók és az Event Hubs
 Az alábbiakban néhány módszereket, akkor előfordulhat, hogy az adatfolyam-továbbítási képesség a diagnosztikai naplók:
 
-* **Adatfolyam-bejegyzéseit, amelyek a 3. fél naplózása és telemetriai rendszerek** – adott idő alatt, az Event Hubs streaming lesz a mechanizmust, amely a diagnosztikai naplók külső siem-ektől a csövön keresztüli, valamint naplófájl-elemzési megoldásokat.
+* **Adatfolyam-bejegyzéseit, amelyek a 3. fél naplózása és telemetriai rendszerek** – is adatfolyam formájában a diagnosztikai naplók cső napló az adatokat egy külső SIEM- vagy naplófájl elemzőeszköz egy eseményközpontba.
 * **Szolgáltatás állapotának megtekintéséhez a Power bi szolgáltatásba "forró path" adatok folyamatos** – az Event Hubs használatával, a Stream Analytics és a Power BI, könnyen átalakíthatja a diagnosztikai adatokat a valós idejű elemzése az Azure-szolgáltatások a közelében. [A dokumentációs cikket tartalmaz az Event Hubs beállítása, a Stream Analytics adatok feldolgozása és kimenetként használata a Power bi kiváló áttekintést nyújt](../stream-analytics/stream-analytics-power-bi-dashboard.md). Az alábbiakban néhány tippek a diagnosztikai naplók első beállítása:
   
   * Az eseményközpontok a diagnosztikai naplók kategóriájú automatikusan jön létre, jelölje be a beállítást, a portálon, vagy engedélyezze a PowerShell segítségével, így szeretné kiválasztani az event hubs kezdetű névvel névtér **insights -**.
@@ -52,7 +52,7 @@ Adatfolyamként való küldése a diagnosztikai naplók programozott módon, a p
 > 
 > 
 
-A Service Bus vagy az Event Hubs névtér nem kell lennie a naplók kibocsátó mindaddig, amíg a beállítás konfigurálása felhasználó hozzáfér megfelelő RBAC mindkét előfizetéshez erőforrás ugyanahhoz az előfizetéshez.
+Az Event Hubs névtér nem kell lennie a naplók kibocsátó mindaddig, amíg a beállítás konfigurálása felhasználó hozzáfér megfelelő RBAC mindkét előfizetéshez erőforrás ugyanahhoz az előfizetéshez.
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Az adatfolyam diagnosztikai naplókat a portálon
 1. A portál Azure figyelő keresse meg és kattintson a **diagnosztikai beállítások**
@@ -73,11 +73,11 @@ A Service Bus vagy az Event Hubs névtér nem kell lennie a naplók kibocsátó 
    
    ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
     
-   A kijelölt névtér lesz az eseményközpont létre (Ha ez az első alkalommal adatfolyam diagnosztikai naplók) vagy a folyamatos átviteli rendelkező (ha van már erőforrásokat, amelyek ehhez a névtérhez napló kategória vannak streaming), és a házirend határozza meg az adatfolyam-továbbítási mechanizmus jogosultságai. Napjainkban az eseményközpontba streaming engedélyekkel kell rendelkeznie kezelése, a Küldés és a figyelés. Hozzon létre, vagy az Event Hubs névtér megosztott hozzáférési házirendek a portálon az konfigurálása lapon módosítsa a névtér. Ezek a diagnosztikai beállítások frissítéséhez az ügyfél a ListKey engedéllyel kell rendelkeznie az Event Hubs engedélyezési szabályt.
+   A kijelölt névtér lesz az eseményközpont létre (Ha ez az első alkalommal adatfolyam diagnosztikai naplók) vagy a folyamatos átviteli rendelkező (ha van már erőforrásokat, amelyek ehhez a névtérhez napló kategória vannak streaming), és a házirend határozza meg az adatfolyam-továbbítási mechanizmus jogosultságai. Napjainkban az eseményközpontba streaming engedélyekkel kell rendelkeznie kezelése, a Küldés és a figyelés. Hozzon létre, vagy az Event Hubs névtér megosztott hozzáférési házirendek a portálon az konfigurálása lapon módosítsa a névtér. Ezek a diagnosztikai beállítások frissítéséhez az ügyfél a ListKey engedéllyel kell rendelkeznie az Event Hubs engedélyezési szabályt. Opcionálisan megadhat egy eseményközpont neveként. Ha megad egy eseményközpont neveként, naplók adott eseményközpont helyett egy újonnan létrehozott eseményközpont napló kategóriánként legyenek átirányítva.
 
 4. Kattintson a **Save** (Mentés) gombra.
 
-Néhány másodpercen belül az új beállítás jelenik meg az ehhez az erőforráshoz beállítások listáját, és diagnosztikai naplók részére, hogy a tárfiókot, amint létrejön az új esemény-adatokat.
+Néhány másodpercen belül az új beállítás jelenik meg az ehhez az erőforráshoz beállítások listáját, és diagnosztikai naplók részére, hogy az event hubs, amint létrejön az új esemény-adatokat.
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell-parancsmagok használatával
 Adatfolyamként keresztül a [Azure PowerShell-parancsmagok](insights-powershell-samples.md), használhatja a `Set-AzureRmDiagnosticSetting` parancsmag ezekkel a paraméterekkel:
@@ -86,7 +86,7 @@ Adatfolyamként keresztül a [Azure PowerShell-parancsmagok](insights-powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -ServiceBusRuleId [your Service Bus rule ID] -Enabled $true
 ```
 
-A Service Bus Szabályazonosító: karakterlánc a következő formátumban: `{Service Bus resource ID}/authorizationrules/{key name}`, például `/subscriptions/{subscription ID}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/{Service Bus namespace}/authorizationrules/RootManageSharedAccessKey`.
+A Service Bus Szabályazonosító: karakterlánc a következő formátumban: `{Service Bus resource ID}/authorizationrules/{key name}`, például `/subscriptions/{subscription ID}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/{Service Bus namespace}/authorizationrules/RootManageSharedAccessKey`. Jelenleg nem választhat egy adott eseményközpont neveként a PowerShell használatával.
 
 ### <a name="via-azure-cli"></a>Az Azure parancssori felület használatával
 Adatfolyamként keresztül a [Azure CLI](insights-cli-samples.md), használhatja a `insights diagnostic set` ehhez hasonló parancsot:
@@ -95,7 +95,7 @@ Adatfolyamként keresztül a [Azure CLI](insights-cli-samples.md), használhatja
 azure insights diagnostic set --resourceId <resourceID> --serviceBusRuleId <serviceBusRuleID> --enabled true
 ```
 
-A Service Bus Szabályazonosító ugyanazt a formátumot használja, a PowerShell-parancsmag leírtak szerint.
+A Service Bus Szabályazonosító ugyanazt a formátumot használja, a PowerShell-parancsmag leírtak szerint. Jelenleg nem választhat egy adott eseményközpont neveként az Azure parancssori felület segítségével.
 
 ## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Hogyan Eseményközpontokból származó napló adatokat felhasználó?
 Minta kimenet Eseményközpontokból származó adatokat a következő:
@@ -176,7 +176,7 @@ Megtekintheti az összes erőforrás-szolgáltató, amely támogatja az Event hu
 ## <a name="stream-data-from-compute-resources"></a>Az adatfolyam adatok a számítási erőforrásokat
 Adatfolyam formájában a diagnosztikai naplókat a számítási erőforrásokat, a Windows Azure diagnosztikai ügynök használatával is. [Ebben a cikkben találhat](../event-hubs/event-hubs-streaming-azure-diags-data.md) beállítása, amely a.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További tudnivalók az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
 * [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 

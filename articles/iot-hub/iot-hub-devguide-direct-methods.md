@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/19/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d23bf20e4483b102fe5d946cb017dce1769b39a1
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: f0520e97a8b4f218b87683464d342bf7a08b2383
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Ismertetés és az IoT-központ közvetlen metódusok
 Az IoT-központ lehetővé teszi a felhőből eszközök közvetlen módszerek meghívására. Közvetlen módszerek határoz meg egy kérelem-válasz interakció egy HTTP-hívás hasonló eszközökkel abban, hogy sikeres legyen, vagy közvetlenül (felhasználó által meghatározott időtúllépési) után sikertelen. Ez a megközelítés forgatókönyvekben, ahol azonnali lépéseket, attól függően, hogy képesek válaszolni, például egy SMS ébresztési küld egy eszközt, ha egy eszköz kapcsolat nélküli (SMS drágább, mint egy metódus hívása folyamatban) volt-e az eszköz különböző érdemes használni.
@@ -33,7 +33,7 @@ Közvetlen módszerek hajtsa végre a kérelem-válasz mintát, és úgy van kia
 Tekintse meg [felhő eszközre kommunikációs útmutatást] [ lnk-c2d-guidance] bizonytalan kívánt tulajdonságai között, ha a közvetlen módszer vagy a felhő-eszközre küldött üzenetek.
 
 ## <a name="method-lifecycle"></a>Módszer életciklusa
-Közvetlen módszerek valósíthatók meg az eszközön, és előfordulhat, hogy a módszer hasznos megfelelően példányosítani nulla vagy több bemeneti adatok. A közvetlen módszer keresztül elérhető szolgáltatás URI indításakor (`{iot hub}/twins/{device id}/methods/`). Egy eszköz megkapja közvetlen metódusok eszközspecifikus MQTT témakör keresztül (`$iothub/methods/POST/{method name}/`). Előfordulhat, hogy támogatjuk közvetlen módszerek a további eszközoldali hálózati protokollok a jövőben.
+Közvetlen módszerek valósíthatók meg az eszközön, és előfordulhat, hogy a módszer hasznos megfelelően példányosítani nulla vagy több bemeneti adatok. A közvetlen módszer keresztül elérhető szolgáltatás URI indításakor (`{iot hub}/twins/{device id}/methods/`). Egy eszköz megkapja közvetlen metódusok eszközspecifikus MQTT témakör keresztül (`$iothub/methods/POST/{method name}/`) vagy az AMQP-kapcsolaton keresztül (`IoThub-methodname` és `IoThub-status` alkalmazás tulajdonságai). 
 
 > [!NOTE]
 > Az eszközön közvetlen metódus meghívásakor nevét és értékeit csak tartalmazhat US-ASCII nyomtatható alfanumerikus, kivéve a következő set: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
@@ -75,8 +75,7 @@ A háttér-alkalmazást, amely magában választ kap:
 * *Fejlécek* , amely tartalmazza az ETag, a kérelem azonosítója, tartalomtípus, és a tartalom kódolása
 * A JSON *törzs* a következő formátumban:
 
-   ```
-   {
+   ```   {
        "status" : 201,
        "payload" : {...}
    }
@@ -85,7 +84,8 @@ A háttér-alkalmazást, amely magában választ kap:
    Mindkét `status` és `body` az eszköz által biztosított és a használt szeretne válaszolni az eszköz saját állapotkód és/vagy a leírását.
 
 ## <a name="handle-a-direct-method-on-a-device"></a>Kezeli az eszközön a közvetlen módszer
-### <a name="method-invocation"></a>A metódushívás
+### <a name="mqtt"></a>MQTT
+#### <a name="method-invocation"></a>A metódushívás
 Eszköz megkapja a MQTT témakör közvetlen metódusú kérelmeket:`$iothub/methods/POST/{method name}/?$rid={request id}`
 
 A szervezet, amely az eszköz megkapja a következő formátumban kell megadni:
@@ -99,13 +99,30 @@ A szervezet, amely az eszköz megkapja a következő formátumban kell megadni:
 
 A metóduskérelmek QoS 0.
 
-### <a name="response"></a>Válasz
+#### <a name="response"></a>Válasz
 Az eszköz küld válaszokat `$iothub/methods/res/{status}/?$rid={request id}`, ahol:
 
 * A `status` tulajdonság metódus végrehajtása a megadott eszköz állapotát.
 * A `$rid` tulajdonsága az IoT-központ kapott metódushívás a kérelem azonosítója.
 
 A szervezet az eszköz állítja be, és bármely állapota lehet.
+
+### <a name="amqp"></a>AMQP
+#### <a name="method-invocation"></a>A metódushívás
+Az eszköz közvetlen módszer kéréseket fogad a címe receive hivatkozás létrehozásával`amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
+
+Az AMQP üzenet érkezik a metódus kérelem jelölő receive hivatkozásra. A következőket tartalmazza:
+* A korrelációs azonosító tulajdonsággal, amely tartalmazza a kérelem azonosítója, amely a megfelelő módszer visszajelzéshez kell átadni
+* Egy alkalmazás tulajdonság nevű `IoThub-methodname`, amely tartalmazza a meghívott metódus neve
+* Az AMQP üzenettörzs, a módszer hasznos adatok JSON-ként tartalmazó
+
+#### <a name="response"></a>Válasz
+Az eszköz létrehoz egy küldő hivatkozást a metódusra adott válasz visszaadandó cím`amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
+
+A metódusra adott válasz akkor adja vissza a küldő hivatkozásra, és a következőképpen épül:
+* A korrelációs azonosító tulajdonsággal, amely tartalmazza a kérelem azonosítója a kérelemüzenetben a metódus átadott
+* Egy alkalmazás tulajdonság nevű `IoThub-status`, a felhasználót tartalmazza, amely a megadott metódus állapota
+* Az AMQP üzenettörzs tartalmazó JSON-ként a metódusra adott válasz
 
 ## <a name="additional-reference-material"></a>További referenciaanyag
 Az IoT Hub fejlesztői útmutató más hivatkozás témaköröket tartalmazza:
@@ -116,7 +133,7 @@ Az IoT Hub fejlesztői útmutató más hivatkozás témaköröket tartalmazza:
 * [Az IoT-központ lekérdezési nyelv eszköz twins, feladatok és üzenet útválasztási] [ lnk-query] az IoT-központ lekérdezési nyelv segítségével adatok lekérését az IoT-központ az eszköz twins és feladatok ismertetése.
 * [Az IoT Hub MQTT támogatási] [ lnk-devguide-mqtt] IoT-központ támogatásával kapcsolatos további információkat biztosít a MQTT protokoll.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már rendelkezik megtudta, hogyan közvetlen módszereket használja, a következő cikkben IoT Hub fejlesztői útmutató érdekelt esetleg:
 
 * [Több eszközön feladatok ütemezése][lnk-devguide-jobs]

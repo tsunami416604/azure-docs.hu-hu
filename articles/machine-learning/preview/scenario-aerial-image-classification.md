@@ -3,16 +3,18 @@ title: "Légifelvételes kép besorolás |} Microsoft Docs"
 description: "Útmutatás a valós forgatókönyvekben légifelvételes lemezkép osztályozásra"
 author: mawah
 ms.author: mawah
+manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.topic: article
 ms.service: machine-learning
 services: machine-learning
+ms.workload: data-services
 ms.date: 12/13/2017
-ms.openlocfilehash: 57b81dfb2cb58fb43d4c420e8ce58c0c226316df
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 76c706496b3bcdbc1604661be85dc31000873ad3
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="aerial-image-classification"></a>Légifelvételes kép besorolás
 
@@ -44,7 +46,7 @@ Ebben a példában a kép adatai és pretrained modellek elhelyezni az Azure sto
 
 ![A kép légifelvételes besorolás valós forgatókönyvekben sematikus nézete](media/scenario-aerial-image-classification/scenario-schematic.PNG)
 
-A [részletesen](https://github.com/MicrosoftDocs/azure-docs-pr/tree/release-ignite-aml-v2/articles/machine-learning/) végigvezeti a létrehozása és előkészítése az Azure storage-fiók és a Spark-fürt, beleértve az adatokat átvitel és a függőségi telepítés megkezdéséhez. Majd bemutatják a képzés feladatok elindításához, és hasonlítsa össze az eredményül kapott modellek teljesítményét. Végül azok bemutatják, hogyan lehet alkalmazni a választott modellek egy nagy méretű kép készlet Spark-fürt, és helyileg az előrejelzés eredményeket elemezni.
+Ezek a részletes útmutatók végigvezeti a létrehozása és előkészítése az Azure storage-fiók és a Spark-fürt, beleértve az adatokat átvitel és a függőségi telepítés megkezdéséhez. Majd bemutatják a képzés feladatok elindításához, és hasonlítsa össze az eredményül kapott modellek teljesítményét. Végül azok bemutatják, hogyan lehet alkalmazni a választott modellek egy nagy méretű kép készlet Spark-fürt, és helyileg az előrejelzés eredményeket elemezni.
 
 
 ## <a name="set-up-the-execution-environment"></a>A végrehajtási környezet beállítása
@@ -52,7 +54,7 @@ A [részletesen](https://github.com/MicrosoftDocs/azure-docs-pr/tree/release-ign
 Az alábbi utasításokat ismerteti, hogyan kell beállítani végrehajtási környezetet ebben a példában a folyamatot.
 
 ### <a name="prerequisites"></a>Előfeltételek
-- Egy [Azure-fiók](https://azure.microsoft.com/en-us/free/) (az ingyenes próbaverzió érhetők el)
+- Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverzió érhetők el)
     - Egy HDInsight Spark-fürt 40 munkavégző csomópontokhoz (168 magok teljes) együtt fogja létrehozni. Győződjön meg arról, hogy a fiók rendelkezik-e elegendő rendelkezésre álló magot megtekintésével, a "használati + kvóták" Azure-portálon az előfizetéshez tartozó lapon.
        - Ha kevesebb magok érhető el, módosíthatja a HDInsight fürt sablon kiépített dolgozók számának csökkentéséhez. Ehhez útmutatást "A HDInsight Spark-fürt létrehozása" szakaszban jelennek meg.
     - Ez a minta egy kötegelt AI képzési fürtöt hoz létre két NC6 (1 GPU, 6 vCPU) virtuális gépeket. Ellenőrizze, hogy a fiók számára elegendő rendelkezésre álló magot USA keleti régiójában megtekintésével, a "használati + kvóták" Azure-portálon az előfizetéshez tartozó lapon.
@@ -68,7 +70,7 @@ Az alábbi utasításokat ismerteti, hogyan kell beállítani végrehajtási kö
     - Rekord az ügyfél-azonosító, titkos kulcs és az Azure Active Directory-alkalmazás létrehozásához a rendszer irányítja a bérlő azonosítója. Ezeket a hitelesítő adatokat az oktatóanyag későbbi részében fogja használni.
     - Frissítésétől írásának, Azure Machine Learning-munkaterület és az Azure Batch AI használja az Azure CLI 2.0 külön elágazásokon. Az átláthatóság érdekében a parancssori felület "egy az Azure Machine Learning-munkaterület indítani CLI", a munkaterület verziója és az általános eszköz-verzió (is tartalmazó kötegelt AI) lesz az "Azure CLI 2.0."
 - [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy), egy ingyenes Azure storage-fiókok közötti fájlátvitel összehangolására segédprogram
-    - Gondoskodjon arról, hogy a mappát, amely tartalmazza az AzCopy végrehajtható fájlt a rendszer PATH környezeti változóba. (Érhetők el a környezeti változók módosítani [Itt](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp).)
+    - Gondoskodjon arról, hogy a mappát, amely tartalmazza az AzCopy végrehajtható fájlt a rendszer PATH környezeti változóba. (Érhetők el a környezeti változók módosítani [Itt](https://support.microsoft.com/help/310519/how-to-manage-environment-variables-in-windows-xp).)
 - Egy SSH-ügyfél; ajánlott [PuTTY](http://www.putty.org/).
 
 Ez a példa tesztelték a Windows 10 rendszerű; bármely Windows gépről, beleértve az Azure Data tudományos virtuális gépek futtatható kell lennie. Az Azure CLI 2.0 telepítették egy olyan MSI Csomaghoz, a következők szerint [ezeket az utasításokat](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials). Kisebb módosításokat segítségére lesz szüksége (például filepaths módosításai) ebben a példában a macOS jelentés futtatásakor.
@@ -416,7 +418,7 @@ Ha befejezte a példa, azt javasoljuk, hogy törölje a következő parancs vég
 
 Az Azure Machine Learning-munkaterület segítségével könnyen telepíthető a távoli számítási célokon kódjukat adatszakértőkön. Ebben a példában a helyi MMLSpark képzési kód telepítve lett egy HDInsight-fürt távoli végrehajtás, és egy helyi parancsfájl elindítja az Azure Batch AI GPU fürt képzési feladatot. Az Azure Machine Learning munkaterület tartozó futtatási előzményei szolgáltatás több modell teljesítményétől követni, és segített a legpontosabb modell azonosításának. A munkaterület a Jupyter notebookok szolgáltatás segített jelenítheti meg a modellek előrejelzéseket egy interaktív, grafikus környezetben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Mélyebben elmerülhet az ebben a példában:
 - Az Azure Machine Learning munkaterület futtatása előzmények funkció kattintson a fogaskerék szimbólumok kiválasztásához, mely diagramok és a metrikák jelennek meg.
 - Vizsgálja meg a minta parancsfájlok utasításokra hívja a `run_logger`. Ellenőrizze, hogy megértette minden egyes metrika rögzítésének módját.

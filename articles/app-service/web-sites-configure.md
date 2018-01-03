@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: fd1a8cf442ea0688e027f8f8028ee8b4e149d8d2
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 9ec501d0a4e1c6165b83b5b590b87b0baa284423
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Webalkalmazások konfigurálása az Azure App Service-ben
+
 Ez a témakör ismerteti, hogyan konfigurálhatja a web app használatával a [Azure Portal].
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
@@ -45,6 +46,8 @@ Technikai okokból Java az alkalmazás engedélyezése letiltja a .NET, PHP és 
 
 <a name="platform"></a>
 **Platform**. Választja ki, hogy a webalkalmazás fut, 32 bites vagy 64 bites környezetben. A 64 bites környezet Basic vagy Standard módot igényel. Ingyenes, és megosztott mód mindig 32-bit-es környezetben fusson.
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 **Webes szoftvercsatornák**. Állítsa be **ON** ahhoz, hogy a WebSocket protokoll; például, ha a webes alkalmazás használ [ASP.NET SignalR] vagy [socket.io](https://socket.io/).
 
@@ -78,12 +81,12 @@ A PHP, Python, Java és csomópont alkalmazások ezek a beállítások használh
 
 Például, ha a MySql-kapcsolati karakterlánc lett nevű `connectionstring1`, akkor elérhetőek a környezeti változó `MYSQLCONNSTR_connectionString1`.
 
-### <a name="default-documents"></a>Alapértelmezett dokumentum
+### <a name="default-documents"></a>Alapértelmezett dokumentumok
 Az alapértelmezett dokumentum egy a weblap, akkor jelenik meg, a webhely a gyökér URL-címen.  A listán szereplő első egyező fájlok szolgál. 
 
 Webalkalmazások használhatja a modulok, hogy útvonal URL-címe alapján. ahelyett, hogy nincs alapértelmezett dokumentum ilyen szolgáltató statikus tartalmat, ebben az esetben nincs.    
 
-### <a name="handler-mappings"></a>Kezelőleképezések
+### <a name="handler-mappings"></a>Leírók leképezése
 Ez a terület segítségével egyéni parancsfájl processzorok, a tanúsítványigénylések meghatározott fájlnév-kiterjesztések hozzáadása. 
 
 * **Bővítmény**. A fájl kiterjesztése például *.php vagy handler.fcgi kezelni. 
@@ -120,7 +123,7 @@ A naplófájlban, létre kell hoznia FTP hitelesítő adatokat, az alábbiak sze
 
 ![Telepítési hitelesítő adatok beállítása][configure03]
 
-A teljes FTP-felhasználó neve "app\username" hol *app* a webes alkalmazás neve. A felhasználónév, szerepel a webalkalmazás panelen, a **Essentials**.  
+A teljes FTP-felhasználó neve "app\username" hol *app* a webes alkalmazás neve. A felhasználónév, szerepel a webalkalmazás panelen, a **Essentials**.
 
 ![FTP telepítési hitelesítő adatok][configure02]
 
@@ -151,7 +154,7 @@ További információkért lásd: [Útmutató: webes végpont állapotának figy
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Egyéni tartománynév konfigurálása az Azure App Service-ben]
 * [HTTPS engedélyezése az alkalmazásoknak az Azure App Service-ben]
 * [A webalkalmazás skálázása az Azure App Service-ben]

@@ -16,11 +16,11 @@ ms.date: 06/28/2017
 ms.author: andredm
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff900ef2064c077fe75228c191e580e7531a9aa2
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 3e7c563547f04a16a1059ed709d9ded25d60792f
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök
 Azure szerepköralapú hozzáférés-vezérlés (RBAC) tartalmaz a következő beépített szerepkörök, felhasználók, csoportok és szolgáltatások rendelhető. A beépített szerepkörök definíciója nem módosítható. Azonban létrehozhat [egyéni szerepkörök az Azure RBAC](role-based-access-control-custom-roles.md) a szervezet igényeinek megfelelően.
@@ -43,7 +43,7 @@ Ez a cikk csak a különböző szerepkörök ma foglalkozik. Amikor szerepkör h
 | [API Management szolgáltatás közreműködő](#api-management-service-contributor) |Az API Management szolgáltatás és az API-k kezelhetők |
 | [API Management szolgáltatást üzemeltető szerepkör](#api-management-service-operator-role) | Az API Management szolgáltatást, de nem az API-k maguk kezeléséhez |
 | [API Management szolgáltatás olvasó szerepkört](#api-management-service-reader-role) | Csak olvasási hozzáféréssel az API Management szolgáltatásba és API-k |
-| [Application Insights-összetevővel kapcsolatos közreműködői](#application-insights-component-contributor) |Kezelheti az Application Insights összetevőinek |
+| [Application Insights-összetevővel kapcsolatos közreműködői](#application-insights-component-contributor) |Kezelhet Application Insights-összetevőket |
 | [Automatizálási operátor](#automation-operator) |Indítás, Leállítás, felfüggesztése és folytatása feladatok tudni |
 | [Biztonsági mentési közreműködő](#backup-contributor) | Kezelheti a biztonsági mentés a Recovery Services-tároló |
 | [Biztonságimásolat-felelős](#backup-operator) | Kezelheti a biztonsági mentéshez, kivéve, hogy eltávolítja a biztonsági mentés, a Recovery Services-tároló |
@@ -57,8 +57,8 @@ Ez a cikk csak a különböző szerepkörök ma foglalkozik. Amikor szerepkör h
 | [DNS-zóna közreműködő](#dns-zone-contributor) |Kezelheti a DNS-zónák és rekordok |
 | [A DocumentDB-fiók közreműködői](#documentdb-account-contributor) |Kezelheti az Azure Cosmos DB fiókok |
 | [Intelligens rendszerek fiók közreműködői](#intelligent-systems-account-contributor) |Intelligens rendszerek fiókok is kezelése |
-| Logic App közreműködő | Igen logikai alkalmazás minden szempontjának kezeléséhez, de nem hozzon létre egy újat. |
-| Logic App operátor |Elindíthatók és leállíthatók munkafolyamatok logikai alkalmazás vannak meghatározva. |
+| A logikai alkalmazás közreműködője | Igen logikai alkalmazás minden szempontjának kezeléséhez, de nem hozzon létre egy újat. |
+| Logikai alkalmazás operátora |Elindíthatók és leállíthatók munkafolyamatok logikai alkalmazás vannak meghatározva. |
 | [Figyelési olvasó](#monitoring-reader) |Minden figyelési adatot is olvashat |
 | [A közreműködői figyelése](#monitoring-contributor) |Figyelési adatok olvashatja és figyelési beállításainak szerkesztése |
 | [Hálózati közreműködő](#network-contributor) |Kezelheti az összes hálózati erőforrás |
@@ -101,7 +101,7 @@ Az API Management szolgáltatásokat kezelheti
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el szerepköröket és szerepkör-hozzárendelések |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="api-management-service-operator-role"></a>API Management szolgáltatást üzemeltető szerepkör
+### <a name="api-management-service-operator-role"></a>Az API Management szolgáltatás operátori szerepköre
 Az API Management szolgáltatásokat kezelheti
 
 | **Műveletek** |  |
@@ -121,7 +121,7 @@ Az API Management szolgáltatásokat kezelheti
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el szerepköröket és szerepkör-hozzárendelések |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="api-management-service-reader-role"></a>API Management szolgáltatás olvasó szerepkört
+### <a name="api-management-service-reader-role"></a>Az API Management szolgáltatás olvasói szerepköre
 Az API Management szolgáltatásokat kezelheti
 
 | **Műveletek** |  |
@@ -136,7 +136,7 @@ Az API Management szolgáltatásokat kezelheti
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
 ### <a name="application-insights-component-contributor"></a>Application Insights-összetevők közreműködője
-Kezelheti az Application Insights összetevőinek
+Kezelhet Application Insights-összetevőket
 
 | **Műveletek** |  |
 | --- | --- |
@@ -200,7 +200,7 @@ Kezelheti az összes biztonságimásolat-felügyeleti műveletek, kivéve a Reco
 | Microsoft.Storage/storageAccounts/read | Olvassa el a storage-fiókok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="backup-operator"></a>Biztonságimásolat-felelős
+### <a name="backup-operator"></a>Biztonsági mentési operátor
 Kezelheti az összes biztonságimásolat-felügyeleti műveletek kivételével tárolók, mások biztonsági mentési és amely elérésének létrehozása
 
 | **Műveletek** | |
@@ -358,7 +358,7 @@ Minden tekintheti meg és csatlakozni, a start, újraindítás és leállítás 
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Storage/storageAccounts/listKeys/action |Tárfiókkulcsok listázása |
 
-### <a name="dns-zone-contributor"></a>DNS-zóna közreműködő
+### <a name="dns-zone-contributor"></a>A DNS-zóna közreműködője
 DNS-zónák és rekordok is kezelheti.
 
 | **Műveletek** |  |
@@ -397,7 +397,7 @@ Intelligens rendszerek fiókok is kezelése
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="monitoring-reader"></a>Figyelési olvasó
+### <a name="monitoring-reader"></a>Olvasó figyelése
 Az összes figyelési adatokat (metrikákat, naplói, stb.) el tud olvasni. Lásd még: [Ismerkedés a szerepkörök, engedélyek és biztonsági Azure megfigyelővel](/monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles).
 
 | **Műveletek** |  |
@@ -406,7 +406,7 @@ Az összes figyelési adatokat (metrikákat, naplói, stb.) el tud olvasni. Lás
 | Microsoft.OperationalInsights/workspaces/search/action |Log Analytics-adatok keresése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="monitoring-contributor"></a>A közreműködői figyelése
+### <a name="monitoring-contributor"></a>Közreműködő figyelése
 Összes figyelési adatot olvashatja és szerkesztheti a figyelési beállításokat. Lásd még: [Ismerkedés a szerepkörök, engedélyek és biztonsági Azure megfigyelővel](/monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles).
 
 | **Műveletek** |  |
@@ -522,7 +522,7 @@ Kezelheti a biztonsági összetevők, a biztonsági házirendek és a virtuális
 | Microsoft.Security/* |Biztonsági összetevők és házirendek létrehozása és kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="site-recovery-contributor"></a>Webhely-helyreállítási közreműködő
+### <a name="site-recovery-contributor"></a>Site Recovery-közreműködő
 Összes helyreállítás felügyeleti műveletek, kivéve a Recovery Services-tároló létrehozása és hozzárendelése hozzáférési jogosultsága ahhoz, hogy más felhasználók is kezelése
 
 | **Műveletek** | |
@@ -552,7 +552,7 @@ Kezelheti a biztonsági összetevők, a biztonsági házirendek és a virtuális
 | Microsoft.Storage/storageAccounts/read | Olvassa el a storage-fiókok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="site-recovery-operator"></a>Webhely-helyreállítási operátor
+### <a name="site-recovery-operator"></a>Site Recovery-operátor
 Feladatátvétel és a feladat-visszavétel is, de nem más Site Recovery felügyeleti műveleteket, illetve más felhasználók számára a hozzáférés hozzárendelése
 
 | **Műveletek** | |
@@ -612,7 +612,7 @@ Feladatátvétel és a feladat-visszavétel is, de nem más Site Recovery felüg
 | Microsoft.Storage/storageAccounts/read | Olvassa el a storage-fiókok |
 | Microsoft.Support/* | Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="site-recovery-reader"></a>Webhely-helyreállítási olvasó
+### <a name="site-recovery-reader"></a>Site Recovery-olvasó
 Recovery Services-tárolónak a Site Recovery állapot figyelheti és támogatási jegyek előléptetése
 
 | **Műveletek** | |
@@ -703,7 +703,7 @@ SQL Server-kiszolgálók és adatbázisok, de nem a biztonsági házirendek keze
 
 | **Műveletek** |  |
 | --- | --- |
-| Microsoft.Authorization/*/read |Olvasási engedély |
+| Microsoft.Authorization/*/read |Olvassa el szerepköröket és szerepkör-hozzárendelések |
 | Microsoft.Insights/alertRules/* |Hozzon létre és elemzések riasztási szabályok kezelése |
 | Microsoft.ResourceHealth/availabilityStatuses/read |Az erőforrások állapotának olvasása |
 | Microsoft.Resources/deployments/* |Hozzon létre és erőforrás-csoport központi telepítések felügyeletéhez szükséges |
@@ -751,7 +751,7 @@ Igen storage-fiókok kezeléséhez, de nem érhető el.
 | Microsoft.Storage/storageAccounts/* |Storage-fiókok létrehozása és kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="support-request-contributor"></a>Támogatási kérelem közreműködő
+### <a name="support-request-contributor"></a>Támogatáskérési közreműködő
 Hozhat létre, és az előfizetés hatókörből támogatási jegyek kezelése
 
 | **Műveletek** |  |
@@ -867,7 +867,7 @@ Kezelheti a webhely, de nem a webes terveket, amelyhez csatlakoznak
 | Microsoft.Web/serverFarms/read |Olvassa el a kiszolgálófarmok |
 | Microsoft.Web/sites/* |Létrehozása és kezelése (webhely létrehozása is írási engedélyeket igényel a társított App Service-csomag) webhelyek |
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Szerepköralapú hozzáférés-vezérlés](role-based-access-control-configure.md): az RBAC első lépései az Azure portálon.
 * [Egyéni szerepkörök az Azure RBAC](role-based-access-control-custom-roles.md): megtudhatja, hogyan hozzon létre egyéni szerepkörök az access igényeihez.
 * [Access módosítási előzményeit jelentés létrehozása](role-based-access-control-access-change-history-report.md): nyomon követjük, hogy az RBAC más szerepkörök hozzárendeléséről.

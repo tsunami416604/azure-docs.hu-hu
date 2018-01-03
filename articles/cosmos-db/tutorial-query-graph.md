@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: bf4bb59545ce2d4172cb001d29f5bfc68968d389
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5a635abfa9fa10cd8c8498e3c95a17af997cea3e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-the-graph-api-preview"></a>Azure Cosmos DB: Hogyan lekérdezése Graph API-t (előzetes verzió)?
+# <a name="azure-cosmos-db-how-to-query-with-the-graph-api"></a>Azure Cosmos DB: Hogyan lehet lekérdezni a Graph API-t?
 
-Az Azure Cosmos DB [Graph API](graph-introduction.md) (előzetes verzió) támogatja a [Gremlin](https://github.com/tinkerpop/gremlin/wiki) lekérdezések. Ez a cikk ismerteti a minta dokumentumok és lekérdezések az első lépésekhez. A részletes Gremlin hivatkozás megtalálható a [Gremlin támogatási](gremlin-support.md) cikk.
+Az Azure Cosmos DB [Graph API](graph-introduction.md) támogatja [Gremlin](https://github.com/tinkerpop/gremlin/wiki) lekérdezések. Ez a cikk ismerteti a minta dokumentumok és lekérdezések az első lépésekhez. A részletes Gremlin hivatkozás megtalálható a [Gremlin támogatási](gremlin-support.md) cikk.
 
 Ez a cikk ismerteti a következő feladatokat: 
 
@@ -75,7 +75,7 @@ g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabe
 
 Összetettebb lekérdezések létrehozhatja és hatékony graph átjárás logika Gremlin, beleértve a keverése szűrőkifejezéseket, ismétlési használatával végez használatával valósítja meg a `loop` lépés, és végrehajtási feltételes navigációs használ a `choose` lépés. További információ a teendők [Gremlin támogatási](gremlin-support.md)!
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban ezt a következők:
 

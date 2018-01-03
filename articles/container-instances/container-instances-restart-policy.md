@@ -8,11 +8,11 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: marsma
-ms.openlocfilehash: 3c7c57b05220d1e82c3baa8bc266e02d961a84be
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: a922525970eac9af6657e58daae971912183b369
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="run-a-containerized-task-in-azure-container-instances"></a>Azure-tároló példányok indexelése feladat futtatása
 
@@ -20,7 +20,7 @@ A könnyű és sebességét, a tárolókat az Azure-tároló példányok telepí
 
 Konfigurálható újraindítási házirend megadhatja, hogy ha a folyamat befejeződését, a tárolók vannak-e állítva. Tároló példányok számlázása a második, mert meg van szó, csak a a számítási erőforrásokat, akkor használják, amikor a feladat végrehajtása a tárolóban fut-e.
 
-A be ez a cikk használja az Azure parancssori felület. Rendelkeznie kell Azure CLI 2.0.21 verzió vagy újabb [helyileg telepített](/cli/azure/install-azure-cli), vagy a CLI használata a [Azure Cloud rendszerhéj](../cloud-shell/overview.md).
+A be ez a cikk használja az Azure parancssori felület. Rendelkeznie kell Azure CLI 2.0.21 verzió vagy újabb [helyileg telepített][azure-cli-install], vagy a CLI használata a [Azure Cloud rendszerhéj](../cloud-shell/overview.md).
 
 ## <a name="container-restart-policy"></a>Tároló újraindítási házirend
 
@@ -46,7 +46,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Futtassa a befejezési – példa
 
-A művelet az újraindítási házirend megtekintéséhez a tároló példány létrehozása a [microsoft/aci-wordcount](https://hub.docker.com/r/microsoft/aci-wordcount/) lemezképet, és adja meg a `OnFailure` indítsa újra a házirendet. Ez a példa tároló fut egy Python-parancsfájl kiszolgálószoftverek, alapértelmezés szerint Shakespeare tartozó szövegét [apró település](http://shakespeare.mit.edu/hamlet/full.html), a 10 leggyakoribb szavak írja az STDOUT és majd kilép.
+A művelet az újraindítási házirend megtekintéséhez a tároló példány létrehozása a [microsoft/aci-wordcount] [ aci-wordcount-image] lemezképet, és adja meg a `OnFailure` indítsa újra a házirendet. Ez a példa tároló fut egy Python-parancsfájl kiszolgálószoftverek, alapértelmezés szerint Shakespeare tartozó szövegét [apró település](http://shakespeare.mit.edu/hamlet/full.html), a 10 leggyakoribb szavak írja az STDOUT és majd kilép.
 
 A példa tároló futtassa a következő [az tároló létrehozása] [ az-container-create] parancs:
 
@@ -162,13 +162,17 @@ Kimenet:
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="persist-task-output"></a>A feladat kimenetének megőrzése
 
 Megtudhatja, hogyan megőrizni a kimenetét a tárolókban, hogy lefusson, lásd: [csatlakoztatása az Azure fájlmegosztások Azure tároló osztályt](container-instances-mounting-azure-files-volume.md).
 
-<!-- LINKS -->
+<!-- LINKS - External -->
+[aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/
+
+<!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az_container_logs
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az_container_show
+[azure-cli-install]: /cli/azure/install-azure-cli

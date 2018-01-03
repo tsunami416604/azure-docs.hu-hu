@@ -3,7 +3,7 @@ title: "Kezelheti a labor házirendeket a Azure DevTest Labs szolgáltatásban |
 description: "Megtudhatja, hogyan határozza meg a labor házirendek, például a Virtuálisgép-méretek, minden felhasználó és a leállítási automation maximális virtuális gépeket."
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 7756aa64-49ca-45a0-9f90-0fd101c7be85
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: tarcher
+ms.author: v-craic
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f42baa1ac37f425f915b6949e018f6e7397d3ae
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: c2b71fa5ec2935a25b5fb37770dfb5163a286ded
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Egy Azure DevTest Labs szolgáltatásban található, amikor az összes házirend kezeléséhez
 
@@ -102,12 +102,12 @@ Az automatikus indítási házirend segítségével adja meg, amikor el kell ind
 
 Az engedélyezést követően a házirend nem automatikusan érvényben van a virtuális gépek az aktuális tesztkörnyezetben. Szeretné alkalmazni ezt a beállítást egy adott virtuális Gépet, nyissa meg a virtuális gép felügyeleti ablaktáblán, és módosítsa a **automatikusan elinduló** beállítást.
 
-## <a name="set-expiration-date"></a>Lejárat dátuma
+## <a name="set-expiration-date"></a>Lejárati dátum megadása
 Megadhat egy lejárati dátum, [a virtuális gép létrehozása](devtest-lab-add-vm.md). A **speciális beállítások**, válassza ki a naptár ikonra, és adjon meg egy dátumot, amikor a rendszer automatikusan törli a virtuális Gépet. Alapértelmezés szerint a virtuális Gépet soha nem jár le.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután definiálva, és a tesztkörnyezet a különböző virtuális gép házirend-beállításokat alkalmazza, az alábbiakban ezután próbálja meg a következőkről:
 
 * [Megosztott IP-címek megértéséhez](devtest-lab-shared-ip.md) -ismerteti, hogyan megosztott IP címek szolgálnak a DevTest Labs szolgáltatásban a labor virtuális gépeken való kapcsolódáshoz szükséges nyilvános IP-címek számának minimalizálása érdekében.
@@ -115,5 +115,5 @@ Miután definiálva, és a tesztkörnyezet a különböző virtuális gép házi
   az aktuális hónap megtekintheti a következőre becsült költség-date és a várható befejezési hónap költsége.
 * [Hozzon létre egyéni lemezkép](devtest-lab-create-template.md) – a virtuális gépek létrehozásakor megad egy talál, amely lehet, vagy egy egyéni lemezképet, vagy egy Piactéri lemezképhez. Ez a cikk bemutatja, hogyan egyéni lemezkép létrehozása a VHD-fájl.
 * [Konfigurálja a piactéren elérhető rendszerkép](devtest-lab-configure-marketplace-images.md) – Azure DevTest Labs támogatja az Azure piactéren elérhető rendszerkép alapján virtuális gépek létrehozását. Ez a cikk bemutatja, hogyan határozhatja meg, ha bármely, az Azure piactéren elérhető rendszerkép lehet egy, amikor a virtuális gépek létrehozásakor használt.
-* [Hozzon létre egy virtuális Gépet egy tesztkörnyezetben](devtest-lab-add-vm-with-artifacts.md) -bemutatja, hogyan hozható létre a virtuális gépek alapjául szolgáló lemezképhez (vagy egyéni vagy Marketplace), és hogyan működnek együtt a virtuális gépen.
+* [Hozzon létre egy virtuális Gépet egy tesztkörnyezetben](devtest-lab-add-vm.md) -bemutatja, hogyan hozható létre a virtuális gépek alapjául szolgáló lemezképhez (vagy egyéni vagy Marketplace), és hogyan működnek együtt a virtuális gépen.
 
