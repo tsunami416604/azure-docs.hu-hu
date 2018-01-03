@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 10/24/2017
 ms.author: stevelas
-ms.openlocfilehash: dfab0a371ffb2d8ea52bea2cdcf3d92d6c669a9d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 92df5a37d62dc9731842a4312339aa571072a487
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure-tárolót beállításjegyzék georeplikáció
 
@@ -94,15 +94,15 @@ ACR kezdődik, képek között a konfigurált replikák szinkronizálása. Műve
 
 ## <a name="geo-replication-pricing"></a>A georeplikáció díjszabása
 
-A georeplikáció csak a a [Premium Termékváltozat](container-registry-skus.md#premium) Azure tároló beállításjegyzék. A replikált beállításjegyzékbeli a kívánt területek, Ön tudomásával prémium beállításjegyzék díjak mindegyik régióhoz.
+A georeplikáció csak a a [Premium Termékváltozat](container-registry-skus.md) Azure tároló beállításjegyzék. A replikált beállításjegyzékbeli a kívánt területek, Ön tudomásával prémium beállításjegyzék díjak mindegyik régióhoz.
 
 Az előző példában a Contoso konszolidált le egy, két nyilvántartó replikák hozzáadása USA keleti régiója, Kanada központi és Nyugat-Európa. Contoso négy alkalommal prémium további konfigurációs és felügyeleti nélkül havonta fizetendő. Minden egyes régió most kéri le. a képek helyileg, teljesítmény, a megbízhatóság nélkül hálózati kilépő díjak Kanada USA nyugati régiója és USA keleti régiója.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A georeplikáció kezelheti a regionális adatközpontok egy globális felhők. Különböző sok Azure használnak, előnyeit úgy használhatja ki egy egyetlen felügyeleti vezérlősík gyors hálózati bezárású fenntartva, és megbízható kép: helyi kéri le.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a három részből oktatóanyag adatsorozat [Azure tároló beállításjegyzék georeplikáció](container-registry-tutorial-prepare-registry.md). Georeplikált beállításjegyzékbeli létrehozását, a tároló létrehozása, és majd telepítését egyetlen bízná `docker push` több regionális Web Apps tárolók példányok parancsot.
 

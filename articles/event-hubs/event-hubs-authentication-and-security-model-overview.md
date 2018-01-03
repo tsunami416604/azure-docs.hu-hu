@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2017
+ms.date: 12/20/2017
 ms.author: sethm;clemensv
-ms.openlocfilehash: ffab5b058420d61be17d386a46a29391d5728859
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bfe7b95236c1a5336c1bb3a93d0eb5ca880adabf
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs hitelesítés és a biztonsági modell – áttekintés
 
@@ -106,7 +106,7 @@ A Service Bus jelenlegi verziója nem támogatja a SAS-szabályokat az egyes el�
 
 Egyéni fogyasztói csoportok SAS hitelesítési hiányában a SAS-kulcs segítségével biztonságos minden felhasználói csoport egy közös kulccsal. Ez a megközelítés lehetővé teszi az alkalmazás bármelyik a fogyasztói csoportok eseményközpontban az adatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Event Hubs kapcsolatos további információkért látogasson el a következő témaköröket:
 

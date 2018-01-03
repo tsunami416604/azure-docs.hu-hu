@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: e18645667cfb126ae2f2f9c8074fdcff5a6ade1b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 1988bc7ab5b498db32d7bb40623f1194d7290b94
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Az Azure SQL Database kiszolgáló- és adatbázis tűzfalszabályok 
 
@@ -45,6 +45,10 @@ Az internetről és az Azure-ból érkező kapcsolódási kísérleteknek elősz
 * **Adatbázis-adatbázisszintű tűzfalszabályok:** ezek a szabályok engedélyezi az ügyfelek bizonyos (biztonságos) adatbázisok belül az azonos logikai kiszolgáló eléréséhez. Hozhatja létre ezeket a szabályokat az egyes adatbázisok (beleértve a **fő** adatbázis) és az egyes adatbázisok tárolódnak. Adatbázis-szintű tűzfalszabályok fő- és felhasználói adatbázisok csak hozható létre és kezeli a Transact-SQL-utasítások segítségével, és csak az első kiszolgálószintű tűzfal konfigurálása után. Ha egy olyan IP-címtartományt ad meg az adatbázisszintű tűzfalszabályban, amely kívül esik a kiszolgálószintű tűzfalszabályban megadott tartományon, akkor csak az adatbázisszinten megadott tartományba eső IP-címekkel rendelkező ügyfelek érhetik el az adatbázist. Egy adatbázishoz legfeljebb 128 adatbázisszintű tűzfalszabály adható meg. Az adatbázis-szintű tűzfalszabályok beállítása további információkért lásd: a példa későbbi részében a következő cikket, és tekintse meg [sp_set_database_firewall_rule (Azure SQL-adatbázisok)](https://msdn.microsoft.com/library/dn270010.aspx).
 
 **Javaslat:** A Microsoft a biztonság és az adatbázis hordozhatóságának fokozása érdekében adatbázisszintű tűzfalszabályok használatát javasolja, amikor erre lehetőség van. Kiszolgálószintű tűzfalszabályokat használhat a rendszergazdákra vonatkozóan, vagy ha több, azonos hozzáférési követelményt támasztó adatbázissal rendelkezik, és nem szeretne időt tölteni az egyes adatbázisok egyenként való konfigurálásával.
+
+> [!Important]
+> Windows Azure SQL Database legfeljebb 128 tűzfalszabály.
+>
 
 > [!Note]
 > Az üzletmenet folytonossága és a hordozható adatbázisok közötti kapcsolatról [a vészhelyreállítás hitelesítési követelményeit](sql-database-geo-replication-security-config.md)ismertető cikkből tájékozódhat.
@@ -217,7 +221,7 @@ A következő szempontokat vegye figyelembe, ha a Microsoft Azure SQL Database s
   * Kérje el az internetszolgáltatójától az Azure SQL Database-kiszolgáló eléréséhez használt ügyfélszámítógépeihez társított IP-címtartományt, majd adja meg ezt az IP-címtartományt egy tűzfalszabályként.
   * Állítson be statikus IP-címeket az ügyfélszámítógépei számára, majd adja meg az IP-címeket tűzfalszabályokként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az adatbázis és a kiszolgálószintű tűzfalszabály létrehozása a gyors üzembe helyezési, lásd: [hozzon létre egy Azure SQL-adatbázis](sql-database-get-started-portal.md).
 - Ha nyílt forráskódú vagy külső alkalmazásokból szeretne kapcsolódni az Azure SQL Database-hez, lásd az [SQL Database gyors üzembe helyezési ügyfélkódmintáival](https://msdn.microsoft.com/library/azure/ee336282.aspx) foglalkozó cikket.

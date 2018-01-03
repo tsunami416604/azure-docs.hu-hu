@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: 24b4f92a0a575939d3cf10fc8ec2fe877316f82c
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a6627ab6febc763ae3f1cd464f26ad641f7c717d
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Szolgáltatások & Azure Cloud rendszerhéj Bash eszközei
 
@@ -50,7 +50,7 @@ Fájlok kívüli `$Home` és a gép állapota nem maradnak meg a munkamenetek k�
 
 ## <a name="tools"></a>Eszközök
 
-|Kategória   |Név   |
+|Kategória   |Name (Név)   |
 |---|---|
 |Linux-eszközök            |Bash<br> SH<br> tmux<br> Dig<br>               |
 |Azure-eszközök            |[Az Azure CLI 2.0](https://github.com/Azure/azure-cli) és [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard) <br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) <br> [blobxfer](https://github.com/Azure/blobxfer#blobxfer) |
@@ -59,7 +59,7 @@ Fájlok kívüli `$Home` és a gép állapota nem maradnak meg a munkamenetek k�
 |Buildet            |Ellenőrizze<br> maven<br> npm<br> a pip         |
 |Tárolók             |[A docker parancssori felület](https://github.com/docker/cli)/[Docker gép](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
 |Adatbázisok              |MySQL-ügyfél<br> PostgreSql-ügyfél<br> [Az Sqlcmd segédprogram használatával](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [MSSQL-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Egyéb                  |iPython ügyfél<br> [Felhő Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)|
+|Egyéb                  |iPython ügyfél<br> [Felhő Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/) |
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -72,6 +72,6 @@ Fájlok kívüli `$Home` és a gép állapota nem maradnak meg a munkamenetek k�
 |PowerShell |[6.0 (béta)](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 és 3.5-ös (alapértelmezett)|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md) <br>
 [További tudnivalók az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/)

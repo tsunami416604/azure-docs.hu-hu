@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/07/2017
 ms.author: robb
-ms.openlocfilehash: 001dc1fa2a0fd7e132101944a87be3f8552d8738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c463479b7eaee5a0548c8891dd3a20ef070dd39b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-service-health"></a>Azure Service Health
 Azure szolgáltatás állapota megfelelő időben és személyre szabott kapcsolatos információkat biztosít, ha az Azure-szolgáltatásokban problémák hatással van a szolgáltatások.  Emellett segítséget nyújt küszöbönálló tervezett karbantartási előkészítése.
@@ -57,5 +57,4 @@ Szűrés jelenítse meg az üzleti szempontból kritikus fontosságú előfizet�
 ## <a name="configure-service-health-alerts"></a>Szolgáltatás állapota riasztások konfigurálása
 Az Azure szolgáltatás állapota Azure figyelő riasztást, e-maileket, a szöveges üzenetek és a webhook értesítések, ha az üzleti szempontból kulcsfontosságú erőforrások érintett integrálható. Állítsa be a megfelelő szolgáltatásának állapota esemény napló tevékenység riasztást. Riasztás átirányíthatja az illetékes személyek férhessenek hozzá a szervezet művelet csoportok használatával. További információkért lásd: [riasztásainak konfigurálása szolgáltatásának állapota](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)
 
-# <a name="next-steps"></a>Következő lépések
-Riasztások beállítása, így ügynökállapottal kapcsolatos hibákkal értesítést kap. További információkért lásd: [riasztások konfigurálása a szolgáltatás állapotát](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+ 

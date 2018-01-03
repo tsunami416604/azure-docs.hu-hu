@@ -3,7 +3,7 @@ title: "Csatolása vagy leválasztása a Azure DevTest Labs szolgáltatásban vi
 description: "Megtudhatja, hogyan csatolása vagy leválasztása adatlemezt a Azure DevTest Labs szolgáltatásban virtuális géphez"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 9616bf38-7db8-4915-a32a-e4f40a7a56ad
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: tarcher
-ms.openlocfilehash: 1e156b2baad0d49c21e852a22d3b149e630b3750
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: v-craic
+ms.openlocfilehash: c1f83097fe4e5da3a46f693d37b001dbb6831527
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Csatolása vagy leválasztása adatlemezt a Azure DevTest Labs szolgáltatásban virtuális géphez
 [Azure-lemezeket felügyelt](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) kezeli a virtuális gép adatlemezek társított tárfiókokat. Egy felhasználó nevű új lemezre egy virtuális géphez, típusa és szükséges lemez méretét adja meg, és az Azure hoz létre, és automatikusan kezeli a lemezt. Az adatlemez majd a virtuális gép választható le, és vagy később az azonos virtuális géphez, vagy egy másik virtuális géphez, amely ugyanahhoz a felhasználóhoz tartozik csatolt objektumkörnyezetben.
@@ -104,6 +104,6 @@ Egy nem felügyelt adatlemez frissítéséhez kövesse az ebben a cikkben leírt
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az adatlemezek kezelése [claimable virtuális gépek](devtest-lab-add-claimable-vm.md#unclaim-a-vm).
 

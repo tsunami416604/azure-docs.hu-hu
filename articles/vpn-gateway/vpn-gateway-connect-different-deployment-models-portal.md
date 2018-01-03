@@ -16,17 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2017
 ms.author: cherylmc
 ms.openlocfilehash: 8fd058d74d00ecc980d295ee6bd9680ff832f891
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok csatlakoztatása a különböző üzembe helyezési modellel, a portál használatával
 
 Ez a cikk bemutatja, hogyan csatlakozzon a hagyományos Vneteket erőforrás-kezelő Vnetek engedélyezi a különálló üzembe helyezési modellel egymással kommunikálni található erőforrásokhoz. A cikkben ismertetett elsősorban az Azure-portálon, de ez a konfiguráció a cikk jelöl ki a listában a PowerShell használatával is létrehozhat.
 
 > [!div class="op_single_selector"]
-> * [Portál](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 > 
 > 

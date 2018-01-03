@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4d4b9a0223fe6e48eb5ea9be089239d729aa1ab7
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 4468424a96b4949161218d495dd21f24285430fd
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="run-applications-in-azure-container-service-aks"></a>Alkalmazások futtatásához Azure tároló szolgáltatás (AKS)
 
@@ -21,7 +21,7 @@ Ebben az oktatóanyagban négy nyolc része, egy minta-alkalmazás központi tel
 
 > [!div class="checklist"]
 > * Frissítse a jegyzékfájlt Kubernetes
-> * Futtatja az alkalmazást Kubernetes
+> * Alkalmazás futtatása a Kubernetes rendszerben
 > * Az alkalmazás tesztelése
 
 A következő útmutatókból az alkalmazás van méretezhető, frissítése és az Operations Management Suite a Kubernetes fürt figyelésére konfigurálni.
@@ -32,7 +32,7 @@ Ez az oktatóanyag azt feltételezi, hogy alapszinten megértse, Kubernetes foga
 
 Az előző oktatóanyagokat egy alkalmazás egy tároló lemezképpel csomagolása, ez a Rendszerkép feltöltése Azure tároló beállításjegyzék és Kubernetes fürt létrejött. 
 
-Az oktatóanyag teljesítéséhez szüksége az előre létrehozott `azure-vote-all-in-one-redis.yml` Kubernetes manifest fájlt. Ez a fájl egy korábbi oktatóprogram letöltött alkalmazás forráskódja. Győződjön meg arról, hogy rendelkezik-e klónozták a tárházban, és hogy módosult-könyvtárak a klónozott tárház be.
+Az oktatóanyag teljesítéséhez szüksége az előre létrehozott `azure-vote-all-in-one-redis.yaml` Kubernetes manifest fájlt. Ez a fájl egy korábbi oktatóprogram letöltött alkalmazás forráskódja. Győződjön meg arról, hogy rendelkezik-e klónozták a tárházban, és hogy módosult-könyvtárak a klónozott tárház be.
 
 Ha nem volna ezeket a lépéseket, és szeretné követéséhez, vissza [oktatóanyag 1 – létrehozás tároló képek][aks-tutorial-prepare-app].
 
@@ -49,7 +49,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 A jegyzékfájl lett egy bejelentkezési kiszolgálónevet az előre létrehozott `microsoft`. Szövegszerkesztőben nyissa meg a fájlt. Ebben a példában a fájl a Megnyitás a `vi`.
 
 ```console
-vi azure-vote-all-in-one-redis.yml
+vi azure-vote-all-in-one-redis.yaml
 ```
 
 Cserélje le `microsoft` az ACR bejelentkezési kiszolgáló nevével. Ez az érték megtalálható a sor **47** a jegyzékfájl.
@@ -67,7 +67,7 @@ Mentse és zárja be a fájlt.
 Használja a [kubectl létrehozása] [ kubectl-create] parancsot kell futtatni az alkalmazást. Ez a parancs a jegyzékfájl elemez, és a meghatározott Kubernetes-objektumokat hoz létre.
 
 ```azurecli
-kubectl create -f azure-vote-all-in-one-redis.yml
+kubectl create -f azure-vote-all-in-one-redis.yaml
 ```
 
 Kimenet:
@@ -81,7 +81,7 @@ service "azure-vote-front" created
 
 ## <a name="test-application"></a>Alkalmazás tesztelése
 
-A [Kubernetes szolgáltatás] [ kubernetes-service] jön létre, amely mutatja, hogy az alkalmazás az internethez. A folyamat eltarthat néhány percig. 
+A [Kubernetes szolgáltatás] [ kubernetes-service] jön létre, amely mutatja, hogy az alkalmazás az internethez. Ez eltarthat pár percig. 
 
 Figyelemmel az előrehaladást, használja a [kubectl beolvasása szolgáltatás] [ kubectl-get] parancsot a `--watch` argumentum.
 
@@ -95,7 +95,7 @@ Kezdetben az *azure-vote-front* szolgáltatás *EXTERNAL-IP* értéke *pending* 
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-Egyszer a *külső IP-* cím megváltozott *függőben lévő* való egy *IP-cím*, használjon `CTRL-C` kubectl figyelési megszakításához. 
+Miután az *EXTERNAL-IP* cím *pending* állapotról egy *IP-címre* változik, a `CTRL-C` billentyűparanccsal állítsa le a kubectl figyelési folyamatát. 
 
 ```
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
@@ -105,7 +105,7 @@ Az alkalmazás megtekintéséhez navigáljon a külső IP-címet.
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure szavazattal alkalmazás egy Kubernetes fürthöz AKS lett telepítve. Befejeződött a következő feladatokból áll:  
 

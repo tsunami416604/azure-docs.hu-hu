@@ -16,11 +16,11 @@ ms.date: 10/20/2016
 ms.workload: Inactive
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 55f73c30db96d91a642daee98832b1e1c9a38035
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 73c2cbe978c980cbe1269b34cdb9f5ff86113e61
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="performing-disaster-recovery-drill"></a>Vész-helyreállítási részletezési végrehajtása
 Javasoljuk, hogy az alkalmazás felkészültségét helyreállítási munkafolyamat érvényesség rendszeres időközönként. Az alkalmazás viselkedését, és a megvalósítását ellenőrzése az adatvesztéssel és/vagy a problémákat, hogy a feladatátvétel magában foglalja a mérnöki célszerű. A legtöbb iparági normák szerint üzleti folytonossági hitelesítő részeként követelmény egyben.
@@ -37,7 +37,7 @@ Attól függően, hogy hogyan meg [az alkalmazás az üzletmenet folytonossága 
 A vész-helyreállítási részletezési végző az esetleges adatvesztés elkerülése hajtsa végre a részletezési másolat készítését az üzemi környezetben, és felhasználja az alkalmazás feladatátvételi munkafolyamat ellenőrizze egy tesztkörnyezetben használva.
 
 #### <a name="outage-simulation"></a>Kimaradás szimulálása
-A leállás szimulálása, törölheti vagy nevezze át a forrás-adatbázis. Ennek hatására a kapcsolat alkalmazáshibák.
+A leállás szimulálása, átnevezheti a forráshely adatbázisára. Ennek hatására a kapcsolat alkalmazáshibák.
 
 #### <a name="recovery"></a>Helyreállítás
 * Hajtsa végre a georedundáns helyreállítás az adatbázis egy másik kiszolgálóra történő leírtak [Itt](sql-database-disaster-recovery.md).
@@ -60,7 +60,7 @@ A szolgáltatáskimaradás szimulálása, letilthatja a webes alkalmazás vagy a
 #### <a name="validation"></a>Ellenőrzés
 Fejezze be a részletezési ellenőrzése az alkalmazás integritási feladás egy vagy több helyreállítási (beleértve a kapcsolatot, alapvető funkciókat tesztelési vagy más érvényesítést a részletezési signoffs szükséges).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Üzleti folytonosság forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [folytonosságának forgatókönyvek](sql-database-business-continuity.md).
 * További tudnivalók az Azure SQL adatbázis automatikus biztonsági mentés című [SQL-adatbázis automatikus biztonsági mentés](sql-database-automated-backups.md)
 * A helyreállítás automatikus biztonsági mentés használatával kapcsolatos további tudnivalókért lásd: [adatbázis visszaállítása a szolgáltatás által kezdeményezett biztonsági másolatból](sql-database-recovery-using-backups.md).

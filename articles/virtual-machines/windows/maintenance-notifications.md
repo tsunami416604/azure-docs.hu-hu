@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: zivr
-ms.openlocfilehash: b0103acf1e407a6a198159fad227b7ccc25052d2
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: d6d8507508ef1946c1dfa41c47ae81f51c0ad4ef
+ms.sourcegitcommit: 8fc9b78a2a3625de2cecca0189d6ee6c4d598be3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 12/29/2017
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>A tervezett karbantartás értesítések Windows virtuális gépek kezelése
 
@@ -56,9 +56,7 @@ A következő irányelveket kell segítségével döntse el, hogy kell ezzel a f
 
 Önkiszolgáló karbantartási üzembe helyezése nem ajánlott **rendelkezésre állási készletek** mivel ezek a magas rendelkezésre állású beállításokat, ahol a csak egy frissítési tartományt kihatással van egy adott időpontban. 
     - Lehetővé teszik a karbantartási Azure eseményindító, de vegye figyelembe, hogy a frissítési tartományok befolyásolja sorrendjét nem feltétlenül fordulhat elő egymás után, és hogy van-e a 30 perces szünet frissítési tartományok között.
-    - Átmenetileg megszakad a kapacitás (1/frissítési tartományok számának) néhány fontos, ha azt is könnyen lehet kompenzálni hozzáadása példány lefoglalása a karbantartási időszakban. 
-
-**Nem** önkiszolgáló karbantartási a következő helyzetekben használhatja: 
+    - Átmenetileg megszakad a kapacitás (1/frissítési tartományok számának) néhány fontos, ha azt is könnyen lehet kompenzálni hozzáadása példány lefoglalása a karbantartási időszakban **nem** önkiszolgáló karbantartási használatát a következőket forgatókönyv: 
     - Ha leállítja a virtuális gépek gyakran, akár manuálisan, használja a DevTest labs, az automatikus rendszerleállítást, vagy olyan ütemezés, azt nem sikerült a karbantartási állapot visszaállítása és ezért a további állásidőt okoz.
     - A rövid élettartamú virtuális gépeken is tudja, hogy törli a karbantartási wave lejárta előtt. 
     - A helyi (rövid élettartamú) lemezre, amely a frissítés után fenntartásához szükséges tárolt nagy állapotú munkaterhelésekhez. 
@@ -93,8 +91,8 @@ A következő tulajdonságok szerint MaintenanceRedeployStatus visszaadott:
 | IsCustomerInitiatedMaintenanceAllowed | Azt jelzi, hogy elindíthatja karbantartási a virtuális Gépre most ||
 | PreMaintenanceWindowStartTime         | Önkiszolgáló időszak során a virtuális gépen is kezdeményezhető a karbantartási kezdete ||
 | PreMaintenanceWindowEndTime           | Az önkiszolgáló időszak során a virtuális gépen is kezdeményezhető a karbantartási végén ||
-| MaintenanceWindowStartTime            | A karbantartás kezdete ablak ütemezni, amikor karbantartási kezdeményezhet a virtuális gépen ||
-| MaintenanceWindowEndTime              | Az ütemezett időszak során a virtuális gépen is kezdeményezhető a karbantartási végén ||
+| MaintenanceWindowStartTime            | Az ütemezett karbantartási, amelyben Azure indít el a virtuális Gépet a karbantartás kezdete ||
+| MaintenanceWindowEndTime              | Az ütemezett karbantartási időszakot, amelyben Azure indít el a virtuális gép karbantartása vége ||
 | LastOperationResultCode               | Kezdeményezni a virtuális gép karbantartása tett legutóbbi kísérlet eredménye ||
 
 
@@ -117,7 +115,8 @@ function MaintenanceIterator
 
     for ($rgIdx=0; $rgIdx -lt $rgList.Length ; $rgIdx++)
     {
-        $rg = $rgList[$rgIdx]        $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
+        $rg = $rgList[$rgIdx]        
+    $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
         for ($vmIdx=0; $vmIdx -lt $vmList.Length ; $vmIdx++)
         {
             $vm = $vmList[$vmIdx]
@@ -184,7 +183,7 @@ További információ a magas rendelkezésre állású: [régiók és az Azure v
 
 **K: mennyi ideig tart a virtuális gép újraindítását?**
 
-**V:** attól függően, hogy a virtuális gép méretét, újraindítás is eltarthat néhány percig. Vegye figyelembe, hogy arra az esetre Cloud Services (webes/munkavégző szerepkör), a virtuálisgép-skálázási készletekben vagy a rendelkezésre állási készletek használja, az aktiválási 30 perc, a virtuális gépek (UD) csoportjai között. 
+**V:** attól függően, hogy a virtuális gép méretét, újraindítás lehet, hogy több percig tarthat a önkiszolgáló karbantartási időszak alatt. Az ütemezett karbantartási időszaknál, a rendszer újraindítása lesz typicall hajtsa végre az újraindítások kezdeményezett során az Azure a körülbelül 25 percig. Vegye figyelembe, hogy abban az esetben használja a Cloud Services (webes/munkavégző szerepkör), a virtuálisgép-skálázási készletekben vagy a rendelkezésre állási csoportok, az aktiválási 30 perc közötti minden csoport a virtuális gépek (UD) az ütemezett karbantartási időszak alatt. 
 
 **K: Mi található a Cloud Services (webes/munkavégző szerepkör), a Service Fabric és a virtuálisgép-méretezési csoportok esetében?**
 
@@ -215,6 +214,6 @@ További információ a magas rendelkezésre állású: [régiók és az Azure v
 **V:** kattintott, a rendelkezésre állási készlet rövid egymás után több példány frissítéséhez, ha Azure ezek a kérelmek várólistára kerülnek, és egyszerre csak egy frissítési tartomány (UD) VMs frissítése elindítja. Azonban mivel előfordulhat, hogy egy szünet frissítési tartományok között, a frissítés úgy tűnhet, hogy tovább tart. Ha a frissítés várólista hosszabb 60 percnél hosszabb időt vesz igénybe, bizonyos esetekben jelennek-e a **kihagyva** állapot akkor is, ha azok sikeresen frissítve. Ez helytelen állapotot elkerülése érdekében a rendelkezésre állási készletek kattintva csak egy rendelkezésre állási példány frissítés beállítása, és várja meg a frissítés befejeződése után kattintson a különböző frissítési tartományban a következő virtuális gép esetében a.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan regisztrálhatja belül a virtuális gép használata a karbantartási események [ütemezett események](scheduled-events.md).

@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: bdd4c7948608c03447d1e040a746ed0eb7b0771b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f16c65286b0aa079889c9d53e98bf54e3d57c95f
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>Névtér megvalósítás részletei megfeleltetni, ráadásul a költségek gyakorolt hatása
+
 A [PairNamespaceAsync] [ PairNamespaceAsync] módszer használatával egy [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] példány, látható feladatokat végez az Ön nevében. Nincs vannak költség szempontok a funkció használata esetén, mert működésének megértése ezeket a feladatokat, hogy ez akkor fordul elő, amikor várt viselkedése. Az API-t a következő automatikus viselkedés az Ön nevében végez:
 
 * Várakozó várólisták létrehozása.
@@ -60,8 +61,8 @@ A [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOpti
 | DefaultMessageTimeToLive |TimeSpan.MaxValue |
 | AutoDeleteOnIdle |TimeSpan.MaxValue |
 | LockDuration |1 perc |
-| EnableDeadLetteringOnMessageExpiration |Igaz |
-| EnableBatchedOperations |Igaz |
+| EnableDeadLetteringOnMessageExpiration |igaz |
+| EnableBatchedOperations |igaz |
 
 Például az első várakozó várólistát létrehozott névtér **contoso** nevű `contoso/x-servicebus-transfer/0`.
 
@@ -97,7 +98,7 @@ Az alkalmazás legalább egy végrehajtható program aktívan futnia kell a Szif
 ## <a name="closefault-behavior"></a>Zárja be/tartalék viselkedése
 Az alkalmazásban, amelyen a Szifonos, miután az elsődleges vagy másodlagos [MessagingFactory] [ MessagingFactory] hibákat, vagy le van zárva nélkül is jelzett a partnerrel vagy zárva, és a Szifonos észleli ebben az állapotban a Szifonos működik. Ha a másik [MessagingFactory] [ MessagingFactory] nem zárt 5 másodpercen belül a Szifonos hibákat a továbbra is meg van nyitva [MessagingFactory][MessagingFactory].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd: [aszinkron üzenetkezelési mintákat és magas rendelkezésre állású] [ Asynchronous messaging patterns and high availability] részletes információt a Service Bus aszinkron üzenetkezelési. 
 
 [PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PairNamespaceAsync_Microsoft_ServiceBus_Messaging_PairedNamespaceOptions_

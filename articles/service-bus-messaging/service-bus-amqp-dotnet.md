@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 58a37c0dd24d54996f517961f3a7f1ec36639cfe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0eb68c97ca26a862a79de9ffb83b1fc630ba2af4
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="using-service-bus-from-net-with-amqp-10"></a>A Service Bus a .NET-AMQP 1.0 használatával
+# <a name="use-service-bus-from-net-with-amqp-10"></a>A Service Bus a .NET-használata AMQP 1.0-s
 
-## <a name="downloading-the-service-bus-sdk"></a>A Service Bus SDK letöltése
+AMQP 1.0-támogatás a Service Bus csomag 2.1-es vagy újabb verziója érhető el. Biztosíthatja, hogy úgy, hogy a Service Bus bits, az letölti a legújabb verzió van [NuGet][NuGet].
 
-AMQP 1.0-támogatás a Service Bus SDK 2.1-es vagy újabb verziója érhető el. Biztosíthatja, hogy úgy, hogy a Service Bus bits, az letölti a legújabb verzió van [NuGet][NuGet].
-
-## <a name="configuring-net-applications-to-use-amqp-10"></a>.NET-alkalmazások az AMQP 1.0 konfigurálása
+## <a name="configure-net-applications-to-use-amqp-10"></a>.NET-alkalmazások az AMQP 1.0 konfigurálása
 
 Alapértelmezés szerint a Service Bus .NET ügyféloldali kódtár a Service Bus szolgáltatás egy dedikált SOAP-alapú protokoll segítségével kommunikál. Az AMQP 1.0 használata helyett az alapértelmezett protokoll úgy kell explicit konfigurálni a Service Bus kapcsolati karakterlánc a következő szakaszban leírtak szerint. Ez a változás nem alkalmazáskód változatlan marad AMQP 1.0 használata esetén.
 
@@ -64,30 +62,30 @@ Csak a közvetlenül az AMQP típusokat az üzenet törzsét akkor szerializálh
 
 | .NET törzs objektum típusa | Csatlakoztatott AMQP típusa | AMQP törzs szakasz típusa |
 | --- | --- | --- |
-| logikai érték |Logikai érték |AMQP érték |
-| Bájt |ubyte |AMQP érték |
+| logikai érték |logikai |AMQP érték |
+| bájt |ubyte |AMQP érték |
 | ushort |ushort |AMQP érték |
 | uint |uint |AMQP érték |
 | ulong |ulong |AMQP érték |
-| sbyte |Bájt |AMQP érték |
+| sbyte |bájt |AMQP érték |
 | rövid |rövid |AMQP érték |
 | int |int |AMQP érték |
 | hosszú |hosszú |AMQP érték |
-| Lebegőpontos |Lebegőpontos |AMQP érték |
-| Dupla |Dupla |AMQP érték |
+| lebegőpontos |lebegőpontos |AMQP érték |
+| duplaszó |duplaszó |AMQP érték |
 | Decimális |decimal128 |AMQP érték |
 | Karakter |Karakter |AMQP érték |
-| Dátum és idő |időbélyeg |AMQP érték |
+| DateTime |időbélyeg |AMQP érték |
 | GUID |UUID |AMQP érték |
 | Byte] |Bináris |AMQP érték |
-| Karakterlánc |Karakterlánc |AMQP érték |
+| karakterlánc |karakterlánc |AMQP érték |
 | System.Collections.IList illesztőfelületet |lista |AMQP érték: a gyűjteményben lévő elemek csak lehet azokat ebben a táblázatban definiált. |
-| System.Array |A tömb |AMQP érték: a gyűjteményben lévő elemek csak lehet azokat ebben a táblázatban definiált. |
+| System.Array |tömb |AMQP érték: a gyűjteményben lévő elemek csak lehet azokat ebben a táblázatban definiált. |
 | System.Collections.IDictionary |térkép |AMQP érték: a gyűjteményben lévő elemek csak lehet azokat ebben a táblázatban definiált. Megjegyzés: csak a karakterlánc-kulcsok használata támogatott. |
 | URI |Karakterlánc leírt (lásd az alábbi táblázatot) |AMQP érték |
 | DateTimeOffset |Hosszú leírt (lásd az alábbi táblázatot) |AMQP érték |
 | A TimeSpan |Hosszú leírt (lásd a következő) |AMQP érték |
-| Az adatfolyam |Bináris |AMQP adatok (több is lehet). Az adatok szakaszok tartalmazzák a nyers bájt olvasásakor az adatfolyam-objektum. |
+| Adatfolyam |Bináris |AMQP adatok (több is lehet). Az adatok szakaszok tartalmazzák a nyers bájt olvasásakor az adatfolyam-objektum. |
 | Másik objektum |Bináris |AMQP adatok (több is lehet). Az objektum, amely a DataContractSerializer vagy az alkalmazás által biztosított szerializálót a szerializált bináris fájlt tartalmaz. |
 
 | .NET-típusa | Csatlakoztatott AMQP leírt típusa | Megjegyzések |
@@ -109,7 +107,7 @@ Emellett néhány kisebb különbségek vannak a Service Bus .NET API működés
 * `MessageReceiver.Receive(TimeSpan.Zero)`valósul meg `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
 * Üzenetek befejezése által zárolási jogkivonatok csak végezhető el az üzenetet fogadó számára eredetileg az üzeneteket.
 
-## <a name="controlling-amqp-protocol-settings"></a>Ellenőrző AMQP protokoll beállításait
+## <a name="control-amqp-protocol-settings"></a>Vezérlő AMQP protokoll beállításait
 
 A [.NET API-k](/dotnet/api/) teszi közzé az AMQP protokoll működését számos beállítás:
 
@@ -118,13 +116,12 @@ A [.NET API-k](/dotnet/api/) teszi közzé az AMQP protokoll működését szám
 * **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: batchable átvitel esetén ez az érték határozza meg, a maximális késleltetési dispositions küldéséhez. Alapértelmezés szerint feladók/fogadók örökli. Egyes feladó/fogadó felülbírálhatja az alapértelmezett, amelyet 20 ezredmásodperc.
 * **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: meghatározza, hogy SSL-kapcsolaton keresztül létesít AMQP-kapcsolatokat. Az alapértelmezett érték **igaz**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Készen áll a további? Látogasson el a következő hivatkozásokra:
 
 * [Service Bus AMQP áttekintése]
 * [AMQP 1.0 protokoll – útmutató]
-* [A Service Bus a Windows Server AMQP]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
 [DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
@@ -135,4 +132,4 @@ Készen áll a további? Látogasson el a következő hivatkozásokra:
 [Azure portal]: https://portal.azure.com
 [Service Bus AMQP áttekintése]: service-bus-amqp-overview.md
 [AMQP 1.0 protokoll – útmutató]: service-bus-amqp-protocol-guide.md
-[A Service Bus a Windows Server AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+

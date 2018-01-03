@@ -17,15 +17,15 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 01/23/2017
 ms.author: rickbyh
-ms.openlocfilehash: 0e66eec6c1843df49d3dc323cd109fb9eeb708c3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 78c26ee46ea7847cf78a7f3829c0f5b7a931f2d7
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="controlling-and-granting-database-access"></a>Adatbázis-hozzáférés szabályozása és biztosítása
 
-Ha a tűzfalszabályok konfigurálása megtörtént, a felhasználók a rendszergazdai fiókok egyikeként, az adatbázis tulajdonosaként vagy az adatbázis felhasználójaként csatlakozhatnak az SQL-adatbázisokhoz.  
+Tűzfalszabályok konfigurálása után személyek csatlakozhat egy SQL-adatbázis, a rendszergazdai fiókok egyikét, az adatbázis tulajdonosa, vagy az adatbázis egy adatbázis felhasználóként.  
 
 >  [!NOTE]  
 >  Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. 
@@ -185,7 +185,7 @@ Az SQL Database bejelentkezéseinek és felhasználóinak kezelésekor vegye fig
 * Ha az adatbázis-szerepkör tulajdonosa szeretne hozzáadni vagy eltávolítani egy felhasználót az adott szerepkörből, akkor a következő hiba léphet fel: **A „Név” felhasználó vagy szerepkör nem található ebben az adatbázisban.** Ez a hiba akkor következik be, ha a felhasználó a tulajdonos számára nem látható. A probléma megoldása érdekében ruházza fel a szerepkör tulajdonosát a `VIEW DEFINITION` engedéllyel. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A tűzfalszabályokkal kapcsolatos további információk: [Azure SQL Database-tűzfal](sql-database-firewall-configure.md).
 - Az SQL Database összes biztonsági szolgáltatásáról [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít áttekintést.

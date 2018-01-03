@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.openlocfilehash: 70a1ad070e812951fca3d2b19da12c67f0725dd0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08f4f4aca20efad8f51ebc9ca8c6df8de8d0d4c7
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>A címfeloldási DNS- és támogatás az Azure-ban – áttekintés
 
@@ -34,12 +34,12 @@ Speciális DNS-zónák, úgynevezett "ARPA" zónák tárolt címfeloldási DNS-r
 
 Például a DNS rekord "www.contoso.com" a "contoso.com" zóna a "www" nevet a DNS-"A" rekord segítségével van megvalósítva.  Ezt A rekordot a megfelelő IP-cím, ebben az esetben 64.4.6.100 mutat.  A névkeresési segítségével van megvalósítva külön-külön, a "PTR" rekord nevű "100" a "6.4.64.in-addr.arpa" zónában (vegye figyelembe, hogy IP-címek felcseréli ARPA-zónák.)  A PTR típusú rekord, ha megfelelően lett konfigurálva mutat a neve "www.contoso.com".
 
-Amikor egy szervezet hozzá van rendelve egy IP-Címblokk, azokat is szerezzen be a megfelelő ARPA zónát irányítására. Az ARPA-zónák az IP-címblokkok Azure által használt megfelelő tárolt és kezelt Microsoft által. Az Internetszolgáltató meg az ARPA időzónáját a saját IP-címek is tartalmazhat, vagy előfordulhat, hogy engedélyezni szeretné a működteti a ARPA zónát a DNS-szolgáltatás az Ön által választott, például az Azure DNS-ben.
+Amikor egy szervezet hozzá van rendelve egy IP-Címblokk, azokat is szerezzen be a megfelelő ARPA zónát irányítására. Az ARPA-zónák az IP-címblokkok Azure által használt megfelelő tárolt és kezelt Microsoft által. Az Internetszolgáltató meg az ARPA időzónáját a saját IP-címek is tartalmazhat, vagy előfordulhat, hogy engedélyezi, hogy egy szerkesztőprogramban, például az Azure DNS-ben a DNS szolgáltatásban a ARPA zóna üzemeltetésére.
 
 > [!NOTE]
 > DNS-címkeresés és a DNS-névlekérdezés különálló, párhuzamos DNS hierarchiákban valósíthatók meg. A "www.contoso.com" névlekérdezés **nem** üzemelteti a "contoso.com" zónában, hanem helyezkedik el a megfelelő IP-Címblokk ARPA zónában. Különálló zónákra az IPv4 és IPv6-címterületet használnak.
 
-### <a name="ipv4"></a>IPv4-alapú
+### <a name="ipv4"></a>IPv4
 
 Egy IPv4 névkeresési zóna neve a következő formátumban kell megadni: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
 
@@ -106,7 +106,7 @@ Az Azure DNS a következőkre használható [a névkeresési zónák tárolásá
 
 **Konfigurálja az IP-cím, az Azure szolgáltatáshoz a fordított DNS-rekordot.** Azure lehetővé teszi [konfigurálása az Azure service lefoglalt IP-címek névkeresési](dns-reverse-dns-for-azure-services.md).  A névkeresési PTR-rekordot a megfelelő ARPA zónát az Azure-ban van konfigurálva.  Ezek az ARPA-zónák, az Azure által használt összes IP-címtartományok megfelelő Microsoft által üzemeltetett
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A címfeloldási DNS-további információkért lásd: [Wikipedia névkeresési DNS](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>

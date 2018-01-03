@@ -14,13 +14,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: 3c6b190c3ddc8e474175693229d2e043196eac92
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 0b573a3745cbaa3deb583458159faaa0ac93f202
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Miért van az Azure-előfizetésem le van tiltva, és hogyan aktiválja újra azt?
 
@@ -60,6 +60,6 @@ Ha fiókadminisztrátora és véletlenül szakítani az előfizetést használat
 
 A más előfizetés típusú [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) újra aktiválni az előfizetésre.
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 
 Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.

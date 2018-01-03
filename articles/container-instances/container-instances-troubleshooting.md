@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/18/2017
+ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 6d8fbddc2f26fe739dd725f417961d7b3d7f77e6
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 0b7397e00c2d11c4c7be51421fb40ca6a9fe5779
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Azure-tároló példányaival telepítési problémák elhárításához
 
@@ -21,15 +21,15 @@ Ez a cikk bemutatja, hogyan kapcsolatos problémák elhárítása az Azure-táro
 
 ## <a name="get-diagnostic-events"></a>Diagnosztikai események
 
-Az alkalmazás kódjáról olyan tárolóban naplók megtekintéséhez használja a [az tároló naplók](/cli/azure/container#logs) parancsot. De ha a tároló telepítése nem sikerült, akkor tekintse át a diagnosztikai adatokat az Azure-tároló példányok erőforrás-szolgáltató által biztosított. A tároló események megtekintéséhez futtassa a következő parancsot:
+Az alkalmazás kódjáról olyan tárolóban naplók megtekintéséhez használja a [az tároló naplók] [ az-container-logs] parancsot. De ha a tároló telepítése nem sikerült, akkor tekintse át a diagnosztikai adatokat az Azure-tároló példányok erőforrás-szolgáltató által biztosított. A tároló események megtekintéséhez futtassa a [az tároló megjelenítése] [ az-container-show] parancs:
 
 ```azurecli-interactive
-az container show -n mycontainername -g myresourcegroup
+az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-A kimenet a tárolót, és telepítési eseményeket core tulajdonságait tartalmazza:
+A kimenet a tárolót, és telepítési eseményeket (Itt látható csonkolt) core tulajdonságait tartalmazza:
 
-```bash
+```JSON
 {
   "containers": [
     {
@@ -37,45 +37,54 @@ A kimenet a tárolót, és telepítési eseményeket core tulajdonságait tartal
       "environmentVariables": [],
       "image": "microsoft/aci-helloworld",
       ...
-
-      "events": [
-      {
-        "count": 1,
-        "firstTimestamp": "2017-08-03T22:12:52+00:00",
-        "lastTimestamp": "2017-08-03T22:12:52+00:00",
-        "message": "Pulling: pulling image \"microsoft/aci-helloworld\"",
-        "type": "Normal"
+        "events": [
+          {
+            "count": 1,
+            "firstTimestamp": "2017-12-21T22:50:49+00:00",
+            "lastTimestamp": "2017-12-21T22:50:49+00:00",
+            "message": "pulling image \"microsoft/aci-helloworld\"",
+            "name": "Pulling",
+            "type": "Normal"
+          },
+          {
+            "count": 1,
+            "firstTimestamp": "2017-12-21T22:50:59+00:00",
+            "lastTimestamp": "2017-12-21T22:50:59+00:00",
+            "message": "Successfully pulled image \"microsoft/aci-helloworld\"",
+            "name": "Pulled",
+            "type": "Normal"
+          },
+          {
+            "count": 1,
+            "firstTimestamp": "2017-12-21T22:50:59+00:00",
+            "lastTimestamp": "2017-12-21T22:50:59+00:00",
+            "message": "Created container with id 2677c7fd54478e5adf6f07e48fb71357d9d18bccebd4a91486113da7b863f91f",
+            "name": "Created",
+            "type": "Normal"
+          },
+          {
+            "count": 1,
+            "firstTimestamp": "2017-12-21T22:50:59+00:00",
+            "lastTimestamp": "2017-12-21T22:50:59+00:00",
+            "message": "Started container with id 2677c7fd54478e5adf6f07e48fb71357d9d18bccebd4a91486113da7b863f91f",
+            "name": "Started",
+            "type": "Normal"
+          }
+        ],
+        "previousState": null,
+        "restartCount": 0
       },
-      {
-        "count": 1,
-        "firstTimestamp": "2017-08-03T22:12:55+00:00",
-        "lastTimestamp": "2017-08-03T22:12:55+00:00",
-        "message": "Pulled: Successfully pulled image \"microsoft/aci-helloworld\"",
-        "type": "Normal"
-      },
-      {
-        "count": 1,
-        "firstTimestamp": "2017-08-03T22:12:55+00:00",
-        "lastTimestamp": "2017-08-03T22:12:55+00:00",
-        "message": "Created: Created container with id 61602059d6c31529c27609ef4ec0c858b0a96150177fa045cf944d7cf8fbab69",
-        "type": "Normal"
-      },
-      {
-        "count": 1,
-        "firstTimestamp": "2017-08-03T22:12:55+00:00",
-        "lastTimestamp": "2017-08-03T22:12:55+00:00",
-        "message": "Started: Started container with id 61602059d6c31529c27609ef4ec0c858b0a96150177fa045cf944d7cf8fbab69",
-        "type": "Normal"
-      }
-    ],
-    "name": "helloworld",
+      "name": "mycontainer",
       "ports": [
         {
-          "port": 80
+          "port": 80,
+          "protocol": null
         }
       ],
-    ...
-  ]
+      ...
+    }
+  ],
+  ...
 }
 ```
 
@@ -85,32 +94,35 @@ Van néhány gyakori problémákat fiók a központi telepítésben lévő legt�
 
 ## <a name="unable-to-pull-image"></a>Nem sikerült lekéréses kép
 
-Nem sikerült a lemezkép kezdetben lekéréses Azure tároló példányok esetén újrapróbálja valamennyi ideje előtt esetleg sikertelenek lesznek. Ha nem kell húzni a lemezképet, a következőhöz hasonló események jelennek meg:
+Nem sikerült a lemezkép kezdetben lekéréses Azure tároló példányok esetén újrapróbálja valamennyi ideje előtt esetleg sikertelenek lesznek. Ha nem kell húzni a lemezképet, a következő események jelennek meg kimenete [az tároló megjelenítése][az-container-show]:
 
 ```bash
 "events": [
   {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:19:31+00:00",
-    "lastTimestamp": "2017-08-03T22:19:31+00:00",
-    "message": "Pulling: pulling image \"microsoft/aci-hellowrld\"",
+    "count": 3,
+    "firstTimestamp": "2017-12-21T22:56:19+00:00",
+    "lastTimestamp": "2017-12-21T22:57:00+00:00",
+    "message": "pulling image \"microsoft/aci-hellowrld\"",
+    "name": "Pulling",
     "type": "Normal"
   },
   {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:19:32+00:00",
-    "lastTimestamp": "2017-08-03T22:19:32+00:00",
-    "message": "Failed: Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image microsoft/aci-hellowrld:latest not found",
+    "count": 3,
+    "firstTimestamp": "2017-12-21T22:56:19+00:00",
+    "lastTimestamp": "2017-12-21T22:57:00+00:00",
+    "message": "Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
+    "name": "Failed",
     "type": "Warning"
   },
   {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:19:33+00:00",
-    "lastTimestamp": "2017-08-03T22:19:33+00:00",
-    "message": "BackOff: Back-off pulling image \"microsoft/aci-hellowrld\"",
+    "count": 3,
+    "firstTimestamp": "2017-12-21T22:56:20+00:00",
+    "lastTimestamp": "2017-12-21T22:57:16+00:00",
+    "message": "Back-off pulling image \"microsoft/aci-hellowrld\"",
+    "name": "BackOff",
     "type": "Normal"
   }
-]
+],
 ```
 
 Oldja meg, a tároló törlése, és ismételje meg a központi telepítés, fizető zárja be a figyelmet, hogy a lemezkép nevét helyesen adta.
@@ -119,7 +131,7 @@ Oldja meg, a tároló törlése, és ismételje meg a központi telepítés, fiz
 
 Ha a tároló létrehozása után futtatott, és automatikusan újraindul, szükség lehet beállítani a [indítsa újra a házirend](container-instances-restart-policy.md) a **OnFailure** vagy **soha**. Ha megad **OnFailure** és továbbra is folyamatosan lásd újraindul, előfordulhat, hogy az alkalmazás vagy a parancsfájl végrehajtása a tárolóban kapcsolatos problémát.
 
-A tároló példányok API tartalmaz egy `restartCount` tulajdonság. Egy tároló újraindítások számát ellenőrzéséhez használja a [az tároló megjelenítése](/cli/azure/container#az_container_show) az Azure CLI 2.0 parancsot. A következő egy példa a kimenetre (amely kivonatosan mutatja csonkolódtak), hogy a `restartCount` tulajdonság a kimeneti végén.
+A tároló példányok API tartalmaz egy `restartCount` tulajdonság. Egy tároló újraindítások számát ellenőrzéséhez használja a [az tároló megjelenítése] [ az-container-show] az Azure CLI 2.0 parancsot. A következő egy példa a kimenetre (amely kivonatosan mutatja csonkolódtak), hogy a `restartCount` tulajdonság a kimeneti végén.
 
 ```json
 ...
@@ -179,7 +191,7 @@ REPOSITORY                             TAG                 IMAGE ID            C
 microsoft/aci-helloworld               latest              7f78509b568e        13 days ago         68.1MB
 ```
 
-A kulcsot a lemezkép mérete kisebb tartása annak ellenőrzése, hogy a végső kép nem tartalmaz semmit, amelyre nincs szükség a futási időben. Ehhez a egyirányú azt a [többlépcsős buildek](https://docs.docker.com/engine/userguide/eng-image/multistage-build/). Többlépcsős épít, ellenőrizze, hogy a végső kép csak az alkalmazás van szüksége az összetevők tartalmazza, és nem egy, az új tartalom, amely egyszerűen volt szükség összeállítása során.
+A kulcsot a lemezkép mérete kisebb tartása annak ellenőrzése, hogy a végső kép nem tartalmaz semmit, amelyre nincs szükség a futási időben. Ehhez a egyirányú azt a [többlépcsős buildek][docker-multi-stage-builds]. Többlépcsős épít, ellenőrizze, hogy a végső kép csak az alkalmazás van szüksége az összetevők tartalmazza, és nem egy, az új tartalom, amely egyszerűen volt szükség összeállítása során.
 
 A más, csökken a kép lekéréses a tároló indítási idővel módja a tároló lemezkép az Azure-tároló beállításjegyzék ugyanabban a régióban, ahol az Azure tároló példányok használni kívánt üzemeltetéséhez. Ez lerövidíti a hálózati elérési útját, amelyet a tároló kép utaznak, jelentősen lerövidíteni a letöltési időt.
 
@@ -189,9 +201,16 @@ Különböző területi erőforrás miatt betöltése az Azure-ban, és a követ
 
 `The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
 
-Ez a hiba azt jelzi, hogy a régióban, amelyben telepíteni kívánt túl nagy terhelés miatt a tároló megadott erőforrások nem rendelhető hozzá jelenleg. Egy vagy több, az a probléma megoldása érdekében a következő megoldás lépéseit.
+Ez a hiba azt jelzi, hogy a régióban, amelyben telepíteni kívánt túl nagy terhelés miatt a tároló megadott erőforrások nem rendelhető hozzá jelenleg. Legalább egy, a megoldás lépések segítségével a probléma megoldása érdekében.
 
 * Ellenőrizze a definiált paraméterek tartoznak a tároló központi telepítési beállítások [Azure-tároló példányok régiónkénti elérhetőség](container-instances-region-availability.md)
 * A tároló alacsonyabb CPU és memória beállításainak megadása
 * Egy másik Azure-régiót telepítése
 * Egy későbbi időpontban telepítése
+
+<!-- LINKS - External -->
+[docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
+
+<!-- LINKS - Internal -->
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show

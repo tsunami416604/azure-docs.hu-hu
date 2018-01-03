@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 89e1115291fbb2ba3499801981b70e10eb23eb94
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: e6b11145506780f9a08799c4c9daf55ba17b366d
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="create-and-publish-a-product"></a>Hozzon létre, és a termék közzététele  
 
@@ -48,18 +48,18 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     A termék hozzáadásakor kell megadnia a következő információkat: 
 
-    |Név|Leírás|
+    |Name (Név)|Leírás|
     |---|---|
     |Megjelenített név|A neve, ahogyan azt szeretné, hogy jelennek meg a **fejlesztői portálján**.|
-    |Név|A termék egy leíró nevet.|
+    |Name (Név)|A termék egy leíró nevet.|
     |Leírás|A **leírás** mező lehetővé teszi, hogy adja meg a termék, például a célja, hozzáférést biztosít az API-k és más hasznos információkat nyújt tájékoztatást.|
     |Állapot|Nyomja le az **közzétett** ha közzéteszi a terméket. A termék API-k hívása előtt közzé kell tenni a terméket. Alapértelmezés szerint új termékek közzé nem tett, és csak a **rendszergazdák** csoport.|
     |Jóváhagyást igényel|Ellenőrizze **előfizetés jóváhagyás szükséges** Ha azt szeretné, hogy tekintse át és fogadja el vagy utasítsa el a termék előfizetés megkísérli a rendszergazda. Ha a jelölőnégyzet nincs bejelölve, az előfizetés kísérletek, automatikusan jóváhagyta. |
-    |Előfizetés maximális száma|Több egyidejű előfizetések számának korlátozásához adja meg az előfizetési határértéket. |
+    |Előfizetések számának korlátja|Több egyidejű előfizetések számának korlátozásához adja meg az előfizetési határértéket. |
     |Jogi feltételek|A termék, mely előfizetők a termék használatához el kell fogadnia a használati feltételeket is megadhat.|
     |API-k|A termékeket társítását, egy vagy több API-k. Számos olyan API-k, és a fejlesztői portálon keresztül a fejlesztők számára biztosíthat számukra. <br/> A termék létrehozása során egy meglévő API-t is hozzáadhat. Később, a termék, a termékek származhatnak is hozzáadhat az API-k **beállítások** lapon vagy az API-k létrehozásakor.|<br/>A fejlesztők a termék az API eléréséhez először elő kell fizetnie. Fizet elő, amikor azok beolvasása, amely a termék API-k ideális előfizetés kulcsa.<br/> A APIM példányt hozott létre, ha rendszergazdaként jelentkezett már, így minden egyes termék előfizetett alapértelmezés szerint.|
 
-3. Kattintson a **mentése** az új termék létrehozásához.
+3. Kattintson a **létrehozása** az új termék létrehozásához.
 
 ### <a name="add-more-configurations"></a>Adja hozzá a további konfigurációk
 
@@ -88,7 +88,7 @@ A fejlesztők a termék az API eléréséhez először elő kell fizetnie. Fizet
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>1 – például egy egyszerű DMZ NSG-k használata az Azure Resource Manager-sablon létrehozása
 [A biztonsági határ bevált gyakorlatok laphoz való visszatéréshez][HOME]
@@ -351,7 +351,7 @@ Távolítsa el a telepítést, törölje a csoportot, és minden gyermek-erőfor
 #### <a name="sample-application-scripts"></a>Alkalmazás mintaparancsfájlok
 A sablon sikeres futtatása után állíthat be a webkiszolgáló és egy egyszerű webes alkalmazás tesztelése a DMZ-konfiguráció engedélyezése az alkalmazások kiszolgálói. Ez, és más DMZ példák mintaalkalmazás telepítéséhez egy adtak meg, az alábbi hivatkozásra: [minta alkalmazás-parancsfájl][SampleApp]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ez a példa központi telepítése
 * A minta-alkalmazás létrehozása

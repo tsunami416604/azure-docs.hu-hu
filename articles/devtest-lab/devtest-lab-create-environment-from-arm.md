@@ -3,7 +3,7 @@ title: "Hozzon létre virtuális Gépre kiterjedő környezetek és PaaS-erőfor
 description: "Útmutató: virtuális Gépre kiterjedő környezetek és PaaS erőforrások létrehozása a Azure DevTest Labs szolgáltatásban az Azure Resource Manager-sablon"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
-ms.author: tarcher
-ms.openlocfilehash: 381b3e5cc82e71dde4fe3a4266678dbd5919290d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: v-craic
+ms.openlocfilehash: 3fd0f15c695bcd22a51233846ace8711a4fcd635
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Hozzon létre virtuális Gépre kiterjedő környezetek és PaaS-erőforrások Azure Resource Manager-sablonok
 
@@ -126,7 +126,7 @@ Az Azure Resource Manager sablon tárház van konfigurálva a tesztkörnyezetben
 
     ![Környezet műveletek](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A virtuális gép létrehozása után keresztül csatlakozhat a virtuális gép kiválasztásával **Connect** a virtuális gép paneljén.
 * Megtekintése és kezelése az erőforrásoknak a környezetben a környezet kiválasztásával a **a virtuális gépek** lista a tesztkörnyezetben. 
 * Megismerkedhet a [Azure Resource Manager sablonok Azure gyors üzembe helyezési sablon gyűjteményből](https://github.com/Azure/azure-quickstart-templates)

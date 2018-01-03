@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 0f7b90a77ab321ee726245c82ea27635438070c0
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: ed2c6f3c611f09c6fbec4080eb70e7e43b783f59
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -28,7 +28,7 @@ Az MSDN fórumon, hogy kérdéseit felteheti is van. A termékért felelős csop
 ## <a name="gather-diagnostics-information"></a>Diagnosztikai adatainak összegyűjtése
 Egyes esetekben hasznos lehet ha diagnosztikai adatokat is biztosít, ha a segítségkérés. Ez a naplófájlok lakhelyétől:
 
-### <a name="installer"></a>Telepítő
+### <a name="installer-log"></a>Telepítő napló
 Ha problémát tapasztal telepítése során, a telepítő naplófájlok itt:
 
 ```
@@ -40,18 +40,7 @@ Ha problémát tapasztal telepítése során, a telepítő naplófájlok itt:
 ```
 A zip-be ezeket a könyvtárakat tartalmát, és elküldi a számunkra a diagnosztikai.
 
-### <a name="app-update"></a>Alkalmazás frissítése 
-#### <a name="no-update-notification-on-windows-desktop"></a>A Windows asztalon nincs frissítési értesítés 
-A probléma kiiktatása a későbbi frissítés. Kerülő megoldás időközben lehet elindítani az alkalmazást a a tálcán van rögzítve parancsikonnal elkerülése érdekében. Ehelyett az alkalmazás elindítása használatával a Start menüből vagy a Start-keresősávban, illetve a helyi az asztalon (ha van). 
-
-#### <a name="no-update-notification-on-an-ubuntu-data-sciece-virtual-machine-dsvm"></a>Nincs frissítés értesítési a egy Ubuntu adatok Sciece virtuális gép (DSVM)
-A következő lépésekkel töltse le a legfrissebb alkalmazás:   
-   - a mappa \Users\AppData\Local\amlworkbench eltávolítása
-   - Távolítsa el a parancsfájl`c:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
-   - a fenti szkript indító parancsikon eltávolítása
-   - telepítés szabályszerűen használatával [https://aka.ms/azureml-wb-msi](https://aka.ms/azureml-wb-msi)
-
-### <a name="workbench-desktop-app"></a>Egy asztali alkalmazás munkaterület
+### <a name="workbench-desktop-app-log"></a>Munkaterület egy asztali alkalmazás napló
 Ha problémája van bejelentkezve, vagy ha a munkaterületet üzemeltető asztali összeomlik, a naplófájlok itt található:
 ```
 # Windows
@@ -62,7 +51,7 @@ Ha problémája van bejelentkezve, vagy ha a munkaterületet üzemeltető asztal
 ``` 
 A zip-be ezeket a könyvtárakat tartalmát, és elküldi a számunkra a diagnosztikai.
 
-### <a name="experiment-execution"></a>Kísérlet végrehajtása
+### <a name="experiment-execution-log"></a>Kísérlet végrehajtási napló
 Ha egy adott parancsfájl megszakad, miközben az asztali alkalmazásból beküldése, próbálja meg újra elküldeni az keresztül parancssori felület használatával `az ml experiment submit` parancsot. Ez adjon meg teljes hibaüzenet JSON formátumú, és a legfontosabb tartalmaz egy **Műveletazonosító** érték. Küldjön nekünk a JSON fájl többek között a **Műveletazonosító** és könnyebb diagnosztizálásához. 
 
 Ha egy adott parancsfájl elküldése a sikeres, de végrehajtása sikertelen, kell-e nyomtassa ki a **futtatásához Azonosítóját** rendszert adott futtató azonosításához. Csomagot be a megfelelő naplófájlok helyét a következő parancsot:
@@ -95,6 +84,8 @@ Azure ML munkaterület dolgozik, amikor is küldhet nekünk a rosszallás (vagy 
 - Szöveg fürtözési átalakítások nem támogatottak a Mac.
 
 - RevoScalePy könyvtár csak Windows és Linux (a Docker-tároló) támogatott. MacOS a nem támogatott.
+
+- Jupyter notebookok rendelkezik 5 MB maximális méretkorlátot, amikor megnyitja őket a munkaterületet üzemeltető alkalmazást. A parancssori felületen 'az ml notebook start' parancs használatával nyithatja meg nagy notebookok, és a fájlméret csökkentéséhez kiírja tiszta cella.
 
 ## <a name="cant-update-workbench"></a>Nem lehet frissíteni a munkaterület
 Egy új frissítés érhető el, ha a munkaterületet üzemeltető alkalmazás kezdőlap egy üzenetet fog látni az új frissítésről jeleníti meg. Meg kell jelennie egy frissítés jelvény jelenik meg a bal alsó sarkába a alkalmazást a harang ikonra. Kattintson a jelvény, és kövesse a telepítővarázsló a frissítés telepítéséhez. 
@@ -207,7 +198,18 @@ $ docker system prune -a
 
 Is hozzá adatlemezt, majd konfigurálja a adatlemez lemezképek tárolásához használandó Docker-motorhoz. Itt [adatlemez hozzáadása](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk). Követően [módosítása, ahol a Docker tárolja a képek](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
 
-Vagy, bővítheti az operációsrendszer-lemezképet, és nem kell touch Docker motor konfigurációját. Itt [hogyan bővítheti az operációsrendszer-lemezképet](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
+Vagy, bővítheti az operációsrendszer-lemezképet, és nem kell touch Docker motor konfigurációját. Itt [hogyan bővítheti az operációsrendszer-lemezképet](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/expand-disks).
+
+```azure-cli
+#Deallocate VM (stopping will not work)
+$ az vm deallocate --resource-group myResourceGroup  --name myVM
+
+# Update Disc Size
+$ az disk update --resource-group myResourceGroup --name myVM --size-gb 250
+    
+# Start VM    
+$ az vm start --resource-group myResourceGroup  --name myVM
+```
 
 ## <a name="sharing-c-drive-on-windows"></a>A Windows a C meghajtó megosztása
 Ha végrehajtás alatt álló helyi Docker-tároló a Windows, a beállítás `sharedVolumes` való `true` a a `docker.compute` a fájl `aml_config` végrehajtási teljesítményének. Azonban ehhez a C meghajtó megosztja a _Docker a Windows eszköz_. Ha nem tudja megosztani a C meghajtó, próbáljon a következő tippek:
@@ -220,6 +222,18 @@ Ha végrehajtás alatt álló helyi Docker-tároló a Windows, a beállítás `s
 * Tartományi hitelesítő adatok használatával, a C meghajtó megosztásakor a megosztás működése leáll a hálózatokon, ahol a tartományvezérlő nem érhető el (például otthoni hálózathoz, a nyilvános Wi-Fi stb.) a. További információkért lásd: [a feladás egy vagy több](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/).
 
 A megosztási problémát, a kis teljesítményt, úgy, hogy a is elkerülheti `sharedVolumne` való `false` a a `docker.compute` fájl.
+
+## <a name="wipe-clean-workbench-installation"></a>Tisztán munkaterület törlése
+Általában nem kell ehhez. De ha Ön kitakarítása tiszta telepítés, a lépések a következők:
+
+- A Windows esetén:
+  - Először ellenőrizze, hogy használja _programok telepítése és törlése_ kisalkalmazást a _Vezérlőpult_ eltávolítása a _Azure Machine Learning-munkaterület_ alkalmazás bejegyzést.  
+  - Ezután töltse le és futtassa az alábbi parancsfájlok egyikét:
+    - [Windows parancssori parancsfájl](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd).
+    - [A Windows PowerShell-parancsfájl](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1). (Futtatásához szükséges `Set-ExecutionPolicy Unrestricted` egy emelt jogosultsági szintű PowerShell ablakban, a parancsfájl futtatása előtt.)
+- A macOS:
+  - Most töltse le és futtassa a [macOS bash héjparancsfájlt](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh).
+
 
 ## <a name="some-useful-docker-commands"></a>Néhány hasznos Docker-parancsok
 

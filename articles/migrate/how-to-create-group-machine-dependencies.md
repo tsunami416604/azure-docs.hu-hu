@@ -4,22 +4,21 @@ description: "Útmutatás a gép függőségek használata az Azure áttelepít�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 12/25/2017
 ms.author: raynew
-ms.openlocfilehash: 769c05916de4e7ad5b14812c2c8dbcf69e91320c
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 720380fd14d9eaf4856ad75269a80f2b63a4725f
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Csoport gépek gép függőségi leképezés használata
 
-Ez a cikk ismerteti a gépcsoport létrehozása [Azure áttelepítése](migrate-overview.md) assessment gép függőségi leképezés használata. Általában ezt a módszert, ha a virtuális gépek abban, hogy magasabb szintű csoportok gép függőségekkel ellenőrzése értékelését futtatása előtt ellenőrizni szeretné.
-
+Ez a cikk ismerteti a gépcsoport létrehozása [Azure áttelepítése](migrate-overview.md) értékelés szerint függőségeinek gépek megjelenítése. Általában ezt a módszert, ha a virtuális gépek abban, hogy magasabb szintű csoportok gép függőségekkel ellenőrzése értékelését futtatása előtt ellenőrizni szeretné. Függőség képi megjelenítés segítségével tervezze az áttelepítést, az Azure-ba, hatékony. Ennek segítségével győződjön meg arról, hogy semmi sem hátrahagyott és jelzés nélküli valamilyen okból kimaradás lép fel, ha telepít át az Azure-bA. Minden egymástól kölcsönösen függnek, áttelepítése együtt, és adja meg, hogy a futó rendszer van még kiszolgáló felhasználók, vagy egy jelölt leszerelése áttelepítési helyett a rendszer felderíthetők. 
 
 
 ## <a name="prepare-machines-for-dependency-mapping"></a>A függőség leképezést gépek előkészítése
-Függőségi leképezésben gépek felvételéhez szükség töltse le és telepítse az ügynököt minden a helyszíni gépen, amelyet ki kell számítani. Emellett, ha internetkapcsolat nélküli gépek, kell letöltéséhez és telepítéséhez [OMS átjáró](../log-analytics/log-analytics-oms-gateway.md) rajtuk.
+Gépek függőségeinek megtekintése, meg kell töltse le és telepítse az ügynököt minden a helyszíni gépen, amelyet ki kell számítani. Emellett, ha internetkapcsolat nélküli gépek, kell letöltéséhez és telepítéséhez [OMS átjáró](../log-analytics/log-analytics-oms-gateway.md) rajtuk.
 
 ### <a name="download-and-install-the-vm-agents"></a>Töltse le és telepítse a virtuális gép ügynökök
 1. A **áttekintése**, kattintson a **kezelése** > **gépek**, és jelölje ki a szükséges gépet.
@@ -32,7 +31,7 @@ Függőségi leképezésben gépek felvételéhez szükség töltse le és telep
 Az ügynök telepítése Windows-gépen:
 
 1. Kattintson duplán a letöltött ügynök.
-2. Az a **üdvözlő** kattintson **következő**. Az a **licencfeltételeket** kattintson **elfogadom** elfogadja a licencfeltételeket.
+2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. Az a **licencfeltételeket** kattintson **elfogadom** elfogadja a licencfeltételeket.
 3. A **célmappa**, hagyja, vagy módosítsa az alapértelmezett telepítési mappa > **következő**. 
 4. A **ügynök telepítésének beállításai**, jelölje be **Azure Naplóelemzés (OMS)** > **következő**. 
 5. Kattintson a **Hozzáadás** hozzáadása egy új OMS-munkaterület. Illessze be a munkaterület azonosítója és a portál fájlból másolt kulcsot. Kattintson a **Tovább** gombra.
@@ -57,22 +56,30 @@ Az ügynök telepítése Linux gépen:
 ## <a name="create-a-group"></a>Hozzon létre egy csoportot
 
 1. Miután telepítette az ügynököt, nyissa meg a portálon, majd kattintson **kezelése** > **gépek**.
-2. A **függőségek** oszlop most meg kell jelennie **függőségeinek megtekintése**. Kattintson az oszlop függőségeinek megtekintése.
-3. Minden gép ellenőrizheti:
-    - Hogy a MMA és a függőségi ügynök telepítve van, és hogy a gép visszaélésre derült fény.
-    - A vendég operációs rendszer fut a gépen.
-    - Bejövő és kimenő IP-kapcsolatokat és a portok.
-    - A gépeken futó folyamatok.
-    - Gépek közötti függőségek.
+2. Keresse meg a számítógép, amelyre telepítette az ügynököt.
+3. A **függőségek** oszlop a gép most meg kell jelennie **függőségeinek megtekintése**. Kattintson az oszlop, a gép függőségeinek megtekintése.
+4. A függőségi térkép, a gép a következő részleteit jeleníti meg:
+    - Bejövő (ügyfelek) és a gép onnan kimenő (kiszolgálók) TCP-kapcsolatok
+        - A függő gépek, amelyeken nincs telepítve az MMA és függőségi ügynök által használt portszámok vannak csoportosítva.
+        - Külön mezőkbe jelennek meg a dependenct gépeken, amelyek a MMA és a függőségi ügynök van telepítve 
+    - A gépen futó folyamatok, minden gép mezőben folyamatokat bővítheti
+    - Minden számítógépen, ha azt szeretné, hogy a részletek megjelenítéséhez kattintson például a teljesen minősített tartománynevét, operációs rendszer, az egyes gépek MAC-cím stb tulajdonságok,
 
-4. Részletesebb függőségek kattintson az időtartományt módosítható. Alapértelmezés szerint a tartománya egy óra. Módosítsa az időtartományt, vagy adja meg a kezdő és záró dátumát, és időtartama.
-5. Miután függő csoportba a kívánt gépek állapította meg, válassza ki azokat a térképen gépeket, majd kattintson **gépek**.
-6. Adjon meg egy felügyeleticsoport-nevet. Győződjön meg arról, hogy a gép észlel Azure áttelepíteni. Ha a felderítési folyamat a helyszíni újra nem futott. Ha szeretné, azonnal futtathatja értékelését.
-7. Kattintson a **OK** kell elmentenie a csoportot.
+ ![Gép függőségeinek megtekintése](./media/how-to-create-group-machine-dependencies/machine-dependencies.png)
 
-    ![Hozzon létre egy csoportot a gép függőségek](./media/how-to-create-group-machine-dependencies/create-group.png)
+4. Vessen egy pillantást függőségek különböző idő időtartamra az időtartamig, idő tartomány feliratában kattintva. Alapértelmezés szerint a tartománya egy óra. Módosítsa az időtartományt, vagy adja meg a kezdő és záró dátumát, és időtartama.
+5. Miután függő csoportba a kívánt gépek állapította meg, a Ctrl + kattintással jelölje ki a térképen több gép, majd kattintson **gépek**.
+6. Adjon meg egy felügyeleticsoport-nevet. Győződjön meg arról, hogy a függő gépeket Azure áttelepítése által felderített. 
 
-## <a name="next-steps"></a>Következő lépések
+    > [!NOTE]
+    > Ha egy függő gép alkalmazás nem észlelt Azure át, meg nem adható a csoporthoz. Ilyen gépek felvétele a csoportba, akkor kell futtassa újra a felderítési folyamat a megfelelő hatókörben található vCenter-kiszolgáló, és győződjön meg arról, hogy a gép észlel Azure áttelepíteni.  
 
-- [Megtudhatja, hogyan](how-to-create-group-dependencies.md) pontosítsa a csoport függőségek ellenőrzésével
+7. Ha szeretne létrehozni ehhez a csoporthoz értékelését, jelölje be a jelölőnégyzetet, a csoport egy új assessment létrehozásához.
+8. Kattintson a **OK** kell elmentenie a csoportot.
+
+A csoport létrehozása után javasoljuk, hogy az ügynökök telepítésekor a csoport minden számítógépen, és a csoport pontosítás megjelenítése a teljes csoport függőségi.
+
+## <a name="next-steps"></a>További lépések
+
+- [Megtudhatja, hogyan](how-to-create-group-dependencies.md) pontosítsa a csoport által Függőségek megjelenítése
 - [További](concepts-assessment-calculation.md) kapcsolatos értékelések kiszámítási módját.

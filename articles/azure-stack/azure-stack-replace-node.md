@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: f3d6215b672be0d8de8ba0d94320b1a2413eadf1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4e5b1269e2bee31316cba99d69ea2a6d702faf05
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Cserélje le a skálázási egység csomópont az integrált Azure verem rendszeren
 
@@ -51,6 +51,10 @@ Megnyitja a "skálázási egység csomópontja offline állapotban" riasztás, h
 A következő lépések vannak megadva, a méretezési egység csomópont cseréjét magas szintű áttekintését. A rendszer vonatkozó részletes lépéseket a OEM hardver gyártója által biztosított FRU dokumentációjában talál. Az OEM által biztosított dokumentációt utaló nélkül nem kövesse az alábbi lépéseket.
 
 1. Használja a [kiürítésére](azure-stack-node-actions.md#scale-unit-node-actions) műveletet a skálázási egység csomópont állítható karbantartási üzemmódba. Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
+
+   > [!NOTE]
+   > Minden esetben csak egy csomópont le is, és ki van kapcsolva egy időben (közvetlen tárolóhelyek) SSD megszakítása nélkül.
+
 2. Ha a csomópont továbbra is be van kapcsolva, használja a [kikapcsolásához](azure-stack-node-actions.md#scale-unit-node-actions) művelet. Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
  
    > [!NOTE]
@@ -61,7 +65,7 @@ A következő lépések vannak megadva, a méretezési egység csomópont cseré
 3. Használja a rendszerjogosultságú végpontot [tekintse meg a virtuális lemezek javítási](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). Új adatok meghajtók a teljes helyreállítási feladat rendszerterhelés függően több órát is igénybe vehet, és a felhasznált lemezterület.
 4. A javítási művelet befejeződését követően ellenőrizze, hogy az összes aktív riasztás automatikusan bezárták.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a közbeni-cserélhető fizikai lemez cseréje: [olyan lemezt cserél ki](azure-stack-replace-disk.md). 
 - További információ a nem közbeni-cserélhető hardverösszetevő cseréje: [cserélje ki egy hardverösszetevő](azure-stack-replace-component.md). 

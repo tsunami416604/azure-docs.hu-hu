@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: fb331bf6e11ac8378004c6da73b589130f9a8ddf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a2674ad4db9749b0a2d9342017a230797514763
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Az Azure Active Directory hozzáférés-vezérlési szolgáltatásban közös hozzáférésű Jogosultságkód engedélyezési áttelepítése
 
@@ -59,7 +59,7 @@ Ezen új és további konfigurációja SAS helyben a meglévő névtér, amely �
 
 SAS-szabályok nem célja, hogy fiókokat, de megnevezett aláírási kulcsokat, társított jogosultságok. Ilyen forgatókönyvek, amelyben az alkalmazás számos szolgáltatás-identitások hoz létre, és megadja számára hozzáférési jogosultsággal több entitások, vagy a teljes névtér továbbra is szükséges a jogkivonat-kiállító közvetítő. Ezt úgy szerezheti be által ilyen köztes útmutatást [lépjen kapcsolatba az ügyfélszolgálattal](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Azure-továbbítási hitelesítéssel kapcsolatos további tudnivalókért lásd a következő témaköröket:
 

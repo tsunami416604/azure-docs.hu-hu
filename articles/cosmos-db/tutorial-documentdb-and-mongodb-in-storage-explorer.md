@@ -17,22 +17,22 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: Jejiang
-ms.openlocfilehash: 6ed5ddab021006da633b30cafc4e1988a064ab92
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: fa91630674151ac434c7f97fa2795e47bb38f16f
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Az Azure Tártallózó (előzetes verzió) Azure Cosmos DB kezelése
 
-Azure Tártallózó Azure Cosmos DB használatával lehetővé teszi a felhasználók Azure Cosmos DB entitások kezelése, kezelhetők adatok, frissítse a tárolt eljárások és eseményindítók és egyéb Azure entitások, például a tárolási blobokat és üzenetsorokat. Mostantól ugyanarra az eszközre segítségével kezelheti a különböző Azure entitások egy helyen. Ilyenkor az Azure Tártallózó SQL és a MongoDB fiókokat támogat. Az Azure Cosmos DB helyi Emulator nem működik az Azure Storage-kezelővel. 
+Azure Tártallózó Azure Cosmos DB használatával lehetővé teszi a felhasználók Azure Cosmos DB entitások kezelése, kezelhetők adatok, frissítse a tárolt eljárások és eseményindítók és egyéb Azure entitások, például a tárolási blobokat és üzenetsorokat. Mostantól ugyanarra az eszközre segítségével kezelheti a különböző Azure entitások egy helyen. Ilyenkor Azure Tártallózó támogatja az SQL <!--and MongoDB--> fiókok. Az Azure Cosmos DB helyi Emulator nem működik az Azure Storage-kezelővel. 
 
 Ebből a cikkből megismerheti Azure Cosmos DB kezelése a Tártallózó használatával.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy Azure Cosmos DB fiókot az SQL API-t vagy a MongoDB API. Ha nincs fiókja, létrehozhat egy Azure-portálon a leírtak szerint [Azure Cosmos DB: .NET és az Azure-portálon az SQL API webalkalmazás összeállítása](create-sql-api-dotnet.md).
+Egy Azure Cosmos DB fiókot az SQL API <!--or MongoDB API-->. Ha nincs fiókja, létrehozhat egy Azure-portálon a leírtak szerint [Azure Cosmos DB: .NET és az Azure-portálon az SQL API webalkalmazás összeállítása](create-sql-api-dotnet.md).
 
 ## <a name="installation"></a>Telepítés
 
@@ -70,7 +70,7 @@ Egy Azure Cosmos DB kapcsolódni megadásának alternatív módja, hogy használ
 
     ![Csatlakozás Azure Cosmos DB kapcsolati karakterlánc](./media/tutorial-documentdb-and-mongodb-in-storage-explorer/connect-to-db-by-connection-string.png)
 
-2. Válassza ki a megfelelő **alapértelmezett élmény** vonatkozó a fióktípust vagy **DocumentDB** vagy **MongoDB**, illessze be a **kapcsolati karakterlánc**, és kattintson a **OK** Azure Cosmos DB fiók kapcsolódni. A kapcsolati karakterlánc beolvasása információkért lásd: [a kapcsolati karakterlánc beolvasása](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
+2. Válassza ki a megfelelő **alapértelmezett élmény** vonatkozó a fióktípust, <!--either--> **DocumentDB** <!--or **MongoDB**-->, illessze be a **kapcsolati karakterlánc**, majd Kattintson a **OK** Azure Cosmos DB fiók kapcsolódni. A kapcsolati karakterlánc beolvasása információkért lásd: [a kapcsolati karakterlánc beolvasása](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
 
     ![kapcsolat-karakterlánc](./media/tutorial-documentdb-and-mongodb-in-storage-explorer/connection-string.png)
 
@@ -149,7 +149,7 @@ A dokumentum-szűrő szerkesztése megadásával egy [SQL-lekérdezés](sql-api-
 
 * A műveletek **eseményindítók** és **UDF** hasonlóak a **tárolt eljárások**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az alábbi videóban megtekinthet Azure Cosmos DB használata az Azure Tártallózó: [Azure Cosmos DB használja az Azure Tártallózó](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * További információ a Tártallózó, és csatlakozzon a további szolgáltatások [Ismerkedés a Tártallózó (előzetes verzió)](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).

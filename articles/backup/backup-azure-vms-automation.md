@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2017
-ms.author: markgal;trinadhk
+ms.date: 12/20/2017
+ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b873337cf69ea1dda956ebf8c004754a7737e79c
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 474c5a6d0e7d3647ca14cb61e7b2718c99fdfa72
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Készítsen biztonsági másolatot a virtuális gépek AzureRM.RecoveryServices.Backup-parancsmagok használatával
 
@@ -80,7 +80,28 @@ Cmdlet          Unregister-AzureRmRecoveryServicesBackupContainer  1.4.0      Az
 Cmdlet          Unregister-AzureRmRecoveryServicesBackupManagem... 1.4.0      AzureRM.RecoveryServices.Backup
 Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      AzureRM.RecoveryServices.Backup
 ```
+3. Jelentkezzen be a Azure fiók használatával **Login-AzureRmAccount**. Ez a parancsmag megnyitása egy weblap bekéri a hitelesítő adatait: 
+    - Alternatív megoldásként paraméterként megadhat a fiók hitelesítő adatait a **Login-AzureRmAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
+    - Ha működik a bérlő nevében CSP partner, adja meg az ügyfél a bérlők a tenantID vagy bérlői elsődleges tartománynév használatával. Például: **Login-AzureRmAccount-bérlői "fabrikam.com"**
+4. Társítsa az előfizetést szeretné használni a fiók, mert egy fiók több előfizetéssel is rendelkezik:
 
+    ```
+    PS C:\> Select-AzureRmSubscription -SubscriptionName $SubscriptionName
+    ```
+
+5. Ha az Azure biztonsági mentés először használ, kell használnia a  **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)**  parancsmag futtatásával regisztrálja az Azure Recovery szolgáltató az előfizetéshez.
+
+    ```
+    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
+    ```
+
+6. Ellenőrizheti, hogy a szolgáltatók regisztrálása sikeresen befejeződött, a következő parancsokkal:
+    ```
+    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace  "Microsoft.RecoveryServices"
+    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
+    ``` 
+A parancs kimenetében a **RegistrationState** be kell állítania, **regisztrált**. Ha nem, most futtassa újra a  **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)**  parancsmag fent látható.
 
 A PowerShell segítségével automatizálhatók a következő feladatokat:
 
@@ -93,22 +114,17 @@ A PowerShell segítségével automatizálhatók a következő feladatokat:
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 A következő lépések alapján a Recovery Services-tároló létrehozása. Recovery Services-tároló nem egyezik egy biztonsági mentési tárolót.
 
-1. Ha az Azure biztonsági mentés először használ, kell használnia a  **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)**  parancsmag futtatásával regisztrálja az Azure Recovery szolgáltató az előfizetéshez.
-
-    ```
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    ```
-2. A Recovery Services-tároló egy Resource Manager szerinti erőforrás,, ezért el kell helyezni az erőforráscsoporton belül. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot a a  **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)**  parancsmag. Erőforráscsoport létrehozásakor meg nevét és helyét, ahhoz az erőforráscsoporthoz.  
+1. A Recovery Services-tároló egy Resource Manager szerinti erőforrás,, ezért el kell helyezni az erőforráscsoporton belül. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot a a  **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)**  parancsmag. Erőforráscsoport létrehozásakor meg nevét és helyét, ahhoz az erőforráscsoporthoz.  
 
     ```
     PS C:\> New-AzureRmResourceGroup -Name "test-rg" -Location "West US"
     ```
-3. Használja a  **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)**  parancsmaggal hozhat létre a Recovery Services-tároló. Ne felejtse el ugyanazon a helyen, a tároló adja meg, mint az erőforráscsoport használt.
+2. Használja a  **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)**  parancsmaggal hozhat létre a Recovery Services-tároló. Ne felejtse el ugyanazon a helyen, a tároló adja meg, mint az erőforráscsoport használt.
 
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. Megadhatja a használandó; adattároló redundanciája, amely használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) vagy [földrajzi redundáns tárolás (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). A következő példa bemutatja a - BackupStorageRedundancy beállítás a testvault GeoRedundant értékre van állítva.
+3. Megadhatja a használandó; adattároló redundanciája, amely használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) vagy [földrajzi redundáns tárolás (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). A következő példa bemutatja a - BackupStorageRedundancy beállítás a testvault GeoRedundant értékre van állítva.
 
     ```
     PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault -Name "testvault"
@@ -573,5 +589,5 @@ PS C:\> Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha jobban szeret PowerShell használata az Azure-erőforrások bevonásához, olvassa el a PowerShell, [telepítés és a Windows Server biztonsági másolat kezelése](backup-client-automation.md). DPM biztonsági mentések kezelése, tekintse meg a cikket, [telepítés és a DPM a biztonsági mentés kezelése](backup-dpm-automation.md). Ezek a cikkek mindegyikét verziónál Resource Manager üzembe helyezések vagy a klasszikus telepítések esetén.  

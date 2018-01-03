@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
-ms.openlocfilehash: 7890159574de0db58dd2e7d1b6a19305381d29d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb96f3697d5369ba96a1b0c491e3eacf09e7aac4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>A Microsoft Azure Storage adatátviteli könyvtár az adatok átvitele
 
@@ -27,7 +27,7 @@ A Microsoft Azure Storage adatátviteli könyvtár a platformok közötti nyílt
 
 Ebben a könyvtárban is használja a .NET Core, ami azt jelenti, hogy a .NET-alkalmazások a Windows, Linux és macOS fejlesztéskor használhatja. A .NET Core kapcsolatos további tudnivalókért tekintse meg a [.NET Core dokumentációja](https://dotnet.github.io/). Ebben a könyvtárban is működik, a hagyományos .NET-keretrendszer alkalmazások Windows. 
 
-Ez a dokumentum bemutatja, hogyan lehet .NET Core Konzolalkalmazás létrehozása, amely a Windows, Linux és macOS fut, és hajtja végre a következő esetekben:
+Ez a dokumentum bemutatja, hogyan hozzon létre egy .NET Core konzolalkalmazást, amely a Windows, Linux és macOS fut, és hajtja végre a következő esetekben:
 
 - Fájlok és könyvtárak feltöltése a Blob Storage.
 - Határozza meg a párhuzamos műveletek számát, adatátvitel során.
@@ -565,7 +565,7 @@ Az ebben a példában azt állítsa be a logikai paraméter `TransferManager.Cop
 ## <a name="conclusion"></a>Összegzés
 Az adatok mozgása alkalmazás most már befejeződött. [A teljes kód mintát a Githubon érhető el](https://github.com/azure-samples/storage-dotnet-data-movement-library-app). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az első lépések, létrehozott egy alkalmazás, amely együttműködik az Azure Storage és a Windows, Linux és macOS futtatja. Ez az első lépések a Blob Storage összpontosít. Azonban ez azonos Tudásbázis alkalmazhatja a File Storage. További tudnivalókért tekintse meg [Azure Storage adatátviteli könyvtár referenciadokumentációt](https://azure.github.io/azure-storage-net-data-movement).
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 62f1a1e2193d9693519bdea86196cf296d4b9780
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 94c67bef7a0c6ba60fc9c7a60c79a23bf7984fb1
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Oktatóanyag: Azure Active Directory-integráció központi asztal
 
@@ -27,144 +27,144 @@ Ebben az oktatóanyagban elsajátíthatja központi asztali integrálása az Azu
 Központi asztali integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
 - Az Azure AD, aki hozzáfér központi asztali szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett központi asztalra (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírva központi asztalhoz az Azure AD-fiókok.
+- A fiók egyetlen központi helyen--az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS alkalmazásintegráció kapcsolatos további tudnivalókért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a központi asztal, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- Egy központi asztali egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Egyetlen központi asztali bejelentkezési a alkalmas előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Nem ajánlott, éles környezetben teszteléséhez lépéseit az oktatóanyag segítségével.
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+Ez az oktatóanyag lépéseit teszteléséhez hajtsa végre az ezek az ajánlások:
 
 - Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ha még nem telepítette az Azure AD próbaverziójának környezetben [ingyenes egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Az ebben az oktatóanyagban a forgatókönyv két fő építőelemeket áll:
 
 1. Központi asztali hozzáadása a gyűjteményből
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-## <a name="adding-central-desktop-from-the-gallery"></a>Központi asztali hozzáadása a gyűjteményből
+## <a name="add-central-desktop-from-the-gallery"></a>Adja hozzá a központi asztali a gyűjteményből
 Az Azure AD integrálása a központi asztali konfigurálásához kell hozzáadnia központi asztali a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a központi asztali a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**A gyűjteményből központi asztali hozzáadásához tegye a következőket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Ugrás a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
     ![A vállalati alkalmazások panel][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazások hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **központi asztali**, jelölje be **központi asztali** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. Írja be a keresőmezőbe, **központi asztali**. Válassza ki **központi asztali** az eredmények panelen, és válassza ki azt a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredménylistában központi asztali](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján központi asztali.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a központi Desktop "Britta Simon." nevű tesztfelhasználó alapján
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó központi asztali a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a központi asztali közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, aki a párjukhoz felhasználó központi asztali egy felhasználó számára az Azure AD. Más szóval kell a központi asztali egy Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat létrehozásához.
 
-A központi asztali, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+A központi asztali, adjon **felhasználónév** azonos érték, mint a **felhasználónév** az Azure ad-ben. Most hozott létre a hivatkozást a két felhasználó között.
 
 Az Azure AD egyszeri bejelentkezést a központi Desktop tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy központi asztali tesztfelhasználó](#create-a-central-desktop-test-user)**  - való egy megfelelője a Britta Simon központi asztali, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. [Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy a felhasználók számára a szolgáltatás használatához.
+2. [Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+3. [Hozzon létre egy központi asztali tesztfelhasználó](#create-a-central-desktop-test-user) való egy megfelelője a Britta Simon központi asztali, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+4. [Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+5. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) , hogy működik-e a konfiguráció ellenőrzése.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a központi asztali alkalmazások konfigurálása egyszeri bejelentkezéshez.
 
-**A központi asztal konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**A központi asztal konfigurálása az Azure AD egyszeri bejelentkezést, tegye a következőket:**
 
-1. Az Azure portálon a a **központi asztali** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure portálon a a **központi asztali** alkalmazás integrációs lapon jelölje be **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Is engedélyezhető az egyszeri bejelentkezés, a **egyszeri bejelentkezés** párbeszédpanel a **mód** legördülő listában válassza **SAML-alapú bejelentkezés**.
  
     ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_samlbase.png)
 
 3. Az a **központi asztali tartomány és az URL-címek** területen tegye a következőket:
 
-    ![Az egyszeri bejelentkezés információk központi asztali tartomány és URL-címek](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_url.png)
+    ![Az egyszeri bejelentkezés információk központi asztali tartomány és az URL-címek](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.centraldesktop.com`
+    a. Az a **bejelentkezési URL-cím** mezőbe írja be a következő mintát olyan URL-címe:`https://<companyname>.centraldesktop.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:
+    b. Az a **azonosító** mezőbe írja be a következő mintát olyan URL-címe:
     | |
     |--|
     | `https://<companyname>.centraldesktop.com/saml2-metadata.php`|
     | `https://<companyname>.imeetcentral.com/saml2-metadata.php`|
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.centraldesktop.com/saml2-assertion.php`    
+    c. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe:`https://<companyname>.centraldesktop.com/saml2-assertion.php`    
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [központi asztali ügyfél-támogatási csoport](https://imeetcentral.com/contact-us) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítójú válasz URL-címet, és a bejelentkezési URL-cím. Lépjen kapcsolatba a [központi asztali ügyfél-támogatási csoport](https://imeetcentral.com/contact-us) beolvasni ezeket az értékeket. 
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítványa** szakaszban jelölje be **tanúsítvány**. Mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+5. Válassza ki a **Mentés** gombot.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-central-desktop-tutorial/tutorial_general_400.png)
+    ![Az egyszeri bejelentkezés mentési gomb konfigurálása](./media/active-directory-saas-central-desktop-tutorial/tutorial_general_400.png)
     
-6. A a **központi asztali konfigurálása** kattintson **központi asztal konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **központi asztali konfigurálása** szakaszban jelölje be **központi asztal konfigurálása** megnyitásához a **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló** szakasz.
 
     ![Központi asztali konfigurálása](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_configure.png) 
 
 7. Jelentkezzen be a **központi asztali** bérlő.
 
-8. Nyissa meg a **beállítások**, kattintson a **speciális**, és kattintson a **egyszeri bejelentkezés**.
+8. Ugrás a **beállítások**. Válassza ki **speciális**, majd válassza ki **egyszeri bejelentkezés**.
 
     ![A telepítő - speciális](./media/active-directory-saas-central-desktop-tutorial/ic769563.png "telepítő – speciális")
 
-9. Az a **egyetlen bejelentkezést a beállítások** lapon, a következő lépésekkel:
+9. Az a **egyetlen bejelentkezést a beállítások** lapján tegye a következőket:
 
-    ![Egyszeri bejelentkezés beállításai](./media/active-directory-saas-central-desktop-tutorial/ic769564.png "egyszeri bejelentkezés beállításai")
+    ![Az egyszeri bejelentkezés beállítások](./media/active-directory-saas-central-desktop-tutorial/ic769564.png "egyetlen bejelentkezést a beállítások")
     
     a. Válassza ki **engedélyezése SAML v2 az egyszeri bejelentkezés**.
     
-    b. Az a **egyszeri bejelentkezési URL-cím** szövegmező, illessze be a **SAML Entitásazonosító** érték, amely az Azure portálról másolta.
+    b. Az a **egyszeri bejelentkezési URL-cím** mezőbe illessze be a **SAML Entitásazonosító** Azure-portálról másolt érték.
     
-    c. Az a **Egyszeri bejelentkezési URL-cím** szövegmező, illessze be a **SAML-alapú egyszeri bejelentkezési URL-címe** érték, amely az Azure portálról másolta.
+    c. Az a **Egyszeri bejelentkezési URL-cím** mezőbe illessze be a **SAML-alapú egyszeri bejelentkezési URL-címe** Azure-portálról másolt érték.
     
-    d. Az a **SSO kijelentkezési URL-cím** szövegmező, illessze be a **Sign-Out URL-cím** érték, amely az Azure portálról másolta.
+    d. Az a **SSO kijelentkezési URL-cím** mezőbe illessze be a **Sign-Out URL-cím** Azure-portálról másolt érték.
 
 10. Az a **üzenet aláírás-ellenőrzési módszer** területen tegye a következőket:
 
-    ![Üzenet-aláírást ellenőrzési módszer](./media/active-directory-saas-central-desktop-tutorial/ic769565.png "üzenet-aláírást ellenőrzési módszer") egy. Válassza ki **tanúsítvány**.
+    ![Üzenet-aláírást ellenőrzési módszer](./media/active-directory-saas-central-desktop-tutorial/ic769565.png "üzenet aláírás-ellenőrzési módszer") egy. Válassza ki **tanúsítvány**.
     
     b. Az a **SSO tanúsítvány** listáról válassza ki **RSH SHA256**.
     
-    c. A Jegyzettömb alkalmazásban nyissa meg a letöltött tanúsítvány, tanúsítvány tartalmát másolja és illessze be azt a **SSO tanúsítvány** mező.
+    c. Nyissa meg a letöltött tanúsítvány a Jegyzettömbben. Ezután másolja a tartalmat a tanúsítványt, és illessze be azt a **SSO tanúsítvány** mező.
         
     d. Válassza ki **jeleníti meg a hivatkozást a SAMLv2 bejelentkezési**.
     
-    e. Kattintson a **frissítés**.
+    e. Válassza ki **frissítés**.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com) közben állítja be az alkalmazást. Ez az alkalmazás a hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** lapot, és hozzáférhet a beágyazott a dokumentáció a **konfigurációs** alsó szakasz. További, a beágyazott dokumentáció szolgáltatásról [az Azure AD dokumentációjában beágyazott]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -172,21 +172,21 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
    ![Hozzon létre egy Azure AD-teszt felhasználó][100]
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+**Tesztfelhasználó létrehozása az Azure ad-ben, a következő lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure portálon a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/active-directory-saas-central-desktop-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**. Válassza ki **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-central-desktop-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
 
     ![A Hozzáadás gombra.](./media/active-directory-saas-central-desktop-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+4. Az a **felhasználói** párbeszédpanel mezőben a következő lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/active-directory-saas-central-desktop-tutorial/create_aaduser_04.png)
 
@@ -196,45 +196,47 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** gombra.
  
 ### <a name="create-a-central-desktop-test-user"></a>Központi asztali tesztfelhasználó létrehozása
 
-Az Azure Active Directory-felhasználók jelentkezhetnek be kell hogy ki kell építenie a központi asztali alkalmazások. Ez a szakasz ismerteti az Azure AD-felhasználói fiókok létrehozása a központi asztali.
+Az Azure Active Directory-felhasználók tudjanak bejelentkezni akkor ki kell építenie a központi asztali alkalmazás. Ez a szakasz ismerteti az Azure AD-felhasználói fiókok létrehozása a központi asztali.
 
 > [!NOTE]
-> Központi asztali felhasználói fiók létrehozása eszközei vagy központi asztali által nyújtott API-kat használhatja az Azure AD-felhasználói fiókok létrehozásához
+> Azure AD-felhasználói fiókok létrehozásához használhatja a központi asztali felhasználói fiók létrehozása eszközei vagy központi asztali által nyújtott API-k.
 
 **Felhasználói fiókok központi asztalra telepítéséhez:**
 
 1. Jelentkezzen be a központi asztali bérlő.
 
-2. Ugrás a **személyek \> belső tagok**.
+2. Ugrás a **személyek** > **belső tagok**.
 
-3. Kattintson a **belső tagok felvétele**.
+3. Válassza ki **belső tagok felvétele**.
 
     ![Személyek](./media/active-directory-saas-central-desktop-tutorial/ic781051.png "személyek")
     
-4. Az a **E-mail címet az új tagok** szövegmező, írja be az Azure AD-fiókot rendelkezés szeretne, és kattintson a **következő**.
+4. Az a **E-mail címet az új tagok** mezőbe írja be az Azure AD-fiókot, amelyet szeretne kiépíteni, majd válassza ki **következő**.
 
     ![E-mail-címeket az új tagok](./media/active-directory-saas-central-desktop-tutorial/ic781052.png "E-mail címet az új tagok")
 
-5. Kattintson a **hozzáadása belső tag**.
+5. Válassza ki **hozzáadása belső tag**.
 
-    ![Adja hozzá a belső tag](./media/active-directory-saas-central-desktop-tutorial/ic781053.png "belső tag hozzáadása")
+    ![Hozzáadás belső tag](./media/active-directory-saas-central-desktop-tutorial/ic781053.png "belső tag hozzáadása")
    
    >[!NOTE]
-   >A hozzáadott felhasználók kattintson a fiók aktiválásához szükséges megerősítési hivatkozást tartalmazó e-mailt fog kapni.
+   >A felhasználók a fiókok aktiválásához megerősítési hivatkozást tartalmazó e-mailt kapni.
    
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés központi asztali Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban felhasználói Britta Simon központi asztali hozzáférést adna által használandó Azure egyszeri bejelentkezés engedélyezése.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése központi asztali, hajtsa végre az alábbi lépéseket:**
+**Központi asztali Britta Simon hozzárendeléséhez a következő lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Nyissa meg az alkalmazások megtekintése az Azure-portálon. Nyissa meg a könyvtár nézetet, és folytassa a **vállalati alkalmazások**.
+
+2. Válassza ki **összes alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
@@ -242,26 +244,26 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Az alkalmazások listáját a központi asztali hivatkozás](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben válasszon ki **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Válassza ki a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a a **hozzáadása hozzárendelés** párbeszédpanel megnyitásához.
 
     ![A hozzárendelés hozzáadása panelen][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a a **felhasználók** listája.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Az a **felhasználók és csoportok** párbeszédpanel, kattintson a **válasszon** gombra.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Az a **hozzáadása hozzárendelés** párbeszédpanelen jelölje ki a **hozzárendelése** gombra.
     
 ### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen központi asztali csempére kattint, akkor kell beolvasása automatikusan bejelentkezett a központi asztali alkalmazás.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
+Ha a központi asztali csempe a hozzáférési panelen válassza ki, automatikusan beolvasása jelentkezett be a központi asztali alkalmazások.
+A hozzáférési panel kapcsolatos további információkért lásd: [a hozzáférési panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 

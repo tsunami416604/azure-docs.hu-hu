@@ -3,7 +3,7 @@ title: "Azure DevTest Labs használatát képzés |} Microsoft Docs"
 description: "Útmutató: Azure DevTest Labs képzési helyzetekben használhatja."
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: steved0x
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 57ff4e30-7e33-453f-9867-e19b3fdb9fe2
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
-ms.author: sdanie
-ms.openlocfilehash: 3bad7538121e1049af953e3937fc679b1d9184d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 96f7ed2084fbfc14c6bac09819ce3724b4168995
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Azure DevTest Labs használatát képzés
 Az Azure DevTest Labs segítségével fejlesztési és tesztelési célú túl sok főbb forgatókönyvek megvalósításához. Ezek a forgatókönyvek egyik beállíthat egy tesztkörnyezetet képzési. Az Azure DevTest Labs létrehozhat egy tesztkörnyezetet, ahol megadhatja az egyéni sablonok, amelyek minden tanuló képzési azonos és elkülönített környezetek létrehozása teszi lehetővé. Annak érdekében, hogy képzési környezetekben minden egyes tanuló rendelkezésére csak akkor, ha szüksége van rájuk, és tartalmaznak elég erőforrások – például a virtuális gépek - képzés szükséges házirendeket is alkalmazhat. Végül könnyedén megoszthatja a labor képzésben, amelyek az egy kattintással eléréséhez.

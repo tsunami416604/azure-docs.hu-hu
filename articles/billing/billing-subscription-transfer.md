@@ -14,42 +14,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 08/15/2017
+ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9beef44b3fbaf26d49757544f32b97c7ef2cf425
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f061197cbe9fd52594d9fb000d8f3bcbd2d5285
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Egy másik fiókot az Azure-előfizetés tulajdonjogának átruházása
 
-Az előfizetés egy másik felhasználónak az Account Center a vihetők át. E szolgáltatás használatával az előfizetés számlázási tulajdonosi másnak keresztül oldalon, a bejelentkezési fiók módosítása vagy előfizetés áthelyezése egy másik címtárhoz. Az előfizetés egy másik ajánlatra módosításához lásd [az Azure-előfizetéshez Váltás másik ajánlatra](billing-how-to-switch-azure-offer.md).
+Az előfizetés átvitele egy másik felhasználója a Account Center Fiókadminisztrátor módosításához és a kézi keresztül előfizetés számlázási tulajdonosi jogokat. Az előfizetés egy másik ajánlatra módosításához lásd [az Azure-előfizetéshez Váltás másik ajánlatra](billing-how-to-switch-azure-offer.md).
 
 > [!IMPORTANT]
 > 
 > Jelenleg nem támogatjuk előfizetés átadásáról ingyenes próbaverzióra vagy [Azure a nyitott Nyomtatókategóriák](https://azure.microsoft.com/offers/ms-azr-0111p/) előfizetések. Megkerülő megoldásért tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
-
-<a id="supported"></a>
-
-## <a name="whats-supported"></a>Támogatott források és műveletek:
-
-Önkiszolgáló előfizetés átadása az ajánlatok vagy a következő táblázatban felsorolt előfizetéstípusok érhető el. Más előfizetések például átvitelére [szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/) támogatja a csomagokat, vagy [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-
-| Csomag neve                                                                             | Csomag száma |
-|----------------------------------------------------------------------------------------|--------------|
-| [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR - 0017P        |
-| [A Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR - 0025P        |
-| [MSDN platformok](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR - 0062P        |
-| [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR - 0003P        |
-| [Fejlesztés/tesztelés – használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR - 0023P        |
-| [A Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR - 0063P        |
-| [A Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR - 0064P        |
-| [A Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR - 0059P        |
-| [A Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR - 0060P        |
-
-\*[Keresztül EA portál](#EA)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Azure-előfizetés tulajdonjogának átruházása
 
@@ -57,7 +37,7 @@ Az előfizetés egy másik felhasználónak az Account Center a vihetők át. E 
 >
 >
 
-1. Jelentkezzen be a(z) [Azure Account Center](https://account.windowsazure.com/Subscriptions) fiók rendszergazdaként. Ki-e a Fiókadminisztrátor az előfizetés, lásd: [gyakran ismételt kérdések](#faq).
+1. Jelentkezzen be a(z) [Azure Account Center](https://account.windowsazure.com/Subscriptions) a fiók rendszergazdaként Ki-e az előfizetés fiókjának rendszergazdája, lásd: [gyakran ismételt kérdések](#faq).
 
 1. Válassza ki az előfizetés átvitele.
 
@@ -88,20 +68,39 @@ A vállalati rendszergazda vihetők át a beléptetési belül előfizetések tu
 
 ## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>Az előfizetés tulajdonosa elfogadása követő lépések
 
-1. A Fiókadminisztrátor is. Tekintse át, és frissítse a szolgáltatás-rendszergazda és a Társadminisztrátorok. A rendszergazdák kezelése a [a klasszikus Azure portálon](https://manage.windowsazure.com) beállításainak megnyitásával. [További tudnivalók a rendszergazdai szerepkörökről](billing-add-change-azure-subscription-administrator.md).
-1. Szerepköralapú hozzáférés-vezérlést (RBAC) használata az előfizetés és -szolgáltatásokra. Látogasson el az [Azure Portalra](https://portal.azure.com). [További tudnivalók az RBAC](../active-directory/role-based-access-control-configure.md)
+1. Most már áll a fiók a rendszergazdának. Tekintse át, és frissítse a szolgáltatás-rendszergazdák, a Társadminisztrátoroknak és az egyéb RBAC-szerepkörök. További tudnivalókért lásd: [hozzáadása vagy módosítása, hogy az előfizetés vagy a szolgáltatások kezelése az Azure rendszergazdai szerepkörök](billing-add-change-azure-subscription-administrator.md).
 1. Frissítse a hitelesítő adatokat, beleértve az előfizetés szolgáltatásokkal:
    1. A felhasználó előfizetéshez kapcsolódó erőforrásokat rendszergazdai jogosultságokat adjon felügyeleti tanúsítványok. További információkért lásd: [létrehozása és felügyeleti az Azure-tanúsítvány feltöltése](../cloud-services/cloud-services-certs-create.md)
    1. Tárelérési kulcsok szolgáltatások, például tároló. További információkért lásd: [tudnivalók az Azure storage-fiókok](../storage/common/storage-create-storage-account.md)
    1. Távoli hozzáférési hitelesítő adatok, szolgáltatások, például Azure virtuális gépeken. 
 1. [Az előfizetés számlázási riasztások frissítése](billing-set-up-alerts.md) , a [Azure Account Center](https://account.windowsazure.com/Subscriptions). 
-1. Ha a partnerrel dolgozik, fontolja meg a Partnerazonosítót. Ebben az előfizetésben. A partner Partnerazonosítóját, a frissítéshez a [Azure Account Center](https://account.windowsazure.com/Subscriptions).
+1. Ha a partnerrel dolgozik, fontolja meg a Partnerazonosítót. Ebben az előfizetésben. A partner Partnerazonosítóját, a frissítéshez a [Azure-portálon](https://portal.azure.com).
+
+<a id="supported"></a>
+
+## <a name="whats-supported"></a>Támogatott források és műveletek:
+
+Önkiszolgáló előfizetés átadása az ajánlatok vagy a következő táblázatban felsorolt előfizetéstípusok érhető el. Más előfizetések például átvitelére [szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/) támogatja a csomagokat, vagy [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+| Csomag neve                                                                             | Csomag száma |
+|----------------------------------------------------------------------------------------|--------------|
+| [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR - 0017P        |
+| [A Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR - 0025P        |
+| [MSDN platformok](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR - 0062P        |
+| [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR - 0003P        |
+| [Fejlesztés/tesztelés – használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR - 0023P        |
+| [A Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR - 0063P        |
+| [A Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR - 0064P        |
+| [A Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR - 0059P        |
+| [A Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR - 0060P        |
+
+\*[Keresztül EA portál](#EA)
 
 <a id="faq"></a>
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
-### <a name="whoisaa"></a>A fiókadminisztrátor az előfizetés?
+### <a name="whoisaa"></a>A Fiókadminisztrátor az előfizetés?
 
 A Fiókadminisztrátor az a személy, aki regisztrált a vagy vásárolt Azure-előfizetést. Engedélyezett-e hozzáférni a [Account Center](https://account.azure.com/Subscriptions) és -előfizetések létrehozása, szakítsa meg a előfizetések, az előfizetés számlázási módosítása, vagy módosítsa a szolgáltatás-rendszergazda például különböző felügyeleti feladatok elvégzésére. Ha nem biztos, aki a fiókadminisztrátor az előfizetéshez, tegye a következőket megállapítása.
 
@@ -111,7 +110,7 @@ A Fiókadminisztrátor az a személy, aki regisztrált a vagy vásárolt Azure-e
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Nem minden átviszi a? Többek között az erőforráscsoportok, a virtuális gépek, a lemezek és a többi futó szolgáltatások?
 
-Igen, az erőforrások, mint például virtuális gépek, a lemezek és a webhelyek átvitelét az új tulajdonos. Azonban bármely [rendszergazdai szerepkörök](billing-add-change-azure-subscription-administrator.md) és [szerepköralapú hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-configure.md) létrehozott házirendeket nem veszi át más címtárak között.
+Az erőforrások, például virtuális gépek, a lemezek és a webhelyek átvitelét az új tulajdonos. Azonban bármely [rendszergazdai szerepkörök](billing-add-change-azure-subscription-administrator.md) és [szerepköralapú hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-configure.md) létrehozott házirendeket nem veszi át más címtárak között. Emellett [app regisztrációk](../active-directory//develop/active-directory-integrating-applications.md) és a többi bérlő szolgáltatásokat nem átvitele mentén.
 
 ### <a id="no-button"></a>Miért nem látom, hogy az "Előfizetés átvitele" gombra?
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 26b9a468684cda344a6ab1b5a2e467d2735f4f71
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 080712e0a6c05348e7163f3c8e2055e6ff2806b2
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Az Azure Functions HTTP és a webhook kötések
 
@@ -41,14 +41,14 @@ Alapértelmezés szerint HTTP-eseményindítóval válaszol egy HTTP 200 OK áll
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#trigger---c-example)
-* [C# parancsfájl](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# parancsfájl (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Eseményindító - C# – példa
 
-A következő példa azt mutatja be egy [előre le a C# függvény fordítva](functions-dotnet-class-library.md) , amely megkeresi a `name` paraméter, a lekérdezési karakterláncot vagy a HTTP-kérelem törzsét.
+A következő példa azt mutatja be egy [C# függvény](functions-dotnet-class-library.md) , amely megkeresi a `name` paraméter, a lekérdezési karakterláncot vagy a HTTP-kérelem törzsét.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -235,14 +235,14 @@ module.exports = function(context, req) {
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#webhook---c-example)
-* [C# parancsfájl](#webhook---c-script-example)
+* [C#](#webhook---c-example)
+* [C# parancsfájl (.csx)](#webhook---c-script-example)
 * [F#](#webhook---f-example)
 * [JavaScript](#webhook---javascript-example)
 
 ### <a name="webhook---c-example"></a>Webhook - C# – példa
 
-Az alábbi példa mutatja egy [előre le a C# függvény fordítva](functions-dotnet-class-library.md) , amely egy HTTP 200 elküldi egy általános JSON irányuló kérelemre adott válasz.
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , amely egy HTTP 200 elküldi egy általános JSON irányuló kérelemre adott válasz.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -364,7 +364,7 @@ module.exports = function (context, data) {
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) attribútummal, a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) attribútummal, a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http).
 
 Állíthatja be a hitelesítési szint és engedélyezett HTTP-metódus attribútum konstruktorparaméterek, és nincsenek a webhook típusát és útvonal-sablon tulajdonságait. A beállításokkal kapcsolatban további információkért lásd: [eseményindító - konfigurációs](#trigger---configuration). Íme egy `HttpTrigger` metódus-aláírás attribútum:
 
@@ -377,7 +377,7 @@ public static HttpResponseMessage Run(
 }
  ```
 
-Tekintse meg a teljes például [eseményindító - előfordított például C#](#trigger---c-example).
+Tekintse meg a teljes például [eseményindító - C# példa](#trigger---c-example).
 
 ## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
@@ -540,7 +540,7 @@ Használja a HTTP kimeneti kötése a HTTP-kérést küldő válaszolni. A köt�
 
 ## <a name="output---configuration"></a>Kimeneti - konfiguráció
 
-Az előfordított C# nincsenek kimeneti-specifikus kötés konfigurációs tulajdonságok. Küldjön egy HTTP-válasz, végezze el a függvény visszatérési típusa `HttpResponseMessage` vagy `Task<HttpResponseMessage>`.
+A C# osztály tárak nincsenek kimeneti-specifikus kötés konfigurációs tulajdonságok. Küldjön egy HTTP-válasz, végezze el a függvény visszatérési típusa `HttpResponseMessage` vagy `Task<HttpResponseMessage>`.
 
 Egyéb nyelvek HTTP kimeneti kötése a JSON-objektumként van definiálva a `bindings` tömbje function.json, a következő példában látható módon:
 
@@ -564,7 +564,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 A kimeneti paraméter segítségével válaszol a http- vagy webhook hívók számára. A megfelelő nyelvet választ minták is használható. Például a válaszokat, tekintse meg a [eseményindító példa](#trigger---example) és a [webhook példa](#trigger---webhook-example).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

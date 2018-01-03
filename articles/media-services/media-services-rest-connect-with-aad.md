@@ -11,130 +11,181 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: e5d7a5ec1c28a552420aba5e2cd6c8c7bbf4213d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Az Azure Media Services API REST eléréséhez használja az Azure AD-alapú hitelesítés
 
-Az Azure Media Services team közzétette az Azure Media Services access Azure Active Directory (Azure AD-) hitelesítés támogatása. A jelentette be Azure hozzáférés-vezérlés szolgáltatás hitelesítési a Media Services hozzáféréshez érvényteleníthető terveket is. Minden Azure-előfizetés, és minden Media Services-fiók, az Azure AD-bérlő van csatolva, az Azure AD hitelesítési támogatás számos lehetőséget kínál számos biztonsági szempontból előnyökkel járhat. A változás- és (ha az alkalmazás használja a Media Services .NET SDK) áttelepítési kapcsolatos részletekért lásd: a következő blogbejegyzések és cikkek:
+Ha az Azure AD-alapú hitelesítés az Azure Media Services használata esetén az alábbi két módszer egyikével hitelesítheti:
 
-- [Az Azure Media Services időről támogatás az Azure AD és a hozzáférés-vezérlés hitelesítési elavulása](https://azure.microsoft.com/blog/azure%20media%20service%20aad%20auth%20and%20acs%20deprecation)
-- [Access Azure Media Services API az Azure AD-hitelesítés használatával](media-services-use-aad-auth-to-access-ams-api.md)
-- [Azure Media Services API hozzáférhet a Microsoft .NET hitelesítés használata az Azure AD](media-services-dotnet-get-started-with-aad.md)
-- [Ismerkedés az Azure AD-alapú hitelesítés az Azure portál használatával](media-services-portal-get-started-with-aad.md)
+- **Felhasználó hitelesítése** hitelesíti a személy, aki használja az alkalmazás interakciót Azure Media Services-erőforrásokkal. Az interaktív alkalmazás először kell kérni a felhasználót a hitelesítő adatokat. Példa: egy kódolási feladatok figyelése, vagy live streaming jogosult felhasználók által használt felügyeleti konzol alkalmazást. 
+- **Szolgáltatás egyszerű hitelesítési** szolgáltatás hitelesíti. Alkalmazásokat, amelyek általában arra használják ezt a hitelesítési módszert démon szolgáltatások, a középső rétegbeli szolgáltatások vagy az ütemezett feladatok, például webalkalmazások, függvény alkalmazások, a logic apps, API-k vagy mikroszolgáltatások futó alkalmazások.
 
-Egyes ügyfelek alapján a következő korlátozások vonatkoznak a Media Services-megoldások kifejlesztésére lesz szükség:
+    Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Active Directory **egyszerű** hitelesítési többi AMS API eléréséhez. 
 
-*   Microsoft .NET vagy C# programozási nyelven használata, vagy a futtatókörnyezet nincs Windows.
-*   Az Azure AD szalagtárak, például az Active Directory hitelesítési Kódtárai nem érhetők el a programozási nyelven, vagy nem használható a futtatókörnyezetben.
+    > [!NOTE]
+    > **Szolgáltatás egyszerű** az ajánlott eljárás a legtöbb alkalmazás csatlakoztatása az Azure Media Services van. 
 
-Egyes ügyfelek alkalmazások hozzáférés-vezérlés hitelesítéséhez és access Azure Media Services REST API használatával fejlesztett ki. Ezek az ügyfelek szükségük van egy módszerre, csak a REST API-t használja az Azure AD-alapú hitelesítés és további Azure Media Services-hozzáférést. Támaszkodjon az Azure AD-tárak bármelyikét, vagy a Media Services .NET SDK kell. Ez a cikk azt írják le a megoldást, és adja meg mintakód ehhez a forgatókönyvhöz. Mivel a kódot minden REST API-hívásokkal, minden Azure ad-val nem függőség vagy az Azure Media Services library, a kód könnyen fordítható bármely más programozási nyelv.
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+
+> [!div class="checklist"]
+> * A hitelesítő adatok beolvasása az Azure-portálon
+> * A hozzáférési jogkivonat segítségével Postman beolvasása
+> * Teszt a **eszközök** hozzáférési jogkivonat API
+
 
 > [!IMPORTANT]
-> A Media Services jelenleg az Azure hozzáférés-vezérlés hitelesítési modell. Azonban hozzáférés-vezérlés hitelesítési elavulttá válik 2018. június 1. Azt javasoljuk, hogy telepítse át az Azure AD hitelesítési modell lehető legrövidebb időn belül.
+> A Media Services jelenleg az Azure hozzáférés-vezérlés hitelesítési modell. Azonban hozzáférés-vezérlés hitelesítési elavulttá válik 2018. június 1. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre.
 
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="design"></a>Tervezés
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
+- [Az Azure portál használatával Azure Media Services-fiók létrehozása](media-services-portal-create-account.md).
+- Tekintse át a [eléréséhez Azure Media Services API-t az AAD-hitelesítés áttekintése](media-services-use-aad-auth-to-access-ams-api.md) cikk.
+- Telepítse a [Postman](https://www.getpostman.com/) többi ügyfél a REST API-k, ez a cikk látható. 
 
-Ez a cikk a következő hitelesítési és engedélyezési tervezési használjuk:
+    Ebben az oktatóanyagban uring vagyunk **Postman** , de a többi eszközt lenne megfelelő. Más alternatív megoldások: **Visual Studio Code** , a többi beépülő modul vagy **Telerik Fiddler**. 
 
-*  Protokoll: OAuth 2.0-s. OAuth 2.0 olyan webes biztonsági szabvány, amely lefedi a hitelesítést és az engedélyezést. Azt támogatják Google, a Microsoft, a Facebook-on és a PayPal. 2012. októberi azt lett erősítette meg. A Microsoft az OAuth 2.0 és az OpenID Connect erősen támogatja. Mindkét ezeknek a szabványoknak támogatottak több szolgáltatások és ügyfél könyvtárak, beleértve az Azure Active Directoryban, Open Web Interface .NET (OWIN) Katana, a és az Azure AD-könyvtárak.
-*  Támogatás típusa: ügyfél hitelesítő adatai megadják típusa. Ügyfél hitelesítő adatait a négy grant típusok, az OAuth 2.0 egyike. A Microsoft Azure AD Graph API access gyakran használják azt.
-*  Hitelesítési módszer: egyszerű szolgáltatást. A hitelesítési mód a felhasználó vagy az interaktív hitelesítés.
+## <a name="get-the-authentication-information-from-the-azure-portal"></a>A hitelesítő adatok beolvasása az Azure-portálon
 
-Összesen négy alkalmazáshoz vagy szolgáltatáshoz is érintett a Azure AD hitelesítési és engedélyezési folyamata Media Services használatával. A folyamatot, az alkalmazások és szolgáltatások a következő táblázat ismerteti:
+### <a name="overview"></a>Áttekintés
 
-|Alkalmazás típusa |Alkalmazás |Folyamat|
-|---|---|---|
-|Ügyfél | Felhasználói alkalmazás vagy megoldás | Ez az alkalmazás (ténylegesen, a proxy) regisztrálva van az Azure AD-bérlőt, amelyben az Azure-előfizetés és a media service fiók található. A szolgáltatás egyszerű, a regisztrált alkalmazás majd kapnak a tulajdonos vagy közreműködő szerepkörrel a a hozzáférést vezérlő (IAM) a media service fiók. A szolgáltatás egyszerű a app ID és az ügyfél ügyfélkulcs jelképezi. |
-|Az identitásszolgáltató (IDP) | Azure AD szolgáltatásba IDP | A regisztrált alkalmazás egyszerű szolgáltatásnév (ügyfél-azonosító és a titkos ügyfélkódot) hitelesítése az Azure AD szolgáltatásba a kiállító terjesztési hely. Ez a hitelesítés a belső és implicit módon történik. Ügyfél-hitelesítő adatok folyamata, mint az ügyfél helyett a felhasználó hitelesítése. |
-|Secure Token Service (STS) / OAuth-kiszolgáló | Azure AD szolgáltatásba STS | A kiállító terjesztési hely (vagy az OAuth kiszolgáló OAuth 2.0 feltételeit) hitelesítést követően egy hozzáférési jogkivonat vagy JSON webes jogkivonat (JWT) által kiadott STS/OAuth-kiszolgálóként a hozzáférés az Azure AD a középső rétegbeli erőforrásra: Ebben az esetben a Media Services REST API végpontra. |
-|Erőforrás | Media Services REST API-k | Minden Media Services REST API hívása olyan hozzáférési jogkivonatot STS vagy az OAuth-kiszolgálóként az Azure AD által kiadott engedélyezve van. |
+Media Services API eléréséhez kell összegyűjtenie a következő adatpontokhoz.
 
-Ha a mintakódot futtatja, és rögzítheti a jwt-t vagy a hozzáférési tokent, a jwt-t az alábbi attribútumok tartoznak:
+|Beállítás|Példa|Leírás|
+|---|-------|-----|
+|Azure Active Directory-bérlői tartomány|Microsoft.onmicrosoft.com|Azure AD szolgáltatásba a Secure Token Service (STS) végpont jön létre a következő formátumban: https://login.microsoftonline.com/ {your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Az Azure AD kibocsát jwt-t (olyan hozzáférési jogkivonatot) erőforrások eléréséhez.|
+|REST API-végpont|https://amshelloworld.restv2.westus.Media.Azure.NET/API/|Ez az a végpont, mely összes Media Services REST API elleni hívások az alkalmazásban végrehajtott.|
+|Ügyfél-azonosító (Alkalmazásazonosító)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Az Azure AD (ügyfél) azonosítót. A hozzáférési jogkivonat beszerzése az ügyfél-azonosító szükséges. |
+|Titkos ügyfélkulcs|mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq + Dbim0 =|Az Azure AD alkalmazás kulcsok (titkos). A titkos ügyfélkulcs szükség van a hozzáférési jogkivonat.|
 
-    aud: "https://rest.media.azure.net",
+### <a name="get-aad-auth-info-from-the-azure-portal"></a>Beolvasni az aad-ben hitelesítési adatait az Azure-portálon
 
-    iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+Ahhoz, hogy az adatokat, kövesse az alábbi lépéseket:
 
-    iat: 1497146280,
+1. Jelentkezzen be az [Azure portálra](http://portal.azure.com).
+2. Nyissa meg az AMS-példányt.
+3. Válassza ki **API-hozzáférés**.
+4. Kattintson a **csatlakozás az Azure Media Services API-t a szolgáltatás egyszerű**.
 
-    nbf: 1497146280,
-    exp: 1497150180,
+    ![API-hozzáférés](./media/connect-with-rest/connect-with-rest01.png)
 
-    aio: "Y2ZgYDjuy7SptPzO/muf+uRu1B+ZDQA=",
+5. Válasszon ki egy létező **az Azure AD-alkalmazást** , vagy hozzon létre egy új (lásd alább).
 
-    appid: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6",
+    > [!NOTE]
+    > Az Azure Media REST kérelem sikeres, a hívó felhasználónak rendelkeznie kell egy **közreműködő** vagy **tulajdonos** szerepkört a Media Services-fiókhoz elérésére tett kísérlet. Ha egy kivételt, amely szerint "a távoli kiszolgáló hibát adott vissza: (401) nem engedélyezett," Lásd [hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
-    appidacr: "1",
+    Ha szeretne hozzon létre egy új AD-alkalmazást, kövesse az alábbi lépéseket:
+    
+    1. Nyomja le az **új**.
+    2. Adjon meg egy nevet.
+    3. Nyomja le az **hozzon létre új** újra.
+    4. Nyomja le az **mentése**.
 
-    idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+    ![API-hozzáférés](./media/connect-with-rest/new-app.png)
 
-    oid: "a938cfcc-d3de-479c-b0dd-d4ffe6f50f7c",
+    Az új alkalmazás megjelenik a lapon.
 
-    sub: "a938cfcc-d3de-479c-b0dd-d4ffe6f50f7c",
+6. Beolvasása a **ügyfél-azonosító** (Alkalmazásazonosító).
+    
+    1. Válassza ki az alkalmazást.
+    2. Beolvasása a **ügyfél-azonosító** a jobb oldali ablakból. 
 
-    tid: "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    ![API-hozzáférés](./media/connect-with-rest/existing-client-id.png).
 
-A jwt-t és a négy alkalmazások attribútumokat vagy az előző táblázatban szereplő szolgáltatások között az alábbiakban a leképezéseket:
+7.  Az alkalmazás **kulcs** (titkos). 
 
-|Alkalmazás típusa |Alkalmazás |JWT-attribútum |
-|---|---|---|
-|Ügyfél |Felhasználói alkalmazás vagy megoldás |AppID: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6". A következő szakaszban regisztrálni fogja az Azure AD-alkalmazás ügyfél-azonosító. |
-|Az identitásszolgáltató (IDP) | Azure AD szolgáltatásba IDP |IDP: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/" a GUID-azonosító az azonosító a Microsoft-bérlő (microsoft.onmicrosoft.com). Mindegyik bérlő saját, egyedi azonosítóval rendelkezik |
-|Secure Token Service (STS) / OAuth-kiszolgáló |Azure AD szolgáltatásba STS | iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/". A globálisan egyedi Azonosítót az az azonosítója a Microsoft-bérlő (microsoft.onmicrosoft.com). |
-|Erőforrás | Media Services REST API-k |és: "https://rest.media.azure.net". A címzett, vagy a célközönség és a hozzáférési jogkivonat. |
+    1. Kattintson a **alkalmazás kezeléséhez** gomb (figyelje meg, hogy az ügyfél-azonosító adatai alatt áll **Alkalmazásazonosító**). 
+    2. Nyomja le az **kulcsok**.
+    
+        ![API-hozzáférés](./media/connect-with-rest/manage-app.png)
+    3. Hozzon létre az alkalmazás kulcsot (titkos) kitöltésével **leírása** és **EXPIRES** gomb lenyomásával **mentése**.
+    
+        Egyszer a **mentése** bekapcsolva, a kulcs értékét jeleníti meg. Másolja a kulcs értéke mielőtt elhagynák a panelt.
 
-## <a name="steps-for-setup"></a>A telepítés lépései
+    ![API-hozzáférés](./media/connect-with-rest/connect-with-rest03.png)
 
-Regisztrálásához és az alkalmazás Azure Active Directory (AAD) beállítása, valamint a kulcsok az Azure Media Services REST API-végpont meghívása, tekintse meg a cikk [Ismerkedés az Azure AD-alapú hitelesítés az Azure portál használatával](media-services-portal-get-started-with-aad.md)
+A web.config vagy az app.config fájlt, a kód későbbi felhasználásra AD kapcsolat paraméter értékét is hozzáadhat.
 
+> [!IMPORTANT]
+> A **ügyfélkulcsot** van egy fontos titkos kulcs és legyen megfelelően kulcstároló a védett vagy titkosított éles környezetben.
 
-## <a name="info-to-collect"></a>Adatok összegyűjtése
+## <a name="get-the-access-token-using-postman"></a>A hozzáférési jogkivonat segítségével Postman beolvasása
 
-REST-kódolási előkészítéséhez gyűjtse össze a kód felvenni a következő adatpontokhoz:
+Ez a szakasz bemutatja, hogyan használható **Postman** végrehajtani egy REST API-t, amely visszaadja a JWT tulajdonosi Token (jogkivonat). Media Services REST API-k meghívásához kell az "Engedélyezés" fejléc hozzáadását a hívásokat, majd adja meg az értékét "tulajdonosi *your_access_token*" minden hívásnak (ahogy ez az oktatóanyag a következő szakaszban). 
 
-*   Azure AD szolgáltatásba STS-végpont: https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token. Az ehhez a végponthoz a JWT jogkivonat van szükség. Az IDP szolgál, mellett az Azure AD is szolgál az STS szolgáltatással. Az Azure AD kibocsát egy jwt-t, az erőforrások eléréséhez (hozzáférési jogkivonat). A JWT jogkivonat különböző jogcímek rendelkezik.
-*   Az Azure Media Services REST API erőforrás vagy a célközönség: https://rest.media.azure.net.
-*   Ügyfél-azonosító: Lásd a 2. lépés a [lépéseket a telepítés](#steps-for-setup).
-*   Ügyfélkulcs: 2 lépés lásd: [lépéseket a telepítés](#steps-for-setup).
-*   A Media Services-fiók REST API-végpont a következő formátumban:
+1. Nyissa meg **Postman**.
+2. Válassza a **POST** lehetőséget.
+3. Az URL-címét, amely tartalmazza a bérlő neve a következő formátumban: a bérlő nevét kell végződnie **. onmicrosoft.com** és az URL-címet kell végződnie **oauth2/token**: 
 
-    https://[media_service_account_name].restv2. [data_center].media.azure.net/API 
+    {your-aad-tenant-name.onmicrosoft.com}/oauth2/token https://Login.microsoftonline.com/
 
-    Ez az a végpont, mely összes Media Services REST API elleni hívások az alkalmazásban végrehajtott. Például https://willzhanmswjapan.restv2.japanwest.media.azure.net/API.
+4. Válassza ki a **fejlécek** fülre.
+5. Adja meg a **fejlécek** információit a "Kulcs/érték" adatrácson. 
 
-Ezek a paraméterek öt majd be a web.config vagy az app.config fájl használata a kódban.
+    ![Adatrács](./media/connect-with-rest/headers-data-grid.png)
 
-## <a name="sample-code"></a>Mintakód
+    Másik lehetőségként kattintson **tömeges módosítása** a az ablak jobb oldalán Postman hivatkozásra, és illessze be az alábbi kódot.
 
-A mintakódot található [az Azure AD-alapú hitelesítés az Azure Media Services Access: mindkét REST API-n keresztül](https://github.com/willzhan/WAMSRESTSoln).
+        Content-Type:application/x-www-form-urlencoded
+        Keep-Alive:true
 
-A mintakód két részből áll:
+6. Nyomja meg a **törzs** fülre.
+7. Adja meg a szervezet a "Kulcs/érték" adatrácson (csere az ügyfél-Azonosítót és titkos értékek) használatával. 
 
-*   A dll-fájl hordozhatóosztálytár-projektjének, amely rendelkezik az Azure AD hitelesítési és engedélyezési REST API-kódban. A Media Services REST API végpontra, a hozzáférési jogkivonat a REST API-hívások metódust is tartalmaz.
-*   Konzol teszt ügyfél, amely kezdeményezi az Azure AD-alapú hitelesítés, és különböző Media Services REST API-t hívja.
+    ![Adatrács](./media/connect-with-rest/data-grid.png)
 
-A minta projekt három lehetőséggel rendelkezik:
+    Másik lehetőségként kattintson **tömeges módosítása** jobb oldalán a Postman ablakot, és illessze be a következő törzsében (csere az ügyfél-Azonosítót és titkos értékek):
 
-*   Az Azure AD hitelesítési keresztül az ügyfél hitelesítő adatait adja meg csak a REST API használatával.
-*   Azure Media Services hozzáférés csak a REST API használatával.
-*   Azure Storage hozzáférés csak a REST API használatával (a REST API használatával egy Media Services-fiók létrehozásához használt).
+        grant_type:client_credentials
+        client_id:{Your Client ID that you got from your AAD Application}
+        client_secret:{Your client secret that you got from your AAD Application's Keys}
+        resource:https://rest.media.azure.net
 
+8. Kattintson a **Küldés** gombra.
 
-## <a name="where-is-the-refresh-token"></a>Hol található a frissítési jogkivonat?
+    ![Szerezze be a tokent](./media/connect-with-rest/connect-with-rest04.png)
 
-Néhány olvasók kérheti: hol található a frissítési jogkivonat? Miért nem használja a frissítési jogkivonat Itt?
+A visszaadott válaszban a **hozzáférési jogkivonat** , hogy szeretné-e használni minden AMS API-k elérésére.
 
-A frissítési jogkivonat célja nem egy hozzáférési jogkivonatot frissítése. Végfelhasználói hitelesítés kihagyásával még mindig érvényes jogkivonat, ha egy korábbi jogkivonat lejár tervezték. A frissítési jogkivonat jobb nevét lehet, hogy valami like "kihagyása a felhasználó újra-sign-in jogkivonatát."
+## <a name="test-the-assets-api-using-the-access-token"></a>Teszt a **eszközök** hozzáférési jogkivonat API
 
-Használja az OAuth 2.0 engedélyezési folyamata (felhasználónévvel és jelszóval, egy felhasználó nevében eljáró) adja meg, ha a frissítési jogkivonat segítséget nyújt a megújított access token beszerzése a kért felhasználói beavatkozás nélkül. Azonban az OAuth 2.0 ügyfél hitelesítő adatai megadják a cikkben ismertetett folyamatot, az ügyfél működik a saját nevében. Minden felhasználói beavatkozás nem szükséges, és a hitelesítési kiszolgáló nem szükséges, hogy biztosítson egy frissítési jogkivonat. Ha hibakeresése a **GetUrlEncodedJWT** metódust, akkor figyelje meg, hogy a jogkivonat végpontjához válaszát rendelkezik-e a hozzáférési tokent, de nincs frissítési jogkivonat.
+Ez a szakasz bemutatja, hogyan férhet hozzá a **eszközök** API használatával **Postman**.
 
-## <a name="next-steps"></a>Következő lépések
+1. Nyissa meg **Postman**.
+2. Válassza a **GET** lehetőséget.
+3. Illessze be a REST API-végpont (például https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
+4. Válassza ki a **engedélyezési** fülre. 
+5. Válassza ki **tulajdonosi jogkivonattal**.
+6. Illessze be a jogkivonat az előző szakaszban létrehozott.
 
-Ismerkedés a [fájlok feltöltése a fiókjához](media-services-dotnet-upload-files.md).
+    ![Szerezze be a tokent](./media/connect-with-rest/connect-with-rest05.png)
+
+    > [!NOTE]
+    > Lehet, hogy a Postman UX különböző, a Mac és a számítógépek között. Ha a Mac-verzió nem rendelkezik a "Tulajdonosi jogkivonat" lehetőséget a **hitelesítési** szakasz legördülő menüben adja hozzá a **engedélyezési** manuálisan a Mac-ügyfél a fejlécet.
+
+   ![Hitelesítési fejléc](./media/connect-with-rest/auth-header.png)
+
+7. Válassza ki **fejlécek**.
+5. Kattintson a **tömeges módosítása** a Postman ablak jobb hivatkozásra.
+6. Illessze be a következő fejléc:
+
+        x-ms-version:2.15
+        Accept:application/json
+        Content-Type:application/json
+        DataServiceVersion:3.0
+        MaxDataServiceVersion:3.0
+
+7. Kattintson a **Küldés** gombra.
+
+A visszaadott válaszban az eszközöket, amelyek a fiókban.
+
+## <a name="next-steps"></a>További lépések
+
+* A mintakód a próbálja [az Azure AD-alapú hitelesítés az Azure Media Services Access: mindkét REST API-n keresztül](https://github.com/willzhan/WAMSRESTSoln)
+* [A .NET fájlok feltöltése](media-services-dotnet-upload-files.md)

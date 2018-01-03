@@ -3,7 +3,7 @@ title: "A virtuális gépek létrehozásához Azure DevTest Labs szolgáltatásb
 description: "Megtudhatja, hogyan frissítése és eltávolítása az Azure DevTest Labs képletek"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 841dd95a-657f-4d80-ba26-59a9b5104fe4
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
-ms.author: tarcher
+ms.author: v-craic
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfdab5def50158f9b764bbb1e50c2624cc6d5fb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dcd285761774c3cd1050976894f1f15db61b52c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs képletek kezelése
 
@@ -64,7 +64,7 @@ A következő lépések végigvezetik egy egyéni lemezképet, Piactéri lemezk�
     * **Jelszó** – írja be - vagy a legördülő listából válassza ki - társított a titkos kulcsot (jelszó), amely a megadott felhasználó használni kívánt értéket. A titkos kulcsok kapcsolatos további információkért lásd: [Azure DevTest Labs: titkos tárolójának](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store/).
     * **Virtuális gép lemeztípus** : Adja meg vagy HDD (merevlemez-meghajtóra), vagy SSD (SSD-meghajtóra), milyen típusú jelzi a virtuális gépek üzembe helyezve az alapjául szolgáló lemezképhez használata esetén engedélyezett.
     * ** Virtuális gép mérete ** – válasszon ki egy előre meghatározott elemek adja meg a Processzormagok, RAM memória méretét és a merevlemez mérete a virtuális gép létrehozásához. 
-    * **Az összetevők** - megnyitásához válassza a **vegye fel az összetevők** panel, ahol válassza ki, és az alapjául szolgáló lemezképhez hozzáadni kívánt az összetevők konfigurálása. Az összetevők kapcsolatos további információkért lásd: [kezelése Virtuálisgép-összetevők a Azure DevTest Labs szolgáltatásban](./devtest-lab-add-vm-with-artifacts.md).
+    * **Az összetevők** - megnyitásához válassza a **vegye fel az összetevők** panel, ahol válassza ki, és az alapjául szolgáló lemezképhez hozzáadni kívánt az összetevők konfigurálása. Az összetevők kapcsolatos további információkért lásd: [az Azure DevTest Labs szolgáltatásban virtuális gépen egyéni összetevők létrehozása](devtest-lab-artifact-author.md).
     * **Speciális beállítások** – Itt adhatja meg megnyitni a **speciális** panel, ahol konfigurálhatja a következő beállításokat:
         * **Virtuális hálózati** -adja meg a kívánt virtuális hálózatot.
         * **Alhálózati** -adja meg a kívánt alhálózatot.    
@@ -134,6 +134,6 @@ A képlet törléséhez kövesse az alábbi lépéseket:
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 * [Egyéni lemezképek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
-## <a name="next-steps"></a>Következő lépések
-Miután létrehozta a képlet használható virtuális gép létrehozásakor, a következő lépés, hogy [a virtuális gépek hozzáadása a labor](devtest-lab-add-vm-with-artifacts.md).
+## <a name="next-steps"></a>További lépések
+Miután létrehozta a képlet használható virtuális gép létrehozásakor, a következő lépés, hogy [a virtuális gépek hozzáadása a labor](devtest-lab-add-vm.md).
 

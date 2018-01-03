@@ -14,35 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
-ms.openlocfilehash: f52252aca0ce89d6a86e620a97e749461181016f
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: efcafa40c3d47ebfdd4520f98b65ad2c05b03c57
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="introducing-microsoft-azure"></a>Introducing Microsoft Azure
 A Microsoft Azure a Microsoft alkalmazás platformja a nyilvános felhő.  Ez a cikk célja, hogy biztosítson alaprendszert az Azure-ban – alapok megértéséhez még akkor is, ha a felhő semmit nem tudja a számítástechnikai.
 
 **Ez a cikk olvasása**
 
-Azure folyamatosan nő, egyszerűen get túlterhelt.  Indítsa el a alapvető szolgáltatásokat, amelyek először a cikkben találhatók, és további szolgáltatásokat, majd nyissa meg. Ez nem jelenti azt, csak a kiegészítő szolgáltatásokat nem használhatja önmagában, de az alapvető szolgáltatások jött létre az Azure-ban futó alkalmazások központi.
+Azure folyamatosan nő, egyszerűen get túlterhelt.  Indítsa el a alapvető szolgáltatásokat, amelyek először a cikkben találhatók, és további szolgáltatásokat, majd nyissa meg. Amely a nem jelenti azt, csak a további szolgáltatások önmagában nem használhatók. De az alapvető szolgáltatások jött létre az Azure-ban futó alkalmazások részében.
 
 **Visszajelzés küldése**
 
 Visszajelzése fontos. Ez a cikk Azure hatékony áttekintést adjon meg. Ha nem, adja meg, a megjegyzéseket szakaszban az oldal alján. Adjon meg néhány részletek megjelenítéséhez várható és hogyan lehet fokozni a cikk.  
 
 ## <a name="the-components-of-azure"></a>Azure összetevői
-Azure services csoportosítja a felügyeleti portálon, és a különböző visual eszközökkel, például a kategóriák a [Mi az Azure Infographic](https://azure.microsoft.com/documentation/infographics/azure/) . A kezelési portálon kezeléséhez használja a legtöbb (azonban nem minden) szolgáltatások az Azure-ban.
+Azure services csoportosítja az Azure portálon, és a különböző visual eszközökkel, például a [Mi az Azure Infographic](https://azure.microsoft.com/documentation/infographics/azure/). A [Azure-portálon](http://portal.azure.com) használata az Azure-szolgáltatások kezelésére.
 
-Ez a cikk fogja használni a **másik vállalatnál** hasonló függvény alapján szolgáltatások kapcsolatban, és nagyobb ők részét képező fontos alárendelt szolgáltatások hívásához.  
+Ebben a cikkben az egy **másik vállalatnál** hasonló függvény alapján szolgáltatások kapcsolatban, és nagyobb ők részét képező fontos alárendelt szolgáltatások hívásához.  
 
 ![Az Azure-összetevők](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png)   
  *Ábra: Az Azure internetről elérhető, az Azure adatközpontjaiban futó alkalmazásszolgáltatások biztosít.*
 
-## <a name="management-portal"></a>Felügyeleti portál
-Azure rendelkezik nevű webes felületet a [kezelési portál](http://manage.windowsazure.com) , amely lehetővé teszi a rendszergazdák eléréséhez és a legtöbb, de nem minden Azure-szolgáltatások felügyeletéhez.  Microsoft a béta újabb felhasználói felület portál általában kiadott régebbi egy kivonás előtt. Az újabb egy elnevezése a ["Azure Portal"](https://portal.azure.com/).
-
-Általában egy hosszú átfedés van amikor mindkét portálok aktívak. Alapvető szolgáltatások mindkét portálok jelenik meg, amíg nem minden funkció is érhetők el. Újabb szolgáltatások jelenik meg a újabb portál első és a régebbi szolgáltatások és funkciók csak lehet, hogy a régebbi egy szerepel.  A itt üzenet, ha nem találja a valamit a régebbi portálon ellenőrizze újabb azzal, és fordítva.
+## <a name="azure-portal"></a>Azure Portal
+Azure rendelkezik nevű webes felületet a [Azure-portálon](http://portal.azure.com) , amely lehetővé teszi a rendszergazdák eléréséhez és Azure-szolgáltatások és szolgáltatások felügyeletéhez.  
 
 ## <a name="compute"></a>Számítás
 A legalapvetőbb dolgot a felhőplatform does egyik alkalmazások végrehajtására. Az Azure számítási modellek mindegyiknek saját szerepet játszanak.
@@ -66,7 +64,7 @@ Ez a felhőalapú informatika általános megközelítése segítségével szám
 **Virtuálisgép-forgatókönyvek esetén**
 
 1. **Fejlesztési és tesztelési célú** -segítségével lehet őket hozzon létre egy alacsony költségű fejlesztési és tesztelési platform, amely leállíthat befejezése után használja azt. Előfordulhat, hogy hozzon létre, és bármilyen nyelvet és a könyvtárak tetszés használó alkalmazások futtatásához. Ezeket az alkalmazásokat az Azure biztosít, amely akkor is beállíthatja használjon az SQL Server vagy egy másik adatbázis-kezelő rendszer egy vagy több virtuális gépeken futó felügyeleti lehetőségeket használhatja.
-2. **Helyezze át az Azure-ba (növekedési-és-shift) alkalmazások** -"Növekedési-és-shift" hivatkozik sokkal áthelyezése az alkalmazás, például egy áttekintésében szeretné használni egy nagy objektumot.  "Növekedési" a VHD-t a helyi adatközpontban, a és "az eltolás mértékét megadó" az Azure-ba, és nincs futtassa.  Általában akkor néhány munkájuk távolítsa el a más rendszerekkel függőségeket. Ha túl sok, Ehelyett választhatja az 3. lehetőség.  
+2. **Helyezze át az Azure-ba (növekedési-és-shift) alkalmazások** -"Növekedési-és-shift" hivatkozik sokkal áthelyezése az alkalmazás, például egy áttekintésében szeretné használni egy nagy objektumot.  "Növekedési" a VHD-t a helyi adatközpontban, a és "az eltolás mértékét megadó" az Azure-ba, és nincs futtassa.  Általában akkor néhány a munkáját, távolítsa el a más rendszerekkel függőségeket. Ha túl sok, Ehelyett választhatja az 3. lehetőség.  
 3. **Az Adatközpont kiterjesztése** -használata Azure futó virtuális gépeket a helyszíni adatközpont kiterjesztése SharePoint vagy más alkalmazásokat. Ezt támogatja, nem lehet létrehozni a Windows-tartományokban a felhőben futó Active Directory az Azure virtuális gépeken. Az Azure Virtual Network (később említett) segítségével összekötni a helyi hálózat és a hálózat az Azure-ban.
 
 ### <a name="web-apps"></a>Web Apps
@@ -75,7 +73,7 @@ Ez a felhőalapú informatika általános megközelítése segítségével szám
 
 A leggyakoribb dolog, amelyek személyek a felhőben fut webhelyekhez és webes alkalmazásokhoz. Ez lehetővé teszi az Azure virtuális gépek, de továbbra is hagyja meg az ezzel az egy vagy több virtuális gépek és az alapjául szolgáló operációs rendszerek felügyelete. Cloud services webes szerepkörök ehhez, de telepíteni és fenntartani, azokat továbbra is szükséges adminisztratív munka.  Mi történik, ha csak kívánt webhely Ha valaki másnak gondoskodik a felügyeleti feladatok meg?
 
-Ez az pontosan, Web Apps biztosít. A számítási modellt kínál a felügyelt webes környezet az Azure felügyeleti portálra, valamint a API-k használatával. Egy meglévő webhely alkalmazást áthelyezi változatlan Web Apps, vagy létrehozhat egy új közvetlenül a felhőben. Után egy webhelye fut-e, adja hozzá, vagy példányt eltávolítja, dinamikusan, Azure Web Apps kérések történő terheléselosztásához mindegyik hagyatkoznia. Az Azure Apps kínál egy megosztott lehetőséget, ha a webhely más helyekre rendelkező virtuális gép fut, és a egy normál beállítás, amely lehetővé teszi, hogy a hely a saját virtuális gép futtatásához. A normál beállítás lehetővé teszi a példányok (számítástechnikai power) méretének növelése, szükség esetén.
+Ez az pontosan, Web Apps biztosít. A számítási modellt kínál a felügyelt webes környezet az Azure-portálon, valamint a API-k használatával. Egy meglévő webhely alkalmazást áthelyezi változatlan Web Apps, vagy létrehozhat egy új közvetlenül a felhőben. Után egy webhelye fut-e, adja hozzá, vagy példányt eltávolítja, dinamikusan, Azure Web Apps kérések történő terheléselosztásához mindegyik hagyatkoznia. Az Azure Apps kínál egy megosztott lehetőséget, ha a webhely más helyekre rendelkező virtuális gép fut, és a egy normál beállítás, amely lehetővé teszi, hogy a hely a saját virtuális gép futtatásához. A normál beállítás lehetővé teszi a példányok (számítástechnikai power) méretének növelése.
 
 Fejlesztési Web Apps támogatja a .NET, PHP, Node.js, Java és Python, valamint az SQL-adatbázis és az Azure-adatbázis a MySQL relációs tárolására. Azt is beépített támogatást nyújt több népszerű alkalmazások, beleértve a WordPress, a Joomla vagy a Drupal. A cél, hogy egy alacsony költségű, méretezhető és körben használható platformot biztosít webhelyek és webalkalmazások létrehozása a nyilvános felhőben.
 
@@ -87,9 +85,9 @@ Webes alkalmazások hasznosak lehetnek a vállalatok, a fejlesztők és a webes 
 ![Azure-Felhőszolgáltatás](./media/fundamentals-introduction-to-azure/CloudServicesIntroNew.png)   
 *Ábra: Azure Cloud Services Itt adható meg olyan platformon, mint egy Platformszolgáltatási környezetben kiválóan méretezhető egyéni kód futtatása*
 
-Tegyük fel, hogy hozható létre egy felhő-alkalmazás, amely képes támogatni az egyidejű felhasználók sok nem igényel sok felügyeleti és soha nem működik. Egy meglévő szoftver gyártójához Előfordulhat például, hogy határozott vezessék be a szoftver (SaaS) szolgáltatás épület egy verziója, a felhőben az alkalmazások közül. Vagy előfordulhat, hogy a kezdeti egy fogyasztó alkalmazás várt mérete akkor nő, gyors létrehozása. Ha Azure van építve, mely végrehajtási modell használja?
+Tegyük fel, hogy hozható létre egy felhő-alkalmazás, amely képes támogatni az egyidejű felhasználók sok nem igényel sok felügyeleti és soha nem működik. Egy meglévő szoftver gyártójához Előfordulhat például, hogy határozott vezessék be a szoftver (SaaS) szolgáltatás épület egy verziója, a felhőben az alkalmazások közül. Vagy előfordulhat, hogy a kezdeti egy fogyasztó alkalmazás várható méretének növelése gyors létrehozása. Ha Azure van építve, mely végrehajtási modell használja?
 
-Az Azure Web Apps lehetővé teszi, hogy az ilyen webalkalmazás létrehozása, de néhány megkötések. Nem rendelkezik rendszergazdai hozzáféréssel, például, ami azt jelenti, hogy tetszőleges szoftver nem telepíthető. Azure virtuális gépek lehetővé teszi az rugalmasan, beleértve a rendszergazdai hozzáféréssel, és biztosan használhatja hozható létre olyan jól méretezhető alkalmazás, de a megbízhatóság és felügyeleti számos aspektusát kezelni, saját magának kell. Mit szeretne olyan beállítás, amely lehetővé teszi az szükséges, de a megbízhatóság és a felügyeleti szükséges munka nagy részét is kezeli a vezérlő.
+Az Azure Web Apps lehetővé teszi, hogy az ilyen webalkalmazás létrehozása, de néhány megkötések. Nem rendelkezik rendszergazdai hozzáféréssel, például, ami azt jelenti, hogy tetszőleges szoftver nem telepíthető. Az Azure virtuális gépek rugalmasan, beleértve a rendszergazdai hozzáférést biztosít. Hozhat létre egy jól méretezhető alkalmazás. Azonban saját kezűleg a megbízhatóság és felügyeleti számos aspektusát kezelésére. Mit szeretne olyan beállítás, amely lehetővé teszi az szükséges, de a megbízhatóság és a felügyeleti szükséges munka nagy részét is kezeli a vezérlő.
 
 Ennek az az pontosan mit Azure Cloud Services biztosítja. Ez a technológia terveztek kifejezetten méretezhető, megbízható, és alacsony – a rendszergazdai alkalmazásokhoz, és milyen gyakran hívják Platform (PaaS) szolgáltatás egy példát. A használatához hozzon létre egy alkalmazást a technológia úgy dönt, például a C#, Java, PHP, Python, Node.js, vagy valami mással. A kód végrehajtja a virtuális gépek (néven példányok) Windows Server-verziót futtat.
 
@@ -162,7 +160,7 @@ Néha szükség nagy mennyiségű adat áthelyezése az Azure. Amely ehhez hossz
 **Forgatókönyv-importálás / exportálás**
 
 * **Nagy adatáttelepítés** -bármikor nagy mennyiségű adat (TB), amely az Azure-bA feltölteni kívánt rendelkezik, az Import/Export szolgáltatás nem gyakran sokkal gyorsabb és lehet, hogy olcsóbbak áthelyezte azt az interneten keresztül. Ha az adatokat a BLOB, például a Table storage vagy egy SQL-adatbázis más űrlapba tud feldolgozni.
-* **Archivált adat-helyreállítás** -importálási/exportálási segítségével rendelkezik Microsoft átviteli nagy mennyiségű adat tárolja az Azure Blob Storage és a tárolóeszköz között küldött és rendelkezik eszköz kézbesítését a kívánt helyre. Ez eltarthat egy ideig, mert nincs vész-helyreállítási jó választás. Érdemes az archivált adatok gyors eléréséhez nem szükséges.
+* **Archivált adat-helyreállítás** -importálási/exportálási segítségével rendelkezik Microsoft átviteli nagy mennyiségű adat tárolja az Azure Blob Storage és a tárolóeszköz között küldött és rendelkezik eszköz kézbesítését a kívánt helyre. Ez némi időt vesz igénybe, mert nincs vész-helyreállítási jó választás. Érdemes az archivált adatok gyors eléréséhez nem szükséges.
 
 ### <a name="file-service"></a>File szolgáltatás
 ![Az Azure File Service](./media/fundamentals-introduction-to-azure/FileServiceIntroNew.png)    
@@ -211,7 +209,7 @@ ExpressRoute kapcsolatos további információkért lásd: [ExpressRoute műszak
 
 Ha több adatközpontot az Azure alkalmazás fut, a felhasználók által érkező kérések intelligens módon irányítja az alkalmazás példányai között használhatja Azure Traffic Manager. Is irányíthatja a forgalmat a szolgáltatás nem fut az Azure-ban, amíg az interneten.  
 
-Csak egy részét a világ felhasználóival az Azure-alkalmazások futtatása előfordulhat, hogy csak egy Azure-adatközpontban. Az alkalmazás a felhasználók a világ többi részén Elszórva azonban valószínűbb futtatható több adatközpontot, talán még az összes. A második esetben probléma szembesülhetnek: hogyan tegye intelligens módon közvetlen alkalmazáspéldányok felhasználók? A legtöbb esetben célszerű minden felhasználó számára, legközelebbi adatközpont hozzáférni, mert azt valószínűleg ad rá, hogy a legjobb válaszidő. De mi történik, ha az az alkalmazás ezen példányát túlterhelt vagy nem érhető el? Ebben az esetben célszerű saját kérelmet automatikusan egy másik datacenter irányítani. Ez az pontosan, mi történik az Azure Traffic Manager által.
+Csak egy részét a világ felhasználóival az Azure-alkalmazások futtatása előfordulhat, hogy csak egy Azure-adatközpontban. Az alkalmazás a felhasználók a világ többi részén Elszórva azonban valószínűbb futtatható több adatközpontot, talán még az összes. A második esetben probléma szembesülhetnek: hogyan tegye intelligens módon közvetlen alkalmazáspéldányok felhasználók? A legtöbb esetben érdemes a legközelebbi, datacenter elérésére, mivel így azokat a legjobb válaszidő minden felhasználóhoz. De mi történik, ha az az alkalmazás ezen példányát túlterhelt vagy nem érhető el? Ebben az esetben célszerű át tudja irányítani a kérelmet automatikusan egy másik datacenter. Ez az pontosan, mi történik az Azure Traffic Manager által.
 
 Az alkalmazás tulajdonosa adja meg, hogyan legyenek irányítva felhasználók által érkező kérések adatközpontok szabályokat határozza meg, majd támaszkodik a Traffic Manager hajthat végre ezeket a szabályokat. Felhasználók például előfordulhat, hogy szokásos módon átirányítja a legközelebbi Azure-adatközpontban, de beolvasása küldhet egy másikat, ha a válaszidőt azok alapértelmezett datacenter meghaladja a más adatközpontok válaszidejét. Számos felhasználóval rendelkező globálisan elosztott alkalmazásokhoz hogy egy beépített szolgáltatás nem tudja kezelni a fenti problémák akkor hasznos.
 
@@ -234,7 +232,7 @@ A Visual Studio Team Services alhálózatnév marketing kiterjedő egy szám szo
 
 Az üzemeltetett forrás ellenőrző rendszer verziókezelést és a munka elem követési biztosít a Team Foundation Service nevű tartalmazza.  Akkor is használható Git verziókezelést Ha jobban szeret. És a projekt által használt adatforrás vezérlő rendszer eltérőek lehetnek. Létrehozhat korlátlan titkos csapatprojektek érhető el a bárhol a világon.  
 
-A Visual Studio Team Services egy terheléselosztási tesztelési szolgáltatást biztosít. Ön is végrehajthatja a terhelés tesztek létrehozása a Visual Studio, a felhőben található virtuális gépeken. A teszthez betöltendő felhasználók teljes száma, és a Visual Studio Team Services automatikusan meghatározza hány ügynök van szükség, a szükséges virtuális gépek léptetési és a betöltés tesztek végrehajtása. Ha az MSDN-előfizető, szabad felhasználói perc minden hónap tesztelés terhelés ezer kap.
+A Visual Studio Team Services egy terheléselosztási tesztelési szolgáltatást biztosít. Ön is végrehajthatja a terhelés tesztek létrehozása a Visual Studio, a felhőben található virtuális gépeken. Megadhatja, hogy a vizsgálat során, és a Visual Studio Team Services automatikusan betölteni kívánt felhasználók teljes száma határozza meg, hány ügynök van szükség, a szükséges virtuális gépek léptetési és a betöltés tesztek végrehajtása. Ha az MSDN-előfizető, szabad felhasználói perc minden hónap tesztelés terhelés ezer kap.
 
 A Visual Studio Team Services is biztosít, szolgáltatásokat, például a folyamatos integrációt alkot, Kanban modulok és virtuális team helyiségekben gyors fejlesztési támogatása.
 
@@ -249,7 +247,7 @@ De egy a helyszíni rendszer már rendelkező szervezeteknek meg, hogy hatékony
 
 *Ábra: Az Application Insights figyelők teljesítmény- és használati az élő web vagy az eszköz alkalmazás.*
 
-Ha az alkalmazás - tette közzé, hogy a mobileszközökön, az asztali számítógépek és a webböngésző - fut az Application Insights megtudhatja, teljesítményét és a felhasználók tevékenységeit vele. Ez akkor is megtartja az összeomlásokat és a lassú válasz számát, riasztás, ha a ábra kereszt-elfogadhatatlan küszöbértékeket, és segítséget nyújtanak a problémák diagnosztizálásához.
+Ha az alkalmazás - tette közzé, hogy a mobileszközökön, az asztali számítógépek és a webböngésző - fut az Application Insights megtudhatja, teljesítményét és a felhasználók tevékenységeit vele. Az összeomlásokat és a lassú válasz számát tartja, riasztás, ha a ábra kereszt-elfogadhatatlan küszöbértékeket, és segítséget nyújtanak a problémák diagnosztizálásához.
 
 Egy új szolgáltatás fejlesztésekor tervezze meg a felhasználók a sikeresség felméréséhez. Használati minták elemzésével, mi működik a legjobban az ügyfeleknek megértéséhez, és javíthatja az alkalmazás minden fejlesztési ciklusban.
 
@@ -281,7 +279,7 @@ Az Azure API Management megkönnyíti a szervezetek biztonságosan és lépték�
 
 **API-kezelési forgatókönyveket**
 
-Tegyük fel, a vállalat rendelkezik-e azon eszközök, hogy minden szeretne-e ezen a számon egy központi szolgáltatás adatok – például egy olyan szállítási vállalat rendelkezik olyan eszközökkel, a minden teherautó útközben.  Biztosan a vállalati érdemes külön teherautók nyomon, hogy azok megbízható előrejelzése és kézbesítési idejének beállítása a rendszer. Azt tudja hány teherautók rendelkezik, és tervezze meg megfelelően.  Minden egyes teherautó olyan eszköz, amely visszahívja az Elhelyezés és sebességét, adatok, és lehet, hogy több központi helyre lesz szüksége.
+Tegyük fel, a vállalat rendelkezik-e azon eszközök, hogy minden szeretne-e ezen a számon egy központi szolgáltatás adatok – például egy olyan szállítási vállalat rendelkezik olyan eszközökkel, a minden teherautó útközben.  Biztosan a vállalat hozzon létre a rendszer külön teherautók nyomon, hogy azok megbízható előrejelzése és kézbesítési idejének szeretne. Azt tudja hány teherautók rendelkezik, és tervezze meg megfelelően.  Minden egyes teherautó visszahívja egy központi helyen az Elhelyezés és sebességét, adatok, és lehet, hogy több eszköz szükséges.
 
 A szállítási vállalat ügyfél valószínűleg akkor is előnyös a pozicionáló adatok.  Az ügyfelek használhatják azt tudja, milyen távolságban termékek van továbbítani, ahol azok elakadnak, mennyi azok bizonyos útvonalon fizető (Ha mi fizetett szállítási együtt). A szállítási vállalati már összesíti az adatokat, ha sok ügyfél lehet, hogy díj ellenében azt.  De majd a szállítási vállalati lehetővé teszik az adatokat biztosít. Miután az ügyfél számára hozzáférést nyújtanak, azokat nem lehet szabályozhatják, hogy az adatok milyen gyakran le kell kérdezni. Milyen adatok való hozzáférés szabályaik biztosítása érdekében rendelkeznek. Ezek a szabályok összes kellene beépíthető a külső API. Ez azért, ahol az API Management segítségével.  
 
@@ -299,7 +297,7 @@ Ez a szolgáltatás Azure Active Directory hozzáférés-vezérlés, egy másik 
 
 Directory szolgáltatások egy alapvető megerősítő a helyszíni számítási. Nem lehet meglepő, hogy azok viselkedése is fontos a felhőben.
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 ![Azure Multi-Factor Authentication](./media/fundamentals-introduction-to-azure/MFAIntroNew.png)   
 
 *. Ábra: A multi-factor Authentication azonosítási egynél több űrlap ellenőrzése az alkalmazás a funkcionalitást biztosítja*
@@ -347,7 +345,7 @@ Notification hubs használatával bármilyen háttérrendszerből együttműköd
 
 Legfrissebb hírek küldhet, eseményeket és a termék bejelentési értesítések több millió felhasználónak sport és kis késésű. Vállalatok értesítheti új idő-és nagybetűket indított kommunikációval kapcsolatban, például az értékesítési érdeklődők az alkalmazottak számára, az alkalmazottaknak nem kell e-mail vagy más alkalmazásokhoz, és azonnal tájékozódjon, folyamatosan kereséséhez. Egy-egyszer használatos jelszavak a többtényezős hitelesítés is küldhet.
 
-## <a name="back-up"></a>Biztonsági mentése
+## <a name="back-up"></a>Biztonsági mentés
 Minden vállalati kell biztonsági mentése és visszaállítása az adatokat. Használhatja az Azure biztonsági mentése és visszaállítása az alkalmazás a felhőben, vagy a helyszínen. Azure biztonsági mentés típusától függően különböző lehetőséget kínál.
 
 ### <a name="site-recovery"></a>Site Recovery
@@ -380,7 +378,7 @@ Függetlenül attól, milyen műveletet a kód gyakran kell más kód kommuniká
 
 Egy egyszerű ötlet Queuing: egy alkalmazás egy üzenet helyezi a sorhoz, és az üzenet egy másik alkalmazás végül olvasható. Ha az alkalmazásnak csak az egyszerű szolgáltatás, Azure várólisták lehet a legjobb választás.
 
-Az Azure nőtt időbeli módjával Azure tárolási sorok és a Service Bus-üzenetsorok szolgáltatásokhoz hasonló Üzenetsor-kezelés. A lehetnek, miért kellene használni kívánt közül történő ismertetnek a viszonylag műszaki papír [Azure várólisták és a Service Bus-üzenetsorok - az képest és ellentétben](http://msdn.microsoft.com/library/azure/hh767287.aspx).  A sok esetben vagy fog működni.
+Az Azure nőtt időbeli módjával Azure tárolási sorok és a Service Bus-üzenetsorok szolgáltatásokhoz hasonló Üzenetsor-kezelés. A lehetnek, miért kellene használni kívánt közül történő ismertetnek a viszonylag műszaki papír [Azure várólisták és a Service Bus-üzenetsorok - az képest és ellentétben](http://msdn.microsoft.com/library/azure/hh767287.aspx).  Sok esetben vagy működik.
 
 **Várólista forgatókönyvek**
 
@@ -461,7 +459,7 @@ Bármely Azure adatkezelés szolgáltatások-SQL-adatbázis, a táblák vagy a B
 
 A Cloud Services alkalmazás adatok tárolása a gyorsítótár, majd közvetlenül anélkül állandó tároló elérésére lekéréséhez. A gyorsítótár az alkalmazás virtuális gépeken belül is kezelhetők, vagy a virtuális gépeket, amely kizárólag gyorsítótárazását ellátni. Mindkét esetben a gyorsítótár terjeszthető, az adatok tartalmaz terjedésének egy Azure-adatközpontban több virtuális gépek között.
 
-Azure számos különböző gyorsítótár technológia, amely rendelkezik vette idővel rendelkezik. Ahhoz, azok lett bevezetve, van egy megosztott szerepköralapú, felügyelt és a Redis gyorsítótár. A megosztott gyorsítótárazás régebbi technológia, és ne hozzon létre új megvalósítások vele. A felügyelt gyorsítótár a In szerepköralapú gyorsítótár, de az Azure felügyeleti portálon kívül felügyelt szolgáltatásként azonos funkciókat tartalmaz. A Redis Cache előzetes verzió van. A Redis-megvalósítás a funkciók legnagyobb számú, és ajánlott, ha új gyorsítótárazási kódot ír.
+Azure számos különböző gyorsítótár technológia, amely rendelkezik vette idővel rendelkezik. Ahhoz, azok lett bevezetve, van egy megosztott szerepköralapú, felügyelt és a Redis gyorsítótár. A megosztott gyorsítótárazás régebbi technológia, és ne hozzon létre új megvalósítások vele. A felügyelt gyorsítótár a In szerepköralapú gyorsítótár, de az Azure-portálon kívül felügyelt szolgáltatásként azonos funkciókat tartalmaz. A Redis-megvalósítás a funkciók legnagyobb számú, és ajánlott, ha új gyorsítótárazási kódot ír.
 
 **Az Azure Cache forgatókönyvek**
 
@@ -527,7 +525,7 @@ Szolgáltatott szoftver általában a rendszer átalakítása hogyan létrehozha
 ![Az Azure kereskedelmi](./media/fundamentals-introduction-to-azure/CommerceIntroNew.png)   
  **Ábra: Az Azure piactér és az Azure-tároló lehetővé teszik, hogy megkeresheti és Azure-alkalmazások és a kereskedelmi adatkészletek vásárolni, azokat az Azure-alkalmazások részeként.**
 
-A kettő közötti különbség, hogy az Azure felügyeleti portálon kívül esik a piactér, de a áruházban érhetők el a portálon. A lehetséges ügyfeleket találhatók az Azure-alkalmazások, amelyek megfelelnek az igényeinek kereshet. Az ügyfelek például demográfiai, pénzügyi adatokat, földrajzi adatok és egyéb, valamint a kereskedelmi adatkészletek kereshet. Ha találnak valamit, például akkor, eléréséhez, vagy a szállítótól közvetlenül a piactér vagy tároló webhelyeken vagy bizonyos esetekben a kezelési portálon. Alkalmazások is használhatják a Bing keresési API-t a piactéren, és adjon hozzáférést a webkiszolgáló eredményeit keresztül.
+A kettő közötti különbség, hogy az Azure-portálon kívül esik a piactér, de a áruházban érhetők el a portálon. A lehetséges ügyfeleket találhatók az Azure-alkalmazások, amelyek megfelelnek az igényeinek kereshet. Az ügyfelek például demográfiai, pénzügyi adatokat, földrajzi adatok és egyéb, valamint a kereskedelmi adatkészletek kereshet. Ha találnak valamit, például akkor, eléréséhez, vagy a szállítótól közvetlenül a piactér vagy tároló webhelyeken vagy bizonyos esetekben az Azure-portálon. Alkalmazások is használhatják a Bing keresési API-t a piactéren, és adjon hozzáférést a webkiszolgáló eredményeit keresztül.
 
 **Kereskedelmi forgatókönyvek**
 

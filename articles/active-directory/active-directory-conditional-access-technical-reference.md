@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 9d9680b22864e95c5953ddac50f2179b147b1e21
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 1ce1fc4c03130dfea4e79c89c25cf5a9004e4dc8
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférési beállításainak ismertetése
 
@@ -58,7 +58,7 @@ A feltételes hozzáférési házirend a Microsoft hozzárendelheti a következ�
 
 - A Microsoft Office 365 Exchange online-hoz
 
-- A Microsoft Office 365 SharePoint online-hoz (tartalmazza a onedrive vállalati verzió)
+- A Microsoft Office 365 SharePoint online-hoz (tartalmazza a onedrive vállalati verzió és minden Project Online)
 
 - Microsoft Power BI 
 
@@ -130,7 +130,7 @@ Ez a beállítás minden böngészőben működik. Azonban kielégítéséhez eg
 | Android                | Chrome, Intune által felügyelt böngésző      | ![Jelölőnégyzet][1] |
 | Windows Phone          | Internet Explorer, a peremhálózati             | ![Jelölőnégyzet][1] |
 | Windows Server 2016    | Internet Explorer, a peremhálózati             | ![Jelölőnégyzet][1] |
-| Windows Server 2016    | Chrome                              | Hamarosan |
+| Windows Server 2016    | Chrome                              | Hamarosan elérhető |
 | Windows Server 2012 R2 | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
 | Windows Server 2008 R2 | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
 | macOS                  | Chrome, Safari                      | ![Jelölőnégyzet][1] |
@@ -154,7 +154,7 @@ A feltételes hozzáférési házirend kiválaszthatja **mobilalkalmazások és 
 Ez a beállítás hatással van a következő mobilalkalmazások és az asztali ügyfelek hozzáférések: 
 
 
-|Ügyfél-alkalmazások|Célként megadott szolgáltatás|Platform|
+|Ügyfélalkalmazások|Célként megadott szolgáltatás|Platform|
 |---|---|---|
 |Azure távoli alkalmazás|Az Azure távoli App service|Windows 10, Windows 8.1, Windows 7, iOS, Android és Mac OS X|
 |Dynamics CRM-alkalmazás|Dynamics CRM|Windows 10, Windows 8.1, Windows 7, iOS és Android|
@@ -212,7 +212,7 @@ Ez a beállítás a következő ügyfél alkalmazásokra vonatkoznak:
     - Írja felül a **mobilalkalmazások és asztali ügyfelek** választás a [ügyfél alkalmazások feltétel](#supported-mobile-apps-and-desktop-clients) amikor ez a lehetőség van kiválasztva.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A feltételes hozzáférés áttekintéséért lásd: [feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md).
 - Ha készen áll a konfigurálhat feltételes hozzáférési szabályzatokat a környezetben, tekintse meg a [ajánlott eljárások a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-best-practices.md).

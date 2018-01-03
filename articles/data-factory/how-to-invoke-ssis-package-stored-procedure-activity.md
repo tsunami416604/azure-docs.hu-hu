@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 664c900bae580f4eb7421e3dffdfef8c9a29b720
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 713e9ad7a76c15cbde912954e00991a80b995683
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy SSIS-csomagot, a tárolt eljárási tevékenység az Azure Data Factory meghívása
 Ez a cikk ismerteti, hogyan lehet meghívni egy SSIS-csomagot az Azure Data Factory-folyamat a tárolt eljárási tevékenység használatával. 
@@ -34,7 +34,7 @@ Ez a cikk a forgatókönyv, amelyen az SSIS-katalógus Azure SQL-adatbázis. Egy
 Ha még nem rendelkezik a részletes utasításokat a következő, hozzon létre egy Azure-SSIS-integrációs futásidejű a [oktatóanyag: telepítése SSIS-csomagok](tutorial-deploy-ssis-packages-azure.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Telepítse a legújabb Azure PowerShell-modul a következő témakör utasításait: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez. 
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 Használja az ugyanazon adat-előállítóban, amely rendelkezik az Azure-SSIS infravörös, vagy hozzon létre egy külön adat-előállítóban. Az alábbi eljárás lépéseit egy adat-előállító létrehozása. A tárolt eljárási tevékenység a data factory hoz létre egy folyamatot. A tárolt eljárási tevékenység végrehajtja a tárolt eljárás az SSISDB adatbázis a SSIS-csomag futtatásához. 
@@ -80,10 +80,10 @@ Vegye figyelembe a következő szempontokat:
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása
 A társított szolgáltatás, amely futtatja az Azure SQL database összekapcsolására. az SSIS-katalógusban a data factory létrehozása. Data Factory szolgáltatásnak információk használatával kapcsolódik az SSISDB adatbázist, és végrehajtja a tárolt eljárás egy SSIS-csomag futtatásához. 
 
-1. Hozzon létre egy JSON fájlt **AzureSqlDatabaseLinkedService.json** a **C:\ADF\RunSSISPackage** mappa a következő tartalmát: (hozza létre a mappát ADFv2TutorialBulkCopy Ha még nem létezik.)
+1. Hozzon létre egy JSON fájlt **AzureSqlDatabaseLinkedService.json** a **C:\ADF\RunSSISPackage** mappa a következő tartalmát: 
 
     > [!IMPORTANT]
-    > Cserélje le &lt;kiszolgálónév&gt;, &lt;databasename&gt;, &lt;felhasználónév&gt;,&lt;kiszolgálónév&gt;, és &lt;jelszó&gt; rendelkező a fájl mentése előtt az Azure SQL Database értékeit.
+    > Cserélje le &lt;kiszolgálónév&gt;, &lt;felhasználónév&gt;, és &lt;jelszó&gt; a fájl mentése előtt az Azure SQL Database értékekkel.
 
     ```json
     {
@@ -93,7 +93,7 @@ A társított szolgáltatás, amely futtatja az Azure SQL database összekapcsol
             "typeProperties": {
                 "connectionString": {
                     "type": "SecureString",
-                    "value": "Server=tcp:<AZURE SQL SERVER NAME>.database.windows.net,1433;Database=SSISDB;User ID=<USER ID>;Password=<PASSWORD>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                    "value": "Server=tcp:<servername>.database.windows.net,1433;Database=SSISDB;User ID=<username>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
                 }
             }
         }
@@ -163,7 +163,7 @@ Ebben a lépésben hoz létre egy folyamatot egy tárolt eljárás tevékenység
 Használja a **Invoke-AzureRmDataFactoryV2Pipeline** parancsmag futtatjuk a folyamatot. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
 
 ```powershell
-$RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineName $DFPipeLine.Name -ParameterFile .\PipelineParameters.json
+$RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineName $DFPipeLine.Name
 ```
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
@@ -217,17 +217,17 @@ Az előző lépésben a csővezeték-igény szerinti meghívni. Egy ütemezés e
     }    
     ```
 2. A **Azure PowerShell**, váltson a **C:\ADF\RunSSISPackage** mappa.
-3. Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmaggal hozhat létre az eseményindító. 
+3. Futtassa a **Set-AzureRmDataFactoryV2Trigger** parancsmaggal hozhat létre az eseményindító. 
 
     ```powershell
     Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
     ```
-4. Alapértelmezés szerint az eseményindító leállított állapotban van. Indítsa el az eseményindító a Start-AzureRmDataFactoryV2Trigger parancsmag futtatásával. 
+4. Alapértelmezés szerint az eseményindító leállított állapotban van. Indítsa el az eseményindító futtatásával a **Start-AzureRmDataFactoryV2Trigger** parancsmag. 
 
     ```powershell
     Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -Name "MyTrigger" 
     ```
-5. Győződjön meg arról, hogy az eseményindító elindult-e a Get-AzureRmDataFactoryV2TriggerRun parancsmag futtatásával. 
+5. Győződjön meg arról, hogy az eseményindító elindításával a **Get-AzureRmDataFactoryV2Trigger** parancsmag. 
 
     ```powershell
     Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"     
@@ -244,5 +244,5 @@ Az előző lépésben a csővezeték-igény szerinti meghívni. Egy ütemezés e
     select * from catalog.executions
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ugyanígy figyelheti a folyamatot, az Azure portál használatával. Részletes útmutatásért lásd: [a folyamat figyelése](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).

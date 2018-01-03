@@ -1,40 +1,42 @@
 ---
 title: "Azure tároló példányok útmutató - alkalmazás központi telepítése"
-description: "Azure tároló példányok útmutató - alkalmazás központi telepítése"
+description: "Azure tároló példányok útmutató 3. 3. rész - alkalmazás központi telepítése"
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 11/20/2017
+ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a6b36349c7fae09e70178ae7e7c2b6c15c0c26d4
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 471caa1b24dc7017c70782c072b2068f9635244b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="deploy-a-container-to-azure-container-instances"></a>A tároló üzembe Azure tároló példányokhoz
 
-Ez az egy háromrészes az oktatóanyag utolsó. A korábbi szakaszokban [a tároló-lemezkép létrejött](container-instances-tutorial-prepare-app.md) és [egy Azure-tároló beállításjegyzék leküldött](container-instances-tutorial-prepare-acr.md). Ez a szakasz az oktatóanyag befejezése Azure tároló példányokhoz a tároló üzembe helyezésével. Befejeződött a lépések az alábbiak:
+Ez az egy háromrészes sorozat végső oktatóanyaga. Az adatsorozat korábbi [a tároló-lemezkép létrejött](container-instances-tutorial-prepare-app.md) és [egy Azure-tároló beállításjegyzék leküldött](container-instances-tutorial-prepare-acr.md). Ez a cikk az oktatóanyag adatsorozat Azure tároló példányokhoz a tároló üzembe helyezésével befejeződik.
+
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
-> * A tároló az Azure parancssori felület használatával Azure tároló beállításjegyzékből való telepítése
+> * A tároló az Azure parancssori felület használatával Azure tároló beállításjegyzékből való központi telepítése
 > * Az alkalmazás megtekintése a böngészőben
 > * A tároló naplók megtekintése
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez az oktatóanyag megköveteli, hogy futnak-e az Azure parancssori felület 2.0.21 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
+Ez az oktatóanyag megköveteli, hogy futnak-e az Azure parancssori felület 2.0.23 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha szeretné telepíteni vagy frissíteni, lásd: [Azure CLI 2.0 telepítése][azure-cli-install].
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Docker-fejlesztési környezetre. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) vagy [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszeren.
+Az oktatóanyag elvégzéséhez egy Docker fejlesztőkörnyezet helyileg telepíteni kell. Docker biztosít, amely egyszerű konfigurálását a Docker bármely csomagok [Mac][docker-mac], [Windows][docker-windows], vagy [Linux] [ docker-linux] rendszer.
 
-Azure Cloud rendszerhéj nem tartalmazza a Docker-összetevők minden egyes lépéseinek befejezéséhez szükséges az oktatóanyag. Ezért ajánlott az Azure CLI és a Docker fejlesztőkörnyezet helyi telepítését.
+Azure Cloud rendszerhéj nem tartalmazza a Docker-összetevők minden egyes lépéseinek befejezéséhez szükséges az oktatóanyag. Az oktatóanyag teljesítéséhez a helyi számítógépen telepítenie kell az Azure CLI és a Docker fejlesztési környezet.
 
 ## <a name="deploy-the-container-using-the-azure-cli"></a>Az Azure parancssori felület használatával tároló üzembe
 
-Az Azure parancssori felület lehetővé teszi, hogy egy parancs egy Azure tároló példányokhoz tárolójára központi telepítését. Mivel a tároló kép a saját Azure-tároló beállításjegyzék üzemelteti, meg kell adnia az eléréséhez szükséges hitelesítő adatok. Ha szükséges, alább látható módon lekérdezheti azokat.
+Az Azure parancssori felület lehetővé teszi, hogy egy parancs egy Azure tároló példányokhoz tárolójára központi telepítését. Mivel a tároló kép a saját Azure-tároló beállításjegyzék üzemelteti, meg kell adnia az eléréséhez szükséges hitelesítő adatok. Szerezze be a hitelesítő adatokat a következő Azure CLI-parancsokkal.
 
 Tároló beállításjegyzék bejelentkezési kiszolgáló (a beállításjegyzék nevű frissítés):
 
@@ -51,23 +53,23 @@ az acr credential show --name <acrName> --query "passwords[0].value"
 A tároló lemezkép 1 Processzormagok erőforrás kérését és 1 GB memóriát a tároló beállításjegyzékből való telepítéséhez futtassa a következő parancsot. Cserélje le `<acrLoginServer>` és `<acrPassword>` az előző két parancsot kapott értékekkel.
 
 ```azurecli
-az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public --ports 80 -g myResourceGroup
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public --ports 80
 ```
 
-Néhány másodpercen belül kap egy kezdeti választ az Azure Resource Manager. A központi telepítési állapotának megtekintéséhez használja [az tároló megjelenítése](/cli/azure/container#az_container_show):
+Néhány másodpercen belül kap egy kezdeti választ az Azure Resource Manager. A központi telepítési állapotának megtekintéséhez használja [az tároló megjelenítése][az-container-show]:
 
 ```azurecli
-az container show --name aci-tutorial-app --resource-group myResourceGroup --query instanceView.state
+az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-Ismételje meg a `az container show` parancs, amíg az állapot *függőben lévő* való *futtató*, amely kell vennie egy perc alatt. A tároló esetén *futtató*, folytassa a következő lépéssel.
+Ismételje meg a [az tároló megjelenítése] [ az-container-show] parancs, amíg az állapot *függőben lévő* való *futtató*, amely kell vennie egy perc alatt. A tároló esetén *futtató*, folytassa a következő lépéssel.
 
 ## <a name="view-the-application-and-container-logs"></a>Az alkalmazás és a tároló naplók megtekintése
 
-Miután a telepítés sikeres, a tároló nyilvános IP-cím megjelenítése a [az tároló megjelenítése](/cli/azure/container#az_container_show) parancs:
+Miután a telepítés sikeres, a tároló nyilvános IP-cím megjelenítése a [az tároló megjelenítése] [ az-container-show] parancs:
 
 ```bash
-az container show --name aci-tutorial-app --resource-group myResourceGroup --query ipAddress.ip
+az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.ip
 ```
 
 Példa a kimenetre:`"13.88.176.27"`
@@ -79,7 +81,7 @@ A futó alkalmazás megtekintéséhez navigáljon a nyilvános IP-cím, kedvenc 
 A kimenet a tároló is megtekintheti:
 
 ```azurecli
-az container logs --name aci-tutorial-app -g myResourceGroup
+az container logs --resource-group myResourceGroup --name aci-tutorial-app
 ```
 
 Kimenet:
@@ -92,23 +94,34 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforrásokat, az oktatóanyag adatsorozat létrehozott, Ön is végrehajthatja a [az csoport törlése](/cli/azure/group#delete) parancs beírásával távolítsa el az erőforráscsoportot és a benne található összes erőforrást. Ez a parancs törli a tárolót beállításjegyzék hozott létre, valamint a futó tároló és az összes kapcsolódó erőforrások.
+Ha már nincs szüksége az erőforrásokat, az oktatóanyag adatsorozat létrehozott, Ön is végrehajthatja a [az csoport törlése] [ az-group-delete] parancs beírásával távolítsa el az erőforráscsoportot és a benne található összes erőforrást. Ez a parancs törli a tárolót beállításjegyzék hozott létre, valamint a futó tároló és az összes kapcsolódó erőforrások.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban központi telepítése a tárolók Azure tároló példányokhoz befejeződött. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
 > * A tároló az Azure parancssori felület használatával Azure tároló beállításjegyzékből való telepítése
-> * Az alkalmazás megtekintése a böngészőben
-> * A tároló naplók megtekintése
-
-<!-- LINKS -->
-[prepare-app]: ./container-instances-tutorial-prepare-app.md
+> * Az alkalmazás böngészőben
+> * A tároló naplók tekinthetők
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+
+<!-- LINKS - external -->
+[docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
+[docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[docker-windows]: https://docs.docker.com/docker-for-windows/
+
+<!-- LINKS - internal -->
+[az-container-show]: /cli/azure/container#az_container_show
+[az-group-delete]: /cli/azure/group#az_group_delete
+[azure-cli-install]: /cli/azure/install-azure-cli
+[prepare-app]: ./container-instances-tutorial-prepare-app.md

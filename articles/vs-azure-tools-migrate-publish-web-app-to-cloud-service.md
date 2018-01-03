@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/10/2017
 ms.author: kraigb
-ms.openlocfilehash: d5d41ab47c17a024900efc88ba0a006da63ab246
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 1ced364bed821a9391f8ffd049f61ac236d98309
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>Hogyan: át, és tegye közzé a Visual Studio egy Azure-Felhőszolgáltatásban a webes alkalmazás
 
@@ -29,7 +29,7 @@ Hogy kihasználják az üzemeltetési szolgáltatásokat, és Azure méretezési
 
 ## <a name="migrate-a-project-to-cloud-services"></a>Telepítse át a projekt cloud services csomag
 
-1. Kattintson a jobb gombbal a webes projektet, és válassza ki **konvertálása > Microsoft Azure Cloud Service-projekt átalakítása**. (, Hogy ez a parancs nem jelenik meg, ha már egy webes szerepkör projekt a megoldás.)
+1. Kattintson a jobb gombbal a webes projektet, és válassza ki **konvertálása > Microsoft Azure Cloud Service-projekt átalakítása**. (Vegye figyelembe, hogy ez a parancs nem jelenik meg, ha már egy webes szerepkör projekt a megoldás.)
 1. Visual Studio létrehoz egy felhőszolgáltatás-projektet a megoldás, amely tartalmazza a szükséges webes szerepkör. A projekt neve megegyezik az alkalmazás projekt és az utótag `.Azure`.
 1. A Visual Studio is meghatározza a **másolása helyi** tulajdonság igaz MVC 2, MVC 3, MVC 4 és Silverlight üzleti alkalmazások a szükséges szerelvényeket. Ez a tulajdonság a szerelvények hozzáadása a service-csomagot, amely a központi telepítéshez használt.
 
@@ -124,7 +124,7 @@ A következő táblázat ismerteti, az alkalmazás elindítása az Azure-ban:
 | WCF | Munkafolyamat-szolgáltatás WCF-alkalmazás |
 | Munkafolyamat | Munkafolyamat-szolgáltatás WCF-alkalmazás |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felkészülés az közzététele, vagy az Azure alkalmazás a Visual Studio telepítése](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)
 - [Hitelesítő adatok beállítása nevű](vs-azure-tools-setting-up-named-authentication-credentials.md).

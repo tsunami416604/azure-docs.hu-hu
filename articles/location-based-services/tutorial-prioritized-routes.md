@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 7d8eb900bdc90a391d4121b7bfb863fc274fc564
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 19cf9da839d9d3a1ec78c8d1f6994628684f4e31
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Az Azure-alapú helyszolgáltatás használatával utazás különböző módokban útvonalak keresése
 
@@ -209,9 +209,9 @@ Ez a szakasz bemutatja, hogyan használatát az Azure-alapú helyszolgáltatás 
     ```
     A kódrészletet létrehoz egy [XMLHttpRequest](https://xhr.spec.whatwg.org/), és hozzáadja a bejövő válasz elemzése eseménykezelő. A sikeres válasz, a koordináták az útvonal visszaadott tömb hoz létre, és hozzáadja azt a térkép `truckRouteLayerName` réteg. 
     
-    A kódrészletet a lekérdezést is küld az útvonal-szolgáltatás, az útvonal lekérése az adott kezdő és záró pontot, a fiók előfizetés kulcs. A következő kötelező paraméterek használatosak nehéz teherautó útvonal:-a paraméter `travelMode=truck` , utazás mód *teherautó*. Egyéb támogatott utazás módok a következők *taxi*, *bus*, *van*, *motorkerékpárja*, és az alapértelmezett *autó* . 
-        -A paraméterek `vehicleWidth`, `vehicleHeight`, és `vehicleLength` adhatók meg a vehicle szemlélteti, és csak minősülnek, hogy van-e a mód utazás *teherautó*. 
-        -A `vehicleLoadType` veszélyes és néhány utakon korlátozott rakomány osztályozza. Ez csak a jelenleg is előnyben a *teherautó* mód. 
+    A kódrészletet a lekérdezést is küld az útvonal-szolgáltatás, az útvonal lekérése az adott kezdő és záró pontot, a fiók előfizetés kulcs. A következő kötelező paraméterek használatosak nehéz teherautó útvonal:-a paraméter `travelMode=truck` , utazás mód *teherautó*. Egyéb támogatott utazás módok a következők *taxi*, *bus*, *van*, *motorkerékpárja*, és az alapértelmezett *autó* .  
+        -A paraméterek `vehicleWidth`, `vehicleHeight`, és `vehicleLength` adhatók meg a vehicle szemlélteti, és csak minősülnek, hogy van-e a mód utazás *teherautó*.  
+        -A `vehicleLoadType` veszélyes és néhány utakon korlátozott rakomány osztályozza. Ez csak a jelenleg is előnyben a *teherautó* mód.  
 
 2. Adja hozzá a következő JavaScript-kódot az útvonal lekérése egy autó az útvonal-szolgáltatás segítségével:
 
@@ -255,7 +255,7 @@ Ez a szakasz bemutatja, hogyan használatát az Azure-alapú helyszolgáltatás 
 
     Vegye figyelembe, hogy a teherautó útvonal kék színnel, míg a car útvonal lila.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

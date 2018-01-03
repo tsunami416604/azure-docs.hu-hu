@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/23/2017
+ms.date: 12/14/2017
 ms.author: genli
-ms.openlocfilehash: 76ab1600903705aad7f18f48f41cb7119c3c09bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69d363b5ff0b94884cf6d13ae0260f3747e4e69a
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibáinak elhárítása: Az Azure pont – hely kapcsolat problémák
 
@@ -263,3 +263,52 @@ Távolítsa el a pont-pont VPN-kapcsolatot, és telepítse újra a VPN-ügyfél.
 ### <a name="solution"></a>Megoldás
 
 A probléma megoldása érdekében törölje a régi VPN ügyfél konfigurációs fájlokat a **C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections**, majd futtassa újra a VPN-ügyfél telepítőjét.
+
+## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Pont-pont VPN-ügyfél nem tudja feloldani az erőforrásokat a helyi tartomány teljes Tartományneve
+
+### <a name="symptom"></a>Jelenség
+
+Ha az ügyfél pont-pont VPN-kapcsolat használatával kapcsolódik az Azure-ba, a helyi tartományban lévő erőforrások FQND nem tud feloldani.
+
+### <a name="cause"></a>Ok
+
+Pont-pont VPN-ügyfél használ az Azure DNS-kiszolgálók, az Azure virtuális hálózat konfigurált. Az Azure DNS-kiszolgálók felülbírálják a helyi DNS-kiszolgálók DNS-lekérdezéseket kerülnek az Azure DNS-kiszolgálók, az ügyfél konfigurált. Az Azure DNS-kiszolgálók nem rendelkezik a helyi erőforrások vonatkozó bejegyzéseket, ha a lekérdezés nem sikerült.
+
+### <a name="solution"></a>Megoldás
+
+A probléma elhárításához győződjön meg arról, hogy az Azure DNS-kiszolgálók, amely használja az Azure virtuális hálózaton történő oldhatja helyi erőforrások DNS-rekordjait. Ehhez használhatja a DNS-továbbítók vagy feltételes továbbítók. További információkért lásd: [névfeloldáshoz a saját DNS-kiszolgáló](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)
+
+## <a name="the-point-to-site-vpn-connection-is-established-but-you-still-cannot-connect-to-azure-resources"></a>A pont-pont VPN-kapcsolat létrejött, de még nem csatlakozik Azure-erőforrások 
+
+### <a name="cause"></a>Ok
+
+A probléma akkor fordulhat elő, ha a VPN-ügyfél nem kap az útvonalakat az Azure VPN gateway.
+
+### <a name="solution"></a>Megoldás
+
+Ez a probléma megoldásához [alaphelyzetbe állítani az Azure VPN gateway](vpn-gateway-resetgw-classic.md).
+
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hiba: "a visszavont tanúsítványok függvény nem tudta ellenőrizni a visszavont tanúsítványok, mert a visszavont tanúsítványok kiszolgálója offline állapotban volt. (Hiba 0x80092013)"
+
+### <a name="causes"></a>Okok
+Ez a hibaüzenet akkor fordul elő, ha az ügyfél nem tud hozzáférni a http://crl3.digicert.com/ssca-sha2-g1.crl és http://crl4.digicert.com/ssca-sha2-g1.cr.  A visszavonási állapotának ellenőrzése a két hely hozzáférésre van szüksége.  Ez a probléma általában akkor fordul elő, az ügyfélen, amely a proxykiszolgáló konfigurálva van. Bizonyos környezetekben Ha a kérelem nem fog a proxykiszolgálón keresztül, a rendszer megtagadja a peremhálózati tűzfalon.
+
+### <a name="solution"></a>Megoldás
+
+Ellenőrizze a proxykiszolgáló beállításait, győződjön meg arról, hogy az ügyfél http://crl3.digicert.com/ssca-sha2-g1.crl és http://crl4.digicert.com/ssca-sha2-g1.cr hozzáférhet-e.
+
+## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN-ügyfél hiba: A kapcsolatot a távelérési kiszolgáló és a VPN-kiszolgálón konfigurált házirend miatt nem tudta. (812-es hiba)
+
+### <a name="cause"></a>Ok
+
+Ez a hiba akkor fordul elő, ha a RADIUS-kiszolgáló, amelyet a VPN-ügyfél hitelesítéséhez használt helytelen beállításokkal rendelkezik. 
+
+### <a name="solution"></a>Megoldás
+
+Győződjön meg arról, hogy a RADIUS-kiszolgáló megfelelően van-e konfigurálva. További információkért lásd: [integrálni RADIUS-hitelesítés az Azure multi-factor Authentication kiszolgáló](../multi-factor-authentication/multi-factor-authentication-get-started-server-radius.md).
+
+## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>"Hiba 405" Ha a VPN-átjáró legfelső szintű tanúsítvány letöltése
+
+### <a name="cause"></a>Ok
+
+Legfelső szintű tanúsítvány nem volt telepítve. A legfelső szintű tanúsítvány telepítve van az ügyfél a **megbízható tanúsítványokat** tárolja.

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: a2760072acb7c62204759f3ec0d3cb9899460f2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdbac0fd18ad440ece35881cbe165c3c7eff8914
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="service-bus-authentication-with-shared-access-signatures"></a>A Service Bus hitelesítési megosztott hozzáférési aláírásokkal
 
@@ -344,26 +344,26 @@ A következő táblázat a különféle műveletek a Service Bus erőforrásaina
 | A témakör küldése |Küldés |Bármilyen érvényes témakör cím |
 | **Előfizetés** | | |
 | Előfizetés létrehozása |Kezelés |Minden névtér cím |
-| Előfizetés törlése |Kezelés |../myTopic/Subscriptions/mySubscription |
-| Előfizetések számbavétele |Kezelés |../myTopic/előfizetések |
-| Előfizetés leírását beolvasása |Kezelés |../myTopic/Subscriptions/mySubscription |
-| Szakítsa vagy üzenetek befejezése után az üzenetet kapta a betekintés-zárolási mód |Figyelés |../myTopic/Subscriptions/mySubscription |
-| Késlelteti a későbbi beolvasásához üzenet |Figyelés |../myTopic/Subscriptions/mySubscription |
-| Kézbesítetlen levelek üzenet |Figyelés |../myTopic/Subscriptions/mySubscription |
-| A témakör munkamenethez tartozó állapot beolvasása |Figyelés |../myTopic/Subscriptions/mySubscription |
-| A témakör munkamenethez tartozó állapot beállítása |Figyelés |../myTopic/Subscriptions/mySubscription |
+| Előfizetés törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
+| Előfizetések számbavétele |Kezelés |.. / myTopic/előfizetések |
+| Előfizetés leírását beolvasása |Kezelés |.. /myTopic/Subscriptions/mySubscription |
+| Szakítsa vagy üzenetek befejezése után az üzenetet kapta a betekintés-zárolási mód |Figyelés |.. /myTopic/Subscriptions/mySubscription |
+| Késlelteti a későbbi beolvasásához üzenet |Figyelés |.. /myTopic/Subscriptions/mySubscription |
+| Kézbesítetlen levelek üzenet |Figyelés |.. /myTopic/Subscriptions/mySubscription |
+| A témakör munkamenethez tartozó állapot beolvasása |Figyelés |.. /myTopic/Subscriptions/mySubscription |
+| A témakör munkamenethez tartozó állapot beállítása |Figyelés |.. /myTopic/Subscriptions/mySubscription |
 | **Szabályok** | | |
-| Szabály létrehozása |Kezelés |../myTopic/Subscriptions/mySubscription |
-| Szabály törlése |Kezelés |../myTopic/Subscriptions/mySubscription |
-| Szabályok számbavétele |Kezelése vagy figyelésére |../myTopic/Subscriptions/mySubscription/Rules 
+| Szabály létrehozása |Kezelés |.. /myTopic/Subscriptions/mySubscription |
+| Szabály törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
+| Szabályok számbavétele |Kezelése vagy figyelésére |.. /myTopic/Subscriptions/mySubscription/Rules 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
-* [A Service Bus-üzenetsorok használata](service-bus-dotnet-get-started-with-queues.md)
+* [How to use Service Bus Queues](service-bus-dotnet-get-started-with-queues.md) (A Service Bus-üzenetsorok használata)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 [Azure portal]: https://portal.azure.com

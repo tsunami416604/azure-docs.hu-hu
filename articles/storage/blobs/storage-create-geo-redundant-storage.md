@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 286013aaa5335689206514027bef80b250643be1
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 3eb57b7e071a0a20effee65074cc509ee4eeb449
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Ellenőrizze az alkalmazás adataihoz az Azure storage magas rendelkezésre állású
 
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -83,7 +83,7 @@ A minta-projekt tartalmazza egy konzolalkalmazást.
 
 ## <a name="set-the-connection-string"></a>A kapcsolati karakterlánc beállítása
 
-Az alkalmazás a kapcsolati karakterláncot kell megadnia a tárfiók. Javasoljuk, hogy ez belül egy környezeti változó a kapcsolati karakterlánc tárolni a helyi számítógépen, amelyen az alkalmazást. Kövesse az alábbi példák attól függően, hogy a környezeti változó létrehozása az operációs rendszer egyik.
+Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. Javasoljuk, hogy ez belül egy környezeti változó a kapcsolati karakterlánc tárolni a helyi számítógépen, amelyen az alkalmazást. Kövesse az alábbi példák attól függően, hogy a környezeti változó létrehozása az operációs rendszer egyik.
 
 Az Azure portálon lépjen a tárfiókhoz. Válassza ki **hívóbetűk** alatt **beállítások** tárfiókba. Másolás a **kapcsolati karakterlánc** az az elsődleges vagy másodlagos kulcsot. Cserélje le \<yourconnectionstring\> a tényleges kapcsolattal karakterlánc a következő parancsok egyikét futtatja az operációs rendszer alapján. Ez a parancs a helyi számítógép egy környezeti változó menti. A Windows, a környezeti változó nincs elérhető töltse be újra a **parancssor** vagy rendszerhéj használ. Cserélje le  **\<storageConnectionString\>**  a következő mintában:
 
@@ -113,7 +113,7 @@ Példakód a `RunCircuitBreakerAsync` a feladat a `Program.cs` fájllal a tárol
 
 ### <a name="retry-event-handler"></a>Ismételje meg a eseménykezelő
 
-A `OperationContextRetrying` eseménykezelő nevezzük, amikor a lemezkép letöltése sikertelen, és állítsa be a rety. Ha eléri a maximális számú újrapróbálkozást, az alkalmazásban definiált, a [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) a kérelem változott `SecondaryOnly`. Ez a beállítás kényszeríti az alkalmazást, a lemezkép letöltése a másodlagos végponti kísérletet. Ez a konfiguráció csökkenti a lemezképet kérik, mint az elsődleges végpont nem a rendszer ismét megkísérli határozatlan ideig szükséges idő.
+A `OperationContextRetrying` eseménykezelő nevezzük, amikor a lemezkép letöltése sikertelen, és állítsa be, majd ismételje meg. Ha eléri a maximális számú újrapróbálkozást, az alkalmazásban definiált, a [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) a kérelem változott `SecondaryOnly`. Ez a beállítás kényszeríti az alkalmazást, a lemezkép letöltése a másodlagos végponti kísérletet. Ez a konfiguráció csökkenti a lemezképet kérik, mint az elsődleges végpont nem a rendszer ismét megkísérli határozatlan ideig szükséges idő.
 
 ```csharp
 private static void OperationContextRetrying(object sender, RequestEventArgs e)
@@ -160,7 +160,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adatsorozat egyik részében megismerte és magas rendelkezésre állású tárfiókokkal RA-GRS, például az alkalmazás:
 

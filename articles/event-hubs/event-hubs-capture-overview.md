@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 12/19/2017
 ms.author: sethm;darosa
-ms.openlocfilehash: c4fd365ec8eeb389f0df9f53cd2f2a18f4c9b52a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 81614f8061fdf15c55e61ee06eec54fa6a6a02f0
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-event-hubs-capture"></a>Az Azure Event Hubs rögzítése
 
@@ -39,7 +39,13 @@ A rögzített adatok [Apache Avro] [ Apache Avro] formátum: kompakt, gyors és 
 Event Hubs rögzítése lehetővé teszi, hogy meg kell adnia egy ablak rögzítése szabályozására. Ebben az ablakban a minimális és időpontjának beállítása "első wins házirendnek," ami azt jelenti, hogy az első észlelt az eseményindító a rögzítési művelet. Ha egy 15 perc, 100 MB Rögzítés ablak, és 1 MB protokollüzenetek másodpercenkénti, a méret ablak eseményindítók a időszak előtt. Mindegyik partíció egymástól függetlenül rögzíti, és írási műveletek befejezett blokkblob rögzítési, időpontjában, ahol a rögzítési időköz történt alkalommal nevű. A tároló elnevezési egyezménynek a következőképpen történik:
 
 ```
-[namespace]/[event hub]/[partition]/[YYYY]/[MM]/[DD]/[HH]/[mm]/[ss]
+{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
+```
+
+Vegye figyelembe, hogy a dátumértékek helyeken nullából; egy példa fájlnév lehet:
+
+```
+https://mynamespace.blob.core.windows.net/mycapturehub/mypartition/mysecondhub/0/2017/12/08/03/03/17.avro
 ```
 
 ### <a name="scaling-to-throughput-units"></a>Átviteli egységek méretezhetők
@@ -98,7 +104,7 @@ Apache Avro rendelkezik teljes bevezetés útmutatói [Java] [ Java] és [Python
 
 Event Hubs rögzítése forgalmi díjas hasonlóan az átviteli egységek: mint egy óránkénti kell fizetni. Az elsők között közvetlenül a névtér megvásárolt átviteli egységek számával arányos. Átviteli egységek növelhető és csökkenthető, Event Hubs rögzítése mérőszámok növelheti és csökkentheti a megfelelő teljesítmény elérése érdekében. A mérőszámok párhuzamosan történik. Díjszabása, lásd: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A legegyszerűbben az adatok lekérése az Azure Event Hubs rögzítése. Az Azure Data Lake, az Azure Data Factory és az Azure HDInsight, kötegfeldolgozási hajthat végre, és más jól ismert eszközökkel és a platformok elemzés, bármilyen léptékben van szüksége.
 

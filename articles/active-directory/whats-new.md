@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 12/19/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: febb00cb6d1b28e1166562c53e2d05c3e7aba36b
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 408e1680e7aee13663bb6511e65fd5685eb7d518
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -41,6 +41,163 @@ Azure Active Directory javítása azt vannak a folyamatos. Ahhoz, hogy naprakés
 
 Írja le az ezen a lapon újra rendszeresen havonta is frissítjük azt.
 
+
+## <a name="december-2017"></a>2017. december
+ 
+
+### <a name="terms-of-use-in-the-access-panel-for-end-users"></a>A végfelhasználók számára a hozzáférési panel a használati feltételek
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** használati feltételek  
+**A termék képesség:** Cégirányítási/megfelelőségi
+ 
+A végfelhasználók most már rendelkezik Ugrás a hozzáférési panelre, és megtekintheti a használati feltételeket, amelyek korábban már elfogadták.
+
+A felhasználók áttekinthetik és láthatják az általuk elfogadott használati feltételeket. Ezt a következő eljárással teheti meg:
+
+1. Keresse meg és jelentkezzen be a [MyApps portal](https://myapps.microsoft.com).
+
+2. A jobb felső sarokban kattintson a nevére, és válassza a **Profil** lehetőséget a legördülő menüből. 
+
+3. A profiljában kattintson a **Használati feltételek áttekintése** elemre. 
+
+4. Itt áttekintheti az elfogadott használati feltételeket. 
+
+További információkért lásd: [(előzetes verzió) Azure Active Directory használati szolgáltatás](https://docs.microsoft.com/azure/active-directory/active-directory-tou)
+ 
+---
+ 
+
+### <a name="new-azure-ad-sign-in-experience"></a>Új Azure AD bejelentkezés során tapasztal élmény
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** az Azure AD  
+**A termék képesség:** felhasználói hitelesítés
+ 
+Részeként az út, amelyekkel az Azure AD és a Microsoft-fiók identitáskezelési rendszereket, azt a felhasználói felület mindkét rendelkezik újratervezett, úgy, hogy a konzisztens Megjelenés és működés. Az Azure AD bejelentkezési oldal továbbá azt rendelkezik paginated, hogy a gyűjtött a felhasználónév első, a második képernyőn a hitelesítő adatok követ.
+
+További információkért lásd: [az új Azure AD bejelentkezés felületet mostantól nyilvános előzetes verzió](https://cloudblogs.microsoft.com/enterprisemobility/2017/08/02/the-new-azure-ad-signin-experience-is-now-in-public-preview/)
+ 
+---
+ 
+
+### <a name="fewer-login-prompts-a-new-keep-me-signed-in-experience-for-azure-ad-login"></a>Az ismétlődő bejelentkezéskérések kevesebb: egy új "bejelentkezve szeretnék maradni" az Azure AD bejelentkezési élmény
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** az Azure AD  
+**A termék képesség:** felhasználói hitelesítés
+ 
+Váltotta a **bejelentkezve szeretnék maradni** jelölőnégyzetet az Azure AD bejelentkezési oldalon egy új kérdéshez megjelenő után a felhasználó sikeresen hitelesíti magát. 
+
+Ha egy felhasználó válaszol **Igen** kell a figyelmeztetésre, a szolgáltatás biztosít egy állandó frissítési jogkivonat. Ez az a kívánt viselkedést eredményező beállítást, ha a felhasználó ellenőrzi a **bejelentkezve szeretnék maradni** jelölőnégyzetet a régi élményt nyújt. Összevont bérlők esetén ez az üzenet megjeleníti után a felhasználó sikeresen hitelesíti az összevont szolgáltatást.
+
+További információkért lásd: [kevesebb az ismétlődő bejelentkezéskérések: az új "Bejelentkezve szeretnék maradni" az Azure AD szolgáltatás az előzetes verzió](https://cloudblogs.microsoft.com/enterprisemobility/2017/09/19/fewer-login-prompts-the-new-keep-me-signed-in-experience-for-azure-ad-is-in-preview/) 
+
+---
+ 
+
+### <a name="add-configuration-to-require-the-tou-to-be-expanded-prior-to-accepting"></a>Adja hozzá a konfigurációját, és a használati feltételek elfogadása előtt kell bővíteni igényelnek.
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** használati feltételek  
+**A termék képesség:** irányítás
+ 
+Most egy beállítást a rendszergazdák számára, hogy a végfelhasználók számára szükséges bontsa ki a használati feltételeket a feltételek elfogadása előtt jelentek meg.
+
+Válassza ki- és kikapcsolása a felhasználóknak kell bontsa ki a használati feltételeket. Ha bekapcsolja, a végfelhasználóknak meg kell tekinteniük a használati feltételeket, mielőtt elfogadhatnák őket.
+
+További információkért lásd: [(előzetes verzió) Azure Active Directory használati szolgáltatás](active-directory-tou.md)
+ 
+---
+ 
+
+### <a name="scoped-activation-for-eligible-role-assignments"></a>A megfelelő szerepkör-hozzárendelések hatókörön belüli aktiválás
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** Privileged Identity Management  
+**A termék képesség:** Privileged Identity Management
+ 
+Hatókörön belüli aktiválási szerepkör-hozzárendelések jogosult Azure-erőforrás kisebb, mint az eredeti hozzárendelés alapértelmezett önállóan aktiválása teszi lehetővé. Az előfizetés tulajdonosa rendelt például az Ön bérelt szolgáltatásának. A hatókört használó aktiválási aktiválhatja tulajdonos az előfizetésen belül található legfeljebb öt erőforrást (gondolja, hogy csoportok, virtuális gépek stb...). Az aktiválás hatókörének előfordulhat, hogy az esélye, a kritikus fontosságú Azure-erőforrások nemkívánatos módosítások végrehajtásakor.
+
+További információkért lásd: [Mi az Azure AD Privileged Identity Management?](active-directory-privileged-identity-management-configure.md).
+ 
+---
+ 
+
+### <a name="new-federated-apps-in-azure-ad-app-gallery"></a>Új összevont alkalmazásokba az Azure AD-alkalmazásgyűjtemény
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** vállalati alkalmazások  
+**A termék képesség:** 3. fél integráció
+ 
+December 2017 jelentek meg a gyűjtemény összevonással a következő új alkalmazások támogatják:
+
+|Name (Név)|Integráció típusa|Leírás|
+|:-- |----------------|:----------|
+|EFI digitális kirakat|SAML 2.0|[2 nyomtatás webalkalmazás](https://go.microsoft.com/fwlink/?linkid=861685)|
+|Vodeclic|SAML 2.0|[Az Azure AD segítségével felügyelheti a felhasználók hozzáférését, és egyszeri bejelentkezéssel Vodeclic a](https://go.microsoft.com/fwlink/?linkid=863522).  Meglévő Vodeclic fiókra van szükség.|
+|Accredible|SAML 2.0|[Létrehozására, kezelésére és tanúsítványok, jelvények és blockchain hitelesítő adatok](https://go.microsoft.com/fwlink/?linkid=863523)|
+|FactSet|SAML 2.0|[Egyszeri bejelentkezés FactSet tartozó FDSWeb alkalmazáshoz](https://go.microsoft.com/fwlink/?linkid=863525)|
+|MobileIron Azure AD-integrációs|SAML 2.0|[MobileIron](https://go.microsoft.com/fwlink/?linkid=858027) feladata engedélyezése modern vállalatok számára az eszköz a információk kezelésére, az átvitel során mobile és a felhő végfelhasználói adatvédelmi és a megbízhatóság adatainak megőrzése mellett.|
+|KÉP MŰKÖDIK|SAML 2.0|Az Azure AD segítségével felügyelheti a felhasználók hozzáférését, felhasználói fiókok kiépítése és egyszeri bejelentkezés engedélyezése a [kép WORKS](https://go.microsoft.com/fwlink/?linkid=863517). Egy meglévő LEMEZKÉPET WORKS előfizetést igényel.|
+|Bitbucket felbontása GmbH a SAML SSO|SAML 2.0|[Egyszeri bejelentkezés Bitbucket](https://go.microsoft.com/fwlink/?linkid=863519) delegáltak hitelesítés az Azure ad Szolgáltatásba, a felhasználók már bejelentkezett az Azure AD is bitbucket szolgáltatásokkal való közvetlen hozzáféréshez. Felhasználók hozhatók létre, és az azonnali frissítése a SAML-attribútumok adataival.|
+|A felbontása GmbH bambusz SAML SSO|SAML 2.0|[Egyszeri bejelentkezés bambusz](https://go.microsoft.com/fwlink/?linkid=863520) delegáltak hitelesítés az Azure ad Szolgáltatásba, a felhasználók már bejelentkezett az Azure AD is bambusz való közvetlen hozzáféréshez.|
+|Communifire|SAML 2.0|[Communifire](https://go.microsoft.com/fwlink/?linkid=861676) a modern, teljes funkcionalitású közösségi intranetes szoftver, amely támogatja az alkalmazottak és a vállalat.|
+|MOBI|SAML 2.0|[Központosítása, érthető, és szabályozhatja a teljes eszköz ökoszisztéma](https://go.microsoft.com/fwlink/?linkid=863521).|
+|Reflektive|SAML 2.0|[Reflektive](https://go.microsoft.com/fwlink/?linkid=863518) modern platform teljesítménykezelés, a valós idejű visszajelzését és a cél beállítás van. A Microsoft építve a dolgozóknak a saját fejlesztési meghajtó, így több stratégiai is lehet.|
+|CybSafe|OpenID Connect & OAuth|CybSafe a egy számítógépes GCHQ hitelesített tájékoztatási platformja. Speciális technológia és adatelemzés használ a számítógépes biztonsági és a data protection kockázati emberi aspektusa bizonyíthatóan csökkentése érdekében.|
+|WebHR|OpenID Connect & OAuth|Minden felhasználó kedvenc mindent egy közösségi HR szoftver. Több mint 20 000 vállalatok 197 országokban megbízható|
+ |Zenegy Azure AD-integrációs|OpenID Connect & OAuth|Ezzel az alkalmazással a vállalati Azure Active Directory hitelesítő adatok segítségével jelentkezzen be Zenegy.|
+|Az Adobe élmény Manager|SAML 2.0|Adobe élmény Manager (AEM) egy olyan átfogó tartalomkezelési platform megoldás felépítéséhez, webhelyek, a mobilalkalmazások és az űrlap - Ez megkönnyíti a marketing tartalom és az eszközök kezelését.|
+
+ 
+---
+ 
+
+### <a name="approval-workflows-for-azure-ad-directory-roles"></a>Az Azure Active directory szerepkörök a jóváhagyási munkafolyamatai
+
+**Típus:** módosulás a szolgáltatás  
+**Szolgáltatás kategória:** Privileged Identity Management  
+**A termék képesség:** Privileged Identity Management
+ 
+Az Azure Active directory szerepkörök jóváhagyási munkafolyamata az általánosan elérhető.
+
+A jóváhagyási munkafolyamata kiemelt szerepkörű rendszergazda megkövetelheti, hogy jogosult szerepkör tagjai szerepkör aktiválás kéréséhez, a kiemelt szerepkörű használatához.
+Több felhasználókat és csoportokat lehet, hogy jogosult szerepkör tagjai értesítést kapjon, ha a jóváhagyási befejeződik, és a szerepkör aktív delegált jóváhagyási feladatkörei
+
+---
+ 
+
+### <a name="pass-through-authentication---skype-for-business-support"></a>Áteresztő hitelesítés – a Skype vállalati verziójának ügyfélszolgálatával
+
+**Típus:** módosulás a szolgáltatás  
+**Szolgáltatás kategória:** hitelesítések (Bejelentkezések)  
+**A termék képesség:** felhasználói hitelesítés
+
+
+Áteresztő hitelesítés támogatja a felhasználói bejelentkezések a Skype, amely támogatja a modern hitelesítést, beleértve az Online és a hibrid topológiák üzleti ügyfélalkalmazások esetében. 
+
+További információkért lásd: [a Modern hitelesítést használó támogatott üzleti topológiák Skype](https://technet.microsoft.com/library/mt803262.aspx).
+ 
+---
+ 
+
+### <a name="updates-to-azure-active-directory-privileged-identity-management-pim-for-azure-rbac-preview"></a>Frissítések a Azure Active Directory Privileged Identity Management (PIM) az Azure RBAC (előzetes verzió)
+
+**Típus:** módosulás a szolgáltatás  
+**Szolgáltatás kategória:** PIM  
+**A termék képesség:** Privileged Identity Management
+ 
+A a nyilvános előzetes verzió frissítése az Azure Active Directory Privileged Identity felügyeleti (PIM) az Azure RBAC, műveleteket hajthatja végre:
+
+A csak elég felügyeleti igényelnek jóváhagyással erőforrás szerepkörök aktiválásához ütemezni a jövőbeli aktiválás egyaránt aad jóváhagyást igénylő szerepkört és az Azure RBAC-szerepkörök
+
+ 
+További információkért lásd: [PIM az Azure-erőforrások (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)
+
+ 
+---
+ 
 ## <a name="november-2017"></a>2017. november
  
 ### <a name="retiring-acs"></a>ACS kivonása
@@ -513,6 +670,6 @@ A kumulatív gyorsjavítás (build 4.4.1642.0) szeptember 25, 2017, a Microsoft 
 - Az összesítő frissítés, amely kiváltja a Microsoft Identity Manager 2016 4.4.1459.0 buildet legfeljebb minden MIM 2016 SP1 frissítés. 
 - Szükséges hozzá **Microsoft Identity Manager 2016 4.4.1302.0 felépítéséhez.** 
 
-További információkért lásd: [kumulatív gyorsjavítás (build 4.4.1642.0) érhető el a Microsoft Identity Manager 2016 SP1](https://support.microsoft.com/en-us/help/4021562). 
+További információkért lásd: [kumulatív gyorsjavítás (build 4.4.1642.0) érhető el a Microsoft Identity Manager 2016 SP1](https://support.microsoft.com/help/4021562). 
 
 ---

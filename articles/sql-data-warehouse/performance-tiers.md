@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: de1220e9b5a01429f4eea5c3605f1cf7221f3e1e
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 03881c12faed723999e97431e4a69fdeb6bfa10d
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Az Azure SQL Data Warehouse teljesítményét rétegek (előzetes verzió)
 Az SQL Data Warehouse tárfióktípus két teljesítményszinttel analitikai munkaterhelések optimalizált kínál. Ez a cikk ismerteti a teljesítmény rétegek segítségével válassza ki a leginkább megfelelő teljesítményszintet a munkaterheléshez elveit. 
@@ -162,12 +162,12 @@ Az alábbi táblázat a maximális párhuzamos lekérdezések és feldolgozási 
 | DW400         | 16                         |  16                         | 1       |  4       |  8      |  16      |
 | DW500         | 20                         |  20                         | 1       |  4       |  8      |  16      |
 | DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
-| DW1000        | 32                         |  32                         | 1       |  8       | 16      |  32      |
-| DW1200        | 32                         |  32                         | 1       |  8       | 16      |  32      |
-| DW1500        | 32                         |  32                         | 1       |  8       | 16      |  32      |
-| DW2000        | 32                         |  48                         | 1       | 16       | 32      |  64      |
-| DW3000        | 32                         |  64                         | 1       | 16       | 32      |  64      |
-| DW6000        | 32                         | 128                         | 1       | 32       | 64      | 128      |
+| DW1000        | 32                         |  40                         | 1       |  8       | 16      |  32      |
+| DW1200        | 32                         |  48                         | 1       |  8       | 16      |  32      |
+| DW1500        | 32                         |  60                         | 1       |  8       | 16      |  32      |
+| DW2000        | 32                         |  80                         | 1       | 16       | 32      |  64      |
+| DW3000        | 32                         | 120                         | 1       | 16       | 32      |  64      |
+| DW6000        | 32                         | 240                         | 1       | 32       | 64      | 128      |
 
 **Statikus erőforrás osztályok** jeleníti meg a maximális párhuzamos lekérdezések és feldolgozási üzembe helyezési ponti a következő táblázat az egyes [statikus erőforrásosztály](resource-classes-for-workload-management.md).  Ezek a rugalmasság teljesítményszinttel optimalizálása vonatkoznak.
 
@@ -188,7 +188,7 @@ Az alábbi táblázat a maximális párhuzamos lekérdezések és feldolgozási 
 
 E küszöbértékek valamelyike teljesül, amikor új lekérdezések helyezi várólistára, és végre érkezési sorrendben történő kiküldési alapon.  A lekérdezések befejeződése és a lekérdezések és üzembe helyezési ponti száma korlátokat alá esnek, az SQL Data Warehouse feloldja a várólistára helyezett lekérdezések. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt hogyan használhatók ki az erőforrás-osztályok optimalizálása érdekében az alkalmazások és szolgáltatások további tekintse át a következő cikkeket:
 * [Erőforrás-osztályok a munkaterhelés-kezelés](resource-classes-for-workload-management.md)

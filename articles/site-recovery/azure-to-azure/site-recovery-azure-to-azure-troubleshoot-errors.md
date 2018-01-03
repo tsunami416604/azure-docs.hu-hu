@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/21/2017
 ms.author: sujayt
-ms.openlocfilehash: 726c12d3c91a6e4fdc77397a736aaa161f0e830c
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 02d68d091cbbe02e1b5b628924ded1c2155f7119
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure-Azure virtuális gép replikálási problémák elhárítása
 
@@ -131,6 +131,20 @@ Ha nem látja az Azure virtuális gép lehet választani, amikor a replikáció 
 
 Használhat [távolítsa el az elavult automatikus konfigurációs parancsfájl](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) , és távolítsa el az elavult Site Recovery konfigurálása az Azure virtuális gépen. Az elavult konfiguráció eltávolítása után a replikáció engedélyezése esetén meg kell jelennie a virtuális Gépet.
 
+## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>A virtuális gép üzembe helyezési állapota érvénytelen (hibakód: 150019)
 
-## <a name="next-steps"></a>Következő lépések
+Ahhoz, hogy a replikáció a virtuális Gépre, a telepítés állapotát kell **sikeres**. Az alábbi lépéseket követve ellenőrizheti a virtuális gép állapota.
+
+1.  Válassza ki a **erőforrás-kezelő** a **minden szolgáltatás** Azure-portálon.
+2.  Bontsa ki a **előfizetések** listában, és jelölje ki az előfizetését.
+3.  Bontsa ki a **ResourceGroups** listában, és válassza ki az erőforráscsoportot, a virtuális gép.
+4.  Bontsa ki a **erőforrások** listában, és válassza ki a virtuális gépet
+5.  Ellenőrizze a **provisioningState** mező mellett a jobb oldali példányait tartalmazó nézetet.
+
+### <a name="fix-the-problem"></a>A probléma elhárításához
+
+- Ha **provisioningState** van **sikertelen**, forduljon a támogatási szolgálathoz elhárítása adatokkal.
+- Ha **provisioningState** van **Frissítéskísérleti**, egy másikat is első telepíthető. Ellenőrizze, hogy van-e a virtuális Gépre, várjon, amíg befejeződik, majd próbálja megismételni a sikertelen helyreállítás, hogy a folyamatban lévő műveleteket **engedélyezze a replikálást** feladat.
+
+## <a name="next-steps"></a>További lépések
 [Azure-alapú virtuális gépek replikálása](azure-to-azure-quickstart.md)

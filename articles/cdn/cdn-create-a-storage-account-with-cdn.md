@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 511076935d06ed0908341044e37069e74530be49
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbdf263d9d7fdfbe4fbc47db9ba9f30637e8c3ad
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>Azure-tárfiók integrálása az Azure CDN szolgáltatás használata
 CDN az az Azure storage engedélyezhető a gyorsítótár teljes tartalmát. A fejlesztők a tartalmak nagy sávszélességű kézbesítéséhez a blobok és számítási példányokért fizikai csomópontokon az Egyesült Államok, Európa, Ázsia, Ausztrália és Dél-Amerika a statikus tartalom gyorsítótárazása révén globális megoldást kínál.
@@ -35,12 +35,12 @@ Hozzon létre egy tárfiókot, vagy a szolgáltatás rendszergazdájának vagy t
 
 **A storage-fiók egy Azure-előfizetés létrehozása**
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza ki a bal felső sarokban, **új**. Az a **új** párbeszédpanelen válassza **adatok + tárolás**, majd kattintson a **tárfiók**.
     
     A **storage-fiók létrehozása** panel jelenik meg.   
 
-    ![Storage-fiók létrehozása][create-new-storage-account]  
+    ![Tárfiók létrehozása][create-new-storage-account]  
 
 3. Az a **neve** mezőbe írja be egy altartomány nevét. Ez a bejegyzés 3-24 kisbetűket és számokat tartalmazhat.
    
@@ -82,7 +82,7 @@ Az a legújabb integrációs most engedélyezheti a CDN a tárfiók anélkül, h
     ![tárolási új CDN-végpont][cdn-storage-new-endpoint]
 
 > [!NOTE]
-> Azure CDN-bővítmény engedélyezése a CDN is választhatja. [Oktatóanyag](#Tutorial-cdn-create-profile).
+> Azure CDN-bővítmény engedélyezése a CDN is választhatja. [Az oktatóanyag](#Tutorial-cdn-create-profile).
 > 
 > 
 

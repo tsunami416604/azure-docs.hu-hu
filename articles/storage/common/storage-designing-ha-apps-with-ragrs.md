@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: tamram
-ms.openlocfilehash: 68986f1c8a8d3a2c4c763958e141bc3830c6b5bb
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: fe7c6d1f2530b43ac7b10c5b6b0723452452a97a
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre álló alkalmazások megtervezése
 
@@ -26,7 +26,7 @@ Egy felhőalapú infrastruktúrák hasonlóan az Azure Storage közös szolgált
 
 Az Azure Storage a tárfiókban lévő adatokat a redundancia érdekében négy lehetőségeket kínál:
 
-– LRS (helyileg redundáns tárolás)
+- LRS (helyileg redundáns tárolás)
 - A ZRS (zóna redundáns tárolás) 
 - Georedundáns (Georedundáns tárolás)
 - RA-GRS (írásvédett Georedundáns tárolás). 
@@ -238,7 +238,7 @@ Ebben a példában a kérelmek szélesebb körének elfogására és annak csak 
 
 Amennyiben végrehajtotta az alkalmazás konfigurálható csak olvasható módra vált küszöbértékeit, akkor könnyebb lesz a viselkedés nem éles tranzakció kötetekkel tesztelése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Olvasási hozzáférés-Georedundancia kapcsolatos további információkért egy másik példa lehet megadni a LastSyncTime, beleértve talál [Windows Azure tárolási redundancia lehetőségek és az írásvédett Georedundáns tárolás](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 

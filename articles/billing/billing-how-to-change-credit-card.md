@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: 03764377b3ea0e17d4a192a7e05bb495ec56f331
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9cab81b6072c6f096f6f1a419cebcca9630ebde3
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Hozzáadása, frissítése vagy az Azure-bA vagy követel kártya eltávolítása
 
@@ -77,7 +77,7 @@ Ha hitelkártyával más aktív Microsoft előfizetések tartozik, nem távolít
 
 Az előfizetés le van tiltva, vagy visszavont után 90 nappal korábbinak véglegesen törli az előfizetését várunk. Azt tartsa a fizetési módot, a fájl a megőrzési időszak alatt abban az esetben, ha azt szeretné, az előfizetés újraaktiválásához. Ezt követően az előfizetés teljesen törölve.
 
-Ha el kell távolítania vagy követel kártyáját, mielőtt a 90 napos megőrzési időszak végén, [kérje az Azure támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Ha el kell távolítania vagy követel kártyáját, mielőtt a 90 napos megőrzési időszak végén, [az előfizetés újraaktiválásához](billing-subscription-become-disable.md). Nem lehet aktiválni, ha [kérje az Azure támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>Miért kapok folyton "bejelentkezése lejárt. Kattintson ide a bejelentkezéshez vissza"?
 
@@ -96,6 +96,10 @@ Ha Ön [szerinti fizetésre](billing-how-to-pay-by-invoice.md), a helyre a befiz
 ### <a name="how-do-i-make-a-one-time-payment"></a>Hogyan tehetem egy egyszeri fizetési?
 
 Sajnos Azure jelenleg nem támogatja a egyszeri kifizetések vagy követel kártyákhoz. 
+
+### <a name="how-do-i-change-the-tax-id"></a>Az Adószám módosítása?
+
+Adja hozzá, vagy az Adószám módosítása, látogasson el a [ **profil** az Azure Account Center](https://account.azure.com/Profile), majd jelölje be **rekord adó**. Az Adószám adó kivétel számítások használja, és a számlán megjelenik.
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 

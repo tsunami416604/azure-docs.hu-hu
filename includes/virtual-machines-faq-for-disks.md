@@ -137,7 +137,7 @@ Igen, ha szeretné felügyelt lemezzel rendelkező virtuális gép feladatátvé
 
 **Bármely Azure hely helyreállítás (ASR) által védett Azure az Azure-bA replikációval Azure virtuális gépeken az áttelepítés hatása van?**
 
-Igen. Az ASR Azure az Azure-bA védelme nem támogatott felügyelt lemezzel rendelkező virtuális gépekhez. Ugrás CY2018 végén támogatnak. 
+Igen. Az ASR Azure az Azure-bA védelme nem támogatott felügyelt lemezzel rendelkező virtuális gépekhez. Ugrás V1 CY2018 végén támogatnak. 
 
 **Áttelepíthetem a nem felügyelt a storage-fiókok vagy kezelt lemezek korábban titkosított lévő lemezzel rendelkező virtuális gépek?**
 

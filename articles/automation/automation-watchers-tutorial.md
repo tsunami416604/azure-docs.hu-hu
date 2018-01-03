@@ -12,94 +12,149 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/15/2017
+ms.date: 12/11/2017
 ms.author: eamono
-ms.openlocfilehash: 0ddd31f7ce2217c1136eccd391bb30bd4461c3e5
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 294faa48f9840919b087594835706bad8048d45b
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="azure-automation-watcher-tasks-enable-you-to-respond-to-events-happening-in-your-local-datacenter"></a>Azure Automation megfigyelő feladatok lehetővé teszik, hogy a helyi adatközpontban történik események válaszolni
+# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Hozzon létre egy Azure Automation-megfigyelő feladatok fájl változásainak követése a helyi számítógépen
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan hozzon létre egy új megfigyelő feladat:
+Azure Automation szolgáltatásbeli megfigyelő feladatok műveletek indul el, tekintse meg az események használja. Ez az oktatóanyag bemutatja, hogyan figyelheti, amikor egy új fájlt ad hozzá egy könyvtárat megfigyelő tevékenység létrehozása.
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Megkeresi az új fájlok a könyvtárban található megfigyelő runbook létrehozása.
-> * A figyelő által feldolgozott fájl legutóbbi tartsa egy automatizálási változó létrehozása.
-> * Hozzon létre egy művelet runbookot is nevezett, ha a megfigyelő runbook egy új fájlt talál.
-> * Kiválasztja a megfigyelő runbook és a művelet a runbook egy megfigyelő-feladat létrehozása.
-> * Egy figyelő vált egy új fájlt hozzá egy könyvtárat.
-> * Vizsgálja meg a kimeneti adatokat jeleníti meg az új fájl művelet runbookból.  
+> * Megfigyelő runbook importálása
+> * Az automatizálási változó létrehozása
+> * Egy művelet runbook létrehozása
+> * Megfigyelő feladat létrehozása
+> * Egy figyelő eseményindító
+> * Tekintse meg a kimenetet
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez a következőkre szükség.
-+ Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-+ [Automation-fiók](automation-offering-get-started.md) a felügyeletiszolgáltatás-megfigyelő és a művelet runbookokat, és a figyelő a feladat tárolásához.
-+ A [hibrid forgatókönyv-feldolgozó](automation-hybrid-runbook-worker.md) a megfigyelő feladat futtató.
+Az oktatóanyag teljesítéséhez a következőkre szükség:
 
-## <a name="create-a-watcher-runbook-that-looks-for-new-files"></a>Megkeresi az új fájlok megfigyelő runbook létrehozása
-1.  Nyissa meg az Automation-fiókot, majd kattintson a Runbookok oldalon.
-2.  Kattintson a "Tallózás gyűjtemény" gombra.
-![A felhasználói Felületről Runbook listája](media/automation-watchers-tutorial/WatcherTasksRunbookList.png)
-3.  Keresse meg a "Figyelés-NewFile", és a runbook importálása az Automation-fiók.
-![A felhasználói Felületről runbook közzététele](media/automation-watchers-tutorial/Watch-NewFileRunbook.png)
-4.  Kattintson az "Edit" tekintse meg a Runbook forrást, és kattintson a "Közzététele" gombra.
+* Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Automation-fiók](automation-offering-get-started.md) a felügyeletiszolgáltatás-megfigyelő és a művelet runbookokat, és a figyelő a feladat tárolásához.
+* A [hibrid forgatókönyv-feldolgozó](automation-hybrid-runbook-worker.md) a megfigyelő feladat futtató.
 
-## <a name="create-an-automation-variable-to-keep-the-last-time-a-file-was-processed-by-the-watcher"></a>A figyelő által feldolgozott fájl legutóbbi tartsa egy automatizálási változó létrehozása
-1.  Nyissa meg a megosztott erőforrások a változók lapot, majd kattintson a "Hozzáadás változó" ![a felhasználói Felületről változók felsorolása](media/automation-watchers-tutorial/WatcherVariableList.png)
-2.  Adja meg a "Figyelés-NewFileTimestamp" a neve
-3.  Válassza ki a típusát, DateTime, és kattintson a "Létrehozás" gombra.
-![Vízjel változó létrehozása a felhasználói Felületről](media/automation-watchers-tutorial/WatcherWatermarkVariable.png)
+## <a name="import-a-watcher-runbook"></a>Megfigyelő runbook importálása
 
-## <a name="create-an-action-runbook-that-is-called-when-the-watcher-runbook-finds-a-new-file"></a>Egy művelet runbook is nevezett, amikor egy új fájlt talál a megfigyelő runbook létrehozása
-1.  Kattintson a "Folyamatok AUTOMATIZÁLÁSA" kategóriához tartozó Runbookok oldalon.
-2.  Kattintson a "Tallózás gyűjtemény" gombra.
-3.  Keresse meg a "Folyamat-NewFile", és a runbook importálása az Automation-fiók.
-4.  Kattintson az "Edit" tekintse meg a Runbook forrást, és kattintson a "Közzététele" gombra.
-![A felhasználói Felületről folyamat figyelője](media/automation-watchers-tutorial/Watch-ProcessNewFile.png)
+Ez az oktatóanyag használja egy megfigyelő runbook nevű **figyelési-NewFile** amelyet meg kíván keresni az új fájlok a könyvtárban található. A megfigyelő runbook egy mappában található fájlok utolsó ismert írási idő beolvasása, és ellenőrzi, hogy az újabb, mint a vízjel fájlokat. Ebben a lépésben akkor importálja ezt a runbookot az automation-fiók.
+
+1. Nyissa meg az Automation-fiók, és törölje a **Runbookok** lap.
+1. Kattintson a **Tallózás gyűjtemény** gombra.
+1. Keressen "Megfigyelő runbook", válassza ki a **megfigyelő runbook, új fájlok a könyvtárban található a következőhöz** válassza **importálása**.
+  ![Automation-runbook importálása a felhasználói Felületről](media/automation-watchers-tutorial/importsourcewatcher.png)
+1. A runbook adjon egy nevet és leírást, és válassza ki **OK** a runbook importálása az Automation-fiók.
+1. Válassza ki **szerkesztése** majd **közzététel**. Ha a select kéri **Igen** közzétenni a runbookot.
+
+## <a name="create-an-automation-variable"></a>Az automatizálási változó létrehozása
+
+Egy [automatizálási változó](automation-variables.md) tárolja az időbélyegeket, amely a fenti forgatókönyv olvas, és minden egyes fájl tárolja. 
+
+1. Válassza ki **változók** alatt **megosztott erőforrások** válassza **+ változó hozzáadása**.
+1. Adja meg a "Figyelés-NewFileTimestamp" a neve
+1. Válassza ki a DateTime típushoz.
+1. Kattintson a **létrehozása** gombra. Ezzel létrehozza az automatizálási változó.
+
+## <a name="create-an-action-runbook"></a>Egy művelet runbook létrehozása
+
+Egy művelet runbook megfigyelő feladat hogy intézkedjen a megfigyelő runbook küldött adatok használatos. Ebben a lépésben frissíti import "Folyamat-NewFile" nevű előre definiált művelet runbook.
+
+1. Nyissa meg az automation-fiók, és válassza ki **Runbookok** alatt a **folyamat** kategóriát.
+1. Kattintson a **Tallózás gyűjtemény** gombra.
+1. "Megfigyelő action" megkereséséhez és kijelöléséhez **megfigyelő művelet, amely feldolgozza a megfigyelő runbook által indított események** válassza **importálási**.
+  ![A felhasználói Felületről művelet forgatókönyv importálása](media/automation-watchers-tutorial/importsourceaction.png)
+1. A runbook adjon egy nevet és leírást, és válassza ki **OK** a runbook importálása az Automation-fiók.
+1. Válassza ki **szerkesztése** majd **közzététel**. Ha a select kéri **Igen** közzétenni a runbookot.
+
+## <a name="create-a-watcher-task"></a>Megfigyelő feladat létrehozása
+
+A megfigyelő feladat tartalmaz két részből áll. A megfigyelő és a műveletet. A megfigyelő fut a figyelő feladat meghatározott időközönként. Megfigyelő runbook adatok kerülnek a művelet a runbook-kiszolgálóra. Ebben a lépésben konfigurálja a megfigyelő feladat az előző lépések során meghatározott felügyeletiszolgáltatás-megfigyelő és a művelet runbookok hivatkozik.
+
+1. Nyissa meg az automation-fiók, és válassza ki **megfigyelő feladatok** alatt a **folyamat** kategóriát.
+1. Válassza ki a figyelő feladatok lapján, majd kattintson a **+ adjon hozzá egy megfigyelő feladatot** gombra.
+1. Adja meg a "WatchMyFolder" néven.
+
+1. Válassza ki **konfigurálása megfigyelő** válassza ki a **figyelési-NewFile** runbook.
+
+1. Adja meg a következő értékeket a Paraméterek:
+
+   * **FOLDERPATH** -a hibrid feldolgozó egy mappát, ahol új fájlok létrehozása. d:\examplefiles
+   * **BŐVÍTMÉNY** -hagyja üresen az összes fájl kiterjesztéseinek feldolgozása.
+   * **RECURSE** -hagyja meg az alapértelmezett érték.
+   * **Futtatás beállítások** -válassza ki a hibrid feldolgozó.
+
+1. Kattintson az OK gombra, majd válassza ki a figyelő lapra való visszatéréshez.
+1. Válassza ki **művelet konfigurálása** válassza ki a "Folyamat-NewFile" runbook.
+1. Adja meg a következő értékeket paraméterek:
+
+   *    **EVENTDATA** -hagyja üresen. Adatok kerülnek a megfigyelő runbook.  
+   *    **Futtatási beállítások** -Azure hagyja, a runbook fut az Automation szolgáltatás.
+
+1. Kattintson a **OK**, majd válassza ki a figyelő lapra való visszatéréshez.
+1. Kattintson a **OK** a megfigyelő feladat létrehozásához.
+
+![A felhasználói Felületről megfigyelő művelet konfigurálása](media/automation-watchers-tutorial/watchertaskcreation.png)
+
+## <a name="trigger-a-watcher"></a>Egy figyelő eseményindító
+
+A megfigyelő tesztelése a várt módon működik, egy fájl tesztelése létrehozásához szükséges.
+
+A hibrid feldolgozó történő távoli. Nyissa meg **PowerShell** , és hozzon létre egy teszt fájl a mappában.
+  
+   ```PowerShell-interactive
+   New-Item -Name ExampleFile1.txt
+   ```
+
+A következő példa bemutatja a várt kimeneti.
+
+```
+    Directory: D:\examplefiles
 
 
-## <a name="create-a-watcher-task-that-selects-the-watcher-runbook-and-action-runbook"></a>Kiválasztja a megfigyelő runbook és a művelet a runbook egy megfigyelő-feladat létrehozása
-1.  Nyissa meg a figyelő feladatok lapját, és kattintson a "Megfigyelő feladat hozzáadása" gombra.
-![A felhasználói Felületről megfigyelő listája](media/automation-watchers-tutorial/WatchersList.png)
-2.  Adja meg a "WatchMyFolder" néven.
-3.  Válassza ki a "Figyelő beállítása", és válassza ki a "Figyelés-NewFile" runbookot.
-![A felhasználói Felületről megfigyelő konfigurálása](media/automation-watchers-tutorial/ConfigureWatcher.png)
-4.  Adja meg a következő értékeket paraméterek:
-    *   FOLDERPATH. A hibrid feldolgozó egy mappát, ahol új fájlok létrehozása
-    *   A BŐVÍTMÉNY. Hagyja üresen az összes fájl kiterjesztéseinek feldolgozása.
-    *   RECURSE. Hagyja változatlanul.
-    *   FUTTATÁSI BEÁLLÍTÁSOK. Válassza ki a hibrid feldolgozó.
-5.  Kattintson az OK gombra, majd válassza ki a figyelő lapra való visszatéréshez.
-6.  Válassza ki a "Konfigurálása action", és válassza a "Folyamat-NewFile" runbook.
-![A felhasználói Felületről megfigyelő művelet konfigurálása](media/automation-watchers-tutorial/ConfigureAction.png)
-7.  Adja meg a következő értékeket paraméterek:
-    *   EVENTDATA. Hagyja üresen. Adatok kerülnek a megfigyelő runbook.
-    *   Futtatási beállítások. Azure hagyja, a runbook fut az Automation szolgáltatás.
-8.  Kattintson az OK gombra, majd válassza ki a figyelő lapra való visszatéréshez.
-9.  Kattintson az OK gombra a megfigyelő feladat létrehozásához.
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       12/11/2017   9:05 PM              0 ExampleFile1.txt
+```
 
-## <a name="trigger-a-watcher-by-adding-a-new-file-to-a-directory"></a>Egy új fájlt hozzá egy könyvtárat egy megfigyelő eseményindító
-1.  A hibrid feldolgozó történő távoli
-2.  A megfigyelő tevékenység által figyelt mappához történő hozzáadása egy új szövegfájlt.
+## <a name="inspect-the-output"></a>Tekintse meg a kimenetet
 
-## <a name="inspect-the-output-from-the-action-runbook-that-shows-information-on-the-new-file"></a>Tekintse meg a kimenetet információkat jeleníti meg az új fájl művelet runbookból
-1.  Kattintson a megfigyelő tevékenységen az "WatchMyFolder"
-2.  Kattintson a "nézet megfigyelő adatfolyamok" az, hogy a figyelő az új fájl található, és a művelet a runbook indítása.
-3.  Kattintson a "megfigyelő művelet feladatok megtekintése" a művelet a runbook-feladat megtekintéséhez.
-![Megfigyelő műveleti feladatok a felhasználói Felületről](media/automation-watchers-tutorial/WatcherActionJobs.png)
+1. Nyissa meg az automation-fiók, és válassza ki **megfigyelő feladatok** alatt a **folyamat** kategóriát.
+1. Válassza ki a figyelő "WatchMyFolder" feladatot.
+1. Kattintson a **megfigyelő adatfolyamok megtekintése** alatt **adatfolyamok** , hogy a figyelő az új fájl található, és a művelet a runbook indítása.
+1. A művelet runbook-feladatok megtekintéséhez kattintson a a **megfigyelő művelet feladatok megtekintéséhez**. Minden feladat lehet kijelölve a nézet a feladat részleteit.
 
+   ![Megfigyelő műveleti feladatok a felhasználói Felületről](media/automation-watchers-tutorial/WatcherActionJobs.png)
 
-## <a name="next-steps"></a>Következő lépések:
+A várt kimenet, amikor az új fájl megtalálható-e az alábbi példában látható:
 
-További információkért lásd: [az első PowerShell runbook](automation-first-runbook-textual-powershell.md).
+```
+Message is Process new file...
 
 
 
+Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
+```
 
+## <a name="next-steps"></a>További lépések
 
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
+> [!div class="checklist"]
+> * Megfigyelő runbook importálása
+> * Az automatizálási változó létrehozása
+> * Egy művelet runbook létrehozása
+> * Megfigyelő feladat létrehozása
+> * Egy figyelő eseményindító
+> * Tekintse meg a kimenetet
 
+Kattintson erre a hivatkozásra a további információk a létrehozásról saját runbook.
 
+> [!div class="nextstepaction"]
+> [Az első PowerShell runbook](automation-first-runbook-textual-powershell.md).

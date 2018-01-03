@@ -13,24 +13,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/10/2017
+ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 12e1ab5f57d217537ba14183500efb099985ff1e
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 1806bde383f04747f1f0fef46e5cf4d38de1e939
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-graph-api"></a>How Azure Cosmos DB globális terjesztési a Graph API-jával beállítása
 
-Ebben a cikkben megmutatjuk, hogyan használja az Azure-portált telepítő Azure Cosmos DB globális terjesztési, és csatlakozzon a Graph API-val (előzetes verzió).
+Ebben a cikkben megmutatjuk, hogyan használható az Azure-portálon Azure Cosmos DB globális terjesztési és a Graph API segítségével csatlakozzon.
 
 Ez a cikk ismerteti a következő feladatokat: 
 
 > [!div class="checklist"]
 > * Az Azure portál használatával globális terjesztési konfigurálása
-> * Globális terjesztési használatával konfigurálja a [Graph API-k](graph-introduction.md) (előzetes verzió)
+> * Globális terjesztési használatával konfigurálja a [Graph API-k](graph-introduction.md)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
@@ -43,10 +43,10 @@ Kihasználása érdekében [globális terjesztési](distribute-data-globally.md)
 
 Ez a beállítás lista van megadva, az SDK-k használata a kapcsolat inicializálása közben. Az SDK-k elfogadása "PreferredLocations" nem kötelező paraméter, amely egy Azure-régiók rendezett listáját.
 
-* **Írási műveletek**: az SDK automatikusan elküld minden írási műveleteket ad ki az aktuális írási régió.
-* **Beolvassa**: minden olvasási kapnak a PreferredLocations lista első rendelkezésre álló terület. A kérés nem teljesíthető, ha az ügyfél lefelé a listában, a következő régióban sikertelen, és így tovább. Az SDK-k csak megpróbálja beolvasni a régió van megadva a PreferredLocations. Igen például ha három régiók a Cosmos DB fiók áll rendelkezésre, de az ügyfél csak meghatározza a nem írási régiók két PreferredLocations, majd nincs olvasási szolgáltató kívül az írási régió, feladatátvétel esetén is.
+* **Írási műveletek**: az SDK automatikusan elküldi az összes írási műveletek az aktuális írási területen.
+* **Beolvassa**: minden olvasási küldött a PreferredLocations lista első rendelkezésre álló terület. A kérés nem teljesíthető, ha az ügyfélnek nem sikerül lefelé a listában, a következő terület, és így tovább. Az SDK-k csak a megadott PreferredLocations régiók olvasás kísérlete. Igen például ha a Cosmos DB fiók három régiókban, de az ügyfél csak megadja két a nem írási PreferredLocations, majd nincs olvasási régiót kívül az írási régió, feladatátvétel esetén is.
 
-Az alkalmazás a jelenlegi írási végpont ellenőrizheti és olvassa el a két tulajdonság, WriteEndpoint és ReadEndpoint, elérhető, a SDK 1.8-as verzióját és az újabb ellenőrzésével az SDK által választott végpont. A PreferredLocations tulajdonsága nincs beállítva, ha minden kérésnél szolgáltató aktuális írási régióban.
+Az alkalmazás a jelenlegi írási végpont ellenőrizheti és olvassa el a két tulajdonság, WriteEndpoint és ReadEndpoint, elérhető, a SDK 1.8-as verzióját és az újabb ellenőrzésével az SDK által választott végpont. A PreferredLocations tulajdonsága nincs beállítva, ha minden kérésnél szolgáltatott aktuális írási régióban.
 
 ### <a name="using-the-sdk"></a>Az SDK használatával
 
@@ -81,7 +81,7 @@ await docClient.OpenAsync().ConfigureAwait(false);
 
 Ez azt, hogy ez az oktatóanyag befejezése. Megismerheti a globális replikált fiókja konzisztencia kezeléséhez olvasásával [Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md). És hogyan globális adatbázis-replikációval kapcsolatos további információk az Azure Cosmos Adatbázisba működik, a következő témakörben: [adatok globálisan Azure Cosmos DB terjesztése](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban ezt a következők:
 

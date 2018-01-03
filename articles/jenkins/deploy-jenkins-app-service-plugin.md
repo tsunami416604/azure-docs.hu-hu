@@ -15,21 +15,21 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: e38c69ec55d894053792fbf284d07944d7f44dc0
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 9b79e3b498e51e626e7e9a87d2bb1a66366acff5
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Telepítése az Azure App Service a Jenkins beépülő modul használatával 
 
 Java-webalkalmazás telepítése az Azure-ba, használja az Azure parancssori felület a [Jenkins csővezeték](/azure/jenkins/execute-cli-jenkins-pipeline) vagy használhatja a [Azure App Service Jenkins beépülő modul](https://plugins.jenkins.io/azure-app-service). A Jenkins 1.0-s beépülő modul verziója támogatja a folyamatos üzembe helyezés keresztül Azure App Service Web Apps szolgáltatással:
-* Git és az FTP.
+* Git- vagy FTP.
 * A Web Apps Linux docker.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Konfigurálja a Jenkins is telepíthet webalkalmazásokat Git és az FTP keresztül.
+> * Jenkins is telepíthet webalkalmazásokat, Git vagy FTP segítségével konfigurálja.
 > * Webes alkalmazás a tárolók telepítése Jenkins konfigurálása.
 
 ## <a name="create-and-configure-a-jenkins-instance"></a>Hozza létre és konfigurálja a Jenkins példánya
@@ -64,7 +64,7 @@ Egy Azure szolgáltatás egyszerű Azure telepíteni kell.
 3. A Microsoft Azure egyszerű szolgáltatásnév hozzáadásához válassza **adja hozzá a hitelesítő adatok**. Adja meg az értékeket a **előfizetés-azonosító**, **ügyfél-azonosító**, **Ügyfélkulcs**, és **OAuth 2.0 Token-végpont** mezőket. Állítsa be a **azonosító** mezőről **mySp**. Ezt az Azonosítót a későbbi lépésekben ebben a cikkben használjuk.
 
 
-## <a name="configure-jenkins-to-deploy-web-apps-through-git-and-ftp"></a>Jenkins is telepíthet webalkalmazásokat a Git és az FTP konfigurálása
+## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>Jenkins is telepíthet webalkalmazásokat fájlok feltöltésével konfigurálása
 
 A projekt telepítésére a webalkalmazások, Git vagy FTP segítségével feltöltheti a build összetevők (például egy WAR-fájlt a Java).
 
@@ -104,7 +104,7 @@ A feladat Jenkins beállítása előtt kell az Azure App Service-csomag és a we
 8. Ha szeretne telepíteni egy nem éles tárolóhelyre, akkor is megadhatja a **tárolóhely** nevét.
 9. Mentse a projektet, és állítsa be úgy. A webalkalmazás az Azure-bA telepítve van, a build befejezésekor.
 
-### <a name="deploy-web-apps-through-ftp-by-using-jenkins-pipeline"></a>Webalkalmazások FTP keresztül telepíteni a Jenkins folyamat
+### <a name="deploy-web-apps-by-uploading-files-using-jenkins-pipeline"></a>Webalkalmazások telepítését a Jenkins Kimenetátirányításának segítségével fájlok feltöltése
 
 Az Azure App Service Jenkins beépülő modul az adatcsatorna használatra kész. A következő mintát a GitHub-tárház hivatkozhat.
 
@@ -227,7 +227,7 @@ Az a **Docker beállításjegyzék URL-cím** értéket, az URL-címet megadni a
 
 3. Keresse fel a http://&lt;your_app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y >. Cserélje le &lt;x > és &lt;y > bármely számokkal x összege beolvasandó + y.
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure App Service Jenkins beépülő modul központi telepítéséhez használt Azure-bA.
 

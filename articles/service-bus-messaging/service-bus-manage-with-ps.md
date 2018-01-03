@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 1520cea72069be5d7bb078a3770d61fade26b853
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fbc6e18565ec14a3ccb4499b24804f681026023
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>A Service Bus-erőforrások kezelése a PowerShell használatával
 
@@ -159,7 +159,7 @@ Set-AzureRmServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace 
 
 Használhatja a [Service Bus PowerShell modul](/powershell/module/azurerm.servicebus) egyéb entitások, például az üzenettémák és előfizetések kiépítéséhez. Ezek a parancsmagok szintaktikailag hasonlóak a várólista létrehozása parancsmagok az előző szakaszban bemutatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A teljes Service Bus Resource Manager PowerShell modul dokumentációjában [Itt](/powershell/module/azurerm.servicebus). Ezen a lapon az összes elérhető parancsmagok sorolja fel.
 - Azure Resource Manager-sablonok használatával kapcsolatos információkért lásd: a cikk [Azure Resource Manager-sablonok létrehozása a Service Bus-erőforrások](service-bus-resource-manager-overview.md).

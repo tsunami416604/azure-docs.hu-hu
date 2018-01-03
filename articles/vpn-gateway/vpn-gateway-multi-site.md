@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: yushwang
 ms.openlocfilehash: 434f84dc6244eddce9b172a617722b218360ffc2
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Pont-pont kapcsolat hozzáadása a virtuális hálózat meglévő VPN-átjáró kapcsolattal (klasszikus)
 
@@ -206,6 +206,6 @@ A példa visszatérési:
     OperationStatus           : Succeeded
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 VPN-átjárók kapcsolatos további információkért lásd: [VPN-átjárók](vpn-gateway-about-vpngateways.md).

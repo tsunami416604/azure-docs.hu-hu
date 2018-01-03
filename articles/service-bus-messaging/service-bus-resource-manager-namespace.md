@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre a Service Bus-névtér Azure Resource Manager-sablonnal |} Microsoft Docs"
-description: "Service Bus-névtér létrehozása az Azure Resource Manager-sablon segítségével"
+title: "Service Bus üzenetkezelés névteret Azure Resource Manager-sablon létrehozása |} Microsoft Docs"
+description: "Service Bus üzenetkezelés névtér létrehozása az Azure Resource Manager-sablon segítségével"
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 12/21/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: c8a42638c79a8a53f80102fc344eccb521e4c1c5
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f184cc9418e4af95423c0ede65bca312dfca7393
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager-sablonnal Service Bus-névtér létrehozása
 
@@ -41,6 +41,7 @@ A teljes sablon, tekintse meg a [Service Bus-névtér sablon] [ Service Bus name
 > 
 
 ## <a name="what-will-you-deploy"></a>Mit fog üzembe helyezni?
+
 Ezen sablon esetén a Service Bus-névtér telepít egy [Standard vagy prémium](https://azure.microsoft.com/pricing/details/service-bus/) Termékváltozat.
 
 Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
@@ -48,11 +49,13 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 [![Üzembe helyezés az Azure-ban](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Paraméterek
+
 Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon nevű szakaszban tartalmaz `Parameters` , amely tartalmazza az összes a paraméterértékek. Azokhoz az értékekhez adjon meg paramétert, amelyek az üzembe helyezendő projekt vagy az üzembe helyezési környezet alapján változhatnak. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
 
 Ez a sablon meghatározza, hogy a következő paraméterekkel:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 A Service Bus-névtér létrehozása neve.
 
 ```json
@@ -65,6 +68,7 @@ A Service Bus-névtér létrehozása neve.
 ```
 
 ### <a name="servicebussku"></a>serviceBusSKU
+
 A Service Bus neve [SKU](https://azure.microsoft.com/pricing/details/service-bus/) létrehozásához.
 
 ```json
@@ -86,6 +90,7 @@ A sablon határozza meg az értékeket, amelyek ehhez a paraméterhez (Standard 
 A Service Bus árazással kapcsolatos további információkért lásd: [Service Bus árak és számlázás][Service Bus pricing and billing].
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 A sablon Service Bus API verzióját.
 
 ```json
@@ -98,7 +103,9 @@ A sablon Service Bus API verzióját.
 ```
 
 ## <a name="resources-to-deploy"></a>Üzembe helyezendő erőforrások
+
 ### <a name="service-bus-namespace"></a>Service Bus-névtér
+
 Létrehoz egy standard Service Bus-névtér típusú **Messaging**.
 
 ```json
@@ -120,21 +127,24 @@ Létrehoz egy standard Service Bus-névtér típusú **Messaging**.
 ```
 
 ## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
+
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-```azurecli
+
+```azurecli-interactive
 azure config mode arm
 
 azure group deployment create <my-resource-group> <my-deployment-name> --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy már létrehozott és telepített Azure Resource Manager eszközzel, megtudhatja, hogyan kezelheti ezeket az erőforrásokat ezek a cikkek olvasásával:
 
 * [A PowerShell használatával a Service Bus kezelése](service-bus-manage-with-ps.md)

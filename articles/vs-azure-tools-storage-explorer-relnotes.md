@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: fd8bb41925753b9955d2cbd7a0e13a5e9451d5b1
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: c709be1a509ce9ad6b6b494dea80419b3ea126c4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Kibocsátási megjegyzések a Microsoft Azure Tártallózó (előzetes verzió)
 
-A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes verzió) kiadása, valamint a kibocsátási megjegyzések a korábbi verziók.
+A cikkben a kibocsátási megjegyzések a 0.9.3-as. Azure Tártallózó (előzetes verzió) kiadása, valamint a kibocsátási megjegyzések a korábbi verziók.
 
 [A Microsoft Azure Tártallózó (előzetes verzió)](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux rendszeren.
 

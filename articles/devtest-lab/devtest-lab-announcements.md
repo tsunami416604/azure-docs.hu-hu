@@ -3,7 +3,7 @@ title: "Egy announcment egy laborhoz fel Azure DevTest Labs szolgáltatásban |}
 description: "Megtudhatja, hogyan hirdetmény hozzáadása egy laborhoz a Azure DevTest Labs szolgáltatásban"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 67a09946-4584-425e-a94c-abe57c9cbb82
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: tarcher
-ms.openlocfilehash: db92caa497b3db6b3e05e59e169111cedc3c71c6
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.author: v-craic
+ms.openlocfilehash: d376909a46da11ac1b6b1fa968e53ebef8f3dbf7
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>A laborokhoz közlemény fel Azure DevTest Labs szolgáltatásban
 
@@ -74,6 +74,6 @@ Ha már nem kívánja megjeleníteni ezt az értesítést a labor felhasználók
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ha módosít, vagy egy tesztlabor házirend beállítása, érdemes tájékoztatják a felhasználókat a közlemény utáni. [Állítsa be a házirendek és ütemezések](devtest-lab-set-lab-policy.md) alkalmazza a korlátozások és egyezmények az előfizetés testreszabott házirendekkel kapcsolatos információkat biztosít.
 * Megismerkedhet a [Office DevTest Labs Azure Resource Manager gyorsindítási sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Samples).

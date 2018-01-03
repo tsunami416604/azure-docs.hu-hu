@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/28/2017
 ms.author: tomfitz
-ms.openlocfilehash: 57eec4277e584c3c2828e0fe029b9db10428934e
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 9431483293bcc252b79d02ba2d655a3aa86aaa4a
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával
 
@@ -27,10 +27,10 @@ Ha egy alkalmazás vagy parancsfájlt, amely erőforrások hozzáférésre van s
 * Engedélyek hozzárendelése saját engedélyek eltérő alkalmazás identitását. Ezek az engedélyek általában korlátozódik, hogy mit az alkalmazás kell tennie.
 * A tanúsítvány használata a hitelesítéshez, egy felügyelet nélküli parancsfájl végrehajtása közben.
 
-Ez a témakör bemutatja, hogyan használható [Azure PowerShell](/powershell/azure/overview) mindent, amire szüksége, az alkalmazás futtatásához a saját hitelesítő adatait és identitás beállítása.
+Ez a cikk bemutatja, hogyan használható [Azure PowerShell](/powershell/azure/overview) mindent, amire szüksége, az alkalmazás futtatásához a saját hitelesítő adatait és identitás beállítása.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
-Ez a témakör befejezéséhez megfelelő engedélyekkel kell rendelkeznie az Azure Active Directory és az Azure-előfizetésében is. Pontosabban kell lennie az Azure Active Directory-alkalmazás létrehozása, és a szolgáltatás egyszerű hozzárendelése egy szerepkörhöz. 
+Ez a cikk befejezéséhez megfelelő engedélyekkel kell rendelkeznie az Azure Active Directory és az Azure-előfizetésében is. Pontosabban kell lennie az Azure Active Directory-alkalmazás létrehozása, és a szolgáltatás egyszerű hozzárendelése egy szerepkörhöz. 
 
 A legegyszerűbben a portálon ellenőrizheti, hogy rendelkezik-e megfelelő jogosultságokkal. Lásd: [szükséges engedély ellenőrzése](resource-group-create-service-principal-portal.md#required-permissions).
 
@@ -105,9 +105,10 @@ Param (
     $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
  }
 
+ $SecurePassword = convertto-securestring $Password -asplaintext -force
  
  # Create Service Principal for the AD app
- $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -Password $Password
+ $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -Password $SecurePassword
  Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
  $NewRole = $null
@@ -377,7 +378,7 @@ A jelszó hozzáadásához használja:
 New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -Password p@ssword!
 ```
 
-Tanúsítvány érték hozzáadása, hozzon létre egy önaláírt tanúsítványt, ebben a témakörben ismertetett módon. Ezután használja:
+Tanúsítvány érték hozzáadása, hozzon létre egy önaláírt tanúsítványt, ebben a cikkben ismertetett módon. Ezután használja:
 
 ```powershell
 New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
@@ -421,7 +422,7 @@ Az alkalmazás a különböző platformokat, a bejelentkezés kapcsolatos inform
 * [Python](/python/azure/python-sdk-azure-authenticate?view=azure-python)
 * [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az alkalmazás integrálása az Azure erőforrások kezeléséhez részletes lépéseiért lásd: [fejlesztői útmutató az Azure Resource Manager API-val engedélyezési](resource-manager-api-authentication.md).
 * Egy részletes ismertetése az alkalmazások és szolgáltatásnevekről [alkalmazás és szolgáltatás egyszerű objektumok](../active-directory/active-directory-application-objects.md). 
 * Azure Active Directory-hitelesítéssel kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure AD](../active-directory/active-directory-authentication-scenarios.md).

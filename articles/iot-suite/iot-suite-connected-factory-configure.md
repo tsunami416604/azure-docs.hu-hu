@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 5c5a4a57f50b0485b178b01c55bc3a71fcc288bd
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 19e0f48ab817428a1f953c80296b2e23effe5a8a
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/02/2018
 ---
-# <a name="how-to-configure-the-connected-factory-preconfigured-solution"></a>Az előre konfigurált csatlakoztatott gyári megoldás konfigurálása
+# <a name="configure-the-connected-factory-preconfigured-solution"></a>Az előre konfigurált csatlakoztatott gyári megoldás konfigurálása
 
 Az előre konfigurált csatlakoztatott gyári megoldás szimulált irányítópult egy kitalált, Contoso vállalat jelennek meg. A vállalatnak előállítók számos globális helyeken globálisan.
 
@@ -269,7 +269,7 @@ A konfigurációs fájlban használt összes tulajdonságok különböző kateg�
 
 Ebbe a kategóriába tartozó tulajdonságok meghatározása a csatlakoztatott gyári irányítópult annak vizuális megjelenését. Példák erre vonatkozóan:
 
-* Név
+* Name (Név)
 * Leírás
 * Kép
 * Hely
@@ -343,6 +343,6 @@ Egy jellemző a **NumberOfManufactureredProducts** értéke csomópont, hogy csa
 
 A **opkód** konfigurálja a számítási logika maximális és minimális érték különbségét értékének kiszámítása a konfiguráció. Az eredmények fogja halmozott alsó legfelső szintű (globális) szintre, és az irányítópulton látható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A javasolt következő lépésre megtudhatja, hogyan [egy átjáró a Windows vagy Linux az előre konfigurált csatlakoztatott gyári megoldás üzembe helyezéséhez](iot-suite-connected-factory-gateway-deployment.md).

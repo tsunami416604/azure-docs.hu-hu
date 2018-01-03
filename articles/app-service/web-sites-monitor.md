@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 58ccdba6f01cfb7de72f28f185102bf7f618eab4
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 72694743a9e1f520211d133dcc0d7f473c087f38
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Útmutató: az Azure App Service-alkalmazások figyelése
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) a beépített felügyeleti funkciókat biztosítja a [Azure-portálon](https://portal.azure.com).
@@ -29,6 +29,8 @@ Az Azure-portál lehetővé teszi a tekintse át **kvóták** és **metrikák** 
 ## <a name="understanding-quotas-and-metrics"></a>Understanding kvóták és metrikák
 ### <a name="quotas"></a>Kvóták
 Az App Service-ben üzemeltetett alkalmazások vannak bizonyos *korlátok* használhatnak erőforrásait. Határozza meg a korlátok a **App Service-csomag** az alkalmazással társított alkalmazások.
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Ha az alkalmazás a egy **szabad** vagy **megosztott** tervezi, akkor határozza meg az erőforrások, az alkalmazás használati korlátait **kvóták**.
 

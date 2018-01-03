@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: zachal
-ms.openlocfilehash: c05c2d541a5f526f362f9cd72fe6d878374112b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: deb360e36b68f7ddb13b00946c700d0c83890ca6
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure célállapot-konfiguráció kiterjesztés kezelőjének bemutatása
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,11 +37,9 @@ Ez a cikk a PowerShell kívánt állapot konfigurációs szolgáltatása (DSC) b
 ## <a name="terms-and-concepts"></a>Kifejezések és fogalmak
 Ez az útmutató a következő fogalmakat ismeretét feltételezi:
 
-Konfiguráció - DSC konfigurációs dokumentum. 
-
-Csomópont - céljának DSC-konfiguráció. A jelen dokumentum "csomópont" mindig hivatkozik egy Azure virtuális Gépen.
-
-Konfigurációs adatok - egy .psd1 fájlt a környezeti adatokat tartalmazó konfiguráció
+* **Konfigurációs** -A DSC-konfiguráció dokumentum. 
+* **Csomópont** -céljának DSC-konfiguráció. A jelen dokumentum "csomópont" mindig hivatkozik egy Azure virtuális Gépen.
+* **Konfigurációs adatok** - konfiguráció környezeti adatokat tartalmazó .psd1 fájl
 
 ## <a name="architectural-overview"></a>Az architektúra áttekintése
 Az Azure DSC-bővítmény az Azure Virtuálisgép-ügynök keretrendszer használatával kézbesíti, kihirdeti, és a jelentés az Azure virtuális gépeken futó DSC-konfigurációk. A DSC-bővítményt vár legalább egy konfigurációs dokumentum, és az Azure PowerShell SDK vagy az Azure-portálon keresztül megadott paraméterek tartalmazó .zip fájlt.
@@ -91,7 +89,7 @@ A portál van szüksége.
 
 **Konfigurációs argumentumok**: Ha a konfigurációs függvény argumentummal, adja meg őket itt formátumú `argumentName1=value1,argumentName2=value2`. Megjegyzés: ezt a formátumot más formátumú, mint hogyan konfigurációs argumentumot fogad PowerShell-parancsmagok és a Resource Manager-sablonok használatával. 
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 Az Azure DSC-bővítmény veszi a DSC-konfiguráció dokumentumok és ír elő őket az Azure virtuális gépeken. A következő konfiguráció egy egyszerű példa. Mentse helyileg "IisInstall.ps1":
 
 ```powershell
@@ -146,9 +144,11 @@ Set-AzureRmVmDscExtension -Version 2.21 -ResourceGroupName $resourceGroup -VMNam
 ## <a name="logging"></a>Naplózás
 Naplók kerülnek:
 
-C:\WindowsAzure\Logs\Plugins\Microsoft.PowerShell.DSC\[verziószám]
+```
+C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\[Version Number]
+```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a PowerShell DSC [látogasson el a PowerShell dokumentációs központban](https://msdn.microsoft.com/powershell/dsc/overview). 
 
 Vizsgálja meg a [Azure Resource Manager sablon a DSC-bővítmény](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 

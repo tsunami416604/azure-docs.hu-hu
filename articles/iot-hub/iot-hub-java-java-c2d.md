@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 6a5f14f411c2ec82478fef6d20d22f8b8dc8d7bf
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 0c94b627ad80a1cc32bc0084d3792a917225d9c7
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Az IoT-központ (Java) felhő eszközre-üzenetek
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -192,7 +192,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![Futtassa a parancsot a felhőből eszközre üzenet küldése][img-send-command]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóprogramban megismerte felhő eszközre üzeneteket küldjön és fogadjon. 
 
@@ -208,7 +208,7 @@ Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért 
 [Ismerkedés az IoT-központ]: iot-hub-java-java-getstarted.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 [IoT Hub fejlesztői útmutató]: iot-hub-devguide.md
-[Azure IoT fejlesztői központ]: http://www.azure.com/develop/iot
+[Azure IoT fejlesztői központ]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
 [átmeneti hiba kezelése]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx

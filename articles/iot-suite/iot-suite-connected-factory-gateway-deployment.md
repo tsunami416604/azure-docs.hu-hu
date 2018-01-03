@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/11/2017
 ms.author: dobett
-ms.openlocfilehash: af49a31061152cf44d3818b79b9ed7ba586f8418
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1506488193638400af7c71b3ecd00e99512daa62
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>A Windows vagy Linux előre konfigurált csatlakoztatott gyári megoldás egy peremhálózati átjáró üzembe helyezéséhez
 
@@ -142,7 +142,7 @@ docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/co
 A OPC-Proxy telepítéséhez futtassa a következő parancsot a parancssorba:
 
 ```cmd/sh
-docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> Microsoft/iot-edge-opc-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db
 ```
 
 Csak futtatásához szükséges a telepítés után a rendszer.
@@ -150,7 +150,7 @@ Csak futtatásához szükséges a telepítés után a rendszer.
 A következő paranccsal futtassa a OPC-Proxy:
 
 ```cmd/sh
-docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> Microsoft/iot-edge-opc-proxy:1.0.2 -D /mapped/cs.db
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.2 -D /mapped/cs.db
 ```
 
 OPC Proxy menti a kapcsolati karakterláncot a telepítés során. Utólagosan kell nincs megadva a kapcsolati karakterlánc miatt biztonsági kockázatot jelent.
@@ -177,7 +177,7 @@ A csatlakoztatott gyári kiszolgálók hozzáadása a saját OPC USA előre konf
 
 1. Telemetria most zajlik az átjáró eszközről. A telemetriai adatok megtekintéséhez a **gyári helyek** a csatlakoztatott gyári portál ábrázolása **új előállító**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az előre konfigurált csatlakoztatott gyári megoldás architektúrájával kapcsolatos további tudnivalókért lásd: [csatlakoztatott gyári előre konfigurált megoldás forgatókönyv](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
 

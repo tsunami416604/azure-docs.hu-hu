@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1a0b54e75bd6356ba7ba351d51d5f4a59bd64c75
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 9b35572b3275b5a2c5e89adf4890a2659d09626e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Egy meglévő egyéni DNS-névvel hozzárendelése az Azure Web Apps
 
@@ -58,6 +58,8 @@ Az oktatóanyag elvégzéséhez:
 ## <a name="prepare-the-app"></a>Az alkalmazás előkészítése
 
 Egy egyéni DNS-név hozzárendelése egy webes alkalmazás, a webes alkalmazás [App Service-csomag](https://azure.microsoft.com/pricing/details/app-service/) fizetős rétegben kell lennie (**megosztott**, **alapvető**, **szabványos**, vagy  **Prémium szintű**). Ezt a lépést akkor győződjön meg arról, hogy az App Service alkalmazás van a támogatott az IP-címek.
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -322,7 +324,7 @@ Set-AzureRmWebApp `
 
 További információkért lásd: [rendelje hozzá az egyéni tartománynév a webes alkalmazás](scripts/app-service-powershell-configure-custom-domain.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

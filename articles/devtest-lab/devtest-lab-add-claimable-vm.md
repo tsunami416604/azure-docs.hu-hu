@@ -3,7 +3,7 @@ title: "Létrehozásához és kezeléséhez claimable virtuális gépeket egy, a
 description: "Megtudhatja, hogyan claimable virtuális gép hozzáadása egy laborhoz a Azure DevTest Labs szolgáltatásban"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: f671e66e-9630-4e30-a131-a6bad9ed9c11
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: tarcher
-ms.openlocfilehash: 17ddf920dbed6b561c657495b2554d8c1450831c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: v-craic
+ms.openlocfilehash: a27423a75cb2b5063156109ea9ee3a45fa036c07
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Hozzon létre és claimable Azure DevTest Labs szolgáltatásban virtuális gépeinek kezelése
 Ad hozzá egy claimable virtuális labor be, hogyan hasonló módon, [szabványos virtuális gép hozzáadása](devtest-lab-add-vm.md) – a egy *alap* , amely vagy egy [egyéni lemezkép](devtest-lab-create-template.md), [képlet](devtest-lab-manage-formulas.md) , vagy [Piactéri lemezképhez](devtest-lab-configure-marketplace-images.md). Ez az oktatóanyag végigvezeti az Azure portál használata claimable virtuális gép hozzáadása egy laborhoz a DevTest Labs szolgáltatásban, és a folyamatok jeleníti meg a felhasználói jogcímek és a virtuális gép unclaim követi.
@@ -94,6 +94,6 @@ Ez az úgynevezett "átvitele a adatlemez". Az adatlemez majd válik elérhetőv
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A már létrehozott, keresztül csatlakozhat a virtuális gép kiválasztásával **Connect** a a felügyeleti ablaktábla.
 * Megismerkedhet a [DevTest Labs Azure Resource Manager gyorsindítási sablonok galéria](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
