@@ -12,18 +12,18 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/20/2017
+ms.date: 12/18/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: dbcf2b3164aa4351301c52ccadecbc211193d19b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 41d7e42f203170e4fa3b8e3a8c973e23808f941b
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: A tábla API a .NET fejlesztést
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
 Ez az oktatóanyag ismerteti a következő feladatokat: 
 
@@ -140,7 +140,7 @@ Bizonyos funkciókat, amelyek lehetővé teszik egy szükséges kapcsolat házir
 | Tábla kapcsolatbeállításai | Leírás |
 | --- | --- |
 | Csatlakozási mód  | Azure Cosmos-adatbázis két csatlakozási módot támogat. A `Gateway` mód, mindig kérések az Azure Cosmos DB átjárón, amely továbbítja a megfelelő adatok partíciókat. A `Direct` csatlakozási mód, az ügyfél lekéri a táblák leképezése partíciókra, és a kérések közvetlenül az adatok partíciók szemben. Ajánlott `Direct`, az alapértelmezett.  |
-| Csatlakozási protokoll | Az Azure Cosmos DB támogatja két kapcsolat protokoll - `Https` és `Tcp`. `Tcp`az alapértelmezett és ajánlott, mivel az több egyszerűsített. |
+| Kapcsolat protokollja | Az Azure Cosmos DB támogatja két kapcsolat protokoll - `Https` és `Tcp`. `Tcp`az alapértelmezett és ajánlott, mivel az több egyszerűsített. |
 | Elsődleges helyek | Előnyben részesített (többhelyű) helyek az olvasási műveletek vesszővel elválasztott listája. Minden Azure Cosmos DB fiókhoz társítható 1-30 + régiók. Minden ügyfél példány e régiók részhalmazát megadhat kis késleltetésű olvasása csatlakozási kísérleteinek kívánt sorrendjét. A régiók névvel kell ellátni használatával a [megjelenített neveket](https://msdn.microsoft.com/library/azure/gg441293.aspx), például `West US`. Lásd még: [több homing API-k](tutorial-global-distribution-table.md). |
 | Konzisztenciaszint | Akkor is kompromisszumot közötti késleltetés, konzisztencia- és rendelkezésre állás öt jól meghatározott konzisztenciaszintek közötti választással: `Strong`, `Session`, `Bounded-Staleness`, `ConsistentPrefix`, és `Eventual`. Alapértelmezett érték a `Session`. A választott konzisztenciaszint lehetővé teszi több területi beállítások jelentős teljesítménybeli különbség. Lásd: [konzisztenciaszintek](consistency-levels.md) részleteiről. |
 
@@ -148,8 +148,6 @@ Egyéb funkciók engedélyezéséhez a következő `appSettings` konfigurációs
 
 | Kulcs | Leírás |
 | --- | --- |
-| TableThroughput | A következő táblázatban a kérelemegység (RU) másodpercenként kifejezett fenntartott átviteli sebességet. Egyetlen tábla RU/mp 100-as egység millióit képes támogatni. Lásd: [egységek kérelem](request-units.md). Alapértelmezett érték`400` |
-| TableIndexingPolicy | Az indexelési házirendet specifikációjának megfelelő JSON-karakterláncban. Lásd: [indexelő házirend](indexing-policies.md) tekintheti meg, hogyan módosíthatja az egyes oszlopok belefoglalási/kizárási indexelési házirendet. |
 | TableQueryMaxItemCount | Konfigurálja az egyetlen oda-vissza tábla lekérdezésenként visszaküldött elemek maximális számát. Alapértelmezett érték a `-1`, ami lehetővé teszi, hogy Azure Cosmos DB dinamikusan alapján határozhatja meg a futási időben. |
 | TableQueryEnableScan | Ha a lekérdezés nem használja az index bármely szűrőt, majd futtassa ennek ellenére a vizsgálat keresztül. Alapértelmezett érték a `false`.|
 | TableQueryMaxDegreeOfParallelism | A kereszt-partíció lekérdezés végrehajtási párhuzamossági fokát. `0`a nem lehívását, soros `1` van előre terjesztésekor, és a magasabb értékkel soros növekedjen párhuzamossági. Alapértelmezett érték a `-1`, ami lehetővé teszi, hogy Azure Cosmos DB dinamikusan alapján határozhatja meg a futási időben. |
@@ -164,10 +162,6 @@ Az alapértelmezett érték módosításához nyissa meg a `app.config` fájlt a
       <add key="CosmosDBStorageConnectionString" 
         value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.azure.com" />
       <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key; TableEndpoint=https://account-name.documents.azure.com" />
-
-      <!--Table creation options -->
-      <add key="TableThroughput" value="700"/>
-      <add key="TableIndexingPolicy" value="{""indexingMode"": ""Consistent""}"/>
 
       <!-- Table query options -->
       <add key="TableQueryMaxItemCount" value="-1"/>
@@ -194,13 +188,13 @@ Ezután létrehozhat egy tábla használatával `CloudTable`. Azure Cosmos DB t�
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");
-
-table.CreateIfNotExists();
+400
+table.CreateIfNotExists(throughput: 800);
 ```
 
 Nincs a táblák létrehozását egy fontos különbséggel. Cosmos. Azure-adatbázis fenntartja a teljesítményt, eltérően az Azure storage fogyasztás alapján modell az egyes tranzakciókra vonatkozóan. Az átviteli sebesség dedikált/foglalt, így Ön soha nem get szabályozva a kérelmek aránya vagy az alatt a létesített átviteli sebesség esetén.
 
-Konfigurálja a beállítást úgy állíthatja be, az alapértelmezett átviteli `TableThroughput` RU (kérelemegység) másodpercenként tekintetében. 
+Beállíthatja az alapértelmezett átviteli CreateIfNotExists paramétereként ot.
 
 Egy 1 KB-os entitás olvasási van normalizált 1 RU rögzített érték a Processzor, memória és IOPS fogyasztás alapján normalizálják RU és egyéb műveletekhez. További információ [Azure Cosmos DB egység kérelem](request-units.md) és külön [kulcs-érték tárolók](key-value-store-cost.md).
 
@@ -332,7 +326,7 @@ table.DeleteIfExists();
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag azt a kezelt Ismerkedés az Azure Cosmos DB használatával tábla API-val, és ezt a következő: 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: e66dc2af18785c6c8e83815129c8bca5b877d25b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f8ba1a6308dfe234fff700d363fb9252b94570e2
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil élő Azure-webalkalmazásokban az Application insights szolgáltatással
 
@@ -228,11 +228,87 @@ A Profilkészítő konfigurálásakor frissítések válnak, a webes alkalmazás
 8. Telepítés __az Application Insights__ az Azure Web Apps gyűjteményből.
 9. A webalkalmazás újraindítása.
 
+## <a id="profileondemand"></a>Manuálisan eseményindító Profilkészítő
+Ha a Profilkészítő kidolgoztunk hozzáadott egy parancssori felületen, hogy a Profilkészítő app Services sikerült teszteljük. Az azonos felület felhasználók használatával is testre szabhatja a Profilkészítő indításának. Magas szinten a Profilkészítő App Service Kudu rendszer kezelésére használ a háttérben profilkészítési. Az Application Insights-bővítmény telepítésekor létrehozhatunk egy üzemelteti a Profilkészítő folyamatos webes feladat. Hozzon létre egy új webes feladatot, amely az igényeihez szabhatja használjuk a ugyanazt a technológiát.
+
+Ez a szakasz azt ismerteti, hogyan:
+
+1.  Hozzon létre egy webes feladat indításához használhatja a Profilkészítő két percig a nyomja le az gomb.
+2.  Hozzon létre egy webes feladatot, amely a Profilkészítő futtatásra is ütemezheti.
+3.  A Profilkészítő argumentumainak megadása
+
+
+### <a name="set-up"></a>Beállítás
+Először hozzuk Ismerkedjen meg a webes projekt irányítópultján. A beállítások kattintson a webjobs-feladatok lapon.
+
+![webjobs-feladatok panel](./media/app-insights-profiler/webjobs-blade.png)
+
+Ezt az irányítópultot is láthatók, a webes feladatok a helyen aktuálisan telepített látható. A ApplicationInsightsProfiler2 webes feladat, amelynek futó Profilkészítő feladat tekintheti meg. Ez az adott azt végpontját fel az új webes feladatok létrehozása a manuális és ütemezett adatainak összegyűjtése.
+
+Első folytassuk a bináris fájljai, fel kell.
+
+1.  Nyissa meg a kudu helyet. A fejlesztés alatt az eszközök lap lapon kattintson a "Speciális eszközök" a Kudu emblémával. Kattintson az "Ugrás". Ez léphet vissza egy új helyet, és automatikusan bejelentkezés.
+2.  A következő igazolnia kell a Profilkészítő bináris fájlok letöltéséhez. Keresse meg a fájlkezelő keresztül Debug -> a CMD az oldal tetején található.
+3.  Kattintson a webhely -> wwwroot -> App_Data -> feladatok -> folyamatos. A mappa "ApplicationInsightsProfiler2" kell megjelennie. Kattintson a letöltés ikonra a bal oldalra, a mappa. Egy "ApplicationInsightsProfiler2.zip" fájl letöltése.
+4.  Szüksége lesz minden fájl letöltése soron. Javasolt helyezhető át a zip-archívumból való lépés előtt tiszta könyvtár létrehozása.
+
+### <a name="setting-up-the-web-job-archive"></a>A feladat webarchívum beállítása
+Amikor ad hozzá egy új webes projektet az azure webhelyén alapvetően zip-archívum létrehozása egy run.cmd belül hoz létre. A run.cmd közli a webes projekt rendszer Mi a teendő, ha a webes. Egyéb beállítások a webes projekt dokumentációjában olvashat, de a cél nem kell semmi mást.
+
+1.  A start hozzon létre egy új mappát, I nevű enyém "RunProfiler2Minutes".
+2.  A kibontott ApplicationInsightProfiler2 mappába másolja a fájlokat az új mappába.
+3.  Hozzon létre egy új run.cmd fájlt. (A megnyitott a munkamappa Visual Studio Code kényelmi megkezdése előtt)
+4.  A parancs hozzáadása `ApplicationInsightsProfiler.exe start --engine-mode immediate --single --immediate-profiling-duration 120`, és mentse a fájlt.
+a.  A `start` parancs hatására a Profilkészítő elindításához.
+b.  `--engine-mode immediate`be van állítva a Profilkészítő azt szeretnénk, azonnal el tudja indítani adatainak összegyűjtése.
+c.  `--single`azt jelenti, hogy futtatni, és automatikusan d majd állítsa le.  `--immediate-profiling-duration 120`azt jelenti, hogy rendelkezik a Profilkészítő futtatható 120 másodperc, illetve 2 perc.
+5.  Mentse a fájlt.
+6.  Ez a mappa archiválása, jobb gombbal kattintson arra a mappára, és válassza ki a tömörített mappa -> Küldés. Ezzel létrehoz egy .zip fájlt, a mappa nevét.
+
+![Profilkészítő parancs indítását.](./media/app-insights-profiler/start-profiler-command.png)
+
+Most már van egy webes projekt .zip webes projektek beállítása a hely használatával is.
+
+### <a name="add-a-new-web-job"></a>Új webszolgáltatás hozzáadása
+Ezután azt adja hozzá egy új webes projektet a webhelyhez. Ez a példa bemutatja, hogyan egy manuális kiváltott webes feladat hozzáadásához. Után el, hogy a folyamat megegyezik szinte teljesen az ütemezett. További készül az ütemezett saját kiváltott feladatok.
+
+1.  Nyissa meg a webes feladatok irányítópultot.
+2.  Kattintson a Hozzáadás parancsot az eszköztáron.
+3.  Nevezze el a web feladat, az átláthatóság érdekében az archívum neve egyezik, és nyissa meg a különböző verzióit a run.cmd rendelkező legfeljebb elfogadása.
+4.  A fájl feltöltése a képernyőn kattintson a nyitott fájlok ikonra részét, és keresse meg a fentiekben létrehozott .zip fájlt.
+5.  A típus kiválasztása indított.
+6.  Az eseményindítók dönthet úgy, hogy manuális.
+7.  Kattintson az OK gombra a mentés.
+
+![Profilkészítő parancs indítását.](./media/app-insights-profiler/create-webjob.png)
+
+### <a name="run-the-profiler"></a>A Profilkészítő futtatása
+
+Most, hogy egy új webes projektet, azt manuálisan kezdeményezi azt próbálja meg futtatni.
+
+1.  Tervezési egy adott időpontban a számítógépen futó egyik ApplicationInsightsProfiler.exe folyamat csak akkor. Így szeretné, hogy ügyeljen rá, hogy tiltsa le ezt az irányítópultot a folyamatos webes feladatot. A sorban kattintson, majd nyomja meg a "Stop". Az eszköztáron frissítse, és győződjön meg arról, hogy az állapot megerősíti, hogy a feladat le van állítva.
+2.  Kattintson a sorban felvett új webes projektet, majd kattintson a Futtatás.
+3.  A sor még kijelölt kattintással a naplók parancs az eszköztárban megjelenik a, webes feladatok irányítópultokhoz a webes feladat elindítása. A legutóbbi fut, és az eredmény azt felsorolja.
+4.  Kattintson a Futtatás most már elkezdte a.
+5.  Ha az összes hiba is meg kell jelennie a Profilkészítő azt kezdték profilkészítési megerősítő érkező néhány diagnosztikai naplók.
+
+### <a name="things-to-consider"></a>Megfontolandó szempontok
+
+Bár ez a módszer viszonylag egyszerű néhány dolgot figyelembe kell venni.
+
+1.  Mivel ez a szolgáltatás nem kezeli azt már nem fogja tudni frissítésére a az ügynök bináris fájljait a webes projekthez. A Microsoft jelenleg nincs stabil letöltési oldal a bináris fájlok, az csak a legutóbbi, a bővítmény frissítése és grabbing a folyamatos mappából, például a módon.
+2.  Ez az okhoz parancssori argumentumokat eredetileg végfelhasználói használata helyett a fejlesztői használatát, ezek az argumentumok a későbbiekben változhat, mert csak figyelembe, hogy történő frissítése során. Számos probléma annak nem lehet, hogy egy webes feladat futtatása és tesztelje, hogy működik is hozzáadhat. Végül azt fog létrehozni a felhasználói felület ehhez a manuális eljáráshoz nélkül, de valami, figyelembe kell venni.
+3.  A Webjobs szolgáltatást App Services egyedi abban, hogy a webes projekt futtatásakor biztosítja, hogy a folyamat rendelkezik-e az azonos környezeti változókat és Alkalmazásbeállítások, amely rendelkezik a webhelyen leáll. Ez azt jelenti, hogy nem kell átadni a instrumentation billentyűt a parancssor használatával a Profilkészítő, azt kell csak vegyen fel a instrumentation kulcsot a környezetből. Azonban ha azt szeretné, hogy a Profilkészítő futtatásához, a fejlesztői mezőben vagy a gép alkalmazásszolgáltatások kívül kell megadnia egy rendszerállapot-kulcsot. Ehhez argumentumát történő `--ikey <instrumentation-key>`. Vegye figyelembe, hogy ezt az értéket meg kell egyeznie a instrumentation billentyűt az alkalmazás. A Profilkészítő napló kimenetén megjelenő azt jelzi, mely a Profilkészítő használatába ikey, és ha instrumentation kulcs során azt a tevékenységet észleltünk adatainak összegyűjtése.
+4.  A manuálisan indított webjobs ténylegesen webes Hook keresztül is elindítható. Az URL-cím beszerzése jobb gombbal kattint rá az irányítópulton a webes projekt és a Tulajdonságok megtekintése vagy tulajdonságok kiválasztása az eszköztáron a táblából a webes projekt kiválasztását követően. Nagy mennyiségű, amely megtalálható a online, a go nem lesz a sok részleteinek cikkeket, de ez megnyílik az időt. a profilkészítőt a CI/CD folyamatot (például VSTS) vagy valami hasonló Microsoft Flow (https://flow.microsoft.com/en-us/) lehetőségét. Attól függően, hogy hogyan divatos kívánja tenni a run.cmd, amely módja lehet a run.ps1, a lehetőségek széles körű.  
+
+
+
+
 ## <a id="aspnetcore"></a>Az ASP.NET Core támogatása
 
 Az ASP.NET Core alkalmazás kell telepíteni a Microsoft.ApplicationInsights.AspNetCore NuGet csomag 2.1.0-beta6 vagy újabb való működéséhez. 2017. június 27. frissítésétől korábbi verziói nem támogatottak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Visual Studio Application Insights használata](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
 

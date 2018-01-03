@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 12/18/2017
 ms.author: jeannt
-ms.openlocfilehash: b3dca9e75df2d057d7ee1b314faac490e5f10a08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57044afe946e21d4b3cfa991772e780e59a1710e
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="analyzing-customer-churn-by-using-azure-machine-learning"></a>Az ügyfél változásainak elemzése az Azure Machine Learning segítségével
 ## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja a felhasználói forgalom elemzése projekt, Azure Machine Learning segítségével részét képező egy hivatkozás végrehajtása. Ez a cikk arról lesz szó kapcsolódó általános modellek holistically a ipari ügyfél forgalmának kezeléséhez, a probléma megoldására. Is mérjük a modellt a Machine Learning segítségével beépített pontosságát, és azt értékeléséhez további fejlesztési szakasz utasításait.  
+Ez a cikk bemutatja a felhasználói forgalom elemzése projekt, Azure Machine Learning segítségével részét képező egy hivatkozás végrehajtása. Ez a cikk arról lesz szó kapcsolódó általános modellek holistically a ipari ügyfél forgalmának kezeléséhez, a probléma megoldására. Is mérjük a modellt a Machine Learning segítségével beépített pontosságát, és további fejlesztési irányban értékeléséhez.  
 
 ### <a name="acknowledgements"></a>A nyugtázás
 Ehhez a kísérlethez fejlesztette ki és tesztelt Serge Berger, egyszerű adatok tudósok Microsoft és Roger Barga, a Microsoft Azure Machine Learning korábban termék Manager. Az Azure dokumentációs csapattól gratefully elfogadja a saját ismereteit, és Köszönjük őket, hogy ez a dokumentum megosztása.
@@ -37,14 +37,14 @@ Ehhez a kísérlethez fejlesztette ki és tesztelt Serge Berger, egyszerű adato
 ## <a name="the-problem-of-customer-churn"></a>A probléma az ügyfél os forgalom
 A fogyasztó piacon és az összes vállalati ágazatban vállalatok rendelkeznek, forgalom kezelésére. Egyes esetekben adatforgalom túlzott, és hogyan befolyásolja a szabályozási döntések. A hagyományos megoldás, hogy magas-innovációkká alakuljon churners előrejelzése és azok marketingkampányok segítõ szolgáltatáson keresztül vagy különleges felmentésekről alkalmazásával igények kielégítéséhez. Ezek a módszerek iparági iparág és még egy adott felhasználó fürtről egy másik belül (például távközlési) egy iparági eltérőek lehetnek.
 
-A közös tényező, hogy a vállalkozások kell ilyen speciális ügyfél megőrzési erőfeszítések minimalizálása érdekében. Ebből kifolyólag természetes módszer lehet a pontszám forgalom valószínűségét minden ügyfélnek, és oldja meg a felső N néhányat a meglévők közül. Előfordulhat, hogy a felső ügyfelek legnyereségesebb megfelelően; például a kifinomultabb esetben nyereség függvény alkalmaznak a különleges felmentéssel jelöltek kiválasztása során. Ezeket a szempontokat azonban csak a forgalom kapcsolatos körű stratégia részét képezik. Vállalatok számára is figyelembe fiók kockázat (és társított kockázattűrése), a szinten, és a beavatkozás és egyértelmű felhasználói szegmentálást költsége.  
+A közös tényező, hogy a vállalkozások kell ilyen speciális ügyfél megőrzési erőfeszítések minimalizálása érdekében. Ebből kifolyólag természetes módszer lehet a pontszám forgalom valószínűségét minden ügyfélnek, és oldja meg a felső N néhányat a meglévők közül. Előfordulhat, hogy a felső ügyfelek legnyereségesebb megfelelően. Például az összetettebb forgatókönyveket nyereség függvény alkalmaznak a különleges felmentéssel jelöltek kiválasztása során. Ezeket a szempontokat azonban csak a teljes forgalom kapcsolatos stratégia részét képezik. Vállalatok számára is figyelembe fiók kockázat (és társított kockázattűrése), a szinten, és a beavatkozás és egyértelmű felhasználói szegmentálást költsége.  
 
 ## <a name="industry-outlook-and-approaches"></a>Iparági outlook és módszerek
 Kifinomult kezelésének forgalmának kezeléséhez egy összetett iparági bejelentkezési. A klasszikus lehet például a távközlési iparági ahol előfizetők ismert, hogy gyakran váltson egy szolgáltató által a másikra. Ez önkéntes forgalom elsődleges szempont. Ezenkívül szolgáltatóktól rendelkezik összegzi a rendszer jelentős Tudásbázis kapcsolatos *kavarog egyidejűleg illesztőprogramok*, amelyeket a tényezőket, amelyek az ügyfelek számára a Váltás meghajtó.
 
-Például kézibeszélő vagy az eszköz választott nem jól ismert vezetőjeként a mobiltelefon üzleti forgalmáról. Ennek eredményeképpen a népszerű házirend kézibeszélő ára subsidize új előfizetők és meglévő ügyfelek frissítéshez teljes ár díjszabási. Ez a házirend hagyományosan új esetén kedvezményes díjat, amely, pontosítsa a stratégiák szolgáltatók rendelkezik kéri a másikra egy szolgáltató hopping ügyfelek vezetett.
+Például kézibeszélő vagy az eszköz választott nem jól ismert vezetőjeként a mobiltelefon üzleti forgalmáról. Ennek eredményeképpen a népszerű házirend kézibeszélő ára subsidize új előfizetők és meglévő ügyfelek frissítéshez teljes díjjal. Hagyományosan ezzel a házirend-szolgáltató egy másik hopping ügyfelek új esetén kedvezményes díjat vezetett. Ez, viszont rendelkezik kéri pontosítsa a stratégiák szolgáltatók.
 
-A kézibeszélő ajánlatok magas illékonyság módszere, amely nagyon gyorsan az aktuális kézibeszélő modellek alapuló forgalom modelljei érvénytelenné szempontja. Emellett mobiltelefonok nincsenek csak telekommunikációs eszközök; szerepelnek (vegye figyelembe az iPhone) módon utasításokat, és a közösségi előre rendszeres távközlési adatkészletek hatókörén kívül.
+A kézibeszélő ajánlatok magas illékonyság módszere, amely gyorsan az aktuális kézibeszélő modellek alapuló forgalom modelljei érvénytelenné szempontja. Emellett mobiltelefonok nem csak telekommunikációs eszközöket, olyan is módon utasítások (vegye figyelembe az iPhone). A közösségi előre rendszeres távközlési adatkészletek hatókörén kívül vannak.
 
 Nettó modellezési az eredménye, hogy egy hang házirend meg nem megtervezi a egyszerűen forgalom ismert okait kiküszöbölése révén. Folyamatos modellezési stratégiát, beleértve a klasszikus modellt a számlálása kategorikus változók (például a döntési fák), valójában **kötelező**.
 
@@ -211,16 +211,6 @@ Reméljük, ez a témakör a jövőben folytatja big data elemzés különösen 
 ## <a name="conclusion"></a>Összegzés
 A dokumentum ismerteti egy ésszerű megközelítése problémájának közös ügyfél forgalmának kezeléséhez egy általános keretrendszer használatával. Azt a prototípus modellek pontozó minősül, és valósítják meg az Azure Machine Learning segítségével. Végül azt vizsgálja, a pontosság és a teljesítmény tekintetében a SAS összehasonlítható algoritmusok prototípus megoldás.  
 
-**További információ:**  
-
-Adott a dokumentum segítséget? Adja meg a visszajelzést. Mondja el, 1 (rossz) terjedő skálán 5 (kiváló), hogyan minősítené a dokumentum, és miért, adott azt minősítése? Példa:  
-
-* Vannak, minősítés azt magas jó példa, kiváló képernyőképek, törölje a jelet írása, vagy egy másik ok miatt?
-* Vannak, értékelése az alacsony gyenge példák, intelligens képernyőképek vagy nem egyértelmű írás miatt?  
-
-Ezzel a visszajelzéssel segíthet számunkra azt kiadási tanulmányok minőségének javítása.   
-
-[Visszajelzés küldése](mailto:sqlfback@microsoft.com).
  
 
 ## <a name="references"></a>Referencia

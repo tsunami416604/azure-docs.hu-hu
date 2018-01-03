@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: a02f5e827345a1d28f01d691e1b6fbccfc03ae8a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6febd3f12248a96f54415a91fcf0513ef7412e78
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="derive-column-by-example-transformation"></a>Példa átalakítással oszlop származtatni
 
@@ -184,15 +184,15 @@ Példák, amelyek lemezre van szükség ebben az esetben száma: 3
 
 |Felügyeleti nemét|Kimenet|
 |:-----|:-----:|
-|csatlakozó|**0**|
-|nő|**1**|
+|Férfi|**0**|
+|Nő|**1**|
 |Ismeretlen|**2**|
-|nő|1|
-|nő|1|
-|csatlakozó|0|
+|Nő|1|
+|Nő|1|
+|Férfi|0|
 |Ismeretlen|2|
-|csatlakozó|0|
-|nő|1|
+|Férfi|0|
+|Nő|1|
 
 ## <a name="examples-of-number-transformations-by-example"></a>Példa alapján számú átalakítások példák
 
@@ -286,34 +286,34 @@ Példák, amelyek lemezre van szükség ebben az esetben száma: 1
 
 Ezek a részek különböző által-példa átalakítások használata adatok ugyanazokat a könyvtárban találhatók. A félkövér betűvel írott karakterláncok képviselnek a példák, amelyek a saját megfelelő átalakításában lett megadva.
 
-|Dátum és idő|milyen napra esik|Dátum|Hónap|Év|Óra|Perc|Második|
+|DateTime|milyen napra esik|Dátum|Hónap|év|Óra|perc|második|
 |-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
 |05:54:18 31-Jan-2031|**Fri**|**31**|**Jan**|**2031**|**5**|**54**|**18**|
-|13:32:01 17-Jan-1990|WED|17|Jan|1990|13|32|01|
-|05:36:07 14-Feb-2034|K|14|Feb|2034|5|36|07|
-|13:16:16 14-gyel-2002|Csüt.|14|Gyel|2002|13|16|16|
-|05:44:43 21-Jan-1985.|F|21|Jan|1985|5|44|**43**|
-|01:11:56 16-gyel-1985.|Fri|16|Gyel|1985|1|11|56|
-|18:36:29 20-Dec-2033|K|20|DEC|2033|18|36|29|
-|10:21:59 16-július-1984|F|16|Július|1984|10|21|59|
-|A 2038 január 13 10:59:36|WED|13|Jan|2038|10|59|36|
-|15:13:54 14-gyel-1982|Kép|14|Gyel|1982|15|13|54|
-|08:18:08 22-november-2030|Fri|22|November|2030|8|18|08|
-|08:42:58 21-Oct-1997|K|21|Oct|1997|8|42|58|
-|14:19:15 28-november-2006|K|28|November|2006|14|19|15|
-|04:59:45 29-6%/4!a-2031|K|29|6%/4!a|2031|4|59|45|
-|29-Jan-2032 02:38:36|Csüt.|29|Jan|2032|2|38|36|
-|15:31:52 11-előfordulhat, hogy-2028|Csüt.|11|Előfordulhat, hogy|2028|15|31|52|
-|12:45:39 15-július-1977.|Fri|15|Július|1977|12|45|39|
-|05:55:41 27-Jan-2029|Kép|27|Jan|2029|5|55|41|
-|10:17:49 03-gyel-2024|Sun|3|Gyel|2024|10|17|49|
-|00:23:13 14-6%/4!a-2010|WED|14|6%/4!a|2010|0|23|13|
+|13:32:01 17-Jan-1990|Sze|17|jan.|1990|13|32|01|
+|05:36:07 14-Feb-2034|K|14|feb.|2034|5|36|07|
+|13:16:16 14-gyel-2002|Cs|14|már.|2002|13|16|16|
+|05:44:43 21-Jan-1985.|H|21|jan.|1985|5|44|**43**|
+|01:11:56 16-gyel-1985.|P|16|aug.|1985|1|11|56|
+|18:36:29 20-Dec-2033|K|20|dec.|2033|18|36|29|
+|10:21:59 16-július-1984|H|16|júl.|1984|10|21|59|
+|A 2038 január 13 10:59:36|Sze|13|jan.|2038|10|59|36|
+|15:13:54 14-gyel-1982|Szo|14|aug.|1982|15|13|54|
+|08:18:08 22-november-2030|P|22|nov.|2030|8|18|08|
+|08:42:58 21-Oct-1997|K|21|okt.|1997|8|42|58|
+|14:19:15 28-november-2006|K|28|nov.|2006|14|19|15|
+|04:59:45 29-6%/4!a-2031|K|29|ápr.|2031|4|59|45|
+|29-Jan-2032 02:38:36|Cs|29|jan.|2032|2|38|36|
+|15:31:52 11-előfordulhat, hogy-2028|Cs|11|Május|2028|15|31|52|
+|12:45:39 15-július-1977.|P|15|júl.|1977|12|45|39|
+|05:55:41 27-Jan-2029|Szo|27|jan.|2029|5|55|41|
+|10:17:49 03-gyel-2024|V|3|már.|2024|10|17|49|
+|00:23:13 14-6%/4!a-2010|Sze|14|ápr.|2010|0|23|13|
 
 ### <a name="d2-formatting-dates"></a>D2. A dátumok formázásához
 
 Ezek dátum formattings volt kész adatokat ugyanazokat a különböző által-példa átalakítások használata. A félkövér betűvel írott karakterláncok képviselnek a példák, amelyek a saját megfelelő átalakításában lett megadva.
 
-|Dátum és idő|Format1|Format2|Format3|Format4|Format5|
+|DateTime|Format1|Format2|Format3|Format4|Format5|
 |-----:|-----:|-----:|-----:|-----:|-----:|
 |05:54:18 31-Jan-2031|**1/31/2031**|**2031. január 31., péntek**|**01312031 5:54**|**31/1/2031 REGGEL 5:54**|**1. KÉRDÉS 2031**|
 |13:32:01 17-Jan-1990|1/17/1990|1990. január 17., szerda|01171990 13:32|17/1/1990 1:32 PM|1. KÉRDÉS 1990.|
@@ -341,7 +341,7 @@ Ezek dátum formattings volt kész adatokat ugyanazokat a különböző által-p
 
 Ezen időszak rendelése időpontok volt kész adatokat ugyanazokat a különböző által-példa átalakítások használata. A félkövér betűvel írott karakterláncok képviselnek a példák, amelyek a saját megfelelő átalakításában lett megadva.
 
-|Dátum és idő|Period(seconds)|Period(Minutes)|Időtartam (két óra)|Időtartam (30 perc)|
+|DateTime|Period(seconds)|Period(Minutes)|Időtartam (két óra)|Időtartam (30 perc)|
 |-----:|-----:|-----:|-----:|-----:|
 |05:54:18 31-Jan-2031|**0-20**|**45-60**|**DE 5 AM.**|**5:30-6:00**|
 |13:32:01 17-Jan-1990|**0-20**|30-45|DU. 1-3 PM|13:30-14:00|
@@ -385,5 +385,5 @@ Ezen időszak rendelése időpontok volt kész adatokat ugyanazokat a különbö
 ### <a name="conditional-transformations"></a>Feltételes átalakítások
 Bizonyos esetekben egyetlen átalakítás nem található, amely megfelel a megadott példákat. Ebben az esetben származnia oszlop példa átalakítási megkísérli a bemenetek néhány szabály alapján csoportnak, és ismerje meg az egyes csoportok külön átalakítása. Ezt nevezzük **feltételes átalakítása**. **Feltételes átalakítása** csak egyetlen bemeneti oszloppal átalakításokhoz kísérlet történik. 
 
-### <a name="reference"></a>Referencia
+### <a name="reference"></a>Leírások
 További információk a karakterlánc átalakításáról példa Technology megtalálhatók [a kiadvány](https://www.microsoft.com/en-us/research/publication/automating-string-processing-spreadsheets-using-input-output-examples/).

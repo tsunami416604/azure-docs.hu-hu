@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
 ms.openlocfilehash: 4bdca33dae2ce52fdeccdae9a67abb6667593f9d
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-cli-20"></a>Az SSL-kiszervezés Alkalmazásátjáró konfigurálása Azure CLI 2.0 használatával
 
@@ -184,7 +184,7 @@ az network public-ip show --name "pip" --resource-group "AdatumAppGatewayRG"
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretne konfigurálni a belső terheléselosztót használ, tekintse meg az Alkalmazásátjáró [hozzon létre egy alkalmazást a belső terheléselosztók](application-gateway-ilb.md).
 

@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 3ca1710c969b9bc5a1f56dc53f52c706e1ed07cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc3870e81edd47a9932db86d347290451c4f1eb8
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="combine-columns-by-example-transformation"></a>Példa átalakítással oszlopok egyesítése
 Ez a transzformáció lehetővé teszi a felhasználó számára egy olyan új oszlop hozzáadása kombinálásával több oszlop értékeit. Felhasználó adjon meg egy elválasztó és példákkal kombinált értékek ehhez a transzformációhoz végrehajtásához. Amikor a felhasználó kombinációja példákat tartalmaz, az átalakítás kezeli azonos **-példa** motor, amely használatban van a **Célosztályából oszlop példa alapján** átalakító.
@@ -62,14 +62,14 @@ Vesszőt és egy szóközt egyesítése ebben a példában elválasztójelként 
 
 Az érték a **félkövér** példaként lett megadva.
 
-|Dátum|Hónap|Év|Óra|Perc|Második|Összetett oszlop|
+|Dátum|Hónap|év|Óra|perc|második|Összetett oszlop|
 |:----|:----|:----|:----|:----|:----|:----|
-|13|Oct|2016|15|01|23|**13-Oct-2016 15:01:23 CET**|
-|16|Oct|2016|16|22|33|16-Oct-2016 15:01:33 CET|
-|17|Oct|2016|12|43|12|17-Oct-2016 15:01:12 CET|
-|12|November|2016|14|22|44|12-november-2016 15:01:44 CET|
-|23|November|2016|01|52|45|23-november-2016 15:01:45 CET|
-|16|Jan|2017|22|34|56|16-Jan-2016 15:01:56 CET|
-|23|Gyel|2017|01|55|25|23-gyel-2016 15:01:25 CET|
-|16|6%/4!a|2017|11|34|36|16-6%/4!a-2016 15:01:36 CET|
+|13|okt.|2016|15|01|23|**13-Oct-2016 15:01:23 CET**|
+|16|okt.|2016|16|22|33|16-Oct-2016 15:01:33 CET|
+|17|okt.|2016|12|43|12|17-Oct-2016 15:01:12 CET|
+|12|nov.|2016|14|22|44|12-november-2016 15:01:44 CET|
+|23|nov.|2016|01|52|45|23-november-2016 15:01:45 CET|
+|16|jan.|2017|22|34|56|16-Jan-2016 15:01:56 CET|
+|23|már.|2017|01|55|25|23-gyel-2016 15:01:25 CET|
+|16|ápr.|2017|11|34|36|16-6%/4!a-2016 15:01:36 CET|
 

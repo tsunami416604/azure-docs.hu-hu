@@ -4,15 +4,17 @@ description: "Ez a forgatókönyv bemutatja, hogyan hajtsa végre az Azure Machi
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
+ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
+manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 4f739ff26c3df8add01bed6d797f292ff6e26db9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f0c466c433701c295bde00258d9ff7fd267b71f7
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Elosztott, az Azure Machine Learning-munkaterület használatával hiperparaméterek beállítása
 
@@ -26,7 +28,7 @@ Az alábbiakban látható a nyilvános GitHub-tárházban hivatkozásra:
 ## <a name="use-case-overview"></a>Használja az eset áttekintése
 
 Sok gépi tanulási algoritmusok rendelkezik egy vagy több forgatógombját hiperparamétereket nevezik. Ezek forgatógombját engedélyezése a jövőbeli adatokat, a felhasználó által megadott metrikák mérések való algoritmusok hangolása (például pontossága AUC, Gyökátlagos). Adatok tudósok kell megadni. hiperparamétereket értékének létrehozásakor egy modell betanítási adatok, valamint a jövőbeli vizsgálati adatok megtekintése előtt. A ismert betanítási adatok használatával hogyan alapján beállítjuk hiperparamétereket értékeit, hogy a modell a megfelelő teljesítmény rendelkezik-e az ismeretlen Tesztadatok keresztül? 
-
+    
 Egy népszerű módszer a finomhangoláshoz hiperparamétereket egy *rács keresési* együtt *kereszt-ellenőrzési*. Kereszt-ellenőrzési olyan módszer, amely értékeli a mennyire egy modell betanítása képzési megfelelő, a teszt készleten előrejelzi. Ezzel a technikával használ, azt először felosztani a dataset K modellrészt és a ciklikus multiplexelés algoritmus K alkalommal majd betanításához. Hajtanak végre az összes, de a modellrészt egyik hívása a "tárolt kibővített modellrészek". Azt számítási K modellek metrikáinak átlagértéket K tárolt kibővített modellrészt keresztül. Ez átlagérték nevű *határokon érvényesített teljesítmény becsült*, K modellek létrehozásakor használt hiperparamétereket értékének függ. Amikor hiperparaméterek beállítása, azt jelölt hyperparameter értékek található, a kereszt-ellenőrzési teljesítményének optimalizálásához gazdarendszerhez becsült lemezterület keresést. Rács keresést a keresési közös technika. A rács keresési a több hiperparamétereket jelölt értékei közül olyan-készlet keresztszorzatát egyedi hiperparamétereket jelölt értékei közül. 
 
 Kereszt-ellenőrzési használatával rács keresési időigényes lehet. Ha egy algoritmus öt hiperparamétereket minden öt jelölt értékekkel, K = 5 modellrészt használjuk. Azt fejezze be a rács keresés 5 betanítása<sup>6</sup>= 15625 modellek. Szerencsére rács keresési kereszt-ellenőrzési használata egy embarrassingly párhuzamos eljárást, és ezek a modellek párhuzamosan is szükség.
@@ -37,13 +39,15 @@ Kereszt-ellenőrzési használatával rács keresési időigényes lehet. Ha egy
 * Egy telepített példánya [Azure Machine Learning-munkaterület](./overview-what-is-azure-ml.md) következő a [telepítése és gyors üzembe helyezés létrehozása](./quickstart-installation.md) telepíteni a munkaterületet üzemeltető és fiókokat létrehozni.
 * Ez a forgatókönyv azt feltételezi, hogy futtatja Azure ML munkaterület a Windows 10 vagy MacOS a helyileg telepített Docker-motorhoz. 
 * A forgatókönyv olyan távoli Docker-tároló futtatni, kiépítése Ubuntu adatok tudományos virtuális gép (DSVM) követve a [utasításokat](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Legalább 8 maggal és 28 Gb memóriát a virtuális gép használatát javasoljuk. Virtuális gépek példányait D4 rendelkezik ilyen kapacitással. 
-* Ebben a forgatókönyvben egy Spark-fürt futtatja, Azure HDInsight-fürtök kiépítése követve ezek [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Javasoljuk, hogy rendelkezik legalább egy fürt 
-- hat munkavégző csomópontokhoz
-- nyolc processzormaggal
-- 28 Gb memóriát a fejléc és a feldolgozó csomópontok. Virtuális gépek példányait D4 rendelkezik ilyen kapacitással. Azt javasoljuk, hogy a fürt teljesítmény maximalizálása a következő paraméterek módosítása.
-- Spark.Executor.Instances
-- Spark.Executor.cores
-- Spark.Executor.Memory 
+* Ebben a forgatókönyvben egy Spark-fürt futtatja, Azure HDInsight-fürtök kiépítése követve ezek [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).   
+Azt javasoljuk, hogy rendelkezik legalább egy fürt:
+    - hat munkavégző csomópontokhoz
+    - nyolc processzormaggal
+    - 28 Gb memóriát a fejléc és a feldolgozó csomópontok. Virtuális gépek példányait D4 rendelkezik ilyen kapacitással.       
+    - Azt javasoljuk, hogy a fürt teljesítmény maximalizálása a következő paraméterek módosítása:
+        - Spark.Executor.Instances
+        - Spark.Executor.cores
+        - Spark.Executor.Memory 
 
 Kövesse ezeket [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager) és szerkesztése a definíciók "egyéni spark alapértelmezett értéke" szakaszában.
 
@@ -58,7 +62,7 @@ Használjuk [TalkingData dataset](https://www.kaggle.com/c/talkingdata-mobile-us
 ## <a name="scenario-structure"></a>A forgatókönyv struktúra
 Ebben a forgatókönyvben a GitHub-tárházban több mappát tartalmaz. Kód és a konfigurációs fájlok **kód** mappa összes dokumentáció áll a **Docs** mappa és az összes lemezkép **képek** mappát. A gyökérmappában található információs fájl, amely tartalmazza az ebben a forgatókönyvben rövid összefoglalása rendelkezik.
 
-### <a name="getting-started"></a>Bevezetés
+### <a name="getting-started"></a>Első lépések
 Kattintson az Azure Machine Learning-munkaterület futtatásához, és az "Elosztott hangolása a Hiperparamétereket" sablonból-projekt létrehozása az Azure Machine Learning-munkaterület ikonra. Az új projekt létrehozása a részletes utasításokat talál [telepítse, és hozzon létre a gyors üzembe helyezés](quickstart-installation.md).   
 
 ### <a name="configuration-of-execution-environments"></a>Végrehajtási környezet konfigurálása

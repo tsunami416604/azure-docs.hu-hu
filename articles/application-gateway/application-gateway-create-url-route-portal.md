@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: davidmu
 ms.openlocfilehash: b207e7e7bd83e56db68288190c7bedafa8b5b7fa
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-a-path-based-rule-for-an-application-gateway-by-using-the-azure-portal"></a>Az Alkalmazásátjáró elérési alapú szabály létrehozása az Azure portál használatával
 
@@ -82,7 +82,7 @@ Elérési út alapú szabály hozzáadása egy meglévő Alkalmazásátjáró eg
 
 Ez a lépés konfigurál egy útvonal-alapú útvonal. Fontos megérteni, hogy a rendszer nem újraírja kérelmeket. Kérelmek térjen, mint az Alkalmazásátjáró megvizsgálja a kérelmet az URL-minta alapján, és a kérést küld a megfelelő háttér-készlethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Application Gateway kiszervezésével SSL konfigurálása, lásd: [SSL kiszervezési Alkalmazásátjáró konfigurálása az Azure-portál használatával](application-gateway-ssl-portal.md).
 

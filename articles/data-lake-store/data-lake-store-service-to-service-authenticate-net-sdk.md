@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/11/2017
 ms.author: nitinme
 ms.openlocfilehash: c336cda6f3af4e2a4647371458b2db3e97917105
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-net-sdk"></a>Szolgáltatások közötti hitelesítés a Data Lake Store .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Ebből a cikkből megismerheti a szolgáltatások közötti hitelesítést az Az
    | --- | --- |
    | Kategória |Sablonok/Visual C#/Windows |
    | Sablon |Konzolalkalmazás |
-   | Név |CreateADLApplication |
+   | Name (Név) |CreateADLApplication |
 4. A projekt létrehozásához kattintson az **OK** gombra.
 
 5. Adja hozzá a NuGet-csomagokat a projekthez.
@@ -116,7 +116,7 @@ Adja hozzá ezt a kódrészletet a .NET-ügyfélalkalmazást. Cserélje le a hel
 
 A portáladatbázis előző részlet segítő függvényt használ `GetCreds_SPI_Cert`. A kód a segítő függvényhez érhető [ide a Githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, szolgáltatások közötti hitelesítés használata a hitelesítéshez az Azure Data Lake Store .NET SDK használatával. Most már megtekintheti a következő cikkekben talál, amely az Azure Data Lake Store működéséhez a .NET SDK használatával kapcsolatban.
 
 * [Fiókkezelési műveletek a Data Lake Store-ban a .NET SDK használatával](data-lake-store-get-started-net-sdk.md)

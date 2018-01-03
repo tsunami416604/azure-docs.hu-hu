@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/16/2017
 ms.author: juliako;milangada;
 ms.openlocfilehash: 4a1bf91c3b3e9dd4d42d84f205a9bc07a71525c2
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>A kódolás méretezése a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -31,8 +31,8 @@ ms.lasthandoff: 12/18/2017
 > 
 
 > [!NOTE]
-> A legújabb verzióra Java SDK és az Java fejlesztés első [első lépései a Java-ügyféllel SDK a Media Services](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use). <br/>
-> A Media Services SDK legújabb PHP letöltéséhez 0.5.7 a Microsoft/WindowAzure csomag verziója a keres a [Packagist tárház](https://packagist.org/packages/microsoft/windowsazure#v0.5.7).  
+> A Java SDK legújabb verziójának beszerzéséhez és a Java-fejlesztés megkezdéséhez tekintse meg [Az Azure Media Services Java ügyfél-SDK használatának megkezdése](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use) című cikket. <br/>
+> A legfrissebb Media Services PHP SDK letöltéséhez keresse meg a Microsoft Azure-csomag 0.5.7-es verzióját a [Packagist-adattárban](https://packagist.org/packages/microsoft/windowsazure#v0.5.7).  
 
 ## <a name="overview"></a>Áttekintés
 > [!IMPORTANT]

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2017
 ms.author: ganesr;cherylmc
 ms.openlocfilehash: ef092a48994b68268109cb98bd6cd4526e259d5b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Létrehozása és módosítása a powershellel ExpressRoute-kapcsolatcsoportot
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Get-AzureRmExpressRouteServiceProvider
 
 Ellenőrizze, hogy ha a kapcsolat szolgáltatójánál nem szerepel-e. Jegyezze fel a következő adatokat, amelyek később kell a kapcsolat létrehozásakor:
 
-* Név
+* Name (Név)
 * PeeringLocations
 * BandwidthsOffered
 
@@ -407,7 +407,7 @@ Az ExpressRoute-kapcsolatcsoport törlése a következő parancs futtatásával:
 Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután létrehozta a kapcsolatcsoport, ügyeljen arra, hogy a következő lépéseket:
 

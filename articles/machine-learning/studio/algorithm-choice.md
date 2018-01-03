@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 04/25/2017
+ms.date: 12/18/2017
 ms.author: garye
-ms.openlocfilehash: 822bed8ffc43459dd053fda5b68f62f839b7d94b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f645890fc5e08dd468002c1ff0af79ba636ccce3
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>A Microsoft Azure Machine Learning-algoritmusok kiválasztása
 A "Milyen gépi tanulási algoritmus érdemes használni?" kérdésre adott válasz mindig kapcsolva "Attól függ." Azt a mérete, a minőségi és a adatok jellegének függ. Ez attól függ, hogy mit kíván tenni a választ. Ez attól függ, hogy hogyan algoritmus matematikai utasításokat a számítógépet, hogy lett lefordítva. Annak függvénye, és mennyi idővel rendelkezik. Még a legtöbb tapasztalt adatszakértőkön nem sikerült megállapítani, mely algoritmus hajtja végre a legjobb előtt őket.

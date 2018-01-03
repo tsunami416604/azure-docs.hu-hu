@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 12/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 42b241affa470d42dfa06eba102a2bce5faccf4a
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 6cf6b6b59f222f68036dab68e4d20db0d0b9dd6d
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,7 +39,7 @@ Pontosabban az Azure SQL Data Warehouse-összekötő támogatja:
 - Forrásként SQL-lekérdezést vagy tárolt eljárás használatával adatok beolvasása.
 - Adatokat betöltése, a fogadó, **PolyBase** vagy a tömeges beszúrás. Az előző van **ajánlott** másolási teljesítmény növelése érdekében.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
 
 A következő szakaszok részletesen bemutatják, amely segítségével határozza meg a Data Factory tartozó entitások és Azure SQL Data Warehouse-összekötő tulajdonságait.
@@ -319,7 +319,7 @@ A feltételeknek nem felel meg, ha az Azure Data Factory ellenőrzi a beállít�
                 "type": "BlobSource",
             },
             "sink": {
-                "type": "SqlDwSink",
+                "type": "SqlDWSink",
                 "allowPolyBase": true
             }
         }
@@ -355,12 +355,15 @@ Ez a funkció használatához hozzon létre egy [Azure Storage társított szolg
                 "type": "SqlSource",
             },
             "sink": {
-                "type": "SqlDwSink",
+                "type": "SqlDWSink",
                 "allowPolyBase": true
             },
             "enableStaging": true,
             "stagingSettings": {
-                "linkedServiceName": "MyStagingBlob"
+                "linkedServiceName": {
+                    "referenceName": "MyStagingBlob",
+                    "type": "LinkedServiceReference"
+                }
             }
         }
     }
@@ -422,9 +425,9 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 | Bináris |Byte] |
 | bit |Logikai |
 | Karakter |Karakterlánc, Char] |
-| Dátum |Dátum és idő |
-| Dátum és idő |Dátum és idő |
-| datetime2 |Dátum és idő |
+| dátum |DateTime |
+| Dátum és idő |DateTime |
+| datetime2 |DateTime |
 | datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
@@ -438,7 +441,7 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 | nvarchar |Karakterlánc, Char] |
 | valós |Egyedülálló |
 | ROWVERSION |Byte] |
-| smalldatetime |Dátum és idő |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |
@@ -451,5 +454,5 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 | varchar |Karakterlánc, Char] |
 | xml |XML |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

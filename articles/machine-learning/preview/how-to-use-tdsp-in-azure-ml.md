@@ -7,6 +7,7 @@ author: bradsev
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: bradsev
-ms.openlocfilehash: efb681b85d3d7434e3114b8576abc64d00891f03
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 0f7a6d0a58e2dcfd94e20a81ae12b42f238016c8
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>A csapat adatok tudományos folyamatsablont struktúra-projektek
 
 Ez a dokumentum útmutatás adatok tudományos projektek létrehozása az Azure Machine Learning Team adatok tudományos folyamat (TDSP) sablonokkal. Ezek a sablonok segítségével való együttműködés és reprodukálhatósági struktúra projektek. 
 
 
-## <a name="what-is-the-team-data-science-process"></a>Mi az az Team tudományos folyamat?
+## <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
 A TDSP egy gyors, fokozatos, adatok tudományos folyamat végrehajtása és a speciális elemzési megoldásokat kézbesítéséhez. Úgy van kialakítva, együttműködés és adatok tudományos csapatok vállalati szervezetekben hatékonyságának javítása érdekében. A négy fő összetevőből ezen célkitűzések támogatja:
 
    * Szabványos [adatok tudományos életciklus](../team-data-science-process/lifecycle.md) definíciója.
@@ -67,7 +68,7 @@ Hozzon létre egy új projektet, nyissa meg az Azure Machine Learning. A **proje
 ### <a name="create-a-new-tdsp-structured-project"></a>Új TDSP strukturált projekt létrehozása
    1. Adja meg a paraméterek és az adatok a megfelelő jelölőnégyzet vagy listáját:
 
-      - Projekt neve
+      - Projektnév
       - Projekt könyvtárában
       - Projekt leírása
       - Egy üres Git-tárház elérési útja
@@ -109,7 +110,7 @@ Azt adja meg a [ProjectLearnings](https://aka.ms/tdspamlgithubrepoprojectlearnin
 ### <a name="example-project-report"></a>Példa a projekt jelentés
 Kaphat egy [példa projekt jelentés](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md). Ez a projekt a jelentés a [USA bevétel besorolás mintaprojektet](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bemutatja, hogyan hozható létre, és a TDSP sablon használata az adatok tudományos projekt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Machine Learning-projektek a TDSP struktúra és a sablonok használatával megértését elősegítő nyújtunk a Machine Learning dokumentációjában több befejezett projekt példa:
 
 - Ez a minta bemutatja, hogyan TDSP-projekt létrehozása a Machine Learning, lásd: [Team adatok tudományos folyamat mintaprojektet: az Azure Machine Learning Velünk nyilvántartásba adatokból bevételek besorolása](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome).

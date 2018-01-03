@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
-ms.openlocfilehash: 7347be8520e643cd166851d3f525a9a0726b40c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05775415e210333cf63565e7b5b554d014f6ba23
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure portálon művelet csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -29,7 +29,7 @@ A művelet csoportok konfigurálható azon műveletek listáját. Ezek a csoport
 Egy legfeljebb 10 minden művelet típusú lehet. Egyes műveletek során a következő tulajdonságok tevődik össze:
 
 * **Név**: a művelet csoporton belül egyedi azonosítója.  
-* **Művelet típusa**: SMS küldése, küldjön egy e-mailt, egy webhook hívás vagy adatokat küldeni egy ITSM eszköz.
+* **Művelet típusa**: SMS küldése, küldjön egy e-mailt, hívható meg olyan webhook, adatokat küldeni egy ITSM eszköz, hívja az Azure app vagy az Automation-forgatókönyv futtatása.
 * **Részletek**: A megfelelő telefonszám, számot, e-mail címét, webhook URI vagy ITSM kapcsolódási adatait.
 
 Művelet csoportok konfigurálása Azure Resource Manager-sablonok használatával kapcsolatos információkért lásd: [művelet csoport Resource Manager-sablonok](monitoring-create-action-group-with-resource-manager-template.md).
@@ -38,7 +38,7 @@ Művelet csoportok konfigurálása Azure Resource Manager-sablonok használatáv
 1. Az a [portal](https://portal.azure.com), jelölje be **figyelő**. A **figyelő** panel összes figyelési beállítások és adatok az egyik nézetben összesíti.
 
     ![A "Figyelés" szolgáltatás](./media/monitoring-action-groups/home-monitor.png)
-2. Az a **tevékenységnapló** szakaszban jelölje be **művelet csoportok**.
+2. Az a **beállítások** szakaszban jelölje be **művelet csoportok**.
 
     ![A "Művelet csoportok" lap](./media/monitoring-action-groups/action-groups-blade.png)
 3. Válassza ki **művelet csoport hozzáadása**, és töltse ki a mezőket.
@@ -56,14 +56,12 @@ Művelet csoportok konfigurálása Azure Resource Manager-sablonok használatáv
 
     a. **Név**: Adjon meg egy egyedi azonosítót ehhez a művelethez.
 
-    b. **Művelet típusa**: válassza ki az SMS, e-mailek, webhook vagy ITSM.
+    b. **Művelet típusa**: válassza ki az SMS, e-mailek, webhook, Azure-alkalmazás, ITSM vagy Automation-forgatókönyv.
 
-    c. **Részletek**: a művelet típusa alapján, adja meg, egy telefonszám, e-mail címét, webhook URI vagy ITSM kapcsolódási adatait. A ITSM művelet, továbbá meg **munkaelem** és más mezők a ITSM eszköz szükséges. 
+    c. **Részletek**: művelet típusa alapján, adjon meg egy telefonszámot, e-mail címét, webhook URI, az Azure app, ITSM kapcsolat, vagy Automation-runbook. A ITSM művelet, továbbá meg **munkaelem** és más mezők a ITSM eszköz szükséges. 
 
-> [!NOTE]
-> ITSM művelet ITSM kapcsolatot igényel. Megtudhatja, hogyan hozzon létre egy [ITSM kapcsolat](../log-analytics/log-analytics-itsmc-overview.md). ITSM művelet jelenleg csak napló Tevékenységriasztásokat működik. A más típusú Ez a művelet jelenleg nem műveletvégzés.
->
->
+   > [!NOTE]
+   > ITSM művelet ITSM kapcsolatot igényel. Megtudhatja, hogyan hozzon létre egy [ITSM kapcsolat](../log-analytics/log-analytics-itsmc-overview.md). ITSM művelet jelenleg csak napló Tevékenységriasztásokat működik. A más típusú Ez a művelet jelenleg nem műveletvégzés.
 
 8. Válassza ki **OK** a művelet csoport létrehozásához.
 
@@ -73,7 +71,7 @@ Egy művelet csoport létrehozása után is látható, az a **művelet csoportok
 * Adja hozzá, szerkeszthet és eltávolíthat műveletek.
 * A művelet csoport törlése.
 
-## <a name="next-steps"></a>Következő lépések ##
+## <a name="next-steps"></a>További lépések ##
 * További információ [SMS riasztási viselkedés](monitoring-sms-alert-behavior.md).  
 * Szerezzen egy [megismerni a műveletnapló riasztási webhook séma](monitoring-activity-log-alerts-webhook.md).  
 * További információ [ITSM összekötő](../log-analytics/log-analytics-itsmc-overview.md)

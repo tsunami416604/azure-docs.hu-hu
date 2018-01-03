@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2017
 ms.author: ganesr
 ms.openlocfilehash: 8c2f3036f754a98090ab860f95900416690ebf83
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Csatlakozás a virtuális hálózati ExpressRoute-kapcsolatcsoportot
 > [!div class="op_single_selector"]
@@ -173,5 +173,5 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 
 A számos *routingweight értékének* mely 0 és 32 000. Az alapértelmezett értéke 0.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).

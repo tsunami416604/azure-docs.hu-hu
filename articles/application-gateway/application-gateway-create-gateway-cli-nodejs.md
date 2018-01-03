@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
 ms.openlocfilehash: fe50fb3a7434702101dc5ae7a9dd176a33423119
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Alkalmazásátjáró létrehozása az Azure parancssori felület használatával
 
@@ -148,7 +148,7 @@ azure network application-gateway create \
 Ez a példa egy alapszintű application gateway alapértelmezett beállításait a figyelő, a háttérkészlet, a backendhttpsettings osztályhoz és a szabályok hoz létre. Ezeket a beállításokat a központi telepítés megfelelően, ha a kiépítés sikeres módosíthatja.
 Ha már van definiálva az előző lépésekben, a létrehozását követően, a háttérkészletben webalkalmazásokat terheléselosztás kezdődik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan hozzon létre egyéni állapotteljesítmény ellátogatva [hozzon létre egy egyéni állapotmintáihoz](application-gateway-create-probe-portal.md)
 

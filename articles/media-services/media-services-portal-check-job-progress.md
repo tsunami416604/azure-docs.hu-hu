@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
 ms.openlocfilehash: 571d222068e92a45b0e37bec298bab7a6825f731
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Az Azure portálon kódolási feladatok előrehaladásának figyelése
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Kattintson a feladat további részletek megtekintéséhez.
 
 ![Feladatok](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután a kódolási feladat egy, közzététele, és az eszközök lejátszása leírtak [Itt](media-services-portal-publish.md).
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek

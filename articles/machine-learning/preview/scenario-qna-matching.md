@@ -6,6 +6,7 @@ documentationcenter:
 author: mezmicrosoft
 editor: mezmicrosoft
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
-ms.manager: tihazen
-ms.openlocfilehash: 8edc21fb8f42ee5897c4e938045cc1f42aedb3ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: tihazen
+ms.openlocfilehash: 33f807a4a0bbc4afd1f2fbe017f8913eccacc34b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>A Q & A egyező Azure Machine Learning-munkaterület használatával
 Nyissa meg befejeződött a kérdések megválaszolásával nehéz feladat, és gyakran van szükség manuális adatfrissítésre az érintett témakör szakértőit (SME szól). Belső KKV iránti igény csökkentése érdekében a vállalatok gyakran létrehozása gyakran ismételt kérdések (GYIK) listája, amelyek segítik a felhasználókat. Ebben a példában a különböző hatékony machine learning módszer nyitott befejeződött a lekérdezéseket, amelyekkel korábban létező gyakran ismételt kérdések kérdés/válaszok párok megfelelően bővíthető. Ez a példa azt mutatja be, egy egyszerű fejlesztési megoldás az Azure Machine Learning-munkaterület használatával kiépítése során. 
@@ -79,16 +80,16 @@ Ezen három adatkészletek kombinációja hoz létre, ahol választ (A) van rend
 
 Az adatok séma- és a három adatkészletek közvetlen letöltési hivatkozásokat a következő táblázatban található:
 
-| Adatkészlet | Mező | Típus | Leírás
+| Adathalmaz | Mező | Típus | Leírás
 | ----------|------------|------------|--------
 | [kérdések](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | Azonosító | Karakterlánc | Az egyedi kérdést azonosítója (elsődleges kulcs)
 |  | AnswerId | Karakterlánc | A kérdésre egyedi választ azonosítója
-|  | Text0 | Karakterlánc | A nyers szöveg adatokat, többek között a kérdés cím és törzsét.
-|  | CreationDate | időbélyeg | Ha a kérdés kérte időbélyegzője
+|  | text0 | Karakterlánc | A nyers szöveg adatokat, többek között a kérdés cím és törzsét.
+|  | CreationDate | Időbélyeg | Ha a kérdés kérte időbélyegzője
 | [duplikátumok](https://bostondata.blob.core.windows.net/stackoverflow/dup-q.tsv.gz) | Azonosító | Karakterlánc | Az egyedi ismétlődést azonosítója (elsődleges kulcs)
 |  | AnswerId | Karakterlánc | A válasz ismétlődést azonosítója
-|  | Text0 | Karakterlánc | A nyers szöveg adatokat, többek között az ismétlődést cím és törzsét.
-|  | CreationDate | időbélyeg | Ha az ismétlődést kérte időbélyegzője
+|  | text0 | Karakterlánc | A nyers szöveg adatokat, többek között az ismétlődést cím és törzsét.
+|  | CreationDate | Időbélyeg | Ha az ismétlődést kérte időbélyegzője
 | [válaszok](https://bostondata.blob.core.windows.net/stackoverflow/ans.tsv.gz)  | Azonosító | Karakterlánc | A válasz egyedi azonosító (elsődleges kulcs)
 |  | text0 | Karakterlánc | A válasz a nyers adatokat
 

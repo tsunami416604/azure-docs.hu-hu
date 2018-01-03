@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 12/06/2017
 ms.author: snmuvva
 ms.custom: 
-ms.openlocfilehash: aeeb6c2fb87e6c19991ef243ee7230f4e8f4e251
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd1002929ad749ac1742e914a9f2411f09ec91d5
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="near-real-time-metric-alerts-preview"></a>Közel valós idejű metrika riasztások (előzetes verzió)
 Az Azure figyelő mostantól támogatja a közel valós idejű metrika riasztások (előzetes verzió) nevű metrika riasztások új típusú. Ez a funkció jelenleg nyilvános előzetes verziójához.
@@ -38,6 +38,7 @@ Ezek a riasztások eltér a normál metrika riasztások néhány módszer az
 Közel valós idejű metrika riasztások által támogatott típusú erőforrások teljes listája:
 
 * Microsoft.ApiManagement/service
+* Microsoft.Automation/automationAccounts
 * Microsoft.Batch/batchAccounts
 * Microsoft.Cache/Redis
 * Microsoft.Compute/virtualMachines
@@ -51,48 +52,31 @@ Közel valós idejű metrika riasztások által támogatott típusú erőforrás
 * Microsoft.Network/publicipaddresses
 * Microsoft.Search/searchServices
 * Microsoft.ServiceBus/namespaces
-* Microsoft.Sql/servers/elasticpools
+* Microsoft.Storage/storageAccounts
+* Microsoft.Storage/storageAccounts/services
 * Microsoft.StreamAnalytics/streamingjobs
-* Microsoft.Timeseriesinsights
 * Microsoft.CognitiveServices/accounts
+
+## <a name="near-real-time-metric-alerts-on-metrics-with-dimensions"></a>A metrikák többdimenziósak közel valós idejű metrika riasztások
+Közel valós idejű metrika riasztások támogatja a metrikák többdimenziósak riasztást küld. Dimenziók egy módszerre, amellyel szűrheti a metrika a megfelelő szintre. Közel valós idejű metrika riasztások a metrikák többdimenziósak támogatottak a következő típusú erőforrások
+
+* Microsoft.ApiManagement/service
+* Microsoft.Storage/storageAccounts (USA régiókban storage-fiókok csak támogatott)
+* Microsoft.Storage/storageAccounts/services (USA régiókban storage-fiókok csak támogatott)
 
 
 ## <a name="create-a-near-real-time-metric-alert"></a>Riasztás létrehozása, a közel valós idejű metrika
 Jelenleg közel valós idejű metrika riasztásokat csak hozhatók létre az Azure portálon keresztül. Közel valós idejű metrika riasztások PowerShell parancssori felület (CLI) és Azure figyelő REST API-n keresztül konfigurálása támogatása hamarosan elérhető.
 
-1. Az a [portal](https://portal.azure.com/), keresse meg az erőforrás figyelési érdekli, és válassza ki azt. Ehhez az erőforráshoz a felsorolt típusok egyikének kell lennie a [előző szakaszban](#what-resources-can-i-create-near-real-time-metric-alerts-for). Megteheti is azonos az összes támogatott erőforrások központilag figyelő > riasztásokat.
+A riasztási tapasztalat létrehozása közel valós idejű metrika riasztás át lett helyezve az új **Alerts(Preview)** tapasztalhat. Akkor is, ha az aktuális riasztások lapon látható **hozzáadása közel valós idejű metrika riasztás**, ekkor megnyílik az új felületre.
 
-2. Válassza ki **riasztások** vagy **riasztási szabályok** a figyelés szakaszban. A szöveg és ikon eltérő lehet attól függően némileg különböző erőforrások.
-   ![Figyelés](./media/insights-alerts-portal/AlertRulesButton.png)
-
-3. Kattintson a **közel valós idejű metrikák riasztás (előzetes verzió) hozzáadása** parancsot. Ha a parancs szürkén jelenik meg, győződjön meg arról, az erőforrás van jelölve, a szűrő.
-
-    ![Vegye fel a közel valós idejű metrikák riasztási gomb](./media/monitoring-near-real-time-metric-alerts/AddNRTAlertButton.png)
-
-4. **Név** a riasztás szabályt, majd válassza ki a **leírása**, amely értesítési e-mailt is mutatja.
-5. Válassza ki a **metrika** szeretne figyelni, majd kattintson egy **feltétel**, **idő összesítése**, és **küszöbérték** a mérték értékét. Kiválaszthatja egy másik **metrika** szeretne figyelni, majd kattintson a **feltétel**, **idő összesítése**, és **küszöbérték** értékét a második metrikát. 
-
-    ![Vegye fel a közel valós idejű metrikák Alert1](./media/monitoring-near-real-time-metric-alerts/AddNRTAlert1.png) ![közel valós idejű metrikák Alert2 hozzáadása](./media/monitoring-near-real-time-metric-alerts/AddNRTAlert2.png)
-6. Válassza ki a **időszak** idő a metrika szabályokat kell biztosítani a riasztási eseményindítók előtt. Így például használatakor az időtartam "keresztül az elmúlt 5 percben" és a riasztási keres processzor 80 %-ot (és 500 MB feletti NetworkIn) felett, a riasztás váltja ki, ha a CPU már következetesen fenti 80 % 5 perc. Akkor következik be, az első eseményindító, amennyiben azt újra váltja ki, ha 5 percig 80 % alatt marad a Processzor. A riasztás a következők szerint történik a **kiértékelési gyakoriságának**
-
-
-6. Válasszon egy megfelelő **súlyossági** a legördülő listából.
-
-7. Adja meg, ha egy új vagy meglévő használni kívánt **művelet csoport**.
-
-8. Ha úgy dönt, hogy hozzon létre **új** művelet csoport, meg kell adni a művelet csoport nevét és egy rövid nevet, adjon meg műveleteket (SMS, e-mailek Webhook), és töltse ki a megfelelő részleteit.
-
-
-8. Válassza ki **OK** végzett a riasztás létrehozása.   
-
-Néhány percen belül a riasztás aktív, és elindítja a leírt módon.
+Létrehozhat egy közel valós idejű metrika riasztás ismertetett lépések [Itt](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal).
 
 ## <a name="managing-near-real-time-metric-alerts"></a>Közel valós idejű metrika riasztások kezelése
-Miután létrehozott egy riasztást, kijelölheti azt és:
+Miután létrehozta a **közel valós idejű metrika riasztás**, ismertetett lépések kezelhető [Itt](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal).
 
-* A metrika küszöbérték és a tényleges értékek az előző nap egy grafikonon megtekintése.
-* Szerkesztheti és törölheti azt.
-* **Tiltsa le a** vagy **engedélyezése** , ha azt szeretné, ideiglenesen leállítani, vagy folytassa a riasztás-mailjeire.
+## <a name="next-steps"></a>További lépések
 
-
-
+* [További tudnivalók a változásról riasztások (előzetes verzió)](monitoring-overview-unified-alerts.md)
+* [További tudnivalók a napló riasztásait az Azure-riasztások (előzetes verzió)](monitor-alerts-unified-log.md)
+* [További tudnivalók az Azure-ban riasztások](monitoring-overview-alerts.md)

@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 09/29/2017
 ms.author: nitinme
 ms.openlocfilehash: 98898675b85d62c97a215f9922f1393001013943
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>A Data Lake Store az Azure Active Directoryval végfelhasználói hitelesítés
 > [!div class="op_single_selector"]
@@ -116,7 +116,7 @@ Az átirányítási URI-JÁNAK beolvasása, hajtsa végre az alábbi lépéseket
 
 5. Ismételje meg az utolsó két lépést vonatkozó engedélyeket **Windows Azure szolgáltatásfelügyeleti API** is.
    
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben egy natív Azure AD-alkalmazást létrehozni, és a szükséges információkat az ügyfél-alkalmazások használata a .NET SDK-val, a Java SDK-t, a REST API-t, a stb szerzői összegyűjtött. Most már folytathatja, az alábbi cikkek tartalmazzák, amely először a Data Lake Store hitelesítéséhez, és végezze el más műveleteket végez a tároló az Azure AD-webes alkalmazás használatával kapcsolatban.
 
 * [Végfelhasználói-user-hitelesítés a Data Lake Store Java SDK használatával](data-lake-store-end-user-authenticate-java-sdk.md)

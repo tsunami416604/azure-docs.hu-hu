@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: davidmu
 ms.openlocfilehash: 2f7f5d4132e28c8c192d90d5f4bfb2a9034f8b8c
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-azure-portal"></a>SSL kiszervezési Alkalmazásátjáró konfigurálása az Azure-portál használatával
 
@@ -80,7 +80,7 @@ A figyelő létrehozása megtörtént. Ezután hozzon létre egy szabályt, amel
 
 Az Alkalmazásátjáró most menti a beállításokat. A mentési feldolgozni az ezeket a beállításokat eltarthat egy kis ideig, után lesznek a portálon keresztül vagy a Powershellen keresztül. Után azok mentésekor, az Alkalmazásátjáró kezeli a titkosítási és visszafejtési forgalom. Az Alkalmazásátjáró és a háttér-webkiszolgálók közötti összes forgalom kezelése HTTP Protokollon keresztül. Minden kommunikáció az ügyfél által kezdeményezett HTTPS, ha visszatér az ügyfélhez titkosított.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy egyéni állapotmintáihoz konfigurálása Azure Application Gateway kapcsolatban [hozzon létre egy egyéni állapotmintáihoz](application-gateway-create-gateway-portal.md).
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 0da456e13042168f3c8e871f180e6477b73392d5
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 80035b9b7127bb6cbce4a17478037cd8197077df
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 A kibocsátási megjegyzések összesítse a módosításokat a korábbi kiadásokban és ismert problémákat.
@@ -28,8 +28,9 @@ A kibocsátási megjegyzések összesítse a módosításokat a korábbi kiadás
 > 
 > 
 
-## <a id="issues"></a>Ismert problémák
-### <a id="general_issues"></a>Media Services kapcsolatos általános problémák
+## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>Ismert problémák
+### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services kapcsolatos általános problémák
+
 | Probléma | Leírás |
 | --- | --- |
 | Több, közös HTTP-fejlécek nem szerepelnek a REST API-t. |A REST API használatával Media Services-alkalmazások fejlesztése, ha úgy gondolja, hogy néhány gyakori HTTP-fejlécmezők (CLIENT-REQUEST-ID, beleértve-azonosító, és VISSZATÉRÉSI-CLIENT-REQUEST-ID) használata nem támogatott. A fejlécek az egy későbbi kiadásban lesz hozzáadva. |
@@ -41,7 +42,7 @@ A kibocsátási megjegyzések összesítse a módosításokat a korábbi kiadás
 | Az Azure Media Services .NET SDK-objektum nem szerializálható, és emiatt sem működik együtt az Azure-gyorsítótárazás. |Ha a gyorsítótár Azure hozzáadása SDK AssetCollection objektum szerializálása, a rendszer kivételt hoz létre. |
 
 
-## <a id="rest_version_history"></a>REST API verziójának előzményei
+## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API verziójának előzményei
 A Media Services REST API verziójának előzményei kapcsolatos információkért lásd: [Azure Media Services REST API-referencia].
 
 ## <a name="october-2017-release"></a>2017. októberi kiadás
@@ -89,7 +90,6 @@ Ezután már használhatja Azure Media Standard [automatikus létrehozása egy s
 
 Ezután már használhatja Azure Media Standard vagy a Media Encoder prémium munkafolyamat [állít elő, fMP4 adattömbök kódolási feladat létrehozása](media-services-generate-fmp4-chunks.md). 
 
-
 ## <a name="february-2017-release"></a>2017. február kiadás
 
 2017. április 1-től kezdődően a fiókokban a 90 napnál régebbi Feladat rekordok automatikusan törölve lesznek, a kapcsolódó Művelet rekordokkal egyetemben, még ha a rekordok összesített száma nem is éri el a maximális kvótát. A feladatok/műveletek adatainak archiválásához használhatja az [itt](media-services-dotnet-manage-entities.md) ismertetett programkódot.
@@ -102,9 +102,9 @@ Emellett a 2.15 verziójától kezdve Azure Media Services felvenni a következ�
 
 ## <a name="december-2016-release"></a>2016. december kiadás
 
-Az Azure Media Services most lehetővé teszi a hozzá tartozó szolgáltatások telemetriai/metrikai adatok eléréséhez. AMS jelenlegi verziója lehetővé teszi az élő csatorna, StreamingEndpoint, telemetriai adatokat gyűjt, és a működés közbeni archív entitásokat. További információkért lásd: [ez](media-services-telemetry-overview.md) cikk.
+Az Azure Media Services most lehetővé teszi a hozzá tartozó szolgáltatások telemetriai/metrikai adatok eléréséhez. AMS jelenlegi verziója lehetővé teszi az élő csatorna, StreamingEndpoint, telemetriai adatokat gyűjt, és a működés közbeni archív entitásokat. További információkért tekintse meg [ezt](media-services-telemetry-overview.md) a cikket.
 
-## <a id="july_changes16"></a>2016. július kiadás
+## <a name="a-idjulychanges16july-2016-release"></a><a id="july_changes16"/>2016. július kiadás
 ### <a name="updates-to-manifest-file-ism-generated-by-encoding-tasks"></a>Frissítések manifest fájl (*. ISM) generálja a kódolási feladatokhoz
 Amikor egy kódolási feladat Media Encoder Standard vagy az Azure Media Encoder, a kódolási feladat létrehoz egy [adatfolyam jegyzékfájl](media-services-deliver-content-overview.md) (* .ism) a kimeneti fájl eszköz. A legújabb szolgáltatás a kiadástól kezdve a szintaxist, az adatfolyam-továbbítási jegyzékfájl frissítve lett.
 
@@ -436,7 +436,7 @@ Ebben a szakaszban említett módosítások a 2013. június Media Services kiad�
 
 * Lehetővé teszi több storage-fiókok összekapcsolása egy Media Services-fiókját. 
   
-    StorageAccount
+    Tárfiók
   
     Asset.StorageAccountName és Asset.StorageAccount
 * Job.Priority frissítésének lehetőségét. 

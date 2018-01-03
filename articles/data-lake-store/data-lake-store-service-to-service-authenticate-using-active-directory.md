@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 09/28/2017
 ms.author: nitinme
 ms.openlocfilehash: 9a4502ecfd5471cc2a968f995e66e595f59384b3
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>Szolgáltatások közötti hitelesítés a Data Lake Store az Azure Active Directoryval
 > [!div class="op_single_selector"]
@@ -97,7 +97,7 @@ Bejelentkezéskor programozott módon, a azonosító szükséges az alkalmazásh
 
     ![OAuth jogkivonat végpontjához](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "token OAuth-végpont")   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben az Azure AD webes alkalmazások és a gyűjtött szükséges információkat az ügyfél alkalmazásokban, hogy szerzőként használata a .NET SDK, Java, Python, REST API-t, stb. Most már folytathatja a következő cikkekben talál, amely először a Data Lake Store hitelesítéséhez, és végezze el más műveleteket végez a tároló az Azure AD-natív alkalmazás használatával kapcsolatban.
 
 * [Szolgáltatások közötti hitelesítés a Data Lake Store Java használatával](data-lake-store-service-to-service-authenticate-java.md)

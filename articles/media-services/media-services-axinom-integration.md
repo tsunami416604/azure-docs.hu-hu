@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
 ms.openlocfilehash: 64e8d4a88ea78e0de065e5a2c12dba4885e08bad
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe
 > [!div class="op_single_selector"]
@@ -174,7 +174,7 @@ Az állomásokon többféleképpen is beolvasása tárolásához kulcs azonosít
         return key_id;
     }
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Widevine-támogatás az Azure Media Services Content Protection, mind az Azure Media Player legújabb hozzáadásával dolgozunk beállításától adatfolyamként való küldése a kötőjel + több-native-DRM (PlayReady + Widevine) mindkét AMS és Widevine licenckiszolgáló a Axinom a következő modern böngészők PlayReady licenc szolgáltatással:
 
 * Chrome
