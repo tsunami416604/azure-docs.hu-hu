@@ -16,10 +16,10 @@ ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: a631708ce755b07701c053e217dd658e5f7bb82b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Az Azure Data Factoryben az adatok átalakítása
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ A számítási környezet társított szolgáltatás létrehozása, és kövesse
 
 Lásd: [összekapcsolt szolgáltatások számítási](data-factory-compute-linked-services.md) cikkben tájékozódhat az adat-előállító által támogatott számítási szolgáltatások. 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure Data Factory támogatja a következő adatok átalakítása tevékenységek és a számítási környezetek a tevékenységekhez. Az átalakítási tevékenységek hozzá folyamatok vagy külön-külön, vagy egy másik tevékenységgel kapcsolt.
 
 | Adatátalakítási tevékenység | Számítási környezet |

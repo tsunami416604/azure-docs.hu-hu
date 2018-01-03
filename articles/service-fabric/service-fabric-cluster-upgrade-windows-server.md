@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: c95c1827d0433dcb61eace34e7a905a5610c7781
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Az önálló Azure Service Fabric-fürt Windows Server frissítése 
 > [!div class="op_single_selector"]
 > * [Azure-fürttel](service-fabric-cluster-upgrade.md)
-> * [Önálló fürthöz](service-fabric-cluster-upgrade-windows-server.md)
+> * [Önálló fürt](service-fabric-cluster-upgrade-windows-server.md)
 >
 >
 
@@ -226,7 +226,7 @@ Technikai szempontból négy beállítások támogatottak:
 * A tanúsítvány kiállítójának ujjlenyomata frissítés: A frissítési elérési út a tanúsítvány CN = A, IssuerThumbprint et1 = (elsődleges) tanúsítvány CN -> = A, IssuerThumbprint et1, et2 = (elsődleges) tanúsítvány CN -> A, IssuerThumbprint = et2 = (elsődleges).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan szabhatja testre az egyes [Service Fabric-fürt beállítások](service-fabric-cluster-fabric-settings.md).
 * Megtudhatja, hogyan [a fürt vagy horizontális](service-fabric-cluster-scale-up-down.md).
 * További tudnivalók [alkalmazásfrissítések](service-fabric-application-upgrade.md).

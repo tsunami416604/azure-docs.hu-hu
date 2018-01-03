@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: vturecek;mikhegn
 ms.openlocfilehash: 8c29b54415a42ec435f2b4c3ce6b407b2155f70c
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>A Service Fabric-alkalmazás hibakeresése a Visual Studio használatával
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ Akkor is alkalmasak adatfolyam nyomkövetések közvetlenül a Visual Studio egy
    
     ![Tiltsa le a távoli adatfolyam nyomkövetések][disablestreamingtraces]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Service Fabric szolgáltatás tesztelése](service-fabric-testability-overview.md).
 * [A Service Fabric-alkalmazások, a Visual Studio kezelése](service-fabric-manage-application-in-visual-studio.md).
 

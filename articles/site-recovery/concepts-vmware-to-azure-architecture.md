@@ -1,24 +1,16 @@
 ---
-title: "Tekintse át a VMware-replikáció az Azure architektúra |} Microsoft Docs"
+title: "Az Azure Site Recovery architektúrájáról Azure replikációs VMware |} Microsoft Docs"
 description: "Ez a cikk áttekintést összetevők és használható, ha a helyszíni VMware virtuális gépek replikálása Azure-bA az Azure Site Recovery szolgáltatással architektúra"
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: d03d2dd3-2455-4ca8-a942-a342030ee6ce
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: ac1151d15a88650f5845cb879cd210e9f7cba0fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1c991298d8f59c7f161b965541571b4c8ac3d8f9
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>VMware Azure replikációs-architektúra
 
@@ -83,7 +75,6 @@ Amint az elsődleges helyszíni hely megint elérhetővé válik, visszaadhatja 
 ![Feladat-visszavétel](./media/concepts-vmware-to-azure-architecture/enhanced-failback.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse át a támogatási mátrix oktatóanyag VMware Azure replikáció engedélyezéséhez.
-Futtassa a feladatátvételi és a feladat-visszavétel.
+Hajtsa végre a [ebben az oktatóanyagban](tutorial-vmware-to-azure.md) VMware Azure replikáció engedélyezéséhez.

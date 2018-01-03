@@ -1,4 +1,4 @@
-Egyéni tartománynév beállítása egy webalkalmazást az Azure App Service szolgáltatásban, amely elosztott terhelésű Traffic Manager által a lehetőség csak a **szabványos** mód webhelyeket. Egy webalkalmazást az ingyenes App Service-csomag mód a megosztott, alapszintű vagy Standard módra vált, akkor először el kell távolítani költségkeret caps helyen az App Service-előfizetéséhez. 
+Egyéni tartománynév beállítása a Traffic Managerrel integrált webes alkalmazások csak akkor a **szabványos** tarifacsomagra vált.  
 
-Az alkalmazásszolgáltatási csomag üzemmódot, beleértve az módosítása milyen módban működik azon a helyen, a további információk: [webhelyek méretezése](../articles/app-service/web-sites-scale.md).
+További információ a tarifacsomagok az App Service többek között az alkalmazás módosítása tartozó IP-címek című [vertikális felskálázás az Azure alkalmazásban](../articles/app-service/web-sites-scale.md).
 

@@ -9,13 +9,13 @@ ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 10/17/2017
+ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: 87ec0e1b6d01fc5d13e9b9f46987e416d8e1958f
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: c2d4a33cd6c4c9db608a76b24935b474b551b291
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Az Azure Batch parancssori felületi sablonjainak és fájlátviteli funkciójának (előzetes verzió) használata
 
@@ -53,7 +53,7 @@ További információ az Azure parancssori felület telepítésével [Azure CLI 
 Az Azure parancssori felület telepítése után a kötegelt bővítmény legújabb verziója is telepíthető a következő parancssori parancsot:
 
 ```azurecli
-az extension add --source https://github.com/Azure/azure-batch-cli-extensions/releases/download/azure-batch-cli-extensions-2.0.0/azure_batch_cli_extensions-2.0.0-py2.py3-none-any.whl
+az extension add --source https://github.com/Azure/azure-batch-cli-extensions/releases/download/azure-batch-cli-extensions-2.0.1/azure_batch_cli_extensions-2.0.1-py2.py3-none-any.whl
 ```
 
 A kötegelt bővítmény kapcsolatos további információkért lásd: [Microsoft Azure Batch CLI Extensions for Windows, Mac és Linux](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux).
@@ -253,13 +253,13 @@ az batch file download --file-group ffmpeg-output --local-path
 
 Készlet és a feladat sablonok fájlcsoportok másolási készlet csomópontok vagy készlet csomópontok vissza a fájlcsoport ki kell adni a tárolt engedélyezése. Például a feladat-sablonban a korábban megadott, a fájl csoport "ffmpeg-bevitel" van megadva a feladat a beépített az átkódolás; csomópont másolható videó forrásfájljainak helye a hely, ahol a engedélyezi az átalakítását kimeneti fájlok kerülnek a csomópont minden feladatot a fájl csoport "ffmpeg-kimeneti" lesz.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Sablon és a fájl adatátviteli támogatása jelenleg hozzáadott csak az Azure parancssori felület. A cél, hogy a célközönséget, hogy a felhasználók számára, akik nem kívánnak által fejlesztett kód megadása a kötegelt API-k, például a kutatók informatikai felhasználók, és így tovább használhatja a kötegelt bontsa ki. Nélkül kódolási, az Azure Batch és a köteg által futtatandó alkalmazásokat ismeretét rendelkező felhasználók hozhatnak létre a készlet és a feladat létrehozásához. Sablon paraméterek a felhasználók kötegelt és az alkalmazások részletes ismerete nélkül használhatják a sablonok.
 
 A kötegelt bővítmény kipróbálhatja az Azure parancssori felület, és meg kell adnia a visszajelzést vagy a javaslatok, vagy a megjegyzések, ez a cikk vagy keresztül a [Azure Batch fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kötegelt sablonok blogbejegyzésben található: [Azure Batch futó feladatok az Azure parancssori felülettel – nem szükséges kód](https://azure.microsoft.com/en-us/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/).
 - Részletes telepítési és használati dokumentációt, példák és forráskód érhetők el a [Azure GitHub-tárházban](https://github.com/Azure/azure-batch-cli-extensions).

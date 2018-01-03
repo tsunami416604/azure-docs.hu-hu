@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: afa863e2a900d4f823b77453d92f034db7d5a93f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1f0182f27cfb8441a09abd2031b365a4ab4315a
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>Mik azok a riasztások a Microsoft Azure-ban?
 Ez a cikk ismerteti a Microsoft Azure, milyen riasztások különböző forrásokból vonatkozó riasztási, azok előnyeit, és használatuk használatába céljából. Kifejezetten Azure figyelő vonatkozik, de más szolgáltatások mutatók biztosít, valamint riasztásokat. Riasztások kínálnak, amely lehetővé teszi feltételek adatok konfigurálása és válnak értesítést kap, ha a feltételek egyeznek meg a legújabb figyelési adatok Azure-ban figyelésére szolgáló módszer.
+
 
 ## <a name="taxonomy-of-azure-alerts"></a>Az Azure riasztások besorolás
 Azure használja a következő feltételek riasztások és azok funkciói:
@@ -32,8 +33,13 @@ Azure használja a következő feltételek riasztások és azok funkciói:
 * **Értesítési** - alapú kijelentkezés váljon aktív riasztás végrehajtott műveletet.
 * **A művelet** -egy adott hívás a fogadó (például e-mail címet vagy a webhook URL-CÍMÉT a könyvelési) értesítést küldeni. Értesítések általában elindítható több művelet.
 
+    > [!NOTE]
+    > Az Azure-ban riasztások fejlődéséhez részeként egy új, egységes felhasználói élmény ebben a nézetben. Az új riasztások (előzetes verzió) felületet használ egy másik besorolást. További információ [riasztások (előzetes verzió)](monitoring-overview-unified-alerts.md). 
+    >
+
 ## <a name="alerts-in-different-azure-services"></a>Riasztások a különböző Azure-szolgáltatások
 Riasztások több Azure-szolgáltatások figyelésének keresztül érhetők el. Információk hogyan és mikor érdemes használni ezeket a szolgáltatásokat [ebben a cikkben találhat](./monitoring-overview.md). Itt érhető el a riasztástípusok részletes információkat Azure között:
+
 
 | Szolgáltatás | Riasztás típusa | Támogatott szolgáltatások | Leírás |
 |---|---|---|---|
@@ -50,10 +56,10 @@ Nincsenek elérhető Azure figyelő--metrika riasztások közel valós idejű me
 * **Metrika riasztások** -a riasztás váltja ki, ha a megadott metrika értékét a hozzárendelt küszöbérték keverve használ. A riasztás egy értesítést állít elő, ha a riasztás "aktív" (Ha a küszöb van átlépte, és a riasztási feltétel nem teljesül), valamint ha az "megoldódik" (a küszöbérték áthaladnak újra, és a feltétel nem teljesül). A figyelő az Azure által támogatott elérhető mérőszámok egyre bővülő listáját lásd: [támogatott Azure-figyelő a metrikák listája](monitoring-supported-metrics.md).
 * **Majdnem valós idejű metrika riasztások (előzetes verzió)** – ezek a riasztások jelezhetik metrika riasztások hasonló, de néhány módon térnek el egymástól. Először is a nevet javasol, ezek a riasztások is elindíthatja a közel valós időben (olyan gyorsan, mint 1 perces). Akkor is támogatja, több (jelenleg két) mérőszámok figyelését.  A riasztás egy értesítést állít elő, ha a riasztás "aktív" (mindegyik metrikát a küszöbértékek túllépése esetén egy időben és a riasztási feltétel nem teljesül), valamint megoldásakor,"" (ha legalább egy metrikát újra keverve használ a küszöbérték és a következő feltételt: nincs már teljesül).
 
-> [!NOTE]
-> Közel valós idejű metrika riasztások jelenleg nyilvános előzetes verziójához. A funkció és a felhasználói élmény van változhat.
->
->
+    > [!NOTE]
+    > Közel valós idejű metrika riasztások jelenleg nyilvános előzetes verziójához. A funkció és a felhasználói élmény van változhat.
+    >
+    >
 
 * **Napló tevékenységriasztásokat** -egy adatfolyam-továbbítási váltja ki, ha az tevékenységnapló jön létre, hogy megfelel a keresési feltételeknek a hozzárendelt napló-értesítés. Ezek a riasztások rendelkezik csak egy állapota "Aktív", mert a riasztás motor egyszerűen alkalmazza a szűrési feltételeket bármely új eseményre. Ezek a riasztások is használható lesz értesítést kap, egy új szolgáltatás állapota esemény bekövetkezésekor, vagy amikor egy felhasználó vagy alkalmazás egy műveletet végez az előfizetéshez, például "A virtuális gép törlése."
 
@@ -76,7 +82,7 @@ Metrika riasztások még nem használható művelet csoportok. Egyéni metrika r
 * E-mail értesítéseket küldhet a szolgáltatás-rendszergazda társrendszergazdák, vagy további e-mail-címek.
 * Hívja meg a webhook, amely lehetővé teszi további automation műveletek indítása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A riasztási szabályok és a konfigurálásuk adatainak beolvasása:
 
 * További információ [metrikák](monitoring-overview-metrics.md)
@@ -91,3 +97,4 @@ A riasztási szabályok és a konfigurálásuk adatainak beolvasása:
 * További információ [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md)
 * További információ [szolgáltatáshoz értesítést](monitoring-service-notifications.md)
 * További információ [művelet csoportok](monitoring-action-groups.md)
+* Konfigurálása [figyelmeztetések segítségével riasztások (előzetes verzió)](monitor-alerts-unified-usage.md)

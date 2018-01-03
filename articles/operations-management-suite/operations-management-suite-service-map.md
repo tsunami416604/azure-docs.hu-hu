@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: c07290a5003189b0b773bd9b9c995400b424c7f4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 9de193c95fe881c03cdbd2105b93ee487a2455e0
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép megoldás használja
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Szolgáltatástérkép, használatával megtekintheti a kiszolgálók, amelyek Ön szerint egyik módja: összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép jeleníti meg a kiszolgálók, a folyamatok közötti kapcsolatokat, és portok között bármely TCP-csatlakoztatott architektúra, a konfiguráció nem szükséges másik ügynököt telepíteni.
@@ -28,7 +28,7 @@ Ez a cikk ismerteti a Szolgáltatástérkép használatával részleteit. Szolg�
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Eseteinek: Ellenőrizze az informatikai feldolgozza a fürttámogató függőség
 
-### <a name="discovery"></a>Felderítés
+### <a name="discovery"></a>Detektálás
 Szolgáltatástérkép függőségek közös hivatkozás térképet automatikusan létrehozza a kiszolgálón, a folyamatok és a harmadik féltől származó szolgáltatással. Észleli, és hozzárendeli az összes TCP-függőség, jelzés nélküli kapcsolatok, a távoli külső rendszerek függ, és a hagyományos sötét területet a hálózaton, például az Active Directory függőségeket azonosító. Szolgáltatástérkép deríti fel, amely a felügyeleti rendszer létesíteni, hibás hálózati kapcsolatok gondoskodik a potenciális server hibás konfigurációja, a szolgáltatáskimaradás és a hálózati problémák azonosításához.
 
 ### <a name="incident-management"></a>Incidenskezelés
@@ -49,7 +49,7 @@ Szolgáltatástérkép ügynökök gyűjtse össze a TCP-kapcsolódó folyamatok
 
 ![Szolgáltatástérkép áttekintése](media/oms-service-map/service-map-overview.png)
 
-A térkép az aktív hálózati kapcsolatokkal rendelkező folyamatok futtatásával megjelenítése a kijelölt időtartományban gépek bővíthető. Ha egy távoli számítógéphez a Szolgáltatástérkép ügynök ki van bontva, a folyamat részletei láthatók, csak a kommunikációt a fókusz gép folyamatok jelennek meg. Ügynök nélküli előtér-gépek, amelyek kapcsolódnak a fókusz géppé száma fel van tüntetve a folyamatok, amelyekhez csatlakoznak bal oldalán. Ha a fókusz gépen, hogy így egy háttér-számítógépen, amelyen nincs ügynök van kapcsolat, a háttér-kiszolgálófiók szerepel a Port kiszolgálócsoport mellett egyéb kapcsolatokat ugyanazt a portszámot.
+Gépek bővíthetők a leképezés a futó megjelenítése a kijelölt időtartományban csoportok és az aktív hálózati kapcsolatokkal folyamatok feldolgozni. Ha egy távoli számítógéphez a Szolgáltatástérkép ügynök ki van bontva, a folyamat részletei láthatók, csak a kommunikációt a fókusz gép folyamatok jelennek meg. Ügynök nélküli előtér-gépek, amelyek kapcsolódnak a fókusz géppé száma fel van tüntetve a folyamatok, amelyekhez csatlakoznak bal oldalán. Ha a fókusz gépen, hogy így egy háttér-számítógépen, amelyen nincs ügynök van kapcsolat, a háttér-kiszolgálófiók szerepel a Port kiszolgálócsoport mellett egyéb kapcsolatokat ugyanazt a portszámot.
 
 Alapértelmezés szerint a Szolgáltatástérkép maps megjelenítése a függőségi adatokat az elmúlt 30 percben. Bal felső idő vezérlők használatával lekérdezheti a maps korábbi idő porttartományok akár egy óráig hogyan függőségek kikeresi az elmúlt (például incidens vagy előtt változott meg valami) megjelenítéséhez. Szolgáltatástérkép tárolja a fizetős munkaterületek 30 napig, és a munkaterületek 7 napban.
 
@@ -59,6 +59,9 @@ A térkép kiszolgálónként alján lehet a kiszolgáló állapotinformációr�
 Attól függően, hogy az állapot jelvények súlyossága gép csomópont szegélyek színes piros (kritikus), sárga (figyelmeztetés), vagy kék (tájékoztató). A szín a állapot jelvények bármelyikét legsúlyosabb károkat okozó állapotát jelöli. Szürke szegélyt megadni a csomópont, amelynek nincs Állapotjelzők jelzi.
 
 ![Állapot jelvények](media/oms-service-map/status-badges.png)
+
+## <a name="process-groups"></a>Csoportot
+Folyamat csoportok egyesítése egy folyamat csoporthoz tartozó közös termék vagy szolgáltatás folyamatokat.  Egy számítógép-csomópont kibontásakor önálló folyamatok csoportot együtt jelenik meg.  Ha a bejövő és kimenő kapcsolatokat folyamat csoporton belül a folyamatok majd nem sikerült a kapcsolat látható módon nem sikerült a teljes folyamat csoportot.
 
 ## <a name="machine-groups"></a>Számítógép-csoportok
 Gép csoportok lehetővé teszik a kiszolgálók, nem csak egy hívjuk fel egy leképezést egy többrétegű alkalmazást vagy a kiszolgáló fürt összes tagja egy csoportja körül maps láthatja.
@@ -191,7 +194,7 @@ Ahhoz, hogy a Service Map vonatkozó értesítések megjelenítése, hozzon lét
 - Számítógép csoporthoz záradékot tartalmazni (például **számítógép időköze 1 perces**).
 - Válassza ki riasztást küld, metrika mérési alapján.
 
-![Riasztási konfigurációja](media/oms-service-map/alert-configuration.png)
+![Riasztások konfigurálása](media/oms-service-map/alert-configuration.png)
 
 
 ## <a name="operations-management-suite-log-events-integration"></a>Operations Management Suite naplózási események integráció
@@ -370,7 +373,7 @@ A Microsoft automatikusan használati és teljesítményadatokat gyűjt a Szolg�
 Adatok gyűjtésével és használatával kapcsolatos további információkért lásd: a [Microsoft Online Services adatvédelmi nyilatkozatát](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ [keresések jelentkezzen](../log-analytics/log-analytics-log-searches.md) a Log Analyticshez Szolgáltatástérkép által gyűjtött adatok lekéréséhez.
 
 

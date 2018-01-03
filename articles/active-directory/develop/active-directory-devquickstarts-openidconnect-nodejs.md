@@ -1,5 +1,5 @@
 ---
-title: "Ismerkedés az Azure ad-val be- és kijelentkezési Node.js használatával |} Microsoft Docs"
+title: "Ismerkedés az Azure AD Node.js webalkalmazás |} Microsoft Docs"
 description: "Ismerje meg, hogyan hozhat létre, amely az Azure ad-val bejelentkezési Node.js Express MVC webalkalmazás."
 services: active-directory
 documentationcenter: nodejs
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 3a9bc44ec9fc5a7c5e18139070bac837421efff5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a0079c1f4265e1c2564b85247cf5f5e0289799db
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="nodejs-web-app-sign-in-and-sign-out-with-azure-ad"></a>NODE.js-webalkalmazás be- és kijelentkezési az Azure ad szolgáltatással
+# <a name="azure-ad-nodejs-web-app-getting-started"></a>Ismerkedés az Azure AD Node.js webalkalmazás
 Jelen példában használjuk a Passport:
 
 * A felhasználói bejelentkezés az Azure Active Directory (Azure AD) alkalmazást.
@@ -402,7 +402,7 @@ Most `app.js` befejeződött. Egyszerűen kell hozzáadni az útvonalakat és n�
     </html>
     ```
 
-##<a name="next-steps"></a>Következő lépések
+##<a name="next-steps"></a>További lépések
 Végezetül hozza létre, és futtassa az alkalmazást. Futtatás `node app.js`, majd lépjen `http://localhost:3000`.
 
 Jelentkezzen be személyes Microsoft-fiókkal vagy egy munkahelyi vagy iskolai fiókkal, és figyelje meg, hogyan jelenik meg a felhasználó identitását /account listájában. Most már rendelkezik egy webalkalmazást az iparági szabványos protokollok, amely képes hitelesíteni a személyes és munkahelyi vagy iskolai fiókkal rendelkező felhasználók védett.

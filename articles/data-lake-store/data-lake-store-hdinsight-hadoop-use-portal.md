@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
 ms.openlocfilehash: 4a27ae1402717c91029eda9d635db124f8bb6b8d
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-by-using-the-azure-portal"></a>A HDInsight-fürtök létrehozása a Data Lake Store az Azure-portál használatával
 > [!div class="op_single_selector"]
@@ -205,7 +205,7 @@ Spark-fürt használatával a Data Lake Store-ban tárolt adatok a feladatok fut
 ### <a name="use-data-lake-store-in-a-storm-topology"></a>Használjon Data Lake Store a Storm-topológia
 A Data Lake Store az adatok írása a Storm-topológia a használhatja. Ez a forgatókönyv megvalósítható utasításokért lásd: [használata Azure Data Lake Store a HDInsight alatt futó Apache Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Használjon Data Lake Store az Azure HDInsight-fürtök](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [PowerShell: Data Lake Store használatára HDInsight-fürtök létrehozása](data-lake-store-hdinsight-hadoop-use-powershell.md)
 

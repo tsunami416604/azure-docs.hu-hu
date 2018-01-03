@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/27/2017
+ms.date: 12/20/2017
 ms.author: pullabhk;markgal
-ms.openlocfilehash: 46cc2737c23b02c6542320e355607f83042bd058
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2750b652b7de3c7a41ac5712071999c97d435db
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gép biztonsági mentése
 
@@ -70,40 +70,7 @@ Fájlok és mappák visszaállítása a visszaállítási pontról, nyissa meg a
 
    A Linux a parancsfájl működéséhez a "Megnyitás-iscsi" és "lshw" összetevőt, a helyreállítási ponthoz való csatlakozáshoz. Az összetevők nem létezik a számítógépen, ahol a parancsfájl futtatása, ha a parancsprogram kéri, az összetevők telepítését. Adja meg a hozzájárulási a szükséges összetevők telepítéséhez.  
          
-   A parancsfájl minden számítógépen, amelyre a biztonsági másolat virtuális géppel azonos (vagy kompatibilis) operációs rendszer futtatható. Tekintse meg a [kompatibilis operációs rendszer tábla](backup-azure-restore-files-from-vm.md#compatible-os) kompatibilis operációs rendszerekhez. Ha védett virtuális gépet az Azure Windows tárolóhelyek (a Windows Azure virtuális gépeken) vagy LVM/RAID Arrays(for Linux VMs) használ, a végrehajtható fájl vagy parancsfájl nem futtatható az azonos virtuális gépen. Ehelyett futtassa a végrehajtható fájl vagy parancsfájl egy kompatibilis operációs rendszer bármelyik olyan gépen.
-
-### <a name="compatible-os"></a>Kompatibilis operációs rendszer
-
-#### <a name="for-windows"></a>Windows rendszerhez
-
-Az alábbi táblázat a kiszolgálóhoz és számítógépes operációs rendszerek közötti kompatibilitást. Ha a fájlok helyreállítása nem állítható vissza fájlok egy korábbi vagy későbbi operációs rendszer verziója. Például nem állíthatók vissza a fájlt egy Windows Server 2016 virtuális gép Windows Server 2012 vagy Windows 8-as számítógépen. Fájlok állíthatja vissza a virtuális gépek azonos kiszolgálói operációs rendszer, illetve a kompatibilis ügyfél operációs rendszerét.   
-
-|Kiszolgáló OS | Kompatibilis ügyfél OS  |
-| --------------- | ---- |
-| Windows Server 2016    | Windows 10 |
-| Windows Server 2012 R2 | Windows 8.1 |
-| Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
-
-#### <a name="for-linux"></a>A Linux rendszerhez
-
-A Linux az operációs rendszer, a fájlok visszaállítására használt számítógép támogatnia kell a fájlrendszer a védett virtuális gépek. Lehetőséget választva a parancsfájl futtatásához a számítógépen, győződjön meg arról, a számítógép egy kompatibilis operációs rendszer, és használja az alábbi táblázatban azonosított verziók egyikét:
-
-|A Linux operációs rendszer | Verziók  |
-| --------------- | ---- |
-| Ubuntu | 12.04 vagy újabb verzió |
-| CentOS | 6.5-ös vagy újabb verzió  |
-| RHEL | 6.7 vagy újabb verzió |
-| Debian | 7 vagy újabb verzió |
-| Oracle Linux | 6.4 vagy újabb verzió |
-
-A parancsfájl a Python és bash összetevők hajtható végre, és a helyreállítási pont biztonságos kapcsolódás is szükséges.
-
-|Összetevő | Verzió  |
-| --------------- | ---- |
-| Bash | 4 vagy újabb verzió |
-| python | 2.6.6 vagy újabb verzió  |
-
+   A parancsfájl minden számítógépen, amelyre a biztonsági másolat virtuális géppel azonos (vagy kompatibilis) operációs rendszer futtatható. Tekintse meg a [kompatibilis operációs rendszer tábla](backup-azure-restore-files-from-vm.md#system-requirements) kompatibilis operációs rendszerekhez. Ha védett virtuális gépet az Azure Windows tárolóhelyek (a Windows Azure virtuális gépeken) vagy LVM/RAID-tömböket (a Linux virtuális gépek) használ, a végrehajtható fájl vagy parancsfájl nem futtatható az azonos virtuális gépen. Ehelyett futtassa a végrehajtható fájl vagy parancsfájl egy kompatibilis operációs rendszer bármelyik olyan gépen.
 
 ### <a name="identifying-volumes"></a>Kötetek azonosítása
 
@@ -192,6 +159,41 @@ $ mount [RAID Disk Path] [/mountpath]
 ```
 
 Ha a RAID-lemez van konfigurálva azt egy másik LVM, majd a fenti eljárással LVM partíciók, de használja a kötet neve helyett a RAID-lemez neve
+
+## <a name="system-requirements"></a>Rendszerkövetelmények
+
+### <a name="for-windows"></a>Windows rendszerhez
+
+Az alábbi táblázat a kiszolgálóhoz és számítógépes operációs rendszerek közötti kompatibilitást. Ha a fájlok helyreállítása nem állítható vissza fájlok egy korábbi vagy későbbi operációs rendszer verziója. Például nem állítható vissza egy fájlt egy Windows Server 2016 virtuális gépről a Windows Server 2012 vagy a Windows 8 rendszerű számítógép. Fájlok állíthatja vissza a virtuális gépek azonos kiszolgálói operációs rendszer, illetve a kompatibilis ügyfél operációs rendszerét.   
+
+|Kiszolgáló OS | Kompatibilis ügyfél OS  |
+| --------------- | ---- |
+| Windows Server 2016    | Windows 10 |
+| Windows Server 2012 R2 | Windows 8.1 |
+| Windows Server 2012    | Windows 8  |
+| Windows Server 2008 R2 | Windows 7   |
+
+### <a name="for-linux"></a>A Linux rendszerhez
+
+A Linux az operációs rendszer, a fájlok visszaállítására használt számítógép támogatnia kell a fájlrendszer a védett virtuális gépek. Lehetőséget választva a parancsfájl futtatásához a számítógépen, győződjön meg arról, a számítógép egy kompatibilis operációs rendszer, és használja az alábbi táblázatban azonosított verziók egyikét:
+
+|Linux operációs rendszer | Verziók  |
+| --------------- | ---- |
+| Ubuntu | 12.04 vagy újabb verzió |
+| CentOS | 6.5-ös vagy újabb verzió  |
+| RHEL | 6.7 vagy újabb verzió |
+| Debian | 7 vagy újabb verzió |
+| Oracle Linux | 6.4 vagy újabb verzió |
+| SLES | 12 vagy újabb verzió |
+| openSUSE | 42.2 vagy újabb verzió |
+
+A parancsfájl a Python és bash összetevők hajtható végre, és a helyreállítási pont biztonságos kapcsolódás is szükséges.
+
+|Összetevő | Verzió  |
+| --------------- | ---- |
+| Bash | 4 vagy újabb verzió |
+| python | 2.6.6 vagy újabb verzió  |
+| TLS | 1.2 támogatnia kell  |
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

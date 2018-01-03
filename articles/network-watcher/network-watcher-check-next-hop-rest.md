@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: b541cd5cb7e49468af2c522b16c3a3b9fe75fd54
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-aure-network-watcher-using-azure-rest-api"></a>Megtudhatja, milyen a következő ugrás típusa a következő ugrás funkció használ, amely a következőkre hálózati figyelőt Azure REST API használatával
 
@@ -127,7 +127,7 @@ Az alábbiakban az eredmények json formátumban.
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha rendelkezik-e el a következő ugrás a virtuális gép találja, megtekintheti látogasson el a hálózati erőforrások biztonságának [biztonsági nézettel áttekintése](network-watcher-security-group-view-overview.md)
 

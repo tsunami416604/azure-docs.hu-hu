@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ebfe23ea1e07e7578e8bd352a482ecb1016829de
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Megbízható életciklusának áttekintése
 > [!div class="op_single_selector"]
@@ -130,7 +130,7 @@ A kivételek használatát érkező kezelése a `ReliableCollections` szolgálta
   - Bár ezek a módszerek visszatérése van nem korlátozott, azonnal elveszíti a megbízható gyűjteményekre írjanak, és ezért nem tudja végrehajtani a valódi munkát. Azt javasoljuk, hogy a visszavonási kérelem fogadása után a lehető leggyorsabban vissza. Ha a szolgáltatás nem válaszol az adott API-hívások elfogadható időn belül, a Service Fabric kényszerített is leáll a szolgáltatás. Általában ez csak akkor fordul elő alkalmazásfrissítések vagy egy szolgáltatás törlésekor során. Ez az időkorlát értéke alapértelmezés szerint 15 percenként.
   - Hibák a `OnCloseAsync()` elérési eredményez `OnAbort()` meghívott, amelyek az egy utolsó-alkalommal legjobb lehetőség a szolgáltatás karbantartása, és felszabadíthatja a minden olyan erőforrásnál, amely azt állítják.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Bevezetés a Reliable Services használatába](service-fabric-reliable-services-introduction.md)
 - [Megbízható szolgáltatások – első lépések](service-fabric-reliable-services-quick-start.md)
 - [Megbízható szolgáltatás használati speciális](service-fabric-reliable-services-advanced-usage.md)

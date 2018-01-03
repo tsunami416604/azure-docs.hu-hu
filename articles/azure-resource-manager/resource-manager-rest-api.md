@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 01/13/2017
 ms.author: navale;tomfitz;
 ms.openlocfilehash: 2f7ba23775545637de865f9ef63680ae22c62164
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="resource-manager-rest-apis"></a>Erőforrás-kezelői REST API-k
 > [!div class="op_single_selector"]
 > * [Azure PowerShell](powershell-azure-resource-manager.md)
 > * [Azure CLI](xplat-cli-azure-resource-manager.md)
-> * [Portál](resource-group-portal.md) 
+> * [Portal](resource-group-portal.md) 
 > * [REST API](resource-manager-rest-api.md)
 > 
 > 
@@ -33,7 +33,7 @@ Minden hívás az Azure Resource Manager mögött minden telepített sablon mög
 
 Ez a cikk nem lép az Azure-ban van közzétéve, de ahelyett, hogy használja az egyes műveletek példa arra, hogyan csatlakozhat őket minden API-n keresztül. Az alapok elsajátítása után áttekintheti a [Azure Resource Manager REST API-referencia](https://docs.microsoft.com/rest/api/resources/) a rest API-k használatával kapcsolatos részletes információk.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 Hitelesítés az erőforrás-kezelő által Azure Active Directory (AD) kell kezelni. Ha csatlakozni szeretne API-k, először egy hitelesítési jogkivonatot, amely lehet átadni kérelmek fogadásához az Azure AD szolgáltatással való hitelesítésre. Vannak leíró, azt egy tiszta hívása közvetlenül a REST API-k, mivel feltételezzük, hogy nem kívánja elvégezni a hitelesítést meg kell adni egy felhasználónevet és jelszót. Azt is feltételezzük, hogy nem használ két többtényezős hitelesítési mechanizmus. Ezért létrehozhatunk úgynevezett az Azure AD-alkalmazások és a szolgáltatás egyszerű használt a bejelentkezéshez. De ne feledje, hogy az Azure AD támogatja a több hitelesítési eljárás, és ezek a További kérelmeknél API szükséges hitelesítési jogkivonat beolvasása használható.
 Hajtsa végre a [létrehozása Azure AD-alkalmazást és egy egyszerű szolgáltatást](resource-group-create-service-principal-portal.md) részletes útmutatást.
 
@@ -249,6 +249,6 @@ Content-Type: application/json
 
 A hosszú JSON-választ a kérelemhez tartozó kimaradt a jelen dokumentáció olvashatóság javítása érdekében. A válasz, amelyet hozott létre sablonalapú üzembe helyezésével kapcsolatos információkat tartalmaz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Aszinkron REST műveleteinek kezelésére vonatkozó további tudnivalókért lásd: [nyomon követheti a aszinkron Azure műveleteket](resource-manager-async-operations.md).

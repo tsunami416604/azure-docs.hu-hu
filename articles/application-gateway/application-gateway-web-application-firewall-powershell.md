@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: davidmu
 ms.openlocfilehash: e8106805d21b325e33fb3ab376db75cd783b9042
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway"></a>Webalkalmazási tűzfal egy új vagy meglévő Alkalmazásátjáró konfigurálása
 
@@ -230,7 +230,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Diagnosztikai naplózás jelentkezzen az eseményeket, és megakadályozta egy WAF konfigurálásával kapcsolatban lásd: [Alkalmazásátjáró diagnosztika](application-gateway-diagnostics.md).
 

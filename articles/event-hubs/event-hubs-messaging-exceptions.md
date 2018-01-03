@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 1a5922506a0db4277b205ba3390c9c30034c177d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 964475ba8b42ac41707fa78468bfe551677c595f
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Az Event Hubs üzenetküldési kivételei
-Ez a cikk az Azure Service Bus API-k, többek között az Event Hubs üzenetküldési által létrehozott kivételek mutatja be. Ez a hivatkozás változhat, így biztonsági frissítések keresése.
+
+Ez a cikk egy Azure Service Bus üzenetküldési API könyvtár által létrehozott kivételek, többek között Event Hubs API-k sorolja fel. Ez a hivatkozás változhat, így biztonsági frissítések keresése.
 
 ## <a name="exception-categories"></a>Kivétel kategóriák
+
 Az Event Hubs API-kat hoz létre a kivételeket, amelyek a következő kategóriákba, amelyekkel javító őket a társított művelet együtt tartalék is.
 
 1. Kódolási hiba felhasználói: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [ System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Általános művelet: javító a kódot, a folytatás előtt.
@@ -78,20 +80,20 @@ A [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.ser
 
 Ez a hiba akkor fordulhat elő, két okai:
 
-1. A az Eseményközpont összes partíciójára nem egyenletesen vannak elosztva a terhelés, és egy partíciót találatok a helyi átviteli egység korlátozás.
+1. A az eseményközpont összes partíciójára nem egyenletesen vannak elosztva a terhelés, és egy partíciót találatok a helyi átviteli egység korlátozás.
     
     Megoldás: A partíció terjesztési stratégia módosítása, vagy próbálja meg elérni [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) segítséget.
 
-2. Az Event Hubs névtér nem rendelkezik elegendő átviteli egységek (ellenőrizheti a **metrikák** az Event Hubs névtér panelen a panel a [Azure-portálon](https://portal.azure.com) megerősítéséhez). Fontos megjegyezni, hogy a portál összesített (1 perc) kapcsolatos adatokat jeleníti meg, hogy csak egy becsült mérjük a valós idejű – átviteli sebesség.
+2. Az Event Hubs névtér nem rendelkezik elegendő átviteli egységek (ellenőrizheti a **metrikák** hubok névtér ablakában a képernyőn a [Azure-portálon](https://portal.azure.com) megerősítéséhez). Fontos megjegyezni, hogy a portál összesített (1 perc) kapcsolatos adatokat jeleníti meg, hogy csak egy becsült mérjük a valós idejű – átviteli sebesség.
 
-    Megoldás: Az átviteli egységeket a névtér növelése segítségével. Ehhez a portálon, a a **méretezési** panel az Event Hubs névtér panelen.
+    Megoldás: Az átviteli egységeket a névtér növelése segítségével. Ehhez a portálon, a a **méretezési** ablakot, az Event Hubs névtér képernyő.
 
 ### <a name="error-code-50001"></a>50001. Hibakód:
 
 Ez a hiba a kell ritkán fordul elő. Akkor történik, ha a névtér kód futtatásával tárolója processzor alacsony – megkezdése előtt az Event Hubs terheléselosztó legfeljebb néhány másodpercen belül.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)

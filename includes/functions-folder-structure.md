@@ -1,5 +1,5 @@
 
-A kódot az összes, egy adott funkció alkalmazást a funkciókat él, az állomás konfigurációs fájlt tartalmazó legfelső szintű mappa és egy vagy több almappáiban, amelyek tartalmazzák a kód egy külön függvény, az alábbi példában látható módon:
+A kód egy adott funkció alkalmazás összes funkciójának egy állomás konfigurációs fájlja a gyökérmappa és egy vagy több almappában található. Minden egyes tartalmazza, a kódot egy külön függvény, az alábbi példában látható módon:
 
 ```
 wwwroot
@@ -15,7 +15,7 @@ wwwroot
  | | - run.csx
 ```
 
-A *host.json* tartalmaz néhány futásidejű konfigurációs fájl- és a gyökérmappában található, a függvény alkalmazás helyezkedik el. A rendelkezésre álló beállítások információkért lásd: [host.json hivatkozás](../articles/azure-functions/functions-host-json.md).
+Host.json néhány futásidejű-specifikus konfigurációk tartalmazza, ezért a gyökérmappában található, a függvény alkalmazás helyezkedik el. Rendelkezésre álló beállításokkal kapcsolatos további információkért lásd: a [host.json hivatkozás](../articles/azure-functions/functions-host-json.md).
 
-Minden egyes függvény rendelkezik egy vagy több kódfájlok, a function.json konfigurációs és egyéb függőségek tartalmazó mappát.
+Minden egyes függvény rendelkezik egy vagy több kód fájlok, a function.json konfigurációs és egyéb függőségek tartalmazó mappát.
 

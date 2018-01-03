@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/11/2017
 ms.author: nitinme
 ms.openlocfilehash: 48990c57fb10127733623000a105507b5a48d900
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-python"></a>Végfelhasználói hitelesítési a Data Lake Store pythonos környezetekben
 > [!div class="op_single_selector"]
@@ -116,7 +116,7 @@ Ezzel a fájlrendszer-műveleteket a Data Lake Store-fiók Azure ad-val való hi
 
 Ez elavult. További információkért lásd: [hitelesítés Azure Python SDK](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python#mgmt-auth-token).
    
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta végfelhasználói hitelesítés használata az Azure Data Lake Store való hitelesítéshez szükséges Python használatával. Most már megtekintheti a következő cikkekben használatáról Python működéséhez az Azure Data Lake Store kommunikálhatnak.
 
 * [Fiókkezelési műveletekhez a Data Lake Store pythonos környezetekben](data-lake-store-get-started-python.md)

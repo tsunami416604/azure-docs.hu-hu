@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 12/13/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: a1682ef88760da39d33fac2cc9f34e0e66ea19fb
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 40c0bfe913e1396194de00cf6fa1d1ff823b1d0e
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-table-api"></a>Hogyan lehet beállítani az Azure Cosmos DB globális terjesztési tábla API használatával
 
@@ -35,27 +35,21 @@ Ez a cikk ismerteti a következő feladatokat:
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>A preferált régió tábla API használatával csatlakozik
 
-Kihasználása érdekében [globális terjesztési](distribute-data-globally.md), ügyfélalkalmazások is adja meg a dokumentum műveletek végrehajtásához használandó régiók rendezett beállítások listáját. Ezt megteheti úgy, hogy a `TablePreferredLocations` konfigurációs érték az az App.config fájlban, az Azure Cosmos DB tábla API SDK-ban. Az Azure Cosmos DB tábla API SDK válasszon fog kommunikálni a legjobb végpont a fiók konfigurációjának, aktuális területi rendelkezésre állás és a megadott beállítások listája alapján.
+Kihasználása érdekében [globális terjesztési](distribute-data-globally.md), ügyfélalkalmazások is adja meg a dokumentum műveletek végrehajtásához használandó régiók rendezett beállítások listáját. Ezt megteheti úgy, hogy a [TableConnectionPolicy.PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.table.tableconnectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_CosmosDB_Table_TableConnectionPolicy_PreferredLocations) tulajdonság. Az Azure Cosmos DB tábla API SDK kommunikálni a legjobb végpont választja, a fiók konfigurációjának, aktuális területi rendelkezésre állás és a megadott beállítások listája alapján.
 
-A `TablePreferredLocations` olvasása előnyben részesített (többhelyű) helyek vesszővel tagolt listáját kell tartalmaznia. Minden ügyfél példány e régiók részhalmazát megadhat kis késleltetésű olvasása csatlakozási kísérleteinek kívánt sorrendjét. A régiók névvel kell ellátni használatával a [megjelenített neveket](https://msdn.microsoft.com/library/azure/gg441293.aspx), például `West US`.
+A PreferredLocations olvasása tartalmaznia kell egy előnyben részesített (többhelyű) helyek vesszővel tagolt listája. Minden ügyfél példány e régiók részhalmazát megadhat kis késleltetésű olvasása csatlakozási kísérleteinek kívánt sorrendjét. A régiók névvel kell ellátni használatával a [megjelenített neveket](https://msdn.microsoft.com/library/azure/gg441293.aspx), például `West US`.
 
-Az első rendelkezésre álló terület küldött összes írási a `TablePreferredLocations` listája. A kérés nem teljesíthető, ha az ügyfél lefelé a listában, a következő régióban sikertelen, és így tovább.
+Minden olvasási műveletek kerülnek a PreferredLocations lista első rendelkezésre álló terület. A kérés nem teljesíthető, ha az ügyfél lefelé a listában, a következő régióban sikertelen, és így tovább.
 
-Az SDK próbál olvasni a megadott régiók `TablePreferredLocations`. Igen, például ha az adatbázis-fiókot a három régióban, de az ügyfél csak meghatározza a nem írási területek két `TablePreferredLocations`, akkor nincs olvasási szolgáltató kívül az írási régió, feladatátvétel esetén is.
+Az SDK megpróbálja beolvasni a régiók megadott PreferredLocations. Igen például ha az adatbázis-fiókot a három régióban, de az ügyfél csak meghatározza a nem írási régiók két PreferredLocations, majd nincs olvasási szolgáltató kívül az írási régió, feladatátvétel esetén is.
 
-Az SDK automatikusan elküld minden írási műveleteket ad ki az aktuális írási régió.
+Az SDK automatikusan elküldi az összes írási műveletek aktuális írási terület.
 
-Ha a `TablePreferredLocations` tulajdonság nincs beállítva, az összes kérelem szolgáltató aktuális írási régióban.
-
-```xml
-    <appSettings>
-      <add key="TablePreferredLocations" value="East US, West US, North Europe"/>           
-    </appSettings>
-```
+A PreferredLocations tulajdonsága nincs beállítva, ha minden kérésnél szolgáltató aktuális írási régióban.
 
 Ez azt, hogy ez az oktatóanyag befejezése. Megismerheti a globális replikált fiókja konzisztencia kezeléséhez olvasásával [Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md). És hogyan globális adatbázis-replikációval kapcsolatos további információk az Azure Cosmos Adatbázisba működik, a következő témakörben: [adatok globálisan Azure Cosmos DB terjesztése](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban ezt a következők:
 

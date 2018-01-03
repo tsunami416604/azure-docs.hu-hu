@@ -16,10 +16,10 @@ ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
 ms.openlocfilehash: a1a0679b91304df5cbc3dcaec14abfeaaa25c04f
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Oktatóanyag: Felépítheti első folyamatát átalakítására adatok Hadoop-fürt használatával
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Ebben az oktatóanyagban a első Azure data factory és olyan adatokat hoz létr
 Ez a cikk áttekintése és az oktatóanyag előfeltételei tartalmazza. Miután elvégezte az előfeltételeket, az oktatóanyag a következő eszközök/SDK-k egyikével teheti: Azure-portálon, a Visual Studio, a PowerShell, a Resource Manager-sablon, a REST API-t. Válassza ki a legördülő lista elején (vagy) az oktatóanyag segítségével ezen beállítások valamelyikét kell tennie a cikk végén hivatkozások a lehetőségek közül.    
 
 ## <a name="tutorial-overview"></a>Az oktatóanyag áttekintése
-Ebben az oktatóanyagban hajtsa végre a következő lépéseket:
+Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 1. Hozzon létre egy **adat-előállító**. Egy adat-előállító tartalmazhat egy vagy több, helyezze át, és az adatok átalakítása adatok folyamatok. 
 

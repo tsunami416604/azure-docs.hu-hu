@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
 ms.openlocfilehash: 2f1793c2de2b68a8b155ada73044c6bc36882612
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>HDInsight-fürtök létrehozásához a Data Lake Store alapértelmezett tárolóként PowerShell használatával
 > [!div class="op_single_selector"]
@@ -249,7 +249,7 @@ Miután végzett a kapcsolatot, a Data Lake Store található fájlok listázás
 
 Használhatja a `hdfs dfs -put` parancs egyes fájlok feltöltése a Data Lake Store-ba, és ezután `hdfs dfs -ls` ellenőrzése, hogy a fájlok sikeresen feltöltve.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Használjon Data Lake Store az Azure HDInsight-fürtök](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [Azure-portálon: Data Lake Store használatára HDInsight-fürtök létrehozása](data-lake-store-hdinsight-hadoop-use-portal.md)
 

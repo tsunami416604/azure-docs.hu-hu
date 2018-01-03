@@ -16,10 +16,10 @@ ms.date: 03/19/2017
 ms.author: kraigb
 ms.custom: aaddev
 ms.openlocfilehash: 3d510c193ab8c7e65340275017cb2dcd4c76def0
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="get-started-with-azure-active-directory-and-visual-studio-connected-services-webapi-projects"></a>Get Started with Azure Active Directory és a Visual Studio kapcsolódó szolgáltatások (WebApi projektek)
 > [!div class="op_single_selector"]
@@ -31,6 +31,6 @@ ms.lasthandoff: 12/18/2017
 ## <a name="requiring-authentication-to-access-controllers"></a>Hozzáférés-vezérlők hitelesítést igénylő
 A projekt lévő összes rendelkező volt adorned a **engedélyezés** attribútum. Ez az attribútum a felhasználónak hitelesíteni az API-kat, ezek a tartományvezérlők által meghatározott elérése előtt. Ahhoz, hogy a tartományvezérlőt a névtelenül elérhető, távolítsa el ezt az attribútumot a vezérlő. Ha szeretne egy részletesebb szinten adja meg az engedélyeket, az attribútumot minden módszer, amely helyett telepítené azt a vezérlő osztályhoz engedélyezési alkalmazza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További tudnivalók az Azure Active Directoryban](https://azure.microsoft.com/services/active-directory/)
 

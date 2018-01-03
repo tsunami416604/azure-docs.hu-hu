@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: danlep
 ms.openlocfilehash: 66837a3a153cda041f5351c52c8ccb1f8ccfea50
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Az SSH kulcsok a Windows Azure-on
 > [!div class="op_single_selector"]
@@ -177,7 +177,7 @@ A PuTTY újra, a gyakori SSH-ügyfél Windows. Szabadon bármely SSH-ügyfél, a
     ![Válassza ki a PuTTY titkos kulcsot a hitelesítéshez](./media/ssh-from-windows/putty-auth-dialog.png)
 4. Kattintson a **nyitott** a virtuális géphez való kapcsolódáshoz
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A nyilvános és titkos kulcsokat is létrehozhat [OS X-és Linux](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 További információ a Bash a Windows és a Windows-számítógépen OSS eszközöket járó előnyöket: [Windows Ubuntu a Bash](https://msdn.microsoft.com/commandline/wsl/about).

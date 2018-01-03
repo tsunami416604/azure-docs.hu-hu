@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 91b2f16611b88aa4b9395ca301d88042065ad9dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a283d8772e48aa6671d88288c2083d891a220d5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>A logic apps vállalati integrációs Exchange AS2-üzenetek
 
@@ -45,7 +45,7 @@ Miután [integrációs-fiók létrehozása](../logic-apps/logic-apps-enterprise-
     > [!TIP]
     > Ha nem lát **további szolgáltatások**, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **megjelenítése menü**.
 
-    ![További szolgáltatásokat, szűrőt a "integrációt", "Integrációs fiókok" kiválasztása](./media/logic-apps-enterprise-integration-agreements/overview-1.png)
+    ![További szolgáltatásokat, szűrőt a "integrációt", "Integrációs fiókok" kiválasztása](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
 3. Az a **integrációs fiókok** panelt megnyitó, válassza ki az integráció fiókra, amelyhez a szerződést létrehozásához.
 Ha nem lát minden integrációs fiókok [hozzon létre egyet első](../logic-apps/logic-apps-enterprise-integration-accounts.md "integrációs fiókokkal kapcsolatos összes").  
@@ -54,19 +54,19 @@ Ha nem lát minden integrációs fiókok [hozzon létre egyet első](../logic-ap
 
 4. Válassza ki a **megállapodások** csempére. Ha egy megállapodások csempe nem rendelkezik, először vegye fel a csempe.
 
-    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
 5. Szerződések paneljén válassza **Hozzáadás**.
 
-    ![Válassza a "Hozzáadás"](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
+    ![Válassza a "Hozzáadás"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
 
 6. A **Hozzáadás**, adjon meg egy **neve** a szerződés. A **szerződés típusának**, jelölje be **AS2**. Válassza ki a **fogadó Partner**, **gazdagép identitását**, **Vendég Partner**, és **Vendég identitás** a szerződés.
 
-    ![Adja meg a szerződés részletei](./media/logic-apps-enterprise-integration-agreements/agreement-3.png)  
+    ![Adja meg a szerződés részletei](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
     | Tulajdonság | Leírás |
     | --- | --- |
-    | Név |A szerződés nevét |
+    | Name (Név) |A szerződés nevét |
     | A szerződés típusa | AS2 kell lennie. |
     | Fogadó Partner |Egy szerződést kell a gazdagép és a Vendég partner. A fogadó partner szervezet, amely beállítja a szerződés jelöli. |
     | Gazdagép identitását |A fogadó partner azonosítója |
@@ -82,7 +82,7 @@ Most, hogy a szerződés tulajdonságok beállítása, beállíthatja a módját
 1.  A **Hozzáadás**, jelölje be **fogadási beállítások**.
 Állítsa be ezeket a tulajdonságokat a partnerrel, amely az üzenetek Önnel a szerződés alapján. Tulajdonságleírások lásd: a tábla ebben a szakaszban.
 
-    ![Konfigurálja a "Kapják meg a beállításokat"](./media/logic-apps-enterprise-integration-agreements/agreement-4.png)
+    ![Konfigurálja a "Kapják meg a beállításokat"](./media/logic-apps-enterprise-integration-as2/agreement-4.png)
 
 2. Szükség esetén felülírják a bejövő üzenetek tulajdonságainak kiválasztásával **bírálja felül az üzenet tulajdonságai**.
 
@@ -105,15 +105,15 @@ Most már a szerződés készen áll a bejövő üzenetek, amelyek megfelelnek a
 | Tulajdonság | Leírás |
 | --- | --- |
 | Bírálja felül az üzenet tulajdonságai |Azt jelzi, hogy a Beérkezett üzenetek tulajdonságok bírálható felül. |
-| Az üzenetet alá kell írni |Szükséges az üzenetek digitális aláírását. Állítsa be a Vendég partner nyilvános tanúsítványt aláírás-ellenőrzésre.  |
-| Az üzenetnek titkosítottnak kell lennie |Az üzenetek titkosításához szükséges. A nem titkosított üzenetek utasítja el. A gazdagép partner személyes tanúsítvány konfigurálása az üzenetek visszafejtésére.  |
-| Az üzenetnek tömörítettnek kell lennie |Üzenetek tömöríthetők igényel. Nem-tömörített üzenetek utasítja el. |
+| Üzenet alá kell írni |Szükséges az üzenetek digitális aláírását. Állítsa be a Vendég partner nyilvános tanúsítványt aláírás-ellenőrzésre.  |
+| Titkosítani kell-üzenet |Az üzenetek titkosításához szükséges. A nem titkosított üzenetek utasítja el. A gazdagép partner személyes tanúsítvány konfigurálása az üzenetek visszafejtésére.  |
+| Üzenet kell tömöríthetők. |Üzenetek tömöríthetők igényel. Nem-tömörített üzenetek utasítja el. |
 | MDN szöveg |Az alapértelmezett üzenet törlése értesítés (MDN) az üzenet küldője küldendő. |
 | MDN küldése |Küldendő MDNs igényel. |
 | Aláírt MDN küldése |Szükséges MDNs kell aláírni. |
 | MIC algoritmus |Válassza ki az üzenetek aláírására használt algoritmust. |
 | Aszinkron MDN küldése | Üzenetek küldését aszinkron módon van szükség. |
-| URL-CÍME | Adja meg, hova küldje a MDNs URL-CÍMÉT. |
+| URL-cím | Adja meg, hova küldje a MDNs URL-CÍMÉT. |
 
 ## <a name="configure-how-your-agreement-sends-messages"></a>Hogyan a szerződés küld üzeneteket konfigurálása
 
@@ -122,7 +122,7 @@ Beállíthatja, hogyan a jelen szerződés azonosítja, és a partnerek számár
 1.  A **Hozzáadás**, jelölje be **küldési beállítások**.
 Állítsa be ezeket a tulajdonságokat a partnerrel, amely az üzenetek Önnel a szerződés alapján. Tulajdonságleírások lásd: a tábla ebben a szakaszban.
 
-    ![A "Küldési beállítások" tulajdonságainak beállítása](./media/logic-apps-enterprise-integration-agreements/agreement-51.png)
+    ![A "Küldési beállítások" tulajdonságainak beállítása](./media/logic-apps-enterprise-integration-as2/agreement-51.png)
 
 2. Aláírt üzeneteket küldhet partnere, válassza ki a **üzenet aláírása engedélyezése**. Az üzenetek aláírására a a **MIC algoritmus** listáról válassza ki a *állomás partner személyes tanúsítvány MIC algoritmus*. A a **tanúsítvány** listára, válassza ki egy meglévő [állomás partner személyes tanúsítvány](../logic-apps/logic-apps-enterprise-integration-certificates.md).
 
@@ -160,9 +160,9 @@ Most már a szerződés készen áll a kimenő üzenetek, amelyek megfelelnek a 
 | Kérelem MDN |A jelen szerződés küldött összes üzenet egy MDN igényel. |
 | Aláírt MDN kérése |Ez a szerződés aláírt küldött összes MDNs igényel. |
 | Aszinkron MDN kérése |Ez a szerződés küldendő aszinkron MDNs igényel. |
-| URL-CÍME |Adja meg, hova küldje a MDNs URL-CÍMÉT. |
+| URL-cím |Adja meg, hova küldje a MDNs URL-CÍMÉT. |
 | NRR engedélyezése |Nem megtagadás átvételének (NRR), egy kommunikációs attribútumot, amelyet bizonyítékait is igényel, amely a adatokat fogadta a program, mert a címzett. |
-| 2 algoritmust formátumban |Válassza ki a MIC vagy az AS2 üzenetet vagy MDN kimenő fejlécébe aláírási algoritmus formátumát |
+| SHA2-algoritmus formátuma |Válassza ki a MIC vagy az AS2 üzenetet vagy MDN kimenő fejlécébe aláírási algoritmus formátumát |
 
 ## <a name="find-your-created-agreement"></a>A létrehozott megállapodás keresése
 
@@ -172,10 +172,10 @@ Most már a szerződés készen áll a kimenő üzenetek, amelyek megfelelnek a 
 
 2.  Az integrációs fiókok áttekintése is megtekintheti a szerződéseket. Az integráció-fiók panelen válassza **áttekintése**, majd jelölje be a **megállapodások** csempére. 
 
-    ![Válassza a minden szerződés megtekintéséhez egymás "Szerződés"](./media/logic-apps-enterprise-integration-agreements/agreement-6.png)
+    ![Válassza a minden szerződés megtekintéséhez egymás "Szerződés"](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
 
 ## <a name="view-the-swagger"></a>A swagger megtekintése
 Tekintse meg a [részletek swagger](/connectors/as2/). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További tudnivalók a vállalati integrációs csomag](logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag")  

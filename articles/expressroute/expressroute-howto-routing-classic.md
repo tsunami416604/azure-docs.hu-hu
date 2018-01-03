@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 ms.openlocfilehash: 37713db70f3ae837edafc997b78b16b121d0a885
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Létrehozásához és módosításához (klasszikus) ExpressRoute-kör társviszony
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Ez a cikk végigvezeti a létrehozása és kezelése a PowerShell és a klasszik
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
-**Tudnivalók az Azure üzembehelyezési modellekről**
+**Tudnivalók az Azure üzembe helyezési modelljeiről**
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
@@ -326,7 +326,7 @@ A társviszony-létesítés konfigurációját a következő parancsmag futtatá
 
     Remove-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezt követően [egy virtuális hálózat csatolása ExpressRoute-kapcsolatcsoportot](expressroute-howto-linkvnet-classic.md).
 
 * Munkafolyamatokkal kapcsolatos további információkért lásd: [ExpressRoute-munkafolyamatokat](expressroute-workflows.md).

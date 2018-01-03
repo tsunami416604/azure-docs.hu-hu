@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
 ms.openlocfilehash: 67aa5bb122b277e998119506bb2a574d6b4fde5e
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="install-the-azure-cli-10"></a>Az Azure parancssori felület 1.0-s telepítése
 > [!div class="op_single_selector"]
@@ -128,7 +128,7 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Csatlakoztassa a CLI Azure-előfizetése](/cli/azure/authenticate-azure-cli) létrehozásához és kezeléséhez az Azure-erőforrások.
 * További tudnivalók az Azure parancssori felület, letöltési forráskódját, kapcsolatos problémákat, vagy a projekt hozzájárul, látogasson el a [az Azure parancssori felület GitHub-tárházban](https://github.com/azure/azure-xplat-cli).
 * Ha az Azure parancssori felület, vagy az Azure használatával kapcsolatos kérdésekre, keresse fel a [Azure fórumok](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).

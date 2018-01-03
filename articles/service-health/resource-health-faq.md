@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/05/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 794117b6f383bdd1851681864e99b3c1ef077f86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 692d03ad80989a969a73b15bb9042a01c286d1ec
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-resource-health-faq"></a>Az Azure Resource Health – gyakori kérdések
 További tudnivalók az Azure Resource Health kapcsolatos gyakori kérdésekre adott válaszok.
@@ -80,8 +80,6 @@ Erőforrás állapota érhető el az összes Azure geos, kivéve az alábbi ter�
 - US DoD – Középső régió
 - Közép-Németország
 - Északkelet-Németország
-- Kelet-Kína
-- Észak-Kína
 
 ## <a name="how-is-resource-health-different-from-the-service-health-dashboard-or-the-azure-portal-service-notifications"></a>Miben különbözik erőforrás állapota az állapotjelző irányítópulton vagy az Azure portál szolgáltatás értesítéseket?
 A Resource Health által biztosított információk is pontosabb, mint mi az Azure az állapotjelző irányítópulthoz által biztosított.
@@ -102,7 +100,7 @@ Igen.  Az Azure Resource Health ingyenesen elérhető.
 ## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Mik a javaslatok, amely erőforrás állapota?
 Az állapot alapján, erőforrás állapota nyújt javaslatokat azzal a céllal, idejének csökkentése hibaelhárítási felhasznált. A rendelkezésre álló erőforrások a javaslatok fókusz a leggyakoribb problémák ügyfelek megoldására tapasztal. Ha az erőforrás nem érhető el az Azure nem tervezett esemény miatt, a fókusz segít alatt és a helyreállítási folyamat után lesz. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók az erőforrás állapota:
 -  [Az Azure Resource Health áttekintése](Resource-health-overview.md)

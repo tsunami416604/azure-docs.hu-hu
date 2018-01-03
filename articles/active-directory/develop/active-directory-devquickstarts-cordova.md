@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: vittorib
 ms.custom: aaddev
-ms.openlocfilehash: eceeccc0d6225613fdd75a92b894290665168fc6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b489add83a462d1d3902831d63be0b70e2443718
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-with-an-apache-cordova-app"></a>Azure AD integrálása az Apache Cordova-alkalmazás
+# <a name="azure-ad-cordova-getting-started"></a>Ismerkedés az Azure AD Cordova
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -82,7 +82,7 @@ Minden érintett rendszerek különböző előfeltételei:
   Az Android SDK bármely alapértelmezett emulátor példány nem biztosít. Futtatásával `android avd` a terminálból majd **létrehozása**, ha azt szeretné, hogy az emulátor az Android-alkalmazás futtatásához. Azt javasoljuk, hogy egy API-szintet 19 vagy magasabb. Android emulator és létrehozásának beállításokkal kapcsolatos további információkért lásd: [AVD Manager](http://developer.android.com/tools/help/avd-manager.html) a Android helyen.
 
 ## <a name="step-1-register-an-application-with-azure-ad"></a>1. lépés: Egy alkalmazás regisztrálása az Azure ad szolgáltatással
-Ez a lépés nem kötelező megadni. Ez az oktatóanyag segítségével tekintse meg a minta működés közben anélkül bármely saját bérlőt kiépítési előre kiosztott értékeket biztosít. Azonban azt javasoljuk, hogy hajtsa végre ezt a lépést, és ismerkedjen meg a folyamat, mert lesz szükség a saját alkalmazások létrehozásakor.
+Ez a lépés nem kötelező. Ez az oktatóanyag segítségével tekintse meg a minta működés közben anélkül bármely saját bérlőt kiépítési előre kiosztott értékeket biztosít. Azonban azt javasoljuk, hogy hajtsa végre ezt a lépést, és ismerkedjen meg a folyamat, mert lesz szükség a saját alkalmazások létrehozásakor.
 
 Az Azure AD számára csak ismert alkalmazások jogkivonatokat. Az Azure AD a alkalmazás használata előtt kell bejegyzés létrehozása a bérlő számára. A bérlő új alkalmazás regisztrálása:
 
@@ -285,7 +285,7 @@ Az alkalmazás futtatásához konkrét szükséges lépések eltérhetnek a plat
 
     Use `cordova run --help` to see additional build and run options.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Referenciaként az elkészült mintát (a konfigurációs értékek nélkül) érhető el a [GitHub](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-Cordova/tree/complete/DirSearchClient).
 
 Most már továbbléphet összetettebb (és érdekesebb) forgatókönyvek. Akkor célszerű: [egy Node.js webes API-t az Azure ad-vel biztonságos](active-directory-devquickstarts-webapi-nodejs.md).

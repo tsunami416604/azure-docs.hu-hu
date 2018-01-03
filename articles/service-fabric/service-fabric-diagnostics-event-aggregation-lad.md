@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
 ms.openlocfilehash: b70780b2e1d169aced3412f6fe6d13ad4dab82be
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Esemény összevonásának és a gyűjtemény Linux Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ A diagnosztika bővítményt telepíteni a virtuális gépeket a fürt fürt lé
 Ez konfigurálja a LAD ügynök megadott naplófájlok figyeléséhez. Amikor egy új sort a rendszer hozzáfűzi a fájl, létrehoz egy syslog bejegyzést, amely a megadott tároló (tábla) küldött.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 1. Milyen eseményeket meg kell vizsgálni a problémák elhárítása során részletes ismertetése: [LTTng dokumentáció](http://lttng.org/docs) és [használatával LAD](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 2. [Állítsa be az OMS-ügynököt](service-fabric-diagnostics-event-analysis-oms.md) gyűjtse össze a metrikák érdekében a fürt telepített tárolók figyelése és jelenítheti meg a naplókat 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 2d940b42108948f4cd36a585f1e79def05fe8fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 73d6b42e7a97d6041f6213a1f7d060806734d763
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Első lépések a fenyegetések modellezése eszközzel
 
@@ -29,13 +29,13 @@ Ez a cikk az SDL fenyegetés megközelítés modellezési meglévő ismerete ép
 
 Gyorsan összefoglalva, a megközelítés diagram létrehozása, fenyegetések azonosítására, őket kiküszöböléséhez és ellenőrzése minden megoldás. Ez a diagram, amely kiemeli ezt a folyamatot:
 
-![SDL-folyamat](./media/azure-security-threat-modeling-tool/sdlapproach.png)
+![SDL-folyamat](./media/azure-security-threat-modeling-tool-feature-overview/sdlapproach.png)
 
 ## <a name="starting-the-threat-modeling-process"></a>A fenyegetés modellezési folyamatának indítása
 
 Ha a fenyegetések modellezése eszköz elindításához néhány dolog, láthatja, a képen látható módon:
 
-![Üres Start lap](./media/azure-security-threat-modeling-tool/tmtstart.png)
+![Üres Start lap](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
 ### <a name="threat-model-section"></a>Fenyegetés modell szakasz
 
@@ -70,7 +70,7 @@ A folyamatot, az első fenyegetések modellezése fejlődő a rendszer hamarosan
 > Cristina: elengedhetetlen. Ismerkedjen meg.
 > Richárd az eszköz megnyitása, és a képernyő Cristina megosztja.
 
-![Alapszintű fenyegetések modellezése](./media/azure-security-threat-modeling-tool/basictmt.png)
+![Alapszintű fenyegetések modellezése](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
 > Cristina: Ok, egyszerű, keres, de az is, bízná me azt?
 > Richárd: meg arról, hogy! A részletes információkat a következő:
@@ -89,17 +89,17 @@ Amennyiben az elemre kattint a ikon a menüpont kiválasztásának (fájl nagyí
 
 Erre akkor van például biztonságossá tétele a ház minden ajtók és biztosításával rendelkezik zárolási mechanizmus az riasztó rendszerek hozzáadása vagy a tolvaj után követésnek előtt.
 
-![Alapszintű fenyegetések](./media/azure-security-threat-modeling-tool/basicthreats.png)
+![Alapszintű fenyegetések](./media/azure-security-threat-modeling-tool-feature-overview/basicthreats.png)
 
 Richárd megkezdi a listán az első elem kiválasztásával. Ez történik:
 
 A két rajzsablonok közötti interakció továbbfejlesztett először
 
-![Interakció](./media/azure-security-threat-modeling-tool/interaction.png)
+![Interakció](./media/azure-security-threat-modeling-tool-feature-overview/interaction.png)
 
 A fenyegetés második, további információkat a fenyegetés tulajdonságai ablakban jelenik meg
 
-![Interakció adatai](./media/azure-security-threat-modeling-tool/interactioninfo.png)
+![Interakció adatai](./media/azure-security-threat-modeling-tool-feature-overview/interactioninfo.png)
 
 A generált fenyegetés segít neki a lehetséges tervezési hibái ismertetése. A STRIDE kategorizálási ad neki egy a potenciális támadási, amíg a további leírás amelyből megtudja, pontosan milyen nem megfelelő, a lehetséges módjai a csökkentése, valamint. Szerkeszthető mezők megjegyzéseket fűzni indoklás részleteit, vagy attól függően, hogy a szervezet hiba sáv minősítés módosításához használhat.
 
@@ -116,7 +116,7 @@ Nem alkalmazható a tervezési miatt a meglévő megoldást vagy a biztonsági f
 
 Miután Richárd végighalad Cristina a listát, és hozzáadja a fontos megjegyzések, azok mérséklési/indokok, prioritás és állapotmódosítások, he választja ki Jelentések -> teljes jelentés mentése jelentést, amely számára, hogy halad át munkatársaival töltött jelentést kiírja -> létrehozása Ahhoz, hogy a megfelelő biztonsági munkahelyi van megvalósítva.
 
-![Interakció adatai](./media/azure-security-threat-modeling-tool/report.png)
+![Interakció adatai](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 
 Ha Richárd kíván inkább megosztani a fájlt, hogy egyszerűen megteheti mentése a OneDrive-fiókja a szervezet által. Amennyiben az általa Igen, ezután másolja a dokumentum hivatkozását, és ossza meg a munkatársaival. 
 
@@ -140,6 +140,6 @@ Ha fog fenyegetések modellezése egy házat, előfordulhat, hogy elindíthatja 
 
 A fenyegetés azt korábban itt bemutatott modellezési megközelítése jóval egyszerűbb, mint mi a Microsoft által elvégzett a múltban. Észleltünk, hogy a szoftver tervezett módszert alkalmaz sok csoportok esetén működik-e. Reméljük, amelyek tartalmazzák a saját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kérdéseit, megjegyzéseit és kapcsolatos kérdéseket küldése tmtextsupport@microsoft.com. **[Töltse le](https://aka.ms/tmtpreview)**  a fenyegetés modellezési eszköz a kezdéshez.

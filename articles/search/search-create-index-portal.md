@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 06/20/2017
 ms.author: heidist
 ms.openlocfilehash: a7d98ab0937a7d3f932d5df34c19ae091129804e
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-an-azure-search-index-using-the-azure-portal"></a>Az Azure portál használata az Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -100,13 +100,13 @@ Az Azure Search API dokumentációja tartalmaz egy egyszerű kiemeli kódpéldá
 
 ![](./media/search-create-index-portal/set-analyzer.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután létrehozta az Azure Search-index, áthelyezheti a következő lépéssel: [kereshető adatokat feltölteni az indexbe](search-what-is-data-import.md).
 
 Másik lehetőségként is készíthet, indexek mélyebb betekintést. Mellett a mezők gyűjteményében index azt is meghatározza, elemzőkkel, a javaslattevők, a pontozási profil és a CORS-beállítások. A portál lapokra lapokat biztosít a leggyakrabban használt elemek meghatározásához: mezők, lekérdezések és javaslattevők. Hozzon létre, és más elemek módosítása, használhatja a REST API-t vagy a .NET SDK-val.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
  [A teljes szöveges keresés működése](search-lucene-query-architecture.md)  
  [Keresési szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice/) [.NET SDK-val](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)

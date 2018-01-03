@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 ms.openlocfilehash: dae7b5f7456f4ec0daf60d55f9c38b780896ff83
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-flat-files"></a>Adatok betöltése az SQL Serverből az Azure SQL Data Warehouse-ba (egybesimított fájlok)
 > [!div class="op_single_selector"]
@@ -178,7 +178,7 @@ Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A 
 ### <a name="export-the-results-of-a-query"></a>Lekérdezés eredményeinek exportálása
 A bcp **queryout** függvényével exportálhatja egy lekérdezés eredményeit az egész tábla exportálása helyett. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A betöltés áttekintése: [Adatok betöltése az SQL Data Warehouse-ba][Load data into SQL Data Warehouse].
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse development overview].
 Lásd: [tábla áttekintése] [ Table Overview] vagy [CREATE TABLE szintaxis] [ CREATE TABLE syntax] SQL Data Warehouse a táblázatok létrehozásáról további információt.

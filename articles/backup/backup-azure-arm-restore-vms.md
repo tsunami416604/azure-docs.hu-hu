@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
 ms.openlocfilehash: a3b8bb53c467ad6f595a52e2a2e8f805a8f062f6
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Az Azure-portál használatával állítsa vissza a virtuális gépek
 Pillanatképek készítése a adatait meghatározott időközönként védeni az adatokat. Ezeket a pillanatképeket nevezzük helyreállítási pontokat, és vannak tárolva, a Recovery Services-tárolók. Szükség esetén javítsa vagy építse újra a virtuális gép (VM), visszaállíthatja a virtuális gép bármelyik mentett helyreállítási pontok. A helyreállítási pont visszaállításakor teheti:
@@ -248,7 +248,7 @@ Teljes hozza létre a virtuális lemez visszaállítása után, kövesse az alá
 
    d. A virtuális gép létrehozása [több foglalt IP-címek](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy a virtuális gépek is helyreállíthatja, tanulmányozza a hibaelhárítási információk a virtuális gépek az előforduló hibákat: Emellett tekintse meg a cikk a feladatokat a virtuális gépek kezelésére.
 
 * [Kapcsolatos hibák elhárítása](backup-azure-vms-troubleshoot.md#restore)

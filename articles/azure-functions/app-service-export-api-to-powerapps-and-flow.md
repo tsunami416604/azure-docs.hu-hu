@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 12/15/2017
 ms.author: mahender; mblythe
-ms.openlocfilehash: 358c2f7ce568707ea67cfa669de07dc3fb0135f7
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 7482ca27c2edcb281180fb8fbbfb1884a515d379
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Az Azure által üzemeltetett API-k PowerApps és Microsoft Flow exportálása
 
@@ -95,21 +95,25 @@ Az exportálás végrehajtásához **manuális** mód, kövesse az alábbi lép�
 
     Ez a példa bemutatja a OpenAPI definícióban szereplő API-kulcs biztonsági definíció.
 
-Most, hogy az API-definíció exportált, importálja azt a PowerApps és Microsoft Flow egyéni összekötő létrehozásához. Az alábbi példában a powerapps segítségével, de egyéni összekötők a két szolgáltatás, így csak egyszer a-definíciójának importálásához között vannak megosztva.
+Most, hogy az API-definíció exportált, importálja azt a PowerApps és Microsoft Flow egyéni összekötő létrehozásához. Egyéni összekötők a két szolgáltatás, így csak egyszer a-definíciójának importálásához között vannak megosztva.
 
 Az API-definíció PowerApps és Microsoft Flow importálásához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [web.powerapps.com](https://web.powerapps.com) vagy [flow.microsoft.com](https://flow.microsoft.com/). 
+1. Ugrás a [powerapps.com](https://web.powerapps.com) vagy [flow.microsoft.com](https://flow.microsoft.com).
 
-2. Kattintson a **beállítások** (fogaskerék ikonra) gombra a képernyő jobb felső sarkában a lapot, és válassza ki a **egyéni összekötők**.
+2. A jobb felső sarokban, kattintson a fogaskerék ikonra, majd **egyéni összekötők**.
 
-    ![egyéni összekötők](media/app-service-export-api-to-powerapps-and-flow/custom-connectors.png)
+   ![A szolgáltatás fogaskerék ikonra](media/app-service-export-api-to-powerapps-and-flow/icon-gear.png)
 
-3. Kattintson a **hozzon létre egyéni összekötő**.
+3. Kattintson a **hozzon létre egyéni összekötő**, majd kattintson a **OpenAPI-definíciójának importálása**.
 
-4. Az a **általános** lapon adjon meg egy nevet az API-, és majd töltse fel a OpenAPI definition vagy illessze be a metaadatainak URL-CÍMÉT. Kattintson a **feltöltése**, majd **továbbra is**.
+   ![Egyéni összekötő létrehozása](media/app-service-export-api-to-powerapps-and-flow/flow-apps-create-connector.png)
 
-    ![Általános lap](media/app-service-export-api-to-powerapps-and-flow/tab-general.png)
+4. Adjon meg egy nevet az egyéni összekötő ezután keresse meg az exportált OpenAPI definícióban, és kattintson a **Folytatás**.
+
+   ![Töltse fel a OpenAPI meghatározása](media/app-service-export-api-to-powerapps-and-flow/flow-apps-upload-definition.png)
+
+4. Az a **általános** lapján tekintse át az információkat, amelyek a OpenAPI definition származik.
 
 5. Az a **biztonsági** lapon, ha a rendszer felszólítja a hitelesítési részletesen adja meg a hitelesítési típushoz megfelelő értékeket. Kattintson a **továbbra is**.
 

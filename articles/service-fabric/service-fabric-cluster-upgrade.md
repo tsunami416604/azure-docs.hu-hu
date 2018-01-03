@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 8/10/2017
 ms.author: chackdan
 ms.openlocfilehash: 7ea71ab891583c51b3c07a4d0a9f0b4f54e56669
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>Az Azure Service Fabric-fürt frissítése
 > [!div class="op_single_selector"]
@@ -210,7 +210,7 @@ Tekintse meg [javítás Vezénylési alkalmazás](service-fabric-patch-orchestra
 ### <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>Az operációs rendszer frissítései a a fürtöt alkotó virtuális gépeken
 Ha frissítenie kell a virtuális gépek a fürt operációsrendszer-lemezképet, tegye azt egy virtuális gép egyszerre. Az Ön felelőssége ehhez a frissítéshez--jelenleg nincs automatizálva ehhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan szabhatja testre az egyes a [szolgáltatás fabric fürt háló beállításai](service-fabric-cluster-fabric-settings.md)
 * Megtudhatja, hogyan [a fürt vagy horizontális](service-fabric-cluster-scale-up-down.md)
 * További tudnivalók [alkalmazásfrissítések](service-fabric-application-upgrade.md)

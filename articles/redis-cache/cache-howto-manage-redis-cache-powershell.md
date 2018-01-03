@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: sdanie
 ms.openlocfilehash: 5b65d513d6418f13a6f3e10644c1892eecbcba1d
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Azure Redis gyorsítótár Azure PowerShell kezelése
 > [!div class="op_single_selector"]
@@ -124,7 +124,7 @@ A következő táblázat a tulajdonságok és a gyakran használt paraméterek l
 
 | Paraméter | Leírás | Alapértelmezett |
 | --- | --- | --- |
-| Név |A gyorsítótár neve | |
+| Name (Név) |A gyorsítótár neve | |
 | Hely |A gyorsítótár helye | |
 | erőforráscsoport-név |Az erőforráscsoport neve, amelyben a gyorsítótár létrehozásához | |
 | Méret |A gyorsítótár méretét. Érvényes értékek a következők: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1 GB-os, 2.5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
@@ -776,7 +776,7 @@ A következő parancsot a megadott gyorsítótár mindkét csomópont újraindul
         -Force
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Windows PowerShell használatával az Azure-ral kapcsolatos további tudnivalókért lásd a következőket:
 
 * [Az Azure Redis Cache parancsmag dokumentációja az MSDN webhelyen](https://msdn.microsoft.com/library/azure/mt634513.aspx)

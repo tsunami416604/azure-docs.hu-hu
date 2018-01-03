@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 8/16/2017
 ms.author: saurse;trinadhk;markgal;
 ms.openlocfilehash: 7b259009a8d96e81a141e7718c0d54d40d7b67d1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windows-kiszolgálóra vagy -ügyfélre a Resource Manager-alapú üzemi modell használatával
 
@@ -176,5 +176,5 @@ Ha az Azure Backup szolgáltatás sikeresen csatlakoztatható a helyreállítás
 
 Ha továbbra sem sikerül a helyreállítás, indítsa újra a kiszolgálót vagy Windows-ügyfélen. A számítógép újraindítása nem kívánatos, vagy a helyreállítás továbbra is sikertelen, a kiszolgáló újraindítása után is, ha végezze el egy másik gép, és lépjen kapcsolatba az Azure támogatja a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) és a támogatási kérelem elküldése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Most, hogy a fájlok és mappák már helyreállítva, akkor [kezelheti a biztonsági másolatok](backup-azure-manage-windows-server.md).

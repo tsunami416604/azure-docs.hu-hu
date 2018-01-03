@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: be29b993592e494053353aac1067bfb7eff90ed7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4eaffba08ccf601e440709d804891668340a376d
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok folyamata naplózási bemutatása
 
@@ -29,7 +29,7 @@ Hálózati biztonsági csoport folyamat egyik funkciója, amely lehetővé teszi
 Attribútumfolyam naplózza a cél hálózati biztonsági csoportok, amíg azok nem azonos a többi naplófájlt jelenik meg. Attribútumfolyam naplófájljainak tárolása csak egy tárfiókon belül, majd a naplózás elérési út a következő példában látható módon:
 
 ```
-https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId%3D/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.network/networksecuritygroups/{nsgName}/{year}/{month}/{day}/PT1H.json
+https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
 Az azonos megőrzési házirendek, a többi naplófájlt látott folyamata naplók vonatkoznak. Naplók rendelkezik egy megőrzési házirend – 365 nap beállítható az 1 nap. Ha nincs beállítva adatmegőrzési szabály, a naplók megőrzése korlátlan időre szól.
@@ -100,7 +100,7 @@ Egy folyamat napló példát a következő: Ahogy látja, kövesse az előző sz
         ...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Attribútumfolyam naplók engedélyezése ellátogatva [naplózás engedélyezésével Flow](network-watcher-nsg-flow-logging-portal.md).
 

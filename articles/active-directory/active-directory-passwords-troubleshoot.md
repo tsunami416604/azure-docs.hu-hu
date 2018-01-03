@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/21/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 73c8ea046a5bdbeaca1b3f357fc41f0a6938db1e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb04ca30d43a8cf8af2b1dbc00330ba7924bb5b5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Önkiszolgáló jelszóváltoztatás hibaelhárítása
 
@@ -165,7 +165,18 @@ Ha az Azure AD Connect a jelszó visszaírási összetevővel szolgáltatáskies
 
 ### <a name="confirm-network-connectivity"></a>Erősítse meg a hálózati kapcsolat
 
-A leggyakoribb pontot, hogy a tűzfal, és vagy proxyhoz és az üresjárati időkorlát nem megfelelően vannak konfigurálva. További információkért tekintse át a kapcsolat Előfeltételek a [Előfeltételek az Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) cikk.
+A leggyakoribb pontot, hogy a tűzfal, és vagy proxyhoz és az üresjárati időkorlát nem megfelelően vannak konfigurálva. 
+
+Az Azure AD Connect 1.1.443.0 verzió vagy újabb, meg kell kimenő HTTPS a hozzáférést a következő:
+
+   - passwordreset.microsoftonline.com
+   - servicebus.Windows.NET
+
+Több Granularitás frissített listáját lásd [Microsoft Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653) frissítése minden szerdán és a következő hatályba hétfő.
+
+További információkért tekintse át a kapcsolat Előfeltételek a [Előfeltételek az Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) cikk.
+
+
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Az Azure AD Connect szinkronizálási szolgáltatás újraindítása
 
@@ -282,7 +293,7 @@ Megfelelően segítséget, kérjük, hogy megadja mértékű részletes lehető 
 [Service restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "Az Azure AD Sync szolgáltatás újraindítása"
 [Support code]: ./media/active-directory-passwords-troubleshoot/supportcode.png "Az ablak jobb alsó a támogatási kód"
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben talál további információt nyújtanak azokról az Azure AD használatával új jelszó.
 

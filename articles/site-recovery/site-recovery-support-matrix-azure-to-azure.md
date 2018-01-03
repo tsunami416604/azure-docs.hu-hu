@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/08/2017
 ms.author: sujayt
-ms.openlocfilehash: ecc81dcfaf8dc158792a3bbcac78ea6da6488822
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 08352e35daa85a6496adc57eed5f12621a6b300c
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Az Azure Site Recovery mátrix a replikálása Azure-bA az Azure-ból
 
@@ -168,6 +168,7 @@ RA-GRS | Támogatott |
 ZRS | Nem támogatott |  
 Ritkán használt adatok és a gyakran használt adatok tárolási | Nem támogatott | Virtuálisgép-lemezek használata nem támogatott a ritkán használt adatok és a gyakran használt adatok tárolási
 Virtuális hálózati Szolgáltatásvégpontok (Azure Storage tűzfalak és virtuális hálózatok)  | Nem | Adott Azure virtuális hálózatokhoz való hozzáférés engedélyezése a replikált adatok tárolására szolgáló gyorsítótár tárfiókok használata nem támogatott. 
+Általános célú V2 storage-fiókok (a gyakran és ritkán. szint) | Nem | Tranzakciós költségek növekedését jelentősen képest általános célú tárfiókok 1-es verzió
 
 >[!IMPORTANT]
 > Győződjön meg arról, hogy a virtuális gép lemez méretezhetőségi és Teljesítménycélok az erőforrásigények [Linux](../virtual-machines/linux/disk-scalability-targets.md) vagy [Windows](../virtual-machines/windows/disk-scalability-targets.md) virtuális gépek a teljesítménnyel kapcsolatos problémák elkerülése érdekében. Ha követi az alapértelmezett beállításokat, a Site Recovery hoz létre a szükséges lemezek és a storage-fiókok a forrás-konfigurációtól függően. Ha testre szabhatja, és válassza ki a saját beállításait, győződjön meg arról, hogy kövesse a lemez méretezhetőségi és Teljesítménycélok a forrás virtuális gépeknek.
@@ -193,6 +194,6 @@ Webhelyek közötti VPN a helyszíni (vagy anélkül ExpressRoute)| Támogatott 
 Virtuális hálózat virtuális Hálózatot kapcsolathoz | Támogatott | Tekintse meg [hálózati útmutató.](site-recovery-azure-to-azure-networking-guidance.md)  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ [hálózati útmutatót az Azure virtuális gépek replikálása](site-recovery-azure-to-azure-networking-guidance.md)
 - A munkaterhelések számára a védelmének megkezdéséhez [Azure virtuális gépek replikálása](site-recovery-azure-to-azure.md)

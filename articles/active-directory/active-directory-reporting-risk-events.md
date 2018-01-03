@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 385e2703c5b21fb78d058dc71f66a6c98c1e227f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a48fc35574b13133ad28c5b58f4288ff390674cc
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati események
 
@@ -61,7 +61,7 @@ Internetes bűnözők érvényes jelszavak jogos felhasználók hibát okoz, ha 
 
 Ha a szolgáltatás szerez be felhasználónév / jelszó párok, amelyek veti össze AAD-felhasználókat aktuális érvényes hitelesítő adatokat. Amikor a program egyezést talál, az azt jelenti, hogy a jelszó feltörték, és egy *elszivárgott a hitelesítő adatok kockázat esemény* jön létre.
 
-### <a name="sign-ins-from-anonymous-ip-addresses"></a>Névtelen IP-címekről bejelentkezések
+### <a name="sign-ins-from-anonymous-ip-addresses"></a>Névtelen IP-címről történő bejelentkezések
 
 A kockázat esemény a névtelen proxy IP-címként azonosított IP-cím sikeresen bejelentkezett felhasználók azonosítja. Ezek a proxyk szeretné az eszköz IP-címet, és a rosszindulatú behatolással szemben használható személyek által használt.
 
@@ -76,7 +76,7 @@ Az algoritmus figyelmen kívül hagyja a nyilvánvaló "vakriasztásokat" hozzá
 
 A kockázat eseménytípus úgy ítéli meg, bejelentkezési helyek túli (szélesség, IP / hosszúság és a ASN) új / ismeretlen helyek meghatározásához. A rendszer fent említett helyeken, felhasználó által használt kapcsolatos információkat tárolja, és úgy ítéli meg ezeket a "megszokott" helyeket. A kockázat esemény akkor váltódik ki, amikor a bejelentkezés következik be, amely még nem ismeri helyek listáját egy helyről. A rendszer kezdeti tanulási időszaka a 30 nap során, ami azt nem ez a jelző bármely új helyek ismeretlen helyként. A rendszer is bejelentkezések ismerős eszközöket, és egy ismert helyre földrajzilag megközelítik helyek figyelmen kívül hagyja. 
 
-### <a name="sign-ins-from-infected-devices"></a>Fertőzött eszközökről indított bejelentkezések
+### <a name="sign-ins-from-infected-devices"></a>Bejelentkezések fertőzött eszközökről
 
 A kockázat esemény aktívan kommunikálni egy botnetes kiszolgálóhoz ismert, kártevővel fertőzött eszközökről származó bejelentkezések azonosítja. Ez határozza meg IP-címét a felhasználó-eszköz IP-címek, amelyek szerepelnek a botnetes kiszolgálóhoz volt elleni használatával történik. 
 
@@ -84,7 +84,7 @@ A kockázat esemény aktívan kommunikálni egy botnetes kiszolgálóhoz ismert,
 A kockázat eseménytípus azonosítja az IP-címek, ahol nagyszámú sikertelen bejelentkezési kísérlet volt, körében tapasztalható több felhasználói fiókot, egy rövid időtartamra vonatkozóan. Ez megegyezik a támadók által használt IP-címek adatforgalmi mintái jellemzően, és erős jelzi, hogy fiókok már vagy megsértik a művelettel. Ez az a gépi tanulási algoritmus figyelmen kívül hagyja a nyilvánvaló "*hamis-pozitív*", például az IP-címek, amelyek rendszeresen szolgálnak a szervezeten belüli más felhasználók által.  A rendszer időszaka kezdeti tanulási 14 napos ahol Tanulja meg a bejelentkezési viselkedését egy új felhasználó és egy új bérlőt.
 
 
-## <a name="detection-type"></a>Észlelési típusa
+## <a name="detection-type"></a>Észlelés típusa
 
 Az észlelési típusú tulajdonság azt jelzi (valós idejű vagy kapcsolat nélküli) az a kockázat esemény észlelése időkeretétől.  
 Jelenleg a legtöbb kockázati események észlelésének offline utó-feldolgozási művelet után a kockázati eseményekről.
@@ -130,7 +130,7 @@ Például:
 
 Kockázati események besorolt hitelesítő adatok szivárgását egy **magas**, mert ezek biztosítanak egy tiszta arra vonatkozóan, hogy a felhasználónév és jelszó a támadó rendelkezésére.
 
-### <a name="sign-ins-from-anonymous-ip-addresses"></a>Névtelen IP-címekről bejelentkezések
+### <a name="sign-ins-from-anonymous-ip-addresses"></a>Névtelen IP-címről történő bejelentkezések
 
 A kockázati szintje a kockázat eseménytípus **Közepes** mert névtelen IP-cím nincs egy fiók biztonsági sérülése a jelzi.  
 Azt javasoljuk, hogy azonnal forduljon a felhasználót, hogy ellenőrizze, hogy ha melyikét használta éppen névtelen IP-címeket.
@@ -141,13 +141,13 @@ Azt javasoljuk, hogy azonnal forduljon a felhasználót, hogy ellenőrizze, hogy
 Lehetetlen odautazás az általában jól jelzi, hogy egy támadó képes bejelentkezés sikeres volt. Hamis-pozitív fordulhat azonban amikor egy felhasználó utazik, egy új eszköz vagy a szervezeten belüli más felhasználók által általában nem használ VPN használatával. Hamis – figyelmeztetéséket egy másik forrása alkalmazásokat helytelenül kiszolgáló IP-címek ügyfél IP-címek, amelyek a Megjelenés zajlik az adatközpontból, ahol az alkalmazás csomagazonosítóját háttér-üzemelteti a bejelentkezések (gyakran ezek azok a Microsoft számára fenntartott adatközpontokban, amelyek bejelentkezések véve megjelenésének helyezze el a Microsoft tulajdonában lévő IP-címek). Eredményeképpen ezek hamis figyelmeztetéséket kockázat eseményhez kockázati szintje nem **Közepes**.
 
 > [!TIP]
-> A kockázat eseménytípus jelentett hamis positves mennyisége segítségével csökkenthető [helyek nevű](active-directory-named-locations.md). 
+> A kockázat eseménytípus jelentett hamis pozitív mennyisége segítségével csökkenthető [helyek nevű](active-directory-named-locations.md). 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés ismeretlen helyekről
 
 Ismeretlen helyek biztosíthat egy erős annak jelzése, hogy egy támadó képes ellopott identitás használatára. Hamis – pozitív akkor fordulhat elő, amikor egy felhasználó utazik, próbálja ki az új eszköz vagy egy új VPN-t használja. A vakriasztások miatt a kockázati szintjét esemény van **Közepes**.
 
-### <a name="sign-ins-from-infected-devices"></a>Fertőzött eszközökről indított bejelentkezések
+### <a name="sign-ins-from-infected-devices"></a>Bejelentkezések fertőzött eszközökről
 
 A kockázat esemény IP-címek, nem a felhasználói eszközök azonosítja. Ha több eszköz egyetlen IP-címnek mögött találhatók, és a csak néhány van botot hálózat, a más eszközökről származó bejelentkezések a eseményindító ezt az eseményt feleslegesen, amelynek az oka a kockázat esemény osztályozásához, **alacsony**.  
 
@@ -162,7 +162,7 @@ Azt javasoljuk, hogy lépjen kapcsolatba a felhasználó ellenőrizheti, ha azok
 
 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kockázati események védelméhez az Azure AD-identitások foundation rendszer. Az Azure AD jelenleg képes észlelni hat kockázati események: 
 

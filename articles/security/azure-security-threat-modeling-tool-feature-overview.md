@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 5c60e13028c3ccdf3269d74ab4724bb34ca10c19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76e49fc0e680acbc2b7b7c62b69fbf72d6690acf
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Fenyegetések modellezése eszköz funkcióinak áttekintése
 
@@ -29,11 +29,11 @@ A fenyegetések modellezése eszköz segítségével a veszéllyel modellezési 
 
 Egy üres lap megnyitásához válassza ki a **hozzon létre egy modellt**.
 
-![Üres lap](./media/azure-security-threat-modeling-tool/tmtstart.png)
+![Üres lap](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
 Az eszköz jelenleg elérhető szolgáltatások megtekintéséhez használja a hozta létre a csapat a fenyegetések modellezése a [Ismerkedés](./azure-security-threat-modeling-tool-getting-started.md) példa.
 
-![Alapszintű fenyegetések modellezése](./media/azure-security-threat-modeling-tool/basictmt.png)
+![Alapszintű fenyegetések modellezése](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
 ## <a name="navigation"></a>Navigációs
 
@@ -43,7 +43,7 @@ A beépített szolgáltatásai arról lesz szó, mielőtt tekintsük át, az esz
 
 A felhasználói élmény hasonlít más Microsoft-termékeket. Tekintsük át, a legfelső szintű menüelemeket.
 
-![Menüelemek](./media/azure-security-threat-modeling-tool/menuitems.png)
+![Menüelemek](./media/azure-security-threat-modeling-tool-feature-overview/menuitems.png)
 
 | Címke                               | Részletek      |
 | --------------------------------------- | ------------ |
@@ -75,11 +75,11 @@ A vászonra a hely, ahol Ön áthúzása elemek. Fogd és vidd módszer a leggyo
 
 #### <a name="drop-the-stencil-on-the-canvas"></a>Helyezze át a rajzsablon a a vászonra
 
-![Vászonra eldobási](./media/azure-security-threat-modeling-tool/canvasdrop1.png)
+![Vászonra eldobási](./media/azure-security-threat-modeling-tool-feature-overview/canvasdrop1.png)
 
 #### <a name="select-the-stencil"></a>Válassza ki a rajzsablon
 
-![Elem tulajdonságai](./media/azure-security-threat-modeling-tool/canvasdrop2.png)
+![Elem tulajdonságai](./media/azure-security-threat-modeling-tool-feature-overview/canvasdrop2.png)
 
 ### <a name="stencils"></a>Rajzsablonok
 
@@ -120,15 +120,15 @@ Az alkalmazás megnyitásakor látni a **üdvözlő** képernyő.
 
 Vigye **nyissa meg A modell** hogy láthatóvá váljon a két lehetőség közül választhat: **nyissa meg a számítógépen** és **nyissa meg a onedrive vállalati verzió**. Az első lehetőség nyílik a **fájl megnyitása** képernyő. A második lehetőség végigvezeti Önt a bejelentkezési folyamat a onedrive vállalati verzióhoz. Sikeres hitelesítést követően kiválaszthatja a fájlokat és mappákat.
 
-![Modell megnyitása](./media/azure-security-threat-modeling-tool/openmodel.png)
+![Modell megnyitása](./media/azure-security-threat-modeling-tool-feature-overview/openmodel.png)
 
-![Nyissa meg a számítógép vagy a onedrive vállalati verzió](./media/azure-security-threat-modeling-tool/openmodel2.png)
+![Nyissa meg a számítógép vagy a onedrive vállalati verzió](./media/azure-security-threat-modeling-tool-feature-overview/openmodel2.png)
 
 ### <a name="feedback-suggestions-and-issues"></a>Visszajelzés, a javaslatok és a problémák
 
 Ha bejelöli **visszajelzést, a javaslatok és a problémák**, SDL eszközök az MSDN-fórumon Ugrás. Mi mások véleményét az eszközről, beleértve a lehetséges megoldások és új ötleteket érheti el.
 
-![Visszajelzés](./media/azure-security-threat-modeling-tool/feedback.png)
+![Visszajelzés](./media/azure-security-threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>Tervező nézetben
 
@@ -152,19 +152,19 @@ Elemek kétféle módon csatlakoztathatja:
 
  A tulajdonságokat, amelyeket módosítható az a rajzsablonok, jelölje be a rajzsablon és az információk megjelenítéséhez tölti fel. ennek megfelelően. A következő példa bemutatja előtt és után egy **adatbázis** rajzsablon van húzott a diagram:
 
-#### <a name="before"></a>Előtt
+#### <a name="before"></a>Korábban, mint
 
-![Előtt](./media/azure-security-threat-modeling-tool/properties1.png)
+![Korábban, mint](./media/azure-security-threat-modeling-tool-feature-overview/properties1.png)
 
-#### <a name="after"></a>Után
+#### <a name="after"></a>Később, mint
 
-![Után](./media/azure-security-threat-modeling-tool/properties2.png)
+![Később, mint](./media/azure-security-threat-modeling-tool-feature-overview/properties2.png)
 
 ### <a name="messages"></a>Üzenetek
 
 Ha a fenyegetések modellezése elfelejti elemek adatfolyamok csatlakozni, értesítést kap. Az üzenetet figyelmen kívül hagyhatja, vagy hajtsa végre az utasításokat a probléma elhárítása érdekében. 
 
-![Üzenetek](./media/azure-security-threat-modeling-tool/messages.png)
+![Üzenetek](./media/azure-security-threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>Megjegyzések
 
@@ -174,7 +174,7 @@ Megjegyzések hozzáadása a diagramhoz, váltani a **üzenetek** beállítást 
 
 A diagram létrehozása után válassza ki a **elemzés** szimbólum (Nagyító) a parancsikonok eszköztár váltson át a **Analysis** nézet.
 
-![Elemző nézet](./media/azure-security-threat-modeling-tool/analysisview.png)
+![Elemző nézet](./media/azure-security-threat-modeling-tool-feature-overview/analysisview.png)
 
 ### <a name="generated-threat-selection"></a>Generált fenyegetés kiválasztása
 
@@ -182,29 +182,29 @@ Fenyegetést kiválasztásakor, három különböző funkciókat használhatja:
 
 | Szolgáltatás                               | Információ      |
 | --------------------------------------- | ------------ |
-| **Olvasási kijelző** | <p>A fenyegetés Olvasás, amely segítségével nyomon követheti, akkor tekintse át a elemek van megjelölve.</p><p>![Olvasás/olvasatlan kijelző](./media/azure-security-threat-modeling-tool/readmode.png)</p> |
-| **Interakció fókusz** | <p>A diagram, amelyek fenyegetést tartozik a beavatkozás ki van jelölve.</p><p>![Interakció fókusz](./media/azure-security-threat-modeling-tool/interactionfocus.png)</p> |
-| **Fenyegetés-tulajdonságok** | <p>További információt a fenyegetés megjelenik a **fenyegetés tulajdonságok** ablak.</p><p>![Fenyegetés-tulajdonságok](./media/azure-security-threat-modeling-tool/threatproperties.png)</p> |
+| **Olvasási kijelző** | <p>A fenyegetés Olvasás, amely segítségével nyomon követheti, akkor tekintse át a elemek van megjelölve.</p><p>![Olvasás/olvasatlan kijelző](./media/azure-security-threat-modeling-tool-feature-overview/readmode.png)</p> |
+| **Interakció fókusz** | <p>A diagram, amelyek fenyegetést tartozik a beavatkozás ki van jelölve.</p><p>![Interakció fókusz](./media/azure-security-threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
+| **Fenyegetés-tulajdonságok** | <p>További információt a fenyegetés megjelenik a **fenyegetés tulajdonságok** ablak.</p><p>![Fenyegetés-tulajdonságok](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Prioritás módosítása
 
 Módosíthatja az egyes létrehozott fenyegetésekre a prioritási szintet. Különböző színek megkönnyítik a nagy - közép- és alacsony prioritású fenyegetések azonosítására.
 
-![Prioritás módosítása](./media/azure-security-threat-modeling-tool/prioritychange.png)
+![Prioritás módosítása](./media/azure-security-threat-modeling-tool-feature-overview/prioritychange.png)
 
 ### <a name="threat-properties-editable-fields"></a>Fenyegetés-tulajdonságok szerkeszthető mezők
 
 Az előző ábrán látható, módosíthatja az adatokat az eszköz állítja elő. Információ is bizonyos mezőkön, például a indoklás adhat hozzá. Ezeket a mezőket a sablon által generált. Ha további információt szeretne az egyes fenyegetésekre, végezhet módosításokat.
 
-![Fenyegetés-tulajdonságok](./media/azure-security-threat-modeling-tool/threatproperties.png)
+![Fenyegetés-tulajdonságok](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)
 
 ## <a name="reports"></a>Jelentések
 
 Prioritásokat és minden egyes létrehozott fenyegetés állapotának módosítása után mentse a fájlt, vagy nyomtassa ki a jelentést. Ugrás a **jelentés** > **teljes jelentés létrehozása**. Nevezze el a jelentést, és más hasonló, a következő lemezképhez kell megjelennie:
 
-![Jelentés](./media/azure-security-threat-modeling-tool/report.png)
+![Jelentés](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy sablon függ a Közösség számára, keresse fel a [GitHub](https://github.com/Microsoft/threat-modeling-templates) lap. 
 * Ismerkedés az eszközzel, keresse fel a [letöltése](https://aka.ms/tmtpreview) lap.

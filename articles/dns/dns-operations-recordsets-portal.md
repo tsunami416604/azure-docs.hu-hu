@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-rekordok kezelése és a rekordhalmazok az Azure portál használatával
 
@@ -120,7 +120,7 @@ Vegye figyelembe, hogy csak vonatkozik az NS típusú rekordhalmaz zóna tetejé
 
 Nem lehet törölni a SOA és NS-rekord beállítja a zóna felső pontja (név = "@"), amely automatikusan jönnek létre a zóna létrehozásakor. Ezek automatikusan törlődnek a zóna törlésekor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Azure DNS szolgáltatással kapcsolatos további információkért lásd: a [Azure DNS áttekintése](dns-overview.md).
 * DNS automatizálásával kapcsolatos további információkért lásd: [létrehozása DNS-zónák és a .NET SDK használatával rekordhalmazok](dns-sdk.md).

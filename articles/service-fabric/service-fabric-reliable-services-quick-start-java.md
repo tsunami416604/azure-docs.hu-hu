@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 59b58e9d9bdb044c81261fd19338c3f95bd409b3
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: ab675207094bc8ee317573192c33c20039780fe2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 > [!div class="op_single_selector"]
@@ -76,8 +76,25 @@ HelloWorldApplication/
 ├── settings.gradle
 └── uninstall.sh
 ```
+### <a name="service-registration"></a>Eszközregisztrációs szolgáltatás
+Szolgáltatástípusok a Service Fabric-futtatókörnyezet regisztrálva kell lennie. A szolgáltatás típus definiálva van a `ServiceManifest.xml` és a szolgáltatás osztály, amely megvalósítja az `StatelessService`. A folyamat a fő belépési pont szolgáltatás regisztrációs történik. Ebben a példában a folyamat fő belépési pont van `HelloWorldServiceHost.java`:
+
+```java
+public static void main(String[] args) throws Exception {
+    try {
+        ServiceRuntime.registerStatelessServiceAsync("HelloWorldType", (context) -> new HelloWorldService(), Duration.ofSeconds(10));
+        logger.log(Level.INFO, "Registered stateless service type HelloWorldType.");
+        Thread.sleep(Long.MAX_VALUE);
+    }
+    catch (Exception ex) {
+        logger.log(Level.SEVERE, "Exception in registration:", ex);
+        throw ex;
+    }
+}
+```
 
 ## <a name="implement-the-service"></a>A szolgáltatás megvalósítása
+
 Nyissa meg **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Ez az osztály a szolgáltatás típusa határozza meg, és semmilyen kódot futtathat. A service API két belépési pontok biztosít a kódot:
 
 * Egy nyílt belépési pont metódus hívása `runAsync()`, ahol el lehet kezdeni a munkaterheléseket, ideértve a hosszan futó számítási feladatok végrehajtása.
@@ -116,45 +133,107 @@ A vezénylési kezeli a Service Fabric tartani a szolgáltatás magas rendelkez�
 A számítási feladatok megszakítását egy együttműködési elérhető a megadott cancellation jogkivonat által összehangolva. A rendszer vár a feladat befejezéséhez (által sikeres befejezése, megszakítása vagy hiba), mielőtt az átvitel során. Fontos, hogy a megszakítási token tiszteletben, Befejezés munka és kilépés `runAsync()` lehető leggyorsabban tegye, amikor a rendszer törlését kéri. A következő példa bemutatja, hogyan kezelje a megszakítási esemény:
 
 ```java
-    @Override
-    protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
+@Override
+protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 
-        // TODO: Replace the following sample code with your own logic
-        // or remove this runAsync override if it's not needed in your service.
+    // TODO: Replace the following sample code with your own logic
+    // or remove this runAsync override if it's not needed in your service.
 
-        CompletableFuture.runAsync(() -> {
-          long iterations = 0;
-          while(true)
-          {
-            cancellationToken.throwIfCancellationRequested();
-            logger.log(Level.INFO, "Working-{0}", ++iterations);
+    return CompletableFuture.runAsync(() -> {
+        long iterations = 0;
+        while(true)
+        {
+        cancellationToken.throwIfCancellationRequested();
+        logger.log(Level.INFO, "Working-{0}", ++iterations);
 
-            try
-            {
-              Thread.sleep(1000);
-            }
-            catch (IOException ex) {}
-          }
-        });
-    }
-```
-
-### <a name="service-registration"></a>Eszközregisztrációs szolgáltatás
-Szolgáltatástípusok a Service Fabric-futtatókörnyezet regisztrálva kell lennie. A szolgáltatás típus definiálva van a `ServiceManifest.xml` és a szolgáltatás osztály, amely megvalósítja az `StatelessService`. A folyamat a fő belépési pont szolgáltatás regisztrációs történik. Ebben a példában a folyamat fő belépési pont van `HelloWorldServiceHost.java`:
-
-```java
-public static void main(String[] args) throws Exception {
-    try {
-        ServiceRuntime.registerStatelessServiceAsync("HelloWorldType", (context) -> new HelloWorldService(), Duration.ofSeconds(10));
-        logger.log(Level.INFO, "Registered stateless service type HelloWorldType.");
-        Thread.sleep(Long.MAX_VALUE);
-    }
-    catch (Exception ex) {
-        logger.log(Level.SEVERE, "Exception in registration:", ex);
-        throw ex;
-    }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex){}
+        }
+    });
 }
 ```
+
+A állapotmentes szolgáltatások példában a count lokális változó tárolja. Azonban mivel ez egy állapotmentes szolgáltatások, a tárolt érték csak az aktuális a szolgáltatáspéldány-életciklus létezik. A szolgáltatás helyezi át, vagy újraindul, az érték elvész.
+
+## <a name="create-a-stateful-service"></a>Az állapotalapú szolgáltatás létrehozása
+A Service Fabric egy olyan szolgáltatás, amely állapotalapú új típusú vezet be. Az állapotalapú szolgáltatás megbízhatóan belül a szolgáltatást, a kód által használt közösen elhelyezett is állapotban. Állapot köszönhetően magas rendelkezésre állású Service Fabric nélkül megőrizni a külső áruházban állapotra.
+
+Átalakítása a teljesítményszámláló értéke állapot nélküli magas rendelkezésre állású és állandó, akkor is, ha a szolgáltatás áthelyezi vagy újraindul, szükség van egy állapotalapú szolgáltatásra.
+
+A HelloWorld alkalmazás könyvtárába, adhat hozzá egy új szolgáltatás futtatásával a `yo azuresfjava:AddService` parancsot. Válassza ki a "megbízható állapotalapú alkalmazások és szolgáltatások szolgáltatás" a keretrendszer, és a szolgáltatás "HelloWorldStateful". 
+
+Az alkalmazás most már rendelkeznie kell a két szolgáltatás: az állapotmentes szolgáltatások HelloWorld és az állapotalapú szolgáltatási HelloWorldStateful.
+
+Állapotalapú szolgáltatási állapot nélküli szolgáltatásként ugyanazon belépési pontokat rendelkezik. A fő különbség a rendelkezésre állási állapot szolgáltatóra állapot megbízhatóan tárolására is. A Service Fabric tartalmaz egy állapot szolgáltató általi megvalósítása megbízható gyűjteménynek, amely lehetővé teszi a megbízható állapotkezelője keresztül replikált adatstruktúrák létrehozását. Egy állapot-nyilvántartó megbízható szolgáltatás alapértelmezés szerint az állapotszolgáltató használja.
+
+Nyissa meg a HelloWorldStateful.java **HelloWorldStateful src ->**, amely tartalmazza a következő RunAsync metódusában:
+
+```java
+@Override
+protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
+    Transaction tx = stateManager.createTransaction();
+    return this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap").thenCompose((map) -> {
+        return map.computeAsync(tx, "counter", (k, v) -> {
+            if (v == null)
+                return 1L;
+            else
+                return ++v;
+            }, Duration.ofSeconds(4), cancellationToken)
+                .thenCompose((r) -> tx.commitAsync())
+                .whenComplete((r, e) -> {
+            try {
+                tx.close();
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, e.getMessage());
+            }
+        });
+    });
+}
+```
+
+### <a name="runasync"></a>RunAsync
+`RunAsync()`az állapot nélküli és állapotalapú alkalmazások és szolgáltatások hasonlóan működnek. Azonban az állapotalapú service, a platform hajt végre további feladata az Ön nevében végrehajtása előtt `RunAsync()`. Ez a munkahelyi tartalmazhatnak, ezzel biztosítható, hogy a megbízható állapotkezelője és megbízható gyűjtemények rendszer készen áll a használatra.
+
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>Megbízható gyűjtemények és a megbízható állapot-kezelő
+```java
+ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
+```
+
+[ReliableHashMap](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) a szótár megvalósítása, amely megbízható adattárolóban állapotokat a szolgáltatás segítségével. A Service Fabric és a megbízható Hashmaps tárolható adatok közvetlenül a szolgáltatás egy külső állandó tároló szükségessége nélkül. Megbízható Hashmaps magas rendelkezésre állásúvá adatait. A Service Fabric ezt a feladatot el létrehozásával és kezelésével több *replikák* meg a szolgáltatás. Az API-k, amelyek számítógépnél kivonatolja a bonyolultságára ezeket a replikák és a Állapotváltások kezelése is tartalmazza.
+
+Megbízható gyűjtemények Java bármilyen, beleértve a felhasználói típusok, a figyelmeztetések néhány tudja tárolni:
+
+* A Service Fabric lehetővé teszi a állapot magas rendelkezésre állású által *replikálása* csomópontokat, és megbízható Hashmap állapot tárolja az adatokat, hogy a helyi lemez minden replikán. Ez azt jelenti, hogy minden, a megbízható Hashmaps tárolt kell *szerializálható*. 
+* Objektumok replikálása a magas rendelkezésre állású ha véglegesíti a megbízható Hashmaps tranzakciók. A megbízható Hashmaps tárolt objektumok kell tartani a szolgáltatás a helyi memóriához. Ez azt jelenti, hogy rendelkezik-e helyi hivatkozik az objektumra.
+  
+   Fontos, hogy Ön nem mutálódni azokat az objektumokat helyi példányát a megbízható gyűjtemény a frissítési művelet végrehajtása egy tranzakcióban nélkül. Ez az objektum helyi példányát módosításai nem lesz automatikusan replikálja. Szúrja be az objektumot újra üzembe a szótár kell vagy valamelyikével a *frissítése* metódusai a szótárban.
+
+A megbízható állapotkezelője megbízható Hashmaps az Ön kezeli. Egyszerűen kérje meg a megbízható állapotkezelője megbízható gyűjtemény neve és bárhol, bármikor a szolgáltatásban. A megbízható állapotkezelője biztosítja, hogy vissza a hivatkozás. Nem ajánlott az, hogy menti megbízható gyűjtemény példányok hivatkozik a tag változók vagy tulajdonságok. Győződjön meg arról, hogy a hivatkozás értéke egy példányát a szolgáltatás életciklusának mindig különös gondot kell fordítani. A megbízható állapotkezelője kezeli a megfelelőek Önnek, és ismétlési látogatások van optimalizálva.
+
+
+### <a name="transactional-and-asynchronous-operations"></a>Tranzakciós és aszinkron műveletek
+```java
+return map.computeAsync(tx, "counter", (k, v) -> {
+    if (v == null)
+        return 1L;
+    else
+        return ++v;
+    }, Duration.ofSeconds(4), cancellationToken)
+        .thenCompose((r) -> tx.commitAsync())
+        .whenComplete((r, e) -> {
+    try {
+        tx.close();
+    } catch (Exception e) {
+        logger.log(Level.SEVERE, e.getMessage());
+    }
+});
+```
+
+A megbízható Hashmaps műveletek aszinkron jellegűek. Ennek az az oka megbízható gyűjteményekkel írási műveletek végrehajtása i/o-műveletek történő replikálásához és megőrizni az adatokat a lemezre.
+
+Megbízható Hashmap műveletek *tranzakciós*, így biztosítható állapot konzisztens több megbízható Hashmaps és műveletek. Például Ön lekérni a munkaelem egy megbízható szótárból, rajta egy adott művelet elvégzéséhez, és mentse az eredmény anoter megbízható Hashmap, egy tranzakción belül. Ez a rendszer egy atomi művelet, és Ez garantálja, hogy vagy a teljes műveletet sikeres lesz, vagy a teljes műveletet állítja vissza. Ha hiba lép fel, akkor created elem után, de az eredmény mentése előtt, a teljes tranzakció vissza lesz állítva, és a marad, a feldolgozási várakozási sorban.
+
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
@@ -174,6 +253,6 @@ A install.sh parancsfájl tartalmazza a szükséges Service Fabric parancssori f
 $ ./install.sh
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)

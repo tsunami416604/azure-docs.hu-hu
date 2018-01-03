@@ -1,6 +1,6 @@
 ---
-title: "Összegyűjti és elemzi a Windows eseménynaplóiban keresse meg az OMS szolgáltatáshoz |} Microsoft Docs"
-description: "Windows-eseménynaplók a Naplóelemzési által használt leggyakrabban használt adatforrások közül.  Ez a cikk ismerteti a Windows Eseménynapló gyűjtemény és a rekordok hoznak létre az OMS-tárházban részleteit konfigurálása."
+title: "Összegyűjti és elemzi a Windows eseménynaplóiban keresse meg az Azure Naplóelemzés |} Microsoft Docs"
+description: "Windows-eseménynaplók a Naplóelemzési által használt leggyakrabban használt adatforrások közül.  Ez a cikk ismerteti a Windows-eseménynaplók gyűjteménye és a részletek a rekordok hoznak létre a Naplóelemzési munkaterület konfigurálása."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 12/11/2017
 ms.author: bwren
-ms.openlocfilehash: ddead0903c7c5f29bc996e305699ced596d0a4f5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 7a7deb4d7a287b2e9613e6035a7ffd7bb6f14f9c
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>A Windows Eseménynapló adatforrások Naplóelemzési
 Windows-eseménynaplók olyan egyik leggyakoribb [adatforrások](log-analytics-data-sources.md) adatgyűjtéshez Windows ügynököt használ, mivel számos alkalmazás a Windows eseménynaplójába írhatja.  Események például a rendszer- és standard naplókból mellett adja meg a figyelni kívánt alkalmazások által létrehozott egyéni naplók összegyűjtésére.
@@ -72,7 +72,7 @@ Az alábbi táblázat példákat különböző Windows-esemény lehívása napl�
 | Esemény &#124; Ha EventLevelName == "error" &#124; forrás count() összefoglalója |Hiba események száma a Windows forrás. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Naplóelemzési más gyűjtéséhez konfigurálja [adatforrások](log-analytics-data-sources.md) elemzés céljából.
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére.  
 * Használjon [egyéni mezők](log-analytics-custom-fields.md) elemzése a eseményrekordok egyes mezőkbe.

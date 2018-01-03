@@ -16,10 +16,10 @@ ms.custom: backup-restore
 ms.date: 12/06/2017
 ms.author: barbkess
 ms.openlocfilehash: 3b39e87946f3787c71872c7b98db419f1f239e7a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Állítsa vissza az Azure SQL Data Warehouse (PowerShell)
 > [!div class="op_single_selector"]
@@ -154,7 +154,7 @@ $GeoRestoredDatabase.status
 
 A helyreállított adatbázis TDE-kompatibilis akkor lesz a forrásadatbázis TDE engedélyezve van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az üzleti folytonosságot biztosító szolgáltatásokat az Azure SQL Database kiadásainak kapcsolatos információkért olvassa el a [Azure SQL Database üzleti folytonosság – áttekintés][Azure SQL Database business continuity overview].
 
 <!--Image references-->

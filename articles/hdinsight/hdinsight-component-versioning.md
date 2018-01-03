@@ -15,24 +15,24 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 12/13/2017
 ms.author: bprakash
-ms.openlocfilehash: 0b6afcad6f838170d83f90a2cef8ccab0e2cfc9a
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 45cccb09753c85ae4a6d077d49cbd58630a9788a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a hdinsight eszközzel verziók?
 
-További tudnivalók az Apache Hadoop-ökoszisztémával összetevők és a Microsoft Azure HDInsight, valamint a Standard és Premium szolgáltatásszintek verziók. Emellett ismerje meg a HDInsight Hadoop összetevő verziók ellenőrzéséhez. 
+További tudnivalók az Apache Hadoop-ökoszisztémával összetevők és a Microsoft Azure HDInsight, valamint a vállalati biztonsági csomag verziója. Emellett ismerje meg a HDInsight Hadoop összetevő verziók ellenőrzéséhez. 
 
 Minden HDInsight-verzió egy felhőalapú terjesztési verziójának Hortonworks Data Platform (HDP).
 
 ## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>HDInsight különböző verzióiban Hadoop-összetevők
 Az Azure HDInsight Hadoop fürt több verziója, amely bármikor telepíthető támogatja. Minden egyes verzió choice hoz létre, egy adott verziójához a HDP telepítési és összetevők belüli, hogy a terjesztési. 2017. február 17.,-től az Azure HDInsight által használt alapértelmezett fürt verzió 3.5-ös és HDP 2.5 alapul.
 
-A HDInsight-fürt verziókról társított összetevő-verziók a következő táblázatban láthatók. 
+A HDInsight-fürt verziókról társított összetevő-verziók a következő táblázatban láthatók: 
 
 > [!NOTE]
 > Az alapértelmezett verzió a HDInsight szolgáltatás minden külön értesítés nélkül változhatnak. Ha verzió függőség, ha a .NET SDK-val Azure PowerShell és az Azure parancssori felület a fürtök létrehozásához, adja meg a HDInsight-verzió.
@@ -46,7 +46,7 @@ A HDInsight-fürt verziókról társított összetevő-verziók a következő t�
 | Apache Hive és HCatalog |1.2.1 |1.2.1 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 |
 | Apache Hive2 | 2.1.0 |-|-|-|-|-|-|
 | Apache Tez Hive2 | 0.8.4 |-|-|-|-|-|-|
-| Apache Pletyka | 0.7.0 |0.6.0 |-|-|-|-|-|
+| Apache Ranger | 0.7.0 |0.6.0 |-|-|-|-|-|
 | Apache HBase |1.1.2 |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 |-|
 | Apache Sqoop |1.4.6 |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
 | Apache Oozie |4.2.0 |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
@@ -94,7 +94,49 @@ A következő táblázat az Azure-portál jelenleg rendelkezésre álló HDInsig
 | A HDInsight 2.1-es verziója |1.3 HDP |Windows Server 2012 R2 |Igen |2013. október 28. |Nem |2014. május 12. |2015. május 31-ig. |
 | HDInsight 1.6-os |1.1 HDP | |Nem |2013. október 28. |Nem |2014. április 26. |2015. május 31-ig. |
 
-## <a name="hdinsight-windows-retirement"></a>HDInsight Windows kivonása
+
+## <a name="enterprise-security-package-for-hdinsight"></a>A HDInsight a vállalati biztonsági csomag
+
+Az Azure HDInsight csomag egy nem kötelező, amelyeket felvehet a HDInsight-fürt létrehozása a fürt munkafolyamat részeként. A vállalati biztonsági csomag támogatja:
+
+- Active Directory integrációja a hitelesítéshez.
+
+    A múltban csak egy felhasználót a helyi rendszergazda és a helyi SSH-felhasználó hozhat létre HDInsight-fürtök. A helyi rendszergazda felhasználónak hozzáférhető minden a fájlok, mappák, táblákat és oszlopokat.  A vállalati biztonsági csomag engedélyezheti szerepköralapú hozzáférés-vezérlés a HDInsight-fürtök integrálása a saját Active Directoryval, amelyek magukban foglalják a helyszíni Active Directory, Azure Active Directory tartományi szolgáltatások vagy infrastruktúra-szolgáltatási az Active Directory a virtuális gép. A fürtön tartományi rendszergazda biztosíthat a felhasználók számára saját vállalati (tartomány)-felhasználónevet és jelszót a fürt eléréséhez használja. 
+
+    További információkért lásd:
+
+    - [Tartományhoz csatlakozó HDInsight-fürtökkel a Hadoop biztonsági bemutatása](./domain-joined/apache-domain-joined-introduction.md)
+    - [Tervezze meg az Azure-tartományhoz Hadoop-fürtök a Hdinsightban](./domain-joined/apache-domain-joined-architecture.md)
+    - [Tartományhoz csatlakozó védőfal mögötti környezet konfigurálása](./domain-joined/apache-domain-joined-configure.md)
+    - [Tartományhoz csatlakozó HDInsight-fürtök Azure Active Directory tartományi szolgáltatások konfigurálása](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
+
+- Az engedélyezési adatok
+
+    - A hitelesítéshez a Hive, a Spark SQL és a Yarn várólisták Apache Pletyka integrációja.
+    - Hozzáférés-vezérlés a fájlok és mappák állíthatja be.
+
+    További információkért lásd:
+
+    - [A tartományhoz csatlakoztatott HDInsight Hive-szabályzatok konfigurálása](./domain-joined/apache-domain-joined-run-hive.md)
+
+- A figyelő hozzáférések és a konfigurált házirendek naplófájlok megtekintése. 
+
+### <a name="supported-cluster-types"></a>Támogatott fürttípusok
+
+Jelenleg csak a következő fürttípus támogatja a vállalati biztonsági csomag:
+
+- Hadoop (csak a 3.6. HDInsight)
+- Spark
+- Interaktív lekérdezés
+
+### <a name="support-for-azure-data-lake-store"></a>Az Azure Data Lake Store támogatása
+
+A vállalati biztonsági csomag támogatja az Azure Data Lake Store használja, mint az elsődleges és a bővítmény tárolására is.
+
+### <a name="pricing-and-sla"></a>Díjszabás és SLA
+A vállalati biztonsági csomag tarifa- és SLA-t a információkért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/).
+
+## <a name="hdinsight-windows-retirement"></a>A windowsos HDInsight kivonása
 A Microsoft Azure HDInsight 3.3-as verzió a legfrissebb verziója a Windows a HDInsight volt. A Windows a HDInsight a kivezetési dátum 2018 július 31. Ha a HDInsight-fürtök Windows 3.3-as vagy annál régebbi, át kell telepítenie a Linux (HDInsight 3.5-ös vagy újabb verziójú) HDInsight 2018 július 31 előtt. A Linux operációs rendszert futtató történő lehetővé teszi létrehozása vagy a HDInsight-fürtök átméretezése megőrzése. HDInsight Windows 3.3-as verzió támogatása lejárt 2016. június 27.
 
 HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a HDInsight csak a Linux operációs rendszeren. Ennek eredményeképpen egyes összetevői belül HDInsight érhetők el a Linux csak. Ezek közé tartoznak, Apache Pletyka, Kafka, interaktív lekérdezést, a Spark HDInsight-alkalmazásokat, és az Azure Data Lake Store elsődleges fájlrendszer. A HDInsight a későbbi kiadásokban csak a Linux operációs rendszeren érhetők el. Nincs HDInsight a Windows későbbi kiadásaiban lesz. 
@@ -165,36 +207,10 @@ A szakasz a kibocsátási megjegyzésekben a Hortonworks Data Platform disztrib�
 * HDInsight-fürt verziószáma 2.1-es verzióját használja egy Hadoop-terjesztést alapuló [Hortonworks Data Platform 1.3][hdp-1-3-0].
 * HDInsight-fürt verziószáma 1.6-os alapuló Hadoop-terjesztést használja [Hortonworks Data Platform 1.1][hdp-1-1-0].
 
-## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard és HDInsight Prémium
 
-Az Azure HDInsight a big data felhőajánlatokat két kategóriába biztosít: _szabványos_ és _prémium_. A következő táblázat felsorolja az elérhető _csak_ a HDInsight prémium. HDInsight Standard és Premium funkciókat, amelyek a tábla nem kifejezetten ismertetett érhetők el.
 
-> [!NOTE]
-> A HDInsight prémium ajánlat jelenleg előzetes, és csak a Linux-fürtök esetén érhető el.
 
-| HDInsight prémium funkció | Leírás |
-| --- | --- |
-| A HDInsight-fürtök tartományhoz |Csatlakoztassa a HDInsight-fürtök olyan Azure Active Directory (Azure AD) tartományhoz a vállalati szintű biztonság. HDInsight prémium konfigurálnia a vállalati, akik bejelentkezni a HDInsight-fürtök az Azure AD használatával képes hitelesíteni az alkalmazottakat. A vállalati rendszergazda konfigurálhatja a Hive biztonsági szerepköralapú hozzáférés-vezérlés használatával [Apache Pletyka](http://hortonworks.com/apache/ranger/) és adatokhoz való hozzáférést, csak, mint amennyit szükséges használatára. Végül a rendszergazda az alkalmazottak és változások a hozzáférés-vezérlési házirendeket, ezáltal a cégirányítási a vállalati erőforrások magas fokú elérése által elért adatokat is naplózza. További információkért lásd: [konfigurálása tartományhoz a HDInsight-fürtök](./domain-joined/apache-domain-joined-configure.md). |
 
-### <a name="cluster-types-supported-in-hdinsight-premium"></a>Fürt típusokat támogatja a HDInsight prémium
-A következő táblázat a fürttípusok, amelyekkel a HDInsight prémium támogatottak.
-
-| Fürttípus | Standard | Prémium (előzetes verzió) |
-| --- | --- | --- |
-| Hadoop |Igen |Igen (csak a 3.6. HDInsight) |
-| Spark |Igen |Nem |
-| HBase |Igen |Nem |
-| Storm |Igen |Nem |
-| R Server |Igen |Nem |
-| Interaktív lekérdezés |Igen |Nem |
-| Kafka (előzetes verzió) |Igen |Nem | 
-
-### <a name="support-for-azure-data-lake-store-in-hdinsight-premium"></a>Az Azure Data Lake Store a HDInsight prémium támogatása
-
-HDInsight prémium fürtök nem támogatják az Azure Data Lake Store elsődleges tárolóként használ. Azonban is használhatja az Azure Data Lake Store kiegészítő tárterület HDInsight prémium fürtökkel.
-
-### <a name="pricing-and-sla"></a>Díjszabás és SLA
-HDInsight prémium tarifacsomag és SLA-t információkért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Alapértelmezett csomópont konfigurációs és virtuális gépek méretei fürtök
 Az alábbi táblázatok a HDInsight-fürtök az alapértelmezett virtuális gép (VM) mérete.
@@ -234,7 +250,7 @@ Az alábbi táblázatok a HDInsight-fürtök az alapértelmezett virtuális gép
 > - Néven dolgozó *felügyelő* a Storm a fürt típusa.
 > - Néven dolgozó *régió* a HBase a fürt típusa.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A telepítő Hadoop, Spark, és a HDInsight fürt](hdinsight-hadoop-provision-linux-clusters.md)
 - [Működik a Hadoop on HDInsight from Windows-számítógépek](hdinsight-hadoop-windows-tools.md)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 5379586355ece98af6295236d6cbd09cb31c742b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]
@@ -154,7 +154,7 @@ Folytassuk a program írása alapvető szerkezete.
 
 Most, hogy a program alapvető szerkezete írása, igazolnia kell létrehoznia a módszerek által meghívott a `Main` metódust.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 Az Azure CDN könyvtár használhatunk, igazolnia kell a szolgáltatás egyszerű hitelesítést, és egy hitelesítési jogkivonat beszerzése.  Ez a módszer adal-t használja a-jogkivonatot lekérdezni.
 
 ```csharp
@@ -328,13 +328,13 @@ A Microsoft most fordítási és kattintva a program futtatható a **Start** gom
 
 Amikor a program a fenti parancssor eléri, térjen vissza az erőforráscsoportot az Azure portálon, és tekintse meg, hogy létrejött-e a profil kell lennie.
 
-![Sikeres bejelentkezés.](./media/cdn-app-dev-net/cdn-success.png)
+![Sikerült!](./media/cdn-app-dev-net/cdn-success.png)
 
 Azt is erősítse meg a paraméter, a program a többi szükséges.
 
 ![Program befejezése](./media/cdn-app-dev-net/cdn-program-running-2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a forgatókönyv a befejezett projekt megjelenítéséhez [a minta letöltéséhez](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
 
 További dokumentáció az Azure CDN könyvtár a .NET találja, tekintse meg a [hivatkozást az MSDN-en](https://msdn.microsoft.com/library/mt657769.aspx).

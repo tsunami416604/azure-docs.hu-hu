@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: markgal;trinadhk
-ms.openlocfilehash: 9a4e0b5a400668cb9ec96000d274f43739139a03
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 66b64c803dfea6a1e4c7795d10e4b4ba064f1cf7
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Virtuális gép biztonsági infrastruktúrájának megtervezése az Azure-ban
-Ez a cikk ismerteti a teljesítmény- és erőforrás-javaslatok a virtuális gép biztonsági mentési infrastruktúra tervezéséhez nyújtanak segítséget. A biztonsági mentési szolgáltatás; fő szempontjait is meghatározza lehet, hogy ezeket az jellemzőket fontos meghatározni, hogy az architektúra a kapacitástervezés és ütemezés. Ha megismerte [a környezet előkészítése](backup-azure-vms-prepare.md), tervezés, mint a megkezdése előtt [biztonsági mentése a virtuális gépek](backup-azure-vms.md). Ha az Azure virtuális gépek több információra van szüksége, tekintse meg a [Virtual Machines – dokumentáció](https://azure.microsoft.com/documentation/services/virtual-machines/).
+Ez a cikk ismerteti a teljesítmény- és erőforrás-javaslatok a virtuális gép biztonsági mentési infrastruktúra tervezéséhez nyújtanak segítséget. A biztonsági mentési szolgáltatás; fő szempontjait is meghatározza lehet, hogy ezeket az jellemzőket fontos meghatározni, hogy az architektúra a kapacitástervezés és ütemezés. Ha megismerte [a környezet előkészítése](backup-azure-arm-vms-prepare.md), tervezés, mint a megkezdése előtt [biztonsági mentése a virtuális gépek](backup-azure-arm-vms.md). Ha az Azure virtuális gépek több információra van szüksége, tekintse meg a [Virtual Machines – dokumentáció](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
 ## <a name="how-does-azure-back-up-virtual-machines"></a>Hogyan működik az Azure virtuális gépek biztonsági mentése?
 Az Azure Backup szolgáltatás a biztonsági mentési feladatot indít el a megadott időpontban, amikor elindítja a tartalék mellék időpontban pillanatképének elkészítéséhez. Az Azure Backup szolgáltatás használ a _VMSnapshot_ Windows, a bővítmény és a _VMSnapshotLinux_ Linux bővítményt. A bővítmény telepítve van a virtuális gép első biztonsági mentés során. A bővítmény telepítéséhez, a virtuális Gépen kell futnia. Ha a virtuális gép nem fut, a biztonsági mentési szolgáltatás pillanatképet készít a az alapul szolgáló tárolási (mert nem alkalmazás írások végrehajthatók, miközben a virtuális gép le van állítva).
@@ -97,7 +97,7 @@ Az egyes lemezek biztonsági mentés alatt Azure biztonsági mentési olvassa be
 ## <a name="total-vm-backup-time"></a>Virtuális gép teljes biztonsági mentés ideje
 A biztonsági mentési legtöbbször ennek olvasását és az adatok másolásának telik, amíg más műveletek hozzájárul a teljes ideje, készítsen biztonsági másolatot a virtuális gép szükséges.
 
-* Szükséges idő [telepítse vagy frissítse a tartalék mellék](backup-azure-vms.md).
+* Szükséges idő [telepítse vagy frissítse a tartalék mellék](backup-azure-arm-vms.md).
 * Pillanatkép ideje, ami időn belül elindítani egy pillanatkép. A pillanatképek megközelíti az ütemezett biztonsági mentéskor aktiválódnak.
 * Várakozási ideje. A biztonsági mentési szolgáltatás biztonsági mentések több ügyfél feldolgozása, mert pillanatkép biztonsági mentési adatok másolása a biztonsági mentési vagy a Recovery Services-tároló esetleg nem azonnal elindítani. A maximális idejét betöltése, és a várakozási is stretch legfeljebb nyolc óra feldolgozott biztonsági másolatok száma miatt. Azonban a teljes virtuális gép biztonsági mentési ideje 24 óránál kevesebb napi biztonsági mentési házirendek.
 * Adatátviteli idő, a biztonsági mentési szolgáltatás számára, a korábbi biztonsági mentés a növekményes változásokat számítási és a változások átvitele tárolási tároló szükséges idő.
@@ -147,8 +147,8 @@ A megadott virtuális gép leáll, csak akkor, ha a védelem ki van kapcsolva sz
 ## <a name="questions"></a>Kérdései vannak?
 Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](http://aka.ms/azurebackup_feedback).
 
-## <a name="next-steps"></a>Következő lépések
-* [Készítsen biztonsági másolatot a virtuális gépek](backup-azure-vms.md)
+## <a name="next-steps"></a>További lépések
+* [Készítsen biztonsági másolatot a virtuális gépek](backup-azure-arm-vms.md)
 * [Kezelheti a virtuális gép biztonsági mentése](backup-azure-manage-vms.md)
-* [Virtuális gépek visszaállítása](backup-azure-restore-vms.md)
+* [Virtuális gépek visszaállítása](backup-azure-arm-restore-vms.md)
 * [Virtuális gép biztonsági másolatával kapcsolatos problémák elhárítása](backup-azure-vms-troubleshoot.md)

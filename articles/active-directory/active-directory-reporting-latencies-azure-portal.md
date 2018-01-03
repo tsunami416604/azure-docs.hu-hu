@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 12/15/2017
 ms.author: markvi;dhanyahk
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fa9ffa8f5380659674301f7e738879c8efb25b7f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 5ec41817fede495b8262e28d2d614a480d98ff3b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory jelentéskészítés késések
 
@@ -37,15 +37,15 @@ Nincsenek Tevékenységjelentés két terület:
 
 A következő táblázat a késési adatok Tevékenységjelentések.
 
-| Jelentés | Minimális | Átlag |
-| :-- | --- | --- |
-| Naplók | 30 perc  | 1 óra  |
-| Bejelentkezések | 15 perc  | 2 óra |
+| Jelentés | Minimális | Átlag | Megjegyzések |
+| :-- | --- | --- | :-- |
+| Naplók | 30 perc  | 1 óra  |Bizonyos esetekben a naplózási tevékenység adatai jelennek meg legfeljebb 2 óráig is eltarthat.|
+| Bejelentkezések | 15 perc  | 2 óra |Bizonyos esetekben a bejelentkezési tevékenység adatai jelennek meg akár 24 óráig is eltarthat. Ez magában foglalja az örökölt office-alkalmazások érkező bejelentkezések-tevékenységek adatait. |
 
-Peremhálózati esetenként is igénybe vehet:
 
-- két óra naplózási tevékenység adatok jelennek meg.
-- bejelentkezési tevékenységek adatai megjelennek 24 óra. Ez magában foglalja az örökölt office-alkalmazások érkező bejelentkezések-tevékenységek adatait. 
+
+
+
 
 
 ## <a name="security-reports"></a>Biztonsági jelentések
@@ -70,16 +70,16 @@ A következő táblázat a késési adatok kockázati eseményekről.
 
 | Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
-| Névtelen IP-címekről bejelentkezések |5 perc |15 perc |2 óra |
-| Ismeretlen helyekről indított bejelentkezések |5 perc |15 perc |2 óra |
+| Névtelen IP-címről történő bejelentkezések |5 perc |15 perc |2 óra |
+| Ismeretlen helyekről történt bejelentkezések |5 perc |15 perc |2 óra |
 | Felhasználók, akiknek kiszivárogtak a hitelesítő adatai |2 óra |4 óra |8 óra |
 | Bejelentkezés szokatlan helyekről |5 perc |1 óra |8 óra  |
-| Fertőzött eszközökről indított bejelentkezések |2 óra |4 óra |8 óra  |
+| Bejelentkezések fertőzött eszközökről |2 óra |4 óra |8 óra  |
 | Bejelentkezések gyanús tevékenységeket mutató IP-címekkel |2 óra |4 óra |8 óra  |
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha azt szeretné, további információkat az Azure-portálon a Tevékenységjelentések, lásd:
 

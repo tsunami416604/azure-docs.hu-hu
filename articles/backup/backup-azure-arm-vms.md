@@ -17,10 +17,10 @@ ms.date: 8/15/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 892a88a2bc9d492f8a3afe59c05b4729f4830e6d
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése Recovery Services-tárolóba
 
@@ -95,7 +95,7 @@ A kezdeti biztonsági mentési feladat futtatása:
 ## <a name="troubleshooting-errors"></a>Kapcsolatos hibák elhárítása
 Ha biztonsági során problémákat tapasztal a virtuális gép, tekintse meg a [VM hibaelhárítási cikke](backup-azure-vms-troubleshoot.md) segítségét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy a virtuális gép védetté, tekintse meg a Virtuálisgép-felügyeleti feladatokat, és hogyan lehet visszaállítani a virtuális gépek a következő cikkeket.
 
 * [A virtuális gépek kezelése és figyelése](backup-azure-manage-vms.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli;mikhegn
 ms.openlocfilehash: 023b878706abf524b5a7939492937a92151f6035
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Az Eclipse használata Java Service Fabric-alkalmazás hibakeresése
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/18/2017
 
 Ha az alkalmazás összeomló, is érdemes lehet coredumps engedélyezéséhez. Végrehajtás ``ulimit -c`` a rendszerhéj, és ha 0 értéket adja vissza, majd coredumps nem engedélyezettek. Ahhoz, hogy a korlátlan coredumps, hajtsa végre a következő parancsot: ``ulimit -c unlimited``. Azt is ellenőrizheti a folyamat állapotát a parancs ``ulimit -a``.  Ha szeretne frissíteni a coredump generációs elérési útja, a végrehajtást ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern``. 
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 * [Linux Azure Diagnostics használatával naplógyűjtéshez](service-fabric-diagnostics-how-to-setup-lad.md).
 * [Figyelése és diagnosztizálása helyileg szolgáltatások](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).

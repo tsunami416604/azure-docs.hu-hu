@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: df39b957e70be38331b3711a36ce847348049591
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4231b5e72ea0852de344e7484bdf20997243cee6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Oktatóanyag: Azure Active Directoryval integrált felvegye LMS
 
@@ -30,7 +30,7 @@ Felvegye LMS integrálása az Azure AD lehetővé teszi a következő előnyöke
 - Engedélyezheti a felhasználók automatikusan jelentkezzen be felvegye LMS (keresztül egyszeri bejelentkezés) az Azure AD-fiókok.
 - A fiók egyetlen központi helyen, az Azure-portálon kezelheti.
 
-Ha szeretné tudni, hogy ellenőrizni bővebben, az Azure AD egy szolgáltatott szoftverként (SaaS) alkalmazásintegráció, lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Ha azt szeretné, az Azure AD egy szolgáltatott szoftverként (SaaS) alkalmazás integrációt, tudnia további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

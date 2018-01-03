@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: a17de187f67c075147ea8ff7f69434014eea3fdb
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 9cdbe4a12a0b16341a1e52f176901045baf327b5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>Logic Apps-hurkok, -hatókörök és -kibontás
   
@@ -26,9 +26,9 @@ A Logic Apps használata tömbök, gyűjtemények, kötegekben, számos, és fut
   
 ## <a name="foreach-loop-and-arrays"></a>ForEach hurok és tömbök
   
-A Logic Apps segítségével hurokba építhető adatok, és egy műveletet minden elemhez.  Ez az alkalmazáson keresztül a `foreach` művelet.  A tervezőben, megadhat hozzáadása egy for-each ciklus.  A tömb kívánja az ismétlés kiválasztása, után elkezdhet műveletek.  Több műveletek másodpercenkénti foreach hurok adhat hozzá.  Egyszer a hurkon belül elkezdheti adja meg, hogy mi történjen a tömb egyes értéken.
+A Logic Apps segítségével hurokba építhető adatok, és egy műveletet minden elemhez.  Egy gyűjtemény ismétlési keresztül lehetséges a `foreach` művelet.  A Tervező adhat hozzá egy for-each ciklus.  A tömb kívánja az ismétlés kiválasztása, után elkezdhet műveletek.  Több műveletek másodpercenkénti foreach hurok adhat hozzá.  Egyszer a hurkon belül elkezdheti adja meg, hogy mi történjen a tömb egyes értéken.
 
-Kód-nézet használata esetén is megadhat egy for-each ciklus például alatt.  Itt látható egy példa egy for-each ciklus, amelyet az összes e-mail címet, amely tartalmazza a "microsoft.com" az e-mailt küld:
+  Ebben a példában az összes e-mail címet, amely tartalmazza a "microsoft.com" e-mail küldése. Kód-nézet használata esetén is megadhat egy for-each ciklus az alábbi példához hasonló:
 
 ``` json
 {
@@ -66,7 +66,7 @@ Kód-nézet használata esetén is megadhat egy for-each ciklus például alatt.
 }
 ```
   
-  A `foreach` művelet is többször over tömbállandó legfeljebb 5000 sort.  Alapértelmezés szerint minden egyes ismétlés párhuzamosan fogja végrehajtani.  
+  A `foreach` művelet is ismétlés tömbök több ezer entitást.  Alapértelmezés szerint az ismétlés végre párhuzamosan.  Lásd: [korlátozásai és konfigurációja](logic-apps-limits-and-config.md) részleteinek a tömb és feldolgozási korlátok.
 
 ### <a name="sequential-foreach-loops"></a>Szekvenciális ForEach hurkok
 
@@ -83,13 +83,15 @@ Foreach hurkot hajtható végre az egymás után, hogy a `Sequential` műveletet
   
 ## <a name="until-loop"></a>Hurok-ig
   
-  Művelet vagy műveletsorozattal hajthat végre, amíg egy feltétel nem teljesül.  A leggyakoribb forgatókönyvhöz, amelyben ez a végpont hívja meg addig, amíg a keresett választ kapott.  A tervezőben, megadhat hozzáadása egy hurok-ig.  Miután hozzáadta a hurok található műveletek, beállíthatja a kilépési feltételt, valamint a hurok korlátok.  Van egy 1 perc késleltetéssel a hurok ciklusok között.
+  Művelet vagy műveletsorozattal hajthat végre, amíg egy feltétel nem teljesül.  A leggyakoribb helyzetben használhat egy amíg hurok hívja a következő végpont csak a keresett választ kapott.  A tervezőben, megadhat hozzáadása egy hurok-ig.  Miután hozzáadta a hurok található műveletek, beállíthatja a kilépési feltételt, valamint a hurok korlátok.
   
-  Kód-nézet használata esetén is megadhat egy amíg hurok, például alatt.  Itt látható egy példa egy HTTP-végpont meghívása mindaddig, amíg az adott válasz törzsének értéke "Befejezve".  A feladat befejeződik mikor vagy 
+  Ez a példa egy HTTP-végpont meghívja a mindaddig, amíg az adott válasz törzsének értéke "Befejezve".  Ha befejeződött vagy: 
   
   * HTTP-válasz "Befejezve" állapota
-  * 1 óráig próbált
+  * Egy órára próbált
   * Az rendelkezik beállításpanelen 100 alkalommal
+  
+  Kód-nézet használata esetén is megadhat egy csak az alábbi példához hasonló hurok:
   
   ``` json
   {
@@ -117,9 +119,9 @@ Foreach hurkot hajtható végre az egymás után, hogy a `Sequential` műveletet
   
 ## <a name="spliton-and-debatching"></a>SplitOn és debatching
 
-Néha egy eseményindító kaphat debatch és elindítsanak egy munkafolyamatot elemenként kívánt elemek tömbjét.  Keresztül ehhez a `spliton` parancsot.  Alapértelmezés szerint az eseményindító swagger határozza meg a hasznos adatok között, amely tömb, ha egy `spliton` megjelenik, és indítsa el a elemenként futását.  SplitOn csak egy eseményindító lehet hozzáadni.  Ez manuálisan konfigurálhatók, vagy definition kódnézetben felülbírálható.  Jelenleg is debatch SplitOn tömbállandó legfeljebb 5 000 elemnél.  Nem lehet egy `spliton` és a szinkron válasz mintát is megvalósíthatja.  Minden munkafolyamat neve, amely rendelkezik egy `response` művelet kívül `spliton` aszinkron módon futnak le és azonnali küldés `202 Accepted` választ.  
+Néha egy eseményindító kaphat debatch és elindítsanak egy munkafolyamatot elemenként kívánt elemek tömbjét.  A debatching pedig segítségével konfigurálhatók a `spliton` parancsot.  Alapértelmezés szerint az eseményindító swagger határozza meg a hasznos adatok között, amely tömb, ha egy `spliton` jelenik meg. A `spliton` indítja el a elemenként futtató a tömbben.  SplitOn csak egy eseményindítót, amely kézzel konfigurált vagy felül lehet hozzáadni. Nem lehet egy `spliton` és a szinkron válasz mintát is megvalósíthatja.  Minden munkafolyamat neve, amely rendelkezik egy `response` művelet kívül `spliton` aszinkron módon futtatja, és elküldi egy azonnali `202 Accepted` választ.  
 
-Az alábbi példa-kódnézetben SplitOn adhat meg.  Ez elemek tömbje fogad, és az egyes sorokkal debatches.
+  Ebben a példában egy tömb elemek fogad, és az egyes sorokkal debatches. Az alábbi példa-kódnézetben SplitOn adhat meg:
 
 ```
 {
@@ -139,7 +141,7 @@ Az alábbi példa-kódnézetben SplitOn adhat meg.  Ez elemek tömbje fogad, és
 
 ## <a name="scopes"></a>Hatókörök
 
-A hatókör együttes használatával műveletsorozat csoportosításához lehetőség.  Ez különösen fontos kivételkezelést megvalósításához.  A tervezőben új hatókör hozzáadása, és megkezdheti saját műveletek hozzáadását.  Meghatározhatja a hatókörök kódnézetben a következőhöz hasonló:
+A hatókör együttes használatával műveletsorozat csoportosításához lehetőség.  Hatókörök hasznosak kivételkezelést megvalósításához.  A tervezőben új hatókör hozzáadása, és megkezdheti saját műveletek hozzáadását.  Az alábbi példához hasonló kódnézetben hatókörök adhatók meg:
 
 
 ```

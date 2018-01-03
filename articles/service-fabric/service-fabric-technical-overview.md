@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/30/2017
+ms.date: 12/18/2017
 ms.author: ryanwi
-ms.openlocfilehash: 2204fe7393cddb88c18415768a4c6f8494e83d7b
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: dc7e536ce40bf95e1950e1e44844cd8fe26ea1a1
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="service-fabric-terminology-overview"></a>A Service Fabric-terminológia áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését. Ez a cikk részletesen tudni, hogy a kifejezés, amely a dokumentáció a Service Fabric által használt terminológiával.
@@ -99,11 +99,11 @@ Nincsenek elérhető, hogy a Service Fabric szolgáltatásokat .NET-keretrendsze
 Olvassa el a [válassza ki a szolgáltatás programozási modellt](service-fabric-choose-framework.md) cikkében találja.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információt a Service Fabric:
 
 * [A Service Fabric áttekintése](service-fabric-overview.md)
-* [Miért egy mikroszolgáltatások közelítik meg az alkalmazások?](service-fabric-overview-microservices.md)
+* [Miért érdemes a mikroszolgáltatás-alapú megközelítést választani alkalmazások létrehozásához?](service-fabric-overview-microservices.md)
 * [Alkalmazáshasználati helyzetek](service-fabric-application-scenarios.md)
 
 

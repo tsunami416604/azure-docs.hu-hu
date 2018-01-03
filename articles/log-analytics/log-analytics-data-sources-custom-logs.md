@@ -1,6 +1,6 @@
 ---
-title: "Egyéni gyűjtését az OMS szolgáltatáshoz |} Microsoft Docs"
-description: "A Naplóelemzési képes eseményeket gyűjteni szöveges fájlt a Windows és Linux rendszerű számítógépeken.  Ez a cikk ismerteti, hogyan adható meg egy új egyéni napló és a rekordok hoznak létre az OMS-tárházban részleteit."
+title: "Az Azure Naplóelemzés egyéni naplógyűjtéshez |} Microsoft Docs"
+description: "A Naplóelemzési képes eseményeket gyűjteni szöveges fájlt a Windows és Linux rendszerű számítógépeken.  Ez a cikk ismerteti, hogyan adható meg egy új egyéni napló és a rekordok hoznak létre a Naplóelemzési munkaterület részleteit."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/17/2017
+ms.date: 12/14/2017
 ms.author: bwren
-ms.openlocfilehash: addb1c8f4c71bb1979229c597665fd301dfb9fdf
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Naplóelemzési egyéni naplókat
-Az egyéni naplókat adatforrásra Naplóelemzési eseményeinek gyűjtése a Windows és Linux számítógépeken egyaránt szövegfájlból teszi lehetővé. Számos alkalmazás adatainak naplózása szöveges fájlok, például a Windows Eseménynapló vagy a Syslog szabványos naplózási szolgáltatások helyett.  Összegyűjtését követően elemezni a minden egyes mezők használatával való bejelentkezéshez a rekord a [egyéni mezők](log-analytics-custom-fields.md) Naplóelemzési szolgáltatása.
+Az egyéni naplókat adatforrásra Naplóelemzési eseményeinek gyűjtése a Windows és Linux számítógépeken egyaránt szövegfájlból teszi lehetővé. Számos alkalmazás adatainak naplózása szöveges fájlok, például a Windows Eseménynapló vagy a Syslog szabványos naplózási szolgáltatások helyett.  Összegyűjtését követően elemezni a rekordokban a bejelentkezés használatával az egyes mezők a [egyéni mezők](log-analytics-custom-fields.md) Naplóelemzési szolgáltatása.
 
 ![Egyéni naplógyűjtést](media/log-analytics-data-sources-custom-logs/overview.png)
 
@@ -42,10 +42,10 @@ A naplófájlok kell gyűjteni a következő feltételeknek kell.
 A következő eljárás használatával adja meg egy egyéni naplófájlt.  Görgesse le ez a cikk egy egyéni napló hozzáadásának minta útmutatást.
 
 ### <a name="step-1-open-the-custom-log-wizard"></a>1. lépés Nyissa meg az egyéni naplózás varázsló
-Az egyéni naplózás varázsló az OMS-portálon fut, és adhatók meg egy új egyéni napló gyűjtése.
+Az egyéni naplózás varázsló az Azure-portálon fut, és adhatók meg egy új egyéni napló gyűjtése.
 
-1. Az OMS-portálon lépjen **beállítások**.
-2. Kattintson a **adatok** , majd **egyéni naplói**.
+1. Válassza ki az Azure-portálon **Naplóelemzési** > a munkaterület > **speciális beállítások**.
+2. Kattintson a **adatok** > **egyéni naplói**.
 3. Összes konfigurációs módosításhoz alapértelmezés szerint automatikusan leküldéssel az összes ügynököt.  Linux-ügynökök, a konfigurációs fájlt a Fluentd adatgyűjtő küld.  Ha manuálisan minden egyes Linux-ügynök a következő fájl módosításához, törölje a jelet *alkalmaz az alábbi konfiguráció a Linuxos gépeimre*.
 4. Kattintson a **Add +** egyéni napló varázsló megnyitásához.
 
@@ -54,7 +54,7 @@ Indítsa el az egyéni napló minta feltöltésével.  A varázsló elemzése é
 
 **Új sor** az alapértelmezett elválasztó és a naplófájlokat, amelyek egy-egy bejegyzésnek soronként használt.  Ha a sor kezdődik-e a dátumot és időpontot a formátumok egyikében, akkor megadhatja egy **időbélyeg** szövegelválasztó, amely támogatja a bejegyzéseket, amelyek több egynél több sort.
 
-Időbélyeg elválasztó használata, majd az OMS tárolt rekordokban TimeGenerated tulajdonsága tölti fel, hogy a naplófájl bejegyzésében megadott dátum/idő.  Ha egy új sor elválasztó használja, majd TimeGenerated a telepítéskor dátum és idő, hogy a Naplóelemzési gyűjtött a bejegyzés.
+Timestamp típusú elválasztó használata esetén majd Naplóelemzési tárolt rekordokban TimeGenerated tulajdonságának tölti fel az adott bejegyzés a naplófájlban a megadott dátum/idő.  Ha egy új sor elválasztó használja, majd TimeGenerated a telepítéskor dátum és idő, hogy a Naplóelemzési gyűjtött a bejegyzés.
 
 
 1. Kattintson a **Tallózás** és egy minta-fájl megkereséséhez.  Vegye figyelembe, hogy ez lehetséges, hogy gomb neve lehet **Choose File** egyes böngészőkben.
@@ -103,13 +103,12 @@ A teljes naplóbejegyzés fogja tárolni egy tulajdonságot, **RawData**.  Való
 
 Nincsenek megadva itt részletes, lépésenkénti leírását az egyéni naplóbejegyzés elemzésekor.  Tekintse meg a [egyéni mezők](log-analytics-custom-fields.md) ezt az információt dokumentációját.
 
-## <a name="disabling-a-custom-log"></a>Egy egyéni napló letiltása
-Egy egyéni naplódefiníciója nem távolítható el, ha van létrejött, de letilthatja eltávolítja az összes a Naplógyűjtemények elérési útját.
+## <a name="removing-a-custom-log"></a>Egy egyéni napló eltávolítása
+Az Azure-portálon a következő folyamat segítségével távolítsa el a korábban definiált egyéni napló.
 
-1. Az OMS-portálon lépjen **beállítások**.
-2. Kattintson a **adatok** , majd **egyéni naplói**.
-3. Kattintson a **részletek** mellett tiltsa le az egyéni napló-definíciót.
-4. Távolítsa el az egyes a Naplógyűjtemények elérési útját a egyéni napló definíciójának.
+1. Az a **adatok** menüjében a **speciális beállítások** a munkaterületen, válassza a **egyéni naplókat** listát az egyéni naplókat.
+2. Kattintson a **eltávolítása** melletti távolítsa el az egyéni naplót.
+
 
 ## <a name="data-collection"></a>Adatgyűjtés
 A Naplóelemzési összegyűjti az új bejegyzések minden egyéni naplóból körülbelül 5 percenként.  Az ügynök minden az összegyűjtő naplófájlban rögzítik a helyére.  Ha az ügynököt az adott időszakban offline állapotba kerül, majd Naplóelemzési bejegyzések az gyűjtenek ahol utolsó abbamaradtak, még akkor is, ha a tételekhez hozta létre, miközben az ügynök offline állapotban volt.
@@ -127,7 +126,7 @@ Egyéni naplórekordokat tartozhat a neve, amely megadja, és a tulajdonságok a
 | ManagementGroupName |A System Center Operations kezelése ügynökök a felügyeleti csoport neve.  Más ügynökök, ez pedig AOI -\<munkaterület azonosítója\> |
 
 ## <a name="log-searches-with-custom-log-records"></a>Napló keresést egyéni naplórekordokat:
-Egyéni naplókat bejegyzéseit az OMS-tárház csakúgy, mint bármely más adatforrás bejegyzéseit vannak tárolva.  A típus, amely megadja, hogy használhassa a Type tulajdonságot a keresés egy adott napló gyűjtött rekordok beolvasni a naplófájl definiálásakor névnek megfelelő rendelkeznek.
+Csakúgy, mint bármely más adatforrás bejegyzéseit a Naplóelemzési munkaterület rögzíti az egyéni naplókat tárolja.  A típus, amely megadja, hogy használhassa a Type tulajdonságot a keresés egy adott napló gyűjtött rekordok beolvasni a naplófájl definiálásakor névnek megfelelő rendelkeznek.
 
 Az alábbi táblázat példákat különböző napló kereséseket rekordok lekérése az egyéni naplókat.
 
@@ -171,6 +170,6 @@ Egyéni mezők definiálásához használjuk a *EventTime*, *kód*, *állapot*, 
 
 ![Napló lekérdezés egyéni mezőkkel](media/log-analytics-data-sources-custom-logs/query-02.png)
 
-## <a name="next-steps"></a>Következő lépések
-* Használjon [egyéni mezők](log-analytics-custom-fields.md) az egyéni napló az egyes mezők elemzése.
+## <a name="next-steps"></a>További lépések
+* Használjon [egyéni mezők](log-analytics-custom-fields.md) egyedi mezők egyéni bejelentkezési bejegyzései elemzése.
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére.

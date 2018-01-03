@@ -22,6 +22,7 @@ Csatlakozzon, és jelentkezzen be egy több magánhálózati IP-címmel létreho
     * Kattintson az **OK** gombra a TCP/IP-beállításokból való kilépéshez, majd kattintson ismét az **OK** gombra az adapterbeállítások bezárásához. A rendszer újból létesíti az RDP-kapcsolatot.
 
 6. A parancssorba írja be az *ipconfig /all* parancsot. Megjelenik az összes hozzáadott IP-cím, és a DHCP ki van kapcsolva.
+7. A Windows használják az elsődleges IP-konfiguráció magánhálózati IP-címét az Azure-ban az elsődleges IP-cím a Windows beállítása. Lásd: [nincs Internet-hozzáférést a Azure Windows virtuális Gépet, amely több IP-címmel rendelkezik](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) részleteiről. 
 
 
 ### <a name="validation-windows"></a>Ellenőrzés (Windows)

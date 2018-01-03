@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 12/14/2017
 ms.author: raiye
-ms.openlocfilehash: 435aca91fa7b46fd47d5031290028b93bfadde48
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 27ab6b97610ab27500cbef703120e2c67cd07183
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-guest-os"></a>Az Azure vendég operációs rendszer
 Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC) frissítések alkalmazása az Azure vendég operációs rendszeren. Ez a cikk határozza meg, ha az adott frissítés használ, a vendég operációs rendszer összes keresése. Frissítések mindig áthozott az adott [termékcsalád] [ family-explain] bevezetett azokat.
@@ -28,13 +28,14 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | --- | --- | --- | --- | --- |
 | Rel 17-10 | [4048953] |Windows 10-es frissítések |5.13 |2017. november 14. |
 | Rel 17-10 | [4048960], [4048962], [4048961] |Csak a Windows biztonsági |2.68, 3.55, 4.48 |2017. november 14. |
-| Rel 17-10 | [4047206] |Az Internet explorer |2.68, 3.55, 4.48 |2017. november 14. |
+| Rel 17-10 | [4047206] |Internet Explorer |2.68, 3.55, 4.48 |2017. november 14. |
 | Rel 17-10 | [4048951] |Flash |3.55, 4.48, 5.13 |2017. november 14. |
-| N/A | [4041681] |Október nem a biztonság összegzése |2.67 |2017. október 10. |
-| N/A | [4041690] |Október nem a biztonság összegzése |3.55 |2017. október 10. |
-| N/A | [4041693] |Október nem a biztonság összegzése |4.48 |2017. október 10. |
-| N/A | [3191565] |Frissítés a Windows Management Framework 5.1  |3.55 |2017. szeptember 12. |
-| N/A | [3191564] |Frissítés a Windows Management Framework 5.1  |4.48 |2017. szeptember 12. |
+| – | [4041681] |Október nem a biztonság összegzése |2.67 |2017. október 10. |
+| – | [4041690] |Október nem a biztonság összegzése |3.55 |2017. október 10. |
+| – | [4041693] |Október nem a biztonság összegzése |4.48 |2017. október 10. |
+| – | [3191566] |Frissítés a Windows Management Framework 5.1  |2.68 |2017. november 14. |
+| – | [3191565] |Frissítés a Windows Management Framework 5.1  |3.55 |2017. november 14. |
+| – | [3191564] |Frissítés a Windows Management Framework 5.1  |4.48 |2017. november 14. |
 
 ## <a name="october-guest-os"></a>Október vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -43,12 +44,12 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | Rel 17-10 | [4041678], [4041679], [4041687] |Csak a Windows biztonsági |2.67, 3.54, 4.47 |2017. október 10. |
 | Rel 17-10 | [4040685], |Internet Explorer |2.67, 3.54, 4.47 |2017. október 10. |
 | Rel 17-10 | [4041681], [4041690], [4041693] |Havi Windows-frissítések |2.67, 3.54, 4.47 |2017. október 10. |
-| N/A | [4038777] |Szeptembertől nem a biztonság összegzése |2.67 |2017. szeptember 12. |
-| N/A | [4038799] |Szeptembertől nem a biztonság összegzése |3.54 |2017. szeptember 12. |
-| N/A | [4038792] |Szeptembertől nem a biztonság összegzése |4.47 |2017. szeptember 12. |
-| N/A | [4040980] |Szeptembertől .NET nem a biztonság összegzése |2.67 |2017. szeptember 12. |
-| N/A | [4040979] |Szeptembertől .NET nem a biztonság összegzése |3.54 |2017. szeptember 12. |
-| N/A | [4040981] |Szeptembertől .NET nem a biztonság összegzése |4.47 |2017. szeptember 12. |
+| – | [4038777] |Szeptembertől nem a biztonság összegzése |2.67 |2017. szeptember 12. |
+| – | [4038799] |Szeptembertől nem a biztonság összegzése |3.54 |2017. szeptember 12. |
+| – | [4038792] |Szeptembertől nem a biztonság összegzése |4.47 |2017. szeptember 12. |
+| – | [4040980] |Szeptembertől .NET nem a biztonság összegzése |2.67 |2017. szeptember 12. |
+| – | [4040979] |Szeptembertől .NET nem a biztonság összegzése |3.54 |2017. szeptember 12. |
+| – | [4040981] |Szeptembertől .NET nem a biztonság összegzése |4.47 |2017. szeptember 12. |
 
 ## <a name="september-guest-os"></a>Szeptembertől vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -58,9 +59,9 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-09 rel | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Szeptembertől .NET-frissítések |2.66, 3.53, 4.46 |2017. szeptember 12. |
 | 17-09 rel | [4036586] |Az Internet explorer |2.66, 3.53, 4.46 |2017. szeptember 12. |
 | CVE-2017-8704 | [4038782] |Szolgáltatásmegtagadás |5.11 |2017. szeptember 12. |
-| N/A | [4034664] |Augusztus nem a biztonság összegzése  |2.66 |2017. augusztus 8. |
-| N/A | [4034665] |Augusztus nem a biztonság összegzése |5.11 |2017. augusztus 8. |
-| N/A | [4034681] |Augusztus nem a biztonság összegzése |4.46 |2017. augusztus 8. |
+| – | [4034664] |Augusztus nem a biztonság összegzése  |2.66 |2017. augusztus 8. |
+| – | [4034665] |Augusztus nem a biztonság összegzése |5.11 |2017. augusztus 8. |
+| – | [4034681] |Augusztus nem a biztonság összegzése |4.46 |2017. augusztus 8. |
 
 ## <a name="august-guest-os"></a>Augusztus vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -85,10 +86,10 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-07 rel | [4025343] |Csak a Windows biztonsági |3.51 |2017. július 11. |
 | 17-07 rel | [4025376] |Flash |3.51, 4.44, 5.9 |2017. július 11. |
 | 17-07 rel | [4025252] |Internet Explorer |2.64, 3.51, 4.44 |2017. július 11. |
-| N/A | [4020322] |Időzóna frissítése |2.64, 3.51, 4.44 |2017. július 11. |
-| N/A | [4022719] |Június nem a biztonság összegzése |2.64 |2017. június 13. |
-| N/A | [4022724] |Június nem a biztonság összegzése |3.51 |2017. június 13. |
-| N/A | [4022726] |Június nem a biztonság összegzése |4.44 |2017. június 13. |
+| – | [4020322] |Időzóna frissítése |2.64, 3.51, 4.44 |2017. július 11. |
+| – | [4022719] |Június nem a biztonság összegzése |2.64 |2017. június 13. |
+| – | [4022724] |Június nem a biztonság összegzése |3.51 |2017. június 13. |
+| – | [4022726] |Június nem a biztonság összegzése |4.44 |2017. június 13. |
 
 ## <a name="june-guest-os"></a>Június vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -101,22 +102,22 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-06 rel | [4022719], [4022724], [4022726] |Havi Windows-frissítések |2.63, 3.50, 4.43 |2017. június 13. |
 | 17-06 rel | [4022730] |Frissítés az Adobe Flash Player |3.50, 4.43, 5.8 |2017. június 13. |
 | 17-06 rel | [4015217], [4015221], [4015583], [4015550], [4015219] |Újra CVE-2017-0167 kiadása |4.43, 5.8 |2017. április 11. |
-| N/A | [4023136] |Időzóna frissítése  |2.63, 3.50, 4.43 |2017. június 13. |
-| N/A | [4019264] |Előfordulhat, hogy nem a biztonság összegzése |2.63 |2017. június 13. |
-| N/A | [4014545] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. április 11. |
-| N/A | [4014508] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. május 9. |
-| N/A | [4014511] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. május 9. |
-| N/A | [4014514] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. május 9. |
-| N/A | [4019216] |Előfordulhat, hogy nem a biztonság összegzése |3.50 |2017. május 9. |
-| N/A | [4014503] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
-| N/A | [4014506] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
-| N/A | [4014509] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
-| N/A | [4014513] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
-| N/A | [4019215] |Előfordulhat, hogy nem a biztonság összegzése |4.43 |2017. május 9. |
-| N/A | [4014505] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |4.43 |2017. május 9. |
-| N/A | [4014507] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |4.43 |2017. május 9. |
-| N/A | [4014510] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |4.43 |2017. május 9. |
-| N/A | [4014512] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |4.43 |2017. május 9. |
+| – | [4023136] |Időzóna frissítése  |2.63, 3.50, 4.43 |2017. június 13. |
+| – | [4019264] |Előfordulhat, hogy nem a biztonság összegzése |2.63 |2017. június 13. |
+| – | [4014545] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. április 11. |
+| – | [4014508] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. május 9. |
+| – | [4014511] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. május 9. |
+| – | [4014514] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. május 9. |
+| – | [4019216] |Előfordulhat, hogy nem a biztonság összegzése |3.50 |2017. május 9. |
+| – | [4014503] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
+| – | [4014506] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
+| – | [4014509] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
+| – | [4014513] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
+| – | [4019215] |Előfordulhat, hogy nem a biztonság összegzése |4.43 |2017. május 9. |
+| – | [4014505] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |4.43 |2017. május 9. |
+| – | [4014507] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |4.43 |2017. május 9. |
+| – | [4014510] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |4.43 |2017. május 9. |
+| – | [4014512] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |4.43 |2017. május 9. |
 
 ## <a name="may-guest-os"></a>Előfordulhat, hogy a vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -130,21 +131,21 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-05-rel | [4022344] |A Microsoft biztonsági tanácsadó |5.7 | 2017. május 9. |
 | 17-05-rel | [4022345] |A Microsoft biztonsági tanácsadó |5.7 | 2017. május 9. |
 | 17-05-rel | [4021279] |.NET /ASP.Net core tanácsadó |2.62, 3.49, 4.42, 5.7 | 2017. május 9. |
-| N/A | [4012864] |Időzóna frissítése |2.62, 3.49, 4.42 | 2017. május 9. |
-| N/A | [4014565] |Április .NET nem a biztonság összegzése |2.62 | 2017. április 11. |
-| N/A | [4014559] |Április .NET nem a biztonság összegzése |2.62 | 2017. április 11. |
-| N/A | [4015549] |Április nem - biztonság összegzése |2.62 | 2017. április 11. |
-| N/A | [4019990] |D3DCompiler frissítése – .NET 4.7 követelményei |3.49 | 2017. május 9. |
-| N/A | [4014563] |Április .NET nem a biztonság összegzése |3.49 | 2017. április 11. |
-| N/A | [4014557] |Április .NET nem a biztonság összegzése |3.49 | 2017. április 11. |
-| N/A | [4014545] |Április .NET nem a biztonság összegzése |3.49 | 2017. április 11. |
-| N/A | [4014548] |Április .NET nem a biztonság összegzése |3.49 | 2017. április 11. |
-| N/A | [4015551] |Április nem a biztonság összegzése |3.49 | 2017. április 11. |
-| N/A | [3173424] |Karbantartás verem frissítés  |4.42 | 2016. július 12. |
-| N/A | [4014555] |Április .NET nem a biztonság összegzése  |4.42 | 2017. április 11. |
-| N/A | [4014567] |Április .NET nem a biztonság összegzése |4.42 | 2017. április 11. |
-| N/A | [4015550] |Április nem a biztonság összegzése |4.42 | 2017. április 11. |
-| N/A | [4013418] |Karbantartás verem frissítés |5.7 | 2017. március 14. |
+| – | [4012864] |Időzóna frissítése |2.62, 3.49, 4.42 | 2017. május 9. |
+| – | [4014565] |Április .NET nem a biztonság összegzése |2.62 | 2017. április 11. |
+| – | [4014559] |Április .NET nem a biztonság összegzése |2.62 | 2017. április 11. |
+| – | [4015549] |Április nem - biztonság összegzése |2.62 | 2017. április 11. |
+| – | [4019990] |D3DCompiler frissítése – .NET 4.7 követelményei |3.49 | 2017. május 9. |
+| – | [4014563] |Április .NET nem a biztonság összegzése |3.49 | 2017. április 11. |
+| – | [4014557] |Április .NET nem a biztonság összegzése |3.49 | 2017. április 11. |
+| – | [4014545] |Április .NET nem a biztonság összegzése |3.49 | 2017. április 11. |
+| – | [4014548] |Április .NET nem a biztonság összegzése |3.49 | 2017. április 11. |
+| – | [4015551] |Április nem a biztonság összegzése |3.49 | 2017. április 11. |
+| – | [3173424] |Karbantartás verem frissítés  |4.42 | 2016. július 12. |
+| – | [4014555] |Április .NET nem a biztonság összegzése  |4.42 | 2017. április 11. |
+| – | [4014567] |Április .NET nem a biztonság összegzése |4.42 | 2017. április 11. |
+| – | [4015550] |Április nem a biztonság összegzése |4.42 | 2017. április 11. |
+| – | [4013418] |Karbantartás verem frissítés |5.7 | 2017. március 14. |
 
 ## <a name="april-guest-os"></a>Április vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -174,11 +175,11 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-03 rel |  [4012213] |Március 2017 csak minőségi biztonsági frissítés a Windows 8.1 és Windows Server 2012 R2 |4.40 |2017. március 14. |
 | 17-03 rel |  [4012214] |Március 2017 biztonsági csak minőségi frissítés a Windows Server 2012|3.47 |2017. március 14. |
 | 17-03 rel |  [4012204] |Frissítés az Internet Explorer |2.60, 3.47, 4.40, 5.5 |2017. március 14. |
-| N/A |  [4012864] |Észak-Cypress, Mongólia, és orosz Szaratov régió Windows nyári Időszámítás változásai |2.60, 3.47, 4.40 |2017. március 14. |
-| N/A |  [3212646] |2017. január havi minőségi kiadott a Windows 7 SP1 és Windows Server 2008 R2 SP1 |2.60 |2017. március 14. |
-| N/A |  [3205409] |2016. december havi minőségi kiadott Windows Server 2012 |3.47 |2017. március 14. |
-| N/A |  [3205401] |2016. december biztonsági havi minőségi összegzése Windows 8.1 és Windows Server 2012 R2 rendszerben |4.40 |2017. március 14. |
-| N/A |  [3211320] |A frissítés Windows 10-es verzió 1607 és a Windows Server 2016 verem karbantartási: 2017. január 24. |5.5 |2017. március 14. |
+| – |  [4012864] |Észak-Cypress, Mongólia, és orosz Szaratov régió Windows nyári Időszámítás változásai |2.60, 3.47, 4.40 |2017. március 14. |
+| – |  [3212646] |2017. január havi minőségi kiadott a Windows 7 SP1 és Windows Server 2008 R2 SP1 |2.60 |2017. március 14. |
+| – |  [3205409] |2016. december havi minőségi kiadott Windows Server 2012 |3.47 |2017. március 14. |
+| – |  [3205401] |2016. december biztonsági havi minőségi összegzése Windows 8.1 és Windows Server 2012 R2 rendszerben |4.40 |2017. március 14. |
+| – |  [3211320] |A frissítés Windows 10-es verzió 1607 és a Windows Server 2016 verem karbantartási: 2017. január 24. |5.5 |2017. március 14. |
 
 ## <a name="january-guest-os"></a>Január vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -198,9 +199,9 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16-152 |[3199709]   |Biztonsági frissítés a Windows-rendszermag |5.4 |2016. DEC 13. |
 | MS16-153 |[3207328] |Biztonsági frissítés a közös napló fájlrendszer-illesztőprogram|2.58, 3.46, 4.39, 5.4 |2016. DEC 13. |
 | MS16 – 155 |[3205640]   |Biztonsági frissítés a. |5.4 |2016. DEC 13. |
-| N/A |[3197868] |2016. november havi minőségi kiadott a Windows 7 SP1 és Windows Server 2008 R2 SP1 |2.58 |2016. DEC 13. |
-| N/A |[3197877] |November 2016 havi minőségi kiadott Windows Server 2012 |3.46 |2016. DEC 13. |
-| N/A |[3197874] |2016. november biztonsági havi minőségi összegzése Windows 8.1 és Windows Server 2012 R2 rendszerben |4.39 |2016. DEC 13. |
+| – |[3197868] |2016. november havi minőségi kiadott a Windows 7 SP1 és Windows Server 2008 R2 SP1 |2.58 |2016. DEC 13. |
+| – |[3197877] |November 2016 havi minőségi kiadott Windows Server 2012 |3.46 |2016. DEC 13. |
+| – |[3197874] |2016. november biztonsági havi minőségi összegzése Windows 8.1 és Windows Server 2012 R2 rendszerben |4.39 |2016. DEC 13. |
 
 ## <a name="november-guest-os"></a>November vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -216,16 +217,16 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16 – 139 |[3199720] |Biztonsági frissítés a Windows-rendszermag |2.57 |November 8.2016 |
 | MS16-140 |[3193479] |Biztonsági frissítés a rendszertöltés-vezérlő |5.3, 4.38, 3.45 |2016. november 8. |
 | MS16-142 |[3198467] |Összesített frissítés az Internet Explorer |2.57, 4.38, 5.3 |2016. november 8. |
-| N/A |[3192321] |Török nyári Időszámítás betartását véget ér. |5.3, 4.38, 3.45, 2.57 |2016. november 8. |
-| N/A |[3185330] |2016. október havi minőségi kiadott Windows 7 SP1 és Windows Server 2008 R2 SP1 |2.57 |2016. november 8. |
-| N/A |[3192403] |A Windows 7 SP1 és Windows Server 2008 R2 SP1 október 2016 havi minőségi összesítő előnézete |2.57 |2016. november 8. |
-| N/A |[3177467] |A Windows 7 SP1 és Windows Server 2008 R2 SP1 frissítés verem karbantartási: 2016. szeptember 20. |2.57 |2016. november 8. |
-| N/A |[3185332] |2016. októberi biztonsági havi minőségi összegzése a Windows Server 2012 |3.45 |2016. november 8. |
-| N/A |[3192406] |A Windows Server 2012. októberi 2016 havi minőségi összesítő előnézete |3.45 |2016. november 8. |
-| N/A |[3185331] |2016. októberi biztonsági havi minőségi összegzése Windows 8.1 és Windows Server 2012 R2 |4.38 |2016. november 8. |
-| N/A |[3192404] |A Windows 8.1 és Windows Server 2012 R2 október 2016 havi minőségi összesítő előnézete |4.38 |2016. november 8. |
-| N/A |[3199986] |A frissítés a Windows 10-es verzió 1607 verem karbantartási: 2016. október 27. |5.3 |2016. november 8. |
-| N/A |[3197954] |Összesített frissítés Windows 10 1607-es verzió és Windows Server 2016: 2016. október 27. |5.3 |2016. november 8. |
+| – |[3192321] |Török nyári Időszámítás betartását véget ér. |5.3, 4.38, 3.45, 2.57 |2016. november 8. |
+| – |[3185330] |2016. október havi minőségi kiadott Windows 7 SP1 és Windows Server 2008 R2 SP1 |2.57 |2016. november 8. |
+| – |[3192403] |A Windows 7 SP1 és Windows Server 2008 R2 SP1 október 2016 havi minőségi összesítő előnézete |2.57 |2016. november 8. |
+| – |[3177467] |A Windows 7 SP1 és Windows Server 2008 R2 SP1 frissítés verem karbantartási: 2016. szeptember 20. |2.57 |2016. november 8. |
+| – |[3185332] |2016. októberi biztonsági havi minőségi összegzése a Windows Server 2012 |3.45 |2016. november 8. |
+| – |[3192406] |A Windows Server 2012. októberi 2016 havi minőségi összesítő előnézete |3.45 |2016. november 8. |
+| – |[3185331] |2016. októberi biztonsági havi minőségi összegzése Windows 8.1 és Windows Server 2012 R2 |4.38 |2016. november 8. |
+| – |[3192404] |A Windows 8.1 és Windows Server 2012 R2 október 2016 havi minőségi összesítő előnézete |4.38 |2016. november 8. |
+| – |[3199986] |A frissítés a Windows 10-es verzió 1607 verem karbantartási: 2016. október 27. |5.3 |2016. november 8. |
+| – |[3197954] |Összesített frissítés Windows 10 1607-es verzió és Windows Server 2016: 2016. október 27. |5.3 |2016. november 8. |
 
 ## <a name="october-guest-os"></a>Október vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -236,11 +237,11 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16-124 |[3193227] |Biztonsági frissítés a Windows beállításjegyzékben |4.37, 3.44, 2.56 |2016. Oct 11. |
 | MS16-126 |[3196067] |Biztonsági frissítés a Microsoft Internet üzenetküldési API |2.56 |2016. Oct 11. |
 | MS16-101 |[3178465] |Biztonsági frissítés a Windows-hitelesítési módszerek |4.37, 3.44, 2.56 |2016. Oct 11. |
-| N/A |[3182203] |2016 szeptemberétől időzónájának módosítása a Novoszibirszk |4.37, 3.44, 2.56 |2016. Oct 11. |
-| N/A |[3185278] |2016 szeptemberétől a Windows 7 SP1 és Windows Server 2008 R2 SP1 kumulatív frissítés |2.56 |2016. Oct 11. |
-| N/A |[3185280] |2016 szeptemberétől a kumulatív frissítés a Windows Server 2012 rendszerhez |3.44 |2016. Oct 11. |
-| N/A |[3185279] |2016 szeptemberétől Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.37 |2016. Oct 11. |
-| N/A |[3194798] |A Windows 10-es verzió 1607 és a Windows Server 2016-os összesítő frissítés |5.2 |2016. Oct 11. |
+| – |[3182203] |2016 szeptemberétől időzónájának módosítása a Novoszibirszk |4.37, 3.44, 2.56 |2016. Oct 11. |
+| – |[3185278] |2016 szeptemberétől a Windows 7 SP1 és Windows Server 2008 R2 SP1 kumulatív frissítés |2.56 |2016. Oct 11. |
+| – |[3185280] |2016 szeptemberétől a kumulatív frissítés a Windows Server 2012 rendszerhez |3.44 |2016. Oct 11. |
+| – |[3185279] |2016 szeptemberétől Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.37 |2016. Oct 11. |
+| – |[3194798] |A Windows 10-es verzió 1607 és a Windows Server 2016-os összesítő frissítés |5.2 |2016. Oct 11. |
 
 ## <a name="september-guest-os"></a>Szeptembertől vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -253,11 +254,11 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16-114 |[3185879] |Biztonsági frissítés a Windows SMB-kiszolgálón |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
 | MS16-115 |[3188733] |Biztonsági frissítés a PDF |4.35, 3.43 |2016. Szeptembertől 13. |
 | MS16-116 |[3188724] |Biztonsági frissítés parancsfájlkezelő VBScript OLE-automatizálás |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
-| N/A |[3174644] |Diffie-Hellman kulcscsere frissített támogatása |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
-| N/A |[3177723] |Időzóna frissítése – nyári Időszámítás Egyiptom megszakítása |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
-| N/A |[3179573] |2016 augusztusától Windows 7 SP1 és Windows Server 2008 R2 SP1 kumulatív frissítés |2.55 |2016. Szeptembertől 13. |
-| N/A |[3179575] |2016 augusztusától kumulatív frissítés a Windows Server 2012 rendszerhez |3.43 |2016. Szeptembertől 13. |
-| N/A |[3179574] |2016 augusztusától Windows RT 8.1, Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.36 |2016. Szeptembertől 13. |
+| – |[3174644] |Diffie-Hellman kulcscsere frissített támogatása |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
+| – |[3177723] |Időzóna frissítése – nyári Időszámítás Egyiptom megszakítása |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
+| – |[3179573] |2016 augusztusától Windows 7 SP1 és Windows Server 2008 R2 SP1 kumulatív frissítés |2.55 |2016. Szeptembertől 13. |
+| – |[3179575] |2016 augusztusától kumulatív frissítés a Windows Server 2012 rendszerhez |3.43 |2016. Szeptembertől 13. |
+| – |[3179574] |2016 augusztusától Windows RT 8.1, Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.36 |2016. Szeptembertől 13. |
 
 ## <a name="august-guest-os"></a>Augusztus vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -269,9 +270,9 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16-101 |[3178465] |Biztonsági frissítés a Windows-hitelesítési módszerek |4.35, 3.42, 2.54 |2016. gyel 9. |
 | MS16-102 |[3182248] |Biztonsági frissítés a Microsoft Windows PDF-függvénytár |4.35, 3.42 |2016. gyel 9. |
 | MS16-077 ismételt kiadás |[3165191] |Biztonsági frissítés a webalkalmazás-Proxy automatikus lekérdezés (lekérdezés WPA) |4.35, 3.42, 2.54 |2016. gyel 9. |
-| N/A |[3172605] |2016. július Windows 7 SP1 és Windows Server 2008 R2 SP1 kumulatív frissítés |2.54 |2016. gyel 9. |
-| N/A |[3172615] |2016. július kumulatív frissítés a Windows Server 2012 rendszerhez |3.42 |2016. gyel 9. |
-| N/A |[3172614] |2016. július Windows RT 8.1, Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.35 |2016. gyel 9. |
+| – |[3172605] |2016. július Windows 7 SP1 és Windows Server 2008 R2 SP1 kumulatív frissítés |2.54 |2016. gyel 9. |
+| – |[3172615] |2016. július kumulatív frissítés a Windows Server 2012 rendszerhez |3.42 |2016. gyel 9. |
+| – |[3172614] |2016. július Windows RT 8.1, Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.35 |2016. gyel 9. |
 
 ## <a name="july-guest-os"></a>Július vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -282,18 +283,18 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16-091 |[3170048] |Biztonsági frissítés a. |4.34, 3.41, 2.53 |2016. július 12. |
 | MS16-092 |[3171910] |Biztonsági frissítés a Windows-rendszermag |4.34, 3.41 |2016. július 12. |
 | MS16-094 |[3177404] |Biztonsági frissítés a biztonságos rendszerindítás |4.34, 3.41 |2016. július 12. |
-| N/A |[3162835] |2016. június nyári Időszámítás és időzóna frissítése Windows |4.34, 3.41, 2.53 |2016. július 12. |
-| N/A |[3156417] |2016. május Windows 7 SP1 és Windows Server 2008 R2 SP1 kumulatív frissítés |2.53 |2016. július 12. |
-| N/A |[3161608] |2016. június Windows 7 SP1 és Windows Server 2008 R2 SP1 kumulatív frissítés |2.53 |2016. július 12. |
-| N/A |[3161609] |2016. június kumulatív frissítés a Windows Server 2012 rendszerhez |3.41 |2016. július 12. |
-| N/A |[3161606] |2016. június Windows RT 8.1, Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.34 |2016. július 12. |
-| N/A |[3139923] |Windows installer (MSI) javítása nem működik, amikor HTTP MSI-csomagja telepítve van a Windows megosztása |4.34 |2016. július 12. |
+| – |[3162835] |2016. június nyári Időszámítás és időzóna frissítése Windows |4.34, 3.41, 2.53 |2016. július 12. |
+| – |[3156417] |2016. május Windows 7 SP1 és Windows Server 2008 R2 SP1 kumulatív frissítés |2.53 |2016. július 12. |
+| – |[3161608] |2016. június Windows 7 SP1 és Windows Server 2008 R2 SP1 kumulatív frissítés |2.53 |2016. július 12. |
+| – |[3161609] |2016. június kumulatív frissítés a Windows Server 2012 rendszerhez |3.41 |2016. július 12. |
+| – |[3161606] |2016. június Windows RT 8.1, Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.34 |2016. július 12. |
+| – |[3139923] |Windows installer (MSI) javítása nem működik, amikor HTTP MSI-csomagja telepítve van a Windows megosztása |4.34 |2016. július 12. |
 
 ## <a name="june-guest-os"></a>Június vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | MS16-035 |[3141780] |Biztonsági frissítés a biztonsági szolgáltatás figyelmen kívül hagyása megoldására. |4.33, 3.40, 2.52 |2016. június 14. |
-| tanácsadó |[3155527] |-Titkosítócsomagjai FalseStart a frissítést |4.33, 3.40 |2016. június 14. |
+| Tanácsadó |[3155527] |-Titkosítócsomagjai FalseStart a frissítést |4.33, 3.40 |2016. június 14. |
 | MS16-063 |[3163649] |Összesített frissítés az Internet Explorer |4.33, 3.40, 2.52 |2016. június 14. |
 | MS16-069 |[3163640] |JScript és VBScript összesített frissítés |2.52 |2016. június 14. |
 | MS16-071 |[3164065] |Biztonsági frissítés a Microsoft Windows DNS-kiszolgáló |4.33, 3.40 |2016. június 14. |
@@ -305,16 +306,16 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16-077 |[3165191] |Biztonsági frissítés a WPAD |4.33, 3.40, 2.52 |2016. június 14. |
 | MS16-080 |[3164302] |Biztonsági frissítés a Microsoft Windows PDF |4.33, 3.40 |2016. június 14. |
 | MS16-081 |[3160352] |Active Directory biztonsági frissítése |4.33, 3.40, 2.52 |2016. június 14. |
-| N/A |[2922223] |Nem módosítható a rendszer pontos ideje, ha RealTimeIsUniversal bejegyzés engedélyezve van a Windows |2.52 |2016. június 14. |
-| N/A |[3121255] |"0x00000024" stop hiba FsRtlNotifyFilterReportChange, és másolja a fájlt a Windows sikertelen lehet |2.52 |2016. június 14. |
-| N/A |[3125424] |Az LSASS holtpont miatt Windows Server 2012 R2 vagy Windows Server 2012-ben nem válaszol |4.33, 3.40 |2016. június 14. |
-| N/A |[3125574] |Kényelmi kumulatív frissítés a Windows 7 SP1 és Windows Server 2008 R2 SP1 |2.52 |2016. június 14. |
-| N/A |[3140245] |Engedélyezze a TLS 1.1 és TLS 1.2-es, egy alapértelmezett biztonságos protokollok, a WinHTTP a Windows Update |3.40, 2.52 |2016. június 14. |
-| N/A |[3146604] |A Windows Server 2012 R2 vagy Windows Server 2012 véletlenszerűen összeomlik WMI-szolgáltatás |4.33, 3.40 |2016. június 14. |
-| N/A |[3149157] |A TCP/IP a Windows 8.1 és Windows Server 2012 R2 megbízhatósági és méretezhetőségi fejlesztései |4.33 |2016. június 14. |
-| N/A |[3156416] |2016. május kumulatív frissítés a Windows Server 2012 rendszerhez |3.40 |2016. június 14. |
-| N/A |[3156418] |2016. május Windows RT 8.1, Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.33 |2016. június 14. |
-| N/A |[3153731] |2016. május nyári Időszámítás Azerbajdzsán, chilei, Haiti és a Windows Marokkó frissítés |4.33, 3.40, 2.52 |2016. június 14. |
+| – |[2922223] |Nem módosítható a rendszer pontos ideje, ha RealTimeIsUniversal bejegyzés engedélyezve van a Windows |2.52 |2016. június 14. |
+| – |[3121255] |"0x00000024" stop hiba FsRtlNotifyFilterReportChange, és másolja a fájlt a Windows sikertelen lehet |2.52 |2016. június 14. |
+| – |[3125424] |Az LSASS holtpont miatt Windows Server 2012 R2 vagy Windows Server 2012-ben nem válaszol |4.33, 3.40 |2016. június 14. |
+| – |[3125574] |Kényelmi kumulatív frissítés a Windows 7 SP1 és Windows Server 2008 R2 SP1 |2.52 |2016. június 14. |
+| – |[3140245] |Engedélyezze a TLS 1.1 és TLS 1.2-es, egy alapértelmezett biztonságos protokollok, a WinHTTP a Windows Update |3.40, 2.52 |2016. június 14. |
+| – |[3146604] |A Windows Server 2012 R2 vagy Windows Server 2012 véletlenszerűen összeomlik WMI-szolgáltatás |4.33, 3.40 |2016. június 14. |
+| – |[3149157] |A TCP/IP a Windows 8.1 és Windows Server 2012 R2 megbízhatósági és méretezhetőségi fejlesztései |4.33 |2016. június 14. |
+| – |[3156416] |2016. május kumulatív frissítés a Windows Server 2012 rendszerhez |3.40 |2016. június 14. |
+| – |[3156418] |2016. május Windows RT 8.1, Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.33 |2016. június 14. |
+| – |[3153731] |2016. május nyári Időszámítás Azerbajdzsán, chilei, Haiti és a Windows Marokkó frissítés |4.33, 3.40, 2.52 |2016. június 14. |
 
 ## <a name="may-guest-os"></a>Előfordulhat, hogy a vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -328,11 +329,11 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16-062 |[3158222] |Biztonsági frissítés a kernelmódú illesztőprogram |4.32, 3.39, 2.51 |2016. május 10. |
 | MS16-065 |[3156757] |Biztonsági frissítés a. |4.32, 3.39, 2.51 |2016. május 10. |
 | MS16-067 |[3155784] |Biztonsági frissítés a Hangerőszabályzó illesztőprogramja |4.32, 3.39 |2016. május 10. |
-| N/A |[3148851] |A Windows orosz például időzónabeli változások  |4.32, 3.39, 2.51 |2016. május 10. |
-| N/A |[3133977] |A BitLocker meghajtó nem titkosítható svchost.exe folyamatban lévő Windows 7 vagy Windows Server 2008 R2 szolgáltatás-összeomlások miatt  |2.51 |2016. május 10. |
-| N/A |[3133681] |A művelet az scvmm-ben a Windows Server 2012 R2 virtuális gépek nem válaszol  |4.32 |2016. május 10. |
-| N/A |[3123245] |Megbízhatóbbá teszi a Windows Server 2012 R2 port Erőforrásfogyás azonosítása  |4.32 |2016. május 10. |
-| N/A |[RC4 letiltása] | A Microsoft biztonsági tanácsadó: frissítés a RC4 letiltása  |4.32, 3.39, 2.51 |2016. május 10. |
+| – |[3148851] |A Windows orosz például időzónabeli változások  |4.32, 3.39, 2.51 |2016. május 10. |
+| – |[3133977] |A BitLocker meghajtó nem titkosítható svchost.exe folyamatban lévő Windows 7 vagy Windows Server 2008 R2 szolgáltatás-összeomlások miatt  |2.51 |2016. május 10. |
+| – |[3133681] |A művelet az scvmm-ben a Windows Server 2012 R2 virtuális gépek nem válaszol  |4.32 |2016. május 10. |
+| – |[3123245] |Megbízhatóbbá teszi a Windows Server 2012 R2 port Erőforrásfogyás azonosítása  |4.32 |2016. május 10. |
+| – |[RC4 letiltása] | A Microsoft biztonsági tanácsadó: frissítés a RC4 letiltása  |4.32, 3.39, 2.51 |2016. május 10. |
 
 ## <a name="april-guest-os"></a>Április vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -503,17 +504,17 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 ## <a name="march-guest-os"></a>. Március a vendég operációs rendszer.
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| MS15-018 |[3032359] |Összesített frissítés az Internet Explorer |4.18, 3.25, 2.37 |N/A |
-| MS15-019 |[3040297] |Parancsfájlkezelő VBScript biztonsági rése távoli végrehajtás |4.18, 3.25, 2.37 |N/A |
-| MS15-020 |[3041836] |A Windows biztonsági programkód távoli |4.18, 3.25, 2.37 |N/A |
-| MS15-021 |[3032323] |Biztonsági rések Adobe betűtípus illesztőprogram programkód távoli |4.18, 3.25, 2.37 |N/A |
-| MS15-023 |[3034344] |A rendszermag módú illesztőprogram biztonsági rései jogok kiterjesztése |4.18, 3.25, 2.37 |N/A |
-| MS15-024 |[3035132] |PNG-feldolgozási biztonsági rése adatokhoz való illetéktelen hozzáférés |4.18, 3.25, 2.37 |N/A |
-| MS15-025 |[3038680] |A Windows-rendszermag biztonsági rései kiterjesztését |4.18, 3.25, 2.37 |N/A |
-| MS15-027 |[3002657] |A NETLOGON rése Címhamisítást |4.18, 3.25, 2.37 |N/A |
-| MS15-028 |[3030377] |A Windows Feladatütemező biztonsági rése biztonsági szolgáltatás figyelmen kívül hagyása |4.18, 3.25, 2.37 |N/A |
-| MS15-029 |[3035126] |A Windows fénykép dekódoló összetevő biztonsági rése adatokhoz való illetéktelen hozzáférés |4.18, 3.25, 2.37 |N/A |
-| MS15-030 |[3039976] |A távoli asztal protokoll biztonsági rése szolgáltatásmegtagadás |4.18, 3.25, 2.37 |N/A |
+| MS15-018 |[3032359] |Összesített frissítés az Internet Explorer |4.18, 3.25, 2.37 |– |
+| MS15-019 |[3040297] |Parancsfájlkezelő VBScript biztonsági rése távoli végrehajtás |4.18, 3.25, 2.37 |– |
+| MS15-020 |[3041836] |A Windows biztonsági programkód távoli |4.18, 3.25, 2.37 |– |
+| MS15-021 |[3032323] |Biztonsági rések Adobe betűtípus illesztőprogram programkód távoli |4.18, 3.25, 2.37 |– |
+| MS15-023 |[3034344] |A rendszermag módú illesztőprogram biztonsági rései jogok kiterjesztése |4.18, 3.25, 2.37 |– |
+| MS15-024 |[3035132] |PNG-feldolgozási biztonsági rése adatokhoz való illetéktelen hozzáférés |4.18, 3.25, 2.37 |– |
+| MS15-025 |[3038680] |A Windows-rendszermag biztonsági rései kiterjesztését |4.18, 3.25, 2.37 |– |
+| MS15-027 |[3002657] |A NETLOGON rése Címhamisítást |4.18, 3.25, 2.37 |– |
+| MS15-028 |[3030377] |A Windows Feladatütemező biztonsági rése biztonsági szolgáltatás figyelmen kívül hagyása |4.18, 3.25, 2.37 |– |
+| MS15-029 |[3035126] |A Windows fénykép dekódoló összetevő biztonsági rése adatokhoz való illetéktelen hozzáférés |4.18, 3.25, 2.37 |– |
+| MS15-030 |[3039976] |A távoli asztal protokoll biztonsági rése szolgáltatásmegtagadás |4.18, 3.25, 2.37 |– |
 
 > [!NOTE]
 > Közlemény MS15-031 jelenhetnek meg, eltávolítva. Azonban ez nem vonatkozik a Vendég operációsrendszer-kiadásnak.
@@ -523,13 +524,13 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 ## <a name="february-guest-os"></a>Február vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| MS15-009 |[3034682] |Frissítés az Internet Explorer |4.17, 3.24, 2.36 |N/A |
-| MS15-010 |[3036220] |A Windows kernelmódú illesztőprogram biztonsági rései távoli végrehajtás |4.17, 3.24, 2.36 |N/A |
-| MS15-011 |[3000483] |Csoportházirend biztonsági rése távoli végrehajtás |4.17, 3.24, 2.36 |N/A |
-| MS15-014 |[3004361] |Az SMB-vel biztonsági rése biztonsági szolgáltatás figyelmen kívül hagyása |4.17, 3.24, 2.36 |N/A |
-| MS15-015 |[3031432] |A Microsoft Windows biztonsági rése jogok kiterjesztése |4.17, 3.24, 2.36 |N/A |
-| MS15-016 |[3029944] |A Microsoft grafikus összetevő biztonsági rése adatokhoz való illetéktelen hozzáférés |4.17, 3.24, 2.36 |N/A |
-| N/A |[3004375] |Frissítés javítja a Windows parancssori sor naplózása<p/>**Megjegyzés:**: Ez telepítve van, de a beállításkulcs, az engedélyezéshez ki van kapcsolva. |4.17, 3.24, 2.36 |N/A |
+| MS15-009 |[3034682] |Frissítés az Internet Explorer |4.17, 3.24, 2.36 |– |
+| MS15-010 |[3036220] |A Windows kernelmódú illesztőprogram biztonsági rései távoli végrehajtás |4.17, 3.24, 2.36 |– |
+| MS15-011 |[3000483] |Csoportházirend biztonsági rése távoli végrehajtás |4.17, 3.24, 2.36 |– |
+| MS15-014 |[3004361] |Az SMB-vel biztonsági rése biztonsági szolgáltatás figyelmen kívül hagyása |4.17, 3.24, 2.36 |– |
+| MS15-015 |[3031432] |A Microsoft Windows biztonsági rése jogok kiterjesztése |4.17, 3.24, 2.36 |– |
+| MS15-016 |[3029944] |A Microsoft grafikus összetevő biztonsági rése adatokhoz való illetéktelen hozzáférés |4.17, 3.24, 2.36 |– |
+| – |[3004375] |Frissítés javítja a Windows parancssori sor naplózása<p/>**Megjegyzés:**: Ez telepítve van, de a beállításkulcs, az engedélyezéshez ki van kapcsolva. |4.17, 3.24, 2.36 |– |
 
 ## <a name="january-guest-os"></a>Január vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -550,17 +551,17 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 ## <a name="december-guest-os"></a>December vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| N/A |[3013776] |Olyan alkalmazást egy olyan tartományi fiók használatakor a rendszer lefagy |4.15, 3.22, 2.34 |Január 13 2015 |
-| N/A |[3013043] |Fájladatok rendszer sérült egynél több NUMA-csomóponttal Windows rendszerű számítógépen |4.15, 3.22, 2.34 |Január 13 2015 |
-| N/A |[3012712] |Új adatblokkok megfelelően inicializálni a különbséglemez VHD kibontásakor |4.15, 3.22, 2.34 |Január 13 201-et |
-| N/A |[3004905] |A Linux virtuális gépekhez, amelyek nagyobbak, mint 2 TB fájlrendszerek rendelkező Windows Hyper-V fokozása |4.15, 3.22, 2.34 |Január 13 2015 |
-| N/A |[3004394] |Windows Root Certificate Program Windows 2014. decemberi frissítés |4.15, 3.22, 2.34 |Január 13 2015 |
-| N/A |[2999323] |A szöveg esemény azonosítója 17 változik |4.15, 3.22, 2.34 |Január 13 2015 |
-| N/A |[3013488] |Mennyi ideig vár arra, hogy a WSUS-kiszolgáló visszaállítása a Windows Server 2012 R2 vagy Windows Server 2012 CSA fájlok importálásakor |4.15, 3.22, 2.34 |Január 13 2015 |
-| N/A |[3012325] |Windows APN adatbáziselemek DIGI Vodafone és Telekom mobil operátorok, a Windows 8.1 és Windows 8 frissítése |4.15, 3.22, 2.34 |Január 13 2015 |
-| N/A |[3007054] |PIN-kóddal védett nyomtatás a beállítás mindig jeleníti meg, amikor egy Windows Áruházbeli alkalmazást, a Windows belül dokumentum nyomtatása |4.15, 3.22, 2.34 |Január 13 2015 |
-| N/A |[2999802] |Pontozott vonal helyett folytonos vonal lista tartalmazza a Windows rendszerben |4.15, 3.22, 2.34 |Január 13 2015 |
-| N/A |[2896881] |A felhasználók nyomtatók hozzárendelését a Windows bejelentkezési folyamat során a AddPrinterConnection VBScript parancs használatakor hosszú bejelentkezési idő |4.15, 3.22, 2.34 |Január 13 2015 |
+| – |[3013776] |Olyan alkalmazást egy olyan tartományi fiók használatakor a rendszer lefagy |4.15, 3.22, 2.34 |Január 13 2015 |
+| – |[3013043] |Fájladatok rendszer sérült egynél több NUMA-csomóponttal Windows rendszerű számítógépen |4.15, 3.22, 2.34 |Január 13 2015 |
+| – |[3012712] |Új adatblokkok megfelelően inicializálni a különbséglemez VHD kibontásakor |4.15, 3.22, 2.34 |Január 13 201-et |
+| – |[3004905] |A Linux virtuális gépekhez, amelyek nagyobbak, mint 2 TB fájlrendszerek rendelkező Windows Hyper-V fokozása |4.15, 3.22, 2.34 |Január 13 2015 |
+| – |[3004394] |Windows Root Certificate Program Windows 2014. decemberi frissítés |4.15, 3.22, 2.34 |Január 13 2015 |
+| – |[2999323] |A szöveg esemény azonosítója 17 változik |4.15, 3.22, 2.34 |Január 13 2015 |
+| – |[3013488] |Mennyi ideig vár arra, hogy a WSUS-kiszolgáló visszaállítása a Windows Server 2012 R2 vagy Windows Server 2012 CSA fájlok importálásakor |4.15, 3.22, 2.34 |Január 13 2015 |
+| – |[3012325] |Windows APN adatbáziselemek DIGI Vodafone és Telekom mobil operátorok, a Windows 8.1 és Windows 8 frissítése |4.15, 3.22, 2.34 |Január 13 2015 |
+| – |[3007054] |PIN-kóddal védett nyomtatás a beállítás mindig jeleníti meg, amikor egy Windows Áruházbeli alkalmazást, a Windows belül dokumentum nyomtatása |4.15, 3.22, 2.34 |Január 13 2015 |
+| – |[2999802] |Pontozott vonal helyett folytonos vonal lista tartalmazza a Windows rendszerben |4.15, 3.22, 2.34 |Január 13 2015 |
+| – |[2896881] |A felhasználók nyomtatók hozzárendelését a Windows bejelentkezési folyamat során a AddPrinterConnection VBScript parancs használatakor hosszú bejelentkezési idő |4.15, 3.22, 2.34 |Január 13 2015 |
 
 [4048953]: http://support.microsoft.com/kb/4048953
 [4048960]: http://support.microsoft.com/kb/4048960 
@@ -571,6 +572,7 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 [4041681]: http://support.microsoft.com/kb/4041681
 [4041693]: http://support.microsoft.com/kb/4041693
 [4041690]: http://support.microsoft.com/kb/4041690
+[3191566]: http://support.microsoft.com/kb/3191566
 [3191565]: http://support.microsoft.com/kb/3191565
 [3191564]: http://support.microsoft.com/kb/3191564
 

@@ -1,5 +1,5 @@
 ---
-title: "Ismerkedés az Azure Active Directory Node.js"
+title: "Az Azure AD Node.js webes API-k első lépések |} Microsoft Docs"
 description: "Hogyan hozhat létre a többi Node.js webes API-k, amely az Azure AD használatára a hitelesítéshez."
 services: active-directory
 documentationcenter: nodejs
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 11/30/2017
 ms.author: cshoe
 ms.custom: aaddev
-ms.openlocfilehash: c882f717635bef38d15fefef2f4ff6a5c30490b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 411f646574af2f86621cbb3cd7175b6a9478972a
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="secure-nodejs-web-api-with-azure-active-directory"></a>Node.js webes API-t az Azure Active Directory biztonságossá tétele
+# <a name="azure-ad-nodejs-web-api-getting-started"></a>Az Azure AD Node.js webes API-k első lépések
 
 Ez a cikk bemutatja, hogyan kell biztonságos egy [Restify](http://restify.com/) az API-végpont [Passport](http://passportjs.org/) használatával a [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) modul Azure aktív kommunikáció kezelése Directory (AAD). 
 
@@ -73,7 +73,7 @@ A [argumentumok](/cli/azure/ad/app?view=azure-cli-latest#az_ad_app_create) a a `
 
 Mielőtt az csatlakozna az Azure Active Directory, a következő információkat kell:
 
-| Név  | Leírás | A konfigurációs fájlban változó neve |
+| Name (Név)  | Leírás | A konfigurációs fájlban változó neve |
 | ------------- | ------------- | ------------- |
 | Bérlő neve  | [Bérlő neve](active-directory-howto-tenant.md) a hitelesítéshez használni kívánt | `tenantName`  |
 | Ügyfél-azonosító  | Ügyfél-azonosító az aad-ben használt OAuth-kifejezésnek _Alkalmazásazonosító_. |  `clientID`  |
@@ -187,7 +187,7 @@ Végül a kiszolgáló meghívásával a konfigurált port figyelésére van be�
 server.listen(serverPort);
 ```
 
-## <a name="run-the-sample"></a>A minta futtatásához
+## <a name="run-the-sample"></a>Minta futtatása
 
 Most, hogy a kiszolgáló van telepítve, indítsa el a kiszolgálón nyissa meg egy parancssort, és írja be:
 
@@ -234,7 +234,7 @@ Unauthorized
 ```
 Most, hogy a biztonságos API létrehozott, egy ügyfelet, amelyben tudja átadni a hitelesítési tokenek az API-t is létrehozható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Amint azt a bevezetés, meg kell valósítani egy ügyfél megfelelője, amely kezeli a bejelentkezés, a Kijelentkezés és a jogkivonatok kezelése a kiszolgálóhoz való csatlakozáshoz. Példák kódalapú nézze meg az ügyfélalkalmazások számára a [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) és [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android). Tekintse meg a következő cikk részletes oktatóanyaga:
 
 > [!div class="nextstepaction"]

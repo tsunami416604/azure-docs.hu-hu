@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 12/20/2017
 ms.author: tomfitz
-ms.openlocfilehash: 560f888776d5b3e5103ee2084b5c3c999f014fad
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: ca7e3cb541948e6cc0b8d077616f3611e3ab2477
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Hibaelhárítás általános az Azure-telepítés az Azure Resource Manager eszközzel
 
@@ -38,7 +38,7 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | Ütközés | A kért műveletet az erőforrás a jelenlegi állapotban nem engedélyezett. Például a lemezek átméretezése engedélyezett csak akkor, ha a virtuális gép létrehozása, vagy ha a virtuális gép felszabadítása. | |
 | DeploymentActive | Várjon, amíg párhuzamos központi telepítést, hogy ez az erőforráscsoport befejezéséhez. | |
 | DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg egy másik nevet, vagy módosítsa a meglévő bejegyzést. | |
-| ImageNotFound | Ellenőrizze a virtuális gép kép beállításait. | [Linux képek hibaelhárítása](../virtual-machines/linux/troubleshoot-deployment-new-vm.md) és [hibáinak elhárítása Windows-lemezképek](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) |
+| ImageNotFound | Ellenőrizze a virtuális gép kép beállításait. |  |
 | InUseSubnetCannotBeDeleted | Ez a hiba jelentkezhetnek, ha megpróbált frissíteni egy erőforrást, de törlésével és az erőforrás létrehozása dolgozza fel a kérelmet. Ügyeljen arra, hogy az összes változatlan értékeket megadni. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Szerezze be a hozzáférési tokent a megfelelő bérlő számára. Csak a jogkivonat lekérheti a bérlő, a fiókja tagja. | |
 | InvalidContentLink | Valószínűleg próbált összekapcsolása egy beágyazott sablont, amely nem érhető el. Ellenőrizze a beágyazott sablon megadott URI. Ha a sablon egy tárfiókot, ellenőrizze, hogy az URI elérhető. Szükség lehet egy SAS-jogkivonat átadni. | [Csatolt sablonok](resource-group-linked-templates.md) |
@@ -65,7 +65,7 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | ReservedResourceName | Adjon meg egy erőforrás nevét, amely tartalmazza az foglalt név. | [Fenntartott erőforrások neve](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Várjon, amíg befejeződik a törlésre. | |
 | ResourceGroupNotFound | Ellenőrizze a központi telepítés a célként megadott erőforráscsoport nevét. Ez már léteznie kell az előfizetéshez. Ellenőrizze az előfizetési kontextust. | [Az Azure CLI](/cli/azure/account?#az_account_set) [PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
-| ResourceNotFound | A központi telepítés hivatkozik a erőforrása, amely nem oldható fel. Ellenőrizze, hogy Ön miként használja a a **hivatkozás** függvény a forgatókönyvhöz szükséges paramétereket tartalmazza. | [Hivatkozások feloldása](resource-manager-not-found-errors.md) |
+| NemTalálhatóErőforrás | A központi telepítés hivatkozik a erőforrása, amely nem oldható fel. Ellenőrizze, hogy Ön miként használja a a **hivatkozás** függvény a forgatókönyvhöz szükséges paramétereket tartalmazza. | [Hivatkozások feloldása](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | A központi telepítés próbál létrehozni, amelyek mérete meghaladja a kvótát, az előfizetés, erőforráscsoportban vagy régió erőforrásokat. Ha lehetséges javítsa ki a kvóták belül marad az infrastruktúra. Ellenkező esetben fontolja meg a kért módosítva lett a kvótákat. | [Hárítsa el a kvóták](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Válassza ki a Termékváltozat (például a virtuális gép méretét), amely a kijelölt helyen érhető el. | [Hárítsa el a Termékváltozat](resource-manager-sku-not-available-errors.md) |
 | StorageAccountAlreadyExists | Adjon egyedi nevet a tárfiók. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md)  |
@@ -77,6 +77,6 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 
 Ha a telepítés során hibát észlel, erőforrás-kezelő hiba kódot ad vissza. A portál, a PowerShell vagy az Azure parancssori felület a hibaüzenet látható. Lehet, hogy a külső hibaüzenet túl általános hibaelhárítási. Keresse meg a belső állapotüzenetet, amely a hibával kapcsolatos részletes információkat tartalmaz. További információkért lásd: [határozza meg a hiba kódja](resource-manager-troubleshoot-tips.md#determine-error-code).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Műveletek naplózásával kapcsolatos további tudnivalókért lásd: [naplózási műveletek a Resource Manager](resource-group-audit.md).
 * Azokról a műveletekről, a hibák megállapításához központi telepítése során további tudnivalókért lásd: [üzembe helyezési műveleteinek megtekintése](resource-manager-deployment-operations.md).

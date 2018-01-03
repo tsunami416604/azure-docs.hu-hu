@@ -16,15 +16,15 @@ ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 63888d5dd103b585cf18e4787d3e779810163e3d
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>Kezelheti a számítási teljesítményt az Azure SQL Data Warehouse (Azure-portál)
 > [!div class="op_single_selector"]
 > * [Áttekintés](sql-data-warehouse-manage-compute-overview.md)
-> * [Portál](sql-data-warehouse-manage-compute-portal.md)
+> * [Portal](sql-data-warehouse-manage-compute-portal.md)
 > * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 > * [REST](sql-data-warehouse-manage-compute-rest-api.md)
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
@@ -85,7 +85,7 @@ Egy adatbázis folytatása:
 
 <a name="next-steps-bk"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért lásd: [kezelése-áttekintés][Management overview].
 
 <!--Image references-->

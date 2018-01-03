@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 09/28/2017
 ms.author: nitinme
 ms.openlocfilehash: 754e65c4bcf8574a16b9620e2f21938ecc62b735
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-rest-api"></a>Szolgáltatások közötti hitelesítés a Data Lake Store REST API használatával
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ A kérelem kimenete egy engedélyezési jogkivonatot (kimaradásával `access-to
 
 Ez a cikk a **nem interaktív** módszert alkalmazza. További információk a nem interaktív (szolgáltatások közötti) hívásokról: [Szolgáltatások közötti hívások hitelesítő adatok használatával](https://msdn.microsoft.com/library/azure/dn645543.aspx). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, szolgáltatások közötti hitelesítés használata a hitelesítéshez az Azure Data Lake Store REST API használatával. Most már megtekintheti a következő cikkekben talál arról, hogyan működik az Azure Data Lake Store REST API használatával kommunikálhatnak.
 
 * [A Data Lake Store REST API használatával fiókkezelési műveletekhez](data-lake-store-get-started-rest-api.md)

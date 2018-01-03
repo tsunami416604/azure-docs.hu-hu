@@ -96,7 +96,7 @@ Az Azure számos víruskereső megoldást kínál, azonban a kezelésük az Ön 
 * [Kártevőirtó megoldások telepítése Azure-beli virtuális gépeken](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>Milyen biztonsági mentési és helyreállítási lehetőségek közül választhatok?
-Az Azure Backup bizonyos régiókban elérhető előzetes verzióként. További részletek: [Azure-beli virtuális gépek biztonsági mentése](../articles/backup/backup-azure-vms.md). Hivatalos partnereinktől egyéb megoldások is elérhetők. A jelenleg elérhető szolgáltatásokat keresse az Azure Marketplace-en.
+Az Azure Backup bizonyos régiókban elérhető előzetes verzióként. További részletek: [Azure-beli virtuális gépek biztonsági mentése](../articles/backup/backup-azure-arm-vms.md). Hivatalos partnereinktől egyéb megoldások is elérhetők. A jelenleg elérhető szolgáltatásokat keresse az Azure Marketplace-en.
 
 Egy másik lehetőség a blobtároló pillanatfelvétel funkciójának használata. Ehhez le kell állítania a virtuális gépet, mielőtt bármilyen műveletet végez, amely blob-pillanatképeket használ. Ez menti a függőben lévő adatírásokat, és konzisztens állapotba helyezi a fájlrendszert.
 

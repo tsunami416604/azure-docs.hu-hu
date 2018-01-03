@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: danlep
-ms.openlocfilehash: 7624a905f81024fa87f15164efc56a300843972d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 26cab5ba892d892e035bd94c52cacabd23eebd0c
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Használja az RDMA-kompatibilisek-e vagy GPU-kompatibilis példány kötegelt készletek
 
@@ -47,11 +47,11 @@ Az RDMA és a GPU képességek számítási igényű méretű csak bizonyos oper
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Linux-készletek - virtuálisgép-konfiguráció
 
-| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Az alkalmazáskészlet beállításai |
+| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr A8, a9 csomag](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS,<br/>SUSE Linux Enterprise Server 12 HPC, vagy<br/>CentOS-alapú HPC<br/>(Az azure piactéren) | Intel MPI 5 | Csomópontok közötti kommunikáció engedélyezéséhez egyidejű feladat a végrehajtás letiltása |
-| [Hálózati vezérlő által adatsorozat *](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3, vagy<br/>CentOS-alapú 7.3<br/>(Az azure piactéren) | NVIDIA CUDA eszközkészlet 9.0 illesztőprogramok | N/A | 
-| [Portok HV-sorozat](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3, vagy<br/>CentOS-alapú 7.3<br/>(Az azure piactéren) | NVIDIA rács 4.3 illesztőprogramok | N/A |
+| [Hálózati vezérlő által adatsorozat *](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3, vagy<br/>CentOS-alapú 7.3<br/>(Az azure piactéren) | NVIDIA CUDA eszközkészlet 9.0 illesztőprogramok | – | 
+| [Portok HV-sorozat](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3, vagy<br/>CentOS-alapú 7.3<br/>(Az azure piactéren) | NVIDIA rács 4.3 illesztőprogramok | – |
 
 * Ubuntu 16.04 LTS vagy a CentOS-alapú 7.3 HPC (az Azure piactérről) az Intel MPI RDMA-kapcsolatot NC24r virtuális gépeken támogatott.
 
@@ -59,11 +59,11 @@ Az RDMA és a GPU képességek számítási igényű méretű csak bizonyos oper
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows-készletek - virtuálisgép-konfiguráció
 
-| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Az alkalmazáskészlet beállításai |
+| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr A8, a9 csomag](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2 vagy<br/>A Windows Server 2012 (az Azure piactéren) | Microsoft MPI 2012 R2 vagy újabb verzióját, vagy<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure Virtuálisgép-bővítmény | Csomópontok közötti kommunikáció engedélyezéséhez egyidejű feladat a végrehajtás letiltása |
-| [Hálózati vezérlő által adatsorozat *](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla K80 GPU | Windows Server 2016 vagy <br/>Windows Server 2012 R2 (az Azure piactéren) | NVIDIA Tesla illesztőprogramok és CUDA eszközkészlet 9.0-illesztőprogramok| N/A | 
-| [Portok HV-sorozat](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 vagy<br/>Windows Server 2012 R2 (az Azure piactéren) | NVIDIA rács 4.3 illesztőprogramok | N/A |
+| [Hálózati vezérlő által adatsorozat *](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla K80 GPU | Windows Server 2016 vagy <br/>Windows Server 2012 R2 (az Azure piactéren) | NVIDIA Tesla illesztőprogramok és CUDA eszközkészlet 9.0-illesztőprogramok| – | 
+| [Portok HV-sorozat](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 vagy<br/>Windows Server 2012 R2 (az Azure piactéren) | NVIDIA rács 4.3 illesztőprogramok | – |
 
 * RDMA-kapcsolatot NC24r virtuális gépeken támogatott, a Windows Server 2012 R2 (az Azure piactérről) HpcVMDrivers bővítmény és Microsoft MPI vagy Intel MPI.
 
@@ -73,7 +73,7 @@ Az RDMA és a GPU képességek számítási igényű méretű csak bizonyos oper
 > N-sorozat mérete nem támogatottak a felhő konfigurálása a Batch-készletek.
 >
 
-| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Az alkalmazáskészlet beállításai |
+| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r, H16mr A8, a9 csomag](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2 rendszerben<br/>Windows Server 2012-ben, vagy<br/>Windows Server 2008 R2 (Vendég operációsrendszer-család) | Microsoft MPI 2012 R2 vagy újabb verzióját, vagy<br/>Intel MPI 5<br/><br/>HpcVMDrivers Azure Virtuálisgép-bővítmény | Csomópontok közötti kommunikáció engedélyezése<br/> Tiltsa le az egyidejű feladat a végrehajtás |
 
@@ -122,7 +122,7 @@ Windows MPI alkalmazások futtatásához Azure A8 csomópontok készletét, tele
 Linux NC csomópontok készletét CUDA alkalmazások futtatásához, telepítendő CUDA eszközkészlet 9.0 a csomóponton. Az eszközkészlet telepíti a szükséges NVIDIA Tesla GPU-illesztőprogramokat. Az alábbiakban a GPU-illesztőprogramok egyéni Ubuntu 16.04 LTS lemezkép telepítéséhez minta lépéseket:
 
 1. Egy Azure NC6 virtuális gép fut az Ubuntu 16.04 LTS telepíthető. A US Dél központi régióban hozzon létre például a virtuális Gépet. Győződjön meg arról, hogy a felügyelt lemezes virtuális gép létrehozása.
-2. A lépések segítségével csatlakoztassa a virtuális Gépet és [CUDA illesztőprogramok telepítése](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms).
+2. A lépések segítségével csatlakoztassa a virtuális Gépet és [CUDA illesztőprogramok telepítése](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms).
 3. A Linux-ügynök kiosztásának megszüntetése, majd [a Linux virtuális gép lemezképének](../virtual-machines/linux/capture-image.md).
 4. Batch-fiók létrehozása, amely támogatja a hálózati vezérlő által virtuális gépek régióban.
 5. A kötegelt API-k vagy az Azure-portálon hozzon létre egy címkészletet [az egyéni lemezkép használatával](batch-custom-images.md) és a kívánt számú csomópontok és a skála. Az alábbi táblázat a kép tartozó minta beállításainak:
@@ -136,7 +136,7 @@ Linux NC csomópontok készletét CUDA alkalmazások futtatásához, telepítend
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * MPI-feladatok futtatása az Azure Batch-készlet, tekintse meg a [Windows](batch-mpi.md) vagy [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) példák.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 25d99ad3048612722b75cf6ec9b8d07729770c8d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d23f1c4d6613d525695ed222e0d84736b9007833
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>Oktatóanyag: Azure Active Directoryval integrált Benefitsolver
 
@@ -142,7 +142,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     d. Kattintson az **OK** gombra.
 
-6. A a **SAML-aláíró tanúsítványa** kattintson **Metadta XML** és mentse a metaadat-fájlt a számítógépen.
+6. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-benefitsolver-tutorial/tutorial_benefitsolver_certificate.png) 
 
@@ -150,7 +150,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_400.png)
 
-8. Egyszeri bejelentkezés konfigurálása **Benefitsolver** oldalon kell küldeniük a letöltött **Metadta XML** való [Benefitsolver támogatási csoport](https://www.businessolver.com/contact).
+8. Egyszeri bejelentkezés konfigurálása **Benefitsolver** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [Benefitsolver támogatási csoport](https://www.businessolver.com/contact).
 
     > [!NOTE]
     > A Benefitsolver terméktámogató csapat rendelkezésére áll, a tényleges SSO konfigurációs elvégzéséhez. Ha egyszeri bejelentkezés engedélyezve van az előfizetés értesítést kap.

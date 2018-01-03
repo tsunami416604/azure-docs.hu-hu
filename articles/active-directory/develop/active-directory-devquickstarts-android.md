@@ -1,6 +1,6 @@
 ---
 title: "Ismerkedés az Azure AD Android |} Microsoft Docs"
-description: "Hogyan hozhat létre egy Android-alkalmazás, amely az Azure AD bejelentkezési és a hívások Azure AD számára az API-k OAuth használatával védett."
+description: "Hogyan hozhat létre egy Android-alkalmazás, amely az Azure AD bejelentkezési és a hívások Azure AD számára az API-k használatával OAuth2.0 védett."
 services: active-directory
 documentationcenter: android
 author: danieldobalian
@@ -12,22 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 1ea39854766332a87eae4f44f52a4853848d2120
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 619334b3ca65654fd845a62c2fc068156d94d6fc
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-into-an-android-app"></a>Az Azure AD integrálása Android-alkalmazás
+# <a name="azure-ad-android-getting-started"></a>Ismerkedés az Azure AD Android
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
-
-> [!TIP]
-> Az új az előzetes kiadás kipróbálásához [fejlesztői portálján](https://identity.microsoft.com/Docs/Android), amely segít, amelyekből megismerheti az Azure AD csak néhány perc múlva. A fejlesztői portálján végigvezeti a folyamat regisztrálja az alkalmazást, és az Azure AD integrálása a kódot. Amikor elkészült, akkor kell egy egyszerű alkalmazást, amely képes hitelesíteni a felhasználók számára a bérlő és a háttérből fogadni és-ellenőrzéshez.
->
->
 
 Ha az asztali alkalmazások, Azure Active Directory (Azure AD) segítségével egyszerű és magától értetődő, hogy a felhasználók hitelesítése a helyszíni Active Directory-fiókok használatával. Emellett lehetővé teszi az alkalmazás minden webes API-t az Azure AD, például az Office 365 API-k vagy az Azure API által védett biztonságosan felhasználását.
 

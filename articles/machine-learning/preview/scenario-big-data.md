@@ -7,6 +7,7 @@ author: daden
 manager: mithal
 editor: daden
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 36de5ed0cfd0e2b41c9725efe69936e0c985e01a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 25c9079bc1a3030b8c65a83e5e9969c4a5a626b3
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
 
@@ -75,7 +76,7 @@ DSVM IP-cím | xxx|
  Mező neve| Érték |  
  |------------|------|
  Tárfiók neve| xxx|
- A hozzáférési kulcsot  | xxx|
+ Elérési kulcs  | xxx|
 
 
 Az Ubuntu DSVM és az előfeltétel-ellenőrzési lista létrehozása az Azure HDInsight-fürt számítási célokat. Számítási célpontjai a számítási erőforrással a környezetben a Machine Learning-munkaterület, amely eltérhet a munkaterületet futtató számítógépre.   
@@ -418,7 +419,7 @@ Válasszon ki egy egyedi karakterlánc operationalization környezeti legyen. "[
    További információkért lásd: [operationalization meg az Azure Tárolószolgáltatás-fürt méretezése](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/how-to-scale.md).
  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a példa emel ki, hogyan használható a Machine Learning munkaterület kell még betanítani a gépi tanulási modell a big data, és azok a betanított modell. Különösen megtudta, hogyan konfigurálja használni a különböző számítási célokat, és futtatásához előzményeinek nyomon követése a metrikák és különböző futtatásakor használja.
 

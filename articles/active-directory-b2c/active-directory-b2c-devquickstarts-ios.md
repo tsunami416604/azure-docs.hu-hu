@@ -1,24 +1,24 @@
 ---
-title: "IOS alkalmazás - Azure AD B2C segítségével tokenbeolvasás |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan Azure Active Directory B2C AppAuth használ a felhasználói identitások kezelésére, és hitelesíti a felhasználókat egy iOS-alkalmazás létrehozásához."
+title: "IOS-alkalmazás - Azure Active Directory B2C AppAuth használata"
+description: "Ez a cikk bemutatja, hogyan hozzon létre egy iOS-alkalmazást, amely Azure Active Directory B2C AppAuth használ a felhasználói identitások kezelésére, és hitelesíti a felhasználókat."
 services: active-directory-b2c
 documentationcenter: ios
-author: saeedakhter-msft
+author: PatAltimore
 manager: mtillman
 editor: parakhj
-ms.assetid: d818a634-42c2-4cbd-bf73-32fa0c8c69d3
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objectivec
 ms.topic: article
 ms.date: 03/07/2017
-ms.author: saeedakhter-msft
-ms.openlocfilehash: cc26d4d2209564fc5c994c2bc73f6a572fe87d28
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: saeeda
+ms.openlocfilehash: b4f46129a7a18e4653d714599630d6cdddfff4ed
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Az Azure AD B2C: Bejelentkezés használata iOS-alkalmazás
 
@@ -40,8 +40,6 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Az al
 * Tartalmaznak egy **natív ügyfél** az alkalmazásban.
 * Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. A GUID később szüksége.
 * Állítson be egy **átirányítási URI-** egy egyéni séma (például com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Ezt az URI később szüksége.
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Szabályzatok létrehozása
 Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Az alkalmazás tartalmaz egy identitás-élmény: egy kombinált bejelentkezési és regisztrációs. A házirend létrehozásához lásd: a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). A szabályzat létrehozásakor ügyeljen arra, hogy:
@@ -131,8 +129,8 @@ Az alkalmazás kezelni az egyéni séma URI-ra való beállításához módosít
 * Kattintson a balra mutató nyílra "elem 0' a fa megnyitásához.
 * Nevezze át az első elem "URL-sémákat" 0 elem alatt.
 * Kattintson a "URL-sémákat" nyissa meg a fa balra mutató nyílra.
-* Az "Érték" oszlop nincs egy üres mező balra "elem 0'"URL-sémákat"alá.  Adja meg az értéket az alkalmazás egyedi séma.  Az értéket meg kell egyeznie a rendszer a OIDAuthorizationRequest objektum létrehozásakor használt redirectURL.  A mintában a rendszer "com.onmicrosoft.fabrikamb2c.exampleapp" használtuk.
+* Az "Érték" oszlop nincs egy üres mező balra "elem 0'"URL-sémákat"alá.  Adja meg az értéket az alkalmazás egyedi séma.  Az értéket meg kell egyeznie a rendszer a OIDAuthorizationRequest objektum létrehozásakor használt redirectURL.  A példában a rendszer "com.onmicrosoft.fabrikamb2c.exampleapp" szolgál.
 
 Tekintse meg a [AppAuth útmutató](https://openid.github.io/AppAuth-iOS/) való fejezze be a folyamatot. Ha egy működő alkalmazást gyorsan megismerkedhet van szüksége, tekintse meg [a minta](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Kövesse a [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) a saját Azure AD B2C konfigurációs megadását.
 
-Azt mindig nyitva a visszajelzések és tanácsok! Ha bármilyen nehézségbe ütközik az ebben a témakörben, vagy az ehhez a tartalomhoz javítására állnak, azt fogadjuk visszajelzéseit az oldal alján. A szolgáltatás kéréseket, hozzáadhatja őket a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+Azt mindig nyitva a visszajelzések és tanácsok! Ha bármilyen nehézségbe ütközik a cikket, vagy az ehhez a tartalomhoz javítására állnak, azt fogadjuk visszajelzéseit az oldal alján. A szolgáltatás kéréseket, hozzáadhatja őket a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).

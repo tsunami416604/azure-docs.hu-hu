@@ -14,15 +14,15 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: jdial
 ms.openlocfilehash: 802658b50d8e398451507ad11c76fedd0db697df
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>Ellenőrizze a kapcsolatot az Azure hálózati figyelőt az Azure portál használatával
 
 > [!div class="op_single_selector"]
-> - [Portál](network-watcher-connectivity-portal.md)
+> - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Az Azure REST API-n](network-watcher-connectivity-rest.md)
@@ -494,7 +494,7 @@ A következő példa az előző API-hívás futtató válaszát. Az ellenőrzés
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Csomag rögzíti a virtuális gép a riasztások megtekintésével automatizálása [riasztási kiváltott csomagrögzítéssel létrehozása](network-watcher-alert-triggered-packet-capture.md)
 

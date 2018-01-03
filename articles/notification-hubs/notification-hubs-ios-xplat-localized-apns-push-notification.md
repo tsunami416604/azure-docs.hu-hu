@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
 ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-notification-hubs-to-send-localized-breaking-news-to-ios-devices"></a>IOS-eszközök honosított legfrissebb hírek küldése Notification Hubs használatával
 > [!div class="op_single_selector"]
@@ -230,7 +230,7 @@ Ha nem rendelkezik hozzáféréssel a Visual Studio, vagy csak a közvetlenül a
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Sablonok használatával kapcsolatos további információkért lásd:
 
 * [Értesítse a felhasználókat a Notification hubs használatával: ASP.NET]

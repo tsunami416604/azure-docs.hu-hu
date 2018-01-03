@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 971f7979ca27bce5d147a9d479248c808dc658e3
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 57277b36c0a77247b7c91d7a0035f7b4ec60c7e0
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server
 
@@ -89,9 +89,6 @@ Ezeket a lépéseket a használt terminológiával alábbiakat tartalmazza:
 1. Nyissa meg a **a Microsoft Azure Backup szolgáltatás** beépülő modult a *célgépen*.
 2. Győződjön meg arról, hogy a *célgépen* és a *forrásgép* ugyanazt a Recovery Services-tároló van regisztrálva.
 3. Kattintson a **adatok helyreállítása** a munkafolyamat elindítására.
-
-    ![Adatok helyreállítása](./media/backup-azure-restore-windows-server-classic/recover.png)
-
 4. Válassza ki **egy másik kiszolgáló**
 
     ![Egy másik kiszolgáló](./media/backup-azure-restore-system-state/anotherserver.png)
@@ -99,9 +96,6 @@ Ezeket a lépéseket a használt terminológiával alábbiakat tartalmazza:
 5. Adja meg a tároló hitelesítő adatait tartalmazó fájlt, amely megfelel a *minta tároló*. Ha a tárolói hitelesítő adatok fájlját érvénytelen (vagy lejárt), töltse le az új tárolói hitelesítő adatok fájlját az *minta tároló* az Azure portálon. A tárolói hitelesítő adatok fájlját valósul meg, miután a Recovery Services-tárolónak a tárolói hitelesítő adatok fájlját társított jelenik meg.
 
 6. A biztonsági mentés kiszolgáló kiválasztása ablakban válassza ki a *forrásgép* megjelenített gépet a listából.
-
-    ![Számítógépek listája](./media/backup-azure-restore-windows-server-classic/machinelist.png)
-
 7. A helyreállítási mód kiválasztása ablakban válassza ki a **rendszerállapot** kattintson **következő**. 
 
     ![Keresés](./media/backup-azure-restore-system-state/recover-type-selection.png)
@@ -222,5 +216,5 @@ Ha az előző folyamat, amely során a rendszerállapot nem sikeres, a Windows h
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Most, hogy a fájlok és mappák már helyreállítva, akkor [kezelheti a biztonsági másolatok](backup-azure-manage-windows-server.md).

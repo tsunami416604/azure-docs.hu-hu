@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/09/2017
+ms.date: 12/15/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
-ms.openlocfilehash: 1ad23a098ee0482b3c8c853ab5cee989f752a101
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 2bf1a3e80e96d76b15340f87166b2b4762271cf3
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Egy függvény OpenAPI definíció létrehozása
 REST API-k gyakran ismerteti egy OpenAPI definíció használatával (korábbi néven egy [Swagger](http://swagger.io/) fájl). Ez a definíció milyen műveleteket elérhetők az API-k, és hogy a kérés- és az API-adatszerkezet információkat tartalmaz.
@@ -125,9 +125,9 @@ Most már készen áll a OpenAPI definíciót létrehozni. Ez a definíció hasz
 
     1. Az a **integráció** lap az új HTTP-eseményindítóval függvény, a módosítás **engedélyezett HTTP-metódus** való **kijelölt módszerek**
 
-    1. A **kijelölt HTTP-metódus**, kapcsolja ki minden beállítást, kivéve **POST**.
+    1. A **kijelölt HTTP-metódus**, kapcsolja kivételével minden beállítást **POST**, majd kattintson a **mentése**.
 
-        ![A kijelölt HTTP-metódusok](media/functions-openapi-definition/selected-http-methods.png)
+        ![Kiválasztott HTTP-metódusok](media/functions-openapi-definition/selected-http-methods.png)
         
 1. Kattintson a függvény alkalmazás neve (például **függvény-bemutató-energia**) > **Platform funkciói** > **API-definíció**.
 
@@ -135,13 +135,13 @@ Most már készen áll a OpenAPI definíciót létrehozni. Ez a definíció hasz
 
 1. Az a **API-definíció** lapra, majd **függvény**.
 
-    ![API definition forrás](media/functions-openapi-definition/api-definition-source.png)
+    ![API-definíció forrása](media/functions-openapi-definition/api-definition-source.png)
 
     Ez a lépés lehetővé teszi, hogy az függvény alkalmazások, beleértve a függvény app tartományból egy beágyazott másolatot készít egy OpenAPI fájl futtatásához a végpont OpenAPI beállítások együttese a [OpenAPI szerkesztő](http://editor.swagger.io), és az API definition sablon generátor.
 
 1. Kattintson a **készítése API definition sablon** > **mentése**.
 
-    ![API definition sablon létrehozása](media/functions-openapi-definition/generate-template.png)
+    ![API-definíció-sablon létrehozása](media/functions-openapi-definition/generate-template.png)
 
     Azure vizsgálatokat végez a HTTP-eseményindítóval funkciók függvény alkalmazás, és használja a biztonsági adatok functions.json egy OpenAPI definíciója létrehozásához. A-definíciót, amely akkor jön létre, a következő:
 
@@ -272,7 +272,7 @@ Az API-definíció használata előtt célszerű tesztelheti az Azure Functions 
 
 1. Lépjen vissza az API-definíció: **függvény-bemutató-energia** > **Platform funkciói** > **API-definíció**.
 
-1. Kattintson a jobb oldali ablaktáblában **hitelesítés módosítása**, adja meg az API-kulcsot, amely, másolja, majd kattintson az **hitelesítés**.
+1. Kattintson a jobb oldali ablaktáblában **hitelesítés**, adja meg az API-kulcsot, amely, másolja, majd kattintson az **hitelesítés**.
 
     ![A hitelesítést az API-kulcs](media/functions-openapi-definition/authenticate-api-key.png)
 
@@ -290,7 +290,7 @@ Az API-definíció használata előtt célszerű tesztelheti az Azure Functions 
 
     ![Kérés küldése](media/functions-openapi-definition/send-request.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

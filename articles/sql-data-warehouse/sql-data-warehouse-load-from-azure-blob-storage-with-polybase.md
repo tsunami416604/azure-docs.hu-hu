@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: barbkess
 ms.openlocfilehash: 4221bcd5a50fad680427a500e32837c1e75dd990
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Adatok betöltése az Azure blob storage az SQL Data warehouse-ba (PolyBase)
 > [!div class="op_single_selector"]
@@ -354,7 +354,7 @@ JOIN    [cso].[DimProduct]      AS p ON f.[ProductKey] = p.[ProductKey]
 GROUP BY p.[BrandName]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A teljes Contoso kereskedelmi Data Warehouse-adatok betöltése, a parancsfájl használata további fejlesztési tippek. További információ: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse development overview].
 
 <!--Image references-->

@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 10/03/2017
 ms.author: nitinme
 ms.openlocfilehash: 2dd327f4e4abf19d41a54919c8b9c2e488d34d68
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>Adatok másolása az Azure Storage-blobokból a Data Lake Store-ba
 > [!div class="op_single_selector"]
@@ -178,7 +178,7 @@ AdlCopy támogatja az adatok másolását a fájlok és mappák ezer tartalmazó
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 * 1.0.13 - másolása adatok a azonos Azure Data Lake Store-fiókba között több adlcopy parancs, akkor nem kell minden egyes futtatásához a hitelesítő adatok újbóli többé. Adlcopy között több futtatása most gyorsítótárazhatják az adatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
 * [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
