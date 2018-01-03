@@ -121,6 +121,21 @@
               href: azure-stack-replace-disk.md
             - name: Cserélje le a összetevő
               href: azure-stack-replace-component.md
+        - name: Készítsen biztonsági másolatot az Azure-verem
+          href: azure-stack-backup-infrastructure-backup.md
+          items:
+            - name: Biztonsági mentés engedélyezése Azure verem felügyeleti konzoljáról
+              href: azure-stack-backup-enable-backup-console.md
+            - name: Azure verem PowerShell és a biztonsági mentés engedélyezése
+              href: azure-stack-backup-enable-backup-powershell.md
+            - name: Készítsen biztonsági másolatot az Azure-verem
+              href: azure-stack-backup-back-up-azure-stack.md
+            - name: Végzetes adatvesztés helyreállítása
+              href: azure-stack-backup-recover-data.md
+            - name: Ajánlott biztonsági eljárások
+              href: azure-stack-backup-best-practices.md
+            - name: Biztonsági mentési referencia
+              href: azure-stack-backup-reference.md
     - name: 'Biztonság, megfelelőség és identitás'
       items:
         - name: Biztonsági áttekintés
@@ -195,6 +210,8 @@
               href: azure-stack-create-and-publish-marketplace-item.md
             - name: A piactér közzétételi eszközzel
               href: azure-stack-marketplace-publisher.md
+            - name: Támogatott vendég operációs rendszerek Azure verem
+              href: azure-stack-supported-os.md
             - name: Egyéni virtuálisgép-rendszerkép hozzáadása
               href: azure-stack-add-vm-image.md
             - name: Virtuálisgép-méretezési csoportok hozzáadása
@@ -231,15 +248,15 @@
           href: azure-stack-diagnostics.md
         - name: Az Azure Stack fejlesztői készlet ismételt üzembe helyezése
           href: azure-stack-redeploy.md
-- name: Referencia
+- name: Leírások
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9
-- name: Kapcsolódó
+- name: Kapcsolódó témakörök
   items:
     - name: Az Azure Stack felhasználói dokumentációja
       href: /azure/azure-stack/user/
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
