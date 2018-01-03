@@ -3,7 +3,7 @@ title: "Egy Azure DevTest Labs szolgáltatásban virtuális gép összetevő hib
 description: "Útmutató: Azure DevTest Labs összetevő hibáinak elhárítása."
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 115e0086-3293-4adf-8738-9f639f31f918
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
-ms.author: tarcher
-ms.openlocfilehash: 9a79e50902e8e99e94148f8ef534e6745e31809a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 6c03ce8f91ec688e32e379f1284767db9a45920c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>A tesztkörnyezetben összetevő hibák diagnosztizálása 
 Miután létrehozott egy összetevő, ellenőrizheti látható, hogy sikeres volt, vagy nem sikerült. Összetevő-naplók Azure DevTest Labs segítségével diagnosztizálhatja összetevő hibát információkat tartalmaznak. A beállítások megtekintéséhez a összetevő naplózási adatok egy Windows virtuális gép több lehetősége van:
@@ -56,6 +56,6 @@ Miután létrehozott egy összetevő, ellenőrizheti látható, hogy sikeres vol
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 * [Meglévő Active Directory-tartományban a DevTest Labs szolgáltatásban a Resource Manager-sablon használatával egy virtuális gép csatlakoztatása](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [Git-tárház hozzáadása egy laborhoz](devtest-lab-add-artifact-repo.md).
 

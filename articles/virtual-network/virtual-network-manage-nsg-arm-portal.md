@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-nsgs-using-the-portal"></a>A portál használatával NSG-k kezelése
 
@@ -197,5 +197,5 @@ Az NSG csak törölheti, ha nem kapcsolódik semmilyen erőforráshoz. Ha törö
 
     ![Azure portál – NSG-k](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Naplózás engedélyezése](virtual-network-nsg-manage-log.md) az NSG-ket.

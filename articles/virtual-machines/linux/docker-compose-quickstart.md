@@ -13,13 +13,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/26/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: e187b51769754a757991f7b5bdb335e62512b488
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 474a2d66cc46fcac35b145633e802d72881b10d8
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Ismerkedés a Docker és a Compose határozza meg, és futtassa a több tároló alkalmazást az Azure-ban
 A [Compose](http://github.com/docker/compose), egy egyszerű szöveges fájl használatával definiálja az alkalmazást, amely több Docker-tároló. Majd lépett fel az alkalmazást egy parancs, amelyet az adott környezet telepítéséhez. Tegyük fel ez a cikk bemutatja, hogyan gyorsan be lehessen állítani egy WordPress-bloghoz az Ubuntu virtuális gép MariaDB SQL database-fájlok. Használhatja a Compose összetettebb alkalmazásokat beállítása.
@@ -40,30 +40,14 @@ Először hozzon létre egy erőforráscsoportot a Docker környezetében [az cs
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután telepítse a virtuális gép és [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#create) , amely tartalmazza az Azure Docker Virtuálisgép-bővítmény a [a Githubon az Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Adja meg a saját egyedi értékeket az *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP*:
+Ezután telepítse a virtuális gép és [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#create) , amely tartalmazza az Azure Docker Virtuálisgép-bővítmény a [a Githubon az Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Amikor a rendszer kéri, adja meg a saját egyedi értékeket az *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
-  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
-    "adminUsername": {"value": "azureuser"},
-    "adminPassword": {"value": "P@ssw0rd!"},
-    "dnsNameForPublicIP": {"value": "mypublicdns"}}' \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
 
-Az üzembe helyezés befejeződik néhány percet vesz igénybe. A telepítés befejeződése után [következő lépésének](#verify-that-compose-is-installed) az SSH-kapcsolatot a virtuális Gépet. 
-
-Ha szükséges, ehelyett vezérlő vissza kell a figyelmeztetésre, és lehetővé teszik a központi telepítés a háttérben folytatódik, vegye fel a `--no-wait` jelzőjét, hogy a fenti paranccsal. Ez a folyamat teszi lehetővé a parancssori felület a más feladatok végrehajtására, amíg a telepítés továbbra is fennáll, néhány percig. Megtekintheti a Docker állomás állapotának részleteit [az vm megjelenítése](/cli/azure/vm#show). A következő példa a nevű virtuális gép állapotát ellenőrzi *myDockerVM* (az alapértelmezett név a sablonból - ne módosítsa a nevet) az erőforráscsoport neve *myResourceGroup*:
-
-```azurecli
-az vm show \
-    --resource-group myResourceGroup \
-    --name myDockerVM \
-    --query [provisioningState] \
-    --output tsv
-```
-
-Ha ez a parancs visszaadja *sikeres*, a telepítés véget ért, és a következő lépésben a virtuális gép SSH is.
+Az üzembe helyezés befejeződik néhány percet vesz igénybe.
 
 
 ## <a name="verify-that-compose-is-installed"></a>Győződjön meg arról, hogy telepítve van-e a Compose
@@ -78,7 +62,7 @@ az vm show \
     --output tsv
 ```
 
-SSH-kapcsolatot az új Docker-állomás. Adja meg a saját DNS-neve az alábbiak szerint:
+SSH-kapcsolatot az új Docker-állomás. Adja meg a saját felhasználónevét és a DNS-név az előző lépéseket:
 
 ```bash
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
@@ -153,7 +137,7 @@ WordPress közvetlenül a 80-as porton virtuális Gépre is csatlakozhat. Nyisso
 
 ![WordPress kezdőképernyője][wordpress_start]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Lépjen a [Docker VM bővítményének használati útmutatója](https://github.com/Azure/azure-docker-extension/blob/master/README.md) Docker és Compose konfigurálása a Docker VM további lehetőségekért. Például egy lehetőség áll a Compose yml fájlt (JSON formátumúvá konvertálni) közvetlenül a Docker Virtuálisgép-bővítmény konfigurációját.
 * Tekintse meg a [állítható össze a parancssori útmutatójának](http://docs.docker.com/compose/reference/) és [felhasználói útmutató](http://docs.docker.com/compose/) további példák a kialakításához, és több tároló alkalmazások központi telepítéséhez.
 * Az Azure Resource Manager-sablon, vagy használja a saját vagy egy része volt a a [közösségi](https://azure.microsoft.com/documentation/templates/), hogy az Azure virtuális gép Docker és állítsa be a Compose kérelmet. Például a [központi telepítése egy WordPress-bloghoz az Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) sablon és használ a Docker Compose gyorsan üzembe helyezhet WordPress egy Ubuntu virtuális gép a MySQL-fájlok.

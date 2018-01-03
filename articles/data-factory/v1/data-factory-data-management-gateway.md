@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a1b5346b590081c703ccdc5197e08f35bcaf76e3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: af05f407661c2606719e733e373d0dad7bff3230
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -323,6 +323,9 @@ A beállítások lap lehetővé teszi a következő műveleteket hajthatja végr
 * **Állapot** a végpont
 * Nézet **SSL-tanúsítvány** portál és az átjáró közötti SSL-kommunikáció adatforrások hitelesítő adatok beállítására szolgál.  
 
+### <a name="remote-access-from-intranet"></a>Távelérési az intranetes  
+Ez a funkció a jövőben engedélyezve lesz. A jövőbeli frissítések (v3.4 vagy újabb) azt lehetővé teszi, hogy engedélyezése / letiltása bármely távoli kapcsolatot, amely ma történik (lásd fent) 8050 portot használ a PowerShell vagy a hitelesítőadat-kezelő alkalmazás használatakor a hitelesítő adatok titkosításához. 
+
 ### <a name="diagnostics-page"></a>Diagnosztika lap
 A Diagnosztika lapot lehetővé teszi a következő műveleteket hajthatja végre:
 
@@ -356,7 +359,7 @@ A következő táblázat ismerteti az oszlopok a **Átjárócsomópontok** list�
 
 Figyelési tulajdonság | Leírás
 :------------------ | :---------- 
-Név | A logikai átjáró és az átjáróhoz társított csomópont neve. Csomópont egy a helyi Windows-számítógépen, amelyen az átjáró telepítve van-e. Egynél több csomópont (legfeljebb négy csomópont), amely a egyetlen logikai átjáró információkért lásd: [az adatkezelési átjáró - magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).    
+Name (Név) | A logikai átjáró és az átjáróhoz társított csomópont neve. Csomópont egy a helyi Windows-számítógépen, amelyen az átjáró telepítve van-e. Egynél több csomópont (legfeljebb négy csomópont), amely a egyetlen logikai átjáró információkért lásd: [az adatkezelési átjáró - magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).    
 status | A logikai átjáró és az átjáró csomópontok állapota. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért lásd: [az átjáró állapotának](#gateway-status) szakasz. 
 Verzió | A logikai átjáró és az egyes átjárócsomópont verzióját jeleníti meg. A logikai átjáró verziója határozza meg a csoportban lévő csomópontok többsége verzióján alapul. Ha nincs a logikai átjáró beállítás, csak a csomópontok a azonos verziószámú a logikai átjáró függvényében eltérő verziójú csomópontok megfelelően. Mások korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés sikertelen lesz). 
 Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet. 
@@ -373,8 +376,8 @@ A következő táblázat a lehetséges állapotok egy **átjárócsomópont**:
 status  | Megjegyzések/forgatókönyvek
 :------- | :------------------
 Online | Csomópont csatlakozik a Data Factory szolgáltatásnak.
-Kapcsolat nélküli módban | Csomópontja offline állapotban.
-Frissítése | A csomópont automatikus frissítése folyamatban van.
+Offline | Csomópontja offline állapotban.
+Frissítés | A csomópont automatikus frissítése folyamatban van.
 Korlátozott | Kapcsolat nem látható probléma miatt. HTTP-port 8050 problémát, a service bus kapcsolati probléma vagy a hitelesítő adatok szinkronizálási problémája miatt lehet. 
 Inaktív | Csomópont van konfigurálva a konfigurációból egyéb többsége csomópontok különböző.<br/><br/> A csomópont inaktív lehet, ha más csomópontok nem tud kapcsolódni. 
 
@@ -385,7 +388,7 @@ status | Megjegyzések
 :----- | :-------
 Regisztrálnia kell az Adatátjárót | Nincs csomópont még regisztrálva van a logikai átjáró
 Online | Átjáró csomópontja online állapotban.
-Kapcsolat nélküli módban | Nincs csomópontja online állapotát.
+Offline | Nincs csomópontja online állapotát.
 Korlátozott | Ez az átjáró nem minden csomópontja kifogástalan állapotban vannak. Ez az állapot nem figyelmezteti rá, hogy néhány csomópont esetleg nem működik! <br/><br/>Hitelesítő adatok szinkronizálási problémája kézbesítő/munkavégző csomóponton okozhatja. 
 
 ## <a name="scale-up-gateway"></a>Átjáró méretezése
@@ -537,5 +540,5 @@ Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName A
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Lásd: [adatok áthelyezése között a helyszíni és felhőalapú adattároló](data-factory-move-data-between-onprem-and-cloud.md) cikk. A forgatókönyv hozzon létre egy folyamatot, amely egy helyi SQL Server-adatbázis adatok áthelyezése az Azure blob az átjárót használja.  

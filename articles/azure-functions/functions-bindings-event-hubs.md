@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 5e0ff1b98be73eb5990601ae7c5528e4a7af670b
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 0d48d0b008d76cfb2d7d7815a69774976e184467
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Functions az Azure Event Hubs kötései
 
@@ -43,7 +43,7 @@ Tegyük fel, hogy az első lépések a következő telepítésével és az Esem�
 1. 10 partíciókat.
 1. egyenlően elosztott 1000 események összes partíciójára = > 100 üzenetek az egyes partíciók.
 
-Ha a függvény első engedélyezve van, nincs csak 1 példánya a funciton. Ez a függvény példány Function_0 most hívja. Function_0 fog rendelkezni, amely kezeli a címbérlet beolvasni minden 10 partíción 1 EPH. Események olvasása partíciók 0-9 fog elindulni. Ettől kezdve a következő történik:
+Ha a függvény első engedélyezve van, nincs csak 1 példánya a függvényt. Ez a függvény példány Function_0 most hívja. Function_0 fog rendelkezni, amely kezeli a címbérlet beolvasni minden 10 partíción 1 EPH. Események olvasása partíciók 0-9 fog elindulni. Ettől kezdve a következő történik:
 
 * **A függvény csak 1-példány szükséges** -Function_0 sikerült feldolgozni az összes 1000, mielőtt az Azure Functions méretezési logika lép működésbe,. Emiatt minden 1000 üzenetek Function_0 dolgoznak fel.
 
@@ -59,14 +59,14 @@ Minden függvény végrehajtások sikeres, nem jelenik meg hibaüzenet, ha a kap
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#trigger---c-example)
-* [C# parancsfájl](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# parancsfájl (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Eseményindító - C# – példa
 
-Az alábbi példában látható [előre le fordítva C#](functions-dotnet-class-library.md) kódot, amely az üzenettörzs az event hub eseményindító naplózza.
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , naplózza, hogy az eseményindító hub üzenet törzsét.
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -199,7 +199,7 @@ module.exports = function (context, myEventHubMessage) {
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus).
 
 Az attribútum konstruktora időt vesz igénybe, az eseményközpont nevét, a felhasználói csoport nevét és a kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. A beállításokkal kapcsolatban további információkért lásd: a [indul el, a konfigurációs szakasz](#trigger---configuration). Íme egy `EventHubTriggerAttribute` attribútum példa:
 
@@ -211,7 +211,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Tekintse meg a teljes például [eseményindító - előfordított például C#](#trigger---c-example).
+Tekintse meg a teljes például [eseményindító - C# példa](#trigger---c-example).
 
 ## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
@@ -242,14 +242,14 @@ Az Event Hubs kimeneti kötése beírni az eseményeket az eseménystream haszn�
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#output---c-example)
-* [C# parancsfájl](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# parancsfájl (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Kimeneti - C# – példa
 
-Az alábbi példa mutatja egy [előre le a C# függvény fordítva](functions-dotnet-class-library.md) , amely egy üzenetet ír egy eseményközpontot, a metódus visszatérési értéket használja, mint a kimeneti:
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , amely egy üzenetet ír egy eseményközpontot, a metódus visszatérési értéket használja, mint a kimeneti:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -371,7 +371,7 @@ module.exports = function(context) {
 
 ## <a name="output---attributes"></a>Kimeneti - attribútumok
 
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus).
 
 Az attribútum konstruktora időt vesz igénybe, az eseményközpont nevét és a kapcsolati karakterláncot tartalmazó Alkalmazásbeállítás nevét. A beállításokkal kapcsolatban további információkért lásd: [kimeneti - konfigurációs](#output---configuration). Íme egy `EventHub` attribútum példa:
 
@@ -384,7 +384,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 }
 ```
 
-Tekintse meg a teljes például [kimeneti - előfordított például C#](#output---c-example).
+Tekintse meg a teljes például [kimeneti - C# példa](#output---c-example).
 
 ## <a name="output---configuration"></a>Kimeneti - konfiguráció
 
@@ -406,7 +406,7 @@ A C# és C# a parancsfájlt, használatával üzeneteket metódusparaméter pél
 
 A JavaScript, hozzáférhet a kimeneti esemény a `context.bindings.<name>`. `<name>`az érték szerepel a `name` tulajdonsága *function.json*.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

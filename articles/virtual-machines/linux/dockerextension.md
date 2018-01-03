@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 0cef78edaeec9d45aa733b1912d82d5a058ba289
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce44a5e4db080822aaec0b50a265b863059bd45a
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Hozzon létre egy Docker-környezetet az Azure-ban a Docker Virtuálisgép-bővítmény
 Docker egy népszerű tárolóinak kezelése és a lemezkép-készítési platform, amely lehetővé teszi, hogy gyorsan alkalmazásában tárolók Linux rendszeren. Az Azure különböző módja van Docker igény szerint telepítheti. Ez a cikk foglalkozik a a Docker Virtuálisgép-bővítmény és az Azure Resource Manager-sablonok az Azure CLI 2.0-s verziójával. Az [Azure CLI 1.0-s](dockerextension-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
@@ -29,7 +29,8 @@ Az Azure Docker Virtuálisgép-bővítmény telepíti és konfigurálja a Docker
 További információ a különböző központi telepítési módszer, beleértve a Docker gép és az Azure tárolószolgáltatások tekintse meg a következő cikkeket:
 
 * Gyorsan típusnak egy alkalmazást, létrehozhat egy Docker állomáshoz használatával [Docker gép](docker-machine.md).
-* Adja meg a további ütemezés és a felügyeleti eszközök éles használatra kész, méretezhető környezetek létrehozása, központilag telepítheti egy [Docker Swarm-fürt a Azure-tároló szolgáltatásokra](../../container-service/dcos-swarm/container-service-deployment.md).
+* Adja meg a további ütemezés és a felügyeleti eszközök éles használatra kész, méretezhető környezetek létrehozása, központilag telepítheti egy [Kubernetes](../../container-service/kubernetes/index.yml) vagy [Docker Swarm](../../container-service/dcos-swarm/index.yml) Azure tárolószolgáltatások a fürt.
+
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>A sablon az Azure Docker Virtuálisgép-bővítmény telepítése
 Gyors üzembe helyezés meglévő sablon használatával hozzon létre egy Ubuntu virtuális gép által használt az Azure Docker Virtuálisgép-bővítmény telepítése és konfigurálása a Docker-állomás. A sablon Itt tekintheti meg: [egyszerű Ubuntu virtuális gép a Docker-telepítés](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). A legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#login).
@@ -40,32 +41,15 @@ Először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/c
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután telepítse a virtuális gép és [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#create) , amely tartalmazza az Azure Docker Virtuálisgép-bővítmény a [a Githubon az Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Adja meg a saját egyedi értékeket az *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP* , a következő:
+Ezután telepítse a virtuális gép és [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#create) , amely tartalmazza az Azure Docker Virtuálisgép-bővítmény a [a Githubon az Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Amikor a rendszer kéri, adja meg a saját egyedi értékeket az *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
-  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
-    "adminUsername": {"value": "azureuser"},
-    "adminPassword": {"value": "P@ssw0rd!"},
-    "dnsNameForPublicIP": {"value": "mypublicdns"}}' \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
 
-Az üzembe helyezés befejeződik néhány percet vesz igénybe. A telepítés befejeződése után [következő lépésének](#deploy-your-first-nginx-container) az SSH-kapcsolatot a virtuális Gépet. 
+Az üzembe helyezés befejeződik néhány percet vesz igénybe.
 
-Ha szükséges, ehelyett vezérlő vissza kell a figyelmeztetésre, és lehetővé teszik a központi telepítés a háttérben folytatódik, vegye fel a `--no-wait` jelzőjét, hogy a fenti paranccsal. Ez a folyamat teszi lehetővé a parancssori felület a más feladatok végrehajtására, amíg a telepítés továbbra is fennáll, néhány percig. 
-
-Megtekintheti a Docker állomás állapotának részleteit [az vm megjelenítése](/cli/azure/vm#show). A következő példa a nevű virtuális gép állapotát ellenőrzi *myDockerVM* (az alapértelmezett név a sablonból - ne módosítsa a nevet) az erőforráscsoport neve *myResourceGroup*:
-
-```azurecli
-az vm show \
-    --resource-group myResourceGroup \
-    --name myDockerVM \
-    --query [provisioningState] \
-    --output tsv
-```
-
-Ha ez a parancs visszaadja *sikeres*, a telepítés véget ért, és a következő lépésben a virtuális gép SSH is.
 
 ## <a name="deploy-your-first-nginx-container"></a>Az első NGINX tároló üzembe
 A virtuális gép, beleértve a DNS-nevét, a részletek megtekintéséhez használja a [az vm megjelenítése](/cli/azure/vm#show):
@@ -79,7 +63,7 @@ az vm show \
     --output tsv
 ```
 
-SSH-kapcsolatot az új Docker-állomás. Adja meg a saját DNS-neve az alábbiak szerint:
+SSH-kapcsolatot az új Docker-állomás. Adja meg a saját felhasználónevét és a DNS-név az előző lépéseket:
 
 ```bash
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
@@ -147,7 +131,7 @@ Az előző példában egy meglévő gyors üzembe helyezés sablont használja. 
 
 Részletes útmutató Resource Manager-sablonok használatával olvasásával található [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Kezdésként érdemes lehet [a Docker démon TCP-port konfigurálása](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket), megértéséhez [Docker biztonsági](https://docs.docker.com/engine/security/security/), vagy használatával tároló üzembe helyezése [Docker Compose](https://docs.docker.com/compose/overview/). Az Azure Docker Virtuálisgép-bővítmény maga további információkért tekintse meg a [GitHub-projekt](https://github.com/Azure/azure-docker-extension/).
 
 Az Azure-ban további Docker telepítési beállításokkal kapcsolatos további információkért olvassa el:

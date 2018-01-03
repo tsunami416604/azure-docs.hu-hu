@@ -12,11 +12,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/29/2017
 ms.author: tdykstra
-ms.openlocfilehash: f24c2aecf44dd44fec05dc9a4d156ff408b0c953
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: aa64bbc764fe96d7c15d62660114222458e5acf4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Az Azure Functions SendGrid kötések
 
@@ -28,13 +28,13 @@ Ez a cikk ismerteti, hogyan küldjön e-mailek [SendGrid](https://sendgrid.com/d
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#c-example)
-* [C# parancsfájl](#c-script-example)
+* [C#](#c-example)
+* [C# parancsfájl (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
 ### <a name="c-example"></a>C# – példa
 
-Az alábbi példa mutatja egy [előre le a C# függvény fordítva](functions-dotnet-class-library.md) , hogy indítás, használja a Service Bus-üzenetsorba, és a SendGrid kimeneti kötése.
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , hogy indítás, használja a Service Bus-üzenetsorba, és a SendGrid kimeneti kötése.
 
 ```cs
 [FunctionName("SendEmail")]
@@ -155,7 +155,7 @@ module.exports = function (context, input) {
 
 ## <a name="attributes"></a>Attribútumok
 
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid).
 
 Konfigurálható attribútumtulajdonságok kapcsolatos információkért lásd: [konfigurációs](#configuration). Íme egy `SendGrid` metódus-aláírás attribútum példát:
 
@@ -169,7 +169,7 @@ public static void Run(
 }
 ```
 
-Tekintse meg a teljes például [előre le fordítva C# példa](#c-example).
+Tekintse meg a teljes például [C# példa](#c-example).
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -188,7 +188,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

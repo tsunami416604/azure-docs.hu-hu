@@ -16,10 +16,10 @@ ms.date: 11/03/2017
 ms.devlang: na
 ms.author: delhan
 ms.openlocfilehash: bed5da25042d29983bad9a80cd44bdd7df261c2e
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-windows-virtual-machine-in-azure"></a>Klasszikus üzembe helyezési elhárítása újraindításával és átméretezésével egy meglévő Windows rendszerű virtuális gép az Azure-ban
 > [!div class="op_single_selector"]
@@ -81,6 +81,6 @@ A virtuális gépeinek az ugyanazon a felhőalapú szolgáltatás képes egyesí
 
 Ha a meglévő felhőalapú szolgáltatás nem régió-alapú virtuális hálózathoz társítva, majd kell törölni a virtuális gépek a meglévő felhőalapú szolgáltatást, és hozza létre őket az új felhőalapú szolgáltatás, a lemezekről. Fontos azonban, ne feledje, hogy az új felhőszolgáltatás lesz egy új nevet és a VIP, így ezeket a függőségeket, amelyek jelenleg használják ezeket az információkat a meglévő felhőszolgáltatás frissíteni kell.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha hibát tapasztal az Azure-ban a Windows virtuális gépek létrehozásakor, lásd: [egy Windows virtuális gép létrehozása az Azure-ban a telepítési problémák elhárításához](../troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

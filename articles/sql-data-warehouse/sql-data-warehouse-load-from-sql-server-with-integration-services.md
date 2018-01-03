@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 03/30/2017
 ms.author: cakarst;douglasl;barbkess
 ms.openlocfilehash: 6c9cebdd715b6997d0633bc725a3945ba9e0c357
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-ssis"></a>Adatok betöltése az SQL Server be Azure SQL Data Warehouse (SSIS)
 > [!div class="op_single_selector"]
@@ -167,7 +167,7 @@ Ha a csomag futása befejeződött, megjelenik az zöld jelölését annak jelz�
 
 Gratulálunk! Adatok betöltése az Azure SQL Data Warehouse sikeresen használt SQL Server Integration Services.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók az SSIS-adatfolyam. Kezdje itt: [adatfolyam][Data Flow].
 * Útmutató a Hibakeresés és hibaelhárítás a csomagok jobbra a tervezési környezetben. Kezdje itt: [hibaelhárítási eszközök csomag fejlesztési][Troubleshooting Tools for Package Development].
 * Megtudhatja, hogyan telepítheti a SSIS-projektek és csomagok Integration Services-kiszolgáló vagy egy másik tárolóhelyre. Kezdje itt: [telepítési a projekt és csomagok][Deployment of Projects and Packages].

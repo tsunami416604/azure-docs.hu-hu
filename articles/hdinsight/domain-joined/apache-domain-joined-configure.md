@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/12/2017
+ms.date: 12/15/2017
 ms.author: saurinsh
-ms.openlocfilehash: 345017d4a15f63e12940a8b2d9e55ee777c0e22a
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 0a9ed1cad8b8d4c566a0da16ac78d096efe187a5
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>Tartományhoz csatlakozó HDInsight védőfal mögötti környezet konfigurálása
 
@@ -138,9 +138,9 @@ Ebben a szakaszban az Azure-portál hozzáadása a HDInsight-fürtöt létrehozn
     Az egyéni konfigurációs beállítás használatával hat szakaszok is vannak: alapjai, tárolási, alkalmazás, fürt méretét, speciális beállításai és összegzése.
 5. Az a **alapjai** szakasz:
 
-    - Fürt típusa: válassza a **PRÉMIUM**. Jelenleg is csak prémium szintű fürt létrehozása a következő fürt típusú: Hadoop, interaktív lekérdezés és Spark.
+    - Fürt típusa: válassza ki **vállalati biztonsági csomag**. Jelenleg a vállalat biztonsági csomag csak akkor engedélyezhető a következő fürt esetében: Hadoop, interaktív lekérdezés és Spark.
 
-        ![A tartományhoz HDInsight prémium](./media/apache-domain-joined-configure/hdinsight-domain-joined-create-cluster-premium.png)
+        ![HDInsight tartományhoz csatlakoztatott vállalati biztonsági csomag](./media/apache-domain-joined-configure/hdinsight-creation-enterprise-security-package.png)
     - A fürt bejelentkezési felhasználónevének: Ez az a Hadoop HTTP felhasználó. Ez a fiók eltér a tartományi rendszergazdai fiókot.
     - Erőforráscsoport: válassza ki a korábban a Resource Manager sablonnal létrehozott erőforráscsoportot.
     - Helye: A hely csak azonos legyen a virtuális hálózat létrehozásakor használt és a tartományvezérlők, amelyek a Resource Manager-sablon használatával.
@@ -163,7 +163,7 @@ Ebben a szakaszban az Azure-portál hozzáadása a HDInsight-fürtöt létrehozn
 
 Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. A fürtök törlésével utasításokért lásd: [kezelése Hadoop-fürtök a HDInsight az Azure portál használatával](../hdinsight-administer-use-management-portal.md#delete-clusters).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Hive-házirendek konfigurálásához és a Hive-lekérdezések futtatásához lásd: [Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight-fürtökben](apache-domain-joined-run-hive.md).
 * Az SSH használatával csatlakozni a tartományhoz a HDInsight-fürtök, lásd: [SSH használata a HDInsight Linux, Unix vagy OS X, Linux-alapú Hadooppal](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 

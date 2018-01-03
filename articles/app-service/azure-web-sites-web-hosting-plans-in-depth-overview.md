@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: e9b979861f5ad815fd3794a98f3b9ca2115b415c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 720a5bd7fc3335e96570268c983578aad0774d7e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomag áttekintése
 
-Az App Service-ben egy alkalmazást futtat egy _App Service-csomag_. Az App Service-csomag meghatároz egy számítási erőforrásokat egy webalkalmazás futtatásához. Ezek a számítási erőforrások megfelel a rendszer a [ _kiszolgálófarm_ ](https://wikipedia.org/wiki/Server_farm) a hagyományos webtároláshoz. Egy vagy több alkalmazás beállítható úgy, hogy az azonos számítási erőforrások (vagy ugyanazon App Service-csomag). 
+Az App Service-ben egy alkalmazást futtat egy _App Service-csomag_. Az App Service-csomag meghatároz egy számítási erőforrásokat egy webalkalmazás futtatásához. Ezek a számítási erőforrások megfelel a rendszer a [ _kiszolgálófarm_ ](https://wikipedia.org/wiki/Server_farm) a hagyományos webtároláshoz. Egy vagy több alkalmazás beállítható úgy, hogy az azonos számítási erőforrások (vagy ugyanazon App Service-csomag).
 
 Az App Service-csomag létrehozásakor egy bizonyos régióban (például Nyugat-Európában) számítási erőforrások olyan készletét, hogy az adott régióban terv jön létre. Bármilyen alkalmazás, kerüljenek az App Service-csomag futtatása ezekkel a számítási erőforrásokat, az App Service-csomag által definiált konfigurációjának kialakításához. Minden egyes App Service-csomag határozza meg:
 
@@ -38,6 +38,8 @@ A _tarifacsomag_ egy App Service csomag határozza meg, milyen App Service-szolg
 - **Dedikált számítási**: A **alapvető**, **szabványos**, **prémium**, és **PremiumV2** rétegek alkalmazásokat futtatnak dedikált Azure Virtuális gépek. App Service-csomag csak alkalmazások közös számítási erőforrásokat. Minél nagyobb a réteg a kibővített rendelkezésére álljanak a további Virtuálisgép-példányok.
 - **Elkülönített**: Ebben a rétegben dedikált Azure virtuális gépeken futó dedikált Azure virtuális hálózatot, amely felett az alkalmazásokhoz számítási elkülönítési hálózati elkülönítést is biztosít. A maximális kibővített képességeket biztosít.
 - **Felhasználás**: Ebben a rétegben csak rendelkezésére áll [működnek az alkalmazások](../azure-functions/functions-overview.md). A funkciók dinamikusan attól függően, hogy munkaterhelés méretezés. További információkért lásd: [összehasonlítása az Azure Functions üzemeltetési tervek](../azure-functions/functions-scale.md).
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Minden egyes réteg is biztosít az App Service-szolgáltatások egy adott részhalmazát. A funkciók közé tartoznak az egyéni tartományok és SSL-tanúsítványok automatikus skálázást, üzembe helyezési, biztonsági mentések, Traffic Manager-integráció és több. Minél nagyobb a réteg a további funkciók érhetők el. Mely szolgáltatásokat támogatja az egyes tarifacsomagok regisztrációval, lásd: [App Service-csomag részletei](https://azure.microsoft.com/pricing/details/app-service/plans/).
 

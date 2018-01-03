@@ -16,15 +16,15 @@ ms.custom: manage
 ms.date: 3/23/2017
 ms.author: elbutter
 ms.openlocfilehash: 0d0d3b94fb50155ce0579d32e8ff78a47b9e3589
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Kezelheti a számítási teljesítményt az Azure SQL Data Warehouse (áttekintés)
 > [!div class="op_single_selector"]
 > * [Áttekintés](sql-data-warehouse-manage-compute-overview.md)
-> * [Portál](sql-data-warehouse-manage-compute-portal.md)
+> * [Portal](sql-data-warehouse-manage-compute-portal.md)
 > * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 > * [REST](sql-data-warehouse-manage-compute-rest-api.md)
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
@@ -167,7 +167,7 @@ Az adatbázis skálázás az engedélyekkel kell rendelkeznie a leírt [ALTER DA
 
 <a name="next-steps-bk"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikkek segítenek megismerni néhány további legfontosabb teljesítményi fogalmak:
 
 * [Munkaterhelés és feldolgozási kezelése][Workload and concurrency management]

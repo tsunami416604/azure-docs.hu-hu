@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2017
+ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: d8f04d8ed2e56cecb1b7a850bed55a02a9492bb5
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: bdbde834695040df4e333bef42fab7d29614ab75
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Azure portál felhasználói felületet a felügyelt alkalmazás létrehozása
 Ez a dokumentum alapvető fogalmait a createUiDefinition.json fájl. Az Azure-portálon használják ezt a fájlt a felhasználói felület létrehozására a kezelt alkalmazás létrehozásához.
@@ -38,7 +38,7 @@ Ez a dokumentum alapvető fogalmait a createUiDefinition.json fájl. Az Azure-po
 Egy CreateUiDefinition mindig három tulajdonságot tartalmazza: 
 
 * eseménykezelő
-* Verzió
+* verzió:
 * paraméterek
 
 Kezelt alkalmazások, mindig kell kezelő `Microsoft.Compute.MultiVm`, és a legfrissebb támogatott verziót `0.1.2-preview`.
@@ -55,18 +55,30 @@ Ha egy elem viselkedés attól függ, a felhasználó előfizetés, erőforrásc
 ## <a name="steps"></a>Lépések
 A lépések tulajdonság nulla vagy több további lépést is végre megjelenítése után alapjai, egy vagy több elemet tartalmaz, amelyek mindegyike tartalmazhat. Fontolja meg egy szerepkör vagy a réteg az alkalmazás telepítése lépést. Például hozzáadhat egy bemenetek a fő csomóponthoz, és egy lépést az ezen csomópontokhoz tartozó fürtben.
 
-## <a name="outputs"></a>kimenetek
+## <a name="outputs"></a>Kimenetek
 Az Azure-portálon használja a `outputs` tulajdonság elemeket a `basics` és `steps` paramétereinek az Azure Resource Manager központi telepítési sablont. Ehhez a szótárhoz kulcsai a sablon-paraméterek nevei, és a kimeneti objektumokat a hivatkozott elemeket tulajdonságainak értékei.
+
+A kezelt alkalmazás-erőfforás neve beállításához meg kell adni egy értéket `applicationResourceName` kimenetek tulajdonságában. Ha ez az érték nincs megadva, az alkalmazás nevét egy GUID Azonosítót rendeli hozzá. A szövegmezőben megadhat egy nevét kéri le a felhasználó felhasználói felületén.
+
+```json
+"outputs": {
+    "vmName": "[steps('appSettings').vmName]",
+    "trialOrProduction": "[steps('appSettings').trialOrProd]",
+    "userName": "[steps('vmCredentials').adminUsername]",
+    "pwd": "[steps('vmCredentials').vmPwd.password]",
+    "applicationResourceName": "[steps('appSettings').vmName]"
+}
+```
 
 ## <a name="functions"></a>Functions
 Az Azure Resource Manager (a szintaxis és a működésének) sablonfüggvényei hasonló, CreateUiDefinition funkciókat nyújt elem bemenetei és kimenetei, valamint szolgáltatások, mint a conditionals használata.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Magát a createUiDefinition.json fájlt egy egyszerű sémával rendelkezik. A valós mélysége a támogatott elemek és funkciók származik. Azokat a cikkeket, részletesebben ismertetjük:
 
 - [Elemek](create-uidefinition-elements.md)
 - [Functions](create-uidefinition-functions.md)
 
-A jelenlegi JSON-séma createUiDefinition érhető el itt: https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json. 
+A jelenlegi JSON-séma createUiDefinition érhető el itt: https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json.
 
-Ugyanazon a helyen későbbi verzióiban lesz elérhető. Cserélje le a `0.1.2-preview` az URL-cím része, és a `version` a használni kívánt azonosító értéket. A jelenleg támogatott verziójú azonosítók `0.0.1-preview`, `0.1.0-preview`, `0.1.1-preview`, és `0.1.2-preview`.
+Egy példa felhasználói felület fájl, lásd: [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json).

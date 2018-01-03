@@ -17,10 +17,10 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c50f685745a645b5fbe383a5fe4726faa0e36345
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli"></a>Hozzon létre egy virtuális Gépet egy statikus nyilvános IP-cím az Azure parancssori felület használatával
 
@@ -146,6 +146,6 @@ Javasoljuk, hogy törölje-e az erőforrások létrehozott ebben a gyakorlatban,
 2. Ellenőrizze, hogy nincsenek erőforrások az erőforráscsoportban, az ebben a cikkben a parancsfájl által létrehozott erőforrások eltérő. 
 3. Ebben a gyakorlatban létrehozott összes erőforrást törli, futtassa a `az group delete -n IaaSStory` parancsot. A parancs törli az erőforráscsoportot és a benne található összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hálózati forgalommal áramolhasson felé és felől a virtuális gép létrehozása az ebben a cikkben. Megadhatja a bejövő és kimenő szabályok belül egy NSG korlátozó áramolhasson az a hálózati adapter vagy az alhálózat érkező vagy oda irányuló forgalmat. Ha többet szeretne megtudni az NSG-k, olvassa el a [NSG áttekintése](virtual-networks-nsg.md) cikk.

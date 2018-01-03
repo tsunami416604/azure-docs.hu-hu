@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 8f0e2fff8ea32874729cf9c4645d547df2449089
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 88e1f17184be07ec8499ad3049f7210b56fdfc15
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Hozzon létre egy teljes Linux virtuális gép környezetet az Azure-ban Ansible
 Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfigurációs az erőforrásoknak a környezetben. Ansible segítségével kezelheti a virtuális gépek (VM), ugyanaz, mint bármely egyéb erőforrásokat az Azure-ban. Ez a cikk bemutatja, hogyan hozzon létre egy teljes körű Linux környezetet és az azt támogató Ansible erőforrásokhoz. Azt is megtudhatja hogyan [hozzon létre egy egyszerű virtuális gép Ansible](ansible-create-vm.md).
@@ -105,7 +105,7 @@ A virtuális hálózati kártya (NIC) a virtuális gép csatlakozik egy adott vi
 
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
-Az utolsó lépés a virtuális gép létrehozása és használata a létrehozott összes erőforrást. A következő szakasz egy Ansible alkalmazástervezési hoz létre egy elnevezett VM *myVM* , és csatolja a virtuális hálózati adapter nevű *myNIC*. Adja meg a saját nyilvános kulcs adatai a *key_data* párosítsa a következőképpen:
+Az utolsó lépés a virtuális gép létrehozása és használata a létrehozott összes erőforrást. A következő szakasz egy Ansible alkalmazástervezési hoz létre egy elnevezett VM *myVM* , és csatolja a virtuális hálózati adapter nevű *myNIC*. Adja meg a saját teljes nyilvános kulcs adatai a *key_data* párosítsa a következőképpen:
 
 ```yaml
 - name: Create VM
@@ -127,7 +127,7 @@ Az utolsó lépés a virtuális gép létrehozása és használata a létrehozot
 ```
 
 ## <a name="complete-ansible-playbook"></a>Teljes Ansible forgatókönyv
-Ezek a szakaszok egyesítik, hozzon létre egy Ansible alkalmazástervezési nevű *azure_create_complete_vm.yml* , majd illessze be az alábbiakat:
+Ezek a szakaszok egyesítik, hozzon létre egy Ansible alkalmazástervezési nevű *azure_create_complete_vm.yml* , majd illessze be az alábbiakat. Adja meg a saját teljes nyilvános kulcs adatai a *key_data* pár:
 
 ```yaml
 - name: Create Azure VM
@@ -229,5 +229,5 @@ PLAY RECAP ****************************************************************
 localhost                  : ok=7    changed=6    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a példa többek között a szükséges virtuális hálózati erőforrások teljes körű Virtuálisgép-környezetet hoz létre. Például egy közvetlenül a virtuális gép létrehozása a meglévő hálózati erőforrások alapértelmezett beállításokkal, tekintse meg a [hozzon létre egy virtuális Gépet](ansible-create-vm.md).

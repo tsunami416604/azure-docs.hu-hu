@@ -1,6 +1,6 @@
 ---
 title: "Azure továbbítási kivételeket és azok megoldását |} Microsoft Docs"
-description: "Azure továbbítási kivételeket és azok megoldása érdekében elvégezhető javasolt műveletek listájának beolvasása."
+description: "Azure továbbítási kivételeket és azok megoldása érdekében elvégezhető javasolt műveletek listáját."
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 83ff97b59e428e7b617a7f5d1011ca5ddf3060b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1dbe73dac0d09db96ab902909125869959963e6f
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-relay-exceptions"></a>Az Azure továbbítási kivételek
 
@@ -65,7 +65,7 @@ A továbbító, ez a kivétel becsomagolja a [System.ServiceModel.QuotaExceededE
 ## <a name="timeoutexception"></a>TimeoutException
 A [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) azt jelzi, hogy egy felhasználó által kezdeményezett művelet a vártnál a művelet időkorlátja lejár. 
 
-Ellenőrizze a [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) tulajdonság. Szerezze meg ezt a korlátozást is okozhatnak a [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx).
+Ellenőrizze a [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) tulajdonság. Ez a korlát elérése is okozhatnak a [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx).
 
 A továbbító időtúllépési kivétel fordulhat elő, egy közvetítő küldő kapcsolat első megnyitásakor. Ehhez a kivételhez két gyakori oka is van:
 
@@ -89,7 +89,7 @@ A hiba gyakori okai két van:
 
     Alkalmanként a továbbítási szolgáltatás tapasztalhat késést kérelmek feldolgozásához. Ez azért fordulhat elő, például nagy forgalom idején. Ilyen esetben újra a művelettel késleltetés után, amíg a művelet sikeres nem lesz. Ha ugyanazt a műveletet több próbálkozást követően továbbra is fennáll, ellenőrizze a [Azure szolgáltatás állapota hely](https://azure.microsoft.com/status/) annak ellenőrzéséhez, hogy a szolgáltatás-kimaradások számát ismertek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure továbbító – gyakori kérdések](relay-faq.md)
 * [Továbbító névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés az Azure és a .NET](relay-hybrid-connections-dotnet-get-started.md)

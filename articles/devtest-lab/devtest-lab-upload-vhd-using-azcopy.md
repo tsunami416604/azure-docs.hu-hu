@@ -3,7 +3,7 @@ title: "Töltse fel a VHD-fájlt a Azure DevTest Labs AzCopy használatával |} 
 description: "AzCopy segítségével tesztlabor a tárfiók VHD-fájl feltöltése"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
-ms.author: tarcher
-ms.openlocfilehash: a4f43354740d9f17570932b0b9c753f46d67dc33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 11a9d03e62c674c4311c74f78e4cb2e709940941
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>AzCopy segítségével tesztlabor a tárfiók VHD-fájl feltöltése
 
@@ -30,7 +30,7 @@ Azure DevTest Labs szolgáltatásban, a VHD-fájlok segítségével hozzon létr
 >  
 > AzCopy csak Windows parancssori segédprogram.
 
-## <a name="step-by-step-instructions"></a>Lépésenkénti utasítások
+## <a name="step-by-step-instructions"></a>Részletes útmutató
 
 A következő lépések végigvezetik a VHD-fájl feltöltése a Azure DevTest Labs segítségével [AzCopy](http://aka.ms/downloadazcopy). 
 
@@ -78,7 +78,7 @@ A következő lépések végigvezetik a VHD-fájl feltöltése a Azure DevTest L
     AzCopy /Source:<sourceDirectory> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Pattern:"<vhdFileName>" /BlobType:page
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Létrehozhat egyéni rendszerképeket a VHD-fájl az Azure portál használata az Azure DevTest Labs szolgáltatásban](devtest-lab-create-template.md)
 - [Egyéni lemezkép létrehozása a PowerShell használatával VHD-fájl az Azure DevTest Labs szolgáltatásban](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

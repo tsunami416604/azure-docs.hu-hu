@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: 7b226aa4ec71535aa0222389aacd74764a80021a
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 1d983a6924a939a8eb89355fab0c90596dbf2ed3
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="azure-functions-external-table-binding-preview"></a>Az Azure Functions külső táblakötéssel (előzetes verzió)
 Ez a cikk bemutatja, hogyan kezelheti a Szolgáltatottszoftver-szolgáltatók (például a Sharepoint, a Dynamics) táblázatos adatok a függvényen belül beépített definiált kötésekkel. Az Azure Functions bemeneti és kimeneti kötések támogatja a külső táblákhoz.
@@ -99,7 +99,7 @@ Ebben a példában az azonosító, a Vezetéknév és a Vezetéknév oszlopokat 
 
 A táblázatos összekötő adatkészletek biztosít, és minden egyes táblát tartalmaz. Az alapértelmezett adatkészlet neve nem "alapértelmezett". A DataSet adatkészlet és a táblázat a különböző Szolgáltatottszoftver-szolgáltatók címeit az alábbiak:
 
-|Összekötő|Adatkészlet|Tábla|
+|Összekötő|Adathalmaz|Tábla|
 |:-----|:---|:---| 
 |**SharePoint**|Hely|SharePoint-lista
 |**SQL**|Adatbázis|Tábla 
@@ -139,7 +139,7 @@ public static async Task Run(string input, ITable<Contact> table, TraceWriter lo
     ContinuationToken continuationToken = null;
     do
     {   
-        //retreive table values
+        //retrieve table values
         var contactsSegment = await table.ListEntitiesAsync(
             continuationToken: continuationToken);
 
@@ -197,7 +197,7 @@ A Google Docs, hozzon létre egy táblázatot nevű `Contact`. Az összekötő s
 ### <a name="salesforce"></a>Salesforce
 dataSetName az "alapértelmezett".
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

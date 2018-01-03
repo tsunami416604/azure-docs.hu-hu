@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: gwallace
-ms.openlocfilehash: 8a7c03f10d4310bcdb13ef76b598c22912707c08
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0399719e5f80869f0131691b89a9dc48b3fc48d7
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="my-first-python-runbook"></a>Az első Python-forgatókönyv
 
@@ -147,7 +147,7 @@ Az Azure-erőforrások kezeléséhez a parancsfájlnak a hitelesítést a hitele
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>Adja hozzá a kódot, hogy a Python számítási ügyfél létrehozása és a virtuális gép elindítása
 
-Azure virtuális gépek használatához hozzon létre egy példányát a [Azure számítás-ügyfél Python](https://docs.microsoft.com/python/api/azure.mgmt.compute.compute.computemanagementclient?view=azure-python).
+Azure virtuális gépek használatához hozzon létre egy példányát a [Azure számítás-ügyfél Python](https://docs.microsoft.com/python/api/azure.mgmt.compute.computemanagementclient?view=azure-python).
 
 A számítási ügyfél használatával indítsa el a virtuális Gépet. A runbook adja hozzá a következő kódot:
 
@@ -207,7 +207,7 @@ Adja meg az első paraméter értékeként az erőforráscsoport nevét, és a v
 
 Kattintson a **OK** a runbook elindításához. A runbook fut, és a megadott virtuális gép elindul.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A PowerShell-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-forgatókönyvem](automation-first-runbook-textual-powershell.md).
 * A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md).

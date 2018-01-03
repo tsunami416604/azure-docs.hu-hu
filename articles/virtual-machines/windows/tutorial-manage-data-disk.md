@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 956f44068db8fe9c8c7a839a0ce80c19e2b2f11c
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 58c8ba2682cc9cc8f2089d2a70cc95a03079832e
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="manage-azure-disks-with-powershell"></a>Azure-lemezeket a PowerShell-lel kezelése
 
@@ -81,7 +81,7 @@ A merevlemez-meghajtókra épülő Standard Storage költséghatékony tárolás
 
 ### <a name="premium-disk"></a>Prémium szintű lemez
 
-Premium lemezek SSD-alapú nagy teljesítményű, alacsony késésű lemez üzemelnek. Tökéletes éles munkaterhelést futtató virtuális gépekhez. Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS sorozatnak és FS sorozatú virtuális gépeket. Prémium szintű lemezekhez három típusa (P10, P20, P30, P40, P50) helyen, és a lemez mérete a lemez típusát határozza meg. Ha választja, a lemez méretét az érték felfelé kerekíti a következő típusra. Például, ha a mérete 128 GB alá a lemez típusát és fog esni P10, 129 512 P20, 512 P30, 2TB és P50 P40 4 TB-os. 
+Premium lemezek SSD-alapú nagy teljesítményű, alacsony késésű lemez üzemelnek. Tökéletes éles munkaterhelést futtató virtuális gépekhez. Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS sorozatnak és FS sorozatú virtuális gépeket. Prémium szintű lemezekhez helyen öt típusa (P10, P20, P30, P40, P50), és a lemez mérete a lemez típusát határozza meg. Ha választja, a lemez méretét az érték felfelé kerekíti a következő típusra. Például, ha a mérete 128 GB alá a lemez típusát és fog esni P10, 129 512 P20, 512 P30, 2TB és P50 P40 4 TB-os. 
 
 ### <a name="premium-disk-performance"></a>Prémium szintű lemez teljesítménye
 
@@ -142,7 +142,7 @@ New-Partition -AssignDriveLetter -UseMaximumSize | `
 Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóprogramban megismerte méretű lemezek témakörök, mint:
 

@@ -16,10 +16,10 @@ ms.date: 01/31/2017
 ms.author: jroth
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 67b328cb754e49fe1dea9d57f74dd31793acd93c
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (hagyományos üzembe helyezési modell)
 > [!div class="op_single_selector"]
@@ -101,7 +101,7 @@ A kapcsolati útvonal a következő ábra szerint összegzése:
 
 [!INCLUDE [Connect to SQL Server in a VM Classic Steps](../../../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha is tervezi használni az AlwaysOn rendelkezésre állási csoportokat magas rendelkezésre állású és vész-helyreállítási, érdemes megfontolni egy figyelő megvalósítását. Adatbázis-ügyfelek csatlakoznak, a figyelőhöz, hanem az SQL Server példányai közül. A figyelő továbbítja az ügyfelek az elsődleges másodpéldányt a rendelkezésre állási csoportban. További információkért lásd: [egy ILB figyelőt az AlwaysOn rendelkezésre állási csoportok konfigurálása az Azure-](../classic/ps-sql-int-listener.md).
 
 Fontos tekintse át a biztonsági gyakorlati tanácsok az SQL Server rendszert futtató Azure virtuális géphez. További információkért lásd [az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjait](../sql/virtual-machines-windows-sql-security.md).

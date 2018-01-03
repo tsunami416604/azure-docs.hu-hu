@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 1fbfbbc79a415af5e874c304412854849e134eb7
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 8928e56f353858234db314714d411a9c2990eb4e
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>A virtuálisgép-méretezési beállítása az Azure PowerShell automatikus méretezése
 A méretezési csoport létrehozásakor megadhatja a futtatni kívánt Virtuálisgép-példányok száma. Az alkalmazás igény szerinti változásával automatikusan növeli vagy csökkenti a Virtuálisgép-példányok számát. Automatikus skálázás teszi lehetővé teszi keresletének tartani, vagy az alkalmazás életciklusa során alkalmazás teljesítmény változásait.
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan automatikus skálázási szabályok létrehozását 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Automatikus skálázási szabályok létrehozásához szükséges egy meglévő virtuális gép méretezési készlet. Létrehozhat egy méretezési állítható be a [Azure-portálon](virtual-machine-scale-sets-portal-create.md), [Azure PowerShell](virtual-machine-scale-sets-create.md#create-from-powershell), vagy [Azure CLI 2.0](virtual-machine-scale-sets-create.md#create-from-azure-cli).
+Automatikus skálázási szabályok létrehozásához szükséges egy meglévő virtuális gép méretezési készlet. Létrehozhat egy méretezési állítható be a [Azure-portálon](virtual-machine-scale-sets-create-portal.md), [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md), vagy [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md).
 
 Könnyebb az automatikus skálázási szabályok létrehozása, adja meg a bizonyos változókat a méretezési készlet. Az alábbi példa meghatározza a méretezési készletben elnevezett változói *myScaleSet* az erőforráscsoport neve *myResourceGroup* és a *USA keleti régiója* régióban. Az előfizetés-azonosítója nem kapunk [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription). Ha a fiókjához társított több előfizetéssel rendelkezik, csak az első előfizetés ad vissza. A nevek és előfizetés-azonosító beállítása a következőképpen:
 
@@ -49,13 +49,13 @@ A következő paramétert kell használni ehhez a szabályhoz:
 
 | Paraméter               | Magyarázat                                                                                                         | Érték          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
-| *-MetricName*           | A teljesítmény metrika figyelésére és a skála alkalmazni az alábbi műveletek beállítani.                                                   | Processzor-százalékos aránya |
+| *-MetricName*           | A teljesítmény metrika figyelésére és a skála alkalmazni az alábbi műveletek beállítani.                                                   | Százalékos processzorhasználat |
 | *-Időkeretben vannak*            | Milyen gyakran a metrikák gyűjtése történt elemzéséhez.                                                                   | 1 perc       |
-| *-MetricStatistic*      | Határozza meg, hogy az összegyűjtött metrikák elemzések céljából összesíti kell-e.                                                | Átlagos        |
+| *-MetricStatistic*      | Határozza meg, hogy az összegyűjtött metrikák elemzések céljából összesíti kell-e.                                                | Átlag        |
 | *Az időtartomány értékének-*           | Az időtartam a metrika és a küszöbértéket az összehasonlítás előtt figyeli.                                   | 10 perc      |
 | *-Operátor*             | Hasonlítsa össze a metrikaadatokat szemben a küszöbérték operátor.                                                     | Nagyobb, mint   |
 | *-Küszöbérték*            | Az érték, amely az automatikus skálázási szabály elindítani egy műveletet okoz.                                                      | 70%            |
-| *-ScaleActionDirection* | Meghatározza, hogy a méretezési kell méretezni felfelé vagy lefelé, amikor a szabály vonatkozik.                                             | Növelése       |
+| *-ScaleActionDirection* | Meghatározza, hogy a méretezési kell méretezni felfelé vagy lefelé, amikor a szabály vonatkozik.                                             | Növelés       |
 | *– ScaleActionScaleType* | Azt jelzi, hogy a Virtuálisgép-példányok száma a által százalékát módosítani kell-e.                                 | Készültségi módosítása |
 | *-ScaleActionValue*     | Virtuálisgép-példányok hány százalékát módosítani kell, amikor a szabály gondoskodik.                                            | 20             |
 | *-ScaleActionCooldown*  | Mennyi ideig várjon a szabály alkalmazza újra, így az automatikus skálázási műveletek érvénybe lépéséhez idő kell. | 5 perc      |
@@ -139,7 +139,7 @@ Az előző példákban automatikusan átméretezi a bejövő vagy kimenő meg p�
 A gazdagép helyett ütemezés mérőszámok alapján automatikus skálázási szabályok létrehozásához használja az Azure-portálon. Ütemezésalapú szabályok jelenleg nem hozhatók létre az Azure PowerShell.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használható az automatikus skálázási szabályok horizontálisan méretezhető és növeléséhez vagy csökkentéséhez a *szám* állítsa be a skálázási Virtuálisgép-példánya. Is méretezheti függőleges növelheti vagy csökkentheti a Virtuálisgép-példány *mérete*. További információkért lásd: [virtuálisgép-méretezési csoportok függőleges skálázva](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
 A Virtuálisgép-példányok kezeléséről további információért lásd: [kezelése virtuálisgép-méretezési beállítja az Azure PowerShell](virtual-machine-scale-sets-windows-manage.md).

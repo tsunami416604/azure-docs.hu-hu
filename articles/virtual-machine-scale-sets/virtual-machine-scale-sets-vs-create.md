@@ -3,8 +3,8 @@ title: "Telepítheti a virtuálisgép-méretezési készlet Visual Studio haszn�
 description: "Központi telepítése a Visual Studio és a Resource Manager-sablon használatával virtuálisgép-méretezési csoportok"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.author: guybo
+ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4b0c8d305f57f495402cecb92d18425ff6bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 73454abc11a832a1b7f4131bf13699bd0a94edea
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>A virtuálisgép-méretezési készlet létrehozása a Visual Studio
 Ez a cikk bemutatja, hogyan telepítheti egy Azure virtuális gépek méretezési csoportján Visual Studio erőforrás csoport központi telepítéssel.
@@ -92,7 +92,7 @@ Miután a telepítés befejeződik, megtekintheti az új virtuálisgép-méretez
 
  A portál biztosítja a legjobb módszer az Azure infrastruktúra egy webböngészővel rendelkező vizuálisan kezelését, míg jogosultságot ad az ablak azokat a "példányait tartalmazó nézetet" és a PowerShell-parancsokat is megjelenítő szolgál az Azure erőforrás-kezelő egyszerűen megismerheti és hibakeresése az Azure-erőforrások, az erőforrások nézi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután sikeresen telepítése a Visual Studio alkalmazással virtuálisgép-méretezési csoportok, a projekt alkalmazás igényeinek még jobban testre szabható. Például állítsa be automatikus méretezése hozzáadásával egy **Insights** erőforrás, infrastruktúra ad hozzá a sablont, (például önálló virtuális gépek), vagy az egyéni parancsprogramok futtatására szolgáló bővítmény használatával alkalmazások központi telepítéséhez. Jó példa sablonok találhatók a [Azure gyors üzembe helyezési sablonokat](https://github.com/Azure/azure-quickstart-templates) GitHub-adattár ("vmss" keresése).
 
 [file_new]: ./media/virtual-machine-scale-sets-vs-create/1-FileNew.png

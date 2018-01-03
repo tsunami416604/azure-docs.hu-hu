@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 6fa6d3099d8427a186e6095fdcbbc327d1acab7f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 66a7cef250890f1b6940f7bc7f3c5ae0ec6340f0
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>Hagyományos módon üzembe helyezett Azure -beli windowsos virtuális gép lemezképének létrehozása.
 > [!IMPORTANT]
@@ -42,7 +42,7 @@ Ezek a lépések feltételezik, hogy korábban már létrehozott Azure virtuáli
 >
 >
 
-Egy lemezkép az Azure virtuális gép rögzítése, előtt ajánlott a cél virtuális gép készül. Az Azure virtuális gépek Azure Backup segítségével készíthető. További részletek: [Azure-beli virtuális gépek biztonsági mentése](../../../backup/backup-azure-vms.md). Hivatalos partnereinktől egyéb megoldások is elérhetők. A jelenleg elérhető szolgáltatásokat keresse az Azure Marketplace-en.
+Egy lemezkép az Azure virtuális gép rögzítése, előtt ajánlott a cél virtuális gép készül. Az Azure virtuális gépek Azure Backup segítségével készíthető. További részletek: [Azure-beli virtuális gépek biztonsági mentése](../../../backup/backup-azure-arm-vms.md). Hivatalos partnereinktől egyéb megoldások is elérhetők. A jelenleg elérhető szolgáltatásokat keresse az Azure Marketplace-en.
 
 ## <a name="capture-the-virtual-machine"></a>A virtuális gép rögzítése
 1. Az a [Azure-portálon](http://portal.azure.com), **Connect** a virtuális géphez. Útmutatásért lásd: [hogyan lehet bejelentkezni a Windows Server rendszerű virtuális gép][How to sign in to a virtual machine running Windows Server].
@@ -72,7 +72,7 @@ Egy lemezkép az Azure virtuális gép rögzítése, előtt ajánlott a cél vir
 
     ![Lemezkép-rögzítési sikeres](./media/capture-image/VMCapturedImageAvailable.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A lemezkép készen áll a virtuális gépek létrehozásához használható. Ennek beállításához hozzon létre egy virtuális gép kiválasztásával a **további szolgáltatások** menüpont a szolgáltatások menü alján **Virtuálisgép-rendszerképek (klasszikus)** a a **számítási** csoport. Útmutatásért lásd: [virtuális gép létrehozása lemezkép](createportal.md).
 
 [How to sign in to a virtual machine running Windows Server]:connect-logon.md

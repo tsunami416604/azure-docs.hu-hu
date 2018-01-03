@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-ms.openlocfilehash: 18ff5c81d0aa5e8a28ed8a11dad19811d2fa1d2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5f022eca8f901388c9cf003f3320db1b9c49e6a
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Operációs rendszer működőképességét Azure App Service
 Ez a cikk összes futó alkalmazások számára elérhető közös eredeti operációs rendszer funkcióit mutatja be [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és a beállításjegyzék elérése és diagnosztikai naplók és események. 
@@ -27,6 +27,8 @@ Ez a cikk összes futó alkalmazások számára elérhető közös eredeti oper�
 
 ## <a name="app-service-plan-tiers"></a>Az alkalmazásszolgáltatási csomag rétegek
 App Service alkalmazások vevői futtat egy több-bérlős üzemeltetési környezet. Alkalmazások telepítése a **szabad** és **megosztott** rétegek futtatásához a munkavégző folyamatok megosztott virtuális gépeken, alkalmazások telepítésekor a a **szabványos** és **Premium**  rétegek futó virtuális gépek dedikált kifejezetten az egyetlen ügyfél társított alkalmazások.
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Mivel az App Service különböző rétegek közötti méretezési gördülékenyen támogatja, a biztonsági beállítások, az App Service apps érvényes változatlan marad. Ez biztosítja, hogy alkalmazásokat nem hirtelen eltérően viselkednek, nem várt módon sikertelenek lesznek, amikor az App Service-csomag egyrétegű a másikra vált.
 

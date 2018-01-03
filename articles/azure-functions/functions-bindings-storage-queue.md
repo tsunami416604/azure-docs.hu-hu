@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: 0aae58fa52f9f7f64b08e1701b7688a90c56e6ed
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 258393884c156b2cff00559d3cedfde1380c6c28
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure várólista tárolási kötések
 
@@ -35,13 +35,13 @@ A várólista eseményindító segítségével indítsa el a függvényt, ha új
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#trigger---c-example)
-* [C# parancsfájl](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# parancsfájl (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Eseményindító - C# – példa
 
-Az alábbi példában látható [előre le fordítva C#](functions-dotnet-class-library.md) kódot, amely lekérdezi a `myqueue-items` várólistára, és írja a napló minden alkalommal, amikor egy elem dolgoz fel.
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , amely lekérdezi a `myqueue-items` várólistára, és írja a napló minden alkalommal, amikor egy elem feldolgozása.
 
 ```csharp
 public static class QueueFunctions
@@ -58,7 +58,7 @@ public static class QueueFunctions
 
 ### <a name="trigger---c-script-example"></a>Eseményindító - C# parancsfájl – példa
 
-A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájl és [C# parancsfájl](functions-reference-csharp.md) kódot, amely a kötés használja. A függvény szavazások a `myqueue-items` várólistára, és írja a napló minden alkalommal, amikor egy elem dolgoz fel.
+A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódot, amely a kötés használja. A függvény szavazások a `myqueue-items` várólistára, és írja a napló minden alkalommal, amikor egy elem dolgoz fel.
 
 Itt a *function.json* fájlt:
 
@@ -153,7 +153,7 @@ A [használati](#trigger---usage) a szakasz ismerteti, `myQueueItem`, amelyek ne
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
  
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók várólista eseményindító konfigurálása a következő attribútumokat használhatja:
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), várólista eseményindító konfigurálása a következő attribútumokat használhatja:
 
 * [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)NuGet-csomagot a definiált [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs)
 
@@ -181,7 +181,7 @@ A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók váróli
   }
   ```
  
-  Tekintse meg a teljes például [eseményindító - előfordított például C#](#trigger---c-example).
+  Tekintse meg a teljes például [eseményindító - C# példa](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)NuGet-csomagot a definiált [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs)
 
@@ -266,13 +266,13 @@ Az Azure Queue storage kimeneti kötése üzeneteket írni a várólista haszná
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#output---c-example)
-* [C# parancsfájl](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# parancsfájl (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Kimeneti - C# – példa
 
-Az alábbi példában látható [előre le fordítva C#](functions-dotnet-class-library.md) kódot, amely létrehoz egy üzenetsor-üzenetet a minden fogadott HTTP-kérelmek.
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) a minden fogadott HTTP-kérelmek egy üzenetsor-üzenetet hoz létre.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -290,7 +290,7 @@ public static class QueueFunctions
 
 ### <a name="output---c-script-example"></a>Kimeneti - C# parancsfájl – példa
 
-A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájl és [C# parancsfájl](functions-reference-csharp.md) kódot, amely a kötés használja. A függvény egy elem egy POCO hasznos a minden fogadott HTTP-kérelmek hoz létre.
+A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódot, amely a kötés használja. A függvény egy elem egy POCO hasznos a minden fogadott HTTP-kérelmek hoz létre.
 
 Itt a *function.json* fájlt:
 
@@ -401,7 +401,7 @@ module.exports = function(context) {
 
 ## <a name="output---attributes"></a>Kimeneti - attribútumok
  
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
 
 Az attribútum vonatkozik egy `out` paraméter vagy a függvény visszatérési értéke. Az attribútum konstruktora a várólista nevét hajtja végre a következő példában látható módon:
 
@@ -425,9 +425,9 @@ public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
 }
 ```
 
-Tekintse meg a teljes például [kimeneti - előfordított például C#](#output---c-example).
+Tekintse meg a teljes például [kimeneti - C# példa](#output---c-example).
 
-Használhatja a `StorageAccount` attribútum segítségével adhatja meg a tárfiók osztály, módszer vagy paraméter szinten. További információkért lásd: [eseményindító - attribútumok](#trigger---attributes-for-precompiled-c).
+Használhatja a `StorageAccount` attribútum segítségével adhatja meg a tárfiók osztály, módszer vagy paraméter szinten. További információkért lásd: [eseményindító - attribútumok](#trigger---attribute).
 
 ## <a name="output---configuration"></a>Kimeneti - konfiguráció
 
@@ -459,7 +459,7 @@ A C# és C# a parancsfájlt írja be több üzenetsor-üzeneteket a következő 
 
 A JavaScript-funkcióként használható `context.bindings.<name>` a kimeneti várólista üzenet eléréséhez. A várólista elem forgalma egy karakterlánc- vagy szerializálhatók a JSON-objektum használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Nyissa meg a várólista tárolási eseményindító használó gyors üzembe helyezés](functions-create-storage-queue-triggered-function.md)

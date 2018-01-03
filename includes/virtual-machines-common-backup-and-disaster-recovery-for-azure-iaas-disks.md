@@ -138,7 +138,7 @@ Az alábbi lépésekkel biztonsági mentéseket a virtuális gépek használatá
 
 4.  Győződjön meg arról, hogy a biztonsági mentési ügynök telepítve van a virtuális Gépen. Ha a virtuális gép létrehozása az Azure katalógusában lemezkép használatával, majd a biztonsági mentési ügynök már telepítve van. Egyéb (Ez azt jelenti, hogy ha egyéni lemezképet használ), kövesse az utasításokat a [a Virtuálisgép-ügynök telepítése egy virtuális gépen](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine).
 
-5.  Győződjön meg arról, hogy a virtuális gép hálózati kapcsolattal a biztonsági mentési szolgáltatás működéséhez. Kövesse az utasításokat [hálózati kapcsolatra](../articles/backup/backup-azure-arm-vms-prepare.md#network-connectivity).
+5.  Győződjön meg arról, hogy a virtuális gép hálózati kapcsolattal a biztonsági mentési szolgáltatás működéséhez. Kövesse az utasításokat [hálózati kapcsolatra](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 6.  Az előző lépések elvégzése után a biztonsági mentés futtatásának rendszeres időközönként, a biztonsági mentési házirend. Szükség esetén manuálisan az irányítópultról tárolóban az Azure portálon az első biztonsági mentés indíthat el.
 

@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan Jenkins virtuális gép létrehozása, amely k
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 52408184c8cff53f8bb7006fa940b0db4b900db4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d73599164589d672d6d6cde57e4a5b40774aca19
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>A Linux virtuális gép az Azure-ban Jenkins, a Githubon és a Docker a fejlesztési infrastruktúra létrehozása
 Automatizálható a build és a tesztelési fázis alkalmazásának fejlesztését, használhatja a folyamatos integrációt és a központi telepítés (CI/CD) folyamat. Ebben az oktatóanyagban létrehoz egy CI/CD folyamat egy Azure virtuális gépen történő is beleértve:
@@ -36,12 +36,12 @@ Automatizálható a build és a tesztelési fázis alkalmazásának fejlesztés�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.22 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-jenkins-instance"></a>Jenkins példány létrehozása
 Az oktatóanyag előző [első indításakor Linux virtuális gépek testreszabása](tutorial-automate-vm-deployment.md), megtudta, hogyan automatizálható a felhő inicializálás a virtuális gép testreszabása. Ez az oktatóanyag egy felhő-init fájl Jenkins és Docker telepítése a virtuális gép használja. Jenkins egy népszerű nyílt forráskódú fürtautomatizálási kiszolgáló, amely zökkenőmentesen integrálható az Azure-ral ahhoz, hogy folyamatos integrációt (CI) és a folyamatos kézbesítési (CD). További oktatóanyagok Jenkins használatáról, tekintse meg a [Azure központban Jenkins](https://docs.microsoft.com/azure/jenkins/).
 
-Hozzon létre egy fájlt az aktuális rendszerhéjban *felhő-init.txt* , majd illessze be a következő konfigurációt. A felhő rendszerhéj nem a helyi számítógépen hozzon létre például a fájlt. Adja meg `sensible-editor cloud-init-jenkins.txt` hozza létre a fájlt, és elérhető szerkesztők listájának megtekintéséhez. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor:
+Hozzon létre egy fájlt az aktuális rendszerhéjban *felhő-init-jenkins.txt* , majd illessze be a következő konfigurációt. A felhő rendszerhéj nem a helyi számítógépen hozzon létre például a fájlt. Adja meg `sensible-editor cloud-init-jenkins.txt` hozza létre a fájlt, és elérhető szerkesztők listájának megtekintéséhez. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor:
 
 ```yaml
 #cloud-config
@@ -117,11 +117,10 @@ Ha a fájl még nem érhető el, várjon néhány percet a Jenkins és a Docker 
 
 Most nyisson meg egy webböngészőt, és navigáljon a `http://<publicIps>:8080`. Végezze el a kezdeti Jenkins a telepítő az alábbiak szerint:
 
-- Adja meg a *initialAdminPassword* a virtuális gép az előző lépésben beszerzett.
-- Válasszon **jelölje be a beépülő modulok telepítése**
-- Keresse meg *GitHub* a szövegmezőben látható, válassza ki a *GitHub beépülő modul*, majd jelölje be **telepítése**
-- Jenkins felhasználói fiók létrehozása, töltse ki a kívánt módon működjenek az űrlapot. Biztonsági szempontból a Folytatás, az alapértelmezett rendszergazdai fiók helyett az első Jenkins felhasználó kell létrehoznia.
-- Ha elkészült, válassza ki a **Jenkins használatának megkezdése**
+- Megadja a felhasználónevét **admin**, majd adja meg a *initialAdminPassword* a virtuális gép az előző lépésben beszerzett.
+- Válassza ki **kezelése Jenkins**, majd **beépülő modulok kezelése**.
+- Válasszon **elérhető**, majd keresse meg a *GitHub* a szövegmezőben látható. Jelölje be a *GitHub beépülő modul*, majd jelölje be **letöltése és telepítése az újraindítást követően**.
+- Jelölje be a **Jenkins újraindítása, ha a telepítés befejeződött, és nincsenek feladatok futnak**, akkor várjon, amíg a beépülő modul telepítése folyamat befejeződött.
 
 
 ## <a name="create-github-webhook"></a>GitHub webhook létrehozása
@@ -168,7 +167,7 @@ Jenkins, az új buildverziót elindul, a a **előzmények Build** szakasza a fel
 ## <a name="define-docker-build-image"></a>Adja meg a Docker build kép
 Tekintse meg a GitHub véglegesítések alapján futó Node.js-alkalmazás lehetővé teszi az alkalmazás futtatásához Docker-lemezkép elkészítése. A kép össze egy Dockerfile, amely meghatározza a konfigurálása a tárolóhoz, amelybe futtatja az alkalmazást. 
 
-Az SSH-kapcsolat a virtuális géphez módosítsa az előző lépésben létrehozott feladat elnevezve Jenkins munkaterület könyvtárba. A fenti példában, amely nevű *HelloWorld*.
+Az SSH-kapcsolat a virtuális géphez módosítsa az előző lépésben létrehozott feladat elnevezve Jenkins munkaterület könyvtárba. Ebben a példában, amely nevű *HelloWorld*.
 
 ```bash
 cd /var/lib/jenkins/workspace/HelloWorld
@@ -226,7 +225,7 @@ Egy másik szerkesztése ellenőrizze a *index.js* fájlt a Githubon, és a mód
 ![Node.js-alkalmazás futtatása után egy másik GitHub véglegesítési](media/tutorial-jenkins-github-docker-cicd/another_running_nodejs_app.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban egy Docker-tároló az alkalmazás tesztelése majd alkalmaznia kell egy Jenkins összeállítási feladat futtatása, minden kód véglegesítés a Githubon konfigurálva. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

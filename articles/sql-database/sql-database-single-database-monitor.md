@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.openlocfilehash: 211036f32df719bf329783b3e4333a8496aa1676
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 8513ace2589056387d8a1959c5727ee6bd5674cd
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban
 Egy Azure SQL-adatbázis teljesítményének figyelése az erőforrás-használatnak a kiválasztott adatbázis teljesítményszintjéhez viszonyított figyelésével kezdődik. A figyelés segítségével megállapítható, ha az adatbázis többletkapacitással rendelkezik, vagy éppen elérte a maximumot az erőforrások kihasználtságában, és emiatt problémák jelentkezhetnek, így az is eldönthető, hogy módosítani kell-e az adatbázis teljesítményszintjét és [szolgáltatásszintjét](sql-database-service-tiers.md). Az adatbázist figyelheti grafikus eszközök használatával az [Azure Portalon](https://portal.azure.com) vagy SQL [dinamikus felügyeleti nézetek](https://msdn.microsoft.com/library/ms188754.aspx) használatával.
@@ -39,7 +39,7 @@ Az [Azure Portalon](https://portal.azure.com/) az adatbázis kiválasztásával 
 
 A fenti metrikák hozzáadása után azokat a **Figyelés** diagramon tekintheti meg, további részleteket pedig a **Metrika** ablakban talál. A négy metrika az átlagos kihasználtság százalékos arányát jeleníti meg az adatbázis **DTU-jához** viszonyítva. A DTU-król részletesebben a [szolgáltatásszintekről](sql-database-service-tiers.md) szóló cikkben olvashat.
 
-![Adatbázis-teljesítményének szolgáltatásszint-figyelése.](./media/sql-database-service-tiers/sqldb_service_tier_monitoring.png)
+![Adatbázis-teljesítményének szolgáltatásszint-figyelése.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 
 A metrikákhoz riasztásokat is lehet konfigurálni. Kattintson a **Riasztás hozzáadása** gombra a **Metrika** ablakban. A riasztás konfigurálásához kövesse a Varázslót. Lehetőség van riasztást kérni, ha a metrikák túllépnek egy bizonyos küszöböt, vagy egy bizonyos küszöb alá esnek.
 
@@ -212,7 +212,7 @@ Ebben az esetben ezeket a lekérdezéseket vissza időpontban számot eredménye
 
 SQL-adatbázis elemzéshez kaphat a korábbi statisztika munkamenetek lekérdezésével a [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) megtekintése és ellenőrzése a **active_session_count** oszlop. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Automatikusan adatbázis indexek beállítása és a lekérdezés végrehajtási terveket [Azure SQL Database automatikus hangolása](sql-database-automatic-tuning.md).
 - Automatikus adatbázis teljesítményének figyelése [Azure SQL intelligens Insights](sql-database-intelligent-insights.md). Ez a szolgáltatás diagnosztikai információkat biztosít, és alapvető oka a teljesítménnyel kapcsolatos problémák elemzése.

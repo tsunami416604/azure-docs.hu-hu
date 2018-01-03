@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 12/14/2017
 ms.author: v-shysun
 ms.openlocfilehash: 141dd1fe9e727f430b7c45dbb798f5471167c355
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-windows-azure-virtual-machines"></a>Gyakori kérdések az SQL Server a Windows Azure virtuális gépeken
 
@@ -118,7 +118,7 @@ Ez a cikk ismerteti a leggyakoribb kérdésekre vonatkozó válaszokat [SQL Serv
 
     Töltse le és telepítse az SQL-adatfájl eszközeit [Microsoft SQL Server Data Tools - Visual Studio 2013 Business Intelligence](https://www.microsoft.com/en-us/download/details.aspx?id=42313).
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
 **Windows virtuális gépek**:
 

@@ -1,25 +1,25 @@
 ---
-title: "Azure-tárolót példányok és tároló Vezénylési"
-description: "Azure-tároló példányok és tároló orchestrators együttműködését ismertetése"
+title: "Azure-példányokon tároló és a tároló vezénylési"
+description: "Ismerje meg, a tároló orchestrators példányok használhatja az Azure tároló."
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a51e746c501cca0521972b09d145439348d1d22d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 8ad3886742449c32c94e425e975ff9105ebcfbd8
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure-példányokon tároló és a tároló orchestrators
 
 Kis méret és alkalmazás tájolás, miatt tárolók alkalmas mikroszolgáltatási-alapú architektúra és gyors kézbesítési környezetben. A feladat automatizálása és kezelése a tárolók és azok működésmódját nagy számú nevezik *vezénylési*. Népszerű tároló orchestrators például Kubernetes, a DC/OS és a Docker Swarm, amelyek érhetők el a [Azure Tárolószolgáltatás](https://docs.microsoft.com/azure/container-service/).
 
-Azure tároló példányok biztosít néhány alapvető ütemezési funkciót, az orchestration platformokról, de nem vonatkozik a nagyobb érték szolgáltatásokat, hogy ezek a platformok adja meg, és ténylegesen kiegészítő velük. Ez a cikk ismerteti a hatókör Azure tároló példányok kezeli, és hogyan teljes tároló orchestrators lehet használni.
+Azure tároló példányok biztosít néhány alapvető ütemezési funkciót, az orchestration platformokról, de nem vonatkozik a nagyobb érték szolgáltatásokat, hogy ezek a platformok adja meg, és ténylegesen lehet kiegészítő velük. Ez a cikk ismerteti a hatókör Azure tároló példányok kezeli, és hogyan teljes tároló orchestrators lehet használni.
 
 ## <a name="traditional-orchestration"></a>Hagyományos vezénylési
 
@@ -40,8 +40,6 @@ Azure tároló példányok lehetővé teszi, hogy a vezénylési, réteges megk�
 
 Az összes tároló-példányok az alkalmazás mögötti infrastruktúra Azure kezeli, mivel az orchestrator platform nem kell saját magát és egy megfelelő gazdagépet egyetlen tárolót futtatására megkereséséről vonatkoznak. A felhő rugalmassága biztosítja, hogy egy mindig elérhető legyen. Ehelyett az orchestrator a feladatokat, amelyek egyszerűbbé teszik a több tároló-architektúrák, beleértve a méretezés és koordinált frissítések fejlesztéséhez összpontosíthat.
 
-
-
 ## <a name="potential-scenarios"></a>A lehetséges forgatókönyvek
 
 Azure-tároló példányaival orchestrator integrációs pedig továbbra is születő tervezzük, hogy néhány különböző környezetekben előfordulhat, hogy megjelenni:
@@ -52,7 +50,7 @@ Mivel gyorsan start, illetve a második kiszámlázni, kizárólag az Azure-tár
 
 ### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Tároló-példányok és a virtuális gépek a tárolók
 
-Olyan hosszan futó, stabil munkaterhelések esetén tárolók dedikált virtuális gépek fürtben futó lesz olcsóbb, mint az azonos tárolók futtató tároló osztályt. Azonban a tároló példányok kiválóan alkalmas gyorsan kibontásával, és a teljes kapacitásának használata során váratlan vagy rövid élettartamú igényeiben jelentkező kezelésére szerződő kínálnak. Ahelyett, hogy a fürtben lévő virtuális gépek száma kiterjesztése, majd telepíti ezeket a gépeket alakzatot további tárolókat, az orchestrator egyszerűen ütemezhető a tároló példányok használatával további tárolókat és törölje őket, ha azok már nincs szükség.
+Olyan hosszan futó, stabil munkaterhelések esetén tárolók dedikált virtuális gépek fürtben futó lesz olcsóbb, mint az azonos tárolók futtató tároló osztályt. Azonban a tároló példányok kiválóan alkalmas gyorsan kibontásával, és a teljes kapacitásának használata során váratlan vagy rövid élettartamú igényeiben jelentkező kezelésére szerződő kínálnak. Ahelyett, hogy a fürtben lévő virtuális gépek száma kiterjesztése, akkor telepíti ezeket a gépeket alakzatot további tárolókat, az orchestrator is egyszerűen ütemezni a tároló példányok használatával további tárolókat, és törölje őket, ha azok már nem szükséges.
 
 ## <a name="sample-implementation-azure-container-instances-connector-for-kubernetes"></a>Példa: Kubernetes Azure tároló példányok összekötő
 
@@ -67,7 +65,7 @@ Az egyéb orchestrators összekötők épülhet, amely az orchestrator API hatv�
 > [!WARNING]
 > A ACI összekötő a Kubernetes *kísérleti* és éles környezetben nem használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az első tároló létrehozása az Azure-tároló példányok használata a [gyors üzembe helyezési útmutató](container-instances-quickstart.md).
 

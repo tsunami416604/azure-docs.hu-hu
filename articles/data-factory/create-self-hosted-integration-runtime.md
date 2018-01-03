@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: abnarain
-ms.openlocfilehash: 0fcc245369d90042066cbfc516a8c32db7272bd3
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 2c7df5c0a976aae8e3e0b99b083bbde942493bfa
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hozzon létre, és Self-hosted integrációs futásidejű konfigurálása
 Az integrációs futásidejű (IR) a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs funkciók különböző hálózati környezetek között. Infravörös kapcsolatos részletekért lásd: [integrációs futásidejű áttekintése](concepts-integration-runtime.md).
@@ -110,7 +110,20 @@ Egy Self-hosted integrációs futásidejű társítható több helyszíni gépek
 A Self-hosted integrációs futásidejű szoftverek egyszerűen telepítésével több csomópont is társíthat a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) és a hitelesítési kulcsokat nyert egyikével regisztrálásával Új AzureRmDataFactoryV2IntegrationRuntimeKey parancsmag leírtak szerint a [oktatóanyag](tutorial-hybrid-copy-powershell.md)
 
 > [!NOTE]
-> Nem kell új Self-hosted integrációs futásidejű az egyes csomópontok közötti társítás létrehozásával.
+> Nem kell új Self-hosted integrációs futásidejű az egyes csomópontok közötti társítás létrehozásával. Az önálló üzemeltetett integrációs futásidejű telepítheti egy másik számítógépen, és regisztrálja a azonos hitelesítési kulcs használatával. 
+
+> [!NOTE]
+> Egy másik csomópont hozzáadása előtt **magas rendelkezésre állás és méretezhetőség**, győződjön meg arról **"Távelérés-intranethez"** lehetőség **engedélyezett** az 1. csomóponton (Microsoft Integrációs futásidejű Configuration Manager -> Beállítások -> Távoli intranetes hozzáférés). 
+
+### <a name="tlsssl-certificate-requirements"></a>A TLS/SSL-tanúsítványokkal szemben támasztott követelmények
+Az alábbiakban a futásidejű csomópontok integrációs közötti kommunikáció tehető biztonságossá használt TLS/SSL-tanúsítványra vonatkozó követelményekről:
+
+- A tanúsítványnak kell lennie egy nyilvánosan megbízható X509 v3 tanúsítvány. Azt javasoljuk, hogy a nyilvános (külső) hitelesítésszolgáltató (CA) által kiállított tanúsítványokat használ.
+- Minden integrációs futásidejű csomópont ezt a tanúsítványt megbízhatónak kell lennie.
+- Helyettesítő tanúsítványokat támogatottak. Ha a tartománynév **node1.domain.contoso.com**, használhat ***. domain.contoso.com** , a tanúsítvány tulajdonosának nevével.
+- SAN-tanúsítványok használata nem ajánlott, mert a tulajdonos alternatív neve csak az utolsó elem használja, az összes többit figyelmen kívül aktuális korlátai miatt. Például a SAN tanúsítványa, amelynek SAN vannak **node1.domain.contoso.com** és **node2.domain.contoso.com**, amelynek FQDN-je gépen csak használható ezzel a tanúsítvánnyal **node2.domain.contoso.com**.
+- Támogatja az SSL-tanúsítványok Windows Server 2012 R2 által támogatott bármely kulcs mérete.
+- Tanúsítvány használatával CNG kulcsok használata nem támogatott. Doesrted DoesDoes nem támogatja a CNG-kulccsal használó tanúsítványokat.
 
 ## <a name="system-tray-icons-notifications"></a>Rendszer tálcaikonok / értesítések
 Ha kurzor átvitele a rendszer tálcai ikon/értesítési üzenetet, az önálló üzemeltetett integrációs futásidejű állapotának adatait találja.
@@ -225,17 +238,23 @@ Ha hibákba ütközik a következő hasonló, valószínű a tűzfalhoz vagy pro
     A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
     ```
 
-### <a name="open-port-8060-for-credential-encryption"></a>Nyissa meg a portot 8060 a hitelesítő adatok titkosításához
-A **hitelesítő adatok beállítása a** (jelenleg nem támogatott) alkalmazás használja a bejövő portot 8060 továbbítási hitelesítő adatokra az önálló üzemeltetett integrációs futásidejű, ha beállít egy helyszíni társított szolgáltatást az Azure portálon. Önálló üzemeltetett integrációs futásidejű telepítéskor alapértelmezés szerint az önálló üzemeltetett integrációs futásidejű telepítési megnyitja azt az önálló üzemeltetett integrációs futásidejű gépen.
+### <a name="enable-remote-access-from-intranet"></a>Engedélyezze a távelérést intranetről  
+Abban az esetben ha **PowerShell** vagy **hitelesítőadat-kezelő alkalmazás** egy másik számítógépről (hálózati) a hitelesítő adatok titkosításához eltérő, ahol az önálló üzemeltetett integrációs futásidejű telepítve van, majd szüksége lesz a **"Távelérési az intranetes"** beállítást engedélyezni kell. Ha futtatja a **PowerShell** vagy **hitelesítőadat-kezelő alkalmazás** , ahol az önálló üzemeltetett integrációs futásidejű telepítve van, majd ugyanazon hitelesítő adatok titkosításához **"távelérés az Intranet "** nem lehet engedélyezni.
 
-Ha egy külső tűzfalat használ, a portot 8050 manuálisan is megnyithatja. Ha futtatja a tűzfallal kapcsolatos probléma önálló üzemeltetett integrációs futásidejű telepítés közben, próbálja meg a következő paranccsal telepítheti az önálló üzemeltetett integrációs futásidejű a tűzfal konfigurálása.
+Távelérési az intranetes kell **engedélyezett** egy másik csomópont hozzáadása előtt **magas rendelkezésre állás és méretezhetőség**.  
+
+Önálló üzemeltetett integrációs futásidejű a telepítés során (v 3.3.xxxx.x és újabb verziók esetében), alapértelmezés szerint az önálló üzemeltetett integrációs futásidejű telepítési letiltja a **"Távelérési az intranetes"** az önálló üzemeltetett integrációs futásidejű gépen.
+
+Ha egy külső tűzfalat használ, manuálisan megnyithatja a 8060 (vagy a felhasználó konfigurált port). Ha futtatja a tűzfallal kapcsolatos probléma önálló üzemeltetett integrációs futásidejű telepítés közben, próbálja meg a következő paranccsal telepítheti az önálló üzemeltetett integrációs futásidejű a tűzfal konfigurálása.
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
+> [!NOTE]
+> **Hitelesítőadat-kezelő alkalmazás** még nem érhető el a ADFv2 hitelesítő adatok titkosításához. Ez a támogatás később adjuk hozzá.  
 
 Ha nem kíván az nyissa meg a portot 8060 az önálló üzemeltetett integrációs futásidejű gépen használatától eltérő szolgáltatások használata a ** hitelesítő adatok beállítása a ** adatok adattárolóhoz használandó hitelesítő adatok konfigurálandó alkalmazáshoz. Például használhatja új-AzureRmDataFactoryV2LinkedServiceEncryptCredential PowerShell-parancsmagot. Tekintse meg, hogyan tárolja az adatokat a hitelesítő adatait a hitelesítő adatok beállítása és biztonsági szakaszban állítható be.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg az alábbi részletes útmutatás: [oktatóanyag: másolás a helyszíni adatok felhőbe](tutorial-hybrid-copy-powershell.md).

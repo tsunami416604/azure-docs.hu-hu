@@ -10,11 +10,11 @@ ms.date: 12/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cb998caf35a9a55ea737cc1a24fbce38aac8abc4
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 3f61f0bf8234e747ae38146d1a5ea030e3163fa3
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Gyakori problémák és megoldások Azure IoT szegély
 
@@ -24,7 +24,7 @@ A környezetben futó Azure IoT biztonsági problémákat tapasztal, használja 
 
 Ha problémát tapasztal, további információ az IoT-peremhálózati eszköz állapotát a tároló naplókat és az üzeneteket, amelyek megfelelnek az eszközre érkező vagy oda irányuló megtekintésével. A parancsok és eszközök használata ebben a szakaszban összegyűjteni. 
 
-* Tekintse meg a naplókat a problémák észlelése docker-tároló. Indítsa el a telepített tárolókat, majd tekintse meg a tárolók a IoT peremhálózati futásidejű alkotó: ügynök Edge és biztonsági központja. A peremhálózati ügynök naplók általában az egyes tároló lifecylce adatainak megadása. A peremhálózati Hub naplók üzenetküldési és útválasztási adatainak megadása. 
+* Tekintse meg a naplókat a problémák észlelése docker-tároló. Indítsa el a telepített tárolókat, majd tekintse meg a tárolók a IoT peremhálózati futásidejű alkotó: ügynök Edge és biztonsági központja. A peremhálózati ügynök naplók az egyes tárolókban életciklusát általában adatainak megadása. A peremhálózati Hub naplók üzenetküldési és útválasztási adatainak megadása. 
 
    ```cmd
    docker logs <container name>
@@ -69,7 +69,7 @@ A hálózati konfigurációt a gazdagép hálózati meggátolja, hogy a hálóza
 Az IoT-Edge futásidejű állít be a modulok mindegyikének egy hálózati kommunikációhoz. Linux a hálózati híd hálózatról. A Windows használja a hálózati címfordítást. A probléma napjainkban egyre általánosabbá Windows tárolók a NAT-hálózatot használó Windows-eszközökön. 
 
 ### <a name="resolution"></a>Megoldás:
-Győződjön meg arról, hogy van-e az internethez híd/NAT hálózathoz hozzárendelt IP-címek egy útvonalat. Ha a VPN-konfiguráció a gazdagépen felülbírálja az IoT-Edge hálózati esetekben törölték. 
+Győződjön meg arról, hogy van-e az internethez híd/NAT hálózathoz hozzárendelt IP-címek egy útvonalat. A VPN-konfiguráció a gazdagépen néha a IoT peremhálózati hálózati felülbírálja. 
 
 ## <a name="edge-hub-fails-to-start"></a>Biztonsági központ nem indul el
 
@@ -97,5 +97,5 @@ A peremhálózati ügynök nincs engedélye a modul kép eléréséhez.
 ### <a name="resolution"></a>Megoldás:
 Próbálja meg fut a `iotedgectl login` újra a parancsot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Gondolja, hogy egy hiba található a IoT peremhálózati platform? Kérjük [küldje el a problémát](https://github.com/Azure/iot-edge/issues) , hogy a Folytatás javítása érdekében. 

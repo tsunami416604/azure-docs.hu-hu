@@ -4,7 +4,7 @@ description: "Útmutató egyéni lemezkép hozzáadása egy meglévő Azure virt
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/10/2017
 ms.author: negat
-ms.openlocfilehash: cf52fc9e95267c4bc5c0106aadf626685ddd5c24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28d2c080048a7f82e83ad9c1794c9757b330a8c7
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Az Azure méretezési készlet sablont egyéni lemezkép hozzáadása
 
@@ -33,7 +33,7 @@ A minimális életképes méretezési sablon beállítása látható [Itt](https
 
 Ha már van egy egyéni felügyelt lemezképet (típusú erőforrást `Microsoft.Compute/images`), akkor kihagyhatja ezt a részt.
 
-Első lépésként azt adja meg a `sourceImageVhdUri` paraméter, amely az Azure Storage a telepíteni kívánt az egyéni lemezképet tartalmazó általánosított blob URI.
+Először adja hozzá a `sourceImageVhdUri` paraméter, amely az Azure Storage a telepíteni kívánt az egyéni lemezképet tartalmazó általánosított blob URI.
 
 
 ```diff
@@ -51,7 +51,7 @@ Első lépésként azt adja meg a `sourceImageVhdUri` paraméter, amely az Azure
    "variables": {},
 ```
 
-Ezután adja hozzá azt az típusú erőforrást `Microsoft.Compute/images`, vagyis a felügyelt lemezképét a általánosított blob URI-címen alapuló `sourceImageVhdUri`. Ez a rendszerkép és az azt használó méretezési ugyanabban a régióban kell lennie. A lemezkép tulajdonságait, azt adja meg az operációs rendszer típusa, a blob helyét (a a `sourceImageVhdUri` paraméter), és a tárfiók típusa:
+Ezután adja hozzá a típusú erőforrást `Microsoft.Compute/images`, vagyis a felügyelt lemezképét a általánosított blob URI-címen alapuló `sourceImageVhdUri`. Ez a rendszerkép és az azt használó méretezési ugyanabban a régióban kell lennie. A lemezkép tulajdonságait, adja meg az operációs rendszer típusa, a blob helyét (a a `sourceImageVhdUri` paraméter), és a tárfiók típusa:
 
 ```diff
    "resources": [
@@ -78,7 +78,7 @@ Ezután adja hozzá azt az típusú erőforrást `Microsoft.Compute/images`, vag
 
 ```
 
-A méretezési készletben erőforrás, jelenleg felvenni egy `dependsOn` az egyéni lemezképet győződjön meg arról, hogy a kép hivatkozó záradék előtt erről a képről telepíteni megpróbálja a méretezési jön létre:
+A méretezési készletben erőforrás, adja hozzá a `dependsOn` az egyéni lemezképet győződjön meg arról, hogy a kép hivatkozó záradék előtt erről a képről telepíteni megpróbálja a méretezési jön létre:
 
 ```diff
        "location": "[resourceGroup().location]",
@@ -95,7 +95,7 @@ A méretezési készletben erőforrás, jelenleg felvenni egy `dependsOn` az egy
 
 ### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Skála módosítása a felügyelt lemezes lemezképen tulajdonságainak beállítása
 
-Az a `imageReference` a skála beállítása `storageProfile`, adtuk meg helyett adja meg a közzétevő, az ajánlat, sku és platformlemezkép verzióját, a `id` , a `Microsoft.Compute/images` erőforrás:
+Az a `imageReference` a skála beállítása `storageProfile`, helyett adja meg a kiadó, kínálnak, sku, és adja meg, a platform-lemezképek verziószámának az `id` , a `Microsoft.Compute/images` erőforrás:
 
 ```diff
          "virtualMachineProfile": {
@@ -111,9 +111,9 @@ Az a `imageReference` a skála beállítása `storageProfile`, adtuk meg helyett
            "osProfile": {
 ```
 
-A jelen példában használjuk a `resourceId` függvény az erőforrás-azonosítója a kép ugyanazt a sablont létrehozni. Ha előzetesen létrehozta a felügyelt lemezképe, ehelyett kell biztosítania, hogy a kép azonosítója. Ezt az azonosítót a formátumúnak kell lennie: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
+Ebben a példában, használja a `resourceId` függvény az erőforrás-azonosítója a kép ugyanazt a sablont létrehozni. Ha előzetesen létrehozta a felügyelt lemezképe, ehelyett kell biztosítania, hogy a kép azonosítója. Ezt az Azonosítót a formátumúnak kell lennie: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 69150acf483d776e8ecad6e5076a54675bff7439
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 0aac388f4499af018a4603bcad835ab41d6b6642
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -57,10 +57,10 @@ Ha egy kiszolgálón, amelyen egy meglévő fájlokat egy server végpontként s
 A felhő-végpont esetében az Azure fájlmegosztások, amely a szinkronizálási csoport része. A teljes fájl Azure fájlmegosztás szinkronizálások és az Azure fájlmegosztások csak egy felhőhöz végpont tagja lehet. Ezért az Azure fájlmegosztások lehet csak egyetlen szinkronizálási csoport tagja. Ha az Azure fájlmegosztások, amely rendelkezik egy meglévő fájlkészlet a felhővégpontnak szinkronizálási csoporthoz ad hozzá, a meglévő fájlokat egyesítve lesznek az egyéb fájlokat, amelyek már megtalálhatók a szinkronizálási csoport végpontja.
 
 > [!Important]  
-> Az Azure fájlszinkronizálás támogatja közvetlenül az Azure fájlmegosztások hajt végre módosításokat. Azonban a Azure fájlmegosztás végrehajtott módosítások először kell egy Azure fájlszinkronizálás módosítás észlelése észlelhetők. A módosítás észlelése a felhőbeli végpont 24 óránként csak egyszer indítható. További információkért lásd: [Azure fájlok gyakran ismételt kérdések](storage-files-faq.md#afs-change-detection).
+> Az Azure fájlszinkronizálás támogatja közvetlenül az Azure fájlmegosztások hajt végre módosításokat. Azonban a Azure fájlmegosztás végrehajtott módosítások először kell egy Azure fájlszinkronizálás módosítás észlelése észlelhetők. A módosítás észlelése a felhőbeli végpont 24 óránként csak egyszer indítható. Ezenkívül az Azure fájlmegosztások a többi protokollon keresztül végzett módosítások nem fogja frissíteni az SMB-utolsó módosítás időpontja, és nem látható, a módosítás szinkronizálás által. További információkért lásd: [Azure fájlok gyakran ismételt kérdések](storage-files-faq.md#afs-change-detection).
 
 ### <a name="cloud-tiering"></a>Felhőbeli rétegzés 
-Felhő rétegezéséhez, amelyben a ritkán használt vagy a használt fájlokat is helyezhető el a az Azure Fileshoz Azure fájlszinkronizálás választható lehetőség. Ha egy fájl többszintű, Azure fájlszinkronizálás fájlrendszerszűrő (StorageSync.sys) lecseréli a fájlt helyileg mutatót, vagy újraelemzési pont. Az újraelemzési pont Azure fájlok a fájl URL-címet jelöli. A rétegzett fájl beállítani az NTFS-sel, harmadik féltől származó alkalmazások azonosíthassa a rétegzett fájlokat a "kapcsolat nélküli" attribútummal rendelkezik. Ha a felhasználó megnyit egy rétegzett fájlt, Azure fájlszinkronizálás zökkenőmentesen visszahívja az Azure-fájlokból a fájladatok anélkül, hogy a felhasználó ismeri az, hogy a fájl nem található helyileg a rendszeren. Ez a funkció hierarchikus tárolás (HSM) is nevezik.
+A felhő rétegezéséhez választható szolgáltatás Azure fájlszinkronizálás, amelyben a ritkán használt, vagy nagyobb, mint 64 KiB méretű képes helyezhető el a az Azure Fileshoz érhető el. Ha egy fájl többszintű, Azure fájlszinkronizálás fájlrendszerszűrő (StorageSync.sys) lecseréli a fájlt helyileg mutatót, vagy újraelemzési pont. Az újraelemzési pont Azure fájlok a fájl URL-címet jelöli. A rétegzett fájl beállítani az NTFS-sel, harmadik féltől származó alkalmazások azonosíthassa a rétegzett fájlokat a "kapcsolat nélküli" attribútummal rendelkezik. Ha a felhasználó megnyit egy rétegzett fájlt, Azure fájlszinkronizálás zökkenőmentesen visszahívja az Azure-fájlokból a fájladatok anélkül, hogy a felhasználó ismeri az, hogy a fájl nem található helyileg a rendszeren. Ez a funkció hierarchikus tárolás (HSM) is nevezik.
 
 > [!Important]  
 > Felhő server végpontok a Windows rendszert tartalmazó kötetek adatdeduplikációval esetén nem támogatott.
@@ -169,7 +169,7 @@ A képen támogatjuk a szinkronizálás csak a az Azure fájlmegosztások, amely
 ## <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure-fájlok központi telepítésének tervezése](storage-files-planning.md)
 * [Az Azure Files telepítése](storage-files-deployment-guide.md)
 * [Az Azure File-szinkronizálás telepítése](storage-sync-files-deployment-guide.md)

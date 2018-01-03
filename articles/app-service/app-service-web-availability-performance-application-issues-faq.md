@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: d997c291e487e27b7e12c015e34ad839ac020151
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 36869eb523706787257160e5859f50b24f7bf08b
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-webalkalmazások alkalmazásteljesítmény – gyakori kérdések
 
@@ -174,7 +174,7 @@ Ez a probléma fennáll a vércse 1.0.2-es verzióját. Ebben a verzióban megta
 
 Ha az App Service a helyi gyorsítótár szolgáltatását használja, az App Service-példány a naplófájlok és az adatok mappák mappaszerkezetét érinti. Helyi gyorsítótár használata esetén almappák a naplófájlok tárolási és adatmappáinak jönnek létre. Az almappák használja az elnevezési minta "egyedi azonosítója" + időbélyegző. Minden almappa felel meg a Virtuálisgép-példány a webalkalmazás fut, vagy futott.
 
-Annak meghatározásához, hogy használ-e helyi gyorsítótár, ellenőrizze, hogy az App Service **Alkalmazásbeállítások** fülre. Ha a helyi gyorsítótár használatban van, az alkalmazás beállítása `WEBSITE_LOCAL_CACHE_OPTION` értéke `Always`. 
+Annak meghatározásához, hogy használ-e helyi gyorsítótár, ellenőrizze, hogy az App Service **Alkalmazásbeállítások** fülre. Ha a helyi gyorsítótár használatban van, az alkalmazás beállítása `WEBSITE_LOCAL_CACHE_OPTION` értéke `Always`.
 
 Ha nem használja a helyi gyorsítótárban, és ezzel a problémával találkozik, a támogatási kérelem elküldéséhez.
 

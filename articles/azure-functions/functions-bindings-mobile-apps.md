@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 3c29c43f88608760cc6d5f19f27f692c8448ebd9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: a1e4f15747031ba75ba5ae589557750919a71853
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Az Azure Functions Mobile Apps kötései 
 
@@ -37,8 +37,7 @@ A Mobile Apps bemeneti kötése tölt be egy olyan rekordot egy mobil table vég
 
 Tekintse meg a nyelvspecifikus példát:
 
-<!-- * [Precompiled C#](#input---c-example)-->
-* [C# parancsfájl](#input---c-script-example)
+* [C# parancsfájl (.csx)](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
 
 ### <a name="input---c-script-example"></a>Bemenet – C# parancsfájl – példa
@@ -129,7 +128,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>Bemenet – attribútumok
 
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps).
 
 Konfigurálható attribútumtulajdonságok kapcsolatos információkért lásd: [a következő konfigurációs szakasz](#input---configuration).
 
@@ -168,13 +167,13 @@ A Mobile Apps kimeneti kötése egy új rekordot írni a Mobile Apps tábla hasz
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#output---c-example)
-* [C# parancsfájl](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# parancsfájl (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Kimeneti - C# – példa
 
-Az alábbi példa mutatja egy [előre le a C# függvény fordítva](functions-dotnet-class-library.md) , amely egy üzenetsor váltja ki, és létrehoz egy rekordot a mobilalkalmazás tábla.
+A következő példa egy [C# függvény](functions-dotnet-class-library.md) , amely váltja ki egy üzenetsor-üzenetet, és létrehoz egy rekordot egy mobilalkalmazás táblában.
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -275,7 +274,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="output---attributes"></a>Kimeneti - attribútumok
 
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps).
 
 Konfigurálható attribútumtulajdonságok kapcsolatos információkért lásd: [kimeneti - konfigurációs](#output---configuration). Íme egy `MobileTable` metódus-aláírás attribútum példát:
 
@@ -290,7 +289,7 @@ public static object Run(
 }
 ```
 
-Tekintse meg a teljes például [kimeneti - előfordított például C#](#output---c-example).
+Tekintse meg a teljes például [kimeneti - C# példa](#output---c-example).
 
 ## <a name="output---configuration"></a>Kimeneti - konfiguráció
 
@@ -312,7 +311,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 ## <a name="output---usage"></a>Kimeneti - használat
 
-A C# parancsfájl funkciók, használja a megnevezett kimeneti paramétert `out object` a kimeneti rekord eléréséhez. Az előfordított C# funkciók a `MobileTable` attribútum is használható a következő típusok:
+A C# parancsfájl funkciók, használja a megnevezett kimeneti paramétert `out object` a kimeneti rekord eléréséhez. A C# osztálykönyvtárakhoz a `MobileTable` attribútum is használható a következő típusok:
 
 * `ICollector<T>`vagy `IAsyncCollector<T>`, ahol `T` vagy `JObject` vagy rendelkező bármilyen olyan `public string Id` tulajdonság.
 * `out JObject`
@@ -320,7 +319,7 @@ A C# parancsfájl funkciók, használja a megnevezett kimeneti paramétert `out 
 
 A Node.js funkciók használata `context.bindings.<name>` a kimeneti rekord eléréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

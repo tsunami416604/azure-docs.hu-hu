@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2017
+ms.date: 12/19/2017
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.openlocfilehash: 7df1ebcc65998a2078f5f215277eef351e48ca1b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0eaa54252885cee8f90e65f299869216ca1b2144
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései
 A vállalat biztonsági célú van szükségük a pontos engedélyeket ad az alkalmazottak kell összpontosítania. Túl sok engedélyeket is elérhetővé teheti a támadásokkal fiókkal. Túl kevés engedélyek, az azt jelenti, hogy az alkalmazottak nem munkavégzéséhez hatékony. Azure szerepköralapú hozzáférés-vezérlés (RBAC) segít a részletes hozzáféréskezelést az Azure felajánlásával oldja meg a problémát.
@@ -56,14 +56,14 @@ A gyermekhatókör örökölt, hogy a szülő hatókörök számára biztosítso
 * A közreműködői szerepkör hozzárendelése az erőforrás-csoport hatóköre az alkalmazást. Az erőforráscsoport, de nem egyéb erőforráscsoportok az előfizetés bármilyen típusú erőforrások kezelésére alkalmas.
 
 ## <a name="azure-rbac-vs-classic-subscription-administrators"></a>Az Azure RBAC és a hagyományos előfizetés rendszergazdái
-Hagyományos előfizetés rendszergazdák és a társadminisztrátoroknak az Azure-előfizetés teljes hozzáféréssel rendelkezzen. -Erőforrások kezelésére a [Azure-portálon](https://portal.azure.com) Azure Resource Manager API-khoz, vagy a [a klasszikus Azure portálon](https://manage.windowsazure.com) és az Azure klasszikus üzembe helyezési modellben. Az RBAC-modellben a hagyományos adminisztrátorait a tulajdonosi szerepkört az előfizetés hatókörben vannak társítva.
+[Hagyományos előfizetés rendszergazdák és a társadminisztrátoroknak](../billing/billing-add-change-azure-subscription-administrator.md) az Azure-előfizetés teljes hozzáféréssel rendelkeznek. -Erőforrások kezelésére a [Azure-portálon](https://portal.azure.com), Azure Resource Manager API-k és a klasszikus üzembe helyezési modell API-k. Az RBAC-modellben a hagyományos adminisztrátorait a tulajdonosi szerepkört az előfizetés hatókörben vannak társítva.
 
-Csak az Azure portál és az új Azure Resource Manager API-kat támogatja az Azure RBAC. Felhasználók és az alkalmazások rendelt RBAC-szerepkörök nem használható a klasszikus felügyeleti portál és az Azure klasszikus üzembe helyezési modellben.
+Csak az Azure portál és az új Azure Resource Manager API-kat támogatja az Azure RBAC. Felhasználók és az alkalmazások rendelt RBAC-szerepkörök nem használható az Azure klasszikus telepítési modellel API-k.
 
 ## <a name="authorization-for-management-vs-data-operations"></a>Engedélyezési és adatok az operations Management
 Az Azure RBAC az Azure-erőforrások felügyeleti műveletek csak támogatja az Azure-portál és az Azure Resource Manager API-k. Nem lehet engedélyezni, az összes adat szintű műveletet Azure-erőforrások. Például engedélyezheti valaki Storage-fiókok kezeléséhez, de nem a blobok vagy a táblák egy Tárfiókon belül. Hasonlóképpen SQL-adatbázis kezelése, de nem szereplő táblák.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerkedés a [szerepköralapú hozzáférés-vezérlés az Azure portálon](role-based-access-control-configure.md).
 * Lásd: [Beépített RBAC-szerepkörök](role-based-access-built-in-roles.md)
 * Saját [egyéni szerepkörök az Azure RBAC-ben](role-based-access-control-custom-roles.md)

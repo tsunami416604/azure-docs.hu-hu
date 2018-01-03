@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/22/2017
+ms.date: 12/28/2017
 ms.author: eugenesh
-ms.openlocfilehash: 97c1fc602ba27472fed2f11fd634e617ae9c636f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 286e2b8eddc87a5132fa13468b0cef1b499c3993
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Az Azure Blob Storage tárolóban az Azure Search dokumentumok indexelő
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-fájlok, a Microsoft Office-dokumentumok, és számos egyéb gyakori formátumok) az Azure Blob Storage tárolóban tárolja. Első lépésként beállítása és konfigurálása a blob indexelő használatának alapjait ismerteti. Ezt követően viselkedésmódok mélyebb feltárása kínál, és forgatókönyvek lehetséges hibát.
@@ -225,28 +225,6 @@ Kizárhat meghatározott fájlnév-kiterjesztések blobok használatával indexe
 
 Ha mindkét `indexedFileNameExtensions` és `excludedFileNameExtensions` paraméterek szerepelnek, az Azure Search először ellenőrzi, hogy az `indexedFileNameExtensions`, majd a `excludedFileNameExtensions`. Ez azt jelenti, hogy ha ugyanazon fájl kiterjesztése könyvtárban található, akkor nem kerülnek bele az indexelő.
 
-### <a name="dealing-with-unsupported-content-types"></a>Nem támogatott tartalomtípus kezelésével
-
-Alapértelmezés szerint a blob indexelője, amint fordul egy blobot a tartalom nem támogatott típust (például egy képet). Természetesen használhatja a `excludedFileNameExtensions` paraméter kihagyását bizonyos tartalomtípusokat. Azonban szükség lehet index blobok minden lehetséges tartalomtípusokat előre ismerete nélkül. Folytatni, amikor a rendszer észlelt egy nem támogatott tartalomtípus, állítsa be a `failOnUnsupportedContentType` konfigurációs paramétert `false`:
-
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
-    }
-
-### <a name="ignoring-parsing-errors"></a>A rendszer figyelmen kívül hagyja az elemzési hibák
-
-Az Azure Search dokumentum kibontási logika nem tökéletes megoldás, ezért néha nem támogatott tartalomtípus dokumentumok például elemzésére. DOCX vagy. PDF-FÁJLT. Ha nem szeretné, hogy zavaró, ebben az esetben indexelő használatához állítsa be a `maxFailedItems` és `maxFailedItemsPerBatch` néhány ésszerű értéket konfigurációs paramétereket. Példa:
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
-    }
-
 <a name="PartsOfBlobToIndex"></a>
 ## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>A blob részeket indexelt vezérlése
 
@@ -275,6 +253,31 @@ A fenti konfigurációs paraméterek összes BLOB vonatkozik. Egyes esetekben el
 | --- | --- | --- |
 | AzureSearch_Skip |"true" |Arra utasítja a blob indexelő teljesen kihagyja a blob. Sem a metaadatok, sem a tartalom kivonása kísérlet történik. Ez akkor hasznos, ha egy adott blob ismételten meghiúsul, és megszakítja az indexelési folyamat. |
 | AzureSearch_SkipContent |"true" |Ez megegyezik a `"dataToExtract" : "allMetadata"` ismertetett beállítás [fent](#PartsOfBlobToIndex) egy adott blob hatókörébe. |
+
+<a name="DealingWithErrors"></a>
+## <a name="dealing-with-errors"></a>Hibák kezelése
+
+Alapértelmezés szerint a blob indexelője, amint fordul egy blobot a tartalom nem támogatott típust (például egy képet). Természetesen használhatja a `excludedFileNameExtensions` paraméter kihagyását bizonyos tartalomtípusokat. Azonban szükség lehet index blobok minden lehetséges tartalomtípusokat előre ismerete nélkül. Folytatni, amikor a rendszer észlelt egy nem támogatott tartalomtípus, állítsa be a `failOnUnsupportedContentType` konfigurációs paramétert `false`:
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
+    }
+
+Néhány BLOB az Azure Search nem tudja megállapítani a tartalomtípus, vagy nem dolgozható fel a dokumentum egyéb támogatott tartalomtípus. Ez a hiba mód figyelmen kívül hagyásához állítsa be a `failOnUnprocessableDocument` konfigurációs paraméter false értékre:
+
+      "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+
+Is tovább indexelő Ha hibák bármikor feldolgozási, blobok elemzése közben vagy dokumentumok index való hozzáadása során kerül sor. Adott számú hiba figyelmen kívül hagyásához állítsa be a `maxFailedItems` és `maxFailedItemsPerBatch` konfigurációs paramétereket a kívánt értékeket. Példa:
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
+    }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Növekményes indexelő és törlési észlelése
 Beállításakor egy blob indexelő ütemezés szerint futtatni, azt újra indexek csak a módosított blobok a blob alapján `LastModified` időbélyegző.
