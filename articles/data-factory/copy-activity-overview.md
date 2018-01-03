@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 12/15/2017
 ms.author: jingwang
-ms.openlocfilehash: a2f370998ea219f9d36a6cda26405b6023666f92
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 7786fc785afa745da28b1da644ec58568d0cf424
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory a másolási tevékenység
 
@@ -193,7 +193,13 @@ Alapértelmezés szerint a másolási tevékenység leállítja az adatok másol
 
 Tekintse meg a [másolási tevékenység teljesítmény- és hangolási útmutató](copy-activity-performance.md), amely ismerteti az Azure Data Factory (másolási tevékenység) adatátvitel teljesítményét befolyásoló tényezők. Felsorolja a belső tesztelése során a megfigyelt teljesítmény és a másolási tevékenység teljesítményének optimalizálásához különböző módját tárgyalja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="incremental-copy"></a>Növekményes másolása 
+Adat-előállító 2-es szituációkat Növekményesen másolására különbözeti adatokat a forrás-tárolóban a cél-tárolóban. Lásd: [oktatóanyag: adatok Növekményesen másolása](tutorial-incremental-copy-overview.md). 
+
+## <a name="read-and-write-partitioned-data"></a>Olvasási és írási particionált adatok
+1-es verziójával Azure Data Factory Olvasás vagy írás a particionált SliceStart/SliceEnd/WindowStart/WindowEnd rendszerváltozók használatával támogatott. A 2-es verzióját ez a viselkedés a paraméter értékének csővezeték paraméter és a trigger elem ütemezett időpont/kezdete segítségével érhet el. További információkért lásd: [olvasására vagy írására, hogyan particionálva adatok](how-to-read-write-partitioned-data.md).
+
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő quickstarts, oktatóanyagok és minták:
 
 - [Adatok másolása egyik helyről a azonos Azure Blob Storage tárolóban egy másik helyre](quickstart-create-data-factory-dot-net.md)

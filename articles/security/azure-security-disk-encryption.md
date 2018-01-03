@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: kakhan
-ms.openlocfilehash: 4c2d3ba72b768e21a027478dfe912689457049fd
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 0ed575283807137f60eca005262cff27388c140f
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption
 A Microsoft Azure elkötelezett a kifejezetten a adatvédelem, az adatok közös joghatóság alá és a lehetővé teszi, hogy az Azure tárolt adatok végig a vezérlő speciális technológiák titkosításához, szabályozása és titkosítási kulcsok kezeléséhez az adatok vezérlő & naplózási hozzáférést. Ez rugalmasságot biztosít, Azure-ügyfél és válassza ki a saját üzleti igényeinek leginkább megfelelő megoldást. A dokumentum azt kódelemeit egy új technológia megoldás "Azure Disk Encryption for Windows és Linux infrastruktúra-szolgáltatási virtuális gép által" és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni segítségével. A dokumentum biztosít részletes útmutatás a lemezt Azure titkosítási szolgáltatásai, beleértve a támogatott forgatókönyveket, és a felhasználói élmény.
@@ -851,7 +851,7 @@ Egy futó Linux virtuális gép operációs rendszer meghajtójának titkosítá
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk successfully encrypted, reboot the VM
     ```
-Ahhoz, hogy újraindította, azt javasoljuk, hogy menti [rendszerindítási diagnosztika](https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/) a virtuális gép.
+Ahhoz, hogy újraindította, azt javasoljuk, hogy menti [rendszerindítási diagnosztika](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) a virtuális gép.
 
 #### <a name="monitoring-os-encryption-progress"></a>Az operációs rendszer titkosítási folyamat figyelése
 Figyelheti, hogy az operációs rendszer titkosítási folyamat három módon:
@@ -885,7 +885,7 @@ Figyelheti, hogy az operációs rendszer titkosítási folyamat három módon:
 
  ![Virtuális gép példányait tartalmazó nézet](./media/azure-security-disk-encryption/vm-instanceview.png)
 
-* Nézze meg [rendszerindítási diagnosztika](https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/). A ADE bővítményből származó üzenetek kell előtagként `[AzureDiskEncryption]`.
+* Nézze meg [rendszerindítási diagnosztika](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). A ADE bővítményből származó üzenetek kell előtagként `[AzureDiskEncryption]`.
 
 * Jelentkezzen be a virtuális gép SSH-n keresztül, és a bővítmény naplóban az beszerzése:
 
@@ -917,7 +917,7 @@ A terjesztési telepítése közben titkosítás konfigurálása a következő m
 
  ![Ubuntu 16.04 beállítása](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. A virtuális gép előkészítése az Azure használatával történő feltöltése [ezeket az utasításokat](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Ne futtassa az utolsó lépést (a virtuális gép megszüntetés) még.
+6. A virtuális gép előkészítése az Azure használatával történő feltöltése [ezeket az utasításokat](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Ne futtassa az utolsó lépést (a virtuális gép megszüntetés) még.
 
 Adja meg a titkosítás működéséhez az Azure-ral, az alábbi lépésekkel:
 
@@ -995,7 +995,7 @@ A terjesztési telepítése közben a titkosítás konfigurálására, tegye a k
 
  ![openSUSE, 13.2 beállítása](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
-3. A virtuális gép előkészítése a utasításait követve az Azure-bA feltölteni [SLES vagy openSUSE virtuális gép előkészítése Azure](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Ne futtassa az utolsó lépést (a virtuális gép megszüntetés) még.
+3. A virtuális gép előkészítése a utasításait követve az Azure-bA feltölteni [SLES vagy openSUSE virtuális gép előkészítése Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Ne futtassa az utolsó lépést (a virtuális gép megszüntetés) még.
 
 A titkosítás működéséhez az Azure-ral konfigurálásához tegye a következőket:
 1. Szerkessze a /etc/dracut.conf, és adja hozzá a következő sort:
@@ -1071,7 +1071,7 @@ A terjesztési telepítése közben a titkosítás konfigurálására, tegye a k
 
  ![CentOS 7 beállítása](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
-5. A virtuális gép előkészítése feltöltése az Azure "CentOS 7.0 +" utasításait használatával [CentOS-alapú virtuális gép előkészítése Azure](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Ne futtassa az utolsó lépést (a virtuális gép megszüntetés) még.
+5. A virtuális gép előkészítése feltöltése az Azure "CentOS 7.0 +" utasításait használatával [CentOS-alapú virtuális gép előkészítése Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Ne futtassa az utolsó lépést (a virtuális gép megszüntetés) még.
 
 6. Most is kiosztásának megszüntetése a virtuális gép és [a virtuális merevlemez feltöltéséhez](#upload-encrypted-vhd-to-an-azure-storage-account) az Azure.
 

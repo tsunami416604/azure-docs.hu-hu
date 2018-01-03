@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
 ms.openlocfilehash: e8a8a84153a950f2d1bc002b34c83dc5ed8a5eb8
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="data-warehouse-migration-utility-preview"></a>Data Warehouse Fájláttelepítő segédprogram (előzetes verzió)
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Az adatok áttelepítése lehetőségre kattintva létrehozhat BCP olyan parancs
 
 Miután a fenti paraméterek kitöltött egyszerűen kattintson a Futtatás áttelepítési, és két csomagok készlete hoz létre a megadott helyen. Adatok exportálása az áttelepítési forrásról egybesimított fájlok az exportfájl futtatásával, és az importált fájl futtatásával importálja az adatokat az SQL Data Warehouse.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy néhány adat áttelepítése, ellenőrizze, hogy miként [fejlesztése][develop].
 
 <!--Image references-->

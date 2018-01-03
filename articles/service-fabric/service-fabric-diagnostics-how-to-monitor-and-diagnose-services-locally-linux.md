@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.openlocfilehash: 4bc73f581f4855ebc724df19dd56fab8bf103854
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Figyelése és diagnosztizálása szolgáltatásai a helyi számítógép fejlesztési beállítása
 
@@ -140,6 +140,6 @@ A minták [C# minták](https://github.com/Azure-Samples/service-fabric-dotnet-co
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A diagnosztika az alkalmazás egy Azure fürt ugyanazt a nyomkövetés kódot az alkalmazásba felvett is működik. Tekintse meg a cikkek ismertetik az eszközök a különböző lehetőségek közül, és bemutatják, hogyan állíthatja be azokat.
 * [Az Azure diagnosztikai naplók gyűjtéséről](service-fabric-diagnostics-how-to-setup-lad.md)

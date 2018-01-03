@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: davidmu
 ms.openlocfilehash: bfc06c1b44974fd17a3794654503d21d6407a917
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-by-using-the-portal"></a>Hozzon létre egy alkalmazást a webalkalmazási tűzfal a portál használatával
 
@@ -146,7 +146,7 @@ Ezeket a lépéseket egy alapszintű application gateway a figyelő, a háttér-
 > [!NOTE]
 > Az alapvető beállításokkal WAF létre alkalmazásátjárót védelmet CRS 3.0-val van állítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az egyéni tartomány aliasa konfigurálása a [nyilvános IP-cím](../dns/dns-custom-domain.md#public-ip-address), használhatja az Azure DNS- vagy egy másik DNS-szolgáltatónál.
 

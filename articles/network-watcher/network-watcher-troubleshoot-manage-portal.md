@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
 ms.openlocfilehash: c3fa22bd599026b0838b134e26062d9837df703e
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Virtuális hálózati átjáró és az Azure hálózati figyelő PowerShell kapcsolatok hibáinak elhárítása
 
 > [!div class="op_single_selector"]
-> - [Portál](network-watcher-troubleshoot-manage-portal.md)
+> - [Portal](network-watcher-troubleshoot-manage-portal.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [CLI 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
@@ -64,15 +64,15 @@ Az a **részletek** szakasz az ablak a **állapot** lapon állapotát jeleníti 
 |---------|---------|
 |Erőforrás     | Az erőforrás mutató hivatkozást.        |
 |Tárolási elérési útja     |  A tárfiók és tároló, amely tartalmazza a naplók (Ha bármelyik keletkezett a futtatás során) elérési útja. Ez a beállítás nem maradnak, ha kilép a portálon.        |
-|Összefoglalás     | Az erőforrás állapotának összegzését.        |
+|Összegzés     | Az erőforrás állapotának összegzését.        |
 |Részletek     | Az erőforrás állapota részletes tájékoztatást.        |
-|Utolsó futtatás     | Az az idő az utolsó idejű hibaelhárításhoz lett futott.        |
+|Legutóbb futtatva     | Az az idő az utolsó idejű hibaelhárításhoz lett futott.        |
 
 
 A **művelet** lapon általános útmutatást nyújt a probléma megoldásához. Is művelet az a probléma, ha egy hivatkozás által biztosított további útmutatást. Abban az esetben nincs további útmutatás, ha a válasz biztosít nyissa meg a támogatási esetet URL-címét.  A válasz és tartalmát képező tulajdonságaival kapcsolatos további információkért látogasson el a [hálózati figyelő hibaelhárítása – áttekintés](network-watcher-troubleshoot-overview.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a beállítások módosítása, hogy stop VPN-kapcsolatot, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/virtual-network-manage-nsg-arm-portal.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági szabályok, amelyek lehet, hogy a szóban forgó.
 

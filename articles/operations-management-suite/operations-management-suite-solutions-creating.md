@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ea959f1e95ea46c07eec3afa9d46bfeb72ca3e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a17c73393ecbdff693e9b200d1506887e0f1d71e
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>Tervezési és a megoldás létrehozása kezelési Operations Management Suite (OMS) (előzetes verzió)
 > [!NOTE]
@@ -37,7 +37,7 @@ Az alapvető stratégia a felügyeleti megoldás az Azure környezetben az egyes
 ## <a name="design-your-solution"></a>A megoldás tervezése
 A leggyakrabban használt minta felügyeleti megoldás a következő ábrán látható.  Ebben a mintában a különböző összetevőket ismerteti a alatt.
 
-![OMS megoldási áttekintés](media/operations-management-suite-solutions/solution-overview.png)
+![OMS megoldási áttekintés](media/operations-management-suite-solutions-creating/solution-overview.png)
 
 
 ### <a name="data-sources"></a>Adatforrások
@@ -80,7 +80,7 @@ Miután befejeződött, és a megoldás tesztelése, akkor is tegye elérhetőv�
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [hozzon létre egy megoldást fájlt](operations-management-suite-solutions-solution-file.md) -kezelési megoldást.
 * További részleteit [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md).
 * Keresési [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/documentation/templates) példákért különböző Resource Manager-sablonok.

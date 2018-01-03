@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: 9b236ab8dd80b0c34501e0d60ba74dee3043d262
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 3737a240d92d9420bac7d42475622182fb425a2b
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Azure Cosmos DB gyűjtemények automatikusan élettartama adatok lejár
 Alkalmazások létrehozására és hatalmas mennyiségű adat tárolására is használható. Az adatok egy részét, például generált gép esemény adatokat, a naplókat, és a felhasználói munkamenet az információ csak véges időn. Miután az adatok válnak az alkalmazás igényeinek felesleges ezek az adatok kiürítése és a tárolási igényeinek, az alkalmazások biztonságos.
@@ -149,8 +149,11 @@ A TTL letiltása teljes egészében a gyűjtemény, majd állítsa le a háttér
     
     await client.ReplaceDocumentCollectionAsync(collection);
 
-## <a name="ttl-and-index-interaction"></a>Élettartam és Index interakció
-Élettartam hozzáadása vagy módosítása: az alapul szolgáló index a módosítása. Ha nincs TTL-t, és akkor adjon meg érvényes élettartamértéket - az eredmény indexelik újra a műveletet. Egységes indexe - felhasználó nem jelenik meg a indexű állapotban változásait. Abban az esetben, ha lassú index - indexe először az összes van mindig elfogja fel, és a TTL-t az módosítását, a rendszer teljesen újra index. Az utóbbi esetben szempontjából, hogy az index rebuild során végzett lekérdezések nem ad vissza a teljes vagy a megfelelő eredményeket. Nem módosítsa TTL Lusta index Ha adatok száma stb kell pontos, mert maga az indexelő mód Lusta.  Ideális esetben konzisztens index kell mindig választani. 
+<a id="ttl-and-index-interaction"></a> 
+## <a name="ttl-and-index-interaction"></a>Élettartam és index interakció
+Hozzáadása vagy módosítása egy gyűjteményt az élettartam beállítása módosítja az alapul szolgáló index. Amikor az élettartam értéke a be-vagy kikapcsolása módosul, a gyűjtemény újraindexelése van. Ha módosítja az indexelési házirendet konzisztens az indexelési mód esetén, felhasználók nem láthatja az index olyan módosítás. Az indexelő mód esetén a Lusta van beállítva az index mindig elfogja, és az élettartam értéke megváltozott, ha az index teljesen új újból létrejön. Az élettartam értéke megváltozott, és az index mód értéke Lusta, ha az index rebuild során végzett lekérdezések nem adják vissza teljes vagy a megfelelő eredményeket.
+
+Ha adott vissza pontos adat van szüksége, ne módosítsa az élettartam értéke Ha az indexelési mód beállítása Lusta. Ideális esetben konzisztens index lekérdezés konzisztens eredmények biztosítása kell kiválasztani. 
 
 ## <a name="faq"></a>GYIK
 **Mit fog költség TTL-t?**
@@ -173,6 +176,6 @@ TTL-t a teljes dokumentum vonatkozik. Ha azt szeretné, csak egy dokumentumot eg
 
 Igen. Rendelkeznie kell a gyűjtemény [szabályzatokkal indexelő](indexing-policies.md) Consistent vagy Lazy. Az indexelő beállítása None szervezendő DefaultTTL beállítása közben hiba, mint fognak, kapcsolja ki a gyűjteményt, amely már be van állítva egy DefaultTTL az indexelő próbál eredményez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure Cosmos DB kapcsolatos további tudnivalókért tekintse meg a szolgáltatás [ *dokumentáció* ](https://azure.microsoft.com/documentation/services/cosmos-db/) lap.
 

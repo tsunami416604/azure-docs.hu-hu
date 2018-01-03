@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rajanaki
 ms.openlocfilehash: cc832d06611c10901d4370dc7467f0b681d89cbd
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell-and-azure-resource-manager"></a>VMM-felhőkben Hyper-V virtuális gépek replikálása az Azure PowerShell és az Azure Resource Manager használatával
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ Győződjön meg arról, hogy az előfeltételek teljesülnek:
 
 ### <a name="hyper-v-prerequisites"></a>Hyper-V előfeltételei
 * A Hyper-V gazdakiszolgálókon legalább futnia kell **Windows Server 2012** Hyper-V szerepkörrel vagy **Microsoft Hyper-V Server 2012** és a legújabb frissítések telepítve van.
-* Ha fürtben futtatja a Hyper-V-t, ne feledje, hogy ha statikus IP-címen alapuló fürtöt használ, a rendszer nem hozza létre automatikusan a fürtszervezőt. Ebben az esetben manuálisan kell konfigurálnia a fürtszervezőt. Készült a következő alkalmazáshoz:
+* Ha fürtben futtatja a Hyper-V-t, ne feledje, hogy ha statikus IP-címen alapuló fürtöt használ, a rendszer nem hozza létre automatikusan a fürtszervezőt. Ebben az esetben manuálisan kell konfigurálnia a fürtszervezőt. Lejárat dátuma
 * Útmutatásért lásd: [hogyan konfigurálja a Hyper-V Replikaszervező](http://blogs.technet.com/b/haroldwong/archive/2013/03/27/server-virtualization-series-hyper-v-replica-broker-explained-part-15-of-20-by-yung-chou.aspx).
 * Bármely Hyper-V gazdakiszolgáló vagy fürt, amelynek védelmi kezelni kívánt szerepelnie kell egy VMM-felhőben.
 
@@ -305,5 +305,5 @@ Az alábbi parancsokkal tevékenységének figyelését. Vegye figyelembe, hogy 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További](/powershell/module/azurerm.recoveryservices.backup/#recovery) Azure Site Recovery Azure Resource Manager PowerShell-parancsmagokkal kapcsolatos.

@@ -1,32 +1,31 @@
 ---
-title: "Bejelentkezés felvétele Node.js-webalkalmazásokba az Azure B2C-ben | Microsoft Docs"
-description: "Node.js webalkalmazás létrehozása, amely a B2C-bérlő segítségével képes bejelentkeztetni a felhasználókat."
+title: "Bejelentkezés felvétele Node.js webalkalmazásokba - Azure Active Directory B2C"
+description: "Megtudhatja, hogyan hozhat létre, amely képes bejelentkeztetni a felhasználókat az Azure Active Directory B2C Node.js-webalkalmazás."
 services: active-directory-b2c
-documentationcenter: 
-author: dstrockis
+author: PatAltimore
 manager: mtillman
-editor: 
-ms.assetid: db97f84a-1f24-447b-b6d2-0265c6896b27
+editor: dstrockis
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: hero-article
+ms.topic: article
 ms.date: 03/10/2017
 ms.author: xerners
-ms.openlocfilehash: b306a79d0daa1c6d51557b6abad617182c76e9ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: HT
+ms.openlocfilehash: b4a5db7e6769d7ebb0bcf0287b3a1bfb7932984a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Bejelentkezés felvétele Node.js-webalkalmazásokba
 
-A **Passport** a Node.js-hez készült közbenső hitelesítési szoftver. A rendkívül rugalmasan működő, moduláris Passport gyakorlatilag bármely Express- vagy Restify-alapú webalkalmazásba diszkréten telepíthető. A program számos különböző lehetőséget kínál a felhasználók hitelesítésére: felhasználónév/jelszó, Facebook- vagy Twitter-fiók és így tovább.
+A **Passport** a Node.js-hez készült közbenső hitelesítési szoftver. A rugalmasan működő, moduláris Passport gyakorlatilag bármely Express- vagy Restify-alapú webalkalmazásba diszkréten telepíthető. A program számos különböző lehetőséget kínál a felhasználók hitelesítésére: felhasználónév/jelszó, Facebook- vagy Twitter-fiók és így tovább.
 
-Kidolgoztunk egy stratégiát, amellyel a szoftver az Azure Active Directory (Azure AD) esetében is felhasználható. Először telepítenie kell a modult, majd hozzá kell adni az Azure AD `passport-azure-ad` bővítményt.
+Az Azure Active Directory (Azure AD), telepítenie kell a modult is hozzáadhatja az Azure AD `passport-azure-ad` beépülő modult.
 
-Ehhez a következőket kell tennie:
+Kell:
 
 1. Alkalmazás regisztrálása az Azure AD használatával.
 2. Az alkalmazás beállítása a `passport-azure-ad` bővítmény használatára.
@@ -52,14 +51,12 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez bi
 - Hozzon létre egy **alkalmazástitkot** az alkalmazáshoz, majd másolja. Erre később még szüksége lesz. Ne feledje, hogy az értékben használat előtt [az XML-nek megfelelő feloldójelekkel](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) kell megjelölni a vezérlőkaraktereket.
 - Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Később erre is szüksége lesz.
 
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
-
 ## <a name="create-your-policies"></a>Szabályzatok létrehozása
 
 Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Az alkalmazás három különböző, identitással kapcsolatos műveletet tartalmaz: regisztráció, bejelentkezés és bejelentkezés Facebook-fiókkal. Az összes típushoz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy) leírtak szerint. A három szabályzat létrehozásakor ügyeljen arra, hogy:
 
 - A regisztrációs szabályzatban adja meg a **Megjelenített név** értékét, illetve az egyéb regisztrációs attribútumokat.
-- Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet. Ezenfelül más jogcímeket is használhat.
+- Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet. Kiválaszthat egyéb jogcímeket is.
 - Az egyes házirendek létrehozása után másolja a házirend **nevét**. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A házirendek nevére később még szüksége lesz.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
@@ -104,7 +101,7 @@ Nyissa meg a projekt gyökerében található `config.js` fájlt, és adja meg a
 Nyissa meg a projekt gyökerében található `app.js` fájlt. Adja hozzá a következő hívást a `passport-azure-ad`-hez tartozó `OIDCStrategy` stratégia meghívásához.
 
 
-```JavaScript
+```javascript
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 // Add some logging
@@ -115,7 +112,7 @@ var log = bunyan.createLogger({
 
 A bejelentkezési kérések kezelésére használja a korábban említett stratégiát.
 
-```JavaScript
+```javascript
 // Use the OIDCStrategy in Passport (Section 2).
 //
 //   Strategies in Passport require a "validate" function that accepts
@@ -158,7 +155,7 @@ Az előzőekben látható kód befogadja a kiszolgáló által hitelesített ös
 
 Adja hozzá a metódusokat, amelyek lehetővé teszik a Passport által előírt bejelentkezést elvégző felhasználók nyomon követését. Ehhez tartozik a felhasználói adatok szerializálása és deszerializálása is:
 
-```JavaScript
+```javascript
 
 // Passport session setup. (Section 2)
 
@@ -194,7 +191,7 @@ var findByEmail = function(email, fn) {
 
 Adja hozzá a kódot az Express motor betöltése érdekében. Az alábbiakban megfigyelheti, hogy az Express által biztosított alapértelmezett `/views` és `/routes` mintákat használjuk.
 
-```JavaScript
+```javascript
 
 // configure Express (Section 2)
 
@@ -221,7 +218,7 @@ app.configure(function() {
 
 Adja hozzá a `POST` útvonalakat, amelyek kiosztják a tényleges bejelentkezési kéréseket a `passport-azure-ad` motornak:
 
-```JavaScript
+```javascript
 
 // Our Auth routes (Section 3)
 
@@ -271,7 +268,7 @@ Az alkalmazás mostantól az OpenID Connect hitelesítési protokoll segítség�
 
 Első lépésként adja hozzá az alapértelmezett, bejelentkezési, fiókkal kapcsolatos és kijelentkezési metódusokat az `app.js` fájlhoz:
 
-```JavaScript
+```javascript
 
 //Routes (Section 4)
 
@@ -306,7 +303,7 @@ A metódusok részletes leírása:
 
 Az `app.js` utolsó részeként adja hozzá az `/account` útvonalban használt `EnsureAuthenticated` metódust.
 
-```JavaScript
+```javascript
 
 // Simple route middleware to ensure that the user is authenticated. (Section 4)
 
@@ -323,7 +320,7 @@ function ensureAuthenticated(req, res, next) {
 
 Végül hozza létre magát a kiszolgálót is az `app.js`-ben.
 
-```JavaScript
+```javascript
 
 app.listen(3000);
 
@@ -336,7 +333,7 @@ Az `app.js` ezzel elkészült. Már csak hozzá kell adnia az útvonalakat és n
 
 Hozza létre a gyökérkönyvtárban a `/routes/index.js` útvonalat.
 
-```JavaScript
+```javascript
 
 /*
  * GET home page.
@@ -349,7 +346,7 @@ exports.index = function(req, res){
 
 Hozza létre a gyökérkönyvtárban a `/routes/user.js` útvonalat.
 
-```JavaScript
+```javascript
 
 /*
  * GET users listing.
@@ -364,7 +361,7 @@ Ezek az egyszerű útvonalak adják át a kéréseket a nézeteknek. Ha elérhet
 
 Hozza létre a gyökérkönyvtárban a `/views/index.ejs` útvonalat. Ez egy egyszerű lap, amely a bejelentkezési és kijelentkezési szabályzatok meghívását végzi. Ezenfelül a fiókadatok beszerzésére is használható. Felhívjuk figyelmét, hogy a felhasználónak egy kéréssel történő átadása közben a feltételes `if (!user)` segítségével megbizonyosodhat róla, hogy a felhasználó bejelentkezett-e.
 
-```JavaScript
+```javascript
 <% if (!user) { %>
     <h2>Welcome! Please sign in.</h2>
     <a href="/login/?p=your facebook policy">Sign in with Facebook</a>
@@ -379,7 +376,7 @@ Hozza létre a gyökérkönyvtárban a `/views/index.ejs` útvonalat. Ez egy egy
 
 Hozza létre a `/views/account.ejs` nézetet a gyökérkönyvtárban, amely lehetővé teszi a `passport-azure-ad` által a felhasználói kérésbe helyezett további információk megtekintését.
 
-```Javascript
+```javascript
 <% if (!user) { %>
     <h2>Welcome! Please sign in.</h2>
     <a href="/login">Sign in</a>
@@ -403,7 +400,7 @@ Futtassa a `node app.js`-t, és nyissa meg a következő oldalt: `http://localho
 
 Regisztráljon az alkalmazásra e-mail vagy Facebook használatával, majd jelentkezzen be. Jelentkezzen ki, majd jelentkezzen be ismét egy másik felhasználóval.
 
-##<a name="next-steps"></a>Következő lépések
+##<a name="next-steps"></a>További lépések
 
 Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként [.zip-fájlban is letöltheti](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip). Ezenfelül a GitHubból is klónozhatja:
 

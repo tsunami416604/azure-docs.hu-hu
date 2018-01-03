@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 12/15/2017
 ms.author: JeffGo
-ms.openlocfilehash: 111b6274f4a3633fa4dd367866bf4e4e72d6e2df
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 80b693420768d574b2371211298562ba35e7ed97
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
 
@@ -167,6 +167,73 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
       ![Az SQL RP a telepítés ellenőrzése](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
 
 
+## <a name="update-the-sql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>Az SQL erőforrás-szolgáltató Adapter (több csomópontos csak, buildek 1710 és újabb verziók) frissítése
+Az Azure-verem build frissül, amikor egy új SQL-erőforrás szolgáltató Adapter kiadjuk az. A meglévő adapter esetleg tovább használhatók, amíg tanácsos frissítse a legújabb buildjével amint lehetséges az Azure-verem frissítése után. A frissítési folyamat nagyon hasonlít a fent ismertetett telepítési folyamat. Egy új virtuális Gépet a legújabb RP kód jön létre, és ezen új példányának, beleértve az adatbázis és a helyet adó kiszolgáló adatait, valamint a szükséges DNS-rekord beállításai áttelepíthetők.
+
+A UpdateSQLProvider.ps1 parancsfájl használata a fenti ugyanazokkal az argumentumokkal. A tanúsítvány itt is meg kell adnia.
+
+> [!NOTE]
+> Frissítés csak többcsomópontos rendszereken támogatott.
+
+```
+# Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules
+Install-Module -Name AzureRm.BootStrapper -Force
+Use-AzureRmProfile -Profile 2017-03-09-profile
+Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
+
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
+$domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
+# Point to the directory where the RP installation files were extracted
+$tempDir = 'C:\TEMP\SQLRP'
+
+# The service admin account (can be AAD or ADFS)
+$serviceAdmin = "admin@mydomain.onmicrosoft.com"
+$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
+
+# Set credentials for the new Resource Provider VM
+$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
+
+# and the cloudadmin credential required for Privileged Endpoint access
+$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
+
+# change the following as appropriate
+$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+
+# Change directory to the folder where you extracted the installation files
+# and adjust the endpoints
+. $tempDir\UpdateSQLProvider.ps1 -AzCredential $AdminCreds `
+  -VMLocalCredential $vmLocalAdminCreds `
+  -CloudAdminCredential $cloudAdminCreds `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert
+ ```
+
+### <a name="updatesqlproviderps1-parameters"></a>UpdateSQLProvider.ps1 paraméterek
+Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely paraméter-ellenőrzés sikertelen, a rendszer kéri a adja meg a szükséges néhányat a meglévők közül.
+
+| Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
+| --- | --- | --- |
+| **CloudAdminCredential** | A felhő rendszergazdájával, a kiemelt végpont eléréséhez szükséges hitelesítő adatait. | _szükséges_ |
+| **AzCredential** | Adja meg a Azure verem szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat telepítése Azure verem használható). | _szükséges_ |
+| **VMLocalCredential** | Adja meg az SQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _szükséges_ |
+| **PrivilegedEndpoint** | Adja meg az IP-cím vagy a Privleged végpont DNS-nevét. |  _szükséges_ |
+| **DependencyFilesLocalPath** | A PFX-fájl a könyvtárban kell elhelyezni. | _nem kötelező_ (_kötelező_ több csomópont) |
+| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava | _szükséges_ |
+| **MaxRetryCount** | Adja meg, majd ismételje meg minden egyes művelet, ha azt szeretné, hogy hány alkalommal hibát.| 2 |
+| **RetryDuration** | Adja meg az időtúllépés másodpercben az újrapróbálkozások között. | 120 |
+| **Eltávolítás** | Távolítsa el az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzéseket:) | Nem |
+| **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén | Nem |
+
+
+
 ## <a name="remove-the-sql-resource-provider-adapter"></a>Az SQL erőforrás-szolgáltató Adapter eltávolítása
 
 Ahhoz, hogy távolítsa el az erőforrás-szolgáltató, létfontosságú, először távolítsa el a függőségeket.
@@ -184,7 +251,7 @@ Ahhoz, hogy távolítsa el az erőforrás-szolgáltató, létfontosságú, elős
 6. A telepítési parancsfájlt, és futtassa újra a - távolítsa el a paramétert, Azure Resource Manager végpontok, DirectoryTenantID és a szolgáltatás-rendszergazdai fiók hitelesítő adatait.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Adjon hozzá kiszolgálókat üzemeltető](azure-stack-sql-resource-provider-hosting-servers.md) és [adatbázisok létrehozására](azure-stack-sql-resource-provider-databases.md).
 

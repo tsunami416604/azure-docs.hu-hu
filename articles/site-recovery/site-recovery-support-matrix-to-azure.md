@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: 0302b4f8f4171d288a7e7c62de036c6f1cec8212
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 1c65c32457c2311304abf07983f698289f67bbc2
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Az Azure Site Recovery mátrix a helyszíni replikálása Azure-bA
 
@@ -35,7 +35,7 @@ Ez a cikk az Azure Site Recovery replikálásához és helyreállítása Azure �
 --- | --- | ---
 **Azure Portal** | Helyszíni VMware virtuális gépek az Azure storage, Azure Resource Manager vagy a hagyományos tárolási és a hálózatok.<br/><br/> A Resource Manager-alapú vagy a klasszikus virtuális gépek feladatátvétele. | A helyszíni Hyper-V virtuális gépek Azure-tárolót, a Resource Manager és a hagyományos tárolási és a hálózatok.<br/><br/> A Resource Manager-alapú vagy a klasszikus virtuális gépek feladatátvétele.
 **Klasszikus portál** | Karbantartási mód csak. Nem hozható létre új tárolók. | Karbantartási mód csak.
-**PowerShell** | Jelenleg nem támogatott. | Támogatott
+**PowerShell** | Támogatott | Támogatott
 
 
 ## <a name="support-for-datacenter-management-servers"></a>Adatközpont-felügyeleti kiszolgálók támogatása
@@ -155,8 +155,8 @@ A következő táblázat összefoglalja a tárolási konfiguráció támogatása
 
 **Konfigurálás** | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a/nélkül a Virtual Machine Manager)**
 --- | --- | --- | ---
-NFS | VMware Igen<br/><br/> Fizikai kiszolgálók esetében nem | N/A
-SMB 3.0 | N/A | Igen
+NFS | VMware Igen<br/><br/> Fizikai kiszolgálók esetében nem | –
+SMB 3.0 | – | Igen
 SAN (ISCSI) | Igen | Igen
 (MPIO) többutas<br></br>A tesztelt: Microsoft DSM, az EMC PowerPath 5.7 SP4, az EMC PowerPath DSM CLARiiON a | Igen | Igen
 
@@ -164,15 +164,15 @@ SAN (ISCSI) | Igen | Igen
 
 **Konfigurálás** | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a/nélkül a Virtual Machine Manager)**
 --- | --- | ---
-VMDK-FÁJL | Igen | N/A
-VHD/VHDX | N/A | Igen
-Generációból 2 virtuális gép | N/A | Igen
+VMDK-FÁJL | Igen | –
+VHD/VHDX | – | Igen
+Generációból 2 virtuális gép | – | Igen
 EFI/UEFI| Nem | Igen
 Megosztott fürtlemez | Nem | Nem
 Titkosított lemez | Nem | Nem
-NFS | Nem | N/A
+NFS | Nem | –
 SMB 3.0 | Nem | Nem
-RDM | Igen<br/><br/> A fizikai kiszolgálók N/A | N/A
+RDM | Igen<br/><br/> A fizikai kiszolgálók N/A | –
 > 1 TB méretű lemez | Igen<br/><br/>Legfeljebb 4095 GB | Igen<br/><br/>Legfeljebb 4095 GB
 4 KB-os logikai és a 4 KB-os fizikai szektort méretű lemez | Igen | Létrehozás 1 virtuális gépek esetén nem támogatott<br/><br/>Létrehozás 2 virtuális gépek esetén nem támogatott.
 A 4 KB-os logikai lemez és 512 bájtos fizikai szektorméretet | Igen |  Igen
@@ -180,7 +180,7 @@ A csíkozott > 1 TB-os kötet<br/><br/> LVM logikai kötetkezelés | Igen | Igen
 Tárolóhelyek | Nem | Igen
 Gyakran használt adatok hozzáadása lemez | Nem | Nem
 Lemez kizárása | Igen | Igen
-(MPIO) többutas | N/A | Igen
+(MPIO) többutas | – | Igen
 
 **Azure Storage** | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a/nélkül a Virtual Machine Manager)**
 --- | --- | ---
@@ -194,6 +194,7 @@ Rest(SSE) titkosítását| Igen | Igen
 Prémium szintű Storage | Igen | Igen
 Import/export szolgáltatás | Nem | Nem
 Virtuális hálózati szolgáltatás végpontok (Azure Storage tűzfalak és virtuális hálózatok) célként megadott konfigurált fiók vagy gyorsítótárazza a replikációs adatok tárolására használt tárfiók | Nem | Nem
+Általános célú V2 storage-fiókok (a gyakran és ritkán. szint) | Nem | Nem
 
 
 ## <a name="support-for-azure-compute-configuration"></a>Az Azure számítási konfigurációhoz támogatása
@@ -246,5 +247,5 @@ Tárolási, hálózati, Azure virtuális gépek között erőforráscsoportok á
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Előfeltételek ellenőrzése](site-recovery-prereq.md)

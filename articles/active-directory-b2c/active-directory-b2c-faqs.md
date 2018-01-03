@@ -1,12 +1,11 @@
 ---
-title: "Gyakori kérdések (GYIK) – az Azure AD B2C |} Microsoft Docs"
-description: "Azure Active Directory B2C-vel kapcsolatos gyakori kérdések"
+title: "Gyakori kérdések – Azure Active Directory B2C-vel"
+description: "Azure Active Directory B2C-vel kapcsolatos gyakori kérdések (GYIK)"
 services: active-directory-b2c
-documentationcenter: 
-author: saeeda
+author: PatAltimore
 manager: mtillman
-editor: bryanla
-ms.assetid: ed33c2ca-76d0-442a-abb1-8b7b7bb92d6a
+editor: saeeda
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 8bc487bdcc33f70d39d884830bfaf9187828694e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 81da88c895bdd3407d8ddd51124afc405b774cb9
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ezen a lapon az Azure Active Directory (Azure AD) B2C kapcsolatos gyakori kérdésekre ad választ. Tartsa biztonsági frissítések keresése.
@@ -64,9 +63,9 @@ Használhatja a [vállalati arculat megjelenítése a szolgáltatás](../active-
 
     ![Képernyőfelvétel a testreszabott ellenőrző e-mailt](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
-Az e-mailek aláírás a B2C-bérlő nevét tartalmazza, amelyet a B2C-bérlő kezdeti létrehozásakor megadott. Módosíthatja a nevét, a jelen utasításokat:
+Az e-mailek aláírás az Azure AD B2C-bérlő nevét tartalmazza, amelyet az Azure AD B2C bérlő kezdeti létrehozásakor megadott. Módosíthatja a nevét, a jelen utasításokat:
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) előfizetés-rendszergazdaként.
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) globális rendszergazdájaként.
 1. Nyissa meg a **Azure Active Directory** panelen.
 1. Kattintson a **tulajdonságok** fülre.
 1. Módosítsa a **neve** mező.
@@ -113,15 +112,15 @@ Kövesse az alábbi lépéseket az Azure AD B2C-bérlő törlése:
 
 1. Az alábbi lépéseket követve [navigáljon az Azure AD B2C beállítások](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) az Azure portálon.
 1. Keresse meg a **alkalmazások**, **identitás-szolgáltatóktól**, és **házirend** és azok az összes bejegyzést törölni.
-1. Most már bejelentkezhet a [a klasszikus Azure portálon](https://manage.windowsazure.com/) előfizetés-rendszergazdaként. (Használja a ugyanaz a munkahelyi vagy iskolai fiók vagy a Microsoft-fiók, amellyel regisztráció az Azure.)
-1. Lépjen a bal oldalon található Active Directory bővítményre, majd kattintson a B2C bérlőre.
-1. Kattintson a **felhasználók** fülre.
-1. Jelölje ki minden egyes felhasználó bekapcsolása (zárja ki a előfizetési rendszergazda felhasználó, akkor jelenleg felhasználóként van bejelentkezve). Kattintson a **törlése** a lapon, majd kattintson az alsó **Igen** megjelenésekor.
-1. Kattintson a **alkalmazások** fülre.
-1. Válassza ki **a vállalat tulajdonában lévő alkalmazások** a a **megjelenítése** legördülő mezőben, majd kattintson a pipa.
-1. Egy alkalmazást, **b2c-bővítmények-alkalmazás**. Kattintson a **törlése** a lapon, majd kattintson az alsó **Igen** megjelenésekor.
-1. Keresse meg az Active Directory-bővítményt újra, és válassza ki a B2C-bérlő.
-1. Kattintson a **törlése** az oldal alján. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
+1. Most már bejelentkezhet a [Azure-portálon](https://portal.azure.com/) előfizetés-rendszergazdaként. (Használja a ugyanaz a munkahelyi vagy iskolai fiók vagy a Microsoft-fiók, amellyel regisztráció az Azure.)
+1. Váltás az Azure AD B2C-bérlő törölni szeretné.
+2. Nyissa meg a bal oldalon található Active Directory menü.
+3. Válassza ki **felhasználók és csoportok**.
+4. Jelölje ki minden egyes felhasználó bekapcsolása (zárja ki a előfizetési rendszergazda felhasználó, akkor jelenleg felhasználóként van bejelentkezve). Kattintson a **törlése** a lapon, majd kattintson az alsó **Igen** megjelenésekor.
+5. Kattintson a **App regisztrációk**.
+6. Válassza ki a nevű alkalmazás **b2c-bővítmények-alkalmazás**. Kattintson a **törlése** kattintson **Igen** megjelenésekor.
+7. Válassza ki **áttekintése**.
+8. Kattintson a **Delete directory**. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Az Azure AD B2C nagyvállalati mobilitási csomag részeként szerezhető?
 Az Azure AD B2C nem, a használatalapú fizetés Azure-szolgáltatás, és nem része a nagyvállalati mobilitási csomag.

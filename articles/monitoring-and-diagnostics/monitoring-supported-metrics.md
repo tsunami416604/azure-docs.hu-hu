@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/25/2017
+ms.date: 12/18/2017
 ms.author: ancav
-ms.openlocfilehash: f678bba89adf1450bd6a08909fdad51424a210e8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 673f5a5cd6832adb031ef72ce25f8a1622717cfd
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure-figyelő támogatott metrikák
 Azure figyelő többféleképpen is kommunikál a metrikákat, többek között a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül, vagy a őket lekérdezése a PowerShell vagy a parancssori felület. Alatt érhető el teljes listáját és az összes metrikák jelenleg Azure figyelő metrika folyamat.
@@ -32,49 +32,49 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|qpu_metric|QPU|Darabszám|Átlag|QPU. Tartomány 0 – 100 s1, 0-200 S2 és 0 – 400 S4|Nincs dimenzió|
-|memory_metric|Memory (Memória)|Bájt|Átlag|A memória. S1 0-25 GB-ot, S2 0-50 GB-ot és 0 – 100 GB-ot S4|Nincs dimenzió|
-|TotalConnectionRequests|Teljes csatlakozási kérések|Darabszám|Átlag|Teljes csatlakozási kérések. Ezek a érkezők.|Nincs dimenzió|
-|SuccessfullConnectionsPerSec|Sikeres kapcsolatok másodpercenkénti száma|Egység/s|Átlag|Sikeres csatlakozás befejezésekhez aránya.|Nincs dimenzió|
-|TotalConnectionFailures|Teljes kapcsolódási hibák|Darabszám|Átlag|Összes sikertelen csatlakozási kísérletek.|Nincs dimenzió|
-|CurrentUserSessions|Aktuális felhasználói munkamenetek|Darabszám|Átlag|Létrehozott felhasználói munkamenetek jelenlegi száma.|Nincs dimenzió|
-|QueryPoolBusyThreads|Lekérdezés készlet foglalt szálak|Darabszám|Átlag|A lekérdezés szálkészlet foglalt szálak számát.|Nincs dimenzió|
-|CommandPoolJobQueueLength|A parancs készlet feladat várólistájának hossza|Darabszám|Átlag|A parancs szálkészlet sorban lévő feladatok száma.|Nincs dimenzió|
-|ProcessingPoolJobQueueLength|Feldolgozási készlet feladat várólistájának hossza|Darabszám|Átlag|A várólistában a feldolgozási szálkészletben lévő nem-I/O-feladatok száma.|Nincs dimenzió|
-|CurrentConnections|Kapcsolat: A jelenlegi kapcsolatok száma|Darabszám|Átlag|Ügyfél fennálló kapcsolatok aktuális száma.|Nincs dimenzió|
-|CleanerCurrentPrice|Memória: Tisztító aktuális árlista|Darabszám|Átlag|Aktuális árlista memória $/ bájt/idő normalizálva 1000.|Nincs dimenzió|
-|CleanerMemoryShrinkable|Memória: Zsugoríthatósági tisztító memória|Bájt|Átlag|Memória mérete, a háttérben tisztító kiürítése függvényében mennyisége.|Nincs dimenzió|
-|CleanerMemoryNonshrinkable|Memória: Tisztító memória nonshrinkable|Bájt|Átlag|Memória mérete, nem vonatkoznak a háttérben tisztító kiürítése mennyisége.|Nincs dimenzió|
-|MemoryUsage|Memória: Memória használata|Bájt|Átlag|A kiszolgálói folyamat, tisztító memória ár kiszámításakor felhasznált memória mennyisége Process\PrivateBytes plus memórialeképezési adatok figyelmen kívül hagyása minden leképezve, vagy a xVelocity memórián belüli analytics motor (VertiPaq) meghaladja a memóriakorlátot xVelocity motor által lefoglalt memória méretét a teljesítményszámláló értéke.|Nincs dimenzió|
-|MemoryLimitHard|Memória: Memóriakorlátot rögzített|Bájt|Átlag|Rögzített memóriakorlátot, konfigurációs fájlból.|Nincs dimenzió|
-|MemoryLimitHigh|Memória: Memória korlátozása magas|Bájt|Átlag|Magas memóriakorlátot, konfigurációs fájlból.|Nincs dimenzió|
-|MemoryLimitLow|Memória: Memória korlátja alacsony|Bájt|Átlag|Kevés a memória a határt, a konfigurációs fájlból.|Nincs dimenzió|
-|MemoryLimitVertiPaq|Memória: Memória korlátja VertiPaq|Bájt|Átlag|A memória maximális mennyiségét, a konfigurációs fájlból.|Nincs dimenzió|
-|Kvóta|Memória: kvóta|Bájt|Átlag|Aktuális memóriakvótáját, bájtban. Memóriakvótáját memória grant vagy memória foglalás is nevezik.|Nincs dimenzió|
-|QuotaBlocked|Memória: Kvóta letiltva|Darabszám|Átlag|Le vannak tiltva, amíg más memória kvóták felszabadítását kvóta kérelmek jelenlegi száma.|Nincs dimenzió|
-|VertiPaqNonpaged|Memória: a nem lapozható VertiPaq|Bájt|Átlag|A memórián belüli motor általi használatra munkakészletében bájt memóriát zárolva van.|Nincs dimenzió|
-|VertiPaqPaged|Memória: A VertiPaq lapozható|Bájt|Átlag|A memóriában levő használt lapozható memória bájt.|Nincs dimenzió|
-|RowsReadPerSec|Feldolgozási: Sor olvasása másodpercenkénti száma|Egység/s|Átlag|Sorok aránya az összes relációs adatbázisok olvasni.|Nincs dimenzió|
-|RowsConvertedPerSec|Feldolgozási: Sorok konvertálni másodpercenkénti száma|Egység/s|Átlag|Sorok aránya alakítja a feldolgozás során.|Nincs dimenzió|
-|RowsWrittenPerSec|Feldolgozási: Másodpercenként írt sorok|Egység/s|Átlag|Feldolgozás során írt sorok száma.|Nincs dimenzió|
-|CommandPoolBusyThreads|Szálak: Parancs készlet foglalt szálak|Darabszám|Átlag|A parancs szálkészlet foglalt szálak számát.|Nincs dimenzió|
-|CommandPoolIdleThreads|Szálak: Parancs készlet üresjárati szálak|Darabszám|Átlag|A parancs szálkészlet üresjárati szálak számát.|Nincs dimenzió|
-|LongParsingBusyThreads|Szálak: Hosszú foglalt szálak elemzése|Darabszám|Átlag|A hosszú elemzési szálkészlet foglalt szálak számát.|Nincs dimenzió|
-|LongParsingIdleThreads|Szálak: Hosszú üresjárati szálak elemzése|Darabszám|Átlag|A hosszú elemzési szálkészlet üresjárati szálak számát.|Nincs dimenzió|
-|LongParsingJobQueueLength|Szálak: Hosszú elemzése feladat várólistájának hossza|Darabszám|Átlag|A hosszú elemzési szálkészlet sorban lévő feladatok száma.|Nincs dimenzió|
-|ProcessingPoolBusyIOJobThreads|Szálak: Készlet foglalt i/o-feladat szálak feldolgozása|Darabszám|Átlag|I/o-feladatok futtatása a feldolgozási szálkészletben lévő szálak száma.|Nincs dimenzió|
-|ProcessingPoolBusyNonIOThreads|Szálak: Készlet foglalt nem-I/O-szálak feldolgozása|Darabszám|Átlag|Nem-I/O-feladatok futtatása a feldolgozási szálkészletben lévő szálak száma.|Nincs dimenzió|
-|ProcessingPoolIOJobQueueLength|Szálak: Feldolgozása készlet i/o-feldolgozás várólistájának hossza|Darabszám|Átlag|A várólistában a feldolgozási szálkészletben lévő i/o-feladatok száma.|Nincs dimenzió|
-|ProcessingPoolIdleIOJobThreads|Szálak: Készlet üresjárati i/o-feladat szálak feldolgozása|Darabszám|Átlag|A feldolgozási szálkészletben lévő i/o-feladatok üresjárati szálak száma.|Nincs dimenzió|
-|ProcessingPoolIdleNonIOThreads|Szálak: Készlet üresjárati nem-I/O-szálak feldolgozása|Darabszám|Átlag|Nem-I/O-feladatok hozzárendelve a feldolgozási szálkészletben üresjárati szálak számát.|Nincs dimenzió|
-|QueryPoolIdleThreads|Szálak: Lekérdezés készlet üresjárati szálak|Darabszám|Átlag|A feldolgozási szálkészletben lévő i/o-feladatok üresjárati szálak száma.|Nincs dimenzió|
-|QueryPoolJobQueueLength|Szálak: Lekérdezés készlet feladat várólista lengt|Darabszám|Átlag|A lekérdezés szálkészlet sorban lévő feladatok száma.|Nincs dimenzió|
-|ShortParsingBusyThreads|Szálak: Rövid foglalt szálak elemzése|Darabszám|Átlag|A rövid elemzési szálkészlet foglalt szálak számát.|Nincs dimenzió|
-|ShortParsingIdleThreads|Szálak: Rövid üresjárati szálak elemzése|Darabszám|Átlag|A rövid elemzési szálkészlet üresjárati szálak számát.|Nincs dimenzió|
-|ShortParsingJobQueueLength|Szálak: Rövid elemzése feladat várólistájának hossza|Darabszám|Átlag|A rövid elemzési szálkészlet sorban lévő feladatok száma.|Nincs dimenzió|
-|memory_thrashing_metric|Memória Akadozások|Százalék|Átlag|Átlagos memória thrashing.|Nincs dimenzió|
-|mashup_engine_qpu_metric|M-motor QPU|Darabszám|Átlag|Adategyesítési motor folyamatok QPU kihasználtsága|Nincs dimenzió|
-|mashup_engine_memory_metric|M-motor memória|Bájt|Átlag|Adategyesítési motor folyamatok memóriahasználata|Nincs dimenzió|
+|qpu_metric|QPU|Darabszám|Átlag|QPU. Tartomány 0 – 100 s1, 0-200 S2 és 0 – 400 S4|ServerResourceType|
+|memory_metric|Memory (Memória)|Bájt|Átlag|A memória. S1 0-25 GB-ot, S2 0-50 GB-ot és 0 – 100 GB-ot S4|ServerResourceType|
+|TotalConnectionRequests|Teljes csatlakozási kérések|Darabszám|Átlag|Teljes csatlakozási kérések. Ezek a érkezők.|ServerResourceType|
+|SuccessfullConnectionsPerSec|Sikeres kapcsolatok másodpercenkénti száma|Egység/s|Átlag|Sikeres csatlakozás befejezésekhez aránya.|ServerResourceType|
+|TotalConnectionFailures|Teljes kapcsolódási hibák|Darabszám|Átlag|Összes sikertelen csatlakozási kísérletek.|ServerResourceType|
+|CurrentUserSessions|Aktuális felhasználói munkamenetek|Darabszám|Átlag|Létrehozott felhasználói munkamenetek jelenlegi száma.|ServerResourceType|
+|QueryPoolBusyThreads|Lekérdezés készlet foglalt szálak|Darabszám|Átlag|A lekérdezés szálkészlet foglalt szálak számát.|ServerResourceType|
+|CommandPoolJobQueueLength|A parancs készlet feladat várólistájának hossza|Darabszám|Átlag|A parancs szálkészlet sorban lévő feladatok száma.|ServerResourceType|
+|ProcessingPoolJobQueueLength|Feldolgozási készlet feladat várólistájának hossza|Darabszám|Átlag|A várólistában a feldolgozási szálkészletben lévő nem-I/O-feladatok száma.|ServerResourceType|
+|CurrentConnections|Kapcsolat: A jelenlegi kapcsolatok száma|Darabszám|Átlag|Ügyfél fennálló kapcsolatok aktuális száma.|ServerResourceType|
+|CleanerCurrentPrice|Memória: Tisztító aktuális árlista|Darabszám|Átlag|Aktuális árlista memória $/ bájt/idő normalizálva 1000.|ServerResourceType|
+|CleanerMemoryShrinkable|Memória: Zsugoríthatósági tisztító memória|Bájt|Átlag|Memória mérete, a háttérben tisztító kiürítése függvényében mennyisége.|ServerResourceType|
+|CleanerMemoryNonshrinkable|Memória: Tisztító memória nonshrinkable|Bájt|Átlag|Memória mérete, nem vonatkoznak a háttérben tisztító kiürítése mennyisége.|ServerResourceType|
+|MemoryUsage|Memória: Memória használata|Bájt|Átlag|A kiszolgálói folyamat, tisztító memória ár kiszámításakor felhasznált memória mennyisége Process\PrivateBytes plus memórialeképezési adatok figyelmen kívül hagyása minden leképezve, vagy a xVelocity memórián belüli analytics motor (VertiPaq) meghaladja a memóriakorlátot xVelocity motor által lefoglalt memória méretét a teljesítményszámláló értéke.|ServerResourceType|
+|MemoryLimitHard|Memória: Memóriakorlátot rögzített|Bájt|Átlag|Rögzített memóriakorlátot, konfigurációs fájlból.|ServerResourceType|
+|MemoryLimitHigh|Memória: Memória korlátozása magas|Bájt|Átlag|Magas memóriakorlátot, konfigurációs fájlból.|ServerResourceType|
+|MemoryLimitLow|Memória: Memória korlátja alacsony|Bájt|Átlag|Kevés a memória a határt, a konfigurációs fájlból.|ServerResourceType|
+|MemoryLimitVertiPaq|Memória: Memória korlátja VertiPaq|Bájt|Átlag|A memória maximális mennyiségét, a konfigurációs fájlból.|ServerResourceType|
+|Kvóta|Memória: kvóta|Bájt|Átlag|Aktuális memóriakvótáját, bájtban. Memóriakvótáját memória grant vagy memória foglalás is nevezik.|ServerResourceType|
+|QuotaBlocked|Memória: Kvóta letiltva|Darabszám|Átlag|Le vannak tiltva, amíg más memória kvóták felszabadítását kvóta kérelmek jelenlegi száma.|ServerResourceType|
+|VertiPaqNonpaged|Memória: a nem lapozható VertiPaq|Bájt|Átlag|A memórián belüli motor általi használatra munkakészletében bájt memóriát zárolva van.|ServerResourceType|
+|VertiPaqPaged|Memória: A VertiPaq lapozható|Bájt|Átlag|A memóriában levő használt lapozható memória bájt.|ServerResourceType|
+|RowsReadPerSec|Feldolgozási: Sor olvasása másodpercenkénti száma|Egység/s|Átlag|Sorok aránya az összes relációs adatbázisok olvasni.|ServerResourceType|
+|RowsConvertedPerSec|Feldolgozási: Sorok konvertálni másodpercenkénti száma|Egység/s|Átlag|Sorok aránya alakítja a feldolgozás során.|ServerResourceType|
+|RowsWrittenPerSec|Feldolgozási: Másodpercenként írt sorok|Egység/s|Átlag|Feldolgozás során írt sorok száma.|ServerResourceType|
+|CommandPoolBusyThreads|Szálak: Parancs készlet foglalt szálak|Darabszám|Átlag|A parancs szálkészlet foglalt szálak számát.|ServerResourceType|
+|CommandPoolIdleThreads|Szálak: Parancs készlet üresjárati szálak|Darabszám|Átlag|A parancs szálkészlet üresjárati szálak számát.|ServerResourceType|
+|LongParsingBusyThreads|Szálak: Hosszú foglalt szálak elemzése|Darabszám|Átlag|A hosszú elemzési szálkészlet foglalt szálak számát.|ServerResourceType|
+|LongParsingIdleThreads|Szálak: Hosszú üresjárati szálak elemzése|Darabszám|Átlag|A hosszú elemzési szálkészlet üresjárati szálak számát.|ServerResourceType|
+|LongParsingJobQueueLength|Szálak: Hosszú elemzése feladat várólistájának hossza|Darabszám|Átlag|A hosszú elemzési szálkészlet sorban lévő feladatok száma.|ServerResourceType|
+|ProcessingPoolBusyIOJobThreads|Szálak: Készlet foglalt i/o-feladat szálak feldolgozása|Darabszám|Átlag|I/o-feladatok futtatása a feldolgozási szálkészletben lévő szálak száma.|ServerResourceType|
+|ProcessingPoolBusyNonIOThreads|Szálak: Készlet foglalt nem-I/O-szálak feldolgozása|Darabszám|Átlag|Nem-I/O-feladatok futtatása a feldolgozási szálkészletben lévő szálak száma.|ServerResourceType|
+|ProcessingPoolIOJobQueueLength|Szálak: Feldolgozása készlet i/o-feldolgozás várólistájának hossza|Darabszám|Átlag|A várólistában a feldolgozási szálkészletben lévő i/o-feladatok száma.|ServerResourceType|
+|ProcessingPoolIdleIOJobThreads|Szálak: Készlet üresjárati i/o-feladat szálak feldolgozása|Darabszám|Átlag|A feldolgozási szálkészletben lévő i/o-feladatok üresjárati szálak száma.|ServerResourceType|
+|ProcessingPoolIdleNonIOThreads|Szálak: Készlet üresjárati nem-I/O-szálak feldolgozása|Darabszám|Átlag|Nem-I/O-feladatok hozzárendelve a feldolgozási szálkészletben üresjárati szálak számát.|ServerResourceType|
+|QueryPoolIdleThreads|Szálak: Lekérdezés készlet üresjárati szálak|Darabszám|Átlag|A feldolgozási szálkészletben lévő i/o-feladatok üresjárati szálak száma.|ServerResourceType|
+|QueryPoolJobQueueLength|Szálak: Lekérdezés készlet feladat várólista lengt|Darabszám|Átlag|A lekérdezés szálkészlet sorban lévő feladatok száma.|ServerResourceType|
+|ShortParsingBusyThreads|Szálak: Rövid foglalt szálak elemzése|Darabszám|Átlag|A rövid elemzési szálkészlet foglalt szálak számát.|ServerResourceType|
+|ShortParsingIdleThreads|Szálak: Rövid üresjárati szálak elemzése|Darabszám|Átlag|A rövid elemzési szálkészlet üresjárati szálak számát.|ServerResourceType|
+|ShortParsingJobQueueLength|Szálak: Rövid elemzése feladat várólistájának hossza|Darabszám|Átlag|A rövid elemzési szálkészlet sorban lévő feladatok száma.|ServerResourceType|
+|memory_thrashing_metric|Memória Akadozások|Százalék|Átlag|Átlagos memória thrashing.|ServerResourceType|
+|mashup_engine_qpu_metric|M-motor QPU|Darabszám|Átlag|Adategyesítési motor folyamatok QPU kihasználtsága|ServerResourceType|
+|mashup_engine_memory_metric|M-motor memória|Bájt|Átlag|Adategyesítési motor folyamatok memóriahasználata|ServerResourceType|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
@@ -92,7 +92,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|TotalJob|Feladatok teljes száma|Darabszám|Összes|A feladatok teljes száma|Nincs dimenzió|
+|TotalJob|Feladatok teljes száma|Darabszám|Összes|A feladatok teljes száma|RunbookName, állapota|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
@@ -132,15 +132,15 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |cachehits|Gyorsítótárbeli találatok|Darabszám|Összes||Nincs dimenzió|
 |cachemisses|Gyorsítótárbeli tévesztések|Darabszám|Összes||Nincs dimenzió|
 |getcommands|Lekérdezések|Darabszám|Összes||Nincs dimenzió|
-|setcommands|Beállítása|Darabszám|Összes||Nincs dimenzió|
+|setcommands|Beállítások|Darabszám|Összes||Nincs dimenzió|
 |evictedkeys|Kizárt kulcsok|Darabszám|Összes||Nincs dimenzió|
 |totalkeys|Kulcsok összesen|Darabszám|Maximum||Nincs dimenzió|
 |expiredkeys|Lejárt kulcsok|Darabszám|Összes||Nincs dimenzió|
 |usedmemory|Felhasznált memória|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss|Használt memória RSS|Bájt|Maximum||Nincs dimenzió|
 |serverLoad|Kiszolgáló-terhelés|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite|Gyorsítótár-írás|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead|Gyorsítótár-olvasás|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite|Gyorsítótár-írás|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead|Gyorsítótár-olvasás|Bájt/s|Maximum||Nincs dimenzió|
 |PercentProcessorTime|CPU|Százalék|Maximum||Nincs dimenzió|
 |connectedclients0|Csatlakozott ügyfelek (szilánkok 0)|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed0|Összes művelet (szilánkok 0)|Darabszám|Összes||Nincs dimenzió|
@@ -154,8 +154,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |usedmemory0|Használt memória (szilánkok 0)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss0|Használt memória RSS (szilánkok 0)|Bájt|Maximum||Nincs dimenzió|
 |serverLoad0|Kiszolgáló terhelését (szilánkok 0)|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite0|Gyorsítótár-írási (szilánkok 0)|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead0|Gyorsítótár olvasható (szilánkok 0)|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite0|Gyorsítótár-írási (szilánkok 0)|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead0|Gyorsítótár olvasható (szilánkok 0)|Bájt/s|Maximum||Nincs dimenzió|
 |percentProcessorTime0|Processzor (szilánkok 0)|Százalék|Maximum||Nincs dimenzió|
 |connectedclients1|Csatlakozott ügyfelek (szilánkok 1)|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed1|Összes művelet (szilánkok 1)|Darabszám|Összes||Nincs dimenzió|
@@ -169,8 +169,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |usedmemory1|Használt memória (szilánkok 1)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss1|Használt memória RSS (szilánkok 1)|Bájt|Maximum||Nincs dimenzió|
 |serverLoad1|Kiszolgáló terhelését (szilánkok 1)|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite1|Gyorsítótár-írási (szilánkok 1)|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead1|Gyorsítótár olvasható (szilánkok 1)|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite1|Gyorsítótár-írási (szilánkok 1)|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead1|Gyorsítótár olvasható (szilánkok 1)|Bájt/s|Maximum||Nincs dimenzió|
 |percentProcessorTime1|Processzor (szilánkok 1)|Százalék|Maximum||Nincs dimenzió|
 |connectedclients2|Csatlakozott ügyfelek (szilánkok 2)|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed2|Összes művelet (szilánkok 2)|Darabszám|Összes||Nincs dimenzió|
@@ -184,8 +184,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |usedmemory2|Használt memória (szilánkok 2)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss2|Használt memória RSS (szilánkok 2)|Bájt|Maximum||Nincs dimenzió|
 |serverLoad2|Kiszolgáló terhelését (szilánkok 2)|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite2|Gyorsítótár-írási (szilánkok 2)|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead2|Gyorsítótár olvasható (szilánkok 2)|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite2|Gyorsítótár-írási (szilánkok 2)|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead2|Gyorsítótár olvasható (szilánkok 2)|Bájt/s|Maximum||Nincs dimenzió|
 |percentProcessorTime2|Processzor (szilánkok 2)|Százalék|Maximum||Nincs dimenzió|
 |connectedclients3|Csatlakozott ügyfelek (szilánkok 3)|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed3|Összes művelet (szilánkok 3)|Darabszám|Összes||Nincs dimenzió|
@@ -199,8 +199,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |usedmemory3|Használt memória (szilánkok 3)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss3|Használt memória RSS (szilánkok 3)|Bájt|Maximum||Nincs dimenzió|
 |serverLoad3|Kiszolgáló terhelését (szilánkok 3)|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite3|Gyorsítótár-írási (szilánkok 3)|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead3|Gyorsítótár olvasható (szilánkok 3)|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite3|Gyorsítótár-írási (szilánkok 3)|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead3|Gyorsítótár olvasható (szilánkok 3)|Bájt/s|Maximum||Nincs dimenzió|
 |percentProcessorTime3|Processzor (szilánkok 3)|Százalék|Maximum||Nincs dimenzió|
 |connectedclients4|Csatlakozott ügyfelek (szilánkok 4)|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed4|Összes művelet (szilánkok 4)|Darabszám|Összes||Nincs dimenzió|
@@ -214,8 +214,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |usedmemory4|Használt memória (szilánkok 4)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss4|Használt memória RSS (szilánkok 4)|Bájt|Maximum||Nincs dimenzió|
 |serverLoad4|Kiszolgáló terhelését (szilánkok 4)|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite4|Gyorsítótár-írási (szilánkok 4)|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead4|Gyorsítótár olvasható (szilánkok 4)|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite4|Gyorsítótár-írási (szilánkok 4)|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead4|Gyorsítótár olvasható (szilánkok 4)|Bájt/s|Maximum||Nincs dimenzió|
 |percentProcessorTime4|Processzor (szilánkok 4)|Százalék|Maximum||Nincs dimenzió|
 |connectedclients5|Csatlakozott ügyfelek (szilánkok 5)|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed5|Összes művelet (szilánkok 5)|Darabszám|Összes||Nincs dimenzió|
@@ -229,8 +229,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |usedmemory5|Használt memória (szilánkok 5)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss5|Használt memória RSS (szilánkok 5)|Bájt|Maximum||Nincs dimenzió|
 |serverLoad5|Kiszolgáló terhelését (szilánkok 5)|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite5|Gyorsítótár-írási (szilánkok 5)|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead5|Gyorsítótár olvasható (szilánkok 5)|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite5|Gyorsítótár-írási (szilánkok 5)|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead5|Gyorsítótár olvasható (szilánkok 5)|Bájt/s|Maximum||Nincs dimenzió|
 |percentProcessorTime5|Processzor (szilánkok 5)|Százalék|Maximum||Nincs dimenzió|
 |connectedclients6|Csatlakozott ügyfelek (szilánkok 6)|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed6|Összes művelet (szilánkok 6)|Darabszám|Összes||Nincs dimenzió|
@@ -244,8 +244,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |usedmemory6|Használt memória (szilánkok 6)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss6|RSS (szilánkok 6) a használt memória|Bájt|Maximum||Nincs dimenzió|
 |serverLoad6|Kiszolgáló terhelését (szilánkok 6)|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite6|Gyorsítótár-írási (szilánkok 6)|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead6|Gyorsítótár olvasható (szilánkok 6)|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite6|Gyorsítótár-írási (szilánkok 6)|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead6|Gyorsítótár olvasható (szilánkok 6)|Bájt/s|Maximum||Nincs dimenzió|
 |percentProcessorTime6|Processzor (szilánkok 6)|Százalék|Maximum||Nincs dimenzió|
 |connectedclients7|Csatlakozott ügyfelek (szilánkok 7)|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed7|Összes művelet (szilánkok 7)|Darabszám|Összes||Nincs dimenzió|
@@ -259,8 +259,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |usedmemory7|Használt memória (szilánkok 7)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss7|Használt memória RSS (szilánkok 7)|Bájt|Maximum||Nincs dimenzió|
 |serverLoad7|Kiszolgáló terhelését (szilánkok 7)|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite7|Gyorsítótár-írási (szilánkok 7)|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead7|Gyorsítótár olvasható (szilánkok 7)|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite7|Gyorsítótár-írási (szilánkok 7)|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead7|Gyorsítótár olvasható (szilánkok 7)|Bájt/s|Maximum||Nincs dimenzió|
 |percentProcessorTime7|Processzor (szilánkok 7)|Százalék|Maximum||Nincs dimenzió|
 |connectedclients8|Csatlakozott ügyfelek (szilánkok 8)|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed8|Összes művelet (szilánkok 8)|Darabszám|Összes||Nincs dimenzió|
@@ -274,8 +274,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |usedmemory8|Használt memória (szilánkok 8)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss8|Használt memória RSS (szilánkok 8)|Bájt|Maximum||Nincs dimenzió|
 |serverLoad8|Kiszolgáló terhelését (szilánkok 8)|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite8|Gyorsítótár-írási (szilánkok 8)|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead8|Gyorsítótár olvasható (szilánkok 8)|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite8|Gyorsítótár-írási (szilánkok 8)|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead8|Gyorsítótár olvasható (szilánkok 8)|Bájt/s|Maximum||Nincs dimenzió|
 |percentProcessorTime8|Processzor (szilánkok 8)|Százalék|Maximum||Nincs dimenzió|
 |connectedclients9|Csatlakozott ügyfelek (szilánkok 9)|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed9|Összes művelet (szilánkok 9)|Darabszám|Összes||Nincs dimenzió|
@@ -289,21 +289,21 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |usedmemory9|Használt memória (szilánkok 9)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss9|Használt memória RSS (szilánkok 9)|Bájt|Maximum||Nincs dimenzió|
 |serverLoad9|Kiszolgáló terhelését (szilánkok 9)|Százalék|Maximum||Nincs dimenzió|
-|cacheWrite9|Gyorsítótár-írási (szilánkok 9)|BytesPerSecond|Maximum||Nincs dimenzió|
-|cacheRead9|Gyorsítótár olvasható (szilánkok 9)|BytesPerSecond|Maximum||Nincs dimenzió|
+|cacheWrite9|Gyorsítótár-írási (szilánkok 9)|Bájt/s|Maximum||Nincs dimenzió|
+|cacheRead9|Gyorsítótár olvasható (szilánkok 9)|Bájt/s|Maximum||Nincs dimenzió|
 |percentProcessorTime9|Processzor (szilánkok 9)|Százalék|Maximum||Nincs dimenzió|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A százalékos aránya, amelyek jelenleg használják a virtuális gépek lefoglalt számítási egység.|Nincs dimenzió|
-|Hálózat bejövő adatforgalma|Hálózat bejövő adatforgalma|Bájt|Összes|Minden hálózati interfészen a virtuális gépek (bejövő forgalom) által fogadott bájtok száma.|Nincs dimenzió|
-|Hálózat kimenő adatforgalma|Hálózat kimenő adatforgalma|Bájt|Összes|Időtúllépés a által a virtuális gépek (kimenő forgalmat) hálózati adaptereken bájtok száma.|Nincs dimenzió|
-|Lemez sebessége olvasott bájt/mp|Lemez olvasása|BytesPerSecond|Átlag|Átlagos bájtok beolvasása lemezről időszak ellenőrzése során.|Nincs dimenzió|
-|Lemez írási bájtok/s|Lemez írási|BytesPerSecond|Átlag|Átlagos bájt időszak ellenőrzése során lemezre írni.|Nincs dimenzió|
-|Lemezolvasási művelet/s|Lemezolvasási művelet/s|Egység/s|Átlag|Lemez olvasási iops-érték.|Nincs dimenzió|
-|Lemezre írási művelet/s|Lemezre írási művelet/s|Egység/s|Átlag|Lemez írási iops-érték.|Nincs dimenzió|
+|Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép(ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya.|Nincs dimenzió|
+|Hálózat bejövő adatforgalma|Hálózat bejövő adatforgalma|Bájt|Összes|A virtuális gép(ek) által az összes hálózati adapteren fogadott bájtok száma (bejövő forgalom).|Nincs dimenzió|
+|Hálózat kimenő adatforgalma|Hálózat kimenő adatforgalma|Bájt|Összes|A virtuális gép(ek) által az összes hálózati adapteren elküldött bájtok száma (kimenő forgalom).|Nincs dimenzió|
+|Lemezolvasási sebesség (bájt/s)|Lemezolvasás|Bájt/s|Átlag|A monitorozási időszakban lemezről beolvasott bájtok átlagos száma.|Nincs dimenzió|
+|Lemezírási sebesség (bájt/s)|Lemezírás|Bájt/s|Átlag|A monitorozási időszakban lemezre írt bájtok átlagos száma.|Nincs dimenzió|
+|Lemezolvasási művelet/s|Lemezolvasási művelet/s|Egység/s|Átlag|Lemezolvasási I/O-műveletek.|Nincs dimenzió|
+|Lemezre írási művelet/s|Lemezre írási művelet/s|Egység/s|Átlag|Lemezre írási I/O-műveletek.|Nincs dimenzió|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
@@ -318,8 +318,9 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |DataIn|Bejövő adatforgalom|Bájt|Összes|A bejövő adatmennyiség bájtban.|Nincs dimenzió|
 |DataOut|Kimenő adatforgalom|Bájt|Összes|A kimenő adatmennyiség bájtban.|Nincs dimenzió|
 |Késés|Késés|Ideje ezredmásodpercben|Átlag|A késés másodpercben.|Nincs dimenzió|
-|CharactersTranslated|A lefordított karakter|Darabszám|Összes|Szöveg bejövő kérelemben szereplő karakterek száma.|Nincs dimenzió|
-|SpeechSessionDuration|Beszéd munkamenet időtartama|másodperc|Összes|Teljes időtartam másodpercben beszéd-munkamenet.|Nincs dimenzió|
+|CharactersTranslated|Lefordított karakterek|Darabszám|Összes|A bejövő szöveges kérelem karakterszáma.|Nincs dimenzió|
+|SpeechSessionDuration|Beszédfelismerési munkamenet időtartama|másodperc|Összes|A beszédfelismerési munkamenet teljes időtartama.|Nincs dimenzió|
+|TotalTransactions|Teljes tranzakció|Darabszám|Összes|Tranzakciók száma összesen|Nincs dimenzió|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
@@ -332,8 +333,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Lemezre írt bájtok|Lemezre írt bájtok|Bájt|Összes|A figyelési időszak során lemezre írt bájtok száma összesen|Nincs dimenzió|
 |Lemezolvasási művelet/s|Lemezolvasási művelet/s|Egység/s|Átlag|Lemezolvasási I/O-műveletek|Nincs dimenzió|
 |Lemezre írási művelet/s|Lemezre írási művelet/s|Egység/s|Átlag|Lemezre írási I/O-műveletek|Nincs dimenzió|
-|Fennmaradó CPU kreditek|Fennmaradó CPU kreditek|Darabszám|Átlag|Elérhető kapacitásnövelés kreditek száma összesen|Nincs dimenzió|
-|Felhasznált CPU kreditek|Felhasznált CPU kreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek száma összesen|Nincs dimenzió|
+|Fennmaradó processzorkreditek|Fennmaradó processzorkreditek|Darabszám|Átlag|Adatlökethez rendelkezésre álló kreditek száma összesen|Nincs dimenzió|
+|Felhasznált processzorkreditek|Felhasznált processzorkreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek száma összesen|Nincs dimenzió|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
@@ -346,8 +347,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Lemezre írt bájtok|Lemezre írt bájtok|Bájt|Összes|A figyelési időszak során lemezre írt bájtok száma összesen|Nincs dimenzió|
 |Lemezolvasási művelet/s|Lemezolvasási művelet/s|Egység/s|Átlag|Lemezolvasási I/O-műveletek|Nincs dimenzió|
 |Lemezre írási művelet/s|Lemezre írási művelet/s|Egység/s|Átlag|Lemezre írási I/O-műveletek|Nincs dimenzió|
-|Fennmaradó CPU kreditek|Fennmaradó CPU kreditek|Darabszám|Átlag|Elérhető kapacitásnövelés kreditek száma összesen|Nincs dimenzió|
-|Felhasznált CPU kreditek|Felhasznált CPU kreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek száma összesen|Nincs dimenzió|
+|Fennmaradó processzorkreditek|Fennmaradó processzorkreditek|Darabszám|Átlag|Adatlökethez rendelkezésre álló kreditek száma összesen|Nincs dimenzió|
+|Felhasznált processzorkreditek|Felhasznált processzorkreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek száma összesen|Nincs dimenzió|
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
@@ -360,8 +361,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Lemezre írt bájtok|Lemezre írt bájtok|Bájt|Összes|A figyelési időszak során lemezre írt bájtok száma összesen|Nincs dimenzió|
 |Lemezolvasási művelet/s|Lemezolvasási művelet/s|Egység/s|Átlag|Lemezolvasási I/O-műveletek|Nincs dimenzió|
 |Lemezre írási művelet/s|Lemezre írási művelet/s|Egység/s|Átlag|Lemezre írási I/O-műveletek|Nincs dimenzió|
-|Fennmaradó CPU kreditek|Fennmaradó CPU kreditek|Darabszám|Átlag|Elérhető kapacitásnövelés kreditek száma összesen|Nincs dimenzió|
-|Felhasznált CPU kreditek|Felhasznált CPU kreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek száma összesen|Nincs dimenzió|
+|Fennmaradó processzorkreditek|Fennmaradó processzorkreditek|Darabszám|Átlag|Adatlökethez rendelkezésre álló kreditek száma összesen|Nincs dimenzió|
+|Felhasznált processzorkreditek|Felhasznált processzorkreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek száma összesen|Nincs dimenzió|
 
 ## <a name="microsoftcustomerinsightshubs"></a>Microsoft.CustomerInsights/hubs
 
@@ -391,12 +392,30 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |AdlaJobForStandardKpiCompleted|Standard Kpi másodperc alatt befejeződött Adla feladata|másodperc|Összes||Nincs dimenzió|
 |ImportASAValuesFailed|Importálás ASA értékek száma nem sikerült.|Darabszám|Összes||Nincs dimenzió|
 |ImportASAValuesSucceeded|Importálás ASA értékek száma sikeres volt.|Darabszám|Összes||Nincs dimenzió|
-|DCIProfilesCount|Profil példányok száma|Darabszám|Utolsó||Nincs dimenzió|
-|DCIInteractionsPerMonthCount|Kapcsolati hónap száma|Darabszám|Utolsó||Nincs dimenzió|
-|DCIKpisCount|KPI száma|Darabszám|Utolsó||Nincs dimenzió|
-|DCISegmentsCount|Szegmens száma|Darabszám|Utolsó||Nincs dimenzió|
-|DCIPredictiveMatchPoliciesCount|A prediktív egyezés száma|Darabszám|Utolsó||Nincs dimenzió|
-|DCIPredictionsCount|Előrejelzés száma|Darabszám|Utolsó||Nincs dimenzió|
+|DCIProfilesCount|Profil példányok száma|Darabszám|Vezetéknév||Nincs dimenzió|
+|DCIInteractionsPerMonthCount|Kapcsolati hónap száma|Darabszám|Vezetéknév||Nincs dimenzió|
+|DCIKpisCount|KPI száma|Darabszám|Vezetéknév||Nincs dimenzió|
+|DCISegmentsCount|Szegmensek száma|Darabszám|Vezetéknév||Nincs dimenzió|
+|DCIPredictiveMatchPoliciesCount|A prediktív egyezés száma|Darabszám|Vezetéknév||Nincs dimenzió|
+|DCIPredictionsCount|Előrejelzés száma|Darabszám|Vezetéknév||Nincs dimenzió|
+
+## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|SuccessfulRuns|Sikeres futtatások|Darabszám|Összes|Sikeres futtatása száma.|Nincs dimenzió|
+|FailedRuns|Sikertelen futtatások|Darabszám|Összes|Nem sikerült futtatása száma.|Nincs dimenzió|
+
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|PipelineFailedRuns|Nem sikerült a folyamat fut metrikák|Darabszám|Összes||Nincs dimenzió|
+|PipelineSucceededRuns|Sikerült a folyamat fut metrikák|Darabszám|Összes||Nincs dimenzió|
+|ActivityFailedRuns|Nem sikerült a tevékenységi futtatása metrikák|Darabszám|Összes||Nincs dimenzió|
+|ActivitySucceededRuns|Sikeres volt a tevékenység futtatása metrikák|Darabszám|Összes||Nincs dimenzió|
+|TriggerFailedRuns|Nem sikerült az eseményindító futtatása metrikák|Darabszám|Összes||Nincs dimenzió|
+|TriggerSucceededRuns|Sikeres volt a trigger futtatása metrikák|Darabszám|Összes||Nincs dimenzió|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
 
@@ -416,8 +435,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |TotalStorage|Teljes tárterület|Bájt|Maximum|A fiókban tárolt adatok teljes mennyisége.|Nincs dimenzió|
 |DataWritten|Az adatok írása|Bájt|Összes|Teljes adatmennyiség ír a fiókba.|Nincs dimenzió|
 |DataRead|Olvasott adatok|Bájt|Összes|Az adatok olvasása-fiókból.|Nincs dimenzió|
-|WriteRequests|Írási kérelmeket szolgál|Darabszám|Összes|Adatok száma írási kérelmeket szolgál ahhoz a fiókhoz.|Nincs dimenzió|
-|ReadRequests|Olvasási kérések|Darabszám|Összes|Adatok száma az olvasási kérésekre ahhoz a fiókhoz.|Nincs dimenzió|
+|WriteRequests|Írási kérelmek|Darabszám|Összes|Adatok száma írási kérelmeket szolgál ahhoz a fiókhoz.|Nincs dimenzió|
+|ReadRequests|Olvasási kérelmek|Darabszám|Összes|Adatok száma az olvasási kérésekre ahhoz a fiókhoz.|Nincs dimenzió|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
@@ -506,7 +525,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |jobs.cancelJob.failure|Sikertelen feladat sikertelen|Darabszám|Összes|A visszavonni a feladatot az összes sikertelen hívások száma.|Nincs dimenzió|
 |jobs.queryJobs.success|Feladat sikeres lekérdezések|Darabszám|Összes|A lekérdezés feladatok minden sikeres hívások száma.|Nincs dimenzió|
 |jobs.queryJobs.failure|Sikertelen feladat-lekérdezések|Darabszám|Összes|A lekérdezés feladatok összes sikertelen hívások száma.|Nincs dimenzió|
-|jobs.Completed|Befejezett feladatokhoz|Darabszám|Összes|Az összes befejezett feladatok száma.|Nincs dimenzió|
+|jobs.Completed|Befejezett feladatok|Darabszám|Összes|Az összes befejezett feladatok száma.|Nincs dimenzió|
 |jobs.Failed|A sikertelen feladatok|Darabszám|Összes|Összes sikertelen feladatok száma.|Nincs dimenzió|
 |d2c.telemetry.ingress.sendThrottle|Sávszélesség-szabályozási hibák száma|Darabszám|Összes|Azelőtt gyorsítja fel az eszköz átviteli miatt szabályozás hibák száma|Nincs dimenzió|
 |dailyMessageQuotaUsed|Használt üzenetek teljes száma|Darabszám|Átlag|Jelenleg használt teljes üzenetek száma. Ez az összesített érték, amely nulla értékre állítását: 00:00 UTC minden nap.|Nincs dimenzió|
@@ -519,32 +538,121 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |DeviceAssignments|Hozzárendelt eszközök|Darabszám|Összes|Az IoT-központ rendelt eszközök száma|ProvisioningServiceName, IotHubName|
 |AttestationAttempts|Állapotigazolási kísérletek|Darabszám|Összes|Próbált eszköz tanúsítványok száma|ProvisioningServiceName, állapotát, a protokoll|
 
-<a id="cosmosdb"></a>
+## <a name="microsoftdeviceselasticpools"></a>Microsoft.Devices/ElasticPools
 
-## <a name="microsoftdocumentdbdatabaseaccounts-azure-cosmos-db"></a>Microsoft.DocumentDB/databaseAccounts (Azure Cosmos DB)
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|TotalRequests|Összes kérelem|Darabszám|Darabszám|Kérelmek száma|DatabaseAccount, CollectionName, DatabaseName, régió, StatusCode|
-|MongoRequests|Mongo kérelmek|Darabszám|Darabszám|Mongo kérelmek száma|DatabaseAccount, CollectionName, DatabaseName, régió, ErrorCode, CommandName|
+|elasticPool.requestedUsageRate|kért használat gyakorisága|Százalék|Átlag|kért használat gyakorisága|Nincs dimenzió|
+
+## <a name="microsoftdeviceselasticpoolsiothubtenants"></a>Microsoft.Devices/ElasticPools/IotHubTenants
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|tenantHub.requestedUsageRate|kért használat gyakorisága|Százalék|Átlag|kért használat gyakorisága|Nincs dimenzió|
+|deviceDataUsage|Teljes devicedata kihasználtsága|Darabszám|Összes|Átvitt adatok és az egyik eszközön sem csatlakozik az IOT hubbal|Nincs dimenzió|
+|d2c.telemetry.ingress.allProtocol|Telemetria üzenet küldési kísérlet|Darabszám|Összes|Az IoT hub küldendő próbált eszköz-felhő telemetriai üzenetek száma|Nincs dimenzió|
+|d2c.telemetry.ingress.SUCCESS|Küldött telemetriai üzenetek|Darabszám|Összes|Sikerült elküldeni az IoT hub eszköz-felhő telemetriai üzenetek száma|Nincs dimenzió|
+|c2d.commands.egress.Complete.SUCCESS|A parancsok befejeződött|Darabszám|Összes|Az eszköz által végrehajtott felhő eszközre parancsok száma|Nincs dimenzió|
+|c2d.commands.egress.Abandon.SUCCESS|Elhagyott parancsok|Darabszám|Összes|Az eszköz által félbe hagyott felhő eszközre parancsok száma|Nincs dimenzió|
+|c2d.commands.egress.Reject.SUCCESS|Elutasított parancsok|Darabszám|Összes|Az eszköz által elutasított felhő eszközre parancsok száma|Nincs dimenzió|
+|devices.totalDevices|Eszközök teljes száma|Darabszám|Összes|Az IoT hub regisztrált eszközök száma|Nincs dimenzió|
+|devices.connectedDevices.allProtocol|Csatlakoztatott eszközök|Darabszám|Összes|Az IoT hub csatlakoztatott eszközök száma|Nincs dimenzió|
+|d2c.telemetry.egress.SUCCESS|Telemetria kézbesített üzenetek|Darabszám|Összes|Ennyiszer üzenetek írása sikeres volt végpontok (összesen)|Nincs dimenzió|
+|d2c.telemetry.egress.dropped|Az eldobott üzenetek|Darabszám|Összes|Dobva, mert a kézbesítési végpont lett elhalt üzenetek száma|Nincs dimenzió|
+|d2c.telemetry.egress.Orphaned|Árva üzenetek|Darabszám|Összes|A nem megfelelő bármely útvonalakat, beleértve a tartalék útvonal üzenetek száma|Nincs dimenzió|
+|d2c.telemetry.egress.Invalid|Érvénytelen üzenet|Darabszám|Összes|A végpont alkalmazással való inkompatibilitás miatt nem kézbesített üzenetek száma|Nincs dimenzió|
+|d2c.telemetry.egress.fallback|Tartalék feltételnek megfelelő üzenetek|Darabszám|Összes|A tartalék végpont üzenetek száma|Nincs dimenzió|
+|d2c.endpoints.egress.eventHubs|Az Event Hubs végpontok kézbesített üzenetek|Darabszám|Összes|Üzenetek írása sikeres volt az Event Hubs végpontok száma|Nincs dimenzió|
+|d2c.endpoints.latency.eventHubs|Az Event Hubs végpontok üzenet késés|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár az IoT hubhoz üzenet érkező és az üzenet érkező között az Eseményközpont végpont, ezredmásodpercben|Nincs dimenzió|
+|d2c.endpoints.egress.serviceBusQueues|Service Bus-üzenetsorba végpontok kézbesített üzenetek|Darabszám|Összes|Üzenetek írása sikeres volt Service Bus-üzenetsorba végpontok száma|Nincs dimenzió|
+|d2c.endpoints.latency.serviceBusQueues|A Service Bus-üzenetsorba végpontokhoz üzenet késés|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár az IoT hubhoz üzenet érkező és az üzenet érkező között a Service Bus-üzenetsorba végpont, ezredmásodpercben|Nincs dimenzió|
+|d2c.endpoints.egress.serviceBusTopics|Service Bus-témakörbe végpontok kézbesített üzenetek|Darabszám|Összes|Üzenetek írása sikeres volt Service Bus-témakörbe végpontok száma|Nincs dimenzió|
+|d2c.endpoints.latency.serviceBusTopics|A Service Bus-témakörbe végpontokhoz üzenet késés|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár az IoT hubhoz üzenet érkező és az üzenet érkező között a Service Bus-témakörbe végpont, ezredmásodpercben|Nincs dimenzió|
+|d2c.endpoints.egress.builtIn.events|A beépített végpont (üzenet/események) kézbesített üzenetek|Darabszám|Összes|Ennyiszer üzenetek írása sikeres volt a beépített végpont (üzenet/esemény)|Nincs dimenzió|
+|d2c.endpoints.latency.builtIn.events|Üzenet várakozási ideje a beépített végpont (üzenet/esemény)|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár az IoT hubhoz üzenet érkező és az üzenet érkező között történő (üzenet/esemény), beépített végpont ezredmásodpercben |Nincs dimenzió|
+|d2c.endpoints.egress.Storage|Tárolási végpontok kézbesített üzenetek|Darabszám|Összes|Üzenetek írása sikeres volt tárolási végpontok száma|Nincs dimenzió|
+|d2c.endpoints.latency.Storage|Üzenet késés tárolási végpontok|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár az IoT hubhoz üzenet érkező és az üzenet érkező között a tárolási végpont, ezredmásodpercben|Nincs dimenzió|
+|d2c.endpoints.egress.Storage.bytes|Adatok tárhelyen|Bájt|Összes|Adatok tárolási végpontok írt bájtok száma|Nincs dimenzió|
+|d2c.endpoints.egress.Storage.blobs|Blobok tárhelyen|Darabszám|Összes|BLOB storage végpontok írt száma|Nincs dimenzió|
+|d2c.Twin.Read.SUCCESS|Sikeres iker olvassa be az eszközökön|Darabszám|Összes|Az összes sikeres a két eszköz által kezdeményezett olvasások száma.|Nincs dimenzió|
+|d2c.Twin.Read.failure|Nem sikerült a kettős olvasások eszközökről|Darabszám|Összes|Teljes számát a két eszköz által kezdeményezett olvasás sikertelen volt.|Nincs dimenzió|
+|d2c.Twin.Read.size|A két válasz mérete olvassa be az eszközökön|Bájt|Átlag|Az eszköz által kezdeményezett átlagos, minimális és maximális az összes sikeres iker olvasási műveletek.|Nincs dimenzió|
+|d2c.Twin.Update.SUCCESS|Sikeres iker frissítések eszközökről|Darabszám|Összes|A két eszköz által kezdeményezett összes sikeres frissítések száma.|Nincs dimenzió|
+|d2c.Twin.Update.failure|Nem sikerült a két frissítések eszközökről|Darabszám|Összes|A teljes számát a két eszköz által kezdeményezett frissítések nem sikerült.|Nincs dimenzió|
+|d2c.Twin.Update.size|A két frissítések eszközökről mérete|Bájt|Átlag|Az eszköz által kezdeményezett átlagos, minimális és maximális méretét az összes sikeres iker frissítések.|Nincs dimenzió|
+|c2d.methods.SUCCESS|Sikeres közvetlen módszer meghívásához|Darabszám|Összes|Az összes sikeres közvetlen módszer hívások száma.|Nincs dimenzió|
+|c2d.methods.failure|Nem sikerült a közvetlen módszer meghívásához|Darabszám|Összes|A teljes számát a közvetlen metódushívások nem sikerült.|Nincs dimenzió|
+|c2d.methods.requestSize|A közvetlen módszer meghívásához kérelem mérete|Bájt|Átlag|Az átlagos, a minimális és a közvetlen módszer minden sikeres kérelmek maximális.|Nincs dimenzió|
+|c2d.methods.responseSize|Válasz mérete közvetlen módszer meghívásához|Bájt|Átlag|Az átlagos, a minimális és a maximális minden sikeres közvetlen módszer válaszok.|Nincs dimenzió|
+|c2d.Twin.Read.SUCCESS|Sikeres iker háttérből olvassa be|Darabszám|Összes|Az összes sikeres back-end által kezdeményezett iker olvasási műveletek számát.|Nincs dimenzió|
+|c2d.Twin.Read.failure|Sikertelen a két háttérből olvassa be|Darabszám|Összes|Teljes számát a két back-end által kezdeményezett olvasások nem sikerült.|Nincs dimenzió|
+|c2d.Twin.Read.size|A válasz méretének iker olvasások háttérből|Bájt|Átlag|Az átlagos, minimális és maximális az összes sikeres back-end által kezdeményezett iker olvasási műveletek.|Nincs dimenzió|
+|c2d.Twin.Update.SUCCESS|Sikeres iker frissítések háttérből|Darabszám|Összes|Az összes sikeres back-end által kezdeményezett iker frissítések száma.|Nincs dimenzió|
+|c2d.Twin.Update.failure|Sikertelen a két frissítések háttérből|Darabszám|Összes|Teljes számát a két back-end által kezdeményezett frissítések nem sikerült.|Nincs dimenzió|
+|c2d.Twin.Update.size|A két frissítések háttérből mérete|Bájt|Átlag|Az átlagos, minimális és maximális méretét az összes sikeres back-end által kezdeményezett iker frissítések.|Nincs dimenzió|
+|twinQueries.success|Sikeres iker lekérdezések|Darabszám|Összes|Minden sikeres iker lekérdezések száma.|Nincs dimenzió|
+|twinQueries.failure|Sikertelen a két lekérdezések|Darabszám|Összes|Összes sikertelen iker lekérdezések száma.|Nincs dimenzió|
+|twinQueries.resultSize|A két lekérdezések eredmény méretének|Bájt|Átlag|Az átlagos, a minimális és a maximális az eredmény méretének minden sikeres iker lekérdezések.|Nincs dimenzió|
+|jobs.createTwinUpdateJob.success|A sikeres és a két frissítési feladatok|Darabszám|Összes|Minden sikeres létrehozása két frissítési feladatok számát.|Nincs dimenzió|
+|jobs.createTwinUpdateJob.failure|Sikertelen és a két frissítési feladatok|Darabszám|Összes|A két frissítési feladatok során létrehozására tett sikertelen kísérlet száma.|Nincs dimenzió|
+|jobs.createDirectMethodJob.success|A metódus meghívása feladatok sikeres létrehozása|Darabszám|Összes|Minden sikeres létrehozása közvetlen metódus meghívása feladatok száma.|Nincs dimenzió|
+|jobs.createDirectMethodJob.failure|A metódus meghívása feladatok sikertelen számát|Darabszám|Összes|A közvetlen metódus meghívása feladatok során létrehozására tett sikertelen kísérlet száma.|Nincs dimenzió|
+|jobs.listJobs.success|Lista feladatok sikeres hívások|Darabszám|Összes|Az összes sikeres indított hívások száma a lista feladatok.|Nincs dimenzió|
+|jobs.listJobs.failure|Nem sikerült a lista feladatok hívások|Darabszám|Összes|A feladatok lista összes sikertelen hívások száma.|Nincs dimenzió|
+|jobs.cancelJob.success|Megszakított feladatok sikeres|Darabszám|Összes|Az összes sikeres indított hívások száma megszakítja a feladatot.|Nincs dimenzió|
+|jobs.cancelJob.failure|Sikertelen feladat sikertelen|Darabszám|Összes|A visszavonni a feladatot az összes sikertelen hívások száma.|Nincs dimenzió|
+|jobs.queryJobs.success|Feladat sikeres lekérdezések|Darabszám|Összes|A lekérdezés feladatok minden sikeres hívások száma.|Nincs dimenzió|
+|jobs.queryJobs.failure|Sikertelen feladat-lekérdezések|Darabszám|Összes|A lekérdezés feladatok összes sikertelen hívások száma.|Nincs dimenzió|
+|jobs.Completed|Befejezett feladatok|Darabszám|Összes|Az összes befejezett feladatok száma.|Nincs dimenzió|
+|jobs.Failed|A sikertelen feladatok|Darabszám|Összes|Összes sikertelen feladatok száma.|Nincs dimenzió|
+|d2c.telemetry.ingress.sendThrottle|Sávszélesség-szabályozási hibák száma|Darabszám|Összes|Azelőtt gyorsítja fel az eszköz átviteli miatt szabályozás hibák száma|Nincs dimenzió|
+|dailyMessageQuotaUsed|Használt üzenetek teljes száma|Darabszám|Átlag|Jelenleg használt teljes üzenetek száma. Ez az összesített érték, amely nulla értékre állítását: 00:00 UTC minden nap.|Nincs dimenzió|
+
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|MetadataRequests|Metaadat-kérelmeket|Darabszám|Darabszám|Metaadat-kérelmek száma. Cosmos DB megőrzi a rendszer metaadat-gyűjtemény minden olyan fiókhoz, amely lehetővé teszi, hogy a gyűjtemények, adatbázisok stb számbavétele, és azok a konfigurációk ingyenesen elérhető.|GlobalDatabaseAccountName, DatabaseName, CollectionName, régió, StatusCode|
+|MongoRequestCharge|Mongo kérelem kell fizetni|Darabszám|Összes|Felhasznált mongo kérelemegység|GlobalDatabaseAccountName, DatabaseName, CollectionName, régió, CommandName, hibakód|
+|MongoRequests|Mongo kérelmek|Darabszám|Darabszám|Mongo kérelmek száma|GlobalDatabaseAccountName, DatabaseName, CollectionName, régió, CommandName, hibakód|
+|TotalRequestUnits|Teljes kérelemegység|Darabszám|Összes|Egységek felhasznált kérése|GlobalDatabaseAccountName, DatabaseName, CollectionName, régió, StatusCode|
+|TotalRequests|Összes kérelem|Darabszám|Darabszám|Kérelmek száma|GlobalDatabaseAccountName, DatabaseName, CollectionName, régió, StatusCode|
+
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|INREQS|Bejövő küldési kérelmek|Darabszám|Összes|Teljes bejövő névtér kérelem elküldése|Nincs dimenzió|
+|SuccessfulRequests|Sikeres kérések (előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub sikeres kérelmeinek száma. (Előzetes verzió)|entityName|
+|ServerErrors|Kiszolgálóhibák száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub kiszolgálóhibáinak száma. (Előzetes verzió)|entityName|
+|UserErrors|Felhasználói hibák száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub felhasználói hibáinak száma. (Előzetes verzió)|entityName|
+|QuotaExceededErrors|Kvótatúllépési hibák száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub kvótatúllépési hibáinak száma. (Előzetes verzió)|entityName|
+|ThrottledRequests|Szabályozott kérelmek száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub szabályozott kérelmeinek száma. (Előzetes verzió)|entityName|
+|IncomingRequests|A bejövő kérések (előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub bejövő kérelmeinek száma. (Előzetes verzió)|entityName|
+|IncomingMessages|A bejövő üzenetek (előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub bejövő üzeneteinek száma. (Előzetes verzió)|entityName|
+|OutgoingMessages|Kimenő üzenetek (előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub kimenő üzeneteinek száma. (Előzetes verzió)|entityName|
+|IncomingBytes|Bejövő bájtok száma. (Előzetes verzió)|Bájt|Összes|A Microsoft.EventHub bejövő bájtjainak száma. (Előzetes verzió)|entityName|
+|OutgoingBytes|Kimenő bájtok száma. (Előzetes verzió)|Bájt|Összes|A Microsoft.EventHub kimenő bájtjainak száma. (Előzetes verzió)|entityName|
+|AktívKapcsolatok|ActiveConnections (előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub aktív kapcsolatainak száma összesen. (Előzetes verzió)|entityName|
+|ConnectionsOpened|Megnyitott kapcsolatok száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub megnyitott kapcsolatainak száma. (Előzetes verzió)|entityName|
+|ConnectionsClosed|Lezárt kapcsolatok száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub lezárt kapcsolatainak száma. (Előzetes verzió)|entityName|
+|CaptureBacklog|Hátralék rögzítése. (Előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub hátralékának rögzítése. (Előzetes verzió)|entityName|
+|CapturedMessages|Rögzített üzenetek száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub rögzített üzeneteinek száma. (Előzetes verzió)|entityName|
+|CapturedBytes|Rögzített bájtok száma. (Előzetes verzió)|Bájt|Összes|A Microsoft.EventHub rögzített bájtjainak száma. (Előzetes verzió)|entityName|
+|INREQS|Bejövő kérések|Darabszám|Összes|Egy névtér bejövő küldési kérelmei összesen|Nincs dimenzió|
 |SUCCREQ|Sikeres kérések|Darabszám|Összes|A névtér összes sikeres kérelme|Nincs dimenzió|
 |FAILREQ|Sikertelen kérések|Darabszám|Összes|A névtérhez kapcsolódó összes sikertelen kérelem|Nincs dimenzió|
 |SVRBSY|Kiszolgáló foglaltsága miatti hibák|Darabszám|Összes|A névtér összes, kiszolgáló foglaltsága miatti hibája|Nincs dimenzió|
 |INTERR|Belső kiszolgálóhibák|Darabszám|Összes|A névtér összes belső kiszolgálóhibája|Nincs dimenzió|
 |MISCERR|Egyéb hibák|Darabszám|Összes|A névtérhez kapcsolódó összes sikertelen kérelem|Nincs dimenzió|
-|INMSGS|(Elavult a) bejövő üzenetek|Darabszám|Összes|Teljes bejövő üzenetek névtér. Ez a metrika elavult. Ehelyett használja a bejövő üzenetek metrika|Nincs dimenzió|
+|INMSGS|Bejövő üzenetek (elavult)|Darabszám|Összes|Teljes bejövő üzenetek névtér. Ez a metrika elavult. Ehelyett használja a bejövő üzenetek metrika|Nincs dimenzió|
 |EHINMSGS|Bejövő üzenetek|Darabszám|Összes|A névtér összes bejövő üzenete|Nincs dimenzió|
-|OUTMSGS|(Elavult) kimenő üzenetek|Darabszám|Összes|A teljes kimenő üzenetek névtér. Ez a metrika elavult. Ehelyett használja a kimenő üzenetek metrika|Nincs dimenzió|
+|OUTMSGS|Kimenő üzenetek (elavult)|Darabszám|Összes|A teljes kimenő üzenetek névtér. Ez a metrika elavult. Ehelyett használja a kimenő üzenetek metrika|Nincs dimenzió|
 |EHOUTMSGS|Kimenő üzenetek|Darabszám|Összes|A névtér összes kimenő üzenete|Nincs dimenzió|
 |EHINMBS|Bejövő bájtok (elavult)|Bájt|Összes|Event Hub bejövő üzenet átviteli névtér. Ez a metrika elavult. Ehelyett használja a bejövő bájtok metrika|Nincs dimenzió|
-|EHINBYTES|Bejövő bájtok|Bájt|Összes|Az eseményközpont adott névtérhez kapcsolódó bejövő üzeneteinek átviteli sebessége|Nincs dimenzió|
+|EHINBYTES|Bejövő bájtok száma|Bájt|Összes|Az eseményközpont adott névtérhez kapcsolódó bejövő üzeneteinek átviteli sebessége|Nincs dimenzió|
 |EHOUTMBS|Kimenő bájtok (elavult)|Bájt|Összes|Event Hub kimenő üzenet átviteli névtér. Ez a metrika elavult. Ehelyett használja a kimenő bájt metrika|Nincs dimenzió|
-|EHOUTBYTES|Kimenő bájtok|Bájt|Összes|Az eseményközpont adott névtérhez kapcsolódó kimenő üzeneteinek átviteli sebessége|Nincs dimenzió|
+|EHOUTBYTES|Kimenő bájtok száma|Bájt|Összes|Az eseményközpont adott névtérhez kapcsolódó kimenő üzeneteinek átviteli sebessége|Nincs dimenzió|
 |EHABL|Archivált várakozó üzenetek|Darabszám|Összes|Az eseményközpont adott névtérhez kapcsolódó archivált várakozó üzenetei|Nincs dimenzió|
 |EHAMSGS|Üzenetek archiválása|Darabszám|Összes|Az eseményközpont adott névtéren belüli archivált üzenetei|Nincs dimenzió|
 |EHAMBS|Archivált üzenetek átviteli sebessége|Bájt|Összes|Az eseményközpont adott névtéren belüli archivált üzeneteinek átviteli sebessége|Nincs dimenzió|
@@ -553,10 +661,16 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|ObservedMetricValue|Megfigyelt metrika értékét|Darabszám|Átlag|Az automatikus skálázás végrehajtásakor által kiszámított érték|MetricTriggerSource|
-|MetricThreshold|Metrika küszöbérték|Darabszám|Átlag|A megadott automatikus skálázási küszöbértéket, automatikus skálázás futtatásakor.|MetricTriggerRule|
-|ObservedCapacity|Megfigyelt kapacitás|Darabszám|Átlag|A kapacitás jelentett automatikus skálázás végrehajtásakor azt.|Nincs dimenzió|
-|ScaleActionsInitiated|Skálázási műveletet kezdeményezett|Darabszám|Összes|A méretezési művelet irányát.|ScaleDirection|
+|ObservedMetricValue|Megfigyelt metrikaérték|Darabszám|Átlag|Az automatikus skálázás által a végrehajtásakor kiszámított érték|MetricTriggerSource|
+|MetricThreshold|Metrika küszöbértéke|Darabszám|Átlag|Az automatikus skálázás futtatásakor konfigurált automatikus skálázási küszöbérték.|MetricTriggerRule|
+|ObservedCapacity|Megfigyelt kapacitás|Darabszám|Átlag|Az automatikus skálázás számára annak végrehajtásakor jelentett kapacitás.|Nincs dimenzió|
+|ScaleActionsInitiated|Elindított skálázási műveletek|Darabszám|Összes|A skálázási művelet iránya.|ScaleDirection|
+
+## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|Késés|Késés|Ezredmásodperc|Átlag|Az API-hívások időtartama|OperationName, operationresult adatokat a|
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
@@ -569,7 +683,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |RunsCancelled|Megszakított futtatások|Darabszám|Összes|A megszakított munkafolyamat-futtatások száma.|Nincs dimenzió|
 |RunLatency|Futtatások késése|másodperc|Átlag|A befejezett munkafolyamat-futtatások késése.|Nincs dimenzió|
 |RunSuccessLatency|Sikeres futtatások késése|másodperc|Átlag|A sikeres munkafolyamat-futtatások késése.|Nincs dimenzió|
-|RunThrottledEvents|Futtatások által elindított események|Darabszám|Összes|Munkafolyamat-művelet vagy az eseményindító száma halmozódni események.|Nincs dimenzió|
+|RunThrottledEvents|Futtatások által elindított események|Darabszám|Összes|A munkafolyamat-műveletek vagy -triggerek által elindított események száma.|Nincs dimenzió|
 |RunFailurePercentage|Futtatási hibák százalékos értéke|Százalék|Összes|Sikertelen munkafolyamat-futtatások százalékos értéke.|Nincs dimenzió|
 |ActionsStarted|Elindított műveletek |Darabszám|Összes|Az elindított munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsCompleted|Befejezett műveletek |Darabszám|Összes|A befejezett munkafolyamat-műveletek száma.|Nincs dimenzió|
@@ -579,19 +693,28 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |ActionLatency|Műveletek késése |másodperc|Átlag|A befejezett munkafolyamat-műveletek késése.|Nincs dimenzió|
 |ActionSuccessLatency|Sikeres műveletek késése |másodperc|Átlag|A sikeres munkafolyamat-műveletek késése.|Nincs dimenzió|
 |ActionThrottledEvents|Műveletek által elindított események|Darabszám|Összes|A munkafolyamat-műveletek által elindított események száma.|Nincs dimenzió|
-|TriggersStarted|Eseményindítók indítása |Darabszám|Összes|Munkafolyamat-eseményindítók indítása száma.|Nincs dimenzió|
-|TriggersCompleted|Eseményindítók befejeződött |Darabszám|Összes|Befejezett munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersSucceeded|Eseményindítók sikeres volt. |Darabszám|Összes|Munkafolyamat-eseményindítók száma sikeresen befejeződött.|Nincs dimenzió|
-|TriggersFailed|Nem sikerült az eseményindítók |Darabszám|Összes|Nem sikerült munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersSkipped|Kihagyott eseményindítók|Darabszám|Összes|Munkafolyamat-eseményindítók száma kihagyva.|Nincs dimenzió|
-|TriggersFired|Eseményindítók következik |Darabszám|Összes|Munkafolyamat-eseményindítók száma következik be.|Nincs dimenzió|
-|TriggerLatency|Eseményindító késés |másodperc|Átlag|Befejezett munkafolyamat eseményindítók késését.|Nincs dimenzió|
-|TriggerFireLatency|Eseményindító tűz késés |másodperc|Átlag|Tiltás késése a munkafolyamat-eseményindítók következik be.|Nincs dimenzió|
-|TriggerSuccessLatency|Eseményindító sikeres késés |másodperc|Átlag|Tiltás késése a munkafolyamat-eseményindítók sikeresen befejeződött.|Nincs dimenzió|
-|TriggerThrottledEvents|Eseményindító Halmozódni események|Darabszám|Összes|Munkafolyamat eseményindító száma halmozódni események.|Nincs dimenzió|
+|TriggersStarted|Elindított triggerek |Darabszám|Összes|Az elindított munkafolyamat-triggerek száma.|Nincs dimenzió|
+|TriggersCompleted|Befejezett triggerek |Darabszám|Összes|A befejezett munkafolyamat-triggerek száma.|Nincs dimenzió|
+|TriggersSucceeded|Sikeres triggerek |Darabszám|Összes|A sikeres munkafolyamat-triggerek száma.|Nincs dimenzió|
+|TriggersFailed|Sikertelen triggerek |Darabszám|Összes|A sikertelen munkafolyamat-triggerek száma.|Nincs dimenzió|
+|TriggersSkipped|Kihagyott triggerek|Darabszám|Összes|A kihagyott munkafolyamat-triggerek száma.|Nincs dimenzió|
+|TriggersFired|Aktivált triggerek |Darabszám|Összes|Az aktivált munkafolyamat-triggerek száma.|Nincs dimenzió|
+|TriggerLatency|Triggerek késése |másodperc|Átlag|A befejezett munkafolyamat-triggerek késése.|Nincs dimenzió|
+|TriggerFireLatency|Triggerek aktiválásának késése |másodperc|Átlag|Az aktivált munkafolyamat-trigger késése.|Nincs dimenzió|
+|TriggerSuccessLatency|Sikeres triggerek késése |másodperc|Átlag|A sikeres munkafolyamat-triggerek késése.|Nincs dimenzió|
+|TriggerThrottledEvents|Triggerek által elindított események|Darabszám|Összes|A munkafolyamat-triggerek által elindított események száma.|Nincs dimenzió|
 |BillableActionExecutions|Számlázható műveleti végrehajtások|Darabszám|Összes|Számlázandó munkafolyamat-műveleti végrehajtások száma.|Nincs dimenzió|
-|BillableTriggerExecutions|Számlázható eseményindító végrehajtások|Darabszám|Összes|Munkafolyamat eseményindító végrehajtások első számlázva száma.|Nincs dimenzió|
+|BillableTriggerExecutions|Számlázható triggerek végrehajtásai|Darabszám|Összes|Számlázandó munkafolyamati triggerek végrehajtásainak száma.|Nincs dimenzió|
 |TotalBillableExecutions|Összes számlázható végrehajtás|Darabszám|Összes|Számlázandó munkafolyamat-végrehajtások száma.|Nincs dimenzió|
+
+## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|BytesSentRate|Küldött bájtok|Darabszám|Összes|A hálózati illesztő küldött bájtok száma|Nincs dimenzió|
+|BytesReceivedRate|Fogadott bájtok|Darabszám|Összes|A hálózati illesztő fogadott bájtok száma|Nincs dimenzió|
+|PacketsSentRate|Küldött csomagok|Darabszám|Összes|A hálózati illesztő küldött csomagok száma|Nincs dimenzió|
+|PacketsReceivedRate|Fogadott csomagok|Darabszám|Összes|A hálózati illesztő kapott csomagok száma|Nincs dimenzió|
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
@@ -608,57 +731,62 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|PacketsInDDoS|Bejövő csomagok DDoS|Egység/s|Átlag|Bejövő csomagok DDoS|Nincs dimenzió|
-|PacketsDroppedDDoS|Eldobott DDoS bejövő csomagok|Egység/s|Átlag|Eldobott DDoS bejövő csomagok|Nincs dimenzió|
-|PacketsForwardedDDoS|DDoS továbbított bejövő csomagok|Egység/s|Átlag|DDoS továbbított bejövő csomagok|Nincs dimenzió|
-|TCPPacketsInDDoS|A bejövő TCP-csomagok DDoS|Egység/s|Átlag|A bejövő TCP-csomagok DDoS|Nincs dimenzió|
-|TCPPacketsDroppedDDoS|Bejövő TCP-csomagok eldobott DDoS|Egység/s|Átlag|Bejövő TCP-csomagok eldobott DDoS|Nincs dimenzió|
-|TCPPacketsForwardedDDoS|DDoS továbbított bejövő TCP-csomagok|Egység/s|Átlag|DDoS továbbított bejövő TCP-csomagok|Nincs dimenzió|
-|UDPPacketsInDDoS|Bejövő UDP-csomagok DDoS|Egység/s|Átlag|Bejövő UDP-csomagok DDoS|Nincs dimenzió|
-|UDPPacketsDroppedDDoS|Bejövő UDP-csomagok eldobott DDoS|Egység/s|Átlag|Bejövő UDP-csomagok eldobott DDoS|Nincs dimenzió|
-|UDPPacketsForwardedDDoS|DDoS továbbított bejövő UDP-csomagok|Egység/s|Átlag|DDoS továbbított bejövő UDP-csomagok|Nincs dimenzió|
-|BytesInDDoS|Bejövő bájtok DDoS|BytesPerSecond|Átlag|Bejövő bájtok DDoS|Nincs dimenzió|
-|BytesDroppedDDoS|Bejövő bájtok eldobott DDoS|BytesPerSecond|Átlag|Bejövő bájtok eldobott DDoS|Nincs dimenzió|
-|BytesForwardedDDoS|DDoS továbbított bejövő bájtok|BytesPerSecond|Átlag|DDoS továbbított bejövő bájtok|Nincs dimenzió|
-|TCPBytesInDDoS|Bejövő TCP bájtok DDoS|BytesPerSecond|Átlag|Bejövő TCP bájtok DDoS|Nincs dimenzió|
-|TCPBytesDroppedDDoS|Bejövő TCP-bájt eldobott DDoS|BytesPerSecond|Átlag|Bejövő TCP-bájt eldobott DDoS|Nincs dimenzió|
-|TCPBytesForwardedDDoS|DDoS továbbított bejövő TCP bájt|BytesPerSecond|Átlag|DDoS továbbított bejövő TCP bájt|Nincs dimenzió|
-|UDPBytesInDDoS|Bejövő UDP bájtok DDoS|BytesPerSecond|Átlag|Bejövő UDP bájtok DDoS|Nincs dimenzió|
-|UDPBytesDroppedDDoS|Bejövő UDP bájt eldobott DDoS|BytesPerSecond|Átlag|Bejövő UDP bájt eldobott DDoS|Nincs dimenzió|
-|UDPBytesForwardedDDoS|DDoS továbbított bejövő UDP bájt|BytesPerSecond|Átlag|DDoS továbbított bejövő UDP bájt|Nincs dimenzió|
-|IfUnderDDoSAttack|DDoS alatt támadásokkal vagy sem|Darabszám|Átlag|DDoS alatt támadásokkal vagy sem|Nincs dimenzió|
-|DDoSTriggerTCPPackets|A bejövő TCP-csomagok DDoS megoldás elindítása|Egység/s|Átlag|A bejövő TCP-csomagok DDoS megoldás elindítása|Nincs dimenzió|
-|DDoSTriggerUDPPackets|Bejövő UDP-csomagok DDoS megoldás elindítása|Egység/s|Átlag|Bejövő UDP-csomagok DDoS megoldás elindítása|Nincs dimenzió|
+|PacketsInDDoS|Bejövő csomagok DDoS|Egység/s|Maximum|Bejövő csomagok DDoS|Nincs dimenzió|
+|PacketsDroppedDDoS|Eldobott DDoS bejövő csomagok|Egység/s|Maximum|Eldobott DDoS bejövő csomagok|Nincs dimenzió|
+|PacketsForwardedDDoS|DDoS továbbított bejövő csomagok|Egység/s|Maximum|DDoS továbbított bejövő csomagok|Nincs dimenzió|
+|TCPPacketsInDDoS|A bejövő TCP-csomagok DDoS|Egység/s|Maximum|A bejövő TCP-csomagok DDoS|Nincs dimenzió|
+|TCPPacketsDroppedDDoS|Bejövő TCP-csomagok eldobott DDoS|Egység/s|Maximum|Bejövő TCP-csomagok eldobott DDoS|Nincs dimenzió|
+|TCPPacketsForwardedDDoS|DDoS továbbított bejövő TCP-csomagok|Egység/s|Maximum|DDoS továbbított bejövő TCP-csomagok|Nincs dimenzió|
+|UDPPacketsInDDoS|Bejövő UDP-csomagok DDoS|Egység/s|Maximum|Bejövő UDP-csomagok DDoS|Nincs dimenzió|
+|UDPPacketsDroppedDDoS|Bejövő UDP-csomagok eldobott DDoS|Egység/s|Maximum|Bejövő UDP-csomagok eldobott DDoS|Nincs dimenzió|
+|UDPPacketsForwardedDDoS|DDoS továbbított bejövő UDP-csomagok|Egység/s|Maximum|DDoS továbbított bejövő UDP-csomagok|Nincs dimenzió|
+|BytesInDDoS|Bejövő bájtok DDoS|Bájt/s|Maximum|Bejövő bájtok DDoS|Nincs dimenzió|
+|BytesDroppedDDoS|Bejövő bájtok eldobott DDoS|Bájt/s|Maximum|Bejövő bájtok eldobott DDoS|Nincs dimenzió|
+|BytesForwardedDDoS|DDoS továbbított bejövő bájtok|Bájt/s|Maximum|DDoS továbbított bejövő bájtok|Nincs dimenzió|
+|TCPBytesInDDoS|Bejövő TCP bájtok DDoS|Bájt/s|Maximum|Bejövő TCP bájtok DDoS|Nincs dimenzió|
+|TCPBytesDroppedDDoS|Bejövő TCP-bájt eldobott DDoS|Bájt/s|Maximum|Bejövő TCP-bájt eldobott DDoS|Nincs dimenzió|
+|TCPBytesForwardedDDoS|DDoS továbbított bejövő TCP bájt|Bájt/s|Maximum|DDoS továbbított bejövő TCP bájt|Nincs dimenzió|
+|UDPBytesInDDoS|Bejövő UDP bájtok DDoS|Bájt/s|Maximum|Bejövő UDP bájtok DDoS|Nincs dimenzió|
+|UDPBytesDroppedDDoS|Bejövő UDP bájt eldobott DDoS|Bájt/s|Maximum|Bejövő UDP bájt eldobott DDoS|Nincs dimenzió|
+|UDPBytesForwardedDDoS|DDoS továbbított bejövő UDP bájt|Bájt/s|Maximum|DDoS továbbított bejövő UDP bájt|Nincs dimenzió|
+|IfUnderDDoSAttack|DDoS alatt támadásokkal vagy sem|Darabszám|Maximum|DDoS alatt támadásokkal vagy sem|Nincs dimenzió|
+|DDoSTriggerTCPPackets|A bejövő TCP-csomagok DDoS megoldás elindítása|Egység/s|Maximum|A bejövő TCP-csomagok DDoS megoldás elindítása|Nincs dimenzió|
+|DDoSTriggerUDPPackets|Bejövő UDP-csomagok DDoS megoldás elindítása|Egység/s|Maximum|Bejövő UDP-csomagok DDoS megoldás elindítása|Nincs dimenzió|
+|DDoSTriggerSYNPackets|A bejövő SZIN csomagok DDoS megoldás elindítása|Egység/s|Maximum|A bejövő SZIN csomagok DDoS megoldás elindítása|Nincs dimenzió|
 |VipAvailability|Rendelkezésre állás|Darabszám|Átlag|IP-cím-átlagos rendelkezésre állás időn belül|Port|
 |ByteCount|Bájtok száma|Darabszám|Összes|Időtartamon belül átvitt bájtok teljes száma|Port, iránya|
 |PacketCount|Csomagok száma|Darabszám|Összes|Időtartamon belül küldött csomagok teljes száma|Port, iránya|
 |SynCount|Szinkronizálás a mi száma|Darabszám|Összes|Továbbított időtartamon belül SZIN csomagok száma összesen|Port, iránya|
 
+## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|PacketsInDroppedVMProtection|A virtuális gépek védelmét eldobott bemeneti csomagok|Egység/s|Átlag|A virtuális gépek védelmét eldobott bemeneti csomagok|Nincs dimenzió|
+|PacketsOutDroppedVMProtection|A virtuális gépek védelmét eldobott kimeneti csomagok|Egység/s|Átlag|A virtuális gépek védelmét eldobott kimeneti csomagok|Nincs dimenzió|
+
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|Teljesítmény|Teljesítmény|BytesPerSecond|Átlag|Az Alkalmazásátjáró rendelkezik kiszolgált másodpercenként bájtok száma|Nincs dimenzió|
+|Teljesítmény|Teljesítmény|Bájt/s|Összes|Az Alkalmazásátjáró rendelkezik kiszolgált másodpercenként bájtok száma|Nincs dimenzió|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|TunnelAverageBandwidth|Bújtatás sávszélesség|BytesPerSecond|Átlag|Egy alagút bájt / s átlagos sávszélesség|Kapcsolat neve, RemoteIP|
-|TunnelPeakBandwidth|Bújtatás maximális sávszélesség|BytesPerSecond|Átlag|Maximális sávszélesség a alagút bájt / s|Kapcsolat neve, RemoteIP|
-|TunnelEgressBytes|Bújtatás kilépő bájt|Bájt|Átlag|Kimenő bájtok öt percenként egy alagút|Kapcsolat neve, RemoteIP|
-|TunnelIngressBytes|Bújtatás érkező bájtok|Bájt|Átlag|Bejövő bájtok öt percenként egy alagút|Kapcsolat neve, RemoteIP|
-|TunnelEgressPackets|Alagút kimenő csomagok|Darabszám|Átlag|Egy alagút öt percenként kimenő csomagok száma|Kapcsolat neve, RemoteIP|
-|TunnelIngressPackets|Bújtatás érkező csomagok|Darabszám|Átlag|Egy alagút öt percenként bejövő csomagok száma|Kapcsolat neve, RemoteIP|
-|TunnelEgressPacketDropTSMismatch|Bújtatás kilépő TS eltérés csomagjai|Darabszám|Átlag|Kimenő forgalom választó eltérés öt percenként alagutat a csomagjai|Kapcsolat neve, RemoteIP|
-|TunnelIngressPacketDropTSMismatch|Bújtatás érkező TS eltérés csomagjai|Darabszám|Átlag|Bejövő forgalom választó eltérés öt percenként alagutat a csomagjai|Kapcsolat neve, RemoteIP|
+|TunnelAverageBandwidth|Bújtatás sávszélesség|Bájt/s|Átlag|Egy alagút bájt / s átlagos sávszélesség|Kapcsolat neve, RemoteIP|
+|TunnelEgressBytes|Bújtatás kilépő bájt|Bájt|Összes|Kimenő bájtok egy alagút|Kapcsolat neve, RemoteIP|
+|TunnelIngressBytes|Bújtatás érkező bájtok|Bájt|Összes|Bejövő bájtok egy alagút|Kapcsolat neve, RemoteIP|
+|TunnelEgressPackets|Alagút kimenő csomagok|Darabszám|Összes|Egy alagút kimenő csomagok száma|Kapcsolat neve, RemoteIP|
+|TunnelIngressPackets|Bújtatás érkező csomagok|Darabszám|Összes|Egy alagút bejövő csomagok száma|Kapcsolat neve, RemoteIP|
+|TunnelEgressPacketDropTSMismatch|Bújtatás kilépő TS eltérés csomagjai|Darabszám|Összes|A alagút forgalmi választó nem egyeznek a kimenő csomagok eldobási száma|Kapcsolat neve, RemoteIP|
+|TunnelIngressPacketDropTSMismatch|Bújtatás érkező TS eltérés csomagjai|Darabszám|Összes|A forgalom választó nem egyeznek a alagút bejövő csomagok eldobási száma|Kapcsolat neve, RemoteIP|
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|BytesIn|BytesIn|Darabszám|Összes|Bájtok ingressing Azure|Nincs dimenzió|
-|BytesOut|BytesOut|Darabszám|Összes|Egressing Azure bájt|Nincs dimenzió|
 |BitsInPerSecond|BitsInPerSecond|Egység/s|Átlag|A BITS ingressing Azure / másodperc|Nincs dimenzió|
 |BitsOutPerSecond|BitsOutPerSecond|Egység/s|Átlag|A BITS Azure egressing / másodperc|Nincs dimenzió|
 
@@ -732,9 +860,27 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |outgoing.mpns.dropped|MPNS – elvetett értesítések|Darabszám|Összes|A MPNS által elvetett leküldések száma (MPNS-válaszfejléc: X-NotificationStatus: QueueFull vagy Suppressed).|Nincs dimenzió|
 |outgoing.mpns.pnserror|MPNS-hibák|Darabszám|Összes|Az MPNS szolgáltatással való kommunikáció közben történt hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
 |outgoing.mpns.authenticationerror|MPNS – hitelesítési hibák|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a PNS nem fogadta el a megadott hitelesítő adatokat vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
-|notificationhub.pushes|Minden kimenő értesítések|Darabszám|Összes|Az értesítési központnak minden kimenő értesítések|Nincs dimenzió|
-|Incoming.all.Requests|Az összes bejövő kérelmek|Darabszám|Összes|Bejövő kérelmek teljes száma a értesítési központ|Nincs dimenzió|
-|Incoming.all.failedrequests|Minden bejövő sikertelen kérelmek|Darabszám|Összes|Teljes bejövő sikertelen kérelmek egy értesítési központ|Nincs dimenzió|
+|notificationhub.pushes|Minden kimenő értesítés|Darabszám|Összes|Az értesítési központ minden kimenő értesítése|Nincs dimenzió|
+|Incoming.all.Requests|Minden bejövő kérelem|Darabszám|Összes|Egy értesítési központ összes bejövő kérelme|Nincs dimenzió|
+|Incoming.all.failedrequests|Minden sikertelen bejövő kérelem|Darabszám|Összes|Egy értesítési központ összes sikertelen bejövő kérelme|Nincs dimenzió|
+
+## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|Figyelőkapcsolatok-Siker|Figyelőkapcsolatok-Siker|Darabszám|Összes|A Microsoft.Relay sikeresen létrejött figyelőkapcsolatai.|entityName|
+|Figyelőkapcsolatok-Ügyfélhiba|Figyelőkapcsolatok-Ügyfélhiba|Darabszám|Összes|A Microsoft.Relay figyelőkapcsolatokra vonatkozó ügyfélhibái.|entityName|
+|Figyelőkapcsolatok-Kiszolgálóhiba|Figyelőkapcsolatok-Kiszolgálóhiba|Darabszám|Összes|A Microsoft.Relay figyelőkapcsolatokra vonatkozó kiszolgálóhibái.|entityName|
+|FeladóiKapcsolatok-Siker|FeladóiKapcsolatok-Siker|Darabszám|Összes|A Microsoft.Relay sikeresen létrejött feladói kapcsolatai.|entityName|
+|FeladóiKapcsolatok-Ügyfélhiba|FeladóiKapcsolatok-Ügyfélhiba|Darabszám|Összes|A Microsoft.Relay feladói kapcsolatokra vonatkozó ügyfélhibái.|entityName|
+|FeladóiKapcsolatok-Kiszolgálóhiba|FeladóiKapcsolatok-Kiszolgálóhiba|Darabszám|Összes|A Microsoft.Relay feladói kapcsolatokra vonatkozó kiszolgálóhibái.|entityName|
+|Figyelőkapcsolatok-KérelmekÖsszesen|Figyelőkapcsolatok-KérelmekÖsszesen|Darabszám|Összes|A Microsoft.Relay figyelőkapcsolatai összesen.|entityName|
+|FeladóiKapcsolatok-KérelmekÖsszesen|FeladóiKapcsolatok-KérelmekÖsszesen|Darabszám|Összes|A Microsoft.Relay feladói kapcsolatai összesen.|entityName|
+|AktívKapcsolatok|AktívKapcsolatok|Darabszám|Összes|A Microsoft.Relay aktív kapcsolatai összesen.|entityName|
+|AktívFigyelők|AktívFigyelők|Darabszám|Összes|A Microsoft.Relay aktív figyelői összesen.|entityName|
+|ÁtvittBájtok|ÁtvittBájtok|Darabszám|Összes|A Microsoft.Relay által átvitt bájtok összesen.|entityName|
+|Figyelőkapcsolat-bontások|Figyelőkapcsolat-bontások|Darabszám|Összes|A Microsoft.Relay figyelőkapcsolat-bontásai összesen.|entityName|
+|Feladóikapcsolat-bontások|Feladóikapcsolat-bontások|Darabszám|Összes|A Microsoft.Relay feladóikapcsolat-bontásai összesen.|entityName|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
@@ -748,6 +894,16 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
+|SuccessfulRequests|Sikeres kérések (előzetes verzió)|Darabszám|Összes|A sikeres kérelmek teljes névtér (előzetes verzió)|entityName|
+|ServerErrors|Kiszolgálóhibák száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus kiszolgálóhibáinak száma. (Előzetes verzió)|entityName|
+|UserErrors|Felhasználói hibák száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus felhasználói hibáinak száma. (Előzetes verzió)|entityName|
+|ThrottledRequests|Szabályozott kérelmek száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus szabályozott kérelmeinek száma. (Előzetes verzió)|entityName|
+|IncomingRequests|A bejövő kérések (előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus bejövő kérelmeinek száma. (Előzetes verzió)|entityName|
+|IncomingMessages|A bejövő üzenetek (előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus bejövő üzeneteinek száma. (Előzetes verzió)|entityName|
+|OutgoingMessages|Kimenő üzenetek (előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus kimenő üzeneteinek száma. (Előzetes verzió)|entityName|
+|AktívKapcsolatok|ActiveConnections (előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus aktív kapcsolatainak száma összesen. (Előzetes verzió)|entityName|
+|ConnectionsOpened|Megnyitott kapcsolatok száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus megnyitott kapcsolatainak száma. (Előzetes verzió)|entityName|
+|ConnectionsClosed|Lezárt kapcsolatok száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus lezárt kapcsolatainak száma. (Előzetes verzió)|entityName|
 |CPUXNS|Processzorhasználat névterenként|Százalék|Maximum|Prémium szintű Service Bus-névtér CPU-használati metrikája|Nincs dimenzió|
 |WSXNS|Felhasznál memória mérete névterenként|Százalék|Maximum|Prémium szintű Service Bus-névtér memóriahasználati metrikája|Nincs dimenzió|
 
@@ -813,68 +969,68 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|UsedCapacity|Használható kapacitás|Bájt|Átlag|A fiókot használja a kapacitás|Nincs dimenzió|
+|UsedCapacity|Használt kapacitás|Bájt|Átlag|A fiók felhasznált kapacitása|Nincs dimenzió|
 |Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, APINÉV|
 |Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, APINÉV|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, APINÉV|
-|SuccessServerLatency|Sikeres kiszolgáló késleltetése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
+|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
+|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
 |Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, APINÉV|
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|BlobCapacity|A BLOB-kapacitás|Bájt|Átlag|A tárfiók a Blob szolgáltatás bájtban által használt tárolási mennyisége.|BlobType|
-|Blobok száma|A BLOB száma|Darabszám|Átlag|A tárfiók a Blob szolgáltatás Blob számát.|BlobType|
-|ContainerCount|A BLOB-tároló száma|Darabszám|Átlag|A tárfiók a Blob szolgáltatás tárolók száma.|Nincs dimenzió|
+|BlobCapacity|Blob-kapacitása|Bájt|Átlag|A tárfiók Blob Service-példánya által felhasznált tárterület mérete bájtban megadva.|BlobType|
+|Blobok száma|Blobok száma|Darabszám|Átlag|A tárfiók Blob Service-példányában található blobok száma.|BlobType|
+|ContainerCount|Blobtárolók száma|Darabszám|Átlag|A tárfiók Blob Service-példányában található tárolók száma.|Nincs dimenzió|
 |Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, APINÉV|
 |Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, APINÉV|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, APINÉV|
-|SuccessServerLatency|Sikeres kiszolgáló késleltetése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
+|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
+|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
 |Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, APINÉV|
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|TableCapacity|Tábla Kapacitás|Bájt|Átlag|A tárfiók Table szolgáltatás bájtban által használt tárolási mennyisége.|Nincs dimenzió|
-|TableCount|Tábla száma|Darabszám|Átlag|A tárfiók Table szolgáltatás táblájában száma.|Nincs dimenzió|
-|TableEntityCount|Tábla entitások száma|Darabszám|Átlag|A tárfiók Table szolgáltatás a táblaentitásokat száma.|Nincs dimenzió|
+|TableCapacity|Table Storage kapacitása|Bájt|Átlag|A tárfiók Table Storage-szolgáltatás-példánya által felhasznált tárterület mérete bájtban megadva.|Nincs dimenzió|
+|TableCount|Táblák száma|Darabszám|Átlag|A tárfiók Table Storage-szolgáltatás-példányában található táblák száma.|Nincs dimenzió|
+|TableEntityCount|Táblaentitások száma|Darabszám|Átlag|A tárfiók Table Storage-szolgáltatás-példányában található táblaentitások száma.|Nincs dimenzió|
 |Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, APINÉV|
 |Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, APINÉV|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, APINÉV|
-|SuccessServerLatency|Sikeres kiszolgáló késleltetése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
+|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
+|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
 |Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, APINÉV|
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|QueueCapacity|Várólista kapacitás|Bájt|Átlag|A tárfiók Queue szolgáltatás bájtban által használt tárolási mennyisége.|Nincs dimenzió|
-|QueueCount|Várólista száma|Darabszám|Átlag|A tárfiók Queue szolgáltatás sorból száma.|Nincs dimenzió|
-|QueueMessageCount|Várólista-üzenetek száma|Darabszám|Átlag|A tárfiók Queue szolgáltatás várólista üzeneteinek hozzávetőleges számát.|Nincs dimenzió|
+|QueueCapacity|Queue Storage kapacitása|Bájt|Átlag|A tárfiók Queue Storage-szolgáltatás-példánya által felhasznált tárterület mérete bájtban megadva.|Nincs dimenzió|
+|QueueCount|Üzenetsorok száma|Darabszám|Átlag|A tárfiók Queue-szolgáltatás-példányában található üzenetsorok száma.|Nincs dimenzió|
+|QueueMessageCount|Üzenetsorbeli üzenetek száma|Darabszám|Átlag|A tárfiók Queue Storage-szolgáltatás-példányában található üzenetsorbeli üzenetek hozzávetőleges száma.|Nincs dimenzió|
 |Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, APINÉV|
 |Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, APINÉV|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, APINÉV|
-|SuccessServerLatency|Sikeres kiszolgáló késleltetése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
+|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
+|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
 |Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, APINÉV|
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|FileCapacity|Fájl kapacitás|Bájt|Átlag|A tárfiók bájtban szolgáltatás által használt tároló mennyisége.|Nincs dimenzió|
-|Filecount;/%totalfilecount|Fájlok száma|Darabszám|Átlag|A tárfiók szolgáltatása a fájl száma.|Nincs dimenzió|
-|FileShareCount|Fájlmegosztás|Darabszám|Átlag|Hány fájl osztja meg a tárfiók fájl szolgáltatásban.|Nincs dimenzió|
+|FileCapacity|File Storage kapacitása|Bájt|Átlag|A tárfiók File Storage-szolgáltatás-példánya által felhasznált tárterület mérete bájtban megadva.|Nincs dimenzió|
+|Filecount;/%totalfilecount|Fájlok száma|Darabszám|Átlag|A tárfiók File Storage-szolgáltatás-példányában található fájlok száma.|Nincs dimenzió|
+|FileShareCount|Fájlmegosztások száma|Darabszám|Átlag|A tárfiók File Storage-szolgáltatás-példányában található fájlmegosztások száma.|Nincs dimenzió|
 |Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, APINÉV|
 |Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, APINÉV|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, APINÉV|
-|SuccessServerLatency|Sikeres kiszolgáló késleltetése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
+|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
+|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
 |Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, APINÉV|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
@@ -899,8 +1055,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |---|---|---|---|---|---|
 |CpuPercentage|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példány|
 |MemoryPercentage|Memóriahasználat (%)|Százalék|Átlag|Memóriahasználat (%)|Példány|
-|DiskQueueLength|Lemezvárólista hossza|Darabszám|Összes|Lemezvárólista hossza|Példány|
-|HttpQueueLength|HTTP-várólista hossza|Darabszám|Összes|HTTP-várólista hossza|Példány|
+|DiskQueueLength|Lemezvárólista hossza|Darabszám|Átlag|Lemezvárólista hossza|Példány|
+|HttpQueueLength|HTTP-várólista hossza|Darabszám|Átlag|HTTP-várólista hossza|Példány|
 |BytesReceived|Bejövő adatforgalom|Bájt|Összes|Bejövő adatforgalom|Példány|
 |BytesSent|Kimenő adatforgalom|Bájt|Összes|Kimenő adatforgalom|Példány|
 
@@ -924,8 +1080,6 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |MemoryWorkingSet|Memória-munkakészlet|Bájt|Átlag|Memória-munkakészlet|Példány|
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Átlag|Átlagos memória-munkakészlet|Példány|
 |AverageResponseTime|Átlagos válaszidő|másodperc|Átlag|Átlagos válaszidő|Példány|
-|FunctionExecutionUnits|Függvény végrehajtása egység|Darabszám|Átlag|Függvény végrehajtása egység|Példány|
-|FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Átlag|Függvény végrehajtásainak száma|Példány|
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (funkciók)
 
@@ -936,8 +1090,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Http5xx|HTTP-kiszolgálói hibák|Darabszám|Összes|HTTP-kiszolgálói hibák|Példány|
 |MemoryWorkingSet|Memória-munkakészlet|Bájt|Átlag|Memória-munkakészlet|Példány|
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Átlag|Átlagos memória-munkakészlet|Példány|
-|FunctionExecutionUnits|Függvény végrehajtása egység|Darabszám|Átlag|Függvény végrehajtása egység|Példány|
-|FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Átlag|Függvény végrehajtásainak száma|Példány|
+|FunctionExecutionUnits|Függvény-végrehajtási egység|Darabszám|Összes|Függvény-végrehajtási egység|Példány|
+|FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Összes|Függvény végrehajtásainak száma|Példány|
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
@@ -959,7 +1113,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |MemoryWorkingSet|Memória-munkakészlet|Bájt|Átlag|Memória-munkakészlet|Példány|
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Átlag|Átlagos memória-munkakészlet|Példány|
 |AverageResponseTime|Átlagos válaszidő|másodperc|Átlag|Átlagos válaszidő|Példány|
-|FunctionExecutionUnits|Függvény végrehajtása egység|Darabszám|Átlag|Függvény végrehajtása egység|Példány|
+|FunctionExecutionUnits|Függvény-végrehajtási egység|Darabszám|Átlag|Függvény-végrehajtási egység|Példány|
 |FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Átlag|Függvény végrehajtásainak száma|Példány|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
@@ -981,23 +1135,25 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |AverageResponseTime|Átlagos válaszidő|másodperc|Átlag|Átlagos válaszidő|Példány|
 |CpuPercentage|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példány|
 |MemoryPercentage|Memóriahasználat (%)|Százalék|Átlag|Memóriahasználat (%)|Példány|
-|DiskQueueLength|Lemezvárólista hossza|Darabszám|Összes|Lemezvárólista hossza|Példány|
-|HttpQueueLength|HTTP-várólista hossza|Darabszám|Összes|HTTP-várólista hossza|Példány|
+|DiskQueueLength|Lemezvárólista hossza|Darabszám|Átlag|Lemezvárólista hossza|Példány|
+|HttpQueueLength|HTTP-várólista hossza|Darabszám|Átlag|HTTP-várólista hossza|Példány|
 |ActiveRequests|Aktív kérelmek|Darabszám|Összes|Aktív kérelmek|Példány|
 |TotalFrontEnds|Előterek száma|Darabszám|Átlag|Előterek száma|Példány|
-|SmallAppServicePlanInstances|Kisméretű App Service-csomag munkavállalók|Darabszám|Átlag|Kisméretű App Service-csomag munkavállalók|Példány|
-|MediumAppServicePlanInstances|Közepes méretű App Service-csomag munkavállalók|Darabszám|Átlag|Közepes méretű App Service-csomag munkavállalók|Példány|
-|LargeAppServicePlanInstances|Nagyméretű App Service-csomag munkavállalók|Darabszám|Átlag|Nagyméretű App Service-csomag munkavállalók|Példány|
+|SmallAppServicePlanInstances|Kis méretű App Service-csomag feldolgozói|Darabszám|Átlag|Kis méretű App Service-csomag feldolgozói|Példány|
+|MediumAppServicePlanInstances|Közepes méretű App Service-csomag feldolgozói|Darabszám|Átlag|Közepes méretű App Service-csomag feldolgozói|Példány|
+|LargeAppServicePlanInstances|Nagy méretű App Service-csomag feldolgozói|Darabszám|Átlag|Nagy méretű App Service-csomag feldolgozói|Példány|
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|Feldolgozók|Teljes munkavállalók|Darabszám|Átlag|Teljes munkavállalók|Példány|
-|WorkersAvailable|Rendelkezésre álló munkavállalók|Darabszám|Átlag|Rendelkezésre álló munkavállalók|Példány|
+|Feldolgozók|Feldolgozók összesen|Darabszám|Átlag|Feldolgozók összesen|Példány|
+|WorkersAvailable|Rendelkezésre álló feldolgozók|Darabszám|Átlag|Rendelkezésre álló feldolgozók|Példány|
 |WorkersUsed|Használt feldolgozók|Darabszám|Átlag|Használt feldolgozók|Példány|
+|CpuPercentage|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példány|
+|MemoryPercentage|Memóriahasználat (%)|Százalék|Átlag|Memóriahasználat (%)|Példány|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Olvassa el a Azure figyelő metrikák](monitoring-overview-metrics.md)
 * [Hozzon létre a riasztások mérőszámokat](insights-receive-alert-notifications.md)
 * [Tárolás, az Event Hubs vagy Naplóelemzési metrikák exportálása](monitoring-overview-of-diagnostic-logs.md)

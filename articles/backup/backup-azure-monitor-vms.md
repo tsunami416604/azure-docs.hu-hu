@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: b9dc3f52e5fc275bc56b9964f2115833f2dde42e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebd7a886f5853ec3fa9b6e816083e9edd868ef76
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure-beli virtuális gépek biztonsági mentésével kapcsolatos riasztások figyelése
 A riasztások jelezhetik a szolgáltatásból, hogy az esemény küszöbét teljesül vagy túllépése válaszokat. Annak ismerete, ha problémák start alacsonyan tartják a költségeket üzleti kritikus fontosságú lehet. Riasztást általában nem történik meg, ütemezés szerint, és ezért fontos tudni, hogy minél hamarabb után a riasztás akkor jön létre. Például ha egy biztonsági mentési vagy helyreállítási feladat sikertelen lesz, egy riasztás a hiba öt percen belül. A tároló irányítópultjának a biztonsági riasztások csempe kritikus és a figyelmeztetési szintű eseményeket jeleníti meg. A biztonsági riasztások beállításainak megtekintheti az összes esemény. De mi a teendő, ha egy riasztás, ha egy külön probléma dolgozik? Ha nem tudja, ha a riasztás történik, akkor lehet, hogy egy kisebb kellemetlenségért, vagy az adatok biztonságát veszélyeztető. Győződjön meg arról, hogy a megfelelő személyek ismerjék riasztás - következik be, amikor konfigurálja a szolgáltatást riasztási értesítéseket e-mailben küldendő. E-mail értesítések beállításával kapcsolatos részletekért lásd: [értesítések konfigurálása](backup-azure-monitor-vms.md#configure-notifications).
@@ -72,7 +72,7 @@ A riasztások értesítő e-mailek beállítása
    | --- | --- |
    | Kritikus |Sikertelen biztonsági mentéshez, helyreállítási hiba |
    | Figyelmeztetés |None |
-   | Tájékoztató |None |
+   | Tájékoztató |Nincs |
 
 ### <a name="are-there-situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>Olyankor is előfordul, hogy nem érkezik meg az e-mail, ha az értesítések be vannak állítva?
 Nincsenek olyan helyzetekben, ahol a rendszer nem küld figyelmeztetést, annak ellenére, hogy az értesítések megfelelően vannak konfigurálva. A következő helyzetekben e-mailben értesítést nem kap riasztási zaj elkerülése érdekében:
@@ -147,12 +147,12 @@ Használatával a **oszlopok** gombra, a listában megjelenő további esemény 
 | Erőforrás |URL-címet, amely azonosítja az erőforrás; más néven az erőforrás-azonosítója |
 | Time |Az az aktuális időponthoz képest, ha az esemény történt mért idő |
 | Hívó |Ki vagy mi nevezik, és az esemény; aktivált a rendszer, vagy a felhasználó |
-| időbélyeg |Az idő, amikor az esemény lett elindítva |
+| Időbélyeg |Az idő, amikor az esemény lett elindítva |
 | Erőforráscsoport |A kapcsolódó erőforráscsoport |
-| Erőforrás típusa |Az erőforrás-kezelő által használt belső erőforrástípus |
+| Erőforrás típusa |A Resource Manager által használt belső erőforrástípus |
 | Előfizetés azonosítója |A társított előfizetés-azonosító |
 | Kategória |Az esemény kategória |
-| Korrelációs azonosító |Az ezzel kapcsolatos eseményeket közös azonosítója |
+| Korrelációazonosító |Az ezzel kapcsolatos eseményeket közös azonosítója |
 
 ## <a name="use-powershell-to-customize-alerts"></a>PowerShell segítségével testre szabhatja a riasztások
 A feladatok egyéni riasztási értesítéseket kaphat a portálon. Ahhoz, hogy ezeket a feladatokat, határozza meg a műveleti naplókat események riasztási szabályok PowerShell-alapú. Használjon *PowerShell 1.3.0 verzió vagy újabb*.
@@ -196,7 +196,7 @@ Eseményalapú riasztások a következő korlátozások vonatkoznak:
 2. A funkció jelenleg előzetes verzió. [További információ](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
 3. Küldi a riasztásokat "alerts-noreply@mail.windowsazure.com". Az e-mailt olyasvalaki jelenleg nem módosíthatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Eseménynaplók kiváló levágást engedélyezése, és a biztonsági mentési műveletek támogatása naplózására. A rendszer naplózza a következő műveletet:
 
 * Regisztráljon
@@ -208,9 +208,9 @@ Eseménynaplók kiváló levágást engedélyezése, és a biztonsági mentési 
 * biztonsági mentési adatok törlése
 * Házirend hozzáadása
 * Szabályzat törlése
-* Házirend frissítése
+* Szabályzat frissítése
 * Megszakítása
 
 Események széles körű leírását, műveletek és a vizsgálati naplók az Azure szolgáltatásban, lásd: a cikk [események megtekintése és a naplók](../monitoring-and-diagnostics/insights-debugging-with-events.md).
 
-Hozza létre újra a virtuális gép helyreállítási pontból információkért tekintse meg [visszaállítása az Azure virtuális gépek](backup-azure-restore-vms.md). Ha a virtuális gépek védelméről tájékoztatásra van szüksége, tekintse meg [először: készítsen biztonsági mentést a Recovery Services-tároló virtuális gépek](backup-azure-vms-first-look-arm.md). További tudnivalók a felügyeleti feladatokat a virtuális gép biztonsági mentésekhez, a cikkben [kezelése Azure virtuális gépek biztonsági mentéseinek](backup-azure-manage-vms.md).
+Hozza létre újra a virtuális gép helyreállítási pontból információkért tekintse meg [visszaállítása az Azure virtuális gépek](backup-azure-arm-restore-vms.md). Ha a virtuális gépek védelméről tájékoztatásra van szüksége, tekintse meg [először: készítsen biztonsági mentést a Recovery Services-tároló virtuális gépek](backup-azure-vms-first-look-arm.md). További tudnivalók a felügyeleti feladatokat a virtuális gép biztonsági mentésekhez, a cikkben [kezelése Azure virtuális gépek biztonsági mentéseinek](backup-azure-manage-vms.md).

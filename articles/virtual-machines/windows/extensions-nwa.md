@@ -15,17 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 508b3755556bcae6aa2c7d17a2d86a1430a8109a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 68855e0070916dc672914fbc8ca3587a5d3c25f6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Windows hálózati figyelő ügynök virtuálisgép-bővítmény
 
 ## <a name="overview"></a>Áttekintés
 
-[Az Azure hálózati figyelőt](https://review.docs.microsoft.com/azure/network-watcher/) hálózati teljesítmény figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi az Azure-hálózatok figyelését. A hálózati figyelő ügynök virtuálisgép-bővítményt az egyes hálózati figyelőt szolgáltatásokat az Azure virtuális gépeken működik. Ez magában foglalja, igény szerint és egyéb speciális funkciók a hálózati forgalom rögzítése.
+[Az Azure hálózati figyelőt](../../network-watcher/network-watcher-monitoring-overview.md) hálózati teljesítmény figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi, hogy az Azure-hálózatok figyelése. A hálózati figyelő ügynök virtuálisgép-bővítmény feltétele az igény szerinti hálózati forgalmat, és egyéb speciális funkció az Azure virtuális gépeken.
+
 
 Ez a dokumentum részletesen a támogatott platformokról és a Windows hálózati figyelő ügynök virtuálisgép-bővítmény vonatkozó telepítési lehetőségeket.
 
@@ -33,15 +34,15 @@ Ez a dokumentum részletesen a támogatott platformokról és a Windows hálóza
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A hálózati figyelő ügynök kiterjesztése a Windows is futtathatók a Windows Server 2008 R2, 2012, 2012 R2 és 2016 kiadását. Vegye figyelembe, hogy a Nano Server jelenleg nem támogatott.
+A hálózati figyelő ügynök kiterjesztése a Windows is futtathatók a Windows Server 2008 R2, 2012, 2012 R2 és 2016 kiadását. A Nano Server nem támogatott.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A hálózati figyelő ügynök funkciók némelyike megköveteli, hogy a cél virtuális gép kapcsolódnia kell az internetre. Kimenő kapcsolatokat képessége nélkül egyes hálózati figyelő ügynök szolgáltatásokat lehet, hogy hibás működését, vagy már nem érhető el. További részletekért lásd: a [hálózati figyelőt dokumentáció](../../network-watcher/network-watcher-monitoring-overview.md).
+A hálózati figyelő ügynök funkciók némelyike megköveteli, hogy a cél virtuális gép kapcsolódnia kell az internetre. Kimenő kapcsolatok létesítéséhez képessége nélkül a hálózati figyelő ügynök nem lesz tölthet fel csomag rögzíti a tárfiókhoz. További részletekért lásd: a [hálózati figyelőt dokumentáció](../../network-watcher/network-watcher-monitoring-overview.md).
 
 ## <a name="extension-schema"></a>A séma kiterjesztése
 
-A következő JSON jeleníti meg a hálózati figyelő ügynök bővítmény sémáját. A bővítmény sem szükséges és nem támogatja a megadott felhasználó által megadott beállításokat jelenleg és az alapértelmezett beállításon támaszkodik.
+A következő JSON jeleníti meg a hálózati figyelő ügynök bővítmény sémáját. A bővítmény sem van szüksége, és nem támogatja, a megadott felhasználó által megadott beállításokat és az alapértelmezett beállításon támaszkodik.
 
 ```json
 {
@@ -63,7 +64,7 @@ A következő JSON jeleníti meg a hálózati figyelő ügynök bővítmény sé
 
 ### <a name="property-values"></a>A tulajdonság értékek
 
-| Név | Érték / – példa |
+| Name (Név) | Érték / – példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | Közzétevő | Microsoft.Azure.NetworkWatcher |
@@ -73,27 +74,28 @@ A következő JSON jeleníti meg a hálózati figyelő ügynök bővítmény sé
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is telepíthető. Az előző szakaszban ismertetett JSON-séma segítségével az Azure Resource Manager-sablonok az Azure Resource Manager sablon telepítése során a hálózati figyelő ügynök bővítmény futtatása.
+Azure virtuális gép bővítményei az Azure Resource Manager-sablonok telepítése. A részletes leírást talál az előző szakaszban az Azure Resource Manager-sablon JSON-séma segítségével a hálózati figyelő ügynök bővítmény futtatása az Azure Resource Manager sablon üzembe helyezése során.
 
 ## <a name="powershell-deployment"></a>PowerShell telepítése
 
-A `Set-AzureRmVMExtension` parancs segítségével a hálózati figyelő ügynök virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre.
+Használja a `Set-AzureRmVMExtension` parancs használatával a hálózati figyelő ügynök virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre:
 
 ```powershell
-Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup1" `
-                       -Location "WestUS" `
-                       -VMName "myVM1" `
-                       -Name "networkWatcherAgent" `
-                       -Publisher "Microsoft.Azure.NetworkWatcher" `
-                       -Type "NetworkWatcherAgentWindows" `
-                       -TypeHandlerVersion "1.4"
+Set-AzureRmVMExtension `
+  -ResourceGroupName "myResourceGroup1" `
+  -Location "WestUS" `
+  -VMName "myVM1" `
+  -Name "networkWatcherAgent" `
+  -Publisher "Microsoft.Azure.NetworkWatcher" `
+  -Type "NetworkWatcherAgentWindows" `
+  -TypeHandlerVersion "1.4"
 ```
 
 ## <a name="troubleshooting-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Bővítmény központi telepítések állapotára vonatkozó lehet adatokat beolvasni az Azure-portálon, és az Azure PowerShell modul segítségével. A megadott virtuális gépek bővítmények központi telepítési állapotának megtekintéséhez a következő parancsot az Azure PowerShell modullal.
+Bővítmény központi telepítések állapotára vonatkozó adatainak lekérése az Azure portál és a PowerShell. Egy adott virtuális gép bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure PowerShell-modullal:
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent

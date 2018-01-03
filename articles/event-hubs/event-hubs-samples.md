@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: ae9fbd97a1747d8f14c561f247a0973bb11fd039
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0af3f6bc6e074fae4d830f163419d6437d04e2df
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-samples"></a>Event Hubs – minták 
 
@@ -27,9 +27,9 @@ Az Azure Event Hubs minták készletét bemutatja a legfontosabb jellemzők [Azu
 Az Event Hubs minták írásának időpontjában számos különböző helyeken találhatók:
 
 - [MSDN fejlesztői mintakódok](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
-- [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+- [GitHubon](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
-A .NET-keretrendszer különböző verzióival kapcsolatos további információkért lásd: [keretrendszerek és célok](/dotnet/articles/standard/frameworks).
+A .NET-keretrendszer különböző verziói kapcsolatos további információkért lásd: [keretrendszerek és célok](/dotnet/articles/standard/frameworks).
 
 Több minta lesz hozzáadva adott idő alatt, ezért vissza ide gyakran frissítések keresése.
 
@@ -69,7 +69,7 @@ A [húzza SQL adatok](https://github.com/Azure-Samples/event-hubs-dotnet-import-
 
 A [adatokat importálhat a webes](https://github.com/Azure-Samples/event-hubs-dotnet-importfromweb) minta bemutatja, hogyan olvasnak be adatokat (például a szállítására részleg forgalom információk hírcsatorna) nyilvános hírcsatornák a, és hogy egy eseményközpontba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók a .NET-keretrendszer-verziók érhetők el a következőket:
 

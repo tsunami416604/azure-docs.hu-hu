@@ -1,24 +1,16 @@
 ---
-title: "Tekintse át a fizikai kiszolgáló replikáció Azure architektúra |} Microsoft Docs"
+title: "Az Azure Site Recovery Azure replikációs architektúrát a fizikai kiszolgáló |} Microsoft Docs"
 description: "Ez a cikk áttekintést összetevők és használható, ha a helyszíni fizikai kiszolgálók replikálása Azure-bA az Azure Site Recovery szolgáltatással architektúra"
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: aac3450e-dfac-4e20-b377-1a6cd39d04ca
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 02dafa60f19df88123358446ac72d9be85577554
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8bae8688e322efd0a0556cf01e319252d42fc31d
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>Fizikai kiszolgálók Azure replikációs-architektúra
 
@@ -63,22 +55,18 @@ A következő tábla és a kép adjon meg egy áttekintést nyújt az Azure-bA f
 Replikáció be van állítva, és egy vész helyreállítási részletezéshez (feladatátvételi teszt) ellenőrizze, hogy minden a várt módon működik futtatását, miután futtatása feladatátvétel és a feladat-visszavétel szükség van. Vegye figyelembe:
 
 - A tervezett feladatátvétel nem támogatott.
-- Meg kell tudni vissza egy helyszíni VMware virtuális gép. Ez azt jelenti, hogy helyszíni VMware-infrastruktúrára akkor is szükség van, ha helyszíni fizikai kiszolgálókat replikál az Azure-ba.
-
-
-1. Egyetlen gép feladatátvételt, vagy helyreállítási terveket, egyszerre több gép feladatátadását hozhat létre.
-2. Amikor feladatátvételt, Azure virtuális gépek replikált adatokból jönnek létre az Azure storage.
-3. Után váltanak ki a kezdeti feladatátvételi, véglegesítheti a munkaterhelés elérése az Azure virtuális gép elindításához.
-
-Amint az elsődleges helyszíni hely megint elérhetővé válik, visszaadhatja a feladatokat.
-
-1. A feladat-visszavétel infrastruktúra beállításához szüksége többek között:
+- Meg kell tudni vissza egy helyszíni VMware virtuális gép. Ez azt jelenti, hogy egy helyszíni VMware-infrastruktúra szükséges, akkor is, ha a helyszíni fizikai kiszolgálók replikálása az Azure-bA.
+- Egyetlen gép feladatátvételt, vagy helyreállítási terveket, egyszerre több gép feladatátadását hozhat létre.
+- Amikor feladatátvételt, Azure virtuális gépek replikált adatokból jönnek létre az Azure storage.
+- Után váltanak ki a kezdeti feladatátvételi, véglegesítheti a munkaterhelés elérése az Azure virtuális gép elindításához.
+- Amint az elsődleges helyszíni hely megint elérhetővé válik, visszaadhatja a feladatokat.
+- A feladat-visszavétel infrastruktúra beállításához szüksége többek között:
     - **Ideiglenes folyamatkiszolgáló az Azure-ban**: sikertelen lesz az Azure-ból, állít be egy Azure virtuális gép folyamat kiszolgálója, az Azure-ból replikáció kezelésére. Ez a virtuális gép a feladatok visszaadását követően törölhető.
     - **VPN-kapcsolat**: a feladat-visszavételt, kell egy VPN-kapcsolat (vagy Azure ExpressRoute) Azure-hálózatában a helyszíni hely.
     - **Külön fő célkiszolgáló**: alapértelmezés szerint a fő célkiszolgáló telepítése sikeres volt, a konfigurációs kiszolgálón, a helyszíni VMware virtuális gép, a feladat-visszavétel kezeli. Azonban ha vissza nagy mennyiségű forgalom sikertelen van szüksége, érdemes beállítania egy önálló helyszíni fő célkiszolgáló erre a célra.
     - **Feladat-visszavételi szabályzat**: A helyszíni helyre történő újbóli replikáláshoz feladat-visszavételi szabályzatra van szükség. Ez automatikusan jött létre, amikor a helyszíni Azure létrehozta a replikációs házirend.
     - **VMware-infrastruktúra**: egy VMware-infrastruktúra feladat-visszavételhez szüksége. Fizikai kiszolgáló nem használható a feladat-visszavételhez.
-2. Miután az összetevő a következő helyen, feladat-visszavétel három lépésben történik:
+- Miután az összetevő a következő helyen, feladat-visszavétel három lépésben történik:
     - 1. fázis: Lássa el újból védelemmel az Azure virtuális gépeket, hogy azok replikálása az Azure-ból a helyszíni VMware virtuális gépek vissza a.
     - 2. fázis: Feladatátvételt végez a helyszíni hely.
     - 3. fázis: Után munkaterhelések ismét sikertelen, akkor engedélyezi replikációs.
@@ -88,7 +76,6 @@ Amint az elsődleges helyszíni hely megint elérhetővé válik, visszaadhatja 
 ![Feladat-visszavétel](./media/concepts-physical-to-azure-architecture/enhanced-failback.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse át a támogatási mátrix oktatóanyag VMware Azure replikáció engedélyezéséhez.
-Futtassa a feladatátvételi és a feladat-visszavétel.
+Hajtsa végre a [ebben az oktatóanyagban](tutorial-physical-to-azure.md) fizikai kiszolgálók Azure-replikációs szolgáltatására való engedélyezéséhez.

@@ -17,10 +17,10 @@ ms.custom: security
 ms.date: 03/21/2017
 ms.author: rortloff;barbkess
 ms.openlocfilehash: 92f48027051bc4aff4d6b8d66fdd6de81bba3657
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="authentication-to-azure-sql-data-warehouse"></a>Authentication to Azure SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -90,7 +90,7 @@ Azure Active Directory-felhasználók jelenleg nem láthatók az SSDT Object Exp
 * Konfigurálhatja és használhatja az Azure Active Directory hitelesítési lépésekre csaknem azonosak, az Azure SQL Database és Azure SQL Data warehouse-bA. Kövesse a témakör részletes lépéseit [csatlakozás az SQL Database vagy az SQL Data Warehouse által használata Azure Active Directory-hitelesítéssel](../sql-database/sql-database-aad-authentication.md).
 * Egyéni adatbázis-szerepkörök létrehozása és felhasználók hozzáadása a szerepkörökhöz. A szerepkörök részletes szükséges engedélyeket adja meg. További információkért lásd: [Ismerkedés az adatbázis-motor engedélyek](https://msdn.microsoft.com/library/mt667986.aspx).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Indítsa el a Visual Studio és más alkalmazások az adatraktár lekérdezésére, lásd: [lekérdezése a Visual Studio][Query with Visual Studio].
 
 <!-- Article references -->

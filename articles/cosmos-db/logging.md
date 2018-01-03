@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: mimig
-ms.openlocfilehash: 14dce37a953984d3e1ce80b813f386210e85d261
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: c5e85ac6eec1b8b0a5a78f552b190ce3f3c55c38
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
@@ -56,7 +56,7 @@ Az oktatóanyag elvégzéséhez a következőket kell rendelkeznie:
     * **Naplóelemzési küldése**.     Használja ezt a beállítást, vagy használjon meglévő munkaterülethez vagy hozzon létre egy új Naplóelemzési munkaterület lépéseit követve [hozzon létre egy új munkaterületet](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace) a portálon. A naplók megtekintése a Naplóelemzési további információkért lásd: [Naplóelemzési a naplók megtekintése](#view-in-loganalytics).
     * **Naplófájl DataPlaneRequests**. Ezt a beállítást a diagnosztika SQL, a Graph és a tábla API fiókok bejelentkezni. Ha archiválni egy tárfiókot, válassza a diagnosztikai naplók megőrzési időtartama. Nincsenek autodeleted naplói a megőrzési időszak lejárta után.
     * **Naplófájl MongoRequests**. Válassza ezt a beállítást, a MongoDB API fiókok diagnosztika bejelentkezni. Ha archiválni egy tárfiókot, válassza a diagnosztikai naplók megőrzési időtartama. Nincsenek autodeleted naplói a megőrzési időszak lejárta után.
-    * **Metrika kérelmek**. Válassza ezt a beállítást, a részletes adatok tárolására [Azure metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md#cosmosdb). Ha archiválni egy tárfiókot, válassza a diagnosztikai naplók megőrzési időtartama. Nincsenek autodeleted naplói a megőrzési időszak lejárta után.
+    * **Metrika kérelmek**. Válassza ezt a beállítást, a részletes adatok tárolására [Azure metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md). Ha archiválni egy tárfiókot, válassza a diagnosztikai naplók megőrzési időtartama. Nincsenek autodeleted naplói a megőrzési időszak lejárta után.
 
 3. Kattintson a **Save** (Mentés) gombra.
 
@@ -416,7 +416,7 @@ Az alábbi táblázatban minden naplóbejegyzés tartalmát.
 | Tevékenységazonosító | activityId_g | A naplózott műveletnek egyedi GUID azonosítója. |
 | Felhasználói ügynök | userAgent_s | A kérelem végrehajtása felhasználói ügynök meghatározó karakterlánc. A formátum: {felhasználói ügynök neve} / {version}.|
 | a resourceType | ResourceType | Elért erőforrás típusa. Ez az érték a következő típusok egyike lehet: adatbázis, gyűjtemény, a dokumentum, melléklet, felhasználó, engedéllyel, tárolt eljárás, eseményindító, UserDefinedFunction vagy ajánlat. |
-| állapotkód |statusCode_s | A válasz a művelet állapotát. |
+| statusCode |statusCode_s | A válasz a művelet állapotát. |
 | requestResourceId | ResourceId | Az erőforrás-azonosítója a kérést, vethetők databaseRid, collectionRid vagy documentRid végrehajtott művelettől függően előfordulhat, hogy mutasson.|
 | clientIpAddress | clientIpAddress_s | Az ügyfél IP-címét. |
 | requestCharge | requestCharge_s | A művelet által használt RUs száma |
@@ -426,7 +426,7 @@ Az alábbi táblázatban minden naplóbejegyzés tartalmát.
 | responseLength | responseLength_s | A válasz bájtban hosszát.|
 | resourceTokenUserRid | resourceTokenUserRid_s | Ami nem üres mikor [erőforrás jogkivonatok](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) használ a hitelesítési és erőforrás-azonosító a felhasználó mutat. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Felmérheti, nem csak hogyan engedélyezze a naplózást, hanem a metrikák és a napló kategóriák a különböző Azure által támogatott szolgáltatások olvassa el is a [áttekintése a Microsoft Azure-ban mérőszámok](../monitoring-and-diagnostics/monitoring-overview-metrics.md) és [áttekintés az Azure Diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) cikkeket.
 - Ezek a cikkek az event hubs megismeréséhez olvassa el:

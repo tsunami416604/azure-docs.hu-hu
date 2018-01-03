@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: 034bfe6fbab3da083d6c63f99f960467fd0a84e9
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Figyelése és diagnosztizálása szolgáltatásai a helyi számítógép fejlesztési beállítása
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Projektek alapján létrehozott a **szereplő sablonok** (állapot nélküli és
 
 Egyéni ETW-nyomkövetés adásakor a szolgáltatáskód hibáit, létre, telepíthetnek és ismételt használatával ellenőrizheti az esemény a diagnosztikai eseménynaplóhoz az alkalmazás futtatásához. Ha az alkalmazás hibakeresése **F5**, a diagnosztikai eseménynaplóhoz automatikusan megnyílik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alkalmazás helyi diagnosztikai fentiekben hozzáadott ugyanazt nyomkövetés a kódot az eszközöket, amelyek segítségével megtekintheti ezeket az eseményeket az Azure-fürttel az alkalmazás futtatásakor fog működni. Tekintse meg a cikkek ismertetik az eszközök a különböző lehetőségek közül, és írja le, hogyan állíthat be őket.
 
 * [Az Azure diagnosztikai naplók gyűjtéséről](service-fabric-diagnostics-how-to-setup-wad.md)

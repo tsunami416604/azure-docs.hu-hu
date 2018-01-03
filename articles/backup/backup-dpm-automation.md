@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 1/23/2017
 ms.author: adigan;anuragm;trinadhk;markgal
 ms.openlocfilehash: 9322037427c84f0b8a91cc76f5c0fed52167bc3c
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 Ez a cikk bemutatja, hogyan PowerShell használatával történő telepítés Azure biztonsági mentés DPM-kiszolgálón, és kezelheti a biztonsági mentés és helyreállítás.
@@ -119,7 +119,7 @@ Ezzel telepíti az ügynököt az összes alapértelmezett beállítást. A tele
 
 Az ügynök megjelennek a telepített programok listájában. A telepített programok listájának megtekintéséhez keresse fel **Vezérlőpult** > **programok** > **programok és szolgáltatások**.
 
-![Az ügynök telepítve](./media/backup-dpm-automation/installed-agent-listing.png)
+![Ügynök telepítve](./media/backup-dpm-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Telepítési beállítások
 A parancssor keresztül elérhető lehetőségekről, használja a következő parancsot:
@@ -365,5 +365,5 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 
 A parancsok könnyen bővíthető bármely adatforrástípusnál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a DPM az Azure Backup szolgáltatásba: [Bevezetés a DPM biztonsági mentése](backup-azure-dpm-introduction.md)

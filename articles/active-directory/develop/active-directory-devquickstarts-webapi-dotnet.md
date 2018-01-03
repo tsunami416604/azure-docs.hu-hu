@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 096beac3a1acae312ccddc6cbd88378370feed39
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c6c0aeba2eaa7709bbe55ecadd82a4f22d57c25e
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="help-protect-a-web-api-by-using-bearer-tokens-from-azure-ad"></a>A webes API védelme az Azure AD tulajdonosi jogkivonatok segítségével
+# <a name="azure-ad-net-web-api-getting-started"></a>Az Azure AD .NET webes API első lépések
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 Ha a védett erőforrásokhoz való hozzáférést biztosít az alkalmazás most felépítése, meg kell ismernie történő jogosulatlan hozzáférés elkerülése érdekében ezeket az erőforrásokat.
@@ -147,7 +147,7 @@ Ahhoz, hogy a To tegye lista Service működés közben, a teendőlista-ügyfél
   * `ida:ClientId`a rendszer az Azure-portálról másolt alkalmazás Azonosítóját.
   * `todo:TodoListResourceId`az App ID URI számára tegye lista szolgáltatásalkalmazás az Azure-portálon megadott van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Végül törlése, elkészítéséhez és futtatása minden olyan projekthez. Ha még nem tette meg, most már az új felhasználó létrehozása a bérlő az idő a *. onmicrosoft.com tartományt. Jelentkezzen be, hogy a felhasználó a teendőlista ügyfélnek, és bizonyos feladatok hozzáadása a felhasználói feladatlistában.
 
 Referenciaként az elkészült mintát (a konfigurációs értékek nélkül) érhető el a [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Most már továbbléphet további identitás forgatókönyvek.

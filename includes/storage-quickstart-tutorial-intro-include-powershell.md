@@ -6,7 +6,7 @@ Jelentkezzen be az Azure-előfizetésbe a `Login-AzureRmAccount` paranccsal, és
 Login-AzureRmAccount
 ```
 
-Ha nem tudja, melyik használni kívánt helyet, listázhatja a helyeket. Miután a lista megjelenik, megtalálja használni kívánt. Ez a példa használandó **eastus**. Ez tárolható egy változóban, és használja a változót, így módosíthatja egy helyen.
+Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ez a példa **eastus**. Tárolja el ezt egy változóban, és használja azt, így szükség esetén csak egy helyen kell módosítania az adatokat.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -24,7 +24,7 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-Hozzon létre egy szabványos általános célú tárfiókot az LRS-replikáció használatával [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), majd lekérheti a tárfiók környezetét, amely definiálja a tárfiókot használni. A tárfiók eljárva hivatkozik a környezet helyett ismételten adja meg a hitelesítő adatokat. Ez a példa nevű tárfiók létrehozása *mystorageaccount* a helyileg redundáns tárolás és a blob titkosítás engedélyezve van.
+Hozzon létre egy szabványos általános célú tárfiókot az LRS-replikáció használatával [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), majd lekérheti a tárfiók környezetét, amely definiálja a tárfiókot használni. A tárfiók eljárva hivatkozik a környezet helyett ismételten adja meg a hitelesítő adatokat. Ez a példa nevű tárfiók létrehozása *mystorageaccount* titkosítással helyileg redundáns storage(LRS) és blob (alapértelmezés szerint engedélyezve van).
 
 ```powershell
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
@@ -32,7 +32,6 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Location $location `
   -SkuName Standard_LRS `
   -Kind Storage `
-  -EnableEncryptionService Blob
 
 $ctx = $storageAccount.Context
 ```

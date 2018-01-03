@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: ccompy
-ms.openlocfilehash: d285e63e64d8f4a260c45143f0ae3f7fddd4a2b6
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: b755197af7e8791e01273bcc25f72c0d92ef6bc2
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure virtuális hálózat
 Ez a dokumentum az Azure App Service virtuális hálózati integráció funkció használatát ismerteti és bemutatja, hogyan állíthatja be az alkalmazásokkal [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ha ismeri az Azure virtuális hálózatokról (Vnetekről), ez az a képesség, amely lehetővé teszi egy nem internetes routeable hálózat elérését Ön szabályozza az Azure-erőforrások számos helyezendő. Ezek a hálózatok csatlakozhat a helyszíni VPN technológiáin különböző hálózatokhoz. Többet szeretne megtudni az Azure Virtual Network, indítsa el az adatok itt: [Azure virtuális hálózat áttekintése][VNETOverview]. 
@@ -52,7 +52,7 @@ Néhány dolgot virtuális integráció nem támogatja, többek között:
 * NetBios
 * személyes hozzáférés
 
-### <a name="getting-started"></a>Bevezetés
+### <a name="getting-started"></a>Első lépések
 Az alábbiakban tartsa szem előtt a webalkalmazást egy virtuális hálózathoz való csatlakozás előtt a következőkre:
 
 * Virtuális integráció csak olyan alkalmazások működik egy **szabványos**, **prémium**, vagy **elszigetelt** árképzési terv. Ha a funkció engedélyezéséhez, majd App Service-csomag skálázása egy nem támogatott díjszabási csomaggal az alkalmazások kapcsolata megszakad a Vnetek használják a. 
@@ -257,6 +257,10 @@ Ha a virtuális hálózat most méretű képes elérni a helyszíni rendszer, de
 * a hálózati biztonsági csoportok blokkolják a hozzáférést a hely IP-címtartomány pont
 * a helyszíni tűzfalak blokkolják a hely IP-címtartomány a pont-forgalom
 * egy felhasználó definiált Route(UDR) vannak a virtuális hálózat, amely megakadályozza, hogy a pont helyrendszer-alapú forgalmat a helyszíni hálózat elérése
+
+## <a name="powershell-automation"></a>PowerShell-automatizálás
+
+App Service integrálható az Azure Virtual Network PowerShell használatával. Készen áll a futásra parancsfájl, lásd: [az Azure App Service alkalmazás csatlakoztatása az Azure-beli virtuális hálózathoz](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
 
 ## <a name="hybrid-connections-and-app-service-environments"></a>Hibrid kapcsolatok és az App Service-környezetek
 Nincsenek három szolgáltatást, amely a virtuális hálózaton található erőforrások elérésének lehetővé tétele. Ezek a következők:

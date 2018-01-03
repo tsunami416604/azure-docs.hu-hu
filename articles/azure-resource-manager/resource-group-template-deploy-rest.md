@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 03/10/2017
 ms.author: tomfitz
 ms.openlocfilehash: 46856a25fb57bb2c5a3c1aeae13c11655e1a58a5
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val
 > [!div class="op_single_selector"]
 > * [PowerShell](resource-group-template-deploy.md)
 > * [Azure CLI](resource-group-template-deploy-cli.md)
-> * [Portál](resource-group-template-deploy-portal.md)
+> * [Portal](resource-group-template-deploy-portal.md)
 > * [REST API](resource-group-template-deploy-rest.md)
 > 
 > 
@@ -90,7 +90,7 @@ A sablon lehet egy helyi fájl vagy a külső fájlra, amely egy URI keresztül 
 
 [!INCLUDE [resource-manager-parameter-file](../../includes/resource-manager-parameter-file.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Aszinkron REST műveleteinek kezelésére vonatkozó további tudnivalókért lásd: [nyomon követheti a aszinkron Azure műveleteket](resource-manager-async-operations.md).
 * Például a .NET ügyféloldali kódtár erőforrásoknak történő telepítésének, [központi telepítése a .NET-kódtárakra és egy sablon használatával erőforrások](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Sablon paraméterek megadásához tekintse meg a [sablonok készítése](resource-group-authoring-templates.md#parameters).

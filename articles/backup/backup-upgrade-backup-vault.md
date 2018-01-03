@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: cfc2fde552b029412042474e31a1b28dd80b3021
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 708983fc2c5264d1213bdb32b665dcccc5ca9df9
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Recovery Services-tároló frissített mentési tároló
 Ez a cikk áttekintést nyújt milyen Recovery Services-tároló, a Recovery Services-tároló és a frissítés utáni lépések tároló létező biztonsági másolathoz történő frissítéssel kapcsolatos gyakran ismételt kérdések. Recovery Services-tároló megfelel az Azure Resource Manager egy biztonsági mentési tárolót, amely a biztonsági mentési adatokat. Az adatokat a program általában másolja az adatokat, vagy a konfigurációs adatokat a virtuális gépek (VM), a munkaterhelések, a kiszolgálók vagy a munkaállomások, hogy a helyszíni vagy az Azure-ban.
@@ -71,7 +71,7 @@ Egyszer, frissítse a Recovery Services-tároló, jelentések konfigurálása az
 Nem. A folyamatban levő biztonsági másolatok megszakításmentes folytatásához során, és a frissítés után.
 
 **A meglévő eszközt használunk erre a frissítési középértéket funkciója?**</br>
-A Resource Manager üzembe helyezési modellben annak érdekében, hogy az tovább működni a frissítés után frissítse a meglévő automatizációk vagy tooling. Tekintse meg a PowerShell-parancsmagok hivatkozásokat az a [Service Manager telepítési modell](backup-client-automation-classic.md) és a [Resource Manager üzembe helyezési modellben](backup-client-automation.md).
+A Resource Manager üzembe helyezési modellben annak érdekében, hogy az tovább működni a frissítés után frissítse a meglévő automatizációk vagy tooling. Tekintse meg a PowerShell-parancsmagok hivatkozásokat az a [Resource Manager üzembe helyezési modellben](backup-client-automation.md).
 
 **I vissza lehet vonni a frissítés után?**</br>
 Nem. Miután az erőforrások frissítése sikeresen befejeződött a rollback utasítás nem támogatott.
@@ -99,7 +99,7 @@ Győződjön meg arról, ha több tárolóból az egyazon számítógépen regis
 **Hogyan jelenthetem a problémát?**</br>
 Ha nem sikerül bármely részét a tároló frissítési, vegye figyelembe a OperationID azonosítójú szerepel a hiba. A probléma megoldásához a Microsoft Support proaktív módon működnek. Támogatási érheti el, vagy e-mail-nekünk az rsvaultupgrade@service.microsoft.com az előfizetés-azonosító, a tároló neve és a OperationID azonosítójú. Megpróbáljuk a lehető leggyorsabban tegye a probléma megoldásához. Próbálja megismételni a műveletet nem kivéve, ha explicit módon kifejezetten kéri a Microsoft által.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Használja a következő cikkeket:</br>
 [Készítsen biztonsági másolatot az infrastruktúra-szolgáltatási virtuális gép](backup-azure-arm-vms-prepare.md)</br>
 [Készítsen biztonsági másolatot az Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>

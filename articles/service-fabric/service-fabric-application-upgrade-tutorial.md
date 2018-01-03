@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.openlocfilehash: 940440688ec770a4aeb932b574bd6be173f494d4
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>A Service Fabric frissítés oktatóanyag a Visual Studio használatával
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Néhány perc múlva minden frissítés tartományok (elvégezve) kell frissíte
 
 Érdemes lehet próbálja meg módosítani a verziók és verzió 2.0.0 3.0.0 egy gyakorlatot, verzióra, vagy akár vissza verzióról 1.0.0 2.0.0 verziója. Lejátszás a időtúllépéseket és az állapotházirendeket el saját magának ismeri a őket. A helyi fürt szemben Azure fürthöz való telepítésekor használt paraméterek lehet térnek el egymástól. Azt javasoljuk, hogy állítsa a időtúllépéseket konzervatív módon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az alkalmazás használatával PowerShell frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti Önt az alkalmazásfrissítés PowerShell használatával.
 
 Szabályozza, hogyan az alkalmazás frissítés használatával [frissítési paraméterek](service-fabric-application-upgrade-parameters.md).

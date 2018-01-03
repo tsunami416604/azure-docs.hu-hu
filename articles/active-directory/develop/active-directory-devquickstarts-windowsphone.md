@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5edaee6a4adedc440b16e936462df5e224fe8609
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87cf0464a515c8616363d13a16844220acaa51f3
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-with-a-windows-phone-app"></a>Azure AD integrálása a Windows Phone-alkalmazás
+# <a name="azure-ad-windows-phone-getting-started"></a>Ismerkedés az Azure AD Windows Phone
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -72,7 +72,7 @@ Most, hogy az Azure AD-alkalmazás, telepítse az adal-t, és az identitás-kapc
 PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 ```
 
-* A DirectorySearcher projektben nyissa meg a `MainPage.xaml.cs`.  Cserélje le az értékeket a `Config Values` régió be az Azure-portálra megadott értékeknek megfelelően.  A kód minden alkalommal ADAL hivatkozik ezeket az értékeket.
+* A DirectorySearcher projektben nyissa meg a `MainPage.xaml.cs`.  Cserélje le az értékeket a `Config Values` régió be az Azure portálon megadott értékeknek megfelelően.  A kód minden alkalommal ADAL hivatkozik ezeket az értékeket.
   * A `tenant` a tartományt az Azure AD-bérlőn, pl.: contoso.onmicrosoft.com
   * A `clientId` ClientID-azonosítóját az alkalmazás a portálról másolt van.
 * Most meg kell a Windows Phone-alkalmazás visszahívási URI-jának felderítése.  Ez a sor állítson be egy töréspontot a `MainPage` módszert:

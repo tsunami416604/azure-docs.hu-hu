@@ -3,8 +3,8 @@ title: "Általános SQL összekötő |} Microsoft Docs"
 description: "Ez a cikk ismerteti a Microsoft általános SQL-összekötő konfigurálásával."
 services: active-directory
 documentationcenter: 
-author: AndKjell
-manager: mtillman
+author: fimguy
+manager: bhu
 editor: 
 ms.assetid: fd8ccef3-6605-47ba-9219-e0c74ffc0ec9
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
-ms.author: billmath
-ms.openlocfilehash: 04a6b7290c4a17d60145355ef1374960a8b6c5ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 12/19/2017
+ms.author: davidste
+ms.openlocfilehash: a365219e433f4876401a9c35b8a656060508efbd
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Általános SQL összekötő műszaki útmutatója
 Ez a cikk ismerteti az általános SQL-összekötőt. A cikk vonatkozik a következő termékek:
@@ -71,7 +71,7 @@ Az összekötő egy ODBC Adatforrásnevet fájlt használja a hálózati kapcsol
 Kapcsolat a képernyő az első új általános SQL összekötő létrehozásakor. Először meg kell adnia a következőket:
 
 * DSN fájl elérési útja
-* Authentication
+* Hitelesítés
   * Felhasználónév
   * Jelszó
 
@@ -231,7 +231,11 @@ Ezeket a lépéseket az összekötő a futtatási profil konfigurálása. Ezek a
 ![runstep1](./media/active-directory-aadconnectsync-connector-genericsql/runstep1.png)
 
 **Tábla/nézet**  
-Többértékű attribútumok az objektumok importálásához meg kell adnia a vesszővel tagolt tábla/nézet neve a **nevét a többértékű tábla/nézetek** és a megfelelő illesztési feltételek a **feltétel csatlakozás** a szülő táblával.
+Egy objektum többértékű attribútumok importálásához meg kell adnia a tábla vagy nézet nevét **nevét a többértékű tábla/nézetek** és a megfelelő illesztési feltételek a **feltétel csatlakozás** és a szülő tábla . Ha egynél több többértékű tábla az adatforrás, használhatja az Unió egyetlen nézetben.
+
+>[!IMPORTANT]
+Az általános SQL management agent csak egyazon többértékű táblában együttműködhet. Nem helyezett több tábla Név többértékű tábla vagy nézet nevét. Az általános SQL korlátozás.
+
 
 Példa: Importálandó az alkalmazott objektum és a hozzá tartozó többértékű attribútumok. Nincsenek alkalmazott (fő tábla) és a részleg (többértékű) nevű táblát.
 Tegye a következőket:

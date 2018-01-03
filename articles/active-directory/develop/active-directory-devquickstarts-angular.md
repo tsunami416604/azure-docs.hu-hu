@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5f2bf857d2618a8cfe7094c7f3124be20db3ff39
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d46f04a3e9fdb1beaf11c769ecdd7b807c5f817f
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="help-secure-angularjs-single-page-apps-by-using-azure-ad"></a>Számítógépek biztonságossá tétele AngularJS egyoldalas alkalmazások az Azure AD segítségével
+# <a name="azure-ad-angularjs-getting-started"></a>Ismerkedés az Azure AD AngularJS
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
@@ -117,7 +117,7 @@ Adal.js jól integrálható az AngularJS útvonal és a HTTP-szolgáltatók, az 
     ...
     ```
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Most már rendelkezik egy biztonságos alkalmazás, amely a felhasználók bejelentkezhetnek és tulajdonosi jogkivonat-védelemmel ellátott kérelmeket kiadni a háttér-API. Amikor a felhasználó rákattint a **TodoList** hivatkozásra a adal.js automatikusan átirányítja az Azure AD-hez bejelentkezési szükség esetén. Ezenkívül adal.js automatikusan kapcsolódni fog olyan hozzáférési jogkivonatot, bármely Ajax-kérelmek az alkalmazás háttér küldött.  
 
 Az előző lépéseket kell a operációs rendszer minimálisan szükséges adal.js használatával egy egyoldalas alkalmazás elkészítésére. Azonban néhány egyéb szolgáltatásokat az alkalmazás hasznos információkat:
@@ -156,7 +156,7 @@ Adal.js megkönnyíti, hogy az általános identitás-szolgáltatások átfogó 
 
 Referenciaként az elkészült mintát (a konfigurációs értékek nélkül) érhető el a [GitHub](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már továbbléphet további helyzeteket is. Akkor célszerű: [CORS webes API meghívása egy egyoldalas alkalmazásból](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet).
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

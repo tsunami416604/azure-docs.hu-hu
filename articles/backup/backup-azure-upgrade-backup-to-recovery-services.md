@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/09/2017
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 4867a43aab1357cb8e01c2ddcef74cdebb41a84a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: c50095ef5aef750787ec65d64ab92b0e06e20d2c
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Frissítse a biztonsági másolatok tárolóját a Recovery Services-tároló
 
@@ -34,7 +34,7 @@ Amikor frissíti a biztonsági másolatok tárolóját a Recovery Services-táro
 ## <a name="changes-to-your-automation-and-tool-after-upgrading"></a>Az automatizálás és a frissítés után az eszköz módosításai
 
 Az infrastruktúra előkészítése a tároló frissítési, során a meglévő automatizációk vagy tooling annak érdekében, hogy az tovább működni a frissítés után kell frissíteni.
-Tekintse meg a PowerShell-parancsmagok hivatkozásokat az a [Service Manager telepítési modell](backup-client-automation-classic.md) és a [Resource Manager üzembe helyezési modellben](backup-client-automation.md).
+Tekintse meg a PowerShell-parancsmagok hivatkozásokat az a [Resource Manager üzembe helyezési modellben](backup-client-automation.md).
 
 
 ## <a name="before-you-upgrade"></a>Frissítés előtti teendők
@@ -154,7 +154,7 @@ Ha a számítógép biztonsági másolatait tárolni többé nem kell, majd adja
 Ha nem sikerül bármely részét a tároló frissítési, vegye figyelembe a OperationID azonosítójú szerepel a hiba. A probléma megoldásához a Microsoft Support proaktív módon működnek. Támogatási érheti el, vagy e-mail-nekünk az rsvaultupgrade@service.microsoft.com az előfizetés-azonosító, a tároló neve és a OperationID azonosítójú. Megpróbáljuk a lehető leggyorsabban tegye a probléma megoldásához. Próbálja megismételni a műveletet nem kivéve, ha explicit módon kifejezetten kéri a Microsoft által.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Használja a következő cikkhez:</br>
 [Készítsen biztonsági másolatot az infrastruktúra-szolgáltatási virtuális gép](backup-azure-arm-vms-prepare.md)</br>
 [Készítsen biztonsági másolatot az Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>

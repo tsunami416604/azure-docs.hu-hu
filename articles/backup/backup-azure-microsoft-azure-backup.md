@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 7/20/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
 ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Számítási feladatok biztonsági mentésének előkészítése az Azure Backup Serverrel
 > [!div class="op_single_selector"]
@@ -267,7 +267,7 @@ Lehetséges az Azure-előfizetés érvénybe egy *lejárt* vagy *Deprovisioned* 
 Ha a Microsoft Azure Backup server hibákkal megszakad, miközben a telepítési fázis (vagy biztonsági mentési vagy visszaállítási), tekintse meg a [hiba kódok dokumentum](https://support.microsoft.com/kb/3041338) további információt.
 Azt is jelentheti [Azure biztonsági mentés kapcsolatos gyakori kérdések](backup-azure-backup-faq.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Részletes információt kaphat a [a környezet előkészítése a DPM](https://technet.microsoft.com/library/hh758176.aspx) a Microsoft TechNet webhelyen. Támogatott konfigurációk, amelyen Azure Backup Server telepítése és használt adatait is tartalmazza.
 
 Ezek a cikkek segítségével egy mélyrehatóbb ismereteket szerezhet a munkaterhelések védelme a Microsoft Azure Backup server.

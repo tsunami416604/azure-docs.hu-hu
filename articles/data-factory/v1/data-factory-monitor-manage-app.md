@@ -16,10 +16,10 @@ ms.date: 10/15/2017
 ms.author: spelluru
 robots: noindex
 ms.openlocfilehash: 65b5389837dc1d1693b1c4326b98264c8d75fd06
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Figyelheti és kezelheti az Azure Data Factory adatcsatornák a figyelés és felügyelet alkalmazással
 > [!div class="op_single_selector"]
@@ -326,7 +326,7 @@ A következő táblázat a rendelkezésre álló eseményeket és állapotokat (
 | --- | --- | --- |
 | A tevékenység futtatása megkezdődött |Elindítva |Indulás alatt |
 | A tevékenység futtatása befejeződött |Sikeres |Sikeres |
-| A tevékenység futtatása befejeződött |Sikertelen |Nem sikerült erőforrás-elosztás<br/><br/>Sikertelen végrehajtása<br/><br/>Időtúllépést okozott<br/><br/>Érvényesítés<br/><br/>Elhagyott |
+| A tevékenység futtatása befejeződött |Sikertelen |Nem sikerült erőforrás-elosztás<br/><br/>Sikertelen végrehajtása<br/><br/>Időtúllépés<br/><br/>Érvényesítés<br/><br/>Elhagyott |
 | Igény szerinti HDI-fürtöt létrehozni elindítva |Elindítva |-|
 | Igény szerinti HDI-fürtnek sikeresen létrehozva |Sikeres |-|
 | Igény szerinti HDI-fürtnek törlése |Sikeres |-|

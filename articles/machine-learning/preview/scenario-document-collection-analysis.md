@@ -4,15 +4,17 @@ description: "Hogyan összefoglalója elemzése a dokumentumok, ideértve péld�
 services: machine-learning
 author: kehuan
 ms.author: kehuan
-ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview
+manager: mwinkle
+ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview, mldocs
 ms.service: machine-learning
+ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 49e215e723728f54a34f7c4e3a89217f16250002
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: a6034652f27765bb20db4dbbb4c25741b261e50a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="document-collection-analysis"></a>A dokumentum gyűjtemény elemzés
 

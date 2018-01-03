@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0e849f99edfc80f7f175c0829552f39da456a204
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 21dfd8cc79c83b2c091249c7f214d394ad119c4c
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a>Java-webalkalmazás be- és kijelentkezési az Azure ad szolgáltatással
+# <a name="azure-ad-java-web-app-getting-started"></a>Az Azure AD Java-webalkalmazás első lépések
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 Be- és kijelentkezési egyetlen azáltal csak néhány sornyi kódot, Azure Active Directory (Azure AD) egyszerűen meg a webalkalmazás Identitáskezelés kihelyező. Java-webalkalmazások mindkét felhasználók regisztrálhat a Microsoft általi implementációja a közösségi szerkesztésű Azure Active Directory Authentication Library (ADAL4J) Java használatával.
@@ -1713,7 +1713,7 @@ Most a /targets könyvtárban adal4jsample.war fájl rendelkeznie kell. Telepít
 > Könnyedén telepítheti a legújabb Tomcat kiszolgálókat .war fájlt. Ugrás a 8080/kezelő /, és kövesse az utasításokat a adal4jsample.war fájl feltöltése. A következőket hajtja végre autodeploy meg a helyes végpontját.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már rendelkezik egy működő, Java-alkalmazást, amely hitelesíti a felhasználókat, biztonságos webes API-k OAuth 2.0 használatával hívható, és a felhasználók alapszintű adatainak beolvasása. Ha már nincs beállítva, feltöltve a felhasználókkal a bérlő, most már van egy időben ehhez.
 
 További referenciaként kaphat az elkészült mintát (a konfigurációs értékek nélkül) a két módon:

@@ -1,5 +1,5 @@
 ---
-title: "Az iOS-alkalmazásoknak az Azure AD integrálása |} Microsoft Docs"
+title: "Ismerkedés az Azure AD iOS |} Microsoft Docs"
 description: "Hogyan hozhat létre, amely az Azure AD bejelentkezési és a hívások Azure AD számára az iOS-alkalmazás OAuth használatával védett API-k."
 services: active-directory
 documentationcenter: ios
@@ -12,22 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e497b9e02e21967e71fc9b4fef8dfe0e63e682c3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a631e1104bcda8d69aa2f2fdf336ed407a2c33b9
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-into-an-ios-app"></a>Az Azure AD integrálása az iOS-alkalmazás
+# <a name="azure-ad-ios-getting-started"></a>Ismerkedés az Azure AD iOS
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
-
-> [!TIP]
-> Az új az előzetes kiadás kipróbálásához [fejlesztői portálján](https://identity.microsoft.com/Docs/iOS) , amely segít, amelyekből megismerheti az Azure Active Directoryval csak néhány perc múlva!  A fejlesztői portálján végigvezeti a regisztrálja az alkalmazást, és az Azure AD integrálása a kódot.  Amikor elkészült, akkor kell egy egyszerű alkalmazást, amely képes hitelesíteni a felhasználók számára a bérlő és a háttérkiszolgáló fogadni és-ellenőrzéshez. 
-> 
-> 
 
 Azure Active Directory (Azure AD) biztosítja az Active Directory Authentication Library, vagy az adal-t, iOS-ügyfelek számára, amelyek védett erőforrások eléréséhez. ADAL egyszerűbben alkalmazása használja-e a hozzáférési tokenek beszerzése érdekében. Annak bemutatásához, hogyan könnyen van, a cikkben azt Objective C feladatlista alkalmazás létrehozásához, amely:
 
@@ -237,7 +232,7 @@ Az adal TÁRAT megkönnyíti, hogy átfogó mindezeket a közös identitás funk
 
 Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként a megadott [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már továbbléphet további helyzeteket is.  Előfordulhat, hogy ki szeretné próbálni:
 
 * [Egy Node.JS webes API-t az Azure ad-vel biztonságos](active-directory-devquickstarts-webapi-nodejs.md)

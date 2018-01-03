@@ -15,11 +15,11 @@ ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d40f67c354e29f3a58c9d0f1967e0154b5b998d0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 23f932f6a82a041ba7c54d00cdee7aa98bfce479
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panel?
 
@@ -62,7 +62,7 @@ Minden felhasználó számára lesz jelentkezzen be az Azure AD integrált alkal
 
 A hozzáférési panel elérését, keresztül a munkahelyi vagy iskolai fiókkal az Azure AD lehet hitelesíteni. Az Azure AD közvetlenül hitelesíthetők. Azt is megteheti Ha egy szervezet összevonási konfigurált Active Directory összevonási szolgáltatások (AD FS) vagy egyéb technológiák használatával, akkor hitelesítheti a Windows Server Active Directory.
 
-Az Azure vagy Office 365-előfizetéssel rendelkezik, és az Azure-portálon vagy az Office 365 alkalmazás használja, ha az alkalmazások listáját láthatja nélkül aláíró újra be. Ha Ön nem hitelesített jelentkezzen be a felhasználónevet és jelszót a fiókhoz az Azure AD kéri. Ha a szervezet összevonási konfigurált, írja be a felhasználónevet is használhatók.
+Az Azure vagy Office 365-előfizetéssel rendelkezik, és az Azure-portálon vagy az Office 365 alkalmazás használja, ha az alkalmazások listáját láthatja nélkül aláíró újra be. Ha a nem hitelesített jelentkezzen be a felhasználónevet és jelszót a fiókhoz az Azure AD kéri. Ha a szervezet összevonási konfigurált, írja be a felhasználónevet is használhatók.
 
 Amikor megtörténik, kezelheti az alkalmazásokat, amelyek a rendszergazda a könyvtárban van integrálva. Alkalmazások integrálása az Azure ad-vel kapcsolatban a [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
 
@@ -176,7 +176,7 @@ Egyszeri bejelentkezés konfigurálása az alkalmazáshoz, az Azure-portálon bi
 Például ha egy alkalmazás a felhasználók hitelesítése az AD FS 2.0 használatával van konfigurálva, a rendszergazda végezheti el a **meglévő egyszeri bejelentkezés** létrehozhat egy hivatkozásra a hozzáférési panelen. A hivatkozás fér hozzá, amikor a rendszer hitelesíti az AD FS 2.0-s vagy bármilyen meglévő egyszeri bejelentkezési megoldással az alkalmazás maga biztosítja.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Alkalmazáskezelés kapcsolódó témakörök listáját, olvassa el a [cikk index az Azure Active Directoryban Alkalmazáskezelés](active-directory-apps-index.md).
  

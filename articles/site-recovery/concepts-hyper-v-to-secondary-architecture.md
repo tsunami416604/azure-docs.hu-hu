@@ -1,24 +1,16 @@
 ---
-title: "A Hyper-V-ről az Azure Site Recovery használatával egy másodlagos helyre történő replikáció architektúrájának áttekintése | Microsoft Docs"
+title: "Hyper-V replikálás az Azure Site Recovery másodlagoshely-architektúra |} Microsoft Docs"
 description: "Ez a cikk áttekintést ad a helyszíni Hyper-V virtuális gépek másodlagos System Center VMM-helyre történő, az Azure Site Recoveryvel végzett replikálásakor használt architektúráról."
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 26475782-a21a-408a-b089-35382d7e010e
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: a7a493097a4eaacc2c8d8449906b4a57eb411827
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3380d189518f811ca6cf628608a253e5d93b2730
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="hyper-v-replication-to-a-secondary-site"></a>Hyper-V replikáció egy másodlagos helyre
 
@@ -51,20 +43,18 @@ A következő tábla és a kép adja meg a Hyper-V replikáció egy másodlagos 
 
 ## <a name="failover-and-failback-process"></a>Feladatátvételi és feladat-visszavételi folyamat
 
-1. Egyetlen gép feladatátvételt, vagy hozzon létre helyreállítási tervek, több gép feladatainak átvétele számít.
-2. A tervezett vagy nem tervezett feladatátvétel a helyszíni helyek közötti futtatása. Ha tervezett feladatátvételt végez, a forrás virtuális gépek leállnak, így nincs adatvesztés.
+- Egyetlen gép feladatátvételt, vagy hozzon létre helyreállítási tervek, több gép feladatainak átvétele számít.
+- A tervezett vagy nem tervezett feladatátvétel a helyszíni helyek közötti futtatása. Ha tervezett feladatátvételt végez, a forrás virtuális gépek leállnak, így nincs adatvesztés.
     - Ha egy másodlagos helyre, nem tervezett feladatátvétel után a feladatátvevő gépekhez, a másodlagos helyen hajtsa végre a nem védett.
     - Ha tervezett feladatátvételt futtatott, a feladatátvétel után a másodlagos hely gépei védettek lesznek.
-3. A kezdeti feladatátvétel futtatása után véglegesítheti, az alkalmazások és szolgáltatások eléréséhez a replika virtuális gép elindításához.
-
-Az elsődleges hely újra nem érhető el, akkor is feladat-visszavételt.
-
-1. Fordított replikáció, az elsődleges a másodlagos hely replikálást indítani elindította. A fordított replikáció során a virtuális gépek védett állapotba kerülnek, de a másodlagos adatközpont marad továbbra is az aktív hely.
-2. Ha azt szeretné, hogy újra az elsődleges hely legyen az aktív hely, kezdeményezzen egy tervezett feladatátvételt a másodlagos helyről az elsődleges helyre, majd hajtson végre ismét fordított replikálást.
+- A kezdeti feladatátvétel futtatása után véglegesítheti, az alkalmazások és szolgáltatások eléréséhez a replika virtuális gép elindításához.
+- Az elsődleges hely újra nem érhető el, akkor is feladat-visszavételt.
+    - Fordított replikáció, az elsődleges a másodlagos hely replikálást indítani elindította. A fordított replikáció során a virtuális gépek védett állapotba kerülnek, de a másodlagos adatközpont marad továbbra is az aktív hely.
+    - Ha azt szeretné, hogy újra az elsődleges hely legyen az aktív hely, kezdeményezzen egy tervezett feladatátvételt a másodlagos helyről az elsődleges helyre, majd hajtson végre ismét fordított replikálást.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse át a támogatási mátrixot az oktatóanyag ismerteti a VMM-felhők között a Hyper-V replikáció engedélyezése.
-Futtassa a feladatátvételi és a feladat-visszavétel.
+
+Hajtsa végre a [ebben az oktatóanyagban](tutorial-vmm-to-vmm.md) VMM-felhők között a Hyper-V replikáció engedélyezése.

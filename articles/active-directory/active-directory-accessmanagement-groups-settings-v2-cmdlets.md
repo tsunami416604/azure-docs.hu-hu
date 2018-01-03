@@ -17,10 +17,10 @@ ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: rodejo
 ms.openlocfilehash: 3f57e1a0ded679325c8c739e73cc79f69c037191
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Csoportok kezelése az Azure Active Directory 2-es parancsmagok
 > [!div class="op_single_selector"]
@@ -252,7 +252,7 @@ Ha szeretne egy olyan tulajdonost eltávolítása egy csoportból, használja a 
 A csoport létrehozásakor egyes végpontokkal, a végfelhasználó számára adjon meg egy mailNickname vagy alias használata az e-mail cím, a csoport részeként. A következő magas szintű jogosultsággal rendelkező e-mail-aliasokkal használt csoportok csak az Azure AD globális rendszergazda hozhatók létre. 
   
 * visszaélés 
-* Rendszergazda 
+* adminisztrátor 
 * Rendszergazda 
 * hostmaster 
 * majordomo 
@@ -263,7 +263,7 @@ A csoport létrehozásakor egyes végpontokkal, a végfelhasználó számára ad
 * SSL-rendszergazda 
 * gazdáját 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További Azure Active Directory PowerShell dokumentációját a található [Azure Active Directory-modul parancsmagokkal](/powershell/azure/install-adv2?view=azureadps-2.0).
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](active-directory-manage-groups.md)

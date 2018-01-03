@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 8de1eca5a3e52533e05d93cfe30de612e3d0c648
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: ed9ace24778f000b42013cc0ce4d7dacf4a1d4fb
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="overview-of-azure-monitor"></a>Az Azure figyelő áttekintése
 Ez a cikk áttekintést nyújt az Azure-figyelő szolgáltatás a Microsoft Azure-ban. Azt ismerteti, milyen Azure figyelő nem, és ez a témakör további információkra mutató hivatkozások használata az Azure-figyelő.  Videó tetszés szerint tekintse meg a következő lépéseket hivatkozások Ez a cikk alján. 
@@ -43,7 +43,7 @@ A lap navigációs, beleértve a előkészítésének kiindulási alapként. A k
 
 A lap megnyitásakor olvasási hozzáféréssel rendelkezik az előfizetések közül választhat. A kijelölt előfizetés látható:
 
-- **Riasztások és a riasztási források indított** – az alábbi táblázatban összefoglaló számát, a riasztás adatforrások, és hány alkalommal riasztások a kiválasztott időtartamig használatos. Vonatkozik, mind a metrika, és a tevékenység napló riasztásokat.
+- **Riasztások és a riasztási források indított** – az alábbi táblázatban összefoglaló számát, a riasztás adatforrások, és hány alkalommal riasztások a kiválasztott időtartamig használatos. Vonatkozik, mind a metrika, és a tevékenység napló riasztásokat. *< szerkesztése: egységes felhasználói élmény is látható az összes riasztás - eseményeket, metrikákat és naplókat (Preview) riasztások >*
 - **Tevékenység hibák naplózása** -hiba szintű eseményeket az Azure-erőforrások bármelyike jelentkezni, ha a magas szintű száma tekintheti meg és vizsgálja meg minden esemény a tevékenységnapló oldalon keresztül kattintva.
 - **Az Azure szolgáltatás állapota** -láthatja, hogy az állapotfigyelő tanácsadók, a szolgáltatás állapotát szolgáltatásokkal kapcsolatos problémákról és a tervezett karbantartási események száma. Az Azure szolgáltatás állapota személyre szabott információkat nyújt, ha az Azure-infrastruktúra hibáinak hatással van a szolgáltatások.  Lásd: [Azure szolgáltatás állapota](../service-health/service-health-overview.md) további információt.  
 - **Az Application Insights** -KPI-k tekintse meg az egyes appinsights által biztosított erőforrásokhoz az aktuális előfizetésben. A KPI-k kiszolgálóoldali alkalmazásfigyelési ASP.NET-webalkalmazások, a Java, a csomópont és az általános típusok vannak optimalizálva. A KPI-k lekérdezési gyakorisága, válaszideje, hibaaránya és % rendelkezésre állási metrikák tartalmazza. 
@@ -55,6 +55,7 @@ Ha Ön rendelkezik nem előre telepített Naplóelemzési vagy az Application In
 ## <a name="azure-monitor-sources---compute-subset"></a>Az Azure figyelő források - számítási csoportja
 
 ![Figyelés és a diagnosztika nem számítási erőforrások modellje](./media/monitoring-overview-azure-monitor/Monitoring_Azure_Resources-compute_v6.png)
+
 
 Itt a számítási szolgáltatások közé tartoznak az 
 - Cloud Services 
@@ -141,7 +142,10 @@ Néhány képi megjelenítés módszerek a következők:
 
 
 ### <a name="automate"></a>Automatizálás
-Figyelési logika eseményindító riasztások vagy akár egész folyamatok is használhatja. Példák erre vonatkozóan:
+> [!NOTE]
+> Értesítések a Microsoft Azure folyamatos fejlődésének részeként most egy egységes élmény riasztások megtekintési. További részleteket a [Azure riasztások (előzetes verzió)](monitoring-overview-unified-alerts.md)
+
+A standard Azure-riasztások eseményindító riasztások vagy akár egész folyamatok figyelési adatait is használhatja. Példák erre vonatkozóan:
 
 * Használja az automatikus skálázás számítási példányokért adatok felfelé vagy lefelé a alkalmazásterhelés alapján.
 * E-mailek küldése metrika ebbe a előre meghatározott küszöbértéket.
@@ -157,7 +161,7 @@ Figyelési logika eseményindító riasztások vagy akár egész folyamatok is h
 * [REST API](https://docs.microsoft.com/rest/api/monitor/)
 * [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ
 - Csak az Azure-figyelő a video-útmutatót érhető el:  
 [Ismerkedés az Azure figyelő](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor). 

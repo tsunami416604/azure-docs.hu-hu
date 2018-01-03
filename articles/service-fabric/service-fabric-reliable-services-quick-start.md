@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: f67b69e7ad1f7588280de82669040bad5ec6172b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 > [!div class="op_single_selector"]
@@ -215,7 +215,7 @@ Miután a szolgáltatás fut, a létrehozott esemény Windows (nyomkövetés) es
 
 ![A Visual Studio diagnosztikai eseményeinek megtekintése](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A Visual Studio a Service Fabric-alkalmazás hibakeresése](service-fabric-debugging-your-application.md)
 
 [Első lépések: az OWIN futtató önálló Service Fabric Web API szolgáltatások](service-fabric-reliable-services-communication-webapi.md)
