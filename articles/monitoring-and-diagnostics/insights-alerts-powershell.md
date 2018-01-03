@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
 ms.openlocfilehash: d3fca8675c1f15b8fd0f952cfbf520f5c68478b3
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Hozzon létre metrika riasztások Azure figyelése az Azure-szolgáltatások - PowerShell
 > [!div class="op_single_selector"]
-> * [Portál](insights-alerts-portal.md)
+> * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
 > * [Parancssori felület](insights-alerts-command-line-interface.md)
 >
@@ -127,7 +127,7 @@ További információkért mindig beírhatja ```Get-Help``` és majd a keresett 
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myLogAlertRule
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Figyelés áttekintése](monitoring-overview.md) többek között a adattípusok összegyűjtheti, és figyelje.
 * További információ [konfigurálása webhookokkal a riasztások](insights-webhooks-alerts.md).
 * További információ [riasztások konfigurálása a naplózási eseményeket](monitoring-activity-log-alerts.md).

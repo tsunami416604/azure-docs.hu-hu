@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: f7d2fd61dce93e8100ec33f82cd648b77efc1c0f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb02aaf541d2d2f4b1206136847af2b46621501d
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-media-services-concepts"></a>Az Azure Media Services alapfogalmaiért
 Ez a témakör áttekintést nyújt a Media Services egyik legfontosabb fogalmak.
 
-## <a id="assets"></a>Eszközök és tárolás
+## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>Eszközök és tárolás
 ### <a name="assets"></a>Objektumok
 Egy [eszköz](https://docs.microsoft.com/rest/api/media/operations/asset) digitális fájlok (például a videó, hang, képeket, miniatűröket, szöveges nyomon követi és feliratfájlokat fájlok) és a mindezen fájlok metaadatait tartalmazza. Miután a digitális fájlok feltöltése az objektumba, akkor a Media Services kódolási és adatfolyam-munkafolyamatok is használható.
 
@@ -71,7 +71,7 @@ A blob-tároló blobok blobkészletek csoportosítását biztosítja. BLOB táro
 > 
 > 
 
-### <a id="locators"></a>Keresők
+### <a name="a-idlocatorslocators"></a><a id="locators"/>Keresők
 [Lokátor](https://docs.microsoft.com/rest/api/media/operations/locator)s adjon meg egy belépési pont egy eszköz tárolt fájlok eléréséhez. Hozzáférési házirend engedélyek és, hogy egy ügyfél hozzáfér egy adott eszköz időtartama meghatározására szolgál. Keresők rendelkezhet több az egyhez kapcsolatban áll egy hozzáférési házirendben, úgy, hogy a különböző keresők biztosíthat eltérő kezdési ideje és kapcsolattípusok különböző ügyfelek használatakor minden ugyanazt az engedélyt és időtartama beállítások; azonban a megosztott elérési házirend korlátozása az Azure storage szolgáltatások által beállított, miatt nem lehet egy adott eszközhöz társított egyszerre legfeljebb öt egyedi lokátorokat. 
 
 Media Services két lokátortípust támogat: OnDemandOrigin keresők media (például MPEG DASH, HLS vagy Smooth Streaming) vagy fokozatosan letölteni a média és a SAS URL-cím keresők feltölteni, vagy töltse le a media fájlok to\from az Azure storage használatával. 
@@ -134,7 +134,7 @@ További információkért lásd:
 * [Kvóták és korlátozások](media-services-quotas-and-limitations.md).
 
 ## <a name="protecting-content"></a>Tartalom védelme
-### <a name="dynamic-encryption"></a>A dinamikus titkosítás
+### <a name="dynamic-encryption"></a>Dinamikus titkosítás
 Az Azure Media Services lehetővé teszi a media a tárhely, feldolgozás és kézbesítési keresztül elhagyja óta. A Media Services lehetővé teszi, hogy a tartalom Advanced Encryption Standard (AES) (a 128 bites titkosítási kulcsok használatával) és a közös titkosítás (CENC) PlayReady és/vagy Widevine DRM segítségével dinamikusan titkosított. A Media Services AES-kulcsok és a PlayReady-licencek kézbesítéséhez hitelesített ügyfelek szolgáltatást is nyújt.
 
 Jelenleg titkosíthatja a következő formátumban: HLS, MPEG DASH vagy Smooth Streaming. Progresszív letöltés nem titkosítható.
@@ -156,10 +156,10 @@ További információkért tekintse át a következő cikkeket:
 - [A PlayReady vagy Widevine védelme](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>Továbbítása
-### <a id="dynamic_packaging"></a>A dinamikus csomagolás
+### <a name="a-iddynamicpackagingdynamic-packaging"></a><a id="dynamic_packaging"/>A dinamikus csomagolás
 Amikor olyan Media Services, javasoljuk, hogy a mezzanine fájlok kódolása egy adaptív sávszélességű MP4 állítsa be, és a set átalakítása a kívánt formátum használatával az [dinamikus becsomagolás](media-services-dynamic-packaging-overview.md).
 
-### <a name="streaming-endpoint"></a>Adatfolyam-továbbítási végpontra
+### <a name="streaming-endpoint"></a>Streamvégpont
 Egy StreamingEndpoint jelöli egy adatfolyam-szolgáltatás által biztosított tartalom közvetlenül player ügyfélalkalmazást, vagy az a Content Delivery Network (CDN) későbbi terjesztés (Azure Media Services mostantól az Azure CDN integrációt biztosít.) A kimenő adatfolyam adatfolyam-továbbítási végpont szolgáltatásból egy élő adatfolyam, vagy a Media Services-fiók egy videó igény eszköz lehet. A Media Services ügyfelei általában egy **standard** szintű streamvégpontot vagy egy vagy több **prémium** szintű streamvégpontot választanak, saját igényeiknek megfelelően. Adatfolyam-továbbítási végpontra szabvány az adatfolyam-továbbítási munkaterhelések többségéhez alkalmas. 
 
 A szabványos streamvégpont a legtöbb streamelési feladat ellátására alkalmas. Standard adatfolyam-végpontok a tartalmat továbbít a dinamikus becsomagolás kifejezést HLS, MPEG-DASH, Smooth Streaming, valamint a dinamikus titkosítás Microsoft PlayReady, Google Widevine, Apple Fairplay és az AES128 használatával szinte minden eszköz rugalmasságot kínálnak.  Ezek is méretezhető nagyon Small Azure CDN integrálásán keresztül egyidejű megjelenítők százait nagyon nagy célközönség. Ha egy speciális munkaterhelés vagy az adatfolyam-továbbítási kapacitásigények nem férnek el standard adatfolyam végpont átviteli tárolókra vagy a kapacitás a StreamingEndpoint szolgáltatás növekvő szabályozni szeretné sávszélesség van szüksége, javasoljuk, hogy a méretezési egységeket (más néven prémium streamelési egységek) lefoglalni.
@@ -190,7 +190,7 @@ Biztosít a felhasználók progresszív letöltési URL-címeket, akkor előszö
 
 http://amstest1.Streaming.mediaservices.Windows.NET/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-### <a name="streaming-urls"></a>Adatfolyam-továbbítási URL-címek
+### <a name="streaming-urls"></a>Streamelési URL-ek
 Adatfolyam-ügyfelek számára a tartalom. Streamelési URL-címek biztosít a felhasználók, akkor először hozzon létre egy OnDemandOrigin lokátort. A lokátor létrehozása, lehetővé teszi az alap elérési útja az eszközhöz, amely tartalmazza a tartalmat továbbítani kívánja. Azonban képesek lesznek streamelni ehhez a tartalomhoz szüksége további az elérési út módosítása. A teljes URL-címet a folyamatos átviteli jegyzékfájl létrehozásához a lokátor elérési út érték és a jegyzékfájl (filename.ism) kell összefűzésére fájl nevét. A lokátor elérési utat, majd hozzáfűzése /Manifest és megfelelő formátumú (ha szükséges).
 
 Is SSL-kapcsolaton keresztül adatfolyam formájában a tartalmat. Ehhez ellenőrizze, hogy a streamelési URL-címének HTTPS kezdődhet. Jelenleg az AMS nem támogatja az SSL az egyéni tartomány.  

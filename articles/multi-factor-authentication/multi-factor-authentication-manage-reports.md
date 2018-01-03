@@ -5,43 +5,39 @@ services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: mtillman
-editor: curtand
 ms.assetid: 3f6b33c4-04c8-47d4-aecb-aa39a61c4189
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 12/15/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 32697eea410cb9afaa0e4347acd1a280fcf94289
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fb83e957a206bff29132973d2dd3e9a7b5f9f060
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure multi-factor Authentication jelentései
 
-Az Azure multi-factor Authentication segítségével, és a szervezet több jelentéseket biztosít. Ezek a jelentések a multi-factor Authentication kezelési portál is elérhetőek. A következő táblázat az elérhető jelentések megjelenítéséhez.
+Az Azure multi-factor Authentication segítségével, és a szervezet az Azure-portálon keresztül érhető el több jelentéseket biztosít. A következő táblázat az elérhető jelentések megjelenítéséhez.
 
-| Jelentés | Leírás |
-|:--- |:--- |
-| Használat |A használati jelentések megjelenítési adatok összesített használatát, a – felhasználói összefoglalás és a felhasználó adatait. |
-| Kiszolgáló állapota |Ez a jelentés a fiókjához a multi-factor Authentication kiszolgálók állapotát jeleníti meg. |
-| Blokkolt felhasználó – előzmények |Ezek a jelentések megjelenítése a felhasználók blokkolása és feloldása kérelmek előzményeit. |
-| Mellőzött felhasználó – előzmények |Átugorja a multi-factor Authentication hitelesítés a felhasználó telefonszámának kérelmek előzményeit jeleníti meg. |
-| Visszaélési riasztás |Megjeleníti a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
-| Várakozási sorba helyezve |Listák sorba állított jelentések feldolgozási és azok állapotát. Töltse le, vagy a jelentés megtekintéséhez mutató hivatkozás a jelentés befejezésekor valósul meg. |
+| Jelentés | Hely | Leírás |
+|:--- |:--- |:--- |
+| Blokkolt felhasználó – előzmények | Az Azure AD > multi-factor Authentication kiszolgáló > felhasználó blokkolása/feloldása | A felhasználók blokkolása és feloldása kérelmek előzményeit jeleníti meg. |
+| Használati és csalás riasztások | Az Azure AD > bejelentkezések | Információt nyújt összesített használatát, a – felhasználói összefoglalás és a felhasználó adatait; csakúgy, mint a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
+| Mellőzött felhasználó – előzmények | Az Azure AD > multi-factor Authentication kiszolgáló > egyszeri Mellőzés | A felhasználó átugorja a multi-factor Authentication kérelmek előzményeit biztosítja. |
+| Kiszolgáló állapota | Az Azure AD > multi-factor Authentication kiszolgáló > kiszolgáló állapota | A fiókjához társított multi-factor Authentication kiszolgálók állapotát jeleníti meg. |
 
-## <a name="view-reports"></a>Jelentések megtekintése
+## <a name="view-reports"></a>Jelentések megtekintése 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki a bal oldali **Azure Active Directory** > **felhasználók és csoportok** > **minden felhasználó** > **multi-factor Authentication Hitelesítési**.
-3. A **a multi-factor authentication**, jelölje be **szolgáltatás beállításai**. Az alsó **speciális beállításai és jelentések megtekintése kezelése**, jelölje be **-portálon végezhető**.
-4. Az Azure multi-factor Authentication kezelési portál, válassza ki a kívánt jelentéstípust a **megtekint egy jelentést** a bal oldali navigációs szakasz.
+2. Válassza ki a bal oldali **Azure Active Directory** > **MFA kiszolgáló**.
+3. Válassza ki a megtekinteni kívánt jelentést.
 
-<center>![Felhő](./media/multi-factor-authentication-manage-reports/report.png)</center>
+   <center>![Felhő](./media/multi-factor-authentication-manage-reports/report.png)</center>
 
 ## <a name="powershell-reporting"></a>PowerShell-jelentés
 
@@ -53,7 +49,7 @@ A következő PowerShell-lel MFA nem regisztrált felhasználók azonosítása.
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 
-**További források**
+## <a name="next-steps"></a>További lépések
 
 * [A felhasználók számára](end-user/multi-factor-authentication-end-user.md)
-* [Az Azure többtényezős hitelesítés az MSDN webhelyen](https://msdn.microsoft.com/library/azure/dn249471.aspx)
+* [Ha központi telepítése](multi-factor-authentication-get-started.md)

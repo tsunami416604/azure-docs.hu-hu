@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 0d659cb860a6c98342b548212820efe046decfcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ae2f8f2006507284338fb4fa62e4942476cf2bc
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs kezelési kódtárakat
 
-Az Event Hubs kezelési kódtárakat dinamikusan építhető ki az Event Hubs-névterek és az entitásokat. Ez lehetővé teszi összetett telepítések és üzenetkezelési forgatókönyveket, így programozott módon meghatározhatja, milyen entitások kiépítését. Ezek a kódtárak jelenleg érhetők el a .NET-hez.
+Az Event Hubs kezelési kódtárakat dinamikusan építhető ki az Event Hubs-névterek és az entitásokat. Dinamikus jellegű üzenetkezelési forgatókönyveket, és a komplex központi telepítései lehetővé teszi, hogy milyen entitások kiépítését programozott módon meghatározhatja. Ezek a kódtárak jelenleg érhetők el a .NET-hez.
 
 ## <a name="supported-functionality"></a>Támogatott funkciók
 
@@ -76,6 +76,6 @@ Minden Event Hubs erőforrás kezelheti a minta egy közös protokollt követi:
     await ehClient.EventHubs.CreateOrUpdateAsync(resourceGroupName, namespaceName, EventHubName, ehParams);
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [.NET felügyeleti minta](https://github.com/Azure-Samples/event-hubs-dotnet-management/)
 * [Microsoft.Azure.Management.EventHub hivatkozás](/dotnet/api/Microsoft.Azure.Management.EventHub) 

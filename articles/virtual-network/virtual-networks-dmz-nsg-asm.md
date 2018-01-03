@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>1 – például egy egyszerű DMZ NSG-k használata a klasszikus PowerShell összeállítása
 [A biztonsági határ bevált gyakorlatok laphoz való visszatéréshez][HOME]
@@ -577,7 +577,7 @@ Az XML-fájl mentése frissített hellyel rendelkező, és ehhez a fájlhoz, a f
 #### <a name="sample-application-scripts"></a>Alkalmazás mintaparancsfájlok
 Szeretne telepíteni egy mintaalkalmazás ezzel és más DMZ példák, ha egy adtak meg, a következő hivatkozásra: [minta alkalmazás-parancsfájl][SampleApp]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Frissítse és mentse az XML-fájl
 * A környezet létrehozása a PowerShell-parancsprogram futtatása
 * A mintaalkalmazás telepítése

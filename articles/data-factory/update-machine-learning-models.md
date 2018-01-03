@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: df139383eb2fa20fe75ecc6b3f5e2aa0773f186c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a33855213c4bd3a677c8ebbed6624c85138d8ea6
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Azure Machine Learning modellek frissítés erőforrás tevékenységgel módosítása
 Ez a cikk kiegészíti a fő Azure Data Factory - Azure Machine Learning integrációs cikk: [létrehozása az Azure Machine Learning és az Azure Data Factory használatával prediktív folyamatok](transform-data-using-machine-learning.md). Ha még nem tette meg, tekintse át a fő cikk keresztül ez a cikk elolvasása előtt. 
@@ -86,33 +86,6 @@ A fent említett végpontok közötti munkafolyamat működéséhez két Azure M
 2. Az Azure Machine Learning a prediktív webszolgáltatás a frissítés erőforrás végponthoz társított szolgáltatás. A társított szolgáltatás segítségével erőforrás módosítása tevékenység által frissítése a prediktív webszolgáltatás promptjai lépés visszaadott iLearner-fájlt. 
 
 A második csatolt Azure Machine Learning szolgáltatáshoz a konfiguráció esetén különböző az Azure Machine Learning webszolgáltatásba egy klasszikus webszolgáltatás-bővítmény vagy egy új webszolgáltatás-bővítmény. A különbségeket az alábbi szakaszok külön esik szó. 
-
-## <a name="web-service-is-a-classic-web-service"></a>Webszolgáltatás egy klasszikus webszolgáltatás-bővítmény
-Ha az előrejelzés webszolgáltatás egy **klasszikus webszolgáltatás**, hozzon létre a második **nem alapértelmezett és frissíthető végpont** az Azure portál használatával. Lásd: [végpontok létrehozása](../machine-learning/machine-learning-create-endpoint.md) cikk lépéseit. Miután létrehozta a nem alapértelmezett frissíthető végpont, tegye a következőket:
-
-* Kattintson a **KÖTEGELT végrehajtási** URI értékének eléréséhez a **mlEndpoint** JSON tulajdonság.
-* Kattintson a **frissítés erőforrás** hivatkozásra az URI értéke a **updateResourceEndpoint** JSON tulajdonság. Az API-kulcsot a végpont lapon magát (a jobb alsó sarokban) van.
-
-![frissíthető végpont](./media/update-machine-learning-models/updatable-endpoint.png)
-
-Ezt követően a következő társított szolgáltatás minta segítségével hozzon létre egy új Azure Machine Learning társított szolgáltatás. A társított szolgáltatás, a apiKey használ.  
-
-```json
-{
-    "name": "updatableScoringEndpoint2",
-    "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-            "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/xxx/services/--scoring experiment--/jobs",
-            "apiKey": {
-            "type": "SecureString",
-            "value": "APIKeyOfEndpoint2"
-            },
-            "updateResourceEndpoint": "https://management.azureml.net/workspaces/xxx/webservices/--scoring experiment--/endpoints/endpoint2"
-        }
-    }
-}
-```
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Webszolgáltatás az új Azure Resource Manager webszolgáltatás 
 
@@ -299,7 +272,7 @@ A folyamat két tevékenység rendelkezik: **AzureMLBatchExecution** és **Azure
     }
 }
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikkekben talál, amely ismerteti az adatok más módon: 
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)

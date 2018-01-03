@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
 ms.openlocfilehash: 3e09c145d35665ec1c2467b60f06191ac51a5c16
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Hozzon létre metrika riasztások Azure figyelése az Azure-szolgáltatások - Azure-portálon
 > [!div class="op_single_selector"]
-> * [Portál](insights-alerts-portal.md)
+> * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
 > * [Parancssori felület](insights-alerts-command-line-interface.md)
 >
@@ -89,7 +89,7 @@ Miután létrehozott egy riasztást, kijelölheti azt és:
 * Szerkesztheti és törölheti azt.
 * **Tiltsa le a** vagy **engedélyezése** , ha azt szeretné, ideiglenesen leállítani, vagy folytassa a riasztás-mailjeire.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Figyelés áttekintése](monitoring-overview.md) többek között a adattípusok összegyűjtheti, és figyelje.
 * További információ az új [majdnem valós idejű metrika riasztások (előzetes verzió)](monitoring-near-real-time-metric-alerts.md)
 * További információ [konfigurálása webhookokkal a riasztások](insights-webhooks-alerts.md).

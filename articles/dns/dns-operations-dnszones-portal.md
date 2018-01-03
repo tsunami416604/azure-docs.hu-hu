@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: gwallace
 ms.openlocfilehash: 69a509612e6204fc93dd42bf2fe69cb165b5777c
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>DNS-zónák kezelése az Azure-portálon
 
 > [!div class="op_single_selector"]
-> * [Portál](dns-operations-dnszones-portal.md)
+> * [Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
 > * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
@@ -58,6 +58,6 @@ Az Azure-portálon lépjen a **további szolgáltatások** > **hálózati** > **
 
 Nyissa meg a DNS-zónát a portálon. Az a **DNS-zóna** panelen kattintson a **zóna törlése**. Győződjön meg arról, hogy törölni kívánja a DNS-zónát kéri. A zónában lévő összes rekordot is egy DNS-zóna törlése törli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan működnek együtt a DNS-zóna és a rekordok látogasson el [Ismerkedés az Azure DNS az Azure portál használatával](dns-getstarted-portal.md).

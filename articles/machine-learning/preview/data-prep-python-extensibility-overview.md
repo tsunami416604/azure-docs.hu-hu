@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 53771c407fedc53f27a38ec3fe9b381d6b8c0dad
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 4b888facdba2eb5ff48bcbf43c93c1b75183cbad
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="data-preparations-python-extensions"></a>Előkészített Python adatkiterjesztések
 Beépített szolgáltatásai között a funkció hézagok kitöltése módja Azure Machine Learning adatok előkészített bővítési több szinten tartalmazza. Ebben a dokumentumban a Python-parancsfájl bővíthetőséget szerkezeti azt. 
@@ -38,7 +38,7 @@ Az egyes lépések két kód blokk típus támogatott. Először is támogatott 
 
 Például egy olyan új oszlop, amely kiszámítja a napló egy másik oszlop a következő két módon adhat hozzá:
 
-kifejezés 
+Kifejezés 
 
 ```python    
     math.log(row["Score"])
@@ -155,7 +155,7 @@ A dataframe a következő oszlopokkal rendelkezik:
 - AuthenticationValue: None, vagy a token által használható tartalmazza.
 
 ### <a name="syntax"></a>Szintaxis 
-kifejezés 
+Kifejezés 
 
 ```python
     paths = df['Path'].tolist()  
@@ -185,7 +185,7 @@ Az író bővítmény pont lehetővé teszi teljes mértékben a folyamat az ada
 A bővítmény pont a írási (parancsfájl) adatfolyamblokk használatával adhat hozzá. Érhető el a legfelső szintű **átalakítások** menü.
 
 ### <a name="syntax"></a>Szintaxis 
-kifejezés
+Kifejezés
 
 ```python
     df.to_csv('c:\\temp\\output.csv')
@@ -210,7 +210,7 @@ Az oszlop hozzáadása bővítmény pont lehetővé teszi egy olyan új oszlop k
 A bővítmény pont az oszlop hozzáadása (parancsfájl) blokk használatával adhat hozzá. Érhető el a legfelső szintű **átalakítások** , valamint az a menü a **oszlop** helyi menüje. 
 
 ### <a name="syntax"></a>Szintaxis
-kifejezés
+Kifejezés
 
 ```python
     math.log(row["Score"])
@@ -233,7 +233,7 @@ A bővítmény pont a speciális (parancsfájl) szűrőblokk használatával adh
 
 ### <a name="syntax"></a>Szintaxis
 
-kifejezés
+Kifejezés
 
 ```python
     row["Score"] > 95
@@ -260,7 +260,7 @@ Az adatfolyam átalakítása bővítmény pont lehetővé teszi teljesen átalak
 A bővítmény pont az átalakítás (parancsfájl) adatfolyamblokk használatával adhat hozzá. Érhető el a legfelső szintű **átalakítások** menü. 
 ### <a name="syntax"></a>Szintaxis 
 
-kifejezés
+Kifejezés
 
 ```python
     df['index-column'] = range(1, len(df) + 1)  
@@ -291,7 +291,7 @@ A bővítmény pont az átalakítás partíció (parancsfájl) blokk használat�
 
 ### <a name="syntax"></a>Szintaxis 
 
-kifejezés 
+Kifejezés 
 
 ```python
     df['partition-id'] = index  
@@ -337,7 +337,7 @@ DataPrepError({
 Lehetőség létrehozni DataPrepErrors visszatérési értékként az előző létrehozási módszer használatával egy bővítmény ponton Python futtatásakor. Sokkal valószínű, hogy az adatok egy bővítmény ponton feldolgozásakor hibát DataPrepErrors. Ezen a ponton a egyéni Python-kódot kell kezelni egy DataPrepError érvényes adattípusú értékként.
 
 #### <a name="syntax"></a>Szintaxis 
-kifejezés 
+Kifejezés 
 ```python 
     if (isinstance(row["Score"], DataPrepError)): 
         row["Score"].originalValue 

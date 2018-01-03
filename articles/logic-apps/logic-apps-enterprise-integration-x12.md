@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 1bfaa7b31bfed3ada22c83516839ebd95a351854
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bfad01d8c14cdd972ebe8e4038f226ffe0da93b1
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>A logic apps vállalati integrációs Exchange X12 állapotüzenete
 
@@ -57,11 +57,11 @@ Ha nem lát minden integrációs fiókok [hozzon létre egyet első](../logic-ap
 
 4. Válassza ki **áttekintése**, majd jelölje be a **megállapodások** csempére. Ha egy megállapodások csempe nem rendelkezik, először vegye fel a csempe. 
 
-    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
 5. Szerződések paneljén válassza **Hozzáadás**.
 
-    ![Válassza a "Hozzáadás"](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)     
+    ![Válassza a "Hozzáadás"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
 6. A **Hozzáadás**, adjon meg egy **neve** a szerződés. A szerződés típusának kiválasztása **X12**. Válassza ki a **fogadó Partner**, **gazdagép identitását**, **Vendég Partner**, és **Vendég identitás** a szerződés. Tulajdonság kapcsolatos további tudnivalókért lásd a táblázat az ebben a lépésben.
 
@@ -69,7 +69,7 @@ Ha nem lát minden integrációs fiókok [hozzon létre egyet első](../logic-ap
 
     | Tulajdonság | Leírás |
     | --- | --- |
-    | Név |A szerződés nevét |
+    | Name (Név) |A szerződés nevét |
     | A szerződés típusa | X12 kell lennie. |
     | Fogadó Partner |Egy szerződést kell a gazdagép és a Vendég partner. A fogadó partner szervezet, amely beállítja a szerződés jelöli. |
     | Gazdagép identitását |A fogadó partner azonosítója |
@@ -146,8 +146,8 @@ Válassza ki a sémát minden tranzakció típusa (ST1) és a küldő alkalmazá
 | Tulajdonság | Leírás |
 | --- | --- |
 | Ellenőrző szám Interchange ismétlődések letiltása |Ismétlődő kereszteződéseket blokkolása. A fogadott interchange vezérlő számát ellenőrzi, az adatcsere ellenőrző szám (ISA13). Ha találat esetén elvégez, a fogadási folyamat nem dolgozza fel cseréje. Megadhatja, hogy hány nap adjon értéket az ellenőrzés végrehajtásához *keressen ismétlődő ISA13 (naponta)*. |
-| Csoport-ellenőrzőszám ismétlődésének letiltása |Blokk felcserélődések duplikált csoportokhoz vezérlő számokkal. |
-| Tranzakciókészlet-ellenőrzőszám ismétlődésének letiltása |Blokk felcserélődések ismétlődő tranzakció set vezérlő számokkal. |
+| Csoport vezérlő számú ismétlődések letiltása |Blokk felcserélődések duplikált csoportokhoz vezérlő számokkal. |
+| Tranzakció set vezérlő számú ismétlődések letiltása |Blokk felcserélődések ismétlődő tranzakció set vezérlő számokkal. |
 
 ### <a name="validations"></a>Ellenőrzések
 
@@ -157,7 +157,7 @@ Válassza ki a sémát minden tranzakció típusa (ST1) és a küldő alkalmazá
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Üzenet típusa |Válassza ki a EDI-üzenet típusa. |
+| Üzenettípus |Válassza ki a EDI-üzenet típusa. |
 | EDI érvényesítése |EDI-érvényesítést hajt végre a séma EDI tulajdonságok, hosszára, üres adatelemek és záró elválasztók által definiált adattípusok. |
 | Kiterjesztett érvényesítése |Ha az adattípus nem EDI, érvényesítési az elem követelménynek, és engedélyezett ismétlési, enumerálások és adatok elem hossza érvényesítési (min vagy max). |
 | Kezdő/záró nullából engedélyezése |Minden további, kezdő vagy záró nulla, és az szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
@@ -171,11 +171,11 @@ Válassza ki a sémát minden tranzakció típusa (ST1) és a küldő alkalmazá
 | Tulajdonság | Leírás |
 | --- | --- |
 | Implicit decimális formátum "Nn" alap 10 numerikus értékké konvertálni |A 10-es számértéket "Nn" formátumban megadott EDI számot alakít át. |
-| Üres XML-címkék létrehozása, ha a záró elválasztók engedélyezve vannak |Válassza ezt a jelölőnégyzetet, az adatcsere küldő záró elválasztók üres XML-címkék közé tartoznak hozzá. |
-| Adatcsere felosztása tranzakciókészletekre – tranzakciókészletek felfüggesztése hiba esetén|Elemzi az egyes tranzakciókra, megadhatja a azokat egy külön XML-dokumentum cseréje a megfelelő boríték a tranzakció-készlethez. Ha az ellenőrzés sikertelen felfüggeszti csak a tranzakciók. |
-| Adatcsere felosztása tranzakciókészletekre – adatcsere felfüggesztése hiba esetén|Elemzi az egyes tranzakciókra, állítsa be egy külön XML-dokumentum cseréje a úgy, hogy a megfelelő boríték alkalmazza. Felfüggeszti a teljes adatcsere, amikor a csomópont egy vagy több tranzakció halmazok érvényesítése sikertelen. | 
+| Üres XML-címkék létrehozása, ha záró elválasztók engedélyezettek |Válassza ezt a jelölőnégyzetet, az adatcsere küldő záró elválasztók üres XML-címkék közé tartoznak hozzá. |
+| Vegyes, tranzakció készletek - Interchange felfüggeszteni tranzakció készletek hiba|Elemzi az egyes tranzakciókra, megadhatja a azokat egy külön XML-dokumentum cseréje a megfelelő boríték a tranzakció-készlethez. Ha az ellenőrzés sikertelen felfüggeszti csak a tranzakciók. |
+| Vegyes Interchange, tranzakció készletek - interchange felfüggeszteni hiba|Elemzi az egyes tranzakciókra, állítsa be egy külön XML-dokumentum cseréje a úgy, hogy a megfelelő boríték alkalmazza. Felfüggeszti a teljes adatcsere, amikor a csomópont egy vagy több tranzakció halmazok érvényesítése sikertelen. | 
 | Megőrizheti a adatcsere - tranzakció készletek felfüggeszteni hiba |Az adatcsere érintetlenül hagyja, létrehoz egy XML-dokumentum teljes kötegelt adatcserét. Csak a sikertelen érvényesítés, miközben továbbra is az összes többi tranzakció készletek feldolgozni tranzakció készletek felfüggesztése. |
-| Adatcsere megőrzése – adatcsere felfüggesztése hiba esetén |Az adatcsere érintetlenül hagyja, létrehoz egy XML-dokumentum teljes kötegelt adatcserét. Felfüggeszti a teljes adatcsere, amikor a csomópont egy vagy több tranzakció halmazok érvényesítése sikertelen. |
+| Megőrizheti a adatcsere - interchange felfüggeszteni hiba |Az adatcsere érintetlenül hagyja, létrehoz egy XML-dokumentum teljes kötegelt adatcserét. Felfüggeszti a teljes adatcsere, amikor a csomópont egy vagy több tranzakció halmazok érvényesítése sikertelen. |
 
 ## <a name="configure-how-your-agreement-sends-messages"></a>Hogyan a szerződés küld üzeneteket konfigurálása
 
@@ -254,7 +254,7 @@ Most már a szerződés készen áll a kimenő üzenetek, amelyek megfelelnek a 
 | Körzetszám |A tranzakció set vezérlő számok visszaigazolás használt tartomány kijelölt nem kötelező. Adja meg a középső két mező numerikus értéke, és egy alfanumerikus érték (ha szükséges) az előtag és utótag mezők. A középső mezők szükségesek, és az ellenőrző szám minimális és maximális értékeket tartalmaz |
 | Utótag |A tranzakció set vezérlő számok nyugtázás használt tartomány kijelölt nem kötelező. Adja meg a középső két mezők számértéket és egy alfanumerikus érték (ha szükséges) az előtag és utótag mezők. A középső mezők szükségesek, és az ellenőrző szám minimális és maximális értékeket tartalmaz |
 
-### <a name="character-sets-and-separators"></a>Karakterkészletek és elválasztók
+### <a name="character-sets-and-separators"></a>Karakter beállítása és elválasztókat
 
 Eltérő karakterkészlete, az egyes üzenet egy másik halmaz adhatja meg. Ha egy karakterkészletet adott üzenethez a séma nincs megadva, az alapértelmezett karakterkészlet használata.
 
@@ -264,7 +264,7 @@ Eltérő karakterkészlete, az egyes üzenet egy másik halmaz adhatja meg. Ha e
 | --- | --- |
 | Ahhoz, hogy használható |A tulajdonságok, válassza ki a X12 karakterkészlet érvényesítésére. A beállítások a Basic, a kibővített és az UTF8. |
 | Séma |A legördülő listából válassza ki a sémát. Minden egyes sorára befejezése után a rendszer automatikusan hozzáadja az új sort. A kijelölt séma válassza ki az szerepel, amely szeretné használni, a következő elválasztó leírások alapján. |
-| A bemeneti típus |Válassza ki a bemeneti típusát a legördülő listából. |
+| Bevitel típusa |Válassza ki a bemeneti típusát a legördülő listából. |
 | Az összetevő elválasztó |Önálló összetett adatok elemek, írja be a következőt egy egyetlen karaktert. |
 | Adatok elem elválasztó |Külön egyszerű adatelemek összetett adatelemek belül, adjon meg egy egyetlen karaktert. |
 | Helyettesítő karakter |Adja meg a hasznos adatok minden elválasztó karaktere cserélje ki a kimenő X12 létrehozásakor használt helyettesítő karaktert üzenet. |
@@ -282,7 +282,7 @@ Eltérő karakterkészlete, az egyes üzenet egy másik halmaz adhatja meg. Ha e
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Üzenet típusa |Válassza ki a EDI-üzenet típusa. |
+| Üzenettípus |Válassza ki a EDI-üzenet típusa. |
 | EDI érvényesítése |EDI-érvényesítést hajt végre a séma EDI tulajdonságok, hosszára, üres adatelemek és záró elválasztók által definiált adattípusok. |
 | Kiterjesztett érvényesítése |Ha az adattípus nem EDI, érvényesítési az elem követelménynek, és engedélyezett ismétlési, enumerálások és adatok elem hossza érvényesítési (min vagy max). |
 | Kezdő/záró nullából engedélyezése |Minden további, kezdő vagy záró nulla, és az szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
@@ -302,6 +302,6 @@ Eltérő karakterkészlete, az egyes üzenet egy másik halmaz adhatja meg. Ha e
 ## <a name="view-the-swagger"></a>A swagger megtekintése
 Tekintse meg a [részletek swagger](/connectors/x12/). 
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információ
 * [További tudnivalók a vállalati integrációs csomag](../logic-apps/logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag")  
 

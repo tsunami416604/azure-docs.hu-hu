@@ -1,6 +1,6 @@
 ---
 title: "Összegyűjti és elemzi az Azure Naplóelemzés teljesítményszámlálók |} Microsoft Docs"
-description: "Log Analytics teljesítménye a Windows és Linux-ügynökök elemzését által gyűjtött teljesítményszámlálók.  Ez a cikk mindkét Windows teljesítményszámlálók gyűjteményét beállításának módját ismerteti, és a Linux-ügynököt, azok részleteit az OMS-tárház, és elemezheti őket az OMS-portálon vannak tárolva."
+description: "Log Analytics teljesítménye a Windows és Linux-ügynökök elemzését által gyűjtött teljesítményszámlálók.  Ez a cikk mindkét Windows teljesítményszámlálók gyűjteményét beállításának módját ismerteti, és a Linux-ügynököt, azok adatait tárolja a munkaterületet, és elemezheti őket az Azure portálon."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 12/19/2017
 ms.author: magoedte
-ms.openlocfilehash: d0345155b2c13bd0b4341ce53272e7d84cd233fb
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 0f7119f280f2eb51222ade2ea7984b560a02f667
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>A Naplóelemzési Windows és Linux teljesítmény adatforrások
 A Windows és Linux teljesítményszámlálók Észreveheti az olyan hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  A Naplóelemzési össze tudják gyűjteni a teljesítményszámlálók gyakori elemzésre közel valós idejű (NRT) hosszabb távú elemzés teljesítményadatait összesítése és jelentéskészítési mellett.
@@ -26,9 +26,9 @@ A Windows és Linux teljesítményszámlálók Észreveheti az olyan hardveröss
 ![Teljesítményszámlálók](media/log-analytics-data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Teljesítményszámlálók konfigurálása
-Konfigurálja az OMS-portálon a teljesítményszámlálók a [Naplóelemzés beállításai adatok menüben](log-analytics-data-sources.md#configuring-data-sources).
+Konfigurálja a teljesítményszámlálók a [Naplóelemzés beállításai adatok menüben](log-analytics-data-sources.md#configuring-data-sources).
 
-Amikor először konfigurálja egy új OMS-munkaterület Windows vagy Linux teljesítmény számlálói, lehetősége van gyorsan létrehozhat több általános jellegű számlálót.  Az egyes jelölőnégyzetét szerepelnek.  Győződjön meg arról, hogy kezdetben létrehozandó számlálókat a rendszer ellenőrzi, és kattintson a **adja hozzá a kijelölt teljesítményszámlálók**.
+Amikor először konfigurálja egy új Naplóelemzési munkaterület Windows vagy Linux teljesítmény számlálói, lehetősége van gyorsan létrehozhat több általános jellegű számlálót.  Ezek mindegyike mellett egy jelölőnégyzet található.  Győződjön meg arról, hogy kezdetben létrehozandó számlálókat a rendszer ellenőrzi, és kattintson a **adja hozzá a kijelölt teljesítményszámlálók**.
 
 Windows-teljesítményszámlálókat kiválaszthatja az egyes teljesítményszámlálókhoz bizonyos példányainak. Linux teljesítményszámlálókkal az egyes számlálóit az Ön által példányát a szülő számláló összes gyermek számláló vonatkozik. Az alábbi táblázat a Linux és a Windows a teljesítményszámlálók rendelkezésre közös példányok.
 
@@ -65,7 +65,7 @@ Az alábbi eljárás segítségével adja hozzá egy új Linux teljesítménysz�
 5. Amikor elkészült a számlálók hozzáadását, kattintson a **mentése** gombra a konfiguráció mentéséhez, a képernyő tetején.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>A konfigurációs fájlban Linux teljesítményszámlálók konfigurálása
-Az OMS-portálon Linux teljesítményszámlálók konfigurálására, lehetősége van a Linux-ügynök a konfigurációs fájlok szerkesztésével.  Teljesítménymutatók gyűjtéséhez a konfiguráció által vezérelt **/etc/opt/microsoft/omsagent/\<munkaterület azonosítója\>/conf/omsagent.conf**.
+Az Azure portál használatával Linux teljesítményszámlálók konfigurálására, lehetősége van a Linux-ügynök a konfigurációs fájlok szerkesztésével.  Teljesítménymutatók gyűjtéséhez a konfiguráció által vezérelt **/etc/opt/microsoft/omsagent/\<munkaterület azonosítója\>/conf/omsagent.conf**.
 
 Minden objektumot, vagy a kategória Teljesítményelemzési mutatón gyűjtéséhez definiálni kell egy konfigurációs fájlban `<source>` elemet. A szintaxis a következő mintát követi.
 
@@ -90,16 +90,16 @@ A paraméterek az elem a következő táblázat ismerteti.
 
 A következő táblázat az objektumokat és számlálók megadása a konfigurációs fájlban.  Nincsenek további számlálók bizonyos alkalmazások leírtak [Linux Log Analytics-alkalmazások a teljesítményszámlálók adatainak összegyűjtése](log-analytics-data-sources-linux-applications.md).
 
-| Objektum neve | Számláló neve |
+| Objektumnév | Számláló neve |
 |:--|:--|
 | Logikai lemez | % Szabad Inode-OK |
 | Logikai lemez | % Szabad terület |
 | Logikai lemez | Foglalt Inode-OK % |
 | Logikai lemez | Foglalt hely % |
-| Logikai lemez | Lemez sebessége olvasott bájt/mp |
+| Logikai lemez | Lemezolvasási sebesség (bájt/s) |
 | Logikai lemez | Lemezolvasások/mp |
 | Logikai lemez | Átvitel/mp |
-| Logikai lemez | Lemez írási bájtok/s |
+| Logikai lemez | Lemezírási sebesség (bájt/s) |
 | Logikai lemez | Lemezírás/mp |
 | Logikai lemez | Szabad hely MB-ban |
 | Logikai lemez | Logikai lemez bájtok/s |
@@ -126,10 +126,10 @@ A következő táblázat az objektumokat és számlálók megadása a konfigurá
 | Fizikai lemez | Átlagos Lemez mp/átvitel |
 | Fizikai lemez | Átlagos Lemez mp/írás |
 | Fizikai lemez | Fizikai lemez bájtok/s |
-| Folyamat | A PCT kiemelt idő |
-| Folyamat | A PCT felhasználói módú használatának aránya |
-| Folyamat | Használt memória KB |
-| Folyamat | Megosztott virtuális memória |
+| Feldolgozás | A PCT kiemelt idő |
+| Feldolgozás | A PCT felhasználói módú használatának aránya |
+| Feldolgozás | Használt memória KB |
+| Feldolgozás | Megosztott virtuális memória |
 | Processzor | DPC idő % |
 | Processzor | Inaktivitási idő % |
 | Processzor | Megszakítási idő % |
@@ -182,7 +182,7 @@ Az alábbiakban olvashatja a metrikák alapértelmezett konfigurációja.
     </source>
 
 ## <a name="data-collection"></a>Adatgyűjtés
-A Naplóelemzési megadott teljesítményszámlálók gyűjti. a megadott minta időközönként minden számláló telepített rendelkező ügynököknek.  Az adatok nem összesített értéket, és a nyers adatok érhető el az összes naplófájl-keresési nézetben az OMS-előfizetés által megadott időtartama alatt.
+A Naplóelemzési megadott teljesítményszámlálók gyűjti. a megadott minta időközönként minden számláló telepített rendelkező ügynököknek.  Az adatok nem összesített értéket, és a nyers adatok érhető el az összes naplófájl-keresési nézetben az előfizetés által megadott időtartama alatt.
 
 ## <a name="performance-record-properties"></a>Teljesítmény rekord tulajdonságai
 Teljesítmény rekordok típusa lehet **telj** , és a tulajdonságok az alábbi táblázatban.
@@ -220,15 +220,10 @@ Az alábbi táblázat példákat különböző teljesítmény lehívása napló 
 | A Teljesítményfigyelő &#124; Ha CounterName == "kihasználtsága (%)" és a példánynév == "_Total" és a számítógép == "Sajátgép" &#124; ["min(CounterValue)"] összefoglalója min(CounterValue), = ["avg(CounterValue)"] avg(CounterValue), = ["percentile75(CounterValue)"] PERCENTILIS (ellenértéknek, 75), = ["max(CounterValue)"] bin (TimeGenerated, 1 óra), a számítógép által max(CounterValue) = |Óránkénti átlag, minimális, maximális és 75-PERCENTILIS CPU-használat egy adott számítógépen |
 | A Teljesítményfigyelő &#124; Ha ObjectName == "MSSQL$ INST2: adatbázisok" és a példánynév == "master" | Minden teljesítményadat elnevezett SQL Server-példány INST2 a master adatbázis adatbázis-teljesítmény objektumból.  
 
-## <a name="viewing-performance-data"></a>Teljesítményadatok
-Teljesítményadatok napló keresése futtatásakor a **lista** nézet alapértelmezés szerint megjelenik.  Az adatok grafikus formában megtekintéséhez kattintson **metrikák**.  Részletes grafikus nézetének, kattintson a  **+**  mellett egy számlálót.  
-
-![Összecsukott metrikák megtekintése](media/log-analytics-data-sources-performance-counters/metricscollapsed.png)
-
-Összesíteni a teljesítményadatokat a naplófájl-keresési kapcsolatos tudnivalókat lásd: [igény metrika összevonásának és a képi megjelenítés OMS](http://blogs.technet.microsoft.com/msoms/2016/02/26/on-demand-metric-aggregation-and-visualization-in-oms/).
 
 
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="next-steps"></a>További lépések
 * [A teljesítményszámlálók adatainak összegyűjtése Linux alkalmazásokból](log-analytics-data-sources-linux-applications.md) többek között a MySQL és az Apache HTTP Server.
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére.  
 * Összegyűjtött adatok exportálása az [Power BI](log-analytics-powerbi.md) további képi megjelenítések és elemzésére.

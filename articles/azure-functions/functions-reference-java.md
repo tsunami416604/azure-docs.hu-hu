@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
 ms.openlocfilehash: 8586bc63ad9c1b3896b21f494ebbe14e6d25a439
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutató
 > [!div class="op_single_selector"]
@@ -35,15 +35,15 @@ Java jegyzetek szerepelnek a `azure-functions-java-core` csomag bemeneti és kim
 
 Kötelező | Megjegyzés
 ---|---
-CosmosDB | N/A
+CosmosDB | –
 HTTP | <ul><li>`HttpTrigger`</li><li>`HttpOutput`</li></ul>
-Mobile Apps | N/A
-Notification Hubs | N/A
+Mobile Apps | –
+Notification Hubs | –
 Storage-Blobba | <ul><li>`BlobTrigger`</li><li>`BlobInput`</li><li>`BlobOutput`</li></ul>
 Tárolási üzenetsor | <ul><li>`QueueTrigger`</li><li>`QueueOutput`</li></ul>
 Tárolási tábla | <ul><li>`TableInput`</li><li>`TableOutput`</li></ul>
 Időzítő | <ul><li>`TimerTrigger`</li></ul>
-Twilio | N/A
+Twilio | –
 
 Eseményindító bemenetekhez és kimenetekhez is lehet meghatározni a [function.json](/azure/azure-functions/functions-reference#function-code) az alkalmazáshoz.
 
@@ -325,7 +325,7 @@ public class Function {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért lásd a következőket:
 
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)

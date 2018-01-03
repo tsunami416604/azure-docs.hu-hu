@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 12/14/2017
 ms.author: mblythe
 ms.custom: 
-ms.openlocfilehash: 1e262fde37b68bcfcee3c974deb91bd07965de19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28c2fc8246851807e1f65911d6a5d56322c5ea16
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="call-a-function-from-powerapps"></a>Függvény hívása a PowerAppsből
 A [PowerApps](https://powerapps.microsoft.com) platform készült üzleti szakértők nélkül hagyományos alkalmazáskód alkalmazásokat lehet készíteni. Professzionális fejlesztők számára az Azure Functions segítségével PowerApps, képességekkel bővíthetik a technikai részleteket a PowerApps app rendszerépítők védelme során.
@@ -45,34 +45,8 @@ Ebben a témakörben elsajátíthatja, hogyan:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az aktív [PowerApps fiók](https://powerapps.microsoft.com/tutorials/signup-for-powerapps.md) a azonos bejelentkezési hitelesítő adatokat az Azure-fiókként. 
-+ Excel-, mert az alkalmazás adatforrásként Excel fog használhatja.
++ Az Excel és a [Excel mintafájl](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx) az alkalmazás forrásként használni.
 + Az oktatóanyag befejezése [létrehozása a következő függvényt egy OpenAPI definíciója](functions-openapi-definition.md).
-
-
-## <a name="prepare-sample-data-in-excel"></a>Mintaadatok létrehozása az Excel programban
-Ön kiindulásképpen mintaadatok, amelyekkel az alkalmazás előkészítése. Másolja az alábbi táblázat az Excelbe. 
-
-| Cím      | Szélesség  | Longtitude  | LastServiceDate | MaxOutput | ServiceRequired | EstimatedEffort | InspectionNotes                            |
-|------------|-----------|-------------|-----------------|-----------|-----------------|-----------------|--------------------------------------------|
-| Turbinás 1  | 47.438401 | -121.383767 | 2/23/2017       | 2850      | Igen             | 6               | Ez a jelenség a második ebben a hónapban.       |
-| Turbinás 4  | 47.433385 | -121.383767 | 5/8/2017        | 5400      | Igen             | 6               |                                            |
-| Turbinás 33 | 47.428229 | -121.404641 | 6/20/2017       | 2800      |                 |                 |                                            |
-| Turbinás 34 | 47.463637 | -121.358824 | 2/19/2017       | 2800      | Igen             | 7               |                                            |
-| Turbinás 46 | 47.471993 | -121.298949 | 3/2/2017        | 1200      |                 |                 |                                            |
-| Turbinás 47 | 47.484059 | -121.311171 | 8/2/2016        | 3350      |                 |                 |                                            |
-| Turbinás 55 | 47.438403 | -121.383767 | 10/2/2016       | 2400      | Igen             | 40               | Ez egy várható bizonyos részei van. |
-
-1. Az Excel programban, jelölje ki az adatokat, majd a a **Home** lapra, majd **táblázatként formátum**.
-
-    ![Formázza a tábla](media/functions-powerapps-scenario/format-table.png)
-
-1. Bármely stílusának kiválasztása, és kattintson a **OK**.
-
-1. A kijelölt, a tábla a **tervezési** lapra, adja meg `Turbines` a **táblanév**.
-
-    ![Tábla neve](media/functions-powerapps-scenario/table-name.png)
-
-1. Az Excel-munkafüzet mentéséhez.
 
 [!INCLUDE [Export an API definition](../../includes/functions-export-api-definition.md)]
 
@@ -97,35 +71,35 @@ Az egyéni API-t (más néven egyéni összekötő) a powerapps segítségével 
 ## <a name="create-an-app-and-add-data-sources"></a>Hozzon létre egy alkalmazást, és adja hozzá az adatforrások
 Most már készen áll az alkalmazás a powerapps segítségével, és adja hozzá az alkalmazáshoz tartozó adatforrások az Excel-adatok és az egyéni API-t.
 
-1. A [web.powerapps.com](https://web.powerapps.com), kattintson a bal oldali ablaktáblában **új alkalmazás**.
+1. A [web.powerapps.com](https://web.powerapps.com), válassza a **üres elindítását** > ![telefonos alkalmazás ikon](media/functions-powerapps-scenario/icon-phone-app.png) (telefon) > **ellenőrizze az alkalmazás**.
 
-1. A **üres alkalmazás**, kattintson a **a telefonos elrendezés**.
+    ![Indítson el az üres – telefonalkalmazás](media/functions-powerapps-scenario/create-phone-app.png)
 
-    ![Tábla-alkalmazás létrehozása](media/functions-powerapps-scenario/create-phone-app.png)
-
-    Az alkalmazás webes PowerApps Studio megnyitása. A következő kép bemutatja a PowerApps Studio különböző részeit. Ez a rendszerkép van a kész alkalmazás; a középső ablaktáblán először üres képernyő jelenik meg.
+    Az alkalmazás webes PowerApps Studio megnyitása. A következő kép bemutatja a PowerApps Studio különböző részeit.
 
     ![PowerApps Studio](media/functions-powerapps-scenario/powerapps-studio.png)
 
-    **(1) bal oldali navigációs sáv**, minden egyes képernyőn az összes vezérlő hierarchikus nézete látható
+    **(A) bal oldali navigációs sáv**, minden egyes képernyőn az összes vezérlő hierarchikus nézete látható
 
-    **(2) a középső ablaktáblán**, amely mutatja a képernyő, amelyen dolgozunk
+    **(B) a középső ablaktáblán**, amely mutatja a képernyő, amelyen dolgozunk
 
-    **(3) a jobb oldali**, amelyen beállíthatja az beállítások például elrendezés és adatforrások
+    **(C) jobb oldali ablaktáblán**, amelyen beállíthatja az beállítások például elrendezés és adatforrások
 
-    **(4) tulajdonság** legördülő listából válassza ki, ahol ki kell választania a képletek tulajdonságok
+    **(D) tulajdonság** legördülő listából válassza ki, ahol ki kell választania a képletek tulajdonságok
 
-    **(5) a képletsávba**, ahol adja hozzá az alkalmazás viselkedését meghatározó képletek (ahogy Excel)
+    **E képletsávba**, ahol adja hozzá az alkalmazás viselkedését meghatározó képletek (ahogy Excel)
     
-    **(6) a menüszalag**, amelyen vezérlők hozzáadása és látványelemeket testreszabása
+    **F menüszalag**, amelyen vezérlők hozzáadása és látványelemeket testreszabása
 
 1. Adja hozzá az Excel-fájl egy adatforrás.
 
-    1. A jobb oldali ablaktáblában lévő a **adatok** lapra, majd **adatforrás hozzáadása**.
+    Az importálandó adatok a következőképpen néznek:
 
-        ![Adatforrás hozzáadása](media/functions-powerapps-scenario/add-data-source.png)
+    ![Excel-adatok importálása](media/functions-powerapps-scenario/excel-table.png)
 
-    1. Kattintson a **statikus adatok hozzáadása az alkalmazáshoz**.
+    1. Alkalmazás vászonra válasszon **adatokhoz**.
+
+    1. Az a **adatok** panelen, kattintson a **statikus adatok hozzáadása az alkalmazáshoz**.
 
         ![Adatforrás hozzáadása](media/functions-powerapps-scenario/add-static-data.png)
 
@@ -135,9 +109,10 @@ Most már készen áll az alkalmazás a powerapps segítségével, és adja hozz
 
         ![Adatforrás hozzáadása](media/functions-powerapps-scenario/choose-table.png)
 
+
 1. Adja hozzá az egyéni API-t egy adatforrás.
 
-    1. Az a **adatok** lapra, majd **adatforrás hozzáadása**.
+    1. Az a **adatok** panelen, kattintson a **adatforrás hozzáadása**.
 
     1. Kattintson a **turbinás javítási**.
 
@@ -156,17 +131,21 @@ Most, hogy az adatforrások elérhető az alkalmazásban, hozzáadhat egy olyan 
 
     ![Cím módosítása és átméretezése gyűjteménye](media/functions-powerapps-scenario/gallery-title.png)
 
-1. A gyűjtemény jelölve, a jobb oldali ablaktáblában kattintson a a **adatok** lapján módosítsa az adatforrást **CustomGallerySample** való **turbinák**.
+1. A kiválasztott, a jobb oldali ablaktáblában a katalógusban az **tulajdonságok**, kattintson a **CustomGallerySample**.
 
     ![Változások adatforrása](media/functions-powerapps-scenario/change-data-source.png)
 
+1. Az a **adatok** panelen, jelölje be **turbinák** a listából.
+
+    ![Adatforrás kiválasztása](media/functions-powerapps-scenario/select-data-source.png)
+
     Az adatkészlet nem képfájl, így most módosítja az elrendezés jobban oszlopnál az adatok tartalmazza. 
 
-1. Továbbra is a jobb oldali ablaktáblán módosítsa **elrendezés** való **cím, alcíme és fő**.
+1. Még mindig a **adatok** panelen, majd **elrendezés** való **cím, alcíme és fő**.
 
     ![Gyűjteményelem elrendezés módosítása](media/functions-powerapps-scenario/change-layout.png)
 
-1. Utolsó lépésként a jobb oldali ablaktáblán módosítsa a mezőket, amelyeknek jelennek meg a gyűjteményben.
+1. Az utolsó lépése a **adatok** panelen, majd a mezőket, amelyeknek jelennek meg a gyűjteményben.
 
     ![Gyűjteményelem mezők módosítása](media/functions-powerapps-scenario/change-fields.png)
     
@@ -185,6 +164,8 @@ Most, hogy az adatforrások elérhető az alkalmazásban, hozzáadhat egy olyan 
 1. Nem kell az eredeti képernyő az alkalmazásban. A bal oldali ablaktáblán mutasson az egérrel **képernyő1**, kattintson a **...** , és **törlése**.
 
     ![Képernyő törlése](media/functions-powerapps-scenario/delete-screen.png)
+
+1. Kattintson a **fájl**, és nevezze el az alkalmazást. Kattintson a **mentése** a bal oldali menüben kattintson a **mentése** a jobb alsó sarokban.
 
 Általában egy éles alkalmazásban kellene tennie formázási sok, de ehhez a forgatókönyvhöz - függvény hívása helyezzük be a fontos része.
 
@@ -237,7 +218,7 @@ Rendelkezik egy teljes app! Most már idő futtatáshoz, és tekintse meg a füg
 
 1. Próbálja meg a más turbinák, hogy mi van a függvény által visszaadott minden alkalommal, amikor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a témakör megtanulta, hogyan:
 
 > [!div class="checklist"]

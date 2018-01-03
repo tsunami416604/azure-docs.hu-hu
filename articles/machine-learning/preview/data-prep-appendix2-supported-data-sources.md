@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 458338cd23c704c40c512dd96b22a4790f27d017
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 32707a8089abef6caebedea168f5891161b1b480
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>A támogatott adatforrások az Azure Machine Learning adatok előkészítése 
 Ez a cikk ismerteti az Azure Machine Learning adatok előkészítése a jelenleg támogatott adatforrások.
@@ -86,7 +86,7 @@ Olvassa el egyszerre egy Excel-fájl egy lapot a lap nevének vagy számának me
 A JSON-fájl tárolási olvasni. A fájl "egybesimított" olvasáskor.
 
 #### <a name="options"></a>Beállítások
-- None
+- Nincs
 
 ### <a name="parquet"></a>Parquet
 Olvassa el a Parquet adatkészletet, vagy egyetlen fájl vagy mappa.

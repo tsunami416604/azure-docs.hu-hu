@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 93acec3bada30364b6e3338e037b442d7e6cd309
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 248cbcfe35db646a8bc71c6f825dcaa8a4661e91
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="supported-matrix-for-this-release"></a>Ebben a kiadásban támogatott mátrix 
 Ha a kód adatokat tölt az Azure Machine Learning adatforrások vagy az Azure Machine Learning adatok előkészített, vagy egy Pandas első használatával, vagy a Spark dataframe, kísérlet a következő kombinációk számítási és az adatok helyek támogatottak:

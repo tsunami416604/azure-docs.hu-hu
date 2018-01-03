@@ -5,23 +5,23 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 51a1b65446a1a0db93c21378f156b608a38ef817
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: ff5fcbc6df8cb07e0b98b877f20d981d6bef5117
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Az Azure Machine Learning data előkészítése Preview ellenőrök támogatott
 Ez a dokumentum ismerteti az előzetes verzióban elérhető ellenőrök készletét.
 
-## <a name="the-halo-effect"></a>A halo hatása 
+## <a name="the-halo-effect"></a>A hatás effektus 
 Néhány ellenőrök halo hatásának támogatja. Erre két különböző színek használatával mutatja azonnal a módosítást vizuálisan átalakító. A szürke a legújabb átalakítás előtti értékét jelöli, és a kék jeleníti meg az aktuális értékét. Ez a hatás engedélyezve, és le van tiltva, a beállítások menüben.
 
 ## <a name="graphical-filtering"></a>Grafikus szűrése 
@@ -39,7 +39,7 @@ Numerikus oszlopoknál a inspector számos különböző statisztikák az oszlop
 
 
 ### <a name="options"></a>Beállítások 
-- None
+- Nincs
 
 ## <a name="histogram"></a>Hisztogram 
 Kiszámítja, és egyetlen numerikus oszlopban hisztogram jeleníti meg. Az alapértelmezett számú gyűjtőbe Scott szabály használatával történik. Azonban a szabály a beállítások segítségével felülbírálható.

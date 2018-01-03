@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-ms.openlocfilehash: fcd58736d8915a61683a416fb9bf3892ba7b7bd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7df8bb2dd61466fd9af6492277d54cf0ffdfeb0b
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>Alkalmazások hibakeresése a helyi Docker-tárolóban
 ## <a name="overview"></a>Áttekintés
@@ -54,7 +54,7 @@ Gyors ismétlésének módosításokat, indítsa el az alkalmazás olyan tárol�
 
 1. A megoldás konfigurációs beállítása `Debug` nyomja le az ENTER  **&lt;CTRL + F5 >** a docker lemezkép, és futtassa helyileg.
 
-    Miután a tároló kép készült, és futtatja a Docker-tároló, a Visual Studio elindít az alapértelmezett böngészőben a webalkalmazás.
+    Miután a tároló kép készült, és futtatja a Docker-tároló, a Visual Studio indít, az alapértelmezett böngészőben a webalkalmazás.
     Ha a Microsoft Edge böngészőt használ, vagy ellenkező esetben a hibák rendelkezik, tekintse meg a [hibaelhárítás](vs-azure-tools-docker-troubleshooting-docker-errors.md) szakasz.
 2. Ugrás a jogi tudnivalók megjelenítése Névjegy lapot, amely ahol fogjuk a módosításokat.
 3. Térjen vissza a Visual Studio, és nyissa meg a `Views\Home\About.cshtml`.
@@ -88,7 +88,7 @@ Gyakran módosításokat kell további ellenőrzést, a Visual Studio hibakeres�
 
    ![][2]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A [Docker Visual Studio 2015 eszközök](https://aka.ms/DockerToolsForVS), helyileg, a termelési létrehozásáról a belül egy Docker-tároló fejlődő termelékenységére kaphat.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
 ms.openlocfilehash: 97c3fe6f0b7a4d9b967b44bf819a6f25598febc9
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="customize-web-application-firewall-rules-through-powershell"></a>Webes alkalmazás tűzfalszabályok Powershellen keresztül testreszabása
 
@@ -87,7 +87,7 @@ A következő példa letiltja a szabályok `910018` és `910017` az Alkalmazás�
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután konfigurálta a letiltott szabályok, megismerheti a WAF naplók megtekintéséhez. További információkért lásd: [átjáró Alkalmazásdiagnosztika](application-gateway-diagnostics.md#diagnostic-logging).
 

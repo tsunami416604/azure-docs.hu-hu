@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 09/29/2017
 ms.author: nitinme
 ms.openlocfilehash: bcddb66806cc58b3513c9c157512ac8b96a51ec1
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-rest-api"></a>A Data Lake Store REST API használatával végfelhasználói hitelesítés
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
 
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Az engedélyezési kód engedélyezési folyamata).
    
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, szolgáltatások közötti hitelesítés használata a hitelesítéshez az Azure Data Lake Store REST API használatával. Most már megtekintheti a következő cikkekben talál arról, hogyan működik az Azure Data Lake Store REST API használatával kommunikálhatnak.
 
 * [A Data Lake Store REST API használatával fiókkezelési műveletekhez](data-lake-store-get-started-rest-api.md)

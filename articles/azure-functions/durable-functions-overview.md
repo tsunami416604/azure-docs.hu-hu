@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: fa0d5cf7469a1a36fe0ab9a712cd4f8c963ceb48
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: f9dabe2644553ab1f4ed02ae026c7dbf1a0db264
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="durable-functions-overview-preview"></a>Tartós Functions áttekintése (előzetes verzió)
 
@@ -235,7 +235,7 @@ A beépített a tartós funkciók bővítmény a háttérben a [tartós feladat 
 
 Az orchestrator funkciók képesek megbízhatóan fenntartani egy úgynevezett felhőkialakítási mintájában a végrehajtási állapotot [esemény forrás](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing). Helyett közvetlenül a *aktuális* az orchestration, a tartós bővítmény állapotának rögzítéséhez egy csak append tárolót használja a *műveletsorozattal teljes* által a függvény vezénylési. Számos előnyt, beleértve a teljesítmény, méretezhetőség és reakcióidőt "vonatkozó" teljes futásidejű állapot képest javítása azt. Más előnyöket nyújtja, és a végleges konzisztencia biztosít a tranzakciós adatokat, és teljes naplózási előzmények kezelése és az előzmények karbantartása. A napló ellenőrzését maguk megbízható kompenzációs műveletek engedélyezése.
 
-Az esemény forrás a bővítmény által használata átlátszó. A színfalak a `await` operátor egy orchestrator függvényben a tartós feladat keretrendszer kézbesítő vissza a vezérlő az orchestrator szál adja eredményül. A kézbesítő majd érvényesítése bármely új műveletek az orchestrator függvény ütemezett (például egy vagy több alárendelt függvényt hívja, vagy egy tartós időzítő ütemezés) tárhelyre. A transzparens véglegesítési művelet hozzáfűzi a *futtatási előzményei* az orchestration-példány. Az előzmények tartós tároló tárolja. A véglegesítési művelet üzenetek a tényleges munkát ütemezése várólista hozzáadja. Ezen a ponton az orchestrator függvény memóriából lehet. Az elszámolási leállítja használata az Azure funkciók fogyasztás megtervezése.  Ehhez több munka esetén, a függvény újraindul, és állapotában újraépíti.
+Az esemény forrás a bővítmény által használata átlátszó. A színfalak a `await` operátor egy orchestrator függvényben a tartós feladat keretrendszer kézbesítő vissza a vezérlő az orchestrator szál adja eredményül. A kézbesítő majd érvényesítése bármely új műveletek az orchestrator függvény ütemezett (például egy vagy több alárendelt függvényt hívja, vagy egy tartós időzítő ütemezés) tárhelyre. A transzparens véglegesítési művelet hozzáfűzi a *futtatási előzményei* az orchestration-példány. Az előzmények tárolási tábla tárolja. A véglegesítési művelet üzenetek a tényleges munkát ütemezése várólista hozzáadja. Ezen a ponton az orchestrator függvény memóriából lehet. Az elszámolási leállítja használata az Azure funkciók fogyasztás megtervezése.  Ehhez több munka esetén, a függvény újraindul, és állapotában újraépíti.
 
 Miután egy vezénylési függvényben megadott van ehhez a további munkahelyi (például egy válaszüzenet érkezett vagy tartós idő letelte után), az orchestrator felébred újra és újra végrehajtja a teljes funkció elejéről. ahhoz, hogy a helyi állapot építse újra. Ha a visszajátszás közben a kód megpróbálja meghívni a függvényt (vagy bármely más aszinkron munkahelyi), tartós feladat keretében olvas, és a *futtatási előzményei* , az aktuális vezénylési. Ha úgy találja, hogy a tevékenység függvény már által végrehajtott eredményezte néhány eredményt, replays a függvény eredménye és az orchestrator kód továbbra is futnak. Ez továbbra is fennáll, addig, amíg a függvény kód lekér egy pontra, ahol befejeződött vagy ütemezett új aszinkron feladatot van folyamatban.
 
@@ -247,9 +247,9 @@ A visszajátszás viselkedés kódot, amely egy orchestrator függvényben csak 
 
 C# jelenleg az egyetlen támogatott nyelvi a tartós funkcióihoz. Ez magában foglalja a tevékenységet és az orchestrator függvények. A jövőben minden nyelven, amely támogatja az Azure Functions támogatni fogják azt. Tekintse meg az Azure Functions [GitHub tárház problémák listájába](https://github.com/Azure/azure-functions-durable-extension/issues) legfrissebb állapotát a további nyelv támogatja tekintheti meg.
 
-## <a name="monitoring-and-diagnostics"></a>Megfigyelési és diagnosztikai
+## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 
-A tartós funkciók bővítmény automatikusan bocsát ki a strukturált nyomon követési adatok [Application Insights](functions-monitoring.md) Ha a függvény alkalmazást az Application Insights kulccsal van konfigurálva. Nyomon követési adatok viselkedést és a álló üzenettípusok összehangolását állapotának figyelésére használható.
+A tartós funkciók bővítmény automatikusan bocsát ki a strukturált nyomon követési adatok [Application Insights](functions-monitoring.md) Ha a függvény alkalmazást az Application Insights instrumentation kulccsal van konfigurálva. Nyomon követési adatok viselkedést és a álló üzenettípusok összehangolását állapotának figyelésére használható.
 
 Íme egy példa hogyan a tartós funkciók nyomon követés meg az Application Insights portálon [Application Insights Analytics](https://docs.microsoft.com/azure/application-insights/app-insights-analytics):
 
@@ -278,7 +278,7 @@ A TABLE storage a futtatási előzményei orchestrator fiókok tárolására szo
 
 Általában minden ismert problémákat kell követhető nyomon a [GitHub problémák](https://github.com/Azure/azure-functions-durable-extension/issues) listája. Ha problémába ütközik, és a probléma nem találja a Githubon, nyisson meg egy új problémát, és a probléma részletes leírását tartalmazza. Akkor is, ha egyszerűen kívánt tegyen fel kérdést, nyugodtan nyissa meg a GitHub probléma címkével kérdésként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Továbbra is a tartós funkciók dokumentációja olvasása](durable-functions-bindings.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako
 ms.openlocfilehash: c2cbe41b71afa8acc184f9d7f4cfe94686de783e
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Útmutató: a Media Processzorpéldány beolvasása
 > [!div class="op_single_selector"]
@@ -59,6 +59,6 @@ A következő metódus hogyan kérhet egy adathordozó processzorpéldány jelen
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy hogyan kérhet egy adathordozó processzorpéldány ismeri, navigáljon a [egy eszköz kódolással](media-services-dotnet-encode-with-media-encoder-standard.md) témakör, amely tartalmazza a Media Encoder Standard segítségével egy eszköz kódolása.
 

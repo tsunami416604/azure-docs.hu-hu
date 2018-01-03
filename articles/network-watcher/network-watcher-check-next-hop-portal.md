@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 445ec8c7eeb8dd715d3778b44372d16666da7fb8
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-the-portal"></a>Megtudhatja, milyen a következő ugrás típusa a következő ugrás funkció használ az Azure hálózati figyelőt a portál használatával
 
@@ -70,13 +70,13 @@ Ha a feladat befejeződött, a eredményei. Az IP-cím és az eszköznek a köve
 * VnetLocal
 * HyperNetGateway
 * VnetPeering
-* None
+* Nincs
 
 Ha egy egyéni útvonala irányíthatja a forgalmat lett megadva, a felhasználó által megadott útvonal (UDR) jelenik meg, valamint az eredményeket.
 
 ![következő ugrás eredményt ad][2]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan ellátogatva programozott módon tekintse át a hálózati biztonsági csoport beállításainak [NSG naplózás hálózati figyelőt](network-watcher-nsg-auditing-powershell.md)
 

@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: bbbee61d6cd67dd437e4fbcd7260d2f378531912
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 50d2d481b91199630bbfbf3cfdd21a1bf3062ff0
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="supported-data-exports-for-this-preview"></a>Támogatott adatok exportálja az előzetes verzió 
 Számos különböző formátumokban exportálása lehetőség. Ezek a formátumok segítségével adatok előkészítése a köztes eredmények megőrzése előtt az eredmények integrálja a Machine Learning munkafolyamat többi részétől.
@@ -43,7 +43,7 @@ Során kibővített fut (a Spark) Azure Machine Learning-munkaterület olvasás�
 
 #### <a name="caveats"></a>Figyelmeztetések 
 Parquet, formátum viszonylag fiatal, és néhány megvalósítási inkonzisztenciát között különböző szalagtárat. Spark példányhoz, amelyen karakterek érvényesek az oszlopnevek írásakor Parquet korlátozások helyezi. PyArrow tilos ezt tenniük. Egy oszlop neve nem lehet a következő karaktereket: 
-- ,
+- ;
 - ;
 - {}
 - ()

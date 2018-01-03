@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: b99cf767fb931d3f7fe14fcbe7990126244613ed
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Az Always On rendelkezésre állási csoport konfigurálása egy Azure virtuális gépen a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -564,7 +564,7 @@ Végül készen áll a rendelkezésre állási csoport konfigurálásához. Telj
              -Path "SQLSERVER:\SQL\$server2\Default\AvailabilityGroups\$ag" `
              -Database $db
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ön már most sikeresen megvalósítva SQL Server Always On rendelkezésre állási csoport létrehozása az Azure-ban. A figyelő a rendelkezésre állási csoport konfigurálásához lásd: [egy ILB figyelőt az Always On rendelkezésre állási csoportok konfigurálása az Azure-](../classic/ps-sql-int-listener.md).
 
 Egyéb Azure-ban az SQL Server használatával kapcsolatos információkért lásd: [Azure virtuális gépeken futó SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md).

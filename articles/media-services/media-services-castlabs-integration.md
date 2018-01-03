@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: Mingfeiy;willzhan;Juliako
 ms.openlocfilehash: 5b69e804809f834e81221fb2787a997a52dbe286
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ A következő táblázat ismerteti az AMS JWT jogkivonat.
 ### <a name="jwt-token-in-castlabs"></a>A castLabs JWT jogkivonat
 A következő táblázat ismerteti a castLabs JWT jogkivonat. 
 
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
 | optData |Egy adatokat tartalmazó JSON-karakterlánc. |
 | CRT |Az eszköz adatainak tartalmazó JSON karakterláncnak a licencelési adatokat, és a lejátszás jogok. |

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: davidmu
 ms.openlocfilehash: bb77c9b39e1aa89f6411de8ec3b1fca41e954bf2
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Hozzon létre egy egyéni mintavétel az Alkalmazásátjáró a portál használatával
 
@@ -74,7 +74,7 @@ Amikor végzett, kattintson **mentése** és a beállítások lesznek alkalmazva
 
 Az alapértelmezett mintavétel az alapértelmezett hozzáférési webalkalmazás ellenőrzi. Most, hogy egy egyéni mintavétel létrehozása után az Alkalmazásátjáró használja a háttérkiszolgálókhoz állapotának figyeléséhez definiált egyéni elérési utat. A megadott feltétel alapján, az Alkalmazásátjáró ellenőrzi a mintavétel a megadott elérési út. Ha a gazdagép és a portszám hívása / elérési út nem ad vissza egy HTTP 200-399 állapotválasz, a kiszolgáló kívül Elforgatás használatban van, a sérült küszöbérték elérése után. Probing továbbra is a nem megfelelő állapotú példányon megállapítani, hogy mikor válik kifogástalan újra. A példány vissza megfelelő kiszolgálókészlethez hozzáadott, forgalom kezdődik áramló rá, és a példányra probing továbbra is fennáll, mint a normál felhasználói megadott időközönként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 SSL-Feladatkiszervezést konfigurálása Azure Application Gateway kapcsolatban [SSL-kiszervezés konfigurálása](application-gateway-ssl-portal.md)
 

@@ -9,11 +9,11 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 9bb55d5af16056ebafc131e73ac4b9da181bd8c7
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: f3822386d0d16b1feaf16853424329558a18f910
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Az Azure Media Webmontázskészítő videóklipeket létrehozása
 Az Azure Media Webmontázskészítő egy ingyenes JavaScript-függvénytárat, amely lehetővé teszi webes fejlesztők számára a felhasználói felülettel történő media videóklipeket létrehozása. Az eszköz integrálhatók a weblapokat, és API felületeket biztosít az eszközök betöltésekor és Kivágás feladatok elküldésekor.
@@ -29,7 +29,7 @@ Az Azure Media Webmontázskészítő teszi lehetővé:
 
 Kérjen új funkciókat, adja meg a ötleteket vagy visszajelzést szeretne küldeni, terjeszt [Azure Media Services UserVoice](http://aka.ms/amsvoice/). Ha rendelkezik, és konkrét problémák, kérdések vagy hibáit, dobja el a Media Services team: egy sor keresés amcinfo@microsoft.com.
 
-Az alábbi ábrán a Webmontázskészítő felület: ![Azure Media Webmontázskészítő](media/media-services-azure-media-clipper-getting-started/media-services-azure-media-clipper-interface.PNG)
+Az alábbi ábrán a Webmontázskészítő felület: ![Azure Media Webmontázskészítő](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 Tekintse meg az alábbi lista a Webmontázskészítő blogbejegyzés, különböző ismert problémák és a legújabb kiadása a Webmontázskészítő a változásnaplója:
@@ -70,5 +70,5 @@ A Webmontázskészítő widget a következő 18 nyelveken érhető el:
 - svéd
 - török
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure Media Webmontázskészítő használatának megkezdéséhez olvassa el a [bevezetés](media-services-azure-media-clipper-getting-started.md) cikkben talál részletes információt a widget központi telepítéséről.

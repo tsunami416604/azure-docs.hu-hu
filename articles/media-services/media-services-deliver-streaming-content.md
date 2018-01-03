@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
 ms.openlocfilehash: 2bcb012eef84faa7c1e13ed22e88e45e4300ed54
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="publish-azure-media-services-content-using-net"></a>Azure Media Services tartalmakat a .NET használatával közzététele
 > [!div class="op_single_selector"]
@@ -174,7 +174,7 @@ Az alábbi kód olyan, egy kereső létrehozása, és amelyek adaptív streamel�
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Töltse le az eszközök](media-services-deliver-asset-download.md)
 * [Objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md)
 

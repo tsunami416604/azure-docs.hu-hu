@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 633543aba99f5c09b14a9e4b11adf59ca04d0fe5
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-network-security-group-flow-logs-in-the-azure-portal"></a>Hálózati biztonsági csoport folyamata naplók az Azure portálon kezelése
 
@@ -80,23 +80,23 @@ Attribútumfolyam naplók a storage-fiók mentése. Töltse le a folyamat napló
 
 Folyamat naplók letöltéséhez kiválasztása **folyamata naplók letölthető konfigurált tárfiókok**. Ebben a lépésben megnyitná a tárolási fiók nézetet adja meg a mely naplók letöltéséhez.
 
-![Adatfolyam-naplói beállításainak][4]
+![Folyamatnaplók beállításai][4]
 
 ### <a name="step-2"></a>2. lépés
 
 Nyissa meg a megfelelő tárolási fiók. Válassza ki **tárolók** > **insights-napló-networksecuritygroupflowevent**.
 
-![Adatfolyam-naplói beállításainak][5]
+![Folyamatnaplók beállításai][5]
 
 ### <a name="step-3"></a>3. lépés
 
 Nyissa meg a folyamat napló helye, válassza ki, majd válassza ki **letöltése**.
 
-![Adatfolyam-naplói beállításainak][6]
+![Folyamatnaplók beállításai][6]
 
 A napló szerkezete kapcsolatos információkért látogasson el a [hálózati biztonsági csoport folyamata napló áttekintése](network-watcher-nsg-flow-logging-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [jelenítheti meg az NSG folyamata naplók a powerbi-jal](network-watcher-visualize-nsg-flow-logs-power-bi.md).
 
