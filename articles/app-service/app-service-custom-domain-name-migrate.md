@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: a1fe545e4a341709232cba36c6e3cf3b4ce82e80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd04be2046a23901471cb7bd0da9e0ed2d514d0d
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Egy aktív DNS-név áttelepítése az Azure App Service
 
@@ -39,7 +39,7 @@ Ez az útmutató befejezése:
 
 Az egyéni tartománynév megelőző jelleggel kötését, elérheti a DNS-rekordok módosítása előtt az alábbi:
 
-- Ellenőrizze a tartomány tulajdonosa
+- Tartomány tulajdonjogának ellenőrzése
 - A tartománynév, az alkalmazás engedélyezése
 
 Végül a környezetbe való áttelepítéskor a egyéni DNS-neve a régi webhely az App Service-alkalmazást, lesz állásidő nélkül a DNS-feloldás eredményének.
@@ -50,7 +50,7 @@ Végül a környezetbe való áttelepítéskor a egyéni DNS-neve a régi webhel
 
 Ellenőrizze a tartomány tulajdonosa, vegye fel a TXT-rekord. A TXT-rekord a maps _awverify.&lt; altartomány >_ való  _&lt;alkalmazásnév >. azurewebsites.net_. 
 
-A TXT-rekord van szüksége a DNS-rekord, amelyet át szeretne függ. Tekintse meg a következő táblázat (`@` általában jelenti. a legfelső szintű tartomány):  
+A TXT-rekord van szüksége a DNS-rekord, amelyet át szeretne függ. Tekintse meg a következő táblázat (`@` általában jelenti. a legfelső szintű tartomány):
 
 | DNS-rekord példa | TXT-állomás | TXT érték |
 | - | - | - |
@@ -122,7 +122,7 @@ A beállítások mentéséhez.
 
 DNS-lekérdezések kell kezdődnie, az App Service alkalmazáshoz feloldása után azonnal DNS-propagálás történik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók az App Service egy egyéni SSL-tanúsítvány kötését.
 

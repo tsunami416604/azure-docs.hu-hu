@@ -3,7 +3,7 @@ title: "Felhasználói engedélyek adott labor szabályzatokkal |} Microsoft Doc
 description: "Útmutató: a DevTest Labs szolgáltatásban minden egyes felhasználói igények alapján adott labor házirendek felhasználói engedélyeket"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 5ca829f0-eb69-40a1-ae26-03a629db1d7e
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
-ms.author: tarcher
-ms.openlocfilehash: 155debf5fea4439c8273d2518856952fbf0f871a
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.author: v-craic
+ms.openlocfilehash: f92ad5e991bdb066bb9680b4865501076d43f450
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>A konkrét labor házirendek felhasználói engedélyek
 ## <a name="overview"></a>Áttekintés
@@ -84,12 +84,12 @@ Az előző példában a **AllowedVmSizesInLab** házirendet használja. Használ
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Egyszer már engedélyeket felhasználó adott labor házirendek, az alábbiakban néhány lépéseket érdemes figyelembe venni:
 
 * [Biztonságos hozzáférés a laborokhoz](devtest-lab-add-devtest-user.md)
-* [Labor házirendek beállítása](devtest-lab-set-lab-policy.md)
+* [Laborszabályzatok megadása](devtest-lab-set-lab-policy.md)
 * [Laborsablon létrehozása](devtest-lab-create-template.md)
-* [Egyéni összetevők létrehozása a virtuális gépek](devtest-lab-artifact-author.md)
-* [Virtuális gép hozzáadása egy laborhoz](devtest-lab-add-vm.md)
+* [Egyéni összetevők létrehozása a virtuális géphez](devtest-lab-artifact-author.md)
+* [Virtuális gép hozzáadása laborhoz](devtest-lab-add-vm.md)
 

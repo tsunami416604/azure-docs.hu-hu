@@ -5,7 +5,7 @@ keywords: "Linux virtuális gép, virtuálisgép-méretezési beállítása"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: madhana
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
@@ -16,21 +16,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 0b05359938f4da544c4cb2a6fe60cfaf228478e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: efb9f7f7daa5dbb8cd3120b21ef812106fdc7fb9
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="design-considerations-for-scale-sets"></a>Méretezési csoportok kialakítási szempontjai
-Ebben a témakörben ismertetett tervezési megfontolások a virtuálisgép-méretezési készlet. Mik azok a virtuálisgép-méretezési csoportok kapcsolatos információkért tekintse meg [virtuális gépek méretezési készletek áttekintése](virtual-machine-scale-sets-overview.md).
+A cikk ismerteti a virtuálisgép-méretezési csoportok kialakítási szempontjai. Mik azok a virtuálisgép-méretezési csoportok kapcsolatos információkért tekintse meg [virtuális gépek méretezési készletek áttekintése](virtual-machine-scale-sets-overview.md).
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Mikor érdemes használni a skála beállítja a virtuális gépek helyett?
-Általában méretezési csoportok hasznosak magas rendelkezésre állású infrastruktúra üzembe helyezéséhez ahol gépek halmaza hasonló konfigurációval rendelkezik. Azonban bizonyos funkciók találhatók csak méretezési csoportok míg egyéb szolgáltatásokat csak a virtuális gépek. Ahhoz, hogy jól informált döntést arról, hogy mikor melyik technológiát használja, azt kell vessen egy pillantást, néhány gyakran használt funkciója által biztosított méretezési csoportok, de nem a virtuális gépek:
+Általában méretezési csoportok hasznosak magas rendelkezésre állású infrastruktúra üzembe helyezéséhez ahol gépek halmaza hasonló konfigurációval rendelkezik. Azonban bizonyos funkciók találhatók csak méretezési csoportok míg egyéb szolgáltatásokat csak a virtuális gépek. Ahhoz, hogy jól informált döntést arról, hogy mikor melyik technológiát használja, meg kell először tekintse meg néhány gyakran használt funkciója által biztosított méretezési csoportok, de nem a virtuális gépek:
 
 ### <a name="scale-set-specific-features"></a>Méretezési készlet-specifikus szolgáltatásai
 
-- A méretezési konfigurációs ad meg, ha egyszerűen frissítheti párhuzamosan további virtuális gépek telepítése a "kapacitás" tulajdonság. Ez egy sokkal egyszerűbb, mint a kell levezényelni a párhuzamos sok egyes virtuális gépek telepítését egy parancsfájl írásához.
+- A méretezési konfigurációs ad meg, miután frissítheti párhuzamosan további virtuális gépek telepítése a "kapacitás" tulajdonság. Ez egy sokkal egyszerűbb, mint a kell levezényelni a párhuzamos sok egyes virtuális gépek telepítését egy parancsfájl írásához.
 - Is [Azure automatikus skálázás segítségével automatikusan átméretezi a méretezési](./virtual-machine-scale-sets-autoscale-overview.md) , de nem az egyes virtuális gépek.
 - Is [lemezkép-visszaállítási méretezési virtuális gépek](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm) , de [nem az egyes virtuális gépek](https://docs.microsoft.com/rest/api/compute/virtualmachines).
 - Is [szükségesnél több erőforrás](./virtual-machine-scale-sets-design-overview.md) méretezési virtuális gépek nagyobb megbízhatóságot és gyorsabb telepítési időpontokat. Nem ehhez az egyes virtuális gépeken kivéve ennek egyéni kód írását, akkor.
@@ -38,16 +38,16 @@ Ebben a témakörben ismertetett tervezési megfontolások a virtuálisgép-mér
 
 ### <a name="vm-specific-features"></a>VM-specifikus szolgáltatásai
 
-Másrészről, néhány funkció csak érhető el a virtuális gépek (legalább jelenleg):
+Néhány funkció jelenleg csak a virtuális gépek:
 
 - Az adatlemezek csatolhat adott egyes virtuális gépeken, de csatolt adatlemezek méretezési csoportban lévő összes virtuális gépek vannak konfigurálva.
 - Nem üres adatlemez csatolása egyes virtuális gépeken, de nem méretezési csoportban lévő virtuális gépek.
 - Egy adott virtuális Gépre, de nem egy Virtuálisgép-méretezési csoportban lévő lehet pillanatkép.
 - Az egy adott virtuális Gépre, de nem egy Virtuálisgép-méretezési csoportban lévő lemezkép rögzítheti.
 - Telepíthet át egy adott virtuális Gépre natív lemezek felügyelt lemezekre, de nem ehhez a virtuális gépek méretezési csoportban lévő.
-- IPv6 nyilvános IP-címek rendelhet az egyes virtuális gép hálózati adapterek, de nem ehhez a virtuális gépek méretezési csoportban lévő. Vegye figyelembe, hogy IPv6 nyilvános IP-címek terheléselosztókhoz elé vagy egyedi virtuális gépeket rendelhet, vagy virtuális gépek méretezési csoportjának virtuális gépeket.
+- IPv6 nyilvános IP-címek rendelhet az egyes virtuális gép hálózati adapterek, de nem ehhez a virtuális gépek méretezési csoportban lévő. IPv6 nyilvános IP-címek terheléselosztókhoz elé vagy egyedi virtuális gépeket rendelhet, vagy a virtuális gépek méretezési csoportjának virtuális gépek.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Az Azure Managed lemezek méretezési csoportok
 Méretezési csoportok hozhatók létre [Azure felügyelt lemezek](../virtual-machines/windows/managed-disks-overview.md) hagyományos Azure storage-fiókok helyett. Felügyelt lemezek előnyei a következők:

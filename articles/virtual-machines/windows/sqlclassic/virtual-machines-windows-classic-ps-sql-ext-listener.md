@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 8e506be42aea4fb3c48c29b771a78dcf694f4518
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Egy külső figyelőt a Always On rendelkezésre állási csoportok konfigurálása az Azure-ban
 > [!div class="op_single_selector"]
@@ -130,6 +130,6 @@ Az előző példában eltérően SQL-hitelesítést kell használni, mert a hív
 
 Ha az Always On replikák külön alhálózatokon vannak, ügyfeleknek meg kell adniuk **MultisubnetFailover = True** a kapcsolati karakterláncban. Az eredmény párhuzamos próbálnak meg kapcsolódni a különböző alhálózatokon replikához. Vegye figyelembe, hogy ez az eset tartalmazza-e a központi telepítés kereszt-régió Always On rendelkezésre állási csoportnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
 

@@ -3,8 +3,8 @@ title: "Egy Azure virtuálisgép-méretezési csoport frissítése |} Microsoft 
 description: "Egy Azure virtuálisgép-méretezési csoport frissítése"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: guybo
-ms.openlocfilehash: aef243e34f1d5fc8240576a9803bb8b08693a7b7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: gunegatybo
+ms.openlocfilehash: fbdc9d40173a40f35eee60cadfdd258293509d53
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoport frissítése
 Ez a cikk ismerteti, hogyan lehet megkezdik az operációs rendszer frissítése egy Azure virtuális gép méretezése állásidő nélkül. Ebben a környezetben az operációs rendszer frissítés magában foglalja a módosítása az operációs rendszer Termékváltozata vagy a verziójával, vagy az egyéni lemezkép URI-Azonosítóinak módosítása. Erre a frissítése nélkül állásidő azt jelenti, hogy frissítési egyszerre helyett virtuális gépet egyszerre, vagy a csoportok (például egy tartalék tartomány egyszerre). Ezzel a módszerrel bármely nem frissített virtuális gépek adatközpontnak futnia.
@@ -31,7 +31,7 @@ Félreérthetőség elkerülése érdekében most különbözteti meg a négy t�
 * A méretezési Azure felügyelt lemezek használatával létrehozott lemezképet hivatkozás módosítása.
 * Javítás az operációs rendszer a virtuális gépen (ezt például a biztonsági javítás telepítése és a Windows Update futtatása). Ez a forgatókönyv használata támogatott, de nem tartalmazza az ebben a cikkben.
 
-Virtuálisgép-méretezési csoportok részeként üzembe helyezett egy [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) fürthöz nem tartoznak ide. Lásd: [javítás Windows operációs rendszer a Service Fabric-fürt](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application) további információt a Service Fabric javítását.
+Virtuálisgép-méretezési csoportok részeként üzembe helyezett egy [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) fürthöz nem tartoznak ide. További információ a Service Fabric javítás: [javítás Windows operációs rendszer a Service Fabric-fürt](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)
 
 Az alapvető sorrend módosítása az operációs rendszer verziója/Termékváltozata platformlemezkép vagy egy egyéni lemezkép URI a következőképpen néz ki:
 
@@ -64,14 +64,14 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 Update-AzureRmVmssInstance -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceId $instanceId
 ```
 
-A platform lemezkép verziója módosítása helyett egyéni lemezkép URI-JÁNAK frissítésekor, cserélje le a "az új verzió beállítása" sor frissíteni fogja a forrás lemezkép URI parancsot. Például ha a méretezési Azure felügyelt lemezek használata nélkül hozták létre, a frissítés akkor néznek ki:
+A platform lemezkép verziója módosítása helyett egyéni lemezkép URI-JÁNAK frissítésekor, cserélje le a "az új verzió beállítása" sor frissíti a forrás lemezkép URI parancsot. Például ha a méretezési Azure felügyelt lemezek használata nélkül hozták létre, a frissítés akkor néznek ki:
 
 ```powershell
 # set the new version in the model data
 $vmss.virtualMachineProfile.storageProfile.osDisk.image.uri= $newURI
 ```
 
-Ha egyéni lemezkép-alapú méretezési csoportban hozták létre Azure kezelt lemezeken, akkor a Képhivatkozás frissíti a szeretné. Példa:
+Ha egyéni lemezkép-alapú méretezési készült Azure felügyelt lemezt használ, a Képhivatkozás lesz frissítve. Példa:
 
 ```powershell
 # set the new version in the model data

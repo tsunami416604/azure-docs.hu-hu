@@ -3,7 +3,7 @@ title: "Címkék hozzáadása egy tesztkörnyezetet a Azure DevTest Labs szolgá
 description: "Megtudhatja, hogyan címke hozzáadása egy laborhoz a Azure DevTest Labs szolgáltatásban"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: dc5b327a-62e4-41bc-80ef-deb3c23d51b2
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
-ms.author: tarcher
-ms.openlocfilehash: c268c1a10e4a313d0520f96e452ef978b6201115
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.author: v-craic
+ms.openlocfilehash: 38b6612bc33326b758b357dca09081c02d294e5d
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Címkék hozzáadása egy tesztkörnyezetet a Azure DevTest Labs szolgáltatásban
 
@@ -27,7 +27,7 @@ Egyéni címkék létrehozása, és alkalmazni azokat a DevTest Labs erőforrás
 Címkék által támogatott erőforrások közé tartoznak a
 
 * Virtuális gépek számítási
-* Hálózati adapter
+* Hálózati adapterek (NIC-k)
 * IP-címek
 * Terheléselosztók
 * Tárfiókok
@@ -63,6 +63,6 @@ Az alábbi korlátozások érvényesek a címkékre:
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Testreszabott házirendekkel alkalmazhat korlátozások és egyezmények az előfizetéshez. Megadhat egy házirendet, minden erőforrás rendelkezik-e egy adott címke értéke lehet szükség. További információkért lásd: [házirendek és ütemezések](devtest-lab-set-lab-policy.md).
 * Megismerkedhet a [Office DevTest Labs Azure Resource Manager gyorsindítási sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Samples).

@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.openlocfilehash: fea70b389b1f1d6af963e3f14fdc48e8d857dd53
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Egy ILB figyelőt az Always On rendelkezésre állási csoportok konfigurálása az Azure-ban
 > [!div class="op_single_selector"]
@@ -164,5 +164,5 @@ A rendelkezésre állási csoport figyelőjének létrehozása két lépésben. 
 ## <a name="test-the-availability-group-listener-within-the-same-virtual-network"></a>A rendelkezésre állási csoport figyelőjét (belül az azonos virtuális hálózatban) tesztelése
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]

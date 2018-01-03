@@ -3,7 +3,7 @@ title: "Az Azure virtuális gép automatikus az operációs rendszer frissítés
 description: "Ismerje meg, az operációs rendszerben található egy méretezési csoportban lévő Virtuálisgép-példányok automatikus frissítése"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
+author: gatneil
 manager: jeconnoc
 editor: 
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: guybo
-ms.openlocfilehash: 6fc52bc779dcb58d4f7e6aa90e25c9d8e8ec6011
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.author: negat
+ms.openlocfilehash: 60468860a8fe7d10bf0f25b92f4313aaa2614db3
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Azure virtuális gépek méretezési automatikus az operációs rendszer frissítései
 
@@ -234,5 +234,5 @@ Az alábbi sablon használatával egy méretezési csoport, amely használja az 
 </a>
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az operációs rendszer automatikus frissítések használata a méretezési készlet további példákért lásd a [előzetes verziójú funkciók a GitHub-tárház](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade).

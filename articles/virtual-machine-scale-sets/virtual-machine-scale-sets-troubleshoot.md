@@ -3,8 +3,8 @@ title: "Virtuálisgép-méretezési csoportok automatikusan skálázva hibaelhá
 description: "Hárítsa el a virtuálisgép-méretezési csoportok automatikusan skálázva. Ismerje meg észlelt jellemző problémákat és azok megoldását."
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: windows
 ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
-ms.author: guybo
-ms.openlocfilehash: 19871cd0433c6df88c631cf6e6e8e477dc902448
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: negat
+ms.openlocfilehash: 02a3acf818bfca31a56b364f7abab97551e0d3f0
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok automatikusan skálázva hibaelhárítása
 **A probléma** – létrehozta az automatikus skálázás infrastruktúra az Azure Resource Manager használatával virtuálisgép-méretezési csoportok – például egy sablont ehhez hasonló telepítésével: https://github.com/Azure/azure-quickstart-templates/tree/master/201- a skálázási szabályok definiált vmss-bottle – automatikus skálázás – rendelkezik, és azt nagyszerű, kivéve akkor helyezni a virtuális gépek mekkora terhelés, függetlenül azok automatikus skálázás nem.
 
-## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
+## <a name="troubleshooting-steps"></a>Hibaelhárítási útmutató
 Szempontokat kell figyelembe venni a következők:
 
 * Hány Vcpu minden virtuális gép rendelkezik, és minden vCPU betöltése?

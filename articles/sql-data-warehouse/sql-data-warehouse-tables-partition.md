@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 12/06/2017
 ms.author: barbkess
 ms.openlocfilehash: a28cb1f8a2e48332b344566620dc49b29d9d3c99
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse Táblák particionálása
 > [!div class="op_single_selector"]
@@ -349,7 +349,7 @@ DROP TABLE #partitions;
 
 Ezt a módszert a kódot a verziókövetési statikus marad, és a particionálási tartományhatár-értékek használata engedélyezett a dinamikus; fejlesztik, az adatraktár adott idő alatt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalókért tekintse meg a cikkek [tábla áttekintése][Overview], [tábla adattípusok][Data Types], [terjesztése egy tábla] [ Distribute], [Tábla indexelő][Index], [fenntartása a tábla statisztikai adatainak] [ Statistics] és [Az ideiglenes táblák][Temporary].  Gyakorlati tanácsok kapcsolatban bővebben lásd: [SQL Data Warehouse gyakorlati tanácsok][SQL Data Warehouse Best Practices].
 
 <!--Image references-->

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae97045c27f3ad8b62e7798b2060ea59ccd66ac5
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 52a45f1b67e3194739fe97daad56de2d3515dee3
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Az Azure Functions Twilio-kötés
 
@@ -32,13 +32,13 @@ Ez a cikk azt ismerteti, hogyan a szöveges üzenetek küldéséhez a [Twilio](h
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#c-example)
-* [C# parancsfájl](#c-script-example)
+* [C#](#c-example)
+* [C# parancsfájl (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
 ### <a name="c-example"></a>C# – példa
 
-Az alábbi példa mutatja egy [előre le a C# függvény fordítva](functions-dotnet-class-library.md) , amely egy üzenetsor kiváltásakor szöveges üzenetet küld.
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , amely egy üzenetsor kiváltásakor szöveges üzenetet küld.
 
 ```cs
 [FunctionName("QueueTwilio")]
@@ -195,7 +195,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="attributes"></a>Attribútumok
 
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio).
 
 Konfigurálható attribútumtulajdonságok kapcsolatos információkért lásd: [konfigurációs](#configuration). Íme egy `TwilioSms` metódus-aláírás attribútum példát:
 
@@ -213,7 +213,7 @@ public static SMSMessage Run(
 }
  ```
 
-Tekintse meg a teljes például [előre le fordítva C# példa](#c-example).
+Tekintse meg a teljes például [C# példa](#c-example).
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -232,7 +232,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

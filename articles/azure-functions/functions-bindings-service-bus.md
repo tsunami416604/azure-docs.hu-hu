@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: 6d59b26fa4ab17c17827a8e3450e808e40e5c2dd
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 2df003d47291570b31e1091f34994e4023000981
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Functions az Azure Service Bus kötései
 
@@ -36,14 +36,14 @@ A Service Bus eseményindító használatával a Service Bus-üzenetsor vagy té
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#trigger---c-example)
-* [C# parancsfájl](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# parancsfájl (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Eseményindító - C# – példa
 
-Az alábbi példa mutatja egy [előre le a C# függvény fordítva](functions-dotnet-class-library.md) , amely egy Service Bus-üzenetsor naplózza.
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , amely egy Service Bus-üzenetsor naplózza.
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -146,7 +146,7 @@ module.exports = function(context, myQueueItem) {
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók, ha egy Service Bus eseményindítót a következő attribútumokat használhatja:
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), ha egy Service Bus eseményindítót a következő attribútumokat használhatja:
 
 * [ServiceBusTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusTriggerAttribute.cs)NuGet-csomagot a definiált [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus)
 
@@ -173,7 +173,7 @@ A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók, ha egy 
   }
   ```
 
-  Tekintse meg a teljes például [eseményindító - előfordított például C#](#trigger---c-example).
+  Tekintse meg a teljes például [eseményindító - C# példa](#trigger---c-example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs)NuGet-csomagot a definiált [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus)
 
@@ -250,14 +250,14 @@ Azure Service Bus kimeneti kötés segítségével üzenetsor vagy témakör üz
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [Lefordított C#](#output---c-example)
-* [C# parancsfájl](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# parancsfájl (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Kimeneti - C# – példa
 
-Az alábbi példa mutatja egy [előre le a C# függvény fordítva](functions-dotnet-class-library.md) , küld egy Service Bus-üzenetsor:
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , küld egy Service Bus-üzenetsor:
 
 ```cs
 [FunctionName("ServiceBusOutput")]
@@ -411,7 +411,7 @@ module.exports = function (context, myTimer) {
 
 ## <a name="output---attributes"></a>Kimeneti - attribútumok
 
-A [előre le fordítva C#](functions-dotnet-class-library.md) funkciók használata a [ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus).
 
 Az attribútum konstruktora a várólista vagy a témakör és előfizetés neve vesz igénybe. A kapcsolat hozzáférési jogosultságokat is megadható. A hozzáférési jogok beállítás kiválasztása esetén, tekintse meg a a [kimeneti - konfigurációs](#output---configuration) szakasz. Íme egy példa bemutatja, a függvény visszatérési értéke a attribútuma:
 
@@ -435,9 +435,9 @@ public static string Run([HttpTrigger] dynamic input, TraceWriter log)
 }
 ```
 
-Tekintse meg a teljes például [kimeneti - előfordított például C#](#output---c-example).
+Tekintse meg a teljes például [kimeneti - C# példa](#output---c-example).
 
-Használhatja a `ServiceBusAccount` attribútum segítségével adhatja meg a Service Bus osztály, módszer vagy paraméter szinten használandó fiókot.  További információkért lásd: [eseményindító - attribútumok](#trigger---attributes-for-precompiled-c).
+Használhatja a `ServiceBusAccount` attribútum segítségével adhatja meg a Service Bus osztály, módszer vagy paraméter szinten használandó fiókot.  További információkért lásd: [eseményindító - attribútumok](#trigger---attributes).
 
 ## <a name="output---configuration"></a>Kimeneti - konfiguráció
 
@@ -469,7 +469,7 @@ A több üzenet létrehozása a C# vagy C# parancsfájl függvény, használhat 
 
 JavaScript, nyissa meg az üzenetsor vagy témakör segítségével `context.bindings.<name>`. `<name>`az érték szerepel a `name` tulajdonsága *function.json*. Rendelhet egy karakterlánc, egy bájttömböt vagy egy Javascript-objektum (deszerializálni a JSON-ba) `context.binding.<name>`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

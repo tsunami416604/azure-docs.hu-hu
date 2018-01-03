@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi
-ms.openlocfilehash: 0752864e5074782e6c447b938f69b4502d37fb8b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b916d71cfed55c9e904caa07e8f2167d684639aa
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Attribútum-leképezésekhez kifejezések írása az Azure Active Directoryban
 Egy SaaS-alkalmazáshoz történő konfigurálásakor megadhatja attribútum-leképezésekhez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi a felhasználók adatok átalakítása több biztosítható a SaaS-alkalmazás formátumokba kell írnia.
@@ -36,7 +36,7 @@ Attribútum-leképezésekhez kifejezések szintaxisa a Visual Basic Applications
 * A karakterlánckonstansokat Ha egy fordított perjel (\) vagy az idézőjel (") a karakterláncban kell azt kell megjelölni a fordított perjel (\) szimbólum. Például: "vállalatnév: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Függvények listája
-[Hozzáfűzendő](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Csatlakozás](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Cserélje le](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Kapcsoló](#switch)
+[Hozzáfűzendő](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Csatlakozás](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Cserélje le](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [kapcsoló](#switch)
 
 - - -
 ### <a name="append"></a>Hozzáfűzés
@@ -46,7 +46,7 @@ Attribútum-leképezésekhez kifejezések szintaxisa a Visual Basic Applications
 
 **Paraméterek:**<br> 
 
-| Név | Kötelező / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **forrás** |Szükséges |Karakterlánc |Általában az adatforrás-objektum az az attribútum neve |
 | **utótag** |Szükséges |Karakterlánc |A karakterlánc, amely szeretne hozzáfűzni, az érték végén. |
@@ -59,7 +59,7 @@ Attribútum-leképezésekhez kifejezések szintaxisa a Visual Basic Applications
 
 **Paraméterek:**<br> 
 
-| Név | Kötelező / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **forrás** |Szükséges |Karakterlánc |Általában az attribútum neve a forrás-objektumból. |
 | **inputFormat** |Szükséges |Karakterlánc |Az érték formátumúak. A támogatott formátumok, lásd: [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
@@ -75,7 +75,7 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 
 **Paraméterek:**<br> 
 
-| Név | Kötelező / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **elválasztó** |Szükséges |Karakterlánc |A karakterlánc elválasztó forrás értékek, amikor azok a halmaz zónanevének egyetlen karakterlánccá egyesít. Lehet "" Ha nem elválasztó szükség. |
 | ** source1... sourceN ** |Szükség esetén a változó-szám, ahányszor |Karakterlánc |A karakterlánc-értékek együtt tartományhoz. |
@@ -88,7 +88,7 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 
 **Paraméterek:**<br> 
 
-| Név | Kötelező / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **forrás** |Szükséges |Karakterlánc |Általában az attribútum neve. |
 | **start** |Szükséges |egész szám |Az index a **forrás** karakterlánc, ahol a substring kell kezdődnie. A karakterlánc első karaktere az 1 indexe lesz, a második karakter 2 mutatója, és így tovább. |
@@ -102,7 +102,7 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 
 **Paraméterek:**<br> 
 
-| Név | Kötelező / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **forrás** |Szükséges |Logikai típusú karakterlánc |Várt **forrás** értékek: "True" vagy "False". |
 
@@ -129,7 +129,7 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 **Paraméterek:**<br> 
 
-| Név | Kötelező / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **forrás** |Szükséges |Karakterlánc |Általában az attribútum neve a forrás-objektumból. |
 | **oldValue** |Optional |Karakterlánc |A cserélni kívánt érték **forrás** vagy **sablon**. |
@@ -140,6 +140,18 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 | **sablon** |Optional |Karakterlánc |Ha **sablon** érték van megadva, fog keresni **oldValue** belül a sablont, és cserélje le az adatforrás-értéke. |
 
 - - -
+### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
+**Függvény:**<br> SingleAppRoleAssignment([appRoleAssignments])
+
+**Leírás:**<br> Egyetlen appRoleAssignment egy adott alkalmazáshoz a felhasználóhoz rendelt összes appRoleAssignments listáját adja vissza. Ez a függvény van szükség a appRoleAssignments objektum egy egyetlen szerepkör neve karakterlánccá egyesít. Vegye figyelembe, hogy az ajánlott eljárás csak egy appRoleAssignment egyszerre egy felhasználóhoz rendelt, és ha több szerepkör van hozzárendelve a szerepkör visszaadott karakterlánc nem lehet előre jelezhető biztosításához.
+
+**Paraméterek:**<br> 
+
+| Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
+| --- | --- | --- | --- |
+| **[appRoleAssignments]** |Szükséges |Karakterlánc |**[appRoleAssignments]**  objektum. |
+
+- - -
 ### <a name="stripspaces"></a>StripSpaces
 **Függvény:**<br> StripSpaces(source)
 
@@ -147,7 +159,7 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 **Paraméterek:**<br> 
 
-| Név | Kötelező / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **forrás** |Szükséges |Karakterlánc |**forrás** érték frissítéséhez. |
 
@@ -159,7 +171,7 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 **Paraméterek:**<br> 
 
-| Név | Kötelező / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **forrás** |Szükséges |Karakterlánc |**Forrás** érték frissítéséhez. |
 | **DefaultValue érték** |Optional |Karakterlánc |Alapértelmezett érték használható, ha a forrás nem felel meg a kulcsokat. Üres karakterlánc lehet (""). |

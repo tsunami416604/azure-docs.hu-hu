@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: e8c146f4b6d02449be6ad9e991e52db8dfd58e04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89042badbfefc69582e7979a8379260a7b08d7da
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-relay-faqs"></a>Az Azure továbbító – gyakori kérdések
 
@@ -32,7 +32,7 @@ A [Azure továbbítási szolgáltatás](relay-what-is-it.md) segíti a hibrid al
 A [névtér](relay-create-namespace-portal.md) egy hatókörkezelési tárolót, melyekkel továbbítási erőforrások kezeléséhez az alkalmazáson belül van. A névtér használatához létre kell hoznia. Ez az első lépések az első lépések egyikét.
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>Mi történt a Service Bus Relay szolgáltatás?
-A korábban elnevezett Service Bus Relay szolgáltatás WCF továbbító neve. Továbbra is a megszokott módon használja ezt a szolgáltatást. A hibrid kapcsolat egy szolgáltatás, amely az Azure BizTalk szolgáltatások van lett visszaültetett frissített verziója. WCF továbbító és a hibrid kapcsolatok mindkét továbbra is használhatók.
+A korábban elnevezett Service Bus Relay szolgáltatás neve [WCF továbbító](relay-wcf-dotnet-get-started.md). Továbbra is a megszokott módon használja ezt a szolgáltatást. A hibrid kapcsolat egy szolgáltatás, amely az Azure BizTalk szolgáltatások van lett visszaültetett frissített verziója. WCF továbbító és a hibrid kapcsolatok mindkét továbbra is használhatók.
 
 ## <a name="pricing"></a>Díjszabás
 Ez a szakasz néhány gyakori kérdés a struktúra árképzési Relayjel kapcsolatos választ ad. Is látható [Azure támogatás – gyakori kérdések](http://go.microsoft.com/fwlink/?LinkID=185083) általános Azure-beli árakról. A továbbító árazással kapcsolatos részletes információkért lásd: [díjszabása Service Bus][Pricing overview].
@@ -130,7 +130,7 @@ Megosztott hozzáférési aláírásokkal (SAS) olyan hitelesítési mechanizmus
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Az engedélyezési lista továbbítási végpontok is?
 Igen. A továbbító ügyfél teljes tartománynevek használatával lehetővé teszi az Azure-továbbítási szolgáltatáshoz. Az ügyfelek is hozzáadhat egy bejegyzést a `*.servicebus.windows.net` a tűzfalak, amely támogatja a DNS engedélyezett.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: ee499b57733cd19dfe411e0e463dd3c65e82a52d
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 184a30c91de0d4141d6bd8a8b9db93c539e083b5
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Alapszintű virtuális gép létrehozása az Azure-ban Ansible
 Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfigurációs az erőforrásoknak a környezetben. Ansible segítségével kezelheti a virtuális gépek (VM), ugyanaz, mint bármely egyéb erőforrásokat az Azure-ban. Ez a cikk bemutatja, hogyan hozzon létre egy egyszerű virtuális gép Ansible. Azt is megtudhatja hogyan [hozzon létre egy teljes körű Virtuálisgép-környezetet Ansible](ansible-create-complete-vm.md).
@@ -37,7 +37,7 @@ Ansible az Azure-erőforrások kezeléséhez, a következőkre lesz szüksége:
 
 
 ## <a name="create-supporting-azure-resources"></a>Hozzon létre az Azure-erőforrások támogatása
-Ebben a példában létrehozhatunk egy runbookot, amely egy virtuális Gépet telepít egy meglévő infrastruktúra be. Először hozza létre az erőforráscsoport [az csoport létrehozása](/cli/azure/vm#create). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *eastus* helye:
+Ebben a példában hoz létre, amely egy virtuális Gépet telepít egy meglévő infrastruktúra a runbookot. Először hozza létre az erőforráscsoport [az csoport létrehozása](/cli/azure/vm#create). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *eastus* helye:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -56,7 +56,7 @@ az network vnet create \
 
 
 ## <a name="create-and-run-ansible-playbook"></a>Hozzon létre és futtasson Ansible forgatókönyv
-Hozzon létre egy Ansible alkalmazástervezési nevű **azure_create_vm.yml** , majd illessze be az alábbiakat. Ez a példa hoz létre egy virtuális, és konfigurálja az SSH hitelesítő adatokat. Adja meg a saját nyilvános kulcs adatai a *key_data* párosítsa a következőképpen:
+Hozzon létre egy Ansible alkalmazástervezési nevű *azure_create_vm.yml* , majd illessze be az alábbiakat. Ez a példa hoz létre egy virtuális, és konfigurálja az SSH hitelesítő adatokat. Adja meg a saját teljes nyilvános kulcs adatai a *key_data* párosítsa a következőképpen:
 
 ```yaml
 - name: Create Azure VM
@@ -102,5 +102,5 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a példában egy virtuális Gépet hoz létre, egy meglévő erőforráscsoportot és egy virtuális hálózattal, már üzembe van helyezve. Részletes példa támogató erőforrások, például a virtuális hálózat és a hálózati biztonsági csoportszabályok létrehozásához Ansible használatával, lásd: [hozzon létre egy teljes körű Virtuálisgép-környezetet Ansible](ansible-create-complete-vm.md).

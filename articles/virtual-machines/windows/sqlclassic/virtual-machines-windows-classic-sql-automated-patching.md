@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 07/05/2017
 ms.author: jroth
 ms.openlocfilehash: 1959871141f196ba80ffd7b37e62e5ea5b42dba3
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatikus javítás az SQL Server Azure virtuális gépekben (klasszikus)
 > [!div class="op_single_selector"]
@@ -87,7 +87,7 @@ Eltarthat néhány percig, telepítése és konfigurálása az SQL Server IaaS-�
 
 Automatikus javítás letiltásához futtassa azonos parancsfájl-az - Enable paramétert a New-AzureVMSqlServerAutoPatchingConfig nélkül. Csakúgy, mint a telepítés, tiltsa le az automatikus javítás több percet is igénybe vehet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Más elérhető automation feladatokkal kapcsolatos további információkért lásd: [SQL Server infrastruktúra-szolgáltatási ügynök bővítmény](../classic/sql-server-agent-extension.md).
 
 További információ az Azure virtuális gépeken futó SQL Server: [SQL Server Azure virtuális gépek – áttekintés](../sql/virtual-machines-windows-sql-server-iaas-overview.md).

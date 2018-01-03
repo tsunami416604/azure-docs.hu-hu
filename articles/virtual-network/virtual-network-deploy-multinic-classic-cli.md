@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8555bd830583f51164d39ca0e7b95813b7d35965
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: e5569209d3628003b3f3e169b227e069b920c03f
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>Az Azure CLI 1.0 használatával több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása
 
@@ -191,4 +191,4 @@ Most, hogy a letöltött és a parancsfájl a igények alapján megváltozott, f
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>5. lépés - a virtuális gép operációs rendszerében útválasztás konfigurálása
 
-Az Azure DHCP rendeli hozzá az első (elsődleges) hálózati illesztő a virtuális géphez csatolt alapértelmezett átjárót. Azure nem rendel hozzá egy virtuális géphez csatolt további (másodlagos) hálózati adapterek alapértelmezett átjárót. Emiatt nem sikerül kommunikálni az alhálózatot, amely a másodlagos hálózati adaptert, alapértelmezés szerint kívüli erőforrásokhoz. Másodlagos hálózati adapterrel, azonban kommunikálhat a alhálózati kívüli erőforrásokhoz. A másodlagos hálózati adapterrel-útválasztás konfigurálásához lásd: [egy virtuális gép operációs rendszerben több hálózati adapter az útválasztási](virtual-network-network-interface-vm.md#routing-within-a-virtual-machine-operating-system-with-multiple-network-interfaces).
+Az Azure DHCP rendeli hozzá az első (elsődleges) hálózati illesztő a virtuális géphez csatolt alapértelmezett átjárót. Az Azure nem rendel hozzá alapértelmezett átjárót a virtuális géphez csatolt további (másodlagos) hálózati adapterekhez. Alapértelmezés szerint ezért nem lehetséges a kommunikáció olyan erőforrásokkal, amelyek a másodlagos hálózati adaptert tartalmazó alhálózaton kívül vannak. Másodlagos hálózati adapterrel, azonban kommunikálhat a alhálózati kívüli erőforrásokhoz. A másodlagos hálózati adapterrel-útválasztás konfigurálásához lásd: [egy virtuális gép operációs rendszerben több hálózati adapter az útválasztási](virtual-network-network-interface-vm.md).

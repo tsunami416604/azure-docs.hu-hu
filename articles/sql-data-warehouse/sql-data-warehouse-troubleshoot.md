@@ -15,16 +15,16 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 03/30/2017
 ms.author: kevin;barbkess
-ms.openlocfilehash: c49b49cf832097bd5fbc423a36432a3eaff9bf14
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 48318397f9c5e463c82320ad9d7c23a1a62af77e
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse hibaelhárítása
 Ez a témakör néhány a gyakori hibaelhárítási kérdések hozzáadunk kapunk az ügyfelektől.
 
-## <a name="connecting"></a>Csatlakozás
+## <a name="connecting"></a>Csatlakozás...
 | Probléma | Megoldás: |
 |:--- |:--- |
 | "NT AUTHORITY\NÉVTELEN bejelentkezés" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, hiba: 18456) |Ez akkor fordul elő, amikor egy AAD-felhasználó megpróbál csatlakozni a master adatbázisban, de nem rendelkezik a felhasználó a főadatbázisban.  Ez a probléma elhárításához adjon meg az SQL Data Warehouse kapcsolat időpontban csatlakozni, vagy vegye fel a felhasználót a fő adatbázist kíván.  Lásd: [biztonsági áttekintése] [ Security overview] cikkben olvashat. |
@@ -73,7 +73,7 @@ Ez a témakör néhány a gyakori hibaelhárítási kérdések hozzáadunk kapun
 | Tárolt eljárás korlátozásai |Lásd: [tárolt eljárás korlátozások] [ Stored procedure limitations] tárolt eljárásokra vonatkozó korlátozások némelyike megértése. |
 | Felhasználó által megadott függvények nem támogatják a SELECT utasítás |Ez az a felhasználó által megadott függvények aktuális korlátozása.  Lásd: [CREATE FUNCTION] [ CREATE FUNCTION] a szintaxis támogatott. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha Ön volt nem sikerült megtalálni a megoldást a fenti problémát, az alábbiakban néhány más erőforrások, próbálja meg.
 
 * [Blogok]
@@ -96,7 +96,7 @@ Ha Ön volt nem sikerült megtalálni a megoldást a fenti problémát, az aláb
 [Támogatási jegy létrehozása]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Scaling your SQL Data Warehouse]: ./sql-data-warehouse-manage-compute-overview.md
 [DWU]: ./sql-data-warehouse-overview-what-is.md
-[request a quota increase]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
+[request a quota increase]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Learning how to monitor your queries]: ./sql-data-warehouse-manage-monitor.md
 [Provisioning instructions]: ./sql-data-warehouse-get-started-provision.md
 [Configure server firewall access for your client IP]: ./sql-data-warehouse-get-started-provision.md

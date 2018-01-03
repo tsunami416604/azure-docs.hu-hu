@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 12/06/2017
 ms.author: barbkess
 ms.openlocfilehash: 82e17e575cdb227af2fabf94f01e94df22994aac
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="distributing-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse táblák terjesztése
 > [!div class="op_single_selector"]
@@ -283,7 +283,7 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_HASH];
 RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Táblatervezés kapcsolatos további tudnivalókért tekintse meg a [elosztás][Distribute], [Index][Index], [partíció] [ Partition], [Adattípusok][Data Types], [statisztika] [ Statistics] és [ideiglenes táblák] [ Temporary] cikkeket.
 
 Ajánlott eljárások áttekintését lásd: [SQL Data Warehouse gyakorlati tanácsok][SQL Data Warehouse Best Practices].

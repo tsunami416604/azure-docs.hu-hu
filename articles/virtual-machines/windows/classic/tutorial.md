@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
 ms.openlocfilehash: 0a80599df07767cd6a117157fc699315cce7ad23
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Az Azure portálon Windows rendszerű virtuális gép létrehozása
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Virtuális gépek használatával is létrehozhat [a saját lemezképek](createu
 ## <a id="createvirtualmachine"></a>a virtuális gép létrehozása
 [!INCLUDE [virtual-machines-create-WindowsVM](../../../../includes/virtual-machines-create-windowsvm.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [a Resource Manager üzembe helyezési modellel virtuális gép létrehozása](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) az Azure portálon.
 * Jelentkezzen be a virtuális gép. Útmutatásért lásd: [jelentkezzen be a Windows Server rendszerű virtuális gép](connect-logon.md).
 * Adatok tárolására lemezt csatlakoztatni. Csatolhat is üres és a lemezek, amelyek adatokat tartalmaznak. Útmutatásért lásd: a [adatlemezt csatolni a klasszikus üzembe helyezési modellel létrehozott Windows virtuális gépek](attach-disk.md).

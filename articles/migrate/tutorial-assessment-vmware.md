@@ -4,13 +4,13 @@ description: "Ismerteti, hogyan felderítése és a helyszíni VMware virtuális
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 12/12/2017
+ms.date: 12/20/2017
 ms.author: raynew
-ms.openlocfilehash: c090605619afbaa1302932cbf9e73dbe52f5573b
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e2806486ffb76fa7c210c3d0ef0b8bb3f86b7cd4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Fedezze fel és felmérheti a helyszíni VMware virtuális gépek áttelepítése az Azure-bA
 
@@ -38,16 +38,16 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 - **Engedélyek**: a vCenter-kiszolgáló, a virtuális gép létrehozása a fájl importálásával engedélyekre van szükség. PETESEJTEK formátumban. 
 - **Statisztika beállítások**: A statisztika a vcenter Server kell beállítás 3. szint telepítés megkezdése előtt. 3 szintje alacsonyabb, ha assessment működni fog, de nem gyűjti a teljesítményadatokat tárolási és hálózati. Javaslatok ebben az esetben kerül sor mérete teljesítményadatokat lemezek és a hálózati adapterek Processzor és memória- és konfigurációs adatok alapján. 
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
 1. Az Azure portálon kattintson **hozzon létre egy erőforrást**.
-2. Keresse meg **Azure áttelepítése**, és válassza ki a szolgáltatást (**Azure áttelepítése (előzetes verzió)** a keresési eredmények között. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+2. Keresse meg **Azure áttelepítése**, és válassza ki a szolgáltatást **Azure áttelepítése (előzetes verzió)** a keresési eredmények között. Ezt követően kattintson a **Create** (Létrehozás) gombra.
 3. Adja meg a projekt nevét, és az Azure-előfizetés a projekthez.
 4. Hozzon létre egy új erőforráscsoportot.
-5. Adja meg, a régiót, amelyben a projekt létrehozásához, majd kattintson a **létrehozása**. Ebben a régióban a helyszíni virtuális gépek összegyűjtött metaadatok tárolódnak. A régióban nyugati középső Régiójában az előzetes verzió csak az Azure áttelepítése projektek hozhat létre. Azonban továbbra is megtervezheti a cél Azure-beli hely az áttelepítéshez. 
+5. Adja meg a helyet, ahová a projekt létrehozásához, majd kattintson a **létrehozása**. A régióban nyugati középső Régiójában az előzetes verzió csak az Azure áttelepítése projektek hozhat létre. Azonban továbbra is megtervezheti a cél Azure-beli hely az áttelepítéshez. A projekt helyére csak fogja tárolni a metaadatokat, a helyszíni virtuális gépek összegyűjtött. 
 
     ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
     
@@ -108,19 +108,24 @@ A letöltött fájlt importálja a vCenter-kiszolgálóhoz.
 1. A vSphere Client-konzolon kattintson a jobb gombbal a virtuális gép > **nyissa meg a konzolt**.
 2. Adja meg a nyelvet, időzóna és a készülék jelszó beállításait.
 3. Az asztalon kattintson a **futtassa a gyűjtő** helyi.
-4. Nyissa meg az Azure áttelepítése gyűjtő **Előfeltételek beállítása**.
+4. Nyissa meg az Azure áttelepítése gyűjtő **előfeltétel**.
     - Fogadja el a licencfeltételeket, és a külső adatokat olvasni.
     - A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel.
     - Ha a virtuális gép fér hozzá az internethez olyan proxyn keresztül, kattintson a **proxybeállítások**, és adja meg a proxykiszolgáló címét és a figyelő portja. Adjon meg hitelesítő adatokat, ha a proxy hitelesítést igényel.
-    - A gyűjtő ellenőrzi, hogy a Windows Profilkészítő szolgáltatás fut-e. A szolgáltatás a gyűjtő virtuális gép alapértelmezés szerint telepítve van.
+
+    > [!NOTE]
+    > A proxykiszolgáló címét meg kell adni az űrlap http://ProxyIPAddress vagy http://ProxyFQDN. Csak a HTTP-proxy használata támogatott.
+
+    - A gyűjtő ellenőrzi, hogy fut-e a collectorservice. A szolgáltatás a gyűjtő virtuális gép alapértelmezés szerint telepítve van.
     - Töltse le és telepítse a VMware PowerCLI.
-. A **gépek felderítése**, tegye a következőket:
+
+5. A **adja meg a vCenter-kiszolgáló adatait**, tegye a következőket:
     - Adja meg a név (FQDN) vagy a vCenter-kiszolgáló IP-címét.
     - A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelyet a gyűjtő virtuális gépek felderítése a vCenter Server fog használni.
     - A **gyűjtemény hatókör**, válassza ki a virtuális gép felderítési hatókörét. A gyűjtő csak a megadott hatókörön belüli virtuális gépek képes felderíteni. Egy adott mappában, a datacenter vagy a fürt állítható be hatókör. Hogy 1000-nél több virtuális gép nem tartalmaz. 
     - A **címke kategória csoportosításhoz**, jelölje be **nincs**.
-1. A **projekt kiválasztása**, adja meg az Azure áttelepítése projekt Azonosítót, és a portálról másolt kulcsot. Ha nem másolja át a fájlokat, az Azure-portál megnyitása a gyűjtő virtuális gép. A projekt **áttekintése** kattintson **gépek felderítése**, és másolja az értékeket.  
-2. A **teljes felderítési**felderítési figyelje, és győződjön meg arról, hogy a virtuális gépek gyűjtött metaadatai a hatókörben. A gyűjtő megadja egy hozzávetőleges felderítés időtartamát.
+6. A **megadása áttelepítési projekt**, adja meg az Azure áttelepítése projekt Azonosítót, és a portálról másolt kulcsot. Ha nem másolja át a fájlokat, az Azure-portál megnyitása a gyűjtő virtuális gép. A projekt **áttekintése** kattintson **gépek felderítése**, és másolja az értékeket.  
+7. A **gyűjtemény folyamatjelző**felderítési figyelje, és győződjön meg arról, hogy a virtuális gépek gyűjtött metaadatai a hatókörben. A gyűjtő megadja egy hozzávetőleges felderítés időtartamát.
 
 > [!NOTE]
 > A gyűjtő csak az "Angol (Egyesült Államok)" az operációs rendszer nyelve és a gyűjtő felület nyelvének támogatja. További nyelvek támogatása hamarosan elérhető.
@@ -152,7 +157,7 @@ Virtuális gépek később, akkor csoportosításához, és hozzon létre érté
 
 ![Értékelés jelentés](./media/tutorial-assessment-vmware/assessment-report.png)
 
-#### <a name="azure-readiness"></a>Az Azure készültségi
+#### <a name="azure-readiness"></a>Azure-kompatibilitás
 
 Ez a nézet megjeleníti az egyes gépek készültségi állapotát.
 
@@ -162,7 +167,7 @@ Ez a nézet megjeleníti az egyes gépek készültségi állapotát.
 
   ![Assessment readiness](./media/tutorial-assessment-vmware/assessment-suitability.png)  
 
-#### <a name="monthly-cost-estimate"></a>Havi költség becslése
+#### <a name="monthly-cost-estimate"></a>Havi költségbecslés
 
 Ez a nézet megjeleníti az összes számítási és tárolási költsége Azure-beli virtuális gépek és az egyes gépek részletei. Becsült költség kiszámítása a teljesítmény-alapú méretével kapcsolatos megfontolások a gépek és a lemezek és az értékelés tulajdonságok használatával. 
 
@@ -177,8 +182,8 @@ Egy adott gép tekintse meg a részleteket is lebontva.
 
 ![Értékelés VM költsége](./media/tutorial-assessment-vmware/assessment-vm-drill.png) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Ismerje meg,](how-to-scale-assessment.md) beállítása a helyszíni gépeket nagy számú értékelését.
-- Részletesebb assessment csoportok létrehozásával [gép függőségi leképezése](how-to-create-group-machine-dependencies.md)
+- [Ismerje meg,](how-to-scale-assessment.md) felderítése és értékeléséhez nagy VMware környezetben.
+- Útmutató segítségével nagy-abban, hogy assessment csoportok létrehozásához [gép függőségi leképezése](how-to-create-group-machine-dependencies.md)
 - [További](concepts-assessment-calculation.md) kapcsolatos értékelések kiszámítási módját.

@@ -4,7 +4,7 @@ description: "A Windows-alapú virtuális gépek használata a virtuálisgép-m�
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: 
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d8f161af7753d2cd93a8683e8a93128144b86079
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d190d046f7572c51df0c5c9e14e14a41d93e3248
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>Hozzon létre egy virtuálisgép-méretezési csoportban, és a magas rendelkezésre állású alkalmazás a Windows központi telepítése
 A virtuálisgép-méretezési csoport lehetővé teszi, telepítéséhez és kezeléséhez azonos, az automatikus skálázást virtuális gépek halmazát jelenti. A méretezési csoportban lévő virtuális gépek száma manuálisan méretezhető, vagy szabályokat definiálhat, például a Processzor, memória igény szerint vagy a hálózati forgalom erőforrás-használat alapján automatikus skálázást. Ebben az oktatóanyagban telepít egy virtuálisgép-méretezési beállítása az Azure-ban. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -32,7 +32,7 @@ A virtuálisgép-méretezési csoport lehetővé teszi, telepítéséhez és kez
 > * Növeli vagy csökkenti a méretezési csoportban lévő példányok száma
 > * Automatikus skálázási szabályok létrehozása
 
-Az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ez az oktatóanyag igényel az Azure PowerShell modul verziója 5.1.1-es vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
 
 ## <a name="scale-set-overview"></a>Méretezési készlet – áttekintés
@@ -217,7 +217,7 @@ Get-AzureRmVmss -ResourceGroupName myResourceGroupScaleSet `
     Select -ExpandProperty Sku
 ```
 
-Ezután manuálisan növeléséhez vagy csökkentéséhez tegye a következőket a méretezési készletben rendelkező virtuális gépek [frissítés-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss). Az alábbi példában a virtuális gépek számát beállítja a méretezés beállítása *5*:
+Ezután manuálisan növeléséhez vagy csökkentéséhez tegye a következőket a méretezési készletben rendelkező virtuális gépek [frissítés-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss). Az alábbi példában a virtuális gépek számát beállítja a méretezés beállítása *3*:
 
 ```powershell
 # Get current scale set
@@ -226,7 +226,7 @@ $scaleset = Get-AzureRmVmss `
   -VMScaleSetName myScaleSet
 
 # Set and update the capacity of your scale set
-$scaleset.sku.capacity = 5
+$scaleset.sku.capacity = 3
 Update-AzureRmVmss -ResourceGroupName myResourceGroupScaleSet `
     -Name myScaleSet `
     -VirtualMachineScaleSet $scaleset
@@ -236,7 +236,7 @@ Ha a megadott számú a skála-példány frissítése néhány percet vesz be.
 
 
 ### <a name="configure-autoscale-rules"></a>Automatikus skálázási szabályok konfigurálása
-Helyett a példányok száma manuálisan a skálázási skálázás beállításához automatikus skálázási szabályok határozza meg. Ezek a szabályok a méretezési csoportban lévő példányok figyelése, és ennek megfelelően metrikák és adhat meg küszöbértékek alapján válaszol. Az alábbi példa méretezi a példányok száma, egy esetén az átlagos CPU-terhelést, nagyobb, mint 60 % 5 perc alatt. Az átlagos CPU-terhelést, majd alá esik 30 % 5 perc alatt, ha a példány méretezése a egy példánya:
+Helyett a példányok száma manuálisan a skálázási skálázás beállításához automatikus skálázási szabályok határozza meg. Ezek a szabályok a méretezési csoportban lévő példányok figyelése, és ennek megfelelően metrikák és adhat meg küszöbértékek alapján válaszol. Az alábbi példa méretezi a példányok száma, egy esetén az átlagos CPU-terhelést, nagyobb, mint 60 % egy 5 perces időszakon át. Az átlagos CPU-terhelést, majd alá esik 30 % egy 5 perces időszakon át, ha a példány méretezése a egy példánya:
 
 ```powershell
 # Define your scale set information
@@ -245,7 +245,7 @@ $myResourceGroup = "myResourceGroupScaleSet"
 $myScaleSet = "myScaleSet"
 $myLocation = "East US"
 
-# Create a scale up rule to increase the number instances after 60% average CPU usage exceeded for a 5 minute period
+# Create a scale up rule to increase the number instances after 60% average CPU usage exceeded for a 5-minute period
 $myRuleScaleUp = New-AzureRmAutoscaleRule `
   -MetricName "Percentage CPU" `
   -MetricResourceId /subscriptions/$mySubscriptionId/resourceGroups/$myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$myScaleSet `
@@ -258,7 +258,7 @@ $myRuleScaleUp = New-AzureRmAutoscaleRule `
   -ScaleActionDirection Increase `
   -ScaleActionValue 1
 
-# Create a scale down rule to decrease the number of instances after 30% average CPU usage over a 5 minute period
+# Create a scale down rule to decrease the number of instances after 30% average CPU usage over a 5-minute period
 $myRuleScaleDown = New-AzureRmAutoscaleRule `
   -MetricName "Percentage CPU" `
   -MetricResourceId /subscriptions/$mySubscriptionId/resourceGroups/$myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$myScaleSet `
@@ -291,7 +291,7 @@ Add-AzureRmAutoscaleSetting `
 További tervezési információk használatára az automatikus skálázás: [automatikus skálázás gyakorlati tanácsok](/azure/architecture/best-practices/auto-scaling).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létre egy virtuálisgép-méretezési készlet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

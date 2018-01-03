@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 192680efe07368666c5a9d037549c7686189d0b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32e33d5fe99d884801e451b8f7e7989f979074e3
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux
-Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure fájlmegosztások a Linux terjesztéseket segítségével lehet csatlakoztatni az [cifs-utils csomag](https://wiki.samba.org/index.php/LinuxCIFS_utils) a a [Samba projekt](https://www.samba.org/). Ez a cikk bemutatja egy Azure fájlmegosztás csatlakoztatásához kétféleképpen: az igény a `mount` parancs és a rendszerindítási bejegyzés létrehozásával `/etc/fstab`.
+Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure fájlmegosztások a Linux terjesztéseket segítségével lehet csatlakoztatni az [CIFS kernel ügyfél](https://wiki.samba.org/index.php/LinuxCIFS). Ez a cikk bemutatja egy Azure fájlmegosztás csatlakoztatásához kétféleképpen: az igény a `mount` parancs és a rendszerindítási bejegyzés létrehozásával `/etc/fstab`.
 
 > [!NOTE]  
 > Ahhoz, hogy csatlakoztassa egy Azure fájlmegosztás az Azure-on kívüli helyezkedik el, például a helyszínen vagy egy másik Azure régióban, az operációs rendszer régió támogatnia kell a titkosítás funkciót, az SMB 3.0. Az SMB 3.0 Linux titkosítási szolgáltatás 4.11 kernel jelent meg. Ez a funkció lehetővé teszi, hogy az Azure fájlmegosztás regisztrációját a helyi vagy egy másik Azure-régiót csatlakoztatását. Közzététel alkalmával Ez a funkció lett backported az Ubuntu 16.04 és fent.
-
 
 ## <a name="prerequisities-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>Az Azure File csatlakoztatására Prerequisities megosztása a Linux és a cifs-utils csomag
 * **Válassza ki, amelyeken a cifs-utils csomag telepítése Linux-disztribúció**: a Microsoft azt javasolja, hogy a kép: Azure-katalógus a következő Linux terjesztéseket:
@@ -80,7 +79,7 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 3. **A csatlakoztatási parancs használata az Azure fájlmegosztás csatlakoztatásához**: ne felejtse el lecserélni `<storage-account-name>`, `<share-name>`, és `<storage-account-key>` a megfelelő adatokkal.
 
     ```
-    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> ./mymountpoint -o vers=2.1,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> ./mymountpoint -o vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
@@ -98,7 +97,7 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 3. **Az alábbi parancs segítségével az alábbi sor hozzáfűzése `/etc/fstab`** : ne felejtse el lecserélni `<storage-account-name>`, `<share-name>`, és `<storage-account-key>` a megfelelő adatokkal.
 
     ```
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=2.1,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
     ```
 
 > [!Note]  
@@ -109,10 +108,10 @@ Linux-felhasználók szeretnénk a véleményét!
 
 A Linux-felhasználók csoport Azure fájlok fórumon visszajelzést közös értékelje ki és elfogadják a File storage Linux biztosít. E-mailek [Azure Linux felhasználók](mailto:azurefileslinuxusers@microsoft.com) csatlakozni a felhasználói csoporthoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról.
 * [Referencia a fájlszolgáltatás REST API-jához](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 * [AzCopy használata a Microsoft Azure storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Az Azure storage az Azure parancssori felület használatával](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Gyakori kérdések](../storage-files-faq.md)
+* [GYIK](../storage-files-faq.md)
 * [hibaelhárítással](storage-troubleshoot-linux-file-connection-problems.md)

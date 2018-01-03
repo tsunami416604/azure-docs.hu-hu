@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: a661aa5a555dacac5c94c3feb8c6b88bb5033f83
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 5b5f3eb05f0d6c10f7efe8af1b93b2cb4fc585c5
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>A virtuálisgép-méretezési beállítása az Azure PowerShell kezelése
 A virtuálisgép-méretezési csoport életciklusa során szükség lehet egy vagy több felügyeleti feladatok futtatásához. Emellett érdemes lehet különböző életciklus-feladatokat automatizáló parancsfájlokat hozhatnak létre. Ez a cikk részletesen néhány gyakori Azure PowerShell-parancsmagok, amelyek lehetővé teszik, hogy ezeket a műveleteket.
 
-Felügyeleti feladatok elvégzéséhez szüksége van a legújabb Azure PowerShell modul. Hogyan kell telepíteni, és a legújabb verzióját használja a további információkért lásd: [Ismerkedés az Azure PowerShell](/powershell/azure/get-started-azureps). Ha egy virtuálisgép-méretezési csoport létrehozásához szükséges, akkor [hozzon létre egy méretezési beállítása az Azure portálon](virtual-machine-scale-sets-portal-create.md).
+Felügyeleti feladatok elvégzéséhez szüksége van a legújabb Azure PowerShell modul. Hogyan kell telepíteni, és a legújabb verzióját használja a további információkért lásd: [Ismerkedés az Azure PowerShell](/powershell/azure/get-started-azureps). Ha egy virtuálisgép-méretezési csoport létrehozásához szükséges, akkor [hozzon létre egy méretezési beállítása az Azure portálon](virtual-machine-scale-sets-create-portal.md).
 
 
 ## <a name="view-information-about-a-scale-set"></a>A méretezési adatainak megtekintése
@@ -108,5 +108,5 @@ Remove-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScale
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A méretezési készlet kapcsolatos további általános feladatok közé tartozik hogyan [alkalmazás üzembe helyezése](virtual-machine-scale-sets-deploy-app.md), és [Virtuálisgép-példányok frissítéséhez](virtual-machine-scale-sets-upgrade-scale-set.md). Használhatja az Azure PowerShell [automatikus méretezése szabályok konfigurálása](virtual-machine-scale-sets-autoscale-overview.md).

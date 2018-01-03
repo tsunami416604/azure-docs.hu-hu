@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 12/06/2017
 ms.author: barbkess
 ms.openlocfilehash: 672270536a7405e617edbcf5ec0e6eff68be7fde
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse táblák indexelő
 > [!div class="op_single_selector"]
@@ -295,7 +295,7 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 Hozza létre újra a partíciók használatával kapcsolatos további részletekért `CTAS`, tekintse meg a [partíció] [ Partition] cikk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalókért tekintse meg a cikkek [tábla áttekintése][Overview], [tábla adattípusok][Data Types], [terjesztése egy tábla] [ Distribute], [Tábla particionáló][Partition], [fenntartása a tábla statisztikai adatainak] [ Statistics] és [Az ideiglenes táblák][Temporary].  Gyakorlati tanácsok kapcsolatos további információkért lásd: [SQL Data Warehouse gyakorlati tanácsok][SQL Data Warehouse Best Practices].
 
 <!--Image references-->

@@ -3,7 +3,7 @@ title: "A DevTest Labs szolgáltatásban az Azure parancssori felület a virtuá
 description: "Útmutató: Azure DevTest Labs segítségével az Azure CLI 2.0 virtuális gépek létrehozására és kezelésére"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: lisawong19
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.service: devtest-lab
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
-ms.author: liwong
-ms.openlocfilehash: a3af12ba0598d60b55b3714ae1690fe3e5b54a42
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: e73ddeba56c779d9fb1be77a50cbae5111de03c4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Hozzon létre és virtuális gépek kezelése a DevTest Labs szolgáltatásban az Azure parancssori felület használatával
 A gyors üzembe helyezési végigvezeti keresztül létrehozása, elindítása, csatlakozás, frissítése és törléséről a fejlesztési számítógépén a tesztkörnyezetben. 

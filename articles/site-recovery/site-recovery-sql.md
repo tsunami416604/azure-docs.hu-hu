@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: pratshar
-ms.openlocfilehash: 04fb9ebc8a235dd15817fbb5efd08922ae287aa1
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 7981173b419632683a40a54bc07f51f0fccab531
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>SQL Server vészhelyreállítási és az Azure Site Recovery használata az SQL Server védelme
 
@@ -66,7 +66,7 @@ A Site Recovery integrálható natív SQL Server BCDR-technológiákkal, vész h
 
 **Funkció** | **Részletek** | **SQL Server** |
 --- | --- | ---
-**Always On rendelkezésre állási csoport** | Több különálló példány az SQL Server futtatása több csomóponttal rendelkező feladatátvevő fürtben.<br/><br/>Adatbázisok másolható (tükrözött) az SQL Server-példányokat, hogy nincs megosztott tárhely szükséges feladatátvevő csoportokba csoportosíthatók.<br/><br/>Itt katasztrófa utáni helyreállítás egy elsődleges hely és egy vagy több másodlagos hely között. Két csomópontot is kell beállítani egy megosztott semmi szinkron replikáció és automatikus feladatátvételt egy rendelkezésre állási csoportban konfigurált SQL Server-adatbázisok fürt. | Az SQL Server 2014 & 2012 Enterprise edition
+**Always On rendelkezésre állási csoport** | Több különálló példány az SQL Server futtatása több csomóponttal rendelkező feladatátvevő fürtben.<br/><br/>Adatbázisok másolható (tükrözött) az SQL Server-példányokat, hogy nincs megosztott tárhely szükséges feladatátvevő csoportokba csoportosíthatók.<br/><br/>Itt katasztrófa utáni helyreállítás egy elsődleges hely és egy vagy több másodlagos hely között. Két csomópontot is kell beállítani egy megosztott semmi szinkron replikáció és automatikus feladatátvételt egy rendelkezésre állási csoportban konfigurált SQL Server-adatbázisok fürt. | SQL Server 2016, az SQL Server 2014 és az SQL Server 2012 Enterprise edition
 **Feladatátvételi fürtszolgáltatás (mindig az FCI)** | SQL Server kihasználja a Windows feladatátvételi fürtszolgáltatás magas rendelkezésre állás, a helyszíni SQL Server-munkaterhelések.<br/><br/>SQL Server-példány fut a megosztott lemezek csomópontja feladatátvevő fürtben van konfigurálva. Ha a példány nem működik a fürt feladatátadás másikat.<br/><br/>A fürt nem elleni hiba vagy üzemszünet korlátozza a megosztott tárolóeszköz. A megosztott lemez végrehajtható, szálcsatorna, iSCSI vagy a megosztott vhdx-fájlokat. | SQL Server Enterprise kiadása<br/><br/>SQL Server Standard edition (legfeljebb csak két csomópont)
 **Az adatbázis-tükrözés (magas biztonsági mód)** | Egy másodlagos példányt egyetlen adatbázis védi. Elérhető mindkét magas biztonsági (szinkron) és nagy teljesítményű (aszinkron) replikációs mód. A feladatátvevő fürtök nem igényel. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise minden kiadás
 **Önálló SQL-kiszolgáló** | Az SQL Server és az adatbázis egy kiszolgálón (fizikai vagy virtuális) üzemelteti. Ha a kiszolgáló virtuális állomás fürtszolgáltatás magas rendelkezésre állású használható. Nincs vendégszintű magas rendelkezésre állású. | Enterprise vagy Standard edition
@@ -118,7 +118,7 @@ Ez mit kell tennie:
 
 SQL Always On nem natív módon támogatja a feladatátvételi tesztet. Ezért ajánlott a következők:
 
-1. Állítson be [Azure biztonsági mentés](../backup/backup-azure-vms.md) replikát a rendelkezésre állási csoport az Azure virtuális gépen.
+1. Állítson be [Azure biztonsági mentés](../backup/backup-azure-arm-vms.md) replikát a rendelkezésre állási csoport az Azure virtuális gépen.
 
 1. Ahhoz, hogy kiváltsa a helyreállítási terv teszt feladatátvétele, a virtuális gép helyreállítása az előző lépésben készült biztonsági másolatból.
 
@@ -201,5 +201,5 @@ A Site Recovery nem biztosít a Vendég Fürtözési támogatás az Azure-bA rep
 
 Az SQL Server Standard-fürtök esetén a feladat-visszavétel nem tervezett feladatátvétel után szükséges egy SQL server biztonsági mentés és visszaállítás az eredeti fürtre, a tükör reestablishment a tükör példányból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További](site-recovery-components.md) Site Recovery architektúrájáról kapcsolatban.

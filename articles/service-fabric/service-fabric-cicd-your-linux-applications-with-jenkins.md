@@ -14,18 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: saysa
-ms.openlocfilehash: 89b356c3959b7cb63a746805d60535e07f0d6898
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 80c52cfeab007030203b6af4bb220f1a847e9426
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins segítségével hozza létre, és a Linux-alkalmazások központi telepítése
 A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához és üzembe helyezéséhez. Ebből a témakörből megtudhatja, hogyan helyezheti üzembe Azure Service Fabric-alkalmazásait a Jenkins használatával.
 
 ## <a name="general-prerequisites"></a>Általános előfeltételek
 - A Git legyen telepítve a helyi számítógépen. A Git megfelelő verzióját [a Git letöltési oldaláról](https://git-scm.com/downloads) telepítheti a különböző operációs rendszerekhez. Ha még nem járatos a Git használatában, további információkért tekintse meg a [Git dokumentációját](https://git-scm.com/docs).
-- Szüksége lesz a Jenkins Service Fabric beépülő moduljára is. Ezt a [Service Fabric letöltési](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi) oldaláról töltheti le. Edge böngésző nevezze át a bővítmény .hpi .zip a letöltött fájl használata.
 
 ## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>A Jenkins beállítása egy Service Fabric-fürtben
 
@@ -129,8 +128,8 @@ A Dockernek telepítve kell lennie. A következő parancsokkal telepítheti a Do
 Így amikor a ``docker info`` fut a terminálon, a kimenetből látszódik, hogy a Docker szolgáltatás fut.
 
 ### <a name="steps"></a>Lépések
-  1. Kérje le a Service Fabric Jenkins-tárolójának rendszerképét: ``docker pull rapatchi/jenkins:v9``
-  2. Futtassa a tároló rendszerképét: ``docker run -itd -p 8080:8080 rapatchi/jenkins:v9``
+  1. A Service Fabric Jenkins tároló kép lekéréses: ``docker pull rapatchi/jenkins:v10``. Ez a rendszerkép előre telepített Service Fabric Jenkins beépülő modult tartalmaz.
+  2. Futtassa a tároló rendszerképét: ``docker run -itd -p 8080:8080 rapatchi/jenkins:v10``
   3. Kérje le a tárolórendszerkép-példány azonosítóját. A ``docker ps –a`` paranccsal az összes Docker-tárolót listázhatja
   4. Jelentkezzen be a Jenkins portálra a következő lépésekkel:
 
@@ -151,11 +150,6 @@ A Dockernek telepítve kell lennie. A következő parancsokkal telepítheti a Do
 
 Győződjön meg arról, hogy a fürt vagy gép, ahol a Jenkins-tároló rendszerképe fut, nyilvános IP-címmel rendelkezik. Ez lehetővé teszi, hogy a Jenkins-példány megkapja a GitHub értesítéseit.
 
-## <a name="install-the-service-fabric-jenkins-plug-in-from-the-portal"></a>A Jenkins Service Fabric beépülő moduljának telepítése a portálról
-
-1. Nyissa meg a következőt: ``http://PublicIPorFQDN:8081``
-2. A Jenkins irányítópultján válassza ki a következőt: **Manage Jenkins** (Jenkins kezelése)  > **Manage Plugins** (Beépülő modulok kezelése)  > **Advanced** (Speciális).
-Itt feltöltheti a beépülő modult. Válassza ki **fájl kiválasztása**, majd válassza ki a **serviceFabric.hpi** fájlt, amely Előfeltételek a letöltött, vagy letöltheti [Itt](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi). Ha kiválasztja az **Upload** (Feltöltés) lehetőséget, a Jenkins automatikusan telepíti a beépülő modult. Ha a rendszer kéri, engedélyezze az újraindítást.
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Jenkins-feladatok létrehozása és konfigurálása
 
@@ -207,7 +201,7 @@ Itt feltöltheti a beépülő modult. Válassza ki **fájl kiválasztása**, maj
       > Ha a Service Fabricet használja a Jenkins-tároló rendszerképének üzembe helyezéséhez, a fürtnek meg kell egyeznie azzal, ahol a Jenkins-tárolóalkalmazás található.
       >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A GitHub és a Jenkins beállítása kész. Érdemes lehet elvégezni néhány mintamódosítást a ``MyActor`` projekten az adattárban (https://github.com/sayantancs/SFJenkins). A módosításokat továbbíthatja egy távoli ``master`` ágra (vagy bármilyen egyéb olyan ágra, amelyet beállított). Ez aktiválja a konfigurált ``MyJob`` Jenkins-feladatot. A feladat lekéri a módosításokat a GitHubról, érvénybe lépteti őket, és üzembe helyezi az alkalmazást a fürt azon végpontján, amelyet a felépítés utáni műveletekben adott meg.  
 
   <!-- Images -->

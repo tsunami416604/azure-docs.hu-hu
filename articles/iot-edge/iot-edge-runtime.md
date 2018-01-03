@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 7b37f9e103644d2492f69f4a4cc80d3fd57d4aa4
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 4727560df897f6c1a0aaa6d7f5d4e1c76fc02a46
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Az Azure IoT peremhálózati futásidejű és az architektúra – előzetes
 
@@ -21,13 +21,13 @@ Az IoT-Edge futásidejű programok, amelyek telepítve kell lennie ahhoz, hogy a
 
 Az IoT-Edge futásidejű IoT peremhálózati eszközön hajtja végre a következő funkciókat:
 
-* Telepíti, és frissíti a munkaterhelések az eszközön.
-* Azure IoT peremhálózati biztonsági követelményeket az eszközön tárolja.
+* Telepíti és frissíti az eszközökön a számítási feladatokat.
+* Fenntartja Azure IoT Edge biztonsági szabványait az eszközön.
 * Biztosítja, hogy [IoT peremhálózati modulok][lnk-modulok] mindig futnak.
-* A felhő távoli figyelés jelentések modul állapotát.
-* Elősegíti a alárendelt levélszintű eszközök és az IoT-peremhálózati eszköz közötti kommunikációt.
-* Elősegíti az IoT-peremhálózati eszközön modulok közötti kommunikációt.
-* Elősegíti a IoT peremhálózati eszköz, és a felhő közötti kommunikációt.
+* Jelenti a modulok állapotát a felhőnek a távoli monitorozáshoz.
+* Kommunikációt létesít az alárendelt levéleszközök és az IoT Edge-eszköz között.
+* Kommunikációt létesít a modulok és az IoT Edge-eszköz között.
+* Kommunikációt létesít az IoT Edge-eszközök és a felhő között.
 
 ![IoT peremhálózati futásidejű kommunikál az elemzések és az IoT-központ modul állapotát][1]
 
@@ -89,7 +89,7 @@ A modulok szótárban egyes elemek modul vonatkozó információkat tartalmaz, �
 * **Settings.Image** – a tároló lemezképet, a peremhálózati ügynök használja a modul elindításához. A peremhálózati ügynök tároló beállításjegyzék hitelesítő adatokkal kell konfigurálni, ha a kép jelszóval védett. A peremhálózati ügynök, használja a következő parancsot:`azure-iot-edge-runtime-ctl.py –configure`
 * **settings.createOptions** – karakterlánc, amely közvetlenül átadódik a Docker démon a modul tároló indításakor. Ebben a tulajdonságban Docker beállítások hozzáadása lehetővé teszi a Speciális beállítások, például a továbbítási vagy kötetek csatlakoztatása egy modul tárolóba port.  
 * **állapot** – pedig a peremhálózati ügynök helyezi el a modul állapotát. Ez általában értéke *futtató* , a legtöbben szeretné a peremhálózati ügynök azonnal elindítani az eszközön lévő összes modul. Azonban kell megadni egy modul kell állítani, és várja meg, hogy egy modul elindításához a peremhálózati ügynök később bármikor kezdeti állapotában. A peremhálózati ügynök jelent modulokhoz állapotának vissza a jelentett tulajdonságaiban a felhőben. A kívánt tulajdonságot és a jelentett tulajdonság egy kijelző vagy átirányítóban eszköz. A támogatott állapotok az alábbiak:
-   * Letöltése
+   * Letöltés
    * Fut
    * Nem kifogástalan
    * Sikertelen
@@ -99,14 +99,22 @@ A modulok szótárban egyes elemek modul vonatkozó információkat tartalmaz, �
    * onFailure - Ha a modul összeomlik, a peremhálózati ügynök újraindítja. Ha a modul szabályszerűen leáll, a peremhálózati ügynök nem az újraindítást.
    * Nem kifogástalan állapotú - Ha a modul összeomlik vagy kifogásolhatónak, a peremhálózati ügynök újraindítja.
    * Mindig – Ha a modul összeomlik, akkor számít elértnek sérült, vagy bármely olyan módon leáll, a peremhálózati ügynök újraindítja. 
-   
+
+Az IoT-Edge ügynök IoT-központ futásidejű választ küld. Lehetséges válaszok listája itt található:
+  * 200 - OK
+  * 400 - telepítési konfigurációja helytelen formátumú vagy érvénytelen.
+  * 417 – az eszköz nem rendelkezik a telepítési konfiguráció.
+  * 412 – az a telepítési konfigurációban sémaverziója érvénytelen.
+  * 406 – a kapcsolat nélküli vagy nem küldő állapotjelentések.
+  * 500 - hiba történt az edge futtatókörnyezetben.
+
 ### <a name="security"></a>Biztonság
 
 Az IoT-Edge ügynök kritikus szerepet játszik IoT peremhálózati eszköz biztonságát. Például hajtja végre műveletek, például egy modul kép ellenőrzése az újraindítás előtt. Ezek a funkciók általánosan rendelkezésre álló V2 funkciók lesz hozzáadva. 
 
 <!-- For more information about the Azure IoT Edge security framework, see []. -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure IoT peremhálózati modulok megértéséhez][lnk-modulok]
 
