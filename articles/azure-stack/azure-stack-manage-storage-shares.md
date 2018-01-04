@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: f305f6ca3c92824aeed8a3b04181cc87e34b5321
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 7056aefc6bc6203c8961b8a254a2b631c9072c7b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>A tárolókapacitás Azure verem kezelése
 
@@ -123,7 +123,7 @@ Próbálja meg manuálisan át kell telepítenie néhány blob tárolók külön
 
 Áttelepítés az új megosztás összes tárolók blob összesíti.
 
-- Ha a blobok helyezte el a további kötetek tárolója túlcsordulás módra váltott, az új megosztás összes a tároló áttelepítése a blobok tárolására elegendő kapacitással kell rendelkeznie. Ez magában foglalja a blogok további megosztások található.
+- Ha a blobok helyezte el a további kötetek tárolója túlcsordulás módra váltott, az új megosztás összes a tároló áttelepítése a blobok tárolására elegendő kapacitással kell rendelkeznie. Ez magában foglalja a blobok további megosztások található.
 
 - A PowerShell-parancsmag *Get-AzsStorageContainer* csak a kezdeti köteten használja a tároló terület azonosítja. A parancsmag nem határozza meg a blobok további kötetek elhelyezése által használt lemezterület. A tároló teljes méretét, ezért nem feltétlenül nyilvánvaló. Akkor lehet, hogy egy tárolót az új megosztás összevonása küldhet, hogy új megosztás túlcsordult állapotot az hol helyezi további megosztások adatokat. Ennek eredményeképpen előfordulhat, hogy kell megosztások újra egyensúlyba.
 
@@ -187,5 +187,5 @@ Próbálja meg manuálisan át kell telepítenie néhány blob tárolók külön
 
 A rendkívüli belüli kezelésére szolgáló módszernél a virtuális gép lemezeinek áthelyezésekor. Mivel egy csatlakoztatott tároló (egy virtuális gép lemezt tartalmazó) áthelyezése összetett, forduljon a Microsoft Support Ez a művelet elvégzéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ [a felhasználók számára virtuális gépek ajánlat](azure-stack-tutorial-tenant-vm.md).
