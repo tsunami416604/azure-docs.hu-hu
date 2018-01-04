@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: eaa9d2208406afece5c77859546e888c1e49e902
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d93b6a25c1781c7d4f1f0534eda146963f439dd5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage táblázat kialakítási Útmutató: Méretezhető tervezésével és Performant táblák
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -41,7 +41,7 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>időbélyeg</th>
+<th>Időbélyeg</th>
 <th></th>
 </tr>
 <tr>
@@ -77,7 +77,7 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 <th>E-mail cím</th>
 </tr>
 <tr>
-<td>Jún</td>
+<td>jún.</td>
 <td>CaO</td>
 <td>47</td>
 <td>junc@contoso.com</td>
@@ -86,12 +86,12 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 </tr>
 <tr>
 <td>Marketing</td>
-<td>Szervezeti egység</td>
+<td>Részleg</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
 <tr>
-<th>departmentname nevű</th>
+<th>Részleg neve</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -251,7 +251,7 @@ A Table szolgáltatás automatikusan indexeli az entitások használata a **Part
 Sok ahhoz, hogy az entitások több feltétel alapján keresési kell megfelelnie. Például az e-mailek alapján alkalmazott entitások keresése Alkalmazottazonosító vagy vezetéknevét. A szakasz a következő minták [táblázat kialakítási minta](#table-design-patterns) követelmény az ilyen típusú cím, és azt a tényt, hogy a Table szolgáltatás nem nyújt másodlagos indexek körül módon ismertetik:  
 
 * [Intra-partíció másodlagos index mintát](#intra-partition-secondary-index-pattern) -tárolja a több másolatot minden entitás használatával különböző **RowKey** engedélyezése gyors és hatékony keresések és másodlagos rendezési sorrend különböző használatával (a partícióra) értékek **RowKey** értékeket.  
-* [Másodlagos helyek közötti partíció index mintát](#inter-partition-secondary-index-pattern) - értékekkel különböző RowKey külön partíciók vagy külön táblázatban gyors engedélyezése minden entitás több példányát tárolja, és a különböző rendelésekhatékonykereséstésamásodlagosrendezésisorrend**RowKey** értékeket.  
+* [Másodlagos index közötti particionálásához mintát](#inter-partition-secondary-index-pattern) -tárolja a több másolatot minden entitás használatával különböző **RowKey** értékek a különböző partíciók, vagy a külön a táblák gyors és hatékony keresést és a másodlagos rendezési sorrend engedélyezése a különböző rendelések **RowKey** értékeket.  
 * [Index entitások mintát](#index-entities-pattern) -index entitások entitások listájának visszaadó hatékony keresések engedélyezése karbantartása.  
 
 ### <a name="sorting-data-in-the-table-service"></a>A Table szolgáltatás az adatok rendezése
@@ -1107,7 +1107,7 @@ A Table szolgáltatás egy *séma nélküli* tábla tároló, amely azt jelenti,
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>időbélyeg</th>
+<th>Időbélyeg</th>
 <th></th>
 </tr>
 <tr>
@@ -1157,7 +1157,7 @@ A Table szolgáltatás egy *séma nélküli* tábla tároló, amely azt jelenti,
 <td>
 <table>
 <tr>
-<th>departmentname nevű</th>
+<th>Részleg neve</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -1199,7 +1199,7 @@ Vegye figyelembe, hogy minden egyes szervezet továbbra is rendelkeznie kell **P
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>időbélyeg</th>
+<th>Időbélyeg</th>
 <th></th>
 </tr>
 <tr>
@@ -1254,11 +1254,11 @@ Vegye figyelembe, hogy minden egyes szervezet továbbra is rendelkeznie kell **P
 <table>
 <tr>
 <th>EntityType</th>
-<th>departmentname nevű</th>
+<th>Részleg neve</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>Szervezeti egység</td>
+<td>Részleg</td>
 <td></td>
 <td></td>
 </tr>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
-ms.author: genli;markgal;
-ms.openlocfilehash: ad98262af8ccebcc71013f1aac24eaa0b80a7c3b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: genli;markgal;sogup;
+ms.openlocfilehash: 2112d332faba194285ac35cf936000b399cd3e83
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure biztonsági mentési hiba elhárítása: ügynök és/vagy kiterjesztés problémái
 
@@ -66,6 +66,7 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 ##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>3. ok: [a virtuális gépen telepített ügynök elavult (a Linux virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
 ##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>4. ok: [pillanatkép állapotát nem sikerült beolvasni vagy pillanatkép nem végezhető.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
 ##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>5. ok: [frissítése vagy nem tölthető be nem sikerül a tartalék mellék](#the-backup-extension-fails-to-update-or-load)
+##### <a name="cause-6-backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lockbackup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>6. ok: [biztonsági mentési szolgáltatás nincs engedélye a régi visszaállítási pontok erőforráscsoport zárolása miatt törlése](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)
 
 ## <a name="the-specified-disk-configuration-is-not-supported"></a>A megadott lemezkonfiguráció nem támogatott.
 
@@ -203,4 +204,30 @@ Miután telepítette a virtuális gép vendégügynökének, indítsa el az Azur
         `Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>` <br>
 5. Próbálja meg a biztonsági mentés elindítása. <br>
 
+### <a name="backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>A biztonsági mentési szolgáltatás nincs engedélye törli a régi visszaállítási pontok erőforráscsoport zárolása miatt
+A probléma csak a felügyelt virtuális gépekhez, ahol felhasználó zárolja az erőforráscsoport és biztonsági mentési szolgáltatás nem tudja törölni a régebbi helyreállítási pontok. Emiatt új biztonsági másolatok meghiúsul, a háttérrendszerből meghatározott maximális 18 visszaállítási pontok maximális.
+
+#### <a name="solution"></a>Megoldás
+
+A probléma megoldásához használja az alábbi lépéseket a visszaállítási pont gyűjtemény eltávolítása: <br>
+ 
+1. Az erőforráscsoport zárolása, amelyben a virtuális gép található eltávolítása 
+     
+2. Telepítse a ARMClient Chocolatey használatával <br>
+   https://github.com/projectkudu/ARMClient
+     
+3. ARMClient bejelentkezni <br>
+             `.\armclient.exe login`
+         
+4. A virtuális gép megfelelő Get-visszaállítási pont gyűjtemény <br>
+    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
+
+    Példa:`.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+             
+5. A visszaállítási pont gyűjtemény törlése <br>
+            `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
+ 
+6. Következő ütemezett biztonsági mentés visszaállítási pont gyűjtemény és az új visszaállítási pontok automatikusan hoz létre 
+ 
+7. A probléma újból megjelenik, akkor zárolja a erőforráscsoportjában újra nincs-e csak egy legfeljebb 18, amely után a biztonsági mentés meghiúsul az visszaállítási pontok 
 

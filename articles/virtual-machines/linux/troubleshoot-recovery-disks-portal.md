@@ -8,16 +8,16 @@ manager: timlt
 editor: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
-ms.openlocfilehash: 808a6c3ea4cb26dbb91752d13e2118d081b10668
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c96ff625c3e83f6fc9057f1163c877e8e0aed5e3
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Linux virtuális gép hibaelhárításáról az operációsrendszer-lemez csatolása a helyreállítási virtuális gép az Azure portál használatával
 Ha a Linux virtuális gép (VM) rendszerindító vagy a lemez hibát tapasztal, szükség lehet végezze el a virtuális merevlemez hibaelhárítási lépéseket. Ilyenek például a bejegyzés érvénytelen lenne `/etc/fstab` , amely megakadályozza a virtuális gép rendszerindító sikeresen megtörtént. Ez a cikk részletezi az Azure portál segítségével csatlakozzon a virtuális merevlemez egy másik Linux virtuális gép, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép.
@@ -171,7 +171,7 @@ Amikor a virtuális Gépet hoz létre a meglévő virtuális merevlemez, rendsze
 
 ![Rendszerindítási diagnosztika beállításainak frissítése](./media/troubleshoot-recovery-disks-portal/reenable-boot-diagnostics.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha a virtuális Géphez való kapcsolódás problémát tapasztal, tekintse meg [hibaelhárítása SSH kapcsolatok egy Azure virtuális gépre](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). A virtuális gépen futó alkalmazások elérésével problémákkal kapcsolatban lásd: [alkalmazás csatlakozási problémák a Linux virtuális gép](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Erőforrás-kezelő használatával kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 96d6d707d69f80a866f6ac17addabc0db076b079
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e2f4601daf9aa3537f9170c3516d62ab1bd602e5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Sqoop használata a hadooppal a Hdinsightban
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -29,7 +29,7 @@ Ismerje meg a Sqoop használata a Hdinsightban történő importálására és e
 
 Hadoop természetes téve a feldolgozása a strukturálatlan és félig strukturált adatok, például a naplókat, valamint fájlt, azonban a is lehet a relációs adatbázisok tárolt strukturált adatok feldolgozása érdekében.
 
-[Sqoop] [ sqoop-user-guide-1.4.4] az eszköz a Hadoop-fürtök és a relációs adatbázisok közötti adattovábbításra. Adatok importálása egy relációs adatbázis-kezelő rendszerének (RDBMS), például az SQL Server, MySQL, vagy a Hadoop elosztott fájlrendszer (HDFS), az Oracle átalakíthatja az adatokat a Hadoop MapReduce vagy a Hive, majd az adatok exportálása vissza egy RDBMS használhatja. Ebben az oktatóanyagban egy SQL Server adatbázist használ a relációs adatbázis.
+[Sqoop][sqoop-user-guide-1.4.4] az eszköz a Hadoop-fürtök és a relációs adatbázisok közötti adattovábbításra. Adatok importálása egy relációs adatbázis-kezelő rendszerének (RDBMS), például az SQL Server, MySQL, vagy a Hadoop elosztott fájlrendszer (HDFS), az Oracle átalakíthatja az adatokat a Hadoop MapReduce vagy a Hive, majd az adatok exportálása vissza egy RDBMS használhatja. Ebben az oktatóanyagban egy SQL Server adatbázist használ a relációs adatbázis.
 
 A HDInsight-fürtökön támogatott Sqoop verzióiért lásd: [What's new in HDInsight által biztosított fürt verziók?][hdinsight-versions]
 
@@ -47,15 +47,15 @@ HDInsight-fürtök néhány adatot tartalmaz. A következő két mintát haszná
   
   | Mező | Adattípus |
   | --- | --- |
-  | ClientID |Karakterlánc |
-  | querytime |Karakterlánc |
-  | piaci |Karakterlánc |
-  | deviceplatform |Karakterlánc |
-  | devicemake |Karakterlánc |
-  | devicemodel |Karakterlánc |
-  | state |Karakterlánc |
-  | Ország |Karakterlánc |
-  | querydwelltime |Dupla |
+  | ClientID |karakterlánc |
+  | querytime |karakterlánc |
+  | piaci |karakterlánc |
+  | deviceplatform |karakterlánc |
+  | devicemake |karakterlánc |
+  | devicemodel |karakterlánc |
+  | state |karakterlánc |
+  | Ország |karakterlánc |
+  | querydwelltime |duplaszó |
   | munkamenet-azonosító |bigint |
   | sessionpagevieworder |bigint |
 
@@ -94,7 +94,7 @@ Ha inkább az Azure PowerShell használatával a fürt és az SQL-adatbázis lé
      
         A következő értékek a következők név szoftveresen kötött a sablonváltozók szakaszban:
         
-        |Név|Érték|
+        |Name (Név)|Érték|
         |----|-----|
         | Alapértelmezett tárfiók neve | &lt;CluterName > tárolásához |
         | Az Azure SQL adatbázis-kiszolgáló neve | &lt;ClusterName > dbserver |
@@ -151,7 +151,7 @@ Ha úgy dönt, hogy a meglévő Azure SQL adatbázis vagy a Microsoft SQL Server
 ## <a name="run-sqoop-jobs"></a>Sqoop feladatok futtatása
 HDInsight Sqoop feladatok futtatásához számos módszer használatával. A következő táblázat segítségével döntse el, melyik módszert részesíti az Ön számára legmegfelelőbb, majd kövesse a hivatkozást útmutatást.
 
-| **Ezzel** Ha azt szeretné... | ...an **interaktív** rendszerhéj | ...**kötegelt** feldolgozása | és mivel ez **fürt operációs rendszer** | ....from ez **ügyfél operációs rendszer** |
+| **Ezzel** Ha azt szeretné... | ...an **interaktív** rendszerhéj | ...**kötegelt** feldolgozása | és mivel ez **fürt operációs rendszer** | ...from ez **ügyfél operációs rendszer** |
 |:--- |:---:|:---:|:--- |:--- |
 | [SSH](apache-hadoop-use-sqoop-mac-linux.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X vagy Windows |
 | [.NET SDK a Hadoophoz](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |✔ |Linux- vagy Windows |(Egyelőre) Windows |
@@ -161,7 +161,7 @@ HDInsight Sqoop feladatok futtatásához számos módszer használatával. A kö
 * Tömeges export - a Linux-alapú HDInsight, a Sqoop összekötő használt Microsoft SQL Server vagy az Azure SQL Database adatainak exportálása jelenleg nem támogatja a tömeges beszúrások.
 * Kötegelés - és a Linux-alapú HDInsight együttes használata esetén a `-batch` beszúrása végrehajtásakor kapcsoló, a Sqoop több beszúrás helyett a beszúrási műveletek kötegelése hajt végre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most megtanulhatta, hogyan használható a Sqoop. További tudnivalókért lásd:
 
 * [A Hive használata a HDInsightban](../hdinsight-use-hive.md)
@@ -221,7 +221,7 @@ A PowerShell-példa a következő lépéseket végzi el:
    > Eltérő kapcsolati karakterlánc információt a jelen szakaszban szereplő lépéseket az Azure SQL-adatbázis, vagy az SQL Server kell működnie. Ezeket a lépéseket a következő konfigurációval teszteltük:
    > 
    > * **Azure-beli virtuális hálózat pont-hely konfigurációs**: virtuális hálózat a HDInsight-fürthöz csatlakozik egy SQL Server egy privát adatközpontban. Lásd: [pont-pont VPN konfigurálásához a kezelési portál](../../vpn-gateway/vpn-gateway-point-to-site-create.md) további információt.
-   > * **Az Azure HDInsight 3.1**: lásd: [létrehozása Hadoop-fürtök a Hdinsightban egyéni beállításokkal](../hdinsight-hadoop-provision-linux-clusters.md) információ a fürt létrehozása a virtuális hálózaton.
+   > * **Az Azure HDInsight**: lásd: [létrehozása Hadoop-fürtök a Hdinsightban egyéni beállításokkal](../hdinsight-hadoop-provision-linux-clusters.md) információ a fürt létrehozása a virtuális hálózaton.
    > * **Az SQL Server 2014**: konfigurált ahhoz, hogy hitelesítést és fut a VPN-ügyfél konfigurációs csomag biztonságosan a virtuális hálózathoz csatlakozni.
    > 
    > 

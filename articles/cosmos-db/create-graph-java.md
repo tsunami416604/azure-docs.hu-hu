@@ -13,17 +13,17 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/20/2017
+ms.date: 12/15/2017
 ms.author: lbosq
-ms.openlocfilehash: 6ac59cb3d669e0dc197787311beedd44f888e8ab
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e90879c70e47d2bc5034b4fbf2b0ed7172fe131e
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a Java és az Azure Portal használatával
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezhet felügyelt dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezhet felügyelt dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat. 
 
 Ez a rövid útmutató létrehoz egy egyszerű gráfadatbázist az Azure Cosmos DB-hez készült Azure Portal-eszközök használatával. A rövid útmutató emellett bemutatja, hogyan hozhat létre gyorsan egy Java-konzolalkalmazást az OSS [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver)-illesztőprogramot használó gráfadatbázissal. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. Ez a rövid útmutató ismerteti a gráfok létrehozását és módosítását a felhasználói felületen vagy programozás útján. 
 
@@ -61,10 +61,9 @@ Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozás
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
     Adatbázis-azonosító|sample-database|Az új adatbázisnak adja a *sample-database* nevet. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat `/ \ # ?` karaktereket vagy záró szóközt.
-    Gráfazonosító|sample-graph|Az új gyűjteménynek adja a *sample-database* nevet. A gráfok nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázis-azonosítókra.
+    Gráfazonosító|sample-graph|Az új gyűjteménynek adja a *sample-graph* nevet. A gráfok nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázis-azonosítókra.
     Tárkapacitás|Rögzített méretű (10 GB)|Módosítsa az értéket **Rögzített méretű (10 GB)** értékre. Ez az érték az adatbázis tárkapacitása.
-    Teljesítmény|400 kérelemegység|Módosítsa az átviteli sebességet másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
-    Partíciókulcs|Hagyja üresen|A rövid útmutató során hagyja üresen a Partíciókulcs mezőt.
+    Teljesítmény|400 kérelemegység|Módosítsa a teljesítményt másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
 
 3. Miután kitöltötte az űrlapot, kattintson az **OK** elemre.
 
@@ -72,7 +71,7 @@ Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozás
 
 Most pedig váltsunk át kódok használatára. A következő lépésekben elvégezheti a Graph API-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni.  
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -92,7 +91,7 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted mappában található `Program.java` fájlból származnak. Egyéb esetben ugorhat [A kapcsolati karakterlánc frissítése](#update-your-connection-information) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted mappában található `Program.java` fájlból származnak. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-information) szakaszra. 
 
 * A rendszer a Gremlin `Client` alkalmazást az `src/remote.yaml` fájlban megadott konfiguráció szerint inicializálja.
 
@@ -115,7 +114,7 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
     }
     ```
 
-## <a name="update-your-connection-information"></a>A kapcsolati adatok frissítése
+## <a name="update-your-connection-information"></a>A kapcsolatadatok frissítése
 
 Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azokat az alkalmazásba. Ezek a beállítások lehetővé teszik az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
@@ -244,7 +243,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gráfot készíteni, és hogyan lehet futtatni az alkalmazást. Most már készen áll arra, hogy a Gremlin használatával összetettebb lekérdezéseket hozzon létre és hatékony gráfbejárási logikákat implementáljon. 
 

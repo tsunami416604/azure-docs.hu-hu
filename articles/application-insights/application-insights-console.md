@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova
-ms.openlocfilehash: 74f3334fb5b13dccfd16eff216d370fb6a643980
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 1b6bef88d729a2febfca2bd236a5382d2c11bd69
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET-keretrendszerhez készült Application Insights konzolon alkalmazások
 [Az Application Insights](app-insights-overview.md) lehetővé teszi, hogy a webalkalmazás rendelkezésre állását, teljesítményét és használatát a figyelésére.
@@ -37,7 +37,7 @@ var telemetryClient = new TelemetryClient();
 telemetryClient.TrackTrace("Hello World!");
 ```
 
-* Telepítse a legújabb változatát [Microsoft.ApplicationInsights.DependecyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) - csomag automatikusan azt követi nyomon, HTTP, SQL vagy valamilyen más külső függőségi hívások esetében.
+* Telepítse a legújabb változatát [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) - csomag automatikusan azt követi nyomon, HTTP, SQL vagy valamilyen más külső függőségi hívások esetében.
 
 Előfordulhat, hogy inicializálni és konfigurálhatja az Application Insights kód használata vagy `ApplicationInsights.config` fájlt. Győződjön meg arról, hogy a lehető leghamarabb történik, az inicializálás.
 

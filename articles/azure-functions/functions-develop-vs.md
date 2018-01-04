@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: 099ff4c9748244ddaf9c12f5eb39657bf59c063b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0b7746125c9bcff64bd721f6ec5d2ea2c73f6f18
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Az Azure Functions Tools for Visual Studio  
 
@@ -68,7 +68,7 @@ A Functions futtatókörnyezete belső egy Azure Storage-fiókot használja. Ös
 
 1. A Visual Studióban nyissa meg a **Cloud Explorer**, bontsa ki a **Tárfiók** > **a Tárfiók**, majd jelölje be **tulajdonságok**, és másolja a **elsődleges kapcsolódási karakterlánc** érték.   
 
-2. A projektben nyissa meg a local.settings.json projektfájlt, és állítsa a **AzureWebJobsStorage** kulcs a kapcsolati karakterlánc módosításait másolta.
+2. A projektben nyissa meg a local.settings.json fájlt, és állítsa a **AzureWebJobsStorage** kulcs a kapcsolati karakterlánc módosításait másolta.
 
 3. Az előző lépésben egyedi kulccsal hozzáadásához ismételje meg a **értékek** bármely más, a funkciók által igényelt kapcsolatok tömb.  
 
@@ -106,7 +106,7 @@ Az előre lefordított függvények a függvény által használt kötéseket ha
     } 
     ````
  
-    Minden kötelező paraméter, a belépési pont metódus számára megadott alkalmazva van egy kötése-specifikus attribútum. Az attribútum a kötési információ paraméterekként vesz igénybe. Az előző példában az első paraméter tartozik egy **QueueTrigger** attribútuma, várólista indított függvény jelző. A várólista nevét és a kapcsolati karakterlánc Beállításnév paraméterként.  
+    Minden kötelező paraméter, a belépési pont metódus számára megadott alkalmazva van egy kötése-specifikus attribútum. Az attribútum a kötési információ paraméterekként vesz igénybe. Az előző példában az első paraméter tartozik egy **QueueTrigger** attribútuma, várólista indított függvény jelző. A várólista nevét és a kapcsolati karakterlánc Beállításnév paraméterként való a **QueueTrigger** attribútum.
 
 ## <a name="testing-functions"></a>Függvények tesztelése
 
@@ -131,7 +131,7 @@ Az Azure Functions Core eszközök használatával kapcsolatos további tudnival
 >* [Használja a `--publish-local-settings` publish beállítást, az Azure Functions Core eszközök](functions-run-local.md#publish).
 >* [Az Azure parancssori felület használatával](/cli/azure/functionapp/config/appsettings#set). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Functions eszközök című rész a gyakori kérdéseket a [Azure Functions Visual Studio 2017 eszközök](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) blogbejegyzést.
 

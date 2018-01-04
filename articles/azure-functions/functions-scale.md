@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 38499fd1e27cf6e8253ad1172701fd18b338abad
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 83431c58fedd85e469ab1bf2903fd517e6338e15
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetéséhez
 
@@ -90,7 +90,7 @@ Tárfióktípusokat kapcsolatos további információkért lásd: [az Azure Stor
 
 ## <a name="how-the-consumption-plan-works"></a>A felhasználási terv működése
 
-A felhasználási tervben a skála vezérlő automatikusan méretezi CPU és memória-erőforrások hozzáadásával további példányait a funkciók gazdagép, a funkciók által kiváltott a várakozó események száma alapján. A funkciók állomás minden példánya 1,5 GB memória korlátozódik.  A gazdagép egy példány a függvény App, tehát a funciton összes függvényeket app erőforrások megosztása belül egy példány és a skála egyszerre.
+A felhasználási tervben a skála vezérlő automatikusan méretezi CPU és memória-erőforrások hozzáadásával további példányait a funkciók gazdagép, a funkciók által kiváltott a várakozó események száma alapján. A funkciók állomás minden példánya 1,5 GB memória korlátozódik.  A gazdagép egy példány a függvény App, tehát függvényen belüli összes funkciójának app erőforrások megosztása belül egy példány és a skála egyszerre.
 
 A felhasználás üzemeltetési terv használatakor függvény kódfájlok Azure fájlmegosztásokat a funkció fő tárfiók tárolja. A fő tárfiókot, a függvény alkalmazás törlése, a függvény kód fájlok törlődnek, és nem állítható helyre.
 
@@ -119,7 +119,7 @@ Különböző eseményindítók is rendelkezhetnek, különböző méretezési k
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ajánlott eljárásairól és mintáiról méretezhető alkalmazások
 
-Számos szempontot, amelyek befolyásolják, mennyire azt lehessen méretezni, beleértve a gazdagép-konfigurálás, futásidejű erőforrásigényét és az erőforrás hatásfokuk függvény alkalmazás.  Nézet a [méretezhetőség című szakaszban a teljesítmény szempontok](functions-best-practices.md#scalability-best-practices) további információt.
+Számos szempontot, amelyek befolyásolják, mennyire azt lehessen méretezni, többek között a gazdagép-konfigurálás, futásidejű erőforrásigényét és erőforrás-hatékonyság függvény alkalmazás.  Nézet a [méretezhetőség című szakaszban a teljesítmény szempontok](functions-best-practices.md#scalability-best-practices) további információt.
 
 ### <a name="billing-model"></a>Számlázási modell
 

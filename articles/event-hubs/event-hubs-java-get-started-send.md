@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: b31771001989e20b88bc8d7bca1afceb58ec197c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28585a1b6a6c7c642c8bccf4615382d15f89d11c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Események küldése az Azure Event Hubs Java használatával
 
@@ -86,12 +86,15 @@ Ezután hozzon létre egyes számú esemény által karakterlánc átalakítása
 
     EventHubClient ehClient = EventHubClient.createFromConnectionStringSync(connStr.toString());
     ehClient.sendSync(sendEvent);
+    
+    // close the client at the end of your program
+    ehClient.closeSync();
     }
 }
 
 ``` 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Fogadása az EventProcessorHost használatához események](event-hubs-java-get-started-receive-eph.md)

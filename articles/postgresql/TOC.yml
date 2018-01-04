@@ -27,7 +27,7 @@
           href: connect-csharp.md
         - name: Indítás
           href: connect-go.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Adatbázis-tervezés
       items:
@@ -55,7 +55,7 @@
           href: concepts-server-logs.md
         - name: Magas rendelkezésre állás
           href: concepts-high-availability.md
-    - name: Erőforrások
+    - name: További források
       items:
         - name: Árképzési szintek
           href: concepts-service-tiers.md
@@ -95,6 +95,8 @@
           href: howto-migrate-using-dump-and-restore.md
         - name: Importálás és exportálás
           href: howto-migrate-using-export-and-import.md
+        - name: Minimális állásidejű migrálás
+          href: howto-migrate-online.md
     - name: Kiszolgáló paramétereinek konfigurálása
       items:
         - name: Azure Portal
@@ -117,7 +119,7 @@
       href: /cli/azure/postgres
     - name: REST API
       href: /rest/api/postgresql
-- name: Erőforrások
+- name: További források
   items:
     - name: Üzembehelyezési sablonok
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql'

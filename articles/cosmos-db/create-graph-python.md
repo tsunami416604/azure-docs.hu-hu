@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 12/04/2017
+ms.date: 12/15/2017
 ms.author: lbosq
-ms.openlocfilehash: 727e13669ec120bfa9c9da759316ed067be9aa82
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: b5160aec6504dfa924279286d9676a97716f5a6c
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a Python és az Azure Portal használatával
 
@@ -256,7 +256,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gráfot készíteni, és hogyan lehet futtatni az alkalmazást. Most már készen áll arra, hogy a Gremlin használatával összetettebb lekérdezéseket hozzon létre és hatékony gráfbejárási logikákat implementáljon. 
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: larryfr
-ms.openlocfilehash: da6ea4bff5a45125f11776f161fef38e39a74cdd
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 7da4a7e0a60fd1e5c78f53b0a8e7ab333c5d2465
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés Hive hdinsight JDBC-illesztőt keresztül
 
@@ -51,7 +51,7 @@ Az Azure HDInsight-fürtök JDBC kapcsolatok válnak, több mint a 443-as, és a
 
 Cserélje le a `CLUSTERNAME` kifejezést a HDInsight-fürt nevére.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 A kapcsolat létrehozásakor, a HDInsight fürt admin nevét és jelszavát, hogy a fürt átjáró hitelesítést kell használnia. JDBC-ügyfelek például SQuirreL SQL csatlakozáshoz meg kell adni a rendszergazda nevét és jelszavát ügyfélbeállításokat.
 
@@ -192,11 +192,12 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 3. Indítsa újra az SQuirreL. A hiba már nem kell végrehajtani, a HDInsight Hive történő csatlakozás során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy rendelkezik megtudta, hogyan JDBC használhatja a Hive, az alábbi hivatkozások segítségével más módjai Azure HDInsight használata.
 
 * [Hive-adatok ábrázolása a Microsoft Power bi-ban az Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
+* [Interaktív lekérdezés Hive-adatok ábrázolása a Power bi-ban az Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 * [Zeppelin segítségével az Azure HDInsight Hive-lekérdezések futtatása](./../hdinsight-connect-hive-zeppelin.md).
 * [Excel csatlakoztatása a Microsoft Hive ODBC-illesztőprogram HDInsight](apache-hadoop-connect-excel-hive-odbc-driver.md).
 * [Az Excel és a Hadoop csatlakoztatása a Power Query használatával](apache-hadoop-connect-excel-power-query.md).

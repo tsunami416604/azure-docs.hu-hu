@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6886d1239fa074a6316b243e574833f5554ac298
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 3310239b5569ca5b63bd39acb4d192a4e54780e4
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelési - Teljesítményanomáliákat
 
@@ -103,7 +103,7 @@ A hatás utasítás (érintett felhasználók vagy forgalom %) használható ál
 Fontolja meg a hiba paramétereit. Ha a földrajzi-függő, állítsa be [rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md) többek között az adott régióban: egyszerűen hálózati problémák adódhatnak az adott területre.
 
 ### <a name="diagnose-slow-page-loads"></a>Lassúlap terhelések diagnosztizálása
-Hol található a problémát? Lassan válaszol-e a kiszolgáló, a lap nagyon hosszú, vagy nem a böngészőt kell elvégezni megjelenítéséhez munka nagy?
+Hol jelentkezett a probléma? Lassan válaszol-e a kiszolgáló, a lap nagyon hosszú, vagy nem a böngészőt kell elvégezni megjelenítéséhez munka nagy?
 
 A böngészők metrika panel megnyitásához. A böngésző lap betöltési ideje mutat be ahol állapotra vált, az idő szegmentált megjelenítését. 
 
@@ -157,7 +157,7 @@ Figyelje meg, amely jelzi, hogy:
 
 ## <a name="smart-detection-of-slow-performing-patterns"></a>A lassú teljesítő minták intelligens észlelése 
 
-Az Application Insights megkeresése, amelyek csak hatással vannak a felhasználók egy részét, vagy csak az egyes esetekben felhasználókat érintő teljesítményproblémákat. Például a lapok betöltési értesítést más típusú böngészők, mint a böngésző egyik típusú slowler, vagy ha a kérések lassabban rendelkezésre az adott kiszolgálóhoz. Feltérképezésére is alkalmas kombinációk, kapcsolódó problémák, mint például adott operációs rendszert használó ügyfelek számára egy földrajzi terület lassúlap tölti be.  
+Az Application Insights megkeresése, amelyek csak hatással vannak a felhasználók egy részét, vagy csak az egyes esetekben felhasználókat érintő teljesítményproblémákat. Például a lapok betöltési értesítést más típusú böngészők, mint a böngésző egyik típusú lassabb, vagy ha a kérések lassabban rendelkezésre az adott kiszolgálóhoz. Feltérképezésére is alkalmas kombinációk, kapcsolódó problémák, mint például adott operációs rendszert használó ügyfelek számára egy földrajzi terület lassúlap tölti be.  
 
 Hasonló rendellenességeket nagyon nehéz észlelése csak az adatok vizsgálatával, de több mint érdemes. Gyakran azok csak felület, amikor a felhasználók panaszkodnak mert. Addigra túl későn: az érintett felhasználók már vált a versenytársak!
 
@@ -178,7 +178,7 @@ Kattintson az egyes hivatkozásokra kattintva nyissa meg a metrika Explorer, és
 
 Időtartomány és telemetriai adatok felfedezése szűrők módosíthatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A diagnosztikai eszközök segítségével vizsgálja meg az alkalmazás a telemetriai adatok:
 
 * [Profilkészítő](app-insights-profiler.md) 

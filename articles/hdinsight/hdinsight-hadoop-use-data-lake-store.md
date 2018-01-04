@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/03/2017
+ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: ff9bf262fecd7307a1150dd6ea59f0f7c4b87258
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: e14de80dc1fdf82c57f2a38d4ae2719ec83e01ed
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>A Data Lake Store és az Azure HDInsight-fürtök együttes használata
 
@@ -80,13 +80,13 @@ A szolgáltatásnevek létrehozásával és a hozzáférés biztosításával ka
 
 ## <a name="use-data-lake-store-as-additional-storage"></a>A Data Lake Store használata kiegészítő tárolóként
 
-A Data Lake Store a fürt kiegészítő tárolójaként is használható. Ilyen esetekben a fürt alapértelmezett tárolója az Azure Storage Blob vagy egy Data Lake Store-fiók lehet. Ha HDInsight-feladatokat futtat a kiegészítő tárolóként használt Data Lake Store-ban tárolt adatokon, a fájlok teljes elérési útját kell használnia. Példa:
+A Data Lake Store a fürt kiegészítő tárolójaként is használható. Ilyen esetekben a fürt alapértelmezett tárolója az Azure Storage Blob vagy egy Data Lake Store-fiók lehet. Ha HDInsight-feladatokat futtat a kiegészítő tárolóként használt Data Lake Store-ban tárolt adatokon, a fájlok teljes elérési útját kell használnia. Például:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
 Vegye figyelembe, hogy most nincs **cluster_root_path** az URL-címben. Ez azért van, mert a Data Lake Store ebben az esetben nem alapértelmezett tároló, így csak meg kell adnia a fájok elérési útját.
 
-Ahhoz, hogy a Data Lake Store-t kiegészítő tárolóként használhassa, hozzáférést kell biztosítania a szolgáltatásnév számára a tárolt fájlok elérési útjaihoz.  Példa:
+Ahhoz, hogy a Data Lake Store-t kiegészítő tárolóként használhassa, hozzáférést kell biztosítania a szolgáltatásnév számára a tárolt fájlok elérési útjaihoz.  Például:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
@@ -135,7 +135,7 @@ Az alábbi hivatkozások a Data Lake Store-hozzáféréssel rendelkező HDInsigh
 * [Azure-sablonok használata](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a cikkből megtanulta, hogyan használhatja HDFS-kompatibilis Azure Data Lake Store-tárolót a HDInsighttal. Ez lehetővé teszi a skálázható, hosszú távú adatarchiváló beszerzési megoldások kiépítését, valamint hogy a HDInsighttal kinyerje a strukturált és strukturálatlan tárolt adatokban lévő információkat.
 
 További információkért lásd:

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: b1b9b804aa696419b52a03f127c59037c337be66
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 03d1617eb64c48b6a90925ae76e1ab3ce0312ff1
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Egy Azure Automation-runbook kezdődő, és olyan webhook
 A *webhook* lehetővé teszi az adott forgatókönyv indítása az Azure Automationben egyetlen HTTP-kérelem keresztül. Ez lehetővé teszi, hogy a külső szolgáltatások, például a Visual Studio Team Services, GitHub, a Microsoft Operations Management Suite Naplóelemzési vagy egy Azure Automation API használatával teljes megoldás megvalósításának nélküli runbookok elindítását egyéni alkalmazások.  
@@ -31,13 +31,13 @@ A következő táblázat ismerteti a tulajdonságokat, amelyeket konfigurálnia 
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Név |Megadhat egy nevet, egy webhook óta ez nincs felfedve, az ügyfélnek.  Azt csak az Ön azonosítására szolgál a runbook az Azure Automationben. <br>  Ajánlott eljárásként adjon a webhook kapcsolódik az ügyfél által használt nevet. |
+| Name (Név) |Megadhat egy nevet, egy webhook óta ez nincs felfedve, az ügyfélnek.  Azt csak az Ön azonosítására szolgál a runbook az Azure Automationben. <br>  Ajánlott eljárásként adjon a webhook kapcsolódik az ügyfél által használt nevet. |
 | URL-cím |A webhook URL-címe az ügyfelek egy HTTP POST a webhook csatolva a runbook elindításához hívja a egyedi cím.  A webhook létrehozásakor automatikusan történik.  Egy egyéni URL-címe nem adható meg. <br> <br>  Az URL-cím egy biztonsági jogkivonatot, amely lehetővé teszi a forgatókönyv további hitelesítés nélküli külső rendszer által meghívandó tartalmaz. Ezért azt kell kezelni, például a jelszó.  Biztonsági okokból csak megtekintheti az URL-cím az Azure portálon, a rendszer a webhook létrehozása során. Vegye figyelembe a jövőbeli használatra egy biztonságos helyre az URL-címet. |
-| Lejárat dátuma |Például egy tanúsítványt egyes webhook van ekkor már nem használható lejárati dátuma.  A lejárati dátumot a webhook létrehozása után módosítható. |
+| Lejárati dátum |Például egy tanúsítványt egyes webhook van ekkor már nem használható lejárati dátuma.  A lejárati dátumot a webhook létrehozása után módosítható. |
 | Engedélyezve |A webhook alapértelmezés szerint engedélyezve van, ha létrehozták.  Ha beállította azt le van tiltva, akkor nincs ügyfél lesz használni tudja.  Beállíthatja a **engedélyezve** tulajdonság a webhook, vagy bármikor egyszer létrehozásakor jön létre. |
 
 ### <a name="parameters"></a>Paraméterek
-A webhook runbook paramétereket, illetve ha a runbook indítja el, hogy a webhook értékeket határozhat meg. A webhook tartalmaznia kell a runbook minden kötelező paraméter értékét, és nem kötelező paraméter értékét is járhatott. A paraméter értékét, úgy konfigurálva, hogy a webhook még a webhoook létrehozása után módosítható. Kapcsolódó egyetlen runbook több webhook egyes eltérő értékek használhatók.
+A webhook runbook paramétereket, illetve ha a runbook indítja el, hogy a webhook értékeket határozhat meg. A webhook tartalmaznia kell a runbook minden kötelező paraméter értékét, és nem kötelező paraméter értékét is járhatott. A paraméter értékét, úgy konfigurálva, hogy a webhook webhook létrehozása után is módosíthatja. Kapcsolódó egyetlen runbook több webhook egyes eltérő értékek használhatók.
 
 Amikor egy ügyfél elindítja a runbookot egy webhook, nem bírálhatja felül a webhook definiált paraméterértékek.  Az adatok fogadásához az ügyfél a runbook neve egyetlen paramétert fogadhat **$WebhookData** típusú [objektum], amely az ügyfél a POST kérelemben tartalmazó adatok fogja tartalmazni.
 
@@ -53,7 +53,7 @@ A **$WebhookData** objektum lesz a következő jellemzőkkel rendelkezik:
 
 A webhook támogatásához szükséges konfiguráció hiányában az **$WebhookData** paraméter, és a runbook nem szükséges elfogadását.  A runbook nem határoz meg a paramétert, ha az ügyfél által küldött kérelem részleteinek figyelmen kívül hagyja.
 
-Ha megad egy értéket a $WebhookData a webhook létrehozásakor, hogy értéket fogja felülbírálva a webhook elindítja a runbookot az adatokat az ügyfél POST-kérelmet, ha akkor is, ha az ügyfél nem vesz be semmilyen adatot a kérés törzsében.  Ha elindít egy forgatókönyvet, amely rendelkezik egy webhook eltérő módszerrel $WebhookData, biztosíthatja, hogy a runbook felismer $Webhookdata értéket.  Ennek az értéknek kell lennie egy objektum ugyanezzel [tulajdonságok](#details-of-a-webhook) $Webhookdata, így a runbook megfelelően dolgozhat, mintha volt az olyan webhook által átadott tényleges WebhookData használata.
+Ha megad egy értéket a $WebhookData a webhook létrehozásakor, hogy érték felülbírálja a webhook elindítja a runbookot az adatokat az ügyfél POST-kérelmet, ha akkor is, ha az ügyfél nem vesz be semmilyen adatot a kérés törzsében.  Ha elindít egy forgatókönyvet, amely rendelkezik egy webhook eltérő módszerrel $WebhookData, biztosíthatja, hogy a runbook felismer $Webhookdata értéket.  Ennek az értéknek kell lennie egy objektum ugyanezzel [tulajdonságok](#details-of-a-webhook) $Webhookdata, így a runbook megfelelően dolgozhat, mintha volt az olyan webhook által átadott tényleges WebhookData használata.
 
 Például ha vannak a következő runbook indítása az Azure portálról, és hogy bizonyos minta WebhookData tesztelési, mivel WebhookData objektum, azt kell átadni a felhasználói felületen JSON-ként.
 
@@ -262,7 +262,7 @@ Az alábbi példában a runbook lesz kiváltva, ha a riasztási szabály válik 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A runbook-indítási különböző módokon részletekért lásd: [Runbook indítása](automation-starting-a-runbook.md).
 * A Runbook-feladatok állapotának megtekintése a tudnivalókat lásd a [a Runbook végrehajtása az Azure Automationben](automation-runbook-execution.md).
 * Azure Automation műveletet végrehajthat Azure riasztások használatával kapcsolatban lásd: [javítása Azure virtuális gép riasztások Automation-Runbook](automation-azure-vm-alert-integration.md).

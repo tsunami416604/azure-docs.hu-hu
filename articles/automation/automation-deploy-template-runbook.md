@@ -13,13 +13,13 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 07/09/2017
 ms.author: gwallace
-ms.openlocfilehash: dc283973efd936d50418d303bbc359dd4312a121
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 63c8f1b1190e19e1f1d2a7871bffee44ef5c7877
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Egy Azure Automation PowerShell runbookban egy Azure Resource Manager-sablon üzembe helyezése
+# <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban
 
 Írhat egy [Azure Automation PowerShell-forgatókönyv](automation-first-runbook-textual-powershell.md) használatával egy Azure-erőforrás, amely telepít egy [Azure Resource Manager sablon](../azure-resource-manager/resource-manager-create-first-template.md).
 
@@ -156,7 +156,7 @@ $Parameters = @{
     }
 
 # Create a new context
-$Context = New-AzureStorageContext -StorageAccountKey $StorageAccountKey
+$Context = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 Get-AzureStorageFileContent -ShareName 'resource-templates' -Context $Context -path 'TemplateTest.json' -Destination 'C:\Temp'
 
@@ -185,7 +185,7 @@ $importParams = @{
     AutomationAccountName = 'MyAutomationAccount'
     Type = 'PowerShell'
 }
-Import-AzureRmAutomationRunbook @
+Import-AzureRmAutomationRunbook @importParams
 
 # Publish the runbook
 $publishParams = @{
@@ -233,11 +233,11 @@ Láthatja, hogy az új tárfiók létrejött-e a következő parancs futtatásá
 Get-AzureRmStorageAccount
 ```
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ennyi az egész! Azure Automation és az Azure Storage és a Resource Manager sablonok segítségével most már telepítheti az összes Azure-erőforrások.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Erőforrás-kezelő sablonokkal kapcsolatos további tudnivalókért lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md)
 * Az Azure Storage első lépései, lásd: [Azure Storage bemutatása](../storage/common/storage-introduction.md).

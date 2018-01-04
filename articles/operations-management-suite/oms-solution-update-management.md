@@ -11,14 +11,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 12/01/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: e3d605b12a1db2fca1048be15e7b365e5336f663
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
-ms.translationtype: HT
+ms.openlocfilehash: 71322c650b2ee464bab91bf8d4b176f3b2d93949
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="update-management-solution-in-oms"></a>Frissítéskezelési megoldás az OMS-ben
 
@@ -181,7 +181,7 @@ A frissítéstelepítések tulajdonságait az alábbi táblázat ismerteti.
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Név |A frissítéstelepítés neve. |
+| Name (Név) |A frissítéstelepítés neve. |
 | Ütemezés |Az ütemezés típusa.  Az elérhető lehetőségek: *Egyszer*, *Hetente*, vagy *Havonta*. |
 | Kezdési idő |A frissítéstelepítés ütemezett kezdetének dátuma és időpontja. |
 | Időtartam |A frissítéstelepítés engedélyezett futási idejének hossza percekben megadva.  Ha ez alatt az idő alatt nem fejeződik be minden frissítés telepítése, akkor a hátramaradó frissítések csak a következő ütemezett frissítéstelepítés során kerülnek telepítésre. |
@@ -205,7 +205,7 @@ Egy befejezett frissítéstelepítést kijelölve megjeleníthető a részletes 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Név |A frissítéstelepítést beazonosító egyedi név. |
+| Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 | Időzóna |A kezdési időpontnál használandó időzóna. |
 | Ütemezés típusa | Az ütemezés típusa.  Az elérhető lehetőségek: *Egyszer*, *Hetente*, vagy *Havonta*.  
 | Kezdési idő |A frissítéstelepítés indításának dátuma és időpontja. **Megjegyzés:** Ha azonnal szeretné elvégezni a telepítést, a leghamarabb az aktuális időtől számítva 30 perc múlva futtathatja. |
@@ -247,7 +247,7 @@ Az egyes számítógépekhez szükséges vagy telepített minden egyes frissít�
 | RevisionNumber |A frissítés változatszáma. |
 | SourceComputerId |A számítógép azonosításához használt globálisan egyedi azonosító (GUID). |
 | TimeGenerated |A rekord utolsó frissítésének dátuma és időpontja. |
-| Cím |A frissítés címe. |
+| Beosztás |A frissítés címe. |
 | UpdateID |A frissítés azonosításához használt globálisan egyedi azonosító (GUID). |
 | UpdateState |Azt jelzi, hogy a frissítés telepítve van-e ezen a számítógépen.<br>Lehetséges értékek:<br>– Installed – A frissítés telepítve van ezen a számítógépen.<br>– Needed – A frissítés szükséges, de nincs telepítve ezen a számítógépen. |
 
@@ -339,7 +339,7 @@ Megtekintheti a frissítések telepítéséért felelős runbook eredményeit. E
 
 További információért tekintse meg az [Automation runbook-kimeneteivel és -üzeneteivel](../automation/automation-runbook-output-and-messages.md) kapcsolatos részt.   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-log-searches.md) Naplókeresés funkciójával is megtekintheti.
 * [Saját irányítópult létrehozásával](../log-analytics/log-analytics-dashboards.md) megjelenítheti a felügyelt számítógépek frissítési megfelelőségét.
 * [Létrehozhat riasztásokat](../log-analytics/log-analytics-alerts.md) a számítógépekről hiányzó kritikus frissítések jelzésére vagy arra az estre, ha egy számítógép automatikus frissítése letiltott állapotba kerül.  

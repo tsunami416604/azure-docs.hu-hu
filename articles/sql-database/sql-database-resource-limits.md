@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 12/14/2017
 ms.author: carlrab
-ms.openlocfilehash: 63e6b21dad4f58dbaa1df58e8eb1d6e3f6b7f762
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 6bc8979eebb2b727d0cae02fe7ca4e95cb32dc36
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Az Azure SQL Database erőforrás korlátok
 
@@ -122,7 +122,7 @@ Magas számítási kihasználtsági észlelt, amikor megoldás lehetőségek a k
 - Az adatbázis vagy az adatbázis további Dtu és edtu-k így rugalmas készlet teljesítményszintjének növelését. Lásd: [önálló adatbázist: módosítsa a dtu-k](#single-database-change-dtus) és [rugalmas készlet: edtu-k módosítása](#elastic-pool-change-edtus).
 - Minden egyes lekérdezés az erőforrás-használat csökkentésére lekérdezések optimalizálása. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 Felhasznált lemezterület adatbázis mérete eléri a maximális méretkorlátot, adatbázis beszúrása és frissítések, amelyek az adatok méretének növelése sikertelen és elküld az ügyfélgépeknek egy [hibaüzenet](sql-database-develop-error-messages.md). Adatbázis-választja ki, és törli továbbra is sikeres.
 
@@ -139,10 +139,11 @@ Munkamenet vagy munkavégző magas kihasználtsága észlelt, amikor megoldás l
 - Az adatbázis vagy a rugalmas készlet szolgáltatási szint vagy a teljesítmény szint növelését. Lásd: [egyetlen adatbázis: tároló méretének módosítása](#single-database-change-storage-size), [egyetlen adatbázis: módosítsa a dtu-k](#single-database-change-dtus), [rugalmas készlet: tároló méretének módosítása](#elastic-pool-change-storage-size), és [rugalmas készlet: edtu-k módosítása ](#elastic-pool-change-edtus).
 - Optimalizálás lekérdezések minden egyes lekérdezés az erőforrás-használat csökkentésére, ha nagyobb munkavégző kihasználtsági oka miatt a versengés a számítási erőforrásokat. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Szolgáltatásrétegeiben használt funkciókkal kapcsolatos információkért lásd: [szolgáltatásszintek](sql-database-service-tiers.md).
 - Egyetlen adatbázisokkal kapcsolatos információkért lásd: [egy adatbázis-erőforrások](sql-database-resource-limits.md).
 - Rugalmas készletek kapcsolatos információkért lásd: [rugalmas készletek](sql-database-elastic-pool.md).
 - Általános Azure korlátozását kapcsolatos információkért lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../azure-subscription-service-limits.md).
 - További információ a Dtu és edtu-k: [Dtu és edtu-k](sql-database-what-is-a-dtu.md).
+- A tempdb méretkorlátait kapcsolatos információkért lásd: https://docs.microsoft.com/en-us/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.

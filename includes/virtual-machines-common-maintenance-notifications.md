@@ -19,10 +19,9 @@ Az Azure-portálon, és keresse meg a virtuális gépek karbantartás ütemezve.
       |-------|-------------|
       | Az első lépések | A virtuális gép az önkiszolgáló karbantartási időszak, amely lehetővé teszi, hogy a karbantartási kezdeményezni a saját maga. Lásd az alábbi karbantartási indításához a virtuális gépen | 
       | Ütemezett | A virtuális gép ütemezett karbantartási nincs lehetőség, hogy a karbantartási kezdeményezni. Ebben a nézetben az automatikus ütemezett ablak kiválasztásával vagy a virtuális Gépre kattintva ismerje meg a karbantartási időszak | 
-      | Befejeződött | Sikeresen kezdeményezett és karbantartása befejeződött a virtuális gépen. | 
-      | Kihagyva| Kijelölt karbantartási nem sikerrel kezdeményezéséhez. Azure a karbantartási megszakította a virtuális gép számára, és fog átütemezése azt egy későbbi időpontban | 
-      | Próbálkozzon újra később| Kijelölt karbantartási kezdeményezése és Azure nem tudta teljesíteni a kérést. Ebben az esetben is próbálkozzon újra később. | 
-   
+      | Befejezve | Sikeresen kezdeményezett és karbantartása befejeződött a virtuális gépen. | 
+      | Kihagyva| Kijelölt karbantartási nem sikerrel kezdeményezéséhez. Csak akkor használhatják az önkiszolgáló karbantartási lehetőséget. A virtuális Gépet újra kell majd indítani az Azure-ban az ütemezett karbantartási fázisban kell. | 
+
    **Karbantartási proaktív** -látható, az időszak, amikor karbantartási önálló elindíthatja a virtuális gépeken.
    
    **Ütemezett karbantartás** -látható, az időszak, amikor Azure karbantartás végrehajtásához a virtuális gép újraindul. 
@@ -32,7 +31,7 @@ Az Azure-portálon, és keresse meg a virtuális gépek karbantartás ütemezve.
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Értesítések és riasztások a portálon
 
-Azure e-mailt küld az előfizetés tulajdonosa és a társtulajdonosok csoport tervezett karbantartás ütemezését kommunikál. Adhat hozzá további címzetteket és csatornák kommunikáció által Azure tevékenység napló riasztásokat hoznak létre. További információ: [előfizetés tevékenység figyelése az Azure tevékenységnapló] (../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+Azure e-mailt küld az előfizetés tulajdonosa és a társtulajdonosok csoport tervezett karbantartás ütemezését kommunikál. Adhat hozzá további címzetteket és csatornák kommunikáció által Azure tevékenység napló riasztásokat hoznak létre. További információ: [előfizetés tevékenység figyelése az Azure tevékenységnapló] (.. / articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válasszon ki **figyelő**. 

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a49b4c2d4ddd6d686675cee53d46cd4dd6ad3811
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 0e7f4308290a14e592cf1739fa5b0b3360d7c68b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>Egy Azure virtuális hálózatot és a Linux virtuális gépek az Azure parancssori felület kezelése
 
@@ -151,11 +151,13 @@ az vm create \
 
 A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Lehet, hogy az NSG-k társított alhálózat vagy az egyes hálózati adapterek. Amikor egy NSG-t egy adott hálózati csatoló kapcsolódik, csak a kapcsolódó virtuális gép vonatkozik. Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra. 
 
-### <a name="network-security-group-rules"></a>Hálózati biztonsági csoportszabályok
+### <a name="network-security-group-rules"></a>Hálózatbiztonságicsoport-szabályok
 
 NSG-szabályok határozza meg, amelyben forgalom engedélyezett vagy megtagadott hálózati portok. A szabályok lehetnek forrás és cél IP-címtartományok, hogy az egyes rendszerek vagy az alhálózatok közötti forgalmat szabályozott. NSG-szabályok terjednie a prioritással (1 – és 4096). Szabályok prioritási sorrendben értékeli ki a rendszer. A 100 prioritással kiértékeli előtt szabály 200 prioritással.
 
 Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezett szabályokat nem lehet törölni, de mivel a legalacsonyabb prioritást rendelték hozzájuk, a létrehozott szabályok felülbírálhatják azokat.
+
+Az NSG-ket az alapértelmezett szabályok a következők:
 
 - **Virtuális hálózati** - származó forgalmat, és a befejezési egy virtuális hálózat bejövő és kimenő irányban is.
 - **Internet** – a kimenő forgalom engedélyezve van, de a bejövő forgalmat blokkol.
@@ -289,7 +291,7 @@ A háttér-virtuális gép csak az elérhető porton *22* és port *3306* az el�
 az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --output table
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létre és a védett virtuális gépek kapcsolatos Azure-hálózatok. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

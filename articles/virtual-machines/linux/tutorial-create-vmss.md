@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 04fe3948f37936b43d1f2155635f0f52583d5e1b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8703d0c06f2507cc3c21d4280d887a8772145a28
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>Hozzon létre egy virtuálisgép-méretezési és magas rendelkezésre állású Linux alkalmazás telepítése
 A virtuálisgép-méretezési csoport lehetővé teszi, telepítéséhez és kezeléséhez azonos, az automatikus skálázást virtuális gépek halmazát jelenti. A méretezési csoportban lévő virtuális gépek száma manuálisan méretezhető, vagy szabályokat definiálhat, például a Processzor, memória igény szerint vagy a hálózati forgalom erőforrás-használat alapján automatikus skálázást. Ebben az oktatóanyagban telepít egy virtuálisgép-méretezési beállítása az Azure-ban. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -40,7 +40,7 @@ Telepítése és a parancssori felület helyileg használata mellett dönt, ha e
 ## <a name="scale-set-overview"></a>Méretezési készlet – áttekintés
 A virtuálisgép-méretezési csoport lehetővé teszi, telepítéséhez és kezeléséhez azonos, az automatikus skálázást virtuális gépek halmazát jelenti. Virtuális gépek méretezési csoportban lévő egy vagy több hiba és a frissítési tartományok programot elosztott *elhelyezési csoportok*. Ezek a csoportok hasonló módon konfigurált virtuális gépek, hasonló [rendelkezésre állási készletek](tutorial-availability-sets.md).
 
-Virtuális gépek méretezési csoportban lévő igény szerint jönnek létre. Megadhatja az automatikus skálázási szabályok, hogy hogyan és mikor virtuális gépek hozzáadásakor vagy eltávolításakor a méretezési készlet. Ezek a szabályok alapján metrikák például CPU-terhelést, a memória használata vagy a hálózati forgalmat is elindíthatja.
+Virtuális gépek méretezési csoportban lévő igény szerint jönnek létre. Megadhatja az automatikus skálázási szabályok, hogy hogyan és mikor virtuális gépek hozzáadásakor vagy eltávolításakor a méretezési készlet. Ezek a szabályok is elindítható a metrikák például CPU betöltése, a memória használata vagy a hálózati forgalom alapján.
 
 Skálázási készletekben legfeljebb 1000 virtuális gépek támogatása, ha az Azure platformon lemezképet használ. Olyan munkaterhelések esetén jelentős telepítés vagy a virtuális gép testreszabása követelmények, érdemes lehet [hozzon létre egy egyéni Virtuálisgép-lemezkép](tutorial-custom-images.md). 300 virtuális gépek egy méretezési állítható be, ha egyéni lemezkép használatával hozhat létre.
 

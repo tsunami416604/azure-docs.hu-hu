@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: b6bc12c407a32388b7155a815b099b3b285fef18
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 081da55bb956db2879d7f2c5c91d25f5c36d5507
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód és az Azure Functions helyi tesztelése
 
@@ -29,7 +29,7 @@ A Visual Studio C# fejlesztő, az Azure Functions is [integrálható a Visual St
 >[!IMPORTANT]  
 > A függvény ugyanazt az alkalmazást a portál fejlesztési helyi fejlesztési nem kombinálhatók. Létrehozásakor, és a helyi projektből funkciók közzététele, ha nem próbálja karbantartása, vagy módosítani a projekt kódját a portálon.
 
-## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core eszközök telepítése
+## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
 
 [Az Azure Functions Core eszközök] az Azure Functions futtatókörnyezettel, amely a helyi fejlesztési számítógépen futtathatja helyi verziója. Nincs emulátor vagy szimulátor. Az azonos futásidejű powers működik az Azure-ban. Azure funkciók Core eszközök, egy verzió a két verziója van a futtatókörnyezet, illetve egy verziójához 1.x 2.x. Mindkét változatához vannak megadva, az [npm csomag](https://docs.npmjs.com/getting-started/what-is-npm).
 
@@ -132,7 +132,7 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
 | **Értékek** | A helyi futtatás során használt Alkalmazásbeállítások gyűjteménye. **AzureWebJobsStorage** és **AzureWebJobsDashboard** példák; teljes listáját lásd: [alkalmazás-beállítások referenciája](functions-app-settings.md).  |
 | **Állomás** | Ebben a szakaszban beállítások testreszabása a funkciók gazdafolyamat, a helyi futtatás során. | 
 | **LocalHttpPort** | Beállítja azt a portot használja a helyi funkciók állomás fut (`func host start` és `func run`). A `--port` parancssori kapcsoló elsőbbséget élvez ezt az értéket. |
-| **CORS** | Meghatározza az engedélyezett eredeteket [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Források, szóközök nélkül vesszővel tagolt lista formájában vannak megadva. A helyettesítő karakteres érték (**\***) támogatott, amely lehetővé teszi a kérelmek bármely a forrásból. |
+| **CORS** | Meghatározza az engedélyezett eredeteket [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Források, szóközök nélkül vesszővel tagolt lista formájában vannak megadva. A helyettesítő karakteres érték (\*) támogatott, amely lehetővé teszi a kérelmek bármely a forrásból. |
 | **ConnectionStrings** | Az adatbázis-kapcsolati karakterláncok a függvényeket tartalmaz. Ez az objektum kapcsolati karakterláncokat hozzáadódnak a szolgáltató típusát a környezet **System.Data.SqlClient**.  | 
 
 A legtöbb eseményindítók és kötések rendelkezik egy **kapcsolat** tulajdonság, amely leképezhető egy környezeti változó vagy alkalmazás beállítás nevét. Minden kapcsolat tulajdonság local.settings.json fájlban meghatározott Alkalmazásbeállítás kell lennie. 
@@ -337,7 +337,7 @@ az functionapp config appsettings set --name <function_app> \
 --settings FUNCTIONS_EXTENSION_VERSION=beta   
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Functions Core Tools [nyissa meg a forrás és a Githubon található](https://github.com/azure/azure-functions-cli).  
 A következő fájl egy hiba vagy a szolgáltatás kérelem [nyissa meg a GitHub probléma](https://github.com/azure/azure-functions-cli/issues). 

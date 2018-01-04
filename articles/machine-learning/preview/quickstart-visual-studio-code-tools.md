@@ -9,18 +9,18 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: b9e9141cd17ab5a45c0f3db33d2777d52c112fb5
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 7ec74dd9901171b7ec62b0bac5bfb1da80fee5ca
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI
 A Visual Studio Code Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/en-us/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. 
  
-## <a name="getting-started"></a>Bevezetés 
+## <a name="getting-started"></a>Első lépések 
 Első lépésként le kell tölteni és telepíteni kell a [Visual Studio Code](https://code.visualstudio.com/Download)-ot. Miután megnyitotta a Visual Studio Code-ot, hajtsa végre a következő lépéseket:
 1. Kattintson a bővítmény ikonra a tevékenységsávon. 
 2. Keressen a „Visual Studio Code Tools for AI” kifejezésre. 
@@ -77,6 +77,6 @@ Megnyílik a feladatok listanézete, amelyben az összes futó elem és azok kap
 A megnyitott Feladatlistában kattintson az első elemre.
 Az egyes feladatok eredményeinek mélyebb szintű megismerése érdekében kattintson a felső **feladatazonosítóra** a részletes adatok megjelenítéséhez. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Az Azure Machine Learning konfigurálása IDE-vel való együttműködésre](./how-to-configure-your-IDE.md)

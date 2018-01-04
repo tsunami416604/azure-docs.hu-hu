@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial, azure
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: e71680887c4e81eba831ab0b7af9fa2cceed74a0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: HT
+ms.openlocfilehash: 69f6911a95be382b06313d984f09c7e85aec10df
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>Kerékpármegosztással kapcsolatos oktatóanyag: Fejlett adat-előkészítés az Azure Machine Learning Workbench használatával
 Az Azure Machine Learning Services (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
@@ -647,7 +647,7 @@ df.to_csv('Your Training Data File Path here')
 
 Új feladat elküldéséhez használja a lap tetején található **Futtatás** ikont. A rendszer elküld egy **feladatot** az új konfigurációval. A feladat kimenetei a betanítási adatok. Ezek az adatok a korábban létrehozott adat-előkészítési lépések használatával lettek létrehozva. A feladat végrehajtása eltarthat néhány percig.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Elvégezte a kerékpármegosztással kapcsolatos adat-előkészítési oktatóanyagot. Ebben az oktatóanyagban az Azure Machine Learning Services (előzetes verzió) segítségével a következőket sajátíthatja el:
 > [!div class="checklist"]
 > * Interaktív adat-előkészítés az Azure Machine Learning adat-előkészítési eszközével

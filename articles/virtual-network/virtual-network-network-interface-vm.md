@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: jdial
-ms.openlocfilehash: be264693b579aacee39acd9196b4e6834da322b2
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: abe6abb942d206330e809f3aef388b846d7d7c7f
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Adja hozzá a hálózati kapcsolatokat, vagy távolítsa el a hálózati adapterek a virtuális gépek
 
@@ -118,4 +118,4 @@ Hozzon létre egy virtuális gép több hálózati adapterrel vagy IP-címek, ol
 - Egy Azure Load Balancer háttér címkészletet bármely IP-konfiguráció bármely elsődleges vagy másodlagos hálózati adapter IP-címeket adhat hozzá. Korábban csak az elsődleges IP-címet az elsődleges hálózati illesztő sikerült felvenni egy háttér címkészletet. IP-címek és konfigurációkkal kapcsolatos további tudnivalókért olvassa el a [hozzáadása, módosítása vagy eltávolítása IP-címek](virtual-network-network-interface-addresses.md) cikk.
 - A virtuális gép törlése nem érinti a hálózati adapterek, amelyek kapcsolódnak. A virtuális gép törlésekor a hálózati adapterek le vannak választva a virtuális gépről. A hálózati adapterek különböző virtuális gépek hozzáadása, vagy törölje őket.
 - Ha egy hálózati illesztőnek egy titkos IPv6-címet kap, hozzá kell adnia (csatolása) úgy, hogy egy virtuális Gépet a virtuális gép létrehozásakor. Hálózati illesztő – hozzárendelt IPv6-cím nem adható hozzá egy virtuális géphez, a virtuális gép létrehozása után. Ha hálózati illesztő – hozzárendelt saját IPv6-címet ad hozzá, a virtuális gépek létrehozásakor, csak adhat hozzá, hogy a hálózati illesztő a virtuális gép, függetlenül attól, hogy hány hálózati illesztők támogatja a Virtuálisgép-méretet. Lásd: [hálózati illesztő IP-címek](virtual-network-network-interface-addresses.md) további információt az IP-címek hozzárendelése a hálózati adapterek.
-- Hasonló IPv6-alapú, egy adott hálózati csatoló nem lehet csatolni a virtuális gép létrehozása után a virtuális géphez engedélyezett gyorsított hálózattal. További gyorsított hálózatkezelés előnyeit, is elvégzése után a virtuális gép operációs rendszer lépéseit. További információt a gyorsított hálózati és egyéb korlátozások használatakor, lásd: [hozzon létre egy virtuális Gépet gyorsított hálózattal](virtual-network-create-vm-accelerated-networking.md).
+- Hasonló IPv6-alapú, egy adott hálózati csatoló nem lehet csatolni a virtuális gép létrehozása után a virtuális géphez engedélyezett gyorsított hálózattal. További gyorsított hálózatkezelés előnyeit, is elvégzése után a virtuális gép operációs rendszer lépéseit. További információ a gyorsított hálózati és egyéb korlátozások használat során kapcsolatban lásd: a hálózat gyorsított [Windows](create-vm-accelerated-networking-powershell.md) vagy [Linux](create-vm-accelerated-networking-cli.md) virtuális gépek.

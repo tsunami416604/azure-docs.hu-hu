@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d73599164589d672d6d6cde57e4a5b40774aca19
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 1426b7331b320397184805a6642fe6a57ca6ccb1
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>A Linux virtuális gép az Azure-ban Jenkins, a Githubon és a Docker a fejlesztési infrastruktúra létrehozása
 Automatizálható a build és a tesztelési fázis alkalmazásának fejlesztését, használhatja a folyamatos integrációt és a központi telepítés (CI/CD) folyamat. Ebben az oktatóanyagban létrehoz egy CI/CD folyamat egy Azure virtuális gépen történő is beleértve:
@@ -146,7 +146,7 @@ Válassza ki a Jenkins webhely **hozzon létre új feladatokat** a kezdőlapról
 - Az a **általános** szakaszban jelölje be **GitHub** projektre, és adja meg a villás tárház URL-CÍMÉT, például *https://github.com/iainfoulds/nodejs-docs-hello-world*
 - A a **kód felügyeleti forrás** szakaszban jelölje be **Git**, adja meg a villás tárház *.git* URL-CÍMÉT, például a *https://github.com/iainfoulds/nodejs-docs-hello-world.git*
 - Az a **Build eseményindítók** szakaszban jelölje be **GitHub hook eseményindítója a következőnek: GITscm lekérdezési**.
-- Az a **Build** területen válassza a **Hozzáadás összeállítása lépés**. Válassza ki **hajtható végre a rendszerhéj**, majd adja meg `echo "Testing"` a a parancsablakban.
+- Az a **Build** területen válassza a **Hozzáadás összeállítása lépés**. Válassza ki **hajtható végre a rendszerhéj**, majd adja meg `echo "Testing"` a parancsablakban.
 - Válassza ki **mentése** a feladatok ablak alján.
 
 
@@ -161,7 +161,7 @@ response.end("Hello World!");
 
 A módosítások véglegesítéséhez, válassza ki a **változtatások véglegesítése a határidő** panel alján.
 
-Jenkins, az új buildverziót elindul, a a **előzmények Build** szakasza a feladat lap bal alsó sarkában. Válassza a build számú hivatkozásra, majd **a konzol kimeneti** bal mérete. Megtekintheti a Jenkins veszi, hogy a rendszer a kódot a Githubról hívja elő lépéseket, és a létrehozási művelet kiírja az üzenet `Testing` a konzolhoz. Minden alkalommal, amikor egy véglegesítési a Githubon történik a webhook egészítse ki a Jenkins és indul el, így új buildverziót.
+Jenkins, az új buildverziót elindul, a a **előzmények Build** szakasza a feladat lap bal alsó sarkában. Válassza a build számú hivatkozásra, majd **a konzol kimeneti** a bal oldalon. Megtekintheti a Jenkins veszi, hogy a rendszer a kódot a Githubról hívja elő lépéseket, és a létrehozási művelet kiírja az üzenet `Testing` a konzolhoz. Minden alkalommal, amikor egy véglegesítési a Githubon történik a webhook egészítse ki a Jenkins, és elindítja egy új build ily módon.
 
 
 ## <a name="define-docker-build-image"></a>Adja meg a Docker build kép
@@ -173,7 +173,7 @@ Az SSH-kapcsolat a virtuális géphez módosítsa az előző lépésben létreho
 cd /var/lib/jenkins/workspace/HelloWorld
 ```
 
-Fájl létrehozása a könyvtár munkaterület `sudo sensible-editor Dockerfile` , majd illessze be az alábbiakat. Győződjön meg arról, hogy a teljes Dockerfile megfelelően lett lemásolva különösen az első sor:
+Hozzon létre egy fájlt a könyvtár munkaterület `sudo sensible-editor Dockerfile` , majd illessze be az alábbiakat. Győződjön meg arról, hogy a teljes Dockerfile megfelelően lett lemásolva különösen az első sor:
 
 ```yaml
 FROM node:alpine

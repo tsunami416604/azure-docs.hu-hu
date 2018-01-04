@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: support-article
+ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 5908c9572901bfb68ce03d7e6ccb08f84f38e567
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 82b2bcf5b05288888714339af15ff2796d9660bd
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Részletes SSH hibaelhárításának lépései az Azure Linux virtuális gép csatlakozni
 Nincsenek számos oka lehet, hogy az SSH-ügyfél nem feltétlenül tudni elérni az SSH szolgáltatás a virtuális Gépen. Ha már elvégezte a több keresztül [hibaelhárítási lépések általános SSH](troubleshoot-ssh-connection.md), további hibáinak kapcsolódási problémáját. Ez a cikk végigvezeti részletes hibaelhárítási lépések elvégzésével ellenőrizheti, ha az SSH-kapcsolat nem működik, és a megoldásának módjával.

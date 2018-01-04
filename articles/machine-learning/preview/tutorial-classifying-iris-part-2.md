@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 11/06/2017
-ms.openlocfilehash: 79374f18d46e8e7d84772423c2cd40d9acb4d7dd
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: HT
+ms.openlocfilehash: f3b4b41593e0956e98f05c7f8d1c71632a489e56
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>Írisz osztályozása, 2. rész: Modell létrehozása
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldást kínálnak.
@@ -373,7 +373,7 @@ Ezt a szkriptet futtathatja egy HDInsight Spark-fürtön is. Ismerje meg, [hogya
    >Ha egy távoli HDInsight-fürtön hajtja végre, a `https://<cluster_name>.azurehdinsight.net/yarnui` helyen az `admin` felhasználói fiókkal a Yet Another Resource Negotiator (YARN) feladat-végrehajtási részleteit is megtekintheti.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A háromrészes oktatóanyag-sorozat jelen, második részében megtanulhatta, hogyan használhatók az Azure Machine Learning szolgáltatások a következőkre:
 > [!div class="checklist"]
 > * Az Azure Machine Learning Workbench használata.

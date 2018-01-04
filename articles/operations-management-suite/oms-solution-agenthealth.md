@@ -11,14 +11,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 07/17/2017
 ms.author: magoedte
-ms.openlocfilehash: 601e059af6040834f1ceb520ffe23aeadb6cdb18
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
-ms.translationtype: HT
+ms.openlocfilehash: 939bf5ae6ee306008567ce62ddf8a6d1f05da60a
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 #  <a name="agent-health-solution-in-oms"></a>Ügynökállapot megoldás
 Az ügynökállapot megoldás segít átlátni, hogy az OMS munkaterület vagy egy OMS-hez csatlakozó System Center Operations Manager-felügyeleticsoport felé jelentő ügynökök közül melyik nem válaszol, és melyik küld működési adatokat.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
@@ -131,6 +131,6 @@ A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsol
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |Az ügynökök földrajzi helye |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |A telepített OMS-átjárók száma |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Log Analytics-riasztások létrehozásával kapcsolatos információkért lásd: [Riasztások a Log Analyticsben](../log-analytics/log-analytics-alerts.md).

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: e59df358f25663c742b0da09cf27b974787536dc
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 87eed377528db60724ba2f37bc22d916dfd7c0eb
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](http://www.nuget.org/packages/Microsoft.ApplicationInsights) telemetriai adatok küldése az Application Insights az API-t biztosít. [További csomagok](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követése a telemetriai adatok az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetria-modulokat és az inicializálók, és némelyikük paramétereinek megadása.
 
-A konfigurációs fájl neve `ApplicationInsights.config` vagy `ApplicationInsights.xml`, az alkalmazás típusától függően. Az automatikusan hozzáadódik a projekt amikor Ön [telepítse az SDK legtöbb verzióit][start]. Is hozzáadódik a webes alkalmazások [állapotfigyelő egy IIS-kiszolgálón][redfield], vagy, ha bejelöli a Appplication Insights [az Azure webhelyén vagy a virtuális gép bővítmény](app-insights-azure-web-apps.md).
+A konfigurációs fájl neve `ApplicationInsights.config` vagy `ApplicationInsights.xml`, az alkalmazás típusától függően. Az automatikusan hozzáadódik a projekt amikor Ön [telepítse az SDK legtöbb verzióit][start]. Is hozzáadódik a webes alkalmazások [állapotfigyelő egy IIS-kiszolgálón][redfield], vagy ha bejelöli az Application Insights [bővítmény, az Azure webhelyén vagy a virtuális gép](app-insights-azure-web-apps.md).
 
 Nincs a vezérlőhöz egy egyenértékű fájlt a [SDK-t egy weblap][client].
 
@@ -125,7 +125,6 @@ A szabványos inicializálók be vannak állítva vagy a Web vagy WindowsServer 
 * `SyntheticTelemetryInitializer`vagy `SyntheticUserAgentTelemetryInitializer` frissítések a `User`, `Session` és `Operation` összes telemetriai elemek környezetek tulajdonságainak nyomon követ, egy kérelem egy szintetikus forrásból kezelésekor, például a rendelkezésre állási tesztelése, vagy végezzen keresést a motor botot. Alapértelmezés szerint [Metrikaböngésző](app-insights-metrics-explorer.md) szintetikus telemetriai adatok nem jelennek meg.
 
     A `<Filters>` azonosítása a kérelem tulajdonságok beállítása.
-* `UserAgentTelemetryInitializer`frissítések a `UserAgent` tulajdonsága a `User` környezetben az összes telemetriai elem alapján a `User-Agent` a kérelem HTTP-fejléc.
 * `UserTelemetryInitializer`frissítések a `Id` és `AcquisitionDate` tulajdonságainak `User` kinyert értékekkel az összes telemetriai környezetben a `ai_user` cookie-k az Application Insights JavaScript instrumentation kódot a felhasználó böngészőben futó állítja elő.
 * `WebTestTelemetryInitializer`a felhasználói azonosítóját, a munkamenet-azonosító és a szintetikus adatforrások tulajdonságainak beállítása a HTTP-kérelmek származó [rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md).
   A `<Filters>` azonosítása a kérelem tulajdonságok beállítása.
@@ -262,7 +261,7 @@ Ha csak egy meghatározott események küldése egy másik erőforráscsoportban
 
 Egy új kulcs beszerzése [hozzon létre egy új erőforrást az Application Insights portáljáról][new].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További tudnivalók az API-t][api].
 
 <!--Link references-->

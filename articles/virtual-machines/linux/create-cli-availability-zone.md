@@ -10,17 +10,17 @@ tags:
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: danlep
 ms.custom: 
-ms.openlocfilehash: 232c2cf1ba0a7de23da10357de9a6e6ad9a0d41d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 986cc450302a04720dc92e55eb8d1248cd3b8f26
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Hozzon létre egy Linux virtuális gép egy rendelkezésre állási zónát az Azure parancssori felület
 
@@ -168,7 +168,7 @@ A kimenetben az látható, hogy a felügyelt lemez és a virtuális gép azonos 
  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. Itt további információkat talál az Azure-beli virtuális gépek [régióiról és rendelkezésre állásáról](regions-and-availability.md).
 

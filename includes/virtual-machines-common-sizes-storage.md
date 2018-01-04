@@ -8,10 +8,10 @@ ACU: 180–240
  
 | Méret          | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális ideiglenes tárolási teljesítmény: IOPS / MB/s | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) | 
 |---------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
-| Standard_L4s   | 4    | 32   | 678   | 16    | 20,000 / 200   | 10,000 / 250        | 2 / 4,000  | 
-| Standard_L8s   | 8    | 64   | 1,388 | 32   | 40,000 / 400   | 20,000 / 500       | 4 / 8,000  | 
-| Standard_L16s  | 16   | 128  | 2,807 | 64   | 80,000 / 800   | 40,000 / 1,000       | 8 / 6,000 - 16,000 &#8224; | 
-| Standard_L32s <sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 80,000 / 2,000     | 8 / 20,000 | 
+| Standard_L4s   | 4    | 32   | 678   | 16    | 20,000 / 200   | 5,000 / 125        | 2 / 4,000  | 
+| Standard_L8s   | 8    | 64   | 1,388 | 32   | 40,000 / 400   | 10,000 / 250       | 4 / 8,000  | 
+| Standard_L16s  | 16   | 128  | 2,807 | 64   | 80,000 / 800   | 20,000 / 500       | 8 / 6,000 - 16,000 &#8224; | 
+| Standard_L32s <sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40,000 / 1,000     | 8 / 20,000 | 
  
 
 Az Ls-sorozatba tartozó virtuális gépek lemezeinek maximális átviteli sebességét a csatolt lemezek mennyisége, mérete és szétosztottsága befolyásolhatja. Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) című cikket. 

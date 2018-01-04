@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 806d297c40af6ae2834ad529aaa11c51d26826dd
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
-ms.translationtype: HT
+ms.openlocfilehash: 4b677a4063ebef84dbd2fa476b5f633b859f90ed
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
 Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, így nincs szükség jelszavakra a bejelentkezéshez. Ez a cikk bemutatja, hogyan hozhat létre gyorsan és hogyan használhat az SSH-protokoll 2. verziójára épülő nyilvános és titkosított RSA-kulcspárt a Linux rendszerű virtuális gépekhez. Ezeket a lépéseket Azure Cloud Shell használatával, macOS- vagy Linux-gazdagépen, illetve a Linux Windows alrendszerén is végrehajthatja. Részletes lépéseket és a további példákat az [SSH-kulcspárok és -tanúsítványok létrehozásának lépései](create-ssh-keys-detailed.md) között talál.
@@ -48,7 +48,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 Ha kulcspár létrehozása során megadott hozzáférési kódot, adja meg a hozzáférési kódot, mikor a bejelentkezési folyamat során a rendszer kéri. (A rendszer hozzáadja a kiszolgálót a `~/.ssh/known_hosts` mappájához, és nem kér ismételt csatlakozást, amíg a nyilvános kulcs Azure-beli virtuális gépén nem változik, vagy amíg a kiszolgálónevet nem törlik a `~/.ssh/known_hosts` helyről.)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az SSH-kulcsokkal létrehozott virtuális gépek alapértelmezés szerint letiltott jelszavakkal vannak konfigurálva, ami a találgatásos támadáson alapuló betörési kísérleteket sokkal drágábbá, ennek megfelelően nehezebbé teszi. Ez a témakör a gyors használatra készített egyszerű SSH-kulcspár létrehozását tárgyalja. Ha szüksége van további segítségre az SSH-kulcspár létrehozásához, vagy további tanúsítványokra van szüksége, tekintse meg az [SSH-kulcspárok és -tanúsítványok létrehozásának lépéseit](create-ssh-keys-detailed.md).
 

@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 10/13/2017
-ms.openlocfilehash: fd99fec7ead28c02ffe0d8b8165e8a0ab89d525e
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 9a2648d800b803bf0d9d565a806e627c49bb1a00
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Fiókok létrehozása az Azure Machine Learning előzetes verziójához és az Azure Machine Learning Workbench telepítése
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) egy átfogó, integrált és fejlett adatelemzési megoldás. A hivatásos adatszakértők számára nyújt segítséget az adatok előkészítésében, a kísérletek kidolgozásában és a modellek felhőszinten való üzembe helyezésében.
@@ -167,7 +167,7 @@ Futtassunk egy szkriptet a helyi számítógépen.
 
 3. Az egyes befejezett futtatásokat kiválasztva megtekintheti az adott végrehajtás részletes nézetét. A részletek többek között további metrikákat, a létrejött fájlokat, valamint egyéb, esetleg hasznos naplóadatokat tartalmaznak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Sikeresen létrehozott egy Azure Machine Learning-kísérletezés-fiókot és egy Azure Machine Learning Modellkezelés-fiókot. Telepítette az Azure Machine Learning Workbench asztali alkalmazást és parancssori felületet. Létrehozott egy új projektet, és egy szkript futtatásával egy modellt, valamint megvizsgálta a szkript futtatási előzményeit.
 
 A munkafolyamat behatóbb megismeréséért, többek között az íriszmodell webszolgáltatásként való üzembe helyezéséhez kövesse a teljes *Írisz osztályozása* oktatóanyagot. Az oktatóanyag részletes útmutatásokat tartalmaz az [adatok előkészítésével](tutorial-classifying-iris-part-1.md), a [kísérletezéssel](tutorial-classifying-iris-part-2.md) és a [modellkezeléssel](tutorial-classifying-iris-part-3.md) kapcsolatban. 

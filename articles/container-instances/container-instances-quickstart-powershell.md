@@ -2,26 +2,18 @@
 title: "Rövid útmutató – Az első Azure Container Instances-tároló létrehozása a PowerShell segítségével"
 description: "Ismerje meg az Azure Container Instances szolgáltatást egy Windows-tárolópéldányt létrehozásával a PowerShell segítségével."
 services: container-instances
-documentationcenter: 
 author: mmacy
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/15/2017
+ms.date: 01/02/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: ca10274fc6a23d7f5e7436dbaf72a6e7a918f275
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 3d8516c0f3f6cc8185b16f4cdabcc391e31cc605
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Az első tároló létrehozása az Azure Container Instances szolgáltatásban
 
@@ -90,18 +82,18 @@ Miután végzett a tárolóval, a [Remove-AzureRmContainerGroup][Remove-AzureRmC
 Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy előre elkészített Windows-tárolót indított az Azure Container Instances szolgáltatásban. Ha próbaképpen szeretne saját maga létrehozni és üzembe helyezni egy tárolót az Azure Container Instances szolgáltatásban az Azure Container Registry használatával, folytassa az Azure Container Instances oktatóanyagával.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga](./container-instances-tutorial-prepare-app.md)
 
+<!-- IMAGES -->
+[qs-powershell-01]: ./media/container-instances-quickstart-powershell/qs-powershell-01.png
+
 <!-- LINKS -->
 [New-AzureRmResourceGroup]: /powershell/module/azurerm.resources/new-azurermresourcegroup
 [New-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [Get-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/get-azurermcontainergroup
 [Remove-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/remove-azurermcontainergroup
-
-<!-- IMAGES -->
-[qs-powershell-01]: ./media/container-instances-quickstart-powershell/qs-powershell-01.png

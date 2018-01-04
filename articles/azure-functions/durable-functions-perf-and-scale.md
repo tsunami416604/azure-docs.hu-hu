@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 10ce74097388a0283797e4692126c5039e8d4dd0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc4c643b8d0e8de1b5c38ca7bb1b0193d6b0f05b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezhetőség tartós funkciókkal (az Azure Functions)
 
@@ -32,11 +32,11 @@ A előzménytábla egy Azure Storage példányainak vezénylési az előzmények
 
 ## <a name="internal-queue-triggers"></a>Belső eseményindítók
 
-Tevékenység és az orchestrator függvények mindkét váltja ki a függvény alkalmazás alapértelmezett tárfiók belső várólistákból. A tartós funkciók várólisták két típusa van: a **vezérlő várólista** és a **munkatétel-várólista**.
+Tevékenység és az orchestrator függvények mindkét váltja ki a függvény alkalmazás alapértelmezett tárfiók belső várólistákból. A tartós funkciók várólisták két típusa van: a **vezérlő várólista** és a **munkaelem várólista**.
 
-### <a name="the-work-item-queue"></a>A cikk várólista
+### <a name="the-work-item-queue"></a>A munkaelem várólistát
 
-Nincs munkahelyi egy várólista / tartós funkciók feladat csomópontjában. Ez egy egyszerű várólista, és más hasonló módon viselkedik `queueTrigger` az Azure Functions várólista. A várólista használatával indul el, az állapot nélküli *tevékenység funkciók*. Ha a tartós funkciók alkalmazás méretezi ki több virtuális gépekhez, minden virtuális gépeken "versenyeznek" szerezni a munkaelem várólista munka.
+Egy munkaelem várólista / tartós funkciók csomópontjában feladat van. Ez egy egyszerű várólista, és más hasonló módon viselkedik `queueTrigger` az Azure Functions várólista. A várólista használatával indul el, az állapot nélküli *tevékenység funkciók*. Ha a tartós funkciók alkalmazás méretezi ki több virtuális gépekhez, minden virtuális gépeken "versenyeznek" szerezni a munkaelem várólista munka.
 
 ### <a name="control-queues"></a>Vezérlő várólisták
 
@@ -54,18 +54,18 @@ A következő ábra szemlélteti, és a tárolási entitások méretezett kimen�
 
 ![Diagram méretezése](media/durable-functions-perf-and-scale/scale-diagram.png)
 
-Ahogy látja, a minden virtuális gép is "versenyeznek" az üzenetek a munkahelyi várólista. Azonban csak három virtuális gépek lekérheti a vezérlő várólistákból üzeneteket, és minden virtuális gép egyetlen vezérlő várólista zárolja.
+Ahogy látja, a minden virtuális gép is "versenyeznek" az üzeneteket a munkaelem várólistát. Azonban csak három virtuális gépek lekérheti a vezérlő várólistákból üzeneteket, és minden virtuális gép egyetlen vezérlő várólista zárolja.
 
 Vezénylési példányok elosztott vezérlő várólista példányok egy belső kivonatoló függvényt futtatásával szemben a vezénylési példány azonosítója. Automatikusan létrehozott és a véletlenszerű, amely biztosítja, hogy az összes rendelkezésre álló vezérlési várólistában példányok elosztását alapértelmezés szerint példány azonosítói. Az aktuális támogatott vezérlő várólista partíciók száma alapértelmezett **4**.
 
 > [!NOTE]
-> Nincs jelenleg lehetséges a partíciók számának konfigurálása az Azure Functions. [Ez a beállítás támogatásához munkahelyi követett](https://github.com/Azure/azure-functions-durable-extension/issues/73).
+> Nincs jelenleg lehetséges konfigurálása az Azure Functions vezérlő várólista tárolására szolgáló partíciók száma. [Ez a beállítás támogatásához munkahelyi követett](https://github.com/Azure/azure-functions-durable-extension/issues/73).
 
 Orchestrator funkciók általában kell lenniük a könnyű, és nem kell nagy számítási teljesítményt. Emiatt nincs szükség sok vezérlő várólista partíciók nagy átviteli sebesség eléréséhez létrehozásához. Ehelyett a nagy munka nagyobb része állapot nélküli tevékenységet függvények, amelyek kiterjeszthető végtelenül történik.
 
 ## <a name="auto-scale"></a>Automatikus méretezés
 
-Mivel az összes Azure Functions a fogyasztás tervben fut, a tartós funkciók automatikus méretezése keresztül támogatja a [Azure Functions méretezése-vezérlő](https://docs.microsoft.com/azure/azure-functions/functions-scale#runtime-scaling). A skála vezérlő hozzáadása vagy eltávolítása a Virtuálisgép-erőforrások ennek megfelelően a munkaelem várólista hossza és az egyes vezérlő várólisták figyeli. Ha a vezérlő várólista-hosszúságok meggátolják növekszik adott idő alatt, a méretezési vezérlő továbbra is hozzáadása példányok nem éri a vezérlő várólista partíciók száma. Ha munkahelyi elem várólista-hosszúságok meggátolják növekszik adott idő alatt, a méretezési vezérlő továbbra is hozzáadása a Virtuálisgép-erőforrások, amíg azt is megegyezhet a terhelés, függetlenül a vezérlő várólista partíciók száma.
+Mivel az összes Azure Functions a fogyasztás tervben fut, a tartós funkciók automatikus méretezése keresztül támogatja a [Azure Functions méretezése vezérlő](https://docs.microsoft.com/azure/azure-functions/functions-scale#runtime-scaling). A skála vezérlő hozzáadása vagy eltávolítása a Virtuálisgép-példányok ennek megfelelően a munkaelem várólista hossza és az egyes vezérlő várólisták figyeli. Ha a vezérlő várólista-hosszúságok meggátolják növekszik adott idő alatt, a méretezési vezérlő továbbra is hozzáadása a Virtuálisgép-példányok nem éri a vezérlő várólista partíciók száma. Munkaelem várólista-hosszúságok meggátolják növekszik adott idő alatt, ha a skála vezérlő továbbra is hozzáadása a Virtuálisgép-példányok csak akkor is megegyezhet a terhelés, függetlenül a vezérlő várólista partíciók száma.
 
 ## <a name="thread-usage"></a>A szál kihasználtsága
 
@@ -73,7 +73,7 @@ Az orchestrator funkciók végrehajtása egyetlen szálon. Ez azért szükséges
 
 Tevékenység funkciók lehet ugyanazokat viselkedések rendszeres várólista-eseményindítókkal aktivált függvényeket. Ez azt jelenti, hogy biztonságosan do i/o, CPU-intenzív műveleteket, és több szál. Mivel a tevékenység eseményindítók állapotmentes, akkor lehet szabadon horizontálisan virtuális gépek unbounded száma.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Telepítse a tartós funkciók bővítményt, és minták](durable-functions-install.md)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7dcfea240a8dbb416226e76f8941cfe8147e2b39
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9f6cf019d681ce6e844481ca58de1ff472b3d32c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakran ismételt kérdések
 
@@ -242,7 +242,7 @@ Ez nem függő amelyen az Application Insights-erőforrás található. A végpo
 
 ## <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Is telemetriai adatokat is küldhet az Application Insights portálon?
 
-Javasoljuk, hogy az SDK-k használata, és az SDK API (app-insights-api-custom-events-metrics.md). Nincsenek az SDK a különböző változatai [platformok](app-insights-platforms.md). Ezek az SDK-k kezelni pufferelés, tömörítés, szabályozás, az újrapróbálkozások, és így tovább. Azonban a [adatfeldolgozást séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) nyilvános.
+Azt javasoljuk, hogy az SDK-k használata, és használja a [SDK API](app-insights-api-custom-events-metrics.md). Nincsenek az SDK a különböző változatai [platformok](app-insights-platforms.md). Ezek az SDK-k kezelni pufferelés, tömörítés, szabályozás, az újrapróbálkozások, és így tovább. Azonban a [adatfeldolgozást séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) nyilvános.
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Képes figyelni az intranet webkiszolgáló?
 

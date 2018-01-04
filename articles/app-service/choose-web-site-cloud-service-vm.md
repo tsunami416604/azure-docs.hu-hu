@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: bac9169bc41927ef8cf88aee256b2e057ccad4e9
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 0dba36e5490af56debd3b64b20d39809cd5d5f81
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás
 ## <a name="overview"></a>Áttekintés
@@ -110,6 +110,8 @@ Az Azure App Service remek megoldás erre az esetre, mert ingyenes elkezdheti ha
 * Gyorsan beállíthat a Wordpresshez hasonló népszerű webalkalmazásokat az Alkalmazáskatalógus használatával.
 * Igény szerint további Azure-szolgáltatásokat és funkciókat adhat hozzá alkalmazásához.
 * Biztonságossá teheti webalkalmazását a HTTPS segítségével.
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 ### <a id="designer"></a> Webes vagy grafikai tervező vagyok és ügyfeleim számára szeretnék webhelyeket tervezni és építeni
 A webfejlesztők és tervezők számára az Azure App Service egyszerűen együttműködik számos különböző eszközzel és keretrendszerrel, rendelkezik Git és FTP telepítési támogatással, és szoros integrációt kínál a Visual Studióhoz és az SQL Database-hez hasonló eszközökkel és szolgáltatásokkal. Az App Service-szel a következőket teheti:

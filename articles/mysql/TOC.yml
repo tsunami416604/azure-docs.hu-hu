@@ -61,7 +61,7 @@
           href: concepts-server-logs.md
         - name: Magas rendelkezésre állás
           href: concepts-high-availability.md
-    - name: Erőforrások
+    - name: További források
       items:
         - name: Árképzési szintek
           href: concepts-service-tiers.md
@@ -107,6 +107,8 @@
           href: concepts-migrate-dump-restore.md
         - name: Importálás és exportálás
           href: concepts-migrate-import-export.md
+        - name: Minimális állásidejű migrálás
+          href: howto-migrate-online.md
     - name: Alkalmazások csatlakoztatása
       items:
         - name: Felhasználók létrehozása
@@ -139,7 +141,7 @@
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
-- name: Erőforrások
+- name: További források
   items:
     - name: Üzembehelyezési sablonok
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql'

@@ -8,16 +8,16 @@ manager: timlt
 editor: 
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: c1ccd165f9652a8e5e96652937667add6825db8c
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 0b6b2220f5b7287bae6bfd6e99390944b7a7578d
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>A Windows virtuális gépek hibaelhárításáról az operációsrendszer-lemez csatolása a helyreállítási virtuális gép az Azure portál használatával
 Ha a Windows rendszerű virtuális gép (VM) az Azure-ban rendszerindító vagy a lemez hibát tapasztal, szükség lehet végezze el a virtuális merevlemez hibaelhárítási lépéseket. Ilyenek például a sikertelen frissítés, amely megakadályozza a virtuális gép sikeresen rendszerindító lenne. Ez a cikk részletezi az Azure portál segítségével csatlakozzon a virtuális merevlemez egy másik Windows virtuális gépre, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép.
@@ -145,7 +145,7 @@ Amikor a virtuális Gépet hoz létre a meglévő virtuális merevlemez, rendsze
 
 ![Rendszerindítási diagnosztika beállításainak frissítése](./media/troubleshoot-recovery-disks-portal/reenable-boot-diagnostics.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha a virtuális Géphez való kapcsolódás problémát tapasztal, tekintse meg [hibáinak elhárítása az RDP-kapcsolatok egy Azure virtuális gépre](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). A virtuális gépen futó alkalmazások elérésével problémákkal kapcsolatban lásd: [alkalmazás csatlakozási problémák a Windows virtuális gép](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Erőforrás-kezelő használatával kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

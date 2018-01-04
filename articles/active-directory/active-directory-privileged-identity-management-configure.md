@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/18/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: 9a013820689742faa732971c00b82c7ad8638a95
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c35b0c4171d411bd0c0483866f88780757cb3ee8
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az Azure AD Privileged Identity Management?
 
@@ -57,7 +57,7 @@ Az Azure AD Privileged Identity Management indíthatja a [Azure-portálon](https
 3. Válassza a **További szolgáltatások** lehetőséget, és a Szűrők szövegmezővel keresse meg az **Azure AD Privileged Identity Management** alkalmazást.
 4. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. Megnyílik a Privileged Identity Management alkalmazás.
 
-Ha Ön az első, aki az Azure AD Privileged Identity Management használata a könyvtárban, és navigáljon a Azure Active directory szerepkörök, amelyek akkor keresse meg az Azure Active directory szerepkörök, egy [biztonsági varázsló](active-directory-privileged-identity-management-security-wizard.md) végigvezeti a kezdeti hozzárendelés felületet. Ezt követően automatikusan vált az első **biztonsági rendszergazda** és **kiemelt szerepkörű rendszergazda** a könyvtár.
+Ha Ön az első, aki a címtárban az Azure AD Privileged Identity Management használata, akkor navigáljon az Azure Active directory szerepkörök és az Azure Active directory szerepkörök, keresse meg a [biztonsági varázsló](active-directory-privileged-identity-management-security-wizard.md) végigvezeti a kezdeti hozzárendelés felületet. Ezt követően automatikusan vált az első **biztonsági rendszergazda** és **kiemelt szerepkörű rendszergazda** a könyvtár.
 
 Az Azure AD-szerepkörök csak egy felhasználót, aki a kiemelt szerepkör-Rendszergazda szerepkörhöz hozzárendelések más Azure AD PIM-rendszergazdák számára is kezelheti. Is [más felhasználók számára a PIM directory szerepkörök kezelése](active-directory-privileged-identity-management-how-to-give-access-to-pim.md). A globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók tekintheti meg az Azure AD szerepkör-hozzárendelések az Azure AD PIM.
 Azure RBAC-szerepkörök csak egy előfizetési rendszergazda, erőforrás tulajdonosa, és egy erőforrás felhasználói hozzáférés adminisztrátora kezeléséhez hozzárendelések más Azure AD PIM-rendszergazdák számára.  Kiemelt szerepkör rendszergazdák, biztonsági rendszergazdák vagy biztonsági olvasók felhasználók alapértelmezés szerint nem rendelkeznek az Azure AD PIM Azure RBAC-szerepkörök-hozzárendelések megtekintése.
@@ -80,7 +80,7 @@ Szerepkörök aktiválása az Azure-erőforrások (előzetes verzió) bevezet eg
 
 Abban az esetben, ha egy ütemezett aktiválása már nincs szükség, a felhasználók megszüntetheti a függőben lévő kérelem függőben lévő kérelmek bal oldali navigációs menüjében útvonalon, majd kattintson a Mégse gombra a külön az adott kérelmet.
 
-![függőben lévő kérelmek](./media/active-directory-privileged-identity-management-configure/pending-requests.png)
+![Függőben lévő kérések](./media/active-directory-privileged-identity-management-configure/pending-requests.png)
 
 ## <a name="privileged-identity-management-admin-dashboard"></a>Privileged Identity Management felügyeleti Irányítópult
 
@@ -148,7 +148,7 @@ A második beállítás lesz rendszeres beállítása [értékelést hozzáfér�
 A bérlő rendelkeznie kell egy Azure AD prémium P2 (vagy az EMS E5) próbaverziós vagy fizetős előfizetésre a bérlőben Azure AD PIM használata előtt.  Ezenkívül licencet hozzá kell rendelni a bérlői rendszergazdákat.  Pontosabban licencek hozzá kell rendelni az Azure AD-szerepkörök rendszergazdák kezeli az Azure AD PIM keresztül, az Azure RBAC-szerepkörök rendszergazdák felügyelt – Azure AD PIM és hozzáférési értékelést a nem rendszergazda felhasználónak.
 Ha a szervezet nem újítja meg Azure AD Premium P2, vagy a próbaidőszak lejárata, az Azure AD PIM funkciók már nem lesz elérhető az Ön bérlőjében, jogosult szerepkör-hozzárendelések törlődni fog, és felhasználók nem fognak tudni szerepkörök aktiválása. A további a [Azure AD PIM előfizetés követelményeinek](./privileged-identity-management/subscription-requirements.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: quickstart
-ms.date: 12/04/2017
+ms.date: 12/15/2017
 ms.author: lbosq
-ms.openlocfilehash: fa1830706f5215939e8b2772ed2266eb9ba6ba73
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 75be5be0bef4dd07c8560076f47055105a70ee05
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a PHP és az Azure Portal használatával
 
@@ -59,7 +59,6 @@ Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozás
     Gráfazonosító|sample-graph|Az új gyűjteménynek adja a *sample-graph* nevet. A gráfok nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázis-azonosítókra.
     Tárkapacitás|Rögzített méretű (10 GB)|Ne módosítsa az alapértelmezett **Rögzített méretű (10 GB)** értéket. Ez az érték az adatbázis tárkapacitása.
     Teljesítmény|400 kérelemegység|Módosítsa a teljesítményt másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
-    Partíciókulcs|Hagyja üresen|A rövid útmutató során hagyja üresen a Partíciókulcs mezőt.
 
 3. Miután kitöltötte az űrlapot, kattintson az **OK** elemre.
 
@@ -272,7 +271,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gráfot készíteni, és hogyan lehet futtatni az alkalmazást. Most már készen áll arra, hogy a Gremlin használatával összetettebb lekérdezéseket hozzon létre és hatékony gráfbejárási logikákat implementáljon. 
 

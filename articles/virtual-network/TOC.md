@@ -9,7 +9,7 @@
 ## [Az üzletmenet folytonossága](virtual-network-disaster-recovery-guidance.md)
 ## [IP-címzés](virtual-network-ip-addresses-overview-arm.md)
 ## [Védelem DDOS-támadások ellen](ddos-protection-overview.md)
-## [Gyakori kérdések](virtual-networks-faq.md)
+## [GYIK](virtual-networks-faq.md)
 ## Klasszikus
 ### [IP-címzés](virtual-network-ip-addresses-overview-classic.md)
 ### [Hozzáférés-vezérlési listák](virtual-networks-acl.md)
@@ -70,7 +70,7 @@
 ##### Klasszikus
 ###### [Azure PowerShell](virtual-networks-reserved-public-ip.md)
 
-#### Statikus magánhálózati IP-címmel rendelkező virtuális gép létrehozása
+#### Virtuális gép létrehozása – Statikus magánhálózati IP-cím
 ##### [Azure Portal](virtual-networks-static-private-ip-arm-pportal.md)
 ##### [Azure PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 ##### [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
@@ -79,7 +79,7 @@
 ###### [Azure PowerShell](virtual-networks-static-private-ip-classic-ps.md)
 ###### [Azure CLI](virtual-networks-static-private-ip-classic-cli.md)
 
-#### Több hálózati adapterrel rendelkező virtuális gép létrehozása
+#### Virtuális gép létrehozása – Több hálózati adapter
 ##### [Azure PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [Sablon](virtual-network-deploy-multinic-arm-template.md)
@@ -88,13 +88,15 @@
 ###### [Azure PowerShell](virtual-network-deploy-multinic-classic-ps.md)
 ###### [Azure CLI](virtual-network-deploy-multinic-classic-cli.md)
 
-#### Több IP-címmel rendelkező virtuális gép létrehozása
+#### Virtuális gép létrehozása – Több IP-cím
 ##### [Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
 ##### [Azure PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 ##### [Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
 ##### [Sablon](virtual-network-multiple-ip-addresses-template.md)
 
-#### [Gyorsított hálózatkezeléssel rendelkező virtuális gép létrehozása](virtual-network-create-vm-accelerated-networking.md)
+#### Virtuális gép létrehozása – Gyorsított hálózatkezelés
+##### [Azure PowerShell](create-vm-accelerated-networking-powershell.md)
+##### [Azure CLI](create-vm-accelerated-networking-cli.md)
 
 ### Kapcsolódási forgatókönyvek
 #### [Virtuális hálózatok közötti kapcsolat](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -184,8 +186,8 @@
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/jj157182.aspx)
 
 
-# Kapcsolódó
-## [Virtual Machines](/azure/virtual-machines/)
+# Kapcsolódó témakörök
+## [Virtuális gépek](/azure/virtual-machines/)
 ## [Application Gateway](/azure/application-gateway/)
 ## [Azure DNS](/azure/dns/)
 ## [Traffic Manager](/azure/traffic-manager/)
@@ -193,7 +195,7 @@
 ## [VPN Gateway](/azure/vpn-gateway/)
 ## [ExpressRoute](/azure/expressroute/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
 ## [Hálózatkezelési fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)

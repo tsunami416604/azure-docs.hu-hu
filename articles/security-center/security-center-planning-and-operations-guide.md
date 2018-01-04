@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
+ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: f533afebcb945a5ffe269ad8f21a095a81f54a18
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8a44542091ea4dddc214a4954766c63dacd3e2a2
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikusok, megoldástervezők, adatbiztonsági elemzők és felhőszolgáltatás-rendszergazdák számára készült, akik az Azure Security Center egész vállalatra kiterjedő bevezetését tervezik.
@@ -46,7 +46,7 @@ A vállalat méretétől és felépítésétől függően előfordulhat, hogy so
 
 ![Szerepkörök](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Ezek a személyek a Security Center segítségével teljesítik feladataikat. Példa:
+Ezek a személyek a Security Center segítségével teljesítik feladataikat. Például:
 
 **Bálint (számítási feladatok felelőse)**
 
@@ -178,7 +178,7 @@ A kezdeti konfigurációt, illetve a Security Center javaslatainak alkalmazásá
 
 A Security Center Áttekintés felülete egységesített képet nyújt Azure-erőforrásai és csatlakoztatott nem Azure-erőforrásai biztonsági állapotáról. Az alábbi példa egy számos elhárítandó problémával rendelkező környezetet ábrázol:
 
-![irányítópult](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig10.png)
+![irányítópult](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig11.png)
 
 > [!NOTE]
 > A Security Center nem akadályozza Önt a megszokott eljárások elvégzésében, csupán passzívan ellenőrzi az üzemelő példányokat, és javaslatokat biztosít a beállított biztonsági szabályzatok alapján.
@@ -254,7 +254,7 @@ A [How to Leverage the Azure Security Center & Microsoft Operations Management S
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban megismerkedhetett a Security Center bevezetésével. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)

@@ -4,7 +4,7 @@ description: "Ismerteti, hogyan módosíthat meghajtóbetűjelet egy Windows vir
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2017
+ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 7667175c01be2421bfc3badd83b1d8aaeb29bfde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a4e29ce7ebb20753c3313e1148e1c91e853f49f5
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>A d meghajtó használata a Windows virtuális gép egy adatmeghajtó
 Ha az alkalmazást kell használni, a D meghajtó adatainak tárolásához, a következő lépések követésével más meghajtóbetűt használ az ideiglenes lemez. Soha ne használja az ideiglenes lemezt, akkor szükség adatok tárolására.
@@ -62,6 +62,6 @@ Először a adatlemez csatolása a virtuális gép lesz szüksége. Ehhez a port
 8. Kattintson az **Alkalmaz** gombra. Egy, hogy a számítógép újra kell indítani a módosítások érvénybe lépéséhez figyelmeztetés fog megjelenni.
 9. A virtuális gép újraindításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A tárterület érhető el a virtuális gép által növelhető [adatlemezt csatol további](attach-managed-disk-portal.md).
 

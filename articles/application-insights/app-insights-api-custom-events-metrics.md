@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1e7b5d4409b3e53db9313cf353894d5818837588
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 4cbc423555abfe6beee2c89d9df0760ce7c2fd6e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni események és metrikák
 
@@ -900,7 +900,7 @@ Egyéni telemetria hívások felülbírálhatja az alapértelmezett értékeket 
 
 [Adja hozzá a Tulajdonságok](app-insights-api-filtering-sampling.md#add-properties) való alkalmazásával telemetriai `ITelemetryInitializer`. Például hozzáadhat verziószámok vagy számított értékeket más tulajdonságai közül.
 
-[Szűrés](app-insights-api-filtering-sampling.md#filtering) módosíthatja vagy vesse el a telemetriai adatokat az SDK-ból implementálásával elküldése előtt `ITelemetryProcesor`. Megadhatja, mi küldik vagy elvetett, de a fiókot használja a metrikákat, hatással van. Attól függően, hogy hogyan elveti elemek kapcsolódó elemek közötti navigáláshoz képes elveszhetnek.
+[Szűrés](app-insights-api-filtering-sampling.md#filtering) módosíthatja vagy vesse el a telemetriai adatokat az SDK-ból implementálásával elküldése előtt `ITelemetryProcessor`. Megadhatja, mi küldik vagy elvetett, de a fiókot használja a metrikákat, hatással van. Attól függően, hogy hogyan elveti elemek kapcsolódó elemek közötti navigáláshoz képes elveszhetnek.
 
 [A mintavételi](app-insights-api-filtering-sampling.md) egy csomagolt megoldás a portálra az alkalmazás által küldött adatok mennyisége csökkentése érdekében. Igen, a megjelenő metrikák befolyásolása nélkül. És így nem befolyásolja a problémák diagnosztizálásához például kivételek, a kérelmek és az oldalmegtekintéseket kapcsolódó elemek közötti lépjen arra a képességére kezeli.
 

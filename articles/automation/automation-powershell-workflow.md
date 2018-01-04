@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: caa13099b22311502f7a527e4fa017aefeee73c7
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 90a8229b3d4974b8385039c7d85f916a168947d8
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Tanulási automatizálási runbookok Windows PowerShell munkafolyamat alapfogalmai 
 Azure Automation Runbookjai Windows PowerShell-munkafolyamatként vannak megvalósítva.  A Windows PowerShell munkafolyamat hasonló Windows PowerShell-parancsfájlba, de néhány jelentős különbség az, hogy egy új felhasználóhoz zavaró lehet.  Ez a cikk segítséget nyújt a runbookok használatával. a PowerShell-munkafolyamat írása készült, de javasolt PowerShell használatával, ha nem kell az ellenőrzőpontok runbookok írása.  Több szintaktikai különbségek vannak PowerShell munkafolyamat runbookok létrehozásakor, és ezek a különbségek egy kicsit nagyobb munkahelyi hatékony munkafolyamatok írása szükséges.  
@@ -199,7 +199,7 @@ A következő példa az előző példában a fájlok másolása a párhuzamos ha
 >
 
 ## <a name="checkpoints"></a>Ellenőrzőpontok
-A *ellenőrzőpont* az aktuális állapot, amely tartalmazza a változók aktuális értékét és bármi addig létrejött adott pontra a munkafolyamat egy pillanatkép. Ha egy munkafolyamatot fejeződik be a hiba, vagy fel van függesztve, majd a következő futtatáskor elindul, azok az utolsó ellenőrzőponttól helyett a worfklow elindítása.  Egy munkafolyamatban állíthat be ellenőrzőpontot a **Checkpoint-Workflow** tevékenység.
+A *ellenőrzőpont* az aktuális állapot, amely tartalmazza a változók aktuális értékét és bármi addig létrejött adott pontra a munkafolyamat egy pillanatkép. Ha egy munkafolyamatot fejeződik be a hiba, vagy fel van függesztve, majd a következő futtatáskor elindul, a munkafolyamat kezdetét helyett a legutóbbi ellenőrzőponttól.  Egy munkafolyamatban állíthat be ellenőrzőpontot a **Checkpoint-Workflow** tevékenység.
 
 Az alábbi példakód a kivétel activity2 tevékenység után következik be, amely a munkafolyamat befejezéséhez. Ha a munkafolyamat fut újra, runbook az Activity2 futtatásával, hisz itt volt beállítva az utolsó ellenőrzőpont után kezdődik.
 
@@ -209,7 +209,7 @@ Az alábbi példakód a kivétel activity2 tevékenység után következik be, a
     <Exception>
     <Activity3>
 
-Akkor célszerű ellenőrzőpontokat beállítani egy munkafolyamat tevékenységek, amelyek nagyobb eséllyel okozhatnak kivételt, és nem kell ismételni, ha a munkafolyamat folytatása után. A munkafolyamat lehet, hogy hozzon létre például egy virtuális gépet. Beállíthat egy ellenőrzőpontot előtt és után a virtuális gép létrehozására szolgáló parancsok. Ha a létrehozás sikertelen, majd a parancsok volna ismételni, ha a munkafolyamat újra elindult. Ha a worfklow meghiúsul, miután a létrehozás sikeresen befejeződik, majd a virtuális gép nem létrehozza újra a munkafolyamat folytatásakor.
+Akkor célszerű ellenőrzőpontokat beállítani egy munkafolyamat tevékenységek, amelyek nagyobb eséllyel okozhatnak kivételt, és nem kell ismételni, ha a munkafolyamat folytatása után. A munkafolyamat lehet, hogy hozzon létre például egy virtuális gépet. Beállíthat egy ellenőrzőpontot előtt és után a virtuális gép létrehozására szolgáló parancsok. Ha a létrehozás sikertelen, majd a parancsok volna ismételni, ha a munkafolyamat újra elindult. Ha a munkafolyamat meghiúsul, miután a létrehozás sikeresen befejeződik, majd a virtuális gép nem létrehozza újra a munkafolyamat folytatásakor.
 
 Az alábbi példában több fájlokat másolja fel egy hálózati helyre, és beállítja az ellenőrzőpont után minden egyes fájl.  Ha a hálózati hely nem vesztek el, majd a munkafolyamat fejeződik be a hiba.  Ha ismét elindul, az utolsó ellenőrzőpont, ami azt jelenti, hogy csak a már másolt fájlok kimarad, fog folytatódni.
 
@@ -258,5 +258,5 @@ Ez pedig nem szükséges vannak hitelesítéséhez a használatával egy egyszer
 
 Az ellenőrzőpontok kapcsolatos további információkért lásd: [ellenőrzőpontok felvétele Parancsprogramos munkafolyamatba](http://technet.microsoft.com/library/jj574114.aspx).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md)

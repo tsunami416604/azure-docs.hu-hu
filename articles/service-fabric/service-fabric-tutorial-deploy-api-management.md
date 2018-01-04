@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 11/10/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 722a3f0f428bb972b2835df65a67707bf4d8e7d7
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: c685e5250943098f43f232b2b09d3ae55c0380d0
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>A Service Fabric az API Management központi telepítését
-Ez az oktatóanyag négy egy sorozat része.  Azure API Management Service Fabric a telepítése a Speciális lehetőséget.  Az API Management akkor hasznos, ha a Service Fabric háttérszolgáltatások vonatkozó útválasztási szabályokat széles skáláját az API-k közzé kell tenni. A felhőalapú alkalmazásokhoz általában adjon meg egy olyan hibaérzékeny pontot érkező felhasználók, eszközök és más alkalmazások előtér-átjáró szükséges. A Service Fabric átjáró lehet bármely állapotmentes szolgáltatások, például egy APP.NET Core alkalmazás, az Event Hubs, IoT-központ vagy Azure API Management forgalom érkező készült. 
+Ez az oktatóanyag négy egy sorozat része.  Azure API Management Service Fabric a telepítése a Speciális lehetőséget.  Az API Management akkor hasznos, ha a Service Fabric háttérszolgáltatások vonatkozó útválasztási szabályokat széles skáláját az API-k közzé kell tenni. A felhőalapú alkalmazásokhoz általában adjon meg egy olyan hibaérzékeny pontot érkező felhasználók, eszközök és más alkalmazások előtér-átjáró szükséges. A Service Fabric átjáró lehet bármely állapotmentes szolgáltatások, például az ASP.NET Core alkalmazás, az Event Hubs, IoT-központ vagy Azure API Management forgalom érkező készült. 
 
 Az oktatóanyag bemutatja, hogyan állíthat be [Azure API Management](../api-management/api-management-key-concepts.md) a Service Fabric egy háttér-szolgáltatás a Service Fabric forgalom.  Amikor végzett, egy VNETET az API Management telepítve rendelkezik, konfigurált adatforgalom küldését az állapot nélküli háttérszolgáltatások egy API-művelet. A Service Fabric Azure API Management-forgatókönyvekkel kapcsolatos további tudnivalókért tekintse meg a [áttekintése](service-fabric-api-management-overview.md) cikk.
 
@@ -328,7 +328,7 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

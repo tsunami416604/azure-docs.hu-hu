@@ -9,11 +9,11 @@ ms.service: iot-suite
 ms.topic: landing-page
 ms.date: 11/27/2017
 ms.author: carolz
-ms.openlocfilehash: ccd1546fdfaba2d754906b74984a7335a918e316
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 8cb979f645f0c1405ebd424d39cc2d67c5b59ba0
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="iot-suite-documentation"></a>IoT Suite-dokumentáció
 
@@ -39,7 +39,7 @@ A Microsoft Azure IoT Suite gyorsan használatba vehető. Előre konfigurált me
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/resources/videos/index/?services=internet-of-things">
+        <a href="https://azure.microsoft.com/resources/videos/index/?sort=newest&tag=internet-of-things">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -85,7 +85,7 @@ A Microsoft Azure IoT Suite gyorsan használatba vehető. Előre konfigurált me
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Erőforrások</h3>
+                        <h3>További források</h3>
                         <p><a href="/azure/iot-suite/iot-security-architecture">Biztonsági architektúra</a></p>
                         <p><a href="/azure/iot-suite/iot-security-best-practices">Ajánlott biztonsági eljárások</a></p>
                         <p><a href="/azure/iot-suite/iot-suite-security-deployment">Az IoT-környezet biztonságossá tétele</a></p>

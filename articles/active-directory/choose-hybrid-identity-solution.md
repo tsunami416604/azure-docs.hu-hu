@@ -5,19 +5,19 @@ keywords:
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
-ms.author: jeffgilb
-ms.date: 7/5/2017
+ms.author: billmath
+ms.date: 01/03/2018
 ms.topic: article
 ms.prod: 
 ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: 4bed74307f6f95cff9c779abc72da6514d869ea3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 78813cfbfc9d28e9578f1970083e17d423e071b5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft hibrid identitáskezelési megoldások
 [A Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) hibrid identitáskezelési megoldások lehetővé teszik a helyszíni címtár objektumainak szinkronizálása az Azure ad szolgáltatással, miközben továbbra is a felhasználók a helyszínen. Az első azt kell eldöntenie, ha a helyszíni Windows Server Active Directory szinkronizálása és az Azure AD tervezési szeretné használni identitás szinkronizált vagy összevont identitás. Szinkronizált identitások, és szükség esetén jelszókivonatait, lehetővé teszi a felhasználók, mind a helyszíni és felhőalapú szervezeti erőforrások eléréséhez használható ugyanazt a jelszót. A speciális forgatókönyv-követelményeinek, például egyszeri bejelentkezéses (SSO) vagy a helyi multi-factor Authentication szolgáltatás használatakor is telepíteni kell az Active Directory összevonási szolgáltatások (AD FS) összevont identitások. 
@@ -50,9 +50,6 @@ A legtöbb szervezet számára, akik csak a felhasználók jelentkezhetnek be az
 
 - Windows Server 2012 R2 vagy újabb
 - Az erdő, amelyen keresztül a felhasználók érvényesítése tartományhoz
-
-> [!NOTE]
-> Az Azure AD átmenő hitelesítés jelenleg előzetes verzióban érhetők, és a webes webböngésző-alapú ügyfelek és a modern hitelesítést támogató Office-ügyfelek esetén támogatott. Nem támogatott, például az örökölt Office-ügyfelekhez és az Exchange ActiveSync (beleértve a mobileszközök natív levelezőprogramokat) ügyfelek esetén javasoljuk egyenértékű a modern hitelesítés használatára. Modern hitelesítést nemcsak lehetővé teszi, hogy átmenő hitelesítést, de lehetővé teszi a feltételes hozzáférési szabályzatokat kell alkalmazni, például a többtényezős hitelesítést is. 
 
 Áteresztő hitelesítés jelenleg nem támogatott Ha Windows 10-eszközök használata az Azure AD-tartományhoz. Azonban egy automatikus visszatérés támogatása Windows 10 a Jelszókivonat-szinkronizálást is használhatja, és azt korábban említettük a régi ügyfelek. Az előzetes Jelszókivonat-szinkronizálást alapértelmezés szerint engedélyezve van a bejelentkezési lehetőséget az Azure AD Connectben átmenő hitelesítés választásakor.
 
@@ -91,7 +88,7 @@ Az alábbiakban néhány használt hibrid identitás- és hozzáférés-kezelés
 > <sup>4</sup> AD FS integrálható a vállalati nyilvános kulcsokra épülő infrastruktúra, hogy a bejelentkezés tanúsítványokkal. Ezek a tanúsítványok lehet például az MDM-mel vagy csoportházirend-objektum vagy intelligens kártyás tanúsítványok (beleértve a PIV/CAC kártyák) vagy Hello for Business (tanúsítvány-megbízhatósági) megbízható létesítési csatornákon keresztül telepített soft-tanúsítványok. Intelligens kártyás hitelesítés támogatásával kapcsolatos további információkért lásd: [ebben a blogban](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További információ a koncepció igazolása Azure környezetben:](https://aka.ms/aad-poc)
 
 [Az Azure AD Connect telepítése](http://go.microsoft.com/fwlink/?LinkId=615771)

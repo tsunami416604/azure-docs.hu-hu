@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 843ffdf6c39cbdf00bfde969eaf93701db6ed536
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 951a3217d795df6360cd3cfa2d47db08c11f978e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>A telemetriai adatok némelyike hiányzik
@@ -30,6 +30,7 @@ ms.lasthandoff: 11/01/2017
 *Saját alkalmazás a webkiszolgálón telepített, és be van kapcsolva, nem lát minden telemetriai belőle. A fejlesztői gépen eredménnyel járt OK gombra.*
 
 * Valószínűleg a tűzfallal kapcsolatos probléma. [Állítsa be a tűzfal kivételeit az Application Insights adatküldés](app-insights-ip-addresses.md).
+* IIS-kiszolgálón hiányoznak egyes Előfeltételek: a .NET-bővíthetőség 4.5 és ASP.NET 4.5.
 
 *I [állapotfigyelő telepítve](app-insights-monitor-performance-live-website-now.md) a meglévő alkalmazások figyelése a webkiszolgálón. Nem szerepel az eredmények.*
 

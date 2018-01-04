@@ -13,20 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 01/03/2018
 ms.author: cynthn
-ms.openlocfilehash: b389151b8a1dd0c7a367f83db968bac7b832897a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3471792bba92879e446837434cbdba667cf679ad
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Azure virtuális gépek áttelepítése az Azure-ban kezelt lemezek
 
 Azure-lemezeket felügyelt leegyszerűsíti a tárolókezelési külön-külön a storage-fiókok kezeléséhez szükség.  Kezelt lemezeken is kihasználhatják a megbízhatóságot, rendelkezésre állási csoport a virtuális gépek is áttelepítheti a meglévő Azure virtuális gépeken. Ez biztosítja, hogy a rendelkezésre állási csoport másik virtuális lemezek megfelelően különítve egymástól egyetlen pont, a hibák elkerülése érdekében. A rendelkezésre állási csoport a különböző tárolási méretezési egységeit (bélyegek) egy méretezési egység tárolóhibák miatt a hardver és szoftver-hibák hatásának korlátozó különböző virtuális lemezek automatikusan helyezi.
 A igények alapján választhat a két típusú tárolási lehetőségek közül választhat:
 
-- [Prémium szintű felügyelt lemez](premium-storage.md) tartós állapot meghajtót (SSD)-alapú tárolási adathordozókon rendszerrel highperformance, alacsony késésű lemez I/O-igényes munkaterhelések futó virtuális gépek támogatása. Telepítse át a prémium szintű felügyelt lemez is igénybe vehet a sebesség előnyeit, és ezek a lemezek teljesítményét.
+- [Prémium szintű felügyelt lemez](premium-storage.md) tartós állapot meghajtót (SSD) alapú nagy teljesítményű, alacsony késésű lemez I/O-igényes munkaterhelések futó virtuális gépek támogatása rendszerrel tárolási adathordozókon. Telepítse át a prémium szintű felügyelt lemez is igénybe vehet a sebesség előnyeit, és ezek a lemezek teljesítményét.
 
 - [Standard szintű felügyelt lemez](standard-storage.md) használják a merevlemez-meghajtó (HDD)-alapú tárolási adathordozókon, és a legalkalmasabb fejlesztési és tesztelési célú és egyéb gyakori hozzáférés munkaterhelések kevesebb érzékeny teljesítmény variancia.
 
@@ -63,21 +63,21 @@ Tekintse át a virtuális gépek, amely együttműködik a prémium szintű Stor
 
 Hét különböző típusú együtt a virtuális Gépet felügyelt prémium lemezeket, és mindegyik rendelkezik-e adott iops-érték és átviteli korlátok. Vegye figyelembe a működés felső korlátjának kiválasztása a prémium szintű lemez a virtuális gép alapján a kapacitás, a teljesítmény, méretezhetőség az alkalmazás igényeinek megfelelően, és a maximális tölti be.
 
-| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Lemezméret           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| IOPS-érték lemezenként       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| Adattovábbítás lemezenként | 25 MB / s  | 50 MB / s  | 100 MB / s | 150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s |
+| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Lemezméret           | 128 GB| 512 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| IOPS-érték lemezenként       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
+| Adattovábbítás lemezenként | 25 MB / s  | 50 MB / s  | 100 MB / s | 125 MB / s |150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s |
 
 **Standard szintű felügyelt lemez**
 
 Standard szintű felügyelt lemez együtt a virtuális gép hét típusa van. Azok a különböző kapacitással rendelkeznek, de azonos IOPS és átviteli sebességének korlátai. Válassza ki a standard szintű felügyelt lemez az alkalmazás a kapacitásigények alapján.
 
-| Standard lemez típusa  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
-|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
-| Lemezméret           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
-| IOPS-érték lemezenként       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
-| Adattovábbítás lemezenként | 60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s | 
+| Standard lemez típusa  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
+|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
+| Lemezméret           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
+| IOPS-érték lemezenként       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
+| Adattovábbítás lemezenként | 60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s |60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s | 
 
 ## <a name="disk-caching-policy"></a>Lemez gyorsítótárazási házirend
 
@@ -87,10 +87,10 @@ Alapértelmezés szerint a gyorsítótárazási házirend lemez van *csak olvash
 
 ## <a name="pricing"></a>Díjszabás
 
-Tekintse át a [kezelt lemezek árképzési](https://azure.microsoft.com/en-us/pricing/details/managed-disks/). Prémium szintű felügyelt lemez árképzési legyen, mint a nem felügyelt Premium lemezek. Azonban a standard szintű felügyelt lemez árképzési más nem felügyelt Standard lemezeknél.
+Tekintse át a [kezelt lemezek árképzési](https://azure.microsoft.com/pricing/details/managed-disks/). Prémium szintű felügyelt lemez árképzési legyen, mint a nem felügyelt Premium lemezek. Azonban a standard szintű felügyelt lemez árképzési más nem felügyelt Standard lemezeknél.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [kezelt lemezek](managed-disks-overview.md)

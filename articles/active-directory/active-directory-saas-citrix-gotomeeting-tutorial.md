@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: bcaf19f2-5809-4e1c-acbc-21a8d3498ccf
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 1c3ea5175b02e35e7c624ce936d59fd82163b0fc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e3dadac0bcec3242804e90b1c0fa68d25bb9ffa4
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Oktatóanyag: Azure Active Directoryval integrált GoToMeeting
 
@@ -104,24 +104,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
  
     ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_samlbase.png)
 
-3. Az a **GoToMeeting tartomány és az URL-címek** kattintson **megjelenítése speciális URL-beállításainak** , és végezze el a következő műveletek -
+3. Az a **GoToMeeting tartomány és az URL-címek** területen tegye a következőket:
 
-    ![Az egyszeri bejelentkezés információk GoToMeeting tartomány és az URL-címek](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_ssourl.png)
+    ![Az egyszeri bejelentkezés információk GoToMeeting tartomány és az URL-címek](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
 
-    a. Az a **azonosító** szövegmező, írja be az URL-cím:`https://authentication.logmeininc.com/saml/sp`
-
-    b. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-cím:`https://authentication.logmeininc.com/saml/acs`
-
-    c. Az a **továbbítási állapotot** szövegmező, írja be a következő URL-címek egyikét:
-
-    **A GoToMeeting**:`https://global.gotomeeting.com`
-    
-    **A GoToTraining**:`https://global.gototraining.com`
-
-    **A GoToWebinar**:`https://global.gotowebinar.com`
-
-    **A GoToAssist**:`https://app.gotoassist.com`
-
+    Az a **azonosító** szövegmező, írja be az URL-cím:`https://login.citrixonline.com/saml/sp`
 
 4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
@@ -155,7 +142,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![GoToMeeting konfiguráció](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_configure.png) 
 
-8. Egy másik böngészőablakban, jelentkezzen be a [GoToMeeting szervezet Center](https://account.citrixonline.com/organization/administration/)
+8. Egy másik böngészőablakban, jelentkezzen be a [GoToMeeting szervezet Center](https://organization.logmeininc.com/)
 
 9. A **identitásszolgáltató** lapon konfigurálhatja az Azure-alapú vagy megadásával a létrehozott beállítások **metaadatainak URL-CÍMÉT** vagy a letöltött **metaadatfájl** vagy **Manuális**.
 
@@ -279,7 +266,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
-* [A felhasználók átadása konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrixgotomeeting-provisioning-tutorial)
+* [A felhasználók átadása konfigurálása](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-citrixgotomeeting-provisioning-tutorial)
 
 
 <!--Image references-->

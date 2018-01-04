@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 11/13/2017
 ms.author: magoedte
-ms.openlocfilehash: e818a1b94891e687d8aa5962092e0a577b0db356
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 83491c4902dabc6bab1e222551298cfaffbaecf4
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>A Naplóelemzési konfigurálása Azure PaaS erőforrás metrikáit gyűjteménye
 
@@ -77,7 +77,7 @@ Ha egy erőforrást, amely már küld adatokat a Naplóelemzési munkaterületet
 
 A rendszer bekéri a parancsfájlt, hogy a kezdeti konfiguráció futtatásakor fogadja a hívást, ugyanazokat az információkat.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére. 
 

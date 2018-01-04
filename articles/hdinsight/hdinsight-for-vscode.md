@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: d6ca3bcb91261a863444bc331c78adf44844be56
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 89e83dc02f32f6f2a781cf2e35040b29cc3d3c06
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight eszközök segítségével a Visual Studio Code
 
@@ -270,7 +270,7 @@ HDInsight Visual STUDIO Code támogatja a következő funkciókat:
 
     ![A HDInsight Tools for Visual Studio Code szintaxis kiemelések](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="demo"></a>Bemutató
 * HDInsight Visual STUDIO Code: [videó](https://go.microsoft.com/fwlink/?linkid=858706)
@@ -285,7 +285,8 @@ HDInsight Visual STUDIO Code támogatja a következő funkciókat:
 * [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [A Microsoft Power BI Azure hdinsight Hive-adatok ábrázolása](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [Hive-adatok vizualizálása a Microsoft Power BI segítségével az Azure HDInsightban](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [Interaktív lekérdezés Hive-adatok ábrázolása a Power bi-ban az Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 * [A Visual Studio Code PySpark interaktív környezet beállítása](set-up-pyspark-interactive-environment.md)
 * [Zeppelin használja az Azure HDInsight Hive-lekérdezések futtatásához](./hdinsight-connect-hive-zeppelin.md)
 

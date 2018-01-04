@@ -121,6 +121,9 @@
       items:
         - name: Elemzés a Power Queryvel
           href: apache-hadoop-connect-excel-power-query.md
+        - name: A Power BI csatlakoztatása az interaktív lekérdezéshez
+          href: ../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+          maintainContext: true
         - name: A Power BI csatlakoztatása a Hadoophoz
           href: apache-hadoop-connect-hive-power-bi.md
         - name: Az Excel csatlakozása a Hadoophoz
@@ -302,7 +305,7 @@
         - name: YARN-hibaelhárítás
           href: ../hdinsight-troubleshoot-yarn.md
           maintainContext: true
-        - name: Erőforrások
+        - name: További források
           items:
             - name: Információk a HDInsight Linuxon való használatáról
               href: ../hdinsight-hadoop-linux-information.md
@@ -391,7 +394,7 @@
       href: /rest/api/hdinsight/
     - name: REST (Spark)
       href: /rest/api/hdinsightspark/
-- name: Kapcsolódó
+- name: Kapcsolódó témakörök
   items:
     - name: Windows-fürtök
       items:
@@ -446,7 +449,7 @@
         - name: Fürtök figyelése az Ambari API-val
           href: ../hdinsight-monitor-use-ambari-api.md
           maintainContext: true
-- name: Erőforrások
+- name: További források
   items:
     - name: Kibocsátási megjegyzések
       href: ../hdinsight-release-notes.md

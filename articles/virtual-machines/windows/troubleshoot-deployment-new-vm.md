@@ -12,15 +12,15 @@ ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 11/03/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3a2f53c7abc1f2dfba90a30f4830df1abe63f5d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: fff29f6cfed4989386ca5bbd12184dce525add76
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Telepítési problémák elhárításához, amikor egy új Windows virtuális gép létrehozása az Azure-ban
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -88,6 +88,6 @@ Ez a hiba helyzetekben akkor keletkezik, ha az új virtuális gép kérelem egy 
   * Hozzon létre egy új virtuális Gépet egy másik rendelkezésre állási csoport (ugyanabban a régióban).
   * Adja hozzá az új virtuális gép ugyanahhoz a virtuális hálózathoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha problémát tapasztal a leállított Windows virtuális gépek elindításakor vagy egy meglévő Windows Azure-ban átméretezése, lásd: [újraindításával és átméretezésével egy meglévő Windows rendszerű virtuális gép az Azure erőforrás-kezelő hibaelhárítása telepítési problémákat](restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
