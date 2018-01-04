@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: ed4a84965c37f66bbc7734f6043ad6f8f1666c1f
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 1276310a35d0d69a4111a58b9675f15bb5285a08
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN-átjáró konfigurációs beállítások Azure verem
 
@@ -31,7 +31,7 @@ VPN gateway-kapcsolattal konfigurálható beállításokat tartalmaz, amelyek mi
 ## <a name="vpn-gateway-settings"></a>VPN-átjáró beállítások
 
 ### <a name="gateway-types"></a>Átjárótípusok
-Minden Azure verem virtuális hálózat támogatja egyetlen virtuális hálózati átjáró, amely a típusúnak kell lennie **Vpn**.  Ez nem azonos Azure, amely további típusokat támogatja.  
+Minden Azure verem virtuális hálózat támogatja egyetlen virtuális hálózati átjáró, amely a típusúnak kell lennie **Vpn**.  Ez a támogatás eltér az Azure, amely további típusokat támogatja.  
 
 Ha a virtuális hálózati átjáró hoz létre, győződjön meg arról, hogy helyesek-e az átjáró típusa a konfigurációhoz. A VPN-átjáró által igényelt a `-GatewayType Vpn`.
 
@@ -90,9 +90,9 @@ New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName t
 A virtuális hálózati átjáró VPN-átjáró konfigurációt létrehozásakor meg kell adnia egy VPN-típus. A VPN-típus az Ön által a létrehozni kívánt kapcsolat topológia függ.  A VPN-típus az Ön által használt hardver is függ. S2S-konfigurációk esetén van szükség, a VPN-eszközön. VPN-eszközök csak egy meghatározott VPN-típus támogatja.
 
 > [!IMPORTANT]  
-> Ilyenkor Azure verem csak az útvonal-alapú VPN-típus támogatja.  Ha az eszköz támogatja a házirend alapú VPN-hálózatokhoz csak, majd az Azure oszlopból az eszközök kapcsolatok nem támogatottak.
+> Ilyenkor Azure verem csak az útvonal-alapú VPN-típus támogatja. Ha az eszköz támogatja a házirend alapú VPN-hálózatokhoz csak, majd az Azure oszlopból az eszközök kapcsolatok nem támogatottak.
 
-- **PolicyBased**: *(az Azure-ban, de nem Azure verem által támogatott)* házirendalapú VPN titkosítják és irányítják a csomagokat közötti címelőtag-kombinációkkal konfigurált IPsec-házirendek alapján IPsec-alagutakon keresztül a helyszíni hálózat és az Azure verem virtuális hálózatot. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-eszköz konfigurációjában.
+- **PolicyBased**: *(az Azure-ban, de nem Azure verem által támogatott)* házirendalapú VPN titkosítják és irányítják a csomagokat a címelőtag-kombinációkkal konfigurált IPsec-házirendek alapján IPsec-alagutakon keresztül a helyszíni hálózat és a verem Azure virtuális hálózatot. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-eszköz konfigurációjában.
 
 - **RouteBased**: RouteBased VPN-EK "útvonalakat" használja az az IP-továbbítási vagy útvonalválasztási táblán, hogy a csomagokat a megfelelő alagútkapcsolatokhoz irányítsák a. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. A házirend (vagy forgalomválasztója) VPN RouteBased konfigurált bármely elem közöttiként (vagy helyettesítő karakterek). Egy RouteBased VPN-típus értéke RouteBased.
 
@@ -108,13 +108,13 @@ A következő táblázat a VPN-átjáró rendszerkövetelményeit sorolja fel.
 
 | |PolicyBased alapszintű VPN Gateway | RouteBased alapszintű VPN Gateway | RouteBased Standard VPN Gateway | RouteBased nagy teljesítményű VPN Gateway|
 |--|--|--|--|--|
-| **Pont-pont kapcsolat (S2S)** | Nem támogatott | RouteBased VPN-konfiguráció | RouteBased VPN-konfiguráció | RouteBased VPN-konfiguráció |
+| **Hely-hely kapcsolatot (S2S kapcsolat)** | Nem támogatott | RouteBased VPN-konfiguráció | RouteBased VPN-konfiguráció | RouteBased VPN-konfiguráció |
 | **Hitelesítési módszer**  | Nem támogatott | Előre megosztott kulcs S2S  | Előre megosztott kulcs S2S  | Előre megosztott kulcs S2S  |   
 | **S2S-kapcsolatok maximális száma**  | Nem támogatott | 10 | 10| 30|
 |**Aktív útválasztás-támogatás (BGP)** | Nem támogatott | Nem támogatott | Támogatott | Támogatott |
 
 ### <a name="gateway-subnet"></a>Átjáró alhálózata
-VPN-átjáró létrehozása előtt létre kell hoznia egy átjáró-alhálózatot. Az átjáró alhálózatának az IP-címek, amelyek a virtuális hálózati átjáró virtuális gépeket és szolgáltatásokat tartalmazza. A virtuális hálózati átjáró létrehozásakor átjáró virtuális gépek az átjáró alhálózatának telepítve és konfigurálva a VPN-átjáró szükséges beállításokat. Az átjáró alhálózatának bármely más (például további virtuális gépek) nem telepíti. Az átjáró alhálózatának a "GatewaySubnet" nevű kell megfelelően működjön. Az átjáró alhálózatának elnevezése "GatewaySubnet" lehetővé teszi, hogy tudja, hogy ez az alhálózat, a virtuális hálózati átjáró virtuális gépek és szolgáltatások telepítése Azure veremben.
+VPN-átjáró létrehozása előtt létre kell hoznia egy átjáró-alhálózatot. Az átjáró alhálózatának az IP-címek, amelyek a virtuális hálózati átjáró virtuális gépeket és szolgáltatásokat tartalmazza. A virtuális hálózati átjáró létrehozásakor átjáró virtuális gépek az átjáró alhálózatának telepítve és konfigurálva a VPN-átjáró szükséges beállításokat. Az átjáró alhálózatának bármely más (például további virtuális gépek) nem telepíti. Az átjáró alhálózatának a "GatewaySubnet" nevű kell megfelelően működjön. Az átjáró alhálózatának elnevezése "GatewaySubnet" lehetővé teszi, hogy Azure verem az alhálózat telepítse a virtuális hálózati átjáró virtuális gépek és szolgáltatások azonosításához.
 
 Az átjáróalhálózat létrehozásakor meg kell adnia, hogy hány IP-címet tartalmaz az alhálózat. Az átjáró alhálózatának IP-címek az átjáró virtuális gépek és az átjáró szolgáltatások foglal le. Egyes konfigurációknak a többinél nagyobb számú IP-címre van szükségük. Nézze meg az utasításokat, amelyet szeretne létrehozni, és győződjön meg arról, hogy az átjáró alhálózatának szeretne létrehozni a konfiguráció megfelel ezeknek a követelményeknek. Emellett érdemes lehet ellenőrizze, hogy az átjáró-alhálózatot tartalmaz elég IP-cím lehetséges jövőbeli további konfiguráció alkalmazásához. Létrehozhat egy átjáró-alhálózat mérete /29 legyen, de javasolt, hogy hozzon létre egy átjáró-alhálózatot /28 vagy nagyobb (/ 28, /27, /26 stb.). Így ha a jövőben a Funkciók hozzáadása nincs szakadjon meg az átjáró el, majd törölje és hozza létre újra az átjáró alhálózatának további IP-címek lehetővé.
 
@@ -141,7 +141,7 @@ New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
 Néha módosítania kell a helyi hálózati átjáró beállításainak. Például ha fel vagy módosít a címtartományt, vagy ha megváltozik-e a VPN-eszköz IP-címét. Lásd: [PowerShell használatával a helyi hálózati átjáró beállításainak módosítása](/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway).
 
 ## <a name="ipsecike-parameters"></a>IPsec/IKE-paraméterek
-Azure-készletben VPN-kapcsolat beállításakor kell konfigurálni a kapcsolat mindkét végén.  Azure verem és a hardveres eszköz, például kapcsolót vagy útválasztót VPN-átjáróként működő közötti VPN-kapcsolat konfigurálása, a eszköz kérheti a további beállításokat.
+Azure-készletben VPN-kapcsolat beállításakor kell konfigurálni a kapcsolat mindkét végén.  Azure verem és a kapcsolót vagy útválasztót, VPN-átjáróként működik, mint a hardvereszköz közötti VPN-kapcsolat konfigurálása a eszköz kérheti a további beállításokat.
 
 Azure, amely támogatja több ajánlatok egy kezdeményező és a válaszoló is, eltérően Azure verem csak egy ajánlat támogatja.
 
