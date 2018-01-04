@@ -6,20 +6,20 @@ author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 01/02/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 7007fa8989f6d87028906918dbbc9c2998cd3bf4
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 823d06d8524a937a8d2098262cf97f868672f4d0
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Az első tároló létrehozása az Azure Container Instances szolgáltatásban
 
 Az Azure Container Instances segítségével egyszerűen hozhat létre és felügyelhet tárolókat az Azure-ban. Ebben a rövid útmutatóban létrehozhat egy tárolót az Azure-ban, és közzéteheti az interneten egy nyilvános IP-címen keresztül. Ez a művelet az Azure Portal használatával hajtható végre. Néhány kattintás után ezt fogja látni a böngészőben:
 
-![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-app-browser]
+![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-portal-07]
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -59,7 +59,7 @@ Válassza ki a **mycontainer-myc1** tárolócsoportot a tárolócsoport tulajdon
 
 Miután a tároló **Fut** állapotra váltott, navigáljon az előző lépésben feljegyzett IP-címhez az új tárolóban található alkalmazás megjelenítéséhez.
 
-![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-app-browser]
+![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-portal-07]
 
 <!-- IMAGES -->
 [aci-portal-01]: ./media/container-instances-quickstart-portal/qs-portal-01.png
@@ -68,10 +68,10 @@ Miután a tároló **Fut** állapotra váltott, navigáljon az előző lépésbe
 [aci-portal-04]: ./media/container-instances-quickstart-portal/qs-portal-04.png
 [aci-portal-05]: ./media/container-instances-quickstart-portal/qs-portal-05.png
 [aci-portal-06]: ./media/container-instances-quickstart-portal/qs-portal-06.png
-[aci-app-browser]: ./media/container-instances-quickstart-portal/qs-portal-07.png
+[aci-portal-07]: ./media/container-instances-quickstart-portal/qs-portal-07.png
 [aci-portal-08]: ./media/container-instances-quickstart-portal/qs-portal-08.png
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy tárolópéldányt egy rendszerképből egy nyilvános Docker Hub adattárban. Ha próbaképpen szeretne saját maga létrehozni és üzembe helyezni egy tárolót az Azure Container Instances szolgáltatásban az Azure Container Registry használatával, folytassa az Azure Container Instances oktatóanyagával.
 

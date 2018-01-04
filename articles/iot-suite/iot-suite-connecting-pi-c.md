@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 01/03/2018
 ms.author: dobett
-ms.openlocfilehash: cec5d9c2e81e6311514536f7605777d48d1f1c46
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 7cfa6dd93c6db7477e03ff966b2ac8af15de3614
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-c"></a>A Pi málna eszköz csatlakozni a távoli felügyeleti előkonfigurált megoldás (C)
 
@@ -47,9 +47,11 @@ SSH-ügyfél van szüksége az asztali gépen ahhoz, hogy a parancssor a málna 
 
 ### <a name="required-raspberry-pi-software"></a>Szükséges málna Pi szoftver
 
+Ez a cikk feltételezi, hogy a legújabb verziójának telepítése a [a málna Pi Raspbian operációs](https://www.raspberrypi.org/learning/software-guide/quickstart/).
+
 A következő lépések bemutatják egy C alkalmazás, amely kapcsolódik az előkonfigurált megoldás létrehozása a málna Pi előkészítése:
 
-1. Kapcsolódás a málna Pi `ssh`. További információkért lásd: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a a [málna Pi webhely](https://www.raspberrypi.org/).
+1. Kapcsolódás a málna Pi **ssh**. További információkért lásd: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a a [málna Pi webhely](https://www.raspberrypi.org/).
 
 1. A málna Pi frissítéséhez használja a következő parancsot:
 
@@ -60,31 +62,27 @@ A következő lépések bemutatják egy C alkalmazás, amely kapcsolódik az el�
 1. A következő paranccsal adja hozzá a málna Pi szükséges Fejlesztőeszközök és a szalagtárak:
 
     ```sh
-    sudo apt-get install g++ make cmake gcc git
+    sudo apt-get purge libssl-dev
+    sudo apt-get install g++ make cmake gcc git libssl1.0-dev build-essential curl libcurl4-openssl-dev uuid-dev
     ```
 
-1. A következő parancsok használatával telepítse az IoT-központ klienskódtárak segítségével:
-
-    ```sh
-    grep -q -F 'deb http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' /etc/apt/sources.list || sudo sh -c "echo 'deb http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' >> /etc/apt/sources.list"
-    grep -q -F 'deb-src http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' /etc/apt/sources.list || sudo sh -c "echo 'deb-src http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' >> /etc/apt/sources.list"
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA6A393E4C2257F
-    sudo apt-get update
-    sudo apt-get install -y azure-iot-sdk-c-dev cmake libcurl4-openssl-dev git-core
-    ```
-
-1. Klónozza a Parson JSON elemző a málna Pi a következő parancsokkal:
+1. A következő parancsok segítségével töltse le, elkészítéséhez és az IoT-központ klienskódtárak segítségével telepítse a málna Pi:
 
     ```sh
     cd ~
-    git clone https://github.com/kgabis/parson.git
+    git clone --recursive https://github.com/azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c/build_all/linux
+    ./build.sh --no-make
+    cd ../../cmake/iotsdk_linux
+    make
+    sudo make install
     ```
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
-Az alábbi lépésekkel használatával a `ssh` a málna Pi kapcsolatot:
+Az alábbi lépésekkel használatával a **ssh** a málna Pi kapcsolatot:
 
-1. Hozzon létre egy nevű `remote_monitoring` a málna Pi a saját mappájában. Keresse meg a mappát, a parancssorban:
+1. Hozzon létre egy nevű `remote_monitoring` a málna Pi a saját mappájában. Lépjen abba a mappába, a rendszerhéj:
 
     ```sh
     cd ~
@@ -92,13 +90,9 @@ Az alábbi lépésekkel használatával a `ssh` a málna Pi kapcsolatot:
     cd remote_monitoring
     ```
 
-1. Hozza létre a négy fájlokat `main.c`, `remote_monitoring.c`, `remote_monitoring.h`, és `CMakeLists.txt` a a `remote_monitoring` mappát.
+1. Hozza létre a négy fájlokat **main.c**, **remote_monitoring.c**, **remote_monitoring.h**, és **CMakeLists.txt** a a `remote_monitoring` a mappa.
 
-1. Hozzon létre nevű `parson` a a `remote_monitoring` mappát.
-
-1. Másolja a fájlokat `parson.c` és `parson.h` Parson összetevőtárházat be helyi másolatát a `remote_monitoring/parson` mappát.
-
-1. Egy szövegszerkesztőben nyissa meg a `remote_monitoring.c` fájlt. A málna Pi is használhatja a `nano` vagy `vi` szövegszerkesztőben. Adja hozzá a következő `#include`-utasításokat:
+1. Egy szövegszerkesztőben nyissa meg a **remote_monitoring.c** fájlt. A málna Pi is használhatja a **nano** vagy **vi** szövegszerkesztőben. Adja hozzá a következő `#include`-utasításokat:
 
     ```c
     #include "iothubtransportmqtt.h"
@@ -113,15 +107,19 @@ Az alábbi lépésekkel használatával a `ssh` a málna Pi kapcsolatot:
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
+Mentse a **remote_monitoring.c** fájlt, és zárja be a szerkesztőt.
+
 ## <a name="add-code-to-run-the-app"></a>Adja hozzá az alkalmazás futtatásához szükséges kódot
 
-Egy szövegszerkesztőben nyissa meg a `remote_monitoring.h` fájlt. Adja hozzá a következő kódot:
+Egy szövegszerkesztőben nyissa meg a **remote_monitoring.h** fájlt. Adja hozzá a következő kódot:
 
 ```c
 void remote_monitoring_run(void);
 ```
 
-Egy szövegszerkesztőben nyissa meg a `main.c` fájlt. Adja hozzá a következő kódot:
+Mentse a **remote_monitoring.h** fájlt, és zárja be a szerkesztőt.
+
+Egy szövegszerkesztőben nyissa meg a **main.c** fájlt. Adja hozzá a következő kódot:
 
 ```c
 #include "remote_monitoring.h"
@@ -133,6 +131,8 @@ int main(void)
   return 0;
 }
 ```
+
+Mentse a **main.c** fájlt, és zárja be a szerkesztőt.
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
@@ -158,18 +158,16 @@ Az alábbi lépések bemutatják, hogyan használható *CMake* hozhat létre az 
     cmake_minimum_required(VERSION 2.8.11)
     compileAsC99()
 
-    set(AZUREIOT_INC_FOLDER "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/parson" "/usr/include/azureiot" "/usr/include/azureiot/inc")
+    set(AZUREIOT_INC_FOLDER "${CMAKE_SOURCE_DIR}" "/usr/local/include/azureiot")
 
     include_directories(${AZUREIOT_INC_FOLDER})
 
     set(sample_application_c_files
-        ./parson/parson.c
         ./remote_monitoring.c
         ./main.c
     )
 
     set(sample_application_h_files
-        ./parson/parson.h
         ./remote_monitoring.h
     )
 
@@ -188,6 +186,8 @@ Az alábbi lépések bemutatják, hogyan használható *CMake* hozhat létre az 
         m
     )
     ```
+
+1. Mentse a **CMakeLists.txt** fájlt, és zárja be a szerkesztőt.
 
 1. Az a `remote_monitoring` mappa, hozzon létre egy mappát tárolásához a *ellenőrizze* CMake előállított fájlokat. Ezután futtassa a **cmake** és **ellenőrizze** parancsok az alábbiak szerint:
 

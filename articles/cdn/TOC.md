@@ -7,8 +7,10 @@
 # Útmutató
 ## Integrálás
 ### [Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
-### [Cloud Services](cdn-cloud-service-with-cdn.md)
-### [Storage](cdn-create-a-storage-account-with-cdn.md)
+### [Felhőszolgáltatások](cdn-cloud-service-with-cdn.md)
+### Tárolás
+#### [Tárfiók integrálása](cdn-create-a-storage-account-with-cdn.md)
+#### [SAS-tároló támogatása](cdn-sas-storage-support.md)
 ### [Eltérő eredetű erőforrások megosztása](cdn-cors.md)
 ### [Egyéni tartomány hozzáadása a CDN-végponthoz](cdn-map-content-to-custom-domain.md)
 ### [HTTPS konfigurálása egyéni tartományon](cdn-custom-ssl.md)
@@ -65,7 +67,7 @@
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST](/rest/api/cdn/)
 
-# Erőforrások
+# További források
 ##  [Szabálymotor referencia](cdn-rules-engine-reference.md)
 ### [Szabálymotor feltételes kifejezései](cdn-rules-engine-reference-conditional-expressions.md)
 ### [Szabálymotor funkciói](cdn-rules-engine-reference-features.md)

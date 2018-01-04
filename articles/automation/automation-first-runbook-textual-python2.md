@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: gwallace
-ms.openlocfilehash: 0399719e5f80869f0131691b89a9dc48b3fc48d7
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 0cf0b1829c7e1f9b0b8be90983a705d82784c062
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="my-first-python-runbook"></a>Az első Python-forgatókönyv
 
@@ -29,32 +29,33 @@ ms.lasthandoff: 01/02/2018
 > 
 > 
 
-Ez az oktatóanyag bemutatja, hogyan kell létrehozni egy [Python runbook](automation-runbook-types.md#python-runbooks) az Azure Automationben. Egy egyszerű runbookkal kezdünk, amelyet tesztelünk és közzé is teszünk, és bemutatjuk a runbook állapotának nyomon követését is. Ezután módosítjuk a runbookot, hogy ténylegesen kezeljen Azure-erőforrásokat, ebben az esetben elindítson egy Azure-beli virtuális gépet. Végül még robusztusabbá tesszük a runbookot, és runbook-paramétereket adunk hozzá.
+Ez az oktatóanyag bemutatja, hogyan kell létrehozni egy [Python runbook](automation-runbook-types.md#python-runbooks) az Azure Automationben. Először egy egyszerű runbookot, tesztelése és tehetők közzé. Ezután módosítja a runbookot, hogy ténylegesen kezeljen Azure-erőforrásokat, ebben az esetben elindítson egy Azure-beli virtuális gépet. Végül akkor a runbook robusztusabb runbook paraméterek hozzáadásával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-fiók](automation-offering-get-started.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez.  Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
-* Egy Azure virtuális gép. Ezt a gépet leállítjuk és elindítjuk, tehát ne olyan virtuális gépet használjon, amely élesben működik.
+* [Automation-fiók](automation-offering-get-started.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
+* Egy Azure virtuális gép. Ezt a gépet leállítja és elindítja, tehát ne olyan virtuális gépet használjon, amely élesben működik.
 
 ## <a name="create-a-new-runbook"></a>Hozzon létre egy új runbookot
 
-Először egy egyszerű runbookot hozunk létre, amely a *Hello World* szöveget adja vissza.
+Ön először hozzon létre egy egyszerű runbookot, amely a szöveg *Hello World*.
 
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
-   Az Automation-fiók oldala gyors áttekintést nyújt a fiókban levő erőforrásokról. Valószínűleg már rendelkezik adategységekkel. Ezek nagy része az új Automation-fiókhoz automatikusan hozzáadott modul. Rendelkeznie kell az [előfeltételek](#prerequisites) között említett hitelesítő adategységgel is.
-1. Kattintson a **Runbookok** csempére a forgatókönyvek listájának megnyitásához.
-   ![RunbooksControl](media/automation-first-runbook-textual-python/runbooks-control-tiles.png)
-1. Hozzon létre egy új runbookot a **Forgatókönyv hozzáadása**, majd az **Új forgatókönyv létrehozása** elemre kattintva.
-1. Nevezze el a runbook a *MyFirstRunbook-Python*.
-1. Ebben az esetben lesz, hozzon létre egy [Python runbook](automation-runbook-types.md#python-runbooks) ezért válassza **Python 2** a **runbooktípusba**.
-1. A forgatókönyv létrehozásához és a szöveges szerkesztő megnyitásához kattintson a **Létrehozás** gombra.
+
+    Az Automation-fiók oldala gyors áttekintést nyújt a fiókban levő erőforrásokról. Valószínűleg már rendelkezik adategységekkel. Ezek nagy része az új Automation-fiókhoz automatikusan hozzáadott modul. Rendelkeznie kell az [előfeltételek](#prerequisites) között említett hitelesítő adategységgel is.<br>
+
+1. Kattintson a **Runbookok** elemre a **FOLYAMATKEZELÉS** területen a runbookok listájának megnyitásához.
+2. Válassza ki **+ Hozzáadás runbook** számára hozzon létre egy új runbookot.
+3. Nevezze el a runbook a *MyFirstRunbook-Python*.
+4. Ebben az esetben fog létrehozni egy [Python runbook](automation-runbook-types.md#python-runbooks) ezért **Python 2** a **runbooktípusba**.
+5. A forgatókönyv létrehozásához és a szöveges szerkesztő megnyitásához kattintson a **Létrehozás** gombra.
 
 ## <a name="add-code-to-the-runbook"></a>Kód hozzáadása a runbookhoz
 
-Most azt egy egyszerű parancs a "Hello, World" szöveg Nyomtatás hozzáadása:
+Most adja hozzá a "Hello, World" szöveg nyomtatás egyszerű parancsot:
 
 ```python
 print("Hello World!")
@@ -64,40 +65,40 @@ Kattintson a **mentése** menteni a runbookot.
 
 ## <a name="test-the-runbook"></a>A runbook tesztelése
 
-Mielőtt közzétesszük a forgatókönyvet, hogy éles üzemben is elérhető legyen, tesztelnünk kell, hogy biztosan jól működik-e. Egy forgatókönyv tesztelésekor a **Piszkozat** verziót futtatja, és interaktív módon megtekinti a kimenetét.
+Mielőtt közzéteszi a runbookot, hogy éles üzemben is elérhető legyen, tesztelnie kell, hogy biztosan jól működik-e. Egy forgatókönyv tesztelésekor a **Piszkozat** verziót futtatja, és interaktív módon megtekinti a kimenetét.
 
 1. Kattintson a **Teszt panelre** a Teszt panel megnyitásához.
    ![Teszt panel](media/automation-first-runbook-textual-python/automation-runbook-edit-controls-test.png)
 1. Kattintson az **Indítás** gombra a teszt elindításához. Elvileg ez az egyetlen engedélyezett lehetőség.
 1. Létrejön egy [forgatókönyv-feladat](automation-runbook-execution.md), és megjelenik annak állapota.
-   A feladat állapota kezdetben *Várólistán*. Ez azt jelöli, hogy egy felhőben lévő runbook-feldolgozó elérhetővé válására vár. Ezután *Indítás* állapotúra változik, ha egy feldolgozó elvállalja a feladatot, majd *Fut* állapotúra, amikor a forgatókönyv elkezd futni.
-1. Amikor a forgatókönyv feladat befejeződik, megjelenik a kimenete. A mi esetünkben ez a következő: *Hello World*.
+   A feladat állapota kezdetben *Várólistán*. Ez azt jelöli, hogy egy felhőben lévő runbook-feldolgozó elérhetővé válására vár. Kerül át *indítása* dolgozó jogcímeket a feladatot, amikor, majd *futtató* amikor a runbook ténylegesen elindul.
+1. Amikor a forgatókönyv feladat befejeződik, megjelenik a kimenete. Ebben az esetben kell megjelennie *Hello World*.
 1. A vászonra való visszatéréshez zárja be a Teszt panelt.
 
 ## <a name="publish-and-start-the-runbook"></a>Közzététele, és elindítja a runbookot
 
-A runbook létrehozott még mindig vázlat módban van. Az üzemi környezetben való futtatás előtt közzé kell tennünk.
+A runbook létrehozott még mindig vázlat módban van. Éles környezetben futtatása előtt tegye közzé kell.
 Egy runbook közzétételekor a vázlatként megjelölt verziót a felülírja a meglévő közzétett verziót.
-Ebben az esetben azt még nem rendelkezik közzétett verzióval, mert az imént létrehozott a runbookot.
+Ebben az esetben még nem rendelkezik közzétett verzióval, mert a runbook újonnan létrehozott.
 
 1. A forgatókönyv közzétételéhez kattintson a **Közzététel** lehetőségre, és ha a rendszer kéri, kattintson az **Igen** gombra.
    ![Közzététel gomb](media/automation-first-runbook-textual-python/automation-runbook-edit-controls-publish.png)
-1. Ha most balra görgetve megtekinti a forgatókönyvet a **Forgatókönyvek** panelen, a **Közzétett** **Szerzői állapot** jelenik meg.
+1. Ha a runbook megtekintése balra a **Runbookok** ablaktáblán, akkor megjelenik egy **szerzői állapot** a **közzétett**.
 1. Vissza a ablaktábla megtekintéséhez görgessen **MyFirstRunbook-Python**.
    A felül látható lehetőségekkel elindíthatjuk és megtekinthetjük a runbookot, ütemezhetjük egy későbbi időpontban való indításra, vagy létrehozhatunk egy [webhookot](automation-webhooks.md), amely segítségével elindítható a runbook egy HTTP-hívással.
-1. Most csak el szeretnénk indítani a runbookot, tehát kattintson az **Indítás**, majd, amikor a Runbook indítása panel megnyílik, kattintson az **OK** gombra.
-1. Megnyílik egy feladatpanel a létrehozott runbook-feladathoz. Ezt a panelt bezárhatjuk, de ebben az esetben nyitva hagyjuk, hogy lássuk a feladat előrehaladását.
-1. A feladat állapota a **Feladat összegzése** területen látszik, és megfelel a korábban, a forgatókönyv tesztelésekor látott állapotoknak.
-1. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. A Kimenet panel megnyílik, és megjelenik a *Hello World* feliratunk.
+1. A runbook indításához, kattintson a kívánt **Start** , majd **Ok** a runbook meghívása panel megnyitásakor.
+1. A feladatok ablaktábla a runbook-feladat létrehozott van megnyitva. Zárja be az ezen az ablaktáblán, de ebben az esetben hagyja nyitva, figyelheti a feladat előrehaladását.
+1. A feladat állapota látható **feladat összegzése** és az állapot, amikor Ön tesztelése a runbook látott egyezik.
+1. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. A kimeneti ablaktábla már meg van nyitva, és megtekintheti a *Hello World*.
 1. Zárja be a Kimenet panelt.
-1. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. A kimeneti streamben csak a *Hello World* eredményt látjuk, de ez megjeleníthet egyéb streameket is egy forgatókönyv feladatból, mint a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.
+1. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. A kimeneti streamben csak a *Hello World* eredményt látja, de itt megjelenhetnek egyéb streamek is egy runbook-feladatból, mint például a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.
 1. Zárja be a adatfolyamok és a feladatok ablaktábla a MyFirstRunbook-Python tartalmazó ablaktáblájához való visszatéréshez.
-1. A forgatókönyv Feladatok paneljének megnyitásához kattintson a **Feladatok** lehetőségre. Ez felsorolja az összes, a forgatókönyv által létrehozott feladatot. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtattuk a feladatot.
-1. Erre a feladatra kattintva megnyithatja ugyanazt a Feladat panelt, amelyet már láttunk a runbook elindításakor. Ez lehetővé teszi, hogy az időben visszamenve megtekintse egy adott forgatókönyvhöz létrehozott összes feladat részleteit.
+1. A forgatókönyv Feladatok paneljének megnyitásához kattintson a **Feladatok** lehetőségre. Ez felsorolja az összes, a forgatókönyv által létrehozott feladatot. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtatta a feladatot.
+1. Erre a feladatra kattintva megnyithatja ugyanazt a Feladat panelt, amelyet már látott a runbook elindításakor. Ez lehetővé teszi, hogy az időben visszamenve megtekintse egy adott forgatókönyvhöz létrehozott összes feladat részleteit.
 
 ## <a name="add-authentication-to-manage-azure-resources"></a>Hitelesítés az Azure-erőforrások kezeléséhez hozzáadása
 
-Most már teszteltük és közzétettük a forgatókönyvet, de még nem csinál semmi hasznosat. Azt szeretnénk, hogy Azure-erőforrásokat kezeljen.
+Most már befejeződött a runbook tesztelése és közzététele, de még nem csinál semmi hasznosat. Azt szeretnénk, hogy Azure-erőforrásokat kezeljen.
 Az Azure-erőforrások kezeléséhez a parancsfájlnak a hitelesítést a hitelesítő adatokat a [Automation-fiók](automation-offering-get-started.md).
 
 > [!NOTE]
@@ -173,7 +174,7 @@ Tesztelése, és futtassa a runbook ismételt használatával ellenőrizheti, ho
 A runbook jelenleg használ változtatható értékek a virtuális gép és az erőforráscsoport nevét.
 Most adjuk hozzá a kódot, amely lekérdezi ezeket az értékeket a bemeneti paramétereket.
 
-Használjuk a `sys.argv` -változó lekérdezésével a paraméterértékek.
+Használja a `sys.argv` -változó lekérdezésével a paraméterértékek.
 Közvetlenül a másik után adja hozzá a következő kódot a runbook `import` utasításokat:
 
 ```python
@@ -186,7 +187,7 @@ vm_name = str(sys.argv[2])
 Ez a importálja a `sys` modul, és hoz létre két változót ahhoz, hogy az erőforráscsoport és a virtuális gép neve.
 Figyelje meg, hogy az elem az argumentumlista `sys.argv[0]`, a parancsfájl nevét, és nem a felhasználó által.
 
-Most azt módosíthatja az értékeket szeretné használni a bemeneti paraméter nem változtatható értékek helyett a runbook utolsó két sort:
+Az utolsó két sort a runbook értékeket szeretné használni a bemeneti paraméter nem változtatható értékek helyett most már módosíthatja:
 
 ```python
 async_vm_start = compute_client.virtual_machines.start(resource_group_name, vm_name)
@@ -199,7 +200,7 @@ Python runbook indításakor (vagy a **teszt** panelen, vagy a közzétett runbo
 
 Írjon be egy értéket az első mezőben elindítása után egy második fog jelenik meg, és így tovább, úgy, hogy a lehető legtöbb paraméter értékeket szükség szerint adhat meg.
 
-Értékei elérhetők, a parancsfájl a `sys.argv` tömb hasonlóan a most hozzáadott kódot.
+Értékei elérhetők, a parancsfájl a `sys.argv` tömb, mint az előzőekben adott hozzá a kódot.
 
 Adja meg az első paraméter értékeként az erőforráscsoport nevét, és a virtuális gép elindításához, a második paraméter neve.
 

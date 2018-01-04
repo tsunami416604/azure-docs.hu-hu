@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 833ac053b3ad23a60b84adce1dfa9015bee99046
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 96be510476434168a31c78f3a5f97c12ea1eee0f
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop oktatóanyag: A Hadoop első lépései a HDInsightban
 
@@ -126,7 +126,7 @@ Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az 
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../hdinsight-administer-use-portal-linux.md#create-clusters).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóprogramban megtanulhatta, hogyan hozhat létre Linux-alapú HDInsight-fürtöt egy Resource Manager-sablonnal, és hogyan hajthat végre alapszintű Hive-lekérdezéseket.
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:

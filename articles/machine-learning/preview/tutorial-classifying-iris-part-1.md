@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 09/28/2017
-ms.openlocfilehash: fcef59d38cce5f8860508ebeeda0b1b97f5e83f1
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
-ms.translationtype: HT
+ms.openlocfilehash: f417154c2c2a27b356cefb94739838bd2136e756
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="classify-iris-part-1-prepare-the-data"></a>Írisz osztályozása, 1. rész: Az adatok előkészítése
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldást kínálnak.
@@ -144,7 +144,7 @@ Az Azure Machine Learning Workbench alkalmazás telepítéséhez követheti a [t
 
    Az adatok Azure Machine Learning Workbenchben való előkészítésével kapcsolatos további információkért tekintse meg [az adat-előkészítés első lépéseit](data-prep-getting-started.md) ismertető útmutatót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A háromrészes oktatóanyag-sorozat jelen, első részében a következőkre használta az Azure Machine Learning Workbenchet:
 > [!div class="checklist"]
 > * Új projekt létrehozása. 

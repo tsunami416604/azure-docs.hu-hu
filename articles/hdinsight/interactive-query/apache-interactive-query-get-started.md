@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: jgao
-ms.openlocfilehash: 9d9d9556c37cfa5a1a740569b4c7fd4fd07a467a
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 80e96e6bb727e6d5c1331580fad328d570b21494
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Interaktív lekérdezés használata a hdinsight eszközzel
 Interaktív lekérdezés (más néven a Hive LLAP vagy [hosszú Live és a folyamat](https://cwiki.apache.org/confluence/display/Hive/LLAP)) van egy Azure HDInsight [típusú fürt](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interaktív lekérdezés támogatja a memórián belüli gyorsítótárazáshoz, ami lehetővé teszi, hogy gyorsabb és sokkal több interaktív Hive-lekérdezéseket.
@@ -43,8 +43,8 @@ Hive-lekérdezések végrehajtásához a következő lehetőségei vannak:
 
 * Használja a Power bi-ban
 
-    Lásd: [big-adatok ábrázolása a Power bi-ban az Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-
+    Lásd: [adatok interaktív Hive lekérdezés megjelenítheti a Power BI Azure hdinsight](./apache-hadoop-connect-hive-power-bi-directquery.md) lásd [big-adatok ábrázolása a Power bi-ban az Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
+ 
 * A Zeppelin használata
 
     Lásd: [Azure hdinsight Hive-lekérdezések futtatásához használja Zeppelin ](../hdinsight-connect-hive-zeppelin.md).
@@ -76,7 +76,7 @@ A Java adatbázis kapcsolat (JDBC) kapcsolati karakterlánc megkeresése:
    
    ![HDInsight Hadoop interaktív lekérdezés LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan [interaktív lekérdezés fürtök létrehozása a Hdinsightban](../hdinsight-hadoop-provision-linux-clusters.md).
 * Megtudhatja, hogyan [big-adatok ábrázolása a Power bi-ban az Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).

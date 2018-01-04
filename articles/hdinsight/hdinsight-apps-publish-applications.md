@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/21/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: c4db342299e009249ac98a2b58fb882c57c01a0b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 597ea68f063d02541132d275de815c1673369ae0
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>HDInsight-alkalmazások közzététele az Azure piactéren
 Azure HDInsight-alkalmazásokat is telepíthető egy Linux-alapú HDInsight-fürtöt. Ebben a cikkben megtudhatja, hogyan tehet közzé HDInsight-alkalmazások az Azure piactéren. Az Azure piactéren közzétételre vonatkozó általános információkért lásd: [ajánlat közzététele az Azure piactéren](../marketplace-publishing/marketplace-publishing-getting-started.md).
@@ -104,7 +104,7 @@ HDInsight-alkalmazások közzététele:
 8. A létrehozott mikor .zip fájl feltöltéséhez, [csomagolva az alkalmazás](#package-application).  
 9. Válassza ki **kérjen tanúsítási**. A Microsoft hitelesítő csapata áttekinti a fájlokat, és hitelesíti a topológiát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md) a fürtön.
 * Megtudhatja, hogyan [egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) és központi telepítése egy közzé nem tett HDInsight-alkalmazást.
 * Megtudhatja, hogyan [parancsfájlművelet segítségével testre szabhatja a Linux-alapú HDInsight-fürtök](hdinsight-hadoop-customize-cluster-linux.md) és további alkalmazások felvételéhez. 

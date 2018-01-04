@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 2fccf7cae61f4d8862640b89d39f9d4480362429
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 39caeef2648730194827e04e020d8eaea5414f4f
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Adjon hozzáférést a Azure AD Privileged Identity Management kezelésére
 A globális rendszergazda Azure AD Privileged Identity Management (PIM) egy olyan szervezet automatikusan lehetővé teszi, hogy le a szerepkör-hozzárendelések és a PIM elérésére. Más írási hozzáféréssel alapértelmezés szerint kap, azonban más globális rendszergazdákat is. Más globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók rendelkezik az Azure AD PIM olvasási hozzáférést. A hozzáférésének PIM, az első felhasználó rendelhet másoknak a **kiemelt szerepkörű rendszergazda** szerepkör. Ehhez a hozzárendeléshez maga PIM belül kell végrehajtani, és a PowerShell vagy más portálokon keresztül nem módosítható.
@@ -54,7 +54,7 @@ Mielőtt törli valakit a kiemelt szerepkörű rendszergazda, ügyeljen arra, ho
 4. Kattintson a **Igen** eltávolítása a felhasználói szerepkört.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!--Image references-->

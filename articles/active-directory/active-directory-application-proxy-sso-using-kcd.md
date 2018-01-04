@@ -15,11 +15,11 @@ ms.date: 07/25/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: d93dcdd1d6ae8de262c08ba095ca773795f0dec3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f2d3072e52c35cc9632ed3204634f67506b9bf4
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba a Proxy
 
@@ -91,7 +91,7 @@ Kerberos kapcsolatos további információkért lásd: [összes meg szeretné is
 Nem Windows-alkalmazások általában felhasználói felhasználónevek vagy SAM fióknevek tartomány helyett e-mail címet. Ha ilyen esetben a alkalmazásra vonatkozik, akkor a delegált bejelentkezési azonosító mezőjét a felhőbeli identitások csatlakozni a alkalmazás identitások konfigurálása. 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>A különböző helyszíni és felhőbeli identitások
-Alkalmazásproxy feltételezi, hogy a felhasználók pontosan a ugyanazzal az identitással a felhőben és helyszíni rendelkeznek. Ha nem, a helyzet, is továbbra is használhatja a Kerberos által korlátozott az egyszeri bejelentkezés. Konfigurálja a **bejelentkezési identitás meghatalmazott** minden alkalmazáshoz külön adja meg, melyik identitás használható egyszeri bejelentkezéshez végrehajtása során.  
+Alkalmazásproxy feltételezi, hogy a felhasználók pontosan a ugyanazzal az identitással a felhőben és helyszíni rendelkeznek. Ha nem, a helyzet, az egyszeri bejelentkezés továbbra is használhatja a Kerberos által korlátozott Delegálás. Konfigurálja a **bejelentkezési identitás meghatalmazott** minden alkalmazáshoz külön adja meg, melyik identitás használható egyszeri bejelentkezéshez végrehajtása során.  
 
 Ez a funkció lehetővé teszi, hogy számos olyan szervezeteknek, amelyek különböző helyszíni és felhőbeli identitások tartoznia egyszeri Bejelentkezést a felhőből a helyszíni alkalmazások anélkül, hogy a felhasználók különböző felhasználóneveket és jelszavakat adjon meg. Ez magában foglalja a szervezetek, amelyek:
 
@@ -121,7 +121,7 @@ Delegált bejelentkezési azonosítót használja, ha az érték nem feltétlen�
 Ha nem sikerül az egyszeri bejelentkezés folyamatban, megjelenik az összekötő gép eseménynaplójában keresse meg a [hibaelhárítás](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
 Azonban bizonyos esetekben a kérelem sikeresen továbbítódik a háttéralkalmazás amíg az alkalmazás ügyfélkéréseire válaszol, a különböző HTTP-válaszok. Ezekben az esetekben hibaelhárítási eseményszám 24029 az alkalmazásproxy munkamenet eseménynaplóban összekötő gépen megvizsgálásával kell kezdődnie. A felhasználói identitás delegálásához használt megjelenik a "user" mezőben belül az esemény részleteit. Munkamenet napló bekapcsolásához válassza **megjelenítése elemzési és hibakeresési naplókat** a esemény megjelenítő Nézet menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az alkalmazásproxy alkalmazás Kerberos által korlátozott delegálás konfigurálása](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Az alkalmazásproxy problémák elhárítása](active-directory-application-proxy-troubleshoot.md)

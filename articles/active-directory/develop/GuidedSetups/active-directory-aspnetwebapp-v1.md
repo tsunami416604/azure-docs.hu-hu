@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/08/2017
 ms.author: andret
-ms.openlocfilehash: 7708304dd49535d6881641fcafdbfdcb791f9fdf
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: b23afd26f7ac1828381a0410d2455206c8f43c88
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés a Microsoft ASP.NET webalkalmazás hozzáadása
@@ -42,7 +42,7 @@ Ez az útmutató végén az alkalmazás fogad a szervezeteknek, amelyek az Azure
 Ez az útmutató alapján a forgatókönyvet, ahol a böngésző hozzáfér-e ASP.NET-webhely, a felhasználó egy bejelentkezési gomb segítségével kér. Ebben a forgatókönyvben a lehet megjeleníteni a weblapot a munka nagyobb része a kiszolgáló oldalán következik be.
 
 > [!NOTE]
-> Az interaktív telepítés jelentkezzen be az ASP.NET webalkalmazások kezdve egy üres sablont a felhasználók, és mint egy bejelentkezési hozzáadása gombra, és minden tartományvezérlő és módszerek, közben is foglalja össze néhány olyan fogalmat lépéseket mutatja be. Alternativelly, is létrehozhat egy projekt bejelentkezés Azure Active Directory felhasználók (munkahelyi és iskolai fiókok) használatával a [Visual Studio web sablon](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options) választja *munkahelyi és iskolai fiókok* és majd közül a felhő - ezt a beállítást gazdagabb sablont használ, a további vezérlők, a metódusok és a nézetek.
+> Az interaktív telepítés jelentkezzen be az ASP.NET webalkalmazások kezdve egy üres sablont a felhasználók, és mint egy bejelentkezési hozzáadása gombra, és minden tartományvezérlő és módszerek, közben is foglalja össze néhány olyan fogalmat lépéseket mutatja be. Alternatív megoldásként is létrehozhat egy projekt bejelentkezés Azure Active Directory felhasználók (munkahelyi és iskolai fiókok) használatával a [Visual Studio web sablon](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options) , és kiválasztja *munkahelyi és iskolai fiókok* , majd egy felhőalapú lehetőségek - Ez a beállítás által használt gazdagabb sablon, további vezérlők, a metódusok és a nézetek.
 
 ## <a name="libraries"></a>Szalagtárak
 
@@ -269,7 +269,7 @@ Válassza ki a hivatkozásra kattintva tekintse meg a felhasználói jogcímeket
 
 | Tulajdonság | Érték | Leírás|
 |---|---|---|
-| Név | {Felhasználó teljes neve} | A felhasználó nagyapja vezeték- és keresztneve
+| Name (Név) | {Felhasználó teljes neve} | A felhasználó nagyapja vezeték- és keresztneve
 |Felhasználónév | <span>user@domain.com</span>| A felhasználó azonosítására használt felhasználónév
 | Tárgy| {Tulajdonos}|A karakterlánc egyedi azonosítására a weben a felhasználói bejelentkezés|
 | Bérlőazonosító| {Guid}| A *guid* a felhasználó Azure Active Directory szervezeti egyedileg ábrázolásához.|

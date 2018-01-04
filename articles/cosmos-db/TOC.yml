@@ -173,7 +173,7 @@
         - name: SQL API
           href: sql-api-index.md
           items:
-            - name: Erőforrások
+            - name: További források
               href: sql-api-resources.md
             - name: SQL-lekérdezések
               href: sql-api-sql-query.md
@@ -187,15 +187,17 @@
               href: programming.md
             - name: Teljesítménytesztelés
               href: performance-testing.md
-            - name: Teljesítménnyel kapcsolatos tippek
+            - name: Teljesítménnyel kapcsolatos tippek .NET-hez
               href: performance-tips.md
+            - name: Teljesítménnyel kapcsolatos tippek Javához
+              href: performance-tips-java.md
             - name: Több főkiszolgálós telepítés
               href: multi-region-writers.md
             - name: Dátum/idő
               href: working-with-dates.md
             - name: Dokumentumadatok modellezése
               href: modeling-data.md
-            - name: oktatóanyagokat
+            - name: Oktatóanyagok
               items:
                 - name: Az első alkalmazás megírása
                   items:
@@ -229,7 +231,7 @@
                   href: sql-api-nodejs-samples.md
                 - name: Python-példák
                   href: sql-api-python-samples.md
-            - name: Erőforrások
+            - name: További források
               items:
                 - name: SQL-szintaxis – adatlap
                   href: sql-api-sql-query-cheat-sheet.md
@@ -416,7 +418,7 @@
       items:
         - name: .NET
           href: graph-sdk-dotnet.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'

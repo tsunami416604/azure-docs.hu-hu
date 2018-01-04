@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 8ffa1c6dd4794cbea6b2c1904e08557ba2a68ba2
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 21fb0bca08bca0fe6384bbc9ba2511f7d8b746cf
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>Oktatóanyag: Zárolásának Iris a parancssori felület használatával
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
@@ -23,7 +23,7 @@ Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértő
 Ebben az oktatóanyagban elsajátíthatja, az Azure Machine Learning előzetes verziójú funkciók a parancssori felület (CLI) eszközzel: 
 > [!div class="checklist"]
 > * Kísérletezhet fiókot és egy munkaterület létrehozása
-> * A projekt létrehozása
+> * Projekt létrehozása
 > * Küldje el a kísérletre, ha több számítási cél
 > * Lépteti elő, és regisztrálja a betanított modell
 > * Új adatok pontozása céljából egy webszolgáltatás-bővítmény telepítése
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
   >[!NOTE]
   >Csak akkor kell telepíteni az Azure Machine Learning-munkaterület helyileg. Csak a jogosult telepítése Azure Machine Learning munkaterületet, a fiók létrehozása óta szakaszok kövesse és lépéseket végzi a cikkben parancssor új projekt létrehozása kell.
  
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 Az Azure Machine Learning parancssori felület (CLI) lehetővé teszi egy végpontok közötti adatelemezési munkafolyamatot a szükséges műveletek elvégzéséhez. A parancssori eszközök az alábbi módon érheti el:
 
 ### <a name="option-1-launch-azure-ml-cli-from-azure-ml-workbench-log-in-dialog-box"></a>1. lehetőség. Indítsa el az Azure ML CLI Azure ML munkaterület bejelentkezést párbeszédpanelről
@@ -265,7 +265,7 @@ Ehhez az szükséges, azt egyszerűen törölje a csoportot az erőforrások ren
 az group delete --name <resource group name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanulhatta az Azure Machine Learning előzetes verziójú funkciók a használatára 
 > [!div class="checklist"]
 > * Kísérletezhet fiókot, munkaterület létrehozása

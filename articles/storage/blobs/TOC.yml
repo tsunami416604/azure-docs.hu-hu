@@ -46,6 +46,8 @@
           href: storage-create-geo-redundant-storage.md
         - name: Hiba szimulálás RA-GRS tárolóval
           href: storage-simulate-failure-ragrs-account-app.md
+    - name: Helyszíni adatok migrálása a felhőbe az AzCopyval
+      href: ../common/storage-use-azcopy-migrate-on-premises-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Strukturálatlan adatok keresése felhőalapú tárolóban
       href: storage-unstructured-search.md
     - name: Tárolási alkalmazás teljesítményének és skálázhatóságának optimalizálása
@@ -337,7 +339,7 @@
           href: /rest/api/storagerp
         - name: Import/Export
           href: /rest/api/storageimportexport
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=storage'

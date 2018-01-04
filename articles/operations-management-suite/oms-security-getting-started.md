@@ -9,17 +9,17 @@ editor:
 ms.assetid: 754796ef-a43e-468a-86c9-04a2eda55b5b
 ms.service: operations-management-suite
 ms.custom: oms-security
-ms.topic: get-started-article
+ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.openlocfilehash: eb5283c8f32fddaa8a20a565e4b877821de979a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 9772e4c1022cf8609e52ccfe16376959b67e92eb
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="getting-started-with-operations-management-suite-security-and-audit-solution"></a>Az Operations Management Suite biztonsági és auditálási megoldás használatának első lépései
 Ez a dokumentum végigkalauzolja Önt az egyes beállításokon, így segít gyorsan használatba venni az Operations Management Suite (OMS) biztonsági és auditálási megoldás képességeit.
@@ -193,7 +193,7 @@ A gyakori biztonsági lekérdezések rendelkezésre álló listája hasznosnak b
 * Bejelentkezési tevékenységek fiókonként
 * Fiókok, amelyekből távolról bejelentkeztek a gépnév01.contoso.com nevű gépre (a név felülírandó a saját gép nevével)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 E dokumentumban az OMS biztonsági és auditálási megoldást mutattuk be. Az OMS által nyújtott védelemmel kapcsolatos további információkat a következő cikkek tartalmaznak:
 
 * [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)

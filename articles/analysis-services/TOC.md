@@ -23,12 +23,13 @@
 ### [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
 ### [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
 ### [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md)
+### [Diagnosztikai naplózás beállítása](analysis-services-logging.md)
 ## Kapcsolódás
 ### [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
 ### [Kapcsolódás Excellel](analysis-services-connect-excel.md)
 ### [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
 ### [.odc fájl létrehozása](analysis-services-odc.md)
-## oktatóanyagokat
+## Oktatóanyagok
 ### [Az Adventure Works oktatóanyaga](tutorials/aas-adventure-works-tutorial.md)
 ### [1. lecke: Új táblázatos modellprojekt létrehozása](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
 ### [2. lecke: Az adatok beszerzése](tutorials/aas-lesson-2-get-data.md)
@@ -54,8 +55,8 @@
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [Táblázatos modell parancsnyelve (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
-# Erőforrások
-## [Példák](analysis-services-samples.md)
+# További források
+## [Minták](analysis-services-samples.md)
 ## [Analysis Services csapatblog](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)

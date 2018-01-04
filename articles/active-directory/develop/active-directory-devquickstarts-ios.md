@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a631e1104bcda8d69aa2f2fdf336ed407a2c33b9
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 36c6f6d2449d1e137f85e0f657f0399f9df8ee55
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-ad-ios-getting-started"></a>Ismerkedés az Azure AD iOS
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -54,7 +54,7 @@ Az iOS egy átirányítási URI formátuma:
 ```
 
 * **alkalmazás-séma** -ez regisztrálva van az XCode-projektjéhez. Fontos, hogy milyen más alkalmazások hívhatják meg. Ez az Info.plist -> található URL-cím típusú -> URL-cím azonosítója. Ha még nem rendelkezik legalább egy konfigurálni kell létrehoznia egyet.
-* **Csomagazonosító** -Ez az "azonosító" alatt található csomagazonosítót megszünteti a projektbeállításokat, az xcode-ban.
+* **a csomagazonosító** -Ez az a csomagazonosítót az XCode projekt beállításaiban "azonosító" alatt található.
 
 A kód gyors üzembe helyezési példa: ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 

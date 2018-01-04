@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 5355b3ffcddf0ad0c23566dde00663bd4dc99fbc
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: f5ffbb6c2d699da143e12c51c38cba602f5a8526
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép konfigurálása
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, módon úgy gondolja, hogy azok--összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép kiszolgálók, folyamatok és portok közötti kapcsolatok között nincs konfigurációjával kapcsolatban egy ügynök telepítése nem szükséges bármely TCP-csatlakoztatott architektúra jeleníti meg.
@@ -26,7 +26,7 @@ A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket 
 Ez a cikk ismerteti a Service Map és bevezetése az ügynökök konfigurálása részleteit. Szolgáltatástérkép használatával kapcsolatos információkért lásd: [használhatja a Service Map megoldást az Operations Management Suite](operations-management-suite-service-map.md).
 
 ## <a name="dependency-agent-downloads"></a>A függőségi ügynök letöltése
-| Fájl | Operációs rendszer | Verzió | AZ SHA-256-RA |
+| Fájl | Operációs rendszer | Verzió | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.3.0 | 1F5261CAAF6C8DF4E03E4927DA918B3461B40B41C6BF5845803878D7CF975693 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.3.0 | 7BADFF2411899114F0214766160E4E871A2462DC137141CEEDEFAF528F428ADD  |
@@ -367,8 +367,6 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 | Operációs rendszer verziója | Kernel-verzió
 |:--|:--|
-| 5.8 | Oracle 2.6.32-300 (UEK R1) |
-| 5.9 | Oracle 2.6.39-300 (UEK R2) |
 | 5.10 | Oracle 2.6.39-400 (UEK R2) |
 | 5.11 | Oracle 2.6.39-400 (UEK R2) |
 
@@ -377,16 +375,10 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 #### <a name="suse-linux-11"></a>SUSE Linux 11
 | Operációs rendszer verziója | Kernel-verzió
 |:--|:--|
-| 11 | 2.6.27 |
-| 11 SP1 | 2.6.32 |
-| 11 SP2 | 3.0.13 |
-| 11 SP3 | 3.0.76 |
-| 11 SP4 | 3.0.101 |
+| 11 SP2 | 3.0.101-0.7 |
+| 11 SP3 | 3.0.101-0.47 |
+| 11 SP4 | 3.0.101-65 |
 
-#### <a name="suse-linux-10"></a>SUSE Linux 10
-| Operációs rendszer verziója | Kernel-verzió
-|:--|:--|
-| 10 SP4 | 2.6.16.60 |
 
 ## <a name="diagnostic-and-usage-data"></a>diagnosztikai és használati adatok
 A Microsoft automatikusan használati és teljesítményadatokat gyűjt a Szolgáltatástérkép szolgáltatás használata. A Microsoft ezeket az adatokat ellátására és fejlesztésére minőségének, biztonsági és integritását, a Service Map szolgáltatást használja. A szoftverek, például az operációs rendszer és verzió konfigurációs információinak szerepel. Is IP-cím, a DNS-nevét és a munkaállomás nevét ahhoz, hogy pontos és hatékony hibaelhárítási képességeket biztosítanak. Nem gyűjtünk neveket, címeket és egyéb kapcsolattartási adatait.
@@ -395,5 +387,5 @@ Az adatok gyűjtésével és felhasználásával további információkért lás
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Megtudhatja, hogyan [használja a Service Map](operations-management-suite-service-map.md) telepítése és konfigurálása után.

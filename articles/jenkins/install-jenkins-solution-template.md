@@ -6,15 +6,15 @@ manager: douge
 ms.service: multiple
 ms.workload: web
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: ea281e9c83bb37f78c248c6c4011a7da60b45c01
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
-ms.translationtype: HT
+ms.openlocfilehash: 0cf24d8db845beb63b1b895f895da761488fd8ec
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Jenkins-kiszolgáló létrehozása Azure-beli linuxos virtuális gépen az Azure Portalról
 
@@ -107,7 +107,7 @@ Válassza a **Build Now** (Létrehozás most) lehetőséget a kód fordításáh
 
 Navigáljon a `complete/build/libs` könyvtárhoz, és a létrehozás sikerességének ellenőrzéséhez győződjön meg arról, hogy a `gs-spring-boot-0.1.0.jar` fájl megtalálható benne. A Jenkins-kiszolgáló mostantól készen áll saját Azure-projektek létrehozására.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure-beli virtuális gépek hozzáadása Jenkins-ügynökökként](jenkins-azure-vm-agents.md)

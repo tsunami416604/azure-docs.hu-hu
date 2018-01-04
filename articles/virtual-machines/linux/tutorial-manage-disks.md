@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 41b122cdb4dcb836b431004fc162ebe06d0c8b17
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 16cc0c5e38eb273fc2504a39497d00c76d666316
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Az Azure parancssori felülettel Azure lemezek kezelése
 
@@ -225,7 +225,7 @@ Az átméretezés befejezése után indítsa el a virtuális Gépet.
 az vm start --resource-group myResourceGroupDisk --name myVM
 ```
 
-Ha már átméretezték, ezért az operációsrendszer-lemez, a rendszer automatikusan kiegészíti a partíció. Ha adatlemezt átméretezte, aktuális partíciókat kell a virtuális gépek operációs rendszer bővíthető.
+Ha már átméretezték, ezért az operációsrendszer-lemez, a partíció automatikusan ki van bontva. Ha adatlemezt átméretezte, aktuális partíciókat kell a virtuális gépek operációs rendszer bővíthető.
 
 ## <a name="snapshot-azure-disks"></a>Pillanatkép készítése az Azure-lemezeket
 
@@ -283,7 +283,7 @@ Használja a [az méretű lemez csatolása](https://docs.microsoft.com/cli/azure
 az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóprogramban megismerte méretű lemezek témakörök, mint:
 

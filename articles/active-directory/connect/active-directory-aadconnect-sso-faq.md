@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 01/03/2018
 ms.author: billmath
-ms.openlocfilehash: 8eb575d6647b123119ceff9452ee8fc4a489f1ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a91e46d3aa0b04015b60837ae4aef020acd42279
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakran ismételt kérdések
 
@@ -30,7 +30,11 @@ Zökkenőmentes SSO kombinálva, vagy a [Jelszókivonat-szinkronizálást](activ
 
 ## <a name="is-seamless-sso-a-free-feature"></a>Lehetővé teszi az zökkenőmentes SSO szabad?
 
-Zökkenőmentes SSO szabad funkció, nem kell használni az Azure AD bármely fizetős verziója. Továbbra is szabad a szolgáltatás általánosan rendelkezésre álló elérésekor.
+Zökkenőmentes SSO szabad funkció, nem kell használni az Azure AD bármely fizetős verziója.
+
+## <a name="is-seamless-sso-available-in-the-microsoft-azure-germany-cloudhttpwwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Is zökkenőmentes SSO elérhető a [Microsoft Azure Németország felhő](http://www.microsoft.de/cloud-deutschland) és a [a Microsoft Azure Government felhő](https://azure.microsoft.com/features/gov/)?
+
+Nem. Zökkenőmentes SSO csak érhető el a világméretű az Azure AD-példányban.
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Milyen alkalmazások előnyeit `domain_hint` vagy `login_hint` zökkenőmentes SSO-paraméter képességét?
 
@@ -57,7 +61,7 @@ Kövesse az alábbi lépéseket a helyszíni kiszolgálón az Azure AD Connect f
 
 1. Első lépésként töltse le és telepítse a [Microsoft Online Services bejelentkezési segéd](http://go.microsoft.com/fwlink/?LinkID=286152).
 2. Ezután töltse le és telepítse a [64 bites Azure Active Directory-modul Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
-3. Keresse meg a `%programfiles%\Microsoft Azure Active Directory Connect` mappát.
+3. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
 4. Importálja a zökkenőmentes SSO PowerShell modult használja a következő parancsot: `Import-Module .\AzureADSSO.psd1`.
 5. PowerShell futtatása rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
 6. Hívás `Get-AzureADSSOStatus`. Ez a parancs listáját jeleníti meg, akkor az AD-erdőkkel (nézze meg a "Tartományok" lista) a, amelyhez ez a funkció engedélyezve van.
@@ -87,14 +91,14 @@ A folyamat befejezéséhez kövesse az alábbi manuális lépéseket a helyszín
 
 1. Első lépésként töltse le és telepítse a [Microsoft Online Services bejelentkezési segéd](http://go.microsoft.com/fwlink/?LinkID=286152).
 2. Ezután töltse le és telepítse a [64 bites Azure Active Directory-modul Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
-3. Keresse meg a `%programfiles%\Microsoft Azure Active Directory Connect` mappát.
+3. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
 4. Importálja a zökkenőmentes SSO PowerShell modult használja a következő parancsot: `Import-Module .\AzureADSSO.psd1`.
 5. PowerShell futtatása rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
 6. Hívás `Get-AzureADSSOStatus`. Ez a parancs listáját jeleníti meg, akkor az AD-erdőkkel (nézze meg a "Tartományok" lista) a, amelyhez ez a funkció engedélyezve van.
 
 ### <a name="step-2-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>2. lépés Törölje kézzel a `AZUREADSSOACCT` számítógépfiókkal minden AD-erdőben, melyek megjelennek a listában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [**Gyors üzembe helyezési** ](active-directory-aadconnect-sso-quick-start.md) - létrehozásához, és az Azure AD zökkenőmentes SSO futtatása.
 - [**Műszaki mélyreható** ](active-directory-aadconnect-sso-how-it-works.md) – Ez a funkció működésének megismerése.

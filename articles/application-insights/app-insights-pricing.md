@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: ecb6dd0343c36a0f1571b416817aad5e7a52fccb
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 95c5195ac2ea832586211cce37eb2094e06eaf03
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Az Application Insightsban tarifa- és adatok kötet kezelése
 
@@ -90,7 +90,7 @@ Mint [nemrég jelentette be](https://blogs.technet.microsoft.com/msoms/2017/05/1
  
 ## <a name="review-pricing-plans-and-estimate-costs"></a>Tekintse át a csomagok és a becsült költség díjszabása
 
-Applicaition Insights megkönnyíti az elérhető árképzési csomagok, és milyen költségeket valószínűleg kell alapján a legutóbbi használati szokások megismerése. Megnyitásával indítsa el a **szolgáltatások + árazás** panel az Application Insights-erőforrások az Azure-portálon:
+Az Application Insights megkönnyíti az elérhető árképzési csomagok, és milyen költségeket valószínűleg kell alapján a legutóbbi használati szokások megismerése. Megnyitásával indítsa el a **szolgáltatások + árazás** panel az Application Insights-erőforrások az Azure-portálon:
 
 ![Tarifacsomag kiválasztása](./media/app-insights-pricing/01-pricing.png)
 
@@ -134,11 +134,11 @@ A következőkben az adatmennyiség csökkentése érdekében teheti:
 
 ## <a name="managing-the-maximum-daily-data-volume"></a>A maximális napi adatmennyiség kezelése
 
-A napi kötet kap használatával korlátozható az összegyűjtött adatokat, de ha a kap teljesül, a nap hátralevő az alkalmazás által küldött összes telemetery adatvesztést okoz. Az **nem ajánlott** szeretné, hogy az alkalmazás elérte a napi kap, mivel Ön nem tudja követni a állapotának és az alkalmazás teljesítményének után azt talált. 
+A napi kötet kap használatával korlátozható az összegyűjtött adatokat, de a kap teljesülése esetén, a nap hátralevő az alkalmazás által küldött összes telemetriai adat adatvesztést okoz. Az **nem ajánlott** szeretné, hogy az alkalmazás elérte a napi kap, mivel Ön nem tudja követni a állapotának és az alkalmazás teljesítményének után azt talált. 
 
-Ehelyett használjon [mintavételi](app-insights-sampling.md) finomhangolhatják a szintre adatmennyiség kívánja, majd használja a napi kap csak "utolsó lehetőségként", abban az esetben, ha az alkalmazás indítása telemetery sokkal nagyobb mennyiségű váratlanul küldésekor. 
+Ehelyett használjon [mintavételi](app-insights-sampling.md) finomhangolhatják a szintre adatmennyiség kívánja, majd használja a napi kap csak "utolsó lehetőségként", abban az esetben, ha az alkalmazás indítása telemetriai sokkal nagyobb mennyiségű váratlanul küldésekor. 
 
-A napi kap, a konfigurálási csoportban az alkalmazás Insihgts erőforrás módosításához kattintson a **adatok kötetkezelés** majd **napi maximális**.
+A napi kap, a konfigurálási csoportban az Application Insights-erőforrás módosításához kattintson a **adatok kötetkezelés** majd **napi maximális**.
 
 ![A napi telemetriai kötet kap beállítása](./media/app-insights-pricing/daily-cap.png) 
 
@@ -176,7 +176,7 @@ Az egyes megőrzi a rekord, `itemCount` azt jelzi, amely azt jelöli, eredeti re
 ## <a name="limits-summary"></a>Korlátozások összegzése
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mintavételezés](app-insights-sampling.md)
 

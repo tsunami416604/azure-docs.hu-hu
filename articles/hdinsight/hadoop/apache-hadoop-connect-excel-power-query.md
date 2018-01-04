@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: jgao
-ms.openlocfilehash: 1a2bb4c56484540f8b5de5fb61ca5b5f611e99c4
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1f5139f3fdb1cc73bb40828021256bed4290e1a2
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="connect-excel-to-hadoop-by-using-power-query"></a>Az Excel és a Hadoop csatlakoztatása a Power Query használatával
 A Microsoft big data-megoldás egyik fontos jellemzők az üzleti intelligenciával összetevők Microsoft Azure hdinsight Hadoop-fürtök integrálását. Egy elsődleges példa azt a képességet Excel csatlakoztatása az Azure Storage-fiók, amely a Microsoft Power Query az Excel beépülő modul használatával a Hadoop-fürthöz kapcsolódó adatokat tartalmazza. Ez a cikk bemutatja, hogyan állítson be és a Power Query használatával kezeli a HDInsight Hadoop-fürthöz társított adatait kérdezi le.
@@ -71,10 +71,11 @@ A Power Query beépülő modul az Excel segítségével egyszerűen adatok impor
    
     ![HDI. PowerQuery.ImportedTable][image-hdi-powerquery-imported-table]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, HDInsight Excelbe adatainak lekérése a Power Query segítségével. Ehhez hasonlóan is visszaállíthatja az adatokat a HDInsight-ból az Azure SQL-adatbázisba. Akkor is a HDInsight feltölteni az adatokat. További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Hive-adatok ábrázolása a Microsoft Power bi-ban az Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
+* [Interaktív lekérdezés Hive-adatok ábrázolása a Power bi-ban az Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 * [Zeppelin segítségével az Azure HDInsight Hive-lekérdezések futtatása ](./../hdinsight-connect-hive-zeppelin.md).
 * [Excel csatlakoztatása a Microsoft Hive ODBC-illesztőprogram HDInsight](apache-hadoop-connect-excel-hive-odbc-driver.md).
 * [Azure HDInsight csatlakozzon és Hive-lekérdezéseket a Data Lake Tools for Visual Studio használatával futtassa](apache-hadoop-visual-studio-tools-get-started.md).

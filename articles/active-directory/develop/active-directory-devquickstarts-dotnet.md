@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1e21af66f91835919b67af3492f55f113a00910e
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: e1ca92b1d1ae015add539ef03a358f7a53bc3a6d
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-ad-net-desktop-wpf-getting-started"></a>Az Azure AD .NET asztali (WPF) első lépések
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -85,7 +85,7 @@ public MainWindow()
 }
 ```
 
-* Keresse meg a `Search(...)` metódus, amely akkor kell meghívni, amikor a felhasználó cliks a "Search" gombra az alkalmazás felhasználói felületén.  Ez a módszer az Azure AD Graph API lekérdezéshez GET kérés teszi a felhasználók számára, amelyek egyszerű felhasználónév a megadott keresési kifejezés kezdődik.  Ahhoz, hogy a Graph API lekérdezni, meg kell adnia egy access_token a, de a `Authorization` fejlécet a kérelem - ezt az adal-t honnan.
+* Keresse meg a `Search(...)` metódus, amely akkor kell meghívni, amikor a felhasználó az alkalmazás felhasználói felületén a "Search" gombra kattint.  Ez a módszer az Azure AD Graph API lekérdezéshez GET kérés teszi a felhasználók számára, amelyek egyszerű felhasználónév a megadott keresési kifejezés kezdődik.  Ahhoz, hogy a Graph API lekérdezni, meg kell adnia egy access_token a, de a `Authorization` fejlécet a kérelem - ezt az adal-t honnan.
 
 ```C#
 private async void Search(object sender, RoutedEventArgs e)

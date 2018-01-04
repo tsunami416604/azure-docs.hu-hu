@@ -9,16 +9,16 @@ tags: azure-resource-manager,top-support-issue
 ms.assetid: 0ee456ee-4595-4a14-8916-72c9110fc8bd
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 1a171aa07160fd68e3ee73a1606ae048e8e6e1b8
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 5002010e58a5d8e901770c780f07f9bd625d5eb4
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Új Azure csomópontra Windows virtuális gép újbóli üzembe helyezése
 Ha Ön rendelkezik lett nehézségekkel hibaelhárítás a távoli asztal (RDP) kapcsolat vagy alkalmazás elérésére Windows-alapú Azure virtuális gép (VM), a virtuális gép újbóli segíthet. A virtuális gép újbóli telepítésének, a virtuális gép áthelyezése az Azure-infrastruktúra belül egy másik csomópontra, és majd bekapcsolja azt vissza, a konfigurációs beállításokat és a kapcsolódó erőforrások megőrzése. Ez a cikk bemutatja, hogyan telepítse újra a virtuális gépek Azure PowerShell vagy az Azure-portál használatával.
@@ -39,6 +39,6 @@ Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha a virtuális Géphez való kapcsolódás problémát tapasztal, található segítséget [RDP-kapcsolatok hibáinak elhárítása](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [részletes hibaelhárítási RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ha nem fér hozzá a virtuális gép futó alkalmazást, is olvasható [problémák elhárítása alkalmazás](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

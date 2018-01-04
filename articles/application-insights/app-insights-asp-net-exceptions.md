@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: cb87b166a32c47395f99c9cd59442a7ccd65b7ed
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: d6a0b945bad36842142d16a4840c9c3d69e1564e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Kivételek az Application insights szolgáltatással a webalkalmazások diagnosztizálásához
 Az élő webalkalmazását kivételek által jelentett [Application Insights](app-insights-overview.md). Sikertelen kérelmek hozhatók kivételeket és az ügyfél és a kiszolgáló, az eseményeket, így gyorsan felderítheti az az oka.
@@ -57,7 +57,7 @@ A kódban figyelje meg, hogy a CodeLens a kivételek adatait jeleníti meg:
 ![Kivételek CodeLens értesítés.](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>Az Azure portál használatával hibák diagnosztizálása
-Az Application Insights tartalmaz egy válogatott APM élmény segítséget nyújtanak a felügyelt alkalmazások hibáinak diagnosztizálásához. Elindításához kattintson a vizsgálat szakaszában található Application Insights-erőforrás menü hibák esetén. Bemutatja, hogy hiba arány trendekről a licencekkel kapcsolatos a kéréseket, azok hány sikertelen, és hány felhasználó érintett teljes képernyős nézet kell megjelennie. A jobb oldalon láthatja, néhány a leghasznosabb azokat a terjesztéseket megadott a kijelölt műveletek, például az első 3 válaszkódot, első 3 kivétel típusa és felső 3 depedency típusok hiányában sikertelen. 
+Az Application Insights tartalmaz egy válogatott APM élmény segítséget nyújtanak a felügyelt alkalmazások hibáinak diagnosztizálásához. Elindításához kattintson a vizsgálat szakaszában található Application Insights-erőforrás menü hibák esetén. Bemutatja, hogy hiba arány trendekről a licencekkel kapcsolatos a kéréseket, azok hány sikertelen, és hány felhasználó érintett teljes képernyős nézet kell megjelennie. A jobb oldalon láthatja, néhány a leghasznosabb azokat a terjesztéseket megadott a kijelölt műveletek, például az első 3 válaszkódot, az első 3 kivétel típusok és a sikertelen függőségi típusnál felső 3 sikertelenek lesznek. 
 
 ![Hibák osztályozhatja nézet (operations lap)](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
 
@@ -440,7 +440,7 @@ Ez eltér a "Kivételek" száma az Application Insights portáljáról TrackExce
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [REST, SQL és más függőségek hívásainak figyelése](app-insights-asp-net-dependencies.md)
 * [Lapbetöltési idők, a böngésző kivételeket és a AJAX-hívások figyelése](app-insights-javascript.md)
 * [A figyelő teljesítményszámlálói](app-insights-performance-counters.md)

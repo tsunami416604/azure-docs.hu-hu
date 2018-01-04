@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 739e820a44194af984750932d6023c90fcd11e42
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: c3ef75a2a157190b24c171309c4d5c39596b5045
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>A teljesítmény-és az Azure Functions megbízhatóság
 
@@ -44,7 +44,7 @@ Amikor csak lehetséges, azonosítóterületen nagy funkciók kisebb függvényn
 
 Nem használja több funkciók integrálása tartós funkciók vagy a Logic Apps, esetén általában tárüzenetsort közötti kommunikáció függvény használata ajánlott.  A legfőbb oka tárüzenetsort olcsóbb és sokkal könnyebben kiépítéséhez. 
 
-A tárolási várólistában lévő egyes üzenetek 64 KB méretű korlátozottak. Ha nagyobb üzenetek továbbítani funkciók között van szüksége, az Azure Service Bus várólista üzenet használható méretének legfeljebb 256 KB.
+A tárolási várólistában lévő egyes üzenetek 64 KB méretű korlátozottak. Ha nagyobb üzenetek továbbítani funkciók között van szüksége, az Azure Service Bus várólista üzenet használható méretének a normál rétegben, legfeljebb 256 KB-os és a Premium szinten lévő legfeljebb 1 MB.
 
 Service Bus-témakörök hasznosak, ha üzenet feldolgozás előtt szűrés van szüksége.
 
@@ -115,7 +115,7 @@ A hosts fájl beállításokat az alkalmazáson belüli összes funkciójának a
 
 Más gazdagép-konfigurációs beállítások található [az állomás konfigurációs dokumentum](functions-host-json.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért lásd a következőket:
 
 Mivel az Azure Functions használ akkor is tisztában kell lennie az App Service-irányelvek Azure App Service-ben.

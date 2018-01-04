@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 65dc2c4ed85253b79aa47428c414d4ec8ce7e515
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 9a28d0573dd71238d0d91436cb49776b75b51a36
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Problémamegoldás telepítését Linux virtuális gép az Azure-ban
 
@@ -95,7 +95,7 @@ A listát a Linux található [Azure-Endorsed Terjesztéseket](endorsed-distros.
 Igen. Meglévő klasszikus virtuális adhat hozzá egy új vagy meglévő rendelkezésre állási csoportban. További információ: [hozzáadása egy meglévő virtuális gép rendelkezésre állási csoportok](../windows/classic/configure-availability.md#addmachine).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha ez a cikk bármely pontján további segítségre van szüksége, forduljon az Azure-szakértők a [az MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/).
 
 Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatja az beszerzése**.

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: echuvyrov
-ms.openlocfilehash: aa0c762d883b5860d7ac088cc143fb7e9e9028b6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 13390c2db203332433e7e3c39c8d9ed5f688448c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Hozzon létre egy Linux virtuális gép teljes infrastruktúra az Azure-ban Terraform
 
@@ -132,7 +132,7 @@ resource "azurerm_network_security_group" "temyterraformpublicipnsg" {
 
 
 ## <a name="create-virtual-network-interface-card"></a>Hozzon létre a virtuális hálózati kártya
-A virtuális hálózati kártya (NIC) a virtuális gép csatlakozik egy adott virtuális hálózaton, a nyilvános IP-cím és a hálózati biztonsági csoport. A következő szakasz egy Ansible alkalmazástervezési hoz létre a virtuális hálózati adapter nevű *myNIC* csatlakozik a létrehozott virtuális hálózati erőforrások:
+A virtuális hálózati kártya (NIC) a virtuális gép csatlakozik egy adott virtuális hálózaton, a nyilvános IP-cím és a hálózati biztonsági csoport. A következő szakasz Terraform sablonban hoz létre a virtuális hálózati adapter nevű *myNIC* csatlakozik a létrehozott virtuális hálózati erőforrások:
 
 ```tf
 resource "azurerm_network_interface" "myterraformnic" {
@@ -468,5 +468,5 @@ Akkor majd SSH, a virtuális Gépet:
 ssh azureuser@<publicIps>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Alapvető infrastruktúra az Azure-ban hozott létre a Terraform használatával. Összetettebb forgatókönyveket, beleértve a példák, amelyek használatát egy terheléselosztó és a virtuális gép skálázása beállítása, lásd: számos [Terraform példák az Azure-](https://github.com/hashicorp/terraform/tree/master/examples). Támogatott Azure szolgáltatók naprakész listáját, tekintse meg a [Terraform dokumentáció](https://www.terraform.io/docs/providers/azurerm/index.html).

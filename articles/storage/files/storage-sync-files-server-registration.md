@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 8e707c193c5a8e294710973e128e1cf96d4f6461
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: ae50f2f76af890e1dbabd892dc587b762beab38e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Regisztrált kiszolgáló kezelése a Azure fájlszinkronizálás (előzetes verzió)
 Az Azure File Sync (előzetes verzió) lehetővé teszi a szervezet Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt úgy éri el, hogy átalakítja a Windows-kiszolgálókat az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -147,7 +147,7 @@ Mivel Azure fájlszinkronizálás ritkán az egyetlen szolgáltatás, az adatkö
 > Ha túl alacsonyra korlátok Azure fájlszinkronizálás szinkronizálás és a visszaírási hatással lesz.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Az Azure fájlszinkronizálás hálózati vonatkozó korlátok beállítása
-A hozzáférési a hálózati utilitization Azure fájlszinkronizálás a "StorageSyncNetworkLimit" parancsmagjainak használatával. 
+A hálózathasználat Azure fájlszinkronizálás lehet korlátozni az használatával a `StorageSyncNetworkLimit` parancsmagok. 
 
 Például egy új hálózati korlátot annak érdekében, hogy Azure fájlszinkronizálás nem használja több mint 10 MB/s közötti 9 óra és 5 (17:00 h) a munkahelyi héten hozhat létre: 
 
@@ -171,7 +171,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ### <a name="use-windows-server-storage-qos"></a>Használja a Windows Server tárolási QoS 
 Ha Azure fájlszinkronizálás egy Windows Server virtualizálási állomáson futó virtuális gépen, a tárolási szolgáltatásminőség (tárolási szolgáltatásminőség) segítségével storage IO-használat szabályozása. A tárolási QoS-házirendet a maximális (és a határt, például hogyan kényszeríti ki StorageSyncNetwork korlát feletti), vagy a minimális (vagy a foglalás) állítható be. Legfeljebb helyett legalább beállítás lehetővé teszi, hogy a fájl szinkronizálás Azure-kapacitásnövelés a rendelkezésre álló tár sávszélesség használatára, ha másik munkaterhelés sem használja. További információkért lásd: [tárolási szolgáltatásminőség](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 - [Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése](storage-sync-files-planning.md)
 - [Azure fájlszinkronizálás (előzetes verzió) telepítése](storage-sync-files-deployment-guide.md) 
 - [Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)](storage-sync-files-troubleshoot.md)

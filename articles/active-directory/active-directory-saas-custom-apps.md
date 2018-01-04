@@ -15,11 +15,11 @@ ms.date: 07/20/2017
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 763007f004ab82ef5a6b2cac6dbef1ab221a060f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cedba7397e29cb397560c65a2408cd27442ec01c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz
 Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nem szerepel az Azure Active Directory-alkalmazásgyűjtemény konfigurálása tárgya *kód írása nélkül*. Ez a funkció a 2015. November 18. a technical Preview-ban jelent meg, és szerepel a [Azure Active Directory Premium](active-directory-editions.md). Ha ehelyett fejlesztői útmutató az egyéni alkalmazások integrálása az Azure AD kód keres, tekintse meg [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md).
@@ -59,7 +59,7 @@ Válassza ezt a beállítást, az alkalmazás SAML-alapú hitelesítés beállí
 
 Ezek a következők:
 
-* **Bejelentkezés az URL-címe (Szolgáltató által kezdeményezett csak)** – Ha a felhasználó megnyitja a jelentkezik be az alkalmazás számára. Ha az alkalmazás végre szolgáltatás szolgáltató által kezdeményezett egyszeri bejelentkezéshez, majd amikor a felhasználók megnyitják az URL-cím van konfigurálva, a szolgáltató és jelentkezzen be a felhasználó hitelesítéséhez az Azure AD fog tenni a szükséges átirányítást. Ha ez a mező nem üres, majd az Azure AD fogja használni az Office 365 és az Azure AD hozzáférési Panel az alkalmazás elindításához az URL-cím. Ha ez a mező ommited, akkor az Azure AD ehelyett hajtsa végre az identitásszolgáltató – amikor az alkalmazás elindul az Office 365, az Azure AD hozzáférési Panel vagy az Azure ad-bejelentkezés kezdeményezett egyszeri bejelentkezési URL-cím (vagy az irányítópult fület a copiable).
+* **Bejelentkezés az URL-címe (Szolgáltató által kezdeményezett csak)** – Ha a felhasználó megnyitja a jelentkezik be az alkalmazás számára. Ha az alkalmazás végre szolgáltatás szolgáltató által kezdeményezett egyszeri bejelentkezéshez, majd amikor a felhasználók megnyitják az URL-cím van konfigurálva, a szolgáltató és jelentkezzen be a felhasználó hitelesítéséhez az Azure AD fog tenni a szükséges átirányítást. Ha ez a mező nem üres, majd az Azure AD fogja használni az Office 365 és az Azure AD hozzáférési Panel az alkalmazás elindításához az URL-cím. Ha ez a mező nincs megadva, akkor az Azure AD ehelyett hajtsa végre az identitásszolgáltató – amikor az alkalmazás elindul az Office 365, az Azure AD hozzáférési Panel vagy az Azure ad-bejelentkezés kezdeményezett egyszeri bejelentkezési URL-cím (vagy az irányítópult fület a copyable).
 * **Kiállítói URL-címe** -a kibocsátó URL-cím egyedileg kell azonosítania az alkalmazást, a mely egyszeri bejelentkezés konfigurálása történik. Ez az érték, amely az Azure AD küld vissza az alkalmazásra, amely a **célközönség** a SAML-jogkivonat és az alkalmazás lemezszámmal érvényesíti. Ez az érték is frissült a **Entitásazonosító** bármely, az alkalmazás által biztosított SAML metaadatokban. Az alkalmazás SAML dokumentációjában talál részletes információt mi Entitásazonosító, vagy a célközönség érték. Alább látható egy példa a célközönség URL-cím hogyan jelenik meg az adott vissza az alkalmazásba SAML-jogkivonat:
 
 ```

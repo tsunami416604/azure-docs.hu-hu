@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 59f1f8c544c7ab3dce9373d65e0f6cbaa62c8f67
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 5cf9ef392a5a4e33f6413495e1c81e969d50dcad
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus készítése az Azure Automationben
 ## <a name="introduction"></a>Bevezetés
@@ -198,7 +198,7 @@ Egy folyamatkapcsolódása egyetlen objektumhoz olyan feltételt, és a feltéte
     $ActivityOutput['Get Azure VMs'].Name -match "Group1"
 
 Egy feladatütemezési hivatkozásra a feltétel csak értékeli egyszer, mert a forrás tevékenység kimenetét összes objektumokat tartalmazó egyetlen tömböt adott vissza.  Emiatt egy feladatütemezési hivatkozás nem használható, például egy folyamatkapcsolódása szűréshez, de egyszerűen határozza meg a következő tevékenység fut-e. A hálózatról például a következők emelendők tevékenységek a virtuális gép elindítása a runbook.<br> ![A feladatütemezések feltételes hivatkozás](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)<br>
-Három különböző hivatkozásokat tartalmaz, amely a megadott értékek két forgatókönyv bemeneti paraméterekhez képviselő a virtuális gép nevét és az erőforráscsoport nevét annak megállapítására, amely a megfelelő művelet - ellenőrzését egy virtuális indításához indítsa el a kívánt erőforrás csoportban lévő összes virtuális gépet, vagy egy előfizetésben található összes virtuális gép van.  A csatlakozás az Azure és a Get egyetlen virtuális gép közötti feladatütemezési hivatkozás Ez a feltétel programot:
+Nincsenek a három különböző hivatkozásokat tartalmaz, amely a megadott értékek két forgatókönyv bemeneti paraméterekhez virtuális gép nevét és az erőforráscsoport neve jelző annak meghatározására, amely a megfelelő művelet - ellenőrzését egy virtuális indításához az erőforráskészlet minden virtuális gép indítása csoport, vagy egy előfizetésben található összes virtuális gépet.  A csatlakozás az Azure és a Get egyetlen virtuális gép közötti feladatütemezési hivatkozás Ez a feltétel programot:
 
     <# 
     Both VMName and ResourceGroupName runbook input parameters have values 
@@ -288,7 +288,7 @@ Minden egyes bemeneti paraméter a következő táblázat a tulajdonságok hatá
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Név |A paraméternek egyedi neve.  Ez csak alfanumerikus karaktereket tartalmazhat, és nem tartalmazhat szóközt. |
+| Name (Név) |A paraméternek egyedi neve.  Ez csak alfanumerikus karaktereket tartalmazhat, és nem tartalmazhat szóközt. |
 | Leírás |A bemeneti paraméter nem kötelező leírása. |
 | Típus |A paraméter értéke a várt adattípus.  Az Azure-portálon bemeneti során egy megfelelő vezérlő biztosítja az egyes paramétereket az adattípus. |
 | Kötelező |Meghatározza, hogy értéket kell megadni a paraméterben.  A runbook nem indítható el, ha nem ad meg értéket minden kötelező paraméter, amely nem rendelkezik alapértelmezett értékkel. |
@@ -376,7 +376,7 @@ Az alábbi példában nevű tevékenység *Twitter kapcsolat beolvasása* egy ki
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md) 
 * A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md).
 * További információk a forgatókönyvek típusairól, az előnyeikről és a korlátaikról: [Az Azure Automation forgatókönyveinek típusai](automation-runbook-types.md)

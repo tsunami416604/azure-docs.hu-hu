@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/09/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 6d7c2eaf139ddbff46a2fba99bdf5515f64be40c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b5497e9d66833ec8bc291c40d71931aff11820c2
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>A HBase fürt replikálása az Azure virtuális hálózat beállítása
 
@@ -116,10 +116,10 @@ Bizonyos a sablonban változtatható értékek:
 | Átjáró neve | vnet1gw |
 | Átjáró típusa | Vpn |
 | Átjáró VPN-típus | Útvonalalapú |
-| Átjáró Termékváltozat | Basic |
+| Átjáró Termékváltozat | Alapszintű |
 | átjáró IP | vnet1gwip |
 | Fürt neve | &lt;ClusterNamePrefix > 1 |
-| Fürt verziószáma | 3.6 |
+| Fürt verziója | 3.6 |
 | Fürt típusa | a hbase |
 | A fürt feldolgozó csomópontok száma | 2 |
 
@@ -138,10 +138,10 @@ Bizonyos a sablonban változtatható értékek:
 | Átjáró neve | vnet2gw |
 | Átjáró típusa | Vpn |
 | Átjáró VPN-típus | Útvonalalapú |
-| Átjáró Termékváltozat | Basic |
+| Átjáró Termékváltozat | Alapszintű |
 | átjáró IP | vnet1gwip |
 | Fürt neve | &lt;ClusterNamePrefix > 2. régiója |
-| Fürt verziószáma | 3.6 |
+| Fürt verziója | 3.6 |
 | Fürt típusa | a hbase |
 | A fürt feldolgozó csomópontok száma | 2 |
 
@@ -182,7 +182,7 @@ A következő lépések írják le, hogyan hívhatja meg a parancsfájl parancsf
 
 Szükséges argumentumokkal:
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |----|-----------|
 |-s,--src-fürt | Adja meg a forrás HBase fürt DNS-nevét. Például: -s hbsrccluster, a fürt--src = hbsrccluster |
 |-d, nyári időszámítás – a fürt | Megadja a cél (replika) HBase-fürtöt DNS-nevét. Például: -s dsthbcluster, a fürt--src = dsthbcluster |
@@ -191,7 +191,7 @@ Szükséges argumentumokkal:
 
 Választható argumentumok:
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |----|-----------|
 |--src-ambari-user - su, | Az Ambari rendszergazda felhasználónevét adja meg a kiindulási HBase fürt. Az alapértelmezett érték **admin**. |
 |-du, nyári időszámítás –-ambari-felhasználó | Az Ambari rendszergazda felhasználónevét adja meg a cél HBase fürtön. Az alapértelmezett érték **admin**. |
@@ -276,7 +276,7 @@ A `print_usage()` szakasza a [parancsfájl](https://raw.githubusercontent.com/Az
 
         -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan állíthat be a virtuális hálózaton belül, vagy két virtuális hálózatok közötti HBase-replikálás. HDInsight és HBase kapcsolatos további tudnivalókért tekintse meg az alábbi cikkek:
 

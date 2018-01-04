@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2017
+ms.date: 01/03/2018
 ms.author: cgronlun
-ms.openlocfilehash: 47257bdb054b069c864ebf545b0c00bdfb05a9ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0482a680999e58b8be45334c9ae620b6b37ac273
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. videó: 5 kérdés, amelyre az adatelemzés választ ad
 A gyors Bevezetés a adattudomány az beszerzése *Adattudomány kezdőknek* a egy felső adatok tudósok az öt rövid videók. Videók olyan alapvető, de hasznos, hogy érdekli, ennek során adattudomány vagy adatszakértőkön használata.
@@ -138,6 +138,6 @@ Megerősítése tanulási algoritmusok, akkor lépjen, tanulási próbálkozást
 
 Hogy az – az 5 kérdések adattudomány választ ad.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Próbálja meg egy első adatok tudományos kísérletben a Machine Learning Studio](create-experiment.md)
 * [A Microsoft Azure Machine Learning bemutatása beolvasása](what-is-machine-learning.md)

@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 11/02/2017
 ms.author: cephalin;wesmc
 ms.custom: mvc
-ms.openlocfilehash: 8e7afd89def170ce756aae9e76daf91d78cc20e0
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a95a8435e4ecef201ad0f6d9ecda68e94f06ea80
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="run-a-custom-docker-hub-image-in-azure-web-app-for-containers"></a>Egyéni Docker Hub-rendszerkép használata az Azure Web App for Containers szolgáltatásban
 
@@ -38,7 +38,7 @@ Az App Service előre meghatározott, adott verziós támogatással rendelkező 
 
 ## <a name="create-a-web-app-for-container"></a>Web App for Container létrehozása
 
-Az [ az webapp create](/cli/azure/webapp#create) paranccsal hozzon létre egy [webalkalmazást](../app-service-web-overview.md) a `myAppServicePlan` App Service-csomagban. Ne felejtse el kicserélni az `<app name>` nevet egy egyedi alkalmazásnévre.
+Az [ az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](../app-service-web-overview.md) a `myAppServicePlan` App Service-csomagban. Ne felejtse el kicserélni az `<app name>` nevet egy egyedi alkalmazásnévre.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name nginx
@@ -75,7 +75,7 @@ http://<app_name>.azurewebsites.net
 
 **Gratulálunk!** Üzembe helyezte az egyéni Docker-rendszerképet a Web App for Containers szolgáltatásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni Docker-rendszerkép használata](tutorial-custom-docker-image.md)

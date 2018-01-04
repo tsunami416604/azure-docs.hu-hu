@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/12/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: df675dbf915d0fe08905a83b7874fdd95deed42d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 49e8dfa341940386f15932ec4346c8811effbf0b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="testing-a-runbook-in-azure-automation"></a>Runbook tesztelése az Azure Automationben
 Egy runbook tesztelésekor a [vázlatként megjelölt verziót](automation-creating-importing-runbook.md#publishing-a-runbook) végrehajtása és minden elvégzett műveletet végrehajt befejezését. Nincs feladatelőzményekben jön létre, de a [kimeneti](automation-runbook-output-and-messages.md#output-stream) és [figyelmeztetés és hiba](automation-runbook-output-and-messages.md#message-streams) adatfolyamok megjelennek a vizsgálat kimeneti ablaktáblában. Az üzenetek a [részletes adatfolyam](automation-runbook-output-and-messages.md#message-streams) megjelennek a Tesztkimenet ablaktáblán csak akkor, ha a [$VerbosePreference változó](automation-runbook-output-and-messages.md#preference-variables) Folytatás értékre van állítva.
@@ -38,9 +38,9 @@ Használhat egyetlen [runbooktípusba](automation-runbook-types.md) az Azure por
 6. Ha a runbook állapota [PowerShell munkafolyamat](automation-runbook-types.md#powershell-workflow-runbooks) vagy [grafikus](automation-runbook-types.md#graphical-runbooks), majd állítsa le, vagy felfüggeszti, amíg a kimeneti ablaktábla alatti gombokkal tesztelését. A runbook felfüggesztésekor felfüggesztés előtt végrehajtja az aktuális tevékenységet. Ha a runbook fel van függesztve, állítsa le, vagy indítsa újra.
 7. Vizsgálja meg a kimeneti ablaktábla a runbook kimenete.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan hozzon létre vagy importáljon egy runbookot, lásd: [létrehozása vagy egy Azure Automation forgatókönyv importálása](automation-creating-importing-runbook.md)
 * További információk a Grafikus létrehozásról: [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md).
 * A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md)
-* Állapotüzenetek és a hibák vissza runboks konfigurálásával kapcsolatos további tudnivalókért beleértve az ajánlott eljárásokat, lásd: [Runbook-kimenet és üzenetek az Azure Automationben](automation-runbook-output-and-messages.md)
+* Állapotüzenetek és a hibák vissza runbookok konfigurálásával kapcsolatos további tudnivalókért beleértve az ajánlott eljárásokat, lásd: [Runbook-kimenet és üzenetek az Azure Automationben](automation-runbook-output-and-messages.md)
 

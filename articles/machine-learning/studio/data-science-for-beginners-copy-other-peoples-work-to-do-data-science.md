@@ -1,6 +1,6 @@
 ---
 title: "Példák a Copy mások adatok tudományos – Azure Machine Learning |} Microsoft Docs"
-description: "Üzleti titkot adatok tudományos: mások munkavégzésre meg. Machine learning példák a Cortana Analytics Gallery beolvasása sikertelen."
+description: "Üzleti titkot adatok tudományos: mások munkavégzésre meg. Machine learning példák az Azure Eszközintelligencia-katalógus beolvasása sikertelen."
 keywords: "adatok tudományos példák, a machine learning példában csoportosítási algoritmus csoportosítási algoritmus – példa"
 services: machine-learning
 documentationcenter: na
@@ -13,17 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2017
+ms.date: 01/03/2018
 ms.author: cgronlun
-ms.openlocfilehash: 1c767a3fc6605c3e2400bda637d91031393360a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7cc0deabf6ce19e7a2b90a474e6c890fa5b76ae
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Más emberek munkájának lemásolása az adatelemzéshez
 ## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Adattudomány kezdők sorozat
-A kereskedelmi titkok tudományos adatok egyik munkavégzésre, mások kezd. A csoportosítási algoritmus példa található Cortana Analytics Gallery saját gépi tanulási kísérlet esetén használandó.
+A kereskedelmi titkok tudományos adatok egyik munkavégzésre, mások kezd. A csoportosítási algoritmus példa található Azure Eszközintelligencia-katalógus saját gépi tanulási kísérlet esetén használandó.
+
+> [!IMPORTANT]
+> A Cortana Intelligence Gallery át lett nevezve **Azure Eszközintelligencia-katalógus**. Ennek eredményeképpen szöveget és a képeket a a beszélgetés szövegében eltérőek lehetnek kissé a című videót, amely a korábbi nevét használja.
+>
 
 Ahhoz, hogy minél hatékonyabb működtetését az adatsorozat, tekintse meg azokat. [Ugrás a videók listája](#other-videos-in-this-series)
 <br>
@@ -48,14 +52,13 @@ Ezt a telepítést egy helyen található példákat is kölcsönkap a kiindulá
 
 A kereskedelmi titkok tudományos adatok egyik munkavégzésre, mások kezd.
 
-## <a name="find-examples-in-the-cortana-intelligence-gallery"></a>A Cortana Intelligence Galleryben található példák
-A Microsoftnál nevű felhő alapú szolgáltatás [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) még szabad próbálja Üdvözöljük. Biztosítja a munkaterület különböző gépi tanulási algoritmusok kísérletezhet és azokat, ha a megoldás alakít ki van, egy webszolgáltatás indítása.
+## <a name="find-examples-in-the-azure-ai-intelligence-gallery"></a>Példák keresése a Azure AI az Eszközintelligencia-katalógus
 
-Ez a szolgáltatás része valamilyen hívása a  **[Cortana Intelligence Gallery](http://aka.ms/CortanaIntelligenceGallery)**. Erőforrások, például az Azure Machine Learning kísérleteket, vagy személyek beépített és mások számára közzétett modellek gyűjteményét tartalmazza. Ezek a kísérletek nagyszerű módját kihasználhatják a gondolat és a rögzített munka, másokat pedig saját megoldásokkal a kezdéshez.
+A Microsoftnál nevű felhő alapú szolgáltatás [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) még szabad próbálja Üdvözöljük. Biztosítja a munkaterület különböző gépi tanulási algoritmusok kísérletezhet és azokat, ha a megoldás alakít ki van, egy webszolgáltatás indítása.
 
-A gyűjteményből: található [aka.ms/CortanaIntelligenceGallery](http://aka.ms/CortanaIntelligenceGallery). Mindenki rajta Tallózás Üdvözöljük.
+Ez a szolgáltatás része valamilyen hívása a  **[Azure Eszközintelligencia-katalógus](https://gallery.cortanaintelligence.com/)**. Erőforrások, például az Azure Machine Learning kísérleteket, vagy személyek beépített és mások számára közzétett modellek gyűjteményét tartalmazza. Ezek a kísérletek nagyszerű módját kihasználhatják a gondolat és a rögzített munka, másokat pedig saját megoldásokkal a kezdéshez. Mindenki rajta Tallózás Üdvözöljük.
 
-![Cortana Intelligence Gallery](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cortana-intelligence-gallery.png)
+![Az Azure AI gyűjteménye](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
 Ha **kísérletek** a lap tetején megjelenik egy a leginkább a gyűjtemény legutóbbi és népszerű kísérletek száma. Fennmaradó kísérletek lépéseit kattintva kereshet **összes tallózása** a képernyő tetején, és nem adhat meg keresési feltételeket, és válassza a keresési szűrőket.
 
@@ -83,14 +86,14 @@ A gombra és tart me jobbra **Azure Machine Learning Studio**. Másolat készít
 És most már van egy kiindulási pont. I cserélje ki a saját adataikat, illetve használhat saját tökéletesítse a modell. Ez ad a futó Kezdés, továbbá a me létrehozásához, biztosan tudja, mit csinál személyek a munkát.
 
 ## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Kísérleteket, amely a machine learning technikák bemutatása
-Nincsenek más benne a [Cortana Intelligence Gallery](http://aka.ms/CortanaIntelligenceGallery) , amely hozzájárult, lettek kifejezetten adattudomány az új felhasználók – útmutató példákat. Például van egy kísérlet a gyűjteményben, amely bemutatja, hogyan kezelje a hiányzó értékeket ([hiányzó értékek kezelésére vonatkozó metódusokat](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)). Útmutatást nyújt a 15 különböző módon, hogy az üres értékeket, és az egyes módszerek és használati esetek előnyei beszél.
+Nincsenek más benne a [Azure Eszközintelligencia-katalógus](https://gallery.cortanaintelligence.com) , amely hozzájárult, lettek kifejezetten adattudomány az új felhasználók – útmutató példákat. Például van egy kísérlet a gyűjteményben, amely bemutatja, hogyan kezelje a hiányzó értékeket ([hiányzó értékek kezelésére vonatkozó metódusokat](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)). Útmutatást nyújt a 15 különböző módon, hogy az üres értékeket, és az egyes módszerek és használati esetek előnyei beszél.
 
 ![Gyűjteményelem kísérletek nyissa meg a Machine Learning Studio - hiányzó értékek módszerei](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-[A Cortana Intelligence Gallery](http://aka.ms/CortanaIntelligenceGallery) egy olyan hely, használhatja a saját megoldások kiindulási pontként működő kísérleteket.
+[AI Azure katalógusában](https://gallery.cortanaintelligence.com) egy olyan hely, használhatja a saját megoldások kiindulási pontként működő kísérleteket.
 
 Mindenképpen tekintse meg az "Adatok tudományos a kezdők" a Microsoft Azure Machine Learning más videók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Próbálja meg az első adatok tudományos kísérlet Azure Machine Learning segítségével](create-experiment.md)
 * [A Microsoft Azure Machine Learning bemutatása beolvasása](what-is-machine-learning.md)

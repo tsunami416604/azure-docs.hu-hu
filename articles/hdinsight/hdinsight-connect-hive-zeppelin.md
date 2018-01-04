@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: jgao
-ms.openlocfilehash: 4b2ca9dd60187904d9d22e8308e31ed46b1213e6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 39f99bef252e93db55e0493ee284ef78b7d087a1
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Zeppelin használja az Azure HDInsight Hive-lekérdezések futtatásához 
 
@@ -73,10 +73,11 @@ Ez a cikk keresztül haladó, mielőtt a következő elemeket kell rendelkeznie:
     Összehasonlítja a hagyományos struktúra, a lekérdezési eredmények térjen vissza kell gyorsabb.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megismerte a HDInsight a Power BI-adatok ábrázolása.  További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Hive-adatok ábrázolása a Microsoft Power bi-ban az Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md).
+* [Interaktív lekérdezés Hive-adatok ábrázolása a Power bi-ban az Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 * [Excel csatlakoztatása a Microsoft Hive ODBC-illesztőprogram HDInsight](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
 * [Az Excel és a Hadoop csatlakoztatása a Power Query használatával](hadoop/apache-hadoop-connect-excel-power-query.md).
 * [Azure HDInsight csatlakozzon és Hive-lekérdezéseket a Data Lake Tools for Visual Studio használatával futtassa](hadoop/apache-hadoop-visual-studio-tools-get-started.md).

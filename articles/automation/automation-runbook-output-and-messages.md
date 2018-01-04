@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: 875e5c804251047f4a413e99018968564b6107c8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 415eddaec9702a42ceee51858a39840fcd6a202b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 Azure Automation-forgatókönyv a legtöbb van valamilyen kimenetet például egy hibaüzenet a felhasználó számára, vagy egy összetett objektumot egy másik munkafolyamat számára készült. A Windows PowerShell szintén [több adatfolyam](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) kimenetként egy parancsfájl vagy a munkafolyamat számára. Az összes ezekbe az adatfolyamokba eltérő módon működik az Azure Automation, és ajánlott eljárások használata minden egyes runbook létrehozásakor kell.
@@ -206,7 +206,7 @@ A fenti képernyőfelvételen az látható, hogy ha engedélyezi a részletes na
 2. Kattintson a **Forgatókönyvek** csempére a forgatókönyvek listájának megnyitásához.
 3. A Runbookok panelen kattintson egy grafikus forgatókönyvnek a runbookok a listából.
 4. A kiválasztott runbook beállítási paneljén kattintson **naplózás és nyomkövetés**.
-5. A naplózás és nyomkövetés panelen, a részletes rekordok naplózása, kattintson a **a** részletes naplózást és tevékenység-szintű udner nyomkövetés engedélyezéséhez módosítsa a nyomkövetési szint **alapvető** vagy **részletes** szükséges nyomkövetési szint alapján.<br>
+5. A naplózás és nyomkövetés panelen, a részletes rekordok naplózása, kattintson a **a** részletes naplózás engedélyezése és a nyomkövetési szint tevékenység szintű nyomkövetés csoportban **alapvető** vagy **részletes** szükséges nyomkövetési szint alapján.<br>
    
    ![Grafikus szerzői naplózás és nyomkövetés panel](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
@@ -221,7 +221,7 @@ Automatizálási küldhet runbook feladat állapotát és a feladat adatfolyamok
 
 Hogyan gyűjthet, egyeztetéséhez és feladatadatok intézkedjen Naplóelemzési rendszerrel történő integráció konfigurálása További információkért lásd: [továbbítása feladat állapotát és a feladat adatfolyamok Automation való Naplóelemzés (OMS)](automation-manage-send-joblogs-log-analytics.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza
 * Tervezése és alárendelt forgatókönyvekkel ismertetése: [gyermek az Azure Automation runbookjai](automation-child-runbooks.md)
 

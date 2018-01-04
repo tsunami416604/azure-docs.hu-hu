@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 597ea863275a5603e093307ce4334ae68e5ea5cf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: db4cfe91b8d27b5336763eff7c6f22f0f345caf2
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Többtartományos támogatás az Azure AD összevonási szolgáltatásához
 Az alábbi dokumentáció nyújt útmutatást több felső szintű tartományok és altartományok használata, ha az Office 365 vagy az Azure AD-tartomány összevonását.
@@ -29,11 +29,11 @@ Az alábbi dokumentáció nyújt útmutatást több felső szintű tartományok 
 Amikor egy tartományt az Azure AD össze van vonva, több tulajdonság a tartományban az Azure-ban beállítva.  Egy fontos egyik IssuerUri lesz.  Ez az URI, amely az Azure ad azonosítására szolgál a tartományhoz, amely a token társítva van.  Az URI nem kell tartoznia semmi, de kell lennie egy érvényes URI.  Alapértelmezés szerint az Azure AD beállítja az összevonási szolgáltatás azonosítóját értékének a helyszíni AD FS konfigurációs.
 
 > [!NOTE]
-> Az összevonási szolgáltatás azonosítóját, amely egyedileg azonosítja az összevonási szolgáltatás URI.  Az összevonási szolgáltatás AD FS funkcionáló példányának, mint a biztonsági jogkivonatokkal kapcsolatos szolgáltatástól. 
-> 
-> 
+> Az összevonási szolgáltatás azonosítóját, amely egyedileg azonosítja az összevonási szolgáltatás URI.  Az összevonási szolgáltatás AD FS funkcionáló példányának, mint a biztonsági jogkivonatokkal kapcsolatos szolgáltatástól.
+>
+>
 
-A PowerShell-paranccsal is View IssuerUri `Get-MsolDomainFederationSettings -DomainName <your domain>`.
+A PowerShell-parancs használatával megtekintheti a IssuerUri `Get-MsolDomainFederationSettings -DomainName <your domain>`.
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
 
@@ -62,9 +62,9 @@ A beállításokat az új bmfabrikam.com tartomány megnézzük látható a köv
 
 Vegye figyelembe, hogy `-SupportMultipleDomain` nem változtatja meg a többi végpont, amely az összevonási szolgáltatás adfs.bmcontoso.com mutasson konfigurálása még folyamatban van.
 
-Egy másik művelet, amely `-SupportMultipleDomain` does, biztosítja, hogy az AD FS rendszer tartalmazza a megfelelő kibocsátó érték az Azure AD kiállított jogkivonatokat. A felhasználók egyszerű Felhasználónevük tartomány része, és ezt a tartományt a IssuerUri, azaz https://{upn utótag beállítását tesz} / adfs/services/megbízhatósági. 
+Egy másik művelet, amely `-SupportMultipleDomain` does, biztosítja, hogy az AD FS rendszer tartalmazza a megfelelő kibocsátó érték az Azure AD kiállított jogkivonatokat. A felhasználók egyszerű Felhasználónevük tartomány része, és ezt a tartományt a IssuerUri, azaz https://{upn utótag beállítását tesz} / adfs/services/megbízhatósági.
 
-Így az Azure AD-hitelesítés során vagy az Office 365, a felhasználói jogkivonat IssuerUri elemének segítségével keresse meg a tartományt az Azure ad-ben.  Ha nem található egyezés a hitelesítés sikertelen lesz. 
+Így az Azure AD-hitelesítés során vagy az Office 365, a felhasználói jogkivonat IssuerUri elemének segítségével keresse meg a tartományt az Azure ad-ben.  Ha nem található egyezés a hitelesítés sikertelen lesz.
 
 Például, ha a felhasználói UPN van bsimon@bmcontoso.com, http://bmcontoso.com/adfs/services/trust úgy lesz beállítva, a jogkivonatot AD FS problémák IssuerUri elemében. Ez fog egyezni az Azure Active Directory beállítása, és a hitelesítés sikeres lesz.
 
@@ -75,8 +75,8 @@ A következő értéke a testreszabott jogcímszabály, amely megvalósítja ezt
 
 > [!IMPORTANT]
 > A - SupportMultipleDomain kapcsoló használata, amikor új hozzáadása vagy konvertálása már hozzáadott tartomány, van szüksége a telepítő az összevont megbízhatósági kapcsolathoz azokat eredetileg támogatásához.  
-> 
-> 
+>
+>
 
 ## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>Az AD FS és az Azure AD közötti megbízhatósági kapcsolat frissítése
 Ha nem állított be az összevont megbízhatósági kapcsolathoz AD FS és az Azure AD példányával között, szükség lehet újból létrehozni a bizalmi kapcsolat.  Ennek az az oka eredetileg beállítása nélkül a `-SupportMultipleDomain` paraméter, a IssuerUri értéke az alapértelmezett értékkel.  Az alábbi képernyőképen látható a IssuerUri https://adfs.bmcontoso.com/adfs/services/trust értékre van állítva.
@@ -97,7 +97,7 @@ Az alábbi lépések segítségével további felső szintű tartomány hozzáad
 
 Az alábbi lépések segítségével a Microsoft Online bizalmi kapcsolatot, és az eredeti tartomány frissítése.
 
-1. Az AD FS összevonási kiszolgálón nyissa meg **AD FS kezelő.** 
+1. Az AD FS összevonási kiszolgálón nyissa meg **AD FS kezelő.**
 2. Bontsa ki a bal oldali **megbízhatósági kapcsolatok** és **függő entitás Megbízhatóságai**
 3. A jobb oldalon törölje a **Microsoft Office 365 Identitásplatformmal** bejegyzés.
    ![Távolítsa el a Microsoft Online](./media/active-directory-multiple-domains/trust4.png)
@@ -137,14 +137,14 @@ Altartomány, a kezelt módon az Azure AD-tartományok miatt hozzáadásakor azt
 Így lehetővé teszi, hogy tegyük fel például, hogy rendelkezem bmcontoso.com, és adja meg az corp.bmcontoso.com.  Ez azt jelenti, hogy egy felhasználó a corp.bmcontoso.com IssuerUri kell lennie **http://bmcontoso.com/adfs/services/trust.**  Azonban a standard szabály az Azure AD fent megvalósított hoz létre a jogkivonatot kibocsátó, az **http://corp.bmcontoso.com/adfs/services/trust.** amely nem azonos a tartomány szükséges érték, és a hitelesítés sikertelen lesz.
 
 ### <a name="how-to-enable-support-for-sub-domains"></a>Altartományok támogatásának engedélyezése
-Ahhoz, hogy elkerüléséhez az AD FS függőentitás-megbízhatóságot Microsoft Online frissíteni kell.  Ehhez konfigurálnia kell egyéni jogcímszabályt, hogy azt törli a felhasználói UPN-utótagot a bármely altartományok ki az egyéni kibocsátó érték kiszámításakor. 
+Ahhoz, hogy elkerüléséhez az AD FS függőentitás-megbízhatóságot Microsoft Online frissíteni kell.  Ehhez konfigurálnia kell egyéni jogcímszabályt, hogy azt törli a felhasználói UPN-utótagot a bármely altartományok ki az egyéni kibocsátó érték kiszámításakor.
 
 A következő jogcím fog tegye a következőket:
 
     c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
 
 [!NOTE]
-A reguláris kifejezés utolsó számát a hány szülő tartományt, a legfelső szintű tartomány van beállítva. Itt az i bmcontoso.com rendelkezik, ezért két szülő tartomány szükség. Ha három szülő tartományok tartandó volt-e (pl.: corp.bmcontoso.com), majd a szám kellett volna lennie három. Eventualy széles jelezni lehet, az egyeztetés mindig lesz a tartományok maximálisan megengedett kereséséhez. "a(z) {2,3}" fog egyezni a két-három tartományok (pl.: bmfabrikam.com és corp.bmcontoso.com).
+A reguláris kifejezés utolsó számát a hány szülő tartományt, a legfelső szintű tartomány van beállítva. Itt az i bmcontoso.com rendelkezik, ezért két szülő tartomány szükség. Ha három szülő tartományok tartandó volt-e (pl.: corp.bmcontoso.com), majd a szám kellett volna lennie három. Végül egy is fel kell tüntetni, az egyeztetés mindig lesz a tartományok maximálisan megengedett kereséséhez. "a(z) {2,3}" fog egyezni a két-három tartományok (pl.: bmfabrikam.com és corp.bmcontoso.com).
 
 A következő lépésekkel adja hozzá az altartományok támogatásához egyéni jogcímleírásokat.
 
@@ -152,14 +152,13 @@ A következő lépésekkel adja hozzá az altartományok támogatásához egyén
 2. Kattintson jobb gombbal a Microsoft Online függő Entitás megbízhatóságát, majd válassza ki a jogcímszabályok szerkesztése
 3. Válassza ki a harmadik jogcímszabály, és cserélje le ![jogcímszabályok szerkesztése](./media/active-directory-multiple-domains/sub1.png)
 4. Cserélje le a jelenlegi jogcímek:
-   
+
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
-   
+
        with
-   
+
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
 
     ![Cserélje ki a jogcímet](./media/active-directory-multiple-domains/sub2.png)
 
 5. Kattintson az OK gombra.  Az Alkalmaz gombra.  Kattintson az OK gombra.  Zárja be az AD FS felügyeleti konzolt.
-

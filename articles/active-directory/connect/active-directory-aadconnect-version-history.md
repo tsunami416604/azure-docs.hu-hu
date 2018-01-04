@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/14/2017
 ms.author: billmath
-ms.openlocfilehash: 76415de270ddd6eef0100263e5c8db8e69ff500f
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: ff43edc9799670fd90beaef1dbe4db48b2e762e5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
@@ -48,7 +48,7 @@ Egy fokozása hozzá lett adva az Azure AD Connect verzió 1.1.654.0 (és után)
 - Ügyfeleink az Azure AD Connect egy korábbi verziójából származó 1.1.654.0 (vagy után), az engedély a módosításokat nem lehet visszamenőleges alkalmazva a frissítés előtt létrehozott meglévő Tartományi fiókot. Ezek csak meg kell alkalmazni, a frissítés után létrehozott új AD DS fiókok. Ez akkor fordul elő, amikor új AD-erdőhöz kell szinkronizálni az Azure AD hozzáadni kívánt.
 
 >[!NOTE]
->Ez a kiadás csak a biztonsági rés az Azure AD Connect, ahol a szolgáltatás fiók a telepítési folyamat által létrehozott új telepítésére. Meglévő telepítésére, és azokban az esetekben, ahol meg kell adnia a fiók saját kezűleg hogy sould győződjön meg arról, hogy a biztonsági rés nem létezik.
+>Ez a kiadás csak a biztonsági rés az Azure AD Connect, ahol a szolgáltatás fiók a telepítési folyamat által létrehozott új telepítésére. Meglévő telepítésére, és azokban az esetekben, ahol meg kell adnia a fiók saját magának akkor győződjön meg arról, hogy a biztonsági rés nem létezik.
 
 #### <a name="lock"></a>Az Active Directory tartományi szolgáltatások fiók eléréséhez zárolását
 A következő engedély módosítások alkalmazásával segítse a helyszíni AD DS-fiókjához való hozzáférés zárolása AD:  
@@ -57,7 +57,7 @@ A következő engedély módosítások alkalmazásával segítse a helyszíni AD
 *   Távolítsa el az adott objektum ACE-k meghatározott önmagára kivételével minden ACE-k. Szeretnénk az alapértelmezett engedélyek mindaddig módosulna, amikor a saját MAGA.
 *   Ezek az engedélyek hozzárendelése:
 
-Típus     | Név                          | Hozzáférés               | A következőkre vonatkozik
+Típus     | Name (Név)                          | Hozzáférés               | Erre vonatkozik
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
@@ -564,7 +564,7 @@ AD FS-Szolgáltatáskezelés
 * Rögzített hibát, amely azt eredményezi, hogy meghiúsuljon, ha továbbítani keresztül hitelesítés van beállítva, de az összekötő regisztrálása meghiúsul az Azure AD Connect varázslót.
 * Megtörtént egy probléma javítása mely okok Ha asztali SSO szolgáltatás engedélyezve van a kijelölt bejelentkezési módszert ellenőrzésének kihagyását az Azure AD Connect varázslót.
 
-Jelszó alaphelyzetbe állítása
+Jelszó visszaállítása
 * Megtörtént egy probléma javítása miatt előfordulhat, hogy az Azure AAD-csatlakozás kiszolgáló próbálja meg ismét csatlakozni, ha a kapcsolat egy tűzfal vagy a proxy következtében leállt.
 
 **Új funkciók fejlesztései:**
@@ -579,7 +579,7 @@ AD FS-Szolgáltatáskezelés
 * AD FS telepítése során mostantól megadhatja a meglévő csoportosan felügyelt szolgáltatásfiók (csoportosan felügyelt szolgáltatásfiók).
 * Most már beállíthat SHA-256-ot az aláírás-kivonatoló algoritmussal az Azure AD közvetítőpartneri megbízhatósághoz.
 
-Jelszó alaphelyzetbe állítása
+Jelszó visszaállítása
 * A funkció a termék engedélyezéséhez környezetekben, ahol szigorúbb tűzfalszabályok bevezetett fejlesztései.
 * Azure Service Bus továbbfejlesztett kapcsolat megbízhatóságát.
 
@@ -919,5 +919,5 @@ Kiadás dátuma: 2014. szeptember
 
 **Az Azure AD Sync eredeti kiadását.**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

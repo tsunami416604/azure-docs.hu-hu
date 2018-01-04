@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/20/2017
-ms.author: masaran;trinadhk;pullabhk;markgal
-ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: masaran;trinadhk;pullabhk;markgal;adigan
+ms.openlocfilehash: addb4312ce1eb57ce86afae449eb3d31d0037418
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Számítási feladatok biztonsági mentésének előkészítése az Azure Backup Serverrel
 > [!div class="op_single_selector"]
@@ -57,6 +57,7 @@ Ha nem szeretné, hogy az Azure-ban az alap server futtatásához, a kiszolgál�
 
 | Operációs rendszer | Platform | SKU |
 |:--- | --- |:--- |
+| Windows Server 2016 és a legújabb szervizcsomag-verzió |64 bit |Standard, Datacenter, Essentials (MABS v2 és újabb verziók esetében) |
 | Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Foundation |
 | Windows Server 2012 és a legújabb szervizcsomagok |64 bit |Datacenter, Foundation, Standard |
 | Windows Storage Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |

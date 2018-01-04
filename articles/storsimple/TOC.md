@@ -38,7 +38,6 @@
 #### [ACR-ek kezelése](storsimple-virtual-array-manage-acrs.md)
 #### [Feladatok kezelése](storsimple-virtual-array-manage-jobs.md)
 #### [Az eszköz jelszavának módosítása](storsimple-virtual-array-change-device-admin-password.md)
-#### [Az MPIO konfigurálása Windows Server-gazdagépen](storsimple-virtual-array-configure-mpio-windows-server.md)
 #### [Monitorozás riasztások segítségével](storsimple-virtual-array-manage-alerts.md)
 #### [Diagnosztika és hibaelhárítás](storsimple-virtual-array-diagnose-problems.md)
 #### [Naplótámogatási kérelem](storsimple-virtual-array-log-support-ticket.md)
@@ -229,10 +228,10 @@
 ### [A CSP kibocsátási megjegyzései](https://partner.microsoft.com/Support/whats-new)
 ### [StorSimple CSP-hez: gyakori kérdések](storsimple-partner-csp-faq.md)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [StorSimple 5000-7000-es sorozat](http://onlinehelp.storsimple.com)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Marketing blog](http://blogs.technet.com/b/cis/)
 ## [Marketing](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)

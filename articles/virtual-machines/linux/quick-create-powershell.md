@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 10/13/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 3b93cdfbfb143c1597d190d87d270b5e6ede9537
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 8282c30a2b9aa4341f3e7d720f2d3cfc0b4a6fa0
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-powershell"></a>Linux rendszerű virtuális gép létrehozása PowerShell segítségével
 
@@ -149,7 +149,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-## <a name="view-the-ngix-welcome-page"></a>Az NGINX kezdőlapjának megtekintése
+## <a name="view-the-nginx-welcome-page"></a>Az NGINX kezdőlapjának megtekintése
 
 Most, hogy az NGINX telepítve van, és a 80-as port meg van nyitva a virtuális gépén az internet irányából, tetszőleges böngészőt használhat az alapértelmezett NGINX-kezdőlap megtekintéséhez. Ügyeljen arra, hogy az alapértelmezett oldalt a fentebb dokumentált nyilvános IP-cím használatával keresse fel. 
 
@@ -163,7 +163,7 @@ Ha már nincs rá szükség, a [Remove-AzureRmResourceGroup](/powershell/module/
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, egy hálózati biztonsági csoport szabályát, valamint telepített egy webkiszolgálót. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
 

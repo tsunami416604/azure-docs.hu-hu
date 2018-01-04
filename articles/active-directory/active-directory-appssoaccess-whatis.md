@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: b577a427590b058319f9315a6d54deb6ec1c7634
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4fd80e147f3f24676bde77a1aa4e9f29432f544d
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?
 Egyszeri bejelentkezés azt jelenti, hogy nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat, végre kell hajtani, üzleti által csak akkor, ha egyetlen felhasználói fiókkal jelentkezik be. Miután bejelentkezett, van-e hozzáférési összes alkalmazást szolgáltatásbeli hitelesítéshez szükséges nélkül van szüksége (pl. Adjon meg egy jelszót) még egyszer.
@@ -54,7 +54,7 @@ Ha egy felhasználó hitelesített olyan alkalmazás, ezek is csak egy fiók bej
  Egyszeri bejelentkezés módokban és a kiépítés alább olvashat.
 
 ### <a name="federated-single-sign-on"></a>Összevont egyszeri bejelentkezést.
-Összevont egyszeri bejelentkezés lehetővé teszi, hogy bejelentkezés lehetővé teszi a felhasználók a szervezet számára automatikusan megtörténik a külső SaaS-alkalmazás által a felhasználói fiók adatait az Azure AD használatával az Azure AD.
+Összevont egyszeri bejelentkezés lehetővé teszi a felhasználók a szervezet számára automatikusan megtörténik a külső SaaS-alkalmazás által a felhasználói fiók adatait az Azure AD használatával az Azure AD.
 
 Ebben a forgatókönyvben már kijelentkezett az Azure AD-be, és egy külső SaaS-alkalmazás által vezérelt erőforrások eléréséhez összevonási szükségtelenné teszi a felhasználónak újra hitelesíteni kell.
 

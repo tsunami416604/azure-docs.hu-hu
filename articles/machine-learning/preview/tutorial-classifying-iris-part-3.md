@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 70286104db1b70aebd2f8b0feb4a0854b3cc2bb9
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
-ms.translationtype: HT
+ms.openlocfilehash: 0a83c1a74b4a0ee15cbcb082b9d6b9cfd3d81d09
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Írisz osztályozása, 3. rész: Modell üzembe helyezése
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
@@ -160,6 +160,9 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A modell üz
    ``` 
 
    A kimenet harmadik sora a következő: **"registrationState": "Registering"**. Várjon néhány pillanatot, és ismételje meg a **show** parancsot, amíg a kimenet a következő nem lesz: **"registrationState": "Registered"**.
+
+   >[!NOTE] 
+   Ha telepíti az ACS-fürthöz, regisztrálnia kell a **Microsoft.ContainerService** erőforrás-szolgáltató, valamint a pontos ugyanezt a megközelítést használ.
 
 3. Hozza létre a környezetet. Ezt a lépést környezetenként egyszer kell futtatnia. Például egyszer kell futtatni fejlesztési, és egyszer éles környezetben. Ehhez az első környezethez használja a _helyi módot_. A következő parancsban a `-c` vagy a `--cluster` kapcsolóval egy _fürtmódú_ környezetet is létrehozhat később.
 
@@ -336,7 +339,7 @@ A futó **irisapp** webszolgáltatás teszteléséhez használjon egy JSON kódo
       ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A háromrészes oktatóanyag-sorozat jelen, harmadik részében megtanulhatta, hogyan használhatók az Azure Machine Learning-szolgáltatások a következőkre:
 > [!div class="checklist"]
 > * A modellfájl megkeresése

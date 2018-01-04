@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 6247e5a9b3438b45c1694ee3b21d3891faa325a9
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 23f111bef6a68115e4474f3c13e91d69d7e89e1c
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -42,6 +42,9 @@ Tekintse át a telepítési hiba okának megállapításához installer.log.
 
 > [!Note]  
 > Az ügynök telepítése sikertelen lesz, ha a számítógép be van állítva a Microsoft Update segítségével, és nem fut a Windows Update szolgáltatás.
+
+<a id="agent-installation-websitename-failure"></a>**Az ügynök telepítése sikertelen, és ez a hiba: "Tároló szinkronizálási ügynök varázsló megszakadt"**  
+A probléma akkor fordulhat elő, ha az IIS-webhely alapértelmezett neve megváltozott. A probléma megoldásához nevezze át az IIS alapértelmezett webhelye mint a "Default Web Site", majd próbálja megismételni a telepítést. A problémát egy jövőbeli frissítéssel, az ügynök javítja. 
 
 <a id="server-registration-missing"></a>**Kiszolgáló nem szerepel a regisztrált kiszolgálókat, az Azure-portálon**  
 Ha a kiszolgáló nem szerepel a **regisztrálva kiszolgálók** egy tárolási szinkronizálási szolgáltatás:
@@ -208,7 +211,7 @@ Ha a hiba nem szűnik meg, futtassa a AFSDiag eszköz:
 5. Reprodukálja a hibát. Amikor végzett, adja meg **D**.
 6. A megadott kimeneti könyvtár naplókat tartalmazó .zip fájl és nyomkövetési fájlok kerülnek.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 - [Gyakori kérdések az Azure Files](storage-files-faq.md)
 - [A Windows Azure fájlok problémák megoldásához](storage-troubleshoot-windows-file-connection-problems.md)
 - [Azure-fájlok kapcsolatos problémák elhárítása a Linux](storage-troubleshoot-linux-file-connection-problems.md)

@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 9/29/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 304db0cdcf650697f8e7d328b5f7214ab5ccef8c
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 4a917fbbc1beff9a8b16ba044052cc9864cd9728
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -211,7 +211,7 @@ Az Azure Backup *védett példányonként* 9999 helyreállítási pontos felső 
 
 ## <a name="what-is-a-protected-instance"></a>Mi az a védett példány?
 A védett példány egy általános elnevezés az olyan Windows-számítógépekre, -kiszolgálókra (fizikai vagy virtuális) vagy SQL-adatbázisokra, amelyek úgy vannak konfigurálva, hogy biztonsági mentést végezzenek az Azure-ba. A példány onnantól tekinthető védettnek, hogy konfigurálja a számítógép, kiszolgáló vagy adatbázis biztonsági mentésére vonatkozó házirendet, és létrehozott egy biztonsági másolatot az adatokról. Az adott védett példány rákövetkező biztonsági másolatai (az úgynevezett helyreállítási pontok), növelik a foglalt tárhely méretét. Védett példányonként 9999 helyreállítási pontot hozhat létre. Ha töröl egy helyreállítási pontot a tárterületről, az nem számít az összesen 9999 helyreállítási pont közé.
-Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskiszolgálók, adatbázisok, valamint Windows operációs rendszert futtató személyi számítógépek. Példa:
+Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskiszolgálók, adatbázisok, valamint Windows operációs rendszert futtató személyi számítógépek. Például:
 
 * Egy Hyper-V vagy Azure IaaS hipervizorhálót futtató virtuális gép. A virtuális gép vendég operációs rendszerei lehetnek Windows Server vagy Linux rendszerek.
 * Alkalmazáskiszolgáló: Az alkalmazáskiszolgáló lehet egy fizikai vagy virtuális gép, amely a Windows Servert futtatja, valamint olyan számítási feladatokat, amelyekről biztonsági másolatot kell készíteni. Gyakori számítási feladat a Microsoft SQL Server, a Microsoft Exchange Server, a Microsoft SharePoint Server, valamint a Windows Server Fájlkiszolgáló szerepköre. A számítási feladatok biztonsági mentéséhez a System Center Data Protection Manager (DPM) vagy az Azure Backup Server szükséges.
@@ -244,7 +244,7 @@ A következő fogalmak segíthetnek a fontos döntések meghozatalában a bizton
 | Helyreállítási időre vonatkozó célkitűzés (RTO) |A helyreállítás vagy visszaállítás elvégzéséhez szükséges idő. |A nagyobb RPO miatt a biztonsági mentési megoldások által feldolgozandó adatmennyiség általában sokkal nagyobb, ami hosszabb RTO-khoz vezet. Napokba telhet például az adatok szalagokról való visszaállítása attól függően, hogy mennyi ideig tart a szalag szállítása egy külső helyről. |A vészhelyreállítási megoldások RTO-i sokkal rövidebbek, mert jobban szinkronban vannak a forrással. Kevesebb módosítást kell feldolgozni. |
 | Megőrzés |Az adatok tárolásának időtartama |A műveleti helyreállítást igénylő forgatókönyvekben (adatsérülés, véletlen fájltörlés, az operációs rendszer hibája) az adatok biztonsági másolatát általában legfeljebb 30 napig őrzi meg a rendszer.<br>A megfelelőség miatt lehet, hogy hónapokig vagy akár évekig kell tárolni az adatokat. Az adatok biztonsági másolata ideális az ilyen esetekben végzett archiváláshoz. |A vészhelyreállításhoz csak műveleti helyreállítási adatokra van szükség, ami általában néhány órát vagy legfeljebb egy napot vesz igénybe. A DR (vészhelyreállítási) megoldásokban használt részletes adatrögzítés miatt a DR-adatok hosszú távú megőrzése nem javasolt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő oktatóanyagok lépésről lépésre ismertetik a Windows Serveren lévő adatok vagy az Azure-beli virtuális gépek védelmét:
 
 * [Fájlok és mappák biztonsági mentése](backup-try-azure-backup-in-10-mins.md)
@@ -254,7 +254,7 @@ Egyéb számítási feladatok védelméről az alábbi cikkekből tájékozódha
 
 * [A Windows Server biztonsági mentése](backup-configure-vault.md)
 * [Alkalmazás számítási feladatainak biztonsági mentése](backup-azure-microsoft-azure-backup.md)
-* [Azure IaaS virtuális gépek biztonsági mentése](backup-azure-vms-prepare.md)
+* [Azure IaaS virtuális gépek biztonsági mentése](backup-azure-arm-vms-prepare.md)
 
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png

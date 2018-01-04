@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: glenga
-ms.openlocfilehash: c170b3e4addaed2ec870c4a518e8f74b3ca4b952
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: f00bda8e4700676e70f958eff511495f0ea564b1
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
 
@@ -486,7 +486,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a | meg kell `blob`. |
-|**iránya** | n/a | Meg kell `in` egy bemeneti kötés vagy egy kimeneti kötés. A kivételeket jeleztük a [használati](#input--output---usage) szakasz. |
+|**iránya** | n/a | Meg kell `in` egy bemeneti kötés vagy `out` egy kimeneti kötés. A kivételeket jeleztük a [használati](#input--output---usage) szakasz. |
 |**név** | n/a | A blob függvény kódban jelölő neve.  Beállítása `$return` hivatkozni, a függvény visszatérési értéke.|
 |**elérési út** |**BlobPath** | A blob elérési útja. | 
 |**kapcsolat** |**Kapcsolat**| A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak a blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|

@@ -2,31 +2,26 @@
 title: "Azure rövid útmutató – Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a Pythonnal | Microsoft Docs"
 description: "Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob-tárolókra és -tárolókról a Python használatával"
 services: storage
-documentationcenter: storage
 author: ruthogunnnaike
-manager: cwatson
-editor: tysonn
-ms.assetid: 
-ms.custom: mvc
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/12/2017
 ms.author: v-ruogun
-ms.openlocfilehash: 4a197af41f5450d84e1c18e15198d1febb02bab1
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 50f43e6ef9ee60cbf489bb8d0c1c64ca61a393e1
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/02/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-python"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a Pythonnal
 A rövid útmutató azt ismerteti, hogyan használható a Python blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ben található tárolóban. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez: 
+A gyorsútmutató elvégzéséhez: 
 * Telepítse a [Pythont](https://www.python.org/downloads/).
 * Töltse le és telepítse a [Pythonhoz készült Azure Storage SDK-t](storage-python-how-to-use-blob-storage.md#download-and-install-azure-storage-sdk-for-python). 
 
@@ -166,7 +161,7 @@ os.remove(full_path_to_file)
 os.remove(full_path_to_file2)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Python használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
 

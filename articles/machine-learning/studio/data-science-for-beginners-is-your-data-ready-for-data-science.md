@@ -1,6 +1,6 @@
 ---
 title: "Készen állnak adatai az elemzésre? Az adatok kiértékelése - Azure Machine Learning |} Microsoft Docs"
-description: "Ismerje meg, hogy az adatok készen álljon a adattudomány 4 feltételeit. Videó 2 kezdőknek Adattudomány rendelkezik konkrét, meghatározott példák segítséget az alapszintű adatok kiértékelése."
+description: "Négy feltételek adatait meg kell felelniük való adattudomány készen áll. Ez a videó rendelkezik konkrét, meghatározott példák segítséget az alapszintű adatok kiértékelése."
 keywords: "a vonatkozó adatok adatok kiértékelése, adatok, adatok feltételek, készen áll a adatok előkészítése"
 services: machine-learning
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2017
+ms.date: 01/03/2018
 ms.author: cgronlun
-ms.openlocfilehash: 9b5cf776981af0dff57195d5c7f1923b8d9a3862
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ab9462c4cc4573717450ce48028807960cecee9
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Készen állnak adatai az elemzésre?
 ## <a name="video-2-data-science-for-beginners-series"></a>2. Videó: Adattudomány kezdők sorozat
@@ -52,7 +52,7 @@ Igen adattudomány, ha nincsenek egyes lekéréses együtt szükséges összetev
 Igazolnia kell, amely adatokat:
 
 * Megfelelő
-* Csatlakoztatva
+* Csatlakozva
 * A pontos
 * Elegendő a használata
 
@@ -85,11 +85,11 @@ A következő igazolnia kell összetevője pontosságát. Az alábbiakban a nyil
 
 ![Hibás adatokat - adatok feltételek és pontos adatok](./media/data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
 
-Tekintse meg a cél a jobb felső részén. Az elem-macskaszem körül jobbra szoros csoportosítása van. Természetesen ez pontos. Furcsa viselkedése adattudomány nyelvén, a teljesítmény a cél jobb alá is figyelembe veszi a pontos.
+Tekintse meg a cél a jobb felső részén. Közvetlenül a bikák szem körül szoros csoportosítása van. Természetesen ez pontos. Furcsa viselkedése adattudomány nyelvén, a teljesítmény a cél jobb alá is figyelembe veszi a pontos.
 
-Ha ezen nyilak közepére meg leképezni, mutatunk be, hogy a rendszer nagyon közel az elem-macskaszem. A nyilak helyezkednek el minden, a cél körül, nem pontos most minősül, de azok még része a elem-macskaszem, így pontos most számít.
+Ha ezen nyilak közepére meg leképezni, mutatunk be, hogy a rendszer nagyon közel a bikák követheti. A nyilak helyezkednek el minden, a cél körül, nem pontos most minősül, de azok még része a bikák szem, pontos most számít.
 
-Most tekintse meg a bal felső cél. Itt a nyilak találati nagyon közel együtt szoros csoportosítása. Pontos fontosságúak, de mivel a központ ki az elem-macskaszem módon pontatlan fontosságúak. És a természetesen a nyilak a bal alsó célzott pontatlan, mind a nem pontos. Ez archer további eljárás szükséges.
+Most tekintse meg a bal felső cél. Itt a nyilak találati nagyon közel együtt szoros csoportosítása. Pontos fontosságúak, de mivel a központ ki a bikák szem módon pontatlan fontosságúak. És a természetesen a nyilak a bal alsó célzott pontatlan, mind a nem pontos. Ez archer további eljárás szükséges.
 
 ## <a name="do-you-have-enough-data-to-work-with"></a>Elegendő adatokra van?
 Végezetül összetevő #4 - igazolnia kell a megfelelő adatokat.
@@ -108,6 +108,6 @@ A megfelelő, csatlakoztatott, pontos adatokat, és ahhoz, hogy rendelkezik mind
 
 Ügyeljen arra, hogy tekintse meg a többi négy videók *Adattudomány kezdőknek* a Microsoft Azure Machine Learning.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Próbálja meg egy első adatok tudományos kísérletben a Machine Learning Studio](create-experiment.md)
 * [A Microsoft Azure Machine Learning bemutatása beolvasása](what-is-machine-learning.md)
