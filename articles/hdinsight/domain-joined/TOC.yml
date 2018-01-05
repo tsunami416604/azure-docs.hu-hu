@@ -12,8 +12,6 @@
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Hive-házirendek konfigurálása
       href: apache-domain-joined-run-hive.md
-    - name: Kapacitástervezés
-      href: ../hdinsight-capacity-planning.md
       maintainContext: true
     - name: Tartományhoz csatlakoztatott fürtök felügyelete
       href: apache-domain-joined-manage.md
@@ -64,7 +62,7 @@
       href: /rest/api/hdinsight/
     - name: REST (Spark)
       href: /rest/api/hdinsightspark/
-- name: Erőforrások
+- name: További források
   items:
     - name: Kibocsátási megjegyzések
       href: ../hdinsight-release-notes.md
