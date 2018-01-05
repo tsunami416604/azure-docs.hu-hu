@@ -32,7 +32,7 @@ A felügyelt lemezek Azure Backup szolgáltatás használatával hozzon létre e
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
 Felügyelt lemezek használatakor az alábbi számlázási szempontok érvényesek:
-* Tárolási típus
+* Tárolótípus
 
 * Lemezméret
 
@@ -51,9 +51,9 @@ Vegyük a következő részletes bemutatása.
 
 Íme egy prémium szintű felügyelt lemezes a lemezméret:
 
-| **Prémium szintű kezelt <br>lemez típusa** | **P4** | **P6** |**P10** | **P20** | **P30** | **P40** | **P50** | 
-|------------------|---------|---------|---------|---------|----------------|----------------|----------------|  
-| Lemezméret        | 32 GB   | 64 GB   | 128 GB  | 512 GB  | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| **Prémium szintű kezelt <br>lemez típusa** | **P4** | **P6** |**P10** | **P15** | **P20** | **P30** | **P40** | **P50** | 
+|------------------|---------|---------|---------|---------|---------|----------------|----------------|----------------|  
+| Lemezméret        | 32 GB   | 64 GB   | 128 GB  | 256 GB  | 512 GB  | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
 
 
 Íme egy standard szintű felügyelt lemezes a lemezméret:
@@ -111,7 +111,7 @@ Nincsenek titkosítási és beszéljék meg, állapotalapú felügyelt lemezek k
 
 Az Azure Disk Encryption lehetővé teszi, hogy az operációsrendszer- és adatlemezek egy infrastruktúra-szolgáltatási virtuális gép által használt titkosítását. Ez magában foglalja a felügyelt lemezek. A Windows a meghajtók titkosítása szabványos BitLocker titkosítás technológia használatával. Linux a lemez titkosítása a DM-Crypt technológia használatával. Ez integrálva van az Azure Key Vault lehetővé teszi a lemez titkosítási kulcsok kezeléséhez, és szabályozhatja. További információkért lásd: [lemez titkosítás a Windows Azure és a Linux IaaS virtuális gépeket](../articles/security/azure-security-disk-encryption.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyelt lemezek kapcsolatos további információkért tekintse meg a következő cikkekben talál.
 
