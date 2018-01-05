@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/16/2017
 ms.author: pratshar
-ms.openlocfilehash: 9902af83125f596f6dd5a1a6c955d00e9b5a87bc
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 1e85db7ce866943696979f61c0aa5104217acc62
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="test--failover-to-azure-in-site-recovery"></a>Feladatátvételi teszt Azure-ba, a Site Recovery szolgáltatásban
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/18/2017
 
 Ez a cikk ismerteti a vész-helyreállítási részletezési az Azure-bA a Site Recovery feladatátvételi teszt futtatásához.  
 
-A feladatátvételi teszt végrehajtásához ellenőrizheti a replikáció és a vészhelyreállítás reecovery stratégia adatvesztés vagy leállás nélkül futtatja. Feladatátvételi teszt nem befolyásolja a folyamatban lévő replikáció, vagy az éles környezetben. Egy adott virtuális gép (VM), vagy a feladatátvételi teszt futtathatja egy [helyreállítási terv](site-recovery-create-recovery-plans.md) több virtuális gépeket tartalmazó. 
+A feladatátvételi teszt végrehajtásához ellenőrizheti a replikáció és a vész-helyreállítási stratégiát adatvesztés vagy leállás nélkül futtatja. Feladatátvételi teszt nem befolyásolja a folyamatban lévő replikáció, vagy az éles környezetben. Egy adott virtuális gép (VM), vagy a feladatátvételi teszt futtathatja egy [helyreállítási terv](site-recovery-create-recovery-plans.md) több virtuális gépeket tartalmazó. 
 
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
@@ -119,5 +119,5 @@ Azure virtuális gépek a feladatátvételt követően RDP segítségével való
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután megadta a vész-helyreállítási részletezési, további információ más típusú [feladatátvételi](site-recovery-failover.md).

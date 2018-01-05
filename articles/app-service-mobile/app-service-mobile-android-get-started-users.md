@@ -3,8 +3,8 @@ title: "Hitelesítés hozzáadása az Android a Mobile Apps |} Microsoft Docs"
 description: "Útmutató az Azure App Service Mobile Apps szolgáltatásának segítségével hitelesíti a felhasználókat identitás-szolgáltatóktól, beleértve a Google, a Facebook, a Twitter és a Microsoft számos az Android-alkalmazás."
 services: app-service\mobile
 documentationcenter: android
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.service: app-service-mobile
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
-ms.author: glenga
-ms.openlocfilehash: 3d38482ebca736e4d7d0fe0b1b4b5dd0220de5b4
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.author: crdun
+ms.openlocfilehash: 4ee71e00807fcfe698a7e965979434f338f5b870
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-authentication-to-your-android-app"></a>Hitelesítés hozzáadása az Android-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ebben az oktatóanyagban hozzáadhat hitelesítési a todolist gyorsútmutató-projekt az Android támogatott identitásszolgáltató használatával. Ez az oktatóanyag alapul a [Ismerkedés a Mobile Apps] oktatóanyag, amely először el kell végeznie.
 
 ## <a name="register"></a>Hitelesítés az alkalmazás regisztrálása és konfigurálása az Azure App Service
@@ -60,7 +60,7 @@ Ezt követően a felhasználók hitelesítésére, mielőtt kérelmezi erőforr�
 ## <a name="cache-tokens"></a>Gyorsítótár a hitelesítési tokenek az ügyfélen
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy elvégezte az oktatóanyag az egyszerű hitelesítés, fontolja meg valamelyik az alábbi oktatóanyagok folytatása:
 
 * [Leküldéses értesítések hozzáadása az Android-alkalmazás](app-service-mobile-android-get-started-push.md).

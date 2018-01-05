@@ -2,8 +2,8 @@
 title: "Az iOS-mobilalkalmazások kapcsolat nélküli szinkronizálás engedélyezése |} Microsoft Docs"
 description: "Ismerje meg az iOS-alkalmazások az Azure App Service mobile apps szolgáltatásban való gyorsítótár és a szinkronizálási kapcsolat nélküli használata."
 documentationcenter: ios
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 44c0d26b2d7d28322d436d4bda319d728c31a635
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: b676b51241e4883fb1b4c40caba8e281bfa68a4c
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Az iOS-mobilalkalmazások kapcsolat nélküli szinkronizálás engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -163,7 +163,7 @@ A kapcsolat nélküli szinkronizálás szolgáltatás használatakor a három re
 | id | 64 egész szám |
 | itemId | Karakterlánc |
 | properties | Bináris adatok |
-| Tábla | Karakterlánc |
+| tábla | Karakterlánc |
 | tableKind | 16 egész szám |
 
 
@@ -187,7 +187,7 @@ A kapcsolat nélküli szinkronizálás szolgáltatás használatakor a három re
 | id |Karakterlánc |
 | kulcs |Karakterlánc |
 | keyType |64 egész szám |
-| Tábla |Karakterlánc |
+| tábla |Karakterlánc |
 | érték |Karakterlánc |
 
 ### <a name="data-table"></a>Adattábla
@@ -197,11 +197,11 @@ A kapcsolat nélküli szinkronizálás szolgáltatás használatakor a három re
 | Attribútum | Típus | Megjegyzés |
 | --- | --- | --- |
 | id | Karakterlánc, kötelezőként megjelölt |elsődleges távoli tárolóban levő kulccsal. |
-| Végezze el | Logikai érték | Tennivalók elem mező |
+| Végezze el | Logikai | Tennivalók elem mező |
 | Szöveg |Karakterlánc |Tennivalók elem mező |
 | createdAt | Dátum | (választható) Leképezve **createdAt** rendszer tulajdonság |
 | updatedAt | Dátum | (választható) Leképezve **updatedAt** rendszer tulajdonság |
-| Verzió | Karakterlánc | (választható) Ütközések, verzióra maps érzékeli |
+| verzió: | Karakterlánc | (választható) Ütközések, verzióra maps érzékeli |
 
 ## <a name="setup-sync"></a>Az alkalmazás szinkronizálási viselkedésének módosítása
 Ebben a szakaszban módosítani az alkalmazásnak, hogy nincs szinkronban az alkalmazás indítása vagy beszúrása, és ha a elemek frissítését. A szinkronizált csak akkor, ha a frissítés kézmozdulat gombra történik.
@@ -260,7 +260,7 @@ A folyamatban lévő léptető jelenik meg.
 
 7. Nézet a **TodoItem** újra adatokat. Az új és módosított Tennivalólista elemein meg kell jelennie.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A kapcsolat nélküli szinkronizálás szolgáltatást támogató használtuk az `MSSyncTable` felületet, és inicializálva `MSClient.syncContext` a helyi tárolójába. Ebben az esetben a helyi tárolójába lett egy alapvető adatok-alapú adatbázist.
 
 A Core helyi tárolóban használatakor meg kell adnia a több táblákban a [javítsa ki a rendszer tulajdonságai](#review-core-data).

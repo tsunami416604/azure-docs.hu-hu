@@ -3,7 +3,7 @@ title: "Az Azure AD alkalmazás Proxy távoli asztal közzététele |} Microsoft
 description: "Alapvető tudnivalók az Azure AD-alkalmazásproxy összekötők ismerteti."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: kgremban
+ms.author: daveba
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 06d217b38ff8e33bd6c5a42a93aa532c0d1efa4d
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 44b54ad4331d48202044316486a5b1d1ef9202d2
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxy távoli asztal közzététele
 
@@ -115,8 +115,8 @@ A cikkben ismertetett konfigurálása a Windows 7-es vagy 10, amelyek az Interne
 
 | Hitelesítési módszer | Támogatott ügyfél-konfigurációja |
 | --------------------- | ------------------------------ |
-| Előhitelesítés során    | Windows 7/10 Internet Explorer + a távoli asztali szolgáltatások ActiveX bővítmény használatával |
-| PASSTHROUGH | Bármely más operációs rendszer, amely támogatja a Microsoft távoli asztal alkalmazás |
+| Előhitelesítés    | Windows 7/10 Internet Explorer + a távoli asztali szolgáltatások ActiveX bővítmény használatával |
+| Átengedés | Bármely más operációs rendszer, amely támogatja a Microsoft távoli asztal alkalmazás |
 
 Az előhitelesítési folyamat kínál a közvetlenül csatlakoztatott adatfolyam-nál több biztonsági szempontból előnyökkel járhat. Az Azure AD hitelesítési szolgáltatások, mint az egyszeri bejelentkezés, a feltételes hozzáférés és a kétlépéses ellenőrzést előhitelesítési használhatja a helyszíni erőforrások. Akkor is győződjön meg arról, hogy csak hitelesített forgalom éri el a hálózaton.
 
@@ -124,7 +124,7 @@ Az előhitelesítési folyamat kínál a közvetlenül csatlakoztatott adatfolya
 1. A [közzététel a távoli asztali állomás végpont](#publish-the-rd-host-endpoint) 1. lépés:, a előhitelesítési módszer beállítása **csatlakoztatott**.
 2. A [alkalmazásproxy-forgalom közvetlen távoli asztali szolgáltatások](#direct-rds-traffic-to-application-proxy), hagyja ki teljesen a 8. lépés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure AD alkalmazásproxy SharePoint távoli hozzáférés engedélyezése](application-proxy-enable-remote-access-sharepoint.md)  
 [Biztonsági szempontok az alkalmazások az Azure AD-alkalmazásproxy használatával távelérése](application-proxy-security-considerations.md)

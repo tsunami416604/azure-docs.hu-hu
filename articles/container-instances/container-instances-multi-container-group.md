@@ -9,17 +9,20 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5de818b0b47ee3345ddbc41455f5e953c5b96aa4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 2ffebf06e2e013f909410fa4861420a5ae3d4dcf
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="deploy-a-container-group"></a>A tároló csoport telepítése
 
-Azure-tároló példányokon alakzatot használatával egyetlen állomásra több tároló telepítését támogatja a *a tárolócsoport*. Ez akkor hasznos, ha egy alkalmazás oldalkocsi naplózási, figyelési vagy bármely egyéb konfigurációs felépítése amikor egy szolgáltatás kell egy második csatolt folyamat.
+Azure-tároló példányokon alakzatot használatával egyetlen állomásra több tároló telepítését támogatja a [a tárolócsoport](container-instances-container-groups.md). Ez akkor hasznos, ha egy alkalmazás oldalkocsi naplózási, figyelési vagy bármely egyéb konfigurációs felépítése amikor egy szolgáltatás kell egy második csatolt folyamat.
 
 Ez a dokumentum végigvezeti egy egyszerű több tároló oldalkocsi konfigurációs fut az Azure Resource Manager-sablon üzembe helyezésével.
+
+> [!NOTE]
+> Több tárolócsoportok jelenleg csak Linux tárolók. Dolgozunk ennek érdekében minden funkció Windows tárolók, amíg a jelenlegi platform különbségek található [kvótái és az Azure-tároló példányok régiónkénti elérhetőség](container-instances-quotas.md).
 
 ## <a name="configure-the-template"></a>A sablon konfigurálása
 

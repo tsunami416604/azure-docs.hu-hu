@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 1/4/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 709a17b6d14e896fea7fce21e40a92e516e661c6
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 6801c5b62be08e4dcb32ad342b15e9ad3f3e20a8
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.lasthandoff: 12/18/2017
 
 <tr><td>**SDK telepítési utasításokat**</td><td>[Python SDK telepítési utasításokat](http://azure.github.io/azure-documentdb-python/)</td></tr>
 
-<tr><td>**Hozzájárul az SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
+<tr><td>**Hozzájárul az SDK**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-python)</td></tr>
 
 <tr><td>**Első lépések**</td><td>[Ismerkedés a Python SDK-val](sql-api-python-application.md)</td></tr>
 
@@ -53,6 +53,9 @@ ms.lasthandoff: 12/18/2017
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
+* Frissített hivatkozás Azure Cosmos DB helyett az Azure DocumentDB dokumentációját.
+
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 * Az SDK-verzió telepítéséhez a legújabb Azure Cosmos DB emulátorának elérhetősége a https://aka.ms/cosmosdb-emulator letölthető.
 
@@ -136,6 +139,7 @@ A Cosmos DB kivont SDK használatával a szolgáltatás vannak elutasította.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [2.3.1](#2.3.1) |2017. december 21. |--- |
 | [2.3.0](#2.3.0) |2017. november 10. |--- |
 | [2.2.1](#2.2.1) |29. szeptember, 2017 |--- |
 | [2.2.0](#2.2.0) |2017. május 10. |--- |
@@ -163,6 +167,6 @@ A Cosmos DB kivont SDK használatával a szolgáltatás vannak elutasította.
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 A Cosmos DB kapcsolatos további információkért lásd: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 
 

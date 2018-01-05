@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 01/03/2018
 ms.author: daveba
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 6e6db5937463062c3b5359ae4a226f48ce752417
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: eb5ea2825318d75b37cd0d51b0fac3c1c7454fa2
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS alkalmazások integrálása az Azure Active Directoryval
 
@@ -31,7 +31,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 
 ## <a name="saas-tutorials"></a>SaaS oktatóprogramok
 
-| embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
 | :---: | :--- | :--- |
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-andfrankly-tutorial.png)| [& frankly](active-directory-saas-andfrankly-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_AtTask.png)| [@Task](active-directory-saas-attask-tutorial.md)|
@@ -158,7 +158,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_Fuze.png)| [Fuze](active-directory-saas-fuze-tutorial.md)
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_GaggleAMP.png)| [GaggleAMP](active-directory-saas-gaggleamp-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_Gigya.png)| [Gigya](active-directory-saas-gigya-tutorial.md)|
-| ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_GitHub.png)| [GitHub](active-directory-saas-github-tutorial.md)
+| ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_GitHub.png)| [GitHubon](active-directory-saas-github-tutorial.md)
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Apps](active-directory-saas-google-apps-tutorial.md)|[Google Apps - a felhasználók átadása](active-directory-saas-google-apps-provisioning-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-greenhouse-tutorial.png)| [Üvegházhatást](active-directory-saas-greenhouse-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-grovo-tutorial.png) | [Grovo](active-directory-saas-grovo-tutorial.md)|
@@ -322,7 +322,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_SapHanaCloudPlatform.png)| [SAP HANA-felhő Platform](active-directory-saas-sap-hana-cloud-platform-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_SAPNetWeaver.png)| [SAP NetWeaver](active-directory-saas-sap-netweaver-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/saasapp_scalexenterprise.png)| [ScaleX Enterprise](active-directory-saas-scalexenterprise-tutorial.md)|
-| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-scclifecycle-tutorial.png)| [SCC életciklusa](active-directory-saas-scc-lifecycle-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-scclifecycle-tutorial.png)| [SCC életciklusa](active-directory-saas-scclifecycle-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-schoox-tutorial.png)| [Schoox](active-directory-saas-schoox-tutorial.md) 
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_Sciforma.png)| [Sciforma](active-directory-saas-sciforma-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/SaaSApp_SciQuestSpendDirector.png)| [SciQuest töltött igazgató](active-directory-saas-sciquest-spend-director-tutorial.md)|

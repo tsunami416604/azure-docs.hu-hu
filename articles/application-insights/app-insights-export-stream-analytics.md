@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 978af1a57a5fc3d9c95d517288a074c636874984
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ddaf7bf12854aa5f80c1d292613c3049850ca3ff
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Az Application Insights exportált adatok feldolgozása a Stream Analytics segítségével
 [Az Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) adatok feldolgozására ideális eszköz [Application Insights-ból exportált](app-insights-export-telemetry.md). A Stream Analytics segítségével olvasnak be adatokat különböző forrásokból. Az átalakítási és szűrje az adatokat és mosdók számos irányítja.
@@ -76,27 +76,27 @@ A folyamatos exportálás mindig kimenete adatokat egy Azure Storage-fiók, ezé
 Az események a blob-JSON formátumú fájlok kerülnek. Minden fájl tartalmazhat egy vagy több esemény. Ezért szeretnénk az esemény-adatok olvasása, és azt szeretnénk, ha a mezők szűrik. Nincsenek a különböző dolgok, azt megteheti az adatokat, de a terv ma Stream Analytics segítségével átadhatja az adatokat a Power bi-bA.
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Hozzon létre egy Azure Stream Analytics-példányt
-Az a [klasszikus Azure portálon](https://manage.windowsazure.com/), válassza ki az Azure Stream Analytics szolgáltatás, és hozzon létre egy új Stream Analytics-feladatot:
+Az a [Azure-portálon](https://portal.azure.com/), válassza ki az Azure Stream Analytics szolgáltatás, és hozzon létre egy új Stream Analytics-feladatot:
 
-![](./media/app-insights-export-stream-analytics/090.png)
+![](./media/app-insights-export-stream-analytics/SA001.png)
 
-![](./media/app-insights-export-stream-analytics/100.png)
+![](./media/app-insights-export-stream-analytics/SA002.png)
 
-Ha az új feladat jön létre, bontsa ki a hozzá tartozó részletek:
+Amikor új feladatot hoz létre, jelölje ki a **forrást**.
 
-![](./media/app-insights-export-stream-analytics/110.png)
+![](./media/app-insights-export-stream-analytics/SA003.png)
 
-### <a name="set-blob-location"></a>A blob hely beállítása
+### <a name="add-a-new-input"></a>Egy új bemenet hozzáadása
+
+![](./media/app-insights-export-stream-analytics/SA004.png)
+
 Állítsa be úgy, hogy a folyamatos exportálás blobból bemeneti:
 
-![](./media/app-insights-export-stream-analytics/120.png)
+![](./media/app-insights-export-stream-analytics/SA005.png)
 
 Most szüksége lesz az elsődleges elérési kulcsot importáljon a Tárfiókba, amelyet korábban feljegyzett. Állítsa be ezt a Tárfiók kulcsára.
 
-![](./media/app-insights-export-stream-analytics/130.png)
-
 ### <a name="set-path-prefix-pattern"></a>Set elérési út előtag mintája
-![](./media/app-insights-export-stream-analytics/140.png)
 
 **Győződjön meg arról, hogy beállítása a Date formátum éééé-hh-nn-(kötőjel).**
 
@@ -114,33 +114,19 @@ Ebben a példában:
 > [!NOTE]
 > Vizsgálja meg a tárolás ellenőrizze, hogy az elérési út jobb beolvasása.
 > 
-> 
 
-### <a name="finish-initial-setup"></a>Kezdeti telepítés befejezése
-Erősítse meg a szerializálási formátum:
+## <a name="add-new-output"></a>Új kimeneti hozzáadása
+Most jelölje ki a feladatot > **kimenetek** > **Hozzáadás**.
 
-![Erősítse meg, és zárja be a varázsló](./media/app-insights-export-stream-analytics/150.png)
+![](./media/app-insights-export-stream-analytics/SA006.png)
 
-Zárja be a varázslót, és várja meg, a telepítés befejezéséhez.
 
-> [!TIP]
-> A minta paranccsal bizonyos adatok letöltése. Legyen a lekérdezés hibakeresési teszt mintaként.
-> 
-> 
-
-## <a name="set-the-output"></a>A kimeneti beállítása
-Most jelölje ki a feladatot, és állítsa be a kimenetet.
-
-![Jelölje ki az új csatornát, kattintson a kimenetek, a Hozzáadás, a Power bi-ban](./media/app-insights-export-stream-analytics/160.png)
+![Jelölje ki az új csatornát, kattintson a kimenetek, a Hozzáadás, a Power bi-ban](./media/app-insights-export-stream-analytics/SA010.png)
 
 Adja meg a **munkahelyi vagy iskolai fiók** engedélyezése a Stream Analytics a Power BI erőforrás elérésére. Majd találjon ki a kimenetet, és a cél a Power BI DataSet adatkészlet és a tábla nevét.
 
-![A neveket készlet](./media/app-insights-export-stream-analytics/170.png)
-
 ## <a name="set-the-query"></a>A lekérdezés beállítása
 A lekérdezés fordítása bemeneti, kimeneti szabályozza.
-
-![Jelölje ki a feladatot, és kattintson a lekérdezést. Illessze be az alábbi minta.](./media/app-insights-export-stream-analytics/180.png)
 
 A teszt funkció segítségével ellenőrizze, hogy a megfelelő kimeneti kap. A mintaadatok, amely a bemeneti adatok oldalról lejegyezte adjon neki. 
 
@@ -162,7 +148,7 @@ Illessze be a lekérdezést:
 
 * export-bemeneti érték a jelenleg megadott, a bemeneti adatfolyam alias
 * o-pbi a kimeneti alias meghatározott
-* Használjuk [külső alkalmazása GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx) mert egy beágyazott JSON arrray az esemény nevét. A Select választja, majd az esemény-névvel, az adott időszakban ilyen nevű példányok számát. A [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) záradék csoportosítja az elemek 1 perces időszakokra.
+* Használjuk [külső alkalmazása GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx) mert az esemény neve nem egy beágyazott JSON-tömb. A Select választja, majd az esemény-névvel, az adott időszakban ilyen nevű példányok számát. A [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) záradék csoportosítja az elemek perces időszakokra.
 
 ### <a name="query-to-display-metric-values"></a>Lekérdezés metrika értékek megjelenítése
 ```SQL
@@ -206,7 +192,7 @@ Illessze be a lekérdezést:
 ## <a name="run-the-job"></a>A feladat futtatása
 A múltban elindítani a feladatot, kiválaszthatja a dátumot. 
 
-![Jelölje ki a feladatot, és kattintson a lekérdezést. Illessze be az alábbi minta.](./media/app-insights-export-stream-analytics/190.png)
+![Jelölje ki a feladatot, és kattintson a lekérdezést. Illessze be az alábbi minta.](./media/app-insights-export-stream-analytics/SA008.png)
 
 Várjon, amíg a feladat fut-e.
 
@@ -234,7 +220,7 @@ Noam Ben Zeev bemutatja, hogyan használja a Stream Analytics exportált adatok 
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Folyamatos exportálás](app-insights-export-telemetry.md)
 * [A részletes adatok modell útmutató a tulajdonság típusát és értékét.](app-insights-export-data-model.md)
 * [Application Insights](app-insights-overview.md)

@@ -3,7 +3,7 @@ title: "Hivatkozások és az URL-címek Azure AD alkalmazás Proxy fordítása |
 description: "Alapvető tudnivalók az Azure AD-alkalmazásproxy összekötők ismerteti."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 877c4491b3ebc2164f7cb2ecb9392d9c71e1667a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4d143b4937a1f6c1c21783ae357dbe617816e73
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxy közzétett alkalmazásokhoz szoftveresen kötött hivatkozások átirányítása
 
@@ -86,7 +86,7 @@ Most amikor a felhasználók hozzáférése az alkalmazáshoz, a proxy automatik
 
 Azt szeretnénk, hogy a működnek az alkalmazások a szolgáltatás segítségével. Azt több mint 30 címkék keresse meg a HTML-vagy CSS és is figyelembe véve, amely JavaScript esetekben támogatásához. Ha rendelkezik, amelyek nem szerepelnek alatt létrehozott hivatkozások példát, küldjön egy kódrészletet a [Application Proxy visszajelzés](mailto:aadapfeedback@microsoft.com). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Egyéni tartományok használata az Azure AD-alkalmazásproxy](active-directory-application-proxy-custom-domains.md) szeretné, hogy a belső és külső URL-CÍMÉRE
 
 [Konfigurálja a másodlagos címek leképezése a SharePoint 2013 rendszerhez](https://technet.microsoft.com/library/cc263208.aspx)

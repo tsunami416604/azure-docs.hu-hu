@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
-ms.openlocfilehash: d6686af546f43db663a6e5d6742096776ad185a6
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: c8949e4f66623951ef66005b3acc2b2279486b4d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="model-management-setup"></a>Modell kezelésének beállítása
 
@@ -81,7 +81,7 @@ Elindítani, akkor be kell állítania a telepítési környezet. A környezetet
 
 Ha a környezetben a telepítés befejezése:
 - Jelentkezzen be Azure kéri. A bejelentkezéshez egy webböngésző segítségével nyissa meg a lap https://aka.ms/devicelogin, és adja meg a hitelesítéshez a megadott kód.
-- A hitelesítési folyamat során kéri egy olyan fiók való hitelesítéshez szükséges. Fontos: Válasszon egy érvényes Azure-előfizetés és a fiókban. az erőforrások létrehozásához szükséges engedélyekkel rendelkező fiók - napló a befejeződése után az előfizetési adatai számára jelenik meg, és a rendszer megkérdezi, hogy folytatni szeretné a kiválasztott fiókot.
+- A hitelesítési folyamat során kéri egy olyan fiók való hitelesítéshez szükséges. Fontos: Válassza ki egy érvényes Azure-előfizetés és az erőforrások a fiók létrehozásához szükséges engedélyekkel rendelkező fiókot. Napló a befejeződése után az előfizetési adatai számára jelenik meg, és a rendszer megkérdezi, hogy az adott fiókkal továbbra is szeretné.
 
 ### <a name="environment-setup"></a>Környezet beállítása
 A telepítés megkezdéséhez szüksége néhány környezet szolgáltatók regisztrálása a következő parancsok beírásával:

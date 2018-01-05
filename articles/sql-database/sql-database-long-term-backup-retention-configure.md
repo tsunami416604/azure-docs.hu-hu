@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 9b218756277e52a4d582b1e8e42200f78d38580e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: e75facfd77fc1cb3c23aa4e1f6f7f799620fef39
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>Konfigurálja és az Azure SQL Database hosszú távú biztonsági mentés megőrzési visszaállítás
 
@@ -82,6 +82,9 @@ A következő szakaszok bemutatják, hogyan használható az Azure-portál konfi
 12. Az a **konfigurálása** lapon adjon meg egy érvényes nevet az új megőrzési házirend, az alapértelmezett megőrzési házirendet szükség szerint módosíthatja, és kattintson a **OK**.
 
    ![adatmegőrzési házirend definiálása](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
+   
+   >[!NOTE]
+   >Adatmegőrzési házirend nevek tiltása bizonyos karaktereket, szóközöket is beleértve.
 
 13. Az a **hosszú távú biztonsági másolatok megőrzésének** az adatbázis lapján kattintson **mentése** majd **OK** a hosszú távú biztonsági mentés megőrzési házirend alkalmazása az összes kijelölt adatbázisok.
 
@@ -263,7 +266,7 @@ $restoredDb
 > [!NOTE]
 > Itt csatlakozhat a visszaállított adatbázis SQL Server Management Studio használatával szükséges feladatok végrehajtásához, például egy bit, az adatok kinyerése a visszaállított adatbázis másolja a már meglévő adatbázist, vagy törölje a meglévő adatbázis, és nevezze át a meglévő adatbázis nevének a visszaállított adatbázis. Lásd: [időponthoz kötött visszaállításra](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A szolgáltatás által létrehozott automatikus biztonsági másolatokkal kapcsolatos további információkért lásd az [automatikus biztonsági másolatokkal](sql-database-automated-backups.md) foglalkozó témakört.
 - A biztonsági másolatok hosszú távú megőrzésével kapcsolatos további információkért lásd: [biztonsági másolatok hosszú távú megőrzése](sql-database-long-term-retention.md)

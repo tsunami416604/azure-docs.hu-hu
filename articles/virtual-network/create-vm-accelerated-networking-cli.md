@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: cd7889be101e718e309e630a04a2e23b6b5823ac
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: bd163e4168c844acab8d50c234115abf8ae874cf
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel Linux virtuális gép létrehozása
 
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan hozzon létre egy Linux virtu�
 
 Gyorsított hálózatkezelés nélkül, az összes hálózati forgalom mindkét a virtuális Gépet a virtuális kapcsoló és a gazdagép be kell járnia. A virtuális kapcsoló betartatja az összes, például a hálózati biztonsági csoportok, hozzáférés-vezérlési listák, elkülönítési és egyéb hálózati szempontból virtualizált szolgáltatások a hálózati forgalmat. Virtuális kapcsolók kapcsolatos további tudnivalókért olvassa el a [Hyper-V hálózatvirtualizálás és a virtuális kapcsoló](https://technet.microsoft.com/library/jj945275.aspx) cikk.
 
-Gyorsított hálózattal, a hálózati forgalom érkezik a virtuális hálózati adapter (NIC), és a virtuális gép ezután kerül. Minden hálózati házirendek, a virtuális kapcsolót alkalmazó gyorsított hálózatkezelés nélkül kiszervezett és hardver alkalmazva. A hardver-házirend alkalmazását lehetővé teszi, hogy a hálózati adapter a hálózati forgalom erre a virtuális Gépet, a gazdagép és a virtuális kapcsolót, akkor alkalmazza, a fogadó minden házirend fenntartásával kihagyásával.
+Gyorsított hálózattal, a hálózati forgalom érkezik a virtuális hálózati adapter (NIC), és a virtuális gép ezután kerül. A virtuális kapcsolót alkalmazó hálózati házirendben most kiszervezve, és a hardver alkalmazza. A hardver-házirend alkalmazását lehetővé teszi, hogy a hálózati adapter a hálózati forgalom erre a virtuális Gépet, a gazdagép és a virtuális kapcsolót, akkor alkalmazza, a fogadó minden házirend fenntartásával kihagyásával.
 
 A gyorsított hálózat előnyeit, hogy engedélyezve van a virtuális gép csak vonatkoznak. A legjobb eredmény elérése érdekében az ideális legalább két virtuális gépeken, az azonos Azure Virtual Network (VNet) csatlakozik a funkció engedélyezése érdekében. Ha kommunikál a Vnetek vagy az összekötő a helyszíni, ez a funkció csak minimális befolyással van általános késleltetésű.
 
@@ -39,16 +39,26 @@ A gyorsított hálózat előnyeit, hogy engedélyezve van a virtuális gép csak
 * **Alacsonyabb jitter:** virtuális kapcsoló feldolgozása függ a házirendet, szükség van, és a CPU-t, amely a feldolgozási terhelését. A házirendek betartatását, hogy a hardver kiszervezésével megszüntetéséhez, hogy a variancia közvetlenül a virtuális gép eltávolítása a gazdagép VM kommunikáció és az összes szoftver megszakítások és a környezet kapcsolók kézbesíti a csomagokat.
 * **Csökkent a CPU-felhasználás:** kevesebb hálózati forgalom feldolgozása a CPU-használatot a virtuális kapcsoló a gazdagép megkerülésével vezet.
 
+## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
+* **Ubuntu 16.04**: 4.11.0-1013 vagy nagyobb kernel-verzió
+* **SLES SP3**: 4.4.92-6.18 vagy nagyobb kernel-verzió
+* **RHEL**: 7.4.2017120423 vagy nagyobb kernel-verzió
+* **CentOS**: 7.4.20171206 vagy nagyobb kernel-verzió
+
+## <a name="supported-vm-instances"></a>Támogatott Virtuálisgép-példányok
+Gyorsított hálózatkezelés legtöbb általános célú és számítási optimalizált példány mérete 4 vagy több Vcpu a támogatott. -Példányokon például D/DSv3 vagy E/ESv3, amely támogatja a Hyper-Threading technológia az elérését gyorsítja fel a hálózat támogatott 8 vagy több Vcpu a Virtuálisgép-példányok.  Támogatott adatsorokat: D/DSv2, D/DSv3, E/ESv3, F/Fs/Fsv2 és Ms/Mms. 
+
+További információ a Virtuálisgép-példányok: [Linux Virtuálisgép-méretek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+## <a name="regions"></a>Régiók
+Kelet-Ázsia kivételével minden nyilvános Azure régióban elérhető.   Azure Government felhőalapú jelenleg nem támogatott.
+
 ## <a name="limitations"></a>Korlátozások
 A következő korlátozások vonatkoznak az e funkció használata esetén:
 
 * **A hálózati illesztő létrehozása:** gyorsított hálózat csak akkor engedélyezhető, az új hálózati Nem engedélyezhető az egy meglévő hálózati adaptert.
 * **Virtuális gép létrehozása:** A hálózati adapter engedélyezve gyorsított hálózattal csak akkor csatolható a virtuális géphez a virtuális gép létrehozásakor. A hálózati adapter nem lehet csatolni, egy meglévő virtuális gépre. Ha a virtuális gép hozzáadása egy meglévő rendelkezésre állási, a rendelkezésre állási csoport virtuális gépeinek kell is rendelkezik az elérését gyorsítja fel engedélyezett hálózati.
-* **Régiók:** a funkció számos Azure-régiók áll rendelkezésre, és továbbra is fennáll, bontsa ki. Teljes listájáért lásd: [Azure virtuális hálózat frissítések](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) blog.   
-* **Támogatott operációs rendszerekről:** Ubuntu Server 16.04 LTS kernel 4.4.0-77 vagy annál újabb, a SLES 12 SP2, az RHEL 7.4 és a CentOS 7.4 (engedélyezetlen Wave szoftver által közzétett).
-* **Virtuálisgép-méret:** általános célú és nyolc vagy több maggal rendelkező számítási optimalizált példány mérete. További információkért lásd: [Linux Virtuálisgép-méretek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A Virtuálisgép-példány támogatott méretek készlete továbbra is fennáll, bontsa ki.
 * **Telepítés csak Azure Resource Manageren keresztül:** virtuális gépek (klasszikus) nem állítható rendszerbe, a hálózat elérését gyorsítja fel.
-
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 

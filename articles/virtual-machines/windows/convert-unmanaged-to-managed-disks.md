@@ -4,7 +4,7 @@ description: "A Windows virtuális gépek átalakítása nem felügyelt lemezekr
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/23/2017
+ms.date: 01/03/2018
 ms.author: cynthn
-ms.openlocfilehash: 5f6376bb9e7f172df317b2ec857025bf37793799
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: dd9ebaf9a1c8b3112623af4228efa0d9063c1e52
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Alakítsa át a Windows rendszerű virtuális gép nem felügyelt lemezekből felügyelt
 
@@ -31,6 +31,7 @@ Ez a cikk bemutatja, hogyan alakítsa át a virtuális gépek Azure PowerShell h
 
 
 * Felülvizsgálati [kezelt lemezek az áttelepítés megtervezése](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
+
 * Felülvizsgálati [felügyelt lemezekre áttelepítésével kapcsolatos gyakori kérdések](faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
@@ -104,7 +105,7 @@ Ha nem sikerül átalakítás során, vagy az előző konverzió problémák mia
 Átalakítás, előtt győződjön meg arról, a Virtuálisgép-bővítmények az "A kiépítés sikeres" állapotban van, vagy az átalakítás 409 hibakóddal meghiúsul.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Standard szintű felügyelt lemez konvertálása premium](convert-disk-storage.md)
 

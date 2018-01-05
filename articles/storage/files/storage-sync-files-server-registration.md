@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: ae50f2f76af890e1dbabd892dc587b762beab38e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 10c8b708cad245f4ac0304489beb36dcf63cd4b1
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Regisztrált kiszolgáló kezelése a Azure fájlszinkronizálás (előzetes verzió)
 Az Azure File Sync (előzetes verzió) lehetővé teszi a szervezet Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt úgy éri el, hogy átalakítja a Windows-kiszolgálókat az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -147,9 +147,9 @@ Mivel Azure fájlszinkronizálás ritkán az egyetlen szolgáltatás, az adatkö
 > Ha túl alacsonyra korlátok Azure fájlszinkronizálás szinkronizálás és a visszaírási hatással lesz.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Az Azure fájlszinkronizálás hálózati vonatkozó korlátok beállítása
-A hálózathasználat Azure fájlszinkronizálás lehet korlátozni az használatával a `StorageSyncNetworkLimit` parancsmagok. 
+A hálózathasználat Azure fájlszinkronizálás segítségével szabályozhatja a `StorageSyncNetworkLimit` parancsmagok. 
 
-Például egy új hálózati korlátot annak érdekében, hogy Azure fájlszinkronizálás nem használja több mint 10 MB/s közötti 9 óra és 5 (17:00 h) a munkahelyi héten hozhat létre: 
+Például létrehozhat egy új szabályozási korlát annak érdekében, hogy Azure fájlszinkronizálás nem használja több mint 10 MB/s közötti 9 óra és 5 (17:00 h) a munkahelyi hét során: 
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"

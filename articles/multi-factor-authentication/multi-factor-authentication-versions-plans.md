@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: c7e880b6632e3a1456cf2fa535e6218d3bb31e4a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8c07bafb588a3f3e1dba13a58f83dd6d68c9c089
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure multi-factor Authentication beszerzése
 
@@ -39,7 +39,7 @@ A következő táblázat ismerteti a multi-factor authentication három verziój
 | --- | --- |
 | Multi-Factor Authentication az Office 365-höz |Ebben a verzióban kizárólag az Office 365 alkalmazásokkal működik, és kezeli a Office 365 portálról. A rendszergazdák [Office 365 erőforrásokat a kétlépéses ellenőrzéshez használttal biztonságos](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Ebben a verzióban az Office 365-előfizetéssel része. |
 | A rendszergazdák az Azure többtényezős hitelesítést | Az Azure-bérlő globális rendszergazdái engedélyezheti a kétlépéses ellenőrzést, a globális rendszergazdai fiókokhoz, minden további költség nélkül.|
-| Azure Multi-Factor Authentication | Más néven a "teljes" verzió, Azure multi-factor Authentication kínál képességek richest készletét. További konfigurációs beállítások keresztül biztosít a [a klasszikus Azure portálon](https://manage.windowsazure.com), speciális hibajelentési, és a helyszíni számos támogatása és a felhőalapú alkalmazásokhoz. Az Azure multi-factor Authentication megtalálható [Azure Active Directory Premium tervek](https://www.microsoft.com/cloud-platform/azure-active-directory-features) és [nagyvállalati mobilitási + biztonsági tervek](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-pricing), és a felhőbeli vagy helyszíni telepíthető. |
+| Azure Multi-Factor Authentication | Más néven a "teljes" verzió, Azure multi-factor Authentication kínál képességek richest készletét. További konfigurációs beállítások keresztül biztosít a [Azure-portálon](https://portal.azure.com), speciális hibajelentési, és a helyszíni számos támogatása és a felhőalapú alkalmazásokhoz. Az Azure multi-factor Authentication megtalálható [Azure Active Directory Premium tervek](https://www.microsoft.com/cloud-platform/azure-active-directory-features) és [nagyvállalati mobilitási + biztonsági tervek](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-pricing), és a felhőbeli vagy helyszíni telepíthető. |
 
 ## <a name="feature-comparison-of-versions"></a>Szolgáltatások összehasonlítása verziók
 A következő táblázat felsorolja az Azure multi-factor Authentication különböző verzióiban elérhető szolgáltatásokat.
@@ -103,7 +103,7 @@ Az Azure multi-factor Authentication hitelesítésszolgáltató használata eset
 
 Fontos megjegyezni, hogy is az Azure MFA licenccel rendelkezik, de továbbra is fizetnie első használat alapú konfigurálást. Ha beállította a hitelesítés Azure MFA-szolgáltatóra, kell fizetni összes kétlépéses ellenőrzés kérés még az licenccel rendelkező felhasználók végezhető el. Ha olyan tartományhoz, amely nem kapcsolódik az Azure AD-bérlő beállított felhasználói Azure MFA-szolgáltatóra, kell fizetni engedélyezett felhasználónkénti akkor is, ha a felhasználók Azure ad-val licenccel rendelkezik. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További árképzési részletekért lásd: [Azure MFA szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
 

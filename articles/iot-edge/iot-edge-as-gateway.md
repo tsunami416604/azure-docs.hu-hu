@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/27/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c1ae74127fce40a6f1ab412f25797076dda9d888
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 3f2f9258b97d4886f41a2b991ff4de7e16379245
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway---preview"></a>Hogyan IoT peremhálózati eszköz egy átjáró - használható megtekintése
 
@@ -23,7 +23,7 @@ Az IoT-megoldások átjárói célja a megoldáshoz, és eszközkapcsolatok egye
 Nincsenek átjáróként IoT peremhálózati eszköz használata három mintái: átlátszó, protokoll, fordítási és identitás fordítási:
 * **Transzparens** – elméletileg csatlakozott az IoT Hub eszközöket ehelyett csatlakozhat egy átjáróeszköz. Ez azt jelenti, hogy az alsóbb rétegbeli eszközök saját IoT-központ identitással rendelkezik, és a MQTT, AMQP vagy HTTP-protokollokat használ. Az átjáró egyszerűen továbbítja a kommunikációt az eszközök és az IoT-központ között. Az eszközök nem tudnak, hogy a felhő egy átjárón keresztül kommunikálnak, és a felhasználó az eszközök az IoT hubon való interakció nem érzékeli a köztes átjáróeszközt. Így az átjáró nem átlátszó. Tekintse meg a [átlátszó átjáró létrehozása] [ lnk-iot-edge-as-transparent-gateway] – útmutató a részletekért átlátszó átjáróként IoT peremhálózati eszköz használatával.
 * **Fordítási protokoll** – eszközök, amelyek nem támogatják az MQTT, AMQP vagy HTTP átjáróeszközzel segítségével adatokat küldeni az IoT-központ. Az átjáró az intelligens ahhoz, hogy az eszközöket; által használt protokoll ismertetése azonban az csak eszközt, az IoT hubon identitása. Minden információt tűnik, hogy egy eszköz, az átjáró érkezik. Ez azt jelenti, hogy eszközöket az üzenetek kell beágyazása további információkra, ha a felhőalapú alkalmazásokhoz szeretné, hogy az adatok körül forog eszközönkénti alapon OK. Továbbá az IoT-központ primitívek, például a két és metódusok csak az átjáró eszköz, nem eszközöket.
-* **Identitás fordítási** -eszközöket, amelyek nem kapcsolódnak az IoT-központ csatlakozni egy átjáróeszköz, amely az IoT-központ biztosít az identitás- és protokoll fordítási az alsóbb rétegbeli eszközök nevében. Az átjáró az intelligens ahhoz ismerje meg az alsóbb rétegbeli eszközök által használt protokoll, -azonosítót fog kérni, és az IoT-központ primitívek lefordítani. Eszközöket első osztályú eszközökön twins és módszerek az IoT-központ jelennek meg. A felhasználók használhatják az eszközöket az IoT-központ does nem érzékeli a köztes átjáróeszközt.
+* **Identitás fordítási** -eszközöket, amelyek nem kapcsolódnak az IoT-központ csatlakozni egy átjáróeszköz, amely az IoT-központ biztosít az identitás- és protokoll fordítási az alsóbb rétegbeli eszközök nevében. Az átjáró az intelligens ahhoz ismerje meg az alsóbb rétegbeli eszközök által használt protokoll, -azonosítót fog kérni, és az IoT-központ primitívek lefordítani. Eszközöket első osztályú eszközökön twins és módszerek az IoT-központ jelennek meg. A felhasználó és az IoT-központ az eszközök kommunikációját, és nem érzékeli a köztes átjáróeszközt.
 
 ![Annak a átjáró diagramok][1]
 
@@ -49,9 +49,9 @@ Egy átjáró, amely identitás-fordítási előnyei a protokollfordításhoz, �
 | Közvetlen módszerek és a felhő-eszközre küldött üzenetek | A felhő külön-külön lehet oldani minden csatlakoztatott eszközön | A felhő csak lehet oldani az átjáró eszköz | A felhő külön-külön lehet oldani minden csatlakoztatott eszközön |
 | [Az IoT-központ szabályozások és kvóták][lnk-iothub-throttles-quotas] | Minden eszköz alkalmazása | Az átjáró eszköz alkalmazása | Minden eszköz alkalmazása |
 
-Ha egy nem átlátszó átjáró mintát használ, adott átjárón keresztül csatlakozó összes eszközök azonos felhő eszközre beolvasása, amely legfeljebb 50 üzenetek tartalmazhat osztják meg. Ez azt jelenti, hogy az átjáró nem átlátszó mintát kell használni, csak akkor, ha nagyon néhány olyan eszközt minden mező átjárón keresztül kapcsolódik, és a felhő eszközre forgalmukat értéke alacsony.
+Ha egy nem átlátszó átjáró (protokollfordításhoz) mintát használ, adott átjárón keresztül csatlakozó összes eszközök azonos felhő eszközre beolvasása, amely legfeljebb 50 üzenetek tartalmazhat osztják meg. Ez azt jelenti, hogy az átjáró nem átlátszó mintát kell használni, csak akkor, ha nagyon néhány olyan eszközt minden mező átjárón keresztül kapcsolódik, és a felhő eszközre forgalmukat értéke alacsony.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az IoT peremhálózati eszköz legyen egy [átlátszó átjáró][lnk-iot-edge-as-transparent-gateway] 
 
 [lnk-iot-edge-as-transparent-gateway]: ./how-to-create-transparent-gateway.md

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: bwren
-ms.openlocfilehash: 516f0ddcc50b3e6d744f70063b2112090d2e411d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: ac253fda413718ded815c9a990ae61473a5d8870
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation szolgáltatásbeli hitelesítőadat eszközök
 Automation szolgáltatásbeli hitelesítőadat-eszköz rendelkezik egy [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) biztonsági hitelesítő adatok, például a felhasználónevet és jelszót tartalmazó objektum. A Runbookok és a DSC-konfigurációk használhat parancsmagokat, fogadja el a hitelesítést egy PSCredential objektumot, vagy azokat lehet, hogy bontsa ki a felhasználónevet és jelszót a PSCredential objektum bizonyos alkalmazás vagy a hitelesítés megkövetelése a szolgáltatás biztosításához. Egy hitelesítő adat tulajdonságait az Azure Automationben biztonságosan tároljuk, és a runbookot vagy a DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) tevékenység.
@@ -82,13 +82,6 @@ Az alábbi Példaparancsok szemléltetik egy új automation-hitelesítő adat l�
     $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $user, $pw
     New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name "MyCredential" -Value $cred
 
-### <a name="to-create-a-new-credential-asset-with-the-azure-classic-portal"></a>Egy új hitelesítőadat-eszköz létrehozása a klasszikus Azure portálon
-1. Az automation-fiók kattintson **eszközök** az ablak tetején.
-2. Az ablak alján kattintson **beállítás hozzáadása**.
-3. Kattintson a **hitelesítő adatok hozzáadása**.
-4. Az a **hitelesítőadat-típus** legördülő menüből válassza **PowerShell-hitelesítő adat**.
-5. Fejezze be a varázslót, és kattintson a jelölőnégyzetbe, az új hitelesítő adatok mentése.
-
 ## <a name="using-a-powershell-credential"></a>PowerShell-hitelesítő adat használata
 Hitelesítőadat-eszköz a runbookot vagy a DSC-konfiguráció lekérése a **Get-AutomationPSCredential** tevékenység. Ez visszaad egy [PSCredential objektum](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) használható, amely egy PSCredential paraméter szükséges parancsmag vagy tevékenység. A külön-külön használandó hitelesítő objektum tulajdonságainak visszakeresése. Az objektum a felhasználónév és a biztonságos jelszó tulajdonsággal rendelkezik, vagy használhatja a **GetNetworkCredential** metódus vissza egy [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx) objektum, amely egy nem biztonságos verzióját a a jelszó.
 
@@ -124,7 +117,7 @@ Az alábbi minta férnek hozzá a hitelesítő adatok Python2 runbookok példáj
     print cred["username"]
     print cred["password"]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A grafikus szerzői hivatkozások kapcsolatos további információkért lásd: [grafikus szerzői hivatkozások](automation-graphical-authoring-intro.md#links-and-workflow)
 * Az Automation szolgáltatásban, a különböző hitelesítési módszerek ismertetése: [Azure Automation szolgáltatásbeli biztonsági](automation-security-overview.md)
 * A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md).

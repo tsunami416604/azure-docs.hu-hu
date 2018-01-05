@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/13/2017
 ms.author: magoedte; bwren
-ms.openlocfilehash: 847a5eca37c80c0cd5cdbad52f39567fa85a355f
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: d442fd3c1713f4cdc53ef0dc6f7e15cd74b21d1a
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation szolgáltatásbeli kapcsolódási eszközök
 
@@ -71,14 +71,6 @@ A függvény a következő táblázat a Python2 runbookban található kapcsolat
 3. Kattintson a **kapcsolatot** a panel tetején.
 4. Az a **típus** legördülő menüben válassza ki a létrehozni kívánt kapcsolat típusát. A képernyőn megjelennek az adott típusú tulajdonságok.
 5. Töltse ki az űrlapot, és kattintson a **létrehozása** menti az új kapcsolatot.
-
-### <a name="to-create-a-new-connection-with-the-azure-classic-portal"></a>Egy új kapcsolat létrehozása a klasszikus Azure portálon
-
-1. Az automation-fiók kattintson **eszközök** az ablak tetején.
-2. Az ablak alján kattintson **beállítás hozzáadása**.
-3. Kattintson a **kapcsolat hozzáadása a**.
-4. Az a **kapcsolattípus** legördülő menüben válassza ki a létrehozni kívánt kapcsolat típusát.  A varázsló az adott típusú tulajdonságok jelent.
-5. Fejezze be a varázslót, és kattintson a jelölőnégyzetbe, az új kapcsolat mentéséhez.
 
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>Új kapcsolat létrehozása a Windows PowerShell használatával
 
@@ -154,7 +146,7 @@ A következő példa bemutatja, hogyan hitelesítést a Futtatás mint kapcsolat
     runas_connection = automationassets.get_automation_connection("AzureRunAsConnection")
     azure_credential = get_automation_runas_credential(runas_connection)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Felülvizsgálati [hivatkozások grafikus szerzői](automation-graphical-authoring-intro.md#links-and-workflow) megértéséhez logikai a runbookok áramló irányítása.  
 

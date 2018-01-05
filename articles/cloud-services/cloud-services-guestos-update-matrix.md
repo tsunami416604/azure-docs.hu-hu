@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/3/2018
+ms.date: 1/4/2018
 ms.author: raiye
-ms.openlocfilehash: ab79820a00cb52367d99e3eb3a2b717f1bca44e5
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 4172af775c041cc23663ed5572a46f0a49fdf5d3
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrix
 Itt való naprakész információkat a legújabb Azure vendég operációs rendszer feloldja a Felhőszolgáltatásai számára. Ez az információ segít a frissítési lépések megtervezéséről, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissíti a [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], nem elengedhetetlen, hogy olvassa el ezen a lapon.
@@ -42,6 +42,10 @@ Itt való naprakész információkat a legújabb Azure vendég operációs rends
 Nem tudja, hogy milyen a vendég operációs rendszer, vagy hogyan a vendég operációs rendszer feloldja a munkát? Olvasási [ez](#how-it-works) szakasz.
 
 ## <a name="news-updates"></a>Hírek
+
+###### <a name="january-4-2018"></a>**2018. január 4.**
+December vendég operációs rendszer adott ki.
+
 ###### <a name="december-14-2017"></a>**2017. december 14.**
 November vendég operációs rendszer adott ki.
 
@@ -69,12 +73,6 @@ Június vendég operációs rendszer adott ki.
 ###### <a name="june-16-2017"></a>**2017. június 16.**
 Június vendég operációs rendszer bevezetés. június 16 indul, és a tervezett kiadását. július 11 rendelkezik.
 
-###### <a name="june-5-2017"></a>**2017. június 5.**
-Előfordulhat, hogy Vendég operációs rendszer adott ki.
-
-###### <a name="may-17-2017"></a>**2017. május 17.**
-Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő 2016. December és 2017. január operációs rendszereinek kiadásait, amelyek nem rendelkeznek a [javítsa ki] a portálról: WA-VENDÉG-operációs rendszer-5.4_201612-01, WA-VENDÉG-operációsrendszer-4.39_201612-01, WA-VENDÉG-operációs rendszer-3.46_201612-01, WA-VENDÉG-az operációs rendszer-2.59_201701-01
-
 
 ## <a name="releases"></a>Kiadások
 ## <a name="family-5-releases"></a>Feloldja a családja 5
@@ -90,8 +88,9 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.14_201712-01 |2018. január 4. |POST 5.16 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.13_201711-01 |2017. december 14. |POST 5.15 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.12_201710-02 |2017. november 8. |POST 5.14 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.12_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.11_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.10_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.9_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
@@ -113,8 +112,9 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.49_201712-01 |2018. január 4. |POST 4.51 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.48_201711-01 |2017. december 14. |POST 4,50 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.47_201710-02 |2017. november 8. |POST 4.49 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.47_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.46_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.45_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.44_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
@@ -136,8 +136,9 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.56_201712-01 |2018. január 4. |POST 3.58 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-3.55_201711-01 |2017. december 14. |POST 3.57 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.54_201710-02 |2017. november 8. |POST 3.56 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.54_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.53_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.52_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.51_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
@@ -159,8 +160,9 @@ Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.69_201712-01 |2018. január 4. |POST 2.71 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-2.68_201711-01 |2017. december 14. |POST 2.70. bekezdés |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.67_201710-02 |2017. november 8. |POST 2.69 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.67_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.66_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.65_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.64_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
@@ -246,4 +248,4 @@ A vendég operációs rendszer támogatásának és a használatból való kivon
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-[javítsa ki]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+[fix]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx

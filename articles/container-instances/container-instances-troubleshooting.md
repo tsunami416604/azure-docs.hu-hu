@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 0b7397e00c2d11c4c7be51421fb40ca6a9fe5779
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 1fd3b2c251860e883519744b11fcfc2b925cd2fa
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Azure-tároló példányaival telepítési problémák elhárításához
 
@@ -203,7 +203,7 @@ Különböző területi erőforrás miatt betöltése az Azure-ban, és a követ
 
 Ez a hiba azt jelzi, hogy a régióban, amelyben telepíteni kívánt túl nagy terhelés miatt a tároló megadott erőforrások nem rendelhető hozzá jelenleg. Legalább egy, a megoldás lépések segítségével a probléma megoldása érdekében.
 
-* Ellenőrizze a definiált paraméterek tartoznak a tároló központi telepítési beállítások [Azure-tároló példányok régiónkénti elérhetőség](container-instances-region-availability.md)
+* Ellenőrizze a definiált paraméterek tartoznak a tároló központi telepítési beállítások [kvótái és az Azure-tároló példányok régiónkénti elérhetőség](container-instances-quotas.md#region-availability)
 * A tároló alacsonyabb CPU és memória beállításainak megadása
 * Egy másik Azure-régiót telepítése
 * Egy későbbi időpontban telepítése

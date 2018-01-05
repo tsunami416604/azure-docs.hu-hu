@@ -12,24 +12,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/14/2017
+ms.date: 1/4/2018
 ms.author: raiye
-ms.openlocfilehash: 27ab6b97610ab27500cbef703120e2c67cd07183
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 3c2e39470f89d5bf5717ccb7849b9b3ed49fd43f
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-guest-os"></a>Az Azure vendég operációs rendszer
 Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC) frissítések alkalmazása az Azure vendég operációs rendszeren. Ez a cikk határozza meg, ha az adott frissítés használ, a vendég operációs rendszer összes keresése. Frissítések mindig áthozott az adott [termékcsalád] [ family-explain] bevezetett azokat.
 
+## <a name="december-guest-os"></a>December vendég operációs rendszer
+| Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| Rel 17-12 | [4053579], [4054517] |Windows 10 biztonsági frissítések |4.49, 5.14 |2017. december 12. |
+| Rel 17-12 | [4054521], [4054522], [4054523] |Csak a Windows biztonsági |2.69, 3.56, 4.49 |2017. december 12. |
+| Rel 17-12 | [4052978] |Internet Explorer |2.69, 3.56, 4.49 |2017. december 12. |
+| Rel 17-12 | [4052978] |Flash |3.56, 4.49, 5.14 |2017. december 12. |
+| – | [4048957] |November nem a biztonság összegzése |2.67 |2017. november 14. |
+| – | [4048959] |November nem a biztonság összegzése |3.56 |2017. november 14. |
+| – | [4048958] |November nem a biztonság összegzése |4.49 |2017. november 14. |
+| – | [4049068] |Időzóna. decemberi frissítés |2.69, 3.56, 4.49 |2017. december 12. |
+
 ## <a name="november-guest-os"></a>November vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| Rel 17-10 | [4048953] |Windows 10-es frissítések |5.13 |2017. november 14. |
-| Rel 17-10 | [4048960], [4048962], [4048961] |Csak a Windows biztonsági |2.68, 3.55, 4.48 |2017. november 14. |
-| Rel 17-10 | [4047206] |Internet Explorer |2.68, 3.55, 4.48 |2017. november 14. |
-| Rel 17-10 | [4048951] |Flash |3.55, 4.48, 5.13 |2017. november 14. |
+| Rel 17-11 | [4048953] |Windows 10-es frissítések |5.13 |2017. november 14. |
+| Rel 17-11 | [4048960], [4048962], [4048961] |Csak a Windows biztonsági |2.68, 3.55, 4.48 |2017. november 14. |
+| Rel 17-11 | [4047206] |Internet Explorer |2.68, 3.55, 4.48 |2017. november 14. |
+| Rel 17-11 | [4048951] |Flash |3.55, 4.48, 5.13 |2017. november 14. |
 | – | [4041681] |Október nem a biztonság összegzése |2.67 |2017. október 10. |
 | – | [4041690] |Október nem a biztonság összegzése |3.55 |2017. október 10. |
 | – | [4041693] |Október nem a biztonság összegzése |4.48 |2017. október 10. |
@@ -562,6 +574,19 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | – |[3007054] |PIN-kóddal védett nyomtatás a beállítás mindig jeleníti meg, amikor egy Windows Áruházbeli alkalmazást, a Windows belül dokumentum nyomtatása |4.15, 3.22, 2.34 |Január 13 2015 |
 | – |[2999802] |Pontozott vonal helyett folytonos vonal lista tartalmazza a Windows rendszerben |4.15, 3.22, 2.34 |Január 13 2015 |
 | – |[2896881] |A felhasználók nyomtatók hozzárendelését a Windows bejelentkezési folyamat során a AddPrinterConnection VBScript parancs használatakor hosszú bejelentkezési idő |4.15, 3.22, 2.34 |Január 13 2015 |
+
+[4053579]: http://support.microsoft.com/kb/4053579
+[4054517]: http://support.microsoft.com/kb/4054517 
+[4054521]: http://support.microsoft.com/kb/4054521
+[4054522]: http://support.microsoft.com/kb/4054522
+[4054523]: http://support.microsoft.com/kb/4054523
+[4052978]: http://support.microsoft.com/kb/4052978
+[4048951]: http://support.microsoft.com/kb/4048951
+[4048957]: http://support.microsoft.com/kb/4048957
+[4048959]: http://support.microsoft.com/kb/4048959
+[4048958]: http://support.microsoft.com/kb/4048958
+[4049068]: http://support.microsoft.com/kb/4049068
+
 
 [4048953]: http://support.microsoft.com/kb/4048953
 [4048960]: http://support.microsoft.com/kb/4048960 

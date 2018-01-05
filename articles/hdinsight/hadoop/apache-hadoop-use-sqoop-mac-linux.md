@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/04/2018
 ms.author: larryfr
-ms.openlocfilehash: 250fb1dfed5cdab5308c2d91744e0cf051c32ccc
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a0a63c414bc68f5125b65e288d78fb546c376c04
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop használatával a HDInsight Hadoop és SQL-adatbázis közötti adatok importálása és exportálása
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/03/2017
 >
 > * [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md)
 > * [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md)
-> * A [sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility) segédprogram.
+> * A [sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility) segédprogram
 
 ## <a name="create-the-table-in-sql-database"></a>A tábla az SQL-adatbázis létrehozása
 
@@ -95,7 +95,7 @@ GO
 
     ```sql
     SET ROWCOUNT 50;
-    SELECT * FROM mobiledata;"
+    SELECT * FROM mobiledata;
     ```
 
     Ez a parancs felsorolja a táblába importált 50 sor.
@@ -105,7 +105,7 @@ GO
 1. Az alábbi parancs segítségével adatokat importálni a **mobiledata** a tábla az SQL-adatbázis, a **wasb: / / / oktatóanyagok/usesqoop/importeddata** HDInsight könyvtárába:
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> -P --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
     Az adatok mezőinek tabulátor választják el, és a sorok egy új sor karakter megszűnik.
@@ -153,7 +153,7 @@ Sqoop használatával adatok importálása és exportálása az SQL-kiszolgáló
 * Ha az SQL Server a HDInsight-ból, előfordulhat, hogy az SQL Server az IP-cím használatára. Példa:
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> -P <adminPassword> -table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> -P -table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
 ## <a name="limitations"></a>Korlátozások
@@ -162,7 +162,7 @@ Sqoop használatával adatok importálása és exportálása az SQL-kiszolgáló
 
 * Kötegelés - és a Linux-alapú HDInsight együttes használata esetén a `-batch` beszúrása végrehajtásakor kapcsoló, a Sqoop lehetővé teszi több beszúrás helyett a beszúrási műveletek kötegelése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most megtanulhatta, hogyan használható a Sqoop. További tudnivalókért lásd:
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 4e5b1269e2bee31316cba99d69ea2a6d702faf05
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: 468af385833395963ef8acad905b99a9b7e6b8fa
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Cserélje le a skálázási egység csomópont az integrált Azure verem rendszeren
 
@@ -28,23 +28,23 @@ Ez a cikk ismerteti az általános folyamat a fizikai számítógép helyett (m�
 
 A következő folyamatábra általános FRU folyamata lecseréli egy teljes skálázási egység csomópont jeleníti meg.
 
-![A név felülírandó csomópont folyamat folyamatábrája](media/azure-stack-replace-node/ReplaceNodeFlow.PNG)
+![A név felülírandó csomópont folyamat folyamatábrája](media/azure-stack-replace-node/replacenodeflow.png)
 
 * Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
 
 ## <a name="review-alert-information"></a>Riasztási információk áttekintése
 
-Ha egy méretezési egység csomópont nem működik, az összes következő kritikus riasztás kap:
+Ha egy méretezési egység csomópont nem működik, a következő kritikus riasztások kap:
 
 - A csomópont nem kapcsolódik a hálózati vezérlő
 - A csomópont nem érhető el a virtuális gépek elhelyezése
 - Skálázási egység csomópontja offline állapotban
 
-![Skálázási egység le riasztások listája](media/azure-stack-replace-node/NodeDownAlerts.PNG)
+![Skálázási egység le riasztások listája](media/azure-stack-replace-node/nodedownalerts.png)
 
-Megnyitja a "skálázási egység csomópontja offline állapotban" riasztás, ha a riasztás leírásában a skálázási egység csomópont, amely nem érhető el. Az OEM-specifikus figyelési megoldást igényelnek, hogy a hardver életciklus gazdagépen fut a további riasztásokat is megjelenhet.
+Ha megnyitja a **skálázási egység csomópontja offline állapotban** riasztást, a riasztás leírásában a skálázási egység csomópontot tartalmaz, amely nem érhető el. Az OEM-specifikus figyelési megoldást igényelnek, hogy a hardver életciklus gazdagépen fut a további riasztásokat is megjelenhet.
 
-![Csomópont offline riasztás részletei](media/azure-stack-replace-node/NodeOffline.PNG)
+![Csomópont offline riasztás részletei](media/azure-stack-replace-node/nodeoffline.png)
 
 ## <a name="scale-unit-node-replacement-process"></a>Skálázási egység csomópont cseréjét.
 
@@ -53,7 +53,7 @@ A következő lépések vannak megadva, a méretezési egység csomópont cseré
 1. Használja a [kiürítésére](azure-stack-node-actions.md#scale-unit-node-actions) műveletet a skálázási egység csomópont állítható karbantartási üzemmódba. Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
 
    > [!NOTE]
-   > Minden esetben csak egy csomópont le is, és ki van kapcsolva egy időben (közvetlen tárolóhelyek) SSD megszakítása nélkül.
+   > Minden esetben merül le és ki van kapcsolva egy időben a S2D megszüntetése nélkül a csak egy csomópont (közvetlen tárolóhelyek).
 
 2. Ha a csomópont továbbra is be van kapcsolva, használja a [kikapcsolásához](azure-stack-node-actions.md#scale-unit-node-actions) művelet. Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
  
@@ -68,4 +68,4 @@ A következő lépések vannak megadva, a méretezési egység csomópont cseré
 ## <a name="next-steps"></a>További lépések
 
 - További információ a közbeni-cserélhető fizikai lemez cseréje: [olyan lemezt cserél ki](azure-stack-replace-disk.md). 
-- További információ a nem közbeni-cserélhető hardverösszetevő cseréje: [cserélje ki egy hardverösszetevő](azure-stack-replace-component.md). 
+- További információ a nem közbeni-cserélhető hardverösszetevő cseréje: [cserélje ki egy hardverösszetevő](azure-stack-replace-component.md).

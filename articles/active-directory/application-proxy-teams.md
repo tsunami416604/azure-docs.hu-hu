@@ -3,7 +3,7 @@ title: "Az Azure AD alkalmazás Proxy alkalmazások csoportban eléréséhez |} 
 description: "Azure AD alkalmazásproxy segítségével Microsoft Teams keresztül férnek hozzá a helyszíni alkalmazások."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 57ae4c38a528251dee89d56f6fdb7cf1d1dc922d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a8dca307bb97898f229b39710a3b566ee913fcca
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams keresztül férnek hozzá a helyszíni alkalmazások
 
@@ -52,7 +52,7 @@ Ha az alkalmazás-proxyn keresztül történő közzétételéhez tudassa a felh
 
 A csoport egyik tagjának hozzáadja a lapon, ha azt jeleníti meg a csatorna mindenki számára. Az alkalmazáshoz hozzáféréssel rendelkező felhasználók egyszeri bejelentkezéses hozzáférést a Microsoft Teams használt hitelesítő adatokkal beolvasása. A felhasználók nem férnek hozzá az alkalmazás a csapatok lapján látható, de le vannak tiltva, amíg nem adja meg őket engedélyeket a helyszíni alkalmazásra és az alkalmazás az Azure portálon közzétett verziója. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [tegye közzé a helyszíni SharePoint helyeket](application-proxy-enable-remote-access-sharepoint.md) az alkalmazásproxy.
 - Az alkalmazások használatára konfigurálja [egyéni tartományok](active-directory-application-proxy-custom-domains.md) a külső URL-címhez. 

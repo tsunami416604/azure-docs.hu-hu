@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 1/4/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6c9b68ee25ae3d675b71ec5543738493216b1212
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: fa9b11e754ab86f0e4c88923d4b895aa5dd0e271
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Node.js SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -45,9 +45,9 @@ ms.lasthandoff: 12/18/2017
 
 <tr><td>**SDK telepítési utasításokat**</td><td>[Telepítési utasításokat](http://azure.github.io/azure-documentdb-node/)</td></tr>
 
-<tr><td>**Hozzájárul az SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
+<tr><td>**Hozzájárul az SDK**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
 
-<tr><td>**Példák**</td><td>[NODE.js-Kódminták](sql-api-nodejs-samples.md)</td></tr>
+<tr><td>**Minták**</td><td>[NODE.js-Kódminták](sql-api-nodejs-samples.md)</td></tr>
 
 <tr><td>**Első lépéseket ismertető oktatóanyag**</td><td>[Ismerkedés a Node.js SDK-val](sql-api-nodejs-get-started.md)</td></tr>
 
@@ -62,6 +62,13 @@ ms.lasthandoff: 12/18/2017
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="1.14.2"/>1.14.2</a>
+* Frissített hivatkozás Azure Cosmos DB helyett az Azure DocumentDB dokumentációját.
+* ConnectionPolicy proxyUrl beállítás támogatása.
+
+### <a name="1.14.1"/>1.14.1</a>
+* Kis-és nagybetűket fájlrendszerek kisebb javítása.
 
 ### <a name="1.14.0"/>1.14.0</a>
 * Támogatást nyújt a munkamenet-konzisztencia.
@@ -187,6 +194,8 @@ A Cosmos DB használatával kivont SDK kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.14.2](#1.14.2) |2017. december 21. |--- |
+| [1.14.1](#1.14.1) |2017. november 10. |--- |
 | [1.14.0](#1.14.0) |2017. november 9. |--- |
 | [1.13.0](#1.13.0) |2017. október 11. |--- |
 | [1.12.2](#1.12.2) |2017. augusztus 10. |--- |
@@ -221,6 +230,6 @@ A Cosmos DB használatával kivont SDK kell elutasította a szolgáltatás.
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 A Cosmos DB kapcsolatos további információkért lásd: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján.
 

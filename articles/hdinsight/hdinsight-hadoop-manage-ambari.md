@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/04/2018
 ms.author: larryfr
-ms.openlocfilehash: ec6e6d07b0933504ffee17912aac9ee3ef937688
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: dc1265c7af011b92a9f862cf2e91b47c3998b2e4
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>A HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával
 
@@ -32,7 +32,7 @@ Ez a dokumentum elsajátíthatja az Ambari webes felhasználói felület haszná
 
 ## <a id="whatis"></a>Mi az az Ambari?
 
-[Apache Ambari](http://ambari.apache.org) egy könnyen használható webes felhasználói felület biztosításával egyszerűsíti a Hadoop kezelését. Használhatja az Ambari létrehozása, kezelése és figyelése a Hadoop-fürtök. A fejlesztők integrálható a ezeket a képességeket a alkalmazások használatával a [Ambari REST API-k](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Apache Ambari](http://ambari.apache.org) egy könnyen használható webes felhasználói felület biztosításával egyszerűsíti a Hadoop kezelését. Ambari használatával kezelni és megfigyelni a Hadoop-fürtök. A fejlesztők integrálható a ezeket a képességeket a alkalmazások használatával a [Ambari REST API-k](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 Az Ambari webes felhasználói felület alapértelmezés szerint a HDInsight-fürtök, a Linux operációs rendszert használó valósul meg.
 
@@ -246,6 +246,6 @@ A következő Ambari műveletek nem támogatottak a HDInsight:
 
 * __Helyezze át a metrikákat gyűjtő szolgáltatásának__. A metrikák adatgyűjtő szolgáltatás adatokat megtekintésekor a műveletek a szolgáltatás műveletek menüjében egyik __áthelyezése metrikákat gyűjtő__. Ez nem támogatott a hdinsight eszközzel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan használható a [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) a hdinsight eszközzel.

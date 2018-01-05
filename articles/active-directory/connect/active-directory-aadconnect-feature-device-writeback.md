@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 01/02/2018
 ms.author: billmath
-ms.openlocfilehash: 9c0ff3394dac12bdcac9d618832566ef0d3a6609
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fddbbeda50764ade149e8a8f370bf7341da01736
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Az Azure AD Connect: Eszközvisszaírás engedélyezése
 > [!NOTE]
 > Prémium szintű Azure AD-előfizetés szükség az eszközök visszaírásához.
-> 
-> 
+>
+>
 
 Az alábbi dokumentáció az Azure AD Connect eszköz a visszaírási szolgáltatás hogyan ismertetése. Eszközvisszaíró a következő esetekben használja:
 
@@ -34,7 +34,8 @@ Ez biztosítja, további biztonsági és garantálja, hogy az alkalmazások hozz
 
 > [!IMPORTANT]
 > <li>Eszközök objektumának a felhasználók ugyanabban az erdőben kell lennie. Eszközök kell írni vissza egyetlen erdő esetén, mert ez a funkció jelenleg nem támogatja a központi telepítés felhasználói több erdővel.</li>
-> <li>Csak egy eszköz regisztrációs konfigurációs objektum a helyszíni Active Directory-erdőbe is hozzáadhatók. Ez a funkció nem kompatibilis a topológia, ahol a helyszíni Active Directory több Azure AD-címtártól szinkronizált.</li>> 
+> <li>Csak egy eszköz regisztrációs konfigurációs objektum a helyszíni Active Directory-erdőbe is hozzáadhatók. Ez a funkció nem kompatibilis a topológia, ahol több Azure AD-bérlő számára a helyszíni Active Directory szinkronizálása.</li>
+>
 
 ## <a name="part-1-install-azure-ad-connect"></a>1. lépés: Telepítse az Azure AD Connect
 1. Az Azure AD Connect egyéni használatával telepítsen, vagy Gyorsbeállítások. A Microsoft azt javasolja, hogy kezdje összes felhasználók és csoportok sikeresen kell szinkronizálnia a engedélyezése előtt.
@@ -43,15 +44,15 @@ Ez biztosítja, további biztonsági és garantálja, hogy az alkalmazások hozz
 A következő lépésekkel készítse elő az eszközök visszaírásához.
 
 1. A számítógépről, amelyen telepítve van-e az Azure AD Connect indítsa el a Powershellt emelt jogosultsági szinttel.
-2. Ha az Active Directory PowerShell-modulja nincs telepítve, telepítse a Távoli kiszolgálófelügyelet eszközei a AD PowerShell modult, és a parancsfájl futtatásához szükséges dsacls.exe tartalmazó.  Futtassa az alábbi parancsot:
-  
+2. Ha az Active Directory PowerShell-modulja nincs telepítve, telepítse a Távoli kiszolgálófelügyelet eszközei, amely tartalmaz az AD PowerShell modult és dsacls.exe, amely azonban szükséges a parancsfájl futtatásához. Futtassa az alábbi parancsot:
+
    ``` powershell
    Add-WindowsFeature RSAT-AD-Tools
    ```
 
 3. Ha az Azure Active Directory PowerShell-modulja nincs telepítve, majd töltse le és telepítse innen [Active Directory modul Windows Powershellhez készült Azure (64 bites változat)](http://go.microsoft.com/fwlink/p/?linkid=236297). Ez az összetevő a bejelentkezési segéd, amely telepítve van az Azure AD Connect függőség rendelkezik.  
 4. Vállalati rendszergazdai hitelesítő adataival a következő parancsokat, és zárja be a PowerShell.
-   
+
    ``` powershell
    Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'
    ```
@@ -62,8 +63,7 @@ A következő lépésekkel készítse elő az eszközök visszaírásához.
 
 Vállalati rendszergazda hitelesítő adataival szükség, mert a konfiguráció névtérhez módosítások szükségesek. A tartományi rendszergazda nem lesz megfelelő engedélyekkel.
 
-![Az eszközvisszaírás PowerShell](./media/active-directory-aadconnect-feature-device-writeback/powershell.png) d
-
+![PowerShell-parancsot az eszközvisszaírás engedélyezése](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)  
 
 Leírás:
 
@@ -87,18 +87,22 @@ A következő eljárással engedélyezése az Azure AD Connectben.
 3. A visszaírási lapon akkor jelenik meg a megadott tartomány as az alapértelmezett eszköz visszaírási erdő.
    ![Egyéni telepítés eszköz visszaírási célerdő](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
 4. A varázsló további konfigurációs módosítások nélküli telepítésének befejezéséhez. Ha szükséges, tekintse meg a [az Azure AD Connect egyéni telepítése.](active-directory-aadconnect-get-started-custom.md)
+5. Ha engedélyezte a [szűrés](active-directory-aadconnectsync-configure-filtering.md) az Azure AD Connectben, majd ellenőrizze, hogy az újonnan létrehozott tároló CN = RegisteredDevices megtalálható a hatókörben.
 
-## <a name="enable-conditional-access"></a>Feltételes hozzáférés engedélyezése
-A forgatókönyv engedélyezésének részletes útmutatás belül érhető el [helyszíni feltételes hozzáférés használata az Azure Active Directory Eszközregisztráció beállítása](../active-directory-conditional-access-automatic-device-registration-setup.md).
-
-## <a name="verify-devices-are-synchronized-to-active-directory"></a>Ellenőrizze az eszköz szinkronizált Active Directory
-Eszközvisszaíró most már megfelelően fog működni. Vegye figyelembe, hogy az eszköz objektumokat írt vissza kell ad akár 3 órát is igénybe vehet.  Győződjön meg arról, hogy az eszközök vannak folyamatban megfelelően szinkronizálva, tegye a következőket a szinkronizálási szabályok befejezése után:
+## <a name="part-4-verify-devices-are-synchronized-to-active-directory"></a>4. lépés: Ellenőrizze az Active Directory eszköz szinkronizált
+Eszközvisszaíró most már megfelelően fog működni. Vegye figyelembe, hogy az eszköz objektumokat írt vissza kell ad akár 3 órát is igénybe vehet. Győződjön meg arról, hogy az eszközök megfelelően szinkronizált alatt, a szinkronizálás befejeződése után tegye a következőket:
 
 1. Indítsa el az Active Directory felügyeleti központ.
-2. Bontsa ki a RegisteredDevices, a tartományban, hogy az összevont van folyamatban.
-   ![Az Active Directory felügyeleti központ regisztrált eszközök](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)
-3. Aktuális regisztrált eszközök nem jelennek meg.
-   ![Az Active Directory felügyeleti központ regisztrált eszközök listája](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
+2. Bontsa ki a RegisteredDevices, a tartományban, a konfigurált [2. rész](#part-2-prepare-active-directory).  
+
+   ![Az Active Directory felügyeleti központ regisztrált eszközök](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)  
+   
+3. Aktuális regisztrált eszközök nem jelennek meg.  
+
+   ![Az Active Directory felügyeleti központ regisztrált eszközök listája](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)  
+
+## <a name="enable-conditional-access"></a>Feltételes hozzáférés engedélyezése
+   A forgatókönyv engedélyezésének részletes útmutatás belül érhető el [helyszíni feltételes hozzáférés használata az Azure Active Directory Eszközregisztráció beállítása](../active-directory-conditional-access-automatic-device-registration-setup.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>A visszaírási jelölőnégyzet továbbra is le van tiltva.
@@ -113,7 +117,8 @@ Első lépések első:
   * Nyissa meg a **összekötők** fülre.
   * Keresse meg az összekötő típusú Active Directory tartományi szolgáltatásokban, és válassza ki azt.
   * A **műveletek**, jelölje be **tulajdonságok**.
-  * Ugrás a **csatlakozni az Active Directory Erdőfelderítési**. Győződjön meg arról, hogy a tartomány és a felhasználó-név megadva a képernyő megfelelés a parancsfájlt a fiókját.
+  * Ugrás a **csatlakozni az Active Directory Erdőfelderítési**. Győződjön meg arról, hogy a tartomány és a felhasználó-név megadva a képernyő megfelelés a parancsfájlt a fiókját.  
+  
     ![A Szinkronizáló Service Manager-összekötő-fiók](./media/active-directory-aadconnect-feature-device-writeback/connectoraccount.png)
 
 Ellenőrizze az Active Directory konfigurációját:
@@ -144,6 +149,5 @@ Ellenőrizze az Active Directory konfigurációját:
 * [Kockázatkezelés feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)
 * [A helyszíni feltételes hozzáférés használata az Azure Active Directory Eszközregisztráció beállítása](../active-directory-device-registration-on-premises-setup.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
-

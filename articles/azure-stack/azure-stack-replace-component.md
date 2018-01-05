@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 5f760ae0cc33e138fc3d484711b8747b984977d4
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 20a830f99c5545b49e7b8c0211d145eef3e46179
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Cserélje le az Azure-verem skálázási egység csomóponton egy hardverösszetevő
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek*
 
-Ez a cikk ismerteti, amelyek nem közbeni-cserélhető hardverösszetevők lecseréli általános folyamata. Tényleges helyettesítő lépései eltérőek lesznek a számítógépgyártó (OEM) hardver gyártójától alapján. Részletes lépéseket, amelyek adott integrált Azure verem rendszerhez a gyártója által biztosított mező cserélhető Cisco egységet (FRU) dokumentációjában talál.
+Ez a cikk ismerteti, amelyek nem közbeni-cserélhető hardverösszetevők lecseréli általános folyamata. Tényleges helyettesítő szükséges lépések eltérhetnek az eredeti hardvergyártó (OEM) hardver szállítójával alapján. Részletes lépéseket, amelyek adott integrált Azure verem rendszerhez a gyártója által biztosított mező cserélhető Cisco egységet (FRU) dokumentációjában talál.
 
 Nem közbeni-cserélhető összetevők közé tartoznak a következők:
 
@@ -40,7 +40,7 @@ Nem közbeni-cserélhető összetevők közé tartoznak a következők:
 
 A következő folyamatábra nem közbeni-cserélhető hardverösszetevő cseréje általános FRU folyamata látható.
 
-![Összetevő helyettesítő-folyamatot bemutató folyamatábra](media/azure-stack-replace-component/ReplaceComponentFlow.PNG)
+![Összetevő helyettesítő-folyamatot bemutató folyamatábra](media/azure-stack-replace-component/replacecomponentflow.PNG)
 
 * Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
 
@@ -48,11 +48,11 @@ A következő folyamatábra nem közbeni-cserélhető hardverösszetevő cseréj
 
 ## <a name="review-alert-information"></a>Riasztási információk áttekintése
 
-Az Azure-verem és a felügyeleti rendszer hálózati adapter és a közvetlen tárolóhelyek által vezérelt adatmeghajtók állapotát figyeli. Egyéb hardverelemek nem figyeli. Az összes egyéb hardverelemek riasztásokról értesítő a szállító-specifikus hardver felügyeleti megoldás, amely a hardver életciklus gazdagépen futtatja.
+Az Azure-verem és a felügyeleti rendszer követi nyomon a hálózati adapterek és a közvetlen tárolóhelyek által vezérelt adatmeghajtókon állapotát. Egyéb hardverelemek nem követi nyomon. Az összes egyéb hardverelemek riasztásokról értesítő a szállító-specifikus hardver felügyeleti megoldás, amely a hardver életciklus gazdagépen futtatja.
 
 ## <a name="component-replacement-process"></a>Az összetevő cseréjét.
 
-A következő lépések vannak megadva, az összetevő cseréjét magas szintű áttekintését. Az OEM által biztosított FRU dokumentációját utaló nélkül nem kövesse az alábbi lépéseket.
+Az alábbi lépéseket a összetevő cseréjét magas szintű áttekintését adja meg. Az OEM által biztosított FRU dokumentációját utaló nélkül nem kövesse az alábbi lépéseket.
 
 1. Használja a [kiürítésére](azure-stack-node-actions.md#scale-unit-node-actions) műveletet a skálázási egység csomópont állítható karbantartási üzemmódba. Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
 2. Miután a skálázási egység csomópontot karbantartási módban van, a [kikapcsolásához](azure-stack-node-actions.md#scale-unit-node-actions) művelet. Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
@@ -66,7 +66,8 @@ A következő lépések vannak megadva, az összetevő cseréjét magas szintű 
 6. Használja a rendszerjogosultságú végpontot [tekintse meg a virtuális lemezek javítási](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). Új adatok meghajtók a teljes helyreállítási feladat rendszerterhelés függően több órát is igénybe vehet, és a felhasznált lemezterület.
 7. A javítási művelet befejeződését követően ellenőrizze, hogy az összes aktív riasztás automatikusan bezárták.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a közbeni-cserélhető fizikai lemez cseréje: [olyan lemezt cserél ki](azure-stack-replace-disk.md).
-- További információ a fizikai csomópont cseréje: [cserélje le a skálázási egység csomópont](azure-stack-replace-node.md). 
+- További információ a fizikai csomópont cseréje: [cserélje le a skálázási egység csomópont](azure-stack-replace-node.md).
+- 

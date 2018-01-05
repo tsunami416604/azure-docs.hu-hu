@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: cherylmc
-ms.openlocfilehash: b67fdfc82bbc132772186e3500079cfcfdafe02b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b014d43ab25124d3e08e19ca190b320fc8456593
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Törölje a virtuális hálózati átjáró, a portál használatával
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/21/2017
 
 A cikkben az Azure VPN gatewayek a Resource Manager üzembe helyezési modellel használatával telepített törlésére vonatkozó utasítások. Többféle különböző megközelítés közül választhat, ha törli a virtuális hálózati átjáró VPN gateway-konfigurációt.
 
-- Ha teljes tartalmának törlése, és kezdje újra a folyamatot, ahogy a gyorsítás esetében is egy tesztkörnyezetben, törölheti az erőforráscsoportot. Ha töröl egy erőforráscsoport, a csoportban lévő összes erőforrást törli. Ez a módszer csak akkor javasolt, ha nem szeretné megtartani az erőforrások az erőforráscsoportban. Ezzel a megközelítéssel csak néhány erőforrásokat külön-külön nem törölhető.
+- Ha teljes tartalmának törlése, és kezdje újra a folyamatot, ahogy a gyorsítás esetében is egy tesztkörnyezetben, törölheti az erőforráscsoportot. Ha töröl egy erőforráscsoport, a csoportban lévő összes erőforrást törli. Ez a módszer csak akkor ajánlott, ha nem szeretné megtartani az erőforrások az erőforráscsoportban. Ezzel a megközelítéssel csak néhány erőforrásokat külön-külön nem törölhető.
 
 - Ha meg szeretné tartani a erőforrások az erőforráscsoportban, a virtuális hálózati átjáró törlése válik kicsit bonyolultabb. A virtuális hálózati átjáró törlése előtt először törölnie kell az átjáró függő erőforrásokat. A szükséges lépések attól függ, a létrehozott kapcsolatok és a tőle függő erőforrások, minden egyes kapcsolathoz.
 

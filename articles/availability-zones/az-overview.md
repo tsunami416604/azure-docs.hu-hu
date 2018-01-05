@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/16/2017
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 9d21b112a1021cbefa42722404391220e6c018e5
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: b3618207c1d4d2b8d3c0eaf83408b4813cd3da2d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="overview-of-availability-zones-in-azure-preview"></a>A rendelkezésre állási zónák (előzetes verzió) Azure-ban – áttekintés
 
@@ -54,7 +54,7 @@ A rendelkezésre állási zónák preview USA keleti régiója 2. régiója, Nyu
 3. Válasszon egy régiót, amely támogatja a rendelkezésre állási zónák.
 4. Az alábbi hivatkozások valamelyikével indíthatja a rendelkezésre állási zónák a szolgáltatással. 
     - [Virtuális gép létrehozása](../virtual-machines/windows/create-portal-availability-zone.md)
-    - [Hozzon létre egy zonal virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)
+    - [Hozzon létre egy virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
     - [Adjon hozzá egy felügyelt lemezt PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
     - [Terheléselosztó](../load-balancer/load-balancer-standard-overview.md)
 

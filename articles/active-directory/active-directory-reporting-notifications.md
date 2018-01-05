@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 01/03/2018
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7aacb31f708e8c3221a5b8cf4223c65160ccb019
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 99783eebb76363ca3fa96c6777906239f3de1131
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Az Azure Active Directory jelentéskészítési értesítései
 ## <a name="what-reports-generate-email-notifications"></a>Milyen jelentések készítése az értesítő e-mailek
@@ -36,13 +36,13 @@ Az e-mailt küld összes globális rendszergazda, aki van rendelve egy Active Di
 Az e-mailt küld, ha a 10 új szabálytalan bejelentkezési tevékenység történik az elmúlt 30 napban, vagy mert a legutóbbi e-mailben küldték, attól függően kisebb.
 
 ## <a name="how-do-i-access-the-report-mentioned-in-the-email"></a>Hogyan érhető el a jelentésben szerepel az e-mailt?
-Ha a hivatkozásra kattint, a klasszikus Azure portálon belül a jelentés oldalra irányítja. A jelentés eléréséhez kell lennie mindkét:
+Ha a hivatkozásra kattint, az Azure-portálon belül a jelentés oldalra irányítja. A jelentés eléréséhez kell lennie mindkét:
 
 * Rendszergazdaként vagy az Azure-előfizetéshez társadminisztrátornak
 * A címtár globális rendszergazdája és az Active Directory Premium licenc hozzárendelése. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
 
 ## <a name="can-i-turn-off-these-emails"></a>Lehet kikapcsolni az e-maileket?
-Igen, a rendellenes bejelentkezések a klasszikus Azure portálon belül kapcsolatos értesítések kikapcsolásához kattintson **konfigurálása**, majd válassza ki **letiltott** alatt a **értesítések** szakasz.
+Igen, a rendellenes bejelentkezések az Azure-portálon belül kapcsolatos értesítések kikapcsolásához kattintson **konfigurálása**, majd válassza ki **letiltott** alatt a **értesítések** szakasz.
 
 ## <a name="whats-next"></a>A következő lépések
 * Fejezetét milyen biztonsági, naplózási és tevékenységjelentéseket állnak rendelkezésre? Tekintse meg [az Azure AD biztonsági, naplózási és tevékenységjelentéseket](active-directory-view-access-usage-reports.md)

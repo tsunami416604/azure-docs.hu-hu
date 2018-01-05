@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/16/2017
+ms.date: 1/4/2018
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 7b259009a8d96e81a141e7718c0d54d40d7b67d1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3444b13972ab9e5c435fc009e8ddb51bcafb1a41
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windows-kiszolgálóra vagy -ügyfélre a Resource Manager-alapú üzemi modell használatával
 
@@ -33,7 +33,7 @@ Ez a cikk azt ismerteti, hogyan adatok helyreállítását a biztonsági mentés
 > A [2017. január Azure Backup frissítését](https://support.microsoft.com/en-us/help/3216528?preview) szükség, ha az adatok helyreállítását a azonnali visszaállításához használni kívánt. A biztonsági mentési adatok is a tárolók az területi beállításokat, a támogatási cikkben szereplő kell védeni. Tekintse át a [2017. január Azure Backup frissítését](https://support.microsoft.com/en-us/help/3216528?preview) területi beállításokat, amelyek támogatják a azonnali állítsa vissza a legfrissebb listáját. Azonnali visszaállítás **nem** elérhetők az összes területi beállításokat.
 >
 
-Azonnali visszaállítási nem áll rendelkezésre a Recovery Services-tárolók használható az Azure portál és a biztonsági mentési tárolók a klasszikus portálon. Ha szeretné használni a azonnali visszaállítása, töltse le a MARS frissítést, és hajtsa végre, amelyek említik azonnali visszaállítása.
+Használjon azonnali Restore with Recovery Services-tárolók az Azure portálon. Ha a biztonsági mentési tárolók tárolt adat, akkor konvertált Recovery Services-tárolók. Ha szeretné használni a azonnali visszaállítása, töltse le a MARS frissítést, és hajtsa végre, amelyek említik azonnali visszaállítása.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 

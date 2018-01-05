@@ -3,7 +3,7 @@ title: "Frissítés az Azure AD-alkalmazásproxy |} Microsoft Docs"
 description: "Válassza ki, melyik proxy megoldás esetén ajánlott, ha frissít, a Microsoft Forefront vagy egységes Access-átjárón."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: b124def6195da93eee61b0ec30698b935111ac4a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5323a9225adb9a9bfca2dccec5c84f288c4fd25d
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="compare-remote-access-solutions"></a>A távelérési megoldások összehasonlítása
 
 Az Azure Active Directory Alkalmazásproxyjával egyike a két távelérési megoldás, amely a Microsoft biztosít. A másik pedig a webalkalmazás-Proxy, a helyszíni verzióira. Ezek a megoldások két cserélje le a korábbi termékek, amelyet a Microsoft kínál: Microsoft Forefront Threat Management Gateway (TMG) és az egységes Access-átjáró (UAG). Ez a cikk használatával megérthetik, hogy hogyan ezek a megoldások összehasonlítása egymáshoz. Azok az Ön továbbra is elavult TMG vagy UAG megoldások segítségével ez a cikk tervezze az áttelepítést az alkalmazásproxy egyikére. 
 
 
-## <a name="feature-comparison"></a>Funkciók összehasonlítása
+## <a name="feature-comparison"></a>Szolgáltatások összehasonlítása
 
 Ez a táblázat segítségével azonosíthatja, hogyan hasonlítsa össze a Threat Management Gateway (TMG), a Unified Access-átjáró (UAG), a webalkalmazás-proxykiszolgálóként (WAP) és az Azure AD Application Proxy (AP) egymással.
 
@@ -60,7 +60,7 @@ Az Azure AD-alkalmazásproxy előnyökkel egyedi hasonló termékek, köztük a 
 - Egy hozzáférési panel, hogy a felhasználók az összes alkalmazásuk kezelésére, beleértve az Office 365 folytathatja, az Azure AD integrált Szolgáltatottszoftver-alkalmazásoknál, és a helyszíni webalkalmazások. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak az Azure AD-alkalmazás segítségével](active-directory-application-proxy-get-started.md)
 - [Átállás Forefront TMG és alkalmazásproxy UAG](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/).

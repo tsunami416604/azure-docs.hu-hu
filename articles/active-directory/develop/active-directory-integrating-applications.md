@@ -3,10 +3,9 @@ title: "Alkalmazások integrálása az Azure Active Directoryval"
 description: "Hogyan lehet hozzáadni, frissítés, vagy távolítsa el a kérelmet az Azure Active Directory (Azure AD)."
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: PatAltimore
 manager: mtillman
 editor: mbaldwin
-ms.assetid: ae637be5-0b71-4b1e-b1fe-b83df3eb4845
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -16,11 +15,11 @@ ms.date: 10/04/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: b4e2ff19cb14ac0abdea1d76ee965b542f6fa7ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e398536ff6f660c75e4e063040eab33a831d65c6
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Alkalmazások integrálása az Azure Active Directoryban
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -111,7 +110,7 @@ Emellett egy ügyfél egy webes API-t egy erőforrás-alkalmazáshoz (például 
 - Delegált engedélyek: Az ügyfélalkalmazást hozzá kell férniük a webes API-t a bejelentkezett felhasználó nevében, de az elérés korlátozója a kijelölt engedély. Az ilyen típusú engedélyt felhasználó által engedélyezhetők, kivéve, ha az engedély szükséges a rendszergazda jóváhagyását. 
 
   > [!NOTE]
-  > Delegált engedélyek hozzáadása egy alkalmazáshoz nem automatikusan hozzájárulását belül a bérlő számára, a klasszikus Azure portálon. Felhasználók hozzájárulás a hozzáadott delegált jogosultságokkal sikeresen telepítették futásidőben, az továbbra is futtathatja manuálisan kell, kivéve, ha a rendszergazda kattint a **engedélyt adjon** gombot a **szükséges engedélyek** szakasza a alkalmazások lap az Azure portálon. 
+  > Delegált engedélyek hozzáadása egy alkalmazáshoz nem automatikusan hozzájárulását belül a bérlő számára. Felhasználók hozzájárulás a hozzáadott delegált jogosultságokkal sikeresen telepítették futásidőben, az továbbra is futtathatja manuálisan kell, kivéve, ha a rendszergazda kattint a **engedélyt adjon** gombot a **szükséges engedélyek** szakasza a alkalmazások lap az Azure portálon. 
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>Adja hozzá az alkalmazás hitelesítő adatait, vagy a hozzáférési engedélye a webes API-khoz
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -312,7 +311,7 @@ Az alkalmazásokat, amelyek alapján az "Összes alkalmazások" szűrő megjelen
 
 El szeretné távolítani egy több-bérlős alkalmazás hozzáférés a címtárhoz (után hozzájárulási megadó), a vállalati rendszergazda el kell távolítania a szolgáltatásnevet. A rendszergazda globális rendszergazdai hozzáféréssel kell rendelkeznie, és az Azure portálon keresztül lehet eltávolítani a [Azure AD PowerShell-parancsmagok](http://go.microsoft.com/fwlink/?LinkId=294151) elérését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az Azure AD hitelesítési működéséről további információkért lásd: [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md).
 - Tekintse meg a [Branding irányelveket az integrált alkalmazások](active-directory-branding-guidelines.md) kapcsolatos tippek az alkalmazások visual útmutatást.
 - Az alkalmazás alkalmazás- és szolgáltatásnevet objektumok közötti kapcsolatot további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok](active-directory-application-objects.md).

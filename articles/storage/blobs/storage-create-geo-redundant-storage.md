@@ -14,15 +14,15 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 3eb57b7e071a0a20effee65074cc509ee4eeb449
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: 63ca91c2eadf7b003427e9716d99621fca1b1a19
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Ellenőrizze az alkalmazás adataihoz az Azure storage magas rendelkezésre állású
 
-Ez az oktatóanyag egy sorozat része. Az oktatóanyag bemutatja, hogyan végezheti el az alkalmazás adataihoz az Azure-ban magas rendelkezésre állású. Amikor végzett, lehetősége van a .NET core-Konzolalkalmazás, amely feltölti és egy blobot lekéri a [írásvédett georedundáns](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) storage-fiók. RA-GRS működik az elsődleges tranzakciók replikálni a másodlagos régióba. A replikációs folyamatot garantálja, hogy idővel konzisztenssé a másodlagos régióba adatai. Az alkalmazás használja a [áramköri megszakító](/azure/architecture/patterns/circuit-breaker.md) mintáját, és megállapítsa, melyik végponthoz kapcsolódni. Az alkalmazás másodlagos végponti vált, ha hiba szimulálják.
+Ez az oktatóanyag egy sorozat része. Az oktatóanyag bemutatja, hogyan végezheti el az alkalmazás adataihoz az Azure-ban magas rendelkezésre állású. Amikor végzett, lehetősége van a .NET core-Konzolalkalmazás, amely feltölti és egy blobot lekéri a [írásvédett georedundáns](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) storage-fiók. RA-GRS működik az elsődleges tranzakciók replikálni a másodlagos régióba. A replikációs folyamatot garantálja, hogy idővel konzisztenssé a másodlagos régióba adatai. Az alkalmazás használja a [áramköri megszakító](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker) mintáját, és megállapítsa, melyik végponthoz kapcsolódni. Az alkalmazás másodlagos végponti vált, ha hiba szimulálják.
 
 A rész az adatsorozatok megismerheti, hogyan:
 
@@ -109,11 +109,11 @@ A konzolablakban elindul, és megkezdi az alkalmazás futtatása. Az alkalmazás
 
 ![Konzolalkalmazás fut](media/storage-create-geo-redundant-storage/figure3.png)
 
-Példakód a `RunCircuitBreakerAsync` a feladat a `Program.cs` fájllal a tárolási fiók a lemezkép letöltése a [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.downloadtofileasync?view=azure-dotnet) metódust. A letöltés előtt egy [OperationContext](/dotnet/api/microsoft.windowsazure.storage.operationcontext?view=azure-dotnet) van definiálva. A műveletkörnyezetet határozza meg az esemény kezelők, a letöltés végeztével sikeresen, vagy ha a letöltés sikertelen, és újra próbálkozik.
+Példakód a `RunCircuitBreakerAsync` a feladat a `Program.cs` fájllal a tárolási fiók a lemezkép letöltése a [DownloadToFileAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet) metódust. A letöltés előtt egy [OperationContext](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.operationcontext?view=azure-dotnet) van definiálva. A műveletkörnyezetet határozza meg az esemény kezelők, a letöltés végeztével sikeresen, vagy ha a letöltés sikertelen, és újra próbálkozik.
 
 ### <a name="retry-event-handler"></a>Ismételje meg a eseménykezelő
 
-A `OperationContextRetrying` eseménykezelő nevezzük, amikor a lemezkép letöltése sikertelen, és állítsa be, majd ismételje meg. Ha eléri a maximális számú újrapróbálkozást, az alkalmazásban definiált, a [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) a kérelem változott `SecondaryOnly`. Ez a beállítás kényszeríti az alkalmazást, a lemezkép letöltése a másodlagos végponti kísérletet. Ez a konfiguráció csökkenti a lemezképet kérik, mint az elsődleges végpont nem a rendszer ismét megkísérli határozatlan ideig szükséges idő.
+A `OperationContextRetrying` eseménykezelő nevezzük, amikor a lemezkép letöltése sikertelen, és állítsa be, majd ismételje meg. Ha eléri a maximális számú újrapróbálkozást, az alkalmazásban definiált, a [LocationMode](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) a kérelem változott `SecondaryOnly`. Ez a beállítás kényszeríti az alkalmazást, a lemezkép letöltése a másodlagos végponti kísérletet. Ez a konfiguráció csökkenti a lemezképet kérik, mint az elsődleges végpont nem a rendszer ismét megkísérli határozatlan ideig szükséges idő.
 
 ```csharp
 private static void OperationContextRetrying(object sender, RequestEventArgs e)
@@ -141,7 +141,7 @@ private static void OperationContextRetrying(object sender, RequestEventArgs e)
 
 ### <a name="request-completed-event-handler"></a>A kérelem befejeződött eseménykezelő
 
-A `OperationContextRequestCompleted` eseménykezelő nevezik, ha a lemezkép letöltése sikeres volt. Ha az alkalmazás nem használja a másodlagos végponti, az alkalmazás továbbra is használni ezt a végpontot, legfeljebb 20 alkalommal. 20 alkalommal, az alkalmazás beállítása után a [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) vissza `PrimaryThenSecondary` és az elsődleges végpont újrapróbálja a telepítést. Ha a kérelem sikeres, az alkalmazás továbbra is az elsődleges végpont olvasni.
+A `OperationContextRequestCompleted` eseménykezelő nevezik, ha a lemezkép letöltése sikeres volt. Ha az alkalmazás nem használja a másodlagos végponti, az alkalmazás továbbra is használni ezt a végpontot, legfeljebb 20 alkalommal. 20 alkalommal, az alkalmazás beállítása után a [LocationMode](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) vissza `PrimaryThenSecondary` és az elsődleges végpont újrapróbálja a telepítést. Ha a kérelem sikeres, az alkalmazás továbbra is az elsődleges végpont olvasni.
 
 ```csharp
 private static void OperationContextRequestCompleted(object sender, RequestEventArgs e)

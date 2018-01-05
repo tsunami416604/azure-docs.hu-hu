@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
+ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: cf690b7e5b0a2b19282c1655b6dc32e9eec6884c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8e2fceaf7e8a0d6c177d3122bd07de5b8c11f295
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>A Service Fabric fürt kapacitástervezésének szempontjai
 Minden éles telepítésében kapacitásának megtervezése fontos lépés. Az alábbiakban néhány kell figyelembe venni, hogy a folyamat részeként elemek.
@@ -69,7 +69,7 @@ A tartóssági szint megjelenítésével jelzi a rendszer a virtuális gépeket,
 
 Ez a jogosultság van kifejezve, a következő értékeket:
 
-* Arany – az infrastruktúra-feladatok szüneteltethetők UD két órát időtartamára. Arany tartóssági engedélyezhető csak a teljes csomópont VM termékváltozatok például D15_V2, G5 stb.
+* Arany – az infrastruktúra-feladatok szüneteltethetők UD két órát időtartamára. Arany tartóssági akkor engedélyezhető, csak a teljes csomópont L32s, GS5, G5, DS15_v2 stb D15_v2 (általában a Virtuálisgép-méretek megtalálható a http://aka.ms/vmspecs, "Példány egyetlen ügyfélhez dedikált hardverre elkülönített" megjegyzésben szereplő állapotúként megjelölt VM termékváltozatok Teljes csomópont virtuális gép)
 * Az infrastruktúra-feladatok ezüst - UD 10 perces időtartamra szüneteltethető, és elérhető összes szabványos virtuális egymagos és annál.
 * Bronz - jogosultság nélküli. Ez az alapértelmezett beállítás. Csak a tartóssági szint csomópont típusú használ, amelynek futtatása _csak_ állapot nélküli munkaterheléseket. 
 
@@ -214,7 +214,7 @@ A termelési számítási feladatokhoz
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Amennyiben a kapacitástervezés Befejezés, és állítson be egy fürtbe, olvassa el az alábbiakat:
 
 * [A Service Fabric-fürt biztonsági](service-fabric-cluster-security.md)

@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/19/2017
+ms.date: 01/04/2018
 ms.author: genli
-ms.openlocfilehash: bb82eeda21fe4913acbe930696aa110ea1554f28
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: dc09f29fec78d408e1560bfa0a943f16ab50c760
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái
 
@@ -40,9 +40,11 @@ Jobban ellenőrizhető és kezelési egyszerűsítése, ajánlott RBAC használa
 Valaki hozzáadásához az Azure-előfizetés szolgáltatás-felügyeleti rendszergazdaként számukra az RBAC tulajdonosi szerepkört az előfizetéshez. A tulajdonosi szerepkört kezelheti az erőforrásokat az előfizetéshez társított, és nem rendelkezik hozzáférési jogosultság más előfizetésekkel is.
 
 1. Látogasson el [ **előfizetések** Azure-portálon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Válassza ki az előfizetést, amelyet a hozzáférés biztosítása.
-1. Válassza ki **hozzáférés-vezérlés (IAM)** a menüben.
-1. Válassza ki **hozzáadása** > **szerepkör** > **tulajdonos**. Írja be a kívánt tulajdonosa adja, jelölje ki a felhasználót, és válassza ki a felhasználó e-mail címe **mentése**.
+2. Válassza ki az előfizetést, amelyet szeretne hozzáférést.
+3. Válassza ki **hozzáférés-vezérlés (IAM)** a menüben.
+4. Az a **szerepkör** mezőben válassza **tulajdonos**. 
+5. Az a **való hozzáférés hozzárendelése** mezőben válassza **Azure AD-felhasználó, csoport vagy alkalmazás**. 
+6. Az a **válasszon** mezőbe írja be a felhasználó hozzá szeretne adni a tulajdonos e-mail címe. A felhasználó, majd válassza ki és **mentése**.
 
     ![A tulajdonosi szerepkört a kiválasztott képernyőkép](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 

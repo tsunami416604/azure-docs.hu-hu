@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6f9ca3d9b0f41210a3f43a8ae505f0a90b130b34
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f3bc2f14b182e502c651ff44ef49b88cd34e1f50
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Megérteni, hogyan használható a IoT peremhálózati modulok, konfigurálva, és használja fel újra – előzetes
 
@@ -99,7 +99,7 @@ A gyűjtő a következők egyike lehet:
 | a fogadó | Leírás |
 | ---- | ----------- |
 | `$upstream` | Az üzenet küldése az IoT hubhoz |
-| `BrokeredEndpoint(/modules/{moduleId}/inputs/{input})` | A bemeneti üzenet küldése `{input}` modul`{moduleId}` |
+| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | A bemeneti üzenet küldése `{input}` modul`{moduleId}` |
 
 Fontos megjegyezni, hogy él hub: legalább egyszeri garanciákat nyújt, ami azt jelenti, hogy üzenetek helyben lesz tárolva abban az esetben egy útvonalat nem lehet kézbesíteni az üzenetet a fogadó, pl. a peremhálózati hub nem lehet csatlakozni az IoT-központ vagy a cél modul nincs csatlakoztatva.
 
@@ -281,7 +281,7 @@ Kívánt tulajdonságai vannak beállítva, amikor egy üzembe helyezési jegyz�
 | ügyfelek. {eszköz vagy modul identitás} .lastConnectTime | Utolsó idő az eszköz vagy a csatlakoztatott modul |
 | ügyfelek. {eszköz vagy modul identitás} .lastDisconnectTime | Utolsó idő az eszköz vagy modul kapcsolata megszakadt |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy tudja, hogyan IoT biztonsági modulok használata esetén [követelmények és eszközök IoT peremhálózati modulok adattárházzal][lnk-module-dev].
 

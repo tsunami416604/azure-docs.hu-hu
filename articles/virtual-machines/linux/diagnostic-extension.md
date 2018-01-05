@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.openlocfilehash: 7d5252cab8c6238126c802b8c6a5293bb448e65e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1eae6d302827c977b9258174dec68fd8f3009a11
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux diagnosztikai kiterjesztésének használatával figyelheti a metrikák és a naplókat
 
@@ -127,13 +127,17 @@ Ez a konfigurációs adatokat bizalmas adatokat, amelyeket védeni kell a nyilv�
 }
 ```
 
-Név | Érték
+Name (Név) | Érték
 ---- | -----
 storageAccountName | A tárfiók, amelyben adatot ír a kiegészítő mező neve.
 storageAccountEndPoint | (választható) A végpont a felhőben, amelyben a tárfiók található azonosítása. Ha ez a beállítás hiányzik, LAD az Azure nyilvános felhőjében alapértelmezett `https://core.windows.net`. A Németországi Azure storage-fiók használatához Azure Government vagy Azure Kína, állítsa ezt az értéket ennek megfelelően.
 storageAccountSasToken | Egy [fiók SAS-jogkivonat](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) a Blob és Table szolgáltatásait (`ss='bt'`), tárolók és objektumok alkalmazandó (`srt='co'`), amely hozzáadásához létrehozása, listában frissítése, és írási engedélyekkel (`sp='acluw'`). Tegye *nem* közé tartozik a bevezető kérdőjel (?).
 mdsdHttpProxy | (választható) HTTP-proxyadatok csatlakozni a megadott tárfiók és a végpont a bővítmény engedélyezéséhez szükséges.
 sinksConfig | (választható) Alternatív célhoz, amelyhez metrikákkal és eseményekkel kézbesítése részleteit. A bővítmény által támogatott minden egyes adatokat a fogadó részleteit a következő szakaszok ismertetnek.
+
+
+> [!NOTE]
+> A kiterjesztés egy Azure-telepítés sablonnal való telepítésekor a tárfiók és a SAS-jogkivonatot kell létrehoznia előzetesen és továbbítása során a sablonba. Nem lehet telepíteni a virtuális gép, a tárfiók, és nem ugyanazt a sablont a kiterjesztés konfigurálása. A sablonon belül SAS-token létrehozása jelenleg nem támogatott.
 
 A szükséges SAS-jogkivonatot az Azure portálon keresztül egyszerűen állíthat össze.
 
@@ -491,7 +495,7 @@ PercentFreeInodes | Nem használt Inode-OK százaléka
 PercentUsedInodes | Összesítve közötti összes fájlrendszerek lefoglalt (használatban) Inode-OK százaléka
 BytesReadPerSecond | Másodpercenként olvasott bájtok száma
 BytesWrittenPerSecond | Másodpercenként írt bájtok
-BytesPerSecond | Bájt nem írható és olvasható / másodperc
+Bájt/s | Bájt nem írható és olvasható / másodperc
 ReadsPerSecond | Olvasási műveletek másodpercenkénti száma
 WritesPerSecond | Írási műveletek másodpercenkénti száma
 TransfersPerSecond | Olvasási vagy írási műveletek másodpercenkénti száma
@@ -513,7 +517,7 @@ AverageTransferTime | Művelet átlagos másodpercben
 AverageDiskQueueLength | Várólistára helyezett lemezen műveletek átlagos száma
 ReadBytesPerSecond | A másodpercenként beolvasott bájtok száma
 WriteBytesPerSecond | Másodpercenként írt bájtok száma
-BytesPerSecond | Olvassa el és másodpercenként írt bájtok száma
+Bájt/s | Olvassa el és másodpercenként írt bájtok száma
 
 Minden lemezeken összesített értékeket szerezhető be úgy, hogy `"condition": "IsAggregate=True"`. Ahhoz, hogy egy adott eszköz (például/dev/sdf1) adatait, állítsa be `"condition": "Name=\\"/dev/sdf1\\""`.
 
@@ -699,7 +703,7 @@ A Microsoft Azure Tártallózó munkamenet pillanatképe jeleníti meg a létreh
 
 Tekintse meg a megfelelő [EventHubs dokumentáció](../../event-hubs/event-hubs-what-is-event-hubs.md) megtudhatja, hogyan EventHubs végpont közzétett üzenetek felhasználását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A metrika értesítések [Azure figyelő](../../monitoring-and-diagnostics/insights-alerts-portal.md) a gyűjtött metrikáihoz.
 * Hozzon létre [diagramok figyelési](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) a metrikáihoz.

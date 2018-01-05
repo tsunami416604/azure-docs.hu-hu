@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 01/04/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f503f373ec32ffcdd9be3ca03da6ec5e1b10e35a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ec6489f796dab0fa24bbadf542429d4cf853c414
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -32,11 +32,12 @@ Ha szeretné a tartományhoz csatlakozó eszközök csatlakoztatása az Azure AD
 
 Mielőtt elkezdené a hibrid az Azure AD csatlakoztatott eszközök konfigurálása a környezetben, tanulmányozza át a támogatott forgatókönyveket és a korlátozásokkal.  
 
+Ha a a [rendszer-előkészítő eszköz (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)), ellenőrizze, hogy forrását, amely nem lett még regisztrálva az Azure ad-val a Windows telepítési lemezképeket.
+
 A leírások olvashatóságának, ez a témakör a következő kifejezést használja: 
 
 - **Aktuális Windows-eszközök** -a Windows 10 vagy Windows Server 2016 rendszert futtató, tartományhoz csatlakoztatott eszközökre vonatkozik.
 - **Régebbi Windows-eszközök** -e az összes kifejezés **támogatott** tartományhoz csatlakoztatott Windows-eszközök végrehajtott futó Windows 10 és Windows Server 2016.  
-
 
 ### <a name="windows-current-devices"></a>Aktuális Windows-eszközök
 
@@ -66,6 +67,15 @@ Az Azure AD Connect:
 - A számítógépfiók a helyszíni Active Directory (AD) és a eszközobjektumot az Azure AD közötti társítás tartja. 
 - Lehetővé teszi, hogy más eszköz kapcsolódó szolgáltatások, például a vállalati Windows Hello.
 
+Győződjön meg arról, hogy a következő URL-címekkel érhető el az Azure AD, a számítógép regisztrációjához a szervezeti hálózaton belüli számítógépek:
+
+- https://enterpriseregistration.Windows.NET
+
+- https://login.microsoftonline.com
+
+- https://device.login.microsoftonline.com
+
+Ha a szervezet az interneten keresztül egy kimenő proxy hozzáférésre van szüksége, meg kell valósítania webes Proxy automatikus felderítését a lekérdezés (WPA) lehetővé teszik a Windows 10 számítógépek regisztrálása az Azure ad Szolgáltatásba.
 
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
@@ -574,7 +584,7 @@ Ellenőrizheti a sikeres csatlakoztatott eszközök a szervezetben használatáv
 
 A parancsmag kimenete a regisztrált vagy az Azure ad-val csatlakoztatott eszközöket jeleníti meg. Minden eszköz használatához a **-minden** paraméter, és majd szűréséhez használja a **deviceTrustType** tulajdonság. Tartományhoz csatlakozó eszközök értéket veheti fel **tartományhoz**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kezelés az Azure Active Directoryban bemutatása](device-management-introduction.md)
 
