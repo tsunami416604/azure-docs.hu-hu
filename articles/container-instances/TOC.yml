@@ -23,8 +23,8 @@
       href: container-instances-tutorial-deploy-app.md
 - name: Alapelvek
   items:
-    - name: Régiók és rendelkezésre állás
-      href: container-instances-region-availability.md
+    - name: Kvóták és regionális korlátok
+      href: container-instances-quotas.md
     - name: Vezénylőkkel fennálló kapcsolat
       href: container-instances-orchestrator-relationship.md
     - name: Tárolócsoportok
@@ -59,7 +59,7 @@
       href: /javascript/api/overview/azure/containerinstance
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.containerinstance/containergroups
-- name: Erőforrások
+- name: További források
   items:
     - name: Régiónkénti elérhetőség
       href: 'https://azure.microsoft.com/regions/services/'

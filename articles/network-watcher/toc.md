@@ -9,6 +9,7 @@
 ## [VPN-kapcsolatok hibaelhárítása](network-watcher-troubleshoot-overview.md)
 ## [Kapcsolat ellenőrzése](network-watcher-connectivity-overview.md)
 ## [Szolgáltatási korlátozások](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-watcher-limits)
+
 # Első lépések
 ## [Network Watcher konfigurálása](network-watcher-create.md)
 ## Csomagrögzítés kezelése
@@ -56,6 +57,7 @@
 ### [Azure CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
 ### [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 ### [REST](network-watcher-nsg-flow-logging-rest.md)
+
 # Útmutató
 ## [VPN Gateway figyelése az Azure Automationnel](network-watcher-monitor-with-azure-automation.md)
 ## [Helyszíni kapcsolatok diagnosztizálása VPN Gateway használatával](network-watcher-diagnose-on-premises-connectivity.md)
@@ -72,6 +74,7 @@
 ### [Rugalmas verem használata](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ### [Grafana használata](network-watcher-nsg-grafana.md)
 ### [Graylog használata](network-watcher-analyze-nsg-flow-logs-graylog.md)
+## [Egy hely és egy Azure-régió közötti relatív késés meghatározása](view-relative-latencies.md)
 
 # Referencia
 ## [Azure CLI](/cli/azure/network/watcher)
@@ -82,11 +85,11 @@
 
 ## [.NET](/dotnet/api)
 ## [REST](/rest/api/networkwatcher/)
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Virtuális hálózat](/azure/virtual-network/)
 ## [Virtuális gépek](/azure/virtual-machines/)
 ## [VPN Gateway](/azure/vpn-gateway/)
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/network-watcher/)

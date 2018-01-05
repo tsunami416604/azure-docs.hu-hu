@@ -18,7 +18,7 @@
 ### [Adattárházak biztonsági másolatai](sql-data-warehouse-backups.md)
 ### [Naplózás](sql-data-warehouse-auditing-overview.md)
 ### [Kapacitási korlátok](sql-data-warehouse-service-capacity-limits.md)
-### [Gyakori kérdések](sql-data-warehouse-overview-faq.md)
+### [GYIK](sql-data-warehouse-overview-faq.md)
 
 ## Biztonság
 ### [Áttekintés](sql-data-warehouse-overview-manage-security.md)
@@ -91,11 +91,11 @@
 
 ## Adatok betöltése és áthelyezése
 ### [AdventureWorks](sql-data-warehouse-load-sample-databases.md)
+### [A Contoso nyilvános adatai](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 ### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
 ### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
-### [PolyBase Blob Storage-ból](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-### [PolyBase SQL Serverről](sql-data-warehouse-load-from-sql-server-with-polybase.md)
+### [AzCopy](sql-data-warehouse-load-from-sql-server-with-polybase.md)
 ### [RedGate](sql-data-warehouse-load-with-redgate.md)
 ### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 
@@ -126,7 +126,7 @@
 ## [Rendszernézetek](sql-data-warehouse-reference-tsql-system-views.md)
 ## [PowerShell-parancsmagok](sql-data-warehouse-reference-powershell-cmdlets.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=databases)
 ## [Fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)

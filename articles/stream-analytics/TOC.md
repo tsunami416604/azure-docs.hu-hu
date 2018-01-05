@@ -52,6 +52,7 @@
 ## Kezelés
 ### [Bemeneti és kimeneti hitelesítő adatok forgatása](stream-analytics-login-credentials-inputs-outputs.md)
 ### [Feladatok megbízhatósága a frissítések közben](stream-analytics-job-reliability.md)
+### [Kompatibilitási szint konfigurálása](stream-analytics-compatibility-level.md)
 
 ## Hibaelhárítás
 ### [Hibaelhárítási útmutató](stream-analytics-troubleshooting-guide.md)
@@ -73,7 +74,7 @@
 ## [Lekérdezés nyelve](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST](/rest/api/streamanalytics)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Blog](http://blogs.msdn.com/b/streamanalytics/)
 ## [Visszajelzési fórum](http://feedback.azure.com/forums/270577-azure-stream-analytics)

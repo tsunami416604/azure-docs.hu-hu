@@ -23,12 +23,14 @@
       href: quickstart-ruby.md
     - name: Egyéni Docker-rendszerkép üzembe helyezése
       href: quickstart-custom-docker-image.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Adatbázist használó alkalmazás
       items:
         - name: .NET Core és SQL-adatbázis
           href: tutorial-dotnetcore-sqldb-app.md
+        - name: Ruby és MySQL
+          href: tutorial-ruby-mysql-app.md
         - name: PHP és MySQL
           href: tutorial-php-mysql-app.md
         - name: Node.js és MongoDB
@@ -141,7 +143,7 @@
       href: /powershell
     - name: REST API
       href: /rest/api/appservice/
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
