@@ -26,8 +26,12 @@
       href: tutorial-deploy-function.md
 - name: Útmutatók
   items:
-    - name: Transzparens átjáró létrehozása
-      href: how-to-create-transparent-gateway.md
+    - name: Átjárók létrehozása
+      items:
+        - name: Transzparens átjáró létrehozása
+          href: how-to-create-transparent-gateway.md
+        - name: Modbus-átjáró
+          href: deploy-modbus-gateway.md
     - name: Nagy léptékű üzembe helyezés és monitorozás
       href: how-to-deploy-monitor.md
     - name: IoT Core-eszköz kiépítése
@@ -63,7 +67,7 @@
       href: security.md
     - name: IoT Edge-szószedet
       href: iot-edge-glossary.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure Certified for IoT eszközkatalógus
       href: 'https://catalog.azureiotsuite.com/'

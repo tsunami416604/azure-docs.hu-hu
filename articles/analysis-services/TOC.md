@@ -1,5 +1,5 @@
 # Áttekintés
-## [Mi az Azure Analysis Services?](analysis-services-overview.md)
+## [Tudnivalók az Analysis Servicesről](analysis-services-overview.md)
 ## [Támogatott adatforrások](analysis-services-datasource.md)
 ## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
 ## [Csatlakozás helyszíni adatforrásokhoz](analysis-services-gateway.md)

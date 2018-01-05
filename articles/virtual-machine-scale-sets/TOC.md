@@ -22,6 +22,7 @@
 ## Üzembe helyezés
 ### [Létrehozás a Visual Studióval](virtual-machine-scale-sets-vs-create.md)
 ### [Méretezési csoport a Managed Disksszel](virtual-machine-scale-sets-managed-disks.md)
+### [Rendelkezésre állási zónák használata](virtual-machine-scale-sets-use-availability-zones.md)
 ### [Méretezési csoport automatikus méretezése](virtual-machine-scale-sets-autoscale-overview.md)
 #### [Az Azure Portal használata](virtual-machine-scale-sets-autoscale-portal.md)
 #### [Az Azure CLI 2.0 használata](virtual-machine-scale-sets-autoscale-cli.md)
@@ -54,7 +55,7 @@
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
 ## [REST](/rest/api/virtualmachinescalesets/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
 ## Díjszabás 
 ### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)

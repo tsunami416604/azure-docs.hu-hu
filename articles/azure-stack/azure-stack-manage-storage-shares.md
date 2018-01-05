@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 7056aefc6bc6203c8961b8a254a2b631c9072c7b
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: dce4252846732ca5161018103438df1f9ff6146d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>A tárolókapacitás Azure verem kezelése
 
@@ -53,7 +53,7 @@ Megosztások köteteken bérlői adatok tárolásához. Bérlői adatok magában
 Ha egy nem alacsony lemezterülettel és műveletek [VISSZAIGÉNYLÉSE](#reclaim-capacity) terület nem sikeres vagy elérhető, az Azure-verem felhő üzemeltetője lehet [áttelepítése](#migrate-a-container-between) a blob tárolók egy megosztást a másikra.
 
 - Tárolók és blobok kapcsolatos további információkért lásd: [Blob-tároló](azure-stack-key-features.md#blob-storage) kulcs szolgáltatásainak és fogalmak Azure-készletben.
-- Bérlő felhasználók miként Azure verem blog tárolóval kapcsolatos információkért lásd: [Azure verem tárolószolgáltatások](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
+- Bérlő felhasználók miként az Azure-készletben a blob storage szolgáltatással kapcsolatos további információkért lásd: [Azure verem tárolószolgáltatások](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
 
 
 ### <a name="containers"></a>Tárolók

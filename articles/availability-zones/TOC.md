@@ -20,7 +20,7 @@
 #### [Felügyelt lemez hozzáadása egy rendelkezésre állási zónában PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 
 ### Virtuálisgép-méretezési csoportok
-#### [Virtuálisgép-méretezési csoport létrehozása az Azure Portalon](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)
+#### [Méretezési csoport létrehozása egy rendelkezésre állási zónában](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
 
 ### Terheléselosztó
 #### [Mi az a Load Balancer?](../load-balancer/load-balancer-standard-overview.md)
@@ -39,6 +39,6 @@
 # Azure Backup
 ## [Az Azure Backup használata](https://docs.microsoft.com/azure/backup/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Azure-régiók](https://azure.microsoft.com/regions/)
