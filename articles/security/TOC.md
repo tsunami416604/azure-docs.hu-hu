@@ -54,6 +54,8 @@
 #### [Megfelelőség – UK-OFFICIAL](./blueprints/uk-official-three-tier-applications-overview.md)
 ##### [Áttekintés](./blueprints/uk-official-three-tier-applications-overview.md)
 ##### [Alapelvek áttekintése](./blueprints/uk-official-three-tier-applications-principles-overview.md)
+#### Megfelelőség – Pénzügyi szolgáltatások
+##### [Pénzügyi szolgáltatások szabályozott számítási feladatokhoz](./blueprints/financial-services-regulated-workloads.md)
 
 # Első lépések
 ## [Ismerkedés az Azure biztonsági szolgáltatásaival](azure-security-getting-started.md)
@@ -90,7 +92,7 @@
 #### [Az Azure Active Directory naplóinak integrálása](security-azure-log-integration-ad.md)
 #### [A Security Center riasztásainak integrálása](security-azure-log-integration-security-center.md)
 #### [Key Vault-naplók integrálása az Event Hubs használatával](security-azure-log-integration-keyvault-eventhub.md)
-#### [Gyakori kérdések](security-azure-log-integration-faq.md)
+#### [GYIK](security-azure-log-integration-faq.md)
 
 ## Service Fabric
 ### [Service Fabric – ajánlott eljárások](azure-service-fabric-security-best-practices.md)
@@ -116,18 +118,18 @@
 ### [Adatok besorolása](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03)
 ### [Vészhelyreállítás és magas szintű rendelkezésre állás Azure-alapú alkalmazásokhoz](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Adatvédelmi központ](security-microsoft-trust-center.md)
 ## [Microsoft Security Response Center](azure-security-response-center.md)
 ## [Toll tesztelése](azure-security-pen-testing.md)
 ## [Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
 ## [Key Vault](../key-vault/key-vault-whatis.md)
 ## [Log Analytics](../log-analytics/log-analytics-overview.md)
-## [Többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md)
+## [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Operations Management Suite](../operations-management-suite/oms-security-getting-started.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Azure biztonsági MVP program](azure-security-mvp.md)
 ## [Kiberbiztonsági tanácsadás](azure-security-cyber-services.md)
@@ -148,7 +150,7 @@
 ## [Biztonsági kurzusok a Virtuális Akadémián](security-microsoft-virtual-academy.md)
 ## [Biztonsággal kapcsolatos videók a Channel 9 blogon](security-channel-nine.md)
 ## [Fenyegetésmodellezési eszköz](azure-security-threat-modeling-tool.md)
-### [Első lépések](azure-security-threat-modeling-tool-getting-started.md)
+### [Bevezetés](azure-security-threat-modeling-tool-getting-started.md)
 ### [A funkciók áttekintése](azure-security-threat-modeling-tool-feature-overview.md)
 ### [Fenyegetések](azure-security-threat-modeling-tool-threats.md)
 ### [Kezelési lehetőségek](azure-security-threat-modeling-tool-mitigations.md)

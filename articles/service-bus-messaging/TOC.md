@@ -2,11 +2,10 @@
 ## [Mi az a Service Bus üzenetkezelés?](service-bus-messaging-overview.md)
 ## [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 ## [Service Bus-architektúra](service-bus-architecture.md)
-## [Gyakori kérdések](service-bus-faq.md)
+## [GYIK](service-bus-faq.md)
 
 # Első lépések
 ## [Névtér létrehozása](service-bus-create-namespace-portal.md)
-### [Queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md) (Üzenetsorok, témakörök és előfizetések)
 ## Üzenetsorok használata
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
@@ -37,6 +36,7 @@
 
 ## Fejlesztés
 ### Üzenetkezelés
+#### [Queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md) (Üzenetsorok, témakörök és előfizetések)
 #### [Üzenetek, hasznos adatforgalom és szerializáció](service-bus-messages-payloads.md)
 #### [Üzenetek átvitele, zárolása és elszámolása](message-transfers-locks-settlement.md)
 #### [Üzenetek előkészítése és időbélyegek](message-sequencing.md)
@@ -90,7 +90,7 @@
 ## [SQLFilter szintaxis](service-bus-messaging-sql-filter.md)
 ## [SQLRuleAction szintaxis](service-bus-messaging-sql-rule-action.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=enterprise-integration)
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
 ## [A Microsoft Developer Network fórumai](https://social.msdn.microsoft.com/forums/home?forum=servbus)
