@@ -59,6 +59,6 @@ A felhasználók kapcsolódhatnak az Azure-hoz a Windows beépített VPN-ügyfel
 
 Az Azure kizárólag Windows- és Mac-eszközökhöz támogatja a P2S VPN-t.
 
-### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enabled-radius-andor-ikev2-vpn-on-it"></a>Már rendelkezem üzembe helyezett Azure VPN-átjáróval. Engedélyezhetem ezen a RADIUS-t és/vagy az IKEv2 VPN-t?
+### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Már rendelkezem üzembe helyezett Azure VPN-átjáróval. Is engedélyezhető a RADIUS-és/vagy IKEv2 VPN rajta?
 
-Igen, ezeknek az új funkcióknak a működését már üzemelő átjárókon is engedélyezni lehet, mégpedig a PowerShell-len vagy az Azure Portalon keresztül.
+Igen, engedélyezheti az új szolgáltatásokat a már telepített átjárók, a Powershell vagy az Azure-portálon, feltéve, hogy az Ön által használt SKU átjáró támogatja a RADIUS-és/vagy IKEv2. A VPN-átjáró alapszintű Termékváltozat például nem támogatja a RADIUS vagy IKEv2.
