@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: ab1a9dfa71c4b633392ef839bb848347fdd26431
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.author: crdun
+ms.openlocfilehash: 336da28bea7de313bced97e447fc6b7b1fb1390d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="how-to-use-the-azure-mobile-apps-nodejs-sdk"></a>Az Azure Mobile Apps Node.js SDK használatával
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -320,9 +320,9 @@ A legtöbb beállítását a *azureMobile.js* fájl rendelkezik egyenértékű A
 
 | Alkalmazás beállítása | *azureMobile.js* beállítás | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |név |Az alkalmazás nevét |Karakterlánc |
+| **MS_MobileAppName** |név |Az alkalmazás nevét |karakterlánc |
 | **MS_MobileLoggingLevel** |Logging.level |Naplózandó üzenetek minimális naplózási szint |Hiba, figyelmeztetés, információ, részletes, hibakeresési silly |
-| **MS_DebugMode** |Hibakeresési |Engedélyezés vagy letiltás hibakeresési mód |IGAZ, hamis |
+| **MS_DebugMode** |hibakeresés |Engedélyezés vagy letiltás hibakeresési mód |IGAZ, hamis |
 | **MS_TableSchema** |Data.Schema |SQL-táblák alapértelmezett séma neve |karakterlánc (alapértelmezett: dbo) |
 | **MS_DynamicSchema** |data.dynamicSchema |Engedélyezés vagy letiltás hibakeresési mód |IGAZ, hamis |
 | **MS_DisableVersionHeader** |verzió (a nem definiált beállítása) |Az X-ZUMO-kiszolgáló-Version fejlécnek letiltása |IGAZ, hamis |
@@ -797,7 +797,7 @@ Egyszerű táblák a portálon lehetővé teszik, hogy létrehozása és haszná
 * createdAt
 * updatedAt
 * törölve
-* Verzió
+* verzió:
 
 Az App Service-szerkesztővel tábla műveletek akár szerkesztheti is. Amikor rákattint **könnyen táblák** a háttér-webhely beállításai hozzáadása, módosítása és törlése egy tábla. Megtekintheti a tábla adatai is.
 
@@ -827,7 +827,7 @@ Az Azure portál segítségével anélkül, hogy a projekt letöltése a helyi s
 
 1. A mobilalkalmazás-háttérrendszer paneljén kattintson **összes beállítás** > vagy **könnyen táblák** vagy **egyszerű API-k**, egy táblázatot vagy API-t, majd **parancsfájl szerkesztése**. A parancsfájl a App Service-szerkesztőben van megnyitva.
 
-    ![App Service-szerkesztő](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
+    ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 2. A módosításokat a kódfájl online-szerkesztőben. Változások automatikusan mentése közben.
 
 <!-- Images -->

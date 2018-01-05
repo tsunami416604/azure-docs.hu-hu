@@ -1,5 +1,5 @@
 ---
-title: "A feltételes hozzáférés az Azure Active Directory fejlesztői útmutató |} Microsoft Docs"
+title: "A feltételes hozzáférés az Azure Active Directory fejlesztői útmutató"
 description: "Fejlesztői útmutatás és az Azure AD feltételes hozzáférési forgatókönyvek"
 services: active-directory
 keywords: 
@@ -8,17 +8,16 @@ manager: mtillman
 editor: PatAltimore
 ms.author: dadobali
 ms.date: 07/19/2017
-ms.assetid: 115bdab2-e1fd-4403-ac15-d4195e24ac95
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: c3b691022b02aa2f3836c4e3a96dd5db7affad76
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 346f19b01460aaa4aeb2c2d97c07ef11924ec80f
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>A feltételes hozzáférés az Azure Active Directory fejlesztői útmutató
 
@@ -28,7 +27,7 @@ Az Azure Active Directory (AD) biztonságos az alkalmazás és szolgáltatás v�
 * Így csak az Intune-ban regisztrált eszközök férhessenek hozzá az egyes szolgáltatások
 * Korlátozza a felhasználó helyét és IP-címtartományok
 
-A feltételes hozzáférés a szolgáltatás összes funkciójáról további információkért lásd: [feltételes hozzáférés a klasszikus Azure portálon](../active-directory-conditional-access-azure-portal.md). 
+A feltételes hozzáférés a szolgáltatás összes funkciójáról további információkért lásd: [feltételes hozzáférés az Azure Active Directoryban](../active-directory-conditional-access-azure-portal.md). 
 
 Ez a cikk azt összpontosítani milyen feltételes hozzáférési azt jelenti, hogy a fejlesztők számára hozhat létre alkalmazásokat az Azure AD.  Ismeretét feltételezi [egyetlen](active-directory-integrating-applications.md) és [több-bérlős](active-directory-devhowto-multi-tenant-overview.md) alkalmazások és [közös hitelesítési minták](active-directory-authentication-scenarios.md).
 
@@ -216,9 +215,9 @@ A tényleges kell a `error=interaction_required`.  Az alkalmazás ezután haszn�
 Próbálja ki ebben a forgatókönyvben, tekintse meg a [JS SPA a nevében-az kódminta](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca).  A fenti használ, a feltételes hozzáférési házirend és a webes API-t korábban regisztrált egy JS SPA bemutatásához ebben a forgatókönyvben. Azt illusztrálja, hogyan megfelelően kezeli a jogcímek kihívás, és egy hozzáférési jogkivonatot, amely a webes API nem használható. Alternatív megoldásként az Általános kivétel [Angular.js kódminta](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) egy szögben kifejezett SPA útmutatót
 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-* A képességeivel kapcsolatos további tudnivalókért lásd: [feltételes hozzáférés az Azure AD](../active-directory-conditional-access-azure-portal.md).
+* A képességeivel kapcsolatos további tudnivalókért lásd: [feltételes hozzáférés az Azure Active Directoryban](../active-directory-conditional-access-azure-portal.md).
 * További Azure AD-mintakódok, lásd: [Github-tárház, kódmintákat](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory). 
 * További információk az ADAL SDK és a hozzáférés a referenciadokumentációt: [könyvtár útmutató](active-directory-authentication-libraries.md).
 * Több-bérlős forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a több-bérlős minta használatával a felhasználók bejelentkezés](active-directory-devhowto-multi-tenant-overview.md).

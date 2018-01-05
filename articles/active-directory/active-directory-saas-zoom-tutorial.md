@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 0ebdab6c-83a8-4737-a86a-974f37269c31
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 12/28/2017
 ms.author: jeedes
-ms.openlocfilehash: a525bab0409dc212da9fe46a23b8320aed9a4463
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a6d9ea9de1035bf9c84cf3c451cc1121f04a82a
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Oktatóanyag: Azure Active Directoryval integrált nagyítás
 
@@ -113,29 +113,57 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`<companyname>.zoom.us`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [nagyítás ügyfél-támogatási csoport](https://support.zoom.us/hc) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [nagyítás ügyfél-támogatási csoport](https://support.zoom.us/hc) beolvasni ezeket az értékeket.
+
+4. A Nagyítás alkalmazás a SAML helyességi feltételek egy meghatározott formátumban, amelyek megkövetelik olyan egyéni attribútum-leképezésekhez hozzáadása a SAML-jogkivonat attribútumok konfigurációs vár. A következő jogcímek alkalmazás konfigurálása. Ezek az attribútumok értékének kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. 
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-Zoom-tutorial/tutorial_attribute.png)
+
+5. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az előző ábrán látható módon, és hajtsa végre a következő lépéseket:
+    
+    | Attribútum neve | Attribútum értéke | Namespace érték |
+    | ------------------- | -----------|--------- |    
+    | E-mail-cím | User.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail`|
+    | Utónév | User.givenName | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`|
+    | Vezetéknév | User.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname `|
+    | Telefonszám | User.telephoneNumber | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone`|
+    | Részleg | felhasználó.részleg | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department`|
+
+    a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-Zoom-tutorial/tutorial_attribute_04.png)
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-Zoom-tutorial/tutorial_attribute_05.png)
+
+    b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
+
+    c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
+
+    d. Az a **Namespace** szövegmező, írja be a névtér értéke az adott sorhoz feltüntetett.
+    
+    e. Kattintson az **OK** gombra. 
  
-4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+6. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-zoom-tutorial/tutorial_zoom_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-zoom-tutorial/tutorial_zoom_certificate.png)
 
-5. Kattintson a **mentése** gombra.
+7. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-zoom-tutorial/tutorial_general_400.png)
 
-6. A a **nagyítás konfigurációs** kattintson **konfigurálása nagyítás** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+8. A a **nagyítás konfigurációs** kattintson **konfigurálása nagyítás** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
-    ![A Nagyítás konfiguráció](./media/active-directory-saas-zoom-tutorial/tutorial_zoom_configure.png) 
+    ![A Nagyítás konfiguráció](./media/active-directory-saas-zoom-tutorial/tutorial_zoom_configure.png)
 
-7. Egy másik webes böngészőablakban jelentkezzen be a nagyítási vállalati webhely rendszergazdaként.
+9. Egy másik webes böngészőablakban jelentkezzen be a nagyítási vállalati webhely rendszergazdaként.
 
-8. Kattintson a **egyszeri bejelentkezés** fülre.
+10. Kattintson a **egyszeri bejelentkezés** fülre.
    
     ![Egyszeri bejelentkezés lapon](./media/active-directory-saas-zoom-tutorial/IC784700.png "egyszeri bejelentkezés")
 
-9. Kattintson a **biztonsági ellenőrzést** lapot, és keresse meg a **egyszeri bejelentkezés** beállítások.
+11. Kattintson a **biztonsági ellenőrzést** lapot, és keresse meg a **egyszeri bejelentkezés** beállítások.
 
-10. Egyszeri bejelentkezés csoportjában hajtsa végre az alábbi lépéseket:
+12. Egyszeri bejelentkezés csoportjában hajtsa végre az alábbi lépéseket:
    
     ![Az egyszeri bejelentkezés szakasz](./media/active-directory-saas-zoom-tutorial/IC784701.png "egyszeri bejelentkezés")
    
@@ -148,6 +176,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     d. Az a **kibocsátó** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító** ami Azure-portálon másolta. 
 
     e. Kattintson a **Save** (Mentés) gombra.
+
+    > [!NOTE] 
+    > További információkért látogasson el a Nagyítás dokumentáció [https://zoomus.zendesk.com/hc/en-us/articles/115005887566](https://zoomus.zendesk.com/hc/en-us/articles/115005887566)
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -207,7 +238,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a nagyítás, akkor ki ke
 
     b. A a **e-mailek** szövegmező, írja be az e-mail cím egy érvényes Azure ad meg fiók kiépítése szeretné.
 
-    c. Kattintson az **Add** (Hozzáadás) parancsra.
+    c. Kattintson a **Hozzáadás** parancsra.
 
 > [!NOTE]
 > Bármely más nagyítás felhasználói fiók létrehozása eszközök vagy nagyítás kiépítését Azure Active Directory által nyújtott API-k felhasználói fiókokat.

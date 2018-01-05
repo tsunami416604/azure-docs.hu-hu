@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 01/05/2018
 ms.author: maheshu
-ms.openlocfilehash: cfab51f985dd0b9db109f1ca8e4030bc9d0de1cc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4e95cd128c0c8ee8492e7bd224afc317101f346c
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Az Azure Active Directory tartományi szolgáltatások: Gyakran ismételt kérdések (GYIK)
 Ezen a lapon az Azure Active Directory tartományi szolgáltatások kapcsolatos gyakori kérdésekre. Tartsa biztonsági frissítések keresése.
@@ -31,7 +31,7 @@ Tekintse meg a [hibaelhárítási útmutatója](active-directory-ds-troubleshoot
 Nem. Csak egyetlen Azure AD tartományi szolgáltatások által kiszolgált egy felügyelt tartomány hozhat létre Azure AD-címtárban.  
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Egy Azure Resource Manager virtuális hálózatot az Azure AD tartományi szolgáltatások engedélyezése
-Igen. Azure AD tartományi szolgáltatások az Azure Resource Manager virtuális hálózat engedélyezhető. Ez a funkció jelenleg előzetes verzió.
+Igen. Azure AD tartományi szolgáltatások az Azure Resource Manager virtuális hálózat engedélyezhető. Új felügyelt tartományok létrehozásához a klasszikus Azure virtuális hálózatok használata már nem támogatott.
 
 #### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Telepíthetek át a meglévő felügyelt tartomány klasszikus virtuális hálózaton keresztül egy erőforrás-kezelő virtuális hálózathoz?
 Jelenleg nem. A Microsoft egy mechanizmus, amellyel áttelepítheti a meglévő felügyelt tartomány a klasszikus virtuális hálózatot egy erőforrás-kezelő virtuális hálózatot a jövőben fog továbbítani.

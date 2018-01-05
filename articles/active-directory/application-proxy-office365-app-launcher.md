@@ -3,7 +3,7 @@ title: "Közzétett alkalmazások egyéni kezdőlapját beállítása az Azure A
 description: "Ismerteti az alapvető tudnivalók az Azure AD-alkalmazásproxy-összekötő"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a9bc2f7b90adb3b3bef6dd6790500272939e637d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d31100015a11bc57d488f1d6af93db8526e38968
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Közzétett alkalmazások egyéni kezdőlapját beállítása az Azure AD-alkalmazásproxy használatával
 
@@ -138,7 +138,7 @@ A kezdőlap URL-cím létrehozása, és frissítse az alkalmazás ezt az érték
 >[!NOTE]
 >Az alkalmazás végzett módosításokat előfordulhat, hogy alaphelyzetbe állítja a kezdőlap URL-CÍMÉT. Ha alaphelyzetbe állítja a kezdőlap URL-CÍMÉT, ismételje meg az ebben a szakaszban állítja vissza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure AD alkalmazásproxy SharePoint távoli hozzáférés engedélyezése](application-proxy-enable-remote-access-sharepoint.md)
 - [Alkalmazásproxy engedélyezése az Azure-portálon](active-directory-application-proxy-enable.md)

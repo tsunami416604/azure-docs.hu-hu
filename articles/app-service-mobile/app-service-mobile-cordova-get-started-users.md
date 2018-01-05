@@ -3,8 +3,8 @@ title: "Hitelesítés hozzáadása az Apache Cordova Mobile alkalmazásokkal |} 
 description: "Útmutató az Azure App Service Mobile Apps segítségével hitelesíti a felhasználókat identitás-szolgáltatóktól, beleértve a Google, a Facebook, a Twitter és a Microsoft számos az Apache Cordova-alkalmazás."
 services: app-service\mobile
 documentationcenter: javascript
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
 ms.service: app-service-mobile
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: glenga
-ms.openlocfilehash: b7362b7f26859de541f792e714502851d74c98e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: b5cce832ae7ae83552c2a5ded2f5f5bda0ac76bf
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Hitelesítés hozzáadása az Apache Cordova-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ebben az oktatóanyagban hozzáadja a todolist gyorsútmutató-projekt Apache Cordova segítségével egy támogatott identitásszolgáltató a hitelesítés. Ez az oktatóanyag alapul a [Ismerkedés a Mobile Apps] oktatóanyag, amely először el kell végeznie.
 
 ## <a name="register"></a>Regisztrálja az alkalmazást a hitelesítéshez, és az App Service konfigurálása
@@ -92,7 +92,7 @@ Következő lépésként frissítse az alkalmazásnak, hogy a felhasználók hit
 4. Cserélje le a kódot, amely az előzőekben adott hozzá, `SDK_Provider_Name` a bejelentkezés-szolgáltató neve. Például az Azure Active Directory használata `client.login('aad')`.
 5. Futtatja a projektet.  Ha a projekt inicializálása befejeződött, az alkalmazás OAuth bejelentkezési lapját a kiválasztott hitelesítési szolgáltató jelennek meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További [vonatkozó hitelesítési] Azure App Service szolgáltatással.
 * Az oktatóanyag folytatásához hozzáadásával [leküldéses értesítések] az Apache Cordova-alkalmazáshoz.
 
@@ -104,9 +104,9 @@ Következő lépésként frissítse az alkalmazásnak, hogy a felhasználók hit
 
 <!-- URLs. -->
 [Ismerkedés a Mobile Apps]: app-service-mobile-cordova-get-started.md
-[Tartalom-Security-házirend dokumentációját]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
-[Leküldéses értesítések]: app-service-mobile-cordova-get-started-push.md
-[Hitelesítéssel kapcsolatban]: app-service-mobile-auth.md
+[tartalom-Security-házirend dokumentációját]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
+[leküldéses értesítések]: app-service-mobile-cordova-get-started-push.md
+[vonatkozó hitelesítési]: app-service-mobile-auth.md
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md

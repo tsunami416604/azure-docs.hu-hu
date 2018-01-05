@@ -3,9 +3,9 @@ title: "Leküldéses értesítések hozzáadása Mobile Apps az Android alkalmaz
 description: "Megtudhatja, hogyan küldhet leküldéses értesítéseket az Android-alkalmazás a Mobile Apps segítségével."
 services: app-service\mobile
 documentationcenter: android
-manager: syntaxc4
+manager: crdun
 editor: 
-author: ggailey777
+author: conceptdev
 ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 11/17/2017
-ms.author: glenga
-ms.openlocfilehash: 6882a7b1864d511e70495e1d1d782aa0f03beca3
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.author: crdun
+ms.openlocfilehash: 9e9f7aba49c53a1a6fcc611ed771f266eb49c883
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Leküldéses értesítések Android-alkalmazás hozzáadása
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -69,7 +69,7 @@ Ha egy régebbi eszközzel rendelkező teszteli, tekintse meg [Firebase hozzáad
 ## <a name="test-the-app-against-the-published-mobile-service"></a>A közzétett mobilszolgáltatás alkalmazás tesztelése
 Az alkalmazás közvetlen csatlakoztatása az USB-kábellel Androidos telefonnal, vagy az emulátorban a virtuális eszköz segítségével tesztelheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy ez az oktatóanyag befejezése fontolja meg valamelyik az alábbi oktatóanyagok folytatása:
 
 * [Hitelesítés hozzáadása az Android-alkalmazás](app-service-mobile-android-get-started-users.md).

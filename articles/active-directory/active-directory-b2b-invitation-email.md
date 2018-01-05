@@ -1,5 +1,5 @@
 ---
-title: "Az elemek az Azure Active Directory B2B együttműködés meghívó e-mail |} Microsoft Docs"
+title: "Az elemek a B2B együttműködés meghívó e-mail - Azure Active Directory |} Microsoft Docs"
 description: "Az Azure Active Directory B2B együttműködés meghívó e-mail sablon"
 services: active-directory
 documentationcenter: 
@@ -7,21 +7,19 @@ author: sasubram
 manager: mtillman
 editor: 
 tags: 
-ms.assetid: 
+ms.custom: seohack1
 ms.service: active-directory
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: ae8f96caaaeb9f3dad9f9f122b56fe264a5d7aec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7b82565a337f331b8b0eda723ccd58c3beaebdd9
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email"></a>A B2B együttműködés meghívó e-mail elemei
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívó e-mail - Azure Active Directory elemei
 
 Meghívót e-mailek a board partnerek átveendő az Azure AD B2B együttműködés felhasználóként kritikus összetevője. A címzett megbízhatósági növeléséhez használhatja őket. hozzáadhat érvényességét, és az e-mailt, győződjön meg arról, hogy a címzett közösségi igazolás érzi, válassza a Feladatkezelő a **Ismerkedés** gombra kattintva fogadja el a meghívást. Ebben a megbízhatósági kapcsolatban a kulcs azt jelenti, hogy megosztási súrlódás csökkentése érdekében. És is szeretne az e-mailt remekül!
 
@@ -55,7 +53,7 @@ Ha még nem állított profilkép, a meghívó monogramja a kép helyett egy iko
 
   ![a meghívó monogramja megjelenítése](media/active-directory-b2b-invitation-email/inviters-initials.png)
 
-### <a name="body"></a>Szövegtörzs
+### <a name="body"></a>Törzs
 Az üzenet, amely a meghívó composes, vagy a meghívó API keresztül törzsében. Így azt nem dolgozza fel az HTML-címkék biztonsági okokból egy területre.
 
 ### <a name="footer-section"></a>Élőláb szakasz
@@ -71,7 +69,7 @@ A lábléc tartalmazza a Microsoft vállalatának arculatát, és lehetővé tes
   ![Ha a címzett meghívó beváltani nem szükséges](media/active-directory-b2b-invitation-email/when-recipient-doesnt-redeem.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure AD B2B együttműködés további cikkeit:
 

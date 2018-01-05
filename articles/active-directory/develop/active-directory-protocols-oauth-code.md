@@ -1,12 +1,11 @@
 ---
-title: "Az OAuth 2.0 hitelesítésikód-folyamata megismerése az Azure AD |} Microsoft Docs"
+title: "Az OAuth 2.0 hitelesítésikód-folyamata megismerése az Azure ad-ben"
 description: "A cikkből megtudhatja, hogyan használható a HTTP-üzenetek webalkalmazások és webes API-k használata az Azure Active Directory és az OAuth 2.0-bérlőben hozzáférés hitelesítése."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
 manager: mtillman
 editor: 
-ms.assetid: de3412cb-5fde-4eca-903a-4e9c74db68f2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 5a3aa69ce35ff6049478a4182afeda2ee62266b7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d123a6b18baf8019a6dcea2faa938e9ee403f400
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>Hozzáférés engedélyezése webalkalmazásoknak OAuth 2.0 és az Azure Active Directory használatával
 Az Azure Active Directory (Azure AD) által használt OAuth 2.0 ahhoz, hogy engedélyezi a hozzáférést a webalkalmazások és webes API-knak az Azure AD-bérlőben. Ez az útmutató nyelvfüggetlen, és ismerteti, hogyan lehet üzeneteket küldjön és fogadjon HTTP a nyílt forráskódú kódtárai bármelyikét használata nélkül.
@@ -34,7 +33,7 @@ Magas szinten az alkalmazás teljes engedélyezési folyamata néz ki egy kicsit
 ![OAuth hitelesítési folyamata](media/active-directory-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
 
 ## <a name="request-an-authorization-code"></a>Az engedélyezési kód kérése
-A hitelesítésikód-folyamata kezdődik irányítja a felhasználót, hogy az ügyfél a `/authorize` végpont. A kérelem az ügyfél azt jelzi, kell szerzi be a felhasználói engedélyek. Kaphat az OAuth 2.0 típusú végpontok a klasszikus Azure portál, az alkalmazás oldaláról a **végpontok megtekintése** gombra az alsó fiókban.
+A hitelesítésikód-folyamata kezdődik irányítja a felhasználót, hogy az ügyfél a `/authorize` végpont. A kérelem az ügyfél azt jelzi, kell szerzi be a felhasználói engedélyek. Kaphat az OAuth 2.0 végpont a bérlő kiválasztásával **alkalmazás-regisztráció > végpontok** az Azure portálon.
 
 ```
 // Line breaks for legibility only
@@ -50,7 +49,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| Bérlői |Szükséges |A `{tenant}` személyek is jelentkezzen be az alkalmazás a kérelem elérési útjában szereplő érték is használható.  Az engedélyezett értékek a következők bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
+| bérlő |Szükséges |A `{tenant}` személyek is jelentkezzen be az alkalmazás a kérelem elérési útjában szereplő érték is használható.  Az engedélyezett értékek a következők bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
 | client_id |Szükséges |Az Azure ad-vel regisztrált az alkalmazáshoz hozzárendelt alkalmazásazonosító. Ez az Azure portálon találja meg. Kattintson a **Active Directory**, kattintson arra a címtárra, válassza ki az alkalmazást, és kattintson a **konfigurálása** |
 | response_type |Szükséges |Tartalmaznia kell `code` a a hitelesítésikód-folyamata. |
 | redirect_uri |Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszok redirect_uri.  Ez pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve az url-kódolású kell lennie.  Natív & mobileszköz-alkalmazások esetén az alapértelmezett értéket használjon `urn:ietf:wg:oauth:2.0:oob`. |
@@ -132,8 +131,8 @@ grant_type=authorization_code
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| Bérlői |Szükséges |A `{tenant}` személyek is jelentkezzen be az alkalmazás a kérelem elérési útjában szereplő érték is használható.  Az engedélyezett értékek a következők bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
-| client_id |Szükséges |Az Azure ad-vel regisztrált az alkalmazáshoz hozzárendelt alkalmazásazonosító. Ez a klasszikus Azure portálon találja meg. Kattintson a **Active Directory**, kattintson arra a címtárra, válassza ki az alkalmazást, és kattintson a **konfigurálása** |
+| bérlő |Szükséges |A `{tenant}` személyek is jelentkezzen be az alkalmazás a kérelem elérési útjában szereplő érték is használható.  Az engedélyezett értékek a következők bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
+| client_id |Szükséges |Az Azure ad-vel regisztrált az alkalmazáshoz hozzárendelt alkalmazásazonosító. Ez az Azure portálon találja meg. Az alkalmazásazonosító az alkalmazás-regisztrációs beállításai jelenik meg.  |
 | grant_type |Szükséges |Kell `authorization_code` a a hitelesítésikód-folyamata. |
 | Kód |Szükséges |A `authorization_code` az előző szakaszban beszerzett |
 | redirect_uri |Szükséges |Azonos `redirect_uri` megszerzésére használt érték a `authorization_code`. |

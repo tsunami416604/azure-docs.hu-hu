@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/16/2017
 ms.author: danis
-ms.openlocfilehash: 25677c2a4ab78c601f4d4a8630787f6f16dda3c4
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9a8eae62d2dcb4c422b707909a27c84c7bf1aab3
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="custom-script-extension-for-windows"></a>A Windows egyéni parancsprogramok futtatására szolgáló bővítmény
 
@@ -28,6 +28,11 @@ Az egyéni parancsprogramok futtatására szolgáló bővítmény és hajtanak v
 Ez a dokumentum részletesen az egyéni parancsprogramok futtatására szolgáló bővítmény használatával az Azure PowerShell modul, Azure Resource Manager-sablonok és a Windows rendszer hibaelhárítási részletek használata.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+> [!NOTE]  
+> Nem használhatja egyéni parancsprogramok futtatására szolgáló bővítmény futtatásához frissítés-AzureRmVM operátormetódusának a paraméterével ugyanazon VM óta, várjon a saját magát.  
+>   
+> 
 
 ### <a name="operating-system"></a>Operációs rendszer
 
@@ -79,7 +84,7 @@ A következő JSON a séma az egyéni parancsprogramok futtatására szolgáló 
 
 ### <a name="property-values"></a>A tulajdonság értékek
 
-| Név | Érték / – példa |
+| Name (Név) | Érték / – példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | Közzétevő | Microsoft.Compute |

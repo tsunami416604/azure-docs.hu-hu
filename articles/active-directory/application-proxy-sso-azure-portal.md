@@ -3,7 +3,7 @@ title: "Egyszeri bejelentkezés alkalmazásokhoz az Azure AD alkalmazásproxy |}
 description: "Kapcsolja be a egyszeri bejelentkezés az Azure AD alkalmazásproxy az Azure-portálon a közzétett helyszíni alkalmazásokhoz."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 4ca913d79d9abd4b50e4f280eb993235ca543b0f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 501017ae416cc8aa473077c98ae0a213db749547
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Az egyszeri bejelentkezés az alkalmazásproxy vaulting jelszó
 
@@ -53,7 +53,7 @@ Kell már rendelkezik közzétett és tesztelni az alkalmazást az alkalmazáspr
 
 Ugrás a külső URL-címet, az alkalmazás állított be a távoli hozzáféréshez. Jelentkezzen be a hitelesítő adatait az alkalmazás (vagy egy Ön által beállított hozzáféréssel rendelkező teszt fiók hitelesítő adatait). Amikor bejelentkezik sikeresen hagyja meg az alkalmazást, és térjen vissza a hitelesítő adatok ismételt beírása nélkül kell lennie. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Olvassa el, egyéb módjai megvalósításához [egyszeri bejelentkezéshez az alkalmazásproxy](application-proxy-sso-overview.md)
 - További tudnivalók [távolról az Azure AD alkalmazásproxy alkalmazásokhoz fér hozzá biztonsági szempontjai](application-proxy-security-considerations.md)

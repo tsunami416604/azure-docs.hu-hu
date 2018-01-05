@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/22/2017
+ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: cfd932fa87ffd40ffc6ac96ad72ae7eac31e0b98
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.reviewer: jeedes
+ms.openlocfilehash: 6e8167c1152fe80813d5c13706a72badce0a0ce9
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>Oktatóanyag: Azure Active Directoryval integrált Halosys
 
@@ -27,7 +28,7 @@ Halosys integrálása az Azure AD lehetővé teszi a következő előnyöket biz
 
 - Megadhatja a Halosys hozzáféréssel rendelkező Azure AD-ben
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Halosys (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen - a klasszikus Azure portálon
+- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
 
@@ -63,22 +64,17 @@ Az Azure AD integrálása a Halosys konfigurálásához kell hozzáadnia Halosys
 
 **A gyűjteményből Halosys hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a **a klasszikus Azure portálon**, a bal oldali navigációs ablaktábláján kattintson **Active Directory**.
+1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
-2. Az a **Directory** listára, válassza ki a könyvtárat, amelyhez a címtár-integrációs engedélyezni szeretné.
 
-3. A könyvtár nézetben a alkalmazások nézet megnyitásához kattintson **alkalmazások** a felső menüben.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
     ![Alkalmazások][2]
-
-4. Kattintson a **Hozzáadás** az oldal alján.
+    
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
 
     ![Alkalmazások][3]
-
-5. Az a **mi történjen a teendő** párbeszédpanel, kattintson a **hozzáadhat egy alkalmazást a katalógusból**.
-
-    ![Alkalmazások][4]
 
 6. Írja be a keresőmezőbe, **Halosys**.
 
@@ -105,101 +101,74 @@ Az Azure AD egyszeri bejelentkezést a Halosys tesztelése és konfigurálása, 
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezéssel a klasszikus portálon, és konfigurálása egyszeri bejelentkezéshez az Halosys alkalmazásban.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezéssel a portálon, és konfigurálása egyszeri bejelentkezéshez az Halosys alkalmazásban.
 
 
 **Konfigurálása az Azure AD az egyszeri bejelentkezés Halosys, hajtsa végre az alábbi lépéseket:**
 
-1. A klasszikus portálon a a **Halosys** alkalmazás integráció lapján, kattintson a **konfigurálása egyszeri bejelentkezéshez** megnyitásához a **konfigurálása egyszeri bejelentkezéshez** párbeszédpanel.
-     
-    ![Egyszeri bejelentkezés konfigurálása][6] 
+1. Az Azure portálon a a **SCC életciklus** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
 
-2. Az a **hová bejelentkezni Halosys felhasználók** lapon jelölje be **az Azure AD az egyszeri bejelentkezés**, és kattintson a **tovább**.
+    ![Egyszeri bejelentkezés konfigurálása][4]
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_03.png) 
-
-3. Az a **Alkalmazásbeállítások konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_04.png) 
-
-    a. Az a **URL-cím bejelentkezési** szövegmező, írja be az URL-címet használják-e a felhasználók bejelentkezés a következő minta használatával Halosys Alkalmazásmódosítások: `https://<company-name>.Halosys.com/client-api/api`.
-
-    b.In a **azonosító URL-t** szövegmező, írja be a következő mintát: `https://<company-name>.Halosys.com`.   
-         
-4. A a **konfigurálhatja az egyszeri bejelentkezés Halosys** lapján kattintson **metaadatok letöltése**, majd mentse a fájlt a számítógépen:
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_05.png)
-   
-5. Ahhoz, hogy az alkalmazáshoz konfigurált SSO, lépjen kapcsolatba a terméktámogatással Halosys és adja meg a következő:
-
-    • A letöltött **metaadatait tartalmazó fájl**
-    
-    • A **SAML SSO URL-címe**
-    
-
-6. A klasszikus portálon, válassza ki az egyszeri bejelentkezés konfigurációs megerősítő, és kattintson **következő**.
-    
-    ![Az Azure AD-egyszeri bejelentkezés][10]
-
-7. Az a **az egyszeri bejelentkezés megerősítő** kattintson **Complete**.  
+2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
  
-    ![Az Azure AD-egyszeri bejelentkezés][11]
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-scclifecycle-tutorial/tutorial_scclifecycle_samlbase.png)
+
+3. Az a **Halosys tartomány és az URL-címek** területen tegye a következőket:
+    1. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<sub-domain>.hs.com/ic7/welcome/customer/PICTtest.aspx`
+
+    2. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:
+    | |
+    |--|--|
+    | `https://bs1.hs.com/<entity>`|
+    | `https://lifecycle.hs.com/<entity>`|
+    
+    > [!NOTE] 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [SCC életciklus ügyfél-támogatási csoport](mailto:lifecycle.support@scc.com) beolvasni ezeket az értékeket. 
+         
+4. A a **SAML-aláíró tanúsítványa** szakaszban jelölje be **metaadatainak XML-kódja** alatt **letöltése**, és mentse a metaadat-fájlt a számítógépen.
+   
+5. Ahhoz, hogy az egyszeri bejelentkezés az alkalmazáshoz konfigurált, lépjen kapcsolatba a terméktámogatással Halosys és adja meg a következő:
+
+  * A letöltött **metaadatait tartalmazó fájl**
+  * A **SAML SSO URL-címe**
+    
+
+  >[!NOTE]
+  >Egyszeri bejelentkezés ki engedélyezni lehessen az Halosys támogatási csapatával.
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ebben a szakaszban Britta Simon neve a klasszikus portálon tesztfelhasználó létrehozása.
+Ebben a szakaszban a portálon Britta Simon nevű tesztfelhasználó létrehozása.
 
 
 ![Az Azure AD-felhasználó létrehozása][20]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **a klasszikus Azure portálon**, a bal oldali navigációs ablaktábláján kattintson **Active Directory**.
+1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-Halosys-tutorial/create_aaduser_09.png) 
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-scclifecycle-tutorial/create_aaduser_01.png) 
 
-2. Az a **Directory** listára, válassza ki a könyvtárat, amelyhez a címtár-integrációs engedélyezni szeretné.
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+    
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-scclifecycle-tutorial/create_aaduser_02.png) 
 
-3. A felhasználók listájának megjelenítéséhez a felső menüben, kattintson a **felhasználók**.
+3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+ 
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-scclifecycle-tutorial/create_aaduser_03.png) 
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-Halosys-tutorial/create_aaduser_03.png) 
+4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+ 
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-scclifecycle-tutorial/create_aaduser_04.png) 
 
-4. Lehetőségre a **felhasználó hozzáadása** párbeszédpanel alján, az eszköztárban kattintson **felhasználó hozzáadása**.
+    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-Halosys-tutorial/create_aaduser_04.png) 
+    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
 
-5. Az a **adja meg azt a felhasználó** párbeszédpanel lapon, a következő lépésekkel: ![létrehozása az Azure AD-teszt felhasználó](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
+    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
 
-    a. A felhasználó típusát válassza ki az új felhasználót a szervezetében.
-
-    b. A felhasználó nevében **szövegmező**, típus **BrittaSimon**.
-
-    c. Kattintson a **Tovább** gombra.
-
-6.  Az a **felhasználói profil** párbeszédpanel lapon, a következő lépésekkel: ![létrehozása az Azure AD-teszt felhasználó](./media/active-directory-saas-Halosys-tutorial/create_aaduser_06.png) 
-
-    a. Az a **Utónév** szövegmezőhöz típus **Britta**.  
-
-    b. Az a **Vezetéknév** szövegmezőhöz típusa, **Simon**.
-
-    c. Az a **megjelenített név** szövegmezőhöz típus **Britta Simon**.
-
-    d. Az a **szerepkör** listáról válassza ki **felhasználói**.
-
-    e. Kattintson a **Tovább** gombra.
-
-7. Az a **ideiglenes jelszó beszerzése** párbeszédpanel lap, kattintson a **létrehozása**.
-
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-Halosys-tutorial/create_aaduser_07.png) 
-
-8. Az a **ideiglenes jelszó beszerzése** párbeszédpanel lapon, a következő lépésekkel:
-
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-Halosys-tutorial/create_aaduser_08.png) 
-
-    a. Jegyezze fel az értéket a **új jelszó**.
-
-    b. Kattintson a **Befejezés** gombra.   
-
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 
 ### <a name="creating-a-halosys-test-user"></a>Halosys tesztfelhasználó létrehozása
@@ -215,30 +184,31 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított a hozzáféré
 
 **Britta Simon hozzárendelése Halosys, hajtsa végre az alábbi lépéseket:**
 
-1. A klasszikus portál megnyitásához az alkalmazások megtekintése a könyvtár nézetben kattintson **alkalmazások** a felső menüben.
+1. Az Azure portálon, az alkalmazások nézet megnyitásához a könyvtár nézet megnyitása és Ugrás **vállalati alkalmazások** kattintson **összes alkalmazást.**
 
     ![Felhasználó hozzárendelése][201] 
 
 2. Az alkalmazások listában válassza ki a **Halosys**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_50.png) 
+3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
-3. Kattintson a felső menüben **felhasználók**.
+    ![Felhasználó hozzárendelése][202] 
+
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-4. A felhasználók listában válassza ki a **Britta Simon**.
+5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-5. Kattintson az alsó eszköztár **hozzárendelése**.
+6. Kattintson a **válasszon** gombra a **felhasználók és csoportok** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][205]
-
+7. Kattintson a **hozzárendelése** gombra a **hozzáadása hozzárendelés** párbeszédpanel.
 
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Ha a hozzáférési panelen Halosys csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Halosys alkalmazására.
+Ha a hozzáférési panelen Halosys csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Halosys alkalmazására. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md).
 
 
 ## <a name="additional-resources"></a>További források
@@ -261,6 +231,8 @@ Ha a hozzáférési panelen Halosys csempére kattint, akkor kell beolvasása au
 
 [200]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_205.png
+ 

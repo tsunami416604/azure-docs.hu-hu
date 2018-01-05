@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 1/3/2017
 ms.author: jeedes
-ms.openlocfilehash: bc04f4c632daef99a4f12e237dfe395040039afe
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: c8c56cd3e222e8e9ebf4cd3bb5109b6f552ec387
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory-integráció Amazon Web Services (AWS)
 
@@ -110,7 +110,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 4. Az Amazon Web Services (AWS) alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. A következő jogcímek alkalmazás konfigurálása. Ezek az attribútumok értékének kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.
 
-    ![Egyszeri bejelentkezés attribútumainak beállítása](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_attribute.png)  
+    ![Egyszeri bejelentkezés attb konfigurálása](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_attribute.png)   
 
 5. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti ábrán látható módon, és hajtsa végre a következő lépéseket:
     
@@ -126,7 +126,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_04.png)
 
-    ![Egyszeri bejelentkezés attribútumainak beállítása](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_05.png)
+    ![Egyszeri bejelentkezés addattb konfigurálása](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_05.png)
 
     b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
 
@@ -230,18 +230,18 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Új házirend létrehozása](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole3.png)
  
-25. A szerepkörök beolvasása AWS fiókokat a saját házirend létrehozása. Az a **a saját házirend létrehozása** területen kattintson a **válasszon** gombra.
+25. A szerepkörök beolvasása AWS fiókokat a saját házirend létrehozása. Az a **létrehozása a saját házirendjének** szakaszban kattintson a **válasszon** gombra.
     
     ![Új házirend létrehozása](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
 
 26. Adja meg az új szabályzat a következő lépések elvégzésével:
 
-    ![Az új szabályzat definiálása](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
+    ![Az új szabályzat definiálása](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
 
     a. Adja meg a **házirendnév** , **AzureAD_SSOUserRole_Policy**.
 
     b. Megadhatja a **leírás** , a házirendhez **ezzel a házirend lehetővé teszi a szerepkörök beolvasása a AWS fiókok**.
-
+    
     c. A házirend-dokumentum, adja hozzá az alábbi JSON.
     
     ```
@@ -271,16 +271,14 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     }
     
     ```
-
-    d. Győződjön meg arról, hogy ellenőrizze a **használható formázáskor házirend szerkesztésre**.
-
-    e. Kattintson a **házirend ellenőrzése** panel alján.
-
-    f. Ha a házirend az ellenőrzött megfelelően ezt követően kattinthat a **házirend létrehozása** gombra.
-
-    ![Új szabályzat létrehozása](./media/active-directory-saas-amazon-web-service-tutorial/policy5.png)
     
-27. Új felhasználói fiók létrehozása az AWS IAM-szolgáltatásban a következő lépések végrehajtásával:
+    d. Győződjön meg arról, hogy ellenőrizze a **használható formázáskor házirend szerkesztésre**.
+    
+    e. Kattintson a **házirend ellenőrzése** panel alján.
+    
+    f. Ha a házirend az ellenőrzött megfelelően ezt követően kattinthat a **házirend létrehozása** gombra.
+    
+27. Hozzon létre egy új felhasználói fiókot az AWS IAM-szolgáltatás a következő lépések elvégzésével:
 
     a. Kattintson a **felhasználók** navigációs az AWS IAM-konzolon.
 
@@ -300,9 +298,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     * Kattintson a **tovább engedélyeket** gombra a jobb alsó sarokban.
 
-28. Most hozzon létre egy új házirendet a felhasználó a következő lépések elvégzésével:
+28. Most hozzon létre egy új házirendet a felhasználó az alábbi lépések elvégzésével:
 
-    ![Felhasználó hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/policy6.png)
+    ![Felhasználó hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/adduser2.png)
     
     a. Kattintson a **közvetlenül csatolni a meglévő házirendek** gombra.
 
@@ -332,7 +330,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Felhasználó hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/provisioning.png)
 
-32. Adja meg a **hozzáférési kulcs** és **titkos** a a **Ügyfélkulcs** és **titkos Token** rendre mezők.
+32. Adja meg a **hozzáférési kulcs** és **titkos** a a **Ügyfélkulcs** és **titkos Token** rendre mezőben.
 
     ![Felhasználó hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/provisioning1.png)
     
@@ -424,13 +422,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáf�
 
 Ha a hozzáférési panelen Amazon Web Services (AWS) csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Amazon Web Services (AWS) alkalmazáshoz.
 A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
-
-## <a name="known-issues"></a>Ismert problémák
-
- * Az a **kiépítési** szakaszban, a **hozzárendelések** alterület "Betöltése..." üzenet megjelenítése lesz, és soha nem jeleníti meg az attribútum-leképezésekhez. A csak létesítési munkafolyamat ma használható AWS szerepköröket a Azure AD-felhasználó vagy csoport-hozzárendelés során kijelölés való importálásakor. Ez az attribútum-leképezésekhez előre meghatározott, és nem módosítható.
- 
- * A **kiépítési** szakasz csak támogatja egy hitelesítőadat-készletet adjon meg egy AWS bérlői a egyszerre. Minden importált szerepkörök kerülnek a appRoles tulajdonság az Azure ad [szolgáltatásnév objektum](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) az AWS bérlői. Több AWS bérlő (servicePrincipals képviseli) felveheti az Azure ad Szolgáltatásba történő üzembe helyezéséhez, azonban nincs olyan ismert probléma nem tudnak automatikusan írási összes importált szerepkört a több AWS servicePrincipals használatos a gyűjteményből kiépítés be az egyszeri bejelentkezéshez használt egyetlen szolgáltatásnév. A probléma megoldásához a [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) segítségével bontsa ki az egyes AWS szolgáltatásnév importálni appRoles mindegyikét ahol kiépítés van konfigurálva. Ezek a szerepkör-karakterláncok ezt követően lehet hozzáadni az AWS szolgáltatásnév, ahol egyszeri bejelentkezésre van konfigurálva.
-
 
 ## <a name="additional-resources"></a>További források
 

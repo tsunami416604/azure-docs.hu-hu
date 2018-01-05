@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: bf57fa11c63930c594c63043ab4b695f586d9e1b
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: bd186341329721ee097a5b3ad3e7ad11b8e189f9
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Fejlesztés és a szimulált eszköz egy C# IoT peremhálózati modul telepítése – előzetes
 
@@ -98,11 +98,19 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
     }
     ```
 
-8. Az a **Init** metódus, a kód létrehozza és konfigurálja a **DeviceClient** objektum. Ez az objektum lehetővé teszi, hogy a modul csatlakozni a helyi Azure IoT peremhálózati futtatási üzeneteket küldjön és fogadjon. A kapcsolati karakterlánc szerepel a **Init** metódus IoT peremhálózati futtatókörnyezet által biztosított modulhoz. Létrehozása után a **DeviceClient**, a kód egy visszahívás üzenetek fogadása a peremhálózati IoT hub keresztül regisztrálja a **input1** végpont. Cserélje le a `SetInputMessageHandlerAsync` metódust használ egy új, és adja hozzá a `SetDesiredPropertyUpdateCallbackAsync` kívánt tulajdonságokkal frissítések metódus. Ennek a módosításnak cserélje le az utolsó sora a **Init** metódus a következő kóddal:
+8. Az a **Init** metódus, a kód létrehozza és konfigurálja a **DeviceClient** objektum. Ez az objektum lehetővé teszi, hogy a modul csatlakozni a helyi Azure IoT peremhálózati futtatási üzeneteket küldjön és fogadjon. A kapcsolati karakterlánc szerepel a **Init** metódus IoT peremhálózati futtatókörnyezet által biztosított modulhoz. Miután létrehozta a **DeviceClient**, a kódot a TemperatureThreshold beolvassa a modul iker kívánt tulajdonságokat, és regisztrálja a visszahívását üzenetek fogadása a peremhálózati IoT hub keresztül a **input1**végpont. Cserélje le a `SetInputMessageHandlerAsync` metódust használ egy új, és adja hozzá a `SetDesiredPropertyUpdateCallbackAsync` kívánt tulajdonságokkal frissítések metódus. Ennek a módosításnak cserélje le az utolsó sora a **Init** metódus a következő kóddal:
 
     ```csharp
     // Register callback to be called when a message is received by the module
     // await ioTHubModuleClient.SetImputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
+
+    // Read TemperatureThreshold from Module Twin Desired Properties
+    var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
+    var moduleTwinCollection = moduleTwin.Properties.Desired;
+    if (moduleTwinCollection["TemperatureThreshold"] != null)
+    {
+        temperatureThreshold = moduleTwinCollection["TemperatureThreshold"];
+    }
 
     // Attach callback for Twin desired properties updates
     await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(onDesiredPropertiesUpdate, null);
@@ -290,7 +298,7 @@ A felhőbe küldött üzeneteket küld az IoT hub az IoT-peremhálózati eszköz
 1. Az IoT hub érkező adatok figyelésére, válassza ki a **nézet** > **parancs paletta** , és keresse meg a **IoT: D2C üzenet figyelni** parancs. 
 2. Az adatok figyelésének leállításához, használja a **IoT: D2C üzenet figyelés leállításának** menüparancshoz. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létre egy IoT biztonsági szűréséhez a nyers adatokat az IoT-peremhálózati eszköz által generált kódot tartalmazó modult. Be vagy más módszereket, amelyek segítségével Azure IoT peremhálózati tájékozódhat az adatok az üzleti elemzések készítése a peremhálózaton kapcsolja be az alábbi oktatóanyagok tovább.
 

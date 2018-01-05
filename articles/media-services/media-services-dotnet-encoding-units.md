@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2017
 ms.author: juliako;milangada;
-ms.openlocfilehash: 4a1bf91c3b3e9dd4d42d84f205a9bc07a71525c2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f45da151472efb4cc6297b005d5bc3844d664928
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>A kódolás méretezése a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="overview"></a>Áttekintés
 > [!IMPORTANT]
-> Mindenképpen tekintse át a [áttekintése](media-services-scale-media-processing-overview.md) témakör feldolgozása media méretezésével kapcsolatos további információkat a témakör.
+> Mindenképpen tekintse át a [áttekintése](media-services-scale-media-processing-overview.md) media feldolgozási méretezésével kapcsolatos további információkat.
 > 
 > 
 
@@ -56,17 +56,7 @@ A fenntartott egységnek típusának és a kódoláshoz fenntartott egység .NET
 Alapértelmezés szerint minden Media Services-fiók méretezhető legfeljebb 25 kódolás és 5 igény, folyamatos átvitelhez fenntartott egységek. Magasabb határérték kérhet egy támogatási jegy megnyitásával.
 
 ### <a name="open-a-support-ticket"></a>Támogatási jegy megnyitása
-Nyissa meg a támogatási jegy tegye a következőket:
-
-1. Kattintson a [segítségre van szüksége](https://manage.windowsazure.com/?getsupport=true). Ha nem jelentkezett be, kérni fogja a hitelesítő adatok megadását.
-2. Válassza ki előfizetését.
-3. A támogatási típusa válassza a "Műszaki".
-4. Kattintson az "A jegy létrehozása".
-5. Válassza ki az "Azure Media Services" a termék listájában jelenik meg a következő oldalon.
-6. Válassza ki a "probléma típusa" megfelelő a problémát.
-7. Kattintson a Tovább gombra.
-8. Kövesse az utasításokat a következő oldalon, és adja meg a probléma részleteit.
-9. Kattintson a hibajegyet nyújt.
+Az Azure-portálon lépjen [súgó + támogatás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Ha nem jelentkezik Azure-ba, a hitelesítő adatok megadását kéri.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

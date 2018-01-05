@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 4b888facdba2eb5ff48bcbf43c93c1b75183cbad
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3c3864480d2fcba4f6d388d4e0d00b917cb62d2b
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="data-preparations-python-extensions"></a>Előkészített Python adatkiterjesztések
 Beépített szolgáltatásai között a funkció hézagok kitöltése módja Azure Machine Learning adatok előkészített bővítési több szinten tartalmazza. Ebben a dokumentumban a Python-parancsfájl bővíthetőséget szerkezeti azt. 
@@ -123,6 +123,31 @@ Ezután futtassa az alábbi parancsok egyikét:
 vagy 
 
 `./pip install <libraryname>`
+
+## <a name="use-custom-modules"></a>Az egyéni modulok használata
+Átalakítás Adatfolyamblokk (parancsfájl) írja be python kódot ehhez hasonló:
+
+```python
+import sys
+sys.path.append(*<absolute path to the directory containing UserModule.py>*)
+
+from UserModule import ExtensionFunction1
+df = ExtensionFunction1(df)
+```
+
+Oszlop hozzáadása (parancsfájl), állítson be kód blokktípus modul = és python írás a következő kódot:
+
+```python 
+import sys
+sys.path.append(*<absolute path to the directory containing UserModule.py>*)
+
+from UserModule import ExtensionFunction2
+
+def newvalue(row):
+    return ExtensionFunction2(row)
+```
+A különböző végrehajtási környezeteket (helyi, docker spark) mutasson a abszolút elérési utat a megfelelő helyen. Előfordulhat, hogy használni kívánt "os.getcwd() + relativePath" megkeresését.
+
 
 ## <a name="column-data"></a>Oszlop adattípusa 
 Oszlop adattípusa sor felépítését, vagy a kulcs-érték jelölés használatával elérhető. Oszlop neve szóközt vagy speciális karaktereket tartalmaz pontjelöléssel nem lehet elérni. A `row` változó mindig meg kell határozni, Python-bővítmények (modul és kifejezés) mindkét üzemmódban. 

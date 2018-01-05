@@ -3,7 +3,7 @@ title: "Az Azure App Service - Node.js mobilszolgáltatások frissítés"
 description: "Ismerje meg a Mobile Services alkalmazás az App Service Mobile Apps könnyen frissítése"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
+author: conceptdev
 manager: yochayk
 editor: 
 ms.assetid: c58f6df0-5aad-40a3-bddc-319c378218e3
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 888717afe14f29fd50da6478c2bba077616a5379
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: crdun
+ms.openlocfilehash: 9a641bc667d07d1b674d2864c1f29151d527f46a
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>Frissítse a meglévő Node.js Azure Mobile szolgáltatást az App Service
 App Service Mobile új módja a Microsoft Azure használatával mobil alkalmazásokat hozhatnak létre. További tudnivalókért lásd: [Mik azok a Mobile Apps?].
@@ -67,7 +67,7 @@ Törlés akkor fordulhat elő, ha nem lát minden forgalom az eredeti áttelepí
 ```npm i -g azure-mobile-apps-compatibility```
 
 ## <a name="obtain-ams-scripts"></a>Az Azure Mobile Services parancsfájlok beszerzése
-* Jelentkezzen be az [Azure Portal].
+* Jelentkezzen be az [Azure Portalra].
 * Használatával **összes erőforrás** vagy **alkalmazásszolgáltatások**, a Mobile Services webhely található.
 * A webhelyen, kattintson a **eszközök** -> **Kudu** -> **lépjen** a Kudu webhely megnyitásához.
 * Kattintson a **Debug konzol** -> **PowerShell** a hibakereső konzol megnyitásához.
@@ -86,14 +86,14 @@ Ezzel létrehoz egy generált Azure Mobile Apps-háttéralkalmazás a a `out` k�
 ## <a name="deploy-ama-app"></a>Azure Mobile Apps-háttéralkalmazásának telepítése
 A telepítés során szüksége lesz a következőkre:
 
-1. Hozzon létre egy új Mobile alkalmazás a [Azure Portal].
+1. Hozzon létre egy új Mobile alkalmazás a [Azure Portalra].
 2. Futtassa a `createViews.sql` a csatlakoztatott adatbázis a parancsfájlt.
 3. Csatolja az adatbázist, amely csatolva van a mobileszköz az új App Service szolgáltatást.
 4. Csatolja az új App Service bármely más erőforrások (például a Notification hubs használatával).
 5. A generált kód telepítése az új helyre.
 
 ### <a name="create-a-new-mobile-app"></a>Új mobileszköz-alkalmazás létrehozása
-1. Jelentkezzen be az [Azure Portal].
+1. Jelentkezzen be az [Azure Portalra].
 2. Kattintson az **+ÚJ** > **Web + mobil** > **Mobile App** elemre, majd adjon meg egy nevet a mobilalkalmazás háttérrendszerének.
 3. Az **Erőforráscsoport** beállításánál válasszon ki egy létező erőforráscsoportot, vagy hozzon létre egy újat (az alkalmazás nevének használatával).
 
@@ -110,7 +110,7 @@ Ez a parancsfájl az SQL Server Management Studio vagy Visual Studio belül is f
 ### <a name="link-the-database-to-your-app-service"></a>Az adatbázis csatolása az App Service
 A meglévő adatbázis az App Service mutató hivatkozás létrehozása:
 
-* Az a [Azure Portal], nyissa meg az App Service.
+* Az a [Azure Portalra], nyissa meg az App Service.
 * Válassza ki **összes beállítás** -> **adatkapcsolatok**.
 * Kattintson a **+ Hozzáadás**.
 * Válassza ki a legördülő **SQL-adatbázis**
@@ -164,7 +164,7 @@ Ha készen áll az új ügyfél verziója, próbálja ki a frissített kiszolgá
 [hitelesítési fogalmakkal]: ../app-service/app-service-authentication-overview.md
 [hitelesítés gyorsindító]: app-service-mobile-auth.md
 
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/
 [OData]: http://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [basicapp sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app

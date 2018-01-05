@@ -3,8 +3,8 @@ title: "A Mobile Apps és a Mobile Services SDK versioning ügyfél és kiszolg�
 description: "A Mobile Services és az Azure Mobile Apps server SDK verzióival való kompatibilitás és az ügyfél SDK-k listája"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: f79e819b1547f81498ea213858faf3c75e374782
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: 37bf36af535eb9b5c8b0ba38434b71f1a6686811
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>A Mobile Apps és a Mobile Services ügyfél és kiszolgáló versioning
 Azure Mobile Services legújabb verziója a **Mobile Apps** az Azure App Service szolgáltatást.
@@ -54,8 +54,8 @@ Az alábbi táblázatban látható az összes ügyfél és kiszolgáló között
 
 |  | **Mobilszolgáltatások** Node.js vagy .NET | **Mobilalkalmazások** Node.js vagy .NET |
 | --- | --- | --- |
-| [A Mobile Services ügyfelek] |oké |Hiba történt\* |
-| [Mobile Apps-ügyfelek] |Hiba történt\* |oké |
+| [A Mobile Services ügyfelek] |OK |Hiba történt\* |
+| [Mobile Apps-ügyfelek] |Hiba történt\* |OK |
 
 \*Ez is vezérelhető megadásával **MS_SkipVersionCheck**.
 
@@ -120,7 +120,7 @@ Verzióellenőrzés szerepel a kiszolgáló SDK verzió a következő:
 | 2.0.0-2.x.y |A megadott FALSE/nem |200 - OK |
 | 3.0.0-3.x.y |A megadott FALSE/nem |400 - Hibás kérés |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Mobile szolgáltatás áttelepítése az Azure App Service]
 
 [A Mobile Services ügyfelek]: #MobileServicesClients

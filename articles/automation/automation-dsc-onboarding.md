@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: gwallace
-ms.openlocfilehash: 0c399a24962efc1263ed35361a96c98bc60633ee
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: bfdec6d3982bb7744374a8026a41c3d548aca612
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Azure Automation DSC általi kezelésre bevezetési gépek
 
@@ -36,7 +36,7 @@ Az Azure Automation DSC gépek számos kezelésére használható:
 Emellett ha nem készen áll a számítógép-konfiguráció kezelése a felhőből, Azure Automation DSC is használható csak a jelentés-végpontként. Ez lehetővé teszi (leküldéses) szükségeskonfiguráció keresztül DSC a helyszíni és a kívánt állapot az Azure Automationben csomópont való megfelelés gazdag jelentéskészítési adatainak megtekintése.
 
 > [!NOTE]
-> Azure virtuális gépek DSC kezelése része külön díjfizetés nélkül a virtuális gépek DSC-kiterjesztés telepítése nagyobb, mint 2.7 esetén is.  Tekintse meg a [ **árképzést ismertető oldalra Automation** ](https://azure.microsoft.com/en-us/pricing/details/automation/) további részleteket.
+> Azure virtuális gépek DSC kezelése része külön díjfizetés nélkül Ha a virtuális gépek DSC-kiterjesztés telepítése nagyobb 2.70. bekezdés. Tekintse meg a [ **árképzést ismertető oldalra Automation** ](https://azure.microsoft.com/en-us/pricing/details/automation/) további részleteket.
 
 
 Az alábbi szakaszok felsorolják, hogyan zajlik bevezetésében Azure Automation DSC gép különböző típusú.

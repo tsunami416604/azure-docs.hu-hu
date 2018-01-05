@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
-ms.openlocfilehash: ccad7e41921c2fecbac113f3b950f654c62b1c8e
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: bb3520d36e4c34c752fe388f3126da285e2161cd
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Műszaki útmutató a Cortana Intelligence megoldás sablont a havi előrejelzési igény szerint
 ## <a name="overview"></a>**Áttekintés**
@@ -150,7 +150,7 @@ A Adatgenerátor eszköztárat, a feldolgozási folyamat veszi át a hidratált 
     A blob storage a nyers bejövő adatokat ír a Stream Analytics-feladatok egyikét. Ha rákattint az **Azure Blob Storage** a megoldás telepítése sikeres volt a megoldás, és kattintson a képernyő a komponens **nyitott** a jobb oldali panelen, amíg a [Azure portál](https://portal.azure.com). Ezután kattintson a **Blobok**. A következő panelen tárolók listájának megtekintéséhez. Kattintson a **"energysadata"**. A következő panelen megjelenik a **"demandongoing"** mappát. A rawdata mappában található mappák nevei, például a dátum az látja = 2016-01-28 stb. Ha ezeket a mappákat, azt jelzi, hogy a nyers adatok sikeresen jön létre a számítógépen és a blob storage-ban tárolt. Meg kell jelennie a fájlokat, amelyben véges mérete (MB) az érintett mappákat.
 2. Ellenőrizze az Azure SQL-adatbázis adatait.
 
-    A folyamat utolsó lépését az adatokat (például a gépi tanulás által előrejelzéseket) az SQL-adatbázisba írni. Lehetséges, hogy az adatok jelennek meg az SQL-adatbázis egy maximális oftwo óra várakozás. Figyelje az elérhető az SQL-adatbázis mennyi adatot egyike a keresztül [Azure-portálon](https://manage.windowsazure.com/). A bal oldali panelen keresse meg az SQL-ADATBÁZISOK![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png) , és kattintson rá. Ezután keresse meg az adatbázis (azaz demo123456db), és kattintson rá. A következő oldalon **"Az adatbázishoz való csatlakozás"** kattintson **"Futtatás Transact-SQL lekérdezések írásában, az SQL-adatbázis"**.
+    A folyamat utolsó lépését az adatokat (például a gépi tanulás által előrejelzéseket) az SQL-adatbázisba írni. Lehetséges, hogy várnia legfeljebb két órával az adatok jelennek meg az SQL-adatbázis. Figyelje az elérhető az SQL-adatbázis mennyi adatot egyike a keresztül [Azure-portálon](https://portal.azure.com/). A bal oldali panelen keresse meg az SQL-ADATBÁZISOK![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png) , és kattintson rá. Ezután keresse meg az adatbázis (azaz demo123456db), és kattintson rá. A következő oldalon **"Az adatbázishoz való csatlakozás"** kattintson **"Futtatás Transact-SQL lekérdezések írásában, az SQL-adatbázis"**.
 
     Itt, ha rákattint az új lekérdezés és a lekérdezés megadása a sorok (például "select count(*) a DemandRealHourly) száma" az adatbázis növekedésével a tábla sorainak száma növelje.)
 3. Ellenőrizze az adatokat a Power BI-irányítópultot.
@@ -167,7 +167,7 @@ Az alábbi lépéseket a megoldás üzembe helyezése során létrehozott Stream
 1. Adja hozzá a Power BI-kimenet Azure Stream Analytics (ASA).
 
    * Kövesse az utasításokat kell [Azure Stream Analytics & Power BI: valós idejű látható-e a streamelési adatok a valós idejű elemzési irányítópult](stream-analytics/stream-analytics-power-bi-dashboard.md) a Power BI-irányítópultot, az Azure Stream Analytics-feladat eredményének beállítása .
-   * Keresse meg a stream analytics-feladat a [Azure-portálon](https://manage.windowsazure.com). A feladat a névnek kell lennie: YourSolutionName + "streamingjob" + véletlenszerű szám + "asapbi" (azaz demostreamingjob123456asapbi).
+   * Keresse meg a stream analytics-feladat a [Azure-portálon](https://portal.azure.com). A feladat a névnek kell lennie: YourSolutionName + "streamingjob" + véletlenszerű szám + "asapbi" (azaz demostreamingjob123456asapbi).
    * Adjon hozzá egy Power bi-kimenet ASA feladat. Állítsa be a **kimeneti Alias** , **"PBIoutput"**. Állítsa be a **Adatkészletnevet** és **tábla neve** , **"EnergyStreamData"**. A kimeneti hozzáadását követően kattintson **"Start"** a Stream Analytics-feladat indítása az oldal alján. (Például "indítása stream analytics-feladat sikeres myteststreamingjob12345asablob") megerősítő üzenetet kapja meg.
 2. Jelentkezzen be [online Power bi-ban](http://www.powerbi.com)
 

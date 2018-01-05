@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 74051c5a6c7cb58f5132411bfc66d4947ed916d6
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: c741f995c32bf6fa9ba4e0646573be8cdb67a7c3
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -112,7 +112,9 @@ A metódus visszaadja a szótár részére láncolni egyéni tevékenységek egy
      <li>Válassza ki <b>C:\ADFGetStarted</b> a a <b>hely</b>.</li>
      <li>A projekt létrehozásához kattintson az <b>OK</b> gombra.</li>
    </ol>
-2.Kattintson a **eszközök**, mutasson a **NuGet-Csomagkezelő**, és kattintson a **Csomagkezelő konzol**.
+   
+2. Kattintson az **Eszközök** elemre, mutasson a **NuGet Package Manager** (NuGet-csomagkezelő) lehetőségre, majd kattintson a **Package Manager Console** (Csomagkezelő konzol) elemre.
+
 3. A Package Manager Console hajtható végre a következő parancs futtatásával importálja **Microsoft.Azure.Management.DataFactories**.
 
     ```PowerShell
@@ -552,7 +554,7 @@ Ebben a lépésben hoz létre a bemeneti és kimeneti adatok adatkészletek.
 
     Egy kimeneti blob/fájl az egyes bemeneti szeletek jön létre. Ez hogyan kimeneti fájl neve az egyes szeletek. A kimeneti fájlok akkor jönnek létre, egy kimeneti mappában: **adftutorial\customactivityoutput**.
 
-   | Szelet | Kezdés időpontja | Kimeneti fájlja |
+   | Szelet | Kezdés | Kimeneti fájl |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |

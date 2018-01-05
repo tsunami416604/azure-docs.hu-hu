@@ -3,8 +3,8 @@ title: "Frissítés a Mobile Services az Azure App Service"
 description: "Ismerje meg a Mobile Services alkalmazás az App Service Mobile Apps könnyen frissítése"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 81c8ba6245565368eab4cdaca297ff7656180605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: f07b1d6037ff8ca16b673e6a1a235769355a9993
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Frissítse a meglévő .NET Azure Mobile szolgáltatást az App Service
 App Service Mobile új módja a Microsoft Azure használatával mobil alkalmazásokat hozhatnak létre. További tudnivalókért lásd: [Mik azok a Mobile Apps?].
@@ -89,7 +89,7 @@ Ezt követően WebApiConfig.cs, módosíthatja:
         // Use this class to set WebAPI configuration options
         HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
 
-a
+együtt
 
         HttpConfiguration config = new HttpConfiguration();
         new MobileAppConfiguration()
@@ -123,7 +123,7 @@ Annak érdekében, hogy rendelkezik-e az azonos sémából hivatkozott előtti, 
 
 Győződjön meg arról, hogy MS_MobileServiceName állítja be, ha a fenti teheti meg. Ha az alkalmazás korábban testreszabott ez is megadhatja egy másik sémanév.
 
-### <a name="system-properties"></a>Rendszer tulajdonságai
+### <a name="system-properties"></a>Rendszertulajdonságok
 #### <a name="naming"></a>Elnevezés
 Az Azure Mobile Services-kiszolgáló SDK, a rendszer tulajdonságai mindig tartalmaznak dupla aláhúzás (`__`) a Tulajdonságok előtag:
 
@@ -139,7 +139,7 @@ Az Azure Mobile Apps már nem a rendszer tulajdonságai egy különleges formát
 * createdAt
 * updatedAt
 * törölve
-* Verzió
+* verzió:
 
 A Mobile Apps-ügyfél SDK-k az új tulajdonságok neveket, használ, így nem végez módosítást Ügyfélkód szükséges. Azonban ha a szolgáltatás REST-hívások közvetlenül teszi majd módosítania kell a lekérdezések ennek megfelelően.
 
@@ -155,7 +155,7 @@ IOS rendszerű eszközökön módosítania kell a Core adatsémája nem támogat
 | id |Karakterlánc, kötelezőként megjelölt |elsődleges távoli tárolóban levő kulccsal. |
 | createdAt |Dátum |(választható) képeződik le createdAt rendszer tulajdonság |
 | updatedAt |Dátum |(választható) képeződik le updatedAt rendszer tulajdonság |
-| Verzió |Karakterlánc |(választható) annak észlelésére használnak, ütközéseket, maps verzióra |
+| verzió: |Karakterlánc |(választható) annak észlelésére használnak, ütközéseket, maps verzióra |
 
 #### <a name="querying-system-properties"></a>A Rendszertulajdonságok lekérdezése
 Azure Mobile Services, a rendszer tulajdonságai nem kap alapértelmezés szerint, de csak akkor, amikor erre felkérést kapnak a lekérdezési karakterlánc használatával `__systemProperties`. Ezzel szemben az Azure Mobile Apps rendszer tulajdonságainak vannak **mindig ki** , mert a kiszolgáló SDK objektummodell részét képezik.

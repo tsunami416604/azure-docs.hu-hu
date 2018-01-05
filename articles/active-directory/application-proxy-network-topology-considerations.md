@@ -3,7 +3,7 @@ title: "Azure Active Directory Application Proxy használata esetén a hálózat
 description: "Hálózati topológia szempontjai vonatkozik, az Azure AD-alkalmazásproxy használata esetén."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 62b28ba446b4ffb13071b81805767bb34288fe2e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f4ca4856333bf8b10a00952356080ed332dc266b
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Hálózati topológia való használatának szempontjai Azure Active Directory Alkalmazásproxyjával
 
@@ -170,7 +170,7 @@ Is megfontolhatja egy variant ebben a helyzetben. Ha a szervezet a legtöbb felh
 
 ![Az Egyesült Államokban, az Európai Unió alkalmazás a felhasználók, proxy és összekötő bemutató ábra](./media/application-proxy-network-topologies/application-proxy-pattern5c.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
 - [Egyszeri bejelentkezés engedélyezése](active-directory-application-proxy-sso-using-kcd.md)

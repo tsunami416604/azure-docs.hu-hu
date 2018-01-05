@@ -3,7 +3,7 @@ title: "Alkalmazások közzététele az Azure AD-alkalmazásproxyval | Microsoft
 description: "A helyszíni alkalmazások közzététele a felhőbe az Azure AD alkalmazásproxy az Azure portálon."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 3639c7d8c3c1e716eaf1a0af0506f6d0d2ad0493
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 43cabb03a698dd87f12fef8e9a4dd54ee42c3ec9
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Alkalmazások közzététele az Azure AD-alkalmazásproxyval
 
@@ -44,7 +44,7 @@ Kövesse az alábbi lépéseket az alkalmazásproxy az alkalmazások közzétét
 
 3. Válassza ki **összes**, majd jelölje be **helyszíni alkalmazás**.  
 
-  ![Saját alkalmazás felvétele](./media/application-proxy-publish-azure-portal/add-your-own.png)
+  ![Saját alkalmazás hozzáadása](./media/application-proxy-publish-azure-portal/add-your-own.png)
 
 4. Adja meg a következő információkat az alkalmazásról:
 
@@ -86,7 +86,7 @@ Tesztelje, hogy az alkalmazás megfelelően lett-e közzétéve, vegye fel egy o
   ![Egy felhasználó vagy csoport hozzáadása](./media/application-proxy-publish-azure-portal/add-user.png)
 
 3. A hozzárendelés hozzáadása panelen válassza ki a **felhasználók és csoportok** válassza ki a hozzáadni kívánt fiókot. 
-4. Válassza ki **hozzárendelése**.
+4. Válassza a **Hozzárendelés** elemet.
 
 ## <a name="test-your-published-app"></a>A közzétett alkalmazás tesztelése
 
@@ -95,7 +95,7 @@ A böngészőben navigáljon a közzététel lépés során konfigurált külső
 ![A közzétett alkalmazás tesztelése](./media/application-proxy-publish-azure-portal/test-app.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Töltse le az összekötők](active-directory-application-proxy-enable.md) és [összekötő csoportok létrehozása a](active-directory-application-proxy-connectors-azure-portal.md) külön hálózatok és helyek alkalmazások közzétételét.
 
 - [Egyszeri bejelentkezés beállítása](application-proxy-sso-azure-portal.md) az újonnan közzétett alkalmazások

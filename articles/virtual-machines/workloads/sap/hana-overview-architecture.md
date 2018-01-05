@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09198355ecd862c73b728d8119bbf9d56e3b9f69
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: e48e0e256306707ca7fde3636a4215b235fa2eb7
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA (nagy példányok) – áttekintés és az Azure-architektúra
 
@@ -468,7 +468,7 @@ Az SAP alkalmazásréteg vagy összetevők telepítését a fent látható több
 
 Három dolgot fontos hálózati útválasztási SAP Hana Azure (nagy példány):
 
-1. Az Azure (nagy példányok) SAP HANA csak elérhető Azure virtuális gépeken, valamint dedikált ExpressRoute-kapcsolat; nem közvetlenül a helyszíni. Közvetlen hozzáférés a helyszíni HANA nagy példány egységnél, Microsoft által kiadott nincs lehetőség közvetlenül a jelenlegi Azure hálózati architektúra SAP HANA-nagy példányok használt átmeneti útválasztási korlátozások miatt. Egyes felügyeleti ügyfeleket és közvetlen hozzáférést, például SAP megoldás Manager fut a helyszíni igénylő alkalmazások nem tud kapcsolódni az SAP HANA-adatbázisból.
+1. Az Azure (nagy példányok) SAP HANA csak elérhető Azure virtuális gépeken, valamint dedikált ExpressRoute-kapcsolat; nem közvetlenül a helyszíni. Közvetlen hozzáférés a helyszíni HANA nagy példány egységnél, Microsoft által kiadott nincs lehetőség közvetlenül a jelenlegi Azure hálózati architektúra SAP HANA-nagy példányok használt tranzitív útválasztási korlátozások miatt. Egyes felügyeleti ügyfeleket és közvetlen hozzáférést, például SAP megoldás Manager fut a helyszíni igénylő alkalmazások nem tud kapcsolódni az SAP HANA-adatbázisból.
 
 2. Ha nagy példány HANA egységek két különböző Azure-régiók katasztrófa utáni helyreállítás céljából telepítve van, az azonos átmeneti útválasztási korlátozások érvényesek. Vagy más szóval egy régióban (pl. Velünk nyugati) HANA nagy példány egység IP-címek nem továbbítja a telepített meg egy másik régióban (pl. amerikai keleti) HANA nagy példány egység. Ez az az Azure-hálózat társviszony-létesítés régiók között, vagy az ExpressRoute-Kapcsolatcsoportok HANA nagy példány egységek Azure Vnet-hez csatlakozó közötti használatát független. Ahogy azt egy kicsit tovább le ezt a dokumentációt. Ezt a korlátozást, előre telepített architektúrával, vész-helyreállítási funkcióinak az azonnali használatát, HANA replikációs összetevő letiltása.
 

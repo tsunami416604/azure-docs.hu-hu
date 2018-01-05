@@ -3,7 +3,7 @@ title: "Natív ügyfél alkalmazások – az Azure AD közzététele |} Microsof
 description: "Bemutatja, hogyan adhat kommunikálni az Azure AD alkalmazásproxy-összekötő a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak a natív ügyfél alkalmazások engedélyezése."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: f0cae145-e346-4126-948f-3f699747b96e
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: de49a8343a3db6c8b890050e7791f77105a09a3a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2be62c00d144e47cef8ea4df5aa82554f2bbcc18
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Hogyan kommunikál a proxy alkalmazások natív ügyfél alkalmazások engedélyezése
 
@@ -93,7 +93,7 @@ A változók példakód ki kell cserélni az alábbiak szerint:
 
 Ha az ADAL ezekkel a paraméterekkel szerkeszt, a felhasználók akkor is, ha a vállalati hálózaton kívülről fontosságúak natív ügyfél alkalmazásokhoz való hitelesítéshez kell lennie. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A natív alkalmazás folyamattal kapcsolatos további információkért lásd: [natív alkalmazás webes API-hoz](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
 

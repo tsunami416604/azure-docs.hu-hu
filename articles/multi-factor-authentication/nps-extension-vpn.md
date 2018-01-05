@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 1879fc3d45e1a79fe5edd1ae1cf0d7060fd327ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1141245739f86a482bb0b5f550fd3b89d1213ce1
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA bővítményével a hálózati házirend-kiszolgáló az Azure-bA
 
@@ -171,8 +171,7 @@ Használhatja a szabványos (varázsló-alapú) vagy speciális konfigurációs 
 
 4. Az a **meg telefonos vagy VPN-kiszolgáló** ablakban válassza ki **Hozzáadás**.
 
-5. Az a **új RADIUS-ügyfél** ablakban adja meg egy rövid nevet, adja meg a VPN-kiszolgáló IP-cím vagy feloldható nevét, és írja be a megosztott titkos jelszót.  
-    Győződjön meg a közös titkos jelszó hosszú és összetett. Jegyezze fel, mert szüksége lehet rájuk a következő szakaszban.
+5. Az a **új RADIUS-ügyfél** ablakban adja meg egy rövid nevet, adja meg a VPN-kiszolgáló IP-cím vagy feloldható nevét, és írja be a megosztott titkos jelszót. Győződjön meg a közös titkos jelszó hosszú és összetett. Jegyezze fel, mert szüksége lehet rájuk a következő szakaszban.
 
     ![Új RADIUS-ügyfél](./media/nps-extension-vpn/image5.png)
 
@@ -183,8 +182,7 @@ Használhatja a szabványos (varázsló-alapú) vagy speciális konfigurációs 
     > [!NOTE]
     > Ha konfigurálja az Extensible Authentication Protocol (EAP), vagy a Microsoft kérdés-kézfogás típusú hitelesítési protokoll (CHAPv2), vagy a védett bővíthető hitelesítési protokoll (PEAP) kell használnia. Nincs más EAP esetén támogatott.
  
-8. Az a **adja meg a felhasználói csoportok** ablakban válassza ki **Hozzáadás**, majd válasszon ki egy megfelelő csoportot.  
-    Ha nem a csoport létezik, hagyja meg az üres hozzáférést minden felhasználó számára.
+8. Az a **adja meg a felhasználói csoportok** ablakban válassza ki **Hozzáadás**, majd válasszon ki egy megfelelő csoportot. Ha nem a csoport létezik, hagyja meg az üres hozzáférést minden felhasználó számára.
 
     ![A felhasználói csoportok meg ablak](./media/nps-extension-vpn/image7.png)
 
@@ -209,20 +207,17 @@ Ez a szakasz részletesen a konfiguráció varázsló használatával létrehozo
 
 1. A hálózati házirend-kiszolgálón, a hálózati házirend-kiszolgáló (helyi) konzolon bontsa ki a **RADIUS-ügyfelek**, majd válassza ki **RADIUS-ügyfelek**.
 
-2. A részleteket tartalmazó ablaktáblán kattintson a jobb gombbal a létrehozott, és válassza ki RADIUS-ügyfél **tulajdonságok**.  
-    A RADIUS-ügyfél (a VPN-kiszolgáló) tulajdonságait kell lennie, mint itt látható:
+2. A részleteket tartalmazó ablaktáblán kattintson a jobb gombbal a létrehozott, és válassza ki RADIUS-ügyfél **tulajdonságok**. A RADIUS-ügyfél (a VPN-kiszolgáló) tulajdonságait kell lennie, mint itt látható:
 
     ![VPN-tulajdonságai](./media/nps-extension-vpn/image11.png)
 
 3. Válassza ki **Mégse**.
 
-4. A hálózati házirend-kiszolgálón, a hálózati házirend-kiszolgáló (helyi) konzolon bontsa ki a **házirendek**, majd válassza ki **kapcsolatkérelem-házirendek**.  
-    A VPN-kapcsolatok házirend megjelenik a következő ábrán látható módon:
+4. A hálózati házirend-kiszolgálón, a hálózati házirend-kiszolgáló (helyi) konzolon bontsa ki a **házirendek**, majd válassza ki **kapcsolatkérelem-házirendek**. A VPN-kapcsolatok házirend megjelenik a következő ábrán látható módon:
 
     ![Csatlakozási kérések](./media/nps-extension-vpn/image12.png)
 
-5. A **házirendek**, jelölje be **hálózati házirendek**.  
-    Egy alábbihoz hasonló a házirendet, az alábbi ábrán látható virtuális magánhálózati (VPN) kapcsolatok házirendet kell megjelennie:
+5. A **házirendek**, jelölje be **hálózati házirendek**. Egy alábbihoz hasonló a házirendet, az alábbi ábrán látható virtuális magánhálózati (VPN) kapcsolatok házirendet kell megjelennie:
 
     ![Hálózati házirendek](./media/nps-extension-vpn/image13.png)
 
@@ -305,7 +300,8 @@ Ebben a szakaszban, győződjön meg arról, hogy a VPN-ügyfél hitelesítése 
 
     ![Az esemény tulajdonságai ablakban](./media/nps-extension-vpn/image21.png)
 
-## <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
+## <a name="troubleshooting-radius"></a>Hibaelhárítási RADIUS
+
 Tegyük fel, hogy a VPN-konfiguráció dolgozott előtt konfigurálta a VPN-kiszolgáló egy központi RADIUS-kiszolgáló használatára a hitelesítéshez és engedélyezéshez. Ha a konfigurációs dolgozott, valószínű, hogy a hibát az okozza a helytelen konfigurálása a RADIUS-kiszolgáló vagy egy érvénytelen felhasználónév vagy jelszó használata. Például ha a felhasználónév az alternatív UPN-utótagot használja, a bejelentkezési kísérlet sikertelen lehet. A legjobb eredmények elérése érdekében ugyanazt a fiók nevet használja. 
 
 Ezek a problémák elhárításához egy ideális kiindulási, a RADIUS-kiszolgáló biztonsági eseménynaplók vizsgálata. Mentés ideje eseményeket keres, használhatja a szerepkör-alapú hálózati házirend- és kiszolgáló egyéni megtekintése az eseménynaplóban, itt látható módon. "A 6273-as eseményazonosító" események, ahol a hálózati házirend-kiszolgáló megtagadta a hozzáférést egy felhasználó jelzi. 
@@ -313,96 +309,8 @@ Ezek a problémák elhárításához egy ideális kiindulási, a RADIUS-kiszolg�
 ![Eseménynapló](./media/nps-extension-vpn/image22.png)
  
 ## <a name="configure-multi-factor-authentication"></a>Többtényezős hitelesítés beállítása
-A szakasz ismerteti, így a felhasználók a multi-factor Authentication és a kétlépéses ellenőrzéshez fiókok beállításával kapcsolatos utasításokat. 
 
-### <a name="enable-multi-factor-authentication"></a>A többtényezős hitelesítés engedélyezése
-Ebben a szakaszban az Azure AD-fiókok a multi-factor Authentication engedélyezése. A klasszikus Azure portál segítségével lehetővé teszi a felhasználók a multi-factor Authentication. 
-
-1. Lépjen a [Microsoft Azure](https://manage.windowsazure.com) webhelyet. 
-
-2. Jelentkezzen be rendszergazdaként.
-
-3. A bal oldali panelen válassza ki a **Active Directory**.
-
-    ![Alapértelmezett könyvtár](./media/nps-extension-vpn/image23.png)
-
-4. Az a **neve** oszlopból válassza ki **alapértelmezett címtárat** (vagy egy másik címtárban, ha szükséges).
-
-5. Az a **alapértelmezett címtár** ablakban válassza ki **konfigurálása**.
-
-    ![Az alapértelmezett könyvtár konfigurálása](./media/nps-extension-vpn/image24.png)
-
-6. Az a **konfigurálása** ablakban, a **a multi-factor authentication**, jelölje be **szolgáltatás beállításainak kezelése**.
-
-    ![A multi-factor authentication beállításainak kezelése](./media/nps-extension-vpn/image25.png)
- 
-7. Az a **a multi-factor authentication** ablak, tekintse át az alapértelmezett szolgáltatás beállításai, és válassza a **felhasználók** fülre. 
-
-    ![A felhasználók a multi-factor authentication lap](./media/nps-extension-vpn/image26.png)
- 
-8. Az a **felhasználók** lapra, válassza ki a felhasználókat, akik engedélyezi az MFA szolgáltatásra, és válassza ki a kívánt **engedélyezése**.
-
-    ![Tulajdonságok](./media/nps-extension-vpn/image27.png)
- 
-9. Amikor a rendszer kéri, válassza ki a **multi-factor auth engedélyezése**.
-
-    ![A többtényezős hitelesítés engedélyezése](./media/nps-extension-vpn/image28.png)
- 
-10. Válassza ki **Bezárás**. 
-
-11. Frissítse az oldalt.  
-    A többtényezős hitelesítés állapota *engedélyezve*.
-
-A multi-factor Authentication felhasználók engedélyezésével kapcsolatos információkért lásd: [Ismerkedés az Azure multi-factor Authentication a felhőben](multi-factor-authentication-get-started-cloud.md). 
-
-### <a name="configure-accounts-for-two-step-verification"></a>A kétlépéses ellenőrzéshez fiókok beállítása
-Fiók engedélyezve van az MFA szolgáltatásra, miután a felhasználók nem tudnak bejelentkezni, amíg sikeresen konfigurálta a második hitelesítési tényezővel használandó megbízható eszköz a többtényezős hitelesítési szabályzat által szabályozott erőforrások.
-
-Ebben a szakaszban egy megbízható eszköz konfigurál a kétlépéses ellenőrzéshez használttal. Több lehetőség közül választhat eszközt, beleértve a következőket:
-
-* **Mobilalkalmazás**: a Microsoft Authenticator alkalmazást telepít egy Windows Phone, Android vagy iOS-eszközön. Attól függően, hogy a szervezet házirendjeit szükségesek az alkalmazás használatát a két mód egyikében: 
-    * Értesítések az ellenőrzések (értesítést a rendszer előkészítésre továbbít az eszközhöz).
-    * Egy megerősítési kódot (áll meg kell adniuk egy megerősítési kódot, amely 30 másodpercenként frissíti) használja. 
-
-* **Mobiltelefon hívást vagy SMS**: is fogadhatja az vagy egy automatikus telefonhívás, vagy egy szöveges üzenetet. A telefonhívás kapcsolóval a hívás, és válassza ki a kettős kereszt (#) gombot. A szöveg beállítással válaszoljon az üzenetre, vagy adja meg a bejelentkezési felületen.
-
-* **Irodai telefon hívása**: Ez a folyamat megegyezik a folyamat automatikus telefonhívásokat korábban ismertetett.
-
-Eszköz beállítása használni a mobilalkalmazást az ellenőrzéshez a leküldéses értesítések fogadásához, tegye a következőket:
-
-1. Jelentkezzen be [Microsoft Azure](https://aka.ms/mfasetup) vagy egyetlen helyen, például a [Azure-portálon](https://portal.azure.com), amely még az MFA-kompatibilis hitelesítő adatokkal végezhessenek hitelesítést szükséges.  
-    Kéri a fiók további biztonsági ellenőrzés, ahogy az itt látható:
-
-    ![További biztonsági](./media/nps-extension-vpn/image29.png)
-
-2. Válassza ki **most beállítása**.
-
-3. Az a **további biztonsági ellenőrzés** írja be a ablakban válassza ki a megfelelő ügyfél (**hitelesítéshez megadott telefonját**, **irodai telefon**, vagy **mobilalkalmazás** ), olyan országban vagy régióban, majd válassza ki és egy metódust. Ne válassza **forduljon me** még.  
-    A módszer függ a kapcsolattartó típusa. Ha úgy dönt, például **mobilalkalmazás**, kiválaszthatja, hogy az ellenőrzési értesítések fogadásához, vagy egy ellenőrző kód használata. 
-
-    ![A "további biztonsági ellenőrzés" ablak](./media/nps-extension-vpn/image30.png)
-
-    A következő lépések azt feltételezik, hogy a kiválasztott **mobilalkalmazás** kapcsolattartási típusként.
-
-4. Válassza ki **mobilalkalmazás**, jelölje be **értesítéseket az ellenőrzéshez**, majd válassza ki **beállítása**. 
-
-    ![A "további biztonsági ellenőrzés" ablak](./media/nps-extension-vpn/image31.png)
- 
-5. Ha még nem tette meg, telepítse a Microsoft Authenticator mobilalkalmazás az eszközön. 
-
-6. A mobilalkalmazásban megjelenített vonalkód beolvasása, vagy adja meg manuálisan az adatokat, majd válassza ki **végzett**.
-
-    ![Microsoft Authenticator mobilalkalmazás konfigurálása](./media/nps-extension-vpn/image32.png)
-
-7. Az a **további biztonsági ellenőrzés** ablakban válassza ki **me forduljon**, és ezután az értesítésre, az eszközre küldött válasz.
-
-8. A a **további biztonsági ellenőrzés** ablakban, a **3. lépés:, ha a jövőben nem fér hozzá a mobilalkalmazás**, írjon be egy számot felhívhatja fog tudni hozzáférni a mobilalkalmazást, és válassza  **Következő**.
-
-    ![A "további biztonsági ellenőrzés" ablak](./media/nps-extension-vpn/image33.png)
- 
-9. Az a **további biztonsági ellenőrzés** ablakban válassza ki **végzett**.
-
-Az eszköz konfigurálva van egy második ellenőrzési módszert biztosít. A kétlépéses ellenőrzéshez fiókok beállításával kapcsolatos információkért lásd: [a kétlépéses ellenőrzéshez a fiók beállítása](./end-user/multi-factor-authentication-end-user-first-time.md).
+Ha segítségre van szüksége a multi-factor Authentication a felhasználók konfigurálásával tekintse meg a cikkek [használatának megkövetelése a kétlépéses ellenőrzés egy felhasználó vagy csoport](multi-factor-authentication-get-started-user-states.md) és [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>Telepítse és konfigurálja a hálózati házirend-kiszolgáló bővítmény
 
@@ -470,8 +378,7 @@ A parancsfájl használatát, adja meg az Azure Active Directory rendszergazdai 
 
 2. A PowerShell parancssorába írja be a **cd c:\Program Files\Microsoft\AzureMfa\Config**, majd válassza ki az ENTER billentyűt.
 
-3. A következő parancs parancssorba írja be a **.\AzureMfsNpsExtnConfigSetup.ps1**, majd válassza ki az ENTER billentyűt.  
-    A parancsfájl ellenőrzi, hogy telepítve van-e az Azure AD PowerShell modult. Ha nincs telepítve, a parancsfájl telepíti a modult.
+3. A következő parancs parancssorba írja be a **.\AzureMfsNpsExtnConfigSetup.ps1**, majd válassza ki az ENTER billentyűt. A parancsfájl ellenőrzi, hogy telepítve van-e az Azure AD PowerShell modult. Ha nincs telepítve, a parancsfájl telepíti a modult.
  
     ![PowerShell](./media/nps-extension-vpn/image38.png)
  
@@ -546,7 +453,7 @@ További hibaelhárítási ehhez használhatja például a Wireshark protokollel
 
 További információkért lásd: [a meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication](multi-factor-authentication-nps-extension.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure multi-factor Authentication hitelesítés beolvasása](multi-factor-authentication-versions-plans.md)
 
 [Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló](multi-factor-authentication-get-started-server-rdg.md)

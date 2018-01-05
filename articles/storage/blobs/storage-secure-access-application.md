@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 11b141617bea5962c45e1b91cf6629c2edd26c3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c43165e230a00b6a4408637fd2290a21800d07b9
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Biztonságos hozzáférés a felhőben tárolt adatainak egy alkalmazás
 
@@ -55,7 +55,7 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 
 Az oktatóanyag adatsorozat egyik részében a webes alkalmazás lemezképet rögzíthet a nyilvános tárolók lett megjelenítő. Ez a sorozat része, használhatja az [biztonságos hozzáférési Jogosultságkód (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature) -jogkivonat beolvasása a miniatűr képét. SAS-tokenje lehetővé teszik a korlátozott hozzáférést biztosít egy tárolót vagy a blob IP, protokoll, időtartam alapján, illetve jogokat engedélyezett.
 
-Ebben a példában a forráskódraktárban használja a `sasTokens` fiókirodai, amelynek egy frissített kódminta. Törölje a meglévő GitHub-telepítéssel a [az webalkalmazás központi telepítési forrás törlése](/cli/azure/webapp/deployments/source#delete). Ezután konfigurálja a Githubon központi telepítést, hogy a webes alkalmazás a [az webalkalmazás központi telepítési forrás konfigurációs](/cli/azure/webapp/deployment/source#config) parancsot.  
+Ebben a példában a forráskódraktárban használja a `sasTokens` fiókirodai, amelynek egy frissített kódminta. Törölje a meglévő GitHub-telepítéssel a [az webalkalmazás központi telepítési forrás törlése](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_delete). Ezután konfigurálja a Githubon központi telepítést, hogy a webes alkalmazás a [az webalkalmazás központi telepítési forrás konfigurációs](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) parancsot.  
 
 Az alábbi parancs `<web-app>` a webes alkalmazás neve.  
 
@@ -194,7 +194,7 @@ Date: Mon, 11 Sep 2017 19:27:46 GMT
 
 ## <a name="enable-https-only"></a>Csak a HTTPS engedélyezéséhez
 
-Győződjön meg arról, hogy a tárfiók érkező vagy oda irányuló kérelmek adatok biztonságos, hogy csak HTTPS kérelmek korlátozhatja. Frissítse a tárolási fiók szükséges protokollt használatával a [az tárolási fiók frissítés](/cli/azure/storage/account#update) parancsot.
+Győződjön meg arról, hogy a tárfiók érkező vagy oda irányuló kérelmek adatok biztonságos, hogy csak HTTPS kérelmek korlátozhatja. Frissítse a tárolási fiók szükséges protokollt használatával a [az tárolási fiók frissítés](/cli/azure/storage/account#az_storage_account_update) parancsot.
 
 ```azurecli-interactive
 az storage account update --resource-group myresourcegroup --name <storage-account-name> --https-only true
@@ -212,7 +212,7 @@ Most, hogy biztonságos átvitele szükség, a következő hibaüzenet jelenik m
 HTTP/1.1 400 The account being accessed does not support http.
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat három része megtanulta, hogyan biztosíthat biztonságos hozzáférést a tárfiókhoz, például hogy miként:
 

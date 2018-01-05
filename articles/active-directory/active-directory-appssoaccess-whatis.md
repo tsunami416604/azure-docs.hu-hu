@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 4fd80e147f3f24676bde77a1aa4e9f29432f544d
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 604c4e850ac88fde4124c0acdd5550654c442108
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?
 Egyszeri bejelentkezés azt jelenti, hogy nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat, végre kell hajtani, üzleti által csak akkor, ha egyetlen felhasználói fiókkal jelentkezik be. Miután bejelentkezett, van-e hozzáférési összes alkalmazást szolgáltatásbeli hitelesítéshez szükséges nélkül van szüksége (pl. Adjon meg egy jelszót) még egyszer.
@@ -49,7 +49,7 @@ Az Azure AD három különböző módon bejelentkezni alkalmazások támogatja:
 * **Jelszó-alapú egyszeri bejelentkezést** lehetővé teszi, hogy biztonságos jelszó alkalmazástárolót és visszajátszásos a webes bővítmény vagy mobilalkalmazást használ. Ez kihasználja a meglévő bejelentkezési folyamat az alkalmazás által biztosított, de lehetővé teszi, hogy a rendszergazda számára, hogy a jelszavak kezelése és nem igényel a felhasználót, hogy a jelszó ismerete.
 * **Meglévő egyszeri bejelentkezés** lehetővé teszi, hogy az Azure AD kihasználhatják a meglévő egyszeri bejelentkezést, amely még nincs beállítva az alkalmazás, de lehetővé teszi, hogy ezeket az alkalmazásokat az Office 365 vagy Azure AD hozzáférési panel portálok kell társítani, és is lehetővé teszi, hogy az Azure AD, ha az alkalmazások működését nincs további reporting.
 
-Ha egy felhasználó hitelesített olyan alkalmazás, ezek is csak egy fiók bejegyzést, az alkalmazás, amely közli az alkalmazás üzembe ahol nincs engedélyekkel és hozzáférési szintje van az alkalmazáson belüli. Ez a fiók rekord kiépítés vagy automatikusan is megtörténhet, vagy akkor fordulhat elő manuálisan egy rendszergazda előtt a felhasználó egyszeri bejelentkezéses hozzáférést biztosítja.
+Miután egy felhasználó egy alkalmazást a hitelesítette, ezek is csak egy fiók bejegyzést, az alkalmazás, amely közli az alkalmazás üzembe ahol nincs engedélyekkel és hozzáférési szintje van az alkalmazáson belüli. Ez a fiók rekord kiépítés vagy automatikusan is megtörténhet, vagy akkor fordulhat elő manuálisan egy rendszergazda előtt a felhasználó egyszeri bejelentkezéses hozzáférést biztosítja.
 
  Egyszeri bejelentkezés módokban és a kiépítés alább olvashat.
 

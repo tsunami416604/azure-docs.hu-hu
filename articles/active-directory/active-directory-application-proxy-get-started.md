@@ -3,7 +3,7 @@ title: "Útmutató a helyszíni alkalmazások biztonságos távoli hozzáférés
 description: "Bemutatja, hogyan adhat a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak az Azure AD alkalmazásproxy segítségével."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: d5450da1-9e06-4d08-8146-011c84922ab5
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 3ca7c7919f6cfcece38073520162dc44bbfd748e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 24def898f282c4e122ae53932ae86047e815595c
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Útmutató a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak
 
@@ -81,7 +81,7 @@ Kerberos kapcsolatos további információkért lásd: [összes meg szeretné is
 ### <a name="managing-apps"></a>Alkalmazások felügyelete
 Miután közzétette az alkalmazást az alkalmazásproxy, mint bármely más vállalati alkalmazás az Azure-portálon kezelheti. Használja az Azure Active Directory biztonsági funkciók, például a feltételes hozzáférés és a kétlépéses ellenőrzést, szabályozhatja a felhasználói engedélyek, és testre szabhatja az alkalmazás branding. 
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Alkalmazásproxy konfigurálása előtt ellenőrizze, hogy a támogatott [Azure Active Directory edition](https://azure.microsoft.com/pricing/details/active-directory/) és az Azure AD-címtár, amelynek globális rendszergazdája.
 

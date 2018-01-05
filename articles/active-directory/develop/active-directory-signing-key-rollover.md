@@ -1,12 +1,11 @@
 ---
-title: "Kulcsváltás bejelentkezés az Azure AD |} Microsoft Docs"
+title: "Az Azure AD-aláírási kulcs váltása"
 description: "Ez a cikk ismerteti, amelyek az aláírási kulcs átfordulási ajánlott eljárások az Azure Active Directory"
 services: active-directory
 documentationcenter: .net
 author: dstrockis
 manager: mtillman
 editor: 
-ms.assetid: ed964056-0723-42fe-bb69-e57323b9407f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,17 +14,17 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ac68839795dfd69daba16a0f7a01fc9ff16f616e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5396baa57fe0b49809d9fe06eb2b2feda2ed9ba8
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directoryban kulcsváltás aláírása
-Ez a témakör ismerteti, mit kell tudnia a nyilvános kulcsok biztonsági jogkivonatok aláírásához használt Azure Active Directory (Azure AD). Fontos megjegyezni, hogy rendszeres időközönként, és vészhelyzet esetén a kulcsok helyettesítő volt állítva azonnal. Minden alkalmazás, amely használhatja az Azure Active Directory kell tudni programozott módon a kulcsváltás folyamat, vagy a rendszeres manuális helyettesítő-folyamatot. Olvasási megértése, hogyan működnek a kulcsokat, továbbra is az alkalmazás a Váltás hatásának értékelése és az alkalmazás frissítésére, vagy kezelje a kulcsváltás, szükség esetén rendszeres manuális váltása folyamatot.
+A cikk ismerteti, mit kell tudnia a nyilvános kulcsok biztonsági jogkivonatok aláírásához használt Azure Active Directory (Azure AD). Fontos megjegyezni, hogy rendszeres időközönként, és vészhelyzet esetén a kulcsok helyettesítő volt állítva azonnal. Minden alkalmazás, amely használhatja az Azure Active Directory kell tudni programozott módon a kulcsváltás folyamat, vagy a rendszeres manuális helyettesítő-folyamatot. Olvasási megértése, hogyan működnek a kulcsokat, továbbra is az alkalmazás a Váltás hatásának értékelése és az alkalmazás frissítésére, vagy kezelje a kulcsváltás, szükség esetén rendszeres manuális váltása folyamatot.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Az Azure AD-aláírókulcsok áttekintése
-Az Azure AD és az azt használó alkalmazások között megbízhatósági kapcsolat létrehozása az ipari szabványok épülő nyilvános kulcsú titkosítást használ. Gyakorlatilag, ez a következő módon működik: az Azure AD nyilvános és titkos kulcsból álló kulcspárt tartalmazó aláíró kulcsot használ. Ha egy felhasználó jelentkezik be valamely alkalmazás az Azure AD használ a hitelesítéshez, az Azure AD létrehoz egy biztonsági jogkivonatot, amely a felhasználó adatait tartalmazza. Ez a token aláírta az Azure AD használatával a titkos kulcsot, az alkalmazásnak elküldés előtt. Győződjön meg arról, hogy a jogkivonat érvényes, és ténylegesen kezdeményezésű az Azure AD, hogy az alkalmazás ellenőrizni kell a jogkivonat aláírása a nyilvános kulccsal, hogy a bérlő tartalmazza az Azure AD által elérhetővé tett [OpenID Connect felderítési dokumentum](http://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML/WS-Fed [összevonási metaadat-dokumentum](active-directory-federation-metadata.md).
+Az Azure AD és az azt használó alkalmazások között megbízhatósági kapcsolat létrehozása az ipari szabványok épülő nyilvános kulcsú titkosítást használ. Gyakorlatilag, ez a következő módon működik: az Azure AD nyilvános és titkos kulcsból álló kulcspárt tartalmazó aláíró kulcsot használ. Ha egy felhasználó jelentkezik be valamely alkalmazás az Azure AD használ a hitelesítéshez, az Azure AD létrehoz egy biztonsági jogkivonatot, amely a felhasználó adatait tartalmazza. Ez a token aláírta az Azure AD használatával a titkos kulcsot, az alkalmazásnak elküldés előtt. Győződjön meg arról, hogy a jogkivonat érvényes, és az Azure AD kezdeményezésű, hogy az alkalmazás ellenőrizni kell a jogkivonat aláírása a nyilvános kulccsal, hogy a bérlő tartalmazza az Azure AD által elérhetővé tett [OpenID Connect felderítési dokumentum](http://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML / WS-Fed [összevonási metaadat-dokumentum](active-directory-federation-metadata.md).
 
 Biztonsági okokból az Azure AD-aláíró kulcs összesíti rendszeres időközönként, és vészhelyzet esetén volt állítva azonnal. Bármely alkalmazás, amely az Azure AD kezelni egy kulcsváltás eseményt, függetlenül attól, milyen gyakran ez akkor fordulhat elő kell készíteni. Ha nem, és az alkalmazás megpróbálja ellenőrzése a jogkivonat aláírása lejárt-kulcsot használ, a bejelentkezési kérelem sikertelen lesz.
 
@@ -128,7 +127,7 @@ passport.use(new OIDCStrategy({
 ### <a name="vs2015"></a>Webalkalmazások / API-k erőforrások védelméről, és a Visual Studio 2015-öt vagy a Visual Studio 2017
 Ha az alkalmazást a Visual Studio 2015-öt vagy a Visual Studio 2017 webes alkalmazás sablon használatával lett létrehozva, és a kiválasztott **munkahelyi és iskolai fiókok** a a **hitelesítés módosítása** menü már rendelkezik a szükséges logika kulcsváltás automatikusan kezelni. A programot, az OWIN OpenID Connect köztes ágyazott kéri le, és gyorsítótárba helyezi azt a kulcsokat az OpenID Connect felderítési dokumentum, és rendszeresen frissülnek.
 
-Ha manuálisan adta hozzá hitelesítési a megoldáshoz, az alkalmazás esetleg nincs szükség kulcsváltás logika. Jegyezze meg, vagy kövesse a kell [webalkalmazások / API-k bármely más könyvtárak segítségével, vagy manuálisan végrehajtási a támogatott protokollok.](#other).
+Ha manuálisan adta hozzá hitelesítési a megoldáshoz, az alkalmazás esetleg nincs szükség kulcsváltás logika. Jegyezze meg, vagy kövesse a kell [webalkalmazások / API-k bármely más könyvtárak segítségével, vagy manuálisan végrehajtási a támogatott protokollok](#other).
 
 ### <a name="vs2013"></a>Webalkalmazások erőforrások védelméről, és a Visual Studio 2013 létre
 Ha az alkalmazás a Visual Studio 2013 webes alkalmazás sablon használatával lett létrehozva, és a kiválasztott **munkahelyi és iskolai fiókok** a a **hitelesítés módosítása** menü már rendelkezik a szükséges logika kulcsváltás automatikusan kezelni. A működési elvet tárolja a projekthez tartozó két adatbázistáblák a szervezet egyedi azonosító és az aláírási kulcs adataira. A kapcsolati karakterláncot az adatbázishoz a projekt Web.config fájlban található.
@@ -183,7 +182,7 @@ namespace JWTValidation
 
             TokenValidationParameters validationParams = new TokenValidationParameters()
             {
-                AllowedAudience = "[Your App ID URI goes here, as registered in the Azure Classic Portal]",
+                AllowedAudience = "[Your App ID URI goes here, as registered in the Azure Portal]",
                 ValidIssuer = "[The issuer for the token goes here, such as https://sts.windows.net/68b98905-130e-4d7c-b6e1-a158a9ed8449/]",
                 SigningTokens = GetSigningCertificates(MetadataAddress)
 
@@ -284,7 +283,7 @@ Győződjön meg arról, hogy működik-e a kulcsváltás programot az alábbi l
           </keys>
    ```
 2. Az a  **<add thumbprint=””>**  beállításban módosítsa az ujjlenyomat értékét azáltal, hogy egy másik bármely karakter. Mentse a **Web.config** fájlt.
-3. Építenie az alkalmazást, és futtassa azt. Ha a bejelentkezési folyamat elvégzése az alkalmazás sikeresen frissíti a kulcs úgy, hogy letölti a szükséges adatokat a címtár összevonási metaadatok dokumentumból. Ha bejelentkezik problémát tapasztal, győződjön meg arról, a módosítások az alkalmazás olvasásával helyesek a [hozzáadása bejelentkezés a webes alkalmazás használata az Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) a témakörben vagy letöltése, és tanulmányozza a következő példakód: [ Az Azure Active Directory több-Bérlős felhőalapú alkalmazásnál](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+3. Építenie az alkalmazást, és futtassa azt. Ha a bejelentkezési folyamat elvégzése az alkalmazás sikeresen frissíti a kulcs úgy, hogy letölti a szükséges adatokat a címtár összevonási metaadatok dokumentumból. Ha bejelentkezik problémát tapasztal, győződjön meg arról, a módosítások az alkalmazás olvasásával helyesek a [hozzáadása bejelentkezés a webes alkalmazás használata az Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) cikket, vagy letöltése, és tanulmányozza a következő példakód: [ Az Azure Active Directory több-Bérlős felhőalapú alkalmazásnál](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Erőforrások védelme és a Visual Studio 2008 vagy 2010 webes alkalmazások és a Windows Identity Foundation (WIF) 1.0-s a .NET 3.5
 Ha egy alkalmazás WIF 1.0-s verziója található, nincs megadott mechanizmus, hogy automatikusan frissítse az alkalmazás konfigurációját, és egy új kulcsot használják.
@@ -303,11 +302,11 @@ Ha egy alkalmazás WIF 1.0-s verziója található, nincs megadott mechanizmus, 
 ### <a name="other"></a>Webalkalmazások / API-k bármely más könyvtárak segítségével, vagy manuálisan végrehajtási a támogatott protokollok erőforrások védelme
 Ha néhány más szalagtár használata, vagy manuálisan végrehajtani a támogatott protokollok, szüksége lesz a könyvtárban vagy annak érdekében, hogy a kulcs az OpenID Connect felderítési dokumentum vagy az összevonási metaadatok lekérésére a megvalósítás áttekintése a dokumentum. Egy ez kereséséhez módja az OpenID felderítési dokumentum vagy az összevonási metaadatok dokumentum kimenő még a vagy a könyvtár-kódban a kereséshez.
 
-Ha ezek a kulcsok tárolása valahol vagy szoftveresen kötött az alkalmazásban, manuálisan beolvasása a kulcs és a frissítés, ennek megfelelően szerint hajtsa végre egy manuális váltása szereplő utasításokat az útmutató végén. **Erősen ajánlott, hogy javítható-e az alkalmazás támogatja az automatikus helyettesítő** ebben a cikkben a megközelítések vázlat bármelyikét elkerülése érdekében jövőbeli megszakításait és a terhelés, hogy az Azure AD növeli az átfordulási ütemben történik, illetve hogy vészhelyzet esetén használja sávon kívüli kulcsváltás.
+Ha ezek a kulcsok tárolása valahol vagy szoftveresen kötött az alkalmazásban, manuálisan lekérni a kulcsot, és ennek megfelelően az hajt végre egy manuális váltása az utasításokat az útmutató végén szerint frissítse. **Erősen ajánlott, hogy javítható-e az alkalmazás támogatja az automatikus helyettesítő** ebben a cikkben a megközelítések vázlat bármelyikét elkerülése érdekében jövőbeli megszakításait és a terhelés, hogy az Azure AD növeli a helyettesítő ütemben történik, illetve hogy vészhelyzet esetén használja sávon kívüli kulcsváltás.
 
 ## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Állapítsa meg, amennyiben ez érinti az alkalmazás tesztelése
 Ellenőrizheti, hogy az alkalmazás támogatja az automatikus kulcsváltást letöltése a parancsfájlok és utasításait követve [a GitHub-tárházban.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
-## <a name="how-to-perform-a-manual-rollover-if-you-application-does-not-support-automatic-rollover"></a>Hogyan hajthat végre egy manuális váltása, ha alkalmazás nem támogatja az automatikus váltása
+## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Hogyan hajthat végre egy manuális váltása, ha az alkalmazás nem támogatja az automatikus váltása
 Ha az alkalmazás **nem** támogatja az automatikus helyettesítő, szüksége lesz egy folyamat, amely rendszeresen figyeli az Azure AD által aláíró kulcsok, és ennek megfelelően hajt végre egy manuális váltása létrehozásához. [A GitHub-tárházban](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) parancsfájlok és ehhez útmutatást tartalmaz.
 

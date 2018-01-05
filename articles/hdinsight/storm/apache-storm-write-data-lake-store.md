@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/04/2018
 ms.author: larryfr
-ms.openlocfilehash: efb0a19e0793a93b2bfab93adb747e6f130341df
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 485bc8e21e92b7dc5734458506c6825d349c45f9
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Írni HDFS az Apache Storm példatopológiái
 
@@ -34,7 +34,7 @@ Ez a topológia tartalmazó projekt letölthető érhető el [https://github.com
 
 Ez a projekt fordítása, a következő konfigurációs a fejlesztési környezet szüksége:
 
-* [Java JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) vagy újabb verzióját. HDInsight 3.5-ös vagy újabb rendszer szükséges Java 8.
+* [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verzióját. HDInsight 3.5-ös vagy újabb rendszer szükséges Java 8.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -140,7 +140,7 @@ A fluxus keretrendszerre további információkért lásd: [https://storm.apache
 
 Alapértelmezés szerint a HDInsight alatt futó Storm nem tartalmaz az összetevőket, amelyek HdfsBolt használ a Storm tartozó classpath Azure Storage vagy a Data Lake Store folytatott kommunikációhoz. A következő parancsfájlművelet ezek az összetevők hozzáadásához használja a `extlib` könyvtár alatt futó Storm a fürt:
 
-* A parancsfájl URI:`https://000aarperiscus.blob.core.windows.net/certs/stormextlib.sh`
+* A parancsfájl URI:`https://gist.githubusercontent.com/Blackmist/dbd4a3f555397a84ac1074ee73484df2/raw/63a76e559efd532021580d079e378c6b2f8c475e/stormextlib.sh`
 * Csomópontok alkalmazandó: Nimbus, a felügyelő
 * Paraméterek: nincs
 
@@ -222,7 +222,7 @@ Storm-topológiák addig futnak, csak a, vagy a fürt törlődik. A topológia l
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy rendelkezik megtudta, hogyan használja a Storm Azure Storage és az Azure Data Lake Store, felderítése más [példák a HDInsight Storm](apache-storm-example-topology.md).
 

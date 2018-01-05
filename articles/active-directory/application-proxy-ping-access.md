@@ -3,7 +3,7 @@ title: "Fejléc-alapú hitelesítés PingAccess az az Azure AD alkalmazásproxy 
 description: "Alkalmazások közzététele az PingAccess és alkalmazás Proxy fejléc-alapú hitelesítés támogatására."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5b05813034a08457ca46ef47c93e16016534f0ef
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: bfff8ebff87b6c3c501202e95c463a0f4e235ffc
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Az egyszeri bejelentkezés az alkalmazásproxy és PingAccess fejléc-alapú hitelesítés
 
 Az Azure Active Directory Alkalmazásproxyjával és PingAccess közösen egyszerre több alkalmazást is hozzáférést biztosít az Azure Active Directory ügyfeleknek. PingAccess bővíti a [meglévő alkalmazásproxy ajánlatok](active-directory-application-proxy-get-started.md) egyszeri bejelentkezéses hozzáférést azon alkalmazásoknak, amelyek a hitelesítéshez használandó fejlécek tartalmazza.
 
-## <a name="what-is-pingaccess-for-azure-ad"></a>Mi az az PingAccess az Azure AD?
+## <a name="what-is-pingaccess-for-azure-ad"></a>Mi az az Azure AD-alapú PingAccess?
 
 Az Azure Active Directory PingAccess, amely lehetővé teszi a felhasználók hozzáférést és egyszeri bejelentkezést biztosítanak fejlécek hitelesítés használó alkalmazások PingAccess egy elérhető. Alkalmazás Proxy ezekhez az alkalmazásokhoz, mint bármely más, való hozzáférés hitelesítéséhez az Azure AD, és ezután átadja az összekötő szolgáltatás forgalmát kezeli. PingAccess az alkalmazások előtt helyezkedik el, és az Azure ad-jogkivonat fordítja fejléc, hogy az alkalmazás a hitelesítési kapjon, azt is olvasható formátumban.
 
@@ -52,7 +52,7 @@ Ha már Application Proxy engedélyezve van, és egy összekötő telepítve van
 
 Az alkalmazásproxy-összekötő egy Windows Server-szolgáltatás, amely arra utasítja a közzétett alkalmazások a távoli alkalmazottak érkező forgalom. Telepítési utasításokat, lásd: [alkalmazásproxy engedélyezése az Azure-portálon](active-directory-application-proxy-enable.md).
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) globális rendszergazdaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 2. Válassza ki **Azure Active Directory** > **alkalmazásproxy**.
 3. Válassza ki **összekötő letöltése** a alkalmazásproxy-összekötő letöltés megkezdéséhez. Kövesse a telepítési utasításokat.
 
@@ -131,7 +131,7 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes l
 
   Most, mentse ezt az értéket, mert nem lehet majd megjeleníteni az ablak bezárását követően.
 
-  ![Hozzon létre egy új kulcsot](./media/application-proxy-ping-access/create-keys.png)
+  ![Új kulcs létrehozása](./media/application-proxy-ping-access/create-keys.png)
 
 6. Zárja be a regisztrációk panelen vagy görgessen egészen a bal oldali térjen vissza az Azure Active Directory menübe.
 7. Válassza ki **tulajdonságok**.
@@ -151,7 +151,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 }
 ```
 Ez a példa a [Azure-portálon](https://portal.azure.com) való udpate a *acceptedMappedClaims* mező:
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) globális rendszergazdaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 2. Válassza ki **Azure Active Directory** > **App regisztrációk**.
 3. Válassza ki az alkalmazás > **Manifest**.
 4. Válassza ki **szerkesztése**, keresse meg a *acceptedMappedClaims* mezőben, és módosítsa az értéket a következőre **igaz**.
@@ -178,7 +178,7 @@ Ezen lépések végigvezetik a folyamat első egy PingAccess fiókot, ha még ne
 
 Ha végrehajtotta ezeket a lépéseket, az alkalmazás működik, és kell lennie. Ha kipróbálja, nyisson meg egy böngészőt, és keresse meg a külső URL-címet, amelyet közzé az alkalmazást az Azure-ban hozott létre. Jelentkezzen be a fiókot, amelyet az alkalmazáshoz rendelt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure AD PingAccess konfigurálása](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
 - [Hogyan nyújt az Azure AD-alkalmazásproxy egyszeri bejelentkezéshez?](application-proxy-sso-overview.md)

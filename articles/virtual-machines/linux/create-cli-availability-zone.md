@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: danlep
 ms.custom: 
-ms.openlocfilehash: 986cc450302a04720dc92e55eb8d1248cd3b8f26
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5e742187295d0bd6dbc0767ee164335fc0cf9f02
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Hozzon létre egy Linux virtuális gép egy rendelkezésre állási zónát az Azure parancssori felület
 
@@ -29,6 +29,35 @@ Ez a cikk lépéseit az Azure parancssori felület használatával Linux virtuá
 [!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
 
 Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és bejelentkezett az Azure-fiókkal rendelkező [az bejelentkezési](/cli/azure/#login).
+
+
+## <a name="check-vm-sku-availability"></a>Virtuális gép SKU elérhetőségének ellenőrzése
+Lévő Virtuálisgép-méretek vagy SKU, régió, és a zóna változhat. Segítségével megtervezheti a rendelkezésre állási zónákban használhatják, listázhatja a rendelkezésre álló virtuális gép termékváltozatok Azure-régió, és a zóna. Ez a lehetőség lehetővé teszi, hogy válassza ki a megfelelő Virtuálisgép-méretet, és szerezhetik be a kívánt rugalmassági zónák. A különböző Virtuálisgép-típusokon és méretek további információkért lásd: [Virtuálisgép-méretek – áttekintés](sizes.md).
+
+Megtekintheti a rendelkezésre álló virtuális gép termékváltozatok rendelkező a [az vm lista-SKU](/cli/azure/vm#az_vm_list_skus) parancsot. Az alábbi példa felsorolja a rendelkezésre álló virtuális gép termékváltozatok a *eastus2* régió:
+
+```azurecli
+az vm list-skus --location eastus2 --output table
+```
+
+A kimenete a következőhöz hasonló tömörített, amely mutatja a rendelkezésre állási zónákat, amelyben minden egyes Virtuálisgép-méretet érhető el:
+
+```azurecli
+ResourceType      Locations  Name               Tier       Size     Zones
+----------------  ---------  -----------------  ---------  -------  -------
+virtualMachines   eastus2    Standard_DS1_v2    Standard   DS1_v2   1,2,3
+virtualMachines   eastus2    Standard_DS2_v2    Standard   DS2_v2   1,2,3
+[...]
+virtualMachines   eastus2    Standard_F1s       Standard   F1s      1,2,3
+virtualMachines   eastus2    Standard_F2s       Standard   F2s      1,2,3
+[...]
+virtualMachines   eastus2    Standard_D2s_v3    Standard   D2_v3    1,2,3
+virtualMachines   eastus2    Standard_D4s_v3    Standard   D4_v3    1,2,3
+[...]
+virtualMachines   eastus2    Standard_E2_v3     Standard   E2_v3    1,2,3
+virtualMachines   eastus2    Standard_E4_v3     Standard   E4_v3    1,2,3
+```
+
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 

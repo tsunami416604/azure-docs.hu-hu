@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 10/19/2017
-ms.openlocfilehash: 9e22d96d20f3201a8d1618c5ff1878e99d50ad79
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: a2f67b21293a1a0456b27cad9043be01fdd5274a
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurálja, és hozzáférést kiszolgálónaplókban olvashatók az Azure-portálon
 
@@ -53,7 +53,7 @@ A lekérdezés naplók és a hibanaplókat való hozzáférés konfigurálása.
 ## <a name="view-list-and-download-logs"></a>Lista megtekintése és a naplók letöltése
 Naplózás megkezdése után megtekintheti a naplók listáját, és töltse le a kiszolgáló naplóiban panelen külön naplófájlba. 
 
-1. Nyissa meg az Azure-portálon.
+1. Nyissa meg az Azure Portalt.
 
 2. Válassza ki az Azure-adatbázis PostgreSQL-kiszolgáló.
 
@@ -72,8 +72,8 @@ Naplózás megkezdése után megtekintheti a naplók listáját, és töltse le 
 
    ![Kattintson a Letöltés ikon](./media/howto-configure-server-logs-in-portal/6-download.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Lásd: [hozzáférést kiszolgálónaplókban olvashatók a CLI](howto-configure-server-logs-using-cli.md) megtudhatja, hogyan programozott módon a naplók letöltéséhez.
 - További információ [kiszolgálónaplókban](concepts-server-logs.md) az PostgreSQL az Azure-Adatbázisba. 
-- A paraméterdefiníciókra és PostgreSQL naplózási kapcsolatos további információkért tekintse meg a PosgreSQL dokumentáció [hibajelentés és a naplózás](https://www.postgresql.org/docs/current/static/runtime-config-logging.html).
+- A paraméterdefiníciókra és PostgreSQL naplózási kapcsolatos további információkért tekintse meg a PostgreSQL-dokumentáció [hibajelentés és a naplózás](https://www.postgresql.org/docs/current/static/runtime-config-logging.html).
 
